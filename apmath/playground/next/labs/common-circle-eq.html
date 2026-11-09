@@ -625,19 +625,19 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       if (sub === 'laserReflectTan') {
         return {
-          badge: `탐구 8-C · 🪞 점 A(-4, 2)에서 쏜 레이저가 x축에서 반사되어 원 C(3, 3), r=2 에 접할 때!`,
-          hint: `슬라이더로 원을 $x$축 아래로 대칭이동시켜 보세요! 꺾인 반사 광선을 구하는 대신 <strong class="text-pink-300">원을 x축에 대칭이동한 원 C′(3, -3)</strong>을 그리면, 점 $A(-4, 2)$에서 대칭원 $C'$에 그은 <strong class="text-amber-300">일직선 접선</strong> 문제로 바뀝니다!`,
+          badge: `탐구 8-C · 🪞 점 A(-4, 2)에서 출발한 레이저가 x축에서 반사되어 원 C(3, 3), r=2 에 접하도록 쏘았습니다!`,
+          hint: `원을 $x$축 아래로 대칭이동한 원 C′(3, -3)을 그리면 꺾인 반사 경로가 대칭원의 접선 경로로 바뀝니다. 점 A에서 접점 T′까지의 선분은 원의 반지름 C′T′와 수직입니다.`,
           actionTxt: state.fold > 0.5 ? '🎬 반사 광선만 보기' : '🎬 원을 x축 아래 C′(3, -3)으로 대칭이동해 일직선화!',
           p1Title: '출발점 A(-4,2)', p2Title: '원 중심 C(3,3)',
           parts: [
             { id: 0, name: `🟦 원래 원 C: (x - 3)² + (y - 3)² = 2²`, desc: `x축 위에서 반사된 광선이 접하는 목표 원`, val: `중심 (3, 3)`, color: CCOL.cyan, ok: true },
-            { id: 1, name: `🩷 x축 대칭이동한 거울 속 원 C′: (x - 3)² + (y + 3)² = 2²`, desc: `중심 (3, 3)을 x축 대칭 ➔ C'(3, -3), 반지름 r = 2 그대로!`, val: `대칭중심 (3,-3)`, color: CCOL.pink, ok: true },
-            { id: 2, name: `🟨 점 A(-4, 2)에서 대칭원 C′에 그은 일직선 접선!`, desc: `입사각 = 반사각 이므로 대칭원에 접하는 직선과 일치함!`, val: `d = r = 2 적용!`, color: CCOL.gold, ok: true }
+            { id: 1, name: `🩷 x축 대칭이동한 거울 속 원 C′: (x - 3)² + (y + 3)² = 2²`, desc: `중심 C(3, 3)을 x축 대칭하면 C′(3, -3), 반지름은 r=2 그대로입니다.`, val: `중심 (3, -3)`, color: CCOL.pink, ok: true },
+            { id: 2, name: `🟨 점 A에서 대칭원 C′에 그은 접선`, desc: `접점 T′에서 반지름 C′T′와 접선 AT′는 수직입니다.`, val: `AT′ = √(74 − 4) = √70`, color: CCOL.gold, ok: true }
           ],
-          totalRes: `원을 x축 대칭시킨 C'(3, -3), r=2 에 점 A(-4, 2)에서 그은 접선으로 일직선 풀이!`,
-          rule: '빛의 반사 + 원의 접선/최단거리: 원을 반사하는 축에 대하여 대칭이동하여 일직선으로 만들어 푼다!',
-          formulaHTML: `• 빛이 날아간 총 거리(점 $A \\to x$축 $\\to$ 접점 $T$) 역시 대칭원 접점 $T'$까지의 접선 길이 ${tex(`\\mathbf{\\overline{AT'} = \\sqrt{\\overline{AC'}^2 - r^2}}`)}로 구해집니다!`,
-          notes: `• 점 $A$를 $x$축에 대칭이동시켜 $A'(-4, -2)$에서 원래 원 $C(3, 3)$에 접선을 그어도 결과가 같습니다!`
+          totalRes: `가능한 반사 접선 경로의 길이: AT′ = √70`,
+          rule: 'x축에 대해 원을 대칭이동한 뒤, 접점에서 반지름과 접선이 수직인 직각삼각형을 이용합니다.',
+          formulaHTML: `• 총 경로 길이 AP + PQ는 대칭원까지의 접선 길이입니다: <strong>AT′ = √(AC′² − r²) = √(74 − 4) = √70</strong>`,
+          notes: `• A를 x축에 대칭이동해 A′(-4, -2)에서 원 C(3, 3)에 접선을 그어도 접선 길이는 같습니다.`
         };
       }
       // pappusMinSq 기본
@@ -2625,13 +2625,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
     /* ======================= 8-C laserReflectTan · 반사와 대칭이동으로 일직선 ======================= */
     function mkReflect(A, C, r) {
-      const Cp = P(C.x, -C.y), d = distP(A, Cp), val = d - r, tt = A.y / (A.y + C.y), Pstar = P(A.x + (Cp.x - A.x) * (A.y / (A.y + C.y)), 0);
-      const uQ = unitP(subP(C, Pstar)), Qs = addP(C, mulP(uQ, -r)), Qp = P(Qs.x, -Qs.y);
+      const Cp = P(C.x, -C.y), d = distP(A, Cp), radicand = Math.round(d * d - r * r), val = Math.sqrt(radicand);
+      const theta = Math.atan2(A.y - Cp.y, A.x - Cp.x), tangentOffset = Math.acos(Math.min(1, r / d));
+      const Qp = P(Cp.x + r * Math.cos(theta - tangentOffset), Cp.y + r * Math.sin(theta - tangentOffset));
+      const Qs = P(Qp.x, -Qp.y), t = A.y / (A.y - Qp.y), Pstar = P(A.x + (Qp.x - A.x) * t, 0);
       const P0 = P(A.x + (C.x - A.x) * 0.2, 0), ang = Math.atan2(P0.y - C.y, P0.x - C.x) - 0.5, Q0 = P(C.x + r * Math.cos(ang), C.y + r * Math.sin(ang));
       const box = boxOf(circBox([[C, r], [Cp, r]]).concat([A]), 1.8);
       return fin({
-        prm: { A, C, r }, val, ans: nt(val), view: box,
-        text: `점 $A${pT(A)}$에서 출발하여 $x$축 위의 점 $P$를 지나 원 $${circTex(C, r * r)}$ 위의 점 $Q$에 도달하는 경로의 길이 $\\overline{AP}+\\overline{PQ}$의 최솟값을 구하시오.`,
+        prm: { A, C, r }, val, ans: radTex(radicand), view: box,
+        text: `점 $A${pT(A)}$에서 출발한 레이저가 $x$축 위의 점 $P$에서 반사되어 원 $${circTex(C, r * r)}$에 점 $Q$에서 접하도록 쏘았습니다. 경로의 길이 $\\overline{AP}+\\overline{PQ}$를 구하시오.`,
         draw(b, st) {
           circ(b, C, r, { color: 'amber', fill: 'amber', fillAlpha: 0.06, width: 2.8 });
           if (st < 2) { seg(b, A, P0, { color: 'muted', width: 2, dash: true }); seg(b, P0, Q0, { color: 'muted', width: 2, dash: true }); dot(b, P0, 'P', 'violet', { dx: 0, dy: 18, align: 'center' }); dot(b, Q0, 'Q', 'violet', { toward: C }); }
@@ -2643,16 +2645,16 @@ window.addEventListener('DOMContentLoaded', function () {
           dot(b, A, `A${pS(A)}`, 'ink', { dx: -11, dy: -13, align: 'right' }); dot(b, C, `C${pS(C)}`, 'amber', { dx: 0, dy: -19, align: 'center', r: 4.5 });
         },
         geo: [
-          `$x$축에 대하여 원 $C$를 대칭이동한 원 $C^{\\prime}${pT(Cp)}$를 그립니다. 점 $Q$의 대칭점을 $Q^{\\prime}$이라 하면 $PQ=PQ^{\\prime}$입니다 (그림).`,
-          `$AP+PQ=AP+PQ^{\\prime}\\ge AQ^{\\prime}$ — 세 점 $A,\\ P,\\ Q^{\\prime}$이 한 직선 위에 있을 때 최소이고, $AQ^{\\prime}\\ge AC^{\\prime}-r$ (선분 $AC^{\\prime}$가 원 $C^{\\prime}$와 만나는 점이 $Q^{\\prime}$).`,
-          `$AC^{\\prime}=\\sqrt{(${nt(Cp.x - A.x)})^2+(${nt(Cp.y - A.y)})^2}=${nt(d)}$ (가로 ${nt(Math.abs(Cp.x - A.x))}, 세로 ${nt(Math.abs(Cp.y - A.y))}인 직각삼각형의 빗변) ⇒ 최솟값 $=${nt(d)}-${r}=${nt(val)}$`
+          `$x$축에 대하여 원 $C$를 대칭이동한 원 $C^{\\prime}${pT(Cp)}$를 그립니다. 점 $Q$의 대칭점 $Q^{\\prime}$라 하면 $PQ=PQ^{\\prime}$이고, 반사 법칙에 따라 $A,P,Q^{\\prime}$는 한 직선 위에 놓입니다.`,
+          `대칭된 경로 $AP+PQ^{\\prime}$는 원 $C^{\\prime}$에 그은 접선 길이 $AQ^{\\prime}$입니다. 접점에서 반지름 $C^{\\prime}Q^{\\prime}$와 접선 $AQ^{\\prime}$는 수직입니다.`,
+          `$AC^{\\prime}=\\sqrt{(${nt(Cp.x - A.x)})^2+(${nt(Cp.y - A.y)})^2}=${nt(d)}$, $C^{\\prime}Q^{\\prime}=r=${r}$이므로 $AQ^{\\prime}=\\sqrt{${Math.round(d * d)}-${r * r}}=${radTex(radicand)}$.`
         ],
-        alg: `$P(t,\\ 0)$으로 놓고 $\\overline{AP}+\\overline{PC}-r$를 $t$에 대한 식으로 쓰면 제곱근이 두 개라 최솟값을 구하기 어렵습니다. 대칭이동이 정석입니다.`,
-        warn: '원의 반지름을 한 번만 빼면 됩니다 (AC′ − r). 점 A와 원이 x축의 같은 쪽에 있을 때만 대칭이동을 씁니다.',
-        hl: '꺾이는 경로의 최단거리 = 대칭이동해서 일직선. 원 위의 점까지는 "중심까지 거리 − 반지름".'
+        alg: `$P(t,\\ 0)$으로 놓으면 $AP+PQ$를 바로 최소화하기 복잡합니다. 대칭이동하면 $AQ^{\\prime}$가 접선 길이가 되고, $AQ^{\\prime}=\\sqrt{AC^{\\prime 2}-r^2}$로 구합니다.`,
+        warn: '접선 길이는 중심거리에서 반지름을 빼는 d−r이 아니라, 직각삼각형으로 √(d²−r²)를 구합니다. 대칭이동은 출발점과 원이 x축의 같은 쪽에 있을 때 씁니다.',
+        hl: '반사축에 대해 원을 대칭이동하고, 접점에서 반지름과 접선이 수직인 직각삼각형으로 접선 길이 √(d²−r²)를 구합니다.'
       });
     }
-    DEFS.laserReflectTan = { tag: '23학년도 팔마고 기출 유형 · 대칭이동을 이용한 최단 경로', time: '목표 시간: 45초', pool: [
+    DEFS.laserReflectTan = { tag: '23학년도 팔마고 기출 유형 · 대칭이동을 이용한 반사 접선의 길이', time: '목표 시간: 45초', pool: [
       () => mkReflect(P(-3, 1), P(0, 3), 2), () => mkReflect(P(-2, 2), P(4, 6), 3), () => mkReflect(P(0, 1), P(4, 2), 1), () => mkReflect(P(-4, 3), P(4, 3), 2), () => mkReflect(P(-6, 1), P(6, 4), 3)
     ] };
 
