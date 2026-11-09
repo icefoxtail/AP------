@@ -1,0 +1,1261 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/19_순천여고_1학기_기말_고2_수학I.js",
+  "sourceGitBlobSha": "f6655124acdfd57595acb6505d293dc7b97f1c48",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그방정식",
+            "src": "stem",
+            "quote": "\\log_3(x+7) = 3"
+          },
+          {
+            "term": "밑",
+            "src": "solution",
+            "quote": "밑이 3인 로그값이 3이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "3$의 해는?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "$x=20$"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "로그의 정의를 지수방정식으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "3^3=27",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "진수조건",
+            "src": "solution",
+            "quote": "진수 조건 $x+7>0$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "로그의 정의에 따라 로그방정식을 지수식으로 변환하여 진수 조건을 만족하는 해를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수부등식",
+            "src": "stem",
+            "quote": "\\left(\\dfrac{1}{2}\\right)^{x^2-2} >"
+          },
+          {
+            "term": "밑",
+            "src": "solution",
+            "quote": "밑이 $0$과 $1$ 사이인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수는?"
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "정수 $x$는 $-1,0,1$의 세 개이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수함수",
+            "src": "solution",
+            "quote": "지수함수는 감소하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "x^2<4",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "만족하는 정수 $x$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "밑이 1보다 작은 지수함수의 감소 성질을 이용하여 부등호 방향을 바꾼 뒤 이차부등식을 풀어 정수해의 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그부등식",
+            "src": "stem",
+            "quote": "\\log_2 x > \\log_2 (2x-6)"
+          },
+          {
+            "term": "밑",
+            "src": "solution",
+            "quote": "밑 $2$는 $1$보다 크므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "부등식 $\\log_2 x > \\log_2 (2x-6)$의 해가"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "진수조건",
+            "src": "solution",
+            "quote": "로그의 진수 조건을 먼저 정리한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그함수",
+            "src": "solution",
+            "quote": "로그함수의 증가성을 쓴다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "x>2x-6",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$a < x < b$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "진수 조건을 확보하고 밑이 1보다 큰 로그함수의 증가성을 이용해 일차부등식을 푼 뒤 양 끝값의 곱을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $\\mathrm{ABCD}$의 두 대각선"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선이 이루는 각의 크기는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $\\mathrm{ABCD}$의 넓이는?"
+          },
+          {
+            "term": "값",
+            "src": "choices",
+            "quote": "$12\\sqrt{3}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "네 삼각형으로 나누면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "\\sin\\frac\\pi3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "각각 평행한 선분을 그었다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 대각선의 길이와 사잇각을 이용하여 사각형의 넓이 공식을 적용해 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $\\overline{\\mathrm{AB}}=9$"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "선분 $\\overline{\\mathrm{AD}}$가 각 $\\ma"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $\\overline{\\mathrm{BD}}$의 길이는?"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "BD=\\frac35BC=\\frac95\\sqrt{19}"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙으로 $BC$를 구하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각의이등분선정리",
+            "src": "solution",
+            "quote": "각의 이등분선 정리를 적용한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "BD:DC=AB:AC=9:6=3:2"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "코사인법칙으로 밑변의 길이를 구하고 각의 이등분선 정리로 내분 길이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "거리와 사잇각의 크기를 측정하였더니"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\cos 37^\\circ = 0.8"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$의 넓이는?"
+          },
+          {
+            "term": "값",
+            "src": "choices",
+            "quote": "$21\\text{km}^2$"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의상호관계",
+            "src": "solution",
+            "quote": "\\sin37^\\circ=\\sqrt{1-0.8^2}=0.6",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "두 변과 끼인각으로 넓이를 구하고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "solution",
+            "quote": "각은 예각이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 코사인값으로부터 삼각함수 기본 상호관계식으로 사인값을 구한 뒤 두 변과 끼인각의 사인으로 삼각형의 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$의 꼭짓점"
+          },
+          {
+            "term": "수선의 발",
+            "src": "stem",
+            "quote": "내린 수선의 발을 $\\mathrm{H}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "(가)~(다)에 알맞은 것은?"
+          },
+          {
+            "term": "선택",
+            "src": "solution",
+            "quote": "따라서 정답은 ②이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "c\\cos B+b\\cos C",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "C=90^\\circ",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "$B < 90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "꼭짓점에서 내린 수선의 발의 위치에 따른 직각삼각형에서의 삼각비 표현을 통해 변의 길이를 분류하여 빈칸을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y = \\dfrac{2}{7}x$"
+          },
+          {
+            "term": "사인함수",
+            "src": "solution",
+            "quote": "사인함수의 부호, 오목성"
+          }
+        ],
+        "goal": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "그래프의 교점의 개수는?"
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "원점을 더해 총 $7$개이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "홀대칭으로 교점 수를 센다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "주기함수",
+            "src": "solution",
+            "quote": "\\sin\\pi x",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원점",
+            "src": "solution",
+            "quote": "f(0)=0"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사인함수의 주기성과 원점 대칭성, 치역의 경계값을 이용하여 직선과의 교점 개수를 조사한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AB}}=10"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{CAB}=105^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{CO}}$의 길이는?"
+          },
+          {
+            "term": "값",
+            "src": "choices",
+            "quote": "$5\\sqrt{6}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "삼각형 $ABC$에서 사인법칙으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "특수각",
+            "src": "solution",
+            "quote": "직각삼각형 $AOC$를 본다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $AOC$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형에서 내각의 합과 사인법칙으로 한 변을 구한 뒤 직각삼각형의 삼각비를 이용하여 목표 선분의 길이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$의 세 변의 길이"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "a^2 = b^2 - \\sqrt{3}bc + c^2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\cos A$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "choices",
+            "quote": "\\dfrac{\\sqrt{3}}{2}"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙을 주어진 식과 비교한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "2bc\\cos A=\\sqrt3bc",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "삼각형에서 $b,c>0$이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 관계식을 제2코사인법칙과 계수 비교하여 코사인값을 도출한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원에 내접하는 사각형"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AD}}=3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AC}}$의 길이는?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "따라서 $AC=7$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "원에 내접한 사각형에서 마주 보는 각의 코사인",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "삼각형 $ADC$에서 코사인법칙을 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원에 내접하는 사각형 $\\mathrm{ABCD}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원내접 사각형의 대각의 합이 180도임을 이용하여 대각의 코사인을 구하고 삼각형에서 코사인법칙을 적용하여 대각선 길이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "첫째항 2인 등차수열 $a_n$"
+          },
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "첫째항 2인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "수열의 공차는?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "d=-\\frac45"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "등차수열의 일반항에 조건을 넣어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "2+d=-(2+4d)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "절댓값이 같고 부호가 반대일때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "등차수열의 일반항을 세우고 두 항의 부호 반대 조건을 일차방정식으로 풀어 공차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "공비가 양수인 등비수열 $a_n$"
+          },
+          {
+            "term": "공비",
+            "src": "stem",
+            "quote": "공비가 양수인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "제7항까지의 합을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "S_7=1+2+4+8+16+32+64=127"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "두 등비수열 식의 비로 공비를 정한",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "첫 일곱 항의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "공비를 $r>0$이라 하면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 항들의 관계식 비율을 통해 공비와 첫째항을 결정한 뒤 등비수열의 합 공식으로 제7항까지의 합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)$가 $f(1)=100"
+          },
+          {
+            "term": "시그마",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^9 f(k+1)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은? [4.3점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "f(10)-f(1)=1000-100=900"
+          }
+        ],
+        "method": [
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "공통 항을 소거한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "두 합의 항을 나열하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "f(1)=100, f(10)=1000"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "시그마 합의 항들을 나열하여 중간항들을 서로 소거하고 양 끝 함숫값의 차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "공비",
+            "src": "stem",
+            "quote": "연이율 $6\\%$"
+          },
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "등비수열의 합으로 $15000"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "적립금은 $15000(1.06+1.06^2"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "212000$원이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "1.06^{10} = 1.8",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "합으로 $15000\\cdot1.06",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "연이율 $6\\%$의 복리로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "10회 적립하였을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "매년 초 납입하는 기수불 원리합계를 등비수열의 합 공식으로 모델링하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수학적귀납법",
+            "src": "stem",
+            "quote": "수학적 귀납법으로 증명한 것이다"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "2^n > n^2 \\cdots\\cdots \\text{①}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "m_0 + a + b + f(1) + g(1)$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "5+32+25+2+4=68"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "귀납 단계의 두 비교식을 확인해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "2^{k+1}>2k^2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수학적 귀납법의 초기값 확인과 귀납 가정을 활용한 부등식의 성립 과정을 비교하여 미지값을 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "귀납적정의",
+            "src": "stem",
+            "quote": "a_{n+1} = a_n + \\dfrac{1}{\\sqrt{n+1"
+          },
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "\\dfrac{1}{\\sqrt{n+1} + \\sqrt{n+2}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_{99}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "(\\sqrt{100}-\\sqrt2)=10"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "분모를 유리화하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "망원합으로 줄어든다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "초항",
+            "src": "stem",
+            "quote": "a_1 = \\sqrt{2}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "점화식의 분모를 유리화하여 망원합 꼴로 변형한 뒤 축차대입으로 소거하여 99번째 항의 값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "총 횟수를 $a_n$이라 할 때"
+          },
+          {
+            "term": "시그마",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{20} \\dfrac{2}{a_{k+1}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "그러므로 $q=20$, $p=21$이고 $p+q=41$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "\\binom{2n}{2}-n",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "분수를 부분분수로 나눈다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 자연수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 인원에서 악수 가능한 쌍의 수에서 부부 쌍을 빼어 일반항을 구한 뒤 부분분수 전개를 통해 급수합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "로그부등식",
+            "src": "stem",
+            "quote": "\\log_2(x-4) + \\log_2(x+2) \\le 4"
+          },
+          {
+            "term": "밑",
+            "src": "solution",
+            "quote": "밑 $2>1$이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "푸시오? [4점]"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "(x+4)(x-6)\\le0"
+          }
+        ],
+        "method": [
+          {
+            "term": "진수조건",
+            "src": "solution",
+            "quote": "로그의 진수 조건을 먼저 적용한",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "이차부등식을 쓴다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "진수조건",
+            "src": "solution",
+            "quote": "x-4>0"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "진수 조건을 설정하고 로그의 덧셈 성질로 합쳐 이차부등식을 유도한 뒤 공통 영역을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle\\mathrm{ABC}$에 대하여"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "b=2\\sqrt{3}, c=6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle B$의 값을 구하시오"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "B=30^\\circ"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "사인법칙으로 $\\sin B$를 구한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 각의 합으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "특수각",
+            "src": "stem",
+            "quote": "C=60^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사인법칙을 적용하여 사잇각의 사인값을 얻고, 삼각형 내각의 합 조건과 대변 대각 관계를 확인하여 적합한 각을 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제 $n$항까지의 합 $S_n$"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "S_n = 2n^2+n"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$p-q$의 값을 구하시오"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "서로소인 자연수 $p, q$"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "부분합의 차로 일반항을 구한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "분수를 망원합으로 바꾼다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부분합 $S_n$으로부터 $a_n$을 유도하고, 일반항의 역수 곱 형태를 부분분수로 분해하여 망원합으로 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "n^2(n+1)"
+          },
+          {
+            "term": "홀수",
+            "src": "solution",
+            "quote": "처음 $n$개의 홀수의 합은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "식의 값을 구하는 과정과 함께 답을 쓰시오"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "\\sum_{n=1}^{10}n^2(n+1)"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱합",
+            "src": "solution",
+            "quote": "\\sum_{n=1}^{10}n^3+\\sum_{n=1}^{10}n^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "시그마",
+            "src": "solution",
+            "quote": "\\sum_{n=1}^{10}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "1^2,2^2,\\ldots,10^2"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연속한 홀수의 합이 제곱수임을 이용하여 일반항을 나타내고 시그마 거듭제곱합 공식을 적용하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 22,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
