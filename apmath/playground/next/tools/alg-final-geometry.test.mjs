@@ -542,3 +542,59 @@ test('reported proof, exploration and cross-scene state regressions stay resolve
   for(let i=0;i<5;i++){diff.vary.set(i);const q=diff.vary.cur(),out=draw(seq,diff,ds).b.texts.join(' '),sub=n=>String(n).replace(/\d/g,d=>'₀₁₂₃₄₅₆₇₈₉'[+d]);assert.ok(out.includes(`S${sub(q.N)} − S${sub(q.j)}`),'shaded endpoints follow generated question');}
   diff.vary.set(0);
 });
+
+
+test('reflected-circle tangent problems use the tangent length and a matching diagram', () => {
+  const html = fs.readFileSync(new URL('../labs/common-circle-eq.html', import.meta.url), 'utf8');
+  const start = html.indexOf('    function mkReflect(A, C, r) {');
+  const end = html.indexOf('\n    DEFS.laserReflectTan =', start);
+  assert.ok(start >= 0 && end > start, 'production tangent generator is present');
+  const factory = html.slice(start, end);
+  const point = (x, y) => ({ x, y });
+  const segments = [];
+  const helpers = {
+    P: point,
+    distP: (a, b) => Math.hypot(a.x - b.x, a.y - b.y),
+    boxOf: () => ({}), circBox: () => [], fin: value => value,
+    nt: value => String(Math.round(value * 100) / 100),
+    radTex: n => {
+      let outside = 1, inside = Math.round(n);
+      for (let factor = 2; factor * factor <= inside; factor++) {
+        while (inside % (factor * factor) === 0) { inside /= factor * factor; outside *= factor; }
+      }
+      return inside === 1 ? String(outside) : `${outside === 1 ? '' : outside}\\\\sqrt{${inside}}`;
+    },
+    pT: p => `(${p.x}, ${p.y})`, pS: p => `(${p.x}, ${p.y})`, circTex: () => 'circle',
+    circ: () => {}, dot: () => {},
+    seg: (board, from, to, options) => board.segments.push({ from, to, options })
+  };
+  const context = vm.createContext({ Math, ...helpers });
+  vm.runInContext(`${factory}\\nthis.makeReflect = mkReflect;`, context);
+  const variants = [
+    [point(-3, 1), point(0, 3), 2, 21, '\\\\sqrt{21}'],
+    [point(-2, 2), point(4, 6), 3, 91, '\\\\sqrt{91}'],
+    [point(0, 1), point(4, 2), 1, 24, '2\\\\sqrt{6}'],
+    [point(-4, 3), point(4, 3), 2, 96, '4\\\\sqrt{6}'],
+    [point(-6, 1), point(6, 4), 3, 160, '4\\\\sqrt{10}']
+  ];
+  for (const [A, C, r, radicand, expectedAnswer] of variants) {
+    const question = context.makeReflect(A, C, r);
+    assert.match(question.text, /접하도록/, 'problem states the tangent condition');
+    assert.equal(question.ans, expectedAnswer, 'answer uses the exact tangent length');
+    assert.match(question.geo.join(' '), /접선/, 'solution explains the tangent construction');
+    const board = { segments: [] };
+    question.draw(board, 2);
+    const tangentSegment = board.segments.find(segment => segment.options.color === 'sky');
+    assert.ok(tangentSegment, 'diagram includes the reflected tangent segment');
+    const Qp = tangentSegment.to, Pstar = tangentSegment.from, Cp = point(C.x, -C.y);
+    const radius = { x: Qp.x - Cp.x, y: Qp.y - Cp.y };
+    const towardA = { x: A.x - Qp.x, y: A.y - Qp.y };
+    assert.ok(Math.abs(Math.hypot(radius.x, radius.y) - r) < 1e-8, 'tangent point lies on the reflected circle');
+    assert.ok(Math.abs(radius.x * towardA.x + radius.y * towardA.y) < 1e-8, 'radius is perpendicular to the tangent');
+    assert.ok(Math.abs(Pstar.y) < 1e-8, 'reflection point lies on the x-axis');
+    const cross = (Qp.x - A.x) * (Pstar.y - A.y) - (Qp.y - A.y) * (Pstar.x - A.x);
+    assert.ok(Math.abs(cross) < 1e-8, 'A, P, and reflected tangent point are collinear');
+    assert.ok(Math.abs(Math.hypot(Qp.x - A.x, Qp.y - A.y) - Math.sqrt(radicand)) < 1e-8,
+      'drawn tangent length matches the Pythagorean answer');
+  }
+});
