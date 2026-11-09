@@ -1,0 +1,140 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "셋째 도착",
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "7",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "style": "ARROW",
+            "label": "2"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "style": "ARROW",
+            "label": "2"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "style": "ARROW",
+            "label": "2"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "style": "ARROW",
+            "label": "가상"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "넷째 도착",
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "6",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "style": "ARROW",
+            "label": "1"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "style": "ARROW",
+            "label": "1"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "style": "ARROW",
+            "label": "2"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "style": "ARROW",
+            "label": "2"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 가지 이동 예"
+  },
+  "caption": "각 이동거리는 1 또는 2여서 위치는 항상 증가한다. 첫째 예시는 세 번째에 6에 도착해 실제로 멈추며, 6에서 7로 가는 마지막 화살표는 계산을 위한 가상의 네 번째 이동이다. 둘째 예시는 네 번째에 6에 도착한다. 따라서 네 번 이하에 처음 6 이상에 도착하는 사건과, 멈추지 않는다고 가정한 네 이동의 합이 6 이상인 사건은 같다. 거리 2가 나온 횟수 K에 대해 4+K≥6이므로 K≥2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주사위의 3의 약수일 때 양의 방향 1, 아니면 양의 방향 2만큼 이동한다. 좌표가 처음 6 이상이면 중단한다.",
+      "mappedTo": [
+        "numberLine",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 조기 도착과 네 번째 도착의 예시 두 개만 보여 준다. 첫째 행의 마지막 이동은 실제로 수행하지 않는 가상 이동이며 전체 경로를 나열한 것은 아니다.",
+    "사용자 지시: 중단 규칙과 가상의 네 이동을 비교하는 개념 이해에 도움이 되어 계획한다."
+  ]
+}

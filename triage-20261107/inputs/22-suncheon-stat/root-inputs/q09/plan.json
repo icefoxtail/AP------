@@ -1,0 +1,142 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "functionName": "f",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/4",
+          "-1/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "1/4",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "1/4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0.75
+      },
+      {
+        "id": "B",
+        "x": -0.5,
+        "y": 0.5
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 0.25
+      },
+      {
+        "id": "D",
+        "x": 0.5,
+        "y": 0.5
+      },
+      {
+        "id": "E",
+        "x": 1,
+        "y": 0.75
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "3/4"
+      ],
+      "B": [
+        "-1/2",
+        "1/2"
+      ],
+      "C": [
+        "0",
+        "1/4"
+      ],
+      "D": [
+        "1/2",
+        "1/2"
+      ],
+      "E": [
+        "1",
+        "3/4"
+      ]
+    },
+    "regions": [
+      {
+        "id": "L",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1/2",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "R",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1/2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "coordinateLeader": [
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "밀도 그래프는 −1≤x≤1에서 f(x)=a|x|+b이고 그 밖에서는 0이다. 전체 넓이가 1이므로 a+2b=1, 가운데 −1/2≤x≤1/2의 넓이가 3/8이므로 a/4+b=3/8이다. 두 식에서 a=1/2, b=1/4이다. 그림은 구한 값의 밀도와 가운데 영역을 나타내며, 그래프에는 −1부터 1까지만 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "−1≤x≤1에서 f(x)=a|x|+b, 나머지에서는 0이고 a,b>0이다.",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "가운데 확률 P(−1/2≤X≤1/2)=3/8과 전체 넓이 1에서 a=1/2,b=1/4이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 부등식과 적분에서 해를 구한 뒤 f(x)=|x|/2+1/4를 표시한다. 이 그래프는 [−1,1]에 대한 제한이며 원래 밀도는 그 밖에서 0이다.",
+    "사용자 지시: 절댓값 밀도의 전체·가운데 넓이 관계가 이해에 도움되므로 계획한다. 가까운 점의 좌표 라벨은 지시선으로 분리한다.",
+    "이 문항은 승인된 ALIVE 대체문항임을 보존하며 기존 원문이나 출처 상태를 바꾸지 않는다."
+  ]
+}
