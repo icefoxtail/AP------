@@ -1,0 +1,310 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "1000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "80000",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "120705",
+            "denominator": "1000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-21284",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Bref",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-129309",
+            "denominator": "1000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "64123",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "D",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "left",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "P",
+          "Q",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "right",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "P",
+          "Q",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lqc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "Bref"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitsB",
+        "op": "INTERSECTION",
+        "inputs": [
+          "lqc",
+          "left"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitsB"
+        ],
+        "args": {},
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "P",
+            "Q"
+          ],
+          "sign": 1
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitsC",
+        "op": "INTERSECTION",
+        "inputs": [
+          "lqc",
+          "right"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitsC"
+        ],
+        "args": {},
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "P",
+            "Q"
+          ],
+          "sign": -1
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "Q",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "left",
+    "right"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "D83",
+        "refs": [
+          "P",
+          "D",
+          "C"
+        ],
+        "value": 83,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C80",
+        "refs": [
+          "D",
+          "C",
+          "Q"
+        ],
+        "value": 80,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A97",
+        "refs": [
+          "B",
+          "A",
+          "P"
+        ],
+        "value": 97,
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B100",
+        "refs": [
+          "A",
+          "B",
+          "Q"
+        ],
+        "value": 100,
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "오른쪽 원의 내접사각형에서 나온 각과 두 직선의 관계를 이용하면 왼쪽 각은 x=97°, y=100°이므로 x+y=197°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 원의 공통현은 PQ이고 A,P,D 및 B,Q,C는 각각 일직선이다. ∠PDC=83°, ∠DCQ=80°, ∠BAP=x, ∠ABQ=y이다. 배치는 원문 도형에 맞춘 근삿값이며 각도는 표기된 83°, 80°를 따른다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 내접사각형과 공통현, 같은 직선의 각을 구별한다. 점과 각 라벨은 서로 떨어뜨린다."
+  ]
+}
