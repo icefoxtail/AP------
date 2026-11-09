@@ -52,6 +52,40 @@ function draw(L, sc, s, tab = 'review', W = 1024) {
   assert.doesNotMatch(b.texts.join('\n'), /NaN|undefined|Infinity/, `${sc.id} labels`);
   return {b,v};
 }
+// Use the production pixel transforms and angle/point-label positioning for
+// the observed bas-5 clipping. Text boxes here are conservative envelopes,
+// not native-font or screenshot evidence.
+const boardScope = { window: { APLab: { clamp: (n, lo, hi) => Math.max(lo, Math.min(hi, n)) } } };
+vm.runInNewContext(fs.readFileSync(new URL('../kit/apl-board.js', import.meta.url), 'utf8'), boardScope);
+function drawOrthicInquiry(t, W = 1039, H = 646, step = 3) {
+  const proto = boardScope.window.APLab.Board.prototype, b = board(W, H), labels = [];
+  delete b.k; delete b.toS; delete b.toW; delete b._area;
+  Object.setPrototypeOf(b, proto);
+  Object.assign(b, { kind: 'figure', aspect: '1:1', zoom: 1, panX: 0, panY: 0, panes: null, paneId: null,
+    insets: { top: 0, bottom: 0, left: 8, right: 8 }, _P: pt, _em: () => 0 });
+  b._text = (x, y, text, o = {}) => {
+    const size = (o.size || 13) * b.fs * b._ts(), width = String(text).length * size;
+    const height = /π\//.test(String(text)) ? size * 2.15 : size;
+    const x0 = o.align === 'center' ? x - width / 2 : o.align === 'right' ? x - width : x;
+    labels.push({ text, x0, x1: x0 + width, y0: y - height / 2, y1: y + height / 2 });
+  };
+  for (const kind of ['point', 'handle']) {
+    const record = b[kind];
+    b[kind] = (...args) => {
+      record(...args);
+      const p = args[kind === 'handle' ? 1 : 0], o = args.at(-1);
+      if (o.label) proto._pointLabel.call(b, b.toS(pt(p)), o);
+      return b;
+    };
+  }
+  const recordAngle = b.angle;
+  b.angle = (...args) => { recordAngle(...args); return proto.angle.call(b, ...args); };
+  const sc = scl.scenes.find(x => x.id === 'bas-5'), s = scl.state(sc);
+  Object.assign(s, { t, step });
+  const lab = { tab: 'explore', scene: sc, s, params: scl.def.params }, v = sc.view(s, lab);
+  sc.draw(b, s, v, lab);
+  return { b, labels, s, v };
+}
 function vertices(b) {
   const out={};
   for(const x of b.items) if(x.kind==='point'||x.kind==='handle') {
@@ -139,6 +173,48 @@ test('exact special buttons and continuous dragging do not depend on the solutio
   s.t=scl.exports.phiToT(g,g.phC);
   const {v}=draw(scl,sc,s,'explore');assert.match(v.summary,/定|정의되지/);
   for(const [R,a] of scl.exports.RA) {const d=Math.sqrt(R*R-a*a/4);close(a/(a/(2*R)),2*R);close(a*(R+d)/2,Math.max(...Array.from({length:721},(_,i)=>a*Math.abs(R*Math.sin(i*Math.PI/360)+d)/2)));}
+});
+
+for (const t of [0, 0.005]) {
+  test(`the bas-5 triangle, diameter circle and labels fit at the reported t=${t}`, () => {
+    // First size is the actual run42583866636 PC canvas (integer Board size);
+    // the second retains a representative narrow stage for the same geometry.
+    for (const [W, H] of [[1039, 646], [390, 420]]) for (const step of [0, 3]) {
+      const { b, labels, s } = drawOrthicInquiry(t, W, H, step);
+      const { A, B, C, D, E } = vertices(b), scale = dist(B, C) / 6;
+      close(angle(B, A, C), (30 + 45 * t) * Math.PI / 180, 'angle remains the exact selected/input value');
+      close(angle(A, D, B), Math.PI / 2, 'first perpendicular foot');
+      close(angle(A, E, C), Math.PI / 2, 'second perpendicular foot');
+      close(dist(D, E) / scale, 6 * Math.cos((30 + 45 * t) * Math.PI / 180), 'DE remains BC cos A');
+      for (const p of [A, B, C, D, E].map(p => b.toS(p))) {
+        assert.ok(p.x >= 0 && p.x <= W && p.y >= 0 && p.y <= H, `vertex ${JSON.stringify(p)} within ${W}×${H}`);
+      }
+      assert.ok(labels.some(x => x.text === 'A') && labels.some(x => x.text.startsWith('∠A')), 'vertex and angle remain labelled');
+      for (const label of labels) assert.ok(label.x0 >= 0 && label.x1 <= W && label.y0 >= 0 && label.y1 <= H, JSON.stringify(label));
+      for (const circle of b.items.filter(x => x.kind === 'circle')) {
+        const c = b.toS(circle.args[0]), r = circle.args[1] * b.k;
+        assert.ok(c.x - r >= 0 && c.x + r <= W && c.y - r >= 0 && c.y + r <= H, 'complete diameter circle fits');
+      }
+      assert.equal(s.t, t, 'drawing never snaps or changes the input');
+    }
+  });
+}
+
+test('bas-5 keeps a fixed inquiry scale and its height-drag inverse across exact positions', () => {
+  const samples = [0, 1 / 3, 2 / 3, 1].map(t => {
+    const { b } = drawOrthicInquiry(t), { A, B, C } = vertices(b);
+    return { t, A, B, scale: dist(B, C) / 6 };
+  });
+  for (const sample of samples) {
+    close(sample.scale, samples[0].scale, 'slider movement does not resize the triangle');
+    close(sample.B.y, samples[0].B.y, 'base stays at a fixed height');
+  }
+  assert.ok(samples.every((sample, i) => !i || sample.A.y > samples[i - 1].A.y), 'A visibly moves down as its angle grows');
+  const { b, s } = drawOrthicInquiry(2 / 3), { A, B, C } = vertices(b), scale = dist(B, C) / 6;
+  const desired = 0.37, rad = (30 + 45 * desired) * Math.PI / 180;
+  const height = 6 / (2 * Math.sin(rad)) * (Math.cos(rad) + Math.cos(0.12));
+  b.items.find(x => x.kind === 'handle' && x.args.at(-1).label === 'A').args.at(-1).drag({ x: A.x, y: B.y - height * scale });
+  close(s.t, desired, 'height drag retains the existing inverse', 2e-5);
 });
 
 test('sequence diagrams use actual coordinates and preserve fractional values and domain boundaries', () => {

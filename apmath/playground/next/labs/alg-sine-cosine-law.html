@@ -1411,16 +1411,18 @@ window.addEventListener('DOMContentLoaded', function () {
       // [P0-1 수리] 3단계 배지에서 현재 ∠A에 대한 DE 값과 조건(∠A = π/3 ➔ DE = 3)을 함께 명시
       // -----------------------------------------------------------------------
       if (id === 'bas-5') {
-        const sc = u * 0.92;
-        const cy = oy + sc * 1.3;
-        const a = 6.0;
+        const a = 6.0, angOffset = 0.12;
+        // 30°에서 가장 높은 A와 지름 BC인 원 전체를 고정 배율에 담습니다.
+        // 현재 각도마다 다시 확대하지 않아 A의 상하 드래그와 역변환도 그대로 이어집니다.
+        const maxAy = a / (2 * Math.sin(Math.PI / 6)) * (Math.cos(Math.PI / 6) + Math.cos(angOffset));
+        const F = FIT(rect, [{ x: -a / 2, y: -a / 2 }, { x: a / 2, y: maxAy }], { t: 40, b: 76, l: 52, r: 52 });
+        const sc = Math.min(u * 0.92, F.u), cy = F.S(0, 0).y;
         const degA = 30 + t * 45; // t = 0.6667 -> degA = 60 (π/3)
         const radA = (degA * Math.PI) / 180;
         const cosA = Math.cos(radA);
         const isTarget = Math.abs(degA - 60) < 1e-9;
 
         const R_abc = a / (2 * Math.sin(radA));
-        const angOffset = 0.12;
         const O_y = R_abc * Math.cos(radA);
         const Ax = R_abc * Math.sin(angOffset);
         const Ay = O_y + R_abc * Math.cos(angOffset);
