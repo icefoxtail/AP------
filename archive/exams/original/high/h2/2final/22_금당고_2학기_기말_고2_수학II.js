@@ -50,7 +50,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선, 할선과 접선에 식을 붙이고 두 끝점을 표시한다.",
+    "solutionImageCaption": "포물선과 닫힌구간의 양 끝점을 잇는 할선, 같은 기울기를 갖는 접선을 나타낸다. 접점은 할선과 평행한 접선이 되는 위치에 있다. 정답은 1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -102,7 +106,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 시각에 따른 속도 함수의 포물선 그래프를 나타낸다.",
+    "solutionImageCaption": "속도는 위치 함수의 도함수이며, 시각 t=2에서 그래프의 값을 읽는다. 정답은 -3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -154,7 +162,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 초기 함수값과 도함수로 정해지는 이차함수의 그래프를 나타낸다.",
+    "solutionImageCaption": "도함수와 초기 함수값이 원함수의 그래프를 정한다. 그래프는 이 조건을 시각적으로 확인한다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -258,7 +270,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 영점 사이 포물선과 x축이 둘러싼 영역을 나타낸다.",
+    "solutionImageCaption": "포물선은 두 영점 사이에서 x축 위에 놓이고, 곡선과 축 사이가 넓이 영역이다. 정답은 4/3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -310,7 +326,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 두 영점과 부호가 바뀌는 포물선 그래프를 나타낸다.",
+    "solutionImageCaption": "그림의 d(x)=3x²+6x는 f(x)의 도함수이다. 도함수 부호가 x=0에서 음수에서 양수로 바뀌어 원함수의 극솟점이 된다. 정답은 -14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -362,7 +382,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평선과 이차함수의 교점을 나타낸다.",
+    "solutionImageCaption": "이차함수 f(x)=2가 되는 두 근의 곱으로 적분상수를 정한다. 정답은 -4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -378,7 +402,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "3",
-    "solutionImage": "assets/solutions/22_금당고_2학기_기말_고2_수학II/q08_inverse_area.svg",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q8-solution-v2.svg",
     "solution": "역함수의 식을 직접 구하려고 하면 삼차방정식을 풀어야 하므로 복잡해집니다. 여기서는 원함수와 역함수의 그래프가 서로 뒤집힌 관계라는 사실을 이용하여 두 정적분을 한꺼번에 계산합니다.\n먼저 $f'(x)=3x^2+3>0$이므로 $f$는 증가함수이고 역함수 $g$가 존재합니다. 또한 $f(1)=1$, $f(2)=8+6-3=11$이므로 주어진 두 적분의 구간은 서로 대응합니다.\n이제 일반적으로 증가함수 $y=f(x)$의 그래프를 직사각형 $a\\le x\\le b$, $f(a)\\le y\\le f(b)$ 안에 그려 봅시다. 그래프 아래쪽 넓이는 $\\int_a^b\\{f(x)-f(a)\\}\\,dx$이고, 그래프 위쪽 넓이는 가로 방향으로 세면 $\\int_{f(a)}^{f(b)}\\{g(y)-a\\}\\,dy$입니다. 두 부분을 합하면 직사각형 넓이 $(b-a)\\{f(b)-f(a)\\}$가 됩니다.\n따라서 $\\int_a^b f(x)\\,dx+\\int_{f(a)}^{f(b)}g(y)\\,dy=bf(b)-af(a)$입니다. 이 식은 역함수의 부정적분 공식을 외우지 않고도 넓이로 이해할 수 있습니다.\n$a=1$, $b=2$를 대입하면 구하는 값은 $2f(2)-1f(1)=2\\cdot11-1\\cdot1=21$입니다. 따라서 정답은 ③입니다.",
     "sourceQid": 8,
     "sourceJsSha256": "9c260254fa2ebc0ba7d294089088c69a054934c9ac4ffddca73f0b76a9ea51e8",
@@ -419,7 +443,10 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImageAlt": "해설 그림: 직사각형 안에서 증가 곡선이 나누는 두 영역과 끝점 좌표를 표시한다.",
+    "solutionImageCaption": "증가함수의 그래프가 직사각형 안의 두 영역을 나누고 두 정적분의 합이 직사각형 넓이와 대응한다. 정답은 21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -473,7 +500,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간의 양 끝점과 내부 최솟점을 나타낸다.",
+    "solutionImageCaption": "닫힌구간에서는 양 끝점과 내부 극솟점의 함수값을 비교한다. 정답은 -12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -525,7 +556,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭 구간에서 홀수항의 좌우 값이 반대인 그래프를 나타낸다.",
+    "solutionImageCaption": "대칭구간에서 홀수항의 적분은 상쇄되고 짝수항만 남는다. 정답은 -32/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -579,7 +614,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 둘레에서 출발점 A를 기준으로 서로 반대 방향으로 움직이는 두 점과 한 변 9센티미터를 나타낸다.",
+    "solutionImageCaption": "예: 두 점은 반대 방향으로 움직여 이동거리의 합이 둘레의 정수배일 때 만난다. 정답은 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -633,7 +672,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수에 더해지는 이차식 부분과 그 최솟점을 나타낸다.",
+    "solutionImageCaption": "도함수의 이차식 부분은 구간 안에서 x=−2일 때 0으로 최소가 된다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -688,7 +731,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 경계값 예시에서 x가 -1 이상일 때 차이 함수 그래프가 x=-1에서 0이 되는 모양을 나타낸다.",
+    "solutionImageCaption": "예: 경계값 a=7이면 차이 함수 h(x)=f(x)-g(x)는 x=-1에서 0이 되어 두 그래프가 만나므로 조건을 만족하지 않는다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -704,7 +751,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "2",
-    "solutionImage": "assets/solutions/22_금당고_2학기_기말_고2_수학II/q14_symmetric_area.svg",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q14-solution-v2.svg",
     "solution": "두 곡선 사이의 세로 길이를 먼저 구합니다. 첫째 곡선에서 둘째 곡선을 빼면 $(x^3-ax+3)-(x^3-x^2)=x^2-ax+3$입니다. 두 곡선이 둘러싼 부분은 이 이차식이 $0$이 되는 두 교점 사이입니다.\n이차함수 $y=x^2-ax+3$의 대칭축은 $x=\\frac a2$입니다. 두 교점 사이에서는 곡선의 위아래 차의 절댓값도 이 대칭축을 기준으로 좌우 대칭입니다. 따라서 넓이를 절반으로 나누는 유일한 수직선은 대칭축이며, 문제의 $x=2$가 그 선이므로 $\\frac a2=2$, $a=4$입니다.\n이때 곡선의 차는 $x^2-4x+3=(x-1)(x-3)$이므로 두 교점의 $x$좌표는 $1$, $3$입니다. $1<x<3$에서는 $(x-1)(x-3)<0$이므로 실제 세로 길이는 그 부호를 바꾼 $-x^2+4x-3=1-(x-2)^2$입니다.\n따라서 $S=\\int_1^3\\{1-(x-2)^2\\}\\,dx$입니다. $u=x-2$로 구간의 좌우 대칭을 표시하면 $S=\\int_{-1}^{1}(1-u^2)\\,du=[u-\\frac{u^3}{3}]_{-1}^{1}=\\frac43$입니다.\n그러므로 $6S=6\\cdot\\frac43=8$이고 정답은 ②입니다.",
     "sourceQid": 14,
     "sourceJsSha256": "9c260254fa2ebc0ba7d294089088c69a054934c9ac4ffddca73f0b76a9ea51e8",
@@ -743,7 +790,10 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImageAlt": "해설 그림: x=2 대칭축과 양쪽 넓이를 나타낸다.",
+    "solutionImageCaption": "검은 곡선은 f(x)=x³-4x+3, 파란 곡선은 g(x)=x³-x²이다. 두 곡선의 차는 x=2를 축으로 대칭이고, 그 선이 넓이를 양분한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -799,7 +849,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 단순근과 이중근, 허용되는 근 구간을 나타낸다.",
+    "solutionImageCaption": "절댓값 함수의 뾰족점은 단순근에서 생기며 이중근에서는 생기지 않는다. 정답은 1/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -857,7 +911,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 극솟점과 그 사이 극댓점을 갖는 그래프를 나타낸다.",
+    "solutionImageCaption": "함수 g는 양 끝의 극솟점과 가운데 극댓점을 갖는다. 정답은 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -867,7 +925,7 @@ window.questionBank = [
     "choices": [],
     "images": [],
     "answer": "2",
-    "solutionImage": "assets/solutions/22_금당고_2학기_기말_고2_수학II/q17_root_count_panels.svg",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q17-solution-v2.svg",
     "solution": "수평선 $y=t$와 삼차함수의 교점 개수는 극댓값과 극솟값을 경계로 달라집니다. 극솟값보다 작거나 극댓값보다 크면 1개, 두 극값 중 하나와 같으면 2개, 그 사이에 있으면 3개입니다.\n$f'(x)=6x^2-6ax=6x(x-a)$이고 $a>0$이므로 $x=0$에서 극대, $x=a$에서 극소입니다. 극댓값을 $U=f(0)=2a^2+a$, 극솟값을 $L=f(a)=-a^3+2a^2+a$라 두면 $L<U$입니다.\n$g(1)<g(2)<g(3)$이고 교점 개수는 $1,2,3$ 중 하나이므로 반드시 $g(1)=1$, $g(2)=2$, $g(3)=3$입니다. 특히 $g(3)=3$이려면 $L<3<U$입니다.\n$g(2)=2$인 경우는 $2=L$ 또는 $2=U$입니다. 만약 $2=U$이면 $3>U$이므로 $g(3)=1$이 되어 모순입니다. 따라서 $L=2$여야 하고, 이때 $1<L=2<3<U$가 성립해야 합니다.\n$-a^3+2a^2+a=2$를 정리하면 $a^3-2a^2-a+2=(a-1)(a-2)(a+1)=0$입니다. $a>0$이므로 후보는 $a=1$ 또는 $a=2$입니다.\n$a=1$이면 $U=2+1=3$이어서 $g(3)=2$이므로 탈락합니다. $a=2$이면 $L=2$, $U=2\\cdot4+2=10$으로 $1<2<3<10$이며 실제 $g(1)=1$, $g(2)=2$, $g(3)=3$이 됩니다. 따라서 구하는 값은 $a=2$입니다.",
     "sourceQid": 17,
     "sourceJsSha256": "9c260254fa2ebc0ba7d294089088c69a054934c9ac4ffddca73f0b76a9ea51e8",
@@ -908,7 +966,10 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImageAlt": "해설 그림: 삼차함수와 세 수평선의 교점 관계를 나타낸다.",
+    "solutionImageCaption": "세 높이의 수평선과 삼차함수의 교점 수가 서로 다르게 나타난다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -958,7 +1019,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 경계 0과 1에서 식이 나뉘는 연속 그래프와 구간 -1에서 3까지 그래프 아래 영역을 나타낸다.",
+    "solutionImageCaption": "x가 0과 1을 경계로 달라지며 절댓값 적분 함수가 세 식으로 나뉜다. 구하는 적분은 -1에서 3까지 그래프 아래 색칠한 영역의 넓이이다. 정답은 25/12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1006,7 +1071,11 @@ window.questionBank = [
     "metaAuthorityMainSha": "578d5d9bca7c3258a6309e9bf93b17486102ec6b",
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
-    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run"
+    "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선과 기울기 1인 직선이 만드는 원점 대칭인 두 영역을 나타낸다.",
+    "solutionImageCaption": "예: m=1인 직선과 삼차곡선의 두 영역은 원점 대칭이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1057,7 +1126,10 @@ window.questionBank = [
     "sourceExamUid": "22_금당고_2학기_기말_고2_수학II",
     "uidResolutionStatus": "OFFICIAL_UID_NOT_BOUND_SOURCE_ONLY",
     "uidSourceProvenance": "original source-only JS qid + SHA, canonical UID assignment not run",
-    "solutionImage": "assets/solutions/22_금당고_2학기_기말_고2_수학II/q20_root_count.svg",
-    "solutionVisualEvidenceSha256": "7fd93856e21bd0ae6ad9c1b2990770e834f83965563e1f5b007a1605a2400575"
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고2_수학II/q20-solution-v2.svg",
+    "solutionVisualEvidenceSha256": "7fd93856e21bd0ae6ad9c1b2990770e834f83965563e1f5b007a1605a2400575",
+    "solutionImageAlt": "해설 그림: 삼차함수의 극값, 근과 두 예시 수평선을 나타낸다.",
+    "solutionImageCaption": "예: t=2일 때 y=2와 y=-2는 삼차함수와 각각 1개, 3개 점에서 만난다. 정답은 320이다.",
+    "solutionImageSize": "full"
   }
 ];
