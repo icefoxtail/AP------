@@ -628,7 +628,7 @@ window.questionBank = [
       "$70\\text{ cm}^2$"
     ],
     "answer": "①",
-    "solution": "서로 닮은 도형의 넓이의 비는 닮음비의 제곱이다. 따라서 $\\triangle ABC$와 $\\triangle DEF$의 넓이의 비는 $4^2:5^2=16:25$이다. $32$에 대응하는 넓이가 $16$이므로 한 비율은 $32/16=2$. 따라서 $\\triangle DEF$의 넓이는 $25\\times2=50\\text{ cm}^2$. 정답은 ①이다.",
+    "solution": "서로 닮은 도형의 넓이의 비는 닮음비의 제곱이다. 따라서 $\\triangle ABC$와 $\\triangle DEF$의 넓이의 비는 $4^2:5^2=16:25$이다. $32$에 대응하는 넓이가 $16$이므로 한 비율은 $\\frac{32}{16}=2$. 따라서 $\\triangle DEF$의 넓이는 $25\\times2=50\\text{ cm}^2$. 정답은 ①이다.",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -669,7 +669,7 @@ window.questionBank = [
       "$49$"
     ],
     "answer": "②",
-    "solution": "닮음비는 $AB:A\\prime B\\prime=6:9=2:3$이다. 작은 삼각뿔에서 $VC=x$에 대응하는 큰 삼각뿔의 모서리는 $V\\prime C\\prime=15$이므로 $x/15=2/3$, $x=10$. 작은 모서리 $BC=z$에 대응하는 큰 모서리 $B\\prime C\\prime=6$이므로 $z/6=2/3$, $z=4$. 대응하는 각은 같으므로 $y=55^\\circ$. 따라서 $x+y-7z=10+55-7\\cdot4=37$. 정답은 ②이다.",
+    "solution": "닮음비는 $AB:A\\prime B\\prime=6:9=2:3$이다. 작은 삼각뿔에서 $VC=x$에 대응하는 큰 삼각뿔의 모서리는 $V\\prime C\\prime=15$이므로 $\\frac{x}{15}=\\frac{2}{3}$, $x=10$. 작은 모서리 $BC=z$에 대응하는 큰 모서리 $B\\prime C\\prime=6$이므로 $\\frac{z}{6}=\\frac{2}{3}$, $z=4$. 대응하는 각은 같으므로 $y=55^\\circ$. 따라서 $x+y-7z=10+55-7\\cdot4=37$. 정답은 ②이다.",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -955,7 +955,7 @@ window.questionBank = [
     "content": "서답형3. 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 모양의 색종이 $\\triangle ABC$를 꼭짓점 $A$가 $BC$ 위에 오도록 접었다. $\\angle BDF=\\angle DFE$일 때, 다음 물음에 답하시오.\n(1) 위 그림에서 서로 닮음인 두 삼각형을 찾아 닮음기호를 사용하여 나타내고, 닮음 조건을 서술하시오. (2점)\n(2) $BD$의 길이를 구하는 과정을 풀이과정과 함께 서술하시오. (3점)",
     "choices": [],
     "answer": "(1) $\\triangle DBF\\sim\\triangle ABC$ (AA)\n(2) $\\dfrac{64}{9}\\text{ cm}$",
-    "solution": "(1) 접은 도형에서 각은 보존되므로 $\\angle DFE=\\angle DAE=\\angle A$. 주어진 조건 $\\angle BDF=\\angle DFE$에서 $\\angle BDF=\\angle A$이다. 또 $D$는 $AB$ 위, $F$는 $BC$ 위이고 $\\angle B=90^\\circ$이므로 $\\angle DBF=\\angle ABC=90^\\circ$. 따라서 $\\triangle DBF\\sim\\triangle ABC$ (AA)이다.\n(2) 대응변의 비를 $k=DB/AB=DF/AC$라 하자. 접기에서 $AD=DF$이고 $AB=AD+DB=16\\text{ cm}$. 따라서 $16=20k+16k$, $k=4/9$. 그러므로 $BD=16k=\\dfrac{64}{9}\\text{ cm}$. 답: $\\dfrac{64}{9}\\text{ cm}$.",
+    "solution": "(1) 접은 도형에서 각은 보존되므로 $\\angle DFE=\\angle DAE=\\angle A$. 주어진 조건 $\\angle BDF=\\angle DFE$에서 $\\angle BDF=\\angle A$이다. 또 $D$는 $AB$ 위, $F$는 $BC$ 위이고 $\\angle B=90^\\circ$이므로 $\\angle DBF=\\angle ABC=90^\\circ$. 따라서 $\\triangle DBF\\sim\\triangle ABC$ (AA)이다.\n(2) 대응변의 비를 $k=DB/AB=DF/AC$라 하자. 접기에서 $AD=DF$이고 $AB=AD+DB=16\\text{ cm}$. 따라서 $16=20k+16k$, $k=\\frac{4}{9}$. 그러므로 $BD=16k=\\dfrac{64}{9}\\text{ cm}$. 답: $\\dfrac{64}{9}\\text{ cm}$.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "category_or_cue_inferred",

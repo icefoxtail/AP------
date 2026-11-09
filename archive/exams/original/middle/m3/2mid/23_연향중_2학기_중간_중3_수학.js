@@ -682,7 +682,7 @@ window.questionBank = [
     "image": "assets/images/23_연향중_2학기_중간_중3_수학/q22.png",
     "choices": [],
     "answer": "$\\dfrac{24}{25}$",
-    "solution": "접기에 의해 위쪽 변과 $AC$가 이루는 각은 $\\angle BAC$와 같다.\n위쪽 변과 아래쪽 변은 평행하므로 이 각은 $\\angle ACB$와 같다.\n따라서\n$\\angle BAC=\\angle ACB$이고\n$AB=BC$이다.\n$A$에서 아래쪽 변에 내린 수선의 발을 $H$라 하면\n$AH=3$, $AC=5$이므로\n$HC=\\sqrt{5^2-3^2}=4$이다.\n$AB=BC=x$라 하면\n$BH=HC-BC=4-x$이다.\n직각삼각형 $ABH$에서\n$x^2=AH^2+BH^2\n=3^2+(4-x)^2$이다.\n식을 정리하면\n$x^2=9+16-8x+x^2$,\n$8x=25$,\n$x=\\dfrac{25}{8}$이다.\n따라서\n$AB=\\dfrac{25}{8}$이다.\n$\\angle ABD=a$이므로\n$\\sin a=\\dfrac{AH}{AB}\n=\\dfrac3{25/8}\n=\\dfrac{24}{25}$이다.\n따라서 구하는 값은 $\\dfrac{24}{25}$이다.",
+    "solution": "접기에 의해 위쪽 변과 $AC$가 이루는 각은 $\\angle BAC$와 같다.\n위쪽 변과 아래쪽 변은 평행하므로 이 각은 $\\angle ACB$와 같다.\n따라서\n$\\angle BAC=\\angle ACB$이고\n$AB=BC$이다.\n$A$에서 아래쪽 변에 내린 수선의 발을 $H$라 하면\n$AH=3$, $AC=5$이므로\n$HC=\\sqrt{5^2-3^2}=4$이다.\n$AB=BC=x$라 하면\n$BH=HC-BC=4-x$이다.\n직각삼각형 $ABH$에서\n$x^2=AH^2+BH^2\n=3^2+(4-x)^2$이다.\n식을 정리하면\n$x^2=9+16-8x+x^2$,\n$8x=25$,\n$x=\\dfrac{25}{8}$이다.\n따라서\n$AB=\\dfrac{25}{8}$이다.\n$\\angle ABD=a$이므로\n$\\sin a=\\dfrac{AH}{AB}\n=\\dfrac3{\\frac{25}{8}}\n=\\dfrac{24}{25}$이다.\n따라서 구하는 값은 $\\dfrac{24}{25}$이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",

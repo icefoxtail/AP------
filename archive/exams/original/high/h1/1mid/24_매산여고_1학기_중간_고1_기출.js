@@ -693,7 +693,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "$z=a+bi$라 두면 $z$가 실수가 아니므로 $b\\ne0$이다.\n\n먼저 $z+\\dfrac1z$가 실수라는 조건을 본다.\n$\\dfrac1z=\\dfrac{a-bi}{a^2+b^2}$이므로 허수부는\n$b-\\dfrac{b}{a^2+b^2}$이다.\n이 값이 $0$이고 $b\\ne0$이므로\n$a^2+b^2=1$이다.\n따라서\n$z\\bar z=1$이므로 ㄱ은 참이다.\n\n이제 $\\bar z=\\dfrac1z$이다.\n$\\dfrac{z^2}{z+1}$이 실수이므로 이 수는 자신의 켤레와 같다.\n$\\dfrac{z^2}{z+1}=\\dfrac{\\bar z^2}{\\bar z+1}$\n$=\\dfrac{1/z^2}{1/z+1}$\n$=\\dfrac1{z(z+1)}$이다.\n따라서 $z\\ne-1$에서\n$z^3=1$이다.\n$z$는 실수가 아니므로 $z\\ne1$이고\n$z^2+z+1=0$이다.\n그러므로\n$z+\\bar z=z+\\dfrac1z=z+z^2=-1$이므로 ㄴ은 거짓이다.\n\nㄷ에서 $z^3=1$, $z^4=z$를 이용하면\n$(z^4+2z^2)(z^2+2z)$\n$=(z+2z^2)(z^2+2z)$\n$=5+2(z+z^2)$\n$=5-2=3$이다.\n따라서 ㄷ은 참이다.\n\n옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
+    "solution": "$z=a+bi$라 두면 $z$가 실수가 아니므로 $b\\ne0$이다.\n\n먼저 $z+\\dfrac1z$가 실수라는 조건을 본다.\n$\\dfrac1z=\\dfrac{a-bi}{a^2+b^2}$이므로 허수부는\n$b-\\dfrac{b}{a^2+b^2}$이다.\n이 값이 $0$이고 $b\\ne0$이므로\n$a^2+b^2=1$이다.\n따라서\n$z\\bar z=1$이므로 ㄱ은 참이다.\n\n이제 $\\bar z=\\dfrac1z$이다.\n$\\dfrac{z^2}{z+1}$이 실수이므로 이 수는 자신의 켤레와 같다.\n$\\dfrac{z^2}{z+1}=\\dfrac{\\bar z^2}{\\bar z+1}$\n$=\\dfrac{1/z^2}{\\frac{1}{z}+1}$\n$=\\dfrac1{z(z+1)}$이다.\n따라서 $z\\ne-1$에서\n$z^3=1$이다.\n$z$는 실수가 아니므로 $z\\ne1$이고\n$z^2+z+1=0$이다.\n그러므로\n$z+\\bar z=z+\\dfrac1z=z+z^2=-1$이므로 ㄴ은 거짓이다.\n\nㄷ에서 $z^3=1$, $z^4=z$를 이용하면\n$(z^4+2z^2)(z^2+2z)$\n$=(z+2z^2)(z^2+2z)$\n$=5+2(z+z^2)$\n$=5-2=3$이다.\n따라서 ㄷ은 참이다.\n\n옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
     "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",

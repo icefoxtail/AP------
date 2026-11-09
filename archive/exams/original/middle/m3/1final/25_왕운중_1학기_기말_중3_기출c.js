@@ -284,7 +284,7 @@ window.questionBank = [
       "$\\dfrac{5}{36}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 중근 조건을 주사위 눈의 관계로 바꾼다.\n판별식 0에서 $3b=2a$. 가능한 $(a,b)$는 $(3,2),(6,4)$.\n확률은 $2/36=1/18$, 정답은 ③이다.",
+    "solution": "[키포인트] 중근 조건을 주사위 눈의 관계로 바꾼다.\n판별식 0에서 $3b=2a$. 가능한 $(a,b)$는 $(3,2),(6,4)$.\n확률은 $\\frac{2}{36}=\\frac{1}{18}$, 정답은 ③이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -464,7 +464,7 @@ window.questionBank = [
       "ㄷ-ㄱ-ㄴ-ㄹ"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $|a|$가 클수록 $y=ax^2$의 폭이 좁다.\n절댓값은 ㄷ 4, ㄱ 3, ㄴ $3/2$, ㄹ $1/3$ 순.\n따라서 ㄷ-ㄱ-ㄴ-ㄹ, 정답은 ⑤이다.",
+    "solution": "[키포인트] $|a|$가 클수록 $y=ax^2$의 폭이 좁다.\n절댓값은 ㄷ 4, ㄱ 3, ㄴ $\\frac{3}{2}$, ㄹ $\\frac{1}{3}$ 순.\n따라서 ㄷ-ㄱ-ㄴ-ㄹ, 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -597,7 +597,7 @@ window.questionBank = [
       "$y=x^2-4x+3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 꼭짓점형에 한 점을 대입한다.\n꼭짓점은 $(2,-3)$, y절편은 -1이므로 $y=a(x-2)^2-3$에 $(0,-1)$을 넣어 $a=1/2$.\n따라서 $y=\\frac12x^2-2x-1$, 정답은 ①이다.",
+    "solution": "[키포인트] 꼭짓점형에 한 점을 대입한다.\n꼭짓점은 $(2,-3)$, y절편은 -1이므로 $y=a(x-2)^2-3$에 $(0,-1)$을 넣어 $a=\\frac{1}{2}$.\n따라서 $y=\\frac12x^2-2x-1$, 정답은 ①이다.",
     "image": "assets/images/25_왕운중_1학기_기말_중3_기출/q17.png",
     "imageSize": "large",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -635,7 +635,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 식을 꼭짓점형으로 바꾼다.\n꼭짓점은 각각 $(4a,-28a^2)$, $(b,-3b^2+4a)$.\n$b=4a$와 y좌표 일치식을 풀면 $a=1/5$, $b=4/5$.\n따라서 $a/b=1/4$, 정답은 ③이다.",
+    "solution": "[키포인트] 두 식을 꼭짓점형으로 바꾼다.\n꼭짓점은 각각 $(4a,-28a^2)$, $(b,-3b^2+4a)$.\n$b=4a$와 y좌표 일치식을 풀면 $a=\\frac{1}{5}$, $b=\\frac{4}{5}$.\n따라서 $\\frac{a}{b}=\\frac{1}{4}$, 정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",

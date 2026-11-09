@@ -105,7 +105,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 지수함수의 밑($1/3$)이 $0 < a < 1$ 이므로 감소함수임을 이용함.\\n$i) 감소함수의 성질 적용$\\n$x$ 값이 작을수록 함숫값이 커지고, $x$ 값이 클수록 함숫값이 작아짐.\\n$ii) 최댓값  M  계산$\\n$x=3$ 일 때, $M = (\\frac{1}{3})^{3-5} + 3 = (\\frac{1}{3})^{-2} + 3 = 3^2 + 3 = 12$\\n$iii) 최솟값  m  계산$\\n$x=5$ 일 때, $m = (\\frac{1}{3})^{5-5} + 3 = (\\frac{1}{3})^0 + 3 = 1 + 3 = 4$\\n$\\therefore M - m = 12 - 4 = 8$",
+    "solution": "<b>[Logical Anchor]</b> 지수함수의 밑($\\frac{1}{3}$)이 $0 < a < 1$ 이므로 감소함수임을 이용함.\\n$i) 감소함수의 성질 적용$\\n$x$ 값이 작을수록 함숫값이 커지고, $x$ 값이 클수록 함숫값이 작아짐.\\n$ii) 최댓값  M  계산$\\n$x=3$ 일 때, $M = (\\frac{1}{3})^{3-5} + 3 = (\\frac{1}{3})^{-2} + 3 = 3^2 + 3 = 12$\\n$iii) 최솟값  m  계산$\\n$x=5$ 일 때, $m = (\\frac{1}{3})^{5-5} + 3 = (\\frac{1}{3})^0 + 3 = 1 + 3 = 4$\\n$\\therefore M - m = 12 - 4 = 8$",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "exponential function",
     "subUnitConfidence": "candidate_evidence",
@@ -331,7 +331,7 @@ window.questionBank = [
   {
     "id": 10,
     "level": "상",
-    "content": "네 수 $\\sqrt{\\sqrt{1/8}}, \\sqrt[3]{1/16}, 0.125^{2/9}, 32^{-0.3}$ 중 가장 큰 수를 $M$ 이라 할 때, $M^{-3}$ 의 값은? [4.5점]",
+    "content": "네 수 $\\sqrt{\\sqrt{\\frac{1}{8}}}, \\sqrt[3]{\\frac{1}{16}}, 0.125^{\\frac{2}{9}}, 32^{-0.3}$ 중 가장 큰 수를 $M$ 이라 할 때, $M^{-3}$ 의 값은? [4.5점]",
     "choices": [
       "2",
       "4",
@@ -356,7 +356,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 밑을 $2$ 로 통일하여 지수값의 크기를 비교함.\\n(1) $\\sqrt{\\sqrt{2^{-3}}} = (2^{-3})^{1/4} = 2^{-3/4} = 2^{-0.75}$\\n(2) $\\sqrt[3]{2^{-4}} = 2^{-4/3} \\approx 2^{-1.33}$\\n(3) $(2^{-3})^{2/9} = 2^{-6/9} = 2^{-2/3} \\approx 2^{-0.66}$\\n(4) $(2^5)^{-0.3} = 2^{-1.5}$\\n가장 큰 값 $M = 2^{-2/3}$\\n$M^{-3} = (2^{-2/3})^{-3} = 2^2 = 4$\\n$\\therefore$ 4",
+    "solution": "<b>[Logical Anchor]</b> 밑을 $2$ 로 통일하여 지수값의 크기를 비교함.\\n(1) $\\sqrt{\\sqrt{2^{-3}}} = (2^{-3})^{\\frac{1}{4}} = 2^{-\\frac{3}{4}} = 2^{-0.75}$\\n(2) $\\sqrt[3]{2^{-4}} = 2^{-\\frac{4}{3}} \\approx 2^{-1.33}$\\n(3) $(2^{-3})^{\\frac{2}{9}} = 2^{-\\frac{6}{9}} = 2^{-\\frac{2}{3}} \\approx 2^{-0.66}$\\n(4) $(2^5)^{-0.3} = 2^{-1.5}$\\n가장 큰 값 $M = 2^{-\\frac{2}{3}}$\\n$M^{-3} = (2^{-\\frac{2}{3}})^{-3} = 2^2 = 4$\\n$\\therefore$ 4",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
@@ -365,7 +365,7 @@ window.questionBank = [
   {
     "id": 11,
     "level": "상",
-    "content": "두 함수 $y=\\log_2(2-x)+3, y=\\log_{1/3}(x-8)+5$ 의 역함수를 각각 $f(x), g(x)$ 라 하자. 모든 실수 $x$ 에 대하여 $f(x) < n < g(x)$ 를 만족시키는 정수 $n$ 의 개수는? [4.6점]",
+    "content": "두 함수 $y=\\log_2(2-x)+3, y=\\log_{\\frac{1}{3}}(x-8)+5$ 의 역함수를 각각 $f(x), g(x)$ 라 하자. 모든 실수 $x$ 에 대하여 $f(x) < n < g(x)$ 를 만족시키는 정수 $n$ 의 개수는? [4.6점]",
     "choices": [
       "4",
       "5",
@@ -577,7 +577,7 @@ window.questionBank = [
       "범위"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> $\\sin$ 으로 변수를 통일하여 이차함수의 근의 분리로 해석함.\\n$(1 - \\sin^2 x) - \\sin x + 1 - k = 0$\\n$\\sin x = t \\ (-1 \\le t \\le 1)$ 라 치환\\n$k = -t^2 - t + 2$\\n이차함수 $f(t) = -(t + \\frac{1}{2})^2 + \\frac{9}{4}$ 의 범위를 분석함.\\n$t = -1/2$ 일 때 최대 $9/4$, $t = 1$ 일 때 최소 $0$\\n실근 범위: $0 \\le k \\le 9/4$\\n$\\therefore b - a = 9/4$",
+    "solution": "<b>[Logical Anchor]</b> $\\sin$ 으로 변수를 통일하여 이차함수의 근의 분리로 해석함.\\n$(1 - \\sin^2 x) - \\sin x + 1 - k = 0$\\n$\\sin x = t \\ (-1 \\le t \\le 1)$ 라 치환\\n$k = -t^2 - t + 2$\\n이차함수 $f(t) = -(t + \\frac{1}{2})^2 + \\frac{9}{4}$ 의 범위를 분석함.\\n$t = -\\frac{1}{2}$ 일 때 최대 $\\frac{9}{4}$, $t = 1$ 일 때 최소 $0$\\n실근 범위: $0 \\le k \\le 9/4$\\n$\\therefore b - a = \\frac{9}{4}$",
     "subUnitKey": "H22-C-11-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -614,7 +614,7 @@ window.questionBank = [
       "대입"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 근의 대입 성질 $\\alpha^2 - 3\\alpha - 5 = 0$ 을 이용함.\\n$\\alpha^2 - 5 = 3\\alpha$ 이고 $\\beta^2 - 5 = 3\\beta$ 임.\\n지수 법칙에 의해: $2^{\\frac{1}{3\\alpha} + \\frac{1}{3\\beta}} = 2^{\\frac{\\alpha+\\beta}{3\\alpha\\beta}}$\\n근과 계수의 관계 $\\alpha+\\beta=3, \\alpha\\beta=-5$ 대입:\\n$\\implies 2^{\\frac{3}{3(-5)}} = 2^{-1/5} = \\frac{1}{\\sqrt[5]{2}}$\\n$\\therefore \\frac{1}{\\sqrt[5]{2}}$",
+    "solution": "<b>[Logical Anchor]</b> 근의 대입 성질 $\\alpha^2 - 3\\alpha - 5 = 0$ 을 이용함.\\n$\\alpha^2 - 5 = 3\\alpha$ 이고 $\\beta^2 - 5 = 3\\beta$ 임.\\n지수 법칙에 의해: $2^{\\frac{1}{3\\alpha} + \\frac{1}{3\\beta}} = 2^{\\frac{\\alpha+\\beta}{3\\alpha\\beta}}$\\n근과 계수의 관계 $\\alpha+\\beta=3, \\alpha\\beta=-5$ 대입:\\n$\\implies 2^{\\frac{3}{3(-5)}} = 2^{-\\frac{1}{5}} = \\frac{1}{\\sqrt[5]{2}}$\\n$\\therefore \\frac{1}{\\sqrt[5]{2}}$",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
@@ -761,7 +761,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 정수해의 합으로 $b/a$의 범위를 구한 뒤, $a+b$의 최솟값을 결정한다.\\n$i) 정수해의 범위$\\n$b/a < 2^n \\le 16b/a \\implies \\log_2(b/a) < n \\le \\log_2(b/a)+4$이다. 정수해가 연속된 네 정수이고 그 합이 18이므로 정수해는 $3,4,5,6$이다. 따라서 $2 \\le \\log_2(b/a)<3$, 즉 $4 \\le b/a<8$이다.\\n$ii) $a+b$의 최솟값$\\n$b/a\\ge4$이므로 자연수 $a,b$에 대하여 $b\\ge4a$이다. 따라서 $a+b\\ge5a\\ge5$이고, 등호는 $a=1, b=4$일 때 성립한다.\\n$\\therefore a=1, b=4$",
+    "solution": "<b>[Logical Anchor]</b> 정수해의 합으로 $\\frac{b}{a}$의 범위를 구한 뒤, $a+b$의 최솟값을 결정한다.\\n$i) 정수해의 범위$\\n$\\frac{b}{a} < 2^n \\le 16b/a \\implies \\log_2(\\frac{b}{a}) < n \\le \\log_2(\\frac{b}{a})+4$이다. 정수해가 연속된 네 정수이고 그 합이 18이므로 정수해는 $3,4,5,6$이다. 따라서 $2 \\le \\log_2(\\frac{b}{a})<3$, 즉 $4 \\le b/a<8$이다.\\n$ii) $a+b$의 최솟값$\\n$b/a\\ge4$이므로 자연수 $a,b$에 대하여 $b\\ge4a$이다. 따라서 $a+b\\ge5a\\ge5$이고, 등호는 $a=1, b=4$일 때 성립한다.\\n$\\therefore a=1, b=4$",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",

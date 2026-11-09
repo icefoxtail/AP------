@@ -51,7 +51,7 @@ window.questionBank = [
       "$\\dfrac{x}{x+3}$"
     ],
     "answer": "①",
-    "solution": "분모에 $x$가 있으므로 먼저 $x\\ne0$이다. 또한 전체 분모가 $0$이 되지 않아야 하므로 $x\\ne-3$이다.\n분자와 분모를 각각 통분하면\n$1-\\dfrac{3}{x}=\\dfrac{x-3}{x}$\n$1+\\dfrac{3}{x}=\\dfrac{x+3}{x}$\n따라서\n$\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}$\n$=\\dfrac{(x-3)/x}{(x+3)/x}$\n$=\\dfrac{x-3}{x+3}\\quad(x\\ne0,-3)$\n따라서 정답은 ①이다.",
+    "solution": "분모에 $x$가 있으므로 먼저 $x\\ne0$이다. 또한 전체 분모가 $0$이 되지 않아야 하므로 $x\\ne-3$이다.\n분자와 분모를 각각 통분하면\n$1-\\dfrac{3}{x}=\\dfrac{x-3}{x}$\n$1+\\dfrac{3}{x}=\\dfrac{x+3}{x}$\n따라서\n$\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}$\n$=\\dfrac{\\frac{x-3}{x}}{\\frac{x+3}{x}}$\n$=\\dfrac{x-3}{x+3}\\quad(x\\ne0,-3)$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -464,7 +464,7 @@ window.questionBank = [
       "$\\sqrt{2}$"
     ],
     "answer": "③",
-    "solution": "$P$가 $y=\\dfrac1x$ 위에 있고 $a>0$이므로\n$P=(a,\\dfrac1a),\\quad Q=(a,0)$이다.\n원점 $O$와 $P$를 지나는 직선 $l$의 기울기는\n$\\dfrac{1/a}{a}=\\dfrac1{a^2}$\n따라서 $l$의 방정식은\n$y=\\dfrac{x}{a^2}$, 즉 $x-a^2y=0$이다.\n$QH$는 $Q$에서 직선 $l$까지의 거리이므로\n$QH=\\dfrac{|a-a^2\\cdot0|}{\\sqrt{1+a^4}}$\n$=\\dfrac{a}{\\sqrt{1+a^4}}$\n양수인 $QH$를 제곱하면\n$(QH)^2=\\dfrac{a^2}{1+a^4}$\n$(a^2-1)^2\\ge0$에서\n$a^4+1\\ge2a^2$\n$\\dfrac{a^2}{1+a^4}\\le\\dfrac12$\n따라서 $QH\\le\\dfrac1{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다.\n등호는 $a=1$일 때 성립한다. 이때 $P=(1,1)$, $Q=(1,0)$, $H=(\\dfrac12,\\dfrac12)$이다.\n따라서 정답은 ③이다.",
+    "solution": "$P$가 $y=\\dfrac1x$ 위에 있고 $a>0$이므로\n$P=(a,\\dfrac1a),\\quad Q=(a,0)$이다.\n원점 $O$와 $P$를 지나는 직선 $l$의 기울기는\n$\\dfrac{\\frac{1}{a}}{a}=\\dfrac1{a^2}$\n따라서 $l$의 방정식은\n$y=\\dfrac{x}{a^2}$, 즉 $x-a^2y=0$이다.\n$QH$는 $Q$에서 직선 $l$까지의 거리이므로\n$QH=\\dfrac{|a-a^2\\cdot0|}{\\sqrt{1+a^4}}$\n$=\\dfrac{a}{\\sqrt{1+a^4}}$\n양수인 $QH$를 제곱하면\n$(QH)^2=\\dfrac{a^2}{1+a^4}$\n$(a^2-1)^2\\ge0$에서\n$a^4+1\\ge2a^2$\n$\\dfrac{a^2}{1+a^4}\\le\\dfrac12$\n따라서 $QH\\le\\dfrac1{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다.\n등호는 $a=1$일 때 성립한다. 이때 $P=(1,1)$, $Q=(1,0)$, $H=(\\dfrac12,\\dfrac12)$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q15-solution-v2.svg",
     "solutionImageAlt": "해설 그림: y=1/x의 그래프, 직선 l, a=1일 때의 점 P, Q, H와 직각 표시를 나타낸 그림이다.",
     "solutionImageCaption": "예: a=1일 때 P(1,1), Q(1,0), H(1/2,1/2)이고 이때 QH=√2/2로 최댓값이다. 정답은 ③이다.",

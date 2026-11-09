@@ -41,7 +41,7 @@ window.questionBank = [
       "$\\sqrt[3]{2^7} \\div \\sqrt[3]{(-2)^4} = -2$"
     ],
     "answer": "①",
-    "solution": "각 보기를 지수의 성질로 확인한다.\n① $\\sqrt[3]{3^6}=3^{6/3}=3^2=9$이므로 옳다.\n② $\\sqrt{(-2)^{14}}=\\sqrt{2^{14}}=2^7=128$로 음수가 아니다.\n③ $\\sqrt[3]{\\sqrt{32}}=32^{1/6}=2^{5/6}\\ne2$이다.\n④ $(\\sqrt[3]{5})^6=5^{6/3}=25$이다.\n⑤ $\\sqrt[3]{2^7}\\div\\sqrt[3]{(-2)^4}=\\sqrt[3]{2^3}=2$이다.\n따라서 옳은 것은 ①이다.",
+    "solution": "각 보기를 지수의 성질로 확인한다.\n① $\\sqrt[3]{3^6}=3^{\\frac{6}{3}}=3^2=9$이므로 옳다.\n② $\\sqrt{(-2)^{14}}=\\sqrt{2^{14}}=2^7=128$로 음수가 아니다.\n③ $\\sqrt[3]{\\sqrt{32}}=32^{\\frac{1}{6}}=2^{\\frac{5}{6}}\\ne2$이다.\n④ $(\\sqrt[3]{5})^6=5^{\\frac{6}{3}}=25$이다.\n⑤ $\\sqrt[3]{2^7}\\div\\sqrt[3]{(-2)^4}=\\sqrt[3]{2^3}=2$이다.\n따라서 옳은 것은 ①이다.",
     "standardCourse": "수학Ⅰ",
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
@@ -181,7 +181,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "⑤",
-    "solution": "$t=3^{1/3}$이라 두면 $t^3=3$이고 $x=t-\\frac1t$이다.\n$(t-\\frac1t)^3+3(t-\\frac1t)=t^3-\\frac1{t^3}$이므로 $x^3+3x=3-\\frac13=\\frac83$이다.\n따라서 $3x^3+9x-5=3(x^3+3x)-5=8-5=3$이다. 정답은 ⑤이다.",
+    "solution": "$t=3^{\\frac{1}{3}}$이라 두면 $t^3=3$이고 $x=t-\\frac1t$이다.\n$(t-\\frac1t)^3+3(t-\\frac1t)=t^3-\\frac1{t^3}$이므로 $x^3+3x=3-\\frac13=\\frac83$이다.\n따라서 $3x^3+9x-5=3(x^3+3x)-5=8-5=3$이다. 정답은 ⑤이다.",
     "standardCourse": "수학Ⅰ",
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
@@ -321,7 +321,7 @@ window.questionBank = [
       "$B < C < A$"
     ],
     "answer": "⑤",
-    "solution": "$A=\\log_{25}5+\\log_{\\sqrt3}9=\\frac12+4=\\frac92$이다.\n$B=2\\log_6 3+\\log_6 4=\\log_6(3^2\\cdot4)=\\log_6 36=2$이다.\n$C=5^{\\log_5 8-\\log_5 2}=5^{\\log_5(8/2)}=4$이다.\n따라서 $B=2<C=4<A=\\frac92$이므로 ⑤이다.",
+    "solution": "$A=\\log_{25}5+\\log_{\\sqrt3}9=\\frac12+4=\\frac92$이다.\n$B=2\\log_6 3+\\log_6 4=\\log_6(3^2\\cdot4)=\\log_6 36=2$이다.\n$C=5^{\\log_5 8-\\log_5 2}=5^{\\log_5(\\frac{8}{2})}=4$이다.\n따라서 $B=2<C=4<A=\\frac92$이므로 ⑤이다.",
     "standardCourse": "수학Ⅰ",
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
@@ -377,7 +377,7 @@ window.questionBank = [
       "$3^3$"
     ],
     "answer": "②",
-    "solution": "$t=\\log_3 k$라 두면 $k>3$이므로 $t>1$이다.\n$f(x)=k$의 해는 $3^{1-x}=k$에서 $x_A=1-t$이고, $g(x)=k$의 해는 $3^{2(x-1)}=k$에서 $x_B=1+\\frac t2$이다.\n그림에서 $C=(0,k)$이므로 $AC=t-1$, $CB=1+\\frac t2$이다.\n$AC:CB=1:4$에서 $4(t-1)=1+\\frac t2$이므로 $\\frac72t=5$, $t=\\frac{10}{7}$이다.\n따라서 $k=3^{10/7}$이고 $k^7=3^{10}$이다. 정답은 ②이다.",
+    "solution": "$t=\\log_3 k$라 두면 $k>3$이므로 $t>1$이다.\n$f(x)=k$의 해는 $3^{1-x}=k$에서 $x_A=1-t$이고, $g(x)=k$의 해는 $3^{2(x-1)}=k$에서 $x_B=1+\\frac t2$이다.\n그림에서 $C=(0,k)$이므로 $AC=t-1$, $CB=1+\\frac t2$이다.\n$AC:CB=1:4$에서 $4(t-1)=1+\\frac t2$이므로 $\\frac72t=5$, $t=\\frac{10}{7}$이다.\n따라서 $k=3^{\\frac{10}{7}}$이고 $k^7=3^{10}$이다. 정답은 ②이다.",
     "standardCourse": "수학Ⅰ",
     "standardUnitKey": "H15-M1-03",
     "standardUnit": "지수함수",

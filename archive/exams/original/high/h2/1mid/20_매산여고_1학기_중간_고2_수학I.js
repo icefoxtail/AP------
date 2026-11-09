@@ -256,7 +256,7 @@ window.questionBank = [
       "$\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "$243=3^5$이므로\n$243^{4/5}=(3^5)^{4/5}=3^4=81$이다.\n따라서 $a^{-2}=81$이고 $a^2=\\frac1{81}$이다. $a>0$이므로\n$a=\\frac19$이다.\n따라서 정답은 ①이다.",
+    "solution": "$243=3^5$이므로\n$243^{\\frac{4}{5}}=(3^5)^{\\frac{4}{5}}=3^4=81$이다.\n따라서 $a^{-2}=81$이고 $a^2=\\frac1{81}$이다. $a>0$이므로\n$a=\\frac19$이다.\n따라서 정답은 ①이다.",
     "standardCourse": "수학I",
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
@@ -1155,7 +1155,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "$f(2)=\\log_a2=-\\frac12$이므로 $a^{-1/2}=2$이다.\n따라서 $\\sqrt a=\\frac12$, $a=\\frac14$이다.\n$f(12)=\\log_{1/4}(36-4)=\\log_{1/4}32$이다.\n$(\\frac14)^t=32$에서 $2^{-2t}=2^5$이므로 $t=-\\frac52$이다.\n정답은 ①이다.",
+    "solution": "$f(2)=\\log_a2=-\\frac12$이므로 $a^{-\\frac{1}{2}}=2$이다.\n따라서 $\\sqrt a=\\frac12$, $a=\\frac14$이다.\n$f(12)=\\log_{\\frac{1}{4}}(36-4)=\\log_{\\frac{1}{4}}32$이다.\n$(\\frac14)^t=32$에서 $2^{-2t}=2^5$이므로 $t=-\\frac52$이다.\n정답은 ①이다.",
     "standardCourse": "수학I",
     "standardUnitKey": "H15-M1-04",
     "standardUnit": "로그함수",

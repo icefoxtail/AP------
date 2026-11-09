@@ -886,7 +886,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "④",
-    "solution": "이차함수 $y=4x^2-ax+4$에서 $x^2$의 계수는 4, $x$의 계수는 $-a$이다. 축의 공식에 따라 $x=-\\frac{-a}{2\\cdot4}=\\frac a8$이다. 축이 $x=-1$이므로 $a/8=-1$, 따라서 $a=-8$이고 ④이다.",
+    "solution": "이차함수 $y=4x^2-ax+4$에서 $x^2$의 계수는 4, $x$의 계수는 $-a$이다. 축의 공식에 따라 $x=-\\frac{-a}{2\\cdot4}=\\frac a8$이다. 축이 $x=-1$이므로 $\\frac{a}{8}=-1$, 따라서 $a=-8$이고 ④이다.",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -972,7 +972,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "첫째 식을 완전제곱식으로 고치면 $-2x^2-8x-2=-2(x+2)^2+6$이므로 꼭짓점은 $(-2,6)$이다. 둘째 식 $y=-\\frac12x^2+px+q$의 축은 $x=-\\frac{p}{2(-1/2)}=p$이므로 같은 꼭짓점을 가지려면 $p=-2$이다. 꼭짓점의 $y$좌표가 6이므로 $-\\frac12(-2)^2+(-2)(-2)+q=6$, 즉 $-2+4+q=6$에서 $q=4$이다. 따라서 $p+q=2$이고 ①이다.",
+    "solution": "첫째 식을 완전제곱식으로 고치면 $-2x^2-8x-2=-2(x+2)^2+6$이므로 꼭짓점은 $(-2,6)$이다. 둘째 식 $y=-\\frac12x^2+px+q$의 축은 $x=-\\frac{p}{2(-\\frac{1}{2})}=p$이므로 같은 꼭짓점을 가지려면 $p=-2$이다. 꼭짓점의 $y$좌표가 6이므로 $-\\frac12(-2)^2+(-2)(-2)+q=6$, 즉 $-2+4+q=6$에서 $q=4$이다. 따라서 $p+q=2$이고 ①이다.",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -1058,7 +1058,7 @@ window.questionBank = [
       "$\\frac{5}{12}$"
     ],
     "answer": "①",
-    "solution": "$AB=12$, $AC=5$이고 $\\angle A=90^\\circ$이므로 피타고라스 정리로 $BC=\\sqrt{12^2+5^2}=13$이다. $D\\in AB$, $E\\in BC$이므로 $\\angle DBE=\\angle ABC=\\angle B$이다. 또 $DE\\perp BC$이고 $BE$는 $BC$ 위에 있으므로 $\\angle BED=90^\\circ$이다. 따라서 삼각형 $BDE$에서 $x=\\angle BDE=90^\\circ-\\angle B$이다. 그러므로 $\\cos x=\\sin B=AC/BC=5/13$이고 $13\\cos x=5$이므로 답은 ①이다.",
+    "solution": "$AB=12$, $AC=5$이고 $\\angle A=90^\\circ$이므로 피타고라스 정리로 $BC=\\sqrt{12^2+5^2}=13$이다. $D\\in AB$, $E\\in BC$이므로 $\\angle DBE=\\angle ABC=\\angle B$이다. 또 $DE\\perp BC$이고 $BE$는 $BC$ 위에 있으므로 $\\angle BED=90^\\circ$이다. 따라서 삼각형 $BDE$에서 $x=\\angle BDE=90^\\circ-\\angle B$이다. 그러므로 $\\cos x=\\sin B=AC/BC=\\frac{5}{13}$이고 $13\\cos x=5$이므로 답은 ①이다.",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -1150,7 +1150,7 @@ window.questionBank = [
       "$\\frac{\\sqrt{3}}{3}$"
     ],
     "answer": "①",
-    "solution": "$D$는 $AC$의 중점이므로 $CD=AC/2$. 또 $AC=BC$이므로 $\\tan x=CD/BC=1/2$. 정답은 ①이다.",
+    "solution": "$D$는 $AC$의 중점이므로 $CD=AC/2$. 또 $AC=BC$이므로 $\\tan x=CD/BC=\\frac{1}{2}$. 정답은 ①이다.",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -1238,7 +1238,7 @@ window.questionBank = [
       "$2\\sqrt{3}$"
     ],
     "answer": "②",
-    "solution": "$\\sin30^\\circ=1/2$, $\\cos60^\\circ=1/2$, $\\tan60^\\circ\\tan30^\\circ=\\sqrt3\\cdot(1/\\sqrt3)=1$. 합은 2이므로 ②이다.",
+    "solution": "$\\sin30^\\circ=\\frac{1}{2}$, $\\cos60^\\circ=\\frac{1}{2}$, $\\tan60^\\circ\\tan30^\\circ=\\sqrt3\\cdot(1/\\sqrt3)=1$. 합은 2이므로 ②이다.",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -1507,7 +1507,7 @@ window.questionBank = [
       "$13\\,\\text{cm}$"
     ],
     "answer": "④",
-    "solution": "$\\tan B=AC/BC=3/2$이고 $BC=8$이므로 $AC=12$이다. $\\angle C=90^\\circ$이므로 피타고라스 정리에서 $AB=\\sqrt{AC^2+BC^2}=\\sqrt{12^2+8^2}=\\sqrt{208}=4\\sqrt{13}\\,\\mathrm{cm}$이다. 정답은 ④이다.",
+    "solution": "$\\tan B=AC/BC=\\frac{3}{2}$이고 $BC=8$이므로 $AC=12$이다. $\\angle C=90^\\circ$이므로 피타고라스 정리에서 $AB=\\sqrt{AC^2+BC^2}=\\sqrt{12^2+8^2}=\\sqrt{208}=4\\sqrt{13}\\,\\mathrm{cm}$이다. 정답은 ④이다.",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -1865,7 +1865,7 @@ window.questionBank = [
       "$\\frac{2\\sqrt{3}}{3}$"
     ],
     "answer": "②",
-    "solution": "정사각형의 한 변을 $s$라 하자. $AE=DE=s/2$이므로 직각삼각형 $ABE$에서 $BE=\\sqrt{s^2+(s/2)^2}=\\frac{\\sqrt5}{2}s$이다. $CF=s/3$이므로 직각삼각형 $BCF$에서 $BF=\\sqrt{s^2+(s/3)^2}=\\frac{\\sqrt{10}}{3}s$이다. 삼각형 $BEF$의 넓이는 정사각형에서 직각삼각형 $ABE$, $BCF$, $DEF$의 넓이를 빼면 $s^2-\\frac{s^2}{4}-\\frac{s^2}{6}-\\frac{s^2}{6}=\\frac{5s^2}{12}$이다. 또 이 넓이는 $\\frac12BE\\cdot BF\\sin x$이므로 $\\sin x=\\frac{2(5s^2/12)}{(\\sqrt5s/2)(\\sqrt{10}s/3)}=\\frac{\\sqrt2}{2}$이다. 정답은 ②이다.",
+    "solution": "정사각형의 한 변을 $s$라 하자. $AE=DE=\\frac{s}{2}$이므로 직각삼각형 $ABE$에서 $BE=\\sqrt{s^2+(\\frac{s}{2})^2}=\\frac{\\sqrt5}{2}s$이다. $CF=\\frac{s}{3}$이므로 직각삼각형 $BCF$에서 $BF=\\sqrt{s^2+(\\frac{s}{3})^2}=\\frac{\\sqrt{10}}{3}s$이다. 삼각형 $BEF$의 넓이는 정사각형에서 직각삼각형 $ABE$, $BCF$, $DEF$의 넓이를 빼면 $s^2-\\frac{s^2}{4}-\\frac{s^2}{6}-\\frac{s^2}{6}=\\frac{5s^2}{12}$이다. 또 이 넓이는 $\\frac12BE\\cdot BF\\sin x$이므로 $\\sin x=\\frac{2(5s^2/12)}{(\\sqrt5s/2)(\\sqrt{10}s/3)}=\\frac{\\sqrt2}{2}$이다. 정답은 ②이다.",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",

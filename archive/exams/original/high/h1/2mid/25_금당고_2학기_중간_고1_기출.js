@@ -312,7 +312,7 @@ window.questionBank = [
     "solutionImageAlt": "삼각형 OAB의 각의 이등분선 AC와 OB 위의 C, 무게중심 G를 나타낸 그림",
     "solutionImageCaption": "AO:AB=4:5에서 OC:CB=4:5를 확인하고 C=(0,4/3), G=(4/3,1)을 표시한다.",
     "solutionImageSize": "full",
-    "solution": "먼저 삼각형 $OAB$의 무게중심 $G$를 구한다.\n$O(0,0)$, $A(4,0)$, $B(0,3)$이므로\n$G=\\left(\\dfrac{0+4+0}{3},\\dfrac{0+0+3}{3}\\right)$\n$=\\left(\\dfrac43,1\\right)$이다.\n\n이제 $\\angle A$의 이등분선이 선분 $OB$와 만나는 점 $C$를 구한다.\n$AO=4$이고\n$AB=\\sqrt{(4-0)^2+(0-3)^2}$\n$=\\sqrt{16+9}=5$이다.\n각의 이등분선 정리에 따라\n$OC:CB=AO:AB=4:5$이다.\n또 $OB=3$이므로\n$OC=\\dfrac{4}{4+5}\\cdot3$\n$=\\dfrac43$이다.\n점 $C$는 $y$축 위에 있으므로\n$C=\\left(0,\\dfrac43\\right)$이다.\n\n이제 삼각형 $GBC$의 무게중심을 $(a,b)$라 하면\n$a=\\dfrac{\\frac43+0+0}{3}=\\dfrac49$이고,\n$b=\\dfrac{1+3+\\frac43}{3}$\n$=\\dfrac{\\frac{16}{3}}{3}$\n$=\\dfrac{16}{9}$이다.\n따라서\n$\\dfrac ba=\\dfrac{16/9}{4/9}=4$이다.\n\n따라서 정답은 ④이다.",
+    "solution": "먼저 삼각형 $OAB$의 무게중심 $G$를 구한다.\n$O(0,0)$, $A(4,0)$, $B(0,3)$이므로\n$G=\\left(\\dfrac{0+4+0}{3},\\dfrac{0+0+3}{3}\\right)$\n$=\\left(\\dfrac43,1\\right)$이다.\n\n이제 $\\angle A$의 이등분선이 선분 $OB$와 만나는 점 $C$를 구한다.\n$AO=4$이고\n$AB=\\sqrt{(4-0)^2+(0-3)^2}$\n$=\\sqrt{16+9}=5$이다.\n각의 이등분선 정리에 따라\n$OC:CB=AO:AB=4:5$이다.\n또 $OB=3$이므로\n$OC=\\dfrac{4}{4+5}\\cdot3$\n$=\\dfrac43$이다.\n점 $C$는 $y$축 위에 있으므로\n$C=\\left(0,\\dfrac43\\right)$이다.\n\n이제 삼각형 $GBC$의 무게중심을 $(a,b)$라 하면\n$a=\\dfrac{\\frac43+0+0}{3}=\\dfrac49$이고,\n$b=\\dfrac{1+3+\\frac43}{3}$\n$=\\dfrac{\\frac{16}{3}}{3}$\n$=\\dfrac{16}{9}$이다.\n따라서\n$\\dfrac ba=\\dfrac{\\frac{16}{9}}{\\frac{4}{9}}=4$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",

@@ -163,7 +163,7 @@ window.questionBank = [
       "83"
     ],
     "answer": "①",
-    "solution": "분수를 부분분수로 나누어 쓴다.\n$\\dfrac1{(k-1)k}=\\dfrac1{k-1}-\\dfrac1k$이다.\n따라서 합은\n$\\displaystyle\\sum_{k=2}^{40}\\left(\\dfrac1{k-1}-\\dfrac1k\\right)$\n$=(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\cdots+(\\dfrac1{39}-\\dfrac1{40})$\n$=1-\\dfrac1{40}=\\dfrac{39}{40}$이다.\n$q/p$가 서로소인 자연수의 비이므로 $q=39$, $p=40$이다.\n그러므로 $p+q=40+39=79$이다.\n따라서 정답은 ①이다."
+    "solution": "분수를 부분분수로 나누어 쓴다.\n$\\dfrac1{(k-1)k}=\\dfrac1{k-1}-\\dfrac1k$이다.\n따라서 합은\n$\\displaystyle\\sum_{k=2}^{40}\\left(\\dfrac1{k-1}-\\dfrac1k\\right)$\n$=(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\cdots+(\\dfrac1{39}-\\dfrac1{40})$\n$=1-\\dfrac1{40}=\\dfrac{39}{40}$이다.\n$\\frac{q}{p}$가 서로소인 자연수의 비이므로 $q=39$, $p=40$이다.\n그러므로 $p+q=40+39=79$이다.\n따라서 정답은 ①이다."
   },
   {
     "id": 12,

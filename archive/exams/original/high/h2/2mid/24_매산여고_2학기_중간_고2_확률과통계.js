@@ -254,7 +254,7 @@ window.questionBank=[
       "$\\dfrac16$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $P(A^c\\cap B^c)=1-P(A\\cup B)$(드모르간)를 이용하면 분자를 쉽게 구할 수 있다.\n조건 정리: $P(A)=\\dfrac14$, $P(B)=\\dfrac23$, $P(B\\mid A)=\\dfrac13$이다.\n풀이 방향: 곱셈정리로 $P(A\\cap B)$를 구해 $P(A\\cup B)$를 얻은 뒤 조건부확률의 정의에 넣는다.\n정석 풀이: $P(A\\cap B)=P(A)P(B\\mid A)=\\dfrac14\\times\\dfrac13=\\dfrac1{12}$이므로\n$P(A\\cup B)=\\dfrac14+\\dfrac23-\\dfrac1{12}=\\dfrac{3+8-1}{12}=\\dfrac{10}{12}=\\dfrac56$이다.\n따라서 $P(A^c\\cap B^c)=1-\\dfrac56=\\dfrac16$이고 $P(A^c)=1-\\dfrac14=\\dfrac34$이므로\n$P(B^c\\mid A^c)=\\dfrac{1/6}{3/4}=\\dfrac16\\times\\dfrac43=\\dfrac29$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] $P(A^c\\cap B^c)=1-P(A\\cup B)$(드모르간)를 이용하면 분자를 쉽게 구할 수 있다.\n조건 정리: $P(A)=\\dfrac14$, $P(B)=\\dfrac23$, $P(B\\mid A)=\\dfrac13$이다.\n풀이 방향: 곱셈정리로 $P(A\\cap B)$를 구해 $P(A\\cup B)$를 얻은 뒤 조건부확률의 정의에 넣는다.\n정석 풀이: $P(A\\cap B)=P(A)P(B\\mid A)=\\dfrac14\\times\\dfrac13=\\dfrac1{12}$이므로\n$P(A\\cup B)=\\dfrac14+\\dfrac23-\\dfrac1{12}=\\dfrac{3+8-1}{12}=\\dfrac{10}{12}=\\dfrac56$이다.\n따라서 $P(A^c\\cap B^c)=1-\\dfrac56=\\dfrac16$이고 $P(A^c)=1-\\dfrac14=\\dfrac34$이므로\n$P(B^c\\mid A^c)=\\dfrac{\\frac{1}{6}}{\\frac{3}{4}}=\\dfrac16\\times\\dfrac43=\\dfrac29$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
@@ -347,7 +347,7 @@ window.questionBank=[
       "16"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원인이 여러 개인 결과가 주어졌을 때의 확률이므로 조건부확률(베이즈 정리)로 계산한다.\n조건 정리: 주사위 눈이 $6$일 확률은 $\\dfrac16$이고 이때 주머니 $A$에서, 나머지 확률 $\\dfrac56$으로 주머니 $B$에서 공을 꺼낸다. $A$의 흰 공 비율은 $\\dfrac35$, $B$의 흰 공 비율은 $\\dfrac25$이다.\n풀이 방향: $P(A\\cap W)$와 $P(W)$를 각각 구해 나눈다.\n정석 풀이: $P(A\\cap W)=\\dfrac16\\times\\dfrac35=\\dfrac1{10}$이고 $P(B\\cap W)=\\dfrac56\\times\\dfrac25=\\dfrac13$이므로\n$P(W)=\\dfrac1{10}+\\dfrac13=\\dfrac{3+10}{30}=\\dfrac{13}{30}$이다. 따라서\n$P(A\\mid W)=\\dfrac{1/10}{13/30}=\\dfrac{3/30}{13/30}=\\dfrac3{13}$이다. 원문에서 이 확률을 $\\dfrac{n}{m}$이라 하였으므로 $n=3$, $m=13$이고 $m+n=16$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 원인이 여러 개인 결과가 주어졌을 때의 확률이므로 조건부확률(베이즈 정리)로 계산한다.\n조건 정리: 주사위 눈이 $6$일 확률은 $\\dfrac16$이고 이때 주머니 $A$에서, 나머지 확률 $\\dfrac56$으로 주머니 $B$에서 공을 꺼낸다. $A$의 흰 공 비율은 $\\dfrac35$, $B$의 흰 공 비율은 $\\dfrac25$이다.\n풀이 방향: $P(A\\cap W)$와 $P(W)$를 각각 구해 나눈다.\n정석 풀이: $P(A\\cap W)=\\dfrac16\\times\\dfrac35=\\dfrac1{10}$이고 $P(B\\cap W)=\\dfrac56\\times\\dfrac25=\\dfrac13$이므로\n$P(W)=\\dfrac1{10}+\\dfrac13=\\dfrac{3+10}{30}=\\dfrac{13}{30}$이다. 따라서\n$P(A\\mid W)=\\dfrac{\\frac{1}{10}}{\\frac{13}{30}}=\\dfrac{\\frac{3}{30}}{\\frac{13}{30}}=\\dfrac3{13}$이다. 원문에서 이 확률을 $\\dfrac{n}{m}$이라 하였으므로 $n=3$, $m=13$이고 $m+n=16$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",

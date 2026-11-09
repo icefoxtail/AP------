@@ -636,7 +636,7 @@ window.questionBank = [
       "$2-\\sqrt{3}$"
     ],
     "answer": "⑤",
-    "solution": "주어진 이등변삼각형에서 $AB=AC=3\\,\\mathrm{cm}$, $\\angle BAC=30^\\circ$이므로 두 밑각은 각각 $75^\\circ$이다.<br>점 $C$에서 $AB$에 수선을 내려 그 발을 $H$라 하자. $\\triangle AHC$에서<br>$AH=3\\cos30^\\circ=\\dfrac{3\\sqrt3}2$, $CH=3\\sin30^\\circ=\\dfrac32$이다.<br>따라서 $BH=AB-AH=3-\\dfrac{3\\sqrt3}2$이다.<br>$\\triangle BCH$는 $H$에서 직각이고 $\\angle CBH=75^\\circ$이므로 $\\angle BCH=15^\\circ$이다.<br>$\\tan15^\\circ=\\dfrac{BH}{CH}=\\dfrac{3-3\\sqrt3/2}{3/2}=2-\\sqrt3$이다. 따라서 ⑤이다.",
+    "solution": "주어진 이등변삼각형에서 $AB=AC=3\\,\\mathrm{cm}$, $\\angle BAC=30^\\circ$이므로 두 밑각은 각각 $75^\\circ$이다.<br>점 $C$에서 $AB$에 수선을 내려 그 발을 $H$라 하자. $\\triangle AHC$에서<br>$AH=3\\cos30^\\circ=\\dfrac{3\\sqrt3}2$, $CH=3\\sin30^\\circ=\\dfrac32$이다.<br>따라서 $BH=AB-AH=3-\\dfrac{3\\sqrt3}2$이다.<br>$\\triangle BCH$는 $H$에서 직각이고 $\\angle CBH=75^\\circ$이므로 $\\angle BCH=15^\\circ$이다.<br>$\\tan15^\\circ=\\dfrac{BH}{CH}=\\dfrac{3-3\\sqrt3/2}{\\frac{3}{2}}=2-\\sqrt3$이다. 따라서 ⑤이다.",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyReason": "독립 풀이 단계와 출제 점수 4점, 필요한 개념 결합 수를 기준으로 한 5단계 초안 bucket 3; R1 재검토 필요.",
@@ -788,7 +788,7 @@ window.questionBank = [
       "$\\tan 30^\\circ \\times \\cos 60^\\circ + \\sin 30^\\circ \\times \\tan 30^\\circ = \\frac{\\sqrt{3}}{3}$"
     ],
     "answer": "④",
-    "solution": "각 보기를 차례로 계산한다. ① $2\\sin90°\\tan60°=2\\sqrt3$, 참. ② $(1-\\sin45°)(1+\\cos45°)=1-(\\sqrt2/2)^2=1/2$, 참. ③ $\\sin0°-\\tan30°+\\sin60°=0-1/\\sqrt3+\\sqrt3/2=\\sqrt3/6$, 참. ④ $\\sin90°\\cos30°/\\tan60°=(\\sqrt3/2)/\\sqrt3=1/2\\ne3/2$, 거짓. ⑤ $\\tan30°\\cos60°+\\sin30°\\tan30°=1/(2\\sqrt3)+1/(2\\sqrt3)=\\sqrt3/3$, 참. 따라서 옳지 않은 것은 ④이다.",
+    "solution": "각 보기를 차례로 계산한다. ① $2\\sin90°\\tan60°=2\\sqrt3$, 참. ② $(1-\\sin45°)(1+\\cos45°)=1-(\\sqrt2/2)^2=\\frac{1}{2}$, 참. ③ $\\sin0°-\\tan30°+\\sin60°=0-1/\\sqrt3+\\sqrt3/2=\\sqrt3/6$, 참. ④ $\\sin90°\\cos30°/\\tan60°=(\\sqrt3/2)/\\sqrt3=1/2\\ne3/2$, 거짓. ⑤ $\\tan30°\\cos60°+\\sin30°\\tan30°=1/(2\\sqrt3)+1/(2\\sqrt3)=\\sqrt3/3$, 참. 따라서 옳지 않은 것은 ④이다.",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "독립 풀이 단계와 출제 점수 4점, 필요한 개념 결합 수를 기준으로 한 5단계 초안 bucket 2; R1 재검토 필요.",

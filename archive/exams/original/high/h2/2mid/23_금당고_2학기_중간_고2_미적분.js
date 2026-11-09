@@ -632,7 +632,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "[서술형 2] 자연수 $n$에 대하여 직선 $y=n$이 두 직선 $x=(2/7)^n$, $x=(3/2)^n$과 만나는 점을 각각 $A_n,B_n$이라 하자. 두 점을 지나고 $y$축에 접하는 원의 접점을 $C_n$이라 하고, $D_n(0,n)$에 대하여 선분 $C_nD_n$을 지름으로 하는 원의 넓이를 $S_n$이라 할 때, $\\displaystyle\\sum_{n=1}^{\\infty}S_n$의 값을 구하시오. [10점]",
+    "content": "[서술형 2] 자연수 $n$에 대하여 직선 $y=n$이 두 직선 $x=(\\frac{2}{7})^n$, $x=(\\frac{3}{2})^n$과 만나는 점을 각각 $A_n,B_n$이라 하자. 두 점을 지나고 $y$축에 접하는 원의 접점을 $C_n$이라 하고, $D_n(0,n)$에 대하여 선분 $C_nD_n$을 지름으로 하는 원의 넓이를 $S_n$이라 할 때, $\\displaystyle\\sum_{n=1}^{\\infty}S_n$의 값을 구하시오. [10점]",
     "choices": [],
     "answer": "$\\frac{3\\pi}{16}$",
     "solution": "[키포인트] 원 밖의 한 점에서 그은 접선의 길이의 제곱은 그 점을 지나는 할선이 만드는 두 선분의 길이의 곱과 같다.\n조건 정리: $A_n\\left(\\left(\\dfrac27\\right)^n,\\ n\\right)$, $B_n\\left(\\left(\\dfrac32\\right)^n,\\ n\\right)$이고 $D_n(0,n)$은 접선인 $y$축 위의 점이다.\n풀이 방향: 점 $D_n$에 대한 원의 방멱을 이용해 $\\overline{C_nD_n}^2$을 구한다.\n정석 풀이: 직선 $y=n$은 두 점 $A_n$, $B_n$을 지나는 할선이고 이 직선 위에 $D_n$이 있다. $y$축은 원에 점 $C_n$에서 접하므로 방멱에 의해 $\\overline{C_nD_n}^2=\\overline{D_nA_n}\\times\\overline{D_nB_n}$이다.\n$\\overline{D_nA_n}=\\left(\\dfrac27\\right)^n$, $\\overline{D_nB_n}=\\left(\\dfrac32\\right)^n$이므로 $\\overline{C_nD_n}^2=\\left(\\dfrac27\\times\\dfrac32\\right)^n=\\left(\\dfrac37\\right)^n$이다.\n선분 $C_nD_n$을 지름으로 하는 원의 넓이는 $S_n=\\pi\\left(\\dfrac{\\overline{C_nD_n}}2\\right)^2=\\dfrac\\pi4\\left(\\dfrac37\\right)^n$이다. 공비가 $\\dfrac37$인 등비급수이므로\n$\\displaystyle\\sum_{n=1}^{\\infty}S_n=\\dfrac\\pi4\\times\\dfrac{\\frac37}{1-\\frac37}=\\dfrac\\pi4\\times\\dfrac34=\\dfrac{3\\pi}{16}$이다.\n따라서 구하는 값은 $\\dfrac{3\\pi}{16}$이다.",

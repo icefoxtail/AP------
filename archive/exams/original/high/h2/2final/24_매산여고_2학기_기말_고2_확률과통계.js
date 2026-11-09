@@ -354,7 +354,7 @@ window.questionBank = [
       "0.6826"
     ],
     "answer": "①",
-    "solution": "정규분포는 평균 $m$에 대해 좌우 대칭이다.\n(가)에서 $P(X\\ge11)=P(X\\le2m-11)$이므로\n$P(X\\le2m-11)\\le P(X\\le16)$\n$2m-11\\le16,\\quad m\\le13.5$이다.\n(나)에서 $P(X\\ge10)=P(X\\le2m-10)$이므로\n$P(X\\le15)\\le P(X\\le2m-10)$\n$15\\le2m-10,\\quad m\\ge12.5$이다.\n$m$은 자연수이므로 $m=13$이다.\n첫 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt{36}}=\\dfrac23$이다.\n$P(\\overline X_1\\le m-1)=P\\left(Z\\le\\dfrac{-1}{2/3}\\right)$\n$=P(Z\\le-1.5)=0.5-0.4332=0.0668$이다.\n두 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt4}=2$이다.\n$27-m=14$이므로\n$P(\\overline X_2\\ge14)=P\\left(Z\\ge\\dfrac{14-13}{2}\\right)$\n$=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다.\n따라서 두 확률의 합은\n$0.0668+0.3085=0.3753$이므로 정답은 ①이다.",
+    "solution": "정규분포는 평균 $m$에 대해 좌우 대칭이다.\n(가)에서 $P(X\\ge11)=P(X\\le2m-11)$이므로\n$P(X\\le2m-11)\\le P(X\\le16)$\n$2m-11\\le16,\\quad m\\le13.5$이다.\n(나)에서 $P(X\\ge10)=P(X\\le2m-10)$이므로\n$P(X\\le15)\\le P(X\\le2m-10)$\n$15\\le2m-10,\\quad m\\ge12.5$이다.\n$m$은 자연수이므로 $m=13$이다.\n첫 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt{36}}=\\dfrac23$이다.\n$P(\\overline X_1\\le m-1)=P\\left(Z\\le\\dfrac{-1}{\\frac{2}{3}}\\right)$\n$=P(Z\\le-1.5)=0.5-0.4332=0.0668$이다.\n두 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt4}=2$이다.\n$27-m=14$이므로\n$P(\\overline X_2\\ge14)=P\\left(Z\\ge\\dfrac{14-13}{2}\\right)$\n$=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다.\n따라서 두 확률의 합은\n$0.0668+0.3085=0.3753$이므로 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",

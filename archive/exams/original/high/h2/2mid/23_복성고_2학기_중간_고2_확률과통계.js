@@ -533,7 +533,7 @@ window.questionBank = [
       "$\\dfrac34$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 확률은 확률밀도함수 그래프 아래의 넓이이며, 전체 넓이는 $1$이다.\n조건 정리: 전체 그래프는 꼭짓점이 $(-a,0)$, $(0,a)$, $(2a,0)$인 삼각형이다.\n풀이 방향: 전체 삼각형 넓이와 $0\\le x\\le a$ 구간의 사다리꼴 넓이의 비를 구한다.\n정석 풀이: 전체 삼각형의 밑변은 $3a$, 높이는 $a$이므로 넓이는 $\\dfrac12\\times3a\\times a=\\dfrac32a^2$이다. $x=a$에서 높이는 직선의 선형성에 의해 $\\dfrac a2$이다. 따라서 $0\\le x\\le a$ 부분의 넓이는 평행한 두 변의 길이가 $a,\\dfrac a2$이고 폭이 $a$인 사다리꼴의 넓이이므로 $\\dfrac12\\left(a+\\dfrac a2\\right)a=\\dfrac34a^2$이다. 확률은 전체 넓이에 대한 비와 같으므로 $P(0\\le X\\le a)=\\dfrac{(3/4)a^2}{(3/2)a^2}=\\dfrac12$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 확률은 확률밀도함수 그래프 아래의 넓이이며, 전체 넓이는 $1$이다.\n조건 정리: 전체 그래프는 꼭짓점이 $(-a,0)$, $(0,a)$, $(2a,0)$인 삼각형이다.\n풀이 방향: 전체 삼각형 넓이와 $0\\le x\\le a$ 구간의 사다리꼴 넓이의 비를 구한다.\n정석 풀이: 전체 삼각형의 밑변은 $3a$, 높이는 $a$이므로 넓이는 $\\dfrac12\\times3a\\times a=\\dfrac32a^2$이다. $x=a$에서 높이는 직선의 선형성에 의해 $\\dfrac a2$이다. 따라서 $0\\le x\\le a$ 부분의 넓이는 평행한 두 변의 길이가 $a,\\dfrac a2$이고 폭이 $a$인 사다리꼴의 넓이이므로 $\\dfrac12\\left(a+\\dfrac a2\\right)a=\\dfrac34a^2$이다. 확률은 전체 넓이에 대한 비와 같으므로 $P(0\\le X\\le a)=\\dfrac{(\\frac{3}{4})a^2}{(\\frac{3}{2})a^2}=\\dfrac12$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",

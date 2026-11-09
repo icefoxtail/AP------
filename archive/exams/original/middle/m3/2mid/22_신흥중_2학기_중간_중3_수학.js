@@ -1066,7 +1066,7 @@ window.questionBank = [
     "content": "【서술형 4】 $\\cos A = \\dfrac{3}{4}$일 때, $\\sin A, \\tan A$의 값을 구하시오. (단, $0^\\circ < A < 90^\\circ$) (6점)",
     "choices": [],
     "answer": "$\\sin A=\\frac{\\sqrt7}{4}$, $\\tan A=\\frac{\\sqrt7}{3}$",
-    "solution": "[풀이] $0^\\circ<A<90^\\circ$이므로 $\\sin A>0$이다. $\\sin^2A+\\cos^2A=1$에서 $\\sin^2A=1-(\\frac34)^2=\\frac7{16}$이므로 $\\sin A=\\frac{\\sqrt7}{4}$이다. 따라서 $\\tan A=\\frac{\\sin A}{\\cos A}=\\frac{\\sqrt7/4}{3/4}=\\frac{\\sqrt7}{3}$이다.",
+    "solution": "[풀이] $0^\\circ<A<90^\\circ$이므로 $\\sin A>0$이다. $\\sin^2A+\\cos^2A=1$에서 $\\sin^2A=1-(\\frac34)^2=\\frac7{16}$이므로 $\\sin A=\\frac{\\sqrt7}{4}$이다. 따라서 $\\tan A=\\frac{\\sin A}{\\cos A}=\\frac{\\sqrt7/4}{\\frac{3}{4}}=\\frac{\\sqrt7}{3}$이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비의 뜻과 관계",
     "subUnitConfidence": "candidate_evidence",

@@ -57,7 +57,7 @@ window.questionBank = [
       "$\\cos90^\\circ-\\tan0^\\circ+\\sin90^\\circ\\times\\cos0^\\circ$"
     ],
     "answer": "②",
-    "solution": "특수각의 삼각비 값을 각 식에 대입한다.\n\n① $\\dfrac{\\sin45^\\circ}{\\sin30^\\circ}=\\dfrac{\\sqrt2/2}{1/2}=\\sqrt2$\n② $\\dfrac{\\tan60^\\circ}{\\tan30^\\circ}=\\dfrac{\\sqrt3}{\\sqrt3/3}=3$\n③ $\\tan45^\\circ\\cos60^\\circ=1\\times\\dfrac12=\\dfrac12$\n④ $\\sin60^\\circ\\sin90^\\circ=\\dfrac{\\sqrt3}{2}\\times1=\\dfrac{\\sqrt3}{2}$\n⑤ $\\cos90^\\circ-\\tan0^\\circ+\\sin90^\\circ\\cos0^\\circ=0-0+1=1$\n\n가장 큰 값은 $3$이므로 정답은 ②이다.",
+    "solution": "특수각의 삼각비 값을 각 식에 대입한다.\n\n① $\\dfrac{\\sin45^\\circ}{\\sin30^\\circ}=\\dfrac{\\sqrt2/2}{\\frac{1}{2}}=\\sqrt2$\n② $\\dfrac{\\tan60^\\circ}{\\tan30^\\circ}=\\dfrac{\\sqrt3}{\\sqrt3/3}=3$\n③ $\\tan45^\\circ\\cos60^\\circ=1\\times\\dfrac12=\\dfrac12$\n④ $\\sin60^\\circ\\sin90^\\circ=\\dfrac{\\sqrt3}{2}\\times1=\\dfrac{\\sqrt3}{2}$\n⑤ $\\cos90^\\circ-\\tan0^\\circ+\\sin90^\\circ\\cos0^\\circ=0-0+1=1$\n\n가장 큰 값은 $3$이므로 정답은 ②이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",

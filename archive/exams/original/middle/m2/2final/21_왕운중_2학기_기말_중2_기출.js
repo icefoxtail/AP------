@@ -553,7 +553,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_왕운중_2학기_기말_중2_기출/q10-r3.png",
     "answer": "⑤",
-    "solution": "그림에서 $AD=8$ cm이다.\n$AF:FD=6:5$이므로 $AD$를 $11$등분하면\n$AF=8\\times\\dfrac6{11}=\\dfrac{48}{11}$ cm,\n$FD=8\\times\\dfrac5{11}=\\dfrac{40}{11}$ cm이다.\n\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$에서\n$\\dfrac{AD}{AB}=\\dfrac{AE}{AC}$이다.\n$EF\\parallel DC$이므로 $\\triangle AFE\\sim\\triangle ADC$에서\n$\\dfrac{AF}{AD}=\\dfrac{AE}{AC}$이다.\n따라서\n$\\dfrac{AD}{AB}=\\dfrac{AF}{AD}$이다.\n$AB=\\dfrac{AD^2}{AF}$,\n$=\\dfrac{8^2}{48/11}$,\n$=\\dfrac{64\\cdot11}{48}$,\n$=\\dfrac{44}{3}$ cm이다.\n$x=BD$,\n$=AB-AD$,\n$=\\dfrac{44}{3}-8$,\n$=\\dfrac{20}{3}$ cm이다.\n정답은 ⑤이다.",
+    "solution": "그림에서 $AD=8$ cm이다.\n$AF:FD=6:5$이므로 $AD$를 $11$등분하면\n$AF=8\\times\\dfrac6{11}=\\dfrac{48}{11}$ cm,\n$FD=8\\times\\dfrac5{11}=\\dfrac{40}{11}$ cm이다.\n\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$에서\n$\\dfrac{AD}{AB}=\\dfrac{AE}{AC}$이다.\n$EF\\parallel DC$이므로 $\\triangle AFE\\sim\\triangle ADC$에서\n$\\dfrac{AF}{AD}=\\dfrac{AE}{AC}$이다.\n따라서\n$\\dfrac{AD}{AB}=\\dfrac{AF}{AD}$이다.\n$AB=\\dfrac{AD^2}{AF}$,\n$=\\dfrac{8^2}{\\frac{48}{11}}$,\n$=\\dfrac{64\\cdot11}{48}$,\n$=\\dfrac{44}{3}$ cm이다.\n$x=BD$,\n$=AB-AD$,\n$=\\dfrac{44}{3}-8$,\n$=\\dfrac{20}{3}$ cm이다.\n정답은 ⑤이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",

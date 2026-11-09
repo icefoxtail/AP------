@@ -607,7 +607,7 @@ window.questionBank = [
     "subUnit": "복소수의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solution": "주어진 $\\sqrt a\\sqrt b=-\\sqrt{ab}$의 부호 관계로 $a,b$의 부호를 먼저 판단한다.\n두 수가 양수이면 좌변은 $+\\sqrt{ab}$이므로 성립하지 않는다.\n부호가 다르면 좌변은 $+i\\sqrt{-ab}$, 우변은 $-i\\sqrt{-ab}$이므로 역시 성립하지 않는다.\n따라서 $a<0$, $b<0$이다. 실제로 이때 $\\sqrt a=i\\sqrt{-a}$, $\\sqrt b=i\\sqrt{-b}$이어서 좌변은 $-\\sqrt{ab}$이다.\n이 부호 조건에서 $\\sqrt{-a}$와 $\\sqrt{a/b}$는 실수이다.\n반면 $\\sqrt b=i\\sqrt{-b}$, $\\sqrt{-ab}=i\\sqrt{ab}$이다.\n주어진 복소수의 허수부는 $\\sqrt{-b}+\\sqrt{ab}$이다.\n따라서 정답은 ④이다.",
+    "solution": "주어진 $\\sqrt a\\sqrt b=-\\sqrt{ab}$의 부호 관계로 $a,b$의 부호를 먼저 판단한다.\n두 수가 양수이면 좌변은 $+\\sqrt{ab}$이므로 성립하지 않는다.\n부호가 다르면 좌변은 $+i\\sqrt{-ab}$, 우변은 $-i\\sqrt{-ab}$이므로 역시 성립하지 않는다.\n따라서 $a<0$, $b<0$이다. 실제로 이때 $\\sqrt a=i\\sqrt{-a}$, $\\sqrt b=i\\sqrt{-b}$이어서 좌변은 $-\\sqrt{ab}$이다.\n이 부호 조건에서 $\\sqrt{-a}$와 $\\sqrt{\\frac{a}{b}}$는 실수이다.\n반면 $\\sqrt b=i\\sqrt{-b}$, $\\sqrt{-ab}=i\\sqrt{ab}$이다.\n주어진 복소수의 허수부는 $\\sqrt{-b}+\\sqrt{ab}$이다.\n따라서 정답은 ④이다.",
     "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
     "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
     "crossConceptKeys": [

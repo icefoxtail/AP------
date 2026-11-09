@@ -387,7 +387,7 @@ window.questionBank = [
       "$\\dfrac23$"
     ],
     "answer": "③",
-    "solution": "$\\sqrt{a^2}=|a|$이므로 주어진 식은\n$|\\sin x-\\cos x|+|\\sin x+\\cos x|=\\dfrac85$이다.\n\n$45^\\circ<x<90^\\circ$이므로 $\\sin x>\\cos x>0$이다.\n따라서\n$|\\sin x-\\cos x|=\\sin x-\\cos x$\n$|\\sin x+\\cos x|=\\sin x+\\cos x$이다.\n\n그러므로\n$2\\sin x=\\dfrac85$\n$\\sin x=\\dfrac45$이다.\n예각이므로\n$\\cos x=\\sqrt{1-\\sin^2x}=\\sqrt{1-\\dfrac{16}{25}}=\\dfrac35$이다.\n\n따라서\n$\\tan x=\\dfrac{\\sin x}{\\cos x}=\\dfrac{4/5}{3/5}=\\dfrac43$이다.\n따라서 정답은 ③이다.",
+    "solution": "$\\sqrt{a^2}=|a|$이므로 주어진 식은\n$|\\sin x-\\cos x|+|\\sin x+\\cos x|=\\dfrac85$이다.\n\n$45^\\circ<x<90^\\circ$이므로 $\\sin x>\\cos x>0$이다.\n따라서\n$|\\sin x-\\cos x|=\\sin x-\\cos x$\n$|\\sin x+\\cos x|=\\sin x+\\cos x$이다.\n\n그러므로\n$2\\sin x=\\dfrac85$\n$\\sin x=\\dfrac45$이다.\n예각이므로\n$\\cos x=\\sqrt{1-\\sin^2x}=\\sqrt{1-\\dfrac{16}{25}}=\\dfrac35$이다.\n\n따라서\n$\\tan x=\\dfrac{\\sin x}{\\cos x}=\\dfrac{\\frac{4}{5}}{\\frac{3}{5}}=\\dfrac43$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",

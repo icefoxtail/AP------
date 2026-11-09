@@ -416,7 +416,7 @@ window.questionBank = [
       "$x^2-\\frac13x+1=0$"
     ],
     "answer": "②",
-    "solution": "$3x^2-x+1=0$의 두 근에 대해 근과 계수의 관계를 적용한다.\n$\\alpha+\\beta=\\dfrac13$, $\\alpha\\beta=\\dfrac13$이다.\n두 근의 곱이 $0$이 아니므로 역수도 정의된다.\n역수의 합과 곱은\n$\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=\\dfrac{1/3}{1/3}=1$,\n$\\dfrac1\\alpha\\cdot\\dfrac1\\beta=\\dfrac1{\\alpha\\beta}=3$이다.\n두 근의 합이 $1$, 곱이 $3$인 최고차항 계수가 $1$인 방정식은\n$x^2-1\\cdot x+3=0$이다.\n즉 $x^2-x+3=0$, 정답은 ②이다."
+    "solution": "$3x^2-x+1=0$의 두 근에 대해 근과 계수의 관계를 적용한다.\n$\\alpha+\\beta=\\dfrac13$, $\\alpha\\beta=\\dfrac13$이다.\n두 근의 곱이 $0$이 아니므로 역수도 정의된다.\n역수의 합과 곱은\n$\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=\\dfrac{\\frac{1}{3}}{\\frac{1}{3}}=1$,\n$\\dfrac1\\alpha\\cdot\\dfrac1\\beta=\\dfrac1{\\alpha\\beta}=3$이다.\n두 근의 합이 $1$, 곱이 $3$인 최고차항 계수가 $1$인 방정식은\n$x^2-1\\cdot x+3=0$이다.\n즉 $x^2-x+3=0$, 정답은 ②이다."
   },
   {
     "id": 11,

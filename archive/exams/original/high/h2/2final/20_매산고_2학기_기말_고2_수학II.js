@@ -676,7 +676,7 @@ window.questionBank = [
     "content": "[서술형1] $x$에 대한 삼차방정식 $2x^3-6x-a=0$이 세 실근 $\\alpha,\\beta,\\gamma$를 갖는다.\n실수 $a$에 대하여 $|\\alpha|+|\\beta|+|\\gamma|$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하는 과정을 서술하시오. [10점]",
     "choices": [],
     "answer": "$4+2\\sqrt{3}$",
-    "solution": "식 $2x^3-6x-a=0$을 $p(x)=x^3-3x=\\dfrac a2$로 본다.\n$p'(x)=3x^2-3=3(x-1)(x+1)$\n$p(-1)=2$, $p(1)=-2$이므로 세 실근을 갖는 범위는 $-4\\le a\\le4$이다.\n\n$a=0$이면 근은 $-\\sqrt3,0,\\sqrt3$이므로 절댓값의 합은 $2\\sqrt3$이다.\n이제 $0<a\\le4$라 하자. 세 근을 $\\alpha\\le\\beta<0<\\gamma$라 하면 근의 합은 $0$이므로\n$|\\alpha|+|\\beta|+|\\gamma|=-\\alpha-\\beta+\\gamma=2\\gamma$이다.\n\n$\\gamma>1$에서 $p$는 증가한다. $a$가 $0$에서 $4$까지 증가하면 $p(\\gamma)=a/2$에 따라 $\\gamma$는 $\\sqrt3$에서 $2$까지 증가한다.\n따라서 절댓값의 합은 $2\\sqrt3$에서 $4$까지 증가한다. $a<0$인 경우는 근의 부호가 반대인 대칭 경우이므로 같은 범위이다.\n\n그러므로 $M=4$, $m=2\\sqrt3$이고\n$M+m=4+2\\sqrt3$이다.",
+    "solution": "식 $2x^3-6x-a=0$을 $p(x)=x^3-3x=\\dfrac a2$로 본다.\n$p'(x)=3x^2-3=3(x-1)(x+1)$\n$p(-1)=2$, $p(1)=-2$이므로 세 실근을 갖는 범위는 $-4\\le a\\le4$이다.\n\n$a=0$이면 근은 $-\\sqrt3,0,\\sqrt3$이므로 절댓값의 합은 $2\\sqrt3$이다.\n이제 $0<a\\le4$라 하자. 세 근을 $\\alpha\\le\\beta<0<\\gamma$라 하면 근의 합은 $0$이므로\n$|\\alpha|+|\\beta|+|\\gamma|=-\\alpha-\\beta+\\gamma=2\\gamma$이다.\n\n$\\gamma>1$에서 $p$는 증가한다. $a$가 $0$에서 $4$까지 증가하면 $p(\\gamma)=\\frac{a}{2}$에 따라 $\\gamma$는 $\\sqrt3$에서 $2$까지 증가한다.\n따라서 절댓값의 합은 $2\\sqrt3$에서 $4$까지 증가한다. $a<0$인 경우는 근의 부호가 반대인 대칭 경우이므로 같은 범위이다.\n\n그러므로 $M=4$, $m=2\\sqrt3$이고\n$M+m=4+2\\sqrt3$이다.",
     "level": "상",
     "category": "도함수의 활용",
     "originalCategory": "도함수의 활용",

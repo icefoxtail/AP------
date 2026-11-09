@@ -688,7 +688,7 @@ window.questionBank = [
       "함수의 극한"
     ],
     "answer": "$\\dfrac32$",
-    "solution": "$A(a,b)$가 $y=\\sqrt{3x}$ 위에 있으므로 $b=\\sqrt{3a}$이다.\n$O$가 중심인 두 원의 반지름은\n$OA=\\sqrt{a^2+b^2}=\\sqrt{a^2+3a}$,\n$OB=a$이다.\n따라서 $f(a)=\\sqrt{a^2+3a}-a$이다.\n유리화하면\n$f(a)=\\dfrac{3a}{\\sqrt{a^2+3a}+a}\n=\\dfrac3{\\sqrt{1+3/a}+1}$이다.\n$a\\to\\infty$일 때 $f(a)\\to\\dfrac32$이다.",
+    "solution": "$A(a,b)$가 $y=\\sqrt{3x}$ 위에 있으므로 $b=\\sqrt{3a}$이다.\n$O$가 중심인 두 원의 반지름은\n$OA=\\sqrt{a^2+b^2}=\\sqrt{a^2+3a}$,\n$OB=a$이다.\n따라서 $f(a)=\\sqrt{a^2+3a}-a$이다.\n유리화하면\n$f(a)=\\dfrac{3a}{\\sqrt{a^2+3a}+a}\n=\\dfrac3{\\sqrt{1+\\frac{3}{a}}+1}$이다.\n$a\\to\\infty$일 때 $f(a)\\to\\dfrac32$이다.",
     "decisiveStep": "두 반지름의 차를 유리화해 무한대 극한을 구한다.",
     "level": "중",
     "category": "함수의 극한",

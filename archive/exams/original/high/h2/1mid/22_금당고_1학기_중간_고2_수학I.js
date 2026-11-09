@@ -350,7 +350,7 @@ window.questionBank = [
       "$\\frac{10}{3}$"
     ],
     "answer": "3",
-    "solution": "주어진 식에 $\\sin\\theta$와 $\\cos\\theta$가 함께 있고, 목표식은 탄젠트와 그 역수의 합입니다. 두 식을 연결하는 것은 $\\sin\\theta\\cos\\theta$입니다.\n$(\\sin\\theta-\\cos\\theta)^2=\\frac14$를 전개하면 $\\sin^2\\theta+\\cos^2\\theta-2\\sin\\theta\\cos\\theta=\\frac14$입니다. $\\sin^2\\theta+\\cos^2\\theta=1$이므로\n$1-2\\sin\\theta\\cos\\theta=\\frac14\\Rightarrow 2\\sin\\theta\\cos\\theta=\\frac34\\Rightarrow\\sin\\theta\\cos\\theta=\\frac38$입니다.\n곱이 $\\frac38\\ne0$이므로 $\\sin\\theta,\\cos\\theta$는 모두 $0$이 아니며 $\\tan\\theta$와 $1/\\tan\\theta$가 정의됩니다. 이제\n$\\tan\\theta+\\frac1{\\tan\\theta}=\\frac{\\sin\\theta}{\\cos\\theta}+\\frac{\\cos\\theta}{\\sin\\theta}=\\frac{\\sin^2\\theta+\\cos^2\\theta}{\\sin\\theta\\cos\\theta}=\\frac1{3/8}=\\frac83$입니다.\n따라서 정답은 ③입니다. $\\sin\\theta-\\cos\\theta$의 부호는 제곱할 때 사라지지만, 목표식은 곱만으로 결정되므로 추가 경우 분류가 필요하지 않습니다.",
+    "solution": "주어진 식에 $\\sin\\theta$와 $\\cos\\theta$가 함께 있고, 목표식은 탄젠트와 그 역수의 합입니다. 두 식을 연결하는 것은 $\\sin\\theta\\cos\\theta$입니다.\n$(\\sin\\theta-\\cos\\theta)^2=\\frac14$를 전개하면 $\\sin^2\\theta+\\cos^2\\theta-2\\sin\\theta\\cos\\theta=\\frac14$입니다. $\\sin^2\\theta+\\cos^2\\theta=1$이므로\n$1-2\\sin\\theta\\cos\\theta=\\frac14\\Rightarrow 2\\sin\\theta\\cos\\theta=\\frac34\\Rightarrow\\sin\\theta\\cos\\theta=\\frac38$입니다.\n곱이 $\\frac38\\ne0$이므로 $\\sin\\theta,\\cos\\theta$는 모두 $0$이 아니며 $\\tan\\theta$와 $1/\\tan\\theta$가 정의됩니다. 이제\n$\\tan\\theta+\\frac1{\\tan\\theta}=\\frac{\\sin\\theta}{\\cos\\theta}+\\frac{\\cos\\theta}{\\sin\\theta}=\\frac{\\sin^2\\theta+\\cos^2\\theta}{\\sin\\theta\\cos\\theta}=\\frac1{\\frac{3}{8}}=\\frac83$입니다.\n따라서 정답은 ③입니다. $\\sin\\theta-\\cos\\theta$의 부호는 제곱할 때 사라지지만, 목표식은 곱만으로 결정되므로 추가 경우 분류가 필요하지 않습니다.",
     "questionNumber": 10,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -468,7 +468,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "2",
-    "solution": "세 로그의 공통값을 $t$라 두고 지수식으로 바꿉니다.\n$1+\\log_2b=\\log_2(2b)=t$이므로 $2^t=2b$,\n$\\log_3(2a+5b)=t$이므로 $3^t=2a+5b$,\n$2\\log_6(2a+b)=t$이므로 $6^t=(2a+b)^2$입니다.\n$6^t=2^t3^t$를 이용하면 $(2a+b)^2=2b(2a+5b)$입니다.\n전개하여 $4a^2+4ab+b^2=4ab+10b^2$, 따라서 $4a^2=9b^2$입니다. $a,b>0$이므로 $a/b=3/2$입니다.\n$\\log_2\\frac{12b}{a}=\\log_2\\frac{12}{3/2}=\\log_28=3$이므로 정답은 ②입니다.",
+    "solution": "세 로그의 공통값을 $t$라 두고 지수식으로 바꿉니다.\n$1+\\log_2b=\\log_2(2b)=t$이므로 $2^t=2b$,\n$\\log_3(2a+5b)=t$이므로 $3^t=2a+5b$,\n$2\\log_6(2a+b)=t$이므로 $6^t=(2a+b)^2$입니다.\n$6^t=2^t3^t$를 이용하면 $(2a+b)^2=2b(2a+5b)$입니다.\n전개하여 $4a^2+4ab+b^2=4ab+10b^2$, 따라서 $4a^2=9b^2$입니다. $a,b>0$이므로 $\\frac{a}{b}=\\frac{3}{2}$입니다.\n$\\log_2\\frac{12b}{a}=\\log_2\\frac{12}{\\frac{3}{2}}=\\log_28=3$이므로 정답은 ②입니다.",
     "questionNumber": 13,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -507,7 +507,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "2",
-    "solution": "**① 평행이동을 식으로.** 원래 함수 $y=(1/2)^x$를 오른쪽으로 $m$, 위로 $n$ 이동하면 $f(x)=(1/2)^{x-m}+n$입니다. $A=(0,1)$이 $B=(m,1+n)$으로 이동합니다.\n**② $B$의 직선 조건.** $B$가 $y=x+1$ 위에 있으므로 $1+n=m+1$, 즉 $n=m$입니다. 따라서 $B=(m,m+1)$이고 $\\overline{AB}=m\\sqrt2$입니다($m>0$).\n**③ $C$의 좌표.** 그림에서 $C$는 $B$의 오른쪽 아래에 있으며 $BC$의 기울기는 $-1$입니다. $C=(m+d,m+1-d)$ ($d>0$)로 두면 $C$가 $y=\\log_2(x-m)+m$ 위에 있으므로\n$m+1-d=\\log_2d+m\\iff 1-d=\\log_2d$입니다. $d>0$에서 왼쪽은 엄격히 감소, 오른쪽은 엄격히 증가하므로 해는 하나이고, $d=1$을 넣으면 $0=0$이므로 유일한 해입니다. 따라서 $C=(m+1,m)$, $BC=\\sqrt2$입니다.\n**④ 넓이와 함수값.** $AB$의 기울기는 $1$, $BC$는 $-1$이어서 서로 수직입니다. $[ABC]=\\frac12(m\\sqrt2)(\\sqrt2)=m=6$이므로 $m=n=6$입니다.\n$f(4)=(1/2)^{4-6}+6=(1/2)^{-2}+6=4+6=10$으로 정답은 ②입니다.\n<img src=\"assets/solutions/22_금당고_1학기_중간_고2_수학I/q14_solution.svg\" alt=\"평행이동 후 A B C의 좌표와 수직 관계\" class=\"solution-img\" />",
+    "solution": "**① 평행이동을 식으로.** 원래 함수 $y=(\\frac{1}{2})^x$를 오른쪽으로 $m$, 위로 $n$ 이동하면 $f(x)=(\\frac{1}{2})^{x-m}+n$입니다. $A=(0,1)$이 $B=(m,1+n)$으로 이동합니다.\n**② $B$의 직선 조건.** $B$가 $y=x+1$ 위에 있으므로 $1+n=m+1$, 즉 $n=m$입니다. 따라서 $B=(m,m+1)$이고 $\\overline{AB}=m\\sqrt2$입니다($m>0$).\n**③ $C$의 좌표.** 그림에서 $C$는 $B$의 오른쪽 아래에 있으며 $BC$의 기울기는 $-1$입니다. $C=(m+d,m+1-d)$ ($d>0$)로 두면 $C$가 $y=\\log_2(x-m)+m$ 위에 있으므로\n$m+1-d=\\log_2d+m\\iff 1-d=\\log_2d$입니다. $d>0$에서 왼쪽은 엄격히 감소, 오른쪽은 엄격히 증가하므로 해는 하나이고, $d=1$을 넣으면 $0=0$이므로 유일한 해입니다. 따라서 $C=(m+1,m)$, $BC=\\sqrt2$입니다.\n**④ 넓이와 함수값.** $AB$의 기울기는 $1$, $BC$는 $-1$이어서 서로 수직입니다. $[ABC]=\\frac12(m\\sqrt2)(\\sqrt2)=m=6$이므로 $m=n=6$입니다.\n$f(4)=(\\frac{1}{2})^{4-6}+6=(\\frac{1}{2})^{-2}+6=4+6=10$으로 정답은 ②입니다.\n<img src=\"assets/solutions/22_금당고_1학기_중간_고2_수학I/q14_solution.svg\" alt=\"평행이동 후 A B C의 좌표와 수직 관계\" class=\"solution-img\" />",
     "questionNumber": 14,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -587,7 +587,7 @@ window.questionBank = [
       "20"
     ],
     "answer": "3",
-    "solution": "$\\log_2n-\\log_2k=\\log_2(n/k)$가 정수이면 $n/k=2^j$ ($j$는 정수)입니다. 따라서 $n$과 $k$는 **2의 거듭제곱 부분만 다르고 홀수 부분은 같습니다**.\n각 자연수는 $n=2^rd$ ($d$는 홀수, $r\\ge0$)로 유일하게 나타낼 수 있습니다. 같은 홀수 부분 $d$를 가진 수는 $d,2d,4d,\\ldots$ 중 $50$ 이하인 수들이므로 그 개수가 $f(n)$입니다. 예를 들어 $d=5$이면 $5,10,20,40$ 네 개로 $f(10)=4$와 맞습니다.\n$f(n)=1$이려면 $d$는 존재하지만 $2d>50$이어야 하므로 $25<d\\le50$입니다. 이때 $d$ 자체만 가능하며 $n=d$입니다.\n가능한 홀수는 $27,29,31,33,35,37,39,41,43,45,47,49$로 $12$개입니다. 따라서 정답은 ③입니다. $d\\le25$이면 $d$와 $2d$가 모두 있어 제외됩니다.",
+    "solution": "$\\log_2n-\\log_2k=\\log_2(\\frac{n}{k})$가 정수이면 $\\frac{n}{k}=2^j$ ($j$는 정수)입니다. 따라서 $n$과 $k$는 **2의 거듭제곱 부분만 다르고 홀수 부분은 같습니다**.\n각 자연수는 $n=2^rd$ ($d$는 홀수, $r\\ge0$)로 유일하게 나타낼 수 있습니다. 같은 홀수 부분 $d$를 가진 수는 $d,2d,4d,\\ldots$ 중 $50$ 이하인 수들이므로 그 개수가 $f(n)$입니다. 예를 들어 $d=5$이면 $5,10,20,40$ 네 개로 $f(10)=4$와 맞습니다.\n$f(n)=1$이려면 $d$는 존재하지만 $2d>50$이어야 하므로 $25<d\\le50$입니다. 이때 $d$ 자체만 가능하며 $n=d$입니다.\n가능한 홀수는 $27,29,31,33,35,37,39,41,43,45,47,49$로 $12$개입니다. 따라서 정답은 ③입니다. $d\\le25$이면 $d$와 $2d$가 모두 있어 제외됩니다.",
     "questionNumber": 16,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -622,7 +622,7 @@ window.questionBank = [
     "content": "※ 다음은 단답형 문제입니다. 답안지 앞면에 볼펜으로 풀이과정 없이 단답형 문항번호와 정답만 적으시오.<br><br>&lt;단답형 1&gt; $a>2$인 상수 $a$에 대하여 함수 $y=\\log_a x$의 그래프와 함수 $y=\\log_2 x$의 그래프가 만나는 점을 $\\mathrm{A}$라 하고, 직선 $x=4$가 두 함수 $y=\\log_a x, y=\\log_2 x$의 그래프와 만나는 점을 각각 $\\mathrm{B, C}$라 하자. 삼각형 $\\mathrm{ABC}$의 넓이가 $1$일 때, $a^4$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "64",
-    "solution": "두 로그함수의 교점 $A$를 먼저 찾습니다. $\\log_a1=\\log_21=0$이므로 $(1,0)$은 교점입니다. $a>2$에서 밑이 다르므로 $x\\ne1$인 곳에서 두 로그값이 같을 수 없어 $A=(1,0)$뿐입니다.\n$x=4$에서 $B=(4,\\log_a4)$, $C=(4,2)$입니다. $a>2$이면 $\\log_a4=\\frac{\\log_24}{\\log_2a}<2$이므로 $C$가 $B$보다 위에 있습니다. 따라서 밑변 $BC$의 길이는 $2-\\log_a4$입니다.\n점 $A$에서 수직선 $x=4$까지의 거리는 $4-1=3$이므로 삼각형 넓이는\n$1=\\frac12\\cdot(2-\\log_a4)\\cdot3\\iff2-\\log_a4=\\frac23\\iff\\log_a4=\\frac43$입니다.\n로그를 지수로 바꾸면 $a^{4/3}=4$이고 양변을 세제곱하면 $a^4=4^3=64$입니다. $a=4^{3/4}>2$이므로 원래 조건도 만족합니다. 정답은 $64$입니다.",
+    "solution": "두 로그함수의 교점 $A$를 먼저 찾습니다. $\\log_a1=\\log_21=0$이므로 $(1,0)$은 교점입니다. $a>2$에서 밑이 다르므로 $x\\ne1$인 곳에서 두 로그값이 같을 수 없어 $A=(1,0)$뿐입니다.\n$x=4$에서 $B=(4,\\log_a4)$, $C=(4,2)$입니다. $a>2$이면 $\\log_a4=\\frac{\\log_24}{\\log_2a}<2$이므로 $C$가 $B$보다 위에 있습니다. 따라서 밑변 $BC$의 길이는 $2-\\log_a4$입니다.\n점 $A$에서 수직선 $x=4$까지의 거리는 $4-1=3$이므로 삼각형 넓이는\n$1=\\frac12\\cdot(2-\\log_a4)\\cdot3\\iff2-\\log_a4=\\frac23\\iff\\log_a4=\\frac43$입니다.\n로그를 지수로 바꾸면 $a^{\\frac{4}{3}}=4$이고 양변을 세제곱하면 $a^4=4^3=64$입니다. $a=4^{\\frac{3}{4}}>2$이므로 원래 조건도 만족합니다. 정답은 $64$입니다.",
     "questionNumber": 17,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -694,7 +694,7 @@ window.questionBank = [
     "content": "※ 다음은 서술형 문제입니다. 답안지 뒷면에 볼펜으로 풀이 과정을 상세하게 서술하시오.<br>(풀이 과정에 부분 점수 있으며, 답만 적으면 풀이 과정 배점하지 않음.)<br><br>&lt;서술형 1&gt; 길이가 $\\sqrt[3]{54}$인 선분 $\\mathrm{AB}$를 지름으로 하는 원 위의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{AP}}=\\sqrt[3]{2}$이다. 점 $\\mathrm{P}$에서 선분 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 삼각형 $\\mathrm{PAH}$의 넓이는 $2^{\\frac{y}{x}} \\times 3^z$이다. $x+y-z$의 값을 구하시오.<br>(단, $x$와 $y$는 서로소인 자연수이고, $z$는 정수이다.) [10점]",
     "choices": [],
     "answer": "15",
-    "solution": "**① 직각삼각형 확인.** $AB$가 원의 지름이고 $P$가 원 위에 있으므로 원주각 $\\angle APB=90^\\circ$입니다. 따라서 $AB$는 직각삼각형 $APB$의 빗변입니다.\n$AB=\\sqrt[3]{54}=3\\sqrt[3]2=3\\cdot2^{1/3}$, $AP=2^{1/3}$입니다. 피타고라스 정리로\n$PB^2=AB^2-AP^2=9\\cdot2^{2/3}-2^{2/3}=8\\cdot2^{2/3}$이므로 $PB=2^{3/2}\\cdot2^{1/3}=2^{11/6}$입니다.\n**② 수선의 발 $H$.** 직각삼각형의 닮음에서 $AP^2=AB\\cdot AH$이므로\n$AH=\\frac{AP^2}{AB}=\\frac{2^{2/3}}{3\\cdot2^{1/3}}=\\frac{2^{1/3}}3$입니다.\n또 같은 삼각형의 넓이를 두 방법으로 계산하면 $\\frac12 AP\\cdot PB=\\frac12 AB\\cdot PH$이므로\n$PH=\\frac{AP\\cdot PB}{AB}=\\frac{2^{1/3}\\cdot2^{11/6}}{3\\cdot2^{1/3}}=\\frac{2^{11/6}}3$입니다.\n**③ 넓이와 지수 비교.** $PH\\perp AB$이므로 $[PAH]=\\frac12 AH\\cdot PH=\\frac12\\cdot\\frac{2^{1/3}}3\\cdot\\frac{2^{11/6}}3=2^{1/3+11/6-1}\\cdot3^{-2}=2^{7/6}\\cdot3^{-2}$입니다.\n$x=6$, $y=7$은 서로소이고 $z=-2$이므로 $x+y-z=6+7-(-2)=15$입니다.\n<img src=\"assets/solutions/22_금당고_1학기_중간_고2_수학I/q19_solution.svg\" alt=\"지름 AB인 원의 직각삼각형과 수선의 발 H\" class=\"solution-img\" />",
+    "solution": "**① 직각삼각형 확인.** $AB$가 원의 지름이고 $P$가 원 위에 있으므로 원주각 $\\angle APB=90^\\circ$입니다. 따라서 $AB$는 직각삼각형 $APB$의 빗변입니다.\n$AB=\\sqrt[3]{54}=3\\sqrt[3]2=3\\cdot2^{\\frac{1}{3}}$, $AP=2^{\\frac{1}{3}}$입니다. 피타고라스 정리로\n$PB^2=AB^2-AP^2=9\\cdot2^{\\frac{2}{3}}-2^{\\frac{2}{3}}=8\\cdot2^{\\frac{2}{3}}$이므로 $PB=2^{\\frac{3}{2}}\\cdot2^{\\frac{1}{3}}=2^{\\frac{11}{6}}$입니다.\n**② 수선의 발 $H$.** 직각삼각형의 닮음에서 $AP^2=AB\\cdot AH$이므로\n$AH=\\frac{AP^2}{AB}=\\frac{2^{\\frac{2}{3}}}{3\\cdot2^{\\frac{1}{3}}}=\\frac{2^{\\frac{1}{3}}}3$입니다.\n또 같은 삼각형의 넓이를 두 방법으로 계산하면 $\\frac12 AP\\cdot PB=\\frac12 AB\\cdot PH$이므로\n$PH=\\frac{AP\\cdot PB}{AB}=\\frac{2^{\\frac{1}{3}}\\cdot2^{\\frac{11}{6}}}{3\\cdot2^{\\frac{1}{3}}}=\\frac{2^{\\frac{11}{6}}}3$입니다.\n**③ 넓이와 지수 비교.** $PH\\perp AB$이므로 $[PAH]=\\frac12 AH\\cdot PH=\\frac12\\cdot\\frac{2^{\\frac{1}{3}}}3\\cdot\\frac{2^{\\frac{11}{6}}}3=2^{\\frac{1}{3}+\\frac{11}{6}-1}\\cdot3^{-2}=2^{\\frac{7}{6}}\\cdot3^{-2}$입니다.\n$x=6$, $y=7$은 서로소이고 $z=-2$이므로 $x+y-z=6+7-(-2)=15$입니다.\n<img src=\"assets/solutions/22_금당고_1학기_중간_고2_수학I/q19_solution.svg\" alt=\"지름 AB인 원의 직각삼각형과 수선의 발 H\" class=\"solution-img\" />",
     "questionNumber": 19,
     "curriculum": "H15",
     "standardCourse": "수학I",

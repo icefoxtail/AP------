@@ -87,7 +87,7 @@ window.questionBank = [
       "$0.1 < \\sqrt{0.1}$"
     ],
     "answer": "④",
-    "solution": "① $\\sqrt3<3$이므로 $-\\sqrt3>-3$이다.\n② $50>49$에서 $\\sqrt{50}>7$이다.\n③ $13<16$이므로 $\\sqrt{13}/3<4/3$이다.\n④ $11<13$에서 $\\sqrt{11}<\\sqrt{13}$, 따라서 $1/\\sqrt{11}>1/\\sqrt{13}$이고, 음수를 취하면 $-1/\\sqrt{11}<-1/\\sqrt{13}$이다.\n⑤ $0.1$과 $\\sqrt{0.1}$은 양수이고, 제곱하면 각각 $0.01$과 $0.1$이다. $0.01<0.1$이므로 $0.1<\\sqrt{0.1}$이다. 틀린 것은 ④.",
+    "solution": "① $\\sqrt3<3$이므로 $-\\sqrt3>-3$이다.\n② $50>49$에서 $\\sqrt{50}>7$이다.\n③ $13<16$이므로 $\\sqrt{13}/3<\\frac{4}{3}$이다.\n④ $11<13$에서 $\\sqrt{11}<\\sqrt{13}$, 따라서 $1/\\sqrt{11}>1/\\sqrt{13}$이고, 음수를 취하면 $-1/\\sqrt{11}<-1/\\sqrt{13}$이다.\n⑤ $0.1$과 $\\sqrt{0.1}$은 양수이고, 제곱하면 각각 $0.01$과 $0.1$이다. $0.01<0.1$이므로 $0.1<\\sqrt{0.1}$이다. 틀린 것은 ④.",
     "sourceQid": "q2",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "하",
@@ -201,7 +201,7 @@ window.questionBank = [
       "수직선은 무리수에 대응하는 점들로 완전히 메울 수 있다."
     ],
     "answer": "⑤",
-    "solution": "유리수와 무리수를 합친 실수 전체가 수직선의 점과 일대일 대응한다. 따라서 ①은 맞다.\n서로 다른 두 유리수·자연수·실수 사이에는 각각 ② 무수한 무리수, ③ 무수한 유리수, ④ 무수한 실수가 존재한다.\n⑤ 수직선을 무리수만으로 메울 수 없다. 예를 들어 점 $0,1,1/2$은 유리수에 대응하므로 ⑤가 틀리다.",
+    "solution": "유리수와 무리수를 합친 실수 전체가 수직선의 점과 일대일 대응한다. 따라서 ①은 맞다.\n서로 다른 두 유리수·자연수·실수 사이에는 각각 ② 무수한 무리수, ③ 무수한 유리수, ④ 무수한 실수가 존재한다.\n⑤ 수직선을 무리수만으로 메울 수 없다. 예를 들어 점 $0,1,\\frac{1}{2}$은 유리수에 대응하므로 ⑤가 틀리다.",
     "sourceQid": "q4",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "하",
@@ -429,7 +429,7 @@ window.questionBank = [
       "$-\\sqrt{48}=-4\\sqrt{3}$"
     ],
     "answer": "③",
-    "solution": "① $\\sqrt{32}=4\\sqrt2$, ② $\\sqrt{200}=10\\sqrt2$.\n③ $\\sqrt{75/4}=\\sqrt{75}/2=5\\sqrt3/2$이고, 보기의 $5\\sqrt3/4$가 아니다.\n④ $\\sqrt{90}=3\\sqrt{10}$, ⑤ $-\\sqrt{48}=-4\\sqrt3$. 따라서 ③.",
+    "solution": "① $\\sqrt{32}=4\\sqrt2$, ② $\\sqrt{200}=10\\sqrt2$.\n③ $\\sqrt{\\frac{75}{4}}=\\sqrt{75}/2=5\\sqrt3/2$이고, 보기의 $5\\sqrt3/4$가 아니다.\n④ $\\sqrt{90}=3\\sqrt{10}$, ⑤ $-\\sqrt{48}=-4\\sqrt3$. 따라서 ③.",
     "sourceQid": "q8",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "하",
@@ -486,7 +486,7 @@ window.questionBank = [
       "$\\frac{a}{64}$"
     ],
     "answer": "②",
-    "solution": "$\\sqrt{a^2/64}=\\sqrt{a^2}/8=|a|/8$.\n조건 $a<0$이므로 $|a|=-a$이다.\n따라서 $-a/8$, 정답 ②. 조건을 빼고 $a/8$로 적으면 틀린다.",
+    "solution": "$\\sqrt{a^2/64}=\\sqrt{a^2}/8=|a|/8$.\n조건 $a<0$이므로 $|a|=-a$이다.\n따라서 $-\\frac{a}{8}$, 정답 ②. 조건을 빼고 $\\frac{a}{8}$로 적으면 틀린다.",
     "sourceQid": "q9",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "하",
@@ -606,7 +606,7 @@ window.questionBank = [
       "$6$개"
     ],
     "answer": "①",
-    "solution": "$3.143$은 유한소수이므로 유리수.\n$2.\\dot{7}=2.777\\cdots=25/9$이므로 $\\sqrt{2.\\dot{7}}=5/3$은 유리수.\n$\\sqrt5$가 무리수이고 $2$는 유리수이므로 $\\sqrt5-2$는 무리수이다.\n또한 $\\sqrt{6.4}=\\sqrt{32/5}=4\\sqrt{10}/5$이고 $\\sqrt{10}$은 무리수이므로 이 수도 무리수이다.\n$(-\\sqrt2)^2=2$이고 $1.0232323\\cdots$는 소수점 아래에서 $23$이 반복되는 순환소수이므로 유리수이다.\n무리수는 2개, 정답 ①.",
+    "solution": "$3.143$은 유한소수이므로 유리수.\n$2.\\dot{7}=2.777\\cdots=\\frac{25}{9}$이므로 $\\sqrt{2.\\dot{7}}=\\frac{5}{3}$은 유리수.\n$\\sqrt5$가 무리수이고 $2$는 유리수이므로 $\\sqrt5-2$는 무리수이다.\n또한 $\\sqrt{6.4}=\\sqrt{\\frac{32}{5}}=4\\sqrt{10}/5$이고 $\\sqrt{10}$은 무리수이므로 이 수도 무리수이다.\n$(-\\sqrt2)^2=2$이고 $1.0232323\\cdots$는 소수점 아래에서 $23$이 반복되는 순환소수이므로 유리수이다.\n무리수는 2개, 정답 ①.",
     "sourceQid": "q11",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "중",
@@ -725,7 +725,7 @@ window.questionBank = [
       "$\\frac{9}{4}$"
     ],
     "answer": "③",
-    "solution": "합과 차의 곱 공식 $ (u+v)(u-v)=u^2-v^2$을 사용하면 $(3x+a)(3x-a)=9x^2-a^2$.\n주어진 식과 비교해 $a^2=9/4$.\n$a>0$이므로 $a=3/2$, 정답 ③.",
+    "solution": "합과 차의 곱 공식 $ (u+v)(u-v)=u^2-v^2$을 사용하면 $(3x+a)(3x-a)=9x^2-a^2$.\n주어진 식과 비교해 $a^2=\\frac{9}{4}$.\n$a>0$이므로 $a=\\frac{3}{2}$, 정답 ③.",
     "sourceQid": "q13",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "하",
@@ -898,7 +898,7 @@ window.questionBank = [
       "$\\left(y+\\frac{1}{3}\\right)\\left(y-\\frac{1}{3}\\right)=y^2-\\frac{1}{9}$"
     ],
     "answer": "②",
-    "solution": "① $(x+9)(x-9)=x^2-81$.\n② $(-4+x)(-4-x)=(-4)^2-x^2=16-x^2$이므로 보기의 $x^2-16$은 틀리다.\n③ $(5-2a)(5+2a)=25-4a^2$.\n④ $(-x-y)(x-y)=-(x+y)(x-y)=y^2-x^2$.\n⑤ $(y+1/3)(y-1/3)=y^2-1/9$. 정답 ②.",
+    "solution": "① $(x+9)(x-9)=x^2-81$.\n② $(-4+x)(-4-x)=(-4)^2-x^2=16-x^2$이므로 보기의 $x^2-16$은 틀리다.\n③ $(5-2a)(5+2a)=25-4a^2$.\n④ $(-x-y)(x-y)=-(x+y)(x-y)=y^2-x^2$.\n⑤ $(y+\\frac{1}{3})(y-\\frac{1}{3})=y^2-\\frac{1}{9}$. 정답 ②.",
     "sourceQid": "q16",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "하",
@@ -1012,7 +1012,7 @@ window.questionBank = [
       "$(-x-5)(-x+5)=x^2-25$"
     ],
     "answer": "②",
-    "solution": "① $-x(x-5)=-x^2+5x$.\n② $(2x+y/2)^2=4x^2+2xy+y^2/4$이므로 보기의 중간항 $xy$가 틀리다.\n③ $(x+3)(2x-1)=2x^2+5x-3$.\n④ $(x+3)(x-5)=x^2-2x-15$.\n⑤ $(-x-5)(-x+5)=x^2-25$. 정답 ②.",
+    "solution": "① $-x(x-5)=-x^2+5x$.\n② $(2x+\\frac{y}{2})^2=4x^2+2xy+y^2/4$이므로 보기의 중간항 $xy$가 틀리다.\n③ $(x+3)(2x-1)=2x^2+5x-3$.\n④ $(x+3)(x-5)=x^2-2x-15$.\n⑤ $(-x-5)(-x+5)=x^2-25$. 정답 ②.",
     "sourceQid": "q18",
     "sourceMode": "ORIGINAL",
     "learningDifficulty": "하",

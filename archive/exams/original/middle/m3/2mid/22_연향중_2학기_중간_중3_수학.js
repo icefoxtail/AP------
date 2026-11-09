@@ -147,7 +147,7 @@ window.examData = {
         "$\\dfrac{3}{5}$"
       ],
       "answer": "②",
-      "solution": "$\\triangle ABC$는 $A$에서 직각이고 $AB=4$, $AC=3$, $BC=5$이다. $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.<br>$\\triangle ABC$의 넓이를 두 방식으로 쓰면 $\\dfrac12\\times4\\times3=\\dfrac12\\times5\\times AH$이므로 $AH=\\dfrac{12}{5}$이다.<br>$\\triangle ACH$와 $\\triangle BCA$는 닮음이므로 $\\dfrac{CH}{AC}=\\dfrac{AC}{BC}$이다. 따라서 $CH=\\dfrac{AC^2}{BC}=\\dfrac95$이다.<br>$x=\\angle CAH$에서 맞은편 변은 $CH$, 이웃변은 $AH$이므로 $\\tan x=\\dfrac{CH}{AH}=\\dfrac{9/5}{12/5}=\\dfrac34$이다. 따라서 ②이다.",
+      "solution": "$\\triangle ABC$는 $A$에서 직각이고 $AB=4$, $AC=3$, $BC=5$이다. $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.<br>$\\triangle ABC$의 넓이를 두 방식으로 쓰면 $\\dfrac12\\times4\\times3=\\dfrac12\\times5\\times AH$이므로 $AH=\\dfrac{12}{5}$이다.<br>$\\triangle ACH$와 $\\triangle BCA$는 닮음이므로 $\\dfrac{CH}{AC}=\\dfrac{AC}{BC}$이다. 따라서 $CH=\\dfrac{AC^2}{BC}=\\dfrac95$이다.<br>$x=\\angle CAH$에서 맞은편 변은 $CH$, 이웃변은 $AH$이므로 $\\tan x=\\dfrac{CH}{AH}=\\dfrac{\\frac{9}{5}}{\\frac{12}{5}}=\\dfrac34$이다. 따라서 ②이다.",
       "sourceQid": "q03",
       "sourceExamId": "22_연향중_2학기_중간_중3_수학",
       "provenance": "ORIGINAL",

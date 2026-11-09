@@ -17,7 +17,7 @@ window.questionBank = [
       "지수법칙"
     ],
     "answer": "①",
-    "solution": "각 밑을 $3$으로 맞춰 지수를 계산한다. $(3^{-3/4})^2=3^{-3/2}$이고, $\\sqrt3=3^{1/2}$이므로 전체 식은 $3^{-3/2+1/2-3/4}=3^{-7/4}$이다. 따라서 정답은 ①이다.",
+    "solution": "각 밑을 $3$으로 맞춰 지수를 계산한다. $(3^{-\\frac{3}{4}})^2=3^{-\\frac{3}{2}}$이고, $\\sqrt3=3^{\\frac{1}{2}}$이므로 전체 식은 $3^{-\\frac{3}{2}+\\frac{1}{2}-\\frac{3}{4}}=3^{-\\frac{7}{4}}$이다. 따라서 정답은 ①이다.",
     "category": "거듭제곱의 계산",
     "originalCategory": "거듭제곱의 계산",
     "standardCourse": "수학I",
@@ -68,7 +68,7 @@ window.questionBank = [
       "로그의 성질"
     ],
     "answer": "②",
-    "solution": "로그의 성질로 묶으면 $\\frac12\\log_5 7-2-\\frac12\\log_5 35=\\frac12\\log_5(7/35)-2=\\frac12\\log_5(1/5)-2=-\\frac12-2=-\\frac52$이다. 따라서 정답은 ②이다.",
+    "solution": "로그의 성질로 묶으면 $\\frac12\\log_5 7-2-\\frac12\\log_5 35=\\frac12\\log_5(\\frac{7}{35})-2=\\frac12\\log_5(\\frac{1}{5})-2=-\\frac12-2=-\\frac52$이다. 따라서 정답은 ②이다.",
     "category": "로그의 성질과 계산",
     "originalCategory": "로그의 성질과 계산",
     "standardCourse": "수학I",
@@ -119,7 +119,7 @@ window.questionBank = [
       "거듭제곱근의 대소 비교"
     ],
     "answer": "①",
-    "solution": "세 수를 모두 6제곱근 꼴로 비교한다. $\\sqrt[3]{\\sqrt{31}}=31^{1/6}$, $\\sqrt[3]5=25^{1/6}$, $\\sqrt3=27^{1/6}$이다. $25<27<31$이고 양수의 6제곱근은 증가하므로 $\\sqrt[3]5<\\sqrt3<\\sqrt[3]{\\sqrt{31}}$이다. 따라서 정답은 ①이다.",
+    "solution": "세 수를 모두 6제곱근 꼴로 비교한다. $\\sqrt[3]{\\sqrt{31}}=31^{\\frac{1}{6}}$, $\\sqrt[3]5=25^{\\frac{1}{6}}$, $\\sqrt3=27^{\\frac{1}{6}}$이다. $25<27<31$이고 양수의 6제곱근은 증가하므로 $\\sqrt[3]5<\\sqrt3<\\sqrt[3]{\\sqrt{31}}$이다. 따라서 정답은 ①이다.",
     "category": "거듭제곱근의 대소 비교",
     "originalCategory": "거듭제곱근의 대소 비교",
     "standardCourse": "수학I",
@@ -221,7 +221,7 @@ window.questionBank = [
       "로그부등식"
     ],
     "answer": "⑤",
-    "solution": "밑 $1/3$은 1보다 작으므로 로그함수는 감소한다. 따라서 $\\log_{1/3}x>2$이면 $x<(1/3)^2=1/9$이고, 로그의 정의역에서 $x>0$이다. 해는 $0<x<1/9$이므로 정답은 ⑤이다.",
+    "solution": "밑 $\\frac{1}{3}$은 1보다 작으므로 로그함수는 감소한다. 따라서 $\\log_{\\frac{1}{3}}x>2$이면 $x<(\\frac{1}{3})^2=\\frac{1}{9}$이고, 로그의 정의역에서 $x>0$이다. 해는 $0<x<1/9$이므로 정답은 ⑤이다.",
     "category": "로그부등식",
     "originalCategory": "로그부등식",
     "standardCourse": "수학I",
@@ -432,7 +432,7 @@ window.questionBank = [
       "지수함수의 그래프와 좌표"
     ],
     "answer": "②",
-    "solution": "교점 $P$는 $5^x-4=5^{x-1}$에서 $4\\cdot5^{x-1}=4$이므로 $P=(1,1)$이다. 중점 조건으로 $a+b=2$, $f(a)+g(b)=2$를 얻는다. $u=5^a$라 두면 $5^{b-1}=5^{1-a}=5/u$이므로 $u+5/u=6$, 즉 $(u-1)(u-5)=0$이다. $(a,b)=(1,1)$은 서로 다른 두 실수 조건에 어긋나므로 $(a,b)=(0,2)$이다. 따라서 $A=(0,-3)$, $B=(2,5)$이고 $AB=\\sqrt{2^2+8^2}=\\sqrt{68}$이다.",
+    "solution": "교점 $P$는 $5^x-4=5^{x-1}$에서 $4\\cdot5^{x-1}=4$이므로 $P=(1,1)$이다. 중점 조건으로 $a+b=2$, $f(a)+g(b)=2$를 얻는다. $u=5^a$라 두면 $5^{b-1}=5^{1-a}=\\frac{5}{u}$이므로 $u+\\frac{5}{u}=6$, 즉 $(u-1)(u-5)=0$이다. $(a,b)=(1,1)$은 서로 다른 두 실수 조건에 어긋나므로 $(a,b)=(0,2)$이다. 따라서 $A=(0,-3)$, $B=(2,5)$이고 $AB=\\sqrt{2^2+8^2}=\\sqrt{68}$이다.",
     "category": "지수함수의 그래프와 좌표",
     "originalCategory": "지수함수의 그래프와 좌표",
     "standardCourse": "수학I",
@@ -488,7 +488,7 @@ window.questionBank = [
       "로그함수의 그래프의 평행이동과 대칭이동"
     ],
     "answer": "①",
-    "solution": "ㄱ은 $\\log_7(5/x)=\\log_7 5-\\log_7x$이므로 $y=\\log_7x$를 $x$축 대칭한 뒤 위로 $\\log_7 5$만큼 옮겨 얻는다. ㄴ은 $1-2x=2(1/2-x)$이므로 $y=\\log_7x$를 직선 $x=1/4$에 대칭한 뒤 위로 $\\log_7 2$만큼 옮겨 얻는다. ㄷ은 로그함수에서 지수함수로 바뀌므로 이동·대칭만으로 얻을 수 없다. ㄹ은 세로 확대이므로 이동·대칭만으로 얻을 수 없다. 옳은 것은 ㄱ, ㄴ이고 정답은 ①이다.",
+    "solution": "ㄱ은 $\\log_7(\\frac{5}{x})=\\log_7 5-\\log_7x$이므로 $y=\\log_7x$를 $x$축 대칭한 뒤 위로 $\\log_7 5$만큼 옮겨 얻는다. ㄴ은 $1-2x=2(\\frac{1}{2}-x)$이므로 $y=\\log_7x$를 직선 $x=\\frac{1}{4}$에 대칭한 뒤 위로 $\\log_7 2$만큼 옮겨 얻는다. ㄷ은 로그함수에서 지수함수로 바뀌므로 이동·대칭만으로 얻을 수 없다. ㄹ은 세로 확대이므로 이동·대칭만으로 얻을 수 없다. 옳은 것은 ㄱ, ㄴ이고 정답은 ①이다.",
     "category": "로그함수 그래프의 이동과 대칭",
     "originalCategory": "로그함수 그래프의 이동과 대칭",
     "standardCourse": "수학I",
@@ -755,7 +755,7 @@ window.questionBank = [
       "삼각함수와 이차방정식의 근과 계수의 관계"
     ],
     "answer": "③",
-    "solution": "두 근의 합과 곱은 각각 $\\sin\\theta+\\cos\\theta=-4/5$, $\\sin\\theta\\cos\\theta=-p/5$이다. $(\\sin\\theta+\\cos\\theta)^2=1+2\\sin\\theta\\cos\\theta$이므로 $16/25=1+2\\sin\\theta\\cos\\theta$, 따라서 곱은 $-9/50$이다. $-p/5=-9/50$에서 $p=9/10$이고 정답은 ③이다.",
+    "solution": "두 근의 합과 곱은 각각 $\\sin\\theta+\\cos\\theta=-\\frac{4}{5}$, $\\sin\\theta\\cos\\theta=-\\frac{p}{5}$이다. $(\\sin\\theta+\\cos\\theta)^2=1+2\\sin\\theta\\cos\\theta$이므로 $\\frac{16}{25}=1+2\\sin\\theta\\cos\\theta$, 따라서 곱은 $-\\frac{9}{50}$이다. $-\\frac{p}{5}=-\\frac{9}{50}$에서 $p=\\frac{9}{10}$이고 정답은 ③이다.",
     "category": "삼각함수와 근과 계수의 관계",
     "originalCategory": "삼각함수와 근과 계수의 관계",
     "standardCourse": "수학I",
@@ -808,7 +808,7 @@ window.questionBank = [
       "로그의 밑의 변환과 연립방정식"
     ],
     "answer": "⑤",
-    "solution": "(가)의 공통값을 $r>0$라 두면 $a=r^2$, $b=r^3$, $c=r^5$이다.\n\n(나)에서 $\\log_2(bc/a)=\\log_2(r^{3+5-2})=\\log_2(r^6)=3$이므로 $\\log_2 r=1/2$이다. 따라서\n$\\log_2 a=1$, $\\log_2 b=3/2$, $\\log_2 c=5/2$이다.\n\n$M=\\log_2 m$, $N=\\log_2 n$이라 하면 밑 변환으로\n$\\log_m b=(3/2)/M$, $\\log_n c=(5/2)/N$이다.\n주어진 식에 대입하면\n$1 \\times (3/2)/M \\times (5/2)/N=1$이므로 $MN=15/4$이다.\n\n따라서 $\\log_2 m \\times \\log_2 n=15/4$이고 정답은 ⑤이다.",
+    "solution": "(가)의 공통값을 $r>0$라 두면 $a=r^2$, $b=r^3$, $c=r^5$이다.\n\n(나)에서 $\\log_2(bc/a)=\\log_2(r^{3+5-2})=\\log_2(r^6)=3$이므로 $\\log_2 r=\\frac{1}{2}$이다. 따라서\n$\\log_2 a=1$, $\\log_2 b=\\frac{3}{2}$, $\\log_2 c=\\frac{5}{2}$이다.\n\n$M=\\log_2 m$, $N=\\log_2 n$이라 하면 밑 변환으로\n$\\log_m b=(\\frac{3}{2})/M$, $\\log_n c=(\\frac{5}{2})/N$이다.\n주어진 식에 대입하면\n$1 \\times (\\frac{3}{2})/M \\times (\\frac{5}{2})/N=1$이므로 $MN=\\frac{15}{4}$이다.\n\n따라서 $\\log_2 m \\times \\log_2 n=\\frac{15}{4}$이고 정답은 ⑤이다.",
     "category": "로그의 밑 변환과 연립 관계",
     "originalCategory": "로그의 밑 변환과 연립 관계",
     "standardCourse": "수학I",
@@ -916,7 +916,7 @@ window.questionBank = [
       "로그함수의 활용과 최댓값 최솟값"
     ],
     "answer": "④",
-    "solution": "$f(a+b)=2$이므로 $a+b=4$이다. $|f(a)-f(b)|=|\\log_2(a/b)|\\le3$에서 $1/8\\le a/b\\le8$이다. 합이 4로 고정된 양수 $a,b$의 곱은 두 수가 같을 때 커지고, 허용된 비가 끝값 8 또는 $1/8$일 때 최소이다. 예를 들어 $a=8b$, $9b=4$이면 $a=32/9$, $b=4/9$, $m=ab=128/81$이다. 그러므로 $f(m)=\\log_2(128/81)=7-\\log_2 81$이어서 $k=81$이다. 정답은 ④이다.",
+    "solution": "$f(a+b)=2$이므로 $a+b=4$이다. $|f(a)-f(b)|=|\\log_2(\\frac{a}{b})|\\le3$에서 $1/8\\le a/b\\le8$이다. 합이 4로 고정된 양수 $a,b$의 곱은 두 수가 같을 때 커지고, 허용된 비가 끝값 8 또는 $\\frac{1}{8}$일 때 최소이다. 예를 들어 $a=8b$, $9b=4$이면 $a=\\frac{32}{9}$, $b=\\frac{4}{9}$, $m=ab=\\frac{128}{81}$이다. 그러므로 $f(m)=\\log_2(\\frac{128}{81})=7-\\log_2 81$이어서 $k=81$이다. 정답은 ④이다.",
     "category": "로그함수의 최솟값",
     "originalCategory": "로그함수의 최솟값",
     "standardCourse": "수학I",
@@ -970,7 +970,7 @@ window.questionBank = [
       "지수함수의 실생활 활용"
     ],
     "answer": "③",
-    "solution": "$T(0)=125$에서 $k=100$이다. 1분 후 $105=25+100a$이므로 $a=4/5$이다. $T(t)=89$일 때 $64=100(4/5)^t$, 즉 $(4/5)^t=16/25=(4/5)^2$이므로 $t=2$분이다. 정답은 ③이다.",
+    "solution": "$T(0)=125$에서 $k=100$이다. 1분 후 $105=25+100a$이므로 $a=\\frac{4}{5}$이다. $T(t)=89$일 때 $64=100(\\frac{4}{5})^t$, 즉 $(\\frac{4}{5})^t=\\frac{16}{25}=(\\frac{4}{5})^2$이므로 $t=2$분이다. 정답은 ③이다.",
     "category": "지수함수의 실생활 활용",
     "originalCategory": "지수함수의 실생활 활용",
     "standardCourse": "수학I",
@@ -1119,7 +1119,7 @@ window.questionBank = [
       "삼각함수와 로그방정식"
     ],
     "answer": "33",
-    "solution": "로그가 정의되려면 $\\sin\\theta>0$, $\\cos\\theta>0$이므로 두 값은 양수이다. 주어진 식에서 $\\log_3(\\sin\\theta\\cos\\theta)=-2$이므로 $\\sin\\theta\\cos\\theta=1/9$이다. 따라서 $(\\sin\\theta+\\cos\\theta)^2=1+2/9=11/9$, 즉 $\\sin\\theta+\\cos\\theta=\\sqrt{11}/3$이다. 그러면 $\\log_3(\\sin\\theta+\\cos\\theta)=\\frac12\\log_3 11-1$이다. 이를 $\\frac12(\\log_3x-3)$과 같게 놓으면 $\\log_3x=\\log_3 11+1=\\log_3 33$이므로 $x=33$이다.",
+    "solution": "로그가 정의되려면 $\\sin\\theta>0$, $\\cos\\theta>0$이므로 두 값은 양수이다. 주어진 식에서 $\\log_3(\\sin\\theta\\cos\\theta)=-2$이므로 $\\sin\\theta\\cos\\theta=\\frac{1}{9}$이다. 따라서 $(\\sin\\theta+\\cos\\theta)^2=1+\\frac{2}{9}=\\frac{11}{9}$, 즉 $\\sin\\theta+\\cos\\theta=\\sqrt{11}/3$이다. 그러면 $\\log_3(\\sin\\theta+\\cos\\theta)=\\frac12\\log_3 11-1$이다. 이를 $\\frac12(\\log_3x-3)$과 같게 놓으면 $\\log_3x=\\log_3 11+1=\\log_3 33$이므로 $x=33$이다.",
     "category": "삼각함수와 로그방정식",
     "originalCategory": "삼각함수와 로그방정식",
     "standardCourse": "수학I",

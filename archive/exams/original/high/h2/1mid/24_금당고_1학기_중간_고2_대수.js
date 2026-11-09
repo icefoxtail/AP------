@@ -419,7 +419,7 @@ window.questionBank = [
       "오류판별"
     ],
     "wide": false,
-    "solution": "주어진 식은 $n\\left(\\frac{3}{2}\\right)^{m/4}$ 이다. 이 값이 자연수가 되려면 $\\left(\\frac{3}{2}\\right)^{m/4}$ 가 유리수가 되어야 하므로 $m$ 은 4의 배수여야 한다. $m=4k$ 로 두면 식은 $n\\left(\\frac{3}{2}\\right)^k = \\frac{n\\cdot 3^k}{2^k}$ 이다. 이를 자연수로 만들기 위한 최소의 $n$ 은 $2^k$ 이므로 $m+n = 4k + 2^k$ 이다. $k=1$ 일 때 $m=4, n=2$ 로 최솟값 $6$ 을 가지므로 정답은 ①이다.",
+    "solution": "주어진 식은 $n\\left(\\frac{3}{2}\\right)^{\\frac{m}{4}}$ 이다. 이 값이 자연수가 되려면 $\\left(\\frac{3}{2}\\right)^{\\frac{m}{4}}$ 가 유리수가 되어야 하므로 $m$ 은 4의 배수여야 한다. $m=4k$ 로 두면 식은 $n\\left(\\frac{3}{2}\\right)^k = \\frac{n\\cdot 3^k}{2^k}$ 이다. 이를 자연수로 만들기 위한 최소의 $n$ 은 $2^k$ 이므로 $m+n = 4k + 2^k$ 이다. $k=1$ 일 때 $m=4, n=2$ 로 최솟값 $6$ 을 가지므로 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
@@ -493,7 +493,7 @@ window.questionBank = [
       "원"
     ],
     "wide": false,
-    "solution": "$y=a$ 와 곡선이 만나는 점은 $\\sin\\frac{\\pi}{b}x = 1$ 일 때이므로 $x=\\frac{b}{2}, \\frac{5b}{2}$ 이다. 따라서 $A\\left(\\frac{b}{2}, a\\right)$, $B\\left(\\frac{5b}{2}, a\\right)$ 이다. 삼각형 OAB 의 넓이는 $ab$ 이므로 $ab=4$ 이다. 또 기울기 곱은 $\\frac{a}{b/2} \\cdot \\frac{a}{5b/2} = \\frac{4a^2}{5b^2} = \\frac{16}{5}$ 이므로 $a=2b$ 이다. 이를 $ab=4$ 에 대입하면 $b=\\sqrt{2}$, $a=2\\sqrt{2}$ 이고, 따라서 $a+b=3\\sqrt{2}$ 이다.",
+    "solution": "$y=a$ 와 곡선이 만나는 점은 $\\sin\\frac{\\pi}{b}x = 1$ 일 때이므로 $x=\\frac{b}{2}, \\frac{5b}{2}$ 이다. 따라서 $A\\left(\\frac{b}{2}, a\\right)$, $B\\left(\\frac{5b}{2}, a\\right)$ 이다. 삼각형 OAB 의 넓이는 $ab$ 이므로 $ab=4$ 이다. 또 기울기 곱은 $\\frac{a}{\\frac{b}{2}} \\cdot \\frac{a}{5b/2} = \\frac{4a^2}{5b^2} = \\frac{16}{5}$ 이므로 $a=2b$ 이다. 이를 $ab=4$ 에 대입하면 $b=\\sqrt{2}$, $a=2\\sqrt{2}$ 이고, 따라서 $a+b=3\\sqrt{2}$ 이다.",
     "level": "중",
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
@@ -649,7 +649,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$y=\\log_2 x$ 를 아래로 3만큼 평행이동하면 $y=\\log_2 x-3$ 이다. 이를 $x$ 축 대칭이동하면 $y=-(\\log_2 x-3)=-\\log_2 x+3$ 이다. 또 $-\\log_2 x = \\log_{1/2}x$ 이므로 $-\\log_2 x+3 = \\log_{1/2}x + \\log_{1/2}\\frac{1}{8} = \\log_{1/2}\\left(\\frac{x}{8}\\right)$ 이다. 따라서 $a=\\frac{1}{2}$, $b=\\frac{1}{8}$ 이고, $a+b=\\frac{5}{8}$ 이다.",
+    "solution": "$y=\\log_2 x$ 를 아래로 3만큼 평행이동하면 $y=\\log_2 x-3$ 이다. 이를 $x$ 축 대칭이동하면 $y=-(\\log_2 x-3)=-\\log_2 x+3$ 이다. 또 $-\\log_2 x = \\log_{\\frac{1}{2}}x$ 이므로 $-\\log_2 x+3 = \\log_{\\frac{1}{2}}x + \\log_{\\frac{1}{2}}\\frac{1}{8} = \\log_{\\frac{1}{2}}\\left(\\frac{x}{8}\\right)$ 이다. 따라서 $a=\\frac{1}{2}$, $b=\\frac{1}{8}$ 이고, $a+b=\\frac{5}{8}$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "로그함수",

@@ -56,7 +56,7 @@ window.examData = {
         "$\\dfrac{3\\sqrt{5}-5}{5}\\text{ cm}$"
       ],
       "answer": "①",
-      "solution": "$\\angle A=30^\\circ$이고 $\\cos60^\\circ=BC/AB$이다.<br>$AB=BC/\\cos60^\\circ$이다. (코사인의 정의를 이용했다.)<br>$AB=3/(1/2)$이다. (주어진 길이와 삼각비를 대입했다.)<br>$AB=6$ cm이다.<br>$\\tan60^\\circ=AC/BC$이므로 $AC=BC\\tan60^\\circ$이다. (탄젠트의 정의를 이용했다.)<br>$AC=3\\sqrt3$ cm이다.<br>접선의 길이는 한 점에서 그은 두 접선에서 같고, 직각 꼭짓점 C에서 접점까지의 접선 길이는 반지름 $r$과 같다.<br>A, B에서 접점까지의 길이를 각각 $p,q$라 하면 $AB=p+q$, $AC=p+r$, $BC=q+r$이다.<br>$AC+BC-AB=(p+r)+(q+r)-(p+q)$이다. (접선 길이의 식을 대입했다.)<br>$AC+BC-AB=2r$이다. (같은 항을 정리했다.)<br>$2r=AC+BC-AB$이다.<br>$2r=3\\sqrt3+3-6$이다. (변의 길이를 대입했다.)<br>$2r=3\\sqrt3-3$이다. (정리했다.)<br>$r=\\dfrac{3\\sqrt3-3}{2}$ cm이므로 ①이다."
+      "solution": "$\\angle A=30^\\circ$이고 $\\cos60^\\circ=BC/AB$이다.<br>$AB=BC/\\cos60^\\circ$이다. (코사인의 정의를 이용했다.)<br>$AB=3/(\\frac{1}{2})$이다. (주어진 길이와 삼각비를 대입했다.)<br>$AB=6$ cm이다.<br>$\\tan60^\\circ=AC/BC$이므로 $AC=BC\\tan60^\\circ$이다. (탄젠트의 정의를 이용했다.)<br>$AC=3\\sqrt3$ cm이다.<br>접선의 길이는 한 점에서 그은 두 접선에서 같고, 직각 꼭짓점 C에서 접점까지의 접선 길이는 반지름 $r$과 같다.<br>A, B에서 접점까지의 길이를 각각 $p,q$라 하면 $AB=p+q$, $AC=p+r$, $BC=q+r$이다.<br>$AC+BC-AB=(p+r)+(q+r)-(p+q)$이다. (접선 길이의 식을 대입했다.)<br>$AC+BC-AB=2r$이다. (같은 항을 정리했다.)<br>$2r=AC+BC-AB$이다.<br>$2r=3\\sqrt3+3-6$이다. (변의 길이를 대입했다.)<br>$2r=3\\sqrt3-3$이다. (정리했다.)<br>$r=\\dfrac{3\\sqrt3-3}{2}$ cm이므로 ①이다."
     },
     {
       "id": 5,
@@ -266,7 +266,7 @@ window.examData = {
         "$29\\pi$"
       ],
       "answer": "①",
-      "solution": "점 P에서 원에 그은 두 할선에 대해 $PA\\times PB=PC\\times PD$이다.<br>P, A, B 순서로 놓여 있으므로 $PB=PA+AB$이다.<br>$PB=3+5$이다.<br>$PB=8$이다.<br>P, C, D 순서로 놓여 있으므로 $PD=PC+CD$이다.<br>$PD=2+CD$이다.<br>$PA\\times PB=PC\\times PD$에 길이를 대입하면 $3\\times8=2(2+CD)$이다.<br>$24=4+2CD$이다. (양변의 곱을 계산했다.)<br>양변에서 4를 빼면 $20=2CD$이다.<br>양변을 2로 나누면 $CD=10$이다.<br>CD는 지름이므로 반지름은 $10/2$이다.<br>반지름은 5이다.<br>원의 넓이는 $\\pi r^2$이다.<br>$\\pi\\times5^2=25\\pi$이므로 ①이다."
+      "solution": "점 P에서 원에 그은 두 할선에 대해 $PA\\times PB=PC\\times PD$이다.<br>P, A, B 순서로 놓여 있으므로 $PB=PA+AB$이다.<br>$PB=3+5$이다.<br>$PB=8$이다.<br>P, C, D 순서로 놓여 있으므로 $PD=PC+CD$이다.<br>$PD=2+CD$이다.<br>$PA\\times PB=PC\\times PD$에 길이를 대입하면 $3\\times8=2(2+CD)$이다.<br>$24=4+2CD$이다. (양변의 곱을 계산했다.)<br>양변에서 4를 빼면 $20=2CD$이다.<br>양변을 2로 나누면 $CD=10$이다.<br>CD는 지름이므로 반지름은 $\\frac{10}{2}$이다.<br>반지름은 5이다.<br>원의 넓이는 $\\pi r^2$이다.<br>$\\pi\\times5^2=25\\pi$이므로 ①이다."
     },
     {
       "id": 20,

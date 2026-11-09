@@ -12,7 +12,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": "음의 지수는 역수로 바꾸고, 분수 지수는 거듭제곱근으로 바꾼다.\n$8^{-\\frac23}=\\frac1{8^{2/3}}=\\frac1{(\\sqrt[3]8)^2}=\\frac14$이다.\n따라서\n$12\\times8^{-\\frac23}=12\\times\\frac14=3$이므로 정답은 ①이다.",
+    "solution": "음의 지수는 역수로 바꾸고, 분수 지수는 거듭제곱근으로 바꾼다.\n$8^{-\\frac23}=\\frac1{8^{\\frac{2}{3}}}=\\frac1{(\\sqrt[3]8)^2}=\\frac14$이다.\n따라서\n$12\\times8^{-\\frac23}=12\\times\\frac14=3$이므로 정답은 ①이다.",
     "questionUid": "qid_v1_dbe8eeafdc1a85c05b09cb9b9a876ff84bbe778119df8e8daefd63763b35d14a",
     "sourceQid": 1,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -327,7 +327,7 @@ window.questionBank = [
       "$2^{\\frac{1}{2}} \\times 5^{\\frac{1}{2}} \\times 10^{\\frac{1}{2}} = 10$"
     ],
     "answer": "④",
-    "solution": "각 보기의 값을 확인한다.\n① $2^{-4}=4^{-2}=\\frac1{16}$이므로 참이다.\n② $(125^{2/3})^{1/2}=125^{1/3}=5$이므로 참이다.\n③ $6^{3/2}/24^{1/2}=\\sqrt{216/24}=3$이므로 참이다.\n④ $3^{1/\\sqrt2}\\times3^{1/\\sqrt2}=3^{\\sqrt2}$이고 $\\sqrt2\ne2$이므로 $9$와 다르다.\n⑤ $\\sqrt2\\sqrt5\\sqrt{10}=\\sqrt{100}=10$이므로 참이다.\n옳지 않은 것은 ④이다.",
+    "solution": "각 보기의 값을 확인한다.\n① $2^{-4}=4^{-2}=\\frac1{16}$이므로 참이다.\n② $(125^{\\frac{2}{3}})^{\\frac{1}{2}}=125^{\\frac{1}{3}}=5$이므로 참이다.\n③ $6^{\\frac{3}{2}}/24^{\\frac{1}{2}}=\\sqrt{\\frac{216}{24}}=3$이므로 참이다.\n④ $3^{1/\\sqrt2}\\times3^{1/\\sqrt2}=3^{\\sqrt2}$이고 $\\sqrt2\ne2$이므로 $9$와 다르다.\n⑤ $\\sqrt2\\sqrt5\\sqrt{10}=\\sqrt{100}=10$이므로 참이다.\n옳지 않은 것은 ④이다.",
     "questionUid": "qid_v1_cb4ecc0b09bac2969cfbe3bf2ad8f0d4db77aea5bfd7827d97fc7deaf31da070",
     "sourceQid": 5,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -404,7 +404,7 @@ window.questionBank = [
       "$a < c < b$"
     ],
     "answer": "⑤",
-    "solution": "$0<\\frac12<1$이므로 함수 $y=\\log_{1/2}x$는 감소한다.\n$3>2$이므로 $a=\\log_{1/2}3<\\log_{1/2}2=-1=c$이다.\n또 $\\frac13<\\frac12$이므로 $b=\\log_{1/2}\\frac13>\\log_{1/2}\\frac12=-1=c$이다.\n따라서 $a<c<b$이고 정답은 ⑤이다.",
+    "solution": "$0<\\frac12<1$이므로 함수 $y=\\log_{\\frac{1}{2}}x$는 감소한다.\n$3>2$이므로 $a=\\log_{\\frac{1}{2}}3<\\log_{\\frac{1}{2}}2=-1=c$이다.\n또 $\\frac13<\\frac12$이므로 $b=\\log_{\\frac{1}{2}}\\frac13>\\log_{\\frac{1}{2}}\\frac12=-1=c$이다.\n따라서 $a<c<b$이고 정답은 ⑤이다.",
     "questionUid": "qid_v1_2662ef5199414632ea6e4ea3ca6cc825739db44b1c67fcfe1faeb91624d6b2db",
     "sourceQid": 6,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -560,7 +560,7 @@ window.questionBank = [
       "그래프는 함수 $y=\\log_2 x$의 그래프를 평행이동하면 겹쳐진다."
     ],
     "answer": "⑤",
-    "solution": "$y=\\log_{1/2}(x+4)-2=-\\log_2(x+4)-2$이다.\n① 진수 조건은 $x+4>0$, 즉 $x>-4$이므로 참이다.\n② $x$축 대칭은 $y$값의 부호를 바꾸어 $y=\\log_2(x+4)+2$이므로 참이다.\n③ 점근선은 $x=-4$이므로 참이다.\n④ $x=-3$이면 $y=\\log_{1/2}1-2=-2$이므로 참이다.\n⑤ $\\log_2 x$의 평행이동은 증가함수인 성질을 유지하지만 주어진 함수는 감소함수이므로 거짓이다.\n정답은 ⑤이다.",
+    "solution": "$y=\\log_{\\frac{1}{2}}(x+4)-2=-\\log_2(x+4)-2$이다.\n① 진수 조건은 $x+4>0$, 즉 $x>-4$이므로 참이다.\n② $x$축 대칭은 $y$값의 부호를 바꾸어 $y=\\log_2(x+4)+2$이므로 참이다.\n③ 점근선은 $x=-4$이므로 참이다.\n④ $x=-3$이면 $y=\\log_{\\frac{1}{2}}1-2=-2$이므로 참이다.\n⑤ $\\log_2 x$의 평행이동은 증가함수인 성질을 유지하지만 주어진 함수는 감소함수이므로 거짓이다.\n정답은 ⑤이다.",
     "questionUid": "qid_v1_b061d9bf1df285d084c8ae7c2a4ec5c794011b3e63d9a7ec03c08ff507146e20",
     "sourceQid": 8,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -716,7 +716,7 @@ window.questionBank = [
       "$\\frac{4}{3}$"
     ],
     "answer": "②",
-    "solution": "두 근의 합이 $\\sin\\theta+\\cos\\theta=\\frac13$이므로\n$(\\sin\\theta+\\cos\\theta)^2=\\frac19$이다.\n한편 $\\sin^2\\theta+\\cos^2\\theta=1$이므로\n$\\frac19=1+2\\sin\\theta\\cos\\theta$이다.\n따라서 $\\sin\\theta\\cos\\theta=-\\frac49$이다.\n두 근의 곱은 $k/3$이므로 $k/3=-4/9$, 즉 $k=-4/3$이다.\n정답은 ②이다.",
+    "solution": "두 근의 합이 $\\sin\\theta+\\cos\\theta=\\frac13$이므로\n$(\\sin\\theta+\\cos\\theta)^2=\\frac19$이다.\n한편 $\\sin^2\\theta+\\cos^2\\theta=1$이므로\n$\\frac19=1+2\\sin\\theta\\cos\\theta$이다.\n따라서 $\\sin\\theta\\cos\\theta=-\\frac49$이다.\n두 근의 곱은 $\\frac{k}{3}$이므로 $\\frac{k}{3}=-\\frac{4}{9}$, 즉 $k=-\\frac{4}{3}$이다.\n정답은 ②이다.",
     "questionUid": "qid_v1_21e98cb0f96680ea3e20210734d50d04f104fbf903bc5b8f577f17c358e86277",
     "sourceQid": 10,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -798,7 +798,7 @@ window.questionBank = [
       "$13$"
     ],
     "answer": "③",
-    "solution": "안쪽부터 지수로 나타낸다.\n$\\sqrt a=a^{1/2}$이므로 $a\\sqrt a=a^{3/2}$이다.\n따라서 $\\sqrt[3]{a\\sqrt a}=a^{1/2}$이고\n$\\sqrt[4]{a\\cdot a^{1/2}}=a^{3/8}$이다.\n서로소인 분수는 $n/m=3/8$이므로 $m+n=8+3=11$이다.\n정답은 ③이다.",
+    "solution": "안쪽부터 지수로 나타낸다.\n$\\sqrt a=a^{\\frac{1}{2}}$이므로 $a\\sqrt a=a^{\\frac{3}{2}}$이다.\n따라서 $\\sqrt[3]{a\\sqrt a}=a^{\\frac{1}{2}}$이고\n$\\sqrt[4]{a\\cdot a^{\\frac{1}{2}}}=a^{\\frac{3}{8}}$이다.\n서로소인 분수는 $\\frac{n}{m}=\\frac{3}{8}$이므로 $m+n=8+3=11$이다.\n정답은 ③이다.",
     "questionUid": "qid_v1_a518b3dd339e9d9bdc4da0c74cc0494752ab0ec2f177f6b5749e422a142d7de9",
     "sourceQid": 11,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -1042,7 +1042,7 @@ window.questionBank = [
     ],
     "image": "assets/images/19_강남여고_1학기_중간_고2_수학I/q14.png",
     "answer": "②",
-    "solution": "$y$축과의 교점은 $A=(0,1/3)$, $B=(0,-1)$이다.\n두 곡선의 교점은\n$\\frac{2^x}{3}=2^x-2$\n에서 $2^x=3$, 즉 $x=\\log_2 3$이고 $y=1$이다. 따라서 $C=(\\log_2 3,1)$이다.\n$AB=1/3-(-1)=4/3$이고, $C$에서 $y$축까지의 거리는 $\\log_2 3$이다.\n그러므로 $a=\\frac12\\cdot\\frac43\\cdot\\log_2 3=\\frac23\\log_2 3$이다.\n$2^a=2^{(2/3)\\log_2 3}=3^{2/3}$이므로 정답은 ②이다.",
+    "solution": "$y$축과의 교점은 $A=(0,\\frac{1}{3})$, $B=(0,-1)$이다.\n두 곡선의 교점은\n$\\frac{2^x}{3}=2^x-2$\n에서 $2^x=3$, 즉 $x=\\log_2 3$이고 $y=1$이다. 따라서 $C=(\\log_2 3,1)$이다.\n$AB=\\frac{1}{3}-(-1)=\\frac{4}{3}$이고, $C$에서 $y$축까지의 거리는 $\\log_2 3$이다.\n그러므로 $a=\\frac12\\cdot\\frac43\\cdot\\log_2 3=\\frac23\\log_2 3$이다.\n$2^a=2^{(\\frac{2}{3})\\log_2 3}=3^{\\frac{2}{3}}$이므로 정답은 ②이다.",
     "questionUid": "qid_v1_6a7f52ea692bb1f8c7e1b46ba77844ee94bcf984bb34e997d26dd19c549e031c",
     "sourceQid": 14,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -1127,7 +1127,7 @@ window.questionBank = [
     ],
     "image": "assets/images/19_강남여고_1학기_중간_고2_수학I/q15.png",
     "answer": "①",
-    "solution": "그래프의 최댓값은 $2$, 최솟값은 $-4$이다. 진폭이 $a>0$이므로\n$a=\\frac{2-(-4)}2=3$, 중간값은 $c=\\frac{2+(-4)}2=-1$이다.\n최솟값을 갖는 $x$가 $-\\pi$와 $3\\pi$이므로 주기는 $4\\pi$이다.\n$2\\pi/b=4\\pi$에서 $b=1/2$이다.\n따라서 $a+2b+3c=3+1-3=1$이고 정답은 ①이다.",
+    "solution": "그래프의 최댓값은 $2$, 최솟값은 $-4$이다. 진폭이 $a>0$이므로\n$a=\\frac{2-(-4)}2=3$, 중간값은 $c=\\frac{2+(-4)}2=-1$이다.\n최솟값을 갖는 $x$가 $-\\pi$와 $3\\pi$이므로 주기는 $4\\pi$이다.\n$2\\pi/b=4\\pi$에서 $b=\\frac{1}{2}$이다.\n따라서 $a+2b+3c=3+1-3=1$이고 정답은 ①이다.",
     "questionUid": "qid_v1_04fc93d705136f779c0a6b7cb7568e9af3f2fc0c3b9286138e106a4f4dc18cad",
     "sourceQid": 15,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -1377,7 +1377,7 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "④",
-    "solution": "$x-\\sqrt a$로 나누어떨어지므로 $f(\\sqrt a)=0$이다.\n$(\\sqrt a)^3=9$에서 $a^{3/2}=9$이다.\n원문에서 두 번째 나눗셈의 근은 $\\sqrt{\\sqrt[4]{a^6}}=a^{6/8}=a^{3/4}$이다.\n따라서 나머지는\n$f(a^{3/4})=(a^{3/4})^3-9=a^{9/4}-9=(a^{3/2})^{3/2}-9=9^{3/2}-9=27-9=18$이다.\n정답은 ④이다.",
+    "solution": "$x-\\sqrt a$로 나누어떨어지므로 $f(\\sqrt a)=0$이다.\n$(\\sqrt a)^3=9$에서 $a^{\\frac{3}{2}}=9$이다.\n원문에서 두 번째 나눗셈의 근은 $\\sqrt{\\sqrt[4]{a^6}}=a^{\\frac{6}{8}}=a^{\\frac{3}{4}}$이다.\n따라서 나머지는\n$f(a^{\\frac{3}{4}})=(a^{\\frac{3}{4}})^3-9=a^{\\frac{9}{4}}-9=(a^{\\frac{3}{2}})^{\\frac{3}{2}}-9=9^{\\frac{3}{2}}-9=27-9=18$이다.\n정답은 ④이다.",
     "questionUid": "qid_v1_7cd38d3dd86705f32690c143d713b8da8bf3e77a94396a9929ae8bf7e693a500",
     "sourceQid": 18,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -1697,7 +1697,7 @@ window.questionBank = [
       "(가), (나), (다)"
     ],
     "answer": "①",
-    "solution": "$a^2<a$에서 $0<a<1$이다. $b<b^2$이므로 $b<0$ 또는 $b>1$인데 $a<b$와 $a>0$을 함께 쓰면 $b>1$이다.\n(가) $a>0$이므로 참이다.\n(나) $\\ln a<0$이고\n$\\ln(a^{1/a})=(1/a)\\ln a$, $\\ln((1/a)^a)=-a\\ln a$이다. 앞 식이 더 크려면 $1/a<-a$여야 하지만 불가능하다. 거짓이다.\n(다) $0<a/b<a<1$이다. $0<t<1$에서 $0<a<1$이면 $t^a>t$이므로 첫 부등식 $t>t^a$가 성립하지 않는다. 거짓이다.\n따라서 (가)만 옳아 정답은 ①이다.",
+    "solution": "$a^2<a$에서 $0<a<1$이다. $b<b^2$이므로 $b<0$ 또는 $b>1$인데 $a<b$와 $a>0$을 함께 쓰면 $b>1$이다.\n(가) $a>0$이므로 참이다.\n(나) $\\ln a<0$이고\n$\\ln(a^{\\frac{1}{a}})=(\\frac{1}{a})\\ln a$, $\\ln((\\frac{1}{a})^a)=-a\\ln a$이다. 앞 식이 더 크려면 $\\frac{1}{a}<-a$여야 하지만 불가능하다. 거짓이다.\n(다) $0<a/b<a<1$이다. $0<t<1$에서 $0<a<1$이면 $t^a>t$이므로 첫 부등식 $t>t^a$가 성립하지 않는다. 거짓이다.\n따라서 (가)만 옳아 정답은 ①이다.",
     "questionUid": "qid_v1_3b625e18495db754340a96aa06885ec216fe372a3d37aa126a329c129233afe3",
     "sourceQid": 22,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
@@ -2115,7 +2115,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 식의 값을 구하시오. [총 4점]\n(1) $\\cos 720^\\circ \\times \\sin(-90^\\circ)$ [2점]\n(2) $\\sin\\left(\\frac{5}{3}\\pi\\right) \\times \\tan\\left(\\frac{7}{3}\\pi\\right)$ [2점]",
     "choices": [],
     "answer": "(1) -1, (2) -3/2",
-    "solution": "(1) $\\cos720^\\circ=1$, $\\sin(-90^\\circ)=-1$이므로 곱은 $-1$이다.\n(2) $\\sin(5\\pi/3)=-\\sqrt3/2$, $\\tan(7\\pi/3)=\\tan(\\pi/3)=\\sqrt3$이다.\n따라서 곱은 $-3/2$이다.",
+    "solution": "(1) $\\cos720^\\circ=1$, $\\sin(-90^\\circ)=-1$이므로 곱은 $-1$이다.\n(2) $\\sin(5\\pi/3)=-\\sqrt3/2$, $\\tan(7\\pi/3)=\\tan(\\pi/3)=\\sqrt3$이다.\n따라서 곱은 $-\\frac{3}{2}$이다.",
     "questionUid": "qid_v1_e787bb3cb27c770cbece06721c4f5208a146d360a415e0f2c608f2a0c1915b90",
     "sourceQid": 27,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
