@@ -1,0 +1,272 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_매산고_1학기_중간_고2_기하_유사",
+  "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/geometry/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-GEO-CONIC-LOCUS-DEFINITION-IDENTIFY",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "평면 위 점의 자취 조건으로 이차곡선 판별하기",
+      "definition": "두 정점까지의 거리의 합이 일정한 점, 거리의 차가 일정한 점, 정점과 정직선까지의 거리가 같은 점, 한 정점까지의 거리가 일정한 점, 두 정점까지의 거리가 같은 점의 자취를 정의와 대응시켜 타원·쌍곡선·포물선·원·직선으로 분류하고 이차곡선이 아닌 자취를 가려내는 사고.",
+      "parentRpmRecordId": "H2-GEO-RPM-039",
+      "parentRpmL1": "이차곡선",
+      "parentRpmL2": "이차곡선",
+      "parentRpmL3": "포물선",
+      "parentRpmL4": "정의와 방정식",
+      "parentProblemTypeKey": "PT_GEO_PARABOLA",
+      "parentTemplateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "RPM H2-GEO-RPM-039~043의 L4 \"정의와 방정식\"은 곡선 하나의 정의로 방정식을 세우는 사고이고, 여러 자취 조건을 곡선의 종류로 판별해 이차곡선이 아닌 것을 가려내는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고2_기하_유사",
+        "qid": 1
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-GEO-PLANE-DETERMINATION-CONDITION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "평면이 하나로 결정되는 조건 판별하기",
+      "definition": "한 직선 위에 있지 않은 세 점, 한 직선과 그 밖의 한 점, 한 점에서 만나는 두 직선, 평행한 두 직선이 평면을 하나로 결정한다는 조건을 주어진 도형 조합에 적용해 평면이 하나로 결정되는지 판별하는 사고.",
+      "parentRpmRecordId": "H2-GEO-RPM-053",
+      "parentRpmL1": "공간도형과 공간좌표",
+      "parentRpmL2": "공간도형",
+      "parentRpmL3": "직선과 평면",
+      "parentRpmL4": "평행·수직",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "parentTemplateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "standardUnitKey": "H22-GE-03",
+      "subUnitKey": "H22-GE-03-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "RPM H2-GEO-RPM-053의 L4 \"평행·수직\"은 직선과 평면의 위치 관계(평행·수직) 판정이며, 점·직선의 조합이 평면을 하나로 결정하는 조건 판별을 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고2_기하_유사",
+        "qid": 2
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-GEO-CONIC-GENERAL-FORM-IDENTIFY",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "일반형 이차식을 완전제곱으로 정리해 이차곡선의 종류 판별하기",
+      "definition": "x, y에 관한 이차식 x^2·y^2의 계수의 부호와 일차항을 각각 완전제곱식으로 정리해 표준형을 얻고, 중심의 이동과 계수의 부호 조건으로 포물선·타원·원·쌍곡선 중 어느 곡선인지 판별하는 사고.",
+      "parentRpmRecordId": "H2-GEO-RPM-045",
+      "parentRpmL1": "이차곡선",
+      "parentRpmL2": "이차곡선",
+      "parentRpmL3": "이차곡선의 이동",
+      "parentRpmL4": "평행이동",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "parentTemplateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "RPM H2-GEO-RPM-045의 L4 \"평행이동\"은 이미 표준형으로 주어진 곡선의 이동이고, 일반형 이차식을 완전제곱으로 고쳐 곡선의 종류를 판별하는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고2_기하_유사",
+        "qid": 3
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-GEO-LINE-PLANE-ANGLE-PERPENDICULAR-FOOT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "수선의 발을 이용한 직선과 평면이 이루는 각 계산하기",
+      "definition": "꼭짓점에서 평면에 내린 수선의 발이 밑면의 어떤 점인지(옆모서리 길이가 같으면 밑면의 외심) 확인하고, 직선의 평면 위 정사영과 수선으로 직각삼각형을 만들어 직선과 평면이 이루는 각의 삼각비를 구하는 사고.",
+      "parentRpmRecordId": "H2-GEO-RPM-055",
+      "parentRpmL1": "공간도형과 공간좌표",
+      "parentRpmL2": "공간도형",
+      "parentRpmL3": "삼수선 정리",
+      "parentRpmL4": "거리·각",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "parentTemplateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "standardUnitKey": "H22-GE-03",
+      "subUnitKey": "H22-GE-03-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "RPM H2-GEO-RPM-055의 L4 \"거리·각\"은 삼수선 정리로 거리와 각을 구하는 사고 전반이고, 수선의 발의 위치를 정하고 직선과 평면이 이루는 각을 정사영으로 환원하는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고2_기하_유사",
+        "qid": 8
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-GEO-PLANE-PERPENDICULAR-PROPERTY",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "서로 수직인 두 평면의 성질과 필요한 조건 판별하기",
+      "definition": "두 평면이 수직일 때 한 평면 위의 직선이 다른 평면에 수직이 되기 위해 교선에 수직이어야 한다는 성질을 직선과 평면의 수직 판정 조건(서로 만나는 두 직선에 수직)으로 설명하고 잘못된 명제의 조건을 보완하는 사고.",
+      "parentRpmRecordId": "H2-GEO-RPM-053",
+      "parentRpmL1": "공간도형과 공간좌표",
+      "parentRpmL2": "공간도형",
+      "parentRpmL3": "직선과 평면",
+      "parentRpmL4": "평행·수직",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "parentTemplateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "standardUnitKey": "H22-GE-03",
+      "subUnitKey": "H22-GE-03-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "RPM H2-GEO-RPM-053의 L4 \"평행·수직\"은 직선과 평면의 수직·평행 판정이며, 서로 수직인 두 평면의 성질에서 빠진 조건을 찾아 보완하고 이유를 설명하는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고2_기하_유사",
+        "qid": 19
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-ELLIPSE-CENTER-AREA-BISECT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "타원의 넓이를 이등분하는 직선은 중심을 지난다",
+      "definition": "타원은 중심에 대하여 대칭이므로 중심을 지나는 직선은 타원의 넓이를 이등분하고, 거꾸로 넓이를 이등분하는 직선은 타원의 중심을 지난다는 성질을 조건식(중심을 지나는 직선)으로 바꾸어 쓰는 개념.",
+      "parentKey": "CC_ELLIPSE",
+      "parentLabelKo": "타원",
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "CC_ELLIPSE는 두 초점까지 거리의 합이 일정한 점의 자취라는 정의 수준이고, 넓이 이등분 조건을 중심 대칭성으로 번역해 직선이 중심을 지나게 하는 개념을 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고2_기하_유사",
+        "qid": 11
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-HYPERBOLA-BRANCH-FOCAL-DIFFERENCE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "쌍곡선 두 가지 위의 점에서 초점까지 거리의 차가 모두 주축의 길이",
+      "definition": "쌍곡선 오른쪽 가지 위의 점은 PF'-PF=2a, 왼쪽 가지 위의 점은 QF-QF'=2a를 만족한다는 성질을 두 가지에 모두 적용해, 한 직선이 두 가지와 만나는 점들로 이루어진 삼각형의 둘레를 PF'+PF+2a 꼴로 정리하는 개념.",
+      "parentKey": "CC_HYPERBOLA",
+      "parentLabelKo": "쌍곡선",
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "CC_HYPERBOLA는 두 초점까지 거리의 차가 일정한 점의 자취라는 정의 수준이고, 두 가지의 점에서 얻는 거리 차 관계를 연결해 삼각형의 둘레를 단순화하는 개념을 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고2_기하_유사",
+        "qid": 21
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [],
+  "aliasProposals": [],
+  "uidAssignments": [
+    {
+      "stem": "26_매산고_1학기_중간_고2_기하_유사",
+      "qid": 1,
+      "generatedKeys": [
+        "EXT-L4-GEO-CONIC-LOCUS-DEFINITION-IDENTIFY"
+      ]
+    },
+    {
+      "stem": "26_매산고_1학기_중간_고2_기하_유사",
+      "qid": 2,
+      "generatedKeys": [
+        "EXT-L4-GEO-PLANE-DETERMINATION-CONDITION"
+      ]
+    },
+    {
+      "stem": "26_매산고_1학기_중간_고2_기하_유사",
+      "qid": 3,
+      "generatedKeys": [
+        "EXT-L4-GEO-CONIC-GENERAL-FORM-IDENTIFY"
+      ]
+    },
+    {
+      "stem": "26_매산고_1학기_중간_고2_기하_유사",
+      "qid": 8,
+      "generatedKeys": [
+        "EXT-L4-GEO-LINE-PLANE-ANGLE-PERPENDICULAR-FOOT"
+      ]
+    },
+    {
+      "stem": "26_매산고_1학기_중간_고2_기하_유사",
+      "qid": 11,
+      "generatedKeys": [
+        "EXT-CROSS-ELLIPSE-CENTER-AREA-BISECT"
+      ]
+    },
+    {
+      "stem": "26_매산고_1학기_중간_고2_기하_유사",
+      "qid": 19,
+      "generatedKeys": [
+        "EXT-L4-GEO-PLANE-PERPENDICULAR-PROPERTY"
+      ]
+    },
+    {
+      "stem": "26_매산고_1학기_중간_고2_기하_유사",
+      "qid": 21,
+      "generatedKeys": [
+        "EXT-CROSS-HYPERBOLA-BRANCH-FOCAL-DIFFERENCE"
+      ]
+    }
+  ],
+  "noStudentRelease": true
+}
