@@ -15,3 +15,5 @@
 금지: 원본 JS·archive/assets·엔진 코드·git 수정, OpenCode·다른 모델 위임.
 
 최종 보고(짧게): 시험지별로 qNN | PASS 또는 FIXED(무엇) 또는 OPEN/CONTENT(사유) 한 줄씩.
+
+프로세스 종료 금지: 이름·명령줄 패턴(taskkill /IM, pkill, Stop-Process -Name 등)으로 종료하면 다른 시험지 루나 작업이 같이 죽는다(2026-11-09 사고 3회). 렌더가 오래 걸리면 기다리고, 꼭 필요하면 자기가 띄운 PID 하나만 종료한다. 렌더는 RENDER_PRIORITY=1을 붙여 한 번에 하나씩.
