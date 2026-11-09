@@ -24,7 +24,7 @@ function canvas() {
   return { width: 1000, height: 650, getContext: () => context };
 }
 
-async function load() {
+async function load(initialHash = '') {
   let context;
   const ready = [];
   const element = (tag) => tag === 'canvas' ? canvas() : { tagName: tag.toUpperCase(), dataset: {}, style: { setProperty() {} }, classList: { add() {}, remove() {}, toggle() {} }, setAttribute() {}, addEventListener() {}, querySelector() { return null; }, querySelectorAll() { return []; }, append() {} };
@@ -34,7 +34,7 @@ async function load() {
     vm.runInContext(fs.readFileSync(path.join(labs, el.src), 'utf8'), context, { filename: el.src });
     el.onload?.();
   };
-  const sandbox = { document, console, Math, URLSearchParams, performance, setTimeout, clearTimeout, requestAnimationFrame: () => 0, cancelAnimationFrame() {}, devicePixelRatio: 1, location: { hash: '', search: '', pathname: '/labs/g7-circle-sector.html' }, history: { replaceState() {} }, localStorage: { getItem() { return null; }, setItem() {} }, getComputedStyle: () => ({ getPropertyValue: (key) => key === '--font-ui' ? 'sans-serif' : key === '--m-glow' ? '0' : '#ffffff' }), matchMedia: () => ({ matches: false }), addEventListener: (event, fn) => { if (event === 'DOMContentLoaded') ready.push(fn); } };
+  const sandbox = { document, console, Math, URLSearchParams, performance, setTimeout, clearTimeout, requestAnimationFrame: () => 0, cancelAnimationFrame() {}, devicePixelRatio: 1, location: { hash: initialHash, search: '', pathname: '/labs/g7-circle-sector.html' }, history: { replaceState() {} }, localStorage: { getItem() { return null; }, setItem() {} }, getComputedStyle: () => ({ getPropertyValue: (key) => key === '--font-ui' ? 'sans-serif' : key === '--m-glow' ? '0' : '#ffffff' }), matchMedia: () => ({ matches: false }), addEventListener: (event, fn) => { if (event === 'DOMContentLoaded') ready.push(fn); } };
   sandbox.window = sandbox;
   context = vm.createContext(sandbox);
   for (const filename of ['apl-core.js', 'apl-board.js']) vm.runInContext(fs.readFileSync(path.join(root, 'kit', filename), 'utf8'), context, { filename });
@@ -97,11 +97,15 @@ function lengthValue(text) {
 }
 const movingReadout = (lab) => call(lab.scene.view, lab.s, lab).readouts.find((readout) => /지나간 길이|굴러간 거리/.test(readout.label));
 
-await test('cut-out scenes show every original cut boundary before playback and after reset', async () => {
-  const lab = await load();
-  const cutScenes = lab.list.filter((scene) => scene.csPfx === 'f1');
+await test('cut-out scenes, including legacy links, show every original cut boundary before playback and after reset', async () => {
+  const defaultLab = await load();
+  const cutScenes = defaultLab.list.filter((scene) => scene.csPfx === 'f1');
   assert.ok(cutScenes.length > 0);
-  for (const { id } of cutScenes) {
+  // The triangle is intentionally absent from the chooser but still has a live
+  // shared URL. Loading its hash must exercise the actual conditional registry.
+  const legacyLab = await load('#s=f1-tri');
+  const cases = cutScenes.map(({ id }) => ({ lab: defaultLab, id })).concat([{ lab: legacyLab, id: 'f1-tri' }]);
+  for (const { lab, id } of cases) {
     const scene = lab.go(id), model = scene.csModel(lab.s);
     const original = lab.board.path, paths = [];
     lab.board.path = function (points, options) { paths.push({ points, options }); return original.call(this, points, options); };

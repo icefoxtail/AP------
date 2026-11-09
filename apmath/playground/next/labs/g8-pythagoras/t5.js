@@ -24,8 +24,8 @@
     pyS2: P('정사각형 ②의 넓이', 4, 100, 1, 15, { color: 'green', format: (v) => `${v}` }),
     pyRw: P('가로 w', 4, 16, 1, 12, { color: 'sky', format: (v) => `${v}` }),
     pyRh: P('세로 h', 4, 16, 1, 16, { color: 'green', format: (v) => `${v}` }),
-    pyIa: P('직각변 a', 2, 15, 1, 6, { color: 'sky', format: (v) => `${v}` }),
-    pyIb: P('직각변 b', 2, 15, 1, 8, { color: 'green', format: (v) => `${v}` }),
+    pyIa: P('직각변 a (AB)', 2, 15, 1, 6, { color: 'sky', format: (v) => `${v}` }),
+    pyIb: P('직각변 b (AC)', 2, 15, 1, 8, { color: 'green', format: (v) => `${v}` }),
     pyHy: P('빗변의 길이', 1, 5, 1, 3, { color: 'amber', hint: '빗변이 4, 8, 12, 16, 20 중 하나', format: (v) => `${4 * v}` })
   };
   const L2 = G.L2;

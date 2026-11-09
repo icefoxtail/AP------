@@ -20,6 +20,41 @@ const state = sc => { const s = Object.fromEntries(Object.entries(params).map(([
 const get = id => scenes.find(sc => sc.id === id);
 const close = (actual, expected, message) => assert.ok(Number.isFinite(actual) && Number.isFinite(expected) && Math.abs(actual - expected) < 1e-6 * Math.max(1, Math.abs(expected)), `${message}: ${actual} != ${expected}`);
 const katex = createRequire(import.meta.url)(path.resolve(labRoot, '../../kit/vendor/katex/katex.min.js'));
+
+test('initial and reentered controls retain the selected figure side, angle unit and folding axis', () => {
+  const lab = { params: { ...params }, s: {} };
+  const checks = [
+    ['t3-1', 'trRc', '빗변 AB = DE', 4, 12, 1, '8 cm'],
+    ['t3-1', 'trRa', '∠A = ∠D', 20, 70, 2, '40°'],
+    ['t3-4', 'trQa', 'AE', 3, 9, 1, '5 cm'],
+    ['t3-4', 'trQb', 'AB', 3, 9, 1, '3 cm'],
+    ['t1-3', 'trKa', '꼭지각 ∠A', 20, 140, 2, '50°'],
+    ['t1-3', 'trKt', 'AD로 접기', 0, 1, .01, '0%'],
+    ['t1-6', 'trPa', '꼭지각 ∠A', 40, 120, 2, '60°'],
+    ['t3-3', 'trSa', '△DEF의 ∠D', 20, 70, 2, '56°'],
+    ['t5-5', 'trQa', '∠A', 100, 130, 2, '112°'],
+    ['t5-6', 'trRa', 'a', 1, 6, 1, '2'],
+    ['t5-7', 'trSa', 'BC', 2, 9, 1, '6 cm']
+  ];
+  for (const [id, key, label, min, max, step, formatted] of [...checks, ...checks.slice().reverse()]) {
+    get(id).enter(lab.s, lab);
+    const p = lab.params[key];
+    assert.deepEqual([p.label, p.min, p.max, p.step, p.format(lab.s[key])], [label, min, max, step, formatted], `${id}: ${key}`);
+  }
+  get('t1-3').enter(lab.s, lab);
+  assert.match(lab.params.trKt.hint, /AD/);
+  assert.doesNotMatch(lab.params.trKt.hint, /AC/);
+  get('t3-6').enter({ ...lab.s }, lab);
+  assert.equal(lab.params.trKt.label, 'AD로 접기', 'thumbnail generation preserves the current folding axis');
+
+  get('t3-4').enter(lab.s, lab);
+  for (const length of [3, 5, 9]) {
+    lab.s.trQa = length;
+    const m = get('t3-4').tr.model(lab.s);
+    close(G.dist(m.g.A, m.g.E), length, 'AE input is the rendered length, not an angle');
+  }
+});
+
 function checkMath(text, label) {
   assert.doesNotMatch(text, /NaN|undefined|Infinity|√|\\sqrt/, label);
   assert.equal((text.match(/\$/g) || []).length % 2, 0, label + ': paired math delimiters');

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {discoverMiddleCatalog,initialIssues,VIEWPORTS} from './middle-initial-figure-audit.mjs';
+import {discoverMiddleCatalog,discoverHashEntries,initialIssues,VIEWPORTS} from './middle-initial-figure-audit.mjs';
 
 test('initial inventory includes newly registered middle labs without a fixed scene list',()=>{
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'middle-initial-catalog-'));
@@ -21,6 +21,14 @@ test('initial inventory includes newly registered middle labs without a fixed sc
 test('five prescribed viewports include the small mobile first screen',()=>{
   assert.deepEqual(VIEWPORTS.map(v=>[v.width,v.height]),[[1440,900],[820,1180],[1024,768],[390,844],[360,800]]);
 });
+test('hash-only registrations and aliases are discovered without a fixed ID list',()=>{
+  const root=fs.mkdtempSync(path.join(os.tmpdir(),'middle-initial-hash-'));
+  try{
+    const labs=path.join(root,'apmath/playground/next/labs');fs.mkdirSync(labs,{recursive:true});
+    fs.writeFileSync(path.join(labs,'g7-new.html'),`if ((oldHash.get('s') || '').split('@')[0] === 'old') {\n    oldHash.set('s', 'new@3');\n  }\n  const extra = (oldHash.get('s') || '').split('@')[0] === 'direct-only';`);
+    assert.deepEqual(discoverHashEntries(root,'g7-new'),[{id:'old',expectedId:'new'},{id:'direct-only',expectedId:'direct-only'}]);
+  }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
 const visible={id:'leaf',canvas:{width:800,height:600,cssWidth:800,cssHeight:600,visibleWidth:800,visibleHeight:600,display:'block',visibility:'visible',opacity:'1'},ink:20000,overflow:false,hintOverlap:0,katexErrors:[]};
 test('an outer square with plenty of pixels cannot hide a missing required figure',()=>{
   assert.deepEqual(initialIssues(visible,'leaf',[],{status:'FAIL',failures:['required-leaf-arcs-missing']}),['required-leaf-arcs-missing']);
@@ -31,4 +39,9 @@ test('caught renderer errors and wrong scene routing fail independently of pixel
 });
 test('first-screen geometry outside the viewport fails even with nonblank canvas',()=>{
   assert.ok(initialIssues({...visible,canvas:{...visible.canvas,visibleHeight:0}},'leaf',[],{status:'NOT_APPLICABLE'}).includes('canvas-outside-first-viewport'));
+});
+test('native slider clamping cannot disagree with the initial model',()=>{
+  const sliders=[{key:'side',step:'1',value:'6',stateValue:8}];
+  assert.ok(initialIssues({...visible,sliders},'leaf',[],{status:'NOT_APPLICABLE'}).includes('slider-model-mismatch:side'));
+  assert.deepEqual(initialIssues({...visible,sliders:[{key:'side',step:'.1',value:'1.4',stateValue:Math.SQRT2}]},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
 });

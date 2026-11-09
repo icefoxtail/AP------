@@ -29,6 +29,21 @@ export function discoverMiddleCatalog(root) {
   return JSON.parse(JSON.stringify(labs));
 }
 
+// Legacy direct-entry conditions live beside the actual module registration.
+// Discover their literal IDs from source, then ask Chromium which scenes they
+// register. Alias URLs are tested separately and do not inflate the denominator.
+export function discoverHashEntries(root, unit) {
+  const html = fs.readFileSync(path.join(root, 'apmath/playground/next/labs', `${unit}.html`), 'utf8');
+  const entries = new Map();
+  for (const match of html.matchAll(/\.split\(['"]@['"]\)\[0\]\s*===\s*['"]([^'"]+)['"]/g)) {
+    const id = match[1], tail = html.slice(match.index + match[0].length, match.index + match[0].length + 650);
+    const boundary = tail.indexOf('\n  }');
+    const assignment = /oldHash\.set\(['"]s['"],\s*['"]([^'"]+)['"]\)/.exec(boundary >= 0 ? tail.slice(0,boundary) : '');
+    entries.set(id, {id, expectedId: assignment ? assignment[1].split('@')[0] : id});
+  }
+  return [...entries.values()];
+}
+
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 function sourcesFor(root, unit) {
   const directory = path.join(root, 'apmath/playground/next');
@@ -90,13 +105,14 @@ function observe() {
   const value = v => typeof v === 'function' ? v(l.s, l) : v;
   const declaredControls = (value(l.scene.controls) || []).filter(k => l.params[k]);
   const sliders = Object.entries(l._ctls || {}).filter(([,v]) => v.input.checkVisibility()).map(([key,v]) => ({
-    key, label: v.input.getAttribute('aria-label'), min: v.input.min, max: v.input.max, step: v.input.step, value: v.input.value
+    key, label: v.input.getAttribute('aria-label'), min: v.input.min, max: v.input.max, step: v.input.step, value: v.input.value,
+    stateValue: l.s[key], output: v.out.textContent, hint: typeof v.p.hint === 'string' ? v.p.hint : null
   }));
   const hint = document.querySelector('.apl-orient-hint');
   const hr = hint?.checkVisibility() ? hint.getBoundingClientRect() : null;
   const hintOverlap = hr ? Math.max(0, Math.min(hr.right, rect.right) - Math.max(hr.left, rect.left)) * Math.max(0, Math.min(hr.bottom, rect.bottom) - Math.max(hr.top, rect.top)) : 0;
   return { id: String(l.scene.id), title: l.scene.title, heading: document.querySelector('.apl-scene-title')?.textContent,
-    tab: l.tab, step: l.s.step, playing: !!l.s.playing, revealed: !!l.s.revealed,
+    index: l.index, tab: l.tab, step: l.s.step, playing: !!l.s.playing, revealed: !!l.s.revealed,
     answerOpen: !!l.refs.answer?.classList.contains('open'),
     canvas: { width: c.width, height: c.height, cssWidth: rect.width, cssHeight: rect.height,
       left: rect.left, top: rect.top, visibleWidth, visibleHeight, display: style.display, visibility: style.visibility, opacity: style.opacity },
@@ -123,6 +139,12 @@ export function initialIssues(observation, expectedId, errors, semantic) {
   if (observation.overflow) issues.push('horizontal-overflow');
   if (observation.hintOverlap > 0) issues.push('orientation-hint-covers-canvas');
   if (observation.katexErrors.length) issues.push('math-typesetting-error');
+  for (const slider of observation.sliders || []) {
+    // A native range may round half a step, but cannot silently clamp a model
+    // value to another module's range while displaying the original number.
+    const tolerance = Math.max(1e-7, (+slider.step || 0) / 2 + 1e-7);
+    if (Number.isFinite(slider.stateValue) && Math.abs(+slider.value - slider.stateValue) > tolerance) issues.push(`slider-model-mismatch:${slider.key}`);
+  }
   if (semantic.status === 'FAIL') issues.push(...semantic.failures.map(x => typeof x === 'string' ? x : x.code || 'required-figure-missing'));
   return [...new Set(issues)];
 }
@@ -170,7 +192,7 @@ async function run() {
   try {
     for (const unit of units) {
       const dest = report.units[unit.id] = { course:unit.course,title:unit.title,catalogSceneTotal:unit.sceneTotal,
-        source:sourcesFor(root,unit.id),scenes:[],observations:[],captures:[],comparisons:[],interactions:[],notRun:[] };
+        source:sourcesFor(root,unit.id),scenes:[],defaultScenes:[],hashEntries:discoverHashEntries(root,unit.id),aliases:[],observations:[],captures:[],comparisons:[],interactions:[],notRun:[] };
       for (const view of views) for (const theme of themes) {
         const context = await browser.newContext({viewport:{width:view.width,height:view.height},deviceScaleFactor:1,hasTouch:!view.name.startsWith('pc')});
         const page = await context.newPage();
@@ -180,7 +202,7 @@ async function run() {
         page.on('response', r => {if(r.status()>=400 && r.url().startsWith(base)) errors.push({type:'http',message:`${r.status()} ${r.url()}`});});
         await page.addInitScript(() => {let seed=1701;Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};});
         const settle = async () => {
-          await page.waitForFunction(() => window.lab && !lab._tween, {timeout:15000});
+          await page.waitForFunction(() => window.lab && !lab._tween, null, {timeout:15000});
           await page.evaluate(async () => {await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.__initialFigureDraws=[];lab.render();});
         };
         const capture = async (scene,state) => {
@@ -194,6 +216,8 @@ async function run() {
           const obs = await page.evaluate(observe), semantic = await page.evaluate(sampleInitialFigure);
           const row = {id:scene.id,view:view.name,theme,state,...obs,semantic,errors:[...errors]};
           row.issues=initialIssues(obs,scene.id,errors,semantic);
+          const expectedTab=state==='problem-initial'?'problem':'explore';
+          if(obs.tab!==expectedTab)row.issues.push('selected-tab-mismatch');
           if (screenshot) row.capture=await capture(scene,state);
           dest.observations.push(row);
           if(row.issues.length) report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,issues:row.issues,errors:[...errors]});
@@ -202,13 +226,34 @@ async function run() {
         try {
           await page.goto(`${base}${unit.id}.html?theme=${theme}&initial-inventory=1`,{waitUntil:'load'});
           await page.waitForFunction(()=>window.lab?.list?.length>0);
-          const registered = await page.evaluate(()=>lab.list.map((s,index)=>({id:String(s.id),title:s.title,short:s.short,gi:s.gi,index,groupIndex:s.group.scenes.findIndex(x=>x.id===s.id)})));
+          const readScenes = () => page.evaluate(()=>lab.list.map((s,index)=>({id:String(s.id),title:s.title,short:s.short,gi:s.gi,index,groupIndex:s.group.scenes.findIndex(x=>x.id===s.id)})));
+          const registered = await readScenes();
           if(new Set(registered.map(s=>s.id+'@'+s.gi)).size!==registered.length) throw Error('Duplicate runtime scene identity');
           if(unit.sceneTotal!==registered.length) report.failures.push({unit:unit.id,view:view.name,reason:'catalog-runtime-count-mismatch',catalog:unit.sceneTotal,runtime:registered.length});
-          if(!dest.scenes.length)dest.scenes=registered;
-          else if(JSON.stringify(dest.scenes)!==JSON.stringify(registered))throw Error('Runtime inventory changed between viewports');
-          const scenes=requestedScenes.length?registered.filter(s=>requestedScenes.includes(s.id)):registered;
+          if(!dest.defaultScenes.length)dest.defaultScenes=registered;
+          else if(JSON.stringify(dest.defaultScenes)!==JSON.stringify(registered))throw Error('Default runtime inventory changed between viewports');
+          const combined = new Map(registered.map(s=>[s.id+'@'+s.gi,s]));
+          for(const entry of dest.hashEntries){
+            errors.length=0;
+            await page.goto(`${base}${unit.id}.html?theme=${theme}&initial-legacy=${encodeURIComponent(entry.id)}#s=${encodeURIComponent(entry.id)}`,{waitUntil:'load'});
+            await page.waitForFunction(()=>window.lab?.list?.length>0);
+            await page.evaluate(()=>document.fonts.ready);await page.evaluate(installObservation);await settle();
+            const actual=await page.evaluate(()=>String(lab.scene.id));
+            const discovered=await readScenes();
+            for(const s of discovered)if(!combined.has(s.id+'@'+s.gi))combined.set(s.id+'@'+s.gi,{...s,hashOnly:true});
+            if(entry.id!==entry.expectedId){
+              const alias={entry:entry.id,expectedId:entry.expectedId,actualId:actual,view:view.name,theme,pass:actual===entry.expectedId};
+              dest.aliases.push(alias);
+              await measure({id:entry.expectedId},'alias-'+entry.id,true);
+              if(!alias.pass)report.failures.push({unit:unit.id,...alias,reason:'legacy-alias-mismatch'});
+            }else if(actual!==entry.id)report.failures.push({unit:unit.id,entry:entry.id,actualId:actual,view:view.name,theme,reason:'hash-entry-mismatch'});
+          }
+          const discoveredScenes=[...combined.values()];
+          if(!dest.scenes.length)dest.scenes=discoveredScenes;
+          else if(JSON.stringify(dest.scenes)!==JSON.stringify(discoveredScenes))throw Error('Hash-inclusive inventory changed between viewports');
+          const scenes=requestedScenes.length?discoveredScenes.filter(s=>requestedScenes.includes(s.id)):discoveredScenes;
           for(const scene of scenes){
+            try {
             errors.length=0;
             // A distinct query forces a new document; changing only the hash does
             // not run this app's initial restoration code.
@@ -217,6 +262,7 @@ async function run() {
             await page.evaluate(()=>document.fonts.ready);
             await page.evaluate(installObservation);
             const first=await measure(scene,'first-entry',true);
+            const activeParams = obs => Object.fromEntries(first.declaredControls.map(k=>[k,obs.params[k]]));
             // Follow the actual selected button, including scene/group closure.
             const button=page.locator('.apl-subscenes [aria-selected="true"]');
             if(await button.count())await button.click();
@@ -224,13 +270,20 @@ async function run() {
             await page.evaluate(()=>window.scrollTo(0,0));
             const again=await measure(scene,'reselected');
             dest.comparisons.push({id:scene.id,view:view.name,theme,state:'reselected',pixelsEqual:first.pixelFingerprint===again.pixelFingerprint,
-              parametersEqual:JSON.stringify(first.params)===JSON.stringify(again.params),semanticStatus:again.semantic.status});
+              parametersEqual:JSON.stringify(activeParams(first))===JSON.stringify(activeParams(again)),semanticStatus:again.semantic.status});
+            if(first.pixelFingerprint!==again.pixelFingerprint)await capture(scene,'reselected-difference');
             // Visit another registered scene before returning: scene-specific
             // enter hooks must not inherit a previous animation or disclosure.
-            await page.evaluate(i=>{const n=lab.list.length;lab.goScene((i+1)%n);lab.goScene(i);},scene.index);
+            await page.evaluate(i=>lab.goScene((i+1)%lab.list.length),first.index);await settle();
+            await page.evaluate(i=>lab.goScene(i),first.index);
             const returned=await measure(scene,'returned');
             dest.comparisons.push({id:scene.id,view:view.name,theme,state:'returned',pixelsEqual:first.pixelFingerprint===returned.pixelFingerprint,
-              parametersEqual:JSON.stringify(first.params)===JSON.stringify(returned.params),semanticStatus:returned.semantic.status});
+              parametersEqual:JSON.stringify(activeParams(first))===JSON.stringify(activeParams(returned)),semanticStatus:returned.semantic.status});
+            if(first.pixelFingerprint!==returned.pixelFingerprint)await capture(scene,'returned-difference');
+            for(const [state,row]of [['reselected',again],['returned',returned]]){
+              if(JSON.stringify(activeParams(first))!==JSON.stringify(activeParams(row)))report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'active-initial-parameters-not-restored',before:activeParams(first),after:activeParams(row)});
+              if(row.playing||row.revealed)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'initial-animation-or-answer-state-not-restored'});
+            }
             if(first.problemAvailable){
               await page.locator('.apl-tab[aria-controls="apl-pane-problem"]').click();
               await page.evaluate(()=>window.scrollTo(0,0));
@@ -241,20 +294,26 @@ async function run() {
             }
             // Risk-based animation sampling, explicitly recorded per scene.
             if(!observationOnly && ['pc','small-mobile'].includes(view.name)){
-              await page.evaluate(i=>lab.goScene(i),scene.index);await settle();
+              await page.evaluate(i=>lab.goScene(i),first.index);await settle();
               const control=await page.evaluate(()=>Object.entries(lab._ctls||{}).filter(([,v])=>v.input.checkVisibility()).map(([key,v])=>({key,label:v.input.getAttribute('aria-label')||'',min:+v.input.min,max:+v.input.max})).find(x=>/움직여 보기|애니메이션|펼치기|진행률|분리/.test(x.label))||null);
               if(control){
                 for(const [state,fraction] of [['animation-middle',.5],['animation-end',1]]){
-                  const value=control.min+(control.max-control.min)*fraction;
+                  const value=await page.evaluate(({key,fraction})=>{const input=lab._ctls[key].input,probe=input.cloneNode(false);probe.value=String(+input.min+(+input.max-+input.min)*fraction);return probe.valueAsNumber;},{key:control.key,fraction});
                   await page.getByRole('slider',{name:control.label,exact:true}).fill(String(value));
                   await page.evaluate(()=>window.scrollTo(0,0));
                   await measure(scene,state,true);
-                  dest.interactions.push({id:scene.id,view:view.name,theme,type:'native-progress-slider',state,key:control.key,requested:value,actual:await page.evaluate(k=>lab.s[k],control.key)});
+                  const actual=await page.evaluate(k=>lab.s[k],control.key),pass=Math.abs(actual-value)<1e-7;
+                  dest.interactions.push({id:scene.id,view:view.name,theme,type:'native-progress-slider',state,key:control.key,requested:value,actual,pass});
+                  if(!pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'native-progress-state-mismatch',key:control.key,requested:value,actual});
                 }
                 const reset=page.locator('.apl-actions-row button').filter({hasText:/^처음으로$/});
-                if(await reset.count()){await reset.click();await page.evaluate(()=>window.scrollTo(0,0));await measure(scene,'reset',true);dest.interactions.push({id:scene.id,view:view.name,theme,type:'native-reset'});}
-                else{await page.evaluate(i=>lab.goScene(i),scene.index);await measure(scene,'reentry-reset',true);dest.notRun.push({id:scene.id,view:view.name,state:'native-reset',reason:'no-reset-button'});}
+                if(await reset.count()){await reset.click();await page.evaluate(()=>window.scrollTo(0,0));const after=await measure(scene,'reset',true);const pass=!after.playing&&Math.abs(after.params[control.key]-first.params[control.key])<1e-7;dest.interactions.push({id:scene.id,view:view.name,theme,type:'native-reset',pass});if(!pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state:'reset',reason:'reset-does-not-restore-animation'});}
+                else{await page.evaluate(i=>lab.goScene(i),first.index);await measure(scene,'reentry-reset',true);dest.notRun.push({id:scene.id,view:view.name,state:'native-reset',reason:'no-reset-button'});}
               }else dest.notRun.push({id:scene.id,view:view.name,state:'animation-middle/end',reason:'no-visible-progress-slider; existing animation/drag audit covers other controls'});
+            }
+            } catch(error) {
+              report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,reason:'scene-run-incomplete',message:error.stack});
+              dest.notRun.push({id:scene.id,view:view.name,theme,state:'remaining-scene-states',reason:'browser-action-failed'});
             }
             save();
           }
