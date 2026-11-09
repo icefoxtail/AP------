@@ -443,7 +443,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 간격으로 놓인 열 점이 있는 원 안에 두 지름이 파란 선으로 표시되어 있고, 네 끝점을 이은 사각형과 오른쪽 꼭짓점의 직각 표식이 보인다.",
+    "solutionImageCaption": "예: 원 위의 열 점에서 두 지름을 골라 직사각형과 직각삼각형을 보인다. 정답은 90.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
