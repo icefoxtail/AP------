@@ -110,12 +110,19 @@ export async function captureReviewState({ page, guard, out, name, id, state, fu
   const primary = fullPage ? await shot(name.replace(/\.png$/, '--viewport.png'), false) : raw;
   const supplementalFrames = [], required = collectContent ? requiredViewportRegions(primary.frame) : [];
   let coverage = viewportContentCoverage([primary.frame], required);
+  const attemptedScrolls = [];
   try {
     for (let n = 1; !coverage.complete && n <= 80; n++) {
       if (coverage.errors.some(e => !e.startsWith('incomplete-content-region:'))) break;
       const last = supplementalFrames.at(-1)?.frame || primary.frame;
-      const next = Math.min(last.scrollMax, last.scroll.y + Math.max(48, last.viewport.height - last.blockedTop - 32));
-      if (next <= last.scroll.y + 1) break;
+      const gap = coverage.regions.flatMap(r => r.gaps).sort((a, b) => a.top - b.top)[0];
+      if (!gap || !Number.isFinite(last.scrollMax) || last.scrollMax < 0) break;
+      // A stage can become sticky after the first scroll and hide a slice that
+      // the earlier, smaller occlusion estimate skipped. Revisit the earliest
+      // actual gap under the current obstruction instead of only moving down.
+      const next = Math.max(0, Math.min(last.scrollMax, gap.top - last.blockedTop - 32));
+      if (attemptedScrolls.some(y => Math.abs(y - next) <= 1) || [primary.frame, ...supplementalFrames.map(e => e.frame)].some(f => Math.abs(f.scroll.y - next) <= 1)) break;
+      attemptedScrolls.push(next);
       await page.evaluate(y => window.scrollTo({ top: y, left: 0, behavior: 'instant' }), next); await settle();
       supplementalFrames.push(await shot(name.replace(/\.png$/, `--scroll-${String(n).padStart(3, '0')}.png`), false));
       coverage = viewportContentCoverage([primary.frame, ...supplementalFrames.map(e => e.frame)], required);
