@@ -211,6 +211,7 @@ export function captureSmokeCalibrationFrame() {
       const points = [x - m.actualBoundingBoxLeft * sw - pad, x + m.actualBoundingBoxRight * sw + pad]
         .flatMap(xx => [y - m.actualBoundingBoxAscent - pad, y + m.actualBoundingBoxDescent + pad].map(yy => map(xx, yy)));
       glyphs.push({ kind: name, text: String(value), parentText: stack.at(-1)?.text || null, invocationId: stack.at(-1)?.id ?? null,
+        effectiveAlpha: opacity(name === 'fillText' ? this.fillStyle : this.strokeStyle),
         x0: Math.min(...points.map(p => p.x)), x1: Math.max(...points.map(p => p.x)),
         y0: Math.min(...points.map(p => p.y)), y1: Math.max(...points.map(p => p.y)) });
     }
@@ -223,6 +224,7 @@ export function captureSmokeCalibrationFrame() {
       const t = this.getTransform(), padX = this.lineWidth / 2 * Math.hypot(t.a, t.c) * b.W / b.canvas.width,
         padY = this.lineWidth / 2 * Math.hypot(t.b, t.d) * b.H / b.canvas.height;
       fractionBars.push({ kind: 'fraction-bar', text: stack.at(-1).text, invocationId: stack.at(-1).id,
+        effectiveAlpha: opacity(this.strokeStyle),
         x0: Math.min(...path.map(p => p.x)) - padX, x1: Math.max(...path.map(p => p.x)) + padX,
         y0: Math.min(...path.map(p => p.y)) - padY, y1: Math.max(...path.map(p => p.y)) + padY });
     }
@@ -234,6 +236,7 @@ export function captureSmokeCalibrationFrame() {
     if (!b._bbox && stack.at(-1)?.fraction && opacity(this.fillStyle) > .01) {
       const points = [x, x + w].flatMap(xx => [y, y + h].map(yy => map(xx, yy)));
       fractionBars.push({ kind: 'fraction-bar-fill', text: stack.at(-1).text, invocationId: stack.at(-1).id,
+        effectiveAlpha: opacity(this.fillStyle),
         x0: Math.min(...points.map(p => p.x)), x1: Math.max(...points.map(p => p.x)),
         y0: Math.min(...points.map(p => p.y)), y1: Math.max(...points.map(p => p.y)) });
     }

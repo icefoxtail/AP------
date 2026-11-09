@@ -15,6 +15,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: middle-smoke-semantic-experiment-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   actual-semantic-controls:
     name: Original smoke and semantic experiment (${{ matrix.phase }})

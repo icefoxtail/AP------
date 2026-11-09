@@ -55,6 +55,22 @@ test('a missing denominator or foreground fraction bar cannot be excused by the 
   }
 });
 
+test('faint, zero-area and zero-width fraction output cannot correct a raw-clipped annotation', () => {
+  const faint = fixture((b, c) => { c.globalAlpha = .02; b._text(100, 40, formula); }).capture();
+  assert.equal(faint.glyphs.length, 2); assert.equal(judge(faint).status, 'FAIL');
+  for (const change of [
+    f => { for (const glyph of f.glyphs) glyph.x1 = glyph.x0; },
+    f => { for (const glyph of f.glyphs) glyph.y1 = glyph.y0; },
+    f => { f.fractionBars[0].x1 = f.fractionBars[0].x0; },
+    f => { f.fractionBars[0].y1 = f.fractionBars[0].y0; },
+    f => { for (const glyph of f.glyphs) glyph.effectiveAlpha = 30 / 255; },
+    f => { for (const glyph of f.glyphs) delete glyph.effectiveAlpha; },
+  ]) {
+    const frame = fixture(b => b._text(100, 40, formula)).capture(); change(frame);
+    assert.equal(judge(frame).status, 'FAIL');
+  }
+});
+
 test('actual glyphs and direct Canvas text fail beyond 2px even when raw boxes fit', () => {
   const frame = fixture((b, c) => { b._text(60, 40, 'A'); c.fillText('W', 123, 60); }).capture();
   assert.equal(frame.legacy.clipped.length, 0); assert.equal(frame.glyphs.at(-1).invocationId, null);
@@ -86,10 +102,20 @@ test('absent association metadata, duplicate ids and mismatched parents retain t
 test('low ink requires a fully applicable analytic contract; unknown or new scenes still fail', () => {
   const frame = fixture(b => b._text(60, 40, 'A')).capture(); frame.legacy.ink = 190;
   const unknown = evaluateSmokeSemanticCalibration(frame); assert.equal(judge(frame).status, 'FAIL');
-  const proven = { ...unknown, status: 'PASS', contract: { applicable: true, key: 'independent-fixture', contours: [{}] }, checks: [{ pass: true }] };
+  const proven = { ...unknown, status: 'PASS', contract: { applicable: true, key: `${frame.unit}/${frame.id}`, contours: [{}] }, checks: [{ pass: true }] };
   assert.equal(adjudicateSmokeMeasurement(frame, proven).status, 'PASS');
   for (const patch of [{ status: 'UNKNOWN' }, { status: 'FAIL' }, { checks: [] }, { checks: [{ pass: false }] }, { contract: { applicable: false } }])
     assert.equal(adjudicateSmokeMeasurement(frame, { ...proven, ...patch }).status, 'FAIL');
+});
+
+test('another scene or stale legacy observation cannot supply the semantic proof', () => {
+  const frame = fixture(b => b._text(60, 40, 'A')).capture();
+  const original = evaluateSmokeSemanticCalibration(frame);
+  for (const patch of [{ unit: 'g8-pythagoras', id: 'py1-rot' }, { id: 'new-scene' },
+    { contract: { applicable: true, key: 'other/scene', contours: [{}] } },
+    { legacy: { ...original.legacy, ink: original.legacy.ink + 1 } },
+    { legacy: { ...original.legacy, samplingStep: original.legacy.samplingStep + 1 } }])
+    assert.equal(adjudicateSmokeMeasurement(frame, { ...original, ...patch }).status, 'FAIL');
 });
 
 test('missing critical original content fails even with ample unrelated ink', () => {
@@ -98,4 +124,12 @@ test('missing critical original content fails even with ample unrelated ink', ()
   const semantic = evaluateSmokeSemanticCalibration(frame, { applicable: true, status: 'FAIL', failures: [{ code: 'missing-leaf' }] });
   assert.equal(adjudicateSmokeMeasurement(frame, semantic).status, 'FAIL');
   assert.equal(adjudicateSmokeMeasurement(frame, { ...semantic, status: 'PASS', existingInitialContract: { status: 'NOT_APPLICABLE' } }).status, 'FAIL');
+});
+
+test('missing source canvas bytes cannot pass through high legacy ink and an early UNKNOWN result', () => {
+  const frame = fixture(b => b._text(60, 40, 'A')).capture();
+  Object.assign(frame, { unit: 'g8-pythagoras', id: 'py1-rot', step: 1 }); delete frame.rgba;
+  const semantic = evaluateSmokeSemanticCalibration(frame);
+  assert.equal(semantic.status, 'UNKNOWN'); assert.equal(semantic.contract, undefined);
+  assert.equal(adjudicateSmokeMeasurement(frame, semantic).status, 'FAIL');
 });

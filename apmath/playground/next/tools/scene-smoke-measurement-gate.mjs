@@ -9,14 +9,21 @@ export function adjudicateSmokeMeasurement(frame, semantic) {
       || legacy.minimumInk !== 200 || legacy.alphaThreshold !== 30 || legacy.clipToleranceCssPx !== 2) {
     failures.push('legacy-observation-incomplete-or-thresholds-changed'); return result;
   }
+  if (semantic.unit !== frame.unit || String(semantic.id) !== String(frame.id)
+      || (semantic.contract?.applicable && semantic.contract.key !== `${frame.unit}/${frame.id}`)
+      || legacy.ink !== frame.legacy?.ink || JSON.stringify(legacy.clipped) !== JSON.stringify(frame.legacy?.clipped)
+      || legacy.samplingStep !== frame.legacy?.samplingStep) failures.push('semantic-proof-observation-mismatch');
   const W = frame.canvas?.cssWidth, H = frame.canvas?.cssHeight;
   const outside = box => !['x0', 'x1', 'y0', 'y1'].every(key => Number.isFinite(box[key]))
     || Math.max(-box.x0, box.x1 - W, -box.y0, box.y1 - H) > 2;
+  const visiblyPainted = box => !outside(box) && box.x1 > box.x0 && box.y1 > box.y0
+    && Number.isFinite(box.effectiveAlpha) && box.effectiveAlpha * 255 > 30;
   if (!(W > 0 && H > 0) || !frame.glyphCaptureComplete || !frame.fractionBarCaptureComplete
       || frame.annotationCaptureComplete !== true) failures.push('actual-annotation-observation-incomplete');
   const marks = [...(frame.glyphs || []), ...(frame.fractionBars || [])];
   if (marks.some(outside)) failures.push('actual-glyph-or-fraction-bar-clipped-over-2px');
   if (semantic?.status === 'FAIL') failures.push('required-semantic-content-failed');
+  if (semantic?.status !== 'PASS') failures.push('semantic-observation-unverified');
   const requiredInitial = frame.unit === 'g7-circle-sector' && /^(f1-(star|ss2|lens|ex22|ring|semis|tri)|f3-leaf-len)$/.test(String(frame.id))
     || frame.unit === 'g9-circle' && frame.id === 'c6-8'
     || frame.unit === 'g7-polyhedra' && frame.id === 'p2-6';
@@ -47,7 +54,7 @@ export function adjudicateSmokeMeasurement(frame, semantic) {
       && expected.every((text, index) => text === glyphs[index].text && glyphs[index].parentText === box.text)
       && Number.isInteger(annotation.expectedFractionBars) && bars.length === annotation.expectedFractionBars
       && bars.every(bar => bar.text === box.text)
-      && glyphs.every(glyph => !outside(glyph)) && bars.every(bar => !outside(bar));
+      && glyphs.every(visiblyPainted) && bars.every(visiblyPainted);
     if (complete) corrections.push({ type: 'ACTUAL_ANNOTATION_BOUNDS', invocationId: box.invocationId,
       rawText: box.text, glyphs: glyphs.length, fractionBars: bars.length, unchangedToleranceCssPx: 2 });
     else failures.push(`raw-clipped-annotation-unverified:${box.invocationId ?? 'missing-id'}`);

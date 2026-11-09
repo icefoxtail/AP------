@@ -3,10 +3,17 @@ name: Middle initial smoke diagnosis
 on:
   push:
     branches: ['audit/apmath-initial-smoke-20261109']
+    paths:
+      - 'tools/apmath-initial-smoke-diagnostic.mjs'
+      - '.github/workflows/middle-initial-smoke-diagnostic.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: middle-smoke-diagnostic-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   collect-exact-baseline-and-candidate:
