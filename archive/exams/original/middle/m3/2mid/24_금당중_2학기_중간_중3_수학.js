@@ -253,7 +253,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q08-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q08-solution.svg"
   },
   {
     "id": 9,
@@ -382,7 +382,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q12-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q12-solution.svg"
   },
   {
     "id": 13,
@@ -415,7 +415,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q13-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q13-solution.svg"
   },
   {
     "id": 14,
@@ -641,7 +641,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q20-solution.svg"
   },
   {
     "id": 21,
@@ -721,7 +721,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q23-solution.svg"
   },
   {
     "id": 24,
@@ -748,6 +748,6 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q24-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q24-solution.svg"
   }
 ];
