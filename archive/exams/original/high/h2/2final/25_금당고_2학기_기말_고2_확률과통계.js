@@ -54,7 +54,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "content": "확률변수 X의 확률분포표는 아래와 같다. 이때 확률변수 X의 기댓값 E(X)는? [4점]\n\n| X | 0 | 1 | 2 | 3 | 합계 |\n| P(X=x) | $\\frac{125}{216}$ | $\\frac{75}{216}$ | $\\frac{15}{216}$ | $\\frac{1}{216}$ | 1 |",
+    "content": "확률변수 X의 확률분포표는 아래와 같다. 이때 확률변수 X의 기댓값 E(X)는? [4점]\n\n| $X$ | 0 | 1 | 2 | 3 | 합계 |\n| $P(X=x)$ | $\\frac{125}{216}$ | $\\frac{75}{216}$ | $\\frac{15}{216}$ | $\\frac{1}{216}$ | 1 |",
     "choices": [
       "1/4",
       "1/2",
@@ -575,7 +575,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "content": "어느 제과점에서 만드는 크림빵을 50개씩 상자에 넣어 판매한다고 한다. 이때, 상자에서 임의로 추출한 4개의 크림빵 무게의 표본평균이 20g 이상이면 그 상자를 20000원에 판매하고, 20g 미만이면 할인하여 18000원에 판매한다. A상자에 들어있는 크림빵의 무게는 평균 22g, 표준편차 4g인 정규분포를 따르고, B상자에 들어있는 크림빵의 무게는 평균 21g, 표준편차 2g인 정규분포를 따른다. 두 상자의 판매 가격의 합이 40000원일 확률을 표준정규분포표를 이용하여 구한 것은? [5.2점]\n\n| z | P(0≤Z≤z) |\n| 0.5 | 0.19 |\n| 1.0 | 0.34 |\n| 1.5 | 0.43 |\n| 2.0 | 0.48 |",
+    "content": "어느 제과점에서 만드는 크림빵을 50개씩 상자에 넣어 판매한다고 한다. 이때, 상자에서 임의로 추출한 4개의 크림빵 무게의 표본평균이 20g 이상이면 그 상자를 20000원에 판매하고, 20g 미만이면 할인하여 18000원에 판매한다. A상자에 들어있는 크림빵의 무게는 평균 22g, 표준편차 4g인 정규분포를 따르고, B상자에 들어있는 크림빵의 무게는 평균 21g, 표준편차 2g인 정규분포를 따른다. 두 상자의 판매 가격의 합이 40000원일 확률을 표준정규분포표를 이용하여 구한 것은? [5.2점]\n\n| $z$ | $P(0 \\le Z \\le z)$ |\n| 0.5 | 0.19 |\n| 1.0 | 0.34 |\n| 1.5 | 0.43 |\n| 2.0 | 0.48 |",
     "choices": [
       "0.3830",
       "0.4328",
@@ -671,7 +671,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "content": "확률변수 X는 정규분포 N(m_1, σ_1^2), 확률변수 Y는 정규분포 N(m_2, σ_2^2)을 따르고, 확률변수 X, Y의 확률밀도함수는 각각 f(x), g(x)이다. σ_1=σ_2이고 f(24)=g(28)일 때, 확률변수 X, Y는 다음 조건을 만족시킨다.\n\n<조건>\n(가) P(m_1≤X≤24)+P(28≤Y≤m_2)=0.9544\n(나) P(Y≥36)=1-P(X≤24)\n\nP(17≤X≤21)의 값을 다음 표준정규분포표를 이용하여 구한 것은? [5.4점]\n\n| z | P(0≤Z≤z) |\n| 0.5 | 0.1915 |\n| 1.0 | 0.3413 |\n| 1.5 | 0.4332 |\n| 2.0 | 0.4772 |",
+    "content": "확률변수 X는 정규분포 N(m_1, σ_1^2), 확률변수 Y는 정규분포 N(m_2, σ_2^2)을 따르고, 확률변수 X, Y의 확률밀도함수는 각각 f(x), g(x)이다. σ_1=σ_2이고 f(24)=g(28)일 때, 확률변수 X, Y는 다음 조건을 만족시킨다.\n\n<조건>\n(가) P(m_1≤X≤24)+P(28≤Y≤m_2)=0.9544\n(나) P(Y≥36)=1-P(X≤24)\n\nP(17≤X≤21)의 값을 다음 표준정규분포표를 이용하여 구한 것은? [5.4점]\n\n| $z$ | $P(0 \\le Z \\le z)$ |\n| 0.5 | 0.1915 |\n| 1.0 | 0.3413 |\n| 1.5 | 0.4332 |\n| 2.0 | 0.4772 |",
     "choices": [
       "0.6247",
       "0.6687",
@@ -808,7 +808,7 @@ window.questionBank = [
     "choices": [],
     "answer": "P(X=1)=3/10, P(X=2)=3/5, P(X=3)=1/10; E(X)=9/5, V(X)=9/25, σ(X)=3/5",
     "answerStatus": "direct_solved_round12_meitner",
-    "solution": "대표 $3$명을 $5$명 중에서 뽑는 전체 경우의 수는 $\\,{}_5C_3=10$이다.\n여학생이 $2$명뿐이므로 대표 중 남학생 수 $X$는 $1,2,3$ 중 하나이다.\n$P(X=1)=\\dfrac{{}_3C_1\\,{}_2C_2}{{}_5C_3}=\\dfrac3{10}$\n$P(X=2)=\\dfrac{{}_3C_2\\,{}_2C_1}{{}_5C_3}=\\dfrac6{10}=\\dfrac35$\n$P(X=3)=\\dfrac{{}_3C_3\\,{}_2C_0}{{}_5C_3}=\\dfrac1{10}$\n따라서 확률분포표는 다음과 같다.\n<table style=\"border-collapse:collapse;font-size:12px;margin:4px 0\"><tr><th style=\"border:1px solid #888;padding:3px 7px\">X</th><td style=\"border:1px solid #888;padding:3px 7px\">1</td><td style=\"border:1px solid #888;padding:3px 7px\">2</td><td style=\"border:1px solid #888;padding:3px 7px\">3</td><td style=\"border:1px solid #888;padding:3px 7px\">합계</td></tr><tr><th style=\"border:1px solid #888;padding:3px 7px\">P(X=x)</th><td style=\"border:1px solid #888;padding:3px 7px\">$\\frac{3}{10}$</td><td style=\"border:1px solid #888;padding:3px 7px\">$\\frac{3}{5}$</td><td style=\"border:1px solid #888;padding:3px 7px\">$\\frac{1}{10}$</td><td style=\"border:1px solid #888;padding:3px 7px\">1</td></tr></table>\n기댓값은\n$E(X)=1\\times\\dfrac3{10}+2\\times\\dfrac6{10}+3\\times\\dfrac1{10}$\n$=\\dfrac{3+12+3}{10}=\\dfrac95$\n분산을 구하기 위해 제곱의 기댓값을 계산하면\n$E(X^2)=1^2\\times\\dfrac3{10}+2^2\\times\\dfrac6{10}+3^2\\times\\dfrac1{10}$\n$=\\dfrac{3+24+9}{10}=\\dfrac{18}{5}$\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{18}{5}-\\left(\\dfrac95\\right)^2$\n$=\\dfrac{90-81}{25}=\\dfrac9{25}$\n표준편차는 분산의 양의 제곱근이므로\n$\\sigma(X)=\\sqrt{\\dfrac9{25}}=\\dfrac35$\n따라서 기댓값은 $\\dfrac95$, 분산은 $\\dfrac9{25}$, 표준편차는 $\\dfrac35$이다.",
+    "solution": "대표 $3$명을 $5$명 중에서 뽑는 전체 경우의 수는 $\\,{}_5C_3=10$이다.\n여학생이 $2$명뿐이므로 대표 중 남학생 수 $X$는 $1,2,3$ 중 하나이다.\n$P(X=1)=\\dfrac{{}_3C_1\\,{}_2C_2}{{}_5C_3}=\\dfrac3{10}$\n$P(X=2)=\\dfrac{{}_3C_2\\,{}_2C_1}{{}_5C_3}=\\dfrac6{10}=\\dfrac35$\n$P(X=3)=\\dfrac{{}_3C_3\\,{}_2C_0}{{}_5C_3}=\\dfrac1{10}$\n따라서 확률분포표는 다음과 같다.\n<table style=\"border-collapse:collapse;font-size:12px;margin:4px 0\"><tr><th style=\"border:1px solid #888;padding:3px 7px\">$X$</th><td style=\"border:1px solid #888;padding:3px 7px\">1</td><td style=\"border:1px solid #888;padding:3px 7px\">2</td><td style=\"border:1px solid #888;padding:3px 7px\">3</td><td style=\"border:1px solid #888;padding:3px 7px\">합계</td></tr><tr><th style=\"border:1px solid #888;padding:3px 7px\">$P(X=x)$</th><td style=\"border:1px solid #888;padding:3px 7px\">$\\frac{3}{10}$</td><td style=\"border:1px solid #888;padding:3px 7px\">$\\frac{3}{5}$</td><td style=\"border:1px solid #888;padding:3px 7px\">$\\frac{1}{10}$</td><td style=\"border:1px solid #888;padding:3px 7px\">1</td></tr></table>\n기댓값은\n$E(X)=1\\times\\dfrac3{10}+2\\times\\dfrac6{10}+3\\times\\dfrac1{10}$\n$=\\dfrac{3+12+3}{10}=\\dfrac95$\n분산을 구하기 위해 제곱의 기댓값을 계산하면\n$E(X^2)=1^2\\times\\dfrac3{10}+2^2\\times\\dfrac6{10}+3^2\\times\\dfrac1{10}$\n$=\\dfrac{3+24+9}{10}=\\dfrac{18}{5}$\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{18}{5}-\\left(\\dfrac95\\right)^2$\n$=\\dfrac{90-81}{25}=\\dfrac9{25}$\n표준편차는 분산의 양의 제곱근이므로\n$\\sigma(X)=\\sqrt{\\dfrac9{25}}=\\dfrac35$\n따라서 기댓값은 $\\dfrac95$, 분산은 $\\dfrac9{25}$, 표준편차는 $\\dfrac35$이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
@@ -845,7 +845,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 4,
-    "content": "<서술형 2>\n평균이 m, 표준편차가 σ인 정규분포를 따르는 모집단에서 크기가 n인 표본을 임의추출할 때, 표본평균을 X̄라 하자. 이 모집단의 확률변수를 X라 할 때, 두 확률변수 X, X̄가 다음 세 조건을 만족시킨다.\n\n<조건>\n(가) P(X≥8)+P(X̄≥8)=1\n(나) P(X≥12)+P(X̄≥7.5)=1\n(다) 표본평균의 값이 x̄일 때, m에 대한 신뢰도 95.44%의 신뢰구간이 x̄-1≤m≤x̄+1이다.\n\n단, Z가 표준정규분포를 따르는 확률변수일 때, 다음 표준정규분포표를 이용하여 m+σ+n의 값을 구하는 과정을 풀이과정과 함께 상세하게 서술하시오. [7점]\n\n| z | P(0≤Z≤z) |\n| 1.0 | 0.3413 |\n| 1.5 | 0.4332 |\n| 2.0 | 0.4772 |\n| 2.5 | 0.4938 |",
+    "content": "<서술형 2>\n평균이 m, 표준편차가 σ인 정규분포를 따르는 모집단에서 크기가 n인 표본을 임의추출할 때, 표본평균을 X̄라 하자. 이 모집단의 확률변수를 X라 할 때, 두 확률변수 X, X̄가 다음 세 조건을 만족시킨다.\n\n<조건>\n(가) P(X≥8)+P(X̄≥8)=1\n(나) P(X≥12)+P(X̄≥7.5)=1\n(다) 표본평균의 값이 x̄일 때, m에 대한 신뢰도 95.44%의 신뢰구간이 x̄-1≤m≤x̄+1이다.\n\n단, Z가 표준정규분포를 따르는 확률변수일 때, 다음 표준정규분포표를 이용하여 m+σ+n의 값을 구하는 과정을 풀이과정과 함께 상세하게 서술하시오. [7점]\n\n| $z$ | $P(0 \\le Z \\le z)$ |\n| 1.0 | 0.3413 |\n| 1.5 | 0.4332 |\n| 2.0 | 0.4772 |\n| 2.5 | 0.4938 |",
     "choices": [],
     "answer": "76",
     "answerStatus": "direct_solved_round12_meitner",
