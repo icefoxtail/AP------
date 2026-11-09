@@ -98,7 +98,11 @@ window.questionBank = [
     "sourceQid": 2,
     "sourceOrdinal": 2,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 공역에 0, 1, 2, 3, 4가 있고, -1은 공역 밖에 놓여 있다.",
+    "solutionImageCaption": "입력 0을 넣어 나온 -1은 공역 원소가 아니다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -418,7 +422,7 @@ window.questionBank = [
       "역함수의 그래프 대응"
     ],
     "image": "assets/images/19_팔마고_2학기_기말_고1_기출/q9.png",
-    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q9.png",
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q9-solution-v2.svg",
     "answer": "④",
     "solution": "그림에서 $y=f(x)$와 $y=x$의 점선 대응을 읽으면 $f(c)=b$이고 $f(d)=c$이다. 따라서 $f^{-1}(b)=c$, 이어서 $f^{-1}(c)=d$이다.\n\n그러므로 $(f^{-1}\\circ f^{-1})(b)=d$이고 정답은 ④이다.",
     "level": "중",
@@ -448,7 +452,10 @@ window.questionBank = [
     "sourceQid": 9,
     "sourceOrdinal": 9,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3},
+    "solutionImageAlt": "해설 그림: 두 입력에서 각각 b와 c로 향하는 함수 대응 그림.",
+    "solutionImageCaption": "입력 c의 함숫값은 b이고, 입력 d의 함숫값은 c이다. 역함수를 두 번 적용하면 d에 이른다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -468,7 +475,7 @@ window.questionBank = [
       "함수의 반복 합성"
     ],
     "image": "assets/images/19_팔마고_2학기_기말_고1_기출/q10.png",
-    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q10.png",
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q10-solution-v2.svg",
     "answer": "⑤",
     "solution": "그림의 대응은 $f(1)=3$, $f(2)=1$, $f(3)=2$이다. 따라서 3에서 시작하면\n$3\\to2\\to1\\to3\\to2\\to1\\to\\cdots$\n의 주기 3이 반복된다.\n\n$150$은 3의 배수이므로 $f^{150}(3)=3$이다. $200=3\\cdot66+2$이므로 $f^{200}(3)=f^2(3)=1$이다.\n따라서 차는 $3-1=2$이고 정답은 ⑤이다.",
     "level": "중",
@@ -498,7 +505,10 @@ window.questionBank = [
     "sourceQid": 10,
     "sourceOrdinal": 10,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3},
+    "solutionImageAlt": "해설 그림: 세 원소가 순환하며 서로 대응되는 모습.",
+    "solutionImageCaption": "3에서 출발하면 2, 1을 거쳐 3으로 돌아온다. 150번째 값은 3, 200번째 값은 1이어서 차는 2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -791,13 +801,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_RANGE","COND_FUNCTION_INJECTIVE","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "두 구간 함수의 그래프: x=4에서 (4,5) 포함, 치역은 [5,∞)와 (1,5).",
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 곡선과 높이 1의 수평 점근선, 경계점 (4,5)를 나타낸 그림. 왼쪽 곡선에는 입력 0의 대응점도 표시되어 있다.",
     "questionUid": "qid_v1_6e3deda17460b0da37b0227ab9bc507182ec429e83f2e487730bb77e8582a797",
     "sourceQid": 16,
     "sourceOrdinal": 16,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImageCaption": "왼쪽 가지는 점 (4,5)를 포함하고 오른쪽 가지는 그 점을 제외하므로 경계값은 5이다. 0에서의 함숫값은 7이며, 조건에 맞는 입력을 구하면 정답은 ②이다.",
+    "solutionImageSize": "medium"
   
 },
   {
@@ -845,7 +857,11 @@ window.questionBank = [
     "sourceQid": 17,
     "sourceOrdinal": 17,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 수의 곱을 나타내는 t가 같은 값 t로 돌아오는 대응 그림.",
+    "solutionImageCaption": "두 수의 곱을 t라고 놓으면, t는 함수에서 자기 자신으로 돌아온다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -934,7 +950,11 @@ window.questionBank = [
     "sourceQid": 19,
     "sourceOrdinal": 19,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 경계값 0과 8의 두 예에서 입력 3이 서로 다른 함수 조각에 놓이는 모습을 비교한 그림.",
+    "solutionImageCaption": "예: 경계값이 0일 때 입력 3은 오른쪽 조각에, 8일 때는 왼쪽 조각에 속한다. 구하는 값은 -10과 4이다.",
+    "solutionImageSize": "full"
   
   },
   {

@@ -1131,6 +1131,10 @@ window.questionBank = [
     "questionUid": "qid_v1_c0330dca230e557a4c441ac8a0a5150b3d82fe8265b0e1faa5b0913f1da47697",
     "sourceOrdinal": 23,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":23,"sourceQid":23,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":23,"sourceQid":23,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 대응에서 1과 2, 3과 4가 각각 서로 바뀌고 5는 그대로 대응하는 그림.",
+    "solutionImageCaption": "예: 두 원소씩 맞바꾸면 두 번 적용한 뒤 원래 원소로 돌아온다. 맞바꿈 두 쌍과 고정점 하나를 나타냈다. 정답은 26이다.",
+    "solutionImageSize": "full"
   }
 ];
