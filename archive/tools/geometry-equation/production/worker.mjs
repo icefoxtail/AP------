@@ -3,7 +3,7 @@ import {fileURLToPath} from 'node:url';
 import {freezeWire,validateResponse} from './contracts.mjs';
 import {dependencyRoot} from './dependencies.mjs';
 import path from 'node:path';
-export async function pythonWorker(payload, {python = process.env.GEOMETRY_PYTHON || 'python', timeoutMs = 10000, maxBytes = 4000000, script = fileURLToPath(new URL('worker.py',import.meta.url)),signal} = {}) {
+export async function pythonWorker(payload, {python = process.env.GEOMETRY_PYTHON || 'python', timeoutMs = Number(process.env.GEOMETRY_WORKER_TIMEOUT_MS) || 10000, maxBytes = 4000000, script = fileURLToPath(new URL('worker.py',import.meta.url)),signal} = {}) {
   if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('WORKER_SIGNAL_INVALID');
   if(signal?.aborted)throw Error('WORKER_CANCELLED');
   const request = freezeWire(payload);

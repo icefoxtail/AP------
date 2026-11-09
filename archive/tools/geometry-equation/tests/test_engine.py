@@ -57,6 +57,11 @@ class EngineTests(unittest.TestCase):
         from visual_engine.engine import axis_title_tex
         self.assertEqual([axis_title_tex(t) for t in ('y','g(y)','v(t)','y(km)','x (cm)','v(m/s)')],['y','g(y)','v(t)','y(\\mathrm{km})','x(\\mathrm{cm})','v(\\mathrm{m/s})'])
         self.assertIsNone(axis_title_tex('x(분)'));self.assertIsNone(axis_title_tex('시간'));self.assertIsNone(axis_title_tex('20%'))
+    def test_root_sign_and_prime_are_read_as_math(self):
+        # EXT-20261109-c: √3, √x, √(x-2), 2√3 and A′ in a label
+        from visual_engine.math_expression import parse,serialize
+        tex=lambda text:serialize(parse(text),'tex')
+        self.assertEqual([tex('u=√3'),tex('y=√(x-2)'),tex('2√3'),tex('A′')],['u=\\sqrt{3}','y=\\sqrt{x-2}','2\\sqrt{3}','A^{\\prime}'])
     def test_fact_binding(self):
         fact={'independentFactHash':'frozen','visualSpec':spec()}
         self.assertEqual(build_independent({},fact)['witness']['classification'],'STANDARD')

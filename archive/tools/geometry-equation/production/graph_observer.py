@@ -2731,15 +2731,37 @@ def _ov_drop_fraction_brackets(text):
             if before=='' or before in '=+,(' or binary_minus:drop|={open_at,close}
     return ''.join(ch for index,ch in enumerate(text) if index not in drop)
 
+OV_GREEK_ITALIC={'α':0x1D6FC,'β':0x1D6FD,'γ':0x1D6FE,'δ':0x1D6FF,'θ':0x1D703,'π':0x1D70B}   # MathJax draws a Greek letter as its mathematical italic code
 def _ov_label_codes(text):
     """The glyph codes (a set of acceptable hex codes per glyph, in reading order) of a free equation text: letters are themselves or their italic math code, - is the minus
-    sign; spaces, * (an implicit product) and the / of a stacked fraction or the ^ of a power draw no glyph of their own."""
-    out=[]
-    for ch in _ov_drop_fraction_brackets(text.replace(' ','')):
+    sign; spaces, * (an implicit product) and the / of a stacked fraction or the ^ of a power draw no glyph of their own. (EXT-20261109-c) A Greek letter is its italic code and
+    the root sign draws its radicand first and the radical glyph U+221A after it (the brackets of sqrt(...) are not drawn)."""
+    return _ov_codes_of(_ov_drop_fraction_brackets(text.replace(' ','')))
+
+def _ov_codes_of(text):
+    out=[];index=0
+    while index<len(text):
+        ch=text[index]
+        if ch=='√':
+            start=index+1
+            if start<len(text) and text[start]=='(':
+                depth=0;close=start
+                while close<len(text):
+                    depth+=(text[close]=='(')-(text[close]==')')
+                    if depth==0:break
+                    close+=1
+                out+=_ov_codes_of(text[start+1:close]);index=close+1
+            else:
+                operand=re.match('[0-9]+(?:[.][0-9]+)?|[A-Za-zαβγδθπ]+',text[start:])
+                if operand is None:raise ValueError('OVERLAY_CALLOUT_TEXT_INVALID')
+                out+=_ov_codes_of(operand.group(0));index=start+len(operand.group(0))
+            out.append({'221A'});continue
+        index+=1
         if ch in '*/^_':continue
         if ch=='-':out.append({'2212','2D'})
         elif 'a'<=ch<='z':out.append({format(ord(ch),'X'),format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X')})
         elif 'A'<=ch<='Z':out.append({format(ord(ch),'X'),format(0x1D434+ord(ch)-65,'X')})
+        elif ch in OV_GREEK_ITALIC:out.append({format(ord(ch),'X'),format(OV_GREEK_ITALIC[ch],'X')})
         else:out.append({format(ord(ch),'X')})
     return out
 
@@ -3173,8 +3195,8 @@ def _ov_expected(plan):
         ident=entry.get('id');text=entry.get('text');ref=entry.get('point')
         if not isinstance(ident,str) or ident in seen_callouts or not isinstance(ref,str) or not isinstance(text,str) or text!=text.strip() or not text:raise ValueError('OVERLAY_CALLOUT_INVALID')
         seen_callouts.add(ident)
-        kind=entry.get('labelKind') or ('TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in 'αβγθ′√') else 'MATH')
-        if kind not in ('TEXT','MATH') or (kind=='TEXT' and not re.fullmatch(r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}' if any(mark in text for mark in ',αβγθ′√') else OV_NAME_PATTERN,text)) or (kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+*/().^ ,_-]{1,20}',text)):raise ValueError('OVERLAY_CALLOUT_INVALID')
+        kind=entry.get('labelKind') or ('TEXT' if re.search('[가-힣]',text) else 'MATH')
+        if kind not in ('TEXT','MATH') or (kind=='TEXT' and not re.fullmatch(r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}' if any(mark in text for mark in ',αβγθ′√') else OV_NAME_PATTERN,text)) or (kind=='MATH' and not re.fullmatch(r'[0-9A-Za-zαβγδθπ′√=+*/().^ ,_-]{1,20}',text)):raise ValueError('OVERLAY_CALLOUT_INVALID')
         if ref in points:dot=ref;at=(float(S.N(points[ref][0],30)),float(S.N(points[ref][1],30)))
         else:
             index=next((i for i,point in enumerate(required_rows) if isinstance(point,dict) and point.get('id')==ref),None)
