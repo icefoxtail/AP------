@@ -15,7 +15,7 @@ test('an irrational slope or intercept is written as an exact surd', () => {
   assert.equal(eq(sq(3),I('-1'),I('6'),'SLOPE_INTERCEPT'),'y=+sqrt(3)x+6'.replace('=+','='));
   assert.equal(eq(sq(3),I('-1'),I('-6'),'SLOPE_INTERCEPT'),'y=sqrt(3)x-6');
   assert.equal(eq(ex('neg',sq(3)),I('-1'),I('0'),'SLOPE_INTERCEPT'),'y=-sqrt(3)x');
-  assert.equal(eq(I('1'),I('-1'),ex('neg',sq(2)),'SLOPE_INTERCEPT'),'y=x+(-sqrt(2))');
+  assert.equal(eq(I('1'),I('-1'),ex('neg',sq(2)),'SLOPE_INTERCEPT'),'y=x-sqrt(2)');   // EXT-20261109-g: a single negative surd term needs no brackets (it used to read y=x+(-sqrt(2)))
 });
 test('sqrt simplifies and a perfect square is rational', () => {
   assert.deepEqual(exactSurd(sq(12)),{p:[0n,1n],q:[2n,1n],r:3n});

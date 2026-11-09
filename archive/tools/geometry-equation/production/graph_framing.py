@@ -2218,7 +2218,9 @@ def fit_piecewise_polynomial(plan):
     crossings=[];line_ids=set();line_specs={}
     for line in lines:
         if not isinstance(line,dict) or not isinstance(line.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',line['id']) or line['id'] in line_ids or not isinstance(line.get('intersectionX'),list) or len(line['intersectionX'])>6 or line.get('labelIntersections',False) not in (True,False):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
-        keys=set(line)-{'id','intersectionX','labelIntersections'}
+        keys=set(line)-{'id','intersectionX','labelIntersections','hideLabel'}
+        # hideLabel (EXT-20261109-g, opt-in): the line is drawn but its y=... equation text is not written (a region may still name the line as its boundary)
+        if 'hideLabel' in line and not isinstance(line['hideLabel'],bool):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
         if keys=={'y'}:slope=S.Integer(0)
         elif keys=={'slope','intercept'}:slope=None
         else:raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')

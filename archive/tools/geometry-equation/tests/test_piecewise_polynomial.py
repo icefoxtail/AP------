@@ -210,6 +210,15 @@ class TwoPiecewise(unittest.TestCase):
         self.assertTrue(any(error.startswith(('PIECEWISE_POLY_REFERENCE_PIECE_CROSSES_ITS_INTERVAL','PIECEWISE_POLY_REFERENCE_CURVE_COVERAGE_FAIL')) for error in audit(stretched,out2['svg'],out2['transform'])['errors']))
         dropped=re.sub(r'<circle id="ref-endpoint-g-start"[^>]*/>','',out['svg'])
         self.assertIn('PIECEWISE_POLY_REFERENCE_ENDPOINT_MARKER_MISMATCH:g-start',audit(g,dropped,out['transform'])['errors'])
+    def test_hide_label_is_a_boolean_and_changes_nothing_else(self):
+        # EXT-20261109-g: referenceLines[].hideLabel (opt-in) is accepted for a horizontal and a slanted line; the crossings are unchanged
+        plain=fit_overview(copy.deepcopy(Q22))['graphPlan']['piecewisePolynomialFeatures']['intersections']
+        hidden=copy.deepcopy(Q22);hidden['referenceLines'][0]['hideLabel']=True
+        self.assertEqual(fit_overview(hidden)['graphPlan']['piecewisePolynomialFeatures']['intersections'],plain)
+        slanted=copy.deepcopy(SLANT);slanted['referenceLines'][0]['hideLabel']=True;fit_overview(slanted)
+        for bad in ('yes',1,None):
+            plan=copy.deepcopy(Q22);plan['referenceLines'][0]['hideLabel']=bad
+            with self.assertRaises((ValueError,KeyError)):fit_overview(plan)
     @staticmethod
     def _model(plan):
         g=fit_overview(plan)['graphPlan'];return g,produce(g)
