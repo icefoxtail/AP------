@@ -1227,7 +1227,20 @@
       const outside = sec.chain !== 'A' && sec.R * w.b.k < 95; // 작은 부채꼴은 글자가 들어가지 않으니 호 바깥에 적습니다
       const f = sec.chain === 'A' ? 0.58 : 0.6;
       const pos = outside ? [sec.c[0] + Math.cos(mid) * (sec.R + 0.95), sec.c[1] + Math.sin(mid) * (sec.R + 0.95)] : [sec.c[0] + Math.cos(mid) * sec.R * f, sec.c[1] + Math.sin(mid) * sec.R * f];
-      w.text(pos, label, { color: outside ? sec.col : 'ink', alpha: k, ref: ref || sec.id });
+      let lines = label, dx = 0;
+      if (o.labelRight != null) {
+        const x = w.toS(pos).x;
+        const width = (rows) => Math.max(...rows.map((row) => w.b.annotationSize(row, { size: 13.5, weight: 800 }).width));
+        lines = Array.isArray(label) ? label : [label];
+        if (x + width(lines) / 2 > o.labelRight) {
+          // 개집 풀이의 오른쪽 작은 부채꼴: 긴 반지름 식은 등호 앞에서
+          // 나누어 목차 손잡이를 피하고, C 이름과 겹치지 않게 합니다.
+          const split = lines[0].lastIndexOf(' = ');
+          if (split > 1) lines = [lines[0].slice(0, split), lines[0].slice(split + 1), ...lines.slice(1)];
+          dx = Math.min(0, o.labelRight - x - width(lines) / 2);
+        }
+      }
+      w.text(pos, lines, { color: outside ? sec.col : 'ink', alpha: k, ref: ref || sec.id, ...(dx ? { dx } : {}) });
     }
   }
 
@@ -1262,7 +1275,7 @@
           label = [`r = ${num(sec.R)}`, `${sec.deg}°`];
           if (tab === 'review' && sec.chain !== 'A') label = [`r = ${num(M.L)}−${num(sec.used)} = ${num(sec.R)}`, `${sec.deg}°`];
         }
-        drawGoatSector(w, sec, { thumb, k, u, label });
+        drawGoatSector(w, sec, { thumb, k, u, label, labelRight: sc.id === 'gt-kennel' && tab === 'review' && b.W < 560 ? b.W - 32 : null });
       });
     }
     drawFence(w, M, thumb, true);
@@ -1298,8 +1311,9 @@
       w.seg(M.V[0], P, { color: 'rose', width: 3.2 });
       const nrm = [-Math.sin(th), Math.cos(th)];
       w.text([(M.V[0][0] + P[0]) / 2 + nrm[0] * 0.65, (M.V[0][1] + P[1]) / 2 + nrm[1] * 0.65], `${num(M.L)} m`, { color: 'rose' });
-      // 개집 문제의 짧은 모바일 그림에서는 동물 이름을 끈 길이 아래로 분리합니다.
-      w.point(P, { color: 'orange', r: 7.5, label: kd.animal, dx: 12, dy: sc.id === 'gt-kennel' && b.W < 560 ? 20 : -12, size: 13.5 });
+      // 작은 정삼각형 문제는 끈 반대쪽에 이름을 두고, 개집의 아래쪽 이름 배치는 유지합니다.
+      const compactTriangle = sc.id === 'gt-tri' && b.W < 380 && b.H < 330;
+      w.point(P, { color: 'orange', r: 7.5, label: kd.animal, dx: compactTriangle ? -12 : 12, align: compactTriangle ? 'right' : 'left', dy: sc.id === 'gt-kennel' && b.W < 560 ? 20 : -12, size: 13.5 });
     } else if (tab === 'review' && step >= 1 && step <= 3) {
       const sec = M.order[step - 1];
       if (sec) {

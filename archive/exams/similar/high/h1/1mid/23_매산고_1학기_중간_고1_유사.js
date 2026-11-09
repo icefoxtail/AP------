@@ -135,7 +135,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "②",
-    "solution": "<b>[Step 1]</b> 이차방정식이 중근을 가질 조건은 판별식 $D=0$임.\\n<b>[Step 2]</b> 짝수 판별식을 적용함: $D/4 = (-4)^2 - 1(2k-4) = 0$\\n<b>[Step 3]</b> $16 - 2k + 4 = 0 \\implies 2k = 20 \\implies k = 10$을 도출함.\\n$k=10$ 대입 시 $x^2-8x+16=(x-4)^2=0$ 이므로 중근 확인.",
+    "solution": "<b>[Step 1]</b> 이차방정식이 중근을 가질 조건은 판별식 $D=0$임.\\n<b>[Step 2]</b> 짝수 판별식을 적용함: $\\frac{D}{4} = (-4)^2 - 1(2k-4) = 0$\\n<b>[Step 3]</b> $16 - 2k + 4 = 0 \\implies 2k = 20 \\implies k = 10$을 도출함.\\n$k=10$ 대입 시 $x^2-8x+16=(x-4)^2=0$ 이므로 중근 확인.",
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -431,7 +431,7 @@ window.questionBank = [
     "content": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오.",
     "choices": [],
     "answer": "-15",
-    "solution": "<b>[Step 1]</b> 모든 실수 $x$에 대하여 $-x^2+2x-15 < 4x+a+2$ 가 성립해야 함.\\n<b>[Step 2]</b> 식을 정리하면 $x^2+2x+a+17 > 0$ 이고, 판별식 $D/4 < 0$ 이어야 함.\\n<b>[Step 3]</b> $1^2 - 1(a+17) < 0 \\implies 1 - a - 17 < 0 \\implies a > -16$.\\n<b>[Step 4]</b> 따라서 이를 만족하는 정수 $a$의 최솟값은 $-15$임.\\n이차항 계수가 양수이므로 $D<0$일 때 항상 양수임을 확인.",
+    "solution": "<b>[Step 1]</b> 모든 실수 $x$에 대하여 $-x^2+2x-15 < 4x+a+2$ 가 성립해야 함.\\n<b>[Step 2]</b> 식을 정리하면 $x^2+2x+a+17 > 0$ 이고, 판별식 $\\frac{D}{4} < 0$ 이어야 함.\\n<b>[Step 3]</b> $1^2 - 1(a+17) < 0 \\implies 1 - a - 17 < 0 \\implies a > -16$.\\n<b>[Step 4]</b> 따라서 이를 만족하는 정수 $a$의 최솟값은 $-15$임.\\n이차항 계수가 양수이므로 $D<0$일 때 항상 양수임을 확인.",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",

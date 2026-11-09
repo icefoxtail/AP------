@@ -1925,7 +1925,7 @@ window.questionBank = [
       "근과 계수의 관계"
     ],
     "answer": "2/5",
-    "solution": "이차방정식의 근과 계수의 관계에 따라\n$\\alpha+\\beta=\\dfrac{6}{2}=3$, $\\alpha\\beta=\\dfrac{15}{2}$이다.\n따라서\n$\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=\\dfrac{3}{15/2}=\\dfrac25$이다.\n정답은 $\\dfrac25$이다.",
+    "solution": "이차방정식의 근과 계수의 관계에 따라\n$\\alpha+\\beta=\\dfrac{6}{2}=3$, $\\alpha\\beta=\\dfrac{15}{2}$이다.\n따라서\n$\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=\\dfrac{3}{\\frac{15}{2}}=\\dfrac25$이다.\n정답은 $\\dfrac25$이다.",
     "category": "근과 계수의 관계",
     "originalCategory": "이차방정식",
     "level": "하",

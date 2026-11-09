@@ -150,9 +150,13 @@
         const sd = (p, q, v, col, off) => sideTag(b, p, q, cen, v, { size: sm(b) ? 14 : 16, color: col, gap: off });
         if (prob) {
           // BC 는 D 가 끼어 있어 길이 눈금선을 아래에 따로 그림
-          const yy = 0.55; line(b, pt(0, yy), pt(L, yy), 'sky', 2); line(b, pt(0, yy - 0.15), pt(0, yy + 0.15), 'sky', 2); line(b, pt(L, yy - 0.15), pt(L, yy + 0.15), 'sky', 2);
+          const yy = sm(b) ? 30 / b.k : 0.55, capH = sm(b) ? 5 / b.k : 0.15;
+          line(b, pt(0, yy), pt(L, yy), 'sky', 2); line(b, pt(0, yy - capH), pt(0, yy + capH), 'sky', 2); line(b, pt(L, yy - capH), pt(L, yy + capH), 'sky', 2);
           T(b, pt(L / 2, yy), `BC = ${pk.L} cm`, { dy: 18, size: sm(b) ? 14 : 16, color: 'sky' });
-          if (pk.kind === 0 || pk.kind === 2) { if (pk.kind === 0) sd(D, Cp, `CD=${pk.c}`, 'rose', 14); }
+          if (pk.kind === 0 || pk.kind === 2) { if (pk.kind === 0) {
+            if (sm(b)) T(b, mid(D, Cp), `CD=${pk.c}`, { dy: -18, size: 14, color: 'rose' });
+            else sd(D, Cp, `CD=${pk.c}`, 'rose', 14);
+          } }
           else sd(Cp, E, `CE=${pk.c}`, 'rose', 12);
         } else if (C.review) {
           if (pk.kind === 0) { sd(D, Cp, `CD=${L - d}`, 'sky', 14); if (st >= 4) sd(B, D, `BD=${d}`, 'amber', 14); }
@@ -233,7 +237,13 @@
         if (pk.kind === 0) { const ex = `${pk.k}x${pk.m > 0 ? '+' : '−'}${Math.abs(pk.m)}`; sideTag(b, B, E, pt((B.x + E.x + A.x) / 3, (B.y + E.y + A.y) / 3), ex, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 }); sideTag(b, D, Gp, pt((D.x + Gp.x + A.x) / 3, (D.y + Gp.y + A.y) / 3), `${pk.n}`, { size: sm(b) ? 14 : 16, color: 'sky', gap: 12 }); }
         else { const ex = `${pk.p}x${pk.q > 0 ? '+' : '−'}${Math.abs(pk.q)}`; ang(b, A, B, E, { color: 'rose', rings: 1, label: `(${ex})°`, r: 28, labelDist: 62, labelOffset: sm(b) ? { dx: 52, dy: 16 } : undefined, size: 14 }); ang(b, A, D, Gp, { color: 'sky', rings: 1, label: `${pk.th}°`, r: 28, labelDist: 52, size: 14 }); }
       }
-      [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D'], [E, 'E'], [F, 'F'], [Gp, 'G']].forEach(([p, n]) => { b.point(p, { color: n === 'E' && !prob && !C.review ? 'amber' : 'ink', r: 4.6 }); if (n === 'A') T(b, p, 'A', { dx: -14, dy: 16, size: 17 }); else tagOut(b, p, pt(g.a / 2, -g.a / 2), n, { size: 17, gap: 11 }); });
+      [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D'], [E, 'E'], [F, 'F'], [Gp, 'G']].forEach(([p, n]) => { b.point(p, { color: n === 'E' && !prob && !C.review ? 'amber' : 'ink', r: 4.6 }); if (n === 'A') T(b, p, 'A', { dx: -14, dy: 16, size: 17 });
+        else if (n === 'E' && sm(b) && !prob && !C.review) {
+          // A 주위 40px에 모인 각의 값 밖으로 E 이름을 놓습니다.
+          const u = unit(sub(E, A)), gap = Math.max(20, 68 - dist(A, E) * b.k);
+          T(b, p, 'E', { dx: u.x * gap, dy: u.y * gap, size: 17 });
+        }
+        else tagOut(b, p, pt(g.a / 2, -g.a / 2), n, { size: 17, gap: 11 }); });
       if (!prob && !C.review && C.txt && t <= 0.001) b.handle('E', E, { color: 'amber', r: 8, ariaLabel: '점 E 끌기(∠BAE 조절)', drag: (w) => { s.cnKth = clamp(Math.round(-dirDeg(A, w) / 5) * 5, 15, 75); } });
       if (C.txt && !prob) {
         const msgs = ['같은 길이: AB=AD, AE=AG', `∠BAE = 90° − ∠EAD = ∠DAG = ${g.th}° (공통인 ∠EAD를 빼면 같아요)`, t >= 0.999 ? '△ABE가 △ADG에 겹쳐요 → 합동 (SAS)' : '△ABE를 점 A 둘레로 90° 돌려요', C.review ? `대응하는 값이 같으므로 x = ${pk.x}` : 'BE = DG, 그리고 BE와 DG는 서로 수직이에요'];

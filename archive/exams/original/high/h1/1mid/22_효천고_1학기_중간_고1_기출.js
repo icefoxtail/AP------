@@ -514,7 +514,7 @@ window.questionBank = [
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solution": "$u=\\dfrac{1+i}{\\sqrt2}$, $v=\\dfrac{1-i}{\\sqrt2}$로 둔다.\n제곱하면\n$u^2=\\dfrac{(1+i)^2}{2}=\\dfrac{2i}{2}=i$이고\n$v^2=\\dfrac{(1-i)^2}{2}=\\dfrac{-2i}{2}=-i$이다.\n따라서\n$u^4=v^4=-1$, $u^8=v^8=1$이다.\n즉 $f(n)=u^n+v^n$은 $n$에 관하여 주기가 $8$이다.\n한 주기에서 짝수 항을 계산하면\n$f(2)=i+(-i)=0$\n$f(4)=(-1)+(-1)=-2$\n$f(6)=(-i)+i=0$\n$f(8)=1+1=2$이다.\n그러므로\n$f(2)+f(4)+f(6)+f(8)=0$이다.\n$2,4,\\ldots,120$은 이러한 네 항짜리 묶음이 $120/8=15$개이므로\n구하는 전체 합은 $15\\cdot0=0$이다.\n\n정답은 ①이다.",
+    "solution": "$u=\\dfrac{1+i}{\\sqrt2}$, $v=\\dfrac{1-i}{\\sqrt2}$로 둔다.\n제곱하면\n$u^2=\\dfrac{(1+i)^2}{2}=\\dfrac{2i}{2}=i$이고\n$v^2=\\dfrac{(1-i)^2}{2}=\\dfrac{-2i}{2}=-i$이다.\n따라서\n$u^4=v^4=-1$, $u^8=v^8=1$이다.\n즉 $f(n)=u^n+v^n$은 $n$에 관하여 주기가 $8$이다.\n한 주기에서 짝수 항을 계산하면\n$f(2)=i+(-i)=0$\n$f(4)=(-1)+(-1)=-2$\n$f(6)=(-i)+i=0$\n$f(8)=1+1=2$이다.\n그러므로\n$f(2)+f(4)+f(6)+f(8)=0$이다.\n$2,4,\\ldots,120$은 이러한 네 항짜리 묶음이 $\\frac{120}{8}=15$개이므로\n구하는 전체 합은 $15\\cdot0=0$이다.\n\n정답은 ①이다.",
     "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
     "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
     "crossConceptKeys": [],

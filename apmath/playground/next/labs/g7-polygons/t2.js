@@ -285,7 +285,17 @@
       }
       ang(b, A, B, Cp, { color: 'sky', r: compact ? 20 : 30, label: dg(a), size: 16, ...(compact ? { labelDist: 34 } : {}) });
       // 구하는 각 x
-      ang(b, X, B, Cp, { color: 'amber', r: compact ? 16 : 32, label: C.problem || (C.review && st < 3) ? 'x' : dg(x), size: 18, fa: 0.16, ...(compact ? { labelDist: 30 } : {}) });
+      const targetLabel = C.problem || (C.review && st < 3) ? 'x' : dg(x);
+      // 꼭짓점을 끌어 I가 밑변에 가까워져도 각의 값이 BC를 덮지 않게 합니다.
+      const externalTarget = !C.thumb && b.W < 560 && !compact && k === 1
+        && b.toS(B).y - b.toS(X).y < 46 + 18 * (b.fs || 1) * (b._ts ? b._ts() : 1) * .6 + 6;
+      const targetAngle = ang(b, X, B, Cp, { color: 'amber', r: compact ? 16 : 32, label: externalTarget ? null : targetLabel, size: 18, fa: 0.16, ...(compact ? { labelDist: 30 } : {}) });
+      if (externalTarget) {
+        const base = mid(B, Cp), p = b.toS(base), label = { x: p.x, y: p.y + 23 };
+        const anchor = pt(X.x + Math.cos(targetAngle.mid) * 32 / b.k, X.y + Math.sin(targetAngle.mid) * 32 / b.k);
+        if (!b._bbox && b.leader) b.leader(b.toS(anchor), label, { ...(b.annotationSize ? b.annotationSize(targetLabel, { size: 18, weight: 800 }) : { width: G.textW(targetLabel, 18) + 6, height: 24 }), px: true, color: 'muted', alpha: .78 });
+        T(b, base, targetLabel, { dy: 23, color: 'amber', size: 18 });
+      }
       if (C.txt) {
         [A, B, Cp].forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cen, 'ABC'[i], { size: 18 }); });
         b.point(X, { color: 'amber', r: 5 });

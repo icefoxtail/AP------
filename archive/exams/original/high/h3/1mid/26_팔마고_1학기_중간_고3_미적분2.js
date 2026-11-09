@@ -553,7 +553,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "(가)에서\n$(a_n-3n)^2<1$이므로 $\\frac{a_n}{n}\\to3$이다.\n\n분자를 유리화하면\n$\\displaystyle\\sqrt{n^2+na_n}-n=\\frac{na_n}{\\sqrt{n^2+na_n}+n}$이다.\n따라서\n$\\displaystyle\\frac{\\sqrt{n^2+na_n}-n}{n}=\\frac{a_n/n}{\\sqrt{1+a_n/n}+1}\\to\\frac3{2+1}=1$이다.\n\n주어진 극한이 $2$이므로 $\\frac n{b_n}\\to2$, 즉 $\\frac{b_n}{n}\\to\\frac12$이다.\n\n따라서 $\\displaystyle\\frac{a_n}{b_n}=\\frac{a_n/n}{b_n/n}\\to\\frac3{1/2}=6$이다.\n정답은 ②이다.",
+    "solution": "(가)에서\n$(a_n-3n)^2<1$이므로 $\\frac{a_n}{n}\\to3$이다.\n\n분자를 유리화하면\n$\\displaystyle\\sqrt{n^2+na_n}-n=\\frac{na_n}{\\sqrt{n^2+na_n}+n}$이다.\n따라서\n$\\displaystyle\\frac{\\sqrt{n^2+na_n}-n}{n}=\\frac{a_n/n}{\\sqrt{1+a_n/n}+1}\\to\\frac3{2+1}=1$이다.\n\n주어진 극한이 $2$이므로 $\\frac n{b_n}\\to2$, 즉 $\\frac{b_n}{n}\\to\\frac12$이다.\n\n따라서 $\\displaystyle\\frac{a_n}{b_n}=\\frac{a_n/n}{b_n/n}\\to\\frac3{\\frac{1}{2}}=6$이다.\n정답은 ②이다.",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -595,7 +595,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "$a_{2n+2}$는 첫 $2n+1$항의 합이므로\n$\\displaystyle a_{2n+2}=\\sum_{k=1}^{2n+1}a_k=2a_{2n}+a_{2n+1}$이다.\n\n따라서 $a_{2n+2}-2a_{2n}=a_{2n+1}$이다.\n\n홀수항은 공비가 $\\frac12$인 등비수열이고\n$\\displaystyle\\sum_{n=1}^{\\infty}a_{2n-1}=a_1+a_3+a_5+\\cdots=4$이다.\n등비급수의 합에서 $a_1/(1-1/2)=4$이므로 $a_1=2$이다.\n그러므로 $\\displaystyle\\sum_{n=1}^{\\infty}(a_{2n+2}-2a_{2n})=a_3+a_5+\\cdots=4-a_1=2$이다.\n정답은 ②이다.",
+    "solution": "$a_{2n+2}$는 첫 $2n+1$항의 합이므로\n$\\displaystyle a_{2n+2}=\\sum_{k=1}^{2n+1}a_k=2a_{2n}+a_{2n+1}$이다.\n\n따라서 $a_{2n+2}-2a_{2n}=a_{2n+1}$이다.\n\n홀수항은 공비가 $\\frac12$인 등비수열이고\n$\\displaystyle\\sum_{n=1}^{\\infty}a_{2n-1}=a_1+a_3+a_5+\\cdots=4$이다.\n등비급수의 합에서 $a_1/(1-\\frac{1}{2})=4$이므로 $a_1=2$이다.\n그러므로 $\\displaystyle\\sum_{n=1}^{\\infty}(a_{2n+2}-2a_{2n})=a_3+a_5+\\cdots=4-a_1=2$이다.\n정답은 ②이다.",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -678,7 +678,7 @@ window.questionBank = [
       "$7\\sqrt2$"
     ],
     "answer": "④",
-    "solution": "대칭 규칙에 따라\n$A_1=(2,6),\\quad A_2=(6,2)$이고\n$A_3=(\\frac23,2),\\quad A_4=(2,\\frac23)$이다.\n\n반복하면\n$A_{2n-1}=(\\frac2{3^{n-1}},\\frac2{3^{n-2}}),\\quad A_{2n}=(\\frac2{3^{n-2}},\\frac2{3^{n-1}})$이다.\n\n따라서\n$\\displaystyle\\overline{A_{2n-1}A_{2n}}=\\frac{4\\sqrt2}{3^{n-1}}$이다.\n\n그러므로\n$\\displaystyle\\sum_{n=1}^{\\infty}\\overline{A_{2n-1}A_{2n}}=\\frac{4\\sqrt2}{1-1/3}=6\\sqrt2$이다.\n정답은 ④이다.",
+    "solution": "대칭 규칙에 따라\n$A_1=(2,6),\\quad A_2=(6,2)$이고\n$A_3=(\\frac23,2),\\quad A_4=(2,\\frac23)$이다.\n\n반복하면\n$A_{2n-1}=(\\frac2{3^{n-1}},\\frac2{3^{n-2}}),\\quad A_{2n}=(\\frac2{3^{n-2}},\\frac2{3^{n-1}})$이다.\n\n따라서\n$\\displaystyle\\overline{A_{2n-1}A_{2n}}=\\frac{4\\sqrt2}{3^{n-1}}$이다.\n\n그러므로\n$\\displaystyle\\sum_{n=1}^{\\infty}\\overline{A_{2n-1}A_{2n}}=\\frac{4\\sqrt2}{1-\\frac{1}{3}}=6\\sqrt2$이다.\n정답은 ④이다.",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -760,7 +760,7 @@ window.questionBank = [
       "$\\frac{12}7$"
     ],
     "answer": "①",
-    "solution": "$L=AC=BC=4n+2$라 하고 $B=(0,0)$, $C=(L,0)$, $A=(u,v)$로 둔다.\n\n$|AC|=L$에서 $u^2+v^2=2Lu$이고 $P=A/2$이므로\n$CP^2=L^2-\\frac{Lu}{2}=15n^2+16n+4$이다.\n$L^2=16n^2+16n+4$이므로 $Lu=2n^2$이다.\n\n$PQ\\parallel AC$이므로 각의 조건에서 $DQ\\parallel AB$이다. $Q$와 $R$은 각각 $BC$, $AC$의 중점이다. $D=Q+\\lambda A$라 두면 $R=Q+\\frac12A$이다.\n\n$DR=DC/2$를 제곱하여\n$8Lu(\\lambda-\\frac12)^2=2Lu\\lambda^2-Lu\\lambda+\\frac{L^2}{4}$를 얻는다.\n$Lu=2n^2$, $L=4n+2$를 대입하면\n$12n^2\\lambda^2-14n^2\\lambda-4n-1=0$이다.\n그림에서 $D$가 $R$의 바깥쪽에 있으므로\n$\\displaystyle\\lambda=\\frac{7n+\\sqrt{49n^2+48n+12}}{12n}$이다.\n\n또\n$DC^2=4n^2\\lambda^2-2n^2\\lambda+4n^2+4n+1$이다.\n제곱근을 전개하면\n$\\lambda=\\frac76+\\frac2{7n}+O(n^{-2})$이고\n$DC^2=\\frac{64}{9}n^2+\\frac{128}{21}n+O(1)$이다.\n따라서\n$DC=\\frac83n+\\frac87+o(1)$이고 구하는 극한은 $\\frac87$이다.\n정답은 ①이다.",
+    "solution": "$L=AC=BC=4n+2$라 하고 $B=(0,0)$, $C=(L,0)$, $A=(u,v)$로 둔다.\n\n$|AC|=L$에서 $u^2+v^2=2Lu$이고 $P=\\frac{A}{2}$이므로\n$CP^2=L^2-\\frac{Lu}{2}=15n^2+16n+4$이다.\n$L^2=16n^2+16n+4$이므로 $Lu=2n^2$이다.\n\n$PQ\\parallel AC$이므로 각의 조건에서 $DQ\\parallel AB$이다. $Q$와 $R$은 각각 $BC$, $AC$의 중점이다. $D=Q+\\lambda A$라 두면 $R=Q+\\frac12A$이다.\n\n$DR=DC/2$를 제곱하여\n$8Lu(\\lambda-\\frac12)^2=2Lu\\lambda^2-Lu\\lambda+\\frac{L^2}{4}$를 얻는다.\n$Lu=2n^2$, $L=4n+2$를 대입하면\n$12n^2\\lambda^2-14n^2\\lambda-4n-1=0$이다.\n그림에서 $D$가 $R$의 바깥쪽에 있으므로\n$\\displaystyle\\lambda=\\frac{7n+\\sqrt{49n^2+48n+12}}{12n}$이다.\n\n또\n$DC^2=4n^2\\lambda^2-2n^2\\lambda+4n^2+4n+1$이다.\n제곱근을 전개하면\n$\\lambda=\\frac76+\\frac2{7n}+O(n^{-2})$이고\n$DC^2=\\frac{64}{9}n^2+\\frac{128}{21}n+O(1)$이다.\n따라서\n$DC=\\frac83n+\\frac87+o(1)$이고 구하는 극한은 $\\frac87$이다.\n정답은 ①이다.",
     "problemTypeKey": "PT_LIMIT_VALUE_CALC",
     "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
     "crossConceptKeys": [],
@@ -880,7 +880,7 @@ window.questionBank = [
     "content": "[서답형(서술형)2]\n\n1) 실수 $e$를 극한을 이용해서 나타내시오. [2점]\n\n2) 1)을 이용하여 $\\displaystyle\\lim_{x\\to0}\\frac{\\ln(1+2x)}{3x}$의 값을 구하시오. [3점]\n\n3) 양수 $t$에 대하여 곡선 $y=e^{x^2}-1\\ (x\\ge0)$이 두 직선 $y=t$, $y=5t$와 만나는 점을 각각 $A,\\ B$라 하고, 점 $B$에서 $x$축에 내린 수선의 발을 $C$라 하자. 삼각형 $ABC$의 넓이를 $S(t)$라 할 때, $\\displaystyle\\lim_{t\\to0+}\\frac{S(t)}{t\\sqrt t}$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "(1) $e=\\lim_{x\\to0}(1+x)^{1/x}=\\lim_{x\\to\\infty}(1+\\frac1x)^x$; (2) $\\frac23$; (3) $\\frac52(\\sqrt5-1)$",
-    "solution": "(1) $x\\to0$에서 $\\ln(1+x)/x\\to1$과 동치인 지수 극한은\n$\\displaystyle e=\\lim_{x\\to0}(1+x)^{1/x}=\\lim_{x\\to\\infty}(1+\\frac1x)^x$이다.\n\n(2) $u=2x$로 두면\n$\\displaystyle\\lim_{x\\to0}\\frac{\\ln(1+2x)}{3x}=\\frac23\\lim_{u\\to0}\\frac{\\ln(1+u)}u=\\frac23$이다.\n\n(3) 두 교점의 $x$좌표는\n$x_A=\\sqrt{\\ln(1+t)}$, $x_B=\\sqrt{\\ln(1+5t)}$이다.\n$BC=5t$이고 $A$에서 직선 $BC$까지의 거리는 $x_B-x_A$이므로\n$\\displaystyle S(t)=\\frac52t\\left(\\sqrt{\\ln(1+5t)}-\\sqrt{\\ln(1+t)}\\right)$이다.\n\n$\\sqrt{\\ln(1+ct)}/\\sqrt t\\to\\sqrt c$이므로\n$\\displaystyle\\lim_{t\\to0+}\\frac{S(t)}{t\\sqrt t}=\\frac52(\\sqrt5-1)$이다.",
+    "solution": "(1) $x\\to0$에서 $\\ln(1+x)/x\\to1$과 동치인 지수 극한은\n$\\displaystyle e=\\lim_{x\\to0}(1+x)^{\\frac{1}{x}}=\\lim_{x\\to\\infty}(1+\\frac1x)^x$이다.\n\n(2) $u=2x$로 두면\n$\\displaystyle\\lim_{x\\to0}\\frac{\\ln(1+2x)}{3x}=\\frac23\\lim_{u\\to0}\\frac{\\ln(1+u)}u=\\frac23$이다.\n\n(3) 두 교점의 $x$좌표는\n$x_A=\\sqrt{\\ln(1+t)}$, $x_B=\\sqrt{\\ln(1+5t)}$이다.\n$BC=5t$이고 $A$에서 직선 $BC$까지의 거리는 $x_B-x_A$이므로\n$\\displaystyle S(t)=\\frac52t\\left(\\sqrt{\\ln(1+5t)}-\\sqrt{\\ln(1+t)}\\right)$이다.\n\n$\\sqrt{\\ln(1+ct)}/\\sqrt t\\to\\sqrt c$이므로\n$\\displaystyle\\lim_{t\\to0+}\\frac{S(t)}{t\\sqrt t}=\\frac52(\\sqrt5-1)$이다.",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],

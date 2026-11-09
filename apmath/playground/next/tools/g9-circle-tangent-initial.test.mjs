@@ -89,6 +89,92 @@ test('every supported PA/PB slider pair preserves the circle, contact and tangen
   assert.equal(s.c6pa, 4); assert.equal(s.c6pb, 9);
 });
 
+test('tangent-secant input values agree with the displayed near and far lengths', () => {
+  const lab={scene};
+  for(const first of ['c6pa','c6pb'])for(let a=2;a<=8;a++)for(let b=2;b<=12;b++){
+    const s=state(),question=JSON.stringify(s.ciPk);
+    for(const key of [first,first==='c6pa'?'c6pb':'c6pa']){
+      s[key]=key==='c6pa'?a:b;
+      params[key].onInput?.(s,lab);
+      const g=scene.ci.model(s,EX).g;
+      assert.equal(g.a,s.c6pa,'the PA slider is the actual drawn PA');
+      assert.equal(g.b,s.c6pb,'the PB slider is the actual drawn PB');
+      assert.ok(s.c6pa>=params.c6pa.min&&s.c6pa<=params.c6pa.max);
+      assert.ok(s.c6pb>=params.c6pb.min&&s.c6pb<=params.c6pb.max);
+      assert.ok(s.c6pa<s.c6pb,'A is the near intersection and B is the far intersection');
+      verifyTangent(g,`${first}/${a}/${b}/${key}`);
+      assert.equal(JSON.stringify(s.ciPk),question,'changing exploration lengths does not replace a question');
+    }
+  }
+  for(const id of ['c6-6','c6-7'])for(const key of ['c6pa','c6pb']){
+    const s={c6pa:8,c6pb:2};params[key].onInput?.(s,{scene:{id}});
+    assert.deepEqual(s,{c6pa:8,c6pb:2},'shared controls preserve unrelated chord/secant scenes');
+  }
+});
+
+test('the active PB range immediately reflects its own near/far correction without waiting for blur', () => {
+  for (let a = 2; a <= 8; a++) for (let b = 2; b <= 12; b++) {
+    const s = state();
+    Object.assign(s, { c6pa: a, c6pb: b, revealed: false, step: 1 });
+    // The shell deliberately does not write the focused input.value during its
+    // next panel refresh. The callback must leave that native value correct.
+    const input = { value: String(b) }, lab = { scene, _ctls: { c6pb: { input } } };
+    const question = JSON.stringify(s.ciPk), solution = JSON.stringify(scene.solution(s));
+    params.c6pb.onInput(s, lab);
+    const g = scene.ci.model(s, EX).g;
+    assert.equal(+input.value, s.c6pb, 'focused PB thumb and state agree immediately');
+    assert.equal(+input.value, g.b, 'focused PB thumb and drawn far length agree');
+    assert.equal(s.c6pb, Math.max(3, b));
+    assert.equal(g.a, s.c6pa);
+    assert.ok(s.c6pa < s.c6pb);
+    verifyTangent(g, `focused PB/${a}/${b}`);
+    assert.equal(JSON.stringify(s.ciPk), question);
+    assert.equal(JSON.stringify(scene.solution(s)), solution, 'exploration correction preserves the current question and all answer stages');
+    assert.equal(s.revealed, false); assert.equal(s.step, 1);
+  }
+  for (const id of ['c6-6', 'c6-7']) {
+    const s = { c6pa: 8, c6pb: 2 }, input = { value: '2' };
+    params.c6pb.onInput(s, { scene: { id }, _ctls: { c6pb: { input } } });
+    assert.equal(input.value, '2');
+    assert.deepEqual(s, { c6pa: 8, c6pb: 2 }, 'other scenes retain their existing input behavior');
+  }
+});
+
+test('legacy hash lengths normalize at the first exploration view while valid restored pairs stay exact', () => {
+  for (let a = 2; a <= 8; a++) for (let b = 2; b <= 12; b++) {
+    const s = state(); Object.assign(s, { c6pa: a, c6pb: b, revealed: false, step: 1 });
+    const question = JSON.stringify(s.ciPk), solution = JSON.stringify(scene.solution(s));
+    scene.view(s, { tab: 'explore' });
+    const g = scene.ci.model(s, EX).g;
+    assert.equal(s.c6pa, g.a, 'restored PA is the actual displayed near length');
+    assert.equal(s.c6pb, g.b, 'restored PB is the actual displayed far length');
+    assert.ok(s.c6pa >= params.c6pa.min && s.c6pa <= params.c6pa.max);
+    assert.ok(s.c6pb >= params.c6pb.min && s.c6pb <= params.c6pb.max);
+    assert.ok(s.c6pa < s.c6pb);
+    if (a < b) assert.deepEqual([s.c6pa, s.c6pb], [a, b], 'valid saved lengths are preserved exactly');
+    verifyTangent(g, `restored/${a}/${b}`);
+    assert.equal(JSON.stringify(s.ciPk), question);
+    assert.equal(JSON.stringify(scene.solution(s)), solution);
+    assert.equal(s.revealed, false); assert.equal(s.step, 1);
+  }
+  for (const pair of [[2.5, 4], [4.25, 9.75]]) {
+    const s = state(); [s.c6pa, s.c6pb] = pair; scene.view(s, { tab: 'explore' });
+    assert.deepEqual([s.c6pa, s.c6pb], pair, 'valid non-integer saved values are not rounded');
+  }
+  for (const tab of ['problem', 'review']) {
+    const s = state(); Object.assign(s, { c6pa: 8, c6pb: 2, step: 1, revealed: false });
+    const before = JSON.stringify(s), solution = JSON.stringify(scene.solution(s));
+    scene.view(s, { tab });
+    assert.equal(JSON.stringify(s), before, `${tab} keeps current question and exploration state`);
+    assert.equal(JSON.stringify(scene.solution(s)), solution);
+  }
+  for (const other of groups.flatMap(group => group.scenes).filter(item => item.id !== 'c6-8')) {
+    const s = {}; other.enter(s); Object.assign(s, { c6pa: 8, c6pb: 2 });
+    other.view(s, { tab: 'explore' });
+    assert.deepEqual([s.c6pa, s.c6pb], [8, 2], `${other.id} has no new normalization`);
+  }
+});
+
 test('all nine question triples and all three targets use a true tangent and retain their answers', () => {
   const s = state();
   for (const q of questions()) {

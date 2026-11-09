@@ -643,7 +643,7 @@ window.questionBank = [
       "상용로그"
     ],
     "answer": "⑤",
-    "solution": "로그의 차를 하나의 로그로 합친다. $\\log(3x-1)-\\log x=\\log((3x-1)/x)$이고 $1-\\log y=\\log10-\\log y=\\log(10/y)$이다.\n\n따라서 $(3x-1)/x=10/y$이므로 $x(3y-10)=y$이다. 양의 정수 $x,y$이고 좌변의 부호가 양수이므로 $3y-10>0$, 즉 $y\\ge4$이다.\n\n$y=4$이면 $x=2$, $y=5$이면 $x=1$이다. $y\\ge6$이면 $x=y/(3y-10)<1$이므로 양의 정수 $x$가 될 수 없다.\n\n가능한 경우는 $(x,y)=(1,5),(2,4)$이고 모두 $x+y=6$이다. 따라서 정답은 ⑤이다.",
+    "solution": "로그의 차를 하나의 로그로 합친다. $\\log(3x-1)-\\log x=\\log(\\frac{3x-1}{x})$이고 $1-\\log y=\\log10-\\log y=\\log(\\frac{10}{y})$이다.\n\n따라서 $\\frac{3x-1}{x}=\\frac{10}{y}$이므로 $x(3y-10)=y$이다. 양의 정수 $x,y$이고 좌변의 부호가 양수이므로 $3y-10>0$, 즉 $y\\ge4$이다.\n\n$y=4$이면 $x=2$, $y=5$이면 $x=1$이다. $y\\ge6$이면 $x=\\frac{y}{(3y-10)}<1$이므로 양의 정수 $x$가 될 수 없다.\n\n가능한 경우는 $(x,y)=(1,5),(2,4)$이고 모두 $x+y=6$이다. 따라서 정답은 ⑤이다.",
     "score": 4.3,
     "level": "중",
     "category": "지수와 로그",
@@ -700,7 +700,7 @@ window.questionBank = [
       "지수"
     ],
     "answer": "②",
-    "solution": "공통값을 $t$라 두면 $t=2^a=4^b=k^{1/c}>1$이다. $L=\\log_2t$라 하면 $a=L$, $b=\\frac L2$, $\\log_2 k=cL$이다.\n\n조건 $a+b=2abc$에 대입하면 $\\frac{3L}{2}=cL^2$이다. $L>0$이므로 $cL=\\frac32$이다.\n\n따라서 $\\log_2k=c\\log_2t=cL=\\frac32$이고 $k=2^{3/2}=2\\sqrt2$이다. 정답은 ②이다.",
+    "solution": "공통값을 $t$라 두면 $t=2^a=4^b=k^{\\frac{1}{c}}>1$이다. $L=\\log_2t$라 하면 $a=L$, $b=\\frac L2$, $\\log_2 k=cL$이다.\n\n조건 $a+b=2abc$에 대입하면 $\\frac{3L}{2}=cL^2$이다. $L>0$이므로 $cL=\\frac32$이다.\n\n따라서 $\\log_2k=c\\log_2t=cL=\\frac32$이고 $k=2^{\\frac{3}{2}}=2\\sqrt2$이다. 정답은 ②이다.",
     "score": 4.5,
     "level": "중",
     "category": "지수와 로그",
@@ -812,7 +812,7 @@ window.questionBank = [
       "로그함수"
     ],
     "answer": "②",
-    "solution": "교점의 좌표를 $(x,y)$라 하자. $y=\\log_3 x=\\log_5(x+2)$이므로 $x=3^y$, $x+2=5^y$이고, 따라서 $5^y-3^y=2$이다. 오른쪽이 양수이므로 $y>0$이다. $y>0$에서 $5^y-3^y=3^y((5/3)^y-1)$은 양의 두 증가함수의 곱이므로 증가한다. $y=1$에서 값이 $2$이므로 유일한 해는 $y=1$이다. ㄱ은 참이다.\n\nㄴ. $\\log_3 1.5<\\frac{1}{2}$는 $1.5<\\sqrt3$에서 성립한다. 또한 $\\log_5 3.5>\\frac{1}{2}$는 $3.5>\\sqrt5$에서 성립하므로 ㄴ은 참이다.\n\nㄷ. $\\log_3 4>\\frac{6}{5}$는 $3^6=729<4^5=1024$에서, $\\log_5 6<\\frac{6}{5}$는 $5^6=15625>6^5=7776$에서 따른다. 따라서 $\\log_3 4>\\log_5 6$이므로 ㄷ은 거짓이다.\n\n옳은 것은 ㄱ, ㄴ이므로 정답은 ②이다.",
+    "solution": "교점의 좌표를 $(x,y)$라 하자. $y=\\log_3 x=\\log_5(x+2)$이므로 $x=3^y$, $x+2=5^y$이고, 따라서 $5^y-3^y=2$이다. 오른쪽이 양수이므로 $y>0$이다. $y>0$에서 $5^y-3^y=3^y((\\frac{5}{3})^y-1)$은 양의 두 증가함수의 곱이므로 증가한다. $y=1$에서 값이 $2$이므로 유일한 해는 $y=1$이다. ㄱ은 참이다.\n\nㄴ. $\\log_3 1.5<\\frac{1}{2}$는 $1.5<\\sqrt3$에서 성립한다. 또한 $\\log_5 3.5>\\frac{1}{2}$는 $3.5>\\sqrt5$에서 성립하므로 ㄴ은 참이다.\n\nㄷ. $\\log_3 4>\\frac{6}{5}$는 $3^6=729<4^5=1024$에서, $\\log_5 6<\\frac{6}{5}$는 $5^6=15625>6^5=7776$에서 따른다. 따라서 $\\log_3 4>\\log_5 6$이므로 ㄷ은 거짓이다.\n\n옳은 것은 ㄱ, ㄴ이므로 정답은 ②이다.",
     "score": 4.5,
     "level": "중",
     "category": "지수함수와 로그함수",
@@ -867,7 +867,7 @@ window.questionBank = [
       "삼각함수"
     ],
     "answer": "⑤",
-    "solution": "처음 이차방정식의 두 근이 $\\sin\\theta,\\cos\\theta$이므로 근과 계수의 관계에서 $\\sin\\theta+\\cos\\theta=\\frac13$, $\\sin\\theta\\cos\\theta=\\frac a3$이다.\n\n$(\\sin\\theta+\\cos\\theta)^2=\\sin^2\\theta+\\cos^2\\theta+2\\sin\\theta\\cos\\theta$에 대입하면 $\\frac19=1+\\frac{2a}{3}$, 따라서 $a=-\\frac43$이다.\n\n구하려는 두 근의 합은 $\\tan\\theta+\\frac1{\\tan\\theta}=\\frac{\\sin^2\\theta+\\cos^2\\theta}{\\sin\\theta\\cos\\theta}=\\frac1{a/3}=-\\frac94$이고, 곱은 $1$이다.\n\n따라서 계수가 $4$인 이차방정식은 $4x^2-4(-\\frac94)x+4=0$, 즉 $4x^2+9x+4=0$이다. 정답은 ⑤이다.",
+    "solution": "처음 이차방정식의 두 근이 $\\sin\\theta,\\cos\\theta$이므로 근과 계수의 관계에서 $\\sin\\theta+\\cos\\theta=\\frac13$, $\\sin\\theta\\cos\\theta=\\frac a3$이다.\n\n$(\\sin\\theta+\\cos\\theta)^2=\\sin^2\\theta+\\cos^2\\theta+2\\sin\\theta\\cos\\theta$에 대입하면 $\\frac19=1+\\frac{2a}{3}$, 따라서 $a=-\\frac43$이다.\n\n구하려는 두 근의 합은 $\\tan\\theta+\\frac1{\\tan\\theta}=\\frac{\\sin^2\\theta+\\cos^2\\theta}{\\sin\\theta\\cos\\theta}=\\frac1{\\frac{a}{3}}=-\\frac94$이고, 곱은 $1$이다.\n\n따라서 계수가 $4$인 이차방정식은 $4x^2-4(-\\frac94)x+4=0$, 즉 $4x^2+9x+4=0$이다. 정답은 ⑤이다.",
     "score": 4.7,
     "level": "상",
     "category": "삼각함수",
@@ -926,7 +926,7 @@ window.questionBank = [
       "지수"
     ],
     "answer": "④",
-    "solution": "$R=k(Q/V)^{1/3}$에서 반지름의 비는 $\\frac{R_A}{R_B}=\\left(\\frac{Q_A/Q_B}{V_A/V_B}\\right)^{1/3}$이다.\n\n주어진 비를 대입하면 $\\frac{R_A}{R_B}=\\left(\\frac{4/3}{32/81}\\right)^{1/3}=\\left(\\frac{27}{8}\\right)^{1/3}=\\frac32$이다.\n\n그러므로 $R_A-R_B=\\frac12R_B=30$이고 $R_B=60$이다. 정답은 ④이다.",
+    "solution": "$R=k(\\frac{Q}{V})^{\\frac{1}{3}}$에서 반지름의 비는 $\\frac{R_A}{R_B}=\\left(\\frac{Q_A/Q_B}{V_A/V_B}\\right)^{\\frac{1}{3}}$이다.\n\n주어진 비를 대입하면 $\\frac{R_A}{R_B}=\\left(\\frac{\\frac{4}{3}}{\\frac{32}{81}}\\right)^{\\frac{1}{3}}=\\left(\\frac{27}{8}\\right)^{\\frac{1}{3}}=\\frac32$이다.\n\n그러므로 $R_A-R_B=\\frac12R_B=30$이고 $R_B=60$이다. 정답은 ④이다.",
     "score": 4.7,
     "level": "중",
     "category": "지수와 로그",

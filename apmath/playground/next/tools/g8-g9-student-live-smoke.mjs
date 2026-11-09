@@ -10,6 +10,8 @@ import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { createScreenshotGuard, screenshotEnvironmentMatches, SCREENSHOT_ENVIRONMENT_POLICY, VIEWPORT_PIXEL_POLICY } from './browser-screenshot-guard.mjs';
+import { captureReviewState } from './high-viewport-evidence.mjs';
 
 const STUDENT_BASE = 'https://icefoxtail.github.io/AP------/apmath/playground/next/labs/';
 const UNITS = [
@@ -77,6 +79,8 @@ const report = {
   catalog: null, pages: [], failures: [],
   sourceVerification: { status: 'NOT_RUN', checkoutCommit: null, actualDeployedCommit: null, assets: [], externalAssets: [], meaning: 'Per-file HTTP response bytes are compared with exact checkout files and Git blobs. Matching checked assets does not identify the entire deployed commit.' },
   physicalDeviceVerification: 'NOT_RUN',
+  screenshotEnvironmentPolicy: SCREENSHOT_ENVIRONMENT_POLICY,
+  viewportEvidencePolicy: { raw: 'Legacy full-page capture denominator; touch-context pixels UNVERIFIED_BEYOND_VIEWPORT', supporting: 'Fixed-viewport PNGs with actual environment and byte readback; separate denominator', inputCoverage: 'Existing navigation only; no native touch claim' },
   limitations: [
     'Chromium viewport emulation at four sizes and two themes; no physical devices.',
     'The first scene of each lab follows seven real UI states. All 247 scene IDs/counts are inventoried, but this smoke does not render all 247 scenes.',
@@ -255,11 +259,35 @@ try {
   report.browserVersion = browser.version(); report.status = 'RUNNING'; persist();
   for (const unit of UNITS) for (const viewport of VIEWPORTS) for (const theme of THEMES) {
     const id = `${unit.id}--${viewport.name}--${theme}`, url = new URL(`${unit.id}.html?theme=${theme}`, base).href;
-    const record = { unit: unit.id, viewport, theme, url, status: 'RUNNING', inventory: null, observations: [], captures: [], interactions: [], localAssetReferences: [], errors: [] };
+    const record = { unit: unit.id, viewport, theme, url, status: 'RUNNING', inventory: null, observations: [], captures: [], captureMetadata: {}, viewportCaptures: [], screenshotEnvironment: [], interactions: [], localAssetReferences: [], errors: [] };
     report.pages.push(record);
     const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, hasTouch: viewport.name === 'mobile' || viewport.name.startsWith('tablet'), deviceScaleFactor: 1, locale: 'ko-KR', serviceWorkers: 'block' });
     const pendingAssets = new Set(), verifiedURLs = new Set();
-    let page, listening = true;
+    let page, screenshotGuard, listening = true;
+    const capture = async (filename, state) => {
+      const sceneId = await page.evaluate(() => String(lab.scene.id));
+      try {
+        const bundle = await captureReviewState({ page, guard: screenshotGuard, out, name: filename, id: sceneId, state, fullPage: true, settle: () => settle(page), collectContent: false,
+          onCapture: e => {
+            const bytes = fs.readFileSync(path.join(out, e.file));
+            if (bytes.length < 33 || !bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) || bytes.toString('ascii', 12, 16) !== 'IHDR') throw Error(`Unreadable capture PNG: ${e.file}`);
+            const png = { sha256: sha256(bytes), bytes: bytes.length, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+            if (!screenshotEnvironmentMatches(e.frame.touchEnvironment, screenshotGuard.expectedTouch)) throw Error(`Unverified screenshot environment: ${e.file}`);
+            if (e.frame.fullPage === false && (png.width !== e.frame.viewport.width || png.height !== e.frame.viewport.height || e.frame.touchEnvironment.pixelEnvironment !== VIEWPORT_PIXEL_POLICY)) throw Error(`Viewport capture readback mismatch: ${e.file}`);
+            record.captureMetadata[e.file] = { ...e.frame, png, pngSha256: png.sha256 };
+          }
+        });
+        if (screenshotGuard.expectedTouch) {
+          const frame = record.captureMetadata[bundle.file];
+          if (frame?.fullPage !== false || bundle.rawReference?.file !== filename) throw Error(`Required viewport evidence missing: ${filename}`);
+          record.viewportCaptures.push({ file: bundle.file, rawReference: filename, id: sceneId, state, diagnostic: state === 'failure', frame });
+        }
+        return { filename, sha256: sha256(fs.readFileSync(path.join(out, filename))) };
+      } catch (error) {
+        record.errors.push({ kind: 'screenshot-evidence-failed', id: sceneId, state, file: filename, message: error.message });
+        throw error;
+      }
+    };
     try {
       await context.route('**/*', async route => {
         const r = route.request();
@@ -285,6 +313,11 @@ try {
       if (!navigation?.ok()) throw Error(`Document HTTP ${navigation?.status() ?? 'NO_RESPONSE'}`);
       if (new URL(page.url()).origin !== base.origin || new URL(page.url()).pathname !== new URL(url).pathname) throw Error('Page redirected to a different origin/path');
       await settle(page);
+      // Pin the loaded target document, not about:blank's event properties.
+      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: viewport.name === 'mobile' || viewport.name.startsWith('tablet'), onObservation: observation => {
+        record.screenshotEnvironment.push(observation);
+        if (!observation.pass) record.errors.push({ kind: observation.reason, screenshotEnvironment: observation });
+      } });
       record.inventory = await page.evaluate(() => ({ id: lab.id, sceneIds: lab.list.map(s => String(s.id)), groupCount: lab.groups.length }));
       const inv = record.inventory;
       if (inv.id !== unit.id || inv.sceneIds.length !== unit.scenes || new Set(inv.sceneIds).size !== unit.scenes || inv.sceneIds[0] !== unit.first || inv.groupCount !== unit.groups) record.errors.push({ kind: 'runtime-inventory-mismatch', expected: unit, actual: inv });
@@ -303,8 +336,7 @@ try {
         if (!questionSignature) questionSignature = obs.questionSHA256;
         obs.issues = checkObservation(obs, record, unit, questionSignature); record.observations.push(obs);
         const filename = `${id}--${state}.png`;
-        await page.screenshot({ path: path.join(out, filename), fullPage: true });
-        record.captures.push({ filename, sha256: sha256(fs.readFileSync(path.join(out, filename))) });
+        record.captures.push(await capture(filename, state));
       }
       const references = await page.evaluate(() => [...new Set([location.href, ...[...document.scripts].filter(s => s.src).map(s => s.src), ...[...document.querySelectorAll('link[rel="stylesheet"][href]')].map(s => s.href)])]);
       await Promise.allSettled([...pendingAssets]);
@@ -315,9 +347,13 @@ try {
       }
     } catch (e) {
       record.errors.push({ kind: 'exception', message: e.message });
-      if (page) { try { await page.screenshot({ path: path.join(out, `${id}--failed.png`), fullPage: true }); } catch {} }
+      if (page && screenshotGuard) { try { await capture(`${id}--failed.png`, 'failure'); } catch (error) { record.errors.push({ kind: 'failure-screenshot', message: error.message }); } }
     } finally {
-      await Promise.allSettled([...pendingAssets]); listening = false; await context.close();
+      try { await screenshotGuard?.close(); }
+      catch (error) { record.errors.push({ kind: 'screenshot-guard-cleanup', message: error.message }); }
+      await Promise.allSettled([...pendingAssets]); listening = false;
+      try { await context.close(); }
+      catch (error) { record.errors.push({ kind: 'browser-context-cleanup', message: error.message }); }
       record.status = record.errors.length || record.observations.length !== STATES.length || record.observations.some(o => o.issues.length) || !record.localAssetReferences.length ? 'FAIL' : 'PASS_CHECKED_SCOPE';
       if (record.status === 'FAIL') fail('page-smoke-failed', { unit: unit.id, viewport: viewport.name, theme, errorKinds: record.errors.map(e => e.kind), states: record.observations.filter(o => o.issues.length).map(o => ({ state: o.state, issues: o.issues })) });
       fs.writeFileSync(path.join(out, `${id}.json`), JSON.stringify(record, null, 2) + '\n'); persist();
@@ -328,7 +364,7 @@ try {
 finally {
   if (browser) await browser.close(); if (api) await api.dispose();
   report.finishedAt = new Date().toISOString();
-  report.summary = { pageLoads: report.pages.length, checkedStates: report.pages.reduce((n, p) => n + p.observations.length, 0), captures: report.pages.reduce((n, p) => n + p.captures.length, 0), verifiedLocalAssets: assets.size, externalAssets: externals.size, failures: report.failures.length };
+  report.summary = { pageLoads: report.pages.length, checkedStates: report.pages.reduce((n, p) => n + p.observations.length, 0), captures: report.pages.reduce((n, p) => n + p.captures.length, 0), supportingViewportCaptures: report.pages.reduce((n, p) => n + p.viewportCaptures.length, 0), verifiedLocalAssets: assets.size, externalAssets: externals.size, failures: report.failures.length };
   if (['pageLoads', 'checkedStates', 'captures'].some(k => report.summary[k] !== report.expected[k])) fail('incomplete-requested-coverage', { expected: report.expected, actual: report.summary });
   const sourceComplete = assets.size > 6 && [...assets.values()].every(a => a.matchesCheckout) && report.pages.length === report.expected.pageLoads && report.pages.every(p => p.localAssetReferences.length > 0 && p.localAssetReferences.every(a => a.responseVerified) && !p.errors.some(e => ['source-asset-verification', 'referenced-local-asset-not-verified'].includes(e.kind)));
   report.sourceVerification.status = sourceComplete ? 'CHECKED_ASSETS_MATCH_CHECKOUT' : 'FAIL_OR_INCOMPLETE';

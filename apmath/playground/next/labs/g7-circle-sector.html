@@ -107,7 +107,11 @@ function angleMark(b, a0, a1, text, o = {}) {
   else b.arc(O0, rpx / k, a0, a1, { sector: true, fill: 'amber', fillAlpha: 0.24, color: 'amber', width: 2.2 });
   const need = (textW(text, 17) / 2 + 8) / Math.tan(clamp(th / 2, 0.2, 1.4));
   const dist = Math.min(Math.max(rpx + 24, need), k * 0.85);
-  T(b, O0, text, { dx: Math.cos(am) * dist, dy: Math.sin(am) * dist, color: 'amber', size: 17 });
+  if (o.outside && th < PI / 2) {
+    const label = { x: -.75, y: -.25 }, size = 17 * (b.W < 560 ? .9 : 1);
+    b.leader(pt(0, 0, rpx / k, am), label, { ...b.annotationSize(text, { size, weight: 800 }), color: 'amber', alpha: .7 });
+    T(b, label, text, { color: 'amber', size: 17 });
+  } else T(b, O0, text, { dx: Math.cos(am) * dist, dy: Math.sin(am) * dist, color: 'amber', size: 17 });
 }
 const dot = (b, p, c = 'ink', r = 5.5) => b.point(p, { color: c, r });
 // 호·원은 '중심'만 맞춤 범위에 잡히므로, 그림이 차지하는 범위를 보이지 않는 선으로 알려 줍니다.
@@ -318,6 +322,7 @@ function partScene(type) {
     draw: (b, s, v, lab) => {
       const sh = shapeOf(type, s), r = s.csR, th = sh.th, a0 = sh.a0, a1 = sh.a1, A = pt(0, 0, 1, a0), B = pt(0, 0, 1, a1), am = (a0 + a1) / 2;
       const st = lab && lab.tab === 'review' ? s.step : 99;
+      const narrowQuestion = b.W < 560 && lab && lab.tab === 'problem';
       bbox(b, -1, -1, 1, type === 'arc' ? 1.9 : 1);
       ghost(b);
       if (type === 'sector' && s.csMeasure !== 'perimeter') b.arc(O0, 1, a0, a1, { sector: true, fill: 'green', fillAlpha: s.csMeasure === 'area' ? 0.16 : 0.09, color: null }); else if (type === 'segment') b.path(arcPts(0, 0, 1, a0, a1, 64), { close: true, fill: 'green', fillAlpha: 0.10, color: null });
@@ -325,7 +330,7 @@ function partScene(type) {
       b.arc(O0, 1, a0, a1, { color: 'sky', width: 3, glow: st === 2 && type !== 'sector' });
       if (type === 'sector') { const edge = s.csMeasure === 'perimeter' ? 'sky' : 'rose'; b.seg(B, O0, { color: edge, width: 2.8 }); b.seg(O0, A, { color: edge, width: 2.8 }); b.ticks(O0, A, { color: 'amber' }); b.ticks(O0, B, { color: 'amber' }); }
       else { b.seg(B, A, { color: 'rose', width: 2.8, glow: st === 3 }); b.ticks(O0, A, { color: 'amber', size: 5 }); b.ticks(O0, B, { color: 'amber', size: 5 }); }
-      angleMark(b, a0, a1, `${sh.deg}°`, { r: 18 });
+      angleMark(b, a0, a1, `${sh.deg}°`, { r: 18, outside: narrowQuestion });
       angleHandle(b, s, key, a0, min, max);
       dot(b, O0, 'ink', 5.5); dot(b, A, 'ink', 5); dot(b, B, 'ink', 5);
       const bis = { x: Math.cos(am), y: Math.sin(am) };
@@ -335,7 +340,11 @@ function partScene(type) {
       // 호 라벨 (활꼴·호·현은 현 라벨을 바로 아래에 함께 쌓음: 색으로 구분)
       const items = [{ t: type === 'segment' ? '호 AB' : `호 AB = ${cmOf(ex(r * sh.deg, 180))}`, color: 'sky' }];
       if (type !== 'sector') items.push({ t: type === 'segment' ? '현 AB' : chordTxt(sh, r), color: 'rose' });
-      tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, items, { size: 17, gap: sh.deg < 60 ? 24 : 10 });
+      if (narrowQuestion) {
+        // The question stage is short. Keep named, color-matched conditions
+        // beside the circle so their stacked text does not shrink its arc.
+        items.forEach((item, i) => T(b, { x: 1.35, y: -.9 + i * .65 }, item.t, { color: item.color, size: 17, align: 'left' }));
+      } else tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, items, { size: 17, gap: sh.deg < 60 ? 24 : 10 });
       // 반지름 라벨(부채꼴만)
       if (type === 'sector') {
         const rTag = (a, out) => tagN(b, pt(0, 0, 0.5, a), Math.cos(a + out * PI / 2), Math.sin(a + out * PI / 2), `r = ${r} cm`, { color: 'rose', size: 16 });
@@ -352,7 +361,7 @@ function partScene(type) {
         T(b, { x: -1 + lc, y: y2 }, sh.deg === 60 ? `${r} cm` : sh.deg === 180 ? `${2 * r} cm` : '현', { dx: 10, align: 'left', color: 'rose', size: 15 });
       } else if (type === 'sector') {
         const dg = Math.round(sh.deg), f = frac(dg, 360); // 끌다 보면 소수가 되므로 정수로 맞춰 써야 분수로 쌓여 보입니다
-        T(b, { x: 0, y: 1 }, `원 전체의 ${dg}/360 = ${f[0]}/${f[1]}`, { dy: 58, size: 16 });
+        T(b, { x: 0, y: 1 }, `원 전체의 ${dg}/360 = ${f[0]}/${f[1]}`, { dy: narrowQuestion ? 32 : 58, size: 16 });
       }
     }
   };
@@ -417,7 +426,7 @@ function periScene(type) {
       if (type === 'quarter' || type === 'sector') { b.ticks(O0, pt(0, 0, 1, a0), { color: 'amber' }); b.ticks(O0, pt(0, 0, 1, a1), { color: 'amber' }); }
       // 자취
       if (!problem && s.csP > 0) tp.done.forEach(({ g, f }) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a0 + f * (g.a1 - g.a0), { color: 'amber', width: 8, alpha: 0.95 }); else b.seg(g.P, g.at(f), { color: 'amber', width: 8, alpha: 0.95 }); });
-      angleMark(b, a0, a1, `${sh.deg}°`, { r: type === 'segment' ? 22 : 30 });
+      angleMark(b, a0, a1, `${sh.deg}°`, { r: type === 'segment' ? 22 : 30, outside: problem && b.W < 560 });
       if (var_) angleHandle(b, s, key, a0, 30, type === 'sector' ? 300 : 180);
       dot(b, O0, 'ink', 5);
       const bis = { x: Math.cos(am), y: Math.sin(am) };
@@ -742,14 +751,17 @@ function start() {
     const fitForStage = (s, lab) => {
       if (!stageFit || fitting || !lab || s !== lab.s || !lab.board || lab.board.thumb || !lab._measureFocus) return;
       const b = lab.board, ins = b.insets;
-      const key = [b.W, b.H, b.fs, ins.top, ins.right, ins.bottom, ins.left].join('|');
+      // A short mobile question stage shows one given angle. Reserving the
+      // labels of every possible future angle makes its original figure tiny.
+      const currentPart = b.W < 560 && lab.tab === 'problem' && ['z0-arc', 'z0-sector', 'z0-segment', 'z2-sector', 'z2-segment'].includes(sc.id);
+      const key = [b.W, b.H, b.fs, ins.top, ins.right, ins.bottom, ins.left, currentPart ? [lab.tab, s.csR, s.csA, s.csS].join(':') : ''].join('|');
       if (fitStage === key && fitBoard === b) return;
       const keep = { ...s }, savedView = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab;
       let focus = null;
       fitting = true;
       try {
         b.setFocus(CANON_VIEW, true);
-        if (FIT[sc.id]) {
+        if (FIT[sc.id] && !currentPart) {
           lab.tab = 'explore';
           for (const values of FIT[sc.id]) { Object.assign(s, values); const measured = lab._measureFocus(sc); if (measured) focus = unionFocus(focus, measured); }
         } else focus = lab._measureFocus(sc);

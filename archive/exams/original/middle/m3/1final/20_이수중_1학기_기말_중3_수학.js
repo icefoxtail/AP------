@@ -27,7 +27,7 @@ window.examData = {
         "$\\sqrt{\\frac{1}{a}},\\quad \\sqrt{a},\\quad a,\\quad a^2$"
       ],
       "answer": "⑤",
-      "solution": "$0<a<1$이므로 $\\sqrt a>a>a^2$이다.\n또 $1/a>1$이므로 $\\sqrt{1/a}>1>\\sqrt a$이다.\n따라서 $\\sqrt{1/a},\\sqrt a,a,a^2$의 순서인 ⑤이다."
+      "solution": "$0<a<1$이므로 $\\sqrt a>a>a^2$이다.\n또 $\\frac{1}{a}>1$이므로 $\\sqrt{\\frac{1}{a}}>1>\\sqrt a$이다.\n따라서 $\\sqrt{\\frac{1}{a}},\\sqrt a,a,a^2$의 순서인 ⑤이다."
     },
     {
       "id": 3,

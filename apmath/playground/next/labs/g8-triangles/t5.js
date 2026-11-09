@@ -237,7 +237,15 @@
       },
       x: (b, M, s, X) => {
         const { O, A, B } = M.g, v = (s.trV || 0) % 3;
-        if (v === 0) { if (!X.at('rad')) G.sideTag(b, O, B, pt(1, -1), X.xVal ? `${M.R} cm` : 'x', { color: 'amber', size: fs(b, 18), gap: 10 }); }
+        if (v === 0 && !X.at('rad')) {
+          const label = X.xVal ? `${M.R} cm` : 'x';
+          if (X.nw) {
+            // OB와 가까운 변·중점 눈금 사이에 x를 끼워 넣지 않고,
+            // 원 왼쪽의 글자를 실제 반지름 OB의 중점에 연결합니다.
+            const anchor = mid(O, B), q = b.toS(anchor), o = b.toS(O);
+            T(b, anchor, label, { dx: o.x - b.k - 26 - q.x, dy: -28, color: 'amber', size: fs(b, 18), leaderAnchor: anchor, leader: true });
+          } else G.sideTag(b, O, B, pt(1, -1), label, { color: 'amber', size: fs(b, 18), gap: 10 });
+        }
         else if (v === 1) { if (M.z < 25) xOut(b, A, O, B, xLbl(X, M.z), { arc: X.xArc, r: 30, dist: 54 }); else ang(b, A, O, B, { color: 'amber', r: 30, label: xLbl(X, M.z), size: 17, labelDist: 52, noMark: !X.xArc, fa: 0.3 }); }
       },
       top: (b, M, s, X) => {
@@ -468,7 +476,7 @@
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
           [B, Cc, A].forEach((z) => L.ln(O, z, 'rose', 3.2));
           if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: lblAvoid(X.b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), keep: true });
-          else L.ang(O, B, Cc, { color: 'sky', r: 22, label: dg(M.boc), size: 16, labelDist: lblAvoid(X.b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: rotTo(O, B, Cc, Cc, 30), keep: true });
+          else L.ang(O, B, Cc, { color: 'sky', r: X.nw ? Math.min(22, .2 * X.b.k) : 22, label: dg(M.boc), size: 16, labelDist: X.nw ? 34 : lblAvoid(X.b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: X.nw ? 180 : rotTo(O, B, Cc, Cc, 30), keep: true });
         },
         iso: (L, M) => { const { O, A, B, C: Cc } = M.g; L.fl([O, A, B], 'sky', 0.14); L.fl([O, A, Cc], 'green', 0.14); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 4); L.tk(O, z, 1, 'rose'); }); },
         base: (L, M) => {
@@ -485,7 +493,8 @@
       x: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
         if (v === 1 && X.K === 'trap') return;
-        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.boc), size: 17, labelDist: lblAvoid(b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: rotTo(O, B, Cc, Cc, 30), noMark: !X.xArc, fa: 0.3 });
+        // 좁은 화면에서는 O각의 값을 O 아래에 연결해 A각·현 BC와 구별합니다.
+        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: X.nw ? Math.min(22, .2 * b.k) : 22, label: xLbl(X, M.boc), size: 17, labelDist: X.nw ? 34 : lblAvoid(b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: X.nw ? 180 : rotTo(O, B, Cc, Cc, 30), noMark: !X.xArc, fa: 0.3 });
         else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: lblAvoid(b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), noMark: !X.xArc, fa: 0.3 });
       },
       top: (b, M, s, X) => {
@@ -663,8 +672,10 @@
       } else {
         if (show(2)) { tick(b, O, Cc, 1, 'amber'); G.sideTag(b, O, Cc, pt(1, 1), `${R} cm`, { color: 'rose', size: fs(b, 16), gap: 10 }); }
         if (show(3)) dim(b, A, B, pt(0, -2), `${2 * R} cm`, { color: 'sky', size: fs(b, 16), off: 28 });
-        ang(b, A, O, Cc, { color: 'sky', r: 30, rings: 1, label: dg(al), size: 14, labelDist: 46, noMark: true });
-        if (show(2)) { ang(b, B, Cc, A, { color: 'green', r: 28, rings: 2, label: dg(be), size: 14, labelDist: 48 }); ang(b, A, B, Cc, { color: 'sky', r: 28, rings: 1, label: dg(al), size: 14, labelDist: 46 }); }
+        // AO와 AB는 같은 반직선이므로 A의 조건은 한 번만 표시합니다.
+        // 같은 50°를 두 번 배치하면 두 번째 글자가 빗변 위로 밀립니다.
+        ang(b, A, B, Cc, { color: 'sky', r: show(2) ? 28 : 30, rings: 1, label: dg(al), size: 14, labelDist: 46, noMark: !show(2) });
+        if (show(2)) ang(b, B, Cc, A, { color: 'green', r: 28, rings: 2, label: dg(be), size: 14, labelDist: 48 });
       }
       [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); b.point(O, { color: 'rose', r: 5.5 });
       T(b, A, 'A', { dx: -14, dy: 4, size: 18 }); T(b, B, 'B', { dx: 14, dy: 4, size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 }); T(b, O, 'O', { dy: 18, size: 18, color: 'rose' });
@@ -896,7 +907,11 @@
         ang(b, Cc, A, B, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 56 });
       } else {
         ang(b, O, A, B, { color: 'rose', r: 22, label: dg(ab), size: 13, labelDist: 40 }); ang(b, O, B, Cc, { color: 'green', r: 22, label: dg(bc), size: 13, labelDist: 40 }); ang(b, O, Cc, A, { color: 'violet', r: 22, label: dg(ca), size: 13, labelDist: 40 });
-        if (show(3)) { ang(b, Cc, A, B, { color: 'amber', r: 34, label: dg(ab / 2), size: 15, labelDist: 56 }); }
+        if (show(3)) {
+          // C의 원주각은 중심각 무리 밖으로 빼고 실제 C각 호에 연결합니다.
+          const narrow = b.W < 560 && !C.thumb;
+          ang(b, Cc, A, B, { color: 'amber', r: narrow ? Math.min(28, .24 * b.k) : 34, label: dg(ab / 2), size: 15, labelDist: narrow ? Math.min(40, .48 * b.k) : 56, labelRot: narrow ? ab / 4 + 30 : 0 });
+        }
       }
       b.point(O, { color: 'rose', r: 5.5 }); [A, B, Cc].forEach((q) => b.point(q, { color: 'ink', r: 4.5 }));
       T(b, O, 'O', { dx: 12, dy: -10, size: 18, color: 'rose' }); tagOut(b, A, O, 'A', { size: 18 }); tagOut(b, B, O, 'B', { size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 });

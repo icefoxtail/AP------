@@ -254,7 +254,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 무리식 극한은 유리화하고, 음의 무한대에서는 $\\sqrt{x^2}=|x|=-x$임을 주의하며, 마지막은 샌드위치 정리를 이용한다.\n조건 정리: 세 극한을 각각 $p,q,r$로 둔다.\n풀이 방향: (가)는 유리화, (나)는 $x$로 나누기, (다)는 부등식을 $x\\gt0$으로 나누어 처리한다.\n정석 풀이: (가)는 유리화하면 $\\dfrac{5x}{\\sqrt{x^2+2x}+\\sqrt{x^2-3x}}\\to\\dfrac52$이므로 $p=\\dfrac52$이다. (나)에서 $x\\to-\\infty$일 때 $\\sqrt{x^2+x}=-x\\sqrt{1+1/x}$이므로 분자와 분모를 $x$로 나누면 $q=\\dfrac12$이다. (다)는 $3+\\dfrac2x\\le f(x)\\lt3+\\dfrac4x+\\dfrac3{x^2}$가 되어 $r=3$이다. 따라서 $p+q+r=\\dfrac52+\\dfrac12+3=6$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 무리식 극한은 유리화하고, 음의 무한대에서는 $\\sqrt{x^2}=|x|=-x$임을 주의하며, 마지막은 샌드위치 정리를 이용한다.\n조건 정리: 세 극한을 각각 $p,q,r$로 둔다.\n풀이 방향: (가)는 유리화, (나)는 $x$로 나누기, (다)는 부등식을 $x\\gt0$으로 나누어 처리한다.\n정석 풀이: (가)는 유리화하면 $\\dfrac{5x}{\\sqrt{x^2+2x}+\\sqrt{x^2-3x}}\\to\\dfrac52$이므로 $p=\\dfrac52$이다. (나)에서 $x\\to-\\infty$일 때 $\\sqrt{x^2+x}=-x\\sqrt{1+\\frac{1}{x}}$이므로 분자와 분모를 $x$로 나누면 $q=\\dfrac12$이다. (다)는 $3+\\dfrac2x\\le f(x)\\lt3+\\dfrac4x+\\dfrac3{x^2}$가 되어 $r=3$이다. 따라서 $p+q+r=\\dfrac52+\\dfrac12+3=6$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",

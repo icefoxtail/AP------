@@ -178,3 +178,55 @@ test('the mobile ray problem separates point names from the first line caption',
     assert.equal(lab.s.lrA,3);assert.equal(lab.s.lrB,8);assert.equal(lab.s.revealed,false);
   }
 });
+
+
+test('the mobile three-lines problem keeps algebraic givens away from drag handles', () => {
+  for (const [W,H] of [[360,291],[390,314]]) {
+    const size={name:'mobile-problem',W,H,right:0,bottom:58};
+    const lab=runtime.create('th',size);lab.tab='problem';
+    const commands=lab.stabilize().commands;
+    const givens=commands.filter(x=>x.method==='text'&&['(x+35)°','60°','(4x+60)°'].includes(x.text));
+    assert.equal(givens.length,3);
+    for(const label of givens){
+      const m=lab.board.annotationSize(label.text,label.options);
+      const rect={left:label.x-m.width/2,right:label.x+m.width/2,top:label.y-m.height/2,bottom:label.y+m.height/2};
+      for(const handle of lab.board.handles){
+        const dx=Math.max(rect.left-handle.x,0,handle.x-rect.right),dy=Math.max(rect.top-handle.y,0,handle.y-rect.bottom);
+        assert.ok(Math.hypot(dx,dy)>=6.5*lab.board.hr+4,`${W}px: ${label.text} is clear of ${handle.id}`);
+      }
+    }
+    const q=lab.scene.__sv(lab.s);
+    assert.equal(q.a,40);assert.equal(q.bb,60);assert.equal(lab.s.revealed,false);
+    assert.equal(lab.scene.__spec.problem(q).choices.find(x=>x.ok).v,5);
+  }
+});
+
+test('midpoint part lengths remain below the complete AB dimension at mobile sizes', () => {
+  for (const [W,exploreH,problemH] of [[360,387,291],[390,411,314]]) {
+    for(const tab of ['explore','problem','review']) for(const plSeed of [0,1]) {
+      const size={name:'midpoint-mobile',W,H:tab==='problem'?problemH:exploreH,right:0,bottom:58};
+      const lab=runtime.create('m-mid',size);lab.tab=tab;
+      for(let mL=6;mL<=20;mL+=2)for(let mC=2;mC<=mL-2;mC+=2){
+        Object.assign(lab.s,{mL,mC,plSeed,step:1,revealed:false});
+        const commands=lab.stabilize().commands;
+        const parts=commands.filter(x=>x.method==='text'&&/^[○△]/.test(x.text));
+        assert.equal(parts.length,4);
+        const dimension=commands.find(x=>x.method==='seg'&&x.args[0].x===0&&x.args[1].x===12&&x.args[0].y<0&&x.args[0].y===x.args[1].y);
+        assert.ok(dimension);
+        const lineY=lab.board.toS(dimension.args[0]).y;
+        for(const label of parts){
+          const metrics=lab.board.annotationSize(label.text,label.options);
+          assert.ok(lineY+1.7+5<=label.y-metrics.height/2,`${W}/${tab}/${plSeed}/${mL}/${mC}: ${label.text} is below the AB dimension, with visible space`);
+        }
+        const total=commands.find(x=>x.method==='text'&&/^AB =/.test(x.text));
+        assert.ok(total.y-lab.board.annotationSize(total.text,total.options).height/2>=3,'AB caption stays inside the canvas');
+        if(tab==='problem'){
+          assert.ok(parts.every(x=>/^[○△]$/.test(x.text)),'the problem keeps part lengths concealed');
+          const requested=commands.find(x=>x.method==='text'&&x.text===(plSeed?'AB = ?':'MN = ?'));
+          assert.ok(requested,'the requested total is not revealed by the layout change');
+        }
+        assert.equal(lab.s.mL,mL);assert.equal(lab.s.mC,mC);assert.equal(lab.s.revealed,false);
+      }
+    }
+  }
+});

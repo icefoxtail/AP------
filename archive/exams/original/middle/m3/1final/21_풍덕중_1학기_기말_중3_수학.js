@@ -370,7 +370,7 @@ window.questionBank = [
       "$y = -\\dfrac{1}{3}x^2$"
     ],
     "answer": "④",
-    "solution": "$y=ax^2$에서 $a>0$이면 그래프는 위로 열린다. 위로 열린 두 그래프 중 $|a|$가 클수록 폭이 좁다. ①의 계수는 $1/2$, ④의 계수는 $3/2$이므로 더 큰 계수를 가진 ④가 가장 좁다.",
+    "solution": "$y=ax^2$에서 $a>0$이면 그래프는 위로 열린다. 위로 열린 두 그래프 중 $|a|$가 클수록 폭이 좁다. ①의 계수는 $\\frac{1}{2}$, ④의 계수는 $\\frac{3}{2}$이므로 더 큰 계수를 가진 ④가 가장 좁다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "y=ax²의 그래프 · 그래프의 모양",
     "subUnitConfidence": "candidate_evidence",
@@ -428,7 +428,7 @@ window.questionBank = [
       "$\\dfrac{8}{3}$"
     ],
     "answer": "①",
-    "solution": "두 근을 $2r,3r$라 두면 근과 계수의 관계에 따라 $5r=a+3$, $6r^2=3a$이므로 $a=2r^2$이다. 이를 합에 대입하면 $5r=2r^2+3$, 즉 $2r^2-5r+3=0$이고 $(2r-3)(r-1)=0$이다. 따라서 $r=1$ 또는 $3/2$이고, 이에 대응하는 $a$는 각각 $2$, $9/2$이다. 모든 값의 합은 $2+9/2=13/2$이므로 정답은 ①이다.",
+    "solution": "두 근을 $2r,3r$라 두면 근과 계수의 관계에 따라 $5r=a+3$, $6r^2=3a$이므로 $a=2r^2$이다. 이를 합에 대입하면 $5r=2r^2+3$, 즉 $2r^2-5r+3=0$이고 $(2r-3)(r-1)=0$이다. 따라서 $r=1$ 또는 $\\frac{3}{2}$이고, 이에 대응하는 $a$는 각각 $2$, $\\frac{9}{2}$이다. 모든 값의 합은 $2+\\frac{9}{2}=\\frac{13}{2}$이므로 정답은 ①이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식과 해 · 해가 주어진 이차방정식의 계수 결정",
     "subUnitConfidence": "candidate_evidence",
@@ -892,7 +892,7 @@ window.questionBank = [
       "제 1사분면, 제 3사분면, 제 4사분면"
     ],
     "answer": "⑤",
-    "solution": "꼭짓점은 $(2,1)$이고 계수 $-1/3<0$이므로 아래로 열린다. $x$축과 만나는 점은 $-(x-2)^2/3+1=0$에서 $(x-2)^2=3$, 즉 $x=2\\pm\\sqrt3$이다. 두 근이 모두 양수이므로 그래프는 $x<0$에서 $y<0$인 제3사분면, 두 근 사이에서 $y>0$인 제1사분면, 양의 $x$에서 두 근 바깥쪽으로 $y<0$인 제4사분면을 지난다. 제2사분면은 지나지 않으므로 정답은 ⑤이다.",
+    "solution": "꼭짓점은 $(2,1)$이고 계수 $-\\frac{1}{3}<0$이므로 아래로 열린다. $x$축과 만나는 점은 $-(x-2)^2/3+1=0$에서 $(x-2)^2=3$, 즉 $x=2\\pm\\sqrt3$이다. 두 근이 모두 양수이므로 그래프는 $x<0$에서 $y<0$인 제3사분면, 두 근 사이에서 $y>0$인 제1사분면, 양의 $x$에서 두 근 바깥쪽으로 $y<0$인 제4사분면을 지난다. 제2사분면은 지나지 않으므로 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "그래프와 계수 · 그래프 위치",
     "subUnitConfidence": "candidate_evidence",
@@ -1181,7 +1181,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "①",
-    "solution": "포물선은 위로 열려 있으므로 $x$가 매우 큰 양수일 때와 매우 큰 음수일 때 그래프는 각각 제1사분면과 제2사분면을 지난다. 제3, 4사분면까지 지나려면 음의 함수값이 되는 $x$가 0의 왼쪽과 오른쪽에 모두 있어야 하므로 두 $x$절편은 0을 사이에 둔다. 근의 곱은 $\\frac{-k}{1/2}=-2k$이므로 $-2k<0$, 즉 $k>0$이다. 이 조건이면 두 근이 서로 다른 부호이고 위로 열린 포물선은 그 사이에서 $x$축 아래에 있으므로 제3, 4사분면도 지난다.<br>꼭짓점의 $x$좌표는 $-k$이고, 함수값은 $-\\frac{k^2}{2}-k$이다. 꼭짓점이 $x+y=-6$ 위에 있으므로 $-k-\\frac{k^2}{2}-k=-6$, 즉 $k^2+4k-12=0$이다. $(k+6)(k-2)=0$에서 $k=-6$ 또는 $2$이고, 앞에서 얻은 $k>0$에 따라 $k=2$이다. 정답은 ①이다.",
+    "solution": "포물선은 위로 열려 있으므로 $x$가 매우 큰 양수일 때와 매우 큰 음수일 때 그래프는 각각 제1사분면과 제2사분면을 지난다. 제3, 4사분면까지 지나려면 음의 함수값이 되는 $x$가 0의 왼쪽과 오른쪽에 모두 있어야 하므로 두 $x$절편은 0을 사이에 둔다. 근의 곱은 $\\frac{-k}{\\frac{1}{2}}=-2k$이므로 $-2k<0$, 즉 $k>0$이다. 이 조건이면 두 근이 서로 다른 부호이고 위로 열린 포물선은 그 사이에서 $x$축 아래에 있으므로 제3, 4사분면도 지난다.<br>꼭짓점의 $x$좌표는 $-k$이고, 함수값은 $-\\frac{k^2}{2}-k$이다. 꼭짓점이 $x+y=-6$ 위에 있으므로 $-k-\\frac{k^2}{2}-k=-6$, 즉 $k^2+4k-12=0$이다. $(k+6)(k-2)=0$에서 $k=-6$ 또는 $2$이고, 앞에서 얻은 $k>0$에 따라 $k=2$이다. 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "꼭짓점형 · 꼭짓점·축",
     "subUnitConfidence": "candidate_evidence",
@@ -1338,7 +1338,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림은 이차함수 $y = \\dfrac{1}{2}x^2 + ax$의 그래프이다. 이 그래프의 꼭짓점을 $\\mathrm{P}$라 하고, 포물선이 $x$축과 만나는 두 점을 각각 $\\mathrm{A, O}$라고 할 때, 점 $\\mathrm{A}$의 좌표는 $(6, 0)$이다. 아래 물음에 답하시오. (단, $\\mathrm{O}$는 원점) (7점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 300px;\"></p><br>(1) 수 $a$의 값을 구하시오.<br>(2) 삼각형 $\\mathrm{OPA}$의 넓이를 구하시오.<br><br><table style=\"border: 1px solid #000; width: 100%; border-collapse: collapse; text-align: center;\"><tr style=\"background: #f0f0f0;\"><th style=\"border: 1px solid #000; padding: 5px;\">채점 기준</th><th style=\"border: 1px solid #000; padding: 5px;\">배점</th></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">(1) $a$의 값을 구한 경우 (구하는 과정 필요)</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">식을 변형하여 꼭짓점 $\\mathrm{P}$의 좌표를 구하면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">(2) 삼각형 $\\mathrm{OPA}$의 넓이를 구하는 식을 바르게 적으면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">삼각형 $\\mathrm{OPA}$의 넓이를 구한 경우</td><td style=\"border: 1px solid #000; padding: 5px;\">1점</td></tr></table>",
     "choices": [],
     "answer": "서술형: (1) a=−3  (2) 삼각형 OPA의 넓이=27/2 cm²",
-    "solution": "(1) $y=\\frac12x^2+ax=x(\\frac12x+a)$이다. $x$절편은 $0$과 $-2a$이다. 점 $A=(6,0)$이므로 $-2a=6$, 따라서 $a=-3$이다. (2) 식에 대입하면 $y=\\frac12x^2-3x=\\frac12(x-3)^2-\\frac92$이므로 꼭짓점은 $P=(3,-\\frac92)$이다. 밑변 $OA=6$ cm이고 높이는 꼭짓점에서 $x$축까지의 거리 $9/2$ cm이다. 따라서 삼각형 $OPA$의 넓이는 $\\frac12\\cdot6\\cdot\\frac92=\\frac{27}{2}$ cm$^2$이다.",
+    "solution": "(1) $y=\\frac12x^2+ax=x(\\frac12x+a)$이다. $x$절편은 $0$과 $-2a$이다. 점 $A=(6,0)$이므로 $-2a=6$, 따라서 $a=-3$이다. (2) 식에 대입하면 $y=\\frac12x^2-3x=\\frac12(x-3)^2-\\frac92$이므로 꼭짓점은 $P=(3,-\\frac92)$이다. 밑변 $OA=6$ cm이고 높이는 꼭짓점에서 $x$축까지의 거리 $\\frac{9}{2}$ cm이다. 따라서 삼각형 $OPA$의 넓이는 $\\frac12\\cdot6\\cdot\\frac92=\\frac{27}{2}$ cm$^2$이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "그래프와 식 · 계수 결정",
     "subUnitConfidence": "candidate_evidence",

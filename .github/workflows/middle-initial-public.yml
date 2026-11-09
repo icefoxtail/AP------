@@ -1,0 +1,150 @@
+name: Middle initial public verification
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: 'Published main commit whose exact student code must be served'
+        required: true
+        type: string
+  workflow_run:
+    workflows: ['Archive Pages Release']
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: middle-initial-public-${{ github.event.workflow_run.id || inputs.expected_main_sha || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      verify: ${{ steps.bind.outputs.verify }}
+      source_sha: ${{ steps.bind.outputs.source_sha }}
+      release_run_id: ${{ steps.bind.outputs.release_run_id }}
+    steps:
+      # The resolver comes from the workflow's trusted snapshot, not from artifact files.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Release source binding contracts
+        run: node --test apmath/playground/next/tools/middle-initial-release-context.test.mjs
+      - name: Download this exact release run and attempt
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
+        with:
+          name: archive-pages-release-evidence-${{ github.event.workflow_run.id }}-${{ github.event.workflow_run.run_attempt }}
+          path: ${{ runner.temp }}/middle-release
+          run-id: ${{ github.event.workflow_run.id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+      - name: Read deployment outcome from the same attempt
+        if: github.event_name == 'workflow_run'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_RUN_ID: ${{ github.event.workflow_run.id }}
+          RELEASE_RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RELEASE_RUN_ID/attempts/$RELEASE_RUN_ATTEMPT/jobs?per_page=100" \
+            > "$RUNNER_TEMP/middle-release/jobs.json"
+      - name: Bind the deployed source SHA and verify main ancestry
+        id: bind
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          node apmath/playground/next/tools/middle-initial-release-context.mjs \
+            --event "$GITHUB_EVENT_PATH" --root . \
+            --context "$RUNNER_TEMP/middle-release/context.txt" \
+            --jobs "$RUNNER_TEMP/middle-release/jobs.json" \
+            --out "$RUNNER_TEMP/middle-public-source/binding.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-public-${{ github.run_id }}-source-binding
+          path: ${{ runner.temp }}/middle-public-source/
+          retention-days: 30
+  inventory:
+    needs: snapshot
+    if: needs.snapshot.outputs.verify == 'true'
+    runs-on: ubuntu-24.04
+    outputs:
+      units: ${{ steps.inventory.outputs.units }}
+      source_sha: ${{ steps.inventory.outputs.source_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.snapshot.outputs.source_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: inventory
+        env:
+          EXPECTED_SOURCE_SHA: ${{ needs.snapshot.outputs.source_sha }}
+        run: |
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_SOURCE_SHA" ]]
+          git merge-base --is-ancestor HEAD origin/main
+          echo "source_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "units=$(node apmath/playground/next/tools/middle-initial-figure-audit.mjs --list-units)" >> "$GITHUB_OUTPUT"
+      - name: Public source verification contracts
+        run: node --test apmath/playground/next/tools/middle-initial-served-source.test.mjs
+  browser:
+    needs: inventory
+    strategy:
+      fail-fast: false
+      matrix:
+        unit: ${{ fromJSON(needs.inventory.outputs.units) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.inventory.outputs.source_sha }}
+          persist-credentials: false
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install real Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify published code and student initial figures
+        env:
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+          UNIT: ${{ matrix.unit }}
+        run: |
+          node apmath/playground/next/tools/middle-initial-figure-audit.mjs \
+            --root . --units "$UNIT" --risk-scenes --viewports pc,small-mobile --themes board,paper \
+            --base-url https://icefoxtail.github.io/AP------/apmath/playground/next/labs/ \
+            --out "$RUNNER_TEMP/public-initial-evidence"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-public-${{ github.run_id }}-${{ matrix.unit }}-report
+          path: ${{ runner.temp }}/public-initial-evidence/report.json
+          compression-level: 9
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-public-${{ github.run_id }}-${{ matrix.unit }}-screens
+          path: ${{ runner.temp }}/public-initial-evidence/
+          retention-days: 30

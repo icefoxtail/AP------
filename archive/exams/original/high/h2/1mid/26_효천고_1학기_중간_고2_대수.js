@@ -82,7 +82,7 @@ window.questionBank = [
       "$\\log_2 5\\times\\log_5 8=3$"
     ],
     "answer": "④",
-    "solution": "각 식을 지수·로그의 정의로 확인한다.\n① $(9^{0.25})^2=9^{1/2}=3$이다.\n② $3^{\\sqrt5+1}\\div3^{\\sqrt5-1}=3^2=9$이다.\n③ $(2^2\\times3)^{\\frac23}\\times\\sqrt[3]{2^2\\times3^{-2}}=2^{\\frac43+\\frac23}3^{\\frac23-\\frac23}=4$이다.\n④ $\\left(\\sqrt5\\right)^{-4}=\\frac1{25}$이므로 $\\log_{\\sqrt5}\\frac1{25}=-4$이다.\n따라서 ④의 등식만 옳지 않다.\n⑤ $\\log_2 5\\times\\log_5 8=\\log_2 8=3$이다.\n\n그러므로 정답은 ④이다."
+    "solution": "각 식을 지수·로그의 정의로 확인한다.\n① $(9^{0.25})^2=9^{\\frac{1}{2}}=3$이다.\n② $3^{\\sqrt5+1}\\div3^{\\sqrt5-1}=3^2=9$이다.\n③ $(2^2\\times3)^{\\frac23}\\times\\sqrt[3]{2^2\\times3^{-2}}=2^{\\frac43+\\frac23}3^{\\frac23-\\frac23}=4$이다.\n④ $\\left(\\sqrt5\\right)^{-4}=\\frac1{25}$이므로 $\\log_{\\sqrt5}\\frac1{25}=-4$이다.\n따라서 ④의 등식만 옳지 않다.\n⑤ $\\log_2 5\\times\\log_5 8=\\log_2 8=3$이다.\n\n그러므로 정답은 ④이다."
   },
   {
     "id": 3,
@@ -376,7 +376,7 @@ window.questionBank = [
       "$6$시간"
     ],
     "answer": "⑤",
-    "solution": "4시간마다 약 성분의 $70\\%$가 남으므로 $x$시간 뒤 남는 비율은 $(0.7)^{x/4}$이다.\n절반이 되는 시각은\n$(0.7)^{x/4}=0.5$를 만족한다.\n상용로그를 취하면\n$\\frac{x}{4}\\log0.7=\\log0.5$\n$\\frac{x}{4}(0.8-1)=-0.3$\n$-0.2\\frac{x}{4}=-0.3$\n$\\frac{x}{4}=1.5$\n$x=6$이다.\n\n따라서 정답은 ⑤이다."
+    "solution": "4시간마다 약 성분의 $70\\%$가 남으므로 $x$시간 뒤 남는 비율은 $(0.7)^{\\frac{x}{4}}$이다.\n절반이 되는 시각은\n$(0.7)^{\\frac{x}{4}}=0.5$를 만족한다.\n상용로그를 취하면\n$\\frac{x}{4}\\log0.7=\\log0.5$\n$\\frac{x}{4}(0.8-1)=-0.3$\n$-0.2\\frac{x}{4}=-0.3$\n$\\frac{x}{4}=1.5$\n$x=6$이다.\n\n따라서 정답은 ⑤이다."
   },
   {
     "id": 10,
@@ -460,7 +460,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "공통값이 $243$이므로\n$a=243^{1/x}$, $b=243^{1/y}$, $c=243^{1/z}$이다.\n따라서\n$abc=243^{\\frac1x+\\frac1y+\\frac1z}=27$\n$243=3^5$, $27=3^3$이므로\n$3^{5(\\frac1x+\\frac1y+\\frac1z)}=3^3$\n$\\frac1x+\\frac1y+\\frac1z=\\frac35$이다.\n\n그러므로 정답은 ①이다."
+    "solution": "공통값이 $243$이므로\n$a=243^{\\frac{1}{x}}$, $b=243^{\\frac{1}{y}}$, $c=243^{\\frac{1}{z}}$이다.\n따라서\n$abc=243^{\\frac1x+\\frac1y+\\frac1z}=27$\n$243=3^5$, $27=3^3$이므로\n$3^{5(\\frac1x+\\frac1y+\\frac1z)}=3^3$\n$\\frac1x+\\frac1y+\\frac1z=\\frac35$이다.\n\n그러므로 정답은 ①이다."
   },
   {
     "id": 12,
@@ -502,7 +502,7 @@ window.questionBank = [
       "$2^{\\frac13}3^{\\frac53}$"
     ],
     "answer": "④",
-    "solution": "점근선은 $y=-3$이다. $A=(t,a^t-3)$라 두면 $B=(t,0)$, $C=(t,-3)$이다.\n$\\overline{AB}=\\overline{BC}=3$이므로 $a^t-3=3$, 따라서 $a^t=6$이다.\n삼각형 $AOC$에서 밑변 $AC=6$이고 높이는 $OB=t$이므로\n$\\frac12\\times6t=27$\n$t=9$이다.\n따라서 $a^9=6$, $a=6^{1/9}$이고\n$a\\times\\overline{OB}=9\\times6^{1/9}$\n$=2^{1/9}3^{19/9}$이다.\n\n그러므로 정답은 ④이다."
+    "solution": "점근선은 $y=-3$이다. $A=(t,a^t-3)$라 두면 $B=(t,0)$, $C=(t,-3)$이다.\n$\\overline{AB}=\\overline{BC}=3$이므로 $a^t-3=3$, 따라서 $a^t=6$이다.\n삼각형 $AOC$에서 밑변 $AC=6$이고 높이는 $OB=t$이므로\n$\\frac12\\times6t=27$\n$t=9$이다.\n따라서 $a^9=6$, $a=6^{\\frac{1}{9}}$이고\n$a\\times\\overline{OB}=9\\times6^{\\frac{1}{9}}$\n$=2^{\\frac{1}{9}}3^{\\frac{19}{9}}$이다.\n\n그러므로 정답은 ④이다."
   },
   {
     "id": 13,
@@ -544,7 +544,7 @@ window.questionBank = [
       "$156$"
     ],
     "answer": "③",
-    "solution": "식의 값을 $m$이라 두면 $m$은 1부터 6까지의 자연수이다.\n\n\\[\\frac{2\\log_2 n+1}{3}=m\\]\n\n양변을 정리하면\n\n\\[\\log_2 n=\\frac{3m-1}{2},\\qquad n=2^{\\frac{3m-1}{2}}.\\]\n\n$n$이 자연수이려면 지수 $(3m-1)/2$가 정수여야 한다. 따라서 $m$은 홀수이고, 범위 안에서는\n\n\\[m=1,3,5.\\]\n\n각각의 $n$은\n\n\\[m=1\\Rightarrow n=2,\\qquad m=3\\Rightarrow n=16,\\qquad m=5\\Rightarrow n=128.\\]\n\n따라서 모든 $n$의 합은\n\n\\[2+16+128=146.\\]\n\n정답은 ③이다.",
+    "solution": "식의 값을 $m$이라 두면 $m$은 1부터 6까지의 자연수이다.\n\n\\[\\frac{2\\log_2 n+1}{3}=m\\]\n\n양변을 정리하면\n\n\\[\\log_2 n=\\frac{3m-1}{2},\\qquad n=2^{\\frac{3m-1}{2}}.\\]\n\n$n$이 자연수이려면 지수 $\\frac{3m-1}{2}$가 정수여야 한다. 따라서 $m$은 홀수이고, 범위 안에서는\n\n\\[m=1,3,5.\\]\n\n각각의 $n$은\n\n\\[m=1\\Rightarrow n=2,\\qquad m=3\\Rightarrow n=16,\\qquad m=5\\Rightarrow n=128.\\]\n\n따라서 모든 $n$의 합은\n\n\\[2+16+128=146.\\]\n\n정답은 ③이다.",
     "itemStatus": "PASS_AFTER_REPAIR",
     "holdReason": ""
   },
@@ -588,7 +588,7 @@ window.questionBank = [
       "$\\frac{47}9$"
     ],
     "answer": "②",
-    "solution": "첫 번째 인수의 실근과 두 번째 인수의 실근을 나누어 본다.\n$x^n=2$의 실근 곱은 $n$이 홀수이면 $2^{1/n}$이고, $n$이 짝수이면 $-2^{2/n}$이다.\n$x^{2n}=2$의 실근은 $\\pm2^{1/(2n)}$이므로 그 곱은 $-2^{1/n}$이다.\n두 근 집합은 겹치지 않으므로 모든 실근의 곱 $k$는\n$n$ 홀수일 때 $k=-2^{2/n}$,\n$n$ 짝수일 때 $k=2^{3/n}$이다.\n한 자리 자연수 $n=1,\\ldots,9$를 대입하면 $n+k$의 최솟값은 $n=1$에서 $-3$이고, 최댓값은 $n=8$에서 $8+2^{3/8}$이다.\n두 값의 합은\n$(-3)+(8+2^{3/8})=5+2^{3/8}$이다.\n따라서 $a=5$, $b=1$, $c=\\frac38$이고\n$a+b+c=5+1+\\frac38=\\frac{51}8$이다.\n\n그러므로 정답은 ②이다."
+    "solution": "첫 번째 인수의 실근과 두 번째 인수의 실근을 나누어 본다.\n$x^n=2$의 실근 곱은 $n$이 홀수이면 $2^{\\frac{1}{n}}$이고, $n$이 짝수이면 $-2^{\\frac{2}{n}}$이다.\n$x^{2n}=2$의 실근은 $\\pm2^{1/(2n)}$이므로 그 곱은 $-2^{\\frac{1}{n}}$이다.\n두 근 집합은 겹치지 않으므로 모든 실근의 곱 $k$는\n$n$ 홀수일 때 $k=-2^{\\frac{2}{n}}$,\n$n$ 짝수일 때 $k=2^{\\frac{3}{n}}$이다.\n한 자리 자연수 $n=1,\\ldots,9$를 대입하면 $n+k$의 최솟값은 $n=1$에서 $-3$이고, 최댓값은 $n=8$에서 $8+2^{\\frac{3}{8}}$이다.\n두 값의 합은\n$(-3)+(8+2^{\\frac{3}{8}})=5+2^{\\frac{3}{8}}$이다.\n따라서 $a=5$, $b=1$, $c=\\frac38$이고\n$a+b+c=5+1+\\frac38=\\frac{51}8$이다.\n\n그러므로 정답은 ②이다."
   },
   {
     "id": 15,
@@ -783,10 +783,10 @@ window.questionBank = [
       "로그의 대소 비교"
     ],
     "wide": false,
-    "content": "[단답형 2], [서술형 3]에 해당되는 문제입니다.<br>$\\log_a b$, $\\log_b a$, $\\log_a\\frac ab$, $\\log_{1/a}b$의 대소를 다음 물음에 맞게 비교하시오.<br>$a=\\frac13$, $b=\\frac12$일 때, 대소를 비교하시오. [3점]",
+    "content": "[단답형 2], [서술형 3]에 해당되는 문제입니다.<br>$\\log_a b$, $\\log_b a$, $\\log_a\\frac ab$, $\\log_{\\frac{1}{a}}b$의 대소를 다음 물음에 맞게 비교하시오.<br>$a=\\frac13$, $b=\\frac12$일 때, 대소를 비교하시오. [3점]",
     "choices": [],
     "answer": "$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$",
-    "solution": "각 로그값을 비교할 수 있도록 계산한다.\n$\\log_b a=\\log_{1/2}(1/3)=\\frac{\\log_2 3}{1}=\\log_2 3>1$이다.\n$\\log_a b=\\log_{1/3}(1/2)=\\frac{\\log_2 2}{\\log_2 3}=\\frac1{\\log_2 3}$이다.\n$\\log_a\\frac ab=\\log_{1/3}\\frac23=\\frac{\\log_2(3/2)}{\\log_2 3}=1-\\frac1{\\log_2 3}$이다.\n$\\log_{1/a}b=\\log_3\\frac12=-\\frac1{\\log_2 3}$이다.\n$\\log_2 3>1$이므로 순서는\n$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$이다."
+    "solution": "각 로그값을 비교할 수 있도록 계산한다.\n$\\log_b a=\\log_{\\frac{1}{2}}(\\frac{1}{3})=\\frac{\\log_2 3}{1}=\\log_2 3>1$이다.\n$\\log_a b=\\log_{\\frac{1}{3}}(\\frac{1}{2})=\\frac{\\log_2 2}{\\log_2 3}=\\frac1{\\log_2 3}$이다.\n$\\log_a\\frac ab=\\log_{\\frac{1}{3}}\\frac23=\\frac{\\log_2(\\frac{3}{2})}{\\log_2 3}=1-\\frac1{\\log_2 3}$이다.\n$\\log_{\\frac{1}{a}}b=\\log_3\\frac12=-\\frac1{\\log_2 3}$이다.\n$\\log_2 3>1$이므로 순서는\n$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{\\frac{1}{a}}b$이다."
   },
   {
     "id": 20,
@@ -891,10 +891,10 @@ window.questionBank = [
       "로그의 대소 비교"
     ],
     "wide": false,
-    "content": "[단답형 2], [서술형 3]에 해당되는 문제입니다.<br>$\\log_a b$, $\\log_b a$, $\\log_a\\frac ab$, $\\log_{1/a}b$의 대소를 다음 물음에 맞게 비교하시오.<br>$0<b^2<a<b$를 만족하는 실수 $a$, $b$에 대하여 대소를 비교하고 그 과정을 서술하시오. [6점]",
+    "content": "[단답형 2], [서술형 3]에 해당되는 문제입니다.<br>$\\log_a b$, $\\log_b a$, $\\log_a\\frac ab$, $\\log_{\\frac{1}{a}}b$의 대소를 다음 물음에 맞게 비교하시오.<br>$0<b^2<a<b$를 만족하는 실수 $a$, $b$에 대하여 대소를 비교하고 그 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$",
-    "solution": "$0<b^2<a<b$에서 $0<b<1$이다.\n$b^2<a<b$에 밑이 $b$인 로그를 취한다. 밑이 $0$과 $1$ 사이이므로 부등호 방향이 바뀌어\n$2>\\log_b a>1$이다.\n따라서 $\\log_b a>1$이고\n$\\log_a b=\\frac1{\\log_b a}$이므로 $0<\\log_a b<1$이다.\n또\n$\\log_a\\frac ab=1-\\log_a b$이므로 $0<\\log_a\\frac ab<\\frac12<\\log_a b$이다.\n마지막으로\n$\\log_{1/a}b=-\\log_a b<0$이다.\n따라서\n$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$이다."
+    "solution": "$0<b^2<a<b$에서 $0<b<1$이다.\n$b^2<a<b$에 밑이 $b$인 로그를 취한다. 밑이 $0$과 $1$ 사이이므로 부등호 방향이 바뀌어\n$2>\\log_b a>1$이다.\n따라서 $\\log_b a>1$이고\n$\\log_a b=\\frac1{\\log_b a}$이므로 $0<\\log_a b<1$이다.\n또\n$\\log_a\\frac ab=1-\\log_a b$이므로 $0<\\log_a\\frac ab<\\frac12<\\log_a b$이다.\n마지막으로\n$\\log_{\\frac{1}{a}}b=-\\log_a b<0$이다.\n따라서\n$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{\\frac{1}{a}}b$이다."
   },
   {
     "id": 23,

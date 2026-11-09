@@ -145,7 +145,7 @@ window.questionBank = [
     "content": "$a=-2, b=\\dfrac{1}{2}$일 때, $-a^2+\\dfrac{a}{b}$의 값을 구하여라.",
     "choices": [],
     "answer": "$-8$",
-    "solution": "[키포인트] 문자의 값은 식에 직접 대입하여 계산한다.\n조건 정리: $a=-2$, $b=\\dfrac12$이다.\n풀이 방향: 거듭제곱과 나눗셈을 차례로 계산한다.\n정석 풀이: $-a^2+\\dfrac{a}{b}=-(-2)^2+\\dfrac{-2}{1/2}=-4-4=-8$이다.\n따라서 구하는 값은 $-8$이다.",
+    "solution": "[키포인트] 문자의 값은 식에 직접 대입하여 계산한다.\n조건 정리: $a=-2$, $b=\\dfrac12$이다.\n풀이 방향: 거듭제곱과 나눗셈을 차례로 계산한다.\n정석 풀이: $-a^2+\\dfrac{a}{b}=-(-2)^2+\\dfrac{-2}{\\frac{1}{2}}=-4-4=-8$이다.\n따라서 구하는 값은 $-8$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",

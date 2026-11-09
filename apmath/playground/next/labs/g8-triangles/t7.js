@@ -80,8 +80,10 @@
       const { a, b: bb, obc, ibc, obi, boc, bic, g } = M, { A, B, C: Cc, O, I } = g, kind = t7kind(M, s), same = M.same;
       const cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
       const seen = new Set(idx >= 0 ? ST.slice(0, idx + 1).map((x) => x.f) : []), at = (x) => f === x, has = (x) => seen.has(x);
-      const narrowW = b.W < 560;
-      fit(b, bboxOf([A, B, Cc, O, I]), { t: 50, b: idx < 0 ? 72 : narrowW ? 112 : 122, l: narrowW ? 40 : 54, r: narrowW ? 40 : 54 });
+      const narrowW = b.W < 560, mobileQuestion = narrowW && !b.thumb;
+      // 문제의 기본 삼각형부터 충분히 보여 줍니다. 작은 무대에서 고정된
+      // 여백/각 글자 거리가 A와 B의 조건을 O·I 쪽으로 밀어내지 않게 합니다.
+      fit(b, bboxOf([A, B, Cc, O, I]), { t: mobileQuestion ? 28 : 50, b: mobileQuestion ? (idx < 0 ? 52 : 92) : idx < 0 ? 72 : narrowW ? 112 : 122, l: narrowW ? 40 : 54, r: narrowW ? 40 : 54 });
       const k = b.k || 60, lf = fs(b, 14), px = (n) => n / k, isProb = idx < 0, gv = at('given');
       const oUp = O.y <= I.y, close = !same && Math.abs(I.y - O.y) * k < 84; // O·I 가 가까우면 위쪽 점의 각 글자는 점 위에, 아래쪽 점의 각 글자는 점 아래에 둡니다
       const rotO = close && oUp ? 180 : 0, rotI = close && !oUp ? 180 : 0;
@@ -100,7 +102,11 @@
       if (strongCI) line(b, Cc, I, 'green', 3, { dash: [7, 5] }); else line(b, Cc, I, 'ink', 1.4, { alpha: 0.22, dash: [7, 5] });
       if (gv || at('oc')) { tick(b, O, B, 2, 'rose'); tick(b, O, Cc, 2, 'rose'); }
       // ∠A (주어진 값): 주어진 것에서 색, 이후에는 값만 남긴 회색
-      if (isProb || gv) ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56, fa: gv ? 0.5 : 0.2 });
+      if (mobileQuestion) {
+        const ar = Math.min(30, .3 * Math.min(dist(A, O), dist(A, I)) * k), col = isProb || gv ? 'sky' : 'ink';
+        ang(b, A, B, Cc, { color: col, r: ar, fa: gv ? .5 : isProb ? .2 : 0, alpha: isProb || gv ? 1 : .38 });
+        T(b, A, dg(a), { dx: -56, dy: 26, size: 16, color: col, alpha: isProb || gv ? 1 : .38, leaderAnchor: pt(A.x, A.y + px(ar)), leader: true });
+      } else if (isProb || gv) ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56, fa: gv ? 0.5 : 0.2 });
       else FD(b, A, B, Cc, { r: 34, label: dg(a), size: 15, labelDist: 56 });
       // ∠B=∠C (이등변): B쪽 한 곳만, 값은 꼭짓점 바깥에
       if (has('base') && K !== 'trap') {
@@ -124,7 +130,13 @@
       const xv = kind === 'obi' ? obi : kind === 'obc' ? obc : kind === 'diff' ? Math.abs(boc - bic) : ibc;
       const xArc = isProb || gv || at('eq') || at('ans'), narrowX = xv < 15, xl = at('ans') && !narrowX ? `x=${xv}°` : 'x', xs = 18;
       const dirX = (th, d, lbl) => T(b, B, lbl, { dx: Math.cos(th) * d, dy: Math.sin(th) * d, size: xs, color: 'amber' });
-      if (kind === 'ibc') { if (xArc && !(at('eq') && false)) ang(b, B, I, Cc, { color: 'amber', r: 38, label: xl, size: xs, labelDist: 60, fa: 0.3 }); else dirX(-ibc / 2 * DEG, 60, xl); }
+      if (mobileQuestion && (isProb || gv) && kind !== 'diff') {
+        const ends = kind === 'obi' ? [O, I] : kind === 'obc' ? [O, Cc] : [I, Cc];
+        const xr = Math.min(42, .36 * Math.min(dist(B, O), dist(B, I)) * k);
+        const marker = ang(b, B, ends[0], ends[1], { color: 'amber', r: xr, fa: .3 });
+        const anchor = pt(B.x + px(xr) * Math.cos(marker.mid), B.y + px(xr) * Math.sin(marker.mid));
+        T(b, B, xl, { dx: -32, dy: -24, size: xs, color: 'amber', leaderAnchor: anchor, leader: true });
+      } else if (kind === 'ibc') { if (xArc && !(at('eq') && false)) ang(b, B, I, Cc, { color: 'amber', r: 38, label: xl, size: xs, labelDist: 60, fa: 0.3 }); else dirX(-ibc / 2 * DEG, 60, xl); }
       else if (kind === 'obi') {
         // ∠OBI 는 작은 각이라 글자 x 를 선 밖으로 빼고 짧은 선으로 이어요(값은 그림 아래 한 줄에)
         const th = -(obc + ibc) / 2 * DEG, from = pt(B.x + px(66) * Math.cos(th), B.y + px(66) * Math.sin(th)), to = pt(from.x + px(2), B.y + px(7)); // x 는 B의 각이므로 O에서 먼 변 BC 아래에 둡니다
@@ -141,7 +153,10 @@
       }
       // 점과 이름(점 이름만 그림 안에)
       b.point(O, { color: 'rose', r: 5.5 }); b.point(I, { color: 'green', r: 5.5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
-      if (same) T(b, O, 'O=I', { dx: 24, dy: 0, size: 16, color: 'rose' }); else {
+      if (same) T(b, O, 'O=I', { dx: 24, dy: 0, size: 16, color: 'rose' }); else if (mobileQuestion) {
+        T(b, O, 'O', { dx: -26, dy: -8, size: 17, color: 'rose', leaderAnchor: O, leader: true });
+        T(b, I, 'I', { dx: 26, dy: 8, size: 17, color: 'green', leaderAnchor: I, leader: true });
+      } else {
         const tight = close && Math.abs(I.y - O.y) * k < 34;
         T(b, O, 'O', { dx: 16, dy: tight && !oUp ? -2 : -14, size: 17, color: 'rose' }); T(b, I, 'I', { dx: 16, dy: tight && oUp ? -2 : -14, size: 17, color: 'green' });
       }
@@ -149,7 +164,7 @@
       // 그림 아래: 단계 설명 한 줄, 그 아래에 점 이름의 뜻
       const capSz = 15, plainCap = cur ? String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2') : '', two = cur && G.textW(plainCap, fs(b, capSz)) * 1.1 > Math.max(180, b.W - 28);
       if (cur) solveCap(b, pt(0, 0), cur, { dy: 46, size: capSz });
-      T(b, pt(0, 0), same ? 'O=I: 외심이자 내심' : 'O: 외심 · I: 내심', { dy: cur ? (two ? 78 : 74) : 46, size: fs(b, 14), color: 'ink', alpha: 0.8 });
+      T(b, pt(0, 0), same ? 'O=I: 외심이자 내심' : 'O: 외심 · I: 내심', { dy: cur ? (two ? 78 : 74) : mobileQuestion ? 32 : 46, size: fs(b, 14), color: 'ink', alpha: 0.8 });
     }
   };
   const m1 = {

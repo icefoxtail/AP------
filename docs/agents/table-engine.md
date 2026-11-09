@@ -36,7 +36,7 @@
    - 바깥 파이프 없는 파이프 표 11건(동아 공통수학1 교과서 7개 문자열)은 **엔진을 확장해** 해결했다(사용자 결정). 데이터는 그대로다. 구분선 필수, 구분선 없으면 변환하지 않는다. 전수 비교에서 바뀐 문자열은 이 7개뿐이고 셀 내용은 그대로다.
    - 25 왕운중 1학기 중간 중3 5번 제곱근표는 머리글 칸이 5개, 본문이 6개라 열 제목이 한 칸 밀려 있었다. 머리글에 빈 칸 하나를 더해 맞췄다(값은 그대로). 근거: 해설이 "3.2행 5열 = 1.803"이고 6번 해설이 "33행 4열 = 5.779"여서 열 제목 4·5·6은 "..." 열 다음의 숫자 열 위에 있다.
    - 이 PR 머지 뒤 파생 데이터(catalog·4slot·source-verification 해시)는 자동 등록 커밋이 갱신한다. 손으로 고치지 않는다.
-3. **분수 전수 조사 (GPT에 위임)**: 발문·보기·해설·표의 모든 슬래시 분수를 `\frac`로 바꾼다. PR #1540 머지와 자동 등록 커밋을 확인한 뒤 최신 main에서 시작한다. answer 필드는 채점 영향을 먼저 확인한다.
+3. ~~분수 전수 조사~~ **완료 (확실한 분수 변환)**: Git에 있는 시험지 JS의 발문·보기·해설·표를 조사하고, 피연산자와 의미가 명확한 슬래시 분수를 조판용 수식으로 바꿨다. 채점용 answer와 날짜·경로·단위·회차 등은 유지했다. 의미나 피연산자 경계가 모호한 항목 및 고정 원본 해시 참조 항목은 EVIDENCE_DEBT로 분리했다.
 4. ~~PR-4 정본 문서~~ **완료**: [계약 v1](../rules/01_CANONICAL/AP_Table_Engine_Contract_v1.md), `exam-pipeline.md`에 표 작성 규칙 추가.
 5. ~~아카이브 나머지 화면 연결~~ **완료 (PR-5)**: `archive/generated-bank.html`(문항 본문·미리보기·직접 인쇄), `archive/problem-bank-search.html`(문항 미리보기), `archive/mixer.html`(문항 카드 `createQuestionItem`)가 `ap-table-engine.js`·`ap-table.css`를 `engine.html`과 같은 캐시 버스트로 불러오고, 문항 HTML을 삽입하기 전·MathJax 조판 전에 `renderApTables`를 호출한다(`globalThis.ApTableEngine` 가드). 이유: 표가 화면마다 달라 파이프 `|` 줄이 학생·교사에게 글자로 보였다.
    - generated-bank·problem-bank-search는 `innerHTML`을 쓰지 않는 화면이라, 엔진 출력을 허용 목록(table·thead·tbody·tfoot·tr·th·td·br·b, 칸 병합·scope·border 스타일만)으로 노드를 다시 만든다. 허용 밖 태그가 들어 있으면 그 표는 변환하지 않고 원래 문자열 경로로 돌아간다. 원문(`data-source-text`)은 바꾸지 않는다.

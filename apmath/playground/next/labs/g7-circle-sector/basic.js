@@ -780,7 +780,10 @@
         }
         const stR = stateOf('r', mode, step);
         if (stR.s !== 'hide') g.text(g.pol(O, R * 0.52, 0), stR.s === 'ask' ? 'r = ? cm' : SLAB.r(v.r), { color: stR.c === 'ink' ? 'sky' : stR.c, dy: th > 180 ? -18 : 20, size: 16 });
-        if (stL.s !== 'hide') g.out(g.pol(O, R, m), m, stL.s === 'ask' ? '호 ? cm' : SLAB.l(v.l), { color: stL.c === 'ink' ? 'amber' : stL.c, size: 16, avoidRightEdge: o.id === '1610' || (o.id === '1808' && g.b.W < 560), rightClearance: o.id === '1808' && g.b.W < 560 ? 24 : 0 }, 32);
+        // Problem/review stages are shorter; their edge-handle clearance must
+        // not move the explore caption onto its visible angle-drag handle.
+        const arcEdgeClearance = o.id === '1808' && mode !== 'explore' && g.b.W < 560;
+        if (stL.s !== 'hide') g.out(g.pol(O, R, m), m, stL.s === 'ask' ? '호 ? cm' : SLAB.l(v.l), { color: stL.c === 'ink' ? 'amber' : stL.c, size: 16, avoidRightEdge: o.id === '1610' || arcEdgeClearance, rightClearance: arcEdgeClearance ? 24 : 0 }, 32);
         const stS = stateOf('S', mode, step);
         if (stS.s !== 'hide') g.text(th > 200 ? g.pol(O, R * 0.5, 90) : g.pol(O, R * (th < 90 ? 0.8 : 0.66), m), stS.s === 'ask' ? '넓이 ? cm²' : SLAB.S(v.S), { color: stS.c === 'ink' ? 'green' : stS.c, size: 16, dy: th < 90 ? -10 : 0 });
         if (mode === 'explore') {
@@ -1193,7 +1196,11 @@
       angle(A0, A1, q.al, 'amber', 180); angle(D0, D1, q.be, 'rose', 0);
       const showX = mode === 'explore' || (mode === 'review' && step >= 2);
       g.text(g.pol(O, R * 0.62, 180), '넓이 ' + piS(a) + ' cm²', { color: 'amber', size: 16, dy: -34, dx: -10 });
-      g.text(g.pol(O, R * 0.56, 0), showX ? '넓이 ' + piS(x) + ' cm²' : '넓이 ? cm²', { color: 'rose', size: 16, dy: -30 });
+      // 좁은 무대에서는 넓이 값·단위가 D 손잡이와 겹치지 않도록
+      // 움직이는 점 이름들의 위쪽에 두고 해당 부채꼴 COD를 함께 적습니다.
+      const narrowArea = g.b.W < 560 && !g.b.thumb;
+      const areaY = narrowArea ? R * Math.max(.5, ...[A0, A1, D0, D1].map(t => Math.sin(t * D2R))) : 0;
+      g.text([R * .56, areaY], (narrowArea ? 'COD 넓이 ' : '넓이 ') + (showX ? piS(x) : '?') + ' cm²', { color: 'rose', size: 16, dy: narrowArea ? -48 : -30 });
       g.dot(g.pol(O, R, A0), { color: 'ink', label: 'A', toward: O });
       g.dot(g.pol(O, R, A1), { color: 'ink', label: 'B', toward: O });
       g.dot(g.pol(O, R, D0), { color: 'ink', label: 'C', toward: O });

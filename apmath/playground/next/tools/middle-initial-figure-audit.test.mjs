@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {discoverMiddleCatalog,discoverHashEntries,initialIssues,toolbarOcclusions,labelsOutsideCanvas,compareInitialGeometry,VIEWPORTS} from './middle-initial-figure-audit.mjs';
-import {isProgressControl,needsInitialInteractionCheck,missingInteractionRisks} from './middle-initial-interactions.mjs';
+import {isProgressControl,progressSamples,needsInitialInteractionCheck,missingInteractionRisks,nativeDragDestinations,compareInitialParameters} from './middle-initial-interactions.mjs';
 
 test('initial inventory includes newly registered middle labs without a fixed scene list',()=>{
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'middle-initial-catalog-'));
@@ -89,6 +89,11 @@ test('progress probes cover rolling, folds and nets while leaving ordinary side 
   for(const label of ['반지름 r','삼각형의 높이','∠ABC'])assert.equal(isProgressControl(label),false,label);
 });
 
+test('the disappearing composite-solid transition is sampled on both sides of its midpoint',()=>{
+  assert.deepEqual(progressSamples('g7-surface-volume','sv4-4').map(x=>x[1]),[.45,.49,.5,.51,.55,.75,.99,1]);
+  assert.deepEqual(progressSamples('g7-surface-volume','sv1-1'),[['animation-middle',.5],['animation-end',1]]);
+});
+
 test('reentry cannot silently shrink or move the initial figure while its inputs remain unchanged',()=>{
   const first={geometry:[{method:'circle',alpha:1,bounds:{left:300.69,right:722.31,top:53.14,bottom:474.76}}]};
   const moved={geometry:[{method:'circle',alpha:1,bounds:{left:312.49,right:710.51,top:53.82,bottom:451.84}}]};
@@ -96,4 +101,37 @@ test('reentry cannot silently shrink or move the initial figure while its inputs
   assert.equal(compareInitialGeometry(first,moved).pass,false);
   assert.equal(compareInitialGeometry(first,moved).reason,'initial-geometry-framing-changed');
   assert.equal(compareInitialGeometry(first,{geometry:[]}).pass,false);
+});
+
+test('native dragging can reach a different discrete polygon vertex on a large canvas',()=>{
+  // Real Chromium p1-one failure: all three short moves stayed closest to v0.
+  const vertices=Array.from({length:7},(_,i)=>({x:511.5+241*Math.sin(i*2*Math.PI/7),y:406.8731196275071-241*Math.cos(i*2*Math.PI/7)}));
+  const nearest=p=>vertices.reduce((best,v,i)=>Math.hypot(p.x-v.x,p.y-v.y)<Math.hypot(p.x-vertices[best].x,p.y-vertices[best].y)?i:best,0);
+  const start={x:511.5,y:165.8731196275071};
+  const targets=nativeDragDestinations(start,{left:0,right:1039,top:113,bottom:766},{width:1440,height:900});
+  assert.ok(targets.slice(0,3).every(p=>nearest(p)===0));
+  assert.ok(targets.some(p=>nearest(p)!==0));
+  assert.ok(targets.every(p=>p.x>=12&&p.x<=1027&&p.y>=125&&p.y<=754));
+  const mobile=nativeDragDestinations({x:180,y:156},{left:0,right:360,top:141,bottom:530},{width:360,height:800});
+  assert.ok(mobile.every(p=>p.x>=12&&p.x<=328&&p.y>=153&&p.y<=518));
+});
+
+test('a regenerated question can change its figure only with valid restored conditions',()=>{
+  const variant={policy:'spatial-five-statement-question',bankValid:true,givenConditionsValid:true,initialValuesRestored:true,selectedIndex:0,progress:0,sharedParams:{spYaw:-30,spPitch:24}};
+  const first={id:'s2-7',initialVariant:{...variant,selectedId:'p2'},projection:{zoom:1,panX:0,panY:0},declaredControls:['spP2a','spP2b','spYaw','spPitch'],params:{spP2a:0,spP2b:.6,spYaw:-30,spPitch:24},geometry:[{method:'path',alpha:1,bounds:{left:10,right:300,top:20,bottom:200}}]};
+  const next={...first,initialVariant:{...variant,selectedId:'p1'},params:{...first.params,spP2b:.8},geometry:[{method:'path',alpha:1,bounds:{left:60,right:220,top:40,bottom:300}},{method:'path',alpha:1,bounds:{left:70,right:280,top:60,bottom:260}}]};
+  assert.equal(compareInitialGeometry(first,next).reason,'verified-new-question-variant');
+  assert.equal(compareInitialParameters(first,next).pass,true);
+  for(const invalid of [{bankValid:false},{givenConditionsValid:false},{initialValuesRestored:false},{selectedIndex:1},{progress:.5},{sharedParams:{spYaw:-25,spPitch:24}},{sharedParams:{}}]){
+    const bad={...next,initialVariant:{...next.initialVariant,...invalid}};
+    assert.equal(compareInitialGeometry(first,bad).pass,false);
+    assert.equal(compareInitialParameters(first,bad).pass,false);
+  }
+  for(const drift of [{zoom:2},{panX:15},{panY:-10},{zoom:undefined}]){
+    const bad={...next,projection:{...next.projection,...drift}};
+    assert.equal(compareInitialGeometry(first,bad).pass,false,'regenerated questions do not excuse board pan/zoom drift');
+    assert.equal(compareInitialParameters(first,bad).pass,false);
+  }
+  assert.equal(compareInitialGeometry(first,{...next,initialVariant:{...next.initialVariant,selectedId:'p2'}}).pass,false,'same selected statement must retain its figure');
+  assert.equal(compareInitialGeometry({...first,id:'another-scene'},next).pass,false,'other scenes cannot opt out with this metadata');
 });

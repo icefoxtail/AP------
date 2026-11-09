@@ -181,7 +181,7 @@ window.questionBank = [
       "⑤ $6\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "$\\angle B = 30^\\circ, \\angle C = 90^\\circ$이므로 $\\angle A = 60^\\circ$이다.\n특수각의 삼각비에 의해\n$AC = BC \\times \\tan 30^\\circ = 6\\sqrt{3} \\times \\dfrac{1}{\\sqrt{3}} = 6$\n$AB = \\dfrac{AC}{\\sin 30^\\circ} = \\dfrac{6}{1/2} = 12$\n\n선분 $AD$가 $\\angle A$의 이등분선이므로 각의 이등분선 정리에 의해\n$BD : DC = AB : AC = 12 : 6 = 2 : 1$\n\n따라서\n$BD = \\dfrac{2}{3} \\times BC = \\dfrac{2}{3} \\times 6\\sqrt{3} = 4\\sqrt{3}$이다.",
+    "solution": "$\\angle B = 30^\\circ, \\angle C = 90^\\circ$이므로 $\\angle A = 60^\\circ$이다.\n특수각의 삼각비에 의해\n$AC = BC \\times \\tan 30^\\circ = 6\\sqrt{3} \\times \\dfrac{1}{\\sqrt{3}} = 6$\n$AB = \\dfrac{AC}{\\sin 30^\\circ} = \\dfrac{6}{\\frac{1}{2}} = 12$\n\n선분 $AD$가 $\\angle A$의 이등분선이므로 각의 이등분선 정리에 의해\n$BD : DC = AB : AC = 12 : 6 = 2 : 1$\n\n따라서\n$BD = \\dfrac{2}{3} \\times BC = \\dfrac{2}{3} \\times 6\\sqrt{3} = 4\\sqrt{3}$이다.",
     "score": 4.0,
     "image": "assets/images/25_금당중_2학기_중간_중3_유사/q06.svg",
     "standardUnitKey": "M3-05",

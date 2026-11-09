@@ -201,7 +201,7 @@ window.examData = {
         "$43\\text{ m}$"
       ],
       "answer": "③",
-      "solution": "나무의 부러진 윗부분을 $AC$, 남은 밑동을 $AB$, 땅에 닿은 점을 $C$라 하면 $\\triangle ABC$는 $B$에서 직각이고 $\\angle C=33^\\circ$이다.\\n$\\cos33^\\circ=BC/AC=0.8$이고 $BC=20$이므로 $AC=20/0.8=25$ m이다. 또 $\\tan33^\\circ=AB/BC=0.6$이므로 $AB=20\\times0.6=12$ m이다.\\n부러지기 전 높이는 $AB+AC=12+25=37$ m이다.",
+      "solution": "나무의 부러진 윗부분을 $AC$, 남은 밑동을 $AB$, 땅에 닿은 점을 $C$라 하면 $\\triangle ABC$는 $B$에서 직각이고 $\\angle C=33^\\circ$이다.\\n$\\cos33^\\circ=BC/AC=0.8$이고 $BC=20$이므로 $AC=\\frac{20}{0.8}=25$ m이다. 또 $\\tan33^\\circ=AB/BC=0.6$이므로 $AB=20\\times0.6=12$ m이다.\\n부러지기 전 높이는 $AB+AC=12+25=37$ m이다.",
       "level": "중",
       "difficultyBucket": 2,
       "meta": {
@@ -623,7 +623,7 @@ window.examData = {
         "$12\\text{ cm}$"
       ],
       "answer": "⑤",
-      "solution": "$\\angle ADC=25^\\circ$는 호 $AC$를 보는 원주각이므로 $\\widehat{AC}=50^\\circ$이다. 교차하는 두 현의 각 정리에서 $\\angle DPB=\\dfrac12(\\widehat{DB}+\\widehat{AC})$이다. 따라서 $85=\\dfrac12(\\widehat{DB}+50)$이므로 $\\widehat{DB}=120^\\circ$이다.\\n호 $DB$가 원둘레의 $120/360=1/3$이고 그 길이가 $4$ cm이므로 원둘레는 $4\\times3=12$ cm이다.",
+      "solution": "$\\angle ADC=25^\\circ$는 호 $AC$를 보는 원주각이므로 $\\widehat{AC}=50^\\circ$이다. 교차하는 두 현의 각 정리에서 $\\angle DPB=\\dfrac12(\\widehat{DB}+\\widehat{AC})$이다. 따라서 $85=\\dfrac12(\\widehat{DB}+50)$이므로 $\\widehat{DB}=120^\\circ$이다.\\n호 $DB$가 원둘레의 $\\frac{120}{360}=\\frac{1}{3}$이고 그 길이가 $4$ cm이므로 원둘레는 $4\\times3=12$ cm이다.",
       "level": "상",
       "difficultyBucket": 4,
       "meta": {
@@ -700,7 +700,7 @@ window.examData = {
         "$5\\sqrt{2}\\text{ (cm)}$"
       ],
       "answer": "②",
-      "solution": "그림에서 큰 원의 중심 $O$가 작은 원 $O\\prime$ 위에 있으므로 작은 원의 반지름은 $OO\\prime=O\\prime B=3$ cm이다. 두 원은 $B$에서 내접하므로 큰 원의 반지름은 $OB=OO\\prime+O\\prime B=6$ cm이고 $AO\\prime=AO+OO\\prime=6+3=9$ cm이다.\\n$AP$는 작은 원의 접선이므로 $O\\prime P\\perp AP$이다. 직각삼각형 $AO\\prime P$에서 $AP=\\sqrt{AO\\prime^2-O\\prime P^2}=\\sqrt{9^2-3^2}=6\\sqrt2$ cm이다. 또한 $\\cos\\angle AO\\prime P=3/9=1/3$이고 $A,O\\prime,B$가 한 직선 위이므로 $\\cos\\angle BO\\prime P=-1/3$이다.\\n삼각형 $BO\\prime P$에서 코사인 법칙을 쓰면 $BP^2=3^2+3^2-2\\cdot3\\cdot3\\cdot(-1/3)=24$이므로 $BP=2\\sqrt6$ cm이다.",
+      "solution": "그림에서 큰 원의 중심 $O$가 작은 원 $O\\prime$ 위에 있으므로 작은 원의 반지름은 $OO\\prime=O\\prime B=3$ cm이다. 두 원은 $B$에서 내접하므로 큰 원의 반지름은 $OB=OO\\prime+O\\prime B=6$ cm이고 $AO\\prime=AO+OO\\prime=6+3=9$ cm이다.\\n$AP$는 작은 원의 접선이므로 $O\\prime P\\perp AP$이다. 직각삼각형 $AO\\prime P$에서 $AP=\\sqrt{AO\\prime^2-O\\prime P^2}=\\sqrt{9^2-3^2}=6\\sqrt2$ cm이다. 또한 $\\cos\\angle AO\\prime P=\\frac{3}{9}=\\frac{1}{3}$이고 $A,O\\prime,B$가 한 직선 위이므로 $\\cos\\angle BO\\prime P=-\\frac{1}{3}$이다.\\n삼각형 $BO\\prime P$에서 코사인 법칙을 쓰면 $BP^2=3^2+3^2-2\\cdot3\\cdot3\\cdot(-\\frac{1}{3})=24$이므로 $BP=2\\sqrt6$ cm이다.",
       "level": "상",
       "difficultyBucket": 4,
       "meta": {

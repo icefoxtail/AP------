@@ -302,6 +302,15 @@
   };
 
   /* ---------------------------------------------------------------- 5. 내심의 각 */
+  // 짧은 문제 무대에서도 ∠BIC의 값이 밑변 BC의 길이처럼 보이지 않게
+  // 내심에서 BC까지의 실제 화면 높이 안에 호와 글자를 함께 둡니다.
+  const n5BicLayout = (b, g) => {
+    if (b.W >= 560) return { r: 34, labelDist: 56 };
+    const h = dist(g.I, g.D) * b.k, u = unit(sub(g.B, g.I)), v = unit(sub(g.C, g.I));
+    const midAngle = Math.atan2(u.y + v.y, u.x + v.x);
+    const labelRot = clamp((angBetween(g.C, g.B, g.I) - angBetween(g.B, g.I, g.C)) * .4, -12, 12);
+    return { r: Math.min(34, .25 * h), labelDist: Math.min(56, (h - 1) / (2 * Math.sin(midAngle + labelRot * DEG))), labelRot };
+  };
   const n5Solve = {
     steps: (M, s) => {
       const v = (s.trV || 0) % 3, { al, be, ga, bic } = M, out = [];
@@ -325,23 +334,29 @@
       return out;
     },
     draw: SVB.runner({
-      ...mobileQuestionFrame(nBox, 'I: 내심'), base: nBase({ noCirc: true }), top: nTop({ noFeet: true, idx: 0, idy: 22 }),
+      ...mobileQuestionFrame(nBox, 'I: 내심'), base: nBase({ noCirc: true }),
+      top: (b, M, s, X) => nTop({ noFeet: true, idx: X.nw ? 14 : 0, idy: X.nw ? -14 : 22 })(b, M, s, X),
       st: {
         given: (L, M, s, X) => {
           const g = M.g, { A, B, C: Cc, I } = g, v = (s.trV || 0) % 3;
           bisL(L, g); ringMarks(L, g);
           if (v === 0) L.ang(A, B, Cc, { noMark: true, color: 'sky', label: dg(2 * M.al), size: 16, labelDist: X.nw ? Math.min(70, .42 * dist(A, I) * X.b.k) : 70, keep: true });
-          else if (v === 1) L.ang(I, B, Cc, { color: 'sky', r: 34, label: dg(M.bic), size: 16, labelDist: 56, keep: true });
+          else if (v === 1) L.ang(I, B, Cc, { color: 'sky', ...n5BicLayout(X.b, g), label: dg(M.bic), size: 16, keep: true });
           else { L.ang(B, A, Cc, { noMark: true, color: 'green', label: dg(M.be), size: 15, labelDist: 56, keep: !X.has('dbl') }); L.ang(Cc, B, A, { noMark: true, color: 'violet', label: dg(M.ga), size: 15, labelDist: 56, keep: !X.has('dbl') }); }
         },
-        half: (L, M, s, X) => { const { A, B, C: Cc, I } = M.g; L.ln(B, I, 'green', 4.2); L.ln(Cc, I, 'violet', 4.2); L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, label: '×', size: 17, labelDist: 54, fa: 0.4 }); L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, label: '■', size: 15, labelDist: 54, fa: 0.4 }); },
+        half: (L, M, s, X) => {
+          const { A, B, C: Cc, I } = M.g, near = (P) => X.nw ? Math.min(54, .38 * dist(P, I) * X.b.k) : 54;
+          L.ln(B, I, 'green', 4.2); L.ln(Cc, I, 'violet', 4.2);
+          L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, label: '×', size: 17, labelDist: near(B), fa: 0.4 });
+          L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, label: '■', size: 15, labelDist: near(Cc), fa: 0.4 });
+        },
         sum: (L, M, s) => { const { A, B, C: Cc, I } = M.g, v = (s.trV || 0) % 3; L.fl([I, B, Cc], 'amber', 0.2); L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, fa: 0.4 }); L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, fa: 0.4 }); void v; },
         dbl: (L, M) => { const { A, B, C: Cc } = M.g; L.ang(B, A, Cc, { color: 'green', r: 40, label: dg(2 * M.be), size: 15, labelDist: 60, fa: 0.3, keep: true }); L.ang(Cc, B, A, { color: 'violet', r: 40, label: dg(2 * M.ga), size: 15, labelDist: 60, fa: 0.3, keep: true }); },
         eq: (L, M, s) => { const { A, B, C: Cc, I } = M.g, v = (s.trV || 0) % 3; if (v === 0) { L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, fa: 0.3 }); L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, fa: 0.3 }); } else if (v === 1) { L.ang(B, A, Cc, { color: 'green', r: 40, label: dg(2 * M.be), size: 15, labelDist: 60, fa: 0.3 }); } }
       },
       x: (b, M, s, X) => {
         const { A, B, C: Cc, I } = M.g, v = (s.trV || 0) % 3;
-        if (v === 0) ang(b, I, B, Cc, { color: 'amber', r: 34, label: xLbl(X, M.bic), size: 17, labelDist: 56, noMark: !X.xArc, fa: 0.3 });
+        if (v === 0) ang(b, I, B, Cc, { color: 'amber', ...n5BicLayout(b, M.g), label: xLbl(X, M.bic), size: X.nw ? 16 : 17, noMark: !X.xArc, fa: 0.3 });
         else ang(b, A, B, Cc, { color: 'amber', r: 44, label: xLbl(X, 2 * M.al), size: 17, labelDist: 70, noMark: !X.xArc, fa: 0.3 });
       }
     })

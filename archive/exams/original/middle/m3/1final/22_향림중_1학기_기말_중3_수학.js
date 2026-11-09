@@ -1177,7 +1177,7 @@ window.questionBank = [
       "6초 후"
     ],
     "answer": "①",
-    "solution": "출발 후 $t$초라 두면 $OP=2t$, $OQ=12-t$ cm이다.<br>$\\angle POQ=90^\\circ$이므로 삼각형 넓이<br>$\\frac12\\cdot OP\\cdot OQ=\\frac12(2t)(12-t)=t(12-t)$.<br>$t(12-t)=20$에서 $t^2-12t+20=0$<br>$(t-2)(t-10)=0$, 즉 $t=2$ 또는 $10$.<br>점 $P$가 $O$에서 $A$까지 이동하는 데 $12/2=6$초 걸리므로 $0\\le t\\le6$.<br>$t=10$은 물리적 조건에 맞지 않아 제외한다. 따라서 2초 후, 정답 ①.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q20_solution.svg\" class=\"exam-img\">",
+    "solution": "출발 후 $t$초라 두면 $OP=2t$, $OQ=12-t$ cm이다.<br>$\\angle POQ=90^\\circ$이므로 삼각형 넓이<br>$\\frac12\\cdot OP\\cdot OQ=\\frac12(2t)(12-t)=t(12-t)$.<br>$t(12-t)=20$에서 $t^2-12t+20=0$<br>$(t-2)(t-10)=0$, 즉 $t=2$ 또는 $10$.<br>점 $P$가 $O$에서 $A$까지 이동하는 데 $\\frac{12}{2}=6$초 걸리므로 $0\\le t\\le6$.<br>$t=10$은 물리적 조건에 맞지 않아 제외한다. 따라서 2초 후, 정답 ①.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q20_solution.svg\" class=\"exam-img\">",
     "sourceQid": 20,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-041",

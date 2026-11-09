@@ -551,7 +551,9 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   function renderPeri(b, c, outlineOnly = false) {
     const M = c.M, [x0, y0, x1] = M.box, cx = (x0 + x1) / 2;
     const flat = [].concat(...M.cuts.map((g) => g.polys));
-    if (!outlineOnly) fillEO(b, [M.outer].concat(flat), 'sky', 0.2);
+    // The shaded remainder is the given object whose boundary is being traced.
+    // Keep it visible while revealing only the current perimeter component.
+    fillEO(b, [M.outer].concat(flat), 'sky', 0.2);
     outline(b, M.outer, 'ink', 1.6, { alpha: 0.5 });
     flat.forEach((p) => outline(b, p, 'ink', 1.4, { alpha: 0.5 }));
     M.ctx.forEach((p) => outline(b, p, 'ink', 1.5, { alpha: 0.7 }));

@@ -24,10 +24,10 @@ const G = context.window.APL_PG, scenes = context.window.APL_PG_GROUPS.flatMap(g
 const scene = id => scenes.find(s => s.id === id);
 const fresh = id => { const s = { step: 1 }; scene(id).enter(s); return s; };
 const overlap = (a, b) => Math.min(a.r, b.r) - Math.max(a.l, b.l) > 1 && Math.min(a.b, b.b) - Math.max(a.t, b.t) > 1;
-function draw(id, W, tab, state = fresh(id)) {
-  const H = tab === 'explore' ? (W === 360 ? 307 : 326) : (W === 360 ? 291 : 309);
+function draw(id, W, tab, state = fresh(id), viewport = {}) {
+  const H = viewport.height ?? (tab === 'explore' ? (W === 360 ? 307 : 326) : (W === 360 ? 291 : 309));
   const b = Object.create(context.window.APLab.Board.prototype);
-  Object.assign(b, { W, H, pad: .02, kind: 'figure', aspect: '1:1', insets: { top: 0, bottom: 58, left: 0, right: 0 },
+  Object.assign(b, { W, H, pad: .02, kind: 'figure', aspect: '1:1', insets: { top: 0, bottom: viewport.bottom ?? 58, left: 0, right: 0 },
     zoom: 1, panX: 0, panY: 0, fs: 1, thumb: false, panes: null, paneId: null, focus: { x: [-2, 2], y: [-2, 2] }, texts: [], paths: [], arcs: [], leaders: [] });
   b.path = (points, options = {}) => { b.paths.push({ points: points.map(p => b.toS(p)), world: points, options }); return b; };
   b.arc = (p, r, a, z, options = {}) => { b.arcs.push({ at: b.toS(p), r: r * b.k, a, z, options }); return b; };
@@ -112,5 +112,21 @@ test('mobile layout preserves the actual polygon models, question choices and fi
     assert.ok(!end.texts.some(t => t.text === 'x' || /\bx$/.test(t.text)), `${id}: final solution resolves the unknown`);
     assert.equal(JSON.stringify(sc.pg.model(s)), key, `${id}: rendering keeps the mathematical model`);
     assert.ok(!s.revealed && !s.playing);
+  }
+});
+
+test('dragging the narrow bisector triangle keeps its target value clear of the base',()=>{
+  // Actual native pointer state from run42623072916: A=44, B=60, canvas360x387.
+  for(const [W,height] of [[360,387],[390,411]])for(let a=40;a<=90;a+=2)for(let bb=40;bb<=60;bb+=2){
+    const s=fresh('p2-bis');Object.assign(s,{pgKa:a,pgKb:bb,pgK:1});
+    const beforeModel=JSON.stringify(scene('p2-bis').pg.model(s));
+    const b=draw('p2-bis',W,'explore',s,{height,bottom:60}),m=scene('p2-bis').pg.model(s);
+    const label=b.texts.find(t=>t.text===`${m.x}°`&&t.options.color==='amber');assert.ok(label);
+    const baseY=b.toS(m.g.B).y;
+    assert.ok(label.b<=baseY-6||label.t>=baseY+6,`${W}/${a}/${bb}: target value covers BC: ${JSON.stringify(label)}`);
+    if(label.t>baseY)assert.ok(b.leaders.some(l=>Math.hypot(l.label.x-label.x,l.label.y-label.y)<1e-6),'external value must point to its actual arc');
+    const row=b.texts.find(t=>t.text.startsWith('● ='));
+    if(row)assert.ok(!overlap(label,row),'target value does not cover the explanation row');
+    assert.equal(JSON.stringify(scene('p2-bis').pg.model(s)),beforeModel);
   }
 });

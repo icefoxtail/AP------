@@ -241,7 +241,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "1",
-    "solution": "$320=2^6\\times5$이다. $\\sqrt{320/x}$가 자연수가 되려면 $320/x$가 완전제곱수여야 한다. 가장 작은 자연수 $x$로 홀수 지수인 인수 5를 없애면 $x=5$이고, $320/5=64=8^2$이다. 따라서 정답은 ①이다.",
+    "solution": "$320=2^6\\times5$이다. $\\sqrt{\\frac{320}{x}}$가 자연수가 되려면 $\\frac{320}{x}$가 완전제곱수여야 한다. 가장 작은 자연수 $x$로 홀수 지수인 인수 5를 없애면 $x=5$이고, $\\frac{320}{5}=64=8^2$이다. 따라서 정답은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",

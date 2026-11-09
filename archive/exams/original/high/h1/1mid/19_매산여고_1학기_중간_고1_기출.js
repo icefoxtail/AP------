@@ -821,7 +821,7 @@ window.questionBank = [
     "content": "양수 $x$에 대하여 $x^2-3x-1=0$일 때, $x^3+\\frac1{x^3}$의 값을 구하여라. [4점]",
     "choices": [],
     "answer": "10\\sqrt{13}",
-    "solution": "$x>0$이므로 $x$로 나누어 역수 관계를 만든다.\n$x^2-3x-1=0$을 $x$로 나누면\n$x-3-\\frac1x=0$, 즉 $x-\\frac1x=3$이다.\n양변을 제곱하면\n$\\left(x-\\frac1x\\right)^2=x^2-2+\\frac1{x^2}=9$이므로\n$x^2+\\frac1{x^2}=11$이다.\n$\\left(x+\\frac1x\\right)^2=x^2+2+\\frac1{x^2}=13$이다.\n$x>0$이므로 $x+\\frac1x=\\sqrt{13}$이다.\n세제곱 공식 $u^3+v^3=(u+v)^3-3uv(u+v)$에 $u=x$, $v=1/x$를 대입하면\n$x^3+\\frac1{x^3}=(\\sqrt{13})^3-3(1)\\sqrt{13}$\n$=13\\sqrt{13}-3\\sqrt{13}=10\\sqrt{13}$이다.",
+    "solution": "$x>0$이므로 $x$로 나누어 역수 관계를 만든다.\n$x^2-3x-1=0$을 $x$로 나누면\n$x-3-\\frac1x=0$, 즉 $x-\\frac1x=3$이다.\n양변을 제곱하면\n$\\left(x-\\frac1x\\right)^2=x^2-2+\\frac1{x^2}=9$이므로\n$x^2+\\frac1{x^2}=11$이다.\n$\\left(x+\\frac1x\\right)^2=x^2+2+\\frac1{x^2}=13$이다.\n$x>0$이므로 $x+\\frac1x=\\sqrt{13}$이다.\n세제곱 공식 $u^3+v^3=(u+v)^3-3uv(u+v)$에 $u=x$, $v=\\frac{1}{x}$를 대입하면\n$x^3+\\frac1{x^3}=(\\sqrt{13})^3-3(1)\\sqrt{13}$\n$=13\\sqrt{13}-3\\sqrt{13}=10\\sqrt{13}$이다.",
     "level": "중",
     "category": "다항식",
     "originalCategory": "다항식",

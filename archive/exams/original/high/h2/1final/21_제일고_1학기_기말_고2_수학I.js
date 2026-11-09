@@ -263,7 +263,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[조건] $k=1$부터 80까지 로그를 더한다.\n[전략] 로그의 합을 곱의 로그로 바꾸면 연속된 분수가 소거된다.\n$\\sum_{k=1}^{80}\\log_3(1+1/k)=\\log_3\\prod_{k=1}^{80}\\dfrac{k+1}{k}$\n$=\\log_3\\left(\\dfrac21\\cdot\\dfrac32\\cdots\\dfrac{81}{80}\\right)=\\log_3 81=4$이다.\n보기 중 4는 ④이다. 정답은 ④.",
+    "solution": "[조건] $k=1$부터 80까지 로그를 더한다.\n[전략] 로그의 합을 곱의 로그로 바꾸면 연속된 분수가 소거된다.\n$\\sum_{k=1}^{80}\\log_3(1+\\frac{1}{k})=\\log_3\\prod_{k=1}^{80}\\dfrac{k+1}{k}$\n$=\\log_3\\left(\\dfrac21\\cdot\\dfrac32\\cdots\\dfrac{81}{80}\\right)=\\log_3 81=4$이다.\n보기 중 4는 ④이다. 정답은 ④.",
     "level": "하",
     "difficultyBucket": 2,
     "category": "로그",
@@ -459,7 +459,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "⑤",
-    "solution": "[조건] -5부터 31까지 등차수열을 이루고 전체 합이 130이다.\n[전략] 첫째항과 끝항으로 전체 항 수를 먼저 결정한다.\n전체 항 수를 $N=n+2$라 하면 $130=N(-5+31)/2=13N$이므로 $N=10$, $n=8$이다.\n공차는 $d=(31-(-5))/(10-1)=36/9=4$이다.\n$a_5=-5+5d=-5+20=15$이다. 보기 ⑤가 정답이다.",
+    "solution": "[조건] -5부터 31까지 등차수열을 이루고 전체 합이 130이다.\n[전략] 첫째항과 끝항으로 전체 항 수를 먼저 결정한다.\n전체 항 수를 $N=n+2$라 하면 $130=N(-5+31)/2=13N$이므로 $N=10$, $n=8$이다.\n공차는 $d=(31-(-5))/(10-1)=\\frac{36}{9}=4$이다.\n$a_5=-5+5d=-5+20=15$이다. 보기 ⑤가 정답이다.",
     "level": "중",
     "difficultyBucket": 3,
     "category": "등차수열과 등비수열",
@@ -557,7 +557,7 @@ window.questionBank = [
       "26"
     ],
     "answer": "②",
-    "solution": "[조건] $S_n=n/(n+1)$이다.\n[전략] 부분합에서 한 항을 꺼내려면 $a_n=S_n-S_{n-1}$를 쓴다.\n$a_4=S_4-S_3=\\dfrac45-\\dfrac34=\\dfrac{16-15}{20}=\\dfrac1{20}$이다.\n따라서 $1/a_4=20$이며 보기 ②가 정답이다.",
+    "solution": "[조건] $S_n=\\frac{n}{(n+1)}$이다.\n[전략] 부분합에서 한 항을 꺼내려면 $a_n=S_n-S_{n-1}$를 쓴다.\n$a_4=S_4-S_3=\\dfrac45-\\dfrac34=\\dfrac{16-15}{20}=\\dfrac1{20}$이다.\n따라서 $1/a_4=20$이며 보기 ②가 정답이다.",
     "level": "하",
     "difficultyBucket": 2,
     "category": "수열의 합",
@@ -756,7 +756,7 @@ window.questionBank = [
       "$\\frac{7}{8}$"
     ],
     "answer": "②",
-    "solution": "[조건] $\\sum_{k=1}^n\\dfrac{k}{2^k}=2-\\dfrac{n+2}{2^n}$을 귀납법으로 증명하는 과정의 빈칸 (가), (나), (다)를 채운다.\n[전략] (가)는 $n=1$ 대입, (나)는 $m$에서 $m+1$로 넘어갈 때 새로 더하는 한 항, (다)는 합을 정리한 뒤 남는 분수이다.\n(가) $n=1$이면 좌변 $1/2$, 우변 $2-3/2=1/2$이므로 $p=1/2$이다.\n(나) 귀납가정 $\\sum_{k=1}^{m}\\dfrac{k}{2^k}=2-\\dfrac{m+2}{2^m}$에 $k=m+1$항을 더하므로 $f(m)=\\dfrac{m+1}{2^{m+1}}$이다.\n(다) 분모를 $2^{m+1}$로 통일하면\n$\\begin{aligned}2-\\dfrac{m+2}{2^m}+\\dfrac{m+1}{2^{m+1}}&=2-\\dfrac{2(m+2)-(m+1)}{2^{m+1}}\\\\&=2-\\dfrac{m+3}{2^{m+1}}.\\end{aligned}$\n따라서 $g(m)=\\dfrac{m+3}{2^{m+1}}$이고, 이는 $n=m+1$일 때의 우변과 일치한다.\n$f(3)=4/16=1/4$, $g(4)=7/32$이므로\n$p\\cdot\\dfrac{f(3)}{g(4)}=\\dfrac12\\cdot\\dfrac{1/4}{7/32}=\\dfrac12\\cdot\\dfrac87=\\dfrac47$이다. 정답은 ②이다.",
+    "solution": "[조건] $\\sum_{k=1}^n\\dfrac{k}{2^k}=2-\\dfrac{n+2}{2^n}$을 귀납법으로 증명하는 과정의 빈칸 (가), (나), (다)를 채운다.\n[전략] (가)는 $n=1$ 대입, (나)는 $m$에서 $m+1$로 넘어갈 때 새로 더하는 한 항, (다)는 합을 정리한 뒤 남는 분수이다.\n(가) $n=1$이면 좌변 $\\frac{1}{2}$, 우변 $2-\\frac{3}{2}=\\frac{1}{2}$이므로 $p=\\frac{1}{2}$이다.\n(나) 귀납가정 $\\sum_{k=1}^{m}\\dfrac{k}{2^k}=2-\\dfrac{m+2}{2^m}$에 $k=m+1$항을 더하므로 $f(m)=\\dfrac{m+1}{2^{m+1}}$이다.\n(다) 분모를 $2^{m+1}$로 통일하면\n$\\begin{aligned}2-\\dfrac{m+2}{2^m}+\\dfrac{m+1}{2^{m+1}}&=2-\\dfrac{2(m+2)-(m+1)}{2^{m+1}}\\\\&=2-\\dfrac{m+3}{2^{m+1}}.\\end{aligned}$\n따라서 $g(m)=\\dfrac{m+3}{2^{m+1}}$이고, 이는 $n=m+1$일 때의 우변과 일치한다.\n$f(3)=\\frac{4}{16}=\\frac{1}{4}$, $g(4)=\\frac{7}{32}$이므로\n$p\\cdot\\dfrac{f(3)}{g(4)}=\\dfrac12\\cdot\\dfrac{\\frac{1}{4}}{\\frac{7}{32}}=\\dfrac12\\cdot\\dfrac87=\\dfrac47$이다. 정답은 ②이다.",
     "level": "상",
     "difficultyBucket": 4,
     "category": "수학적 귀납법",
@@ -919,7 +919,7 @@ window.questionBank = [
       "assets/images/21_제일고_1학기_기말_고2_수학I/q19.png"
     ],
     "answer": "①",
-    "solution": "[조건] $AB=6$, $BC=8$, $\\angle ABC=90^\\circ$, $AP=7$이다. $PQ\\perp AB$, $PR\\perp AC$이므로 $Q,R$은 각각 그림의 수선의 발이다.\n[전략] $QR$을 직접 계산하기보다, 직각이 두 개 생기는 점 $A,Q,P,R$의 원을 찾는다.\n$\\angle AQP=90^\\circ$이고 $\\angle ARP=90^\\circ$이므로 $Q,R$은 모두 지름이 $AP$인 원 위에 있다. 즉 $A,Q,P,R$은 한 원 위에 있다.\n이 원에서 현 $QR$의 길이는 원주각 $\\angle QAR$을 이용하여 $QR=2R_0\\sin\\angle QAR$이다. 지름이 $AP=7$이므로 $2R_0=7$이다.\n$Q$는 $AB$ 위, $R$은 $AC$ 위이므로 $\\angle QAR=\\angle BAC$이다.\n원래 직각삼각형 $ABC$에서 $AC=\\sqrt{6^2+8^2}=10$, $\\sin\\angle BAC=BC/AC=8/10=4/5$이다.\n따라서 $QR=7\\cdot4/5=28/5$이며 보기 ①이 정답이다. 이 계산은 $P$의 위치를 별도 좌표로 정하지 않아도 성립한다.",
+    "solution": "[조건] $AB=6$, $BC=8$, $\\angle ABC=90^\\circ$, $AP=7$이다. $PQ\\perp AB$, $PR\\perp AC$이므로 $Q,R$은 각각 그림의 수선의 발이다.\n[전략] $QR$을 직접 계산하기보다, 직각이 두 개 생기는 점 $A,Q,P,R$의 원을 찾는다.\n$\\angle AQP=90^\\circ$이고 $\\angle ARP=90^\\circ$이므로 $Q,R$은 모두 지름이 $AP$인 원 위에 있다. 즉 $A,Q,P,R$은 한 원 위에 있다.\n이 원에서 현 $QR$의 길이는 원주각 $\\angle QAR$을 이용하여 $QR=2R_0\\sin\\angle QAR$이다. 지름이 $AP=7$이므로 $2R_0=7$이다.\n$Q$는 $AB$ 위, $R$은 $AC$ 위이므로 $\\angle QAR=\\angle BAC$이다.\n원래 직각삼각형 $ABC$에서 $AC=\\sqrt{6^2+8^2}=10$, $\\sin\\angle BAC=BC/AC=\\frac{8}{10}=\\frac{4}{5}$이다.\n따라서 $QR=7\\cdot4/5=\\frac{28}{5}$이며 보기 ①이 정답이다. 이 계산은 $P$의 위치를 별도 좌표로 정하지 않아도 성립한다.",
     "level": "상",
     "difficultyBucket": 4,
     "category": "삼각함수의 활용",
@@ -1102,7 +1102,7 @@ window.questionBank = [
     "content": "[서술형 3] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}=2\\sqrt{3}$이고 $4\\cos(B+C)\\cos A = -1$일 때, 삼각형 $\\mathrm{ABC}$의 외접원의 넓이를 구하시오. [6.0점]",
     "choices": [],
     "answer": "4\\pi",
-    "solution": "[조건] $BC=2\\sqrt3$이고 $4\\cos(B+C)\\cos A=-1$이다. $A,B,C$는 삼각형의 내각이다.\n[전략] 내각의 합으로 $B+C=180^\\circ-A$를 대입하면 $\\cos A$의 크기를 구할 수 있다. 외접원의 반지름은 사인법칙으로 결정한다.\n$\\cos(B+C)=\\cos(180^\\circ-A)=-\\cos A$이므로\n$-4\\cos^2 A=-1\\Rightarrow\\cos^2 A=1/4$이다.\n따라서 $\\cos A=1/2$ 또는 $-1/2$이다. 두 경우의 각 $A$는 각각 $60^\\circ$, $120^\\circ$이지만 둘 다 $\\sin A=\\sqrt3/2$이다. 어느 경우도 버릴 필요가 없다.\n사인법칙 $BC=2R\\sin A$에서\n$R=\\dfrac{2\\sqrt3}{2\\cdot(\\sqrt3/2)}=2$이다.\n외접원의 넓이는 $\\pi R^2=\\pi\\cdot2^2=4\\pi$이므로 정답은 $4\\pi$이다.",
+    "solution": "[조건] $BC=2\\sqrt3$이고 $4\\cos(B+C)\\cos A=-1$이다. $A,B,C$는 삼각형의 내각이다.\n[전략] 내각의 합으로 $B+C=180^\\circ-A$를 대입하면 $\\cos A$의 크기를 구할 수 있다. 외접원의 반지름은 사인법칙으로 결정한다.\n$\\cos(B+C)=\\cos(180^\\circ-A)=-\\cos A$이므로\n$-4\\cos^2 A=-1\\Rightarrow\\cos^2 A=\\frac{1}{4}$이다.\n따라서 $\\cos A=\\frac{1}{2}$ 또는 $-\\frac{1}{2}$이다. 두 경우의 각 $A$는 각각 $60^\\circ$, $120^\\circ$이지만 둘 다 $\\sin A=\\sqrt3/2$이다. 어느 경우도 버릴 필요가 없다.\n사인법칙 $BC=2R\\sin A$에서\n$R=\\dfrac{2\\sqrt3}{2\\cdot(\\sqrt3/2)}=2$이다.\n외접원의 넓이는 $\\pi R^2=\\pi\\cdot2^2=4\\pi$이므로 정답은 $4\\pi$이다.",
     "level": "상",
     "difficultyBucket": 4,
     "category": "삼각함수의 활용",
@@ -1145,7 +1145,7 @@ window.questionBank = [
     "content": "[서술형 4] 수열 $\\{a_n\\}$이 $\\sum_{k=1}^n k^2 a_k = n^2 + n$을 만족시킬 때, $\\sum_{k=1}^{11} \\frac{6a_k}{k+1}$의 값을 구하시오. [6.0점]",
     "choices": [],
     "answer": "11",
-    "solution": "[조건] 모든 자연수 $n$에 대하여 $\\sum_{k=1}^n k^2a_k=n^2+n$이다. 구할 합은 $\\sum_{k=1}^{11}\\dfrac{6a_k}{k+1}$이다.\n[전략] 먼저 연속된 두 부분합을 빼서 $a_n$을 구한다. 그다음 분모 $k(k+1)$을 부분분수로 나누면 대부분의 항이 소거된다.\n$n\\ge2$에서\n$\\begin{aligned}n^2a_n&=(n^2+n)-((n-1)^2+(n-1))\\\\&=n(n+1)-n(n-1)=2n,\\end{aligned}$\n따라서 $a_n=2/n$이다. $n=1$일 때도 $a_1=1^2+1=2$로 같은 식을 만족한다.\n$\\dfrac{6a_k}{k+1}=\\dfrac{12}{k(k+1)}=12\\left(\\dfrac1k-\\dfrac1{k+1}\\right)$이다.\n따라서\n$\\begin{aligned}\\sum_{k=1}^{11}\\dfrac{6a_k}{k+1}&=12\\left[(1-\\tfrac12)+(\\tfrac12-\\tfrac13)+\\cdots+(\\tfrac1{11}-\\tfrac1{12})\\right]\\\\&=12\\left(1-\\tfrac1{12}\\right)=11.\\end{aligned}$\n정답은 $11$이다.",
+    "solution": "[조건] 모든 자연수 $n$에 대하여 $\\sum_{k=1}^n k^2a_k=n^2+n$이다. 구할 합은 $\\sum_{k=1}^{11}\\dfrac{6a_k}{k+1}$이다.\n[전략] 먼저 연속된 두 부분합을 빼서 $a_n$을 구한다. 그다음 분모 $k(k+1)$을 부분분수로 나누면 대부분의 항이 소거된다.\n$n\\ge2$에서\n$\\begin{aligned}n^2a_n&=(n^2+n)-((n-1)^2+(n-1))\\\\&=n(n+1)-n(n-1)=2n,\\end{aligned}$\n따라서 $a_n=\\frac{2}{n}$이다. $n=1$일 때도 $a_1=1^2+1=2$로 같은 식을 만족한다.\n$\\dfrac{6a_k}{k+1}=\\dfrac{12}{k(k+1)}=12\\left(\\dfrac1k-\\dfrac1{k+1}\\right)$이다.\n따라서\n$\\begin{aligned}\\sum_{k=1}^{11}\\dfrac{6a_k}{k+1}&=12\\left[(1-\\tfrac12)+(\\tfrac12-\\tfrac13)+\\cdots+(\\tfrac1{11}-\\tfrac1{12})\\right]\\\\&=12\\left(1-\\tfrac1{12}\\right)=11.\\end{aligned}$\n정답은 $11$이다.",
     "level": "상",
     "difficultyBucket": 4,
     "category": "수열의 합",

@@ -396,10 +396,13 @@
     },
     draw: (g, q, mode, step) => {
       const c = clockOf(q.h, q.m), rev = mode === 'review', show = (n) => mode === 'explore' || (rev && step >= n);
+      // 작은 시계 안의 수치는 숫자판을 가리므로 같은 색의 아래 계산줄에서 읽습니다.
+      // 호와 두 바늘은 그대로 두고, 풀이 단계별 수치 공개도 아래 줄과 함께 유지합니다.
+      const faceLabels = g.thumb || g.b.W >= 560;
       const wedges = [];
-      if (rev && step >= 1) wedges.push({ from: 0, len: c.th, r: 0.2, color: 'amber', ref: 'h', label: n1(c.th) + '°', fa: 0.22 });
-      if (rev && step >= 2) wedges.push({ from: 0, len: c.tm, r: 0.4, color: 'sky', ref: 'm', label: n1(c.tm) + '°', fa: 0.16 });
-      if (mode === 'explore' || (rev && step >= 3)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: c.gap >= 25 ? n1(c.gap) + '°' : '' });
+      if (rev && step >= 1) wedges.push({ from: 0, len: c.th, r: 0.2, color: 'amber', ref: 'h', label: faceLabels ? n1(c.th) + '°' : '', fa: 0.22 });
+      if (rev && step >= 2) wedges.push({ from: 0, len: c.tm, r: 0.4, color: 'sky', ref: 'm', label: faceLabels ? n1(c.tm) + '°' : '', fa: 0.16 });
+      if (mode === 'explore' || (rev && step >= 3)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: faceLabels && c.gap >= 25 ? n1(c.gap) + '°' : '' });
       drawClock(g, q, mode, { wedges, ref12: rev && step <= 2 });
       g.box(-1, -1, 1, -1);
       if (mode === 'problem') return;
@@ -605,6 +608,8 @@
     question: '맞꼭지각은 크기가 같아요. 두 맞꼭지각이 x에 대한 식으로 주어지면 x는 어떻게 구할까?',
     guide: (q) => `막대나 <b>두 반직선의 끝점</b>을 끌어 x를 바꿔 보세요. 두 각 <b>(${ex1(q.a1, q.b1)})°</b>와 <b>(${ex1(q.a2, q.b2)})°</b>가 같아질 때만 두 반직선이 <b>한 직선</b>이 되어 맞꼭지각이 돼요. 그때 x를 찾으면 돼요.`,
     box: { x: [-1.8, 1.8], y: [-3.2, 1.9] },
+    currentFocus: (q, mode, b) => mode === 'problem' && b.W < 560
+      ? { x: [-2.5, 2.5], y: [-1.9, 1.9] } : null,
     state: { a1: 3, b1: 10, a2: 5, b2: -20 },
     params: { x: { value: 8, min: 8, max: 36, step: 1, color: 'amber', label: 'x의 값', hint: '두 각이 같아지는 x를 찾아보세요', format: (v) => `x = ${Math.round(v)}` } },
     controls: ['x'],
@@ -641,8 +646,21 @@
       g.ang(O, 180, 180 + A2, { r, color: c2, rings: eq ? 2 : 1, ref: ['b', 'eq', 'x', 'val'] });
       g.dot(O, { color: 'ink', r: 5 });
       const lab1 = `(${ex1(q.a1, q.b1)})°`, lab2 = `(${ex1(q.a2, q.b2)})°`;
-      g.angText(O, 0, A1, lab1, { r, color: c1, ref: ['a', 'eq', 'x', 'val'] });
-      g.angText(O, 180, 180 + A2, lab2, { r, color: c2, ref: ['b', 'eq', 'x', 'val'] });
+      if (prob && !g.thumb && !g.b._bbox && g.b.W < 560) {
+        // 두 식의 실제 글자 상자가 각의 양쪽 선에 닿지 않도록 이등분선 위에 놓습니다.
+        const label = (start, angle, text, color, ref) => {
+          const t = angle * D2R, m = (start + angle / 2) * D2R;
+          const size = g.b.annotationSize(text, { size: 16, weight: 800 });
+          const across = Math.abs(Math.sin(t)) * size.width / 2 + Math.abs(Math.cos(t)) * size.height / 2;
+          const dist = Math.max(r + 14, (Math.max(size.height / 2, across) + 4) / Math.sin(t / 2));
+          g.text(O, text, { dx: Math.cos(m) * dist, dy: -Math.sin(m) * dist, color, ref });
+        };
+        label(0, A1, lab1, c1, ['a', 'eq', 'x', 'val']);
+        label(180, A2, lab2, c2, ['b', 'eq', 'x', 'val']);
+      } else {
+        g.angText(O, 0, A1, lab1, { r, color: c1, ref: ['a', 'eq', 'x', 'val'] });
+        g.angText(O, 180, 180 + A2, lab2, { r, color: c2, ref: ['b', 'eq', 'x', 'val'] });
+      }
       if (mode === 'explore') {
         g.handle('u1', g.pol(O, L, A1), { color: 'amber', ariaLabel: '위쪽 반직선 끝', drag: (w) => { const a = mod(Math.atan2(w.y, w.x) / D2R, 360); q.x = clamp(Math.round((a - q.b1) / q.a1), PARAMS.ve_x.min, PARAMS.ve_x.max); } });
         g.handle('u2', g.pol(O, L, 180 + A2), { color: 'rose', ariaLabel: '아래쪽 반직선 끝', drag: (w) => { const a = mod(Math.atan2(w.y, w.x) / D2R - 180, 360); q.x = clamp(Math.round((a - q.b2) / q.a2), PARAMS.ve_x.min, PARAMS.ve_x.max); } });
@@ -711,6 +729,10 @@
     question: '세 직선이 한 점에서 만나면 여섯 개의 각이 생겨요. 한 직선 위의 각을 모두 더하면 몇 도일까?',
     guide: '<b>직선 끝의 노란 점</b>을 끌어 각을 바꿔 보세요. 한 직선 위에 놓인 세 각 ∠a, ∠b, ∠c의 합은 언제나 <b>평각 180°</b>이고, 마주 보는 각(같은 색·같은 호의 수)은 크기가 같아요.',
     box: { x: [-1.8, 1.8], y: [-3.2, 1.8] },
+    // 문제에는 아래 계산줄이 없으므로 세 직선과 주어진 각에 맞춥니다.
+    // 끝점 손잡이가 대수식의 첫 글자를 덮지 않도록 기본 도형의 크기를 확보합니다.
+    currentFocus: (q, mode, b) => mode === 'problem' && b.W < 560
+      ? { x: [-2.6, 2.6], y: [-2.2, 2.2] } : null,
     params: {
       a: { value: 40, min: 15, max: 120, step: 5, color: 'amber', label: '∠a', hint: '그림의 직선 끝점을 끌어도 돼요', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.bb = Math.min(q.bb, 165 - q.a); } },
       bb: { value: 60, min: 15, max: 120, step: 5, color: 'rose', label: '∠b', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.a = Math.min(q.a, 165 - q.bb); } }
@@ -982,6 +1004,18 @@
     question: '삼각형 ABC에서 꼭짓점 A와 변 BC(를 늘인 직선) 사이의 거리는 어느 선분의 길이일까?',
     guide: '<b>점 A</b>를 가로로 끌어 보세요. A에서 직선 BC에 직각으로 내린 선분 <b>AH</b>가 점 A와 직선 BC 사이의 거리예요. A가 변 BC 밖으로 나가면 수선의 발 H는 <b>변을 늘인 직선</b> 위에 생겨요.',
     box: { x: [-2.6, 8.6], y: [-3, 6.8] },
+    currentFocus: (q, mode, b) => {
+      if (mode !== 'problem' || b.W >= 560) return null;
+      const [pb, ph] = TRIPLES[q.ti], ins = b.insets;
+      const width = b.W - ins.left - ins.right, height = b.H - ins.top - ins.bottom;
+      const pad = b.pad * Math.min(width, height);
+      const a = b.annotationSize('A', { size: 20, weight: 800 });
+      const bc = b.annotationSize(`BC = ${pb} cm`, { size: 17, weight: 800 });
+      const ca = b.annotationSize(`CA = ${ph} cm`, { size: 17, weight: 800 });
+      const left = 64 * b.fs, right = 22 + ca.width, top = 30 + a.height / 2, bottom = 54 + bc.height / 2;
+      const k = Math.max(.001, Math.min((width - 2 * pad - left - right) / pb, (height - 2 * pad - top - bottom) / ph));
+      return { x: [-left / k, pb + right / k], y: [-ph - top / k, bottom / k] };
+    },
     state: { sa: 2, ti: 0 },
     params: {
       b: { value: 5, min: 3, max: 6, step: 1, color: 'sky', label: '변 BC의 길이', format: (v) => `${Math.round(v)} cm` },
@@ -1021,7 +1055,13 @@
         g.text(A, 'A', { dy: -22, size: 20 }); g.text(B, 'B', { dx: -16, dy: 18, size: 20 }); g.text(C, 'C', { dx: 18, dy: 18, size: 20 });
         g.text([pb / 2, 0], `BC = ${pb} cm`, { dy: 46, size: 17, color: 'sky' });
         g.text([pb, ph / 2], `CA = ${ph} cm`, { dx: 12, align: 'left', size: 17, color: rev && step >= 1 ? 'rose' : 'sky', ref: ['ac', 'dist'] });
-        g.text([pb / 2, ph / 2], `AB = ${pab} cm`, { dx: -14, dy: -18, size: 17, color: rev && step >= 3 ? 'violet' : 'sky', align: 'center', ref: ['ab'] });
+        let abDx = -14, abDy = -18;
+        if (prob && !g.thumb && !g.b._bbox && g.b.W < 560) {
+          const size = g.b.annotationSize(`AB = ${pab} cm`, { size: 17, weight: 800 });
+          const nx = -ph / pab, ny = -pb / pab, gap = Math.abs(nx) * size.width / 2 + Math.abs(ny) * size.height / 2 + 8;
+          abDx = nx * gap; abDy = ny * gap;
+        }
+        g.text([pb / 2, ph / 2], `AB = ${pab} cm`, { dx: abDx, dy: abDy, size: 17, color: rev && step >= 3 ? 'violet' : 'sky', align: 'center', ref: ['ab'] });
         if (rev && step >= 1) g.text(C, '∠C = 90°', { dx: -62, dy: -22, size: 16, color: 'amber', ref: ['ac'] });
         if (rev && step >= 2) g.text([pb, 0], `거리 = AC = ${ph} cm`, { dy: 54, size: 17, color: 'green', ref: ['dist'] });
         return;

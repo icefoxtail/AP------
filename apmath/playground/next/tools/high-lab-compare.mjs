@@ -2,8 +2,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { REQUIRED_ORBIT_SCENES } from './high-orbit-probe.mjs';
+import { SCREENSHOT_ENVIRONMENT_POLICY, screenshotEnvironmentMatches } from './browser-screenshot-guard.mjs';
 
-const observedSteps = rows => Math.max(0,...rows.filter(o=>!String(o.state).startsWith('variant-')&&(o.state==='initial'||o.tab==='review')).map(o=>Number(o.steps)||0));
+const observedSteps = rows => Math.max(0,...rows.filter(o=>!String(o.state).startsWith('variant-')&&!String(o.state).startsWith('target-')&&(o.state==='initial'||o.tab==='review')).map(o=>Number(o.steps)||0));
 
 function observations(report) {
   const entries = new Map();
@@ -21,7 +23,13 @@ function observations(report) {
     else if (row.errors?.length) for (const error of row.errors) add(row, row.reason, error);
     else add(row, row.reason, row.error || '');
   }
+  if (Number(report.schema) >= 3 && report.capabilityPolicy?.screenshotEnvironment !== SCREENSHOT_ENVIRONMENT_POLICY) add({}, 'missing-schema-required-screenshot-environment-policy');
   for (const lab of report.labs || []) {
+    if (Number(report.schema) >= 3 || report.capabilityPolicy?.screenshotEnvironment === SCREENSHOT_ENVIRONMENT_POLICY) {
+      for (const run of report.runs || []) if (!lab.screenshotEnvironment?.some(e => e.run === run.name && e.phase === 'initial' && screenshotEnvironmentMatches(e, !run.name.startsWith('pc')))) add({ lab: lab.id, run: run.name }, 'missing-or-invalid-initial-screenshot-environment');
+      for (const file of lab.captures || []) if (!lab.screenshotEnvironment?.some(e => e.file === file && e.phase === 'capture' && report.runs?.some(r => r.name === e.run) && screenshotEnvironmentMatches(e, !e.run.startsWith('pc')))) add({ lab: lab.id }, 'missing-or-invalid-captured-environment', file);
+    }
+    for (const id of REQUIRED_ORBIT_SCENES[lab.id] || []) if (!lab.scenes.some(s => s.id === id)) add({ lab: lab.id, id }, 'missing-required-3d-scene');
     for(const action of lab.interactions||[])if(action.pass===false||action.textChanged===false||action.bodyPresent===false)add({lab:lab.id,id:action.id,run:action.run||'mobile-paper',state:action.state||''},'failed-recorded-interaction',`${action.kind}:${action.variant??action.index??''}`);
     for (const run of report.runs || []) for (const scene of lab.scenes) {
       const rows = lab.observations.filter(o => o.run === run.name && o.id === scene.id);
@@ -32,10 +40,13 @@ function observations(report) {
       if (initial.tabs?.includes('problem')) required.push('problem-hidden');
       for (const state of required) if (!rows.some(o => o.state === state)) add({ lab: lab.id, id: scene.id, run: run.name, state }, 'missing-scene-state');
       const interactions=lab.interactions.filter(i=>i.id===scene.id&&i.run===run.name),cap=initial.capabilities||{};
+      if (cap.orbit?.status === 'INVALID') add({ lab: lab.id, id: scene.id, run: run.name }, 'invalid-orbit-capability', cap.orbit.reason);
       for(let index=0;index<(cap.solutions||0);index++)if(initial.tabs?.includes('review')&&!interactions.some(i=>i.kind==='solution-disclosure'&&i.state==='baseline'&&i.index===index&&i.bodyPresent))add({lab:lab.id,id:scene.id,run:run.name},'missing-solution-disclosure',index);
       if(run.name==='mobile-paper'){
         if(cap.sliders&&!interactions.some(i=>i.kind==='slider'&&i.pass))add({lab:lab.id,id:scene.id,run:run.name},'missing-or-failed-slider');
         if(cap.drags&&!interactions.some(i=>i.kind==='drag'&&i.pass))add({lab:lab.id,id:scene.id,run:run.name},'missing-or-failed-drag');
+        if (cap.drags && report.capabilityPolicy?.touchDrag === 'REQUIRED_FOR_VISIBLE_HANDLES' && !interactions.some(i => i.kind === 'touch-drag' && i.pass && i.input === 'touch' && i.acquired && i.held && i.changed && i.released)) add({ lab: lab.id, id: scene.id, run: run.name }, 'missing-or-failed-touch-drag');
+        if ((REQUIRED_ORBIT_SCENES[lab.id]?.includes(scene.id) || cap.orbit?.status === 'REQUIRED') && !interactions.some(i => i.kind === 'orbit' && i.pass && i.acquired && i.cameraChanged && i.pixelsChanged)) add({ lab: lab.id, id: scene.id, run: run.name }, 'missing-or-failed-required-orbit');
         for(let variant=1;cap.generator&&variant<=2;variant++){
           if(!interactions.some(i=>i.kind==='new-problem'&&i.variant===variant&&i.textChanged))add({lab:lab.id,id:scene.id,run:run.name,state:`variant-${variant}`},'missing-or-unchanged-variant');
           if(!rows.some(o=>o.state===`variant-${variant}`))add({lab:lab.id,id:scene.id,run:run.name,state:`variant-${variant}`},'missing-variant-observation');
@@ -51,6 +62,9 @@ export function compareReports(before, after) {
   if (!before.runs?.length || !before.labs?.length) throw Error('Baseline report has no test scope');
   const old = observations(before), current = observations(after);
   const add = (key, row) => current.set(key, row);
+  if (before.capabilityPolicy?.touchDrag && after.capabilityPolicy?.touchDrag !== before.capabilityPolicy.touchDrag) add('missing-touch-policy', { issue: 'missing-candidate-touch-policy' });
+  if (before.capabilityPolicy?.screenshotEnvironment && after.capabilityPolicy?.screenshotEnvironment !== before.capabilityPolicy.screenshotEnvironment) add('missing-screenshot-environment-policy', { issue: 'missing-candidate-screenshot-environment-policy' });
+  if (after.reviewCapture && !after.reviewCapture.complete) add('incomplete-review-capture', { issue: 'incomplete-review-capture', counts: after.reviewCapture.counts });
   for (const run of before.runs) {
     const found=after.runs?.find(r=>r.name===run.name);
     if (!found || ['width','height','theme'].some(k=>found[k]!==run[k])) add(`missing-run:${run.name}`, {run:run.name,issue:'missing-candidate-environment'});
@@ -73,6 +87,7 @@ export function compareReports(before, after) {
         if (!b) { add(`missing-initial:${key}`,{...row,issue:'missing-candidate-initial'});continue; }
         for (const tab of a?.tabs||[]) if(!b.tabs?.includes(tab)) add(`missing-tab:${key}:${tab}`,{...row,issue:'missing-candidate-tab',tab});
         for(const capability of ['sliders','drags','generator','solutions'])if(a?.capabilities?.[capability]&&!b.capabilities?.[capability])add(`missing-capability:${key}:${capability}`,{...row,issue:'missing-candidate-capability',capability});
+        if (a?.capabilities?.orbit?.status === 'REQUIRED' && b.capabilities?.orbit?.status !== 'REQUIRED') add(`missing-orbit-capability:${key}`, { ...row, issue: 'missing-candidate-orbit-capability' });
         if((a?.capabilities?.solutions||0)>(b.capabilities?.solutions||0))add(`missing-solutions:${key}`,{...row,issue:'missing-candidate-solution-alternative',before:a.capabilities.solutions,after:b.capabilities?.solutions||0});
         const aSteps=observedSteps(lab.observations.filter(o=>o.id===scene.id&&o.run===run.name));
         const bSteps=observedSteps(found.observations.filter(o=>o.id===scene.id&&o.run===run.name));
@@ -88,6 +103,7 @@ export function compareReports(before, after) {
   const resolved = [...old].filter(([k]) => !current.has(k)).map(([,v]) => v);
   return {
     schema: 1, beforeCommit: before.commit, afterCommit: after.commit,
+    provenance: after.provenance || null,
     quality: 'NOT_ASSESSED_BY_AUTOMATION',
     candidateAllChecksPassed: current.size === 0,
     regressionCheckPassed: regressions.length === 0,
@@ -98,11 +114,14 @@ export function compareReports(before, after) {
   };
 }
 
+export const comparisonPasses = (comparison, { strictCandidate = false } = {}) => comparison.regressionCheckPassed && (!strictCandidate || comparison.candidateAllChecksPassed);
+
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  const [beforeFile, afterFile, out] = process.argv.slice(2);
-  if (!beforeFile || !afterFile || !out) throw Error('Usage: high-lab-compare.mjs BEFORE AFTER OUTPUT');
+  const strictCandidate = process.argv.includes('--strict-candidate');
+  const [beforeFile, afterFile, out] = process.argv.slice(2).filter(a => a !== '--strict-candidate');
+  if (!beforeFile || !afterFile || !out) throw Error('Usage: high-lab-compare.mjs BEFORE AFTER OUTPUT [--strict-candidate]');
   const comparison = compareReports(JSON.parse(fs.readFileSync(beforeFile, 'utf8')), JSON.parse(fs.readFileSync(afterFile, 'utf8')));
   fs.writeFileSync(out, JSON.stringify(comparison, null, 2));
   console.log(JSON.stringify({ beforeCommit: comparison.beforeCommit, afterCommit: comparison.afterCommit, baselineFindings: comparison.baselineFindings, candidateFindings: comparison.candidateFindings, regressions: comparison.regressions.length, resolved: comparison.resolved.length, candidateAllChecksPassed: comparison.candidateAllChecksPassed, quality: comparison.quality }));
-  process.exitCode = comparison.regressionCheckPassed ? 0 : 1;
+  process.exitCode = comparisonPasses(comparison, { strictCandidate }) ? 0 : 1;
 }

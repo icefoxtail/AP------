@@ -422,7 +422,7 @@ window.questionBank = [
       "극한"
     ],
     "wide": false,
-    "content": "다항함수 $f(x)$가 다음을 만족시킬 때, $f(2)$의 값은? [4.2점]\n<br><div class=\"note-box\"><strong>&lt;조건&gt;</strong><br>(가) $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{(f\\circ f)(x)}{\\{f(x)\\}^2}=2$<br><br>(나) $\\displaystyle\\lim_{x\\to0+}\\dfrac{x^2-2x}{x^2f(1/x)-2}=2$<br><br>(다) $\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)}x$가 존재한다.</div>",
+    "content": "다항함수 $f(x)$가 다음을 만족시킬 때, $f(2)$의 값은? [4.2점]\n<br><div class=\"note-box\"><strong>&lt;조건&gt;</strong><br>(가) $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{(f\\circ f)(x)}{\\{f(x)\\}^2}=2$<br><br>(나) $\\displaystyle\\lim_{x\\to0+}\\dfrac{x^2-2x}{x^2f(\\frac{1}{x})-2}=2$<br><br>(다) $\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)}x$가 존재한다.</div>",
     "choices": [
       "2",
       "4",

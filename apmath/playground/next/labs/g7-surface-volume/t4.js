@@ -461,8 +461,72 @@
     // 겉넓이: 겉에 드러난 세 면을 펼친 조각(부채꼴 · 직사각형 · 반구의 곡면 = 반지름 r인 원 2개)
     const drawNet44 = (b, s, M, C) => compNet(b, s, C, { r: M.r, R: M.R, H: M.H, nCirc: 1, simple: true, hemi: true, circNm: '반구의 곡면', coneLat: M.coneLat, cylLat: M.cylLat, circTot: M.hemi, tot: M.surf, hot: { cone: 1, cyl: 2, circ: 3 },
       legend: [[{ t: `반구의 곡면 = 반지름 ${M.r}인 원 ${plainVal(V(0, M.r * M.r))} × 2 = ${plainVal(M.hemi)}`, c: 'sky' }], [{ t: '맞붙은 면은 겉에 드러나지 않아서 빼요', c: 'red' }]] });
+    // 50%는 분해한 입체가 남아 있는 순간입니다. 면의 폭·반지름을 0부터
+    // 키우지 않고, 같은 옆면 조각을 경첩으로 펴서 전개도로 옮깁니다.
+    const drawUnfold44 = (b, s, M, C) => {
+      const u = clamp((C.t - 0.5) * 2, 0, 1), e = ease(u), { r, R, H, hc } = M;
+      const yaw = s.svYaw == null ? 28 : s.svYaw, pitch = s.svPitch == null ? 22 : s.svPitch;
+      const D = scene3(b, s, C, { yaw: yaw * (1 - e), pitch: pitch * (1 - e) });
+      const source = scene3(b, s, C), yB = -(r + H + hc) / 2, yH = yB + r, yC = yH + H;
+      const N = 36, base = G.circleBase(r, N), smooth = Array(N).fill(true);
+      const cone = G.solidNet(base, hc, 0, smooth, 18), cyl = G.solidNet(base, H, 1, smooth, 18);
+      const conePose = G.netPose(cone.net, e), cylPose = G.netPose(cyl.net, e);
+
+      // 완성 전개도와 같은 두 줄 배치: 부채꼴·반구 / 원기둥 옆면.
+      const th = TAU * r / R, arc = Array.from({ length: 49 }, (_, i) => {
+        const a = -PI / 2 - th / 2 + th * i / 48; return v3(R * Math.cos(a), R * Math.sin(a), 0);
+      });
+      const xs = arc.map(p => p.x).concat(0), ys = arc.map(p => p.y).concat(0);
+      const secW = Math.max(...xs) - Math.min(...xs), secX = (Math.max(...xs) + Math.min(...xs)) / 2;
+      const gap = Math.max(1.4, r * 0.6), rowW = secW + gap + 2 * r;
+      const targetApex = v3(-rowW / 2 + secW / 2 - secX, 0, 0);
+      const targetHemi = v3(-rowW / 2 + secW + gap + r, -r, 0);
+      const rectTop = Math.min(...ys, -2 * r) - Math.max(gap, 4.6) - (b.W < 560 ? 0.6 : 0);
+      const sourceApex = add3(source.hx(4.8 * r), v3(0, yC + hc, 0));
+      const coneAnchor = lerp3(sourceApex, targetApex, e);
+      // 원뿔은 위쪽으로, 원기둥은 아래쪽으로 옮겨 서로 가로지르지 않게 합니다.
+      coneAnchor.y += 4 * r * e * (1 - e);
+      const apex = G.applyT(conePose[0], cone.B[0]), flatPose = G.netPose(cone.net, 1);
+      const flatApex = G.applyT(flatPose[cone.root], cone.B[0]);
+      const flatRim = G.applyT(flatPose[cone.root], mid3(cone.A[cone.root], cone.A[(cone.root + 1) % N]));
+      const turn = -PI / 2 - Math.atan2(flatRim.y - flatApex.y, flatRim.x - flatApex.x);
+      const coneMove = G.compose(shiftT(sub3(coneAnchor, apex)), G.rotAbout(apex, v3(0, 0, 1), turn * e));
+      const coneTs = conePose.map(T => G.compose(coneMove, T));
+      const cylPoints = cyl.lat.flatMap(k => cyl.net.pieces[k].pts.map(p => G.applyT(cylPose[k], p)));
+      const sourceCyl = add3(source.hx(2.4 * r), v3(0, yH + H / 2, 0));
+      const cx = ease(lin01(u, 0.4, 1)), cy = ease(lin01(u, 0, 0.5));
+      const cylAnchor = v3(sourceCyl.x * (1 - cx), sourceCyl.y * (1 - cy) + (rectTop - H / 2) * cy, sourceCyl.z * (1 - cx));
+      const cylMove = shiftT(sub3(cylAnchor, centroid(cylPoints))), cylTs = cylPose.map(T => G.compose(cylMove, T));
+
+      // 반구는 평면으로 펼 수 없습니다. 크기를 유지한 입체를 뒤집어 옮깁니다.
+      const hp = Array.from({ length: 37 }, (_, i) => {
+        const a = PI / 2 * (1 - i / 36); return [Math.max(0, r * Math.cos(a)), yH - r * Math.sin(a)];
+      });
+      hp[0][0] = 0; hp.push([0, yH]);
+      const hemiCenter = v3(0, yH, 0), hemiAnchor = lerp3(hemiCenter, targetHemi, e);
+      const flip = G.rotAbout(hemiCenter, v3(0, 0, 1), PI * e);
+      const tilt = G.rotAbout(hemiCenter, v3(1, 0, 0), Math.asin(0.18) * e);
+      const hemiT = G.compose(shiftT(sub3(hemiAnchor, hemiCenter)), G.compose(tilt, flip));
+      const hemi = xfMesh(revolveMesh(hp, { N, tags: Array(36).fill('curve').concat('flat') }), hemiT);
+      const lateralPoints = (sn, Ts) => sn.lat.flatMap(k => sn.net.pieces[k].pts.map(p => G.applyT(Ts[k], p)));
+      const points = lateralPoints(cone, coneTs).concat(lateralPoints(cyl, cylTs), hemi.faces.flatMap(f => f.pts));
+      D.fit(points, [], { l: 30 - 5 * e, r: window.innerWidth >= 700 && b.W >= 560 ? 245 : 30, t: 30 - 5 * e, b: 30 });
+      const drawSide = (sn, Ts, color) => {
+        G.netDraw(D, sn.net, Ts, pc => pc.tag === 'lat' ? { fill: color, alpha: 0.06, edge: 'ink', ew: 2.4 } : { skip: true });
+        // 잘린 두 모선은 닫힌 입체의 이웃 관계와 달리 전개 중에는 경계입니다.
+        for (const k of [0, 1]) D.line(G.applyT(Ts[k], sn.A[1]), G.applyT(Ts[k], sn.B[1]), 'ink', 2.4);
+      };
+      drawSide(cone, coneTs, 'violet'); drawSide(cyl, cylTs, 'green');
+      D.body({ mesh: hemi, fill: 'sky', alpha: 0.06, edge: 'ink', edgeW: 2, faceStyle: f => f.tag === 'flat' ? { fill: 'sky', alpha: 0.025 } : {} });
+      if (u > 0.8) {
+        D.areaLab(lerp3(coneAnchor, centroid(lateralPoints(cone, coneTs)), 0.8), '원뿔 옆면', '', { size: 13 });
+        D.areaLab(cylAnchor, '원기둥 옆면', '', { size: 13 });
+        D.areaLab(add3(hemiAnchor, v3(0, r * 0.45, 0)), '반구', '', { size: 13 });
+      }
+    };
     const draw = (b, s, M, C) => {
-      if (M.mode === 'surf' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) return drawNet44(b, s, M, C);
+      if (M.mode === 'surf' && !C.problem && (C.review || C.t >= 1 || b.thumb)) return drawNet44(b, s, M, C);
+      if (M.mode === 'surf' && !C.problem && C.t > 0.5) return drawUnfold44(b, s, M, C);
       const sc = 5.4 / (M.r + M.H + M.hc), r = M.r * sc, H = M.H * sc, hc = M.hc * sc, D = scene3(b, s, C), st = C.step;
       const t = C.problem ? 0 : C.t, sep = ease(lin01(t, 0, 0.5)) * (r * 2.4), flipE = ease(lin01(t, 0.5, 1)), yB = -(r + H + hc) / 2;
       // 반구(아래, 곡면은 아래쪽): 프로필 = 극에서 적도까지, 맨 위는 평평한 원
@@ -525,7 +589,7 @@
       ],
       view: (M, C) => ({
         card: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? {title:'',lines: M.mode === 'vol' ? [{text:'부피 = 세 입체의 부피 합',color:'ink'},{text:`$${tx(M.vk)}+${tx(M.vc)}+${tx(M.vh)}=${tx(M.vol)}\\,\\mathrm{cm}^{3}$`,color:'ink'}] : [{text:'겉넓이 = 겉으로 드러난 면의 합',color:'ink'},{text:`$${tx(M.coneLat)}+${tx(M.cylLat)}+${tx(M.hemi)}=${tx(M.surf)}\\,\\mathrm{cm}^{2}$`,color:'ink'},{text:'반구 곡면은 구 겉넓이의 절반',color:'ink'},{text:'맞붙은 면은 더하지 않아요.',color:'ink'}]} : null,
-        guide: `<b>분해하기 · 펼치기</b> 막대를 끌어 보세요. 겉넓이를 누르면 원뿔과 원기둥은 펼쳐지고, 반구의 곡면은 입체로 보여요. 원기둥·원뿔이 ${span('sky', '오른쪽으로')} 옮겨지고 반구는 제자리에서 뒤집히면서 서로 맞붙었던 ${span('red', '평평한 면')}이 빨갛게 드러나요. 칩에서 원뿔의 모양을, 막대로 원기둥의 높이를 바꿔 보세요.`,
+        guide: `<b>분해하기 · 펼치기</b> 막대를 끌어 보세요. ${M.mode === 'surf' ? `앞부분에서는 원기둥·원뿔이 ${span('sky', '오른쪽으로')} 옮겨지며 맞붙었던 ${span('red', '평평한 면')}이 드러나요. 뒷부분에서는 원뿔과 원기둥의 옆면을 펼쳐 나란히 놓아요. 반구의 곡면은 펼치지 않고 입체로 보여요.` : `겉넓이를 누르면 원뿔과 원기둥은 펼쳐지고, 반구의 곡면은 입체로 보여요. 원기둥·원뿔이 ${span('sky', '오른쪽으로')} 옮겨지고 반구는 제자리에서 뒤집히면서 서로 맞붙었던 ${span('red', '평평한 면')}이 빨갛게 드러나요.`} 칩에서 원뿔의 모양을, 막대로 원기둥의 높이를 바꿔 보세요.`,
         readouts: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? [] : M.mode === 'vol' ? [rd('원뿔', plainVal(M.vk) + ' cm³', 'violet'), rd('원기둥', plainVal(M.vc) + ' cm³', 'green'), rd('반구', plainVal(M.vh) + ' cm³', 'sky'), rd('부피', plainVal(M.vol) + ' cm³', 'amber')] : [rd('원뿔의 옆면', plainVal(M.coneLat) + ' cm²', 'violet', `π × ${M.R} × ${M.r}`), rd('원기둥의 옆면', plainVal(M.cylLat) + ' cm²', 'green', `2 × π × ${M.r} × ${M.H}`), rd('반구의 곡면', plainVal(M.hemi) + ' cm²', 'sky', `2 × π × ${M.r} × ${M.r}`), rd('겉넓이', plainVal(M.surf) + ' cm²', 'amber', '붙은 면 제외')],
         formula: `<p>(겉넓이) $=$ (원뿔 옆넓이) $+$ (원기둥 옆넓이) $+$ (반구의 곡면) &nbsp;(맞붙은 면은 더하지 않아요)</p>`,
         rule: '붙인 입체의 겉넓이 = 겉으로 드러난 면만 더하기 (붙은 면은 제외)',

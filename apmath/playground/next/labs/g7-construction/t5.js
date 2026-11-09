@@ -59,7 +59,11 @@
       const cA = centroid(Tr), cB = centroid(img);
       Tr.forEach((p) => b.point(p, { color: 'ink', r: 4.5 })); img.forEach((p) => b.point(p, { color: 'ink', r: 4.5 }));
       if (C.txt) {
-        if (done) Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i] + '=' + 'DEF'[i], { size: 15, gap: 14 }));
+        if (done) Tr.forEach((p, i) => {
+          const text = 'ABC'[i] + '=' + 'DEF'[i];
+          if (b.W < 560) T(b, p, text, { dy: i < 2 ? 20 : -20, size: 15 });
+          else tagOut(b, p, cA, text, { size: 15, gap: 14 });
+        });
         else { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i], { size: 17 })); img.forEach((p, i) => tagOut(b, p, cB, 'DEF'[i], { size: 17 })); }
         const nmc = C.review ? '' : { SSS: '세 변이 각각 같아요', SAS: '두 변과 그 끼인각이 같아요', ASA: '한 변과 그 양 끝각이 같아요' }[cs];
         const cap = C.review ? (C.step === 1 ? '같은 조건을 두 삼각형에 표시해요 (같은 눈금·같은 호)' : '꼭 포개어져요 → △ABC ≡ △DEF') : done ? `${cs}: ${nmc} → 꼭 포개어져요, 합동이에요` : t > 0 ? '가로로 밀어 포개요' : `${cs}: ${nmc}`;
@@ -106,26 +110,45 @@
       const A = C.problem ? M.pk.A : M.A, B = C.problem ? M.pk.B : M.B, Cc = 180 - A - B, Tr = triASA(6, A, B) || triASA(6, 55, 65);
       const shape = bboxOf(Tr), w = shape.x1 - shape.x0, h = shape.y1 - shape.y0;
       const aw = b.W - b.insets.left - b.insets.right, ah = b.H - b.insets.top - b.insets.bottom, pp = 2 * b.pad * Math.min(aw, ah);
-      const margins = C.problem ? { t: 26, b: 30, l: 46, r: 46 } : { t: 40, b: 56, l: 46, r: 46 };
+      const compactExplore = b.W < 560 && !C.problem && !C.review;
+      const margins = C.problem ? { t: 26, b: 30, l: 46, r: 46 } : compactExplore ? { t: 52, b: 84, l: 28, r: 28 } : { t: 40, b: 56, l: 46, r: 46 };
       // 두 삼각형 사이의 주어진 각·꼭짓점 이름은 화면 크기와 무관하게 떨어뜨립니다.
-      const labelGap = 108, scale = Math.max(3, Math.min((aw - pp - margins.l - margins.r - labelGap) / (2 * w + 0.8), (ah - pp - margins.t - margins.b) / (h + 1.2)));
-      const X0 = w + Math.max(3, labelGap / scale), t = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
+      const labelGap = compactExplore ? 46 : 108, scale = Math.max(3, Math.min((aw - pp - margins.l - margins.r - labelGap) / (2 * w + 0.8), (ah - pp - margins.t - margins.b) / (h + 1.2)));
+      const X0 = w + Math.max(compactExplore ? 2.4 : 3, labelGap / scale), t = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       const img = shiftPts(Tr, X0 * (1 - seg01(t, 0, 1))), done = t >= 0.999;
       const bb = C.review && done ? bboxOf(Tr, 0.4) : unionBox(bboxOf(Tr, 0.4), bboxOf(shiftPts(Tr, X0), 0.4));
       if (C.review && done && b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40) margins.b += 40;
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.4 }, margins);
+      const bisC = unit(add(unit(sub(Tr[0], Tr[2])), unit(sub(Tr[1], Tr[2]))));
+      const angleBoxes = [
+        { x: Tr[0].x * b.k + 36 * Math.cos(A * DEG / 2), y: Tr[0].y * b.k - 36 * Math.sin(A * DEG / 2), text: dg(A) },
+        { x: Tr[1].x * b.k - 36 * Math.cos(B * DEG / 2), y: Tr[1].y * b.k - 36 * Math.sin(B * DEG / 2), text: dg(B) },
+        { x: Tr[2].x * b.k + bisC.x * 36, y: Tr[2].y * b.k + bisC.y * 36, text: dg(Cc) }
+      ].map((p) => ({ ...p, half: G.textW(p.text, 13) / 2 + 4 }));
+      // 아주 납작하거나 가파른 삼각형에서는 값 세 개가 안쪽에 들어가지
+      // 않으므로 점 이름과 다른 줄에 둡니다. 각을 바꾸어도 서로 덮지 않아요.
+      const innerAngles = compactExplore && angleBoxes.every((p, i) => p.y + 10 < -3 && angleBoxes.every((q, j) => i === j || Math.abs(p.x - q.x) > p.half + q.half || Math.abs(p.y - q.y) > 20));
       const st = C.problem ? 0 : C.review ? C.step : 3;
       const mk = (T3, nms, tag) => {
-        const labels = tag === 'l' || (X0 * (1 - seg01(t, 0, 1)) - w) * b.k >= 90;
+        const labels = tag === 'l' || (X0 * (1 - seg01(t, 0, 1)) - w) * b.k >= (compactExplore ? 40 : 90);
         fillPoly(b, T3, tag === 'r' && done ? 'green' : 'sky', 0.1);
         drawTri(b, T3, {
           color: tag === 'r' && done ? 'green' : 'ink', dash: tag === 'r' && done ? [8, 5] : undefined,
           ticks: !C.problem ? { a: { n: 2, color: 'amber' } } : undefined,
-          angs: { A: { c: 'sky', rings: 1, t: '', r: 28 }, B: { c: 'green', rings: 2, t: '', r: 28 }, C: st >= 2 || C.problem ? { c: 'rose', rings: 3, t: C.problem ? (tag === 'r' ? 'x°' : '') : labels ? dg(Cc) : '', r: 24, d: 44 } : undefined }
+          angs: { A: { c: 'sky', rings: 1, t: '', r: compactExplore ? 20 : 28 }, B: { c: 'green', rings: 2, t: '', r: compactExplore ? 20 : 28 }, C: st >= 2 || C.problem ? { c: 'rose', rings: 3, t: C.problem ? (tag === 'r' ? 'x°' : '') : labels && (!compactExplore || innerAngles) ? dg(Cc) : '', r: compactExplore ? 20 : 24, d: compactExplore ? 36 : 44, size: compactExplore ? 13 : undefined } : undefined }
         });
         const cc = centroid(T3);
-        if (labels) { T(b, T3[0], dg(A), { dx: -30, dy: -16, size: 15, color: 'sky' }); T(b, T3[1], dg(B), { dx: 30, dy: -16, size: 15, color: 'green' }); }
-        T3.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (labels) tagOut(b, p, cc, nms[i], { size: 17, gap: i < 2 ? 22 : 11 }); });
+        if (labels) {
+          // 좁은 탐구 무대에서는 각의 값은 안쪽, 점 이름은 아래쪽에 두어
+          // 큰 바깥 여백 없이도 두 원래 삼각형을 충분히 크게 볼 수 있어요.
+          T(b, T3[0], dg(A), compactExplore ? { dx: innerAngles ? 36 * Math.cos(A * DEG / 2) : 0, dy: innerAngles ? -36 * Math.sin(A * DEG / 2) : 40, size: 13, color: 'sky' } : { dx: -30, dy: -16, size: 15, color: 'sky' });
+          T(b, T3[1], dg(B), compactExplore ? { dx: innerAngles ? -36 * Math.cos(B * DEG / 2) : 0, dy: innerAngles ? -36 * Math.sin(B * DEG / 2) : 40, size: 13, color: 'green' } : { dx: 30, dy: -16, size: 15, color: 'green' });
+          if (compactExplore && !innerAngles) T(b, T3[2], dg(Cc), { dy: -44, size: 13, color: 'rose' });
+        }
+        T3.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (labels) {
+          if (compactExplore) T(b, p, nms[i], { dy: i < 2 ? 18 : -18, size: 17 });
+          else tagOut(b, p, cc, nms[i], { size: 17, gap: i < 2 ? 22 : 11 });
+        } });
       };
       mk(Tr, ['A', 'B', 'C'], 'l'); mk(img, ['D', 'E', 'F'], 'r');
       if (C.problem) { // BC = EF 눈금
@@ -134,7 +157,7 @@
       if (C.txt && !C.problem) {
         const cx = (bb.x0 + bb.x1) / 2;
         const cap = st >= 3 ? (done ? '한 변까지 같아서 포개어져요 → ASA 합동' : `∠F = ∠C = ${Cc}°, BC = EF → ASA 합동`) : st >= 2 ? `셋째 각: ∠C = 180° − (${A}° + ${B}°) = ${Cc}°  ∠F도 ${Cc}°` : `두 각이 각각 같아요: ∠A=∠D=${A}°, ∠B=∠E=${B}°`;
-        T(b, pt(cx, bb.y1 + 0.2), cap, { dy: C.review && done ? 44 : 26, size: b.W < 560 ? 13 : 16, color: st >= 3 ? 'green' : 'amber' });
+        T(b, pt(cx, bb.y1 + 0.2), cap, { dy: C.review && done ? 44 : compactExplore && !innerAngles ? 56 : 26, size: b.W < 560 ? 13 : 16, color: st >= 3 ? 'green' : 'amber' });
       }
       if (!C.review && !C.problem && C.txt && t <= 0) b.handle('C', Tr[2], { color: 'amber', r: 8, ariaLabel: '꼭짓점 C 끌기(∠A, ∠B 바꾸기)', drag: (w2) => { s.cnEA = clamp(Math.round(-dirDeg(Tr[0], w2) / 5) * 5, 30, 80); s.cnEB = clamp(Math.round((180 + dirDeg(Tr[1], w2)) / 5) * 5, 30, 80); } });
     },

@@ -2,7 +2,7 @@
    AP Math Lab · 실험실 카탈로그 (apl-catalog.js) — 허브·검색·노선도의 단일 출처
    - 실험실을 추가하면 이 목록에 한 항목만 더하면 됩니다. 개수·필터·검색·노선도는 자동입니다.
    - legacy: 기존 실험실 경로(playground 기준), next: 2.0 셸로 옮긴 실험실 경로(있을 때만)
-   - strand: 노선도에서 이 실험실이 속한 대표 노선, scenes: 상위 장면(탭) 이름
+   - strand: 노선도에서 이 실험실이 속한 대표 노선, scenes: 상위 장면(탭) 이름, sceneTotal: 세부 장면의 실제 개수
    ========================================================================== */
 window.APLab = window.APLab || {};
 window.APLab.catalog = {
@@ -407,6 +407,7 @@ window.APLab.catalog = {
   },
   {
    "id": "common-poly-solid",
+   "sceneTotal": 5,
    "course": "common",
    "unit": "다항식",
    "strand": "space",
@@ -553,6 +554,7 @@ window.APLab.catalog = {
   },
   {
    "id": "common-functions",
+   "sceneTotal": 29,
    "course": "common",
    "unit": "함수와 그래프",
    "strand": "func",
@@ -622,6 +624,7 @@ window.APLab.catalog = {
   },
   {
    "id": "common-counting",
+   "sceneTotal": 7,
    "course": "common",
    "unit": "경우의 수",
    "strand": "prob",
@@ -646,6 +649,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-explog",
+   "sceneTotal": 21,
    "course": "algebra",
    "unit": "Ⅰ. 지수함수와 로그함수",
    "strand": "func",
@@ -674,6 +678,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-exp-deep",
+   "sceneTotal": 16,
    "course": "algebra",
    "unit": "Ⅰ. 지수함수와 로그함수",
    "strand": "func",
@@ -699,6 +704,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-log",
+   "sceneTotal": 4,
    "course": "algebra",
    "unit": "Ⅰ. 지수함수와 로그함수",
    "strand": "func",
@@ -720,6 +726,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-log-deep",
+   "sceneTotal": 16,
    "course": "algebra",
    "unit": "Ⅰ. 지수함수와 로그함수",
    "strand": "func",
@@ -745,6 +752,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-unit-circle",
+   "sceneTotal": 8,
    "course": "algebra",
    "unit": "Ⅱ. 삼각함수",
    "strand": "trig",
@@ -770,6 +778,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-trig-geometry",
+   "sceneTotal": 16,
    "course": "algebra",
    "unit": "Ⅱ. 삼각함수",
    "strand": "trig",
@@ -789,6 +798,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-sine-cosine-law",
+   "sceneTotal": 18,
    "course": "algebra",
    "unit": "Ⅱ. 삼각함수",
    "strand": "trig",
@@ -809,6 +819,7 @@ window.APLab.catalog = {
   },
   {
    "id": "alg-sequence",
+   "sceneTotal": 21,
    "course": "algebra",
    "unit": "Ⅲ. 수열",
    "strand": "seq",
@@ -838,6 +849,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-limits",
+   "sceneTotal": 9,
    "course": "calc1",
    "unit": "함수의 극한과 연속",
    "strand": "calc",
@@ -864,6 +876,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-tangent",
+   "sceneTotal": 7,
    "course": "calc1",
    "unit": "미분",
    "strand": "calc",
@@ -888,6 +901,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-derivative-shape",
+   "sceneTotal": 7,
    "course": "calc1",
    "unit": "미분",
    "strand": "calc",
@@ -912,6 +926,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-cubic",
+   "sceneTotal": 5,
    "course": "calc1",
    "unit": "미분",
    "strand": "calc",
@@ -934,6 +949,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-quartic",
+   "sceneTotal": 5,
    "course": "calc1",
    "unit": "미분",
    "strand": "calc",
@@ -956,6 +972,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-composite",
+   "sceneTotal": 7,
    "course": "calc1",
    "unit": "미분",
    "strand": "calc",
@@ -980,6 +997,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-integral",
+   "sceneTotal": 8,
    "course": "calc1",
    "unit": "적분",
    "strand": "calc",
@@ -1005,6 +1023,7 @@ window.APLab.catalog = {
   },
   {
    "id": "calc1-motion",
+   "sceneTotal": 5,
    "course": "calc1",
    "unit": "적분",
    "strand": "calc",
@@ -1027,6 +1046,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-parabola",
+   "sceneTotal": 14,
    "course": "geom",
    "unit": "이차곡선",
    "strand": "circle",
@@ -1050,6 +1070,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-ellipse",
+   "sceneTotal": 12,
    "course": "geom",
    "unit": "이차곡선",
    "strand": "circle",
@@ -1073,6 +1094,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-hyperbola",
+   "sceneTotal": 15,
    "course": "geom",
    "unit": "이차곡선",
    "strand": "circle",
@@ -1097,6 +1119,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-space",
+   "sceneTotal": 9,
    "course": "geom",
    "unit": "공간도형과 공간좌표",
    "strand": "space",
@@ -1126,6 +1149,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-projection",
+   "sceneTotal": 7,
    "course": "geom",
    "unit": "공간도형과 공간좌표",
    "strand": "space",
@@ -1153,6 +1177,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-space-coord",
+   "sceneTotal": 8,
    "course": "geom",
    "unit": "공간도형과 공간좌표",
    "strand": "space",
@@ -1181,6 +1206,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-vector-ops",
+   "sceneTotal": 12,
    "course": "geom",
    "unit": "벡터",
    "strand": "coord",
@@ -1204,6 +1230,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-vector-dot",
+   "sceneTotal": 7,
    "course": "geom",
    "unit": "벡터",
    "strand": "coord",
@@ -1228,6 +1255,7 @@ window.APLab.catalog = {
   },
   {
    "id": "geom-vector-figure",
+   "sceneTotal": 6,
    "course": "geom",
    "unit": "벡터",
    "strand": "coord",
@@ -1251,6 +1279,7 @@ window.APLab.catalog = {
   },
   {
    "id": "prob-counting",
+   "sceneTotal": 5,
    "course": "probstat",
    "unit": "경우의 수",
    "strand": "prob",
@@ -1297,6 +1326,7 @@ window.APLab.catalog = {
   },
   {
    "id": "prob-stats",
+   "sceneTotal": 7,
    "course": "probstat",
    "unit": "통계",
    "strand": "prob",

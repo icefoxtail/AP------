@@ -9,7 +9,8 @@ import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 import { sampleInitialFigure } from './middle-initial-figure-contracts.mjs';
-import { isProgressControl, needsInitialInteractionCheck, missingInteractionRisks, exerciseInitialInteractions } from './middle-initial-interactions.mjs';
+import { isProgressControl, progressSamples, needsInitialInteractionCheck, missingInteractionRisks, exerciseInitialInteractions, compareEntryVariant, compareInitialParameters } from './middle-initial-interactions.mjs';
+import { servedSourceEntries, queueServedResponse, drainServedSourceChecks, verifyServedSources } from './middle-initial-served-source.mjs';
 
 export const VIEWPORTS = [
   { name: 'pc', width: 1440, height: 900 },
@@ -164,6 +165,18 @@ function observe() {
     labels.push({ text: el.textContent, kind: 'math-overlay', left: r.left - rect.left, right: r.right - rect.left,
       top: r.top - rect.top, bottom: r.bottom - rect.top });
   }
+  let initialVariant=null;
+  if(l.scene.id==='s2-7'&&window.APL_SP?.stmt){
+    const {STM,ab}=window.APL_SP.stmt,bank=l.s.spBank,selectedIndex=l.s.spSel||0;
+    const selectedId=Array.isArray(bank)?bank[selectedIndex]:null,st=STM[selectedId];
+    const bankValid=Array.isArray(bank)&&bank.length===5&&new Set(bank).size===5&&bank.every(id=>STM[id])&&bank.filter(id=>STM[id].truth).length===1;
+    const active=st?ab(st,l.s):null;
+    initialVariant={policy:'spatial-five-statement-question',bankIds:bank,bankValid,selectedId,selectedIndex,progress:l.s.spT,
+      givenConditionsValid:!!(st&&st.geo(active.a,active.b).given),
+      initialValuesRestored:!!(st&&Math.abs(active.a-st.init.a)<1e-9&&Math.abs(active.b-st.init.b)<1e-9),
+      activeValues:active,expectedInitialValues:st?.init,
+      sharedParams:{spYaw:l.s.spYaw,spPitch:l.s.spPitch}};
+  }
   return { id: String(l.scene.id), title: l.scene.title, heading: document.querySelector('.apl-scene-title')?.textContent,
     index: l.index, tab: l.tab, step: l.s.step, playing: !!l.s.playing, revealed: !!l.s.revealed,
     answerOpen: !!l.refs.answer?.classList.contains('open'),
@@ -171,7 +184,7 @@ function observe() {
       left: rect.left, top: rect.top, visibleWidth, visibleHeight, display: style.display, visibility: style.visibility, opacity: style.opacity,
       rendered: c.checkVisibility({opacityProperty:true,visibilityProperty:true,contentVisibilityAuto:true}) },
     ink, inkBounds: ink ? { x0, y0, x1, y1 } : null, pixelFingerprint: (hash >>> 0).toString(16),
-    geometry: window.__initialFigureDraws, labels, toolbar, occluders, params, declaredControls, sliders, handles,
+    geometry: window.__initialFigureDraws, labels, toolbar, occluders, params, declaredControls, sliders, handles, initialVariant,
     projection: {focus:b.focus,insets:{...b.insets},origin:b.toS({x:0,y:0}),scale:b.k,scaleY:b.ky,zoom:b.zoom,panX:b.panX,panY:b.panY},
     overflow: document.documentElement.scrollWidth > innerWidth + 1, hintOverlap,
     katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent),
@@ -197,6 +210,9 @@ export function labelsOutsideCanvas(labels, canvas) {
 }
 
 export function compareInitialGeometry(first, again) {
+  const variant=compareEntryVariant(first,again);
+  if(variant.known&&!variant.pass)return variant;
+  if(variant.changed)return {...variant,reason:'verified-new-question-variant'};
   const visible = row => (row.geometry || []).filter(x => x.bounds && x.alpha > .01);
   const a = visible(first), b = visible(again);
   if(a.length !== b.length || a.some((x,i) => x.method !== b[i].method)) return {pass:false,reason:'initial-geometry-structure-changed',before:a.length,after:b.length};
@@ -243,6 +259,7 @@ async function run() {
   if (chosen.some(id => !all.some(l => l.id === id))) throw Error('Unknown middle unit');
   const units = chosen.length ? all.filter(l => chosen.includes(l.id)) : all;
   const requestedScenes = arg('--scenes', '').split(',').filter(Boolean);
+  const riskOnly = argv.includes('--risk-scenes');
   const out = path.resolve(arg('--out', '.tmp/middle-initial'));
   const observationOnly = argv.includes('--baseline-observe');
   const baseURL = arg('--base-url', '');
@@ -252,9 +269,9 @@ async function run() {
   const themes = arg('--themes', 'board').split(',');
   if (themes.some(x => !['board','paper'].includes(x))) throw Error('Unknown theme');
   fs.mkdirSync(out, { recursive: true });
-  const report = { version: 1, kind: observationOnly ? 'BASELINE_INITIAL_FIGURE' : 'CANDIDATE_INITIAL_FIGURE',
+  const report = { version: 1, kind: baseURL ? 'PUBLIC_INITIAL_FIGURE' : observationOnly ? 'BASELINE_INITIAL_FIGURE' : 'CANDIDATE_INITIAL_FIGURE',
     createdAt: new Date().toISOString(), commit: execFileSync('git', ['rev-parse','HEAD'], {cwd:root,encoding:'utf8'}).trim(),
-    scope: { discoveredUnits: all.map(l => l.id), selectedUnits: units.map(l => l.id), requestedScenes, viewports: views, themes },
+    scope: { discoveredUnits: all.map(l => l.id), selectedUnits: units.map(l => l.id), requestedScenes, riskOnly, baseURL: baseURL || null, viewports: views, themes },
     units: {}, failures: [], limitations: ['Physical devices NOT_RUN.', 'Automated checks never establish semantic/educational visual PASS; independent screenshot review required.', 'Pixel fingerprints are comparison evidence, not image quality verdicts.'],
     visualReview: 'UNKNOWN' };
   let server;
@@ -277,13 +294,29 @@ async function run() {
     for (const unit of units) {
       const dest = report.units[unit.id] = { course:unit.course,title:unit.title,catalogSceneTotal:unit.sceneTotal,
         source:sourcesFor(root,unit.id),scenes:[],defaultScenes:[],hashEntries:discoverHashEntries(root,unit.id),aliases:[],observations:[],captures:[],comparisons:[],interactions:[],notRun:[] };
+      const selected = s => (!requestedScenes.length || requestedScenes.includes(s.id)) && (!riskOnly || needsInitialInteractionCheck(unit.id,s));
+      if(baseURL){
+        dest.servedSource=await verifyServedSources(dest.source.files,base);
+        for(const file of dest.servedSource.files.filter(f=>!f.pass))report.failures.push({unit:unit.id,reason:'public-source-revision-mismatch',...file});
+        dest.browserLoadedSources=[];
+      }
       for (const view of views) for (const theme of themes) {
         const context = await browser.newContext({viewport:{width:view.width,height:view.height},deviceScaleFactor:1,hasTouch:!view.name.startsWith('pc')});
         const page = await context.newPage();
         const errors = [];
+        const sourceChecks=[];
+        const servedLookup=new Map(baseURL?servedSourceEntries(dest.source.files,base).map(f=>[f.url,f]):[]);
+        const flushSourceChecks=async()=>{
+          const results=await drainServedSourceChecks(sourceChecks);
+          if(baseURL)dest.browserLoadedSources.push(...results.map(r=>({view:view.name,theme,...r})));
+          for(const file of results.filter(f=>!f.pass))report.failures.push({unit:unit.id,view:view.name,theme,reason:'actual-browser-source-mismatch',...file});
+        };
         page.on('pageerror', e => errors.push({type:'pageerror',message:e.message}));
         page.on('console', m => {if(m.type()==='error') errors.push({type:'console-error',message:m.text()});});
         page.on('response', r => {if(r.status()>=400 && r.url().startsWith(base)) errors.push({type:'http',message:`${r.status()} ${r.url()}`});});
+        if(baseURL)page.on('response',response=>{
+          queueServedResponse(response,servedLookup,sourceChecks);
+        });
         await page.addInitScript(() => {let seed=1701;Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};});
         const settle = async () => {
           await page.waitForFunction(() => window.lab && !lab._tween, null, {timeout:15000});
@@ -296,12 +329,13 @@ async function run() {
           dest.captures.push(item);return item;
         };
         const measure = async (scene,state,screenshot=false,options={}) => {
+          await flushSourceChecks();
           if(options.live)await page.evaluate(()=>{window.__initialFigureDraws=[];window.__initialFigureLabels=[];lab.render();});
           else await settle();
           const obs = await page.evaluate(observe), semantic = await page.evaluate(sampleInitialFigure);
           const row = {id:scene.id,view:view.name,theme,state,...obs,semantic,errors:[...errors]};
           row.issues=initialIssues(obs,scene.id,errors,semantic);
-          const expectedTab=state.startsWith('review-')?'review':state.startsWith('problem-')?'problem':'explore';
+          const expectedTab=state.startsWith('review-')||state.startsWith('perimeter-review-')?'review':state.startsWith('problem-')?'problem':'explore';
           if(obs.tab!==expectedTab)row.issues.push('selected-tab-mismatch');
           if(['first-entry','reselected','returned','problem-initial','explore-return'].includes(state)||state.startsWith('alias-')){
             if(obs.playing)row.issues.push('unexpected-initial-autoplay');
@@ -341,7 +375,11 @@ async function run() {
           for(const id of missingInteractionRisks(unit.id,discoveredScenes))report.failures.push({unit:unit.id,id,view:view.name,theme,reason:'targeted-interaction-scene-not-registered'});
           if(!dest.scenes.length)dest.scenes=discoveredScenes;
           else if(JSON.stringify(dest.scenes)!==JSON.stringify(discoveredScenes))throw Error('Hash-inclusive inventory changed between viewports');
-          const scenes=requestedScenes.length?discoveredScenes.filter(s=>requestedScenes.includes(s.id)):discoveredScenes;
+          const scenes=discoveredScenes.filter(selected);
+          if(!scenes.length)throw Error('No requested scenes were registered in this unit');
+          dest.testedSceneIDs=scenes.map(s=>s.id);
+          if(riskOnly)dest.operationalSample={mode:'RISK_BASED_PUBLIC_SAMPLE',unselectedStatus:'NOT_RUN',
+            unselectedSceneIDs:discoveredScenes.filter(s=>!selected(s)).map(s=>s.id)};
           for(const scene of scenes){
             try {
             errors.length=0;
@@ -401,7 +439,9 @@ async function run() {
               const geometry=compareInitialGeometry(first,row);
               dest.comparisons.push({id:scene.id,view:view.name,theme,state,type:'initial-geometry',...geometry});
               if(!geometry.pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,...geometry});
-              if(JSON.stringify(activeParams(first))!==JSON.stringify(activeParams(row)))report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'active-initial-parameters-not-restored',before:activeParams(first),after:activeParams(row)});
+              const parameters=compareInitialParameters(first,row);
+              dest.comparisons.push({id:scene.id,view:view.name,theme,state,type:'initial-parameters',...parameters});
+              if(!parameters.pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,...parameters,reason:parameters.reason||'active-initial-parameters-not-restored'});
               if(row.playing||row.revealed)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'initial-animation-or-answer-state-not-restored'});
             }
             if(first.problemAvailable){
@@ -418,7 +458,7 @@ async function run() {
               const controls=await page.evaluate(()=>Object.entries(lab._ctls||{}).filter(([,v])=>v.input.checkVisibility()).map(([key,v])=>({key,label:v.input.getAttribute('aria-label')||'',min:+v.input.min,max:+v.input.max,resetMode:typeof lab.scene.f3?.tick==='function'?'entry-values':'progress-minimum'})));
               const control=controls.find(x=>isProgressControl(x.label))||null;
               if(control){
-                for(const [state,fraction] of [['animation-middle',.5],['animation-end',1]]){
+                for(const [state,fraction] of progressSamples(unit.id,scene.id)){
                   const value=await page.evaluate(({key,fraction})=>{const input=lab._ctls[key].input,probe=input.cloneNode(false);probe.value=String(+input.min+(+input.max-+input.min)*fraction);return probe.valueAsNumber;},{key:control.key,fraction});
                   await page.getByRole('slider',{name:control.label,exact:true}).fill(String(value));
                   await page.evaluate(()=>window.scrollTo(0,0));
@@ -441,7 +481,8 @@ async function run() {
                 }
                 else{await page.evaluate(i=>lab.goScene(i),first.index);await measure(scene,'reentry-reset',true);dest.notRun.push({id:scene.id,view:view.name,state:'native-reset',reason:'no-reset-button'});}
               }else dest.notRun.push({id:scene.id,view:view.name,theme,state:'animation-middle/end',reason:'no-matched-progress-slider; targeted animation/drag coverage is recorded separately'});
-              if(needsInitialInteractionCheck(unit.id,scene))await exerciseInitialInteractions({page,unit:unit.id,scene,first,view,theme,settle,measure,dest,failures:report.failures});
+              if(needsInitialInteractionCheck(unit.id,scene))await exerciseInitialInteractions({page,unit:unit.id,scene,first,view,theme,settle,measure,dest,failures:report.failures,
+                loadDocument:async url=>{await page.goto(url,{waitUntil:'load'});await page.waitForFunction(()=>window.lab?.list?.length>0);await page.evaluate(()=>document.fonts.ready);await page.evaluate(installObservation);await settle();}});
             }
             } catch(error) {
               report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,reason:'scene-run-incomplete',message:error.stack});
@@ -450,11 +491,11 @@ async function run() {
             save();
           }
         }catch(error){report.failures.push({unit:unit.id,view:view.name,theme,reason:'run-incomplete',message:error.stack});}
-        finally{await context.close();save();}
+        finally{await flushSourceChecks();await context.close();save();}
         console.log(JSON.stringify({unit:unit.id,view:view.name,theme,scenes:dest.scenes.length,observations:dest.observations.length,failures:report.failures.length}));
       }
       // Coverage is checked against runtime registration, never a stale count.
-      for(const scene of dest.scenes.filter(s=>!requestedScenes.length||requestedScenes.includes(s.id)))for(const view of views)for(const theme of themes){
+      for(const scene of dest.scenes.filter(selected))for(const view of views)for(const theme of themes){
         for(const state of ['first-entry','reselected','returned','explore-return']){
           if(state==='explore-return'&&!dest.observations.some(o=>o.id===scene.id&&o.state==='problem-initial'))continue;
           if(!dest.observations.some(o=>o.id===scene.id&&o.view===view.name&&o.theme===theme&&o.state===state))report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,reason:'missing-required-state',state});

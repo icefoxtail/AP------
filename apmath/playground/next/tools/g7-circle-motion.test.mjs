@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { nativeDragDestinations } from './middle-initial-interactions.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const labs = path.join(root, 'labs');
@@ -97,6 +98,65 @@ function lengthValue(text) {
   return { value, approximate: false };
 }
 const movingReadout = (lab) => call(lab.scene.view, lab.s, lab).readouts.find((readout) => /지나간 길이|굴러간 거리/.test(readout.label));
+
+await test('native drag destinations can leave the legacy triangle discrete side pair on the recorded PC projection', async () => {
+  const lab=await load('#s=f1-tri'),scene=lab.go('f1-tri');
+  const handle=scene.csModel(lab.s).handles.find(h=>h.id==='C');
+  // Chromium 42623072916: three short pointer moves correctly snapped back
+  // to the same 6-8-10 triangle. Larger native moves must reach another pair.
+  const top=240.390625,cssH=534.875,H=535,origin={x:239.47217391304355,y:340.1260869565217},k=41.85043478260869;
+  const start={x:180.88156521739143,y:top+139.24399999999997*cssH/H};
+  const destinations=nativeDragDestinations(start,{left:0,right:1039,top,bottom:top+cssH},{width:1440,height:900});
+  const pairs=destinations.map(p=>{
+    const pair={AC:6,BC:8};
+    handle.drag({x:(p.x-origin.x)/k,y:(origin.y-(p.y-top)*H/cssH)/k},{set:(key,value)=>{pair[key]=value;}});
+    return [pair.AC,pair.BC];
+  });
+  assert.ok(pairs.slice(0,3).every(([a,b])=>a===6&&b===8),'the captured short-move result is reproduced');
+  assert.ok(pairs.some(([a,b])=>a!==6||b!==8),'a larger real pointer destination reaches another valid triangle');
+  assert.ok(pairs.every(([a,b])=>Number.isInteger(Math.hypot(a,b))),'the scene retains its integer hypotenuse restriction');
+});
+
+await test('perimeter review keeps the original shaded remainder visible before its answer is revealed', async () => {
+  const lab=await load();
+  const inside=(polygon,p)=>{
+    let found=false;
+    for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){
+      const a=polygon[i],b=polygon[j];
+      if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)found=!found;
+    }
+    return found;
+  };
+  for(const [W,H]of [[1039,703],[820,461],[683,523],[390,411],[360,387]])for(const id of ['f1-ss2','f1-star','f1-ring']){
+    const scene=lab.go(id);lab.board.resize(W,H);lab.board.setInsets({top:0,left:0,right:W>1000?16:0,bottom:58});
+    lab.s[scene.csKeys.kmode]=1;
+    if(id==='f1-ss2')lab.tab='problem';
+    lab.draw();lab.tab='review';
+    const model=scene.csModel(lab.s),a=lab.s[scene.csKeys.K('a')],R=lab.s[scene.csKeys.K('R')],r=lab.s[scene.csKeys.K('r')];
+    const probes=id==='f1-star'?[[a*.5,a*.5],[a*.15,a*.15]]:id==='f1-ss2'?[[a*.25,a*.8],[a*.82,a*.51]]:[[0,(R+r)/2],[0,r*.5]];
+    for(let step=1;step<=model.stepsP.length;step++){
+      lab.s.step=step;lab.s.revealed=false;
+      const ctx=lab.board.ctx,original=Object.fromEntries(['beginPath','moveTo','lineTo','closePath','fill'].map(k=>[k,ctx[k]]));
+      let contours=[],current=[];const fills=[];
+      ctx.beginPath=(...args)=>{contours=[];current=[];return original.beginPath(...args);};
+      ctx.moveTo=(x,y)=>{current=[{x,y}];contours.push(current);return original.moveTo(x,y);};
+      ctx.lineTo=(x,y)=>{current.push({x,y});return original.lineTo(x,y);};
+      ctx.closePath=(...args)=>original.closePath(...args);
+      ctx.fill=(rule)=>{if(rule==='evenodd')fills.push({contours:contours.map(p=>p.slice()),style:String(ctx.fillStyle)});return original.fill(rule);};
+      let result;
+      try{result=lab.draw();}finally{Object.assign(ctx,original);}
+      const [remain,cut]=probes.map(([x,y])=>lab.board.toS(x,y));
+      const painted=fills.find(f=>{
+        const alpha=Number(/,\s*([\d.]+)\)$/.exec(f.style)?.[1]||0);
+        const hit=p=>f.contours.reduce((n,poly)=>n+Number(inside(poly,p)),0)%2===1;
+        return alpha>=.18&&hit(remain)&&!hit(cut);
+      });
+      assert.ok(painted,`${id}/${W}/step${step}: original remainder and removed region remain distinguishable`);
+      if(step<model.stepsP.length)assert.ok(result.texts.includes('…'),'painting the given region does not reveal the final perimeter');
+      assert.equal(lab.s.revealed,false);assert.equal(lab.s.playing,false);
+    }
+  }
+});
 
 await test('cut-out scenes, including legacy links, show every original cut boundary before playback and after reset', async () => {
   const defaultLab = await load();
@@ -658,6 +718,22 @@ await test('the given arc length clears the mobile table-of-contents handle with
   }
 });
 
+await test('the mobile given-arc caption remains clear of the explore angle handle', async () => {
+  const lab = await load(), b = lab.board;
+  for (const [width,height] of [[360,387],[390,411]]) {
+    b.resize(width,height); lab.go('1808');
+    b.setInsets({top:49,right:0,bottom:60,left:0}); b.setFocus(call(lab.scene.focus,lab.s),true);
+    const before=JSON.stringify(lab.s), drawing=lab.draw();
+    const arc=drawing.textItems.find(x=>x.text==='호 3π cm'), handle=b.handles.find(h=>h.id==='th');
+    assert.ok(arc&&handle,'the given arc and angle handle are both present');
+    const size=b.annotationSize(arc.text,arc.options);
+    const nearest={x:Math.max(arc.x-size.width/2,Math.min(arc.x+size.width/2,handle.x)),y:Math.max(arc.y-size.height/2,Math.min(arc.y+size.height/2,handle.y))};
+    assert.ok(Math.hypot(nearest.x-handle.x,nearest.y-handle.y)>16,`${width}px: the complete caption clears the angle handle and its halo`);
+    assert.ok(arc.x+size.width/2<=width-4,'the caption stays inside the stage');
+    assert.equal(JSON.stringify(lab.s),before,'caption placement does not change the problem values');
+  }
+});
+
 await test('the three given lune-triangle sides remain individually readable on mobile problems', async () => {
   const lab = await load(), b = lab.board;
   for (const [width, height] of [[360, 291], [390, 314]]) {
@@ -772,5 +848,30 @@ await test('late stage sizing gives the same circle focus on first entry and ree
     const again = [b.toS({ x: 0, y: 0 }), b.toS({ x: 1, y: 1 })];
     for (let i = 0; i < initial.length; i++) assert.ok(Math.hypot(initial[i].x-again[i].x, initial[i].y-again[i].y)<1e-7,
       `${id}: the final stage gives the same origin and scale on both entries`);
+  }
+});
+
+await test('mobile concept problems fit their current arc instead of every future angle', async () => {
+  const lab=await load(),b=lab.board;
+  for(const [width,height]of [[360,291],[390,309]])for(const id of ['z0-arc','z0-sector','z0-segment','z2-sector','z2-segment']){
+    b.resize(width,height);lab.go(id);b.setInsets({top:0,right:0,bottom:60,left:0});
+    lab.tab='problem';const before=JSON.stringify(lab.s);
+    const drawing=lab.draw(),center=b.toS(0,0),edge=b.toS(1,0);
+    const radius=Math.hypot(center.x-edge.x,center.y-edge.y);
+    assert.ok(radius>=50,`${id}/${width}: radius ${radius} must leave room around the 18px angle mark and point labels`);
+    const angle=drawing.textItems.find(item=>/^\d+°$/.test(item.text)),handle=b.handles.find(h=>typeof h.drag==='function');
+    assert.ok(angle&&handle);
+    const angleSize=b.annotationSize(angle.text,angle.options),nearest={x:Math.max(angle.x-angleSize.width/2,Math.min(angle.x+angleSize.width/2,handle.x)),y:Math.max(angle.y-angleSize.height/2,Math.min(angle.y+angleSize.height/2,handle.y))};
+    assert.ok(Math.hypot(nearest.x-handle.x,nearest.y-handle.y)>16,`${id}/${width}: angle condition clears the draggable point (radius ${radius})`);
+    for(const item of drawing.textItems){
+      const size=b.annotationSize(item.text,item.options),align=item.options.align||'center';
+      const x=item.x+(align==='left'?size.width/2:align==='right'?-size.width/2:0);
+      assert.ok(x-size.width/2>=-1&&x+size.width/2<=width+1,`${id}/${width}: ${item.text} stays inside the stage width`);
+      assert.ok(item.y-size.height/2>=-1&&item.y+size.height/2<=height-60+1,`${id}/${width}: ${item.text} stays above the tools (${item.y}, ${size.height}, radius ${radius}, focus ${JSON.stringify(b.focus)})`);
+    }
+    assert.equal(JSON.stringify(lab.s),before,'focus does not change conditions or reveal the answer');
+    const first={focus:JSON.stringify(b.focus),radius};
+    lab.go('z0-center');lab.go(id);b.setInsets({top:0,right:0,bottom:60,left:0});lab.tab='problem';lab.draw();
+    assert.equal(JSON.stringify(b.focus),first.focus,'the same problem has the same camera after another scene');
   }
 });

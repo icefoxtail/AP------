@@ -5,8 +5,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
-import { execFileSync } from 'node:child_process';
+import { evidenceProvenance, bindLabSources, sha256 } from './high-evidence-binding.mjs';
 import { probeSpatialSelection, probePolyhedronCell, probePolygonVertex } from './g7-geometry-selection-probes.mjs';
+import { createScreenshotGuard, screenshotEnvironmentMatches, SCREENSHOT_ENVIRONMENT_POLICY, VIEWPORT_PIXEL_POLICY } from './browser-screenshot-guard.mjs';
+import { captureReviewState } from './high-viewport-evidence.mjs';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
@@ -95,17 +97,21 @@ const server = http.createServer((req, res) => {
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/`;
 fs.mkdirSync(out, { recursive: true });
-const report = { version: 1, kind: focused ? (observe ? 'FOCUSED_BASELINE_OBSERVATION' : 'FOCUSED_CANDIDATE_CHECK') : (observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK'), commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, units: {}, failures: [], limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Math correctness and visual overlap require independent inspection.'],
+const provenance = evidenceProvenance(root, { baseline: observe });
+const sourceBindings = units.map(id => bindLabSources(root, { id, next: `next/labs/${id}.html` }, provenance));
+const report = { version: 2, kind: focused ? (observe ? 'FOCUSED_BASELINE_OBSERVATION' : 'FOCUSED_CANDIDATE_CHECK') : (observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK'), commit: provenance.sourceCommit, provenance, sourceBindings, runs, units: {}, failures: sourceBindings.flatMap(b => b.errors.map(e => ({ unit: b.lab, ...e }))), limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Mouse pointer probes do not certify touch input.', 'Math correctness and visual overlap require independent inspection.'],
   ...(focused ? { fullMatrix: false, focus: { requestedSceneIds: focusSceneIds, requestedRunNames: focusRunNames }, purpose: 'Supplemental visual preflight; does not replace the full geometry audit.' } : {}) };
 const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { channel: 'chromium', headless: true });
+report.screenshotEnvironmentPolicy = SCREENSHOT_ENVIRONMENT_POLICY;
+report.viewportEvidencePolicy = { raw: 'Legacy full-page capture denominator; touch-context pixels UNVERIFIED_BEYOND_VIEWPORT', supporting: 'Fixed-viewport PNGs with actual environment and byte readback; separate denominator', pointerCoverage: 'Existing mouse probes only; no native touch claim' };
 try {
   for (const unit of units) {
-    report.units[unit] = { scenes: [], observations: [], captures: [], interactions: [] };
+    report.units[unit] = { scenes: [], observations: [], captures: [], captureMetadata: {}, viewportCaptures: [], screenshotEnvironment: [], interactions: [] };
     const dest = report.units[unit];
     dest.controlCoverage = { allScenesRun: 'mobile-paper', otherRuns: 'targeted-scenes', numeric: 'first-visible-slider', drag: 'first-visible-draggable-handle', pointer: 'mouse', reset: 'native-click-stopped-and-rendered' };
     if (focused) Object.assign(dest.controlCoverage, { allScenesRun: null, selectedScenesRuns: runs.map(run => run.name), otherRuns: 'all-selected-scenes', sceneScope: 'SELECTED_SCENES_ONLY' });
     for (const run of runs) {
-      let ctx, runError = null, expectedSceneIds = null;
+      let ctx, screenshotGuard, runError = null, expectedSceneIds = null;
       const errors = [];
       try {
       ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc-'), deviceScaleFactor: 1 });
@@ -116,6 +122,11 @@ try {
       await page.goto(`${base}${unit}.html?theme=${run.theme}`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
       await page.evaluate(() => document.fonts.ready);
+      // Pin the loaded target document, not about:blank's event properties.
+      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: !run.name.startsWith('pc-'), onObservation: observation => {
+        dest.screenshotEnvironment.push({ run: run.name, ...observation });
+        if (!observation.pass) report.failures.push({ unit, run: run.name, reason: observation.reason, screenshotEnvironment: observation });
+      } });
       const measurementControl = await page.evaluate(() => {
         const c = document.createElement('canvas'); c.width = 600; c.height = 400;
         const x = c.getContext('2d');
@@ -165,12 +176,28 @@ try {
       if(!fractionControl.pass)throw Error('Stacked-fraction clipping positive/negative control failed');
       const settle = () => page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__g7Labels = []; lab.render(); });
       const capture = async filename => {
-        // Full-page screenshots of a scrolled sticky stage can contain an artificial
-        // blank strip. Capture from the actual page top after real interactions.
-        await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
-        await settle();
-        await page.screenshot({ path: path.join(out, filename), fullPage: true });
-        dest.captures.push(filename);
+        const identity = await page.evaluate(() => ({ id: String(lab.scene.id), state: `${lab.tab}:${lab.s.step}` }));
+        try {
+          const bundle = await captureReviewState({ page, guard: screenshotGuard, out, name: filename, ...identity, fullPage: true, settle, collectContent: false,
+            onCapture: e => {
+              const bytes = fs.readFileSync(path.join(out, e.file));
+              if (bytes.length < 33 || !bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) || bytes.toString('ascii', 12, 16) !== 'IHDR') throw Error(`Unreadable capture PNG: ${e.file}`);
+              const png = { sha256: sha256(bytes), bytes: bytes.length, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+              if (!screenshotEnvironmentMatches(e.frame.touchEnvironment, screenshotGuard.expectedTouch)) throw Error(`Unverified screenshot environment: ${e.file}`);
+              if (e.frame.fullPage === false && (png.width !== e.frame.viewport.width || png.height !== e.frame.viewport.height || e.frame.touchEnvironment.pixelEnvironment !== VIEWPORT_PIXEL_POLICY)) throw Error(`Viewport capture readback mismatch: ${e.file}`);
+              dest.captureMetadata[e.file] = { ...e.frame, png, pngSha256: png.sha256 };
+            }
+          });
+          if (screenshotGuard.expectedTouch) {
+            const frame = dest.captureMetadata[bundle.file];
+            if (frame?.fullPage !== false || bundle.rawReference?.file !== filename) throw Error(`Required viewport evidence missing: ${filename}`);
+            dest.viewportCaptures.push({ file: bundle.file, rawReference: filename, run: run.name, ...identity, frame });
+          }
+          dest.captures.push(filename);
+        } catch (error) {
+          report.failures.push({ unit, run: run.name, ...identity, reason: 'screenshot-evidence-failed', file: filename, error: error.message });
+          throw error;
+        }
       };
       const measure = async (scene, state) => {
         await settle();
@@ -496,6 +523,8 @@ try {
         (report.runSummaries ||= []).push({ unit, run: run.name, status: runError ? 'ABORTED' : 'FINISHED', initial,
           ...(focused ? { coverageScope: 'SELECTED_SCENES_ONLY', registeredSceneCount: dest.registeredScenes?.length ?? null, selectedSceneCount: expectedSceneIds?.length ?? null } : {}) });
         if (runError) (report.abortedRuns ||= []).push({ unit, run: run.name, error: runError, runtimeErrors: errors.slice(), initial });
+        try { await screenshotGuard?.close(); }
+        catch (error) { report.failures.push({ unit, run: run.name, reason: 'screenshot-guard-cleanup', error: error.message }); }
         try { if (ctx) await ctx.close(); }
         finally {
           fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));

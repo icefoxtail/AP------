@@ -64,7 +64,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 로그의 정의($\\log_a N = k \\iff a^k = N$)를 사용하여 미지수를 구함.\\n$i)  a  의 값 구하기$\\n$\\log_a 4 = 2 \\implies a^2 = 4$\\n$\\because a$는 로그의 밑이므로 $a>0$ 이고 $a \\neq 1$ 임.\\n$\\therefore a = 2$\\n$ii)  b  의 값 구하기$\\n$\\log_3 b = -1 \\implies b = 3^{-1} = \\frac{1}{3}$\\n$iii) 최종 비율 계산$\\n$\\frac{a}{b} = \\frac{2}{1/3} = 2 \\times 3 = 6$\\n$\\therefore 6$",
+    "solution": "<b>[Logical Anchor]</b> 로그의 정의($\\log_a N = k \\iff a^k = N$)를 사용하여 미지수를 구함.\\n$i)  a  의 값 구하기$\\n$\\log_a 4 = 2 \\implies a^2 = 4$\\n$\\because a$는 로그의 밑이므로 $a>0$ 이고 $a \\neq 1$ 임.\\n$\\therefore a = 2$\\n$ii)  b  의 값 구하기$\\n$\\log_3 b = -1 \\implies b = 3^{-1} = \\frac{1}{3}$\\n$iii) 최종 비율 계산$\\n$\\frac{a}{b} = \\frac{2}{\\frac{1}{3}} = 2 \\times 3 = 6$\\n$\\therefore 6$",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
@@ -106,7 +106,7 @@ window.questionBank = [
       "참거짓"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 로그함수의 밑의 범위에 따른 증감 상태와 평행이동의 조건을 분석함.\\n① 진수 조건: $x-2 > 0 \\implies x > 2$ (참)\\n② 점근선: 진수가 $0$이 되는 $x-2 = 0 \\implies x = 2$ (참)\\n③ 점 대입: $x=3$ 이면 $y = \\log_{1/3}(3-2)-1 = \\log_{1/3}1 - 1 = 0 - 1 = -1$ (참)\\n④ 밑 분석: 밑 $a = \\frac{1}{3}$ 이며 $0 < a < 1$ 이므로 감소함수임. (참)\\n⑤ 평행이동 조건: $y = \\log_3 x$ 의 밑은 $3$이고, 주어진 함수의 밑은 $1/3$임.\\n$\\because$ 밑이 서로 다르면 평행이동만으로 겹칠 수 없으며, 대칭이동($y$축 대칭 등)이 수반되어야 함. (거짓)\\n$\\therefore$ ⑤",
+    "solution": "<b>[Logical Anchor]</b> 로그함수의 밑의 범위에 따른 증감 상태와 평행이동의 조건을 분석함.\\n① 진수 조건: $x-2 > 0 \\implies x > 2$ (참)\\n② 점근선: 진수가 $0$이 되는 $x-2 = 0 \\implies x = 2$ (참)\\n③ 점 대입: $x=3$ 이면 $y = \\log_{\\frac{1}{3}}(3-2)-1 = \\log_{\\frac{1}{3}}1 - 1 = 0 - 1 = -1$ (참)\\n④ 밑 분석: 밑 $a = \\frac{1}{3}$ 이며 $0 < a < 1$ 이므로 감소함수임. (참)\\n⑤ 평행이동 조건: $y = \\log_3 x$ 의 밑은 $3$이고, 주어진 함수의 밑은 $\\frac{1}{3}$임.\\n$\\because$ 밑이 서로 다르면 평행이동만으로 겹칠 수 없으며, 대칭이동($y$축 대칭 등)이 수반되어야 함. (거짓)\\n$\\therefore$ ⑤",
     "level": "중",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",
@@ -284,7 +284,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 사분면에 따른 삼각비의 부호를 결정한 후 각 변환 공식을 적용함.\\n$i)  \\cos\\theta, \\tan\\theta  도출$\\n$\\theta$는 제 2사분면의 각이므로 $\\cos<0, \\tan<0$ 임.\\n$\\sin^2\\theta + \\cos^2\\theta = 1 \\implies \\cos^2\\theta = 1 - (3/5)^2 = 16/25 \\implies \\cos\\theta = -4/5$\\n$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{3/5}{-4/5} = -3/4$\\n$ii) 각 변환 공식 적용$\\n$\\sin(\\frac{\\pi}{2} + \\theta) = \\cos\\theta$\\n$\\tan(\\pi - \\theta) = -\\tan\\theta$\\n$iii) 전체 식 계산$\\n$\\implies \\cos\\theta + (-\\tan\\theta) - \\cos\\theta = -\\tan\\theta$\\n$\\therefore -(-3/4) = 3/4$",
+    "solution": "<b>[Logical Anchor]</b> 사분면에 따른 삼각비의 부호를 결정한 후 각 변환 공식을 적용함.\\n$i)  \\cos\\theta, \\tan\\theta  도출$\\n$\\theta$는 제 2사분면의 각이므로 $\\cos<0, \\tan<0$ 임.\\n$\\sin^2\\theta + \\cos^2\\theta = 1 \\implies \\cos^2\\theta = 1 - (\\frac{3}{5})^2 = 16/25 \\implies \\cos\\theta = -\\frac{4}{5}$\\n$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{\\frac{3}{5}}{-\\frac{4}{5}} = -\\frac{3}{4}$\\n$ii) 각 변환 공식 적용$\\n$\\sin(\\frac{\\pi}{2} + \\theta) = \\cos\\theta$\\n$\\tan(\\pi - \\theta) = -\\tan\\theta$\\n$iii) 전체 식 계산$\\n$\\implies \\cos\\theta + (-\\tan\\theta) - \\cos\\theta = -\\tan\\theta$\\n$\\therefore -(-\\frac{3}{4}) = \\frac{3}{4}$",
     "level": "중",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
@@ -665,7 +665,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 지수 식을 상수로 두어 역수 관계를 유도한 후 로그 조건과 연립함.\\n$i) 역수 합 도출$\\n$b = \\frac{5ac}{a+2c} \\implies \\frac{1}{b} = \\frac{a+2c}{5ac} = \\frac{1}{5c} + \\frac{2}{5a}$\\n$ii) 로그 변환$\\n$5^a = k^b = 7^c = T$ 라 하면,\\n$a = \\log_5 T \\implies \\frac{1}{a} = \\log_T 5$\\n$b = \\log_k T \\implies \\frac{1}{b} = \\log_T k$\\n$c = \\log_7 T \\implies \\frac{1}{c} = \\log_T 7$\\n$iii) 관계식 대입$\\n$\\log_T k = \\frac{1}{5}\\log_T 7 + \\frac{2}{5}\\log_T 5$\\n$\\log_T k = \\log_T ( 7^{1/5} \\cdot 5^{2/5} ) = \\log_T ( 7 \\cdot 25 )^{1/5} = \\log_T (175)^{1/5}$\\n$k = (175)^{1/5} \\implies k^5 = 175$\\n$\\therefore 175$",
+    "solution": "<b>[Logical Anchor]</b> 지수 식을 상수로 두어 역수 관계를 유도한 후 로그 조건과 연립함.\\n$i) 역수 합 도출$\\n$b = \\frac{5ac}{a+2c} \\implies \\frac{1}{b} = \\frac{a+2c}{5ac} = \\frac{1}{5c} + \\frac{2}{5a}$\\n$ii) 로그 변환$\\n$5^a = k^b = 7^c = T$ 라 하면,\\n$a = \\log_5 T \\implies \\frac{1}{a} = \\log_T 5$\\n$b = \\log_k T \\implies \\frac{1}{b} = \\log_T k$\\n$c = \\log_7 T \\implies \\frac{1}{c} = \\log_T 7$\\n$iii) 관계식 대입$\\n$\\log_T k = \\frac{1}{5}\\log_T 7 + \\frac{2}{5}\\log_T 5$\\n$\\log_T k = \\log_T ( 7^{\\frac{1}{5}} \\cdot 5^{\\frac{2}{5}} ) = \\log_T ( 7 \\cdot 25 )^{\\frac{1}{5}} = \\log_T (175)^{\\frac{1}{5}}$\\n$k = (175)^{\\frac{1}{5}} \\implies k^5 = 175$\\n$\\therefore 175$",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
@@ -776,7 +776,7 @@ window.questionBank = [
       "지수"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 두 그래프는 직선 $y=x-1$에 대하여 대칭이므로 교점의 중점을 이용한다.\\n$i)$ 직선 $y=-x+6$과 대칭축 $y=x-1$의 교점은 $M(\\frac{7}{2},\\frac{5}{2})$이다. $AB=4\\sqrt{2}$이고 $AB$의 기울기는 $-1$이므로 $A(\\frac{3}{2},\\frac{9}{2})$, $B(\\frac{11}{2},\\frac{1}{2})$로 둘 수 있다.\\n$ii)$ $A$가 $y=a^{x-1}$ 위의 점이므로 $\\frac{9}{2}=a^{1/2}$, 따라서 $a=\\frac{81}{4}$이다.\\n$iii)$ $C=(0,0)$이므로 $S=\\frac12\\left|\\frac32\\cdot\\frac12-\\frac92\\cdot\\frac{11}{2}\\right|=12$이다. 따라서 $81S=972$이다.",
+    "solution": "<b>[Logical Anchor]</b> 두 그래프는 직선 $y=x-1$에 대하여 대칭이므로 교점의 중점을 이용한다.\\n$i)$ 직선 $y=-x+6$과 대칭축 $y=x-1$의 교점은 $M(\\frac{7}{2},\\frac{5}{2})$이다. $AB=4\\sqrt{2}$이고 $AB$의 기울기는 $-1$이므로 $A(\\frac{3}{2},\\frac{9}{2})$, $B(\\frac{11}{2},\\frac{1}{2})$로 둘 수 있다.\\n$ii)$ $A$가 $y=a^{x-1}$ 위의 점이므로 $\\frac{9}{2}=a^{\\frac{1}{2}}$, 따라서 $a=\\frac{81}{4}$이다.\\n$iii)$ $C=(0,0)$이므로 $S=\\frac12\\left|\\frac32\\cdot\\frac12-\\frac92\\cdot\\frac{11}{2}\\right|=12$이다. 따라서 $81S=972$이다.",
     "level": "중",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",

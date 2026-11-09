@@ -79,7 +79,7 @@ window.questionBank = [
       "$\\sqrt{18} \\div \\sqrt{3} \\times \\sqrt{6} = 3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 근호를 포함한 식의 곱셈과 나눗셈 법칙을 적용한다.\\n조건 정리: 각 계산식의 좌변을 정리하여 우변과 비교한다.\\n풀이 방향: $\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}$, $\\sqrt{a} \\div \\sqrt{b} = \\sqrt{a/b}$를 이용한다.\\n정석 풀이:\\n① $\\sqrt{14} \\times \\sqrt{2} = \\sqrt{28} = 2\\sqrt{7}$\\n② $\\sqrt{20} \\div \\sqrt{5} = \\sqrt{4} = 2$\\n③ $(2 \\times 3) \\times (\\sqrt{3} \\times \\sqrt{5}) = 6\\sqrt{15}$\\n④ $4\\sqrt{6} \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{18} = 6\\sqrt{2}$\\n⑤ $\\sqrt{18} \\div \\sqrt{3} \\times \\sqrt{6} = \\sqrt{6} \\times \\sqrt{6} = 6$이다. 3이 아니므로 잘못되었다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 근호를 포함한 식의 곱셈과 나눗셈 법칙을 적용한다.\\n조건 정리: 각 계산식의 좌변을 정리하여 우변과 비교한다.\\n풀이 방향: $\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}$, $\\sqrt{a} \\div \\sqrt{b} = \\sqrt{\\frac{a}{b}}$를 이용한다.\\n정석 풀이:\\n① $\\sqrt{14} \\times \\sqrt{2} = \\sqrt{28} = 2\\sqrt{7}$\\n② $\\sqrt{20} \\div \\sqrt{5} = \\sqrt{4} = 2$\\n③ $(2 \\times 3) \\times (\\sqrt{3} \\times \\sqrt{5}) = 6\\sqrt{15}$\\n④ $4\\sqrt{6} \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{18} = 6\\sqrt{2}$\\n⑤ $\\sqrt{18} \\div \\sqrt{3} \\times \\sqrt{6} = \\sqrt{6} \\times \\sqrt{6} = 6$이다. 3이 아니므로 잘못되었다.\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -247,7 +247,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈 성질 $\\sqrt{a}\\sqrt{b}=\\sqrt{ab}$ 및 $\\sqrt{a}\\div\\sqrt{b}=\\sqrt{a/b}$를 이용한다.\\n조건 정리: 주어진 식을 계산하여 $a\\sqrt{b}$ 형태로 변환한다.\\n풀이 방향: 근호 안의 수를 먼저 계산하거나, 각각을 $a\\sqrt{b}$ 꼴로 고친 후 계산한다.\\n정석 풀이:\\n$\\sqrt{54} \\times \\sqrt{20} \\div \\sqrt{15} = \\sqrt{\\frac{54 \\times 20}{15}}$\\n$= \\sqrt{\\frac{1080}{15}} = \\sqrt{72}$\\n$\\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}$\\n따라서 $a=6, b=2$이므로 $a+b = 6+2 = 8$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈 성질 $\\sqrt{a}\\sqrt{b}=\\sqrt{ab}$ 및 $\\sqrt{a}\\div\\sqrt{b}=\\sqrt{\\frac{a}{b}}$를 이용한다.\\n조건 정리: 주어진 식을 계산하여 $a\\sqrt{b}$ 형태로 변환한다.\\n풀이 방향: 근호 안의 수를 먼저 계산하거나, 각각을 $a\\sqrt{b}$ 꼴로 고친 후 계산한다.\\n정석 풀이:\\n$\\sqrt{54} \\times \\sqrt{20} \\div \\sqrt{15} = \\sqrt{\\frac{54 \\times 20}{15}}$\\n$= \\sqrt{\\frac{1080}{15}} = \\sqrt{72}$\\n$\\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}$\\n따라서 $a=6, b=2$이므로 $a+b = 6+2 = 8$이다.\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -643,7 +643,7 @@ window.questionBank = [
     "content": "$\\sqrt{\\frac{12}{x}}$가 자연수가 되도록 하는 모든 자연수 $x$의 값의 합을 구하시오.",
     "choices": [],
     "answer": "15",
-    "solution": "[키포인트] $\\sqrt{\\text{식}}$이 자연수가 되려면 근호 안의 분수 $\\frac{12}{x}$가 어떤 자연수의 제곱(제곱수)이 되어야 한다.\\n조건 정리: $12 = 2^2 \\times 3$ 임을 이용하여 $x$가 지수를 짝수로 만드는 약수임을 확인한다.\\n풀이 방향: $\\frac{12}{x}$가 $1, 4, 9, \\dots$ 등이 되는 자연수 $x$를 찾는다.\\n정석 풀이:\\n1) $\\frac{12}{x} = 1 \\Rightarrow x=12$\\n2) $\\frac{12}{x} = 4 \\Rightarrow x=3$\\n3) $\\frac{12}{x} = 9 \\Rightarrow x=12/9$ (자연수 아님)\\n따라서 가능한 자연수 $x$는 3, 12이다.\\n모든 $x$의 합은 $3+12 = 15$이다.\\n따라서 구하는 값은 15이다.",
+    "solution": "[키포인트] $\\sqrt{\\text{식}}$이 자연수가 되려면 근호 안의 분수 $\\frac{12}{x}$가 어떤 자연수의 제곱(제곱수)이 되어야 한다.\\n조건 정리: $12 = 2^2 \\times 3$ 임을 이용하여 $x$가 지수를 짝수로 만드는 약수임을 확인한다.\\n풀이 방향: $\\frac{12}{x}$가 $1, 4, 9, \\dots$ 등이 되는 자연수 $x$를 찾는다.\\n정석 풀이:\\n1) $\\frac{12}{x} = 1 \\Rightarrow x=12$\\n2) $\\frac{12}{x} = 4 \\Rightarrow x=3$\\n3) $\\frac{12}{x} = 9 \\Rightarrow x=\\frac{12}{9}$ (자연수 아님)\\n따라서 가능한 자연수 $x$는 3, 12이다.\\n모든 $x$의 합은 $3+12 = 15$이다.\\n따라서 구하는 값은 15이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",

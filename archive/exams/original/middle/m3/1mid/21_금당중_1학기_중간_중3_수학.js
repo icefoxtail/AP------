@@ -341,7 +341,7 @@ window.examData = {
       ],
       "images": [],
       "answer": "⑤",
-      "solution": "[원문 조건 및 구할 대상]\n제곱근의 연산에 관한 5개의 보기 중 올바른 등식을 고른다.\n\n[핵심 발상/공식/보조선]\n- 나눗셈: $\\sqrt{a} \\div \\sqrt{b} = \\sqrt{a/b}$\n- 곱셈: $\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}$\n- 제곱의 근호: $\\sqrt{a^2} = |a|$\n- 동류항 연산: $m\\sqrt{a} \\pm n\\sqrt{a} = (m \\pm n)\\sqrt{a}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 선지 ① 검토\n$\\sqrt{8} \\div \\sqrt{2} = \\sqrt{\\frac{8}{2}} = \\sqrt{4} = 2 \\ne 4$ (거짓)\n\n2단계: 선지 ② 검토\n$\\sqrt{5} \\times \\sqrt{2} = \\sqrt{5 \\times 2} = \\sqrt{10} \\ne 10$ (거짓)\n\n3단계: 선지 ③ 검토\n$\\sqrt{(-5)^2} = |-5| = 5 \\ne -5$ (거짓)\n\n4단계: 선지 ④ 검토\n$\\sqrt{3} + \\sqrt{3} = 2\\sqrt{3} = \\sqrt{12} \\ne \\sqrt{6}$ (거짓)\n\n5단계: 선지 ⑤ 검토\n$2\\sqrt{2} - \\sqrt{2} = (2 - 1)\\sqrt{2} = 1\\sqrt{2} = \\sqrt{2}$ (참)\n\n[경우 나눔 및 5개 선지 검토]\n①, ②, ③, ④는 계산 규칙 적용 오류이며, ⑤번만이 동류항 계산으로 옳다.\n\n[명확한 결론]\n따라서 옳은 것은 ⑤이다."
+      "solution": "[원문 조건 및 구할 대상]\n제곱근의 연산에 관한 5개의 보기 중 올바른 등식을 고른다.\n\n[핵심 발상/공식/보조선]\n- 나눗셈: $\\sqrt{a} \\div \\sqrt{b} = \\sqrt{\\frac{a}{b}}$\n- 곱셈: $\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}$\n- 제곱의 근호: $\\sqrt{a^2} = |a|$\n- 동류항 연산: $m\\sqrt{a} \\pm n\\sqrt{a} = (m \\pm n)\\sqrt{a}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 선지 ① 검토\n$\\sqrt{8} \\div \\sqrt{2} = \\sqrt{\\frac{8}{2}} = \\sqrt{4} = 2 \\ne 4$ (거짓)\n\n2단계: 선지 ② 검토\n$\\sqrt{5} \\times \\sqrt{2} = \\sqrt{5 \\times 2} = \\sqrt{10} \\ne 10$ (거짓)\n\n3단계: 선지 ③ 검토\n$\\sqrt{(-5)^2} = |-5| = 5 \\ne -5$ (거짓)\n\n4단계: 선지 ④ 검토\n$\\sqrt{3} + \\sqrt{3} = 2\\sqrt{3} = \\sqrt{12} \\ne \\sqrt{6}$ (거짓)\n\n5단계: 선지 ⑤ 검토\n$2\\sqrt{2} - \\sqrt{2} = (2 - 1)\\sqrt{2} = 1\\sqrt{2} = \\sqrt{2}$ (참)\n\n[경우 나눔 및 5개 선지 검토]\n①, ②, ③, ④는 계산 규칙 적용 오류이며, ⑤번만이 동류항 계산으로 옳다.\n\n[명확한 결론]\n따라서 옳은 것은 ⑤이다."
     },
     {
       "id": 11,

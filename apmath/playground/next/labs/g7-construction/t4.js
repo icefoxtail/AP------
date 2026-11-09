@@ -85,7 +85,12 @@
       Tr.forEach((p, i) => { b.point(p, { color: col(VCOL[i]), r: 5.2 }); });
       img.forEach((p, i) => { b.point(p, { color: col(VCOL[i]), r: 5.2 }); });
       if (C.txt) {
-        if (done) { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i] + '=' + imageNames[i], { size: 15, gap: 14, color: st >= 2 ? VCOL[i] : 'ink' })); }
+        if (done) { Tr.forEach((p, i) => {
+          const text = 'ABC'[i] + '=' + imageNames[i], color = st >= 2 ? VCOL[i] : 'ink';
+          // 포개진 이름은 한 글자보다 길어 왼쪽 화면 밖으로 밀릴 수 있어요.
+          if (b.W < 560) T(b, p, text, { dy: i < 2 ? 20 : -20, size: 15, color });
+          else tagOut(b, p, cA, text, { size: 15, gap: 14, color });
+        }); }
         else { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); img.forEach((p, i) => tagOut(b, p, cB, imageNames[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); }
         const cap = done ? `꼭 포개어져요 → 합동 (△ABC ≡ △${imageNames})`
           : C.review ? (st >= 3 ? '같은 표시의 변·각이 서로 대응해요.' : st >= 2 ? '같은 색의 점은 서로 대응해요.' : '어떤 점·변·각이 대응할지 살펴보세요.')

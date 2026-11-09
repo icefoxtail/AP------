@@ -16,16 +16,50 @@ on:
       - 'apmath/playground/next/tools/middle-initial-*'
       - 'apmath/playground/next/tools/apl-stage-insets.test.mjs'
       - '.github/workflows/middle-initial-figure.yml'
+      - '.github/workflows/middle-initial-public.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: middle-initial-${{ github.ref }}
+  # A draft PR for an already pushed head reuses the same full verification
+  # slot; a different source SHA keeps its own evidence run.
+  group: middle-initial-${{ github.event.pull_request.head.ref || github.ref_name }}-${{ github.event.pull_request.head.sha || github.sha }}
   cancel-in-progress: true
 
 jobs:
+  existing-scene-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install real Chromium for the existing complete scene smoke
+        run: |
+          npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Existing all-lab scene smoke at its original five environments
+        shell: bash
+        env:
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/scene-smoke-server.log" 2>&1 &
+          for attempt in {1..20}; do
+            if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
+            sleep 1
+          done
+          node apmath/playground/next/tools/scene-smoke.mjs 2>&1 | tee "$RUNNER_TEMP/scene-smoke.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-existing-scene-smoke
+          path: ${{ runner.temp }}/scene-smoke*.log
+          retention-days: 14
   inventory:
     runs-on: ubuntu-24.04
     outputs:
@@ -109,6 +143,13 @@ jobs:
                       target.parent.mkdir(parents=True, exist_ok=True)
                       os.link(source, target)
           PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-report
+          path: ${{ runner.temp }}/initial-evidence/after/report.json
+          compression-level: 9
+          retention-days: 14
       - uses: actions/upload-artifact@v4
         if: always()
         with:
