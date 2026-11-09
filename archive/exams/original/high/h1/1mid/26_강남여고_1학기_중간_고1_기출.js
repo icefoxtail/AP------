@@ -205,9 +205,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "k=-2는 x축과 만나지 않고 k=-1은 만난다",
-    "solutionImageCaption": "k=-2는 x축과 만나지 않고 k=-1은 만난다",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축보다 위에 꼭짓점 (−3,5)가 있는 아래로 볼록한 포물선.",
+    "solutionImageCaption": "예: k=−3이면 꼭짓점이 x축 위에 있어 교점이 없다. 꼭짓점 높이가 양수인 조건을 만족하는 정수 k의 최댓값을 구하면 정답은 −2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -291,7 +291,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_강남여고_1학기_중간_고1_기출/q07.png"
+    "image": "assets/images/26_강남여고_1학기_중간_고1_기출/q07.png",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²와 직선 y=2x+4의 교점 P, Q에 x좌표 1−√5, 1+√5가 표시된 그림.",
+    "solutionImageCaption": "두 교점의 x좌표는 켤레인 무리수이므로 근의 합과 곱으로 a, b를 구한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -578,7 +582,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 근이 1과 5인 포물선에서 x=2인 점을 점선으로 x축과 연결하고 f(2)로 표시한 그림.",
+    "solutionImageCaption": "두 근 1, 5로 f(x)를 인수분해한 꼴로 쓰고 x=2를 대입한다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -620,9 +628,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "m=1일 때 f(-1)<0, f(1)>0",
-    "solutionImageCaption": "m=1일 때 f(-1)<0, f(1)>0",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 점 (−1,−13)은 x축 아래에, 점 (1,3)은 x축 위에 있는 그림.",
+    "solutionImageCaption": "예: m=2인 경우 f(−1)<0, f(1)>0으로 두 근의 위치를 확인한다. 이 부호 조건을 만족하는 정수 m의 최솟값을 구하면 정답은 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -665,9 +673,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "구간에서 감소하므로 최솟값 10, 최댓값 18",
-    "solutionImageCaption": "구간에서 감소하므로 최솟값 10, 최댓값 18",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0≤x≤2에서 감소하는 포물선으로 왼쪽 끝에는 f(0), 오른쪽 끝점 B에는 좌표 (2,10)이 표시된 그림.",
+    "solutionImageCaption": "꼭짓점이 구간 오른쪽에 있으므로 f(2)=10으로 a를 구한 뒤 f(0)을 계산한다. 정답은 18이다.",
     "solutionImageSize": "full"
   },
   {
@@ -710,9 +718,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "h(x)=-2(x-2)(x-6)의 그래프는 x=4에서 최댓값 8을 가진다.",
-    "solutionImageCaption": "h(x)=-2(x-2)(x-6)의 그래프는 x=4에서 최댓값 8을 가진다.",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 교점의 가로좌표를 근으로 하는 위로 볼록한 포물선과 꼭짓점에서 두 축으로 이어지는 점선.",
+    "solutionImageCaption": "두 함수의 차이 함수는 이차항의 계수가 −2이고 두 근이 2와 6이므로 두 일차식의 곱으로 나타낸다. 두 근의 평균인 4에서 최댓값 8을 얻는다. 정답은 12이다.",
     "solutionImageSize": "full"
   },
   {
@@ -837,9 +845,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "x는 판매가격을 6000원에서 100원씩 바꾼 횟수, y는 하루 이익(원)이며, x=5일 때 이익이 67500원으로 최대이다.",
-    "solutionImageCaption": "x는 판매가격을 6000원에서 100원씩 바꾼 횟수, y는 하루 이익(원)이며, x=5일 때 이익이 67500원으로 최대이다.",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 100원 단위의 가격 변화와 하루 이익(원)의 관계를 나타낸 포물선으로 꼭짓점은 (5,67500)이다.",
+    "solutionImageCaption": "x는 6000원에서 100원씩 바꾼 횟수이며 하루 이익은 x=5에서 최대이다. 정답은 6500원이다.",
     "solutionImageSize": "full"
   },
   {
@@ -910,7 +918,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수의 포물선과 직선 y=2bx가 한 점에서 접하며 접점에 지시선 라벨이 붙은 그림.",
+    "solutionImageCaption": "예: k=0일 때의 접점이다. 모든 k에서 교점이 하나이려면 교점 방정식의 판별식이 항상 0이어야 한다. 정답은 a=16, b=−4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -980,6 +992,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A가 직각이고 AC의 길이는 b, AB의 길이는 c, 빗변 BC의 길이는 2분의 9인 그림.",
+    "solutionImageCaption": "조건식을 정리하면 b²+c²=a²이므로 A가 직각이다. 주어진 길이와 b−c로 bc를 구해 넓이를 계산한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   }
 ];

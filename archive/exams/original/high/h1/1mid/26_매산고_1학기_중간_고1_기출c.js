@@ -144,7 +144,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 1≤x≤3에서 포물선 y=(x−2)²+2와 양 끝점 (1,3), (3,3), 꼭짓점 (2,2)가 표시되어 있다.",
+    "solutionImageCaption": "y=(x−2)²+2의 꼭짓점은 주어진 구간 안에 있으므로 최솟값은 2이다. 두 끝점의 함숫값이 모두 3이므로 최댓값은 3이다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -329,7 +333,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선 y=−x²−x+1이 y축의 점 (0,1)을 지나며 x축과 서로 다른 두 점에서 만난다.",
+    "solutionImageCaption": "예: a=−1, b=1일 때 y=ax²−x+b의 그래프이다. a<0, b>0에서 판별식 1−4ab>0이므로 두 실근을 갖는다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -366,7 +374,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=(x−8분의 5)²이 x축의 점 (8분의 5,0)에서 접한다.",
+    "solutionImageCaption": "그래프가 x축과 만나는 조건은 판별식 D≥0이다. D=8m−7이며, 그림은 경계인 D=0에서 포물선이 x축에 접하는 모습을 보여 준다. 정답은 8분의 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -404,9 +416,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q11-solution.svg",
-    "solutionImageAlt": "k=-3+2√3일 때 포물선 y=x²+kx+5가 직선 y=-3x+2에 점 T에서 접한다. k=-3-2√3일 때도 접하며 두 k의 곱은 -3이다.",
-    "solutionImageCaption": "k=-3+2√3일 때 포물선 y=x²+kx+5가 직선 y=-3x+2에 점 T에서 접한다. k=-3-2√3일 때도 접하며 두 k의 곱은 -3이다.",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²+kx+5와 주황 직선 y=−3x+2가 접점 T에서 만난다.",
+    "solutionImageCaption": "예: k=−3+2√3인 경우이며, 접점 T에서 포물선과 직선이 만난다. 두 식을 연립한 x²+(k+3)x+3=0이 중근을 가지므로 k²+6k−3=0이다. 근과 계수의 관계로 두 k의 곱을 구한다. 정답은 −3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -519,9 +531,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q14-solution.svg",
-    "solutionImageAlt": "a=3일 때 두 교점의 x좌표 α, β는 합이 12, 곱이 8이다",
-    "solutionImageCaption": "a=3일 때 두 교점의 x좌표 α, β는 합이 12, 곱이 8이다",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=(x−6)²−28의 두 x절편이 α, β로 표시되어 있으며 꼭짓점은 (6,−28), y절편은 (0,8)이다.",
+    "solutionImageCaption": "조건을 만족하는 가장 작은 자연수 a=3일 때의 그래프이다. α+β=12, αβ=8을 이용한다. 정답은 128이다.",
     "solutionImageSize": "full"
   },
   {
@@ -553,7 +565,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선 y=−(x−2)(x−5)가 x축과 (2,0), (5,0)에서 만나고 꼭짓점의 좌표는 (2분의 7,4분의 9)이다.",
+    "solutionImageCaption": "h(x)=f(x)−g(x)라 두면 두 함수의 교점으로부터 h(x)=−(x−2)(x−5)이다. h(x)=−(x−2분의 7)²+4분의 9이므로 α=2분의 7, β=4분의 9이다. 정답은 32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -645,9 +661,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q18-solution.svg",
-    "solutionImageAlt": "두 포물선은 C(-1,4), D(3/2, 21/4)에서 만난다. 직선 y=4(=C의 높이)는 교점이 3개이고, t=5처럼 3<t<25/4이면서 t≠4, t≠21/4이면 네 점에서 만난다.",
-    "solutionImageCaption": "두 포물선은 C(-1,4), D(3/2, 21/4)에서 만난다. 직선 y=4(=C의 높이)는 교점이 3개이고, t=5처럼 3<t<25/4이면서 t≠4, t≠21/4이면 네 점에서 만난다.",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f(x)와 주황 곡선 g(x)의 두 꼭짓점 좌표와 공통 교점 C, D가 표시되어 있다. C, D에서 x축 눈금으로 점선이 내려가고 D의 높이와 두 곡선 이름에 지시선 라벨이 붙어 있다. 점선 y=4와 y=5가 두 곡선에 걸쳐 그려져 있다.",
+    "solutionImageCaption": "예: f(x)=x²+3, g(x)=−x²+x+6으로 두고 수평선 y=4와 y=5를 비교한 그림이다. y=4는 공통 교점 C를 지나 전체 교점이 3개이고 y=5에서는 네 점이 서로 다르다. 각 포물선과 두 점에서 만나는 3<t<4분의 25에서 공통 교점의 높이 4와 4분의 21을 제외한다. 정답은 3<t<4 또는 4<t<4분의 21 또는 4분의 21<t<4분의 25이다.",
     "solutionImageSize": "full"
   },
   {
@@ -696,6 +712,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=f(x)가 x축과 두 점에서 만나고 점선 y=q는 꼭짓점에서 접한다. 점선 y=−2q는 x좌표가 −3과 11인 두 점에서 만나며 두 점은 x=4에 대해 대칭이다.",
+    "solutionImageCaption": "f(x)=(x−p)²+q라 두면 세 실근을 갖기 위해 q<0이고 f(t)=−2q이어야 한다. 두 t값 −3과 11의 대칭축은 p=4이며, 49+q=−2q에서 q=−3분의 49를 얻는다. 이를 f(9)에 대입한다. 정답은 3분의 26이다.",
+    "solutionImageSize": "full"
   }
 ];
