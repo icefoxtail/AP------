@@ -115,6 +115,10 @@ const requiredCommands = [
     args: ['--check', 'archive/tools/review-evidence-gate.mjs']
   },
   {
+    label: 'archive/tools/rebind-m2-create-golden-sample-evidence.test.mjs',
+    args: ['--test', 'archive/tools/rebind-m2-create-golden-sample-evidence.test.mjs']
+  },
+  {
     label: 'archive/tools/gpt2-one-shot-closeout.test.mjs',
     args: ['--test', 'archive/tools/gpt2-one-shot-closeout.test.mjs']
   },
