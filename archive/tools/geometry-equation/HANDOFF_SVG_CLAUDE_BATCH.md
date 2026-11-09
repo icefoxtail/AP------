@@ -3,7 +3,7 @@
 최종 갱신 2026-11-09 오전, Claude 메인(오케스트레이터).
 다음 세션은 이 파일 → `docs/agents/visual-svg.md` "진행 경로" 절 → `.tmp/work/ENGINE_GAPS.md` 순으로 읽고 시작한다.
 
-**도구 위치:** 이 문서가 말하는 `.tmp/work/`(스크립트·지시서·판정표 사본·runs·pub)는 git에 없고, 사용자 PC의 작업 트리 `C:/Users/USER/Desktop/AP------/.claude/worktrees/svg-h1-batch1`에만 있다. 그 작업 트리에서 이어서 작업한다(이 문서의 상대경로는 그 작업 트리 기준). 이전 판 전문은 같은 곳의 `.tmp/work/HANDOFF-history-20261109.md`. 이 문서를 고치면 저장소에도 반영한다(로컬 `.tmp/work/HANDOFF.md`는 사본).
+**도구 위치:** 스크립트·지시서는 저장소 `archive/tools/geometry-equation/ops/claude-batch/`에 있고, 쓸 때 `restore.sh`로 `<저장소>/.tmp/work/`에 펼친다(`.tmp/svg-m1`과 같은 방식). 작업 데이터(`runs/`, `pub/`, `triage-20261107/` 사본, `dec-*.json`)는 `.tmp/work/`에만 있고 git에 없다. 이 문서가 말하는 `.tmp/work/`·상대경로는 모두 **저장소 루트 기준**이며, 어느 PC·체크아웃에서든 같다(스크립트가 루트를 자동 탐지한다). **새 PC면** `ops/claude-batch/README.md`의 "새 PC 준비" 절차(저장소 받기 → svg-m1 복원 → restore.sh → Codex·환경변수 → triage 브랜치 풀기 → 엔진 의존성)를 먼저 한다. 도구·지시서를 고쳤으면 `restore.sh --save`로 저장소 폴더에 되돌려 커밋한다. 이 PC의 이전 작업 트리(`.claude/worktrees/svg-h1-batch1`)는 한 예일 뿐 고정이 아니다. 이전 판 전문은 개발 PC의 `.tmp/work/HANDOFF-history-20261109.md`(저장소에는 없음, 이 문서를 고치면 `.tmp/work/HANDOFF.md` 사본에도 반영).
 
 ---
 
@@ -46,10 +46,10 @@
 
 ---
 
-## 3. 도구 (`.tmp/work/`)
+## 3. 도구 (`.tmp/work/`, 원본은 `ops/claude-batch/`)
 
 ### 3-1. 루나 실행
-- Codex 바이너리: `C:/Users/USER/AppData/Local/OpenAI/Codex/bin/f71a721e0e6193a9/codex.exe`(0.167). PATH의 codex는 구버전. 옵션 `-C C:/Users/USER/codex-svg-cwd --add-dir <작업트리>`. 새 워크트리면 GEOMETRY_NODE_MODULES 설정(메모리 codex-cli-luna-invocation).
+- Codex 바이너리: 환경변수 `CODEX_BIN`(0.167 이상, gpt-6-luna 사용 가능해야 함. PATH의 구버전 codex는 실패). 루나 작업 폴더(저장소 밖 빈 폴더)는 `CODEX_CWD`, 렌더 의존성 node_modules는 `GEOMETRY_NODE_MODULES`(새 워크트리에서 playwright가 없을 때). 기본값은 개발 PC(Windows) 예시 `CODEX_BIN=C:/Users/USER/AppData/Local/OpenAI/Codex/bin/f71a721e0e6193a9/codex.exe`(앱 갱신 시 해시 폴더가 바뀜), `CODEX_CWD=C:/Users/USER/codex-svg-cwd`이고 없으면 스크립트가 분명한 오류를 낸다. 스크립트가 `-C $CODEX_CWD --add-dir <저장소>`를 붙인다. 자세한 준비는 `ops/claude-batch/README.md`.
 - 지시서: `prompts/impl-common.md`(구현), `prompts/review-common.md`(검수), `prompts/sonnet-final.md`(Sonnet 최종). 새 교훈은 여기에 추가.
 - 끝났는지는 `runs/<key>/<단계>/last.txt`가 생겼는지로 본다(REVIEW.md 첫 줄은 먼저 써진다).
 - 스크립트:
