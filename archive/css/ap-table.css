@@ -1,0 +1,123 @@
+/*
+ * AP Table Engine v1 - the single table design for questions and solutions.
+ * Markup is produced by archive/js/ap-table-engine.js (authors never style tables).
+ * Fonts are never shrunk here; long content wraps inside the cell instead.
+ * Selectors repeat `.ap-table` so they beat the legacy `table.question-table` rules
+ * and the narrow-solution rule in engine.html / mixed_engine.html.
+ */
+:root {
+    --ap-table-line-outer: max(0.30mm, 1px);
+    --ap-table-line-head: max(0.24mm, 1px);
+    --ap-table-line-inner: max(0.18mm, 1px);
+    --ap-table-color-outer: #222;
+    --ap-table-color-inner: #333;
+    --ap-table-font-size: 9pt;
+    --ap-table-pad-y: 0.8mm;
+    --ap-table-pad-x: 1.6mm;
+    --ap-table-row-min: 6mm;
+    --ap-table-shade: #f2f2f2;
+}
+
+@media print {
+    :root {
+        --ap-table-line-outer: 0.30mm;
+        --ap-table-line-head: 0.24mm;
+        --ap-table-line-inner: 0.18mm;
+    }
+}
+
+.ap-table-wrap {
+    display: block;
+    max-width: 100%;
+    margin: 4px 0 8px 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+table.ap-table.ap-table {
+    display: table;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 100%;
+    table-layout: auto;
+    margin: 4px auto 8px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: var(--ap-table-line-outer) solid var(--ap-table-color-outer);
+    background: #fff;
+    box-shadow: none;
+    font-family: inherit;
+    font-size: var(--ap-table-font-size);
+    line-height: 1.35;
+    text-align: center;
+    color: inherit;
+}
+
+table.ap-table.ap-table th,
+table.ap-table.ap-table td {
+    box-sizing: border-box;
+    height: var(--ap-table-row-min);
+    padding: var(--ap-table-pad-y) var(--ap-table-pad-x);
+    border: var(--ap-table-line-inner) solid var(--ap-table-color-inner);
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
+    text-align: center;
+    vertical-align: middle;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    box-shadow: none;
+}
+
+table.ap-table.ap-table th { font-weight: 600; }
+
+/* header rule: under the first row when it is made of header cells */
+table.ap-table.ap-table thead th,
+table.ap-table.ap-table thead td,
+table.ap-table.ap-table:not(:has(thead)) > tbody > tr:first-child > th,
+table.ap-table.ap-table:not(:has(thead)) > tr:first-child > th {
+    border-bottom: var(--ap-table-line-head) solid var(--ap-table-color-outer);
+}
+
+/* prose cells (long Korean text) read left to right, not centred */
+table.ap-table.ap-table .ap-cell-text,
+table.ap-table.ap-table td.ap-cell-text,
+table.ap-table.ap-table th.ap-cell-text {
+    text-align: left;
+    word-break: normal;
+}
+
+/* empty answer cells keep a usable size */
+table.ap-table.ap-table td:empty,
+table.ap-table.ap-table th:empty { min-width: 8mm; }
+table.ap-table.ap-table.ap-table-grid td,
+table.ap-table.ap-table.ap-table-grid th { min-width: 12mm; height: 12mm; }
+
+/* many columns: save width with padding only, never with font size */
+table.ap-table.ap-table.ap-table-wide th,
+table.ap-table.ap-table.ap-table-wide td { padding-left: 1mm; padding-right: 1mm; }
+
+.ap-shade,
+table.ap-table.ap-table .ap-shade { background: var(--ap-table-shade); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+table.ap-table.ap-table mjx-container { max-width: 100%; }
+
+/* narrow solution box (engine.html .sol-fit-narrow rule is 0,4,1 and forces table-layout:fixed) */
+.q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) table.ap-table.ap-table {
+    width: auto;
+    max-width: 100% !important;
+    table-layout: auto;
+    box-sizing: border-box;
+}
+.q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) table.ap-table.ap-table :is(td, th) {
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+
+@media print {
+    .ap-table-wrap { break-inside: avoid; page-break-inside: avoid; }
+    table.ap-table.ap-table { break-inside: avoid; page-break-inside: avoid; }
+    table.ap-table.ap-table tr { break-inside: avoid; page-break-inside: avoid; }
+}
