@@ -2052,6 +2052,17 @@ def _pp_region_rows(name,from_x,to_x,pieces,intervals,refs,line_specs,region_id)
     if not pp_same(rows[-1][1][1],to_x):raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+name)
     return rows
 
+def _pp_real_roots_inside(coefficients,start,end):
+    """The exact number of real roots strictly inside (start,end) of a polynomial with rational coefficients, for rational ends that are not roots
+    themselves (Sturm); None when that cannot be decided exactly (irrational coefficients or ends, or an end that is a root)."""
+    try:
+        values=[S.nsimplify(value) if not value.is_Rational else value for value in coefficients]
+        if not all(value.is_Rational for value in values) or not (start.is_Rational and end.is_Rational):return None
+        poly=S.Poly(sum(value*_PP_X**index for index,value in enumerate(values)),_PP_X,domain='QQ')
+        if poly.eval(start)==0 or poly.eval(end)==0:return None
+        return poly.count_roots(start,end)
+    except (TypeError,ValueError,NotImplementedError,S.PolynomialError):return None
+
 def _pp_region_crossings(upper_rows,lower_rows,region_id):
     """Refuse a region whose upper boundary does not stay strictly above its lower one inside (from,to). Endpoint touching is allowed."""
     for upper,upper_interval in upper_rows:
@@ -2059,7 +2070,11 @@ def _pp_region_crossings(upper_rows,lower_rows,region_id):
             start=max(upper_interval[0],lower_interval[0]);end=min(upper_interval[1],lower_interval[1])
             if not start<end:continue
             difference=pp_sub(upper,lower)
-            roots=pp_poly_roots(difference)
+            try:roots=pp_poly_roots(difference)
+            except ValueError as error:
+                # (EXT-20261109-f) an irreducible cubic/quartic has no closed-form root, but only roots INSIDE (start,end) matter: count them exactly (Sturm).
+                if str(error)!='PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM' or _pp_real_roots_inside(difference,start,end)!=0:raise
+                roots=[]
             if roots is None:raise ValueError('GRAPH_REGION_EMPTY:'+region_id)
             if any(start<root<end for root in roots):raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
             if float(_pp_poly_value(difference,(start+end)/2))<=0:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
