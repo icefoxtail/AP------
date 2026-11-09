@@ -35,7 +35,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 수직선의 해집합과 공통 구간에 놓인 정수점을 나타낸 그림",
+    "solutionImageCaption": "두 부등식을 각각 풀면 x>−3과 x≤1을 얻는다. 공통 범위 −3<x≤1에 속한 정수는 −2, −1, 0, 1이다. 정답은 4개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -71,7 +75,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: x>3인 범위와 2≤x≤6인 범위를 같은 눈금 위에 비교한 수직선",
+    "solutionImageCaption": "일차부등식의 해는 x>3이고, 이차부등식의 해는 2≤x≤6이다. 공통 범위에 속한 정수 4, 5, 6을 더한다. 정답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -109,9 +117,9 @@ window.questionBank = [
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q3-solution.svg",
-    "solutionImageAlt": "a=2와 a=1일 때 y=2x^2-4x+a의 그래프 비교",
-    "solutionImageCaption": "a=2와 a=1일 때 y=2x^2-4x+a의 그래프 비교",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선은 x축에 접하고 주황 포물선은 x축 아래에 있는 부분이 있는 비교 그림",
+    "solutionImageCaption": "예: 파란 그래프는 a=2인 f(x)=2x²−4x+2이고 주황 그래프는 a=0인 g(x)=2x²−4x이다. y=2x²−4x+a가 x축 아래에 있는 부분을 가지려면 꼭짓점의 높이 a−2가 음수여야 하므로 a<2이다. 정답은 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -149,7 +157,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 2≤x≤4와 x<2a 또는 x>5a인 두 바깥 구간을 비교한 수직선",
+    "solutionImageCaption": "예: 그림은 2a=2인 경계에서 2≤x≤4와 x<2a 또는 x>5a를 비교한 것이다. 공통 해가 없으려면 2a≤2이고 4≤5a이어야 한다. 자연수 조건을 적용하면 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -184,7 +196,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 꺾임점이 있는 함수 그래프와 수평선 y=4의 두 교점을 나타낸 그림",
+    "solutionImageCaption": "f(x)=|2x−1|−|x+1|로 두면 x=−1과 x=2분의 1에서 식이 바뀐다. f(x)>4인 부분은 x<−2 또는 x>6이므로 a=−2, b=6이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -221,7 +237,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 두 근과 x=−1, x=2에서 곡선까지 이어진 점선 안내선",
+    "solutionImageCaption": "예: a=2분의 1일 때 f(x)=x²+2ax+a²−1의 두 근은 −2분의 3과 2분의 1이다. 주어진 근의 배치는 f(−1)<0과 f(2)>0으로 옮겨 풀 수 있다. 두 조건의 공통 범위를 구하면 정답은 0<a<2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -256,7 +276,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 꺾이는 두 반직선 그래프와 수평선 y=3이 만나는 그림",
+    "solutionImageCaption": "f(x)=|2x−|x||로 두면 x<0에서는 −3x, x≥0에서는 x이다. f(x)≤3인 범위는 −1≤x≤3이므로 a=−1, b=3이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -321,7 +345,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 실근이 원점에 대하여 대칭으로 놓인 수직선",
+    "solutionImageCaption": "x²을 치환한 이차방정식의 두 근의 합은 8이다. 서로 다른 절댓값의 두 실근의 차가 2인 조건에서 k=4를 얻고, 네 근은 ±(√3+1), ±(√3−1)이다. 가장 큰 근과 가장 작은 근의 차는 2+2√3이므로 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -393,7 +421,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위 눈을 가로와 세로에 놓고 합이 5인 칸과 10인 칸을 서로 다른 진하기로 칠한 표",
+    "solutionImageCaption": "두 주사위의 눈의 합은 2부터 12까지이므로 5의 배수는 5와 10이다. 합이 5인 순서쌍은 4가지이고 합이 10인 순서쌍은 3가지이다. 정답은 7가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -528,7 +560,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 색칠한 칸을 포함하도록 고를 수 있는 위쪽·아래쪽 가로선과 왼쪽·오른쪽 세로선을 색으로 나눈 격자",
+    "solutionImageCaption": "색칠한 칸을 포함하려면 위쪽 가로선은 l₁, l₂, l₃ 중에서, 아래쪽 가로선은 l₄, l₅, l₆ 중에서 고른다. 왼쪽 세로선은 m₁, m₂ 중에서, 오른쪽 세로선은 m₃, m₄, m₅, m₆ 중에서 고른다. 정답은 72개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -597,7 +633,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 영역 A, C, E를 서로 다른 색으로 칠하고 B와 E의 색이 같은 경우와 다른 경우를 비교한 두 그림",
+    "solutionImageCaption": "서로 인접한 A, C, E의 색을 정하는 방법은 5×4×3가지이다. B가 E와 같은 색이면 D는 4가지 색, B가 E와 다른 두 색 중 하나이면 D는 3가지 색 중에서 고른다. 정답은 600가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -682,7 +722,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 중심의 원과 직선이 한 점에서 접하고 원점에서 접점까지 점선 반지름이 이어진 그림",
+    "solutionImageCaption": "그림의 f는 직선 −x+2y=a를 y에 관하여 정리한 함수이다. 해가 한 쌍이려면 이 직선이 원 x²+y²=5에 접해야 하며, 대입해 얻은 이차방정식의 판별식은 0이다. 자연수 조건을 적용하면 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
