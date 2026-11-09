@@ -1,0 +1,1350 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/21_제일고_1학기_기말_고2_확률과통계.js",
+  "sourceGitBlobSha": "7f4586ba8b8212cfd78b26c370ac3c1698f28d3e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "Antigravity 4slot pipeline (v1.5)",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "이미 2학년인 학생을 택했다는 조건"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "한 학생일 확률을 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "[조건부확률]"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "[조건부확률]",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$$P(\\text{UCC}\\mid\\text{2학년})=\\frac{16}{24}=\\frac23.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 도수 중 사건 도수의 비율로 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "2학년 24명"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "표에서 2학년 전체 학생 수를 표본공간의 크기로 보고 UCC 만들기 활동 학생 수의 비율을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "300번의 독립시행에서"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "소수의 눈이 나오는 횟수"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "합으로 알맞은 것은?"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "$X$의 평균 $E(X)$"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "분산 $V(X)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "$X\\sim B(300,1/2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "독립시행의 횟수 X가 따르는 이항분포 모형 적용"
+          },
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "$$E(X)=np=150,\\quad V(X)=np(1-p)=75.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "이항분포 평균 np 및 분산 np(1-p) 공식 사용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "300번"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주사위의 소수 눈 확률을 구해 이항분포의 평균 공식과 분산 공식을 적용하고 두 값을 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "제품을 1개씩 2번 꺼낼 때"
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "첫 번째에 무엇을 뽑았는지 조건"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "두 번째 꺼낸 제품이 불량품일 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "[비복원추출로 확인]",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 번째가 불량품인 경우와 정상품인 경우로 분류"
+          },
+          {
+            "term": "전확률",
+            "src": "solution",
+            "quote": "$$P(D_2)=\\frac4{16}\\frac3{15}+\\frac{12}{16}\\frac4{15}=\\frac{60}{240}=\\frac14.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 시행 결과에 따른 조건부확률들의 전확률 공식 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "16개의 제품"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 번째 추출 결과에 따라 경우를 나누고 전확률 공식을 사용하여 두 번째 불량품 추출 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$의"
+          },
+          {
+            "term": "확률분포표",
+            "src": "solution",
+            "quote": "[확률의 총합]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(1 \\le X < 3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$$\\frac14+3a+\\frac14+a=1\\Rightarrow4a=\\frac12\\Rightarrow a=\\frac18.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "확률의 총합이 1임을 이용하여 일차방정식을 풀어 a를 결정"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "$$P(1\\le X<3)=\\frac14+3\\cdot\\frac18=\\frac58.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "배반인 두 사건 X=1, X=2의 확률을 더함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$1\\le X<3$에는"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a$는 상수이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "확률의 총합이 1임을 이용해 미지수 a를 구하고, 구간에 해당하는 확률들을 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수에 대한 설명이다."
+          },
+          {
+            "term": "표본공간",
+            "src": "solution",
+            "quote": "확률변수는 표본공간의 각 결과에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이산확률변수",
+            "src": "solution",
+            "quote": "이산확률변수이므로 참이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연속확률변수",
+            "src": "solution",
+            "quote": "무한개와 연속을 동일시하면 안 된다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "표본공간을 정의역으로 하고"
+          },
+          {
+            "term": "공역",
+            "src": "stem",
+            "quote": "실수의 집합을 공역으로 하는 함수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "확률변수의 함수 정의와 이산확률변수 및 연속확률변수의 정의를 확인하여 보기의 참·거짓을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$A$가 $B$를 이길 확률"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$2:3$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "[조건부확률]"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "[경우 ① C가 부전승]",
+            "evidenceType": "IMPLIED",
+            "justification": "C가 부전승인 경우와 예선부터 출전하는 경우로 분류"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "$$P(\\text{한 경기}\\mid C\\text{ 우승})=\\frac{11/90}{19/90}=\\frac{11}{19}.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "C가 우승한 사건을 조건으로 한 경기만 치를 조건부확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "두 경우는 동시에 일어나지 않는다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "C의 대진표 배정에 따라 부전승 우승과 예선 출전 우승 확률을 각각 구한 후 조건부확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위 1개를 5번 던질 때"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "3의 배수의 눈이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "2번 나오는 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "[독립시행]",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$$P(X=2)={}_5C_2\\left(\\frac13\\right)^2\\left(\\frac23\\right)^3=\\frac{80}{243}.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "독립시행 확률 공식에서 5번 중 2번을 택하는 조합수 5C2 사용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "5번"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "3의 배수 확률을 구하고 5회 독립시행 확률 공식에 대입하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "세 개의 동전을 동시에 던질 때"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "[표준편차]"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "$X\\sim B(3,1/2)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동전 3개의 앞면 수 변수가 이항분포를 따름을 이용"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "$$V(X)=3\\cdot\\frac12\\cdot\\frac12=\\frac34.$$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 개의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "동전의 앞면 수가 이항분포를 따름을 이용하여 분산을 구한 후 제곱근을 취해 표준편차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "잘못 감별할 확률이 0.03"
+          },
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "70%는 진품이고 30%는 가품"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하면?"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "[역조건부확률]"
+          }
+        ],
+        "method": [
+          {
+            "term": "베이즈정리",
+            "src": "solution",
+            "quote": "$$P(T\\mid F)=\\frac{0.021}{0.306}=\\frac7{102}.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "가품 판정 조건 하에서 실제 진품일 사후확률을 베이즈 공식으로 계산"
+          },
+          {
+            "term": "전확률",
+            "src": "solution",
+            "quote": "$$P(F)=0.70\\cdot0.03+0.30\\cdot0.95=0.306.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 가품 판정 확률을 진품/가품의 분할로 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$a, b$는 서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전확률 공식으로 가품 판정 확률을 구하고 베이즈 정리를 적용하여 기약분수로 표현한 뒤 분자·분모를 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "100원짜리 동전 5개를"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "금액을 확률변수 $X$라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률질량함수",
+            "src": "stem",
+            "quote": "$X$의 확률질량함수를 구한 것으로"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "[변수 치환]",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "$K\\sim B(5,1/2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "앞면의 수 K가 따르는 이항분포 확률질량함수 이용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "시행 횟수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "앞면의 수 K를 이항분포로 모델링하고 금액 변수 X=100K로 치환하여 확률질량함수를 유도한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "수강하는 비율은 30%"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "남자일 확률은 $\\frac{1}{3}$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "남자 수를 $m$"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "[조건부확률]",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$$0.9m=0.3m+40-0.4m\\Rightarrow m=40.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "조건부확률 식을 일차방정식으로 세워 m을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "100명을 대상으로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "남자 수를 미지수로 두고 수강생 중 남자일 조건부확률 방정식을 세워 해결한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "2개의 공을 동시에 꺼낼 때"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "검은 공의 개수를 확률변수 $X$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$V(-5X+7)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "$$V(-5X+7)=(-5)^2V(X)=25\\cdot\\frac9{25}=9.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "일차변환 V(aX+b)=a^2 V(X) 성질 적용"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$$P(X=0)=\\frac{{}_2C_2}{{}_5C_2}=\\frac1{10},",
+            "evidenceType": "IMPLIED",
+            "justification": "조합을 이용하여 각 검은 공 개수별 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "검은 공 3개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "초기하분포의 조합으로 X의 확률분포를 구하여 분산을 계산하고 분산의 일차식 성질을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$에 대하여"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A) = \\frac{1}{2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A \\cup B)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "[덧셈정리]",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "$$P(A\\mid B)=\\frac{t}{5/12}=\\frac{12t}{5},",
+            "evidenceType": "IMPLIED",
+            "justification": "조건부확률의 정의를 교집합 확률 t에 대한 식으로 표현"
+          }
+        ],
+        "condition": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$$\\frac{12t}{5}+2t=\\frac{11}{15}\\Rightarrow t=\\frac16.$$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조건부확률 식에서 교집합의 확률을 구하고 확률의 덧셈정리를 적용하여 합사건의 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "{}_{32}\\mathrm{C}_1"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "\\left(\\frac{3}{4}\\right)^{31}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "$E(X^2+X)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "$X\\sim B(32,1/4)$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 급수를 이항분포 확률변수의 이차식 기댓값으로 인식"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "$$E(X^2)=V(X)+\\{E(X)\\}^2=6+64=70.$$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "이항분포 평균·분산"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 급수가 이항분포 B(32, 1/4)의 E(X^2+X)임을 파악하고 평균과 분산의 관계식을 이용해 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "2개의 구슬을 동시에 꺼내어"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "흰 공일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "[전체확률]"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "옮겨진 흰 공 수를 $W$라 하면 $W=0,1,2$ 세 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "옮겨진 흰 공의 개수에 따라 세 가지 경우로 분류"
+          },
+          {
+            "term": "전확률",
+            "src": "solution",
+            "quote": "$$P(\\text{B에서 흰 공})=\\frac6{15}\\cdot\\frac16+\\frac8{15}\\cdot\\frac26+\\frac1{15}\\cdot\\frac36=\\frac{6+16+3}{90}=\\frac5{18}.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 경우별 조건부확률에 해당 확률을 곱해 합산하는 전확률 정리 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "흰 공 2개, 노란 공 4개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주머니 A에서 옮겨진 흰 공의 개수별로 경우를 나누고 전확률 공식을 사용하여 B에서 흰 공을 꺼낼 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "이항분포 $B(n, p)$를 따르는"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "상수 $n$의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "$V(X)=np(1-p)=3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$$48(1-p)^2=3\\Rightarrow1-p=\\frac14$$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 조건식을 연립하여 p와 n을 구하는 방정식 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0 < p < 1$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이항분포 확률질량함수 비로부터 np와 1-p의 관계를 찾고 분산 조건과 연립하여 n을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "한 개의 주사위를 던져"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "9000원 이상의 상금을 받을 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하면?"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "[확률 계산]"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "5번 중 5 이상이 나온 횟수를 $Y$라 하면",
+            "evidenceType": "IMPLIED",
+            "justification": "5회 주사위 던지기를 독립시행으로 모형화"
+          },
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "5 이상의 눈이 나올 확률",
+            "evidenceType": "IMPLIED",
+            "justification": "성공 확률 1/3인 이항분포를 이용해 상금 조건 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$a, b$는 서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "5 이상의 눈이 나온 횟수를 변수로 두고 상금 9000원 이상 조건을 만족하는 이항분포 확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$가 가질 수 있는 값이 1, 2, 3, 4"
+          },
+          {
+            "term": "확률질량함수",
+            "src": "stem",
+            "quote": "확률질량함수가 $P(X=x) = ax+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E\\left(\\frac{X}{a} + \\frac{1}{b}\\right)$의 값으로"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립일차방정식",
+            "src": "solution",
+            "quote": "[연립]",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "[기댓값의 선형성]",
+            "evidenceType": "IMPLIED",
+            "justification": "기댓값의 선형성 E(aX+b)=aE(X)+b를 적용하여 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "$a,b$는 상수이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "확률의 총합이 1임과 기댓값 조건을 연립하여 a, b를 구한 뒤 기댓값의 선형성을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사면체",
+            "src": "stem",
+            "quote": "정사면체가 있다."
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "사탕을 동시에 꺼낼 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "초코 맛 사탕이 2개 나올 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "[K별 경우]",
+            "evidenceType": "IMPLIED",
+            "justification": "정사면체의 바닥 숫자 K=1,2,3,4별로 경우를 분류"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$$P(X=2\\mid K=3)=\\frac{{}_3C_2{}_3C_1}{{}_6C_3}=\\frac9{20}.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "비복원추출에서 사탕의 조합수 3C2*3C1 / 6C3 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "네 경우는 서로 배반이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정사면체의 바닥 숫자에 따라 추출할 사탕 수를 나눈 후 각 경우의 초코 사탕 2개 확률을 구해 합산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "[독립시행 모형]"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "흰 공이 나오는 횟수를 확률변수 $X$라 하자."
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "확률변수 $X^2$의 평균이 29일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x+n$의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "$$E(X^2)=V(X)+\\{E(X)\\}^2=np(1-p)+(np)^2=29.$$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부정방정식",
+            "src": "solution",
+            "quote": "[보기와 자연수 조건 활용]",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수 해 x, n을 구하기 위해 보기의 합 조건 대입 분석"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수 $x, n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이항분포의 제곱의 기댓값 식을 세우고, 자연수 조건을 이용해 보기 중 정수해를 갖는 쌍을 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이길 확률이 같은 두 사람이"
+          },
+          {
+            "term": "시행",
+            "src": "solution",
+            "quote": "매 게임의 승률은 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "(1) 게임을 중단하지 않고 계속할 때, $A$가 상금을 모두 가질 확률"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "우승할 확률에 비례해 나누므로"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "A가 우승하려면 B가 2승을 더 하기 전에 A가 4승해야 한다. 경우는 두 가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "A가 4연승하는 경우와 B가 1승 후 A가 이기는 경우로 분류"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "B의 1승 위치는 첫 4자리 중 하나이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "독립시행의 곱셈과 조합수를 적용하여 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "5번 먼저 이기는 사람"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "남은 승수를 기준으로 A가 먼저 5승에 도달할 확률을 경우분류로 구하고 그 확률에 비례하여 상금을 배분한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "10의 약수가 적혀 있는 공"
+          },
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "표본공간의 부분집합인 사건 $B$"
+          },
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "사건 $A$와 서로 독립인 사건 $B$의 개수를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "[중복 없이 B 구성]"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "$$P(A\\cap B)=P(A)P(B)\\Rightarrow\\frac14=\\frac13P(B)\\Rightarrow P(B)=\\frac34.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "독립의 필요충분조건 P(A∩B)=P(A)P(B)를 적용해 P(B)와 원소 수를 구함"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$$\\#B={}_4C_3\\,{}_8C_6=4\\cdot28=112.$$",
+            "evidenceType": "IMPLIED",
+            "justification": "사건 B를 구성하기 위해 교집합 원소 3개와 나머지 원소 6개를 조합으로 선택"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 12까지의 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사건의 독립 조건을 이용해 사건 B의 원소 수와 A와의 교집합 원소 수를 결정하고 조합의 곱으로 B의 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정육각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 1인 정육각형 $ABCDEF$"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "동전 1개를 던져서"
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "6칸의 정수배만큼 움직였을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "점 $P$가 꼭짓점 $A$에 도착할 확률을 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "공정한 동전의 전체 6회 결과는 $2^6=64$가지이고",
+            "evidenceType": "IMPLIED",
+            "justification": "동전 6회 던지기의 독립시행 모형 적용"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "가능한 앞면 수는 $k=0,2,4,6$뿐이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "총 이동량이 6의 배수가 되는 앞면의 횟수를 분류"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$$P(P\\text{가 A에 도착})=\\frac{{}_6C_0+{}_6C_2+{}_6C_4+{}_6C_6}{2^6}",
+            "evidenceType": "IMPLIED",
+            "justification": "각 k에 대해 조합수 6Ck를 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "이 중 6의 배수는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "동전 앞면의 횟수에 따른 총 이동량이 6의 배수가 되는 조건을 찾아 가능한 앞면 횟수별 경우의 수를 조합으로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "정사면체",
+            "src": "stem",
+            "quote": "정사면체가 있다."
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "검은 공이 나오는 개수를 확률변수 $X$라고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률질량함수",
+            "src": "stem",
+            "quote": "(1) $X$의 확률질량함수를 구하여라"
+          },
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "(2) $E(X)$의 값을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "전확률",
+            "src": "solution",
+            "quote": "각 열을 더해 4로 나눈다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정사면체 눈에 따른 조건부확률 표를 가중합하여 확률질량함수 도출"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "$$E(X)=0\\cdot\\frac18+1\\cdot\\frac38+2\\cdot\\frac38+3\\cdot\\frac18=\\frac32.$$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$$P(X=x\\mid K=k)=\\frac{{}_3C_x\\,{}_2C_{k-x}}{{}_5C_k}$$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 k별 검은 공 추출 조건부확률을 조합으로 표현"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "흰 공 2개, 검은 공 3개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정사면체의 바닥 숫자에 따른 조건부 확률표를 작성해 전확률로 확률질량함수를 구하고 기댓값 정의로 평균을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allSlotsAccountedFor": true,
+    "noDuplicateTermsWithinSlot": true,
+    "allQuotesVerbatim": true,
+    "evidenceTypeExplicit": true,
+    "allTermsInDictionary": true
+  }
+}
