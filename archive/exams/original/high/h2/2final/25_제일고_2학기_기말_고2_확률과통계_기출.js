@@ -742,7 +742,11 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 카드 1과 카드 2에서 흰 구슬 수 X가 달라지는 수형도이다. 카드 2에서 X가 1 이상인 가지는 X=1과 X=2로 나뉘며, 각 잎 오른쪽에 경로 확률의 곱이 적혀 있다.",
+    "solutionImageCaption": "카드 선택에 따라 흰 구슬 수 X의 경우를 수형도로 나타내고, 같은 X값에 해당하는 잎의 경로 확률을 합해 확률분포를 만든다. 이 분포로 평균을 계산한다. 정답은 8/15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
