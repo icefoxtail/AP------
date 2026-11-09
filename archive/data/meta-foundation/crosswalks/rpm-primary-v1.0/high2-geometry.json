@@ -14,7 +14,8 @@
     "searchedPacks": [
       "GEOMETRY_EQUATIONS",
       "MIDDLE_GEOMETRY",
-      "FUNCTIONS_GRAPHS"
+      "FUNCTIONS_GRAPHS",
+      "GEOMETRY"
     ]
   },
   "policy": {
@@ -24,19 +25,18 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE validation"
   },
   "summary": {
-    "recordCount": 85,
-    "DIRECT_ACTIVE": 1,
-    "FAMILY_ACTIVE": 0,
-    "DIRECT_BINDING_GAP": 0,
-    "FAMILY_BINDING_GAP": 0,
-    "RPM_ONLY": 84,
+    "recordCount": 89,
+    "RPM_ONLY": 40,
+    "DIRECT_ACTIVE": 23,
+    "FAMILY_ACTIVE": 26,
     "byCurriculum": {
       "2015": {
         "RPM_ONLY": 38
       },
       "2022": {
-        "DIRECT_ACTIVE": 1,
-        "RPM_ONLY": 46
+        "DIRECT_ACTIVE": 23,
+        "FAMILY_ACTIVE": 26,
+        "RPM_ONLY": 2
       }
     }
   },
@@ -623,8 +623,30 @@
       },
       "standardUnitKey": "H22-GE-01",
       "subUnitKey": "H22-GE-01-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "problemTypeLabelKo": "포물선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_438738f192211e4530e38fd8987ce771eb9abab0407982bed7b089a6679b93ce",
+        "qid_v1_04d9b1faa9de90808d0b09a3a26d9c05217842973906600d8b65b6273c0b6a0d",
+        "qid_v1_d81c9e28b5dc53a7a97e9fa437244ec9cb7cc403abc74489b521e97467a87eef",
+        "qid_v1_ebcbfbba2fcba528a8499b6cd530c2d21a504c1003312957f4e028ae2bfae977",
+        "qid_v1_e9425e1857cef76682767bbd8f5c5525f401ec12fac7bb68ef121c66aa29e9bf",
+        "qid_v1_2d83eb69dbd700938da018bbf2fcce7dfa2222862279b3d7bcfbcb2f42f99f93"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+      "templateLabelKo": "포물선 표준방정식 해석"
     },
     {
       "id": "H2-GEO-RPM-040",
@@ -638,8 +660,46 @@
       },
       "standardUnitKey": "H22-GE-01",
       "subUnitKey": "H22-GE-01-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "problemTypeLabelKo": "포물선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_0177abba7119252bd2a9b0b9d1cad778707ca1986532b27c6f54a7bbb6d6ca91",
+        "qid_v1_3fb8c5f95afc6eea12350c6915749ad0cb4c62d17e5ce0b00dcab246741075e8",
+        "qid_v1_0e9aeeb30670391148cc2bea66c6c671cc1dd5e04bb7b237f6b19eea294c4b9e",
+        "qid_v1_dff38fe9689861314fce994e627267adf02f4cdec9bea40bb67438bdbf076c6f",
+        "qid_v1_c6392fc4ada38ff9a905c5b901805f907f0fd01522c6f53ad0c5468cbeb7f18a",
+        "qid_v1_9c2a0101308887e52963ab1799750a1415a8525911bfd1499ed3e2f6535ba87e",
+        "qid_v1_f10fd767b7ad27caf502b819088a2efe821ea43bf918c80aa3d5290b0e81f241",
+        "qid_v1_2a6639a0d3b58a22c0eba617131b9fb8a56a36168fbb865d5a020bab3deca86c",
+        "qid_v1_81273f1ce6ef9bbf1f3a94f2d545e6f82fd4e2ff07aa9039a029efe3bfaea4d0"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_PARABOLA_SHARED_FOCUS_CONDITION",
+          "templateLabelKo": "초점이 일치하는 포물선 조건"
+        },
+        {
+          "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+          "templateLabelKo": "포물선 초점·준선 관계 활용"
+        },
+        {
+          "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+          "templateLabelKo": "포물선의 초점현 비율"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-041",
@@ -653,8 +713,40 @@
       },
       "standardUnitKey": "H22-GE-01",
       "subUnitKey": "H22-GE-01-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "problemTypeLabelKo": "타원 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_ea0d8d0b6ec4b2e6bf251ba562255dd644497b8dd5fe616b90667c6b532ca7aa",
+        "qid_v1_620d8d38cfb1260778ab9d8890588e373cfd3e3d75a2700c60beea8a201d5fbe",
+        "qid_v1_dbbfa2f6080c9fc10b6355c0c40662d27d85dd9e67ebaa99cd94bb5aa021a17e"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_ELLIPSE_FOCAL_DISTANCE_LOCUS",
+          "templateLabelKo": "타원의 초점거리합 자취"
+        },
+        {
+          "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+          "templateLabelKo": "타원 표준방정식 해석"
+        },
+        {
+          "templateKey": "TPL_GEO_ELLIPSE_INTERNAL_DIVISION_LOCUS",
+          "templateLabelKo": "내분점 조건으로 타원 자취 구하기"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-042",
@@ -668,8 +760,47 @@
       },
       "standardUnitKey": "H22-GE-01",
       "subUnitKey": "H22-GE-01-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "problemTypeLabelKo": "타원 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_cca256c94d46402b52436ea975023e47f7f5ed9e91967af4c7604ccb4e57ac7f",
+        "qid_v1_b7ad37d9ad56b01d5cdb830a2f33474fff8226f1ef1206d9deca2bd08de53c79",
+        "qid_v1_9d483da0e8806579c0e2219026b0e3d95481308de46743aede6905cdf2455ba8",
+        "qid_v1_05519625e6f86b47752dcf969ca40c90f9050cfd7f634f5ea0f1dd70d6e3285a",
+        "qid_v1_781f0ee4b02318289738ec3067c387e86356325143814ecc4c1e3b562e2bf9b9",
+        "qid_v1_e387f4ea4f616c95d353cf30b35be957d593b5e6d732369ec5995fb085379f08",
+        "qid_v1_2d614f6670d31139aab8bd3c91cf8a16518473ab4461ea7d8ed5d8143de374e6",
+        "qid_v1_3365081fba1218657ecfe468ada70b54f58efcd27ec6bb119ef6ea0c5a8ffcbd",
+        "qid_v1_80757e1459d7dc517081f90270f984d2b656dbb0f3f0b328a5e116c861362a97",
+        "qid_v1_d834ebc0f99c4af18673ac5f4e08ce66135f83081becb5158c02f0ae89b285fe"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+          "templateLabelKo": "타원의 축·초점 관계 활용"
+        },
+        {
+          "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+          "templateLabelKo": "타원 표준방정식 해석"
+        },
+        {
+          "templateKey": "TPL_GEO_ELLIPSE_FOCAL_DISTANCE_LOCUS",
+          "templateLabelKo": "타원의 초점거리합 자취"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-043",
@@ -683,8 +814,45 @@
       },
       "standardUnitKey": "H22-GE-01",
       "subUnitKey": "H22-GE-01-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "problemTypeLabelKo": "쌍곡선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_d6bacc472169330746b5f0f714813dc8eb06912ecc4a541bb9e09e9348d399e7",
+        "qid_v1_a79e10341dcc3f4bedba6d3402cf69fc463cbc7c41f1a8e8b259e4763d32d52a",
+        "qid_v1_32055f8616fbed064dcfd0751e3949eee6bef3a461359c9e02680603fa056be5",
+        "qid_v1_bc4cd61cd181f35ed7f1963b1ccaa261361c2a3222084cb4a0ed4a42539197c4",
+        "qid_v1_f84f4e254de07bfa4a65f813bdab6f90cf53ecbe0c36ede5d447554a065788af",
+        "qid_v1_03c3e7f56960bc2f17ad3a81bbd774711353ef5b6af60dd343f7186756b02a94",
+        "qid_v1_8d191a87c5d3f96d39e549cbef4c181130fc3338fef4be65d57014787d536ee7",
+        "qid_v1_13bc1fdc7a3bbf1c52d4aa8681fd1e57938c0d148238e93de12181818cda2f16",
+        "qid_v1_8395c46f0e4dc8c47bd46bfdb776e4ced55181c7f10c02ec1b3199c4be3cf67c",
+        "qid_v1_63f11d6b9606f57802cc38095e67c6fcd15a9918849a2450b9aa0b09ca249b1b",
+        "qid_v1_8ab6e95893ae97b92bf57c87b923f7c877789db4b2f1911be4e8f0ebef01bc24",
+        "qid_v1_aad505884b08b245d761bb639fa98c95dac149328025188dde4c4d470e2b70bb"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+          "templateLabelKo": "쌍곡선 표준방정식 해석"
+        },
+        {
+          "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE_RELATION",
+          "templateLabelKo": "쌍곡선의 초점거리 차 관계"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-044",
@@ -698,8 +866,37 @@
       },
       "standardUnitKey": "H22-GE-01",
       "subUnitKey": "H22-GE-01-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "problemTypeLabelKo": "쌍곡선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_7ae256fac90e303e44be1a471dfef610585ed7908b6626341d557ff6dd0b756e",
+        "qid_v1_f26e1e81b6cc999ac4e4d706c28e010e9cc29069050432fd99060a2a9c0ba028",
+        "qid_v1_5909b3164c70470059bf66ab4ce4c8fbada6cf543088661dc50c17ba7111f61f",
+        "qid_v1_c19004f5662dbf2e58d8f9cc84f1b716d4a46f6535923843d5e80603b33e983d"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+          "templateLabelKo": "쌍곡선 점근선·축 관계 활용"
+        },
+        {
+          "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AREA",
+          "templateLabelKo": "점근선과 좌표축이 만드는 넓이"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-045",
@@ -713,8 +910,25 @@
       },
       "standardUnitKey": "H22-GE-01",
       "subUnitKey": "H22-GE-01-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "problemTypeLabelKo": "타원 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_ec4d5868dd62ca81a0dcb2f15e2172565c53145116fe8ea6e7f44066d3adc247"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateKey": "TPL_GEO_ELLIPSE_TRANSLATION",
+      "templateLabelKo": "평행이동한 타원의 방정식"
     },
     {
       "id": "H2-GEO-RPM-046",
@@ -743,8 +957,35 @@
       },
       "standardUnitKey": "H22-GE-02",
       "subUnitKey": "H22-GE-02-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_22a99bfbe2c755e75bab1a863470cf0f09d4a8b8960c7e622d16bffae6898fa6",
+        "qid_v1_e90f20915b99e3880efffeb6b095ef53ea673c3e3708ee21e3f9de2167dc185c"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+          "templateLabelKo": "이차곡선 위 점에서 접선 조건 적용"
+        },
+        {
+          "templateKey": "TPL_GEO_PARABOLA_FOCAL_TANGENT_CONDITION",
+          "templateLabelKo": "포물선 접선·초점거리 조건"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-048",
@@ -758,8 +999,35 @@
       },
       "standardUnitKey": "H22-GE-02",
       "subUnitKey": "H22-GE-02-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_18b99d9ef4e8c2caf04c16926cef03910ad40fe8e842ead9e40c14e87d98b034",
+        "qid_v1_bd734a848bbc892c1a6664b92a16b6592dd29c2b1ae4291c63d0393202b11d0b"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+          "templateLabelKo": "접선에 수직인 직선의 조건 활용"
+        },
+        {
+          "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+          "templateLabelKo": "곡선 밖의 점에서 이차곡선에 그은 접선"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-049",
@@ -773,8 +1041,26 @@
       },
       "standardUnitKey": "H22-GE-02",
       "subUnitKey": "H22-GE-02-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_a1e1810522af75e9148cf8621fe25eb8fa1459b40417bbebc835cedf5b0d0d75",
+        "qid_v1_ffc38372f9ce59873c4d9cdfcef4cd508547efe7cb78e74d792eabb7533cd919"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+      "templateLabelKo": "이차곡선 위 점에서 접선 조건 적용"
     },
     {
       "id": "H2-GEO-RPM-050",
@@ -788,8 +1074,25 @@
       },
       "standardUnitKey": "H22-GE-02",
       "subUnitKey": "H22-GE-02-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_46ca17c5b8cc063d9baa344be1916104f00f54259e84ee7812726eed32a1e049"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateKey": "TPL_GEO_ELLIPSE_TANGENT_INTERCEPT_OPTIMIZATION",
+      "templateLabelKo": "타원 접선 절편 삼각형의 최솟값"
     },
     {
       "id": "H2-GEO-RPM-051",
@@ -803,8 +1106,25 @@
       },
       "standardUnitKey": "H22-GE-02",
       "subUnitKey": "H22-GE-02-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "기하",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+      "templateLabelKo": "접선에 수직인 직선의 조건 활용",
+      "ownerPack": "GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_85f181126b2757b94a37c1e1ac9c59339da72e37728338b7729cb3794c0205b9"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure."
     },
     {
       "id": "H2-GEO-RPM-052",
@@ -818,8 +1138,35 @@
       },
       "standardUnitKey": "H22-GE-02",
       "subUnitKey": "H22-GE-02-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_28f7d0122212ca3920d88496fe4c9311aad0be7539f7d5d67ab772d18be95068",
+        "qid_v1_be5aac9e0e2a3cd6bb36fab92e8251db19b20f5335296bedaab8ec56138e8a8a"
+      ],
+      "mappingReason": "current source final-solution decisive step selects this conic or tangent reasoning structure.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+          "templateLabelKo": "이차곡선 위 점에서 접선 조건 적용"
+        },
+        {
+          "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+          "templateLabelKo": "곡선 밖의 점에서 이차곡선에 그은 접선"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed template"
     },
     {
       "id": "H2-GEO-RPM-053",
@@ -833,8 +1180,54 @@
       },
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_4242bdd35665f3e43a063d79f7585bbb5d3fdbf0a7dcd8ce9288092365045269",
+        "qid_v1_990143eeebc7a9bd51b95b1451a46cdb3f710c86f17abbd5ed8937944ae00f23",
+        "qid_v1_4fc69d5e9f7d4e4d52d439bc8206e1f1d75f211cd79926bb129564d9ba141087",
+        "qid_v1_990f958f7413c01ae3769d9f68bf231ba62a3a65b4337be7203fe0597ca75955",
+        "qid_v1_c6cb8460d6e844060c0bbcdcc194c2d786c672a831ed911be0266c073e15ac0c",
+        "qid_v1_96675781c6602d93b6e20762fb137696285ce783afd4e57348fc67c8f7e14526",
+        "qid_v1_7563a7833ee46e01610e72ecb110173ee00d7409989640a07d69883f4ace389e",
+        "qid_v1_a61bab451af9e20f9f6979c1c5e1b1fa26ff87520543e66fed3034d2943feeeb",
+        "qid_v1_2aab7165a6c0ee8d0af50ed7ed69b592f18eb1adfd016b18a9146e305e2f70c9"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPACE_PLANE_DETERMINATION",
+          "templateLabelKo": "공간에서 평면 결정"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_SKEW_LINE_CLASSIFICATION",
+          "templateLabelKo": "꼬인 위치 판별·계수"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_PLANE_COUNTING",
+          "templateLabelKo": "서로 다른 평면의 중복 보정"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_LINE_PLANE_RELATION",
+          "templateLabelKo": "직선·평면 위치 관계 판정"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+          "templateLabelKo": "공간의 수선의 발·정사영 관계 활용"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-054",
@@ -848,8 +1241,25 @@
       },
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_cb4002d37439d58ab47a0658d684b48447cfdf8f847c4a823b259b9ae9e7553c"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "templateLabelKo": "공간의 수선의 발·정사영 관계 활용"
     },
     {
       "id": "H2-GEO-RPM-055",
@@ -863,8 +1273,39 @@
       },
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_584bb84594155a1f5b6b1813dd391b5d852023fae00c0ade695bf291cdf09f4c",
+        "qid_v1_579e0344d80d75b60d06390cc647f35d30fb3dd15654ffa648a54241f8bd2a42",
+        "qid_v1_df7c67ae659d4746b8b834a7856a8073ea02ac8b1153fe69a03bd015dfb765f7",
+        "qid_v1_000c8554ba8cf30f35d88624e8997c0627894c55daabea59c4e8c2ef74907362",
+        "qid_v1_5a2e0362cdcd9faf5a10643f79dab496f6ec83c5b617e7fb3e24640be393fb55",
+        "qid_v1_6dc37ad37002b06024fa15d3404e99cc494acab06a55a338122b002cff26b4c9"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+          "templateLabelKo": "공간의 수선의 발·정사영 관계 활용"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_TETRAHEDRON_MEASURES",
+          "templateLabelKo": "사면체의 수선·면적·부피"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-056",
@@ -878,8 +1319,44 @@
       },
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_47fe5633bf6079e04d7f290ad485c24eeb767209b42150e33499bd6b1a01b4b2",
+        "qid_v1_0187b9adc2dca0e74926bd1ff1bcc58699bce06dbd523aac67b52cd9b577e2b5",
+        "qid_v1_6051bdf583919eb81d4a4a0bec06e3cafcc18c5a5d5549c99eb0c7cf44e854a9",
+        "qid_v1_cf5ad3eb422005ea39530d8a38adc017a939c4aa108113d742009734c5b6139b",
+        "qid_v1_90eec290ecea466287ce30ba08491fe709cdb6865aa8d377a3d44c44d248cd6e",
+        "qid_v1_0add8093803431371b99a54c932e32a98b78a9f36ea41cbc991a84a4898a5d46",
+        "qid_v1_5ab2e3a57c9704e6b74049e0133a599056c5df6a7463899e7204becd40330899"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPACE_SOLID_PROJECTION",
+          "templateLabelKo": "입체의 정사영·그림자 넓이"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_AREA_PROJECTION",
+          "templateLabelKo": "정사영 넓이 계산"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+          "templateLabelKo": "공간의 수선의 발·정사영 관계 활용"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-057",
@@ -893,8 +1370,37 @@
       },
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_1b02559a868544e24f520a52087f96dce3847844c0070266b4165069e8de2919",
+        "qid_v1_f23680a033d9fb4fe0572893c3e6c378f5ffd1f60a7acf3c300dbd36391741db",
+        "qid_v1_49dd37699954da18f8a3f187e9f96b2181bf107fed29e4ab4c5b66a76f097411",
+        "qid_v1_76dc62bf45519a194e4ec402107520ad2d92da4e9e53fbe5ad77a21a1fba6211"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPACE_DIHEDRAL_ANGLE",
+          "templateLabelKo": "공간에서 두 직선 사이의 각 구하기"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_AREA_PROJECTION",
+          "templateLabelKo": "정사영 넓이 계산"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-058",
@@ -908,8 +1414,26 @@
       },
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_12d3ef6991c997df3cbe44d1dd65bbbadd278f6eab82cd4d1da100a58106e369",
+        "qid_v1_1839b411c8e29cd21c9d09ad0e0d78ce7b300a5f60f519fca188ef14471913e1"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+      "templateLabelKo": "공간에서 두 직선 사이의 각"
     },
     {
       "id": "H2-GEO-RPM-059",
@@ -923,8 +1447,40 @@
       },
       "standardUnitKey": "H22-GE-04",
       "subUnitKey": "H22-GE-04-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "problemTypeLabelKo": "공간좌표·구 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-04",
+        "subUnitKey": "H22-GE-04-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_ee1e7a70a5d9192101a6c4f0a83dcdb477de5b5a6ab7007199274f55e26ab9a5",
+        "qid_v1_64a4a7ef92f103107133859c992daa5de7c31aff20e6794c69a52af1cfe1f6fe",
+        "qid_v1_e28abf4d56052c61567d6e461a13e8e001d0b2311a6bdf534e323e2f1790228c",
+        "qid_v1_282534fbc2028653ec226b25b43461871c1537dffba81544c49e3c6cbf2468bf",
+        "qid_v1_2d67f2efaaed37781e9ef2b007fbc8ac0ab3e452a9f3b8ab620588e0ca28190b",
+        "qid_v1_724630ebaaf09076da440c58249e6ae7465fbb6b2fdd6ecee1af1e628380f09d",
+        "qid_v1_fe732c1ee7389c5ce1f94009a6da6bd2eefc82a5b6d4f52c1efdf6820d67d337"
+      ],
+      "mappingReason": "공간좌표 풀이에서 해당 위치·거리·분점 또는 중심 성질이 결론을 결정한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPACE_COORDINATE_TRANSFORM",
+          "templateLabelKo": "공간좌표 변환"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_PROJECTED_POINT_AREA",
+          "templateLabelKo": "정사영 점과 공간 삼각형 넓이"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-060",
@@ -938,8 +1494,41 @@
       },
       "standardUnitKey": "H22-GE-04",
       "subUnitKey": "H22-GE-04-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "problemTypeLabelKo": "공간좌표·구 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-04",
+        "subUnitKey": "H22-GE-04-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_ab4980aa22d7b26bd4ef314f4451287ad1991528caef9b4fdc1665452985d25f",
+        "qid_v1_9f429c7740f301fd24c31ad98574cfac1904550180f0303066e41340bcae27fc",
+        "qid_v1_e3ed15840388a3cde2afb38638d374edd5f24b62474ff25359267915320f4dc0",
+        "qid_v1_24094920c7be7fe651cb75a4daf493aa9085ed10e20c6cfb358acf1c392fb651",
+        "qid_v1_75fce0633c205a380a16704afae95cbdafbed7a6261d363edc256c652e27cec4",
+        "qid_v1_de54c419cb25d04cd092b3723f141799e4ae4145b49863a94138f4f9408fd69a",
+        "qid_v1_00a837b0a6aad6bd8389087c49627dea4da055e0397a256e5b06a1cab119fc85",
+        "qid_v1_21c611bd5948385d504f63d6fe26c42f3f70bfc678b5740be157aa4da961f348"
+      ],
+      "mappingReason": "공간좌표 풀이에서 해당 위치·거리·분점 또는 중심 성질이 결론을 결정한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPACE_POINT_DISTANCE",
+          "templateLabelKo": "공간의 두 점 거리"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_REFLECTION_MINIMUM",
+          "templateLabelKo": "대칭을 이용한 최단거리"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-061",
@@ -953,8 +1542,40 @@
       },
       "standardUnitKey": "H22-GE-04",
       "subUnitKey": "H22-GE-04-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "problemTypeLabelKo": "공간좌표·구 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-04",
+        "subUnitKey": "H22-GE-04-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_9d26ba9e7aabc76a803355f16ff15686060664edf5902ebec73f5c1b88dc4fe8",
+        "qid_v1_c1f0ae8b8b729c0fa7ae69f5686c3a797a8179df0cfde615c89b2c56810b8e6c",
+        "qid_v1_d358f12159970d4d0feec1b53d0eba0251b10a318b8a320a2a3af563fb2793e2",
+        "qid_v1_2cce6170d09fa6f83f462fd2ce0a0847a3245a41689f01cf7cc4f941749342e8",
+        "qid_v1_f402569914e4ab201a8201dbef7419356c91817d59e7a37271ac7e6f58ee2cc9",
+        "qid_v1_f6ae95d9725fd3f3978d1a01248901d2bb4db8149a8fb3ced682c6a2e6316299",
+        "qid_v1_9f95769bd8b6993fdcf708a9d6b6ca48a2bb5c90ab756611ecb47e5ef2bfe008"
+      ],
+      "mappingReason": "공간좌표 풀이에서 해당 위치·거리·분점 또는 중심 성질이 결론을 결정한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPACE_SECTION_RATIO",
+          "templateLabelKo": "공간의 내분점·중점"
+        },
+        {
+          "templateKey": "TPL_GEO_SPACE_PROJECTED_POINT_AREA",
+          "templateLabelKo": "정사영 점과 공간 삼각형 넓이"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-062",
@@ -968,8 +1589,27 @@
       },
       "standardUnitKey": "H22-GE-04",
       "subUnitKey": "H22-GE-04-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "problemTypeLabelKo": "공간좌표·구 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-04",
+        "subUnitKey": "H22-GE-04-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_6ed33d6b72196223d549bc8fbb049b29d233da79c3da58e7a21ee3e990a07692",
+        "qid_v1_34601fcc07a7da4276e3df8e2ff8c5188b671596cb97e424040532bb51059597",
+        "qid_v1_c2f200ce13c2265788667238800f6709693dbc0ddee23564ed0d8660b50690c3"
+      ],
+      "mappingReason": "공간좌표 풀이에서 해당 위치·거리·분점 또는 중심 성질이 결론을 결정한다.",
+      "templateKey": "TPL_GEO_SPACE_CENTROID",
+      "templateLabelKo": "공간 삼각형의 무게중심"
     },
     {
       "id": "H2-GEO-RPM-063",
@@ -983,8 +1623,44 @@
       },
       "standardUnitKey": "H22-GE-04",
       "subUnitKey": "H22-GE-04-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "problemTypeLabelKo": "공간좌표·구 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-04",
+        "subUnitKey": "H22-GE-04-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_62cdf19784d667789540e90ab933d30d98661016a352b7a483a0e195e074ac87",
+        "qid_v1_b27dbb808266464c2ccf9a91c31aabd65250f05182dd2074ba3d7d47394de6c8",
+        "qid_v1_cec12fc9d2d9f5dd0889860d26806975e637bdb9e62801441e594a67c5a873c1",
+        "qid_v1_9d9cc43ddb96828eac96c09c10cbefc70698c6e1468bfdd01099a12d8d582e09",
+        "qid_v1_de6130d2c3f480cafd5da346afcc97cee514be6349cc746b793fc8b40ebdab62",
+        "qid_v1_79a50d6e88fe3f49388b673ea451b9bb9f2acfbc588a0a23099685d1a93f4f2f",
+        "qid_v1_99fa160523d2fc192cf6c6076fa5a2defccb863a05551f7f3ebbc78d96e51d56"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPHERE_STANDARD_EQUATION",
+          "templateLabelKo": "구의 표준방정식"
+        },
+        {
+          "templateKey": "TPL_GEO_SPHERE_TANGENT_LENGTH",
+          "templateLabelKo": "구 밖의 점에서 접선 길이"
+        },
+        {
+          "templateKey": "TPL_GEO_SPHERE_SECTION_CIRCLE",
+          "templateLabelKo": "구의 평면 단면 원"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-064",
@@ -998,8 +1674,46 @@
       },
       "standardUnitKey": "H22-GE-04",
       "subUnitKey": "H22-GE-04-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "problemTypeLabelKo": "공간좌표·구 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-04",
+        "subUnitKey": "H22-GE-04-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_9817a91c6dc2c3f04f0030e9ecbe6cbf8b1f7715acfa85aa1e1736b346a46405",
+        "qid_v1_584058916b81ae36c8b30f67eb8a02caa74a7c768128e4cb9638dd67811e9a74",
+        "qid_v1_6837a6039e9aad05809f43ed01d2a2b5a72c1d2160267ee98ccee0f7d71a2983",
+        "qid_v1_67a3aeebcf82df4f5afc47b050ba79e9f492e70a63faf224c1441249b4b0cca2",
+        "qid_v1_3323e37181d9eb9c26538b4e5a87f6ea4d42fdb532d95e73f2b2576b33565a17",
+        "qid_v1_d8c0a447ae047346b3f8ca8151092d685870f5634f5360a782b70d01cb06101b",
+        "qid_v1_cd038117c8156783fffa6b924ab00b05f5d5ffc25f64cb02e03a6d0a70f37b71",
+        "qid_v1_027ef5944d2e12bf374e97302fb94cf76e66da20611534f9d3a9ebbe9a741529",
+        "qid_v1_8dbaf878e9fca45c114cd2e73526f56fa3c606266d273dad63eb40fb40dad6e8"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_SPHERE_COORDINATE_CONDITION",
+          "templateLabelKo": "구와 좌표평면 조건"
+        },
+        {
+          "templateKey": "TPL_GEO_SPHERE_CONE_VOLUME_MAX",
+          "templateLabelKo": "구에 내접하는 원뿔의 최대 부피"
+        },
+        {
+          "templateKey": "TPL_GEO_SPHERE_SECTION_CIRCLE",
+          "templateLabelKo": "구의 평면 단면 원"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-065",
@@ -1028,8 +1742,28 @@
       },
       "standardUnitKey": "H22-GE-05",
       "subUnitKey": "H22-GE-05-VECTOR_BASIC",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-05",
+        "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_a0006ef1dbe8f874e497a354076ade47ada9a24a3e5e797950f95f56892f827c",
+        "qid_v1_a3936b815d803896e8cc5609313eae1c34ec239c033048f778fed99fd6bc1d8e",
+        "qid_v1_58daf801befbfed1bd1820a0ba841f88fb5d92d1d1b8441c5d62fc3aa9245a3f",
+        "qid_v1_544d621ebfce5d038c0f5970b262a1823bdf2faf592b9bec703c31e0ef5cf7f7"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "templateLabelKo": "벡터의 기본 연산"
     },
     {
       "id": "H2-GEO-RPM-067",
@@ -1043,8 +1777,30 @@
       },
       "standardUnitKey": "H22-GE-05",
       "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-05",
+        "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_b976b131fdff94316a70dea649f2298b62bb4f946965560fa23dd577abd3be8d",
+        "qid_v1_75f725a783785d9ff8fba1aff9c40ce0a4b0e1107bfd8111c6b24a40f095e8dc",
+        "qid_v1_cdd3acb89538eec45040ebaf21b6c137789194a0cbcea42cfd5d385e7a5a82bf",
+        "qid_v1_2b26a54790a6aa9a076933204de157e7cfef1b8719fb82b3f2b7e9833a16a31b",
+        "qid_v1_17a219a119f9ed80bf19eab4a654df82dbda34b4c041afad52581b38251b3630",
+        "qid_v1_250d9745de5603067294d963096b1bf6ee1bd4ae03fc755179b9f43b0fccb622"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "templateLabelKo": "벡터의 기본 연산"
     },
     {
       "id": "H2-GEO-RPM-068",
@@ -1058,8 +1814,40 @@
       },
       "standardUnitKey": "H22-GE-05",
       "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-05",
+        "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_a1dc34f0f275c2e82f0427dd6eae2a9c1789768c6eab3d2cbf255c5be4467853",
+        "qid_v1_5c24c59120f9c1e6f082b7f633c24fbcabebdd45f4e67d2ae7cf59fc931a99d0",
+        "qid_v1_62d7b1e5a6734d0f3f4a96cbfd23aba9857bb841cc66e8ba14bd815e26e2da79"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_VECTOR_GEOMETRIC_EXTREMUM",
+          "templateLabelKo": "입체에서 벡터 거리의 최대·최소"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_UNIT_DIRECTION",
+          "templateLabelKo": "단위방향벡터의 자취"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+          "templateLabelKo": "벡터의 기본 연산"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-069",
@@ -1073,8 +1861,28 @@
       },
       "standardUnitKey": "H22-GE-05",
       "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-05",
+        "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_3e783eef4f66da4284736ee0c482a021a3dab2a87c5be8c33448c832b2e5eb11",
+        "qid_v1_89c6349c255539bd5bd5be6cdc9d8607e776c0a5f1bb8fad68cd7adcb8f2c14e",
+        "qid_v1_7de4b1a8094ebe84d7f325dbf331fd37f1ee302d4339e08b8b9148ae9415cb6b",
+        "qid_v1_cd65cb247d35847e3e53ec8052a867c9fcd05a6e051346dda3d42cc51216aa5f"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_PARALLEL_CONDITION",
+      "templateLabelKo": "벡터 평행 조건"
     },
     {
       "id": "H2-GEO-RPM-070",
@@ -1088,8 +1896,26 @@
       },
       "standardUnitKey": "H22-GE-05",
       "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-05",
+        "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_ad97840b0adede2a5ed744a40e5e77ed53aa82f0783b74e77f8228d388c1f8df",
+        "qid_v1_664e49db967b92dbb6c8c979ee0ae155764fe70614f8493b0b9cf74ae43c6b36"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_POSITION_COMBINATION",
+      "templateLabelKo": "위치벡터·분점의 선형결합"
     },
     {
       "id": "H2-GEO-RPM-071",
@@ -1103,8 +1929,41 @@
       },
       "standardUnitKey": "H22-GE-06",
       "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-06",
+        "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_47238e4ad5d275f785f22eb37aa1f2a03224ce297e2c47be931d7b442c378fd8",
+        "qid_v1_e07c16ef7d04ab6343af6960039d4de225c018c86930606f5a052aa06afa2a7b",
+        "qid_v1_dda296947e361bac4e14324bed1fb9420c7049856cb45adcca176c598148b6c9",
+        "qid_v1_d7f61f447ea52c7abc6b25c91fb2d668b75206c5783fb8eb38ac93eb5b33be6c"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_VECTOR_COMPONENT_RELATION",
+          "templateLabelKo": "성분·격자·공선 조건"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_POSITION_COMBINATION",
+          "templateLabelKo": "위치벡터·분점의 선형결합"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_COMPONENT_ARITHMETIC",
+          "templateLabelKo": "벡터 성분 연산·정규화"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-072",
@@ -1118,8 +1977,26 @@
       },
       "standardUnitKey": "H22-GE-06",
       "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-06",
+        "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_778940fe52f371f7b8feceb554121575efdf6e7c26746a58438e9fd5976dfbd2",
+        "qid_v1_aada4b62390ed8a0a6248a15686d42d4b67c61f66a8325aafe9279f73ea084f8"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_COMPONENT_ARITHMETIC",
+      "templateLabelKo": "벡터 성분 연산·정규화"
     },
     {
       "id": "H2-GEO-RPM-073",
@@ -1133,8 +2010,54 @@
       },
       "standardUnitKey": "H22-GE-07",
       "subUnitKey": "H22-GE-07-VECTOR_DOT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_DOT_PRODUCT",
+      "problemTypeLabelKo": "벡터의 내적 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-07",
+        "subUnitKey": "H22-GE-07-VECTOR_DOT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_6e018cf021a3e64dd31605d96600865275b41e04875129d08923734b1473f32d",
+        "qid_v1_d4d907492f759f27e1c9c18bb1c8c8cce2259234251dde13fc3e7f270d3305b8",
+        "qid_v1_138b1d2c2d19e16780cac2b72f94b76b98fddc0cf44ba3771148ece3a666d1c8",
+        "qid_v1_a84c1ce57d0941f22d2c01d429a6cd35012405fe5928b8c5b452e92d405e4bef",
+        "qid_v1_fa4c223fa47c049efddce2a0ed597b18885deb061ec688964b2e3904ec6c137f",
+        "qid_v1_b3faaa73f3cabc98e1327efa59c8ecbd4d902b6d3c874a132f69526e1d8d791e",
+        "qid_v1_f984434aae97d6e6abd5fc371c4693f7031abed6e2c1548ec9a17b671b554ada",
+        "qid_v1_eb6bbe59505c31d1d2a15f6ec4ca763e71fb8959ff8b2293fc13f9de1bceb82f",
+        "qid_v1_7c9426f3f65d55d573d15f5042e0a6d00e9e8b0b3dfa376e6648bf382c127790",
+        "qid_v1_9b5a7f68bd9ed8f2bcb167f87d0c22dffe99c3b045d3b18686bde026982d893c",
+        "qid_v1_ff81c55ab4130dba135a6b3ce3a3c33fe457f1addcb317b89fdc1e88e4261355",
+        "qid_v1_fe0ce7892371027b0a327088a18c3e74f67e04e7b0eeb2169eddd26e40035e1c",
+        "qid_v1_173b81674160e4b7dba776040c4255ea600cfb7c2fdb5c93ff7445f3606fab58"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_VECTOR_DOT_PRODUCT_GEOMETRY",
+          "templateLabelKo": "입체·도형 조건의 내적"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_DOT_PRODUCT_OPTIMIZATION",
+          "templateLabelKo": "내적 조건의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_DOT_PRODUCT_CONDITION",
+          "templateLabelKo": "내적의 직교·평행 조건"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_DOT_PRODUCT_DIRECT",
+          "templateLabelKo": "내적의 직접 계산"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-074",
@@ -1148,8 +2071,26 @@
       },
       "standardUnitKey": "H22-GE-07",
       "subUnitKey": "H22-GE-07-VECTOR_DOT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_DOT_PRODUCT",
+      "problemTypeLabelKo": "벡터의 내적 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-07",
+        "subUnitKey": "H22-GE-07-VECTOR_DOT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_83e2fce69d4944538893be0859eb6eeef7610a7bbb5bc0682d3c338e0cd306c7",
+        "qid_v1_9679a72b202fde989ff72540d6a985c2dfab30fc2cf5790b5c43819c0b61faac"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_DOT_PRODUCT_DIRECT",
+      "templateLabelKo": "내적의 직접 계산"
     },
     {
       "id": "H2-GEO-RPM-075",
@@ -1163,8 +2104,36 @@
       },
       "standardUnitKey": "H22-GE-06",
       "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-06",
+        "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_3c0867b176a979c7778d77dc52514a271a7346f27bf91d3b57fd1c1d4d217e7f",
+        "qid_v1_1bbda57291583bdeda8ef6fa25a575da2ee1f58cd7e3f8d562810730d31ab746",
+        "qid_v1_9383b9cf9ba89f51f08b25ca0c761ed2d699d9e6bbe624d684f00114a1494968"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_VECTOR_POSITION_COMBINATION",
+          "templateLabelKo": "위치벡터·분점의 선형결합"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_PARALLEL_CONDITION",
+          "templateLabelKo": "벡터 평행 조건"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-076",
@@ -1178,8 +2147,25 @@
       },
       "standardUnitKey": "H22-GE-06",
       "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-06",
+        "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_ac24aa8507e5d5f4c620cd77554849757cc428112487890a8e39627abeba4e68"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_AREA_APPLICATION",
+      "templateLabelKo": "벡터 조건을 이용한 도형 넓이"
     },
     {
       "id": "H2-GEO-RPM-077",
@@ -1193,8 +2179,26 @@
       },
       "standardUnitKey": "H22-GE-08",
       "subUnitKey": "H22-GE-08-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_EQUATION",
+      "problemTypeLabelKo": "벡터를 이용한 직선·평면 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_dd7ce575b8a6593b9dd3c2c90d648cf46bc26afbc2cacb60fd675c43ae162edc",
+        "qid_v1_feb1fd3a0f89caafaf0cfd5f51d8c50023232be7b11dbc5ae07b811988e6d294"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_LINE_EQUATION",
+      "templateLabelKo": "방향벡터로 직선 방정식"
     },
     {
       "id": "H2-GEO-RPM-078",
@@ -1208,8 +2212,25 @@
       },
       "standardUnitKey": "H22-GE-08",
       "subUnitKey": "H22-GE-08-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_EQUATION",
+      "problemTypeLabelKo": "벡터를 이용한 직선·평면 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_82597075596cebaa73c2e4be469410ad954eed074ac1df8f5c742e2be3e0d682"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_LINE_PLANE_RELATION",
+      "templateLabelKo": "공간 직선·평면의 위치 관계"
     },
     {
       "id": "H2-GEO-RPM-079",
@@ -1223,8 +2244,25 @@
       },
       "standardUnitKey": "H22-GE-08",
       "subUnitKey": "H22-GE-08-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_EQUATION",
+      "problemTypeLabelKo": "벡터를 이용한 직선·평면 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_d99909bc06e83f55eaf93915fd1d7701787a59ed5dc1d57fb4a218614a624c98"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_PLANE_EQUATION",
+      "templateLabelKo": "법선벡터로 평면 방정식"
     },
     {
       "id": "H2-GEO-RPM-080",
@@ -1238,8 +2276,27 @@
       },
       "standardUnitKey": "H22-GE-08",
       "subUnitKey": "H22-GE-08-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_EQUATION",
+      "problemTypeLabelKo": "벡터를 이용한 직선·평면 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_81ad6c42ee66dc492f0ba011a8f0a194665eb9b6068304e6426b021865efc44c",
+        "qid_v1_edd47599b0ea0910cb12fcc8bc976ffdf0caae87767f66ddd0a03a97ebf3460b",
+        "qid_v1_af52fa80f1766b28f272115ed343697a070d7132c4a57abe4bb7b675afc49045"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_PLANE_EQUATION",
+      "templateLabelKo": "법선벡터로 평면 방정식"
     },
     {
       "id": "H2-GEO-RPM-081",
@@ -1253,8 +2310,47 @@
       },
       "standardUnitKey": "H22-GE-08",
       "subUnitKey": "H22-GE-08-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_EQUATION",
+      "problemTypeLabelKo": "벡터를 이용한 직선·평면 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_a6d7050496dcbfaecf4c97d7f5476f63932448fcb3a5de9238431433ad30b1aa",
+        "qid_v1_5fecc54ebc2de9a0d54509b1429097d943e0e9c89bd7a510f19a0d1115534278",
+        "qid_v1_23df0ce2798605a33439f3493e5e21aa7b85a5cbc36fe24228e4ed7fb5aaef4e",
+        "qid_v1_745f62f04e2182bc2bd6915ef426e91cbefa3f6b6ea81242ea92862ba613585c",
+        "qid_v1_92e8d4934b5e4beee8ac4f75af2180a2fdb30fc3daa3edbb8460e28374866bf8",
+        "qid_v1_60186d3edcedadf9833dcd41e3915ff556bc9a924fac8a8df9790080ef070aea",
+        "qid_v1_06a33781d9e1af9fe3a0d72847414267b3efbff6151505adaeadd0656b3a2234",
+        "qid_v1_0556663892534f55154f09752248f6ab60b8b5833d516112b2a272205a59435e",
+        "qid_v1_635db66694e873a76f08427cf13337fda54599e6199505242223fb3b49ab4c70",
+        "qid_v1_9911cc67c8d8895280528e4161bcb4b8ea93e3311b786bb8fd4b4d1a6f998b3d"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_VECTOR_SPHERE_GEOMETRY",
+          "templateLabelKo": "벡터 방정식과 구의 위치·단면"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_LINE_PLANE_DISTANCE",
+          "templateLabelKo": "공간의 점·직선·평면 거리"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_CIRCLE_MINIMUM",
+          "templateLabelKo": "평면 원까지의 최소거리"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-082",
@@ -1268,8 +2364,51 @@
       },
       "standardUnitKey": "H22-GE-08",
       "subUnitKey": "H22-GE-08-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_VECTOR_EQUATION",
+      "problemTypeLabelKo": "벡터를 이용한 직선·평면 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_5a52e2e877a9adc41195428a4a705d6e4603e9ee4bbac73a76761e4d391348ef",
+        "qid_v1_49d64d286c21178d6ac9621923bd88a6f4f2d3c74d5904a69a6aa882c7c319e6",
+        "qid_v1_94fcc61274ac720f5ec7008a79839fbbbca10faeb27a8df9a368ca1ee0a61850",
+        "qid_v1_95eee161223495c78cb795e0c3201851c417316f3c9f5de9e4e53ceea33d0869",
+        "qid_v1_26f31cb448ba2ce7e6d9776a075e438e60f6fcc27f3f26111f54527b88356220",
+        "qid_v1_e57079a991588b48dd960d7ed7874c7cdbcf4d4d9bf0688441d47272d02f28af",
+        "qid_v1_7333f2f7079cf2dd76d46059208c61aa3a71d3e3b3f97237baecaaffa6050234",
+        "qid_v1_a1807dacd42a0f6174436c56669cd9f2b8fd99b62b814def070e907afe1ed82a",
+        "qid_v1_546d2b8bf277477f0eb2c4e2849fce8da7592efa3beae711a13da56ecb1a54f0",
+        "qid_v1_e7dfcbfe8fd187fb9d9a6c0b071d40b86d470f190c5ee608e53fe5bb9d63cd0d"
+      ],
+      "mappingReason": "실제 벡터 풀이의 결정 단계를 해당 RPM 경로와 exact curriculum binding에 연결한다.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_VECTOR_LINE_PLANE_ANGLE",
+          "templateLabelKo": "직선·평면 및 공간 직선의 각"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_PLANE_ANGLE",
+          "templateLabelKo": "두 평면의 각"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_LINE_PLANE_RELATION",
+          "templateLabelKo": "공간 직선·평면의 위치 관계"
+        },
+        {
+          "templateKey": "TPL_GEO_VECTOR_SPHERE_GEOMETRY",
+          "templateLabelKo": "벡터 방정식과 구의 위치·단면"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step에 맞는 listed template을 선택"
     },
     {
       "id": "H2-GEO-RPM-083",
@@ -1277,14 +2416,31 @@
       "scope": "기하",
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
       "rpmPath": {
         "majorUnit": "공간도형과 공간좌표",
         "midUnit": "공간도형",
         "l3": "두 직선이 이루는 각",
         "l4": "방향벡터의 수직 판정"
-      }
+      },
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_fba7d8140d50663a239cd20d69d17c347ffb9c739785904f21d7ff1c036e66a5"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateKey": "TPL_GEO_SPACE_LINE_PLANE_RELATION",
+      "templateLabelKo": "직선·평면 위치 관계 판정"
     },
     {
       "id": "H2-GEO-RPM-084",
@@ -1292,47 +2448,246 @@
       "scope": "기하",
       "standardUnitKey": "H22-GE-03",
       "subUnitKey": "H22-GE-03-CORE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
       "rpmPath": {
         "majorUnit": "공간도형과 공간좌표",
         "midUnit": "공간도형",
         "l3": "두 직선이 이루는 각",
         "l4": "평행선에 의한 각의 환원"
-      }
+      },
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "problemTypeLabelKo": "공간도형 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "subUnitKey": "H22-GE-03-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_b091a7e3f95b5912b00c16d09b776fcc37a5dc8cd17d23b5894b5a312f0afb3e",
+        "qid_v1_c54db66b383615dddbd7c65cf73816d66e32f30b9e37c68deaa868f0e103c489"
+      ],
+      "mappingReason": "고2 2022 비상교육 기하 문항의 확인된 풀이에서 결정 단계를 분류하고, 동일 RPM 경로 안에서 TPL을 선택한다.",
+      "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+      "templateLabelKo": "공간에서 두 직선 사이의 각"
     },
     {
-      "id": "H2-GEO-RPM-085",
+      "id": "H2-GEO-RPM-086",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 덧셈과 뺄셈",
+        "l4": "삼각형법"
+      },
+      "standardUnitKey": "H22-GE-07",
+      "subUnitKey": "H22-GE-07-VECTOR_DOT",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-07",
+        "subUnitKey": "H22-GE-07-VECTOR_DOT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_0f0795ce607a6161c87eafb2024e8540347223a01455b23a5355c0b6099521ae"
+      ],
+      "mappingReason": "단원 문항의 풀이가 선행 벡터 연산 경로를 사용하므로, 같은 교육과정의 source-unit binding으로 명시적으로 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "templateLabelKo": "벡터의 기본 연산"
+    },
+    {
+      "id": "H2-GEO-RPM-087",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 실수배",
+        "l4": "내분·외분"
+      },
+      "standardUnitKey": "H22-GE-07",
+      "subUnitKey": "H22-GE-07-VECTOR_DOT",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "problemTypeLabelKo": "평면벡터 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-07",
+        "subUnitKey": "H22-GE-07-VECTOR_DOT",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_445cc1eac989f5ef38cb28edfbbe76bfb1083450e6af8094f7eec80bf2db0474"
+      ],
+      "mappingReason": "단원 문항의 풀이가 선행 벡터 연산 경로를 사용하므로, 같은 교육과정의 source-unit binding으로 명시적으로 연결한다.",
+      "templateKey": "TPL_GEO_VECTOR_POSITION_COMBINATION",
+      "templateLabelKo": "위치벡터·분점의 선형결합"
+    },
+    {
+      "id": "H2-GEO-RPM-088",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선의 접선",
+        "l3": "포물선의 접선",
+        "l4": "기울기형"
+      },
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_48a62d57adea9b8168b02ac6a100281ff69950cc1354141ef34602f0f15c4c78",
+        "qid_v1_8653c57e9fd84a3c2f6fadf8683d21c4b439b73d8664b92901891f712ce566be",
+        "qid_v1_33a12de5f99a61a9a2988478c8ce448edbeb8be055dbd899061129050f8ec23c"
+      ],
+      "mappingReason": "H22-GE01 source questions use the locked tangent semantic path with explicit active PT/TPL projection.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+          "templateLabelKo": "이차곡선 위 점에서 접선 조건 적용"
+        },
+        {
+          "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+          "templateLabelKo": "곡선 밖의 점에서 이차곡선에 그은 접선"
+        },
+        {
+          "templateKey": "TPL_GEO_PARABOLA_FOCAL_TANGENT_CONDITION",
+          "templateLabelKo": "포물선 접선·초점거리 조건"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed tangent template"
+    },
+    {
+      "id": "H2-GEO-RPM-089",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선의 접선",
+        "l3": "타원의 접선",
+        "l4": "기울기·조건형"
+      },
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_7c482e6fc9ff48e84fd7ba7c252926f757495002f3691862ffdac0d8ada3efe5",
+        "qid_v1_6bc6f96669dbba8f4091f9b9c94cd3e1f0d1d60f2ae53d6088166747cb18fa3b",
+        "qid_v1_a37ddbd3bb90bc47ea11390262cf86179a16625c49aa35ffdf7f5fabea3390f0"
+      ],
+      "mappingReason": "H22-GE01 source questions use the locked tangent semantic path with explicit active PT/TPL projection.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+          "templateLabelKo": "이차곡선 위 점에서 접선 조건 적용"
+        },
+        {
+          "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+          "templateLabelKo": "곡선 밖의 점에서 이차곡선에 그은 접선"
+        },
+        {
+          "templateKey": "TPL_GEO_ELLIPSE_TANGENT_INTERCEPT_OPTIMIZATION",
+          "templateLabelKo": "타원 접선 절편 삼각형의 최솟값"
+        },
+        {
+          "templateKey": "TPL_GEO_CONIC_ORTHOGONAL_TANGENTS",
+          "templateLabelKo": "두 이차곡선 접선의 수직 조건"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed tangent template"
+    },
+    {
+      "id": "H2-GEO-RPM-090",
       "curriculum": "2022",
       "scope": "기하",
       "rpmPath": {
         "majorUnit": "이차곡선",
         "midUnit": "이차곡선의 접선",
         "l3": "쌍곡선의 접선",
-        "l4": "접점형"
+        "l4": "기울기·조건형"
       },
-      "standardUnitKey": "H22-GE-02",
-      "subUnitKey": "H22-GE-02-CORE",
-      "mappingStatus": "DIRECT_ACTIVE",
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "mappingStatus": "FAMILY_ACTIVE",
       "bindingStatus": "ACTIVE",
-      "promotesRpmOnlyRowId": "H2-GEO-RPM-051",
-      "standardCourse": "기하",
       "problemTypeKey": "PT_GEO_CONIC_TANGENT",
       "problemTypeLabelKo": "이차곡선의 접선 문제",
-      "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
-      "templateLabelKo": "접선에 수직인 직선의 조건 활용",
       "ownerPack": "GEOMETRY",
+      "standardCourse": "기하",
       "binding": {
         "curriculum": "2022",
         "standardCourse": "기하",
-        "standardUnitKey": "H22-GE-02",
-        "subUnitKey": "H22-GE-02-CORE",
+        "standardUnitKey": "H22-GE-01",
+        "subUnitKey": "H22-GE-01-CORE",
         "ownerPack": "GEOMETRY"
       },
       "supportingQuestionUids": [
-        "qid_v1_85f181126b2757b94a37c1e1ac9c59339da72e37728338b7729cb3794c0205b9"
+        "qid_v1_f98c40dd570d69373e093004fbe4a5b6ca0b2890b7316461eab7d472684e6c17",
+        "qid_v1_dec1ead00e44bc22ad7c981d9119bfb8ac6d5d2c344269216cccdfc2e5374dc5",
+        "qid_v1_dcf4d12fa08581dc937a62a5b11c32c7832f50811c6d32376cff245295b951cf",
+        "qid_v1_a6db099938d725222286026ad86d3f9156942aea3699a000b32ffe69080a1308"
       ],
-      "mappingReason": "접점에서 접선의 기울기를 정한 뒤 수직인 법선으로 원점과 접선 사이의 거리 및 쌍곡선 교점을 구한다."
+      "mappingReason": "H22-GE01 source questions use the locked tangent semantic path with explicit active PT/TPL projection.",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+          "templateLabelKo": "이차곡선 위 점에서 접선 조건 적용"
+        },
+        {
+          "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+          "templateLabelKo": "곡선 밖의 점에서 이차곡선에 그은 접선"
+        },
+        {
+          "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+          "templateLabelKo": "접선에 수직인 직선의 조건 활용"
+        },
+        {
+          "templateKey": "TPL_GEO_CONIC_ORTHOGONAL_TANGENTS",
+          "templateLabelKo": "두 이차곡선 접선의 수직 조건"
+        }
+      ],
+      "selectionRule": "source final-solution decisive step selects one listed tangent template"
     }
   ]
 }

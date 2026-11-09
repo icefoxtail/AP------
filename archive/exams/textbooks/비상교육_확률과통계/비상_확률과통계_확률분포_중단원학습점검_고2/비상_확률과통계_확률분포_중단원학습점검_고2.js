@@ -34,7 +34,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+    "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 이산확률변수의 평균(기댓값)과 분산의 정의를 적용한다. 1. 평균: $E(X) = \\sum x_i P(X=x_i)$ 2. 제곱의 평균: $E(X^2",
+    "decisiveStep": "평균과 제곱평균을 계산한 뒤 차이 공식으로 분산을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-054",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "기댓값과 분산",
+      "l4": "분산·표준편차"
+    }
   },
   {
     "id": 2,
@@ -69,7 +91,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 이항분포 $\\mathrm{B}(n, p)$를 따르는 확률변수 $X$에 대하여 다음 공식을 적용한다. 1. 평균: $E(X) = np$ 2. 분산: ",
+    "decisiveStep": "이항분포의 표준 평균·분산·표준편차 공식에 모수를 대입한다.",
+    "rpmPrimaryId": "H2-PS-RPM-056",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "이항분포",
+      "l4": "평균·분산"
+    }
   },
   {
     "id": 3,
@@ -104,7 +148,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 구간 $[-1, 1]$에서 정의된 연속확률변수 $X$의 확률밀도함수 $f(x) = \\frac{x+1}{2}$에 대하여 $P(-1 \\le X \\le ",
+    "decisiveStep": "밀도함수 아래 구간을 그래프 넓이로 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-074",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 4,
@@ -139,7 +205,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+    "templateKey": "TPL_NORMAL_STANDARDIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 정규분포 $\\mathrm{N}(m, \\sigma^2)$을 따르는 확률변수 $X$를 표준정규분포 $Z = \\frac{X-m}{\\sigma} \\sim ",
+    "decisiveStep": "정규변수를 평균과 표준편차로 표준화해 확률표를 읽는다.",
+    "rpmPrimaryId": "H2-PS-RPM-057",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "정규분포",
+      "l4": "표준정규분포"
+    }
   },
   {
     "id": 5,
@@ -174,7 +262,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+    "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 확률의 총합이 1임을 이용하여 상수 $a$의 값을 구한다.    $$\\sum_{x=1}^3 P(X=x) = 1$$ 2. 구한 확률분포로부터 평",
+    "decisiveStep": "확률합 조건으로 모수를 정하고 분산과 표준편차를 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-054",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "기댓값과 분산",
+      "l4": "분산·표준편차"
+    }
   },
   {
     "id": 6,
@@ -209,7 +319,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 주머니에서 비복원추출로 공을 1개씩 꺼낼 때 처음으로 흰 공(W)이 나올 때까지 꺼낸 횟수를 확률변수 $X$라고 하자. 흰 공 3개, 빨간 공(R)",
+    "decisiveStep": "비복원 순서추출에서 첫 흰 공의 위치분포를 만들어 기댓값을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-051",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 7,
@@ -244,7 +376,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+    "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 5장의 카드 $\\{1, 2, 3, 4, 5\\}$ 중에서 3장을 동시에 뽑을 때 나오는 가장 큰 수를 확률변수 $X$라고 한다. 3장을 뽑으므로 가장",
+    "decisiveStep": "표본 최댓값의 확률분포를 계수한 뒤 평균·분산을 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-054",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "기댓값과 분산",
+      "l4": "분산·표준편차"
+    }
   },
   {
     "id": 8,
@@ -279,7 +433,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+    "templateKey": "TPL_EXPECTATION_TRANSFORM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 확률변수의 선형변환 성질을 이용한다. 1. $E(aX+b) = aE(X) + b$ 2. $V(aX+b) = a^2 V(X)$ 3. 분산과 기댓값의 ",
+    "decisiveStep": "선형변환 평균·분산 관계를 뒤집어 E(X²)을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-053",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "기댓값과 분산",
+      "l4": "기댓값"
+    }
   },
   {
     "id": 9,
@@ -314,7 +490,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 이항분포 $\\mathrm{B}(n, p)$에서 $P(X=x) = \\binom{n}{x} p^x (1-p)^{n-x}$이다. 주어진 $P(X=3) =",
+    "decisiveStep": "X=3 확률에서 성공률을 역산하여 이항분산을 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-056",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "이항분포",
+      "l4": "평균·분산"
+    }
   },
   {
     "id": 10,
@@ -349,7 +547,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 주사위 2개를 동시에 던질 때 눈의 수의 곱이 소수가 되는 사건의 확률 $p$를 구한다. 2. 독립시행을 36번 반복하므로 $X$는 이항분포 ",
+    "decisiveStep": "두 주사위 결과의 곱이 소수가 되는 성공확률을 세고 선형 평균을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-056",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "이항분포",
+      "l4": "평균·분산"
+    }
   },
   {
     "id": 11,
@@ -384,7 +604,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 확률밀도함수의 성질: 정의된 전체 구간 $[0, 3]$에서 함수 그래프와 $x$축으로 둘러싸인 도형의 총 넓이는 1이다. 이를 이용하여 상수 ",
+    "decisiveStep": "밀도곡선의 전체 넓이로 계수를 정한 뒤 오른쪽 넓이를 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-074",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 12,
@@ -419,7 +661,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+    "templateKey": "TPL_NORMAL_STANDARDIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 정규분포 곡선의 대칭성을 이용하여 모표준편차 $\\sigma$의 값을 구한다.    $$P(8 < X < 16) = P\\left(-\\frac{4",
+    "decisiveStep": "대칭구간 확률에서 표준편차를 구하고 목표 누적확률을 표준화한다.",
+    "rpmPrimaryId": "H2-PS-RPM-057",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "정규분포",
+      "l4": "표준정규분포"
+    }
   },
   {
     "id": 13,
@@ -454,7 +718,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+    "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 두 정규분포 $X \\sim \\mathrm{N}(50, 3^2)$과 $Y \\sim \\mathrm{N}(64, 4^2)$을 각각 표준화 변수 $Z = ",
+    "decisiveStep": "두 정규분포의 표준화 구간 대칭으로 매개변수를 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-058",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "정규분포",
+      "l4": "정규분포 확률"
+    }
   },
   {
     "id": 14,
@@ -489,7 +775,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+    "templateKey": "TPL_NORMAL_STANDARDIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 과자 1봉지의 무게를 확률변수 $X$라고 하면 $X \\sim \\mathrm{N}(60, 3^2)$이다. $P(X \\le 57)$을 표준정규분포 $Z",
+    "decisiveStep": "정규분포 하위확률을 표준화하여 표준표에서 읽는다.",
+    "rpmPrimaryId": "H2-PS-RPM-057",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "정규분포",
+      "l4": "표준정규분포"
+    }
   },
   {
     "id": 15,
@@ -524,7 +832,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_NORMAL_APPROXIMATION_COUNT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. '좋아요'를 누른 사람의 수 $X$는 이항분포 $\\mathrm{B}(n, p) = \\mathrm{B}(400, 0.2)$를 따른다. 2. $n",
+    "decisiveStep": "정품 확률로 설정된 이항 정품 개수를 정규근사한다.",
+    "rpmPrimaryId": "H2-PS-RPM-075",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "정규분포",
+      "l4": "정규분포 확률"
+    }
   },
   {
     "id": 16,
@@ -559,7 +889,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 서로 다른 주사위 3개를 던질 때 나오는 모든 경우의 수는 $6^3 = 216$이다. 세 눈의 중앙값을 확률변수 $X$라고 할 때, 각 면의 대칭성",
+    "decisiveStep": "중앙값 분포의 반사대칭에서 기댓값의 중심을 읽는다.",
+    "rpmPrimaryId": "H2-PS-RPM-051",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 17,
@@ -594,7 +946,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+    "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 정규분포 곡선의 대칭성: $P(X \\le 38) = P(X \\ge m-7)$이 성립함을 이용하여 모평균 $m$의 값을 구한다. 2. $P(X ",
+    "decisiveStep": "정규분포의 중심과 대칭을 이용해 고정길이 구간 최대를 찾는다.",
+    "rpmPrimaryId": "H2-PS-RPM-058",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "정규분포",
+      "l4": "정규분포 확률"
+    }
   },
   {
     "id": 18,
@@ -629,6 +1003,28 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_NORMAL_APPROXIMATION_COUNT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 치즈 상자 1개의 무게 $X \\sim \\mathrm{N}(2000, 100^2)$에 대하여 정품 판정 확률 $p = P(1860 \\le X \\",
+    "decisiveStep": "정품확률의 이항시행 수를 정규근사해 누적확률을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-075",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "정규분포",
+      "l4": "정규분포 확률"
+    }
   }
 ];

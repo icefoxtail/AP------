@@ -1,7 +1,7 @@
 {
   "schemaVersion": "meta-foundation-pack-v1",
   "packId": "PROBABILITY_STATISTICS",
-  "packVersion": "1.0.4",
+  "packVersion": "1.0.11",
   "canonicalStatus": "ACTIVE",
   "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
   "ownerPack": "PROBABILITY_STATISTICS",
@@ -25,10 +25,10 @@
     "H22-PS-03",
     "H22-PS-04"
   ],
-  "activeItemEvidenceCount": 704,
+  "activeItemEvidenceCount": 774,
   "problemTypeCount": 14,
-  "templateCount": 29,
-  "bindingCount": 74,
+  "templateCount": 33,
+  "bindingCount": 87,
   "aliasCount": 0,
   "externalProblemTypeReferenceCount": 1,
   "externalTemplateReferenceCount": 4,
@@ -41,7 +41,16 @@
     "H22-PS-04 uses explicit STANDARD_UNIT_DIRECT curriculum-leaf bindings to existing L3 keys; no synthetic subUnitKey is created.",
     "Two approved solution-only source repairs are included in the isolated Stage 3 tree; main remains unchanged.",
     "Pack-generic validator, official compiler, runtime bridge, and Archive2 projection were executed in this repository branch; all bounded gates pass.",
-    "2026-10-20 scoped meta binding correction for 21_제일고 1mid probability-statistics q12/q15; existing PT/TPL reused and exam JS/solutions unchanged."
+    "2026-10-20 scoped meta binding correction for 21_제일고 1mid probability-statistics q12/q15; existing PT/TPL reused and exam JS/solutions unchanged.",
+    "2022 확률과통계 확률 단원 교과서 15문항의 PT/TPL·세부단원 바인딩을 풀이 근거로 확장.",
+    "확률과통계 경우의 수 32문항에 풀이 근거로 분류 확장. 구별성 비교·사전순 순위 TPL 2개를 추가하고 active RPM reference를 연결.",
+    "확률과통계 경우의 수 32문항을 풀이 근거와 현재 ACTIVE taxonomy에 연결. 구별성 비교 및 사전순 순위 TPL은 add-only.",
+    "2022 경우의 수 교과서 32문항을 풀이 근거와 ACTIVE 분류에 연결. 대상 구별성 비교와 사전순 순위 TPL을 재사용 가능하도록 추가.",
+    "2022 조건부확률 단원 17문항을 현행 PT/TPL로 풀이기반 분류. 반복시행 상태전이와 역조건 분기 TPL을 exact RPM 경로에 추가.",
+    "2022 확률분포 교과서 18문항의 분포·기댓값·정규화 바인딩을 확장. 연속밀도와 이항정규근사 TPL에 근거 UID를 추가.",
+    "2022 통계 대단원 평가 16문항의 분포·표본평균·추정 분류를 풀이 근거로 확장. 모비율 RPM_ONLY 경로는 source-bound promotion으로 연결.",
+    "이항 count의 정규근사 풀이를 BINOMIAL PT 아래 새 재사용 TPL로 정리.",
+    "2022 통계적 추정 교재 평가 17문항의 PT/TPL 지원 UID를 보강."
   ],
   "promotionReviewDisposition": "PROMOTION_READY_STAGE3C_EXECUTION_PASS"
 }

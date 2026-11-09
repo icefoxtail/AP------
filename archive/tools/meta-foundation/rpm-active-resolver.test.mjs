@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { objectSha } from '../pipeline-core/canonical.mjs';
-import { loadActiveMetaRegistry } from './active-registry.mjs';
+import { loadActiveMetaRegistry, validateActiveMetaFields } from './active-registry.mjs';
 import {
   buildDecisionIsolatedInput,
   activeCandidateKeysForScope,
@@ -81,6 +81,13 @@ function makeCandidate(resolution) {
   };
 }
 
+test('explicit UNKNOWN legacy compatibility still counts as a complete new difficulty assessment', () => {
+  const candidate = { ...makeCandidate(rowFor('H1-RPM-001')), legacyLevelCompatibility: 'UNKNOWN' };
+  const validation = validateActiveMetaFields(candidate, registry, { requireFields: true });
+  assert.equal(validation.status, 'VALIDATED');
+  assert.equal(validation.difficultyComplete, true);
+});
+
 function makeRelational(resolution) {
   const evidence = {
     schemaVersion: 'JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1', sourceFingerprint: resolution.sourceFingerprint,
@@ -124,6 +131,34 @@ test('FAMILY_ACTIVE only reuses a template selected after crosswalk lookup', () 
   assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
   assert.equal(result.templateKey, row.templateCandidates[0].templateKey);
   assert.equal(validateResolverEvidence(input, result, { repoRoot: root }).status, 'PASS');
+});
+
+test('course labels that differ only by whitespace select the exact active crosswalk and binding', () => {
+  const file = path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json');
+  const row = JSON.parse(fs.readFileSync(file, 'utf8')).records.find(item => item.id === 'H2-PS-RPM-077');
+  assert.ok(row);
+  const input = makeInput(row, {
+    curriculumContext: {
+      grade: 'H2', curriculum: '2022', scope: row.scope, standardCourse: '확률과통계',
+      standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey ?? null,
+    },
+    semanticDecision: {
+      primaryMethod: '신뢰구간의 폭 조건에서 필요한 표본 크기를 계산한다.',
+      decisiveStep: '폭의 반감에 필요한 표본 크기는 네 배가 된다.',
+      rpmPath: { curriculum: row.curriculum, scope: row.scope, ...row.rpmPath },
+    },
+  });
+  const bundle = buildDecisionIsolatedInput(input);
+  input.familyTemplateSelection = {
+    stage: 'POST_CROSSWALK', inputBundleSha: bundle.inputBundleSha,
+    crosswalkRecordId: row.id, templateKey: row.templateKey,
+    decisiveStepReason: input.semanticDecision.decisiveStep,
+  };
+  const result = resolveMetaRoute(input, { repoRoot: root, registry });
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
+  assert.equal(result.crosswalkRecordId, row.id);
+  assert.equal(result.problemTypeKey, row.problemTypeKey);
+  assert.equal(result.templateKey, row.templateKey);
 });
 
 test('several ACTIVE rows on one leaf and unit are selected after the crosswalk lookup, never merged by guessing', () => {
@@ -278,7 +313,7 @@ test('M1/M2/M3 RPM semantic FINAL is independent of legacy projection gaps', () 
 test('an appended geometry mapping can promote its exact RPM-only row with an explicit decision', t => {
   const crosswalkFile = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json';
   const doc = JSON.parse(fs.readFileSync(path.join(root, crosswalkFile), 'utf8'));
-  const placeholder = doc.records.find(row => row.id === 'H2-GEO-RPM-048');
+  const placeholder = doc.records.find(row => row.id === 'H2-GEO-RPM-046');
   assert.equal(placeholder.mappingStatus, 'RPM_ONLY');
   const input = makeInput({ ...placeholder, standardCourse: '기하' });
   input.curriculumContext.grade = 'H2';
@@ -297,8 +332,8 @@ test('an appended geometry mapping can promote its exact RPM-only row with an ex
     standardCourse: '기하',
     mappingStatus: 'DIRECT_ACTIVE',
     bindingStatus: 'ACTIVE',
-    problemTypeKey: 'PT_GEO_CONIC_TANGENT',
-    templateKey: 'TPL_GEO_TANGENT_ORTHOGONAL',
+    problemTypeKey: 'PT_GEO_CONIC_STANDARD_FORM',
+    templateKey: 'TPL_GEO_CONIC_STANDARD_FORMS',
     promotesRpmOnlyRowId: 'unrelated-row',
   };
   doc.records.push(promoted);
@@ -315,7 +350,7 @@ test('an appended geometry mapping can promote its exact RPM-only row with an ex
     inputBundleSha: original.inputBundleSha,
     crosswalkRecordId: promoted.id,
     templateKey: promoted.templateKey,
-    decisiveStepReason: '수직인 직선의 기울기에서 접선 기울기를 정한다.',
+    decisiveStepReason: '조건에서 이차곡선의 표준형과 계수를 정한다.',
   };
   const result = resolve();
   assert.equal(result.projectionStatus, 'PROJECTION_REUSE');

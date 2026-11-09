@@ -213,7 +213,7 @@ export function validateActiveMetaFields(question, registry, { requireFields = f
   const difficultyComplete = Number.isInteger(question?.difficultyBucket) && question.difficultyBucket >= 1 && question.difficultyBucket <= 5
     && ['high', 'medium', 'low'].includes(question?.difficultyConfidence)
     && ['NONE', 'B12', 'B23', 'B34', 'B45'].includes(question?.difficultyBoundaryFlag)
-    && ['NORMAL', 'BORDERLINE_ACCEPTABLE', 'STRONG_CONFLICT'].includes(question?.legacyLevelCompatibility);
+    && ['NORMAL', 'BORDERLINE_ACCEPTABLE', 'STRONG_CONFLICT', 'UNKNOWN'].includes(question?.legacyLevelCompatibility);
   const activeBinding = Boolean(problemTypeKey && registry?.status === 'ACTIVE' && curriculum && standardUnitKey
     && registry.bindings.has(bindingKey({ curriculum, standardUnitKey, subUnitKey: subUnitKey || null, problemTypeKey })));
   return {

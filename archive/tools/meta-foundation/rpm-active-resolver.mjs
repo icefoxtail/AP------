@@ -29,6 +29,9 @@ export const LEGACY_LEVEL_COMPATIBILITY = Object.freeze(['NORMAL', 'BORDERLINE_R
 const here = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(here, '../../..');
 const text = value => typeof value === 'string' ? value.trim() : '';
+const normalizeCourseWhitespace = value => text(value).replace(/\s+/gu, '');
+const sameCourseLabel = (left, right) => !text(left) || !text(right)
+  || normalizeCourseWhitespace(left) === normalizeCourseWhitespace(right);
 const equal = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 const equalCountSummary = (actual, expected) => Boolean(actual && typeof actual === 'object' && !Array.isArray(actual)
   && Object.keys(actual).length === Object.keys(expected).length
@@ -276,7 +279,7 @@ function crosswalkMatch(file, context, rpmPath, scopeRelation = 'CURRENT_SCOPE')
     // this context. If exactly one row is left it is the match; otherwise the caller selects among the candidates.
     const applicable = scopeRelation === 'CURRENT_SCOPE'
       ? rows.filter(item => (item.subUnitKey == null || item.subUnitKey === context.subUnitKey)
-        && (!item.standardCourse || !context.standardCourse || item.standardCourse === context.standardCourse))
+        && sameCourseLabel(item.standardCourse, context.standardCourse))
       : rows;
     if (scopeRelation === 'CURRENT_SCOPE') {
       // An appended, explicitly linked mapping can replace an unmapped placeholder
@@ -290,8 +293,8 @@ function crosswalkMatch(file, context, rpmPath, scopeRelation = 'CURRENT_SCOPE')
           && text(item.problemTypeKey) && text(item.templateKey)
           && item.standardUnitKey === placeholder.standardUnitKey
           && item.subUnitKey === placeholder.subUnitKey
-          && item.standardCourse === context.standardCourse
-          && (!placeholder.standardCourse || item.standardCourse === placeholder.standardCourse));
+          && sameCourseLabel(item.standardCourse, context.standardCourse)
+          && sameCourseLabel(item.standardCourse, placeholder.standardCourse));
       });
       if (effective.length !== applicable.length) {
         // The RPM leaf may also describe a question whose template has yet to be added.
@@ -306,7 +309,7 @@ function crosswalkMatch(file, context, rpmPath, scopeRelation = 'CURRENT_SCOPE')
   const row = rows[0];
   if (scopeRelation === 'CURRENT_SCOPE') {
     if (row.subUnitKey != null && row.subUnitKey !== context.subUnitKey) return { doc, row: null, duplicate: false, l2Mismatch: true };
-    if (row.standardCourse && context.standardCourse && row.standardCourse !== context.standardCourse) return { doc, row: null, duplicate: false, standardCourseMismatch: true };
+    if (!sameCourseLabel(row.standardCourse, context.standardCourse)) return { doc, row: null, duplicate: false, standardCourseMismatch: true };
   }
   return { doc, row, duplicate: false };
 }
@@ -456,7 +459,7 @@ function exactProjectionBindings(registry, row, context, problemTypeKey, { force
     && item.standardUnitKey === standardUnitKey
     && (item.subUnitKey ?? null) === (subUnitKey ?? null)
     && item.problemTypeKey === problemTypeKey
-    && (!standardCourse || !item.standardCourse || item.standardCourse === standardCourse));
+    && sameCourseLabel(item.standardCourse, standardCourse));
 }
 
 export function validateCanonicalProjectionKeys(candidateMeta, registry) {
