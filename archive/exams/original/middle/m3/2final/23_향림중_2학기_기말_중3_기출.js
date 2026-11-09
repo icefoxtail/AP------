@@ -159,7 +159,7 @@ window.questionBank = [
       "$84^\\circ$"
     ],
     "answer": "③",
-    "solution": "$OA=OC$는 같은 원의 반지름이므로\n$\\triangle AOC$는 이등변삼각형이다.\n$\\angle OAC=30^\\circ$이므로\n$\\angle OCA=30^\\circ$이고,\n$\\angle AOC=180^\\circ-30^\\circ-30^\\circ\n=120^\\circ$이다.\n따라서 호 $AC$의 중심각은 ,20^\\circ$이다.\n\n접선과 현 $BC$가 이루는 각이 $54^\\circ$이므로\n같은 현 $BC$를 보는 원주각도 $54^\\circ$이다.\n따라서 호 $BC$의 중심각은\n$2\\times54^\\circ=108^\\circ$이다.\n\n작은 호 $AB$의 중심각은\n$360^\\circ-120^\\circ-108^\\circ\n=132^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n,80^\\circ-132^\\circ\n=48^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": "$OA=OC$는 같은 원의 반지름이므로\n$\\triangle AOC$는 이등변삼각형이다.\n$\\angle OAC=30^\\circ$이므로\n$\\angle OCA=30^\\circ$이고,\n$\\angle AOC=180^\\circ-30^\\circ-30^\\circ\n=120^\\circ$이다.\n따라서 호 $AC$의 중심각은 $120^\\circ$이다.\n\n접선과 현 $BC$가 이루는 각이 $54^\\circ$이므로\n같은 현 $BC$를 보는 원주각도 $54^\\circ$이다.\n따라서 호 $BC$의 중심각은\n$2\\times54^\\circ=108^\\circ$이다.\n\n작은 호 $AB$의 중심각은\n$360^\\circ-120^\\circ-108^\\circ\n=132^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n$180^\\circ-132^\\circ\n=48^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q5.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -191,7 +191,7 @@ window.questionBank = [
       "$68^\\circ$"
     ],
     "answer": "④",
-    "solution": "$AB$가 지름이므로\n호 $AB$에 대한 중심각은 ,80^\\circ$이다.\n또\n$\\angle COD=50^\\circ$이므로\n호 $CD$의 중심각은 $50^\\circ$이다.\n원 밖의 점 $P$에서 그은 두 할선이 이루는 각의 크기는\n먼 두 호와 가까운 두 호의 크기 차의 절반이다.\n따라서\n$\\angle CPD\n=\\dfrac{180^\\circ-50^\\circ}{2}$\n$=\\dfrac{130^\\circ}{2}$\n$=65^\\circ$이다.\n정답은 ④이다.",
+    "solution": "$AB$가 지름이므로\n호 $AB$에 대한 중심각은 $180^\\circ$이다.\n또\n$\\angle COD=50^\\circ$이므로\n호 $CD$의 중심각은 $50^\\circ$이다.\n원 밖의 점 $P$에서 그은 두 할선이 이루는 각의 크기는\n먼 두 호와 가까운 두 호의 크기 차의 절반이다.\n따라서\n$\\angle CPD\n=\\dfrac{180^\\circ-50^\\circ}{2}$\n$=\\dfrac{130^\\circ}{2}$\n$=65^\\circ$이다.\n정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q6.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -223,7 +223,7 @@ window.questionBank = [
       "$110^\\circ$"
     ],
     "answer": "②",
-    "solution": ",5^\\circ$인 원주각이 보는 호의 중심각은\n$2\\times15^\\circ=30^\\circ$이다.\n그 호의 길이가 $4\\,\\mathrm{cm}$이므로\n원의 둘레를 $L$이라 하면\n$4=L\\times\\dfrac{30}{360}$이다.\n따라서\n$L=4\\times\\dfrac{360}{30}\n=48\\,\\mathrm{cm}$이다.\n\n길이가 $8\\,\\mathrm{cm}$인 호의 중심각을 $y$라 하면\n$\\dfrac{8}{48}\n=\\dfrac{y}{360}$이다.\n따라서\n$y=60^\\circ$이다.\n같은 호를 보는 원주각 $x$는\n$\\dfrac{60^\\circ}{2}\n=30^\\circ$이다.\n그러므로\n$x+y=30^\\circ+60^\\circ\n=90^\\circ$이다.\n정답은 ②이다.",
+    "solution": "$15^\\circ$인 원주각이 보는 호의 중심각은\n$2\\times15^\\circ=30^\\circ$이다.\n그 호의 길이가 $4\\,\\mathrm{cm}$이므로\n원의 둘레를 $L$이라 하면\n$4=L\\times\\dfrac{30}{360}$이다.\n따라서\n$L=4\\times\\dfrac{360}{30}\n=48\\,\\mathrm{cm}$이다.\n\n길이가 $8\\,\\mathrm{cm}$인 호의 중심각을 $y$라 하면\n$\\dfrac{8}{48}\n=\\dfrac{y}{360}$이다.\n따라서\n$y=60^\\circ$이다.\n같은 호를 보는 원주각 $x$는\n$\\dfrac{60^\\circ}{2}\n=30^\\circ$이다.\n그러므로\n$x+y=30^\\circ+60^\\circ\n=90^\\circ$이다.\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -319,7 +319,7 @@ window.questionBank = [
       "$62^\\circ$"
     ],
     "answer": "①",
-    "solution": "원에 내접하는 사각형에서\n마주 보는 두 각의 합은 ,80^\\circ$이다.\n따라서\n$\\angle BAD\n=180^\\circ-124^\\circ\n=56^\\circ$이다.\n또 $AD$가 지름이므로\n지름 $AD$를 보는 원주각\n$\\angle ABD=90^\\circ$이다.\n삼각형 $ABD$에서\n$\\angle ADB\n=180^\\circ-90^\\circ-56^\\circ\n=34^\\circ$이다.\n접선 $BT$와 현 $AB$가 이루는 각은\n같은 현 $AB$를 보는 원주각 $\\angle ADB$와 같으므로\n$\\angle ABT=34^\\circ$이다.\n정답은 ①이다.",
+    "solution": "원에 내접하는 사각형에서\n마주 보는 두 각의 합은 $180^\\circ$이다.\n따라서\n$\\angle BAD\n=180^\\circ-124^\\circ\n=56^\\circ$이다.\n또 $AD$가 지름이므로\n지름 $AD$를 보는 원주각\n$\\angle ABD=90^\\circ$이다.\n삼각형 $ABD$에서\n$\\angle ADB\n=180^\\circ-90^\\circ-56^\\circ\n=34^\\circ$이다.\n접선 $BT$와 현 $AB$가 이루는 각은\n같은 현 $AB$를 보는 원주각 $\\angle ADB$와 같으므로\n$\\angle ABT=34^\\circ$이다.\n정답은 ①이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q10.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -383,7 +383,7 @@ window.questionBank = [
       "$(16\\sqrt3+16\\pi)\\rm\\,cm$"
     ],
     "answer": "③",
-    "solution": "단면에서 원의 중심을 $O$,\n실이 원에 닿는 두 점을 $A,B$라 하자.\n원의 반지름은 $8\\,\\mathrm{cm}$이고\n점 $P$에서 원까지의 최단 거리도 $8\\,\\mathrm{cm}$이므로\n$OP=8+8=16\\,\\mathrm{cm}$이다.\n\n접점에서 반지름은 접선과 수직이므로\n$OA\\perp PA$이다.\n직각삼각형 $OAP$에서\n$OA:OP=8:16=1:2$이므로\n$\\angle AOP=60^\\circ$이다.\n또\n$PA=\\sqrt{OP^2-OA^2}$\n$=\\sqrt{16^2-8^2}$\n$=8\\sqrt3$이다.\n같은 방법으로\n$PB=8\\sqrt3$이다.\n\n작은 중심각\n$\\angle AOB=120^\\circ$이므로\n실이 실제로 감기는 큰 호의 중심각은\n$360^\\circ-120^\\circ\n=240^\\circ$이다.\n원주가 ,6\\pi$이므로\n큰 호의 길이는\n,6\\pi\\times\\dfrac{240}{360}\n=\\dfrac{32\\pi}{3}$이다.\n따라서 실의 길이는\n$8\\sqrt3+8\\sqrt3+\\dfrac{32\\pi}{3}$\n$=16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.\n정답은 ③이다.",
+    "solution": "단면에서 원의 중심을 $O$,\n실이 원에 닿는 두 점을 $A,B$라 하자.\n원의 반지름은 $8\\,\\mathrm{cm}$이고\n점 $P$에서 원까지의 최단 거리도 $8\\,\\mathrm{cm}$이므로\n$OP=8+8=16\\,\\mathrm{cm}$이다.\n\n접점에서 반지름은 접선과 수직이므로\n$OA\\perp PA$이다.\n직각삼각형 $OAP$에서\n$OA:OP=8:16=1:2$이므로\n$\\angle AOP=60^\\circ$이다.\n또\n$PA=\\sqrt{OP^2-OA^2}$\n$=\\sqrt{16^2-8^2}$\n$=8\\sqrt3$이다.\n같은 방법으로\n$PB=8\\sqrt3$이다.\n\n작은 중심각\n$\\angle AOB=120^\\circ$이므로\n실이 실제로 감기는 큰 호의 중심각은\n$360^\\circ-120^\\circ\n=240^\\circ$이다.\n원주가 $16\\pi$이므로\n큰 호의 길이는\n$16\\pi\\times\\dfrac{240}{360}\n=\\dfrac{32\\pi}{3}$이다.\n따라서 실의 길이는\n$8\\sqrt3+8\\sqrt3+\\dfrac{32\\pi}{3}$\n$=16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.\n정답은 ③이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q12.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -476,7 +476,7 @@ window.questionBank = [
       "중앙값 : $5$&nbsp;&nbsp;&nbsp;&nbsp;최빈값 : $6$"
     ],
     "answer": "②",
-    "solution": "자료를 작은 수부터 나열하면\n,,1,2,3,5,6,6,7$이다.\n자료가 $8$개이므로 중앙값은 가운데 두 값 $3,5$의 평균이다.\n따라서\n$\\text{중앙값}=\\dfrac{3+5}{2}=4$이다.\n가장 많이 나타나는 값은 ,$과 $6$이고 각각 $2$번씩 나타난다.\n따라서 최빈값은 ,,6$이다.\n그러므로 정답은 ②이다.",
+    "solution": "자료를 작은 수부터 나열하면\n$1,1,2,3,5,6,6,7$이다.\n자료가 $8$개이므로 중앙값은 가운데 두 값 $3,5$의 평균이다.\n따라서\n$\\text{중앙값}=\\dfrac{3+5}{2}=4$이다.\n가장 많이 나타나는 값은 $1$과 $6$이고 각각 $2$번씩 나타난다.\n따라서 최빈값은 $1,6$이다.\n그러므로 정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q15.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -505,7 +505,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "④",
-    "solution": "자료는 $-1,4,a,b,-2$이고 평균이 ,$이다.\n자료가 $5$개이므로 전체 합은\n,\\times5=5$이다.\n따라서\n$-1+4+a+b-2=5$이고\n$a+b=4$이다.\n또 중앙값이 ,$이고 $a<b$이다.\n다섯 값을 작은 순서로 놓았을 때 가운데 값이 ,$이 되려면\n$a=1$, $b=3$이어야 한다.\n실제로\n$-2,-1,1,3,4$의 중앙값은 ,$이다.\n따라서\n$b-a=3-1=2$이고 정답은 ④이다.",
+    "solution": "자료는 $-1,4,a,b,-2$이고 평균이 $1$이다.\n자료가 $5$개이므로 전체 합은\n$1\\times5=5$이다.\n따라서\n$-1+4+a+b-2=5$이고\n$a+b=4$이다.\n또 중앙값이 $1$이고 $a<b$이다.\n다섯 값을 작은 순서로 놓았을 때 가운데 값이 $1$이 되려면\n$a=1$, $b=3$이어야 한다.\n실제로\n$-2,-1,1,3,4$의 중앙값은 $1$이다.\n따라서\n$b-a=3-1=2$이고 정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q16.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -625,7 +625,7 @@ window.questionBank = [
       "$7$점, $4$점"
     ],
     "answer": "④",
-    "solution": "남학생과 여학생의 평균이 모두 $7$점이므로\n$7$명 전체의 평균도 $7$점이다.\n남학생 $4$명의 분산은 $\\dfrac52$이므로 편차 제곱의 합은\n$4\\times\\dfrac52=10$이다.\n여학생 $3$명의 분산은 $6$이므로 편차 제곱의 합은\n$3\\times6=18$이다.\n전체 편차 제곱의 합은\n,0+18=28$이다.\n따라서 전체 분산은\n$\\dfrac{28}{7}=4$이고,\n표준편차는\n$\\sqrt4=2$점이다.\n그러므로 전체 평균과 표준편차는 $7$점, $2$점이고 정답은 ④이다.",
+    "solution": "남학생과 여학생의 평균이 모두 $7$점이므로\n$7$명 전체의 평균도 $7$점이다.\n남학생 $4$명의 분산은 $\\dfrac52$이므로 편차 제곱의 합은\n$4\\times\\dfrac52=10$이다.\n여학생 $3$명의 분산은 $6$이므로 편차 제곱의 합은\n$3\\times6=18$이다.\n전체 편차 제곱의 합은\n$10+18=28$이다.\n따라서 전체 분산은\n$\\dfrac{28}{7}=4$이고,\n표준편차는\n$\\sqrt4=2$점이다.\n그러므로 전체 평균과 표준편차는 $7$점, $2$점이고 정답은 ④이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
