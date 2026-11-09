@@ -1333,7 +1333,7 @@ window.questionBank = [
     "$\\frac{7}{8}$"
   ],
   "answer": "①",
-  "solution": "$\\tan A=\\frac{5}{12}$이므로 직각삼각형에서 맞은편 변과 이웃한 변의 비는 $5:12$이다. 빗변은 $\\sqrt{5^2+12^2}=13$에 해당하므로 $\\sin A=\\frac{5}{13}$, $\\cos A=\\frac{12}{13}$이다. 따라서 $\\cos A-\\sin A=\\frac{12}{13}-\\frac{5}{13}=\\frac{7}{13}$이고 정답은 ①이다.",
+  "solution": "$\\tan A=5/12$이므로 직각삼각형에서 맞은편 변과 이웃한 변의 비는 $5:12$이다. 빗변은 $\\sqrt{5^2+12^2}=13$에 해당하므로 $\\sin A=5/13$, $\\cos A=12/13$이다. 따라서 $\\cos A-\\sin A=12/13-5/13=7/13$이고 정답은 ①이다.",
   "subUnitKey": "M3-05-TRIG_RATIO",
   "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
@@ -1700,7 +1700,7 @@ window.questionBank = [
   "content": "서답형 4. 이차함수 $y=-\\frac{1}{2}x^2$의 그래프와 폭이 같고, $x=1$일 때 최댓값이 $2$인 이차함수 $y=ax^2+bx+c$에 대하여 $abc$의 값을 구하여라. (단, $a, b, c$는 상수이다.) (5점)<br>(1) 풀이 과정을 쓰시오. 풀이 과정이 맞으면 (3점)<br>(2) 정답이 맞으면 (2점)",
   "choices": [],
   "answer": "-3/4",
-  "solution": "그래프의 폭이 $y=-\\frac12x^2$와 같으므로 $|a|=\\frac{1}{2}$이다. $x=1$에서 최댓값을 가지므로 아래로 열려 $a=-\\frac{1}{2}$이다. 꼭짓점이 $(1,2)$이므로 $y=-\\frac12(x-1)^2+2$이다. 전개하면 $y=-\\frac12x^2+x+\\frac32$이므로 $a=-\\frac{1}{2}, b=1, c=\\frac{3}{2}$이다. 따라서 $abc=-\\frac{3}{4}$이다.",
+  "solution": "그래프의 폭이 $y=-\\frac12x^2$와 같으므로 $|a|=1/2$이다. $x=1$에서 최댓값을 가지므로 아래로 열려 $a=-1/2$이다. 꼭짓점이 $(1,2)$이므로 $y=-\\frac12(x-1)^2+2$이다. 전개하면 $y=-\\frac12x^2+x+\\frac32$이므로 $a=-1/2, b=1, c=3/2$이다. 따라서 $abc=-3/4$이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",

@@ -532,7 +532,7 @@ window.questionBank = [
       "확률의 뜻과 활용"
     ],
     "answer": "①",
-    "solution": "두 장 이내에 멈추는 경우를 센다. 첫 카드가 6일 확률은 $\\frac{1}{7}$이다. 첫 카드가 6이 아니고 두 번째 카드까지의 합이 6의 배수가 되는 순서쌍은 $(1,5),(5,1),(2,4),(4,2),(5,7),(7,5)$의 6개이다. 42개 순서쌍 중 6개이므로 확률은 $\\frac{1}{7}$이다.\\n따라서 세 장 이상 꺼낼 확률은 $1-\\frac{1}{7}-\\frac{1}{7}=\\frac{5}{7}$이다. 정답은 ①이다.",
+    "solution": "두 장 이내에 멈추는 경우를 센다. 첫 카드가 6일 확률은 $1/7$이다. 첫 카드가 6이 아니고 두 번째 카드까지의 합이 6의 배수가 되는 순서쌍은 $(1,5),(5,1),(2,4),(4,2),(5,7),(7,5)$의 6개이다. 42개 순서쌍 중 6개이므로 확률은 $1/7$이다.\\n따라서 세 장 이상 꺼낼 확률은 $1-1/7-1/7=5/7$이다. 정답은 ①이다.",
     "questionUid": "qid_v1_3dafd10d80abb0686ab4f4a4ebf1a1f08208cd725d261c44abad31e10d8e8f4f",
     "sourceQid": 12,
     "sourceArchiveFile": "original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js",
@@ -992,7 +992,7 @@ window.questionBank = [
       "확률의 뜻과 활용"
     ],
     "answer": "\\mathrm{P}(\\mathrm{A}\\cup\\mathrm{B})=\\mathrm{P}(\\mathrm{A})+\\mathrm{P}(\\mathrm{B})-\\mathrm{P}(\\mathrm{A}\\cap\\mathrm{B}),\\ \\dfrac{3}{5}",
-    "solution": "1) 교집합을 두 번 더했으므로 한 번 빼야 한다. 확률의 덧셈정리는 $\\mathrm P(A\\cup B)=\\mathrm P(A)+\\mathrm P(B)-\\mathrm P(A\\cap B)$이다.\\n2) 3의 배수는 6개, 13 이상인 수는 8개이고, 두 조건에 모두 해당하는 수는 15와 18의 2개이다.\\n따라서 $\\mathrm P(A\\cup B)=\\frac{6+8-2}{20}=\\frac{3}{5}$이다. 따라서 구하는 값은 $\\dfrac{3}{5}$이다.",
+    "solution": "1) 교집합을 두 번 더했으므로 한 번 빼야 한다. 확률의 덧셈정리는 $\\mathrm P(A\\cup B)=\\mathrm P(A)+\\mathrm P(B)-\\mathrm P(A\\cap B)$이다.\\n2) 3의 배수는 6개, 13 이상인 수는 8개이고, 두 조건에 모두 해당하는 수는 15와 18의 2개이다.\\n따라서 $\\mathrm P(A\\cup B)=(6+8-2)/20=3/5$이다. 따라서 구하는 값은 $\\dfrac{3}{5}$이다.",
     "questionUid": "qid_v1_5ef861599e23c7d97339fad13c8f14e23be1c62be29a9b3d654745e8a6c040f7",
     "sourceQid": 22,
     "sourceArchiveFile": "original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js",

@@ -230,8 +230,8 @@ window.questionBank = [
     "choices": [
       "3",
       "$3\\sqrt2$",
-      "$\\frac{9}{2}$",
-      "$\\frac{9\\sqrt2}{2}$",
+      "$9/2$",
+      "$9\\sqrt2/2$",
       "$6\\sqrt2$"
     ],
     "answer": "②",
@@ -438,7 +438,7 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 ABC가 다음 조건을 만족시킨다고 하자. 이때, 삼각형 ABC의 넓이는? [4.1점]<br><div class=\"note-box\">(가) $\\cos A=\\dfrac12$<br>(나) 삼각형 ABC의 외접원의 넓이는 $\\dfrac{49}{3}\\pi$이다.<br>(다) $\\overline{AB}:\\overline{AC}=5:8$이다.</div>",
     "choices": [
-      "$\\frac{5}{2}$",
+      "$5/2$",
       "$5\\sqrt3/2$",
       "$10\\sqrt3/3$",
       "10",
@@ -607,11 +607,11 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 $0\\le x&lt;9$에서 함수 $y=3\\sin\\dfrac\\pi3x$의 그래프와 직선 $y=\\dfrac32$가 만나는 네 점을 $x$좌표가 작은 것부터 차례로 A, B, C, D라고 하자. 이때, 삼각형 BOC의 넓이를 $S$, 선분 AD의 길이를 $l$이라고 하면 $S+l$의 값은? [4.4점]",
     "choices": [
-      "$\\frac{21}{2}$",
+      "$21/2$",
       "11",
-      "$\\frac{23}{2}$",
+      "$23/2$",
       "12",
-      "$\\frac{25}{2}$"
+      "$25/2$"
     ],
     "answer": "②",
     "solution": "그림에서 네 점 $A,B,C,D$는 모두 직선 $y=\\dfrac32$ 위에 있다.\n두 그래프의 교점에서는\n$3\\sin\\dfrac{\\pi x}{3}=\\dfrac32$,\n$\\sin\\dfrac{\\pi x}{3}=\\dfrac12$이다.\n\n$0\\le x<9$이므로 $0\\le\\dfrac{\\pi x}{3}<3\\pi$이다.\n이 범위에서 사인값이 $\\dfrac12$인 각은\n$\\dfrac\\pi6,\\ \\dfrac{5\\pi}6,\\ \\dfrac{13\\pi}6,\\ \\dfrac{17\\pi}6$이다.\n\n따라서 $A,B,C,D$의 $x$좌표는 순서대로\n$\\dfrac12,\\ \\dfrac52,\\ \\dfrac{13}2,\\ \\dfrac{17}2$이다.\n\n$B,C$는 같은 수평선 위에 있으므로\n$BC=\\dfrac{13}2-\\dfrac52=4$이고, 원점 $O$에서 $BC$까지의 높이는 $\\dfrac32$이다.\n따라서 삼각형 $BOC$의 넓이는\n$S=\\dfrac12\\cdot4\\cdot\\dfrac32=3$이다.\n\n또한 $AD=\\dfrac{17}2-\\dfrac12=8$이므로\n$S+l=3+8=11$이다.\n\n따라서 정답은 ②이다.",
@@ -742,11 +742,11 @@ window.questionBank = [
     "wide": false,
     "content": "그림과 같이 $\\overline{AB}=5$, $\\overline{BC}=8$, $\\angle ABC=\\dfrac\\pi3$인 삼각형 ABC가 있다. 선분 AC 위의 점 P에서 두 직선 AB, BC에 내린 수선의 발을 각각 Q, R이라 하자. 선분 QR의 길이의 최솟값은? [4.7점]",
     "choices": [
-      "$\\frac{30}{7}$",
+      "$30/7$",
       "$20\\sqrt3/7$",
-      "$\\frac{40}{7}$",
+      "$40/7$",
       "$30\\sqrt3/7$",
-      "$\\frac{60}{7}$"
+      "$60/7$"
     ],
     "answer": "①",
     "solution": "$B=(0,0)$, $C=(8,0)$으로 놓고 $AB=5$, $\\angle ABC=60^\\circ$를 이용하면\n$A=\\left(\\dfrac52,\\dfrac{5\\sqrt3}{2}\\right)$이다.\n\n$P$가 선분 $AC$ 위에 있으므로\n$P=A+t(C-A)$ ($0\\le t\\le1$)로 놓는다.\n따라서\n$P=\\left(\\dfrac{5+11t}{2},\\dfrac{5\\sqrt3(1-t)}2\\right)$이다.\n\n$BC$가 $x$축이므로 수선의 발은\n$R=\\left(\\dfrac{5+11t}{2},0\\right)$이다.\n\n직선 $AB$의 방정식은 $y=\\sqrt3x$이다.\n$Q=(s,\\sqrt3s)$라 하면 $PQ\\perp AB$이므로\n$\\sqrt3s-\\dfrac{5\\sqrt3(1-t)}2=-\\dfrac1{\\sqrt3}\\left(s-\\dfrac{5+11t}{2}\\right)$이다.\n\n이를 정리하면 $4s=10-2t$이므로\n$Q=\\left(\\dfrac{5-t}{2},\\dfrac{\\sqrt3(5-t)}2\\right)$이다.\n\n이제 두 점 사이의 거리 공식을 사용한다.\n$QR^2=(6t)^2+\\left(\\dfrac{\\sqrt3(5-t)}2\\right)^2$\n$=\\dfrac{147}{4}t^2-\\dfrac{15}{2}t+\\dfrac{75}{4}$\n$=\\dfrac{147}{4}\\left(t-\\dfrac5{49}\\right)^2+\\dfrac{900}{49}$이다.\n\n$0<\\dfrac5{49}<1$이므로 $t=\\dfrac5{49}$일 때 최솟값을 갖는다.\n따라서 $QR_{\\min}=\\sqrt{\\dfrac{900}{49}}=\\dfrac{30}{7}$이다.\n\n따라서 정답은 ①이다.",
@@ -947,7 +947,7 @@ window.questionBank = [
     "content": "삼각형 ABC에서 $\\sin^2A+2\\sin^2B=3\\sin^2C$일 때, $\\cos C$의 최솟값을 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 4점]",
     "choices": [],
     "answer": "$\\dfrac{\\sqrt2}{3}$",
-    "solution": "각 $A,B,C$의 대변을 각각 $a,b,c$라 하자.\n사인법칙으로 $\\sin A:\\sin B:\\sin C=a:b:c$이므로\n주어진 조건은\n$a^2+2b^2=3c^2$이다.\n\n코사인법칙에 따라\n$\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}$이다.\n$c^2=\\dfrac{a^2+2b^2}{3}$을 대입하면\n\n$\\cos C=\\dfrac{2a^2+b^2}{6ab}$이다.\n\n$t=\\dfrac ab>0$으로 놓으면\n$\\cos C=\\dfrac{2t^2+1}{6t}$\n$=\\dfrac{2t+\\frac1t}{6}$이다.\n\n산술·기하평균의 관계에 의해\n$2t+\\dfrac1t\\ge2\\sqrt{2t\\cdot\\dfrac1t}=2\\sqrt2$이므로\n$\\cos C\\ge\\dfrac{\\sqrt2}{3}$이다.\n\n등호는 $2t=\\dfrac1t$, 즉 $t=\\dfrac1{\\sqrt2}$일 때 성립한다.\n이때 $a=b/\\sqrt2$, $c=b\\sqrt{\\frac{5}{6}}$으로 삼각형을 만들 수 있다.\n\n따라서 $\\cos C$의 최솟값은 $\\dfrac{\\sqrt2}{3}$이다.",
+    "solution": "각 $A,B,C$의 대변을 각각 $a,b,c$라 하자.\n사인법칙으로 $\\sin A:\\sin B:\\sin C=a:b:c$이므로\n주어진 조건은\n$a^2+2b^2=3c^2$이다.\n\n코사인법칙에 따라\n$\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}$이다.\n$c^2=\\dfrac{a^2+2b^2}{3}$을 대입하면\n\n$\\cos C=\\dfrac{2a^2+b^2}{6ab}$이다.\n\n$t=\\dfrac ab>0$으로 놓으면\n$\\cos C=\\dfrac{2t^2+1}{6t}$\n$=\\dfrac{2t+\\frac1t}{6}$이다.\n\n산술·기하평균의 관계에 의해\n$2t+\\dfrac1t\\ge2\\sqrt{2t\\cdot\\dfrac1t}=2\\sqrt2$이므로\n$\\cos C\\ge\\dfrac{\\sqrt2}{3}$이다.\n\n등호는 $2t=\\dfrac1t$, 즉 $t=\\dfrac1{\\sqrt2}$일 때 성립한다.\n이때 $a=b/\\sqrt2$, $c=b\\sqrt{5/6}$으로 삼각형을 만들 수 있다.\n\n따라서 $\\cos C$의 최솟값은 $\\dfrac{\\sqrt2}{3}$이다.",
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",

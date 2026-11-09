@@ -1003,7 +1003,7 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "①",
-    "solution": "$P$의 속도는\n$v_1(t)=\\dfrac34t^2+2>0$이므로 이동거리는\n$\\displaystyle\\int_0^2\\left(\\dfrac34t^2+2\\right)dt$\n$=\\left[\\dfrac14t^3+2t\\right]_0^2$\n$=2+4=6$이다.\n\n$Q$의 이동거리는 $\\displaystyle\\int_0^2|mt-6|dt$이다.\n\n$m\\le3$이면 $0\\le t\\le2$에서 $mt-6\\le0$이므로\n$\\displaystyle\\int_0^2(6-mt)dt$\n$=\\left[6t-\\dfrac m2t^2\\right]_0^2$\n$=12-2m$이다.\n이를 $6$과 같게 두면 $m=3$으로, 이 경우 조건에 맞는다.\n\n$m>3$이면 속도가 $0$이 되는 시각은 $t=\\dfrac6m$이고 $0<\\dfrac6m<2$이다.\n따라서 이동거리는\n$\\displaystyle\\int_0^{\\frac{6}{m}}(6-mt)dt+\\int_{\\frac{6}{m}}^2(mt-6)dt$\n$=\\dfrac{18}{m}+\\left(2m-12+\\dfrac{18}{m}\\right)$\n$=2m-12+\\dfrac{36}{m}$이다.\n이를 $6$과 같게 두면\n$2m-12+\\dfrac{36}{m}=6$\n$m^2-9m+18=0$\n$(m-3)(m-6)=0$이다.\n$m>3$을 만족하는 해는 $m=6$이다.\n\n따라서 가능한 값은 $3,6$이고 합은 $9$이다.\n따라서 정답은 ①이다.",
+    "solution": "$P$의 속도는\n$v_1(t)=\\dfrac34t^2+2>0$이므로 이동거리는\n$\\displaystyle\\int_0^2\\left(\\dfrac34t^2+2\\right)dt$\n$=\\left[\\dfrac14t^3+2t\\right]_0^2$\n$=2+4=6$이다.\n\n$Q$의 이동거리는 $\\displaystyle\\int_0^2|mt-6|dt$이다.\n\n$m\\le3$이면 $0\\le t\\le2$에서 $mt-6\\le0$이므로\n$\\displaystyle\\int_0^2(6-mt)dt$\n$=\\left[6t-\\dfrac m2t^2\\right]_0^2$\n$=12-2m$이다.\n이를 $6$과 같게 두면 $m=3$으로, 이 경우 조건에 맞는다.\n\n$m>3$이면 속도가 $0$이 되는 시각은 $t=\\dfrac6m$이고 $0<\\dfrac6m<2$이다.\n따라서 이동거리는\n$\\displaystyle\\int_0^{6/m}(6-mt)dt+\\int_{6/m}^2(mt-6)dt$\n$=\\dfrac{18}{m}+\\left(2m-12+\\dfrac{18}{m}\\right)$\n$=2m-12+\\dfrac{36}{m}$이다.\n이를 $6$과 같게 두면\n$2m-12+\\dfrac{36}{m}=6$\n$m^2-9m+18=0$\n$(m-3)(m-6)=0$이다.\n$m>3$을 만족하는 해는 $m=6$이다.\n\n따라서 가능한 값은 $3,6$이고 합은 $9$이다.\n따라서 정답은 ①이다.",
     "score": 4.7,
     "points": 4.7,
     "difficultyBucket": 4,

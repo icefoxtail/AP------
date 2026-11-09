@@ -1216,7 +1216,7 @@ window.questionBank = [
     ],
     "image": "assets/images/19_금당고_2학기_기말_고1_기출/q21.png",
     "answer": "$5+2\\sqrt{5}$",
-    "solution": "점 $P$의 좌표를 $(x,y)$라 하자.\n추가 조건에서 $x>2$이므로 $t=x-2>0$이다.\n그래프 식에 $x=t+2$를 대입하면\n$y=\\dfrac5t+3$이다.\n직사각형의 가로와 세로의 길이는 각각 $x$, $y$이므로 둘레를 $\\ell$이라 하면\n$\\ell=2(x+y)$\n$=2\\left((t+2)+(\\dfrac5t+3)\\right)$\n$=2\\left(t+\\dfrac5t+5\\right)$이다.\n여기서 $t>0$이므로\n$(\\sqrt t-\\sqrt{\\frac{5}{t}})^2\\ge0$\n$t+\\dfrac5t\\ge2\\sqrt5$이다.\n$\\ell=2(t+\\dfrac5t+5)$\n$\\ell\\ge2(2\\sqrt5+5)$\n$=10+4\\sqrt5$이다.\n등호는 $t=\\dfrac5t$, 즉 $t=\\sqrt5$일 때 성립한다.\n따라서 그때 둘레가 최소이고\n$a=x=t+2=2+\\sqrt5$이다.\n$b=y=\\dfrac5t+3=3+\\sqrt5$이다.\n$a+b=x+y$\n$=(2+\\sqrt5)+(3+\\sqrt5)$\n$=5+2\\sqrt5$이다.",
+    "solution": "점 $P$의 좌표를 $(x,y)$라 하자.\n추가 조건에서 $x>2$이므로 $t=x-2>0$이다.\n그래프 식에 $x=t+2$를 대입하면\n$y=\\dfrac5t+3$이다.\n직사각형의 가로와 세로의 길이는 각각 $x$, $y$이므로 둘레를 $\\ell$이라 하면\n$\\ell=2(x+y)$\n$=2\\left((t+2)+(\\dfrac5t+3)\\right)$\n$=2\\left(t+\\dfrac5t+5\\right)$이다.\n여기서 $t>0$이므로\n$(\\sqrt t-\\sqrt{5/t})^2\\ge0$\n$t+\\dfrac5t\\ge2\\sqrt5$이다.\n$\\ell=2(t+\\dfrac5t+5)$\n$\\ell\\ge2(2\\sqrt5+5)$\n$=10+4\\sqrt5$이다.\n등호는 $t=\\dfrac5t$, 즉 $t=\\sqrt5$일 때 성립한다.\n따라서 그때 둘레가 최소이고\n$a=x=t+2=2+\\sqrt5$이다.\n$b=y=\\dfrac5t+3=3+\\sqrt5$이다.\n$a+b=x+y$\n$=(2+\\sqrt5)+(3+\\sqrt5)$\n$=5+2\\sqrt5$이다.",
     "solutionImageSize": "full",
     "solutionImageCaption": "예: 오른쪽 가지 위의 점에서 두 좌표축에 수선을 내려 직사각형을 만든다. 정답은 5+2루트5이다.",
     "solutionImageAlt": "해설 그림: 유리함수의 오른쪽 가지와 두 점근선, 가지 위 점에서 좌표축에 내린 수선으로 만든 직사각형.",

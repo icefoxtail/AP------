@@ -117,14 +117,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음은 극한값을 조사한 것이다. 극한값이 옳은 것은? [3.8점]",
     "choices": [
-      "$\\lim_{x\\to0}(1+4x)^{\\frac{1}{x}}=e^{\\frac{1}{4}}$",
+      "$\\lim_{x\\to0}(1+4x)^{1/x}=e^{1/4}$",
       "$\\lim_{x\\to\\infty}\\{\\log_3(3x+2)-\\log_3x\\}=3$",
       "$\\lim_{x\\to0}\\dfrac{\\ln(1-x)}x=-1$",
       "$\\lim_{x\\to0}\\dfrac{3x}{e^{2x}-1}=\\dfrac23$",
       "$\\lim_{x\\to\\pi/2}\\dfrac{\\cos^2x}{1-\\sin x}=1$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 지수·로그·삼각함수의 기본 극한을 각 보기에 적용한다.\n조건 정리: 보기마다 극한의 형태가 다르므로 하나씩 계산한다.\n풀이 방향: $(1+u)^{\\frac{1}{u}}$, $\\dfrac{\\ln(1+u)}u$, $\\dfrac{e^u-1}u$와 삼각함수 항등식을 이용한다.\n정석 풀이:\n① $(1+4x)^{\\frac{1}{x}}=\\{(1+4x)^{1/(4x)}\\}^4\\to e^4$이다.\n② $\\log_3(3x+2)-\\log_3x=\\log_3\\left(3+\\dfrac2x\\right)\\to1$이다.\n③ $u=-x$로 놓으면 $\\dfrac{\\ln(1-x)}x=-\\dfrac{\\ln(1+u)}u\\to-1$이다.\n④ $\\dfrac{3x}{e^{2x}-1}=\\dfrac32\\cdot\\dfrac{2x}{e^{2x}-1}\\to\\dfrac32$이다.\n⑤ $\\dfrac{\\cos^2x}{1-\\sin x}=1+\\sin x\\to2$이다.\n따라서 옳은 것은 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 지수·로그·삼각함수의 기본 극한을 각 보기에 적용한다.\n조건 정리: 보기마다 극한의 형태가 다르므로 하나씩 계산한다.\n풀이 방향: $(1+u)^{1/u}$, $\\dfrac{\\ln(1+u)}u$, $\\dfrac{e^u-1}u$와 삼각함수 항등식을 이용한다.\n정석 풀이:\n① $(1+4x)^{1/x}=\\{(1+4x)^{1/(4x)}\\}^4\\to e^4$이다.\n② $\\log_3(3x+2)-\\log_3x=\\log_3\\left(3+\\dfrac2x\\right)\\to1$이다.\n③ $u=-x$로 놓으면 $\\dfrac{\\ln(1-x)}x=-\\dfrac{\\ln(1+u)}u\\to-1$이다.\n④ $\\dfrac{3x}{e^{2x}-1}=\\dfrac32\\cdot\\dfrac{2x}{e^{2x}-1}\\to\\dfrac32$이다.\n⑤ $\\dfrac{\\cos^2x}{1-\\sin x}=1+\\sin x\\to2$이다.\n따라서 옳은 것은 ③이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
     "subUnit": "지수함수와 로그함수의 미분",
     "subUnitConfidence": "rule_inferred",

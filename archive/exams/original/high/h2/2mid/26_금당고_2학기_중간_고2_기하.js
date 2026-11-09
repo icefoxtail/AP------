@@ -722,7 +722,7 @@ window.questionBank = [
       "1"
     ],
     "answer": "③",
-    "solution": "모든 모서리의 길이가 같으므로 한 모서리를 $a$라 놓는다.\n옆면 $ACD$는 정삼각형이고 $AH\\perp CD$이므로 $H$는 $CD$의 중점이다. 따라서 $CH=\\dfrac a2$이다.\n직각삼각형 $ACH$에서 피타고라스 정리를 쓰면 $AH=\\sqrt{AC^2-CH^2}=\\sqrt{a^2-\\left(\\dfrac a2\\right)^2}=\\dfrac{\\sqrt3}{2}a$이다.\n밑면 정사각형 $BCDE$의 중심을 $O$라 하면 $O$는 $CD$의 양 끝점에서 같은 거리에 있으므로, 중점 $H$를 잇는 $OH$는 $CD$에 수직이다.\n정사각형에서 $BC\\perp CD$이므로 $OH\\parallel BC$이다. 또한 중심에서 변 $CD$까지의 거리는 변 길이의 절반이라서 $OH=\\dfrac a2$이다.\n서로 평행한 직선은 같은 방향을 나타내므로, 구하는 $AH$와 $BC$의 각은 $AH$와 $OH$가 이루는 예각 $\\angle AHO$이다.\n정사각뿔의 꼭짓점 $A$는 밑면 중심 $O$의 바로 위에 있으므로 $AO\\perp OH$. 따라서 직각삼각형 $AOH$에서\n$\\cos\\theta=\\dfrac{OH}{AH}=\\dfrac{\\frac{a}{2}}{\\sqrt3 a/2}=\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}$이다. 정답은 ③이다.",
+    "solution": "모든 모서리의 길이가 같으므로 한 모서리를 $a$라 놓는다.\n옆면 $ACD$는 정삼각형이고 $AH\\perp CD$이므로 $H$는 $CD$의 중점이다. 따라서 $CH=\\dfrac a2$이다.\n직각삼각형 $ACH$에서 피타고라스 정리를 쓰면 $AH=\\sqrt{AC^2-CH^2}=\\sqrt{a^2-\\left(\\dfrac a2\\right)^2}=\\dfrac{\\sqrt3}{2}a$이다.\n밑면 정사각형 $BCDE$의 중심을 $O$라 하면 $O$는 $CD$의 양 끝점에서 같은 거리에 있으므로, 중점 $H$를 잇는 $OH$는 $CD$에 수직이다.\n정사각형에서 $BC\\perp CD$이므로 $OH\\parallel BC$이다. 또한 중심에서 변 $CD$까지의 거리는 변 길이의 절반이라서 $OH=\\dfrac a2$이다.\n서로 평행한 직선은 같은 방향을 나타내므로, 구하는 $AH$와 $BC$의 각은 $AH$와 $OH$가 이루는 예각 $\\angle AHO$이다.\n정사각뿔의 꼭짓점 $A$는 밑면 중심 $O$의 바로 위에 있으므로 $AO\\perp OH$. 따라서 직각삼각형 $AOH$에서\n$\\cos\\theta=\\dfrac{OH}{AH}=\\dfrac{a/2}{\\sqrt3 a/2}=\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}$이다. 정답은 ③이다.",
     "difficultyBucket": 3,
     "image": "assets/images/26_금당고_2학기_중간_고2_기하/q12.png",
     "curriculumRevision": "2022",

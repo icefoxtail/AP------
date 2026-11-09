@@ -92,7 +92,7 @@ window.questionBank = [
       "$\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "$\\sin30^\\circ=\\frac{1}{2}$, $\\cos60^\\circ=\\frac{1}{2}$이므로 합은 $1$. 정답은 ①.",
+    "solution": "$\\sin30^\\circ=1/2$, $\\cos60^\\circ=1/2$이므로 합은 $1$. 정답은 ①.",
     "sourceQuestionNo": "2",
     "displayNo": "2",
     "sourceOrdinal": 2,
@@ -209,7 +209,7 @@ window.questionBank = [
       "$\\dfrac{4}{5}$"
     ],
     "answer": "④",
-    "solution": "$AB=9$이므로 $\\tan B=\\frac{12}{9}=\\frac{4}{3}$. $\\alpha=90^\\circ-B$에서 $\\tan\\alpha=\\frac{3}{4}$. 정답은 ④.",
+    "solution": "$AB=9$이므로 $\\tan B=12/9=4/3$. $\\alpha=90^\\circ-B$에서 $\\tan\\alpha=3/4$. 정답은 ④.",
     "sourceQuestionNo": "4",
     "displayNo": "4",
     "sourceOrdinal": 4,

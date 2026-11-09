@@ -142,7 +142,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 세제곱의 차와 유리화를 이용해 각각의 $\\frac{0}{0}$ 꼴을 정리한다.\n첫째 극한에서 $u=\\sqrt[3]{x}$라 하면 $x=u^3$이고 $u\\to2$이다. 따라서 $\\dfrac{x-8}{\\sqrt[3]{x}-2}=\\dfrac{u^3-8}{u-2}=u^2+2u+4\\to12$이므로 $a=12$이다.\n둘째 극한은 $\\sqrt{x}-1=\\dfrac{x-1}{\\sqrt{x}+1}$을 이용하면 $(\\sqrt{x}-1)\\left(1+\\dfrac{6}{x-1}\\right)=\\dfrac{x-1+6}{\\sqrt{x}+1}\\to\\dfrac{6}{2}=3$이므로 $b=3$이다.\n따라서 $\\dfrac{a}{b}=\\dfrac{12}{3}=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 세제곱의 차와 유리화를 이용해 각각의 $0/0$ 꼴을 정리한다.\n첫째 극한에서 $u=\\sqrt[3]{x}$라 하면 $x=u^3$이고 $u\\to2$이다. 따라서 $\\dfrac{x-8}{\\sqrt[3]{x}-2}=\\dfrac{u^3-8}{u-2}=u^2+2u+4\\to12$이므로 $a=12$이다.\n둘째 극한은 $\\sqrt{x}-1=\\dfrac{x-1}{\\sqrt{x}+1}$을 이용하면 $(\\sqrt{x}-1)\\left(1+\\dfrac{6}{x-1}\\right)=\\dfrac{x-1+6}{\\sqrt{x}+1}\\to\\dfrac{6}{2}=3$이므로 $b=3$이다.\n따라서 $\\dfrac{a}{b}=\\dfrac{12}{3}=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -198,7 +198,7 @@ window.questionBank = [
       "-12"
     ],
     "answer": "③",
-    "solution": "[키포인트] $x=2$에서 연속이 되려면 분자의 값도 $0$이 되어 약분 가능한 꼴이 되어야 한다.\n연속이므로 $\\displaystyle\\lim_{x\\to2}f(x)=f(2)=1$이다. 분모가 $0$으로 가므로 분자도 $0$이어야 하여 $3a+b=0$이다.\n$b=-3a$를 대입하면 $a\\sqrt{x+7}+b=a(\\sqrt{x+7}-3)$이고, $\\sqrt{x+7}-3=\\dfrac{x-2}{\\sqrt{x+7}+3}$이다. 따라서 $x\\ne2$에서 $f(x)=\\dfrac{a}{\\sqrt{x+7}+3}$이다.\n$x\\to2$에서 극한은 $\\frac{a}{6}$이므로 $\\frac{a}{6}=1$, 즉 $a=6$이고 $b=-18$이다. 따라서 $a-b=24$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] $x=2$에서 연속이 되려면 분자의 값도 $0$이 되어 약분 가능한 꼴이 되어야 한다.\n연속이므로 $\\displaystyle\\lim_{x\\to2}f(x)=f(2)=1$이다. 분모가 $0$으로 가므로 분자도 $0$이어야 하여 $3a+b=0$이다.\n$b=-3a$를 대입하면 $a\\sqrt{x+7}+b=a(\\sqrt{x+7}-3)$이고, $\\sqrt{x+7}-3=\\dfrac{x-2}{\\sqrt{x+7}+3}$이다. 따라서 $x\\ne2$에서 $f(x)=\\dfrac{a}{\\sqrt{x+7}+3}$이다.\n$x\\to2$에서 극한은 $a/6$이므로 $a/6=1$, 즉 $a=6$이고 $b=-18$이다. 따라서 $a-b=24$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -400,7 +400,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "②",
-    "solution": "[키포인트] 접선에서 $g(2)$와 $g'(2)$를 읽고, $f$의 연속성을 이용해 $f(2)$를 극한으로 구한다.\n접선 $y=-x+3$은 $x=2$에서 $y=1$이므로 $g(2)=1$이고, 접선의 기울기가 $-1$이므로 $g'(2)=-1$이다.\n$x\\ne2$에서 $f(x)=\\dfrac{g(x)-1}{(x-2)(x+2)}=\\dfrac{g(x)-g(2)}{x-2}\\cdot\\dfrac{1}{x+2}$이다. $f$가 $x=2$에서 미분가능하면 특히 연속이므로 $f(2)=\\lim_{x\\to2}f(x)=g'(2)\\cdot\\dfrac14=-\\dfrac14$이다.\n따라서 $\\dfrac{g(2)}{f(2)}=\\dfrac{1}{-\\frac{1}{4}}=-4$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 접선에서 $g(2)$와 $g'(2)$를 읽고, $f$의 연속성을 이용해 $f(2)$를 극한으로 구한다.\n접선 $y=-x+3$은 $x=2$에서 $y=1$이므로 $g(2)=1$이고, 접선의 기울기가 $-1$이므로 $g'(2)=-1$이다.\n$x\\ne2$에서 $f(x)=\\dfrac{g(x)-1}{(x-2)(x+2)}=\\dfrac{g(x)-g(2)}{x-2}\\cdot\\dfrac{1}{x+2}$이다. $f$가 $x=2$에서 미분가능하면 특히 연속이므로 $f(2)=\\lim_{x\\to2}f(x)=g'(2)\\cdot\\dfrac14=-\\dfrac14$이다.\n따라서 $\\dfrac{g(2)}{f(2)}=\\dfrac{1}{-1/4}=-4$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",

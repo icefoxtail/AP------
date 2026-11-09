@@ -849,7 +849,7 @@ window.questionBank = [
       "삼차다항식의 근 변환"
     ],
     "answer": "①",
-    "solution": "ㄱ. $f(2x)=0$이면 $2x=\\alpha,\\beta,\\gamma$이므로 세 근은 $\\alpha/2,\\beta/2,\\gamma/2$이다. 참이다.\n\nㄴ. $f(\\frac{x}{2})=0$의 세 근은 $2\\alpha,2\\beta,2\\gamma$이다.\n근과 계수의 관계에서 $\\alpha+\\beta+\\gamma=a$이므로, 세 근의 합은 $2(\\alpha+\\beta+\\gamma)=2a$이다.\n그 합이 $2$이면 $a=1$이다. 참이다.\n\nㄷ. $f(2x-1)=0$의 근은 원래 근 $r$에 대하여 $x=\\frac{r+1}{2}$이다.\n세 근의 곱이 $0$이면 그중 하나가 $0$이므로 원래 방정식의 근 중 하나는 $-1$이다.\n이미 한 근이 $\\alpha=1$이므로 근을 $1,-1,\\gamma$라 하면\n$b=(1)(-1)+(-1)\\gamma+\\gamma(1)=-1$이다.\n따라서 $b=1$이라는 주장은 거짓이다.\n옳은 것은 ㄱ, ㄴ이므로 정답은 ①이다.",
+    "solution": "ㄱ. $f(2x)=0$이면 $2x=\\alpha,\\beta,\\gamma$이므로 세 근은 $\\alpha/2,\\beta/2,\\gamma/2$이다. 참이다.\n\nㄴ. $f(x/2)=0$의 세 근은 $2\\alpha,2\\beta,2\\gamma$이다.\n근과 계수의 관계에서 $\\alpha+\\beta+\\gamma=a$이므로, 세 근의 합은 $2(\\alpha+\\beta+\\gamma)=2a$이다.\n그 합이 $2$이면 $a=1$이다. 참이다.\n\nㄷ. $f(2x-1)=0$의 근은 원래 근 $r$에 대하여 $x=(r+1)/2$이다.\n세 근의 곱이 $0$이면 그중 하나가 $0$이므로 원래 방정식의 근 중 하나는 $-1$이다.\n이미 한 근이 $\\alpha=1$이므로 근을 $1,-1,\\gamma$라 하면\n$b=(1)(-1)+(-1)\\gamma+\\gamma(1)=-1$이다.\n따라서 $b=1$이라는 주장은 거짓이다.\n옳은 것은 ㄱ, ㄴ이므로 정답은 ①이다.",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-07",
     "standardUnit": "여러 가지 방정식",
@@ -1048,7 +1048,7 @@ window.questionBank = [
       "근과 계수의 관계"
     ],
     "answer": "0",
-    "solution": "먼저 이차방정식을 전개한다.\n$x(x-1)+x(x-2)+(x-1)(x-2)=0$에서\n$x^2-x+x^2-2x+x^2-3x+2=0$이다.\n동류항을 정리하면\n$3x^2-6x+2=0$이다.\n근과 계수의 관계에서\n$\\alpha+\\beta=\\dfrac63=2,\\quad \\alpha\\beta=\\dfrac23$이다.\n첫째 분모는\n$\\alpha\\beta=\\dfrac23$이다.\n둘째 분모는\n$(\\alpha-1)(\\beta-1)$\n$=\\alpha\\beta-(\\alpha+\\beta)+1$\n$=\\dfrac23-2+1=-\\dfrac13$이다.\n셋째 분모는\n$(\\alpha-2)(\\beta-2)$\n$=\\alpha\\beta-2(\\alpha+\\beta)+4$\n$=\\dfrac23-2\\cdot2+4=\\dfrac23$이다.\n따라서 구하는 값은\n$\\dfrac{1}{\\frac{2}{3}}+\\dfrac{2}{-\\frac{1}{3}}+\\dfrac{3}{\\frac{2}{3}}$이다.\n각 분수를 계산하면\n$\\dfrac32-6+\\dfrac92$이다.\n분수를 더하면\n$6-6=0$이다.",
+    "solution": "먼저 이차방정식을 전개한다.\n$x(x-1)+x(x-2)+(x-1)(x-2)=0$에서\n$x^2-x+x^2-2x+x^2-3x+2=0$이다.\n동류항을 정리하면\n$3x^2-6x+2=0$이다.\n근과 계수의 관계에서\n$\\alpha+\\beta=\\dfrac63=2,\\quad \\alpha\\beta=\\dfrac23$이다.\n첫째 분모는\n$\\alpha\\beta=\\dfrac23$이다.\n둘째 분모는\n$(\\alpha-1)(\\beta-1)$\n$=\\alpha\\beta-(\\alpha+\\beta)+1$\n$=\\dfrac23-2+1=-\\dfrac13$이다.\n셋째 분모는\n$(\\alpha-2)(\\beta-2)$\n$=\\alpha\\beta-2(\\alpha+\\beta)+4$\n$=\\dfrac23-2\\cdot2+4=\\dfrac23$이다.\n따라서 구하는 값은\n$\\dfrac{1}{2/3}+\\dfrac{2}{-1/3}+\\dfrac{3}{2/3}$이다.\n각 분수를 계산하면\n$\\dfrac32-6+\\dfrac92$이다.\n분수를 더하면\n$6-6=0$이다.",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-06",
     "standardUnit": "이차방정식의 근과 계수",

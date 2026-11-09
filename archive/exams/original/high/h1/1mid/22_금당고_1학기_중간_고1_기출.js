@@ -735,7 +735,7 @@ window.questionBank = [
     "content": "이차방정식 $x^2+ax+b$의 한 근이 $\\dfrac{3}{2-i}$일 때, 실수 $a$, $b$에 대하여 $\\dfrac{a}{b}$의 값을 구하시오. (단, $i=\\sqrt{-1}$) [4.0점]",
     "choices": [],
     "answer": "$-\\dfrac{4}{3}$",
-    "solution": "주어진 근을 먼저 정리한다.\n$\\dfrac{3}{2-i}=\\dfrac{3(2+i)}{(2-i)(2+i)}=\\dfrac{6+3i}{5}$이다.\n계수가 실수인 이차방정식이므로 다른 한 근은 켤레복소수\n$\\dfrac{6-3i}{5}$이다.\n두 근의 합은\n$\\dfrac{12}{5}=-a$이므로 $a=-\\dfrac{12}{5}$이다.\n두 근의 곱은\n$\\dfrac{36+9}{25}=\\dfrac95=b$이다.\n따라서\n$\\dfrac ab=\\dfrac{-\\frac{12}{5}}{\\frac{9}{5}}=-\\dfrac43$이다."
+    "solution": "주어진 근을 먼저 정리한다.\n$\\dfrac{3}{2-i}=\\dfrac{3(2+i)}{(2-i)(2+i)}=\\dfrac{6+3i}{5}$이다.\n계수가 실수인 이차방정식이므로 다른 한 근은 켤레복소수\n$\\dfrac{6-3i}{5}$이다.\n두 근의 합은\n$\\dfrac{12}{5}=-a$이므로 $a=-\\dfrac{12}{5}$이다.\n두 근의 곱은\n$\\dfrac{36+9}{25}=\\dfrac95=b$이다.\n따라서\n$\\dfrac ab=\\dfrac{-12/5}{9/5}=-\\dfrac43$이다."
   },
   {
     "id": 19,
