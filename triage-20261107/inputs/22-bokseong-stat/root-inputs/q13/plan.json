@@ -1,0 +1,990 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sub",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "5"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "5"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "1"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "5"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sub",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "5"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sub",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "5"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "5"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sub",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "5"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "5"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "5"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sub",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "5"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "5"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "1"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sub",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "5"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "O"
+  ],
+  "hiddenPointNames": [
+    "A2",
+    "A4",
+    "A5",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "O"
+  ],
+  "hiddenPointStyle": "DOT",
+  "displayLines": [],
+  "displayCircles": [
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "E1x2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "E2x3",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "E3x4",
+      "refs": [
+        "A3",
+        "A4"
+      ]
+    },
+    {
+      "id": "E4x5",
+      "refs": [
+        "A4",
+        "A5"
+      ]
+    },
+    {
+      "id": "E5x6",
+      "refs": [
+        "A5",
+        "A6"
+      ]
+    },
+    {
+      "id": "E6x7",
+      "refs": [
+        "A6",
+        "A7"
+      ]
+    },
+    {
+      "id": "E7x8",
+      "refs": [
+        "A7",
+        "A8"
+      ]
+    },
+    {
+      "id": "E8x9",
+      "refs": [
+        "A8",
+        "A9"
+      ]
+    },
+    {
+      "id": "E9x10",
+      "refs": [
+        "A9",
+        "A10"
+      ]
+    },
+    {
+      "id": "E1x10",
+      "refs": [
+        "A1",
+        "A10"
+      ]
+    },
+    {
+      "id": "E1x3",
+      "refs": [
+        "A1",
+        "A3"
+      ]
+    },
+    {
+      "id": "E3x6",
+      "refs": [
+        "A3",
+        "A6"
+      ]
+    },
+    {
+      "id": "E1x6",
+      "refs": [
+        "A1",
+        "A6"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "R",
+      "refs": [
+        "A1",
+        "A3",
+        "A6"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "color": "BLUE",
+        "segments": [
+          "E1x3",
+          "E3x6",
+          "E1x6"
+        ]
+      }
+    ]
+  },
+  "caption": "원에 내접한 삼각형은 한 변이 지름일 때 그 대각이 직각이다. 그림은 지름 A1A6과 세 번째 꼭짓점 A3을 고른 한 예다. 정십각형의 지름은 5개이고, 지름마다 나머지 8개 꼭짓점을 고를 수 있다. 직각삼각형의 빗변은 하나이므로 중복 없이 5×8=40개이며, 전체 120개 중 확률은 1/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정십각형의 세 꼭짓점으로 만든 삼각형이 직각삼각형인 경우를 센다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "rightAngles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 십각형에 외접원·지름과 대표 삼각형을 보조적으로 표시한다. 원본 그림을 대체하지 않는다. 외접반지름 1은 원문에 주어진 길이가 아닌 비율 보존용 정규화다.",
+    "사용자 지시: 지름과 원주각을 연결하는 그림이 이해에 도움이 되어 계획하며, 점 이름과 직각 표시는 여유 있게 배치한다."
+  ]
+}
