@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "24",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "24*x-3*x^2",
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 4,
+        "y": 48
+      },
+      {
+        "id": "B",
+        "x": 8,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/6"
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "h(t)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "M",
+    "B"
+  ],
+  "caption": "원문의 높이–시간 관계 h(t)=24t−3t²은 0≤t≤8에서 표시한다. 수평축은 시간 t(초), 수직축은 높이 h(t)(m)이다. 최고점은 (t,h)=(4,48)이고 지면 도달은 t=8이다. 속도는 높이 그래프의 세로좌표가 아니라 도함수 h′(t)=24−6t이다. 화면 표시에서는 높이축 1m의 길이를 시간축 1초의 1/6로 한다. 지면에 닿는 순간의 속도는 −24m/s, 아래 방향이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 높이는 x=24t−3t²이고 비행 시간은 [0,8]이다. 그림은 x를 수평축 변수로 오인하지 않도록 원문의 시간 t와 높이 h(t)를 축에 표시한다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.sourceDomain",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "h′(t)=24−6t이므로 꼭짓점은 t=4, 높이 48이며 지면 도달은 t=8, h=0이다. 속도는 h′(8)=−24m/s이고 아래 방향이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "높이 x와 시간 t는 서로 다른 양이다. y축은 높이 h(t), x축은 시간 t이며 속도 −24는 그래프의 높이 좌표가 아니다.",
+      "mappedTo": [
+        "graphPlan.axisTitles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "시간-높이 그래프에 시작점·최고점·착지점을 표시하고, 기울기인 속도와 높이 좌표를 분리해 설명한다."
+  ]
+}

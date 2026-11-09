@@ -1,0 +1,82 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-2",
+      "0",
+      "-1",
+      "2"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -5,
+      50
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND",
+    "coordinateBand": {
+      "hide": [
+        "B"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "f′(x)=8x³−3x²−2를 적분하고 f(0)=3을 적용하면 f(x)=2x⁴−x³−2x+3이다. 점 A는 초기값, B는 x=1의 함수값을 나타내며 f(1)=2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 f′(x)=8x³−3x²−2와 f(0)=3을 준다.",
+      "mappedTo": [
+        "sourceQuote",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "적분 결과는 f(x)=2x⁴−x³−2x+3이고 f(0)=3, f(1)=2이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.coordinateBand",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초기 함수값과 입력 x=1에서의 출력점을 한 그래프에 연결해 적분상수 적용 뒤의 함수값을 비교한다."
+  ],
+  "sourceQuote": "등식 $f'(x)=8x^3-3x^2-2$, $f(0)=3$일 때, $f(1)$의 값은?"
+}

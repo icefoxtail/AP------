@@ -1,0 +1,69 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "-2",
+      "-1",
+      "2"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -18,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "대칭차분의 극한은 4f′(1)이고 f′(1)=4+a이다. 주어진 값 8을 대입하면 4(4+a)=8이므로 요청한 상수는 a=−2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수는 f(x)=2x³−x²+ax+1이며 대칭차분 극한값은 8이다.",
+      "mappedTo": [
+        "sourceQuote",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "대칭차분 극한은 4f′(1), f′(1)=4+a이다. 따라서 a=−2이며 f(1)=0이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대칭차분의 기준 x=1에서의 함수값을 표시하고, 기울기 계산과 입력된 극한값의 연결을 캡션에서 확인한다."
+  ],
+  "sourceQuote": "함수 $f(x)=2x^3-x^2+ax+1$에 대하여 $\\displaystyle\\lim_{h\\to0}\\dfrac{f(1+2h)-f(1-2h)}{h}=8$을 만족시키는 상수 $a$의 값은?"
+}

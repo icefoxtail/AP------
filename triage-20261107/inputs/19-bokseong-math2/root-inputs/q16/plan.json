@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "P"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "caption": "가법 관계식에 y=0을 대입해 f(0)=0을 얻고, y에 대해 미분한 식에 y=0을 대입하면 f′(x)=2이다. 따라서 모든 실수에서 f(x)=2x이며, 그림은 이 직선과 원점 O 및 입력 1에 대응하는 점 P를 나타낸다. P의 좌표 숫자는 그림에서 숨기지만 점과 직선은 유지한다. 따라서 f(1)=2이고 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "미분가능한 가법 함수에 y=0을 대입해 f(0)=0을 얻는다. 가법 관계를 y에 대해 미분하면 f′(x+y)=f′(y)이고 y=0에서 f′(x)=f′(0)=2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.functionName",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=2이므로 f(x)=2x+C이고 f(0)=0에서 C=0이다. 그래프는 실수 전체에서 f(x)=2x를 그린다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "O=(0,0), P=(1,2)는 도출된 직선 위의 점이다. P의 geometry는 유지하고 coordinateBand.hide는 숫자 좌표 라벨만 숨긴다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.coordinateBand"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실수 전체의 직선 f(x)=2x와 원점 및 입력 1의 대응점을 함께 보여 가법 관계로 결정되는 함수식을 시각적으로 연결한다. 정답 좌표의 숫자 라벨만 숨기고 점과 직선은 보존한다."
+  ]
+}

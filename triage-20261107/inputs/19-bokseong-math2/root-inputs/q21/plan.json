@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "12",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*(x+2)^2",
+    "functionName": "d",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 27
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "d(x)"
+    },
+    "coordinateBand": {
+      "hide": [
+        "A"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "M"
+  ],
+  "caption": "원문의 최소 경계 B=12를 택하면 d(x)=f′(x)=3(x+2)²이다. 이 그림은 원래 삼차함수 f가 아니라 그 도함수 f′를 나타낸다. 도함수의 전역 최솟값은 x=−2에서 0이고, 요청한 점은 A(1,27)이다. 따라서 가능한 B의 최솟값 경계에서 f′(1)=27이므로 원문의 최솟값은 27이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x³+6x²+Bx+2 and the derivative constraint gives B≥12. At the minimizing boundary B=12, f′(x)=3x²+12x+12=3(x+2)².",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.functionName",
+        "graphPlan.axisTitles",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "d(x)=f′(x) has its global minimum 0 at x=−2. The requested value is d(1)=3(3)²=27. The graph is explicitly the derivative, not f.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경계 사례 B=12의 도함수 곡선을 f와 혼동하지 않도록 명시하고, 전역 최소점과 요청한 도함수 값을 표시한다."
+  ]
+}

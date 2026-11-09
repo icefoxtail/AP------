@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-6",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "abs(x)^3-6*x^2",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -4,
+        "y": -32
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": 4,
+        "y": -32
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": "1/4"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "coordinateLeader": [
+    "L",
+    "M",
+    "R"
+  ],
+  "caption": "조건을 만족하는 경우는 a=1, b=−5이다. 원래 곡선은 f(x)=(|x|−1)³−3(|x|−1)²−9(|x|−1)−5=|x|³−6x²이며 두 branch는 x<0에서 −x³−6x², x≥0에서 x³−6x²이다. M(0,0)은 극댓점이고 L(−4,−32), R(4,−32)는 대칭인 극솟점이다. y축 1단위 표시 길이는 x축 1단위의 1/4이다. 따라서 a+b=−4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "For a=1,b=−5 the source function simplifies exactly to |x|³−6x², with polynomial branches −x³−6x² for x<0 and x³−6x² for x≥0. The breakpoint is the shared value f(0)=0.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The derivative on x<0 is −3x²−12x, with minimum at x=−4; on x>0 it is 3x²−12x, with minimum at x=4. x=0 is the local maximum 0. The two minima are −32.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The alternative differentiability case a=−3 gives a local minimum at x=0, not the required local maximum, so it is excluded. Do not combine it with the a=1 curve.",
+      "mappedTo": [
+        "caption"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "The y-scale is one quarter of the x-scale for display only; all coordinates and function values remain those of the original f.",
+      "mappedTo": [
+        "graphPlan.axisScale",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 절댓값 함수를 두 정확한 다항 branch로 표시하여 x=0의 극댓점과 ±4의 대칭 극솟점을 보여 준다. 배율 조정은 캡션에서 공개한다."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "1",
+      "1/2"
+    ],
+    "domain": [
+      0,
+      18
+    ],
+    "viewport": [
+      0,
+      18,
+      0,
+      180
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        18
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "t",
+    "axisTitles": {
+      "x": "시간(초)",
+      "y": "상대거리(m)"
+    },
+    "axisTickValues": {
+      "x": [
+        "5",
+        "10",
+        "15"
+      ],
+      "y": [
+        "50",
+        "100",
+        "150"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 18,
+        "y": 180
+      }
+    ],
+    "lines": [
+      {
+        "id": "meeting",
+        "slope": "0",
+        "intercept": "180",
+        "through": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "서로 반대 방향이므로 상대 속도는 1+u m/s이고, t초 동안 상대 이동 거리는 d(t)=∫₀ᵗ(1+u)du=t+t²/2이다. 세 번째 만남은 3×60=180m에 해당한다. 그래프는 시간 5초와 거리 50m 눈금을 각각 써서 두 단위를 구분한다. d(t)=180의 해 t=18이므로 출발 후 세 번째 만남은 18초 뒤이고 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원의 둘레는 60m이고 두 점은 같은 곳에서 출발해 서로 반대방향으로 움직인다. P의 속력은 1m/s, Q의 속력은 t m/s이다.",
+      "mappedTo": [
+        "graphPlan.axisTitles",
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "상대 속력은 1+u이고 누적 상대 이동 거리는 d(t)=∫₀ᵗ(1+u)du=t+t²/2이다. 출발 시 t=0,d=0이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "세 번째 만남까지 상대 이동 거리는 3×60=180m이고 d(t)=180의 양의 해는 t=18이다. B=(18,180)은 출발이 아니라 세 번째 만남이다.",
+      "mappedTo": [
+        "graphPlan.lines",
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "시간 축은 초 단위, 상대 거리 축은 m 단위이며 각각 5초 및 50m 간격으로 눈금을 표시한다.",
+      "mappedTo": [
+        "graphPlan.applicationAxes",
+        "graphPlan.axisTickValues",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "누적 상대 이동 거리 곡선은 출발점 A=(0,0)과 세 번째 만남 B=(18,180)을 분리한다. y=180의 교차 기준으로 세 번째 만남의 이동 거리를 읽는다.",
+    "가로축 5초 간격과 세로축 50m 간격을 따로 표시해 서로 다른 물리 단위와 크기를 혼동하지 않도록 한다."
+  ]
+}

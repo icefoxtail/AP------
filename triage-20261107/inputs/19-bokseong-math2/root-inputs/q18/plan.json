@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "대칭구간",
+        "band": true,
+        "points": [
+          {
+            "id": "A",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "대칭구간"
+  },
+  "caption": "f는 우함수이고 x⁵−2x³은 기함수이므로 (x⁵−2x³)f(x)는 기함수라 대칭구간 적분이 0이다. 또 ∫₋₁¹f(x)dx=2∫₀¹f(x)dx=8이므로 상수항의 적분은 4이다. 따라서 주어진 정적분값은 4이고 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 모든 실수 x에서 f(−x)=f(x)이고 ∫₀¹f(x)dx=4임을 준다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "f가 우함수이고 x⁵−2x³이 기함수이므로 (x⁵−2x³)f(x)는 기함수여서 [−1,1]에서 부호 있는 적분값이 0이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "∫₋₁¹f(x)dx=2∫₀¹f(x)dx=8이고 상수항 1/2를 곱한 적분은 4이다. 특정 f의 식이나 양수성은 주어지지 않는다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 −1,0,1의 대칭구간 구조만 표시한다. 홀함수 항의 상쇄 및 우함수 적분 관계를 캡션에 연결하고, 미지 함수의 구체적 그래프나 부호를 추정하지 않는다."
+  ]
+}

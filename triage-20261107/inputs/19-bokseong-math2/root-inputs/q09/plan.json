@@ -1,0 +1,76 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "0",
+      "-3",
+      "2"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -80,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "id": "N",
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "coordinateLeader": [
+    "M",
+    "N"
+  ],
+  "caption": "f′(x)=6x(x−1)은 0<x<1에서 음수이고 x<0 또는 x>1에서 양수이다. 따라서 f(x)=2x³−3x²+1의 감소 구간은 [0,1]이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수는 f(x)=2x³−3x²+1이며 정의역은 실수 전체이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "sourceQuote",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=6x(x−1)이므로 x=0에서 극대, x=1에서 극소이고 0<x<1에서 감소한다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정지점 두 곳 사이에서 함수가 감소하는 구간과 양쪽 꼬리 방향을 한 개형에서 비교한다."
+  ],
+  "sourceQuote": "다음 중 함수 $f(x)=2x^3-3x^2+1$가 감소하는 구간은?"
+}

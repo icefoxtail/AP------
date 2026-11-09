@@ -1,0 +1,158 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "math": "a=0",
+        "text": "도함수 부호"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "0",
+            "6",
+            "4"
+          ],
+          "domain": [
+            -3,
+            2
+          ],
+          "viewport": [
+            -3,
+            2,
+            -70,
+            70
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": -1.5,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "C",
+              "x": -1,
+              "y": 2
+            }
+          ],
+          "exactCoordinates": {
+            "A": [
+              "-3/2",
+              "0"
+            ]
+          },
+          "axisTitles": {
+            "x": "x",
+            "y": "도함수"
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        },
+        "coordinateLeader": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "math": "a=2",
+        "text": "도함수 부호"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "4",
+            "6",
+            "4"
+          ],
+          "domain": [
+            -3,
+            2
+          ],
+          "viewport": [
+            -3,
+            2,
+            -80,
+            80
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "axisTitles": {
+            "x": "x",
+            "y": "도함수"
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        },
+        "coordinateLeader": [
+          "A"
+        ]
+      }
+    }
+  ],
+  "caption": "두 후보를 실제 도함수로 비교한다. a=0이면 f′=2x²(2x+3)이므로 x=−3/2에서 부호가 −에서 +로 바뀌고, x=0은 중근이라 부호가 유지된다. a=2이면 2x²+3x+2>0이므로 x=0에서만 −에서 +로 바뀐다. 따라서 단 하나의 극값을 주는 값은 a=0,2이며 정답은 ③, ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 f′(x)=4x³+6x²+2ax=2x(2x²+3x+a)이다.",
+      "mappedTo": [
+        "panels[0].plan.graphPlan.coefficients",
+        "panels[1].plan.graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "a=0에서 f′(x)=2x²(2x+3). x=−3/2는 단순근으로 부호가 바뀌며 x=0은 중근으로 부호가 유지된다. f′의 다른 실근 외 정지점은 x=−1에서 f′(−1)=2이다.",
+      "mappedTo": [
+        "panels[0].plan.graphPlan.requiredPoints",
+        "panels[0].plan.graphPlan.exactCoordinates",
+        "panels[0].caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "a=2에서 2x²+3x+2의 판별식은 −7<0이며 최고차항이 양수라 항은 항상 양수이다. f′는 x=0에서만 부호가 바뀐다.",
+      "mappedTo": [
+        "panels[1].plan.graphPlan.requiredPoints",
+        "panels[1].caption"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "원문 선택지 중 극값이 하나인 a는 0과 2이므로 해당 선택은 ③, ⑤이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "각 패널은 주어진 a에서의 도함수 그래프와 x축을 보여 부호의 변화와 유지가 구분된다. a=0의 원점은 이중근 접촉이고 −3/2에서는 축을 통과한다.",
+    "도식은 두 명시적 예시의 도함수만 그리며 일반 매개변수 곡선이나 f 자체를 임의로 정하지 않는다."
+  ]
+}

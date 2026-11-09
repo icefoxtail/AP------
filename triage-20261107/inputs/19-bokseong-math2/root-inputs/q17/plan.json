@@ -1,0 +1,135 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-64",
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "4*x*(x^2-16)",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -4,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "L",
+        "x": -2.309401076758503,
+        "y": 98.53444594169613
+      },
+      {
+        "id": "R",
+        "x": 2.309401076758503,
+        "y": -98.53444594169613
+      }
+    ],
+    "regions": [
+      {
+        "id": "left-bounded-region",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-4",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "256"
+      },
+      {
+        "id": "right-bounded-region",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "4",
+        "fill": "LIGHT",
+        "label": "256"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/24"
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "exactCoordinates": {
+      "L": [
+        "-4*sqrt(3)/3",
+        "512*sqrt(3)/9"
+      ],
+      "R": [
+        "4*sqrt(3)/3",
+        "-512*sqrt(3)/9"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "C"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "B",
+    "L",
+    "R"
+  ],
+  "caption": "원문에서 a=4이므로 f(x)=4x(x²−16)=4x³−64x이다. 실근은 −4,0,4이고 두 유계 영역을 각각 음영으로 표시한다. 각 영역의 넓이는 256이므로 전체 넓이는 512이다. 국소 극대·극소점은 x=∓4/√3이며 좌표는 L(−4√3/3,512√3/9), R(4√3/3,−512√3/9)이다. 화면 표시에서는 y축 1단위의 길이를 x축 1단위의 1/24로 한다. 따라서 두 영역의 넓이 합은 512이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "영점은 −a,0,a이고 a>0이다. 원문의 총 넓이는 양쪽 대칭 영역을 합친 값이며 a=4일 때 f(x)=4x³−64x.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=12x²−64=0의 임계점은 x=±4/√3이고 함수값은 각각 ±512√3/9이다. 두 유계 영역은 [−4,0]에서 f≥0, [0,4]에서 f≤0이며 각각 256, 총 512이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "graphPlan.regions",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "그래프의 원래 함수 정의역은 실수 전체이다. 음영 영역만 두 유계 구간에 한정하며 곡선의 sourceDomain은 ALL_REALS로 보존한다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x축과 이루는 두 유계 영역, 세 영점, 양쪽 임계점을 한 곡선에서 구분해 총 넓이 계산을 돕는다."
+  ]
+}

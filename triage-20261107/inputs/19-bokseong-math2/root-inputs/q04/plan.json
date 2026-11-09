@@ -1,0 +1,75 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "-9",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      -80,
+      20
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 6
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": -26
+      }
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "coordinateLeader": [
+    "M",
+    "N"
+  ],
+  "caption": "f(x)=x³−3x²−9x+1의 도함수는 3(x−3)(x+1)이므로 M=(−1,6)에서 극대, N=(3,−26)에서 극소이다. 극댓값 조건으로 구한 값은 a=1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 f(x)=x³−3x²−9x+a의 극댓값이 6일 때 a를 묻는다.",
+      "mappedTo": [
+        "sourceQuote",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=3(x−3)(x+1)이므로 극대는 x=−1에서 생기며 f(−1)=5+a=6에서 a=1이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 부호 변화에 따른 극대점과 다른 극값을 함께 표시해 삼차함수의 개형을 확인한다."
+  ],
+  "sourceQuote": "함수 $f(x)=x^3-3x^2-9x+a$의 극댓값이 $6$일 때, 실수 $a$의 값은?"
+}

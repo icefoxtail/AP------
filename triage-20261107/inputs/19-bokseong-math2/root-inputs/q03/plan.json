@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "5",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -20,
+      25
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 10
+      }
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "실수 전체에서 f(x)=x³+5x+4와 P=(1,10)을 표시한다. f′(1)=8이고 x²−1=(x−1)(x+1)이므로 요청한 극한값은 4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수는 f(x)=x³+5x+4이고 정의역에 별도 제한이 없다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "sourceQuote",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(1)=10, f′(1)=8이며 x²−1=(x−1)(x+1)이므로 주어진 극한은 f′(1)/2로 계산된다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 P=(1,10)은 분자에 쓰이는 f(1)의 함수값을 곡선에서 확인하게 한다."
+  ],
+  "sourceQuote": "함수 $f(x)=x^3+5x+4$에 대하여 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)-f(1)}{x^2-1}$의 값은?"
+}

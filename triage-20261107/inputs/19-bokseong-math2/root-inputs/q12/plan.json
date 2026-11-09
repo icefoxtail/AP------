@@ -1,0 +1,79 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "6",
+      "-3/2"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      6,
+      -15,
+      20
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 9
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "B"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "주어진 적분 관계를 정리하고 미분하면 f′(x)=6−3x이다. f(0)=3에서 f(x)=−3x²/2+6x+3을 얻고, f(2)=9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 적분 관계와 초기조건 f(0)=3에서 f′(x)=6−3x, f(x)=−3x²/2+6x+3을 얻는다.",
+      "mappedTo": [
+        "sourceQuote",
+        "PRESERVED_ARCHIVE_BANK",
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A=(0,3), B=(2,9)이며 x=2에서의 함수값을 구한다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.coordinateBand",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초기조건과 입력 x=2에 대응하는 함수값을 같은 포물선의 두 좌표로 연결한다."
+  ],
+  "sourceQuote": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $x^2f(x)=x^3+\\displaystyle\\int_0^x(x^2+t)f'(t),dt$를 만족시킨다. $f(0)=3$일 때, $f(2)$의 값은?"
+}

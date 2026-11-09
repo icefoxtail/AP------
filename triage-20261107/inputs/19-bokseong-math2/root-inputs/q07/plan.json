@@ -1,0 +1,125 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-10",
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x^2-2*x-10",
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "gcurve",
+        "name": "g",
+        "coefficients": [
+          "14",
+          "4",
+          "-1"
+        ],
+        "intersectionX": [
+          "-2",
+          "4"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "bounded-area",
+        "upper": "gcurve",
+        "lower": "f",
+        "from": "-2",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 14
+      },
+      {
+        "id": "M",
+        "x": 0.5,
+        "y": -10.5
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": 18
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": "1/4"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "exactCoordinates": {
+      "M": [
+        "1/2",
+        "-21/2"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "M",
+    "N"
+  ],
+  "caption": "두 포물선 f(x)=2x²−2x−10과 g(x)=−x²+4x+14를 함께 그린다. 교점은 A(−2,2), B(4,14)이고 −2≤x≤4에서 g(x)가 위에 있다. 음영은 원문의 두 곡선으로 둘러싸인 영역이다. 이전 자동 프레임에서 영역이 작아 가독성이 보류된 이력을 반영해 표시 배율을 조정했다: y축 1단위의 길이는 x축 1단위의 1/4이다. 따라서 음영 넓이는 108이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선은 y=2x²−2x−10 및 y=−x²+4x+14이다. 교점은 (x+2)(x−4)=0에서 x=−2,4이며 해당 y값은 2,14이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "−2≤x≤4에서 g(x)−f(x)=−3x²+6x+24=−3(x+2)(x−4)≥0. 두 곡선 사이 넓이는 ∫[−2,4](g−f)dx=108이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "주곡선 f의 꼭짓점은 (1/2,−21/2), 참조곡선 g의 꼭짓점은 (2,18)이다. 표시 배율은 y축 1단위 길이를 x축 1단위의 1/4로 한다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "graphPlan.axisScale",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선의 구별, 교점 및 실제 곡선 사이의 음영 영역을 함께 보여 주어 정적분 넓이 풀이를 보조한다. 표시된 세로 배율은 캡션에 공개한다."
+  ]
+}

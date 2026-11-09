@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-16",
+          "12",
+          "3",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "formula": "-2*x^3+3*x^2+12*x-16",
+    "functionName": "p",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": "1/13"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "p(x)"
+    },
+    "coordinateBand": {
+      "hide": [
+        "M"
+      ]
+    }
+  },
+  "caption": "원문 부등식은 정확히 0<x<4에서 f(x)≥g(x)이며, p(x)=φ(x)=−2x³+3x²+12x−16을 이 열린 조건 구간에서 표시한다. p′(x)=−6(x−2)(x+1)이므로 내부에서 x=2까지 증가한 뒤 감소하고 p(2)=4이다. x=0,4는 조건에 포함되지 않으며 각각의 끝값 −16, −48은 경계에서의 극한값일 뿐이다. 화면 표시에서는 y축 1단위 길이를 x축 1단위의 1/13로 한다. 모든 0<x<4에서 성립하는 가장 작은 a는 4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)−g(x)=2x³−3x²−12x+a+16. 모든 0<x<4에서 f≥g이려면 a≥φ(x)=−2x³+3x²+12x−16.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.sourceDomain",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "φ′(x)=−6(x−2)(x+1), so φ increases on (0,2) and decreases on (2,4). Its attained maximum is φ(2)=4. The boundary values φ(0)=−16 and φ(4)=−48 are excluded endpoint values, not members of the open condition interval.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The original condition interval is open at both ends. Do not replace it with a closed [0,4] source interval; the boundary values are mentioned only as limits.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문과 같은 열린 구간을 보존하고 내부 극댓값과 양 끝의 제외 상태를 구분해 a의 최솟값을 설명한다."
+  ]
+}

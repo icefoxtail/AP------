@@ -1,0 +1,81 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "0",
+      "-3",
+      "4"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -50,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 3
+      }
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND",
+    "coordinateBand": {
+      "hide": [
+        "A"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "F′(x)=f(x)이므로 원문의 식을 미분해 xf′(x)=12x³−6x²를 얻는다. 적분하면 f(x)=4x³−3x²+C이고 f(1)=3에서 C=2이므로 f(0)=2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 F(x)=xf(x)−3x⁴+2x³, F′(x)=f(x), f(1)=3을 준다.",
+      "mappedTo": [
+        "sourceQuote",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "미분·적분 결과 f(x)=4x³−3x²+2이며 A=(0,2), B=(1,3)이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.coordinateBand",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 함수값 f(1)과 구하려는 f(0)의 점을 삼차함수의 한 그래프 위에 표시한다."
+  ],
+  "sourceQuote": "다항함수 $f(x)$의 한 부정적분을 $F(x)$라고 하면 $F(x)=xf(x)-3x^4+2x^3$이 성립하고, $f(1)=3$일 때, $f(0)$의 값은?"
+}
