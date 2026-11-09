@@ -221,6 +221,8 @@
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+        /* <p> in question/solution source is only a block line break: no default margins, no other styling. */
+        .q-content p, .sol-exp p, [data-semantic-content] p { margin: 0; }
         /* 반폭 칸을 넘치는 해설은 전폭으로 올리지 않고 칸 안에서 줄바꿈·글자 단계 축소로 맞춘다(layout-materializer fitSolutionToNarrowColumn). 잘라 숨기지 않는다. */
         .q-box.sol-box.sol-fit-narrow, .q-box.sol-box.sol-fit-narrow .sol-meta { max-width: 100%; min-width: 0; }
         .q-box.sol-box.sol-fit-narrow .sol-exp,
@@ -1148,7 +1150,7 @@ function wrapLatex(text) {
     s = s.split(mathSegmentRe).map((seg, idx) => {
         if (idx % 2 === 1) return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r\n|\r|\n/g, ' ');
         let t = seg;
-        t = t.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
+        t = t.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|\n*<\/?p(?![a-zA-Z])[^>]*>\n*|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
             const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
         });
         t = t.replace(combPat('C'), combRepl('C')).replace(combPat('H'), combRepl('H')).replace(combPat('P'), combRepl('P'));

@@ -44,6 +44,7 @@
    - 화면에서 바뀌지 않은 것: generated-bank·mixer의 인쇄/출력은 이미 `mixed_engine.html`·`engine.html`(연결 완료)로 가므로 이중 처리하지 않는다. mixer의 "전체 아카이브" 목록(`createQuestionIndexItem`)은 색인의 `contentText`를 180자로 줄여 글자로 보여 주는 요약 목록이라 표를 그리지 않는다(원문 파이프가 요약에 글자로 남을 수 있음 — 남은 일).
    - apmath 화면(`apmath/wrong_print_engine.html`, `apmath/js/report-center.js`)은 연결 대상이 아니다(사용자 결정 2026-11-09: 아카이브만 연결).
    - 테스트: `tests/ap-table-archive-renderers.test.js`(세 화면의 태그·호출 위치·가드), `tests/archive2-generated-bank-subjective-table.test.cjs`(파이프 표 노드·멱등·위험 마크업 폴백).
+- 동아 경우의수와행렬 대단원평가 해설지 MATH_TYPESET_ERROR (기존, 원인 미상)
 6. **인쇄 실측**: 사용자가 실제 프린터로 선 두께를 확인한 뒤 CSS 토큰을 확정한다.
 
 ## 참고 자료
