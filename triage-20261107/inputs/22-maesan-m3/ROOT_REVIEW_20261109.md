@@ -35,3 +35,8 @@ Q10: 내접 사각형의 접선 길이 5→11→4→6을 보여 주는 3종 로�
 Q13: 세 접선과 같은 외부점의 접선 길이를 구분하고 AB=AC가 항상 성립하지 않는 비대칭 예시 3종 로컬 작성. construction·입력 spec PASS, 원본 그림 보존, 정식 렌더·원격·인계 NOT_RUN.
 
 Q12: 같은 외부점에서 그은 접선 세 쌍을 표시하여 둘레 22를 설명하는 예시 3종 로컬 작성, construction·입력 spec PASS. 원본 그림 보존, 정식 렌더·원격·인계 NOT_RUN.
+
+## 시험지별 최종 판정·입력 작성 완료
+전 22문항을 각각 검토했다. 필요한 보조도 3종은 Q02·04·05·06·07·08·09·10·11·12·13·14·15·16·17·18·20·21·22의 19문항이다. 원문 그림이 있다는 이유만으로 제외하지 않았다. Q01은 그림에서 빗변과 이웃변을 바로 읽는 단일 삼각비 판정, Q03은 원문 그림의 높이/거리와 주어진 tan40°=0.8을 한 번 대입하는 문제, Q19는 보기의 사각형 성질을 판정하는 문제이므로 추가 그림이 풀이에 줄 이득이 작아 선택하지 않았다. Q03에서 tan40°는 문제에 지정된 근삿값이므로 실제 40° 삼각형에 정확한 0.8을 강제하는 그림을 만들지 않는다.
+
+19문항 각 item·plan·publish 57개 JSON과 원문 문항 ID·파일 경로를 대조했고, JSON 파싱 및 STATUS의 SHA-256 대조 57/57 PASS. 평면도 18개는 construction.validate/execute·출처검사·compileConstructionWirePlan·verifyConstructionConditionBindings·displayGeometryInventory·specFor 입력 PASS, 입체 Q22는 solveSolidFigure·solidFigureSpec·expandSolidFigure 입력 PASS. 원문 22문항과 연결 PNG 22개를 보존했다. 공식 렌더·독립 최종 검수·원격 전체 완결 기록·구현자 인계는 NOT_RUN. 외부 비공개 소유 UNKNOWN. 입력 작성 완료는 SVG 게시·최종 검수 완료가 아니다.
