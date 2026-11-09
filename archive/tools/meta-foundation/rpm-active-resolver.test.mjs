@@ -133,6 +133,34 @@ test('FAMILY_ACTIVE only reuses a template selected after crosswalk lookup', () 
   assert.equal(validateResolverEvidence(input, result, { repoRoot: root }).status, 'PASS');
 });
 
+test('course labels that differ only by whitespace select the exact active crosswalk and binding', () => {
+  const file = path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json');
+  const row = JSON.parse(fs.readFileSync(file, 'utf8')).records.find(item => item.id === 'H2-PS-RPM-077');
+  assert.ok(row);
+  const input = makeInput(row, {
+    curriculumContext: {
+      grade: 'H2', curriculum: '2022', scope: row.scope, standardCourse: '확률과통계',
+      standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey ?? null,
+    },
+    semanticDecision: {
+      primaryMethod: '신뢰구간의 폭 조건에서 필요한 표본 크기를 계산한다.',
+      decisiveStep: '폭의 반감에 필요한 표본 크기는 네 배가 된다.',
+      rpmPath: { curriculum: row.curriculum, scope: row.scope, ...row.rpmPath },
+    },
+  });
+  const bundle = buildDecisionIsolatedInput(input);
+  input.familyTemplateSelection = {
+    stage: 'POST_CROSSWALK', inputBundleSha: bundle.inputBundleSha,
+    crosswalkRecordId: row.id, templateKey: row.templateKey,
+    decisiveStepReason: input.semanticDecision.decisiveStep,
+  };
+  const result = resolveMetaRoute(input, { repoRoot: root, registry });
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
+  assert.equal(result.crosswalkRecordId, row.id);
+  assert.equal(result.problemTypeKey, row.problemTypeKey);
+  assert.equal(result.templateKey, row.templateKey);
+});
+
 test('several ACTIVE rows on one leaf and unit are selected after the crosswalk lookup, never merged by guessing', () => {
   const high2 = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json'), 'utf8'));
   const rows = ['H2-M2-RPM-023', 'H2-M2-RPM-100', 'H2-M2-RPM-102'].map(id => high2.records.find(row => row.id === id));
