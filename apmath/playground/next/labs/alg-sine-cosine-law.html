@@ -1272,7 +1272,6 @@ window.addEventListener('DOMContentLoaded', function () {
       // [P0-1 수리] 3단계 배지에서 현재 조작 중인 R₁의 사인비와 목표 조건(sinB/sinD=3/4 ➔ R₁=4)을 명확히 구분 표기
       // -----------------------------------------------------------------------
       if (id === 'bas-3') {
-        const sc = u * 0.9;
         const r2 = 3.0;
         const r1 = 2.6 + t * 2.2; // t = 0.6364 -> r1 = 4.0
         const h = 2.25;           // 반현 길이 (AC = 4.5)
@@ -1280,13 +1279,20 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const d1 = Math.sqrt(Math.max(0.2, r1 * r1 - h * h));
         const d2 = Math.sqrt(Math.max(0.2, r2 * r2 - h * h));
+        // Fit the full allowed radius range, including the left drag handle.
+        // Keeping this frame independent of t also keeps the drag inverse stable.
+        const maxR1 = 4.8, left = -Math.sqrt(maxR1 * maxR1 - h * h) - maxR1, right = d2 + r2;
+        const F = FIT(rect, [{ x: left, y: -maxR1 }, { x: right, y: maxR1 }], { l: 32, r: 32, t: 36, b: 36 });
+        const sc = Math.min(u * 0.9, F.u);
+        const cx = rect.width / 2 - (left + right) * sc / 2 + state.panX;
+        const cy = rect.height / 2 + state.panY;
 
-        const O1 = toScr(-d1, 0, ox, oy, sc);
-        const O2 = toScr(d2, 0, ox, oy, sc);
-        const A = toScr(0, h, ox, oy, sc);
-        const Cpt = toScr(0, -h, ox, oy, sc);
-        const B = toScr(-d1 - r1 * Math.cos(0.22), r1 * Math.sin(0.22), ox, oy, sc);
-        const D = toScr(d2 + r2 * Math.cos(-0.18), r2 * Math.sin(-0.18), ox, oy, sc);
+        const O1 = toScr(-d1, 0, cx, cy, sc);
+        const O2 = toScr(d2, 0, cx, cy, sc);
+        const A = toScr(0, h, cx, cy, sc);
+        const Cpt = toScr(0, -h, cx, cy, sc);
+        const B = toScr(-d1 - r1 * Math.cos(0.22), r1 * Math.sin(0.22), cx, cy, sc);
+        const D = toScr(d2 + r2 * Math.cos(-0.18), r2 * Math.sin(-0.18), cx, cy, sc);
 
         dCircle(O1, r1 * sc, 'rgba(52, 211, 153, 0.7)', 'rgba(52, 211, 153, 0.05)', 2.4);
         dCircle(O2, r2 * sc, 'rgba(56, 189, 248, 0.7)', 'rgba(56, 189, 248, 0.05)', 2.4);
@@ -1314,7 +1320,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const badgeTxt = isTarget
             ? '조건 만족 ($\\frac{\\sin B}{\\sin D}$ = 3/4): R₁ = R₂ × (4/3) = 3 × (4/3) = 4'
             : `현재 R₁ = ${r1.toFixed(2)} ($\\frac{\\sin B}{\\sin D}$ ≈ ${ratioSin.toFixed(2)})  |  조건 $\\frac{\\sin B}{\\sin D}$ = 3/4일 때 R₁ = 4`;
-          dBadge(ox, Cpt.y + 54, badgeTxt, C.gold);
+          dBadge(cx, Cpt.y + 54, badgeTxt, C.gold);
         }
 
         dVertex(O1, `O₁(R₁=${r1.toFixed(1)})`, C.green, { x: 0, y: 16, align: 'center' });
@@ -1323,7 +1329,7 @@ window.addEventListener('DOMContentLoaded', function () {
         dVertex(Cpt, 'C', C.white, { x: 12, y: 8, align: 'left' });
         dVertex(D, 'D', C.cyan, { x: 12, y: -6, align: 'left' });
         dVertex(B, 'B [R₁ 조절 드래그]', C.gold, { x: -12, y: -10, align: 'right' }, true, (sPos) => {
-          const m = toMath(sPos.x, sPos.y, ox, oy, sc);
+          const m = toMath(sPos.x, sPos.y, cx, cy, sc);
           const dist = Math.hypot(m.x + d1, m.y);
           const nextR1 = Math.max(2.6, Math.min(4.8, dist));
           onSliderInput((nextR1 - 2.6) / 2.2);

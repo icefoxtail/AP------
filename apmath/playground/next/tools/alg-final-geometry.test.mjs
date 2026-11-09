@@ -57,12 +57,12 @@ function draw(L, sc, s, tab = 'review', W = 1024) {
 // not native-font or screenshot evidence.
 const boardScope = { window: { APLab: { clamp: (n, lo, hi) => Math.max(lo, Math.min(hi, n)) } } };
 vm.runInNewContext(fs.readFileSync(new URL('../kit/apl-board.js', import.meta.url), 'utf8'), boardScope);
-function drawOrthicInquiry(t, W = 1039, H = 646, step = 3) {
+function drawSineInquiry(id, t, W = 1039, H = 646, step = 3, insets = { top: 0, bottom: 0, left: 8, right: 8 }) {
   const proto = boardScope.window.APLab.Board.prototype, b = board(W, H), labels = [];
   delete b.k; delete b.toS; delete b.toW; delete b._area;
   Object.setPrototypeOf(b, proto);
   Object.assign(b, { kind: 'figure', aspect: '1:1', zoom: 1, panX: 0, panY: 0, panes: null, paneId: null,
-    insets: { top: 0, bottom: 0, left: 8, right: 8 }, _P: pt, _em: () => 0 });
+    insets, _P: pt, _em: () => 0 });
   b._text = (x, y, text, o = {}) => {
     const size = (o.size || 13) * b.fs * b._ts(), width = String(text).length * size;
     const height = /π\//.test(String(text)) ? size * 2.15 : size;
@@ -80,12 +80,13 @@ function drawOrthicInquiry(t, W = 1039, H = 646, step = 3) {
   }
   const recordAngle = b.angle;
   b.angle = (...args) => { recordAngle(...args); return proto.angle.call(b, ...args); };
-  const sc = scl.scenes.find(x => x.id === 'bas-5'), s = scl.state(sc);
+  const sc = scl.scenes.find(x => x.id === id), s = scl.state(sc);
   Object.assign(s, { t, step });
   const lab = { tab: 'explore', scene: sc, s, params: scl.def.params }, v = sc.view(s, lab);
   sc.draw(b, s, v, lab);
   return { b, labels, s, v };
 }
+const drawOrthicInquiry = (...args) => drawSineInquiry('bas-5', ...args);
 function vertices(b) {
   const out={};
   for(const x of b.items) if(x.kind==='point'||x.kind==='handle') {
@@ -207,6 +208,36 @@ for (const [t, location] of [[0, 'left of H'], [0.3, 'at H'], [0.65, 'right of H
     }
   });
 }
+
+test('bas-3 keeps both circles and its radius handle reachable at exact, large and maximum input', () => {
+  // The reported native frame has CSS height 410.75, rounded to 411 by Board.
+  // Its bottom tools reserve 60px; production focus is 358.41 x 319.41.
+  const insets = { top: 0, bottom: 60, left: 0, right: 0 }, scales = [];
+  for (const t of [0, 7 / 11, .9, 1]) for (const step of [0, 3]) {
+    const { b, s } = drawSineInquiry('bas-3', t, 390, 411, step, insets);
+    const circles = b.items.filter(x => x.kind === 'circle');
+    const r1 = 2.6 + 2.2 * t, scale = circles[1].args[1] / 3;
+    const { A, B, C, D } = vertices(b);
+    close(circles[0].args[1] / scale, r1, 'selected radius remains unchanged');
+    close(dist(A, C) / scale, 4.5, 'common chord length');
+    close(Math.sin(angle(A, B, C)) / Math.sin(angle(A, D, C)), 3 / r1, 'the two inscribed angles retain the sine-law ratio');
+    for (const circle of circles) {
+      const c = b.toS(circle.args[0]), r = circle.args[1] * b.k;
+      assert.ok(c.x - r >= 0 && c.x + r <= b.W && c.y - r >= 0 && c.y + r <= b.H - insets.bottom, 'complete circle stays in the usable canvas');
+    }
+    const handle = b.toS(B), halo = 15.5;
+    assert.ok(handle.x >= halo && handle.x <= b.W - halo && handle.y >= halo && handle.y <= b.H - insets.bottom - halo, 'the B handle and halo stay inside the canvas');
+    assert.equal(s.t, t, 'drawing does not snap the radius');
+    scales.push(scale);
+    const O1 = pt(circles[0].args[0]), oldRadius = dist(O1, B), desired = .9, nextRadius = (2.6 + 2.2 * desired) * scale;
+    b.items.find(x => x.kind === 'handle' && x.args.at(-1).label === 'B').args.at(-1).drag({
+      x: O1.x + (B.x - O1.x) * nextRadius / oldRadius,
+      y: O1.y + (B.y - O1.y) * nextRadius / oldRadius
+    });
+    close(s.t, desired, 'the radius-drag inverse uses the same fitted coordinates');
+  }
+  scales.forEach(scale => close(scale, scales[0], 'radius input does not rescale the diagram'));
+});
 
 for (const t of [0, 0.005]) {
   test(`the bas-5 triangle, diameter circle and labels fit at the reported t=${t}`, () => {

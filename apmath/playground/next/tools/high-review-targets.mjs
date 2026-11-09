@@ -8,7 +8,7 @@ const algebraRuns = new Set(['pc-paper', 'mobile-paper', 'mobile-board']);
 const criticalSine = new Set(['adv-5', 'adv-6', 'adv-8']);
 const commonTargets = {
   'common-circle-eq': new Set(['stdDef', 'generalForm', 'diamEnds', 'apolloCircle', 'midpointLocus', 'apolloMaxAngle', 'foldCircleArc', 'bisectAreaBoth', 'laserReflectTan', 'chordLength', 'dVsR', 'maxMinDist', 'equilMaxMin', 'extCommonTan', 'intCommonTan', 'pappusMinSq']),
-  'common-functions': new Set(['bas-5', 'bas-7', 'adv-4', 'adv-3', 'b9-2', 'b9-3', 'b9-4', 'b9-5', 'bas-10', 'adv-1', 'bas-14']),
+  'common-functions': new Set(['bas-5', 'bas-7', 'adv-4', 'adv-3', 'b9-2', 'b9-3', 'b9-4', 'b9-5', 'bas-10', 'adv-1', 'bas-14', 'bas-1', 'bas-4', 'bas-6', 'bas-9', 'bas-11', 'adv-8']),
   'common-irrational': new Set(['i1', 'i2', 'i3']),
   'common-rational': new Set(['r1', 'r3', 'r4'])
 };
@@ -309,6 +309,24 @@ export async function captureReviewTargets({ page, item, scene, run, settle, mea
       await configure({ tab: 'review', step: 'final' }); await openSolutions();
       await shot('corrected-area-solution', { solutionDetails: 'all-open' }, 'visible-solution-disclosure');
     } else if (id === 'bas-14') await exploreSliders('root-directions', [{ t: 0.6 }, { t: 1 }]);
+    if (['bas-1', 'bas-4', 'bas-6', 'bas-9', 'bas-11', 'adv-8', 'bas-14'].includes(id)) {
+      // Preserve the completed review step through the real tab transition;
+      // the exploration slider must still own its displayed progress.
+      await configure({ tab: 'review', step: 'final' });
+      const condition = await snapshot();
+      if (!condition.conditionText) throw Error('Retained review exploration question is missing');
+      await page.evaluate(() => { lab.setTab('explore'); lab.invalidate(true); });
+      await settle();
+      for (const t of id === 'bas-14' ? [0] : [0, 1]) {
+        const ui = await setSliders({ t }), actual = await snapshot();
+        if (actual.tab !== 'explore' || actual.step !== condition.step || actual.revealed || actual.state.playing)
+          throw Error('Retained review exploration state changed');
+        if (actual.conditionText !== condition.conditionText || actual.variantIndex !== condition.variantIndex)
+          throw Error('Retained review exploration question changed');
+        await shot('function-retained-review-t' + t, { t, previousReviewStep: condition.step,
+          conditionSHA256: hash(condition.conditionText), variantIndex: condition.variantIndex }, 'visible-slider-input-and-tab-transition', { ui });
+      }
+    }
   } else if (item.id === 'common-irrational') {
     const cases = scene.id === 'i1' ? [['y=−√(−ax)'], ['y=−√(−ax)', '네 방향 한꺼번에']]
       : scene.id === 'i2' ? [['m = −1'], ['m = 1', '끝점을 지나는 위치'], ['m = 1', '접하는 위치']]
@@ -449,6 +467,12 @@ export async function captureReviewTargets({ page, item, scene, run, settle, mea
           const input = await setSliders({ t: near });
           await shot('sine-neighbor', { exactT: t, t: near }, 'visible-slider-input', { ui: input });
         }
+      }
+      if (id === 'bas-3') {
+        const ui = await clickPreset({ t: .9 });
+        await shot('sine-radius-large', { t: .9 }, 'visible-preset-click', { ui });
+        const input = await setSliders({ t: 1 });
+        await shot('sine-radius-max', { t: 1 }, 'visible-slider-input', { ui: input });
       }
     } else if (criticalSine.has(id)) {
       const values = id === 'adv-5' ? [0.3174842066280403, 0.5, 0.6825157933719597]
