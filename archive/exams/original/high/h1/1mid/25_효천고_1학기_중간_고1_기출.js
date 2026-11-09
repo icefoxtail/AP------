@@ -255,7 +255,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-01-CORE",
     "subUnit": "지수의 뜻과 성질 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 세 모서리에 a, b, c가 표시되고 내부의 공간 대각선은 점선과 길이 15로 표시되어 있다.",
+    "solutionImageCaption": "예: 그림의 직육면체는 a=10, b=10, c=5인 경우이며, 표시는 일반적인 세 모서리 a, b, c를 나타낸다. 모서리 길이의 합으로 a+b+c=25이고 대각선으로 a²+b²+c²=225이므로, 곱셈 공식에서 겉넓이 2(ab+bc+ca)를 구한다. 정답은 400이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -329,7 +333,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 변에 같은 길이 표식과 길이 4가 표시된 정삼각형이다.",
+    "solutionImageCaption": "조건식을 인수분해하면 세 변의 길이가 모두 같아 정삼각형임을 알 수 있다. 둘레가 12이므로 한 변은 4이고, 정삼각형의 넓이 공식을 적용한다. 정답은 4√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -506,7 +514,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 이차함수에 k=3분의 4, 주황 이차함수에 k=4가 지시선으로 붙고, x축과 만나는 세 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "근과 계수의 관계에 두 근 α, 3α를 대입하면 k는 3분의 4 또는 4이다. 파란 곡선의 두 근은 3분의 1과 1이고, 주황 곡선의 두 근은 1과 3으로 모두 비가 1:3이다. 정답은 3분의 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -580,7 +592,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: k의 수직선 위에 0과 48을 열린 끝점으로 하는 구간이 표시되어 있다.",
+    "solutionImageCaption": "켤레근과 근과 계수의 관계로 a=8, b=16을 얻는다. 두 번째 방정식의 판별식 조건은 k<48이므로, 표시된 구간에서 홀수인 자연수 1, 3, …, 47을 센다. 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -720,7 +736,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: k의 수직선 두 줄에 3분의 2와 1 사이의 열린 구간과 1보다 큰 열린 구간이 표시되어 있다.",
+    "solutionImageCaption": "판별식이 양수여야 하므로 k>3분의 2이고, 이차방정식이므로 k≠1이어야 한다. 그림의 두 열린 구간을 합친 범위에서 가장 작은 정수를 고른다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -751,7 +771,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 이차함수 f(x)와 주황 직선 y=2x의 두 교점에 x=α, x=β가 표시되고 이차함수 위의 점 (1,11)이 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=3x²−16x+24인 경우이며, 직선 y=2x와의 두 교점의 x좌표가 α, β이다. 일반적으로 f(x)−2x=3(x−α)(x−β)=3(x²+ax+b)이므로 f(1)=11을 대입한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -179,7 +179,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 왼쪽 가지에서 −2≤x≤0인 부분을 주황색으로 강조한 그래프. 양 끝점과 꼭짓점의 좌표 및 점선 대칭축 x=1이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=−x²+2x+3으로 두면 대칭축 x=1은 주어진 구간의 오른쪽에 있다. 이 구간에서 f(x)가 증가하므로 최솟값은 f(−2)=−5이고 최댓값은 f(0)=3이다. 두 값의 합을 구하면 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -252,7 +256,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차함수 y=R(x)의 파란 직선이 두 점 (1, 7), (3, −9)를 지난다. 두 점의 좌표를 표시하고 직선 이름을 지시선으로 연결한 그래프.",
+    "solutionImageCaption": "R(1)=7, R(3)=−9이므로 나머지 R(x)는 그림의 두 점을 지나는 일차식이다. 두 조건으로 기울기와 상수항을 정해 R(5)를 계산하면 정답은 −25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -359,7 +367,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시로 포물선 y=(x−6)²가 꼭짓점 (6, 0)에서 x축에 접하는 그래프.",
+    "solutionImageCaption": "예: 판별식이 0인 경계의 이차함수는 y=(x−6)²로서 x축에 접한다. 주어진 이차방정식의 실근 조건은 짝수 판별식 −4k+32≥0이므로 k≤8이다. 가능한 양의 정수 k의 개수를 세면 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -653,7 +665,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=P(x)는 x축의 2와 3에서 만나고 주황 포물선 y=Q(x)는 1과 4에서 만난다. 두 포물선은 같은 대칭축을 가지며 세로로 떨어져 있다.",
+    "solutionImageCaption": "P−Q=2이므로 두 이차다항식의 근의 합은 같아 연속한 네 근이 가운데 두 수와 양 끝 두 수로 나뉜다. Q(−1)=10을 적용하면 Q=(x−1)(x−4), P=(x−2)(x−3)이다. PQ=(x²−5x+5)²−1에서 k=1, a=−5, b=5이므로 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -716,7 +732,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O 안에서 파란 지름 AB와 주황 현 CD가 P에서 만나는 그림. CP에는 9, PD에는 6이 표시되고 아래에 끌어낸 지름에서 반지름 10과 지름 20을 비교한다.",
+    "solutionImageCaption": "지름 AB의 길이는 20이므로 AP+PB=20이다. 교차현의 정리에 따라 AP·PB=CP·PD=9×6=54이다. 두 근의 합과 곱으로 이차방정식을 세우면 정답은 x²−20x+54=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -747,6 +767,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 x, 세로축이 t인 그래프에서 0≤x≤3인 포물선 t=(x−2)²+2가 그려져 있다. 양 끝점 (0, 6), (3, 3)과 꼭짓점 (2, 2)의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=x²−4x+6으로 치환하면 그림에서 2≤t≤6임을 알 수 있고 y=(t−a)²+1이다. a<2이면 t=2에서, a>6이면 t=6에서 최솟값을 가지며 2≤a≤6이면 최솟값이 1이다. 양 바깥 경우에 최솟값 5를 적용하면 정답은 0, 8이다.",
+    "solutionImageSize": "full"
   }
 ];
