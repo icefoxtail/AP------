@@ -29,6 +29,9 @@
 - **글꼴 통일(사용자 최우선 지시):** 한글 없는 축 이름(`y`·`g(y)`·`y(km)`)·곡선 이름(`f(x)`)·지시선 글자는 수식 글꼴, 한글이 있으면 한글 글꼴. 전수 조사표와 남은 TEXT 라벨은 `ops/svg-m1/briefs/engine-font-unify.md`. 골든 `item62j`의 y축 이름만 글꼴이 바뀜(나머지 글 조각·선 바이트 동일).
 - **곡선 이름 변수 `nameVariable`**(구간별 다항): `g(y)`(골든 `item130ext1probdensity`). 남은 것: 유리함수 조각 구간 불연속(`PIECEWISE_DISCONTINUITY_UNDECLARED`, 24 효천 고1 Q14)은 패밀리 확장 필요. 지시서 `ops/svg-m1/briefs/engine-callout-math-namevariable.md`.
 
+### 2026-11-09 엔진 확장 회차 d(브랜치 engine/ext-20261109-d)
+- 한글+영문 혼합 축 이름(`x(분)`)이 변수만 수식 글꼴(`typography.mjs` MIXED), 통계 패널의 영문 축 이름·범례·계열 이름이 수식 글꼴. 24 효천 고1 q14(절댓값 유리함수)는 새 패밀리 없이 `multi-curve` `RATIONAL abs:true`로 그려짐(골든 `item134ext4q14abs`). `GEOMETRY_WORKER_TIMEOUT_MS`는 0 초과 600000 이하만 사용. 설계표 `briefs/engine-font-unify.md` 4회차.
+
 ### 2026-11-09 엔진 확장 회차 c(브랜치 engine/ext-20261109-c)
 - 지시선 글자의 그리스 문자·`′`·`√`도 수식 글꼴(수식 파서 `√`·`′`, 관측기 글리프 대조 보강, 골든 `item132ext3greek`). 대응도·벤다이어그램의 집합·원소 이름(`A`, `10`, `AB`, `f(x)`)도 수식 글꼴(`set-diagram-v1.mjs` `labelMath`). 통계 패널 영어 라벨과 구간 불연속 선언(유리 조각)은 남음(`briefs/engine-font-unify.md` 3회차 표). 렌더 중 `WORKER_TIMEOUT`이 나면 `GEOMETRY_WORKER_TIMEOUT_MS=90000`.
 

@@ -1808,7 +1808,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
       if(label.kind==='CONDITION_BOX')throw Error('UNSUPPORTED_MULTILINE_PHASE2_LABEL');
       const numericTick=label.kind==='GRAPH_ANNOTATION'&&/^[-−\d.]+$/.test(label.text);
       const role=spec.displayFacts.factRolesByLabel?.[label.id]||plan.mathPlan?.nodes.find(n=>n.id===label.target)?.factRole||'DERIVED_INTERMEDIATE';
-      fragments[label.id]=t({id:label.id,owner:label.target||label.id,factRole:role,fontPx:typographyPolicy.baseFontPx,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);
+      fragments[label.id]=t({id:label.id,owner:label.target||label.id,factRole:role,fontPx:typographyPolicy.baseFontPx,...(Array.isArray(label.parts)?{kind:'MIXED',parts:label.parts}:label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);
     }
     stages.push(freeze('TYPESET',fragments,provenance));
     const browser=await dependency('playwright').chromium.launch({channel:'chrome',headless:true});const measurements={};

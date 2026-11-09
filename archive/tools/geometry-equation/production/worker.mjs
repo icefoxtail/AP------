@@ -3,7 +3,9 @@ import {fileURLToPath} from 'node:url';
 import {freezeWire,validateResponse} from './contracts.mjs';
 import {dependencyRoot} from './dependencies.mjs';
 import path from 'node:path';
-export async function pythonWorker(payload, {python = process.env.GEOMETRY_PYTHON || 'python', timeoutMs = Number(process.env.GEOMETRY_WORKER_TIMEOUT_MS) || 10000, maxBytes = 4000000, script = fileURLToPath(new URL('worker.py',import.meta.url)),signal} = {}) {
+// GEOMETRY_WORKER_TIMEOUT_MS (milliseconds) lengthens the default 10 s limit on a slow PC; only a finite positive number up to 600000 is used, anything else (negative, 0, Infinity, text, 2^31 and more) keeps 10000
+export const workerTimeoutMs=(raw)=>{const v=Number(raw);return Number.isFinite(v)&&v>0&&v<=600000?v:10000;};
+export async function pythonWorker(payload, {python = process.env.GEOMETRY_PYTHON || 'python', timeoutMs = workerTimeoutMs(process.env.GEOMETRY_WORKER_TIMEOUT_MS), maxBytes = 4000000, script = fileURLToPath(new URL('worker.py',import.meta.url)),signal} = {}) {
   if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('WORKER_SIGNAL_INVALID');
   if(signal?.aborted)throw Error('WORKER_CANCELLED');
   const request = freezeWire(payload);

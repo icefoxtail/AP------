@@ -1063,7 +1063,11 @@ const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
 const DISPLAY='\\displaystyle ';
 const math=(id,role,owner,tex,plain,ax,ay,x,y,extra={})=>({id,role,owner,kind:'MATH',tex,plain,anchor:{x:r6(x),y:r6(y),ax,ay},extra});
-const textLabel=(id,role,owner,text,ax,ay,x,y,extra={})=>({id,role,owner,kind:'TEXT',text,plain:text,anchor:{x:r6(x),y:r6(y),ax,ay},extra});
+// (EXT-20261109-d) one font: an axis title, a legend entry or a series name that is only letters and digits (x, A, f(x)) is a math label like the ticks and values beside it; Korean text stays plain text
+const MATH_NAME_ROLES=['axis-title','legend','series-name'],MATH_NAME=/^[A-Za-z0-9]{1,3}(?:\([A-Za-z0-9]{1,3}\))?$/;
+const textLabel=(id,role,owner,text,ax,ay,x,y,extra={})=>MATH_NAME_ROLES.includes(role)&&MATH_NAME.test(text)
+  ?{id,role,owner,kind:'MATH',tex:text,plain:text,anchor:{x:r6(x),y:r6(y),ax,ay},extra}
+  :{id,role,owner,kind:'TEXT',text,plain:text,anchor:{x:r6(x),y:r6(y),ax,ay},extra};
 function arrows(prims,{xStartPx,yAxisPx,base,tipX=ARROW_TIP,tipY=AXIS_TOP}){
   prims.push(L('x-axis','axis','axis',xStartPx,base,tipX-8,base,{axis:'x'}));
   prims.push({t:'polygon',id:'x-axis-arrow',role:'arrow',cls:'arrow',points:[[tipX,base],[tipX-9,base-4],[tipX-9,base+4]],data:{},layer:30});

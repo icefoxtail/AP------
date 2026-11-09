@@ -39,3 +39,11 @@
 | 통계 패널(`stat-chart-v1.mjs`) 제목·범례·변수 이름 | **남음**: 한글 없는 영어 라벨(x, y, A, B)만 해당. 관측기 `stat_chart_observer.py`가 라벨마다 `data-text`를 단정(제목·범례·시리즈 이름·열쇠·변수 이름)해 함께 고쳐야 하며 대상이 작아 다음 묶음으로 |
 | 구간 불연속 선언(24 효천 고1 Q14, 유리 조각) | **남음**: 구간별 다항 패밀리가 유리함수 조각을 갖지 않는다. 패밀리 확장 설계가 먼저 필요 |
 | 그래프 틀 단계 10초 제한 | `GEOMETRY_WORKER_TIMEOUT_MS`(밀리초)로 늘릴 수 있다(기본 10000, 부하가 큰 PC에서 파이썬 첫 import가 7초 넘어 WORKER_TIMEOUT이 났다) |
+
+## 4회차(EXT-20261109-d) 처리 현황
+| 행 | 처리 |
+|---|---|
+| 한글+영문 혼합 축 이름 `x(분)`·`t(초)`·`x축` | **고침**: `typography.mjs`에 `kind:'MIXED'`(수식 부분 + 글 부분을 같은 기준선에 이음), `engine.py` `axis_title_parts`, 관측기 `_axis_title_mixed_head`(변수 글리프 대조 + `data-text` 전체 대조). 골든 item62j의 x축 이름이 바뀜 |
+| 통계 패널 축 이름·범례·계열 이름 | **고침**: `stat-chart-v1.mjs` `textLabel`이 `axis-title`·`legend`·`series-name` 역할의 영문·숫자만 이름(3자 이하·괄호 한 겹)을 수식으로, `stat_chart_observer.py` `label_shown()`이 `data-text`·`data-tex`를 모두 읽음. 골든 `item135ext4statnames`. 표·상자그림의 변수 이름(`var-name`)은 한글 문구 전용이라 그대로 |
+| 절댓값 유리함수(24 효천 고1 q14) | **새 패밀리 불필요**: `multi-curve`의 `RATIONAL abs:true`로 그려진다(골든 `item134ext4q14abs`). 과거 `PIECEWISE_DISCONTINUITY_UNDECLARED`는 구간별 다항 패밀리로 시도해서 난 오류 |
+| `GEOMETRY_WORKER_TIMEOUT_MS` | 유한한 양수이고 600000 이하일 때만 쓰고 아니면 10000(`workerTimeoutMs`, tests/worker-timeout.test.mjs) |

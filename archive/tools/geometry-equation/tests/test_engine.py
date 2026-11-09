@@ -62,6 +62,12 @@ class EngineTests(unittest.TestCase):
         from visual_engine.math_expression import parse,serialize
         tex=lambda text:serialize(parse(text),'tex')
         self.assertEqual([tex('u=√3'),tex('y=√(x-2)'),tex('2√3'),tex('A′')],['u=\\sqrt{3}','y=\\sqrt{x-2}','2\\sqrt{3}','A^{\\prime}'])
+    def test_mixed_axis_title_is_a_math_variable_plus_korean_text(self):
+        # EXT-20261109-d: x(분) = x in the math face + (분) in the text face on one baseline; a pure Korean or pure Latin title is not mixed
+        from visual_engine.engine import axis_title_parts
+        self.assertEqual(axis_title_parts('x(분)'),[{'kind':'MATH','tex':'x'},{'kind':'TEXT','text':'(분)'}])
+        self.assertEqual(axis_title_parts('t(초)')[1]['text'],'(초)');self.assertEqual(axis_title_parts('x축')[1]['text'],'축')
+        self.assertIsNone(axis_title_parts('시간(분)'));self.assertIsNone(axis_title_parts('y(km)'));self.assertIsNone(axis_title_parts('y'))
     def test_fact_binding(self):
         fact={'independentFactHash':'frozen','visualSpec':spec()}
         self.assertEqual(build_independent({},fact)['witness']['classification'],'STANDARD')

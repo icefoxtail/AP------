@@ -159,7 +159,7 @@ class Doc:
         if not expected:
             if found: self.err('SC_TITLE_UNEXPECTED:' + label_id)
             return
-        if len(found) != 1 or found[0].get('data-text') != expected: self.err('SC_TITLE_MISMATCH:' + label_id)
+        if len(found) != 1 or label_shown(found[0]) != expected: self.err('SC_TITLE_MISMATCH:' + label_id)
 
     def check_title_lines(self, label_id, expected, owner_axis):
         """A title of one line is label `label_id`; a longer one is `label_id` and `label_id-2`, one line each, nothing beyond."""
@@ -171,6 +171,12 @@ class Doc:
 
     def near(self, a, b, code, tol=TOL):
         if abs(a - b) > tol: self.err(code)
+
+
+def label_shown(label):
+    """(EXT-20261109-d) the text a title, legend entry or series name carries: plain text as written, or (letters and digits only, drawn as math) its TeX, which is the same characters."""
+    if label.get('data-text') is not None: return label.get('data-text')
+    return re.sub(r'^\\displaystyle\s*', '', label.get('data-tex') or '').replace(' ', '') or None
 
 
 def derive_freq(chart):
@@ -629,7 +635,7 @@ def audit_freq(chart, doc):
     doc.check_title_lines('y-title', chart.get('yTitle', '도수(명)' if y_kind == 'FREQUENCY' else '상대도수'), 'y')
     legends = doc.label_role('legend')
     if len(series) > 1:
-        if sorted(l.get('data-text') for l in legends) != sorted(s['name'] for s in series): doc.err('SC_LEGEND_NAMES')
+        if sorted(label_shown(l) for l in legends) != sorted(s['name'] for s in series): doc.err('SC_LEGEND_NAMES')
     elif legends: doc.err('SC_LEGEND_UNEXPECTED')
     grids = doc.role('line', 'grid')
     if chart.get('grid') is True:
@@ -906,7 +912,7 @@ def audit_box(chart, doc):
             if c is None or abs(num(c, 'x1') - fx(v)) > TOL or abs(num(c, 'x2') - fx(v)) > TOL or not (num(c, 'y1') < mid_y < num(c, 'y2')): doc.err('SC_CAP:' + name)
         names = [l for l in doc.label_role('series-name') if l.get('data-series') == str(s)]
         if raw.get('name'):
-            if len(names) != 1 or names[0].get('data-text') != raw['name']: doc.err('SC_SERIES_NAME:%d' % s)
+            if len(names) != 1 or label_shown(names[0]) != raw['name']: doc.err('SC_SERIES_NAME:%d' % s)
         elif names: doc.err('SC_SERIES_NAME_UNEXPECTED')
         values = [l for l in doc.label_role('value') if l.get('data-series') == str(s)]
         if chart.get('showValues') is True:
@@ -1053,7 +1059,7 @@ def scatter_groups(chart, doc, points):
         if g.get('label') is None:
             if legend is not None or label: doc.err('SC_SCATTER_LEGEND_UNEXPECTED:%d' % j)
             continue
-        if legend is None or len(label) != 1 or label[0].get('data-text') != g['label']: doc.err('SC_SCATTER_LEGEND_MISSING:%d' % j); continue
+        if legend is None or len(label) != 1 or label_shown(label[0]) != g['label']: doc.err('SC_SCATTER_LEGEND_MISSING:%d' % j); continue
         if (legend.get('fill') or '').lower() != DOT_PALETTE_LINE[g['color']] or abs(num(legend, 'r') - GROUP_DOT_R) > TOL: doc.err('SC_SCATTER_LEGEND_STYLE:%d' % j)
         bx, by, bw, bh = box_of(label[0])
         if not 0 < bx - num(legend, 'cx') < 24 or abs(by + bh / 2 - num(legend, 'cy')) > LABEL_TOL + 1: doc.err('SC_SCATTER_LEGEND_PLACE:%d' % j)

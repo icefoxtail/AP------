@@ -44,6 +44,7 @@ export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.jo
   return function typeset(label, identity) {
     if(!label.id || !label.owner || !label.factRole || !identity.visualAssetKey || !Number.isFinite(label.fontPx) || label.fontPx<11)throw Error('OWNER_BOUND_LABEL_REQUIRED');
     const namespace='lb-'+objectSha({identity,panelId:label.panelId||'main',labelId:label.id,occurrence:label.occurrence||0,owner:label.owner,factRole:label.factRole,fontSha256:actual}).slice(7);
+    const piece=(label)=>{
     let content,width,height,baseline;
     if(label.kind==='MATH'){
       if(typeof label.tex!=='string' || label.tex.length>2048 || /\\(?:href|html|includegraphics|require)/.test(label.tex))throw Error('UNSUPPORTED_TEX');
@@ -77,6 +78,17 @@ export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.jo
         content='<path d="'+ink.toPathData(5)+'" fill="#111"/>';
       }
     } else throw Error('UNSUPPORTED_LABEL_KIND');
+    return {content,width,height,baseline};
+    };
+    let content,width,height,baseline;
+    if(label.kind==='MIXED'){
+      // (EXT-20261109-d) one label made of math and plain-text parts on one baseline, for an axis title such as x(분): the variable in the math face, the Korean in the text face
+      if(!Array.isArray(label.parts)||label.parts.length<2||label.parts.length>4)throw Error('INVALID_MIXED_LABEL');
+      const rows=label.parts.map(part=>{if(!part||(part.kind!=='MATH'&&part.kind!=='TEXT'))throw Error('INVALID_MIXED_LABEL');return piece({...label,...part,kind:part.kind});});
+      baseline=Math.max(...rows.map(row=>row.baseline));const gap=label.fontPx*0.06;let x=0;
+      content=rows.map(row=>{const g='<g transform="translate('+x+' '+(baseline-row.baseline)+')">'+row.content+'</g>';x+=row.width+gap;return g;}).join('');
+      width=x-gap;height=Math.max(...rows.map(row=>baseline-row.baseline+row.height));
+    } else ({content,width,height,baseline}=piece(label));
     const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" data-outline-width="'+width+'" data-outline-height="'+height+'" id="'+namespace+'" data-owner="'+esc(label.owner)+'" data-fact-role="'+esc(label.factRole)+'">'+content+'</svg>';
     return {labelId:label.id,owner:label.owner,factRole:label.factRole,namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:actual,intrinsic:{width,height,baseline},fontPx:label.fontPx,typesetter:'MathJax SVG / NotoSansKR outlines'};
   };
