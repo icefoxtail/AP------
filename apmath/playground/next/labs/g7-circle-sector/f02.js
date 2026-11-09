@@ -352,7 +352,7 @@
     const alA = Math.atan2(A[1], A[0] - c / 2);
     const m = { kind: 'LUNE', P, items: [sAB, sAC, tri, sBC], order: ['ab', 'ac', 'tri', 'bc'], hasArc: false, A, B, C, c, cInt };
     m.outline = [sAB.pts, sAC.pts, arcPts(c / 2, 0, c / 2, alA, PI), arcPts(c / 2, 0, c / 2, 0, alA)];
-    m.home = (G, Al) => {
+    m.home = (G, Al, st) => {
       G.path([B, C, A], { close: true, color: 'ink', width: 2.4, alpha: Al });
       rightMark(G, A, B, C, Al, 12);
       [A, B, C].forEach((v) => dotAt(G, v, Al));
@@ -365,7 +365,8 @@
         if (nx * (w[0] - m0[0]) + ny * (w[1] - m0[1]) < 0) { nx = -nx; ny = -ny; }
         return [m0[0] + nx * off * G.px, m0[1] + ny * off * G.px];
       };
-      const l1 = inside(A, B, C, 26), l2 = inside(A, C, B, 26), l3 = inside(B, C, A, 18);
+      const mobileProblem = !G.b.thumb && G.b.W < 560 && st && st.tab === 'problem';
+      const l1 = inside(A, B, C, 26), l2 = inside(A, C, B, 26), l3 = inside(B, C, A, mobileProblem ? -20 : 18);
       G.text(l1[0], l1[1], `${p} cm`, { color: 'amber', alpha: Al });
       G.text(l2[0], l2[1], `${q} cm`, { color: 'amber', alpha: Al });
       G.text(l3[0], l3[1], cInt ? `BC = ${c} cm` : 'BC', { color: 'amber', alpha: Al });

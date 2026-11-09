@@ -1298,7 +1298,8 @@
       w.seg(M.V[0], P, { color: 'rose', width: 3.2 });
       const nrm = [-Math.sin(th), Math.cos(th)];
       w.text([(M.V[0][0] + P[0]) / 2 + nrm[0] * 0.65, (M.V[0][1] + P[1]) / 2 + nrm[1] * 0.65], `${num(M.L)} m`, { color: 'rose' });
-      w.point(P, { color: 'orange', r: 7.5, label: kd.animal, dx: 12, dy: -12, size: 13.5 });
+      // 개집 문제의 짧은 모바일 그림에서는 동물 이름을 끈 길이 아래로 분리합니다.
+      w.point(P, { color: 'orange', r: 7.5, label: kd.animal, dx: 12, dy: sc.id === 'gt-kennel' && b.W < 560 ? 20 : -12, size: 13.5 });
     } else if (tab === 'review' && step >= 1 && step <= 3) {
       const sec = M.order[step - 1];
       if (sec) {

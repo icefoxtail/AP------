@@ -65,7 +65,8 @@ async function load(initialHash = '') {
   lab.go = (id) => {
     lab.index = list.findIndex((scene) => scene.id === id);
     assert.ok(lab.index >= 0, `scene ${id} exists`);
-    // Real shell keeps the previous tab through enter/focus, then switches to explore.
+    // Match the real shell: the destination tab is set before enter/focus.
+    lab.tab = 'explore';
     Object.assign(lab.s, { step: lab.scene.startStep ?? (lab.scene.steps ? 1 : 0), revealed: false, playing: false });
     board.kind = lab.scene.boardKind || definition.board.kind;
     definition.enter?.(lab.s, lab.scene, lab);
@@ -76,7 +77,7 @@ async function load(initialHash = '') {
   };
   lab.draw = () => {
     const texts = [], textItems = [], original = board._text;
-    board._text = function (x, y, text, options, screen) { if (text != null) { texts.push(String(text)); textItems.push({ x, y, text: String(text), options, screen }); } return original.call(this, x, y, text, options, screen); };
+    board._text = function (x, y, text, options, screen) { if (text != null && !board._bbox) { texts.push(String(text)); textItems.push({ x, y, text: String(text), options, screen }); } return original.call(this, x, y, text, options, screen); };
     try { const value = call(lab.scene.view, lab.s, lab); board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end(); return { texts, textItems, value }; }
     finally { board._text = original; }
   };
@@ -555,7 +556,7 @@ await test('unfolded perimeter labels remain above the toolbar and clear of the 
         for (const item of labels) assert.ok(item.y + (item.options.size || 15) / 2 < toolbarTop, `${id} ${width}×${height}: ${item.text} stays above tools`);
         const strip = lab.board.handles.find((handle) => handle.id === 'P');
         const figureBottom = lab.board.toS({ x: 0, y: ['z2-sector', 'z2-segment'].includes(id) ? 1 : 0 }).y;
-        assert.ok(strip.y - 60 > figureBottom, `${id}: the strip's distance label stays clear of the figure`);
+        assert.ok(strip.y - 60 > figureBottom, `${id} ${width}x${height} ${tab}: strip ${strip.y}, figureBottom ${figureBottom}, scale ${lab.board.k}: the strip's distance label stays clear of the figure`);
       }
     }
   }
@@ -618,5 +619,158 @@ await test('the narrow sector preset keeps its arc label inside the stage with t
       const expected = [100 * Math.cos(Math.PI / 8), -100 * Math.sin(Math.PI / 8)];
       assert.ok(leaders.some(({ anchor }) => Math.hypot(anchor[0] - expected[0], anchor[1] - expected[1]) < 1e-8), 'the leader still starts at the actual arc midpoint');
     }
+  }
+});
+
+await test('the arc-ratio unit angle is separate from every sector angle on a small mobile', async () => {
+  const lab = await load(), b = lab.board;
+  for (const [width, height] of [[360, 387], [390, 410]]) {
+    b.resize(width, height); b.setInsets({ top: 0, right: 0, bottom: 60, left: 0 });
+    lab.go('1103');
+    for (const values of [[3, 5, 7], [1, 1, 1], [2, 9, 4], [9, 2, 4]]) {
+      [lab.s.b1103_a, lab.s.b1103_b, lab.s.b1103_c] = values;
+      b.setFocus(call(lab.scene.focus, lab.s), true);
+      const labels = lab.draw().textItems;
+      const unit = labels.find(x => x.text.startsWith('한 칸 '));
+      assert.ok(unit, 'the original unit-angle teaching cue is retained');
+      const bounds = item => { const m = b.annotationSize(item.text, item.options); return { left: item.x - m.width / 2, right: item.x + m.width / 2, top: item.y - m.height / 2, bottom: item.y + m.height / 2 }; };
+      const u = bounds(unit);
+      for (const item of labels.filter(x => x !== unit && /°$/.test(x.text))) {
+        const a = bounds(item);
+        assert.ok(u.right + 2 <= a.left || a.right + 2 <= u.left || u.bottom + 2 <= a.top || a.bottom + 2 <= u.top, `${width}px ${values}: unit cue must not cover ${item.text}`);
+      }
+      assert.ok(u.top >= 0 && u.bottom <= b.H - b.insets.bottom, 'the unit cue stays in the usable canvas');
+    }
+  }
+});
+
+await test('the given arc length clears the mobile table-of-contents handle without revealing the radius', async () => {
+  const lab = await load(), b = lab.board;
+  for (const [width, height] of [[360, 291], [390, 314]]) {
+    b.resize(width, height); b.setInsets({ top: 0, right: 0, bottom: 60, left: 0 });
+    lab.go('1808'); lab.tab = 'problem'; b.setFocus(call(lab.scene.focus, lab.s), true);
+    const drawing = lab.draw(), arc = drawing.textItems.find(x => x.text === '호 3π cm');
+    assert.ok(arc);
+    const size = b.annotationSize(arc.text, arc.options);
+    assert.ok(arc.x + size.width / 2 <= width - 24 - 4, 'all arc-length glyphs clear the 24px edge handle');
+    assert.ok(drawing.texts.includes('r = ? cm'), 'the problem retains its unknown radius');
+    assert.equal(lab.s.revealed, false);
+  }
+});
+
+await test('the three given lune-triangle sides remain individually readable on mobile problems', async () => {
+  const lab = await load(), b = lab.board;
+  for (const [width, height] of [[360, 291], [390, 314]]) {
+    b.resize(width, height); b.setInsets({ top: 0, right: 0, bottom: 60, left: 0 });
+    lab.go('lune13'); lab.tab = 'problem';
+    const drawing = lab.draw(), sides = ['4 cm', '3 cm', 'BC = 5 cm'].map(t => drawing.textItems.find(x => x.text === t));
+    assert.ok(sides.every(Boolean), 'all original side conditions are retained');
+    for (let i = 0; i < sides.length; i++) for (let j = i + 1; j < sides.length; j++) {
+      const a = sides[i], z = sides[j], am = b.annotationSize(a.text, a.options), zm = b.annotationSize(z.text, z.options);
+      assert.ok(Math.abs(a.x - z.x) >= (am.width + zm.width) / 2 + 2 || Math.abs(a.y - z.y) >= (am.height + zm.height) / 2 + 2, `${width}px: ${a.text} and ${z.text} have separate label boxes`);
+    }
+    assert.equal(lab.s.revealed, false);
+  }
+});
+
+await test('a late toolbar inset cannot clip the original segment-perimeter captions', async () => {
+  const lab = await load(), b = lab.board;
+  b.resize(683, 415); b.setInsets({ top: 0, left: 0, right: 16, bottom: 0 });
+  lab.go('z2-segment'); b.setInsets({ top: 0, left: 0, right: 16, bottom: 56 });
+  // Replay the transform measured by Chromium at1024x768 (run42612331078).
+  // Its original circle bounds imply radius97.383240083343 and this center.
+  // The actual-font focus differs from this VM's deliberately simple font stub.
+  b.setFocus({ x: [-1, 1], y: [-1, 1] }, true);
+  b.zoom = 97.383240083343 / b.k;
+  const origin = b.toS({ x: 0, y: 0 });
+  b.panX += 311.4723731374554 - origin.x;
+  b.panY += 148.24785360284244 - origin.y;
+  for (const angle of [30, 60, 90, 120, 180]) {
+    lab.s.csS = angle;
+    for (const tab of ['explore', 'problem', 'review']) {
+      lab.tab = tab; lab.s.step = 1;
+      const captions = lab.draw().textItems.filter(x => /[①②] (?:호|현) AB/.test(x.text));
+      assert.equal(captions.length, 2);
+      for (const item of captions) {
+        const m = b.annotationSize(item.text, item.options);
+        assert.ok(item.y - m.height / 2 >= 1, `${angle}° ${tab}: ${item.text} clears the stage top`);
+      }
+      if (tab === 'problem') assert.ok(captions.every(x => !/cm/.test(x.text)), 'unknown boundary lengths remain undisclosed');
+    }
+  }
+});
+
+await test('the semicircle parallel-line arc caption clears both the edge handle and point names', async () => {
+  const lab = await load(), b = lab.board;
+  for (const [width, height] of [[360, 291], [390, 314]]) {
+    b.resize(width, height); b.setInsets({ top: 0, right: 0, bottom: 60, left: 0 });
+    lab.go('1105'); lab.tab = 'problem';
+    for (const angle of [18, 30, 42, 60]) {
+      lab.s.b1105_be = angle;
+      const drawing = lab.draw(), caption = drawing.textItems.find(x => /^호 [^A].* cm$/.test(x.text));
+      assert.ok(caption, 'the given BD arc length is retained');
+      const m = b.annotationSize(caption.text, caption.options);
+      assert.ok(caption.x + m.width / 2 <= width - 24 - 4, `${width}px ${angle}°: the full given length clears the edge handle`);
+      for (const other of drawing.textItems.filter(x => ['B', 'C', 'D', 'O'].includes(x.text))) {
+        const z = b.annotationSize(other.text, other.options);
+        assert.ok(Math.abs(caption.x-other.x) >= (m.width+z.width)/2+1 || Math.abs(caption.y-other.y) >= (m.height+z.height)/2+1,
+          `${width}px ${angle}°: the BD caption does not cover point ${other.text}`);
+      }
+      assert.ok(drawing.texts.includes('호 AC = ? cm'), 'the unknown AC arc is not revealed');
+    }
+  }
+});
+
+await test('a rolling semicircle keeps its given radius separate from the center name in mobile problems', async () => {
+  const lab = await load(), b = lab.board;
+  for (const [width, height] of [[360, 291], [390, 314]]) {
+    b.resize(width, height); b.setInsets({ top: 0, right: 0, bottom: 60, left: 0 });
+    lab.go('rl-semi'); lab.tab = 'problem';
+    const drawing = lab.draw(), radius = drawing.textItems.find(x => x.text === '9 cm');
+    assert.ok(radius);
+    const m = b.annotationSize(radius.text, radius.options);
+    for (const center of drawing.textItems.filter(x => x.text === 'O')) {
+      const z = b.annotationSize(center.text, center.options);
+      assert.ok(Math.abs(radius.x-center.x) >= (m.width+z.width)/2+2 || Math.abs(radius.y-center.y) >= (m.height+z.height)/2+2,
+        `${width}px: the radius and O have separate label boxes`);
+    }
+    assert.ok(radius.y+m.height/2 < height-b.insets.bottom, 'the radius stays above the toolbar');
+    assert.equal(lab.s.playing, false);
+    assert.equal(lab.s.revealed, false);
+  }
+});
+
+await test('the kennel rope length is legible beside the animal caption before the solution is shown', async () => {
+  const lab = await load(), b = lab.board;
+  for (const [width, height] of [[360, 291], [390, 314]]) {
+    b.resize(width, height); b.setInsets({ top: 0, right: 0, bottom: 60, left: 0 });
+    lab.go('gt-kennel'); lab.tab = 'problem';
+    const drawing = lab.draw(), rope = drawing.textItems.find(x => x.text === '4 m'), animal = drawing.textItems.find(x => x.text === '강아지');
+    assert.ok(rope && animal, 'both original captions are retained');
+    const r = b.annotationSize(rope.text, rope.options), a = b.annotationSize(animal.text, animal.options);
+    const animalCenterX = animal.x + (animal.options.align === 'left' ? a.width / 2 : animal.options.align === 'right' ? -a.width / 2 : 0);
+    assert.ok(Math.abs(rope.x-animalCenterX) >= (r.width+a.width)/2+2 || Math.abs(rope.y-animal.y) >= (r.height+a.height)/2+2,
+      `${width}px: the rope length does not overlap the animal name`);
+    assert.ok(animal.y+a.height/2 < height-b.insets.bottom, 'the animal caption stays above the toolbar');
+    assert.equal(lab.s.gtT, 0);
+    assert.equal(lab.s.revealed, false);
+  }
+});
+
+await test('late stage sizing gives the same circle focus on first entry and reentry', async () => {
+  const lab = await load(), b = lab.board;
+  for (const id of ['z0-center', 'z0-arc', 'z0-sector', 'z0-segment', 'z2-semi', 'z2-quarter', 'z2-sector', 'z2-segment', '1207', '1102', '1104']) {
+    b.resize(1039, 560); lab.go(id);
+    b.resize(1039, 610); b.setInsets({ top: 0, right: 16, bottom: 56, left: 0 });
+    lab.draw();
+    const initial = [b.toS({ x: 0, y: 0 }), b.toS({ x: 1, y: 1 })];
+    const originalState = JSON.stringify(lab.s);
+    b.zoom = 1.3; b.panX = 17; b.panY = -13; lab.draw();
+    assert.equal(b.zoom, 1.3); assert.equal(b.panX, 17); assert.equal(b.panY, -13);
+    assert.equal(JSON.stringify(lab.s), originalState, `${id}: fitting does not alter givens, progress or disclosure`);
+    lab.go(id); b.setInsets({ top: 0, right: 16, bottom: 56, left: 0 }); lab.draw();
+    const again = [b.toS({ x: 0, y: 0 }), b.toS({ x: 1, y: 1 })];
+    for (let i = 0; i < initial.length; i++) assert.ok(Math.hypot(initial[i].x-again[i].x, initial[i].y-again[i].y)<1e-7,
+      `${id}: the final stage gives the same origin and scale on both entries`);
   }
 });

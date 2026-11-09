@@ -493,7 +493,10 @@
     draw(b, s, M, C, ST, idx) {
       const { m, n, g, trap, tri } = M, { A, B, C: Cc, D, E } = g, v = (s.trV || 0) % 2, cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
       const ph = (nm) => r7Order.indexOf(f) >= r7Order.indexOf(nm) && r7Order.indexOf(f) >= 0, at = (nm) => f === nm, FD = G.faded;
-      fit(b, bboxOf([B, Cc, D, E, pt(-n - 0.5, 0), pt(m + 0.5, 0)]), { t: 54, b: b.W < 560 ? 120 : 128, l: 44, r: 44 });
+      const compact = b.W < 560;
+      // 문제에는 풀이 설명 줄이 없으므로 그 공간까지 비우지 않습니다.
+      // 풀이에서는 실제 길이 표시와 설명 줄이 필요한 만큼만 남깁니다.
+      fit(b, bboxOf([B, Cc, D, E, pt(-n - 0.5, 0), pt(m + 0.5, 0)]), { t: compact ? 28 : 54, b: compact ? (idx < 0 ? 44 : ph('len') ? 112 : 88) : 128, l: 44, r: 44 });
       const cen = pt((D.x + E.x) / 2, -Math.max(m, n) * 0.5);
       const same = m === n, gv = at('given') || f === 'problem', early = f === 'problem' || at('given') || at('idea') || at('cong') || at('len');
       // 원칙: 그림 안에는 점 이름·값만 · 지금 단계가 다루는 것만 색 · 지난 단계는 가는 회색 · 한 꼭짓점에 색 호는 하나
@@ -512,12 +515,13 @@
       if (at('trap') && v === 0) poly(b, [B, D, E, Cc], 'rose', 3.4, { dash: [8, 6] });
       if (at('trap') && v === 1) line(b, B, D, 'rose', 5.2);
       // 직각: 주어진 것에서는 색(문제 그림도), 합동 찾기에서는 ∠D·∠E 만 색, 나머지 단계는 가는 회색
-      const rc = (V, P, Q, col, now) => (now ? ang(b, V, P, Q, { color: col, r: V === A ? 28 : 20, fa: 0.5 }) : FD(b, V, P, Q, { r: V === A ? 28 : 20 }));
+      const markerR = (V, P, Q, r) => compact ? Math.min(r, Math.min(dist(V, P), dist(V, Q)) * b.k * 0.3) : r;
+      const rc = (V, P, Q, col, now) => { const r = markerR(V, P, Q, V === A ? 28 : 20); return now ? ang(b, V, P, Q, { color: col, r, fa: 0.5 }) : FD(b, V, P, Q, { r }); };
       rc(A, B, Cc, 'amber', gv); rc(D, B, A, 'sky', gv || at('cong')); rc(E, Cc, A, 'sky', gv || at('cong'));
       tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber');
       if (at('cong')) { // 합동 조건의 같은 각: ∠ABD=∠CAE (호 2개). ∠A=90° 직각은 회색이라 꼭짓점 A의 색 호는 하나
-        ang(b, B, A, D, { color: 'green', r: 34, rings: 2, fa: 0.4 }); ang(b, A, Cc, E, { color: 'green', r: 34, rings: 2, fa: 0.4 });
-      } else if (ph('len')) { FD(b, B, A, D, { rings: 2, r: 34 }); FD(b, A, Cc, E, { rings: 2, r: 34 }); }
+        ang(b, B, A, D, { color: 'green', r: markerR(B, A, D, 34), rings: 2, fa: 0.4 }); ang(b, A, Cc, E, { color: 'green', r: markerR(A, Cc, E, 34), rings: 2, fa: 0.4 });
+      } else if (ph('len')) { FD(b, B, A, D, { rings: 2, r: markerR(B, A, D, 34) }); FD(b, A, Cc, E, { rings: 2, r: markerR(A, Cc, E, 34) }); }
       const colCE = ph('cong') && !same ? 'green' : 'sky';
       if (at('len')) { // 합동인 변: BD=AE (눈금 2개), CE=AD (눈금 3개). m=n 이면 네 변이 모두 같아요.
         const t1 = 2, t2 = same ? 2 : 3;
@@ -791,7 +795,7 @@
   r5.solve = mkSolve(r5Plan);
 
   /* ---- t3-6 빗변을 공유하는 연 모양 · v0: ∠BAD → ∠BCD · v1: BC → CD · v2: ∠BAC → ∠ACD ---- */
-  const r6Plan = (M, s) => {
+  const r6Plan = (M, s, board) => {
     const { m, a, c, n } = M, v = (s.trV || 0) % 3, A = pt(0, 0), Cc = pt(1, 0), Bp = pt(cos(a) * cos(a), -cos(a) * sin(a)), Dp = pt(Bp.x, -Bp.y), cen = pt(0.5, 0), steps = [], items = [];
     const g0 = `$\\angle B=\\angle D=90^{\\circ}$, $${ov('AB')}=${ov('AD')}$이고`;
     steps.push({ id: 'given', k: 'given', t: v === 0 ? `${g0} $\\angle BAD=${dd(2 * a)}$예요. 구하는 것은 $\\angle BCD=x$.` : v === 1 ? `${g0} $${ov('BC')}=${n}$ cm예요. 구하는 것은 $${ov('CD')}=x$.` : `${g0} $\\angle BAC=${dd(a)}$예요. 구하는 것은 $\\angle ACD=x$.`, cap: v === 0 ? `∠B=∠D=90°, AB=AD, ∠BAD=${2 * a}°` : v === 1 ? `∠B=∠D=90°, AB=AD, BC=${n} cm` : `∠B=∠D=90°, AB=AD, ∠BAC=${a}°` });
@@ -817,8 +821,20 @@
     else if (v === 1) items.push(SK.len(Bp, Cc, cen, `${n} cm`, { on: ['given', 'eq'], col: 'sky', size: 17, gap: 6 }), SK.len(Dp, Cc, cen, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${n} cm` } }), SK.tick(Bp, Cc, 2, { at: 'cong', col: 'rose' }), SK.tick(Dp, Cc, 2, { at: 'cong', col: 'rose' }));
     else items.push(SK.ang(A, Bp, Cc, { r: 34, ld: 58, on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'cong' }), SK.ang(Cc, Dp, A, { r: 30, ld: 50, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${c}°` }, gl: true }), SK.ang(Cc, A, Bp, { r: 30, ld: 50, at: 'eq', col: 'green', label: dg(c), size: 15, gl: true }));
     return {
-      fit: [A, Cc, Bp, Dp], steps, items, l: 50, r: 54, t: 56,
-      base: (b) => { G.fillPoly(b, [A, Bp, Cc, Dp], 'sky', 0.08); G.poly(b, [A, Bp, Cc, Dp], 'ink', 3.6); },
+      fit: [A, Cc, Bp, Dp], steps, items, l: 50, r: 54, t: board && board.W < 560 ? 28 : 56,
+      base: (b) => {
+        if (b.W < 560) for (const it of items) if (it.ty === 'ang') {
+          // 꼭짓점의 실제 두 변 길이보다 각 표시가 커지지 않게 합니다.
+          it.r = Math.min(it.r || 28, Math.min(dist(it.V, it.A), dist(it.V, it.B)) * b.k * 0.28);
+          if (it.label) {
+            // A의 조건은 왼쪽, C의 구하는 각은 오른쪽에 둡니다.
+            // ang()가 실제 꼭짓점에 지시선을 이어 B의 직각과 구별합니다.
+            const a0 = Math.atan2(it.A.y - it.V.y, it.A.x - it.V.x), a1 = Math.atan2(it.B.y - it.V.y, it.B.x - it.V.x), delta = ((a1 - a0 + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+            it.ld = 44; it.lr = (it.V === A ? -155 : -25) - (a0 + delta / 2) / DEG;
+          }
+        }
+        G.fillPoly(b, [A, Bp, Cc, Dp], 'sky', 0.08); G.poly(b, [A, Bp, Cc, Dp], 'ink', 3.6);
+      },
       names: (b) => { [A, Bp, Cc, Dp].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); G.tagOut(b, A, cen, 'A', { size: 18 }); G.tagOut(b, Bp, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); G.tagOut(b, Dp, cen, 'D', { size: 18 }); }
     };
   };

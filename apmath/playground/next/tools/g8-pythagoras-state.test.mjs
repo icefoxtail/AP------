@@ -364,7 +364,7 @@ test('visual regression: current lengths, areas, foot names and comparison formu
   const tree=layoutDrawing('py5-tree',{pyTa:11,pyTb:3,pyT1:40,pyT2:55,pyShade:'ab'});
   assert.equal(tree.labels.some(x=>/^AC²/.test(x.text)),false,'unselected branch does not add irrelevant area labels');
   const both=layoutDrawing('py5-tree',{pyTa:11,pyTb:3,pyT1:40,pyT2:55,pyShade:'all'});
-  separated(both,'3','AC²=9');separated(both,'A','AC²=9');separated(both,'S₃','S₄');
+  separated(both,'AC=3','AC²=9');separated(both,'A','AC²=9');separated(both,'S₃','S₄');
 });
 
 test('visual regression: every FC fraction stays inside the mobile canvas and vertex labels clear wide-screen tools', () => {

@@ -61,7 +61,7 @@
 
   /* -------------------------------------------------------------------- 풀이 흐름: 장면별 풀이 (문제와 같은 상태·같은 숫자)
      원칙: 그림 안에는 점 이름만 · 지금 단계만 색(앞 단계는 회색) · 대칭으로 같은 쪽은 주어진 것에서만 진하게 · 좁은 각은 x 만 두고 값은 그림 아래 한 줄에 */
-  const SVB = G.svB, { stmtDyn, xLbl, xOut } = SVB; void xOut;
+  const SVB = G.svB, { stmtDyn, xLbl, xOut, mobileQuestionFrame } = SVB; void xOut;
   const nBase = (o = {}) => (b, M) => { const g = M.g; if (!o.noCirc) b.circle(g.I, g.r, { color: 'green', width: 2.4, alpha: 0.8 }); fillPoly(b, [g.A, g.B, g.C], 'sky', 0.07); poly(b, [g.A, g.B, g.C], 'ink', 3.4); };
   const nTop = (o = {}) => (b, M, s, X) => {
     const g = o.geom ? o.geom(M) : M.g, { A, B, C: Cc, I, D, E, F } = g;
@@ -119,13 +119,15 @@
       return out;
     },
     draw: SVB.runner({
-      box: nBox, base: nBase(), top: nTop(), legend: () => NLEG,
+      ...mobileQuestionFrame(nBox, NLEG), base: nBase(), top: nTop(),
       dyn: (name, M, s) => stmtDyn(N1POOL, n1.prob)(name, M, s),
       st: {
         given: (L, M, s, X) => {
           const g = M.g, v = (s.trV || 0) % 3, { A, B, C: Cc, I, D } = g;
           bisL(L, g); feetL(L, g); ringMarks(L, g);
-          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 62, fa: 0.06, label: dg(2 * M.al), size: 16, labelDist: 82, keep: true }); // 전체 각은 바깥 호에, 반쪽 x 는 안쪽 호에
+          // 전체 각의 숫자는 A 바깥에 연결하고 반쪽 x는 A 안쪽에 둡니다.
+          // 고정 82px 거리가 내심 I를 넘어가지 않도록 모바일만 조정합니다.
+          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: X.nw ? Math.min(50, .4 * dist(A, I) * X.b.k) : 62, fa: 0.06, label: dg(2 * M.al), size: 16, labelDist: X.nw ? 40 : 82, labelRot: X.nw ? -65 : 0, keep: true });
           if (v === 1) L.sd(I, D, pt(I.x, I.y - 50), `${M.r} cm`, { color: 'rose', size: fs(X.b, 15), gap: 8, keep: true });
         },
         bis: (L, M) => { const { A, B, C: Cc, I } = M.g; L.ln(A, I, 'green', 4.4); L.ang(A, B, I, { color: 'sky', r: 32, fa: 0.4 }); L.ang(A, I, Cc, { color: 'sky', r: 32, fa: 0.4 }); },
@@ -134,7 +136,7 @@
       },
       x: (b, M, s, X) => {
         const { A, B, I, E } = M.g, v = (s.trV || 0) % 3;
-        if (v === 0) ang(b, A, B, I, { noMark: true, color: 'amber', label: xLbl(X, M.al), size: 17, labelDist: 46 });
+        if (v === 0) ang(b, A, B, I, { noMark: true, color: 'amber', label: xLbl(X, M.al), size: 17, labelDist: X.nw ? Math.min(46, .32 * dist(A, I) * b.k) : 46 });
         else if (v === 1) { if (!X.at('all')) G.sideTag(b, I, E, pt(I.x, I.y + 30), X.xVal ? `${M.r} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 }); }
       }
     })
@@ -323,12 +325,12 @@
       return out;
     },
     draw: SVB.runner({
-      box: nBox, base: nBase({ noCirc: true }), top: nTop({ noFeet: true, idx: 0, idy: 22 }), legend: () => 'I: 내심',
+      ...mobileQuestionFrame(nBox, 'I: 내심'), base: nBase({ noCirc: true }), top: nTop({ noFeet: true, idx: 0, idy: 22 }),
       st: {
         given: (L, M, s, X) => {
           const g = M.g, { A, B, C: Cc, I } = g, v = (s.trV || 0) % 3;
           bisL(L, g); ringMarks(L, g);
-          if (v === 0) L.ang(A, B, Cc, { noMark: true, color: 'sky', label: dg(2 * M.al), size: 16, labelDist: 70, keep: true });
+          if (v === 0) L.ang(A, B, Cc, { noMark: true, color: 'sky', label: dg(2 * M.al), size: 16, labelDist: X.nw ? Math.min(70, .42 * dist(A, I) * X.b.k) : 70, keep: true });
           else if (v === 1) L.ang(I, B, Cc, { color: 'sky', r: 34, label: dg(M.bic), size: 16, labelDist: 56, keep: true });
           else { L.ang(B, A, Cc, { noMark: true, color: 'green', label: dg(M.be), size: 15, labelDist: 56, keep: !X.has('dbl') }); L.ang(Cc, B, A, { noMark: true, color: 'violet', label: dg(M.ga), size: 15, labelDist: 56, keep: !X.has('dbl') }); }
         },

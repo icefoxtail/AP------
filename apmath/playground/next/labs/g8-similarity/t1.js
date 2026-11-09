@@ -28,6 +28,26 @@
   /* ====================================================================== 공용: 직각사다리꼴 ABCD (AB=6, BC=5, CD=2, DA=3 의 k배) */
   const trap = (k, ox) => [pt(ox, 0), pt(ox + 6 * k, 0), pt(ox + 2 * k, -3 * k), pt(ox, -3 * k)]; // A B C D
   const TC = ['sky', 'green', 'amber', 'rose'];
+  function trapAngles(b, Pt) {
+    const compact = phone(b) && !b.thumb;
+    // On a phone CD can be shorter than the old 24px arc plus the 16px
+    // right-angle square. Keep both marks inside their own corner of CD.
+    const shortSide = Math.hypot(Pt[2].x - Pt[3].x, Pt[2].y - Pt[3].y) * b.k;
+    const rightRadius = compact ? Math.min(26, shortSide * 0.3 / 0.62) : 26;
+    const acuteRadius = compact ? Math.min(24, shortSide * 0.75) : 24;
+    const obtuseRadius = compact ? Math.min(24, shortSide * 0.42) : 24;
+    ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose', r: rightRadius });
+    ang(b, Pt[3], Pt[0], Pt[2], { color: 'rose', r: rightRadius });
+    ang(b, Pt[1], Pt[0], Pt[2], { color: 'rose', rings: 1, r: acuteRadius });
+    const mark = ang(b, Pt[2], Pt[1], Pt[3], { color: 'rose', rings: compact ? 1 : 2, r: obtuseRadius });
+    if (compact) {
+      // The second arc still denotes the corresponding obtuse angle. Its
+      // spacing scales too, so it remains a positive radius at ratios 1:4.
+      const start = Math.atan2(Pt[1].y - Pt[2].y, Pt[1].x - Pt[2].x);
+      b.arc(Pt[2], (obtuseRadius - Math.min(4.6, obtuseRadius * 0.45)) / b.k, start, 2 * mark.mid - start,
+        { color: 'rose', width: 2.2, ccw: mark.mid < start });
+    }
+  }
 
   /* ====================================================================== 1. 닮은 두 평면도형 */
   const corr = {
@@ -60,10 +80,7 @@
         Pt.forEach((p, i) => { b.point(p, { color: !prob && st >= 1 ? TC[i] : 'ink', r: 5 }); tagOut(b, p, c, nm[i], { size: 17, gap: 12, color: !prob && st >= 1 ? TC[i] : 'ink' }); });
         // 각 표시: ∠A=∠D=직각(네모), ∠B 호 1개, ∠C 호 2개
         if (prob || st >= 3) {
-          ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose' });
-          ang(b, Pt[3], Pt[0], Pt[2], { color: 'rose' });
-          ang(b, Pt[1], Pt[0], Pt[2], { color: 'rose', rings: 1, r: 24 });
-          ang(b, Pt[2], Pt[1], Pt[3], { color: 'rose', rings: 2, r: 24 });
+          trapAngles(b, Pt);
         }
       };
       draw1(Pl, cl, 'ABCD', 0, m);
@@ -125,8 +142,7 @@
       [[Pl, cl, 'ABCD', 'sky', m], [Pr, cr, 'EFGH', 'green', n]].forEach(([Pt, c, nm, col, k]) => {
         fillPoly(b, Pt, col, 0.1); poly(b, Pt, 'ink', 3.6);
         Pt.forEach((p, i) => vtx(b, p, c, nm[i], { r: 4.5 }));
-        ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose' }); ang(b, Pt[3], Pt[0], Pt[2], { color: 'rose' });
-        ang(b, Pt[1], Pt[0], Pt[2], { color: 'rose', rings: 1, r: 24 }); ang(b, Pt[2], Pt[1], Pt[3], { color: 'rose', rings: 2, r: 24 });
+        trapAngles(b, Pt);
       });
       // 주어진 것: AB, EF (그림에 모두 표시). 둘레는 글로 주어짐(그림 아래)
       sideTag(b, Pl[0], Pl[1], cl, String(6 * m), { color: 'sky' }); sideTag(b, Pr[0], Pr[1], cr, String(6 * n), { color: 'green' });

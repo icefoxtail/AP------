@@ -418,7 +418,12 @@
       if ((mx - c.x) * nx + (my - c.y) * ny < 0) { nx = -nx; ny = -ny; }
       return { nx, ny, mx, my };
     };
-    const segLabel = (pos, a, bb, text) => { const o = outward(pos[a], pos[bb], pos); label({ x: o.mx, y: o.my }, text, { dx: o.nx * 19, dy: -o.ny * 19, size: FS.len, color: 'ink', weight: 800 }); };
+    const segLabel = (pos, a, bb, text) => {
+      const o = outward(pos[a], pos[bb], pos);
+      // 처음·끝 반원을 함께 담는 모바일 문제에서는 반지름과 중심 O를 서로 다른 줄에 둡니다.
+      const offset = spec.shape === 'semi' && sc.plain && b.W < 560 && !thumb ? 48 : 19;
+      label({ x: o.mx, y: o.my }, text, { dx: o.nx * offset, dy: -o.ny * offset, size: FS.len, color: 'ink', weight: 800 });
+    };
     const drawMarks = (pos, o) => {
       if (thumb) return;
       const q = (i) => P(pos[((i % n) + n) % n]);

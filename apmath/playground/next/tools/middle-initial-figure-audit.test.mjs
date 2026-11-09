@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {discoverMiddleCatalog,discoverHashEntries,initialIssues,toolbarOcclusions,VIEWPORTS} from './middle-initial-figure-audit.mjs';
+import {discoverMiddleCatalog,discoverHashEntries,initialIssues,toolbarOcclusions,labelsOutsideCanvas,compareInitialGeometry,VIEWPORTS} from './middle-initial-figure-audit.mjs';
+import {isProgressControl,needsInitialInteractionCheck,missingInteractionRisks} from './middle-initial-interactions.mjs';
 
 test('initial inventory includes newly registered middle labs without a fixed scene list',()=>{
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'middle-initial-catalog-'));
@@ -58,4 +59,41 @@ test('a partly hidden vertex letter fails even when the full figure is visible',
   assert.deepEqual(toolbarOcclusions([hiddenE,clearH],toolbar),[hiddenE]);
   assert.ok(initialIssues({...visible,labels:[hiddenE],toolbar},'leaf',[],{status:'NOT_APPLICABLE'}).includes('toolbar-covers-figure-label'));
   assert.deepEqual(initialIssues({...visible,labels:[clearH],toolbar},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
+});
+
+test('the real clipped segment caption fails despite an intact circle and nonblank canvas',()=>{
+  const canvas={...visible.canvas,cssWidth:683,cssHeight:414.875};
+  const clipped={text:'① 호 AB 2π cm',left:326.459479,right:441.459479,top:-7.203897,bottom:6.796103};
+  assert.deepEqual(labelsOutsideCanvas([clipped],canvas),[clipped]);
+  assert.ok(initialIssues({...visible,canvas,labels:[clipped]},'leaf',[],{status:'NOT_APPLICABLE'}).includes('figure-label-clipped-by-canvas'));
+  assert.deepEqual(labelsOutsideCanvas([{...clipped,top:8,bottom:22}],canvas),[]);
+});
+
+test('a sidebar handle cannot obscure a given arc length inside the canvas',()=>{
+  const label={text:'호 3π cm',left:274.708789,right:343.708789,top:95.853446,bottom:109.853446};
+  const handle={kind:'table-of-contents-handle',left:336,right:360,top:51,bottom:134};
+  assert.ok(initialIssues({...visible,labels:[label],occluders:[handle]},'leaf',[],{status:'NOT_APPLICABLE'}).includes('overlay-covers-figure-label'));
+  assert.deepEqual(initialIssues({...visible,labels:[{...label,left:240,right:309}],occluders:[handle]},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
+});
+
+test('real interaction coverage includes new labs and cannot silently lose a repaired scene',()=>{
+  assert.equal(needsInitialInteractionCheck('g7-new',{id:'new-first',index:0}),true);
+  assert.equal(needsInitialInteractionCheck('g7-circle-sector',{id:'f1-lens',index:12}),true);
+  assert.equal(needsInitialInteractionCheck('g7-new',{id:'second',index:1}),false);
+  assert.ok(missingInteractionRisks('g7-circle-sector',[{id:'f1-star'}]).includes('f1-lens'));
+  assert.deepEqual(missingInteractionRisks('g7-new',[{id:'new-first'}]),[]);
+});
+
+test('progress probes cover rolling, folds and nets while leaving ordinary side lengths alone',()=>{
+  for(const label of ['움직여 보기','애니메이션','펼치기','진행률','분리','굴러간 정도','옆면 펼친 정도','왼쪽 반을 접기','돌려서 포개기'])assert.equal(isProgressControl(label),true,label);
+  for(const label of ['반지름 r','삼각형의 높이','∠ABC'])assert.equal(isProgressControl(label),false,label);
+});
+
+test('reentry cannot silently shrink or move the initial figure while its inputs remain unchanged',()=>{
+  const first={geometry:[{method:'circle',alpha:1,bounds:{left:300.69,right:722.31,top:53.14,bottom:474.76}}]};
+  const moved={geometry:[{method:'circle',alpha:1,bounds:{left:312.49,right:710.51,top:53.82,bottom:451.84}}]};
+  assert.equal(compareInitialGeometry(first,first).pass,true);
+  assert.equal(compareInitialGeometry(first,moved).pass,false);
+  assert.equal(compareInitialGeometry(first,moved).reason,'initial-geometry-framing-changed');
+  assert.equal(compareInitialGeometry(first,{geometry:[]}).pass,false);
 });

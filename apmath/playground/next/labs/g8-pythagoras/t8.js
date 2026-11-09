@@ -52,7 +52,8 @@
       const O = pt(0, 0), A = R(pt(0, -a)), Cc = R(pt(0, c)), B = R(pt(-bb, 0)), D = R(pt(d, 0));
       const ext = Math.max(a, bb, c, d);
       const shapeBox = bboxOf([A, B, Cc, D]);
-      fit(b, shapeBox, { t: 44, b: C.full ? 74 : C.answer ? 60 : 44, l: 58, r: 58 });
+      const separateFooter = C.full && !b.thumb && b.W < 560;
+      fit(b, shapeBox, { t: 44, b: C.full ? (separateFooter ? 96 : 74) : C.answer ? 60 : 44, l: 58, r: 58 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [A, B, Cc, D], 'ink', 0.07); poly(b, [A, B, Cc, D], 'ink', 3.4);
       if (st(1)) { line(b, A, Cc, 'rose', 2.6, { dash: [7, 6] }); line(b, B, D, 'rose', 2.6, { dash: [7, 6] }); b.right(O, A, B, { size: 11, color: 'rose' }); }
@@ -61,7 +62,7 @@
       const sides = [[A, B, 'AB', AB2, 'sky'], [B, Cc, 'BC', BC2, 'green'], [Cc, D, 'CD', CD2, 'sky'], [D, A, 'DA', DA2, 'green']];
       if (C.full) {
         sides.forEach(([p, q, nm, v2, col]) => sideTag(b, p, q, O, L2(nm, v2), { color: col, size: 15, gap: 11 }));
-        if (st(2)) { T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${AB2}+${CD2}=${AB2 + CD2}`, { dy: 26, size: 16, color: 'sky' }); T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${DA2}+${BC2}=${DA2 + BC2}`, { dy: 50, size: 16, color: 'green' }); }
+        if (st(2)) { T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${AB2}+${CD2}=${AB2 + CD2}`, { dy: separateFooter ? 48 : 26, size: 16, color: 'sky' }); T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${DA2}+${BC2}=${DA2 + BC2}`, { dy: separateFooter ? 72 : 50, size: 16, color: 'green' }); }
       } else {
         // 문제: AB, BC, CD 는 주어진 값(길이), DA 는 구하는 값 x (제곱을 물음)
         const val = { AB: AB2, BC: BC2, CD: CD2 };

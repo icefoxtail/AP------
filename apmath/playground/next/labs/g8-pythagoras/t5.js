@@ -65,6 +65,13 @@
         compact = true;
         fit(b, box, { t: 24, b: 76, l: 24, r: 60 });
       }
+      const outsideGivens = C.givens && !b.thumb && Math.min(p, q) * b.k < 55;
+      const leftBranchLabels = !b.thumb && !prob && compact && p * b.k < 55;
+      if (outsideGivens || leftBranchLabels) {
+        // 짧은 변의 조건과 작은 가지 이름을 나무 밖에 놓을 자리를 예약합니다.
+        const side = outsideGivens ? 76 : 60;
+        fit(b, box, { t: 24, b: b.W < 560 ? 66 : 76, l: side, r: side });
+      }
       const st = (n) => !C.review || C.step >= n;
       const selected = (k) => !C.givens || shade === 'all' || k === 1;
       const sh = (k) => selected(k) && (C.givens || st(k === 1 ? 3 : 4));
@@ -90,9 +97,10 @@
               // 작은 가지의 정사각형 이름은 바깥 지시선으로 분리합니다.
               const bb = bboxOf([...br.s1, ...br.s2]), cy = (bb.y0 + bb.y1) / 2;
               [br.s1, br.s2].forEach((sq, j) => {
-                const at = pt(bb.x1 + 12 / b.k, cy + (j ? 16 : -16) / b.k);
+                const sign = k === 1 && !b.thumb ? -1 : 1;
+                const at = pt((sign < 0 ? bb.x0 : bb.x1) + sign * 12 / b.k, cy + (j ? 16 : -16) / b.k);
                 line(b, cenOf(sq), at, col, 1.2);
-                T(b, at, k === 1 ? (j ? 'S₂' : 'S₁') : (j ? 'S₄' : 'S₃'), { dx: 5, align: 'left', size: 14, color: col });
+                T(b, at, k === 1 ? (j ? 'S₂' : 'S₁') : (j ? 'S₄' : 'S₃'), { dx: sign * 5, align: sign < 0 ? 'right' : 'left', size: 14, color: col });
               });
             } else { T(b, cenOf(br.s1), k === 1 ? 'S₁' : 'S₃', { size: 14, color: col }); T(b, cenOf(br.s2), k === 1 ? 'S₂' : 'S₄', { size: 14, color: col }); }
           }
@@ -101,7 +109,14 @@
       fillPoly(b, [A, B, Cc], 'ink', 0.1); poly(b, [A, B, Cc], 'ink', 3.2);
       ang(b, A, B, Cc, { color: 'amber', r: 18 });
       [[A, 'A', 0, -1], [B, 'B', -1, 1], [Cc, 'C', 1, 1]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: 'ink', r: 4 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 15, size: 16 }); });
-      if (C.givens) { sideTag(b, B, A, Cc, `${p}`, { color: 'sky', size: 16, gap: -24 }); sideTag(b, A, Cc, B, `${q}`, { color: 'green', size: 16, gap: -24 }); }
+      if (outsideGivens) {
+        // 두 숫자를 작은 삼각형 안에 겹쳐 쓰지 않고, 실제 해당 변의 중점에 연결합니다.
+        [[B, A, `AB=${p}`, 'sky', -1], [A, Cc, `AC=${q}`, 'green', 1]].forEach(([u, v, text, color, sign]) => {
+          const source = mid(u, v), at = pt((sign < 0 ? box.x0 : box.x1) + sign * 12 / b.k, source.y);
+          line(b, source, at, color, 1.4);
+          T(b, at, text, { dx: sign * 5, align: sign < 0 ? 'right' : 'left', size: 16, color });
+        });
+      } else if (C.givens) { sideTag(b, B, A, Cc, `${p}`, { color: 'sky', size: 16, gap: -24 }); sideTag(b, A, Cc, B, `${q}`, { color: 'green', size: 16, gap: -24 }); }
     },
     steps: (M) => [
       `$AB=${M.p}$, $AC=${M.q}$예요. 구하는 것은 ${M.shade === 'ab' ? 'AB 쪽 두 정사각형' : '양쪽 네 정사각형'}의 넓이의 합이에요.`,

@@ -161,3 +161,20 @@ test('each available-area dimension can change independently without stale frami
     assert.deepEqual(resized, lab.draw(), `${id}/${JSON.stringify(patch)}: stage refresh equals direct entry`);
   }
 });
+
+test('the mobile ray problem separates point names from the first line caption', () => {
+  for (const [W,H] of [[360,291],[390,314]]) {
+    const size={name:'mobile-problem',W,H,right:0,bottom:58};
+    const lab=runtime.create('l-ray',size);lab.tab='problem';
+    const commands=lab.stabilize().commands;
+    const caption=commands.find(x=>x.method==='text'&&x.text==='직선 AB = 직선 BA');
+    const names=commands.filter(x=>x.method==='text'&&['A','B'].includes(x.text));
+    assert.equal(names.length,2);assert.ok(caption);
+    const c=lab.board.annotationSize(caption.text,caption.options);
+    for(const n of names){
+      const m=lab.board.annotationSize(n.text,n.options);
+      assert.ok(n.y+m.height/2+4<=caption.y-c.height/2,`${W}px: point ${n.text} is above the line caption`);
+    }
+    assert.equal(lab.s.lrA,3);assert.equal(lab.s.lrB,8);assert.equal(lab.s.revealed,false);
+  }
+});

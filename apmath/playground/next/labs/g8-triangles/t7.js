@@ -323,13 +323,17 @@
     },
     draw: SVB.runner({
       box: () => ({ x0: -1.2, x1: 1.2, y0: -1.15, y1: 1.15 }), padT: 40,
+      padding: (b, M, s, idx) => b.W < 560 ? { t: 26, b: idx < 0 ? 72 : 110, l: 40, r: 40 } : { t: 40, b: idx < 0 ? 80 : 132, l: 54, r: 54 },
       base: (b, M) => { const { O, A, B, C: Cc } = m4g(); b.circle(O, 1, { color: 'rose', width: 2.4, alpha: 0.6 }); b.circle(O, 0.5, { color: 'green', width: 2.4, alpha: 0.8 }); fillPoly(b, [A, B, Cc], 'sky', 0.1); poly(b, [A, B, Cc], 'ink', 3.4); },
       legend: () => 'O: 외심이자 내심 · D: BC의 중점',
       st: {
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc, D } = m4g(), v = (s.trV || 0) % 3, rr = fs(X.b, 15);
           L.ln(A, D, 'ink', 2.4, { dash: [6, 5] }); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 3); L.tk(O, z, 1, 'amber'); }); L.ang(D, O, B, { color: 'sky', r: 14 });
-          if (v === 0 || v === 2) L.sd(O, D, pt(-50, 0), `${M.r} cm`, { color: 'green', size: rr, gap: 8, keep: true }); else L.sd(O, A, pt(50, 0), `${M.R} cm`, { color: 'rose', size: rr, gap: 8, keep: true });
+          if (X.nw) {
+            const od = v === 0 || v === 2, p = mid(O, od ? D : A);
+            L.tx(p, `${od ? M.r : M.R} cm`, { dx: od ? 96 : -54, color: od ? 'green' : 'rose', size: rr, keep: true, leaderAnchor: p, leader: true });
+          } else if (v === 0 || v === 2) L.sd(O, D, pt(-50, 0), `${M.r} cm`, { color: 'green', size: rr, gap: 8, keep: true }); else L.sd(O, A, pt(50, 0), `${M.R} cm`, { color: 'rose', size: rr, gap: 8, keep: true });
         },
         half: (L, M) => { const { O, B, C: Cc } = m4g(); L.ln(O, B, 'rose', 4.4); L.ang(B, O, Cc, { color: 'green', r: 30, label: '30°', size: 15, labelDist: 52, fa: 0.4 }); },
         rt: (L, M) => { const { O, B, D } = m4g(); L.fl([O, B, D], 'amber', 0.3); L.ln(O, D, 'green', 4.4); L.ln(O, B, 'rose', 4.4); L.ang(D, O, B, { color: 'sky', r: 14 }); L.tk(O, D, 1, 'green'); L.tk(O, B, 2, 'rose'); },
@@ -338,6 +342,7 @@
       x: (b, M, s, X) => {
         const { O, A, D } = m4g(), v = (s.trV || 0) % 3, rr = fs(b, 15);
         if (v === 0) G.sideTag(b, O, A, pt(50, 0), X.xVal ? `${M.R} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 });
+        else if (v === 1 && X.nw) T(b, mid(O, D), X.xVal ? `${M.r} cm` : 'x', { dx: 96, color: 'amber', size: fs(b, X.xVal ? 15 : 18), leaderAnchor: mid(O, D), leader: true });
         else if (v === 1) G.sideTag(b, O, D, pt(-50, 0), X.xVal ? `${M.r} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 });
         else G.sideTag(b, A, D, pt(50, 0), X.xVal ? `${M.h} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 38 });
         void rr;
@@ -390,8 +395,14 @@
     },
     draw: SVB.runner({
       box: (M, s) => { const g = m5geo(M, s), pts = []; if (g.showL) pts.push(g.L.A, g.L.B, g.L.C, g.L.O, g.L.DO); if (g.showR) pts.push(g.R.A, g.R.B, g.R.C, g.R.I, g.R.D); return bboxOf(pts); }, padL: 44,
-      base: (b, M, s) => { const g = m5geo(M, s); if (g.v === 1) b.circle(g.R.I, dist(g.R.I, g.R.D), { color: 'green', width: 2.2, alpha: 0.7 }); if (g.showL) { const { A, B, C: Cc } = g.L; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } if (g.showR) { const { A, B, C: Cc } = g.R; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } },
-      legend: (M, s) => { const v = (s.trV || 0) % 3; return v === 0 ? 'O: 외심 · D: O에서 BC에 내린 수선의 발' : v === 1 ? 'I: 내심 · D: I에서 BC에 내린 수선의 발' : '왼쪽 O: 외심 · 오른쪽 I: 내심 · D: 수선의 발'; },
+      padding: (b, M, s, idx) => {
+        if (b.W >= 560 || (s.trV || 0) % 3 === 2) return { t: b.W < 560 ? 48 : 68, b: idx < 0 ? (b.W < 560 ? 72 : 80) : (b.W < 560 ? 126 : 132), l: 44, r: 44 };
+        const cur = idx < 0 ? null : m5Solve.steps(M, s)[idx], two = cur && G.textW(String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2'), fs(b, 15)) * 1.1 > Math.max(180, b.W - 28);
+        return { t: 28, b: idx < 0 ? 104 : two ? 148 : 128, l: 44, r: 44 };
+      },
+      captionDy: (X) => X.compactRoleLegend ? 76 : 52,
+      base: (b, M, s, X) => { const g = m5geo(M, s); X.compactRoleLegend = X.nw && !g.both; if (g.v === 1) b.circle(g.R.I, dist(g.R.I, g.R.D), { color: 'green', width: 2.2, alpha: 0.7 }); if (g.showL) { const { A, B, C: Cc } = g.L; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } if (g.showR) { const { A, B, C: Cc } = g.R; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } },
+      legend: (M, s, X) => { const v = (s.trV || 0) % 3; if (X.nw && v !== 2) return ''; return v === 0 ? 'O: 외심 · D: O에서 BC에 내린 수선의 발' : v === 1 ? 'I: 내심 · D: I에서 BC에 내린 수선의 발' : '왼쪽 O: 외심 · 오른쪽 I: 내심 · D: 수선의 발'; },
       dyn: (name, M, s) => stmtDyn(M5POOL, m5.prob)(name, M, s),
       st: {
         given: (L, M, s, X) => {
@@ -415,6 +426,11 @@
         const g = m5geo(M, s);
         if (g.showL) { const { A, B, C: Cc, O, DO } = g.L; b.point(O, { color: 'rose', r: 5.5 }); b.point(DO, { color: 'rose', r: 4 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4 })); T(b, O, 'O', { dx: 12, dy: -10, size: 17, color: 'rose' }); T(b, DO, 'D', { dy: 16, size: 17 }); [[A, 'A'], [B, 'B'], [Cc, 'C']].forEach(([p, nm]) => tagOut(b, p, g.gc, nm, { size: 17 })); }
         if (g.showR) { const { A, B, C: Cc, I, D } = g.R, gc = pt(g.gc.x + g.off, g.gc.y); b.point(I, { color: 'green', r: 5.5 }); b.point(D, { color: 'green', r: 4 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4 })); T(b, I, 'I', { dx: 12, dy: -10, size: 17, color: 'green' }); T(b, D, 'D', { dy: 16, size: 17 }); [[A, 'A'], [B, 'B'], [Cc, 'C']].forEach(([p, nm]) => tagOut(b, p, gc, nm, { size: 17 })); }
+        if (X.nw && !g.both) {
+          const box = b._trBox, p = pt((box.x0 + box.x1) / 2, box.y1), cur = X.cur, two = cur && G.textW(String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2'), fs(b, 15)) * 1.1 > Math.max(180, b.W - 28);
+          // 길이 조건과 풀이 설명 아래에 짧은 범례를 둡니다.
+          T(b, p, `${g.v === 0 ? 'O: 외심' : 'I: 내심'} · D: 수선의 발`, { dy: X.prob ? 78 : two ? 124 : 104, size: fs(b, 14), alpha: 0.8 });
+        }
       }
     })
   };

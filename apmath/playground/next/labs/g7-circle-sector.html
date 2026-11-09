@@ -86,7 +86,14 @@ function tagN(b, p, nx, ny, t, o = {}) {
 function tagStack(b, p, nx, ny, items, o = {}) {
   const size = o.size || 16, w = Math.max(...items.map((it) => textW(it.t, size))), d = Math.abs(nx) * (w / 2 + 4) + Math.abs(ny) * size * 0.62 + (o.gap == null ? 10 : o.gap), dirY = ny < -0.35 ? -1 : 1;
   const n = items.length;
-  items.forEach((it, i) => T(b, p, it.t, { dx: nx * d, dy: ny * d + dirY * size * 1.3 * (dirY < 0 ? n - 1 - i : i), color: it.color, size })); // 위에서 아래로 주어진 순서대로
+  const offsets = items.map((it, i) => ny * d + dirY * size * 1.3 * (dirY < 0 ? n - 1 - i : i));
+  let lower = 0;
+  if (o.keepInView && !b.thumb && !b._bbox) {
+    const at = b.toS(p), actualSize = size * (b.W < 560 ? .9 : 1);
+    const top = Math.min(...items.map((it, i) => at.y + offsets[i] - b.annotationSize(it.t, { size: actualSize, weight: 800 }).height / 2));
+    lower = Math.max(0, b.insets.top + 8 - top);
+  }
+  items.forEach((it, i) => T(b, p, it.t, { dx: nx * d, dy: offsets[i] + lower, color: it.color, size })); // 위에서 아래로 주어진 순서대로
 }
 const arcPts = (cx, cy, R, a0, a1, n = 72) => { const o = []; for (let i = 0; i <= n; i++) o.push(pt(cx, cy, R, a0 + (a1 - a0) * i / n)); return o; };
 const lerp = (A, B, f) => ({ x: A.x + (B.x - A.x) * f, y: A.y + (B.y - A.y) * f });
@@ -421,7 +428,7 @@ function periScene(type) {
         const given = g.kind === 'line' && type !== 'segment';
         const txt = `${NUMS[i]} ${nm}${g.exact && (given || i < revealed) ? ' ' + cmOf(g.exact) : ''}`;
         if (g.kind === 'arc') { if (type !== 'segment') { const m = g.at(0.5); const dx = m.x, dy = m.y, l = Math.hypot(dx, dy) || 1; tagN(b, m, dx / l, dy / l, txt, { color: 'sky', size: 16, gap: 10 }); } }
-        else if (type === 'segment') tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, [{ t: `${NUMS[0]} ${segs[0].name}${revealed > 0 ? ' ' + cmOf(segs[0].exact) : ''}`, color: 'sky' }, { t: txt, color: 'rose' }], { size: 16, gap: 10 });
+        else if (type === 'segment') tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, [{ t: `${NUMS[0]} ${segs[0].name}${revealed > 0 ? ' ' + cmOf(segs[0].exact) : ''}`, color: 'sky' }, { t: txt, color: 'rose' }], { size: 16, gap: 10, keepInView: true });
         else {
           const m = g.at(0.5), dx = g.Q.x - g.P.x, dy = g.Q.y - g.P.y, l = Math.hypot(dx, dy) || 1;
           let nx = -dy / l, ny = dx / l; if ((m.x - cen.x) * nx + (m.y - cen.y) * ny < 0) { nx = -nx; ny = -ny; }
@@ -441,6 +448,8 @@ function periScene(type) {
         // 도형의 축척은 유지하고, 충분히 떨어져 있는 펼친 띠만 필요한 만큼 올립니다.
         const toolsHeight = lab && lab.ui && lab.ui.tools && lab.ui.tools.offsetHeight;
         const bottom = Math.max(b.insets.bottom, (toolsHeight || 44) + 14);
+        const figureBottom = b.toS({ x: 0, y: type === 'sector' || type === 'segment' ? 1 : ymax }).y;
+        yt = Math.max(yt, b.toW(0, figureBottom + 64).y);
         yt = Math.min(yt, b.toW(0, b.H - bottom - 34 * Math.max(1, b.fs || 1)).y);
       }
       const total = segs.reduce((a, g) => a + g.len, 0); let acc = 0;
@@ -627,7 +636,7 @@ mineGroups.forEach((g) => g.scenes.forEach((sc) => {
       const keep = { ...s }, b = lab.board, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab;
       b.setFocus(CANON_VIEW, true); // 앞 장면의 확대·위치가 남은 채로 재면 그림이 작게 맞춰집니다 → 항상 같은 처음 상태에서 잽니다
       let uni = null;
-      // 쉘은 enter/맞춤 뒤에 탭을 탐구로 바꿉니다. 이전 문제 탭의 답 숨김 상태로 재면 둘레 띠가 맞춤 범위에서 빠져요.
+      // 둘레 띠의 이동 범위는 항상 탐구 그림으로 재어 문제 탭의 답 숨김 상태에 영향을 받지 않게 합니다.
       try {
         lab.tab = 'explore';
         for (const st of FIT[sc.id]) { Object.assign(s, st); const f = lab._measureFocus(sc); if (f) uni = unionFocus(uni, f); }
@@ -722,8 +731,37 @@ function start() {
   groups.forEach((group) => group.scenes.forEach((sc) => {
     const view = sc.view;
     const stagedFormula = sourceBasic && sourceBasic.scenes.includes(sc); // 중심각 모듈은 이미 현재 단계까지만 식을 만듭니다.
+    // 첫 enter 뒤에 조작부·도구 막대가 배치되어 무대 크기가 바뀔 수 있습니다.
+    // 이 방식으로 맞추는 원/둘레/기본 장면만 최종 유효 영역에서 다시 잽니다.
+    const stageFit = stagedFormula || (FIT[sc.id] && !sc.id.startsWith('z3-'));
+    let fitting = false, fitStage = '', fitBoard = null;
+    if (stageFit) {
+      const enter = sc.enter;
+      sc.enter = (s, lab) => { if (lab && s === lab.s) fitStage = ''; if (enter) enter(s, lab); };
+    }
+    const fitForStage = (s, lab) => {
+      if (!stageFit || fitting || !lab || s !== lab.s || !lab.board || lab.board.thumb || !lab._measureFocus) return;
+      const b = lab.board, ins = b.insets;
+      const key = [b.W, b.H, b.fs, ins.top, ins.right, ins.bottom, ins.left].join('|');
+      if (fitStage === key && fitBoard === b) return;
+      const keep = { ...s }, savedView = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab;
+      let focus = null;
+      fitting = true;
+      try {
+        b.setFocus(CANON_VIEW, true);
+        if (FIT[sc.id]) {
+          lab.tab = 'explore';
+          for (const values of FIT[sc.id]) { Object.assign(s, values); const measured = lab._measureFocus(sc); if (measured) focus = unionFocus(focus, measured); }
+        } else focus = lab._measureFocus(sc);
+      } finally {
+        Object.keys(s).forEach(k => { if (!(k in keep)) delete s[k]; });
+        Object.assign(s, keep); Object.assign(b, savedView); lab.tab = tab; fitting = false;
+      }
+      if (focus) { sc._focus = focus; b.setFocus(focus, false); fitStage = key; fitBoard = b; }
+    };
     sc.view = (s, lab) => {
-      if (lab && lab.s === s && lab.scene && lab.scene.id === sc.id) {
+      fitForStage(s, lab);
+      if (!fitting && lab && lab.s === s && lab.scene && lab.scene.id === sc.id) {
         const controls = typeof sc.controls === 'function' ? sc.controls(s) : sc.controls || [];
         const key = JSON.stringify(controls.filter((id) => !motionKey(id)).map((id) => [id, s[id]]));
         const previous = problemStates.get(s);

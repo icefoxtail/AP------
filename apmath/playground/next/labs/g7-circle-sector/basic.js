@@ -89,7 +89,7 @@
       return out;
     };
     const arcCaptionBoxes = [], arcCaptionRoutes = [];
-    // 1607의 두 호 라벨만 사용합니다. 글자·후광의 실제 상자를 피해 배치하고,
+    // 1607의 두 호와 1105의 좁은 화면 호 라벨에 사용합니다. 글자·후광의 실제 상자를 피해 배치하고,
     // 지시선의 시작점은 원래 호 중점에 둡니다. 화면 맞춤 계산에는 참여하지 않습니다.
     function placeArcCaption(at, anchor, label, metrics, clearance) {
       const screen = (p) => b.toS(b._P(P(p))), O = screen(clearance.center);
@@ -109,7 +109,7 @@
         }
         return lo <= hi;
       };
-      const minX = b.insets.left + 8 + metrics.width / 2, maxX = b.W - b.insets.right - 8 - metrics.width / 2;
+      const minX = b.insets.left + 8 + metrics.width / 2, maxX = b.W - b.insets.right - (clearance.right || 0) - 8 - metrics.width / 2;
       const minY = b.insets.top + 8 + metrics.height / 2, maxY = b.H - b.insets.bottom - 8 - metrics.height / 2;
       const points = clearance.names.map(([p]) => screen(p)).filter((p) => Math.hypot(p.x - anchor.x, p.y - anchor.y) > 1).map((p) => box(p, { width: 12, height: 12 }));
       // 먼저 그린 지시선과 겹치거나 합쳐져 보이는 경로도 피합니다.
@@ -197,7 +197,7 @@
         const nx = Math.cos(deg_ * D2R), ny = -Math.sin(deg_ * D2R), size = o.size || 15;
         const metrics = b.annotationSize ? b.annotationSize(str, { size, weight: o.weight || 800 }) : { width: String(str).length * size * .65 + 6, height: size + 6 };
         const distance = Math.max(off, Math.abs(nx) * metrics.width / 2 + Math.abs(ny) * metrics.height / 2 + 8);
-        const { avoidLeftEdge, avoidRightEdge, arcClearance, ...labelOptions } = o;
+        const { avoidLeftEdge, avoidRightEdge, rightClearance = 0, arcClearance, ...labelOptions } = o;
         const opts = { dx: nx * distance, dy: ny * distance, ...labelOptions };
         let route = null;
         if (arcClearance && !b.thumb && !b._bbox && b.annotationSize && b.leader) {
@@ -214,7 +214,7 @@
           if (Math.abs(ny) > 1e-6) opts.dy -= move * nx / ny;
         }
         if (avoidRightEdge && !b.thumb && !b._bbox) {
-          const at = b.toS(b._P(P(p))), maxX = b.W - b.insets.right - 8 - metrics.width / 2;
+          const at = b.toS(b._P(P(p))), maxX = b.W - b.insets.right - rightClearance - 8 - metrics.width / 2;
           if (at.x + opts.dx > maxX) {
             // 좁은 부채꼴의 긴 호 라벨은 같은 호 중점 위로 옮겨 읽을 공간을 확보합니다.
             opts.dx = Math.min(0, maxX - at.x);
@@ -780,7 +780,7 @@
         }
         const stR = stateOf('r', mode, step);
         if (stR.s !== 'hide') g.text(g.pol(O, R * 0.52, 0), stR.s === 'ask' ? 'r = ? cm' : SLAB.r(v.r), { color: stR.c === 'ink' ? 'sky' : stR.c, dy: th > 180 ? -18 : 20, size: 16 });
-        if (stL.s !== 'hide') g.out(g.pol(O, R, m), m, stL.s === 'ask' ? '호 ? cm' : SLAB.l(v.l), { color: stL.c === 'ink' ? 'amber' : stL.c, size: 16, avoidRightEdge: o.id === '1610' }, 32);
+        if (stL.s !== 'hide') g.out(g.pol(O, R, m), m, stL.s === 'ask' ? '호 ? cm' : SLAB.l(v.l), { color: stL.c === 'ink' ? 'amber' : stL.c, size: 16, avoidRightEdge: o.id === '1610' || (o.id === '1808' && g.b.W < 560), rightClearance: o.id === '1808' && g.b.W < 560 ? 24 : 0 }, 32);
         const stS = stateOf('S', mode, step);
         if (stS.s !== 'hide') g.text(th > 200 ? g.pol(O, R * 0.5, 90) : g.pol(O, R * (th < 90 ? 0.8 : 0.66), m), stS.s === 'ask' ? '넓이 ? cm²' : SLAB.S(v.S), { color: stS.c === 'ink' ? 'green' : stS.c, size: 16, dy: th < 90 ? -10 : 0 });
         if (mode === 'explore') {
@@ -1119,7 +1119,8 @@
       else g.ang(O, A0, B0, { r: 14, color: 'rose', label: showAng ? angD(u * q.a) + '°' : '?°', lr: 32, size: 15 });
       const rl = (a0, a1, n) => g.out(g.pol(O, R, (a0 + a1) / 2), (a0 + a1) / 2, String(n), { color: 'amber', size: 19 }, 24);
       rl(A0, B0, q.a); rl(B0, C0, q.b); rl(C0, E0, q.c);
-      if (showTicks) g.text(O, '한 칸 ' + angD(u) + '°', { color: 'green', size: 15, dy: 48 });
+      // 좁은 화면에서는 한 칸의 각도를 원 아래에 두어 각 부채꼴의 각도와 구별합니다.
+      if (showTicks) g.text(g.b.W < 560 ? [0, -R] : O, '한 칸 ' + angD(u) + '°', { color: 'green', size: 15, dy: 48 });
       if (mode === 'explore') { g.text(g.pol(O, R * 0.5, (B0 + C0) / 2), angD(u * q.b) + '°', { color: 'sky' }); g.text(g.pol(O, R * 0.5, (C0 + E0) / 2), angD(u * q.c) + '°', { color: 'sky' }); }
       const pn = (n, a, o) => g.dot(g.pol(O, R, a), { color: 'ink', label: n, toward: O });
       pn('A', A0); pn('B', B0); pn('C', C0);
@@ -1497,7 +1498,9 @@
         g.ang(O, 2 * be, 180, { r: 20, color: 'rose', label: ac + '°', lr: 42, size: 16, mid: (2 * be + 180) / 2 });
       }
       const lBD = (q.r * be) / 180, lAC = (q.r * ac) / 180;
-      g.out(g.pol(O, R, be / 2), be / 2, '호 ' + piS(lBD) + ' cm', { color: 'amber' }, 44);
+      // 좁은 화면에서도 주어진 호 길이가 목차 손잡이·점 D 이름과 겹치지 않게 합니다.
+      const bdClearance = g.b.W < 560 ? { center: O, radius: R, names: [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']], right: 24 } : null;
+      g.out(g.pol(O, R, be / 2), be / 2, '호 ' + piS(lBD) + ' cm', { color: 'amber', arcClearance: bdClearance }, 44);
       g.out(g.pol(O, R, (2 * be + 180) / 2), (2 * be + 180) / 2, s2 ? '호 AC = ' + piS(lAC) + ' cm' : '호 AC = ? cm', { color: 'rose', avoidLeftEdge: true }, 40);
       if (mode === 'explore') g.handle('D', D, { color: 'amber', label: 'D', toward: O, drag: (w) => { q.be = clamp(snap(clamp(dirOf(O, w), 0, 90), 6), 18, 60); } });
       else g.dot(D, { color: 'ink', label: 'D', toward: O });

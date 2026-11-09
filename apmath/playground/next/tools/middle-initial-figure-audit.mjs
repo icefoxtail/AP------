@@ -9,6 +9,7 @@ import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 import { sampleInitialFigure } from './middle-initial-figure-contracts.mjs';
+import { isProgressControl, needsInitialInteractionCheck, missingInteractionRisks, exerciseInitialInteractions } from './middle-initial-interactions.mjs';
 
 export const VIEWPORTS = [
   { name: 'pc', width: 1440, height: 900 },
@@ -111,6 +112,13 @@ function installObservation() {
       return original.apply(this, args);
     };
   }
+  // Animation frames can run between the observation RPCs. Keep exactly the
+  // latest rendered frame, instead of accumulating duplicate drawing commands.
+  const render = window.lab.render;
+  window.lab.render = function (...args) {
+    window.__initialFigureDraws = []; window.__initialFigureLabels = [];
+    return render.apply(this, args);
+  };
 }
 
 function observe() {
@@ -146,6 +154,10 @@ function observe() {
   const tools = l.ui.tools, toolRect = tools.checkVisibility() ? tools.getBoundingClientRect() : null;
   const toolbar = toolRect ? { left: toolRect.left - rect.left, right: toolRect.right - rect.left,
     top: toolRect.top - rect.top, bottom: toolRect.bottom - rect.top } : null;
+  const occluders = [...document.querySelectorAll('.apl-toc-handle')].filter(e => e.checkVisibility({opacityProperty:true,visibilityProperty:true})).map(e => {
+    const r = e.getBoundingClientRect();
+    return {kind:'table-of-contents-handle',left:r.left-rect.left,right:r.right-rect.left,top:r.top-rect.top,bottom:r.bottom-rect.top};
+  });
   const labels = [...(window.__initialFigureLabels || [])];
   for (const el of b._labels?.values() || []) if (el.checkVisibility({opacityProperty:true,visibilityProperty:true})) {
     const r = el.getBoundingClientRect();
@@ -159,7 +171,8 @@ function observe() {
       left: rect.left, top: rect.top, visibleWidth, visibleHeight, display: style.display, visibility: style.visibility, opacity: style.opacity,
       rendered: c.checkVisibility({opacityProperty:true,visibilityProperty:true,contentVisibilityAuto:true}) },
     ink, inkBounds: ink ? { x0, y0, x1, y1 } : null, pixelFingerprint: (hash >>> 0).toString(16),
-    geometry: window.__initialFigureDraws, labels, toolbar, params, declaredControls, sliders, handles,
+    geometry: window.__initialFigureDraws, labels, toolbar, occluders, params, declaredControls, sliders, handles,
+    projection: {focus:b.focus,insets:{...b.insets},origin:b.toS({x:0,y:0}),scale:b.k,scaleY:b.ky,zoom:b.zoom,panX:b.panX,panY:b.panY},
     overflow: document.documentElement.scrollWidth > innerWidth + 1, hintOverlap,
     katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent),
     question: document.querySelector('.apl-question .q')?.textContent || '',
@@ -179,6 +192,18 @@ export function toolbarOcclusions(labels, toolbar) {
   });
 }
 
+export function labelsOutsideCanvas(labels, canvas) {
+  return (labels || []).filter(label => label.left < -1 || label.top < -1 || label.right > canvas.cssWidth + 1 || label.bottom > canvas.cssHeight + 1);
+}
+
+export function compareInitialGeometry(first, again) {
+  const visible = row => (row.geometry || []).filter(x => x.bounds && x.alpha > .01);
+  const a = visible(first), b = visible(again);
+  if(a.length !== b.length || a.some((x,i) => x.method !== b[i].method)) return {pass:false,reason:'initial-geometry-structure-changed',before:a.length,after:b.length};
+  const delta = Math.max(0,...a.flatMap((x,i) => ['left','right','top','bottom'].map(k => Math.abs(x.bounds[k]-b[i].bounds[k]))));
+  return {pass:delta<=1,maxDeltaCssPx:delta,reason:delta>1?'initial-geometry-framing-changed':null};
+}
+
 export function initialIssues(observation, expectedId, errors, semantic) {
   const issues = [];
   if (observation.id !== expectedId) issues.push('selected-scene-mismatch');
@@ -195,6 +220,8 @@ export function initialIssues(observation, expectedId, errors, semantic) {
   if (observation.overflow) issues.push('horizontal-overflow');
   if (observation.hintOverlap > 0) issues.push('orientation-hint-covers-canvas');
   if (toolbarOcclusions(observation.labels, observation.toolbar).length) issues.push('toolbar-covers-figure-label');
+  if (labelsOutsideCanvas(observation.labels, c).length) issues.push('figure-label-clipped-by-canvas');
+  if ((observation.occluders || []).some(o => toolbarOcclusions(observation.labels, o).length)) issues.push('overlay-covers-figure-label');
   if (observation.katexErrors.length) issues.push('math-typesetting-error');
   for (const slider of observation.sliders || []) {
     // A native range may round half a step, but cannot silently clamp a model
@@ -268,12 +295,13 @@ async function run() {
           const item = {id:scene.id,view:view.name,theme,state,file:name,sha256:sha(bytes),sourceDigest:dest.source.digest};
           dest.captures.push(item);return item;
         };
-        const measure = async (scene,state,screenshot=false) => {
-          await settle();
+        const measure = async (scene,state,screenshot=false,options={}) => {
+          if(options.live)await page.evaluate(()=>{window.__initialFigureDraws=[];window.__initialFigureLabels=[];lab.render();});
+          else await settle();
           const obs = await page.evaluate(observe), semantic = await page.evaluate(sampleInitialFigure);
           const row = {id:scene.id,view:view.name,theme,state,...obs,semantic,errors:[...errors]};
           row.issues=initialIssues(obs,scene.id,errors,semantic);
-          const expectedTab=state==='problem-initial'?'problem':'explore';
+          const expectedTab=state.startsWith('review-')?'review':state.startsWith('problem-')?'problem':'explore';
           if(obs.tab!==expectedTab)row.issues.push('selected-tab-mismatch');
           if(['first-entry','reselected','returned','problem-initial','explore-return'].includes(state)||state.startsWith('alias-')){
             if(obs.playing)row.issues.push('unexpected-initial-autoplay');
@@ -310,6 +338,7 @@ async function run() {
             }else if(actual!==entry.id)report.failures.push({unit:unit.id,entry:entry.id,actualId:actual,view:view.name,theme,reason:'hash-entry-mismatch'});
           }
           const discoveredScenes=[...combined.values()];
+          for(const id of missingInteractionRisks(unit.id,discoveredScenes))report.failures.push({unit:unit.id,id,view:view.name,theme,reason:'targeted-interaction-scene-not-registered'});
           if(!dest.scenes.length)dest.scenes=discoveredScenes;
           else if(JSON.stringify(dest.scenes)!==JSON.stringify(discoveredScenes))throw Error('Hash-inclusive inventory changed between viewports');
           const scenes=requestedScenes.length?discoveredScenes.filter(s=>requestedScenes.includes(s.id)):discoveredScenes;
@@ -336,12 +365,19 @@ async function run() {
                 const visible=window.__initialFigureLabels.slice(start);
                 c.globalAlpha=.05;c.fillStyle='rgba(255,255,255,.05)';
                 const hiddenStart=window.__initialFigureLabels.length;c.fillText('E',toolbar.left+8,toolbar.top+3);
-                const nearlyTransparentCount=window.__initialFigureLabels.length-hiddenStart;c.restore();
-                return {toolbar,visible,nearlyTransparentCount};
+                const nearlyTransparentCount=window.__initialFigureLabels.length-hiddenStart;
+                c.globalAlpha=1;c.fillStyle='#ffffff';
+                const clippedStart=window.__initialFigureLabels.length;c.fillText('E',-6,24);
+                const clipped=window.__initialFigureLabels.slice(clippedStart);c.restore();
+                return {toolbar,visible,nearlyTransparentCount,clipped,canvas:{cssWidth:b.W,cssHeight:b.H}};
               });
-              const pass=toolbarOcclusions(control.visible,control.toolbar).length===1&&control.nearlyTransparentCount===0;
+              const pass=toolbarOcclusions(control.visible,control.toolbar).length===1&&control.nearlyTransparentCount===0&&labelsOutsideCanvas(control.clipped,control.canvas).length===1;
               (dest.measurementControls||=[]).push({view:view.name,theme,type:'actual-glyph-toolbar-occlusion',...control,pass});
               if(!pass)report.failures.push({unit:unit.id,view:view.name,theme,reason:'glyph-measurement-control-failed'});
+              const frameControl=await page.evaluate(()=>{lab.render();const once=window.__initialFigureDraws.length;lab.render();return {once,twice:window.__initialFigureDraws.length};});
+              const framePass=frameControl.once>0&&frameControl.once===frameControl.twice;
+              dest.measurementControls.push({view:view.name,theme,type:'one-rendered-frame',...frameControl,pass:framePass});
+              if(!framePass)report.failures.push({unit:unit.id,view:view.name,theme,reason:'render-frame-observation-accumulates'});
             }
             const activeParams = obs => Object.fromEntries(first.declaredControls.map(k=>[k,obs.params[k]]));
             // Follow the actual selected button, including scene/group closure.
@@ -362,6 +398,9 @@ async function run() {
               parametersEqual:JSON.stringify(activeParams(first))===JSON.stringify(activeParams(returned)),semanticStatus:returned.semantic.status});
             if(first.pixelFingerprint!==returned.pixelFingerprint)await capture(scene,'returned-difference');
             for(const [state,row]of [['reselected',again],['returned',returned]]){
+              const geometry=compareInitialGeometry(first,row);
+              dest.comparisons.push({id:scene.id,view:view.name,theme,state,type:'initial-geometry',...geometry});
+              if(!geometry.pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,...geometry});
               if(JSON.stringify(activeParams(first))!==JSON.stringify(activeParams(row)))report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'active-initial-parameters-not-restored',before:activeParams(first),after:activeParams(row)});
               if(row.playing||row.revealed)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'initial-animation-or-answer-state-not-restored'});
             }
@@ -376,7 +415,8 @@ async function run() {
             // Risk-based animation sampling, explicitly recorded per scene.
             if(!observationOnly && ['pc','small-mobile'].includes(view.name)){
               await page.evaluate(i=>lab.goScene(i),first.index);await settle();
-              const control=await page.evaluate(()=>Object.entries(lab._ctls||{}).filter(([,v])=>v.input.checkVisibility()).map(([key,v])=>({key,label:v.input.getAttribute('aria-label')||'',min:+v.input.min,max:+v.input.max,resetMode:typeof lab.scene.f3?.tick==='function'?'entry-values':'progress-minimum'})).find(x=>/움직여 보기|애니메이션|펼치기|진행률|분리/.test(x.label))||null);
+              const controls=await page.evaluate(()=>Object.entries(lab._ctls||{}).filter(([,v])=>v.input.checkVisibility()).map(([key,v])=>({key,label:v.input.getAttribute('aria-label')||'',min:+v.input.min,max:+v.input.max,resetMode:typeof lab.scene.f3?.tick==='function'?'entry-values':'progress-minimum'})));
+              const control=controls.find(x=>isProgressControl(x.label))||null;
               if(control){
                 for(const [state,fraction] of [['animation-middle',.5],['animation-end',1]]){
                   const value=await page.evaluate(({key,fraction})=>{const input=lab._ctls[key].input,probe=input.cloneNode(false);probe.value=String(+input.min+(+input.max-+input.min)*fraction);return probe.valueAsNumber;},{key:control.key,fraction});
@@ -400,7 +440,8 @@ async function run() {
                   if(!pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state:'reset',reason:'reset-does-not-restore-animation',expected,actual});
                 }
                 else{await page.evaluate(i=>lab.goScene(i),first.index);await measure(scene,'reentry-reset',true);dest.notRun.push({id:scene.id,view:view.name,state:'native-reset',reason:'no-reset-button'});}
-              }else dest.notRun.push({id:scene.id,view:view.name,state:'animation-middle/end',reason:'no-matched-progress-slider; targeted animation/drag coverage must be reported separately'});
+              }else dest.notRun.push({id:scene.id,view:view.name,theme,state:'animation-middle/end',reason:'no-matched-progress-slider; targeted animation/drag coverage is recorded separately'});
+              if(needsInitialInteractionCheck(unit.id,scene))await exerciseInitialInteractions({page,unit:unit.id,scene,first,view,theme,settle,measure,dest,failures:report.failures});
             }
             } catch(error) {
               report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,reason:'scene-run-incomplete',message:error.stack});

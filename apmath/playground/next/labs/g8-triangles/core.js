@@ -735,7 +735,7 @@
     }
   }
   function mkSolve(plan, extra) {
-    return Object.assign({ steps: (M, s) => plan(M, s).steps, draw: (b, s, M, C, ST, idx) => render(b, plan(M, s), idx) }, extra || {});
+    return Object.assign({ steps: (M, s) => plan(M, s).steps, draw: (b, s, M, C, ST, idx) => render(b, plan(M, s, b), idx) }, extra || {});
   }
   G.SVK = K; G.mkSolve = mkSolve;
   // 좁은 각의 라벨 위치: 각 VA–VB 의 이등분선에서 변 VA 쪽(side='A') 또는 VB 쪽(side='B')으로 (반각+extra)° 돌린 labelRot.
