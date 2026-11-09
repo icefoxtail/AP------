@@ -60,7 +60,7 @@ test('a normal-flow sticky tab row does not invent occlusion above its actual po
   assert.equal(result.regions.find(r => r.name === 'question').visibleDocumentRange.top, 555);
 });
 
-function captureFixture({ blocked = false } = {}) {
+function captureFixture({ blocked = false, expectedTouch = true } = {}) {
   let y = 0; const shots = [], captures = [], scrolls = [];
   const page = {
     evaluate: async (fn, arg) => {
@@ -72,7 +72,7 @@ function captureFixture({ blocked = false } = {}) {
     },
     screenshot: async options => { shots.push(options); return Buffer.from('mock PNG'); }
   };
-  const guard = { expectedTouch: true, capture: async (take, metadata) => ({ value: await take(), observation: metadata }) };
+  const guard = { expectedTouch, capture: async (take, metadata) => ({ value: await take(), observation: metadata }) };
   return { page, guard, shots, captures, scrolls, options: { page, guard, out: '/evidence', name: 'state.png', id: 'one', state: 'review-final', fullPage: true, settle: async () => {}, collectContent: true, onCapture: e => captures.push(e) } };
 }
 
@@ -89,6 +89,97 @@ test('scroll clamping preserves partial evidence and restores the page while fai
   const f = captureFixture({ blocked: true });
   await assert.rejects(captureReviewState(f.options), /coverage incomplete/);
   assert.equal(f.captures.length, 2); assert.equal(f.scrolls.at(-1), 0);
+});
+
+for (const expectedTouch of [false, true]) {
+  test(`native-only ${expectedTouch ? 'mobile' : 'desktop'} evidence never invokes a distorting full-page screenshot`, async () => {
+    const f = captureFixture({ expectedTouch });
+    const result = await captureReviewState({ ...f.options, nativeViewportOnly: true });
+    assert.equal(result.file, 'state--viewport.png');
+    assert.equal(result.rawReference, undefined);
+    assert.ok(f.shots.length >= 2, 'the long solution still needs a supplemental frame');
+    assert.ok(f.shots.every(s => s.fullPage === false));
+    assert.equal(result.contentCoverage.complete, true);
+    assert.equal(f.scrolls.at(-1), 0);
+  });
+}
+
+test('legacy desktop callers keep their existing raw capture contract', async () => {
+  const f = captureFixture({ expectedTouch: false }), result = await captureReviewState(f.options);
+  assert.equal(result.file, 'state.png');
+  assert.equal(result.supplementalFrames.length, 0);
+  assert.deepEqual(f.shots.map(s => s.fullPage), [true]);
+});
+
+// Exact two-column bounds from stdDef/pc-paper/review-final, run42583866636.
+// The left stage ends at x=1040 and cannot cover the review starting at 1058.
+function desktopFrame(y = 0) {
+  const top = 350.234375, bottom = 1200.484375;
+  const f = frame(y, { top, bottom, max: 340.484375 }), r = f.regions[0];
+  f.viewport = { width: 1440, height: 900 }; f.blockedTop = 900;
+  f.occluders = [
+    { selector: 'apl-bar', rect: rect(0, 101.390625, 0, 1440) },
+    { selector: 'apl-stage', rect: rect(102, 900, 0, 1040) }
+  ];
+  r.rect = rect(top - y, bottom - y, 1058, 1422);
+  r.documentRect = { top, bottom, left: 1058, right: 1422 };
+  r.visibleDocumentRange = { top: Math.max(top - y, 101.390625) + y, bottom: Math.min(bottom - y, 900) + y };
+  return f;
+}
+
+test('desktop review coverage uses actual horizontal occlusion, including every long-content slice', () => {
+  assert.equal(viewportContentCoverage([desktopFrame()], ['review']).complete, false);
+  assert.equal(viewportContentCoverage([desktopFrame(), desktopFrame(340.484375)], ['review']).complete, true);
+  const overlapping = desktopFrame();
+  overlapping.occluders[1].rect = rect(102, 900, 0, 1100);
+  assert.ok(viewportContentCoverage([overlapping, desktopFrame(340.484375)], ['review']).errors.includes('invalid-visible-region:review'));
+});
+
+test('the actual desktop frame reader excludes only the disjoint left stage from right-column occlusion', () => {
+  const element = (name, bounds, style = { position: 'static', top: 'auto' }) => ({ className: name, style, textContent: 'same text', getBoundingClientRect: () => bounds, checkVisibility: () => true,
+    cloneNode() { return this; }, querySelectorAll: () => [], querySelector: () => ({ textContent: 'answer' }), classList: { contains: () => true } });
+  const bar = element('apl-bar', rect(0, 101.390625, 0, 1440), { position: 'sticky', top: '0px' });
+  const stage = element('apl-stage', rect(102, 900, 0, 1040), { position: 'sticky', top: '102px' });
+  const review = element('review', rect(350.234375, 1200.484375, 1058, 1422));
+  const sandbox = { innerWidth: 1440, innerHeight: 900, scrollX: 0, scrollY: 0, getComputedStyle: e => e.style,
+    document: { querySelectorAll: () => [bar, stage], querySelector: () => review, documentElement: { scrollHeight: 1240.484375 }, fonts: { status: 'loaded' } },
+    lab: { board: { canvas: stage }, scene: { id: 'one', steps: [1, 2, 3] }, refs: { problemText: review, answer: review }, s: { step: 3, k: 1 }, tab: 'review' }
+  };
+  const result = vm.runInNewContext(`(${readReviewFrame.toString()})()`, sandbox);
+  assert.equal(result.blockedTop, 900, 'the recorded global obstruction remains unchanged');
+  const visible = result.regions.find(r => r.name === 'review').visibleDocumentRange;
+  assert.equal(visible.top, 350.234375); assert.equal(visible.bottom, 900);
+  stage.getBoundingClientRect = () => rect(102, 900, 0, 1100);
+  const overlap = vm.runInNewContext(`(${readReviewFrame.toString()})()`, sandbox);
+  assert.equal(overlap.regions.find(r => r.name === 'review').visibleDocumentRange, null, 'a real partial-width obstruction is still blocked');
+});
+
+test('native desktop scrolling covers the full right-hand solution without borrowing the left-stage height', async () => {
+  let y = 0; const shots = [], captures = [];
+  const page = {
+    evaluate: async (fn, arg) => {
+      if (fn.name === 'readReviewFrame') {
+        const f = desktopFrame(y); f.question = 'same circle question';
+        f.regions[0].text = 'same complete solution'; return f;
+      }
+      y = typeof arg === 'number' ? Math.min(arg, 340.484375) : 0;
+    },
+    screenshot: async options => { shots.push(options); return Buffer.from('mock PNG'); }
+  };
+  const guard = { expectedTouch: false, capture: async (take, metadata) => ({ value: await take(), observation: metadata }) };
+  const result = await captureReviewState({ page, guard, out: '/evidence', name: 'desktop.png', id: 'one', state: 'review-final', fullPage: true,
+    nativeViewportOnly: true, settle: async () => {}, collectContent: true, onCapture: e => captures.push(e) });
+  assert.deepEqual(shots.map(s => s.fullPage), [false, false]);
+  assert.equal(result.supplementalFrames[0].frame.scroll.y, 340.484375);
+  assert.equal(result.contentCoverage.complete, true); assert.equal(y, 0);
+  assert.equal(captures.length, 2);
+});
+
+test('native-only desktop capture still fails an unreachable required slice and preserves partial files', async () => {
+  const f = captureFixture({ blocked: true, expectedTouch: false });
+  await assert.rejects(captureReviewState({ ...f.options, nativeViewportOnly: true }), /coverage incomplete/);
+  assert.ok(f.shots.every(s => s.fullPage === false));
+  assert.equal(f.captures.length, 1); assert.equal(f.scrolls.at(-1), 0);
 });
 
 // Document bounds and scroll limits from candidate run42583866636. At y=0

@@ -1531,7 +1531,13 @@ window.addEventListener('DOMContentLoaded', function () {
       const [x0, x1] = box.x, [y0, y1] = box.y;
       if (Math.abs(L.b) > 1e-9) [x0, x1].forEach((x) => { const y = -(L.a * x + L.c) / L.b; if (y >= y0 - 1e-6 && y <= y1 + 1e-6) pts.push(P(x, y)); });
       if (Math.abs(L.a) > 1e-9) [y0, y1].forEach((y) => { const x = -(L.b * y + L.c) / L.a; if (x >= x0 - 1e-6 && x <= x1 + 1e-6) pts.push(P(x, y)); });
-      return pts.length >= 2 ? [pts[0], pts[pts.length - 1]] : null;
+      // 모서리는 두 경계에서 중복되므로 가장 먼 서로 다른 교점을 선택합니다.
+      let ends = null, span = 1e-9;
+      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+        const d = distP(pts[i], pts[j]);
+        if (d > span) { span = d; ends = [pts[i], pts[j]]; }
+      }
+      return ends;
     }
 
     /* ---- 그리기 도우미 (수학 좌표 → 무대 좌표) ---- */

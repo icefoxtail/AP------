@@ -347,9 +347,9 @@ stepLabels: ['구간별로 정의된 함수 y=f(x)와 y=x', '항을 차례로 �
 stepDescs: [
 '1단계: 구간별로 정의된 점화식 $a_{n+1} = f(a_n)$의 그래프 $y = f(x)$와, 한 항을 다음 항을 구할 때의 입력값으로 옮겨 주는 직선 $y = x$를 그립니다.',
 '2단계: 첫째항 $a_1$에서 출발하여 곡선 $y=f(x)$에 닿고 직선 $y=x$에 닿는 과정을 반복하며, 항들이 움직이는 경로를 따라갑니다.',
-'3단계: 경로가 닫힌 도형을 이루며 **같은 항이 반복되는 부분(마디)**에 들어가는 순간을 찾으면, $\\sum_{k=1}^{100} a_k$를 (마디의 합) $\\times$ (반복 횟수)로 구할 수 있습니다.'
+'3단계: 이 모델은 첫째항부터 $3$항씩 반복됩니다. $N=3q+r$ ($0\\le r<3$)로 나누면 $\\sum_{k=1}^{N}a_k$는 **(마디의 합) $\\times$ (몫 $q$) + (마디의 앞에서 나머지 $r$개 항의 합)**입니다. 예를 들어 $100=3\\times33+1$이면 $33$마디의 합에 $a_1$을 더합니다.'
 ],
-trapWarning: '주의: 첫째항 $a_1$부터 바로 반복되지 않고, $a_1 \\to a_2$까지는 반복되기 전의 항이고 **$a_3$부터 반복되는 경우**가 많습니다. 반복되기 전의 항을 반복되는 마디에 섞지 않아야 합니다.',
+trapWarning: '주의: 이 모델의 허용 범위에서는 $a_1$부터 바로 $3$항씩 반복됩니다. 다른 점화식에서는 순환 전에 한 번만 나오는 항이 있을 수 있으므로, 그런 항은 따로 더하고 남은 항 수를 주기로 나눕니다. **몫만 곱하고 나머지 항을 빠뜨리지 마세요.**',
 scenarios: [
 {
 chip: '문제 A (구간별 점화식과 수열의 주기)',
@@ -568,7 +568,7 @@ return { root, validA1 };
 
 
   /* ===== 원본 그대로: 수식 줄·실시간 값 (원본 updateLiveHUDAndInvariants) ===== */
-  function hudOf(mId, p, step = 3) {
+  function hudOf(mId, p, step = 3, given = null) {
     let cards = [];
     let eq = '';
     
@@ -701,6 +701,45 @@ cards = [
 }
 
 
+    // 정리는 현재 단계까지 도출한 내용만 공개합니다. 탐구와 완료 수식은 위의 값을 그대로 씁니다.
+    if (step < 3) {
+      if (mId === 'type1') {
+        if (step === 0) eq = given?.A != null
+          ? `$a_1=${given.A},\\quad a_${given.k}+a_${given.k + 1}=0$`
+          : given ? `$d=${given.d},\\quad a_${given.p}+a_${given.q}=0$` : '$a_n=a_1+(n-1)d$';
+        else if (step === 1) eq = `$${given?.A != null ? `a_1=${given.A},\\quad ` : ''}d=${p.dSlope.toFixed(1)},\\quad a_n=a_1+(n-1)d$`;
+      } else if (mId === 'type2') {
+        const parts = [`S_{${p.pIdx}}=S_{${p.qIdx}}`];
+        if (step >= 1) parts.push('S_0=0');
+        if (step >= 2) parts.push(`\\text{대칭축 }x=\\frac{${p.pIdx}+${p.qIdx}}{2}=${((p.pIdx + p.qIdx) / 2).toFixed(1)}`);
+        eq = `$${parts.join(',\\quad ')}$`;
+      } else if (mId === 'type4') {
+        const C = given && given.C == null ? 'C' : p.constC;
+        const parts = [`S_n=${p.pCoeff}n^2+(${p.qCoeff})n+(${C})`];
+        if (step >= 1) parts.push(`a_n=${2 * p.pCoeff}n+(${p.qCoeff - p.pCoeff})\\quad(n\\ge2)`);
+        if (step >= 2) parts.push(`a_1=S_1=${C === 'C' ? `${p.pCoeff + p.qCoeff}+C` : p.pCoeff + p.qCoeff + C}`);
+        eq = `$${parts.join(',\\quad ')}$`;
+      } else if (mId === 'type5') {
+        const P1 = p.block1, R = p.blockRatio, P2 = P1 * R;
+        if (step === 0) eq = `$S_n=${P1},\\quad S_{2n}=${P1 + P2}$`;
+        else {
+          eq = `$P_1=S_n=${P1.toFixed(1)},\\quad P_2=S_{2n}-S_n=${P2.toFixed(1)}`;
+          eq += step >= 2 ? `,\\quad R=${R.toFixed(1)},\\quad P_3=RP_2=${(P2 * R).toFixed(1)}$` : ',\\quad P_3=S_{3n}-S_{2n}$';
+        }
+      } else if (mId === 'type6') {
+        eq = step === 0 ? `$a_1=${p.firstA1},\\quad d=${p.diffD},\\quad n=${Math.round(p.termCountN)}$`
+          : `$\\frac{1}{a_k a_{k+1}}=\\frac{1}{${p.diffD}}\\left(\\frac{1}{a_k}-\\frac{1}{a_{k+1}}\\right)$`;
+      } else if (mId === 'type7') {
+        const a1 = p.startA1, next = x => x < 4 ? x + 2 : x - 4, a2 = next(a1), a3 = next(a2);
+        eq = `$a_1=${a1.toFixed(1)},\\quad N=${Math.round(p.limitN)}`;
+        eq += step >= 2 ? `,\\quad ${a1.toFixed(1)} \\to ${a2.toFixed(1)} \\to ${a3.toFixed(1)} \\to ${next(a3).toFixed(1)}$` : '$';
+      } else if (mId === 'type8') {
+        const k = Math.round(p.threshK);
+        eq = `$a_4=${Math.round(p.targetA4)},\\quad k=${k}$`;
+        if (step >= 1) eq += ` $x=\\frac{y}{2}\\ (x<${k})\\quad\\text{또는}\\quad x=y+${k}\\ (x\\ge${k})$`;
+        if (step >= 2) eq += ' — 구한 값이 자연수이고 해당 부등식 조건을 만족하는지 확인합니다.';
+      }
+    }
     return { eq, cards };
   }
 
@@ -843,7 +882,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       if (s.grid) b.grid();
       b.axes(mi < 4 ? { xLabel: 'n', yLabel: mi === 0 ? (s.abs ? '|aₙ|' : 'aₙ') : mi === 1 ? (s.abs ? '|Sₙ|' : 'Sₙ') : mi === 3 ? 'aₙ' : 'Sₙ' } : {});
     }
-    if (tab === 'problem') { drawGiven(mo, b, Q); return; }
+    if (tab === 'problem' || (tab === 'review' && s.step === 0 && ['type2', 'type4', 'type5', 'type6'].includes(id))) { drawGiven(mo, b, Q); return; }
 
     if (id === 'type1') {
       const scaleY = 1;
@@ -874,7 +913,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const isPair = (n === p.pIdx || n === p.qIdx), isZero = (n === zeroIdx);
         const col = isZero ? '#fb7185' : (isPair ? '#fbbf24' : '#34d399');
         if (s.stems) drawMathSegment(n, 0, n, yPlot, 'rgba(52, 211, 153, 0.25)', [], 1.5);
-        drawMathPoint(n, yPlot, isPair || isZero ? `S_${n}=${valS}` : '', col, isPair || isZero ? 6.5 : 4.5);
+        const label = isPair ? (tab === 'review' && !st(3) ? `S_${n}` : `S_${n}=${valS}`) : isZero && (tab !== 'review' || st(3)) ? `S_${n}=${valS}` : '';
+        drawMathPoint(n, yPlot, label, col, isPair || isZero ? 6.5 : 4.5);
       }
       const spVal = -p.pIdx * (p.pIdx - zeroIdx), yLine = scaleY * spVal;
       drawMathSegment(p.pIdx, yLine, p.qIdx, yLine, '#fbbf24', [5, 4], 2.2);
@@ -925,8 +965,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         badge(`상수항 C=${p.constC}만큼 첫째항 a₁만 직선에서 벗어남`, '#fb7185');
       }
       if (st(3)) badge(`a_n = ${2 * p.pCoeff}n + (${p.qCoeff - p.pCoeff}) (n≥2) | a₁ = ${a1Formula} + C(${p.constC}) = ${a1Actual}`, '#fbbf24');
-      if (Q) b.point([1, scaleY * a1Actual], { r: 7, color: 'amber', label: `a₁=S₁=${fmt(a1Actual)}`, dx: 0, dy: p.constC >= 0 ? -16 : 18, align: 'center', size: 12.5 });
-      else drawMathPoint(1, scaleY * a1Actual, `실제 a₁=S₁=${fmt(a1Actual)}`, '#fbbf24', 8, true, (w) => {
+      if (Q && st(2)) b.point([1, scaleY * a1Actual], { r: 7, color: 'amber', label: Q.g.C == null && !st(3) ? `a₁=S₁=${fmt(a1Formula)}+C` : `a₁=S₁=${fmt(a1Actual)}`, dx: 0, dy: p.constC >= 0 ? -16 : 18, align: 'center', size: 12.5 });
+      else if (!Q) drawMathPoint(1, scaleY * a1Actual, `실제 a₁=S₁=${fmt(a1Actual)}`, '#fbbf24', 8, true, (w) => {
         const rawA1 = w.y / scaleY;
         p.constC = clamp(Math.round(rawA1 - a1Formula), -3, 5);
       });
@@ -944,10 +984,10 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       blocks.forEach((bk, idx) => {
         const bh = bk.val * scaleH, left = bk.x - barW / 2, top = baseLineY - bh;
         b.poly([P(left, top), P(left + barW, top), P(left + barW, baseLineY), P(left, baseLineY)], { fill: bk.color, fillAlpha: 0.2, color: bk.color, width: 2.4 });
-        b.text(P(bk.x, top - 12), `구간의 합 = ${bk.val.toFixed(1)}`, { color: '#ffffff', size: 15, weight: 800 });
+        b.text(P(bk.x, top - 12), `구간의 합 = ${tab !== 'review' || s.step >= idx ? bk.val.toFixed(1) : '?'}`, { color: '#ffffff', size: 15, weight: 800 });
         b.text(P(bk.x, baseLineY + 20), bk.l1, { color: 'rgba(209, 250, 229, 0.85)', size: 12, weight: 800 });
         b.text(P(bk.x, baseLineY + 37), bk.l2, { color: 'rgba(209, 250, 229, 0.85)', size: 12, weight: 800 });
-        b.text(P(bk.x, baseLineY + 56), `누적 S_${idx + 1}n = ${bk.cum.toFixed(1)}`, { color: '#fbbf24', size: 12, weight: 800 });
+        b.text(P(bk.x, baseLineY + 56), `누적 S_${idx + 1}n = ${tab !== 'review' || idx < 2 || st(3) ? bk.cum.toFixed(1) : '?'}`, { color: '#fbbf24', size: 12, weight: 800 });
       });
       if (st(2)) {
         chip(b, D, w * 0.36, baseLineY - P2 * scaleH * 0.6, `× R (${R.toFixed(1)}배)`, '#fbbf24');
@@ -1616,7 +1656,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const inExplore = !lab || lab.tab === 'explore';
         const inReview = lab?.tab === 'review';
         const fixed = OVARY[mo.id + '-' + si].cur();
-        const h = hudOf(mo.id, inExplore ? pv(s, mo) : fixed.p, inReview ? s.step : 3);
+        const h = hudOf(mo.id, inExplore ? pv(s, mo) : fixed.p, inReview ? s.step : 3, inReview ? fixed.g : null);
         if (!inExplore && mo.id === 'type3' && si === 1) {
           return { chips: inReview && s.step < 3 ? [] : [{ html: fixed.ans, answer: true }], formula: s.step >= 1 ? rich(fixed.std[Math.min(s.step, 3) - 1]) : '' };
         }
@@ -1955,6 +1995,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       formula: brBack(q.fam, q.c),
       notes: brWarn(q.fam, q.c)
     };
+    if (tab === 'review' && s.step === 0) { out.formula = ''; out.notes = ''; }
     if (tab === 'explore' && showAns) {
       const p0 = T.a1.length ? brFwd(q.fam, q.c, T.a1[0], q.m) : [];
       out.status = { tone: T.a1.length ? 'key' : 'warn', text: `가능한 a₁ ${T.a1.length}개 · 지운 가지 ${bad}개` };
@@ -2034,7 +2075,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const tab = lab.tab;
     const q = tab === 'explore' ? { a1: s.cy_a1, k: s.cy_k, d: s.cy_d } : vary10.cur();
     const I = cyInfo(q.a1, q.k, q.d);
-    const nShown = tab === 'explore' ? s.cy_n : tab === 'problem' ? 1 : Math.min(CYN, I.repeatAt);
+    const nShown = tab === 'explore' ? s.cy_n : tab === 'problem' || s.step === 0 ? 1 : Math.min(CYN, I.repeatAt);
     const showCycle = nShown >= I.repeatAt && (tab !== 'review' || s.step >= 2);
     const D = design(b), w = D.w, h = D.h, P = D.P;
     const x0 = 30, cw = (w - x0 - 6) / CYN, cx = (n) => x0 + (n - 0.5) * cw;
@@ -2096,6 +2137,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     if (tab === 'review' && s.step >= 3) { const A = cyAnswer(q); out.tape = { title: `$${q.ask === 'sum' ? `\\sum_{i=1}^{${q.M}}a_i` : q.ask === 'count' ? `\\#\\{n\\le ${q.M}:\\ a_n=${q.X}\\}` : `a_{${q.M}}`}=${A.val}$`, answer: true }; }
     out.notes = '<b>순환 전의 항을 마디에 섞지 마세요.</b> 위 표에서 $a_1,a_2$처럼 한 번만 나오는 항은 파란색, 되풀이되는 마디는 금색입니다. 개수(몫·나머지)는 순환 전 항을 뺀 뒤에 세어야 합니다.';
     out.formula = '$a_p=a_q\\ (p\\lt q)$이면 그 뒤로는 <b>같은 값이 같은 순서로</b> 되풀이됩니다. 처음 반복되는 값을 찾으면 순환이 시작되는 번호와 주기가 정해집니다.';
+    if (tab === 'review' && s.step < 3) { out.formula = s.step >= 1 ? cySteps(q)[s.step - 1] : ''; out.notes = ''; }
     return out;
   }
   function scene10() {
@@ -2191,6 +2233,10 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const out = { chips: [{ tex: String.raw`A_n\left(4\sqrt n,\ n\right),\quad S_n=2n\sqrt n`, color: 'amber', answer: true }] };
     out.formula = '$S_{k+1}-S_k$는 이웃한 삼각형 사이의 띠의 넓이입니다. 띠를 $k=1,2,\\dots$ 차례로 쌓으면 <b>가운데 넓이가 모두 지워지고</b> 처음과 끝 삼각형의 넓이만 남습니다.';
     out.notes = '합의 <b>끝 번호</b>를 조심하세요. $\\sum_{k=j}^{M}(S_{k+1}-S_k)=S_{M+1}-S_j$이므로 마지막 삼각형은 $M+1$번째, 처음은 $j$번째입니다.';
+    if (tab === 'review' && s.step < 3) {
+      if (s.step === 0) out.chips = [];
+      out.formula = s.step >= 1 ? paSteps(varyA.cur())[s.step - 1] : ''; out.notes = '';
+    }
     if (tab === 'explore') {
       const sn = paS(n), s1 = paS(1);
       out.status = { tone: 'info', text: `n = ${n} · 삼각형 ${n}개를 포개었습니다` };
@@ -2275,6 +2321,10 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const out = { chips: [{ tex: String.raw`A_n(-n,\ 0),\quad B_n(${a}n+1,\ ${a + 1}n+1)`, color: 'amber', answer: true }] };
     out.formula = '교점의 $x$좌표는 <b>곡선과 직선의 식을 연립</b>해 인수분해하면 바로 나옵니다. 한 점이 $x$축 위에 있으면 그 점까지의 거리가 밑변, 다른 점의 $y$좌표가 높이입니다.';
     out.notes = '$\\sum k^2=\\dfrac{m(m+1)(2m+1)}{6}$, $\\sum k=\\dfrac{m(m+1)}{2}$를 쓸 때 <b>$\\dfrac12$을 곱하는 것</b>을 빠뜨리기 쉽습니다. $S_n$ 자체가 $\\dfrac12\\times$밑변$\\times$높이입니다.';
+    if (tab === 'review' && s.step < 3) {
+      if (s.step === 0) out.chips = [];
+      out.formula = s.step >= 1 ? pbSteps(varyB.cur())[s.step - 1] : ''; out.notes = '';
+    }
     if (tab === 'explore') {
       const Sn = pbS(a, n), tot = pbSum(a, n);
       out.status = { tone: 'info', text: `n = ${n} · 삼각형 ${n}개의 넓이를 쌓는 중` };
@@ -2357,6 +2407,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const out = { chips: [{ html: '<b>이전 교육과정</b> · 2009 개정 수학 나형 (등비급수)', color: 'violet' }] };
     out.formula = '같은 모양이 일정한 <b>넓이의 비 r</b>로 줄어들며 되풀이되면, 새로 칠해지는 넓이는 첫째항 $R_1$, 공비 $r$인 등비수열이고 합은 $S_n=\\dfrac{R_1(1-r^n)}{1-r}$입니다. $|r|\\lt 1$이면 $n\\to\\infty$일 때 $\\dfrac{R_1}{1-r}$에 가까워집니다.';
     out.notes = '<b>이전 교육과정 안내</b>: 이 유형은 2009 개정 교육과정 나형(2017~2019학년도 평가원·수능 16~19번)에서 나왔고, 극한은 지금 수학Ⅱ(미적분Ⅰ) 범위라 2022 개정 대수에서는 다루지 않습니다. 옛 기출을 풀다 막혔을 때 볼 수 있도록 남겨 둡니다. <b>공비는 길이의 비가 아니라 넓이의 비</b>(닮음비의 제곱)입니다.';
+    if (tab === 'review' && s.step < 3) out.formula = s.step >= 1 ? frSteps(q)[s.step - 1] : '';
     if (tab === 'explore') {
       const n = s.fr_n, Sn = frSum(C, n);
       out.status = { tone: 'info', text: `${n}번째 그림 · 칠한 넓이 ≈ ${(FR.val(Sn)).toFixed(4)}` };

@@ -34,8 +34,77 @@ const exactSine = {
   'adv-4': [0.9422923904768286], 'adv-7': [2 / 7, 4 / 7, 6 / 7]
 };
 
+// Playwright's automatic centering can put a mobile summary behind the sticky
+// stage, particularly when closing a long lazy solution. Read the real hit
+// target, scroll only when needed, then send native mouse input without a forced
+// click or DOM event. The original body/disclosure checks remain with the caller.
+export function readSolutionControlGeometry(summary) {
+  const rectOf = el => { const r = el.getBoundingClientRect(); return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height }; };
+  const rect = rectOf(summary);
+  const occluders = [...document.querySelectorAll('.apl-bar,.apl-rail,.apl-stage,.apl-tabs')].filter(el => {
+    const r = el.getBoundingClientRect(), style = getComputedStyle(el), top = parseFloat(style.top);
+    return el.checkVisibility() && (style.position === 'fixed' || style.position === 'sticky' && Number.isFinite(top) && r.top <= top + 1)
+      && r.bottom > 0 && r.top < innerHeight && Math.min(r.right, rect.right) > Math.max(r.left, rect.left);
+  }).map(el => ({ selector: String(el.className), rect: rectOf(el) }));
+  const blockedTop = Math.max(0, ...occluders.map(o => Math.min(innerHeight, o.rect.bottom)));
+  const left = Math.max(2, rect.left + 2), right = Math.min(innerWidth - 2, rect.right - 2);
+  const top = Math.max(blockedTop + 2, rect.top + 2, 2), bottom = Math.min(innerHeight - 2, rect.bottom - 2);
+  const hits = []; let point = null;
+  if (summary.checkVisibility() && right > left && bottom > top) {
+    for (const y of [(top + bottom) / 2, top, bottom]) for (const x of [(left + right) / 2, left, right]) {
+      const hit = document.elementFromPoint(x, y), inSummary = !!hit && (hit === summary || summary.contains(hit));
+      hits.push({ x, y, inSummary, hitTag: hit?.tagName || null, hitClass: String(hit?.className || '') });
+      if (!point && inSummary) point = { x, y };
+    }
+  }
+  return { rect, viewport: { width: innerWidth, height: innerHeight }, scroll: { x: scrollX, y: scrollY },
+    scrollMax: Math.max(0, document.documentElement.scrollHeight - innerHeight), blockedTop, occluders, hits, point };
+}
+
+export async function setNativeSolutionDisclosure({ page, card, open, settle, onObservation = () => {} }) {
+  const result = { desiredOpen: !!open, inputPerformed: false, transport: null, pass: false, attempts: [] };
+  try {
+    result.beforeOpen = (await card.getAttribute('open')) !== null;
+    if (result.beforeOpen === !!open) {
+      Object.assign(result, { afterOpen: result.beforeOpen, pass: true, status: 'ALREADY_IN_REQUESTED_STATE' });
+      onObservation(result); return result;
+    }
+    const summary = card.locator('summary'), scrolls = [];
+    for (let attempt = 0; attempt < 6; attempt++) {
+      await settle();
+      const actual = await summary.evaluate(readSolutionControlGeometry);
+      result.attempts.push(actual);
+      if (![actual.rect?.left, actual.rect?.right, actual.rect?.top, actual.rect?.bottom, actual.rect?.width, actual.rect?.height,
+        actual.viewport?.width, actual.viewport?.height, actual.scroll?.x, actual.scroll?.y, actual.scrollMax, actual.blockedTop].every(Number.isFinite)
+        || actual.rect.width <= 0 || actual.rect.height <= 0 || actual.viewport.width <= 0 || actual.viewport.height <= 0 || actual.scrollMax < 0)
+        throw Error('Invalid native solution-control geometry');
+      if (actual.point) {
+        const { x, y } = actual.point;
+        if (!Number.isFinite(x) || !Number.isFinite(y) || x <= 0 || x >= actual.viewport.width || y <= actual.blockedTop || y >= actual.viewport.height
+          || !actual.hits.some(h => h.inSummary && h.x === x && h.y === y)) throw Error('Unverified native solution-control hit target');
+        result.inputPerformed = true; result.transport = 'Playwright.page.mouse.click';
+        await page.mouse.click(x, y); await settle();
+        result.afterOpen = (await card.getAttribute('open')) !== null;
+        if (result.afterOpen !== !!open) throw Error('Native solution-control click did not change the disclosure state');
+        Object.assign(result, { pass: true, status: 'NATIVE_CLICK_VERIFIED' });
+        onObservation(result); return result;
+      }
+      const available = actual.viewport.height - actual.blockedTop;
+      if (available <= 8) throw Error('Native solution-control viewport is fully occluded');
+      const next = Math.max(0, Math.min(actual.scrollMax, actual.scroll.y + actual.rect.top + Math.min(actual.rect.height / 2, available / 2) - actual.blockedTop - available / 2));
+      if (Math.abs(next - actual.scroll.y) <= 1 || scrolls.some(y => Math.abs(y - next) <= 1)) throw Error('Native solution-control remains covered at a reachable scroll boundary');
+      scrolls.push(next); actual.requestedScrollY = next;
+      await page.evaluate(y => window.scrollTo({ top: y, left: 0, behavior: 'instant' }), next);
+    }
+    throw Error('Native solution-control hit target was not reached within the bounded scroll attempts');
+  } catch (error) {
+    Object.assign(result, { status: 'FAIL', error: String(error?.message || error) });
+    onObservation(result); throw error;
+  }
+}
+
 // Called only for candidate capture mode by high-lab-browser-audit.mjs.
-export async function captureReviewTargets({ page, item, scene, run, settle, measure, capture }) {
+export async function captureReviewTargets({ page, item, scene, run, settle, measure, capture, onInteraction = () => {} }) {
   if (!reviewTargetApplicable(item.id, scene.id, run.name)) return [];
   const entries = [];
   let serial = 0;
@@ -132,7 +201,8 @@ export async function captureReviewTargets({ page, item, scene, run, settle, mea
   const openSolutions = async () => {
     const cards = page.locator('#apl-pane-review details.apl-acc');
     for (let i = 0, n = await cards.count(); i < n; i++) {
-      if (await cards.nth(i).getAttribute('open') === null) await cards.nth(i).locator('summary').click();
+      await setNativeSolutionDisclosure({ page, card: cards.nth(i), open: true, settle,
+        onObservation: result => onInteraction({ id: scene.id, run: run.name, kind: 'solution-control', state: 'target-open-solutions', index: i, ...result }) });
     }
     await settle();
   };
@@ -300,6 +370,16 @@ export async function captureReviewTargets({ page, item, scene, run, settle, mea
       for (const index of [0, 1, 2]) {
         const ui = await clickPreset({ index }); await shot('manual-tree-family', { index }, 'visible-preset-click', { ui });
       }
+      await configure({ tab: 'review', step: 0 });
+      const selected = await page.evaluate(() => {
+        if (typeof lab.scene.vary?.set !== 'function') throw Error('Missing finite branch variant selector');
+        lab.scene.vary.set(3); lab._buildReview(); lab.invalidate(true);
+        const q = lab.scene.vary.cur();
+        const steps = typeof lab.scene.steps === 'function' ? lab.scene.steps(lab.s, lab) : lab.scene.steps;
+        if (q.m !== 4 || steps?.length !== 5) throw Error('Branch disclosure fixture does not reach the m=4 boundary');
+        return { variantIndex: 3, m: q.m, finalStep: steps.length };
+      });
+      await reviewSteps('branch-review-disclosure', [0, 1, selected.m, selected.finalStep], selected);
     } else if (id === 'cyc-table') {
       await configure({ step: 0 }); await shot('cycle-before-input', { cy_n: 1 });
       // The reviewed default first repeats at term 8; preserve term 7 and 8.
@@ -340,6 +420,12 @@ export async function captureReviewTargets({ page, item, scene, run, settle, mea
         }
       }
     } else throw Error('Unclassified sequence visual target: ' + id);
+    // Type3/type8 and area-difference already capture all review steps above.
+    // Only the repaired HUD/formula paths without those frames need additions.
+    if (['type1', 'type2', 'type4', 'type5', 'type6', 'type7'].includes(type) || ['cyc-table', 'pt-tri-sum', 'fig-repeat'].includes(id)) {
+      await configure({ tab: 'review', step: 0 });
+      await reviewSteps('sequence-staged-hud', [0, 1, 2]);
+    }
   } else {
     const id = scene.id;
     if (exactSine[id]) {

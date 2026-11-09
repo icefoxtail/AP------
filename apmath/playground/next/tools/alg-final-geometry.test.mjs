@@ -325,6 +325,172 @@ test('absolute-partial-sum review waits for the last step before showing the sol
   }
 });
 
+function eachSequenceVariant(ids, visit) {
+  const L = load('alg-sequence');
+  L.ctx.Math.random = () => 0;
+  for (const sc of L.scenes.filter(x => ids.includes(x.id))) {
+    const first = sc.vary.idx(); let visited = 0;
+    do {
+      visit(L, sc, L.state(sc), sc.vary.cur(), sc.vary.idx());
+      sc.vary.next();
+      assert.ok(++visited < 50, `${sc.id}: the finite variant cycle must close`);
+    } while (sc.vary.idx() !== first);
+  }
+}
+const chipText = v => (v.chips || []).map(x => x.html || x.tex || '').join(' ');
+
+test('arithmetic review keeps givens, then slope and symmetry, before completed sums', () => {
+  eachSequenceVariant(['type1-0', 'type1-1'], (L, sc, s, q) => {
+    for (let step = 0; step <= 3; step++) {
+      const { v } = draw(L, sc, { ...s, step }); const hud = chipText(v);
+      if (step === 0) {
+        assert.doesNotMatch(hud, /a_n\s*=|대칭 중심|\\sum|S_/, 'no solved line or sum before the first step');
+        if (q.g.A != null) assert.ok(hud.includes(`a_1=${q.g.A}`), 'the given first term remains');
+        else assert.ok(hud.includes(`d=${q.g.d}`), 'the given common difference remains');
+      }
+      if (step === 1) {
+        assert.ok(hud.includes(`d=${q.p.dSlope.toFixed(1)}`), 'step 1 derives the common difference');
+        assert.doesNotMatch(hud, /대칭 중심|\\sum|S_/, 'later symmetry and sum conclusions wait');
+      }
+      if (step >= 2) assert.ok(hud.includes(`m = ${q.p.zeroN.toFixed(1)}`), 'opened symmetry is retained');
+      if (step < 3) assert.equal(v.readouts.length, 0);
+      checkMath(hud);
+    }
+  });
+});
+
+test('partial-sum review derives origin and symmetry before labelling the other zero', () => {
+  eachSequenceVariant(['type2-0', 'type2-1'], (L, sc, s, q) => {
+    const p = q.g.p, r = q.g.q, zero = p + r;
+    for (let step = 0; step <= 3; step++) {
+      const { b, v } = draw(L, sc, { ...s, step }); const hud = chipText(v);
+      assert.ok(hud.includes(`S_${p}`) || hud.includes(`S_{${p}}`), 'given equal sums remain');
+      if (step === 0) assert.doesNotMatch(hud, /S_0\s*=|대칭축|S_n=/);
+      if (step === 1) { assert.match(hud, /S_0=0/); assert.doesNotMatch(hud, /대칭축|S_n=/); }
+      if (step === 2) assert.ok(hud.includes((zero / 2).toFixed(1)), 'the numerical symmetry axis is now available');
+      if (step < 3) assert.ok(!b.texts.some(t => t === `S_${zero}=0` || t.startsWith('x절편:')), 'drawn zero label waits too');
+      else assert.ok(b.texts.some(t => t === `S_${zero}=0`));
+      checkMath(hud);
+    }
+  });
+});
+
+test('first-term review distinguishes a given C from the unknown C without early a1 labels', () => {
+  eachSequenceVariant(['type4-0', 'type4-1'], (L, sc, s, q) => {
+    const { pCoeff: p, qCoeff: r, constC: c } = q.p, unknown = q.g.C == null;
+    for (let step = 0; step <= 3; step++) {
+      const { b, v } = draw(L, sc, { ...s, step }); const hud = chipText(v);
+      if (step === 0) { assert.match(hud, /S_n/); assert.doesNotMatch(hud, /\\implies|a_n\s*=|a_1\s*=/); }
+      if (step === 1) { assert.ok(hud.includes(`a_n=${2 * p}n`)); assert.doesNotMatch(b.texts.join(' '), /a₁=S₁=/); }
+      if (step === 2) {
+        assert.ok(hud.includes('a_1=S_1='), 'step 2 retains the first-term calculation');
+        assert.ok(hud.includes(unknown ? `${p + r}+C` : String(p + r + c)));
+      }
+      if (unknown && step < 3) assert.doesNotMatch(hud, /C=0|C\(0\)|\+ \(0\)/, 'unknown C is not silently replaced by its solution');
+      checkMath(hud);
+    }
+  });
+});
+
+test('geometric-block review reveals P2, then R and P3, then the cumulative third sum', () => {
+  eachSequenceVariant(['type5-0', 'type5-1'], (L, sc, s, q) => {
+    const P1 = q.p.block1, R = q.p.blockRatio, P2 = P1 * R, P3 = P2 * R, S3 = P1 + P2 + P3;
+    for (let step = 0; step <= 3; step++) {
+      const { b, v } = draw(L, sc, { ...s, step }); const hud = chipText(v), labels = b.texts.join(' ');
+      if (step === 0) { assert.ok(hud.includes(`S_{2n}=${P1 + P2}`)); assert.doesNotMatch(hud, /P_2|P_3|R=/); }
+      if (step === 1) { assert.ok(hud.includes(P2.toFixed(1))); assert.doesNotMatch(hud, /R=/); }
+      if (step === 2) { assert.ok(hud.includes(`R=${R.toFixed(1)}`)); assert.ok(hud.includes(P3.toFixed(1))); }
+      if (step < 2) assert.ok(!labels.includes(`구간의 합 = ${P3.toFixed(1)}`), 'third block value must wait for the ratio');
+      else assert.ok(labels.includes(`구간의 합 = ${P3.toFixed(1)}`));
+      if (step < 3) assert.ok(!labels.includes(`누적 S_3n = ${S3.toFixed(1)}`), 'cumulative answer is not drawn before step 3');
+      else assert.ok(labels.includes(`누적 S_3n = ${S3.toFixed(1)}`));
+      checkMath(hud);
+    }
+  });
+});
+
+test('telescoping review shows the split and cancellation before the endpoint answer', () => {
+  eachSequenceVariant(['type6-0', 'type6-1'], (L, sc, s, q) => {
+    const { termCountN: n, firstA1: a, diffD: d } = q.p;
+    for (let step = 0; step <= 3; step++) {
+      const { v } = draw(L, sc, { ...s, step }); const hud = chipText(v);
+      if (step === 0) {
+        assert.ok(hud.includes(`a_1=${a}`) && hud.includes(`d=${d}`) && hud.includes(`n=${n}`));
+        assert.doesNotMatch(hud, /\\frac|\\sum/);
+        assert.equal(v.tape, undefined, 'a split-sum tape cannot precede splitting');
+      } else if (step < 3) {
+        assert.match(hud, /a_k a_\{k\+1\}/);
+        assert.ok(hud.includes(`\\frac{1}{${d}}`));
+        assert.doesNotMatch(hud, /\\sum/, 'the evaluated total is still unopened');
+      } else assert.ok(hud.includes(`\\frac{${n}}{${a * (a + n * d)}}`));
+      checkMath(hud);
+    }
+  });
+});
+
+test('piecewise-cycle review follows terms before giving the period and total', () => {
+  eachSequenceVariant(['type7-0', 'type7-1'], (L, sc, s, q) => {
+    const a = q.p.startA1, next = x => x < 4 ? x + 2 : x - 4, a2 = next(a), a3 = next(a2);
+    for (let step = 0; step <= 3; step++) {
+      const { v } = draw(L, sc, { ...s, step }); const hud = chipText(v);
+      assert.ok(hud.includes(`a_1=${a.toFixed(1)}`));
+      if (step < 3) assert.doesNotMatch(hud, /반복|\\sum/, 'period and total belong to step 3');
+      if (step < 2) assert.doesNotMatch(hud, /\\to/);
+      if (step === 2) assert.ok(hud.includes(`${a.toFixed(1)} \\to ${a2.toFixed(1)} \\to ${a3.toFixed(1)}`));
+      checkMath(hud);
+    }
+  });
+});
+
+test('backward-tree review retains inverse rules while withholding the final leaf set', () => {
+  eachSequenceVariant(['type8-0', 'type8-1'], (L, sc, s, q) => {
+    for (let step = 0; step <= 3; step++) {
+      const { v } = draw(L, sc, { ...s, step }); const hud = chipText(v);
+      assert.ok(hud.includes(`a_4 = ${q.p.targetA4}`) || hud.includes(`a_4=${q.p.targetA4}`));
+      if (step < 3) assert.doesNotMatch(hud, /생존 자연수|\\sum a_1|a_1 \\in/);
+      if (step === 0) assert.doesNotMatch(hud, /\\frac|y\+/);
+      if (step >= 1 && step < 3) assert.match(hud, /\\frac\{y\}\{2\}/);
+      if (step === 2) assert.match(hud, /자연수/);
+      checkMath(hud);
+    }
+  });
+});
+
+test('extra sequence review panels follow their own derivation stages', () => {
+  eachSequenceVariant(['br-tree', 'cyc-table', 'pt-tri-diff', 'pt-tri-sum', 'fig-repeat'], (L, sc, s, q) => {
+    const steps = sc.steps(s), last = steps.length;
+    for (let step = 0; step <= last; step++) {
+      const { b, v } = draw(L, sc, { ...s, step });
+      if (step === 0) {
+        assert.equal(v.formula, '', `${sc.id}: derivation panel starts closed`);
+        if (sc.id === 'pt-tri-diff' || sc.id === 'pt-tri-sum') assert.equal(v.chips.length, 0, 'coordinates are a step-1 result');
+        if (sc.id === 'cyc-table') assert.ok(b.texts.filter(x => x === '?').length >= 13, 'the table starts with only given a1');
+      } else if (step < last) {
+        if (sc.id === 'br-tree') assert.ok(v.formula.length > 0, 'inverse branches accompany the opened candidate step');
+        else assert.equal(v.formula, steps[step - 1], `${sc.id}: formula matches the currently opened derivation`);
+      }
+      if ((sc.id === 'pt-tri-diff' || sc.id === 'pt-tri-sum') && step >= 1) assert.ok(v.chips.length > 0, 'derived coordinates remain visible');
+      if (sc.id !== 'fig-repeat' && sc.id !== 'br-tree' && step < last) assert.equal(v.notes, '', 'later endpoint/counting advice waits');
+      if (step < last) assert.equal(v.tape, undefined, 'final answer tape is still closed');
+      for (const text of [chipText(v), v.formula, v.notes]) checkMath(text);
+    }
+  });
+});
+
+test('the three-term cycle counts remainder terms for integer and fractional starts', () => {
+  const L = load('alg-sequence'), sc = L.scenes.find(x => x.id === 'type7-0');
+  const next = x => (x + 2) % 6;
+  for (const a of [.5, 1, 2, 3.5, 4, 5.5]) for (const N of [6, 7, 8, 100]) {
+    const cycle = [a, next(a), next(next(a))], total = Math.floor(N / 3) * cycle.reduce((x,y) => x+y,0) + cycle.slice(0, N % 3).reduce((x,y) => x+y,0);
+    const s = { ...L.state(sc), step: 3, type7_startA1: a, type7_limitN: N }, v = sc.view(s, { tab: 'explore' });
+    assert.ok(chipText(v).includes(`= ${total.toFixed(1)}$`), `a1=${a}, N=${N}: remainder contributes`);
+    assert.match(v.formula, /나머지/);
+    assert.match(v.notes, /이 모델.*a_1.*반복/);
+    assert.match(v.notes, /다른 점화식/);
+    checkMath(v.formula); checkMath(v.notes);
+  }
+});
+
 test('initial disclosure and new questions reset across both complete scene registries', () => {
   for(const L of [seq,scl]) {
     assert.equal(L.def.stagedReveal,true);

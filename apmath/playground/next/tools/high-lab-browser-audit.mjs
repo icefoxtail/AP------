@@ -10,7 +10,7 @@ import { probeNativeDrag, probeNativeTouchDrag } from './high-drag-probe.mjs';
 import { probeNativeOrbit, classifyOrbitCapability, currentOrbitFacts } from './high-orbit-probe.mjs';
 import { evidenceProvenance, bindLabSources } from './high-evidence-binding.mjs';
 import { REVIEW_LABS, requiredReviewStates, createReviewManifest, recordReviewScenes, recordReviewCapture, saveReviewManifest } from './high-review-capture.mjs';
-import { captureReviewTargets } from './high-review-targets.mjs';
+import { captureReviewTargets, setNativeSolutionDisclosure } from './high-review-targets.mjs';
 import { createScreenshotGuard, SCREENSHOT_ENVIRONMENT_POLICY } from './browser-screenshot-guard.mjs';
 import { captureReviewState } from './high-viewport-evidence.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -201,18 +201,21 @@ try {
           const cards = page.locator('#apl-pane-review details.apl-acc');
           const count = await cards.count();
           for (let index = 0; index < count; index++) {
-            const card = cards.nth(index), summary = card.locator('summary');
-            if (!(await card.getAttribute('open') !== null)) await summary.click();
+            const card = cards.nth(index);
+            const toggle = open => setNativeSolutionDisclosure({ page, card, open, settle,
+              onObservation: result => dest.interactions.push({ id: scene.id, run: run.name, kind: 'solution-control', state: prefix, index, ...result }) });
+            await toggle(true);
             await measure(scene, `${prefix}-solution-${index + 1}`);
             const body = (await card.locator('.apl-acc-body').innerText()).trim();
             dest.interactions.push({ id:scene.id, run:run.name, kind:'solution-disclosure', state:prefix, index, bodyPresent:!!body });
             if (!body) report.failures.push({ lab:item.id, id:scene.id, run:run.name, state:prefix, reason:'empty-solution-body', index });
-            if (await card.getAttribute('open') !== null) await summary.click();
+            await toggle(false);
           }
         };
         const capture = async (scene, state, fullPage = true) => {
           const name = `${item.id}--${scene.id}--${run.name}--${state}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
           const bundle = await captureReviewState({ page, guard: screenshotGuard, out, name, id: scene.id, state, fullPage, settle,
+            nativeViewportOnly: true,
             collectContent: !!reviewManifest && REVIEW_LABS.includes(item.id),
             onCapture: entry => { dest.captureMetadata[entry.file] = entry.frame; dest.captures.push(entry.file); }
           });
@@ -333,7 +336,8 @@ try {
             }
           }
           if (reviewManifest && REVIEW_LABS.includes(item.id)) {
-            const entries = await captureReviewTargets({ page, item, scene, run, settle, measure, capture });
+            const entries = await captureReviewTargets({ page, item, scene, run, settle, measure, capture,
+              onInteraction: result => dest.interactions.push(result) });
             for (const entry of entries || []) {
               if (entry.file) recordReviewCapture(reviewManifest, out, { ...entry, lab: item.id, id: scene.id, run: run.name, ...dest.captureBundles[entry.file] });
               else {

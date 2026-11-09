@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { captureReviewTargets, neighboringSliderValues, reviewTargetApplicable } from './high-review-targets.mjs';
+import { captureReviewTargets, neighboringSliderValues, reviewTargetApplicable, readSolutionControlGeometry, setNativeSolutionDisclosure } from './high-review-targets.mjs';
 
 // Source/control-contract seams only. This does not render or certify a browser,
 // pointer event, screenshot, KaTeX layout, or mathematical answer.
 function fixture(name, { inertSlider = false, wrongScene = false, emptyCapture = false } = {}) {
+  const solutionOpened = new Set(); let pendingSolution = null;
   const html = fs.readFileSync(new URL('../labs/' + name + '.html', import.meta.url), 'utf8');
   const code = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m => m[1]).find(s => s.includes('DOMContentLoaded'));
   let seed = 424;
@@ -27,7 +28,7 @@ function fixture(name, { inertSlider = false, wrongScene = false, emptyCapture =
         def, list, params: def.params, s: state, index: 0, tab: 'explore',
         board: { focus: { x: [-10, 10], y: [-10, 10] }, aspect: '1:1', k: 1, ky: 1, setFocus() {} },
         get scene() { return list[this.index]; },
-        goScene(index) { this.index = index; this.tab = 'explore'; this._tween = null; this.s.step = 0; this.s.revealed = false; def.enter?.(state, this.scene, this); this.scene.enter?.(state, this); },
+        goScene(index) { this.index = index; this.tab = 'explore'; this._tween = null; this.s.step = 0; this.s.revealed = false; solutionOpened.clear(); def.enter?.(state, this.scene, this); this.scene.enter?.(state, this); },
         setTab(tab) { this.tab = tab; },
         setStep(step) { this.s.step = Math.min(Math.max(0, step), values(this.scene.steps)?.length || 0); if (!this.s.step) this.s.revealed = false; },
         invalidate() {}, _buildReview() {}, _measureFocus() { return null; },
@@ -49,6 +50,10 @@ function fixture(name, { inertSlider = false, wrongScene = false, emptyCapture =
   const lab = ctx.lab, captured = [], measured = [];
   const buttons = kind => values(lab.scene[kind]) || [];
   const page = {
+    mouse: { click: async () => {
+      assert.notEqual(pendingSolution, null);
+      if (solutionOpened.has(pendingSolution)) solutionOpened.delete(pendingSolution); else solutionOpened.add(pendingSolution);
+    } },
     evaluate: async (fn, arg) => {
       ctx.__arg = arg;
       const result = vm.runInContext('(' + fn.toString() + ')(__arg)', ctx, { timeout: 1000 });
@@ -76,7 +81,11 @@ function fixture(name, { inertSlider = false, wrongScene = false, emptyCapture =
       } };
       if (selector.includes('details.apl-acc')) return {
         count: async () => ['standard', 'quick'].filter(k => lab.scene.solution?.[k]).length,
-        nth: () => ({ getAttribute: async () => null, locator: () => ({ click: async () => {} }) })
+        nth: index => ({ getAttribute: async () => solutionOpened.has(index) ? '' : null, locator: () => ({ evaluate: async () => {
+          pendingSolution = index;
+          return { rect: { left: 20, right: 370, top: 680, bottom: 728, width: 350, height: 48 }, viewport: { width: 390, height: 844 },
+            scroll: { x: 0, y: 0 }, scrollMax: 1200, blockedTop: 554, occluders: [], hits: [{ x: 195, y: 704, inSummary: true }], point: { x: 195, y: 704 } };
+        } }) })
       };
       throw Error('Unhandled locator in control-contract test: ' + selector);
     }
@@ -91,6 +100,81 @@ function fixture(name, { inertSlider = false, wrongScene = false, emptyCapture =
   };
   return { run, lab, captured, measured };
 }
+
+function solutionFixture({ desktop = false, covered = false, inert = false, invalid = false, clickError = null, open = true } = {}) {
+  let scrollY = desktop ? 0 : 200, isOpen = open;
+  const events = [], observations = [], scrolls = [];
+  const dimensions = (left, top, right, bottom) => ({ left, top, right, bottom, width: right - left, height: bottom - top });
+  const summary = { tagName: 'SUMMARY', className: '', checkVisibility: () => true,
+    getBoundingClientRect: () => dimensions(desktop ? 1058 : 20, 700 - scrollY, desktop ? 1422 : 370, 748 - scrollY), contains: el => el === child };
+  const child = { tagName: 'SPAN', className: 'summary-label' };
+  const stage = { tagName: 'SECTION', className: 'apl-stage', checkVisibility: () => true,
+    getBoundingClientRect: () => desktop ? dimensions(0, 102, 1040, 900) : dimensions(0, 142.75, 390, 553.75) };
+  const body = { tagName: 'SPAN', className: 'apl-acc-body' };
+  const width = desktop ? 1440 : 390, height = desktop ? 900 : 844;
+  const hit = (x, y) => {
+    const s = stage.getBoundingClientRect(), r = summary.getBoundingClientRect();
+    if (covered) return body;
+    if (x >= s.left && x <= s.right && y >= s.top && y <= s.bottom) return stage;
+    return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom ? child : body;
+  };
+  const context = () => ({ summary, innerWidth: width, innerHeight: height, scrollX: 0, scrollY,
+    getComputedStyle: () => ({ position: 'sticky', top: desktop ? '102px' : '142.75px' }),
+    document: { querySelectorAll: () => [stage], documentElement: { scrollHeight: 2400 }, elementFromPoint: hit } });
+  const locator = { evaluate: async fn => {
+    const result = vm.runInNewContext('(' + fn.toString() + ')(summary)', context());
+    if (invalid) result.rect.top = NaN;
+    return result;
+  } };
+  const card = { getAttribute: async () => isOpen ? '' : null, locator: name => { assert.equal(name, 'summary'); return locator; } };
+  const page = {
+    evaluate: async (fn, y) => vm.runInNewContext('(' + fn.toString() + ')(y)', { y, window: { scrollTo: options => {
+      assert.equal(options.behavior, 'instant'); assert.equal(options.left, 0); scrollY = Math.max(0, Math.min(2400 - height, options.top)); scrolls.push(scrollY);
+    } } }),
+    mouse: { click: async (x, y) => { events.push({ x, y }); if (clickError) throw clickError; assert.ok(summary.contains(hit(x, y)), 'native input reaches the actual summary descendant'); if (!inert) isOpen = !isOpen; } }
+  };
+  return { page, card, settle: async () => {}, onObservation: r => observations.push(r), events, observations, scrolls,
+    read: () => locator.evaluate(readSolutionControlGeometry), get open() { return isOpen; },
+    // Model the recorded failure mechanism, not a claim of native reproduction:
+    // automatic centering at viewport/2 leaves this summary behind the stage.
+    legacyCenteredClick: async () => { scrollY = 724 - height / 2; if (!summary.contains(hit(width / 2, height / 2))) throw Error('sticky stage intercepts centered summary click'); }
+  };
+}
+
+test('native solution closing scrolls a sticky-covered summary to an actual browser hit target', async () => {
+  const f = solutionFixture();
+  await assert.rejects(f.legacyCenteredClick(), /stage intercepts/);
+  const initial = await f.read(); assert.equal(initial.point, null);
+  const r = await setNativeSolutionDisclosure({ ...f, open: false });
+  assert.equal(r.pass, true); assert.equal(r.inputPerformed, true); assert.equal(r.transport, 'Playwright.page.mouse.click');
+  assert.equal(f.open, false); assert.equal(f.events.length, 1); assert.ok(f.scrolls.length > 0);
+  assert.equal(r.attempts[0].point, null); assert.ok(r.attempts.at(-1).hits.some(h => h.inSummary));
+  assert.ok(f.events[0].y > 553.75); assert.equal(f.observations.length, 1);
+});
+
+test('native solution opening retains desktop right-column access beside a sticky stage', async () => {
+  const f = solutionFixture({ desktop: true, open: false });
+  const r = await setNativeSolutionDisclosure({ ...f, open: true });
+  assert.equal(r.pass, true); assert.equal(r.afterOpen, true); assert.equal(f.events.length, 1); assert.equal(f.scrolls.length, 0);
+  assert.equal(r.attempts[0].blockedTop, 0, 'left stage does not occlude the right summary');
+});
+
+test('native solution input fails if coverage, geometry or the resulting state is invalid', async () => {
+  for (const options of [{ covered: true }, { invalid: true }, { inert: true }]) {
+    const f = solutionFixture(options);
+    await assert.rejects(setNativeSolutionDisclosure({ ...f, open: false }), /covered|geometry|did not change/);
+    assert.equal(f.open, true); assert.equal(f.observations.length, 1); assert.equal(f.observations[0].pass, false);
+    assert.equal(f.events.length, options.inert ? 1 : 0, 'never send a forced click to a covered or invalid target');
+  }
+});
+
+test('native solution input preserves a transport failure and does not invent an input for an open card', async () => {
+  const error = Error('native input transport failed'), f = solutionFixture({ clickError: error });
+  await assert.rejects(setNativeSolutionDisclosure({ ...f, open: false }), e => e === error);
+  assert.equal(f.observations[0].pass, false); assert.match(f.observations[0].error, /transport failed/);
+  const unchanged = solutionFixture(), r = await setNativeSolutionDisclosure({ ...unchanged, open: true });
+  assert.equal(r.status, 'ALREADY_IN_REQUESTED_STATE'); assert.equal(r.inputPerformed, false); assert.equal(r.transport, null); assert.equal(unchanged.events.length, 0);
+});
 
 test('repair target profiles remain bounded and retain dark critical geometry', () => {
   assert.equal(reviewTargetApplicable('common-circle-eq', 'pappusMinSq', 'mobile-board'), true);
@@ -156,6 +240,34 @@ test('fixed question transitions preserve one condition across exploration endpo
   assert.equal(fixed[0].conditionSHA256, fixed[1].conditionSHA256);
   assert.deepEqual(fixed.map(e => e.fixture.previousExploreT), [0, 1]);
   assert.ok(fixed.every(e => e.actual.tab === 'problem' && e.actual.step === 0 && !e.actual.revealed));
+});
+
+test('repaired sequence HUDs capture only the missing review disclosure boundaries across existing profiles', async () => {
+  const ids = [1, 2, 4, 5, 6, 7].flatMap(n => [`type${n}-0`, `type${n}-1`]).concat(['cyc-table', 'pt-tri-sum', 'fig-repeat']);
+  let added = 0;
+  for (const profile of ['pc-paper', 'mobile-paper', 'mobile-board']) {
+    const f = fixture('alg-sequence');
+    for (const id of ids) {
+      const entries = await f.run(id, profile), rows = entries.filter(e => e.state.startsWith('target-sequence-staged-hud-'));
+      assert.deepEqual(rows.map(e => e.actual.step), [0, 1, 2], id + '/' + profile);
+      assert.ok(rows.every(e => e.file && e.actual.tab === 'review' && !e.actual.revealed && e.nativeInteractionPass === false));
+      assert.equal(new Set(rows.map(e => e.conditionSHA256)).size, 1, 'the three disclosure frames use one fixed question');
+      assert.ok(entries.some(e => !e.state.startsWith('target-sequence-staged-hud-')), 'existing exploration targets remain');
+      added += rows.length;
+    }
+    for (const id of ['type3-0', 'type3-1', 'type8-0', 'type8-1', 'pt-tri-diff']) {
+      const rows = await f.run(id, profile);
+      assert.equal(rows.some(e => e.state.startsWith('target-sequence-staged-hud-')), false, 'already captured review stages are not duplicated');
+      assert.deepEqual([...new Set(rows.filter(e => e.file && e.actual.tab === 'review').map(e => e.actual.step))].sort(), [0, 1, 2, 3]);
+    }
+    const branch = (await f.run('br-tree', profile)).filter(e => e.state.startsWith('target-branch-review-disclosure-'));
+    assert.deepEqual(branch.map(e => e.actual.step), [0, 1, 4, 5]);
+    assert.ok(branch.every(e => e.fixture.variantIndex === 3 && e.fixture.m === 4 && e.fixture.finalStep === 5 && e.actual.variantIndex === 3 && !e.nativeInteractionPass));
+    assert.equal(new Set(branch.map(e => e.conditionSHA256)).size, 1);
+    added += branch.length;
+  }
+  assert.equal(added, 147, 'additional targets remain separate from the 1304 required base states');
+  assert.deepEqual(await fixture('alg-sequence').run('type1-0', 'pc-board'), [], 'existing target profile scope is unchanged');
 });
 
 test('unrequested full trajectories and unreachable endpoints are honest scope notes, not missing required evidence', async () => {
@@ -275,4 +387,58 @@ test('the decreasing-function final comparison keeps the slope -1 chord and perp
   assert.ok(Math.abs((b.y-a.y)-(b.x-a.x))<1e-8,'screen slope +1 means mathematical slope -1');
   const [o,p,q]=marks.find(m=>m.method==='right').args;
   assert.ok(Math.abs((p.x-o.x)*(q.x-o.x)+(p.y-o.y)*(q.y-o.y))<1e-8,'symmetry line and chord are perpendicular');
+});
+
+test('circle line clipping retains distinct boundary endpoints and rejects a corner-only contact', () => {
+  const html = fs.readFileSync(new URL('../labs/common-circle-eq.html', import.meta.url), 'utf8');
+  const source = html.match(/function clipLine\(L, box\) \{[\s\S]*?\n    \}/)?.[0];
+  assert.ok(source, 'test the production clipping function');
+  const clip = vm.runInNewContext('(' + source + ')', {
+    P: (x,y) => ({x,y}), distP: (p,q) => Math.hypot(p.x-q.x,p.y-q.y)
+  });
+  const box = {x:[-2,3],y:[-1,4]}, cornerBox = {x:[-1.5,3.5+Math.SQRT2],y:[-4.5,2.5+Math.SQRT2]};
+  const cases = [
+    ['reported pink tangent', {a:1,b:-1,c:-3}, cornerBox, [[-1.5,-4.5],[3.5+Math.SQRT2,.5+Math.SQRT2]]],
+    ['other blue tangent', {a:1,b:-1,c:1}, cornerBox, [[-1.5,-.5],[1.5+Math.SQRT2,2.5+Math.SQRT2]]],
+    ['two opposite corners', {a:1,b:-1,c:1}, box, [[-2,-1],[3,4]]],
+    ['corner contact only', {a:1,b:1,c:3}, box, null],
+    ['horizontal', {a:0,b:1,c:-2}, box, [[-2,2],[3,2]]],
+    ['vertical', {a:1,b:0,c:-1}, box, [[1,-1],[1,4]]],
+    ['horizontal boundary', {a:0,b:1,c:1}, box, [[-2,-1],[3,-1]]],
+    ['vertical boundary', {a:1,b:0,c:2}, box, [[-2,-1],[-2,4]]],
+    ['positive slope', {a:1,b:-2,c:2}, box, [[-2,0],[3,2.5]]],
+    ['negative slope', {a:2,b:1,c:-2}, box, [[-1,4],[1.5,-1]]],
+    ['outside horizontal', {a:0,b:1,c:-5}, box, null],
+    ['outside vertical', {a:1,b:0,c:-4}, box, null],
+    ['degenerate equation', {a:0,b:0,c:0}, box, null]
+  ];
+  for (const [name,line,view,expected] of cases) {
+    const ends = clip(line,view);
+    if (!expected) { assert.equal(ends,null,name); continue; }
+    assert.ok(ends && ends.length===2,name);
+    assert.ok(Math.hypot(ends[0].x-ends[1].x,ends[0].y-ends[1].y)>1e-8,name+' has positive length');
+    for (const [x,y] of expected) assert.ok(ends.some(p=>Math.hypot(p.x-x,p.y-y)<1e-8),name+' boundary endpoint');
+    for (const p of ends) assert.ok(Math.abs(line.a*p.x+line.b*p.y+line.c)<1e-8,name+' lies on line');
+  }
+});
+
+test('the reported distance-versus-radius question draws both full tangents through their contact points', () => {
+  const {lab} = fixture('common-circle-eq');
+  lab.goScene(lab.list.findIndex(s=>s.id==='dVsR'));
+  const q = lab.scene.vary.cur(), segments = [], board = {};
+  for (const name of ['circle','point','right','text']) board[name] = () => board;
+  board.seg = (p,q,o) => { segments.push({p,q,o}); return board; };
+  q.draw(board,4);
+  // Production W converts (x,y) to (10x,-10y); compare in mathematical units.
+  for (const [color,k,contact] of [['rose',-3,[3,0]],['sky',1,[1,2]]]) {
+    const line = segments.find(s=>s.o.color===color && s.o.width===2.6);
+    assert.ok(line,color+' tangent is emitted');
+    const ends=[line.p,line.q].map(p=>({x:p.x/10,y:-p.y/10}));
+    assert.ok(Math.hypot(ends[0].x-ends[1].x,ends[0].y-ends[1].y)>6,color+' tangent has full extent');
+    for (const p of ends) assert.ok(Math.abs(p.y-p.x-k)<1e-8,color+' tangent equation');
+    const [a,b]=ends, dx=b.x-a.x, dy=b.y-a.y;
+    const t=((contact[0]-a.x)*dx+(contact[1]-a.y)*dy)/(dx*dx+dy*dy);
+    assert.ok(t>=0 && t<=1,color+' includes the actual circle contact');
+    assert.ok(Math.hypot(a.x+t*dx-contact[0],a.y+t*dy-contact[1])<1e-8,color+' contact lies on segment');
+  }
 });

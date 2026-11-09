@@ -128,6 +128,22 @@ test('a missing environment record or a raw full-page mobile PNG cannot complete
   assert.ok(validateReviewManifest(other.manifest).errors.some(e => e.startsWith('non-viewport-mobile-review-frame')));
 });
 
+test('desktop full-page references cannot stand in for native review or target evidence', t => {
+  const f = fixture(t), raw = f.manifest.entries.find(e => e.run === 'pc-paper');
+  raw.frame.fullPage = true; raw.frame.touchEnvironment.pixelEnvironment = 'DESKTOP_FULL_PAGE';
+  assert.ok(validateReviewManifest(f.manifest).errors.some(e => e.startsWith('non-viewport-desktop-review-frame')));
+  raw.state = 'target-desktop';
+  assert.ok(validateReviewManifest(f.manifest).errors.some(e => e.startsWith('non-viewport-desktop-review-frame')));
+});
+
+test('desktop review content below the viewport needs actual supplemental coverage', t => {
+  const f = fixture(t), entry = f.manifest.entries.find(e => e.run === 'pc-paper' && e.state === 'review-final');
+  const review = entry.frame.regions.find(r => r.name === 'review');
+  review.rect = { ...review.rect, top: 1000, bottom: 1040, y: 1000 };
+  review.documentRect = { ...review.documentRect, top: 1000, bottom: 1040 }; review.visibleDocumentRange = null;
+  assert.ok(validateReviewManifest(f.manifest).errors.some(e => e.startsWith('incomplete-scroll-content')));
+});
+
 test('a DOM answer below the viewport needs same-state scroll evidence even when answerOpen is true', t => {
   const f = fixture(t), entry = f.manifest.entries.find(e => e.run === 'mobile-paper' && e.state === 'answer-revealed');
   const answer = entry.frame.regions.find(r => r.name === 'answer');

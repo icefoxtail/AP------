@@ -25,7 +25,11 @@ export function readReviewFrame() {
   const region = (name, el) => {
     const rect = rectOf(el), present = !!el?.checkVisibility() && !!rect && rect.width > 0 && rect.height > 0;
     if (!present) return { name, present: false, rect };
-    const top = Math.max(rect.top, blockedTop, 0), bottom = Math.min(rect.bottom, innerHeight);
+    // A desktop stage occupies the left column, while its solution is in the
+    // right column. Only an occluder that actually overlaps this region can
+    // hide its document slices; partial overlap remains conservatively blocked.
+    const regionBlockedTop = Math.max(0, ...occluders.filter(o => Math.min(o.rect.right, rect.right) > Math.max(o.rect.left, rect.left)).map(o => Math.min(innerHeight, o.rect.bottom)));
+    const top = Math.max(rect.top, regionBlockedTop, 0), bottom = Math.min(rect.bottom, innerHeight);
     const horizontal = rect.left >= -1 && rect.right <= innerWidth + 1;
     return { name, present, rect, documentRect: { top: rect.top + scrollY, bottom: rect.bottom + scrollY, left: rect.left + scrollX, right: rect.right + scrollX },
       visibleDocumentRange: horizontal && bottom > top ? { top: top + scrollY, bottom: bottom + scrollY } : null,
@@ -54,6 +58,7 @@ const modelSignature = p => p && typeof p === 'object' ? JSON.stringify(Object.e
 const sameState = (a, b) => ['sceneId', 'tab', 'step', 'questionSha256', 'answerOpen', 'revealed'].every(k => a?.[k] === b?.[k]) && a?.viewport?.width === b?.viewport?.width && a?.viewport?.height === b?.viewport?.height && modelSignature(a?.parameters) !== null && modelSignature(a?.parameters) === modelSignature(b?.parameters);
 const finiteRect = r => r && ['top', 'bottom', 'left', 'right', 'width', 'height', 'x', 'y'].every(k => Number.isFinite(r[k])) && r.width > 0 && r.height > 0 && Math.abs(r.right - r.left - r.width) <= 1 && Math.abs(r.bottom - r.top - r.height) <= 1 && Math.abs(r.x - r.left) <= 1 && Math.abs(r.y - r.top) <= 1;
 const validDocumentRect = (r, frame) => finiteRect(r?.rect) && ['top', 'bottom', 'left', 'right'].every(k => Number.isFinite(r.documentRect?.[k])) && ['top', 'bottom'].every(k => Math.abs(r.documentRect[k] - r.rect[k] - frame.scroll?.y) <= 1) && ['left', 'right'].every(k => Math.abs(r.documentRect[k] - r.rect[k] - frame.scroll?.x) <= 1);
+const regionBlockedTop = (frame, rect) => Math.max(0, ...(frame.occluders || []).filter(o => Math.min(o.rect?.right, rect?.right) > Math.max(o.rect?.left, rect?.left)).map(o => Math.min(frame.viewport.height, o.rect.bottom)));
 
 export function viewportContentCoverage(frames, requiredRegions) {
   const first = frames[0], errors = [], regions = [];
@@ -78,7 +83,7 @@ export function viewportContentCoverage(frames, requiredRegions) {
       const v = region.visibleDocumentRange;
       // Recalculate the declared visible slice from actual viewport/scroll/rect
       // evidence. A self-reported complete flag cannot cover a hidden answer.
-      const expectedTop = Math.max(region.rect.top, frame.blockedTop, 0) + frame.scroll.y;
+      const expectedTop = Math.max(region.rect.top, regionBlockedTop(frame, region.rect), 0) + frame.scroll.y;
       const expectedBottom = Math.min(region.rect.bottom, frame.viewport.height) + frame.scroll.y;
       if (v && (!region.horizontal || region.rect.left < -1 || region.rect.right > frame.viewport.width + 1 || expectedBottom <= expectedTop || !Number.isFinite(v.top) || !Number.isFinite(v.bottom) || Math.abs(v.top - expectedTop) > 1 || Math.abs(v.bottom - expectedBottom) > 1)) errors.push(`invalid-visible-region:${name}`);
       else if (v && Number.isFinite(v.top) && Number.isFinite(v.bottom) && v.bottom > v.top) intervals.push(v);
@@ -94,7 +99,7 @@ export function viewportContentCoverage(frames, requiredRegions) {
   return { policy: CONTENT_COVERAGE_POLICY, complete: !errors.length, requiredRegions, regions, errors: [...new Set(errors)] };
 }
 
-export async function captureReviewState({ page, guard, out, name, id, state, fullPage, settle, collectContent, onCapture }) {
+export async function captureReviewState({ page, guard, out, name, id, state, fullPage, settle, collectContent, onCapture, nativeViewportOnly = false }) {
   const shot = async (file, full) => {
     const frame = await readBoundReviewFrame(page);
     const guarded = await guard.capture(() => page.screenshot({ path: path.join(out, file), fullPage: full }), { id, state, file, fullPage: full });
@@ -102,12 +107,14 @@ export async function captureReviewState({ page, guard, out, name, id, state, fu
     const entry = { file, frame }; onCapture(entry); return entry;
   };
   await page.evaluate(async () => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); await document.fonts.ready; }); await settle();
-  const raw = await shot(name, fullPage);
-  if (!guard.expectedTouch) return { ...raw, supplementalFrames: [] };
-  // The full-page PNG can be useful as a reference, but its pointer-media
-  // paint is not certified by an after-capture environment restoration.
-  await settle();
-  const primary = fullPage ? await shot(name.replace(/\.png$/, '--viewport.png'), false) : raw;
+  // Full-page screenshots can change the canvas bitmap even in a desktop
+  // context. High-school review evidence never invokes that operation; old
+  // full-page artifacts remain history, not a required visual representative.
+  // Other existing callers retain their legacy raw/reference contract.
+  const raw = nativeViewportOnly ? null : await shot(name, fullPage);
+  if (!nativeViewportOnly && !guard.expectedTouch) return { ...raw, supplementalFrames: [] };
+  if (raw) await settle();
+  const primary = nativeViewportOnly || fullPage ? await shot(fullPage ? name.replace(/\.png$/, '--viewport.png') : name, false) : raw;
   const supplementalFrames = [], required = collectContent ? requiredViewportRegions(primary.frame) : [];
   let coverage = viewportContentCoverage([primary.frame], required);
   const attemptedScrolls = [];
@@ -115,12 +122,13 @@ export async function captureReviewState({ page, guard, out, name, id, state, fu
     for (let n = 1; !coverage.complete && n <= 80; n++) {
       if (coverage.errors.some(e => !e.startsWith('incomplete-content-region:'))) break;
       const last = supplementalFrames.at(-1)?.frame || primary.frame;
-      const gap = coverage.regions.flatMap(r => r.gaps).sort((a, b) => a.top - b.top)[0];
+      const gap = coverage.regions.flatMap(r => r.gaps.map(g => ({ ...g, name: r.name }))).sort((a, b) => a.top - b.top)[0];
       if (!gap || !Number.isFinite(last.scrollMax) || last.scrollMax < 0) break;
       // A stage can become sticky after the first scroll and hide a slice that
       // the earlier, smaller occlusion estimate skipped. Revisit the earliest
       // actual gap under the current obstruction instead of only moving down.
-      const next = Math.max(0, Math.min(last.scrollMax, gap.top - last.blockedTop - 32));
+      const gapRegion = last.regions.find(r => r.name === gap.name);
+      const next = Math.max(0, Math.min(last.scrollMax, gap.top - regionBlockedTop(last, gapRegion?.rect) - 32));
       if (attemptedScrolls.some(y => Math.abs(y - next) <= 1) || [primary.frame, ...supplementalFrames.map(e => e.frame)].some(f => Math.abs(f.scroll.y - next) <= 1)) break;
       attemptedScrolls.push(next);
       await page.evaluate(y => window.scrollTo({ top: y, left: 0, behavior: 'instant' }), next); await settle();
@@ -131,5 +139,5 @@ export async function captureReviewState({ page, guard, out, name, id, state, fu
   } finally {
     await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })); await settle();
   }
-  return { ...primary, ...(fullPage ? { rawReference: raw } : {}), supplementalFrames, contentCoverage: coverage };
+  return { ...primary, ...(raw && fullPage ? { rawReference: raw } : {}), supplementalFrames, contentCoverage: coverage };
 }

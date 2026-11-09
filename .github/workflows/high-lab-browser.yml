@@ -86,7 +86,7 @@ jobs:
     needs: scope
     runs-on: ubuntu-24.04
     # Fixed-viewport representatives and same-state scroll evidence supplement
-    # every required mobile review state; no existing audit axis is omitted.
+    # every required review state; no existing audit axis is omitted.
     timeout-minutes: 75
     env:
       APMATH_CANDIDATE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -137,6 +137,55 @@ jobs:
         with:
           name: high-labs-${{ github.run_id }}-${{ matrix.course }}
           path: ${{ runner.temp }}/high-evidence/
+          retention-days: 14
+          if-no-files-found: error
+
+      # Preserve the full artifact above and the strict aggregate below. These
+      # extra downloads contain all after PNGs plus byte-identical metadata;
+      # baseline PNGs remain in the original artifact. Never feed parts into
+      # the high-labs-* aggregate pattern or upload an over-cap partial part.
+      - name: Prepare byte-preserving evidence delivery parts
+        id: delivery
+        if: always()
+        run: node apmath/playground/next/tools/high-evidence-delivery.mjs --input "$RUNNER_TEMP/high-evidence" --out "$RUNNER_TEMP/high-evidence-delivery"
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.delivery.outcome == 'success'
+        with:
+          name: high-review-delivery-${{ github.run_id }}-${{ matrix.course }}-metadata
+          path: ${{ runner.temp }}/high-evidence-delivery/metadata/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.delivery.outcome == 'success'
+        with:
+          name: high-review-delivery-${{ github.run_id }}-${{ matrix.course }}-pc-paper
+          path: ${{ runner.temp }}/high-evidence-delivery/pc-paper/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.delivery.outcome == 'success'
+        with:
+          name: high-review-delivery-${{ github.run_id }}-${{ matrix.course }}-pc-board
+          path: ${{ runner.temp }}/high-evidence-delivery/pc-board/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.delivery.outcome == 'success'
+        with:
+          name: high-review-delivery-${{ github.run_id }}-${{ matrix.course }}-mobile-paper
+          path: ${{ runner.temp }}/high-evidence-delivery/mobile-paper/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.delivery.outcome == 'success'
+        with:
+          name: high-review-delivery-${{ github.run_id }}-${{ matrix.course }}-mobile-board
+          path: ${{ runner.temp }}/high-evidence-delivery/mobile-board/
+          include-hidden-files: true
           retention-days: 14
           if-no-files-found: error
 

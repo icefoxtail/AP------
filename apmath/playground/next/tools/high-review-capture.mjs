@@ -30,7 +30,7 @@ export function createReviewManifest({ labs, provenance, sourceBindings }) {
     runs: REVIEW_RUNS,
     sourceBindings: sourceBindings.filter(b => labs.some(l => l.id === b.lab)),
     entries: [], coverageDebt: [], notApplicable: [], targetLimitations: [],
-    limitations: ['PNG coverage is not a mathematical or visual quality pass.', 'State-fixture render captures do not prove native interaction.', 'Touch-context full-page raw references have UNVERIFIED pointer-media paint; independent review uses fixed-viewport representatives and scroll frames.', 'External font URLs are listed in source bindings but their response bytes are not bound.']
+    limitations: ['PNG coverage is not a mathematical or visual quality pass.', 'State-fixture render captures do not prove native interaction.', 'High-school desktop/mobile capture invokes no full-page screenshot. Historical full-page references have unverified canvas/layout paint and cannot replace native fixed-viewport representatives and scroll frames.', 'External font URLs are listed in source bindings but their response bytes are not bound.']
   };
 }
 
@@ -124,8 +124,8 @@ export function validateReviewManifest(manifest, { out, report, verifyFiles = tr
         catch (e) { errors.push(`png-unreadable:${key}:${shot.file}:${e.message}`); }
       }
     }
-    if (isMobile) {
-      for (const shot of allFrames) if (shot.frame?.fullPage !== false || shot.frame?.touchEnvironment?.pixelEnvironment !== VIEWPORT_PIXEL_POLICY || shot.png?.width !== 390 || shot.png?.height !== 844) errors.push(`non-viewport-mobile-review-frame:${key}:${shot.file}`);
+    {
+      for (const shot of allFrames) if (shot.frame?.fullPage !== false || shot.frame?.touchEnvironment?.pixelEnvironment !== VIEWPORT_PIXEL_POLICY || shot.png?.width !== (isMobile ? 390 : 1440) || shot.png?.height !== (isMobile ? 844 : 900)) errors.push(`non-viewport-${isMobile ? 'mobile' : 'desktop'}-review-frame:${key}:${shot.file}`);
       const content = viewportContentCoverage(allFrames.map(s => s.frame), requiredViewportRegions(entry.frame || {}));
       if (entry.contentCoverage?.policy !== CONTENT_COVERAGE_POLICY || !content.complete) errors.push(`incomplete-scroll-content:${key}:${content.errors.join(',')}`);
       if (entry.rawReference && (entry.rawReference.frame?.touchEnvironment?.pixelEnvironment !== 'UNVERIFIED_BEYOND_VIEWPORT' || entry.rawReference.frame?.fullPage !== true)) errors.push(`incorrect-raw-reference-role:${key}`);
