@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "y": [
+      1,
+      2
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "OU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "UA",
+      "refs": [
+        "U",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CT",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "TQ",
+      "refs": [
+        "T",
+        "Q"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "U",
+    "A",
+    "B",
+    "C",
+    "T",
+    "Q"
+  ],
+  "pointNames": {
+    "O": "O",
+    "T": "P",
+    "Q": "Q"
+  },
+  "coordinateLabels": [
+    "T",
+    "Q"
+  ],
+  "caption": "한 가지 예로 O에서 오른쪽 3번, 위쪽 2번 이동해 5번째에 P=(3,2)에 도착한 후, 오른쪽으로 한 번 갔다가 같은 선분을 되돌아오면 7번째에도 P에 있다. 일찍 도착하는 5걸음 경로는 10가지이고, 이후 2걸음 왕복은 4가지다. 조건을 만족하는 전체 7걸음 도착 경로는 245가지이므로 확률은 40/245=8/49이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점은 한 번에 좌우상하 한 칸 이동하고 원점에서 7번 이동 후 (3,2)에 도착한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 40개 경로 전부가 아닌 한 가지 예다. P와 Q 사이 선분은 나갔다가 되돌아오는 두 이동을 겹쳐 나타내며 실제 진행 순서는 캡션에 명시한다.",
+    "사용자 지시: 처음 도착과 마지막 두 걸음 왕복의 관계를 이해하는 데 도움이 되어 그림을 계획한다. 점 이름과 좌표는 겹치지 않게 지시선을 둔다."
+  ],
+  "hiddenPointNames": [
+    "U",
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE"
+}
