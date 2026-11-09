@@ -31,6 +31,12 @@
 | `launch-impl.sh` | 판정표 FIGURE 문항 구현(루나, 시험지를 처음 할 때) |
 | `launch-rev.sh` | 위 구현 결과 1차 검수(rev) |
 | `launch-open.sh` | dots가 채운 OPEN 문항 구현(`runs/<tablekey>/impl-open`) |
+| `launch-exam.sh` | **시험지 하나 전체** 구현(루나 high): `launch-exam.sh <tablekey> <시험지 JS>`. 전 문항 판정(FIGURE·REPLACE·KEEP_EXISTING·EXEMPT·UNSUPPORTED·CONTENT)과 구현. 출력 `runs/<key>/exam-impl`(있으면 `exam-impl2`…), `EXTRA`·`INPUT_KEYS`·`OUT` 지정 가능. 과목 문구는 JS 이름으로 자동 |
+| `launch-exam-rev.sh` | 위 결과를 시험지 전체로 검수(루나 xhigh): `launch-exam-rev.sh <tablekey> <시험지 JS>`. IMPL=최신 `exam-impl*`, REV=짝이 되는 `exam-rev*`. 결과 `<REV>/qNN`, `TABLE.md`(최종 판정), `REVIEW.md` |
+| `exam-common.sh` | launch-exam 두 스크립트의 공통 함수(과목 문구, dots 입력 폴더 찾기, 기존 그림 분류표) |
+| `exam-figs.cjs` | 시험지 전 문항의 기존 해설 그림을 NONE/NEW/OLD_SVG/OLD_PNG/MISSING_FILE로 분류(구형 판별 자동). launch-exam이 지시서에 붙인다 |
+| `compare.py` | `python compare.py <구형 svg·png> <신형 svg> <out.png>` 왼쪽 구형·오른쪽 신형 비교 PNG(UPGRADE 문항의 `compare.png`) |
+| `make-dec-exam.cjs` | `<REV>/TABLE.md`로 게시 결정 `dec-<key>-exam.json` 생성, TABLE.md를 `triage-20261107/<key>.md`에 복사(기존 것은 `.bak-<날짜>`로 보존). `node .tmp/work/make-dec-exam.cjs <key> <JS> <REV>` |
 | `launch-rev-open.sh` / `launch-rev-open2.sh` | impl-open 검수(입력 key = 판정표 key / 서로 다를 때) |
 | `run-impl.sh` / `run-rev.sh` | 위 launch들이 부르는 실제 Codex 실행. `OUT`/`IMPL`/`REV`/`EXTRA`로 폴더·추가 지시를 직접 지정 |
 | `resume.sh` | 중단된 루나 실행에 정정 지시를 붙여 이어 하기 |
@@ -41,5 +47,6 @@
 | `build-pub.py` | `pub/<key>` 생성과 기계 점검(`BAD:`) |
 | `jscheck.cjs` | 게시 후 시험지 JS에서 solutionImage 외 필드가 바뀌지 않았는지 점검 |
 | `prompts/impl-common.md` `review-common.md` | 루나 구현·검수 지시서. `<WORKTREE>`는 run 스크립트가 이 PC의 저장소 경로로 바꾼다 |
+| `prompts/exam-impl.md` `exam-review.md` | 시험지 단위 루나 구현·검수 지시서(구형 SVG 전부 신형 재작업·핵심 관계 보존·compare.png·TABLE.md/SUMMARY.md/REVIEW.md 형식) |
 | `prompts/sonnet-final.md` | Sonnet 최종 검수 지시서(메인이 읽어 지시에 쓴다) |
 | `ENGINE_GAPS.md` | 엔진이 못 그려 OPEN으로 남긴 문항과 사유(엔진 업그레이드 때 사용) |
