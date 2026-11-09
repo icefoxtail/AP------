@@ -9,6 +9,7 @@
 
 ## 작성 형식
 - 기본은 파이프 표다. 첫 줄이 머리글이고, 구분선 `| :---: |`은 써도 되고 안 써도 된다. 셀 안의 수식·변수·분수는 반드시 `$…$`로 쓴다. 예: `$X$`, `$P(X=x)$`, `$\frac{1}{6}$`. 슬래시 분수 `1/6`은 쓰지 않는다.
+- 바깥 파이프 없는 GFM 표(`구분 | 우진 | 수빈` / `---|---|---` / `성인 | 2 | 1`)도 엔진이 표로 바꾼다. 단 머리글 줄 바로 아래에 구분선(모든 칸이 `-` 3개 이상, 2칸 이상)이 있고 머리글과 칸 수가 같을 때만이다. 구분선이 없으면 `a | b`, `P(A|B)`, 집합 `{x | x>0}` 같은 글을 건드리지 않는다. 새로 쓸 때는 바깥 파이프를 붙여 쓰는 것을 권장한다. 이유: 도구마다 해석이 다르다.
 - 병합 셀이 필요한 표만 HTML `<table>`에 colspan·rowspan을 써서 만든다. class·style·border는 쓰지 않는다. 써도 엔진이 지운다. 단, 조립제법처럼 일부 선만 긋는 표는 셀의 `border*` 스타일이 보존된다(`ap-table-custom-borders`).
 - 조건 상자와 보기는 표가 아니다. `.box`나 `.question-note-box`를 쓴다.
 
@@ -33,7 +34,10 @@
    - 정적 검사(Node만, 약 1분): `node tools/check-ap-tables.cjs [--files <경로|glob|이름조각>,...] [--json <경로>]`. `archive/exams/**` 전체 또는 지정 파일의 문항·보기·해설을 `renderApTables`에 통과시킨 뒤 규칙별 FAIL `{file, qid, field, rule, cell}`을 낸다. 규칙: `ROW_COL_MISMATCH` `RESIDUAL_PIPE_ROW` `PAREN_MATH_IN_CELL` `UNBALANCED_DOLLAR` `EMPTY_HEADER` `SLASH_FRACTION_OUTSIDE_MATH` `BARE_MATH_VARIABLE_HEADER`. FAIL이 있으면 종료 코드 1이다. 새 시험지 CREATE 파이프라인은 자기 파일만 `--files`로 돌리면 된다.
    - 브라우저 검사: `node tools/check-ap-tables.cjs --browser --files <파일>`. 실제 Chrome(Playwright)으로 `engine.html?data=exams/<파일>&mode=exam|sol`을 열어 `TABLE_OVERFLOW` `CELL_OVERFLOW` `MATH_ERROR`를 본다(`--modes`, `--widths 1440,390`로 조정). 이 파일과 무관한 렌더 오류로 열리지 않으면 FAIL이 아니라 `NOT_RUN`으로 적는다. Playwright는 `AP_PLAYWRIGHT_MODULE` 또는 `GEOMETRY_NODE_MODULES`로 찾는다. 인쇄 시 페이지 경계에서 잘리는지는 아직 보지 않는다.
    - 이 PR은 검증기만 추가했고 원본 데이터는 고치지 않았다. FAIL 목록은 PR-3의 입력이다.
-2. **PR-3 원본 정리**: 검증기 FAIL 항목만 원본 JS를 고친다. `docs/agents/common.md`의 "공유 데이터 고정값"을 지킨다. 값은 원본으로 확인하고 추정해서 채우지 않는다.
+2. **PR-3 원본 정리 (진행: 검증기 FAIL 12건 → 0건)**: 검증기 FAIL 항목만 고친다. `docs/agents/common.md`의 "공유 데이터 고정값"을 지킨다. 값은 원본으로 확인하고 추정해서 채우지 않는다.
+   - 바깥 파이프 없는 파이프 표 11건(동아 공통수학1 교과서 7개 문자열)은 **엔진을 확장해** 해결했다(사용자 결정). 데이터는 그대로다. 구분선 필수, 구분선 없으면 변환하지 않는다. 전수 비교에서 바뀐 문자열은 이 7개뿐이고 셀 내용은 그대로다.
+   - 25 왕운중 1학기 중간 중3 5번 제곱근표는 머리글 칸이 5개, 본문이 6개라 열 제목이 한 칸 밀려 있었다. 머리글에 빈 칸 하나를 더해 맞췄다(값은 그대로). 근거: 해설이 "3.2행 5열 = 1.803"이고 6번 해설이 "33행 4열 = 5.779"여서 열 제목 4·5·6은 "..." 열 다음의 숫자 열 위에 있다.
+   - 이 PR 머지 뒤 파생 데이터(catalog·4slot·source-verification 해시)는 자동 등록 커밋이 갱신한다. 손으로 고치지 않는다.
 3. **분수 전수 조사 (GPT에 위임)**: 발문·보기·해설·표의 모든 슬래시 분수를 `\frac`로 바꾼다. PR #1540 머지와 자동 등록 커밋을 확인한 뒤 최신 main에서 시작한다. answer 필드는 채점 영향을 먼저 확인한다.
 4. **PR-4 정본 문서**: `docs/rules/01_CANONICAL/AP_Table_Engine_Contract_v1.md`를 쓰고, `docs/agents/exam-pipeline.md` CREATE 지시서에 "표는 파이프 형식, 스타일 금지, 수식은 `$`"를 추가한다.
 5. **아직 엔진이 연결되지 않은 화면**: `archive/generated-bank.html`, `archive/problem-bank-search.html`, `apmath/wrong_print_engine.html`, `apmath/js/report-center.js`(학부모 리포트), mixer 문항 목록 카드. 각자 표를 따로 처리하므로 같은 모듈을 연결해야 한다.

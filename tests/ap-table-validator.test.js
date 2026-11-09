@@ -18,7 +18,9 @@ test('ROW_COL_MISMATCH: unequal column counts fire, colspan/rowspan accounting d
 });
 
 test('RESIDUAL_PIPE_ROW: unconverted pipe rows fire, abs values and prose pipes do not', () => {
-  assert.ok(has('구분 | 우진 | 수빈\n---|---|---\n성인 | 2 | 1', 'RESIDUAL_PIPE_ROW'));
+  // a GFM separator (>= 3 dashes) without outer pipes is converted by the engine now; a 2-dash separator is not GFM and stays visible
+  assert.ok(!has('구분 | 우진 | 수빈\n---|---|---\n성인 | 2 | 1', 'RESIDUAL_PIPE_ROW'));
+  assert.ok(has('구분 | 우진 | 수빈\n--|--|--\n성인 | 2 | 1', 'RESIDUAL_PIPE_ROW'));
   assert.deepEqual(residualPipeRows('<div>x</div>\n| a | b |\n| c | d |'), ['| a | b |', '| c | d |']);
   assert.ok(!has('| a | b |\n|---|---|\n| 1 | 2 |', 'RESIDUAL_PIPE_ROW'), 'a converted table leaves nothing behind');
   assert.ok(!has('$|x-1|<2$ 일 때 $|a|+|b|$ 의 값은?\n<table><tr><td>1</td></tr></table>', 'RESIDUAL_PIPE_ROW'));

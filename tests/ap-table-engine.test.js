@@ -367,3 +367,102 @@ test('regression: only whitespace between table tags is dropped; caption, text a
   assert.equal(gaps, '<div class="ap-table-wrap question-table-wrap"><table class="ap-table question-table"><tr><td>1</td></tr></table></div>');
   for (const s of [cap, nested, stray]) assert.equal(renderApTables(s), s, 'idempotent');
 });
+
+// ---- PR-3: GFM pipe tables without outer pipes (separator row required)
+const TEXTBOOK_DONGA = path.join(examsRoot, 'textbooks', '동아출판_공통수학1');
+function donga(dir, id, key) {
+  const file = path.join(TEXTBOOK_DONGA, dir, dir + '.js');
+  const q = loadBank(file).find(x => String(x.id) === String(id));
+  assert.ok(q, `${dir} qid ${id}`);
+  return q[key];
+}
+const SYNTH_NO_OUTER = '[표 1] 가족 인원 (단위: 명)\n구분 | 우진 | 수빈\n---|---|---\n성인 | 2 | 1\n청소년 | 3 | 2\n\n뒤 문장';
+const sortedCells = s => extractTableCells(s).slice().sort();
+
+test('no-outer-pipe table with a GFM separator row becomes the same table as the outer-pipe form', () => {
+  const out = renderApTables(SYNTH_NO_OUTER);
+  assert.equal(count(out, /<table\b/g), 1);
+  assert.equal(count(out, /<th scope="col">/g), 3);
+  assert.match(out, /<td>청소년<\/td><td>3<\/td><td>2<\/td>/);
+  assert.doesNotMatch(out, /---/);
+  assert.match(out, /^\[표 1\] 가족 인원 \(단위: 명\)\n<div class="ap-table-wrap/);
+  assert.match(out, /<\/div>\n뒤 문장$/);
+  const outer = renderApTables('[표 1] 가족 인원 (단위: 명)\n| 구분 | 우진 | 수빈 |\n|---|---|---|\n| 성인 | 2 | 1 |\n| 청소년 | 3 | 2 |\n\n뒤 문장');
+  assert.equal(out, outer, 'identical structure to the outer-pipe table');
+  assert.equal(renderApTables(out), out, 'idempotent');
+});
+
+test('no-outer-pipe: alignment colons, single optional outer pipe, math with pipes, [x점] tail, <br> rows', () => {
+  const a = renderApTables('A | B\n:---:|---:|\n$|x|$ | 2 |\n3 | 4 |');
+  assert.equal(count(a, /<table\b/g), 1);
+  assert.match(a, /<td>\$\|x\|\$<\/td><td>2<\/td>/);
+  assert.equal(count(a, /<tr>/g), 3);
+  const b = renderApTables('<p>가 | 나 | 다<br>---|---|---<br>1 | 2 | 3 [3점]</p>');
+  assert.equal(count(b, /<table\b/g), 1);
+  assert.match(b, /<\/table><\/div> \[3점\]<\/p>$/);
+  assert.match(b, /^<p><div/);
+  const c = renderApTables('\(x\) | y\n---|---\n1 | 2');
+  assert.equal(count(c, /<th scope="col">/g), 2);
+  for (const s of [a, b, c]) assert.equal(renderApTables(s), s, 'idempotent');
+});
+
+test('no-outer-pipe: without a separator row, or with mismatching counts, nothing changes', () => {
+  for (const s of [
+    '구분 | 우진 | 수빈\n성인 | 2 | 1\n청소년 | 3 | 2',
+    'P(A|B)=\frac{1}{2}',
+    '확률 $P(A|B)$ 와 P(A|B) 를 구하시오.\n---\n끝',
+    '집합 {x | x>0} 에서\n---\n뒤',
+    'x | y\n---|---',                  // cell counts agree (2 and 2): this one IS a table (header only)
+    '구분 | 우진 | 수빈\n---|---\n성인 | 2 | 1',   // separator count 2 != header 3
+    'a | b\n--|--\nc | d',             // fewer than 3 dashes is not a GFM separator here
+    '앞 문장 | 뒤 문장\n---\n본문'
+  ]) {
+    const out = renderApTables(s);
+    if (s === 'x | y\n---|---') { assert.equal(count(out, /<table\b/g), 1); continue; }
+    assert.equal(out, s, JSON.stringify(s));
+  }
+  // body stops at the first row with another cell count; the remaining row stays text
+  const out = renderApTables('a | b\n---|---\n1 | 2\n3 | 4 | 5');
+  assert.equal(count(out, /<tr>/g), 2);
+  assert.match(out, /<\/div>3 \| 4 \| 5$/);
+  assert.equal(count(renderApTables('x | y\n---|---'), /<table\b/g), 1, 'header-only table with separator');
+});
+
+test('no-outer-pipe: cell multiset is preserved and rendering is idempotent', () => {
+  const before = sortedCells(SYNTH_NO_OUTER);
+  assert.deepEqual(before, ['1', '2', '2', '3', '구분', '성인', '수빈', '우진', '청소년']);
+  assert.deepEqual(sortedCells(renderApTables(SYNTH_NO_OUTER)), before);
+});
+
+test('동아 공통수학1 textbook tables without outer pipes render as tables (real data)', { skip: !fs.existsSync(TEXTBOOK_DONGA) }, () => {
+  const cases = [
+    ['동아_공통수학1_경우의수와행렬_대단원평가_고1', 27, 'content', 2],
+    ['동아_공통수학1_경우의수와행렬_대단원평가_고1', 28, 'content', 1],
+    ['동아_공통수학1_행렬_중단원연습_고1', 4, 'solution', 1],
+    ['동아_공통수학1_행렬_중단원연습_고1', 10, 'content', 2],
+    ['동아_공통수학1_행렬_중단원연습_고1', 13, 'content', 2],
+    ['동아_공통수학1_행렬_중단원연습_고1', 13, 'solution', 2],
+    ['동아_공통수학1_행렬_중단원연습_고1', 15, 'content', 1]
+  ];
+  for (const [dir, id, key, tables] of cases) {
+    const src = donga(dir, id, key);
+    const out = renderApTables(src);
+    assert.equal(count(out, /<table\b/g), tables, `${dir} q${id} ${key}`);
+    assert.doesNotMatch(out.replace(/<table\b[\s\S]*?<\/table>/g, ''), /-{3}\s*\|\s*-{3}/, `${dir} q${id} ${key}: separator row left`);
+    assert.deepEqual(sortedCells(out), sortedCells(src), `${dir} q${id} ${key}: cells preserved`);
+    assert.equal(renderApTables(out), out, `${dir} q${id} ${key}: idempotent`);
+  }
+});
+
+test('왕운중 1학기 중간 중3 q5 제곱근표: header and body have the same 6 columns', () => {
+  const out = renderApTables(field('middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js', 5, 'content'));
+  const rows = out.match(/<tr>[\s\S]*?<\/tr>/g);
+  assert.equal(rows.length, 6);
+  for (const r of rows) assert.equal(count(r, /<t[hd]\b/g), 6, r);
+  // 3.2 row, column "5" = 1.803 (the solution reads exactly this cell)
+  const head = [...rows[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map(m => m[1]);
+  const row32 = [...rows[2].matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/g)].map(m => m[1]);
+  assert.equal(row32[head.indexOf('5')], '1.803');
+  assert.equal(row32[head.indexOf('4')], '1.800');
+  assert.equal(row32[head.indexOf('6')], '1.806');
+});
