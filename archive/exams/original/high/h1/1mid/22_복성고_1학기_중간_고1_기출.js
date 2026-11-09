@@ -762,7 +762,7 @@ window.questionBank = [
       "$8\\sqrt{3}$"
     ],
     "answer": "④",
-    "solution": "먼저 점 $P$를 지나는 직선과 $x$축의 교점 $Q$를 구한다.\n직선의 방정식은\n$y-\\dfrac{t^2}{4}=\\dfrac t2(x-t)$이다.\n$y=0$을 대입하면 $x=\\dfrac t2$이므로\n$Q\\left(\\dfrac t2,0\\right)$이다.\n점 $Q\\left(\\dfrac t2,0\\right)$와 $A(0,1)$을 $3:2$로 외분하는 점을 $R$이라 하자.\n외분점의 좌표 공식을 $x$, $y$좌표에 각각 적용하면\n$R=\\left(\\dfrac{3\\cdot0-2\\cdot(t/2)}{3-2},\\dfrac{3\\cdot1-2\\cdot0}{3-2}\\right)=(-t,3)$이다.\n$R$이 $y=\\dfrac14x^2$ 위에 있으므로\n$3=\\dfrac{t^2}{4}$이다.\n$t>0$이므로 $t=2\\sqrt3$이다.\n따라서\n$Q=(\\sqrt3,0)$, $P=(2\\sqrt3,3)$, $R=(-2\\sqrt3,3)$이다.\n$RP=4\\sqrt3$이고 $Q$에서 직선 $RP$까지의 높이는 $3$이므로\n삼각형 $RQP$의 넓이는\n$\\dfrac12\\cdot4\\sqrt3\\cdot3=6\\sqrt3$이다.\n정답은 ④이다.",
+    "solution": "먼저 점 $P$를 지나는 직선과 $x$축의 교점 $Q$를 구한다.\n직선의 방정식은\n$y-\\dfrac{t^2}{4}=\\dfrac t2(x-t)$이다.\n$y=0$을 대입하면 $x=\\dfrac t2$이므로\n$Q\\left(\\dfrac t2,0\\right)$이다.\n점 $Q\\left(\\dfrac t2,0\\right)$와 $A(0,1)$을 $3:2$로 외분하는 점을 $R$이라 하자.\n외분점의 좌표 공식을 $x$, $y$좌표에 각각 적용하면\n$R=\\left(\\dfrac{3\\cdot0-2\\cdot(\\frac{t}{2})}{3-2},\\dfrac{3\\cdot1-2\\cdot0}{3-2}\\right)=(-t,3)$이다.\n$R$이 $y=\\dfrac14x^2$ 위에 있으므로\n$3=\\dfrac{t^2}{4}$이다.\n$t>0$이므로 $t=2\\sqrt3$이다.\n따라서\n$Q=(\\sqrt3,0)$, $P=(2\\sqrt3,3)$, $R=(-2\\sqrt3,3)$이다.\n$RP=4\\sqrt3$이고 $Q$에서 직선 $RP$까지의 높이는 $3$이므로\n삼각형 $RQP$의 넓이는\n$\\dfrac12\\cdot4\\sqrt3\\cdot3=6\\sqrt3$이다.\n정답은 ④이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
     "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
     "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q18-solution.svg",

@@ -54,7 +54,7 @@ window.questionBank = [
       "$\\dfrac92\\rm\\,cm$"
     ],
     "answer": "④",
-    "solution": "중심 $O$에서 현 $BC$에 수선 $OM$을 내리면 현의 수직이등분선 성질로\n$BM=\\dfrac{BC}{2}=\\dfrac52$이다.\n\n그림처럼 $\\angle BOM=\\angle A$이므로 직각삼각형 $OBM$에서\n$\\sin A=\\dfrac{BM}{OB}=\\dfrac{5/2}{R}$이다.\n\n주어진 $\\sin A=\\dfrac58$을 대입하면\n$\\dfrac58=\\dfrac{5}{2R}$,\n$10R=40$,\n$R=4$이다.\n\n따라서 원 $O$의 반지름은 $4\\rm\\,cm$이다.\n정답은 ④이다.\n<div class=\"sol-visual\"><svg viewBox=\"0 0 320 200\" width=\"320\" height=\"200\" role=\"img\" aria-label=\"원 O에서 현 BC에 내린 수선 OM과 직각삼각형 OBM\"><circle cx=\"160\" cy=\"92\" r=\"65\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"119.4\" y1=\"142.8\" x2=\"200.6\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"119.4\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"200.6\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"160\" y2=\"142.8\" stroke=\"#167d9a\" stroke-width=\"2.5\"/><polyline points=\"160,134.8 152,134.8 152,142.8\" fill=\"none\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"151\" y=\"82\" font-size=\"14\">O</text><text x=\"109\" y=\"155\" font-size=\"14\">B</text><text x=\"203\" y=\"155\" font-size=\"14\">C</text><text x=\"164\" y=\"157\" font-size=\"14\" fill=\"#167d9a\">M</text><text x=\"171\" y=\"119\" font-size=\"13\" fill=\"#167d9a\">OM</text><text x=\"124\" y=\"121\" font-size=\"13\">R</text><text x=\"122\" y=\"176\" font-size=\"13\">BM=5/2</text></svg></div>",
+    "solution": "중심 $O$에서 현 $BC$에 수선 $OM$을 내리면 현의 수직이등분선 성질로\n$BM=\\dfrac{BC}{2}=\\dfrac52$이다.\n\n그림처럼 $\\angle BOM=\\angle A$이므로 직각삼각형 $OBM$에서\n$\\sin A=\\dfrac{BM}{OB}=\\dfrac{\\frac{5}{2}}{R}$이다.\n\n주어진 $\\sin A=\\dfrac58$을 대입하면\n$\\dfrac58=\\dfrac{5}{2R}$,\n$10R=40$,\n$R=4$이다.\n\n따라서 원 $O$의 반지름은 $4\\rm\\,cm$이다.\n정답은 ④이다.\n<div class=\"sol-visual\"><svg viewBox=\"0 0 320 200\" width=\"320\" height=\"200\" role=\"img\" aria-label=\"원 O에서 현 BC에 내린 수선 OM과 직각삼각형 OBM\"><circle cx=\"160\" cy=\"92\" r=\"65\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"119.4\" y1=\"142.8\" x2=\"200.6\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"119.4\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"200.6\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"160\" y2=\"142.8\" stroke=\"#167d9a\" stroke-width=\"2.5\"/><polyline points=\"160,134.8 152,134.8 152,142.8\" fill=\"none\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"151\" y=\"82\" font-size=\"14\">O</text><text x=\"109\" y=\"155\" font-size=\"14\">B</text><text x=\"203\" y=\"155\" font-size=\"14\">C</text><text x=\"164\" y=\"157\" font-size=\"14\" fill=\"#167d9a\">M</text><text x=\"171\" y=\"119\" font-size=\"13\" fill=\"#167d9a\">OM</text><text x=\"124\" y=\"121\" font-size=\"13\">R</text><text x=\"122\" y=\"176\" font-size=\"13\">BM=5/2</text></svg></div>",
     "tags": [
       "도형",
       "원의 성질"
@@ -525,12 +525,12 @@ window.questionBank = [
       "$185\\rm\\,cm$"
     ],
     "answer": "①",
-    "solution": "10명의 실제 키의 합은\n$10\\times173=1730\\rm\\,cm$이다.\n\n평균이 $1\\rm\\,cm$ 낮게 나왔으므로 잘못 측정한 자료의 평균은\n$173-1=172\\rm\\,cm$이다.\n잘못 측정한 10명의 키의 합은\n$10\\times172=1720\\rm\\,cm$이다.\n\n다른 9명의 키 합은 실제 합에서 동진이의 실제 키를 뺀 값이다.\n$1730-173=1557\\rm\\,cm$이다.\n\n따라서 잘못 측정한 동진이의 키는\n$1720-1557=163\\rm\\,cm$이다.\n정답은 ①이다.",
+    "solution": "10명의 평균이 $1\\rm\\,cm$ 낮아졌으므로 전체 키의 합은\n$10\\times1=10\\rm\\,cm$ 낮아졌다.\n\n잘못 측정한 동진이의 키는 실제 키보다 $10\\rm\\,cm$ 작으므로\n$173-10=163\\rm\\,cm$이다.\n정답은 ①이다.",
     "tags": [
       "통계",
       "평균"
     ],
-    "decisiveStep": "잘못 측정한 10명의 합에서 다른 9명의 실제 합을 뺀다.",
+    "decisiveStep": "평균이 1 cm 낮아진 것은 전체 합이 10 cm 낮아진 것이므로, 동진이의 측정 키는 173−10=163 cm이다.",
     "primaryMethod": "평균 변화량을 전체 합 변화량으로 환산",
     "questionType": "객관식",
     "level": "중",

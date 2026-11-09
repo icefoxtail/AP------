@@ -1,5 +1,58 @@
 // The production Board routes an empty-canvas pointer drag through onPanDrag.
 // Observe the actual camera and rendered pixels; never invoke orbit callbacks.
+
+// Reviewed scene contracts keep a disappeared camera/handler from becoming N/A.
+// These scenes project 3D coordinates through yaw/pitch in the production source.
+export const REQUIRED_ORBIT_SCENES = Object.freeze({
+  'common-poly-solid': ['cube', 'box', 'cut', 'prism'],
+  'geom-space': Array.from({ length: 9 }, (_, i) => `mode${i + 1}`),
+  'geom-projection': Array.from({ length: 7 }, (_, i) => `mode${i + 1}`),
+  'geom-space-coord': Array.from({ length: 8 }, (_, i) => `mode${i + 1}`)
+});
+const locked2D = new Set(['dist', 'binom', 'std', 'sym', 'pdf', 'mean', 'ci']);
+
+export function classifyOrbitCapability(labId, sceneId, facts) {
+  const controls = facts.controlKeys || [];
+  const activeCamera = ['yaw', 'pitch'].every(k => controls.includes(k));
+  const anyCameraControl = ['yaw', 'pitch'].some(k => controls.includes(k));
+  const finiteCamera = [facts.yaw, facts.pitch].every(Number.isFinite);
+  const declaredCamera = !!facts.yawParam && !!facts.pitchParam;
+  const required = REQUIRED_ORBIT_SCENES[labId]?.includes(sceneId) || false;
+  const result = (status, reason) => ({ status, reason, requiredBySceneContract: required, facts });
+  if (required || activeCamera) {
+    if (!(activeCamera && finiteCamera && declaredCamera && facts.declaredOrbit && facts.handler)) {
+      return result('INVALID', '3d-scene-missing-active-camera-or-orbit-handler');
+    }
+    return result('REQUIRED', required ? 'reviewed-3d-scene-with-active-camera' : 'active-yaw-pitch-camera-and-declared-orbit');
+  }
+  // prob-stats deliberately declares a no-op orbit to lock 2D background pan.
+  if (labId === 'prob-stats' && locked2D.has(sceneId) && !anyCameraControl && !facts.yawParam && !facts.pitchParam && !finiteCamera) {
+    return result('NOT_APPLICABLE', 'reviewed-2d-statistics-pan-lock');
+  }
+  // sq draws a flat polynomial area model. The global BOARD3 is also used by
+  // four solid scenes, so global camera params alone do not prove a 3D scene.
+  if (labId === 'common-poly-solid' && sceneId === 'sq' && !anyCameraControl) {
+    return result('NOT_APPLICABLE', 'reviewed-2d-square-scene-with-shared-board');
+  }
+  if (facts.handler || facts.declaredOrbit || anyCameraControl) {
+    return result('INVALID', 'unclassified-orbit-scene-needs-capability-review');
+  }
+  return result('NOT_APPLICABLE', 'scene-has-no-orbit-camera-or-handler');
+}
+
+// Serializable Playwright evaluator; evaluates only the current scene's controls.
+export function currentOrbitFacts() {
+  const keys = typeof lab.scene.controls === 'function' ? lab.scene.controls(lab.s, lab) : lab.scene.controls;
+  return {
+    controlKeys: Array.isArray(keys) ? keys : [],
+    yawParam: !!lab.params.yaw, pitchParam: !!lab.params.pitch,
+    yaw: Number.isFinite(lab.s.yaw) ? lab.s.yaw : null,
+    pitch: Number.isFinite(lab.s.pitch) ? lab.s.pitch : null,
+    declaredOrbit: typeof lab.def.board?.orbit === 'function',
+    handler: typeof lab.board.onPanDrag === 'function'
+  };
+}
+
 const orbitSnapshot = () => {
   const b = lab.board;
   const pixels = b.ctx.getImageData(0, 0, b.canvas.width, b.canvas.height).data;

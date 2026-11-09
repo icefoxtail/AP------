@@ -282,7 +282,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_31d2b9daed0f9f794eeb7dc6770dfc398826eced"
+    "questionUidProvisional": "qid_candidate_31d2b9daed0f9f794eeb7dc6770dfc398826eced",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −1부터 0까지와 0부터 1.5까지의 두 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "표준화하면 주어진 구간은 표준점수 −1부터 1.5까지이다. 대칭을 이용해 −1부터 0까지의 넓이와 0부터 1.5까지의 넓이를 더한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -329,7 +333,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_0df770b53110165fa6fc534ce0a624f2c453c2f8"
+    "questionUidProvisional": "qid_candidate_0df770b53110165fa6fc534ce0a624f2c453c2f8",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 30인 정규곡선에서 28보다 작은 왼쪽 꼬리 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "28회는 평균보다 표준편차 한 단위 낮은 기준이다. 대칭을 이용해 왼쪽 꼬리 확률을 구한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -345,7 +353,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "②",
-    "solution": "표본평균의 평균은 45이고 표준편차는 $\\frac{10}{\\sqrt{25}}=2$입니다.\n$41$을 표준화하면 $(41-45)/2=-2$입니다. 따라서 $P(-2\\le Z\\le (a-45)/2)=0.8185$입니다.\n표준정규표에서 $P(Z\\le-2)=0.0228$이므로 위쪽 끝의 누적확률은 $0.8185+0.0228=0.8413$입니다.\n$P(Z\\le1)=0.8413$이므로 $(a-45)/2=1$, $a=47$입니다. 정답은 ②입니다.",
+    "solution": "표본평균의 평균은 45이고 표준편차는 $\\frac{10}{\\sqrt{25}}=2$입니다.\n$41$을 표준화하면 $\\frac{41-45}{2}=-2$입니다. 따라서 $P(-2\\le Z\\le (a-45)/2)=0.8185$입니다.\n표준정규표에서 $P(Z\\le-2)=0.0228$이므로 위쪽 끝의 누적확률은 $0.8185+0.0228=0.8413$입니다.\n$P(Z\\le1)=0.8413$이므로 $\\frac{a-45}{2}=1$, $a=47$입니다. 정답은 ②입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-06",
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
@@ -376,7 +384,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_6b687aa2db399e9bac569595ac798a312d66ad24"
+    "questionUidProvisional": "qid_candidate_6b687aa2db399e9bac569595ac798a312d66ad24",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 45인 표본평균 정규곡선에서 41부터 미지의 기준 a까지의 영역을 표시했다. 아래 표준화 눈금은 왼쪽 끝에서 −2, 평균에서 0, a에서 1이다.",
+    "solutionImageCaption": "표본평균의 표준편차는 2이고, 왼쪽 경계 41은 표준점수 −2이다. 주어진 면적을 더해 오른쪽 경계가 평균보다 표준편차 하나만큼 위에 있음을 확인한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -470,7 +482,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_338b59608bd2a39d643ad3012343e81182b7e16c"
+    "questionUidProvisional": "qid_candidate_338b59608bd2a39d643ad3012343e81182b7e16c",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 2.58보다 큰 오른쪽 꼬리 영역이 음영으로 표시되어 있고, 넓이가 0.5−0.4950으로 적혀 있다.",
+    "solutionImageCaption": "신뢰구간의 반길이에서 표본평균의 표준편차를 구한 뒤 기준값을 표준화하면 2.58이다. 오른쪽 꼬리 확률을 구한 다음 1000배 한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -535,7 +551,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "⑤",
-    "solution": "한 번 뽑은 카드의 숫자를 $U$라고 놓습니다. 복원추출이므로 매번 $1,2,3,4,5$가 각각 확률 $1/5$로 나오며 세 시행은 서로 독립입니다.\n$E(U)=\\frac{1+2+3+4+5}{5}=3$, $E(U^2)=\\frac{1+4+9+16+25}{5}=11$이므로 $V(U)=E(U^2)-\\{E(U)\\}^2=11-9=2$입니다.\n세 번의 결과를 $U_1,U_2,U_3$라 하면 $\\overline X=\\frac{U_1+U_2+U_3}{3}$입니다. 독립이므로 합의 분산은 각 분산의 합이며,\n$V(\\overline X)=\\frac{1}{3^2}\\{V(U_1)+V(U_2)+V(U_3)\\}=\\frac{2+2+2}{9}=\\frac23$입니다.\n분산은 상수를 더해도 변하지 않고, 3배하면 $3^2$배가 됩니다. 따라서 $V(3\\overline X+1)=9\\cdot\\frac23=6$입니다.\n문제는 분산 $V$가 아니라 표준편차 $\\sigma$를 묻습니다. 표준편차는 분산의 양의 제곱근이므로 $\\sigma(3\\overline X+1)=\\sqrt6$입니다. 정답은 ⑤입니다.",
+    "solution": "한 번 뽑은 카드의 숫자를 $U$라고 놓습니다. 복원추출이므로 매번 $1,2,3,4,5$가 각각 확률 $\\frac{1}{5}$로 나오며 세 시행은 서로 독립입니다.\n$E(U)=\\frac{1+2+3+4+5}{5}=3$, $E(U^2)=\\frac{1+4+9+16+25}{5}=11$이므로 $V(U)=E(U^2)-\\{E(U)\\}^2=11-9=2$입니다.\n세 번의 결과를 $U_1,U_2,U_3$라 하면 $\\overline X=\\frac{U_1+U_2+U_3}{3}$입니다. 독립이므로 합의 분산은 각 분산의 합이며,\n$V(\\overline X)=\\frac{1}{3^2}\\{V(U_1)+V(U_2)+V(U_3)\\}=\\frac{2+2+2}{9}=\\frac23$입니다.\n분산은 상수를 더해도 변하지 않고, 3배하면 $3^2$배가 됩니다. 따라서 $V(3\\overline X+1)=9\\cdot\\frac23=6$입니다.\n문제는 분산 $V$가 아니라 표준편차 $\\sigma$를 묻습니다. 표준편차는 분산의 양의 제곱근이므로 $\\sigma(3\\overline X+1)=\\sqrt6$입니다. 정답은 ⑤입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
@@ -582,7 +598,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "②",
-    "solution": "먼저 좌표를 직접 구하려 하지 말고, 오른쪽 이동 횟수 하나로 모든 움직임을 표현합니다. 주사위가 4 이하일 확률은 $4/6=2/3$이므로 30회 중 오른쪽 이동 횟수 $K$는 $B(30,2/3)$을 따릅니다. 따라서 $E(K)=30\\cdot2/3=20$입니다.\n오른쪽으로 한 번 이동할 때마다 $x$좌표가 2 증가하므로 최종 $x=2K$입니다. 나머지 $30-K$번은 위로 3씩 이동하므로 $y=3(30-K)$입니다.\n점 $(x,y)$에서 직선 $4x+3y=0$까지의 거리는 $\\frac{|4x+3y|}{\\sqrt{4^2+3^2}}$입니다. 이를 대입하면\n$X=\\frac{|4(2K)+3\\cdot3(30-K)|}{5}=\\frac{|8K+270-9K|}{5}=\\frac{|270-K|}{5}$입니다.\n$0\\le K\\le30$이므로 $270-K\\ge240>0$입니다. 따라서 절댓값을 풀면 $X=54-\\frac15K$입니다. 이 부호 확인이 있어야 기댓값의 선형성을 쓸 수 있습니다.\n$E(X)=54-\\frac15E(K)=54-4=50$이므로 정답은 ②입니다.",
+    "solution": "먼저 좌표를 직접 구하려 하지 말고, 오른쪽 이동 횟수 하나로 모든 움직임을 표현합니다. 주사위가 4 이하일 확률은 $\\frac{4}{6}=\\frac{2}{3}$이므로 30회 중 오른쪽 이동 횟수 $K$는 $B(30,\\frac{2}{3})$을 따릅니다. 따라서 $E(K)=30\\cdot2/3=20$입니다.\n오른쪽으로 한 번 이동할 때마다 $x$좌표가 2 증가하므로 최종 $x=2K$입니다. 나머지 $30-K$번은 위로 3씩 이동하므로 $y=3(30-K)$입니다.\n점 $(x,y)$에서 직선 $4x+3y=0$까지의 거리는 $\\frac{|4x+3y|}{\\sqrt{4^2+3^2}}$입니다. 이를 대입하면\n$X=\\frac{|4(2K)+3\\cdot3(30-K)|}{5}=\\frac{|8K+270-9K|}{5}=\\frac{|270-K|}{5}$입니다.\n$0\\le K\\le30$이므로 $270-K\\ge240>0$입니다. 따라서 절댓값을 풀면 $X=54-\\frac15K$입니다. 이 부호 확인이 있어야 기댓값의 선형성을 쓸 수 있습니다.\n$E(X)=54-\\frac15E(K)=54-4=50$이므로 정답은 ②입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
@@ -678,7 +694,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "①",
-    "solution": "한 번에 3개를 뽑을 때, '세 개가 모두 같은 색'이 아닌 사건을 $A$라 합니다. 먼저 여사건을 세면 전체는 ${}_9C_3=84$가지이고, 모두 흰색은 ${}_3C_3=1$가지, 모두 검은색은 ${}_6C_3=20$가지입니다.\n따라서 $P(A)=1-\\frac{1+20}{84}=\\frac{63}{84}=\\frac34$입니다.\n한 시행을 마칠 때마다 공을 다시 넣으므로 1200회의 사건 발생 여부는 서로 독립이고, 발생 횟수 $Y$는 $B(1200,3/4)$를 따릅니다. 이항분포의 평균과 분산은 각각 $np$, $np(1-p)$입니다.\n$E(Y)=1200\\cdot\\frac34=900$, $V(Y)=1200\\cdot\\frac34\\cdot\\frac14=225$이므로 $\\sigma(Y)=15$입니다.\n반복 횟수가 충분히 커 정규분포로 근사하면 $Z\\approx\\frac{Y-900}{15}$입니다. 따라서 문제에서 사용하는 근사 규칙에 따라\n$P(Y\\le870)\\approx P\\left(Z\\le\\frac{870-900}{15}\\right)=P(Z\\le-2)$입니다.\n$P(Z\\le a)$와 비교하면 $a=-2$이므로 정답은 ①입니다. 이 문제는 보기와 표준정규값에 맞추어 연속성 보정을 적용하지 않은 학교식 정규근사입니다.",
+    "solution": "한 번에 3개를 뽑을 때, '세 개가 모두 같은 색'이 아닌 사건을 $A$라 합니다. 먼저 여사건을 세면 전체는 ${}_9C_3=84$가지이고, 모두 흰색은 ${}_3C_3=1$가지, 모두 검은색은 ${}_6C_3=20$가지입니다.\n따라서 $P(A)=1-\\frac{1+20}{84}=\\frac{63}{84}=\\frac34$입니다.\n한 시행을 마칠 때마다 공을 다시 넣으므로 1200회의 사건 발생 여부는 서로 독립이고, 발생 횟수 $Y$는 $B(1200,\\frac{3}{4})$를 따릅니다. 이항분포의 평균과 분산은 각각 $np$, $np(1-p)$입니다.\n$E(Y)=1200\\cdot\\frac34=900$, $V(Y)=1200\\cdot\\frac34\\cdot\\frac14=225$이므로 $\\sigma(Y)=15$입니다.\n반복 횟수가 충분히 커 정규분포로 근사하면 $Z\\approx\\frac{Y-900}{15}$입니다. 따라서 문제에서 사용하는 근사 규칙에 따라\n$P(Y\\le870)\\approx P\\left(Z\\le\\frac{870-900}{15}\\right)=P(Z\\le-2)$입니다.\n$P(Z\\le a)$와 비교하면 $a=-2$이므로 정답은 ①입니다. 이 문제는 보기와 표준정규값에 맞추어 연속성 보정을 적용하지 않은 학교식 정규근사입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -711,7 +727,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_c2261ceadd8baf99ff466bae5d1c5a6c31cb5802"
+    "questionUidProvisional": "qid_candidate_c2261ceadd8baf99ff466bae5d1c5a6c31cb5802",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 사건 A의 발생 횟수에 대한 정규근사 곡선에서 870 이하가 음영으로 표시되어 있다. 표준화 눈금에는 평균에서 0이 표시되어 있다.",
+    "solutionImageCaption": "사건 A의 발생 횟수에서 870 이하의 누적 영역을 나타낸다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 16,
@@ -727,7 +747,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "①",
-    "solution": "공의 숫자에 대한 상대도수는 3이 $80/200=0.4$, 4가 0.3, 5가 0.2, 6이 0.1입니다.\n따라서 $E(X)=3(0.4)+4(0.3)+5(0.2)+6(0.1)=4$이고,\n$E(X^2)=9(0.4)+16(0.3)+25(0.2)+36(0.1)=17$이므로 $V(X)=17-4^2=1$입니다.\n매번 공을 다시 넣으므로 독립인 100회 추출에서는 $E(\\overline X)=4$, $\\sigma(\\overline X)=1/\\sqrt{100}=0.1$입니다.\n$P(\\overline X\\ge k)=0.0228=P(Z\\ge2)$이므로 $(k-4)/0.1=2$, $k=4.2$입니다.\n따라서 $5k=21$, 정답은 ①입니다.",
+    "solution": "공의 숫자에 대한 상대도수는 3이 $\\frac{80}{200}=0.4$, 4가 0.3, 5가 0.2, 6이 0.1입니다.\n따라서 $E(X)=3(0.4)+4(0.3)+5(0.2)+6(0.1)=4$이고,\n$E(X^2)=9(0.4)+16(0.3)+25(0.2)+36(0.1)=17$이므로 $V(X)=17-4^2=1$입니다.\n매번 공을 다시 넣으므로 독립인 100회 추출에서는 $E(\\overline X)=4$, $\\sigma(\\overline X)=1/\\sqrt{100}=0.1$입니다.\n$P(\\overline X\\ge k)=0.0228=P(Z\\ge2)$이므로 $\\frac{k-4}{0.1}=2$, $k=4.2$입니다.\n따라서 $5k=21$, 정답은 ①입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-06",
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
@@ -763,7 +783,11 @@ window.questionBank = [
     "replacementReason": "Original PDF p3 q16 says sample 100 from finite population 200, with no replacement specification; finite population correction changes exact k. Generated with-replacement independent-draw condition makes unique answer 21. Not source-exact.",
     "replacementStage": "MASTER_REPAIR_R2_TO_R3",
     "sourceProvenance": "SUPERVISOR_AUDITED_REPAIR_2026-10-19; source PDF 1ewzasSeHdqRMBS7NP2d2JuyFKfgivMq2 p3; with-replacement independent model condition retained from reviewed correction.",
-    "repairReason": "최종 학생 발문은 100회의 복원추출과 독립성을 명시한다. MASTER 수리 내용을 현재 학생 JS revision에 다시 결속했다."
+    "repairReason": "최종 학생 발문은 100회의 복원추출과 독립성을 명시한다. MASTER 수리 내용을 현재 학생 JS revision에 다시 결속했다.",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 4인 표본평균 정규곡선에서 k 오른쪽 꼬리를 음영으로 표시했고, 표준화 눈금은 평균에서 0, k에서 2이다.",
+    "solutionImageCaption": "표본평균의 평균과 표준편차는 각각 4와 0.1이다. 오른쪽 꼬리확률 0.0228은 표준점수 2에 해당하므로 k의 위치를 정한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -779,7 +803,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "⑤",
-    "solution": "두 확률을 한 번에 계산하지 말고, 먼저 $X$에 관한 확률을 표준화하여 $Y$의 위치를 알아냅니다.\n$X$의 평균이 10, 표준편차가 2이므로 $P(7\\le X\\le10)=P\\left(\\frac{7-10}{2}\\le Z\\le0\\right)=P(-1.5\\le Z\\le0)=0.4332$입니다.\n주어진 합이 $1/2$이므로 $P(Y\\ge10)=0.5-0.4332=0.0668$입니다. 표준정규분포에서 오른쪽 꼬리확률 $0.0668$에 해당하는 값은 $1.5$입니다. 즉\n$P\\left(Z\\ge\\frac{10-m}{\\sigma}\\right)=P(Z\\ge1.5)$이므로 $\\frac{10-m}{\\sigma}=1.5$입니다. ($\\sigma>0$이므로 표준화 방향은 바뀌지 않습니다.)\n이제 구하는 경계 $10+\\sigma/2$를 표준화하면\n$\\frac{(10+\\sigma/2)-m}{\\sigma}=\\frac{10-m}{\\sigma}+\\frac12=1.5+0.5=2$입니다.\n따라서 $P(Y\\le10+\\sigma/2)=P(Z\\le2)$이므로 $a=2$, 정답은 ⑤입니다.",
+    "solution": "두 확률을 한 번에 계산하지 말고, 먼저 $X$에 관한 확률을 표준화하여 $Y$의 위치를 알아냅니다.\n$X$의 평균이 10, 표준편차가 2이므로 $P(7\\le X\\le10)=P\\left(\\frac{7-10}{2}\\le Z\\le0\\right)=P(-1.5\\le Z\\le0)=0.4332$입니다.\n주어진 합이 $\\frac{1}{2}$이므로 $P(Y\\ge10)=0.5-0.4332=0.0668$입니다. 표준정규분포에서 오른쪽 꼬리확률 $0.0668$에 해당하는 값은 $1.5$입니다. 즉\n$P\\left(Z\\ge\\frac{10-m}{\\sigma}\\right)=P(Z\\ge1.5)$이므로 $\\frac{10-m}{\\sigma}=1.5$입니다. ($\\sigma>0$이므로 표준화 방향은 바뀌지 않습니다.)\n이제 구하는 경계 $10+\\sigma/2$를 표준화하면\n$\\frac{(10+\\sigma/2)-m}{\\sigma}=\\frac{10-m}{\\sigma}+\\frac12=1.5+0.5=2$입니다.\n따라서 $P(Y\\le10+\\sigma/2)=P(Z\\le2)$이므로 $a=2$, 정답은 ⑤입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -810,7 +834,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_ae5acc0d5a2f18ae6ae486929f255735bb5b1670"
+    "questionUidProvisional": "qid_candidate_ae5acc0d5a2f18ae6ae486929f255735bb5b1670",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에 −1.5부터 0까지의 구간과 1.5 오른쪽 꼬리가 음영으로 구분되어 있고, 구하는 경계 a가 눈금으로 표시되어 있다.",
+    "solutionImageCaption": "X의 구간을 표준화하면 −1.5부터 0까지이고 그 넓이는 0.4332이다. Y의 오른쪽 꼬리 0.0668에 대응하는 위치가 1.5이며, 구하는 경계는 표준화축에서 a로 표시했다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -826,7 +854,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "①",
-    "solution": "한 시행에서 1~6 중 서로 다른 카드 4장을 고르므로 전체 경우는 ${}_6C_4=15$가지입니다. 두 번째로 작은 수를 $T$라 하면 가능한 값은 2, 3, 4뿐입니다. 그 이유는 두 번째로 작은 수보다 작은 카드가 정확히 한 장, 큰 카드가 정확히 두 장 필요하기 때문입니다.\n$T=2$: 작은 카드는 1로 정해지고 큰 카드 두 장을 $3,4,5,6$에서 골라 ${}_4C_2=6$가지입니다.\n$T=3$: 작은 카드를 $1,2$ 중 하나, 큰 카드 두 장을 $4,5,6$ 중 골라 ${}_2C_1{}_3C_2=6$가지입니다.\n$T=4$: 작은 카드를 $1,2,3$ 중 하나, 큰 카드는 5와 6으로 정해져 3가지입니다.\n따라서 $P(T=2)=6/15$, $P(T=3)=6/15$, $P(T=4)=3/15$입니다. 검산하면 확률 합은 $(6+6+3)/15=1$입니다.\n$E(T)=\\frac{2\\cdot6+3\\cdot6+4\\cdot3}{15}=\\frac{14}{5}$이고,\n$E(T^2)=\\frac{2^2\\cdot6+3^2\\cdot6+4^2\\cdot3}{15}=\\frac{42}{5}$입니다.\n따라서 $V(T)=\\frac{42}{5}-\\left(\\frac{14}{5}\\right)^2=\\frac{210-196}{25}=\\frac{14}{25}$입니다.\n매 시행 후 카드를 원래대로 돌려놓으므로 14회는 독립입니다. 따라서 $V(\\overline X)=\\frac{V(T)}{14}=\\frac1{25}$이고,\n$V(5\\overline X-10)=5^2V(\\overline X)=25\\cdot\\frac1{25}=1$입니다. 정답은 ①입니다.",
+    "solution": "한 시행에서 1~6 중 서로 다른 카드 4장을 고르므로 전체 경우는 ${}_6C_4=15$가지입니다. 두 번째로 작은 수를 $T$라 하면 가능한 값은 2, 3, 4뿐입니다. 그 이유는 두 번째로 작은 수보다 작은 카드가 정확히 한 장, 큰 카드가 정확히 두 장 필요하기 때문입니다.\n$T=2$: 작은 카드는 1로 정해지고 큰 카드 두 장을 $3,4,5,6$에서 골라 ${}_4C_2=6$가지입니다.\n$T=3$: 작은 카드를 $1,2$ 중 하나, 큰 카드 두 장을 $4,5,6$ 중 골라 ${}_2C_1{}_3C_2=6$가지입니다.\n$T=4$: 작은 카드를 $1,2,3$ 중 하나, 큰 카드는 5와 6으로 정해져 3가지입니다.\n따라서 $P(T=2)=\\frac{6}{15}$, $P(T=3)=\\frac{6}{15}$, $P(T=4)=\\frac{3}{15}$입니다. 검산하면 확률 합은 $\\frac{6+6+3}{15}=1$입니다.\n$E(T)=\\frac{2\\cdot6+3\\cdot6+4\\cdot3}{15}=\\frac{14}{5}$이고,\n$E(T^2)=\\frac{2^2\\cdot6+3^2\\cdot6+4^2\\cdot3}{15}=\\frac{42}{5}$입니다.\n따라서 $V(T)=\\frac{42}{5}-\\left(\\frac{14}{5}\\right)^2=\\frac{210-196}{25}=\\frac{14}{25}$입니다.\n매 시행 후 카드를 원래대로 돌려놓으므로 14회는 독립입니다. 따라서 $V(\\overline X)=\\frac{V(T)}{14}=\\frac1{25}$이고,\n$V(5\\overline X-10)=5^2V(\\overline X)=25\\cdot\\frac1{25}=1$입니다. 정답은 ①입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
@@ -859,7 +887,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_6d4ee8b572fb9b2de68f1a6b3389ac68e4aa864c"
+    "questionUidProvisional": "qid_candidate_6d4ee8b572fb9b2de68f1a6b3389ac68e4aa864c",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 번째로 작은 값 2, 3, 4의 도수가 각각 6, 6, 3이고 평균 위치가 점선으로 표시되어 있다.",
+    "solutionImageCaption": "두 번째로 작은 값의 분포와 평균 위치를 나타낸다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 19,
@@ -931,7 +963,7 @@ window.questionBank = [
       "q20.png"
     ],
     "answer": "③",
-    "solution": "처음 카드의 합은 $1+2+3+4+5+6=21$로 홀수입니다. 어떤 카드를 뒤집으면 그 카드에 보이는 숫자 $k$가 $0$으로, 또는 $0$이 $k$로 바뀝니다. 따라서 합의 변화량은 $\\pm k$입니다. 짝수 카드의 뒤집기는 합의 홀짝을 바꾸지 않고, 홀수 카드의 뒤집기만 홀짝을 바꿉니다. 같은 카드를 여러 번 뒤집어도 이 홀짝 원리는 그대로입니다.\n한 시행에서 '동전 앞면이 나오고 주사위가 홀수'일 확률은 $\\frac12\\cdot\\frac36=\\frac14$입니다. 이 사건을 홀짝을 바꾸는 시행이라 하겠습니다. 세 시행은 서로 독립입니다.\n최종 합이 짝수인 사건을 $E$라 하면, 처음 홀수였으므로 홀짝을 바꾸는 시행이 정확히 1번 또는 3번 있어야 합니다.\n$P(E)={}_3C_1\\left(\\frac14\\right)\\left(\\frac34\\right)^2+\\left(\\frac14\\right)^3=\\frac{27}{64}+\\frac1{64}=\\frac7{16}$입니다.\n동전이 세 번 모두 앞면인 사건을 $H$라 하면 $P(H)=(1/2)^3=1/8$입니다. $H$가 일어났을 때는 주사위를 세 번 던지므로 홀수 눈이 홀수 번 나올 확률은 $\\frac12$입니다(독립인 세 번의 홀짝 결과 중 홀수 개와 짝수 개의 경우가 대칭입니다).\n따라서 $P(H\\cap E)=\\frac18\\cdot\\frac12=\\frac1{16}$이고, 구하는 조건부확률은\n$P(H\\mid E)=\\frac{P(H\\cap E)}{P(E)}=\\frac{1/16}{7/16}=\\frac17$입니다.\n서로소인 $p=7,q=1$이므로 $p+q=8$, 정답은 ③입니다.",
+    "solution": "처음 카드의 합은 $1+2+3+4+5+6=21$로 홀수입니다. 어떤 카드를 뒤집으면 그 카드에 보이는 숫자 $k$가 $0$으로, 또는 $0$이 $k$로 바뀝니다. 따라서 합의 변화량은 $\\pm k$입니다. 짝수 카드의 뒤집기는 합의 홀짝을 바꾸지 않고, 홀수 카드의 뒤집기만 홀짝을 바꿉니다. 같은 카드를 여러 번 뒤집어도 이 홀짝 원리는 그대로입니다.\n한 시행에서 '동전 앞면이 나오고 주사위가 홀수'일 확률은 $\\frac12\\cdot\\frac36=\\frac14$입니다. 이 사건을 홀짝을 바꾸는 시행이라 하겠습니다. 세 시행은 서로 독립입니다.\n최종 합이 짝수인 사건을 $E$라 하면, 처음 홀수였으므로 홀짝을 바꾸는 시행이 정확히 1번 또는 3번 있어야 합니다.\n$P(E)={}_3C_1\\left(\\frac14\\right)\\left(\\frac34\\right)^2+\\left(\\frac14\\right)^3=\\frac{27}{64}+\\frac1{64}=\\frac7{16}$입니다.\n동전이 세 번 모두 앞면인 사건을 $H$라 하면 $P(H)=(\\frac{1}{2})^3=\\frac{1}{8}$입니다. $H$가 일어났을 때는 주사위를 세 번 던지므로 홀수 눈이 홀수 번 나올 확률은 $\\frac12$입니다(독립인 세 번의 홀짝 결과 중 홀수 개와 짝수 개의 경우가 대칭입니다).\n따라서 $P(H\\cap E)=\\frac18\\cdot\\frac12=\\frac1{16}$이고, 구하는 조건부확률은\n$P(H\\mid E)=\\frac{P(H\\cap E)}{P(E)}=\\frac{\\frac{1}{16}}{\\frac{7}{16}}=\\frac17$입니다.\n서로소인 $p=7,q=1$이므로 $p+q=8$, 정답은 ③입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-04",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
@@ -1007,7 +1039,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_67ec8e1979aca8607e7de42d6661282fa2a6db01"
+    "questionUidProvisional": "qid_candidate_67ec8e1979aca8607e7de42d6661282fa2a6db01",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로는 첫째 눈 a, 세로는 둘째 눈 b인 표에서 b<2a인 칸을 음영으로 표시했다.",
+    "solutionImageCaption": "두 주사위 결과 가운데 b<2a인 순서쌍을 음영으로 표시한다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1089,7 +1125,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_1578399c952a16fba8c07279f21f51a3fa62c1cf"
+    "questionUidProvisional": "qid_candidate_1578399c952a16fba8c07279f21f51a3fa62c1cf",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽은 평균 120, 표준편차 8인 곡선에서 108 이하가 음영이고 표준화값은 −1.5이다. 아래쪽은 평균 40, 표준편차 6인 곡선에서 49 이하가 음영이고 표준화값은 1.5이다.",
+    "solutionImageCaption": "한 상자의 무게를 표준화해 불량 확률을 구한다. 이어 불량 상자 수의 평균과 표준편차를 구하고 49를 표준화해 누적확률을 읽는다. 정답은 0.9이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 24,
@@ -1101,7 +1141,7 @@ window.questionBank = [
       "q24.png"
     ],
     "answer": "521",
-    "solution": "[1. $f$의 전체 넓이로 $k$ 구하기]\n확률밀도함수의 그래프 아래 넓이는 반드시 1입니다. 그림에서 $0\\le x\\le2$는 밑변 2, 높이 $k$인 삼각형이므로 넓이가 $k$입니다. $2\\le x\\le4$는 너비 2, 높이 $k$인 직사각형이므로 $2k$입니다. $4\\le x\\le5$는 밑변 1, 높이 $k$인 삼각형이므로 $k/2$입니다.\n따라서 $k+2k+\\frac{k}{2}=1$, $\\frac72k=1$, $k=\\frac27$입니다.\n[2. 주어진 식을 $g$의 식으로 바꾸기]\n$-5\\le x\\le0$에서 $f(x+5)+g(-x)=a+k$입니다. $y=-x$로 치환하면 $0\\le y\\le5$이고 $x+5=5-y$이므로 $g(y)=a+k-f(5-y)$입니다.\n양변을 $y=0$부터 5까지 적분합니다. $\\int_0^5g(y)\\,dy=1$이고 $\\int_0^5f(5-y)\\,dy=1$이므로 $1=5(a+k)-1$입니다. 따라서 $a+k=\\frac25$, $a=\\frac25-\\frac27=\\frac4{35}$입니다. 실제로 $\\frac4{35}<\\frac{10}{35}=k$여서 $a<k$도 만족합니다.\n[3. 확률구간과 그래프의 대응]\n$5a=\\frac47$, $35a-1=3$이므로 $p=P(\\frac47\\le Y\\le3)$입니다. $f(5-y)$는 원래 $f$ 그래프를 좌우로 뒤집어 읽은 값입니다.\n$0\\le y\\le1$일 때 $5-y\\in[4,5]$이므로 $f(5-y)=ky=\\frac27y$입니다. 따라서 $g(y)=\\frac25-\\frac27y$입니다.\n$1\\le y\\le3$일 때 $5-y\\in[2,4]$이므로 $f(5-y)=k=\\frac27$입니다. 따라서 $g(y)=\\frac25-\\frac27=\\frac4{35}$입니다.\n(참고로 $3\\le y\\le5$에서는 $g(y)=\\frac25-\\frac{5-y}{7}$입니다. 이 구간은 이번 적분 범위 밖입니다.)\n[4. 넓이를 적분해 마무리]\n$p=\\int_{4/7}^{1}\\left(\\frac25-\\frac27y\\right)dy+\\int_1^3\\frac4{35}dy$\n$=\\left[\\frac25y-\\frac17y^2\\right]_{4/7}^{1}+\\frac8{35}$\n$=\\frac{129}{1715}+\\frac{392}{1715}=\\frac{521}{1715}$입니다.\n따라서 $7^3\\times5\\times p=1715\\times\\frac{521}{1715}=521$입니다.",
+    "solution": "[1. $f$의 전체 넓이로 $k$ 구하기]\n확률밀도함수의 그래프 아래 넓이는 반드시 1입니다. 그림에서 $0\\le x\\le2$는 밑변 2, 높이 $k$인 삼각형이므로 넓이가 $k$입니다. $2\\le x\\le4$는 너비 2, 높이 $k$인 직사각형이므로 $2k$입니다. $4\\le x\\le5$는 밑변 1, 높이 $k$인 삼각형이므로 $\\frac{k}{2}$입니다.\n따라서 $k+2k+\\frac{k}{2}=1$, $\\frac72k=1$, $k=\\frac27$입니다.\n[2. 주어진 식을 $g$의 식으로 바꾸기]\n$-5\\le x\\le0$에서 $f(x+5)+g(-x)=a+k$입니다. $y=-x$로 치환하면 $0\\le y\\le5$이고 $x+5=5-y$이므로 $g(y)=a+k-f(5-y)$입니다.\n양변을 $y=0$부터 5까지 적분합니다. $\\int_0^5g(y)\\,dy=1$이고 $\\int_0^5f(5-y)\\,dy=1$이므로 $1=5(a+k)-1$입니다. 따라서 $a+k=\\frac25$, $a=\\frac25-\\frac27=\\frac4{35}$입니다. 실제로 $\\frac4{35}<\\frac{10}{35}=k$여서 $a<k$도 만족합니다.\n[3. 확률구간과 그래프의 대응]\n$5a=\\frac47$, $35a-1=3$이므로 $p=P(\\frac47\\le Y\\le3)$입니다. $f(5-y)$는 원래 $f$ 그래프를 좌우로 뒤집어 읽은 값입니다.\n$0\\le y\\le1$일 때 $5-y\\in[4,5]$이므로 $f(5-y)=ky=\\frac27y$입니다. 따라서 $g(y)=\\frac25-\\frac27y$입니다.\n$1\\le y\\le3$일 때 $5-y\\in[2,4]$이므로 $f(5-y)=k=\\frac27$입니다. 따라서 $g(y)=\\frac25-\\frac27=\\frac4{35}$입니다.\n(참고로 $3\\le y\\le5$에서는 $g(y)=\\frac25-\\frac{5-y}{7}$입니다. 이 구간은 이번 적분 범위 밖입니다.)\n[4. 넓이를 적분해 마무리]\n$p=\\int_{4/7}^{1}\\left(\\frac25-\\frac27y\\right)dy+\\int_1^3\\frac4{35}dy$\n$=\\left[\\frac25y-\\frac17y^2\\right]_{4/7}^{1}+\\frac8{35}$\n$=\\frac{129}{1715}+\\frac{392}{1715}=\\frac{521}{1715}$입니다.\n따라서 $7^3\\times5\\times p=1715\\times\\frac{521}{1715}=521$입니다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
@@ -1135,12 +1175,14 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "R1_RPM_L4_COVERAGE_GAP_ACTIVE_PT_TPL_REUSED",
     "questionUidProvisional": "qid_candidate_67d0bacf80e9b65a9d656b862272829e3b8b8fe1",
-    "solutionImage": "assets/solutions/22_효천고_2학기_기말_고2_확률과통계/q24-solution.svg",
-    "solutionImageAlt": "확률밀도함수 g의 꺾은선 그래프에서 4/7부터 3까지의 확률 넓이를 표시한 그림",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: g(y)의 밀도곡선에서 4/7부터 1까지와 1부터 3까지의 그래프 아래 두 영역이 서로 다른 옅은 음영으로 표시되어 있다.",
     "sourceMode": "ALIVE_REPLACEMENT",
     "replacementReason": "Original PDF p4 q24 has x∈[0,5] but f(x+5),g(-x) undefined on much of domain and printed a>k contradicts density normalization a=4/35<k=2/7. R2 had already corrected domain and inequality; provenance explicitly marks this non-source-exact replacement.",
     "replacementStage": "R2_EXISTING_REPAIR_MASTER_PROVENANCE_REBIND",
     "sourceProvenance": "SUPERVISOR_AUDITED_REPAIR_2026-10-19; source PDF 1ewzasSeHdqRMBS7NP2d2JuyFKfgivMq2 p4; support and a<k correction retained from reviewed correction.",
-    "repairReason": "원문의 적분 범위에서 f(x+5), g(-x)가 정의되지 않고 a>k는 정규화 결과와 모순된다. 현재 학생 JS의 [-5,0], a<k 수정과 해설을 MASTER ledger 근거에 결속했다."
+    "repairReason": "원문의 적분 범위에서 f(x+5), g(-x)가 정의되지 않고 a>k는 정규화 결과와 모순된다. 현재 학생 JS의 [-5,0], a<k 수정과 해설을 MASTER ledger 근거에 결속했다.",
+    "solutionImageCaption": "좌우 대응식에서 얻은 g(y)의 그래프를 그리고, 구간 4/7부터 1까지와 1부터 3까지의 넓이를 더한다. 두 부분은 사다리꼴과 직사각형 영역이다. 정답은 521이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -352,7 +352,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "⑤",
-    "solution": "$f(0)=a/c=3$에서 $a=3c$이다. 수직점근선 $x=-2$는 $-c/b=-2$이므로 $c=2b$이다. 무한대 극한은 최고차항 계수비 $1/b=1/3$이므로 $b=3$이다. 따라서 $c=6$, $a=18$이고 $$a+b+c=18+3+6=27.$$ 다른 선택지는 수직·수평점근선의 조건을 혼동한 값이다. **정답 ⑤ $27$**.",
+    "solution": "$f(0)=\\frac{a}{c}=3$에서 $a=3c$이다. 수직점근선 $x=-2$는 $-\\frac{c}{b}=-2$이므로 $c=2b$이다. 무한대 극한은 최고차항 계수비 $\\frac{1}{b}=\\frac{1}{3}$이므로 $b=3$이다. 따라서 $c=6$, $a=18$이고 $$a+b+c=18+3+6=27.$$ 다른 선택지는 수직·수평점근선의 조건을 혼동한 값이다. **정답 ⑤ $27$**.",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-01",
     "subUnitKey": "H15-M2-01-LIMIT",
@@ -424,7 +424,7 @@ window.questionBank = [
       "assets/images/20_매산고_2학기_중간_고2_수학II/q13.png"
     ],
     "answer": "④",
-    "solution": "그림의 왼쪽 직선은 $(-2,3)$과 $(0,2)$를 지나므로 기울기가 $-1/2$이다. 오른쪽 $x\\ge1$은 수평선 $y=1$이므로 기울기가 $0$이다. 연결 다항식 $h(x)=ax^3+bx^2+cx+d$가 양 끝에서 함수값과 미분계수까지 이어져야 한다. $$h(0)=d=2,\\quad h'(0)=c=-\\frac12.$$ $$h(1)=1\\Rightarrow a+b=-\\frac12,\\qquad h'(1)=0\\Rightarrow3a+2b=\\frac12.$$ 풀면 $a=3/2$, $b=-2$이다. 따라서 $$(a-c)^2+b+d=\\left(\\frac32+\\frac12\\right)^2-2+2=4.$$ **정답 ④ $4$**.",
+    "solution": "그림의 왼쪽 직선은 $(-2,3)$과 $(0,2)$를 지나므로 기울기가 $-\\frac{1}{2}$이다. 오른쪽 $x\\ge1$은 수평선 $y=1$이므로 기울기가 $0$이다. 연결 다항식 $h(x)=ax^3+bx^2+cx+d$가 양 끝에서 함수값과 미분계수까지 이어져야 한다. $$h(0)=d=2,\\quad h'(0)=c=-\\frac12.$$ $$h(1)=1\\Rightarrow a+b=-\\frac12,\\qquad h'(1)=0\\Rightarrow3a+2b=\\frac12.$$ 풀면 $a=\\frac{3}{2}$, $b=-2$이다. 따라서 $$(a-c)^2+b+d=\\left(\\frac32+\\frac12\\right)^2-2+2=4.$$ **정답 ④ $4$**.",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-03",
     "subUnitKey": "H15-M2-03-DERIVATIVE",

@@ -332,6 +332,14 @@ const requiredCommands = [
     args: ['--test', 'apmath/playground/next/tools/catalog.test.mjs']
   },
   {
+    label: 'apmath/playground/next/tools/apl-overview.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/apl-overview.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/alg-final-geometry.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/alg-final-geometry.test.mjs']
+  },
+  {
     label: 'apmath/playground/next/tools/hub-no-legacy.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/hub-no-legacy.test.mjs']
   },

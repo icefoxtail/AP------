@@ -3976,7 +3976,7 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "④",
-    "solution": "앞 네 분수의 순환마디는 6, 6, 6, 3? 2/15=0.1dot3만 길이 1의 3이고 나머지는 6이다.",
+    "solution": "앞 네 분수의 순환마디는 6, 6, 6, 3? $\\frac{2}{15}$=0.1dot3만 길이 1의 3이고 나머지는 6이다.",
     "displayNo": "0114",
     "questionNo": 114,
     "sourceQuestionNo": 114,

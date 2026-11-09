@@ -367,7 +367,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "④",
-    "solution": "[키포인트] $f(x)-2g(x)$를 하나의 작은 항으로 두고 $f(x)$를 $g(x)$로 나타낸다.\n조건 정리: $u(x)=f(x)-2g(x)$라 두면 $u(x)\\to1$이고 $f(x)=2g(x)+u(x)$이다.\n풀이 방향: 분자와 분모에 $f=2g+u$를 대입한 뒤 $g(x)$로 나눈다.\n정석 풀이: $4f+g=4(2g+u)+g=9g+4u$이고 $-f+3g=-(2g+u)+3g=g-u$이다. 따라서 $\\dfrac{4f+g}{-f+3g}=\\dfrac{9+4u/g}{1-u/g}$이다. $g\\to\\infty$, $u\\to1$이므로 $u/g\\to0$이고 극한값은 $9$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] $f(x)-2g(x)$를 하나의 작은 항으로 두고 $f(x)$를 $g(x)$로 나타낸다.\n조건 정리: $u(x)=f(x)-2g(x)$라 두면 $u(x)\\to1$이고 $f(x)=2g(x)+u(x)$이다.\n풀이 방향: 분자와 분모에 $f=2g+u$를 대입한 뒤 $g(x)$로 나눈다.\n정석 풀이: $4f+g=4(2g+u)+g=9g+4u$이고 $-f+3g=-(2g+u)+3g=g-u$이다. 따라서 $\\dfrac{4f+g}{-f+3g}=\\dfrac{9+4u/g}{1-\\frac{u}{g}}$이다. $g\\to\\infty$, $u\\to1$이므로 $u/g\\to0$이고 극한값은 $9$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",

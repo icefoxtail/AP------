@@ -457,7 +457,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n좌표를 편하게 정해도 넓이의 비는 변하지 않는다. 밑변과 높이를 비교한다.\n\n풀이 과정\n계산을 쉽게 하기 위해 $B(0,0)$, $C(2,0)$으로 두고, $A$의 높이를 $h$라고 하자.\n그러면 $BC=2$이고, 삼각형 $ABC$의 넓이는\n$\\dfrac12\\cdot2\\cdot h=h$이다.\n\n$M$은 $BC$의 중점이므로 $M(1,0)$이다.\n$N$은 $AM$의 중점이므로 $N$의 높이는 $h$의 절반인 $\\dfrac h2$이다.\n또 $P$는 선분 $MC$를 $3:2$로 외분하므로, $M(1,0)$과 $C(2,0)$을 기준으로 $P$는 $C$의 바깥쪽에 있고 $CP=2$가 된다.\n따라서 삼각형 $NCP$는 밑변 $CP=2$, 높이 $\\dfrac h2$를 가지므로 넓이는\n$\\dfrac12\\cdot2\\cdot\\dfrac h2=\\dfrac h2$이다.\n그러므로\n$\\dfrac{[ABC]}{[NCP]}=\\dfrac{h}{h/2}=2$이다.\n\n결론\n따라서 $k=2$이므로 정답은 ②이다.",
+    "solution": "[키포인트]\n좌표를 편하게 정해도 넓이의 비는 변하지 않는다. 밑변과 높이를 비교한다.\n\n풀이 과정\n계산을 쉽게 하기 위해 $B(0,0)$, $C(2,0)$으로 두고, $A$의 높이를 $h$라고 하자.\n그러면 $BC=2$이고, 삼각형 $ABC$의 넓이는\n$\\dfrac12\\cdot2\\cdot h=h$이다.\n\n$M$은 $BC$의 중점이므로 $M(1,0)$이다.\n$N$은 $AM$의 중점이므로 $N$의 높이는 $h$의 절반인 $\\dfrac h2$이다.\n또 $P$는 선분 $MC$를 $3:2$로 외분하므로, $M(1,0)$과 $C(2,0)$을 기준으로 $P$는 $C$의 바깥쪽에 있고 $CP=2$가 된다.\n따라서 삼각형 $NCP$는 밑변 $CP=2$, 높이 $\\dfrac h2$를 가지므로 넓이는\n$\\dfrac12\\cdot2\\cdot\\dfrac h2=\\dfrac h2$이다.\n그러므로\n$\\dfrac{[ABC]}{[NCP]}=\\dfrac{h}{\\frac{h}{2}}=2$이다.\n\n결론\n따라서 $k=2$이므로 정답은 ②이다.",
     "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q13-solution.svg",
     "solutionImageAlt": "삼각형 ABC에서 밑변 BC=2, 높이 h인 A와 중점 M, AM의 중점 N(높이 h/2), MC를 3:2로 외분한 점 P(CP=2)를 표시하여 [NCP]=h/2, k=2임을 보여 준다.",
     "solutionImageSize": "full",

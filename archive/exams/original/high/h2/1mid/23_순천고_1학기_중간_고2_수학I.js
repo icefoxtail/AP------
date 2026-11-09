@@ -73,7 +73,7 @@ window.questionBank = [
       "$\\frac{1}{\\sqrt{2}}$"
     ],
     "answer": "⑤",
-    "solution": "<p>그림에서 직선 $y=x$ 위의 점 $(1/2,1/2)$와 같은 높이의 점을 로그곡선 위에 표시했고, 그 점의 $x$좌표가 $a$입니다.</p><p>따라서 $\\log_{1/2}a=1/2$이므로 $a=(1/2)^{1/2}=1/\\sqrt2$입니다. 정답 <b>⑤</b>. 그림의 점선은 $y=x$ 위의 $(1/2,1/2)$에서 수평으로 로그곡선까지 이어지고, 그 로그곡선 점의 $x$좌표를 $a$로 표시합니다. 두 실선의 교점은 다른 곳이므로 $\\log_{1/2}a=a$로 놓으면 안 됩니다. $\\log_{1/2}a=1/2$에서 $a=1/\\sqrt2$입니다.</p>",
+    "solution": "<p>그림에서 직선 $y=x$ 위의 점 $(\\frac{1}{2},\\frac{1}{2})$와 같은 높이의 점을 로그곡선 위에 표시했고, 그 점의 $x$좌표가 $a$입니다.</p><p>따라서 $\\log_{\\frac{1}{2}}a=\\frac{1}{2}$이므로 $a=(\\frac{1}{2})^{\\frac{1}{2}}=1/\\sqrt2$입니다. 정답 <b>⑤</b>. 그림의 점선은 $y=x$ 위의 $(\\frac{1}{2},\\frac{1}{2})$에서 수평으로 로그곡선까지 이어지고, 그 로그곡선 점의 $x$좌표를 $a$로 표시합니다. 두 실선의 교점은 다른 곳이므로 $\\log_{\\frac{1}{2}}a=a$로 놓으면 안 됩니다. $\\log_{\\frac{1}{2}}a=\\frac{1}{2}$에서 $a=1/\\sqrt2$입니다.</p>",
     "standardUnitKey": "H15-M1-04",
     "subUnitKey": null,
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
@@ -163,7 +163,7 @@ window.questionBank = [
       "$\\frac{6}{5}\\pi = 210^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "<p>라디안 변환 공식은 $180^\\circ=\\pi$입니다. ① $-12^\\circ=-\\pi/15$, ② $3\\pi/5=108^\\circ$, ③ $30^\\circ/\\pi=1/6$, ④ $-225^\\circ=-5\\pi/4$는 모두 옳습니다.</p><p>⑤ $6\\pi/5=216^\\circ$이지 $210^\\circ$가 아닙니다. 정답 <b>⑤</b>.</p>",
+    "solution": "<p>라디안 변환 공식은 $180^\\circ=\\pi$입니다. ① $-12^\\circ=-\\pi/15$, ② $3\\pi/5=108^\\circ$, ③ $30^\\circ/\\pi=\\frac{1}{6}$, ④ $-225^\\circ=-5\\pi/4$는 모두 옳습니다.</p><p>⑤ $6\\pi/5=216^\\circ$이지 $210^\\circ$가 아닙니다. 정답 <b>⑤</b>.</p>",
     "standardUnitKey": "H15-M1-05",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "problemTypeKey": null,
@@ -253,7 +253,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "④",
-    "solution": "<p>$t=5^{1/6}>1$이라 하면 $x=(t+t^{-1})/2$입니다. 따라서 $x^2-1=(t-t^{-1})^2/4$입니다.</p><p>$t>1$이므로 $\\sqrt{x^2-1}=(t-t^{-1})/2$입니다. 두 식을 더하면 $x+\\sqrt{x^2-1}=t$.</p><p>6제곱은 $t^6=5$로 정답 <b>④</b>입니다.</p>",
+    "solution": "<p>$t=5^{\\frac{1}{6}}>1$이라 하면 $x=(t+t^{-1})/2$입니다. 따라서 $x^2-1=(t-t^{-1})^2/4$입니다.</p><p>$t>1$이므로 $\\sqrt{x^2-1}=(t-t^{-1})/2$입니다. 두 식을 더하면 $x+\\sqrt{x^2-1}=t$.</p><p>6제곱은 $t^6=5$로 정답 <b>④</b>입니다.</p>",
     "standardUnitKey": "H15-M1-01",
     "subUnitKey": "H15-M1-01-EXPONENT",
     "problemTypeKey": null,
@@ -283,7 +283,7 @@ window.questionBank = [
       "ㄱ, ㄷ, ㄹ"
     ],
     "answer": "④",
-    "solution": "<p>ㄱ $\\log_{\\sqrt2}(2-3x)=\\log_{\\sqrt2}3+\\log_{\\sqrt2}(2/3-x)$이므로 수평 반사·이동과 수직 이동으로 얻습니다.</p><p>ㄴ $(\\sqrt2/2)^x$는 역함수 반사 $y=x$와 축 대칭을 통해, ㄷ $2^{x/2-1}+3=(\\sqrt2)^{x-2}+3$는 역함수와 평행이동을 통해 얻습니다.</p><p>ㄹ $2\\log_{\\sqrt2}(x-1)$은 세로 확대가 필요하여 평행·대칭만으로는 얻지 못합니다. 정답은 ㄱ, ㄴ, ㄷ인 <b>④</b>입니다.</p>",
+    "solution": "<p>ㄱ $\\log_{\\sqrt2}(2-3x)=\\log_{\\sqrt2}3+\\log_{\\sqrt2}(\\frac{2}{3}-x)$이므로 수평 반사·이동과 수직 이동으로 얻습니다.</p><p>ㄴ $(\\sqrt2/2)^x$는 역함수 반사 $y=x$와 축 대칭을 통해, ㄷ $2^{\\frac{x}{2}-1}+3=(\\sqrt2)^{x-2}+3$는 역함수와 평행이동을 통해 얻습니다.</p><p>ㄹ $2\\log_{\\sqrt2}(x-1)$은 세로 확대가 필요하여 평행·대칭만으로는 얻지 못합니다. 정답은 ㄱ, ㄴ, ㄷ인 <b>④</b>입니다.</p>",
     "standardUnitKey": "H15-M1-04",
     "subUnitKey": null,
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
@@ -316,7 +316,7 @@ window.questionBank = [
       "$\\frac{3}{100}$"
     ],
     "answer": "①",
-    "solution": "<p>$t=\\log x$로 두면 $x=10^t$이고 $y=x^{4-t}/10=10^{t(4-t)-1}$입니다.</p><p>$t(4-t)-1=-(t-2)^2+3$이므로 최댓값은 $t=2$에서 $b=10^3=1000$입니다.</p><p>이때 $a=x=10^2=100$이므로 $b/a=10$. 정답 <b>①</b>.</p>",
+    "solution": "<p>$t=\\log x$로 두면 $x=10^t$이고 $y=x^{4-t}/10=10^{t(4-t)-1}$입니다.</p><p>$t(4-t)-1=-(t-2)^2+3$이므로 최댓값은 $t=2$에서 $b=10^3=1000$입니다.</p><p>이때 $a=x=10^2=100$이므로 $\\frac{b}{a}=10$. 정답 <b>①</b>.</p>",
     "standardUnitKey": "H15-M1-04",
     "subUnitKey": null,
     "problemTypeKey": "PT_FUNCTION_EXTREMUM",
@@ -412,7 +412,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "<p>$c=\\cos\\theta\\ne0$라 하면 $9c^2+1/c^2=6$에서 $(3c-1/c)^2=0$이므로 $c^2=1/3$입니다.</p><p>따라서 $s^2=\\sin^2\\theta=2/3$입니다. $(s-1/s)^2=s^2+1/s^2-2=2/3+3/2-2=1/6$입니다.</p><p>$(c-1/c)^2=1/3+3-2=4/3$이므로 두 값의 합은 $3/2$, 두 배는 $3$. 정답 <b>②</b>.</p>",
+    "solution": "<p>$c=\\cos\\theta\\ne0$라 하면 $9c^2+1/c^2=6$에서 $(3c-\\frac{1}{c})^2=0$이므로 $c^2=\\frac{1}{3}$입니다.</p><p>따라서 $s^2=\\sin^2\\theta=\\frac{2}{3}$입니다. $(s-\\frac{1}{s})^2=s^2+1/s^2-2=\\frac{2}{3}+\\frac{3}{2}-2=\\frac{1}{6}$입니다.</p><p>$(c-\\frac{1}{c})^2=\\frac{1}{3}+3-2=\\frac{4}{3}$이므로 두 값의 합은 $\\frac{3}{2}$, 두 배는 $3$. 정답 <b>②</b>.</p>",
     "standardUnitKey": "H15-M1-05",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "problemTypeKey": null,
@@ -476,7 +476,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "⑤",
-    "solution": "<p>$T=0$이 허용되므로 $c>0$입니다. 표에서 $T$가 증가할수록 $P$가 증가합니다. $c+T>0$이므로 $T$가 증가하면 $1/(c+T)$는 감소합니다. 그런데 $a+b/(c+T)$는 증가해야 하므로 $b<0$입니다. 미분 없이 단조성만 사용합니다.</p><p>ㄱ $T=0$에서 $a+b/c=\\log4.8$입니다. $4<4.8<5$이고 $\\log4=2\\log2=0.602$, $\\log5=1-\\log2=0.699$이므로, 주어진 $\\log2=0.301$만으로 $0.602<\\log4.8<0.699$를 증명할 수 있습니다. ㄴ $b<0$ 참, ㄷ $c>0$ 참입니다.</p><p>ㄹ $b/(c+T)<0$이므로 $\\log P<a$, 즉 $P<10^a$입니다. 네 문장이 모두 참이므로 <b>⑤</b>입니다.</p>",
+    "solution": "<p>$T=0$이 허용되므로 $c>0$입니다. 표에서 $T$가 증가할수록 $P$가 증가합니다. $c+T>0$이므로 $T$가 증가하면 $\\frac{1}{(c+T)}$는 감소합니다. 그런데 $a+\\frac{b}{(c+T)}$는 증가해야 하므로 $b<0$입니다. 미분 없이 단조성만 사용합니다.</p><p>ㄱ $T=0$에서 $a+\\frac{b}{c}=\\log4.8$입니다. $4<4.8<5$이고 $\\log4=2\\log2=0.602$, $\\log5=1-\\log2=0.699$이므로, 주어진 $\\log2=0.301$만으로 $0.602<\\log4.8<0.699$를 증명할 수 있습니다. ㄴ $b<0$ 참, ㄷ $c>0$ 참입니다.</p><p>ㄹ $\\frac{b}{(c+T)}<0$이므로 $\\log P<a$, 즉 $P<10^a$입니다. 네 문장이 모두 참이므로 <b>⑤</b>입니다.</p>",
     "standardUnitKey": "H15-M1-03",
     "subUnitKey": null,
     "problemTypeKey": null,
@@ -506,7 +506,7 @@ window.questionBank = [
       "10500년"
     ],
     "answer": "③",
-    "solution": "<p>반감기가 5700년이므로 $t$년 후 남는 비율은 $(1/2)^{t/5700}$입니다.</p><p>남은 양이 30%이므로 $(1/2)^{t/5700}=0.3$. 상용로그를 취하면 $(t/5700)\\log0.5=\\log0.3$입니다.</p><p>$\\log0.5=-0.3$, $\\log0.3=\\log3-1=0.5-1=-0.5$이므로 $t/5700=5/3$, $t=9500$년입니다. 정답 <b>③</b>.</p>",
+    "solution": "<p>반감기가 5700년이므로 $t$년 후 남는 비율은 $(\\frac{1}{2})^{\\frac{t}{5700}}$입니다.</p><p>남은 양이 30%이므로 $(\\frac{1}{2})^{\\frac{t}{5700}}=0.3$. 상용로그를 취하면 $(\\frac{t}{5700})\\log0.5=\\log0.3$입니다.</p><p>$\\log0.5=-0.3$, $\\log0.3=\\log3-1=0.5-1=-0.5$이므로 $\\frac{t}{5700}=\\frac{5}{3}$, $t=9500$년입니다. 정답 <b>③</b>.</p>",
     "standardUnitKey": "H15-M1-03",
     "subUnitKey": null,
     "problemTypeKey": null,
@@ -536,7 +536,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "<p>원 중심은 $(5/3,0)$입니다. 지름 양 끝의 로그그래프 교점을 $P=(x_1,y_1)$, $Q=(x_2,y_2)$라 하면 $x_1+x_2=10/3$, $y_1+y_2=0$입니다.</p><p>로그의 합으로 $\\log_a(x_1x_2)=0$이므로 $x_1x_2=1$. 따라서 $x_1,x_2$는 $t^2-(10/3)t+1=0$의 근으로 $1/3,3$입니다.</p><p>$x=3$에서 원의 방정식은 $(4/3)^2+y^2=25/9$이므로 $y=1$ (증가 로그). $\\log_a3=1$에서 $a=3$, 정답 <b>①</b>.</p>",
+    "solution": "<p>원 중심은 $(\\frac{5}{3},0)$입니다. 지름 양 끝의 로그그래프 교점을 $P=(x_1,y_1)$, $Q=(x_2,y_2)$라 하면 $x_1+x_2=\\frac{10}{3}$, $y_1+y_2=0$입니다.</p><p>로그의 합으로 $\\log_a(x_1x_2)=0$이므로 $x_1x_2=1$. 따라서 $x_1,x_2$는 $t^2-(\\frac{10}{3})t+1=0$의 근으로 $\\frac{1}{3},3$입니다.</p><p>$x=3$에서 원의 방정식은 $(\\frac{4}{3})^2+y^2=\\frac{25}{9}$이므로 $y=1$ (증가 로그). $\\log_a3=1$에서 $a=3$, 정답 <b>①</b>.</p>",
     "standardUnitKey": "H15-M1-04",
     "subUnitKey": null,
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
@@ -568,7 +568,7 @@ window.questionBank = [
       "61"
     ],
     "answer": "④",
-    "solution": "<p>$OA=\\sqrt8=2\\sqrt2$이고 접점 A에서 $OA\\perp AP_n$입니다. 직각삼각형에서 $\\sin\\angle AP_nO=OA/OP_n$입니다.</p><p>$P_n$은 중심 $(n,n)$, 반지름 $2\\sqrt2$인 원 위에 있으므로 $OP_n$의 최소·최대는 각각 $\\sqrt2(n-2)$, $\\sqrt2(n+2)$입니다.</p><p>따라서 $f(n)=\\frac{2}{n-2}\\cdot\\frac{2}{n+2}=\\frac4{n^2-4}=\\frac1{n-2}-\\frac1{n+2}$입니다.</p><p>짝수 $n=6,8,\\ldots,18$을 합하면 중간 항이 소거되어 $1/4+1/6-1/18-1/20=14/45$입니다. 따라서 $p=45,q=14$, $p+q=59$. 정답 <b>④</b>.</p>",
+    "solution": "<p>$OA=\\sqrt8=2\\sqrt2$이고 접점 A에서 $OA\\perp AP_n$입니다. 직각삼각형에서 $\\sin\\angle AP_nO=OA/OP_n$입니다.</p><p>$P_n$은 중심 $(n,n)$, 반지름 $2\\sqrt2$인 원 위에 있으므로 $OP_n$의 최소·최대는 각각 $\\sqrt2(n-2)$, $\\sqrt2(n+2)$입니다.</p><p>따라서 $f(n)=\\frac{2}{n-2}\\cdot\\frac{2}{n+2}=\\frac4{n^2-4}=\\frac1{n-2}-\\frac1{n+2}$입니다.</p><p>짝수 $n=6,8,\\ldots,18$을 합하면 중간 항이 소거되어 $\\frac{1}{4}+\\frac{1}{6}-\\frac{1}{18}-\\frac{1}{20}=\\frac{14}{45}$입니다. 따라서 $p=45,q=14$, $p+q=59$. 정답 <b>④</b>.</p>",
     "standardUnitKey": "H15-M1-05",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "problemTypeKey": null,
@@ -595,7 +595,7 @@ window.questionBank = [
     "content": "서답형 1. (서술형) $a>0, a \\ne 1$인 실수 $a$에 대하여 $(\\sqrt[5]{a^2})^2 = \\sqrt[3]{a\\sqrt{a^k}}$일 때, 유리수 $k$에 대하여 $10k$의 값을 구하는 풀이 과정과 답을 서술하시오. [부분 점수 있음, 6점] [6점]",
     "choices": [],
     "answer": "28",
-    "solution": "<p>$a>0$, $a\\ne1$이므로 지수법칙을 적용해도 됩니다. 왼쪽은 $(a^{2/5})^2=a^{4/5}$입니다.</p><p>오른쪽은 $\\sqrt[3]{a\\sqrt{a^k}}=(a\\cdot a^{k/2})^{1/3}=a^{1/3+k/6}$입니다.</p><p>지수를 비교하면 $4/5=1/3+k/6$, 따라서 $k/6=7/15$, $k=14/5$입니다. $10k=\\boxed{28}$입니다.</p>",
+    "solution": "<p>$a>0$, $a\\ne1$이므로 지수법칙을 적용해도 됩니다. 왼쪽은 $(a^{\\frac{2}{5}})^2=a^{\\frac{4}{5}}$입니다.</p><p>오른쪽은 $\\sqrt[3]{a\\sqrt{a^k}}=(a\\cdot a^{\\frac{k}{2}})^{\\frac{1}{3}}=a^{\\frac{1}{3}+\\frac{k}{6}}$입니다.</p><p>지수를 비교하면 $\\frac{4}{5}=\\frac{1}{3}+\\frac{k}{6}$, 따라서 $\\frac{k}{6}=\\frac{7}{15}$, $k=\\frac{14}{5}$입니다. $10k=\\boxed{28}$입니다.</p>",
     "standardUnitKey": "H15-M1-01",
     "subUnitKey": "H15-M1-01-EXPONENT",
     "problemTypeKey": null,
@@ -621,7 +621,7 @@ window.questionBank = [
     "content": "서답형 2. (서술형) 그림과 같이 함수 $y=3^{-x}$의 그래프 위의 점 $\\mathrm{A}$에 대하여 점 $\\mathrm{A}$에서 $x$축에 내린 수선의 발을 $\\mathrm{B}$라 하자. 선분 $\\mathrm{AB}$를 한 변으로 하고 $x$축 위의 점 $\\mathrm{C}$의 $x$좌표가 점 $\\mathrm{B}$의 $x$좌표보다 작도록 정사각형 $\\mathrm{ABCD}$를 그린다. 직선 $\\mathrm{CD}$와 함수 $y=3^{-x}$의 그래프가 만나는 점을 $\\mathrm{E}$라 하고, 삼각형 $\\mathrm{EDA}$의 넓이를 $S_1$, 정사각형 $\\mathrm{ABCD}$의 넓이를 $S_2$라 하자. $2S_2 = 3S_1$일 때, 점 $\\mathrm{A}$의 $x$좌표는 $\\log_3(\\log_a 3)$이다. $a$의 값을 구하는 풀이과정과 답을 서술하시오. [부분 점수 있음, 7점] [7점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_순천고_1학기_중간_고2_수학I/q21.png\" class=\"exam-img\"></div>",
     "choices": [],
     "answer": "$7/3$",
-    "solution": "<p>$A=(t,h)$라 하면 $h=3^{-t}>0$입니다. 정사각형의 한 변은 $h$이므로 $B=(t,0)$, $C=(t-h,0)$, $D=(t-h,h)$입니다.</p><p>곡선과 $CD$의 교점 $E$의 높이는 $3^{-(t-h)}=h3^h$입니다. 따라서 $S_2=h^2$, $S_1=\\frac12h(h3^h-h)=\\frac12h^2(3^h-1)$입니다.</p><p>$2S_2=3S_1$에서 $2=\\frac32(3^h-1)$, $3^h=7/3$, $h=\\log_3(7/3)$입니다.</p><p>$h=3^{-t}$이므로 $t=\\log_3(1/h)=\\log_3(\\log_{7/3}3)$입니다. 문제의 $t=\\log_3(\\log_a3)$와 비교하면 <b>$a=7/3$</b>입니다.</p>",
+    "solution": "<p>$A=(t,h)$라 하면 $h=3^{-t}>0$입니다. 정사각형의 한 변은 $h$이므로 $B=(t,0)$, $C=(t-h,0)$, $D=(t-h,h)$입니다.</p><p>곡선과 $CD$의 교점 $E$의 높이는 $3^{-(t-h)}=h3^h$입니다. 따라서 $S_2=h^2$, $S_1=\\frac12h(h3^h-h)=\\frac12h^2(3^h-1)$입니다.</p><p>$2S_2=3S_1$에서 $2=\\frac32(3^h-1)$, $3^h=\\frac{7}{3}$, $h=\\log_3(\\frac{7}{3})$입니다.</p><p>$h=3^{-t}$이므로 $t=\\log_3(\\frac{1}{h})=\\log_3(\\log_{\\frac{7}{3}}3)$입니다. 문제의 $t=\\log_3(\\log_a3)$와 비교하면 <b>$a=\\frac{7}{3}$</b>입니다.</p>",
     "standardUnitKey": "H15-M1-03",
     "subUnitKey": null,
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
@@ -649,7 +649,7 @@ window.questionBank = [
     "content": "서답형 3. (서술형) 원점 $\\mathrm{O}$와 곡선 $y=\\frac{7}{x}\\,(x>0)$ 위의 점 $\\mathrm{P}$에 대하여 동경 $\\mathrm{OP}$가 나타내는 각의 크기를 $\\theta$라고 할 때, $\\sin\\theta+\\cos\\theta$의 최댓값을 구하는 풀이 과정과 답을 서술하시오. [부분 점수 있음, 7점] [7점]",
     "choices": [],
     "answer": "$\\sqrt2$",
-    "solution": "<p>$P=(x,7/x)$이고 $x>0$이므로 제1사분면에서 $\\sin\\theta,\\cos\\theta>0$입니다. $x=\\sqrt7$이면 $P=(\\sqrt7,\\sqrt7)$이므로 $\\theta=\\pi/4$가 실제 가능합니다.</p><p>모든 각에 대해 $(\\sin\\theta+\\cos\\theta)^2\\le2(\\sin^2\\theta+\\cos^2\\theta)=2$이므로 $\\sin\\theta+\\cos\\theta\\le\\sqrt2$입니다.</p><p>$\\theta=\\pi/4$에서 등호가 성립하므로 최댓값은 <b>$\\sqrt2$</b>입니다.</p>",
+    "solution": "<p>$P=(x,\\frac{7}{x})$이고 $x>0$이므로 제1사분면에서 $\\sin\\theta,\\cos\\theta>0$입니다. $x=\\sqrt7$이면 $P=(\\sqrt7,\\sqrt7)$이므로 $\\theta=\\pi/4$가 실제 가능합니다.</p><p>모든 각에 대해 $(\\sin\\theta+\\cos\\theta)^2\\le2(\\sin^2\\theta+\\cos^2\\theta)=2$이므로 $\\sin\\theta+\\cos\\theta\\le\\sqrt2$입니다.</p><p>$\\theta=\\pi/4$에서 등호가 성립하므로 최댓값은 <b>$\\sqrt2$</b>입니다.</p>",
     "standardUnitKey": "H15-M1-05",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "problemTypeKey": null,

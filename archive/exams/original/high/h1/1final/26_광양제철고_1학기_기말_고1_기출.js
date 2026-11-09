@@ -166,7 +166,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "solution": "$N=\\begin{pmatrix}0&a\\\\0&0\\end{pmatrix}$라 두면\n$A=E+N$이고 $N^2=O$이다.\n따라서 $A^n=(E+N)^n=E+nN$이다. $N^2=O$이므로 이항전개에서 $N$의 2차항부터 모두 0이 되기 때문이다.\n즉\n$A^n=\\begin{pmatrix}1&na\\\\0&1\\end{pmatrix}$이다.\n성분의 합이 56이므로\n$1+na+0+1=56$\n$na=54$이다.\n$54=2\\cdot3^3$이므로 54의 양의 약수 개수는\n$(1+1)(3+1)=8$이다.\n각 양의 약수 $n$마다 $a=54/n$이 하나씩 정해지므로 순서쌍 $(a,n)$도 8개이다.\n따라서 정답은 ③이다.",
+    "solution": "$N=\\begin{pmatrix}0&a\\\\0&0\\end{pmatrix}$라 두면\n$A=E+N$이고 $N^2=O$이다.\n따라서 $A^n=(E+N)^n=E+nN$이다. $N^2=O$이므로 이항전개에서 $N$의 2차항부터 모두 0이 되기 때문이다.\n즉\n$A^n=\\begin{pmatrix}1&na\\\\0&1\\end{pmatrix}$이다.\n성분의 합이 56이므로\n$1+na+0+1=56$\n$na=54$이다.\n$54=2\\cdot3^3$이므로 54의 양의 약수 개수는\n$(1+1)(3+1)=8$이다.\n각 양의 약수 $n$마다 $a=\\frac{54}{n}$이 하나씩 정해지므로 순서쌍 $(a,n)$도 8개이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",

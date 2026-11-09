@@ -704,7 +704,7 @@ window.questionBank = [
       "$6\\sqrt3$"
     ],
     "answer": "④",
-    "solution": "원래 윗변 $DC$와 회전된 변 $B'C'$의 교점을 $X$라 하자. 겹치는 부분은 사각형 $ADXB'$이다.\n$AB'=3$이고 $\\angle BAB'=30^\\circ$이므로 $B'$에서 $AD$까지의 거리는\n$3\\cos30^\\circ=\\dfrac{3\\sqrt3}{2}$이다.\n따라서\n$[\\triangle ADB']=\\dfrac12\\times3\\times\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n또 $B'$의 높이는\n$3\\sin30^\\circ=\\dfrac32$이므로 $B'$에서 $DC$까지의 거리는\n$3-\\dfrac32=\\dfrac32$이다.\n$B'C'$는 $DC$와 $60^\\circ$의 예각을 이루므로 $B'$에서 $X$까지의 수평거리는\n$\\dfrac{3/2}{\\tan60^\\circ}=\\dfrac{\\sqrt3}{2}$이다.\n따라서\n$DX=\\dfrac{3\\sqrt3}{2}-\\dfrac{\\sqrt3}{2}=\\sqrt3$이고\n$[\\triangle DB'X]=\\dfrac12\\times\\sqrt3\\times\\dfrac32=\\dfrac{3\\sqrt3}{4}$이다.\n그러므로 겹치는 넓이는\n$\\dfrac{9\\sqrt3}{4}+\\dfrac{3\\sqrt3}{4}=3\\sqrt3$이다.\n따라서 정답은 ④이다.",
+    "solution": "원래 윗변 $DC$와 회전된 변 $B'C'$의 교점을 $X$라 하자. 겹치는 부분은 사각형 $ADXB'$이다.\n$AB'=3$이고 $\\angle BAB'=30^\\circ$이므로 $B'$에서 $AD$까지의 거리는\n$3\\cos30^\\circ=\\dfrac{3\\sqrt3}{2}$이다.\n따라서\n$[\\triangle ADB']=\\dfrac12\\times3\\times\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n또 $B'$의 높이는\n$3\\sin30^\\circ=\\dfrac32$이므로 $B'$에서 $DC$까지의 거리는\n$3-\\dfrac32=\\dfrac32$이다.\n$B'C'$는 $DC$와 $60^\\circ$의 예각을 이루므로 $B'$에서 $X$까지의 수평거리는\n$\\dfrac{\\frac{3}{2}}{\\tan60^\\circ}=\\dfrac{\\sqrt3}{2}$이다.\n따라서\n$DX=\\dfrac{3\\sqrt3}{2}-\\dfrac{\\sqrt3}{2}=\\sqrt3$이고\n$[\\triangle DB'X]=\\dfrac12\\times\\sqrt3\\times\\dfrac32=\\dfrac{3\\sqrt3}{4}$이다.\n그러므로 겹치는 넓이는\n$\\dfrac{9\\sqrt3}{4}+\\dfrac{3\\sqrt3}{4}=3\\sqrt3$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q22-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",

@@ -1015,7 +1015,7 @@ window.questionBank = [
     "choices": [],
     "images": [],
     "answer": "-1/2",
-    "solution": "무한대로 발산하는 두 함수를 각각 따로 나누기보다 유한한 차를 새 문자로 둔다.\n$u(x)=f(x)-2g(x)$라 놓으면 $u(x)\\to1$이고 $2g=f-u$이다.\n분자는 $f-4g=f-2(f-u)=-f+2u$,\n분모는 $3f-2g=3f-(f-u)=2f+u$이다.\n따라서 원래 분수는 $\\dfrac{-f+2u}{2f+u}$이다.\n분자와 분모를 $f$로 나누면 $\\dfrac{-1+2u/f}{2+u/f}$이고,\n$f\\to+\\infty$, $u\\to1$이므로 $u/f\\to0$이다.\n구하는 극한은 $-\\dfrac12$이다.",
+    "solution": "무한대로 발산하는 두 함수를 각각 따로 나누기보다 유한한 차를 새 문자로 둔다.\n$u(x)=f(x)-2g(x)$라 놓으면 $u(x)\\to1$이고 $2g=f-u$이다.\n분자는 $f-4g=f-2(f-u)=-f+2u$,\n분모는 $3f-2g=3f-(f-u)=2f+u$이다.\n따라서 원래 분수는 $\\dfrac{-f+2u}{2f+u}$이다.\n분자와 분모를 $f$로 나누면 $\\dfrac{-1+2u/f}{2+\\frac{u}{f}}$이고,\n$f\\to+\\infty$, $u\\to1$이므로 $u/f\\to0$이다.\n구하는 극한은 $-\\dfrac12$이다.",
     "standardCourse": "수학II",
     "curriculum": "2015",
     "standardUnitKey": "H15-M2-01",

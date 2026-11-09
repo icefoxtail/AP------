@@ -13,7 +13,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "②",
-    "solution": "거듭제곱근이 두 번 겹쳐 있으므로 안쪽부터 지수로 나타냅니다.<br>$$\\sqrt[3]{\\sqrt[3]{5^{18}}}=\\left(5^{18}\\right)^{\\frac13\\cdot\\frac13}=5^{\\frac{18}{9}}=5^2=25$$<br>로그에서는 밑과 진수를 모두 $3$의 거듭제곱으로 바꿉니다.<br>$$\\sqrt3=3^{\\frac12},\\qquad \\sqrt{27}=3^{\\frac32}$$<br>$$\\log_{\\sqrt3}\\sqrt{27}=\\log_{3^{1/2}}3^{3/2}=\\frac{\\frac32}{\\frac12}=3$$<br>따라서 $25+3=28$이므로 정답은 ②입니다.",
+    "solution": "거듭제곱근이 두 번 겹쳐 있으므로 안쪽부터 지수로 나타냅니다.<br>$$\\sqrt[3]{\\sqrt[3]{5^{18}}}=\\left(5^{18}\\right)^{\\frac13\\cdot\\frac13}=5^{\\frac{18}{9}}=5^2=25$$<br>로그에서는 밑과 진수를 모두 $3$의 거듭제곱으로 바꿉니다.<br>$$\\sqrt3=3^{\\frac12},\\qquad \\sqrt{27}=3^{\\frac32}$$<br>$$\\log_{\\sqrt3}\\sqrt{27}=\\log_{3^{\\frac{1}{2}}}3^{\\frac{3}{2}}=\\frac{\\frac32}{\\frac12}=3$$<br>따라서 $25+3=28$이므로 정답은 ②입니다.",
     "standardUnitKey": "H15-M1-01",
     "subUnitKey": "H15-M1-01-EXPONENT",
     "curriculum": "2015",
@@ -604,7 +604,7 @@ window.questionBank = [
       "$10^{\\frac{14}3}$"
     ],
     "answer": "④",
-    "solution": "먼저 $10\\le x<100$이므로 $x>0$이고, 상용로그가 증가함수임을 이용하면<br>$$1=\\log10\\le\\log x<\\log100=2$$<br>로그의 성질로 두 로그의 차를 한 식으로 정리합니다.<br>$$\\log\\frac1{x^2}=\\log(x^{-2})=-2\\log x$$<br>$$\\log x-\\log\\frac1{x^2}=\\log x-(-2\\log x)=3\\log x$$<br>이 값이 정수여야 하므로 $k=3\\log x$를 정수라고 놓습니다. 위 범위에 $3$을 곱하면<br>$$3\\le k<6$$<br>따라서 가능한 정수는 정확히 $k=3,4,5$입니다. $6$은 오른쪽 끝이 포함되지 않아 제외됩니다.<br>$$3\\log x=k\\quad\\Longleftrightarrow\\quad\\log x=\\frac{k}{3}\\quad\\Longleftrightarrow\\quad x=10^{k/3}$$<br>$$k=3:\\ x=10,\\qquad k=4:\\ x=10^{4/3},\\qquad k=5:\\ x=10^{5/3}$$<br>세 수의 곱은 같은 밑 $10$의 지수를 더해<br>$$10\\cdot10^{4/3}\\cdot10^{5/3}=10^{1+4/3+5/3}=10^{1+3}=10^4$$<br>따라서 정답은 ④입니다.",
+    "solution": "먼저 $10\\le x<100$이므로 $x>0$이고, 상용로그가 증가함수임을 이용하면<br>$$1=\\log10\\le\\log x<\\log100=2$$<br>로그의 성질로 두 로그의 차를 한 식으로 정리합니다.<br>$$\\log\\frac1{x^2}=\\log(x^{-2})=-2\\log x$$<br>$$\\log x-\\log\\frac1{x^2}=\\log x-(-2\\log x)=3\\log x$$<br>이 값이 정수여야 하므로 $k=3\\log x$를 정수라고 놓습니다. 위 범위에 $3$을 곱하면<br>$$3\\le k<6$$<br>따라서 가능한 정수는 정확히 $k=3,4,5$입니다. $6$은 오른쪽 끝이 포함되지 않아 제외됩니다.<br>$$3\\log x=k\\quad\\Longleftrightarrow\\quad\\log x=\\frac{k}{3}\\quad\\Longleftrightarrow\\quad x=10^{\\frac{k}{3}}$$<br>$$k=3:\\ x=10,\\qquad k=4:\\ x=10^{\\frac{4}{3}},\\qquad k=5:\\ x=10^{\\frac{5}{3}}$$<br>세 수의 곱은 같은 밑 $10$의 지수를 더해<br>$$10\\cdot10^{\\frac{4}{3}}\\cdot10^{\\frac{5}{3}}=10^{1+\\frac{4}{3}+\\frac{5}{3}}=10^{1+3}=10^4$$<br>따라서 정답은 ④입니다.",
     "standardUnitKey": "H15-M1-02",
     "subUnitKey": "H15-M1-02-LOGARITHM",
     "curriculum": "2015",
@@ -672,7 +672,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "⑤",
-    "solution": "먼저 이차방정식을 완전제곱식으로 나타냅니다.<br>$$x^2-5x+\\frac{25}{4}=\\left(x-\\frac52\\right)^2=0$$<br>따라서 두 근이 모두 $\\frac52$이므로<br>$$\\log\\alpha=\\frac52,\\qquad\\log\\beta=\\frac52$$<br>즉 $\\alpha=\\beta=10^{5/2}>0$이고 밑은 $1$이 아닙니다.<br>같은 양수의 로그는 $\\log_{\\alpha}\\beta=1$, $\\log_{\\beta}\\alpha=1$이므로<br>$$\\log_{\\alpha}\\beta+\\log_{\\beta}\\alpha=1+1=2$$<br>정답은 ⑤입니다.",
+    "solution": "먼저 이차방정식을 완전제곱식으로 나타냅니다.<br>$$x^2-5x+\\frac{25}{4}=\\left(x-\\frac52\\right)^2=0$$<br>따라서 두 근이 모두 $\\frac52$이므로<br>$$\\log\\alpha=\\frac52,\\qquad\\log\\beta=\\frac52$$<br>즉 $\\alpha=\\beta=10^{\\frac{5}{2}}>0$이고 밑은 $1$이 아닙니다.<br>같은 양수의 로그는 $\\log_{\\alpha}\\beta=1$, $\\log_{\\beta}\\alpha=1$이므로<br>$$\\log_{\\alpha}\\beta+\\log_{\\beta}\\alpha=1+1=2$$<br>정답은 ⑤입니다.",
     "sourceMode": "AUDITED_REPAIR",
     "standardUnitKey": "H15-M1-02",
     "subUnitKey": "H15-M1-02-LOGARITHM",
@@ -938,7 +938,7 @@ window.questionBank = [
       "$-\\dfrac{10}3$"
     ],
     "answer": "④",
-    "solution": "먼저 주어진 식을 제곱하여 $\\sin x\\cos x$를 구합니다.<br>$$\\left(\\sin x+\\cos x\\right)^2=\\frac14$$<br>$$\\sin^2x+2\\sin x\\cos x+\\cos^2x=\\frac14$$<br>$$1+2\\sin x\\cos x=\\frac14$$<br>$$2\\sin x\\cos x=-\\frac34\\ \\Longleftrightarrow\\ \\sin x\\cos x=-\\frac38$$<br>따라서 $\\sin x$와 $\\cos x$는 모두 $0$이 아니므로 다음 식이 정의됩니다.<br>$$\\tan x+\\frac1{\\tan x}=\\frac{\\sin x}{\\cos x}+\\frac{\\cos x}{\\sin x}$$<br>$$=\\frac{\\sin^2x+\\cos^2x}{\\sin x\\cos x}=\\frac1{-3/8}=-\\frac83$$<br>정답은 ④입니다.",
+    "solution": "먼저 주어진 식을 제곱하여 $\\sin x\\cos x$를 구합니다.<br>$$\\left(\\sin x+\\cos x\\right)^2=\\frac14$$<br>$$\\sin^2x+2\\sin x\\cos x+\\cos^2x=\\frac14$$<br>$$1+2\\sin x\\cos x=\\frac14$$<br>$$2\\sin x\\cos x=-\\frac34\\ \\Longleftrightarrow\\ \\sin x\\cos x=-\\frac38$$<br>따라서 $\\sin x$와 $\\cos x$는 모두 $0$이 아니므로 다음 식이 정의됩니다.<br>$$\\tan x+\\frac1{\\tan x}=\\frac{\\sin x}{\\cos x}+\\frac{\\cos x}{\\sin x}$$<br>$$=\\frac{\\sin^2x+\\cos^2x}{\\sin x\\cos x}=\\frac1{-\\frac{3}{8}}=-\\frac83$$<br>정답은 ④입니다.",
     "standardUnitKey": "H15-M1-05",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "curriculum": "2015",
@@ -1070,7 +1070,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "⑤",
-    "solution": "그림의 높이와 두 가로 눈금을 차례로 읽어 $a,b,c$를 정합니다.<br><b>① 진폭 $a$</b><br>최댓값이 $1$, 최솟값이 $-3$이므로 중심선은 $\\frac{1+(-3)}2=-1$입니다. 이는 식의 마지막 $-1$과도 같습니다. 중심선에서 꼭대기까지의 거리가 진폭이므로<br>$$a=\\frac{1-(-3)}2=2$$<br><b>② 가로 변화로 $b$</b><br>그림에서 $x=-\\frac\\pi3$은 최대점이고, 그 다음에 곡선이 내려오며 $x=\\frac\\pi3$에서 $y=0$을 지납니다. $a=2$를 넣으면<br>$$y=2\\cos(bx+c)-1$$<br>최대점에서 코사인값은 $1$, 이어서 내려오는 첫 $y=0$에서는 코사인값이 $\\frac12$입니다. 따라서 이 두 점 사이에 코사인의 각은 $0$에서 $\\frac\\pi3$만큼 증가합니다. (내려오는 구간이므로 $-\\frac\\pi3$이 아니라 $+\\frac\\pi3$입니다.)<br>$$\\Delta x=\\frac\\pi3-\\left(-\\frac\\pi3\\right)=\\frac{2\\pi}{3}$$<br>$$b\\Delta x=\\frac\\pi3\\quad\\Longrightarrow\\quad b\\cdot\\frac{2\\pi}{3}=\\frac\\pi3\\quad\\Longrightarrow\\quad b=\\frac12$$<br><b>③ 최대점의 위치로 $c$</b><br>최대점에서는 $bx+c=2m\\pi$($m$은 정수)입니다.<br>$$\\frac12\\left(-\\frac\\pi3\\right)+c=2m\\pi\\quad\\Longrightarrow\\quad c=\\frac\\pi6+2m\\pi$$<br>$0<c<\\pi$에 들어가는 값은 $m=0$일 때뿐이므로 $c=\\frac\\pi6$입니다.<br><b>④ 주기와 마지막 계산</b><br>코사인의 안쪽 각이 $2\\pi$ 증가하는 동안 $x$는 $p$ 증가하므로<br>$$bp=2\\pi\\quad\\Longrightarrow\\quad p=\\frac{2\\pi}{1/2}=4\\pi$$<br>$$ab+\\frac pc=2\\cdot\\frac12+\\frac{4\\pi}{\\pi/6}=1+24=25$$<br>따라서 정답은 ⑤입니다.",
+    "solution": "그림의 높이와 두 가로 눈금을 차례로 읽어 $a,b,c$를 정합니다.<br><b>① 진폭 $a$</b><br>최댓값이 $1$, 최솟값이 $-3$이므로 중심선은 $\\frac{1+(-3)}2=-1$입니다. 이는 식의 마지막 $-1$과도 같습니다. 중심선에서 꼭대기까지의 거리가 진폭이므로<br>$$a=\\frac{1-(-3)}2=2$$<br><b>② 가로 변화로 $b$</b><br>그림에서 $x=-\\frac\\pi3$은 최대점이고, 그 다음에 곡선이 내려오며 $x=\\frac\\pi3$에서 $y=0$을 지납니다. $a=2$를 넣으면<br>$$y=2\\cos(bx+c)-1$$<br>최대점에서 코사인값은 $1$, 이어서 내려오는 첫 $y=0$에서는 코사인값이 $\\frac12$입니다. 따라서 이 두 점 사이에 코사인의 각은 $0$에서 $\\frac\\pi3$만큼 증가합니다. (내려오는 구간이므로 $-\\frac\\pi3$이 아니라 $+\\frac\\pi3$입니다.)<br>$$\\Delta x=\\frac\\pi3-\\left(-\\frac\\pi3\\right)=\\frac{2\\pi}{3}$$<br>$$b\\Delta x=\\frac\\pi3\\quad\\Longrightarrow\\quad b\\cdot\\frac{2\\pi}{3}=\\frac\\pi3\\quad\\Longrightarrow\\quad b=\\frac12$$<br><b>③ 최대점의 위치로 $c$</b><br>최대점에서는 $bx+c=2m\\pi$($m$은 정수)입니다.<br>$$\\frac12\\left(-\\frac\\pi3\\right)+c=2m\\pi\\quad\\Longrightarrow\\quad c=\\frac\\pi6+2m\\pi$$<br>$0<c<\\pi$에 들어가는 값은 $m=0$일 때뿐이므로 $c=\\frac\\pi6$입니다.<br><b>④ 주기와 마지막 계산</b><br>코사인의 안쪽 각이 $2\\pi$ 증가하는 동안 $x$는 $p$ 증가하므로<br>$$bp=2\\pi\\quad\\Longrightarrow\\quad p=\\frac{2\\pi}{\\frac{1}{2}}=4\\pi$$<br>$$ab+\\frac pc=2\\cdot\\frac12+\\frac{4\\pi}{\\pi/6}=1+24=25$$<br>따라서 정답은 ⑤입니다.",
     "standardUnitKey": "H15-M1-06",
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
     "curriculum": "2015",

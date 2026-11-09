@@ -14,7 +14,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "③",
-    "solution": "모평균과 표본평균의 평균은 같습니다. 따라서 $E(\\overline X)=10$입니다. 표본평균의 분산은 모분산을 표본크기로 나누므로 $V(\\overline X)=9/100$이고, 표준편차는 $\\sigma(\\overline X)=\\sqrt{9/100}=3/10$입니다. 그러므로 $E(\\overline X)\\sigma(\\overline X)=10\\times 3/10=3$입니다. ①, ②는 평균 10을 곱하지 않았거나 분산을 혼동한 값이고, ④와 ⑤도 이 계산과 다릅니다. 정답은 ③입니다.",
+    "solution": "모평균과 표본평균의 평균은 같습니다. 따라서 $E(\\overline X)=10$입니다. 표본평균의 분산은 모분산을 표본크기로 나누므로 $V(\\overline X)=\\frac{9}{100}$이고, 표준편차는 $\\sigma(\\overline X)=\\sqrt{\\frac{9}{100}}=\\frac{3}{10}$입니다. 그러므로 $E(\\overline X)\\sigma(\\overline X)=10\\times 3/10=3$입니다. ①, ②는 평균 10을 곱하지 않았거나 분산을 혼동한 값이고, ④와 ⑤도 이 계산과 다릅니다. 정답은 ③입니다.",
     "level": "하",
     "difficultyBucket": 1,
     "standardCourse": "확률과 통계",
@@ -54,7 +54,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "⑤",
-    "solution": "정규분포 $N(50,10^2)$의 평균은 50, 표준편차는 10입니다. 표준화는 $Z=(X-50)/10$으로 합니다. 따라서 $X<70$은 $Z<(70-50)/10=2$와 같아 $a=2$입니다. 음수인 ①,②는 방향을 잘못 판단한 것이고 ③,④는 표준편차 10을 정확히 나누지 않은 값입니다. 정답은 ⑤입니다.",
+    "solution": "정규분포 $N(50,10^2)$의 평균은 50, 표준편차는 10입니다. 표준화는 $Z=\\frac{X-50}{10}$으로 합니다. 따라서 $X<70$은 $Z<\\frac{70-50}{10}=2$와 같아 $a=2$입니다. 음수인 ①,②는 방향을 잘못 판단한 것이고 ③,④는 표준편차 10을 정확히 나누지 않은 값입니다. 정답은 ⑤입니다.",
     "level": "하",
     "difficultyBucket": 1,
     "standardCourse": "확률과 통계",
@@ -78,7 +78,11 @@ window.questionBank = [
       "객관식",
       "정규분포"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에 0과 2의 눈금이 표시되고, z=2 왼쪽 영역이 칠해져 있다.",
+    "solutionImageCaption": "평균에서 경계까지 표준화하면 z=2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -187,7 +191,7 @@ window.questionBank = [
       "q5.png"
     ],
     "answer": "②",
-    "solution": "확률밀도함수의 그래프 아래 전체 넓이는 1입니다. 밑변이 6이고 높이가 $k$인 삼각형이므로 $\\frac12\\times6\\times k=1$, 따라서 $k=1/3$입니다. $x=2$부터 $x=6$까지 높이는 직선적으로 감소하므로 $f(4)=k\\times(6-4)/(6-2)=1/6$입니다. $4\\le X\\le6$의 확률은 밑변 2, 높이 $1/6$인 작은 삼각형의 넓이 $\\frac12\\times2\\times1/6=1/6$입니다. 다른 선택지는 이 넓이와 다르므로 정답은 ②입니다.",
+    "solution": "확률밀도함수의 그래프 아래 전체 넓이는 1입니다. 밑변이 6이고 높이가 $k$인 삼각형이므로 $\\frac12\\times6\\times k=1$, 따라서 $k=\\frac{1}{3}$입니다. $x=2$부터 $x=6$까지 높이는 직선적으로 감소하므로 $f(4)=k\\times(6-4)/(6-2)=\\frac{1}{6}$입니다. $4\\le X\\le6$의 확률은 밑변 2, 높이 $\\frac{1}{6}$인 작은 삼각형의 넓이 $\\frac12\\times2\\times1/6=\\frac{1}{6}$입니다. 다른 선택지는 이 넓이와 다르므로 정답은 ②입니다.",
     "level": "하",
     "difficultyBucket": 2,
     "standardCourse": "확률과 통계",
@@ -213,7 +217,11 @@ window.questionBank = [
       "객관식",
       "확률변수와 확률분포"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 모양의 확률밀도 그래프에서 x=4인 곡선 위의 점 P와 x=4부터 6까지 곡선 아래 오른쪽 영역을 나타낸 그림.",
+    "solutionImageCaption": "x=4인 곡선 위의 점을 P라 하고, x=4부터 6까지의 오른쪽 넓이를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -229,7 +237,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "⑤",
-    "solution": "표에서 처음 먹은 뒤 5회 이내에 완치된 사람은 투약 횟수 2, 3, 4, 5에 해당합니다. 각 인원은 10명, 15명, 21명, 35명이므로 합계 $10+15+21+35=81$명입니다. 전체 환자는 106명이므로 확률은 $81/106$입니다. ①~④는 일부 행만 합하거나 다른 분모를 사용한 값입니다. 정답은 ⑤입니다.",
+    "solution": "표에서 처음 먹은 뒤 5회 이내에 완치된 사람은 투약 횟수 2, 3, 4, 5에 해당합니다. 각 인원은 10명, 15명, 21명, 35명이므로 합계 $10+15+21+35=81$명입니다. 전체 환자는 106명이므로 확률은 $\\frac{81}{106}$입니다. ①~④는 일부 행만 합하거나 다른 분모를 사용한 값입니다. 정답은 ⑤입니다.",
     "level": "하",
     "difficultyBucket": 2,
     "standardCourse": "확률과 통계",
@@ -269,7 +277,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "②",
-    "solution": "한 주사위가 짝수일 확률은 $3/6=1/2$입니다. 두 주사위가 모두 짝수일 확률은 $p=(1/2)^2=1/4$입니다. 48회 중 성공 횟수 $X$는 이항분포 $B(48,1/4)$를 따릅니다. 평균은 $48/4=12$, 분산은 $48\\times1/4\\times3/4=9$, 표준편차는 3입니다. 문제의 근사 방식대로 $P(X\\ge18)\\approx P(Z\\ge(18-12)/3)=P(Z\\ge2)=0.5-0.4772=0.0228$입니다. ①,③,④,⑤는 $z=2$의 오른쪽 꼬리 확률이 아닙니다. 정답은 ②입니다.",
+    "solution": "한 주사위가 짝수일 확률은 $\\frac{3}{6}=\\frac{1}{2}$입니다. 두 주사위가 모두 짝수일 확률은 $p=(\\frac{1}{2})^2=\\frac{1}{4}$입니다. 48회 중 성공 횟수 $X$는 이항분포 $B(48,\\frac{1}{4})$를 따릅니다. 평균은 $\\frac{48}{4}=12$, 분산은 $48\\times1/4\\times3/4=9$, 표준편차는 3입니다. 문제의 근사 방식대로 $P(X\\ge18)\\approx P(Z\\ge(18-12)/3)=P(Z\\ge2)=0.5-0.4772=0.0228$입니다. ①,③,④,⑤는 $z=2$의 오른쪽 꼬리 확률이 아닙니다. 정답은 ②입니다.",
     "level": "중",
     "difficultyBucket": 3,
     "standardCourse": "확률과 통계",
@@ -293,7 +301,11 @@ window.questionBank = [
       "객관식",
       "이항분포"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에 0과 2의 눈금이 표시되고, z=2 오른쪽 꼬리 부분이 칠해져 있다.",
+    "solutionImageCaption": "두 주사위가 모두 짝수일 확률로 이항분포를 세우고 정규화 기준 2의 오른쪽 꼬리를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -309,7 +321,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "④",
-    "solution": "복원추출이므로 각 공이 나올 확률은 $1/4$로 같고, 한 번 뽑은 수의 평균은 $E(X)=(1+2+3+4)/4=10/4=2.5$입니다. 표본평균의 기댓값은 모평균과 같으므로 $E(\\overline X)=2.5$입니다. 두 번의 추출에서 같은 공이 다시 나올 수 있어도 이 성질은 변하지 않습니다. 정답은 ④입니다.",
+    "solution": "복원추출이므로 각 공이 나올 확률은 $\\frac{1}{4}$로 같고, 한 번 뽑은 수의 평균은 $E(X)=\\frac{1+2+3+4}{4}=\\frac{10}{4}=2.5$입니다. 표본평균의 기댓값은 모평균과 같으므로 $E(\\overline X)=2.5$입니다. 두 번의 추출에서 같은 공이 다시 나올 수 있어도 이 성질은 변하지 않습니다. 정답은 ④입니다.",
     "level": "하",
     "difficultyBucket": 1,
     "standardCourse": "확률과 통계",
@@ -349,7 +361,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "①",
-    "solution": "신뢰도 95%에서 표준정규분포의 임계값은 1.96입니다. 표본평균의 표준편차는 $\\sigma/\\sqrt n=3/\\sqrt{36}=3/6=0.5$입니다. 모평균과 표본평균의 허용 차이는 $1.96\\times0.5=0.98$시간입니다. 나머지 선택지는 표본크기의 제곱근 또는 임계값 적용을 잘못한 값입니다. 정답은 ①입니다.",
+    "solution": "신뢰도 95%에서 표준정규분포의 임계값은 1.96입니다. 표본평균의 표준편차는 $\\sigma/\\sqrt n=3/\\sqrt{36}=\\frac{3}{6}=0.5$입니다. 모평균과 표본평균의 허용 차이는 $1.96\\times0.5=0.98$시간입니다. 나머지 선택지는 표본크기의 제곱근 또는 임계값 적용을 잘못한 값입니다. 정답은 ①입니다.",
     "level": "하",
     "difficultyBucket": 2,
     "standardCourse": "확률과 통계",
@@ -373,7 +385,11 @@ window.questionBank = [
       "객관식",
       "모평균 추정"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에서 −1.96과 1.96 사이의 가운데 영역이 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준편차에 1.96을 곱해 신뢰 한계의 거리를 구한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -389,7 +405,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "⑤",
-    "solution": "같은 신뢰도와 모표준편차에서는 신뢰구간 길이 $l$이 $1/\\sqrt n$에 비례합니다. 새 표본크기를 $n\\prime$이라 하면 $l\\prime/l=\\sqrt{n/n\\prime}=1/5$입니다. 양변을 제곱하면 $n/n\\prime=1/25$이므로 $n\\prime=25n$입니다. 따라서 표본크기는 25배로 늘려야 하며 정답은 ⑤입니다.",
+    "solution": "같은 신뢰도와 모표준편차에서는 신뢰구간 길이 $l$이 $1/\\sqrt n$에 비례합니다. 새 표본크기를 $n\\prime$이라 하면 $l\\prime/l=\\sqrt{n/n\\prime}=\\frac{1}{5}$입니다. 양변을 제곱하면 $n/n\\prime=\\frac{1}{25}$이므로 $n\\prime=25n$입니다. 따라서 표본크기는 25배로 늘려야 하며 정답은 ⑤입니다.",
     "level": "하",
     "difficultyBucket": 2,
     "standardCourse": "확률과 통계",
@@ -431,7 +447,7 @@ window.questionBank = [
       "q11.png"
     ],
     "answer": "④",
-    "solution": "이 문제에서 색칠된 부분은 반지름 2인 원과 반지름 3인 원 사이의 고리이다. 바깥 원의 반지름은 5이므로, 전체 넓이는 $\\pi\\cdot5^2=25\\pi$, 색칠된 고리의 넓이는 $\\pi(3^2-2^2)=5\\pi$이다.\n\n문제에서 화살이 원판의 각 위치에 균일하게 맞는다고 하였으므로 한 번에 색칠된 고리를 맞힐 확률은 $p=5\\pi/(25\\pi)=1/5$이고, 그 밖을 맞힐 확률은 $4/5$이다. 이제 면적 비율을 적중 확률로 사용할 수 있습니다.\n\n색칠된 부분을 맞힌 횟수를 $N$이라 하면, 100번의 발사가 서로 독립이므로 $N\\sim B(100,1/5)$이다. 매번 기본 점수를 $-2$점으로 생각하고, 색칠된 부분을 맞히면 $-2$점 대신 $5$점이므로 $7$점을 더한다. 따라서 총점은 $X=-2\\times100+7N=-200+7N$이다.\n\n상수를 더해도 분산은 변하지 않고, $7$배 하면 분산은 $7^2$배가 된다. 그러므로\n$V(N)=100\\times\\dfrac15\\times\\dfrac45=16$,\n$V(X)=7^2V(N)=49\\times16=784$,\n$\\sigma(X)=\\sqrt{784}=28$이다.\n\n따라서 정답은 ④입니다.",
+    "solution": "이 문제에서 색칠된 부분은 반지름 2인 원과 반지름 3인 원 사이의 고리이다. 바깥 원의 반지름은 5이므로, 전체 넓이는 $\\pi\\cdot5^2=25\\pi$, 색칠된 고리의 넓이는 $\\pi(3^2-2^2)=5\\pi$이다.\n\n문제에서 화살이 원판의 각 위치에 균일하게 맞는다고 하였으므로 한 번에 색칠된 고리를 맞힐 확률은 $p=5\\pi/(25\\pi)=\\frac{1}{5}$이고, 그 밖을 맞힐 확률은 $\\frac{4}{5}$이다. 이제 면적 비율을 적중 확률로 사용할 수 있습니다.\n\n색칠된 부분을 맞힌 횟수를 $N$이라 하면, 100번의 발사가 서로 독립이므로 $N\\sim B(100,\\frac{1}{5})$이다. 매번 기본 점수를 $-2$점으로 생각하고, 색칠된 부분을 맞히면 $-2$점 대신 $5$점이므로 $7$점을 더한다. 따라서 총점은 $X=-2\\times100+7N=-200+7N$이다.\n\n상수를 더해도 분산은 변하지 않고, $7$배 하면 분산은 $7^2$배가 된다. 그러므로\n$V(N)=100\\times\\dfrac15\\times\\dfrac45=16$,\n$V(X)=7^2V(N)=49\\times16=784$,\n$\\sigma(X)=\\sqrt{784}=28$이다.\n\n따라서 정답은 ④입니다.",
     "level": "상",
     "difficultyBucket": 4,
     "standardCourse": "확률과 통계",
@@ -466,7 +482,11 @@ window.questionBank = [
       "sourcePdfDriveId": "1AhcZQDLPr7l8u3vXy5id8GZmDZHaUC6M",
       "sourcePdfPage": 3,
       "sourceFidelity": "EDITORIAL_ASSUMPTION_ADDED"
-    }
+    },
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 번의 시행에서 고리 적중은 +5점이고 그 밖은 2점 손실인 두 갈래 수형도이며, 가지 확률은 각각 5분의 1과 5분의 4이다.",
+    "solutionImageCaption": "한 회의 점수별 확률로 100회 성공 횟수의 이항모형을 세운다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -508,7 +528,11 @@ window.questionBank = [
       "객관식",
       "모집단과 표본"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에 0과 1.4의 눈금이 표시되고, z=1.4 오른쪽 꼬리 부분이 칠해져 있다.",
+    "solutionImageCaption": "표본평균을 표준화하면 경계가 1.4가 되며, 표의 오른쪽 꼬리 확률에 맞추어 최소 표본크기를 정한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -524,7 +548,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "⑤",
-    "solution": "세 주사위 눈의 합이 홀수가 되려면 홀수 눈이 1개이거나 3개여야 한다. 또한 $a\\le b\\le c$이므로 순서를 바꾸어 같은 삼중쌍을 중복해서 세지 않는다.\n① 홀수 1개, 짝수 2개: 홀수 눈은 $1,3,5$ 중 1개를 택하므로 3가지이고, 짝수 눈 $2,4,6$ 중 중복을 허용해 2개를 고르는 방법은 ${}_3H_2={}_4C_2=6$가지이다. 따라서 $3\\times6=18$가지이다.\n② 홀수 3개: $1,3,5$ 중 중복을 허용해 3개를 고르는 방법은 ${}_3H_3={}_5C_3=10$가지이다.\n그러므로 사건 $A$의 경우는 $18+10=28$가지이고, 주사위를 세 번 던지는 전체 결과는 $6^3=216$가지이다.\n$P(A)=\\dfrac{28}{216}=\\dfrac7{54}$.\n126회 반복한 성공 횟수 $X$는 $B(126,7/54)$를 따르므로 $E(X)=126\\times\\dfrac7{54}=\\dfrac{49}{3}$이다.\n따라서 $E(6X)=6E(X)=6\\times\\dfrac{49}{3}=98$이고 정답은 ⑤이다.",
+    "solution": "세 주사위 눈의 합이 홀수가 되려면 홀수 눈이 1개이거나 3개여야 한다. 또한 $a\\le b\\le c$이므로 순서를 바꾸어 같은 삼중쌍을 중복해서 세지 않는다.\n① 홀수 1개, 짝수 2개: 홀수 눈은 $1,3,5$ 중 1개를 택하므로 3가지이고, 짝수 눈 $2,4,6$ 중 중복을 허용해 2개를 고르는 방법은 ${}_3H_2={}_4C_2=6$가지이다. 따라서 $3\\times6=18$가지이다.\n② 홀수 3개: $1,3,5$ 중 중복을 허용해 3개를 고르는 방법은 ${}_3H_3={}_5C_3=10$가지이다.\n그러므로 사건 $A$의 경우는 $18+10=28$가지이고, 주사위를 세 번 던지는 전체 결과는 $6^3=216$가지이다.\n$P(A)=\\dfrac{28}{216}=\\dfrac7{54}$.\n126회 반복한 성공 횟수 $X$는 $B(126,\\frac{7}{54})$를 따르므로 $E(X)=126\\times\\dfrac7{54}=\\dfrac{49}{3}$이다.\n따라서 $E(6X)=6E(X)=6\\times\\dfrac{49}{3}=98$이고 정답은 ⑤이다.",
     "level": "상",
     "difficultyBucket": 4,
     "standardCourse": "확률과 통계",
@@ -597,9 +621,9 @@ window.questionBank = [
       "정규분포"
     ],
     "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
-    "solutionImage": "assets/solutions/q14-solution.svg",
-    "solutionImageAlt": "중심 C(2, 1.5), 반지름 2.5인 원에서 a>0, b>0인 반원호를 강조한 좌표 그림",
-    "solutionImageCaption": "A(4,0)과 B(0,3)을 잇는 지름에 대응하는 제1사분면 반원호",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축에서 A(4, 0), B(0, 3), 중심 C(2, 1.5)를 표시하고, AB를 지름으로 하는 제1사분면 반원호를 파란색으로 나타낸 그림.",
+    "solutionImageCaption": "중심 C와 지름 AB, 양의 좌표 조건의 제1사분면 반원호를 나타낸다. 정답은 5π/2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -610,7 +634,7 @@ window.questionBank = [
     "choices": [],
     "images": [],
     "answer": "3",
-    "solution": "확률질량함수의 분모는 ${}_5C_2=10$이므로 $P(X=x)=x/10$입니다. 실제로 $1/10+2/10+3/10+4/10=1$입니다. 기댓값은 각 값에 그 확률을 곱해 더합니다. $E(X)=1\\cdot1/10+2\\cdot2/10+3\\cdot3/10+4\\cdot4/10=(1+4+9+16)/10=3$입니다. 정답은 3입니다.",
+    "solution": "확률질량함수의 분모는 ${}_5C_2=10$이므로 $P(X=x)=\\frac{x}{10}$입니다. 실제로 $\\frac{1}{10}+\\frac{2}{10}+\\frac{3}{10}+\\frac{4}{10}=1$입니다. 기댓값은 각 값에 그 확률을 곱해 더합니다. $E(X)=1\\cdot1/10+2\\cdot2/10+3\\cdot3/10+4\\cdot4/10=\\frac{1+4+9+16}{10}=3$입니다. 정답은 3입니다.",
     "level": "하",
     "difficultyBucket": 1,
     "standardCourse": "확률과 통계",
@@ -640,7 +664,7 @@ window.questionBank = [
     "id": 16,
     "questionNumber": 16,
     "questionType": "단답형",
-    "content": "단답형 2. 어느 모집단의 확률변수 $X$의 확률분포를 표로 나타내면 아래와 같다. $E(X^2)=\\frac{5}{3}$일 때, 이 모집단에서 임의 추출한 크기가 10인 표본의 표본평균 $\\overline{X}$에 대하여 $V(\\overline{X})$의 값을 구하시오. [5점]<br><table border=\"1\" cellpadding=\"3\" cellspacing=\"0\"><thead><tr><th>$X$</th><th>$-2$</th><th>$0$</th><th>$2$</th><th>합계</th></tr></thead><tbody><tr><td>$P(X=x)$</td><td>$1/4$</td><td>$a$</td><td>$b$</td><td>$1$</td></tr></tbody></table>",
+    "content": "단답형 2. 어느 모집단의 확률변수 $X$의 확률분포를 표로 나타내면 아래와 같다. $E(X^2)=\\frac{5}{3}$일 때, 이 모집단에서 임의 추출한 크기가 10인 표본의 표본평균 $\\overline{X}$에 대하여 $V(\\overline{X})$의 값을 구하시오. [5점]<br><table border=\"1\" cellpadding=\"3\" cellspacing=\"0\"><thead><tr><th>$X$</th><th>$-2$</th><th>$0$</th><th>$2$</th><th>합계</th></tr></thead><tbody><tr><td>$P(X=x)$</td><td>$\\frac{1}{4}$</td><td>$a$</td><td>$b$</td><td>$1$</td></tr></tbody></table>",
     "choices": [],
     "images": [],
     "answer": "\\frac{59}{360}",
@@ -702,7 +726,11 @@ window.questionBank = [
       "단답형",
       "정규분포"
     ],
-    "metaSource": "ALIVE_REPLACEMENT_RPM_EXACT_BINDING_PENDING"
+    "metaSource": "ALIVE_REPLACEMENT_RPM_EXACT_BINDING_PENDING",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: u축에서 -3부터 3까지의 점과 대칭인 구간을 나타내는 세 개의 괄호가 있다.",
+    "solutionImageCaption": "대칭 구간의 확률을 차례로 A, B, C로 나타내고 가운데 구간 전체를 합한 뒤 여사건을 취한다. 정답은 19/36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -783,6 +811,10 @@ window.questionBank = [
       "sourcePdfDriveId": "1AhcZQDLPr7l8u3vXy5id8GZmDZHaUC6M",
       "sourcePdfPage": 6,
       "sourceFidelity": "EDITORIAL_ALIVE_NOT_ORIGINAL"
-    }
+    },
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에서 −1.8과 1.8 사이의 가운데 영역이 칠해져 있다.",
+    "solutionImageCaption": "길이 조건으로 허용되는 대칭 경계 z=±1.8과 그 사이 영역을 확인한다. 정답은 93%이다.",
+    "solutionImageSize": "full"
   }
 ];
