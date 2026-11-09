@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "235"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "APB55",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 55,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "label": "x"
+      },
+      {
+        "id": "AOB110",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 110,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "같은 호를 보는 원주각은 중심각의 절반이므로 x=110°÷2=55°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원의 중심각이 110°이고 같은 호를 보는 원주각이 x이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A,B,P는 원문에서 이름이 없는 점을 설명하기 위해 임의로 붙인 보조 표기다."
+  ]
+}

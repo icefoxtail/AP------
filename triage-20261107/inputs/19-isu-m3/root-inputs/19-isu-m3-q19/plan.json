@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ABC50",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 50,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADB90",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "AD가 각의 이등분선이어서 ∠C=50°이고, 양쪽 직각삼각형에서 BD=DC=3cm이다. y=3tan50°≈3×1.1918=3.5754cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD⊥BC, AD는 ∠A 이등분선, BD=3cm, ∠B=50°, tan50°=1.1918 사용.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 50° 도형의 수치와 제공된 반올림값으로 계산한 y는 미세하게 다를 수 있음을 구분한다."
+  ]
+}

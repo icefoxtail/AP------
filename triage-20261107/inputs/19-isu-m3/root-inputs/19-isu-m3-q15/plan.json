@@ -1,0 +1,483 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "왼쪽 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "150"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "L",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "P",
+          "L",
+          "T"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "LT",
+            "refs": [
+              "L",
+              "T"
+            ]
+          },
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "OP",
+            "refs": [
+              "O",
+              "P"
+            ]
+          },
+          {
+            "id": "AP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "LAP60",
+              "refs": [
+                "L",
+                "A",
+                "P"
+              ],
+              "value": 60,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "AOP120",
+              "refs": [
+                "A",
+                "O",
+                "P"
+              ],
+              "value": 120,
+              "label": "x",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "접선과 OA가 수직이고 OA=OP이므로 x=120°이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "A에서 접선과 현 AP가 이루는 각 60°.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "L,T는 접선을 표시하기 위한 끝점이며 원문과 다른 조건을 뜻하지 않는다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "오른쪽 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "40"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "L",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "L",
+          "T"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "LT",
+            "refs": [
+              "L",
+              "T"
+            ]
+          },
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "OBA25",
+              "refs": [
+                "O",
+                "B",
+                "A"
+              ],
+              "value": 25,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "BAT65",
+              "refs": [
+                "B",
+                "A",
+                "T"
+              ],
+              "value": 65,
+              "label": "y",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "OA=OB, ∠OBA=25°이고 접선과 OA는 수직이므로 y=65°이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "A에서 접선 AT, ∠OBA=25°.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "L,T는 접선을 표시하기 위한 끝점이며 원문과 다른 조건을 뜻하지 않는다."
+        ]
+      }
+    }
+  ],
+  "caption": "왼쪽은 x=120°, 오른쪽은 y=65°이므로 x+y=185°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "왼쪽 접선각 60°, 오른쪽 원주 위 점 B의 각 OBA=25°.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원은 원문의 서로 독립적인 그림이며 각도를 합산한다."
+  ]
+}
