@@ -24,8 +24,8 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE validation"
   },
   "summary": {
-    "recordCount": 84,
-    "DIRECT_ACTIVE": 0,
+    "recordCount": 85,
+    "DIRECT_ACTIVE": 1,
     "FAMILY_ACTIVE": 0,
     "DIRECT_BINDING_GAP": 0,
     "FAMILY_BINDING_GAP": 0,
@@ -35,6 +35,7 @@
         "RPM_ONLY": 38
       },
       "2022": {
+        "DIRECT_ACTIVE": 1,
         "RPM_ONLY": 46
       }
     }
@@ -1299,6 +1300,39 @@
         "l3": "두 직선이 이루는 각",
         "l4": "평행선에 의한 각의 환원"
       }
+    },
+    {
+      "id": "H2-GEO-RPM-085",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선의 접선",
+        "l3": "쌍곡선의 접선",
+        "l4": "접점형"
+      },
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "promotesRpmOnlyRowId": "H2-GEO-RPM-051",
+      "standardCourse": "기하",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+      "templateLabelKo": "접선에 수직인 직선의 조건 활용",
+      "ownerPack": "GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_85f181126b2757b94a37c1e1ac9c59339da72e37728338b7729cb3794c0205b9"
+      ],
+      "mappingReason": "접점에서 접선의 기울기를 정한 뒤 수직인 법선으로 원점과 접선 사이의 거리 및 쌍곡선 교점을 구한다."
     }
   ]
 }
