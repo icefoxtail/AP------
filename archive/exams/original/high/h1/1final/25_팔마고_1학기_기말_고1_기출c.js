@@ -35,7 +35,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 첫째 부등식의 해인 -2 이상인 범위와 둘째 부등식의 해인 1 미만인 범위를 각각 나타내고, 두 범위가 겹치는 공통 구간을 아래 줄에 표시한 그림.",
+    "solutionImageCaption": "첫째 부등식 x+3≥1에서 x≥−2, 둘째 부등식 x−2<−1에서 x<1이다. 수직선에서 두 범위가 겹치는 부분은 −2≤x<1이고, α=−2, β=1이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -72,7 +76,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널에는 x축과 두 점 (2, 0), (5, 0)에서 만나는 아래로 볼록한 포물선이 있고 꼭짓점 (7/2, −9/4)가 표시되어 있다. 아래 패널에는 수직선 위에 열린 구간 2<x<5가 굵게 표시되어 있다.",
+    "solutionImageCaption": "x²−7x+10을 인수분해하면 (x−2)(x−5)<0이므로 해는 2<x<5이다. 이 범위에 들어가는 정수는 3과 4이다. 정답은 2개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -249,7 +257,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 첫째 줄에 -1 이하인 범위와 2 이상인 범위, 둘째 줄에 0에서 a까지의 범위, 셋째 줄에 두 범위가 겹치는 2에서 a까지의 범위와 그 안에 놓인 정수점들이 표시된 그림.",
+    "solutionImageCaption": "절댓값 부등식에서 x≤−1 또는 x≥2이고, 0≤x<a와 겹치는 범위는 2≤x<a이다. 이 범위에 정수가 2, 3, 4, 5, 6, 7의 6개 들어가야 한다. 정답은 7<a≤8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -286,7 +298,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: x축과 y축이 있는 좌표평면에 아래로 볼록한 포물선이 x축 위쪽에 그려져 있고, 꼭짓점 (1, 2)에 점과 좌표가 표시되어 있다. 포물선 위에 식 y=(x−1)²+2가 적혀 있고 곡선은 x축과 만나지 않는다.",
+    "solutionImageCaption": "예: a=−2이면 x²−2x+a+5=x²−2x+3=(x−1)²+2이므로 그래프는 꼭짓점이 (1, 2)이고 x축 위에만 있어 모든 실수 x에서 0 이상이다. a가 달라지면 이 그래프가 위아래로 움직이므로, x축 아래로 내려가지 않는 a의 범위를 구한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -323,7 +339,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널에는 x축과 두 점 (−2/3, 0), (3, 0)에서 만나는 위로 볼록한 포물선이 있고 꼭짓점 (7/6, 121/12)가 표시되어 있다. 아래 패널에는 수직선 위에 닫힌 구간 −2/3≤x≤3이 굵게 표시되고 그 안의 정수점 0, 1, 2, 3이 점으로 찍혀 있다.",
+    "solutionImageCaption": "해 −1<x<4로부터 x²−3x−4<0을 얻어 a=7, b=−3이다. 새 부등식은 3x²−7x−6≤0이므로 −2/3≤x≤3이고, 이 구간의 정수는 0, 1, 2, 3이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -642,7 +662,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 1인 정사각형 10개가 2개, 3개, 5개씩 놓인 계단 모양 도형을 세 번 그려, 각각 3×2 영역 A, 2×3 영역 B, 1×5 영역 C를 파랑, 주황, 초록으로 칠한 그림.",
+    "solutionImageCaption": "도형을 3×2 영역 A, 2×3 영역 B, 1×5 영역 C로 나눈다. 포함과 배제의 원리로 전체 직사각형 36개를 세고, 그중 정사각형 13개를 빼면 된다. 정답은 23개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -704,9 +728,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q20-solution.svg",
-    "solutionImageAlt": "k=-2, 1일 때 그래프가 x축에 접해 f(x)≥0의 해가 한 개이다.",
-    "solutionImageCaption": "k=-2, 1일 때 그래프가 x축에 접해 f(x)≥0의 해가 한 개이다.",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 열린 포물선 두 개가 그려져 있다. 파란 포물선 y=−x²−8은 x축 아래에 있어 x축과 만나지 않고, 주황 포물선 y=−(x−1)²은 점 (1, 0)에서 x축에 접한다.",
+    "solutionImageCaption": "파랑은 k=0일 때의 f(x)=−x²−8이고, 주황 y=−(x−1)²은 x축에 접하는 모양을 보이는 예일 뿐 f(x)가 아니다. f(x)≥0의 해가 한 개이려면 x축에 접해야 하고(D=0), f(x)≤0이 모든 실수에서 성립하려면 x축 위로 올라가지 않아야 한다(D≤0). 정답은 (1) D(k)=16k²+16k−32, (2) k=−2, 1, (3) −2≤k≤1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -731,7 +755,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄에 x=−1과 x=2를 경계로 나눈 세 구간을 각각 나타냈다. 첫째 줄은 −1보다 작은 구간(−1은 열린 점), 둘째 줄은 −1 이상 2 미만인 구간, 셋째 줄은 2 이상인 구간이다.",
+    "solutionImageCaption": "절댓값 기호 안이 0이 되는 x=−1과 x=2를 기준으로 수직선을 세 구간으로 나눈다. 각 구간에서 절댓값 기호를 풀어 부등식의 해를 구하고, 그 구간과의 공통 범위를 모두 합친다. 정답은 x≤−3 또는 x≥3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
