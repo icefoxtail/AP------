@@ -1760,6 +1760,28 @@
     "plan.json"
   ],
   "note": "EXT-20261109-e: 20 매산고 기말 고2 확통 q05 probability density (x/6 on 0..2, 1/2-x/12 on 2..6) on piecewise-polynomial with axisScale y=12 and string axisTickValues (x 2,4,6; y 1/3), the point P at curveX 4 with coordinates and a guide, and the right tail 4..6 filled by regions. No engine change was needed."
+},
+{
+  "dir": "item138ext6q18cubicarea",
+  "sourcePath": "archive/exams/original/high/h2/2final/22_금당고_2학기_기말_고2_수학II.js",
+  "ordinal": 18,
+  "bucket": "GOLDEN",
+  "fam": "FUNCTION_GRAPH",
+  "files": [
+    "plan.json"
+  ],
+  "note": "EXT-20261109-f: 22 금당고 기말 고2 수II q18, three-piece f with the middle piece the irreducible cubic 1/3-x/2+x^3/3 and the area under f over -1..3 filled by graphPlan.regions. The cubic has a real root (about -1.2) outside its own piece [0,1]; the region check now counts the roots inside the interval exactly (Sturm) instead of demanding a closed-form root on the whole line."
+},
+{
+  "dir": "item139ext6q21hidelabels",
+  "sourcePath": "archive/exams/original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
+  "ordinal": 21,
+  "bucket": "GOLDEN",
+  "fam": "FUNCTION_GRAPH",
+  "files": [
+    "plan.json"
+  ],
+  "note": "EXT-20261109-f (plan only, no engine change): 22 팔마고 기말 고1 q21 rational y=-(2x+1)/(x+1) example whose formula and asymptote value labels found no room: hideLabels formula+asymptotes (with no asymptoteLabelAt/verticalAsymptoteLabelAt, which hideLabels refuses) and the explicit tick axisTickValues y [1] resolve LAYOUT_INVENTORY_INCOMPLETE."
 }
  ]
 }
