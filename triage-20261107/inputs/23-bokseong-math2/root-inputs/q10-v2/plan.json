@@ -1,0 +1,111 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "L",
+            "value": "-8",
+            "hideName": true
+          },
+          {
+            "id": "A",
+            "value": "-7",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "7",
+            "hideName": true
+          },
+          {
+            "id": "R",
+            "value": "8",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "L",
+            "to": "A",
+            "label": "음수",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "label": "양수",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "음수",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "양수",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "label": "음수",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "E",
+            "to": "R",
+            "label": "양수",
+            "style": "BRACE",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "도함수 부호"
+  },
+  "caption": "원문 도함수 그래프에서 영점은 −7, −3, −2, 2, 7이고, 구간 (−8,8)에서 부호는 왼쪽부터 −,+,−,+,−,+이다. 따라서 −3과 2에서 극대, −7과 −2와 7에서 극소이다. −8과 8은 정의 구간의 경계로 영점이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 도함수 그래프의 영점은 −7,−3,−2,2,7이며 부호는 −,+,−,+,−,+ 순서이다. 정의 구간은 (−8,8)이다.",
+      "mappedTo": [
+        "numberLine",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 도함수 그래프를 보존하고 부호 전환만 별도로 정리한다. −8과 8은 제외되는 경계이지 영점이나 극값이 아니다.",
+    "사용자 지시에 따라 도함수 부호와 극대·극소 대응이 이해에 도움이 되어 계획했다. 가까운 −3과 −2는 지시선 또는 여유 있는 배치로 구분한다."
+  ]
+}
