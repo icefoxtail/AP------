@@ -156,3 +156,19 @@ test('additive workflow parts keep the original artifact, aggregate pattern and 
   assert.equal((workflow.match(/include-hidden-files: true/g) || []).length, 5);
   for (const part of DELIVERY_PARTS) assert.ok(workflow.includes(`matrix.course }}-${part}`));
 });
+
+test('both jobs running delivery contract tests check out the workflow directory in cone mode', () => {
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  const workflow = fs.readFileSync(path.resolve(here, '../../../../.github/workflows/high-lab-browser.yml'), 'utf8');
+  for (const [job, next] of [['scope', 'browser'], ['browser', 'review-captures']]) {
+    const start = workflow.indexOf(`\n  ${job}:\n`), end = workflow.indexOf(`\n  ${next}:\n`);
+    assert.ok(start >= 0 && end > start, `Missing ${job} job boundary`);
+    const block = workflow.slice(start, end);
+    assert.match(block, /node --test/);
+    const checkout = block.match(/sparse-checkout: \|\n((?: {12}[^\n]*\n)+)/);
+    assert.ok(checkout, `${job} must declare both checkout directories`);
+    const directories = checkout[1].trim().split('\n').map(line => line.trim());
+    assert.deepEqual(directories, ['apmath/playground', '.github/workflows']);
+    assert.doesNotMatch(block, /sparse-checkout-cone-mode: false/);
+  }
+});

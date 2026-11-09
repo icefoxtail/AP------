@@ -41,7 +41,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          sparse-checkout: apmath/playground
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -99,7 +101,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          sparse-checkout: apmath/playground
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
