@@ -38,6 +38,7 @@
     "비상교육_공통수학2": { grade: "고1", unitKeys: "profile" },
     "비상교육_대수": { grade: "고2", unitKeys: "chapter" },
     "비상교육_미적분1": { grade: "고2", unitKeys: "chapter" },
+    "비상교육_확률과통계": { grade: "고2", unitKeys: "chapter" },
   });
   const textbookSource = (file) => {
     const normalized = normalizeFile(file);
