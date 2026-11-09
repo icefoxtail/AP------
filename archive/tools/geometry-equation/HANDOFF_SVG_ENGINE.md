@@ -21,6 +21,9 @@
 
 ## 00. 최신 현황과 다음 할 일 (2026-11-03, 먼저 읽기)
 
+### 2026-11-09 엔진 확장 회차 a(별도 Sonnet 라인, 브랜치 engine/ext-20261109-a)
+- **축 눈금 분수 세로분수:** `axisTickValues`의 분수 문자열(`"2/5"`, `"4/35"`)이 빗금이 아니라 세로분수로 그려진다(`visual_engine/engine.py` 눈금 라벨 `tex`). 확률밀도처럼 납작한 그래프의 세로 확대는 새 기능 없이 기존 `graphPlan.axisScale:{"x":1,"y":10}`로 된다(골든 `item130ext1probdensity`, 22 효천 확통 기말 q24; 사용법은 가이드 G18c 덧붙임 아래 단락). 지시서 `ops/svg-m1/briefs/engine-tick-fraction-stacked.md`.
+
 ### 2026-11-02~03 세션: 25·24 2학기 기말 묶음 ①~④ 끝 (사용자 지시 "고2 각 과목별까지")
 - **끝낸 묶음:** ① 25 중2 + 24 중1·중2, ② 25·24 중3(#1230), ③ 25·24 고1(11개 시험지), ④ 25·24 고2 수학II·확률과통계(11개). ③④는 22개 시험지 중 16개 CLOSED, 해설 그림 PUBLISHED 303·EXEMPT 192·OPEN 6. 1~4차로 나눠 게시했다(검수 FAIL은 엔진을 넓힌 뒤 다시 그림).
 - **엔진 묶음(모두 이 PR):** G17 대응도 부호 있는 수·열 원소 수 차이·화살표 이름/색·합성 경로, 벤 서로소·3단 포함(item112g17) / G18a 음수 계수 유리함수 틀, multi-curve에 유리·무리·직선·역함수(inverseOf), hideLabels·formulaTex, 구간 강조(item113g18a) / G19 정규분포 문제 표 값 라벨(source TABLE), 좁은 꼬리 지시선 라벨, 정규곡선 합성 패널, σ 비 10, 수직선 소수(item114g19) / G18b 등축척 equalUnits, 무리함수 overlay 직선·점, callout 6개·√·그리스 문자, multi-curve 라벨을 자기 곡선·점근선 옆에(item115g18b) / G18c multi-curve 영역 색칠(between·under·halfPlane)·절댓값 곡선·axisScale 틀과 분수 눈금·callout 지시선 축 통과·셋째 곡선 라벨 탐색·라벨 탐색 가속 12s→0.6s(item116g18c). 정답지 표본 합집합 44개: 기존 39개 main과 바이트 동일, 새 5개 렌더 통과.
