@@ -222,6 +222,6 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
 - 고1 1학기는 함수 위주: 일차·이차함수 문항은 그래프가 필요하면 빠짐없이 만든다(`exam-common.sh` `exam_subject`). 이유: 함수 문항은 그래프가 풀이 이해의 핵심이다.
 - 시험지 전체 플랜은 루나가 구현하며 세운다(DeepSeek은 이 PC에서만 허용되나 그림을 못 봐 쓰지 않기로 함). 이유: 그림을 보지 못하면 플랜이 어긋난다.
 - 함정: caption 수식을 "엑스·와이·루트"로 소리 풀어 쓰던 것 → 지시문에 기호 사용 명시. 근호 좌표 자동 표기 "−1+(−1√10)" → SOURCE_POINT 식 좌표로 우회. `exam-common.sh`를 고칠 때 따옴표 하나가 빠져 실행 13건이 분류표 없이 돌았음 → 고친 뒤 `bash -n`으로 확인.
-- CREATE gate 골든 표본(25 효천고 2학기 중간, 25 매산여고 2학기 중간)은 63개 봉인 증거 파일에 SHA가 고정돼 있어 게시하지 않는다(d4afb89216 선례). 재봉인은 사용자 결정 사항. 이유: 게시하면 m2 create-gate 테스트 8개가 GOLDEN_SAMPLE_SHA256_MISMATCH로 실패한다.
+- 골든 표본(25 효천·25 매산여 2학기 중간)은 이제 게시한다: rebind-m2-create-golden-sample-evidence.mjs --source <JS>로 재고정(#1572), 사용자 결정 2026-11-10 '지금은 골든 아님'. 이유: 게시하면 봉인 증거 SHA가 달라져 m2 create-gate 테스트가 실패하므로 재고정이 필요하다. 주의: 게시 뒤 `git checkout -- archive/data`를 하면 재고정한 증거 10개(archive/data/r2e-intake/m2/*.create.physical-evidence.json)가 되돌려지니 그 파일은 제외한다.
 - 첫 PR: 이번 5개 시험지(제목만; 25 효천고 2학기 중간은 위 사유로 제외).
 

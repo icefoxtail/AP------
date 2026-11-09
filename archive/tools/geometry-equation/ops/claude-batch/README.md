@@ -52,4 +52,5 @@
 | `qrun.sh` | 대기열 시험지마다 launch-exam→launch-exam-rev를 이어 돌린다. 슬롯 수는 `.tmp/work/qrun.slots` |
 | `mkqueue-h1.cjs` | 고1 1mid·1final·2mid 시험지를 최신 연도 내림차순 대기열로 만든다 |
 | `prompts/sonnet-exam-brief.md` | 시험지 단위 Sonnet 최종 보충 지시 |
+| `prompts/publish-brief.md` | 게시 절차 실행자(Sonnet) 지시서(build-pub→pubflow→골든 재고정→jscheck→runtime→PR) |
 | `ENGINE_GAPS.md` | 엔진이 못 그려 OPEN으로 남긴 문항과 사유(엔진 업그레이드 때 사용) |
