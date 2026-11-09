@@ -29,10 +29,10 @@
 - 22 복성고·25 금당고 2학기 기말 확률과통계의 표 셀 분수와 변수 머리글은 수식으로 고쳤다.
 
 ## 남은 일 (순서대로)
-1. **PR-2 검증기 `tools/check-ap-tables.cjs`**
-   - 정적 검사: 행마다 열 수가 다름, 변환되지 않은 파이프 행, 셀 안의 `\(…\)`, `$` 짝 오류, 빈 머리글, 수식 밖의 슬래시 분수, 수식 밖의 변수 머리글. `A/B/C` 같은 이름 라벨은 제외한다.
-   - 브라우저 검사: Playwright로 `engine.html?data=…&mode=exam|sol`를 열어 표가 단보다 넓은지, 셀이 넘치는지, `mjx-merror`가 있는지, 인쇄 시 페이지 경계에서 잘리는지 본다.
-   - 전체 시험지를 한 번 돌려 FAIL 목록을 만든다. 테스트는 개수가 아니라 결함 조건으로 검사한다.
+1. ~~PR-2 검증기~~ **완료**: `tools/check-ap-tables.cjs`, 테스트 `tests/ap-table-validator.test.js`.
+   - 정적 검사(Node만, 약 1분): `node tools/check-ap-tables.cjs [--files <경로|glob|이름조각>,...] [--json <경로>]`. `archive/exams/**` 전체 또는 지정 파일의 문항·보기·해설을 `renderApTables`에 통과시킨 뒤 규칙별 FAIL `{file, qid, field, rule, cell}`을 낸다. 규칙: `ROW_COL_MISMATCH` `RESIDUAL_PIPE_ROW` `PAREN_MATH_IN_CELL` `UNBALANCED_DOLLAR` `EMPTY_HEADER` `SLASH_FRACTION_OUTSIDE_MATH` `BARE_MATH_VARIABLE_HEADER`. FAIL이 있으면 종료 코드 1이다. 새 시험지 CREATE 파이프라인은 자기 파일만 `--files`로 돌리면 된다.
+   - 브라우저 검사: `node tools/check-ap-tables.cjs --browser --files <파일>`. 실제 Chrome(Playwright)으로 `engine.html?data=exams/<파일>&mode=exam|sol`을 열어 `TABLE_OVERFLOW` `CELL_OVERFLOW` `MATH_ERROR`를 본다(`--modes`, `--widths 1440,390`로 조정). 이 파일과 무관한 렌더 오류로 열리지 않으면 FAIL이 아니라 `NOT_RUN`으로 적는다. Playwright는 `AP_PLAYWRIGHT_MODULE` 또는 `GEOMETRY_NODE_MODULES`로 찾는다. 인쇄 시 페이지 경계에서 잘리는지는 아직 보지 않는다.
+   - 이 PR은 검증기만 추가했고 원본 데이터는 고치지 않았다. FAIL 목록은 PR-3의 입력이다.
 2. **PR-3 원본 정리**: 검증기 FAIL 항목만 원본 JS를 고친다. `docs/agents/common.md`의 "공유 데이터 고정값"을 지킨다. 값은 원본으로 확인하고 추정해서 채우지 않는다.
 3. **분수 전수 조사 (GPT에 위임)**: 발문·보기·해설·표의 모든 슬래시 분수를 `\frac`로 바꾼다. PR #1540 머지와 자동 등록 커밋을 확인한 뒤 최신 main에서 시작한다. answer 필드는 채점 영향을 먼저 확인한다.
 4. **PR-4 정본 문서**: `docs/rules/01_CANONICAL/AP_Table_Engine_Contract_v1.md`를 쓰고, `docs/agents/exam-pipeline.md` CREATE 지시서에 "표는 파이프 형식, 스타일 금지, 수식은 `$`"를 추가한다.
