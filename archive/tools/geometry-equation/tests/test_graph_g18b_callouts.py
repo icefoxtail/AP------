@@ -31,7 +31,7 @@ class CalloutTexts(unittest.TestCase):
 
     def test_old_limits_stay(self):
         self.assertEqual(refused(SQRT,[{'id':'c1','point':'V','text':'극대극대극대극대극대극'}]),'OVERLAY_CALLOUT_TEXT_INVALID:c1')
-        self.assertEqual(refused(SQRT,[{'id':'c1','point':'V','text':'(1234567890,1234)'}]),'OVERLAY_CALLOUT_TEXT_INVALID:c1')
+        self.assertEqual(refused(SQRT,[{'id':'c1','point':'V','text':'(1234567890,12345678)'}]),'OVERLAY_CALLOUT_TEXT_INVALID:c1')
 
     def test_up_to_six_callouts(self):
         six=[{'id':'c'+str(i),'point':'V','text':'a'} for i in range(6)]

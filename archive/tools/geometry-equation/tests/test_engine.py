@@ -52,6 +52,11 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(labels['−1/3']['tex'],'-{\\displaystyle\\frac{1}{3}}')
         self.assertEqual(labels['2/5']['tickDisplayValue'],'2/5')
         self.assertNotIn('tex',labels['2']);self.assertNotIn('tex',labels['1'])
+    def test_axis_title_without_korean_is_math_and_with_korean_stays_text(self):
+        # EXT-20261109-b: one font for everything read as math
+        from visual_engine.engine import axis_title_tex
+        self.assertEqual([axis_title_tex(t) for t in ('y','g(y)','v(t)','y(km)','x (cm)','v(m/s)')],['y','g(y)','v(t)','y(\\mathrm{km})','x(\\mathrm{cm})','v(\\mathrm{m/s})'])
+        self.assertIsNone(axis_title_tex('x(분)'));self.assertIsNone(axis_title_tex('시간'));self.assertIsNone(axis_title_tex('20%'))
     def test_fact_binding(self):
         fact={'independentFactHash':'frozen','visualSpec':spec()}
         self.assertEqual(build_independent({},fact)['witness']['classification'],'STANDARD')

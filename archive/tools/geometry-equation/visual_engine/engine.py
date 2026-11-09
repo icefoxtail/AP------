@@ -36,6 +36,17 @@ def weighted(label,obj):
     if obj.get('labelWeight')=='MATH' and label.get('math') is False:label['weight']='MATH'
     return label
 
+AXIS_TITLE_MATH_PATTERN=re.compile(r"[A-Za-z0-9 ()/.,-]{1,10}")
+AXIS_TITLE_UNIT_PATTERN=re.compile(r"(.*?)\s*\((km/h|m/s|km|cm|mm|kg|min|mL|m|g|s|h|L)\)")
+def axis_title_tex(title):
+    """(EXT-20261109-b) One font for everything read as math: an axis title without Korean letters (y, g(y), v(t), y(km)) is typeset as math like the ticks,
+    coordinates and curve names beside it; a title with Korean letters stays plain text. A unit in brackets stands upright. None = plain text."""
+    if re.search('[가-힣]',title) or AXIS_TITLE_MATH_PATTERN.fullmatch(title) is None:return None
+    from .math_expression import parse,serialize
+    unit=AXIS_TITLE_UNIT_PATTERN.fullmatch(title)
+    if unit is not None and unit.group(1):return serialize(parse(unit.group(1)),'tex')+'(\\mathrm{'+unit.group(2)+'})'
+    return serialize(parse(title),'tex')
+
 def mark_label(label_id,target,text,label_kind,at,extra,unit=None):
     """A label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle;
     with `unit` the unit follows it: 3cm, x cm), 'TEXT' = plain Korean text in the text font, never parsed as math (a name such as ㉠ or 호 AB)."""
@@ -491,7 +502,8 @@ def prepare(spec):
         if show_y:axis_labels.append(('axis-y',(0,ymax),'y',axis_titles.get('y')))
         for oid,at,text,title in axis_labels:
             # A plain Korean title (a name with its unit) is a text label that must find room (never suppressed); the letter is a math label.
-            if title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
+            if title is not None and axis_title_tex(title) is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'tex':axis_title_tex(title),'font':13,'priority':4,'allowSuppress':False,'math':True,'bindText':True})
+            elif title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
         visible_axes=[];fraction_text={}
         if show_x:visible_axes.append(('x',xmin,xmax))

@@ -2,28 +2,99 @@
  "capability": "piecewise-polynomial-spike-v1",
  "graphPlan": {
   "family": "piecewise-polynomial",
-  "functionName": "g",
   "pieces": [
-   {"coefficients": ["2/5", "-2/7"]},
-   {"coefficients": ["4/35"]},
-   {"coefficients": ["-11/35", "1/7"]}
+   {
+    "coefficients": [
+     "2/5",
+     "-2/7"
+    ]
+   },
+   {
+    "coefficients": [
+     "4/35"
+    ]
+   },
+   {
+    "coefficients": [
+     "-11/35",
+     "1/7"
+    ]
+   }
   ],
   "breakpoints": [
-   {"x": "1", "y": "4/35"},
-   {"x": "3", "y": "4/35"}
+   {
+    "x": "1",
+    "y": "4/35"
+   },
+   {
+    "x": "3",
+    "y": "4/35"
+   }
   ],
-  "sourceDomain": {"kind": "INTERVAL", "range": ["0", "5"], "states": ["CLOSED", "CLOSED"]},
-  "domain": [0, 5],
-  "viewport": [-0.6, 5.6, -0.05, 0.47],
-  "axisTickValues": {"x": ["1", "3", "5"], "y": ["4/35", "2/5"]},
-  "axisScale": {"x": 1, "y": 10},
-  "axisTitles": {"x": "y", "y": "g(y)"},
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "0",
+    "5"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   0,
+   5
+  ],
+  "viewport": [
+   -0.6,
+   5.6,
+   -0.05,
+   0.47
+  ],
+  "axisTickValues": {
+   "x": [
+    "1",
+    "3",
+    "5"
+   ],
+   "y": [
+    "4/35",
+    "2/5"
+   ]
+  },
+  "axisScale": {
+   "x": 1,
+   "y": 10
+  },
+  "axisTitles": {
+   "x": "y",
+   "y": "g(y)"
+  },
   "requiredPoints": [
-   {"id": "A", "x": 1, "y": "4/35"},
-   {"id": "B", "x": 3, "y": "4/35"}
+   {
+    "id": "A",
+    "x": 1,
+    "y": "4/35"
+   },
+   {
+    "id": "B",
+    "x": 3,
+    "y": "4/35"
+   }
   ]
  },
  "caption": "t",
- "sourceConditions": [{"id":"c1","condition":"g(y)=2/5-f(5-y)","mappedTo":["graphPlan.pieces"]}],
- "newVisualInformation": ["g"]
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "g(y)=2/5-f(5-y)",
+   "mappedTo": [
+    "graphPlan.pieces"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "g"
+ ]
 }
