@@ -1,0 +1,378 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "76",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3903123748999",
+              "denominator": "781250000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1311202570981271",
+              "denominator": "100000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1375044660311841",
+              "denominator": "100000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "83727363628277",
+              "denominator": "50000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "996488699674943",
+              "denominator": "50000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-324257501817157",
+              "denominator": "100000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1361931375846557",
+              "denominator": "100000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "208166599946613",
+            "denominator": "100000000000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "208166599946613",
+            "denominator": "100000000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "1133164571265917",
+            "denominator": "100000000000000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "715752534603523",
+            "denominator": "100000000000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "65226876780553",
+            "denominator": "20000000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "282747031129807",
+            "denominator": "50000000000000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "628533305710429",
+            "denominator": "50000000000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "14320549046737",
+            "denominator": "3125000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-19718018355959",
+            "denominator": "20000000000000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "656432275093209",
+            "denominator": "50000000000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "208166599946613",
+            "denominator": "100000000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1",
+    "circ2",
+    "circ3",
+    "circ4"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "caption": "이웃한 두 원의 공통 변 접점은 일치한다. 각 원에 대해 A에서 그은 접선 길이가 같으므로 AB+AC−BC=AC+AD−CD=AD+AE−DE=AE+AF−EF이다. 따라서 AD=15−5+9=19cm, AF=19−13+8=14cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "각 삼각형의 내접원 네 개는 이웃한 원과 외접, 그림의 AB=15cm, BC=5cm, CD=9cm, DE=13cm, EF=8cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 중심 좌표와 반지름은 접선·외접 관계를 수치적으로 표현한 보조 예시이며, 주어진 길이는 그림의 15·5·9·13·8만 표시한다. A에서 접점까지의 공통 길이 13은 예시 설정이지 추가 조건이 아니다."
+  ]
+}
