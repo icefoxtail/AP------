@@ -248,7 +248,11 @@
       if (C.txt && !prob) {
         const msgs = ['같은 길이: AB=AD, AE=AG', `∠BAE = 90° − ∠EAD = ∠DAG = ${g.th}° (공통인 ∠EAD를 빼면 같아요)`, t >= 0.999 ? '△ABE가 △ADG에 겹쳐요 → 합동 (SAS)' : '△ABE를 점 A 둘레로 90° 돌려요', C.review ? `대응하는 값이 같으므로 x = ${pk.x}` : 'BE = DG, 그리고 BE와 DG는 서로 수직이에요'];
         const m = C.review ? msgs[Math.min(3, Math.max(0, st - 1))] : t >= 0.999 ? msgs[2] : '▶를 눌러 △ABE를 돌려 보세요';
-        cap(b, (bb.x0 + bb.x1) / 2, bb.y1, m, t >= 0.999 ? 'green' : 'amber', 28);
+        if (C.review && st === 2 && sm(b)) {
+          // 공통 각을 빼는 이유와 같은 두 각을 휴대폰에서도 모두 읽게 해요.
+          cap(b, (bb.x0 + bb.x1) / 2, bb.y1, `∠BAE = ∠DAG = ${g.th}°`, 'amber', 32);
+          cap(b, (bb.x0 + bb.x1) / 2, bb.y1, '90°에서 공통인 ∠EAD를 빼요', 'amber', 52);
+        } else cap(b, (bb.x0 + bb.x1) / 2, bb.y1, m, t >= 0.999 ? 'green' : 'amber', 28);
       }
     },
     stepT: (n) => (n >= 3 ? 1 : 0),

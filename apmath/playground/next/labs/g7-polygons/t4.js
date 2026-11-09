@@ -388,7 +388,10 @@
             // 그림 위의 여백에 두고, 기존 각의 호에서 지시선을 연결합니다.
             const measure = b.annotationSize ? b.annotationSize(label, { size, weight: 800 }) : { width: textW(label, size) + 6, height: size + 6 };
             const p = b.toS(Pp), u = unit(add(unit(sub(Q, Pp)), unit(sub(A, Pp))));
-            const dx = -measure.width / 2 - 40, dy = 14 + measure.height / 2 - p.y;
+            // 정삼각형끼리 붙이면 P가 왼쪽 끝에 가까워집니다. 각의 호와
+            // 연결은 유지하고, 분수까지 포함한 글자 상자 전체를 화면 안에 둡니다.
+            const x = clamp(p.x - measure.width / 2 - 40, b.insets.left + 8 + measure.width / 2, b.W - b.insets.right - 8 - measure.width / 2);
+            const dx = x - p.x, dy = 14 + measure.height / 2 - p.y;
             placement = { labelDist: Math.hypot(dx, dy), labelRot: (Math.atan2(dy, dx) - Math.atan2(u.y, u.x)) / DEG, leader: true };
           }
           ang(b, Pp, Q, A, { color: 'amber', r: 28, rings: 1, label, size, fa: 0.26, ...placement });
