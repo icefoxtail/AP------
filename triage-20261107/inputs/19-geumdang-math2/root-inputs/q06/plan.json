@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "0",
+          "-8",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "(x^2-4)^2",
+    "functionName": "u",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 25
+      },
+      {
+        "id": "B",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 16
+      },
+      {
+        "id": "D",
+        "x": 1,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "u(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "원래 함수 f(x)=x⁴−8x²+5의 닫힌 정의구간 [−3,1]은 그대로 두고, 도식에는 정확한 평행이동 u(x)=f(x)+11=(x²−4)²만 그린다. A(−3,25), B(−2,0), C(0,16), D(1,9)는 각각 원래 f값 14, −11, 5, −2에 대응한다. 원래 f의 최댓값은 14, 최솟값은 −11이므로 그 합은 3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 f(x)=x⁴−8x²+5 on the closed interval [−3,1]. The plotted curve is the exact vertical shift u(x)=f(x)+11=(x²−4)²; the x-domain is unchanged.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.sourceDomain",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=4x(x−2)(x+2); the critical points in [−3,1] are −2 and 0. Original endpoint/critical values are f(−3)=14, f(−2)=−11, f(0)=5, f(1)=−2; shifted u-values are 25,0,16,9.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The source function has max 14 and min −11 on [−3,1], so their sum is 3. The figure is u, never labelled as original f.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The exact vertical shift keeps the full source interval and maps each endpoint/critical point back to the original f-values. The axis and function name explicitly say u, not f."
+  ],
+  "sourceQuote": "닫힌구간 $[-3,1]$에서 함수 $f(x)=x^4-8x^2+5$의 최댓값과 최솟값의 합은? [4.0점]"
+}

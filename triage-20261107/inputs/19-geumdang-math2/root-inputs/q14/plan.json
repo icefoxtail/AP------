@@ -1,0 +1,78 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "2",
+      "3/2"
+    ],
+    "domain": [
+      -3,
+      2
+    ],
+    "viewport": [
+      -3,
+      2,
+      -2,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "F(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -1,
+        "y": -0.5
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "-1/2"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "P",
+    "O"
+  ],
+  "caption": "현재 원문이 정한 F(x)=3x²/2+2x의 그래프에서 P=(−1,−1/2)를 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "현행 함수관계는 F(0)=0과 f(x)=3x+2를 정하고, 따라서 F(x)=3x²/2+2x이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "현재 발문의 값은 F(−1)=3/2−2=−1/2이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현재 발문의 입력 x=−1과 이에 대응하는 F(−1)=−1/2를 함수 그래프의 좌표로 확인한다."
+  ]
+}

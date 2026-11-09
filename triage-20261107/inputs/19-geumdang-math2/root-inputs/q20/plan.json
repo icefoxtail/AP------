@@ -1,0 +1,96 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "0",
+      "3",
+      "-2"
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -4,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisVariable": "t",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "A(t)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "lowerLevel",
+          "slope": "0",
+          "intercept": "1"
+        },
+        {
+          "id": "upperLevel",
+          "slope": "0",
+          "intercept": "2"
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "A(t)=−2t³+3t²+1은 t=0에서 극솟값 1, t=1에서 극댓값 2를 갖는다. 수평선이 두 경계 높이 사이에 있을 때만 곡선과 서로 다른 세 점에서 만나므로 1<a<2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "외부점 P(1,a)에서 접점 좌표 t를 쓰면 접선 통과 조건이 a=A(t)=−2t³+3t²+1로 정리된다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.axisVariable",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A′(t)=−6t(t−1)에서 t=0은 극소이고 t=1은 극대이며 A(0)=1, A(1)=2이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.overlays",
+        "coordinateLeader"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "수평선 y=a가 A의 그래프와 서로 다른 세 점에서 만나려면 극값 경계가 제외되어 1<a<2이다.",
+      "mappedTo": [
+        "graphPlan.overlays",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "극솟값 1과 극댓값 2의 높이를 수평선으로 표시해 서로 다른 세 교점이 가능한 엄격한 열린 범위를 보여준다."
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^2-1",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0.5,
+        "y": -0.75
+      }
+    ],
+    "exactCoordinates": {
+      "C": [
+        "1/2",
+        "-3/4"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "secant",
+        "slope": "1",
+        "intercept": "-1",
+        "intersectionX": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "id": "tangent",
+        "slope": "1",
+        "intercept": "-5/4",
+        "intersectionX": [
+          "1/2"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "닫힌구간 [0,1]에서 f(x)=x²−1의 그래프에 할선 y=x−1과 x=1/2에서의 접선 y=x−5/4를 함께 표시한다. 두 직선의 기울기는 모두 1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 함수 f(x)=x²−1은 닫힌구간 [0,1]에서 평균값 정리를 적용한다. 그림도 이 정확한 닫힌구간만 나타낸다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.formula",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(0)=-1, f(1)=0이므로 양 끝점을 지나는 할선은 y=x−1이고 평균변화율은 1이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.referenceLines"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "f′(x)=2x이므로 c=1/2에서 f′(c)=1이며 접선은 y=x−5/4이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "graphPlan.referenceLines",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "구간 [0,1]의 두 끝점과 c=1/2를 표시해 평균변화율 1과 순간변화율 1이 일치하는 위치를 보여준다.",
+    "이전 자동 프레임에서 관심 구간 [0,1]이 작게 보였던 가독성 이력을 보존한다. 이번 닫힌구간 부분 그래프 계획이 그 문제를 해결했는지는 아직 검수하지 않았다."
+  ]
+}

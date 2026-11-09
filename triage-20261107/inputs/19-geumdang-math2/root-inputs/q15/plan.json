@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "12",
+          "-5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-5*x^2+12*x+3",
+    "functionName": "g",
+    "referenceCurves": [
+      {
+        "id": "fcurve",
+        "name": "f",
+        "pieces": [
+          {
+            "coefficients": [
+              "-3",
+              "2"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "intersectionX": [
+          "1-sqrt(55)/5",
+          "1+sqrt(55)/5"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 10
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 7
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": -6
+      },
+      {
+        "id": "V",
+        "x": 1.2,
+        "y": 10.2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "g(x)"
+    },
+    "exactCoordinates": {
+      "V": [
+        "6/5",
+        "51/5"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "V"
+  ],
+  "caption": "두 함수는 다른 곡선으로 표시한다: f(x)=2x−3, g(x)=−5x²+12x+3. g(1)=10, g(2)=7, g(3)=−6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 조건을 미분해 합 f+g′=−8x+9와 곱 fg′=−20x²+54x−36을 쓰고 g(2)=7을 적용하면 f(x)=2x−3, g(x)=−5x²+12x+3이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves",
+        "graphPlan.formula",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문의 적분은 x=1에서 0이므로 g(1)=10이고, 주어진 조건 g(2)=7을 보존하며, 결정된 g에서 g(3)=−6이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "f(x)=2x−3은 g(x)와 다른 함수이며 그래프의 두 번째 곡선으로 구별한다.",
+      "mappedTo": [
+        "graphPlan.referenceCurves",
+        "graphPlan.axisTitles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "f(x)=2x−3과 g(x)=−5x²+12x+3의 그래프를 구분하고, 원문 조건의 g(1), g(2), g(3) 값을 좌표로 확인한다."
+  ]
+}

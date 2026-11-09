@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "24",
+          "22",
+          "8",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x+3)^2*(x+1)^2",
+    "functionName": "v",
+    "referenceLines": [
+      {
+        "id": "level0",
+        "y": "0",
+        "intersectionX": [
+          "-3",
+          "-1"
+        ]
+      },
+      {
+        "id": "level1",
+        "y": "1",
+        "intersectionX": [
+          "-2-sqrt(2)",
+          "-2",
+          "-2+sqrt(2)"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": -2,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "v(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "M",
+    "B"
+  ],
+  "caption": "원문 보조식은 h(x)=f(x)−4x이다. 도식은 원래 f도 h도 아닌 수직이동 v(x)=h(x)−3=f(x)−4x−3=(x+3)²(x+1)²을 실수 전체에서 그린다. 수평선 v=0은 원래 직선 y=4x+3과의 접점 x=−3,−1을 나타내고, v=1은 y=4x+4와의 접점 x=−2 및 다른 두 교점 x=−2±√2를 나타낸다. 이로써 a=−2,b=−1이고 f(a)=−4, f(b)=−1이므로 f(a)f(b)=4이다. 정답은 4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Define h=f−4x. Source condition (a) gives h−3=(x+3)²(x+1)², so v=h−3 is the exact plotted auxiliary function. Thus h=v+3 and f=h+4x=v+3+4x.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "graphPlan.pieces",
+        "graphPlan.functionName",
+        "graphPlan.axisTitles",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "v=0 has double contacts x=−3,−1 and corresponds to source line y=4x+3. v=1 has x=−2−√2,−2,−2+√2; the middle point x=−2 is tangent to source line y=4x+4.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "From the stationary abscissae, a=−2 and b=−1. f(a)=h(a)+4a=4−8=−4 and f(b)=h(b)+4b=3−4=−1, so their product is 4.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The exact auxiliary vertical shift v=h−3 is labelled distinctly. Horizontal levels v=0 and v=1 are explicitly mapped to the two source lines, preserving the two tangencies and the additional intersections."
+  ],
+  "sourceQuote": "최고차항의 계수가 $1$인 사차함수 $f(x)$가 다음 조건을 만족할 때, $f(a)f(b)$의 값은?\n(가) $y=f(x)$의 그래프는 직선 $y=4x+3$과 서로 다른 두 점에서 접한다.\n(나) $y=f(x)$의 그래프는 직선 $y=4x+4$와 한 점에서 접하고, 접점 외의 서로 다른 두 점에서 만난다.\n(다) $-3<a<b<0$인 실수 $a,b$에 대하여 $f'(-3)=f'(a)=f'(b)=4$이다. [5점]"
+}

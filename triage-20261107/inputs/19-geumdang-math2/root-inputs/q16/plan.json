@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "12",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3*x^2+12*x",
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 63
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "zero",
+        "y": "0",
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "도함수"
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/8"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "도식은 원래 삼차함수 f가 아니라 경계값 k=0의 보조함수 g(x)=f′(x)=3x²+12x를 닫힌 구간 [0,3]에 그린다. g의 최솟값은 x=0에서 0이므로 g(x)+k≥0가 [0,3]에서 성립하는 k의 최솟값은 0이다. 이 경계 함수에서 원래 f(0)=−10, f(3)=71이며, 이 두 함수값은 그래프의 세로좌표가 아니다. 도식 표시 배율은 세로 1단위 길이가 가로 1단위 길이의 1/8이다. 따라서 k의 최솟값은 0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 f(x)=x³+6x²+kx−10 on [0,3]; f′(x)=3x²+12x+k. 도식은 보조 곡선 g(x)=3x²+12x=f′(x)−k이며 이를 k=0 경계에서의 f′로 표시한다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.sourceDomain",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "3x²+12x는 [0,3]에서 증가하고 최솟값 0을 x=0에서 갖는다. 따라서 f′≥0 iff k≥0이며 최소 k=0이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.referenceLines",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "k=0일 때 원래 f(0)=−10 및 f(3)=27+54−10=71. 그래프는 f가 아닌 f′를 그리므로 원래 함수값은 캡션으로만 보존한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 f와 도함수 도식을 명시적으로 분리하고, 닫힌 구간에서 도함수 최소가 x=0에서 0임을 보인다."
+  ],
+  "sourceQuote": "함수 $f(x)=x^3+6x^2+kx-10$이 닫힌구간 $[0,3]$에서 증가하도록 하는 상수 $k$의 최솟값은? [5.0점]"
+}

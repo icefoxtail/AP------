@@ -1,0 +1,77 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "1",
+      "1"
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -5,
+      14
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "lines": [
+      {
+        "id": "tangent",
+        "slope": "3",
+        "intercept": "-1",
+        "through": [
+          "P"
+        ],
+        "tangentAt": "P"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "실수 전체에서 f(x)=x²+x의 그래프와 점 P=(1,2)에서의 접선 y=3x−1을 함께 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선은 y=x²+x이고 점 (1,2)에서 접선을 그린다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "도함수는 2x+1이므로 x=1에서 기울기는 3이고 점 P를 지나는 접선은 y=3x−1이다.",
+      "mappedTo": [
+        "graphPlan.lines",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 P=(1,2)에서 곡선의 순간기울기 3과 접선의 기울기가 같음을 시각적으로 보인다."
+  ]
+}

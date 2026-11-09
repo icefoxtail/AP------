@@ -1,0 +1,73 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "0",
+      "0",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -40,
+      60
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "S",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "M",
+        "x": 3,
+        "y": -25
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "S",
+    "M"
+  ],
+  "caption": "f(x)=x⁴−4x³+2에서 S=(0,2)는 정지점이지만 극값이 아니고, M=(3,−25)는 극소점이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수는 f(x)=x⁴−4x³+2이고 정의역은 실수 전체이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=4x²(x−3)에서 x=0 양쪽은 모두 감소하므로 S=(0,2)는 극값이 아니며, x=3에서 감소에서 증가로 바뀌어 M=(3,−25)는 극소점이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정지점 S와 실제 극소점 M을 함께 표시해 도함수 0인 점이 모두 극값은 아니라는 차이를 보여준다."
+  ]
+}
