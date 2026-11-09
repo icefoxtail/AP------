@@ -11,6 +11,10 @@ on:
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/tools/g8-*'
       - 'apmath/playground/next/tools/g9-*'
+      - 'apmath/playground/next/tools/high-evidence-binding.mjs'
+      - 'apmath/playground/next/tools/browser-screenshot-guard*'
+      - 'apmath/playground/next/tools/high-viewport-evidence*'
+      - 'apmath/playground/next/tools/middle-screenshot-contract.test.mjs'
       - '.github/workflows/g8-g9-geometry-browser.yml'
   workflow_dispatch:
 
@@ -25,6 +29,10 @@ jobs:
         unit: [g8-triangles, g8-quadrilaterals, g8-similarity, g8-pythagoras, g9-trig-ratio, g9-circle]
     runs-on: ubuntu-24.04
     timeout-minutes: 45
+    env:
+      APMATH_CANDIDATE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      APMATH_BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+      APMATH_PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,6 +49,7 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
           UNIT: ${{ matrix.unit }}
         run: |
+          git fetch --no-tags --depth=1 origin "$APMATH_CANDIDATE_HEAD_SHA"
           git fetch --no-tags --depth=1 origin "$BASE_SHA"
           node --input-type=module <<'JS'
           import {execFileSync} from 'node:child_process';
@@ -54,7 +63,8 @@ jobs:
           }
           // A unit implementation PR includes its full scene inventory. Shared-kit
           // changes or a harness-only PR test every unit; no scene sampling gate.
-          const affected = changed.some(p => /\/kit\//.test(p)) || !picked.size ? all : [...picked];
+          const shared = changed.some(p => /\/kit\//.test(p) || /high-evidence-binding\.mjs$|(?:browser-screenshot-guard|high-viewport-evidence|middle-screenshot-contract)(?:\.test)?\.mjs$|g8-g9-(?:geometry-browser-audit|student-live-smoke)\.mjs$|g8-g9-geometry-browser\.yml$/.test(p));
+          const affected = shared || !picked.size ? all : [...picked];
           const active = affected.includes(process.env.UNIT);
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`active=${active}\n`);
           if (active) execFileSync('git',['worktree','add','--detach',`${process.env.RUNNER_TEMP}/g89-baseline`,process.env.BASE_SHA]);
@@ -69,6 +79,7 @@ jobs:
           tests=(apmath/playground/next/tools/"$UNIT"-*.test.mjs)
           if (( ${#tests[@]} )); then node --test "${tests[@]}"; else echo "No unit-specific mathematical regression supplied yet"; fi
           node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/apl-problem-tag-state.test.mjs apmath/playground/next/tools/g8-g9-student-live-smoke.test.mjs
+          node --test apmath/playground/next/tools/browser-screenshot-guard.test.mjs apmath/playground/next/tools/middle-screenshot-contract.test.mjs
       - name: Install Chromium test runtime
         if: steps.scope.outputs.active == 'true'
         run: |

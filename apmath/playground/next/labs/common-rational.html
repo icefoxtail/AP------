@@ -34,6 +34,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const rint = (n) => Math.floor(Math.random() * n);
   const pickOf = (arr, prev) => { if (arr.length < 2) return arr[0]; let x; do { x = arr[rint(arr.length)]; } while (x === prev); return x; };
   const mn = (n) => String(Math.round(n * 100) / 100).replace('-', '−'); // 화면용 숫자(음수는 − 기호)
+  const fraction = (n, d) => { const gcd = (a, b) => b ? gcd(b, a % b) : a; const g = gcd(Math.abs(n), Math.abs(d)); n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return d === 1 ? String(n) : `${n < 0 ? '-' : ''}\\dfrac{${Math.abs(n)}}{${d}}`; };
   const lin = (a, b, v = 'x') => { // ax+b 를 TeX 로
     let s = '';
     if (a !== 0) s += a === 1 ? v : a === -1 ? '-' + v : a + v;
@@ -55,14 +56,17 @@ window.addEventListener('DOMContentLoaded', function () {
     b.plot(f, { ...o, from: p + 1e-3 });
   }
   function quadrants(k, p, q) { // 곡선이 지나는 사분면
-    const seen = new Set(), f = ratY(k, p, q), xs = [];
-    for (let x = -120; x <= 120; x += 0.37) xs.push(x);
-    for (const d of [1e-4, 1e-3, 1e-2, 0.1, 0.5]) xs.push(p + d, p - d);
-    for (const x of xs) {
-      if (Math.abs(x - p) < 1e-9 || Math.abs(x) < 1e-9) continue;
-      const y = f(x);
-      if (Math.abs(y) < 1e-9) continue;
-      seen.add(x > 0 ? (y > 0 ? 1 : 4) : (y > 0 ? 2 : 3));
+    if (k === 0) return q > 0 ? [1, 2] : q < 0 ? [3, 4] : [];
+    // x=0, 분모의 영점, 분자의 영점 사이에서는 x와 y의 부호가 일정합니다.
+    // 간격이 아무리 좁아도 각 열린 구간을 하나씩 판정합니다.
+    const zero = q === 0 ? null : p - k / q;
+    const cuts = [...new Set([0, p, ...(zero === null ? [] : [zero])])].sort((a, b) => a - b);
+    const bounds = [-Infinity, ...cuts, Infinity], seen = new Set();
+    for (let i = 0; i < bounds.length - 1; i++) {
+      const a = bounds[i], b = bounds[i + 1];
+      const x = !Number.isFinite(a) ? b - 1 : !Number.isFinite(b) ? a + 1 : (a + b) / 2;
+      const sy = q === 0 ? Math.sign(k) * Math.sign(x - p) : Math.sign(q) * Math.sign(x - zero) * Math.sign(x - p);
+      seen.add(x > 0 ? (sy > 0 ? 1 : 4) : (sy > 0 ? 2 : 3));
     }
     return [1, 2, 3, 4].filter((i) => seen.has(i));
   }
@@ -77,7 +81,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
@@ -89,6 +93,14 @@ window.addEventListener('DOMContentLoaded', function () {
   const baseScene = (o) => ({
     tabs: { compact: true }, ...o,
     steps: o.steps && (() => o.steps().map(fixLT)),
+    view: (s, lab) => {
+      const v = o.view(s, lab);
+      if (lab.tab !== 'explore' && !lab._answerOpen()) {
+        if (v.chips) v.chips = v.chips.filter((c) => !c.answer);
+        if (v.tape && v.tape.answer) delete v.tape;
+      }
+      return v;
+    },
     solution: o.solution && { ...o.solution, standard: () => fixObj(o.solution.standard()), quick: () => fixObj(o.solution.quick()) }
   });
   // 1:1 무대 안에서 점 라벨 위치를 정하기 위한 짧은 도우미
@@ -96,6 +108,16 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================== 장면 1 · 평행이동과 점근선 ======================== */
   const geo1 = (s) => (s.m1 === 1 ? { q: s.fa, p: -s.fc, k: s.fb - s.fa * s.fc } : { k: s.rk, p: s.rp, q: s.rq });
+  // 식의 모양을 바꿀 때 같은 그래프를 유지합니다. 변환된 계수를 조절 범위에서 잘라내지 않습니다.
+  const shapeValue = (s, lab, key, value) => {
+    s[key] = value;
+    const p = lab && lab.params[key];
+    if (p && (value < p.min || value > p.max)) {
+      const bound = Math.max(Math.abs(p.min), Math.abs(p.max), Math.abs(value));
+      p.min = -bound; p.max = bound;
+      if (lab.refs && lab.refs.controls) delete lab.refs.controls.__ctlKey;
+    }
+  };
   // 문제 변형: T = 그래프에서 a+b+c, Q = 모든 사분면
   const T1 = [{ type: 'T', p: 2, q: -2, k: -4, pt: [0, 0] }]; // 처음 문제 = 기출 유형 그대로 (점근선 x=2, y=-2, 원점을 지남)
   for (const p of [-3, -2, -1, 1, 2, 3]) for (const q of [-3, -2, -1, 1, 2, 3]) for (const k of [-6, -4, -3, -2, 2, 3, 4, 6]) {
@@ -128,7 +150,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return [
         `점근선이 $x=${v.p}$, $y=${v.q}$이므로 두 점근선의 교점은 $C(${v.p},\\,${v.q})$입니다. $y=\\dfrac{ax+b}{x+c}$의 점근선은 $x=-c$, $y=a$이므로 $c=${-v.p}$, $a=${v.q}$입니다.`,
         `점근선의 교점을 새 원점으로 보면 $y=\\dfrac{k}{x}$를 $x$축으로 $${v.p}$, $y$축으로 $${v.q}$만큼 옮긴 꼴이므로 $y=\\dfrac{k}{x${addT(-v.p)}}${addT(v.q)}$, 곧 $(x${addT(-v.p)})(y${addT(-v.q)})=k$입니다.`,
-        `점 $P(${x0},\\,${y0})$를 지나므로 $k=(${x0}${addT(-v.p)})(${y0}${addT(-v.q)})=(${u})(${w})=${u * w}$입니다. (점근선 교점 $C$와 $P$를 꼭짓점으로 하는 직사각형의 가로·세로 곱이 $k$)`,
+        `점 $P(${x0},\\,${y0})$를 지나므로 $k=(${x0}${addT(-v.p)})(${y0}${addT(-v.q)})=(${u})(${w})=${u * w}$입니다. 두 인수는 부호가 있는 좌표 차이며, 직사각형의 실제 넓이는 $|k|=${Math.abs(v.k)}$입니다.`,
         `$y=\\dfrac{${v.k}}{x${addT(-v.p)}}${addT(v.q)}=\\dfrac{${lin(v.a, v.b)}}{${lin(1, v.c)}}$이므로 $a=${v.a},\\ b=${v.b},\\ c=${v.c}$ ⇒ $a+b+c=${v.ans.tex}$`
       ];
     }
@@ -158,8 +180,10 @@ window.addEventListener('DOMContentLoaded', function () {
         if (Math.abs(p) >= 2) b.text([p / 2, 0], `x방향 ${mn(p)}`, { color: 'amber', size: 12, dy: q >= 0 ? 15 : -11 });
         if (Math.abs(q) >= 2) b.text([p, q / 2], `y방향 ${mn(q)}`, { color: 'rose', size: 12, align: p >= 0 ? 'left' : 'right', dx: p >= 0 ? 8 : -8 });
       }
-      b.vline(p, { color: 'amber', dash: [6, 5], width: 1.8, alpha: 0.9, ref: 'asym' });
-      b.hline(q, { color: 'rose', dash: [6, 5], width: 1.8, alpha: 0.9, ref: 'asym' });
+      if (k !== 0) {
+        b.vline(p, { color: 'amber', dash: [6, 5], width: 1.8, alpha: 0.9, ref: 'asym' });
+        b.hline(q, { color: 'rose', dash: [6, 5], width: 1.8, alpha: 0.9, ref: 'asym' });
+      }
       drawRat(b, k, p, q, { color: 'sky', width: 3.4, glow: true, ref: 'curve' });
       if (shift && Math.abs(k) >= 0.5 && Math.abs(k) <= 7 && Math.abs(1 + p) < 8 && Math.abs(k + q) < 8) {
         b.seg([1, k], [1 + p, k + q], { color: 'violet', dash: [2, 4], width: 1.6, ref: 'shift' });
@@ -167,7 +191,8 @@ window.addEventListener('DOMContentLoaded', function () {
         b.point([1 + p, k + q], { r: 4.5, color: 'violet', label: 'A′', dx: 9, dy: -9, size: 12 });
       }
       const cl = `C(${mn(p)}, ${mn(q)})`;
-      if (s.m1 === 1) b.point([p, q], { r: 6, color: 'violet', label: cl, dx: 10, dy: 16, size: 13, ref: 'asym' });
+      if (k === 0) b.point([p, q], { r: 6, hollow: true, color: 'violet', label: `제외된 점 (${mn(p)}, ${mn(q)})`, dx: 10, dy: 18, size: 13 });
+      else if (s.m1 === 1) b.point([p, q], { r: 6, color: 'violet', label: cl, dx: 10, dy: 16, size: 13, ref: 'asym' });
       else b.handle('C', [p, q], { color: 'violet', r: 7, label: cl, dx: 10, dy: 18, size: 13, ariaLabel: '점근선의 교점 C (끌어서 평행이동)', drag: (w) => { s.rp = clamp(Math.round(w.x), -6, 6); s.rq = clamp(Math.round(w.y), -6, 6); } });
       return;
     }
@@ -180,8 +205,8 @@ window.addEventListener('DOMContentLoaded', function () {
       if (st >= 3) {
         drawRat(b, v.k, 0, 0, { color: 'muted', dash: [5, 5], width: 2, alpha: 0.8 });
         b.poly([[v.p, v.q], [x0, v.q], [x0, y0], [v.p, y0]], { color: 'green', dash: [5, 4], width: 2, fill: 'green', fillAlpha: 0.1 });
-        b.text([(v.p + x0) / 2, v.q], `${mn(x0 - v.p)}`, { color: 'green', size: 13, dy: y0 > v.q ? 16 : -12 });
-        b.text([x0, (v.q + y0) / 2], `${mn(y0 - v.q)}`, { color: 'green', size: 13, align: x0 > v.p ? 'left' : 'right', dx: x0 > v.p ? 8 : -8 });
+        b.text([(v.p + x0) / 2, v.q], `Δx=${mn(x0 - v.p)}`, { color: 'green', size: 13, dy: y0 > v.q ? 16 : -12 });
+        b.text([x0, (v.q + y0) / 2], `Δy=${mn(y0 - v.q)}`, { color: 'green', size: 13, align: x0 > v.p ? 'left' : 'right', dx: x0 > v.p ? 8 : -8 });
       }
       drawRat(b, v.k, v.p, v.q, { color: 'sky', width: 3.4, glow: true });
       if (st >= 2) {
@@ -220,16 +245,16 @@ window.addEventListener('DOMContentLoaded', function () {
       focus: { x: [-8, 8], y: [-6.5, 7.5] },
       controls: (s) => (s.m1 === 1 ? ['fa', 'fb', 'fc'] : ['rk', 'rp', 'rq']),
       presets: (s) => [
-        { group: '식의 모양', label: '$y=\\frac{k}{x-p}+q$', color: 'sky', apply: (st) => { if (st.m1 === 1) { const g = geo1(st); st.rk = clamp(g.k, -8, 8); st.rp = clamp(g.p, -6, 6); st.rq = clamp(g.q, -6, 6); } st.m1 = 0; }, on: (st) => st.m1 !== 1 },
-        { group: '식의 모양', label: '분수꼴 $\\frac{ax+b}{x+c}$', color: 'violet', apply: (st) => { if (st.m1 !== 1) { st.fa = st.rq; st.fc = -st.rp; st.fb = clamp(st.rk - st.rp * st.rq, -20, 20); } st.m1 = 1; }, on: (st) => st.m1 === 1 },
-        { group: '바로 가기', label: 'p, q = 0 ($y=\\frac{k}{x}$)', apply: (st) => { if (st.m1 === 1) { st.fa = 0; st.fc = 0; st.fb = st.rk; } else { st.rp = 0; st.rq = 0; } } },
-        { group: '바로 가기', label: 'k 부호 바꾸기', apply: (st) => { if (st.m1 === 1) st.fb = -(st.fb - st.fa * st.fc) + st.fa * st.fc; else st.rk = -st.rk; } }
+        { group: '식의 모양', label: '$y=\\frac{k}{x-p}+q$', color: 'sky', apply: (st, lab) => { if (st.m1 === 1) { const g = geo1(st); shapeValue(st, lab, 'rk', g.k); st.rp = g.p; st.rq = g.q; } st.m1 = 0; }, on: (st) => st.m1 !== 1 },
+        { group: '식의 모양', label: '분수꼴 $\\frac{ax+b}{x+c}$', color: 'violet', apply: (st, lab) => { if (st.m1 !== 1) { st.fa = st.rq; st.fc = -st.rp; shapeValue(st, lab, 'fb', st.rk - st.rp * st.rq); } st.m1 = 1; }, on: (st) => st.m1 === 1 },
+        { group: '바로 가기', label: 'p, q = 0 ($y=\\frac{k}{x}$)', apply: (st, lab) => { if (st.m1 === 1) { const k = geo1(st).k; st.fa = 0; st.fc = 0; shapeValue(st, lab, 'fb', k); } else { st.rp = 0; st.rq = 0; } } },
+        { group: '바로 가기', label: 'k 부호 바꾸기', apply: (st, lab) => { if (st.m1 === 1) shapeValue(st, lab, 'fb', -(st.fb - st.fa * st.fc) + st.fa * st.fc); else st.rk = -st.rk; } }
       ],
       steps: steps1,
       reviewTop: () => probBox(text1(var1.cur())),
       problem: { tag: '22 매산고 · 25 순천고 기출 유형', time: '목표 시간: 15초', text: () => probHTML(text1(var1.cur())), answer: () => tex(var1.cur().ans.tex) },
       solution: {
-        standardTitle: '식 세우기', standardTag: '기본 풀이', quickTitle: '직사각형 넓이로 k 읽기', quickTag: '10초 컷',
+        standardTitle: '식 세우기', standardTag: '기본 풀이', quickTitle: '좌표 차의 곱으로 k 읽기', quickTag: '핵심',
         standard: () => {
           const v = var1.cur();
           if (v.type === 'T') return { steps: `점근선 $x=${v.p}$, $y=${v.q}$ ⇒ $y=\\dfrac{k}{x${addT(-v.p)}}${addT(v.q)}$. 점 $P(${v.pt[0]},\\,${v.pt[1]})$를 대입하면 $${v.pt[1]}=\\dfrac{k}{${v.pt[0] - v.p}}${addT(v.q)}$ ⇒ $k=${v.k}$. 통분하면 $\\dfrac{${lin(v.a, v.b)}}{${lin(1, v.c)}}$ ⇒ $a+b+c=${v.ans.tex}$`, warning: '점근선에서 c의 부호를 헷갈리지 마세요. 분모가 x+c이면 점근선은 x=−c입니다.' };
@@ -237,7 +262,7 @@ window.addEventListener('DOMContentLoaded', function () {
         },
         quick: () => {
           const v = var1.cur();
-          if (v.type === 'T') return { steps: `$(x-p)(y-q)=k$ 에서 $k$는 <b>$C$와 $P$를 꼭짓점으로 하는 직사각형의 가로×세로</b>입니다. $(${v.pt[0] - v.p})(${v.pt[1] - v.q})=${v.k}$. 그다음 통분만 합니다.`, highlight: '점근선 교점 C를 새 원점으로 보면 곡선은 xy=k 입니다. 대입은 한 번이면 됩니다.' };
+          if (v.type === 'T') return { steps: `$(x-p)(y-q)=k$ 에서 $k$는 <b>부호가 있는 두 좌표 차의 곱</b>입니다. $(${v.pt[0] - v.p})(${v.pt[1] - v.q})=${v.k}$. 직사각형의 변의 길이는 각 좌표 차의 절댓값이므로 넓이는 $|k|=${Math.abs(v.k)}$입니다. 그다음 통분합니다.`, highlight: '점근선 교점 C를 새 원점으로 보면 곡선은 xy=k 입니다. 대입은 한 번이면 됩니다.' };
           return { steps: `곡선이 원점을 지나는 순간이 제3사분면으로 들어가는 경계입니다: $k=pq=${v.p * v.q}$. 이보다 크면 됩니다.`, highlight: 'y절편의 부호만 보면 사분면 문제의 절반이 끝납니다.' };
         }
       },
@@ -252,13 +277,13 @@ window.addEventListener('DOMContentLoaded', function () {
         return {
           chips: [{ tex: flat ? `y=${mn(q)}\\ (x\\ne ${mn(p)})` : ratTeX(k, p, q), color: 'sky' }],
           status: { tone: flat ? 'warn' : 'info', text: flat ? 'k = 0이면 곡선이 아니라 직선(구멍 하나)' : `C(${mn(p)}, ${mn(q)}) 로 평행이동` },
-          alert: flat && s.m1 === 1 ? { tone: 'warn', text: '분자가 분모의 배수($b=ac$)이면 약분되어 <b>직선</b>이 됩니다. 이런 함수는 유리함수 그래프의 문제에서 제외됩니다.' } : undefined,
+          alert: flat && s.m1 === 1 ? { tone: 'warn', text: '분자가 분모의 배수($b=ac$)이면 약분되어 <b>상수함수</b>가 됩니다. 약분하더라도 원래 분모가 0인 $x=-c$는 정의역에서 제외됩니다.' } : undefined,
           readouts: [
-            { label: '점근선', value: `x = ${mn(p)},  y = ${mn(q)}`, color: 'amber', ref: 'asym', note: '곡선이 한없이 다가가는 두 직선' },
+            { label: flat ? '제외된 점' : '점근선', value: flat ? `(${mn(p)}, ${mn(q)})` : `x = ${mn(p)},  y = ${mn(q)}`, color: 'amber', ref: 'asym', note: flat ? '약분해도 x=p는 정의역에서 제외되며 수직점근선은 없습니다' : '곡선이 한없이 다가가는 두 직선' },
             { label: '옮긴 정도', value: `x방향 ${mn(p)},  y방향 ${mn(q)}`, color: 'violet', ref: 'shift', note: '$y=\\frac{k}{x}$ → 점선에서 곡선으로' },
             { label: '분수꼴로 고치면', value: `$${fracTeX(a, bb, -p)}$`, color: 'sky', wide: true, ref: 'curve', note: `a = q = ${mn(a)},  c = −p = ${mn(-p)},  b = k − pq = ${mn(bb)}` },
-            { label: '정의역 · 치역', value: `x ≠ ${mn(p)},  y ≠ ${mn(q)}`, color: 'ink' },
-            { label: '지나는 사분면', value: flat ? '—' : `제${qd.join(', ')}사분면`, color: 'green', note: 'y절편 ' + (p === 0 ? '없음' : mn(q - k / p)) }
+            { label: '정의역 · 치역', value: flat ? `x ≠ ${mn(p)},  y = ${mn(q)}` : `x ≠ ${mn(p)},  y ≠ ${mn(q)}`, color: 'ink' },
+            { label: '지나는 사분면', value: qd.length ? `제${qd.join(', ')}사분면` : '없음 (x축 위)', color: 'green', note: 'y절편 ' + (p === 0 ? '없음' : mn(q - k / p)) }
           ]
         };
       },
@@ -602,6 +627,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================== 장면 4 · 구간의 최대·최소와 격자점 ======================== */
   const CUR4 = { p: 1, q: 1 }; // 탐구 곡선: y = k/(x-1) + 1
+  function intervalStats(k, p, q, a, b) {
+    if (k === 0) return { kind: 'constant', min: q, max: q };
+    const f = ratY(k, p, q);
+    if (a < p && p < b) return { kind: 'split', min: null, max: null };
+    if (a === p) return k > 0 ? { kind: 'right', min: f(b), minAt: b, max: null } : { kind: 'right', min: null, max: f(b), maxAt: b };
+    if (b === p) return k > 0 ? { kind: 'left', min: null, max: f(a), maxAt: a } : { kind: 'left', min: f(a), minAt: a, max: null };
+    const fa = f(a), fb = f(b);
+    return { kind: 'closed', min: Math.min(fa, fb), max: Math.max(fa, fb), minAt: fa < fb ? a : b, maxAt: fa > fb ? a : b };
+  }
   const floorDiv = (n, d) => Math.floor(n / d); // 정수끼리 (d>0)
   const cols4 = (k, p, q, a, b) => { const out = []; for (let x = a; x <= b; x++) { const u = x - p, y = floorDiv(q * u + k, u); out.push({ x, f: q + k / u, fl: y, n: y >= 0 ? y + 1 : 0 }); } return out; };
   const A4 = [{ type: 'A', p: -1, q: 3, s: 0, t: 3, e: 1, ask: 'min' }];
@@ -637,7 +671,7 @@ window.addEventListener('DOMContentLoaded', function () {
         `$k=K${addT(-v.p * v.q)}$ 이므로 $k=${v.K}${addT(-v.p * v.q)}=${v.ans.tex}$`
       ];
     }
-    const rows = v.cs.map((c) => `$f(${c.x})=${c.f % 1 === 0 ? c.f : `${Math.round(c.f * 100) / 100}`}$ ⇒ ${c.n}개`);
+    const rows = v.cs.map((c) => `$f(${c.x})=${fraction(v.q * (c.x - v.p) + v.k, c.x - v.p)}$ ⇒ ${c.n}개`);
     return [
       `곡선은 $x>${v.p}$에서 감소하며 항상 $y>${v.q}\\ge0$이므로 영역은 곡선 아래, $x$축 위입니다. $x=${v.a},\\,${v.a + 1},\\,\\cdots,\\,${v.b}$ 각각의 세로 줄(열)에서 정수 $y$의 개수를 셉니다.`,
       `$x$가 정수인 줄마다 $0\\le y\\le f(x)$이므로 정수 $y$는 $0,1,\\cdots,\\lfloor f(x)\\rfloor$ ⇒ <b>$\\lfloor f(x)\\rfloor+1$개</b>입니다.`.replace('<b>', '').replace('</b>', ''),
@@ -666,18 +700,24 @@ window.addEventListener('DOMContentLoaded', function () {
         b.handle('Hb', [bb, 0], { color: 'rose', r: 7, label: 'x=' + bb, dx: 0, dy: 20, align: 'center', size: 12, ariaLabel: '오른쪽 경계 (좌우로 끌기)', drag: (w) => { s.s4b = clamp(Math.round(w.x), s.s4a + 1, 10); } });
         return;
       }
-      const k = s.s4k, a = s.s4a0, bb = s.s4b0, f = ratY(k, p, q), inside = p >= a && p <= bb;
+      const k = s.s4k, a = s.s4a0, bb = s.s4b0, f = ratY(k, p, q), inside = p >= a && p <= bb, stats = intervalStats(k, p, q, a, bb);
       b.poly([[a, vb.y0], [bb, vb.y0], [bb, vb.y1], [a, vb.y1]], { color: null, fill: 'amber', fillAlpha: 0.1 });
-      b.vline(p, { color: 'amber', dash: [6, 5], width: 1.4, alpha: 0.7 });
-      b.hline(q, { color: 'rose', dash: [6, 5], width: 1.4, alpha: 0.7 });
+      if (k !== 0) {
+        b.vline(p, { color: 'amber', dash: [6, 5], width: 1.4, alpha: 0.7 });
+        b.hline(q, { color: 'rose', dash: [6, 5], width: 1.4, alpha: 0.7 });
+      }
       drawRat(b, k, p, q, { color: 'sky', width: 2.4, alpha: 0.55 });
-      if (Math.abs(k) < 1e-9) { b.seg([a, q], [bb, q], { color: 'amber', width: 3.6 }); }
-      else if (inside) { b.plot(f, { color: 'amber', width: 3.8, from: a, to: p - 1e-3 }); b.plot(f, { color: 'amber', width: 3.8, from: p + 1e-3, to: bb }); }
+      if (Math.abs(k) < 1e-9) { b.seg([a, q], [bb, q], { color: 'amber', width: 3.6 }); if (inside) b.point([p, q], { r: 5.5, hollow: true, color: 'amber' }); }
+      else if (inside) { if (a < p) b.plot(f, { color: 'amber', width: 3.8, from: a, to: p - 1e-3 }); if (bb > p) b.plot(f, { color: 'amber', width: 3.8, from: p + 1e-3, to: bb }); }
       else b.plot(f, { color: 'amber', width: 3.8, glow: true, from: a, to: bb });
-      if (!inside && Math.abs(k) >= 1e-9) {
-        const ya = f(a), yb = f(bb), hi = Math.max(ya, yb), lo = Math.min(ya, yb);
-        [[a, ya], [bb, yb]].forEach(([x, y]) => { const isMax = y === hi; b.seg([x, y], [0, y], { color: isMax ? 'rose' : 'green', dash: [3, 4], width: 1.6 }); b.point([x, y], { r: 5.5, color: isMax ? 'rose' : 'green', label: `${isMax ? '최대' : '최소'} ${mn(Math.round(y * 100) / 100)}`, dx: x < p ? -10 : 10, dy: -12, align: x < p ? 'right' : 'left', size: 12 }); });
-        b.seg([0, lo], [0, hi], { color: 'violet', width: 5, alpha: 0.65, cap: 'butt', ref: 'range' });
+      if (k !== 0) {
+        [['max', '최대', 'rose'], ['min', '최소', 'green']].forEach(([key, label, color]) => {
+          if (stats[key] == null) return;
+          const x = stats[key + 'At'], y = stats[key];
+          b.seg([x, y], [0, y], { color, dash: [3, 4], width: 1.6 });
+          b.point([x, y], { r: 5.5, color, label: `${label} ${Number.isInteger(y) ? '' : '≈ '}${mn(y)}`, dx: x < p ? -10 : 10, dy: -12, align: x < p ? 'right' : 'left', size: 12 });
+        });
+        if (stats.min != null && stats.max != null) b.seg([0, stats.min], [0, stats.max], { color: 'violet', width: 5, alpha: 0.65, cap: 'butt', ref: 'range' });
       }
       b.handle('Ha', [a, 0], { color: 'amber', r: 7, label: 's=' + mn(a), dx: 0, dy: 20, align: 'center', size: 12, ariaLabel: '정의역 왼쪽 끝 s', drag: (w) => { s.s4a0 = clamp(Math.round(w.x * 2) / 2, -3, s.s4b0 - 0.5); } });
       b.handle('Hb', [bb, 0], { color: 'rose', r: 7, label: 't=' + mn(bb), dx: 0, dy: 20, align: 'center', size: 12, ariaLabel: '정의역 오른쪽 끝 t', drag: (w) => { s.s4b0 = clamp(Math.round(w.x * 2) / 2, s.s4a0 + 0.5, 10); } });
@@ -717,7 +757,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return baseScene({
       id: 'r4', title: '구간의 최댓값·최솟값과 격자점', short: '구간 최대최소·격자점',
       question: '정의역을 바꾸면 최댓값·최솟값은 어디서 생기고, 영역 안의 정수 점은 몇 개일까?',
-      guide: '<b>s, t</b> 손잡이를 끌어 정의역을 바꿔 보세요. 점근선을 <b>건너지 않으면</b> 한쪽 가지에서 함수가 단조이므로 <b>양 끝</b>에서 최대·최소가 생기고, <b>점근선을 포함하면</b> 최대·최소가 없습니다. 「격자점」 탭에서는 줄(열)마다 정수 점이 몇 개인지 세 봅니다.',
+      guide: '<b>s, t</b> 손잡이를 끌어 구간을 바꿔 보세요. 분모가 0인 <b>x=1은 정의역에서 제외</b>합니다. k≠0일 때 점근선이 구간 밖이면 양 끝에서 최대·최소가 생기고, 구간 내부이면 둘 다 없습니다. 점근선이 끝점이면 한쪽 극값만 있습니다. k=0이면 남은 구간에서 상수함수입니다. 「격자점」에서는 줄마다 정수 점을 셉니다.',
       enter: reset,
       focus: { x: [-3, 11], y: [-4, 10] },
       controls: (s) => (s.s4mode === 1 ? ['s4kl'] : ['s4k']),
@@ -728,7 +768,9 @@ window.addEventListener('DOMContentLoaded', function () {
           { group: '정의역', label: '점근선 오른쪽 [2, 5]', apply: (st) => { st.s4a0 = 2; st.s4b0 = 5; } },
           { group: '정의역', label: '점근선 왼쪽 [−2, 0]', apply: (st) => { st.s4a0 = -2; st.s4b0 = 0; } },
           { group: '정의역', label: '점근선 포함 [−1, 3]', apply: (st) => { st.s4a0 = -1; st.s4b0 = 3; } },
-          { group: 'k의 부호', label: 'k < 0 (증가)', apply: (st) => { st.s4k = -4; }, on: (st) => st.s4k < 0 }
+          { group: '정의역', label: '점근선이 끝점 [1, 5]', apply: (st) => { st.s4a0 = 1; st.s4b0 = 5; } },
+          { group: 'k의 부호', label: 'k < 0 (증가)', apply: (st) => { st.s4k = -4; }, on: (st) => st.s4k < 0 },
+          { group: 'k의 부호', label: 'k = 0 (상수)', apply: (st) => { st.s4k = 0; }, on: (st) => st.s4k === 0 }
         ])
       ],
       steps: steps4,
@@ -737,7 +779,7 @@ window.addEventListener('DOMContentLoaded', function () {
       solution: {
         standardTitle: '단조성과 대입', standardTag: '기본 풀이', quickTitle: '그래프를 그려 끝점 보기', quickTag: '그림으로',
         standard: () => { const v = var4.cur(); return v.type === 'A' ? { steps: `$y=${v.q}+\\dfrac{K}{x${addT(-v.p)}}$ (K=k${addT(v.p * v.q)}). $x=${v.xe}$에서 값 ${v.m} ⇒ $K=${v.K}$ ⇒ $k=${v.ans.tex}$`, warning: '분자의 상수는 k가 아니라 K=k+pq 입니다(통분 전후의 k를 혼동하지 마세요).' } : { steps: `줄별 개수 $\\lfloor f(x)\\rfloor+1$을 더하면 ${v.cs.map((c) => c.n).join(' + ')} = ${v.ans.tex}`, warning: 'y=0인 점(x축 위)도 경계에 포함되므로 +1을 빠뜨리지 마세요.' }; },
-        quick: () => { const v = var4.cur(); return { steps: v.type === 'A' ? '점근선을 건너지 않으면 함수는 증가 또는 감소 하나뿐이라, 최댓값·최솟값은 <b>구간의 양 끝</b> 값입니다. 끝 한 곳만 대입하면 됩니다.' : '그림에서 각 줄(열)의 정수 점을 직접 세고, 곡선이 x축에서 멀어질수록 줄이 길어지는 것을 확인합니다.', highlight: v.type === 'A' ? '점근선을 포함하는 구간이면 최대·최소가 없습니다.' : '곡선 위 점이 정수이면 그 점까지 포함해 센다는 점만 주의하세요.' }; }
+        quick: () => { const v = var4.cur(); return { steps: v.type === 'A' ? '점근선을 건너지 않으면 함수는 증가 또는 감소 하나뿐이라, 최댓값·최솟값은 <b>구간의 양 끝</b> 값입니다. 끝 한 곳만 대입하면 됩니다.' : '그림에서 각 줄(열)의 정수 점을 직접 세고, 곡선이 x축에서 멀어질수록 줄이 길어지는 것을 확인합니다.', highlight: v.type === 'A' ? '분자 상수 K≠0이고 점근선이 구간 내부에 있으면 최대·최소가 모두 없습니다. 끝점에만 있으면 한쪽 극값은 존재할 수 있습니다.' : '곡선 위 점이 정수이면 그 점까지 포함해 센다는 점만 주의하세요.' }; }
       },
       view: (s, lab) => {
         if (lab.tab !== 'explore') { const v = var4.cur(); return { chips: [{ html: v.type === 'A' ? `<b>k=${v.ans.tex}</b>` : `총 <b>${v.ans.tex}개</b>`, color: 'amber', answer: true }] }; }
@@ -754,16 +796,24 @@ window.addEventListener('DOMContentLoaded', function () {
             ]
           };
         }
-        const k = s.s4k, a = s.s4a0, bb = s.s4b0, inside = p >= a && p <= bb, f = ratY(k, p, q);
-        const ya = f(a), yb = f(bb), hi = Math.max(ya, yb), lo = Math.min(ya, yb), r2 = (x) => mn(Math.round(x * 100) / 100);
+        const k = s.s4k, a = s.s4a0, bb = s.s4b0, stats = intervalStats(k, p, q, a, bb);
+        const at = (x) => fraction(2 * (q * (x - p) + k), 2 * (x - p));
+        const value = (key) => stats[key] == null ? '없음' : `$${k === 0 ? q : at(stats[key + 'At'])}$`;
+        let range;
+        if (stats.kind === 'constant') range = `y=${q}`;
+        else if (stats.kind === 'split') range = `y\\le ${at(k > 0 ? a : bb)}\\quad\\text{또는}\\quad y\\ge ${at(k > 0 ? bb : a)}`;
+        else if (stats.min == null) range = `y\\le ${at(stats.maxAt)}`;
+        else if (stats.max == null) range = `y\\ge ${at(stats.minAt)}`;
+        else range = `${at(stats.minAt)}\\le y\\le ${at(stats.maxAt)}`;
+        const text = stats.kind === 'constant' ? `k=0 — 최댓값과 최솟값이 모두 ${q}` : stats.kind === 'split' ? '점근선이 구간 내부 — 위아래로 끝없이 뻗어 최대·최소 없음' : stats.kind === 'closed' ? `${k > 0 ? '감소' : '증가'}함수 — 양 끝에서 최대·최소` : `점근선이 구간 끝점 — ${stats.min == null ? '최댓값만' : '최솟값만'} 존재`;
         return {
           chips: [{ tex: ratTeX(k, p, q), color: 'sky' }],
-          status: { tone: inside ? 'warn' : 'key', text: inside ? '정의역이 점근선 x=1을 포함 — 최대·최소 없음' : `${k > 0 ? '감소' : '증가'}함수 — 양 끝에서 최대·최소` },
-          alert: inside ? { tone: 'warn', text: '구간 안에 <b>점근선 x=1</b>이 있으면 y가 한없이 커지거나 작아져 <b>최댓값·최솟값이 없습니다</b>. 치역도 하나로 이어지지 않습니다.' } : undefined,
+          status: { tone: stats.kind === 'split' ? 'warn' : 'key', text },
+          alert: a <= p && p <= bb ? { tone: 'info', text: `<b>x=${p}</b>은 분모가 0이므로 구간에서 제외합니다. ${k === 0 ? '이 한 점을 빼도 나머지 모든 점의 함숫값은 같아 최대·최소가 모두 존재합니다.' : stats.kind === 'split' ? '양쪽 가지가 모두 포함되어 위아래로 한없이 뻗습니다.' : '한쪽 가지만 포함되어 한 방향으로만 한없이 뻗습니다.'}` } : undefined,
           readouts: [
-            { label: '최댓값', value: inside || k === 0 ? '없음' : r2(hi), color: 'rose' },
-            { label: '최솟값', value: inside || k === 0 ? '없음' : r2(lo), color: 'green' },
-            { label: '치역', value: inside || k === 0 ? '—' : `${r2(lo)} ≤ y ≤ ${r2(hi)}`, color: 'violet', ref: 'range', wide: true, note: inside ? '' : '점근선 y=1은 치역에 들어가지 않습니다' }
+            { label: '최댓값', value: value('max'), color: 'rose' },
+            { label: '최솟값', value: value('min'), color: 'green' },
+            { label: '치역', value: `$${range}$`, color: 'violet', ref: 'range', wide: true, note: k === 0 ? '상수함수의 치역은 하나의 값입니다' : '유한한 경계값은 포함하고 y=1은 포함하지 않습니다' }
           ]
         };
       },
@@ -776,6 +826,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const fm = (v) => mn(v);
   APLab.createLab({
     id: 'common-rational',
+    stagedReveal: true,
     title: '유리함수',
     courseName: '공통수학',
     unit: '함수와 그래프',
