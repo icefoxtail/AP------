@@ -1,0 +1,73 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "12",
+    "bSquared": "6",
+    "major": "Y"
+  },
+  "points": [
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "2",
+      "branch": "NEG"
+    },
+    {
+      "id": "D",
+      "kind": "FOOT",
+      "from": "T",
+      "onto": "g",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "g",
+      "slope": "2",
+      "intercept": "-10",
+      "dashed": true
+    },
+    {
+      "id": "t",
+      "slope": "2",
+      "intercept": "-6",
+      "tangent": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sTD",
+      "from": "T",
+      "to": "D",
+      "label": "\\frac{4\\sqrt{5}}{5}"
+    }
+  ],
+  "caption": "점선인 직선 y=2x−10과 평행한 타원의 접선 y=2x−6의 접점 T(2,−2)에서 직선까지의 거리가 최솟값 4√5/5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접선 y=2x-6, 접점 T(2,-2), 두 평행선 사이의 거리 4/sqrt5",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행한 접선의 접점 T와 직선까지의 최단 거리"
+  ],
+  "sourceQuote": "접선은 $y=2x+6$, $y=2x-6$이다.",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q14-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q14-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q14-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q14-solution.svg"
+  }
+}

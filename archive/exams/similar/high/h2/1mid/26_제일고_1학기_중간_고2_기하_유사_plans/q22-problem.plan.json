@@ -1,0 +1,88 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "9",
+    "bSquared": "4",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "5",
+      "sign": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_LINE",
+      "lines": [
+        "l",
+        "ax"
+      ]
+    },
+    {
+      "id": "R",
+      "kind": "LINE_LINE",
+      "lines": [
+        "n",
+        "ax"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "tangent": true,
+      "at": "P",
+      "label": "l"
+    },
+    {
+      "id": "n",
+      "slope": "-6/5",
+      "intercept": "26/3"
+    },
+    {
+      "id": "ax",
+      "y": "0",
+      "hidden": true
+    }
+  ],
+  "caption": "쌍곡선 위의 점 P에서의 접선 l이 x축과 만나는 점 Q, P를 지나고 l에 수직인 직선이 x축과 만나는 점 R을 나타낸 그림이다(a=3, b=2인 한 예).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 위의 점 P(꼭짓점이 아님)에서의 접선 l과 x축의 교점 Q, P를 지나고 l에 수직인 직선과 x축의 교점 R",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "문자 a, b, x_1의 대표값으로 a=3, b=2, P(5,8/3)를 쓴 한 예이다.",
+      "mappedTo": [
+        "conic"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 l, 수직인 직선, 점 Q, R의 위치"
+  ],
+  "sourceQuote": "점 $P$를 지나고 접선 $l$과 수직인 직선이",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q22.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q22-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q22-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q22-problem.svg"
+  }
+}

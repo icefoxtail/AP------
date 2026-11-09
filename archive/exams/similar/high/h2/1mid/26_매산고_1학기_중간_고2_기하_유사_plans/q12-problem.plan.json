@@ -1,0 +1,65 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "한 모서리의 길이가 $12$인 정사면체 $ABCD$가 있다.",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 12,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "N",
+      "to": "C",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "N",
+      "to": "D",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "N",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "한 모서리의 길이가 12인 정사면체 ABCD, 모서리 AB의 중점 N과 삼각형 NCD",
+  "sourceConditions": [
+    "한 모서리의 길이가 12인 정사면체 ABCD",
+    "모서리 AB의 중점 N"
+  ],
+  "newVisualInformation": [
+    "AB의 중점 N과 삼각형 NCD"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q12-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-problem.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 12,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

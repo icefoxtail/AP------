@@ -1,0 +1,88 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "12",
+    "bSquared": "12",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "O",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_CONIC",
+      "line": "m",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "tangent": true,
+      "at": "P",
+      "label": "l"
+    },
+    {
+      "id": "m",
+      "through": [
+        "O",
+        "H"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOH",
+      "from": "O",
+      "to": "H"
+    },
+    {
+      "id": "sHQ",
+      "from": "H",
+      "to": "Q"
+    }
+  ],
+  "caption": "쌍곡선 위의 점 P에서의 접선 l, 원점 O에서 l에 내린 수선의 발 H, 직선 OH가 쌍곡선과 제2사분면에서 만나는 점 Q를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 x^2-y^2=12 위의 점 P(4,2)에서의 접선 l, O에서 l에 내린 수선의 발 H, 직선 OH와 쌍곡선의 제2사분면 교점 Q",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 l, 수선의 발 H, 점 Q의 위치"
+  ],
+  "sourceQuote": "원점 $O$에서 직선 $l$에 내린 수선의 발을 $H$",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q15.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-problem.svg"
+  }
+}

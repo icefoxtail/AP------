@@ -1,0 +1,75 @@
+{
+  "capability": "composite-panels-v1",
+  "chain": "number-line-figure-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "두 조건의 공통 범위"
+      },
+      "plan": {
+        "capability": "number-line-v1",
+        "numberLine": {
+          "rows": [
+            {
+              "kind": "SET",
+              "pieces": [
+                {
+                  "lo": {
+                    "value": "1",
+                    "state": "OPEN"
+                  },
+                  "hi": null
+                }
+              ]
+            },
+            {
+              "kind": "SET",
+              "pieces": [
+                {
+                  "lo": {
+                    "value": "-1",
+                    "state": "OPEN"
+                  },
+                  "hi": {
+                    "value": "7",
+                    "state": "OPEN"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "RESULT"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "밑의 조건 x>1과 진수의 조건 -1<x<7의 공통 범위는 1<x<7이다. 이 범위에서 밑이 1이 되는 x=2는 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑의 조건 x-1>0",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "진수의 조건 -x^2+6x+7>0, 즉 -1<x<7",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 조건의 해집합을 수직선에 겹쳐 공통 범위 1<x<7을 보인다"
+  ],
+  "sourceQuote": "(i), (ii)를 모두 만족시키는 $x$의 범위는",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q5-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-solution.svg"
+  }
+}

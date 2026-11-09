@@ -1,0 +1,91 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "9",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "0",
+      "y": "5",
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "TANGENT_FROM",
+      "from": "R",
+      "which": 1
+    },
+    {
+      "id": "Q",
+      "kind": "TANGENT_FROM",
+      "from": "R",
+      "which": 2
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "tangent": true,
+      "at": "P"
+    },
+    {
+      "id": "t2",
+      "tangent": true,
+      "at": "Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q"
+    },
+    {
+      "id": "sQF",
+      "from": "Q",
+      "to": "F"
+    },
+    {
+      "id": "sFP",
+      "from": "F",
+      "to": "P"
+    }
+  ],
+  "caption": "점 (0,5)에서 타원에 그은 두 접선의 접점 P, Q와 타원의 한 초점 F, 삼각형 PQF를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 (0,5)에서 타원 9x^2+25y^2=225에 그은 두 접선의 접점 P, Q와 초점 F",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원, 점 (0,5)에서의 두 접선과 접점 P, Q, 초점 F의 위치"
+  ],
+  "sourceQuote": "두 접선의 접점을 각각 $P$와 $Q$라 하고",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q17.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-problem.svg"
+  }
+}

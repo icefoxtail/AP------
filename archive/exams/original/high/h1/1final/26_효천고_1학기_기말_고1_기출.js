@@ -111,7 +111,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수의 그래프가 x축과 만나는 두 점과 그 사이의 곡선이 표시되어 있다.",
+    "solutionImageCaption": "x축과의 교점에서는 y=0이므로 x²−3x−10=0을 푼다. 두 근은 −2와 5이므로 그 합을 구한다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -142,7 +146,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선의 교점과 교점 사이의 영역, x축의 주요 눈금이 표시되어 있다.",
+    "solutionImageCaption": "예: 원문 그래프와 같은 절편 및 교점의 x좌표를 갖는 두 포물선을 그렸다. −3<x<1에서 f(x)의 그래프가 g(x)의 그래프보다 아래에 있고, 이 구간의 정수는 −2, −1, 0이다. 정답은 3개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -198,7 +206,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: a=−3인 예에서 첫 식의 포물선은 x축에 접하고 둘째 식의 포물선은 x축과 두 번 만난다.",
+    "solutionImageCaption": "예: a=−3일 때 첫 식은 중근을 갖지만 둘째 식은 x축과 두 번 만나 허근 조건을 어긴다. 첫째 판별식에서 얻은 다른 후보를 선택한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -226,7 +238,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: a=1과 a=3인 두 포물선에서 구간 0≤x≤2의 부분이 굵게 표시되어 있다.",
+    "solutionImageCaption": "예: a=1이면 꼭짓점이 구간 안에 있고, a=3이면 꼭짓점이 구간 오른쪽에 있다. 0<a≤2일 때의 최솟값 −2a−4는 음수이고, a>2에서는 오른쪽 끝에서 f(2)=a(a−6)이 최솟값이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -285,7 +301,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 출발점, 여섯 돌, 도착점과 마지막에 한 칸 또는 두 칸을 이동하는 화살표가 표시되어 있다.",
+    "solutionImageCaption": "여섯 돌의 양쪽에 출발점과 도착점이 있으므로 이동 구간은 7칸이다. 마지막 이동이 한 칸인 경우와 두 칸인 경우를 더하면 aₙ=aₙ₋₁+aₙ₋₂이고, a₀=a₁=1에서 차례로 계산한다. 정답은 21가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -313,7 +333,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 부등식의 열린 해 구간이 같은 눈금의 수직선에 표시되어 있다.",
+    "solutionImageCaption": "예: a=2분의 1일 때 −1<x<a와 −5<x<−a의 공통부분을 그렸다. 0<a<1이면 두 구간이 겹치지만, a=1이면 열린 끝점에서만 맞닿아 공통해가 없다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -371,7 +395,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: h(x)의 포물선에서 두 근 사이가 굵게 표시되고 꼭짓점의 x좌표가 점선으로 연결되어 있다.",
+    "solutionImageCaption": "h(x)=f(x)−g(x)라 두면 최고차항 계수는 1이고, h(x)≤0의 해는 −2≤x≤4이다. 따라서 h(x)=(x+2)(x−4)이므로 h(1)=−9이며 구하는 값은 그 반대 부호이다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -520,9 +548,10 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q18-solution-graph.svg",
-    "solutionImageAlt": "문항 18 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 f(x), g(x), 공통 접선 y=−2x와 꼭짓점 및 접점의 좌표가 표시되어 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 꼭짓점의 x좌표는 −1과 2이며, 공통 접선 조건으로 f(x)=−(2분의 1)(x+1)², g(x)=(4분의 1)(x−2)²를 얻는다. x=2에서 두 함수의 값을 더한다. 정답은 −2분의 9이다."
   },
   {
     "id": 19,
@@ -610,7 +639,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 구간으로 나뉜 꺾은선과 수평 점선 y=5의 교점 및 축 눈금이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=|x+2|+|x−1|로 두면 x=−2와 x=1에서 식이 바뀌며 가운데 구간의 값은 3이다. y=5와의 교점 사이에서 f(x)<5이므로 −3<x<2이고, 두 끝값의 차를 구한다. 정답은 −5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -634,7 +667,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 매개변수 a가 정해진 열린 해 구간과 그 안의 정수점이 수직선에 표시되어 있다.",
+    "solutionImageCaption": "예: a=10일 때 1<x<(a−1)÷2의 정수점은 2, 3, 4이다. 일반적으로 4는 포함되고 5는 제외되어야 하므로 4<(a−1)÷2≤5를 푼다. 정답은 9<a≤11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -660,7 +697,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: h(x)의 포물선에서 구간 0≤x≤4가 굵게 표시되고 꼭짓점과 오른쪽 끝점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "h(x)=c(x−1)(x−5)이고 꼭짓점에서의 값 −8로부터 c=2이다. h(x)=2(x−3)²−8이므로 구간의 두 끝점에서 꼭짓점까지의 거리를 비교한다. 정답은 최댓값 10, 그때의 x값은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

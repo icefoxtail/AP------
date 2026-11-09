@@ -61,13 +61,13 @@
     "goldenSampleRefs": [
       {
         "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
-        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
-        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+        "sha256": "sha256:fa610ad864fd752d8a5985690a09c8a0c4fa29d0b532b80d5be2b492dbe27f46",
+        "gitBlobSha": "4e2d3a30110f6f1f5af0d3fed321edc9d4188242"
       },
       {
         "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
-        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
-        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+        "sha256": "sha256:1ec07522c83739635560297ccf11442ac363c0f37fdb4a893de22496f4aa049f",
+        "gitBlobSha": "144b5b81770601f624355e333da25ebcda555610"
       }
     ],
     "goldenSampleQuestionRefs": [
@@ -1593,6 +1593,104 @@
             12
           ],
           "deltaFinding": "Only line-wrap newlines in unreferenced q10/q12 content differ; all remaining question fields and all referenced q1/q2 are exact."
+        },
+        "rebindTool": "archive/tools/rebind-m2-create-golden-sample-evidence.mjs"
+      },
+      {
+        "sourcePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "previous": {
+          "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+          "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+        },
+        "current": {
+          "sha256": "sha256:1ec07522c83739635560297ccf11442ac363c0f37fdb4a893de22496f4aa049f",
+          "gitBlobSha": "144b5b81770601f624355e333da25ebcda555610"
+        },
+        "reason": "solution figure only (solutionImage*), content/answer/choices/solution unchanged",
+        "date": "2026-11-10",
+        "verifiedAtCommit": "f335c130312e45a7f509a2f05f49007348050d78",
+        "verification": {
+          "baselineSource": "git-blob:eb8776d19989f8f4219f4b80db0daf72310109cd",
+          "changedQids": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "changedFields": [
+            "solutionImage",
+            "solutionImageAlt",
+            "solutionImageCaption",
+            "solutionImageSize"
+          ],
+          "deltaFinding": "Only figure-display fields (solutionImage, solutionImageAlt, solutionImageCaption, solutionImageSize) differ in q1,q2,q3,q4,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20,q21,q22,q23; content/answer/choices/solution and every other question field, question count and ids are exact."
+        },
+        "rebindTool": "archive/tools/rebind-m2-create-golden-sample-evidence.mjs"
+      },
+      {
+        "sourcePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "previous": {
+          "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+          "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+        },
+        "current": {
+          "sha256": "sha256:fa610ad864fd752d8a5985690a09c8a0c4fa29d0b532b80d5be2b492dbe27f46",
+          "gitBlobSha": "4e2d3a30110f6f1f5af0d3fed321edc9d4188242"
+        },
+        "reason": "solution figure only (solutionImage*), content/answer/choices/solution unchanged",
+        "date": "2026-11-10",
+        "verifiedAtCommit": "62dbb5933043299b53d8185f1cb5c57641c688bd",
+        "verification": {
+          "baselineSource": "git-blob:95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+          "changedQids": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "changedFields": [
+            "solutionImage",
+            "solutionImageAlt",
+            "solutionImageCaption",
+            "solutionImageSize"
+          ],
+          "deltaFinding": "Only figure-display fields (solutionImage, solutionImageAlt, solutionImageCaption, solutionImageSize) differ in q1,q2,q3,q4,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20,q21,q22,q23; content/answer/choices/solution and every other question field, question count and ids are exact."
         },
         "rebindTool": "archive/tools/rebind-m2-create-golden-sample-evidence.mjs"
       }

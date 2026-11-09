@@ -1,0 +1,90 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "12",
+    "bSquared": "12",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "O",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_CONIC",
+      "line": "m",
+      "which": 1,
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "tangent": true,
+      "at": "P",
+      "label": "l"
+    },
+    {
+      "id": "m",
+      "through": [
+        "O",
+        "H"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOH",
+      "from": "O",
+      "to": "H"
+    },
+    {
+      "id": "sHQ",
+      "from": "H",
+      "to": "Q"
+    }
+  ],
+  "caption": "접점 P(4,2), 수선의 발 H(12/5,−6/5), 점 Q(−4,2)를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접선 y=2x-6, OH: y=-x/2, H(12/5,-6/5), Q(-4,2)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "H와 Q의 좌표"
+  ],
+  "sourceQuote": "$Q(-4,2)$이다.",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q15-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-solution.svg"
+  }
+}

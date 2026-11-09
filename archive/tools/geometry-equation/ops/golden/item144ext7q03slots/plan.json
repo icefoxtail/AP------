@@ -1,0 +1,52 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "SLOTS",
+  "slots": [
+   {
+    "fixed": "E",
+    "title": "첫째"
+   },
+   {
+    "count": "5",
+    "title": "둘째"
+   },
+   {
+    "count": "4",
+    "title": "셋째"
+   },
+   {
+    "count": "3",
+    "title": "넷째"
+   },
+   {
+    "count": "2",
+    "title": "다섯째"
+   },
+   {
+    "count": "1",
+    "title": "여섯째"
+   },
+   {
+    "fixed": "E",
+    "title": "일곱째"
+   }
+  ]
+ },
+ "caption": "양 끝 두 자리에 E를 고정하면 가운데 다섯 자리에 나머지 다섯 장을 차례로 놓는 방법의 수를 곱한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "카드 7장 중 E 두 장이 양 끝에 온다.",
+   "mappedTo": "chart"
+  },
+  {
+   "id": "c2",
+   "condition": "가운데 다섯 자리에는 P, R, M, U, T를 한 장씩 놓는다.",
+   "mappedTo": "chart"
+  }
+ ],
+ "newVisualInformation": [
+  "고정된 두 자리와 가운데 자리별 선택 수"
+ ]
+}

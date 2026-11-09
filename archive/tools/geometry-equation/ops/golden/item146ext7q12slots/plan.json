@@ -1,0 +1,32 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "SLOTS",
+  "slots": [
+   {
+    "count": "45",
+    "title": "AB조"
+   },
+   {
+    "count": "35",
+    "title": "나머지"
+   }
+  ]
+ },
+ "caption": "A와 B가 들어갈 조를 만드는 방법과 나머지 8명을 이름 없는 두 조로 나누는 방법을 곱한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "A와 B가 같은 조에 들어간다.",
+   "mappedTo": "chart"
+  },
+  {
+   "id": "c2",
+   "condition": "나머지 8명을 4명씩 두 조로 나눈다.",
+   "mappedTo": "chart"
+  }
+ ],
+ "newVisualInformation": [
+  "두 단계의 방법의 수를 곱하는 구조"
+ ]
+}

@@ -63,7 +63,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 행은 5에서 오른쪽으로, 둘째 행은 8에서 왼쪽으로 뻗으며 두 끝점은 빈 원으로 표시되어 있다.",
+    "solutionImageCaption": "각 부등식을 정리하면 x>5와 x<8이다. 두 조건을 동시에 만족하는 겹친 범위에서 두 끝점은 제외한다. 정답은 5<x<8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -95,7 +99,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 절댓값 그래프 f(x)의 두 가지가 꼭짓점에서 이어지고, 주황 점선 y=3과 두 점에서 만난다.",
+    "solutionImageCaption": "꼭짓점 (2분의 7, 0)에서 꺾이는 f(x)=|2x−7|이 3 이상인 부분은 주황 기준선 위의 두 바깥쪽이다. 등호가 있으므로 경계를 포함한다. 정답은 x≤2 또는 x≥5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -127,7 +135,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축과 두 점에서 만나며 두 교점 사이에서 곡선과 x축 사이가 옅게 칠해져 있다.",
+    "solutionImageCaption": "이차부등식을 정리하면 (x+2)(x−3)<0이다. 위로 열린 포물선에서 이차식이 음수인 곳은 두 교점 사이이고, 등호가 없으므로 경계를 제외한다. 정답은 −2<x<3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -288,7 +300,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 그래프 f(x)의 세 직선 조각이 두 꺾임점에서 이어지고, 주황 점선 y=4와 두 점에서 만난다. 왼쪽 교점에는 분수 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=2|x−1|+|x−3|을 x=1, x=3에서 나누어 그리면 높이 4 이하인 부분의 양 끝은 3분의 1과 3이다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -320,7 +336,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: n의 수직선에서 14와 16은 빈 원으로 표시되고 그 사이의 정수점이 채워져 있다.",
+    "solutionImageCaption": "네 자연수 중 가장 작은 수를 n이라 하면 합은 4n+6이다. 주어진 범위를 정리한 14<n<16에서 자연수 n은 15이고 가장 큰 수는 n+3이다. 정답은 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -387,7 +407,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: A에서 출발한 가지가 B→C, D→C, B→D→C, D→B→C의 네 방문 순서로 나뉜 수형도이다.",
+    "solutionImageCaption": "수형도의 각 가지는 개별 도로 선택이 아니라 A에서 출발하는 지역 방문 순서 한 종류를 뜻한다. 각 순서에서 고를 수 있는 도로 수를 곱하면 차례로 3, 4, 6, 2가지이고 이들은 서로 겹치지 않으므로 합한다. 정답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -452,7 +476,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫째 행의 두 바깥 구간과 t가 0일 때의 안쪽 구간, t가 6일 때의 안쪽 구간이 같은 눈금의 세 행으로 그려져 있다. 각 구간의 끝은 빈 원이다.",
+    "solutionImageCaption": "예: t=a(a−1)로 놓고 t=0의 경우와 t≥2인 경우의 경계 t=6을 비교하였다. 두 부등식의 구간이 겹치지 않으려면 t≤6이어야 하며 경계 6은 어느 구간에도 포함되지 않는다. a(a−1)≤6을 풀어 −2≤a≤3인 정수를 센다. 정답은 6개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -518,7 +546,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 t, 세로축이 P(1)인 좌표평면에 위로 열린 포물선이 있고, 꼭짓점의 좌표와 곡선 이름의 지시선이 표시되어 있다.",
+    "solutionImageCaption": "해설의 중간식 P(1)=2(t−1)²+2는 t=1에서 최소이다. 계수합은 P(1)에서 1을 뺀 값이며, t=1은 금지된 값 −2가 아니므로 등호가 성립한다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -632,7 +664,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 f(x)와 아래로 열린 g(x), 두 꼭짓점의 좌표와 점선 가로선 y=k가 그려져 있다. 가로선 위의 네 교점 이름은 왼쪽부터 c, a, b, d이다.",
+    "solutionImageCaption": "f(x)=x²−2x+2, g(x)=−x²+8x−6으로 정의하면 두 곡선과 y=k의 네 교점은 c<a<b<d의 순서로 놓인다. u=√(k−1), v=√(10−k)라 놓으면 b−c=2u, d−a=2v이고 두 연립부등식의 해는 각각 가운데 공통 구간과 바깥 두 구간이다. 길이 조건에서 u²=2v²이므로 k−1=2(10−k)를 푼다. 정답은 7이다.",
+    "solutionImageSize": "full"
   }
 ];
 

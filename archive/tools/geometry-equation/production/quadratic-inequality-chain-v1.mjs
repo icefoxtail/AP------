@@ -151,10 +151,9 @@ export function solveQuadraticInequality(inequality){
 }
 
 // --- the chain plan --------------------------------------------------------------------------------------------------------------------------
-const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()]{1,24}$/;
 function caption(value,fallback){
   if(value===undefined)return fallback;
-  if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).some(key=>!['math','text'].includes(key))||(!value.math&&!value.text)||(value.math!==undefined&&(typeof value.math!=='string'||!CAPTION_MATH.test(value.math)))||(value.text!==undefined&&(typeof value.text!=='string'||!value.text||value.text.length>24)))bad('CHAIN_CAPTION_INVALID');
+  if(!figure.captionValid(value))bad('CHAIN_CAPTION_INVALID');
   return value;
 }
 /**

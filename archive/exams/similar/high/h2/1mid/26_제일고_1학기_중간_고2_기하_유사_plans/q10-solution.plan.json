@@ -1,0 +1,83 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "ABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 6,
+      "names": "FGHIEJ"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "M",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "정사면체와 정팔면체"
+  },
+  "caption": "정사면체에서 CD의 중점 M에 대하여 AM, BM은 CD에 수직이다.",
+  "sourceConditions": [
+    "CD의 중점 M, AM⊥CD, BM⊥CD"
+  ],
+  "newVisualInformation": [
+    "CD의 중점 M과 수직인 선분 AM, BM"
+  ],
+  "sourceQuote": "$CD$의 중점을 $M$이라 하자.",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q10-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q10-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q10-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q10-solution.svg"
+  }
+}

@@ -167,7 +167,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 가로축 위에 놓여 가로축과 만나지 않는다.",
+    "solutionImageCaption": "예: 판별식이 음수이면 포물선과 가로축의 교점이 없어 서로 다른 두 허근을 갖는다. 각 보기의 판별식을 비교하면 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -253,9 +257,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q6-solution.svg",
-    "solutionImageAlt": "구간에서 함수값은 감소하므로 왼쪽 끝점에서 최댓값 11을 갖는다.",
-    "solutionImageCaption": "구간에서 함수값은 감소하므로 왼쪽 끝점에서 최댓값 11을 갖는다.",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선에서 가로좌표가 −1부터 2까지인 부분이 파란색으로 강조되어 있고 축은 가로좌표 3을 지난다.",
+    "solutionImageCaption": "주어진 구간은 포물선의 축 왼쪽에 있어 함수값이 감소한다. 따라서 왼쪽 끝점에서 최댓값을 갖는다. 정답은 11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -381,7 +385,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 꼭짓점이 가로축에 닿고 그 점에 접점이라는 표시가 있다.",
+    "solutionImageCaption": "포물선과 가로축이 한 점에서 만나려면 대응하는 이차방정식이 중근을 가져야 한다. 판별식을 0으로 놓아 상수의 값을 구한다. 정답은 8분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -551,7 +559,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 포물선과 아래로 열린 초록 포물선이 점 (−1, −5)에서 주황색 직선에 접한다.",
+    "solutionImageCaption": "예: k=1인 포물선과 k=−1인 포물선에 공통으로 접하는 직선을 그렸다. 모든 k에 대해 교점 방정식의 판별식이 0이 되도록 계수를 비교하면 두 상수를 구할 수 있다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -598,7 +610,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 세로축의 4에 있는 포물선 안에 가로 2, 세로 3인 직사각형이 파란색으로 표시되어 있다.",
+    "solutionImageCaption": "예: 오른쪽 윗꼭짓점의 가로좌표를 1로 잡은 직사각형이다. 일반적으로 가로 길이는 그 좌표의 두 배이고 세로 길이는 4에서 그 좌표의 제곱을 뺀 값이다. 둘레를 완전제곱식으로 정리해 최댓값을 구한다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -690,9 +706,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q16-solution.svg",
-    "solutionImageAlt": "k가 최대일 때 직선과 이차함수의 두 교점",
-    "solutionImageCaption": "k가 최대일 때 직선과 이차함수의 두 교점",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축은 새로운 변수, 세로축은 직선의 절편을 나타내며 아래로 열린 파란 포물선의 꼭짓점에 최대라고 표시되어 있다.",
+    "solutionImageCaption": "작은 교점의 가로좌표를 새 변수 u로 놓으면 직선의 절편은 그 변수의 이차식으로 나타난다. 완전제곱식으로 고치면 양수인 변수 범위 안의 꼭짓점에서 최댓값을 갖는다. 정답은 −8분의 15이다.",
     "solutionImageSize": "full"
   },
   {
@@ -740,10 +756,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q17-solution.svg",
-    "solutionImageAlt": "a=2일 때 y=f(x)와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만나는 모습이다. f는 x<0에서 아래로 열린 포물선, x≥0에서 꼭짓점이 (1/2,-1/4)인 포물선이고, g는 x=-1, x=1에서 꺾여 가운데 구간에서 0이다.",
-    "solutionImageCaption": "a=2일 때 y=f(x)와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만나는 모습이다. f는 x<0에서 아래로 열린 포물선, x≥0에서 꼭짓점이 (1/2,-1/4)인 포물선이고, g는 x=-1, x=1에서 꺾여 가운데 구간에서 0이다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: a=2일 때 파란 실선으로 그린 f와 주황색 점선으로 그린 g가 원점, 점 (1, 0), 점 (2, 2)에서 만난다.",
+    "solutionImageCaption": "예: a=2일 때 f와 g가 만나는 세 점을 나타냈다. 세 점에서 만나는 a의 범위는 1<a<4로 위쪽 끝 4를 포함하지 않으므로 최댓값이 존재하지 않는다. 정답은 \"최댓값이 없다\"이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -817,7 +833,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 원이 한 점에서 외접하고 각각의 중심을 지나는 점선 지름에 서로 다른 아래첨자 문자가 붙어 있다.",
+    "solutionImageCaption": "두 구의 중심을 지나는 단면에서 지름을 각각 표시하였다. 지름의 합과 제곱의 합으로 곱을 구한 뒤 세제곱의 합 공식을 이용해 부피의 합을 계산한다. 정답은 3분의 896이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -857,9 +877,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q20-solution.svg",
-    "solutionImageAlt": "가로축을 t로 본 g(t)의 그래프다. 최솟값은 t=1에서 1이고, y=1/2과는 만나지 않으며 y=1과는 한 점, y=3/2와는 두 점에서 만난다(t≤0, t>2에서는 g(t)≥4).",
-    "solutionImageCaption": "가로축을 t로 본 g(t)의 그래프다. 최솟값은 t=1에서 1이고, y=1/2과는 만나지 않으며 y=1과는 한 점, y=3/2와는 두 점에서 만난다(t≤0, t>2에서는 g(t)≥4).",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 구간의 왼쪽 끝을 나타내는 파란 그래프와 높이가 2분의 1, 1, 2분의 3인 세 수평 점선을 비교한 그림이다.",
+    "solutionImageCaption": "구간의 왼쪽 끝을 가로축으로 잡으면 최댓값과 최솟값의 차는 네 구간으로 나뉜다. 이 그래프와 세 수평선이 만나는 점의 개수를 각각 세어 더한다. 정답은 3이다.",
     "solutionImageSize": "full"
   }
 ];

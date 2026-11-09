@@ -1,0 +1,441 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_효천고_1학기_중간_고2_확률과통계_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "34cfd074d318725dc1ccfa6da1922be72259e9dd",
+  "reviewTimestamp": "2026-11-09T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_OPEN_DEFECTS",
+  "blindFirstPass": {
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "/tmp/rev_hyo/blind_frozen.txt (작업 폴더 밖, 미커밋) + /tmp/rev_hyo/solve.py(풀이 스크립트)",
+    "method": "학생에게 보이는 필드(content, choices, 문제 그림 q17)만 덤프해 python(sympy·fractions·brute force 열거)으로 23문항을 풀고 답을 동결한 뒤, 저장된 answer/solution/meta/원본을 열어 대조했다. 객관식 19/19, 서술형 4/4 일치.",
+    "disclosure": "완전한 블라인드에서 예외 2건: (1) 작업 시작 시 JS 앞부분 head 덤프로 Q1의 answer(②)·solution이 노출됨(자명한 문항, 어차피 직접 계산 20). (2) 블라인드 덤프가 Q5의 solutionImageAlt(1/3, 4/9 문구)를 함께 출력했으나 Q5 답은 python으로 독립 계산한 뒤 대조했다. 나머지 21문항은 저장 정답·해설을 보기 전에 동결. 생성자 메모(Q6·17·21 단원, Q23 PT/TPL, Q17 그림 누설, Q22 논리)는 점검 대상 지시로만 받았고 정답은 받지 않았다.",
+    "frozenAnswers": {
+      "1": "②",
+      "2": "④",
+      "3": "①",
+      "4": "①",
+      "5": "①",
+      "6": "②",
+      "7": "③",
+      "8": "⑤",
+      "9": "④",
+      "10": "③",
+      "11": "⑤",
+      "12": "②",
+      "13": "④",
+      "14": "③",
+      "15": "①",
+      "16": "④",
+      "17": "⑤",
+      "18": "③",
+      "19": "②",
+      "20": "35",
+      "21": "28/729",
+      "22": "17",
+      "23": "474"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "4H3=6C3=20 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "2^5-C0-C5=30 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "6!/(2!2!)=180 (letter: e2,t2) -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "4C1*3^3*(-1)=-108 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "4/10*3/9=2/15 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "(8+1)/2^8=9/256 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "240a^2=160a^3, a!=0 -> a=3/2 (sympy) -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "sympy 전개 x^5 계수 -66 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "전사함수 3^5-3*2^5+3=150 (brute force 150) -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "가게 쌍 중 거리 다른 13쌍*4!=312 (permutation brute force 312) -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "곱=12 함수 brute force 240; 절댓값 배열30*부호8 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "각 제곱이 1,1,1: x=2, y in{3,5}, z in{2,4} -> 4/216=1/54 (brute force) -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "표: 샌드위치 여자 6/20, 남자 9/20 -> (6/20)/(15/20)=2/5 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "ㄱ 참(여사건 독립), ㄴ 거짓(배반이면 P(A|B)=0!=P(A)), ㄷ 참 -> ㄱ,ㄷ -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "z별 x+y'=9+z, 10+11+12+13=46 (brute force 46) -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "흰 분배별 검은 공 채움 3+18+18+18=57 (brute force 57) -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "위치 3n-6, n=1..3: (192+240+160)/729=592/729 (brute force) -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 18,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "C(9,4)=126 중 78 (brute force) -> 13/21 -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 19,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "짝수 확률 313/625, 검은 4개이면서 짝수 136/625 (fractions 계산) -> 136/313 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 20,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "35",
+      "blindMatch": true,
+      "blindDerivation": "C(7,3)=35 (4변수 차수 4 중복조합, 계수 모두 0 아님)",
+      "candidateAnswer": "35"
+    },
+    {
+      "qid": 21,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "28/729",
+      "blindMatch": true,
+      "blindDerivation": "a+b는 7번 독립시행 성공 횟수: C(7,5)(1/3)^5(2/3)^2=28/729 (fractions 계산)",
+      "candidateAnswer": "$\\dfrac{28}{729}$"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "17",
+      "blindMatch": true,
+      "blindDerivation": "P(B)=4t,P(A)=5t/3,합사건 14t/3<=1 -> t<=3/14, p+q=17",
+      "candidateAnswer": "17"
+    },
+    {
+      "qid": 23,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "474",
+      "blindMatch": true,
+      "blindDerivation": "서윤 0/1/2자루: 63+186+225=474 (brute force 3^6 열거 474)",
+      "candidateAnswer": "474"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "23 vs 23 (원본 id 21 결번: 원본 Q1~20,22,23,24 → 유사 Q1~23, sourceQid 1:1 대응)",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "문항별 배점 원본과 동일(3.4~4.8점 단계 객관식, 서술형 4/5/5/6)",
+    "questionTypes": "객관식 1~19, 서술형 20~23 동일",
+    "notes": [
+      "Q3 school→letter(360→180), Q9 |X| 4→5(36→150), Q10 5명·5가게→6명·6가게(동거리 두 쌍, 66→312), Q15 x+y-2z=10,y>=z → x+y-3z=9,y>=2z(46), Q16 흰3검5→흰4검4(57), Q20 3변수5차→4변수4차(21→35, 계수 0 아님 확인): 같은 유형·구조, 난이도 유지.",
+      "Q14 보기 구성이 달라 정답이 ㄱ,ㄷ(③)으로 원본(④)과 다르고, 보기 세 개 모두 원본과 다른 명제. Q22 서술형은 P(A|B),P(B|A) 값만 바꾼 동일 구조(17).",
+      "Q17 원본은 4의 약수·5회·거리≤3, 유사는 3의 배수·6회·선분 AB 위(-3≤위치≤3)로 같은 성공횟수 부등식 구조. 그림은 수직선 위 A(-3),P(0),B(3)만 표시해 정답(n=1~3, 592/729) 누설 없음.",
+      "모든 문항 정답 값이 원본 정답과 달라 암기로 풀리지 않음. MCQ 정답 분포 ①4 ②4 ③4 ④4 ⑤3."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 3,
+    "note": "객관식 1~19, max-min=1"
+  },
+  "mathReview": "23문항 전수 블라인드 독립 풀이 후 저장된 해설을 끝까지 읽어 논리·중간계산·교육과정(2022 확률과 통계: 순열과 조합·이항정리·확률·조건부확률) 확인. 정답 불일치 0건, 해설 오류 0건, 5지 보기 유일정답. 생성자 확인 요청 사항: Q22 해설(P(A∩B)=x, P(B)=4x, P(A)=5x/3, P(A∪B)=14x/3<=1 → x<=3/14, x=3/14에서 P(A)=5/14,P(B)=12/14,P(A∪B)=1로 실현 가능, p+q=17)은 논리·가능성 확인까지 완결. Q17 발문 그림은 A(-3),B(3),P(0) 위치만 보이고 이동 횟수·정답 단서 없음(해설지에 값 재기재됨). Q10 표는 AP Table Engine 파이프 표, 발문 '합니다/한다' 혼용은 원본 문체. Q21 등 서술형 해설 끝의 '따라서 구하는 값은' 반복은 서술형 정형구라 허용.",
+  "reviewerEdits": [
+    {
+      "file": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.meta-q01-q23.json",
+      "scope": "메타만(JS blob 불변 34cfd074...)",
+      "edits": [
+        "Q6·Q17·Q21: parentAssignment/after.L1·L2를 '확률>조건부확률'(CROSSWALK_EXACT, 실제로는 bindingStatus MISSING 행)에서 '확률>확률의 뜻과 활용'(UNIT_LABEL)으로 변경. 이유: crosswalkRef를 실을 수 없고 L2가 단원 라벨과 달라 등록기 withTargetParent가 거부함. RPM 필드(H2-PS-RPM-049/050)는 유지하고 EVIDENCE_DEBT(RPM_BINDING_GAP) 기록.",
+        "Q9·Q11·Q23: parentRefMode CROSSWALK_PARENT_RECORD/CROSSWALK_EXACT → UNIT_LABEL (PT/TPL과 정확히 같은 ACTIVE 크로스워크 행 없음, L2 '순열과 조합'=단원 라벨이라 등록은 가능). RPM 값 변경 없음.",
+        "Q5·13·14·19·22: after.reviewFlag=OPEN_DEFECT/reviewFlagReason, 최상위 openDefects 추가(아래 unresolvedDefects 참조)."
+      ]
+    }
+  ],
+  "metaReview": {
+    "jsMetaConsistency": "JS 23문항의 level/difficultyBucket/단원·소단원/개념군/PT/TPL/크로스개념/조건/통합패턴/sourceQid/variationType/rpmPrimaryRecordId가 meta와 완전 일치(불일치 0, 스크립트 계산). expectedSourceBlobSha1 = git hash-object(JS) = 34cfd074d318725dc1ccfa6da1922be72259e9dd 일치.",
+    "keyExistence": "사용된 PT 9, TPL 12, CrossConcept 20, Condition 7개 키 전부 canonical(packs/concepts/condition_registry)에서 직접 조회해 실재(누락 0). RPM 레코드 12종 모두 high2-probability-statistics 크로스워크에 실재. Q9·Q11의 PT_FUNCTION_COUNTING/TPL_SURJECTION_COUNT/TPL_CONSTRAINED_FUNCTION_COUNT는 functions-graphs 팩 정의이고 확통 팩 externalReferences에 선언된 기존 canonical 키(하네스 TAXONOMY_CROSS_PACK_REFERENCE 경고는 이 선언의 안내, 결함 아님).",
+    "extensionKeys": "새 확장 키 2개(EXT-L4-PS-SURJECTION-FUNCTION-COUNT=Q9, EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT=Q11). 둘 다 parent H2-PS-RPM-033(중복·원순열, FAMILY_ACTIVE canonical)이 실재, 정의가 일반화된 풀이 구조로 쓰였고(특정 숫자·인물 없음), 기존 extensions/similar-high 및 canonical RPM L4와 라벨·정의 중복 없음, registry sha256 f6b1061a...(= meta registryChanges) 일치. 새 확장 CrossConcept/Condition 없음.",
+    "coverage": "필수 필드(standardCourse/curriculum/단원/소단원/개념군/RPM L1~L4+recordId/PT/TPL/크로스개념/조건/통합패턴/level/difficulty/levelBasis/difficultyBasis/visualNecessity/metaRationale/provenance) 각 23/23. crossConceptKeys 비어 있음 Q1~4(기본 문항, metaRationale에 비해당 근거), conditionKeys 비어 있음 12문항(각 metaRationale.condition에 사유). canonical RPM 레코드 키 12종, 재사용 확장 L4 0, 새 확장 L4 2(+parent 실재 2/2), parent 없는 새 키 0, 중복 키 0, EVIDENCE_DEBT 3문항(Q6·17·21 RPM_BINDING_GAP, parentAssignment.evidenceDebt) + OPEN_DEFECT 5문항.",
+    "semanticSpotChecks": "전 문항 최종 풀이와 키 의미 대조: Q3 identical-object, Q6·17 독립시행+배반, Q7 COND_NONZERO(a≠0), Q10 COND_INEQUALITY_CONSTRAINT, Q11 곱=12 함숫값 조건, Q12 COND_RANGE(주사위 눈 1~6), Q15 정수해+부등식, Q16 COND_LOWER_BOUND, Q22 COND_UPPER_BOUND(P(A∪B)≤1), Q23 하한·상한 조건 등 의미 일치. Q23 PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT는 해설(각 연필을 3명 중 하나에 배정=중복순열 후 조건 제외)과 정의가 일치하며, 크로스워크 H2-PS-RPM-033 FAMILY 후보(TPL_IDENTICAL_OBJECT_PERMUTATION/TPL_CIRCULAR_PERMUTATION)와 PT/TPL이 정확히 같지 않아 UNIT_LABEL로 정정(RPM L3/L4 경로는 등록 시 PT/TPL 정확 행이 없어 비게 될 수 있음: EVIDENCE_DEBT 성격, 학생 화면은 단원 라벨 부모)."
+  },
+  "visualReview": {
+    "problemFigures": "Q17 수직선 그림 1개(construction-spike-v1, engineEvidence 연결). 순백 배경, title/desc, role=img, 점 이름·눈금 라벨 A -3 P 0 B 3만 표시, 정답·이동 횟수 단서 없음, raw LaTeX 없음. PC 시험지 화면에서 라벨이 작은 편(글자 약 8px 상당 표시)이나 판독 가능, 휴대폰 화면도 쪽 맞춤 배율로 동일. 정보 수준.",
+    "solutionFigures": "Q5 해설 수형도 1개(stat-chart-figure-v1, 흰·검 두 번째 확률 1/3,2/3,4/9,5/9, 강조 경로 흰→흰). 렌더 확인: 라벨 판독 가능, 해설 본문에 값 재기재. 나머지 문항은 plan EXEMPT(발문 plan 23 + 해설 plan 23 = 46개 JSON 유효, 활성 plan 2개는 sourceQuote/caption/assetPath/engineEvidence 구비).",
+    "unsupported": "없음 (Q10·Q13 표는 AP Table Engine 파이프 표로 발문/해설에 직접 삽입, 시험지·해설지 화면에서 표 렌더 확인)."
+  },
+  "harness": {
+    "draftPhase": "node tools/harness/verify_similar_exam.mjs 26_효천고_1학기_중간_고2_확률과통계_유사 --phase=draft : GATE_PASS (23문항 100점, blob 34cfd074...), WARN TAXONOMY_CROSS_PACK_REFERENCE(도구 성격: 기존 canonical 키의 다른 팩 정의 선언), DRAFT_PHASE. 메타 수정 후 재실행도 동일 GATE_PASS.",
+    "strict": "node tools/harness/verify_similar_exam.mjs <stem> (영수증 발급 후): GATE_PASS exit 0, WARN RECEIPT_QUALIFIED_PASS, RECEIPT_OPEN_DEFECTS(8건: Q5·13·14·19·22 medium + Q6·17·21 low), TAXONOMY_CROSS_PACK_REFERENCE(도구 성격)",
+    "render": "engine.html?data=exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js 시험지·해설지·정답표를 Chrome(playwright)으로 PC 1280px, 휴대폰 390px에서 확인: 콘솔·네트워크 오류 0(이미지는 로컬 자산으로 대체 라우팅), 가로 스크롤 0(scrollWidth=clientWidth), 쪽 밖으로 넘치는 요소 0, 표 3개 렌더, 해설지 11쪽 정상, 정답표 23문항 값 일치."
+  },
+  "NOT_RUN": [
+    "main_merge_master.py --apply 운영병합·등록기(reviewed-exam-registration-v2) 실제 검증(메인 등록기 행이 먼저 필요해 dry-run 불가: 'UID denominator mismatch'), 따라서 PS-04 소단원 바인딩 등록 가능 여부는 정적 분석만 수행",
+    "img.wangjiedu.com 운영 CDN 이미지 로딩(오프라인, 로컬 자산 라우팅으로 대체)",
+    "픽셀 단위 시각 비교"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 5,
+      "qid_ref": "26_효천고_1학기_중간_고2_확률과통계_유사#5",
+      "kind": "메타",
+      "reason": "등록 위험(미검증): 2022 H22-PS-04의 컴파일된 ACTIVE 바인딩은 subUnitKey=null뿐인데 소형 메타·JS는 H22-PS-04-CONDITIONAL_PROBABILITY를 쓴다(크로스워크 RPM-046 행의 소단원). 등록기 resolve()가 바인딩을 못 찾으면 'ACTIVE curriculum binding missing'. 학생 화면 내용·정답과는 무관. 등록 단계 결과로 확인하고 거부되면 sub를 null로 낮추거나 소단원 바인딩을 정식 추가.",
+      "severity": "medium",
+      "round": 1
+    },
+    {
+      "qid": 13,
+      "qid_ref": "26_효천고_1학기_중간_고2_확률과통계_유사#13",
+      "kind": "메타",
+      "reason": "등록 위험(미검증): 2022 H22-PS-04의 컴파일된 ACTIVE 바인딩은 subUnitKey=null뿐인데 소형 메타·JS는 H22-PS-04-CONDITIONAL_PROBABILITY를 쓴다(크로스워크 RPM-046 행의 소단원). 등록기 resolve()가 바인딩을 못 찾으면 'ACTIVE curriculum binding missing'. 학생 화면 내용·정답과는 무관. 등록 단계 결과로 확인하고 거부되면 sub를 null로 낮추거나 소단원 바인딩을 정식 추가.",
+      "severity": "medium",
+      "round": 1
+    },
+    {
+      "qid": 14,
+      "qid_ref": "26_효천고_1학기_중간_고2_확률과통계_유사#14",
+      "kind": "메타",
+      "reason": "등록 위험(미검증): 2022 H22-PS-04의 컴파일된 ACTIVE 바인딩은 subUnitKey=null뿐인데 소형 메타·JS는 H22-PS-04-CONDITIONAL_PROBABILITY를 쓴다(크로스워크 RPM-046 행의 소단원). 등록기 resolve()가 바인딩을 못 찾으면 'ACTIVE curriculum binding missing'. 학생 화면 내용·정답과는 무관. 등록 단계 결과로 확인하고 거부되면 sub를 null로 낮추거나 소단원 바인딩을 정식 추가.",
+      "severity": "medium",
+      "round": 1
+    },
+    {
+      "qid": 19,
+      "qid_ref": "26_효천고_1학기_중간_고2_확률과통계_유사#19",
+      "kind": "메타",
+      "reason": "등록 위험(미검증): 2022 H22-PS-04의 컴파일된 ACTIVE 바인딩은 subUnitKey=null뿐인데 소형 메타·JS는 H22-PS-04-CONDITIONAL_PROBABILITY를 쓴다(크로스워크 RPM-046 행의 소단원). 등록기 resolve()가 바인딩을 못 찾으면 'ACTIVE curriculum binding missing'. 학생 화면 내용·정답과는 무관. 등록 단계 결과로 확인하고 거부되면 sub를 null로 낮추거나 소단원 바인딩을 정식 추가.",
+      "severity": "medium",
+      "round": 1
+    },
+    {
+      "qid": 22,
+      "qid_ref": "26_효천고_1학기_중간_고2_확률과통계_유사#22",
+      "kind": "메타",
+      "reason": "등록 위험(미검증): 2022 H22-PS-04의 컴파일된 ACTIVE 바인딩은 subUnitKey=null뿐인데 소형 메타·JS는 H22-PS-04-CONDITIONAL_PROBABILITY를 쓴다(크로스워크 RPM-046 행의 소단원). 등록기 resolve()가 바인딩을 못 찾으면 'ACTIVE curriculum binding missing'. 학생 화면 내용·정답과는 무관. 등록 단계 결과로 확인하고 거부되면 sub를 null로 낮추거나 소단원 바인딩을 정식 추가.",
+      "severity": "medium",
+      "round": 1
+    },
+    {
+      "qid": null,
+      "qids": [
+        6,
+        17,
+        21
+      ],
+      "kind": "메타(EVIDENCE_DEBT)",
+      "reason": "독립시행 RPM Primary 리프(H2-PS-RPM-049/050)의 2022 바인딩이 MISSING이라 rpmPrimaryPath로 등록되지 않음. 부모는 UNIT_LABEL(확률>확률의 뜻과 활용, 원본 분류 및 기존 ACTIVE 바인딩 H22-PS-03)로 정정함. 크로스워크에 H22-PS-03 단원 ACTIVE 행이 추가되면 재지정.",
+      "severity": "low",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 23/23 일치(객관식 19, 서술형 4), 정답·해설 오류 0, JS 수정 0건(blob 불변). 메타만 수정: Q6·17·21 부모 UNIT_LABEL 정정, Q9·11·23 parentRefMode 정정. 남은 위험: H22-PS-04 소단원 바인딩 미등록 가능성(Q5·13·14·19·22, medium, 미검증), 독립시행 RPM 바인딩 갭(Q6·17·21, low). 학생 화면·정답 결함 없음.",
+  "defects": [
+    {
+      "qid": 5,
+      "kind": "메타",
+      "severity": "medium",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 13,
+      "kind": "메타",
+      "severity": "medium",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 14,
+      "kind": "메타",
+      "severity": "medium",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 19,
+      "kind": "메타",
+      "severity": "medium",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 22,
+      "kind": "메타",
+      "severity": "medium",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 6,
+      "kind": "메타(EVIDENCE_DEBT)",
+      "severity": "low",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 17,
+      "kind": "메타(EVIDENCE_DEBT)",
+      "severity": "low",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 21,
+      "kind": "메타(EVIDENCE_DEBT)",
+      "severity": "low",
+      "status": "OPEN",
+      "round": 1
+    },
+    {
+      "qid": 6,
+      "kind": "메타(parentRefMode/L2)",
+      "severity": "medium",
+      "status": "VERIFIED_REPAIRED",
+      "round": 1
+    },
+    {
+      "qid": 17,
+      "kind": "메타(parentRefMode/L2)",
+      "severity": "medium",
+      "status": "VERIFIED_REPAIRED",
+      "round": 1
+    },
+    {
+      "qid": 21,
+      "kind": "메타(parentRefMode/L2)",
+      "severity": "medium",
+      "status": "VERIFIED_REPAIRED",
+      "round": 1
+    },
+    {
+      "qid": 9,
+      "kind": "메타(parentRefMode/L2)",
+      "severity": "low",
+      "status": "VERIFIED_REPAIRED",
+      "round": 1
+    },
+    {
+      "qid": 11,
+      "kind": "메타(parentRefMode/L2)",
+      "severity": "low",
+      "status": "VERIFIED_REPAIRED",
+      "round": 1
+    },
+    {
+      "qid": 23,
+      "kind": "메타(parentRefMode/L2)",
+      "severity": "low",
+      "status": "VERIFIED_REPAIRED",
+      "round": 1
+    }
+  ]
+}

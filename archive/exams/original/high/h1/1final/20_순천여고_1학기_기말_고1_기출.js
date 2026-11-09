@@ -73,10 +73,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "A의 두 좌표 후보가 B(−1)에서 각각 3만큼 떨어진 수직선.",
-    "solutionImageCaption": "두 점 사이 거리 3",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 가운데 점과 양쪽 후보 사이의 거리가 각각 3이다.",
+    "solutionImageCaption": "그림의 A₁과 A₂는 거리 조건을 만족하는 두 좌표 후보이다. 절댓값 방정식에서 두 경우를 구한 뒤 좌표를 더한다. 정답은 −2이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -152,10 +152,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "P(2,−1)을 지나며 기울기가 −3인 직선과 절편.",
-    "solutionImageCaption": "점과 기울기로 직선 구하기",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 주어진 점을 지나는 직선과 두 좌표축의 절편을 나타낸다.",
+    "solutionImageCaption": "주어진 점과 기울기를 점기울기식에 대입한다. 이를 일반형으로 정리하면 정답은 3x+y−5=0이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -231,10 +231,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "A와 B가 지름의 양 끝점이고 M은 그 중점.",
-    "solutionImageCaption": "지름의 양 끝점으로 원의 중심과 반지름 찾기",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름의 양 끝점과 중점, 그 지름을 갖는 원을 나타낸다.",
+    "solutionImageCaption": "지름의 양 끝점의 중점을 원의 중심으로 잡는다. 지름 길이의 제곱을 4로 나누어 반지름의 제곱을 구하면 정답은 (x−1)²+(y+2)²=10이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -310,10 +310,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "a=2에서 서로 다른 평행선, a=−2에서 일치.",
-    "solutionImageCaption": "평행한 두 직선의 매개변수",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같은 서로 다른 두 직선과 두 직선이 겹치는 경우를 비교한다.",
+    "solutionImageCaption": "각 패널의 f(x)와 g(x)는 각각 문제의 첫째 직선과 둘째 직선을 함수로 나타낸 것이다. 기울기가 같은 후보 중 a=−2이면 두 직선이 일치하므로 제외한다. 서로 다른 평행선이 되는 값을 택하면 정답은 2이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -389,10 +389,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "두 평행선과 공통수선 PH의 길이.",
-    "solutionImageCaption": "평행한 두 직선 사이의 거리",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선과 한 직선에서 다른 직선에 내린 수선을 나타낸다.",
+    "solutionImageCaption": "두 직선의 계수가 같으므로 두 직선은 평행하다. 상수항 차의 절댓값을 공통 계수로 정해지는 길이로 나누면 정답은 2이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -468,10 +468,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "A와 B의 수직이등분선과 y=−x+2의 교점 P.",
-    "solutionImageCaption": "등거리점과 주어진 직선의 교점",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 주어진 직선과 두 고정점의 수직이등분선이 만나는 점에서 두 고정점까지의 거리가 같다.",
+    "solutionImageCaption": "두 고정점까지의 거리가 같은 점은 수직이등분선 2x+4y=9 위에 있다. 이를 주어진 직선과 연립해 좌표의 차를 계산하면 정답은 3이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -548,10 +548,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "A, P, B의 실제 순서와 AP:PB=2:1.",
-    "solutionImageCaption": "내분점이 y축 위에 놓이는 조건",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 선분을 2대 1로 내분한 점이 세로축 위에 놓인다.",
+    "solutionImageCaption": "그림의 AP=2PB는 내분비가 2대 1임을 나타낸다. 내분점의 가로좌표에 내분 공식을 적용하고 가로좌표를 0으로 두면 정답은 −1이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -627,10 +627,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "O,G,M은 한 직선 위이고 OG:GM=2:1.",
-    "solutionImageCaption": "무게중심과 변의 중점",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 무게중심과 한 변의 중점을 잇는 중선을 나타낸다.",
+    "solutionImageCaption": "예: 주어진 무게중심을 갖는 삼각형을 그렸다. 그림의 OG=2GM은 중선의 길이비가 2대 1임을 나타낸다. 무게중심과 중점의 좌표 공식에서 두 꼭짓점 좌표의 합을 구하면 정답은 3이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -709,10 +709,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "첫 부등식의 닫힌 구간과 두 번째 부등식의 바깥 구간을 교차한다.",
-    "solutionImageCaption": "연립부등식의 공통 구간",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 부등식의 해를 같은 수직선 눈금 위에 놓고 공통 구간을 표시한다.",
+    "solutionImageCaption": "예: 왼쪽 끝점이 −2보다 작은 배치에서 두 부등식의 해를 비교했다. 공통 해가 주어진 구간이 되려면 a<−2여야 하므로 정답은 −3이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -788,10 +788,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "교점 I(3,4)와 두 선택 직선; ℓ₄는 OI와 수직.",
-    "solutionImageCaption": "교점을 지나는 직선 중 원점에서 가장 먼 직선",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 주어진 직선의 교점과 원점을 잇는 선분에 수직인 직선을 나타낸다.",
+    "solutionImageCaption": "원점에서 교점을 지나는 직선까지의 거리는 원점과 교점 사이 거리 이하이다. 원점과 교점을 잇는 직선 4x−3y=0에 수직인 경우 거리가 최대가 된다. 정답은 3x+4y−25=0이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -872,10 +872,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "근 −1/3, 1인 위로 열린 부호 그래프와 바깥 해집합.",
-    "solutionImageCaption": "변형된 이차식의 부호와 해",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 계수의 부호를 정리한 이차식의 위로 열린 그래프와 두 근을 나타낸다.",
+    "solutionImageCaption": "예: a=−1일 때 구할 이차식의 그래프를 그렸다. 두 근의 바깥에서 값이 0 이상이므로 정답은 x≤−3분의 1 또는 x≥1이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -953,10 +953,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "D(x)=−x²+x+2가 x축 위에 있는 구간.",
-    "solutionImageCaption": "두 그래프의 높이 차",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 그래프의 높이 차는 아래로 열린 이차식이며 두 근 사이에서 양수이다.",
+    "solutionImageCaption": "그림의 D(x)는 두 그래프의 높이 차이며, 양수인 구간의 양 끝이 두 근이다. 이차항 계수와 두 근으로 식을 정해 계수를 비교하면 정답은 −1이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1038,10 +1038,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "B,A,Q의 순서가 한 직선 위에 있고, OAQ의 높이는 2.",
-    "solutionImageCaption": "외분점과 삼각형의 넓이",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 외분점이 첫째 점 쪽 연장선에 있으며 삼각형의 높이는 가로축까지의 수선 길이이다.",
+    "solutionImageCaption": "그림의 5AQ=2QB는 외분비가 2대 5임을 나타낸다. 외분점의 세로좌표와 주어진 넓이에서 비를 구하고 서로소 조건을 적용하면 정답은 7이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1118,10 +1118,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "대표 가능한 경우 A(3,7), B(−3,5), C(−1,−1), D(5,1).",
-    "solutionImageCaption": "마름모의 좌표와 두 가능한 경우",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 네 변의 길이가 같고 두 대각선이 같은 중점을 갖는 마름모를 나타낸다.",
+    "solutionImageCaption": "예: 가능한 두 마름모 중 오른쪽에 놓이는 경우를 그렸다. 대각선의 중점 조건과 이웃한 두 변의 길이 조건을 풀어 보기와 비교하면 정답은 15이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1199,10 +1199,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "선분 AB에서 교점이 A일 때 k=−1, B일 때 k=2.",
-    "solutionImageCaption": "직선이 선분과 만나는 매개변수",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 선분의 양 끝점을 통과하는 두 경계 직선을 나타낸다.",
+    "solutionImageCaption": "직선 식에 두 끝점의 좌표를 대입하여 두 값의 곱이 0 이하일 조건을 구한다. 경계에서는 직선이 선분의 끝점을 통과하므로 정답은 1이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1280,10 +1280,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "해의 열린 부호 구간 (−4,2) 안에 주어진 열린 범위 (−2,2)가 놓인다.",
-    "solutionImageCaption": "이차부등식의 음수 구간",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 주어진 열린 구간이 이차식이 음수인 열린 구간 안에 포함된다.",
+    "solutionImageCaption": "예: 경계 이차식의 음수 구간과 주어진 구간의 포함 관계를 비교한다. 오른쪽 끝은 제외되므로 경계값도 가능하고 정답은 −2이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1361,10 +1361,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "p=−2에서는 꼭짓점이 구간 밖, p=1에서는 구간 안.",
-    "solutionImageCaption": "제한구간에서 이차함수의 최댓값",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 매개변수의 이차함수 그래프에서 제한구간을 굵게 강조하고 최댓값을 주는 점을 비교한다.",
+    "solutionImageCaption": "색으로 강조한 부분이 제한구간이다. 첫째 경우에는 꼭짓점이 구간 왼쪽에 있어 왼쪽 끝에서 최대가 되고, 둘째 경우에는 꼭짓점이 구간 안에 있다. 두 최댓값을 더하면 정답은 6이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1445,10 +1445,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "원 중심과 반지름, 2x−y=t가 접하는 최댓값 위치.",
-    "solutionImageCaption": "원 위에서 일차식의 최댓값",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위에서 주어진 일차식이 커지는 방향의 접점과 그 점에서의 접선을 나타낸다.",
+    "solutionImageCaption": "같은 일차식 값을 갖는 직선을 평행하게 옮긴다. 원과 만나는 마지막 위치에서 접하므로 중심과 접선 사이 거리로 계산하면 정답은 2+2√10이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1526,10 +1526,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "AB를 밑변으로 할 때 원 위의 가장 먼 점에서 높이가 최대.",
-    "solutionImageCaption": "원 위 점으로 만드는 삼각형의 최대 넓이",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 밑변의 직선에서 가장 먼 원 위의 점과 수선의 발을 나타낸다.",
+    "solutionImageCaption": "밑변의 직선은 2x−y+4=0이며 밑변의 길이는 2√5이다. 중심에서 밑변까지의 거리에 반지름을 더해 최대 높이를 구하면 정답은 13이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1612,10 +1612,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "접힌 원 중심 C′와 원래 중심 C의 연결선은 접는 선 PQ에 수직.",
-    "solutionImageCaption": "접기와 대칭이동한 원의 중심",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 접기 전후의 두 원 중심을 잇는 선분과 그 수직이등분선인 접는 현을 나타낸다. 오른쪽에 중심 사이 선분을 확대해 중점을 나타낸다.",
+    "solutionImageCaption": "접힌 원의 접점과 반지름에서 새 중심을 구한다. 접는 선은 두 중심을 잇는 선분의 수직이등분선이므로 정답은 5이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1756,10 +1756,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "t=1−k의 양끝에서 최대가 0 또는 −3이고 중간은 아래에 놓인다.",
-    "solutionImageCaption": "전 실수에서 이차부등식이 성립하는 조건",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 이차식이 가로축에 접하는 경계와 음의 상수함수인 경우를 비교한다.",
+    "solutionImageCaption": "그림의 f(x)는 가로축에 접하는 경계의 이차식이다. 이차항 계수가 음수인 경우 판별식 조건을 적용하고 이차항이 사라지는 경우까지 합치면 정답은 1≤k≤4이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   },
@@ -1831,10 +1831,10 @@ window.questionBank = [
         "sourceOnlyJsSha256": "db186883c9010d9eb0027edb2156b4d35740688b0beeeb1ac873d8a3187386c4"
       }
     },
-    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "접선 두 개가 만드는 삼각형과 원점 O에서 넓이를 반으로 나누는 E.",
-    "solutionImageCaption": "두 접선과 넓이 이등분선",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/20_순천여고_1학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 외부점에서 원에 그은 두 접선과 세로축으로 만든 삼각형, 원점에서 넓이를 나누는 직선을 나타낸다.",
+    "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 두 접선을 구한다. 넓이 12를 반씩 나누는 교점 E로 이등분선을 정한다. 정답은 (1) y=2x−4와 y=½x+2, (2) m=3분의 2이다.",
+    "solutionImageSize": "full",
     "layoutTag": "grid",
     "wide": false
   }

@@ -1,0 +1,44 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "옆모서리의 길이가 모두 $2\\sqrt3$인 정사각뿔 $V-ABCD$",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 2,
+      "names": "ABCDV"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    },
+    {
+      "from": "V",
+      "to": "A"
+    }
+  ],
+  "caption": "밑면 ABCD가 한 변의 길이 4인 정사각형이고 옆모서리의 길이가 모두 2√3인 정사각뿔 V-ABCD",
+  "sourceConditions": [
+    "밑면 ABCD는 한 변의 길이가 4인 정사각형",
+    "옆모서리의 길이가 모두 2√3"
+  ],
+  "newVisualInformation": [
+    "AB=4, VA=2√3 길이 표시"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q08-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q08-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q08-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q08-problem.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 8,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}
