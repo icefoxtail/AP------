@@ -38,7 +38,12 @@
    - 이 PR 머지 뒤 파생 데이터(catalog·4slot·source-verification 해시)는 자동 등록 커밋이 갱신한다. 손으로 고치지 않는다.
 3. **분수 전수 조사 (GPT에 위임)**: 발문·보기·해설·표의 모든 슬래시 분수를 `\frac`로 바꾼다. PR #1540 머지와 자동 등록 커밋을 확인한 뒤 최신 main에서 시작한다. answer 필드는 채점 영향을 먼저 확인한다.
 4. ~~PR-4 정본 문서~~ **완료**: [계약 v1](../rules/01_CANONICAL/AP_Table_Engine_Contract_v1.md), `exam-pipeline.md`에 표 작성 규칙 추가.
-5. **아직 엔진이 연결되지 않은 화면**: `archive/generated-bank.html`, `archive/problem-bank-search.html`, mixer 문항 목록 카드. apmath 화면(`apmath/wrong_print_engine.html`, 학부모 리포트 `apmath/js/report-center.js`)은 연결 대상이 아니다(사용자 결정 2026-11-09: 아카이브만 연결). 각자 표를 따로 처리하므로 같은 모듈을 연결해야 한다.
+5. ~~아카이브 나머지 화면 연결~~ **완료 (PR-5)**: `archive/generated-bank.html`(문항 본문·미리보기·직접 인쇄), `archive/problem-bank-search.html`(문항 미리보기), `archive/mixer.html`(문항 카드 `createQuestionItem`)가 `ap-table-engine.js`·`ap-table.css`를 `engine.html`과 같은 캐시 버스트로 불러오고, 문항 HTML을 삽입하기 전·MathJax 조판 전에 `renderApTables`를 호출한다(`globalThis.ApTableEngine` 가드). 이유: 표가 화면마다 달라 파이프 `|` 줄이 학생·교사에게 글자로 보였다.
+   - generated-bank·problem-bank-search는 `innerHTML`을 쓰지 않는 화면이라, 엔진 출력을 허용 목록(table·thead·tbody·tfoot·tr·th·td·br·b, 칸 병합·scope·border 스타일만)으로 노드를 다시 만든다. 허용 밖 태그가 들어 있으면 그 표는 변환하지 않고 원래 문자열 경로로 돌아간다. 원문(`data-source-text`)은 바꾸지 않는다.
+   - problem-bank-search의 `#preview td/th` 테두리·여백 규칙은 ap-table 규칙(id 선택자라 우선순위가 높았다)을 덮어서 `table:not(.ap-table)`로 한정했다. 나머지 화면의 자체 `.question-table` 규칙은 ap-table 규칙이 우선순위로 이기므로 그대로 둔다(엔진이 없을 때의 대체 모양).
+   - 화면에서 바뀌지 않은 것: generated-bank·mixer의 인쇄/출력은 이미 `mixed_engine.html`·`engine.html`(연결 완료)로 가므로 이중 처리하지 않는다. mixer의 "전체 아카이브" 목록(`createQuestionIndexItem`)은 색인의 `contentText`를 180자로 줄여 글자로 보여 주는 요약 목록이라 표를 그리지 않는다(원문 파이프가 요약에 글자로 남을 수 있음 — 남은 일).
+   - apmath 화면(`apmath/wrong_print_engine.html`, `apmath/js/report-center.js`)은 연결 대상이 아니다(사용자 결정 2026-11-09: 아카이브만 연결).
+   - 테스트: `tests/ap-table-archive-renderers.test.js`(세 화면의 태그·호출 위치·가드), `tests/archive2-generated-bank-subjective-table.test.cjs`(파이프 표 노드·멱등·위험 마크업 폴백).
 6. **인쇄 실측**: 사용자가 실제 프린터로 선 두께를 확인한 뒤 CSS 토큰을 확정한다.
 
 ## 참고 자료

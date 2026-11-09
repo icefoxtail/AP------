@@ -59,5 +59,5 @@ status: CURRENT
 
 인쇄 시 페이지 경계 잘림은 아직 검사하지 않는다.
 
-## 6. 아직 엔진이 연결되지 않은 화면
-각자 표를 따로 처리하므로 같은 모듈을 연결해야 한다: `archive/generated-bank.html`, `archive/problem-bank-search.html`, mixer 문항 목록 카드. apmath 화면(`apmath/wrong_print_engine.html`, 학부모 리포트 `apmath/js/report-center.js`)은 연결 대상이 아니다(사용자 결정 2026-11-09: 아카이브만 연결).
+## 6. 연결 범위
+`engine.html`, `mixed_engine.html`, `generated-bank.html`, `problem-bank-search.html`, mixer 문항 목록 카드(`createQuestionItem`)가 같은 모듈을 쓴다(PR-5, 상세는 `table-engine.md` 남은 일 5). mixer의 "전체 아카이브" 색인 요약 목록은 표를 그리지 않는다. apmath 화면(`apmath/wrong_print_engine.html`, 학부모 리포트 `apmath/js/report-center.js`)은 연결 대상이 아니다(사용자 결정 2026-11-09: 아카이브만 연결).

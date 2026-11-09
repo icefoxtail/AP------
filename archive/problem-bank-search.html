@@ -3,10 +3,11 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>공통 Meta 문항 검색 | Archive 2.0</title>
 <style>
-body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#17324f;margin:0}main{max-width:1080px;margin:auto;padding:24px}a{color:#155fa8}h1{font-size:26px}.filters{display:flex;flex-wrap:wrap;gap:12px;background:white;padding:18px;border-radius:12px}label{display:grid;gap:6px}select,button{font:inherit;padding:9px;border:1px solid #b8c9dc;border-radius:7px;background:white}article{background:white;padding:16px;margin:10px 0;border-radius:10px}article p{color:#516b83}#preview{white-space:pre-wrap;background:white;padding:20px;margin-top:16px}#preview img{max-width:100%;max-height:360px}#status{min-height:24px}nav{display:flex;gap:20px}button,a{cursor:pointer}#preview[hidden]{display:none}#preview table{border-collapse:collapse;white-space:normal}#preview td,#preview th{border:1px solid #a5b2c0;padding:6px}
+body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#17324f;margin:0}main{max-width:1080px;margin:auto;padding:24px}a{color:#155fa8}h1{font-size:26px}.filters{display:flex;flex-wrap:wrap;gap:12px;background:white;padding:18px;border-radius:12px}label{display:grid;gap:6px}select,button{font:inherit;padding:9px;border:1px solid #b8c9dc;border-radius:7px;background:white}article{background:white;padding:16px;margin:10px 0;border-radius:10px}article p{color:#516b83}#preview{white-space:pre-wrap;background:white;padding:20px;margin-top:16px}#preview img{max-width:100%;max-height:360px}#status{min-height:24px}nav{display:flex;gap:20px}button,a{cursor:pointer}#preview[hidden]{display:none}#preview table{border-collapse:collapse;white-space:normal}#preview table:not(.ap-table) td,#preview table:not(.ap-table) th{border:1px solid #a5b2c0;padding:6px}
 .pick{display:inline-flex;align-items:center;gap:6px;margin-right:12px}.pickbar{position:sticky;bottom:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:#fff;border-top:2px solid #155fa8;padding:12px 18px;margin-top:12px;border-radius:10px 10px 0 0;box-shadow:0 -2px 8px rgba(23,50,79,.12)}.pickbar[hidden]{display:none}.pickbar .go{background:#155fa8;color:#fff;padding:9px 14px;border-radius:7px;text-decoration:none}.pickbar .go[aria-disabled=true]{background:#9db7d3;pointer-events:none}.pickbar #picknote{flex-basis:100%;margin:0;color:#8a5200;font-size:13px}.pickbar #picknote:empty{display:none}
 .kb{display:inline-block;font-size:11px;line-height:16px;padding:0 6px;border-radius:9px;margin-right:5px;border:1px solid #9db7d3;background:#eaf3fc;color:#1d4f86}.kb.ext{border-color:#e0a95b;background:#fff3df;color:#8a5200}.keys{margin:6px 0 0}.keys .key{display:inline-block;margin:0 14px 4px 0;color:#17324f}.keys .key small{color:#647c98}#keynote{min-height:20px;color:#647c98;font-size:13px}
 </style>
+<link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
 <main>
 <nav><a href="workspace.html?view=compose">문제지 만들기</a><a href="generated-bank.html">생성 문항 선택·인쇄</a></nav>
 <h1>공통 Meta 문항 검색</h1>
@@ -44,6 +45,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 </section>
 <section id="preview" hidden aria-label="문항 미리보기"></section>
 </main>
+<script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
 <script src="archive-asset-base.js?v=20261030-s21-1"></script>
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="archive2-canonical.js?v=20261104-source-meta-approval-1"></script>
@@ -246,15 +248,62 @@ async function previewGenerated(row,button){
   if(window.MathJax?.typesetPromise)await MathJax.typesetPromise([el('preview')]);
  }catch(e){if(request===previewRequest)el('preview').textContent=e.message;}finally{button.disabled=false;}
 }
+// AP Table Engine: normalize pipe/legacy tables to ap-table markup (idempotent), then rebuild them node by node from an
+// allow-list. Nothing goes through innerHTML; markup outside the list stays visible text.
+const AP_TABLE_WRAP=/<div class="((?:ap-table-wrap )?question-table-wrap)">(<table class="[^"<>]*">[\s\S]*?<\/table>)<\/div>/g;
+const AP_TABLE_PARENTS={table:['#root'],thead:['table'],tbody:['table'],tfoot:['table'],tr:['table','thead','tbody','tfoot'],th:['tr'],td:['tr'],b:['th','td','b'],br:['th','td','b']};
+const AP_ENTITIES={lt:'<',gt:'>',amp:'&',quot:'"',apos:"'",nbsp:'\u00a0'};
+function apDecode(value){return value.replace(/&(?:#(\d+)|#x([0-9a-f]+)|([a-z]+));/gi,(all,dec,hex,name)=>{if(name){const key=name.toLowerCase();return Object.prototype.hasOwnProperty.call(AP_ENTITIES,key)?AP_ENTITIES[key]:all;}const code=dec?Number(dec):parseInt(hex,16);return code>0&&code<0x110000?String.fromCodePoint(code):all;});}
+function apAttribute(node,tag,name,value){
+ if(name==='class'&&/^[\w -]+$/.test(value))node.className=value;
+ else if((name==='colspan'||name==='rowspan')&&(tag==='td'||tag==='th')&&/^\d{1,2}$/.test(value))node.setAttribute(name,value);
+ else if(name==='scope'&&tag==='th'&&/^(?:col|row|colgroup|rowgroup)$/.test(value))node.setAttribute(name,value);
+ else if(name==='style'&&(tag==='td'||tag==='th')&&/^(?:\s*border[\w-]*\s*:\s*[\w\s#.,()%-]+;?)+\s*$/.test(value)&&!/url|expression/i.test(value))node.setAttribute(name,value);
+ else return false;
+ return true;
+}
+function apTableNode(markup){
+ const root=document.createElement('div'),stack=[{name:'#root',node:root}];
+ for(const token of markup.split(/(<[^>]*>)/)){
+  if(!token)continue;
+  const top=stack[stack.length-1];
+  if(token[0]!=='<'){
+   const value=apDecode(token);
+   if(!value)continue;
+   if(['#root','table','thead','tbody','tfoot','tr'].includes(top.name)){if(value.trim())return null;continue;}
+   top.node.append(document.createTextNode(value));continue;
+  }
+  const tag=token.match(/^<(\/?)([a-z][a-z0-9]*)((?:\s+[a-z-]+="[^"<>]*")*)\s*\/?>$/i);
+  const name=tag&&tag[2].toLowerCase();
+  if(!tag||!Object.prototype.hasOwnProperty.call(AP_TABLE_PARENTS,name))return null;
+  if(tag[1]){if(name==='br')continue;if(stack.length<2||top.name!==name)return null;stack.pop();continue;}
+  if(!AP_TABLE_PARENTS[name].includes(top.name))return null;
+  const node=document.createElement(name);
+  for(const attr of tag[3].matchAll(/\s+([a-z-]+)="([^"<>]*)"/gi))if(!apAttribute(node,name,attr[1].toLowerCase(),apDecode(attr[2])))return null;
+  top.node.append(node);
+  if(name!=='br')stack.push({name,node});
+ }
+ return stack.length===1&&root.children.length===1?root.children[0]:null;
+}
+function apTableSegments(source){
+ const parts=[];let cursor=0,failed=false;
+ for(const match of source.matchAll(AP_TABLE_WRAP)){
+  const table=apTableNode(match[2]);
+  if(!table){failed=true;continue;}
+  if(match.index>cursor)parts.push(document.createTextNode(source.slice(cursor,match.index)));
+  const wrap=document.createElement('div');wrap.className=match[1];wrap.append(table);parts.push(wrap);cursor=match.index+match[0].length;
+ }
+ if(cursor<source.length)parts.push(document.createTextNode(source.slice(cursor)));
+ return {parts,failed};
+}
+function apNormalizeTables(raw){
+ try{return typeof globalThis!=='undefined'&&globalThis.ApTableEngine?String(globalThis.ApTableEngine.renderApTables(raw)):raw;}catch(e){return raw;}
+}
 function safeStem(host,content){
- const raw=String(content??''),pattern=/<div class="question-table-wrap"><table class="question-table">([\s\S]*?)<\/table><\/div>/g;
- let cursor=0;for(const match of raw.matchAll(pattern)){
-  const rows=[...match[1].matchAll(/<tr>([\s\S]*?)<\/tr>/g)],rest=match[1].replace(/<\/?(?:thead|tbody)>/g,'').replace(/<tr>[\s\S]*?<\/tr>/g,'').trim();
-  const cells=rows.map(r=>{const list=[...r[1].matchAll(/<(th|td)>([^<>]*)<\/\1>/g)];return list.length&&!r[1].replace(/<(?:th|td)>[^<>]*<\/(?:th|td)>/g,'').trim()?list:null;});
-  if(!rows.length||rest||cells.some(c=>!c))continue;
-  host.append(document.createTextNode(raw.slice(cursor,match.index)));
-  const table=document.createElement('table');for(const row of cells){const tr=document.createElement('tr');for(const c of row){const cell=document.createElement(c[1]);cell.textContent=c[2];tr.append(cell);}table.append(tr);}host.append(table);cursor=match.index+match[0].length;
- }host.append(document.createTextNode(raw.slice(cursor)));
+ const raw=String(content??'');
+ let segments=apTableSegments(apNormalizeTables(raw));
+ if(segments.failed)segments=apTableSegments(raw);
+ host.append(...segments.parts);
 }
 for(const id of ['source','course','standardUnitKey','subUnitKey','nativeL1','nativeL2','nativeL3','nativeL4','nativeCurriculum','level','rpmL1','rpmL2','rpmL3','rpmL4','problemTypeKey','templateKey','crossConceptKey','conditionKey','integrationPattern','difficulty'])el(id).onchange=()=>{
  limit=40;
