@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "diameter",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tangent",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "diameter",
+          "tangent"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given",
+        "refs": [
+          "B",
+          "A",
+          "Q"
+        ],
+        "value": 55,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "x",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 35,
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "y",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 20,
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "접선과 현 AB가 이루는 각 55°와 같은 호의 원주각 ∠BCA=55°이고 지름 BC를 보는 ∠BAC=90°이다. 따라서 x=35°이다. ∠PAB=125°이므로 삼각형 PAB에서 y=20°, x+y=55°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AQ는 A에서 원에 접하고 BC는 지름이며 P는 AQ와 BC의 연장선의 교점, ∠BAQ=55°. 반지름 10과 Q 위치는 예시이며 접현각·지름의 원주각 성질로 x=35°, y=20°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원주각과 지름의 직각, 외부 삼각형의 각을 구분하여 x+y를 계산한다. 라벨에 여유를 둔다."
+  ]
+}
