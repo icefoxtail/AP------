@@ -1,0 +1,1246 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/20_제일고_1학기_기말_고2_확률과통계.js",
+  "sourceGitBlobSha": "8545b98dc716fbddce75e5cfec175e2b95e26c7f",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "Antigravity 4slot pipeline (v1.5)",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "서로 다른 2개의 주사위를 동시에 던질 때"
+          },
+          {
+            "term": "순서쌍",
+            "src": "solution",
+            "quote": "순서쌍 $(a,b)$를 구별합니다."
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "눈의 수의 차가 3일"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "차가 $3$인 경우는 $(1,4),(2,5),(3,6),(4,1),(5,2),(6,3)$의 $6$가지입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 눈의 차가 3이 되는 순서쌍들을 나열 분류"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우는 $6\\times6=36$가지입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 주사위의 전체 경우의 수를 곱의 법칙으로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "$6$가지입니다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 주사위의 전체 순서쌍 개수를 곱의 법칙으로 구하고 눈의 차가 3인 경우를 세어 수학적 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "음이 아닌 정수해를 세는 중복조합입니다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$x+y+z=5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "모든 방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "중복조합입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "칸막이 2개와 상자 5개를 배열하여 $\\binom{7}{2}=21$가지입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중복조합 3H5를 조합 7C2로 변환하여 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "$x,y,z\\ge0$입니다."
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "똑같은 선물 상자 5개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "서로 다른 사물함에 같은 상자를 넣는 문제를 음이 아닌 정수해의 중복조합으로 모델링하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주머니에서 주아, 진희의 순서로 각각 공을 1개씩 임의로 꺼낼 때"
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "진희가 빨간 공을 꺼낼 조건부확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "빨간 공을 꺼낼 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "구하는 확률은 $\\dfrac4{10}\\times\\dfrac6{9}=\\dfrac4{15}$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "비복원추출에서 첫 사건 확률과 두 번째 조건부확률의 곱셈정리 적용"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "진희가 빨간 공을 꺼낼 조건부확률은 $6/9$입니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "빨간 공 6개와 파란 공 4개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "비복원추출에서 첫 번째와 두 번째 사건의 확률을 곱셈정리로 연쇄 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "'또는'은 합집합이고"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "$|A\\cap B|=3$입니다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이용하는 학생일 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "$|A\\cup B|=12+7-3=16$",
+            "evidenceType": "IMPLIED",
+            "justification": "합집합의 원소 수 공식을 적용하여 확률 계산"
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "구하는 확률은 $\\dfrac{16}{35}$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 인원 대비 해당 사건 인원의 비율로 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "어느 반 학생 35명"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합집합의 원소의 개수 공식으로 대중교통 또는 도보 이용자 수를 구하고 전체 학생 수로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "공 2개를 동시에 꺼냈더니"
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "'흰 공 2개가 나왔다'는 결과를 먼저 알고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건부확률을 씁니다."
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "공 2개가 $A$상자에서 나왔을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "베이즈정리",
+            "src": "solution",
+            "quote": "P(A\\mid\\text{흰흰})",
+            "evidenceType": "IMPLIED",
+            "justification": "흰 공 2개 관측 결과 하에서 상자 A가 선택되었을 사후확률을 베이즈 공식으로 계산"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "\\binom32/\\binom72=3/21=1/7",
+            "evidenceType": "IMPLIED",
+            "justification": "각 상자에서 공 2개를 동시에 꺼내는 확률을 조합으로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "흰 공 3개, 검은 공 4개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 상자에서 흰 공 2개가 나올 확률을 조합으로 구하고 베이즈 정리를 적용해 상자 A일 사후확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "임의로 3개의 동전을 동시에 꺼낼 때"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "금액의 합이 200원 미만일 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$p-q$의 값을 구하면?"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률이 $\\frac{q}{p}$일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "세 동전의 합이 정확히 $200$원인 경우는 제외합니다. 특히 100원짜리 2개를 뽑으면 나머지 동전까지 합쳐 최소 $210$원이므로 불가능하고",
+            "evidenceType": "IMPLIED",
+            "justification": "금액 조건을 분석하여 불가능한 경우를 제외하고 가능한 조합을 분류"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "조합으로 세어야 합니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$p, q$는 서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "금액의 합이 200원 미만이 되는 동전 조합들을 분류하여 각각 조합으로 세고 전체 경우의 수로 나누어 기약분수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "$A, B^c$는 서로 배반이고"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A)=\\frac{3}{10}$"
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$P(B)=2P(A)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하면?"
+          },
+          {
+            "term": "교집합",
+            "src": "stem",
+            "quote": "$P(A^c \\cap B)=\\frac{q}{p}$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$A$와 $B^c$가 배반이므로 $A\\subseteq B$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "배반 조건으로부터 사건 간의 부분집합 포함관계를 도출"
+          },
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "$P(A^c\\cap B)=P(B)-P(A)",
+            "evidenceType": "IMPLIED",
+            "justification": "A가 B의 부분집합임을 이용해 교집합 확률을 두 확률의 차로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$p, q$는 서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "A와 B^c가 배반이라는 조건에서 A가 B에 포함됨을 이끌어내고 P(A^c ∩ B) = P(B) - P(A)로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(x+a)^{10}$의 전개식에서"
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$x^6$의 계수가 $x^7$의 계수의 7배일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "이항정리에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$210a=840$, 따라서 $a=4$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "계수 관계식을 일차방정식으로 풀어 a를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "$a>0$이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이항정리로 x^6과 x^7의 계수를 a에 관한 식으로 나타내고 7배 관계식을 풀어 양수 a를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "고른 1개가 노란색일 때"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "완두콩일 확률을 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(\\text{주름}\\mid\\text{노랑})"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건부 표본집합 $357$개에 대한 비율",
+            "evidenceType": "IMPLIED",
+            "justification": "노란색 완두콩 표본집합을 분모로 하는 조건부확률 계산"
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$P(\\text{주름}\\mid\\text{노랑})=\\dfrac{88}{357}$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표의 도수를 이용해 사건 도수와 조건 도수의 비율 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "노란색 $357$개입니다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "표에서 노란색 완두콩의 총수를 분모로 하고 주름진 노란색 완두콩의 수를 분자로 하여 조건부확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "네 자리 자연수"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "3의 배수의 개수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "따라서 $12+6+4=22$개입니다."
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 경우만 가능합니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 자리 숫자의 합이 3의 배수가 되는 숫자 조합을 3가지로 분류"
+          },
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "\\dfrac{4!}{2!2!}=6",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 숫자가 포함된 순열 공식을 적용하여 각 경우의 배열 수를 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "각 자리 숫자의 합으로 결정됩니다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "3의 배수 판정법으로 선택 가능한 네 숫자의 조합을 분류하고 각각 같은 것이 있는 순열로 개수를 세어 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "$A, B$는 서로 배반이고"
+          },
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "$B, C$는 서로 독립 일 때"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(C)=\\frac{1}{4}$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A)$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "$B$와 $C$가 독립이면 여사건 $B^c$와 $C$도 독립입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "$A^c\\cap B^c=(A\\cup B)^c$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "드 모르간의 법칙으로 여사건 교집합을 합집합의 여사건으로 변환"
+          },
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "$A,B$가 서로 배반이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "solution",
+            "quote": "$A\\cap B=\\varnothing$입니다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "B와 C의 독립성으로부터 P(B)를 구하고 드 모르간의 법칙과 A, B의 배반 조건을 결합하여 P(A)를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "에이즈에 걸린 사람의 비율이 $10\\%$인"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "양성으로 판정할 확률은 $80\\%$이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "양성 판정을 받을 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전확률",
+            "src": "solution",
+            "quote": "전체 양성 확률은 $0.10\\times0.80+0.90\\times0.05=0.08+0.045=0.125=\\dfrac18$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 감염자와 비감염자로 분할하여 전확률 공식 적용"
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "감염자가 양성일 확률은 $0.80$, 비감염자가 양성일 확률은 $0.05$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "사전 확률과 조건부 확률의 곱으로 각 교집합 확률 산출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "양성 판정은 실제 감염자와 비감염자 모두에게서 나올 수 있습니다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "실제 감염 여부에 따라 전확률 공식을 적용하여 전체 양성 판정 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "제품의 개수의 비는 $3:2$이고"
+          },
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "불량률은 각각 $4\\%$, $p\\%$라고 한다."
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "나왔을 확률이 $\\frac{1}{4}$이라고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$p$의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "불량품이 $B$산일 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "불량품 조건 하에서 B공장 제품일 조건부확률 식을 세움"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$6p=12$, 따라서 $p=2$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "조건부확률 방정식을 정리하여 미지수 p를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "p=2"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "생산량 비와 불량률로 조건부확률 방정식을 세워 공장 B의 불량률 p를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "전체 학생의 $30\\%$이고"
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "안경을 쓴 학생이라는 조건으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(\\text{일본어}\\mid\\text{안경})"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "일본어를 선택한 학생일 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "베이즈정리",
+            "src": "solution",
+            "quote": "$P(\\text{일본어}\\mid\\text{안경})=0.15/0.40=\\dfrac38$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "안경 착용 학생 중 일본어 선택자일 사후확률을 베이즈 공식으로 계산"
+          },
+          {
+            "term": "전확률",
+            "src": "solution",
+            "quote": "안경을 쓴 학생의 전체 비율은 $0.30\\times0.50+0.50\\times0.40+0.20\\times0.25=0.15+0.20+0.05=0.40$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 언어 선택 집단에 대해 안경 착용자의 전확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "0.40"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전확률 공식으로 안경 착용자의 전체 비율을 구하고 베이즈 정리로 일본어 선택자의 조건부확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$21^{40}$"
+          },
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "나눈 나머지는 $1$입니다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "$21^{40}=(1+20)^{40}=1+\\binom{40}{1}20+\\binom{40}{2}20^2+\\cdots+20^{40}$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "21을 1+20으로 두고 이항정리로 전개하여 400의 배수 항들을 분리"
+          },
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "모두 $20^2=400$을 인수로 가지므로",
+            "evidenceType": "IMPLIED",
+            "justification": "둘째 항부터 모든 항이 400의 배수임을 보여 나머지를 결정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "400으로 나누었을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "21을 1+20으로 두고 이항정리로 전개하여 400으로 나누어떨어지는 항들을 제외하고 나머지를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "유한 등확률 표본공간 $S$에서"
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "공사건이 아닌 두 사건 $A, B$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "각 진술의 조건이 어디에 쓰이는지 확인합니다."
+          }
+        ],
+        "method": [
+          {
+            "term": "배반사건",
+            "src": "choices",
+            "quote": "$A, B$가 서로 배반이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립사건",
+            "src": "choices",
+            "quote": "두 사건 $A, B$가 서로 독립이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "종속사건",
+            "src": "choices",
+            "quote": "서로 종속이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "공사건이 아닌"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사건의 독립과 종속, 배반의 정의와 필요충분조건을 각각 검증하여 참인 명제들을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "유한 등확률 표본공간 $S$에서"
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "공사건이 아닌 두 사건 $A, B$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "독립 조건에서 $P(A)=P(A)P(B)$가 되고",
+            "evidenceType": "IMPLIED",
+            "justification": "사건의 독립 정의를 부분집합 조건과 결합해 분석"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "예를 들어 서로 배반인 두 사건의 확률을",
+            "evidenceType": "IMPLIED",
+            "justification": "조건부확률이 같으나 전체 확률이 다른 반례를 제시"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "공사건이 아닌"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유한 등확률 표본공간의 성질과 독립의 정의를 이용해 ㄱ, ㄴ의 참을 보이고 ㄷ의 반례를 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원의방정식",
+            "src": "stem",
+            "quote": "$(x-3)^2 + (y-2)^2 \\le 2$"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "각 $k$의 확률은 $\\binom5k(1/3)^k(2/3)^{5-k}$입니다."
+          },
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "5의 약수의 눈이 나오면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$3^5 p$의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "원 조건에 대입하면 $(k-3)^2+((5-k)-2)^2\\le2$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표 이동을 독립시행의 성공 횟수 k로 표현하고 원의 영역 부등식을 풂"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$3^5p=\\binom52 2^3+\\binom53 2^2+\\binom54 2^1=10\\cdot8+10\\cdot4+5\\cdot2=130$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "독립시행 확률식에 3^5을 곱해 조합수와 거듭제곱의 합으로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "5번 던질 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주사위 눈에 따른 좌표 이동을 독립시행으로 나타내고 원 영역 부등식을 만족하는 이동 횟수별 확률을 합산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주머니에서 임의로 공 1개를 꺼낼 때"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 3까지 자연수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "표본공간과 근원사건을 각각 구하시오."
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "결과 하나만으로 이루어진 사건입니다."
+          }
+        ],
+        "method": [
+          {
+            "term": "원소나열법",
+            "src": "solution",
+            "quote": "S=\\{1,2,3\\}",
+            "evidenceType": "IMPLIED",
+            "justification": "가능한 모든 결과를 집합 기호 안에 나열하여 표본공간을 구성"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "각 결과가 하나씩 나오는 사건은",
+            "evidenceType": "IMPLIED",
+            "justification": "단일 원소 사건들을 개별적으로 분류 나열"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유한집합",
+            "src": "stem",
+            "quote": "3개의 공"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "시행의 가능한 모든 결과의 집합으로 표본공간을 구하고 각 원소를 단일 원소 사건으로 나열해 근원사건을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "윷짝 4개를 동시에 1번 던질 때"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "나올 확률을 스스로 정하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "걸, 윷이 나올 확률을 각각 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "$X$는 네 번의 독립 시행에서 성공 횟수입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$P(\\text{걸})=\\binom43p^3(1-p)=4p^3(1-p)$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "4번 중 3번 앞면이 나오는 조합수를 적용해 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "0\\le p\\le1"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "윷짝 하나의 앞면 확률 p를 정하고 4개의 독립시행 확률 공식으로 걸과 윷의 확률을 각각 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(x+y+z+w)^7$의 전개식에서"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$a+b+c+d=7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "서로 다른 항의 개수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "칸막이 3개를 배열하는 중복조합이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$\\binom{7+4-1}{4-1}=\\binom{10}{3}=120$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중복조합 공식 nHr = n+r-1Cr을 적용하여 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "음이 아닌 정수해의 개수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "네 문자의 지수의 합이 7이 되는 음이 아닌 정수해의 개수를 중복조합 4H7로 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "사건과 클라이밍 운동 경험이 있는 학생인 사건이 서로 독립일 때"
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "'남학생' 사건 $M$과 '운동 경험 있음' 사건 $E$가 독립이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "클라이밍 운동 경험이 있는 여학생 수를 구하시오."
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "P(M\\cap E)=P(M)P(E)"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "$P(M\\cap E)=P(M)P(E)$를 사용합니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "독립사건의 정의에 따른 확률의 곱셈정리 적용"
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "양변에 $(40+x)^2$를 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "분모를 없애기 위해 등식 양변에 동일한 식을 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "10명"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "운동 경험이 있는 여학생 수를 미지수 x로 두고 두 사건의 독립 조건 방정식을 세워 x를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allSlotsAccountedFor": true,
+    "noDuplicateTermsWithinSlot": true,
+    "allQuotesVerbatim": true,
+    "evidenceTypeExplicit": true,
+    "allTermsInDictionary": true
+  }
+}
