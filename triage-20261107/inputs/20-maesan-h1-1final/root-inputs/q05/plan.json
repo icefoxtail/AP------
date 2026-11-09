@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "H",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "A",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenCB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "givenDistance",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "X"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinateLabels": [],
+  "rightAngles": [
+    {
+      "id": "rightAtC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenAC",
+      "ownerSegment": "AC",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenCB",
+      "ownerSegment": "CB",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenAB",
+      "ownerSegment": "AB",
+      "prefix": ""
+    }
+  ],
+  "caption": "조건을 만족하는 두 점과 좌표 차가 이루는 직각삼각형을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The source uses coordinate points A(a,1), B(1,a+1), distance AB=√5, and a>0. The x-axis X is the coordinate-frame reference.",
+      "mappedTo": [
+        "X",
+        "A",
+        "B",
+        "lenAB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The source solution gives a=2, hence A=(2,1), B=(1,3); the horizontal projection separates the coordinate differences 1 and 2.",
+      "mappedTo": [
+        "A",
+        "B",
+        "H",
+        "C",
+        "lenAC",
+        "lenCB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The distance is the hypotenuse of a right triangle whose legs are the horizontal and vertical coordinate differences.",
+    "The positive condition selects a=2; A and B are derived conclusions, not source givens."
+  ],
+  "sourceQuote": "$(a-2)(a+1)=0$; $a=2$ or $a=-1$, and the condition $a>0$ selects $a=2$."
+}

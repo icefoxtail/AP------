@@ -1,0 +1,148 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "XAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "H"
+  ],
+  "displayLines": [
+    "L",
+    "XAxis"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinatePlacement": "PANEL",
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "text": "x=3"
+    }
+  ],
+  "axisTickValues": {
+    "x": [
+      3
+    ],
+    "y": [
+      4
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 512,
+    "height": 384
+  },
+  "caption": "x축에 수직인 직선은 수직선이고, P(3,4)를 지나므로 x=3이다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 주어진 점은 P=(3,4)이다. SOURCE_POINT 좌표는 이 문제의 좌표계 그대로이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "coordinateLabels",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x축에 수직인 직선은 수직선이다; P의 x좌표가 3이므로 원문 조건과 해설의 직선은 x=3이며 SOURCE_LINE 계수는 x−3=0이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayLines",
+        "lineLabels",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "좌표계의 x축은 y=0인 수평선이다. H는 주어진 점 P=(3,4)를 x축에 정사영한 발이므로 새 GIVEN 좌표가 아니라 PERPENDICULAR_FOOT로 얻는 (3,0)이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P와 수직선 x=3, 좌표계의 x축 및 P에서 x축으로 내린 정사영 발 H를 함께 보여 주어 수직 관계와 표시 범위를 분명히 한다."
+  ],
+  "hiddenPointNames": [
+    "H"
+  ]
+}

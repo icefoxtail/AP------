@@ -1,0 +1,69 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째해",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "경계·점해",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "hideName": true,
+            "style": "HOLLOW"
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "첫째 열린구간과 점해"
+  },
+  "caption": "첫 부등식의 해는 −2<x<1이고, 둘째 부등식의 해는 x=1뿐이다. 정수해의 합은 1이므로 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 부등식 x²+ax+b<0의 열린 구간은 −2<x<1이다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "a=1, b=−2를 대입한 두 번째 부등식은 (x−1)²≤0이므로 x=1만 해가 된다; −2는 첫 구간의 경계이지 둘째 부등식의 해가 아니다.",
+      "mappedTo": [
+        "numberLine.rows[1]",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부등식의 열린 구간과 둘째 부등식의 단일 점 해를 별도 줄과 열린·닫힌 점 상태로 구별한다."
+  ]
+}

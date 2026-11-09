@@ -1,0 +1,608 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "KA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "KB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "KC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "KD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AX",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "Xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AY",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "Yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BX",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "Xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BY",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "Yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CX",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "Xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CY",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "Yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DX",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "Xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DY",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "Yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "diagPlus",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "diagMinus",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "axesPerp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "Xaxis",
+          "Yaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "ATangX",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KA",
+          "AX",
+          "Xaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "ATangY",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KA",
+          "AY",
+          "Yaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "BTangX",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KB",
+          "BX",
+          "Xaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "BTangY",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KB",
+          "BY",
+          "Yaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "CTangX",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KC",
+          "CX",
+          "Xaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "CTangY",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KC",
+          "CY",
+          "Yaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "DTangX",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KD",
+          "DX",
+          "Xaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "DTangY",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "KD",
+          "DY",
+          "Yaxis"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "Aplus",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "A",
+          "diagPlus"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "Cplus",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "C",
+          "diagPlus"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "Bminus",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "B",
+          "diagMinus"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "Dminus",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "D",
+          "diagMinus"
+        ],
+        "sourceConditionId": "c2"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 440
+  },
+  "displayLines": [
+    "diagPlus",
+    "diagMinus",
+    "Xaxis",
+    "Yaxis"
+  ],
+  "displayCircles": [
+    "KA",
+    "KB",
+    "KC",
+    "KD"
+  ],
+  "displaySegments": [
+    {
+      "id": "ABside",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BCside",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CDside",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DAside",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "점 순서 A(3,3), B(−√3,√3), C(−1,−1), D(√3,−√3)의 중심을 연결한다. 네 원은 두 축에 접하고, 포물선 자체는 이 부분 도식에서 생략했다. 둘레는 4(√6+√2).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선은 y=x²−x−3이며, 저장 해설은 중심을 곡선과 y=x 또는 y=−x의 교점으로 구해 A=(3,3), B=(−√3,√3), C=(−1,−1), D=(√3,−√3)를 얻는다. 이 부분 도식은 계산된 네 중심을 원점으로부터 정확한 이동으로 배치한다. 포물선 곡선은 이 construction capability에서 그리지 않는다.",
+      "mappedTo": [
+        "mathPlan.nodes.A",
+        "mathPlan.nodes.B",
+        "mathPlan.nodes.C",
+        "mathPlan.nodes.D",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "각 원은 x축과 y축에 동시에 접하므로 반지름은 중심에서 두 축까지의 거리이고 중심은 y=x 또는 y=−x 위에 있다. 도식은 축 접점, 원, 두 대각선으로 이 관계를 보여준다.",
+      "mappedTo": [
+        "mathPlan.nodes.Xaxis",
+        "mathPlan.nodes.Yaxis",
+        "mathPlan.nodes.KA",
+        "mathPlan.nodes.KB",
+        "mathPlan.nodes.KC",
+        "mathPlan.nodes.KD",
+        "mathPlan.nodes.AX",
+        "mathPlan.nodes.AY",
+        "mathPlan.nodes.BX",
+        "mathPlan.nodes.BY",
+        "mathPlan.nodes.CX",
+        "mathPlan.nodes.CY",
+        "mathPlan.nodes.DX",
+        "mathPlan.nodes.DY",
+        "mathPlan.nodes.diagPlus",
+        "mathPlan.nodes.diagMinus",
+        "mathPlan.conditionAudits"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원본 점 순서대로 AB, BC, CD, DA를 잇는다. 변의 길이는 2√6, 2√2, 2√2, 2√6이므로 둘레는 4(√6+√2)이다.",
+      "mappedTo": [
+        "displaySegments.ABside",
+        "displaySegments.BCside",
+        "displaySegments.CDside",
+        "displaySegments.DAside",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "네 원의 중심을 원문 순서로 이어 사각형을 만들고, 네 원이 좌표축에 접하는 관계를 접점과 함께 보인다.",
+    "포물선 자체가 없는 부분 도식임을 표시해 완성된 원문 장면으로 오인하지 않게 한다."
+  ],
+  "sourceQuote": "먼저 v=u를 포물선 y=x²−x−3에 대입하면 u=3 또는 u=−1이다. 다음으로 v=−u를 대입하면 u=±√3이다. 원본 점 순서는 A=(3,3), B=(−√3,√3), C=(−1,−1), D=(√3,−√3)이다."
+}

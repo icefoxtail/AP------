@@ -1,0 +1,250 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "R",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "F",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "TE",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "K",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "TF",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "K",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "sourcePointOnCircle",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "K",
+          "P"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "upperTangent",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "K",
+          "E",
+          "TE"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "lowerTangent",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "K",
+          "F",
+          "TF"
+        ],
+        "sourceConditionId": "c2"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "TE",
+    "TF"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [],
+  "displayPoints": [
+    "O",
+    "P",
+    "E",
+    "F"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "hiddenPointNames": [
+    "E",
+    "F"
+  ],
+  "caption": "반지름 5인 원에서 기울기 −1인 두 접선의 접점과 반지름의 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The circle x²+y²=r² contains the source point (3,4); O is the origin, so the radius is 5.",
+      "mappedTo": [
+        "O",
+        "P",
+        "K"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The required tangents have slope −1. Their radii to the contact points are perpendicular to that direction, producing the two exact contacts E,F and parallel tangents.",
+      "mappedTo": [
+        "D",
+        "R",
+        "E",
+        "F",
+        "TE",
+        "TF"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The given point determines the circle radius 5.",
+    "At each contact, the radius is perpendicular to the tangent; the two tangent lines are parallel."
+  ],
+  "sourceQuote": "$(3,4)$가 원 위에 있으므로 $r^2=3^2+4^2=25$, 따라서 $r=5$이다."
+}

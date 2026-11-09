@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Q",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "R",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "ablen",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "bclen",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "3"
+        }
+      },
+      {
+        "id": "rightB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "AB",
+          "BC"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "pMid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "sourceConditionId": "c2",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "qMid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "Q",
+          "C"
+        ],
+        "sourceConditionId": "c2",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "rMid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "C",
+          "R",
+          "A"
+        ],
+        "sourceConditionId": "c2",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "ABside",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BCside",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CAside",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "RP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "angleB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "caption": "이 도식은 최솟값을 만드는 한 경우 t=1/2만 나타낸다. P, Q, R은 각 변의 중점이고 안쪽 삼각형의 넓이는 S=3/4이다. 따라서 S×α=3/8.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 AB=2, BC=3, ∠ABC=90°이다. 저장 해설의 좌표 선택 A=(0,2), B=(0,0), C=(3,0)은 이 길이와 직각을 보존하는 좌표 실현이며 원문에 좌표가 직접 주어진 것은 아니다.",
+      "mappedTo": [
+        "mathPlan.nodes.A",
+        "mathPlan.nodes.B",
+        "mathPlan.nodes.C",
+        "mathPlan.conditionAudits.ablen",
+        "mathPlan.conditionAudits.bclen",
+        "mathPlan.conditionAudits.rightB",
+        "displaySegments.ABside",
+        "displaySegments.BCside",
+        "rightAngles.angleB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "세 변을 t:(1−t)로 내분하는 점 중 최솟값 위치 t=α=1/2를 선택한 도식이다. 따라서 P, Q, R은 각각 AB, BC, CA의 중점이다. 이 그림은 일반 t의 위치를 나타내지 않는다.",
+      "mappedTo": [
+        "mathPlan.nodes.P",
+        "mathPlan.nodes.Q",
+        "mathPlan.nodes.R",
+        "mathPlan.conditionAudits.pMid",
+        "mathPlan.conditionAudits.qMid",
+        "mathPlan.conditionAudits.rMid",
+        "displaySegments.PQ",
+        "displaySegments.QR",
+        "displaySegments.RP",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "저장된 해설은 안쪽 삼각형의 최소 넓이 S=3/4와 α=1/2를 얻으므로 S×α=3/8이다.",
+      "mappedTo": [
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 직각삼각형과 세 변의 중점으로 만든 안쪽 삼각형을 한 그림에서 구분한다.",
+    "최솟값을 만드는 선택 t=1/2의 사례임을 밝히고, 일반 t의 도형과 혼동하지 않게 한다."
+  ],
+  "sourceQuote": "좌표를 $A=(0,2), B=(0,0), C=(3,0)$으로 두면 [ABC]=3이다. 최솟값은 t=1/2에서 S=3/4이며 Sα=3/8이다."
+}

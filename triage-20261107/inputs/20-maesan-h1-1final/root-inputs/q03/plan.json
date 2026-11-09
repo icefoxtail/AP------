@@ -1,0 +1,74 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "2",
+      "1"
+    ],
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      0,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 2,
+        "y": 13
+      }
+    ],
+    "lines": [
+      {
+        "id": "tangent",
+        "slope": "6",
+        "intercept": "1",
+        "through": [
+          "T"
+        ],
+        "tangentAt": "T"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "T"
+  ],
+  "caption": "포물선 y=x²+2x+5와 직선 y=6x+1은 T(2,13)에서 접한다. 한 점에서 만나려면 접선 기울기는 a=6이어야 하므로 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 y=x²+2x+5와 y=ax+1의 교점을 묻는다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.lines",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "해설의 판별식 0 조건과 a>0을 적용하면 a=6, 중근의 x좌표는 2이며 교점은 T=(2,13)이다.",
+      "mappedTo": [
+        "graphPlan.lines",
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선과 직선의 접점 T를 표시해 교점 방정식의 중근 조건을 한 점에서 만나는 그래프로 연결한다."
+  ]
+}

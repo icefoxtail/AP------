@@ -1,0 +1,295 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "EXTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "dAQ",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dQB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "Q",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ratioQ",
+        "op": "SCALAR_RATIO",
+        "inputs": [
+          "dAQ",
+          "dQB"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "internalRatio",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "expected": {
+          "kind": "rational",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "pointPOnXAxis",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "X"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "pointQOnYAxis",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "Q",
+          "Y"
+        ],
+        "sourceConditionId": "c3"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "X",
+    "Y"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "coordinateLabels": [],
+  "caption": "내분점 P와 외분점 Q가 각각 x축과 y축 위에 놓이는 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(1,−1), B=(2,2) are given.",
+      "mappedTo": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P divides AB internally in ratio a:2 and lies on the x-axis; the source solution gives a=1, hence AP:PB=1:2.",
+      "mappedTo": [
+        "A",
+        "B",
+        "P",
+        "X"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q divides AB externally in ratio b:2 and lies on the y-axis; the source solution gives b=1, hence AQ:QB=1:2.",
+      "mappedTo": [
+        "A",
+        "B",
+        "Q",
+        "Y",
+        "dAQ",
+        "dQB",
+        "ratioQ"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P is between A and B; Q lies beyond A on the same line.",
+    "The external ratio is checked with exact segment lengths; neither derived point is entered as a raw given coordinate."
+  ],
+  "sourceQuote": "$-2+2a=0$에서 $a=1$이다. $2-2b=0$에서 $b=1$이다."
+}

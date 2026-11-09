@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Z",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Cp",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "C",
+          "S"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Kp",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Cp"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "dOO",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "Cp"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "centerDistance",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "Cp"
+        ],
+        "expected": {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "K",
+    "Kp"
+  ],
+  "displaySegments": [
+    {
+      "id": "centers",
+      "refs": [
+        "C",
+        "Cp"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "C",
+    "Cp",
+    "S"
+  ],
+  "pointNames": {
+    "C": "O",
+    "Cp": "O′"
+  },
+  "coordinateLabels": [],
+  "scalarLabels": [
+    {
+      "nodeId": "dOO",
+      "ownerSegment": "centers",
+      "prefix": ""
+    }
+  ],
+  "caption": "a=2인 한 해를 그렸다. a=−2도 가능하며, 그 경우의 중심쌍은 (1,1), (−1,−1)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The circle O is x²+y²+ax−2y−1=0; the origin-reflected center is O′ and OO′=√8. Completing squares gives a²=4.",
+      "mappedTo": [
+        "S",
+        "C",
+        "Cp",
+        "dOO"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The radius squared is a²/4+2=3 for either a=2 or a=−2; this drawing uses only the a=2 case, not a unique root.",
+      "mappedTo": [
+        "C",
+        "Cp",
+        "K",
+        "Kp"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "For a=2, the center pair is (−1,1) and (1,−1), with distance √8 and equal radii √3.",
+    "The other valid root a=−2 gives centers (1,1) and (−1,−1); both roots produce area 3π."
+  ],
+  "sourceQuote": "$a^2=4$; the radius squared is $a^2/4+2=3$."
+}

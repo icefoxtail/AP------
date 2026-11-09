@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "YAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ABline",
+          "YAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "pOnAB",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "ABline"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "pOnY",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "YAxis"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "originOnY",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "O",
+          "YAxis"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "abLen",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c2",
+        "expected": {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "53"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "displayLines": [
+    "ABline",
+    "YAxis"
+  ],
+  "displayPoints": [
+    "P",
+    "A",
+    "B"
+  ],
+  "caption": "P는 y축과 직선 AB의 교점이며 점의 순서는 P-A-B이다. 삼각형 부등식의 등호가 성립해 |AP−BP|=AB=√53이고, P의 y좌표는 −17/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 A(3,2), B(5,9)가 주어지고 P는 y축 위에 있다. 이 좌표는 원문에 직접 제시된 값이며, 수직축은 x=0으로 모델링한다.",
+      "mappedTo": [
+        "mathPlan.nodes.A",
+        "mathPlan.nodes.B",
+        "mathPlan.nodes.YAxis",
+        "mathPlan.conditionAudits.pOnY"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 부등식으로 |AP−BP|≤AB이고, P가 AB 직선 위에서 선분 AB 바깥쪽에 있을 때 등호가 성립한다. y축과 AB 직선의 교점은 A 쪽 바깥에 놓인다.",
+      "mappedTo": [
+        "mathPlan.nodes.ABline",
+        "mathPlan.nodes.P",
+        "mathPlan.conditionAudits.pOnAB",
+        "mathPlan.conditionAudits.abLen",
+        "displayLines.ABline",
+        "displayPoints.P"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AB의 기울기는 7/2이므로 x=0에서 교점 P의 y좌표는 −17/2이다.",
+      "mappedTo": [
+        "mathPlan.nodes.P",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y축과 직선 AB의 교점을 실제 교점 연산으로 나타내고, 점의 순서 P-A-B로 등호가 가능한 바깥쪽 위치를 드러낸다.",
+    "요구된 y좌표는 점 옆 좌표 라벨로 미리 노출하지 않고 캡션 끝에서 답한다."
+  ],
+  "sourceQuote": "두 점 사이의 거리에서 삼각형 부등식을 쓰면 AP≤AB+BP이고 BP≤BA+AP이다. 따라서 |AP−BP|≤AB이다. 등호는 A,B,P가 한 직선 위에 있고 P가 선분 AB 바깥쪽에 있을 때 성립한다."
+}

@@ -1,0 +1,240 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L",
+          "X"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "translatedParallel",
+        "kind": "PARALLEL",
+        "refs": [
+          "L",
+          "T"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "perpendicularPair",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "T",
+          "M"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "imageOnTranslatedLine",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P2",
+          "T"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "L",
+    "T",
+    "M",
+    "X"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "shift",
+      "refs": [
+        "P",
+        "P2"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "P2"
+  ],
+  "coordinateLabels": [],
+  "hiddenPointNames": [
+    "P",
+    "P2"
+  ],
+  "caption": "평행이동한 직선과 수직 조건을 만족하는 직선을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ax+2y+1=0 is shifted by (1,a); after solving a=2, the resolved original line is 2x+2y+1=0 and its image is 2x+2y−5=0.",
+      "mappedTo": [
+        "L",
+        "T",
+        "P",
+        "P2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The translated line is perpendicular to −ax+2y+2=0; using a=2 gives −2x+2y+2=0.",
+      "mappedTo": [
+        "T",
+        "M"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The source has a>0; the perpendicular slopes give a=2, then b=−5 and a+b=−3.",
+      "mappedTo": [
+        "L",
+        "T",
+        "M"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The shift vector is (1,2), and the image line remains parallel to the original.",
+    "The second line is perpendicular to the translated line."
+  ],
+  "sourceQuote": "수직이므로 기울기의 곱이 $-1$이다. $-\\dfrac{a^2}{4}=-1$에서 $a^2=4$이고, $a>0$이므로 $a=2$이다."
+}

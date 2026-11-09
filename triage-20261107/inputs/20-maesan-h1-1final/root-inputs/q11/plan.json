@@ -1,0 +1,378 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Z",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Z"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CM",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "M"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "L",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "M",
+            "C"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "M",
+            "C"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "X"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "dCM",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "M"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dCE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "circleTangentAtX",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "K",
+          "E",
+          "X"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "normalToChord",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "CM",
+          "L"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "chordFootBisects",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "M",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        },
+        "sourceConditionId": "c2"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "L",
+    "CM",
+    "X"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "CMsegment",
+      "refs": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "E"
+  ],
+  "coordinateLabels": [],
+  "hiddenPointNames": [
+    "E"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "GENERAL"
+    }
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "dCM",
+      "ownerSegment": "CMsegment",
+      "prefix": ""
+    },
+    {
+      "nodeId": "dCE",
+      "ownerSegment": "CE",
+      "prefix": ""
+    }
+  ],
+  "caption": "중심 C에서 현 AB에 내린 수선의 발 M은 현의 중점이며, 반지름은 3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Completing the square gives center (−a,3), radius²=a²+5. Tangency to the x-axis and a>0 imply a=2, so C=(−2,3), radius 3.",
+      "mappedTo": [
+        "X",
+        "C",
+        "K",
+        "E"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The named intersection points A,B lie on y=−x−1 (x+y+1=0); the perpendicular from C meets the chord at its midpoint M.",
+      "mappedTo": [
+        "L",
+        "C",
+        "K",
+        "A",
+        "B",
+        "M",
+        "CM"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Distance from C to L is √2; the chord length is 2√(3²−(√2)²)=2√7.",
+      "mappedTo": [
+        "C",
+        "L",
+        "M",
+        "dCM",
+        "dAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The x-axis tangency fixes the radius and center exactly.",
+    "The perpendicular from the center bisects the chord, so the distance √2 and radius 3 determine the chord."
+  ],
+  "sourceQuote": "$a^2+5=9$이어서 $a=2$이다. (조건 $a>0$ 사용)"
+}

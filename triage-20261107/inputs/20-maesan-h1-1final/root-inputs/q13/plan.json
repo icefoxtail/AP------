@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Z",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L",
+          "X"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Qp",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "Q",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "Qp"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Z"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "centerOnReflectedLine",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "C",
+          "R"
+        ],
+        "sourceConditionId": "c3"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "L",
+    "H",
+    "R"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "mirrorQ",
+      "refs": [
+        "Q",
+        "Qp"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "C",
+    "P",
+    "Q",
+    "Qp"
+  ],
+  "coordinateLabels": [],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "Qp"
+  ],
+  "caption": "y=x에 대한 대칭 직선 R은 원의 중심 C를 지나므로 원을 이등분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The source line is 2x−y+3=0 and the reflection axis is y=x; reflecting points of the source line yields R: 2y−x+3=0.",
+      "mappedTo": [
+        "L",
+        "H",
+        "X",
+        "P",
+        "Q",
+        "Qp",
+        "R"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Completing squares in x²−2x+y²+ay+a²−14=0 gives center (1,−a/2) and radius²=15−3a²/4; at the solution a=2, C=(1,−1) and radius=2√3.",
+      "mappedTo": [
+        "C",
+        "K"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "A line bisects a circle when it passes through the center; substituting C into R gives a=2 and a²=4.",
+      "mappedTo": [
+        "C",
+        "R"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The source line and reflected line meet on the reflection axis; the reflected line is built from the mirrored points.",
+    "The reflected line passes through the completed-square center, which is the condition for bisecting the circle."
+  ],
+  "sourceQuote": "$-a+2=0$; $a=2$, so $a^2=4$."
+}

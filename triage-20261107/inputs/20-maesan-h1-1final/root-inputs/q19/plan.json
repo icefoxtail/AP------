@@ -1,0 +1,559 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ADline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ACdiag",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "EFfold",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ACdiag",
+          "EFfold"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "C",
+          "EFfold"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Reflected",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "X",
+          "G"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ABline",
+          "Reflected"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "EFfold"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CCprime",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "G"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "height4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      },
+      {
+        "id": "width6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "cornerB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "ABline",
+          "BCline"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "be1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "E"
+        ],
+        "sourceConditionId": "c2",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "ec5",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "E",
+          "C"
+        ],
+        "sourceConditionId": "c2",
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        }
+      },
+      {
+        "id": "fmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "F",
+          "D"
+        ],
+        "sourceConditionId": "c2",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "xOnDiag",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "X",
+          "ACdiag"
+        ],
+        "sourceConditionId": "c3"
+      },
+      {
+        "id": "xOnFold",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "X",
+          "EFfold"
+        ],
+        "sourceConditionId": "c3"
+      },
+      {
+        "id": "mirrorFoot",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "M",
+          "EFfold"
+        ],
+        "sourceConditionId": "c3"
+      },
+      {
+        "id": "mirrorMid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "C",
+          "M",
+          "G"
+        ],
+        "sourceConditionId": "c3",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "mirrorPerp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "EFfold",
+          "CCprime"
+        ],
+        "sourceConditionId": "c3"
+      },
+      {
+        "id": "pOnAB",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "ABline"
+        ],
+        "sourceConditionId": "c3"
+      },
+      {
+        "id": "pOnReflected",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "Reflected"
+        ],
+        "sourceConditionId": "c3"
+      },
+      {
+        "id": "bp56over17",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "P"
+        ],
+        "sourceConditionId": "c4",
+        "expected": {
+          "kind": "rational",
+          "numerator": "56",
+          "denominator": "17"
+        }
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 440
+  },
+  "displaySegments": [
+    {
+      "id": "ABside",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BCside",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CDside",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DAside",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "ACoriginal",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "EFsegment",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "XCprime",
+      "refs": [
+        "X",
+        "G"
+      ]
+    },
+    {
+      "id": "CCmirror",
+      "refs": [
+        "C",
+        "G"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "X",
+    "G",
+    "M",
+    "P"
+  ],
+  "pointNames": {
+    "G": "C′"
+  },
+  "rightAngles": [
+    {
+      "id": "perpAtM",
+      "refs": [
+        "C",
+        "M",
+        "E"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "caption": "접는 선 EF가 대각선 AC를 X에서 나눈다. 원래 선분 AC와 반사되어 생긴 XC′를 따로 표시하고, C′는 EF에 대한 C의 반사점이다. BP=56/17.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 AB=4, BC=6인 직사각형이다. 저장 해설은 B=(0,0), A=(0,4), C=(6,0), D=(6,4)로 좌표화한다. 이 좌표는 해설이 선택한 source-length 실현이며 원문에서 좌표가 직접 주어진 것은 아니다.",
+      "mappedTo": [
+        "mathPlan.nodes.A",
+        "mathPlan.nodes.B",
+        "mathPlan.nodes.C",
+        "mathPlan.nodes.D",
+        "mathPlan.conditionAudits.height4",
+        "mathPlan.conditionAudits.width6",
+        "mathPlan.conditionAudits.cornerB",
+        "displaySegments.ABside",
+        "displaySegments.BCside",
+        "displaySegments.CDside",
+        "displaySegments.DAside"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "E는 BC 위에서 BE=1인 점이므로 BE:EC=1:5이며, F는 AD의 중점이다. E는 DIVISION_POINT, F는 MIDPOINT 연산으로 구성한다.",
+      "mappedTo": [
+        "mathPlan.nodes.E",
+        "mathPlan.nodes.F",
+        "mathPlan.conditionAudits.be1",
+        "mathPlan.conditionAudits.ec5",
+        "mathPlan.conditionAudits.fmid",
+        "displaySegments.EFsegment"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "접는 선 EF와 원래 대각선 AC의 교점은 X이다. C를 EF에 대하여 LINE_REFLECTION한 점 G(표시명 C′)가 C′이며, 원래 대각선의 C 쪽 선분 XC는 접힌 뒤 XC′가 된다. M은 C에서 EF에 내린 수선의 발이고 CC′의 중점으로 검수한다. P는 반사된 직선 XC′와 변 AB의 교점이다.",
+      "mappedTo": [
+        "mathPlan.nodes.X",
+        "mathPlan.nodes.G",
+        "mathPlan.nodes.M",
+        "mathPlan.nodes.Reflected",
+        "mathPlan.nodes.P",
+        "mathPlan.conditionAudits.xOnDiag",
+        "mathPlan.conditionAudits.xOnFold",
+        "mathPlan.conditionAudits.mirrorFoot",
+        "mathPlan.conditionAudits.mirrorMid",
+        "mathPlan.conditionAudits.mirrorPerp",
+        "mathPlan.conditionAudits.pOnAB",
+        "mathPlan.conditionAudits.pOnReflected",
+        "displaySegments.ACoriginal",
+        "displaySegments.XCprime",
+        "displaySegments.CCmirror",
+        "rightAngles.perpAtM"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "저장 해설은 P=(0,56/17)이므로 BP=56/17이다. P의 좌표는 그림의 coordinate label로 표시하지 않는다.",
+      "mappedTo": [
+        "mathPlan.nodes.P",
+        "mathPlan.conditionAudits.bp56over17",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형의 원래 대각선 AC와 접은 뒤 생기는 XC′를 별도 선분으로 구분한다.",
+    "C′의 위치를 LINE_REFLECTION 연산으로 만들고, 수선발 M이 CC′의 중점이며 EF에 수직인 접기 관계를 보인다."
+  ],
+  "sourceQuote": "접힌 뒤 대각선의 C 쪽 부분 XC는 XC′가 된다. C에서 접는 선에 내린 수선의 발을 M이라 하자. M=(2,2)이고 접는 선은 CC′의 수직이등분선이다."
+}

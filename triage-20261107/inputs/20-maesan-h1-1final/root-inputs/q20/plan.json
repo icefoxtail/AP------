@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "s",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "s범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "sqrt(2)",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "매개변수 s의 가능한 범위"
+  },
+  "caption": "이 수직선은 매개변수 s의 범위만 표시하며 2차원 자취 전체 그래프는 포함하지 않는다. (1) 2√2≤a+b, (2) M의 자취는 y=x 위에서 (√2,√2)를 포함해 오른쪽 위로 뻗는 반직선이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "넓이 조건은 ab/2=1, 따라서 ab=2이다.",
+      "mappedTo": [
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "해설은 s=(a+b)/2를 두어 M=(s,s), s≥√2로 정리하고, 모든 s≥√2가 양수 a,b의 조건으로 실현됨을 보인다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "문항은 y=x 위에서 시작점 (√2,√2)을 포함하는 오른쪽 위 반직선 전체를 그림으로 요구한다.",
+      "mappedTo": [
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 끝점 √2와 오른쪽으로 이어지는 가능한 매개변수 범위를 표시한다. 이 number line은 2D locus graph가 아니므로 부분 시각화로만 취급한다."
+  ]
+}

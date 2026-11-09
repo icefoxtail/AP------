@@ -1,0 +1,92 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "u",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "u경계",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "10",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "B",
+            "value": "45/4",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "C",
+            "value": "18",
+            "hideName": true,
+            "style": "TICK"
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "u범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "45/4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "18",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "u의 제곱 경계와 범위"
+  },
+  "caption": "원문의 경계 순서는 √10<3√5/2<3√2이고, 원래 k 범위는 3√5/2<k≤3√2이다. 그림은 k>0에서 u=k²로 옮긴 제곱 좌표(10,45/4,18)를 사용하므로 눈금 간격은 k의 간격을 나타내지 않는다. 따라서 αβ=9√10/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 k>0을 조건으로 하고 자연수 n의 개수가 2가 되게 한다. 원래 두 원과 y=nx 도식은 보존된 문제 이미지에 남아 있다.",
+      "mappedTo": [
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "해설에서 n=1,2,3에 대응하는 k 경계는 각각 3√2, 3√5/2, √10이며, 증가 순서는 √10<3√5/2<3√2이다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "k>0에서 u=k²는 단조증가 변환이다. 원 경계의 제곱은 10, 45/4, 18이며 k 범위 3√5/2<k≤3√2는 제곱 좌표에서 45/4<u≤18이다.",
+      "mappedTo": [
+        "numberLine.variable",
+        "numberLine.rows[0]",
+        "numberLine.rows[1]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "원문 해설의 곱은 αβ=(3√5/2)(3√2)=9√10/2이다.",
+      "mappedTo": [
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k>0에서만 허용되는 정확한 단조변환 u=k²의 경계 10, 45/4, 18과 열린·닫힌 범위를 표시한다. 이는 제곱 좌표의 간격이지 원래 k 축 간격이 아니다."
+  ]
+}
