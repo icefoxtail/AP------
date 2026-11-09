@@ -570,7 +570,8 @@ test('reflected-circle tangent problems use the tangent length and a matching di
     seg: (board, from, to, options) => board.segments.push({ from, to, options })
   };
   const context = vm.createContext({ Math, ...helpers });
-  vm.runInContext(`${factory}\nthis.makeReflect = mkReflect;`, context);
+  vm.runInContext(`${factory}
+this.makeReflect = mkReflect;`, context);
   const variants = [
     [point(-3, 1), point(0, 3), 2, 21, '\\sqrt{21}'],
     [point(-2, 2), point(4, 6), 3, 91, '\\sqrt{91}'],
