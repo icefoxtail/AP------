@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bprime",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "Bprime"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vertical",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hits",
+        "op": "INTERSECTION",
+        "inputs": [
+          "vertical",
+          "circ"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cprime",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hits"
+        ],
+        "args": {},
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "sign": -1
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "Cprime",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "W",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "Bprime",
+    "C",
+    "Cprime"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "ABprime",
+      "refs": [
+        "A",
+        "Bprime"
+      ]
+    },
+    {
+      "id": "ACprime",
+      "refs": [
+        "A",
+        "Cprime"
+      ]
+    },
+    {
+      "id": "BprimeCprime",
+      "refs": [
+        "Bprime",
+        "Cprime"
+      ]
+    },
+    {
+      "id": "BBprime",
+      "refs": [
+        "B",
+        "Bprime"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BABprime40",
+        "refs": [
+          "B",
+          "A",
+          "Bprime"
+        ],
+        "value": 40,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ACprimeBprime110",
+        "refs": [
+          "A",
+          "Cprime",
+          "Bprime"
+        ],
+        "value": 110,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ACB110",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 110,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "회전으로 AB=AB′, ∠BAB′=40°이다. 내접사각형에서 ∠AC′B′=110°이고 회전이 각을 보존하여 ∠ACB=110°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 AB′C′은 ABC를 A 중심으로 오른쪽 40° 회전한 도형이고 A,B,B′,C′는 한 원 위에 있다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Bprime과 Cprime은 각각 B′, C′로 표시한다. 원문 그림의 점을 모두 확보해 재현한다. 점·라벨에 여유를 둔다."
+  ]
+}

@@ -1,0 +1,432 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sub",
+                        "args": [
+                          {
+                            "kind": "expression",
+                            "op": "mul",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "8"
+                              },
+                              {
+                                "kind": "expression",
+                                "op": "sqrt",
+                                "args": [
+                                  {
+                                    "kind": "integer",
+                                    "value": "2"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "mul",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "6"
+                              },
+                              {
+                                "kind": "expression",
+                                "op": "sqrt",
+                                "args": [
+                                  {
+                                    "kind": "integer",
+                                    "value": "3"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sub",
+                        "args": [
+                          {
+                            "kind": "expression",
+                            "op": "mul",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "8"
+                              },
+                              {
+                                "kind": "expression",
+                                "op": "sqrt",
+                                "args": [
+                                  {
+                                    "kind": "integer",
+                                    "value": "2"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "mul",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "6"
+                              },
+                              {
+                                "kind": "expression",
+                                "op": "sqrt",
+                                "args": [
+                                  {
+                                    "kind": "integer",
+                                    "value": "3"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C",
+    "M",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "outer"
+  ],
+  "displaySegments": [
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BPC30",
+        "refs": [
+          "B",
+          "P",
+          "C"
+        ],
+        "value": 30,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "OBP90",
+        "refs": [
+          "O",
+          "B",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "OMA90",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "PA=4, PC=8이므로 PB²=PA·PC=32. 높이는 PB sin30°=2√2이므로 넓이는 4√2 cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PB는 접선, ∠BPC=30°, PA=AC=4 cm, P·A·C는 한 직선이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "O는 중심, M은 현 AC의 중점인 보조점이다. 점·라벨에 여유를 둔다."
+  ]
+}
