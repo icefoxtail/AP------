@@ -131,6 +131,8 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
 <script src="generated-mock-selection.js?v=20261030-s9-1"></script>
+<script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
+<link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
 </head>
 <body>
 <header><div class="header-inner"><a href="workspace.html">Archive 2.0</a><span>모의고사 만들기</span></div></header>
@@ -337,27 +339,64 @@ function stemText(parent,raw){
  }
  if(cursor<raw.length)text(parent,raw.slice(cursor),"span");
 }
+// AP Table Engine: pipe tables and legacy tables are normalized to ap-table markup first (idempotent), then rebuilt
+// node by node from an allow-list. Nothing is assigned through innerHTML, so unknown markup stays visible text.
+const AP_TABLE_WRAP=/<div class="((?:ap-table-wrap )?question-table-wrap)">(<table class="[^"<>]*">[\s\S]*?<\/table>)<\/div>/g;
+const AP_TABLE_PARENTS={table:["#root"],thead:["table"],tbody:["table"],tfoot:["table"],tr:["table","thead","tbody","tfoot"],th:["tr"],td:["tr"],b:["th","td","b"],br:["th","td","b"]};
+const AP_ENTITIES={lt:"<",gt:">",amp:"&",quot:'"',apos:"'",nbsp:"\u00a0"};
+function apDecode(value){return value.replace(/&(?:#(\d+)|#x([0-9a-f]+)|([a-z]+));/gi,(all,dec,hex,name)=>{if(name){const key=name.toLowerCase();return Object.prototype.hasOwnProperty.call(AP_ENTITIES,key)?AP_ENTITIES[key]:all;}const code=dec?Number(dec):parseInt(hex,16);return code>0&&code<0x110000?String.fromCodePoint(code):all;});}
+function apAttribute(node,tag,name,value){
+ if(name==="class"&&/^[\w -]+$/.test(value))node.className=value;
+ else if((name==="colspan"||name==="rowspan")&&(tag==="td"||tag==="th")&&/^\d{1,2}$/.test(value))node.setAttribute(name,value);
+ else if(name==="scope"&&tag==="th"&&/^(?:col|row|colgroup|rowgroup)$/.test(value))node.setAttribute(name,value);
+ else if(name==="style"&&(tag==="td"||tag==="th")&&/^(?:\s*border[\w-]*\s*:\s*[\w\s#.,()%-]+;?)+\s*$/.test(value)&&!/url|expression/i.test(value))node.setAttribute(name,value);
+ else return false;
+ return true;
+}
+function apTableNode(markup){
+ const root=document.createElement("div"),stack=[{name:"#root",node:root}];
+ for(const token of markup.split(/(<[^>]*>)/)){
+  if(!token)continue;
+  const top=stack[stack.length-1];
+  if(token[0]!=="<"){
+   const value=apDecode(token);
+   if(!value)continue;
+   if(["#root","table","thead","tbody","tfoot","tr"].includes(top.name)){if(value.trim())return null;continue;}
+   text(top.node,value,"span");continue;
+  }
+  const tag=token.match(/^<(\/?)([a-z][a-z0-9]*)((?:\s+[a-z-]+="[^"<>]*")*)\s*\/?>$/i);
+  const name=tag&&tag[2].toLowerCase();
+  if(!tag||!Object.prototype.hasOwnProperty.call(AP_TABLE_PARENTS,name))return null;
+  if(tag[1]){if(name==="br")continue;if(stack.length<2||top.name!==name)return null;stack.pop();continue;}
+  if(!AP_TABLE_PARENTS[name].includes(top.name))return null;
+  const node=document.createElement(name);
+  for(const attr of tag[3].matchAll(/\s+([a-z-]+)="([^"<>]*)"/gi))if(!apAttribute(node,name,attr[1].toLowerCase(),apDecode(attr[2])))return null;
+  top.node.appendChild(node);
+  if(name!=="br")stack.push({name,node});
+ }
+ return stack.length===1&&root.children.length===1?root.children[0]:null;
+}
+function apTableSegments(source){
+ const parts=[];let cursor=0,failed=false,match;
+ AP_TABLE_WRAP.lastIndex=0;
+ while((match=AP_TABLE_WRAP.exec(source))!==null){
+  const table=apTableNode(match[2]);
+  if(!table){failed=true;continue;}
+  if(match.index>cursor)parts.push({text:source.slice(cursor,match.index)});
+  const wrap=document.createElement("div");wrap.className=match[1];
+  wrap.appendChild(table);parts.push({node:wrap});cursor=AP_TABLE_WRAP.lastIndex;
+ }
+ if(cursor<source.length)parts.push({text:source.slice(cursor)});
+ return {parts,failed};
+}
+function apNormalizeTables(raw){
+ try{return typeof globalThis!=="undefined"&&globalThis.ApTableEngine?String(globalThis.ApTableEngine.renderApTables(raw)):raw;}catch(e){return raw;}
+}
 function questionStem(parent,value){
  const raw=String(value??""),container=document.createElement("div");container.className="stem";container.dataset.sourceText=raw;
- const pattern=/<div class="question-table-wrap"><table class="question-table">([\s\S]*?)<\/table><\/div>/g;
- let cursor=0,match;
- while((match=pattern.exec(raw))!==null){
-  const inside=match[1],rows=[...inside.matchAll(/<tr>([\s\S]*?)<\/tr>/g)];
-  const outside=inside.replace(/<\/?(?:thead|tbody)>/g,"").replace(/<tr>[\s\S]*?<\/tr>/g,"").trim();
-  if(!rows.length||outside)continue;
-  const grid=rows.map(row=>{
-   const cells=[...row[1].matchAll(/<(th|td)>([^<>]*)<\/\1>/g)];
-   const rest=row[1].replace(/<(?:th|td)>[^<>]*<\/(?:th|td)>/g,"").trim();
-   return cells.length&&!rest?cells.map(c=>({tag:c[1],label:c[2]})):null;
-  });
-  if(grid.some(cells=>!cells))continue;
-  if(match.index>cursor)stemText(container,raw.slice(cursor,match.index));
-  const wrap=document.createElement("div");wrap.className="question-table-wrap";
-  const table=document.createElement("table");table.className="question-table";
-  for(const cells of grid){const tr=document.createElement("tr");for(const cell of cells)text(tr,cell.label,cell.tag);table.appendChild(tr);}
-  wrap.appendChild(table);container.appendChild(wrap);cursor=pattern.lastIndex;
- }
- if(cursor<raw.length)stemText(container,raw.slice(cursor));
+ let segments=apTableSegments(apNormalizeTables(raw));
+ if(segments.failed)segments=apTableSegments(raw);
+ for(const part of segments.parts){if(part.node)container.appendChild(part.node);else stemText(container,part.text);}
  parent.appendChild(container);
 }
 function questionMarkup(parent,q,row,answers=false){

@@ -103,6 +103,37 @@ test('subjective HTML table is parsed as safe real table; unknown tags are escap
  assert.ok(p2.children[0].children.every(c=>c.tag==='span'));
  assert.match(p2.children[0].children[0].textContent,/onmouseover/);
 });
+test('AP Table Engine: pipe tables become real ap-table nodes (header row, decoded cells), idempotent, and fall back safely',()=>{
+ const {context}=runFixture();
+ context.ApTableEngine=require('../archive/js/ap-table-engine.js');
+ const build=(source)=>{const p=new Node();context.__p=p;context.__source=source;vm.runInContext('questionStem(__p,__source)',context,{timeout:2000});return p.children[0];};
+ const find=(node,pred,out=[])=>{for(const c of node.children||[]){if(pred(c))out.push(c);find(c,pred,out);}return out;};
+ const pipe='표를 보고 답하시오.\n| $X$ | $0$ | $1$ |\n| :---: | :---: | :---: |\n| $P(X=x)$ | $a<b$ | $\frac{1}{2}$ |\n따라서 구하시오.';
+ const stem=build(pipe);
+ const wrap=stem.children.find(c=>c.className==='ap-table-wrap question-table-wrap');
+ assert.ok(wrap,'pipe table is rendered as a table, not as | rows');
+ const table=wrap.children[0];assert.equal(table.tag,'table');assert.match(table.className,/\bap-table\b/);
+ assert.deepEqual(table.children.map(c=>c.tag),['thead','tbody']);
+ const cells=find(table,c=>c.tag==='th'||c.tag==='td').map(c=>c.children.map(x=>x.textContent).join(''));
+ assert.deepEqual(cells,['$X$','$0$','$1$','$P(X=x)$','$a<b$','$\frac{1}{2}$'],'cell text is decoded back to the source characters');
+ assert.ok(!JSON.stringify(stem.children.filter(c=>c!==wrap).map(c=>c.textContent)).includes('|'),'no raw pipe rows left in the text');
+ assert.equal(stem.dataset.sourceText,pipe,'the source text stays untouched');
+ // idempotent: an already normalized table renders the same nodes
+ const again=build(context.ApTableEngine.renderApTables(pipe));
+ assert.equal(JSON.stringify(again.children),JSON.stringify(stem.children));
+ // mixed cell content (br, b) and merged cells survive; unexpected markup in a table falls back to the source text path
+ const merged=build('<table><tr><th colspan="2">구분</th></tr><tr><td>가<br>나</td><td><b>1</b></td></tr></table>');
+ const mergedTable=find(merged,c=>c.tag==='table')[0];assert.ok(mergedTable);
+ assert.equal(find(mergedTable,c=>c.tag==='th')[0].attributes.colspan,'2');
+ assert.equal(find(mergedTable,c=>c.tag==='br').length,1);
+ const hostile=build('<div class="question-table-wrap"><table class="question-table"><tr><td><img src=x onerror=alert(1)></td></tr></table></div>');
+ assert.equal(find(hostile,c=>c.tag==='table').length,0,'unknown markup never becomes a node');
+ assert.ok(find(hostile,c=>c.tag==='img').length===0);
+ // no module: pipe text is left as it was (the page still opens)
+ const {context:bare}=runFixture();const p=new Node();bare.__p=p;bare.__source='| a | b |'+String.fromCharCode(10)+'| 1 | 2 |';
+ vm.runInContext('questionStem(__p,__source)',bare,{timeout:2000});
+ assert.ok(find(p.children[0],c=>c.tag==='table').length===0);
+});
 test('source note boxes retain condition line breaks while unknown nested markup remains text',()=>{
  const {context}=runFixture(),parent=new Node();context.__parent=parent;
  vm.runInContext(`questionStem(__parent,"설명<div class='note-box'>(가) $x=2$<br>(나) $x=3$<br><span onclick=alert(1)>추가 조건</span></div>질문")`,context,{timeout:2000});
