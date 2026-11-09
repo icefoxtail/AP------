@@ -1,0 +1,58 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/2",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "slope": "1/7",
+        "intercept": "-1",
+        "intersectionCount": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "sourceQuote": "예를 들어 $n=14$이면 직선은 $y=\\dfrac17x-1$이고",
+  "caption": "n=14일 때 직선 y=x/7-1은 곡선 y=sin(πx/2)와 0<x<7에서 세 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "n=14이면 직선 y=(2/14)x-1=x/7-1이고 곡선 y=sin(πx/2)와 구간 0<x<7에서 3개의 점에서 만난다.",
+      "mappedTo": [
+        "graphPlan.referenceLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "n=14일 때 제4사분면에서 직선과 곡선의 교점이 3개임을 보여 준다."
+  ],
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q19-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/engine_evidence/q19-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/engine_evidence/q19-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/engine_evidence/q19-solution.svg"
+  }
+}

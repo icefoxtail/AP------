@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_제일고_1학기_중간_고2_대수_유사",
+  "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-ALG-LOG-FUNCTION-INVERSE-POINTS-COEFFICIENT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "로그함수의 역함수가 지나는 점으로 계수 결정",
+      "definition": "f(x)=k·log_a x+p의 역함수 g에 대해 g(s)=t가 주어지면 f(t)=s로 바꾸어 두 개의 식을 세우고, 로그의 성질로 연립해 k, p 또는 p/k를 구하는 유형.",
+      "parentRpmRecordId": "H2-M1-RPM-087",
+      "parentRpmL1": "지수함수와 로그함수",
+      "parentRpmL2": "로그함수",
+      "parentRpmL3": "로그함수의 그래프",
+      "parentRpmL4": "증가·감소",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "parentTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "RPM 'H2-M1-RPM-087 증가·감소'는 로그함수 그래프의 증감 판단이며, 역함수의 함숫값 조건을 원래 함수의 점 조건으로 바꾸어 계수를 연립해 정하는 구조를 구분하지 못한다. 기존 확장 EXT-L4-ALG-EXPLOG-INVERSE-BASE는 지수함수의 역함수로 로그의 밑을 정하는 유형이라 의미가 다르다.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_대수_유사",
+        "qid": 12
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-POINT-CIRCLE-DISTANCE-RANGE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "원 밖의 점에서 원 위의 점까지 거리의 범위와 개수",
+      "definition": "원 밖의 점 O에서 원 위의 점 P까지의 거리 OP가 (중심까지의 거리)−(반지름) 이상 (중심까지의 거리)+(반지름) 이하의 값을 모두 취하며, 두 끝값에서는 점이 1개(접점), 그 사이 값에서는 점이 2개 대응함을 이용하는 개념.",
+      "parentKey": "CC_CIRCLE_EQUATION",
+      "parentLabelKo": "원의 방정식",
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_CIRCLE_EQUATION은 원의 방정식에서 중심과 반지름을 읽는 데까지만 다루며, 한 점에서 원 위의 점까지 거리의 범위와 그 거리값에 대응하는 점의 개수 판정을 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_대수_유사",
+        "qid": 16
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-SINE-NEGATIVE-HALF-PERIOD-LINE-INTERSECTION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "사인곡선의 y<0 반주기 구간별 직선과의 교점 개수 판정",
+      "definition": "y=sin(πx/2)처럼 사인곡선의 y<0인 반주기 구간마다 곡선이 아래로 볼록한 그릇 모양임을 이용해, 직선이 구간 전체를 지나면 교점 2개, 직선이 x축과 만나는 점이 구간 안에 있으면 1개, 그 앞이면 0개로 세어 제4사분면 교점의 총 개수를 구하는 개념.",
+      "parentKey": "CC_GRAPH_INTERSECTION_COUNT",
+      "parentLabelKo": "그래프 교점 개수",
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_GRAPH_INTERSECTION_COUNT는 교점 개수를 세는 일반 개념이며, 주기 곡선의 반주기 구간을 나누어 구간별 교점 수를 정하고 직선의 x절편 위치에 따라 합산하는 방법을 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_대수_유사",
+        "qid": 19
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-TRIG-ANGLE-REDUCTION-PI-HALF-PI",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "π±θ, π/2±θ 꼴 각의 삼각함수를 θ의 삼각함수로 변환",
+      "definition": "sin(π−θ)=sinθ, cos(π−θ)=−cosθ, sin(π/2+θ)=cosθ처럼 π나 π/2에 θ를 더하거나 뺀 각의 삼각함수 값을 θ의 삼각함수로 바꾸는 성질.",
+      "parentKey": "CC_TRIGONOMETRIC_IDENTITY",
+      "parentLabelKo": "삼각함수 항등식",
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_TRIGONOMETRIC_IDENTITY는 sin²θ+cos²θ=1, tanθ=sinθ/cosθ 같은 같은 각 사이의 항등식이며, 각을 π±θ, π/2±θ로 옮기는 변환 공식은 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_대수_유사",
+        "qid": 21
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [
+    {
+      "key": "EXT-CROSS-REAL-ROOT-PARITY-SIGN",
+      "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_강남여고_1학기_중간_고2_대수_유사.registry.json",
+      "usedInQids": [
+        3,
+        22
+      ]
+    },
+    {
+      "key": "EXT-CROSS-RADIAN-SECTOR-ARC-AREA",
+      "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_강남여고_1학기_중간_고2_대수_유사.registry.json",
+      "usedInQids": [
+        4
+      ]
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true
+}
