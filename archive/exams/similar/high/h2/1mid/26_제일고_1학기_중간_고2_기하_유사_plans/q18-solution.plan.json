@@ -1,0 +1,97 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "-6"
+      ],
+      "aSquared": "225",
+      "bSquared": "144",
+      "major": "Y"
+    },
+    {
+      "id": "c2",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "25",
+      "bSquared": "16",
+      "major": "Y"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "c1"
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "curve": "c1"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "y": "-11",
+      "branch": "POS",
+      "curve": "c1"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "y": "-5/3",
+      "branch": "POS",
+      "curve": "c2"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sFP",
+      "from": "F",
+      "to": "P",
+      "label": "18"
+    },
+    {
+      "id": "sPG",
+      "from": "P",
+      "to": "F'",
+      "label": "12"
+    },
+    {
+      "id": "sFG",
+      "from": "F",
+      "to": "F'",
+      "label": "18"
+    }
+  ],
+  "caption": "타원 C′ 위의 점 P는 FP=FF′=18, PF′=12를 만족하고, FP를 1:2로 내분하는 점 Q는 한 초점이 F인 타원 x²/16+y²/25=1 위에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "FF'=FP=18, PF'=12, P(x,-11), Q=(2F+P)/3, 타원 x^2/16+y^2/25=1",
+      "mappedTo": [
+        "conics",
+        "points",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 타원과 점 P, 내분점 Q의 위치"
+  ],
+  "sourceQuote": "$\\overline{PF'}=12$이다.",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q18-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q18-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q18-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q18-solution.svg"
+  }
+}

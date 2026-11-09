@@ -1,0 +1,84 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "9",
+    "bSquared": "4",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "5",
+      "sign": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_LINE",
+      "lines": [
+        "l",
+        "ax"
+      ],
+      "coordinates": true
+    },
+    {
+      "id": "R",
+      "kind": "LINE_LINE",
+      "lines": [
+        "n",
+        "ax"
+      ],
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "tangent": true,
+      "at": "P",
+      "label": "l"
+    },
+    {
+      "id": "n",
+      "slope": "-6/5",
+      "intercept": "26/3"
+    },
+    {
+      "id": "ax",
+      "y": "0",
+      "hidden": true
+    }
+  ],
+  "caption": "a=3, b=2, 점 P(5,8/3)인 한 예에서 접선 l과 x축의 교점 Q(9/5,0), P를 지나고 l에 수직인 직선과 x축의 교점 R(65/9,0)을 나타낸 그림이며 OQ×OR=13=a²+b²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접선과 x축의 교점 Q(a^2/x_1,0), 법선과 x축의 교점 R((a^2+b^2)x_1/a^2,0), OQ*OR=a^2+b^2",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a=3, b=2인 한 예에서 Q, R의 좌표와 OQ×OR=a²+b²"
+  ],
+  "sourceQuote": "$\\overline{OQ}\\times\\overline{OR}$",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q22-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q22-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q22-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q22-solution.svg"
+  }
+}

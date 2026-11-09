@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_제일고_1학기_중간_고2_기하_유사",
+  "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-CONIC-COMMON-FOCI",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "초점을 공유하는 타원과 쌍곡선",
+      "definition": "타원과 쌍곡선이 같은 두 점을 초점으로 가지면 타원의 c^2=a^2-b^2와 쌍곡선의 c^2=a^2+b^2가 같다는 조건으로 계수를 구하거나, 두 곡선의 교점에서 두 초점까지의 거리의 합과 차를 연립하는 개념.",
+      "parentKey": "CC_ELLIPSE",
+      "parentLabelKo": "타원",
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "CC_ELLIPSE와 CC_HYPERBOLA는 각 곡선의 정의만 다루며 두 곡선이 초점을 공유할 때의 초점거리 일치와 교점의 거리 합·차 연립을 구분하지 못한다. Q13, Q23에서 사용.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_기하_유사",
+        "qid": 13
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-PARABOLA-FOCAL-DISTANCE-DIRECTRIX-SUM-MINIMUM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "포물선 위 점의 초점거리를 준선거리로 바꾸는 거리합의 최솟값",
+      "definition": "포물선 위의 점 P에서 초점까지의 거리를 준선까지의 거리로 바꾸어, P에서 다른 정점까지의 거리와의 합이 최소가 되는 위치(정점에서 준선에 내린 수선 위)와 그 최솟값을 구하는 개념.",
+      "parentKey": "CC_PARABOLA",
+      "parentLabelKo": "포물선",
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "CC_PARABOLA는 초점과 준선에 이르는 거리가 같다는 정의만 다루며, 이를 이용해 다른 정점과의 거리의 합을 최소화하는 변환을 구분하지 못한다. Q20에서 사용.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_기하_유사",
+        "qid": 20
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "generatedProblemTypes": [],
+  "generatedTemplates": [
+    {
+      "key": "EXT-TPL-SPACE-PLANE-DETERMINATION-CASE-CHECK",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "평면의 결정조건에 보기별로 대조하는 판정",
+      "definition": "보기로 주어진 점·직선의 조합마다 평면의 결정조건(세 점, 직선과 점, 만나는 두 직선, 평행한 두 직선)에 해당하는지 확인하고 해당하지 않는 것(또는 해당하는 것)을 고르는 풀이 골격.",
+      "parentRpmRecordId": "H2-GEO-RPM-053",
+      "parentRpmL1": "공간도형과 공간좌표",
+      "parentRpmL2": "공간도형",
+      "parentRpmL3": "직선과 평면",
+      "parentRpmL4": "평행·수직",
+      "parentKey": "PT_GEO_SPACE_FIGURE",
+      "parentLabelKo": "공간도형 문제",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "보기별 점·직선 조합 확인 -> 결정조건과 대조 -> 조건이 어긋나는 보기 선택",
+      "standardUnitKey": "H22-GE-03",
+      "subUnitKey": "H22-GE-03-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "canonical 공간도형 TPL은 두 직선 사이의 각, 이면각, 수선의 발·정사영뿐이며 평면의 결정조건을 보기별로 판정하는 골격이 없다. Q6에서 사용.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_기하_유사",
+        "qid": 6
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-CONIC-EQUATION-DERIVATION-FROM-DEFINITION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "이차곡선의 정의에서 방정식을 유도하는 과정 완성",
+      "definition": "두 초점으로부터의 거리의 합(또는 차)이 일정한 점의 자취라는 정의에서 출발해 양변을 제곱하고 정리하여 표준방정식에 이르는 유도 과정의 빈칸을 채우는 풀이 골격.",
+      "parentRpmRecordId": "H2-GEO-RPM-041",
+      "parentRpmL1": "이차곡선",
+      "parentRpmL2": "이차곡선",
+      "parentRpmL3": "타원",
+      "parentRpmL4": "정의와 방정식",
+      "parentKey": "PT_GEO_ELLIPSE",
+      "parentLabelKo": "타원 문제",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "정의식 -> 근호 제곱 -> 정리 -> 치환 -> 표준형",
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "standardCourse": "기하",
+      "curriculum": "2022",
+      "basis": "canonical 타원 TPL은 표준방정식 해석과 축·초점 관계 활용뿐이며 정의에서 방정식을 유도하는 과정의 빈칸 채우기 골격이 없다. Q11에서 사용.",
+      "firstUsed": {
+        "stem": "26_제일고_1학기_중간_고2_기하_유사",
+        "qid": 11
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true,
+  "reusedGeneratedKeys": [
+    {
+      "key": "EXT-L4-GEO-PLANE-DETERMINATION-CONDITION",
+      "sourceRegistry": "archive/data/meta-foundation/extensions/similar-high/26_매산고_1학기_중간_고2_기하_유사.registry.json",
+      "reason": "야간 회차 통합: 같은 의미(평면이 하나로 결정되는 조건 판별, parent H2-GEO-RPM-053)의 미커밋 키 중복을 하나로 합침"
+    }
+  ]
+}
