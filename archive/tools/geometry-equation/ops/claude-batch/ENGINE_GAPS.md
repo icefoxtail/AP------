@@ -31,3 +31,6 @@
 - 23 금당 고1 Q20: multi-curve WORKER_TIMEOUT, 축소 범위 재시도도 실패.
 - 20 순천여 고1 Q18: 대응도 원소에 '−i'를 못 씀(MAPPING_ELEMENT_TEXT_UNSUPPORTED) → '음'으로 나와 게시 제외.
 - 24 효천 고1 Q14: PIECEWISE_DISCONTINUITY_UNDECLARED(u=1/(x-2) 구간 불연속 선언 불가)로 구현 1회 UNSUPPORTED. 루나 검수에서 재시도.
+
+## 해결됨
+- (2026-11-09 엔진 확장 a) 축 눈금 라벨의 분수가 빗금 `2/5`로 나오던 것 → `axisTickValues` 분수 문자열이 세로분수로 그려진다. 확률밀도 그래프 납작함 → 기존 `axisScale`(piecewise-polynomial·multi-curve)로 세로 확대, 값은 눈금 라벨로 표시(골든 `item130ext1probdensity`). 가이드 "확률밀도·통계 그래프 세로 확대와 분수 눈금" 단락 참고.

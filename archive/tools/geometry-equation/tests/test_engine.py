@@ -43,6 +43,15 @@ class EngineTests(unittest.TestCase):
             tick_id=label_node.get('data-tick-owner');tick=next(node for node in ticks if node.get('id')==tick_id)
             self.assertEqual(tick.get('data-required-label-id'),label_node.get('id'))
             self.assertEqual(label_node.get('data-owner'),tick_id)
+    def test_fraction_axis_ticks_are_stacked_fractions(self):
+        # EXT-20261109-a: a tick written as a fraction string keeps its plain parity text (2/5) but is typeset as a stacked fraction, never the slash form
+        from visual_engine.engine import prepare
+        s=spec();s['id']='fraction-tick-stacked';s['displayFacts']={'axisTickValues':{'x':['1','-1/3'],'y':['2/5','2']}}
+        labels={label['text']:label for label in prepare(s)[1] if label['kind']=='TICK_LABEL'}
+        self.assertEqual(labels['2/5']['tex'],'{\\displaystyle\\frac{2}{5}}')
+        self.assertEqual(labels['−1/3']['tex'],'-{\\displaystyle\\frac{1}{3}}')
+        self.assertEqual(labels['2/5']['tickDisplayValue'],'2/5')
+        self.assertNotIn('tex',labels['2']);self.assertNotIn('tex',labels['1'])
     def test_fact_binding(self):
         fact={'independentFactHash':'frozen','visualSpec':spec()}
         self.assertEqual(build_independent({},fact)['witness']['classification'],'STANDARD')
