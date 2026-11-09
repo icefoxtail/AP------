@@ -9,6 +9,10 @@
 
 ## 0. 지금 바로 할 일 (2026-11-09 오전 기준)
 
+> **2026-11-09 사용자 결정(이 줄 아래가 이전 판 내용보다 우선):** ① 작업 단위는 **시험지 하나 전체**(루나 구현 1회에 시험지 하나를 넣고 모든 문항을 판정·처리, 문항 몇 개만 고르지 않는다). ② **구형 SVG(구형 판별은 `ops/claude-batch/prompts/exam-impl.md`)는 예외 없이 신형 엔진으로 재작업**하고, 구형이 보여 주던 **핵심 관계를 먼저 목록으로 적어 신형에 반드시 담는다**(`compare.png`로 확인). ③ dots 입력 초안은 DRAFT_ONLY 여부와 상관없이 **출발점**으로 쓴다(원문과 대조해 틀리면 고침). ④ 엔진이 못 그리는 것은 UNSUPPORTED + 빠진 기능을 적어 **엔진 확장 라인(별도 Sonnet 라인)**에 넘긴다. 범위는 2학기 기말 고1·고2 수학II·확률과통계. 도구: `launch-exam.sh`, `launch-exam-rev.sh`, `make-dec-exam.cjs` 등(README 파일 표).
+
+> **2026-11-09 PC 분담(사용자 결정):** 고등(2학기 기말 고1·고2 수학II·확률과통계, OPEN 포함)과 엔진 확장(별도 Sonnet 라인, 엔진 코드 수정)은 **고등 PC**가, 중학교 기출(`archive/exams/original/middle/m3|m2|m1`, 중2·중3 동시 진행 가능)은 **집 PC(중등 전담)**가 맡는다. 서로 상대 담당 시험지·엔진 코드를 건드리지 않는다. 브랜치는 고등 `svg/batchNN-…`, 중등 `svg-mid/batchNN-…`. 원장 `exam-figure-ledger.json`은 함께 쓰므로 PR 전 `git merge origin/main`, 충돌 시 main을 받고 내 시험지 항목만 다시 반영(`ops/svg-m1/ledger-upsert.py`). 중등 PC의 엔진 공백은 `ops/claude-batch/ENGINE_GAPS_MIDDLE.md`에 적어 PR로 올리면 고등 PC 엔진 라인이 가져간다. 24 효천 고1 Q14의 "기존 그림 유지" 결정은 구형 전부 재작업 결정으로 대체됐다. 셸 명령 문자열에 백틱을 넣을 때는 반드시 작은따옴표 heredoc을 쓴다(큰따옴표 안 백틱이 명령으로 실행돼 `git merge`가 돈 일이 있다).
+
 1. **14묶음 PR #1535 병합 완료**(2026-11-09). 다음 묶음은 origin/main에서 새 브랜치로 시작.
    - 내용: 20 매산여고 고1 Q02·Q04·Q06·Q12(Q05 기존 유지 → 시험지 CLOSED), 22 팔마고 고1 Q14(판정표 신규 `triage-20261107/22-palma.md`, 남은 OPEN Q21).
    - 24 효천고 고1 Q14: 새 그림은 ㄷ만 보여 주고 기존 그림의 ㄱ·ㄴ·ㄹ 정보가 사라져 **기존 그림 유지**(메인 결정, 폴더 x-q14-keep-existing). 원장에는 아직 OPEN — 다음에 이 시험지를 게시할 때 dec에서 KEEP_EXISTING으로 닫는다.
@@ -38,6 +42,8 @@
 ---
 
 ## 2. 묶음 방식
+
+- (2026-11-09 사용자 결정) 묶음의 기본 단위는 **시험지 하나 전체**다. 루나 구현·검수·Sonnet 최종 모두 시험지 단위로 전 문항을 본다(§4의 시험지 단위 흐름).
 
 - 시험지 4~6개(문항이 적으면 더 많이)를 PR 하나로. CI 녹색이면 `gh pr merge <n> --merge` → `git fetch origin main && git checkout -b svg/batchNN-YYYYMMDD origin/main`.
 - **단계를 겹친다:** 루나 동시 4건 정도(구현·검수 합산). 하나 끝날 때마다 다음 것을 띄운다. 루나 검수가 끝난 시험지는 2~4개씩 묶어 Sonnet 최종에 넣는다. 늦는 시험지는 다음 묶음으로.
@@ -88,6 +94,17 @@ dots 입력 fetch → launch-open(구현) → last.txt → launch-rev-open(검�
  → (판정표 없으면 ledger2md 또는 Sonnet 판정표) → make-dec-open → build-pub(BAD none)
  → pubflow → jscheck → runtime → archive/data 되돌림 → 커밋 → PR → CI 녹색 → 병합 → 새 브랜치
 ```
+
+**시험지 단위 흐름(2026-11-09 사용자 결정, 이후 기본):**
+```
+launch-exam.sh <key> <JS>        (루나 high: 전 문항 판정·구현 → runs/<key>/exam-impl[N]/{TABLE.md,SUMMARY.md,qNN/})
+ → launch-exam-rev.sh <key> <JS> (루나 xhigh: 판정 타당성·구형 핵심 관계 보존 검수 → exam-rev[N]/{TABLE.md,REVIEW.md,qNN/})
+ → Sonnet 최종(sonnet-final.md, 결과 폴더를 exam-rev[N]으로 지시)
+ → make-dec-exam.cjs <key> <JS> <REV폴더>   (TABLE.md → dec-<key>-exam.json, 판정표 복사)
+ → build-pub.py <key> <JS> <REV폴더> .tmp/work/dec-<key>-exam.json (BAD none)
+ → pubflow(§3-2) → jscheck → runtime → archive/data 되돌림 → 커밋 → PR → 병합
+```
+시험지 JS는 저장소 상대경로(예: `archive/exams/original/high/h2/2final/20_매산고_2학기_기말_고2_확률과통계.js`). 루나는 동시에 4개쯤 돌려도 렌더는 `render.mjs` 잠금으로 직렬화된다.
 
 Sonnet 최종 지시에 꼭 넣을 것: 결과 폴더 경로(rev-open/rev-open2), 입력 key, JS 경로, "questionUid·ARCHIVE_BOUND 먼저 확인", "caption 끝 정답 형식은 바꾸지 않는다", "기존 solutionImage가 있으면 비교해 낫지 않으면 KEEP_EXISTING 권장", 제외 문항.
 
