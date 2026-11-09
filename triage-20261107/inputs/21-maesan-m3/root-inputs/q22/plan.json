@@ -1,0 +1,371 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "21"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "21"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ae",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cf",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ae",
+          "cf"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "D90",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E90",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F90",
+        "refs": [
+          "C",
+          "F",
+          "A"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "BH가 지름이고 AE⊥BC, CF⊥AB이므로 AGCH는 평행사변형이다. O,D는 삼각형 BHC의 두 변의 중점이어서 HC=2OD=4cm이고 AG=4cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O는 외심, OD⊥BC, OD=2cm, AE⊥BC, CF⊥AB이고 G=AE∩CF이다. BH는 지름이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형의 평행한 두 쌍과 중점연결선 OD를 구별하고 점·라벨에 지시선을 둔다."
+  ]
+}

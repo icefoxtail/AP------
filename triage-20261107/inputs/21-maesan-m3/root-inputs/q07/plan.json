@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "115"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "245"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tanA",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "radA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tanB",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "radB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tanA",
+          "tanB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "TA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "TB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "T50",
+        "refs": [
+          "A",
+          "T",
+          "B"
+        ],
+        "value": 50,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O130",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 130,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C65",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 65,
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "두 접선의 각이 50°이므로 중심각 AOB=130°이고, 같은 호를 보는 원주각 x=65°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "TA,TB는 접선, ∠ATB=50°, ∠ACB=x이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선과 원주각, 중심각 관계를 구별하고 점·각 표기에 여유를 둔다."
+  ]
+}
