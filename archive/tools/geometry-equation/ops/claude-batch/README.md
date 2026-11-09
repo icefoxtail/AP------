@@ -52,5 +52,10 @@
 | `qrun.sh` | 대기열 시험지마다 launch-exam→launch-exam-rev를 이어 돌린다. 슬롯 수는 `.tmp/work/qrun.slots` |
 | `mkqueue-h1.cjs` | 고1 1mid·1final·2mid 시험지를 최신 연도 내림차순 대기열로 만든다 |
 | `prompts/sonnet-exam-brief.md` | 시험지 단위 Sonnet 최종 보충 지시 |
+| `ds-launch-exam.sh` | DeepSeek 초안 실행(루나 사용량 한도로 2026-11-10 전환): `ds-launch-exam.sh <tablekey> <시험지 JS>`. 시험지 전체 플랜 초안을 만든다 |
+| `qrun-ds.sh` | 대기열(`queue-ds.tsv`)의 시험지마다 DeepSeek 초안 → Sonnet A 구현·검수를 이어 돌린다. 슬롯 수는 `qrun-ds.slots` |
+| `ds-svgtext.cjs` | DeepSeek 초안의 SVG 텍스트(글자·수식) 점검 보조 |
+| `prompts/ds-exam-draft.md` | DeepSeek 시험지 초안 지시서 |
+| `prompts/sonnet-exam-impl.md` | Sonnet A 구현·검수 지시서(DeepSeek 초안 → Sonnet A 구현·검수 → Sonnet B 최종) |
 | `prompts/publish-brief.md` | 게시 절차 실행자(Sonnet) 지시서(build-pub→pubflow→골든 재고정→jscheck→runtime→PR) |
 | `ENGINE_GAPS.md` | 엔진이 못 그려 OPEN으로 남긴 문항과 사유(엔진 업그레이드 때 사용) |

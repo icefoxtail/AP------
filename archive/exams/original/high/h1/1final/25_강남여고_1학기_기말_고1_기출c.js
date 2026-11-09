@@ -138,7 +138,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 부등식의 해와 열린 끝점을 갖는 공통 구간을 같은 눈금에 나타낸 수직선이다.",
+    "solutionImageCaption": "각 부등식을 풀면 x<2와 x>−1이다. 공통 범위의 양 끝 차이를 계산하면 된다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -176,9 +180,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q5-solution.svg",
-    "solutionImageAlt": "꼭짓점 (1, 9)에서 최솟값 9",
-    "solutionImageCaption": "꼭짓점 (1, 9)에서 최솟값 9",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 대칭축 x=1, 가장 낮은 점이 표시되어 있다.",
+    "solutionImageCaption": "완전제곱식으로 고치면 대칭축이 x=1임을 알 수 있다. 이때 제곱인 부분이 0이 되어 함수가 가장 낮은 값을 갖는다. 정답은 9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -215,7 +219,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 부등식의 공통 구간 안에 들어가는 정수점이 표시된 수직선이다.",
+    "solutionImageCaption": "절댓값 부등식을 두 일차부등식으로 바꾸면 x는 3분의 4보다 크고 6보다 작다. 이 열린 구간 안의 정수점을 센다. 정답은 4개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -285,7 +293,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수의 그래프와 두 근 사이의 열린 구간, 그 안의 정수점이 표시되어 있다.",
+    "solutionImageCaption": "f(x+1)을 정리하면 x²−2x−24이고 두 근은 −4와 6이다. 그래프가 x축 아래에 있는 구간의 정수들을 더한다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -323,10 +335,10 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q9-solution.svg",
-    "solutionImageAlt": "꼭짓점의 x좌표가 -2이고 점 (1,0)을 지나므로 대칭축 x=-2에 대해 두 근은 x=-5, x=1이고 |α-β|=6이다(그림은 최고차항 계수가 1/4인 한 예).",
-    "solutionImageCaption": "꼭짓점의 x좌표가 -2이고 점 (1,0)을 지나므로 대칭축 x=-2에 대해 두 근은 x=-5, x=1이고 |α-β|=6이다(그림은 최고차항 계수가 1/4인 한 예).",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 두 x절편과 그 사이에 놓인 대칭축 x=−2가 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=ax²+bx+c에서 a가 4분의 1인 그래프이다. 두 근의 평균이 대칭축의 x좌표이므로, 한 근 1과 대칭인 다른 근은 −5이다. 두 근의 차의 절댓값을 구하면 정답은 6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -363,7 +375,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
     "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 양수인 중근과 음수인 중근에 해당하는 두 포물선이 각각 t축에 한 점에서 접한다.",
+    "solutionImageCaption": "x와 y를 두 근으로 하는 t의 이차방정식을 세우면, 중근일 때 그래프가 t축에 접한다. 판별식 16−a²을 0으로 놓아 매개변수를 구한다. 정답은 a=−4 또는 a=4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -393,7 +409,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 출발점 A에서 이어지는 네 가지 경로를 수형도로 나타내고, B와 C 사이를 지나는 경로를 다른 색으로 구분하였다.",
+    "solutionImageCaption": "수형도의 각 가지는 출발점 A 이후에 지나는 지점의 순서를 나타낸다. B와 C 사이의 도로 수를 x라 하면 경우의 수는 4+12+8x+6x이고, 이를 128과 같게 놓는다. 정답은 8개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -465,9 +485,9 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q13-solution.svg",
-    "solutionImageAlt": "k=-4일 때 구간 -2≤x≤3에서 최댓값 8, 최솟값 -8",
-    "solutionImageCaption": "k=-4일 때 구간 -2≤x≤3에서 최댓값 8, 최솟값 -8",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간의 양 끝점과 꼭짓점에 k를 포함한 좌표가 지시선으로 표시된 포물선이다.",
+    "solutionImageCaption": "예: f(x)=x²−4x+k의 모양은 k=2일 때를 사용하고, 좌표의 함숫값은 k의 식으로 표시하였다. 최댓값 k+12와 최솟값 k−4의 합을 0으로 놓는다. 정답은 −4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -620,7 +640,11 @@ window.questionBank = [
     "originalSourceFileSha256": "12cebc9c2fd97a5761405ab43cb25e080e8b0adc6c22d8b716c0b128ea1f81e5",
     "replacementReason": "원본 PDF·정답표를 확보하지 못했고 Git 원문에는 이차식의 최고차항 계수 조건이 없어 요청한 값이 유일하게 정해지지 않는다. 원문을 추정해 고치지 않고 기존 원문과 같은 문항이라고 주장하지 않는 새 문항으로 대체한다.",
     "replacementStage": "CREATE",
-    "replacementDifferentiation": "원문은 절댓값 부등식의 해와 일반 이차부등식을 비교해 bc/a를 물었지만, 대체 문항은 기준값 7인 절댓값 부등식과 최고차항 계수 1인 이차부등식을 사용해 b−c를 구한다."
+    "replacementDifferentiation": "원문은 절댓값 부등식의 해와 일반 이차부등식을 비교해 bc/a를 물었지만, 대체 문항은 기준값 7인 절댓값 부등식과 최고차항 계수 1인 이차부등식을 사용해 b−c를 구한다.",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 절댓값의 합을 나타내는 꺾인 그래프와 수평선 y=7, 두 교점이 표시되어 있다.",
+    "solutionImageCaption": "절댓값의 합이 7 이하인 부분은 두 교점 사이이므로 해구간은 −3≤x≤4이다. 같은 해구간을 갖는 이차식은 (x+3)(x−4)이므로 계수를 비교한다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -650,7 +674,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 직선의 교점 A, B 및 같은 높이의 점 C, D를 표시하고 두 삼각형을 서로 다른 음영으로 구분하였다.",
+    "solutionImageCaption": "f(x)=x²−4x와 직선의 교점은 A(−1,5), B(3,−3)이고, 수평으로 만나는 점은 C(5,5), D(1,−3)이다. 두 삼각형은 높이가 같아 넓이비가 밑변 BD와 AC의 길이비 2:6과 같다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -688,9 +716,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q19-solution.svg",
-    "solutionImageAlt": "a=-12이면 x<3과 x>(a+2)/3=-10/3의 공통 범위에 정수 -3, -2, -1, 0, 1, 2가 들어가 합이 -3이다.",
-    "solutionImageCaption": "a=-12이면 x<3과 x>(a+2)/3=-10/3의 공통 범위에 정수 -3, -2, -1, 0, 1, 2가 들어가 합이 -3이다.",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 매개변수의 한 예에서 두 부등식의 공통 구간과 그 안의 연속된 정수점이 표시되어 있다.",
+    "solutionImageCaption": "예: a=−12일 때 두 부등식의 공통 범위를 나타냈다. 정수해가 −3부터 2까지가 되려면 왼쪽 경계가 −4 이상 −3 미만이어야 하므로 정수 a는 −14, −13, −12이다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -731,7 +759,11 @@ window.questionBank = [
     "originalSourceFileSha256": "12cebc9c2fd97a5761405ab43cb25e080e8b0adc6c22d8b716c0b128ea1f81e5",
     "replacementReason": "원본 PDF·정답표를 확보하지 못했고 Git 원문은 p,q만 서로소 자연수라고 하여 m,n을 약분된 분수로 정할 수 없다. 원문 조건을 추정 보완하지 않고 원래 문항과 같은 문항이라고 주장하지 않는 새 문항으로 대체한다.",
     "replacementStage": "CREATE",
-    "replacementDifferentiation": "원문은 최대 길이를 n/m, q/p로 나타내어 m+n+p+q를 물었지만, 대체 문항은 기존 그래프에서 최대가 되는 t와 최대 길이 자체를 구해 t0+M을 묻는다."
+    "replacementDifferentiation": "원문은 최대 길이를 n/m, q/p로 나타내어 m+n+p+q를 물었지만, 대체 문항은 기존 그래프에서 최대가 되는 t와 최대 길이 자체를 구해 t0+M을 묻는다.",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 다른 색의 포물선과 직선 y=x, 두 교점 O와 A 및 세로 선분 PQ가 표시되어 있다.",
+    "solutionImageCaption": "예: 0<t<3인 한 위치에서 x=t를 그어 세로 길이 PQ를 나타냈다. PQ=−t²+3t를 완전제곱식으로 고쳐 최대가 되는 t와 그때의 길이를 더한다. 정답은 4분의 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -793,7 +825,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 조각으로 나뉜 첫 부등식의 해와 닫힌 구간인 둘째 부등식의 해를 겹쳐 공통 범위를 나타낸 수직선이다.",
+    "solutionImageCaption": "예: a=2일 때 첫째 부등식과 둘째 부등식의 해집합을 비교하였다. 공통 범위가 4<x≤6이 되려면 둘째 구간의 왼쪽 끝 a−1이 −3 이상 4 이하여야 하므로 −2≤a≤5이다. 정답은 8개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
