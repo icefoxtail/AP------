@@ -46,8 +46,8 @@ icon: 'fa-grip-lines',
 stepLabels: ['직선의 기울기 = 공차 d', '항이 0이 되는 곳을 중심으로 한 대칭', '등차중항과 평균'],
 stepDescs: [
 '1단계: 등차수열 $a_n = dn + (a_1 - d)$를 기울기가 공차 $d = \\frac{a_q - a_p}{q - p}$인 일차함수의 그래프 위에 찍힌, $n$이 자연수인 점들로 나타냅니다.',
-'2단계: 직선이 $x$축과 만나는 점($a_m = 0$)을 중심으로 대칭인 두 항은 부호가 반대여서 $a_{m-k} + a_{m+k} = 0$이 됩니다.',
-'3단계: 첫째항부터 제$n$항까지의 합 $\\sum_{k=1}^{n} a_k$는 $(\\text{가운데 항 } a_{\\frac{n+1}{2}}) \\times (\\text{항의 개수 } n)$으로 구할 수 있습니다. 그림 위에 $\\sum_{k=1}^{n} a_k = (\\text{가운데 항}) \\times (\\text{항의 개수})$를 나타냅니다.'
+'2단계: 직선의 영점 $x=m$을 중심으로 대칭인 자연수 번호 $p,q$에 대해 $p+q=2m$이면 $a_p+a_q=0$입니다. $m$이 정수일 때만 $a_m=0$이라는 항이 있으며, $d=0$이면 모든 항이 0입니다.',
+'3단계: $S_n=n\\dfrac{a_1+a_n}{2}$입니다. $n$이 홀수이면 가운데 항의 $n$배이고, 짝수이면 가운데 두 항의 평균의 $n$배입니다. 반정수 번호를 수열의 항으로 쓰지 않습니다.'
 ],
 trapWarning: '주의: 번호의 합이 같더라도 $a_p + a_q = a_r$처럼 양변의 항의 개수가 다르면 성립하지 않습니다. 양변의 항의 개수가 같을 때 $p+q=r+s$이면 $a_p + a_q = a_r + a_s$입니다.',
 scenarios: [
@@ -177,11 +177,11 @@ chip: '문제 B (|Sₙ|의 W자 그래프와 같은 높이)',
 source: '평가원 모의평가 4점 킬러 모델',
 params: { zeroSumN: 8, scaleK: -1, targetN: 9 },
 snapParams: { zeroSumN: 8, scaleK: -1, targetN: 9 },
-problem: '등차수열의 합 $S_n = -n(n - 8)$에 대하여, $|S_3| = |S_5| = 15$이다. $n > 8$에서 $|S_r| = 9$를 만족시키는 자연수 $r$의 값을 구하시오.',
+problem: '등차수열의 합 $S_n = -n(n - 8)$에 대하여, $|S_3| = |S_5| = 15$이다. $r > 8$에서 $|S_r| = 9$를 만족시키는 자연수 $r$의 값을 구하시오.',
 textbookTitle: '절댓값 기호를 풀어 경우를 나누어 이차방정식 풀기',
 textbookSteps: [
 '1) $n=3, 5$는 대칭축 $4$에 대칭이므로 $S_3 = S_5 = 15$이다.',
-'2) $n>8$에서는 $S_r<0$이므로 $|S_r|=-S_r=r(r-8)$. 조건에 따라 $r(r-8)=9$이다.',
+'2) $r>8$에서는 $S_r<0$이므로 $|S_r|=-S_r=r(r-8)$. 조건에 따라 $r(r-8)=9$이다.',
 '3) $r^2-8r-9=(r-9)(r+1)=0$이고 $r>8$이므로 $r=9$이다. 확인하면 $S_9=-9$이다.'
 ],
 secretTitle: '대칭인 두 값 15와 오른쪽 부분의 값 9를 따로 구하기',
@@ -223,11 +223,11 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (첫째항부터 등차수열이 될 조건 C = 0)',
+chip: '문제 B (첫째항부터 등차수열이 될 조건)',
 source: '수열의 합과 일반항',
 params: { pCoeff: 1, qCoeff: 2, constC: 0 },
 snapParams: { pCoeff: 1, qCoeff: 2, constC: 0 },
-problem: '수열의 합 $S_n = n^2 + 2n + C$가 **첫째항부터** 등차수열을 이루도록 하는 상수 $C$의 값과 이때의 일반항 $a_n$을 구하시오.',
+problem: '수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합이 $S_n = n^2 + 2n + C$이다. 수열 $\\{a_n\\}$이 **첫째항부터** 등차수열을 이루도록 하는 상수 $C$의 값과 이때의 일반항 $a_n$을 구하시오.',
 textbookTitle: 'S₁과 일반항의 식에 n=1을 대입한 값 비교하기',
 textbookSteps: [
 '1) $n \\ge 2$일 때 $a_n = 2n + 1$이고, 여기에 $n=1$을 대입한 값은 $3$이다.',
@@ -405,7 +405,7 @@ chip: '문제 A (거꾸로 추적하여 a₁ 구하기)',
 source: '수능·평가원 15번 최고난도 킬러 모델',
 params: { targetA4: 4, threshK: 6 },
 snapParams: { targetA4: 4, threshK: 6 },
-problem: '모든 항이 자연수인 수열 $\\{a_n\\}$이 $a_{n+1} = \\begin{cases} 2a_n & (a_n \\lt 6) \\\\ a_n - 6 & (a_n \\ge 6) \\end{cases}$을 만족시킨다. $a_4 = 4$가 되도록 하는 **모든 첫째항 $a_1$의 값의 합**을 그림의 나뭇가지(거꾸로 추적)로 구하시오.',
+problem: '첫 네 항 $a_1,a_2,a_3,a_4$가 자연수인 수열 $\\{a_n\\}$이 $n=1,2,3$에 대하여 $a_{n+1} = \\begin{cases} 2a_n & (a_n \\lt 6) \\\\ a_n - 6 & (a_n \\ge 6) \\end{cases}$을 만족시킨다. $a_4 = 4$가 되도록 하는 **모든 첫째항 $a_1$의 값의 합**을 그림의 나뭇가지(거꾸로 추적)로 구하시오.',
 textbookTitle: 'a₁을 미지수로 놓고 앞에서부터 경우를 나누어 풀기',
 textbookSteps: [
 '1) 앞에서부터 $a_1 \\lt 6$일 때와 $a_1 \\ge 6$일 때를 나누고, 다시 $a_2, a_3$의 범위를 나누면 총 $2^3 = 8$가지 경우의 부등식을 풀어야 한다.',
@@ -452,7 +452,7 @@ secretSteps: [
     'aₙ₊₁ 이 두 가지 규칙으로 정해질 때, a₄에서 거꾸로 거슬러 가면 가능한 첫째항 a₁은 무엇일까?'
   ];
   const GUIDE = [
-    '금색 점을 좌우로 끌어 항이 0이 되는 번호 m을 바꿔 보세요. 그 번호를 중심으로 양쪽 항의 합이 서로 소거됩니다.',
+    '금색 점을 좌우로 끌어 직선의 영점 m을 바꿔 보세요. m이 반정수이면 그 번호의 항은 없지만, 양쪽의 자연수 번호 항들은 대칭으로 소거됩니다. d=0이면 모든 항이 0입니다.',
     '금색 점 S_q를 좌우로 끌어 q를 바꿔 보세요. 대칭축은 $\\frac{p+q}{2}$ 이고 S_(p+q) = 0 입니다.',
     '금색 점을 끌어 합산 상한 n을 바꿔 보세요. 꼭짓점에서 접어 올린 금색 곡선이 Σ|a_k| 입니다.',
     '금색 점 a₁을 위아래로 끌어 상수항 C를 바꿔 보세요. 첫째항만 직선에서 벗어납니다.',
@@ -482,11 +482,11 @@ secretSteps: [
     let defs = [];
     SLIDERS.type1 = [
 { key: 'dSlope', label: '등차수열 공차 d (직선 기울기)', min: -3, max: 3, step: 0.5 },
-{ key: 'zeroN', label: '항이 0이 되는 번호 m (a_m = 0)', min: 2.5, max: 7.5, step: 0.5 }
+{ key: 'zeroN', label: '직선의 영점 m (정수일 때 aₘ = 0)', min: 2.5, max: 7.5, step: 0.5 }
 ];
     SLIDERS.type2 = [
-{ key: 'pIdx', label: '첫 번째 번호 p (S_p)', min: 1, max: 5, step: 1 },
-{ key: 'qIdx', label: '두 번째 번호 q (S_q)', min: 5, max: 11, step: 1 }
+{ key: 'pIdx', label: '첫 번째 번호 p (p < q)', min: 1, max: 5, step: 1 },
+{ key: 'qIdx', label: '두 번째 번호 q (p < q)', min: 5, max: 11, step: 1 }
 ];
     SLIDERS.type3 = [
 { key: 'zeroSumN', label: 'S_N = 0이 되는 번호 N', min: 6, max: 10, step: 2 },
@@ -581,9 +581,9 @@ eq = (
 );
 cards = [
 { title: '기울기 = 공차 d', val: p.dSlope.toFixed(2), sub: '$\\frac{a_q-a_p}{q-p}$로 일정' },
-{ title: '항이 0이 되는 번호', val: `${p.zeroN.toFixed(1)}번`, sub: `a_${p.zeroN.toFixed(1)} = 0` },
+{ title: '직선의 영점 m', val: p.dSlope === 0 ? '모든 실수' : `${p.zeroN}`, sub: p.dSlope === 0 ? '모든 항이 0인 상수수열' : Number.isInteger(p.zeroN) ? `a_${p.zeroN} = 0` : '반정수 번호의 항은 없음 · 양옆 자연수 항의 중점' },
 { title: `대칭 구간 합 S_${symEnd}`, val: '0.000', sub: '양쪽 항이 서로 소거되어 0' },
-{ title: '제10항 a₁₀ 값', val: (p.dSlope * (10 - p.zeroN)).toFixed(2), sub: 'a_m = 0에서 (10 − m)·d만큼 증가' }
+{ title: '제10항 a₁₀ 값', val: (p.dSlope * (10 - p.zeroN)).toFixed(2), sub: '직선의 식 aₙ = d(n − m)에 n=10 대입' }
 ];
 } else if (mId === 'type2') {
 const symAxis = (p.pIdx + p.qIdx) / 2;
@@ -591,13 +591,13 @@ const zeroIdx = p.pIdx + p.qIdx;
 const sp = p.pIdx * (zeroIdx - p.pIdx);
 const maxVal = symAxis * symAxis;
 eq = (
-`$S_{${p.pIdx}} = S_{${p.qIdx}} = ${sp} \\implies S(n) = -n(n - ${zeroIdx}), \\quad \\text{대칭축 } x = ${symAxis.toFixed(1)}$`
+`$S_n=-n(n-${zeroIdx})\\text{인 대표 모델}:\\quad S_{${p.pIdx}}=S_{${p.qIdx}}=${sp}, \\quad \\text{대칭축 } x = ${symAxis.toFixed(1)}$`
 );
 cards = [
 { title: '포물선 대칭축 $\\frac{p+q}{2}$', val: `${symAxis.toFixed(1)}`, sub: Number.isInteger(symAxis) ? `n=${symAxis} 단독 최대` : `n=${Math.floor(symAxis)}, ${Math.ceil(symAxis)} 동시 최대` },
-{ title: `x절편 S_${zeroIdx}`, val: '0.000', sub: '항상 S_(p+q) = 0' },
+{ title: `영점 S_${zeroIdx}`, val: '0.000', sub: '항상 S_(p+q) = 0' },
 { title: '원점을 지나는 점 S₀', val: '0.000', sub: '상수항이 0인 이차함수' },
-{ title: '꼭짓점 최댓값', val: maxVal.toFixed(2), sub: `S(${symAxis.toFixed(1)})의 값` }
+{ title: '자연수 n에서 Sₙ의 최댓값', val: String(Math.floor(maxVal)), sub: Number.isInteger(symAxis) ? `n=${symAxis}` : `실수 꼭짓점 높이 ${maxVal}과 구별` }
 ];
 } else if (mId === 'type3') {
 const N = p.zeroSumN;
@@ -784,7 +784,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       drawMathSegment: (x1, y1, x2, y2, col = '#fbbf24', dash = [], w = 2.2) => b.seg([x1, y1], [x2, y2], { color: col, width: w, dash: dash.length ? dash : null }),
       drawFunctionCurve: (fn, col = '#34d399', w = 2.4, dash = [], x0 = null, x1 = null) => {
         if (!s.cont && dash.length === 0) { dash = [4, 4]; w = 1.5; } // 원본: '연속 실수함수 실선'을 끄면 점선
-        b.plot((x) => { let y = fn(x); if (s.abs && !isNaN(y)) y = Math.abs(y); return Number.isFinite(y) && Math.abs(y) <= 90 ? y : NaN; }, { color: col, width: w, dash: dash.length ? dash : null, from: x0, to: x1 });
+        b.plot((x) => { let y = fn(x); if (s.abs && !isNaN(y)) y = Math.abs(y); return Number.isFinite(y) ? y : NaN; }, { color: col, width: w, dash: dash.length ? dash : null, from: x0, to: x1 });
       },
       drawMathPoint: (x, y, lbl = '', col = '#fbbf24', rad = 6, drag = false, onDrag = null) => {
         if (drag && !noDrag) b.handle('h' + (hid++), [x, y], { color: col, r: rad, label: lbl, drag: onDrag });
@@ -828,7 +828,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const tab = lab ? lab.tab : 'explore';
     // 문제·정리 탭은 「새 문제」로 바뀐 변형의 숫자(Q)로 그립니다. 탐구 탭은 조절 막대(sReal) 그대로입니다.
     const Q = tab === 'explore' ? null : OVARY[mo.id + '-' + si].cur();
-    const s = Q ? { step: sReal.step, grid: sReal.grid, cont: false, abs: false, stems: false } : sReal;
+    const s = Q ? { step: sReal.step, grid: sReal.grid, cont: false, abs: false, stems: false } : mi <= 1 ? sReal : { ...sReal, abs: false };
     const p = Q ? Q.p : pv(sReal, mo);
     const sink = { lines: [], tape: null };
     const { drawMathSegment, drawFunctionCurve, drawMathPoint, badge } = shim(b, s, sink, !!Q);
@@ -836,14 +836,14 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const id = mo.id;
     if (!DESIGN.has(mi)) {
       if (Q) { b.focus = focusFor(mi, Q, tab); ovLastKind = 'other'; }
-      else { if (ovLastKind === 'other') b.focus = FOCUS[mi]; ovLastKind = 'explore'; }
+      else { b.focus = focusFor(mi, { p, g: {} }, 'explore'); ovLastKind = 'explore'; }
       if (s.grid) b.grid();
-      b.axes();
+      b.axes(mi < 4 ? { xLabel: 'n', yLabel: mi === 0 ? (s.abs ? '|aₙ|' : 'aₙ') : mi === 1 ? (s.abs ? '|Sₙ|' : 'Sₙ') : mi === 3 ? 'aₙ' : 'Sₙ' } : {});
     }
     if (tab === 'problem') { drawGiven(mo, b, Q); return; }
 
     if (id === 'type1') {
-      const scaleY = 0.5;
+      const scaleY = 1;
       const fn = (x) => scaleY * p.dSlope * (x - p.zeroN);
       if (st(1)) drawFunctionCurve(fn, 'rgba(52, 211, 153, 0.55)', 2.2, [], 0, 11);
       for (let n = 1; n <= 10; n++) {
@@ -852,16 +852,16 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const yPlot = scaleY * an;
         const col = an > 0.01 ? '#34d399' : (an < -0.01 ? '#fb7185' : '#fbbf24');
         if (s.stems) drawMathSegment(n, 0, n, yPlot, col, [], 2.5);
-        drawMathPoint(n, yPlot, `a_${n}=${an.toFixed(0)}`, col, 5.5);
+        drawMathPoint(n, yPlot, st(3) ? `${s.abs ? '|a_' + n + '|' : 'a_' + n}=${fmt(an)}` : s.abs ? `|a_${n}|` : `a_${n}`, col, 5.5);
       }
       if (st(2)) {
-        drawMathSegment(p.zeroN, -5, p.zeroN, 5, '#fbbf24', [5, 4], 1.8);
-        badge(`항이 0이 되는 번호 m = ${p.zeroN.toFixed(1)} (양옆 항은 부호가 반대여서 소거)`, '#fbbf24');
+        drawMathSegment(p.zeroN, b.focus.y[0], p.zeroN, b.focus.y[1], '#fbbf24', [5, 4], 1.8);
+        badge(p.dSlope === 0 ? `d=0: 모든 항이 0` : `직선의 영점 m = ${p.zeroN} (자연수 번호의 대칭 항끼리 소거)`, '#fbbf24');
       }
       if (st(3)) sink.tape = `직선 기울기 = 공차 d = $\\dfrac{a_q - a_p}{q - p}$ = ${p.dSlope.toFixed(1)}`;
-      drawMathPoint(p.zeroN, 0, Q ? '' : `m=${p.zeroN.toFixed(1)} (a_m=0)`, '#fbbf24', 8, true, (w) => { p.zeroN = clamp(Math.round(w.x * 2) / 2, 2.5, 7.5); });
+      drawMathPoint(p.zeroN, 0, Q ? '' : p.dSlope === 0 ? '모든 항이 0' : Number.isInteger(p.zeroN) ? `m=${p.zeroN} (a_${p.zeroN}=0)` : `m=${p.zeroN} (두 항 사이)`, '#fbbf24', 8, true, (w) => { p.zeroN = clamp(Math.round(w.x * 2) / 2, 2.5, 7.5); });
     } else if (id === 'type2') {
-      const zeroIdx = p.pIdx + p.qIdx, symAxis = zeroIdx / 2, scaleY = 0.28;
+      const zeroIdx = p.pIdx + p.qIdx, symAxis = zeroIdx / 2, scaleY = 1;
       const fnS = (x) => scaleY * (-x * (x - zeroIdx));
       drawFunctionCurve(fnS, '#34d399', 2.8, [], -0.8, zeroIdx + 1.5);
       drawMathPoint(0, 0, '원점 S₀=0', '#38bdf8', 7);
@@ -882,43 +882,48 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       if (st(3)) badge(`x절편: S_(${p.pIdx}+${p.qIdx}) = S_${zeroIdx} = 0`, '#fb7185');
       drawMathPoint(p.qIdx, yLine, Q ? '' : `S_${p.qIdx}`, '#fbbf24', 8, true, (w) => { p.qIdx = clamp(Math.round(w.x), Math.max(5, p.pIdx + 1), 11); });
     } else if (id === 'type3') {
-      const N = p.zeroSumN, m = N / 2, sMax = m * m, scaleY = 0.22;
-      const fnOrigS = (x) => scaleY * (-x * (x - N));
-      const fnAbsS = (x) => scaleY * Math.abs(-x * (x - N));
-      const fnSumAbsA = (x) => { const sn = -x * (x - N); return scaleY * (x <= m ? sn : 2 * sMax - sn); };
-      if (st(1)) drawFunctionCurve(fnOrigS, 'rgba(52, 211, 153, 0.35)', 1.8, [5, 5], 0, 12.5);
+      const N = p.zeroSumN, m = N / 2, sMax = m * m;
+      const absProblem = !!Q && si === 1;
+      const fnOrigS = (x) => -x * (x - N);
+      const fnAbsS = (x) => Math.abs(fnOrigS(x));
+      const fnSumAbsA = (x) => x <= m ? fnOrigS(x) : 2 * sMax - fnOrigS(x);
+      drawFunctionCurve(fnOrigS, 'rgba(52, 211, 153, 0.55)', 1.8, [5, 5], 0, 12.5);
       if (st(2)) {
         drawFunctionCurve(fnAbsS, '#38bdf8', 2.6, [], 0, 12.5);
-        badge(`|S_n| : x축(n=${N})에서 꺾임`, '#38bdf8');
+        badge(`|S_n| : n=${N}에서 x축 아래 부분을 위로 접음`, '#38bdf8');
       }
-      drawFunctionCurve(fnSumAbsA, '#fbbf24', 2.8, [], 0, 12.5);
-      drawMathSegment(0, scaleY * sMax, 12, scaleY * sMax, 'rgba(251, 191, 36, 0.45)', [4, 4], 1.5);
-      const n = Math.round(p.targetN), sn = -n * (n - N), sumAbsVal = n <= m ? sn : 2 * sMax - sn;
-      if (st(3)) badge(`∑|a_k| = 2·S_${m}(${sMax}) − S_${n}(${sn}) = ${sumAbsVal}`, '#fbbf24');
-      drawMathPoint(m, scaleY * sMax, `꼭짓점 S_${m}=${sMax}`, '#34d399', 6.5);
-      if (Q && si === 1) drawMathPoint(n, scaleY * Math.abs(sn), `|S_${n}|=${Math.abs(sn)}`, '#38bdf8', 8); // 문제 B: 묻는 것은 |S_r| (W자 오른쪽 부분)
-      else drawMathPoint(n, scaleY * sumAbsVal, `n=${n} (∑|a_k|=${sumAbsVal})`, '#fbbf24', 8, true, (w) => { p.targetN = clamp(Math.round(w.x), 5, 12); });
+      if (!absProblem && st(3)) drawFunctionCurve(fnSumAbsA, '#fbbf24', 2.8, [], 0, 12.5);
+      if (st(1)) drawMathPoint(m, sMax, `꼭짓점 S_${m}=${sMax}`, '#34d399', 6.5);
+      const n = Math.round(p.targetN), sn = fnOrigS(n), sumAbsVal = fnSumAbsA(n);
+      if (absProblem) {
+        if (st(1)) for (const a of [Q.g.a, Q.g.b]) drawMathPoint(a, fnOrigS(a), `S_${a}=${Q.g.c}`, '#34d399', 6);
+        if (st(2)) { drawMathSegment(0, Q.g.L, 12.5, Q.g.L, '#38bdf8', [5, 4], 1.5); badge(`|S_r|=${Q.g.L}, 조건 r>${N}`, '#38bdf8'); }
+        if (st(3)) { drawMathPoint(n, Math.abs(sn), `r=${n}, |S_${n}|=${Math.abs(sn)}`, '#38bdf8', 8); badge(`r(r−${N})=${Q.g.L}에서 r=${n}`, '#38bdf8'); }
+      } else {
+        if (st(3)) badge(`∑|a_k| = 2·S_${m}(${sMax}) − S_${n}(${sn}) = ${sumAbsVal}`, '#fbbf24');
+        drawMathPoint(n, st(3) ? sumAbsVal : sn, st(3) ? `n=${n} (∑|a_k|=${sumAbsVal})` : `n=${n}`, '#fbbf24', 8, true, (w) => { p.targetN = clamp(Math.round(w.x), 5, 12); });
+      }
     } else if (id === 'type4') {
-      const scaleY = 0.45;
+      const scaleY = 1;
       const fnLine = (x) => scaleY * (2 * p.pCoeff * x + (p.qCoeff - p.pCoeff));
       if (st(1)) drawFunctionCurve(fnLine, '#34d399', 2.4, [], 0.5, 8.5);
       for (let n = 2; n <= 7; n++) {
         const an = 2 * p.pCoeff * n + (p.qCoeff - p.pCoeff);
         if (s.stems) drawMathSegment(n, 0, n, scaleY * an, 'rgba(52, 211, 153, 0.4)', [], 2);
-        drawMathPoint(n, scaleY * an, `a_${n}=${an.toFixed(0)}`, '#34d399', 5.5);
+        drawMathPoint(n, scaleY * an, st(2) ? `a_${n}=${fmt(an)}` : `a_${n}`, '#34d399', 5.5);
       }
       const a1Formula = p.pCoeff + p.qCoeff, a1Actual = a1Formula + p.constC;
       if (Q) { // 문제·정리 탭: 두 점의 이름이 서로 겹치지 않게 위·아래로 나눠 둡니다
         const up = p.constC >= 0;
-        b.point([1, scaleY * a1Formula], { r: 5, color: 'muted', label: `공식값(${a1Formula.toFixed(0)})`, dx: 0, dy: up ? 18 : -16, align: 'center', size: 12.5 });
-      } else drawMathPoint(1, scaleY * a1Formula, `공식값(${a1Formula.toFixed(0)})`, 'rgba(148, 163, 184, 0.7)', 5);
+        b.point([1, scaleY * a1Formula], { r: 5, color: 'muted', label: `공식값(${fmt(a1Formula)})`, dx: 0, dy: up ? 18 : -16, align: 'center', size: 12.5 });
+      } else drawMathPoint(1, scaleY * a1Formula, `공식값(${fmt(a1Formula)})`, 'rgba(148, 163, 184, 0.7)', 5);
       if (st(2) && Math.abs(p.constC) > 0.01) {
         drawMathSegment(1, scaleY * a1Formula, 1, scaleY * a1Actual, '#fb7185', [4, 3], 3.0);
         badge(`상수항 C=${p.constC}만큼 첫째항 a₁만 직선에서 벗어남`, '#fb7185');
       }
       if (st(3)) badge(`a_n = ${2 * p.pCoeff}n + (${p.qCoeff - p.pCoeff}) (n≥2) | a₁ = ${a1Formula} + C(${p.constC}) = ${a1Actual}`, '#fbbf24');
-      if (Q) b.point([1, scaleY * a1Actual], { r: 7, color: 'amber', label: `a₁=S₁=${a1Actual.toFixed(0)}`, dx: 0, dy: p.constC >= 0 ? -16 : 18, align: 'center', size: 12.5 });
-      else drawMathPoint(1, scaleY * a1Actual, `실제 a₁=S₁=${a1Actual.toFixed(0)}`, '#fbbf24', 8, true, (w) => {
+      if (Q) b.point([1, scaleY * a1Actual], { r: 7, color: 'amber', label: `a₁=S₁=${fmt(a1Actual)}`, dx: 0, dy: p.constC >= 0 ? -16 : 18, align: 'center', size: 12.5 });
+      else drawMathPoint(1, scaleY * a1Actual, `실제 a₁=S₁=${fmt(a1Actual)}`, '#fbbf24', 8, true, (w) => {
         const rawA1 = w.y / scaleY;
         p.constC = clamp(Math.round(rawA1 - a1Formula), -3, 5);
       });
@@ -954,16 +959,17 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     } else if (id === 'type6') {
       const D = design(b), w = D.w, h = D.h, P = D.P;
       const n = Math.round(p.termCountN), a1 = p.firstA1, d = p.diffD;
-      const startY = h * 0.24, rowH = Math.min(42, (h * 0.56) / Math.min(n, 7)), showCount = Math.min(n, 6);
+      const shown = n <= 6 ? Array.from({ length: n }, (_, i) => i + 1) : [1, 2, 3, 4, 0, n];
+      const startY = h * 0.24, rowH = Math.min(42, (h * 0.56) / shown.length);
       sink.tape = `S = $\\dfrac{1}{d\\ (${d})}$ × { 항들의 합 }`;
-      for (let k = 1; k <= showCount; k++) {
-        const idx = (k === showCount && n > 6) ? n : k;
+      shown.forEach((idx, k) => {
+        const cy = startY + (k + 0.5) * rowH, xLeft = w * 0.36, xRight = w * 0.62;
+        if (!idx) { b.text(P(w / 2, cy), '⋮', { color: 'muted', size: 18 }); return; }
         const ak = a1 + (idx - 1) * d, ak1 = ak + d;
-        const cy = startY + (k - 0.5) * rowH, xLeft = w * 0.36, xRight = w * 0.62;
         chip(b, D, xLeft, cy, `+ \\frac{1}{${ak}}`, idx === 1 ? '#fbbf24' : '#34d399');
         chip(b, D, xRight, cy, `- \\frac{1}{${ak1}}`, idx === n ? '#fbbf24' : '#38bdf8');
-        if (st(2) && k < showCount) b.seg(P(xRight - 30, cy - 8), P(xLeft + 30, cy + rowH + 8), { color: '#fb7185', width: 2.6 });
-      }
+        if (st(2) && shown[k + 1] === idx + 1) b.seg(P(xRight - 30, cy - 8), P(xLeft + 30, cy + rowH + 8), { color: '#fb7185', width: 2.6 });
+      });
       if (st(3)) {
         const lastDen = a1 + n * d;
         sink.tape += ` ｜ 결과 = $\\dfrac{\\text{항의 개수 } n\\ (${n})}{\\text{맨앞}(${a1}) \\times \\text{맨뒤}(${lastDen})}$ = ${n} / ${a1 * lastDen}`;
@@ -1001,7 +1007,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       });
       const drawNodeRecursive = (node, cx, spread) => {
         const cy = levelY[node.level];
-        if (node.children && node.children.length === 2 && (st(1) || node.level === 0)) {
+        if (node.children && node.children.length === 2 && (node.level < Math.min(s.step, 3))) {
           node.children.forEach((child, idx) => {
             const childX = idx === 0 ? cx - spread : cx + spread, childY = levelY[child.level];
             b.seg(P(cx, cy + 14), P(childX, childY - 14), { color: child.valid ? 'rgba(52, 211, 153, 0.75)' : 'rgba(251, 113, 133, 0.45)', width: child.valid ? 2.4 : 1.6, dash: child.valid ? null : [4, 4] });
@@ -1029,7 +1035,13 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     SLIDERS[mo.id].forEach((d) => {
       params[mo.id + '_' + d.key] = {
         value: mo.scenarios[0].params[d.key], min: d.min, max: d.max, step: d.step, color: 'amber', label: d.label,
-        format: (val) => (d.step < 1 ? val.toFixed(2) : String(val))
+        format: (val) => (d.step < 1 ? val.toFixed(2) : String(val)),
+        onInput: (s) => {
+          if (mo.id === 'type2') {
+            if (d.key === 'pIdx') s.type2_pIdx = Math.min(s.type2_pIdx, s.type2_qIdx - 1);
+            else s.type2_qIdx = Math.max(s.type2_qIdx, s.type2_pIdx + 1);
+          }
+        }
       };
     });
   });
@@ -1039,7 +1051,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const out = [{ id: 'twin', icon: 'spark', label: '숫자 바꿔 보기', run: (s, lab) => twin(s, lab) }];
     if (!DESIGN.has(mi)) {
       out.push({ id: 'cont', icon: 'wand', label: '실수 전체의 그래프(실선)', on: (s) => s.cont, run: (s) => { s.cont = !s.cont; } });
-      out.push({ id: 'abs', icon: 'layers', label: '|수열|의 그래프 보기', on: (s) => s.abs, run: (s) => { s.abs = !s.abs; } });
+      if (mi <= 1) out.push({ id: 'abs', icon: 'layers', label: '|수열|의 그래프 보기', on: (s) => s.abs, run: (s) => { s.abs = !s.abs; } });
       if (STEMS.has(mi)) out.push({ id: 'stems', icon: 'split', label: '항의 값을 막대로 표시', on: (s) => s.stems, run: (s) => { s.stems = !s.stems; } });
     }
     return out;
@@ -1191,12 +1203,12 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const { N, a, r } = it, x = this.solve(it), c = x.c, L = x.L, b = N - a;
         return {
           params: { zeroSumN: N, targetN: r }, g: { N, a, b, r, c, L },
-          text: `등차수열의 합 $S_n = -n(n - ${N})$에 대하여, $|S_{${a}}| = |S_{${b}}| = ${c}$이다. $n > ${N}$에서 $|S_r| = ${L}$일 때, 자연수 $r$의 값을 구하시오.`,
+          text: `등차수열의 합 $S_n = -n(n - ${N})$에 대하여, $|S_{${a}}| = |S_{${b}}| = ${c}$이다. $r > ${N}$에서 $|S_r| = ${L}$일 때, 자연수 $r$의 값을 구하시오.`,
           ans: `$r = ${r}$`,
           tQuick: `대칭인 두 값(${c})과 오른쪽 부분의 값(${L})을 따로 구하기`,
           std: [
             `1) $n=${a}, ${b}$는 대칭축 $${N / 2}$에 대칭이므로 $S_{${a}} = S_{${b}} = ${c}$이다.`,
-            `2) $n>${N}$에서는 $S_r<0$이므로 $|S_r|=-S_r=r(r-${N})$. 조건에 따라 $r(r-${N})=${L}$이다.`,
+            `2) $r>${N}$에서는 $S_r<0$이므로 $|S_r|=-S_r=r(r-${N})$. 조건에 따라 $r(r-${N})=${L}$이다.`,
             `3) $r^2-${N}r-${L}=(r-${r})(r+${r - N})=0$이고 $r>${N}$이므로 $r=${r}$이다. 확인하면 $S_{${r}}=${-L}$이다.`],
           quick: [`W자 모양의 그래프에서 $n=${a}, ${b}$는 $x$축 위쪽에서 대칭이므로 $|S_{${a}}|=|S_{${b}}|=${c}$이고, 오른쪽 부분($n>${N}$)에서는 $|S_{${r}}|=${L}$입니다. ${c === L ? '세 점이 모두 같은 높이 ' + c + '에 놓여 수평선 $y=' + c + '$와 세 점에서 만납니다.' : '세 값이 모두 같은 것은 아닙니다.'}`]
         };
@@ -1230,7 +1242,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const { p, q } = it, L = lin(2 * p, q - p);
         return {
           params: { pCoeff: p, qCoeff: q, constC: 0 }, g: { p, q },
-          text: `수열의 합 $S_n = ${quad(p, q, 0)} + C$가 **첫째항부터** 등차수열을 이루도록 하는 상수 $C$의 값과 이때의 일반항 $a_n$을 구하시오.`,
+          text: `수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합이 $S_n = ${quad(p, q, 0)} + C$이다. 수열 $\\{a_n\\}$이 **첫째항부터** 등차수열을 이루도록 하는 상수 $C$의 값과 이때의 일반항 $a_n$을 구하시오.`,
           ans: `$C = 0,\\ a_n = ${L}$`,
           std: [
             `1) $n \\ge 2$일 때 $a_n = ${L}$이고, 여기에 $n=1$을 대입한 값은 $${p + q}$이다.`,
@@ -1402,7 +1414,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       const bd = (function () { let f = null; (function w(n) { if (n.valid) n.children.forEach((c) => { if (c.rule === '÷2' && !c.valid && c.val === k) f = n.val; w(c); }); })(tree8(t, k).root); return f; })();
       return {
         params: { targetA4: t, threshK: k }, g: { t, k, a1 },
-        text: `모든 항이 자연수인 수열 $\\{a_n\\}$이 $a_{n+1} = ${CASES8(k)}$을 만족시킨다. $a_4 = ${t}$일 때, 가능한 **모든 첫째항 $a_1$의 값의 합**을 그림의 나뭇가지(거꾸로 추적)로 구하시오.`,
+        text: `첫 네 항 $a_1,a_2,a_3,a_4$가 자연수인 수열 $\\{a_n\\}$이 $n=1,2,3$에 대하여 $a_{n+1} = ${CASES8(k)}$을 만족시킨다. $a_4 = ${t}$일 때, 가능한 **모든 첫째항 $a_1$의 값의 합**을 그림의 나뭇가지(거꾸로 추적)로 구하시오.`,
         ans: `$a_1 \\in \\{${a1.join(', ')}\\}$, 합 $${r.sum}$`,
         tQuick: bd != null ? `경계값에서 지워지는 킬러 함정: ${k} < ${k}는 거짓` : undefined,
         std: [...st, `따라서 가능한 $a_1$은 $\\{${a1.join(', ')}\\}$이고 합은 $${r.sum}$이다.`],
@@ -1430,20 +1442,20 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const p = Q.p, B = FOCUS[mi], ys = [0];
     let xmax = B.x[1];
     if (tab === 'problem') { // 문제 탭: 주어진 점만 있으므로 범위를 좁혀 그림을 크게
-      if (mi === 0) return { x: B.x, y: [-3.4, Math.max(3.4, 0.5 * (Q.g.A || 0) + 1.8)] };
-      if (mi === 1) return { x: [-1.5, p.qIdx + 2.5], y: [-1.6, 0.28 * p.pIdx * p.qIdx + 2.4] };
-      if (mi === 2) { const N = p.zeroSumN, T = Math.round(p.targetN); return { x: [-1.5, Math.max(N, T) + 2], y: [Math.min(0, 0.22 * OLDV.S3(N, T)) - 1.6, 0.22 * N * N / 4 + 2.2] }; }
+      if (mi === 0) return { x: B.x, y: [Math.min(-3.4, (Q.g.A || 0) - 1.8), Math.max(3.4, (Q.g.A || 0) + 1.8)] };
+      if (mi === 1) return { x: [-1.5, p.qIdx + 2.5], y: [-1.6, p.pIdx * p.qIdx + 2.4] };
+      if (mi === 2) { const N = p.zeroSumN, T = Math.round(p.targetN); return { x: [-1.5, Math.max(N, T) + 2], y: [Math.min(0, OLDV.S3(N, T)) - 1.6, N * N / 4 + 2.2] }; }
       if (mi === 3) return { x: [-0.5, 7], y: [-2.6, 3.6] };
     }
-    if (mi === 0) for (let n = 1; n <= 10; n++) ys.push(0.5 * p.dSlope * (n - p.zeroN));
-    else if (mi === 1) { const z = p.pIdx + p.qIdx; ys.push(0.28 * z * z / 4); xmax = Math.max(xmax, z + 1.5); }
+    if (mi === 0) for (let n = 1; n <= 10; n++) ys.push(p.dSlope * (n - p.zeroN));
+    else if (mi === 1) { const z = p.pIdx + p.qIdx; ys.push(z * z / 4, -(z + 1)); xmax = Math.max(xmax, z + 1.5); }
     else if (mi === 2) {
       const N = p.zeroSumN, T = Math.round(p.targetN), m = N / 2;
-      ys.push(0.22 * m * m, 0.22 * OLDV.S3(N, T));
-      if (tab !== 'problem') ys.push(0.22 * (2 * OLDV.S3(N, m) - OLDV.S3(N, T)));
+      ys.push(m * m, OLDV.S3(N, Math.max(T, 13)));
+      if (tab !== 'problem') ys.push((2 * OLDV.S3(N, m) - OLDV.S3(N, Math.max(T, 13))));
       xmax = Math.max(xmax, T + 1.5);
-    } else if (mi === 3) { for (let n = 1; n <= 7; n++) ys.push(0.45 * (2 * p.pCoeff * n + p.qCoeff - p.pCoeff)); ys.push(0.45 * (p.pCoeff + p.qCoeff + p.constC)); }
-    return { x: [B.x[0], xmax], y: [Math.min(B.y[0], Math.min(...ys) - 1.2), Math.max(B.y[1], Math.max(...ys) + 1.2)] };
+    } else if (mi === 3) { for (let n = 1; n <= 7; n++) ys.push((2 * p.pCoeff * n + p.qCoeff - p.pCoeff)); ys.push((p.pCoeff + p.qCoeff + p.constC)); }
+    return { x: [B.x[0], xmax], y: [Math.min(B.y[0], Math.min(...ys) - Math.max(1.2, (Math.max(...ys) - Math.min(...ys)) * 0.14)), Math.max(B.y[1], Math.max(...ys) + Math.max(1.2, (Math.max(...ys) - Math.min(...ys)) * 0.14))] };
   }
   function drawGiven(mo, b, Q) {
     const id = mo.id, g = Q.g, sub = OLDV.sub;
@@ -1457,16 +1469,16 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         hol(g.m, 0, `a${sub(g.m)} = ?`, 'rose'); hol(10, 0, 'a₁₀ = ?', 'rose');
       } else {
         note(`첫째항 a₁ = ${mn(g.A)}  ·  a${sub(g.k)} + a${sub(g.k + 1)} = 0`);
-        sol(1, 0.5 * g.A, `a₁ = ${mn(g.A)}`, 'amber', g.A > 0 ? -16 : 18);
+        sol(1, g.A, `a₁ = ${mn(g.A)}`, 'amber', g.A > 0 ? -16 : 18);
         hol(g.k, 0, `a${sub(g.k)}`, 'amber', -16); hol(g.k + 1, 0, `a${sub(g.k + 1)}`, 'amber', 18);
       }
     } else if (id === 'type2') {
-      const y = 0.28 * g.p * g.q;
+      const y = g.p * g.q;
       note(`S${sub(g.p)} = S${sub(g.q)}  ·  첫째항 > 0`);
       b.seg([g.p, y], [g.q, y], { color: 'amber', dash: [5, 4], width: 2 });
       sol(g.p, y, `S${sub(g.p)}`, 'amber'); sol(g.q, y, `S${sub(g.q)}`, 'amber');
     } else if (id === 'type3') {
-      const N = g.N, sc = 0.22, T = g.T != null ? g.T : g.r;
+      const N = g.N, sc = 1, T = g.T != null ? g.T : g.r;
       b.plot((x) => sc * (-x * (x - N)), { color: 'sky', width: 2.2, dash: [5, 5], from: 0, to: Math.max(N, T) + 1 });
       if (g.T != null) {
         note(`S_n = −n² + ${N}n  ·  합의 끝 n = ${T}`);
@@ -1568,18 +1580,23 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       short: scen.chip.split(' (')[0],
       question: Q[mi],
       guide: GUIDE[mi],
+      aspect: mi < 4 ? 'free' : '1:1',
+      aspectNote: '가로는 항의 번호 n, 세로는 항 또는 부분합의 실제 값입니다. 두 축의 단위가 달라 배율은 따로 맞추며, 기울기는 눈금값의 차로 계산합니다.',
       controls: SLIDERS[mo.id].map((d) => mo.id + '_' + d.key),
       actions: actions(mi),
       steps: mo.stepLabels.map((l, k) => `${k + 1}단계 · ${rich(l)}`),
-      startStep: 2,
+      startStep: 0,
       notesTitle: '오답 함정 주의보',
       focus: () => FOCUS[mi],
       enter: (s) => {
         current = { mo, scen };
+        if (mi > 1) s.abs = false;
         Object.keys(scen.params).forEach((k) => { s[mo.id + '_' + k] = scen.params[k]; });
       },
+      reviewTop: () => rich(OVARY[mo.id + '-' + si].cur().text),
       vary: OVARY[mo.id + '-' + si],
       problem: {
+        autoSnap: false,
         tag: scen.source,
         text: () => probHTML(rich(OVARY[mo.id + '-' + si].cur().text)),
         answer: () => OVARY[mo.id + '-' + si].cur().ans,
@@ -1594,12 +1611,16 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       view: (s, lab) => {
         current = { mo, scen };
         const inExplore = !lab || lab.tab === 'explore';
-        const h = hudOf(mo.id, inExplore ? pv(s, mo) : OVARY[mo.id + '-' + si].cur().p);
+        const fixed = OVARY[mo.id + '-' + si].cur();
+        const h = hudOf(mo.id, inExplore ? pv(s, mo) : fixed.p);
+        if (!inExplore && mo.id === 'type3' && si === 1) {
+          return { chips: [{ html: fixed.ans, answer: true }], formula: s.step >= 1 ? rich(fixed.std[Math.min(s.step, 3) - 1]) : '' };
+        }
         return {
           chips: [{ k: mo.code, html: rich(h.eq), answer: true }],
-          readouts: h.cards.map((c) => ({ label: rich(c.title), value: String(c.val), note: rich(c.sub), color: 'amber' })),
+          readouts: s.step >= 3 ? h.cards.map((c) => ({ label: rich(c.title), value: String(c.val), note: rich(c.sub), color: 'amber' })) : inExplore ? SLIDERS[mo.id].map((d) => ({ label: d.label, value: fmt(pv(s, mo)[d.key]), color: 'amber' })) : [],
           formula: s.step >= 1 ? rich(mo.stepDescs[Math.min(s.step, 3) - 1]) : '',
-          notes: rich(mo.trapWarning)
+          notes: s.step >= 3 ? rich(mo.trapWarning) : ''
         };
       },
       draw: (b, s, v, lab) => draw(mo, mi, b, s, v, lab, si)
@@ -1809,7 +1830,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
     toast('숫자를 바꾼 새 문제가 만들어졌습니다');
@@ -1909,8 +1930,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const tab = lab.tab;
     const q = tab === 'explore' ? { fam: s.br_fam, c: s.br_c, t: s.br_t, m: s.br_m } : vary9.cur();
     const T = brTree(q.fam, q.c, q.t, q.m);
-    const showLv = tab === 'explore' ? q.m : tab === 'review' ? Math.min(s.step, q.m) : 0;
-    const final = tab === 'explore' || (tab === 'review' && s.step >= q.m + 1);
+    const showLv = tab === 'problem' ? 0 : Math.min(tab === 'explore' ? s.br_level : s.step, q.m);
+    const final = tab === 'explore' ? s.br_level >= q.m + 1 : tab === 'review' && s.step >= q.m + 1;
     const D = design(b);
     const r = brFit(b, D, T, showLv, final, tab, q.m, true);
     if (tab === 'problem') {
@@ -1924,13 +1945,13 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const T = brTree(q.fam, q.c, q.t, q.m);
     const sum = T.a1.reduce((x, y) => x + y, 0);
     let bad = 0; (function w(n) { if (!n.ok) bad++; n.ch.forEach(w); })(T.root);
-    const showAns = tab === 'explore' || (tab === 'review' && s.step >= q.m + 1);
+    const showAns = tab === 'explore' ? s.br_level >= q.m + 1 : tab === 'review' && s.step >= q.m + 1;
     const out = {
       chips: [{ tex: brRuleTex(q.fam, q.c), color: 'amber' }, { html: `$a_{${q.m + 1}}=${q.t}$`, color: 'sky' }],
       formula: brBack(q.fam, q.c),
       notes: brWarn(q.fam, q.c)
     };
-    if (tab === 'explore') {
+    if (tab === 'explore' && showAns) {
       const p0 = T.a1.length ? brFwd(q.fam, q.c, T.a1[0], q.m) : [];
       out.status = { tone: T.a1.length ? 'key' : 'warn', text: `가능한 a₁ ${T.a1.length}개 · 지운 가지 ${bad}개` };
       out.readouts = [
@@ -1941,7 +1962,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         { label: '앞으로 대입해 확인(가장 작은 a₁)', value: p0.length ? p0.map(mn).join(' → ') : '없음', color: 'sky', wide: true, note: `마지막 값이 ${q.t}이어야 합니다` }
       ];
     }
-    if (showAns) out.tape = { title: `가능한 $a_1$: $\\{${T.a1.map(tn).join(', ')}\\}$ → ${T.a1.length}개, 합 ${sum}`, answer: true };
+    if (showAns) out.tape = { title: `가능한 $a_1$: $\\{${T.a1.map(tn).join(', ')}\\}$ → ${T.a1.length}개, 합 ${sum}`, answer: tab !== 'explore' };
     return out;
   }
   function scene9() {
@@ -1953,12 +1974,14 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       question: '규칙이 두 갈래로 갈라지는 점화식에서 a₄(또는 a₅)가 정해져 있을 때, 처음 항 a₁이 될 수 있는 값은 몇 개일까?',
       guide: '맨 위 값 t에서 출발해 <b>앞 항이 될 수 있는 값</b>을 두 갈래로 거꾸로 구합니다. 조건에 맞지 않는 후보는 <b>빨간 표시</b>로 지우고, 아래 끝에 남은 <b>금색 값</b>이 가능한 a₁입니다. t·m·c 막대나 점화식 칩으로 바꿔 보세요.',
       controls: ['br_t', 'br_m', 'br_c'],
+      actions: [{ id: 'br-next', label: '가지 한 단계 펼치기', icon: 'next', primary: true, run: (st) => { st.br_level = Math.min(st.br_level + 1, st.br_m + 1); } }],
       presets: () => [pre('par', '홀짝 (짝수면 ÷2, 홀수면 +c)'), pre('sgn', '부호 (0 이상이면 −c, 음수면 ×(−2))'), pre('mul', '3의 배수 (배수면 ÷3, 아니면 +c)')],
       focus: () => ({ x: [0, 100], y: [0, 100] }),
-      enter: (st) => { st.br_fam = 'par'; st.br_c = 5; st.br_t = 8; st.br_m = 3; },
+      enter: (st) => { st.br_fam = 'par'; st.br_c = 5; st.br_t = 8; st.br_m = 3; st.br_level = 0; },
       vary: vary9,
       steps: () => brSteps(vary9.cur()),
       problem: {
+        autoSnap: false,
         tag: () => vary9.cur().tag, time: '목표 시간: 150초',
         text: () => probHTML(brText(vary9.cur())),
         answer: () => `$${brAns(vary9.cur())}$`,
@@ -2024,7 +2047,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     // 반복 안내 상자
     const noteY = yV + 34;
     if (showCycle) chip(b, D, w / 2, noteY, `a${sb(I.repeatAt)} = a${sb(I.start)} = ${mn(I.seq[I.start - 1])} → a${sb(I.start)}부터 ${I.period}개씩 반복`, 'amber');
-    else if (tab === 'explore') chip(b, D, w / 2, noteY, `아직 반복이 안 보여요 · ${I.repeatAt}칸까지 채워 보세요`, 'muted');
+    else if (tab === 'explore') chip(b, D, w / 2, noteY, '아직 반복이 안 보여요 · 한 항씩 더 채워 보세요', 'muted');
     else if (tab === 'problem') chip(b, D, w / 2, noteY, `a₁ = ${mn(q.a1)} · 표를 채워 반복을 찾으세요`, 'muted');
     // 그래프: 가로는 표의 칸과 같은 번호
     const pTop = noteY + 26, pBot = h - 10, VM = 9;
@@ -2057,14 +2080,14 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const out = { chips: [{ tex: cyTexRule(q.k, q.d), color: 'amber' }] };
     if (tab === 'explore') {
       const known = s.cy_n >= I.repeatAt;
-      out.status = known ? { tone: 'key', text: `${I.repeatAt}번째 항 = ${I.start}번째 항 → 순환` } : { tone: 'info', text: `반복은 ${I.repeatAt}번째 항에서 처음 보여요 (지금 ${s.cy_n}칸)` };
-      out.readouts = [
+      out.status = known ? { tone: 'key', text: `${I.repeatAt}번째 항 = ${I.start}번째 항 → 순환` } : { tone: 'info', text: `지금 ${s.cy_n}칸 · 같은 값이 다시 나오는지 확인해 보세요` };
+      out.readouts = known ? [
         { label: '순환이 시작되는 항', value: `a${sb(I.start)}`, color: 'amber', note: `${I.start}번째 항부터 반복` },
         { label: '반복되는 마디의 항 수(주기)', value: `${I.period}개`, color: 'amber' },
         { label: '순환 전의 항', value: I.start - 1 ? `${I.start - 1}개` : '없음', color: 'sky', note: I.start - 1 ? I.seq.slice(0, I.start - 1).map(mn).join(', ') : '첫째항부터 반복' },
         { label: '한 마디의 합', value: String(cycSum), color: 'green', note: I.seq.slice(I.start - 1).map(mn).join(' + ').replace(/\+ −/g, '− ') },
-        { label: '처음 반복이 보이는 번호', value: `${I.repeatAt}번째`, color: 'rose', note: '이 번호까지 표를 채우면 충분' }
-      ];
+        { label: '처음 반복이 보이는 번호', value: `${I.repeatAt}번째`, color: 'rose', note: '이 번호에서 처음 같은 값이 다시 나옴' }
+      ] : [{ label: '표에 적은 항', value: `${s.cy_n}개`, color: 'sky' }];
     }
     if (tab === 'review' && s.step >= 3) { const A = cyAnswer(q); out.tape = { title: `$${q.ask === 'sum' ? `\\sum_{i=1}^{${q.M}}a_i` : q.ask === 'count' ? `\\#\\{n\\le ${q.M}:\\ a_n=${q.X}\\}` : `a_{${q.M}}`}=${A.val}$`, answer: true }; }
     out.notes = '<b>순환 전의 항을 마디에 섞지 마세요.</b> 위 표에서 $a_1,a_2$처럼 한 번만 나오는 항은 파란색, 되풀이되는 마디는 금색입니다. 개수(몫·나머지)는 순환 전 항을 뺀 뒤에 세어야 합니다.';
@@ -2083,10 +2106,11 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         { id: 'cy-reset', icon: 'back', label: '표 비우기', run: (st) => { st.cy_n = 1; } }
       ],
       focus: () => ({ x: [0, 100], y: [0, 100] }),
-      enter: (st) => { st.cy_a1 = -5; st.cy_k = 3; st.cy_d = 2; st.cy_n = 5; },
+      enter: (st) => { st.cy_a1 = -5; st.cy_k = 3; st.cy_d = 2; st.cy_n = 1; },
       vary: vary10,
       steps: () => cySteps(vary10.cur()),
       problem: {
+        autoSnap: false,
         tag: () => vary10.cur().tag, time: '목표 시간: 120초',
         text: () => probHTML(cyText(vary10.cur())),
         answer: () => `$${cyAnswer(vary10.cur()).val}$`,
@@ -2110,22 +2134,22 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
   const A_PT = (k) => [PA_C * Math.sqrt(k), k];
   function drawA(b, s, v, lab) {
     const tab = lab.tab;
-    const n = tab === 'explore' ? s.pa_n : 4, N = 9;
+    const q = varyA.cur(), n = tab === 'explore' ? s.pa_n : 4, N = q.N, j = q.j;
     const stepN = tab === 'review' ? s.step : 0;
-    b.focus = tab === 'explore' || (tab === 'review' && stepN >= 2) ? FOC_A : FOC_A_TIGHT; // 문제·1단계는 n=4 한 개만 보이므로 그림을 크게
+    b.focus = tab === 'review' && stepN >= 2 ? { x: [-1.3, PA_C * Math.sqrt(N) + 3], y: [-1.7, N + 4] } : tab === 'explore' ? FOC_A : FOC_A_TIGHT; // 문제·1단계는 n=4 한 개만 보이므로 그림을 크게
     if (s.grid) b.grid();
     b.axes();
-    b.plot((x) => (x * x) / 16, { color: 'ink', width: 2.4, glow: true, from: 0, to: 13.6 });
+    b.plot((x) => (x * x) / 16, { color: 'ink', width: 2.4, glow: true, from: 0, to: b.focus.x[1] });
     if (tab === 'explore' || (tab === 'review' && stepN >= 2)) b.text([12.7, 10.0], 'y = \\frac{x²}{16}', { color: 'ink', size: 12, weight: 800, align: 'right', baseline: 'middle' });
     else b.text([3.6, 4.7], 'y = \\frac{x²}{16}', { color: 'ink', size: 12, weight: 800, align: 'center', baseline: 'middle' });
     const showRings = tab === 'explore' ? true : tab === 'review' && stepN >= 2;
     const upto = tab === 'explore' ? n : N;
     if (showRings) {
       const allRose = tab === 'review' && stepN >= 3;
-      b.poly(A_TRI(1), { fill: 'amber', fillAlpha: 0.3, color: null });
-      for (let k = 1; k < upto; k++) ringFill(b, A_TRI(k + 1), A_TRI(k), allRose ? 'rose' : k % 2 ? 'sky' : 'green', allRose ? 0.34 : 0.3);
+      if (!allRose) b.poly(A_TRI(1), { fill: 'amber', fillAlpha: 0.3, color: null });
+      for (let k = allRose ? j : 1; k < upto; k++) ringFill(b, A_TRI(k + 1), A_TRI(k), allRose ? 'rose' : k % 2 ? 'sky' : 'green', allRose ? 0.34 : 0.3);
       for (let k = 1; k <= upto; k++) { b.poly(A_TRI(k), { color: allRose ? 'rose' : 'ink', alpha: 0.55, width: 1.3 }); }
-      if (!allRose) b.poly(A_TRI(1), { color: 'amber', width: 2.2 });
+      b.poly(A_TRI(allRose ? j : 1), { color: 'amber', width: 2.2 });
     }
     // 점과 직선
     const cur = tab === 'explore' ? n : 4;
@@ -2147,13 +2171,13 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     b.point([0, 0], { r: 4, color: 'ink', label: 'O', dx: -10, dy: -13, align: 'right', size: 14 });
     if (tab === 'review' && stepN >= 1 && stepN < 2) b.text([Ac[0] + 0.4, Ac[1] / 2 + 0.2], `A₄(${mn(Math.round(Ac[0]))}, 4)`, { color: 'amber', size: 13, weight: 800, align: 'left' });
     if (tab === 'problem') b.text([9.2, 1.5], '(그림은 n = 4일 때)', { color: 'muted', size: 12, weight: 700, align: 'center' });
-    if (tab === 'review' && stepN >= 3) b.text([8.5, 8.6], 'S₉ − S₁ = 칠한 조각 전체', { color: 'rose', size: 13, weight: 800, align: 'center' });
+    if (tab === 'review' && stepN >= 3) b.text([PA_C * Math.sqrt(N) / 2, N + 2], `S${sb(N)} − S${sb(j)} = 칠한 조각 전체`, { color: 'rose', size: 13, weight: 800, align: 'center' });
   }
   const paSteps = (q) => {
     const j = q.j, N = q.N, ex = `$S_n=\\dfrac{1}{2}\\cdot 4\\sqrt{n}\\cdot n=2n\\sqrt{n}$`;
     return [
       `$y=\\dfrac{x^2}{16}$과 $y=\\dfrac{\\sqrt n}{4}x$에서 $x=4\\sqrt n$이므로 $A_n(4\\sqrt n,\\ n)$, $B_n(4\\sqrt n,\\ 0)$. (그림은 $n=4$: $A_4(8,4)$) ${ex}`,
-      `삼각형 $OA_1B_1,\\ OA_2B_2,\\dots$는 큰 것이 작은 것을 포개 싼 모양입니다. 이웃한 두 삼각형 사이의 띠가 $S_{k+1}-S_k$입니다(그림은 $n=1\\sim 9$).`,
+      `삼각형 $OA_1B_1,\\ OA_2B_2,\\dots$는 큰 것이 작은 것을 포개 싼 모양입니다. 이웃한 두 삼각형 사이의 띠가 $S_{k+1}-S_k$입니다(그림은 $n=1\\sim ${N}$).`,
       `$\\sum_{k=${j}}^{${N - 1}}(S_{k+1}-S_k)=(S_{${j + 1}}-S_{${j}})+\\cdots+(S_{${N}}-S_{${N - 1}})$에서 가운데 항이 모두 소거되어 $S_{${N}}-S_{${j}}$입니다.`
     ];
   };
@@ -2186,7 +2210,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       enter: (st) => { st.pa_n = 6; },
       vary: varyA,
       steps: () => paSteps(varyA.cur()),
-      problem: { tag: () => varyA.cur().tag, time: '목표 시간: 90초', text: () => probHTML(paText(varyA.cur())), answer: () => `$${paAns(varyA.cur())}$`, snap: () => ({ pa_n: 4 }) },
+      problem: { autoSnap: false, tag: () => varyA.cur().tag, time: '목표 시간: 90초', text: () => probHTML(paText(varyA.cur())), answer: () => `$${paAns(varyA.cur())}$`, snap: () => ({ pa_n: 4 }) },
       solution: {
         standardTitle: 'Sₙ을 구한 뒤 차를 하나씩 더하기', standardTag: '기본 풀이', quickTitle: '소거: Sₘ₊₁ − Sⱼ', quickTag: '10초 컷',
         standard: () => { const q = varyA.cur(); return { steps: paSteps(q).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>') + `<br/>④ $S_{${q.N}}=2\\cdot ${q.N}\\sqrt{${q.N}}=${paS(q.N)}$, $S_{${q.j}}=${paS(q.j)}$이므로 <b>${paAns(q)}</b>.` }; },
@@ -2272,7 +2296,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       enter: (st) => { st.pb_n = 2; st.pb_a = 3; },
       vary: varyB,
       steps: () => pbSteps(varyB.cur()),
-      problem: { tag: () => varyB.cur().tag, time: '목표 시간: 120초', text: () => probHTML(pbText(varyB.cur())), answer: () => `$${FR.tex(pbSum(varyB.cur().a, varyB.cur().M))}$`, snap: () => ({ pb_a: varyB.cur().a, pb_n: 2 }) },
+      problem: { autoSnap: false, tag: () => varyB.cur().tag, time: '목표 시간: 120초', text: () => probHTML(pbText(varyB.cur())), answer: () => `$${FR.tex(pbSum(varyB.cur().a, varyB.cur().M))}$`, snap: () => ({ pb_a: varyB.cur().a, pb_n: 2 }) },
       solution: {
         standardTitle: '교점 → Sₙ → Σ 공식', standardTag: '기본 풀이', quickTitle: '밑변·높이로 바로 Sₙ', quickTag: '10초 컷',
         standard: () => ({ steps: pbSteps(varyB.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>') }),
@@ -2336,7 +2360,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         { label: '정사각형 넓이를 1로 둘 때 R₁', value: FR.txt(C.R1), color: 'sky' },
         { label: '넓이의 비 r (한 단계 안쪽)', value: FR.txt(C.r), color: 'amber', note: `≈ ${FR.val(C.r).toFixed(4)}` },
         { label: `Sₙ (n=${n})`, value: FR.txt(Sn), color: 'green', note: `≈ ${FR.val(Sn).toFixed(4)}` },
-        { label: '극한 R₁ ÷ (1 − r)', value: FR.txt(C.lim), color: 'rose', note: `≈ ${FR.val(C.lim).toFixed(4)} · 남은 틈 ${(FR.val(C.lim) - FR.val(Sn)).toFixed(4)}` }
+        ...(s.step >= 3 ? [{ label: '극한 R₁ ÷ (1 − r)', value: FR.txt(C.lim), color: 'rose', note: `≈ ${FR.val(C.lim).toFixed(4)} · 남은 틈 ${(FR.val(C.lim) - FR.val(Sn)).toFixed(4)}` }] : [])
       ];
       const segs = Array.from({ length: n }, (_, i) => ({ weight: FR.val(C.R1) * FR.val(C.r) ** i, color: ['sky', 'green', 'amber'][i % 3], text: i < 3 ? `R${sb(i + 1)}` : '' }));
       segs.push({ weight: Math.max(0.0001, FR.val(C.lim) - FR.val(Sn)), color: 'muted', text: '남은 틈' });
@@ -2357,7 +2381,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       enter: (st) => { st.fr_n = 3; st.fr_p = 'p23'; },
       vary: varyF,
       steps: () => frSteps(varyF.cur()),
-      problem: { tag: () => varyF.cur().tag, time: '목표 시간: 150초', text: () => probHTML(frText(varyF.cur())), answer: () => `$${FR.tex(frAns(varyF.cur()))}$`, snap: () => ({ fr_p: varyF.cur().p, fr_n: 2 }) },
+      problem: { autoSnap: false, tag: () => varyF.cur().tag, time: '목표 시간: 150초', text: () => probHTML(frText(varyF.cur())), answer: () => `$${FR.tex(frAns(varyF.cur()))}$`, snap: () => ({ fr_p: varyF.cur().p, fr_n: 2 }) },
       solution: {
         standardTitle: 'R₁과 공비 r로 등비급수의 합', standardTag: '기본 풀이', quickTitle: '넓이의 비 r만 구하기', quickTag: '10초 컷',
         standard: () => ({ steps: frSteps(varyF.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>') }),
@@ -2393,6 +2417,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
 
   APLab.createLab({
     id: 'alg-sequence',
+    stagedReveal: true,
     title: '수열의 그래프와 점화식',
     courseName: '대수',
     unit: '수열 · 수열의 함수적 해석',

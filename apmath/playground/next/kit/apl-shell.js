@@ -1493,6 +1493,13 @@
       let lastG = -1;
       const jobs = [];
       this.list.forEach((sc, i) => {
+        // Each card needs its own initialized question. The active scene's state
+        // can have a different question shape and cannot supply another's steps.
+        const st = { ...this.s, step: 99, part: null, playing: false, dragging: false, grid: true };
+        for (const [k, p] of Object.entries(this.params)) st[k] = p.value;
+        if (this.def.enter) this.def.enter(st, sc, this);
+        if (sc.enter) sc.enter(st, this);
+        if (sc.problem && sc.problem.snap && sc.thumbSnap !== false) Object.assign(st, call(sc.problem.snap, st));
         if (this.groups.length > 1 && sc.gi !== lastG) {
           lastG = sc.gi;
           grid.append(h('div', { class: 'apl-group-h', html: APLab.renderMath(this._sf(APLab.esc(`${sc.gi + 1}. ${APLab.stripEmoji(sc.group.title)}`))) }));
@@ -1500,14 +1507,9 @@
         const cv = h('canvas', {});
         const sp = APLab.splitFlag(sc.short || sc.title);
         const card = h('button', { class: 'apl-scene-card', 'aria-current': String(i === this.index), onclick: () => { dlg.close(); this.goScene(i); } },
-          cv, h('b', { html: APLab.renderMath(this._sf(APLab.esc(sp.text))) }), h('small', { text: sp.flag || (sc.steps ? `${call(sc.steps, this.s).length}단계 풀이` : ' ') }));
+          cv, h('b', { html: APLab.renderMath(this._sf(APLab.esc(sp.text))) }), h('small', { text: sp.flag || (sc.steps ? `${call(sc.steps, st).length}단계 풀이` : ' ') }));
         grid.append(card);
         jobs.push(() => {
-          const st = { ...this.s, step: 99, part: null, playing: false, dragging: false, grid: true };
-          for (const [k, p] of Object.entries(this.params)) st[k] = p.value;
-          if (this.def.enter) this.def.enter(st, sc, this);
-          if (sc.enter) sc.enter(st, this);
-          if (sc.problem && sc.problem.snap && sc.thumbSnap !== false) Object.assign(st, call(sc.problem.snap, st));
           const focus = call(sc.focus, st) || call(bd.focus, st);
           APLab.Board.renderThumb(cv, { kind: sc.boardKind || bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: sc.aspect || bd.aspect }, (b) => {
             if (sc.panes) b.setPanes(call(sc.panes, st));

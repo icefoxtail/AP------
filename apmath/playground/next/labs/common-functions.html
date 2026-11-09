@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', function () {
           {
             step: 2,
             title: '2단계. 넓이 불변(k/2) 삼각형 치환 ➔ 사다리꼴로 바꾸기',
-            desc: `점근선 $y=2$에 내린 수선의 발 $P_1, Q_1$에 대하여 $\\text{넓이}(\\triangle CPP_1) = \\text{넓이}(\\triangle CQQ_1) = \\dfrac{1}{2}ab = \\dfrac{k}{2}$입니다.<br/>오각형 $C\\text{-}P_1\\text{-}P\\text{-}Q\\text{-}Q_1$의 넓이는 $\\triangle CPP_1 + \\text{사다리꼴 } P_1PQQ_1 = \\triangle CPQ + \\triangle CQQ_1$이므로,<br/>양변에서 $\\dfrac{k}{2}$를 빼면 $\\mathbf{\\text{넓이}(\\triangle CPQ) = \\text{넓이}(\\text{사다리꼴 } P_1PQQ_1) = 16}$입니다.`
+            desc: `점근선 $y=2$에 내린 수선의 발 $P_1, Q_1$에 대하여 $\\text{넓이}(\\triangle CPP_1) = \\text{넓이}(\\triangle CQQ_1) = \\dfrac{1}{2}ab = \\dfrac{k}{2}$입니다.<br/>사각형 $C\\text{-}P\\text{-}Q\\text{-}Q_1$의 넓이는 $\\triangle CPP_1 + \\text{사다리꼴 } P_1PQQ_1 = \\triangle CPQ + \\triangle CQQ_1$이므로,<br/>양변에서 $\\dfrac{k}{2}$를 빼면 $\\mathbf{\\text{넓이}(\\triangle CPQ) = \\text{넓이}(\\text{사다리꼴 } P_1PQQ_1) = 16}$입니다.`
           },
           {
             step: 3,
@@ -231,7 +231,7 @@ window.addEventListener('DOMContentLoaded', function () {
         tabLabel: '심화 4 · 감소함수와 역함수의 교점으로 만든 삼각형',
         title: '[심화 4] 감소하는 꺾인 함수와 역함수의 3교점 대칭삼각형',
         statement: `
-          <div>실수 전체의 집합에서 정의된 감소하는 연안쪽 함수 $f(x) = \\begin{cases} -\\dfrac{1}{5}x + 3 & (x < 0) \\\\ -2x + 3 & (x \\ge 0) \\end{cases}$의 그래프와 그 역함수 $y = f^{-1}(x)$의 그래프가 만나는 서로 다른 세 점을 $A, B, C$라 하자.</div>
+          <div>실수 전체의 집합에서 정의된 감소하는 함수 $f(x) = \\begin{cases} -\\dfrac{1}{5}x + 3 & (x < 0) \\\\ -2x + 3 & (x \\ge 0) \\end{cases}$의 그래프와 그 역함수 $y = f^{-1}(x)$의 그래프가 만나는 서로 다른 세 점을 $A, B, C$라 하자.</div>
           <div class="mt-1.5 font-bold text-amber-300">삼각형 $ABC$의 넓이를 $S$라 할 때, $2S$의 값을 구하시오.</div>
         `,
         sliderTitle: '역함수 y = x 대칭이동:',
@@ -752,7 +752,7 @@ window.addEventListener('DOMContentLoaded', function () {
         tabLabel: '기본 10 · 유리함수의 점근선으로 만든 직사각형',
         title: '[기본 10] 점근선 직사각형의 넓이 불변과 둘레 최솟값 정사각형 원리',
         statement: `
-          <div>유리함수 $y = \\dfrac{4}{x - 1} + 1$ ($x > 1$)의 그래프 위의 점 $P$에서 두 점근선 $x = 1, y = 1$에 내린 수선의 발을 각각 $A, B$라 할 때, 직사각형 $CAPB$의 넓이와 둘레의 길이의 최솟값을 구하시오.</div>
+          <div>유리함수 $y = \\dfrac{4}{x - 1} + 1$ ($x > 1$)의 그래프 위의 점 $P$에서 두 점근선 $x = 1, y = 1$에 내린 수선의 발을 각각 $A, B$라 할 때, 직사각형 $CAPB$의 넓이와 둘레의 길이의 최솟값을 구하시오. (단, $C$는 두 점근선의 교점)</div>
         `,
         sliderTitle: '곡선 위 점 P 좌우 이동:',
         defaultT: 0.35,
@@ -906,7 +906,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { step: 2, title: '2단계. (x 앞 부호, 근호 앞 부호) = (가로 방향, 세로 방향)', desc: `안쪽 부호가 가로 방향, 바깥 부호가 세로 방향을 정합니다. $(+,+)$는 오른쪽 위, $(-,+)$는 왼쪽 위, $(-,-)$는 왼쪽 아래, $(+,-)$는 오른쪽 아래입니다. 네 그래프는 시작점을 지나는 수직선 또는 수평선에 대한 대칭으로 서로 겹칩니다.` },
           { step: 3, title: '3단계. x=1과 y=1에 대한 대칭으로 네 그래프의 합동 확인', desc: `기본 그래프 $y=\\sqrt{2(x-1)}+1$은 시작점 $S(1,1)$에서 오른쪽 위로 뻗습니다. $S$를 지나는 수직선 $x=1$에 대칭이동하면 $x-1$ 대신 $1-x$를 써서 $y=\\sqrt{2(1-x)}+1$을 얻고 왼쪽 위로 뻗습니다.<br/>수평선 $y=1$에 대칭이동하면 근호 앞에 마이너스가 붙어 $y=-\\sqrt{2(x-1)}+1$이 되고 오른쪽 아래로 뻗습니다. 두 대칭이동을 모두 적용하면 $y=-\\sqrt{2(1-x)}+1$이 되어 왼쪽 아래로 뻗습니다. 대칭이동은 모양과 길이를 보존하므로 네 그래프는 합동입니다.<br/>그림에 보이는 점선 $y=x$와 보라색 이차함수는 추가 비교용입니다. 첫 그래프의 역함수 $y=\\frac{(x-1)^2}{2}+1$ ($x\\ge1$)을 나타내며, 네 무리함수 사이의 좌우·상하 대칭축과 혼동하지 않습니다.` }
         ],
-        alg: `풀이를 쓸 때 무리함수의 역함수를 구할 때 이차함수 식만 쓰고 **정의역 조건 $(x \\ge q)$**을 생략하면 포물선 전체가 되어 일대일대응이 아니게 되므로 주의해야 합니다.`,
+        alg: `무리함수의 역함수는 이차함수의 일부입니다. 근호 앞 부호가 $+$인 그래프에서는 역함수의 정의역이 $x\\ge q$, $-$인 그래프에서는 $x\\le q$입니다. 이 조건을 함께 써야 합니다.`,
         answer: '시작점 (1,1) + 부호쌍 (±,±) 방향 | 합동조건: |a| 일치'
       },
 
@@ -2738,7 +2738,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { title: '2단계. (x 앞 부호, 근호 앞 부호) = (가로 방향, 세로 방향)', desc: `안쪽 부호가 가로 방향, 바깥 부호가 세로 방향을 정합니다. $(+,+)$는 오른쪽 위, $(-,+)$는 왼쪽 위, $(-,-)$는 왼쪽 아래, $(+,-)$는 오른쪽 아래입니다. 네 그래프는 시작점을 지나는 수직선 또는 수평선에 대한 대칭으로 서로 겹칩니다.` },
         { title: `3단계. x=${P.p}과 y=${P.q}에 대한 대칭으로 네 그래프의 합동 확인`, desc: `기본 그래프 $y=\\sqrt{${P.a}(${VSPEC['bas-14'].xt(P.p)})}${P.q < 0 ? '' : '+'}${P.q}$는 시작점에서 오른쪽 위로 뻗습니다. 수직선 $x=${P.p}$에 대칭이동하면 $x-${P.p < 0 ? '(' + P.p + ')' : P.p}$ 대신 $${P.p < 0 ? '(' + P.p + ')' : P.p}-x$를 써서 왼쪽 위로 뻗고, 수평선 $y=${P.q}$에 대칭이동하면 근호 앞에 마이너스가 붙어 오른쪽 아래로 뻗습니다. 두 대칭이동을 모두 적용하면 왼쪽 아래로 뻗습니다. 대칭이동은 모양과 길이를 보존하므로 네 그래프는 합동입니다.` }
       ],
-      alg: () => `풀이를 쓸 때 무리함수의 역함수를 구할 때 이차함수 식만 쓰고 **정의역 조건 $(x \\ge q)$**을 생략하면 포물선 전체가 되어 일대일대응이 아니게 되므로 주의해야 합니다.`,
+      alg: () => `무리함수의 역함수는 이차함수의 일부입니다. 근호 앞 부호가 $+$인 그래프에서는 역함수의 정의역이 $x\\ge q$, $-$인 그래프에서는 $x\\le q$입니다. 이 조건을 함께 써야 합니다.`,
       aha: () => `무리함수들이 평행이동·대칭이동으로 포개어지려면, 근호 밖 숫자를 근호 안으로 제곱해 넣었을 때 **$x$의 계수의 절댓값 $|a|$가 일치**해야 합니다!`
     }
     /*VARDATA-NEXT*/
@@ -2859,7 +2859,7 @@ window.addEventListener('DOMContentLoaded', function () {
       '✨ [전체 보조선 보기] 풀이에 쓴 보조선과 길이 표시가 모두 나옵니다.'
     ]);
     const stepsHtml = () => stepsOf().map((st) => `<div style="margin-bottom:10px"><b>${st.title}</b><br/>${st.desc}</div>`).join('');
-    const tabX = (lab) => !!vary && !!lab && lab.tab !== 'explore';
+    const tabX = (lab) => !!lab && lab.tab !== 'explore';
     return {
       id: p.id, title: arrow(p.title), short: arrow(p.tabLabel), reviewTab: true, autoFit: true,
       ...(vary ? { vary } : {}),
@@ -2909,11 +2909,11 @@ window.addEventListener('DOMContentLoaded', function () {
       draw: (b, s, v, lab) => {
         BOARD = b;
         CUR = s;
-        // 문제·정리 탭(「새 문제」가 있는 장면): 탐구 슬라이더 위치가 아니라 변형의 조건대로, 끌 점 없이 그립니다.
+        // 문제·정리 탭은 현재 문제의 조건대로, 끌 점 없이 그립니다.
         if (tabX(lab) && !b.thumb) {
-          state.vp = vary.cur();
+          state.vp = vary ? vary.cur() : null;
           state.fixed = true;
-          const paint2 = (st) => { sync({ ...s, step: st, t: 0, anim: 1 }, idx); HN = 0; placedLabels = []; drawScene(); };
+          const paint2 = (st) => { sync({ ...s, step: st, t: vary ? 0 : p.defaultT, anim: 1 }, idx); HN = 0; placedLabels = []; drawScene(); };
           try {
             if (b._bbox) { for (let st = 0; st <= MAX_STEP; st++) paint2(st); } else paint2(lab.tab === 'problem' ? 0 : clampStep(s));
           } finally { state.vp = null; state.fixed = false; }
@@ -3002,7 +3002,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (!sc || !sc.vary) return;
       sc.vary.next();
       lab.s.revealed = false;
-      lab.setStep(1);
+      lab.setStep(0);
       try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
       lab.invalidate(true);
     });
@@ -3013,6 +3013,11 @@ window.addEventListener('DOMContentLoaded', function () {
     const scene = (o) => ({
       boardKind: 'cartesian', tabs: { compact: true }, ...o,
       steps: o.steps && (() => o.steps().map(fixLT)),
+      view: (s, lab) => {
+        const v = o.view(s, lab);
+        if (lab.tab !== 'explore' && !lab._answerOpen() && v.chips) v.chips = v.chips.filter((c) => !c.answer);
+        return v;
+      },
       solution: o.solution && { ...o.solution, standard: () => fixObj(o.solution.standard()), quick: () => fixObj(o.solution.quick()) }
     });
     const axesOf = (b) => { b.grid({ step: 1 }); b.axes({ tickStep: b.k < 32 ? 2 : 1 }); };
@@ -3189,8 +3194,8 @@ window.addEventListener('DOMContentLoaded', function () {
           if (st >= 2) {
             const h = f2fn(PP, aB), [q1, q2] = slopes2(PP, aB);
             b.plot(h, { color: 'rose', width: 3, dash: [7, 5], from: 0 }); b.plot(h, { color: 'rose', width: 3, dash: [7, 5], to: -1e-6 });
-            const t0 = PP.c + 2 * q1 * 0 + 6; // 가로선
-            const tt = PP.c + 4; b.hline(tt, { color: 'amber', dash: [5, 4], width: 1.8 });
+            // 오른쪽 기울기는 음수, 왼쪽은 양수이므로 두 가지 모두 y<c에 있습니다.
+            const tt = PP.c - 4; b.hline(tt, { color: 'amber', dash: [5, 4], width: 1.8 });
             [[(tt - PP.c) / q1, tt], [(tt - PP.c) / q2, tt]].forEach((p) => { if (Math.abs(p[0]) < 30) b.point(p, { r: 5, color: 'rose' }); });
             b.text([-7.5, tt], '두 번 만남', { color: 'rose', size: 12, align: 'left', dy: -10 });
           }
@@ -3227,7 +3232,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const text3 = (v) => `정의역이 ${tex(`\\{x\\mid ${v.N[0]}\\le x\\le ${v.N[4]}\\}`)}인 일대일대응 ${tex('y=f(x)')}의 그래프와 직선 ${tex('y=x')}가 그림과 같다. ${tex(`${v.tv[0].tex}+${v.tv[1].tex}`)}의 값을 구하시오. (단, 그래프는 꺾은선이고 꺾이는 점의 좌표는 정수이다.)`;
     const steps3 = () => { const v = var3.cur(); return [
       `$y=x$를 거울로 씁니다. $f(x)$의 값을 $x$축의 수에 옮기려면 그 점에서 <b>$y=x$까지 수평으로</b> 간 뒤 수직으로 내려갑니다.`.replace(/<\/?b>/g, ''),
-      `$${v.tv[0].tex}$: ${v.tv[0].back ? '그래프를 거꾸로(가로로 가서 그래프에 닿은 뒤 y=x로 올라가며) ' : '그래프 → y=x → 그래프 순으로 '}따라가면 값은 $${v.tv[0].val}$입니다.`,
+      `$${v.tv[0].tex}$: ${v.tv[0].back ? '그래프를 거꾸로(가로로 가서 그래프에 닿은 뒤 세로로 y=x까지 이동하며) ' : '그래프 → y=x → 그래프 순으로 '}따라가면 값은 $${v.tv[0].val}$입니다.`,
       `$${v.tv[1].tex}$: 같은 방법으로 $${v.tv[1].val}$.`,
       `$${v.tv[0].val}+${v.tv[1].val}=${v.ans.tex}$`
     ]; };
@@ -3339,12 +3344,12 @@ window.addEventListener('DOMContentLoaded', function () {
           if (lab.tab !== 'explore') { const v = var4.cur(); return { chips: [{ tex: `a=${v.a},\\ b=${v.b},\\ c=${v.c}`, color: 'amber', answer: true }] }; }
           const { f4a: a, f4b: bb, f4c: c } = s, det = a * c - bb, same = a + c === 0, flat = det === 0;
           return {
-            chips: [{ tex: flat ? `f(x)=${mn(a)}\\ (\\text{상수})` : rTex(a, bb, c), color: 'sky' }, { tex: flat ? '' : `f^{-1}(x)=\\dfrac{${lin(-c, bb)}}{${lin(1, -a)}}`, color: 'green' }].filter((x) => x.tex),
+            chips: [{ tex: flat ? `f(x)=${mn(a)}\\ (x\\ne ${mn(-c)})` : rTex(a, bb, c), color: 'sky' }, { tex: flat ? '' : `f^{-1}(x)=\\dfrac{${lin(-c, bb)}}{${lin(1, -a)}}`, color: 'green' }].filter((x) => x.tex),
             status: { tone: flat ? 'warn' : same ? 'key' : 'info', text: flat ? '분자가 분모의 배수 — 상수함수(역함수 없음)' : same ? 'f = f⁻¹ ! 점근선의 교점이 y=x 위' : `a + c = ${mn(a + c)} ≠ 0 — f와 f⁻¹은 다릅니다` },
             readouts: [
-              { label: 'f의 점근선', value: `x = ${mn(-c)},  y = ${mn(a)}`, color: 'sky' },
-              { label: 'f⁻¹의 점근선', value: `x = ${mn(a)},  y = ${mn(-c)}`, color: 'green', note: 'x와 y가 서로 바뀜' },
-              { label: '자기 역함수 조건', value: same ? 'a + c = 0 ✓' : `a + c = ${mn(a + c)}`, color: same ? 'green' : 'rose', wide: true, note: 'f(x)=f⁻¹(x) 이려면 a+c=0' }
+              { label: flat ? '제외된 점' : 'f의 점근선', value: flat ? `(${mn(-c)}, ${mn(a)})` : `x = ${mn(-c)},  y = ${mn(a)}`, color: 'sky' },
+              { label: flat ? '역함수' : 'f⁻¹의 점근선', value: flat ? '없음 — 서로 다른 입력이 같은 출력' : `x = ${mn(a)},  y = ${mn(-c)}`, color: 'green', note: flat ? '약분해도 x=−c는 정의역에서 제외됩니다' : 'x와 y가 서로 바뀜' },
+              { label: '자기 역함수 조건', value: flat ? '역함수가 없으므로 성립하지 않음' : same ? 'a + c = 0 ✓' : `a + c = ${mn(a + c)}`, color: !flat && same ? 'green' : 'rose', wide: true, note: 'b≠ac인 유리함수에서 f=f⁻¹ ⇔ a+c=0' }
             ]
           };
         },
@@ -3354,9 +3359,9 @@ window.addEventListener('DOMContentLoaded', function () {
           const vb = b.viewBox();
           if (lab.tab === 'explore') {
             const { f4a: a, f4b: bb, f4c: c } = s, det = a * c - bb, same = a + c === 0;
-            b.vline(-c, { color: 'amber', dash: [5, 5], width: 1.3, alpha: 0.55 }); b.hline(a, { color: 'rose', dash: [5, 5], width: 1.3, alpha: 0.55 });
+            if (det !== 0) { b.vline(-c, { color: 'amber', dash: [5, 5], width: 1.3, alpha: 0.55 }); b.hline(a, { color: 'rose', dash: [5, 5], width: 1.3, alpha: 0.55 }); }
             b.line([0, 0], 1, { color: 'violet', dash: [7, 5], width: 2 }); b.text([Math.min(vb.x1, vb.y1) - 0.9, Math.min(vb.x1, vb.y1) - 0.9], 'y=x', { color: 'violet', size: 13, align: 'right', dy: 14 });
-            if (det === 0) { b.hline(a, { color: 'sky', width: 3.4 }); return; }
+            if (det === 0) { b.hline(a, { color: 'sky', width: 3.4 }); b.point([-c, a], { r: 6, hollow: true, color: 'sky', label: '제외된 점', dx: 10, dy: 16, size: 12 }); return; }
             drawRatCurve(b, rinv(a, bb, c), a, { color: 'green', width: 3.2, dash: [8, 4] });
             drawRatCurve(b, rf(a, bb, c), -c, { color: 'sky', width: same ? 4.4 : 3.6, glow: true });
             let u = s.f4u; if (Math.abs(u + c) < 0.3) u = -c + (u >= -c ? 0.3 : -0.3);
@@ -3376,9 +3381,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
     /* ======================== ⑤ 두 식 중 하나를 골라 일대일 만들기 ======================== */
     const ruleA = (P, x) => -x * x + P.al, ruleB = (P, x) => -P.k * x;
-    function valid5(P) { // 모든 배정의 일대일 여부
-      const n = P.X.length, out = [];
-      for (let m = 0; m < 1 << n; m++) { const vals = P.X.map((x, i) => ((m >> i) & 1 ? ruleB(P, x) : ruleA(P, x))); if (new Set(vals).size === n) out.push(m); }
+    function valid5(P) { // A=B인 입력에서는 두 배정이 같은 함수이므로 함숫값의 목록으로 중복 제거
+      const n = P.X.length, out = [], seen = new Set();
+      for (let m = 0; m < 1 << n; m++) {
+        const vals = P.X.map((x, i) => ((m >> i) & 1 ? ruleB(P, x) : ruleA(P, x))), key = vals.join(',');
+        if (new Set(vals).size === n && !seen.has(key)) { seen.add(key); out.push(m); }
+      }
       return out;
     }
     const mask2s = (P, m) => P.X.map((_, i) => ((m >> i) & 1 ? 'B' : 'A')).join('');
@@ -3421,7 +3429,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return [
         `각 원소의 두 후보값을 구합니다. ${tbl}.`,
         conf.length ? `같은 값이 되는 선택(충돌): ${conf.join(' ; ')}. 이 두 선택을 동시에 하면 일대일이 아닙니다.` : '충돌하는 선택이 없어 모든 배정이 일대일입니다.',
-        `충돌을 피하는 선택을 모두 세면 ${v.ok.map((m) => mask2s(P, m)).join(', ')} (순서: ${P.X.join(',')} 의 선택) ⇒ <b>${v.ans.tex}개</b>`.replace(/<\/?b>/g, '')
+        `충돌을 피하는 서로 다른 함수의 대표 선택은 ${v.ok.map((m) => mask2s(P, m)).join(', ')} (순서: ${P.X.join(',')}). 한 입력에서 A와 B가 같은 값이면 같은 함수로 한 번만 셉니다. 따라서 ${v.ans.tex}개입니다.`
       ];
     };
     function sceneF5() {
@@ -3442,7 +3450,7 @@ window.addEventListener('DOMContentLoaded', function () {
         problem: { tag: '23 고1 11월 경기 29번 유형 (두 식 중 선택하는 일대일함수)', time: '목표 시간: 40초', text: () => probHTML(text5(var5.cur())), answer: () => tex(var5.cur().ans.tex) },
         solution: {
           standardTitle: '충돌 피하기', standardTag: '기본 풀이', quickTitle: '충돌 쌍을 먼저 찾기', quickTag: '핵심',
-          standard: () => { const v = var5.cur(); return { steps: `충돌하는 선택을 피하는 배정: ${v.ok.map((m) => mask2s(v.P, m)).join(', ')} ⇒ ${v.ans.tex}개`, warning: '한 원소의 A와 B가 같은 값이 되는 경우, 같은 값을 갖는 서로 다른 원소의 선택도 함께 확인하세요.' }; },
+          standard: () => { const v = var5.cur(); return { steps: `서로 다른 함수의 대표 배정: ${v.ok.map((m) => mask2s(v.P, m)).join(', ')} ⇒ ${v.ans.tex}개`, warning: '한 입력의 A와 B가 같으면 두 선택은 같은 함수입니다. 서로 다른 입력의 출력이 같으면 일대일이 아니므로 제외합니다.' }; },
           quick: () => ({ steps: '두 후보 화살표가 <b>같은 값 칸</b>에 모이는 쌍을 먼저 표시하면, 그 쌍을 동시에 고르지 않는 경우만 세면 됩니다.', highlight: '2ⁿ가지 배정을 다 쓰지 말고 충돌 쌍으로 걸러내세요.' })
         },
         view: (s, lab) => {
@@ -3480,6 +3488,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'common-functions',
+    stagedReveal: true,
     title: '합성함수 · 유리 · 무리함수',
     courseName: '공통수학',
     unit: '함수와 그래프',

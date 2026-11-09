@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
@@ -65,6 +65,14 @@ window.addEventListener('DOMContentLoaded', function () {
   const baseScene = (o) => ({
     tabs: { compact: true }, ...o,
     steps: o.steps && (() => o.steps().map(fixLT)),
+    view: (s, lab) => {
+      const v = o.view(s, lab);
+      if (lab.tab !== 'explore' && !lab._answerOpen()) {
+        if (v.chips) v.chips = v.chips.filter((c) => !c.answer);
+        if (v.tape && v.tape.answer) delete v.tape;
+      }
+      return v;
+    },
     solution: o.solution && { ...o.solution, standard: () => fixObj(o.solution.standard()), quick: () => fixObj(o.solution.quick()) }
   });
   // 1:1 무대 안에서 점 라벨 위치를 정하기 위한 짧은 도우미
@@ -153,8 +161,8 @@ window.addEventListener('DOMContentLoaded', function () {
       if (st >= 1) { b.vline(v.p, { color: 'amber', dash: [5, 4], width: 1.6 }); b.hline(v.q, { color: 'rose', dash: [5, 4], width: 1.6 }); }
       if (st >= 3) {
         b.poly([[v.p, v.q], [v.P[0], v.q], v.P, [v.p, v.P[1]]], { color: 'green', dash: [5, 4], width: 2, fill: 'green', fillAlpha: 0.1 });
-        b.text([(v.p + v.P[0]) / 2, v.q], `${mn(v.P[0] - v.p)}`, { color: 'green', size: 13, dy: v.s > 0 ? 16 : -12 });
-        b.text([v.P[0], (v.q + v.P[1]) / 2], `${mn(v.P[1] - v.q)}`, { color: 'green', size: 13, align: v.d > 0 ? 'left' : 'right', dx: v.d > 0 ? 8 : -8 });
+        b.text([(v.p + v.P[0]) / 2, v.q], `${mn(Math.abs(v.P[0] - v.p))}`, { color: 'green', size: 13, dy: v.s > 0 ? 16 : -12 });
+        b.text([v.P[0], (v.q + v.P[1]) / 2], `${mn(Math.abs(v.P[1] - v.q))}`, { color: 'green', size: 13, align: v.d > 0 ? 'left' : 'right', dx: v.d > 0 ? 8 : -8 });
       }
     } else {
       const a0 = 5, b0 = -1;
@@ -309,6 +317,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const m = s.i2m, n = s.i2n, r = inter2(c, p, q, m, n), ne = q - m * p, nt = m > 0 ? ne + c / (4 * m) : null;
         const pts = nt == null ? [ne] : [ne, nt], tp = tapeFor(pts, (k) => inter2(c, p, q, m, k).n), r2 = (x) => mn(Math.round(x * 100) / 100);
         return {
+          guide: m > 0 ? '기울기가 양수인 직선을 위아래로 옮기세요. 시작점을 지날 때와 접할 때를 경계로 교점이 1개 → 2개 → 1개 → 0개로 바뀝니다.' : '곡선은 증가하고 직선은 감소하므로 두 점에서 만날 수 없습니다. 직선이 시작점보다 아래를 지나면 교점이 없고, 시작점을 지나거나 위를 지나면 정확히 한 점에서 만납니다.',
           chips: [{ tex: `y=\\sqrt{${lin(c, -c * p)}},\\ \\ y=${m === 0.5 ? '\\tfrac12' : m === -1 ? '-' : m === 1 ? '' : m}x${addT(Math.round(n * 100) / 100)}`, color: 'sky' }],
           status: { tone: r.n === 1 ? 'key' : r.n === 2 ? 'ok' : 'warn', text: `교점 ${r.n}개${r.tan ? ' — 접합니다!' : ''}` },
           tape: { title: `y절편이 커질 때 교점 개수 (끝점을 지날 때 ${r2(ne)}${nt == null ? '' : `, 접할 때 ${r2(nt)}`})`, segments: tp, answer: true },
@@ -328,24 +337,25 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ======================== 장면 3 · 역함수와 y=x ======================== */
   const f3 = (c, s, p, q) => (x) => (x < p - 1e-12 ? NaN : s * Math.sqrt(c * Math.max(0, x - p)) + q);
   const inv3 = (c, s, p, q) => (x) => ((s > 0 ? x >= q - 1e-12 : x <= q + 1e-12) ? p + ((x - q) * (x - q)) / c : NaN);
-  function cross3(c, s, p, q) { // 함수 f 와 역함수 그래프의 교점들 (f(f(x)) = x 의 해)
-    const f = f3(c, s, p, q), H = (x) => { const y = f(x); if (!Number.isFinite(y)) return NaN; const z = f(y); return Number.isFinite(z) ? z - x : NaN; };
-    const xs = [];
-    let prev = null; const h = 0.0025;
-    for (let i = 0; i <= 40000; i++) {
-      const x = p + i * h, v = H(x);
-      if (Number.isFinite(v)) {
-        if (Math.abs(v) < 1e-9) xs.push(x);
-        else if (prev && Number.isFinite(prev.v) && prev.v * v < 0) { let lo = prev.x, hi = x, vl = prev.v; for (let k = 0; k < 60; k++) { const mid = (lo + hi) / 2, vm = H(mid); if (vm * vl <= 0) hi = mid; else { lo = mid; vl = vm; } } xs.push((lo + hi) / 2); }
+  function cross3(c, s, p, q) { // u=√(x-p), v=√(y-p)로 구한 실제 교점만 반환합니다.
+    const out = [], rc = Math.sqrt(c), delta = q - p, D = c + 4 * delta;
+    // y=x 위에서는 u²−s√c u−(q−p)=0, u≥0입니다.
+    if (D >= 0) {
+      for (const u of [(s * rc - Math.sqrt(D)) / 2, (s * rc + Math.sqrt(D)) / 2]) {
+        if (u < -1e-10) continue;
+        const x = p + Math.max(0, u) ** 2;
+        if (!out.some((z) => Math.abs(z.x - x) < 1e-9)) out.push({ x, y: x, on: true });
       }
-      prev = { x, v };
     }
-    const cand = [p, p + ((q - p) * (q - p)) / c]; // 정의역 경계에서 생기는 교점
-    cand.forEach((x) => { if (Math.abs(H(x)) < 1e-7) xs.push(x); });
-    xs.sort((a, b) => a - b);
-    const out = [];
-    xs.forEach((x) => { if (!out.length || Math.abs(x - out[out.length - 1]) > 1e-4) out.push(x); });
-    return out.map((x) => { const y = f(x); return { x, y, on: Math.abs(y - x) < 1e-5 }; });
+    // 감소함수의 축 밖 교점은 u+v=√c, uv=c−(q−p)를 만족합니다.
+    // 서로 다른 두 음이 아닌 근이 있을 때만 대칭쌍을 더합니다(중근은 위의 축 위 교점).
+    const offD = 4 * delta - 3 * c;
+    if (s < 0 && offD > 0 && delta <= c) {
+      const u = (rc - Math.sqrt(offD)) / 2, v = (rc + Math.sqrt(offD)) / 2;
+      const x = p + u * u, y = p + v * v;
+      out.push({ x, y, on: false }, { x: y, y: x, on: false });
+    }
+    return out.sort((a, b) => a.x - b.x);
   }
   const f3Tex = (c, s, p, q) => `f(x)=${s < 0 ? '-' : ''}\\sqrt{${innerTeX(c, 1, p)}}${addT(q)}`;
   const g3Tex = (c, s, p, q) => `f^{-1}(x)=${c === 1 ? `(x${addT(-q)})^2` : `\\dfrac{(x${addT(-q)})^2}{${c}}`}${addT(p)}\\ \\ (x${s > 0 ? '\\ge' : '\\le'}${q})`;
@@ -375,8 +385,8 @@ window.addEventListener('DOMContentLoaded', function () {
     return [
       `$f$의 역함수의 그래프는 $f$의 그래프를 직선 $y=x$에 대하여 대칭이동한 곡선 $x=-\\sqrt{${c}y}${addT(q)}$입니다. 두 곡선과 $y=x$를 함께 그립니다.`,
       `<y=x 위의 교점> $f(x)=x$ ⇒ $\\sqrt{${c}x}=${q}-x$ ⇒ $x^2-${2 * q + c}x+${q * q}=0$ 에서 $x\\le ${q}$인 해 $x\\approx ${r2(root)}$ 하나입니다.`.replace('<y=x 위의 교점> ', ''),
-      `$f$는 <b>감소함수</b>라서 $y=x$ 밖에서도 만날 수 있습니다: $f(a)=b$, $f(b)=a$ ($a\\ne b$)인 쌍은 서로 대칭인 두 교점 $(a,b)$, $(b,a)$입니다. $\\sqrt a+\\sqrt b=\\sqrt{${c}}$ 이고 $\\sqrt a$는 $t^2-\\sqrt{${c}}\\,t+${c - q}=0$의 근이므로 판별식 $4\\cdot${q}-3\\cdot ${c}=${4 * q - 3 * c}$ 가 양수이고 근이 $0\\le t\\le\\sqrt{${c}}$ 이어야 합니다.`.replace(/<\/?b>/g, ''),
-      off.length ? `이 경우에 해당하여 $y=x$ 밖의 교점 ${off.length}개(${off.map((z) => `(${r2(z.x)}, ${r2(z.y)})`).join(', ')})가 더해져 교점은 모두 <b>${v.ans.tex}개</b>입니다.`.replace(/<\/?b>/g, '') : `조건에 맞지 않아 $y=x$ 밖의 교점이 없으므로 교점은 <b>${v.ans.tex}개</b>입니다.`.replace(/<\/?b>/g, '')
+      `$f$는 감소함수라서 $y=x$ 밖에서도 만날 수 있습니다. $b=-\\sqrt{${c}a}+${q}$, $a=-\\sqrt{${c}b}+${q}$를 빼면 $b-a=\\sqrt{${c}}(\\sqrt b-\\sqrt a)$입니다. $a\\ne b$이므로 $\\sqrt b-\\sqrt a$로 나누어 $\\sqrt a+\\sqrt b=\\sqrt{${c}}$를 얻습니다. $t=\\sqrt a$라 하면 $t^2-\\sqrt{${c}}\\,t+${c - q}=0$이므로 판별식 $4\\cdot${q}-3\\cdot ${c}=${4 * q - 3 * c}$가 양수이고 두 근이 $0\\le t\\le\\sqrt{${c}}$에 있어야 합니다.`,
+      off.length ? `이 경우에 해당하여 $y=x$ 밖의 교점 ${off.length}개(좌표는 각각 약 ${off.map((z) => `(${r2(z.x)}, ${r2(z.y)})`).join(', ')})가 더해져 교점은 모두 ${v.ans.tex}개입니다.` : `조건에 맞지 않아 $y=x$ 밖의 교점이 없으므로 교점은 ${v.ans.tex}개입니다.`
     ];
   };
   function drawI3(b, s, lab) {
@@ -395,6 +405,7 @@ window.addEventListener('DOMContentLoaded', function () {
     b.plot(f, { color: 'sky', width: 3.6, glow: true, from: p, ref: 'f' });
     if (showAll || lab.tab !== 'explore') b.plot(g, { color: 'green', width: 3.2, dash: [8, 4], ...(sg > 0 ? { from: q } : { to: q }), ref: 'g' });
     const symT = !showAll && var3.cur().type === 'T';
+    if (symT) b.text([vb.x1, vb.y1], '그림은 범위 안의 k를 택한 예시', { color: 'muted', size: 12, align: 'right', dx: -8, dy: 66 });
     b.point([p, q], { r: 5, color: 'sky', label: symT ? `(${mn(p)}, k)` : `(${mn(p)}, ${mn(Math.round(q * 100) / 100)})`, dx: -9, dy: sg > 0 ? 16 : -12, align: 'right', size: 12 });
     b.point([q, p], { r: 5, color: 'green', label: symT ? `(k, ${mn(p)})` : `(${mn(Math.round(q * 100) / 100)}, ${mn(p)})`, dx: sg > 0 ? 9 : 9, dy: sg > 0 ? 14 : 14, size: 12 });
     if (showAll) {
@@ -408,7 +419,7 @@ window.addEventListener('DOMContentLoaded', function () {
     cr.forEach((z, i) => {
       if (!showAll && st < 2) return;
       if (!showAll && !z.on && st < 3) return;
-      b.point([z.x, z.y], { r: 6, color: z.on ? 'amber' : 'rose', hollow: !z.on, label: z.on ? '' : (z.x < z.y ? `(${mn(Math.round(z.x * 100) / 100)}, ${mn(Math.round(z.y * 100) / 100)})` : `(${mn(Math.round(z.x * 100) / 100)}, ${mn(Math.round(z.y * 100) / 100)})`), dx: z.x < z.y ? -10 : 10, dy: z.x < z.y ? -10 : 16, align: z.x < z.y ? 'right' : 'left', size: 12, ref: 'cross' });
+      b.point([z.x, z.y], { r: 6, color: z.on ? 'amber' : 'rose', hollow: !z.on, label: z.on ? '' : `≈ (${mn(z.x)}, ${mn(z.y)})`, dx: z.x < z.y ? -10 : 10, dy: z.x < z.y ? -10 : 16, align: z.x < z.y ? 'right' : 'left', size: 12, ref: 'cross' });
     });
     if (!showAll && var3.cur().type === 'T') {
       const v = var3.cur();
@@ -463,6 +474,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const fm = (v) => mn(v);
   APLab.createLab({
     id: 'common-irrational',
+    stagedReveal: true,
     title: '무리함수',
     courseName: '공통수학',
     unit: '함수와 그래프',
