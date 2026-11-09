@@ -268,7 +268,11 @@
         let text = mi(w.val) + '°';
         if (isTar) text = 'x';
         if (mode === 'review' && st === 2 && !w.hv) return;
-        wedge(b, w.V, w.d1, w.d2, { color: col, rings: isTar ? 3 : w.side === 'R' ? 1 : 2, text, r: 25, size: isTar ? 19 : 16, fa: 0.24, flip: w.hv });
+        // 낮은 휴대폰 무대에서는 마지막 각의 값이 아래 합 문장과 겹쳐요.
+        // B 옆의 독립 위치에서 실제 각호에 연결하고 문제의 x 단계는 유지합니다.
+        const besideB = !b.thumb && b.W < 560 && b.H - (b.insets?.bottom || 0) < 280 && w.i === k + 1 && mode !== 'problem' && (mode === 'explore' || st >= 3);
+        wedge(b, w.V, w.d1, w.d2, { color: col, rings: isTar ? 3 : w.side === 'R' ? 1 : 2, text, r: 25, size: isTar ? 19 : 16, fa: 0.24, flip: w.hv,
+          ...(besideB ? { at: { dx: w.side === 'R' ? 52 : -52, dy: 10 } } : {}) });
       });
       if (mode === 'explore') {
         const setU = (j, v) => { s[UKEYS[j]] = clamp(Math.round(v), 30, 80); };

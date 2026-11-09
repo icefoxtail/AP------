@@ -128,7 +128,8 @@
       const eqF = C.problem || C.review ? true : M.eq;
       const h = M.h, d1 = C.problem || C.review ? M.d1 : M.d1, d2 = C.problem || C.review ? M.d1 : M.d2;
       const g = C.problem || C.review ? angGeom(h, d1, d1) : M.g, { O, P: Pp, E, F, X, Y } = g, st = C.step, v = (s.trV || 0) % 2;
-      fit(b, bboxOf([O, X, Y, Pp, E, F]), { t: 46, b: C.problem ? 50 : 92, l: 50, r: 50 });
+      // Keep the upper ray name below the inquiry/review status badge.
+      fit(b, bboxOf([O, X, Y, Pp, E, F]), { t: !C.thumb && !C.problem ? 70 : 46, b: C.problem ? 50 : 92, l: 50, r: 50 });
       const show = (k) => (C.problem ? false : C.review ? st >= k : true);
       fillPoly(b, [O, X, Y], 'sky', 0.06);
       drawAngle(b, g);

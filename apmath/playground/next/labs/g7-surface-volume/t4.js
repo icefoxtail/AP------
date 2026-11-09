@@ -549,7 +549,15 @@
       parts.forEach((p) => D.body({ mesh: p.m, fill: lv[p.k] === 2 ? 'amber' : p.col, alpha: lv[p.k] === 2 ? 0.38 : 0.26, edge: 'ink', edgeW: 2.6, dashBack: () => (dx < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'flat' && dx > r * 0.5 ? { fill: 'red', alpha: 0.4 } : f.tag === 'flat' ? { fill: p.col, alpha: 0.12 } : {}) }));
       if (!C.problem && C.tab === 'explore' && M.mode === 'vol' && t >= 0.5) return;
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), D.hx(off));
-      D.dim(pa(r, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `모선 ${M.R}`, { side: { x: 1, y: 0 }, off: 20 });
+      const slantBase = pa(r, yC, 2 * dx), slantTop = pa(0, yC + hc, 2 * dx);
+      if (b.W < 560 && !b.thumb && !C.problem) {
+        // 분해된 원뿔 오른쪽의 목차 손잡이를 피해 모선 값을 꼭짓점 위에 둡니다.
+        // 입체 크기를 줄이지 않고 실제 모선 한가운데에 지시선을 연결해요.
+        const label = `모선 ${M.R}`, size = D.fs(15), metrics = b.annotationSize(label, { size, weight: 800 });
+        const top = D.px(slantTop), at = { x: clamp(top.x, 8 + metrics.width / 2, b.W - 32 - metrics.width / 2), y: Math.max(8 + metrics.height / 2, top.y - 24) };
+        b.leader(D.px(mid3(slantBase, slantTop)), at, { ...metrics, px: true, color: 'muted', alpha: 0.78 });
+        b.text(b.toW(at.x, at.y), label, { size, weight: 800, color: 'ink', align: 'center', baseline: 'middle' });
+      } else D.dim(slantBase, slantTop, `모선 ${M.R}`, { side: { x: 1, y: 0 }, off: 20 });
       D.height(pa(0, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `원뿔의 높이 ${M.hc}`, { side: { x: -1, y: 0 }, alongFrac: -0.1, color: 'amber' });
       D.dim(pa(r, yH, dx), pa(r, yC, dx), `높이 ${M.H}`, { side: { x: 1, y: 0 }, off: 20, color: 'amber' });
       D.radius(lp(pa(0, yH, 0)), lp(pa(r, yH, 0)), `반지름 ${M.r}`, { end: true });

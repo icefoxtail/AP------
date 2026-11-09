@@ -478,8 +478,17 @@
       if (done || C.problem) line(b, A, D, 'ink', 3.4);
       tick(b, A, B, 2, 'rose'); tick(b, A, Cp, 2, 'rose'); if (done || C.problem) tick(b, Cp, D, 2, 'rose');
       // 각
-      ang(b, B, Cp, A, { color: 'sky', rings: 1, r: 30, label: C.problem ? dg(bb) : dg(bb), size: 16 });
-      ang(b, Cp, A, B, { color: 'sky', rings: 1, r: 30, label: C.problem ? '' : dg(bb), size: 16, labelDist: 52 });
+      // 좁고 높은 삼각형에서는 두 밑각의 값이 가운데에서 붙어 읽혀요.
+      // 실제 두 글자 사이 여유가 부족할 때만 각 꼭짓점 바깥으로 옮기고,
+      // 지시선은 해당 밑각의 호에 연결합니다. 문제의 주어진 한 각은 그대로예요.
+      const baseSpan = Math.abs(b.toS(Cp).x - b.toS(B).x), halfBaseAngle = bb * DEG / 2;
+      const labelWidth = b.annotationSize ? b.annotationSize(dg(bb), { size: 16, weight: 800 }).width - 6 : G.textW(dg(bb), 16);
+      const bLabelDist = Math.max(44, Math.min((G.textW(dg(bb), 16) / 2 + 5) / Math.max(0.2, Math.sin(halfBaseAngle)), 100));
+      const separateBaseValues = !b.thumb && b.W < 560 && !C.problem && baseSpan - (bLabelDist + 52) * Math.cos(halfBaseAngle) < labelWidth + 12;
+      ang(b, B, Cp, A, { color: 'sky', rings: 1, r: 30, label: dg(bb), size: 16,
+        ...(separateBaseValues ? { labelDist: 44, labelRot: -120 + bb / 2, leader: true } : {}) });
+      ang(b, Cp, A, B, { color: 'sky', rings: 1, r: 30, label: C.problem ? '' : dg(bb), size: 16, labelDist: 52,
+        ...(separateBaseValues ? { labelDist: 44, labelRot: 120 - bb / 2, leader: true } : {}) });
       ang(b, A, B, Cp, { color: 'sky', r: 30, label: C.problem ? '' : dg(al), size: 16, labelDist: 56 });
       if (done || C.problem) {
         if (m2 > 0.01 || C.problem) {

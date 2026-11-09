@@ -76,6 +76,14 @@ test('a sidebar handle cannot obscure a given arc length inside the canvas',()=>
   assert.deepEqual(initialIssues({...visible,labels:[{...label,left:240,right:309}],occluders:[handle]},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
 });
 
+test('a status badge cannot cover the upper ray name of an angle-bisector figure',()=>{
+  // Measured from t4-2, 1024x768 Chromium before the repair.
+  const label={text:'X',left:507.742256,right:520.742256,top:34.199375,bottom:47.199375};
+  const badge={kind:'scene-status',left:446,right:671,top:12,bottom:42};
+  assert.ok(initialIssues({...visible,id:'t4-2',labels:[label],occluders:[badge]},'t4-2',[],{status:'NOT_APPLICABLE'}).includes('overlay-covers-figure-label'));
+  assert.deepEqual(initialIssues({...visible,id:'t4-2',labels:[{...label,top:58,bottom:71}],occluders:[badge]},'t4-2',[],{status:'NOT_APPLICABLE'}),[]);
+});
+
 test('real interaction coverage includes new labs and cannot silently lose a repaired scene',()=>{
   assert.equal(needsInitialInteractionCheck('g7-new',{id:'new-first',index:0}),true);
   assert.equal(needsInitialInteractionCheck('g7-circle-sector',{id:'f1-lens',index:12}),true);

@@ -155,9 +155,9 @@ function observe() {
   const tools = l.ui.tools, toolRect = tools.checkVisibility() ? tools.getBoundingClientRect() : null;
   const toolbar = toolRect ? { left: toolRect.left - rect.left, right: toolRect.right - rect.left,
     top: toolRect.top - rect.top, bottom: toolRect.bottom - rect.top } : null;
-  const occluders = [...document.querySelectorAll('.apl-toc-handle')].filter(e => e.checkVisibility({opacityProperty:true,visibilityProperty:true})).map(e => {
+  const occluders = [...document.querySelectorAll('.apl-toc-handle, .apl-status')].filter(e => e.checkVisibility({opacityProperty:true,visibilityProperty:true})).map(e => {
     const r = e.getBoundingClientRect();
-    return {kind:'table-of-contents-handle',left:r.left-rect.left,right:r.right-rect.left,top:r.top-rect.top,bottom:r.bottom-rect.top};
+    return {kind:e.matches('.apl-status')?'scene-status':'table-of-contents-handle',left:r.left-rect.left,right:r.right-rect.left,top:r.top-rect.top,bottom:r.bottom-rect.top};
   });
   const labels = [...(window.__initialFigureLabels || [])];
   for (const el of b._labels?.values() || []) if (el.checkVisibility({opacityProperty:true,visibilityProperty:true})) {

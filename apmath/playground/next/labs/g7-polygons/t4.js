@@ -135,8 +135,23 @@
       line(b, pt(xm, y - 0.04), pt(xm, y + h + 0.04), 'ink', 3);
       if (C.txt) {
         const showRatio = C.problem || (C.review && st === 0);
-        T(b, pt((x0 + xm) / 2, y), showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
-        T(b, pt((xm + x0 + W) / 2, y), showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
+        const inside = pt((x0 + xm) / 2, y), outside = pt((xm + x0 + W) / 2, y);
+        if (C.problem && !C.thumb && b.W < 560 && b.toS) {
+          // 짧은 비율 막대에서도 두 조건을 따로 읽고, 해당 색 면에 연결해요.
+          // 정답인 n이나 다각형은 문제 단계에서 보여 주지 않습니다.
+          const center = b.toS(pt(0, y));
+          const labels = [{ p: inside, text: `내각 ${a}`, color: 'sky', side: -1 }, { p: outside, text: `외각 ${bb}`, color: 'rose', side: 1 }];
+          const sizes = labels.map(v => b.annotationSize ? b.annotationSize(v.text, { size: 17, weight: 800 }) : { width: textW(v.text, 17) + 6, height: 23 });
+          const spread = Math.max(W * K / 2, (sizes[0].width + sizes[1].width) / 4 + 8);
+          labels.forEach((v, i) => {
+            const anchor = b.toS(v.p), label = pt(center.x + v.side * spread, anchor.y - 26);
+            if (b.leader) b.leader(anchor, label, { ...sizes[i], px: true, color: v.color, lineWidth: 1.2, gap: 2 });
+            T(b, v.p, v.text, { dx: label.x - anchor.x, dy: label.y - anchor.y, color: v.color, size: 17 });
+          });
+        } else {
+          T(b, inside, showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
+          T(b, outside, showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
+        }
         T(b, pt(0, y), `${a} : ${bb}`, { dy: h * K + 18, color: 'ink', size: 17 });
         if (!C.problem) T(b, pt(0, y), '(내각 + 외각 = 180°)', { dy: h * K + 40, color: 'muted', size: 14 });
       }
