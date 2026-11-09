@@ -159,9 +159,10 @@
       const { a, b: bb, c, d, e, pts } = M, { A, B, C: Cc, D, E, P: Pp, S } = pts;
       const all = [A, B, Cc, D, E];
       const compact = !C.thumb && b.W < 560 && (C.problem || C.review);
+      const compactExplore = !C.thumb && b.W < 560 && !C.problem && !C.review;
       // 좁은 가로 화면에서 긴 풀이 식이 오른쪽 아래 도구막대 뒤로 들어가지 않게 합니다.
       const footerReserve = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 44 : 0;
-      fit(b, bboxOf(all), compact ? { t: 48, b: 48, l: 62, r: 62 } : { t: 58, b: 112 + footerReserve, l: 62, r: 62 });
+      fit(b, bboxOf(all), compact ? { t: 48, b: 48, l: 62, r: 62 } : compactExplore ? { t: 48, b: 68, l: 62, r: 62 } : { t: 58, b: 112 + footerReserve, l: 62, r: 62 });
       const cen = pt(all.reduce((q, p) => q + p.x, 0) / 5, all.reduce((q, p) => q + p.y, 0) / 5);
       const st = C.step;
       const lines = [[A, Cc], [A, D], [B, D], [B, E], [Cc, E]];
@@ -173,10 +174,10 @@
       tips.forEach(([V, p, q, val, nm], i) => {
         const isX = i === 4 && (C.problem || (C.review && st < 3));
         const col = isX ? 'amber' : 'sky';
-        const r = ang(b, V, p, q, { color: col, r: compact ? 18 : 26, rings: 0, size: 16, fa: 0.16 });
+        const r = ang(b, V, p, q, { color: col, r: compact || compactExplore ? 18 : 26, rings: 0, size: 16, fa: 0.16 });
         const u = unit(sub(cen, V));
         const lab = isX ? `${nm} x` : `${nm} ${val}°`;
-        const dist = 24 + G.textW(lab, 16) * 0.4;
+        const dist = (compactExplore ? 18 : 24) + G.textW(lab, 16) * 0.4;
         T(b, V, lab, { dx: -u.x * dist, dy: -u.y * dist, color: isX ? 'amber' : 'sky', size: 16 });
         b.point(V, { color: 'ink', r: 4.5 });
         void r;
@@ -199,8 +200,8 @@
       else if (st === 1) { row = `삼각형 PCE, SBD 의 외각 → c+x, b+d`; col = 'green'; }
       else if (st === 2) { row = `${a}°+(${c}°+x)+${bb + d}° = 180°`; col = 'sky'; }
       else row = b.W < 560 ? `A+B+C+D+E = 180°` : `A+B+C+D+E = ${a}+${bb}+${c}+${d}+${e} = 180°`;
-      T(b, pt((D.x + Cc.x) / 2, yb), row, { dy: 80, size: 17, color: col });
-      if (!C.problem && !C.review && b.W < 560) T(b, pt((D.x + Cc.x) / 2, yb), `${a}+${bb}+${c}+${d}+${e} = 180`, { dy: 104, size: 15, color: 'sky' });
+      // 수치합은 기존 설명/수식에도 있으므로 좁은 탐구 무대에는 합 관계를 한 번만 씁니다.
+      T(b, pt((D.x + Cc.x) / 2, yb), row, { dy: compactExplore ? 58 : 80, size: 17, color: col });
     },
     steps: (M) => [
       `삼각형의 외각의 성질을 두 번 써요. ∠E=x라 두면 △PCE의 외각 ∠APS=∠C+x이고, △SBD의 외각 ∠ASP=∠B+∠D=${M.b + M.d}°예요.`,

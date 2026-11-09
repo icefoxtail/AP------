@@ -5,7 +5,8 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
 import vm from 'node:vm';
-import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame, sampleSmokeSemanticCalibration } from './scene-smoke-semantic-calibration.mjs';
+import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame, sampleSmokeSemanticCalibration, isObservedAxisDecoration } from './scene-smoke-semantic-calibration.mjs';
+import { adjudicateSmokeMeasurement } from './scene-smoke-measurement-gate.mjs';
 
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const rgba = (w, h) => new Uint8ClampedArray(w * h * 4);
@@ -153,12 +154,15 @@ function realBoardWindow(dpr = 1) {
         actualBoundingBoxAscent: size * (this.textBaseline === 'middle' ? .5 : .8),
         actualBoundingBoxDescent: size * (this.textBaseline === 'middle' ? .5 : .2) }; },
     getTransform: () => ({ a: dpr, b: 0, c: 0, d: dpr, e: 0, f: 0 }), getImageData: () => ({ data: pixels }),
-    setLineDash() {}, fillText() {}, strokeText() {}, beginPath() {}, moveTo() {}, lineTo() {}, stroke() {}, fillRect() {} };
+    setLineDash() {}, fillText() {}, strokeText() {}, beginPath() {}, moveTo() {}, lineTo() {}, stroke() {}, fillRect() {},
+    rect() {}, clip() {}, closePath() {}, fill() {}, translate() {}, rotate() {} };
   const canvas = { width: W * dpr, height: H * dpr, getContext: () => context,
     getBoundingClientRect: () => ({ left: 0, top: 0, width: W, height: H }) };
   const sandbox = { console, Math, URLSearchParams, location: { search: '' }, localStorage: { getItem: () => null },
     document: { documentElement: { getAttribute: () => 'paper', setAttribute() {} } },
     getComputedStyle: () => ({ getPropertyValue: k => k === '--font-ui' ? 'sans-serif' : k === '--m-glow' ? '0' : '#ffffff' }) };
+  sandbox.CanvasRenderingContext2D = function () {};
+  sandbox.CanvasRenderingContext2D.prototype.clip = context.clip;
   sandbox.window = sandbox; const ctx = vm.createContext(sandbox);
   const kit = new URL('../kit/', import.meta.url);
   for (const file of ['apl-core.js', 'apl-board.js']) vm.runInContext(fs.readFileSync(new URL(file, kit), 'utf8'), ctx, { filename: file });
@@ -207,6 +211,108 @@ test('production Unicode and slash fractions have observed foreground bars too',
   const w = realBoardWindow(), b = w.lab.board;
   w.lab.render = () => b._text(100, 60, '½ + 3/4', { size: 16, halo: false });
   const f = w.collect(); assert.equal(f.fractionBars.filter(x => x.kind === 'fraction-bar-fill').length, 2);
+});
+
+function graphWindow(dpr = 1) {
+  const w = realBoardWindow(dpr), b = w.lab.board;
+  b.kind = 'cartesian'; b.pad = 0; b.focus = { x: [-5, 5], y: [-5, 5] };
+  w.lab.render = () => b.axes();
+  return w;
+}
+const judgeFrame = f => adjudicateSmokeMeasurement(f, evaluateSmokeSemanticCalibration(f));
+
+test('production axes retain raw clipped tick observations with their actual pane clip at DPR1 and DPR2', () => {
+  for (const dpr of [1, 2]) {
+    const w = graphWindow(dpr), b = w.lab.board, axes = b.axes, rect = b.ctx.rect, clip = b.ctx.clip;
+    const f = w.collect(), semantic = evaluateSmokeSemanticCalibration(f), result = judgeFrame(f);
+    assert.equal(b.axes, axes); assert.equal(b.ctx.rect, rect); assert.equal(b.ctx.clip, clip);
+    assert.ok(f.glyphs.length > 0); assert.equal(f.axisInvocations.length, 1);
+    assert.equal(f.axisInvocations[0].originalPrototypeMethod, true);
+    assert.equal(f.axisInvocations[0].clipRects.length, 1);
+    assert.ok(semantic.actualGlyphMeasurement.rawClipped.length > 0);
+    assert.equal(semantic.actualGlyphMeasurement.clipped.length, 0);
+    assert.equal(result.status, 'PASS', JSON.stringify(result));
+    assert.ok(result.axisDecorationObservation.clipped.length > 0);
+    assert.equal(f.legacy.clipped.length, 0, 'legacy scene-label rule is unchanged');
+  }
+});
+
+test('missing, mismatched or unfinished axes clip provenance cannot excuse a clipped glyph', () => {
+  for (const change of [
+    f => { f.axisCaptureComplete = false; },
+    f => { f.axisInvocations[0].originalPrototypeMethod = false; },
+    f => { f.axisInvocations[0].nativeClipObserved = false; },
+    f => { f.axisInvocations[0].completed = false; },
+    f => { f.axisInvocations[0].clipRects = []; },
+    f => { f.axisInvocations[0].clipRects = [null]; },
+    f => { f.axisInvocations[0].clipRects[0].x1 -= 3; },
+    f => { f.axisInvocations.push({ ...f.axisInvocations[0] }); },
+  ]) {
+    const f = graphWindow().collect(); change(f);
+    assert.equal(judgeFrame(f).status, 'FAIL');
+  }
+});
+
+test('an invalid or missing axis glyph bound cannot borrow valid clip provenance', () => {
+  for (const value of [NaN, Infinity, undefined]) {
+    const f = graphWindow().collect(), g = f.glyphs[0]; g.x0 = value;
+    assert.equal(isObservedAxisDecoration(f, g), false);
+    assert.equal(judgeFrame(f).status, 'FAIL');
+  }
+});
+
+test('a replacement axes function without the real prototype clip remains strict', () => {
+  const w = graphWindow(), b = w.lab.board;
+  b.axes = () => b.ctx.fillText('5', -20, 60);
+  const f = w.collect();
+  assert.equal(f.axisInvocations[0].originalPrototypeMethod, false);
+  assert.equal(judgeFrame(f).status, 'FAIL');
+});
+
+test('a replaced no-op Canvas clip cannot supply native clipping evidence', () => {
+  const w = graphWindow(); w.lab.board.ctx.clip = () => {};
+  const f = w.collect();
+  assert.equal(f.axisInvocations[0].nativeClipObserved, false);
+  assert.equal(judgeFrame(f).status, 'FAIL');
+});
+
+test('scene labels inside axes and direct Canvas text after axes remain strict', () => {
+  const w = graphWindow(), b = w.lab.board;
+  let inject = true;
+  b.ctx.fillText = function () {
+    if (inject) { inject = false; b._text(-20, 60, 'A', { halo: false }); }
+  };
+  const f = w.collect(), core = f.glyphs.find(g => g.text === 'A');
+  assert.ok(core.axisInvocationId); assert.ok(core.invocationId);
+  assert.equal(isObservedAxisDecoration(f, core), false);
+  assert.equal(judgeFrame(f).status, 'FAIL');
+  const after = graphWindow(), c = after.lab.board.ctx;
+  after.lab.render = () => { after.lab.board.axes(); c.fillText('5', -20, 60); };
+  const direct = after.collect();
+  assert.equal(direct.glyphs.at(-1).axisInvocationId, null);
+  assert.equal(judgeFrame(direct).status, 'FAIL');
+});
+
+test('custom coordinate-axis labels are not treated as standard tick decoration', () => {
+  const w = graphWindow(), b = w.lab.board;
+  b.focus = { x: [-5, 5], y: [2, 12] };
+  w.lab.render = () => b.axes({ xLabel: '99' });
+  const f = w.collect(), custom = f.glyphs.find(g => g.text === '99');
+  assert.ok(custom); assert.equal(isObservedAxisDecoration(f, custom), false);
+  assert.equal(judgeFrame(f).status, 'FAIL');
+});
+
+test('axes provenance and all temporary methods restore after an exception', () => {
+  const w = graphWindow(), b = w.lab.board, axes = b.axes, rect = b.ctx.rect, clip = b.ctx.clip;
+  b.ctx.fillText = () => { throw Error('axis text failure'); };
+  const fill = b.ctx.fillText;
+  assert.throws(w.collect, /axis text failure/);
+  assert.equal(b.axes, axes); assert.equal(b.ctx.rect, rect); assert.equal(b.ctx.clip, clip); assert.equal(b.ctx.fillText, fill);
+  b.ctx.fillText = () => {};
+  w.lab.render = () => b.ctx.fillText('5', -20, 60);
+  const next = w.collect();
+  assert.equal(next.axisInvocations.length, 0); assert.equal(next.glyphs[0].axisInvocationId, null);
+  assert.equal(judgeFrame(next).status, 'FAIL');
 });
 
 // Lossless PNG decoder for Chromium 8-bit RGB/RGBA evidence. No image library or

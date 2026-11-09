@@ -1228,6 +1228,26 @@
       const f = sec.chain === 'A' ? 0.58 : 0.6;
       const pos = outside ? [sec.c[0] + Math.cos(mid) * (sec.R + 0.95), sec.c[1] + Math.sin(mid) * (sec.R + 0.95)] : [sec.c[0] + Math.cos(mid) * sec.R * f, sec.c[1] + Math.sin(mid) * sec.R * f];
       let lines = label, dx = 0;
+      if (o.labelAbove && outside) {
+        const rows = Array.isArray(label) ? label : [label], b = w.b;
+        const sizes = rows.map(row => b.annotationSize(row, { size: 13.5, weight: 800 }));
+        const width = Math.max(...sizes.map(size => size.width)), height = Math.max(...sizes.map(size => size.height)) + 16 * (rows.length - 1);
+        const at = w.toS(pos), letter = w.toS([sec.c[0], sec.c[1] + 0.6]);
+        const name = b.annotationSize('C', { size: 14, weight: 800 }), safeRight = b.W - 32;
+        const overlapsName = (p) => Math.abs(p.x - letter.x) < (width + name.width) / 2 + 6 && Math.abs(p.y - letter.y) < (height + name.height) / 2 + 6;
+        if (overlapsName(at) || at.x + width / 2 > safeRight) {
+          // The green radius calculation must not turn the vertex name C into
+          // a misleading "C = ...". Keep both rows above C with an arc anchor.
+          const labelAt = { x: clamp(at.x, width / 2 + 8, safeRight - width / 2),
+            y: Math.max(height / 2 + 8, Math.min(at.y, letter.y - name.height / 2 - height / 2 - 8)) };
+          if (overlapsName(labelAt)) labelAt.x = Math.max(width / 2 + 8, letter.x - name.width / 2 - width / 2 - 8);
+          const anchor = w.toS(goatPoint(sec, mid));
+          b.leader(anchor, labelAt, { px: true, width, height, color: sec.col, lineWidth: 1.2, gap: 5, alpha: k, ref: ref || sec.id });
+          rows.forEach((row, i) => b.stext(labelAt.x, labelAt.y + (i - (rows.length - 1) / 2) * 16, row,
+            { align: 'center', baseline: 'middle', weight: 800, size: 13.5, color: sec.col, alpha: k, ref: ref || sec.id }));
+          return;
+        }
+      }
       if (o.labelBelow && outside) {
         const rows = Array.isArray(label) ? label : [label], b = w.b;
         const width = Math.max(...rows.map(row => b.annotationSize(row, { size: 13.5, weight: 800 }).width));
@@ -1293,6 +1313,7 @@
         }
         drawGoatSector(w, sec, { thumb, k, u, label,
           labelRight: sc.id === 'gt-kennel' && tab === 'review' && b.W < 560 ? b.W - 32 : null,
+          labelAbove: sc.id === 'gt-tri' && sec.id === 'C' && tab === 'review' && b.W < 560,
           labelBelow: sc.id === 'gt-tri' && sec.id === 'B' && tab === 'review' && b.W < 560 });
       });
     }

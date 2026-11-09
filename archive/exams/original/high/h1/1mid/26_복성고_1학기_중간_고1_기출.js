@@ -43,9 +43,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
     "decisiveStep": "Independent application of the source conditions to obtain the required value.",
-    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q1-solution.svg",
-    "solutionImageAlt": "포물선과 직선 (나), (다)의 위치 관계",
-    "solutionImageCaption": "포물선과 직선 (나), (다)의 위치 관계",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 기울기가 서로 다른 두 직선, 포물선과 만나는 직선 위의 두 교점이 표시되어 있다.",
+    "solutionImageCaption": "그림의 f는 문제의 이차함수이다. 포물선은 가로축보다 위에 있고, 기울기가 양수인 직선과 만나지 않는다. 기울기가 음수인 직선과는 표시된 두 점에서 만나므로 정답은 (다)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -219,7 +219,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 세 모서리에 길이 문자가 붙어 있고, 서로 다른 세 면의 대각선으로 이루어진 삼각형이 강조되어 있다.",
+    "solutionImageCaption": "예: 조건을 만족하는 직육면체에서 세 모서리를 각각 길이 문자로 나타내었다. 강조된 삼각형의 각 변에 피타고라스 정리를 적용하면 세 모서리 길이의 제곱합은 38이고, 길이의 합은 10이다. 곱셈공식으로 겉넓이를 구하면 정답은 62이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -306,9 +310,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
     "decisiveStep": "Independent application of the source conditions to obtain the required value.",
-    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "직선 y=2x+k는 k=19/4이면 y=x²+5x+7에, k=0이면 y=-x²+4x-1에 접하므로 두 포물선과 모두 만나지 않는 k의 범위는 0<k<19/4이다.",
-    "solutionImageCaption": "직선 y=2x+k는 k=19/4이면 y=x²+5x+7에, k=0이면 y=-x²+4x-1에 접하므로 두 포물선과 모두 만나지 않는 k의 범위는 0<k<19/4이다.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 패널에서 각각의 포물선과 기울기가 2인 접선이 표시되고 접점의 좌표가 붙어 있다.",
+    "solutionImageCaption": "그림의 f와 g는 각각 문제의 첫째와 둘째 이차함수이다. 첫째 포물선에서는 직선의 세로축 절편이 4분의 19보다 작아야 만나지 않는다. 둘째 포물선에서는 그 절편이 0보다 커야 만나지 않는다. 두 조건 사이의 정수는 네 개이므로 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -395,7 +399,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 근 사이의 포물선이 강조되어 있고, 꼭짓점에서 가로축으로 내린 점선이 구간 내부에 놓인다.",
+    "solutionImageCaption": "두 함수의 차는 이차항의 계수가 음수인 이차함수이다. 두 교점의 가로좌표 사이에 꼭짓점의 가로좌표인 3분의 1이 있으므로 그 점에서 최댓값을 갖는다. 정답은 3분의 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -481,7 +489,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 양수인 직선과 음수인 직선은 가로축 아래로 이어지고, 수평선은 가로축 위에 있다.",
+    "solutionImageCaption": "예: b를 조절해 세 직선의 세로축 절편을 같은 양수로 맞춘 경우이다. 기울기가 0이 아니면 한쪽에서 음수가 되므로 a는 4이고, 상수항이 음수가 아니려면 b는 144 이하이다. 정답은 148이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -567,7 +579,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 양의 근 사이에서 내려갔다 올라오는 포물선에 주어진 점과 꼭짓점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "꼭짓점의 높이가 음의 4이므로 축을 기준으로 완전제곱식으로 나타낸다. 주어진 점을 대입하고 두 근이 양수라는 조건을 적용하면 축의 가로좌표는 5이다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -704,7 +720,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형의 두 직각변 위에 직사각형이 놓이고, 빗변 위의 꼭짓점과 직사각형의 밑변 및 높이가 표시되어 있다.",
+    "solutionImageCaption": "닮음으로 직사각형의 높이를 밑변에 대한 일차식으로 나타내면 넓이는 이차식이 된다. 그림은 밑변과 높이가 각각 직각변의 절반인 배치를 나타낸다. 두 근의 곱이 3이므로 정답은 4분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -791,7 +811,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 직선의 두 교점, 두 절편, 원점이 표시되고 두 영역이 서로 다른 농도로 칠해져 있다. 사각형 안에는 원점에서 교점으로 잇는 점선이 있다.",
+    "solutionImageCaption": "그림의 f는 문제의 이차함수이고, 가와 나는 각각 삼각형과 사각형의 넓이이다. 포물선의 두 가로축 절편과 직선의 세로축 절편을 이용해 삼각형과 사각형의 넓이를 구한다. 사각형은 원점에서 다른 교점으로 잇는 선분으로 나누어 두 삼각형의 넓이를 더한다. 주어진 넓이비를 대입하면 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -835,7 +859,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형의 두 변에 원이 접하고, 밑변 위 교점과 원의 중심을 이은 반지름 및 수선으로 직각삼각형이 표시되어 있다. 도형 아래 치수선에 길이 관계가 표시되어 있다.",
+    "solutionImageCaption": "밑변의 일부 선분 길이는 도형 아래 치수선으로 표시하였다. 원의 중심에서 밑변에 내린 수선의 길이는 한 변의 길이에서 반지름을 뺀 값이다. 교점과 수선의 발 사이 길이를 이용해 피타고라스 정리를 적용하면 반지름에 대한 이차방정식을 얻는다. 이를 이용해 주어진 식을 정리하면 정답은 57이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -878,7 +906,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선과 옆으로 이동한 위로 열린 포물선이 표시된 한 점에서 접한다.",
+    "solutionImageCaption": "예: P의 상수항이 3이고 Q의 상수항이 4인 배정에서 이동량이 √2인 경우이다. 한 점에서 접하면 교점 방정식의 판별식은 0이다. 두 이동량의 곱인 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -952,7 +984,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 주어진 구간의 양 끝값과 그 오른쪽에 놓인 꼭짓점의 가로좌표가 표시되어 있다.",
+    "solutionImageCaption": "구간 안에서 최댓값을 갖는다고 가정하면 꼭짓점이 구간 밖에 놓이므로 모순이다. 오른쪽 끝에서의 최댓값 조건으로 계수를 구하면 꼭짓점의 가로좌표는 4분의 33으로 구간 오른쪽에 있다. 주어진 구간에서 증가하므로 정답은 31이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -990,9 +1026,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
     "decisiveStep": "Independent application of the source conditions to obtain the required value.",
-    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "꼭짓점 V가 구간의 안쪽에 있고 양 끝점의 함숫값이 같다.",
-    "solutionImageCaption": "꼭짓점 V가 구간의 안쪽에 있고 양 끝점의 함숫값이 같다.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선의 꼭짓점이 x=2에 있고, 0에서 2까지 부분이 강조되어 있다. x=0과 x=4의 두 점은 같은 높이의 점선으로 이어져 있다.",
+    "solutionImageCaption": "f(x)=−(x−p)²+q의 그래프는 위로 볼록한 포물선이므로 꼭짓점에서 최댓값을 갖는다. 조건 가·나에서 p=2이면 구간 0≤x≤4의 두 끝점은 축 x=2에 대해 대칭이다. m=−4분의 1, q=4분의 19를 구한 뒤 f(4)를 계산하면 정답은 4분의 3이다.",
     "solutionImageSize": "full"
   },
   {

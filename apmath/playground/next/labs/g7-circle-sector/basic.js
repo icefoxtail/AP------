@@ -596,7 +596,38 @@
         g.text(g.pol(O, R * 0.66, mB), '넓이 ' + piS((q.r * q.r * q.be) / 360), { color: 'rose', ref: 5, size: 14 });
       }
       if (mode === 'explore') {
-        g.handle('A', PA[1], { color: 'amber', label: 'α', toward: O, drag: (w) => { q.al = clamp(snap(mod(dirOf(O, w) - a0, 360), 5), 10, 130); } });
+        const alphaLabel = { label: 'α', toward: O };
+        if (!g.b.thumb && !g.b._bbox && g.b.insets.right > 0) {
+          const point = g.b.toS(PA[1][0], g.b.kind === 'figure' ? -PA[1][1] : PA[1][1]);
+          const center = g.b.toS(0, 0), dy = point.y - center.y, length = Math.hypot(point.x - center.x, dy) || 1;
+          const metrics = g.b.annotationSize('α', { size: 12.5, weight: 800 });
+          const nx = (point.x - center.x) / length, ny = dy / length;
+          let arcBox = null;
+          if (sel === 0 || sel === 2) {
+            const size = g.b.annotationSize('호 ' + piS(q.r * q.al / 180), { size: 15, weight: 800 });
+            const ux = Math.cos(mA * D2R), uy = -Math.sin(mA * D2R);
+            const distance = Math.max(36, Math.abs(ux) * size.width / 2 + Math.abs(uy) * size.height / 2 + 8);
+            const at = g.b.toS(R * ux, g.b.kind === 'figure' ? R * uy : -R * uy);
+            arcBox = { x: at.x + ux * distance, y: at.y + uy * distance, ...size };
+          }
+          const clear = (dx, dy) => {
+            const x = point.x + dx, y = point.y + dy;
+            return y - metrics.height / 2 >= 66 && x - metrics.width / 2 >= 6 &&
+              x + metrics.width / 2 <= g.b.W - g.b.insets.right - 6 &&
+              y + metrics.height / 2 <= g.b.H - g.b.insets.bottom - 6 &&
+              (!arcBox || Math.abs(x - arcBox.x) >= (metrics.width + arcBox.width) / 2 + 2 ||
+                Math.abs(y - arcBox.y) >= (metrics.height + arcBox.height) / 2 + 2);
+          };
+          // Keep the endpoint and circle fixed. Only move its name when the
+          // landscape status badge or its own short-arc caption covers it.
+          if (!clear(nx * 18, ny * 18)) {
+            const beside = [point.x >= center.x ? 22 : -22, Math.max(0, 66 + metrics.height / 2 - point.y)];
+            const candidates = [beside, ...[24, 32, 40].flatMap(d => [[ny * d, -nx * d], [-ny * d, nx * d], [nx * d, ny * d]])];
+            const chosen = candidates.find(([dx, dy]) => Math.hypot(dx, dy) <= 42 && clear(dx, dy));
+            if (chosen) Object.assign(alphaLabel, { dx: chosen[0], dy: chosen[1], align: 'center' });
+          }
+        }
+        g.handle('A', PA[1], { color: 'amber', ...alphaLabel, drag: (w) => { q.al = clamp(snap(mod(dirOf(O, w) - a0, 360), 5), 10, 130); } });
         g.handle('B', PB[1], { color: 'rose', label: 'β', toward: O, drag: (w) => { let t = snap(mod(dirOf(O, w) - b0, 360), 5); if (t < 5 || t > 300) t = t < 5 ? 10 : 10; q.be = clamp(t, 10, 180); } });
       }
       g.dot(O, { color: 'ink', r: 4, label: 'O', dx: -12, dy: 15, align: 'center' });

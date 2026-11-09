@@ -216,6 +216,16 @@ export async function exerciseInitialInteractions({page,unit,scene,first,view,th
       }
       await page.locator('.apl-steps > .apl-step').first().click();await page.evaluate(()=>window.scrollTo(0,0));
       await measure(scene,'review-return-first',true);
+      if(unit==='g7-surface-volume'&&scene.id==='sv5-6'){
+        // Keep the moving capture above, then also inspect the naturally settled
+        // tile values and the final-to-first disclosure transition.
+        await page.waitForFunction(()=>window.lab?.s.s56T>=.999,null,{timeout:4000});
+        await measure(scene,'review-return-settled',true);
+        await page.locator('.apl-steps > .apl-step').last().click();
+        await measure(scene,'review-last-settled',true);
+        await page.locator('.apl-steps > .apl-step').first().click();
+        await measure(scene,'review-first-settled',true);
+      }
     }else notRun('native-review-steps','NOT_APPLICABLE: review tab has no ordered step buttons');
     if(first.problemAvailable){
       await page.locator('.apl-tab[aria-controls="apl-pane-problem"]').click();await page.evaluate(()=>window.scrollTo(0,0));

@@ -1,9 +1,31 @@
 /**
- * Experimental observation correction; NOT a replacement for scene-smoke.
+ * Source-bound observation correction used by scene-smoke and its experiment.
  * The original alpha>30, ink<200 and 2 CSS-pixel failures are retained verbatim.
- * This module is deliberately not connected to a workflow or production page.
+ * This QA module is never loaded by a student page.
  */
 import { sampleInitialFigure } from './middle-initial-figure-contracts.mjs';
+
+// Board.axes deliberately clips its numeric tick marks and default O/x/y
+// decoration to the graph pane. Preserve those raw glyphs, but do not mistake
+// their unclipped text metrics for missing scene annotations. A caller name or
+// a text match alone is insufficient: require the original prototype method,
+// its completed invocation, and its actually observed rectangular clip.
+export function isObservedAxisDecoration(frame, mark) {
+  if (frame.axisCaptureComplete !== true || mark.kind !== 'fillText' || mark.invocationId != null
+      || !Number.isInteger(mark.axisInvocationId) || mark.axisInvocationId < 1
+      || !['x0', 'x1', 'y0', 'y1'].every(key => Number.isFinite(mark[key]))
+      || !(mark.x1 > mark.x0 && mark.y1 > mark.y0)
+      || !/^(?:[−-]?\d+(?:\.\d+)?|O|x|y)$/.test(mark.text)) return false;
+  const axes = (frame.axisInvocations || []).filter(item => item.id === mark.axisInvocationId);
+  if (axes.length !== 1) return false;
+  const axis = axes[0], rect = axis.drawRect;
+  if (!axis.originalPrototypeMethod || !axis.nativeClipObserved || !axis.completed || axis.error || axis.boardKind === 'figure'
+      || !rect || !['x0', 'x1', 'y0', 'y1'].every(key => Number.isFinite(rect[key]))
+      || !(rect.x1 > rect.x0 && rect.y1 > rect.y0) || axis.clipRects?.length !== 1 || !axis.clipRects[0]
+      || !['x0', 'x1', 'y0', 'y1'].every(key => Math.abs(axis.clipRects[0][key] - rect[key]) < 1e-7)) return false;
+  if (mark.text === axis.customXLabel || mark.text === axis.customYLabel) return false;
+  return true;
+}
 
 /** Analytic expected figure, independent of whether scene.draw emits any ink. */
 export function deriveSparseFigureContract(f) {
@@ -179,9 +201,13 @@ export function evaluateSmokeSemanticCalibration(f, existingInitialContract = nu
     if (!observed) result.unknown.push('Given-node emitted text identity was not captured.');
   }
   const glyphs = [...(f.glyphs || []), ...(f.fractionBars || [])];
-  const clipped = glyphs.filter(g => Math.max(-g.x0, g.x1 - W, -g.y0, g.y1 - H) > 2);
+  const rawClipped = glyphs.filter(g => Math.max(-g.x0, g.x1 - W, -g.y0, g.y1 - H) > 2);
+  const axisDecorationClipped = rawClipped.filter(g => isObservedAxisDecoration(f, g));
+  const clipped = rawClipped.filter(g => !isObservedAxisDecoration(f, g));
   result.actualGlyphMeasurement = { glyphs: (f.glyphs || []).length, fractionBars: (f.fractionBars || []).length,
-    tolerance: 2, clipped, complete: f.glyphCaptureComplete === true && f.fractionBarCaptureComplete === true };
+    tolerance: 2, clipped, rawClipped, axisDecorationClipped,
+    axisDecorationPolicy: 'ORIGINAL_BOARD_AXES_NUMERIC_TICKS_AND_DEFAULT_LABELS_WITH_OBSERVED_PANE_CLIP',
+    complete: f.glyphCaptureComplete === true && f.fractionBarCaptureComplete === true };
   if (clipped.length) result.failures.push('actual-glyph-or-fraction-bar-clipped-over-2px');
   if (!result.actualGlyphMeasurement.complete) result.unknown.push('Full emitted-glyph and fraction-bar observation is incomplete.');
   if (existingInitialContract?.status === 'FAIL') result.failures.push(...existingInitialContract.failures.map(x => `existing-initial-contract:${typeof x === 'string' ? x : x.code}`));
@@ -199,7 +225,7 @@ export function evaluateSmokeSemanticCalibration(f, existingInitialContract = nu
 /** Browser collector: observes actual glyphs, fraction bars and Board projection. */
 export function captureSmokeCalibrationFrame() {
   const lab = window.lab, b = lab.board, c = b.ctx, glyphs = [], fractionBars = [], rawBoxes = [], annotations = [], draws = [];
-  const saved = {}, stack = []; let path = [];
+  const saved = {}, stack = [], axisStack = [], axisInvocations = []; let path = [], rectanglePath = null;
   const map = (x, y) => { const t = c.getTransform(); return { x: (t.a * x + t.c * y + t.e) * b.W / b.canvas.width,
     y: (t.b * x + t.d * y + t.f) * b.H / b.canvas.height }; };
   const opacity = style => { const a = /rgba\([^)]*,\s*([\d.]+)\s*\)/.exec(String(style)); return c.globalAlpha * (a ? +a[1] : 1); };
@@ -211,13 +237,27 @@ export function captureSmokeCalibrationFrame() {
       const points = [x - m.actualBoundingBoxLeft * sw - pad, x + m.actualBoundingBoxRight * sw + pad]
         .flatMap(xx => [y - m.actualBoundingBoxAscent - pad, y + m.actualBoundingBoxDescent + pad].map(yy => map(xx, yy)));
       glyphs.push({ kind: name, text: String(value), parentText: stack.at(-1)?.text || null, invocationId: stack.at(-1)?.id ?? null,
+        axisInvocationId: axisStack.at(-1)?.id ?? null,
         effectiveAlpha: opacity(name === 'fillText' ? this.fillStyle : this.strokeStyle),
         x0: Math.min(...points.map(p => p.x)), x1: Math.max(...points.map(p => p.x)),
         y0: Math.min(...points.map(p => p.y)), y1: Math.max(...points.map(p => p.y)) });
     }
     return original.apply(this, arguments);
   });
-  wrap('beginPath', original => function () { path = []; return original.apply(this, arguments); });
+  wrap('beginPath', original => function () { path = []; rectanglePath = null; return original.apply(this, arguments); });
+  if (typeof c.rect === 'function') wrap('rect', original => function (x, y, w, h) {
+    const points = [x, x + w].flatMap(xx => [y, y + h].map(yy => map(xx, yy)));
+    rectanglePath = { x0: Math.min(...points.map(p => p.x)), x1: Math.max(...points.map(p => p.x)),
+      y0: Math.min(...points.map(p => p.y)), y1: Math.max(...points.map(p => p.y)) };
+    return original.apply(this, arguments);
+  });
+  if (typeof c.clip === 'function') wrap('clip', original => function () {
+    if (axisStack.length) {
+      axisStack.at(-1).clipRects.push(rectanglePath ? { ...rectanglePath } : null);
+      axisStack.at(-1).nativeClipObserved = original === window.CanvasRenderingContext2D?.prototype.clip;
+    }
+    return original.apply(this, arguments);
+  });
   for (const name of ['moveTo', 'lineTo']) wrap(name, original => function (x, y) { path.push(map(x, y)); return original.apply(this, arguments); });
   wrap('stroke', original => function () {
     if (!b._bbox && stack.at(-1)?.fraction && opacity(this.strokeStyle) > .01 && path.length === 2) {
@@ -263,6 +303,22 @@ export function captureSmokeCalibrationFrame() {
     finally { stack.pop(); }
   };
   const originalShapes = {};
+  const originalAxes = b.axes;
+  if (typeof originalAxes === 'function') b.axes = function (options = {}) {
+    const r = this._drawRect?.(this.paneId);
+    const points = r ? [r.x, r.x + r.w].flatMap(x => [r.y, r.y + r.h].map(y => map(x, y))) : [];
+    const axis = { id: axisInvocations.length + 1, boardKind: this.kind,
+      originalPrototypeMethod: originalAxes === window.APLab?.Board?.prototype.axes,
+      customXLabel: options.xLabel && options.xLabel !== 'x' ? String(options.xLabel) : null,
+      customYLabel: options.yLabel && options.yLabel !== 'y' ? String(options.yLabel) : null,
+      drawRect: points.length ? { x0: Math.min(...points.map(p => p.x)), x1: Math.max(...points.map(p => p.x)),
+        y0: Math.min(...points.map(p => p.y)), y1: Math.max(...points.map(p => p.y)) } : null,
+      clipRects: [], completed: false };
+    axisInvocations.push(axis); axisStack.push(axis);
+    try { const value = originalAxes.apply(this, arguments); axis.completed = true; return value; }
+    catch (error) { axis.error = String(error?.message || error); throw error; }
+    finally { axisStack.pop(); }
+  };
   // The selected-face contract uses observed projected vertices in addition to
   // the model and pixels. This hook observes the same final render as the text.
   for (const name of ['path', 'point']) if (typeof b[name] === 'function') {
@@ -277,6 +333,7 @@ export function captureSmokeCalibrationFrame() {
   }
   try { lab.render(); } finally {
     b._text = originalText;
+    if (typeof originalAxes === 'function') b.axes = originalAxes;
     for (const [name, fn] of Object.entries(saved)) c[name] = fn;
     for (const [name, fn] of Object.entries(originalShapes)) b[name] = fn;
   }
@@ -293,13 +350,15 @@ export function captureSmokeCalibrationFrame() {
     canvas: { width: canvas.width, height: canvas.height, cssWidth: b.W, cssHeight: b.H,
       rect: { left: rect.left, top: rect.top, width: rect.width, height: rect.height } },
     viewport: { width: window.innerWidth, height: window.innerHeight }, rgba,
-    glyphs, fractionBars, rawBoxes, annotations, draws, annotationCaptureComplete: true, glyphCaptureComplete: true, fractionBarCaptureComplete: true,
+    glyphs, fractionBars, rawBoxes, annotations, draws, axisInvocations, axisCaptureComplete: true,
+    annotationCaptureComplete: true, glyphCaptureComplete: true, fractionBarCaptureComplete: true,
     legacy: { ink, samplingStep: step, clipped: rawBoxes.filter(q => Math.max(-q.x0, q.x1 - b.W, -q.y0, q.y1 - b.H) > 2).map(q => q.text.slice(0, 20)) } };
 }
 
 // All dependencies are embedded in the function body, so Playwright can pass
 // this function directly to page.evaluate without a window-global installation.
 export const sampleSmokeSemanticCalibration = new Function(`return function sampleSmokeSemanticCalibration() {
+  ${isObservedAxisDecoration.toString()}
   ${deriveSparseFigureContract.toString()}
   ${evaluateSmokeSemanticCalibration.toString()}
   ${captureSmokeCalibrationFrame.toString()}

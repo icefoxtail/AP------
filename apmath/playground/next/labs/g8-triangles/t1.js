@@ -540,7 +540,10 @@
       // triSSS(a,b,c): A=(0,0), B=(c,0), C 위. 여기서는 B=(0,0), C=(bc,0), A 위로 다시 계산
       const Bp = pt(0, 0), Cp = pt(bc, 0), xx = (l1 * l1 - l2 * l2 + bc * bc) / (2 * bc), hh = Math.sqrt(Math.max(1e-6, l1 * l1 - xx * xx)), A = pt(xx, -hh);
       void tri;
-      fit(b, bboxOf([A, Bp, Cp]), { t: 44, b: C.problem ? 44 : 92, l: 50, r: 50 });
+      // On desktop-style stages the upper status badge must not hide A,
+      // including when changing x shifts the apex towards the right.
+      const top = !C.thumb && !C.problem && b.insets.right > 0 ? 74 : 44;
+      fit(b, bboxOf([A, Bp, Cp]), { t: top, b: C.problem ? 44 : 92, l: 50, r: 50 });
       const cen = pt((A.x + Bp.x + Cp.x) / 3, (A.y + Bp.y + Cp.y) / 3);
       const eq = Math.abs(l1 - l2) < 1e-9;
       fillPoly(b, [A, Bp, Cp], eq ? 'green' : 'sky', 0.12);

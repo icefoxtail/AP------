@@ -136,6 +136,21 @@ await test('all sixteen table selections remain draggable and reentry restores f
   setup(lab,view);assert.equal(lab.s.phPp,3);assert.equal(lab.s.phQq,5);assert.deepEqual(clean(lab.draw().paths),clean(first.paths));
  }
 });
+await test('the selected angle stays clear of the draggable selection disk on narrow screens',async()=>{
+ const lab=await load(arg('--baseline'));
+ for(const view of views)for(let p=3;p<=6;p++)for(let q=3;q<=6;q++){
+  setup(lab,view);Object.assign(lab.s,{phPp:p,phQq:q});const d=lab.draw();
+  const cell=d.paths.filter(p=>p.options.close&&!p.options.ref)[(p-3)*4+q-3];
+  const xs=cell.screen.map(p=>p.x),ys=cell.screen.map(p=>p.y);
+  const label=d.textItems.find(t=>t.text===`${q*(180-360/p)}°`&&t.x>Math.min(...xs)&&t.x<Math.max(...xs)&&t.y>Math.min(...ys)&&t.y<Math.max(...ys));
+  assert.ok(label,'the selected cell angle remains inside its own cell');
+  const h=d.handles.find(h=>h.id==='cell');assert.ok(h,'the original drag control remains');
+  // The 360px Chromium observation measured the four-character angle at 37px.
+  // Keep a conservative 38px text box separate from the opaque handle disk.
+  const dx=Math.max(0,Math.abs(h.screen.x-label.x)-19),dy=Math.max(0,Math.abs(h.screen.y-label.y)-7.5);
+  assert.ok(Math.hypot(dx,dy)>h.options.r*lab.board.hr+2,`angle ${label.text} is covered by its handle at ${view[0]}px`);
+ }
+});
 if(arg('--compare-scope'))await test('question givens, all reveal stages, thumbnails and every other polyhedron scene stay exact',async()=>{
  const now=await load(),old=await load(arg('--compare-scope'));
  for(const view of views){setup(now,view);setup(old,view);

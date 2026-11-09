@@ -315,7 +315,9 @@ async function run() {
           for(const file of results.filter(f=>!f.pass))report.failures.push({unit:unit.id,view:view.name,theme,reason:'actual-browser-source-mismatch',...file});
         };
         page.on('pageerror', e => errors.push({type:'pageerror',message:e.message}));
-        page.on('console', m => {if(m.type()==='error') errors.push({type:'console-error',message:m.text()});});
+        page.on('console', m => {
+          if(m.type()==='error') errors.push({type:'console-error',message:m.text(),location:m.location()});
+        });
         page.on('response', r => {if(r.status()>=400 && r.url().startsWith(base)) errors.push({type:'http',message:`${r.status()} ${r.url()}`});});
         if(baseURL)page.on('response',response=>{
           queueServedResponse(response,servedLookup,sourceChecks);

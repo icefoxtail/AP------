@@ -352,8 +352,10 @@
       if (pr) {
         ang(b, g.A, g.B, g.C, { color: 'sky', rings: 1, label: dgx(q.A0), r: 30, size: S(b) });
         const bcv = { 30: 1, 45: Math.SQRT2, 60: Math.sqrt(3) }[q.A0], bcs = q.A0 === 30 ? String(q.a) : q.A0 === 45 ? `${q.a}√2` : `${q.a}√3`;
-        if (q.ask === 'R') { segTag(b, g.B, g.C, 'BC=' + bcs, { away: g.A, color: 'sky', size: S(b), gap: 14 }); segTag(b, O, g.B, 'x', { away: g.C, gap: 12 }); }
-        else { segTag(b, g.B, g.C, 'x', { away: g.A, gap: 14 }); segTag(b, O, g.B, String(q.a), { away: g.C, color: 'sky', size: S(b), gap: 12 }); }
+        // Name OB on its open C side so x cannot be read as AB. At 60 degrees,
+        // use the upper part of the radius to clear the nearby BC annotation.
+        if (q.ask === 'R') { segTag(b, g.B, g.C, 'BC=' + bcs, { away: g.A, color: 'sky', size: S(b), gap: 14 }); segTag(b, O, g.B, 'x', { toward: g.C, f: q.A0 === 60 ? 0.3 : 0.5, gap: 12, leader: true }); }
+        else { segTag(b, g.B, g.C, 'x', { away: g.A, gap: 14 }); segTag(b, O, g.B, String(q.a), { toward: g.C, f: q.A0 === 60 ? 0.3 : 0.5, color: 'sky', size: S(b), gap: 12, leader: true }); }
         return;
       }
       ang(b, g.A, g.B, g.C, { color: 'rose', rings: 1, label: dgx(g.A0), r: 30, size: S(b) });

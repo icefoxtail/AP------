@@ -14,7 +14,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame } from './scene-smoke-semantic-calibration.mjs';
+import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame, isObservedAxisDecoration } from './scene-smoke-semantic-calibration.mjs';
 import { sampleInitialFigure } from './middle-initial-figure-contracts.mjs';
 import { adjudicateSmokeMeasurement } from './scene-smoke-measurement-gate.mjs';
 
@@ -63,6 +63,7 @@ if (!RUNS.length) { console.error(`--runs ${runsArg}: 맞는 환경이 없습니
 
 let browser, activeContext, activePage, activeRun, runIndex = 0, failed = 0;
 const collectFinalFrame = new Function(`return function collectFinalFrame() {
+  ${isObservedAxisDecoration.toString()}
   ${deriveSparseFigureContract.toString()}
   ${evaluateSmokeSemanticCalibration.toString()}
   ${captureSmokeCalibrationFrame.toString()}
@@ -76,6 +77,7 @@ const collectFinalFrame = new Function(`return function collectFinalFrame() {
   return { id: lab.scene.id, ink: frame.legacy.ink, clipped: frame.legacy.clipped, samplingStep: frame.legacy.samplingStep,
     legacy: semantic.legacy, measurement, semantic: { status: semantic.status, analyticContract: semantic.contract?.key,
       applicable: semantic.contract?.applicable, failures: semantic.failures, unknown: semantic.unknown,
+      actualGlyphMeasurement: semantic.actualGlyphMeasurement,
       checks: semantic.checks.map(({probes, ...check}) => check), initial },
     annotationObservation: { invocations: frame.annotations.length, glyphs: frame.glyphs.length, fractionBars: frame.fractionBars.length,
       complete: frame.annotationCaptureComplete && frame.glyphCaptureComplete && frame.fractionBarCaptureComplete } };

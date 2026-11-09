@@ -233,7 +233,21 @@
       ang(b, E, B, C, { color: 'green', rings: 1, r: 24, label: '60°', size: 13, labelDist: 38 });
       if (show(1)) ang(b, B, A, E, { color: 'rose', rings: 2, r: 28, label: '30°', size: 14, labelDist: 52 });
       if (show(2)) { ang(b, A, B, E, { color: 'sky', rings: 1, r: 26, label: '75°', size: 14, labelDist: 40 }); ang(b, E, A, B, { color: 'sky', rings: 1, r: 26 }); ang(b, D, C, E, { color: 'sky', rings: 1, r: 26, label: '75°', size: 14, labelDist: 40 }); ang(b, E, C, D, { color: 'sky', rings: 1, r: 26 }); ang(b, C, D, E, { color: 'rose', rings: 2, r: 28, label: '30°', size: 14, labelDist: 52 }); }
-      if (show(3)) { ang(b, A, E, D, { color: 'amber', rings: 1, r: 30, label: '15°', size: 13, labelDist: 58 }); ang(b, E, A, D, { color: 'amber', rings: 1, r: 26, label: '150°', size: 13, labelDist: 40 }); }
+      if (show(3)) {
+        const mark = ang(b, A, E, D, { color: 'amber', rings: 1, r: 30 });
+        const k = b.k || 60, dx = Math.cos(mark.mid) * 58, dy = Math.sin(mark.mid) * 58;
+        const box = typeof b.annotationSize === 'function' ? b.annotationSize('15°', { size: 13, weight: 800 }) : { width: G.textW('15°', 13) + 6, height: 19 };
+        const ex = (E.x - A.x) * k - dx, ey = (E.y - A.y) * k - dy;
+        // A's short 15° wedge must not read as part of E's 150° arc.
+        const nearE = Math.hypot(Math.max(0, Math.abs(ex) - box.width / 2), Math.max(0, Math.abs(ey) - box.height / 2)) < 32;
+        if (!b.thumb && nearE) {
+          const anchor = add(A, pt(Math.cos(mark.mid) * 30 / k, Math.sin(mark.mid) * 30 / k));
+          const label = add(A, pt(37 / k, -22 / k));
+          b.leader(anchor, label, { ...box, color: 'amber', lineWidth: 1.2, gap: 2 });
+          T(b, label, '15°', { color: 'amber', size: 13 });
+        } else T(b, A, '15°', { color: 'amber', size: 13, dx, dy });
+        ang(b, E, A, D, { color: 'amber', rings: 1, r: 26, label: '150°', size: 13, labelDist: 40 });
+      }
       dotN(b, { A, B, C, D }, O); b.point(E, { color: 'amber', r: 5 }); T(b, E, 'E', { dy: -16, size: 17, color: 'amber' });
       sd(b, B, C, O, `${S}`, 'sky');
       const cap = cx.review ? ['정삼각형 EBC: ∠EBC=60°, BE=BC=AB', '∠ABE=90°−60°=30° → 이등변 △ABE의 밑각 ∠BAE=∠BEA=75°', '∠EAD=90°−75°=15°, ∠AED=180°−15°−15°=150°'][clamp(st, 1, 3) - 1] : '∠ABE=30° · ∠BAE=∠BEA=75° · ∠EAD=15° · ∠AED=150°';

@@ -1,6 +1,8 @@
 /** Explicit adjudication of legacy smoke observations. All raw failures remain
  * in the result; missing content and incomplete observations are never waived.
  */
+import { isObservedAxisDecoration } from './scene-smoke-semantic-calibration.mjs';
+
 export function adjudicateSmokeMeasurement(frame, semantic) {
   const failures = [], corrections = [], legacy = semantic?.legacy;
   const result = { version: 1, status: 'FAIL', legacy, corrections, failures,
@@ -21,7 +23,10 @@ export function adjudicateSmokeMeasurement(frame, semantic) {
   if (!(W > 0 && H > 0) || !frame.glyphCaptureComplete || !frame.fractionBarCaptureComplete
       || frame.annotationCaptureComplete !== true) failures.push('actual-annotation-observation-incomplete');
   const marks = [...(frame.glyphs || []), ...(frame.fractionBars || [])];
-  if (marks.some(outside)) failures.push('actual-glyph-or-fraction-bar-clipped-over-2px');
+  if (marks.some(mark => outside(mark) && !isObservedAxisDecoration(frame, mark))) failures.push('actual-glyph-or-fraction-bar-clipped-over-2px');
+  result.axisDecorationObservation = { status: 'RECORDED_SEPARATELY_NOT_A_SCENE_LABEL',
+    clipped: marks.filter(mark => outside(mark) && isObservedAxisDecoration(frame, mark)),
+    invocations: frame.axisInvocations || [], complete: frame.axisCaptureComplete === true };
   if (semantic?.status === 'FAIL') failures.push('required-semantic-content-failed');
   if (semantic?.status !== 'PASS') failures.push('semantic-observation-unverified');
   const requiredInitial = frame.unit === 'g7-circle-sector' && /^(f1-(star|ss2|lens|ex22|ring|semis|tri)|f3-leaf-len)$/.test(String(frame.id))

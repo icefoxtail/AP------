@@ -68,6 +68,14 @@
     const H0 = pt(0, 0), A = pt(0, -h), B = pt(-xb, 0), Cc = pt(xc, 0), L = o.L || {};
     const xs = [B.x, Cc.x, 0];
     fit(b, bboxOf([pt(Math.min(...xs), -h), pt(Math.max(...xs), 0)]), { t: 54, b: 58 + (L.a && (L.BH === 'x' || L.CH === 'x') ? 44 : 0) + (o.rows ? o.rows.length * 26 : 0), l: 58, r: 58 });
+    // A current standard-height question has no top chip on a narrow stage.
+    // Its fixed reservations previously shrank AH below the angle-label span.
+    // Refit only when that actual projection is too small; keep the dimension
+    // line under BC and the original taller/wider arrangements unchanged.
+    if (o.currentStandard && !b.thumb && b.W < 560 && h * b.k < 110) {
+      const groundUnknown = L.a && (L.BH === 'x' || L.CH === 'x');
+      fit(b, bboxOf([pt(Math.min(...xs), -h), pt(Math.max(...xs), 0)]), { t: 28, problemTop: 28, b: groundUnknown ? 88 : 64, l: 50, r: 50 });
+    }
     const gx0 = Math.min(...xs) - 0.6, gx1 = Math.max(...xs) + 0.6;
     line(b, pt(gx0, 0), pt(gx1, 0), 'muted', 3);
     if (st >= 1) { fillPoly(b, [A, B, H0], 'sky', 0.14); fillPoly(b, o.same ? [A, Cc, H0] : [A, H0, Cc], 'green', 0.16); }
@@ -75,8 +83,10 @@
     line(b, A, H0, 'ink', 5); line(b, A, B, 'ink', 2.6); line(b, A, Cc, 'ink', 2.6);
     if (o.iso) { tick(b, A, Cc, 1, 'amber'); tick(b, B, Cc, 1, 'amber'); }
     ang(b, H0, o.same ? Cc : B, A, { color: 'ink', r: 16 });
-    ang(b, B, H0, A, { color: 'sky', r: 38, label: L.B, size: 16 });
-    ang(b, Cc, H0, A, { color: 'green', r: 36, label: L.C, size: 16, rings: 2 });
+    const angleRadius = (V, U, Z, radius) => o.currentStandard && !b.thumb
+      ? Math.min(radius, Math.max(12, .34 * b.k * Math.min(Math.hypot(U.x - V.x, U.y - V.y), Math.hypot(Z.x - V.x, Z.y - V.y)))) : radius;
+    ang(b, B, H0, A, { color: 'sky', r: angleRadius(B, H0, A, 38), label: L.B, size: 16 });
+    ang(b, Cc, H0, A, { color: 'green', r: angleRadius(Cc, H0, A, 36), label: L.C, size: 16, rings: 2 });
     if (L.x) ang(b, A, B, H0, { color: 'sky', r: 30, label: L.x, size: 15, labelDist: 46 });
     if (L.y) ang(b, A, H0, Cc, { color: 'green', r: 30, label: L.y, size: 15, rings: 2, labelDist: 46 });
     b.point(A, { color: 'ink', r: 5 }); tagOut(b, A, pt(0, 3), 'A', { size: 17, gap: 11 });
@@ -140,7 +150,8 @@
       if (f.ask !== 'ch') L.CH = C.last ? f.work.ch : 'CH';
     }
     if (C.last) L[{ h: 'h', bh: 'BH', ch: 'CH' }[f.ask]] = f.work[f.ask];
-    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: C.review ? C.step - 1 : 0, mountain: f.mount, L });
+    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: C.review ? C.step - 1 : 0, mountain: f.mount, L,
+      currentStandard: !!C.standardHeight, identifyHeight: !!C.standardHeight && !L.hx });
   }
 
   /* ====================================================================== 1. 두 지점에서 올려본 각 */
@@ -227,7 +238,7 @@
       notes: notes('$h$ 에 대한 일차방정식 $(1+\\frac{\\sqrt{3}}{3})h=a$ 를 풀 때 분모를 유리화해요.')
     }),
     gen: () => heightProblem([[45, 60]], '45°·60°인 삼각형의 높이', ['h', 'h', 'bh', 'ch'], false),
-    pdraw: pdrawTower
+    pdraw: (b, q, C) => pdrawTower(b, q, { ...C, standardHeight: true })
   };
 
   /* ====================================================================== 4. 30°·60° 이등변 (산의 높이) */
@@ -253,7 +264,7 @@
       notes: notes('이 경우는 $\\tan$ 의 차를 쓰지 않고 이등변삼각형을 찾는 것이 더 빨라요.')
     }),
     gen: () => { const q = heightProblem([[30, 60]], '30°·60°인 둔각삼각형의 높이', ['h'], true); q.fig.mount = true; q.stem = q.stem.replace('지면에 수직인 탑 $AH$ 가 있고', '산 꼭대기 $A$ 에서 지면에 내린 수선의 발이 $H$ 이고'); return q; },
-    pdraw: pdrawTower
+    pdraw: (b, q, C) => pdrawTower(b, q, { ...C, standardHeight: true })
   };
 
   /* ====================================================================== 5. 눈높이가 있는 나무 */

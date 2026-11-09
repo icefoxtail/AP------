@@ -465,7 +465,8 @@
       }
       b.focus = { x: [0, 1], y: [0, 1] }; // 그림 좌표는 쓰지 않고 화면 좌표로 그립니다
       const compact = !C.thumb && b.H - b.insets.top - b.insets.bottom < 560;
-      const x0 = b.insets.left + 12, x1 = b.W - b.insets.right - 60, top = b.insets.top + (compact ? 52 : 70), bot = b.H - b.insets.bottom - 16;
+      const narrow = !C.thumb && b.W - b.insets.left - b.insets.right < 500;
+      const x0 = b.insets.left + 12, x1 = b.W - b.insets.right - (narrow ? 16 : 60), top = b.insets.top + (compact ? 52 : 70), bot = b.H - b.insets.bottom - 16;
       const hw = 74, hh = compact ? 22 : 30, previewH = C.thumb ? 0 : Math.min(150, Math.max(104, (bot - top - hh) * 0.36));
       const cw = (x1 - x0 - hw) / 4, ch = Math.min((bot - top - hh - (C.thumb ? 0 : previewH + 12)) / 4, 78);
       const cell = (pp, qq) => ({ x: x0 + hw + (qq - 3) * cw, y: top + hh + (pp - 3) * ch });
@@ -478,7 +479,9 @@
         const col = hide ? 'muted' : v.kind === 'ok' ? GRN : v.kind === 'flat' ? 'orange' : RED;
         sRect(b, c.x + 2, c.y + 2, c.x + cw - 2, c.y + ch - 2, col, sel ? 0.5 : (hide ? 0.06 : 0.22), true);
         if (C.problem) { continue; }
-        b.stext(c.x + cw / 2, c.y + ch * (compact ? 0.28 : 0.36), `${Math.round(v.sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'center', baseline: 'middle' });
+        // 좁은 화면에서도 각도와 선택 손잡이가 각각 읽히도록 칸 안의 자리를 나눕니다.
+        const angleX = c.x + cw / 2 - (narrow && sel && C.tab === 'explore' ? 12 : 0);
+        b.stext(angleX, c.y + ch * (compact ? 0.28 : 0.36), `${Math.round(v.sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'center', baseline: 'middle' });
         if (st !== 1) b.stext(c.x + cw / 2, c.y + ch * (compact ? 0.75 : 0.7), v.kind === 'ok' ? nameOfPlat(v.key) : '입체 ✕', { color: v.kind === 'ok' ? GRN : RED, size: 12.5, weight: 800, align: 'center', baseline: 'middle' });
       }
       if (!C.thumb) {

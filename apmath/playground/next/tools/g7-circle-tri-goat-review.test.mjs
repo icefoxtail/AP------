@@ -1,4 +1,4 @@
-// Regression for the actual gt-tri review radius hidden by the contents handle.
+// Regression for actual gt-tri review radii hidden by the contents handle or C.
 // Restore full labels while keeping each calculation attached to its own arc.
 // This checks real scene/Board commands; Chromium visual review stays separate.
 import test from 'node:test';
@@ -129,9 +129,10 @@ function checkAnimalAndRope(lab, d, label) {
 }
 
 function checkReviewLabels(lab,d,label){
- const formulas=d.textItems.filter(t=>/^r = .*−/.test(t.text)&&t.options.ref==='B');
+ const formulas=d.textItems.filter(t=>/^r = .*−/.test(t.text)&&['B','C'].includes(t.options.ref));
+ const captions=d.textItems.filter(t=>['B','C'].includes(t.options.ref)&&(/^r = .*−/.test(t.text)||t.text==='120°'));
  const rightBoundary=lab.board.W-32,letters=d.textItems.filter(t=>/^[ABC]$/.test(t.text));
- for(const item of formulas){
+ for(const item of captions){
   const box=paintBox(lab.board,item);
   assert.ok(box.left>=4&&box.right<=rightBoundary,`${label}: full radius ${item.text} is left of the contents handle`);
   assert.ok(box.top>=4&&box.bottom<lab.board.H-lab.board.insets.bottom-4,`${label}: full radius is inside the usable stage`);
@@ -154,7 +155,8 @@ await test('the actual360px review radius remains complete and points to its sma
  for(const step of [2,3,4]){
   const d=render(lab,'gt-tri',360,387,'review',step);
   assert.ok(checkReviewLabels(lab,d,`step${step}`).some(t=>t.text==='r = 10−8 = 2'));
-  assert.equal(d.leaders.length,1,'the previously covered radius has its own connector');
+  assert.equal(d.leaders.filter(x=>x.options.ref==='B').length,1,'the previously covered B radius still has its own connector');
+  if(step>=3)assert.equal(d.leaders.filter(x=>x.options.ref==='C').length,1,'the C radius has its own connector and cannot be read as the vertex name');
  }
 });
 
@@ -176,7 +178,7 @@ if(arg('--compare-scope'))await test('all initial scenes, original arcs, questio
   assert.deepEqual(plain(a.value),plain(b.value));assert.deepEqual(plain(call(now.scene.steps,now.s)),plain(call(old.scene.steps,old.s)));
   if(id!=='gt-tri'||W>=560||tab!=='review'||step<2){assert.deepEqual(a.paths,b.paths);assert.deepEqual(plain(a.textItems),plain(b.textItems));}
   else{
-   const changed=t=>t.options.ref==='B'&&(/^r = .*−/.test(t.text)||t.text==='120°');
+   const changed=t=>['B','C'].includes(t.options.ref)&&(/^r = .*−/.test(t.text)||t.text==='120°');
    assert.deepEqual(plain(a.textItems.filter(t=>!changed(t))),plain(b.textItems.filter(t=>!changed(t))));
   }
  }

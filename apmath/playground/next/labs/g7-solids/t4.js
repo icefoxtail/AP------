@@ -62,7 +62,7 @@
     const A = N.sectorBox(R, x, 0, false);
     const cp = Math.cos(G.PITCH0 * DEG), sp = Math.sin(G.PITCH0 * DEG);
     const cb1 = { x0: -r, x1: r, y0: -r * sp, y1: h * cp };
-    const bars = spec.bars ? 76 : 0, padS = { l: 34, r: 34, t: 44, b: 28 + bars };
+    const bars = spec.bars ? 76 : 0, padS = { l: 34, r: 34, t: spec.top == null ? 44 : spec.top, b: 28 + bars };
     // 입체(원뿔)는 휴대폰에서 폭의 절반 가까이 보이도록 전개도와 따로 키웁니다(N.layoutSolid: 위·아래로 쌓을지 옆에 놓을지도 함께 고름).
     const lay = N.layoutSolid(b, A, cb1, R * 0.35, padS, Object.assign({ gapPx: 34 }, spec.layout)), ms = lay.ms, off = lay.off;
     const all = unionB(A, shiftB({ x0: cb1.x0 * ms, x1: cb1.x1 * ms, y0: cb1.y0 * ms, y1: cb1.y1 * ms }, off.dx, off.dy));
@@ -128,7 +128,10 @@
         b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 }); T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 });
         return;
       }
-      const { r, R, x } = M, F = frame(b, s, C, { r, R, x, bars: true }), O = { x: 0, y: 0 }, D = F.D;
+      // The desktop-style stage has its status badge above the cone.
+      // Keep both O names below that band; phone/portrait stages put it below.
+      const top = !C.thumb && b.insets.right > 0 ? 70 : 44;
+      const { r, R, x } = M, F = frame(b, s, C, { r, R, x, bars: true, top }), O = { x: 0, y: 0 }, D = F.D;
       // 전개도: 부채꼴과 끈
       b.path(sectorPts(O, R, M.a0, M.a1), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
       b.seg(O, M.A, { color: SKY, width: 2.4 }); b.seg(O, M.A2, { color: SKY, width: 2.4 });

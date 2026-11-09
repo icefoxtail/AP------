@@ -65,6 +65,33 @@
     T(b, anchor, value, { dx: target.x - at.x, dy: target.y - at.y, size: 16, color: 'sky', leaderAnchor: anchor, leader: true });
     return true;
   }
+  function identifiedBDTag(b, g, value) {
+    const unknown = /= x$/.test(value), size = unknown ? 20 : 16;
+    const initialAnchor = lerp(g.B, g.D, unknown ? .64 : .18), initialAt = b.toS(initialAnchor), ac = [b.toS(g.A), b.toS(g.C)];
+    const measure = b.annotationSize(value, { size, weight: 800 }), w = measure.width, h = measure.height + 2;
+    const box = (x, y) => ({ x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 });
+    const labels = b._tgBoxes || [], intersectsLabel = q => labels.some(p => q.x0 < p.x1 + 3 && q.x1 > p.x0 - 3 && q.y0 < p.y1 + 3 && q.y1 > p.y0 - 3);
+    const original = box(initialAt.x + 14 + w / 2, initialAt.y + (unknown ? 6 : -4));
+    // T's normal text collision avoidance cannot know that the horizontal
+    // diagonal is AC. Keep BD attached to its own segment when a shift is needed.
+    if (!diagonalBoxHits(ac[0], ac[1], original) && !intersectsLabel(original)) return false;
+    const vertices = [g.A, g.B, g.C, g.D].map(p => b.toS(p));
+    const clear = q => q.x0 >= 6 && q.x1 <= b.W - 32 && q.y0 >= 8 && q.y1 <= b.H - b.insets.bottom - 8 &&
+      !diagonalBoxHits(ac[0], ac[1], q) && !vertices.some((p, i) => diagonalBoxHits(p, vertices[(i + 1) % 4], q)) && !intersectsLabel(q);
+    // The angle label itself can cover the usual point on a short BD. Move
+    // the anchor along BD, never onto AC or across the diagonal intersection.
+    for (const f of unknown ? [.64, .72, .82, .28, .18, .12] : [.18, .28, .34, .12, .64, .72, .82]) {
+      const anchor = lerp(g.B, g.D, f), at = b.toS(anchor), dir = at.y <= b.toS(g.P).y ? -1 : 1, candidates = [];
+      for (const dy of [32, 48, 64, 80, 96]) for (const dx of [0, w / 2 + 18, -w / 2 - 18, w + 28, -w - 28]) candidates.push({ x: at.x + dx, y: at.y + dir * dy });
+      const target = candidates.find(p => clear(box(p.x, p.y)) &&
+        !labels.some(q => diagonalBoxHits(at, p, q, 1)) &&
+        !vertices.some(q => diagonalBoxHits(at, p, { x0: q.x - 6, x1: q.x + 6, y0: q.y - 6, y1: q.y + 6 }, 0)));
+      if (!target) continue;
+      T(b, anchor, value, { dx: target.x - at.x, dy: target.y - at.y, size, color: unknown ? 'amber' : 'green', leaderAnchor: anchor, leader: true });
+      return true;
+    }
+    return false;
+  }
   function drawDiag(b, g, o = {}) {
     const { A, B, C, D, P: Pp } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C, D]);
     // 평행사변형(2배)
@@ -80,7 +107,7 @@
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.handle) b.handle('P', Pp, { color: 'violet', r: 8, ariaLabel: '교점 P 끌기', drag: o.handle }); else b.point(Pp, { color: 'violet', r: 4.5 });
     if (o.p && !(o.identifyAC && !b.thumb && identifiedDiagonalTag(b, g, o.p))) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
-    if (o.q) T(b, lerp(B, D, /= x$/.test(o.q) ? 0.64 : 0.18), o.q, { dx: 14, dy: /= x$/.test(o.q) ? 6 : -4, size: /= x$/.test(o.q) ? 20 : 16, color: /= x$/.test(o.q) ? 'amber' : 'green', align: 'left' });
+    if (o.q && !(o.identifyBD && !b.thumb && identifiedBDTag(b, g, o.q))) T(b, lerp(B, D, /= x$/.test(o.q) ? 0.64 : 0.18), o.q, { dx: 14, dy: /= x$/.test(o.q) ? 6 : -4, size: /= x$/.test(o.q) ? 20 : 16, color: /= x$/.test(o.q) ? 'amber' : 'green', align: 'left' });
     rowsD.forEach((r, i) => T(b, pt(0, Math.max(...visible.map((w) => w.y))), r.t, { dy: 44 + i * 26, size: r.size || 16, color: r.c }));
   }
   const diagM = (p, q, th) => { const S = vdiv(vmul(vi(p * q), sinD(th)), vi(2)); return { p, q, th, S, dbl: vmul(vi(p * q), sinD(th)) }; };
@@ -132,7 +159,7 @@
   }
   function diagPdraw(b, qq, C, identifyAC = false) {
     const f = qq.fig, rows = f.ask === 'area' ? [{ t: C.last ? `□ABCD의 넓이 = ${qq.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] : [{ t: `□ABCD의 넓이 = ${f.S}`, c: 'amber', size: 17 }];
-    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: C.review ? C.step : 0, k2: C.review && C.step >= 2 ? 1 : 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' && !C.last ? 'BD = x' : `BD = ${f.q}`, rows, identifyAC });
+    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: C.review ? C.step : 0, k2: C.review && C.step >= 2 ? 1 : 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' && !C.last ? 'BD = x' : `BD = ${f.q}`, rows, identifyAC, identifyBD: identifyAC });
   }
 
   /* ====================================================================== 평행사변형 */

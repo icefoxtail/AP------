@@ -489,7 +489,17 @@
       }
       sh.angles.forEach((a) => {
         if (o.onlyGiven && !a.given) return;
-        trackText(() => b.angle(q(a.i), q(a.i + 1), q(a.i - 1), { r: 22, rings: a.rings, color: 'amber', label: a.label ? `${snapInt(Math.round(a.deg * 100) / 100)}°` : undefined, labelGap: 15, size: FS.ang }));
+        const draw = () => b.angle(q(a.i), q(a.i + 1), q(a.i - 1), { r: 22, rings: a.rings, color: 'amber', label: a.label ? `${snapInt(Math.round(a.deg * 100) / 100)}°` : undefined, labelGap: 15, size: FS.ang });
+        if (arrange && spec.id === 'rl-turn45' && a.given && a.label) {
+          // B의 주어진 각은 자취 호보다 먼저 그리면 호·지난 점 이름에 가립니다.
+          // 각 표시 자체는 그대로 두고 글자만 실제 22px 각 호에 연결해 배치합니다.
+          const original = b._text;
+          b._text = (x, y, text, options) => {
+            const V = b.toS(q(a.i)), anchor = b.toW(V.x + (x - V.x) * 22 / 37, V.y + (y - V.y) * 22 / 37);
+            pending.unshift({ p: pos[a.i], text, o: { ...options, dx: x - V.x, dy: y - V.y }, anchors: [{ x: anchor.x, y: FIG ? -anchor.y : anchor.y }], kind: 'given-angle' });
+          };
+          try { draw(); } finally { b._text = original; }
+        } else trackText(draw);
       });
     };
     const drawLens = (pos, diag) => {
@@ -697,14 +707,25 @@
     if (arrange) {
       const edges = outline(pos).map(P).map(p => b.toS(p));
       const overlap = (a, c) => a.left < c.right + 2 && a.right > c.left - 2 && a.top < c.bottom + 2 && a.bottom > c.top - 2;
-      const crosses = (box, a, c) => {
+      const crosses = (box, a, c, padding = 2) => {
         let lo = 0, hi = 1;
-        for (const [v, d, min, max] of [[a.x, c.x - a.x, box.left - 2, box.right + 2], [a.y, c.y - a.y, box.top - 2, box.bottom + 2]]) {
+        for (const [v, d, min, max] of [[a.x, c.x - a.x, box.left - padding, box.right + padding], [a.y, c.y - a.y, box.top - padding, box.bottom + padding]]) {
           if (Math.abs(d) < 1e-9) { if (v < min || v > max) return false; }
           else { const p = (min - v) / d, q = (max - v) / d; lo = Math.max(lo, Math.min(p, q)); hi = Math.min(hi, Math.max(p, q)); if (lo > hi) return false; }
         }
         return true;
       };
+      const trajectories = [];
+      if (pending.some(item => item.kind === 'given-angle')) M.rots.forEach(rt => {
+        const fr = sc.fracs[rt.i];
+        if (rt.arc < 0 || fr <= 0 || rt.kind !== 'pivot') return;
+        const sweep = rt.theta * D2R * fr, count = Math.max(1, Math.ceil(Math.abs(sweep) * rt.r * kpx / 4));
+        let previous = b.toS(P({ x: rt.C.x + rt.r * Math.cos(rt.phi0), y: rt.C.y + rt.r * Math.sin(rt.phi0) }));
+        for (let i = 1; i <= count; i++) {
+          const a = rt.phi0 - sweep * i / count, next = b.toS(P({ x: rt.C.x + rt.r * Math.cos(a), y: rt.C.y + rt.r * Math.sin(a) }));
+          trajectories.push([previous, next]); previous = next;
+        }
+      });
       for (const item of pending) {
         const S = b.toS(P(item.p)), o = { size: FS.len, weight: 800, align: 'center', baseline: 'middle', ...item.o };
         const preferred = { x: S.x + (o.dx || 0), y: S.y + (o.dy || 0) };
@@ -717,6 +738,7 @@
           const box = { left: p.x - size.width / 2, right: p.x + size.width / 2, top: p.y - size.height / 2, bottom: p.y + size.height / 2 };
           return box.left >= 6 && box.right <= b.W - (b.W < 560 ? 28 : 6) && box.top >= (b.insets.top || 0) + 4 && box.bottom <= b.H - (b.insets.bottom || 0) - 4 &&
             !occupied.some(q => overlap(box, q)) && !edges.some((a, i) => crosses(box, a, edges[(i + 1) % edges.length])) &&
+            !(item.kind === 'given-angle' && trajectories.some(([a, c]) => crosses(box, a, c, 5))) &&
             (Math.hypot(p.x - preferred.x, p.y - preferred.y) < 1 || connection(p));
         };
         let chosen = clear(preferred) ? preferred : null;

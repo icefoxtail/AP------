@@ -153,7 +153,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수의 두 근과 꼭짓점, 두 근 사이의 닫힌 구간 및 정수점을 나타낸 그림이다.",
+    "solutionImageCaption": "4x²−4x−15=(2x+3)(2x−5)이므로 해는 −2분의 3≤x≤2분의 5이다. 이 구간에 있는 정수는 −1, 0, 1, 2이므로 정답은 4개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -215,7 +219,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM",
     "subUnit": "연립방정식과 연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: x≥−3과 x≤2분의 1을 각각 표시하고 두 범위가 겹치는 닫힌 구간을 나타낸 수직선이다.",
+    "solutionImageCaption": "주어진 부등식을 나누어 풀면 x≥−3과 x≤2분의 1을 얻는다. 공통 범위에서 a=−3, b=2분의 1이므로 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -339,7 +347,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=|x+1|+|2x−3|의 세 직선 조각과 두 꺾임점, 수평선 y=8과의 두 교점을 나타낸 그림이다.",
+    "solutionImageCaption": "x=−1과 x=2분의 3에서 구간을 나누면 그래프는 세 직선 조각으로 나타난다. y=8 이하인 부분의 양 끝은 x=−2와 x=3분의 10이므로 정답은 3분의 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -432,7 +444,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 k인 이차함수 y=(k−3)²−11과 두 근 사이의 열린 구간, 그 안의 정수점을 나타낸 그림이다.",
+    "solutionImageCaption": "이차부등식의 해가 없으려면 판별식이 음수여야 하므로 (k−3)²<11이다. 등호가 성립하면 중근이 해가 되므로 해가 존재하는 조건에는 경계값을 포함해야 하며, k=9일 때의 해와 정수 k의 합을 함께 확인하면 정답은 (가), (다)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -558,7 +574,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 a인 원의 중심 부근에 한 변의 길이가 b인 정사각형 구멍이 있고, 원에서 정사각형을 뺀 부분이 색칠되어 있다.",
+    "solutionImageCaption": "위아래 면은 각각 πa²−b²이고, 바깥 옆면은 2πab, 구멍 안쪽 네 면은 4b²이다. 겉넓이를 합하여 π의 계수와 유리수 부분을 비교하면 b=3, a=7을 얻으므로 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -591,7 +611,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 영역 A, B, C, D를 점으로 나타내고 경계를 공유하는 쌍을 선분으로 이었다. A와 C를 잇는 선분이 있으며 B와 D를 잇는 선분은 없다.",
+    "solutionImageCaption": "선분으로 연결된 영역끼리는 다른 색을 써야 하므로 A, C의 선택은 차례로 k가지와 k−1가지이다. B와 D는 서로 제한하지 않아 각각 k−2가지이고, k(k−1)(k−2)²=480을 풀면 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -672,7 +696,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM",
     "subUnit": "연립방정식과 연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 이차부등식의 해 −1≤x≤4와 k=2 및 k=3일 때 두 조건의 공통 범위 및 정수점을 같은 눈금에 표시한 수직선이다.",
+    "solutionImageCaption": "이차부등식에서 가능한 정수는 −1부터 4까지이고, 절댓값 조건은 k−2부터 k+2까지의 정수만 허용한다. 공통 정수해의 합을 조사하면 k=2와 k=3일 때만 10이므로 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -698,7 +726,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 출발 지점 1, 2에서 코스 A, B, C, D, E를 거쳐 도착 지점으로 이어지는 화살표와 코스 E를 지나는 강조 경로가 보인다.",
+    "solutionImageCaption": "행렬의 행은 출발 지점, 열은 도착 지점을 나타내며, 코스를 이어 가는 경우의 수는 중간 지점별 곱을 더해 계산한다. 두 코스와 세 코스의 연결은 각각 A²과 A³으로 계산하므로 정답은 A의 첫째 행이 0, 2이고 둘째 행이 2, 1인 행렬, 33이다.",
+    "solutionImageSize": "full"
   }
 ];
 

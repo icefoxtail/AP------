@@ -136,6 +136,10 @@ function attached(lab,frame,why){
       const centered=frame.rawArcs.filter(a=>Math.abs(a.r-18)<1e-7&&Math.abs(a.lineWidth-2.2*lab.board.lw)<1e-7);
       const possible=[...centered,...frame.arcs.filter(a=>a.options.part===l.options.part&&a.options.width===5)];
       assert.ok(possible.some(a=>dist({x:a.at.x+a.r*Math.cos((a.start+a.end)/2),y:a.at.y+a.r*Math.sin((a.start+a.end)/2)},r.anchor)<1e-7),`${why}: the present angle arc, never the future full sweep`);
+    }else if(l.options.ref==='rolling-given-angle'){
+      const B=frame.polys.find(p=>p.options.fill==='ink').screen[0];
+      const given=frame.rawArcs.filter(a=>Math.abs(a.r-22)<1e-7&&dist(a.at,B)<1e-7&&Math.abs(a.lineWidth-2*lab.board.lw)<1e-7);
+      assert.ok(given.some(a=>dist({x:a.at.x+a.r*Math.cos((a.start+a.end)/2),y:a.at.y+a.r*Math.sin((a.start+a.end)/2)},r.anchor)<1e-7),`${why}: the actual given interior-angle arc at B`);
     }else assert.fail(`${why}: unknown annotation role`);
     count++;
   }

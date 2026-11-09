@@ -337,7 +337,17 @@
         lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.D, g.F, cen, String(g.DF), 'amber'); lb(g.F, g.B, cen, String(g.FB), 'green');
         lb(g.B, g.C, cen, k === 2 ? 'x' : String(g.BC), k === 2 ? 'amber' : 'green', 11);
         lb(g.D, g.E, centroid([g.D, g.B, g.C, g.E]), k === 0 ? 'x' : (k === 1 ? String(g.DE) : String(g.DE)), k === 0 ? 'amber' : 'sky', 9);
-        if (k === 1) lb(g.F, g.Gp, centroid([g.F, g.B, g.C, g.Gp]), 'x', 'amber', 9);
+        if (k === 1) {
+          const screen = p => b.toS(b._P ? b._P(p) : p), sf = screen(g.F), sd = screen(g.D);
+          // A fixed offset above FG can put x on DE when the two parallels
+          // are close. Keep the unknown outside the crowded strip and point
+          // to FG itself; the existing final solution still replaces x.
+          if (!b.thumb && Math.abs(sf.y - sd.y) < 36) {
+            const sg = screen(g.Gp), labelX = Math.min(b.W - 26, sg.x + 50);
+            T(b, g.Gp, 'x', { dx: labelX - sg.x, dy: g.Gp.y < cen.y - 1e-9 ? 24 : -64, color: 'amber', size: 16,
+              leader: true, leaderAnchor: lerp(g.F, g.Gp, .7), leaderSegment: [g.F, g.Gp] });
+          } else lb(g.F, g.Gp, centroid([g.F, g.B, g.C, g.Gp]), 'x', 'amber', 9);
+        }
         if (k === 0 || k === 2) { /* BC 또는 FG 가 주어짐: kind0 은 BC 가 주어지고 DE 를 구함, kind2 는 DE 가 주어지고 BC 를 구함 */ }
       } else {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.D, g.F, cen, String(g.DF), 'amber'); lb(g.F, g.B, cen, String(g.FB), 'green');

@@ -906,7 +906,13 @@
         else if (C.review && st === 2) { row = `x+y=${c}, y+z=${a}, z+x=${bb}`; col = 'ink'; }
         else if (C.review && st === 3) { row = `x=${x}, y=${y}, z=${z} (cm)`; col = 'amber'; }
         else row = `AB=${c}, BC=${a}, CA=${bb} → AF=${x}, BD=${y}, CE=${z} (cm)`;
-        rowT(b, pt((A.x + B.x + Cc.x) / 3, Math.max(B.y, Cc.y)), row, { dy: 66, size: fs(b, 15), color: col });
+        // 주어진 세 변은 그림에도 있으므로 좁은 탐구 무대에서는 접선 길이만 한 줄로 씁니다.
+        // 두 줄로 나눈 요약이 접점 D와 BD의 길이 위로 밀려 올라오지 않게 합니다.
+        const compactCaption = !C.review && b.W < 560 && G.textW(row, fs(b, 15)) * 1.1 > Math.max(180, b.W - 28);
+        if (compactCaption) row = `AF=${x}, BD=${y}, CE=${z} (cm)`;
+        const captionPoint = pt((A.x + B.x + Cc.x) / 3, Math.max(B.y, Cc.y));
+        const captionDy = compactCaption ? b.H - (b.insets.bottom || 0) - 24 - b.toS(captionPoint).y : 66;
+        rowT(b, captionPoint, row, { dy: captionDy, size: fs(b, 15), color: col });
       }
     },
     steps: (M) => [
