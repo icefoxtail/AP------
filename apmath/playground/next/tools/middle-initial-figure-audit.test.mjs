@@ -45,3 +45,8 @@ test('native slider clamping cannot disagree with the initial model',()=>{
   assert.ok(initialIssues({...visible,sliders},'leaf',[],{status:'NOT_APPLICABLE'}).includes('slider-model-mismatch:side'));
   assert.deepEqual(initialIssues({...visible,sliders:[{key:'side',step:'.1',value:'1.4',stateValue:Math.SQRT2}]},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
 });
+test('text ink cannot replace all hidden or off-canvas geometry',()=>{
+  assert.ok(initialIssues({...visible,geometry:[{method:'path',alpha:0}]},'leaf',[],{status:'NOT_APPLICABLE'}).includes('no-visible-geometry-command'));
+  assert.ok(initialIssues({...visible,geometry:[{method:'circle',alpha:1,bounds:{left:900,right:1000,top:10,bottom:100}}]},'leaf',[],{status:'NOT_APPLICABLE'}).includes('geometry-outside-canvas'));
+  assert.deepEqual(initialIssues({...visible,geometry:[{method:'path',alpha:1,bounds:{left:100,right:300,top:10,bottom:200}}]},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
+});

@@ -62,6 +62,11 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Existing hub browser regressions
+        if: matrix.unit == 'g7-points-lines'
+        env:
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+        run: node --test apmath/playground/next/tools/hub-no-legacy.test.mjs
       - name: Observe unmodified main baseline
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || '5472d9b0f2b2deba067126baf54a0479037654ab' }}

@@ -68,14 +68,25 @@ function sourcesFor(root, unit) {
 function installObservation() {
   const b = window.lab.board;
   window.__initialFigureDraws = [];
-  for (const method of ['path', 'poly', 'line', 'segment', 'arc', 'circle', 'plot', 'handle', 'point']) {
+  for (const method of ['path', 'poly', 'line', 'seg', 'segment', 'arc', 'circle', 'plot', 'handle', 'point']) {
     if (typeof b[method] !== 'function') continue;
     const original = b[method];
     b[method] = function (...args) {
       const options = args.at(-1);
-      if (!this._bbox && !this.thumb) window.__initialFigureDraws.push({ method,
-        ref: options && typeof options === 'object' ? options.ref || null : null,
-        alpha: options && typeof options === 'object' ? options.alpha ?? 1 : 1 });
+      if (!this._bbox && !this.thumb) {
+        const points=[];
+        const take=p=>{if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y))points.push(this.toS(p));};
+        if(['path','poly'].includes(method)&&Array.isArray(args[0]))args[0].forEach(take);
+        else if(['arc','circle'].includes(method)&&args[0]&&Number.isFinite(args[1])){
+          const p=args[0],r=Math.abs(args[1]);take({x:p.x-r,y:p.y-r});take({x:p.x+r,y:p.y+r});
+        }else if(['line','seg','segment'].includes(method)){take(args[0]);take(args[1]);}
+        else if(['handle','point'].includes(method))take(args[0]);
+        const bounds=points.length?{left:Math.min(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),right:Math.max(...points.map(p=>p.x)),bottom:Math.max(...points.map(p=>p.y))}:null;
+        window.__initialFigureDraws.push({ method,
+          ref: options && typeof options === 'object' ? options.ref || null : null,
+          alpha: (options && typeof options === 'object' ? options.alpha ?? 1 : 1)*this.ctx.globalAlpha,
+          bounds });
+      }
       return original.apply(this, args);
     };
   }
@@ -136,6 +147,11 @@ export function initialIssues(observation, expectedId, errors, semantic) {
   if (c.width <= 0 || c.height <= 0 || c.cssWidth <= 0 || c.cssHeight <= 0 || c.display === 'none' || c.visibility !== 'visible' || +c.opacity <= 0) issues.push('canvas-not-visible');
   if (c.visibleWidth < Math.min(100, c.cssWidth) || c.visibleHeight < Math.min(100, c.cssHeight)) issues.push('canvas-outside-first-viewport');
   if (observation.ink < 200) issues.push('blank-canvas');
+  if (Array.isArray(observation.geometry)) {
+    const visible=observation.geometry.filter(g=>g.alpha>0.01);
+    if(!visible.length)issues.push('no-visible-geometry-command');
+    else if(visible.every(g=>g.bounds)&&!visible.some(g=>g.bounds.right>=0&&g.bounds.bottom>=0&&g.bounds.left<=c.cssWidth&&g.bounds.top<=c.cssHeight))issues.push('geometry-outside-canvas');
+  }
   if (observation.overflow) issues.push('horizontal-overflow');
   if (observation.hintOverlap > 0) issues.push('orientation-hint-covers-canvas');
   if (observation.katexErrors.length) issues.push('math-typesetting-error');
@@ -218,6 +234,10 @@ async function run() {
           row.issues=initialIssues(obs,scene.id,errors,semantic);
           const expectedTab=state==='problem-initial'?'problem':'explore';
           if(obs.tab!==expectedTab)row.issues.push('selected-tab-mismatch');
+          if(['first-entry','reselected','returned','problem-initial','explore-return'].includes(state)||state.startsWith('alias-')){
+            if(obs.playing)row.issues.push('unexpected-initial-autoplay');
+            if(obs.revealed||obs.answerOpen)row.issues.push('unexpected-initial-answer-disclosure');
+          }
           if (screenshot) row.capture=await capture(scene,state);
           dest.observations.push(row);
           if(row.issues.length) report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,issues:row.issues,errors:[...errors]});
