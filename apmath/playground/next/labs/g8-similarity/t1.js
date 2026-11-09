@@ -206,9 +206,20 @@
     model: (s) => { const type = s.smSolid || 'tet', m = clamp(Math.round(s.smM), 1, 4), n = clamp(Math.round(s.smN), 1, 4), g = gcd(m, n); return { type, m, n, g, base: BASE[type], names: ELAB[type] }; },
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, type = prob ? pk.type : M.type, m = prob ? pk.m : M.m, n = prob ? pk.n : M.n, base = BASE[type];
-      const e1 = extent(type, m), e2 = extent(type, n), gap = 1.8 + 0.25 * Math.max(m, n), X2 = e1.w + gap;
+      const e1 = extent(type, m), e2 = extent(type, n);
+      let gap = 1.8 + 0.25 * Math.max(m, n), X2 = e1.w + gap;
       const hh = Math.max(e1.h, e2.h), yb = type === 'tet' ? 0.55 * Math.max(m, n) : type === 'cyl' ? 0.3 * BASE.cyl[0] * Math.max(m, n) : 0;
-      fit(b, { x0: -0.3, x1: X2 + e2.w + 0.3, y0: -hh - 0.3, y1: 0.8 + yb }, { t: 40, b: 70, l: 40, r: 44 });
+      const fitSolids = () => fit(b, { x0: -0.3, x1: X2 + e2.w + 0.3, y0: -hh - 0.3, y1: 0.8 + yb }, { t: 40, b: 70, l: 40, r: 44 });
+      fitSolids();
+      // The inward-facing D/F names need room between the two tetrahedra.
+      // A world-space gap alone collapses on the short mobile problem canvas.
+      if (phone(b) && type === 'tet' && !b.thumb) {
+        for (let attempt = 0; attempt < 4 && gap * b.k < 51.9; attempt++) {
+          gap = 52 / b.k;
+          X2 = e1.w + gap;
+          fitSolids();
+        }
+      }
       const st = C.step, shown = prob || st >= 2;
       const labFor = (k, who) => (i) => {
         if (prob) {
@@ -433,10 +444,10 @@
       return { tag: pk.askAlways ? '항상 닮은 도형 찾기' : '닮음이 아닐 수 있는 도형', key: pk.items.join(''), stem: pk.askAlways ? '다음 중 항상 닮은 도형인 것은? (그림의 ①~⑤는 보기 순서)' : '다음 중 항상 닮은 도형이라고 할 수 없는 것은? (그림의 ①~⑤는 보기 순서)', choices: items.map((it, i) => ({ h: it.h, p: it.h, ok: it.ok, hint: it.hint })), wide: false };
     }
   };
-  // 문제 그림: 보기의 도형 다섯 개를 ①~⑤ 번호와 함께 가로로 나란히
+  // 문제 그림: 넓은 화면은 한 줄, 휴대폰은 번호를 왼쪽에 붙인 두 열.
   function drawAlwaysProblem(b, M) {
-    const items = M.pk.items, n = items.length, step = 3.4, cols = phone(b) ? 2 : n;
-    fit(b, { x0: -1.4, x1: step * (cols - 1) + 1.4, y0: -3.2, y1: 4 * (Math.ceil(n / cols) - 1) + .7 }, { t: 26, b: 36, l: 24, r: 24 });
+    const items = M.pk.items, n = items.length, narrow = phone(b), step = narrow ? 7.4 : 3.4, cols = narrow ? 2 : n;
+    fit(b, { x0: -1.4, x1: step * (cols - 1) + 1.4, y0: -3.2, y1: 4 * (Math.ceil(n / cols) - 1) + .7 }, { t: 26, b: 36, l: narrow ? 44 : 24, r: 24 });
     items.forEach((t, i) => {
       const cx = step * (i % cols), dy = 4 * Math.floor(i / cols);
       const point = G.pt; const shifted = (x, y) => point(x, y + dy);
@@ -455,7 +466,8 @@
         else if (t === 'rti') Pt = [shifted(cx - 1.2, 0), shifted(cx + 1.2, 0), shifted(cx - 1.2, -2.4)];
         fillPoly(b, Pt, 'sky', 0.12); poly(b, Pt, 'ink', 3.4);
       }
-      T(b, shifted(cx, 0), G.NUM[i], { dy: 26, size: 26, color: 'amber' });
+      if (narrow) T(b, shifted(cx - 1.4, -1.2), G.NUM[i], { dx: -18, size: 26, color: 'amber' });
+      else T(b, shifted(cx, 0), G.NUM[i], { dy: 26, size: 26, color: 'amber' });
     });
   }
 

@@ -974,6 +974,21 @@
       return null;
     }
 
+    _stageInsets() {
+      const ui = this.ui, narrow = NARROW.matches;
+      const presH = ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22;
+      // 중등 실험실에서는 조건·꼭짓점·설명이
+      // 오른쪽 아래 도구 막대와 겹치지 않게 실제 막대 높이만큼 배치 영역을 비웁니다.
+      // 고등 실험실의 기존 배치는 유지합니다.
+      const middle = /^g[789]-/.test(this.id);
+      return {
+        top: ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0,
+        right: narrow ? 0 : 16,
+        bottom: narrow ? Math.max(Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14, presH)
+          : middle ? presH + ui.tools.offsetHeight + 14 : presH
+      };
+    }
+
     _renderStage(v) {
       const ui = this.ui;
       // 수식 칩
@@ -1047,15 +1062,8 @@
       // 무대 위 칩·배지·도구·발표 막대가 차지한 가장자리는 도형 배치에서 비워 둡니다(그림을 가리지 않도록).
       // 도구 막대는 어느 화면 폭에서나 그림 영역 아래 가장자리의 가로 한 줄입니다(넓은 화면은 오른쪽 아래 모서리, 좁은 화면은 상태 배지(왼쪽)와 한 줄).
       // 그래서 오른쪽은 비우지 않아 그림이 가로 폭을 다 씁니다. 수업 모드 발표 막대가 떠 있으면 넓은 화면에서는 도구 막대가 그 위로 올라갑니다.
-      const narrow = NARROW.matches;
       const presH = ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22;
-      const ins = {
-        top: ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0,
-        right: narrow ? 0 : 16, // 넓은 화면: 도구 막대 자리는 비웠지만 오른쪽 끝 라벨이 잘리지 않을 만큼의 여백만 둡니다(예전에는 도구 폭 + 16px)
-        // 넓은 화면: 도구 막대는 모서리의 작은 반투명 막대라 그림 영역을 따로 비우지 않습니다(비우면 높이에 맞춘 그림이 8~12% 작아져 라벨이 서로 겹침).
-        // 수업 모드 발표 막대가 있으면 막대가 그 위로 올라가므로 그만큼만 비웁니다.
-        bottom: narrow ? Math.max(Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14, presH) : presH
-      };
+      const ins = this._stageInsets();
       ui.canvasWrap.style.setProperty('--tools-w', ui.tools.offsetWidth + 'px');
       ui.canvasWrap.style.setProperty('--pres-h', presH + 'px');
       if (['top', 'right', 'bottom'].some((k) => Math.abs(ins[k] - this.board.insets[k]) > 2)) {

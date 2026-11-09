@@ -215,6 +215,58 @@ await test('rotation and folding labels stay synchronized until the real end, an
   }
 });
 
+await test('s2-5 first entry shows the original symmetric section and preserves folding, reset, and problem geometry', async () => {
+  const lab = await load(), scene = lab.go('s2-5');
+  const actions = call(scene.actions), play = actions.find((action) => action.id === 'play'), reset = actions.find((action) => action.id === 'reset');
+  const halves = () => {
+    const paths = lab.draw().paths;
+    return ['red', 'amber'].map((color) => {
+      const half = paths.find((p) => p.options.fill === color && p.options.close);
+      assert.ok(half && half.options.fillAlpha > 0, `${color} original half is visible`);
+      return half.points;
+    });
+  };
+  const assertFold = (points, expectedRatio) => {
+    const [right, left] = points;
+    assert.equal(left.length, right.length);
+    assert.ok(right.some((p) => p.x > 0), 'the original section has nonzero width');
+    right.forEach((p, i) => {
+      assert.ok(Math.abs(left[i].x - expectedRatio * p.x) < 1e-10);
+      assert.ok(Math.abs(left[i].y - p.y) < 1e-10);
+    });
+  };
+  for (const preset of call(scene.presets, lab.s)) {
+    preset.apply(lab.s, lab);
+    assert.equal(lab.s.playing, false);
+    assert.equal(lab.s.revealed, false);
+    const original = halves();
+    assertFold(original, -1); // Unfolded halves reflect across the displayed vertical axis.
+    assert.ok(lab.draw().texts.includes('접기 전'));
+    assert.match(call(scene.view, lab.s, lab).status.text, /접기 전/);
+    lab.tab = 'problem';
+    const problem = lab.draw().paths;
+    lab.tab = 'explore';
+    play.run(lab.s, lab);
+    scene.tick(lab.s, 1, lab);
+    assertFold(halves(), -Math.SQRT1_2); // One second of the four-second fold is 45 degrees.
+    assert.ok(lab.draw().texts.includes('45° 접는 중'));
+    scene.tick(lab.s, 3, lab);
+    assertFold(halves(), 1);
+    assert.equal(lab.s.playing, false);
+    assert.equal(lab.s.revealed, false);
+    assert.ok(lab.draw().texts.includes('두 반쪽이 꼭 겹쳐져요'));
+    lab.tab = 'problem';
+    assert.deepEqual(lab.draw().paths, problem, 'fold animation does not change the question geometry');
+    lab.tab = 'explore';
+    reset.run(lab.s, lab);
+    assert.deepEqual(halves(), original, 'reset restores the complete original section');
+  }
+  lab.s.soFold = 1;
+  lab.go('s2-1');
+  lab.go('s2-5');
+  assertFold(halves(), -1);
+});
+
 await test('dependent length sliders and point presets retain the actual geometric value', async () => {
   const lab = await load();
   for (const [id, small, large] of [['s1-3', 'soRT', 'soRB'], ['s1-6', 'soVr', 'soVR'], ['s2-1', 'soSr', 'soSR'], ['s3-5', 'soF1', 'soF2'], ['s4-4', 'soTf', 'soTg']]) {

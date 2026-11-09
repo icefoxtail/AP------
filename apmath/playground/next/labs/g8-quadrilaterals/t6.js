@@ -348,7 +348,11 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, O, sq2, over } = M, st = cx.step, R = M.S * 1.45;
-      fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 30, b: 74, l: 40, r: 40 });
+      // 휴대폰의 정지된 문제 그림은 현재 두 정사각형에 맞춥니다. 회전 전체의
+      // 빈 공간과 탐구 설명문 여백까지 잡으면 기본 정사각형이 40px대로 작아져요.
+      const compactProblem = cx.problem && b.W < 560;
+      const box = compactProblem ? bboxOf([A, B, C, D, ...sq2]) : { x0: -R, x1: R, y0: -R, y1: R };
+      fit(b, box, compactProblem ? { t: 30, b: M.K === 1 ? 48 : 30, l: 34, r: 34 } : { t: 30, b: 74, l: 40, r: 40 });
       fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [A, B, C, D], 'ink', 3.4);
       const names = ['E', 'F', 'G'];
       fillPoly(b, sq2, 'amber', 0.1); poly(b, sq2, 'amber', 3.2);
@@ -360,7 +364,7 @@
       sq2.slice(1).forEach((q, i) => { b.point(q, { color: 'amber', r: 4.5 }); tagOut(b, q, O, names[i], { size: 16, gap: 10, color: 'amber' }); });
       if (cx.problem) {
         if (M.K === 0) sd(b, A, B, O, `${M.S}`, 'sky');
-        else T(b, pt(0, R), '□ABCD의 넓이 = x', { dy: 8, size: b.W < 560 ? 15 : 17, color: 'rose' });
+        else T(b, compactProblem ? pt((box.x0 + box.x1) / 2, box.y1) : pt(0, R), '□ABCD의 넓이 = x', { dy: compactProblem ? 28 : 8, size: b.W < 560 ? 15 : 17, color: 'rose' });
         T(b, centroid2(over), M.K === 0 ? 'x' : `${M.ov}`, { size: 20, color: M.K === 0 ? 'rose' : 'green' });
         return;
       }

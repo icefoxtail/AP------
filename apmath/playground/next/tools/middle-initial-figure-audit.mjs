@@ -68,6 +68,27 @@ function sourcesFor(root, unit) {
 function installObservation() {
   const b = window.lab.board;
   window.__initialFigureDraws = [];
+  window.__initialFigureLabels = [];
+  // Use Chromium's actual glyph metrics, including alignment, baseline and
+  // transforms. Fractions are observed as their separately painted glyphs.
+  const fillText = b.ctx.fillText;
+  b.ctx.fillText = function (value, x, y, maxWidth) {
+    if (!b._bbox && !b.thumb && this.globalAlpha > .01 && String(value).trim()) {
+      const colorAlpha = /rgba\([^)]*,\s*([\d.]+)\s*\)/.exec(String(this.fillStyle));
+      if (this.globalAlpha * (colorAlpha ? +colorAlpha[1] : 1) > .01) {
+        const m = this.measureText(String(value)), t = this.getTransform();
+        const widthScale = Number.isFinite(maxWidth) && maxWidth < m.width ? maxWidth / m.width : 1;
+        const xs = [x - m.actualBoundingBoxLeft * widthScale, x + m.actualBoundingBoxRight * widthScale];
+        const ys = [y - m.actualBoundingBoxAscent, y + m.actualBoundingBoxDescent];
+        const points = xs.flatMap(px => ys.map(py => ({ x: (t.a * px + t.c * py + t.e) * b.W / b.canvas.width,
+          y: (t.b * px + t.d * py + t.f) * b.H / b.canvas.height })));
+        window.__initialFigureLabels.push({ text: String(value),
+          left: Math.min(...points.map(p => p.x)), right: Math.max(...points.map(p => p.x)),
+          top: Math.min(...points.map(p => p.y)), bottom: Math.max(...points.map(p => p.y)) });
+      }
+    }
+    return fillText.apply(this, arguments);
+  };
   for (const method of ['path', 'poly', 'line', 'seg', 'segment', 'arc', 'circle', 'plot', 'handle', 'point']) {
     if (typeof b[method] !== 'function') continue;
     const original = b[method];
@@ -122,13 +143,23 @@ function observe() {
   const hint = document.querySelector('.apl-orient-hint');
   const hr = hint?.checkVisibility() ? hint.getBoundingClientRect() : null;
   const hintOverlap = hr ? Math.max(0, Math.min(hr.right, rect.right) - Math.max(hr.left, rect.left)) * Math.max(0, Math.min(hr.bottom, rect.bottom) - Math.max(hr.top, rect.top)) : 0;
+  const tools = l.ui.tools, toolRect = tools.checkVisibility() ? tools.getBoundingClientRect() : null;
+  const toolbar = toolRect ? { left: toolRect.left - rect.left, right: toolRect.right - rect.left,
+    top: toolRect.top - rect.top, bottom: toolRect.bottom - rect.top } : null;
+  const labels = [...(window.__initialFigureLabels || [])];
+  for (const el of b._labels?.values() || []) if (el.checkVisibility({opacityProperty:true,visibilityProperty:true})) {
+    const r = el.getBoundingClientRect();
+    labels.push({ text: el.textContent, kind: 'math-overlay', left: r.left - rect.left, right: r.right - rect.left,
+      top: r.top - rect.top, bottom: r.bottom - rect.top });
+  }
   return { id: String(l.scene.id), title: l.scene.title, heading: document.querySelector('.apl-scene-title')?.textContent,
     index: l.index, tab: l.tab, step: l.s.step, playing: !!l.s.playing, revealed: !!l.s.revealed,
     answerOpen: !!l.refs.answer?.classList.contains('open'),
     canvas: { width: c.width, height: c.height, cssWidth: rect.width, cssHeight: rect.height,
-      left: rect.left, top: rect.top, visibleWidth, visibleHeight, display: style.display, visibility: style.visibility, opacity: style.opacity },
+      left: rect.left, top: rect.top, visibleWidth, visibleHeight, display: style.display, visibility: style.visibility, opacity: style.opacity,
+      rendered: c.checkVisibility({opacityProperty:true,visibilityProperty:true,contentVisibilityAuto:true}) },
     ink, inkBounds: ink ? { x0, y0, x1, y1 } : null, pixelFingerprint: (hash >>> 0).toString(16),
-    geometry: window.__initialFigureDraws, params, declaredControls, sliders, handles,
+    geometry: window.__initialFigureDraws, labels, toolbar, params, declaredControls, sliders, handles,
     overflow: document.documentElement.scrollWidth > innerWidth + 1, hintOverlap,
     katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent),
     question: document.querySelector('.apl-question .q')?.textContent || '',
@@ -139,12 +170,21 @@ function observe() {
   };
 }
 
+export function toolbarOcclusions(labels, toolbar) {
+  if (!toolbar) return [];
+  return (labels || []).filter(label => {
+    const w = Math.min(label.right, toolbar.right) - Math.max(label.left, toolbar.left);
+    const h = Math.min(label.bottom, toolbar.bottom) - Math.max(label.top, toolbar.top);
+    return w > 0 && h > 0 && w * h > 1;
+  });
+}
+
 export function initialIssues(observation, expectedId, errors, semantic) {
   const issues = [];
   if (observation.id !== expectedId) issues.push('selected-scene-mismatch');
   if (errors.length) issues.push('browser-error');
   const c = observation.canvas;
-  if (c.width <= 0 || c.height <= 0 || c.cssWidth <= 0 || c.cssHeight <= 0 || c.display === 'none' || c.visibility !== 'visible' || +c.opacity <= 0) issues.push('canvas-not-visible');
+  if (c.width <= 0 || c.height <= 0 || c.cssWidth <= 0 || c.cssHeight <= 0 || c.display === 'none' || c.visibility !== 'visible' || +c.opacity <= 0 || c.rendered === false) issues.push('canvas-not-visible');
   if (c.visibleWidth < Math.min(100, c.cssWidth) || c.visibleHeight < Math.min(100, c.cssHeight)) issues.push('canvas-outside-first-viewport');
   if (observation.ink < 200) issues.push('blank-canvas');
   if (Array.isArray(observation.geometry)) {
@@ -154,6 +194,7 @@ export function initialIssues(observation, expectedId, errors, semantic) {
   }
   if (observation.overflow) issues.push('horizontal-overflow');
   if (observation.hintOverlap > 0) issues.push('orientation-hint-covers-canvas');
+  if (toolbarOcclusions(observation.labels, observation.toolbar).length) issues.push('toolbar-covers-figure-label');
   if (observation.katexErrors.length) issues.push('math-typesetting-error');
   for (const slider of observation.sliders || []) {
     // A native range may round half a step, but cannot silently clamp a model
@@ -219,7 +260,7 @@ async function run() {
         await page.addInitScript(() => {let seed=1701;Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};});
         const settle = async () => {
           await page.waitForFunction(() => window.lab && !lab._tween, null, {timeout:15000});
-          await page.evaluate(async () => {await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.__initialFigureDraws=[];lab.render();});
+          await page.evaluate(async () => {await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.__initialFigureDraws=[];window.__initialFigureLabels=[];lab.render();});
         };
         const capture = async (scene,state) => {
           const name = `${unit.id}--${scene.id}--${view.name}-${theme}--${state}.png`.replace(/[^\w.-]/g,'_');
@@ -282,6 +323,26 @@ async function run() {
             await page.evaluate(()=>document.fonts.ready);
             await page.evaluate(installObservation);
             const first=await measure(scene,'first-entry',true);
+            if(scene===scenes[0]){
+              // A real Chromium negative/positive control for the glyph guard.
+              // The next normal render clears these deliberately painted marks.
+              const control=await page.evaluate(()=>{
+                const b=lab.board,c=b.ctx,r=b.canvas.getBoundingClientRect(),t=lab.ui.tools.getBoundingClientRect();
+                const toolbar={left:t.left-r.left,right:t.right-r.left,top:t.top-r.top,bottom:t.bottom-r.top};
+                c.save();c.font='700 18px sans-serif';c.textAlign='left';c.textBaseline='alphabetic';
+                c.globalAlpha=1;c.fillStyle='#ffffff';
+                const start=window.__initialFigureLabels.length;
+                c.fillText('E',toolbar.left+8,toolbar.top+3);
+                const visible=window.__initialFigureLabels.slice(start);
+                c.globalAlpha=.05;c.fillStyle='rgba(255,255,255,.05)';
+                const hiddenStart=window.__initialFigureLabels.length;c.fillText('E',toolbar.left+8,toolbar.top+3);
+                const nearlyTransparentCount=window.__initialFigureLabels.length-hiddenStart;c.restore();
+                return {toolbar,visible,nearlyTransparentCount};
+              });
+              const pass=toolbarOcclusions(control.visible,control.toolbar).length===1&&control.nearlyTransparentCount===0;
+              (dest.measurementControls||=[]).push({view:view.name,theme,type:'actual-glyph-toolbar-occlusion',...control,pass});
+              if(!pass)report.failures.push({unit:unit.id,view:view.name,theme,reason:'glyph-measurement-control-failed'});
+            }
             const activeParams = obs => Object.fromEntries(first.declaredControls.map(k=>[k,obs.params[k]]));
             // Follow the actual selected button, including scene/group closure.
             const button=page.locator('.apl-subscenes [aria-selected="true"]');
@@ -315,7 +376,7 @@ async function run() {
             // Risk-based animation sampling, explicitly recorded per scene.
             if(!observationOnly && ['pc','small-mobile'].includes(view.name)){
               await page.evaluate(i=>lab.goScene(i),first.index);await settle();
-              const control=await page.evaluate(()=>Object.entries(lab._ctls||{}).filter(([,v])=>v.input.checkVisibility()).map(([key,v])=>({key,label:v.input.getAttribute('aria-label')||'',min:+v.input.min,max:+v.input.max})).find(x=>/움직여 보기|애니메이션|펼치기|진행률|분리/.test(x.label))||null);
+              const control=await page.evaluate(()=>Object.entries(lab._ctls||{}).filter(([,v])=>v.input.checkVisibility()).map(([key,v])=>({key,label:v.input.getAttribute('aria-label')||'',min:+v.input.min,max:+v.input.max,resetMode:typeof lab.scene.f3?.tick==='function'?'entry-values':'progress-minimum'})).find(x=>/움직여 보기|애니메이션|펼치기|진행률|분리/.test(x.label))||null);
               if(control){
                 for(const [state,fraction] of [['animation-middle',.5],['animation-end',1]]){
                   const value=await page.evaluate(({key,fraction})=>{const input=lab._ctls[key].input,probe=input.cloneNode(false);probe.value=String(+input.min+(+input.max-+input.min)*fraction);return probe.valueAsNumber;},{key:control.key,fraction});
@@ -327,9 +388,19 @@ async function run() {
                   if(!pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state,reason:'native-progress-state-mismatch',key:control.key,requested:value,actual});
                 }
                 const reset=page.locator('.apl-actions-row button').filter({hasText:/^처음으로$/});
-                if(await reset.count()){await reset.click();await page.evaluate(()=>window.scrollTo(0,0));const after=await measure(scene,'reset',true);const pass=!after.playing&&Math.abs(after.params[control.key]-first.params[control.key])<1e-7;dest.interactions.push({id:scene.id,view:view.name,theme,type:'native-reset',pass});if(!pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state:'reset',reason:'reset-does-not-restore-animation'});}
+                if(await reset.count()){
+                  await reset.click();await page.evaluate(()=>window.scrollTo(0,0));const after=await measure(scene,'reset',true);
+                  // Native '처음으로' returns progress to its beginning. Some
+                  // lessons initially show a partial fold alongside the original;
+                  // that entry pose is not the reset target. Custom F3 oscillators
+                  // explicitly restore their original independent input values.
+                  const expected=control.resetMode==='entry-values'?first.params[control.key]:control.min;
+                  const actual=after.params[control.key],pass=!after.playing&&Math.abs(actual-expected)<1e-7;
+                  dest.interactions.push({id:scene.id,view:view.name,theme,type:'native-reset',resetMode:control.resetMode,key:control.key,expected,actual,restoresEntryValue:Math.abs(actual-first.params[control.key])<1e-7,pass});
+                  if(!pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,state:'reset',reason:'reset-does-not-restore-animation',expected,actual});
+                }
                 else{await page.evaluate(i=>lab.goScene(i),first.index);await measure(scene,'reentry-reset',true);dest.notRun.push({id:scene.id,view:view.name,state:'native-reset',reason:'no-reset-button'});}
-              }else dest.notRun.push({id:scene.id,view:view.name,state:'animation-middle/end',reason:'no-visible-progress-slider; existing animation/drag audit covers other controls'});
+              }else dest.notRun.push({id:scene.id,view:view.name,state:'animation-middle/end',reason:'no-matched-progress-slider; targeted animation/drag coverage must be reported separately'});
             }
             } catch(error) {
               report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,reason:'scene-run-incomplete',message:error.stack});

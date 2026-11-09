@@ -132,6 +132,19 @@ python3 -m http.server 8765 &                                   # 저장소 루�
 node apmath/playground/next/tools/scene-smoke.mjs               # 모든 장면 × (PC 칠판·PC 종이·휴대폰) 렌더 검사
 ```
 
+### 중등 장면의 최초 기본 도형 검사
+
+```bash
+node --test apmath/playground/next/tools/middle-initial-*.test.mjs apmath/playground/next/tools/apl-stage-insets.test.mjs
+node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root . --themes board,paper --out /tmp/middle-initial-evidence
+```
+
+실제 Chromium과 Playwright가 필요합니다. 검사기는 최신 카탈로그의 중1·중2·중3 실험실을 찾고, 각 페이지의 실제 등록 목록과 초기 해시 전용 장면을 읽습니다. 별칭 주소는 도착 장면을 검사하되 고유 장면 수에 중복 집계하지 않습니다. 화면 크기는 `1440×900`, `820×1180`, `1024×768`, `390×844`, `360×800`입니다. 후보 CI는 기본 종이 테마와 칠판 테마를 모두 검사합니다.
+
+장면마다 새 문서 최초 진입, 실제 장면 버튼 재선택, 다른 장면을 거친 복귀, 탐구·문제 탭의 초기 상태를 검사합니다. 표시되는 진행 막대가 있는 위험 장면은 PC·작은 모바일에서 중간값·완료·초기화도 확인하며, 실제 실행 범위를 원장에 기록합니다. 렌더 예외, 숨거나 화면 밖에 있는 무대, 도형 명령 누락, 조절기와 모델 값 불일치, 실제 글자 영역과 도구막대의 충돌, 예상하지 않은 자동 재생·정답 공개는 실패합니다. 원과 부채꼴의 파내기·잎 모양에는 실제 픽셀의 원호와 영역 구분을 확인하는 별도 회귀 조건이 있습니다.
+
+`.github/workflows/middle-initial-figure.yml`이 관련 PR에서 전체 중등 장면을 자동 발견해 실행합니다. `report.json`과 원본 캡처는 소스·캡처 SHA와 함께 외부 증거로 보존합니다. 자동 통과는 학생 관점의 시각 품질 판정이 아닙니다. 핵심 도형의 의미, 가독성, 문제 조건과의 일치는 독립적인 실제 화면 검수로 확인하고, 미실행·불확실 항목을 `NOT_RUN`·`UNKNOWN`으로 남깁니다.
+
 ### 5.1 scene-smoke가 보는 것
 
 `labs/*.html`의 모든 실험실을 열어 **모든 장면 × (PC 칠판 · PC 종이 · 휴대폰 390px)** 에서 다음을 봅니다. 하나라도 걸리면 FAIL(종료 코드 1)입니다.

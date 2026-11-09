@@ -40,7 +40,9 @@
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? cpGeo(pk.t, pk.s, pk.th) : M;
       const tri = bboxOf([g.A, g.B, g.C]), W = tri.x1 - tri.x0, off = W + 1.8;
       const withCopy = !prob;
-      fit(b, withCopy ? { x0: tri.x0, x1: tri.x1 + off + 0.2, y0: tri.y0, y1: tri.y1 } : tri, { t: 44, b: 86, l: 52, r: 52 });
+      // A question uses one triangle and no bottom explanation. Give that
+      // triangle the height of the phone board while keeping room for its labels.
+      fit(b, withCopy ? { x0: tri.x0, x1: tri.x1 + off + 0.2, y0: tri.y0, y1: tri.y1 } : tri, prob && phone(b) ? { t: 30, b: 30, l: 52, r: 52 } : { t: 44, b: 86, l: 52, r: 52 });
       const cen = centroid([g.A, g.B, g.C]);
       fillPoly(b, [g.G, g.E, g.D], 'sky', 0.26); fillPoly(b, [g.G, g.B, g.A], 'green', 0.14);
       poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.A, g.D, 'ink', 3.2); line(b, g.B, g.E, 'ink', 3.2); line(b, g.E, g.D, 'amber', 3.6, { dash: [7, 5] });

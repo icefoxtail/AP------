@@ -464,9 +464,9 @@
     id: 's2-5', noView: true, title: '단면을 접으면 포개져요', short: '선대칭도형',
     question: '축을 포함한 단면을 회전축으로 접으면 두 반쪽이 겹쳐질까? 이 도형을 무엇이라고 할까?',
     ctl: (s) => ctlOf(s).concat(['soFold']), presets: CHIPS(['cyl', 'cone', 'frus', 'sphere']),
-    anim: { key: 'soFold', dur: 4, label: '접어 보기', start: 0.4 },
+    anim: { key: 'soFold', dur: 4, label: '접어 보기', start: 0 },
     stepT: (n) => (n >= 2 ? 1 : 0), problemT: 0.5,
-    init: (s) => { s.soK2 = 'cyl'; s.soSR = 3; s.soSr = 2; s.soSH = 6; s.soFold = 0.4; },
+    init: (s) => { s.soK2 = 'cyl'; s.soSR = 3; s.soSr = 2; s.soSH = 6; s.soFold = 0; },
     reroll: (s) => { s.soPK = pick(['cyl', 'cone', 'frus', 'sphere'], s.soPK); s.soPs = (s.soPs || 0) + 1; },
     model: (s) => Object.assign(baseModel(s), { pk: s.soPK || 'cone', ps: s.soPs || 0 }),
     draw(b, s, M, C) {
@@ -486,7 +486,7 @@
       if (C.txt) {
         T(b, sf.f(sol.ymax + 0.35, 0), '대칭축 = 회전축 l', ROSE, { dy: -16, size: 16 });
         const done = G.complete(C.t);
-        T(b, sf.f(sol.ymin - 0.35, 0), done ? '두 반쪽이 꼭 겹쳐져요' : `${G.measureN(phi / DEG)}° 접는 중`, done ? GRN : 'ink', { dy: 20, size: 17 });
+        T(b, sf.f(sol.ymin - 0.35, 0), done ? '두 반쪽이 꼭 겹쳐져요' : C.t <= 0 ? '접기 전' : `${G.measureN(phi / DEG)}° 접는 중`, done ? GRN : 'ink', { dy: 20, size: 17 });
         T(b, sf.f(sol.ymin - 0.35, 0), SEC_NAME[M.kind], 'ink', { dy: 42, size: 16 });
       }
       void hs;
@@ -499,8 +499,8 @@
     ],
     view: (M, C) => ({
       guide: '막대로 <b>왼쪽 반(노랑)</b>을 접어 오른쪽으로 넘겨 보세요. 단면의 모양이 달라도 접으면 항상 겹쳐져요.',
-      readouts: [rd('단면의 모양', SEC_NAME[M.kind], AMB), rd('접는 선', '회전축', ROSE), rd('겹치나요?', G.complete(C.t) ? '예 (선대칭도형)' : '접는 중', GRN)],
-      status: G.complete(C.t) ? { tone: 'ok', text: '두 반쪽이 겹쳐져요: 선대칭도형' } : { tone: 'info', text: `${G.measureN(C.t * 180)}° 접었어요` },
+      readouts: [rd('단면의 모양', SEC_NAME[M.kind], AMB), rd('접는 선', '회전축', ROSE), rd('겹치나요?', G.complete(C.t) ? '예 (선대칭도형)' : C.t <= 0 ? '접기 전' : '접는 중', GRN)],
+      status: G.complete(C.t) ? { tone: 'ok', text: '두 반쪽이 겹쳐져요: 선대칭도형' } : { tone: 'info', text: C.t <= 0 ? '접기 전: 원래 단면을 살펴보세요' : `${G.measureN(C.t * 180)}° 접었어요` },
       formula: '<p>접었을 때 완전히 겹치는 도형 = <b>선대칭도형</b> · 접는 선 = <b>대칭축</b></p><p>회전체의 축을 포함한 단면 → 대칭축은 회전축</p>',
       rule: '회전체를 회전축을 포함하는 평면으로 자른 단면은 선대칭도형이다',
       notes: notes('<b>회전축</b>은 언제나 이 단면의 대칭축이에요. 원이나 직사각형에는 다른 대칭축도 있어요.', '회전축에 <b>수직</b>인 평면으로 자르는 경우와 구별해요.')

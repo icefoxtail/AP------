@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {discoverMiddleCatalog,discoverHashEntries,initialIssues,VIEWPORTS} from './middle-initial-figure-audit.mjs';
+import {discoverMiddleCatalog,discoverHashEntries,initialIssues,toolbarOcclusions,VIEWPORTS} from './middle-initial-figure-audit.mjs';
 
 test('initial inventory includes newly registered middle labs without a fixed scene list',()=>{
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'middle-initial-catalog-'));
@@ -39,6 +39,7 @@ test('caught renderer errors and wrong scene routing fail independently of pixel
 });
 test('first-screen geometry outside the viewport fails even with nonblank canvas',()=>{
   assert.ok(initialIssues({...visible,canvas:{...visible.canvas,visibleHeight:0}},'leaf',[],{status:'NOT_APPLICABLE'}).includes('canvas-outside-first-viewport'));
+  assert.ok(initialIssues({...visible,canvas:{...visible.canvas,rendered:false}},'leaf',[],{status:'NOT_APPLICABLE'}).includes('canvas-not-visible'));
 });
 test('native slider clamping cannot disagree with the initial model',()=>{
   const sliders=[{key:'side',step:'1',value:'6',stateValue:8}];
@@ -49,4 +50,12 @@ test('text ink cannot replace all hidden or off-canvas geometry',()=>{
   assert.ok(initialIssues({...visible,geometry:[{method:'path',alpha:0}]},'leaf',[],{status:'NOT_APPLICABLE'}).includes('no-visible-geometry-command'));
   assert.ok(initialIssues({...visible,geometry:[{method:'circle',alpha:1,bounds:{left:900,right:1000,top:10,bottom:100}}]},'leaf',[],{status:'NOT_APPLICABLE'}).includes('geometry-outside-canvas'));
   assert.deepEqual(initialIssues({...visible,geometry:[{method:'path',alpha:1,bounds:{left:100,right:300,top:10,bottom:200}}]},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
+});
+test('a partly hidden vertex letter fails even when the full figure is visible',()=>{
+  const toolbar={left:400,right:680,top:450,bottom:490};
+  const hiddenE={text:'E',left:410,right:420,top:440,bottom:453};
+  const clearH={text:'H',left:380,right:390,top:440,bottom:453};
+  assert.deepEqual(toolbarOcclusions([hiddenE,clearH],toolbar),[hiddenE]);
+  assert.ok(initialIssues({...visible,labels:[hiddenE],toolbar},'leaf',[],{status:'NOT_APPLICABLE'}).includes('toolbar-covers-figure-label'));
+  assert.deepEqual(initialIssues({...visible,labels:[clearH],toolbar},'leaf',[],{status:'NOT_APPLICABLE'}),[]);
 });

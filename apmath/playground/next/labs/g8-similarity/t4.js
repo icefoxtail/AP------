@@ -130,12 +130,16 @@
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? xGeo(pk.m, pk.n, pk.r) : M;
       // Keep the outward A/D names below the board's upper status badge.
       // Inverse ratios place the large top triangle directly beneath that badge.
-      fit(b, bboxOf([g.A, g.D, g.B, g.C]), { t: 74, b: 66, l: 52, r: 52 });
+      // The problem has no exploration badge or bottom explanation. Reserving
+      // those two rows on a short phone board shrinks the small triangle to 21px.
+      const mobileProblem = prob && phone(b) && b.H < 320;
+      fit(b, bboxOf([g.A, g.D, g.B, g.C]), mobileProblem ? { t: 30, b: 34, l: 36, r: 36 } : { t: 74, b: 66, l: 52, r: 52 });
       const cen = g.O, upperColor = g.m <= g.n ? 'sky' : 'green', lowerColor = g.m <= g.n ? 'green' : 'sky';
       fillPoly(b, [g.O, g.A, g.D], upperColor, 0.18); fillPoly(b, [g.O, g.B, g.C], lowerColor, 0.18);
       line(b, g.A, g.D, 'ink', 3.6); line(b, g.B, g.C, 'ink', 3.6); line(b, g.A, g.C, 'ink', 3.6); line(b, g.D, g.B, 'ink', 3.6);
       par(b, g.A, g.D, 1, 'green'); par(b, g.B, g.C, 1, 'green');
-      if (prob || !C.review || st >= 1) { ang(b, g.A, g.D, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.C, g.B, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.D, g.A, g.O, { color: 'violet', rings: 2, r: 20 }); ang(b, g.B, g.C, g.O, { color: 'violet', rings: 2, r: 20 }); }
+      const angleR = (v, p, q) => mobileProblem ? Math.max(8, Math.min(20, Math.min(dist(v, p), dist(v, q)) * b.k * 0.28)) : 20;
+      if (prob || !C.review || st >= 1) { ang(b, g.A, g.D, g.O, { color: 'rose', rings: 1, r: angleR(g.A, g.D, g.O) }); ang(b, g.C, g.B, g.O, { color: 'rose', rings: 1, r: angleR(g.C, g.B, g.O) }); ang(b, g.D, g.A, g.O, { color: 'violet', rings: 2, r: angleR(g.D, g.A, g.O) }); ang(b, g.B, g.C, g.O, { color: 'violet', rings: 2, r: angleR(g.B, g.C, g.O) }); }
       const mark = (p, q) => 0;
       const sz = 16, lb = (p, q, t, col, gap) => t != null && sideTag(b, p, q, cen, t, { color: col, size: sz, gap: gap || 12 });
       const lbIn = (p, q, t, col) => T(b, lerp(p, q, 0.5), t, { size: sz, color: col, dx: ((p.y > q.y ? 1 : 1) * 14), dy: 0 });

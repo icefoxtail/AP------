@@ -14,6 +14,7 @@ on:
       - 'apmath/playground/next/labs/g9-*.html'
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/tools/middle-initial-*'
+      - 'apmath/playground/next/tools/apl-stage-insets.test.mjs'
       - '.github/workflows/middle-initial-figure.yml'
   workflow_dispatch:
 
@@ -39,7 +40,9 @@ jobs:
       - id: inventory
         run: echo "units=$(node apmath/playground/next/tools/middle-initial-figure-audit.mjs --list-units)" >> "$GITHUB_OUTPUT"
       - name: Initial figure regression contracts
-        run: node --test apmath/playground/next/tools/middle-initial-*.test.mjs
+        run: node --test apmath/playground/next/tools/middle-initial-*.test.mjs apmath/playground/next/tools/apl-stage-insets.test.mjs
+      - name: Middle mathematical and scene-state regressions
+        run: node --test apmath/playground/next/tools/g7-*.test.mjs apmath/playground/next/tools/g8-*.test.mjs apmath/playground/next/tools/g9-*.test.mjs
   browser:
     needs: inventory
     strategy:
@@ -81,7 +84,7 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
           UNIT: ${{ matrix.unit }}
-        run: node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root . --units "$UNIT" --out "$RUNNER_TEMP/initial-evidence/after"
+        run: node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root . --units "$UNIT" --themes board,paper --out "$RUNNER_TEMP/initial-evidence/after"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
