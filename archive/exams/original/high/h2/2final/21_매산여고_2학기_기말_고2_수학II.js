@@ -342,7 +342,7 @@ window.questionBank = [
       "$35$"
     ],
     "answer": "④",
-    "solution": "먼저 역함수를 구한다.\n$y=(x-1)^3+3$에서 $x=1+\\sqrt[3]{y-3}$이므로\n$g(x)=1+\\sqrt[3]{x-3}$이다.\n첫째 적분은\n$\\displaystyle\\int_1^3 f(x)\\,dx=\\int_1^3((x-1)^3+3)\\,dx=10$\n둘째 적분은\n$\\displaystyle\\int_3^{11}g(x)\\,dx=[x+\\frac34(x-3)^{4/3}]_3^{11}=20$\n따라서 두 적분의 합은 $10+20=30$이다.",
+    "solution": "먼저 역함수를 구한다.\n$y=(x-1)^3+3$에서 $x=1+\\sqrt[3]{y-3}$이므로\n$g(x)=1+\\sqrt[3]{x-3}$이다.\n첫째 적분은\n$\\displaystyle\\int_1^3 f(x)\\,dx=\\int_1^3((x-1)^3+3)\\,dx=10$\n둘째 적분은\n$\\displaystyle\\int_3^{11}g(x)\\,dx=[x+\\frac34(x-3)^{\\frac{4}{3}}]_3^{11}=20$\n따라서 두 적분의 합은 $10+20=30$이다.",
     "decisiveStep": "direct inverse integral gives 10+20=30; answer ④",
     "level": "중",
     "category": "정적분",

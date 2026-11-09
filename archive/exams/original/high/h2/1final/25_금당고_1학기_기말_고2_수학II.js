@@ -791,7 +791,7 @@ window.questionBank = [
       "$69\\,\\mathrm{m}$"
     ],
     "answer": "②",
-    "solution": "처음 2분 동안 속도는 $v(t)=3t$이고 거리는 $\\int_0^2 3t\\,dt=6$ m이다. 이어 8분 동안 속도 $6$ m/분으로 $48$ m를 간다. 감속 구간은 $6/2=3$분이며 거리는 $\\frac12\\cdot6\\cdot3=9$ m이다. 총 거리는 $6+48+9=63$ m이므로 ②이다.",
+    "solution": "처음 2분 동안 속도는 $v(t)=3t$이고 거리는 $\\int_0^2 3t\\,dt=6$ m이다. 이어 8분 동안 속도 $6$ m/분으로 $48$ m를 간다. 감속 구간은 $\\frac{6}{2}=3$분이며 거리는 $\\frac12\\cdot6\\cdot3=9$ m이다. 총 거리는 $6+48+9=63$ m이므로 ②이다.",
     "sourceQid": 15,
     "questionUid": "qid_v1_429a1970c6cbb613cad27e3b2120fc176454d8ef7b1bb4c3562f5832025f5742",
     "sourceArchiveFile": "original/high/h2/1final/25_금당고_1학기_기말_고2_수학II.js",

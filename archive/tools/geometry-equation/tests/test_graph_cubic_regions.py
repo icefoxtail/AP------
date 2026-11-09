@@ -56,6 +56,14 @@ class Framing(unittest.TestCase):
         row=fit_overview({**CUBIC_QUAD,'pieces':[{'coefficients':['0','0','1']}],'referenceCurves':[{'id':'g','coefficients':['2','0','-1'],'intersectionX':['-1','1']}],
             'requiredPoints':[{'id':'A','x':0,'y':0},{'id':'B','x':0,'y':2}],'regions':[{'id':'S','upper':'g','lower':'f','from':'-1','to':'1'}]})['graphPlan']['piecewisePolynomialFeatures']['regions'][0]
         self.assertEqual(row['upperRows'][0]['coefficients'],['2','0','-1'])
+    def test_irreducible_cubic_region_needs_no_root_inside_only(self):
+        # EXT-20261109-f: x^3-2 has the irrational root 2^(1/3) (no closed form). A region whose interval holds no root is allowed (Sturm count);
+        # one that contains the root is still refused.
+        base=copy.deepcopy(CUBIC_AXIS);base['pieces']=[{'coefficients':['-2','0','0','1']}];base['requiredPoints']=[]
+        outside=copy.deepcopy(base);outside['regions']=[{'id':'S1','upper':'axis','lower':'f','from':'0','to':'1'}]
+        self.assertIsNone(refused(outside),refused(outside))
+        inside=copy.deepcopy(base);inside['regions']=[{'id':'S1','upper':'axis','lower':'f','from':'0','to':'2'}]
+        self.assertTrue((refused(inside) or '').startswith('PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM'),refused(inside))
     def test_refusals(self):
         def plan(base,**change):
             p=copy.deepcopy(base);p.update(change);return p
@@ -69,7 +77,7 @@ class Framing(unittest.TestCase):
         self.assertTrue((refused(irrational) or '').startswith('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED'),refused(irrational))
         too_long=plan(CUBIC_AXIS,pieces=[{'coefficients':['0','0','0','0','0','1']}])
         self.assertTrue((refused(too_long) or '').startswith('PIECEWISE_POLY_PIECE_INVALID'),refused(too_long))
-        no_form=plan(CUBIC_AXIS,pieces=[{'coefficients':['-2','0','0','1']}],requiredPoints=[],regions=[{'id':'S1','upper':'axis','lower':'f','from':'0','to':'1'}])
+        no_form=plan(CUBIC_AXIS,pieces=[{'coefficients':['-2','0','0','1']}],requiredPoints=[],regions=[{'id':'S1','upper':'axis','lower':'f','from':'0','to':'2'}])  # the root 2^(1/3) lies inside (0,2)
         self.assertTrue((refused(no_form) or '').startswith('PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM'),refused(no_form))
         self.assertTrue((refused({'family':'polynomial','regions':[]}) or '').startswith('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL'))
 

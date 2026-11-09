@@ -164,7 +164,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "①",
-    "solution": "[키포인트] 사인법칙에서 $\\dfrac{a}{\\sin A}=2R$를 이용한다.\n조건 정리: 변 $\\overline{AB}=8$은 각 $C=\\dfrac{\\pi}{6}$의 대변이다.\n풀이 방향: $\\dfrac{\\overline{AB}}{\\sin C}=2R$에 대입한다.\n정석 풀이: $\\dfrac{8}{\\sin(\\pi/6)}=\\dfrac{8}{1/2}=16$이므로 $2R=16$이다. 따라서 $R=8$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 사인법칙에서 $\\dfrac{a}{\\sin A}=2R$를 이용한다.\n조건 정리: 변 $\\overline{AB}=8$은 각 $C=\\dfrac{\\pi}{6}$의 대변이다.\n풀이 방향: $\\dfrac{\\overline{AB}}{\\sin C}=2R$에 대입한다.\n정석 풀이: $\\dfrac{8}{\\sin(\\pi/6)}=\\dfrac{8}{\\frac{1}{2}}=16$이므로 $2R=16$이다. 따라서 $R=8$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q6.png",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",

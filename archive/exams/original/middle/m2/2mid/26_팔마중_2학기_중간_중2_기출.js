@@ -979,7 +979,7 @@ window.questionBank = [
       "154"
     ],
     "answer": "⑤",
-    "solution": "그림에서 $AB=4\\,\\mathrm{cm}$, $EF=2\\,\\mathrm{cm}$이므로 작은 사다리꼴의 닮음비는 $1/2$이다. $CD=8\\,\\mathrm{cm}$에 대응하는 $HG$는 $x=4\\,\\mathrm{cm}$이다. $AB$가 두 밑변에 수직이므로 두 밑변 사이의 높이는 $4\\,\\mathrm{cm}$이고 $CD=8\\,\\mathrm{cm}$이다. 따라서 $\\angle BCD=30^\\circ$이며 평행한 두 밑변의 같은 쪽 내각의 합은 $180^\\circ$이므로 $y=\\angle EHG=150^\\circ$이다. 따라서 $x+y=4+150=154$이고 정답은 ⑤이다.",
+    "solution": "그림에서 $AB=4\\,\\mathrm{cm}$, $EF=2\\,\\mathrm{cm}$이므로 작은 사다리꼴의 닮음비는 $\\frac{1}{2}$이다. $CD=8\\,\\mathrm{cm}$에 대응하는 $HG$는 $x=4\\,\\mathrm{cm}$이다. $AB$가 두 밑변에 수직이므로 두 밑변 사이의 높이는 $4\\,\\mathrm{cm}$이고 $CD=8\\,\\mathrm{cm}$이다. 따라서 $\\angle BCD=30^\\circ$이며 평행한 두 밑변의 같은 쪽 내각의 합은 $180^\\circ$이므로 $y=\\angle EHG=150^\\circ$이다. 따라서 $x+y=4+150=154$이고 정답은 ⑤이다.",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",

@@ -287,7 +287,7 @@ window.questionBank = [
       "43"
     ],
     "answer": "④",
-    "solution": "[풀이 과정]\n삼각형 $OAB$의 무게중심은 $G=(1,\\frac43)$이다.\n또 $AO=3$, $AB=5$이므로 각의 이등분선 정리에 의해 $OC:CB=3:5$이다. 따라서 $C=(0,\\frac32)$이다.\n삼각형 $GBC$의 무게중심은\n$(a,b)=\\left(\\frac13,\\frac{41}{18}\\right)$이다.\n그러므로 $\\dfrac{6b}{a}=6\\cdot\\dfrac{41/18}{1/3}=41$이다.\n\n따라서 정답은 ④이다.",
+    "solution": "[풀이 과정]\n삼각형 $OAB$의 무게중심은 $G=(1,\\frac43)$이다.\n또 $AO=3$, $AB=5$이므로 각의 이등분선 정리에 의해 $OC:CB=3:5$이다. 따라서 $C=(0,\\frac32)$이다.\n삼각형 $GBC$의 무게중심은\n$(a,b)=\\left(\\frac13,\\frac{41}{18}\\right)$이다.\n그러므로 $\\dfrac{6b}{a}=6\\cdot\\dfrac{\\frac{41}{18}}{\\frac{1}{3}}=41$이다.\n\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_유사2/q09-solution.svg",
     "solutionImageSize": "medium"
   },
@@ -523,7 +523,7 @@ window.questionBank = [
       "48"
     ],
     "answer": "⑤",
-    "solution": "[풀이 과정]\n원의 식을 완전제곱하면 $(x-3)^2+(y+1)^2=36$이므로 중심은 $C=(3,-1)$, 반지름은 $6$이다.\n$PC=10$이다. 접점현 $AB$는 $PC$에 수직이고 그 중점을 $M$이라 하자. 접선과 반지름은 접점에서 수직이므로 $CA\\perp PA$이고, 또 $AM\\perp PC$이다.\n따라서 직각삼각형 $PCA$에서 $\\triangle CMA\\sim\\triangle CAP$이므로\n$CA^2=CM\\cdot CP$이다. 따라서\n$CM=\\dfrac{CA^2}{CP}=\\dfrac{6^2}{10}=\\dfrac{18}{5}$이다.\n$AM=\\sqrt{6^2-(18/5)^2}=\\dfrac{24}{5}$이므로 $AB=\\dfrac{48}{5}$이다.\n사각형 $PACB$의 두 대각선은 $PC$, $AB$이고 서로 수직이므로 넓이는\n$\\dfrac12\\cdot10\\cdot\\dfrac{48}{5}=48$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "[풀이 과정]\n원의 식을 완전제곱하면 $(x-3)^2+(y+1)^2=36$이므로 중심은 $C=(3,-1)$, 반지름은 $6$이다.\n$PC=10$이다. 접점현 $AB$는 $PC$에 수직이고 그 중점을 $M$이라 하자. 접선과 반지름은 접점에서 수직이므로 $CA\\perp PA$이고, 또 $AM\\perp PC$이다.\n따라서 직각삼각형 $PCA$에서 $\\triangle CMA\\sim\\triangle CAP$이므로\n$CA^2=CM\\cdot CP$이다. 따라서\n$CM=\\dfrac{CA^2}{CP}=\\dfrac{6^2}{10}=\\dfrac{18}{5}$이다.\n$AM=\\sqrt{6^2-(\\frac{18}{5})^2}=\\dfrac{24}{5}$이므로 $AB=\\dfrac{48}{5}$이다.\n사각형 $PACB$의 두 대각선은 $PC$, $AB$이고 서로 수직이므로 넓이는\n$\\dfrac12\\cdot10\\cdot\\dfrac{48}{5}=48$이다.\n\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_유사2/q16-solution.svg",
     "solutionImageSize": "medium"
   },

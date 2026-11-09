@@ -60,7 +60,7 @@ window.questionBank = [
       "$\\cos B = \\frac{3}{5}$"
     ],
     "answer": "③",
-    "solution": "$\\triangle BDC$에서 $BD=9$, $DC=12$, $BC=15$이므로 $9^2+12^2=15^2$이다. 직각삼각형 $ABC$에서 $CD$는 빗변 $AB$에 내린 높이이므로 닮음으로부터 $BC^2=AB\\cdot BD$이다. 따라서 $AB=15^2/9=25$이고, $AD=25-9=16$이다.\n또 $AC^2=AB\\cdot AD=25\\cdot16$이므로 $AC=20$. 따라서 $\\sin A=15/25=3/5$, $\\cos A=20/25=4/5$, $\\tan A=15/20=3/4$이다. $\\sin B=4/5$, $\\cos B=3/5$도 맞으므로 틀린 것은 $\\tan A=4/5$인 ③이다.",
+    "solution": "$\\triangle BDC$에서 $BD=9$, $DC=12$, $BC=15$이므로 $9^2+12^2=15^2$이다. 직각삼각형 $ABC$에서 $CD$는 빗변 $AB$에 내린 높이이므로 닮음으로부터 $BC^2=AB\\cdot BD$이다. 따라서 $AB=15^2/9=25$이고, $AD=25-9=16$이다.\n또 $AC^2=AB\\cdot AD=25\\cdot16$이므로 $AC=20$. 따라서 $\\sin A=\\frac{15}{25}=\\frac{3}{5}$, $\\cos A=\\frac{20}{25}=\\frac{4}{5}$, $\\tan A=\\frac{15}{20}=\\frac{3}{4}$이다. $\\sin B=\\frac{4}{5}$, $\\cos B=\\frac{3}{5}$도 맞으므로 틀린 것은 $\\tan A=\\frac{4}{5}$인 ③이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q02.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -95,7 +95,7 @@ window.questionBank = [
       "$\\frac{2\\sqrt{3}}{3}$"
     ],
     "answer": "②",
-    "solution": "$B=30^\\circ$, $C=60^\\circ$이다. $A$에서 $BC$에 수선 $AD$를 내리면 직각삼각형 $ABD$에서 $AB=4$이고 $AD=4\\sin30^\\circ=2$, $BD=4\\cos30^\\circ=2\\sqrt3$이다. 직각삼각형 $ACD$에서 $\\angle C=60^\\circ$이므로 $\\tan60^\\circ=AD/DC$에서 $DC=2/\\sqrt3$이다.\n따라서 $AC=\\sqrt{AD^2+DC^2}=\\sqrt{4+4/3}=4/\\sqrt3=4\\sqrt3/3$. 정답은 ②이다.",
+    "solution": "$B=30^\\circ$, $C=60^\\circ$이다. $A$에서 $BC$에 수선 $AD$를 내리면 직각삼각형 $ABD$에서 $AB=4$이고 $AD=4\\sin30^\\circ=2$, $BD=4\\cos30^\\circ=2\\sqrt3$이다. 직각삼각형 $ACD$에서 $\\angle C=60^\\circ$이므로 $\\tan60^\\circ=AD/DC$에서 $DC=2/\\sqrt3$이다.\n따라서 $AC=\\sqrt{AD^2+DC^2}=\\sqrt{4+\\frac{4}{3}}=4/\\sqrt3=4\\sqrt3/3$. 정답은 ②이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q03.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -304,7 +304,7 @@ window.questionBank = [
       "$\\frac{\\sqrt{3}}{2}$"
     ],
     "answer": "②",
-    "solution": "$AC=AD+DC=2$cm, $BC=1$cm이므로 직각삼각형 $ABC$에서 $AB=\\sqrt{2^2+1^2}=\\sqrt5$cm이다. 또 직각삼각형 $BCD$에서 $BD=\\sqrt{1^2+1^2}=\\sqrt2$cm. $\\triangle ABD$의 넓이는 밑변 $AD=1$cm, 높이 $BC=1$cm를 이용해 $1/2$cm²이다(점 $B$에서 직선 $AD$까지의 거리가 $BC=1$). 한편 넓이는 $\\frac12 AB\\cdot BD\\sin x$이므로 $\\frac12=\\frac12\\cdot\\sqrt5\\cdot\\sqrt2\\sin x$. 따라서 $\\sin x=1/\\sqrt{10}=\\sqrt{10}/10$, 정답은 ②이다.",
+    "solution": "$AC=AD+DC=2$cm, $BC=1$cm이므로 직각삼각형 $ABC$에서 $AB=\\sqrt{2^2+1^2}=\\sqrt5$cm이다. 또 직각삼각형 $BCD$에서 $BD=\\sqrt{1^2+1^2}=\\sqrt2$cm. $\\triangle ABD$의 넓이는 밑변 $AD=1$cm, 높이 $BC=1$cm를 이용해 $\\frac{1}{2}$cm²이다(점 $B$에서 직선 $AD$까지의 거리가 $BC=1$). 한편 넓이는 $\\frac12 AB\\cdot BD\\sin x$이므로 $\\frac12=\\frac12\\cdot\\sqrt5\\cdot\\sqrt2\\sin x$. 따라서 $\\sin x=1/\\sqrt{10}=\\sqrt{10}/10$, 정답은 ②이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q09.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -410,7 +410,7 @@ window.questionBank = [
       "$\\sqrt{109}\\mathrm{m}$"
     ],
     "answer": "⑤",
-    "solution": "$A$에서 $BC$에 수선 $AD$를 내린다. 직각삼각형 $ABD$에서 $AB=5$m, $\\angle B=60^\\circ$이므로 $AD=AB\\sin60^\\circ=5\\sqrt3/2$m, $BD=AB\\cos60^\\circ=5/2$m이다. 따라서 $DC=BC-BD=12-5/2=19/2$m이다. 직각삼각형 $ADC$에서 피타고라스 정리를 적용하면 $AC^2=AD^2+DC^2=(5\\sqrt3/2)^2+(19/2)^2=(75+361)/4=109$이다. 거리는 양수이므로 $AC=\\sqrt{109}$m, 정답은 ⑤이다.",
+    "solution": "$A$에서 $BC$에 수선 $AD$를 내린다. 직각삼각형 $ABD$에서 $AB=5$m, $\\angle B=60^\\circ$이므로 $AD=AB\\sin60^\\circ=5\\sqrt3/2$m, $BD=AB\\cos60^\\circ=\\frac{5}{2}$m이다. 따라서 $DC=BC-BD=12-\\frac{5}{2}=\\frac{19}{2}$m이다. 직각삼각형 $ADC$에서 피타고라스 정리를 적용하면 $AC^2=AD^2+DC^2=(5\\sqrt3/2)^2+(\\frac{19}{2})^2=\\frac{75+361}{4}=109$이다. 거리는 양수이므로 $AC=\\sqrt{109}$m, 정답은 ⑤이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q12.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -511,7 +511,7 @@ window.questionBank = [
       "$19\\pi\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=BM=6$cm. $OC=r$라 두면 $OM=OC-CM=r-3$. 직각삼각형 $OMB$에 피타고라스 정리를 적용하면 $r^2=(r-3)^2+6^2$, 따라서 $6r=45$, $r=15/2$cm이다. 원의 둘레는 $2\\pi r=15\\pi$cm, 정답은 ④이다.",
+    "solution": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=BM=6$cm. $OC=r$라 두면 $OM=OC-CM=r-3$. 직각삼각형 $OMB$에 피타고라스 정리를 적용하면 $r^2=(r-3)^2+6^2$, 따라서 $6r=45$, $r=\\frac{15}{2}$cm이다. 원의 둘레는 $2\\pi r=15\\pi$cm, 정답은 ④이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q15.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -636,7 +636,7 @@ window.questionBank = [
     "content": "서술형 1. 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{C}=90^\\circ$, $\\overline{\\mathrm{AC}}=3\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=4\\mathrm{cm}$일 때, 다음을 답하시오. (6점)\n(1) $\\angle \\mathrm{B}$의 삼각비 $\\sin B$, $\\cos B$, $\\tan B$를 구하시오. (4점)\n(2) $\\angle \\mathrm{C}$에 대하여 $\\sin C$, $\\cos C$, $\\tan C$의 값 또는 정의 여부를 각각 쓰시오. (2점)",
     "choices": [],
     "answer": "(1) sin B=3/5, cos B=4/5, tan B=3/4; (2) sin C=1, cos C=0, tan C is undefined",
-    "solution": "$\\angle C=90^\\circ$, $AC=3$cm, $BC=4$cm이므로 피타고라스 정리에 따라 $AB=\\sqrt{3^2+4^2}=5$cm이다. 따라서 $\\sin B=AC/AB=3/5$, $\\cos B=BC/AB=4/5$, $\\tan B=AC/BC=3/4$이다. $\\angle C=90^\\circ$이므로 $\\sin C=1$, $\\cos C=0$이다. $\\tan C=\\sin C/\\cos C$에서 분모가 0이므로 $\\tan C$는 정의되지 않는다.",
+    "solution": "$\\angle C=90^\\circ$, $AC=3$cm, $BC=4$cm이므로 피타고라스 정리에 따라 $AB=\\sqrt{3^2+4^2}=5$cm이다. 따라서 $\\sin B=AC/AB=\\frac{3}{5}$, $\\cos B=BC/AB=\\frac{4}{5}$, $\\tan B=AC/BC=\\frac{3}{4}$이다. $\\angle C=90^\\circ$이므로 $\\sin C=1$, $\\cos C=0$이다. $\\tan C=\\sin C/\\cos C$에서 분모가 0이므로 $\\tan C$는 정의되지 않는다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q19_alive.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",

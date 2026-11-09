@@ -726,7 +726,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
     "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EXTREMAL_VALUE_SELECTION",
-    "solution": "$x=-3$, $y=-\\dfrac{1}{3}$을 각 보기에 대입하여 값을 구한다.\n\n① $-3xy = -3 \\times (-3) \\times \\left(-\\dfrac{1}{3}\\right) = -3$\n\n② $x - y = -3 - \\left(-\\dfrac{1}{3}\\right) = -3 + \\dfrac{1}{3} = -\\dfrac{8}{3}$\n\n③ $x + \\dfrac{1}{y} = -3 + (-3) = -6$\n\n④ $9y^2 - x = 9 \\times \\left(-\\dfrac{1}{3}\\right)^2 - (-3) = 9 \\times \\dfrac{1}{9} + 3 = 1 + 3 = 4$\n\n⑤ $x^2 - \\dfrac{y}{3} = (-3)^2 - \\dfrac{-1/3}{3} = 9 + \\dfrac{1}{9} = \\dfrac{82}{9}$\n\n값들을 비교하면\n$-6 < -3 < -\\dfrac{8}{3} < 4 < \\dfrac{82}{9}$\n이므로 식의 값이 가장 큰 것은 ⑤이다.",
+    "solution": "$x=-3$, $y=-\\dfrac{1}{3}$을 각 보기에 대입하여 값을 구한다.\n\n① $-3xy = -3 \\times (-3) \\times \\left(-\\dfrac{1}{3}\\right) = -3$\n\n② $x - y = -3 - \\left(-\\dfrac{1}{3}\\right) = -3 + \\dfrac{1}{3} = -\\dfrac{8}{3}$\n\n③ $x + \\dfrac{1}{y} = -3 + (-3) = -6$\n\n④ $9y^2 - x = 9 \\times \\left(-\\dfrac{1}{3}\\right)^2 - (-3) = 9 \\times \\dfrac{1}{9} + 3 = 1 + 3 = 4$\n\n⑤ $x^2 - \\dfrac{y}{3} = (-3)^2 - \\dfrac{-\\frac{1}{3}}{3} = 9 + \\dfrac{1}{9} = \\dfrac{82}{9}$\n\n값들을 비교하면\n$-6 < -3 < -\\dfrac{8}{3} < 4 < \\dfrac{82}{9}$\n이므로 식의 값이 가장 큰 것은 ⑤이다.",
     "reviewStatus": "REVIEWED",
     "solutionStatus": "REVIEWED",
     "pipelineState": "SIGNED_OFF_PASS",

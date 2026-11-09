@@ -381,7 +381,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "①",
-    "solution": "이항정리에서 괄호 안의 다섯 인수 중 $-a/x$를 $k$번 선택하면 일반항은\n$\\dfrac1x\\cdot{}_5\\mathrm C_k x^{5-k}\\left(-\\dfrac a x\\right)^k={}_5\\mathrm C_k(-a)^k x^{4-2k}$이다.\n상수항이 되려면 $x$의 지수가 0이어야 하므로 $4-2k=0$, 즉 $k=2$다.\n상수항의 계수는 ${}_5\\mathrm C_2(-a)^2=10a^2$이고 이것이 90이므로 $10a^2=90$, $a^2=9$이다.\n$a$는 양수이므로 $a=3$이다. 정답은 ①이다.",
+    "solution": "이항정리에서 괄호 안의 다섯 인수 중 $-\\frac{a}{x}$를 $k$번 선택하면 일반항은\n$\\dfrac1x\\cdot{}_5\\mathrm C_k x^{5-k}\\left(-\\dfrac a x\\right)^k={}_5\\mathrm C_k(-a)^k x^{4-2k}$이다.\n상수항이 되려면 $x$의 지수가 0이어야 하므로 $4-2k=0$, 즉 $k=2$다.\n상수항의 계수는 ${}_5\\mathrm C_2(-a)^2=10a^2$이고 이것이 90이므로 $10a^2=90$, $a^2=9$이다.\n$a$는 양수이므로 $a=3$이다. 정답은 ①이다.",
     "standardCourse": "확률과 통계",
     "standardUnit": "이항정리",
     "level": "중",

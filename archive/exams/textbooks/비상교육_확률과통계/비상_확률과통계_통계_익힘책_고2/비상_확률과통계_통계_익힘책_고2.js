@@ -202,7 +202,7 @@ window.questionBank = [
     "content": "확률변수 $X$가 이항분포 $\\mathrm{B}(n, p)$를 따르고 $E(X)=8, E(X^2)=70$일 때, $n, p$의 값을 구하시오.\n\n⑴ $n$\n⑵ $p$",
     "choices": [],
     "answer": "⑴ 32 ⑵ 1/4",
-    "solution": "[풀이 전략]\n이항분포 $\\mathrm{B}(n, p)$에서 $E(X) = np$이고 $V(X) = np(1-p) = E(X^2) - \\{E(X)\\}^2$이다.\n두 식을 연립하여 $n$과 $p$의 값을 구한다.\n\n[단계별 풀이]\n1단계: 분산 $V(X)$ 계산\n$$V(X) = E(X^2) - \\{E(X)\\}^2 = 70 - 8^2 = 70 - 64 = 6$$\n\n2단계: $p$의 값 구하기\n$E(X) = np = 8$이고 $V(X) = np(1-p) = 6$이므로\n$$8(1-p) = 6 \\implies 1-p = \\frac{6}{8} = \\frac{3}{4} \\implies p = \\frac{1}{4}$$\n\n3단계: $n$의 값 구하기\n$$n \\times \\frac{1}{4} = 8 \\implies n = 32$$\n\n[오답 및 경계 점검]\n- $n$은 자연수, $0 < p < 1$이어야 하므로 $n=32, p=1/4$는 적합하다.\n\n[결론]\n⑴ $n = 32$, ⑵ $p = \\frac{1}{4}$",
+    "solution": "[풀이 전략]\n이항분포 $\\mathrm{B}(n, p)$에서 $E(X) = np$이고 $V(X) = np(1-p) = E(X^2) - \\{E(X)\\}^2$이다.\n두 식을 연립하여 $n$과 $p$의 값을 구한다.\n\n[단계별 풀이]\n1단계: 분산 $V(X)$ 계산\n$$V(X) = E(X^2) - \\{E(X)\\}^2 = 70 - 8^2 = 70 - 64 = 6$$\n\n2단계: $p$의 값 구하기\n$E(X) = np = 8$이고 $V(X) = np(1-p) = 6$이므로\n$$8(1-p) = 6 \\implies 1-p = \\frac{6}{8} = \\frac{3}{4} \\implies p = \\frac{1}{4}$$\n\n3단계: $n$의 값 구하기\n$$n \\times \\frac{1}{4} = 8 \\implies n = 32$$\n\n[오답 및 경계 점검]\n- $n$은 자연수, $0 < p < 1$이어야 하므로 $n=32, p=\\frac{1}{4}$는 적합하다.\n\n[결론]\n⑴ $n = 32$, ⑵ $p = \\frac{1}{4}$",
     "curriculum": {
       "unit": "H22-PS-05",
       "order": 5,
@@ -657,7 +657,7 @@ window.questionBank = [
     "content": "다음 표는 모집단의 확률변수 $X$의 확률분포를 나타낸 것이다. 이 모집단에서 크기가 5인 표본을 임의추출할 때, 표본평균 $\\bar{X}$의 평균과 분산을 구하시오.\n\n$$\\begin{array}{c|c|c|c|c}\\hline X & 0 & 1 & 2 & \\text{합계} \\\\\\hline P(X=x) & \\frac{2}{5} & \\frac{1}{5} & \\frac{2}{5} & 1 \\\\\\hline\\end{array}$$\n\n⑴ 평균\n⑵ 분산",
     "choices": [],
     "answer": "⑴ 1 ⑵ 4/25",
-    "solution": "[풀이 전략]\n모집단의 확률변수 $X$에 대하여 모평균 $E(X)$와 모분산 $V(X)$를 구한 후, $n=5$인 표본평균 $\\bar{X}$의 평균 $E(\\bar{X}) = E(X)$ 및 분산 $V(\\bar{X}) = \\frac{V(X)}{n}$을 계산한다.\n\n[단계별 풀이]\n1단계: $E(X), E(X^2), V(X)$ 계산\n$$E(X) = 0 \\times \\frac{2}{5} + 1 \\times \\frac{1}{5} + 2 \\times \\frac{2}{5} = \\frac{1 + 4}{5} = 1$$\n$$E(X^2) = 0^2 \\times \\frac{2}{5} + 1^2 \\times \\frac{1}{5} + 2^2 \\times \\frac{2}{5} = \\frac{1 + 8}{5} = \\frac{9}{5}$$\n$$V(X) = \\frac{9}{5} - 1^2 = \\frac{4}{5}$$\n\n2단계: 표본평균의 평균과 분산 계산 ($n=5$)\n$$E(\\bar{X}) = E(X) = 1$$\n$$V(\\bar{X}) = \\frac{V(X)}{5} = \\frac{4/5}{5} = \\frac{4}{25}$$\n\n[오답 및 경계 점검]\n- 분모가 $5 \\times 5 = 25$가 됨을 확인한다.\n\n[결론]\n⑴ 평균: $1$, ⑵ 분산: $\\frac{4}{25}$",
+    "solution": "[풀이 전략]\n모집단의 확률변수 $X$에 대하여 모평균 $E(X)$와 모분산 $V(X)$를 구한 후, $n=5$인 표본평균 $\\bar{X}$의 평균 $E(\\bar{X}) = E(X)$ 및 분산 $V(\\bar{X}) = \\frac{V(X)}{n}$을 계산한다.\n\n[단계별 풀이]\n1단계: $E(X), E(X^2), V(X)$ 계산\n$$E(X) = 0 \\times \\frac{2}{5} + 1 \\times \\frac{1}{5} + 2 \\times \\frac{2}{5} = \\frac{1 + 4}{5} = 1$$\n$$E(X^2) = 0^2 \\times \\frac{2}{5} + 1^2 \\times \\frac{1}{5} + 2^2 \\times \\frac{2}{5} = \\frac{1 + 8}{5} = \\frac{9}{5}$$\n$$V(X) = \\frac{9}{5} - 1^2 = \\frac{4}{5}$$\n\n2단계: 표본평균의 평균과 분산 계산 ($n=5$)\n$$E(\\bar{X}) = E(X) = 1$$\n$$V(\\bar{X}) = \\frac{V(X)}{5} = \\frac{\\frac{4}{5}}{5} = \\frac{4}{25}$$\n\n[오답 및 경계 점검]\n- 분모가 $5 \\times 5 = 25$가 됨을 확인한다.\n\n[결론]\n⑴ 평균: $1$, ⑵ 분산: $\\frac{4}{25}$",
     "curriculum": {
       "unit": "H22-PS-06",
       "order": 6,

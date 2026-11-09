@@ -385,7 +385,7 @@ window.questionBank = [
       "$\\dfrac{8}{7}$"
     ],
     "answer": "①",
-    "solution": "먼저 4로 나누면\n$x^2-4x+\\dfrac94=0$이다.\n상수항을 오른쪽으로 옮기면\n$x^2-4x=-\\dfrac94$이다.\n양변에 4를 더해 왼쪽을 완전제곱식으로 만들면\n$x^2-4x+4=4-\\dfrac94=\\dfrac74$이므로\n$(x-2)^2=\\dfrac74$이다.\n$(x+a)^2=b$와 비교하면 $a=-2$, $b=\\dfrac74$이다.\n따라서\n$\\dfrac ab=\\dfrac{-2}{7/4}=-\\dfrac87$이다.\n정답은 ①이다.",
+    "solution": "먼저 4로 나누면\n$x^2-4x+\\dfrac94=0$이다.\n상수항을 오른쪽으로 옮기면\n$x^2-4x=-\\dfrac94$이다.\n양변에 4를 더해 왼쪽을 완전제곱식으로 만들면\n$x^2-4x+4=4-\\dfrac94=\\dfrac74$이므로\n$(x-2)^2=\\dfrac74$이다.\n$(x+a)^2=b$와 비교하면 $a=-2$, $b=\\dfrac74$이다.\n따라서\n$\\dfrac ab=\\dfrac{-2}{\\frac{7}{4}}=-\\dfrac87$이다.\n정답은 ①이다.",
     "score": 4,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",

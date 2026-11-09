@@ -54,7 +54,7 @@ window.questionBank = [
       "$\\dfrac32$"
     ],
     "answer": "⑤",
-    "solution": "분자와 분모에서 가장 높은 차수는 모두 $2$차이므로 $x^2$으로 나누어 비교한다.\n$\\dfrac{3x^2-2x-21}{2x^2+3x-27}=\\dfrac{3-\\frac2x-\\frac{21}{x^2}}{2+\\frac3x-\\frac{27}{x^2}}$\n$x\\to\\infty$일 때 $1/x,1/x^2\\to0$이므로 극한값은 $\\dfrac32$이다.\n따라서 정답은 ⑤이다."
+    "solution": "분자와 분모에서 가장 높은 차수는 모두 $2$차이므로 $x^2$으로 나누어 비교한다.\n$\\dfrac{3x^2-2x-21}{2x^2+3x-27}=\\dfrac{3-\\frac2x-\\frac{21}{x^2}}{2+\\frac3x-\\frac{27}{x^2}}$\n$x\\to\\infty$일 때 $\\frac{1}{x},1/x^2\\to0$이므로 극한값은 $\\dfrac32$이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 3,
@@ -198,7 +198,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "③",
-    "solution": "접선의 기울기가 $4$이므로 $f(2)=3$, $f\\prime(2)=4$이다.\n분모를 인수분해하면 $x^3-8=(x-2)(x^2+2x+4)$이다.\n따라서 극한을 $\\lim_{x\\to2}\\dfrac{f(x)-f(2)}{x-2}\\cdot\\dfrac1{x^2+2x+4}$로 나눌 수 있다.\n첫 번째 인수는 미분계수 $4$, 두 번째 인수는 $1/12$로 수렴하므로 $4/12=1/3$이다.\n따라서 정답은 ③이다."
+    "solution": "접선의 기울기가 $4$이므로 $f(2)=3$, $f\\prime(2)=4$이다.\n분모를 인수분해하면 $x^3-8=(x-2)(x^2+2x+4)$이다.\n따라서 극한을 $\\lim_{x\\to2}\\dfrac{f(x)-f(2)}{x-2}\\cdot\\dfrac1{x^2+2x+4}$로 나눌 수 있다.\n첫 번째 인수는 미분계수 $4$, 두 번째 인수는 $\\frac{1}{12}$로 수렴하므로 $\\frac{4}{12}=\\frac{1}{3}$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 8,
@@ -321,7 +321,7 @@ window.questionBank = [
       "$\\dfrac53$"
     ],
     "answer": "①",
-    "solution": "$x\\to-\\infty$에서는 $\\sqrt{x^2}=|x|=-x$라는 부호에 주의해야 한다. 분자와 분모를 각각 유리화한다.\n$\\sqrt{x^2+x}+x=\\dfrac{x}{\\sqrt{x^2+x}-x}$이고 $\\sqrt{x^2+3x}+x=\\dfrac{3x}{\\sqrt{x^2+3x}-x}$이다.\n두 식의 비는 $\\dfrac13\\cdot\\dfrac{\\sqrt{x^2+3x}-x}{\\sqrt{x^2+x}-x}$이다.\n$x\\lt0$일 때 $\\sqrt{x^2+cx}=-x\\sqrt{1+c/x}$이므로 뒤의 분수는 $\\dfrac{\\sqrt{1+3/x}+1}{\\sqrt{1+1/x}+1}\\to1$이다.\n따라서 극한값은 $\\frac13$이다. 정답은 ①이다."
+    "solution": "$x\\to-\\infty$에서는 $\\sqrt{x^2}=|x|=-x$라는 부호에 주의해야 한다. 분자와 분모를 각각 유리화한다.\n$\\sqrt{x^2+x}+x=\\dfrac{x}{\\sqrt{x^2+x}-x}$이고 $\\sqrt{x^2+3x}+x=\\dfrac{3x}{\\sqrt{x^2+3x}-x}$이다.\n두 식의 비는 $\\dfrac13\\cdot\\dfrac{\\sqrt{x^2+3x}-x}{\\sqrt{x^2+x}-x}$이다.\n$x\\lt0$일 때 $\\sqrt{x^2+cx}=-x\\sqrt{1+\\frac{c}{x}}$이므로 뒤의 분수는 $\\dfrac{\\sqrt{1+\\frac{3}{x}}+1}{\\sqrt{1+\\frac{1}{x}}+1}\\to1$이다.\n따라서 극한값은 $\\frac13$이다. 정답은 ①이다."
   },
   {
     "id": 12,

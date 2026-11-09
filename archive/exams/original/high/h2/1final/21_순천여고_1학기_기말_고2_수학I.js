@@ -272,7 +272,7 @@ window.questionBank = [
       "삼각형 $\\mathrm{ABC}$의 내접원의 반지름은 $\\sqrt{3}$이다."
     ],
     "answer": "③",
-    "solution": "세 변의 길이 $a=8,b=7,c=5$에서 가장 긴 변 $a$에 대한 코사인법칙을 먼저 적용한다.\n$\\cos A=\\frac{b^2+c^2-a^2}{2bc}=\\frac{49+25-64}{70}=\\frac17>0$이다.\n따라서 $A$는 예각이고, 가장 큰 각이 예각이므로 삼각형 전체가 예각삼각형이다. **③ '둔각삼각형'은 틀리다.**\n나머지 보기도 직접 확인한다. $\\sin A=\\sqrt{1-(1/7)^2}=\\frac{4\\sqrt3}{7}$이므로\n$\\Delta=\\frac12bc\\sin A=\\frac12\\cdot7\\cdot5\\cdot\\frac{4\\sqrt3}{7}=10\\sqrt3$이다(① 참).\n사인법칙에서 $R=\\frac a{2\\sin A}=\\frac8{8\\sqrt3/7}=\\frac{7\\sqrt3}{3}$이다(② 참).\n따라서 외접원의 넓이는 $\\pi R^2=\\frac{49\\pi}{3}$이다(④ 참).\n반둘레는 $s=(8+7+5)/2=10$이고 $\\Delta=rs$이므로 내접반지름 $r=\\sqrt3$이다(⑤ 참).\n유일하게 틀린 ③이 정답이다.",
+    "solution": "세 변의 길이 $a=8,b=7,c=5$에서 가장 긴 변 $a$에 대한 코사인법칙을 먼저 적용한다.\n$\\cos A=\\frac{b^2+c^2-a^2}{2bc}=\\frac{49+25-64}{70}=\\frac17>0$이다.\n따라서 $A$는 예각이고, 가장 큰 각이 예각이므로 삼각형 전체가 예각삼각형이다. **③ '둔각삼각형'은 틀리다.**\n나머지 보기도 직접 확인한다. $\\sin A=\\sqrt{1-(\\frac{1}{7})^2}=\\frac{4\\sqrt3}{7}$이므로\n$\\Delta=\\frac12bc\\sin A=\\frac12\\cdot7\\cdot5\\cdot\\frac{4\\sqrt3}{7}=10\\sqrt3$이다(① 참).\n사인법칙에서 $R=\\frac a{2\\sin A}=\\frac8{8\\sqrt3/7}=\\frac{7\\sqrt3}{3}$이다(② 참).\n따라서 외접원의 넓이는 $\\pi R^2=\\frac{49\\pi}{3}$이다(④ 참).\n반둘레는 $s=\\frac{8+7+5}{2}=10$이고 $\\Delta=rs$이므로 내접반지름 $r=\\sqrt3$이다(⑤ 참).\n유일하게 틀린 ③이 정답이다.",
     "level": "중",
     "category": "삼각함수의 관계",
     "originalCategory": "삼각함수의 뜻과 값",
@@ -360,7 +360,7 @@ window.questionBank = [
       "35"
     ],
     "answer": "①",
-    "solution": "$S_n=\\sum_{k=1}^n k^2a_k=n^2+n$이라 놓는다.\n$n\\ge2$에서 $n^2a_n=S_n-S_{n-1}=(n^2+n)-((n-1)^2+n-1)=2n$이다.\n$n=1$에서도 $a_1=S_1=2$이므로 모든 자연수 $n$에서 $a_n=2/n$이다.\n따라서 $\\frac{a_k}{k+1}=\\frac{2}{k(k+1)}=2(\\frac1k-\\frac1{k+1})$이다.\n합하면 중간 항이 소거되어 $\\sum_{k=1}^{10}\\frac{a_k}{k+1}=2(1-\\frac1{11})=\\frac{20}{11}$이다.\n$p=11,q=20$이므로 $p+q=31$이다. 정답은 ①이다.",
+    "solution": "$S_n=\\sum_{k=1}^n k^2a_k=n^2+n$이라 놓는다.\n$n\\ge2$에서 $n^2a_n=S_n-S_{n-1}=(n^2+n)-((n-1)^2+n-1)=2n$이다.\n$n=1$에서도 $a_1=S_1=2$이므로 모든 자연수 $n$에서 $a_n=\\frac{2}{n}$이다.\n따라서 $\\frac{a_k}{k+1}=\\frac{2}{k(k+1)}=2(\\frac1k-\\frac1{k+1})$이다.\n합하면 중간 항이 소거되어 $\\sum_{k=1}^{10}\\frac{a_k}{k+1}=2(1-\\frac1{11})=\\frac{20}{11}$이다.\n$p=11,q=20$이므로 $p+q=31$이다. 정답은 ①이다.",
     "level": "중",
     "category": "수열의 합",
     "originalCategory": "수열의 합",
@@ -631,7 +631,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "④",
-    "solution": "등차수열의 일반항은 $a_n=1+(n-1)/3=(n+2)/3$이다.\n따라서 $b_n=a_na_{n+1}=\\frac{(n+2)(n+3)}9$이고,\n$\\frac1{b_n}=\\frac9{(n+2)(n+3)}=9(\\frac1{n+2}-\\frac1{n+3})$이다.\n$n=1$부터 $33$까지 합하면 중간 항이 소거되어\n$\\sum_{n=1}^{33}\\frac1{b_n}=9(\\frac13-\\frac1{36})=9\\cdot\\frac{11}{36}=\\frac{11}{4}$이다.\n$p=4,q=11$이므로 $p+q=15$이다. 정답은 ④이다.",
+    "solution": "등차수열의 일반항은 $a_n=1+\\frac{n-1}{3}=\\frac{n+2}{3}$이다.\n따라서 $b_n=a_na_{n+1}=\\frac{(n+2)(n+3)}9$이고,\n$\\frac1{b_n}=\\frac9{(n+2)(n+3)}=9(\\frac1{n+2}-\\frac1{n+3})$이다.\n$n=1$부터 $33$까지 합하면 중간 항이 소거되어\n$\\sum_{n=1}^{33}\\frac1{b_n}=9(\\frac13-\\frac1{36})=9\\cdot\\frac{11}{36}=\\frac{11}{4}$이다.\n$p=4,q=11$이므로 $p+q=15$이다. 정답은 ④이다.",
     "level": "중",
     "category": "수열의 합",
     "originalCategory": "수열의 합",

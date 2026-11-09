@@ -91,7 +91,7 @@ window.questionBank = [
     "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
     "content": "명제 ‘어떤 실수 $x$에 대하여 $x^2-ax+1\\le0$이다.’의 부정이 참이 되도록 하는 정수 $a$의 값을 모두 구하시오.",
     "choices": [], "answer": "$a=-1,0,1$",
-    "solution": "주어진 명제는 ‘어떤 실수 $x$가 존재하여 $x^2-ax+1\\le0$이다’이다. 그 부정은 ‘모든 실수 $x$에 대하여 $x^2-ax+1>0$이다’이다.\n이 이차식은 $x^2-ax+1=(x-a/2)^2+1-a^2/4$로 쓸 수 있다. 모든 실수 $x$에서 양수가 되려면 최솟값 $1-a^2/4$가 양수여야 하므로 $a^2<4$, 즉 $-2<a<2$이다.\n이 범위에 들어가는 정수는 $-1,0,1$이다.",
+    "solution": "주어진 명제는 ‘어떤 실수 $x$가 존재하여 $x^2-ax+1\\le0$이다’이다. 그 부정은 ‘모든 실수 $x$에 대하여 $x^2-ax+1>0$이다’이다.\n이 이차식은 $x^2-ax+1=(x-\\frac{a}{2})^2+1-a^2/4$로 쓸 수 있다. 모든 실수 $x$에서 양수가 되려면 최솟값 $1-a^2/4$가 양수여야 하므로 $a^2<4$, 즉 $-2<a<2$이다.\n이 범위에 들어가는 정수는 $-1,0,1$이다.",
     "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
   },
   {
@@ -213,7 +213,7 @@ window.questionBank = [
     "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
     "content": "$x>0$, $y>0$일 때, $(x+y)\\left(\\dfrac9x+\\dfrac4y\\right)$의 최솟값을 구하시오.",
     "choices": [], "answer": "$25$",
-    "solution": "식을 전개하면 $(x+y)(9/x+4/y)=13+4x/y+9y/x$이다. 산술·기하 평균 부등식에 따라\n$4x/y+9y/x\\ge2\\sqrt{(4x/y)(9y/x)}=12$\n이므로 주어진 식은 25 이상이다. $2x=3y$일 때 등호가 성립하며, 예를 들어 $x=3,y=2$는 조건을 만족하므로 최솟값 25가 실제로 얻어진다.",
+    "solution": "식을 전개하면 $(x+y)(\\frac{9}{x}+\\frac{4}{y})=13+4x/y+9y/x$이다. 산술·기하 평균 부등식에 따라\n$4x/y+9y/x\\ge2\\sqrt{(4x/y)(9y/x)}=12$\n이므로 주어진 식은 25 이상이다. $2x=3y$일 때 등호가 성립하며, 예를 들어 $x=3,y=2$는 조건을 만족하므로 최솟값 25가 실제로 얻어진다.",
     "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q17_amgm-equality.svg",
     "solutionImageAlt": "For u=4x/y and v=9y/x, uv=36; equality u=v=6 occurs when 2x=3y.",
     "solutionImageCaption": "At x=3 and y=2, the expression is 13+6+6=25.",

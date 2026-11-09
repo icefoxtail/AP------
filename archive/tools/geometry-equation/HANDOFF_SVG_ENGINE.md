@@ -32,6 +32,9 @@
 ### 2026-11-09 엔진 확장 회차 d(브랜치 engine/ext-20261109-d)
 - 한글+영문 혼합 축 이름(`x(분)`)이 변수만 수식 글꼴(`typography.mjs` MIXED), 통계 패널의 영문 축 이름·범례·계열 이름이 수식 글꼴. 24 효천 고1 q14(절댓값 유리함수)는 새 패밀리 없이 `multi-curve` `RATIONAL abs:true`로 그려짐(골든 `item134ext4q14abs`). `GEOMETRY_WORKER_TIMEOUT_MS`는 0 초과 600000 이하만 사용. 설계표 `briefs/engine-font-unify.md` 4회차.
 
+### 2026-11-09 엔진 확장 회차 f(브랜치 engine/ext-20261109-f, 지시선·plan으로 안 풀리는 것만)
+- 구간별 다항 `regions`가 기약 삼차 조각의 구간 **밖** 실근 때문에 `PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM`으로 거절되던 것을, 구간 안 실근 수를 스투름으로 세어 0이면 통과하게 함(`graph_framing.py` `_pp_real_roots_inside`, 22 금당 수II q18, 골든 `item138ext6q18cubicarea`, 지시서 `briefs/engine-region-cubic-no-root-inside.md`). 나머지(q02·q19·q21·COORDINATE_LEADER_PANEL_CONFLICT)는 plan 수정으로 풀려 엔진 변경 없이 AUTHOR_GUIDE에 사용법만 남김(골든 `item139ext6q21hidelabels`).
+
 ### 2026-11-09 엔진 확장 회차 e(브랜치 engine/ext-20261109-e, 생산 라인 UNSUPPORTED 대상)
 - 점 지시선이 점근선(`asymptote-*`·`rational-asymptote-*`)을 가로질러도 된다(`label_layout.py` `LEADER_MAY_CROSS_ASYMPTOTE`, `verify-rendered-layout.mjs` 예외). 24 효천 고1 Q14 교점 `(7/5,2)` 지시선이 놓임(골든 `item136ext5q14crossing`). 20 매산고 확통 Q05 확률밀도는 기존 `axisScale`+문자열 눈금으로 됨(골든 `item137ext5q05density`, 엔진 변경 없음). 지시서 `ops/svg-m1/briefs/engine-leader-cross-asymptote.md`.
 

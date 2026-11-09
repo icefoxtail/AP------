@@ -367,7 +367,7 @@ window.questionBank = [
       "⑤ $\\frac{5}{6}$"
     ],
     "answer": "⑤",
-    "solution": "$2P(A)=3P(A^C)$와 $P(A)+P(A^C)=1$에서 $P(A^C)=\\frac25$이다. $A,B$가 서로 배반이므로 $B\\subset A^C$이고 $P(B\\mid A^C)=\\frac{P(B)}{P(A^C)}=\\frac{1/3}{2/5}=\\frac56$이다.",
+    "solution": "$2P(A)=3P(A^C)$와 $P(A)+P(A^C)=1$에서 $P(A^C)=\\frac25$이다. $A,B$가 서로 배반이므로 $B\\subset A^C$이고 $P(B\\mid A^C)=\\frac{P(B)}{P(A^C)}=\\frac{\\frac{1}{3}}{\\frac{2}{5}}=\\frac56$이다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-04",
     "standardUnit": "조건부확률",
@@ -1087,7 +1087,7 @@ window.questionBank = [
       "⑤ 16"
     ],
     "answer": "③",
-    "solution": "$(1+i)^{25}$의 실수부는 $\\binom{25}{0}-\\binom{25}{2}+\\binom{25}{4}-\\cdots+\\binom{25}{24}$이다. $1+i=\\sqrt2(\\cos\\frac\\pi4+i\\sin\\frac\\pi4)$이므로 실수부는 $2^{25/2}\\cos(25\\pi/4)=2^{25/2}\\cdot\\frac{\\sqrt2}{2}=2^{12}$. 따라서 $\\frac{a}{2^{10}}=2^2=4$이다.",
+    "solution": "$(1+i)^{25}$의 실수부는 $\\binom{25}{0}-\\binom{25}{2}+\\binom{25}{4}-\\cdots+\\binom{25}{24}$이다. $1+i=\\sqrt2(\\cos\\frac\\pi4+i\\sin\\frac\\pi4)$이므로 실수부는 $2^{\\frac{25}{2}}\\cos(25\\pi/4)=2^{\\frac{25}{2}}\\cdot\\frac{\\sqrt2}{2}=2^{12}$. 따라서 $\\frac{a}{2^{10}}=2^2=4$이다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-02",
     "standardUnit": "이항정리",

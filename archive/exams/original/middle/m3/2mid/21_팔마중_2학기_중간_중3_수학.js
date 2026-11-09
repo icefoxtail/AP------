@@ -15,7 +15,7 @@ window.questionBank = [
       "$\\sin B = \\frac{\\sqrt{2}}{4}$"
     ],
     "answer": "⑤",
-    "solution": "직각삼각형에서 $AB=4$는 빗변이고 $BC=2\\sqrt3$이므로 $AC=\\sqrt{4^2-(2\\sqrt3)^2}=2$이다.<br>따라서 $\\sin A=BC/AB=\\sqrt3/2$, $\\cos A=AC/AB=1/2$, $\\tan B=AC/BC=\\sqrt3/3$, $\\cos B=BC/AB=\\sqrt3/2$이다. 반면 $\\sin B=AC/AB=1/2$이므로 ⑤만 옳지 않다.",
+    "solution": "직각삼각형에서 $AB=4$는 빗변이고 $BC=2\\sqrt3$이므로 $AC=\\sqrt{4^2-(2\\sqrt3)^2}=2$이다.<br>따라서 $\\sin A=BC/AB=\\sqrt3/2$, $\\cos A=AC/AB=\\frac{1}{2}$, $\\tan B=AC/BC=\\sqrt3/3$, $\\cos B=BC/AB=\\sqrt3/2$이다. 반면 $\\sin B=AC/AB=\\frac{1}{2}$이므로 ⑤만 옳지 않다.",
     "category": "삼각비",
     "originalCategory": "삼각비와 원의 성질",
     "standardCourse": "중3 수학",
@@ -93,7 +93,7 @@ window.questionBank = [
       "$2\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "직각삼각형에서 $\\sin(90^\\circ-B)=\\cos B$이다. 그림에서 $AB=\\sqrt3$, $AC=1$, $BC=2$이므로 $\\cos B=AB/BC=\\sqrt3/2$, $\\tan B=AC/AB=1/\\sqrt3=\\sqrt3/3$이다.<br>따라서 $\\sin(90^\\circ-B)\\times\\tan B=(\\sqrt3/2)(\\sqrt3/3)=1/2$이므로 ①이다.",
+    "solution": "직각삼각형에서 $\\sin(90^\\circ-B)=\\cos B$이다. 그림에서 $AB=\\sqrt3$, $AC=1$, $BC=2$이므로 $\\cos B=AB/BC=\\sqrt3/2$, $\\tan B=AC/AB=1/\\sqrt3=\\sqrt3/3$이다.<br>따라서 $\\sin(90^\\circ-B)\\times\\tan B=(\\sqrt3/2)(\\sqrt3/3)=\\frac{1}{2}$이므로 ①이다.",
     "category": "삼각비",
     "originalCategory": "삼각비와 원의 성질",
     "standardCourse": "중3 수학",
@@ -169,7 +169,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "④",
-    "solution": "$4\\cos A-3=0$에서 $\\cos A=3/4$이다. $\\tan A=\\sin A/\\cos A$이므로<br>$\\sin A\\div\\tan A=\\sin A/(\\sin A/\\cos A)=\\cos A=3/4$이다. 따라서 ④이다.",
+    "solution": "$4\\cos A-3=0$에서 $\\cos A=\\frac{3}{4}$이다. $\\tan A=\\sin A/\\cos A$이므로<br>$\\sin A\\div\\tan A=\\sin A/(\\sin A/\\cos A)=\\cos A=\\frac{3}{4}$이다. 따라서 ④이다.",
     "category": "삼각비",
     "originalCategory": "삼각비와 원의 성질",
     "standardCourse": "중3 수학",
@@ -243,7 +243,7 @@ window.questionBank = [
       "$\\frac{17}{8}$"
     ],
     "answer": "③",
-    "solution": "그림에서 직각삼각형 $\\mathrm{ABC}$는 $C$에서 직각이고 $AC=8$, $CB=15$이므로 $AB=\\sqrt{8^2+15^2}=17$이다.<br>$CD\\perp AB$이므로 $\\triangle ACD$와 $\\triangle ABC$는 AA 닮음이고, $x=\\angle ABC$이다. 또 $D$는 $AB$ 위에 있어 $\\angle CBD=\\angle ABC$이며 $\\angle BDC=90^\\circ$이므로 $y=90^\\circ-\\angle ABC=\\angle CAB$이다.<br>따라서 $\\tan x=\\tan B=AC/CB=8/15$, $\\cos y=\\cos A=AC/AB=8/17$이다. 그러므로 $\\dfrac{\\tan x}{\\cos y}=\\dfrac{8/15}{8/17}=\\dfrac{17}{15}$이므로 ③이다.",
+    "solution": "그림에서 직각삼각형 $\\mathrm{ABC}$는 $C$에서 직각이고 $AC=8$, $CB=15$이므로 $AB=\\sqrt{8^2+15^2}=17$이다.<br>$CD\\perp AB$이므로 $\\triangle ACD$와 $\\triangle ABC$는 AA 닮음이고, $x=\\angle ABC$이다. 또 $D$는 $AB$ 위에 있어 $\\angle CBD=\\angle ABC$이며 $\\angle BDC=90^\\circ$이므로 $y=90^\\circ-\\angle ABC=\\angle CAB$이다.<br>따라서 $\\tan x=\\tan B=AC/CB=\\frac{8}{15}$, $\\cos y=\\cos A=AC/AB=\\frac{8}{17}$이다. 그러므로 $\\dfrac{\\tan x}{\\cos y}=\\dfrac{\\frac{8}{15}}{\\frac{8}{17}}=\\dfrac{17}{15}$이므로 ③이다.",
     "category": "삼각비",
     "originalCategory": "삼각비와 원의 성질",
     "standardCourse": "중3 수학",
@@ -322,7 +322,7 @@ window.questionBank = [
       "$\\sin 30^\\circ + \\cos 60^\\circ = \\cos 90^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "① $\\sin30^\\circ=1/2=\\cos60^\\circ$이다.<br>② $\\sin60^\\circ=\\cos30^\\circ=\\sqrt3/2$이므로 차는 $0$이다.<br>③ $\\tan45^\\circ=1$이므로 우변은 $\\cos30^\\circ=\\sqrt3/2=\\sin60^\\circ$이다.<br>④ $\\tan30^\\circ=1/\\sqrt3$이므로 역수는 $\\sqrt3=\\tan60^\\circ$이다.<br>⑤ 좌변은 $1/2+1/2=1$이지만 $\\cos90^\\circ=0$이다. 따라서 옳지 않은 것은 ⑤이다.",
+    "solution": "① $\\sin30^\\circ=\\frac{1}{2}=\\cos60^\\circ$이다.<br>② $\\sin60^\\circ=\\cos30^\\circ=\\sqrt3/2$이므로 차는 $0$이다.<br>③ $\\tan45^\\circ=1$이므로 우변은 $\\cos30^\\circ=\\sqrt3/2=\\sin60^\\circ$이다.<br>④ $\\tan30^\\circ=1/\\sqrt3$이므로 역수는 $\\sqrt3=\\tan60^\\circ$이다.<br>⑤ 좌변은 $\\frac{1}{2}+\\frac{1}{2}=1$이지만 $\\cos90^\\circ=0$이다. 따라서 옳지 않은 것은 ⑤이다.",
     "category": "삼각비",
     "originalCategory": "삼각비와 원의 성질",
     "standardCourse": "중3 수학",
@@ -550,7 +550,7 @@ window.questionBank = [
       "$\\frac{3}{2}$"
     ],
     "answer": "⑤",
-    "solution": "그림에서 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 그러면 $\\sin A=CH/AC=CH/4$이고 $\\sin B=CH/BC=CH/6$이다.<br>따라서 $\\dfrac{\\sin A}{\\sin B}=\\dfrac{CH/4}{CH/6}=6/4=3/2$이므로 ⑤이다.",
+    "solution": "그림에서 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 그러면 $\\sin A=CH/AC=CH/4$이고 $\\sin B=CH/BC=CH/6$이다.<br>따라서 $\\dfrac{\\sin A}{\\sin B}=\\dfrac{CH/4}{CH/6}=\\frac{6}{4}=\\frac{3}{2}$이므로 ⑤이다.",
     "category": "삼각비",
     "originalCategory": "삼각비와 원의 성질",
     "standardCourse": "중3 수학",
@@ -1659,7 +1659,7 @@ window.questionBank = [
     "content": "[서술형1] $\\tan A=2$일 때, $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.(단, $0^\\circ < \\angle A < 90^\\circ$) [5점]<br>(1) 위 식에서 $\\tan A=2$일 때, $\\sin A$와 $\\cos A$의 값을 구하면?[2점]<br>(2) 위(1)에서 구한 값을 이용하여 $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하면?[3점]",
     "choices": [],
     "answer": "(1) $\\sin A=2/\\sqrt5$, $\\cos A=1/\\sqrt5$; (2) $2/3$",
-    "solution": "(1) $0^\\circ<A<90^\\circ$이고 $\\tan A=2=2/1$이므로 직각삼각형의 맞은편 변과 이웃한 변의 비를 $2:1$로 둘 수 있다. 빗변은 $\\sqrt{2^2+1^2}=\\sqrt5$이므로 $\\sin A=2/\\sqrt5$, $\\cos A=1/\\sqrt5$이다.<br>(2) 분자는 $\\sin A\\cos A=(2/\\sqrt5)(1/\\sqrt5)=2/5$이다. 분모는 $(\\sin A)^2-(\\cos A)^2=4/5-1/5=3/5$이다. 따라서 전체 값은 $(2/5)/(3/5)=2/3$이다.",
+    "solution": "(1) $0^\\circ<A<90^\\circ$이고 $\\tan A=2=2/1$이므로 직각삼각형의 맞은편 변과 이웃한 변의 비를 $2:1$로 둘 수 있다. 빗변은 $\\sqrt{2^2+1^2}=\\sqrt5$이므로 $\\sin A=2/\\sqrt5$, $\\cos A=1/\\sqrt5$이다.<br>(2) 분자는 $\\sin A\\cos A=(2/\\sqrt5)(1/\\sqrt5)=\\frac{2}{5}$이다. 분모는 $(\\sin A)^2-(\\cos A)^2=\\frac{4}{5}-\\frac{1}{5}=\\frac{3}{5}$이다. 따라서 전체 값은 $(\\frac{2}{5})/(\\frac{3}{5})=\\frac{2}{3}$이다.",
     "category": "삼각비",
     "originalCategory": "삼각비와 원의 성질",
     "standardCourse": "중3 수학",

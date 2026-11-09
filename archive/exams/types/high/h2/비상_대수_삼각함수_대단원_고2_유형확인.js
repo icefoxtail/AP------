@@ -119,7 +119,7 @@ window.questionBank = [
       "$f(x) = |\\sin \\frac{x}{2}|$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 절댓값 기호가 포함된 삼각함수의 주기를 구한다.\\n정석 풀이:\\n① $f(x) = \\sin 2x$의 주기는 $\\dfrac{2\\pi}{2} = \\pi$이다.\\n② $f(x) = |\\cos x|$의 주기는 $\\pi$이다.\\n③ $f(x) = \\tan x$의 주기는 $\\pi$이다.\\n④ $f(x) = \\cos\\dfrac{x}{2}$의 주기는 $\\dfrac{2\\pi}{1/2} = 4\\pi$이다.\\n⑤ $f(x) = \\left|\\sin\\dfrac{x}{2}\\right|$는 $\\sin\\dfrac{x}{2}$의 그래프를 $x$축 위로 접어 올린 것이므로, 기존 주기 $4\\pi$의 절반인 $2\\pi$가 된다.\\n따라서 주기가 $2\\pi$인 것은 ⑤이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 절댓값 기호가 포함된 삼각함수의 주기를 구한다.\\n정석 풀이:\\n① $f(x) = \\sin 2x$의 주기는 $\\dfrac{2\\pi}{2} = \\pi$이다.\\n② $f(x) = |\\cos x|$의 주기는 $\\pi$이다.\\n③ $f(x) = \\tan x$의 주기는 $\\pi$이다.\\n④ $f(x) = \\cos\\dfrac{x}{2}$의 주기는 $\\dfrac{2\\pi}{\\frac{1}{2}} = 4\\pi$이다.\\n⑤ $f(x) = \\left|\\sin\\dfrac{x}{2}\\right|$는 $\\sin\\dfrac{x}{2}$의 그래프를 $x$축 위로 접어 올린 것이므로, 기존 주기 $4\\pi$의 절반인 $2\\pi$가 된다.\\n따라서 주기가 $2\\pi$인 것은 ⑤이다.\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",

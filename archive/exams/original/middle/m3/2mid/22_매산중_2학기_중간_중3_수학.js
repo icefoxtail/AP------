@@ -674,7 +674,7 @@ window.questionBank = [
       "물매를 tan으로 해석"
     ],
     "wide": false,
-    "content": "건축에서 지붕의 경사의 정도를 나타내는 것을 물매라고 한다. 오른쪽 그림과 같은 건축물의 지붕의 물매는 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 10$, $\\overline{\\mathrm{BC}} = 3$임을 이용하여 $3/10$과 같이 나타낸다. 이때 아래 표를 이용하여 $x$의 값을 구하면? (4점)<br><img src=\"assets/images/22_매산중_2학기_중간_중3_수학/q14.png\" alt=\"문제 14번 그림\" style=\"max-width: 250px;\"><br><br>$$\\begin{array}{|c|c|c|c|} \\hline \\text{각도} & \\text{사인(sin)} & \\text{코사인(cos)} & \\text{탄젠트(tan)} \\\\ \\hline 16^\\circ & 0.27 & 0.96 & 0.28 \\\\ \\hline 17^\\circ & 0.29 & 0.95 & 0.30 \\\\ \\hline 18^\\circ & 0.30 & 0.95 & 0.32 \\\\ \\hline 19^\\circ & 0.32 & 0.94 & 0.34 \\\\ \\hline 20^\\circ & 0.34 & 0.93 & 0.36 \\\\ \\hline \\end{array}$$",
+    "content": "건축에서 지붕의 경사의 정도를 나타내는 것을 물매라고 한다. 오른쪽 그림과 같은 건축물의 지붕의 물매는 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 10$, $\\overline{\\mathrm{BC}} = 3$임을 이용하여 $\\frac{3}{10}$과 같이 나타낸다. 이때 아래 표를 이용하여 $x$의 값을 구하면? (4점)<br><img src=\"assets/images/22_매산중_2학기_중간_중3_수학/q14.png\" alt=\"문제 14번 그림\" style=\"max-width: 250px;\"><br><br>$$\\begin{array}{|c|c|c|c|} \\hline \\text{각도} & \\text{사인(sin)} & \\text{코사인(cos)} & \\text{탄젠트(tan)} \\\\ \\hline 16^\\circ & 0.27 & 0.96 & 0.28 \\\\ \\hline 17^\\circ & 0.29 & 0.95 & 0.30 \\\\ \\hline 18^\\circ & 0.30 & 0.95 & 0.32 \\\\ \\hline 19^\\circ & 0.32 & 0.94 & 0.34 \\\\ \\hline 20^\\circ & 0.34 & 0.93 & 0.36 \\\\ \\hline \\end{array}$$",
     "choices": [
       "$16$",
       "$17$",
@@ -683,7 +683,7 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "②",
-    "solution": "물매는 직각삼각형에서 높이와 밑변의 비이므로 $\\tan x=BC/AB=3/10=0.30$이다. 표의 탄젠트 값 0.30은 $17^\\circ$에서 나타나므로 $x=17$이다. 정답은 ②이다.",
+    "solution": "물매는 직각삼각형에서 높이와 밑변의 비이므로 $\\tan x=BC/AB=\\frac{3}{10}=0.30$이다. 표의 탄젠트 값 0.30은 $17^\\circ$에서 나타나므로 $x=17$이다. 정답은 ②이다.",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyReason": "물매를 tan으로 표현하고 표와 대조한다.",
@@ -1081,7 +1081,7 @@ window.questionBank = [
     "content": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>$y$절편이 $-3$이고, 두 점 $(2, -5), (1, 0)$를 지나는 이차함수의 그래프의 식을 $y=ax^2+bx+c$의 꼴로 나타내는 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-②】</b> (5점)<br>꼭짓점 $\\mathrm{A}$의 $x$좌표가 $-3$인 이차함수의 그래프가 $x$축과 점 $\\mathrm{B}(-9, 0)$, $y$축과 점 $\\mathrm{C}(0, 9)$에서 만날 때, 사각형 $\\mathrm{ABOC}$의 넓이를 구하는 풀이 과정과 답을 쓰시오. (단, $\\mathrm{O}$는 원점이다.)",
     "choices": [],
     "answer": "①: y=-4x^2+7x-3; ②: 넓이 135/2",
-    "solution": "① $y$절편이 $-3$이므로 $c=-3$이다. 점 $(1,0)$을 대입하면 $a+b=3$, 점 $(2,-5)$를 대입하면 $2a+b=-1$이다. 두 식을 빼면 $a=-4$, 따라서 $b=7$이다. 그러므로 $y=-4x^2+7x-3$이다. ② 축이 $x=-3$이고 한 근이 $-9$이므로 다른 근은 대칭인 $3$이다. 따라서 $y=a(x+9)(x-3)$이고, $y$절편이 9이므로 $-27a=9$, $a=-1/3$이다. 꼭짓점의 세로좌표는 $y(-3)=-\\frac13(6)(-6)=12$이므로 $A=(-3,12)$이다. 대각선 $AO$로 나누면 $[ABO]=\\frac12\\cdot9\\cdot12=54$, $[AOC]=\\frac12\\cdot9\\cdot3=\\frac{27}{2}$이다. 따라서 사각형의 넓이는 $54+\\frac{27}{2}=\\frac{135}{2}$이다.",
+    "solution": "① $y$절편이 $-3$이므로 $c=-3$이다. 점 $(1,0)$을 대입하면 $a+b=3$, 점 $(2,-5)$를 대입하면 $2a+b=-1$이다. 두 식을 빼면 $a=-4$, 따라서 $b=7$이다. 그러므로 $y=-4x^2+7x-3$이다. ② 축이 $x=-3$이고 한 근이 $-9$이므로 다른 근은 대칭인 $3$이다. 따라서 $y=a(x+9)(x-3)$이고, $y$절편이 9이므로 $-27a=9$, $a=-\\frac{1}{3}$이다. 꼭짓점의 세로좌표는 $y(-3)=-\\frac13(6)(-6)=12$이므로 $A=(-3,12)$이다. 대각선 $AO$로 나누면 $[ABO]=\\frac12\\cdot9\\cdot12=54$, $[AOC]=\\frac12\\cdot9\\cdot3=\\frac{27}{2}$이다. 따라서 사각형의 넓이는 $54+\\frac{27}{2}=\\frac{135}{2}$이다.",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyReason": "각 선택형에서 연립조건을 세우고 넓이까지 산출한다.",
@@ -1127,7 +1127,7 @@ window.questionBank = [
     "content": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>$30^\\circ, 45^\\circ, 60^\\circ$의 삼각비의 값을 구하시오.<br><br>$$\\begin{array}{|c|c|c|c|} \\hline \\text{삼각비}\\backslash A & 30^\\circ & 45^\\circ & 60^\\circ \\\\ \\hline \\sin A & & & \\\\ \\hline \\cos A & & & \\\\ \\hline \\tan A & & & \\\\ \\hline \\end{array}$$<br><br><b>【수준별 3-②】</b> (5점)<br>오른쪽 그림과 같이 밑면이 정사각형이고, 옆면이 정삼각형인 사각뿔의 한 모서리의 길이가 $10\\text{ cm}$이다. $\\overline{\\mathrm{CD}}, \\overline{\\mathrm{BE}}$의 중점을 각각 $\\mathrm{M}, \\mathrm{N}$이라 하고 $\\angle\\mathrm{AMN} = x^\\circ$라고 할 때, $\\tan x^\\circ$의 값을 구하는 풀이 과정과 답을 쓰시오.<br><img src=\"assets/images/22_매산중_2학기_중간_중3_수학/s03_derived.svg\" alt=\"정사각형 밑면과 모서리의 중점을 표시한 사각뿔 그림\">",
     "choices": [],
     "answer": "①: 표의 삼각비 값; ②: tan x=√2",
-    "solution": "① 특수각의 삼각비를 표에 채우면 $\\sin30^\\circ=\\frac12$, $\\sin45^\\circ=\\frac{\\sqrt2}{2}$, $\\sin60^\\circ=\\frac{\\sqrt3}{2}$; $\\cos30^\\circ=\\frac{\\sqrt3}{2}$, $\\cos45^\\circ=\\frac{\\sqrt2}{2}$, $\\cos60^\\circ=\\frac12$; $\\tan30^\\circ=\\frac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$이다. ② 밑면의 중심을 $O$라 하자. 옆면이 정삼각형이므로 $A$에서 밑면의 각 꼭짓점까지의 거리는 모두 10이다. $A$에서 밑면에 내린 수선의 발을 $H$라 하면, 각 꼭짓점 $V$에 대하여 직각삼각형에서 $AV^2=AH^2+HV^2$이다. $AV=10$이고 $AH$는 같으므로 네 꼭짓점까지의 거리 $HV$가 모두 같다. 정사각형에서 네 꼭짓점까지 거리가 같은 점은 중심이므로 $H=O$, 즉 $AO$가 높이이다. 정사각형의 대각선은 $10\\sqrt2$이므로 $OC=5\\sqrt2$이다. 직각삼각형 $AOC$에서 $AO=\\sqrt{10^2-(5\\sqrt2)^2}=5\\sqrt2$이다. $M$은 한 변 $CD$의 중점이므로 정사각형 중심에서 변의 중점까지 $OM=10/2=5$이다. $N$은 마주 보는 변 $BE$의 중점이어서 $M,O,N$이 한 직선 위에 있다. 따라서 $\\angle AMN=\\angle AMO$이고 $\\triangle AOM$은 $O$에서 직각이다. 그러므로 $\\tan x=\\tan\\angle AMO=\\frac{AO}{OM}=\\frac{5\\sqrt2}{5}=\\sqrt2$이다.",
+    "solution": "① 특수각의 삼각비를 표에 채우면 $\\sin30^\\circ=\\frac12$, $\\sin45^\\circ=\\frac{\\sqrt2}{2}$, $\\sin60^\\circ=\\frac{\\sqrt3}{2}$; $\\cos30^\\circ=\\frac{\\sqrt3}{2}$, $\\cos45^\\circ=\\frac{\\sqrt2}{2}$, $\\cos60^\\circ=\\frac12$; $\\tan30^\\circ=\\frac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$이다. ② 밑면의 중심을 $O$라 하자. 옆면이 정삼각형이므로 $A$에서 밑면의 각 꼭짓점까지의 거리는 모두 10이다. $A$에서 밑면에 내린 수선의 발을 $H$라 하면, 각 꼭짓점 $V$에 대하여 직각삼각형에서 $AV^2=AH^2+HV^2$이다. $AV=10$이고 $AH$는 같으므로 네 꼭짓점까지의 거리 $HV$가 모두 같다. 정사각형에서 네 꼭짓점까지 거리가 같은 점은 중심이므로 $H=O$, 즉 $AO$가 높이이다. 정사각형의 대각선은 $10\\sqrt2$이므로 $OC=5\\sqrt2$이다. 직각삼각형 $AOC$에서 $AO=\\sqrt{10^2-(5\\sqrt2)^2}=5\\sqrt2$이다. $M$은 한 변 $CD$의 중점이므로 정사각형 중심에서 변의 중점까지 $OM=\\frac{10}{2}=5$이다. $N$은 마주 보는 변 $BE$의 중점이어서 $M,O,N$이 한 직선 위에 있다. 따라서 $\\angle AMN=\\angle AMO$이고 $\\triangle AOM$은 $O$에서 직각이다. 그러므로 $\\tan x=\\tan\\angle AMO=\\frac{AO}{OM}=\\frac{5\\sqrt2}{5}=\\sqrt2$이다.",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyReason": "특수각 표를 완성하고 정사각뿔의 높이를 구해 삼각비에 연결한다.",

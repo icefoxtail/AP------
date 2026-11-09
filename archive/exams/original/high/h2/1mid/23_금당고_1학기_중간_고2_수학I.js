@@ -479,7 +479,7 @@ window.questionBank = [
       "64"
     ],
     "answer": "①",
-    "solution": "$x=\\log_a2$, $y=\\log_b2$라 두면 $a,b>1$이므로 $x,y>0$이다. 또한\n$\\log_2a=\\dfrac1x$, $\\log_2b=\\dfrac1y$\n이다.\n\n주어진 제곱합 조건은\n$\\dfrac1{x^2}+\\dfrac1{y^2}=14$\n이다. $p=xy$라 놓으면 $p>0$이고, $x+y=4$이므로\n$x^2+y^2=(x+y)^2-2xy=16-2p$\n이다. 따라서\n$\\dfrac{x^2+y^2}{p^2}=14$\n$\\dfrac{16-2p}{p^2}=14$\n$7p^2+p-8=0$\n$(7p+8)(p-1)=0$\n이다. $p>0$이므로 $p=1$이다.\n\n$x+y=4$, $xy=1$이므로 $x,y$는 $u^2-4u+1=0$의 두 근이다. 따라서 $x,y=2\\pm\\sqrt3$이고 둘 다 양수이다. 실제로 $a=2^{1/x}$, $b=2^{1/y}$라 두면 $a,b>1$이며 주어진 로그 조건을 만족한다.\n\n세제곱합은\n$x^3+y^3=(x+y)^3-3xy(x+y)$\n$=4^3-3\\cdot1\\cdot4=52$\n이다.\n\n그러므로 정답은 ①이다.",
+    "solution": "$x=\\log_a2$, $y=\\log_b2$라 두면 $a,b>1$이므로 $x,y>0$이다. 또한\n$\\log_2a=\\dfrac1x$, $\\log_2b=\\dfrac1y$\n이다.\n\n주어진 제곱합 조건은\n$\\dfrac1{x^2}+\\dfrac1{y^2}=14$\n이다. $p=xy$라 놓으면 $p>0$이고, $x+y=4$이므로\n$x^2+y^2=(x+y)^2-2xy=16-2p$\n이다. 따라서\n$\\dfrac{x^2+y^2}{p^2}=14$\n$\\dfrac{16-2p}{p^2}=14$\n$7p^2+p-8=0$\n$(7p+8)(p-1)=0$\n이다. $p>0$이므로 $p=1$이다.\n\n$x+y=4$, $xy=1$이므로 $x,y$는 $u^2-4u+1=0$의 두 근이다. 따라서 $x,y=2\\pm\\sqrt3$이고 둘 다 양수이다. 실제로 $a=2^{\\frac{1}{x}}$, $b=2^{\\frac{1}{y}}$라 두면 $a,b>1$이며 주어진 로그 조건을 만족한다.\n\n세제곱합은\n$x^3+y^3=(x+y)^3-3xy(x+y)$\n$=4^3-3\\cdot1\\cdot4=52$\n이다.\n\n그러므로 정답은 ①이다.",
     "score": 4.4,
     "level": "상",
     "category": "로그",
@@ -789,7 +789,7 @@ window.questionBank = [
       "\\left(\\frac{1}{a}\\right)^{\\frac{1}{k}} \\ge \\left(\\frac{1}{a}\\right)^k \\ge (a^2)^k \\ge a^k"
     ],
     "answer": "②",
-    "solution": "$a>1$, $k>1$에서 $(a^2)^k>a^k>1$이다.\n한편 $0<\\frac1a<1$이므로 지수가 클수록 값은 작아져\n$\\left(\\frac1a\\right)^{1/k}>\\left(\\frac1a\\right)^k$이다.\n두 양수는 모두 $1$보다 작으므로 전체 순서는\n$(a^2)^k>a^k>\\left(\\frac1a\\right)^{1/k}>\\left(\\frac1a\\right)^k$이다.\n따라서 정답은 ②이다.",
+    "solution": "$a>1$, $k>1$에서 $(a^2)^k>a^k>1$이다.\n한편 $0<\\frac1a<1$이므로 지수가 클수록 값은 작아져\n$\\left(\\frac1a\\right)^{\\frac{1}{k}}>\\left(\\frac1a\\right)^k$이다.\n두 양수는 모두 $1$보다 작으므로 전체 순서는\n$(a^2)^k>a^k>\\left(\\frac1a\\right)^{\\frac{1}{k}}>\\left(\\frac1a\\right)^k$이다.\n따라서 정답은 ②이다.",
     "score": 4.8,
     "level": "중",
     "category": "지수",
@@ -891,7 +891,7 @@ window.questionBank = [
       "37"
     ],
     "answer": "③",
-    "solution": "밑이 $a>1$이므로 로그함수는 증가한다. 또\n$\\left|\\log_a m-\\log_a8\\right|=\\log_a\\max\\left(\\dfrac m8,\\dfrac8m\\right)$\n이다. 따라서 주어진 부등식은\n$\\log_a\\left(\\dfrac n2\\max\\left(\\dfrac m8,\\dfrac8m\\right)\\right)\\le\\log_a\\dfrac32$\n이고, 이는\n$n\\max\\left(\\dfrac m8,\\dfrac8m\\right)\\le3$\n과 같다.\n\n먼저 $m\\le8$이면 $\\max(m/8,8/m)=8/m$이므로\n$n\\le\\left\\lfloor\\dfrac{3m}{8}\\right\\rfloor$\n이다. $m=1,2,3,4,5,6,7,8$에서 가능한 $n$의 개수는 차례로\n$0,0,1,1,1,2,2,3$\n이어서 합계 $10$개이다.\n\n다음으로 $m\\ge8$이면 $\\max(m/8,8/m)=m/8$이므로\n$mn\\le24$\n이다. $m=8$에서는 $n=1,2,3$으로 $3$쌍, $m=9,10,11,12$에서는 각각 $2$쌍, $m=13,14,\\ldots,24$에서는 각각 $1$쌍이므로 이쪽은\n$3+4\\cdot2+12\\cdot1=23$쌍이다.\n\n두 경우에 공통으로 들어간 $m=8$, $n=1,2,3$의 $3$쌍을 한 번 빼면\n$10+23-3=30$\n이다.\n\n그러므로 정답은 ③이다.",
+    "solution": "밑이 $a>1$이므로 로그함수는 증가한다. 또\n$\\left|\\log_a m-\\log_a8\\right|=\\log_a\\max\\left(\\dfrac m8,\\dfrac8m\\right)$\n이다. 따라서 주어진 부등식은\n$\\log_a\\left(\\dfrac n2\\max\\left(\\dfrac m8,\\dfrac8m\\right)\\right)\\le\\log_a\\dfrac32$\n이고, 이는\n$n\\max\\left(\\dfrac m8,\\dfrac8m\\right)\\le3$\n과 같다.\n\n먼저 $m\\le8$이면 $\\max(\\frac{m}{8},\\frac{8}{m})=\\frac{8}{m}$이므로\n$n\\le\\left\\lfloor\\dfrac{3m}{8}\\right\\rfloor$\n이다. $m=1,2,3,4,5,6,7,8$에서 가능한 $n$의 개수는 차례로\n$0,0,1,1,1,2,2,3$\n이어서 합계 $10$개이다.\n\n다음으로 $m\\ge8$이면 $\\max(\\frac{m}{8},\\frac{8}{m})=\\frac{m}{8}$이므로\n$mn\\le24$\n이다. $m=8$에서는 $n=1,2,3$으로 $3$쌍, $m=9,10,11,12$에서는 각각 $2$쌍, $m=13,14,\\ldots,24$에서는 각각 $1$쌍이므로 이쪽은\n$3+4\\cdot2+12\\cdot1=23$쌍이다.\n\n두 경우에 공통으로 들어간 $m=8$, $n=1,2,3$의 $3$쌍을 한 번 빼면\n$10+23-3=30$\n이다.\n\n그러므로 정답은 ③이다.",
     "score": 5,
     "level": "상",
     "category": "로그함수",

@@ -619,7 +619,7 @@ window.questionBank = [
       "$6,\\ 2,\\ 12\\sqrt3$"
     ],
     "answer": "④",
-    "solution": "정삼각형의 중심과 한 변의 중점을 이은 직각삼각형에서 삼각비를 이용해 두 반지름과 한 변의 길이를 구한다.\n$\\triangle OBM$은 $M$에서 직각이고\n$BO$는 $\\angle B=60^\\circ$를 이등분하므로 $\\angle OBM=30^\\circ$이다.\n따라서\n$\\sin30^\\circ=\\dfrac{OM}{OB}=\\dfrac{r}{R}=\\dfrac12$이므로\n$R=2r$이다.\n두 원의 넓이 차가 $12\\pi$이므로\n$\\pi R^2-\\pi r^2=12\\pi$이다.\n여기에 $R=2r$를 대입하면\n$4r^2-r^2=12$, 즉 $r=2$, $R=4$이다.\n정삼각형의 한 변의 길이를 $s$라 하면\n$BM=\\dfrac{s}{2}$이다.\n또 $\\cos30^\\circ=\\dfrac{BM}{OB}$이므로\n$\\dfrac{\\sqrt3}{2}=\\dfrac{s/2}{4}=\\dfrac{s}{8}$에서 $s=4\\sqrt3$이다.\n정삼각형의 높이는 $AO+OM=R+r=6$이므로 넓이는 $\\dfrac12\\times4\\sqrt3\\times6=12\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
+    "solution": "정삼각형의 중심과 한 변의 중점을 이은 직각삼각형에서 삼각비를 이용해 두 반지름과 한 변의 길이를 구한다.\n$\\triangle OBM$은 $M$에서 직각이고\n$BO$는 $\\angle B=60^\\circ$를 이등분하므로 $\\angle OBM=30^\\circ$이다.\n따라서\n$\\sin30^\\circ=\\dfrac{OM}{OB}=\\dfrac{r}{R}=\\dfrac12$이므로\n$R=2r$이다.\n두 원의 넓이 차가 $12\\pi$이므로\n$\\pi R^2-\\pi r^2=12\\pi$이다.\n여기에 $R=2r$를 대입하면\n$4r^2-r^2=12$, 즉 $r=2$, $R=4$이다.\n정삼각형의 한 변의 길이를 $s$라 하면\n$BM=\\dfrac{s}{2}$이다.\n또 $\\cos30^\\circ=\\dfrac{BM}{OB}$이므로\n$\\dfrac{\\sqrt3}{2}=\\dfrac{\\frac{s}{2}}{4}=\\dfrac{s}{8}$에서 $s=4\\sqrt3$이다.\n정삼각형의 높이는 $AO+OM=R+r=6$이므로 넓이는 $\\dfrac12\\times4\\sqrt3\\times6=12\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",

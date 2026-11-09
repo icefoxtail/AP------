@@ -108,7 +108,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "①",
-    "solution": "지수함수 $y=(1/3)^x$의 역함수는 밑이 같은 로그함수이다.\n\n$x=\\left(\\frac13\\right)^y$\n에서\n$y=\\log_{1/3}x$이다.\n\n따라서 $a=\\frac13$이고 정답은 ①이다.",
+    "solution": "지수함수 $y=(\\frac{1}{3})^x$의 역함수는 밑이 같은 로그함수이다.\n\n$x=\\left(\\frac13\\right)^y$\n에서\n$y=\\log_{\\frac{1}{3}}x$이다.\n\n따라서 $a=\\frac13$이고 정답은 ①이다.",
     "subUnitKey": "H22-A-02-FUNCTION_INVERSE",
     "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -520,7 +520,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "③",
-    "solution": "첫 번째 조건에서 $n/3$은 제곱수이고, 두 번째 조건에서 $n/2$는 다섯제곱수이다.\n\n소인수 지수를 살핀다.\n$2^a$: $a-1$은 5의 배수이고 $a\\ge1$이므로 최소 $a=6$이다.\n$3^b$: $b-1$은 짝수이고 $b$는 5의 배수이므로 최소 $b=5$이다.\n다른 소수의 지수는 두 조건을 동시에 만족하도록 최소 0으로 둔다.\n\n따라서 최소 $n=2^6\\cdot3^5$이고\n$a+b=6+5=11$.\n\n정답은 ③이다.",
+    "solution": "첫 번째 조건에서 $\\frac{n}{3}$은 제곱수이고, 두 번째 조건에서 $\\frac{n}{2}$는 다섯제곱수이다.\n\n소인수 지수를 살핀다.\n$2^a$: $a-1$은 5의 배수이고 $a\\ge1$이므로 최소 $a=6$이다.\n$3^b$: $b-1$은 짝수이고 $b$는 5의 배수이므로 최소 $b=5$이다.\n다른 소수의 지수는 두 조건을 동시에 만족하도록 최소 0으로 둔다.\n\n따라서 최소 $n=2^6\\cdot3^5$이고\n$a+b=6+5=11$.\n\n정답은 ③이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -725,7 +725,7 @@ window.questionBank = [
       "-12"
     ],
     "answer": "②",
-    "solution": "$f(x)$의 점근선은 $x=4$이므로 $l:x=4$이다. $g(x)$도 같은 점근선을 가지므로 $-c/b=4$, 즉 $c=-4b$이다.\n\n높이가 $t$인 수평선과 만나는 점의 $x$좌표를 구한다.\n\n$f(x)=t$에서\n$3x-12=2^t$,\n$x_P=4+\\frac{2^t}{3}$.\n\n$g(x)=t$에서\n$-\\log_a(b(x-4))=t$,\n$x_Q=4+\\frac{a^{-t}}b$이고 $x_R=4$이다.\n\n모든 $t$에서 $\\overline{PR}=\\overline{QR}$이므로\n$\\frac{2^t}{3}=\\left|\\frac{a^{-t}}b\\right|$.\n\n$t=0$을 대입하면 $|b|=3$이다. 따라서 $\\frac{2^t}{3}=\\frac{a^{-t}}{|b|}$이고, $|b|=3$을 대입하면 $2^t=a^{-t}$가 모든 $t$에서 성립한다. 그러므로 $a=\\frac12$이다. 또한 $c=-4b$이므로\n$abc=ab(-4b)=-4ab^2=-18$.\n\n정답은 ②이다.",
+    "solution": "$f(x)$의 점근선은 $x=4$이므로 $l:x=4$이다. $g(x)$도 같은 점근선을 가지므로 $-\\frac{c}{b}=4$, 즉 $c=-4b$이다.\n\n높이가 $t$인 수평선과 만나는 점의 $x$좌표를 구한다.\n\n$f(x)=t$에서\n$3x-12=2^t$,\n$x_P=4+\\frac{2^t}{3}$.\n\n$g(x)=t$에서\n$-\\log_a(b(x-4))=t$,\n$x_Q=4+\\frac{a^{-t}}b$이고 $x_R=4$이다.\n\n모든 $t$에서 $\\overline{PR}=\\overline{QR}$이므로\n$\\frac{2^t}{3}=\\left|\\frac{a^{-t}}b\\right|$.\n\n$t=0$을 대입하면 $|b|=3$이다. 따라서 $\\frac{2^t}{3}=\\frac{a^{-t}}{|b|}$이고, $|b|=3$을 대입하면 $2^t=a^{-t}$가 모든 $t$에서 성립한다. 그러므로 $a=\\frac12$이다. 또한 $c=-4b$이므로\n$abc=ab(-4b)=-4ab^2=-18$.\n\n정답은 ②이다.",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "로그함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -836,7 +836,7 @@ window.questionBank = [
     "content": "자연수 $k$에 대하여 두 함수 $f(x)=3^x$, $g(x)=3\\times9^x+\\left(\\frac13\\right)^k$가 있다. 실수 $t$에 대하여 직선 $x=t$가 두 곡선 $y=f(x)$, $y=g(x)$와 만나는 점을 각각 $A,B$라 하자. 두 점 $A,B$ 사이의 거리가 $\\frac7{27}$이 되도록 하는 실수 $t$의 개수가 2이고 이 두 실수의 합을 $p$라 할 때, $k+\\left(\\frac13\\right)^p$의 값을 구하는 과정을 서술하시오. [12점]",
     "choices": [],
     "answer": "83/2",
-    "solution": "$u=3^t$라 놓으면 $u>0$이고 $9^t=u^2$이다. 두 점은 같은 세로선 위에 있으므로 거리는 함수값 차의 절댓값이다.\n\n$|g(t)-f(t)|=\\left|3u^2-u+3^{-k}\\right|=\\frac7{27}$.\n\n$Q(u)=3u^2-u+3^{-k}$라 하자. $Q(u)=-7/27$은\n$3u^2-u+3^{-k}+7/27=0$이고 판별식은\n$1-12(3^{-k}+7/27)<0$이다. 따라서 양의 해가 없다.\n\n$Q(u)=7/27$은\n$3u^2-u+3^{-k}-7/27=0$이다. $k=1$이면 이 식은\n$3u^2-u+2/27=0$\n$=(3u-1/3)(3u-2/3)/3=0$이므로 두 양의 해 $u=1/9,2/9$를 갖는다. $k\\ge2$이면 상수항이 음수이므로 근의 곱이 음수여서 양의 해는 하나뿐이다.\n\n따라서 교점 조건을 만족하는 $k$는 $1$이다. 두 해에 대응하는 $t$의 합은\n$p=\\log_3(1/9)+\\log_3(2/9)=\\log_3(2/81)$.\n\n그러므로\n$\\left(\\frac13\\right)^p=3^{-p}=\\frac{81}{2}$,\n$k+\\left(\\frac13\\right)^p=1+\\frac{81}{2}=\\frac{83}{2}$.\n\n정답은 $\\frac{83}{2}$이다.",
+    "solution": "$u=3^t$라 놓으면 $u>0$이고 $9^t=u^2$이다. 두 점은 같은 세로선 위에 있으므로 거리는 함수값 차의 절댓값이다.\n\n$|g(t)-f(t)|=\\left|3u^2-u+3^{-k}\\right|=\\frac7{27}$.\n\n$Q(u)=3u^2-u+3^{-k}$라 하자. $Q(u)=-\\frac{7}{27}$은\n$3u^2-u+3^{-k}+\\frac{7}{27}=0$이고 판별식은\n$1-12(3^{-k}+\\frac{7}{27})<0$이다. 따라서 양의 해가 없다.\n\n$Q(u)=\\frac{7}{27}$은\n$3u^2-u+3^{-k}-\\frac{7}{27}=0$이다. $k=1$이면 이 식은\n$3u^2-u+\\frac{2}{27}=0$\n$=(3u-\\frac{1}{3})(3u-\\frac{2}{3})/3=0$이므로 두 양의 해 $u=\\frac{1}{9},\\frac{2}{9}$를 갖는다. $k\\ge2$이면 상수항이 음수이므로 근의 곱이 음수여서 양의 해는 하나뿐이다.\n\n따라서 교점 조건을 만족하는 $k$는 $1$이다. 두 해에 대응하는 $t$의 합은\n$p=\\log_3(\\frac{1}{9})+\\log_3(\\frac{2}{9})=\\log_3(\\frac{2}{81})$.\n\n그러므로\n$\\left(\\frac13\\right)^p=3^{-p}=\\frac{81}{2}$,\n$k+\\left(\\frac13\\right)^p=1+\\frac{81}{2}=\\frac{83}{2}$.\n\n정답은 $\\frac{83}{2}$이다.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
