@@ -334,7 +334,7 @@
         STRUCT_TAG_RE.lastIndex = 0;
         var flushText = function (text) {
             if (!text) return;
-            if (!prevCell && !/S/.test(text)) return;     // whitespace between table tags carries nothing
+            if (!prevCell && !/\S/.test(text)) return;     // whitespace between table tags carries nothing
             if (prevCell) { prevCell.text += text; }
             pieces.push(text);
         };

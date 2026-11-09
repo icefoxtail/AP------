@@ -351,3 +351,19 @@ test('one-column false positives: bare |x-1| style lines and rows without inner 
   assert.equal(count(renderApTables('| 보기 |\n| ㄱ. 첫째 |'), /<table\b/g), 1);
   assert.equal(count(renderApTables('| 보기 |\n| $x+1$ |'), /<table\b/g), 1, 'explicit $math$ rows count');
 });
+
+test('regression: only whitespace between table tags is dropped; caption, text after a nested table and stray text are kept', () => {
+  const cap = renderApTables('<table><caption>표 1. 성적</caption><tr><td>1</td></tr></table>');
+  assert.match(cap, /<caption>표 1\. 성적<\/caption>/);
+  const nested = renderApTables('<table><tr><td>앞<table><tr><td>x</td></tr></table>뒤텍스트</td></tr></table>');
+  assert.match(nested, /<\/table>뒤텍스트<\/td>/);
+  assert.match(nested, /<td>앞<table/);
+  const stray = renderApTables('<table>제목 텍스트<tr><td>1</td></tr></table>');
+  assert.match(stray, /제목 텍스트/);
+  // text without a capital S / with lowercase and Korean only must survive too
+  assert.match(renderApTables('<table>abc<tr><td>1</td></tr></table>'), /abc/);
+  // whitespace-only gaps are still removed, so no <br> can appear between rows after wrapLatex
+  const gaps = renderApTables('<table>\n<tr>\n<td>1</td>\n</tr>\n</table>');
+  assert.equal(gaps, '<div class="ap-table-wrap question-table-wrap"><table class="ap-table question-table"><tr><td>1</td></tr></table></div>');
+  for (const s of [cap, nested, stray]) assert.equal(renderApTables(s), s, 'idempotent');
+});
