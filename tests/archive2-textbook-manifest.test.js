@@ -133,7 +133,7 @@ print(json.dumps({"rows": rows, "unmanifested": unmanifested, "duplicates": dupl
     assert.deepEqual(JSON.parse(JSON.stringify(committed)), row, `${file}: chapter-keyed rows equal the builder output`);
     generated++;
   }
-  assert.equal(generated, 76);
+  assert.equal(generated, 79);
 });
 
 test('textbook paths resolve a source grade from reviewed evidence only', () => {
@@ -289,5 +289,5 @@ test('textbook figures beside the source JS resolve at render time without touch
       figures++;
     }
   }
-  assert.equal(figures, 138, "S11 baseline: 138 inline figures in the registered textbook sources");
+  assert.equal(figures, 140, "S11 baseline: 140 inline figures in the registered textbook sources");
 });
