@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_효천고_1학기_중간_고2_대수_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "c65f6eff3f9649d006ecd5659f1a4c51b5266bc0",
+  "reviewTimestamp": "2026-11-09T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "/tmp/rev_hyocheon/blind_frozen.json (세션 임시 폴더, 미커밋)",
+    "freezeFileSha1": "44ccfde46dbf5e3af7deb852cb8b55fd40564dba",
+    "method": "학생에게 보이는 필드(content, choices)만 덤프해 손풀이+python/sympy/scipy로 23문항 답을 동결한 뒤 저장 answer/solution/meta/원본을 열어 대조: 객관식 17/17, 단답·서술 6/6 일치. Q9·Q13·Q17·Q23은 생성자가 알린 점검 항목이라 추가로 수치 재검산.",
+    "disclosure": "완전한 블라인드에서 예외: JS 앞부분 head 덤프에서 Q1의 answer(①)와 해설 일부가 노출됨(자명한 문항, 어차피 직접 도출). 나머지 22문항은 저장 정답·해설을 보기 전에 동결. 생성자 메모(Q9 근삿값, Q13 level, Q17 키, Q23 그림, Q15~17 UNSUPPORTED)는 지시문으로만 전달받았고 정답은 아님. Q14는 동결 후 검수자가 식을 바꿔(밑 2→3) 새 식을 numpy 실근으로 다시 독립 계산했다.",
+    "frozenAnswers": {
+      "1": "① (x=2)",
+      "2": "⑤ (log_9(1/3)=-1/2)",
+      "3": "② (0.0435)",
+      "4": "③ (a=3/5,b=75,ab=45)",
+      "5": "④ (tan=12/5 (3rd quadrant))",
+      "6": "⑤ (r=2^(5/3), m=5,n=3, m-n=2)",
+      "7": "③ (n in {1,2,4,6} sum 13)",
+      "8": "① ((1+abc)/(a(1+b)))",
+      "9": "② (18시간; 실제값 0.8^6=0.262>1/4라 log2=0.3 근삿값 규약에 의존)",
+      "10": "⑤ (sqrt7/2)",
+      "11": "④ (5/6)",
+      "12": "③ (t=6,a=2^(1/2), a*OB=2^(3/2)*3)",
+      "13": "② (n=2,8,32,128 sum 170)",
+      "14": "④ (동결 시점 생성본 99/8; 검수자 수정 후 밑 3 재계산 139/8, 문항 번호 ④ 동일)",
+      "15": "① (5/3)",
+      "16": "② (n=8,13,14,15 sum 50)",
+      "17": "① (16 (k in (-2,-17/9) root~-1.961))",
+      "18": "제3사분면",
+      "19": "log_a(b/a) < log_{a^2}b < log_a b < log_b a (-1/3<1/3<2/3<3/2)",
+      "20": "1/3<x<5/3",
+      "21": "k=2 (3^x=p,p^2: p=2)",
+      "22": "log_a(b/a) < log_{a^2}b < log_a b < log_b a",
+      "23": "1 (alpha=2)"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "① (x=2)",
+      "blindMatch": true,
+      "blindDerivation": "3-4/3+1/3=2, x=2 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤ (log_9(1/3)=-1/2)",
+      "blindMatch": true,
+      "blindDerivation": "16^0.75=8,8^(2/3)=4 참; 2^3=8 참; 2^6의 세제곱근=4 참; log_3 27=3 참; log_9(1/3)=-1/2 이므로 ⑤만 거짓",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "② (0.0435)",
+      "blindMatch": true,
+      "blindDerivation": "-1.3615=-2+0.6385 이므로 x=4.35x10^-2=0.0435 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③ (a=3/5,b=75,ab=45)",
+      "blindMatch": true,
+      "blindDerivation": "108deg=3pi/5 이므로 a=3/5, 5pi/12=75deg 이므로 b=75, ab=45 -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④ (tan=12/5 (3rd quadrant))",
+      "blindMatch": true,
+      "blindDerivation": "제3사분면에서 sin=-12/13, tan=12/5 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤ (r=2^(5/3), m=5,n=3, m-n=2)",
+      "blindMatch": true,
+      "blindDerivation": "4/3 pi r^3=128/3 pi, r^3=32, r=2^(5/3), m=5,n=3(서로소), m-n=2 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③ (n in {1,2,4,6} sum 13)",
+      "blindMatch": true,
+      "blindDerivation": "3^(12/n),5^(24/(n+2)) 자연수: n|12(양), n+2|24(양) -> n=1,2,4,6 (python 열거) 합 13 -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "① ((1+abc)/(a(1+b)))",
+      "blindMatch": true,
+      "blindDerivation": "log_2 5=ab, log_2 7=abc, log_2 14=1+abc, log_2 15=a+ab -> (1+abc)/(a(1+b)) ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "② (18시간; 실제값 0.8^6=0.262>1/4라 log2=0.3 근삿값 규약에 의존)",
+      "blindMatch": true,
+      "blindDerivation": "0.8^(x/3)<=1/4, log0.8=3(0.3)-1=-0.1, log(1/4)=-0.6 -> x/3>=6, x>=18 (log2=0.3 규약 하에서; 실제값으론 0.8^6=0.262로 경계가 근삿값에 의존) -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤ (sqrt7/2)",
+      "blindMatch": true,
+      "blindDerivation": "(s+c)^2=1/4 -> sc=-3/8, (s-c)^2=7/4, 2사분면 s-c>0 -> sqrt7/2 ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④ (5/6)",
+      "blindMatch": true,
+      "blindDerivation": "a=64^(1/x) 등, abc=64^(합)=32=64^(5/6) -> 5/6 ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③ (t=6,a=2^(1/2), a*OB=2^(3/2)*3)",
+      "blindMatch": true,
+      "blindDerivation": "A=(t,a^t-4), AB=BC=4 -> a^t=8, 넓이 1/2*8*t=24 -> t=6, a=2^(1/2), a*OB=6*2^(1/2)=2^(3/2)*3 -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "② (n=2,8,32,128 sum 170)",
+      "blindMatch": true,
+      "blindDerivation": "m=(3log2 n-1)/2, n=2^((2m+1)/3) 자연수 -> (2m+1)/3 정수, m=1,4,7,10 -> n=2,8,32,128 합 170 (python 확인) ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④ (동결 시점 생성본 99/8; 검수자 수정 후 밑 3 재계산 139/8, 문항 번호 ④ 동일)",
+      "blindMatch": true,
+      "blindDerivation": "(동결 시점 원 생성본은 밑 2: 99/8 ④로 일치. 검수자가 밑 3으로 수정한 뒤 다시 독립 계산) 홀수 n k=-3^(2/n), 짝수 n k=3^(3/n), numpy 실근 곱으로 n=1..9 확인: 최대 n=8 8+3^(3/8), 최소 n=1 -8, 차 16+3^(3/8), a+b+c=139/8 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "① (5/3)",
+      "blindMatch": true,
+      "blindDerivation": "x^2+3ax+4=0, y1+y2=log2(x1x2)=2 -> 중점 (-3a/2,1), 직선 대입 a=5/3 (판별식 a>4/3 만족) ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "② (n=8,13,14,15 sum 50)",
+      "blindMatch": true,
+      "blindDerivation": "t=f(x)에서 4^t-9*2^n 2^t+8*4^n=0 -> t=n 또는 n+3; 해의 개수 g(8)=1,g(8~16)=2,g(>=16)=1 -> n=8,13,14,15 합 50 (python 열거) ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "① (16 (k in (-2,-17/9) root~-1.961))",
+      "blindMatch": true,
+      "blindDerivation": "일대일 대응 -> -2<k<-17/9(근 -1.961 수치확인), a=-2 만 첫 가지; 개수 2+5+4+5=16 (python 열거) ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 18,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "제3사분면",
+      "blindMatch": true,
+      "blindDerivation": "cos<0, tan>0 -> sin<0, 제3사분면",
+      "candidateAnswer": "제3사분면"
+    },
+    {
+      "qid": 19,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "log_a(b/a) < log_{a^2}b < log_a b < log_b a (-1/3<1/3<2/3<3/2)",
+      "blindMatch": true,
+      "blindDerivation": "a=1/8,b=1/4: log_a b=2/3, log_b a=3/2, log_{a^2}b=1/3, log_a(b/a)=-1/3 -> log_b a>log_a b>log_{a^2}b>log_a(b/a)",
+      "candidateAnswer": "$\\log_b a>\\log_a b>\\log_{a^2}b>\\log_a\\frac ba$"
+    },
+    {
+      "qid": 20,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "1/3<x<5/3",
+      "blindMatch": true,
+      "blindDerivation": "3x-1>0, log_{1/2}(3x-1)>log_{1/2}4 -> 3x-1<4 -> 1/3<x<5/3",
+      "candidateAnswer": "$\\frac13<x<\\frac53$"
+    },
+    {
+      "qid": 21,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "k=2 (3^x=p,p^2: p=2)",
+      "blindMatch": true,
+      "blindDerivation": "t=3^x, 근 p,p^2: p+p^2=3k, p^3=3k+2 -> (p-2)(p^2+p+1)=0, p=2, k=2",
+      "candidateAnswer": "2"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "log_a(b/a) < log_{a^2}b < log_a b < log_b a",
+      "blindMatch": true,
+      "blindDerivation": "L=log_a b in (0,1): log_b a=1/L>1, log_{a^2}b=L/2, log_a(b/a)=L-1<0 -> log_b a>log_a b>log_{a^2}b>log_a(b/a)",
+      "candidateAnswer": "$\\log_b a>\\log_a b>\\log_{a^2}b>\\log_a\\frac ba$"
+    },
+    {
+      "qid": 23,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "1 (alpha=2)",
+      "blindMatch": true,
+      "blindDerivation": "y=2^x와 y=log2 x는 y=x 대칭, 기울기 -1 직선 -> B=(2^a,a), 2^a-a=2, BC=3 -> 2^a-log2 a=3, 차 a-log2 a=1 (a=2, fsolve 유일해 확인) -> 1",
+      "candidateAnswer": "1"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "23 vs 23",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "23문항 [N점] 표기와 points 필드가 원본과 모두 동일(3.3~5, 단답 3, 서술 5/6/6/7)",
+    "questionTypes": "MC 1-17, 단답 18-19, 서술 20-23 모두 원본과 동일",
+    "notes": [
+      "Q14: 생성본은 원본과 같은 방정식 (x^n-2)(x^{2n}-2)=0에 합→차만 바꿔 원본의 최대 8+2^{3/8}, 최소 -3을 외우면 바로 풀리는 약한 변형이었다. 검수자가 밑을 3으로 바꿔(최대 8+3^{3/8}, 최소 -8, 답 139/8) 직접 고침.",
+      "Q9: 원본(4시간·30%·절반, log7=0.8, log2=0.3)과 같은 '근삿값 규약으로 경계가 딱 맞는' 설계. 유사는 log2=0.3 하나만 써 부담이 더 작음. 실제값으로는 0.8^6=0.262>1/4(21시간)이지만 발문이 근삿값 사용을 명시해 18시간이 맞다. 원본도 같은 구조라 허용.",
+      "Q13: 원본은 level 상/bucket 2(내부 불일치). 유사는 같은 구조(로그 값이 자연수가 되는 조건)에 단계가 비슷해 중/3으로 둠. 같은 풀이 도구의 Q7(중/3)과 일관. 허용.",
+      "Q22: 원본 0<b^2<a<b(1<log_b a<2까지 추가 제약)에서 0<a<b<1로 바뀌어 약간 쉬워졌으나 같은 비교 구조·6점 서술형으로 허용.",
+      "Q10: 원본 sinθ+cosθ=√2(자명)에서 1/2와 사분면 조건으로 약간 어려워졌으나 중 수준으로 허용.",
+      "Q17: 원본(2진, g=...+2, 답 23)과 같은 구조에 밑 3과 g 상수로 바꿔 답 16. 같은 풀이(범위로 k 위치 결정)이나 값 암기로 풀리지 않음.",
+      "모든 문항 정답 값이 원본 정답과 다름(암기 불가)."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 3,
+    "④": 3,
+    "⑤": 3,
+    "note": "MC 1-17; max-min=1"
+  },
+  "mathReview": "23문항 전수 블라인드 독립 풀이 후 저장 해설을 끝까지 읽어 논리·중간 계산·교육과정(2022 개정 대수: 지수·로그·삼각함수) 확인. 정답 불일치 0건, 5지 유일정답, 해설 오류 0건(Q14는 아래 수정 후 재확인). Q15 a=5/3 이면 교점 x=-4,-1(판별식 만족), Q16 n=8,13,14,15, Q17 k는 정확값이 아니라 -2<k<-17/9로 충분(수치근 -1.961), Q21 두 근 log_3 2, 2log_3 2, Q23 fsolve로 (a,b)=(2,4) 유일(다른 근은 yB<=0 으로 C 정의 불가) 확인. Q9는 근삿값 규약에 의존(위 노트).",
+  "reviewerEdits": [
+    {
+      "qid": 14,
+      "kind": "변형 약함(원본과 같은 식)",
+      "before": "(x^n-2)(x^{2n}-2)=0, 최대·최소의 '차', 답 99/8(최대 8+2^{3/8}, 최소 -3)",
+      "after": "(x^n-3)(x^{2n}-3)=0, 최대·최소의 차를 a+b·3^c 꼴로, 답 139/8(최대 8+3^{3/8}, 최소 -8)",
+      "files": [
+        "JS content/choices/solution",
+        "meta decisiveStep/variationNote/metaRationale.crossConcept",
+        "meta expectedSourceBlobSha1"
+      ],
+      "recheck": "numpy 실근 곱으로 n=1..9 전수 계산, 해설의 비교 부등식(3√3<6, 3^{3/4}<3, √3<2, 홀수 n≥3에서 n-3^{2/n}>n-3≥0) 확인, 보기 5개 서로 다르고 정답 ④ 유지(정답 분포 유지)"
+    }
+  ],
+  "metaReview": {
+    "jsMetaConsistency": "JS 23문항의 level/difficultyBucket/단원·소단원/개념군/PT/TPL/크로스개념/조건/통합패턴/sourceQid/variationType/rpm 레코드가 meta after와 완전 일치(불일치 0, 스크립트 확인). expectedSourceBlobSha1 = 최종 JS blob.",
+    "keyExistence": "사용된 PT/TPL/CC/COND 74개 키가 canonical/crosswalk/기존 확장 registry에서 정확 문자열로 실재(미등록 0), RPM 레코드 22종이 크로스워크에 실재하고 canonical 문항 22개의 L1~L4 라벨이 크로스워크 경로와 일치. 새 확장 키 1개: EXT-L4-EXPLOG-PIECEWISE-BIJECTION-LATTICE-COUNT(Q17) - parent H2-M1-RPM-087(canonical, 로그함수의 그래프>증가·감소) 실재, 기존 EXT-L4-EXPONENTIAL-GRAPH-REGION-LATTICE-POINT-COUNT(영역 격자점)과 정의가 다르고 canonical 어느 L4도 '구간별 함수 일대일 대응 조건 + 격자점 세기'를 담지 않아 필요, 풀이(치역 이음 등식→k 범위→가지 선택→개수)와 정의 일치. 재사용 확장 1개: EXT-CROSS-REAL-ROOT-PARITY-SIGN(Q14, 강남여고에서 등록, 이름·정의 변경 없음; x^n=3의 실근 개수가 n의 홀짝에 달린다는 점이 정의 '홀·짝 거듭제곱근의 실수값 구분'에 부합).",
+    "coverage": "standardCourse/curriculum/course/단원/소단원/개념군/RPM L1~L4+recordId/PT/TPL/crossConcept/conditionKeys/통합패턴/level/difficultyBucket/sourceQid/variationType/levelBasis/difficultyBasis/visualNecessity/metaRationale/provenance 모두 23/23(conditionKeys 23/23 필드, 비어있지 않은 문항 14, 나머지는 해를 제한하는 별도 조건 없어 [] 근거 기재). canonical L4 22, 새 확장 1(+parent 실재 1/1), 재사용 확장 1, EVIDENCE_DEBT 0.",
+    "changes": "Q14 decisiveStep/variationNote/metaRationale 문구와 expectedSourceBlobSha1 갱신, Q12·Q23 reviewFlag 및 최상위 openDefects 추가."
+  },
+  "visualReview": {
+    "problemFigures": "문제 그림 없음(23문항 plan 전부 EXEMPT+사유). 원본 Q23의 문제 그림 부재는 unresolvedDefects 참고. 어떤 문제 그림도 정답을 누설하지 않음(그림 자체가 없음).",
+    "solutionFigures": "Q12, Q23 두 그림을 rsvg로 렌더해 직접 확인: 순백 배경, 점 라벨 A,B,C(,O)·삼각형 음영이 해설 글(A(6,4) 등, A(2,4) 등)과 일치, 곡선 모양·교점 위치 정확(Q12 A·C 높이 ±4 비율 확인, Q23 A(2,4)·B(4,2)·C(1,2) 위치와 y=x 대칭 확인). 소형 부채 2건은 unresolvedDefects.",
+    "unsupported": "Q15, Q16, Q17 해설 그림 UNSUPPORTED(사유 기재, 해설 글로 완결) -> 하네스 WARN으로만 표시. Q16·Q17은 그림이 있으면 도움이 되는 유형이라 시각 부채로 남김.",
+    "planAudit": "46개 plan 모두 유효 JSON; 문제 plan 23개 EXEMPT+사유, 해설 plan 활성 2(Q12,Q23), UNSUPPORTED 3(Q15,16,17), 나머지 EXEMPT+사유. 활성 plan engineEvidence(result/state/svg) 결속은 하네스 확인.",
+    "engineRender": "engine.html?data=exams/similar/...&mode=exam|sol|ans 를 playwright chromium으로 PC(1280)·폰(390)에서 열어 DOM 수치 확인: 시험지 2칸 구성 정상, 가로 스크롤 없음(sw==cw), mjx-merror 0, raw LaTeX 잔존 0, 긴 수식 컨테이너 넘침 0, 해설 그림 2개 모두 로드(610x296, 480x296). 단 해설지 화면 픽셀 캡처는 수식 정리 중 스켈레톤 상태로 찍혀 픽셀 수준 확인은 NOT_RUN(강남여고 영수증과 같은 한계)."
+  },
+  "harness": {
+    "draftPhase": "node tools/harness/verify_similar_exam.mjs <stem> --phase=draft : GATE_PASS (23문항 100점), WARN 3건(SOLUTION_FIGURE_UNSUPPORTED_TEXT_COMPLETE Q15,Q16,Q17); 수정 전 blob 9883f04.., 수정 후 최종 blob 재실행 GATE_PASS",
+    "strict": "node tools/harness/verify_similar_exam.mjs <stem> (영수증 발급 후, 최종 blob c65f6eff..): GATE_PASS exit 0, WARN VISUAL_DEBT_ACKNOWLEDGED x3 (Q15,Q16,Q17 UNSUPPORTED 해설 그림) + RECEIPT_QUALIFIED_PASS"
+  },
+  "NOT_RUN": [
+    "engine 해설지 화면 픽셀 캡처(스켈레톤 상태 캡처만 가능)",
+    "main_merge_master.py 운영병합(지시상 commit/push 금지)",
+    "register-reviewed-exam-meta 병합 단계(오케스트레이터 몫)"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 12,
+      "qid_ref": "26_효천고_1학기_중간_고2_대수_유사#12",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림의 엔진 자동 라벨 'f(0)=-3'이 함수 이름 f가 문제에 없는데도 표시되고, 눈금은 plan이 요청한 6·4가 아니라 엔진 자동 눈금(-5, 5, 10)으로 그려진다. hideLabels 'reference'는 이 계열에서 HIDE_LABELS_INVALID라 숨길 수 없다. 해설 본문이 A(6,4), B(6,0), C(6,-4), 밑변 8, 높이 6을 모두 재기술해 풀이 이해에는 지장 없음.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 23,
+      "qid_ref": "26_효천고_1학기_중간_고2_대수_유사#23",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림의 곡선 라벨이 'y y=2^(x)'처럼 y축 글자와 붙고, y=log_2(x) 라벨이 해당 곡선에서 떨어져 오른쪽 위에 놓인다. 엔진 SVG에 빈 path d=\"\"(U+2061 함수적용 글자)가 1개 남는다(시각 영향 없음). 해설 본문이 대칭 관계와 A(2,4), B(4,2), C(1,2)를 재기술한다.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 23,
+      "qid_ref": "26_효천고_1학기_중간_고2_대수_유사#23",
+      "kind": "visual-problem-figure",
+      "reason": "원본 Q23에는 문제 그림(q23.png)이 있으나 유사문항은 발문을 글로 완결해 EXEMPT로 두었다. 엔진 문제 그림은 하네스 빈 path 검사에 걸렸고, 눈금 없는 정확 축척 그림은 α 값을 눈대중으로 읽게 할 수 있다. 발문은 점·직선·길이·넓이를 모두 명시해 그림 없이 풀 수 있다.",
+      "severity": "low",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 23/23 일치, 직접 수정 1건(Q14 변형 약함 -> 밑 3으로 교체, 답 139/8), 메타 키 전수 실재·새 확장 1개 parent 실재, 소형 시각 부채 3건(모두 low)과 해설 그림 UNSUPPORTED 3건."
+}
