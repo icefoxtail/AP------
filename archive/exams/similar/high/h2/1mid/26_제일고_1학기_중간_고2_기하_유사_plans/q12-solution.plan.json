@@ -1,0 +1,99 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "HYPERBOLA",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "49",
+      "bSquared": "120",
+      "transverse": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "CIRCLE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "rSquared": "169"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "c1"
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "curve": "c1"
+    },
+    {
+      "id": "P",
+      "kind": "CONIC_CONIC",
+      "curves": [
+        "c1",
+        "c2"
+      ],
+      "which": 4
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F",
+      "label": "10"
+    },
+    {
+      "id": "sPG",
+      "from": "P",
+      "to": "F'",
+      "label": "24"
+    },
+    {
+      "id": "sFG",
+      "from": "F'",
+      "to": "F",
+      "label": "26"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "F'",
+        "F"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "FF′이 지름인 원 위의 점 P에서 ∠F′PF=90°이고, PF=10, PF′=24, FF′=26이므로 |PF′−PF|=14이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "FF'=26, PF*PF'=240, PF^2+PF'^2=676에서 PF=10, PF'=24",
+      "mappedTo": [
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 PF′F의 세 변의 길이 10, 24, 26"
+  ],
+  "sourceQuote": "$\\overline{FF'}=26$이고",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-solution.svg"
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_제일고_1학기_중간_고2_대수_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "16645d4e43eacb7bc236714893f34ca38ee83df3",
+  "reviewTimestamp": "2026-11-09T19:30:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "/tmp/rev_je/blind_frozen.json (작업 폴더 밖, 미커밋; 저장 정답·해설·메타를 열기 전에 동결)",
+    "freezeFileSha1": "6118134db602d89d201e90e45dcfa9bcff54a4b7",
+    "method": "학생에게 보이는 필드(content, choices, Q17 문제 그림)만 덤프해 손풀이+sympy/numpy/scipy 수치 확인(Q5,Q16,Q19,Q23 열거 계산)으로 23문항을 풀어 동결한 뒤 저장된 answer/solution/meta/원본을 열어 대조: 객관식 19/19, 서술형 Q20~Q23 4/4 일치.",
+    "disclosure": "Q17은 완전한 블라인드가 아님: 문제 그림 SVG를 열 때 같은 명령 출력에 q17-problem.plan.json(a=−2,b=2,위상 계수)이 함께 표시됐다. 답은 그림 조건(최대3·최소−1·주기π·(0,2) 감소)과 a<0,b>0,0<c<π만으로 다시 도출해 동결했다. 그 외 22문항은 저장 정답·해설·메타를 보기 전에 동결. 생성자 메모(Q5 단원 키, Q10 재설계, Q16·Q18·Q23 UNSUPPORTED, Q19 논증)는 지시문으로만 전달받았고 정답은 포함되지 않았다. Q19는 첫 수치 열거에서 y=0 경계 교점(n≡0 mod 4)을 잘못 포함해 합 54(④)로 나왔으나, y<0 엄밀 필터로 재계산해 n=13~16, 합 58(⑤)로 동결했다(동결 전 자체 수정, 저장 답 확인 전).",
+    "frozenAnswers": {
+      "1": "②",
+      "2": "③",
+      "3": "②",
+      "4": "④",
+      "5": "④",
+      "6": "②",
+      "7": "④",
+      "8": "⑤",
+      "9": "①",
+      "10": "③",
+      "11": "①",
+      "12": "③",
+      "13": "①",
+      "14": "①",
+      "15": "②",
+      "16": "⑤",
+      "17": "④",
+      "18": "③",
+      "19": "⑤",
+      "20": "2nπ+5π/4 (n 정수), 제3사분면 (-11π/4 = 5π/4 - 4π)",
+      "21": "-√3<tanθ<0 또는 0<tanθ<√3 (cosθ>1/2, 0<θ<π/3 또는 5π/3<θ<2π)",
+      "22": "12 (f(2..13)=2,1,0,1,0,1,0,1,2,1,2,1)",
+      "23": "56 (g: n<0→1, 0→2, 1,2,3→3, 4→2, 5..8→0; (1,2)형 32 + (0,3)형 24)"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "∛12·∛36=∛432=6∛2, 3·√(∛4)=3·2^(1/3)=3∛2, 차 3∛2 → a=3 → ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "3log2+log15−log6=log(8·15/6)=log20 → n=20 → ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "①(−3)^1=−3 참, ②{(−3)^6}^(1/6)=3인데 (−3)^(6·1/6)=−3 → 밑이 음수라 지수법칙 불가=거짓, ③④ 참 → ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "넓이 S=lr/2 → 30π=3π·r, r=10, θ=l/r=6π/10=3π/5 → ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "밑 x−1>0,≠1 → x>1,x≠2; 진수 −x²+6x+7>0 → −1<x<7; 정수 3,4,5,6 → 4개 → ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "제곱해 sc=−60/169, t²−(7/13)t−60/169=0 → t=12/13,−5/13; 4사분면 cos>0>sin → sin=−5/13,cos=12/13, tan=−5/12 → ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "각 변 log: 1/x=log2/logk, 1/y=log3/logk, 1/z=log12/logk; 식÷xyz: 3/x+2/y−1/z=1 → (log2+log3)/logk=1 → k=6 → ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "①~④ 정의역·증가·점 (a+1,b)·점근선 x=a 모두 참, ⑤ g=c^(x−a)+b는 f의 역함수 c^(x−b)+a가 아니라 (g∘f)(x)=(x−a)c^(b−a)+b≠x → ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "A=(2/3)·15−2=8, B=(2/3)·6−2=2, A/B=4 → ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "t=log_a b>0, t−1/t=2 → t=1+√2; log_{ab}(a³b)=(3+t)/(1+t)=(4+√2)/(2+√2)=3−√2 (sympy 수치 1.5858 일치) → ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "t=3^x+3^−x≥2, f=t²−3t, 꼭짓점 1.5<2 → t=2(x=0)에서 m=−2, p=0, m+3^p=−1 → ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "g(2)=2→f(2)=2, g(4)=6→f(6)=4; 차: k(log3 6−log3 2)=k=2, p=2−2log3 2, p/k=1−log3 2=log3(3/2) → ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "①y=−3sinx+1은 최대4 최소−2 차 6(진술은 4) 거짓, ②주기 2π/3 참, ③ sin(x+π/2)=cosx 참, ④a=2, h(π/3)=tan(π/3)=√3 참, ⑤ x=π/6+nπ/3, 최소양수 k=1/6 참 → ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "f=(x−2)²+3, [0,5]에서 치역 [3,12]; M=log3 13, g2는 감소라 f=12일 때 최소 m=log_{1/2}27=−3log2 3; Mm=−3log2 13 → k=−3 → ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "y=2x, x²+y²=20 → x=±2; P(−2,−4), Q(2,4), r=2√5; sinθ1=−2/√5, cosθ2=1/√5, 합 −1/√5=−√5/5 → ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "(x−4)²+(y+3)²=4, 원점~중심 5, OP∈[3,7]; 2^(OP/3)=m 자연수 → m∈[2,2^(7/3)≈5.04]=2,3,4,5; OP=3log2 m: m=2는 OP=3(접점 1개), m=3,4,5는 3<OP<7(각 2개) → 7(수치 확인) → ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "그림: 최대3·최소−1·주기π·(0,2)에서 감소; a=−2,b=2; 2sin c+1=2→c=π/6 또는 5π/6, (0,2)에서 감소하려면 cos c>0 → c=π/6; abc=−2π/3 → ④ (비블라인드 주의: Q17 plan 파일을 열람했으나 위 값은 그림 조건만으로 독립 재도출)",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 18,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "|x−2|=1→x=1,3; |x−2|=9→x=−7,11; 사다리꼴 윗변 18 아랫변 2 높이 2 → 20 → ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 19,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "직선 y=(2/n)x−1, y<0은 x<n/2; sin 음수 구간 (4k+2,4k+4)에서 직선 위치로 개수 판정; 수치(brentq, y<−1e−9 필터)로 n=1..40 계산: 3개인 n=13,14,15,16, 합 58 → ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 20,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "2nπ+5π/4 (n 정수), 제3사분면 (-11π/4 = 5π/4 - 4π)",
+      "blindMatch": true,
+      "blindDerivation": "−11π/4=5π/4−4π=5π/4+2(−2)π → 일반각 5π/4+2nπ, π<5π/4<3π/2이므로 제3사분면",
+      "candidateAnswer": "$\\dfrac{5}{4}\\pi+2n\\pi$ ($n$은 정수), 제$3$사분면"
+    },
+    {
+      "qid": 21,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "-√3<tanθ<0 또는 0<tanθ<√3 (cosθ>1/2, 0<θ<π/3 또는 5π/3<θ<2π)",
+      "blindMatch": true,
+      "blindDerivation": "sin(π−θ)=sinθ, cos(π−θ)=−cosθ → x²−2√2 sinθ x+cosθ+1>0, D/4=2sin²θ−cosθ−1<0 → 2cos²θ+cosθ−1>0 → cosθ>1/2 → 0<θ<π/3 또는 5π/3<θ<2π → tanθ∈(−√3,0)∪(0,√3)",
+      "candidateAnswer": "$-\\sqrt{3}<\\tan\\theta<0$ 또는 $0<\\tan\\theta<\\sqrt{3}$"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "12 (f(2..13)=2,1,0,1,0,1,0,1,2,1,2,1)",
+      "blindMatch": true,
+      "blindDerivation": "n²−12n+27=(n−3)(n−9); n짝수: A>0이면 2, A≤0이면 0(A=0은 0 하나라 짝수 n에서 A=0은 없음), n홀수: 1; f(2..13)=2,1,0,1,0,1,0,1,2,1,2,1 → 12",
+      "candidateAnswer": "12"
+    },
+    {
+      "qid": 23,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "56 (g: n<0→1, 0→2, 1,2,3→3, 4→2, 5..8→0; (1,2)형 32 + (0,3)형 24)",
+      "blindMatch": true,
+      "blindDerivation": "x<−2: x=n−7이 −2 미만이면 1개(n<5); x≥−2: |2^(1−x)−4|=n → 2^(1−x)=4±n, x≥−2 확인; g: n<0→1, 0→2, 1~3→3, 4→2, 5~8→0; g합=3은 (1,2)형 2×8×2=32, (0,3)형 2×4×3=24 → 56 (파이썬 열거 56 일치)",
+      "candidateAnswer": "56"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "23 vs 23",
+    "pointsSum": "100 vs 100 (원본 content의 (n점)과 유사 content의 [n점] 문항별 배점 23/23 동일)",
+    "questionTypes": "MC 1-19, 서술형 20-23 모두 동일",
+    "perQuestion": "Q1 거듭제곱근 계산, Q2 로그 합, Q3 음수 밑 지수법칙 오류 찾기, Q4 부채꼴, Q5 밑·진수 조건 정수 개수, Q6 sin+cos 조건 tan, Q7 지수 연립 k, Q8 로그함수 설명 판정, Q9 로그 활용 비, Q10 밑변환 치환, Q11 지수 치환 최솟값, Q12 역함수 계수, Q13 삼각함수 설명 판정, Q14 합성 로그 최대·최소, Q15 직선·원 삼각함수 값, Q16 원 위 점 개수, Q17 사인 그래프 계수, Q18 로그 그래프 사각형 넓이, Q19 사인-직선 제4사분면 교점, Q20 일반각, Q21 삼각 이차부등식, Q22 n제곱근 실수 개수, Q23 구간별 지수 그래프 교점 순서쌍 모두 원본과 같은 유형·발문 형식.",
+    "answerMemorization": "23문항 모두 정답 값이 원본과 다름. 정답 번호 위치가 원본과 같은 문항은 Q10(③), Q19(⑤)뿐이며 값은 원본(1+√5/5, 46)과 다르다.",
+    "notes": [
+      "Q10: 생성자 메모·메타 variationNote는 '원본이 풀리지 않는다'고 했으나 원본(t−1/t=1, t=(1+√5)/2, 값 1+√5/5, 정답 ③)은 풀린다(검수에서 수치 확인). 유사 문항은 t−1/t=2, (3+t)/(1+t)=3−√2로 같은 구조의 엄밀한 1:1 변형이며 메타 variationNote의 잘못된 사유 문구만 교정했다.",
+      "Q5: 원본 메타는 H22-A-03이나 유사는 H22-A-01. 크로스워크 H2-M1-RPM-074 '로그의 뜻 > 밑과 진수 조건'(PT_H22A_01_LOG_DEFINITION)이 H22-A-01에 DIRECT_ACTIVE로 있으므로 유사의 H22-A-01이 맞다(원본 쪽 단원 라벨이 로그함수로 잡힌 것).",
+      "Q21: 원본은 sinθ<−1/2(3π/2 제외로 tan 값 양쪽 무한), 유사는 cosθ>1/2(두 구간 tan 유한). 같은 판별식→삼각부등식→tan 범위 구조. 유사의 '단 θ≠π/2, 3π/2'는 해집합에 포함되지 않는 군더더기이나 풀이 영향 없음(정보).",
+      "Q2 level/난이도: 원본 meta는 중/2, 유사는 하/1(같은 3항 로그 합 구조). 풀이 단계상 큰 차이 없어 수정하지 않음(정보).",
+      "Q16: 원본은 접점 없이 6개, 유사는 최솟값 접점(m=2, 1개)을 포함해 7개로 접점 판정이 추가됨(약간 상향, 교육과정 내)."
+    ]
+  },
+  "answerDistribution": {
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 3,
+    "①": 4,
+    "note": "MC 1-19; max-min=1"
+  },
+  "mathReview": "23문항 전수 블라인드 독립 풀이 후 저장 해설을 끝까지 읽어 논리·중간 계산·교육과정(2022 개정 대수: 지수·로그·삼각함수, 앞선 과정의 이차식·판별식·사다리꼴 넓이 사용) 확인. 정답 불일치 0건. Q19 해설의 구간 논증(아래로 볼록한 그릇 모양, (i) 양끝 위/중앙 아래/양끝 위로 2개, (ii) 직선 x절편이 구간 안이면 1개, n/2=4k+4 경계에서 기울기 π/2>2/n로 정리, 합 13+14+15+16=58)을 수치 열거(n=1..40)와 대조해 타당 확인. Q16 접점 1개+2+2+2=7, Q23 g(n) 분포와 56, Q22 f 값 12 수치 재확인. 보기 5지 유일 정답, 발문 모호성 없음. 서술형 Q20~Q23 해설은 학생용 풀이 과정을 갖춤.",
+  "reviewerEdits": [
+    {
+      "qid": 13,
+      "field": "conditionKeys(JS+meta)",
+      "change": "[] → [COND_POSITIVE]",
+      "reason": "보기 ④의 a>0이 a=2를 정해 h(π/3)=√3 판정을 결정(a=−2이면 −√3). 실제 적용된 조건이라 [] 불가(Closeout §3-3)."
+    },
+    {
+      "qid": 14,
+      "field": "conditionKeys(JS+meta)",
+      "change": "[] → [COND_RESTRICTED_INTERVAL]",
+      "reason": "정의역 0≤x≤5의 지정 구간에서 f의 치역 [3,12]를 정하는 것이 풀이의 결정 단계이며 메타 metaRationale도 구간 사용을 서술. 레지스트리 COND_RESTRICTED_INTERVAL(변수가 지정한 유한 구간에서만 변함) 정의와 일치."
+    },
+    {
+      "qid": 10,
+      "field": "meta provenance.variationNote",
+      "change": "'원본의 조건이 모순되어 새로 설계했다' → 같은 구조의 수치 변형이며 원본도 풀림을 명시",
+      "reason": "원본 Q10은 풀리고 정답 ③ 1+√5/5로 저장 정답과 일치하므로 사실과 다른 사유 문구를 교정."
+    },
+    {
+      "qid": "16,18,23",
+      "field": "meta after.reviewFlag + 최상위 openDefects",
+      "change": "reviewFlag:OPEN_DEFECT + reviewFlagReason, openDefects 3건 추가",
+      "reason": "해설 그림 UNSUPPORTED 잔존 부채를 지시서 형식대로 기록."
+    },
+    {
+      "qid": "meta",
+      "field": "expectedSourceBlobSha1",
+      "change": "ad1a0469… → 16645d4e43eacb7bc236714893f34ca38ee83df3",
+      "reason": "JS 수정 후 해시 결속 갱신(git hash-object)."
+    }
+  ],
+  "metaReview": {
+    "jsMetaConsistency": "JS 23문항의 level/difficultyBucket/단원·소단원/개념군/PT/TPL/크로스개념/조건/통합패턴/sourceQid/variationType/rpm 값이 meta 요청과 스크립트로 비교해 불일치 0(수정 후 재확인). expectedSourceBlobSha1 = JS blob 일치. registry sha256 = meta registryChanges 일치(6d7e044d…).",
+    "keyExistence": "사용된 PT/TPL/RPM 레코드는 high2-math1-algebra 크로스워크에서 레코드 id별로 PT·TPL·standardUnitKey까지 23/23 일치(스크립트). CC 38종(canonical 33, EXT 5)·COND 10종은 canonical/concepts 및 condition_registry에서 직접 조회해 모두 실재. EXT 사용 6회: 기존 강남여고 레지스트리 키 재사용 2종(EXT-CROSS-REAL-ROOT-PARITY-SIGN Q3·Q22, EXT-CROSS-RADIAN-SECTOR-ARC-AREA Q4, parent 각 CC_RADICAL_SQUARE_ABSOLUTE_VALUE·CC_CIRCLE_SECTOR_AREA 실재) + 신규 확장 4종.",
+    "newExtensionKeys": [
+      {
+        "key": "EXT-L4-ALG-LOG-FUNCTION-INVERSE-POINTS-COEFFICIENT",
+        "kind": "L4",
+        "parent": "H2-M1-RPM-087 (크로스워크 DIRECT_ACTIVE, PT_FUNCTION_GRAPH_PROPERTIES)",
+        "used": "Q12",
+        "verdict": "통과: 대수 크로스워크·기존 확장(EXPLOG-INVERSE-BASE는 지수의 역함수로 밑 결정)에 '역함수 점 조건→f의 점 조건으로 계수 결정' 없음, 정의가 해설(g(s)=t→f(t)=s, 두 식 연립)과 일치."
+      },
+      {
+        "key": "EXT-CROSS-POINT-CIRCLE-DISTANCE-RANGE",
+        "kind": "CROSS",
+        "parent": "CC_CIRCLE_EQUATION (canonical 실재)",
+        "used": "Q16",
+        "verdict": "통과: canonical 985개 CC에 원 밖 점~원 위 점 거리 범위·접점 1개/내부 2개 판정 없음(CIRCLE_CENTER_RADIUS/CHORD_DISTANCE와 의미 다름), 정의가 해설과 일치."
+      },
+      {
+        "key": "EXT-CROSS-SINE-NEGATIVE-HALF-PERIOD-LINE-INTERSECTION",
+        "kind": "CROSS",
+        "parent": "CC_GRAPH_INTERSECTION_COUNT (canonical 실재)",
+        "used": "Q19",
+        "verdict": "통과: 일반 교점 개수 CC와 구분되는 반주기별 판정 방법, 정의(양끝 위·중앙 아래 → 2개, x절편이 구간 안 → 1개, 앞 → 0개)가 해설·수치와 일치."
+      },
+      {
+        "key": "EXT-CROSS-TRIG-ANGLE-REDUCTION-PI-HALF-PI",
+        "kind": "CROSS",
+        "parent": "CC_TRIGONOMETRIC_IDENTITY (canonical 실재)",
+        "used": "Q21",
+        "verdict": "통과: canonical IDENTITY는 sin²+cos²=1 수준, CC_COMPLEMENTARY_ANGLE_TRIG는 중등 삼각비 90°−A로 π±θ 변환과 다름. 정의 일부(π/2+θ 예시)는 Q21에서 쓰지 않으나 키의 일반 정의로 허용."
+      }
+    ],
+    "duplicatesOrParentless": "parent 없는 새 키 0, 중복 키 0(기존 extensions/similar-high 전 레지스트리·canonical 키·라벨 조회). 키 교체·삭제 없음.",
+    "unitKeyNote": "Q5 H22-A-01은 크로스워크 RPM-074(밑과 진수 조건)의 단원과 일치해 유지.",
+    "coverage": {
+      "denominator": 23,
+      "requiredFieldsFilled": "standardCourse, curriculum, curriculumKey, courseKey, standardUnitKey, standardUnit, subUnitKey, subUnit, conceptClusterKey, rpmPrimary(+recordId), problemTypeKey, templateKey, crossConceptKeys, integrationPattern, level, difficultyBucket, sourceQid, variationType, provenance, levelBasis, difficultyBasis, visualNecessity, metaRationale 각 23/23",
+      "conditionKeysFilled": "15/23 채움(교정 전 13/23), 나머지 8문항(Q1,2,4,8,9,12,15,18)은 해를 제한하는 별도 조건이 없어 [] (metaRationale.condition에 근거)",
+      "rpmPrimary": "CROSSWALK_RECORD 22, GENERATED_EXTENSION L4 1(Q12)",
+      "crossConceptUses": "60회, canonical 54 + EXT 6",
+      "distinctCrossConcepts": "38종: canonical 33 + EXT 5(재사용 2: EXT-CROSS-REAL-ROOT-PARITY-SIGN, EXT-CROSS-RADIAN-SECTOR-ARC-AREA / 신규 3)",
+      "newExtensions": "신규 4(L4 1 + CROSS 3), parent 4/4 실재, 중복 0",
+      "reusedExtensions": 2,
+      "EVIDENCE_DEBT": 0
+    }
+  },
+  "visualReview": {
+    "problemFigures": "Q17만 문제 그림(trigonometric-spike-v1, ARCHIVE_BOUND). 렌더 확인: 순백 배경, 최대 y=3·최소 y=−1·T=π·(0,2) 라벨은 문제 조건 그대로이고 a,b,c 값은 직접 표시되지 않아 정답 누설 없음. 곡선 모양(최대 x≈−π/6, 최소 x≈π/3, 중선 점 x=π/12, −5π/12, 7π/12)이 y=−2sin(2x−π/6)+1과 일치.",
+    "solutionFigures": "Q5(composite-panels 수직선 3줄), Q15, Q17, Q19 렌더 확인(rsvg PNG 및 engine 해설지 화면). Q5 양호. Q15: 점 Q의 좌표 'Q(2,4)'가 그림 위쪽 띠에 떠 있고 P 좌표는 점 옆에 있어 배치가 비대칭이나 판독 가능, 본문에 좌표 재기술. Q17: 문제 그림과 동일 내용에 정답 풀이 라벨 없음, 본문에 값 재기술. Q19: n=14 예시, 곡선 시작점 (0,0) 점이 교점처럼 보일 수 있으나 해설 본문이 구간 논증을 설명, 'x절편 7' 라벨이 곡선 끝점 x=7보다 약간 오른쪽에 표시(엔진 배치, 본문에 값 재기술). 모두 학습 지장 낮음.",
+    "unsupported": "Q16, Q18, Q23 해설 그림 UNSUPPORTED(사유 기재, 해설 글로 완결) -> 하네스 WARN으로만 표시.",
+    "planAudit": "46개 plan(23×2) 유효 JSON. 문제 plan: Q17 ACTIVE, 22 EXEMPT+사유(Q23은 학생이 직접 그리는 문항이라 그림 제공 불가 사유). 해설 plan: ACTIVE 4(Q5,Q15,Q17,Q19), UNSUPPORTED 3(Q16,Q18,Q23), 나머지 EXEMPT+사유. 활성 plan engineEvidence(result/state/svg) 결속은 하네스가 확인. composite-panels-v1 산출물(Q5)은 엔진 형식상 <title>/<desc>/role=img가 없으며 기존 출고분(25_연향중 등 composite 해설 그림)과 동일한 엔진 산출 형식이라 손편집하지 않음. 단일 그림 4개(Q15,Q17×2,Q19)는 title·desc·role=img·순백 배경·raw LaTeX 없음 확인(글자는 outline path).",
+    "engineRender": "engine.html?data=exams/similar/high/h2/1mid/<stem>.js&mode=exam|sol 를 headless Chrome(playwright, 외부 CDN 차단)으로 PC 1280/폰 390 폭에서 열어 확인: 시험지 276·해설지 789 MathJax 컨테이너 렌더, 문제 그림 1·해설 그림 4 모두 로드(naturalWidth>0), 문서 가로 넘침 0, MathJax 식 가로 넘침 0(폰 시험지·해설지), 페이지 오류 없음. PC 시험지 5개 페이지와 해설지 Q18·Q19 구간은 스크린샷으로 육안 확인(수식·그림·보기 정상). 폰 폭은 A4 미리보기가 축소 표시되는 엔진 공통 동작이며 가로 넘침은 없음."
+  },
+  "harness": {
+    "draftPhase": "node tools/harness/verify_similar_exam.mjs 26_제일고_1학기_중간_고2_대수_유사 --phase=draft : GATE_PASS (23문항 100점), WARN: SOLUTION_FIGURE_UNSUPPORTED_TEXT_COMPLETE Q16,Q18,Q23. HARNESS_CAPABILITY_LIMIT 없음.",
+    "strict": "node tools/harness/verify_similar_exam.mjs 26_제일고_1학기_중간_고2_대수_유사 (영수증 발급 후, blob 16645d4e…): GATE_PASS exit 0, WARN VISUAL_DEBT_ACKNOWLEDGED x3 (Q16,Q18,Q23 UNSUPPORTED 해설 그림) + RECEIPT_QUALIFIED_PASS"
+  },
+  "NOT_RUN": [
+    "main_merge_master.py 운영병합(지시상 commit/push 금지)",
+    "Q17·Q19 해설 그림 등 엔진 산출물의 폰 폭 픽셀 단위 검수(폰 폭은 DOM 넘침 검사와 PC 육안 확인으로 대체)",
+    "전체 테스트 tools/run-tests.js 및 tools/check-archive2-runtime.cjs(오케스트레이터 병합 직전 1회 담당)"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 16,
+      "qid_ref": "26_제일고_1학기_중간_고2_대수_유사#16",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림 UNSUPPORTED: 엔진이 원점 중심 원과 원 C의 접촉 장면을 라벨 오배치 없이 그리지 못함. 해설 본문이 중심 (4,−3), 반지름 2, OP 범위 3~7, 각 m의 점 개수를 모두 글로 기술해 풀이 이해에 지장 없음.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 18,
+      "qid_ref": "26_제일고_1학기_중간_고2_대수_유사#18",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림 UNSUPPORTED: 절댓값 로그함수 log_3|x−2|를 그리는 capability 없음. 해설 본문이 A,B,C,D 좌표와 사다리꼴 밑변·높이를 기술.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 23,
+      "qid_ref": "26_제일고_1학기_중간_고2_대수_유사#23",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림 UNSUPPORTED: 구간별 직선+절댓값 지수함수를 한 그림으로 그리는 capability 없음. 해설 본문이 개형(속이 빈 점, 값 범위 0≤f≤4)과 g(n) 분포를 글로 완결.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 15,
+      "qid_ref": "26_제일고_1학기_중간_고2_대수_유사#15",
+      "kind": "visual-solution-figure",
+      "reason": "엔진 자동 배치: 점 Q 좌표 'Q(2,4)'가 그림 위쪽 띠에 있고 P 좌표는 점 옆에 있어 비대칭. 본문에 두 좌표 재기술.",
+      "severity": "info",
+      "round": 1
+    },
+    {
+      "qid": 19,
+      "qid_ref": "26_제일고_1학기_중간_고2_대수_유사#19",
+      "kind": "visual-solution-figure",
+      "reason": "엔진 자동 배치: x절편 라벨 '7'이 곡선 끝점보다 약간 오른쪽, 곡선 시작점 (0,0)이 교점처럼 보일 수 있음. 해설 본문의 구간 논증이 이를 설명.",
+      "severity": "info",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 23/23 일치(Q17 부분 노출 공개), 직접 수정: Q13·Q14 조건 키 교정, Q10 메타 사유 문구 교정, 해시 결속 갱신. 잔존: 해설 그림 UNSUPPORTED 3건(low)과 엔진 배치 info 2건."
+}

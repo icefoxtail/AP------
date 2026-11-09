@@ -44,14 +44,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "wide": false,
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q1-solution.svg",
-    "solutionImageAlt": "x축 위의 P에서 두 제곱거리의 합을 나타낸 좌표 그림",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 두 고정점과 가로축 위의 점을 잇는 두 선분",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_0af956bab1b54615e95739dc59f33ffaafc6e92594fa635db3e7ecfedb6a961b",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
     "sourceOrdinal": 1,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "P의 x좌표가 −1일 때 두 제곱거리의 합이 최소가 된다. 정답은 21이다."
   
   },
   {
@@ -95,15 +96,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q2-solution.svg",
-    "solutionImageAlt": "평행사변형 ABCD와 대각선의 중점 관계",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형의 네 꼭짓점과 교차하는 두 대각선",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_b7ba3b5ec38d7e9dfc9ec1057cdb5d793d9fd0b8a21130dd42b15342bd020d83",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 2,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "두 대각선의 중점이 같으므로 마주 보는 꼭짓점의 좌표 합이 같다. 이를 이용해 네 번째 꼭짓점의 좌표를 구한 뒤 두 좌표를 더한다. 정답은 14이다."
   
   },
   {
@@ -147,15 +149,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "세 꼭짓점 좌표와 무게중심 좌표를 대응한 표",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 세 꼭짓점과 무게중심의 좌표를 표시한 그림",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_f7aa20f2afb975b58b4466dafca915f06c6e66906c0eb8da4c41d43f09f2cddf",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 3,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "예: a>b인 배치이다. 무게중심 좌표로 a+b=10, ab=3을 구하고 제곱의 합을 계산한다. 정답은 94이다."
   
   },
   {
@@ -199,15 +202,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "A, B, C가 한 직선 위에 놓인 좌표 그림",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 주어진 두 점과 세 번째 점이 한 직선 위에 놓인 좌표평면",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_f7ffbcae3f37ef4fc780e4069850e764ea19793b23c4823ca3c618d2ca5fbf8a",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 4,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "주어진 두 점을 지나는 직선의 식을 먼저 구한다. 세 번째 점의 두 좌표를 그 식에 대입하면 상수를 결정할 수 있다. 정답은 −1이다."
   
   },
   {
@@ -253,15 +257,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "직선 x+9y=9이 삼각형 OAB를 두 넓이 9/4의 영역으로 나눈 그림",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형에서 직선 DC가 나눈 두 영역을 파랑과 초록으로 구분하고 같은 넓이를 표시한 그림",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_c858a679027a36c672c5845e9c6799133a309880fd4505d21fe4384b29b8744c",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 5,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "고정점 D를 지나 빗변과 만나는 직선으로 삼각형을 나눈다. 두 영역의 넓이를 같게 두어 k를 구한다. 정답은 8분의 −1이다."
   
   },
   {
@@ -305,15 +310,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "기울기가 같은 두 평행 직선",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 평행선과 한 직선 위의 점에서 다른 직선으로 내린 수선",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_667732b49128ccbea318d56d75c9186c6c70fcc0187e4d3051bc6b26e339497e",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 6,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "두 직선의 x와 y의 계수가 같으므로 서로 평행하다. 한 직선 위의 점에서 다른 직선까지의 수직거리를 구한다. 정답은 √10이다."
   
   },
   {
@@ -358,15 +364,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "두 원 위 점의 수선의 발이 만드는 직선 위 구간",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 원과 한 직선, 중심에서 내린 수선, 두 발 구간 및 오른쪽의 길이 확대 비교도",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_b9d7c56f1c85edfc176bd0df233f65447a5e41c29826c308063848f84209a523",
     "originalCategory": "원의 방정식",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 7,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "두 원 C₁·C₂의 중심은 (7,0)·(−6,3), 반지름은 1·3이다. 두 발의 범위는 파랑 CD와 주황 AB이며 오른쪽에서 확대했다. M=AD=5√2+4, m=BC=5√2−4이므로 정답은 10√2이다."
   
   },
   {
@@ -411,15 +418,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "원의 중심과 대칭이동한 직선의 관계",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원과 그 중심을 지나는 직선, 대칭이동 전의 평행한 직선 및 점선 대칭축",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_2f1dd151ddbde439766f5119aa5823d85d152e5949987dbdb5a099a8a4f5cbc6",
     "originalCategory": "도형의 이동",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 8,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "두 좌표를 서로 바꾸면 주어진 직선의 대칭이동한 식을 얻는다. 원의 넓이를 이등분하는 직선은 원의 중심을 지나므로 중심 좌표를 직선의 식에 대입한다. 정답은 −2이다."
   
   },
   {
@@ -464,15 +472,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q9-solution.svg",
-    "solutionImageAlt": "원과 두 접선의 위치 관계",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원의 중심과 두 평행 접선 및 접점까지의 점선 반지름",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_cce55fe8b5371950912068c18814f10776a46eaab475580802a7c9682d857773",
     "originalCategory": "원의 방정식",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 9,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "평행이동한 직선과 원이 접하려면 중심에서 직선까지의 거리가 반지름과 같아야 한다. 절댓값 방정식의 두 해에 해당하는 접선을 모두 고려하여 이동량을 더한다. 정답은 −10이다."
   
   },
   {
@@ -517,15 +526,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "하",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "원의 중심과 반지름의 제곱 조건",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 중심과 점선 반지름이 표시된 원의 예",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_1dcf5030ec312f95aec4c13ae41d046506dffaa861077b010430094b08d50777",
     "originalCategory": "원의 방정식",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 10,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "예: 상수가 1일 때의 원이며 중심은 항상 (1,−2)이다. 완전제곱으로 정리한 반지름의 제곱이 양수여야 한다. 정답은 k<5이다."
   
   },
   {
@@ -570,15 +580,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "대칭된 두 원의 중심과 최대 거리",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 반지름의 두 원과 두 중심을 잇는 직선 위의 바깥쪽 두 점",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_0ae14cf2caa73619e091bf7d610de9afe7905957c8d2afcbaaed3b617e18ab77",
     "originalCategory": "도형의 이동",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 11,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "대칭이동한 두 원의 중심은 그림의 두 중심점이고 반지름은 보존된다. 두 점 사이의 거리는 중심을 잇는 직선 위에서 바깥쪽 끝점을 택할 때 가장 크다. 정답은 3√10이다."
   
   },
   {
@@ -622,15 +633,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "점 P, 수선의 발 H, 직선 대칭점 P′",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 대칭축과 원래 점, 수선의 발, 대칭점 및 직각과 같은 길이 표시",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_25543949359e5b275e6951da9439e25f192affc752228109b1a45eab24d9d402",
     "originalCategory": "도형의 이동",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 12,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "대칭축에 수직이고 주어진 점을 지나는 직선으로 수선의 발을 구한다. 수선의 발이 두 대칭점의 중점이라는 관계로 대칭점의 좌표를 구한다. 정답은 0이다."
   
   },
   {
@@ -676,8 +688,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q13.png",
-    "solutionImageAlt": "원문 벤다이어그램의 A 내부 음영 영역",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 집합의 벤다이어그램에서 한 집합 안의 삼중 공통부분을 제외하여 색칠한 영역",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_293b6d5fe94e8f8b5cef31a8661023ca2da357c738e569ee7db0f2d94b5fadbe",
     "originalCategory": "집합",
@@ -686,7 +698,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 13,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "색칠한 부분은 첫 번째 집합 안에서 나머지 두 집합의 공통부분을 제외한 영역이다. 여집합과 드모르간 법칙을 이용하여 각 식이 같은 영역을 나타내는지 비교한다. 정답은 ⑤이다."
   
   },
   {
@@ -730,14 +743,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "questionUid": "qid_v1_0c45664b5d51d775995d314c96e9fc73cd895e8d1950fa3843e2404ea2493e84",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "두 집합의 각 영역과 포함관계",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 벤다이어그램에서 왼쪽은 각 집합에만 속하는 두 영역을, 오른쪽은 두 번째 집합에만 속하는 영역을 색칠한 비교도",
     "solutionImageSize": "full",
     "originalCategory": "집합",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 14,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "두 그림은 등식의 왼쪽과 오른쪽에서 남는 영역을 비교한다. 양쪽이 같으려면 왼쪽에만 나타나는 첫 번째 집합의 고유 영역이 비어 있어야 한다. 따라서 첫 번째 집합은 두 번째 집합에 포함되지만 그 역의 포함관계는 보장되지 않는다. 정답은 ④이다."
   
   },
   {
@@ -782,14 +796,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "questionUid": "qid_v1_891893563f0a15d66fc96940b762668bfcbe49ad57aa13c09e2d0680f54acf45",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "무리수 전체에서 선택지별 명제의 참·거짓",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 이차함수와 한 직선의 그래프 및 제곱함수와 직선이 만나는 두 점",
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 15,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "g(x)=x²+x+1의 최솟값은 4분의 3이다. 무리수의 제곱·절댓값은 양수이고, x²=x의 두 해 0·1은 유리수이다. 정답은 ④이다."
   
   },
   {
@@ -835,14 +850,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "questionUid": "qid_v1_14725a3c6ca3b5406ea7316c28322f92c0fd52f279ed3993b4b53d0ca8683904",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "필요조건과 충분조건을 방향별로 판정한 표",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 네 수직선에 X·Y·Z의 위치를 표시하고 마지막 줄에서 두 거리를 비교한 예시",
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 16,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "예: X·Y·Z는 각각 x·y·z의 위치이고, 둘째 줄에서는 x=y=0이다. 첫째 줄에서 x와 y를 바꾼 경우도 비교한다. 필요조건은 q⇒p, 충분조건은 p⇒q 방향으로 판단한다. 정답은 ③(ㄷ)이다."
   
   },
   {
@@ -887,14 +903,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "questionUid": "qid_v1_a5686de6fce36da19f6327b9be48f8308a76999e24d73c29d92c8318d9fdebe5",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "진리집합 포함관계의 연쇄",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 진리집합이 안쪽부터 차례로 포함된 벤다이어그램",
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 17,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "그림의 S는 Q의 여집합이다. 첫 번째 명제와 두 번째 명제의 대우를 진리집합으로 바꾸면 안쪽부터 차례로 포함되는 관계를 얻는다. 정답은 ①이다."
   
   },
   {
@@ -939,14 +956,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "questionUid": "qid_v1_9258e04712cc9d83939e8902552fdb140ae7521fbfe76d131512277accb7bfbc",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "여섯 명의 가입 순서를 채운 표",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가입 순서와 다섯 학생을 잇는 대응도에서 한 자리는 비어 있고 두 학생은 두 자리의 후보로 연결된 그림",
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 18,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "영철이와 미용이, 현명이의 자리를 먼저 정한다. 승미와 현수로 향하는 점선 화살표는 두 사람이 자리를 바꿀 수 있다는 뜻으로 함수의 대응은 아니다. 남은 한 자리를 확인한다. 정답은 네 번째이다."
   
   },
   {
@@ -985,15 +1003,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "점 P의 직선 자취와 중점 M의 평행한 자취",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 고정점 A와 원래 직선 위의 두 점을 잇는 선분, 같은 길이 표시와 중점들을 지나는 평행한 직선",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_84cedcd81d0674c4184b259c85c9030bc1025dc724e21c0338baa18729d4dea3",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 19,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "예: 원래 직선 위의 두 점을 골라 고정점과 잇는 선분의 중점을 표시하였다. 중점의 두 좌표로 움직이는 점의 좌표를 나타내고 원래 직선의 식에 대입하면 자취의 방정식을 얻는다. 정답은 6x+4y+1=0이다."
   
   },
   {
@@ -1033,8 +1052,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "원 위 점 P가 현 AB와 만드는 최대 넓이",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위에 A·B의 좌표를 표시하고 주황 밑변과 파랑 높이를 구분한 원과 삼각형, 아래의 밑변 AB 및 오른쪽의 높이 HP 비교도",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_5c08ef31dc7cae213726f423e79c4a04eade7b9a3ca89571f7dc51a54287fba6",
     "originalCategory": "원의 방정식",
@@ -1043,7 +1062,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 20,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "좌표축을 생략하고 A·B의 좌표를 위에 표시했다. 직선 AB는 3x−5y−17=0이다. 아래는 밑변 AB, 오른쪽은 높이 HP의 비교도이며 최대 높이는 HO+OP이다. 정답은 2분의 17(1+√2)이다."
   
   },
   {
@@ -1081,15 +1101,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "집합 A와 B의 벤다이어그램 영역별 원소와 X의 조건",
+    "solutionImage": "assets/images/20_순천고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 안의 두 집합 A와 B에서 필수 원소 영역을 파랑, 선택 원소 영역을 초록으로 구분한 벤다이어그램",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_75d45f3b5044c899ebb77463bb66726fa41cd05466b37f057f9cb49984bf867a",
     "originalCategory": "집합",
     "layoutTag": "grid",
     "wide": false,
     "sourceOrdinal": 21,
-    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+    "solutionImageCaption": "파랑의 1·9는 반드시 포함하고, 초록의 2·3·5·7은 각각 포함 여부를 선택한다. 두 집합 바깥의 4·6·8·10은 포함하지 않는다. 정답은 16이다."
   
   }
 ];

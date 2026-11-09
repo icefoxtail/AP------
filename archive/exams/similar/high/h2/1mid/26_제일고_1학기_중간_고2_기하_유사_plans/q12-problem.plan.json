@@ -1,0 +1,93 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "HYPERBOLA",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "49",
+      "bSquared": "120",
+      "transverse": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "CIRCLE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "rSquared": "169"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "c1"
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "curve": "c1"
+    },
+    {
+      "id": "P",
+      "kind": "CONIC_CONIC",
+      "curves": [
+        "c1",
+        "c2"
+      ],
+      "which": 4
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPG",
+      "from": "P",
+      "to": "F'"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "F'",
+        "F"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "초점이 F, F′인 쌍곡선과 F, F′을 지름의 양 끝점으로 하는 원, 두 곡선의 교점 P와 삼각형 PF′F를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선의 초점 F(13,0), F'(-13,0)과 FF'을 지름으로 하는 원, 교점 P, 삼각형 PF'F",
+      "mappedTo": [
+        "conics",
+        "points",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "쌍곡선, 원, 교점 P와 삼각형 PF′F의 위치"
+  ],
+  "sourceQuote": "을 지름의 양 끝점으로 하는 원과 쌍곡선이 만나는",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q12.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-problem.svg"
+  }
+}

@@ -79,6 +79,10 @@ def main():
             while (adir/f'q{o}-solution-v{k}.svg').exists(): k+=1
             obj.update(replace=True,asset=f'q{o}-solution-v{k}.svg')
         elif bank[o]['has']: obj.update(replace=True,asset=f'q{o}-solution.svg')
+        elif (adir/f'q{o}-solution.svg').exists():
+            k=2
+            while (adir/f'q{o}-solution-v{k}.svg').exists(): k+=1
+            obj.update(asset=f'q{o}-solution-v{k}.svg')
         out.append(obj)
     dest.parent.mkdir(parents=True,exist_ok=True)
     dest.write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); print(dest)

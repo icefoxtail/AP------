@@ -1,0 +1,121 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "$2c=10$이면 $c=5$이고, $2c=14$이면 $c=7$이다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "21",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "24/5",
+      "sign": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "k1",
+      "through": [
+        "P",
+        "F'"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "s1",
+      "from": "P",
+      "to": "F",
+      "label": "10"
+    },
+    {
+      "id": "s2",
+      "from": "P",
+      "to": "F'",
+      "label": "14"
+    },
+    {
+      "id": "s3",
+      "from": "F'",
+      "to": "F"
+    },
+    {
+      "id": "s4",
+      "from": "Q",
+      "to": "F"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "Q",
+        "F"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "c=5일 때의 쌍곡선 x^2/4-y^2/21=1. PF=FF'=10, PF'=14이고 직선 PF'은 왼쪽 가지와 점 Q에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초점 F(5,0), F'(-5,0), 주축의 길이 4인 쌍곡선 (c=5인 경우)",
+      "mappedTo": [
+        "conic",
+        "points"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PF=10, PF'=14, 직선 PF'과 왼쪽 가지의 교점 Q, 삼각형 PQF의 둘레 28",
+      "mappedTo": [
+        "points",
+        "segments",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이등변삼각형 PF'F와 점 Q, 삼각형 PQF"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q21-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q21-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q21-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q21-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 21,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

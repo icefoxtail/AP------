@@ -92,9 +92,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "x축과 두 점 A, B에서 만나는 포물선 y=x²-2x-3",
-    "solutionImageCaption": "x축과 두 점 A, B에서 만나는 포물선 y=x²-2x-3",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축 위의 두 점 A(−1, 0), B(3, 0)을 지나는 위로 열린 포물선.",
+    "solutionImageCaption": "x축과의 교점의 x좌표가 이차방정식의 두 근이다. 두 근으로부터 (x＋1)(x−3)으로 인수분해하고 x의 계수를 비교한다. 정답은 −2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -127,9 +127,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "구간 2≤x≤5에서 꼭짓점 (3, 1)이 최고점이다.",
-    "solutionImageCaption": "구간 2≤x≤5에서 꼭짓점 (3, 1)이 최고점이다.",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 2≤x≤5에서 아래로 열린 포물선과 꼭짓점의 가로좌표 x=3을 나타낸 그림.",
+    "solutionImageCaption": "이차함수의 대칭축은 x=3이고, 3은 주어진 구간 안에 있다. 아래로 열린 포물선이므로 꼭짓점에서 최댓값을 갖는다. 정답은 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -192,7 +192,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: −5부터 3분의 5까지 양 끝을 포함하는 구간과 그 안의 정수점을 표시한 수직선.",
+    "solutionImageCaption": "절댓값 부등식을 −10≤3x＋5≤10으로 풀면 −5≤x≤3분의 5이다. 이 구간의 정수 −5, −4, −3, −2, −1, 0, 1을 센다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -254,7 +258,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 부등식의 두 바깥 구간, 둘째 부등식의 닫힌 구간과 공통 구간의 정수점을 겹쳐 나타낸 수직선.",
+    "solutionImageCaption": "첫째 부등식은 x<−7 또는 x>−2이고, 둘째 부등식은 −4≤x≤3이다. 공통 범위 −2<x≤3 안의 정수 −1, 0, 1, 2, 3을 더한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -285,7 +293,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 반대인 파란 직선 y=x와 주황 직선 y=12−x가 (6, 6)에서 만나는 그림.",
+    "solutionImageCaption": "파란 직선은 장미 수, 주황 직선은 튤립 수를 나타내며, 가로축 x는 장미 수이다. 장미가 더 많으려면 x>6이고, 금액 조건을 정리하면 x≤8이다. 가능한 정수는 7과 8이므로 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -378,7 +390,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: a=4인 예에서 고정 구간 4≤x≤12와 a≤x≤4a＋2의 공통 범위를 비교한 수직선.",
+    "solutionImageCaption": "예: a=4일 때 두 구간을 겹쳐 보면 공통 범위는 a≤x≤12이다. 4≤a≤12에서는 같은 구조가 유지되므로 정수해 개수는 13−a이고, 이것이 2일 조건을 구한다. 나머지 a의 범위도 확인하면 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -411,7 +427,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a가 1부터 4까지 변할 때 삼각형의 넓이가 증가하는 이차함수 그래프.",
+    "solutionImageCaption": "1≤a≤4에서 넓이 2a²＋8a는 증가하므로 양 끝에서 최솟값 10과 최댓값 64를 갖는다. 정답은 74이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -442,7 +462,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: k=1인 예에서 닫힌 구간 −2≤x≤1과 열린 구간 k−3<x<k＋3의 공통 정수점을 비교한 수직선.",
+    "solutionImageCaption": "예: k=1이면 열린 끝 x=−2는 빠지고 공통 정수는 −1, 0, 1이다. 이처럼 −2, −1, 0, 1 중 열린 구간에 들어오는 정수를 k에 따라 조사하면 합의 절댓값이 1인 k는 2와 3이다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -537,7 +561,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: m=−2, n=1인 예에서 −2≤x≤2와 1<x<4의 공통 범위에 정수점 하나가 남는 수직선.",
+    "solutionImageCaption": "예: m=−2, n=1이면 후보 정수 2, 3 중 첫째 부등식을 만족하는 것은 2이다. 양수인 정수 후보에 대하여 m>0이면 x≥m분의 4이고, m<0이면 x≤−m을 적용한다. n별로 허용되는 m의 수를 합하면 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -568,7 +596,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 p에 따라 q가 변하는 그래프로, 0≤p≤1에서는 q=3이고 양옆은 아래로 열린 포물선이다.",
+    "solutionImageCaption": "그림의 q(p)는 p에 따라 정해지는 q를 나타낸다. 구간에서 가장 작은 함수값이 3이므로 p≤0에서는 q=3−p², 0≤p≤1에서는 q=3, p≥1에서는 q=3−(p−1)²이다. 이 관계에서 ㄱ과 ㄴ은 참이고, p＋q의 최댓값은 4분의 17이므로 ㄷ은 거짓이다. 정답은 ㄱ, ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -618,7 +650,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 이차함수 f(x)와 주황 직선 y=5x−3의 접점 (−2, −13) 및 f(x) 위의 점 (−1, −7)을 표시한 그림.",
+    "solutionImageCaption": "접한다는 조건에서 교점 방정식은 중근을 가지므로 a=9 또는 a=1이다. f(−1)<0을 적용하면 a=9가 남으며, 그림은 이 경우의 접점과 음수인 f(−1)을 보여 준다. f(2)를 계산하면 정답은 23이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -643,7 +679,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 총이익을 나타내는 파란 포물선과 700만 원을 나타내는 주황 수평선, 두 교점에서 가로축으로 내린 점선.",
+    "solutionImageCaption": "총수입 x(10−0.01x)에서 총비용 500＋2x를 빼면 총이익은 −0.01x²＋8x−500이다. 이익이 700만 원 이상인 부분은 포물선이 기준선 위에 있는 두 교점 사이이다. 정답은 1) −0.01x²＋8x−500≥700, 2) 200≤x≤600이며 최소 200개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -672,7 +712,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD와 정삼각형 EFG에서 삼각형 EHJ를 파란색, 삼각형 AIH를 주황색으로 칠하고, EHJ의 밑변과 높이 h를 표시한 그림.",
+    "solutionImageCaption": "예: AH=1인 배치에서 두 삼각형의 위치를 나타냈다. 일반적으로 AH=x라 하면 AI=√3x, HJ=4−2x, E에서 AD까지의 높이는 √3(2−x)이므로 두 넓이의 합은 2분의 √3(3x²−8x＋8)이다. 0<x≤1은 대칭축 x=3분의 4의 왼쪽이므로 x=1에서 최소가 되며 정답은 2분의 3√3이다.",
+    "solutionImageSize": "full"
   }
 ];
 

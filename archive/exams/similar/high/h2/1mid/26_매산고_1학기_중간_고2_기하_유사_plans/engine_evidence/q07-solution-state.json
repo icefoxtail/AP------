@@ -1,0 +1,395 @@
+{
+ "meta": {
+  "dir": "q07-solution",
+  "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+  "ordinal": 7
+ },
+ "identity": {
+  "questionUid": "26_매산고_1학기_중간_고2_기하|7",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:ddb52e7b67f9312efac7097851554eed9487b2aea5ab22744ae610d735ae5ed5",
+  "assetId": "va-001b6463538c5f1e2ffa65c69822008a93a2cbb36bf099214e6e4c01d6a825c7"
+ },
+ "plan": {
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "$x$좌표가 양수인 초점은 $(2,k)$이다.",
+  "ellipses": [
+   {
+    "id": "C1",
+    "center": [
+     "-1",
+     "0"
+    ],
+    "semiAxisSquared": {
+     "major": "16",
+     "minor": "7"
+    },
+    "majorAxis": "X"
+   },
+   {
+    "id": "C2",
+    "center": [
+     "-1",
+     "5"
+    ],
+    "semiAxisSquared": {
+     "major": "16",
+     "minor": "7"
+    },
+    "majorAxis": "X"
+   }
+  ],
+  "points": [
+   {
+    "id": "O",
+    "kind": "ORIGIN"
+   },
+   {
+    "id": "F1",
+    "kind": "FOCUS",
+    "side": 1,
+    "ellipseId": "C1"
+   },
+   {
+    "id": "F2",
+    "kind": "FOCUS",
+    "side": 1,
+    "ellipseId": "C2"
+   }
+  ],
+  "lines": [
+   {
+    "id": "d",
+    "slope": "3/4",
+    "intercept": "1"
+   }
+  ],
+  "caption": "k=0, k=5일 때의 두 타원 C1, C2와 각 타원의 x좌표가 양수인 초점 F1(2,0), F2(2,5), 직선 3x-4y+4=0",
+  "sourceConditions": [
+   {
+    "id": "c1",
+    "condition": "타원 (x+1)^2/16+(y-k)^2/7=1에서 x좌표가 양수인 초점과 직선 3x-4y+4=0 사이의 거리가 2이다.",
+    "mappedTo": [
+     "ellipses",
+     "points",
+     "lines"
+    ]
+   }
+  ],
+  "newVisualInformation": [
+   "k=0과 k=5인 두 타원의 오른쪽 초점이 직선에서 같은 거리 2만큼 떨어져 있다."
+  ]
+ },
+ "model": {
+  "modelVersion": "ELLIPSE_FIGURE_MODEL_v1",
+  "capability": "ellipse-figure-v1",
+  "mode": "PAIR",
+  "majorAxis": "X",
+  "ellipses": [
+   {
+    "id": "C1",
+    "majorAxis": "X",
+    "center": {
+     "x": {
+      "exact": "-1",
+      "value": -1
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    "semiAxis": {
+     "major": {
+      "squared": "16",
+      "exact": "4",
+      "value": 4
+     },
+     "minor": {
+      "squared": "7",
+      "exact": "sqrt(7)",
+      "value": 2.6457513110645907
+     }
+    },
+    "focalDistance": {
+     "squared": "9",
+     "exact": "3",
+     "value": 3
+    },
+    "focusSeparation": {
+     "exact": "6",
+     "value": 6
+    },
+    "foci": [
+     {
+      "side": 1,
+      "x": {
+       "exact": "2",
+       "value": 2
+      },
+      "y": {
+       "exact": "0",
+       "value": 0
+      }
+     },
+     {
+      "side": -1,
+      "x": {
+       "exact": "-4",
+       "value": -4
+      },
+      "y": {
+       "exact": "0",
+       "value": 0
+      }
+     }
+    ]
+   },
+   {
+    "id": "C2",
+    "majorAxis": "X",
+    "center": {
+     "x": {
+      "exact": "-1",
+      "value": -1
+     },
+     "y": {
+      "exact": "5",
+      "value": 5
+     }
+    },
+    "semiAxis": {
+     "major": {
+      "squared": "16",
+      "exact": "4",
+      "value": 4
+     },
+     "minor": {
+      "squared": "7",
+      "exact": "sqrt(7)",
+      "value": 2.6457513110645907
+     }
+    },
+    "focalDistance": {
+     "squared": "9",
+     "exact": "3",
+     "value": 3
+    },
+    "focusSeparation": {
+     "exact": "6",
+     "value": 6
+    },
+    "foci": [
+     {
+      "side": 1,
+      "x": {
+       "exact": "2",
+       "value": 2
+      },
+      "y": {
+       "exact": "5",
+       "value": 5
+      }
+     },
+     {
+      "side": -1,
+      "x": {
+       "exact": "-4",
+       "value": -4
+      },
+      "y": {
+       "exact": "5",
+       "value": 5
+      }
+     }
+    ]
+   }
+  ],
+  "points": [
+   {
+    "id": "O",
+    "kind": "ORIGIN",
+    "x": {
+     "exact": "0",
+     "value": 0
+    },
+    "y": {
+     "exact": "0",
+     "value": 0
+    },
+    "labels": true,
+    "onEllipse": false,
+    "ellipseId": null
+   },
+   {
+    "id": "F1",
+    "kind": "FOCUS",
+    "x": {
+     "exact": "2",
+     "value": 2
+    },
+    "y": {
+     "exact": "0",
+     "value": 0
+    },
+    "labels": true,
+    "onEllipse": false,
+    "ellipseId": "C1"
+   },
+   {
+    "id": "F2",
+    "kind": "FOCUS",
+    "x": {
+     "exact": "2",
+     "value": 2
+    },
+    "y": {
+     "exact": "5",
+     "value": 5
+    },
+    "labels": true,
+    "onEllipse": false,
+    "ellipseId": "C2"
+   }
+  ],
+  "segments": [],
+  "polygons": [],
+  "lines": [
+   {
+    "id": "d",
+    "slope": {
+     "exact": "3/4",
+     "value": 0.75
+    },
+    "intercept": {
+     "exact": "1",
+     "value": 1
+    },
+    "tangent": false,
+    "ellipseId": "C1",
+    "tangencyPoint": null
+   }
+  ],
+  "bbox": {
+   "minX": -5,
+   "maxX": 3,
+   "minY": -2.6457513110645907,
+   "maxY": 7.645751311064591
+  }
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 359 428\" width=\"359\" height=\"428\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" data-ellipse-figure=\"ellipse-figure-v1\" data-major-axis=\"X\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"6\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\"><rect width=\"359\" height=\"428\" fill=\"#fff\"/><g data-layer=\"10\"><line id=\"axis-x\" data-role=\"axis\" data-axis=\"x\" x1=\"34\" y1=\"290.33\" x2=\"324.04\" y2=\"290.33\" fill=\"none\" stroke=\"#444\" stroke-width=\"1.1\"/></g><g data-layer=\"10\"><line id=\"axis-y\" data-role=\"axis\" data-axis=\"y\" x1=\"209.55\" y1=\"394\" x2=\"209.55\" y2=\"34\" fill=\"none\" stroke=\"#444\" stroke-width=\"1.1\"/></g><g data-layer=\"11\"><polygon id=\"axis-x-head\" data-role=\"axis-head\" data-axis=\"x\" points=\"324.04,290.33 315.04,286.73 315.04,293.93\" fill=\"#444\" stroke=\"none\"/></g><g data-layer=\"11\"><polygon id=\"axis-y-head\" data-role=\"axis-head\" data-axis=\"y\" points=\"209.55,34 205.95,43 213.15,43\" fill=\"#444\" stroke=\"none\"/></g><g data-layer=\"25\"><ellipse id=\"ellipse-C1\" data-role=\"ellipse\" data-ellipse=\"C1\" cx=\"179.02\" cy=\"290.33\" rx=\"122.12\" ry=\"80.78\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.7\"/></g><g data-layer=\"25\"><ellipse id=\"ellipse-C2\" data-role=\"ellipse\" data-ellipse=\"C2\" cx=\"179.02\" cy=\"137.67\" rx=\"122.12\" ry=\"80.78\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.7\"/></g><g data-layer=\"30\"><line id=\"line-d\" data-role=\"line\" data-line=\"d\" x1=\"34\" y1=\"391.46\" x2=\"324.04\" y2=\"173.93\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.3\"/></g><g data-layer=\"40\"><circle id=\"point-O\" data-role=\"point\" data-point=\"O\" cx=\"209.55\" cy=\"290.33\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"40\"><circle id=\"point-F1\" data-role=\"point\" data-point=\"F1\" cx=\"270.61\" cy=\"290.33\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"40\"><circle id=\"point-F2\" data-role=\"point\" data-point=\"F2\" cx=\"270.61\" cy=\"137.67\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"90\"><g id=\"point-O\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-O\" data-point=\"O\" data-tex=\"O\" data-fragment-sha=\"sha256:73a67b182eb0604d8e073dbfa22f32caa96249517046af7011dd9fa9c9606d76\" data-box=\"189.920145,303.85076,15.26,14.52\" transform=\"translate(189.920145 303.85076)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.26\" height=\"14.52\" viewBox=\"0 0 15.26 14.52\" data-outline-width=\"15.26\" data-outline-height=\"14.52\" id=\"lb-91506cf5df6460d2491c3321d7ed10f0714294e2a6fb6ec8d4e188996a217f1d\" data-owner=\"ellipse-point-O\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.08) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"point-F1\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-F1\" data-point=\"F1\" data-tex=\"F1\" data-fragment-sha=\"sha256:2d86466d1abca0556d9d80432c76fd5850f13615ff3fbf470ae3a7dffc20a2ef\" data-box=\"258.121066,296.52615,24.98,13.6\" transform=\"translate(258.121066 296.52615)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.98\" height=\"13.6\" viewBox=\"0 0 24.98 13.6\" data-outline-width=\"24.98\" data-outline-height=\"13.6\" id=\"lb-c8fbbc7517ca22ba3cc9c29bdaacaacef1997b69a6cc09fdf1206d3cdc0f5d47\" data-owner=\"ellipse-point-F1\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.6) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D439\" d=\"M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(749,0)\"><path data-c=\"31\" d=\"M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"point-F2\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-F2\" data-point=\"F2\" data-tex=\"F2\" data-fragment-sha=\"sha256:becb9fb9063c1b7d23d27c83d6f661f43d3d8350f1879590cb3f0a9fb2026f25\" data-box=\"258.121066,143.87385,24.98,13.6\" transform=\"translate(258.121066 143.87385)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.98\" height=\"13.6\" viewBox=\"0 0 24.98 13.6\" data-outline-width=\"24.98\" data-outline-height=\"13.6\" id=\"lb-7721024ebb84d7f5a0f2aa721356656cfae84784bf230c229ffc18f4c0b34f4f\" data-owner=\"ellipse-point-F2\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.6) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D439\" d=\"M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(749,0)\"><path data-c=\"32\" d=\"M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z\"></path></g></g></g></g></svg></g></g></svg>",
+  "lineage": {
+   "planSha256": "sha256:cf578a7dcc2d1f20ab176bb3db51e8b88b00bde2eec5ff0648fce32388a20bed",
+   "modelSha256": "sha256:bb75eacac4ca13061944a010d604c5d6544fdc11f92ad21f3473dfc5c44950a2",
+   "typographyPolicySha256": "sha256:5955552d01ec8b3ebe1e3f392e7aae3a466af96da91162f70b7723af1186f25d",
+   "specSha256": "sha256:a435f5020bb1c43823990cde84811acb6532ed9aeeff0188b293fe6300c6e46f",
+   "fragmentSha256s": {
+    "point-O": "sha256:73a67b182eb0604d8e073dbfa22f32caa96249517046af7011dd9fa9c9606d76",
+    "point-F1": "sha256:2d86466d1abca0556d9d80432c76fd5850f13615ff3fbf470ae3a7dffc20a2ef",
+    "point-F2": "sha256:becb9fb9063c1b7d23d27c83d6f661f43d3d8350f1879590cb3f0a9fb2026f25"
+   },
+   "svgSha256": "sha256:b3d24dc7b1de3bb84825439dc5b86563168ad86bfa8e405ecc92ff08ff8c69cc",
+   "staticAuditSha256": "sha256:c27270a6197470d0866e1aecc9aad49229da19e21544e08b36cf1b70f380b5b1",
+   "renderedLayoutSha256": "sha256:3d47ea0d6f11665df2d169f9b714238f6d71a8d0eb81a05a89151d8f9dfa6589"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 298.140625,
+    "height": 355.4434192200557
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "productionAuthorized": false
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:b3d24dc7b1de3bb84825439dc5b86563168ad86bfa8e405ecc92ff08ff8c69cc",
+   "policySha256": "sha256:5955552d01ec8b3ebe1e3f392e7aae3a466af96da91162f70b7723af1186f25d",
+   "candidateBankSha256": "sha256:f4ae6ad06638312349b0ee89560a431c9e9588b9372ff28aeff5bca5ca18fbd1",
+   "assetPath": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/assets/images/26_매산고_1학기_중간_고2_기하/q07-solution.svg",
+   "assetResponseSha256": "sha256:b3d24dc7b1de3bb84825439dc5b86563168ad86bfa8e405ecc92ff08ff8c69cc",
+   "archiveRowSha256": "sha256:b49bf69ff959cc1b7de0a63801d4a25ca6545373e976c6504540a1b181e60856",
+   "screenshotSha256s": {
+    "image": "sha256:e7e9faed1487ce5644011c3f760c9347ace790896aa714fe2c555031bf0c5871",
+    "context": "sha256:897aec582e750e8d691c5db7d07d8ad834161b9523d7af00e3dc662a3ed7ae77",
+    "page": "sha256:2a616325b180343c018db44ff70bc8e030ee23e62a269fcdb477a21ef8347cef"
+   },
+   "matrixSha256": "sha256:6f5fc2bf576e5b5fc918e2d31049536ce50b56cd13278d19947bfb0e27c7b341",
+   "engineSha256": "sha256:1a32af053469acb7d21529248bec60f29e1d8076ab4c47c8ee1aac2ee7ae6b23"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-5e52e2a2",
+   "asset": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/assets/images/26_매산고_1학기_중간_고2_기하/q07-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/candidates/26_매산고_1학기_중간_고2_기하.js",
+   "matrix": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-001b6463538c5f1e2ffa65c69822008a93a2cbb36bf099214e6e4c01d6a825c7-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-001b6463538c5f1e2ffa65c69822008a93a2cbb36bf099214e6e4c01d6a825c7-sol-desktop-va-001b6463538c5f1e2ffa65c69822008a93a2cbb36bf099214e6e4c01d6a825c7.png",
+    "context": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-001b6463538c5f1e2ffa65c69822008a93a2cbb36bf099214e6e4c01d6a825c7-sol-desktop-va-001b6463538c5f1e2ffa65c69822008a93a2cbb36bf099214e6e4c01d6a825c7-context.png",
+    "page": ".tmp/archive/pilot-capture-5e52e2a2/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-001b6463538c5f1e2ffa65c69822008a93a2cbb36bf099214e6e4c01d6a825c7-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+    "bytes": 44092,
+    "sha256": "sha256:929cf8df7101000659f6b32155edb00cade1450dc9f592a71cf3ec2a3095225f"
+   },
+   "originalQuestionSha256": "sha256:0b7a2166d5b290998b9068c8f23341e63d5778483023a620d319b1cf149429d4",
+   "questionCount": 21,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 7
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.830475278551532,
+  "expectedDisplayScale": 0.830475278551532,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

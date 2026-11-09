@@ -412,7 +412,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "사건의 독립"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 주봉만 명중하는 경우와 양현만 명중하는 경우의 두 경로를 강조한 수형도.",
+    "solutionImageCaption": "한 명만 10점을 맞히는 두 경로의 확률을 각각 곱해 더한다. 정답은 ①입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -540,7 +544,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "확률의 기본"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정십각형의 외접원에서 마주 보는 꼭짓점 쌍 다섯 개를 지름으로 나타내고, 한 지름을 빗변으로 하는 직각삼각형 예를 표시했다.",
+    "solutionImageCaption": "정십각형의 다섯 지름과 한 지름을 빗변으로 하는 직각삼각형 예를 보인다. 정답은 ③입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -665,7 +673,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "순열"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 식탁 둘레의 여덟 의자에서 반 바퀴 회전으로 겹치는 마주 보는 네 자리 쌍을 같은 색으로 표시한 그림.",
+    "solutionImageCaption": "같은 색의 마주 보는 네 자리 쌍은 반 바퀴 돌리면 겹친다. 정답은 ②입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -746,9 +758,10 @@ window.questionBank = [
       "확률과 통계",
       "조건부확률"
     ],
-    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q18_solution.svg",
-    "solutionImageAlt": "A에서 B로 옮긴 공의 색별 가지 확률과 B에서 흰 공이 나올 전체확률을 나타낸 그림",
-    "solutionImageCaption": "흰 공 이동 8/56, 검은 공 이동 15/56, 조건부확률 8/23"
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 옮긴 공 색의 두 가지 가지에서 B의 흰 공과 검은 공으로 나뉘고, 각 가지 확률과 경로 확률이 표시되어 있다.",
+    "solutionImageCaption": "A에서 옮긴 공의 색(흰공, 검은)에 따라 B에서 흰 공을 뽑는 조건부확률을 나누어 본다. 동그라미 친 B에서 흰 공이 나오는 두 경로의 확률을 합해 23/56을 얻고 조건부확률을 계산한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -822,6 +835,10 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "독립시행"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 김주봉과의 두 타석 뒤 조양현과의 한 타석을 나타낸 수형도에서 2회 이상 안타인 네 경로를 강조했다.",
+    "solutionImageCaption": "첫 두 타석은 김주봉, 마지막은 조양현이며 안타 2회 이상인 네 경로를 더한다. 정답은 0.12입니다.",
+    "solutionImageSize": "full"
   }
 ];

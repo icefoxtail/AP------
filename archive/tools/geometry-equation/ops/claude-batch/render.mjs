@@ -7,8 +7,8 @@ const W = path.resolve(HERE, '..', '..');
 if (!fs.existsSync(path.join(W, 'archive/tools/geometry-equation/production/render-plan.mjs'))) {
   console.error(`ERROR: ${W} 에서 render-plan.mjs를 찾지 못했다. 이 파일은 <저장소>/.tmp/work/ 에 있어야 한다(restore.sh).`); process.exit(2);
 }
-// 동시 렌더 슬롯 수: RENDER_SLOTS(기본 2, 1~8). 슬롯마다 render.lock.<n> 디렉터리 하나.
-const SLOTS = Math.min(8, Math.max(1, Number.parseInt(process.env.RENDER_SLOTS || '2', 10) || 2));
+// 동시 렌더 슬롯 수: RENDER_SLOTS(기본 2, 1~2). 슬롯마다 render.lock.<n> 디렉터리 하나.
+const SLOTS = Math.min(2, Math.max(1, Number.parseInt(process.env.RENDER_SLOTS || '2', 10) || 2)); // 4코어 PC에서 3개 이상 동시 렌더는 측정 시간초과를 낸다(2026-11-09): 상한 2 + 우선 슬롯 1
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let L = null;
 for (;;) {

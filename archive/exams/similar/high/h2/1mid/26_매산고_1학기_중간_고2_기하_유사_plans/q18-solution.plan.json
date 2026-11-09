@@ -1,0 +1,147 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "따라서 $[CPQ]=\\dfrac12\\times PQ\\times CN=",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "ABCDEFGH",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "A",
+              "B"
+            ],
+            "ratio": "2:1"
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "midpoint": [
+              "F",
+              "G"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "footOnLine": {
+              "from": "C",
+              "line": [
+                "P",
+                "Q"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "P",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "P",
+      "to": "N",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "N",
+      "to": "Q",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "N",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "DASHED",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "C",
+        "P",
+        "N"
+      ]
+    },
+    {
+      "polygon": [
+        "C",
+        "N",
+        "Q"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "C",
+          "Q"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "C",
+      "to": "P"
+    },
+    {
+      "from": "C",
+      "to": "Q"
+    },
+    {
+      "from": "P",
+      "to": "Q"
+    }
+  ],
+  "caption": "삼각형 CPQ의 세 변 CP=2√10, CQ=3√5, PQ=7과 C에서 PQ에 내린 수선 CN",
+  "sourceConditions": [
+    "한 모서리의 길이가 6인 정육면체",
+    "AP:PB=2:1, FG의 중점 Q"
+  ],
+  "newVisualInformation": [
+    "세 변의 길이와 높이 CN"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q18-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q18-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q18-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q18-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 18,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

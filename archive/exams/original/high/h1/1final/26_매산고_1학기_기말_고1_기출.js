@@ -184,7 +184,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 부등식의 해를 나타낸 수직선과 공통 범위의 정수점.",
+    "solutionImageCaption": "각 부등식을 풀면 x≤7과 x>2이다. 공통 범위 2<x≤7에 속하는 정수를 센다. 정답은 5개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -246,7 +250,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 38을 포함하는 오른쪽 반직선과 48을 포함하지 않는 왼쪽 반직선, 공통 범위의 정수점.",
+    "solutionImageCaption": "10(x−4)<9x+8≤10(x−3)에서 38≤x<48을 얻는다. 정수인 일수의 최솟값은 38, 최댓값은 47이다. 정답은 85이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -278,9 +286,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q9-solution.svg",
-    "solutionImageAlt": "y=2x^2-2x+3의 최댓값은 축에서 먼 끝점 x=4에서 27이다.",
-    "solutionImageCaption": "y=2x^2-2x+3의 최댓값은 축에서 먼 끝점 x=4에서 27이다.",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 −2≤x≤4의 이차함수 g(x), 두 끝점의 x축 안내선과 오른쪽 끝점에 닿는 주황 수평선 y=k.",
+    "solutionImageCaption": "g(x)=2x²−2x+3의 양 끝값을 비교한다. 축에서 더 먼 x=4의 끝점에 수평선 y=k가 닿을 때 k가 가장 작다. 정답은 27이다.",
     "solutionImageSize": "full"
   },
   {
@@ -405,7 +413,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 1인 닫힌 구간의 양 끝을 1−a와 1+a로 나타낸 수직선, 구간 안의 정수점과 바깥의 정수 −4, 6.",
+    "solutionImageCaption": "예: a=2분의 9인 경우이다. 부등식의 해는 1−a≤x≤1+a이고, 중심 1에서 거리가 4인 정수는 포함하되 거리가 5인 정수는 제외해야 한다. 정답은 4≤a<5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -436,7 +448,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)의 음수인 부분을 0으로 바꾼 그래프와 직선 y=a(x+1), 오른쪽 교점의 x축 보조선.",
+    "solutionImageCaption": "예: a=2분의 3인 경우이며 g(x)는 f(x)=x²−2x−3의 음수 부분을 0으로 바꾼 함수이다. −1≤x≤3에서는 왼쪽 값이 0이어서 모두 해가 되고, x>3에서는 x≤a+3을 얻는다. 정수 4는 포함하고 5는 제외하면 1≤a<2이므로 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -517,7 +533,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 이차함수 h(x)의 서로 다른 두 x축 교점과, x=1에서 x축 위에 있는 h(1)을 나타낸 그래프.",
+    "solutionImageCaption": "예: k=−1, h(x)=2−x²인 경우이다. 이차식의 두 실근이 서로 다르고 1과도 겹치지 않아야 한다. 정답은 k<1이고 k≠−4분의 5, k≠0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -544,7 +564,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 세 칸과 세로 세 칸의 자리에서 네 변의 가운데는 파란색의 짝수 자리, 모서리와 가운데는 홀수 자리로 나타낸 배치.",
+    "solutionImageCaption": "짝수 학생이 네 변의 가운데 자리에 앉으면 짝수끼리 이웃하지 않고 모든 홀수 학생이 짝수 학생과 이웃한다. 짝수 학생 네 명과 홀수 학생 다섯 명을 각 자리에 배치하므로 4!×5!을 계산한다. 정답은 2880이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -571,7 +595,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 열린 구간 −1<t<3과 양 끝을 a−3, a+9로 나타낸 열린 구간을 비교하는 수직선.",
+    "solutionImageCaption": "t=(x−a)를 3으로 나눈 값으로 치환하면 f(t)>0의 해는 −1<t<3이다. 양수 3을 곱하고 a를 더하면 a−3<x<a+9이므로 주어진 구간의 양 끝값과 비교한다. 정답은 −2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -596,7 +624,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM",
     "subUnit": "연립방정식과 연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 이차함수의 그래프와 두 그래프가 만나는 점 (1, −1), 그 점에서 x축까지의 점선.",
+    "solutionImageCaption": "예: a=1, b=4, c=2이고 f(x)=x²−4x+2, g(x)=2x²−4x+1인 경우이며 x=1에서 두 값이 모두 음수이다. 일반적으로 두 부등식을 더하고 x²+1≥2x를 이용하면 b>a+c가 필요하다. 반대로 이 조건에서 x=1은 두 부등식을 모두 만족한다. 정답은 b>a+c이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

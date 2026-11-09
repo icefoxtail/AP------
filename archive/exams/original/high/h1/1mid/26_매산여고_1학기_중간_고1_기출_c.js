@@ -223,9 +223,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q6-solution.svg",
-    "solutionImageAlt": "k=±6이면 꼭짓점 (3,0)이 x축 위에 놓여 한 점에서 만난다",
-    "solutionImageCaption": "k=±6이면 꼭짓점 (3,0)이 x축 위에 놓여 한 점에서 만난다",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=(x−3)²이 꼭짓점 (3,0)에서 x축에 접한다.",
+    "solutionImageCaption": "완전제곱식으로 고치면 y=(x−3)²+k²−36이다. 꼭짓점이 x축 위에 있으므로 k²−36=0이다. 정답은 −6, 6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -264,9 +264,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q7-solution.svg",
-    "solutionImageAlt": "구간 1 ≤ x ≤ 3에서 최솟값은 -1, 최댓값은 3이다.",
-    "solutionImageCaption": "구간 1 ≤ x ≤ 3에서 최솟값은 -1, 최댓값은 3이다.",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 1≤x≤3인 포물선 y=(x−1)²−1에서 꼭짓점 (1,−1)과 오른쪽 끝점 (3,3)을 표시했다.",
+    "solutionImageCaption": "꼭짓점 (1,−1)에서 최솟값 −1, 오른쪽 끝점 (3,3)에서 최댓값 3을 갖는다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -417,7 +417,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: k=3인 이차함수의 꼭짓점은 (−2분의 3, 4분의 7)이고 포물선은 x축과 만나지 않는다.",
+    "solutionImageCaption": "예: k=3일 때 y=x²+3x+4는 x축과 만나지 않아 두 허근을 갖는다. 일반적으로 판별식 4k−19가 음수여야 하므로 자연수 k는 1, 2, 3, 4이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -492,9 +496,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q13-solution.svg",
-    "solutionImageAlt": "k=11이면 두 점에서 만나고, k=12이면 접한다.",
-    "solutionImageCaption": "k=11이면 두 점에서 만나고, k=12이면 접한다.",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: 포물선 f(x)와 직선 g(x)를 지시선으로 표시했다. k=8에서는 교점 (−5,13), (−1,5)가 있고 k=12에서는 (−3,9)에서 접한다.",
+    "solutionImageCaption": "예: f(x)=x²+4x+k와 g(x)=−2x+3은 k=8이면 두 점에서 만나고 k=12이면 접한다. 두 점에서 만나려면 교점 방정식의 판별식이 양수여야 하므로 k<12이다. 정답은 11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -532,7 +536,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 이차함수 y=2(x−1)²+5의 그래프에서 x=0, x=2인 두 점 사이에 꼭짓점 (1,5)가 있다.",
+    "solutionImageCaption": "예: t=0이면 구간 0≤x≤2가 꼭짓점의 x좌표 1을 포함하므로 최솟값은 5이다. 일반적으로 t≤1≤t+2를 만족해야 한다. 정답은 −1≤t≤1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -718,9 +726,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q19-solution.svg",
-    "solutionImageAlt": "직선 y=t가 꼭짓점 A, B를 지나는 t=0, 5와 두 포물선의 교점 C, D를 지나는 t=1, 4일 때 서로 다른 세 점에서 만난다.",
-    "solutionImageCaption": "직선 y=t가 꼭짓점 A, B를 지나는 t=0, 5와 두 포물선의 교점 C, D를 지나는 t=1, 4일 때 서로 다른 세 점에서 만난다.",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 f(x), g(x)의 이름을 지시선으로 붙이고 꼭짓점 (1,0), (2,5)와 공통점 (0,1), (3,4)를 표시했다. 높이 1, 4, 5의 수평선은 점선이다.",
+    "solutionImageCaption": "f(x)=(x−1)², g(x)=−(x−2)²+5로 두고 수평선 y=t와의 교점 수를 비교한다. t=0, 5에서는 한 포물선의 꼭짓점을 지나 세 점에서 만나고, t=1, 4에서는 두 포물선의 공통점을 한 번만 세어 세 점에서 만난다. 정답은 10이다.",
     "solutionImageSize": "full"
   },
   {
@@ -758,7 +766,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: y=(x−3)²의 꼭짓점 (3,0)과 두 점 (1,4), (5,4)를 표시하고 같은 높이를 점선으로 연결했다.",
+    "solutionImageCaption": "예: a=3일 때 구간 1≤x≤5의 양 끝점 값이 같고, 구간 5≤x≤9의 최솟값은 x=5에서 나온다. 일반적으로 조건을 만족하는 범위는 1≤a≤3이므로 f(0)=a²의 최솟값은 1, 최댓값은 9이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -821,7 +833,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: A(0,0), B(6,0), C(0,6)인 직각이등변삼각형에서 P(2,0), Q(4,2), R(0,2)를 표시하고 사각형 PQCR을 색칠했다. PQ와 BC의 직각 및 PR과 BC의 평행을 표시했다.",
+    "solutionImageCaption": "예: t=2인 그림에서 사각형 PQCR은 전체 삼각형 ABC에서 삼각형 APR과 BPQ를 제외한 부분이다. 일반적으로 그 넓이는 S=18−2분의 t²−4분의 (6−t)²=12−4분의 3(t−2)²이므로 t=2에서 최대이다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
