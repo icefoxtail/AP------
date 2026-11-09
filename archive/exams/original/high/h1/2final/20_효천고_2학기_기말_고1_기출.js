@@ -655,9 +655,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "세 구간에 정의된 함수의 그래프 개형",
-    "solutionImageCaption": "세 구간의 치역은 (−4,0), [0,3), [3,∞)이며 합치면 명시된 공역 (−4,∞)이다.",
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 조각함수의 유리함수, 이차함수, 무리함수 그래프와 각 구간의 경계점을 나타낸 그림이다.",
+    "solutionImageCaption": "왼쪽, 가운데, 오른쪽 구간의 치역은 각각 (−4,0), [0,3), [3,∞)이다. 두 점은 함수값 1/2와 5에 대응하는 입력을 보여 준다. 정답은 2이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
@@ -913,7 +913,11 @@ window.questionBank = [
     "sourceQid": 19,
     "sourceOrdinal": 19,
     "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3}
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3},
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수의 오른쪽 가지와 수직·수평 점근선, 원점에서 뻗은 선분, 수선과 교점 A, P, Q, R을 나타낸 그림이다.",
+    "solutionImageCaption": "점근선의 교점 A는 (3,1)이고, OA는 ∠POQ의 이등분선이다. P=(4,3), Q=(4,0)이며, R=(4,4/3)은 OA와 PQ의 교점이다. 정답은 k=-1이다.",
+    "solutionImageSize": "full"
   
   },
   {

@@ -1011,11 +1011,12 @@ window.questionBank = [
     "questionUid": "qid_v1_c98ebbf214a007e531962b173d9fd0ec5a318a579df56e3a22f38948fe8f9527",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":5},
     "rpmProjectionDebt": "RPM_ONLY: no exact locked H1 primary RPM row was found for piecewise-function horizontal intersection-counting. Active 2015 H15-SB-03 Meta taxonomy confirms PT_FUNCTION_GRAPH_INTERSECTION / TPL_GRAPH_INTERSECTION_COUNT; retain the item-specific semantic RPM path separately.",
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "t=2에서 수직선 x=t는 양의 교점 한 개를, 수평선 y=t는 교점 세 개를 갖는 구간별 함수 그래프",
-    "solutionImageCaption": "g(2)=1과 h(2)=3을 한 그래프에서 확인",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 조각 함수 그래프에 y=2와 x=2인 점선이 그려져 있다. 수평선은 각 조각과 만나고 수직선은 양의 높이에서 그래프와 만난다.",
+    "solutionImageCaption": "세 조각의 치역이 겹치는 높이에서는 수평선이 세 조각과 각각 만난다. 예: t=2에서 g(2)=1, h(2)=3이다. 정답은 6이다.",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,

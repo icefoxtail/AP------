@@ -235,7 +235,11 @@ window.questionBank = [
     "sourceOrdinal": 4,
     "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_2e031837aa0c3a02f757e3f7f5cb366855f6445b7116cef7af70c61b7393ea40",
-    "provenance": {"sourceId":"2019|금당고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_금당고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816","sourceInputJsSha256":"5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0","sourcePage":1}
+    "provenance": {"sourceId":"2019|금당고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_금당고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816","sourceInputJsSha256":"5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0","sourcePage":1},
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 내려가는 두 직선 x+y=3과 x+y=4, 각 직선 위의 자연수 좌표인 점 두 개와 세 개를 표시한다.",
+    "solutionImageCaption": "x+y가 3일 때 가능한 자연수 순서쌍은 두 점이고, 4일 때는 세 점이다. 두 경우는 겹치지 않으므로 개수를 더한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
