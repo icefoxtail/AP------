@@ -32,6 +32,9 @@
 ### 2026-11-09 엔진 확장 회차 d(브랜치 engine/ext-20261109-d)
 - 한글+영문 혼합 축 이름(`x(분)`)이 변수만 수식 글꼴(`typography.mjs` MIXED), 통계 패널의 영문 축 이름·범례·계열 이름이 수식 글꼴. 24 효천 고1 q14(절댓값 유리함수)는 새 패밀리 없이 `multi-curve` `RATIONAL abs:true`로 그려짐(골든 `item134ext4q14abs`). `GEOMETRY_WORKER_TIMEOUT_MS`는 0 초과 600000 이하만 사용. 설계표 `briefs/engine-font-unify.md` 4회차.
 
+### 2026-11-09 엔진 확장 회차 e(브랜치 engine/ext-20261109-e, 생산 라인 UNSUPPORTED 대상)
+- 점 지시선이 점근선(`asymptote-*`·`rational-asymptote-*`)을 가로질러도 된다(`label_layout.py` `LEADER_MAY_CROSS_ASYMPTOTE`, `verify-rendered-layout.mjs` 예외). 24 효천 고1 Q14 교점 `(7/5,2)` 지시선이 놓임(골든 `item136ext5q14crossing`). 20 매산고 확통 Q05 확률밀도는 기존 `axisScale`+문자열 눈금으로 됨(골든 `item137ext5q05density`, 엔진 변경 없음). 지시서 `ops/svg-m1/briefs/engine-leader-cross-asymptote.md`.
+
 ### 2026-11-09 엔진 확장 회차 c(브랜치 engine/ext-20261109-c)
 - 지시선 글자의 그리스 문자·`′`·`√`도 수식 글꼴(수식 파서 `√`·`′`, 관측기 글리프 대조 보강, 골든 `item132ext3greek`). 대응도·벤다이어그램의 집합·원소 이름(`A`, `10`, `AB`, `f(x)`)도 수식 글꼴(`set-diagram-v1.mjs` `labelMath`). 통계 패널 영어 라벨과 구간 불연속 선언(유리 조각)은 남음(`briefs/engine-font-unify.md` 3회차 표). 렌더 중 `WORKER_TIMEOUT`이 나면 `GEOMETRY_WORKER_TIMEOUT_MS=90000`.
 
