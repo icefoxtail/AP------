@@ -1,0 +1,1253 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h1/1final/23_복성고_1학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "7632a56f079693ffc116fa258d9154b061b20444",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-2x^2-4x+a=0$이",
+            "term": "삼차방정식"
+          },
+          {
+            "src": "stem",
+            "quote": "세 실근 $-1, \\alpha, \\beta$를 가질 때,",
+            "term": "실근"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$a+\\alpha+\\beta$의 값은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "인수분해하여 $\\alpha+\\beta$를 구한다.",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이차방정식 $x^2-3x-1=0$에서 두 근의 합은",
+            "term": "근과계수의관계",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식의 근과 계수의 관계로 두 근의 합 도출"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "서로 다른 세 실근 $-1, \\alpha, \\beta$를",
+            "term": "근"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 한 실근을 대입해 상수 a를 구하고 인수분해 후 근과 계수의 관계로 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "부등식 $|x-3| \\lt 4$를",
+            "term": "부등식"
+          },
+          {
+            "src": "solution",
+            "quote": "절댓값 부등식 $|A|\\lt c$는",
+            "term": "절댓값"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "모든 정수 $x$의 값의 개수는?",
+            "term": "정수"
+          },
+          {
+            "src": "stem",
+            "quote": "값의 개수는? [3점]",
+            "term": "개수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "$-c\\lt A\\lt c$로 바꾸어 푼다.",
+            "term": "절댓값부등식",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 부등식을 연립부등식 형태로 전환"
+          },
+          {
+            "src": "solution",
+            "quote": "각 변에 $3$을 더하면",
+            "term": "범위",
+            "evidenceType": "IMPLIED",
+            "justification": "부등식의 성질을 이용해 해의 범위를 도출"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "부등식 $|x-3| \\lt 4$를 만족시키는",
+            "term": "부등식"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값 부등식을 구간 부등식으로 변형하여 정수 해의 개수를 카운트"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "두 점 $A=(3,1)$, $B=(-1,4)$",
+            "term": "점"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "사이의 거리는? [3점]",
+            "term": "거리"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "두 점 사이의 거리는",
+            "term": "피타고라스정리",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표 차의 제곱합으로 거리를 구하는 피타고라스 거리 공식 적용"
+          },
+          {
+            "src": "solution",
+            "quote": "더한 뒤 제곱근을 취한다.",
+            "term": "제곱근",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "차를 제곱하여 더한 뒤",
+            "term": "제곱",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "두 점 $A=(3,1)$, $B=(-1,4)$ 사이의",
+            "term": "점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 점의 좌표 차를 구해 피타고라스 거리 공식으로 두 점 사이 거리 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "점 $(2,1)$을 지나고,",
+            "term": "점"
+          },
+          {
+            "src": "stem",
+            "quote": "$x$축의 양의 방향과",
+            "term": "축"
+          },
+          {
+            "src": "stem",
+            "quote": "각을 이루는 직선이",
+            "term": "직선"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$a$의 값으로 옳은 것은?",
+            "term": "상수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "$\\tan 45^\\circ=1$이다.",
+            "term": "탄젠트",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이루는 직선의 기울기는",
+            "term": "기울기",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "점 $(5,a)$를 지날 때,",
+            "term": "점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x축 양의 방향과 이루는 각으로부터 탄젠트 기울기를 구하고 두 점의 기울기 공식으로 미지수 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $y=-\\dfrac{1}{2}x$와",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "점 $(1,5)$를 지나는",
+            "term": "점"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "지나는 직선의 방정식으로 옳은 것은?",
+            "term": "직선의방정식"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "서로 수직인 두 직선의 기울기의 곱은 $-1$이다.",
+            "term": "수직",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "서로 수직인 두 직선의 기울기의 곱은 $-1$이다.",
+            "term": "기울기",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "직선 $y=-\\dfrac{1}{2}x$와 수직이고",
+            "term": "수직"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직인 직선의 기울기 곱이 -1임을 이용해 기울기를 구하고 한 점을 지나는 직선 방정식 완성"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "이동시키는 평행이동에 의하여",
+            "term": "평행이동"
+          },
+          {
+            "src": "stem",
+            "quote": "점 $(3,-1)$이 점 $(a,7)$로",
+            "term": "점"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "옮겨지는 점의 좌표로 옳은 것은?",
+            "term": "좌표"
+          },
+          {
+            "src": "solution",
+            "quote": "$u=3$, $v=-16$이다.",
+            "term": "해"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "평행이동의 식이 주어지면 먼저 $a,b$를 구하고,",
+            "term": "대입",
+            "evidenceType": "IMPLIED",
+            "justification": "평행이동 규칙에 점을 대입하여 이동량 매개변수 도출"
+          },
+          {
+            "src": "stem",
+            "quote": "이 평행이동에 의하여",
+            "term": "평행이동",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "점 $(x,y)$를 점 $(x+5,y-b)$로",
+            "term": "점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "점의 평행이동 규칙으로부터 매개변수를 구하고 역평행이동으로 원래 점의 좌표 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "연립부등식 $3x+a\\le 2x-1\\le 5x+5$가",
+            "term": "연립부등식"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "실수 $a$의 최댓값은?",
+            "term": "최댓값"
+          },
+          {
+            "src": "stem",
+            "quote": "해를 갖도록 하는 실수 $a$의",
+            "term": "실수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "가운데 식을 기준으로 두 부등식으로 나누고,",
+            "term": "일차부등식",
+            "evidenceType": "IMPLIED",
+            "justification": "연립부등식을 두 일차부등식으로 분리하여 각각 풀이"
+          },
+          {
+            "src": "solution",
+            "quote": "두 해의 공통 범위가 존재하도록",
+            "term": "공통",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "$3x+a\\le 2x-1\\le 5x+5$가 해를 갖도록",
+            "term": "부등식"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연립부등식을 분리하여 각각의 해 범위를 구하고 공통 해가 존재할 부등식 조건을 풀어 최댓값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases}4x^2-y^2=0",
+            "term": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "대하여 $x+2y$의 최댓값은?",
+            "term": "최댓값"
+          },
+          {
+            "src": "stem",
+            "quote": "대하여 $x+2y$의 최댓값은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "첫 번째 식을 인수분해하여",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "두 경우를 각각 두 번째 식에 대입하여",
+            "term": "대입법",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "8x^2-xy-y^2=12\\end{cases}$를 만족시키는",
+            "term": "연립방정식"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "동차이차식을 인수분해하여 일차식 두 개로 나누고 다른 식에 대입하여 최댓값 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "부등식 $(m-1)x^2-2(m-1)x+4\\gt0$이",
+            "term": "부등식"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "실수 $m$의 값의 범위는?",
+            "term": "범위"
+          },
+          {
+            "src": "stem",
+            "quote": "실수 $m$의 값의 범위는?",
+            "term": "실수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "완전제곱식으로 최솟값을 본다.",
+            "term": "완전제곱식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이차식이 모든 실수 $x$에 대하여 양수가 되려면",
+            "term": "이차부등식",
+            "evidenceType": "IMPLIED",
+            "justification": "절대이차부등식의 최고차항 계수 및 최솟값 조건 검토"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "$(m-1)x^2-2(m-1)x+4\\gt0$이 항상 성립할 때,",
+            "term": "부등식"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "최고차항 계수가 0인 경우와 0이 아닌 경우로 나누어 항상 양수가 되는 매개변수 범위 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "좌표평면 위의 두 점 $A,B$에",
+            "term": "좌표"
+          },
+          {
+            "src": "stem",
+            "quote": "선분 $AB$의 중점의",
+            "term": "선분"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$\\overline{AB}$의 값은?",
+            "term": "길이"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "중점 공식과 내분점 공식을 함께 사용한다.",
+            "term": "중점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "중점 공식과 내분점 공식을 함께 사용한다.",
+            "term": "내분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "두 점 사이의 거리를 구한다.",
+            "term": "거리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "선분 $AB$를 $3:1$로 내분하는",
+            "term": "선분"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "중점과 내분점 공식을 연립하여 두 점의 좌표를 구하고 피타고라스 거리 공식으로 선분 길이 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "세 직선 $x+y-6=0$,",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "삼각형을 이루지 않도록 하는",
+            "term": "삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "모든 $a$값의 합으로 옳은 것은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "두 직선이 평행하거나",
+            "term": "평행",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "세 직선이 한 점에서 만나는 경우이다.",
+            "term": "교점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "기울기가 $-1$이다.",
+            "term": "기울기",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "삼각형을 이루지 않도록 하는 모든",
+            "term": "삼각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 직선이 삼각형을 이루지 않는 조건인 두 직선 평행과 세 직선 한 점 교점을 각각 구해 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "좌표평면에 $30$개의 원",
+            "term": "원"
+          },
+          {
+            "src": "stem",
+            "quote": "직선 $5x+12y-65=0$이",
+            "term": "직선"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "만나는 점의 개수로 옳은 것은?",
+            "term": "개수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "원점과 직선 사이의 거리를 구한 뒤,",
+            "term": "점과직선사이의거리",
+            "evidenceType": "IMPLIED",
+            "justification": "원 중심에서 직선까지의 거리를 공식으로 계산"
+          },
+          {
+            "src": "solution",
+            "quote": "교점의 개수를 판단한다.",
+            "term": "교점",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "$30$개의 원과 직선",
+            "term": "원"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원점에서 직선까지의 거리를 구하고 각 원의 반지름과 비교하여 총 교점 개수 카운트"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "원 $(x-3)^2+y^2=5$ 위의",
+            "term": "원"
+          },
+          {
+            "src": "stem",
+            "quote": "점 $P(4,2)$에서의 접선과",
+            "term": "접선"
+          },
+          {
+            "src": "stem",
+            "quote": "$x$축 및 $y$축으로 둘러싸인",
+            "term": "축"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "둘러싸인 도형의 넓이로 옳은 것은?",
+            "term": "넓이"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "접점에서 그은 반지름과 접선은 서로 수직이다.",
+            "term": "수직",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "높이 $4$인 직각삼각형이다.",
+            "term": "직각삼각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "점 $P(4,2)$에서의 접선과 $x$축",
+            "term": "접선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접점에서 반지름과 접선의 수직 조건으로 접선의 방정식을 구하고 절편 삼각형의 넓이 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $l:y=ax+5$를",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "평행이동한 후,",
+            "term": "평행이동"
+          },
+          {
+            "src": "stem",
+            "quote": "대칭이동한 직선을 $l'$이라고",
+            "term": "대칭이동"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "상수 $a$의 값으로 옳은 것은?",
+            "term": "상수"
+          }
+        ],
+        "method": [
+          {
+            "src": "stem",
+            "quote": "두 직선 $l,l'$의 교점이 $y$축 위에 있을 때,",
+            "term": "교점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$x$축 방향으로 $-2$, $y$축 방향으로 $3$만큼",
+            "term": "평행이동",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "교점이 $y$축 위에 있을 때,",
+            "term": "축"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선에 평행이동과 대칭이동을 순차 적용하고 y축 위 교점 조건 x=0을 대입하여 상수 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직사각형 모양의 종이를",
+            "term": "직사각형"
+          },
+          {
+            "src": "stem",
+            "quote": "대각선을 따라 접어",
+            "term": "접기"
+          },
+          {
+            "src": "stem",
+            "quote": "대각선을 따라 접어 겹쳐진",
+            "term": "대각선"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "넓이가 $\\dfrac{5}{2}$일 때, $a$의 값은?",
+            "term": "상수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "피타고라스 정리에 의해",
+            "term": "피타고라스정리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$a^3+16a-40=0$이다.",
+            "term": "삼차방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스 관계와 넓이 식을 연립하여 3차방정식 유도 및 인수분해 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "겹쳐진 부분의 넓이가 $\\dfrac{5}{2}$일 때,",
+            "term": "넓이"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "종이접기 대칭성과 피타고라스 정리로 겹친 삼각형의 밑변을 표현하고 넓이 삼차방정식을 풀어 변의 길이 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "$x$에 대한 연립이차부등식",
+            "term": "연립부등식"
+          },
+          {
+            "src": "solution",
+            "quote": "첫 번째 부등식은 $x^2-6x+5\\le0$이고,",
+            "term": "이차부등식"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "정수 $x$의 개수가 $4$가 되도록",
+            "term": "정수"
+          },
+          {
+            "src": "stem",
+            "quote": "자연수 $n$의 값의 합은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "두 번째 식을 인수분해하면",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "정수 후보를 찾은 뒤,",
+            "term": "공통",
+            "evidenceType": "IMPLIED",
+            "justification": "두 부등식의 공통 해 영역 내 정수 개수 카운트"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "개수가 $4$가 되도록 하는",
+            "term": "개수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 이차부등식을 인수분해하여 정수해 4개 조건에 맞는 자연수 n값들의 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "꼭짓점으로 하는 삼각형 $ABC$가",
+            "term": "꼭짓점"
+          },
+          {
+            "src": "stem",
+            "quote": "삼각형 $ABC$가 있다.",
+            "term": "삼각형"
+          },
+          {
+            "src": "stem",
+            "quote": "선분 $AC$의 중점을 지날 때,",
+            "term": "선분"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "양수 $a$의 값은? [5점]",
+            "term": "양수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "각의 이등분선 정리에 의해",
+            "term": "각의이등분선정리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "중점은 $AC$를 $1:1$로 나누므로,",
+            "term": "중점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "\\sqrt{(3-0)^2+(0-a)^2}",
+            "term": "피타고라스정리",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스 거리 공식으로 변의 길이 계산"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "선분 $AC$의 중점을 지날 때,",
+            "term": "중점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각의 이등분선이 대변의 중점을 지난다는 조건으로 이등변삼각형임을 파악하고 거리 공식으로 양수 a 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $4x+3y-12=0$이",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "대칭이동한 점을 각각 $Q,R$라",
+            "term": "대칭이동"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "무게중심의 좌표를 $(a,b)$라 할 때,",
+            "term": "좌표"
+          },
+          {
+            "src": "stem",
+            "quote": "$a+b$의 값으로 옳은 것은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "내분점 공식에 의해",
+            "term": "내분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "세 꼭짓점 좌표의 평균이므로",
+            "term": "무게중심",
+            "evidenceType": "IMPLIED",
+            "justification": "세 점의 좌표 평균으로 무게중심 좌표 계산"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "$\\overline{AB}$를 $1:2$로 내분하는 점을",
+            "term": "내분"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선의 절편으로 점을 구하고 내분과 대칭이동을 거쳐 형성된 삼각형의 무게중심 좌표 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "중심이 직선 $y=x-2$ 위에 있고",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "접하는 원이 점 $(-2,-7)$을",
+            "term": "원"
+          },
+          {
+            "src": "stem",
+            "quote": "원의 중심의 $y$좌표는",
+            "term": "중심"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$p+q$의 값으로 옳은 것은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "중심에서 접선까지의 거리와 같고,",
+            "term": "점과직선사이의거리",
+            "evidenceType": "IMPLIED",
+            "justification": "원 중심에서 직선 x=1까지의 거리가 반지름과 같다는 조건 적용"
+          },
+          {
+            "src": "solution",
+            "quote": "직선 $x=1$에 접하므로",
+            "term": "접함",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "직선 $x=1$에 접하는 원이",
+            "term": "접함"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원의 중심을 직선 위의 점으로 두고 접선 거리 d=r과 지나는 점 조건을 연립하여 중심 y좌표 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "좌표평면 위의 두 점",
+            "term": "좌표"
+          },
+          {
+            "src": "stem",
+            "quote": "두 점 $A(-3,-5)$, $B(9,1)$에",
+            "term": "점"
+          },
+          {
+            "src": "stem",
+            "quote": "세 점 $A,B,P$를 지나는 원의",
+            "term": "원"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "선분 $OC$의 길이를 $k$라 할 때,",
+            "term": "길이"
+          },
+          {
+            "src": "stem",
+            "quote": "$k$의 최댓값으로 옳은 것은?",
+            "term": "최댓값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "현 $AB$를 보는 원주각이 $45^\\circ$이면,",
+            "term": "원주각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "중심에서 본 중심각은 $90^\\circ$이다.",
+            "term": "중심각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "선분 $AB$의 수직이등분선 위에 있고,",
+            "term": "수직이등분선",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "$\\angle APB=45^\\circ$를 만족시키는 점",
+            "term": "원주각"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원주각과 중심각 성질로 반지름을 구하고 선분 AB 수직이등분선 상의 중심과 원점 사이 최대 거리 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "둘레의 길이가 $34\\text{cm}$이고",
+            "term": "둘레"
+          },
+          {
+            "src": "stem",
+            "quote": "대각선의 길이가 $13\\text{cm}$인",
+            "term": "대각선"
+          },
+          {
+            "src": "stem",
+            "quote": "직사각형에서 이웃하는",
+            "term": "직사각형"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "이웃하는 두 변의 길이를 구하여라.",
+            "term": "길이"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "피타고라스 정리에 의해",
+            "term": "피타고라스정리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "둘레 조건과 대각선 조건을 연립한다.",
+            "term": "연립방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "둘레 일차식과 대각선 이차식을 연립하여 두 변의 길이 도출"
+          },
+          {
+            "src": "solution",
+            "quote": "$(t-5)(t-12)=0$이므로",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "둘레의 길이가 $34\\text{cm}$이고 대각선의 길이가",
+            "term": "둘레"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직사각형 둘레와 대각선 길이로 연립이차방정식을 세워 곱셈공식 변형과 인수분해로 두 변의 길이 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $y=mx$가",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "두 원 $(x-3)^2+y^2=2$,",
+            "term": "원"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "모든 자연수 $k$의 값의 합을 구하여라.",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "원의 중심에서 직선까지의 거리가 반지름보다",
+            "term": "점과직선사이의거리",
+            "evidenceType": "IMPLIED",
+            "justification": "원 중심에서 직선까지의 거리가 반지름보다 크다는 만나지 않을 조건 적용"
+          },
+          {
+            "src": "solution",
+            "quote": "$3^2\\lt\\dfrac{k^2}{4}-1\\le4^2$이다.",
+            "term": "부등식",
+            "evidenceType": "IMPLIED",
+            "justification": "양의 정수 개수 3개 조건을 만족하는 k에 대한 연립부등식 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "src": "stem",
+            "quote": "양의 정수 $m$의 개수가 $3$이 되도록",
+            "term": "개수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선과 두 원의 위치 관계에서 점과 직선 거리 부등식을 세우고 정수 개수 조건에 맞는 자연수 k 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 22,
+    "formatCounts": {
+      "단일 정답": 20,
+      "서술": 2
+    },
+    "duplicateCheck": "PASSED",
+    "verbatimCheck": "PASSED"
+  }
+}
