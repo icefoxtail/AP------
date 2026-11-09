@@ -23,9 +23,9 @@ permissions:
   contents: read
 
 concurrency:
-  # A draft PR for an already pushed head reuses the same full verification
-  # slot; a different source SHA keeps its own evidence run.
-  group: middle-initial-${{ github.event.pull_request.head.ref || github.ref_name }}-${{ github.event.pull_request.head.sha || github.sha }}
+  # Always run the complete suite on the latest branch head. Superseded heads
+  # must not keep a second full census queued ahead of the current candidate.
+  group: middle-initial-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:

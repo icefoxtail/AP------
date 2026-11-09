@@ -475,8 +475,8 @@
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
           [B, Cc, A].forEach((z) => L.ln(O, z, 'rose', 3.2));
-          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: lblAvoid(X.b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), keep: true });
-          else L.ang(O, B, Cc, { color: 'sky', r: X.nw ? Math.min(22, .2 * X.b.k) : 22, label: dg(M.boc), size: 16, labelDist: X.nw ? 34 : lblAvoid(X.b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: X.nw ? 180 : rotTo(O, B, Cc, Cc, 30), keep: true });
+          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: X.nw ? lblAvoid(X.b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc) : 38, labelRot: X.nw ? awayRot(A, B, Cc, O) : 180, keep: true });
+          else L.ang(O, B, Cc, { color: 'sky', r: X.nw ? Math.min(22, .2 * X.b.k) : 22, label: dg(M.boc), size: 16, labelDist: 34, labelRot: 180, keep: true });
         },
         iso: (L, M) => { const { O, A, B, C: Cc } = M.g; L.fl([O, A, B], 'sky', 0.14); L.fl([O, A, Cc], 'green', 0.14); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 4); L.tk(O, z, 1, 'rose'); }); },
         base: (L, M) => {
@@ -493,9 +493,10 @@
       x: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
         if (v === 1 && X.K === 'trap') return;
-        // 좁은 화면에서는 O각의 값을 O 아래에 연결해 A각·현 BC와 구별합니다.
-        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: X.nw ? Math.min(22, .2 * b.k) : 22, label: xLbl(X, M.boc), size: 17, labelDist: X.nw ? 34 : lblAvoid(b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: X.nw ? 180 : rotTo(O, B, Cc, Cc, 30), noMark: !X.xArc, fa: 0.3 });
-        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: lblAvoid(b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), noMark: !X.xArc, fa: 0.3 });
+        // 화면 폭과 관계없이 O각의 값은 O 아래에 연결하고 A각은 A 가까이에 둡니다.
+        // 현 BC를 피하려다 값이 다른 각의 위치까지 멀어지는 것을 막아요.
+        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: X.nw ? Math.min(22, .2 * b.k) : 22, label: xLbl(X, M.boc), size: 17, labelDist: 34, labelRot: 180, noMark: !X.xArc, fa: 0.3 });
+        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: X.nw ? lblAvoid(b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc) : 38, labelRot: X.nw ? awayRot(A, B, Cc, O) : 180, noMark: !X.xArc, fa: 0.3 });
       },
       top: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g;
@@ -532,7 +533,11 @@
         sum: (L, M, s, X) => { const { O, A, B, C: Cc } = M.g; L.ang(O, A, B, { color: 'rose', r: 30, label: String(M.a), size: 15, labelDist: 48, keep: !X.has('ab') }); L.ang(O, B, Cc, { color: 'green', r: 30, label: String(M.b), size: 15, labelDist: 48, keep: true }); L.ang(O, Cc, A, { color: 'violet', r: 30, label: String(M.c), size: 15, labelDist: 48, keep: true }); },
         ab: (L, M) => { const { O, A, B } = M.g; L.ang(O, A, B, { color: 'rose', r: 30, label: dg(M.ab), size: 16, labelDist: 50, fa: 0.4, keep: true }); },
       },
-      x: (b, M, s, X) => { const { C: Cc, A, B } = M.g; ang(b, Cc, A, B, { color: 'amber', r: X.nw ? Math.min(34, .24 * b.k) : 34, label: X.xVal ? dg(M.ab / 2) : 'x', size: 17, labelDist: X.nw ? Math.min(56, .4 * b.k) : 56, noMark: !(X.xArc || X.at('half')), fa: 0.3 }); },
+      x: (b, M, s, X) => {
+        const { C: Cc, A, B } = M.g, compact = X.nw || b.k < 140;
+        // 세로 태블릿도 원이 작으면 C의 각 값을 중심 O까지 밀어 넣지 않습니다.
+        ang(b, Cc, A, B, { color: 'amber', r: compact ? Math.min(34, .24 * b.k) : 34, label: X.xVal ? dg(M.ab / 2) : 'x', size: 17, labelDist: compact ? Math.min(56, .4 * b.k) : 56, labelRot: compact && !X.nw ? M.ab / 4 + 30 : 0, noMark: !(X.xArc || X.at('half')), fa: 0.3 });
+      },
       top: (b, M, s, X) => cTop(b, M.g, X)
     })
   };

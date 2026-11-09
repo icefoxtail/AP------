@@ -464,8 +464,10 @@
         return;
       }
       b.focus = { x: [0, 1], y: [0, 1] }; // 그림 좌표는 쓰지 않고 화면 좌표로 그립니다
-      const x0 = b.insets.left + 12, x1 = b.W - b.insets.right - 60, top = b.insets.top + (C.problem ? 20 : 70), bot = b.H - b.insets.bottom - 16;
-      const hw = 74, hh = 30, cw = (x1 - x0 - hw) / 4, ch = Math.min((bot - top - hh) / 4, 78);
+      const compact = !C.thumb && b.H - b.insets.top - b.insets.bottom < 560;
+      const x0 = b.insets.left + 12, x1 = b.W - b.insets.right - 60, top = b.insets.top + (compact ? 52 : 70), bot = b.H - b.insets.bottom - 16;
+      const hw = 74, hh = compact ? 22 : 30, previewH = C.thumb ? 0 : Math.min(150, Math.max(104, (bot - top - hh) * 0.36));
+      const cw = (x1 - x0 - hw) / 4, ch = Math.min((bot - top - hh - (C.thumb ? 0 : previewH + 12)) / 4, 78);
       const cell = (pp, qq) => ({ x: x0 + hw + (qq - 3) * cw, y: top + hh + (pp - 3) * ch });
       for (let qq = 3; qq <= 6; qq++) b.stext(cell(3, qq).x + cw / 2, top + hh / 2, `${qq}개`, { color: SKY, size: 15, weight: 800, align: 'center', baseline: 'middle' });
       b.stext(x0 + hw / 2, top + hh / 2, '모인 면', { color: 'ink', size: 12, weight: 700, align: 'center', baseline: 'middle' });
@@ -476,8 +478,23 @@
         const col = hide ? 'muted' : v.kind === 'ok' ? GRN : v.kind === 'flat' ? 'orange' : RED;
         sRect(b, c.x + 2, c.y + 2, c.x + cw - 2, c.y + ch - 2, col, sel ? 0.5 : (hide ? 0.06 : 0.22), true);
         if (C.problem) { continue; }
-        b.stext(c.x + cw / 2, c.y + ch * 0.36, `${Math.round(v.sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'center', baseline: 'middle' });
-        if (st !== 1) b.stext(c.x + cw / 2, c.y + ch * 0.7, v.kind === 'ok' ? nameOfPlat(v.key) : '입체 ✕', { color: v.kind === 'ok' ? GRN : RED, size: 12.5, weight: 800, align: 'center', baseline: 'middle' });
+        b.stext(c.x + cw / 2, c.y + ch * (compact ? 0.28 : 0.36), `${Math.round(v.sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'center', baseline: 'middle' });
+        if (st !== 1) b.stext(c.x + cw / 2, c.y + ch * (compact ? 0.75 : 0.7), v.kind === 'ok' ? nameOfPlat(v.key) : '입체 ✕', { color: v.kind === 'ok' ? GRN : RED, size: 12.5, weight: 800, align: 'center', baseline: 'middle' });
+      }
+      if (!C.thumb) {
+        // The table classifies the choices; these are the actual selected faces.
+        // Show the shared vertex before any interaction, without a finished solid.
+        const polys = fan(M.p, M.q).map(pl => ({ pts: pl.pts.map(p => ({ x: -p.y, y: p.x })) })), pts = polys.flatMap((pl) => pl.pts);
+        const loX = Math.min(...pts.map(p => p.x)), hiX = Math.max(...pts.map(p => p.x));
+        const loY = Math.min(...pts.map(p => p.y)), hiY = Math.max(...pts.map(p => p.y));
+        const y0 = top + hh + 4 * ch + 12, y1 = bot;
+        const k = Math.min((x1 - x0 - 32) / Math.max(1e-9, hiX - loX), (y1 - y0 - 12) / Math.max(1e-9, hiY - loY));
+        const ox = (x0 + x1) / 2 - (loX + hiX) * k / 2, oy = (y0 + y1) / 2 - (loY + hiY) * k / 2;
+        const project = p => b.toW(ox + p.x * k, oy + p.y * k);
+        polys.forEach(pl => b.path(pl.pts.map(project), { close: true, fill: SKY, fillAlpha: 0.24, color: 'ink', width: 2.2, ref: 'p2-6-base-face' }));
+        const O = project({ x: 0, y: 0 });
+        b.point(O, { color: AMB, r: 4.5, ref: 'p2-6-common-vertex' });
+        if (C.txt) b.stext(ox - 12, oy + 12, 'O', { color: AMB, size: 13, weight: 800, align: 'center', baseline: 'middle' });
       }
       if (C.txt && !C.problem) {
         const v = verdict(M.p, M.q);

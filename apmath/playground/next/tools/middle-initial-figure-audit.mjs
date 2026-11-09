@@ -108,7 +108,10 @@ function installObservation() {
         window.__initialFigureDraws.push({ method,
           ref: options && typeof options === 'object' ? options.ref || null : null,
           alpha: (options && typeof options === 'object' ? options.alpha ?? 1 : 1)*this.ctx.globalAlpha,
-          bounds });
+          bounds,
+          // Named essential shapes retain their actual projected vertices for
+          // semantic geometry/pixel checks; unrelated dense paths stay bounded.
+          ...(options?.ref && points.length <= 32 ? { points } : {}) });
       }
       return original.apply(this, args);
     };
@@ -390,6 +393,46 @@ async function run() {
             await page.evaluate(()=>document.fonts.ready);
             await page.evaluate(installObservation);
             const first=await measure(scene,'first-entry',true);
+            if(!observationOnly && unit.id==='g7-polyhedra' && scene.id==='p2-6'){
+              // Real Chromium negative control: erase just the essential face
+              // cluster after each render, keeping the table and draw metadata.
+              // Restore the same state immediately; this is never a student state.
+              let control, restoredPixels;
+              try {
+                control=await page.evaluate(({sampler})=>{
+                  const sample=new Function(`return (${sampler})`)(), original=lab.render;
+                  const canvas=lab.board.canvas,originalWidth=canvas.width,originalHeight=canvas.height;
+                  const originalPixels=lab.board.ctx.getImageData(0,0,canvas.width,canvas.height).data;
+                  window.__restoreSelectedFacesControl=()=>{
+                    lab.render=original;original.call(lab);
+                    const current=lab.board.ctx.getImageData(0,0,canvas.width,canvas.height).data;
+                    const sameDimensions=canvas.width===originalWidth&&canvas.height===originalHeight;
+                    const byteEqual=sameDimensions&&current.length===originalPixels.length&&current.every((value,index)=>value===originalPixels[index]);
+                    delete window.__restoreSelectedFacesControl;return {sameDimensions,byteEqual,comparedBytes:originalPixels.length};
+                  };
+                  lab.render=function(...args){
+                    original.apply(this,args);
+                    const faces=window.__initialFigureDraws.filter(d=>d.ref==='p2-6-base-face'),b=lab.board,c=b.ctx;
+                    const pts=faces.flatMap(d=>d.points||[]);
+                    if(!pts.length)return;
+                    const x0=Math.min(...pts.map(p=>p.x))-5,y0=Math.min(...pts.map(p=>p.y))-5;
+                    const x1=Math.max(...pts.map(p=>p.x))+5,y1=Math.max(...pts.map(p=>p.y))+5;
+                    c.save();c.setTransform(1,0,0,1,0,0);
+                    c.clearRect(x0*b.canvas.width/b.W,y0*b.canvas.height/b.H,(x1-x0)*b.canvas.width/b.W,(y1-y0)*b.canvas.height/b.H);c.restore();
+                  };
+                  lab.render();return {semantic:sample(),retainedFaceCommands:window.__initialFigureDraws.filter(d=>d.ref==='p2-6-base-face').length};
+                },{sampler:sampleInitialFigure.toString()});
+                const hidden=await page.evaluate(observe);
+                control.remainingInk=hidden.ink;control.capture=await capture(scene,'negative-selected-faces-hidden');
+                control.pass=first.semantic.status==='PASS'&&control.semantic.status==='FAIL'&&control.semantic.failures.some(f=>f.code==='selected-face-region-missing')&&hidden.ink>200&&control.retainedFaceCommands===5;
+              } finally { restoredPixels=await page.evaluate(()=>window.__restoreSelectedFacesControl?.()); }
+              const restored=await page.evaluate(sampleInitialFigure),restoredFrame=await page.evaluate(observe);
+              control.restoredPixels=restoredPixels;
+              control.restored=restored.status==='PASS'&&restoredPixels?.byteEqual===true&&restoredFrame.pixelFingerprint===first.pixelFingerprint;
+              control.pass=control.pass&&control.restored;
+              (dest.measurementControls||=[]).push({id:scene.id,view:view.name,theme,type:'actual-essential-faces-hidden-table-retained',...control});
+              if(!control.pass)report.failures.push({unit:unit.id,id:scene.id,view:view.name,theme,reason:'essential-faces-measurement-control-failed'});
+            }
             if(scene===scenes[0]){
               // A real Chromium negative/positive control for the glyph guard.
               // The next normal render clears these deliberately painted marks.

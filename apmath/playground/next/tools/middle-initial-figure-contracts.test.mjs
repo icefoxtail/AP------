@@ -237,3 +237,100 @@ test('c6-8 unavailable actual geometry fails explicitly', () => {
   const out = evaluate(window);
   assert.equal(out.status, 'FAIL'); assert.equal(out.failures[0].code, 'tangent-model-unavailable');
 });
+
+// Regular polygons derived independently from their circumcircles, rasterized
+// by signed areas and segment distance; no production fan or renderer is used.
+function selectedFacesFixture({ hidden = '', dpr = 1, cssScale = 1, offset = 0, duplicateFaces = false, p = 3, q = 5 } = {}) {
+  const W = 360, H = 380, O = { x: 180, y: 230 }, side = p === 3 ? 78 : 52;
+  const radius = side / (2 * Math.sin(Math.PI / p));
+  const faces = Array.from({ length: q }, (_, index) => {
+    const i = duplicateFaces ? 0 : index;
+    const a = (-150 + i * (180 - 360 / p)) * Math.PI / 180 - Math.PI / 2 - Math.PI / p;
+    return Array.from({ length: p }, (_, k) => ({ x: O.x + radius * (Math.cos(a + k * 2 * Math.PI / p) - Math.cos(a)),
+      y: O.y + radius * (Math.sin(a + k * 2 * Math.PI / p) - Math.sin(a)) }));
+  });
+  const cross = (p, a, b) => (b.x - a.x) * (p.y - a.y) - (b.y - a.y) * (p.x - a.x);
+  const inside = (point, face) => face.every((a, i) => cross(point, a, face[(i + 1) % face.length]) >= 0);
+  const segmentDistance = (point, a, b) => {
+    const dx = b.x - a.x, dy = b.y - a.y, t = Math.max(0, Math.min(1, ((point.x - a.x) * dx + (point.y - a.y) * dy) / (dx * dx + dy * dy)));
+    return Math.hypot(point.x - a.x - t * dx, point.y - a.y - t * dy);
+  };
+  const width = W * dpr, height = H * dpr, data = new Uint8ClampedArray(width * height * 4);
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    const point = { x: x / dpr, y: y / dpr };
+    // A large, unrelated table must never conceal absent polygons.
+    let rgba = point.y >= 20 && point.y <= 90 && point.x >= 25 && point.x <= 330 ? [90, 120, 180, 255] : [0, 0, 0, 0];
+    if (hidden !== 'all') {
+      if (hidden !== 'fill' && faces.some(face => inside(point, face))) rgba = [56, 160, 225, 82];
+      if (faces.some(face => face.some((a, i) => {
+        const b = face[(i + 1) % face.length];
+        if (hidden === 'shared-edge' && Math.abs(a.y - 152) < .01 && b === O) return false;
+        return segmentDistance(point, a, b) <= 1.2;
+      }))) rgba = [230, 237, 240, 255];
+      if (Math.hypot(point.x - O.x, point.y - O.y) < 4.5) rgba = [250, 184, 62, 255];
+    }
+    data.set(rgba, (y * width + x) * 4);
+  }
+  const canvas = { width, height, getContext: () => ({ getImageData: () => ({ data }) }),
+    getBoundingClientRect: () => ({ left: offset, top: 0, width: W * cssScale, height: H * cssScale }) };
+  const draws = faces.map(points => ({ method: 'path', ref: 'p2-6-base-face', points }));
+  draws.push({ method: 'point', ref: 'p2-6-common-vertex', points: [O] });
+  return { innerWidth: W, innerHeight: H, __initialFigureDraws: draws,
+    lab: { id: 'g7-polyhedra', tab: 'explore', scene: { id: 'p2-6', ph: { model: () => ({ p, q }) } }, s: {},
+      board: { W, H, canvas, toS: p => p } } };
+}
+
+test('p2-6 requires its five actual regular faces in CSS coordinates at both pixel densities', () => {
+  for (const dpr of [1, 2]) {
+    const out = evaluate(selectedFacesFixture({ dpr }));
+    assert.equal(out.applicable, true); assert.equal(out.status, 'PASS', JSON.stringify(out));
+    assert.equal(out.checks.filter(check => check.kind === 'selected-face-outline-missing').length, 5);
+  }
+});
+
+test('p2-6 missing faces fail despite the entire numeric table and retained valid draw metadata', () => {
+  const window = selectedFacesFixture({ hidden: 'all' });
+  const data = window.lab.board.canvas.getContext().getImageData().data;
+  let ink = 0; for (let i = 3; i < data.length; i += 4) if (data[i] > 30) ink++;
+  assert.ok(ink > 200);
+  const out = evaluate(window);
+  assert.equal(out.status, 'FAIL');
+  assert.ok(out.failures.some(failure => failure.code === 'selected-face-region-missing'));
+  assert.ok(out.failures.some(failure => failure.code === 'selected-face-outline-missing'));
+});
+
+test('p2-6 empty faces, wrong selected polygon, incorrect geometry and missing fills fail separately', () => {
+  const missing = selectedFacesFixture(); missing.__initialFigureDraws.splice(0, 1);
+  assert.ok(evaluate(missing).failures.some(failure => failure.code === 'selected-faces-count-mismatch'));
+  const wrongSelected = selectedFacesFixture(); wrongSelected.lab.scene.ph.model = () => ({ p: 4, q: 5 });
+  assert.ok(evaluate(wrongSelected).failures.some(failure => failure.code === 'selected-face-shape-invalid'));
+  const irregular = selectedFacesFixture(); irregular.__initialFigureDraws[0].points[1].x += 5;
+  assert.ok(evaluate(irregular).failures.some(failure => failure.code === 'selected-face-shape-invalid'));
+  assert.ok(evaluate(selectedFacesFixture({ hidden: 'fill' })).failures.some(failure => failure.code === 'selected-face-region-missing'));
+  const noObserver = selectedFacesFixture(); delete noObserver.__initialFigureDraws;
+  assert.equal(evaluate(noObserver).status, 'FAIL');
+});
+
+test('p2-6 offscreen and physically tiny canvases cannot pass with valid source geometry', () => {
+  for (const options of [{ offset: 400 }, { cssScale: .1 }]) {
+    const out = evaluate(selectedFacesFixture(options));
+    assert.equal(out.status, 'FAIL');
+    assert.ok(out.failures.some(failure => failure.code === 'selected-faces-too-small-or-clipped'));
+  }
+});
+
+test('p2-6 rejects five coincident triangles despite matching regular metadata and visible pixels', () => {
+  const out = evaluate(selectedFacesFixture({ duplicateFaces: true }));
+  assert.equal(out.status, 'FAIL');
+  assert.equal(out.checks.filter(check => check.kind === 'selected-face-shape-invalid' && check.pass).length, 5);
+  assert.equal(out.checks.filter(check => check.kind === 'selected-face-region-missing' && check.pass).length, 5);
+  assert.equal(out.failures.filter(failure => failure.code === 'selected-faces-fan-order-invalid').length, 4);
+});
+
+test('p2-6 accepts adjoining regular faces with intentional overlap beyond a complete turn', () => {
+  for (const [p, q] of [[4, 5], [5, 4], [6, 4]]) {
+    const out = evaluate(selectedFacesFixture({ p, q }));
+    assert.equal(out.status, 'PASS', JSON.stringify({ p, q, out }));
+    assert.equal(out.checks.filter(check => check.kind === 'selected-faces-fan-order-invalid' && check.pass).length, q - 1);
+  }
+});

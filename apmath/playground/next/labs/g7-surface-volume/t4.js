@@ -66,7 +66,9 @@
       const sc = 4.6 / Math.max(M.h, M.r * 1.5), r = M.r * sc, h = M.h * sc, D = scene3(b, s, C);
       const th = C.problem ? 0 : Math.min(1, C.t * 2), y0 = -h / 2;
       const prof = [[0, y0], [r, y0], [0, y0 + h]], poly = prof;
-      D.fit(bxc(v3(0, y0 + h / 2, 0), r, h / 2), [], { l: 30, r: 30, t: 34, b: 34 });
+      // 가로 태블릿에서는 오른쪽 공식 카드(220px)가 빗변 치수를 덮지 않게 자리를 남겨요.
+      const cardRoom = C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 && b.W < 760;
+      D.fit(bxc(v3(0, y0 + h / 2, 0), r, h / 2), [], { l: 30, r: cardRoom ? 245 : 30, t: 34, b: 34 });
       axisLine(D, y0 - 0.5, y0 + h + 0.7);
       sweepDraw(D, prof, poly, th, { O: v3(0, 0, 0), fill: 'sky', alpha: .07, planeFill: 'sky', planeAlpha: .08, planeEdge: 'ink', planeWidth: 2 });
       // 길이 표시는 평면도형(오른쪽 정면 자리)에: 말 + 치수선

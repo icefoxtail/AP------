@@ -304,8 +304,9 @@
   /* ---------------------------------------------------------------- 5. 내심의 각 */
   // 짧은 문제 무대에서도 ∠BIC의 값이 밑변 BC의 길이처럼 보이지 않게
   // 내심에서 BC까지의 실제 화면 높이 안에 호와 글자를 함께 둡니다.
+  const n5CompactAngle = (b, g) => b.W < 560 || dist(g.I, g.D) * b.k < 100;
   const n5BicLayout = (b, g) => {
-    if (b.W >= 560) return { r: 34, labelDist: 56 };
+    if (!n5CompactAngle(b, g)) return { r: 34, labelDist: 56 };
     const h = dist(g.I, g.D) * b.k, u = unit(sub(g.B, g.I)), v = unit(sub(g.C, g.I));
     const midAngle = Math.atan2(u.y + v.y, u.x + v.x);
     const labelRot = clamp((angBetween(g.C, g.B, g.I) - angBetween(g.B, g.I, g.C)) * .4, -12, 12);
@@ -335,7 +336,7 @@
     },
     draw: SVB.runner({
       ...mobileQuestionFrame(nBox, 'I: 내심'), base: nBase({ noCirc: true }),
-      top: (b, M, s, X) => nTop({ noFeet: true, idx: X.nw ? 14 : 0, idy: X.nw ? -14 : 22 })(b, M, s, X),
+      top: (b, M, s, X) => nTop({ noFeet: true, idx: n5CompactAngle(b, M.g) ? 14 : 0, idy: n5CompactAngle(b, M.g) ? -14 : 22 })(b, M, s, X),
       st: {
         given: (L, M, s, X) => {
           const g = M.g, { A, B, C: Cc, I } = g, v = (s.trV || 0) % 3;

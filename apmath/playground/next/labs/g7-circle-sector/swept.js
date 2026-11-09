@@ -1228,6 +1228,22 @@
       const f = sec.chain === 'A' ? 0.58 : 0.6;
       const pos = outside ? [sec.c[0] + Math.cos(mid) * (sec.R + 0.95), sec.c[1] + Math.sin(mid) * (sec.R + 0.95)] : [sec.c[0] + Math.cos(mid) * sec.R * f, sec.c[1] + Math.sin(mid) * sec.R * f];
       let lines = label, dx = 0;
+      if (o.labelBelow && outside) {
+        const rows = Array.isArray(label) ? label : [label], b = w.b;
+        const width = Math.max(...rows.map(row => b.annotationSize(row, { size: 13.5, weight: 800 }).width));
+        const at = w.toS(pos), safeRight = b.W - 32;
+        if (at.x + width / 2 > safeRight) {
+          // A long radius calculation beside B can sit behind the contents
+          // handle. Place it below B and connect it to this small sector's arc.
+          const center = w.toS(sec.c), height = 16 * rows.length;
+          const labelAt = { x: Math.max(width / 2 + 10, Math.min(center.x, safeRight - width / 2)), y: center.y + 48 };
+          const anchor = w.toS(goatPoint(sec, sec.t0 + (sec.t1 - sec.t0) * 0.12));
+          b.leader(anchor, labelAt, { px: true, width, height, color: sec.col, lineWidth: 1.2, gap: 5, alpha: k, ref: ref || sec.id });
+          rows.forEach((row, i) => b.stext(labelAt.x, labelAt.y + (i - (rows.length - 1) / 2) * 16, row,
+            { align: 'center', baseline: 'middle', weight: 800, size: 13.5, color: sec.col, alpha: k, ref: ref || sec.id }));
+          return;
+        }
+      }
       if (o.labelRight != null) {
         const x = w.toS(pos).x;
         const width = (rows) => Math.max(...rows.map((row) => w.b.annotationSize(row, { size: 13.5, weight: 800 }).width));
@@ -1275,7 +1291,9 @@
           label = [`r = ${num(sec.R)}`, `${sec.deg}°`];
           if (tab === 'review' && sec.chain !== 'A') label = [`r = ${num(M.L)}−${num(sec.used)} = ${num(sec.R)}`, `${sec.deg}°`];
         }
-        drawGoatSector(w, sec, { thumb, k, u, label, labelRight: sc.id === 'gt-kennel' && tab === 'review' && b.W < 560 ? b.W - 32 : null });
+        drawGoatSector(w, sec, { thumb, k, u, label,
+          labelRight: sc.id === 'gt-kennel' && tab === 'review' && b.W < 560 ? b.W - 32 : null,
+          labelBelow: sc.id === 'gt-tri' && sec.id === 'B' && tab === 'review' && b.W < 560 });
       });
     }
     drawFence(w, M, thumb, true);

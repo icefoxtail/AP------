@@ -1,5 +1,5 @@
 /**
- * Semantic, rendered-pixel contracts for initial circle/sector and tangent figures.
+ * Semantic, rendered-pixel contracts for essential initial teaching figures.
  * Pass directly to page.evaluate(sampleInitialFigure). All helpers deliberately
  * live inside the function so it has no closure or runtime-source dependency.
  *
@@ -9,14 +9,15 @@
 export function sampleInitialFigure() {
   const lab = window.lab;
   const unit = lab?.id || null, id = String(lab?.scene?.id || ''), tab = lab?.tab || null;
-  const result = { version: 2, unit, id, tab, applicable: false, status: 'NOT_APPLICABLE', checks: [], failures: [],
+  const result = { version: 3, unit, id, tab, applicable: false, status: 'NOT_APPLICABLE', checks: [], failures: [],
     limitation: 'Analytic contour and region probes only; independent visual readability and mathematical review remain required.' };
   const names = ['star', 'ss2', 'lens', 'ex22', 'ring', 'semis', 'tri'];
   const f1 = id.startsWith('f1-') ? id.slice(3) : null;
   const tangent = unit === 'g9-circle' && id === 'c6-8';
-  if (!tangent && (unit !== 'g7-circle-sector' || !(names.includes(f1) || id === 'f3-leaf-len'))) return result;
+  const selectedFaces = unit === 'g7-polyhedra' && id === 'p2-6' && tab === 'explore';
+  if (!selectedFaces && !tangent && (unit !== 'g7-circle-sector' || !(names.includes(f1) || id === 'f3-leaf-len'))) return result;
   const s = lab.s || {}, progress = f1 ? Number(s[`f1_${f1}_t`] || 0) : Number(s.f3t || 0);
-  if (!tangent && tab !== 'problem' && (progress > 0.001 || s.playing)) {
+  if (!selectedFaces && !tangent && tab !== 'problem' && (progress > 0.001 || s.playing)) {
     result.reason = 'The initial-figure contract does not assert transformed animation frames.';
     return result;
   }
@@ -51,6 +52,80 @@ export function sampleInitialFigure() {
     && p.x >= 2 && p.x <= b.W - 2 && p.y >= 2 && p.y <= b.H - 2
     && rect.left + p.x * rect.width / b.W >= 0 && rect.left + p.x * rect.width / b.W <= vw
     && rect.top + p.y * rect.height / b.H >= 0 && rect.top + p.y * rect.height / b.H <= vh;
+  if (selectedFaces) {
+    // This scene previously passed generic ink checks with only its numeric
+    // table. Bind the selected p/q to actual regular polygons, then check their
+    // own pixels. A ref, a draw command or unrelated table ink is insufficient.
+    let model;
+    try { model = lab.scene.ph.model(s); }
+    catch (e) { fail('selected-faces-model-unavailable', String(e?.message || e)); }
+    const p = model?.p, q = model?.q;
+    const draws = window.__initialFigureDraws || [];
+    const faces = draws.filter(item => item.ref === 'p2-6-base-face' && item.method === 'path');
+    const vertices = draws.filter(item => item.ref === 'p2-6-common-vertex' && item.method === 'point');
+    const record = (kind, name, pass, detail = {}) => {
+      result.checks.push({ kind, name, ...detail, pass });
+      if (!pass) fail(kind, name);
+    };
+    const validModel = Number.isInteger(p) && p >= 3 && p <= 6 && Number.isInteger(q) && q >= 3 && q <= 6;
+    record('selected-faces-model-invalid', 'regular-polygon-selection', validModel, { p, q });
+    record('selected-faces-count-mismatch', 'selected-face-count', validModel && faces.length === q, { expected: q, actual: faces.length });
+    const O = vertices[0]?.points?.[0];
+    record('selected-faces-common-vertex-missing', 'common-vertex', vertices.length === 1 && !!O && visible(O));
+    const all = faces.flatMap(face => face.points || []);
+    const finite = all.length > 0 && all.every(point => Number.isFinite(point.x) && Number.isFinite(point.y));
+    if (!finite) fail('selected-face-shape-invalid', 'Finite projected vertices are required.');
+    if (!finite || !validModel || !O) { result.status = 'FAIL'; return result; }
+    const loX = Math.min(...all.map(point => point.x)), hiX = Math.max(...all.map(point => point.x));
+    const loY = Math.min(...all.map(point => point.y)), hiY = Math.max(...all.map(point => point.y));
+    const physicalWidth = (hiX - loX) * rect.width / b.W, physicalHeight = (hiY - loY) * rect.height / b.H;
+    record('selected-faces-too-small-or-clipped', 'visible-original-face-cluster', physicalWidth >= 50 && physicalHeight >= 80 && all.every(visible),
+      { physicalWidth, physicalHeight });
+    const length = (a, z) => Math.hypot(a.x - z.x, a.y - z.y);
+    const background = patch({ x: loX - 6, y: (loY + hiY) / 2 }).mean;
+    faces.forEach((face, index) => {
+      const pts = face.points || [], name = `face-${index + 1}`;
+      if (pts.length !== p || !pts.every(point => Number.isFinite(point.x) && Number.isFinite(point.y))) {
+        record('selected-face-shape-invalid', name, false, { expectedVertices: p, actualVertices: pts.length }); return;
+      }
+      const edges = pts.map((a, i) => length(a, pts[(i + 1) % p]));
+      const angles = pts.map((at, i) => {
+        const a = pts[(i + p - 1) % p], z = pts[(i + 1) % p];
+        return Math.acos(Math.max(-1, Math.min(1, ((a.x - at.x) * (z.x - at.x) + (a.y - at.y) * (z.y - at.y)) / (length(a, at) * length(z, at))))) * 180 / Math.PI;
+      });
+      const regular = edges.every(edge => edge > 18 && Math.abs(edge - edges[0]) < 1e-5)
+        && angles.every(angle => Math.abs(angle - (180 - 360 / p)) < 1e-5) && length(pts[0], O) < 1e-5;
+      record('selected-face-shape-invalid', name, regular, { vertices: p, commonVertexDistance: length(pts[0], O) });
+      if (index > 0) {
+        // Counted copies of one polygon must not stand in for q adjoining
+        // faces. Successive faces share an edge and turn by the selected
+        // polygon's interior angle. Deliberate overlap after 360° is valid.
+        const previous = faces[index - 1].points || [];
+        const a = previous[1], z = pts[1], boundary = previous[p - 1];
+        const boundaryDistance = boundary ? length(boundary, z) : Infinity;
+        const turn = a ? ((Math.atan2((a.x - O.x) * (z.y - O.y) - (a.y - O.y) * (z.x - O.x),
+          (a.x - O.x) * (z.x - O.x) + (a.y - O.y) * (z.y - O.y)) * 180 / Math.PI) + 360) % 360 : NaN;
+        record('selected-faces-fan-order-invalid', name, boundaryDistance < 1e-5 && Math.abs(turn - (180 - 360 / p)) < 1e-5,
+          { boundaryDistance, turn, expectedTurn: 180 - 360 / p });
+      }
+      const center = { x: pts.reduce((n, point) => n + point.x, 0) / p, y: pts.reduce((n, point) => n + point.y, 0) / p };
+      const fillContrast = distance(patch(center).mean, background);
+      record('selected-face-region-missing', name, visible(center) && fillContrast >= 20, { contrast: fillContrast, minimum: 20 });
+      const contours = pts.map((a, edgeIndex) => {
+        const z = pts[(edgeIndex + 1) % p], len = length(a, z), normal = { x: -(z.y - a.y) / len, y: (z.x - a.x) / len };
+        const probes = [.28, .5, .72].map(t => {
+          const at = { x: a.x + (z.x - a.x) * t, y: a.y + (z.y - a.y) * t };
+          const sides = [-1, 1].map(sign => patch({ x: at.x + normal.x * 6 * sign, y: at.y + normal.y * 6 * sign }).mean);
+          const ridge = Math.max(...patch(at, 2).values.map(value => Math.min(distance(value, sides[0]), distance(value, sides[1]))));
+          return visible(at) && Math.max(ridge, distance(sides[0], sides[1])) >= 26;
+        });
+        return { edge: edgeIndex + 1, visible: probes.filter(Boolean).length, pass: probes.filter(Boolean).length >= 2 };
+      });
+      record('selected-face-outline-missing', name, contours.every(edge => edge.pass), { contours });
+    });
+    result.status = result.failures.length ? 'FAIL' : 'PASS';
+    return result;
+  }
   const contours = [], regions = [];
   const curve = (name, cx, cy, r, angles) => contours.push({ name, points: angles.map(a => {
     const t = a * Math.PI / 180;

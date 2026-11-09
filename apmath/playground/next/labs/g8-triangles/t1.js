@@ -457,8 +457,18 @@
         // 문제에서는 AB=AC와 점 P(AD 위)만 주어진다. 선분 PB, PC도 그림에 그린다. (직각 표시는 정답의 단서라 그리지 않는다)
       } else {
         if (!C.review || st >= 2) { tick(b, Pp, B, 2, 'rose'); tick(b, Pp, Cc, 2, 'rose'); }
-        ang(b, B, D, Pp, { color: 'sky', r: 30, rings: 2, label: dg(th), size: 15, labelDist: 52 });
-        ang(b, Cc, D, Pp, { color: 'sky', r: 30, rings: 2, label: dg(th), size: 15, labelDist: 52 });
+        // 실제 화면에서 각 값과 PB=PC 눈금이 가까울 때만 바깥으로 옮겨요.
+        // 태블릿 세로처럼 폭은 넓어도 도형이 작은 무대도 같은 기준으로 보호합니다.
+        const bs = b.toS(B), ps = b.toS(Pp), tm = mid(bs, ps), td = unit(sub(ps, bs));
+        const labelScale = (b.fs || 1) * (b._ts ? b._ts() : 1), labelSize = 15 * labelScale;
+        const labelX = bs.x - sin(th / 2) * 52, labelY = bs.y + cos(th / 2) * 52;
+        const tickHalfX = Math.abs(td.y) * 9 + Math.abs(td.x) * 2.25 + 1.05 * (b.lw || 1);
+        const tickHalfY = Math.abs(td.x) * 9 + Math.abs(td.y) * 2.25 + 1.05 * (b.lw || 1);
+        const closeToTick = Math.abs(labelX - tm.x) < (G.textW(dg(th), labelSize) + 8) / 2 + tickHalfX + 4 &&
+          Math.abs(labelY - tm.y) < (labelSize * 1.12 + 6) / 2 + tickHalfY + 4;
+        const outside = !C.thumb && closeToTick ? th / 2 + 35 : 0;
+        ang(b, B, D, Pp, { color: 'sky', r: 30, rings: 2, label: dg(th), size: 15, labelDist: 52, labelRot: -outside });
+        ang(b, Cc, D, Pp, { color: 'sky', r: 30, rings: 2, label: dg(th), size: 15, labelDist: 52, labelRot: outside });
         if (!C.review || st >= 3) {
           ang(b, B, Pp, A, { color: 'amber', r: 38, rings: 3, label: dg(rest), size: 15, labelDist: 58 });
           ang(b, Cc, Pp, A, { color: 'amber', r: 38, rings: 3, label: dg(rest), size: 15, labelDist: 58 });
