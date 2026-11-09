@@ -9,7 +9,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -34,7 +34,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_CENSUS_SAMPLE_SURVEY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 전수조사와 표본조사의 개념을 구별한다. - 전수조사: 대상 집단 전체를 빠짐없이 하나하나 모두 조사하는 방법 (예: 인구주택총조사, 학급/학교 단위 학생 전원 조사, 병역판정검사 등)",
+    "decisiveStep": "전수조사 대상 규모와 누락 허용 여부를 기준으로 조사방법을 분기한다.",
+    "rpmPrimaryId": "H2-PS-RPM-079",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 2,
@@ -44,7 +66,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -69,7 +91,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모평균이 $m$, 모분산이 $\\sigma^2$인 정규분포 $\\mathrm{N}(m, \\sigma^2)$을 따르는 모집단에서 크기가 $n$인 표본을 임의추출할 때, 표본평균 $\\bar{",
+    "decisiveStep": "정규 모집단 표본평균의 평균과 표준오차 공식을 적용한다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 3,
@@ -79,7 +123,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -104,7 +148,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모비율이 $p$인 모집단에서 크기가 $n$인 표본을 임의추출하여 구한 표본비율을 $\\hat{p}$이라고 할 때: 1. 표본비율의 평균: $E(\\hat{p}) = p$ 2. 표본비율의 ",
+    "decisiveStep": "표본비율을 Bernoulli 표본평균으로 보고 평균·표준오차를 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-060",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본분포"
+    }
   },
   {
     "id": 4,
@@ -114,7 +180,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -139,7 +205,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 정규분포 $\\mathrm{N}(m, \\sigma^2)$을 따르는 모집단에서 크기가 $n$인 표본을 임의추출하여 얻은 표본평균이 $\\bar{x}$일 때, 모평균 $m$에 대한 신뢰도 $",
+    "decisiveStep": "정규 모집단의 표본오차와 신뢰계수로 모평균 구간을 구성한다.",
+    "rpmPrimaryId": "H2-PS-RPM-061",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모평균 추정",
+      "l4": "신뢰구간"
+    }
   },
   {
     "id": 5,
@@ -149,7 +237,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -174,7 +262,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모집단의 확률변수 $X$에 대하여 모평균 $E(X)$와 모분산 $V(X)$를 구한 후, 표본평균 $\\bar{X}$의 성질을 적용한다. 1. $E(\\bar{X}) = E(X)$ 2. $",
+    "decisiveStep": "모집단 분포에서 모평균·모분산을 얻고 표본평균의 분산을 축소한다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 6,
@@ -184,7 +294,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -209,7 +319,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모집단이 정규분포 $\\mathrm{N}(45, 144 = 12^2)$을 따르므로, 크기가 $n=36$인 표본평균 $\\bar{X}$는 정규분포 $\\mathrm{N}\\left(45, \\f",
+    "decisiveStep": "표본평균의 정규분포를 표준화한다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 7,
@@ -219,7 +351,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -244,7 +376,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모집단이 $\\mathrm{N}(80, 100 = 10^2)$을 따르므로, 표본평균 $\\bar{X}$는 정규분포 $\\mathrm{N}\\left(80, \\frac{100}{n}\\right",
+    "decisiveStep": "주어진 표본평균 확률을 표준정규 구간 넓이로 바꿔 n을 역산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 8,
@@ -254,7 +408,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -279,7 +433,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 축구공 1개의 무게 $X \\sim \\mathrm{N}(430, 6^2)$이다. 축구공 16개의 표본평균 $\\bar{X}$는 정규분포 $\\mathrm{N}\\left(430, \\frac{",
+    "decisiveStep": "표본평균의 표준오차를 계산해 특정 한계 이하 확률을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 9,
@@ -289,7 +465,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -314,7 +490,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모비율 $p = 0.25$, 표본의 크기 $n = 300$이다. $np = 75 \\ge 5, nq = 225 \\ge 5$이므로 표본비율 $\\hat{p}$은 근사적으로 정규분포 $\\ma",
+    "decisiveStep": "표본비율을 평균·표준오차가 있는 Bernoulli 표본평균으로 근사한다.",
+    "rpmPrimaryId": "H2-PS-RPM-076",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모비율 추정",
+      "l4": "표본비율"
+    }
   },
   {
     "id": 10,
@@ -324,7 +522,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -349,7 +547,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 표본의 크기 $n = 64$가 충분히 크므로 모표준편차 $\\sigma$ 대신 표본표준편차 $s = 0.4\\,\\mathrm{kg}$를 사용할 수 있다. 신뢰도 $99\\,\\%$의 모평균 ",
+    "decisiveStep": "표본평균과 표본표준편차로 모평균의 99% 신뢰구간을 만든다.",
+    "rpmPrimaryId": "H2-PS-RPM-061",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모평균 추정",
+      "l4": "신뢰구간"
+    }
   },
   {
     "id": 11,
@@ -359,7 +579,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -384,7 +604,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 신뢰도 $95\\,\\%$에서 모평균 $m$에 대한 신뢰구간의 길이는 $L = 2 \\times 1.96 \\times \\frac{\\sigma}{\\sqrt{n}}$이다. 표본의 크기가 $n$",
+    "decisiveStep": "신뢰구간 길이의 역제곱근 비례식으로 새 표본크기를 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-062",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모평균 추정",
+      "l4": "표본크기"
+    }
   },
   {
     "id": 12,
@@ -394,7 +636,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -419,7 +661,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 표본비율을 소수 첫째 자리까지 반올림한 값 $\\hat{p}\\approx0.3$을 이용해 표본비율의 표준오차와 신뢰구간을 근사한다.  [단계별 풀이] 1단계: 반올림한 입력값 확인 표본",
+    "decisiveStep": "반올림 표본비율을 사용해 표준오차·오차한계·신뢰구간을 근사한다.",
+    "rpmPrimaryId": "H2-PS-RPM-077",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모비율 추정",
+      "l4": "신뢰구간"
+    }
   },
   {
     "id": 13,
@@ -429,7 +693,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -454,7 +718,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 표본의 크기 $n = 400$, 표본비율 $\\hat{p} = \\frac{200}{400} = 0.5$이다. 모비율 $p$에 대한 신뢰도 $99\\,\\%$의 신뢰구간의 길이는 다음과 같다",
+    "decisiveStep": "표본비율 표준오차와 신뢰계수로 구간 길이를 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-077",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모비율 추정",
+      "l4": "신뢰구간"
+    }
   },
   {
     "id": 14,
@@ -464,7 +750,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -489,7 +775,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모비율 $p$에 대한 신뢰구간 $[a, b]$의 중심은 항상 표본비율 $\\hat{p}$과 일치한다. $$\\hat{p} = \\frac{a + b}{2}$$ 구한 표본비율 $\\hat{p}",
+    "decisiveStep": "구간 중점에서 표본비율을 찾아 표본의 찬성 인원 수를 복원한다.",
+    "rpmPrimaryId": "H2-PS-RPM-077",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모비율 추정",
+      "l4": "신뢰구간"
+    }
   },
   {
     "id": 15,
@@ -499,7 +807,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -524,7 +832,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 주머니 속 공에 적힌 수 $X$의 확률분포로부터 모평균 $E(X)$와 모분산 $V(X)$를 구한다. 2. 표본의 크기 $n = 45$는 충분히 크므로 표본평균 $\\bar{X}$는",
+    "decisiveStep": "유한 모집단의 모멘트에서 표본평균 분포를 구하고 누적확률로 k를 찾는다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 16,
@@ -534,7 +864,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -559,7 +889,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 향수 1병의 양 $X \\sim \\mathrm{N}(100, 4^2)$이다. 4병 한 세트의 총량을 $T = X_1 + X_2 + X_3 + X_4$라고 하면, 표본평균 $\\bar{X}",
+    "decisiveStep": "정규 모집단의 표본평균 분포를 이용해 총합 기준을 확률로 바꾼다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 17,
@@ -569,7 +921,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계적 추정",
     "originalCategory": "중단원 학습 점검",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -594,6 +946,28 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 표본비율 $\\hat{p}$에 대하여 $Z = \\frac{\\hat{p} - p}{\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}}$은 표본의 크기가 충분히 클 때 근사적",
+    "decisiveStep": "신뢰구간의 표준오차와 임계 z값을 맞춰 표본크기를 역산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-077",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모비율 추정",
+      "l4": "신뢰구간"
+    }
   }
 ];

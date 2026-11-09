@@ -285,7 +285,7 @@ test('M1/M2/M3 RPM semantic FINAL is independent of legacy projection gaps', () 
 test('an appended geometry mapping can promote its exact RPM-only row with an explicit decision', t => {
   const crosswalkFile = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json';
   const doc = JSON.parse(fs.readFileSync(path.join(root, crosswalkFile), 'utf8'));
-  const placeholder = doc.records.find(row => row.id === 'H2-GEO-RPM-048');
+  const placeholder = doc.records.find(row => row.id === 'H2-GEO-RPM-046');
   assert.equal(placeholder.mappingStatus, 'RPM_ONLY');
   const input = makeInput({ ...placeholder, standardCourse: '기하' });
   input.curriculumContext.grade = 'H2';
@@ -304,8 +304,8 @@ test('an appended geometry mapping can promote its exact RPM-only row with an ex
     standardCourse: '기하',
     mappingStatus: 'DIRECT_ACTIVE',
     bindingStatus: 'ACTIVE',
-    problemTypeKey: 'PT_GEO_CONIC_TANGENT',
-    templateKey: 'TPL_GEO_TANGENT_ORTHOGONAL',
+    problemTypeKey: 'PT_GEO_CONIC_STANDARD_FORM',
+    templateKey: 'TPL_GEO_CONIC_STANDARD_FORMS',
     promotesRpmOnlyRowId: 'unrelated-row',
   };
   doc.records.push(promoted);
@@ -322,7 +322,7 @@ test('an appended geometry mapping can promote its exact RPM-only row with an ex
     inputBundleSha: original.inputBundleSha,
     crosswalkRecordId: promoted.id,
     templateKey: promoted.templateKey,
-    decisiveStepReason: '수직인 직선의 기울기에서 접선 기울기를 정한다.',
+    decisiveStepReason: '조건에서 이차곡선의 표준형과 계수를 정한다.',
   };
   const result = resolve();
   assert.equal(result.projectionStatus, 'PROJECTION_REUSE');

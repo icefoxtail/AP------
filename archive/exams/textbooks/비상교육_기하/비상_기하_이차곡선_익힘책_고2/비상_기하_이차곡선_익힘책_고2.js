@@ -40,7 +40,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "꼭짓점이 원점이고 초점이 $x$축 위에 있는 포물선의 표준형 $y^2 = 4px$를 적용한다.",
+    "decisiveStep": "1단계: 모수 $p$ 파악 초점의 좌표가 $\\left(-\\frac{1}{2}, 0\\right)$이므로 $p = -\\frac{1}{2}$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-039",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"포물선","l4":"정의와 방정식"}
   },
   {
     "id": 2,
@@ -75,7 +90,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_SHARED_FOCUS_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "각각의 포물선을 평행이동 형태 $ (y-y_0)^2 = 4p(x-x_0) $와 $ (x-x_0)^2 = 4p(y-y_0) $로 정리하여 초점의 좌표를 구하고, 두 초점이 일치한다는 조건을 연립한다.",
+    "decisiveStep": "1단계: 첫 번째 포물선의 초점 구하기 포물선 $(y - 1)^2 = a(x + 3) = 4\\left(\\frac{a}{4}\\right)(x + 3)$에서",
+    "rpmPrimaryId": "H2-GEO-RPM-040",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"포물선","l4":"초점·준선"}
   },
   {
     "id": 3,
@@ -110,7 +140,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "무게중심의 좌표 공식을 이용하여 세 점의 $y$좌표의 합을 구하고, 포물선의 정의를 적용하여 초점까지의 거리의 합을 계산한다.",
+    "decisiveStep": "1단계: 포물선의 초점과 준선 파악 포물선 $x^2 = 12y$에서 $4p = 12 \\implies p = 3$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-040",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"포물선","l4":"초점·준선"}
   },
   {
     "id": 4,
@@ -145,7 +190,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "포물선의 정의(초점까지의 거리 = 준선까지의 거리)로 점의 $x$좌표를 구한 뒤, 포물선의 방정식에 대입하여 $y$좌표의 절댓값을 구한다.",
+    "decisiveStep": "1단계: 초점, 준선 및 점 $\\mathrm{A}$의 $x$좌표 구하기 포물선 $y^2 = 8x$에서 $4p = 8 \\implies p = 2$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-040",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"포물선","l4":"초점·준선"}
   },
   {
     "id": 5,
@@ -180,7 +240,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "포물선의 초점을 지나는 직선의 초점 현 비례 관계 또는 조화평균 공식을 적용하여 교점의 좌표를 찾고 직선의 방정식을 완성한다.",
+    "decisiveStep": "1단계: 초점과 준선 확인 포물선 $y^2 = 12x$에서 $4p = 12 \\implies p = 3$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-040",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"포물선","l4":"초점·준선"}
   },
   {
     "id": 6,
@@ -215,7 +290,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "포물선의 초점 좌표를 구하여 타원의 초점과 일치시키고, 타원의 초점 관계식으로 단축의 길이를 계산한다.",
+    "decisiveStep": "1단계: 포물선의 초점 구하기 포물선 $y^2 = 4x$에서 $4p = 4 \\implies p = 1$이므로 초점은 $(1, 0)$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-042",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"타원","l4":"초점·장축·단축"}
   },
   {
     "id": 7,
@@ -250,7 +340,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "네 꼭짓점의 위치를 비교하여 장축의 방향을 결정하고, $c^2 = b^2 - a^2$ 공식을 적용한다.",
+    "decisiveStep": "1단계: 장축과 단축 파악 네 꼭짓점이 $(\\pm 4, 0), (0, \\pm 6)$이므로 $a = 4, b = 6$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-042",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"타원","l4":"초점·장축·단축"}
   },
   {
     "id": 8,
@@ -285,7 +390,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_TRANSLATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "일반형 타원의 방정식을 표준형으로 변형하여 평행이동량과 상수항의 일치 조건을 도출한다.",
+    "decisiveStep": "1단계: 주어진 타원의 완전제곱식 변형 $$3x^2 + 4y^2 + 12x - 8y + c = 0$$",
+    "rpmPrimaryId": "H2-GEO-RPM-045",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"이차곡선의 이동","l4":"평행이동"}
   },
   {
     "id": 9,
@@ -320,7 +440,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "타원의 초점의 좌표를 구하여 선분 $\\mathrm{FF'}$을 밑변으로 삼고, 점 $\\mathrm{P}$의 $y$좌표를 높이로 하여 삼각형의 넓이를 계산한다.",
+    "decisiveStep": "1단계: 타원의 초점 구하기 타원 $x^2 + 4y^2 = 20$의 양변을 $20$으로 나누면",
+    "rpmPrimaryId": "H2-GEO-RPM-042",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"타원","l4":"초점·장축·단축"}
   },
   {
     "id": 10,
@@ -355,7 +490,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "선분 $\\mathrm{OP} = \\overline{\\mathrm{OF}}$ 조건으로부터 $\\triangle\\mathrm{PFF'}$이 직각삼각형임을 확인하고 타원의 정의와 피타고라스 정리를 결합한다.",
+    "decisiveStep": "1단계: 타원의 기본 요소 계산 타원 $\\frac{x^2}{36}+\\frac{y^2}{16}=1$에서 $a = 6, b = 4$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-042",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"타원","l4":"초점·장축·단축"}
   },
   {
     "id": 11,
@@ -390,7 +540,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL_DISTANCE_LOCUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "기존 타원에서 초점 사이의 거리를 구하여 삼각형의 둘레에서 두 초점까지의 거리의 합을 유도하고, 새 타원의 방정식을 세운다.",
+    "decisiveStep": "1단계: 기존 타원의 초점 구하기 타원 $2x^2 + y^2 = 32 \\implies \\frac{x^2}{16} + \\frac{y^2}{32} = 1$에서",
+    "rpmPrimaryId": "H2-GEO-RPM-041",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"타원","l4":"정의와 방정식"}
   },
   {
     "id": 12,
@@ -425,7 +590,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "타원의 초점 관계식과 직선 $x = c$의 교점을 대입하여 현 $\\overline{\\mathrm{AB}}$의 길이를 $a$로 표현하고, 서로 수직인 대각선을 갖는 사각형의 넓이를 구한다.",
+    "decisiveStep": "1단계: 현 $\\overline{\\mathrm{AB}}$의 길이 구하기 타원 $\\frac{x^2}{a^2}+\\frac{y^2}{16}=1$에서 초점 $(\\pm c, 0)$이므로 $a^2 - 16 = c^2 \\implies a^2 - c^2 = 16$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-042",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"타원","l4":"초점·장축·단축"}
   },
   {
     "id": 13,
@@ -460,7 +640,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "두 초점과 주축의 길이로부터 쌍곡선의 표준형 방정식을 세우고 점 $(9, k)$를 대입하여 양수 $k$를 구한다.",
+    "decisiveStep": "1단계: 쌍곡선의 방정식 수립 초점이 $(5, 0), (-5, 0)$이므로 $c = 5$이고 초점은 $x$축 위에 있다.",
+    "rpmPrimaryId": "H2-GEO-RPM-043",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"쌍곡선","l4":"정의와 방정식"}
   },
   {
     "id": 14,
@@ -495,7 +690,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "쌍곡선 일반형을 표준형으로 정리하여 중심, 주축의 방향, 초점 거리, 점근선의 방정식을 차례로 검증한다.",
+    "decisiveStep": "1단계: 표준형으로 정리 $$7x^2 - 14x - 9y^2 - 36y - 92 = 0$$",
+    "rpmPrimaryId": "H2-GEO-RPM-044",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"쌍곡선","l4":"점근선"}
   },
   {
     "id": 15,
@@ -530,7 +740,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "초점이 $y$축 위에 있는 쌍곡선의 점근선 기울기 공식 $\\frac{b}{a}$와 $c^2 = a^2 + b^2$ 관계를 연립하여 주축의 길이 $2b$를 구한다.",
+    "decisiveStep": "1단계: 초점 및 점근선 기울기 관계식 초점이 $(0, 7), (0, -7)$이므로 $c = 7$이고 초점은 $y$축 위에 있다.",
+    "rpmPrimaryId": "H2-GEO-RPM-044",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"쌍곡선","l4":"점근선"}
   },
   {
     "id": 16,
@@ -565,7 +790,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "쌍곡선의 정의(두 초점까지의 거리의 차 $= 2a$)와 둘레의 길이 조건을 연립하여 세 변의 길이를 각각 구하고 최댓값을 찾는다.",
+    "decisiveStep": "1단계: 쌍곡선의 기본 요소 계산 쌍곡선 $\\frac{x^2}{36}-\\frac{y^2}{64}=1$에서 $a^2 = 36, b^2 = 64$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-043",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"쌍곡선","l4":"정의와 방정식"}
   },
   {
     "id": 17,
@@ -600,7 +840,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "점 $\\mathrm{P}$와 점 $\\mathrm{Q}$가 쌍곡선의 서로 다른 가지에 있음을 파악하고, 쌍곡선의 정의를 각각 적용하여 식을 정리한다.",
+    "decisiveStep": "1단계: 쌍곡선의 주축 및 초점 위치 쌍곡선 $\\frac{x^2}{12}-\\frac{y^2}{8}=1$에서 $a^2 = 12 \\implies a = 2\\sqrt{3}$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-043",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"쌍곡선","l4":"정의와 방정식"}
   },
   {
     "id": 18,
@@ -635,7 +890,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "총소리와 표적 소리가 동시에 들리는 조건을 시간 방정식으로 세워 두 초점으로부터의 거리의 차를 구하고, 쌍곡선의 방정식을 이용한다.",
+    "decisiveStep": "1단계: 시간 조건과 거리의 차 유도 소리의 속력을 $v$라 하면 총알의 속력은 $3v$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-043",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"쌍곡선","l4":"정의와 방정식"}
   },
   {
     "id": 19,
@@ -670,7 +940,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "평행 조건으로부터 접선의 기울기를 결정하고, 포물선의 접선 공식 $y = mx + \\frac{p}{m}$으로 절편을 구해 삼각형의 넓이를 계산한다.",
+    "decisiveStep": "1단계: 접선의 기울기 및 모수 $p$ 파악 직선 $x - y + 1 = 0 \\iff y = x + 1$에 평행하므로 구하는 접선의 기울기는 $m = 1$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-088",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"포물선의 접선","l4":"기울기형"}
   },
   {
     "id": 20,
@@ -705,7 +990,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "포물선 위의 두 접점을 미지수로 두고 점 $\\mathrm{C}$를 지나는 두 접선의 방정식을 연립하거나, 극선(polar line)의 방정식을 적용하여 직선 $\\mathrm{PQ}$를 직접 구한다.",
+    "decisiveStep": "1단계: 접점에서의 접선 방정식 설정 포물선 $y^2 = 4x$에서 $4p = 4 \\implies 2p = 2$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-088",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"포물선의 접선","l4":"기울기형"}
   },
   {
     "id": 21,
@@ -740,7 +1040,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "기울기가 주어진 타원의 접선 공식 $y = mx \\pm \\sqrt{a^2 m^2 + b^2}$을 세우고 점 $(a, a)$를 대입하여 양수 $a$를 구한다.",
+    "decisiveStep": "1단계: 타원의 기본형 및 접선 공식 타원 $5x^2 + y^2 = 20 \\implies \\frac{x^2}{4} + \\frac{y^2}{20} = 1$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-089",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"타원의 접선","l4":"기울기·조건형"}
   },
   {
     "id": 22,
@@ -775,7 +1090,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "타원의 접선 공식을 세워 점 $\\mathrm{A}(0, a)$를 지남을 이용해 접점의 좌표를 $a$로 표현하고, $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{AP}}$ 조건에 대입한다.",
+    "decisiveStep": "1단계: 접선의 방정식과 접점의 좌표 관계 타원 $\\frac{x^2}{9}+\\frac{y^2}{4}=1$ 위의 접점을 $\\mathrm{P}(x_1, y_1)$이라 하면 접선의 방정식은",
+    "rpmPrimaryId": "H2-GEO-RPM-089",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"타원의 접선","l4":"기울기·조건형"}
   },
   {
     "id": 23,
@@ -810,7 +1140,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "직선의 절편으로부터 초점과 타원의 한 꼭짓점을 구하고, 타원의 방정식 표준형에 대입한다.",
+    "decisiveStep": "1단계: 직선 $\\mathrm{AF}$의 절편 구하기 직선 $\\mathrm{AF}$의 방정식은 $y = \\frac{1}{2}x - 1$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-042",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선","l3":"타원","l4":"초점·장축·단축"}
   },
   {
     "id": 24,
@@ -845,7 +1190,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "접점 $(a, b)$에서의 접선의 방정식을 세우고 점 $(0, -4)$를 지남을 이용하여 $b$를 구한 뒤, 쌍곡선의 식에 대입하여 $a$와 $\\frac{a}{b}$를 구한다.",
+    "decisiveStep": "1단계: 접선의 방정식 수립 및 $b$ 계산 쌍곡선 $x^2 - y^2 = 8$ 위의 접점 $(a, b)$에서의 접선의 방정식은",
+    "rpmPrimaryId": "H2-GEO-RPM-090",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"쌍곡선의 접선","l4":"기울기·조건형"}
   },
   {
     "id": 25,
@@ -880,7 +1240,22 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_CONIC_ORTHOGONAL_TANGENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "타원의 넓이를 이등분하는 직선은 반드시 타원의 중심을 지나야 함을 이용하고, 쌍곡선 위의 점 조건과 연립하여 $a^2 + b^2$을 구한다.",
+    "decisiveStep": "1단계: 접선의 방정식 및 타원의 중심 구하기 쌍곡선 $\\frac{x^2}{12}-\\frac{y^2}{8}=1$ 위의 점 $(a, b)$에서의 접선의 방정식은",
+    "rpmPrimaryId": "H2-GEO-RPM-090",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"쌍곡선의 접선","l4":"기울기·조건형"}
   },
   {
     "id": 26,
@@ -915,6 +1290,21 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "쌍곡선의 접선 $l$의 방정식을 구하고, 두 초점에서 접선에 내린 수선의 발 사이의 거리를 직각사다리꼴 및 피타고라스 정리로 계산한다.",
+    "decisiveStep": "1단계: 쌍곡선의 초점과 접선 $l$의 방정식 구하기 쌍곡선 $x^2 - 3y^2 = 6 \\implies \\frac{x^2}{6} - \\frac{y^2}{2} = 1$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-090",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"쌍곡선의 접선","l4":"기울기·조건형"}
   }
 ];

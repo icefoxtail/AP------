@@ -34,7 +34,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "포물선의 접선의 방정식 공식을 적용한다.\n1. 기울기 $m$인 접선: $y^2=4px \\implies y = mx + \\frac{p}{m}$\n2. 곡선 위의 점 $(x_1, y_1)$에서의 접선: $y^2=4px \\implies y_1 y = 2p(x + x_1)$",
+    "decisiveStep": "1단계 [⑴ 기울기가 $3$인 접선]: 포물선 $y^2 = 8x$에서 $4p = 8 \\implies p = 2$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-047",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"포물선의 접선","l4":"접점형"}
   },
   {
     "id": 2,
@@ -69,7 +84,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "타원의 접선의 방정식 공식을 적용한다.\n1. 기울기 $m$인 접선: $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1 \\implies y = mx \\pm \\sqrt{a^2 m^2 + b^2}$\n2. 곡선 위의 점 $(x_1, y_1)$에서의 접선: $\\frac{x_1 x}{a^2} + \\frac{y_1 y}{b^2} = 1$",
+    "decisiveStep": "1단계 [⑴ 기울기가 $2$인 접선]: 타원 $\\frac{x^2}{2}+\\frac{y^2}{6}=1$에서 $a^2 = 2, b^2 = 6$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-049",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"타원의 접선","l4":"접점형"}
   },
   {
     "id": 3,
@@ -104,7 +134,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "쌍곡선의 접선의 방정식 공식을 적용한다.\n1. 기울기 $m$인 접선: $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1 \\implies y = mx \\pm \\sqrt{a^2 m^2 - b^2}$\n2. 곡선 위의 점 $(x_1, y_1)$에서의 접선: $\\frac{x_1 x}{a^2} - \\frac{y_1 y}{b^2} = 1$",
+    "decisiveStep": "1단계 [⑴ 기울기가 $-2$인 접선]: 쌍곡선 $\\frac{x^2}{5}-\\frac{y^2}{4}=1$에서 $a^2 = 5, b^2 = 4$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-052",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"쌍곡선의 접선","l4":"기울기·조건형"}
   },
   {
     "id": 4,
@@ -139,7 +184,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "수직인 두 직선의 기울기의 곱이 $-1$임을 이용하여 접선의 기울기를 정하고, 포물선 접선 공식을 적용한다.",
+    "decisiveStep": "1단계: 접선의 기울기 구하기 직선 $y = 4x + 2$의 기울기는 $4$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-048",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"포물선의 접선","l4":"기울기형"}
   },
   {
     "id": 5,
@@ -174,7 +234,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "포물선 밖의 점에서 그은 접선의 방정식을 기울기 $m$에 대한 식으로 세우고 점의 좌표를 대입하여 이차방정식의 근과 계수의 관계를 이용한다.",
+    "decisiveStep": "1단계: 기울기 $m$인 접선의 방정식 세우기 포물선 $y^2 = -2x$에서 $4p = -2 \\implies p = -\\frac{1}{2}$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-048",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"포물선의 접선","l4":"기울기형"}
   },
   {
     "id": 6,
@@ -209,7 +284,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "타원 위의 두 대칭인 점에서 그은 접선의 방정식을 구하여 교점의 좌표를 찾고, 밑변과 높이를 이용하여 삼각형의 넓이를 계산한다.",
+    "decisiveStep": "1단계: 두 점 $\\mathrm{P}, \\mathrm{Q}$에서의 접선의 방정식 구하기 타원 $\\frac{x^2}{3}+\\frac{y^2}{24}=1$에 대하여:",
+    "rpmPrimaryId": "H2-GEO-RPM-049",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"타원의 접선","l4":"접점형"}
   },
   {
     "id": 7,
@@ -244,7 +334,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "쌍곡선 위의 접점을 $(x_1, y_1)$로 두고 접선이 점 $(2, 0)$을 지남을 이용하여 접점의 좌표를 구한 뒤 두 점 사이의 거리를 계산한다.",
+    "decisiveStep": "1단계: 접선의 방정식 수립 쌍곡선 $x^2 - 2y^2 + 4 = 0$ 위의 접점의 좌표를 $(x_1, y_1)$이라 하면",
+    "rpmPrimaryId": "H2-GEO-RPM-052",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"쌍곡선의 접선","l4":"기울기·조건형"}
   },
   {
     "id": 8,
@@ -279,7 +384,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_PARABOLA_FOCAL_TANGENT_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "포물선의 초점, 준선 및 접선의 방정식을 세우고 포물선의 정의와 직각삼각형 성질을 연결하여 선분의 길이를 결정한다.",
+    "decisiveStep": "1단계: 초점과 준선 및 접점 설정 포물선 $y^2 = 24x$에서 $4p = 24 \\implies p = 6$이다.",
+    "rpmPrimaryId": "H2-GEO-RPM-047",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"포물선의 접선","l4":"접점형"}
   },
   {
     "id": 9,
@@ -314,7 +434,22 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_ELLIPSE_TANGENT_INTERCEPT_OPTIMIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "타원 위의 점에서의 접선의 절편으로 둘러싸인 삼각형의 넓이 식을 구하고, 산술-기하 평균 부등식을 적용하여 최솟값을 도출한다.",
+    "decisiveStep": "1단계: 접선의 방정식 및 절편 구하기 타원 $\\frac{x^2}{16}+\\frac{y^2}{4}=1$ 위의 제1사분면 점을 $\\mathrm{P}(x_1, y_1)$ ($x_1 > 0, y_1 > 0$)이라 하자.",
+    "rpmPrimaryId": "H2-GEO-RPM-050",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"타원의 접선","l4":"기울기·조건형"}
   },
   {
     "id": 10,
@@ -349,6 +484,21 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "쌍곡선 위의 점에서의 접선의 방정식을 구하고 점과 직선 사이의 거리 공식으로 $\\overline{\\mathrm{OH}}$를 구한 뒤, 수직인 직선과 쌍곡선의 교점 $\\mathrm{Q}$를 찾아 선분의 길이를 곱한다.",
+    "decisiveStep": "1단계: 접선 $l$의 방정식과 $\\overline{\\mathrm{OH}}$ 구하기 쌍곡선 $x^2 - y^2 = 32$ 위의 점 $\\mathrm{P}(-6, 2)$에서의 접선 $l$의 방정식은",
+    "rpmPrimaryId": "H2-GEO-RPM-051",
+    "rpmPrimaryPath": {"curriculum":"2022","scope":"기하","majorUnit":"이차곡선","midUnit":"이차곡선의 접선","l3":"쌍곡선의 접선","l4":"접점형"}
   }
 ];

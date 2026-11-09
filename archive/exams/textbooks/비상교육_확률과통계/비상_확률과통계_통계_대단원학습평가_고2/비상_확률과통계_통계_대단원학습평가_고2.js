@@ -9,7 +9,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -40,7 +40,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 확률질량함수의 성질을 이용한다. 확률변수 $X$가 가질 수 있는 모든 값에 대한 확률의 총합은 1이다. $$\\sum_{x=1}^3 P(X=x) = 1$$  [단계별 풀이] 1단계: 확",
+    "decisiveStep": "확률의 합이 1인 조건에서 k를 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-051",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 2,
@@ -50,7 +72,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -75,7 +97,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 4개의 공 $\\{-2, -1, 0, 1\\}$에서 2개를 동시에 꺼낼 때 전체 경우의 수는 $\\binom{4}{2} = 6$이다. 두 수의 곱을 확률변수 $X$라고 할 때, $P(X \\",
+    "decisiveStep": "두 카드 조합별 곱을 분류해 0 이상인 확률을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-051",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 3,
@@ -85,7 +129,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -110,7 +154,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+    "templateKey": "TPL_EXPECTATION_TRANSFORM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 확률의 총합이 1임을 이용하여 실수 $p$의 값을 구한다. 2. 평균 $E(X)$와 제곱의 평균 $E(X^2)$을 구하여 분산 $V(X)$를 계산한다. 3. 확률변수의 선형변환 ",
+    "decisiveStep": "Y=3X−2의 분산을 9V(X)로 바꾸고 확률분포표에서 V(X)를 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-053",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "기댓값과 분산",
+      "l4": "기댓값"
+    }
   },
   {
     "id": 4,
@@ -120,7 +186,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -145,7 +211,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 주어진 확률질량함수를 이항분포 $\\mathrm{B}(n, p)$의 독립시행의 확률 공식과 비교하여 모수 $n, p$를 찾은 후 평균 $E(X) = np$를 적용한다. $$\\mathrm",
+    "decisiveStep": "주어진 PMF를 B(80,3/4)의 확률질량함수와 비교해 평균을 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-056",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "이항분포",
+      "l4": "평균·분산"
+    }
   },
   {
     "id": 5,
@@ -155,7 +243,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -180,7 +268,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 확률밀도함수 아래 전체 넓이가 1임을 이용하여 a를 구한 뒤, 0부터 b까지의 넓이로 b를 구한다.  [단계별 풀이] 1단계: 전체 넓이로 a 구하기 그림의 꼭짓점은 (0,0), (2",
+    "decisiveStep": "전체 밀도 면적으로 a를 구하고 구간 확률의 삼각형 면적으로 b를 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-074",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 6,
@@ -190,7 +300,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -221,7 +331,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 두 제품의 무게를 각각 확률변수 $X \\sim \\mathrm{N}(100, 2^2)$, $Y \\sim \\mathrm{N}(110, 3^2)$이라고 하자. $P(X \\ge a) = P(",
+    "decisiveStep": "비복원추출에서 흰 공이 처음 나오는 횟수의 확률분포를 구해 기댓값을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-051",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 7,
@@ -231,7 +363,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -256,7 +388,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+    "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 손님의 1회당 구매 금액을 확률변수 $X$라고 하면 $X \\sim \\mathrm{N}(12000, 2000^2)$이다. 1단계에서 1회당 구매 금액이 $16000$원 이상일 확률 $P",
+    "decisiveStep": "최댓값 통계량의 분포를 조합 수로 세고 분산을 평가한다.",
+    "rpmPrimaryId": "H2-PS-RPM-054",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "기댓값과 분산",
+      "l4": "분산·표준편차"
+    }
   },
   {
     "id": 8,
@@ -266,10 +420,10 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-06",
-    "standardUnit": "통계적 추정",
-    "standardUnitOrder": 6,
+    "standardCourse": "확률과 통계",
+    "standardUnitKey": "H22-PS-05",
+    "standardUnit": "확률분포",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -291,7 +445,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+    "templateKey": "TPL_EXPECTATION_TRANSFORM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모평균이 $m$, 모분산이 $\\sigma^2$인 모집단에서 크기가 $n$인 표본을 임의추출할 때 표본평균 $\\bar{X}$의 성질: 1. $E(\\bar{X}) = m$ 2. $\\sig",
+    "decisiveStep": "선형변환의 평균·분산을 원변수의 1차·2차 모멘트로 되돌린다.",
+    "rpmPrimaryId": "H2-PS-RPM-053",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "기댓값과 분산",
+      "l4": "기댓값"
+    }
   },
   {
     "id": 9,
@@ -301,10 +477,10 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-06",
-    "standardUnit": "통계적 추정",
-    "standardUnitOrder": 6,
+    "standardCourse": "확률과 통계",
+    "standardUnitKey": "H22-PS-05",
+    "standardUnit": "확률분포",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -332,7 +508,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 모집단의 확률변수 $X \\sim \\mathrm{N}(30, 10^2)$에서 $P(X \\ge 37)$을 표준화하여 구한다. 2. 크기 $n=100$인 표본평균 $\\bar{X}$의 ",
+    "decisiveStep": "P(X=3)=p³에서 p를 구해 이항분산 np(1−p)를 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-056",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "이항분포",
+      "l4": "평균·분산"
+    }
   },
   {
     "id": 10,
@@ -342,7 +540,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -367,7 +565,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 모비율 $p = 0.5$, 표본의 크기 $n = 400$이다. $np = 200 \\ge 5, nq = 200 \\ge 5$이므로 표본비율 $\\hat{p}$은 근사적으로 정규분포 $\\ma",
+    "decisiveStep": "베르누이 표본의 비율 분포에서 표준오차를 계산해 누적확률을 표준화한다.",
+    "rpmPrimaryId": "H2-PS-RPM-060",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본분포"
+    }
   },
   {
     "id": 11,
@@ -377,7 +597,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -402,7 +622,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 신뢰도 $95\\,\\%$의 신뢰구간이 $[118.04, 121.96]$으로 주어졌을 때: 1. 구간의 중점으로부터 표본평균 $\\bar{x}$를 구한다. 2. 구간의 길이 $L_{95} ",
+    "decisiveStep": "기존 95% 신뢰구간 폭에서 표준오차를 복원하고 99% 임계값으로 구간을 계산한다.",
+    "rpmPrimaryId": "H2-PS-RPM-061",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모평균 추정",
+      "l4": "신뢰구간"
+    }
   },
   {
     "id": 12,
@@ -412,7 +654,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -437,7 +679,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 5장의 카드 $\\{1, 2, 3, 4, 5\\}$ 중에서 2장을 동시에 뽑을 때 전체 경우의 수는 $\\binom{5}{2} = 10$이다. 두 수의 차를 확률변수 $X$라고 할 때, $",
+    "decisiveStep": "두 카드 표본에서 차이값별 경우를 세어 이산확률변수의 기댓값을 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-051",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "확률변수와 확률분포",
+      "l4": "이산확률변수"
+    }
   },
   {
     "id": 13,
@@ -447,7 +711,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -472,7 +736,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 이항분포 $\\mathrm{B}(8, p)$의 확률질량함수 $P(X=x) = {}_8\\mathrm{C}_x p^x (1-p)^{8-x}$를 주어진 관계식 $2P(X=2) = 3P(X=3",
+    "decisiveStep": "이항 PMF의 확률비에서 p를 구하고 선형변환 표준편차를 구한다.",
+    "rpmPrimaryId": "H2-PS-RPM-056",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "이항분포",
+      "l4": "평균·분산"
+    }
   },
   {
     "id": 14,
@@ -482,7 +768,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
@@ -507,7 +793,29 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+    "templateKey": "TPL_BINOMIAL_NORMAL_APPROXIMATION_COUNT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 1. 참여 학생 수 $X$는 이항분포 $\\mathrm{B}(400, 0.8)$을 따른다. 2. $np \\ge 5, nq \\ge 5$이므로 정규분포 $\\mathrm{N}(np, npq)",
+    "decisiveStep": "개별 정품확률을 표준화로 구하고 이항 정품개수의 정규근사를 적용한다.",
+    "rpmPrimaryId": "H2-PS-RPM-075",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "확률분포",
+      "l3": "이항분포",
+      "l4": "평균·분산"
+    }
   },
   {
     "id": 15,
@@ -517,7 +825,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -542,7 +850,29 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 탑승객 짐의 무게 $X \\sim \\mathrm{N}(15, 3^2)$이다. ⑴ 표본의 크기 $n=36$일 때 표본평균 $\\bar{X}$의 분포를 구하고, $P(\\bar{X} \\le a",
+    "decisiveStep": "표본평균의 분산이 n에 따라 줄어드는 분포를 구해 임계값 확률을 표준화한다.",
+    "rpmPrimaryId": "H2-PS-RPM-059",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모집단과 표본",
+      "l4": "표본평균"
+    }
   },
   {
     "id": 16,
@@ -552,7 +882,7 @@ window.questionBank = [
     "level": "고2",
     "category": "통계",
     "originalCategory": "대단원 학습 평가",
-    "standardCourse": "확률과통계",
+    "standardCourse": "확률과 통계",
     "standardUnitKey": "H22-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
@@ -577,6 +907,28 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "subUnitKey": null,
+    "subUnit": null,
+    "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+    "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "[풀이 전략] 표본의 크기 $n = 300$, 만족 응답자 225명이므로 표본비율은 $\\hat{p} = \\frac{225}{300} = 0.75$이다. 신뢰도 $99\\,\\%$의 모비율 신뢰구간 공식",
+    "decisiveStep": "표본비율의 표준오차와 99% 신뢰계수를 이용해 모비율 신뢰구간을 만든다.",
+    "rpmPrimaryId": "H2-PS-RPM-077",
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "majorUnit": "통계",
+      "midUnit": "통계적 추정",
+      "l3": "모비율 추정",
+      "l4": "신뢰구간"
+    }
   }
 ];
