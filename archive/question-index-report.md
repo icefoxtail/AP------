@@ -1,16 +1,16 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 1162
+- 시험지 수(db.js): 1187
 - 시험지 파일 수: 1083
 - 원본 문항 수(중복 제거 전): 26642
 - 최종 인덱스 문항 수(중복 제거 후): 26642
 - 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 1061239 bytes
-- 시험지 JS 총 크기: 57164148 bytes
-- 인덱스 크기: 11338587 bytes
+- db.js 크기: 1072824 bytes
+- 시험지 JS 총 크기: 57164105 bytes
+- 인덱스 크기: 11338569 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(26642)" 기준이다.
