@@ -2629,18 +2629,23 @@ window.addEventListener('DOMContentLoaded', function () {
       const theta = Math.atan2(A.y - Cp.y, A.x - Cp.x), tangentOffset = Math.acos(Math.min(1, r / d));
       const Qp = P(Cp.x + r * Math.cos(theta - tangentOffset), Cp.y + r * Math.sin(theta - tangentOffset));
       const Qs = P(Qp.x, -Qp.y), t = A.y / (A.y - Qp.y), Pstar = P(A.x + (Qp.x - A.x) * t, 0);
-      const P0 = P(A.x + (C.x - A.x) * 0.2, 0), ang = Math.atan2(P0.y - C.y, P0.x - C.x) - 0.5, Q0 = P(C.x + r * Math.cos(ang), C.y + r * Math.sin(ang));
       const box = boxOf(circBox([[C, r], [Cp, r]]).concat([A]), 1.8);
       return fin({
         prm: { A, C, r }, val, ans: radTex(radicand), view: box,
         text: `점 $A${pT(A)}$에서 출발한 레이저가 $x$축 위의 점 $P$에서 반사되어 원 $${circTex(C, r * r)}$에 점 $Q$에서 접하도록 쏘았습니다. 경로의 길이 $\\overline{AP}+\\overline{PQ}$를 구하시오.`,
         draw(b, st) {
           circ(b, C, r, { color: 'amber', fill: 'amber', fillAlpha: 0.06, width: 2.8 });
-          if (st < 2) { seg(b, A, P0, { color: 'muted', width: 2, dash: true }); seg(b, P0, Q0, { color: 'muted', width: 2, dash: true }); dot(b, P0, 'P', 'violet', { dx: 0, dy: 18, align: 'center' }); dot(b, Q0, 'Q', 'violet', { toward: C }); }
-          if (st >= 1) { circ(b, Cp, r, { color: 'sky', width: 2.6, dash: true }); dot(b, Cp, `C′${pS(Cp)}`, 'sky', { dx: 0, dy: 19, align: 'center', r: 4.5 }); }
+          // 발문의 반사·접선 조건은 처음부터 유지하고, 풀이 보조선만 단계별로 공개합니다.
+          const pathStyle = st >= 2 ? { color: 'green', width: 3.4 } : { color: 'muted', width: 2, dash: true };
+          seg(b, A, Pstar, pathStyle); seg(b, Pstar, Qs, pathStyle);
+          dot(b, Pstar, 'P', 'violet', { dx: -9, dy: 15, align: 'right' }); dot(b, Qs, 'Q', 'violet', { toward: C });
+          if (st >= 1) {
+            circ(b, Cp, r, { color: 'sky', width: 2.6, dash: true }); dot(b, Cp, `C′${pS(Cp)}`, 'sky', { dx: 0, dy: 19, align: 'center', r: 4.5 });
+            seg(b, Pstar, Qp, { color: 'sky', width: 2.4, dash: true }); dot(b, Qp, 'Q′', 'sky', { toward: Cp });
+          }
           if (st >= 2) {
-            seg(b, A, Cp, { color: 'green', width: 2.2, dash: true }); seg(b, A, Pstar, { color: 'green', width: 3.4 }); seg(b, Pstar, Qs, { color: 'green', width: 3.4 }); seg(b, Pstar, Qp, { color: 'sky', width: 2.4, dash: true });
-            dot(b, Pstar, 'P', 'violet', { dx: -9, dy: 15, align: 'right' }); dot(b, Qs, 'Q', 'violet', { toward: C }); dot(b, Qp, 'Q′', 'sky', { toward: Cp });
+            seg(b, A, Cp, { color: 'green', width: 2.2, dash: true }); seg(b, Cp, Qp, { color: 'amber', width: 2.2 });
+            rt(b, Qp, Cp, A, 10, 'amber');
           }
           dot(b, A, `A${pS(A)}`, 'ink', { dx: -11, dy: -13, align: 'right' }); dot(b, C, `C${pS(C)}`, 'amber', { dx: 0, dy: -19, align: 'center', r: 4.5 });
         },
@@ -2649,7 +2654,7 @@ window.addEventListener('DOMContentLoaded', function () {
           `대칭된 경로 $AP+PQ^{\\prime}$는 원 $C^{\\prime}$에 그은 접선 길이 $AQ^{\\prime}$입니다. 접점에서 반지름 $C^{\\prime}Q^{\\prime}$와 접선 $AQ^{\\prime}$는 수직입니다.`,
           `$AC^{\\prime}=\\sqrt{(${nt(Cp.x - A.x)})^2+(${nt(Cp.y - A.y)})^2}=${nt(d)}$, $C^{\\prime}Q^{\\prime}=r=${r}$이므로 $AQ^{\\prime}=\\sqrt{${Math.round(d * d)}-${r * r}}=${radTex(radicand)}$.`
         ],
-        alg: `$P(t,\\ 0)$으로 놓으면 $AP+PQ$를 바로 최소화하기 복잡합니다. 대칭이동하면 $AQ^{\\prime}$가 접선 길이가 되고, $AQ^{\\prime}=\\sqrt{AC^{\\prime 2}-r^2}$로 구합니다.`,
+        alg: `$P(t,\\ 0)$으로 놓으면 $AP+PQ$를 좌표로 직접 구하기는 복잡합니다. 대칭이동하면 $AQ^{\\prime}$가 접선 길이가 되고, $AQ^{\\prime}=\\sqrt{AC^{\\prime 2}-r^2}$로 구합니다.`,
         warn: '접선 길이는 중심거리에서 반지름을 빼는 d−r이 아니라, 직각삼각형으로 √(d²−r²)를 구합니다. 대칭이동은 출발점과 원이 x축의 같은 쪽에 있을 때 씁니다.',
         hl: '반사축에 대해 원을 대칭이동하고, 접점에서 반지름과 접선이 수직인 직각삼각형으로 접선 길이 √(d²−r²)를 구합니다.'
       });

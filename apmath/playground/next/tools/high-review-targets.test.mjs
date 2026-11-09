@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 import { captureReviewTargets, neighboringSliderValues, reviewTargetApplicable, readSolutionControlGeometry, setNativeSolutionDisclosure } from './high-review-targets.mjs';
 
 // Source/control-contract seams only. This does not render or certify a browser,
@@ -189,6 +190,54 @@ test('slider neighbors are distinct legal values on both sides of exact values',
   assert.deepEqual(neighboringSliderValues(1 / 3), [0.33, 0.335]);
   assert.deepEqual(neighboringSliderValues(0), [0.005]);
   assert.deepEqual(neighboringSliderValues(1), [0.995]);
+});
+
+test('reflection construction stages add exactly four bound review frames on existing common profiles', async () => {
+  const profiles = ['pc-paper', 'pc-board', 'tablet-portrait-paper', 'tablet-portrait-board', 'tablet-landscape-paper', 'tablet-landscape-board', 'mobile-paper', 'mobile-board'];
+  let added = 0;
+  for (const profile of profiles) {
+    const f = fixture('common-circle-eq'), rows = await f.run('laserReflectTan', profile);
+    if (!['pc-paper', 'mobile-board'].includes(profile)) {
+      assert.deepEqual(rows, [], profile + ' is outside the unchanged common profile scope');
+      continue;
+    }
+    assert.equal(rows.length, 3, 'one existing exploration frame plus two review frames');
+    const original = rows.filter(e => e.state === 'target-circle-repair-1');
+    assert.equal(original.length, 1, 'existing exploration target is preserved');
+    const review = rows.filter(e => e.state.startsWith('target-reflection-construction-step'));
+    assert.deepEqual(review.map(e => e.actual.step), [1, 2]);
+    for (const e of review) {
+      added++;
+      assert.equal(e.actual.scene, 'laserReflectTan');
+      assert.equal(e.actual.tab, 'review');
+      assert.equal(e.actual.revealed, false);
+      assert.equal(e.actual.state.playing, false);
+      assert.equal(e.actual.variantIndex, original[0].actual.variantIndex);
+      assert.equal(e.actual.variantIndex, 0, 'the circle numeric variant getter is read as its actual index');
+      assert.ok(e.actual.conditionText.length > 0, 'the question is explicitly bound');
+      assert.equal(e.conditionSHA256, createHash('sha256').update(e.actual.conditionText).digest('hex'));
+      assert.equal(e.conditionSHA256, original[0].conditionSHA256, 'both stages retain the same question');
+      assert.equal(e.fixture.conditionSHA256, e.conditionSHA256);
+      assert.equal(e.fixture.step, e.actual.step);
+      assert.equal(e.method, 'state-fixture');
+      assert.equal(e.nativeInteractionPass, false);
+      assert.equal(e.visualVerdict, 'AWAITING_INDEPENDENT_REVIEW');
+      assert.ok(f.measured.includes(e.state) && f.captured.includes(e.state), 'use the existing measured capture path');
+    }
+  }
+  assert.equal(added, 4, 'additional targets do not change the 1304 required base states');
+});
+
+test('reflection review refuses a changed question before capturing the mismatched stage', async () => {
+  const f = fixture('common-circle-eq'), originalClone = f.lab.refs.problemText.cloneNode;
+  f.lab.refs.problemText.cloneNode = () => {
+    const node = originalClone();
+    if (f.lab.tab === 'review' && f.lab.s.step === 2) node.textContent += ' changed question';
+    return node;
+  };
+  await assert.rejects(f.run('laserReflectTan'), /Reflection review question changed/);
+  assert.equal(f.captured.filter(s => s.startsWith('target-reflection-construction-step1-')).length, 1);
+  assert.equal(f.captured.some(s => s.startsWith('target-reflection-construction-step2-')), false);
 });
 
 test('all selected repairs resolve actual source controls and emit measured evidence or explicit debt', async () => {

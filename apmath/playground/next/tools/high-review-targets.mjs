@@ -112,11 +112,12 @@ export async function captureReviewTargets({ page, item, scene, run, settle, mea
   const snapshot = async () => page.evaluate(() => {
     const text = lab.refs.problemText?.cloneNode(true);
     text?.querySelectorAll('button').forEach(b => b.remove());
+    const variantIndex = typeof lab.scene.vary?.idx === 'function' ? lab.scene.vary.idx() : lab.scene.vary?.idx;
     return {
       scene: String(lab.scene.id), tab: lab.tab, step: lab.s.step, revealed: !!lab.s.revealed,
       state: JSON.parse(JSON.stringify(lab.s)),
       conditionText: text?.textContent.replace(/\s+/g, ' ').trim() || '',
-      variantIndex: typeof lab.scene.vary?.idx === 'function' ? lab.scene.vary.idx() : null,
+      variantIndex: Number.isFinite(variantIndex) ? variantIndex : null,
       camera: { focus: lab.board.focus, aspect: lab.board.aspect, k: lab.board.k, ky: lab.board.ky },
       activePresets: [...document.querySelectorAll('.apl-presets .apl-chip.on')].map(e => e.textContent.trim())
     };
@@ -251,6 +252,17 @@ export async function captureReviewTargets({ page, item, scene, run, settle, mea
       for (const values of fixtures) {
         await configure({ values });
         await shot('circle-repair', values);
+      }
+    }
+    if (id === 'laserReflectTan') {
+      const condition = await snapshot();
+      if (!condition.conditionText) throw Error('Reflection review question is missing');
+      for (const step of [1, 2]) {
+        await configure({ tab: 'review', step, reset: false });
+        const actual = await snapshot();
+        if (actual.conditionText !== condition.conditionText || actual.variantIndex !== condition.variantIndex)
+          throw Error('Reflection review question changed');
+        await shot('reflection-construction-step' + step, { step, conditionSHA256: hash(condition.conditionText), variantIndex: condition.variantIndex });
       }
     }
   } else if (item.id === 'common-functions') {

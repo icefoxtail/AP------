@@ -562,20 +562,21 @@ test('reflected-circle tangent problems use the tangent length and a matching di
       for (let factor = 2; factor * factor <= inside; factor++) {
         while (inside % (factor * factor) === 0) { inside /= factor * factor; outside *= factor; }
       }
-      return inside === 1 ? String(outside) : `${outside === 1 ? '' : outside}\\\\sqrt{${inside}}`;
+      return inside === 1 ? String(outside) : `${outside === 1 ? '' : outside}\\sqrt{${inside}}`;
     },
     pT: p => `(${p.x}, ${p.y})`, pS: p => `(${p.x}, ${p.y})`, circTex: () => 'circle',
-    circ: () => {}, dot: () => {},
+    circ: () => {}, rt: () => {},
+    dot: (board, at, label) => (board.points ??= []).push({ at, label }),
     seg: (board, from, to, options) => board.segments.push({ from, to, options })
   };
   const context = vm.createContext({ Math, ...helpers });
-  vm.runInContext(`${factory}\\nthis.makeReflect = mkReflect;`, context);
+  vm.runInContext(`${factory}\nthis.makeReflect = mkReflect;`, context);
   const variants = [
-    [point(-3, 1), point(0, 3), 2, 21, '\\\\sqrt{21}'],
-    [point(-2, 2), point(4, 6), 3, 91, '\\\\sqrt{91}'],
-    [point(0, 1), point(4, 2), 1, 24, '2\\\\sqrt{6}'],
-    [point(-4, 3), point(4, 3), 2, 96, '4\\\\sqrt{6}'],
-    [point(-6, 1), point(6, 4), 3, 160, '4\\\\sqrt{10}']
+    [point(-3, 1), point(0, 3), 2, 21, '\\sqrt{21}'],
+    [point(-2, 2), point(4, 6), 3, 91, '\\sqrt{91}'],
+    [point(0, 1), point(4, 2), 1, 24, '2\\sqrt{6}'],
+    [point(-4, 3), point(4, 3), 2, 96, '4\\sqrt{6}'],
+    [point(-6, 1), point(6, 4), 3, 160, '4\\sqrt{10}']
   ];
   for (const [A, C, r, radicand, expectedAnswer] of variants) {
     const question = context.makeReflect(A, C, r);
@@ -596,5 +597,33 @@ test('reflected-circle tangent problems use the tangent length and a matching di
     assert.ok(Math.abs(cross) < 1e-8, 'A, P, and reflected tangent point are collinear');
     assert.ok(Math.abs(Math.hypot(Qp.x - A.x, Qp.y - A.y) - Math.sqrt(radicand)) < 1e-8,
       'drawn tangent length matches the Pythagorean answer');
+    for (const stage of [0, 1]) {
+      const earlyBoard = { segments: [], points: [] };
+      question.draw(earlyBoard, stage);
+      const reflection = earlyBoard.points.find(item => item.label === 'P')?.at;
+      const contact = earlyBoard.points.find(item => item.label === 'Q')?.at;
+      const why = `stage${stage} A(${A.x},${A.y}) C(${C.x},${C.y}) r=${r}`;
+      assert.ok(reflection && contact, `${why}: the given path has P and Q`);
+      const samePoint = (a, b) => Math.hypot(a.x - b.x, a.y - b.y) < 1e-8;
+      assert.ok(earlyBoard.segments.some(segment => samePoint(segment.from, A) && samePoint(segment.to, reflection)),
+        `${why}: the path includes AP`);
+      assert.ok(earlyBoard.segments.some(segment => samePoint(segment.from, reflection) && samePoint(segment.to, contact)),
+        `${why}: the path includes PQ`);
+      assert.ok(Math.abs(reflection.y) < 1e-8, `${why}: P lies on the x-axis`);
+      const originalRadius = { x: contact.x - C.x, y: contact.y - C.y };
+      const towardP = { x: reflection.x - contact.x, y: reflection.y - contact.y };
+      assert.ok(Math.abs(Math.hypot(originalRadius.x, originalRadius.y) - r) < 1e-8,
+        `${why}: Q lies on the original circle`);
+      assert.ok(Math.abs(originalRadius.x * towardP.x + originalRadius.y * towardP.y) < 1e-8,
+        `${why}: PQ is perpendicular to CQ from the initial diagram`);
+      const reflectedContact = point(contact.x, -contact.y);
+      const reflectedCross = (reflectedContact.x - A.x) * (reflection.y - A.y)
+        - (reflectedContact.y - A.y) * (reflection.x - A.x);
+      assert.ok(Math.abs(reflectedCross) < 1e-8, `${why}: A, P, and Qprime form the reflected straight path`);
+      const pathLength = Math.hypot(A.x - reflection.x, A.y - reflection.y)
+        + Math.hypot(reflection.x - contact.x, reflection.y - contact.y);
+      assert.ok(Math.abs(pathLength - Math.sqrt(radicand)) < 1e-8,
+        `${why}: AP + PQ equals the independently specified tangent length`);
+    }
   }
 });
