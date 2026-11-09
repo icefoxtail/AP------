@@ -225,3 +225,4 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
 - 골든 표본(25 효천·25 매산여 2학기 중간)은 이제 게시한다: rebind-m2-create-golden-sample-evidence.mjs --source <JS>로 재고정(#1572), 사용자 결정 2026-11-10 '지금은 골든 아님'. 이유: 게시하면 봉인 증거 SHA가 달라져 m2 create-gate 테스트가 실패하므로 재고정이 필요하다. 주의: 게시 뒤 `git checkout -- archive/data`를 하면 재고정한 증거 10개(archive/data/r2e-intake/m2/*.create.physical-evidence.json)가 되돌려지니 그 파일은 제외한다.
 - 첫 PR: 이번 5개 시험지(제목만; 25 효천고 2학기 중간은 위 사유로 제외).
 
+- 2026-11-10 흐름 전환: 루나 사용량 한도로 고1 시험지는 DeepSeek 초안(`ds-launch-exam.sh`, `qrun-ds.sh`) → Sonnet A 구현·검수(`prompts/sonnet-exam-impl.md`) → Sonnet B 최종(`sonnet-final.md`) 순서로 돌린다. 이유: 루나를 쓸 수 없어도 대기열이 멈추지 않게 하기 위해서다. 위의 "플랜은 루나가 구현" 항목은 루나 한도가 풀릴 때까지 이 흐름이 대신한다.
