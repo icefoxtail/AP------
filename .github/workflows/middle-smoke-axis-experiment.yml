@@ -19,6 +19,9 @@ jobs:
   browser:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
+    env:
+      PRODUCT_SOURCE: ${{ github.sha }}
+      BEFORE_SOURCE: c45901b8e4d375b7aa73ff291f9cd2af1908f1b1
     defaults:
       run:
         shell: bash
@@ -33,23 +36,27 @@ jobs:
         with:
           node-version: '22'
       - name: Prepare Chromium and immutable product
-        env:
-          PRODUCT_SOURCE: c45901b8e4d375b7aa73ff291f9cd2af1908f1b1
         run: |
           npm install --prefix "$RUNNER_TEMP/axis-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/axis-browser/node_modules/.bin/playwright" install --with-deps chromium
           git fetch --depth=1 --no-tags origin "$PRODUCT_SOURCE"
-          git worktree add --detach "$RUNNER_TEMP/axis-product" "$PRODUCT_SOURCE"
+          git fetch --depth=1 --no-tags origin "$BEFORE_SOURCE"
+          git worktree add --no-checkout --detach "$RUNNER_TEMP/axis-product" "$PRODUCT_SOURCE"
+          git -C "$RUNNER_TEMP/axis-product" checkout HEAD -- apmath/playground
+          git worktree add --no-checkout --detach "$RUNNER_TEMP/axis-before" "$BEFORE_SOURCE"
+          git -C "$RUNNER_TEMP/axis-before" checkout HEAD -- apmath/playground
           mkdir -p "$RUNNER_TEMP/axis-evidence"
           python3 -m http.server 8765 --bind 127.0.0.1 --directory "$RUNNER_TEMP/axis-product" > "$RUNNER_TEMP/axis-evidence/server.log" 2>&1 &
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory "$RUNNER_TEMP/axis-before" > "$RUNNER_TEMP/axis-evidence/before-server.log" 2>&1 &
           for attempt in {1..20}; do
             if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
             sleep 1
           done
           curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null
+          curl --silent --fail http://127.0.0.1:8766/apmath/playground/next/kit/apl-catalog.js > /dev/null
       - name: Fail-closed annotation controls
         run: |
-          node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/scene-smoke-orchestration.test.mjs 2>&1 | tee "$RUNNER_TEMP/axis-evidence/unit.log"
+          node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/scene-smoke-orchestration.test.mjs apmath/playground/next/tools/local-axis-origin-visibility.test.mjs 2>&1 | tee "$RUNNER_TEMP/axis-evidence/unit.log"
       - name: Every lab and all five original smoke environments
         if: ${{ !cancelled() }}
         env:
@@ -61,7 +68,7 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/axis-browser/node_modules
         run: |
-          node apmath/playground/next/tools/apmath-smoke-axis-experiment.mjs --root "$RUNNER_TEMP/axis-product" --expected-sha c45901b8e4d375b7aa73ff291f9cd2af1908f1b1 --base-url http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/axis-evidence/actual" 2>&1 | tee "$RUNNER_TEMP/axis-evidence/experiment.log"
+          node apmath/playground/next/tools/apmath-smoke-axis-experiment.mjs --root "$RUNNER_TEMP/axis-product" --expected-sha "$PRODUCT_SOURCE" --base-url http://127.0.0.1:8765/apmath/playground/next/labs/ --before-root "$RUNNER_TEMP/axis-before" --before-sha "$BEFORE_SOURCE" --before-url http://127.0.0.1:8766/apmath/playground/next/labs/ --out "$RUNNER_TEMP/axis-evidence/actual" 2>&1 | tee "$RUNNER_TEMP/axis-evidence/experiment.log"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
