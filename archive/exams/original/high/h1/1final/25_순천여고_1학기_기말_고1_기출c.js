@@ -69,7 +69,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 줄 수직선에 두 부등식의 해와 두 범위가 겹치는 공통 구간이 차례로 표시되어 있다.",
+    "solutionImageCaption": "6x−7<x+3에서 x<2이고, x²−4x+3≥0에서 x≤1 또는 x≥3이다. 두 범위가 겹치는 부분은 x≤1이므로 그 오른쪽 끝에서 최댓값을 읽는다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -104,7 +108,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: a=0일 때 x축과 만나지 않는 포물선과 a=-2일 때 x축과 만나 내려가는 포물선의 비교.",
+    "solutionImageCaption": "예: a=0일 때 그래프는 x축 위에만 있고, a=-2일 때는 x축과 만나 아래로 내려간다. 판별식을 D라 하면 D/4=a²−4a−5이므로 D/4≤0, 즉 (a−5)(a+1)≤0일 때 모든 실수 x에서 성립한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -178,7 +186,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 구간으로 꺾인 파란 그래프와 점선 수평선 y=10이 두 점에서 만나고, 두 교점에서 x축까지 점선이 내려가며 x축에 −3, 3, 5, 3분의 17이 표시된 그림이다.",
+    "solutionImageCaption": "x=−3과 x=5에서 절댓값 안이 0이 되므로 세 구간으로 나누어 풀면 3≤x≤17/3이다. 그래프가 수평선 y=10 이하인 부분의 양 끝이 최솟값 m과 최댓값 M이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -289,9 +301,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q8-solution.svg",
-    "solutionImageAlt": "m=-1.8일 때 g(x)=x^2+2mx+3의 그래프: 축이 1과 4 사이에 있고 g(1)>0, g(4)>0, 꼭짓점이 x축 아래에 있다.",
-    "solutionImageCaption": "m=-1.8일 때 g(x)=x^2+2mx+3의 그래프: 축이 1과 4 사이에 있고 g(1)>0, g(4)>0, 꼭짓점이 x축 아래에 있다.",
+    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: m=−1.85일 때 포물선이 두 세로 점선 x=1과 x=4 사이에서 x축과 두 번 만나고, 두 점선 위의 곡선 점은 x축 위에, 꼭짓점은 x축 아래에 있는 그림.",
+    "solutionImageCaption": "x=−2가 근이므로 나머지 이차식 g(x)=x²+2mx+3의 두 근이 1과 4 사이에 있어야 한다. 예: m=−1.85일 때 g(x)=x²−3.7x+3의 그래프는 x=1과 x=4 사이에서 x축과 두 번 만나고, x=1과 x=4에서는 x축 위에 있다. 정답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -360,7 +372,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로와 세로에 주사위 눈 1부터 6까지를 적고 각 칸에 두 눈의 합을 쓴 표에서, 합이 4, 8, 12인 칸이 회색으로 칠해져 있다.",
+    "solutionImageCaption": "두 눈의 합이 4인 경우 3가지, 8인 경우 5가지, 12인 경우 1가지를 더한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -704,6 +720,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: a=1/2일 때 포물선의 꼭짓점 (1/2, 1/4)과 세로 점선 x=1을 나타낸 그림.",
+    "solutionImageCaption": "예: a=1/2일 때 f(x)=(x−1/2)²+1/4이므로 0<x<1에서 함숫값은 1/4 이상이다. 축 x=a가 0과 1 사이에 있으면 최솟값 a(1−a)가 양수이고, 경계 a=0, a=1에서도 0<x<1에서 항상 양수이다. 정답은 0≤a≤1이다.",
+    "solutionImageSize": "full"
   }
 ];
