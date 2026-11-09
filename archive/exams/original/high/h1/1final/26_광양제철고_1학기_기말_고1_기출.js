@@ -28,7 +28,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 수직선에 두 부등식의 해와 공통 범위가 표시되어 있고, 공통 구간에 정수점이 찍혀 있다.",
+    "solutionImageCaption": "첫째 부등식의 해는 x>−3이고 둘째 부등식의 해는 x≤−1이다. 공통 범위 −3<x≤−1에 속하는 정수는 −2와 −1이다. 정답은 2개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -198,7 +202,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 하한 18과 열린 상한 2분의 45가 수직선에 표시되고, 공통 구간의 정수점이 나타나 있다.",
+    "solutionImageCaption": "학생 수를 N, 텐트 수를 t라 하면 N=7t+9이고 9(t−4)<N≤9(t−3)이다. 따라서 정수 t는 18부터 22까지이며 학생 수의 최솟값은 135, 최댓값은 163이다. 정답은 298이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -226,7 +234,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: a=−3과 a=−1일 때의 아래로 열린 포물선이 위아래로 놓여 있다. 첫 그래프는 x축 아래에 있고 둘째 그래프는 x축을 두 번 가로지른다.",
+    "solutionImageCaption": "예: a=−3이면 그래프 전체가 x축 아래에 있고, a=−1이면 x축 위인 부분이 생긴다. 해가 없으려면 a<0이고 판별식 조건 a²+7a+9≤0을 만족해야 한다. 가능한 정수 a는 −5, −4, −3, −2이다. 정답은 4개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -338,7 +350,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 아래로 열린 포물선의 예에 제1사분면과 제3사분면이 연하게 표시되어 있다. 두 그래프 모두 원점을 지난다.",
+    "solutionImageCaption": "예: a=1, b=2인 경우와 a=−1, b=2인 경우를 비교하였다. 원점을 지나므로 c=0이고, 두 사분면을 모두 지나려면 b>0이어야 한다. b는 4가지이며 각각 a는 0과 b를 제외한 6가지이다. 정답은 24개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -368,7 +384,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 두 행은 각각 다섯 칸이고 아래 행은 왼쪽 세 칸인 격자이다. 바깥 치수선에 가로와 세로의 칸 수가 표시되어 있다.",
+    "solutionImageCaption": "높이가 1칸, 2칸, 3칸인 직사각형은 각각 36개, 21개, 6개이다. 이 합에서 한 변이 1칸, 2칸, 3칸인 정사각형 13개, 6개, 1개를 뺀다. 정답은 43개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -396,7 +416,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 직사각형과 변경된 직사각형이 나란히 있다. 원래 도형의 대각선과 두 도형의 가로 및 세로 길이가 표시되어 있다.",
+    "solutionImageCaption": "대각선 조건에서 x²+y²=250이고 넓이의 차에서 y=x+4를 얻는다. 양의 길이를 구하면 원래 가로와 세로는 9와 13이므로 변경된 길이는 4와 18이다. 정답은 72이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -500,7 +524,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 함수 f(x)의 두 꺾임점에 좌표가 표시되어 있고, 주황 직선 y=x−2가 비교 대상으로 그려져 있다.",
+    "solutionImageCaption": "f(x)=3|x−1|−|2x+3|의 그래프가 직선 y=x−2보다 아래인 구간을 찾는다. 오른쪽 조각은 비교 직선과 평행하다. 정답은 x>3분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
