@@ -1,0 +1,76 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "45",
+    "bSquared": "36",
+    "major": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "y": "0",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOF",
+      "from": "O",
+      "to": "F",
+      "label": "3"
+    },
+    {
+      "id": "sOB",
+      "from": "O",
+      "to": "B",
+      "label": "6"
+    },
+    {
+      "id": "sFB",
+      "from": "F",
+      "to": "B",
+      "label": "3\\sqrt{5}"
+    }
+  ],
+  "caption": "장축이 y축 위에 있는 타원에서 초점거리 OF=3, 단축의 반 OB=b=6, 장축의 반 FB=a=3√5의 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초점 (0,±3), a^2=45, b^2=36",
+      "mappedTo": [
+        "conic",
+        "points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 OFB에서 c, b, a의 관계"
+  ],
+  "sourceQuote": "$c^2=a^2-b^2$이므로",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q03-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q03-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q03-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q03-solution.svg"
+  }
+}
