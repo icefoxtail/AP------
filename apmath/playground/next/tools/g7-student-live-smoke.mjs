@@ -9,6 +9,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
+import { createScreenshotGuard, screenshotEnvironmentMatches, SCREENSHOT_ENVIRONMENT_POLICY, VIEWPORT_PIXEL_POLICY } from './browser-screenshot-guard.mjs';
+import { captureReviewState } from './high-viewport-evidence.mjs';
 
 const STUDENT_BASE = 'https://icefoxtail.github.io/AP------/apmath/playground/next/labs/';
 const UNITS = ['g7-points-lines', 'g7-parallel', 'g7-spatial', 'g7-construction', 'g7-area', 'g7-polygons', 'g7-circle-sector', 'g7-polyhedra', 'g7-surface-volume', 'g7-solids'];
@@ -65,6 +67,8 @@ const report = {
   catalog: null, pages: [], failures: [],
   deployedSourceVerification: 'NOT_RUN by this script; root separately checks HTTP bytes and Pages context SHA.',
   physicalDeviceVerification: 'NOT_RUN',
+  screenshotEnvironmentPolicy: SCREENSHOT_ENVIRONMENT_POLICY,
+  viewportEvidencePolicy: { raw: 'Legacy full-page capture denominator; touch-context pixels UNVERIFIED_BEYOND_VIEWPORT', supporting: 'Fixed-viewport PNGs with actual environment and byte readback; separate denominator', inputCoverage: 'Existing navigation only; no native touch claim' },
   limitations: ['Chromium PC/mobile viewport emulation, not physical devices.', 'One initial scene and its problem screen per unit/viewport; full scene inventory counts are checked, but all scenes are not rendered.', 'Structural answer locking and function-source checks do not prove every mathematical answer or visual layout.', 'No answer reveal, choice selection, slider change, submission, or remote write is performed.']
 };
 if (argv.includes('--plan')) {
@@ -151,9 +155,33 @@ try {
   report.browserVersion = browser.version(); report.status = 'RUNNING'; persist();
   for (const unit of UNITS) for (const run of VIEWPORTS) {
     const entry = entries.find(e => e.id === unit), url = new URL(`${unit}.html?theme=board`, base).href;
-    const record = { unit, viewport: run, url, status: 'RUNNING', observations: [], captures: [], errors: [] }; report.pages.push(record);
+    const record = { unit, viewport: run, url, status: 'RUNNING', observations: [], captures: [], captureMetadata: {}, viewportCaptures: [], screenshotEnvironment: [], errors: [] }; report.pages.push(record);
     const context = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: run.name === 'mobile', deviceScaleFactor: 1, locale: 'ko-KR' });
-    let page, listening = true;
+    let page, screenshotGuard, listening = true;
+    const capture = async (filename, state) => {
+      const id = await page.evaluate(() => String(lab.scene.id));
+      try {
+        const bundle = await captureReviewState({ page, guard: screenshotGuard, out, name: filename, id, state, fullPage: true, settle: () => settle(page), collectContent: false,
+          onCapture: e => {
+            const bytes = fs.readFileSync(path.join(out, e.file));
+            if (bytes.length < 33 || !bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) || bytes.toString('ascii', 12, 16) !== 'IHDR') throw Error(`Unreadable capture PNG: ${e.file}`);
+            const png = { sha256: sha256(bytes), bytes: bytes.length, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+            if (!screenshotEnvironmentMatches(e.frame.touchEnvironment, screenshotGuard.expectedTouch)) throw Error(`Unverified screenshot environment: ${e.file}`);
+            if (e.frame.fullPage === false && (png.width !== e.frame.viewport.width || png.height !== e.frame.viewport.height || e.frame.touchEnvironment.pixelEnvironment !== VIEWPORT_PIXEL_POLICY)) throw Error(`Viewport capture readback mismatch: ${e.file}`);
+            record.captureMetadata[e.file] = { ...e.frame, png, pngSha256: png.sha256 };
+          }
+        });
+        if (screenshotGuard.expectedTouch) {
+          const frame = record.captureMetadata[bundle.file];
+          if (frame?.fullPage !== false || bundle.rawReference?.file !== filename) throw Error(`Required viewport evidence missing: ${filename}`);
+          record.viewportCaptures.push({ file: bundle.file, rawReference: filename, id, state, diagnostic: state === 'failure', frame });
+        }
+        return { filename, sha256: sha256(fs.readFileSync(path.join(out, filename))) };
+      } catch (error) {
+        record.errors.push({ kind: 'screenshot-evidence-failed', id, state, file: filename, message: error.message });
+        throw error;
+      }
+    };
     try {
       await context.route('**/*', async route => {
         const request = route.request();
@@ -161,6 +189,10 @@ try {
         else await route.continue();
       });
       page = await context.newPage();
+      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: run.name === 'mobile', onObservation: observation => {
+        record.screenshotEnvironment.push(observation);
+        if (!observation.pass) record.errors.push({ kind: observation.reason, screenshotEnvironment: observation });
+      } });
       page.on('pageerror', e => { if (listening) record.errors.push({ kind: 'pageerror', message: e.message }); });
       page.on('console', m => { if (listening && m.type() === 'error') record.errors.push({ kind: 'console-error', message: m.text() }); });
       page.on('response', r => { if (listening && r.status() >= 400) record.errors.push({ kind: 'http-error', status: r.status(), url: safeURL(r.url()) }); });
@@ -191,14 +223,17 @@ try {
         if (state === 'problem' && (obs.tab !== 'problem' || !obs.problemTextLength || !obs.lock.hasProblem || !obs.lock.shellAnswerExists || obs.lock.customNoAnswer)) obs.issues.push('problem-or-verifiable-lock-missing');
         record.observations.push(obs);
         const filename = `${unit}--${run.name}--${state}.png`;
-        await page.screenshot({ path: path.join(out, filename), fullPage: true });
-        record.captures.push({ filename, sha256: sha256(fs.readFileSync(path.join(out, filename))) });
+        record.captures.push(await capture(filename, state));
       }
     } catch (e) {
       record.errors.push({ kind: 'exception', message: e.message });
-      if (page) { try { await page.screenshot({ path: path.join(out, `${unit}--${run.name}--failed.png`), fullPage: true }); } catch {} }
+      if (page && screenshotGuard) { try { await capture(`${unit}--${run.name}--failed.png`, 'failure'); } catch (error) { record.errors.push({ kind: 'failure-screenshot', message: error.message }); } }
     } finally {
-      listening = false; await context.close();
+      try { await screenshotGuard?.close(); }
+      catch (error) { record.errors.push({ kind: 'screenshot-guard-cleanup', message: error.message }); }
+      listening = false;
+      try { await context.close(); }
+      catch (error) { record.errors.push({ kind: 'browser-context-cleanup', message: error.message }); }
       record.status = record.errors.length || record.observations.length !== 2 || record.observations.some(o => o.issues.length) ? 'FAIL' : 'PASS_CHECKED_SCOPE';
       if (record.status === 'FAIL') fail('page-smoke-failed', { unit, viewport: run.name, errorKinds: record.errors.map(e => e.kind), states: record.observations.filter(o => o.issues.length).map(o => ({ state: o.state, issues: o.issues })) });
       fs.writeFileSync(path.join(out, `${unit}--${run.name}.json`), JSON.stringify(record, null, 2) + '\n'); persist();
@@ -209,7 +244,7 @@ try {
 finally {
   if (browser) await browser.close(); if (api) await api.dispose();
   report.finishedAt = new Date().toISOString();
-  report.summary = { pageLoads: report.pages.length, checkedStates: report.pages.reduce((n, p) => n + p.observations.length, 0), captures: report.pages.reduce((n, p) => n + p.captures.length, 0), failures: report.failures.length };
+  report.summary = { pageLoads: report.pages.length, checkedStates: report.pages.reduce((n, p) => n + p.observations.length, 0), captures: report.pages.reduce((n, p) => n + p.captures.length, 0), supportingViewportCaptures: report.pages.reduce((n, p) => n + p.viewportCaptures.length, 0), failures: report.failures.length };
   if (report.summary.pageLoads !== report.expected.pageLoads || report.summary.captures !== report.expected.initialAndProblemCaptures) fail('incomplete-requested-coverage', { expected: report.expected, actual: report.summary });
   report.summary.failures = report.failures.length;
   report.status = report.failures.length ? 'FAIL' : 'PASS_CHECKED_SCOPE'; persist();

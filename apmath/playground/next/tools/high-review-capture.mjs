@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { sha256 } from './high-evidence-binding.mjs';
+import { SCREENSHOT_ENVIRONMENT_POLICY, VIEWPORT_PIXEL_POLICY, screenshotEnvironmentMatches } from './browser-screenshot-guard.mjs';
+import { CONTENT_COVERAGE_POLICY, requiredViewportRegions, viewportContentCoverage } from './high-viewport-evidence.mjs';
 
 export const REVIEW_LABS = Object.freeze(['common-circle-eq', 'common-functions', 'common-rational', 'common-irrational', 'alg-sequence', 'alg-sine-cosine-law']);
 export const REVIEW_RUNS = Object.freeze(['pc-paper', 'pc-board', 'mobile-paper', 'mobile-board']);
@@ -19,14 +21,16 @@ export function requiredReviewStates(labId, run) {
 
 export function createReviewManifest({ labs, provenance, sourceBindings }) {
   return {
-    schema: 1, kind: 'HIGH_REVIEW_CAPTURE_MANIFEST', provenance,
+    schema: 2, kind: 'HIGH_REVIEW_CAPTURE_MANIFEST', provenance,
+    screenshotEnvironmentPolicy: SCREENSHOT_ENVIRONMENT_POLICY,
+    viewportContentPolicy: CONTENT_COVERAGE_POLICY,
     quality: 'AWAITING_INDEPENDENT_VISUAL_REVIEW',
     physicalDevices: 'NOT_RUN',
     scope: labs.map(l => ({ id: l.id, file: l.next, catalogSceneTotal: l.sceneTotal, scenes: [] })),
     runs: REVIEW_RUNS,
     sourceBindings: sourceBindings.filter(b => labs.some(l => l.id === b.lab)),
     entries: [], coverageDebt: [], notApplicable: [], targetLimitations: [],
-    limitations: ['PNG coverage is not a mathematical or visual quality pass.', 'State-fixture render captures do not prove native interaction.', 'External font URLs are listed in source bindings but their response bytes are not bound.']
+    limitations: ['PNG coverage is not a mathematical or visual quality pass.', 'State-fixture render captures do not prove native interaction.', 'Touch-context full-page raw references have UNVERIFIED pointer-media paint; independent review uses fixed-viewport representatives and scroll frames.', 'External font URLs are listed in source bindings but their response bytes are not bound.']
   };
 }
 
@@ -57,18 +61,23 @@ export function recordReviewCapture(manifest, out, entry) {
     candidateHeadSha: manifest.provenance.candidateHeadSha,
     testedCheckoutSha: manifest.provenance.testedCheckoutSha,
     htmlSha256: source.htmlSha256, sourceSetSha256: source.sourceSetSha256,
-    png: pngMetadata(safeFile(out, entry.file))
+    png: pngMetadata(safeFile(out, entry.file)),
+    supplementalFrames: (entry.supplementalFrames || []).map(e => ({ ...e, png: pngMetadata(safeFile(out, e.file)) })),
+    ...(entry.rawReference ? { rawReference: { ...entry.rawReference, png: pngMetadata(safeFile(out, entry.rawReference.file)) } } : {})
   });
 }
 
 export function validateReviewManifest(manifest, { out, report, verifyFiles = true } = {}) {
   const errors = [], missing = [];
-  const counts = { scenes: 0, expectedScenes: 0, problemDisclosure: 0, algebraInitialExplore: 0, finalReview: 0, required: 0, capturedRequired: 0, targetedTransitions: 0, pngFiles: new Set(manifest.entries.map(e => e.file)).size };
+  const allFiles = manifest.entries.flatMap(e => [e.file, ...(e.supplementalFrames || []).map(s => s.file), ...(e.rawReference ? [e.rawReference.file] : [])]);
+  const counts = { scenes: 0, expectedScenes: 0, problemDisclosure: 0, algebraInitialExplore: 0, finalReview: 0, required: 0, capturedRequired: 0, targetedTransitions: 0, representativePngFiles: new Set(manifest.entries.map(e => e.file)).size, supplementalPngFiles: new Set(manifest.entries.flatMap(e => (e.supplementalFrames || []).map(s => s.file))).size, rawReferencePngFiles: new Set(manifest.entries.flatMap(e => e.rawReference ? [e.rawReference.file] : [])).size, pngFiles: new Set(allFiles).size };
   const expected = new Set(), actual = new Set();
   const provenance = manifest.provenance || {};
   if (provenance.sourceRole !== 'CANDIDATE' || ['sourceCommit', 'candidateHeadSha', 'testedCheckoutSha'].some(k => !/^[a-f0-9]{40}$/.test(provenance[k] || ''))) errors.push('invalid-candidate-provenance');
   if (report && (!['CANDIDATE_CHECK', 'PUBLIC_READ_ONLY_CHECK'].includes(report.mode) || report.commit !== provenance.sourceCommit || ['sourceCommit', 'candidateHeadSha', 'testedCheckoutSha'].some(k => report.provenance?.[k] !== provenance[k]))) errors.push('report-provenance-mismatch');
   if (!manifest.scope.length) errors.push('empty-capture-scope');
+  if (manifest.screenshotEnvironmentPolicy !== SCREENSHOT_ENVIRONMENT_POLICY) errors.push('missing-screenshot-environment-policy');
+  if (manifest.viewportContentPolicy !== CONTENT_COVERAGE_POLICY) errors.push('missing-viewport-content-policy');
   for (const lab of manifest.scope) {
     const ids = lab.scenes.map(s => s.id);
     if (!Number.isInteger(lab.catalogSceneTotal) || lab.catalogSceneTotal <= 0 || ids.length !== lab.catalogSceneTotal || new Set(ids).size !== ids.length) errors.push(`scene-census-mismatch:${lab.id}`);
@@ -103,11 +112,29 @@ export function validateReviewManifest(manifest, { out, report, verifyFiles = tr
     if (entry.state.startsWith('target-')) counts.targetedTransitions++;
     if (!source || entry.sourceSetSha256 !== source.sourceSetSha256 || entry.htmlSha256 !== source.htmlSha256 || entry.candidateHeadSha !== manifest.provenance.candidateHeadSha || entry.testedCheckoutSha !== manifest.provenance.testedCheckoutSha) errors.push(`frame-source-mismatch:${key}`);
     if (report && !report.labs?.find(l => l.id === entry.lab)?.observations.some(o => o.id === entry.id && o.run === entry.run && o.state === entry.state)) errors.push(`missing-captured-state-observation:${key}`);
+    const isMobile = entry.run.startsWith('mobile-');
+    const allFrames = [entry, ...(entry.supplementalFrames || [])];
+    for (const shot of [...allFrames, ...(entry.rawReference ? [entry.rawReference] : [])]) {
+      const f = shot.frame, env = f?.touchEnvironment;
+      if (!f || f.sceneId !== entry.id || !screenshotEnvironmentMatches(env, isMobile) || env.file !== shot.file || env.id !== entry.id || env.state !== entry.state) errors.push(`unverified-screenshot-environment:${key}:${shot.file}`);
+      if (f?.viewport?.width !== (isMobile ? 390 : 1440) || f?.viewport?.height !== (isMobile ? 844 : 900) || shot.png?.width !== f?.viewport?.width || shot.png?.height < f?.viewport?.height) errors.push(`frame-viewport-mismatch:${key}:${shot.file}`);
+      if (f?.fonts !== 'loaded' || !(f?.canvas?.width > 0 && f?.canvas?.height > 0)) errors.push(`frame-not-ready:${key}:${shot.file}`);
+      if (verifyFiles && out) {
+        try { if (JSON.stringify(pngMetadata(safeFile(out, shot.file))) !== JSON.stringify(shot.png)) errors.push(`png-byte-mismatch:${key}:${shot.file}`); }
+        catch (e) { errors.push(`png-unreadable:${key}:${shot.file}:${e.message}`); }
+      }
+    }
+    if (isMobile) {
+      for (const shot of allFrames) if (shot.frame?.fullPage !== false || shot.frame?.touchEnvironment?.pixelEnvironment !== VIEWPORT_PIXEL_POLICY || shot.png?.width !== 390 || shot.png?.height !== 844) errors.push(`non-viewport-mobile-review-frame:${key}:${shot.file}`);
+      const content = viewportContentCoverage(allFrames.map(s => s.frame), requiredViewportRegions(entry.frame || {}));
+      if (entry.contentCoverage?.policy !== CONTENT_COVERAGE_POLICY || !content.complete) errors.push(`incomplete-scroll-content:${key}:${content.errors.join(',')}`);
+      if (entry.rawReference && (entry.rawReference.frame?.touchEnvironment?.pixelEnvironment !== 'UNVERIFIED_BEYOND_VIEWPORT' || entry.rawReference.frame?.fullPage !== true)) errors.push(`incorrect-raw-reference-role:${key}`);
+      if (entry.rawReference && ['sceneId', 'tab', 'step', 'questionSha256', 'answerOpen', 'revealed'].some(k => entry.rawReference.frame?.[k] !== entry.frame?.[k])) errors.push(`raw-reference-state-mismatch:${key}`);
+    }
     if (expected.has(key)) {
       const frame = entry.frame;
       if (!frame || !/^[a-f0-9]{64}$/.test(frame.questionSha256 || '')) errors.push(`missing-frame-state:${key}`);
       else {
-        const isMobile = entry.run.startsWith('mobile-');
         if (frame.viewport?.width !== (isMobile ? 390 : 1440) || frame.viewport?.height !== (isMobile ? 844 : 900)) errors.push(`frame-viewport-mismatch:${key}`);
         if (entry.png?.width !== frame.viewport?.width || entry.png?.height < frame.viewport?.height) errors.push(`png-viewport-mismatch:${key}`);
         if (!(frame.canvas?.width > 0 && frame.canvas?.height > 0) || frame.fonts !== 'loaded') errors.push(`frame-not-ready:${key}`);
@@ -121,10 +148,6 @@ export function validateReviewManifest(manifest, { out, report, verifyFiles = tr
           if (hidden?.frame?.questionSha256 !== frame.questionSha256) errors.push(`disclosure-question-changed:${key}`);
         }
       }
-    }
-    if (verifyFiles && out) {
-      try { if (JSON.stringify(pngMetadata(safeFile(out, entry.file))) !== JSON.stringify(entry.png)) errors.push(`png-byte-mismatch:${key}`); }
-      catch (e) { errors.push(`png-unreadable:${key}:${e.message}`); }
     }
   }
   if (manifest.coverageDebt.length) errors.push(`targeted-coverage-debt:${manifest.coverageDebt.length}`);

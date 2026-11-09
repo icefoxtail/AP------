@@ -5,6 +5,8 @@ import path from 'node:path';
 import os from 'node:os';
 import { deflateSync } from 'node:zlib';
 import { REVIEW_RUNS, createReviewManifest, recordReviewScenes, recordReviewCapture, requiredReviewStates, validateReviewManifest, saveReviewManifest, aggregateReviewCaptures } from './high-review-capture.mjs';
+import { VIEWPORT_PIXEL_POLICY } from './browser-screenshot-guard.mjs';
+import { viewportContentCoverage, requiredViewportRegions } from './high-viewport-evidence.mjs';
 
 // Valid transparent PNG fixtures exercise byte/viewport binding, not rendering.
 const pngCache = new Map();
@@ -36,8 +38,15 @@ function fixture(t, id = 'common-functions') {
     const viewport = run.startsWith('mobile-') ? { width: 390, height: 844 } : { width: 1440, height: 900 };
     fs.writeFileSync(path.join(out, file), png(viewport.width, viewport.height));
     report.labs[0].observations.push({ id: 'one', run, state });
-    const frame = { viewport, canvas: { width: 300, height: 300 }, fonts: 'loaded', questionSha256: 'f'.repeat(64), questionPresent: true, tab: state === 'initial-explore' ? 'explore' : state === 'review-final' ? 'review' : 'problem', step: state === 'review-final' ? 3 : 0, steps: 3, revealed: state === 'answer-revealed', answerOpen: ['answer-revealed', 'review-final'].includes(state), answerPresent: true };
-    recordReviewCapture(manifest, out, { lab: id, id: 'one', run, state, file, frame });
+    const mobile = run.startsWith('mobile-'), env = { maxTouchPoints: mobile ? 1 : 0, coarsePointer: mobile, onTouchStart: mobile, hoverNone: mobile };
+    const rect = { x: 10, y: 600, left: 10, right: 300, top: 600, bottom: 640, width: 290, height: 40 };
+    const frame = { sceneId: 'one', viewport, canvas: { width: 300, height: 300 }, fonts: 'loaded', questionSha256: 'f'.repeat(64), questionPresent: true, tab: state === 'initial-explore' ? 'explore' : state === 'review-final' ? 'review' : 'problem', step: state === 'review-final' ? 3 : 0, steps: 3, revealed: state === 'answer-revealed', answerOpen: ['answer-revealed', 'review-final'].includes(state), answerPresent: true,
+      parameters: { k: 1 }, scroll: { x: 0, y: 0 }, blockedTop: 0, occluders: [], fullPage: false,
+      regions: ['question', 'answer', 'review', 'panel'].map(name => ({ name, present: true, rect, documentRect: { top: 600, bottom: 640, left: 10, right: 300 }, horizontal: true, visibleDocumentRange: { top: 600, bottom: 640 }, textSha256: 'e'.repeat(64) })),
+      touchEnvironment: { phase: 'capture', expectedTouch: mobile, pass: true, file, id: 'one', state, fullPage: false, pixelEnvironment: VIEWPORT_PIXEL_POLICY, initial: env, before: env, after: env, restored: env,
+        restoreCommand: mobile ? { method: 'Emulation.setTouchEmulationEnabled', params: { enabled: true, maxTouchPoints: 1 } } : null }
+    };
+    recordReviewCapture(manifest, out, { lab: id, id: 'one', run, state, file, frame, supplementalFrames: [], contentCoverage: viewportContentCoverage([frame], requiredViewportRegions(frame)) });
   }
   return { out, manifest, report, id };
 }
@@ -108,4 +117,26 @@ test('source-proven exclusions and continuous-route limitations do not hide a re
   assert.equal(validateReviewManifest(f.manifest).complete, true);
   f.manifest.coverageDebt.push({ status: 'COVERAGE_DEBT', reason: 'A required condition was not found' });
   assert.equal(validateReviewManifest(f.manifest).complete, false);
+});
+
+test('a missing environment record or a raw full-page mobile PNG cannot complete review coverage', t => {
+  const f = fixture(t), mobile = f.manifest.entries.find(e => e.run.startsWith('mobile-'));
+  delete mobile.frame.touchEnvironment;
+  assert.ok(validateReviewManifest(f.manifest).errors.some(e => e.startsWith('unverified-screenshot-environment')));
+  const other = fixture(t), raw = other.manifest.entries.find(e => e.run.startsWith('mobile-'));
+  raw.frame.fullPage = true; raw.frame.touchEnvironment.pixelEnvironment = 'UNVERIFIED_BEYOND_VIEWPORT';
+  assert.ok(validateReviewManifest(other.manifest).errors.some(e => e.startsWith('non-viewport-mobile-review-frame')));
+});
+
+test('a DOM answer below the viewport needs same-state scroll evidence even when answerOpen is true', t => {
+  const f = fixture(t), entry = f.manifest.entries.find(e => e.run === 'mobile-paper' && e.state === 'answer-revealed');
+  const answer = entry.frame.regions.find(r => r.name === 'answer');
+  answer.rect = { ...answer.rect, top: 1000, bottom: 1040, y: 1000 }; answer.documentRect = { ...answer.documentRect, top: 1000, bottom: 1040 }; answer.visibleDocumentRange = null;
+  assert.ok(validateReviewManifest(f.manifest).errors.some(e => e.startsWith('incomplete-scroll-content')));
+});
+
+test('an unexpected viewport touch reset cannot become valid through successful post-capture restoration', t => {
+  const f = fixture(t), entry = f.manifest.entries.find(e => e.run === 'mobile-paper');
+  entry.frame.touchEnvironment.after = { maxTouchPoints: 0, coarsePointer: false, onTouchStart: false, hoverNone: false };
+  assert.ok(validateReviewManifest(f.manifest).errors.some(e => e.startsWith('unverified-screenshot-environment')));
 });

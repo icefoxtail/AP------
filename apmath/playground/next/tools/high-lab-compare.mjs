@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { REQUIRED_ORBIT_SCENES } from './high-orbit-probe.mjs';
+import { SCREENSHOT_ENVIRONMENT_POLICY, screenshotEnvironmentMatches } from './browser-screenshot-guard.mjs';
 
 const observedSteps = rows => Math.max(0,...rows.filter(o=>!String(o.state).startsWith('variant-')&&!String(o.state).startsWith('target-')&&(o.state==='initial'||o.tab==='review')).map(o=>Number(o.steps)||0));
 
@@ -22,7 +23,12 @@ function observations(report) {
     else if (row.errors?.length) for (const error of row.errors) add(row, row.reason, error);
     else add(row, row.reason, row.error || '');
   }
+  if (Number(report.schema) >= 3 && report.capabilityPolicy?.screenshotEnvironment !== SCREENSHOT_ENVIRONMENT_POLICY) add({}, 'missing-schema-required-screenshot-environment-policy');
   for (const lab of report.labs || []) {
+    if (Number(report.schema) >= 3 || report.capabilityPolicy?.screenshotEnvironment === SCREENSHOT_ENVIRONMENT_POLICY) {
+      for (const run of report.runs || []) if (!lab.screenshotEnvironment?.some(e => e.run === run.name && e.phase === 'initial' && screenshotEnvironmentMatches(e, !run.name.startsWith('pc')))) add({ lab: lab.id, run: run.name }, 'missing-or-invalid-initial-screenshot-environment');
+      for (const file of lab.captures || []) if (!lab.screenshotEnvironment?.some(e => e.file === file && e.phase === 'capture' && report.runs?.some(r => r.name === e.run) && screenshotEnvironmentMatches(e, !e.run.startsWith('pc')))) add({ lab: lab.id }, 'missing-or-invalid-captured-environment', file);
+    }
     for (const id of REQUIRED_ORBIT_SCENES[lab.id] || []) if (!lab.scenes.some(s => s.id === id)) add({ lab: lab.id, id }, 'missing-required-3d-scene');
     for(const action of lab.interactions||[])if(action.pass===false||action.textChanged===false||action.bodyPresent===false)add({lab:lab.id,id:action.id,run:action.run||'mobile-paper',state:action.state||''},'failed-recorded-interaction',`${action.kind}:${action.variant??action.index??''}`);
     for (const run of report.runs || []) for (const scene of lab.scenes) {
@@ -57,6 +63,7 @@ export function compareReports(before, after) {
   const old = observations(before), current = observations(after);
   const add = (key, row) => current.set(key, row);
   if (before.capabilityPolicy?.touchDrag && after.capabilityPolicy?.touchDrag !== before.capabilityPolicy.touchDrag) add('missing-touch-policy', { issue: 'missing-candidate-touch-policy' });
+  if (before.capabilityPolicy?.screenshotEnvironment && after.capabilityPolicy?.screenshotEnvironment !== before.capabilityPolicy.screenshotEnvironment) add('missing-screenshot-environment-policy', { issue: 'missing-candidate-screenshot-environment-policy' });
   if (after.reviewCapture && !after.reviewCapture.complete) add('incomplete-review-capture', { issue: 'incomplete-review-capture', counts: after.reviewCapture.counts });
   for (const run of before.runs) {
     const found=after.runs?.find(r=>r.name===run.name);

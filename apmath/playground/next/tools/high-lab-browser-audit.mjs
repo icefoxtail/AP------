@@ -8,9 +8,11 @@ import { createRequire } from 'node:module';
 import { createLiveAssetVerifier, publicPlaygroundBase, drainResponseTasks } from './high-live-assets.mjs';
 import { probeNativeDrag, probeNativeTouchDrag } from './high-drag-probe.mjs';
 import { probeNativeOrbit, classifyOrbitCapability, currentOrbitFacts } from './high-orbit-probe.mjs';
-import { evidenceProvenance, bindLabSources, sha256 } from './high-evidence-binding.mjs';
+import { evidenceProvenance, bindLabSources } from './high-evidence-binding.mjs';
 import { REVIEW_LABS, requiredReviewStates, createReviewManifest, recordReviewScenes, recordReviewCapture, saveReviewManifest } from './high-review-capture.mjs';
 import { captureReviewTargets } from './high-review-targets.mjs';
+import { createScreenshotGuard, SCREENSHOT_ENVIRONMENT_POLICY } from './browser-screenshot-guard.mjs';
+import { captureReviewState } from './high-viewport-evidence.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
 const arg = (key, fallback) => { const i = argv.indexOf(key); return i < 0 ? fallback : argv[i + 1]; };
@@ -50,7 +52,7 @@ const base = publicBase ? publicPlaygroundBase(publicBase).href : `http://127.0.
 fs.mkdirSync(out, { recursive: true });
 const provenance = evidenceProvenance(root, { baseline: observe });
 const sourceBindings = labs.map(item => bindLabSources(root, item, provenance));
-const report = { schema: 2, mode: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: provenance.sourceCommit, provenance, sourceBindings, runs, labs: [], failures: [], capabilityPolicy: { touchDrag: 'REQUIRED_FOR_VISIBLE_HANDLES', orbit: 'REVIEWED_CURRENT_SCENE' }, limitations: ['Viewport and Chromium touch-input simulation; physical devices NOT_RUN.', 'All baseline scenes and steps; two generated variants per scene on mobile paper.', 'First visible slider and draggable point per scene; mouse and touch drag plus required 3D empty-canvas orbit. Mathematical/visual interpretation requires independent review.'] };
+const report = { schema: 3, mode: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: provenance.sourceCommit, provenance, sourceBindings, runs, labs: [], failures: [], capabilityPolicy: { touchDrag: 'REQUIRED_FOR_VISIBLE_HANDLES', orbit: 'REVIEWED_CURRENT_SCENE', screenshotEnvironment: SCREENSHOT_ENVIRONMENT_POLICY }, limitations: ['Viewport and Chromium touch-input simulation; physical devices NOT_RUN.', 'All baseline scenes and steps; two generated variants per scene on mobile paper.', 'First visible slider and draggable point per scene; mouse and touch drag plus required 3D empty-canvas orbit. Mathematical/visual interpretation requires independent review.'] };
 for (const binding of sourceBindings) for (const error of binding.errors) report.failures.push({ lab: binding.lab, ...error });
 const captureLabs = reviewCaptures ? labs.filter(l => REVIEW_LABS.includes(l.id)) : [];
 const reviewManifest = captureLabs.length ? createReviewManifest({ labs: captureLabs, provenance, sourceBindings }) : null;
@@ -70,11 +72,12 @@ const save = (final = false) => {
 };
 try {
   for (const item of labs) {
-    const dest = { id: item.id, course: item.course, file: item.next, scenes: [], observations: [], interactions: [], captures: [], captureMetadata: {}, failureCaptures: [] };
+    const dest = { id: item.id, course: item.course, file: item.next, scenes: [], observations: [], interactions: [], captures: [], captureMetadata: {}, captureBundles: {}, screenshotEnvironment: [], failureCaptures: [] };
     report.labs.push(dest);
     for (const run of runs) {
       const context = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc'), deviceScaleFactor: 1, serviceWorkers:'block' });
       const page = await context.newPage();
+      let screenshotGuard;
       const errors = [], externalFailures = [];
       const responseTasks=[],liveContext=item.id+'--'+run.name;
       if(live){
@@ -85,6 +88,10 @@ try {
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
       page.on('requestfailed', r => { if (r.url().startsWith(base)) errors.push(r.url() + ' ' + r.failure()?.errorText); else externalFailures.push({ url: r.url(), error: r.failure()?.errorText }); });
       try {
+        screenshotGuard = await createScreenshotGuard(page, { expectedTouch: !run.name.startsWith('pc'), onObservation: observation => {
+          dest.screenshotEnvironment.push({ run: run.name, ...observation });
+          if (!observation.pass) report.failures.push({ lab: item.id, run: run.name, id: observation.id, state: observation.state, reason: observation.reason, screenshotEnvironment: observation });
+        } });
         await page.addInitScript(() => { let seed = 424; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
         await page.goto(base + item.next + '?theme=' + run.theme, { waitUntil: 'networkidle', timeout: 30000 });
         await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
@@ -203,22 +210,13 @@ try {
         };
         const capture = async (scene, state, fullPage = true) => {
           const name = `${item.id}--${scene.id}--${run.name}--${state}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
-          await page.evaluate(async () => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); await document.fonts.ready; }); await settle();
-          const frame = await page.evaluate(() => {
-            const rect = lab.board.canvas.getBoundingClientRect();
-            const question = lab.refs.problemText?.cloneNode(true); question?.querySelectorAll('button').forEach(b => b.remove());
-            const steps = typeof lab.scene.steps === 'function' ? lab.scene.steps(lab.s, lab) : lab.scene.steps;
-            return { tab: lab.tab, step: lab.s.step, steps: steps?.length || 0, revealed: !!lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), answerPresent: !!lab.refs.answer?.querySelector('.val')?.textContent.trim(),
-              parameters: Object.fromEntries(Object.entries(lab.s).filter(([,v]) => v === null || ['number', 'boolean', 'string'].includes(typeof v))),
-              canvas: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
-              viewport: { width: innerWidth, height: innerHeight }, fonts: document.fonts.status,
-              question: question?.textContent.replace(/\s+/g, ' ').trim() || '' };
+          const bundle = await captureReviewState({ page, guard: screenshotGuard, out, name, id: scene.id, state, fullPage, settle,
+            collectContent: !!reviewManifest && REVIEW_LABS.includes(item.id),
+            onCapture: entry => { dest.captureMetadata[entry.file] = entry.frame; dest.captures.push(entry.file); }
           });
-          const questionSha256 = sha256(frame.question), questionPresent = !!frame.question; delete frame.question;
-          dest.captureMetadata[name] = { ...frame, questionSha256, questionPresent, fullPage };
-          await page.screenshot({ path: path.join(out, name), fullPage }); dest.captures.push(name);
-          if (reviewManifest && requiredReviewStates(item.id, run.name).includes(state)) recordReviewCapture(reviewManifest, out, { lab: item.id, id: scene.id, run: run.name, state, file: name, frame: dest.captureMetadata[name], method: state === 'answer-revealed' ? 'native-reveal-button' : 'scene-state-traversal' });
-          return name;
+          dest.captureBundles[bundle.file] = bundle;
+          if (reviewManifest && requiredReviewStates(item.id, run.name).includes(state)) recordReviewCapture(reviewManifest, out, { lab: item.id, id: scene.id, run: run.name, state, ...bundle, method: state === 'answer-revealed' ? 'native-reveal-button' : 'scene-state-traversal' });
+          return bundle.file;
         };
         const wantsCapture = state => reviewManifest && requiredReviewStates(item.id, run.name).includes(state);
         for (const scene of census.scenes) {
@@ -325,7 +323,7 @@ try {
                   if (reviewManifest && item.course === 'algebra' && REVIEW_LABS.includes(item.id) && variant === 1) {
                     const state = 'target-generated-variant-1'; await measure(scene, state);
                     const file = await capture(scene, state);
-                    recordReviewCapture(reviewManifest, out, { lab: item.id, id: scene.id, run: run.name, state, file, frame: dest.captureMetadata[file], method: 'native-new-problem-button', variant });
+                    recordReviewCapture(reviewManifest, out, { lab: item.id, id: scene.id, run: run.name, state, ...dest.captureBundles[file], method: 'native-new-problem-button', variant });
                   }
                   await page.evaluate(()=>lab.setTab('problem'));
                 }
@@ -335,7 +333,7 @@ try {
           if (reviewManifest && REVIEW_LABS.includes(item.id)) {
             const entries = await captureReviewTargets({ page, item, scene, run, settle, measure, capture });
             for (const entry of entries || []) {
-              if (entry.file) recordReviewCapture(reviewManifest, out, { ...entry, lab: item.id, id: scene.id, run: run.name, frame: dest.captureMetadata[entry.file] });
+              if (entry.file) recordReviewCapture(reviewManifest, out, { ...entry, lab: item.id, id: scene.id, run: run.name, ...dest.captureBundles[entry.file] });
               else {
                 const row = { ...entry, lab: item.id, id: scene.id, run: run.name };
                 if (entry.status === 'NOT_APPLICABLE') reviewManifest.notApplicable.push(row);
@@ -353,6 +351,8 @@ try {
         sourceURLs=await page.evaluate(()=>[location.href,...[...document.scripts].filter(s=>s.src).map(s=>s.src),...[...document.querySelectorAll('link[rel="stylesheet"][href]')].map(s=>s.href)]).catch(()=>[]);
         await drainResponseTasks(responseTasks);
       }
+      try { await screenshotGuard?.close(); }
+      catch (e) { report.failures.push({ lab: item.id, run: run.name, reason: 'screenshot-guard-cleanup', error: e.message }); }
       await context.close(); // End observation before the final response drain.
       if(live){
         await drainResponseTasks(responseTasks);

@@ -12,6 +12,9 @@ on:
       - 'apmath/playground/next/tools/apl-shell-disclosure-browser.mjs'
       - 'apmath/playground/next/tools/g7-student-live-smoke.mjs'
       - 'apmath/playground/next/tools/high-evidence-binding.mjs'
+      - 'apmath/playground/next/tools/browser-screenshot-guard*'
+      - 'apmath/playground/next/tools/high-viewport-evidence*'
+      - 'apmath/playground/next/tools/middle-screenshot-contract.test.mjs'
       - '.github/workflows/g7-geometry-browser.yml'
       - '.github/workflows/g7-student-live.yml'
   workflow_dispatch:
@@ -48,6 +51,7 @@ jobs:
         run: |
           shopt -s nullglob
           node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/cube-section.test.mjs apmath/playground/next/tools/polyhedra-names.test.mjs apmath/playground/next/tools/polyhedra-dual.test.mjs apmath/playground/next/tools/g7-*.test.mjs
+          node --test apmath/playground/next/tools/browser-screenshot-guard.test.mjs apmath/playground/next/tools/middle-screenshot-contract.test.mjs
       - name: Install Chromium test runtime
         run: |
           npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
@@ -71,7 +75,7 @@ jobs:
             const unit = /g7-geometry-audit-targets-(g7-[\w-]+)\.json$/.exec(p)?.[1];
             if (all.includes(unit)) picked.add(unit);
           }
-          const shared = changed.some(p => /\/kit\//.test(p) || /g7-geometry-(?:browser-audit|selection-probes)\.mjs$|g7-student-live-smoke\.mjs$|g7-student-live\.yml$|g7-geometry-audit-targets\.json$|g7-[^/]+\.test\.mjs$|apl-shell-disclosure-browser\.mjs$|high-evidence-binding\.mjs$|g7-geometry-browser\.yml$/.test(p));
+          const shared = changed.some(p => /\/kit\//.test(p) || /g7-geometry-(?:browser-audit|selection-probes)\.mjs$|g7-student-live-smoke\.mjs$|g7-student-live\.yml$|g7-geometry-audit-targets\.json$|g7-[^/]+\.test\.mjs$|apl-shell-disclosure-browser\.mjs$|high-evidence-binding\.mjs$|(?:browser-screenshot-guard|high-viewport-evidence|middle-screenshot-contract)(?:\.test)?\.mjs$|g7-geometry-browser\.yml$/.test(p));
           const affected = shared || !picked.size ? all : [...picked];
           const units = all.filter((unit, i) => affected.includes(unit) && i === Number(process.env.SHARD));
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`units=${units.join(',')}\n`);

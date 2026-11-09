@@ -9,6 +9,10 @@ on:
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/tools/g7-geometry-browser-audit.mjs'
       - 'apmath/playground/next/tools/g7-geometry-selection-probes.mjs'
+      - 'apmath/playground/next/tools/high-evidence-binding.mjs'
+      - 'apmath/playground/next/tools/browser-screenshot-guard*'
+      - 'apmath/playground/next/tools/high-viewport-evidence*'
+      - 'apmath/playground/next/tools/middle-screenshot-contract.test.mjs'
       - 'apmath/playground/next/tools/g7-geometry-audit-targets.json'
       - 'apmath/playground/next/tools/g7-geometry-audit-targets-g7-circle-sector.json'
       - '.github/workflows/g7-geometry-visual-preflight.yml'
@@ -34,6 +38,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Screenshot environment contract
+        run: node --test apmath/playground/next/tools/browser-screenshot-guard.test.mjs apmath/playground/next/tools/middle-screenshot-contract.test.mjs
       - name: Install Chromium test runtime
         run: |
           npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { compareReports, comparisonPasses } from './high-lab-compare.mjs';
 import { REQUIRED_ORBIT_SCENES } from './high-orbit-probe.mjs';
+import { SCREENSHOT_ENVIRONMENT_POLICY } from './browser-screenshot-guard.mjs';
 function report() { return { commit: 'fixture', runs: [{ name: 'pc-paper' }], failures: [], labs: [{ id: 'lab', course: 'common', scenes: [{ id: 's' }], observations: [{ id: 's', run: 'pc-paper', state: 'initial', steps: 1, tabs: ['review'] }, { id: 's', run: 'pc-paper', state: 'step-0' }, { id: 's', run: 'pc-paper', state: 'step-1' }], interactions: [] }] }; }
 test('an unchanged existing defect cannot become an all-checks or quality pass', () => {
   const before=report();before.failures.push({lab:'lab',id:'s',run:'pc-paper',reason:'runtime-error',errors:['old error']});
@@ -105,4 +106,27 @@ test('an incomplete required PNG set blocks the candidate gate', () => {
   const before = report(), after = report();
   after.reviewCapture = { complete: false, counts: { required: 8, capturedRequired: 7 } };
   assert.equal(compareReports(before, after).candidateAllChecksPassed, false);
+});
+
+test('initial and every captured environment are required and cannot be removed with their policy', () => {
+  const before = report(), env = { maxTouchPoints: 0, coarsePointer: false, onTouchStart: false, hoverNone: false };
+  before.capabilityPolicy = { screenshotEnvironment: SCREENSHOT_ENVIRONMENT_POLICY };
+  before.labs[0].captures = ['one.png'];
+  before.labs[0].screenshotEnvironment = [
+    { run: 'pc-paper', phase: 'initial', expectedTouch: false, initial: env, pass: true },
+    { run: 'pc-paper', phase: 'capture', file: 'one.png', expectedTouch: false, fullPage: true, initial: env, before: env, after: env, restored: env, restoreCommand: null, pass: true }
+  ];
+  assert.equal(compareReports(before, structuredClone(before)).candidateAllChecksPassed, true);
+  for (const mutate of [r => { r.labs[0].screenshotEnvironment.shift(); }, r => { r.labs[0].screenshotEnvironment.pop(); }, r => { r.labs[0].screenshotEnvironment[1].restored = { ...env, coarsePointer: true }; }, r => { delete r.capabilityPolicy.screenshotEnvironment; }]) {
+    const after = structuredClone(before); mutate(after); assert.equal(compareReports(before, after).candidateAllChecksPassed, false);
+  }
+});
+
+test('schema 3 cannot opt out of screenshot environment verification in both baseline and candidate', () => {
+  const before = report(); before.schema = 3;
+  const result = compareReports(before, structuredClone(before));
+  assert.equal(result.regressionCheckPassed, true);
+  assert.equal(result.candidateAllChecksPassed, false);
+  assert.ok(result.remaining.some(e => e.issue === 'missing-schema-required-screenshot-environment-policy'));
+  assert.ok(result.remaining.some(e => e.issue === 'missing-or-invalid-initial-screenshot-environment'));
 });

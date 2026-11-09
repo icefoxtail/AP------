@@ -13,6 +13,7 @@ on:
       - 'apmath/playground/next/labs/prob-*'
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/tools/high-*'
+      - 'apmath/playground/next/tools/browser-screenshot-guard*'
       - 'apmath/playground/next/tools/scene-smoke.mjs'
       - '.github/workflows/high-lab-browser.yml'
   workflow_dispatch:
@@ -44,6 +45,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify shared browser evidence contracts
+        run: node --test apmath/playground/next/tools/browser-screenshot-guard.test.mjs apmath/playground/next/tools/high-*.test.mjs
       - name: Select affected high-school labs
         id: scope
         env:
@@ -68,7 +71,7 @@ jobs:
             const dependencies=[html,...[...src.matchAll(/<script\b[^>]*src=["']([^"']+)["']/gi)].map(m=>path.posix.normalize(path.posix.join(path.posix.dirname(html),m[1])))];
             return paths.some(p=>dependencies.includes(p)||p.startsWith(html.replace(/\.html$/,'/')));
           }).map(l=>l.id);
-          const all=paths.some(p=>/\/kit\//.test(p))||!ids.length;
+          const all=paths.some(p=>/\/kit\//.test(p)||/\/tools\/(?:high-|browser-screenshot-guard)/.test(p)||p==='.github/workflows/high-lab-browser.yml')||!ids.length;
           const request=(process.env.REQUESTED||'').split(',').filter(Boolean);
           if(request.some(s=>!labs.some(l=>l.id===s||l.course===s)))throw Error('Unknown requested lab or course');
           const selected=labs.filter(l=>request.length?request.some(s=>l.id===s||l.course===s):all||ids.includes(l.id));
@@ -82,7 +85,9 @@ jobs:
     name: browser (${{ matrix.course }})
     needs: scope
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    # Fixed-viewport representatives and same-state scroll evidence supplement
+    # every required mobile review state; no existing audit axis is omitted.
+    timeout-minutes: 75
     env:
       APMATH_CANDIDATE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       APMATH_BASE_SHA: ${{ needs.scope.outputs.base_sha }}
