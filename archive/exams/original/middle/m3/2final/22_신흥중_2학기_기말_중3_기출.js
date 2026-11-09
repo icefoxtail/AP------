@@ -167,7 +167,7 @@ window.questionBank = [
       "$56\\rm\\,cm$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n그림에서 $AP=AR=9\\rm\\,cm$, $BQ=BP=7\\rm\\,cm$, $CR=CQ=12\\rm\\,cm$이다.\n따라서 $AB=9+7=16$, $BC=7+12=19$, $CA=12+9=21$이다.\n둘레는 ,6+19+21=56\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n그림에서 $AP=AR=9\\rm\\,cm$, $BQ=BP=7\\rm\\,cm$, $CR=CQ=12\\rm\\,cm$이다.\n따라서 $AB=9+7=16$, $BC=7+12=19$, $CA=12+9=21$이다.\n둘레는 $16+19+21=56\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q5.png",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q5-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -236,7 +236,7 @@ window.questionBank = [
       "$(\\sqrt2+1)\\rm\\,cm$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 큰 원 네 개의 중심을 이으면 한 변이 $2\\rm\\,cm$인 정사각형이 되고, 작은 원의 중심은 그 정사각형의 중심이다.\n서로 이웃한 큰 원의 중심 사이의 거리는 $2\\rm\\,cm$이다. 큰 원의 중심과 가운데 점 사이의 거리는 한 변 $2$인 정사각형의 대각선의 절반이므로 $\\sqrt2\\rm\\,cm$이다.\n작은 원의 반지름을 $r$라 하면 큰 원과 작은 원이 접하므로 중심 사이의 거리는 ,+r$이다.\n따라서 ,+r=\\sqrt2$이므로 $r=\\sqrt2-1$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 큰 원 네 개의 중심을 이으면 한 변이 $2\\rm\\,cm$인 정사각형이 되고, 작은 원의 중심은 그 정사각형의 중심이다.\n서로 이웃한 큰 원의 중심 사이의 거리는 $2\\rm\\,cm$이다. 큰 원의 중심과 가운데 점 사이의 거리는 한 변 $2$인 정사각형의 대각선의 절반이므로 $\\sqrt2\\rm\\,cm$이다.\n작은 원의 반지름을 $r$라 하면 큰 원과 작은 원이 접하므로 중심 사이의 거리는 $1+r$이다.\n따라서 $1+r=\\sqrt2$이므로 $r=\\sqrt2-1$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -271,7 +271,7 @@ window.questionBank = [
       "$60^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 지름에 대한 원주각은 $90^\\circ$이고, 원주각의 크기는 대응하는 호의 절반이다.\n$\\angle ACD=50^\\circ$이므로 호 $AD$의 크기는 ,00^\\circ$이다.\n$AC$가 지름이므로 호 $ADC$의 크기는 ,80^\\circ$이고, 따라서 호 $DC$의 크기는 ,80^\\circ-100^\\circ=80^\\circ$이다.\n$\\angle x=\\angle DBC$는 호 $DC$에 대한 원주각이므로 $x=40^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 지름에 대한 원주각은 $90^\\circ$이고, 원주각의 크기는 대응하는 호의 절반이다.\n$\\angle ACD=50^\\circ$이므로 호 $AD$의 크기는 $100^\\circ$이다.\n$AC$가 지름이므로 호 $ADC$의 크기는 $180^\\circ$이고, 따라서 호 $DC$의 크기는 $180^\\circ-100^\\circ=80^\\circ$이다.\n$\\angle x=\\angle DBC$는 호 $DC$에 대한 원주각이므로 $x=40^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q8.png",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q8-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -374,7 +374,7 @@ window.questionBank = [
       "$54^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 원주각은 대응하는 호의 절반이므로 주어진 두 각에서 호의 크기를 차례로 구한다.\n그림에서 $\\angle ADB=30^\\circ$이므로 호 $AB$의 크기는 $60^\\circ$이다. $\\wideparen{AB}=\\wideparen{BC}$이므로 호 $BC$도 $60^\\circ$이다.\n또 $\\angle DAC=67^\\circ$이므로 호 $DC$의 크기는 ,34^\\circ$이다.\n따라서 나머지 호 $AD$의 크기는 $360^\\circ-(60^\\circ+60^\\circ+134^\\circ)=106^\\circ$이다.\n$\\angle ABD$는 호 $AD$에 대한 원주각이므로 $53^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 원주각은 대응하는 호의 절반이므로 주어진 두 각에서 호의 크기를 차례로 구한다.\n그림에서 $\\angle ADB=30^\\circ$이므로 호 $AB$의 크기는 $60^\\circ$이다. $\\wideparen{AB}=\\wideparen{BC}$이므로 호 $BC$도 $60^\\circ$이다.\n또 $\\angle DAC=67^\\circ$이므로 호 $DC$의 크기는 $134^\\circ$이다.\n따라서 나머지 호 $AD$의 크기는 $360^\\circ-(60^\\circ+60^\\circ+134^\\circ)=106^\\circ$이다.\n$\\angle ABD$는 호 $AD$에 대한 원주각이므로 $53^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q11.png",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q11-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -713,7 +713,7 @@ window.questionBank = [
     "content": "[서술형7] 다음은 어느 버스 정류장을 지나는 5개의 버스 노선에 대하여 각 배차 간격을 조사하여 나타낸 것이다. 배차 간격의 분산과 표준편차를 구하시오. (8점)",
     "choices": [],
     "answer": "분산 $4$, 표준편차 $2$분",
-    "solution": "[키포인트] 평균을 먼저 구한 뒤 각 자료와 평균의 차를 제곱하여 평균을 내면 분산을 구할 수 있다.\n평균은 $(6+8+7+10+4)\\div5=35\\div5=7$분이다.\n평균과의 편차는 $-1,1,0,3,-3$이고, 그 제곱은 ,,1,0,9,9$이다.\n따라서 분산은 $(1+1+0+9+9)\\div5=4$이다.\n표준편차는 분산의 양의 제곱근이므로 $\\sqrt4=2$분이다.\n따라서 구하는 분산은 $4$, 표준편차는 $2$분이다.",
+    "solution": "[키포인트] 평균을 먼저 구한 뒤 각 자료와 평균의 차를 제곱하여 평균을 내면 분산을 구할 수 있다.\n평균은 $(6+8+7+10+4)\\div5=35\\div5=7$분이다.\n평균과의 편차는 $-1,1,0,3,-3$이고, 그 제곱은 $1,1,0,9,9$이다.\n따라서 분산은 $(1+1+0+9+9)\\div5=4$이다.\n표준편차는 분산의 양의 제곱근이므로 $\\sqrt4=2$분이다.\n따라서 구하는 분산은 $4$, 표준편차는 $2$분이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q22.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",

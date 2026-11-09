@@ -261,7 +261,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시로 다섯 입력 원소를 서로 다른 다섯 출력 원소에 잇고 한 출력 원소를 남긴 대응도",
+    "solutionImageCaption": "예: 서로 다른 출력에 대응하는 일대일 함수 하나를 보인다. 전체 함수 수와 일대일 함수 수를 비교한다. 정답은 5/54이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -363,7 +367,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 해외와 국내 생산 뒤 불량 또는 정상으로 나뉘는 두 단계 수형도",
+    "solutionImageCaption": "해외와 국내 생산 뒤 불량 여부를 두 단계로 나누어 조건부 비율을 읽는다. 정답은 16/17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -416,7 +424,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 두 표준편차 바깥의 양쪽 꼬리를 표시하고 오른쪽 꼬리를 강조한 그림",
+    "solutionImageCaption": "정규근사에서 96명은 평균보다 두 표준편차 위인 오른쪽 꼬리에 놓인다. 정답은 0.0228이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -467,7 +479,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 표준점수 2의 오른쪽 꼬리를 표시한 그림",
+    "solutionImageCaption": "합의 평균 40, 표준편차 4에서 48은 표준점수 2에 해당한다. 정답은 0.0228이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -520,7 +536,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: n일 계획이 끝부분 E, EM, EMM 세 경우로 나뉘는 수형도",
+    "solutionImageCaption": "E는 영어, M은 수학이다. MMM이 없는 n일 계획은 끝이 E, EM, EMM 중 하나이고, 각각 앞의 n−1일, n−2일, n−3일 계획으로 이어져 점화식의 세 항이 된다. 정답은 46개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -571,7 +591,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 평균을 중심으로 1g 범위와 2g 범위를 겹쳐 표시한 그림",
+    "solutionImageCaption": "평균에서 1g 이내의 표준점수 범위는 ±1.35이고 2g 이내 범위는 그 두 배다. 정답은 0.9930이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -677,7 +701,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −1.96과 1.96 사이의 중심 영역을 표시한 그림",
+    "solutionImageCaption": "표준화한 표본평균의 중심 95% 구간은 z=−1.96부터 1.96까지다. 0.49√n이 1.96 이상이 되게 한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -782,7 +810,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 원래 수 2, 4, 6, 8을 치환 수 2, 3, 4, 5에 차례로 잇는 대응도",
+    "solutionImageCaption": "예: (2, 4, 6, 8)은 (2, 3, 4, 5)로 바뀌어 순서는 유지되고 최소 간격 조건은 사라진다. 정답은 495가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -886,7 +918,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 사건 A와 B의 교집합 부분을 색칠한 벤다이어그램",
+    "solutionImageCaption": "겹친 영역은 두 사건의 교집합이고 조건부확률과 합집합의 관계로 그 확률을 정한다. 정답은 1/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1041,7 +1077,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 중심 구간이 넓어지는 세 예시 그림",
+    "solutionImageCaption": "예: 중심 구간이 넓을수록 표준정규분포에서 그 구간의 확률도 커진다. 표본평균을 표준화한 구간을 비교하면 ㄱ만 항상 참이다. 정답은 ㄱ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1088,7 +1128,11 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 불량품 세 개의 예시 위치 2, 5, 7을 수직선에 표시하고 가장 뒤의 위치 7을 마지막으로 나타낸 그림",
+    "solutionImageCaption": "예: 불량품 위치가 2, 5, 7이라면 마지막 위치는 7이다. 정답은 k가 3부터 10까지일 때 마지막 위치의 확률이 앞의 k−1자리에서 두 곳을 고르는 경우의 수를 120으로 나눈 값이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1133,6 +1177,10 @@ window.questionBank = [
     "semanticSourceScope": "확률과통계",
     "crossConceptKeys": [],
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규곡선에서 3의 왼쪽과 3부터 80까지를 각각 0.3으로 칠하고 아래에 z 눈금을 표시한 그림",
+    "solutionImageCaption": "표준화 눈금에서 3의 왼쪽과 3부터 80까지의 넓이가 각각 0.3이다. 정답은 155이다.",
+    "solutionImageSize": "full"
   }
 ];
