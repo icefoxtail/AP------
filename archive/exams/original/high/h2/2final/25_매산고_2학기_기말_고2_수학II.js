@@ -384,7 +384,7 @@ window.questionBank=[
     "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q12-solution-v2.svg",
     "solutionImageAlt": "해설 그림: u=2x일 때 y=|t−u|의 그래프(예: u=3)를 t=1부터 6까지 그리고, t=u 왼쪽 삼각형(밑변 u−1, 넓이 2)과 오른쪽 삼각형(밑변 6−u, 넓이 9/2)을 색으로 구분했다.",
     "solutionImageSize": "medium",
-    "solution": "적분 안의 절댓값이 바뀌는 지점은 $t=2x$이다.\n$u=2x$라 두면 $1\\le u\\le6$이다.\n$f(x)=\\displaystyle\\int_1^u(u-t)\\,dt+\\int_u^6(t-u)\\,dt$\n$=\\left[ut-\\dfrac{t^2}{2}\\right]_1^u+\\left[\\dfrac{t^2}{2}-ut\\right]_u^6$\n$=\\dfrac{(u-1)^2}{2}+\\dfrac{(6-u)^2}{2}$\n$=u^2-7u+\\dfrac{37}{2}$\n$=\\left(u-\\dfrac72\\right)^2+\\dfrac{25}{4}$이다.\n$1\\le u\\le6$에서 $u=\\dfrac72$일 때\n$m=\\dfrac{25}{4}$이다.\n구간 양 끝 $u=1,6$에서\n$M=\\dfrac{25}{2}$이다.\n따라서\n$\\dfrac{M}{m}=\\dfrac{25/2}{25/4}=2$이다.\n정답은 ③이다.",
+    "solution": "적분 안의 절댓값이 바뀌는 지점은 $t=2x$이다.\n$u=2x$라 두면 $1\\le u\\le6$이다.\n$f(x)=\\displaystyle\\int_1^u(u-t)\\,dt+\\int_u^6(t-u)\\,dt$\n$=\\left[ut-\\dfrac{t^2}{2}\\right]_1^u+\\left[\\dfrac{t^2}{2}-ut\\right]_u^6$\n$=\\dfrac{(u-1)^2}{2}+\\dfrac{(6-u)^2}{2}$\n$=u^2-7u+\\dfrac{37}{2}$\n$=\\left(u-\\dfrac72\\right)^2+\\dfrac{25}{4}$이다.\n$1\\le u\\le6$에서 $u=\\dfrac72$일 때\n$m=\\dfrac{25}{4}$이다.\n구간 양 끝 $u=1,6$에서\n$M=\\dfrac{25}{2}$이다.\n따라서\n$\\dfrac{M}{m}=\\dfrac{\\frac{25}{2}}{\\frac{25}{4}}=2$이다.\n정답은 ③이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",

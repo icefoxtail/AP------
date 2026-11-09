@@ -233,7 +233,7 @@ window.questionBank = [
     "subUnit": "복소수와 제곱근",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solution": "제곱근의 성질은 음수에 적용할 때 부호를 주의해야 한다. ㄱ~ㄷ을 각각 판단한다.\nㄱ. $xy>0$이면 $x,y$가 모두 양수일 수도, 모두 음수일 수도 있다.\n반례로 $x=y=-1$이면 $\\sqrt{x}\\sqrt{y}=i\\cdot i=-1$이지만 $\\sqrt{xy}=\\sqrt1=1$이다. 따라서 거짓이다.\nㄴ. $0<x<y$이므로 $y-x>0$이다.\n$\\sqrt{x-y}=i\\sqrt{y-x}$, $\\sqrt{-y}=i\\sqrt y$이므로\n$\\dfrac{\\sqrt{y-x}}{\\sqrt{x-y}}=\\dfrac1i=-i$이고\n$\\dfrac{\\sqrt y}{\\sqrt{-y}}=\\dfrac1i=-i$이다.\n두 항의 합은 $-i+(-i)=-2i$이므로 참이다.\nㄷ. $\\dfrac{\\sqrt{x}}{\\sqrt{y}}=-\\sqrt{\\dfrac xy}$가 성립하려면 $x>0$, $y<0$이어야 한다.\n실제로 이때 좌변은 $-i\\sqrt{x/(-y)}$이고 우변도 같은 값이다.\n따라서 $\\sqrt{x}\\sqrt{x}=x$는 실수이고 $\\sqrt{y}$는 순허수이다.\n그러므로 $x+\\sqrt y$의 켤레복소수는 $x-\\sqrt y$이다. 참이다.\n옳은 것은 ㄴ, ㄷ이므로 정답은 ④이다.",
+    "solution": "제곱근의 성질은 음수에 적용할 때 부호를 주의해야 한다. ㄱ~ㄷ을 각각 판단한다.\nㄱ. $xy>0$이면 $x,y$가 모두 양수일 수도, 모두 음수일 수도 있다.\n반례로 $x=y=-1$이면 $\\sqrt{x}\\sqrt{y}=i\\cdot i=-1$이지만 $\\sqrt{xy}=\\sqrt1=1$이다. 따라서 거짓이다.\nㄴ. $0<x<y$이므로 $y-x>0$이다.\n$\\sqrt{x-y}=i\\sqrt{y-x}$, $\\sqrt{-y}=i\\sqrt y$이므로\n$\\dfrac{\\sqrt{y-x}}{\\sqrt{x-y}}=\\dfrac1i=-i$이고\n$\\dfrac{\\sqrt y}{\\sqrt{-y}}=\\dfrac1i=-i$이다.\n두 항의 합은 $-i+(-i)=-2i$이므로 참이다.\nㄷ. $\\dfrac{\\sqrt{x}}{\\sqrt{y}}=-\\sqrt{\\dfrac xy}$가 성립하려면 $x>0$, $y<0$이어야 한다.\n실제로 이때 좌변은 $-i\\sqrt{\\frac{x}{(-y)}}$이고 우변도 같은 값이다.\n따라서 $\\sqrt{x}\\sqrt{x}=x$는 실수이고 $\\sqrt{y}$는 순허수이다.\n그러므로 $x+\\sqrt y$의 켤레복소수는 $x-\\sqrt y$이다. 참이다.\n옳은 것은 ㄴ, ㄷ이므로 정답은 ④이다.",
     "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
     "templateKey": null,
     "crossConceptKeys": [

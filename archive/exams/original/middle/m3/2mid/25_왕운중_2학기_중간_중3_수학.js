@@ -790,7 +790,7 @@ window.questionBank = [
       "$\\dfrac{1}{12}$"
     ],
     "answer": "②",
-    "solution": "직각삼각형 $ABC$에서\n$AC=\\sqrt{5^2+12^2}=13$이다.\n빗변의 중점 $M$은 세 꼭짓점에서 같은 거리에 있으므로 $BM=\\dfrac{13}{2}$이다.\n$MH\\perp BC$이고 $AB\\perp BC$이므로 $MH\\parallel AB$이다.\n따라서 $\\triangle MHB\\sim\\triangle ABC$이고 닮음비는 $MH:AB=1:2$이다.\n$BH=\\dfrac{BC}{2}=6$이므로\n$\\sin x=\\dfrac{BH}{BM}=\\dfrac6{13/2}=\\dfrac{12}{13}$이다.\n따라서 정답은 ②이다.",
+    "solution": "직각삼각형 $ABC$에서\n$AC=\\sqrt{5^2+12^2}=13$이다.\n빗변의 중점 $M$은 세 꼭짓점에서 같은 거리에 있으므로 $BM=\\dfrac{13}{2}$이다.\n$MH\\perp BC$이고 $AB\\perp BC$이므로 $MH\\parallel AB$이다.\n따라서 $\\triangle MHB\\sim\\triangle ABC$이고 닮음비는 $MH:AB=1:2$이다.\n$BH=\\dfrac{BC}{2}=6$이므로\n$\\sin x=\\dfrac{BH}{BM}=\\dfrac6{\\frac{13}{2}}=\\dfrac{12}{13}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q19.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q19-solution.svg",
     "solutionImageSize": "full",

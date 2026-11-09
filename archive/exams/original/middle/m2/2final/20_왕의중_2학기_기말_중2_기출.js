@@ -963,7 +963,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "① $4:3$ (또는 $8:6$), ② $1:1$, ③ $7:1:6$, ④ $\\dfrac{1}{14}\\times\\left(\\dfrac{1}{2}\\times6\\times8\\right)$, ⑤ $\\dfrac{12}{7}$",
-    "solution": "점 I는 삼각형 ABC의 내심이므로 AI는 ∠A의 이등분선이다.\n각의 이등분선 정리에 따라\nBE:EC=AB:AC=8:6=4:3\n\n점 G는 무게중심이므로 AD는 중선이고 D는 BC의 중점이다.\n따라서\nBD:DC=1:1\n\nBE=4k, EC=3k라 두면 BC=7k이고 BD=7k/2이다.\nDE=BE-BD=4k-7k/2=k/2\n그러므로\nBD:DE:EC=7k/2:k/2:3k=7:1:6\n\n△ADE와 △ABC는 밑변이 각각 DE, BC이고 높이가 같다.\n따라서 넓이의 비는 밑변의 비와 같으므로\n[△ADE]:[△ABC]=DE:BC=1:14\n\n∠BAC=90°이므로\n[△ABC]=1/2×8×6=24\n[△ADE]=1/14×24=12/7\n\n따라서 구하는 넓이는 $12/7$이다.",
+    "solution": "점 I는 삼각형 ABC의 내심이므로 AI는 ∠A의 이등분선이다.\n각의 이등분선 정리에 따라\nBE:EC=AB:AC=8:6=4:3\n\n점 G는 무게중심이므로 AD는 중선이고 D는 BC의 중점이다.\n따라서\nBD:DC=1:1\n\nBE=4k, EC=3k라 두면 BC=7k이고 BD=7k/2이다.\nDE=BE-BD=4k-7k/2=k/2\n그러므로\nBD:DE:EC=7k/2:k/2:3k=7:1:6\n\n△ADE와 △ABC는 밑변이 각각 DE, BC이고 높이가 같다.\n따라서 넓이의 비는 밑변의 비와 같으므로\n[△ADE]:[△ABC]=DE:BC=1:14\n\n∠BAC=90°이므로\n[△ABC]=1/2×8×6=24\n[△ADE]=1/14×24=12/7\n\n따라서 구하는 넓이는 $\\frac{12}{7}$이다.",
     "crossConceptKeys": [
       "CC_TRIANGLE_CENTROID",
       "CC_TRIANGLE_AREA"

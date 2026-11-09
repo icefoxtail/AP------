@@ -344,7 +344,7 @@ window.examData = {
         "$8$"
       ],
       "answer": "⑤",
-      "solution": "주어진 순서에서 가운데 값은 $6$이므로 중앙값은 $6$이다. 평균도 $6$이므로 $(3+5+6+8+a)/5=6$. 따라서 $22+a=30$, $a=8$이다. ⑤.",
+      "solution": "주어진 순서에서 가운데 값은 $6$이므로 중앙값은 $6$이다. 평균도 $6$이므로 $\\frac{3+5+6+8+a}{5}=6$. 따라서 $22+a=30$, $a=8$이다. ⑤.",
       "level": "중",
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",
@@ -790,7 +790,7 @@ window.examData = {
         "$6$"
       ],
       "answer": "①",
-      "solution": "분산은 편차 제곱의 도수 가중평균이다. $\\{(-2)^2\\cdot3+(-1)^2\\cdot6+0^2\\cdot5+1^2\\cdot4+2^2\\cdot2\\}/20=30/20=1.5$. ①.",
+      "solution": "분산은 편차 제곱의 도수 가중평균이다. $\\{(-2)^2\\cdot3+(-1)^2\\cdot6+0^2\\cdot5+1^2\\cdot4+2^2\\cdot2\\}/20=\\frac{30}{20}=1.5$. ①.",
       "level": "중",
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",
@@ -900,7 +900,7 @@ window.examData = {
         "$5$"
       ],
       "answer": "②",
-      "solution": "평균 조건에서 $1+3+x+y=16$이므로 $x+y=12$이다. 분산이 $5$이므로 평균 $4$에서의 편차 제곱 합은 $4\\cdot5=20$. 처음 두 편차의 제곱 합은 $(-3)^2+(-1)^2=10$이므로 $(x-4)^2+(y-4)^2=10$. 또 $(x-4)+(y-4)=4$이므로 $(x-4)(y-4)=(16-10)/2=3$. 따라서 $xy=3+4\\cdot4+16=35$, $1/x+1/y=(x+y)/(xy)=12/35$. ②.",
+      "solution": "평균 조건에서 $1+3+x+y=16$이므로 $x+y=12$이다. 분산이 $5$이므로 평균 $4$에서의 편차 제곱 합은 $4\\cdot5=20$. 처음 두 편차의 제곱 합은 $(-3)^2+(-1)^2=10$이므로 $(x-4)^2+(y-4)^2=10$. 또 $(x-4)+(y-4)=4$이므로 $(x-4)(y-4)=\\frac{16-10}{2}=3$. 따라서 $xy=3+4\\cdot4+16=35$, $\\frac{1}{x}+\\frac{1}{y}=(x+y)/(xy)=\\frac{12}{35}$. ②.",
       "level": "상",
       "difficultyBucket": 4,
       "difficultyConfidence": "medium",
@@ -1127,7 +1127,7 @@ window.examData = {
         "$45\\pi$"
       ],
       "answer": "②",
-      "solution": "직사각형의 넓이는 $3\\cdot6=18$이다. 직사각형의 대각선은 $\\sqrt{3^2+6^2}=3\\sqrt5$이므로 네 꼭짓점을 지나는 원의 반지름은 $3\\sqrt5/2$, 원의 넓이는 $45\\pi/4$이다. 지름이 $3$인 반원 두 개의 넓이 합은 $2\\cdot\\frac12\\pi(3/2)^2=9\\pi/4$이고, 지름이 $6$인 반원 두 개의 넓이 합은 $2\\cdot\\frac12\\pi3^2=9\\pi$이다. 따라서 네 반원의 넓이 합도 $45\\pi/4$이다. 원 안에서 직사각형 바깥에 놓인 네 조각은 각각 해당 변을 지름으로 하는 반원 안에 들어간다. 이 조각들의 넓이를 $S$, 색칠한 부분의 넓이를 $T$라 하면 원의 넓이는 $18+S$, 네 반원의 넓이는 $T+S$이다. 두 전체 넓이가 같으므로 $18+S=T+S$, 따라서 $T=18$이다. ②.",
+      "solution": "직사각형의 넓이는 $3\\cdot6=18$이다. 직사각형의 대각선은 $\\sqrt{3^2+6^2}=3\\sqrt5$이므로 네 꼭짓점을 지나는 원의 반지름은 $3\\sqrt5/2$, 원의 넓이는 $45\\pi/4$이다. 지름이 $3$인 반원 두 개의 넓이 합은 $2\\cdot\\frac12\\pi(\\frac{3}{2})^2=9\\pi/4$이고, 지름이 $6$인 반원 두 개의 넓이 합은 $2\\cdot\\frac12\\pi3^2=9\\pi$이다. 따라서 네 반원의 넓이 합도 $45\\pi/4$이다. 원 안에서 직사각형 바깥에 놓인 네 조각은 각각 해당 변을 지름으로 하는 반원 안에 들어간다. 이 조각들의 넓이를 $S$, 색칠한 부분의 넓이를 $T$라 하면 원의 넓이는 $18+S$, 네 반원의 넓이는 $T+S$이다. 두 전체 넓이가 같으므로 $18+S=T+S$, 따라서 $T=18$이다. ②.",
       "level": "상",
       "difficultyBucket": 4,
       "difficultyConfidence": "medium",
@@ -1243,7 +1243,7 @@ window.examData = {
         "$\\frac{13}{5}$"
       ],
       "answer": "③",
-      "solution": "직각삼각형 $AED$에서 $AD=AB=10$, $ED=8$이므로 $AE=\\sqrt{10^2-8^2}=6$이다. 정사각형이므로 $AD\\parallel BC$이고, $EG\\perp BC$이므로 $EF\\perp AD$이다. 따라서 $EF$는 빗변 $AD$에 내린 높이이다. 직각삼각형의 닮음에서 $AE^2=AF\\cdot AD$이므로 $AF=36/10=18/5$이다. 정답은 ③이다.",
+      "solution": "직각삼각형 $AED$에서 $AD=AB=10$, $ED=8$이므로 $AE=\\sqrt{10^2-8^2}=6$이다. 정사각형이므로 $AD\\parallel BC$이고, $EG\\perp BC$이므로 $EF\\perp AD$이다. 따라서 $EF$는 빗변 $AD$에 내린 높이이다. 직각삼각형의 닮음에서 $AE^2=AF\\cdot AD$이므로 $AF=\\frac{36}{10}=\\frac{18}{5}$이다. 정답은 ③이다.",
       "level": "중",
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
@@ -1587,7 +1587,7 @@ window.examData = {
         "$\\frac{102}{5}\\,\\mathrm{cm}^2$"
       ],
       "answer": "⑤",
-      "solution": "접는 선 $BD$에 대하여 $C$의 대칭점은 $E$이므로 반직선 $BC$의 대칭은 반직선 $BE$이다. 따라서 $\\angle FBD=\\angle CBD$이다. 또한 $AD\\parallel BC$이고 $DF$는 $AD$ 위에 있으므로 $\\angle CBD=\\angle BDF$이다. 따라서 $\\triangle BFD$는 $FB=FD$인 이등변삼각형이다. $AF=x$라 두면 $FD=AD-AF=10-x$이다. 직각삼각형 $ABF$에서 $FB^2=x^2+6^2$이므로 $x^2+36=(10-x)^2$. 이를 풀면 $x=16/5$, 따라서 $FD=34/5$이다. $FD$를 밑변으로 하고 높이를 직사각형의 세로 $AB=6$으로 잡으면 $[FBD]=\\frac12\\cdot\\frac{34}{5}\\cdot6=\\frac{102}{5}\\,\\mathrm{cm}^2$이다. 정답은 ⑤이다.",
+      "solution": "접는 선 $BD$에 대하여 $C$의 대칭점은 $E$이므로 반직선 $BC$의 대칭은 반직선 $BE$이다. 따라서 $\\angle FBD=\\angle CBD$이다. 또한 $AD\\parallel BC$이고 $DF$는 $AD$ 위에 있으므로 $\\angle CBD=\\angle BDF$이다. 따라서 $\\triangle BFD$는 $FB=FD$인 이등변삼각형이다. $AF=x$라 두면 $FD=AD-AF=10-x$이다. 직각삼각형 $ABF$에서 $FB^2=x^2+6^2$이므로 $x^2+36=(10-x)^2$. 이를 풀면 $x=\\frac{16}{5}$, 따라서 $FD=\\frac{34}{5}$이다. $FD$를 밑변으로 하고 높이를 직사각형의 세로 $AB=6$으로 잡으면 $[FBD]=\\frac12\\cdot\\frac{34}{5}\\cdot6=\\frac{102}{5}\\,\\mathrm{cm}^2$이다. 정답은 ⑤이다.",
       "level": "상",
       "difficultyBucket": 4,
       "difficultyConfidence": "medium",
@@ -1703,7 +1703,7 @@ window.examData = {
         "$6\\,\\mathrm{cm}$"
       ],
       "answer": "④",
-      "solution": "삼각형 $ABC$의 높이를 $h$라 하면 $h^2=5^2-(\\sqrt{10}/2)^2=45/2$이므로 $h=3\\sqrt{10}/2$. 따라서 $[ABC]=\\frac12\\cdot\\sqrt{10}\\cdot3\\sqrt{10}/2=15/2$. 한편 $[ABP]+[ACP]=[ABC]$이고 두 삼각형의 밑변 $AB,AC$는 각각 $5$이며 높이는 $DP,EP$이다. 그래서 $\\frac52(DP+EP)=15/2$, $DP+EP=3\\,\\mathrm{cm}$. ④.",
+      "solution": "삼각형 $ABC$의 높이를 $h$라 하면 $h^2=5^2-(\\sqrt{10}/2)^2=\\frac{45}{2}$이므로 $h=3\\sqrt{10}/2$. 따라서 $[ABC]=\\frac12\\cdot\\sqrt{10}\\cdot3\\sqrt{10}/2=\\frac{15}{2}$. 한편 $[ABP]+[ACP]=[ABC]$이고 두 삼각형의 밑변 $AB,AC$는 각각 $5$이며 높이는 $DP,EP$이다. 그래서 $\\frac52(DP+EP)=\\frac{15}{2}$, $DP+EP=3\\,\\mathrm{cm}$. ④.",
       "level": "중",
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",
@@ -1933,7 +1933,7 @@ window.examData = {
         "$5\\,\\mathrm{cm}$"
       ],
       "answer": "②",
-      "solution": "정육면체의 모서리이므로 $EA=EH=EF=4$이고 $EA\\perp EH$이다. 또 $EF$는 $EA, EH$에 모두 수직이므로 평면 $EAH$에 수직이다. 따라서 사면체 $EAFH$의 부피는 $\\frac13\\cdot[EAH]\\cdot EF=\\frac13\\cdot(\\frac12\\cdot4\\cdot4)\\cdot4=32/3$이다. $AF, AH, FH$는 각각 정육면체 면의 대각선이므로 길이가 모두 $4\\sqrt2$이다. 따라서 정삼각형 $AFH$의 넓이는 $\\frac{\\sqrt3}{4}(4\\sqrt2)^2=8\\sqrt3$이다. 점 $E$에서 평면 $AFH$까지의 높이를 $h$라 하면 $\\frac13\\cdot8\\sqrt3\\cdot h=32/3$이므로 $h=4/\\sqrt3=4\\sqrt3/3\\,\\mathrm{cm}$이다. 정답은 ②이다.",
+      "solution": "정육면체의 모서리이므로 $EA=EH=EF=4$이고 $EA\\perp EH$이다. 또 $EF$는 $EA, EH$에 모두 수직이므로 평면 $EAH$에 수직이다. 따라서 사면체 $EAFH$의 부피는 $\\frac13\\cdot[EAH]\\cdot EF=\\frac13\\cdot(\\frac12\\cdot4\\cdot4)\\cdot4=\\frac{32}{3}$이다. $AF, AH, FH$는 각각 정육면체 면의 대각선이므로 길이가 모두 $4\\sqrt2$이다. 따라서 정삼각형 $AFH$의 넓이는 $\\frac{\\sqrt3}{4}(4\\sqrt2)^2=8\\sqrt3$이다. 점 $E$에서 평면 $AFH$까지의 높이를 $h$라 하면 $\\frac13\\cdot8\\sqrt3\\cdot h=\\frac{32}{3}$이므로 $h=4/\\sqrt3=4\\sqrt3/3\\,\\mathrm{cm}$이다. 정답은 ②이다.",
       "level": "상",
       "difficultyBucket": 4,
       "difficultyConfidence": "medium",
@@ -2047,7 +2047,7 @@ window.examData = {
         "$5\\,\\mathrm{cm}$"
       ],
       "answer": "④",
-      "solution": "정사면체의 각 면은 한 변이 $2$인 정삼각형이다. $E$는 정삼각형 $ABC$에서 $A$에서 $BC$에 내린 수선의 발이므로 $BC$의 중점이다. 두 면 $ABC, ACD$를 공통 변 $AC$를 따라 펼치면 $E$와 $D$는 $AC$의 서로 반대쪽에 놓이고, 꺾인 선 $EPD$의 최솟값은 전개도에서 두 점을 잇는 직선 길이이다. $AC$에 내린 두 수선의 발 사이 거리는 $1/2$이고, $E$에서 $AC$까지의 거리는 $\\sqrt3/2$, $D$에서 $AC$까지의 거리는 $\\sqrt3$이다. 따라서 최단거리의 제곱은 $(1/2)^2+(\\sqrt3/2+\\sqrt3)^2=7$이다. 이 직선이 $AC$를 지나는 위치를 확인하면, 두 높이의 비가 $(\\sqrt3/2):\\sqrt3=1:2$이므로 교점은 $E$의 수선 발에서 $D$의 수선 발 쪽으로 $1/3$만큼 간 점이다. $AC$ 위에서 $A$를 $0$, $C$를 $2$로 두면 두 발은 각각 $3/2$와 $1$에 있어 교점은 $3/2+(1-3/2)/3=4/3$이다. $0<4/3<2$이므로 실제 선분 $AC$ 안에 있다. 따라서 가능한 $P$에서 최단거리 $EP+PD=\\sqrt7\\,\\mathrm{cm}$이고, 정답은 ④이다.",
+      "solution": "정사면체의 각 면은 한 변이 $2$인 정삼각형이다. $E$는 정삼각형 $ABC$에서 $A$에서 $BC$에 내린 수선의 발이므로 $BC$의 중점이다. 두 면 $ABC, ACD$를 공통 변 $AC$를 따라 펼치면 $E$와 $D$는 $AC$의 서로 반대쪽에 놓이고, 꺾인 선 $EPD$의 최솟값은 전개도에서 두 점을 잇는 직선 길이이다. $AC$에 내린 두 수선의 발 사이 거리는 $\\frac{1}{2}$이고, $E$에서 $AC$까지의 거리는 $\\sqrt3/2$, $D$에서 $AC$까지의 거리는 $\\sqrt3$이다. 따라서 최단거리의 제곱은 $(\\frac{1}{2})^2+(\\sqrt3/2+\\sqrt3)^2=7$이다. 이 직선이 $AC$를 지나는 위치를 확인하면, 두 높이의 비가 $(\\sqrt3/2):\\sqrt3=1:2$이므로 교점은 $E$의 수선 발에서 $D$의 수선 발 쪽으로 $\\frac{1}{3}$만큼 간 점이다. $AC$ 위에서 $A$를 $0$, $C$를 $2$로 두면 두 발은 각각 $\\frac{3}{2}$와 $1$에 있어 교점은 $\\frac{3}{2}+(1-\\frac{3}{2})/3=\\frac{4}{3}$이다. $0<\\frac{4}{3}<2$이므로 실제 선분 $AC$ 안에 있다. 따라서 가능한 $P$에서 최단거리 $EP+PD=\\sqrt7\\,\\mathrm{cm}$이고, 정답은 ④이다.",
       "level": "상",
       "difficultyBucket": 4,
       "difficultyConfidence": "medium",
@@ -2271,7 +2271,7 @@ window.examData = {
       "question": "[서술형 1] 다음 표는 어느 골프 대회에 참가한 두 선수 $\\mathrm{A, B}$의 기록을 조사하여 나타낸 것이다. 다음 물음에 답하여라. (정답만 쓰시오.) (9점)<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center; margin:8px auto;\"><tr><th rowspan=\"2\">선수</th><th colspan=\"4\">라운드</th></tr><tr><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><th>A</th><td>68</td><td>74</td><td>72</td><td>70</td></tr><tr><th>B</th><td>71</td><td>75</td><td>67</td><td>71</td></tr></table><br>(1) 선수 $\\mathrm{A}$의 기록의 평균과 분산을 각각 구하여라. (각 2점)<br>(2) 선수 $\\mathrm{B}$의 기록의 평균과 분산을 각각 구하여라. (각 2점)<br>(3) 두 선수 중 어느 선수의 기록이 더 고른지 말하여라. (1점)",
       "choices": [],
       "answer": "선수 A: 평균 71점, 분산 5점²; 선수 B: 평균 71점, 분산 8점²; 더 고른 선수: A",
-      "solution": "A 선수의 평균은 $(68+74+72+70)/4=71$이다. 편차는 $-3,3,1,-1$이므로 분산은 $(9+9+1+1)/4=5$. B 선수의 평균도 $(71+75+67+71)/4=71$이다. 편차는 $0,4,-4,0$이므로 분산은 $(0+16+16+0)/4=8$. 분산이 더 작은 A 선수의 기록이 더 고르다.",
+      "solution": "A 선수의 평균은 $\\frac{68+74+72+70}{4}=71$이다. 편차는 $-3,3,1,-1$이므로 분산은 $\\frac{9+9+1+1}{4}=5$. B 선수의 평균도 $\\frac{71+75+67+71}{4}=71$이다. 편차는 $0,4,-4,0$이므로 분산은 $\\frac{0+16+16+0}{4}=8$. 분산이 더 작은 A 선수의 기록이 더 고르다.",
       "level": "중",
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
@@ -2485,7 +2485,7 @@ window.examData = {
       "question": "[서술형 3] 다음 그림은 직육면체의 표면에 줄을 이은 모양이다. 점 $\\mathrm{E}$에서 출발하여 $\\overline{\\mathrm{FB}}$를 지나 점 $\\mathrm{C}$에 이르는 최단 거리를 구하여라. (풀이 과정을 쓰시오.) (5점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/s03.png\" />",
       "choices": [],
       "answer": "25\\,\\mathrm{cm}",
-      "solution": "직육면체의 앞면 $EABF$와 오른쪽 면 $FBCG$를 공통 모서리 $FB$를 따라 펼친다. 전개도에서 $FB$를 세로 변으로 놓으면 $E$는 $F$에서 왼쪽으로 $12\\,\\mathrm{cm}$, $C$는 $B$에서 오른쪽으로 $12\\,\\mathrm{cm}$ 떨어져 있다. 따라서 $E$와 $C$의 가로 차는 $12+12=24\\,\\mathrm{cm}$이고, 세로 차는 직육면체의 높이 $7\\,\\mathrm{cm}$이다. 선분 $EC$는 가로 방향으로 정확히 중간인 $FB$를 지나며, 교점의 높이는 $7/2=3.5\\,\\mathrm{cm}$로 $0$과 $7$ 사이여서 모서리 $FB$ 위에 있다. 따라서 요구한 표면 경로가 가능하고, 최단거리는 $\\sqrt{24^2+7^2}=25\\,\\mathrm{cm}$이다.",
+      "solution": "직육면체의 앞면 $EABF$와 오른쪽 면 $FBCG$를 공통 모서리 $FB$를 따라 펼친다. 전개도에서 $FB$를 세로 변으로 놓으면 $E$는 $F$에서 왼쪽으로 $12\\,\\mathrm{cm}$, $C$는 $B$에서 오른쪽으로 $12\\,\\mathrm{cm}$ 떨어져 있다. 따라서 $E$와 $C$의 가로 차는 $12+12=24\\,\\mathrm{cm}$이고, 세로 차는 직육면체의 높이 $7\\,\\mathrm{cm}$이다. 선분 $EC$는 가로 방향으로 정확히 중간인 $FB$를 지나며, 교점의 높이는 $\\frac{7}{2}=3.5\\,\\mathrm{cm}$로 $0$과 $7$ 사이여서 모서리 $FB$ 위에 있다. 따라서 요구한 표면 경로가 가능하고, 최단거리는 $\\sqrt{24^2+7^2}=25\\,\\mathrm{cm}$이다.",
       "level": "중",
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",

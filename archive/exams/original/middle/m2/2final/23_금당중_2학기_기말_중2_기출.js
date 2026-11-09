@@ -252,7 +252,7 @@ window.questionBank = [
       "$\\dfrac52$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 직사각형의 넓이를 이등분하는 직선이 중심을 지나면 된다.\n직사각형의 왼쪽과 오른쪽의 $x$좌표는 $2,5$, 아래와 위의 $y$좌표는 $3,5$이므로 중심은 $\\left(\\dfrac72,4\\right)$이다.\n원점과 이 중심을 지나는 직선의 기울기는 $\\dfrac4{7/2}=\\dfrac87$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 직사각형의 넓이를 이등분하는 직선이 중심을 지나면 된다.\n직사각형의 왼쪽과 오른쪽의 $x$좌표는 $2,5$, 아래와 위의 $y$좌표는 $3,5$이므로 중심은 $\\left(\\dfrac72,4\\right)$이다.\n원점과 이 중심을 지나는 직선의 기울기는 $\\dfrac4{\\frac{7}{2}}=\\dfrac87$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -664,7 +664,7 @@ window.questionBank = [
     "content": "[서술형1] 기온이 $0^\\circ\\rm C$일 때, 공기 중에서 소리의 속력은 초속 $331\\rm\\,m$이고, 기온이 $5^\\circ\\rm C$ 오를 때마다 소리의 속력은 초속 $3\\rm\\,m$씩 일정하게 증가한다고 한다.\n(1) 기온이 $x^\\circ\\rm C$일 때, 공기 중에서 소리의 속력을 초속 $y\\rm\\,m$라고 하자. 이때 $x$와 $y$ 사이의 관계식을 구하시오. [3점]\n(2) 소리의 속력이 초속 $346\\rm\\,m$일 때의 기온을 구하시오. [2점]",
     "choices": [],
     "answer": "(1) $y=\\dfrac35x+331$, (2) $25^\\circ\\rm C$",
-    "solution": "[키포인트] 기온이 $5^\\circ\\rm C$ 오를 때 속력이 $3\\rm\\,m/s$ 증가하므로 기울기는 $\\dfrac35$이다.\n(1) $x=0$일 때 $y=331$이므로 $y=\\dfrac35x+331$이다.\n(2) $346=\\dfrac35x+331$에서 $15=\\dfrac35x$이므로 $x=25$이다.\n따라서 구하는 답은 (1) $y=\\dfrac35x+331$, (2) $25^\\circ\\rm C$이다.",
+    "solution": "[키포인트] 기온이 $5^\\circ\\rm C$ 오를 때 속력이 $3\\rm\\,\\frac{m}{s}$ 증가하므로 기울기는 $\\dfrac35$이다.\n(1) $x=0$일 때 $y=331$이므로 $y=\\dfrac35x+331$이다.\n(2) $346=\\dfrac35x+331$에서 $15=\\dfrac35x$이므로 $x=25$이다.\n따라서 구하는 답은 (1) $y=\\dfrac35x+331$, (2) $25^\\circ\\rm C$이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",

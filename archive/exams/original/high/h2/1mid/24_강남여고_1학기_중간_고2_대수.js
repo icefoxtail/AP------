@@ -24,7 +24,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solution": "$8^{2/3}=4$이고 $2^{-2}=1/4$이므로\n$8^{2/3}\\times2^{-2}=4\\times1/4=1$이다.\n따라서 정답은 ①이다.",
+    "solution": "$8^{\\frac{2}{3}}=4$이고 $2^{-2}=\\frac{1}{4}$이므로\n$8^{\\frac{2}{3}}\\times2^{-2}=4\\times1/4=1$이다.\n따라서 정답은 ①이다.",
     "decisiveStep": "$8^{2/3}=4$와 $2^{-2}=1/4$를 곱한다.",
     "subUnitKey": "H15-M1-01-EXPONENT",
     "subUnit": "지수의 뜻과 성질",
@@ -272,7 +272,7 @@ window.questionBank = [
       "⑤"
     ],
     "answer": "④",
-    "solution": "앞의 등식들은 $\\sqrt4=2$이고 $4^{5/2}=(\\sqrt4)^5=32$이므로 성립한다.\n또한 ${(-2)^2}^{5/2}=4^{5/2}=32$이다.\n하지만 $(-2)^5=-32$이므로 이 등호에서 처음으로 값이 달라진다.\n따라서 정답은 ④이다.",
+    "solution": "앞의 등식들은 $\\sqrt4=2$이고 $4^{\\frac{5}{2}}=(\\sqrt4)^5=32$이므로 성립한다.\n또한 ${(-2)^2}^{\\frac{5}{2}}=4^{\\frac{5}{2}}=32$이다.\n하지만 $(-2)^5=-32$이므로 이 등호에서 처음으로 값이 달라진다.\n따라서 정답은 ④이다.",
     "decisiveStep": "④에서 양수 32와 음수 −32를 같다고 둔다.",
     "subUnitKey": "H15-M1-01-EXPONENT",
     "subUnit": "지수의 뜻과 성질",
@@ -482,7 +482,7 @@ window.questionBank = [
       "$39$"
     ],
     "answer": "②",
-    "solution": "주어진 수는 $-64^3=-2^{18}$이다. 이 수의 $n$제곱근이 정수이려면 음수의 실수 $n$제곱근이 있어야 하므로 $n$은 홀수이고, $2^{18/n}$이 정수여야 하므로 $n$은 $18$의 약수이다.\n$2$ 이상인 홀수 약수는 $3,9$이다.\n따라서 구하는 합은 $3+9=12$이다. 정답은 ②이다.",
+    "solution": "주어진 수는 $-64^3=-2^{18}$이다. 이 수의 $n$제곱근이 정수이려면 음수의 실수 $n$제곱근이 있어야 하므로 $n$은 홀수이고, $2^{\\frac{18}{n}}$이 정수여야 하므로 $n$은 $18$의 약수이다.\n$2$ 이상인 홀수 약수는 $3,9$이다.\n따라서 구하는 합은 $3+9=12$이다. 정답은 ②이다.",
     "decisiveStep": "n이 홀수이고 18의 약수여야 한다.",
     "subUnitKey": "H15-M1-01-EXPONENT",
     "subUnit": "지수의 뜻과 성질",
@@ -565,7 +565,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "⑤",
-    "solution": "두 근의 합과 곱을 이용하면 $\\cos\\theta+\\tan\\theta=3$이고 $\\cos\\theta\\tan\\theta=4a\\sin\\theta$이다.\n$\\cos\\theta\\tan\\theta=\\sin\\theta$이며 $\\sin\\theta>0$이므로 $a=\\dfrac14$이다.\n$c=\\cos\\theta$, $s=\\sin\\theta$라 두면 $c+\\dfrac{s}{c}=3$, 즉 $c^2+s=3c$이다.\n따라서 분자는 $1+s-s^2=c^2+s=3c$이고 분모는 $a\\cos\\theta=\\dfrac c4$이다.\n구하는 값은 $\\dfrac{3c}{c/4}=12$이므로 정답은 ⑤이다.",
+    "solution": "두 근의 합과 곱을 이용하면 $\\cos\\theta+\\tan\\theta=3$이고 $\\cos\\theta\\tan\\theta=4a\\sin\\theta$이다.\n$\\cos\\theta\\tan\\theta=\\sin\\theta$이며 $\\sin\\theta>0$이므로 $a=\\dfrac14$이다.\n$c=\\cos\\theta$, $s=\\sin\\theta$라 두면 $c+\\dfrac{s}{c}=3$, 즉 $c^2+s=3c$이다.\n따라서 분자는 $1+s-s^2=c^2+s=3c$이고 분모는 $a\\cos\\theta=\\dfrac c4$이다.\n구하는 값은 $\\dfrac{3c}{\\frac{c}{4}}=12$이므로 정답은 ⑤이다.",
     "decisiveStep": "근의 곱에서 a=1/4, c²+s=3c를 얻는다.",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "subUnit": "삼각함수의 관계",

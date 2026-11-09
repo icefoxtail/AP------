@@ -14,7 +14,7 @@ window.examData = {
         "$\\tan B = \\dfrac{\\sqrt{3}}{3}$"
       ],
       "answer": "$\\sin A = \\dfrac{1}{2}$",
-      "solution": "C가 직각이므로 피타고라스 정리에 의해 $AB=\\sqrt{(\\sqrt{3})^2+1^2}=2$이다.<br>따라서 $\\sin A=BC/AB=1/2$이다.<br>다른 값은 $\\cos A=\\sqrt{3}/2$, $\\sin B=\\sqrt{3}/2$, $\\cos B=1/2$, $\\tan B=\\sqrt{3}$이므로 옳은 것은 ①이다."
+      "solution": "C가 직각이므로 피타고라스 정리에 의해 $AB=\\sqrt{(\\sqrt{3})^2+1^2}=2$이다.<br>따라서 $\\sin A=BC/AB=\\frac{1}{2}$이다.<br>다른 값은 $\\cos A=\\sqrt{3}/2$, $\\sin B=\\sqrt{3}/2$, $\\cos B=\\frac{1}{2}$, $\\tan B=\\sqrt{3}$이므로 옳은 것은 ①이다."
     },
     {
       "id": 2,
@@ -28,7 +28,7 @@ window.examData = {
         "$\\dfrac{2-\\sqrt{3}}{2}$"
       ],
       "answer": "$1$",
-      "solution": "$\\sin 30^\\circ=1/2$, $\\cos 60^\\circ=1/2$, $\\tan 45^\\circ=1$이므로 주어진 식은 $1/2-1/2+1=1$이다."
+      "solution": "$\\sin 30^\\circ=\\frac{1}{2}$, $\\cos 60^\\circ=\\frac{1}{2}$, $\\tan 45^\\circ=1$이므로 주어진 식은 $\\frac{1}{2}-\\frac{1}{2}+1=1$이다."
     },
     {
       "id": 3,
@@ -70,7 +70,7 @@ window.examData = {
         "$\\dfrac{12}{5}$"
       ],
       "answer": "$\\dfrac{7}{13}$",
-      "solution": "$\\tan A=5/12$이므로 $A$의 대변과 이웃변의 길이를 각각 $5k$, $12k$($k>0$)라 두면 빗변은 $\\sqrt{25k^2+144k^2}=13k$이다.<br>따라서 $\\cos A-\\sin A=12/13-5/13=7/13$이다."
+      "solution": "$\\tan A=\\frac{5}{12}$이므로 $A$의 대변과 이웃변의 길이를 각각 $5k$, $12k$($k>0$)라 두면 빗변은 $\\sqrt{25k^2+144k^2}=13k$이다.<br>따라서 $\\cos A-\\sin A=\\frac{12}{13}-\\frac{5}{13}=\\frac{7}{13}$이다."
     },
     {
       "id": 6,
@@ -126,7 +126,7 @@ window.examData = {
         "$\\dfrac{3}{2}$"
       ],
       "answer": "$\\dfrac{1}{3}$",
-      "solution": "$BC=CH=t(t>0)$라 두면 $\\angle ACH=45^\\circ$인 직각삼각형 $AHC$에서 $AH=t$이고 $BH=2t$이다.<br>따라서 $AB=\\sqrt{5}\\,t$이다.<br>$C$에서 $AB$에 내린 수선의 발을 $D$라 하자. $\\cos\\angle ABC=BH/AB=2/\\sqrt{5}$이므로 $BD=BC\\cos\\angle ABC=2t/\\sqrt{5}$, $AD=AB-BD=3t/\\sqrt{5}$이다.<br>한편 $\\triangle ABC$의 넓이는 $(1/2)\\times BC\\times AH=t^2/2$이고, 이를 $(1/2)\\times AB\\times CD$와 같게 놓으면 $CD=t/\\sqrt{5}$이다.<br>그러므로 직각삼각형 $ACD$에서 $\\tan x=CD/AD=1/3$이다."
+      "solution": "$BC=CH=t(t>0)$라 두면 $\\angle ACH=45^\\circ$인 직각삼각형 $AHC$에서 $AH=t$이고 $BH=2t$이다.<br>따라서 $AB=\\sqrt{5}\\,t$이다.<br>$C$에서 $AB$에 내린 수선의 발을 $D$라 하자. $\\cos\\angle ABC=BH/AB=2/\\sqrt{5}$이므로 $BD=BC\\cos\\angle ABC=2t/\\sqrt{5}$, $AD=AB-BD=3t/\\sqrt{5}$이다.<br>한편 $\\triangle ABC$의 넓이는 $(\\frac{1}{2})\\times BC\\times AH=t^2/2$이고, 이를 $(\\frac{1}{2})\\times AB\\times CD$와 같게 놓으면 $CD=t/\\sqrt{5}$이다.<br>그러므로 직각삼각형 $ACD$에서 $\\tan x=CD/AD=\\frac{1}{3}$이다."
     },
     {
       "id": 10,
@@ -182,7 +182,7 @@ window.examData = {
         "$42\\text{ cm}^2$"
       ],
       "answer": "$42\\text{ cm}^2$",
-      "solution": "두 평행한 밑변 $AD$, $BC$ 사이의 거리는 원의 지름과 같으므로 높이 $CD=2\\times3=6\\text{ cm}$이다.<br>원에 외접하는 사각형에서는 접선 길이의 성질에 의해 마주 보는 두 변의 길이의 합이 같으므로 $AD+BC=AB+CD=8+6=14\\text{ cm}$이다.<br>따라서 사다리꼴의 넓이는 $(1/2)\\times(AD+BC)\\times CD=(1/2)\\times14\\times6=42\\text{ cm}^2$이다."
+      "solution": "두 평행한 밑변 $AD$, $BC$ 사이의 거리는 원의 지름과 같으므로 높이 $CD=2\\times3=6\\text{ cm}$이다.<br>원에 외접하는 사각형에서는 접선 길이의 성질에 의해 마주 보는 두 변의 길이의 합이 같으므로 $AD+BC=AB+CD=8+6=14\\text{ cm}$이다.<br>따라서 사다리꼴의 넓이는 $(\\frac{1}{2})\\times(AD+BC)\\times CD=(\\frac{1}{2})\\times14\\times6=42\\text{ cm}^2$이다."
     },
     {
       "id": 14,
@@ -196,7 +196,7 @@ window.examData = {
         "$3\\text{ cm}$"
       ],
       "answer": "$2\\text{ cm}$",
-      "solution": "큰 원의 반지름은 직사각형 높이 8의 절반인 4이다.<br>위·아래 접점을 각각 $H$, $G$라 하면 $DH=CG=4$이므로 $AH=BG=12-4=8$이다.<br>$A$에서 그은 접선의 길이가 같아 $AE=AH=8$이고, $F$에서 그은 접선의 길이가 같아 $FE=FG$이다.<br>$BF=x$라 두면 $FG=8-x$이므로 $AF=AE+EF=16-x$이다.<br>직각삼각형 $ABF$에 피타고라스 정리를 적용하면 $x^2+8^2=(16-x)^2$, $32x=192$이므로 $x=6$, $AF=10$이다.<br>직각삼각형의 내접원 반지름 $r$은 접선 길이의 성질로 $2r=AB+BF-AF$이므로 $r=(8+6-10)/2=2\\text{ cm}$이다."
+      "solution": "큰 원의 반지름은 직사각형 높이 8의 절반인 4이다.<br>위·아래 접점을 각각 $H$, $G$라 하면 $DH=CG=4$이므로 $AH=BG=12-4=8$이다.<br>$A$에서 그은 접선의 길이가 같아 $AE=AH=8$이고, $F$에서 그은 접선의 길이가 같아 $FE=FG$이다.<br>$BF=x$라 두면 $FG=8-x$이므로 $AF=AE+EF=16-x$이다.<br>직각삼각형 $ABF$에 피타고라스 정리를 적용하면 $x^2+8^2=(16-x)^2$, $32x=192$이므로 $x=6$, $AF=10$이다.<br>직각삼각형의 내접원 반지름 $r$은 접선 길이의 성질로 $2r=AB+BF-AF$이므로 $r=\\frac{8+6-10}{2}=2\\text{ cm}$이다."
     },
     {
       "id": 15,
@@ -288,7 +288,7 @@ window.examData = {
       "question": "[서술형 1] 다음 그림을 보고 알맞은 값을 구하여라. (6점)<br><img src=\"assets/images/17_신흥중_2학기_기말_중3_수학/s01.png\" /><br>(1) $\\sin x$값은?(2점)<br>(2) $\\cos x$ 값은?(2점)<br>(3) $\\tan x$ 값은?(2점)",
       "choices": [],
       "answer": "(1) $\\dfrac{\\sqrt{5}}{3}$, (2) $\\dfrac{2}{3}$, (3) $\\dfrac{\\sqrt{5}}{2}$",
-      "solution": "$\\angle A=90^\\circ$이고 $BC=12\\text{ cm}$, $AB=8\\text{ cm}$이므로 $AC=\\sqrt{BC^2-AB^2}=\\sqrt{144-64}=4\\sqrt{5}\\text{ cm}$이다.<br>그림의 수직선은 $BC$와 수직이므로 $x+\\angle C=90^\\circ$이고, $\\triangle ABC$에서도 $\\angle B+\\angle C=90^\\circ$이다.<br>따라서 $x=\\angle B$이다.<br>그러므로 (1) $\\sin x=AC/BC=(4\\sqrt{5})/12=\\sqrt{5}/3$, (2) $\\cos x=AB/BC=8/12=2/3$, (3) $\\tan x=AC/AB=(4\\sqrt{5})/8=\\sqrt{5}/2$이다."
+      "solution": "$\\angle A=90^\\circ$이고 $BC=12\\text{ cm}$, $AB=8\\text{ cm}$이므로 $AC=\\sqrt{BC^2-AB^2}=\\sqrt{144-64}=4\\sqrt{5}\\text{ cm}$이다.<br>그림의 수직선은 $BC$와 수직이므로 $x+\\angle C=90^\\circ$이고, $\\triangle ABC$에서도 $\\angle B+\\angle C=90^\\circ$이다.<br>따라서 $x=\\angle B$이다.<br>그러므로 (1) $\\sin x=AC/BC=(4\\sqrt{5})/12=\\sqrt{5}/3$, (2) $\\cos x=AB/BC=\\frac{8}{12}=\\frac{2}{3}$, (3) $\\tan x=AC/AB=(4\\sqrt{5})/8=\\sqrt{5}/2$이다."
     },
     {
       "id": 22,
@@ -296,7 +296,7 @@ window.examData = {
       "question": "[서술형 2] 반지름의 길이가 $6\\text{ cm}$인 원에 내접하는 정팔각형의 넓이는? (7점)<br><img src=\"assets/images/17_신흥중_2학기_기말_중3_수학/s02.png\" /><br>① 풀이 과정이 맞은 경우 (4점)<br>② 정답을 맞게 구한 경우 (3점)",
       "choices": [],
       "answer": "$72\\sqrt{2}\\text{ cm}^2$",
-      "solution": "원의 중심과 정팔각형의 각 꼭짓점을 연결하면 합동인 이등변삼각형 8개로 나뉜다.<br>각 삼각형에서 두 변의 길이는 반지름 $6\\text{ cm}$이고 그 끼인각은 $360^\\circ/8=45^\\circ$이다.<br>따라서 한 삼각형의 넓이는 $(1/2)\\times6\\times6\\times\\sin45^\\circ=18\\times\\sqrt{2}/2=9\\sqrt{2}\\text{ cm}^2$이다.<br>정팔각형의 넓이는 그 8배인 $8\\times9\\sqrt{2}=72\\sqrt{2}\\text{ cm}^2$이다."
+      "solution": "원의 중심과 정팔각형의 각 꼭짓점을 연결하면 합동인 이등변삼각형 8개로 나뉜다.<br>각 삼각형에서 두 변의 길이는 반지름 $6\\text{ cm}$이고 그 끼인각은 $360^\\circ/8=45^\\circ$이다.<br>따라서 한 삼각형의 넓이는 $(\\frac{1}{2})\\times6\\times6\\times\\sin45^\\circ=18\\times\\sqrt{2}/2=9\\sqrt{2}\\text{ cm}^2$이다.<br>정팔각형의 넓이는 그 8배인 $8\\times9\\sqrt{2}=72\\sqrt{2}\\text{ cm}^2$이다."
     },
     {
       "id": 23,
@@ -304,7 +304,7 @@ window.examData = {
       "question": "[서술형 3] 다음 그림에서, 이 원의 반지름의 길이는? (7점)<br><img src=\"assets/images/17_신흥중_2학기_기말_중3_수학/s03.png\" /><br>① 풀이과정이 맞은 경우 (4점)<br>② 정답을 맞게 구한 경우 (3점)",
       "choices": [],
       "answer": "$4\\sqrt{2}\\text{ cm}$",
-      "solution": "$OC$와 $DB$의 교점을 $E$, 원의 반지름을 $r$이라 하자.<br>그림의 같은 길이 표시에서 $OE=EC=r/2$이고 $DE=6\\text{ cm}$, $EB=4\\text{ cm}$이다.<br>직선 $CO$를 $O$의 반대쪽까지 연장하여 원과 만나는 점을 $F$라 하면 $OF=r$이므로 $EF=EO+OF=3r/2$이다.<br>두 현 $CF$, $DB$가 $E$에서 만나므로 $EC\\times EF=ED\\times EB$이다.<br>따라서 $(r/2)\\times(3r/2)=6\\times4$, $3r^2/4=24$, $r^2=32$이다.<br>반지름은 양수이므로 $r=4\\sqrt{2}\\text{ cm}$이다."
+      "solution": "$OC$와 $DB$의 교점을 $E$, 원의 반지름을 $r$이라 하자.<br>그림의 같은 길이 표시에서 $OE=EC=\\frac{r}{2}$이고 $DE=6\\text{ cm}$, $EB=4\\text{ cm}$이다.<br>직선 $CO$를 $O$의 반대쪽까지 연장하여 원과 만나는 점을 $F$라 하면 $OF=r$이므로 $EF=EO+OF=3r/2$이다.<br>두 현 $CF$, $DB$가 $E$에서 만나므로 $EC\\times EF=ED\\times EB$이다.<br>따라서 $(\\frac{r}{2})\\times(3r/2)=6\\times4$, $3r^2/4=24$, $r^2=32$이다.<br>반지름은 양수이므로 $r=4\\sqrt{2}\\text{ cm}$이다."
     }
   ]
 };

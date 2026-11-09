@@ -58,7 +58,7 @@ window.questionBank = [
       "$\\frac{1}{2}$"
     ],
     "answer": "⑤",
-    "solution": "<div class=\"small-board\"><p><b>1단계 · 안쪽부터 계산</b> $\\sqrt[3]{8}=2$이고, $\\sqrt{2\\sqrt[3]{8}}=\\sqrt{2\\cdot2}=2$입니다.</p><p><b>2단계 · 거듭제곱근을 지수로</b> 전체 식은 $\\sqrt[6]{4\\cdot2}=\\sqrt[6]{8}=(2^3)^{1/6}=2^{1/2}$입니다.</p><p>따라서 $k=\\frac12$이며 정답은 <b>⑤</b>입니다.</p></div>",
+    "solution": "<div class=\"small-board\"><p><b>1단계 · 안쪽부터 계산</b> $\\sqrt[3]{8}=2$이고, $\\sqrt{2\\sqrt[3]{8}}=\\sqrt{2\\cdot2}=2$입니다.</p><p><b>2단계 · 거듭제곱근을 지수로</b> 전체 식은 $\\sqrt[6]{4\\cdot2}=\\sqrt[6]{8}=(2^3)^{\\frac{1}{6}}=2^{\\frac{1}{2}}$입니다.</p><p>따라서 $k=\\frac12$이며 정답은 <b>⑤</b>입니다.</p></div>",
     "level": "중",
     "category": "지수의 뜻과 성질",
     "originalCategory": "지수의 뜻과 성질",

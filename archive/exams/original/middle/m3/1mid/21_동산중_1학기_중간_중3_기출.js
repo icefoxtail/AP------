@@ -650,7 +650,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "식 $x^{2}+\\Box x+1/16$ 이 완전제곱식이 되도록 하는 $\\Box$ 안의 값은? [4점]",
+    "content": "식 $x^{2}+\\Box x+\\frac{1}{16}$ 이 완전제곱식이 되도록 하는 $\\Box$ 안의 값은? [4점]",
     "choices": [
       "±1",
       "±2",

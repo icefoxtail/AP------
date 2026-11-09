@@ -535,7 +535,7 @@ window.questionBank = [
       "$\\dfrac{5\\sqrt3}{9}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 그래프의 교점 좌표를 $a$, $b$로 나타내고 거리 조건을 적용한다.\n조건 정리: $f(x)=a\\cos\\dfrac{\\pi}{b}x$이다.\n풀이 방향: $A$, $B$, $C$의 좌표를 구하고 $AB=BC$에서 $a/b$를 구한다.\n정석 풀이: $y=-a$가 되는 점은 $x=b$이므로 $A=(b,-a)$이다.\n$y=\\dfrac{a}{2}$일 때 $\\cos\\dfrac{\\pi x}{b}=\\dfrac12$이므로 $B=(\\dfrac{b}{3},\\dfrac{a}{2})$, $C=(\\dfrac{5b}{3},\\dfrac{a}{2})$이다.\n$BC=\\dfrac{4b}{3}$이고, $AB^2=(b-\\dfrac{b}{3})^2+(-a-\\dfrac{a}{2})^2=\\dfrac{4b^2}{9}+\\dfrac{9a^2}{4}$이다.\n$AB=BC$이므로 $\\dfrac{4b^2}{9}+\\dfrac{9a^2}{4}=\\dfrac{16b^2}{9}$, 따라서 $\\dfrac{a}{b}=\\dfrac{4\\sqrt3}{9}$이다.\n직선 $OA$의 기울기는 $-\\dfrac{a}{b}$이고, 직선 $OB$의 기울기는 $\\dfrac{a/2}{b/3}=\\dfrac{3a}{2b}$이다.\n두 기울기의 합은 $-\\dfrac{a}{b}+\\dfrac{3a}{2b}=\\dfrac{a}{2b}=\\dfrac{2\\sqrt3}{9}$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 그래프의 교점 좌표를 $a$, $b$로 나타내고 거리 조건을 적용한다.\n조건 정리: $f(x)=a\\cos\\dfrac{\\pi}{b}x$이다.\n풀이 방향: $A$, $B$, $C$의 좌표를 구하고 $AB=BC$에서 $\\frac{a}{b}$를 구한다.\n정석 풀이: $y=-a$가 되는 점은 $x=b$이므로 $A=(b,-a)$이다.\n$y=\\dfrac{a}{2}$일 때 $\\cos\\dfrac{\\pi x}{b}=\\dfrac12$이므로 $B=(\\dfrac{b}{3},\\dfrac{a}{2})$, $C=(\\dfrac{5b}{3},\\dfrac{a}{2})$이다.\n$BC=\\dfrac{4b}{3}$이고, $AB^2=(b-\\dfrac{b}{3})^2+(-a-\\dfrac{a}{2})^2=\\dfrac{4b^2}{9}+\\dfrac{9a^2}{4}$이다.\n$AB=BC$이므로 $\\dfrac{4b^2}{9}+\\dfrac{9a^2}{4}=\\dfrac{16b^2}{9}$, 따라서 $\\dfrac{a}{b}=\\dfrac{4\\sqrt3}{9}$이다.\n직선 $OA$의 기울기는 $-\\dfrac{a}{b}$이고, 직선 $OB$의 기울기는 $\\dfrac{\\frac{a}{2}}{\\frac{b}{3}}=\\dfrac{3a}{2b}$이다.\n두 기울기의 합은 $-\\dfrac{a}{b}+\\dfrac{3a}{2b}=\\dfrac{a}{2b}=\\dfrac{2\\sqrt3}{9}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q19.png",
     "imageSize": "large",
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",

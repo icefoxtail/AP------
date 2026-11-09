@@ -276,7 +276,7 @@ window.questionBank = [
       "$2\\sqrt{30}$"
     ],
     "answer": "⑤",
-    "solution": "원에 내접하는 사각형에서 마주 보는 각은 보각이다. 대각선 $AC$로 나누고 $\\angle B=\\theta$라 두면 $\\angle D=180^\\circ-\\theta$이다.\n넓이 $K=\\dfrac12\\cdot2\\cdot3\\sin\\theta+\\dfrac12\\cdot5\\cdot4\\sin(180^\\circ-\\theta)=13\\sin\\theta$.\n코사인법칙을 $AC$에 적용하면 $AC^2=2^2+3^2-12\\cos\\theta=13-12\\cos\\theta$이고, 다른 삼각형에서는 $AC^2=5^2+4^2-40\\cos(180^\\circ-\\theta)=41+40\\cos\\theta$이다. 두 식을 같게 놓아 $\\cos\\theta=-7/13$을 얻는다. 따라서 $\\sin\\theta=\\sqrt{1-49/169}=2\\sqrt{30}/13$이고 $K=2\\sqrt{30}$. 정답은 ⑤이다.",
+    "solution": "원에 내접하는 사각형에서 마주 보는 각은 보각이다. 대각선 $AC$로 나누고 $\\angle B=\\theta$라 두면 $\\angle D=180^\\circ-\\theta$이다.\n넓이 $K=\\dfrac12\\cdot2\\cdot3\\sin\\theta+\\dfrac12\\cdot5\\cdot4\\sin(180^\\circ-\\theta)=13\\sin\\theta$.\n코사인법칙을 $AC$에 적용하면 $AC^2=2^2+3^2-12\\cos\\theta=13-12\\cos\\theta$이고, 다른 삼각형에서는 $AC^2=5^2+4^2-40\\cos(180^\\circ-\\theta)=41+40\\cos\\theta$이다. 두 식을 같게 놓아 $\\cos\\theta=-\\frac{7}{13}$을 얻는다. 따라서 $\\sin\\theta=\\sqrt{1-\\frac{49}{169}}=2\\sqrt{30}/13$이고 $K=2\\sqrt{30}$. 정답은 ⑤이다.",
     "level": "상",
     "category": "원에 내접하는 사각형의 넓이",
     "originalCategory": "원에 내접하는 사각형의 넓이",
@@ -332,7 +332,7 @@ window.questionBank = [
       "제9항"
     ],
     "answer": "④",
-    "solution": "등차수열의 일반항은 $a_n=16-3(n-1)$이다. 음수가 되려면 $16-3(n-1)<0$, 즉 $n>19/3$이므로 처음 음수가 되는 항은 제7항이다. 정답은 ④이다.",
+    "solution": "등차수열의 일반항은 $a_n=16-3(n-1)$이다. 음수가 되려면 $16-3(n-1)<0$, 즉 $n>\\frac{19}{3}$이므로 처음 음수가 되는 항은 제7항이다. 정답은 ④이다.",
     "level": "하",
     "category": "수열의 일반항",
     "originalCategory": "수열의 일반항",
@@ -436,7 +436,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "$a_5-a_3=2d$이므로 $d=(5-12)/2=-7/2$, $a_1=a_3-2d=19$이다. 따라서 $a_n=19-(7/2)(n-1)$이다. $a_6=3/2>0$, $a_7=-2<0$이므로 $S_n$은 $n=6$까지 증가하고 이후 감소한다. 정답은 ②이다.",
+    "solution": "$a_5-a_3=2d$이므로 $d=\\frac{5-12}{2}=-\\frac{7}{2}$, $a_1=a_3-2d=19$이다. 따라서 $a_n=19-(\\frac{7}{2})(n-1)$이다. $a_6=\\frac{3}{2}>0$, $a_7=-2<0$이므로 $S_n$은 $n=6$까지 증가하고 이후 감소한다. 정답은 ②이다.",
     "level": "중",
     "category": "등차수열의 합",
     "originalCategory": "등차수열의 합",
@@ -594,7 +594,7 @@ window.questionBank = [
       "188"
     ],
     "answer": "①",
-    "solution": "길이가 10인 다음 블록의 합은 앞 블록 합의 $r^{10}$배이다. 따라서 $r^{10}=30/5=6$이다. 세 번째 블록의 합은 두 번째 블록의 6배이므로 $30\\cdot6=180$. 정답은 ①이다.",
+    "solution": "길이가 10인 다음 블록의 합은 앞 블록 합의 $r^{10}$배이다. 따라서 $r^{10}=\\frac{30}{5}=6$이다. 세 번째 블록의 합은 두 번째 블록의 6배이므로 $30\\cdot6=180$. 정답은 ①이다.",
     "level": "하",
     "category": "등비수열의 합",
     "originalCategory": "등비수열의 합",
@@ -754,7 +754,7 @@ window.questionBank = [
       "90"
     ],
     "answer": "②",
-    "solution": "홀수 $n=1,3,5,7,9$에 주어진 관계를 적용해 인접한 두 항씩 묶는다.\r\n$S=\\sum_{k=1}^{10}u_k=(u_1+u_2)+(u_3+u_4)+(u_5+u_6)+(u_7+u_8)+(u_9+u_{10})$\r\n$=2^1+2^3+2^5+2^7+2^9=2(1+4+16+64+256)=682$.\r\n따라서 $682=\\dfrac2p(c-1)$에서 $c=341p+1$이다. $p$는 10보다 작은 소수이고 $2/p$가 기약분수이므로 $p\\in\\{3,5,7\\}$이다.\r\n$p=3$이면 $c=1024=2^{10}$이다. $p=5,7$이면 각각 $c=1706,2388$로 2의 거듭제곱이 아니므로 제외한다.\r\n따라서 $p=3$, $\\log_2c=10$, $p\\log_2c=30$이고 정답은 ②이다.",
+    "solution": "홀수 $n=1,3,5,7,9$에 주어진 관계를 적용해 인접한 두 항씩 묶는다.\r\n$S=\\sum_{k=1}^{10}u_k=(u_1+u_2)+(u_3+u_4)+(u_5+u_6)+(u_7+u_8)+(u_9+u_{10})$\r\n$=2^1+2^3+2^5+2^7+2^9=2(1+4+16+64+256)=682$.\r\n따라서 $682=\\dfrac2p(c-1)$에서 $c=341p+1$이다. $p$는 10보다 작은 소수이고 $\\frac{2}{p}$가 기약분수이므로 $p\\in\\{3,5,7\\}$이다.\r\n$p=3$이면 $c=1024=2^{10}$이다. $p=5,7$이면 각각 $c=1706,2388$로 2의 거듭제곱이 아니므로 제외한다.\r\n따라서 $p=3$, $\\log_2c=10$, $p\\log_2c=30$이고 정답은 ②이다.",
     "level": "상",
     "category": "수열의 합",
     "originalCategory": "수열의 합",
@@ -1001,7 +1001,7 @@ window.questionBank = [
     "content": "[서술형 1]<br>$$A = \\dfrac{1}{\\sqrt{3}+\\sqrt{2}} + \\dfrac{1}{\\sqrt{4}+\\sqrt{3}} + \\dfrac{1}{\\sqrt{5}+\\sqrt{4}} + \\cdots + \\dfrac{1}{\\sqrt{16}+\\sqrt{15}}$$<br>$$B = \\dfrac{2}{1 \\times 3} + \\dfrac{2}{3 \\times 5} + \\cdots + \\dfrac{2}{11 \\times 13}$$<br>라고 할 때, 다음의 값을 구하려고 한다. [7점]<br><br>1) $A = \\sum_{k=1}^{14} a_k$ 꼴로 나타내면 $A = \\sum_{k=1}^{14} (\\sqrt{(ㄱ)} - \\sqrt{(ㄴ)})$이다. (ㄱ), (ㄴ)에 들어갈 말로 알맞은 것은? (풀이과정도 서술) (2.5점)<br><br>2) $B = \\sum_{k=1}^6 b_k$ 꼴로 나타내면 $B = \\sum_{k=1}^6 \\left(\\dfrac{1}{(ㄷ)} - \\dfrac{1}{(ㄹ)}\\right)$이다. (ㄷ), (ㄹ)에 들어갈 말로 알맞은 것은? (풀이과정도 서술) (2.5점)<br><br>3) 1)과 2)를 활용하여 $A$와 $B$의 값을 각각 구하시오. (2점)",
     "choices": [],
     "answer": "1) ㄱ=k+2, ㄴ=k+1. 2) ㄷ=2k-1, ㄹ=2k+1. 3) A=4-√2, B=12/13.",
-    "solution": "1) 유리화하면 $\\dfrac1{\\sqrt{k+2}+\\sqrt{k+1}}=\\sqrt{k+2}-\\sqrt{k+1}$이므로 ㄱ은 $k+2$, ㄴ은 $k+1$이다. 망원합으로 $A=\\sqrt{16}-\\sqrt2=4-\\sqrt2$.\n2) $\\dfrac2{(2k-1)(2k+1)}=\\dfrac1{2k-1}-\\dfrac1{2k+1}$이므로 ㄷ은 $2k-1$, ㄹ은 $2k+1$이다. 망원합으로 $B=1-1/13=12/13$.",
+    "solution": "1) 유리화하면 $\\dfrac1{\\sqrt{k+2}+\\sqrt{k+1}}=\\sqrt{k+2}-\\sqrt{k+1}$이므로 ㄱ은 $k+2$, ㄴ은 $k+1$이다. 망원합으로 $A=\\sqrt{16}-\\sqrt2=4-\\sqrt2$.\n2) $\\dfrac2{(2k-1)(2k+1)}=\\dfrac1{2k-1}-\\dfrac1{2k+1}$이므로 ㄷ은 $2k-1$, ㄹ은 $2k+1$이다. 망원합으로 $B=1-\\frac{1}{13}=\\frac{12}{13}$.",
     "level": "상",
     "category": "수열의 합",
     "originalCategory": "수열의 합",
@@ -1049,7 +1049,7 @@ window.questionBank = [
     "content": "[서술형 2]<br>아래 그림과 같이 $\\angle\\mathrm{B} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$를 꼭짓점 $\\mathrm{A}$와 변 $\\mathrm{BC}$의 중점 $\\mathrm{F}$가 겹치도록 접는다. $\\angle\\mathrm{A} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 4\\sqrt{3}$, $\\overline{\\mathrm{BC}} = 4$라 할 때, 삼각형 $\\mathrm{DFE}$의 넓이의 풀이과정을 쓰시오. [7점]<br><br><img src=\"assets/images/19_매산여고_1학기_기말_고2_수학I/q21.png\" class=\"exam-img\"><br><br>(1) $\\overline{\\mathrm{DF}} = x$라 할 때, $x$의 값을 $\\dfrac{n\\sqrt{3}}{m}$라 할 때, $m+n$의 값을 구하시오. (2점)<br><br>(2) $\\overline{\\mathrm{EF}} = y$라 할 때, $y$의 값을 구하시오. (2점)<br><br>(3) 삼각형 $\\mathrm{DEF}$의 넓이를 $\\dfrac{q\\sqrt{3}}{p}$라 할 때, $p-q$의 값을 구하시오. (3점)",
     "choices": [],
     "answer": "(1) m+n=19. (2) y=26/7. (3) p-q=-85.",
-    "solution": "좌표를 $B=(0,0)$, $A=(0,4\\sqrt3)$, $C=(4,0)$으로 두면 $F=(2,0)$이다. 접는 선 $DE$는 $AF$의 수직이등분선이다. $AF$의 중점은 $(1,2\\sqrt3)$이고 기울기는 $-2\\sqrt3$이므로 $DE$의 기울기는 $\\sqrt3/6$이다. 따라서 $D=(0,11\\sqrt3/6)$, $E=(13/7,15\\sqrt3/7)$이다.\n$DF^2=2^2+(11\\sqrt3/6)^2=169/12$이므로 $DF=13\\sqrt3/6$이고 $m+n=6+13=19$이다. $EF^2=(13/7-2)^2+(15\\sqrt3/7)^2=676/49$이므로 $y=26/7$이다. 좌표로 넓이를 계산하면 $[DFE]=\\dfrac12\\left|2\\left(\\dfrac{15\\sqrt3}7-\\dfrac{11\\sqrt3}6\\right)+\\dfrac{13}7\\cdot\\dfrac{11\\sqrt3}6\\right|=169\\sqrt3/84$. 따라서 $p-q=84-169=-85$.",
+    "solution": "좌표를 $B=(0,0)$, $A=(0,4\\sqrt3)$, $C=(4,0)$으로 두면 $F=(2,0)$이다. 접는 선 $DE$는 $AF$의 수직이등분선이다. $AF$의 중점은 $(1,2\\sqrt3)$이고 기울기는 $-2\\sqrt3$이므로 $DE$의 기울기는 $\\sqrt3/6$이다. 따라서 $D=(0,11\\sqrt3/6)$, $E=(\\frac{13}{7},15\\sqrt3/7)$이다.\n$DF^2=2^2+(11\\sqrt3/6)^2=\\frac{169}{12}$이므로 $DF=13\\sqrt3/6$이고 $m+n=6+13=19$이다. $EF^2=(\\frac{13}{7}-2)^2+(15\\sqrt3/7)^2=\\frac{676}{49}$이므로 $y=\\frac{26}{7}$이다. 좌표로 넓이를 계산하면 $[DFE]=\\dfrac12\\left|2\\left(\\dfrac{15\\sqrt3}7-\\dfrac{11\\sqrt3}6\\right)+\\dfrac{13}7\\cdot\\dfrac{11\\sqrt3}6\\right|=169\\sqrt3/84$. 따라서 $p-q=84-169=-85$.",
     "level": "상",
     "category": "삼각형의 접기와 넓이",
     "originalCategory": "삼각형의 접기와 넓이",

@@ -404,7 +404,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "$f(x)=ax^2+bx+c$로 놓는다. $x\\to-\\infty$에서 $\\sqrt{f(x)}+3x$가 유한한 값으로 수렴하려면 $\\sqrt a=3$이므로 $a=9$이다.\n유리화를 하면\n$\\displaystyle\\sqrt{9x^2+bx+c}+3x=\\frac{bx+c}{\\sqrt{9x^2+bx+c}-3x}$이다.\n$x\\to-\\infty$일 때 분모를 $x$로 나누면 $-6$으로 수렴하므로 극한은 $-\\dfrac b6=2$이다. 따라서 $b=-12$이다.\n$f(x)=9x^2-12x+c$이고 $1/f(x)$가 모든 실수에서 연속이려면 $f(x)=0$의 실근이 없어야 한다.\n판별식 $D=(-12)^2-4\\cdot9c=144-36c\\lt0$에서 $c\\gt4$이다.\n$c$는 정수이므로 최솟값은 $5$이다. $f(0)=c$이므로 구하는 값은 $5$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$f(x)=ax^2+bx+c$로 놓는다. $x\\to-\\infty$에서 $\\sqrt{f(x)}+3x$가 유한한 값으로 수렴하려면 $\\sqrt a=3$이므로 $a=9$이다.\n유리화를 하면\n$\\displaystyle\\sqrt{9x^2+bx+c}+3x=\\frac{bx+c}{\\sqrt{9x^2+bx+c}-3x}$이다.\n$x\\to-\\infty$일 때 분모를 $x$로 나누면 $-6$으로 수렴하므로 극한은 $-\\dfrac b6=2$이다. 따라서 $b=-12$이다.\n$f(x)=9x^2-12x+c$이고 $\\frac{1}{f}(x)$가 모든 실수에서 연속이려면 $f(x)=0$의 실근이 없어야 한다.\n판별식 $D=(-12)^2-4\\cdot9c=144-36c\\lt0$에서 $c\\gt4$이다.\n$c$는 정수이므로 최솟값은 $5$이다. $f(0)=c$이므로 구하는 값은 $5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-M1-01-LIMIT_INFINITY",
     "subUnit": "무한대에서의 극한",
     "subUnitConfidence": "candidate_evidence",

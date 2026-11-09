@@ -27,7 +27,7 @@ window.questionBank = [
       "$2\\sqrt{3}$"
     ],
     "answer": "③",
-    "solution": "사인법칙에 따라\n$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}$이다.\n주어진 값을 대입하면\n$\\dfrac{a}{\\sin45^\\circ}=\\dfrac{\\sqrt2}{\\sin30^\\circ}$\n$a=\\sqrt2\\cdot\\dfrac{\\sin45^\\circ}{\\sin30^\\circ}$\n$=\\sqrt2\\cdot\\dfrac{\\sqrt2/2}{1/2}=2$이다.\n따라서 정답은 ③이다."
+    "solution": "사인법칙에 따라\n$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}$이다.\n주어진 값을 대입하면\n$\\dfrac{a}{\\sin45^\\circ}=\\dfrac{\\sqrt2}{\\sin30^\\circ}$\n$a=\\sqrt2\\cdot\\dfrac{\\sin45^\\circ}{\\sin30^\\circ}$\n$=\\sqrt2\\cdot\\dfrac{\\sqrt2/2}{\\frac{1}{2}}=2$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 3,
@@ -139,7 +139,7 @@ window.questionBank = [
       "$\\dfrac{3}{5}$"
     ],
     "answer": "③",
-    "solution": "네 점 A, B, C, D가 한 원 위에 있으므로 그 원의 반지름을 R이라 하면 현 BD에 대하여\n$BD=2R\\sin\\angle DAB$이다.\n$5=2R\\cdot\\dfrac34$에서\n$R=\\dfrac{10}{3}$이다.\n현 CD는 원주각 $\\angle DAC$에 대응하므로\n$CD=2R\\sin\\angle DAC$이다.\n따라서\n$\\sin\\angle DAC=\\dfrac{CD}{2R}=\\dfrac{2}{20/3}=\\dfrac{3}{10}$이다.\n따라서 정답은 ③이다."
+    "solution": "네 점 A, B, C, D가 한 원 위에 있으므로 그 원의 반지름을 R이라 하면 현 BD에 대하여\n$BD=2R\\sin\\angle DAB$이다.\n$5=2R\\cdot\\dfrac34$에서\n$R=\\dfrac{10}{3}$이다.\n현 CD는 원주각 $\\angle DAC$에 대응하므로\n$CD=2R\\sin\\angle DAC$이다.\n따라서\n$\\sin\\angle DAC=\\dfrac{CD}{2R}=\\dfrac{2}{\\frac{20}{3}}=\\dfrac{3}{10}$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 11,
@@ -153,7 +153,7 @@ window.questionBank = [
       "96"
     ],
     "answer": "④",
-    "solution": "외접원의 반지름이 $5$이므로 사인법칙에서 $a=2R\\sin A=10\\sin A$이다. $a=8$을 대입하면 $\\sin A=\\dfrac45$이다. 따라서 $A$는 예각 또는 둔각일 수 있고, 이에 따라 $\\cos A=\\dfrac35$ 또는 $-\\dfrac35$이다.\n\n코사인법칙과 $b^2+c^2\\ge2bc$를 이용하면\n$64=b^2+c^2-2bc\\cos A\\ge2bc(1-\\cos A)$이다.\n$\\cos A=\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1-3/5)}=80$이고, $\\cos A=-\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1+3/5)}=20$이다. 따라서 항상 $bc\\le80$이다.\n\n이 상한은 실제로 이룰 수 있다. 원 위에서 $BC=8$인 현의 큰 호의 중점에 $A$를 잡으면 $AB=AC$이고 $A$는 예각이다. 따라서 $b=c$이고 $\\cos A=\\dfrac35$인 경우에 등호가 성립한다. 이때 코사인법칙으로\n$64=2b^2-2b^2\\cdot\\dfrac35=\\dfrac45b^2$\n이므로 $b^2=c^2=80$, 따라서 $bc=80$이다. 그러므로 최댓값은 $80$이고 정답은 ④이다."
+    "solution": "외접원의 반지름이 $5$이므로 사인법칙에서 $a=2R\\sin A=10\\sin A$이다. $a=8$을 대입하면 $\\sin A=\\dfrac45$이다. 따라서 $A$는 예각 또는 둔각일 수 있고, 이에 따라 $\\cos A=\\dfrac35$ 또는 $-\\dfrac35$이다.\n\n코사인법칙과 $b^2+c^2\\ge2bc$를 이용하면\n$64=b^2+c^2-2bc\\cos A\\ge2bc(1-\\cos A)$이다.\n$\\cos A=\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1-\\frac{3}{5})}=80$이고, $\\cos A=-\\dfrac35$이면 $bc\\le\\dfrac{64}{2(1+\\frac{3}{5})}=20$이다. 따라서 항상 $bc\\le80$이다.\n\n이 상한은 실제로 이룰 수 있다. 원 위에서 $BC=8$인 현의 큰 호의 중점에 $A$를 잡으면 $AB=AC$이고 $A$는 예각이다. 따라서 $b=c$이고 $\\cos A=\\dfrac35$인 경우에 등호가 성립한다. 이때 코사인법칙으로\n$64=2b^2-2b^2\\cdot\\dfrac35=\\dfrac45b^2$\n이므로 $b^2=c^2=80$, 따라서 $bc=80$이다. 그러므로 최댓값은 $80$이고 정답은 ④이다."
   },
   {
     "id": 12,

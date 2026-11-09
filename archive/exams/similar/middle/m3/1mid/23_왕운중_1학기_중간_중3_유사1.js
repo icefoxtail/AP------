@@ -79,7 +79,7 @@ window.questionBank = [
       "$5$개"
     ],
     "answer": "②",
-    "solution": "1단계: 주어진 수를 정리하면 $\\sqrt{25}=5$, $\\sqrt{9/16}=3/4$, $2-\\sqrt{(-3)^2} = 2-3 = -1$, $0.\\dot{4}=4/9$로 이들은 모두 유리수이다.\\n2단계: $\\sqrt{15}$와 $\\sqrt{2.5} = \\sqrt{25/10} = 5/\\sqrt{10}$는 근호 밖으로 완전히 나오지 못하므로 무리수이다.\\n3단계: 따라서 무리수는 총 2개이다.\\n따라서 정답은 ②이다.",
+    "solution": "1단계: 주어진 수를 정리하면 $\\sqrt{25}=5$, $\\sqrt{\\frac{9}{16}}=\\frac{3}{4}$, $2-\\sqrt{(-3)^2} = 2-3 = -1$, $0.\\dot{4}=\\frac{4}{9}$로 이들은 모두 유리수이다.\\n2단계: $\\sqrt{15}$와 $\\sqrt{2.5} = \\sqrt{\\frac{25}{10}} = 5/\\sqrt{10}$는 근호 밖으로 완전히 나오지 못하므로 무리수이다.\\n3단계: 따라서 무리수는 총 2개이다.\\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "②",
-    "solution": "1단계: 이차식 $x^2+px+q$가 완전제곱식이 되려면 상수항 $q$는 일차항 계수 $p$의 절반의 제곱, 즉 $q = (p/2)^2$이어야 한다.\\n2단계: $k = (-5/2)^2 = \\frac{25}{4}$이다.\\n따라서 정답은 ②이다.",
+    "solution": "1단계: 이차식 $x^2+px+q$가 완전제곱식이 되려면 상수항 $q$는 일차항 계수 $p$의 절반의 제곱, 즉 $q = (\\frac{p}{2})^2$이어야 한다.\\n2단계: $k = (-\\frac{5}{2})^2 = \\frac{25}{4}$이다.\\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -195,7 +195,7 @@ window.questionBank = [
       "$\\sqrt{15} < 4$"
     ],
     "answer": "④",
-    "solution": "1단계: ④의 양변을 제곱하여 비교한다. $(\\sqrt{1/3})^2 = 1/3$이고 $(1/3)^2 = 1/9$이다.\\n2단계: $1/3 > 1/9$이므로 $\\sqrt{1/3} > 1/3$이 성립해야 한다. 따라서 부등호 방향이 옳지 않다.\\n따라서 정답은 ④이다.",
+    "solution": "1단계: ④의 양변을 제곱하여 비교한다. $(\\sqrt{\\frac{1}{3}})^2 = \\frac{1}{3}$이고 $(\\frac{1}{3})^2 = \\frac{1}{9}$이다.\\n2단계: $\\frac{1}{3} > \\frac{1}{9}$이므로 $\\sqrt{\\frac{1}{3}} > \\frac{1}{3}$이 성립해야 한다. 따라서 부등호 방향이 옳지 않다.\\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",

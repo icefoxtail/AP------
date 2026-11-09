@@ -930,7 +930,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "③",
-    "solution": "\\(c=\\vec a\\cdot\\vec b\\)라 두고 양변을 제곱한다.\n\\(k^2+1+2kc=2(1+k^2-2kc)\\)\n\\(6kc=k^2+1\\), 따라서 \\(c=\\dfrac{k+1/k}{6}\\)이다.\n양수 \\(k\\)에 대하여 \\(k+\\dfrac1k\\ge2\\)이고 등호는 \\(k=1\\)일 때 성립한다.\n내적의 최솟값은 \\(c=\\dfrac13\\)이다.\n\\(\\cos\\theta=\\vec a\\cdot\\vec b=\\dfrac13\\)이므로 정답은 ③이다.",
+    "solution": "\\(c=\\vec a\\cdot\\vec b\\)라 두고 양변을 제곱한다.\n\\(k^2+1+2kc=2(1+k^2-2kc)\\)\n\\(6kc=k^2+1\\), 따라서 \\(c=\\dfrac{k+\\frac{1}{k}}{6}\\)이다.\n양수 \\(k\\)에 대하여 \\(k+\\dfrac1k\\ge2\\)이고 등호는 \\(k=1\\)일 때 성립한다.\n내적의 최솟값은 \\(c=\\dfrac13\\)이다.\n\\(\\cos\\theta=\\vec a\\cdot\\vec b=\\dfrac13\\)이므로 정답은 ③이다.",
     "decisiveStep": "조건을 제곱해 내적을 k+1/k로 나타낸다.",
     "standardCourse": "기하와 벡터",
     "standardUnitKey": "H15-GV-06",

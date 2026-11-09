@@ -812,7 +812,7 @@ window.questionBank = [
     "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q24.png",
     "choices": [],
     "answer": "(1) 2\\sqrt{3}\\n(2) \\frac{45\\sqrt{2}}{16}",
-    "solution": "(1) 처음 직사각형은 $x\\times\\sqrt6$이고, 긴 변을 이등분한 새 직사각형은 $\\sqrt6\\times\\frac x2$이다.\n닮음이므로 $\\frac{x}{\\sqrt6}=\\frac{\\sqrt6}{x/2}$에서 $x^2=12$이다. $x>\\sqrt6$이므로 $x=2\\sqrt3$이다.\n\n(2) 긴 변을 계속 이등분하면 필요한 길이는 $\\sqrt3$, $\\frac{\\sqrt6}{2}$, $\\frac{\\sqrt3}{2}$, $\\frac{\\sqrt6}{4}$ 순으로 생긴다.\n그림에서 $AB=\\sqrt6$, $JK=\\frac{\\sqrt6}{4}$이고 두 평행선 사이의 거리는 $\\sqrt3+\\frac{\\sqrt3}{2}=\\frac{3\\sqrt3}{2}$이다.\n따라서 사다리꼴 $ABJK$의 넓이는 $\\frac12(\\sqrt6+\\frac{\\sqrt6}{4})\\frac{3\\sqrt3}{2}=\\frac{45\\sqrt2}{16}$이다.\n\n따라서 (1) $2\\sqrt3$, (2) $\\frac{45\\sqrt2}{16}$이다.",
+    "solution": "(1) 처음 직사각형은 $x\\times\\sqrt6$이고, 긴 변을 이등분한 새 직사각형은 $\\sqrt6\\times\\frac x2$이다.\n닮음이므로 $\\frac{x}{\\sqrt6}=\\frac{\\sqrt6}{\\frac{x}{2}}$에서 $x^2=12$이다. $x>\\sqrt6$이므로 $x=2\\sqrt3$이다.\n\n(2) 긴 변을 계속 이등분하면 필요한 길이는 $\\sqrt3$, $\\frac{\\sqrt6}{2}$, $\\frac{\\sqrt3}{2}$, $\\frac{\\sqrt6}{4}$ 순으로 생긴다.\n그림에서 $AB=\\sqrt6$, $JK=\\frac{\\sqrt6}{4}$이고 두 평행선 사이의 거리는 $\\sqrt3+\\frac{\\sqrt3}{2}=\\frac{3\\sqrt3}{2}$이다.\n따라서 사다리꼴 $ABJK$의 넓이는 $\\frac12(\\sqrt6+\\frac{\\sqrt6}{4})\\frac{3\\sqrt3}{2}=\\frac{45\\sqrt2}{16}$이다.\n\n따라서 (1) $2\\sqrt3$, (2) $\\frac{45\\sqrt2}{16}$이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",

@@ -361,7 +361,7 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n직사각형의 높이를 문자로 두고, 닮음을 이용하여 그 높이에서의 가로 길이를 나타낸다.\n조건 정리\n삼각형의 밑변은 $10$, 높이는 $8$이다. 직사각형의 높이를 $x$라 하자.\n풀이 과정\n밑변에서 높이 $x$만큼 올라간 곳에서 삼각형의 가로 길이는 닮음에 의해 선형적으로 줄어든다.\n높이가 $0$일 때 가로 길이는 $10$, 높이가 $8$일 때 가로 길이는 $0$이므로, 높이 $x$에서의 가로 길이는\n$10\\left(1-\\dfrac{x}{8}\\right)=10-\\dfrac54x$이다.\n따라서 직사각형의 넓이 $S$는\n$S=x\\left(10-\\dfrac54x\\right)$\n$=-\\dfrac54x^2+10x$이다.\n이 이차함수는 아래로 열린 포물선이므로 꼭짓점에서 최댓값을 갖는다.\n꼭짓점의 $x$좌표는\n$x=-\\dfrac{10}{2\\times(-5/4)}=4$이다.\n따라서 최댓값은\n$S=-\\dfrac54\\times4^2+10\\times4=-20+40=20$이다.\n결론\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트]\n직사각형의 높이를 문자로 두고, 닮음을 이용하여 그 높이에서의 가로 길이를 나타낸다.\n조건 정리\n삼각형의 밑변은 $10$, 높이는 $8$이다. 직사각형의 높이를 $x$라 하자.\n풀이 과정\n밑변에서 높이 $x$만큼 올라간 곳에서 삼각형의 가로 길이는 닮음에 의해 선형적으로 줄어든다.\n높이가 $0$일 때 가로 길이는 $10$, 높이가 $8$일 때 가로 길이는 $0$이므로, 높이 $x$에서의 가로 길이는\n$10\\left(1-\\dfrac{x}{8}\\right)=10-\\dfrac54x$이다.\n따라서 직사각형의 넓이 $S$는\n$S=x\\left(10-\\dfrac54x\\right)$\n$=-\\dfrac54x^2+10x$이다.\n이 이차함수는 아래로 열린 포물선이므로 꼭짓점에서 최댓값을 갖는다.\n꼭짓점의 $x$좌표는\n$x=-\\dfrac{10}{2\\times(-\\frac{5}{4})}=4$이다.\n따라서 최댓값은\n$S=-\\dfrac54\\times4^2+10\\times4=-20+40=20$이다.\n결론\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q11-solution.svg",
     "solutionImageAlt": "밑변 BC=10, 높이 8인 이등변삼각형 ABC에 내접한 직사각형 DEFG를 그리고, 높이 x일 때 가로 길이 10−5x/4, 최대 넓이 20이 되는 x=4인 경우를 표시한다.",
     "solutionImageSize": "full",
@@ -527,7 +527,7 @@ window.questionBank = [
       "알 수 없다"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n임의의 점을 문자로 두고, 내분점과 외분점 공식을 차례로 적용한다.\n조건 정리\n점 $A$를 $(x,y)$라 하자. 원점에 대하여 대칭이동한 점 $B$는 $(-x,-y)$이다.\n풀이 과정\n점 $P$는 선분 $AB$를 $3:1$로 내분하므로\n$P=\\left(\\dfrac{1\\cdot x+3\\cdot(-x)}{3+1},\\dfrac{1\\cdot y+3\\cdot(-y)}{3+1}\\right)$\n$=\\left(-\\dfrac{x}{2},-\\dfrac{y}{2}\\right)$이다.\n점 $Q$는 선분 $AB$를 $3:1$로 외분하므로\n$Q=\\left(\\dfrac{3\\cdot(-x)-1\\cdot x}{3-1},\\dfrac{3\\cdot(-y)-1\\cdot y}{3-1}\\right)$\n$=(-2x,-2y)$이다.\n이제 선분 $PQ$를 $1:4$로 외분하는 점을 구하면\n$\\left(\\dfrac{1\\cdot(-2x)-4\\cdot(-x/2)}{1-4},\\dfrac{1\\cdot(-2y)-4\\cdot(-y/2)}{1-4}\\right)$\n$=(0,0)$이다.\n따라서 $(a,b)=(0,0)$이므로\n$a+b=0$이다.\n결론\n따라서 정답은 ②이다.",
+    "solution": "[키포인트]\n임의의 점을 문자로 두고, 내분점과 외분점 공식을 차례로 적용한다.\n조건 정리\n점 $A$를 $(x,y)$라 하자. 원점에 대하여 대칭이동한 점 $B$는 $(-x,-y)$이다.\n풀이 과정\n점 $P$는 선분 $AB$를 $3:1$로 내분하므로\n$P=\\left(\\dfrac{1\\cdot x+3\\cdot(-x)}{3+1},\\dfrac{1\\cdot y+3\\cdot(-y)}{3+1}\\right)$\n$=\\left(-\\dfrac{x}{2},-\\dfrac{y}{2}\\right)$이다.\n점 $Q$는 선분 $AB$를 $3:1$로 외분하므로\n$Q=\\left(\\dfrac{3\\cdot(-x)-1\\cdot x}{3-1},\\dfrac{3\\cdot(-y)-1\\cdot y}{3-1}\\right)$\n$=(-2x,-2y)$이다.\n이제 선분 $PQ$를 $1:4$로 외분하는 점을 구하면\n$\\left(\\dfrac{1\\cdot(-2x)-4\\cdot(-\\frac{x}{2})}{1-4},\\dfrac{1\\cdot(-2y)-4\\cdot(-\\frac{y}{2})}{1-4}\\right)$\n$=(0,0)$이다.\n따라서 $(a,b)=(0,0)$이므로\n$a+b=0$이다.\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
