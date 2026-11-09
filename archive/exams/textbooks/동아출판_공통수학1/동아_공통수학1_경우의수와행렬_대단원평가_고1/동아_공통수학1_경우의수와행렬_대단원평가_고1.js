@@ -810,7 +810,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 표는 민준이와 서현이의 1차, 2차 수학 시험 성적을 나타낸 것이다. 행렬 $A=\\begin{pmatrix} 82 & 90 \\\\ 54 & 86 \\end{pmatrix}$이라고 할 때, 물음에 답하시오.\n\n수학 시험 성적 (단위: 점)\n구분 | 1차 | 2차\n---|---|---\n민준 | 82 | 90\n서현 | 54 | 86\n\n⑴ 두 행렬 $B=\\begin{pmatrix} 1/2 \\\\ 1/2 \\end{pmatrix}, C=\\begin{pmatrix} 1/2 & 1/2 \\end{pmatrix}$에 대하여 행렬 $AB, CA$가 각각 무엇을 의미하는지 설명하시오.\n⑵ 행렬 $AD$는 민준이와 서현이의 2차 성적이 1차에 비해 각각 얼마나 높아졌는지 나타낸 행렬이라고 한다. $2 \\times 1$ 행렬 $D$를 구하시오.",
     "choices": [],
-    "answer": "⑴ 풀이 참조\n⑵ \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}",
+    "answer": "⑴ 풀이 참조\n⑵ $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}$",
     "solution": "⑴ $AB=\\begin{pmatrix} 82 & 90 \\\\ 54 & 86 \\end{pmatrix}\\begin{pmatrix} \\frac{1}{2} \\\\[4pt] \\frac{1}{2} \\end{pmatrix}=\\begin{pmatrix} \\frac{82+90}{2} \\\\[4pt] \\frac{54+86}{2} \\end{pmatrix}=\\begin{pmatrix} 86 \\\\ 70 \\end{pmatrix}$\n따라서 행렬 $AB$는 민준이와 서현이의 1차, 2차 성적의 평균 점수를 나타낸 행렬이다.\n\n또한 $CA=\\begin{pmatrix} \\frac{1}{2} & \\frac{1}{2} \\end{pmatrix}\\begin{pmatrix} 82 & 90 \\\\ 54 & 86 \\end{pmatrix}=\\begin{pmatrix} \\frac{82+54}{2} & \\frac{90+86}{2} \\end{pmatrix}=\\begin{pmatrix} 68 & 88 \\end{pmatrix}$\n따라서 행렬 $CA$는 민준이와 서현이의 1차 성적의 평균 점수와 2차 성적의 평균 점수를 나타낸 행렬이다.\n\n⑵ 2차 성적이 1차에 비해 얼마나 높아졌는지는 (2차 성적)-(1차 성적)=-(1차 성적)+(2차 성적)이다.\n민준이의 성적 변화는 $-82+90=8$, 서현이의 성적 변화는 $-54+86=32$이므로\n$$AD=\\begin{pmatrix} 82 & 90 \\\\ 54 & 86 \\end{pmatrix}\\begin{pmatrix} d_1 \\\\ d_2 \\end{pmatrix}=\\begin{pmatrix} 82d_1+90d_2 \\\\ 54d_1+86d_2 \\end{pmatrix}=\\begin{pmatrix} -82+90 \\\\ -54+86 \\end{pmatrix}=\\begin{pmatrix} 8 \\\\ 32 \\end{pmatrix}$$\n따라서 $d_1=-1, d_2=1$이므로 구하는 행렬 $D$는\n$$D=\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}$$"
   }
 ];
