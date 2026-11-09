@@ -1,0 +1,96 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 3
+      },
+      "height": 4,
+      "names": {
+        "base": [
+          "E",
+          "H",
+          "G",
+          "F"
+        ],
+        "top": [
+          "A",
+          "D",
+          "C",
+          "B"
+        ]
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "G",
+      "style": "DASHED"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "SOLID"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "D",
+      "label": "5cm"
+    },
+    {
+      "from": "D",
+      "to": "H",
+      "label": "4cm"
+    },
+    {
+      "from": "G",
+      "to": "H",
+      "label": "3cm"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "x",
+        "refs": [
+          "A",
+          "G",
+          "E"
+        ],
+        "label": "x"
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ]
+  },
+  "caption": "밑면에서 EG=√(5²+3²)=√34이고 AE=4이다. AG=5√2이므로 sin x−cos x=(2√2−√17)/5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 AD=5cm, DH=4cm, GH=3cm, x=∠AGE.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims",
+        "marks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직육면체와 대각선 AG, 밑면 대각선 EG를 표시하여 수직인 AE와 함께 직각삼각형 AEG를 드러낸다."
+  ]
+}
