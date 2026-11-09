@@ -145,7 +145,7 @@ window.questionBank = [
   {
     "id": 5,
     "category": "제곱근표",
-    "content": "[5 - 6] 아래의 제곱근표를 이용하여 물음에 답하시오.<br><div class=\"question-table-wrap\"><table class=\"question-table\"><tr><th></th><th>4</th><th>5</th><th>6</th><th></th></tr><tr><th>1.0</th><td>...</td><td>1.020</td><td>1.025</td><td>1.030</td><td>...</td></tr><tr><th>3.2</th><td>...</td><td>1.800</td><td>1.803</td><td>1.806</td><td>...</td></tr><tr><th>3.3</th><td>...</td><td>1.828</td><td>1.830</td><td>1.833</td><td>...</td></tr><tr><th>32</th><td>...</td><td>5.692</td><td>5.701</td><td>5.710</td><td>...</td></tr><tr><th>33</th><td>...</td><td>5.779</td><td>5.788</td><td>5.797</td><td>...</td></tr></table></div><br>5. $\\sqrt{3.25}$의 어림한 값은? [3점]",
+    "content": "[5 - 6] 아래의 제곱근표를 이용하여 물음에 답하시오.<br><div class=\"question-table-wrap\"><table class=\"question-table\"><tr><th></th><th></th><th>4</th><th>5</th><th>6</th><th></th></tr><tr><th>1.0</th><td>...</td><td>1.020</td><td>1.025</td><td>1.030</td><td>...</td></tr><tr><th>3.2</th><td>...</td><td>1.800</td><td>1.803</td><td>1.806</td><td>...</td></tr><tr><th>3.3</th><td>...</td><td>1.828</td><td>1.830</td><td>1.833</td><td>...</td></tr><tr><th>32</th><td>...</td><td>5.692</td><td>5.701</td><td>5.710</td><td>...</td></tr><tr><th>33</th><td>...</td><td>5.779</td><td>5.788</td><td>5.797</td><td>...</td></tr></table></div><br>5. $\\sqrt{3.25}$의 어림한 값은? [3점]",
     "choices": [
       "1.800",
       "1.803",

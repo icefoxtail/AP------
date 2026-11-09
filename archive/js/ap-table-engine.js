@@ -130,6 +130,89 @@
         return { cells: cells, isSep: isSep, tail: tail, lead: lead };
     }
 
+    // ---- pipe tables WITHOUT outer pipes (GFM style):   `구분 | 우진 | 수빈` / `---|---|---` / `성인 | 2 | 1`
+    // Only a real GFM separator row (every cell >= 3 dashes, >= 2 cells) directly under a header row of the
+    // same cell count makes it a table; the following lines with that cell count are its body. Such blocks are
+    // rewritten to outer-pipe rows so the ordinary pipe-table path builds the table. No separator -> untouched.
+    var NO_OUTER_SEP_CELL_RE = /^\s*:?-{3,}:?\s*$/;
+    var EDGE_TAG_RE = /<(\/?)(p|div|center|figure|span)\b[^>]*>/gi;
+
+    // [cells, lead, tail] of a loose pipe line for exactly n cells, or null.
+    function looseCells(line, n) {
+        var t = line.trim();
+        if (/\|\s*\$/.test(t)) t = t.replace(/\s*\$/, '');
+        var lead = '', tail = '', m;
+        function balance(txt, tag) {
+            var open = 0, close = 0, mm;
+            EDGE_TAG_RE.lastIndex = 0;
+            while ((mm = EDGE_TAG_RE.exec(txt))) { if (mm[2].toLowerCase() === tag) { if (mm[1]) close++; else open++; } }
+            return open - close;
+        }
+        // a leading/trailing block tag belongs to the surrounding text only when it has no partner inside the row
+        var lm;
+        while ((lm = /^(<(\/?)(p|div|center|figure|span)\b[^>]*>)\s*/i.exec(t))) {
+            var tg = lm[3].toLowerCase();
+            if (lm[2] || balance(t, tg) <= 0) break;
+            lead += (lead ? ' ' : '') + lm[1]; t = t.slice(lm[0].length);
+        }
+        var changed = true;
+        while (changed) {
+            changed = false;
+            var pm = /\s*(\[\s*\d+(?:\.\d+)?\s*점\s*\])\s*$/.exec(t);
+            if (pm) { tail = pm[0] + tail; t = t.slice(0, pm.index); changed = true; continue; }
+            var cm = /\s*<\/(p|div|center|figure|span)\s*>\s*$/i.exec(t);
+            if (cm && balance(t, cm[1].toLowerCase()) < 0) { tail = cm[0] + tail; t = t.slice(0, cm.index); changed = true; }
+        }
+        if (t.indexOf('|') === -1) return null;
+        var raw = t.split('|');
+        if (raw.length === n + 2 && raw[0].trim() === '' && raw[raw.length - 1].trim() === '' && t.charAt(0) === '|' && /\|$/.test(t)) raw = raw.slice(1, -1);
+        else if (raw.length === n + 1 && raw[raw.length - 1].trim() === '' && /\|$/.test(t)) raw = raw.slice(0, -1);
+        else if (raw.length === n + 1 && raw[0].trim() === '' && t.charAt(0) === '|') raw = raw.slice(1);
+        if (raw.length !== n) return null;
+        return { cells: raw, lead: lead, tail: tail, outer: t.charAt(0) === '|' && /\|$/.test(t) };
+    }
+
+    function looseSepCount(line) {
+        var t = line.trim();
+        if (t.indexOf('|') === -1 || !/^[|\s:-]+$/.test(t)) return 0;
+        var raw = t.split('|');
+        if (raw[0].trim() === '' && t.charAt(0) === '|') raw = raw.slice(1);
+        if (raw.length && raw[raw.length - 1].trim() === '' && /\|$/.test(t)) raw = raw.slice(0, -1);
+        if (raw.length < 2) return 0;
+        return raw.every(function (c) { return NO_OUTER_SEP_CELL_RE.test(c); }) ? raw.length : 0;
+    }
+
+    function hasNoOuterSep(text, sepRe) {
+        var parts = text.split(sepRe);
+        for (var k = 2; k < parts.length; k += 2) {
+            if (looseSepCount(parts[k]) && looseCells(parts[k - 2], looseSepCount(parts[k]))) return true;
+        }
+        return false;
+    }
+
+    // lines: array of single-line strings (masked text). Rewrites qualifying blocks in place.
+    function normalizeNoOuterPipeRows(lines) {
+        for (var i = 1; i < lines.length; i++) {
+            var n = looseSepCount(lines[i]);
+            if (!n) continue;
+            var head = looseCells(lines[i - 1], n);
+            if (!head) continue;
+            var rows = [head];
+            var j = i + 1;
+            while (j < lines.length && !looseSepCount(lines[j])) {
+                var row = looseCells(lines[j], n);
+                if (!row) break;
+                rows.push(row); j++;
+            }
+            if (rows.every(function (r) { return r.outer; }) && /^\s*\|[\s\S]*\|\s*$/.test(lines[i])) { i = j - 1; continue; }   // already ordinary pipe rows
+            var emit = function (r) { return (r.lead ? r.lead + ' ' : '') + '|' + r.cells.join('|') + '|' + r.tail; };
+            lines[i - 1] = emit(head);
+            lines[i] = '|' + lines[i].trim().replace(/^\||\|$/g, '').split('|').join('|') + '|';
+            for (var q = 1; q < rows.length; q++) lines[i + q] = emit(rows[q]);
+            i = j - 1;
+        }
+    }
+
     function isShortLabel(cell) {
         var m = maskMath(cell);
         var plain = m.text.replace(/<[^>]*>/g, '').trim();
@@ -176,6 +259,7 @@
         var parts = text.split(sepRe);
         var lines = [], seps = [];
         for (var k = 0; k < parts.length; k++) (k % 2 === 0 ? lines : seps).push(parts[k]);
+        if (sepRe === STAGE2_SEP) normalizeNoOuterPipeRows(lines);
         var n = lines.length;
         var rowInfo = lines.map(parseRow);
         var removed = [];
@@ -245,10 +329,10 @@
         var t = s.replace(/<table\b[\s\S]*?<\/table\s*>/gi, function (m) { htmlTables.push(m); return HTMLTBL_OPEN + (htmlTables.length - 1) + HTMLTBL_CLOSE; });
         var masked = maskMath(t);
         t = masked.text;
-        if (!hasPipeRowCandidate(t, STAGE2_SEP)) { return s; }
+        if (!hasPipeRowCandidate(t, STAGE2_SEP) && !hasNoOuterSep(t, STAGE2_SEP)) { return s; }
         var tables = [];
         t = pipeStage(t, STAGE1_SEP, tables, masked.store);
-        if (hasPipeRowCandidate(t, STAGE2_SEP)) t = pipeStage(t, STAGE2_SEP, tables, masked.store);
+        if (hasPipeRowCandidate(t, STAGE2_SEP) || hasNoOuterSep(t, STAGE2_SEP)) t = pipeStage(t, STAGE2_SEP, tables, masked.store);
         if (!tables.length) return s;
         t = t.replace(/(\d+)/g, function (_, n) { return tables[+n]; });
         t = unmaskRaw(t, masked.store);
@@ -497,7 +581,10 @@
             var masked = maskMath(rest);
             var lines = masked.text.split(STAGE2_SEP);
             var rows = [];
-            for (var k = 0; k < lines.length; k += 2) rows.push(parseRow(lines[k]));
+            var loose = [];
+            for (var k = 0; k < lines.length; k += 2) loose.push(lines[k]);
+            normalizeNoOuterPipeRows(loose);
+            for (var k2 = 0; k2 < loose.length; k2++) rows.push(parseRow(loose[k2]));
             for (var r = 0; r < rows.length; r++) {
                 if (!rows[r] || rows[r].isSep) continue;
                 // a lone pipe line is not a table
