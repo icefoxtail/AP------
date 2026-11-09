@@ -1,0 +1,78 @@
+name: Middle initial smoke diagnosis
+
+on:
+  push:
+    branches: ['audit/apmath-initial-smoke-20261109']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  collect-exact-baseline-and-candidate:
+    name: Diagnose the original smoke failures without changing its gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            tools
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install real Chromium and bind both source snapshots
+        env:
+          DIAG_BASE: d69709250e06005f6e4d8fc4cea15667bc5d3ded
+          DIAG_CANDIDATE: 9bf1bb63bdc32dfa25195fb784c69d5c6290ddb6
+        run: |
+          npm install --prefix "$RUNNER_TEMP/smoke-diagnostic-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/smoke-diagnostic-browser/node_modules/.bin/playwright" install --with-deps chromium
+          git fetch --no-tags --depth=1 origin "$DIAG_BASE" "$DIAG_CANDIDATE"
+          git worktree add --detach "$RUNNER_TEMP/smoke-baseline" "$DIAG_BASE"
+          git worktree add --detach "$RUNNER_TEMP/smoke-candidate" "$DIAG_CANDIDATE"
+          mkdir -p "$RUNNER_TEMP/smoke-diagnostic-evidence"
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const evidence={purpose:'DIAGNOSTIC_COLLECTION_ONLY_NOT_A_QUALITY_PASS',baseline:process.env.DIAG_BASE,candidate:process.env.DIAG_CANDIDATE,workflow:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID};
+          fs.writeFileSync(`${process.env.RUNNER_TEMP}/smoke-diagnostic-evidence/context.json`,JSON.stringify(evidence,null,2)+'\n');
+          NODE
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$RUNNER_TEMP/smoke-baseline" > "$RUNNER_TEMP/smoke-diagnostic-evidence/baseline-server.log" 2>&1 &
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory "$RUNNER_TEMP/smoke-candidate" > "$RUNNER_TEMP/smoke-diagnostic-evidence/candidate-server.log" 2>&1 &
+          for port in 8765 8766; do
+            for attempt in {1..20}; do
+              if curl --silent --fail "http://127.0.0.1:$port/apmath/playground/next/kit/apl-catalog.js" > /dev/null; then break; fi
+              sleep 1
+            done
+            curl --silent --fail "http://127.0.0.1:$port/apmath/playground/next/kit/apl-catalog.js" > /dev/null
+          done
+      - name: Original unmodified smoke on the fixed baseline
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/smoke-diagnostic-browser/node_modules
+        run: |
+          node "$RUNNER_TEMP/smoke-baseline/apmath/playground/next/tools/scene-smoke.mjs" http://127.0.0.1:8765/apmath/playground/next/labs/ --only alg-sequence,g7-surface-volume,g8-pythagoras,g9-trig-ratio 2>&1 | tee "$RUNNER_TEMP/smoke-diagnostic-evidence/original-smoke-baseline.log"
+      - name: Original unmodified smoke on the fixed candidate
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/smoke-diagnostic-browser/node_modules
+        run: |
+          node "$RUNNER_TEMP/smoke-candidate/apmath/playground/next/tools/scene-smoke.mjs" http://127.0.0.1:8766/apmath/playground/next/labs/ --only alg-sequence,g7-surface-volume,g8-pythagoras,g9-trig-ratio 2>&1 | tee "$RUNNER_TEMP/smoke-diagnostic-evidence/original-smoke-candidate.log"
+      - name: Capture exact baseline measurements and original screenshots
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/smoke-diagnostic-browser/node_modules
+        run: node tools/apmath-initial-smoke-diagnostic.mjs --root "$RUNNER_TEMP/smoke-baseline" --base-url http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/smoke-diagnostic-evidence/baseline"
+      - name: Capture exact candidate measurements and original screenshots
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/smoke-diagnostic-browser/node_modules
+        run: node tools/apmath-initial-smoke-diagnostic.mjs --root "$RUNNER_TEMP/smoke-candidate" --base-url http://127.0.0.1:8766/apmath/playground/next/labs/ --out "$RUNNER_TEMP/smoke-diagnostic-evidence/candidate"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-smoke-diagnostic-${{ github.run_id }}
+          path: ${{ runner.temp }}/smoke-diagnostic-evidence/
+          retention-days: 14
