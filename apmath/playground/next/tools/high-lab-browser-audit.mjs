@@ -88,13 +88,15 @@ try {
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
       page.on('requestfailed', r => { if (r.url().startsWith(base)) errors.push(r.url() + ' ' + r.failure()?.errorText); else externalFailures.push({ url: r.url(), error: r.failure()?.errorText }); });
       try {
+        await page.addInitScript(() => { let seed = 424; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
+        await page.goto(base + item.next + '?theme=' + run.theme, { waitUntil: 'networkidle', timeout: 30000 });
+        await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
+        // Event support is document-specific: compare captures with the loaded
+        // lab, not with the transient about:blank document before navigation.
         screenshotGuard = await createScreenshotGuard(page, { expectedTouch: !run.name.startsWith('pc'), onObservation: observation => {
           dest.screenshotEnvironment.push({ run: run.name, ...observation });
           if (!observation.pass) report.failures.push({ lab: item.id, run: run.name, id: observation.id, state: observation.state, reason: observation.reason, screenshotEnvironment: observation });
         } });
-        await page.addInitScript(() => { let seed = 424; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
-        await page.goto(base + item.next + '?theme=' + run.theme, { waitUntil: 'networkidle', timeout: 30000 });
-        await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
         if(live){
           const catalogResponse=await context.request.get(new URL('next/kit/apl-catalog.js',base).href);
           await live.verify(catalogResponse,liveContext);

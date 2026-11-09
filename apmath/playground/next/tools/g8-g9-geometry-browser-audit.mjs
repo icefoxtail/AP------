@@ -74,10 +74,6 @@ try {
       const page = await ctx.newPage();
       let screenshotGuard;
       try {
-      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: !run.name.startsWith('pc-'), onObservation: observation => {
-        dest.screenshotEnvironment.push({ run: run.name, ...observation });
-        if (!observation.pass) report.failures.push({ unit, run: run.name, reason: observation.reason, screenshotEnvironment: observation });
-      } });
       await page.addInitScript(() => { let seed = 1701; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
@@ -85,6 +81,11 @@ try {
       await page.goto(`${base}${unit}.html?theme=${run.theme}`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
       await page.evaluate(() => document.fonts.ready);
+      // Pin the loaded target document, not about:blank's event properties.
+      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: !run.name.startsWith('pc-'), onObservation: observation => {
+        dest.screenshotEnvironment.push({ run: run.name, ...observation });
+        if (!observation.pass) report.failures.push({ unit, run: run.name, reason: observation.reason, screenshotEnvironment: observation });
+      } });
       const measurementControl = await page.evaluate(() => {
         const c = document.createElement('canvas'); c.width = 600; c.height = 400;
         const x = c.getContext('2d');

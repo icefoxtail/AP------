@@ -295,10 +295,6 @@ try {
         else await route.continue();
       });
       page = await context.newPage();
-      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: viewport.name === 'mobile' || viewport.name.startsWith('tablet'), onObservation: observation => {
-        record.screenshotEnvironment.push(observation);
-        if (!observation.pass) record.errors.push({ kind: observation.reason, screenshotEnvironment: observation });
-      } });
       page.on('pageerror', e => { if (listening) record.errors.push({ kind: 'pageerror', message: e.message }); });
       page.on('console', m => { if (listening && m.type() === 'error') record.errors.push({ kind: 'console-error', message: m.text() }); });
       page.on('requestfailed', r => { if (listening) record.errors.push({ kind: 'requestfailed', url: safeURL(r.url()), error: r.failure()?.errorText }); });
@@ -317,6 +313,11 @@ try {
       if (!navigation?.ok()) throw Error(`Document HTTP ${navigation?.status() ?? 'NO_RESPONSE'}`);
       if (new URL(page.url()).origin !== base.origin || new URL(page.url()).pathname !== new URL(url).pathname) throw Error('Page redirected to a different origin/path');
       await settle(page);
+      // Pin the loaded target document, not about:blank's event properties.
+      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: viewport.name === 'mobile' || viewport.name.startsWith('tablet'), onObservation: observation => {
+        record.screenshotEnvironment.push(observation);
+        if (!observation.pass) record.errors.push({ kind: observation.reason, screenshotEnvironment: observation });
+      } });
       record.inventory = await page.evaluate(() => ({ id: lab.id, sceneIds: lab.list.map(s => String(s.id)), groupCount: lab.groups.length }));
       const inv = record.inventory;
       if (inv.id !== unit.id || inv.sceneIds.length !== unit.scenes || new Set(inv.sceneIds).size !== unit.scenes || inv.sceneIds[0] !== unit.first || inv.groupCount !== unit.groups) record.errors.push({ kind: 'runtime-inventory-mismatch', expected: unit, actual: inv });

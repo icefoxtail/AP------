@@ -189,10 +189,6 @@ try {
         else await route.continue();
       });
       page = await context.newPage();
-      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: run.name === 'mobile', onObservation: observation => {
-        record.screenshotEnvironment.push(observation);
-        if (!observation.pass) record.errors.push({ kind: observation.reason, screenshotEnvironment: observation });
-      } });
       page.on('pageerror', e => { if (listening) record.errors.push({ kind: 'pageerror', message: e.message }); });
       page.on('console', m => { if (listening && m.type() === 'error') record.errors.push({ kind: 'console-error', message: m.text() }); });
       page.on('response', r => { if (listening && r.status() >= 400) record.errors.push({ kind: 'http-error', status: r.status(), url: safeURL(r.url()) }); });
@@ -202,6 +198,11 @@ try {
       if (!response?.ok()) throw Error(`Document HTTP${response?.status() ?? 'NO_RESPONSE'}`);
       if (new URL(page.url()).origin !== base.origin || new URL(page.url()).pathname !== new URL(url).pathname) throw Error('Student page redirected to a different origin/path');
       await settle(page);
+      // Pin the loaded target document, not about:blank's event properties.
+      screenshotGuard = await createScreenshotGuard(page, { expectedTouch: run.name === 'mobile', onObservation: observation => {
+        record.screenshotEnvironment.push(observation);
+        if (!observation.pass) record.errors.push({ kind: observation.reason, screenshotEnvironment: observation });
+      } });
       record.inventory = await page.evaluate(() => ({ id: lab.id, sceneIds: lab.list.map(s => String(s.id)), groupCount: lab.groups.length, groups: lab.groups.map(g => ({ id: g.id, title: g.title, scenes: g.scenes.length })) }));
       const inv = record.inventory;
       if (inv.id !== unit || inv.sceneIds.length !== entry.sceneTotal || new Set(inv.sceneIds).size !== inv.sceneIds.length || inv.sceneIds.some(id => !id || id === 'undefined') || inv.groupCount !== entry.scenes.length) record.errors.push({ kind: 'catalog-runtime-mismatch', expected: { sceneTotal: entry.sceneTotal, groupCount: entry.scenes.length }, actual: inv });

@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
 import { createScreenshotGuard, screenshotEnvironmentMatches, VIEWPORT_PIXEL_POLICY } from './browser-screenshot-guard.mjs';
 
 const touch = { maxTouchPoints: 1, coarsePointer: true, onTouchStart: true, hoverNone: true };
@@ -98,5 +100,25 @@ test('claimed pass cannot replace correct raw snapshots and restore-command evid
   for (const mutate of [o => { o.restored.coarsePointer = false; }, o => { o.before.maxTouchPoints = 0; }, o => { o.restoreCommand = null; }, o => { o.expectedTouch = false; }, o => { o.after.maxTouchPoints = NaN; }]) {
     const changed = structuredClone(observation); mutate(changed); assert.equal(screenshotEnvironmentMatches(changed, true), false);
   }
+  await guard.close();
+});
+
+test('the actual high bootstrap binds event support after target navigation and readiness', async () => {
+  const source = fs.readFileSync(new URL('./high-lab-browser-audit.mjs', import.meta.url), 'utf8');
+  const start = source.indexOf('      try {', source.indexOf("page.on('requestfailed'"));
+  const end = source.indexOf('        if(live){', start);
+  assert.ok(start >= 0 && end > start);
+  const bootstrap = source.slice(start + '      try {'.length, end);
+  const f = fixture({ ...touch, onTouchStart: false }), events = [];
+  f.page.addInitScript = async () => { events.push('init-script'); };
+  f.page.goto = async () => { events.push('target-navigation'); };
+  f.page.waitForFunction = async () => { events.push('target-ready'); f.alter(touch); };
+  const dest = { screenshotEnvironment: [] }, report = { failures: [] };
+  const guard = await vm.runInNewContext(`(async () => { let screenshotGuard; ${bootstrap} return screenshotGuard; })()`, {
+    page: f.page, createScreenshotGuard, dest, report, base: 'https://example.invalid/', item: { id: 'one', next: 'one.html' }, run: { name: 'mobile-paper', theme: 'paper' }
+  });
+  assert.deepEqual(guard.initial, touch);
+  assert.deepEqual(events, ['init-script', 'target-navigation', 'target-ready']);
+  assert.equal(dest.screenshotEnvironment.length, 1); assert.equal(report.failures.length, 0);
   await guard.close();
 });

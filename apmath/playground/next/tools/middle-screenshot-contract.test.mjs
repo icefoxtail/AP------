@@ -6,7 +6,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import test from 'node:test';
-import { screenshotEnvironmentMatches, SCREENSHOT_ENVIRONMENT_POLICY, VIEWPORT_PIXEL_POLICY } from './browser-screenshot-guard.mjs';
+import { createScreenshotGuard, screenshotEnvironmentMatches, SCREENSHOT_ENVIRONMENT_POLICY, VIEWPORT_PIXEL_POLICY } from './browser-screenshot-guard.mjs';
 
 const tools = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(tools, '../../../..');
@@ -67,6 +67,40 @@ function fixture(script, { touch = true, fault = null } = {}) {
 }
 
 for (const script of scripts) {
+  test(`${script.file}: guard pins the ready target document before the first screenshot`, async () => {
+    const source = fs.readFileSync(path.join(tools, script.file), 'utf8');
+    const start = source.indexOf(script.kind === 'audit' ? '      await page.addInitScript(' : "      page.on('pageerror'");
+    const guardStart = source.indexOf('      screenshotGuard = await createScreenshotGuard(');
+    const endMarker = '\n      } });';
+    const end = source.indexOf(endMarker, guardStart) + endMarker.length;
+    assert.ok(start >= 0 && guardStart > start && end > guardStart, 'Guard cannot be pinned on about:blank before the target navigation block');
+    let loaded = false, ready = false, currentURL = 'about:blank';
+    const calls = [], session = { send: async () => {}, detach: async () => {} };
+    const page = {
+      addInitScript: async () => {}, on: () => {},
+      goto: async url => { currentURL = String(url); loaded = true; calls.push('navigation'); return { status: () => 200, ok: () => true }; },
+      url: () => currentURL,
+      waitForFunction: async () => { assert.ok(loaded); },
+      evaluate: async fn => {
+        if (fn.toString().includes('maxTouchPoints')) return { maxTouchPoints: 1, coarsePointer: true, onTouchStart: loaded, hoverNone: true };
+        assert.ok(loaded); ready = true; calls.push('ready');
+      },
+      context: () => ({ newCDPSession: async () => session })
+    };
+    const record = { screenshotEnvironment: [], errors: [] };
+    const sandbox = { page, URL, base: new URL('https://example.invalid/labs/'), url: 'https://example.invalid/labs/g9-circle.html',
+      unit: 'g9-circle', run: { name: script.kind === 'audit' ? 'mobile-paper' : 'mobile' }, viewport: { name: 'mobile' },
+      record, dest: record, report: { failures: [] }, errors: [], listening: true,
+      settle: async () => { assert.ok(loaded); ready = true; calls.push('ready'); },
+      createScreenshotGuard: async (...args) => { assert.ok(loaded && ready, 'Snapshot must follow navigation and readiness'); calls.push('guard'); return createScreenshotGuard(...args); }
+    };
+    const guard = await vm.runInNewContext(`(async () => { let screenshotGuard; ${source.slice(start, end)} return screenshotGuard; })()`, sandbox);
+    assert.equal(guard.initial.onTouchStart, true, 'Use the loaded-document event property seen in the failing Actions evidence');
+    const shot = await guard.capture(async () => { calls.push('capture'); }, { fullPage: false });
+    assert.equal(shot.observation.pass, true);
+    assert.ok(calls.indexOf('navigation') < calls.indexOf('ready') && calls.indexOf('ready') < calls.indexOf('guard') && calls.indexOf('guard') < calls.indexOf('capture'));
+    await guard.close();
+  });
   test(`${script.file}: viewport support preserves one legacy capture and actual byte/environment readback`, async () => {
     const f = fixture(script); await f.capture();
     assert.equal(f.record.captures.length, 1);
