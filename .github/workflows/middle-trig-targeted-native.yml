@@ -1,0 +1,50 @@
+name: Middle trig targeted native
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [audit/apmath-initial-smoke-20261109]
+    paths:
+      - .github/workflows/middle-trig-targeted-native.yml
+      - apmath/playground/next/tools/middle-trig-targeted-native.mjs
+
+permissions:
+  contents: read
+
+jobs:
+  trig-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Check out isolated observation controller
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: audit-controller
+          fetch-depth: 1
+      - name: Check out exact product and original auditor
+        uses: actions/checkout@v4
+        with:
+          ref: c45901b8e4d375b7aa73ff291f9cd2af1908f1b1
+          path: product
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install real Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/trig-native-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/trig-native-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Inspect three repaired scenes with the unchanged native runner
+        env:
+          NODE_PATH: ${{ runner.temp }}/trig-native-browser/node_modules
+        run: |
+          node audit-controller/apmath/playground/next/tools/middle-trig-targeted-native.mjs --root "$GITHUB_WORKSPACE/product" --out "$RUNNER_TEMP/trig-native-evidence"
+      - name: Preserve complete report, source binding and captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: middle-trig-native-${{ github.run_id }}
+          path: ${{ runner.temp }}/trig-native-evidence
+          if-no-files-found: error
+          retention-days: 14
