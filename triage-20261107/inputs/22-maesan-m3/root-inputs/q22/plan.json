@@ -1,0 +1,91 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 8.485281374238571
+      },
+      "height": 3.4641016151377544,
+      "names": {
+        "base": [
+          "B",
+          "C",
+          "D"
+        ],
+        "apex": "A"
+      },
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "B",
+      "style": "DASHED"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "label": "a"
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "잘린 삼각뿔"
+  },
+  "caption": "정육면체를 자른 삼각뿔에서 BC=CD=DB=6√2이므로 밑면 BCD는 정삼각형이고 넓이는 18√3이다. AH는 밑면에 수직이고 AB=6, ∠BAH=a이므로 AH=6cos a이다. 부피는 36√3cos a이다. 원문 정육면체 그림은 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 모서리 6, BCD는 면 대각선으로 이루어진 정삼각형, AH는 밑면에 수직이며 AB=6이다. 입력 좌표의 무리수 길이는 표시용 근삿값이고 정답 수식은 정확히 36√3cos a이다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims",
+        "marks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 정육면체는 보존하고 삼각뿔과 밑면의 높이 AH를 분리해 부피 계산을 돕는다. H와 a 라벨은 여유 있게 배치한다."
+  ]
+}
