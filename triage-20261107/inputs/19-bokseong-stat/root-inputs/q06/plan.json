@@ -1,0 +1,64 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "작성자",
+      "children": [
+        {
+          "label": "여",
+          "p": "3/5",
+          "children": [
+            {
+              "label": "위험",
+              "p": "3/5"
+            },
+            {
+              "label": "기타",
+              "p": "2/5"
+            }
+          ]
+        },
+        {
+          "label": "남",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "위험",
+              "p": "1/2"
+            },
+            {
+              "label": "기타",
+              "p": "1/2"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      [
+        "여",
+        "위험"
+      ],
+      [
+        "남",
+        "위험"
+      ]
+    ]
+  },
+  "caption": "위험이라는 단어가 포함될 확률은 여학생 경로 9/25와 남학생 경로 1/5의 합이다. 위험 후기 중 남학생 비율은 (1/5)/(14/25)=5/14이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위험이라는 단어가 포함될 확률은 여학생 경로 9/25와 남학생 경로 1/5의 합이다. 위험 후기 중 남학생 비율은 (1/5)/(14/25)=5/14이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 확률의 구간·경우 또는 조건부 경로를 구별해 이해를 돕는 문항만 계획한다. 라벨은 여유 있게 배치한다."
+  ]
+}

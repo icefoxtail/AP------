@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/6"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "1/2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 3,
+        "y": 0.5
+      },
+      {
+        "id": "R",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "3",
+        "1/2"
+      ]
+    },
+    "regions": [
+      {
+        "id": "prob",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "O",
+    "M",
+    "R"
+  ],
+  "caption": "원문의 삼각형 전체 넓이에서 a=1/2이다. 1≤x≤3의 음영 넓이는 3/4−1/12=2/3이다. 원문 그림은 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 삼각형 전체 넓이에서 a=1/2이다. 1≤x≤3의 음영 넓이는 3/4−1/12=2/3이다. 원문 그림은 보존한다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "확률밀도 그래프와 확률 구간의 면적을 표시하면 풀이 이해에 도움이 된다. 좌표 라벨에 여유와 지시선을 둔다."
+  ]
+}
