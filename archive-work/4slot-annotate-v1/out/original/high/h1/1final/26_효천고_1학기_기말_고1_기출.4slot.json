@@ -1,0 +1,1664 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "f398e610f04b4822857851ef7e8f418e5cd5ff69",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "행렬 $\\begin{pmatrix}1&3\\\\2&4\\\\5&1\\end{pmatrix}$은"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "행의 수와 열의 수로 나타낸다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$m-n$을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "m-n=3-2=1$$"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "행렬의 크기는 행의 수와 열의 수로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬의 행과 열의 개수로 크기를 결정하는 정의를 적용한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "m-n=3-2=1$$",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 행의 수 m과 열의 수 n을 식에 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "행이 3개, 열이 2개이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "행렬의 크기 정의에 따라 행과 열의 개수를 구한 뒤 뺄셈을 대입해 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "순열은 순서를 따져 뽑으므로"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "순서를 따지지 않는 조합 수는"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "choices",
+            "quote": "5!=5\\times4\\times3\\times2\\times1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은?"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "5개 중 3개를 순서 있게 뽑는 방법은"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "순열은 순서를 따져 뽑으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "순열과 조합의 정의 공식을 확인하여 각 보기를 판정한다."
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "아무것도 뽑지 않는 경우는 한 가지뿐이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "P(5,0)=1임을 보여 거짓인 보기를 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "5개 중 3개를 순서 있게 뽑는 방법은"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순열과 조합의 기본 성질 및 정의식을 확인하여 반례를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "두 행렬 $A=\\begin{pmatrix}1&a\\\\0&-1\\end{pmatrix}$"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "같은 위치의 성분이 각각 같다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "a+b=1+0=1$$"
+          }
+        ],
+        "method": [
+          {
+            "term": "실수배",
+            "src": "solution",
+            "quote": "$A$의 모든 성분에 $2$를 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬의 각 성분에 스칼라 2를 곱하는 연산을 적용한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "a+b=1+0=1$$",
+            "evidenceType": "IMPLIED",
+            "justification": "성분 비교로 구한 a와 b를 식에 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "두 행렬이 같으면 같은 위치의 성분이 각각 같다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "행렬의 실수배와 상등 조건을 적용해 성분을 비교하고 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-3x-10$의 그래프와"
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "이차함수 그래프와 $x$축의 교점에서는"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "두 점의 $x$좌표를 각각 $a,b$라 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "a+b=5+(-2)=3$$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-5)(x+2)=0$$",
+            "evidenceType": "IMPLIED",
+            "justification": "x축과의 교점 방정식을 인수분해하여 두 실근을 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "교점에서는 $y=0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x축과의 교점을 찾기 위해 y=0을 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "근",
+            "src": "solution",
+            "quote": "다음 방정식의 두 근이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이차함수와 x축의 교점에서 y=0을 두고 인수분해하여 두 근의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "이차부등식 $f(x)\\lt g(x)$를 만족시키는"
+          },
+          {
+            "term": "그래프",
+            "src": "solution",
+            "quote": "그래프가 $y=g(x)$의 그래프보다 아래에 있다는 뜻이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "두 교점 사이에서는 $g(x)$의 그래프가 위에 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "함수값의 대소 관계를 그래프 상하 관계로 해석하여 해 범위를 구한다."
+          },
+          {
+            "term": "원소나열법",
+            "src": "solution",
+            "quote": "정수는 $-2,-1,0$으로 모두 3개이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "열린 구간에 속하는 정수 원소를 나열하여 개수를 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수는?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "그래프의 교점과 상하 위치 관계를 비교해 부등식의 범위를 구하고 정수 해를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "$z=\\dfrac{1-i}{\\sqrt2}$일 때,"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "z^4=(-i)^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$z+z^2+z^3+\\cdots+z^{39}+z^{40}$의 값을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$z+z^2+z^3+\\cdots+z^{39}+z^{40}$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "여덟 항마다 같은 합이 반복된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱의 주기가 8임을 이용해 반복되는 항들을 묶어 계산한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "5\\cdot0=0",
+            "evidenceType": "IMPLIED",
+            "justification": "한 주기의 합이 0임을 대입하여 전체 합을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "허수단위",
+            "src": "solution",
+            "quote": "=\\dfrac{1-2i-1}{2}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "복소수 z의 거듭제곱의 주기성을 구하여 여덟 항씩 묶어 합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x$에 대한 이차방정식 $x^2+2ax-a+6=0$은"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $a$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "중근 조건에는 판별식 $D=0$, 서로 다른 두 허근 조건에는 $D<0$을 쓴다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립부등식",
+            "src": "solution",
+            "quote": "두 후보 중 이 조건을 만족하는 값은 $a=2$뿐이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "방정식 해와 부등식 조건을 연립하여 공통 해를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근을 갖고,"
+          },
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "서로 다른 두 허근을 갖도록"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 이차방정식에 대해 중근 판별식 D=0과 허근 판별식 D<0을 적용해 공통 실수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=x^2-2ax+a^2-2a-4$의"
+          },
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "$0\\le x\\le2$에서"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "완전제곱식으로 바꾸면 꼭짓점의 위치가 드러난다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $a$의 값은?"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 바꾸면 꼭짓점의 위치가 드러난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이차함수를 완전제곱식으로 표준화하여 축을 파악한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "먼저 $0<a\\le2$이면 꼭짓점 $x=a$가 구간 $[0,2]$ 안에 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축이 닫힌구간 안팎에 놓이는 경우를 나누어 분석한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $0$일 때,"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "(단, $a>0$)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이차함수의 대칭축 위치에 따라 경우를 분류하여 구간 내 최솟값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "$1500$의 양의 약수 중에서"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "$5$의 배수의 개수는?"
+          },
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "$2$의 지수 $a$는 $0,1,2$의 3가지이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "$5$의 배수의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "먼저 소인수분해하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "따라서 곱의 법칙에 따라",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$1500$의 양의 약수 중에서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "자연수를 소인수분해하여 5의 배수가 되는 소인수의 지수 조건을 찾아 곱의 법칙으로 약수의 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "solution",
+            "quote": "이동 구간이 $n$칸일 때의 방법 수를 $a_n$이라 하자."
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "6개의 돌을 놓아 만든 징검다리가 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "도착 지점까지 가는 방법의 수를 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "따라서 방법은 21가지이고"
+          }
+        ],
+        "method": [
+          {
+            "term": "귀납적정의",
+            "src": "solution",
+            "quote": "a_n=a_{n-1}+a_{n-2}",
+            "evidenceType": "IMPLIED",
+            "justification": "이전 두 단계의 경우의 수를 더해 다음 단계의 수를 정의하는 점화식을 구성한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "마지막에 1칸을 이동했다면 그 전까지 $n-1$칸을 이동했고, 2칸을 이동했다면 그 전까지 $n-2$칸을 이동했다.",
+            "evidenceType": "IMPLIED",
+            "justification": "마지막 이동 거리에 따라 상호배반적인 경우로 나누어 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "1+5+1=7"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "징검다리를 건너는 방법을 마지막 이동 칸수에 따라 점화식으로 세워 귀납적으로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "$x$에 대한 연립부등식 $\\begin{cases}x^2-(a-1)x-a<0\\\\x^2+(a+5)x+5a<0\\end{cases}$의"
+          },
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "두 이차식은 인수분해해 각 부등식의 열린 해 구간을 구한다."
+          },
+          {
+            "term": "열린구간",
+            "src": "solution",
+            "quote": "열린 해 구간을 구한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 구하면?"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "양수 $a$의 값 중"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "두 이차식은 인수분해해 각 부등식의 열린 해 구간을 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "두 해가 겹치려면 첫 구간의 왼쪽 끝 $-1$보다 둘째 구간의 오른쪽 끝 $-a$가 커야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 구간의 경계값 대소를 비교하여 공통해가 존재하지 않을 조건을 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$의 값 중"
+          },
+          {
+            "term": "공통",
+            "src": "solution",
+            "quote": "열린 구간의 공통해가 없다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연립이차부등식을 각각 인수분해하여 해 구간을 구하고 공통해가 없을 조건을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "공연팀 5개는 서로 다르므로 전체 순서 배열은"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "5!=120"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "순서를 정하는 경우의 수를 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "구하는 경우의 수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "밴드팀과 두 댄스팀 세 팀만의 상대 순서를 보면",
+            "evidenceType": "IMPLIED",
+            "justification": "특정 팀들의 상대 순서가 고정된 순열의 비율 또는 같은 것이 있는 순열로 다룬다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "120\\cdot\\dfrac13=40",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 순열의 수에 조건을 만족하는 상대 순서 비율을 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "서로 다른 5개 공연팀의 순서를 정하려고 한다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 공연팀의 순열에서 밴드팀과 댄스팀의 상대 순서 비율을 곱해 경우의 수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "두 이차함수 $f(x)$, $g(x)$가 다음 조건을 만족시킨다."
+          },
+          {
+            "term": "최고차항",
+            "src": "stem",
+            "quote": "최고차항의 계수가 각각 $2$, $1$인"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "부등식 $f(x)\\le g(x)$의 해는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "이때, $g(1)-f(1)$의 값을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이때, $g(1)-f(1)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "두 근 사이에서 음수이므로 두 근은 $-2,4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부등식의 경계값이 차의 함수의 두 실근임을 이용해 인수분해된 식을 세운다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "=(1+2)(1-4)",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 차의 식에 x=1을 대입하여 함숫값을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "해는 $-2\\le x\\le4$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 이차함수의 차를 새로운 이차함수로 두고 부등식의 경계근을 이용해 식을 세워 값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "다섯 자리 자연수를 만들고자 한다."
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "(다) $a_5$는 짝수이다."
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$0$부터 $9$까지의 정수가 하나씩 적혀 있는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$k$의 값을 구하면?"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "개수를 $k^2$ $(k>0)$이라 할 때,"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "\\binom{10}{2}=45",
+            "evidenceType": "IMPLIED",
+            "justification": "순서가 지정된 두 자릿수를 선택하기 위해 조합의 수를 적용한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "각 자리 선택이 서로 독립이므로 전체 개수는",
+            "evidenceType": "IMPLIED",
+            "justification": "각 자릿수 선택의 경우의 수를 곱하여 전체 경우를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$(k>0)$이라 할 때,"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "(가) $a_1=a_3$"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$a_2<a_4$를 만족하려면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 자릿수의 조건에 맞춰 조합과 곱의 법칙으로 다섯 자리 자연수의 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자리 자연수의 개수를 구하면?"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "세 정수 $a,b,c$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "세 자리 자연수의 개수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "세 수가 모두 달라야 하므로 포함배제로 같은 수가 있는 경우를 뺀다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 세 수 조건을 전체 경우에서 적어도 두 수가 같은 여사건을 빼서 구한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "5\\cdot6\\cdot6=180",
+            "evidenceType": "IMPLIED",
+            "justification": "각 자리의 선택 가짓수를 곱하여 전체 경우의 수를 계산한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "30+25+24-4-4-4+4=71",
+            "evidenceType": "IMPLIED",
+            "justification": "포함배제의 원리를 적용해 여사건의 경우의 수를 합산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "(나) $0\\le a\\le4$, $0\\le b\\le5$, $1\\le c\\le6$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 자리수의 범위 내에서 곱의 법칙과 포함배제의 원리를 적용해 서로 다른 세 수의 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "이차 정사각행렬 $A,B,C$와"
+          },
+          {
+            "term": "단위행렬",
+            "src": "stem",
+            "quote": "단위행렬 $E$,"
+          },
+          {
+            "term": "영행렬",
+            "src": "stem",
+            "quote": "영행렬 $O$가 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "항상 옳은 것의 개수는?"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "각 명제는 행렬의 기본 법칙과 반례로 판정한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "각 명제는 행렬의 기본 법칙과 반례로 판정한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "ㄴ은 분배법칙이므로 참이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "결합법칙",
+            "src": "solution",
+            "quote": "ㄱ은 행렬곱의 결합법칙이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "행렬의 결합법칙, 분배법칙, 단위행렬 성질 및 반례를 통해 명제의 참과 거짓을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "두 이차정사각행렬 $A,B$에 대하여"
+          },
+          {
+            "term": "단위행렬",
+            "src": "stem",
+            "quote": "(단, $E$는 단위행렬이다.)"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "행렬 $AB$의 모든 성분의 합은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "행렬 $AB$의 모든 성분의 합은?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "모든 성분의 합은"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "교환하는 행렬의 세제곱 차 공식에 따라",
+            "evidenceType": "IMPLIED",
+            "justification": "교환가능한 행렬 조건에서 인수분해 공식을 전개한다."
+          },
+          {
+            "term": "실수배",
+            "src": "solution",
+            "quote": "AB=\\dfrac13\\left(\\begin{pmatrix}7&9\\\\12&1\\end{pmatrix}-\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬에 스칼라 1/3을 곱해 각 성분을 계산한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "여기에 $A=B+E$를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$A-B=E$,"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "행렬의 교환가능성을 보이고 세제곱 차 곱셈공식을 전개하여 행렬 AB의 성분의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "두 이차함수 $f(x),g(x)$가 다음 조건을 만족시킨다."
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "접선 조건에 따라 판별식은 $0$이다."
+          },
+          {
+            "term": "닫힌구간",
+            "src": "solution",
+            "quote": "닫힌 구간에서 이차함수의 최댓값과 최솟값은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "이때, $f(2)+g(2)$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이때, $f(2)+g(2)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "두 함수는 각각 구간 안에서 꼭짓값 $0$을 실제로 달성하고",
+            "evidenceType": "IMPLIED",
+            "justification": "이차함수가 닫힌구간에서 극값을 가질 꼭짓점의 위치 조건을 분석한다."
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "접선 조건에 따라 판별식은 $0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직선과 이차함수가 접하는 조건 D=0을 적용한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "f(2)=-\\dfrac12(2+1)^2",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 이차함수 식에 x=2를 대입해 함숫값을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "동시에 접한다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이차함수의 꼭짓점 위치와 공통 접선의 판별식 조건으로 함수식을 결정하고 함숫값의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "두 행렬의 합"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "같은 위치의 성분끼리 더한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "두 행렬의 합"
+          },
+          {
+            "term": "행렬",
+            "src": "solution",
+            "quote": "\\begin{pmatrix}-1\\\\5\\end{pmatrix}+\\begin{pmatrix}4\\\\-2\\end{pmatrix}=\\begin{pmatrix}3\\\\3\\end{pmatrix}"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "두 행렬은 모두 $2\\times1$행렬이므로 같은 위치의 성분끼리 더한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬 덧셈의 정의에 따라 대응하는 각 위치의 성분을 더한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "첫째 행의 성분은\n$$-1+4=3$$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 행의 성분 값을 덧셈식에 대입하여 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "$$5+(-2)=3$$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "행렬 덧셈의 정의를 적용해 같은 위치의 성분끼리 덧셈을 수행한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{-2}\\sqrt{-8}=\\sqrt{(-2)(-8)}=\\sqrt{16}=4$"
+          },
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "복소수의 음수 제곱근을 각각 $i$를 써서 계산하면"
+          },
+          {
+            "term": "허수단위",
+            "src": "solution",
+            "quote": "$\\sqrt{-2}=i\\sqrt2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "따라서 바르게 고친 값은 $-4,\\ -2i$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "=\\dfrac{2i}{i^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 허수를 i를 곱해 분모의 유리화(실수화)를 수행한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "=4i^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "허수단위 i의 제곱인 -1을 대입하여 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "음수 제곱근의 몫을 한 근호로 합친 등호이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "음수의 제곱근 성질과 허수단위 i를 이용해 올바르게 전개하고 분모를 유리화한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-3x^2+4x-2=0$의"
+          },
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "해를 복소수의 범위에서 모두 구하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해를 복소수의 범위에서 모두 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "이므로 $x-1$이 인수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대입하여 0이 되는 값을 찾아 일차 인수를 분리하는 인수정리를 쓴다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "둘째 식을 완전제곱식으로 바꾸면",
+            "evidenceType": "IMPLIED",
+            "justification": "이차식을 완전제곱식으로 고쳐 복소수 해를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "먼저 정수근 후보 $x=1$을 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "먼저 정수근 후보 $x=1$을 대입한다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "인수정리로 일차 인수를 분리한 뒤 남은 이차식을 완전제곱식으로 풀어 복소수 해를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "일차부등식 $|x+2|+|x-1|<5$의"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "절댓값 안의 식이 $0$이 되는 $x=-2,1$을 기준으로 나눈다."
+          },
+          {
+            "term": "열린구간",
+            "src": "stem",
+            "quote": "해가 $a<x<b$일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값을 쓰시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a-b$의 값을 쓰시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "절댓값 안의 식이 $0$이 되는 $x=-2,1$을 기준으로 나눈다.",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 안이 0이 되는 지점을 기준으로 구간을 분류한다."
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "세 구간의 해를 합치면",
+            "evidenceType": "IMPLIED",
+            "justification": "분류된 각 구간의 해들을 모두 합쳐 전체 해 범위를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$|x+2|+|x-1|<5$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값 내부가 0이 되는 기준점으로 경우를 분류해 푼 뒤 각 구간의 해를 합집합으로 합친다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "solution",
+            "quote": "연쇄부등식은 두 부등식으로 나누어 푼다."
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "2x+1<3x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위를 구하는 과정을 서술하시오."
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위를"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "양변에 $2$를 곱하고 $1$을 더하면",
+            "evidenceType": "IMPLIED",
+            "justification": "부등식의 양변에 같은 수를 연산하여 미지수의 범위를 구한다."
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "따라서 전체 해는",
+            "evidenceType": "IMPLIED",
+            "justification": "두 일차부등식의 공통부분을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$가 3개가 되도록 하는"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위를"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연립일차부등식을 풀고 정수 해의 개수가 3개가 되도록 경계값 조건을 세워 범위를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$의 그래프와"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=g(x)$가 만나는 두 점의 $x$좌표는"
+          },
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "$0\\le x\\le4$에서 이차함수 $h(x)$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값과 그때의 $x$값을 구하는 과정을 서술하시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "최댓값과 그때의 $x$값을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "위로 열린 포물선이므로 이 꼭짓점에서 최솟값을 갖는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "교점의 중점인 꼭짓점에서 이차함수가 최솟값을 가짐을 이용한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 바꾸면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "h(0)=2(0-3)^2-8",
+            "evidenceType": "IMPLIED",
+            "justification": "최댓값을 갖는 경계값 x=0을 대입해 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "두 그래프의 교점의 $x$좌표가 1, 5이므로"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $-8$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 함수의 교점과 꼭짓점의 최솟값 조건으로 차의 함수식을 완성한 뒤 구간 내 최댓값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 25,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "A_n=\\begin{pmatrix}1&n\\\\0&(-1)^n\\end{pmatrix}$"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "stem",
+            "quote": "B_n=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}$이라고"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$2$보다 큰 짝수인 자연수 $n$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$n$의 값 중 최솟값을 구하는 과정을 서술하시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$n$의 값 중 최솟값을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "먼저 $B_nX$를 계산한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬과 열벡터의 곱을 순차적으로 전개한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "첫 식을 둘째 식에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "짝수인 자연수 $n$에 대하여"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "성분별로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "행렬곱을 전개하여 성분별 방정식을 유도하고 x가 자연수가 되는 최소의 짝수 n을 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 26,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "어른 배치 수는 A에 $a$명을 고른 뒤 남은 어른 중 B에 $b$명을 고르는"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "어른 4명과 어린이 3명이 동시에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "탑승하는 방법의 수를 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "따라서 가능한 어른 수 분포는",
+            "evidenceType": "IMPLIED",
+            "justification": "놀이기구 정원과 조건에 맞게 어른 탑승 인원 분포를 분류한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "\\binom40\\binom41\\binom32=\\dfrac{4!}{0!1!3!}\\binom32$",
+            "evidenceType": "IMPLIED",
+            "justification": "어른 배치 수와 어린이 배치 수를 곱한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "모든 어른 분포의 경우를 순서대로 더하면",
+            "evidenceType": "IMPLIED",
+            "justification": "분류된 각 경우의 방법의 수를 합산한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "모두 3석보다 적으므로 이 다섯 분포는 제외한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하지 않는 분포를 전체에서 제외한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "정원은 $(2,3,4)$이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "놀이기구 정원 조건을 만족하도록 어른의 배치를 경우분류한 뒤 각 경우별 어린이 배치를 곱하고 합산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 26,
+    "formatCounts": {
+      "단일 정답": 18,
+      "옳지 않은 것 고르기": 1,
+      "단답": 3,
+      "서술": 4
+    },
+    "duplicateCheck": "PASSED",
+    "verbatimCheck": "PASSED"
+  }
+}
