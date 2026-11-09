@@ -35,6 +35,7 @@ jobs:
     outputs:
       matrix: ${{ steps.scope.outputs.matrix }}
       base_sha: ${{ steps.scope.outputs.base_sha }}
+      review_labs: ${{ steps.scope.outputs.review_labs }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -55,6 +56,7 @@ jobs:
           import path from 'node:path';
           import vm from 'node:vm';
           import {execFileSync} from 'node:child_process';
+          import {REVIEW_LABS} from './apmath/playground/next/tools/high-review-capture.mjs';
           const baseline=execFileSync('git',['rev-parse','FETCH_HEAD'],{encoding:'utf8'}).trim();
           const paths=execFileSync('git',['diff','--name-only',baseline,'HEAD'],{encoding:'utf8'}).trim().split('\n');
           const sandbox={window:{}};
@@ -74,12 +76,17 @@ jobs:
           if(!include.length)throw Error('No high-school labs selected');
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`matrix=${JSON.stringify({include})}\n`);
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`base_sha=${baseline}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`review_labs=${selected.filter(l=>REVIEW_LABS.includes(l.id)).map(l=>l.id).join(',')}\n`);
           JS
   browser:
     name: browser (${{ matrix.course }})
     needs: scope
     runs-on: ubuntu-24.04
     timeout-minutes: 45
+    env:
+      APMATH_CANDIDATE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      APMATH_BASE_SHA: ${{ needs.scope.outputs.base_sha }}
+      APMATH_PR_NUMBER: ${{ github.event.pull_request.number }}
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.scope.outputs.matrix) }}
@@ -95,6 +102,7 @@ jobs:
         env:
           BASE_SHA: ${{ needs.scope.outputs.base_sha }}
         run: |
+          git fetch --no-tags --depth=1 origin "$APMATH_CANDIDATE_HEAD_SHA"
           git fetch --no-tags --depth=1 origin "$BASE_SHA"
           git worktree add --detach "$RUNNER_TEMP/high-baseline" "$BASE_SHA"
       - name: Install Chromium runtime
@@ -115,13 +123,43 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/high-browser/node_modules
           ONLY: ${{ matrix.only }}
-        run: node apmath/playground/next/tools/scene-smoke.mjs --high-school --root . --only "$ONLY" --out "$RUNNER_TEMP/high-evidence/after"
-      - name: Compare observed baseline and candidate defects
+        run: node apmath/playground/next/tools/scene-smoke.mjs --high-school --root . --only "$ONLY" --out "$RUNNER_TEMP/high-evidence/after" --review-captures
+      - name: Compare baseline and require every candidate check to pass
         if: always()
-        run: node apmath/playground/next/tools/high-lab-compare.mjs "$RUNNER_TEMP/high-evidence/before/results.json" "$RUNNER_TEMP/high-evidence/after/results.json" "$RUNNER_TEMP/high-evidence/comparison.json"
+        run: node apmath/playground/next/tools/high-lab-compare.mjs "$RUNNER_TEMP/high-evidence/before/results.json" "$RUNNER_TEMP/high-evidence/after/results.json" "$RUNNER_TEMP/high-evidence/comparison.json" --strict-candidate
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: high-labs-${{ github.run_id }}-${{ matrix.course }}
           path: ${{ runner.temp }}/high-evidence/
           retention-days: 14
+          if-no-files-found: error
+
+  review-captures:
+    name: Complete independent review capture set
+    needs: [scope, browser]
+    if: always() && needs.scope.result == 'success' && needs.scope.outputs.review_labs != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: high-labs-${{ github.run_id }}-*
+          path: ${{ runner.temp }}/high-review-artifacts
+      - name: Verify PNG bytes, source bindings and every required review state
+        env:
+          EXPECTED_LABS: ${{ needs.scope.outputs.review_labs }}
+        run: node apmath/playground/next/tools/high-review-capture.mjs --artifacts "$RUNNER_TEMP/high-review-artifacts" --expected-labs "$EXPECTED_LABS" --out "$RUNNER_TEMP/high-review-capture-summary.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: high-review-capture-summary-${{ github.run_id }}
+          path: ${{ runner.temp }}/high-review-capture-summary.json
+          retention-days: 14
+          if-no-files-found: error

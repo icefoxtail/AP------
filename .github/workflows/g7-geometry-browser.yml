@@ -11,6 +11,7 @@ on:
       - 'apmath/playground/next/tools/g7-*.test.mjs'
       - 'apmath/playground/next/tools/apl-shell-disclosure-browser.mjs'
       - 'apmath/playground/next/tools/g7-student-live-smoke.mjs'
+      - 'apmath/playground/next/tools/high-evidence-binding.mjs'
       - '.github/workflows/g7-geometry-browser.yml'
       - '.github/workflows/g7-student-live.yml'
   workflow_dispatch:
@@ -28,6 +29,10 @@ jobs:
     # Before/after matrices include native controls for every mobile scene;
     # the 86-scene circle unit needs room for observed baseline failures too.
     timeout-minutes: 45
+    env:
+      APMATH_CANDIDATE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      APMATH_BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+      APMATH_PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -53,6 +58,7 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
           SHARD: ${{ matrix.shard }}
         run: |
+          git fetch --no-tags --depth=1 origin "$APMATH_CANDIDATE_HEAD_SHA"
           git fetch --no-tags --depth=1 origin "$BASE_SHA"
           git worktree add --detach "$RUNNER_TEMP/g7-baseline" "$BASE_SHA"
           node --input-type=module <<'JS'
@@ -65,7 +71,7 @@ jobs:
             const unit = /g7-geometry-audit-targets-(g7-[\w-]+)\.json$/.exec(p)?.[1];
             if (all.includes(unit)) picked.add(unit);
           }
-          const shared = changed.some(p => /\/kit\//.test(p) || /g7-geometry-(?:browser-audit|selection-probes)\.mjs$|g7-student-live-smoke\.mjs$|g7-student-live\.yml$|g7-geometry-audit-targets\.json$|g7-[^/]+\.test\.mjs$|apl-shell-disclosure-browser\.mjs$|g7-geometry-browser\.yml$/.test(p));
+          const shared = changed.some(p => /\/kit\//.test(p) || /g7-geometry-(?:browser-audit|selection-probes)\.mjs$|g7-student-live-smoke\.mjs$|g7-student-live\.yml$|g7-geometry-audit-targets\.json$|g7-[^/]+\.test\.mjs$|apl-shell-disclosure-browser\.mjs$|high-evidence-binding\.mjs$|g7-geometry-browser\.yml$/.test(p));
           const affected = shared || !picked.size ? all : [...picked];
           const units = all.filter((unit, i) => affected.includes(unit) && i === Number(process.env.SHARD));
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`units=${units.join(',')}\n`);

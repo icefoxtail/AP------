@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
-import { execFileSync } from 'node:child_process';
+import { evidenceProvenance, bindLabSources } from './high-evidence-binding.mjs';
 import { probeSpatialSelection, probePolyhedronCell, probePolygonVertex } from './g7-geometry-selection-probes.mjs';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -95,7 +95,9 @@ const server = http.createServer((req, res) => {
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/`;
 fs.mkdirSync(out, { recursive: true });
-const report = { version: 1, kind: focused ? (observe ? 'FOCUSED_BASELINE_OBSERVATION' : 'FOCUSED_CANDIDATE_CHECK') : (observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK'), commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, units: {}, failures: [], limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Math correctness and visual overlap require independent inspection.'],
+const provenance = evidenceProvenance(root, { baseline: observe });
+const sourceBindings = units.map(id => bindLabSources(root, { id, next: `next/labs/${id}.html` }, provenance));
+const report = { version: 2, kind: focused ? (observe ? 'FOCUSED_BASELINE_OBSERVATION' : 'FOCUSED_CANDIDATE_CHECK') : (observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK'), commit: provenance.sourceCommit, provenance, sourceBindings, runs, units: {}, failures: sourceBindings.flatMap(b => b.errors.map(e => ({ unit: b.lab, ...e }))), limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Mouse pointer probes do not certify touch input.', 'Math correctness and visual overlap require independent inspection.'],
   ...(focused ? { fullMatrix: false, focus: { requestedSceneIds: focusSceneIds, requestedRunNames: focusRunNames }, purpose: 'Supplemental visual preflight; does not replace the full geometry audit.' } : {}) };
 const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { channel: 'chromium', headless: true });
 try {

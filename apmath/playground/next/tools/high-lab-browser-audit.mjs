@@ -5,16 +5,20 @@ import path from 'node:path';
 import http from 'node:http';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
-import { execFileSync } from 'node:child_process';
 import { createLiveAssetVerifier, publicPlaygroundBase, drainResponseTasks } from './high-live-assets.mjs';
-import { probeNativeDrag } from './high-drag-probe.mjs';
-import { probeNativeOrbit } from './high-orbit-probe.mjs';
+import { probeNativeDrag, probeNativeTouchDrag } from './high-drag-probe.mjs';
+import { probeNativeOrbit, classifyOrbitCapability, currentOrbitFacts } from './high-orbit-probe.mjs';
+import { evidenceProvenance, bindLabSources, sha256 } from './high-evidence-binding.mjs';
+import { REVIEW_LABS, requiredReviewStates, createReviewManifest, recordReviewScenes, recordReviewCapture, saveReviewManifest } from './high-review-capture.mjs';
+import { captureReviewTargets } from './high-review-targets.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
 const arg = (key, fallback) => { const i = argv.indexOf(key); return i < 0 ? fallback : argv[i + 1]; };
 const root = path.resolve(arg('--root', '.'));
 const out = path.resolve(arg('--out', '.tmp/high-lab-browser'));
 const observe = argv.includes('--baseline-observe');
+const reviewCaptures = argv.includes('--review-captures');
+if (observe && reviewCaptures) throw Error('Review captures belong to the candidate, not the baseline observation');
 const publicBase = arg('--base-url', ''); // HTTP(S) playground/ directory, not labs/.
 if (publicBase && observe) throw Error('Public verification cannot be a baseline-only observation');
 const scope = arg('--only', '').split(',').filter(Boolean);
@@ -44,17 +48,29 @@ const server = http.createServer((req, res) => {
 if (!publicBase) await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = publicBase ? publicPlaygroundBase(publicBase).href : `http://127.0.0.1:${server.address().port}/apmath/playground/`;
 fs.mkdirSync(out, { recursive: true });
-const report = { schema: 1, mode: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, labs: [], failures: [], limitations: ['Viewport simulation, not physical device testing.', 'All baseline scenes and steps; two generated variants per scene on mobile paper.', 'First visible slider and draggable point per scene; native empty-canvas orbit where available. Mathematical/visual interpretation requires independent review.'] };
+const provenance = evidenceProvenance(root, { baseline: observe });
+const sourceBindings = labs.map(item => bindLabSources(root, item, provenance));
+const report = { schema: 2, mode: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: provenance.sourceCommit, provenance, sourceBindings, runs, labs: [], failures: [], capabilityPolicy: { touchDrag: 'REQUIRED_FOR_VISIBLE_HANDLES', orbit: 'REVIEWED_CURRENT_SCENE' }, limitations: ['Viewport and Chromium touch-input simulation; physical devices NOT_RUN.', 'All baseline scenes and steps; two generated variants per scene on mobile paper.', 'First visible slider and draggable point per scene; mouse and touch drag plus required 3D empty-canvas orbit. Mathematical/visual interpretation requires independent review.'] };
+for (const binding of sourceBindings) for (const error of binding.errors) report.failures.push({ lab: binding.lab, ...error });
+const captureLabs = reviewCaptures ? labs.filter(l => REVIEW_LABS.includes(l.id)) : [];
+const reviewManifest = captureLabs.length ? createReviewManifest({ labs: captureLabs, provenance, sourceBindings }) : null;
 const live = publicBase ? createLiveAssetVerifier({root,baseURL:base,commit:report.commit,onFailure:f=>report.failures.push(f)}) : null;
 if (live) {
   report.mode = 'PUBLIC_READ_ONLY_CHECK'; report.baseURL = base; report.sourceVerification = live.report;
   report.releaseEvent = { runId:process.env.RELEASE_RUN_ID||null,headSHA:process.env.RELEASE_EVENT_HEAD_SHA||null,meaning:'Release workflow metadata, not an assertion of deployed commit.' };
 }
 const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { headless: true });
-const save = () => fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
+const save = (final = false) => {
+  if (reviewManifest) {
+    const coverage = saveReviewManifest(reviewManifest, out, report, { final });
+    report.reviewCapture = { file: 'review-capture-manifest.json', ...coverage };
+    if (final && !coverage.complete) report.failures.push({ reason: 'incomplete-review-capture', errors: coverage.errors, missing: coverage.missing });
+  }
+  fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
+};
 try {
   for (const item of labs) {
-    const dest = { id: item.id, course: item.course, file: item.next, scenes: [], observations: [], interactions: [], captures: [], failureCaptures: [] };
+    const dest = { id: item.id, course: item.course, file: item.next, scenes: [], observations: [], interactions: [], captures: [], captureMetadata: {}, failureCaptures: [] };
     report.labs.push(dest);
     for (const run of runs) {
       const context = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc'), deviceScaleFactor: 1, serviceWorkers:'block' });
@@ -86,6 +102,8 @@ try {
         await page.getByRole('dialog').getByRole('button', { name: '닫기', exact: true }).click();
         await page.locator('.apl-dialog').waitFor({ state: 'detached' });
         if (!dest.scenes.length) dest.scenes = census.scenes;
+        if (reviewManifest) recordReviewScenes(reviewManifest, item.id, census.scenes);
+        if (Number.isInteger(item.sceneTotal) && census.scenes.length !== item.sceneTotal) report.failures.push({ lab: item.id, run: run.name, reason: 'catalog-scene-total-mismatch', expected: item.sceneTotal, actual: census.scenes.length });
         if (census.selectionCount !== census.scenes.length || new Set(census.scenes.map(s => s.id)).size !== census.scenes.length) report.failures.push({ lab: item.id, run: run.name, reason: 'scene-selection-inventory', selectionCount: census.selectionCount, count: census.scenes.length });
         if (JSON.stringify(dest.scenes) !== JSON.stringify(census.scenes)) throw Error('Scene list changes between viewports/themes');
         await page.evaluate(() => {
@@ -142,6 +160,10 @@ try {
               guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim() };
           });
           const issues = [];
+          if (state === 'initial') {
+            obs.capabilities.orbit = classifyOrbitCapability(item.id, scene.id, await page.evaluate(currentOrbitFacts));
+            if (obs.capabilities.orbit.status === 'INVALID') issues.push('invalid-orbit-capability');
+          }
           if (obs.ink < 200) issues.push('blank-canvas');
           if (obs.overflow) issues.push('page-horizontal-overflow');
           if (obs.katexErrors.length) issues.push('katex-error');
@@ -181,12 +203,31 @@ try {
         };
         const capture = async (scene, state, fullPage = true) => {
           const name = `${item.id}--${scene.id}--${run.name}--${state}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
-          await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })); await settle();
+          await page.evaluate(async () => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); await document.fonts.ready; }); await settle();
+          const frame = await page.evaluate(() => {
+            const rect = lab.board.canvas.getBoundingClientRect();
+            const question = lab.refs.problemText?.cloneNode(true); question?.querySelectorAll('button').forEach(b => b.remove());
+            const steps = typeof lab.scene.steps === 'function' ? lab.scene.steps(lab.s, lab) : lab.scene.steps;
+            return { tab: lab.tab, step: lab.s.step, steps: steps?.length || 0, revealed: !!lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), answerPresent: !!lab.refs.answer?.querySelector('.val')?.textContent.trim(),
+              parameters: Object.fromEntries(Object.entries(lab.s).filter(([,v]) => v === null || ['number', 'boolean', 'string'].includes(typeof v))),
+              canvas: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+              viewport: { width: innerWidth, height: innerHeight }, fonts: document.fonts.status,
+              question: question?.textContent.replace(/\s+/g, ' ').trim() || '' };
+          });
+          const questionSha256 = sha256(frame.question), questionPresent = !!frame.question; delete frame.question;
+          dest.captureMetadata[name] = { ...frame, questionSha256, questionPresent, fullPage };
           await page.screenshot({ path: path.join(out, name), fullPage }); dest.captures.push(name);
+          if (reviewManifest && requiredReviewStates(item.id, run.name).includes(state)) recordReviewCapture(reviewManifest, out, { lab: item.id, id: scene.id, run: run.name, state, file: name, frame: dest.captureMetadata[name], method: state === 'answer-revealed' ? 'native-reveal-button' : 'scene-state-traversal' });
+          return name;
         };
+        const wantsCapture = state => reviewManifest && requiredReviewStates(item.id, run.name).includes(state);
         for (const scene of census.scenes) {
           await page.evaluate(i => lab.goScene(i), scene.index); const initial = await measure(scene, 'initial');
           if (scene.index === 0 && ['pc-paper', 'mobile-paper'].includes(run.name)) await capture(scene, 'initial');
+          if (wantsCapture('initial-explore')) {
+            await page.evaluate(() => lab.setTab('explore'));
+            await measure(scene, 'initial-explore'); await capture(scene, 'initial-explore');
+          }
           if (await page.evaluate(() => lab._tabAvailable('review'))) {
             await page.evaluate(() => lab.setTab('review'));
             // Some scenes expose their steps only in the review/problem tab.
@@ -196,7 +237,8 @@ try {
             }
             if (n && await page.locator('.apl-step-all:visible').count()) { await page.locator('.apl-step-all:visible').click(); await measure(scene,'show-all'); }
             await inspectSolutions(scene, 'baseline');
-            if (scene.index === 0 && run.name === 'pc-paper') await capture(scene, 'final');
+            if (wantsCapture('review-final')) { await measure(scene, 'review-final'); await capture(scene, 'review-final'); }
+            else if (scene.index === 0 && run.name === 'pc-paper') await capture(scene, 'final');
             // One bounded student viewport per opted-in scene supports independent
             // figure/step review without archiving every intermediate state.
             else if (!observe && !live && initial.stagedReveal && run.name === 'pc-paper') await capture(scene, 'review', false);
@@ -204,7 +246,8 @@ try {
           }
           if (await page.evaluate(() => lab._tabAvailable('problem'))) {
             await page.evaluate(() => { lab.s.revealed=false; lab.setStep(0); lab.setTab('problem'); }); await measure(scene, 'problem-hidden');
-            if (run.name === 'pc-paper' || run.name === 'mobile-paper') {
+            if (wantsCapture('problem-hidden')) await capture(scene, 'problem-hidden');
+            if (run.name === 'pc-paper' || run.name === 'mobile-paper' || wantsCapture('answer-revealed')) {
               const reveal = page.locator('#apl-pane-problem .apl-answer [data-reveal]:visible');
               if (await reveal.count()) {
                 await reveal.click(); await settle();
@@ -213,8 +256,12 @@ try {
                 dest.interactions.push({ id:scene.id, run:run.name, kind:'answer-control', pass, open:opened.open, answerPresent:!!opened.text });
                 if (!pass) report.failures.push({lab:item.id,id:scene.id,run:run.name,reason:'answer-control'});
                 await measure(scene, 'answer-revealed');
+                if (wantsCapture('answer-revealed') && pass) await capture(scene, 'answer-revealed');
                 await page.evaluate(() => { lab.s.revealed=false; lab.invalidate(true); }); await settle();
-              } else dest.interactions.push({ id:scene.id, run:run.name, kind:'answer-control', status:'NOT_APPLICABLE', reason:'scene-does-not-expose-standard-reveal-button' });
+              } else {
+                dest.interactions.push({ id:scene.id, run:run.name, kind:'answer-control', status:'NOT_APPLICABLE', reason:'scene-does-not-expose-standard-reveal-button' });
+                if (wantsCapture('answer-revealed')) report.failures.push({ lab: item.id, id: scene.id, run: run.name, reason: 'required-review-answer-control-missing' });
+              }
             }
           }
           if (run.name === 'mobile-paper') {
@@ -240,13 +287,24 @@ try {
               dest.interactions.push({id:scene.id,run:run.name,kind:'drag',handle:handle.id,...result});
               if(!result.pass)report.failures.push({lab:item.id,id:scene.id,reason:'native-drag',...result});
               await measure(scene,'drag');
+              await page.evaluate(i => lab.goScene(i), scene.index); await settle();
+              const touch = await probeNativeTouchDrag(page, page.locator('.apl-canvas'), settle, handle.id);
+              dest.interactions.push({ id: scene.id, run: run.name, kind: 'touch-drag', handle: handle.id, ...touch });
+              if (!touch.pass) report.failures.push({ lab: item.id, id: scene.id, run: run.name, reason: 'native-touch-drag', ...touch });
+              await measure(scene, 'touch-drag');
             }
-            if(await page.evaluate(()=>typeof lab.board.onPanDrag==='function')){
-              await page.evaluate(i=>lab.goScene(i),scene.index);await settle();
+            await page.evaluate(i=>lab.goScene(i),scene.index);await settle();
+            const orbit = classifyOrbitCapability(item.id, scene.id, await page.evaluate(currentOrbitFacts));
+            if (orbit.status === 'REQUIRED') {
               const result=await probeNativeOrbit(page,page.locator('.apl-canvas'),settle);
-              dest.interactions.push({id:scene.id,run:run.name,kind:'orbit',...result});
+              dest.interactions.push({id:scene.id,run:run.name,kind:'orbit',capability:orbit,...result});
               if(!result.pass)report.failures.push({lab:item.id,id:scene.id,reason:'native-orbit',...result});
               await measure(scene,'orbit');
+            } else if (orbit.status === 'INVALID') {
+              dest.interactions.push({ id: scene.id, run: run.name, kind: 'orbit', pass: false, capability: orbit, reason: orbit.reason });
+              report.failures.push({ lab: item.id, id: scene.id, run: run.name, reason: 'invalid-orbit-capability', capability: orbit });
+            } else {
+              dest.interactions.push({ id: scene.id, run: run.name, kind: 'orbit', status: 'NOT_APPLICABLE', capability: orbit, reason: orbit.reason });
             }
             if(await page.evaluate(()=>lab._tabAvailable('problem'))){
               await page.evaluate(i=>{lab.goScene(i);lab.setTab('problem');},scene.index);await settle();
@@ -263,8 +321,26 @@ try {
                 await measure(scene,`variant-${variant}`);
                 if(await page.evaluate(()=>lab._tabAvailable('review'))){
                   await page.evaluate(()=>{lab.setTab('review');const s=lab.scene.steps;lab.setStep((typeof s==='function'?s(lab.s,lab):s)?.length||0);});
-                  await measure(scene,`variant-solution-${variant}`);await inspectSolutions(scene,`variant-${variant}`);await page.evaluate(()=>lab.setTab('problem'));
+                  await measure(scene,`variant-solution-${variant}`);await inspectSolutions(scene,`variant-${variant}`);
+                  if (reviewManifest && item.course === 'algebra' && REVIEW_LABS.includes(item.id) && variant === 1) {
+                    const state = 'target-generated-variant-1'; await measure(scene, state);
+                    const file = await capture(scene, state);
+                    recordReviewCapture(reviewManifest, out, { lab: item.id, id: scene.id, run: run.name, state, file, frame: dest.captureMetadata[file], method: 'native-new-problem-button', variant });
+                  }
+                  await page.evaluate(()=>lab.setTab('problem'));
                 }
+              }
+            }
+          }
+          if (reviewManifest && REVIEW_LABS.includes(item.id)) {
+            const entries = await captureReviewTargets({ page, item, scene, run, settle, measure, capture });
+            for (const entry of entries || []) {
+              if (entry.file) recordReviewCapture(reviewManifest, out, { ...entry, lab: item.id, id: scene.id, run: run.name, frame: dest.captureMetadata[entry.file] });
+              else {
+                const row = { ...entry, lab: item.id, id: scene.id, run: run.name };
+                if (entry.status === 'NOT_APPLICABLE') reviewManifest.notApplicable.push(row);
+                else if (entry.status === 'LIMITATION') reviewManifest.targetLimitations.push(row);
+                else reviewManifest.coverageDebt.push(row);
               }
             }
           }
@@ -286,7 +362,7 @@ try {
       console.log(JSON.stringify({lab:item.id,run:run.name,scenes:dest.scenes.length,failures:report.failures.filter(f=>f.lab===item.id).length}));
     }
   }
-} finally { await browser.close();if(!publicBase)await new Promise(resolve=>server.close(resolve));if(live)report.sourceVerification=live.finish();save(); }
+} finally { await browser.close();if(!publicBase)await new Promise(resolve=>server.close(resolve));if(live)report.sourceVerification=live.finish();save(true); }
 const totals={};for(const l of report.labs)totals[l.course]=(totals[l.course]||0)+l.scenes.length;
 console.log(JSON.stringify({mode:report.mode,commit:report.commit,labs:report.labs.length,scenes:report.labs.reduce((n,l)=>n+l.scenes.length,0),totals,failures:report.failures.length}));
 process.exitCode=observe?0:report.failures.length?1:0;
