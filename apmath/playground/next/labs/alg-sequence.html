@@ -568,7 +568,7 @@ return { root, validA1 };
 
 
   /* ===== 원본 그대로: 수식 줄·실시간 값 (원본 updateLiveHUDAndInvariants) ===== */
-  function hudOf(mId, p) {
+  function hudOf(mId, p, step = 3) {
     let cards = [];
     let eq = '';
     
@@ -606,9 +606,12 @@ const sMax = m * m;
 const n = Math.round(p.targetN);
 const sn = -n * (n - N);
 const sumAbs = n <= m ? sn : 2 * sMax - sn;
-eq = (
-`$S_n = -n(n-${N}), \\quad S_{\\max}=S_{${m}}=${sMax}, \\quad \\sum_{k=1}^{${n}} |a_k| = 2S_{${m}} - S_{${n}} = ${sumAbs}$`
-);
+// 정리 탭은 그래프와 같은 순서로 합 → 꼭짓점 → |S_n| → ∑|a_k|를 공개합니다.
+const parts = [`S_n = -n(n-${N})`];
+if (step >= 1) parts.push(`S_{\\max}=S_{${m}}=${sMax}`);
+if (step >= 3) parts.push(`\\sum_{k=1}^{${n}} |a_k| = 2S_{${m}} - S_{${n}} = ${sumAbs}`);
+else if (step >= 2) parts.push(`|S_${n}|=${Math.abs(sn)}`);
+eq = `$${parts.join(', \\quad ')}$`;
 cards = [
 { title: `항별 절댓값 합 ∑|a_k| (n=${n})`, val: `${sumAbs}`, sub: `2(${sMax}) − (${sn})과 같음` },
 { title: '∑|a_k| − (2S_max − S_n)의 값', val: '0', sub: '두 값이 같음' },
@@ -1611,10 +1614,11 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       view: (s, lab) => {
         current = { mo, scen };
         const inExplore = !lab || lab.tab === 'explore';
+        const inReview = lab?.tab === 'review';
         const fixed = OVARY[mo.id + '-' + si].cur();
-        const h = hudOf(mo.id, inExplore ? pv(s, mo) : fixed.p);
+        const h = hudOf(mo.id, inExplore ? pv(s, mo) : fixed.p, inReview ? s.step : 3);
         if (!inExplore && mo.id === 'type3' && si === 1) {
-          return { chips: [{ html: fixed.ans, answer: true }], formula: s.step >= 1 ? rich(fixed.std[Math.min(s.step, 3) - 1]) : '' };
+          return { chips: inReview && s.step < 3 ? [] : [{ html: fixed.ans, answer: true }], formula: s.step >= 1 ? rich(fixed.std[Math.min(s.step, 3) - 1]) : '' };
         }
         return {
           chips: [{ k: mo.code, html: rich(h.eq), answer: true }],

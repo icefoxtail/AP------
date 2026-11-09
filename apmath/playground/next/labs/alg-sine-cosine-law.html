@@ -1204,7 +1204,8 @@ window.addEventListener('DOMContentLoaded', function () {
         const bp = 2.0 + t * 10.0; // t = 0.30 -> bp = 5.0 (수선의 발 H와 일치)
         const cp = 14.0 - bp;
         const apLen = Math.hypot(bp - 5.0, 12.0);
-        const angAPB = (Math.atan2(12.0, 5.0 - bp) * 180) / Math.PI;
+        // PB는 왼쪽을 향하므로 PA의 왼쪽 성분 bp-5를 기준으로 각 APB를 잽니다.
+        const angAPB = (Math.atan2(12.0, bp - 5.0) * 180) / Math.PI;
         const isPerp = Math.abs(bp - 5.0) < 1e-9;
         const P = toScr(bp, 0, cx, cy, sc);
 

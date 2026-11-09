@@ -2127,8 +2127,10 @@ window.addEventListener('DOMContentLoaded', function () {
         drawAxesWithTicks(rect, ox, oy, sc);
 
         dLine(toScr(-4.5, -4.5, ox, oy, sc), toScr(4.5, 4.5, ox, oy, sc), C.gold, 2.4, [6, 4]);
-        const fPts = [toScr(-4, 3.3, ox, oy, sc), toScr(-3, 3, ox, oy, sc), toScr(1, 1, ox, oy, sc), toScr(3, -3, ox, oy, sc), toScr(3.5, -4.2, ox, oy, sc)];
-        const iPts = [toScr(3.3, -4, ox, oy, sc), toScr(3, -3, ox, oy, sc), toScr(1, 1, ox, oy, sc), toScr(-3, 3, ox, oy, sc), toScr(-4.2, 3.5, ox, oy, sc)];
+        // 내부 꼭짓점을 비대칭으로 두어 세 교점 사이의 선분 전체가 겹치지 않게 합니다.
+        const vertices = [[-4, 3.3], [-3, 3], [-1, 2.5], [1, 1], [3, -3], [3.5, -4.2]];
+        const fPts = vertices.map(([x, y]) => toScr(x, y, ox, oy, sc));
+        const iPts = vertices.map(([x, y]) => toScr(y, x, ox, oy, sc));
 
         for (let i = 0; i < fPts.length - 1; i++) {
           dLine(fPts[i], fPts[i + 1], C.cyan, 3.8);
@@ -3470,7 +3472,17 @@ window.addEventListener('DOMContentLoaded', function () {
           if (lab.tab === 'explore') { drawF5(b, P, s.b5, { all: !!s.b5all, rules: true }); return; }
           const vv = var5.cur(), st = stepOf(lab, s), ch = vv.P.X.map(() => -1);
           drawF5(b, vv.P, ch, { all: true, rules: true });
-          if (st >= 2) { /* 충돌 값 강조 */ const L = layout5(vv.P); const m = {}; vv.P.X.forEach((x) => [ruleA(vv.P, x), ruleB(vv.P, x)].forEach((val) => { m[val] = (m[val] || 0) + 1; })); L.vals.forEach((val, i) => { if (m[val] > 1) b.point([7.8, L.vr[i]], { r: 21, hollow: true, color: 'red', glow: false }); }); }
+          if (st >= 2) { /* 서로 다른 입력의 후보가 만나는 값만 강조 */
+            const L = layout5(vv.P), m = {};
+            vv.P.X.forEach((x) => new Set([ruleA(vv.P, x), ruleB(vv.P, x)]).forEach((val) => { m[val] = (m[val] || 0) + 1; }));
+            L.vals.forEach((val, i) => {
+              if (m[val] <= 1) return;
+              const p = [7.8, L.vr[i]];
+              b.point(p, { r: 21, hollow: true, color: 'red', glow: false });
+              // 빈 원도 내부를 채우므로 강조 뒤 값을 다시 그려 숫자를 가리지 않습니다.
+              b.text(p, String(val).replace('-', '−'), { size: 13, baseline: 'middle', halo: false, weight: 800, color: 'red' });
+            });
+          }
         }
       });
     }

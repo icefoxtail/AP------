@@ -175,6 +175,39 @@ test('exact special buttons and continuous dragging do not depend on the solutio
   for(const [R,a] of scl.exports.RA) {const d=Math.sqrt(R*R-a*a/4);close(a/(a/(2*R)),2*R);close(a*(R+d)/2,Math.max(...Array.from({length:721},(_,i)=>a*Math.abs(R*Math.sin(i*Math.PI/360)+d)/2)));}
 });
 
+for (const [t, location] of [[0, 'left of H'], [0.3, 'at H'], [0.65, 'right of H']]) {
+  test(`bas-2 labels the actual angle APB when P is ${location}`, () => {
+    const sc = scl.scenes.find(x => x.id === 'bas-2');
+    for (const step of [0, 3]) {
+      const s = scl.state(sc); Object.assign(s, { t, step });
+      const { b, v } = draw(scl, sc, s, 'explore'), { A, B, C, P } = vertices(b);
+      // The independent expectation is the dot product of the two drawn rays
+      // PA and PB. PB points towards B, not towards the opposite end C.
+      const degrees = angle(A, P, B) * 180 / Math.PI, label = `∠APB ≈ ${degrees.toFixed(0)}°`;
+      if (step < 3) assert.ok(v.summary.includes(label), `${location}: ${v.summary}; expected ${label}`);
+      else assert.match(v.summary, /AH = 12, 넓이 = 84/, 'the final height/area explanation stays unchanged');
+      const scale = dist(B, C) / 14;
+      close(dist(A, B) / scale, 13, 'AB stays fixed');
+      close(dist(A, C) / scale, 15, 'AC stays fixed');
+      close(dist(B, P) / scale, 2 + 10 * t, 'P retains its input position');
+      if (t === 0.3) {
+        close(degrees, 90, 'the altitude makes a right angle');
+        assert.ok(b.items.some(x => x.kind === 'right' && dist(x.args[0], P) < 1e-8), 'right angle remains marked at H');
+      } else {
+        assert.ok(t < 0.3 ? degrees > 90 : degrees < 90, 'obtuse/acute side of the altitude');
+        const arc = b.items.find(x => x.kind === 'angle' && x.args.at(-1).label === label);
+        assert.ok(arc, 'drawn arc carries the same angle as the inquiry metric');
+        close(angle(arc.args[1], arc.args[0], arc.args[2]), degrees * Math.PI / 180, 'arc rays match APB');
+      }
+      assert.equal(s.t, t, 'drawing does not snap the slider');
+      const drag = b.items.find(x => x.kind === 'handle' && x.args.at(-1).label.startsWith('P')).args.at(-1).drag;
+      const desired = 0.47;
+      drag({ x: B.x + (C.x - B.x) * (2 + 10 * desired) / 14, y: B.y });
+      close(s.t, desired, 'the existing P drag inverse is unchanged');
+    }
+  });
+}
+
 for (const t of [0, 0.005]) {
   test(`the bas-5 triangle, diameter circle and labels fit at the reported t=${t}`, () => {
     // First size is the actual run42583866636 PC canvas (integer Board size);
@@ -236,6 +269,59 @@ test('sequence diagrams use actual coordinates and preserve fractional values an
     assert.ok(v.text.includes(`$r > ${q.N}$`),'the unknown r carries the lower bound');
     const candidates=Array.from({length:q.r+q.N+1},(_,r)=>r).filter(r=>r>q.N&&Math.abs(r*(q.N-r))===target);
     assert.deepEqual(candidates,[q.r]);
+  }
+});
+
+test('signed-sum review HUD reveals only the current step and preserves the completed result', () => {
+  const L = load('alg-sequence'), sc = L.scenes.find(x => x.id === 'type3-0');
+  L.ctx.Math.random = () => 0; // visit each existing finite variant once
+  for (let i = 0; i < L.exports.OLDV.T3A.pool.length; i++) {
+    const q = sc.vary.cur(), s = L.state(sc), completed = L.exports.hudOf('type3', q.p);
+    const N = q.p.zeroSumN, n = q.p.targetN, m = N / 2, sn = -n * (n - N);
+    for (const step of [0, 1, 2, 3]) {
+      s.step = step;
+      const { b, v } = draw(L, sc, s, 'review'), hud = v.chips.map(x => x.html).join(' ');
+      assert.ok(hud.includes(`S_n = -n(n-${N})`), 'the given sum remains visible');
+      if (step < 3) {
+        assert.doesNotMatch(hud, /\\sum|2S_/, `variant ${i}, step ${step}: final sum must wait`);
+        assert.doesNotMatch(b.texts.join(' '), /∑\|a_k\|/, 'the drawing follows the same reveal boundary');
+        assert.equal(v.readouts.length, 0, 'final numerical cards remain hidden');
+      } else {
+        assert.equal(hud, completed.eq, 'the final formula and answer are unchanged');
+        assert.equal(v.readouts.length, completed.cards.length);
+        assert.match(b.texts.join(' '), /∑\|a_k\|/, 'the completed sum is still labelled');
+      }
+      if (step === 0) assert.doesNotMatch(hud, /S_\{\\max\}|\\quad \|S_/, 'no derived vertex or absolute sum at the start');
+      if (step >= 1) assert.ok(hud.includes(`S_{${m}}=${m * m}`), 'the opened vertex step is visible');
+      if (step === 2) assert.ok(hud.includes(`|S_${n}|=${Math.abs(sn)}`), 'step 2 shows the absolute partial sum, not the sum of absolute terms');
+    }
+    const exploration = sc.view({ ...s, step: 0 }, { tab: 'explore' });
+    assert.equal(exploration.chips[0].html, L.exports.hudOf('type3', {
+      zeroSumN: s.type3_zeroSumN, targetN: s.type3_targetN
+    }).eq, 'the live exploration HUD is unchanged');
+    sc.vary.next();
+  }
+});
+
+test('absolute-partial-sum review waits for the last step before showing the solved index', () => {
+  const L = load('alg-sequence'), sc = L.scenes.find(x => x.id === 'type3-1');
+  L.ctx.Math.random = () => 0;
+  for (let i = 0; i < L.exports.OLDV.T3B.pool.length; i++) {
+    const q = sc.vary.cur(), s = L.state(sc);
+    for (const step of [0, 1, 2, 3]) {
+      s.step = step;
+      const { b, v } = draw(L, sc, s, 'review');
+      if (step < 3) {
+        assert.equal(v.chips.length, 0, `variant ${i}, step ${step}: the solved r must wait`);
+        assert.ok(!b.texts.some(t => t.includes(`r=${q.p.targetN}`)), 'the drawing also waits for the solved index');
+      } else {
+        assert.equal(v.chips[0].html, q.ans, 'the completed answer is unchanged');
+        assert.ok(b.texts.some(t => t.includes(`r=${q.p.targetN}`)), 'the completed index remains on the graph');
+      }
+    }
+    s.step = 0;
+    assert.equal(sc.view(s, { tab: 'problem' }).chips[0].html, q.ans, 'the existing problem reveal contract is unchanged');
+    sc.vary.next();
   }
 });
 
