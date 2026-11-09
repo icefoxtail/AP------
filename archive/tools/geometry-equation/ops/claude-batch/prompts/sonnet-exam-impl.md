@@ -46,3 +46,12 @@
 
 [끝까지 진행] 시간·분량 제한은 없다. 시험지의 모든 문항이 TABLE.md에 판정되고 그림 문항의 PNG 확인·렌더가 끝날 때까지 멈추지 않는다. 문항 하나를 끝낼 때마다 그 문항의 산출물과 TABLE.md·REVIEW.md 줄을 바로 써서 진행분을 남긴다.
 최종 보고(짧게, 한국어): 시험지 key | 문항 수 | 그림 문항 수(FIGURE/REPLACE) | qNN별 PASS/FIXED(무엇)/ADDED/UNSUPPORTED 한 줄씩(PASS는 묶어서), 엔진 공백, 대표 PNG 경로 2~3개, TABLE.md를 DeepSeek 초안에서 바꿨는지.
+
+## 시범(25 매산고 1학기 기말)에서 나온 보강 규칙 (2026-11-10)
+- 좌표 라벨은 점 곁에 단다: `coordinatePlacement:"PANEL"`(그림 위 띠로 모으기)을 쓰지 않는다. 띠에 뜬 좌표는 학생이 어느 점인지 못 찾는다.
+- 여러 곡선·직선은 색을 다르게 주고 각각 이름(f(x), g(x), 식)을 곡선 끝·곡선 위 점의 지시선으로 단다. 이름이 교점 곁에 떠 있으면 어느 곡선인지 모호하다.
+- piecewise 그래프의 둘째 곡선 이름은 nameLabel을 못 쓴다 → 좌표를 직접 준 점 + callouts로 단다. multi-curve callouts 글자에 "|"를 쓸 수 없다(OVERLAY_CALLOUT_TEXT_INVALID) → 이름(g(x))만 달고 식은 caption에서 정의한다.
+- 정답이 "범위의 경계값"인 문항: 경계값 자체(정답) 직선·점을 그리지 않고, 범위 안의 중간 예시 하나를 그린 뒤 caption에 "예:"로 밝힌다.
+- 합성 패널(수직선·표 등) 출력은 렌더만으로는 SVG title이 없을 수 있다 → `bash .tmp/work/a11y.sh <qNN 폴더>`로 넣는다.
+- DeepSeek 초안의 alt는 임시본이다. PNG를 보고 실제 보이는 것으로 다시 쓴다.
+- 끝나면 <REV>/IMPL_DONE 빈 파일을 만든다(메인이 다음 단계 시작 신호로 쓴다).
