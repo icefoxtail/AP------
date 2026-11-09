@@ -1,0 +1,393 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "보기 ②"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "12",
+                  "denominator": "5"
+                },
+                "dy": {
+                  "kind": "rational",
+                  "numerator": "16",
+                  "denominator": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "-9",
+                  "denominator": "5"
+                },
+                "dy": {
+                  "kind": "rational",
+                  "numerator": "-12",
+                  "denominator": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_THROUGH_3",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "BD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "caption": "AE·EC=2×6=12, BE·ED=4×3=12이므로 보기 ②는 원에 내접한다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "E는 AC와 BD의 교점이고 AE=2,EC=6,BE=4,ED=3이다. 각도는 예시다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "두 선분의 길이와 곱을 구별하고 점·라벨은 여유 있게 배치한다. 배치 각도는 보기의 조건이 아니라 설명을 위한 예시이다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "보기 ⑤"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "7"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "PA",
+            "refs": [
+              "P",
+              "A"
+            ]
+          },
+          {
+            "id": "PB",
+            "refs": [
+              "P",
+              "B"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "caption": "PD·PA=3×7=21, PC·PB=2×8=16이므로 보기 ⑤의 네 점은 한 원 위에 있지 않다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "P,D,A는 일직선이고 P,C,B도 일직선이다. PD=3,DA=4,PC=2,CB=6이며 각도는 예시다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "두 선분의 길이와 곱을 구별하고 점·라벨은 여유 있게 배치한다. 배치 각도는 보기의 조건이 아니라 설명을 위한 예시이다."
+        ]
+      }
+    }
+  ],
+  "caption": "보기 ②는 두 현의 곱이 모두 12이다. 보기 ⑤는 두 할선의 곱이 21과 16으로 달라 네 점이 한 원 위에 있지 않다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 다섯 보기 전체 그림을 보존하며 보기 ②와 ⑤의 길이를 대조한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "보기 ②와 ⑤를 나누어 같은 곱과 다른 곱을 비교한다. 나머지 보기는 원문 그림과 해설을 유지한다."
+  ]
+}
