@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "M",
+          "O"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "perp",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "base"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cross",
+        "op": "INTERSECTION",
+        "inputs": [
+          "perp",
+          "circle"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "cross"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "M",
+            "O"
+          ],
+          "sign": 1
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "O",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "HP",
+      "refs": [
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "A",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "right",
+        "refs": [
+          "A",
+          "M",
+          "O"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "half",
+        "ownerSegment": "HP",
+        "text": "r-1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radius",
+        "ownerSegment": "OP",
+        "text": "r",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknown",
+        "ownerSegment": "OH",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "현의 중점 M에서 AM=3cm이고, 원의 중심 O와 호의 중점 C에 대해 CM=1cm이다. 반지름을 r이라 하면 OM=r-1이므로 r²=(r-1)²+3²에서 r=5cm이다. 원문 그림은 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "현 AB=6cm, 호의 중점 C에서 현의 중점 M까지 CM=1cm. 중심 O는 현의 수직이등분선 위에 있다. M을 원점, MO 방향을 양의 축으로 정규화하고 OM=4, OA=5로 정한 수치는 r²=(r-1)²+3²의 해를 반영한 풀이용 구성이다. 그림의 r, r-1은 원문 조건에서 유도한 값이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심과 현의 중점을 연결하여 AM=3, OM=r-1, OA=r인 직각삼각형을 표시한다. 지시선과 라벨 여백을 확보한다."
+  ]
+}
