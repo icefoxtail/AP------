@@ -94,7 +94,11 @@ window.questionBank = [
     "sourceQid": 2,
     "sourceOrdinal": 2,
     "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"},
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 0이 f를 거쳐 1이 되고, 역함수가 1을 0으로 되돌리는 그림.",
+    "solutionImageCaption": "f(0)=1에서 역함수의 대응 1→0을 확인한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -196,7 +200,11 @@ window.questionBank = [
     "sourceQid": 4,
     "sourceOrdinal": 4,
     "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"},
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 0이 f를 거쳐 1이 되고, h를 거쳐 g(0)의 함숫값에 대응되는 그림.",
+    "solutionImageCaption": "f(0)=1이므로 h(1)=h(f(0))=g(0)이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -296,7 +304,11 @@ window.questionBank = [
     "sourceQid": 6,
     "sourceOrdinal": 6,
     "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"},
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: h의 입력 0과 1이 각각 19와 25에 대응되는 그림.",
+    "solutionImageCaption": "h(0)=19이고 h(1)=25이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -585,9 +597,9 @@ window.questionBank = [
     "conditionKeys": ["COND_FUNCTION_INJECTIVE","COND_RANGE","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "level": "상",
-    "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "두 조각의 치역이 맞닿고 겹치지 않는 구간",
-    "solutionImageCaption": "(−∞,−8]과 (−8,−2)의 분할",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: a=−4일 때 두 조각이 (2,−8)에서 이어지고 치역이 겹치지 않는 함수 그래프.",
+    "solutionImageCaption": "두 가지의 치역은 (−∞,−8]과 (−8,−2)이다. 정답은 ①이다.",
     "solutionImageSize": "full",
     "questionUid": "qid_v1_8b991cf57faa657101d30e068ee6d0f45204615d686af57ccd0c5e11a6129b21",
     "sourceQid": 12,
