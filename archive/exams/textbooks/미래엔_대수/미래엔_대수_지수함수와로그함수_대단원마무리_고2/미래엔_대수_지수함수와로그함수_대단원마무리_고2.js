@@ -12,7 +12,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -46,7 +46,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -74,7 +74,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -102,7 +102,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -130,7 +130,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -158,7 +158,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -192,7 +192,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -220,7 +220,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -248,7 +248,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -388,7 +388,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -416,7 +416,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -472,7 +472,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -500,7 +500,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -528,7 +528,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [

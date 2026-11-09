@@ -9,8 +9,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "실수 전체의 집합 $A$에 대하여 다음 [보기] 중 옳은 것을 모두 고르시오.\n[보기]\nㄱ. $7\\in A$\nㄴ. $\\varnothing\\in A$\nㄷ. $\\{8\\}\\subset A$\nㄹ. $3\\subset A$",
@@ -26,7 +26,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 2,
@@ -36,8 +37,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "집합 $A=\\{1,2,3,4,5,6\\}$의 부분집합 중에서 적어도 한 개의 홀수를 원소로 갖는 부분집합의 개수를 구하시오.",
@@ -53,7 +54,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 3,
@@ -63,8 +65,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "객관식",
     "choices": [
       "① $\\{x\\mid x^2-6x+8=0\\}$",
@@ -86,7 +88,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 4,
@@ -96,8 +99,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "전체집합 $U=\\{1,2,3,\\ldots,100\\}$의 부분집합 $A_k=\\{x\\mid x\\text{는 자연수 } k\\text{의 배수}\\}$에 대하여 다음 집합의 원소의 개수를 구하시오.\n(1) $A_3\\cup A_4$\n(2) $A_2\\cap(A_3\\cap A_4)$",
@@ -113,7 +116,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 5,
@@ -123,8 +127,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "환경 캠프에 참여한 학생 32명 중에서 친환경 가방을 만든 학생은 17명, 친환경 수세미를 만든 학생은 20명이다. 친환경 가방과 친환경 수세미를 모두 만든 학생이 $x$명일 때, $x$의 최댓값과 최솟값을 구하시오.",
@@ -140,7 +144,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 6,
@@ -150,8 +155,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "두 집합 $A=\\{1,2\\}$, $B=\\{3,4\\}$에 대하여 두 집합 $P$, $Q$가 다음과 같을 때, $n(P\\cup Q)$를 구하시오.\n$P=\\{p\\mid p=x+y,\\ x\\in A,\\ y\\in B\\}$\n$Q=\\{q\\mid q=xy,\\ x\\in A,\\ y\\in B\\}$",
@@ -167,7 +172,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 7,
@@ -177,8 +183,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "전체집합 $U=\\{x\\mid x\\text{는 10보다 작은 자연수}\\}$의 두 부분집합 $A$, $B$에 대하여 $A\\cup B=U$, $A\\cap(A-B)^c=A$를 만족시킬 때, 집합 $B$의 원소의 개수를 구하시오.",
@@ -194,7 +200,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 8,
@@ -204,8 +211,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "전체집합 $U=\\{1,2,3,4,5,6,7\\}$의 두 부분집합 $A$, $B$에 대하여 $A\\cap B=\\{3\\}$, $A^c\\cap B=\\{4,5\\}$, $A^c\\cap B^c=\\{6,7\\}$일 때, 집합 $B$를 구하시오.",
@@ -221,7 +228,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 9,
@@ -231,8 +239,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "명제 ‘모든 실수 $x$에 대하여 $x^2-ax+9>0$이다.’가 참이 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
@@ -248,7 +256,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 10,
@@ -258,8 +267,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "명제 ‘$x^2-x=0$이면 $x=0$ 또는 $x=1$이다.’의 역과 대우를 말하고, 그 참, 거짓을 판별하시오.",
@@ -275,7 +284,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 11,
@@ -285,8 +295,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "세 조건\n$p$: $-2<x<3$ 또는 $x>6$\n$q$: $x>a$\n$r$: $x>b$\n에 대하여 $r\\Rightarrow p$, $p\\Rightarrow q$일 때, $b-a$의 최솟값을 구하시오. (단, $a$, $b$는 실수)",
@@ -302,7 +312,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 12,
@@ -312,8 +323,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "$x\\le4$는 $x\\le a$이기 위한 필요조건이고, $x\\ge b$는 $x\\ge-4$이기 위한 충분조건일 때, $a$의 최댓값과 $b$의 최솟값을 구하시오. (단, $a$, $b$는 실수)",
@@ -329,7 +340,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 13,
@@ -339,8 +351,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "서술형",
     "choices": [],
     "content": "자연수 $m$, $n$에 대하여 다음 명제가 참임을 귀류법을 이용하여 증명하시오.\n$m^2+n^2$이 짝수이면 $m+n$도 짝수이다.",
@@ -356,7 +368,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 14,
@@ -366,8 +379,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "다음 [보기] 중 절대부등식인 것을 모두 고르시오.\n[보기]\nㄱ. $|x|\\ge0$\nㄴ. $x+1>1$\nㄷ. $x^2+2x>0$\nㄹ. $x^2-4x+4\\ge0$",
@@ -383,7 +396,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 15,
@@ -393,8 +407,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "서술형",
     "choices": [],
     "content": "$a$, $b$, $x$, $y$가 실수일 때, 부등식\n$(a^2+b^2)(x^2+y^2)\\ge(ax+by)^2$\n이 성립한다. $x^2+y^2=25$일 때, $2x+\\sqrt5y$의 최댓값을 구하시오. (단, 부등식의 등호가 성립하는 경우는 $ay=bx$일 때이다.)",
@@ -410,6 +424,7 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   }
 ];

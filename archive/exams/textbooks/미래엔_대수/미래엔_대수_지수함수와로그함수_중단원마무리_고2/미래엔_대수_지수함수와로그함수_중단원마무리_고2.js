@@ -208,7 +208,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -264,7 +264,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -292,7 +292,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -404,7 +404,7 @@ window.questionBank = [
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [

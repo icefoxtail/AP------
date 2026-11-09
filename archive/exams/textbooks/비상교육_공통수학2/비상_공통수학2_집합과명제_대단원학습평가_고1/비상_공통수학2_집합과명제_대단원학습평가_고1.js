@@ -9,8 +9,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "객관식",
     "choices": [
       "① $\\{3,6\\}$",
@@ -32,7 +32,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 2,
@@ -42,8 +43,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "두 집합 $A=\\{x \\mid x\\text{는 } 5\\text{의 약수}\\}$, $B=\\{a,b\\}$에 대하여 $A=B$일 때, $ab$의 값을 구하시오.\n(단, $a,b$는 실수)",
@@ -59,7 +60,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 3,
@@ -69,8 +71,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "두 집합 $A=\\{2,4\\}$, $B=\\{2,4,6,8\\}$에 대하여 $A\\subset X\\subset B$를 만족시키는 집합 $X$를 모두 구하시오.",
@@ -86,7 +88,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 4,
@@ -96,8 +99,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "객관식",
     "choices": [
       "① $n(U-A)=3$",
@@ -119,7 +122,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 5,
@@ -129,8 +133,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "객관식",
     "choices": [
       "① $A\\subset B$",
@@ -152,7 +156,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 6,
@@ -162,8 +167,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "학생 30명이 참여한 재난 안전 교육에서 방독면 사용 교육을 선택한 학생은 15명, 소화기 사용 교육을 선택한 학생은 9명, 두 교육을 모두 선택한 학생은 6명이다. 두 교육 중에서 어느 것도 선택하지 않은 학생은 몇 명인지 구하시오.",
@@ -179,7 +184,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 7,
@@ -189,8 +195,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "명제 ‘어떤 실수 $x$에 대하여 $x^2-ax+1\\le0$이다.’의 부정이 참이 되도록 하는 정수 $a$의 값을 모두 구하시오.",
@@ -206,7 +212,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 8,
@@ -216,8 +223,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "다음 명제의 참, 거짓을 판별하시오.\n(1) 순환소수는 유리수이다.\n(2) 직각삼각형의 빗변이 아닌 두 변의 길이의 합은 빗변의 길이와 같다.",
@@ -233,7 +240,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 9,
@@ -243,8 +251,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "명제 ‘$k-1<x\\le k+2$이면 $2<x<7$이다.’가 참이 되도록 하는 모든 자연수 $k$의 값의 합을 구하시오.",
@@ -260,7 +268,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 10,
@@ -270,8 +279,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "아래 그림에서 각 단계에 주어진 명제가 참이고 그 명제의 역이 거짓이면 왼쪽으로, 명제가 거짓이고 그 명제의 역이 참이면 오른쪽으로, 명제와 그 명제의 역이 모두 참이거나 모두 거짓이면 가운데로 이동한다. 각 단계에 주어진 명제가 다음과 같을 때, 지점 $A$에서 출발한 후 도착하는 지점을 구하시오.\n<img src=\"q10_source.png\" />\n[1단계] $ab<0$이면 $a<0$, $b>0$이다.\n[2단계] $a^2=b^2$이면 $a=b$이다.\n[3단계] $a,b$가 정수이면 $ab$가 정수이다.",
@@ -287,7 +296,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 11,
@@ -297,8 +307,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "$a,b$가 유리수일 때, 다음 [보기]의 조건 중 $a=b=0$이기 위한 필요조건이지만 충분조건이 아닌 것을 고르시오.\n[보기]\nㄱ. $a^2+b^2\\le0$\nㄴ. $a+b\\sqrt2=0$\nㄷ. $|a+b|=0$\nㄹ. $|a|+|b|>0$",
@@ -314,7 +324,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 12,
@@ -324,8 +335,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "2 이상의 자연수 $k$에 대하여 집합 $A_k=\\{x \\mid x\\text{는 } k\\text{의 배수}\\}$라고 할 때, $(A_4\\cap A_6)\\subset A_k$를 만족시키는 모든 자연수 $k$의 개수를 구하시오.",
@@ -341,7 +352,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 13,
@@ -351,8 +363,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "전체집합 $U$의 두 부분집합 $A,B$에 대하여 $n(U)=60$, $n(A)=40$, $n(B)=25$, $n(A-B)=16$일 때, $n((B-A)^c)$를 구하시오.",
@@ -368,7 +380,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 14,
@@ -378,8 +391,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
     "questionType": "단답형",
     "choices": [],
     "content": "전체집합 $U=\\{x \\mid x\\text{는 } 7\\text{ 이하의 자연수}\\}$의 두 부분집합 $A,B$에 대하여 $A-B=\\{1,2\\}$, $A\\cap B=\\{3\\}$, $B\\cap(A\\cap B)^c=\\{4,5\\}$일 때, 집합 $(A\\cup B)^c$의 모든 원소의 합을 구하시오.",
@@ -395,7 +408,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 5
   },
   {
     "id": 15,
@@ -405,8 +419,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "세 조건 $p:3\\le x\\le5$, $q:x>a-4$, $r:x<b+2$에 대하여 다음 물음에 답하시오.\n(1) 명제 $p\\to q$가 참일 때, 정수 $a$의 최댓값을 구하시오.\n(2) 명제 $p\\to r$가 거짓일 때, 정수 $b$의 최댓값을 구하시오.",
@@ -422,7 +436,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 16,
@@ -432,8 +447,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "$a,b,c$가 자연수일 때, 명제 ‘$a^2+b^2=c^2$이면 $a,b,c$ 중 적어도 하나는 짝수이다.’가 참임을 대우를 이용하여 증명하시오.",
@@ -449,7 +464,8 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   },
   {
     "id": 17,
@@ -459,8 +475,8 @@ window.questionBank = [
     "level": "고1",
     "category": "집합과 명제",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-05~06",
-    "standardUnit": "집합과 명제",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
     "questionType": "단답형",
     "choices": [],
     "content": "$x>0$, $y>0$일 때, $(x+y)\\left(\\dfrac{9}{x}+\\dfrac{4}{y}\\right)$의 최솟값을 구하시오.",
@@ -476,6 +492,7 @@ window.questionBank = [
       "공통수학2",
       "집합과 명제",
       "집합과 명제"
-    ]
+    ],
+    "standardUnitOrder": 6
   }
 ];
