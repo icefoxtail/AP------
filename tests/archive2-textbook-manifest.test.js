@@ -122,7 +122,7 @@ print(json.dumps({"rows": rows, "unmanifested": unmanifested, "duplicates": dupl
   assert.equal(result.status, 0, result.stderr);
   const built = JSON.parse(result.stdout);
   assert.deepEqual(built.unmanifested, []);
-  assert.equal(built.duplicates.length, 8);
+  assert.equal(built.duplicates.length, 9);
   const registered = new Map(textbookRows.map(row => [row.file, row]));
   let generated = 0;
   for (const [file, row] of Object.entries(built.rows)) {
