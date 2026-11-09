@@ -467,11 +467,11 @@
     reroll: (s) => { s.soQk = pick([2, 3, 4, 5], s.soQk); s.soQ2 = rint(2, 5); s.soQ1 = rint(1, s.soQ2 - 1); },
     model: (s) => { const m = frM(s); return Object.assign(m, { qk: s.soQk || 3, q2: s.soQ2 || 4, q1: s.soQ1 || 2, area: m.k * (m.r2 * m.r2 - m.r1 * m.r1) }); },
     draw(b, s, M, C) {
-      const prob = C.problem, k = prob ? M.qk : M.k, r1 = prob ? M.q1 : M.r1, r2 = prob ? M.q2 : M.r2, R1 = k * r1, R2 = k * r2, x = 360 / k, g = prob ? 0 : M.g;
+      const prob = C.problem, compactCaptions = !prob && b.W < 560 && !b.thumb, k = prob ? M.qk : M.k, r1 = prob ? M.q1 : M.r1, r2 = prob ? M.q2 : M.r2, R1 = k * r1, R2 = k * r2, x = 360 / k, g = prob ? 0 : M.g;
       const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, sw = R2 * Math.sin(rad(Math.min(x / 2, 90))), gapU = b.W < 560 && !b.thumb ? 4.2 : 1.4, shiftX = g * (sw + R1 * Math.sin(rad(Math.min(x / 2, 90))) + gapU); // 휴대폰은 작은 부채꼴과 띠 사이를 넓혀 길이 글자가 겹치지 않게
       const sb5 = sectorBox(R2, x, 0, false), A = { x0: sb5.x0, x1: sb5.x1 + shiftX, y0: sb5.y0 - 0.6, y1: Math.max(0.2, sb5.y1 + 0.2) };
       const fh = Math.sqrt(Math.max(0.01, (k * (r2 - r1)) ** 2 - (r2 - r1) ** 2));
-      const cb1 = { x0: -r2, x1: r2, y0: -r2 * Math.sin(G.PITCH0 * DEG), y1: fh * Math.cos(G.PITCH0 * DEG) + r1 * Math.sin(G.PITCH0 * DEG) }, padS = { l: 36, r: 36, t: 40, b: 30 };
+      const cb1 = { x0: -r2, x1: r2, y0: -r2 * Math.sin(G.PITCH0 * DEG), y1: fh * Math.cos(G.PITCH0 * DEG) + r1 * Math.sin(G.PITCH0 * DEG) }, padS = { l: 36, r: 36, t: 40, b: compactCaptions ? 58 : 30 };
       let all = A, off = null, ms = 1;
       if (!prob) {
         // 입체의 자리·배율은 작은 부채꼴을 다 뺀 상태(shiftX 최대)를 기준으로 정해, 막대를 움직여도 입체가 들쑥날쑥하지 않게 합니다.
@@ -501,8 +501,19 @@
         if (C.txt) {
           const e2 = pt(O, R2, a1), e1 = pt(O, R1, a1);
           T(b, { x: (e1.x + e2.x) / 2, y: (e1.y + e2.y) / 2 }, `${k * (r2 - r1)} cm`, SKY, { dx: 34, size: 16 });
-          T(b, pt(O, R2, -90), `큰 호 = 2π×${r2} = ${2 * r2}π`, SKY, { dy: 18, size: 15 });
-          T(b, pt(Os, R1, -90), `작은 호 = 2π×${r1} = ${2 * r1}π`, AMB, { dy: shiftX > 0.4 ? (b.W < 560 ? 42 : 30) : 18, size: 14 }); // 빠져나온 작은 부채꼴의 호 글자는 띠의 변 길이(예: 6 cm)와 같은 높이라 더 아래로
+          const bigArcText = `큰 호 = 2π×${r2} = ${2 * r2}π`, smallArcText = `작은 호 = 2π×${r1} = ${2 * r1}π`;
+          if (compactCaptions) {
+            // 호가 가로로 가까워져도 두 식은 큰 호 아래의 서로 다른 줄에서 읽습니다.
+            const anchor = b.toS(pt(O, R2, -90));
+            const halfWidth = Math.max(G.textW(bigArcText, G.FS(b, 15)), G.textW(smallArcText, G.FS(b, 14))) / 2;
+            const labelX = clamp(anchor.x, b.insets.left + 8 + halfWidth, b.W - b.insets.right - 8 - halfWidth);
+            const labelAt = b.toW(labelX, anchor.y);
+            T(b, labelAt, bigArcText, SKY, { dy: 18, size: 15 });
+            T(b, labelAt, smallArcText, AMB, { dy: 40, size: 14 });
+          } else {
+            T(b, pt(O, R2, -90), bigArcText, SKY, { dy: 18, size: 15 });
+            T(b, pt(Os, R1, -90), smallArcText, AMB, { dy: shiftX > 0.4 ? 30 : 18, size: 14 });
+          }
           { const eL = pt(O, R2, a0); T(b, { x: eL.x * 0.5, y: eL.y * 0.5 }, `R = ${R2}`, SKY, { dx: -6, dy: 0, size: 14, align: 'right' }); }
           const rr = Math.min(R1 * 0.36, px(b, 30));
           b.arc(O, rr, rad(a0), rad(a1), { sector: true, fill: ROSE, fillAlpha: 0.3, color: ROSE, width: 2.2 });

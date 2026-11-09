@@ -492,7 +492,9 @@
   const tsG = (a, b) => {
     // 점 P=(0,0), 할선은 x축 위. 원의 중심은 현 AB 의 수직이등분선 위(위쪽)에 둡니다.
     const A = pt(a, 0), B = pt(b, 0), t = Math.sqrt(a * b), Cc = pt(0, 0), rr = (b - a) / 2, yc = -rr * 0.9, c = pt((a + b) / 2, yc), r = Math.hypot(rr, yc);
-    const d = Math.hypot(c.x, c.y), th = Math.atan2(c.y, c.x) / DEG, al = Math.acos(clamp(r / d, -1, 1)) / DEG, Tt = add(Cc, mul(pt(Math.cos((th - al) * DEG), Math.sin((th - al) * DEG)), Math.sqrt(d * d - r * r)));
+    // 직각삼각형 PCT에서 P의 각은 sin(∠CPT)=r/PC로 구합니다.
+    // 중심 C의 각을 사용하면 PT 길이는 맞아도 T가 원 위에 놓이지 않습니다.
+    const d = Math.hypot(c.x, c.y), th = Math.atan2(c.y, c.x) / DEG, al = Math.asin(clamp(r / d, -1, 1)) / DEG, Tt = add(Cc, mul(pt(Math.cos((th - al) * DEG), Math.sin((th - al) * DEG)), Math.sqrt(d * d - r * r)));
     return { a, b, t, A, B, P: Cc, T: Tt, c, r, pt: Math.sqrt(d * d - r * r) };
   };
   const tsc = {

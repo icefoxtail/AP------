@@ -272,19 +272,25 @@
       const sep = C.problem ? 0 : C.review ? (st === 1 ? 0.7 : st === 4 ? 0 : 0.7) : s.phSep;
       const W = 2 * k * 1.5 + 0.9, off = hxOf(s, W * sep);
       const showTop = !C.problem && sep > 0.01;
+      const compact = b.W < 560 && !C.problem && !C.thumb;
       const L = [];
       if (C.txt && !C.problem) {
         if (st === 1 || st === 4) L.push({ t: '윗밑면 ∥ 아랫밑면 (서로 평행)', c: SKY, size: 15 });
         if (st === 2 || st === 4) L.push({ t: `옆면은 사다리꼴 ${n}개`, c: AMB, size: 15 });
-        if (st === 3 || st === 4) L.push({ t: `면 ${n}+2=${c.F} · 모서리 ${n}×3=${c.E} · 꼭짓점 ${n}×2=${c.V}`, c: st === 3 ? AMB : 'ink', size: 14 });
+        if (st === 3 || (st === 4 && !compact)) L.push({ t: `면 ${n}+2=${c.F} · 모서리 ${n}×3=${c.E} · 꼭짓점 ${n}×2=${c.V}`, c: st === 3 ? AMB : 'ink', size: 14 });
       }
       // 화면 틀: 지금 그려지는 것(각뿔대 + 떼어 낸 윗 각뿔)만 담습니다 — 각뿔대가 작아지지 않게
       const offFit = sep < 0.7 ? hxOf(s, W * 0.7) : off; // 처음 상태(0.7)보다 덜 떼었을 때는 처음 틀을 그대로 써서 막대를 움직여도 각뿔대 크기가 출렁이지 않게
-      D.fitPts(!C.problem ? S.V.concat(T.V.map((p) => add3(p, offFit)), C.txt ? [add3(add3(T.ctr, offFit), v3(0, 0, 1.7))] : []) : S.V, { t: C.problem ? 30 : topFor(L), b: 40, l: 40, r: 40 });
+      // 휴대폰은 도형 위의 이름을 픽셀 간격으로 놓습니다. 이름을 위한 먼 3차원 점이나
+      // 패널에도 있는 개수 식 때문에 원래 각뿔대까지 축소하지 않습니다.
+      D.fitPts(!C.problem ? S.V.concat(T.V.map((p) => add3(p, offFit)), C.txt && !compact ? [add3(add3(T.ctr, offFit), v3(0, 0, 1.7))] : []) : S.V, { t: C.problem ? 30 : topFor(L), b: compact ? 24 : 40, l: 40, r: 40 });
       // 윗 각뿔(잘려 나간 부분)
       if (showTop) {
         drawPoly(D, T, { off, face: (fi, vis) => (vis ? { c: VIO, a: 0.18 } : null), edge: () => ({ color: VIO, width: 2.6, alpha: 0.9 }) });
-        if (C.txt) D.label(add3(add3(T.ctr, off), v3(0, 0, 1.7)), '잘라 낸 각뿔', { color: VIO, size: 14, at: [[0, 0]] });
+        if (C.txt) {
+          const nameAt = compact ? T.V.map((p) => add3(p, off)).reduce((a, p) => D.P(p).y > D.P(a).y ? p : a) : add3(add3(T.ctr, off), v3(0, 0, 1.7));
+          D.label(nameAt, '잘라 낸 각뿔', { color: VIO, size: 14, at: [[0, compact ? -14 : 0]] });
+        }
       }
       const zTop = Math.max(...S.V.map((p) => p.z));
       const topF = S.F.findIndex((f) => f.n.z > 0.999), botF = S.F.findIndex((f) => f.n.z < -0.999);

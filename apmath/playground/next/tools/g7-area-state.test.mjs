@@ -412,3 +412,144 @@ await test('ratio current-question captions clear the landscape toolbar', async 
     assert.ok(caption.y1<=H-50, `${m}:${n}/h${h}: given area and ratio stay above the actual toolbar row`);
   }
 });
+
+function screenBounds(board, points) {
+  const q = points.map((p) => board.toS(p));
+  return { x0: Math.min(...q.map(p => p.x)), x1: Math.max(...q.map(p => p.x)), y0: Math.min(...q.map(p => p.y)), y1: Math.max(...q.map(p => p.y)) };
+}
+function visibleDrawing(lab, result, width, height, bottom) {
+  for (const path of result.paths) for (const p of path.points) {
+    const q = lab.board.toS(p);
+    assert.ok(q.x >= 0 && q.x <= width && q.y >= 0 && q.y <= height - bottom, `clipped path ${JSON.stringify(q)}`);
+  }
+  for (const label of result.labels) {
+    const box = labelBox(label);
+    assert.ok(box.x0 >= 0 && box.x1 <= width && box.y0 >= 0 && box.y1 <= height - bottom, `clipped label ${label.text}: ${JSON.stringify(box)}`);
+  }
+}
+
+await test('c1-trap initial mobile trapezoid keeps its sides clear of the height label throughout rotation', async (t) => {
+  const lab = await load();
+  for (const [W, H] of [[390, 326], [360, 307]]) for (const bottom of [58, 60]) {
+    const scene = lab.go('c1-trap'); lab.board.resize(W, H); lab.board.setInsets({ top: 0, right: 0, bottom, left: 0 });
+    const initial = lab.draw(), shape = initial.paths.find(p => p.options.fill === 'sky');
+    const box = screenBounds(lab.board, shape.points);
+    assert.ok(box.x1 - box.x0 >= 120 && box.y1 - box.y0 >= 70, `${W}/${bottom}: trapezoid ${box.x1-box.x0}×${box.y1-box.y0}px is too small for its givens`);
+    t.diagnostic(`c1-trap ${W}×${H}, inset ${bottom}: ${(box.x1-box.x0).toFixed(2)}×${(box.y1-box.y0).toFixed(2)}px`);
+    assert.equal(initial.paths.filter(p => p.options.fill === 'green').length, 0, 'initial inquiry shows the original without revealing the rotated copy');
+    assert.equal(area(shape.points), 42);
+    const checkHeight = (drawing) => {
+      const height = drawing.labels.find(x => x.text === `높이 ${lab.s.c1H}cm`);
+      const textBox = labelBox({ ...height, width: lab.api.textW(height.text, height.size) });
+      const points = scene.ar.geo(scene.ar.model(lab.s)).trap.map(p => lab.board.toS(p));
+      for (let i = 0; i < points.length; i++) assert.equal(segmentHitsBox(points[i], points[(i+1)%points.length], { x0: textBox.x0-3, x1: textBox.x1+3, y0: textBox.y0-3, y1: textBox.y1+3 }), false, 'given height must not erase a trapezoid side');
+      assert.ok(textBox.x0 >= 0 && textBox.x1 <= W && textBox.y0 >= 0 && textBox.y1 <= H-bottom);
+      visibleDrawing(lab, drawing, W, H, bottom);
+    };
+    checkHeight(initial);
+    scene.actions(lab.s).find(a => a.id === 'play').run(lab.s); scene.tick(lab.s, 3, lab);
+    assert.equal(lab.s.c1T, .5); checkHeight(lab.draw());
+    scene.tick(lab.s, 3, lab); assert.equal(lab.s.c1T, 1); assert.equal(lab.s.playing, false);
+    const final = lab.draw(); checkHeight(final);
+    const copy = final.paths.find(p => p.options.fill === 'green');
+    assert.ok(copy && Math.abs(area(copy.points)-42)<1e-9, 'rotated copy has the same area');
+    assert.ok(Math.abs(area(shape.points)+area(copy.points)-(4+10)*6)<1e-9, 'two trapezoids make the stated parallelogram area');
+    assert.equal(final.value.readouts.length, 3); assert.ok(final.value.formula.includes('42'));
+    scene.actions(lab.s).find(a => a.id === 'reset').run(lab.s);
+    assert.deepEqual(lab.draw().paths, initial.paths);
+    for (const [a, B, h] of [[2, 12, 2], [6, 6, 8], [2, 6, 8]]) {
+      Object.assign(lab.s, { c1A: a, c1B: B, c1H: h, c1T: 0 }); checkHeight(lab.draw());
+      assert.equal(scene.ar.model(lab.s).S, (a+B)*h/2);
+    }
+    lab.go('c1-trap'); lab.board.setInsets({ top: 0, right: 0, bottom, left: 0 });
+    assert.deepEqual(lab.draw().paths, initial.paths, 'reentry restores the original inquiry');
+    lab.tab='review'; lab.s.step=1; assert.equal(lab.draw().value.formula, null);
+    lab.s.step=3; assert.ok(lab.draw().value.formula.includes('42'));
+  }
+});
+
+await test('c2-frame initial mobile triangle stays distinguishable from its corner markers and drag handles', async (t) => {
+  const lab = await load();
+  // 58px is the shell reservation contract; 60px reproduces the baseline
+  // Chromium screenshots, where the 360px rectangle was only 28.16×21.12px.
+  for (const [W, H] of [[390, 326], [360, 307]]) for (const bottom of [58, 60]) {
+    const scene = lab.go('c2-frame');
+    lab.board.resize(W, H); lab.board.setInsets({ top: 0, right: 0, bottom, left: 0 });
+    const initial = lab.draw(), main = initial.paths.find(p => p.options.fill === 'sky' && p.points.length === 3);
+    assert.ok(main && main.options.fillAlpha > 0, 'the original triangle has a visible fill before animation');
+    const box = screenBounds(lab.board, main.points);
+    assert.ok(box.x1 - box.x0 >= 150 && box.y1 - box.y0 >= 120, `${W}/${bottom}: original triangle only ${box.x1 - box.x0}×${box.y1 - box.y0}px`);
+    t.diagnostic(`c2-frame ${W}×${H}, inset ${bottom}: triangle bounds ${(box.x1 - box.x0).toFixed(2)}×${(box.y1 - box.y0).toFixed(2)}px`);
+    for (const name of ['A', 'B', 'C', '①', '②', '③', '가로 8칸', '6칸']) assert.ok(initial.texts.includes(name), `missing original condition ${name}`);
+    const handles = lab.board.handles;
+    assert.deepEqual(Array.from(handles, h => h.id), ['A', 'B']);
+    assert.ok(Math.hypot(handles[0].x - handles[1].x, handles[0].y - handles[1].y) >= 70, 'drag halos must not cover the original triangle together');
+    visibleDrawing(lab, initial, W, H, bottom);
+    assert.equal(lab.s.c2T, 0); assert.equal(lab.s.playing, false); assert.equal(lab.s.revealed, false);
+    assert.equal(initial.value.readouts.length, 3, 'the existing calculation panel remains available');
+    assert.ok(initial.value.formula.includes('19'), 'the correct calculation remains in the inquiry panel');
+    assert.ok(Math.abs(area(main.points) - 19) < 1e-9);
+    scene.actions(lab.s).find(a => a.id === 'play').run(lab.s); scene.tick(lab.s, 2, lab);
+    assert.equal(lab.s.c2T, .5);
+    const middle = lab.draw(); visibleDrawing(lab, middle, W, H, bottom);
+    scene.tick(lab.s, 2, lab); assert.equal(lab.s.c2T, 1); assert.equal(lab.s.playing, false);
+    const final = lab.draw(); visibleDrawing(lab, final, W, H, bottom);
+    const pieces = final.paths.filter(p => p.options.fill === 'rose');
+    assert.equal(pieces.length, 3);
+    assert.ok(Math.abs(pieces.reduce((sum, p) => sum + area(p.points), 0) + area(main.points) - 48) < 1e-9, 'separating corners preserves the original rectangle area');
+    scene.actions(lab.s).find(a => a.id === 'reset').run(lab.s);
+    assert.deepEqual(lab.draw().paths, initial.paths, 'reset restores the first drawing');
+    const dragA = lab.board.handles.find(h => h.id === 'A'), dragB = lab.board.handles.find(h => h.id === 'B');
+    dragA.drag({ x: 0, y: 4 }); dragB.drag({ x: 5, y: 6 });
+    const dragged = lab.draw(), M = scene.ar.model(lab.s), triangle = dragged.paths.find(p => p.options.fill === 'sky');
+    assert.equal(M.a, 4); assert.equal(M.x, 5);
+    assert.ok(Math.abs(area(triangle.points) - exactValue(scene.ar.prob(M).choices.find(c => c.ok).t)) < 1e-9, 'dragged geometry and current answer agree');
+    visibleDrawing(lab, dragged, W, H, bottom);
+    lab.go('c2-frame'); lab.board.setInsets({ top: 0, right: 0, bottom, left: 0 });
+    assert.deepEqual(lab.draw().paths, initial.paths, 'reentry with the shell insets restores the original drawing');
+  }
+});
+
+await test('b5-ratio initial mobile triangles leave separate readable S₁ and S₂ regions', async (t) => {
+  const lab = await load();
+  for (const [W, H] of [[390, 326], [360, 307]]) for (const bottom of [58, 60]) {
+    const scene = lab.go('b5-ratio'); lab.board.resize(W, H); lab.board.setInsets({ top: 0, right: 0, bottom, left: 0 });
+    const initial = lab.draw(), pieces = initial.paths.filter(p => ['sky', 'rose'].includes(p.options.fill));
+    assert.equal(pieces.length, 2);
+    const box = screenBounds(lab.board, pieces.flatMap(p => p.points));
+    assert.ok(box.y1 - box.y0 >= 130, `${W}/${bottom}: initial triangle height ${box.y1 - box.y0}px crowds both area labels`);
+    t.diagnostic(`b5-ratio ${W}×${H}, inset ${bottom}: triangle bounds ${(box.x1 - box.x0).toFixed(2)}×${(box.y1 - box.y0).toFixed(2)}px`);
+    const marks = initial.labels.filter(x => ['S₁', 'S₂'].includes(x.text)).map(x => labelBox({ ...x, width: lab.api.textW(x.text, x.size) }));
+    assert.equal(marks.length, 2);
+    assert.ok(marks[0].x1 + 4 <= marks[1].x0, 'two coloured area labels keep a readable gap');
+    visibleDrawing(lab, initial, W, H, bottom);
+    assert.equal(lab.s.b5T, 0); assert.equal(lab.s.playing, false); assert.equal(lab.s.revealed, false);
+    assert.equal(initial.value.readouts.length, 4, 'all area calculations remain in the existing panel');
+    assert.ok(Math.abs(area(pieces[0].points) - 12) < 1e-9 && Math.abs(area(pieces[1].points) - 8) < 1e-9);
+    for (const progress of [.5, 1]) {
+      lab.s.b5T = progress; const changed = lab.draw(); visibleDrawing(lab, changed, W, H, bottom);
+      const moved = changed.paths.filter(p => ['sky', 'rose'].includes(p.options.fill));
+      assert.ok(Math.abs(moved.reduce((sum, p) => sum + area(p.points), 0) - 20) < 1e-9);
+    }
+    scene.actions(lab.s).find(a => a.id === 'reset').run(lab.s);
+    assert.deepEqual(lab.draw().paths, initial.paths, 'reset restores the two original triangles');
+    lab.go('b5-ratio'); lab.board.setInsets({ top: 0, right: 0, bottom, left: 0 });
+    assert.deepEqual(lab.draw().paths, initial.paths, 'reentry with the shell insets restores the initial ratio diagram');
+  }
+});
+
+await test('mobile caption allocation preserves problem and review conditions and clears common wide insets', async () => {
+  const lab = await load();
+  for (const id of ['c2-frame', 'b5-ratio']) for (const [W, H, bottom, right] of [[390, 309, 58, 0], [360, 291, 60, 0], [820, 420, 60, 0], [683, 455, 60, 16], [1039, 623, 60, 16]]) {
+    const scene = lab.go(id); lab.board.resize(W, H); lab.board.setInsets({ top: 0, right, bottom, left: 0 });
+    lab.tab = 'problem'; const problem = lab.draw(); visibleDrawing(lab, problem, W, H, bottom);
+    assert.equal(lab.s.revealed, false);
+    const answer = exactValue(scene.ar.prob(scene.ar.model(lab.s)).choices.find(c => c.ok).t);
+    assert.equal(answer, id === 'c2-frame' ? 19 : 12);
+    lab.tab = 'review'; lab.s.step = 1; const first = lab.draw(); visibleDrawing(lab, first, W, H, bottom);
+    assert.equal(first.value.formula, null, 'first review step does not reveal the final calculation');
+    lab.s.step = call(scene.steps, lab.s).length;
+    const final = lab.draw(); visibleDrawing(lab, final, W, H, bottom);
+    assert.ok(final.value.formula.includes(String(answer)), 'final review retains the current calculation in its panel');
+  }
+});

@@ -165,3 +165,75 @@ for (const id of ['f1-star', 'f1-ss2', 'f1-ex22', 'f1-ring', 'f1-semis', 'f1-tri
     assert.ok(negative.failures.some(f => f.code === 'essential-contour-missing-or-clipped'));
   });
 }
+
+// Independent Cartesian tangent fixture. The model and painted geometry can be
+// corrupted separately to prove that neither correct numbers nor ink suffice.
+function tangentFixture({ theme = 'board', missing = [], wrongModel = false, wrongPaint = false, tab = 'explore' } = {}) {
+  const P = { x: 0, y: 0 }, A = { x: 4, y: 0 }, B = { x: 9, y: 0 }, c = { x: 6.5, y: -2.25 };
+  const r = Math.hypot(2.5, 2.25), d2 = c.x ** 2 + c.y ** 2, power = d2 - r * r;
+  const turn = r * Math.sqrt(power) / d2;
+  const correct = { x: power / d2 * c.x + turn * c.y, y: power / d2 * c.y - turn * c.x };
+  const oldAngle = Math.atan2(c.y, c.x) - Math.acos(r / Math.sqrt(d2));
+  const old = { x: Math.sqrt(power) * Math.cos(oldAngle), y: Math.sqrt(power) * Math.sin(oldAngle) };
+  const T = wrongModel ? old : correct, painted = wrongPaint ? old : T;
+  const g = { P, A, B, T, c, r, a: 4, b: 9, t: 6 };
+  const W = 360, H = 340, minX = -1, maxX = c.x + r + 1, minY = Math.min(c.y - r, old.y) - 1, maxY = 1;
+  const scale = Math.min((W - 40) / (maxX - minX), (H - 40) / (maxY - minY));
+  const project = p => ({ x: 20 + (p.x - minX) * scale, y: 20 + (p.y - minY) * scale });
+  const segmentDistance = (p, a, b) => {
+    const dx = b.x - a.x, dy = b.y - a.y, t = Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / (dx * dx + dy * dy)));
+    return Math.hypot(p.x - a.x - t * dx, p.y - a.y - t * dy);
+  };
+  const data = new Uint8ClampedArray(W * H * 4), paper = theme === 'paper';
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const p = { x: (x - 20) / scale + minX, y: (y - 20) / scale + minY };
+    const d = Math.hypot(p.x - c.x, p.y - c.y);
+    let rgba = paper ? [246, 248, 250, 255] : [14, 28, 24, 255];
+    if (d < r) rgba = paper ? [235, 242, 247, 255] : [17, 34, 31, 255];
+    const circleInk = !missing.includes('circle') && Math.abs(d - r) * scale <= 1.8;
+    const tangentInk = !missing.includes('tangent') && segmentDistance(p, P, painted) * scale <= 1.8;
+    const secantInk = !missing.includes('secant') && segmentDistance(p, P, B) * scale <= 1.8;
+    const dotInk = [P, A, B, painted].some(q => Math.hypot(p.x - q.x, p.y - q.y) * scale <= 4);
+    if (circleInk || tangentInk || secantInk || dotInk) rgba = paper ? [29, 42, 47, 255] : [230, 239, 237, 255];
+    data.set(rgba, (y * W + x) * 4);
+  }
+  const canvas = { width: W, height: H, getContext: () => ({ getImageData: () => ({ data }) }), getBoundingClientRect: () => ({ left: 0, top: 0, width: W, height: H }) };
+  return { innerWidth: W, innerHeight: H, lab: { id: 'g9-circle', scene: { id: 'c6-8', ci: { model: () => ({ g }) } }, tab, s: {}, board: { canvas, W, H, toS: project } } };
+}
+
+test('c6-8 original circle, secant and true tangent pass in both displayed themes', () => {
+  for (const theme of ['paper', 'board']) for (const tab of ['explore', 'problem', 'review']) {
+    const out = evaluate(tangentFixture({ theme, tab }));
+    assert.equal(out.applicable, true); assert.equal(out.status, 'PASS', JSON.stringify(out));
+    assert.equal(out.checks.filter(check => check.kind === 'essential-geometry').length, 5);
+  }
+});
+
+test('c6-8 baseline wrong contact fails despite a matching numeric tangent-secant product', () => {
+  const out = evaluate(tangentFixture({ wrongModel: true }));
+  assert.equal(out.status, 'FAIL');
+  assert.ok(out.checks.find(check => check.name === 'PT-squared-equals-PA-times-PB').pass);
+  assert.ok(out.failures.some(failure => failure.detail === 'T-on-original-circle'));
+  assert.ok(out.failures.some(failure => failure.detail === 'radius-perpendicular-to-PT'));
+});
+
+for (const missing of ['circle', 'tangent', 'secant']) {
+  test(`c6-8 hiding only the original ${missing} fails even with correct geometry and remaining ink`, () => {
+    const out = evaluate(tangentFixture({ missing: [missing] }));
+    assert.equal(out.status, 'FAIL', JSON.stringify(out));
+    assert.ok(out.checks.filter(check => check.kind === 'essential-geometry').every(check => check.pass));
+    assert.ok(out.failures.some(failure => failure.code === 'essential-contour-missing-or-clipped'));
+  });
+}
+
+test('c6-8 a correct model cannot conceal painting the old detached tangent', () => {
+  const out = evaluate(tangentFixture({ wrongPaint: true }));
+  assert.equal(out.status, 'FAIL');
+  assert.ok(out.failures.some(failure => failure.detail === 'original-tangent-PT'));
+});
+
+test('c6-8 unavailable actual geometry fails explicitly', () => {
+  const window = tangentFixture(); delete window.lab.scene.ci;
+  const out = evaluate(window);
+  assert.equal(out.status, 'FAIL'); assert.equal(out.failures[0].code, 'tangent-model-unavailable');
+});

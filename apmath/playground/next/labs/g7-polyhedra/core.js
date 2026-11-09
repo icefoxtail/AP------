@@ -262,7 +262,8 @@
   const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, onInput: o.onInput, format: o.format || ((v) => fmtN(v)) });
   const VIEW_PARAMS = {
     phYaw: P('좌우로 돌려 보기', -135, 135, 1, -30, { color: 'muted', format: (v) => Math.round(v) + '°' }),
-    phPitch: P('위아래로 기울여 보기', 8, 80, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°', onInput: (s, lab) => { if (s.phPmin != null && s.phPitch < s.phPmin) { s.phPitch = s.phPmin; try { lab.refs.controls.querySelector('input[aria-label^="위아래"]').value = s.phPmin; } catch (e) { /* 손잡이 위치만 못 맞춰도 숫자는 맞음 */ } } } })
+    // 전개도의 기본 시점(84°)도 막대 값으로 그대로 표현하고 다시 선택할 수 있게 합니다.
+    phPitch: P('위아래로 기울여 보기', 8, 84, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°', onInput: (s, lab) => { if (s.phPmin != null && s.phPitch < s.phPmin) { s.phPitch = s.phPmin; try { lab.refs.controls.querySelector('input[aria-label^="위아래"]').value = s.phPmin; } catch (e) { /* 손잡이 위치만 못 맞춰도 숫자는 맞음 */ } } } })
   };
   const VIEW = ['phYaw', 'phPitch'];
 

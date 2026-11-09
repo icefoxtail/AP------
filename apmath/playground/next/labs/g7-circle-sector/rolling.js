@@ -972,7 +972,9 @@
         s.cfg = { ...spec.base };
         s.rlSeed = 1; s.rlPick = -1;
         s.rlReviewQuestion = false; s.rlQuestionScene = spec.id; s.rlQuestionKey = null; s.rlQuestionProgress = null; s.rlPrincipleStep = 1;
-        resetRun(s, !!(lab && s === lab.s));
+        // First show the original figure and givens. The explicit play action
+        // starts the existing demonstration after the student has inspected it.
+        resetRun(s, false);
         syncSliders(spec, s);
       },
       controls: () => ['rlT'].concat((spec.sliders || []).filter((sl) => !sl.hidden).map((sl) => sl.param)),

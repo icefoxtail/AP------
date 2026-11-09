@@ -53,7 +53,9 @@
       const c2 = C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : seg01(C.t, 0.34, 0.67);
       const c3 = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : seg01(C.t, 0.67, 1);
       const box = bboxOf([A, B, Cp, D, c1 > 0 ? E : D]);
-      fit(b, box, { t: 50, b: 92, l: 40, r: 40 });
+      const compact = !C.thumb && b.W < 560 && (C.problem || C.review);
+      // 문제/풀이 문구는 패널에 있습니다. 짧은 무대에서는 원래 삼각형에 공간을 줍니다.
+      fit(b, box, compact ? { t: 32, b: 34, l: 34, r: 34 } : { t: 50, b: 92, l: 40, r: 40 });
       fillPoly(b, [A, B, Cp], 'sky', 0.1);
       poly(b, [A, B, Cp], 'ink', 3.4);
       line(b, Cp, D, 'ink', 3.4);
@@ -63,10 +65,10 @@
         if (c1 > 0.95) { par(b, A, B, 1, 'green', 0.5); par(b, Cp, E, 1, 'green', 0.55); }
       }
       // 내각
-      const R = 30;
+      const R = compact ? 20 : 30;
       if (!C.problem || true) {
-        ang(b, A, B, Cp, { color: 'sky', rings: 1, r: R, label: C.problem ? dg(a) : dg(a), size: 16 });
-        ang(b, B, Cp, A, { color: 'sky', rings: 2, r: R, label: dg(bb), size: 16 });
+        ang(b, A, B, Cp, { color: 'sky', rings: 1, r: R, label: dg(a), size: 16, ...(compact ? { labelDist: 34 } : {}) });
+        ang(b, B, Cp, A, { color: 'sky', rings: 2, r: R, label: dg(bb), size: 16, ...(compact ? { labelDist: 34 } : {}) });
       }
       if (!C.problem) ang(b, Cp, Cp.x > A.x ? A : B, Cp.x > A.x ? B : A, { color: 'sky', r: 24, label: C.review && C.step < 3 ? '' : dg(c), size: 15, noMark: false });
       else ang(b, Cp, B, A, { color: 'sky', r: 24, size: 15 });
@@ -91,6 +93,7 @@
           s.pgEb = nb; s.pgEa = na;
         } });
         else b.point(A, { color: 'amber', r: 6.5 });
+        if (compact) return;
         const yb = 0;
         let row = '', col = 'amber';
         if (C.problem) row = '외각 x는 몇 도일까요?';
@@ -155,9 +158,10 @@
     draw(b, s, M, C) {
       const { a, b: bb, c, d, e, pts } = M, { A, B, C: Cc, D, E, P: Pp, S } = pts;
       const all = [A, B, Cc, D, E];
+      const compact = !C.thumb && b.W < 560 && (C.problem || C.review);
       // 좁은 가로 화면에서 긴 풀이 식이 오른쪽 아래 도구막대 뒤로 들어가지 않게 합니다.
       const footerReserve = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 44 : 0;
-      fit(b, bboxOf(all), { t: 58, b: 112 + footerReserve, l: 62, r: 62 });
+      fit(b, bboxOf(all), compact ? { t: 48, b: 48, l: 62, r: 62 } : { t: 58, b: 112 + footerReserve, l: 62, r: 62 });
       const cen = pt(all.reduce((q, p) => q + p.x, 0) / 5, all.reduce((q, p) => q + p.y, 0) / 5);
       const st = C.step;
       const lines = [[A, Cc], [A, D], [B, D], [B, E], [Cc, E]];
@@ -169,7 +173,7 @@
       tips.forEach(([V, p, q, val, nm], i) => {
         const isX = i === 4 && (C.problem || (C.review && st < 3));
         const col = isX ? 'amber' : 'sky';
-        const r = ang(b, V, p, q, { color: col, r: 26, rings: 0, size: 16, fa: 0.16 });
+        const r = ang(b, V, p, q, { color: col, r: compact ? 18 : 26, rings: 0, size: 16, fa: 0.16 });
         const u = unit(sub(cen, V));
         const lab = isX ? `${nm} x` : `${nm} ${val}°`;
         const dist = 24 + G.textW(lab, 16) * 0.4;
@@ -187,6 +191,7 @@
         ang(b, S, Pp, A, { color: 'rose', r: 22 });
         T(b, S, `b+d=${bb + d}°`, { dx: -12, dy: -30, size: 15, color: 'rose', align: 'right' });
       }
+      if (compact) return;
       const yb = Math.max(D.y, Cc.y);
       let row = '', col = 'amber';
       if (C.problem) row = '별 모양에서 ∠E = x 의 크기는?';
@@ -252,7 +257,8 @@
     draw(b, s, M, C) {
       const { a, bb, c, k, x, g } = M, { A, B, C: Cp, X, extB, extC, F } = g;
       const pts = [A, B, Cp, X].concat(extB ? [extB, extC] : []).concat(F ? [F] : []);
-      fit(b, bboxOf(pts), { t: 50, b: 92, l: 40, r: 40 });
+      const compact = !C.thumb && b.W < 560 && (C.problem || C.review);
+      fit(b, bboxOf(pts), compact ? { t: 30, b: 32, l: 34, r: 34 } : { t: 50, b: 92, l: 40, r: 40 });
       const st = C.step, cen = pt((A.x + B.x + Cp.x) / 3, (A.y + B.y + Cp.y) / 3);
       const sh = (n) => (C.problem ? true : st >= n);
       fillPoly(b, [A, B, Cp], 'sky', 0.1);
@@ -263,22 +269,23 @@
       // 이등분선 (초록)
       if (sh(1) || C.full) { line(b, B, X, 'green', 3.6); line(b, Cp, X, 'green', 3.6); }
       // 반으로 나뉜 각 표시 (● = 1개, × = 2개)
-      const r1 = 30, r2 = 36;
+      const r1 = compact ? 14 : 30, r2 = compact ? 18 : 36;
+      const halfLabel = compact ? { size: 12, labelDist: 27 } : { size: 17 };
       if (sh(1) || C.full) {
         if (k === 1) {
-          ang(b, B, Cp, X, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 }); ang(b, B, X, A, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 });
-          ang(b, Cp, X, A, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, B, X, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 });
+          ang(b, B, Cp, X, { color: 'sky', rings: 1, r: r1, label: '●', ...halfLabel }); ang(b, B, X, A, { color: 'sky', rings: 1, r: r1, label: '●', ...halfLabel });
+          ang(b, Cp, X, A, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel }); ang(b, Cp, B, X, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel });
         } else if (k === 2) {
-          ang(b, B, Cp, X, { color: 'rose', rings: 1, r: r1, label: '●', size: 17 }); ang(b, B, X, extB, { color: 'rose', rings: 1, r: r1, label: '●', size: 17 });
-          ang(b, Cp, B, X, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, X, extC, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 });
+          ang(b, B, Cp, X, { color: 'rose', rings: 1, r: r1, label: '●', ...halfLabel }); ang(b, B, X, extB, { color: 'rose', rings: 1, r: r1, label: '●', ...halfLabel });
+          ang(b, Cp, B, X, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel }); ang(b, Cp, X, extC, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel });
         } else {
-          ang(b, B, Cp, X, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 }); ang(b, B, X, A, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 });
-          ang(b, Cp, A, X, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, X, F, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 });
+          ang(b, B, Cp, X, { color: 'sky', rings: 1, r: r1, label: '●', ...halfLabel }); ang(b, B, X, A, { color: 'sky', rings: 1, r: r1, label: '●', ...halfLabel });
+          ang(b, Cp, A, X, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel }); ang(b, Cp, X, F, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel });
         }
       }
-      ang(b, A, B, Cp, { color: 'sky', r: 30, label: dg(a), size: 16 });
+      ang(b, A, B, Cp, { color: 'sky', r: compact ? 20 : 30, label: dg(a), size: 16, ...(compact ? { labelDist: 34 } : {}) });
       // 구하는 각 x
-      ang(b, X, B, Cp, { color: 'amber', r: 32, label: C.problem || (C.review && st < 3) ? 'x' : dg(x), size: 18, fa: 0.16 });
+      ang(b, X, B, Cp, { color: 'amber', r: compact ? 16 : 32, label: C.problem || (C.review && st < 3) ? 'x' : dg(x), size: 18, fa: 0.16, ...(compact ? { labelDist: 30 } : {}) });
       if (C.txt) {
         [A, B, Cp].forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cen, 'ABC'[i], { size: 18 }); });
         b.point(X, { color: 'amber', r: 5 });
@@ -288,6 +295,7 @@
           const nb = clamp(Math.round(bAng / 2) * 2, 40, 60); const na = clamp(Math.round((180 - nb - cAng) / 2) * 2, 40, 90);
           s.pgKb = nb; s.pgKa = na;
         } });
+        if (compact) return;
         const hb = k === 2 ? 90 - bb / 2 : bb / 2, hc = k === 1 ? c / 2 : k === 2 ? 90 - c / 2 : 90 - c / 2 + 0; // 호
         void hc;
         const o = k === 1 ? { p: bb / 2, q: c / 2 } : k === 2 ? { p: 90 - bb / 2, q: 90 - c / 2 } : { p: bb / 2, q: (a + bb) / 2 };

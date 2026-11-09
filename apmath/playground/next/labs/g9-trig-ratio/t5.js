@@ -50,7 +50,10 @@
     if (o.handle) { b.handle('B', B, { color: 'sky', r: 8, ariaLabel: '관측점 B 끌기', drag: o.handle.B }); b.handle('C', Cc, { color: 'green', r: 8, ariaLabel: '관측점 C 끌기', drag: o.handle.C }); }
     else { b.point(B, { color: 'sky', r: 5 }); b.point(Cc, { color: 'green', r: 5 }); }
     T(b, B, 'B', { dy: 22, dx: -4, size: 17, color: 'sky' }); T(b, Cc, 'C', { dy: 22, dx: 4, size: 17, color: 'green' });
-    if (L.h) T(b, G.lerp(A, H0, 0.3), L.h, { dx: L.hx ? 0 : -8, size: L.hx ? 21 : 16, color: L.hx ? 'amber' : 'rose', align: L.hx ? 'center' : 'right' });
+    if (L.h) {
+      const heightCallout = o.heightCallout && !b.thumb && b.W < 560, at = G.lerp(A, H0, heightCallout ? .56 : .3);
+      T(b, at, L.h, { dx: L.hx ? 0 : -8, size: L.hx ? 21 : 16, color: L.hx ? 'amber' : 'rose', align: L.hx ? 'center' : 'right', ...(heightCallout ? { leaderAnchor: at, leader: true } : {}) });
+    }
     const askG = L.BH === 'x' || L.CH === 'x';
     if (L.a && !askG) { line(b, pt(Math.min(B.x, Cc.x), 0), pt(Math.max(B.x, Cc.x), 0), 'amber', 4); T(b, mid(B, Cc), L.a, { dy: 44, size: 17, color: 'amber' }); }
     else if (L.a) { // 구하는 것이 BH·CH 일 때: BC 는 땅 아래의 치수선으로 따로 표시
@@ -120,7 +123,7 @@
     },
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99, d1 = (v) => `≈${fmtN(v)}°`;
-      drawTower(b, { h: M.h, xb: M.xb, xc: M.xc, step: st, L: { B: d1(M.B), C: d1(M.C), x: show(1) ? 'x' : '', y: show(1) ? 'y' : '', a: `${M.a}`, h: `${M.h}`, BH: show(1) ? `${M.xb}` : '', CH: show(1) ? `${M.xc}` : '' }, handle: C.tab === 'explore' && !C.thumb ? { B: px(s, 't51b', -1), C: px(s, 't51c', 1) } : null, rows: show(3) ? [{ t: `h = \\frac{${M.a}}{tan x + tan y} = ${M.h}`, c: 'amber' }] : [] });
+      drawTower(b, { h: M.h, xb: M.xb, xc: M.xc, step: st, heightCallout: true, L: { B: d1(M.B), C: d1(M.C), x: show(1) ? 'x' : '', y: show(1) ? 'y' : '', a: `${M.a}`, h: `${M.h}`, BH: show(1) ? `${M.xb}` : '', CH: show(1) ? `${M.xc}` : '' }, handle: C.tab === 'explore' && !C.thumb ? { B: px(s, 't51b', -1), C: px(s, 't51c', 1) } : null, rows: show(3) ? [{ t: `h = \\frac{${M.a}}{tan x + tan y} = ${M.h}`, c: 'amber' }] : [] });
     },
     steps: (M) => [
       `탑의 높이를 $h=AH$ 라 하고 $\\angle BAH=x$, $\\angle CAH=y$ 라 해요. 올려본 각이 $\\angle B=${fmtN(M.B)}^{\\circ}$, $\\angle C=${fmtN(M.C)}^{\\circ}$ 이면 $x=90^{\\circ}-\\angle B$, $y=90^{\\circ}-\\angle C$ 예요.`,
@@ -341,17 +344,23 @@
   /* ====================================================================== 7. 부러진 나무 */
   function drawBroken(b, d, th, o = {}) {
     const t = th * DEG, h = d * Math.tan(t), Lb = d / Math.cos(t), O = pt(0, 0), Pp = pt(0, -h), Q = pt(d, 0), Rr = pt(0, -h - Lb);
-    fit(b, bboxOf([pt(-0.5, -h - Lb), pt(d + 0.5, 0)]), { t: 60, b: 58, l: 70, r: 54 });
+    const compact = o.compactQuestion && !b.thumb && b.W < 560;
+    fit(b, bboxOf([pt(-0.5, -h - Lb), pt(d + 0.5, 0)]), compact ? { t: 28, b: 40, l: 58, r: 58, problemTop: 28 } : { t: 60, b: 58, l: 70, r: 54 });
     line(b, pt(-1.2, 0), pt(d + 1.2, 0), 'muted', 3);
     line(b, O, Pp, 'ink', 6); line(b, Pp, Q, 'green', 5);
     line(b, Pp, Rr, 'muted', 3, { dash: dashed });
-    ang(b, Q, Pp, O, { color: 'amber', r: 36, label: o.tl || `${th}°`, size: 16 }); ang(b, O, Q, Pp, { color: 'ink', r: 16 });
+    const angleR = compact ? Math.min(24, d * (b.k || 60) * .26) : 36;
+    ang(b, Q, Pp, O, { color: 'amber', r: angleR, label: compact ? '' : o.tl || `${th}°`, size: 16 }); ang(b, O, Q, Pp, { color: 'ink', r: 16 });
     const L = o.L || {};
     T(b, mid(O, Q), L.d || '', { dy: 22, size: 17, color: 'sky' });
     if (L.h) T(b, mid(O, Pp), L.h, { dx: -8, size: L.hx ? 21 : 17, color: L.hx ? 'amber' : 'rose', align: 'right' });
     if (L.L) T(b, mid(Pp, Q), L.L, { dx: 12, dy: -6, size: L.Lx ? 21 : 17, color: L.Lx ? 'amber' : 'green', align: 'left' });
     if (L.H) { const x = -0.9; line(b, pt(x, 0), pt(x, -h - Lb), 'amber', 3); T(b, pt(x, -(h + Lb) / 2), L.H, { dx: -8, size: 21, color: 'amber', align: 'right' }); }
     b.point(Pp, { color: 'ink', r: 4.5 }); b.point(Q, { color: 'ink', r: 4.5 }); b.point(O, { color: 'ink', r: 4.5 });
+    if (compact) {
+      const am = -Math.PI + t / 2, anchor = pt(Q.x + Math.cos(am) * angleR / b.k, Q.y + Math.sin(am) * angleR / b.k);
+      T(b, Q, o.tl || `${th}°`, { dx: 34, dy: -30, color: 'amber', size: 16, leaderAnchor: anchor, leader: true });
+    }
     (o.rows || []).forEach((r, i) => T(b, pt(d / 2, 0), r.t, { dy: 46 + i * 26, size: 16, color: r.c }));
   }
   const broken = {
@@ -394,7 +403,7 @@
         kind === 'H' ? `부러지기 전 높이는 두 부분의 합 $h+L=${vtex(h)}+${vtex(Lb)}$입니다.` : `문제에서 요구한 부분은 ${kind === 'h' ? '남은 줄기 $h$' : '부러진 부분 $L$'}입니다. 전체 높이와 구별해요.`
       ], { kind: 'broken-tree', distance: d, angle: th, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q, C) => drawBroken(b, q.fig.d, q.fig.th, { L: { ...q.fig.L, ...(C.review && C.step >= 3 ? Object.fromEntries(['h', 'L'].filter((k) => k !== q.fig.kind).map((k) => [k, q.fig.work[k]])) : {}), ...(C.last ? { [q.fig.kind]: q.fig.work[q.fig.kind], hx: false, Lx: false } : {}) } })
+    pdraw: (b, q, C) => drawBroken(b, q.fig.d, q.fig.th, { compactQuestion: true, L: { ...q.fig.L, ...(C.review && C.step >= 3 ? Object.fromEntries(['h', 'L'].filter((k) => k !== q.fig.kind).map((k) => [k, q.fig.work[k]])) : {}), ...(C.last ? { [q.fig.kind]: q.fig.work[q.fig.kind], hx: false, Lx: false } : {}) } })
   };
 
   G.register(50, 't5', '⑤ 높이·거리', '높이·거리', PARAMS, [r51, r52, r53, r54, tree, pend, broken]);

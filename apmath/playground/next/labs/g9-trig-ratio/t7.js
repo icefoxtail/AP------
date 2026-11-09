@@ -159,13 +159,16 @@
   function rhGeo(a, th) { const pL = 2 * a * Math.sin((th / 2) * DEG), qL = 2 * a * Math.cos((th / 2) * DEG), O = pt(0, 0); return { O, A: pt(-qL / 2, 0), C: pt(qL / 2, 0), B: pt(0, -pL / 2), D: pt(0, pL / 2), p: pL, q: qL }; }
   function drawRh(b, a, th, o = {}) {
     const g = rhGeo(a, th), { A, B, C, D, O } = g, cen = O;
-    fit(b, bboxOf([A, B, C, D]), { t: 54, b: 58 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
+    const compact = o.compactQuestion && !b.thumb && b.W < 560;
+    fit(b, bboxOf([A, B, C, D]), compact ? { t: 28, b: 28 + (o.rows ? o.rows.length * 26 : 0), l: 58, r: 48, problemTop: 28 } : { t: 54, b: 58 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
     fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [B, C, D, A], 'ink', 3.4);
     if (o.diag !== false) { line(b, A, C, 'violet', 2.6, { dash: dashed }); line(b, B, D, 'violet', 2.6, { dash: dashed }); ang(b, O, C, B, { color: 'ink', r: 14 }); }
-    if (o.th) ang(b, A, B, D, { color: 'amber', r: 34, label: o.th, size: 16 });
+    const angleR = compact ? Math.min(24, Math.min(g.p, g.q) * (b.k || 60) * .28) : 34;
+    if (o.th) ang(b, A, B, D, { color: 'amber', r: angleR, label: compact ? '' : o.th, size: 16 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     [[A, B], [B, C], [C, D], [D, A]].forEach(([p0, q0]) => tick(b, p0, q0, 1, 'sky'));
     if (o.a) sideTag(b, A, B, cen, o.a, { color: 'sky', size: o.as || 17 });
+    if (o.th && compact) T(b, A, o.th, { dx: -42, dy: -30, color: 'amber', size: 16, leaderAnchor: pt(A.x + angleR / b.k, A.y), leader: true });
     if (o.p) T(b, mid(B, O), o.p, { dx: 10, size: 16, color: 'violet', align: 'left' });
     if (o.q) T(b, mid(O, C), o.q, { dy: 18, size: 16, color: 'violet' });
     (o.rows || []).forEach((r, i) => T(b, pt(0, D.y), r.t, { dy: 40 + i * 26, size: r.size || 16, color: r.c }));
@@ -215,8 +218,8 @@
     },
     pdraw: (b, q, C) => {
       const f = q.fig;
-      if (f.ask === 'sa') drawRh(b, f.a, f.th, { diag: C.review && C.step >= 2, th: `${f.th}°`, a: `${f.a}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] });
-      else { const a = Math.sqrt(f.p * f.p + f.q * f.q) / 2, th = 2 * Math.atan2(f.p / 2, f.q / 2) / DEG; drawRh(b, a, th, { p: `${f.p}`, q: `${f.q}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
+      if (f.ask === 'sa') drawRh(b, f.a, f.th, { compactQuestion: true, diag: C.review && C.step >= 2, th: `${f.th}°`, a: `${f.a}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] });
+      else { const a = Math.sqrt(f.p * f.p + f.q * f.q) / 2, th = 2 * Math.atan2(f.p / 2, f.q / 2) / DEG; drawRh(b, a, th, { compactQuestion: true, p: `${f.p}`, q: `${f.q}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
     }
   };
 

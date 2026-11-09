@@ -275,7 +275,9 @@ await test('manual rolling slider input pauses automatic motion in all seven rol
   const lab = await load();
   for (const id of ['rl-rect', 'rl-tri', 'rl-rtri', 'rl-turn60', 'rl-turn45', 'rl-semi', 'rl-square']) {
     const scene = lab.go(id);
-    assert.equal(lab.s.playing, true, `${id} entry starts its established demonstration`);
+    assert.equal(lab.s.playing, false, `${id} entry waits for the student's play action`);
+    call(scene.actions, lab.s).find((action) => action.id === 'play').run(lab.s, lab);
+    assert.equal(lab.s.playing, true, `${id} explicit playback still starts the demonstration`);
     lab.s.rlT = 0.007;
     lab.params.rlT.onInput?.(lab.s, lab);
     scene.tick(lab.s, 1 / 60, lab);
@@ -285,6 +287,51 @@ await test('manual rolling slider input pauses automatic motion in all seven rol
     call(scene.actions, lab.s).find((action) => action.id === 'play').run(lab.s, lab);
     scene.tick(lab.s, 1 / 60, lab);
     assert.ok(lab.s.rlT > 0.007, 'explicit replay still continues motion');
+  }
+});
+
+await test('rolling scenes keep the original figure still on first entry, reselect and return', async () => {
+  const lab = await load();
+  for (const id of ['rl-rect', 'rl-tri', 'rl-rtri', 'rl-turn60', 'rl-turn45', 'rl-semi', 'rl-square']) {
+    const scene = lab.go(id);
+    assert.equal(lab.s.rlT, 0, `${id}: original pose`);
+    assert.equal(lab.s.playing, false, `${id}: no unsolicited motion before the student sees the givens`);
+    const first = lab.draw().texts;
+    assert.ok(first.includes('l'), `${id}: the original ground line is rendered`);
+    for (let i = 0; i < 30; i++) scene.tick(lab.s, 0.2, lab);
+    assert.equal(lab.s.rlT, 0, `${id}: time alone cannot move the initial figure`);
+    assert.deepEqual(lab.draw().texts, first);
+    assert.equal(lab.s.revealed, false);
+    for (const returnFromOtherScene of [false, true]) {
+      lab.s.rlT = 0.63; lab.s.playing = true; lab.s.rlHold = 0.3;
+      if (returnFromOtherScene) lab.go(id === 'rl-rect' ? 'rl-tri' : 'rl-rect');
+      lab.go(id);
+      assert.equal(lab.s.rlT, 0, `${id}: entry resets the changed pose`);
+      assert.equal(lab.s.playing, false);
+      assert.equal(lab.s.rlHold, 0);
+      assert.deepEqual(lab.draw().texts, first, `${id}: the same original givens are restored`);
+    }
+  }
+});
+
+await test('rolling playback reaches its intermediate and final poses and reset restores the initial drawing', async () => {
+  const lab = await load();
+  for (const id of ['rl-rect', 'rl-tri', 'rl-rtri', 'rl-turn60', 'rl-turn45', 'rl-semi', 'rl-square']) {
+    const scene = lab.go(id), first = lab.draw().texts;
+    const actions = call(scene.actions, lab.s), play = actions.find(action => action.id === 'play');
+    play.run(lab.s, lab);
+    scene.tick(lab.s, 0.2, lab);
+    assert.ok(lab.s.rlT > 0 && lab.s.rlT < 1, `${id}: explicit playback moves through intermediate poses`);
+    lab.draw();
+    for (let i = 0; i < 400 && lab.s.playing; i++) scene.tick(lab.s, 0.1, lab);
+    assert.equal(lab.s.rlT, 1, `${id}: animation can still finish`);
+    assert.equal(lab.s.playing, false);
+    lab.draw();
+    actions.find(action => action.id === 'reset').run(lab.s, lab);
+    assert.equal(lab.s.rlT, 0);
+    assert.equal(lab.s.playing, false);
+    assert.deepEqual(lab.draw().texts, first, `${id}: reset restores the visible original figure`);
+    assert.equal(lab.s.revealed, false, `${id}: motion does not open the answer`);
   }
 });
 

@@ -85,12 +85,16 @@
   function sasGeom(a, c, beta) { const A = pt(c * Math.cos(beta * DEG), -c * Math.sin(beta * DEG)); return { B: pt(0, 0), C: pt(a, 0), A, H: pt(A.x, 0) }; }
   function drawSas(b, g, L, o = {}) {
     const { A, B, C, H } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C]), obt = H.x < 0;
-    fit(b, bboxOf([A, B, C, H]), { t: 50, b: 126 + (L.rows ? L.rows.length * 26 : 0), l: 54, r: 54 });
+    const compact = o.compactQuestion && !b.thumb && b.W < 560;
+    fit(b, bboxOf([A, B, C, H]), compact
+      ? { t: 28, b: L.HC ? 114 : L.BH ? 88 : 62, l: 62, r: 42, problemTop: 28 }
+      : { t: 50, b: 126 + (L.rows ? L.rows.length * 26 : 0), l: 54, r: 54 });
     fillPoly(b, [A, B, C], 'sky', 0.08);
     if (st >= 1) { fillPoly(b, [A, B, H], 'rose', 0.14); fillPoly(b, [A, H, C], 'green', 0.12); }
     poly(b, [A, B, C], 'ink', 3.4);
     if (st >= 1) { line(b, A, H, 'violet', 3.2, { dash: dashed }); if (obt) line(b, H, B, 'violet', 2.6, { dash: dashed }); else if (H.x > C.x) line(b, C, H, 'violet', 2.6, { dash: dashed }); ang(b, H, A, C, { color: 'violet', r: 18 }); }
-    if (L.angB !== false) ang(b, B, C, A, { color: 'amber', r: 34, label: L.angB, size: 16 });
+    const angleR = compact ? Math.min(24, Math.min(G.dist(A, B), G.dist(C, B)) * b.k * .24) : 34;
+    if (L.angB !== false) ang(b, B, C, A, { color: 'amber', r: angleR, label: compact ? '' : L.angB, size: 16 });
     if (obt && st >= 2) ang(b, B, H, A, { color: 'rose', r: 30, label: L.angOut, size: 16, rings: 2 });
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (st >= 1) { b.point(H, { color: 'violet', r: 4 }); T(b, H, 'H', { dy: 20, size: 17, color: 'violet' }); }
@@ -104,11 +108,16 @@
       const text = String(value).includes('=') ? String(value) : `${name} = ${value}`;
       T(b, mid(P0, Q0), text, { dy: dy + 12, size: 14, color });
     };
-    if (L.a) dimension(B, C, L.a.t, 'BC', 32, L.a.c || 'green');
+    if (L.a) dimension(B, C, L.a.t, 'BC', compact ? 24 : 32, L.a.c || 'green');
     if (L.AC) sideTag(b, A, C, cen, L.AC.t, { color: L.AC.c || 'amber', size: L.AC.size || 17, f: obt ? 0.88 : 0.5 });
     if (L.AH && st >= 1) T(b, mid(A, H), L.AH, { dx: obt ? 22 : -4, size: 15, color: 'violet', align: obt ? 'left' : 'right' });
-    if (L.BH && st >= 1) dimension(B, H, L.BH, 'BH', 62, 'rose');
-    if (L.HC && st >= 1) dimension(H, C, L.HC, 'HC', 92, 'green');
+    if (L.BH && st >= 1) dimension(B, H, L.BH, 'BH', compact ? 50 : 62, 'rose');
+    if (L.HC && st >= 1) dimension(H, C, L.HC, 'HC', compact ? 76 : 92, 'green');
+    if (compact && L.angB !== false) {
+      const a = Math.atan2(A.y - B.y, A.x - B.x) / 2;
+      T(b, B, L.angB, { dx: -32, dy: -28, color: 'amber', size: 16,
+        leaderAnchor: pt(B.x + Math.cos(a) * angleR / b.k, B.y + Math.sin(a) * angleR / b.k), leader: true });
+    }
     (L.rows || []).forEach((r, i) => T(b, pt((Math.min(B.x, A.x) + C.x) / 2, 0), r.t, { dy: 138 + i * 26, size: 16, color: r.c }));
   }
   function sasModel(a, c, beta) {
@@ -162,7 +171,7 @@
         `직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=${vtex(vpow2(ahv))}+${vtex(vpow2(hc))}$입니다. 양의 제곱근을 구해요.`
       ], { kind: 'sas', a, c: cV.v, angle: beta, answer: ac.v });
     },
-    pdraw: (b, q, C) => { const f = q.fig, g = sasGeom(f.a, f.c, f.beta); drawSas(b, g, { angB: `${f.beta}°`, c: { t: f.cl, c: 'sky' }, a: { t: `${f.a}`, c: 'green' }, AC: { t: C.last ? f.work.ac : 'x', c: 'amber', size: 21 }, angOut: `${f.work.w}°`, AH: C.review && C.step >= 2 ? f.work.ah : null, BH: C.review && C.step >= 2 ? f.work.bh : null, HC: C.review && C.step >= 3 ? f.work.hc : null }, { step: C.review ? C.step : 0 }); }
+    pdraw: (b, q, C) => { const f = q.fig, g = sasGeom(f.a, f.c, f.beta); drawSas(b, g, { angB: `${f.beta}°`, c: { t: f.cl, c: 'sky' }, a: { t: `${f.a}`, c: 'green' }, AC: { t: C.last ? f.work.ac : 'x', c: 'amber', size: 21 }, angOut: `${f.work.w}°`, AH: C.review && C.step >= 2 ? f.work.ah : null, BH: C.review && C.step >= 2 ? f.work.bh : null, HC: C.review && C.step >= 3 ? f.work.hc : null }, { step: C.review ? C.step : 0, compactQuestion: !obtuse }); }
   });
   const sasA = sasScene('sasAcuteLen', '두 변과 끼인각으로 길이 구하기', '두 변과 끼인각', false);
   const sasO = sasScene('sasObtuseLen', '[심화] 끼인각이 둔각일 때', '[심화] 끼인각이 둔각', true);

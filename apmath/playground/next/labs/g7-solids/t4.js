@@ -203,7 +203,7 @@
         D.line({ x: 0, y: h, z: 0 }, D.pol(r, 0, 0), AMB, 3.4);
         T(b, D.P({ x: r / 2, y: h / 2, z: 0 }), `R = ${R} cm`, AMB, { dx: 44, size: 16 });
         D.line({ x: 0, y: 0, z: 0 }, { x: r, y: 0, z: 0 }, SKY, 2.6); S3.rLabel(b, D, r, `r = ${r} cm`, SKY, 16);
-        b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 }); T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 });
+        b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 }); T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: b.W < 560 && !b.thumb ? -14 : 14, size: 17 });
         return;
       }
       const m = M, F = frame(b, s, C, { r, R, x }), O = { x: 0, y: 0 }, D = F.D;
@@ -310,8 +310,14 @@
       if (C.txt) {
         T(b, O, 'O', 'ink', { dy: -14, size: 16 }); T(b, P1, 'P', 'ink', { dx: -14, dy: 10, size: 17 }); T(b, P2, "P′", 'ink', { dx: 16, dy: 10, size: 17 });
         if (focusP) T(b, O, 'P까지의 전개도 확대', 'ink', { dy: -34, size: 13 });
-        else T(b, { x: m.A.x * 0.88, y: m.A.y * 0.88 }, `R = ${R}`, SKY, { dx: -34, dy: -8, size: 14 });
-        T(b, { x: P1.x / 2, y: P1.y / 2 }, `${p}`, ROSE, { dx: 16, size: 16 }); T(b, { x: P2.x / 2, y: P2.y / 2 }, `${p}`, ROSE, { dx: -16, size: 16 });
+        else {
+          const anchor = { x: m.A.x * 0.88, y: m.A.y * 0.88 }, label = `R = ${R}`;
+          const dx = b.W < 560 && !b.thumb ? Math.max(-34, b.insets.left + 8 + G.textW(label, G.FS(b, 14)) / 2 - b.toS(anchor).x) : -34;
+          T(b, anchor, label, SKY, { dx, dy: -8, size: 14 });
+        }
+        // 작은 전개도에서 두 길이가 '66'처럼 붙지 않도록 각 변 바깥으로 둡니다.
+        const legDx = b.W < 560 && !b.thumb ? -16 : 16;
+        T(b, { x: P1.x / 2, y: P1.y / 2 }, `${p}`, ROSE, { dx: legDx, size: 16 }); T(b, { x: P2.x / 2, y: P2.y / 2 }, `${p}`, ROSE, { dx: -legDx, size: 16 });
         if (ang === 60 && atStep(C, 3)) { b.ticks(O, P1, { color: GRN, count: 1 }); b.ticks(O, P2, { color: GRN, count: 1 }); b.ticks(P1, P2, { color: GRN, count: 1 }); }
         if (atStep(C, answerStep)) T(b, { x: 0, y: ang === 60 ? P1.y : 0 }, ang === 60 ? `PP′ = ${p} cm` : `PP′ = ${p} + ${p} = ${2 * p} cm`, AMB, { dy: 22, size: 16 });
       }

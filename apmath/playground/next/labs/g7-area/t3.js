@@ -36,10 +36,11 @@
       const mode = C.problem ? (M.q === 2 ? 0 : 1) : M.mode, c0 = centroid(g.trap);
       const t = C.problem ? 0 : C.t;
       if (mode === 1) {
+        const compactInquiry = !C.problem && !b.thumb && b.W < 560;
         // 같은 사다리꼴(복사본)을 만들고, 붙을 자리에서 제자리 180° 회전
         const Mp = mid(BR, TR), cF = pt(2 * Mp.x - c0.x, 2 * Mp.y - c0.y), off = pt(2 * (Mp.x - c0.x), 2 * (Mp.y - c0.y));
         if (C.problem) FIT(b, { x0: 0, x1: B, y0: -H, y1: 0 }, { b: 76, t: 40 });
-        else FIT(b, { x0: 0, x1: B + a + p, y0: -H - 3.2, y1: 3.2 }, { b: 118, t: 24 });
+        else FIT(b, { x0: 0, x1: B + a + p, y0: -H - 3.2, y1: 3.2 }, compactInquiry ? { l: 90, r: 30, t: 30, b: 44 } : { b: 118, t: 24 });
         fillPoly(b, g.trap, 'sky', 0.22); poly(b, g.trap, 'ink', 3.6);
         if (!C.problem) {
           const al = seg01(t, 0, 0.1), ang = Math.PI * seg01(t, 0.1, 1);
@@ -47,12 +48,15 @@
           if (t > 0.001 || (C.review && C.step === 1)) { const a2 = C.review && C.step === 1 ? 1 : al; fillPoly(b, cp, 'green', 0.34 * a2); poly(b, cp, 'green', 3.6, { alpha: a2 }); }
         }
         par(b, TL, TR, 1, 'green'); par(b, BL, BR, 1, 'green');
-        hgtTo(b, TL, BL, BR, { label: `높이 ${H}cm`, side: 1 });
+        // 좁은 무대에서는 높이 글자를 왼쪽 빗변 밖에 두어 윤곽선을 가리지 않습니다.
+        hgtTo(b, TL, BL, BR, { label: `높이 ${H}cm`, side: compactInquiry ? -1 : 1, gap: compactInquiry ? p * b.k / 2 + 10 + (p / H) * 12 : 10 });
         const fin = !C.problem && (C.review ? C.step >= 2 : t > 0.999);
         dim(b, TL, TR, `윗변 ${a}cm`, { ref: c0, color: 'sky' });
         dim(b, BL, BR, fin ? `${B}` : `아랫변 ${B}cm`, { ref: c0, color: 'sky' });
-        if (fin) { dim(b, BR, pt(B + a, 0), `${a}`, { ref: c0, color: 'green' }); dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: c0, color: 'green', off: 54 }); }
+        if (fin) { dim(b, BR, pt(B + a, 0), `${a}`, { ref: c0, color: 'green' }); if (!compactInquiry) dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: c0, color: 'green', off: 54 }); }
         if (C.problem) { foot(b, pt(B / 2, 0), M.q === 0 ? '사다리꼴 2개를 거꾸로 붙여요' : '사다리꼴의 넓이 = ? cm²', 'amber', 60); return; }
+        // 계산은 기존 값·풀이 패널에 그대로 두고, 모바일 그림은 회전 전체에 같은 배율을 씁니다.
+        if (compactInquiry) return;
         const fx = (B + a) / 2;
         if (C.review ? C.step >= 3 : t > 0.999) foot(b, pt(fx, 0), `평행사변형의 절반: ${HALF}×${a + B}×${H} = ${num(S)}cm²`, 'green', 92);
         else foot(b, pt(fx, 0), C.review && C.step >= 2 ? '돌려서 붙여요' : '사다리꼴의 넓이 = ?', 'amber', C.review && C.step >= 2 ? 92 : 64);
@@ -128,7 +132,10 @@
     draw(b, s, M, C) {
       const { W, H, a, x, t1, t2, t3, R, A } = M, g = frame.geo(M);
       const t = C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : C.t, sep = 1.4 * ease(t);
-      FIT(b, { x0: -1.4, x1: W + 1.4, y0: 0, y1: H }, { b: C.problem ? 108 : 176, l: 40, r: 64 });
+      // 짧은 휴대폰 무대에 계산 세 줄을 예약하면 원래 삼각형이 손잡이보다 작아집니다.
+      // 계산은 기존 값·풀이 패널에 두고, 그림에는 모눈과 길이 조건의 자리를 확보합니다.
+      const compactInquiry = !C.problem && !b.thumb && b.W < 560;
+      FIT(b, { x0: -1.4, x1: W + 1.4, y0: 0, y1: H }, { t: compactInquiry ? 30 : 40, b: C.problem ? 108 : compactInquiry ? 74 : 176, l: 40, r: 64 });
       for (let i = 0; i <= W; i++) line(b, pt(i, 0), pt(i, H), 'muted', 1.2, { alpha: 0.5 });
       for (let j = 0; j <= H; j++) line(b, pt(0, j), pt(W, j), 'muted', 1.2, { alpha: 0.5 });
       const mv = (P3, dx) => P3.map((q) => pt(q.x + dx, q.y));
@@ -142,7 +149,7 @@
       dim(b, pt(0, H), pt(W, H), `가로 ${W}칸`, { ref: pt(W / 2, H / 2), color: 'sky', off: 50 });
       if (sep < 0.05) dim(b, pt(W, 0), pt(W, H), `${H}칸`, { ref: pt(W / 2, H / 2), color: 'sky', off: 26 });
       if (C.problem) { foot(b, pt(W / 2, H), '모눈 한 칸 = 1cm²   △ABC = ? cm²', 'amber', 88); return; }
-      const f = (str, col, i) => foot(b, pt(W / 2, H), str, col, 84 + 26 * i);
+      const f = (str, col, i) => { if (!compactInquiry) foot(b, pt(W / 2, H), str, col, 84 + 26 * i); };
       if (C.review) {
         if (C.step < 1) f('바깥 직사각형과 세 귀퉁이를 찾아요', 'amber', 0);
         else if (C.step === 1) f(`직사각형 ${W}×${H} = ${R}`, 'sky', 0);

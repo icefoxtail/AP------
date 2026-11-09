@@ -288,7 +288,9 @@
       // The narrow desktop stage has floating tools at its bottom right.
       // Keep the given area/ratio caption above that row without shrinking mobile or PC views.
       const questionBottom = b.W >= 560 && b.W < 800 && b.insets.bottom < 40 ? 134 : 100;
-      FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { b: C.problem ? questionBottom : 130 });
+      // 휴대폰에서는 기존 값·풀이 패널이 계산을 맡고, 무대는 두 삼각형과 조건에 씁니다.
+      const compactInquiry = !C.problem && !b.thumb && b.W < 560;
+      FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { t: compactInquiry ? 30 : 40, b: C.problem ? questionBottom : compactInquiry ? 62 : 130 });
       fillPoly(b, g.left, 'sky', 0.24); poly(b, g.left, 'ink', 3.6);
       fillPoly(b, g.right, 'rose', 0.24); poly(b, g.right, 'ink', 3.6);
       [[Av, 'A'], [Bv, 'B'], [pt(D.x, 0), 'D'], [pt(Cv.x + gap, 0), 'C']].forEach(([q, nm], i) => T(b, q, nm, { dy: i === 0 ? -18 : 18, dx: i === 1 || (i === 2 && !b.thumb) ? -12 : i === 3 ? 12 : 0, size: 17 }));
@@ -305,8 +307,10 @@
       }
       T(b, pt((Av.x + Bv.x + D.x) / 3, -h / 3), 'S₁', { size: 16, color: 'sky' }); T(b, pt((Av.x + D.x + Cv.x) / 3 + gap, -h / 3), 'S₂', { size: 16, color: 'rose' });
       const x0 = (m + n) / 2;
-      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 62); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 88); }
-      if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 114);
+      if (!compactInquiry) {
+        if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 62); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 88); }
+        if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 114);
+      }
     },
     steps: (M) => [
       `△ABD와 △ADC는 꼭짓점 A에서 직선 BC까지의 높이 h=${M.h}가 같아요.`,

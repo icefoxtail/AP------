@@ -224,7 +224,9 @@
           ang(b, D, B, Cc, { color: 'sky', rings: 1, r: 28 });
         }
         if (C.full || st >= 3) {
-          ang(b, B, A, D, { color: 'green', rings: 2, r: 38, label: n <= 9 ? `${fmtN(M.ab)}°` : '', size: 14, labelDist: 36, labelRot: 22 });
+          // 작은 화면에서는 보조각 값을 변 바깥으로 옮기고 실제 호에 연결합니다.
+          const compact = !C.thumb && b.W < 560;
+          ang(b, B, A, D, { color: 'green', rings: 2, r: 38, label: n <= 9 ? `${fmtN(M.ab)}°` : '', size: 14, labelDist: compact ? 48 : 36, labelRot: compact ? 90 : 22, leader: compact });
           ang(b, Pp, A, B, { color: 'amber', r: 26, label: `${fmtN(x)}°`, size: 18, fa: 0.28, labelDist: 52 });
         }
       } else ang(b, Pp, A, B, { color: 'amber', r: 26, label: 'x', size: 18, fa: 0.28, labelDist: 46 });

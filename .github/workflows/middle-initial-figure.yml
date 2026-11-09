@@ -85,9 +85,45 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
           UNIT: ${{ matrix.unit }}
         run: node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root . --units "$UNIT" --themes board,paper --out "$RUNNER_TEMP/initial-evidence/after"
+      - name: Partition evidence without changing captured bytes
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          root = Path(os.environ['RUNNER_TEMP'])
+          for phase in ('before', 'after'):
+              for source in (root / 'initial-evidence' / phase).glob('*'):
+                  if not source.is_file():
+                      continue
+                  if phase == 'before':
+                      buckets = ['before']
+                  elif source.name == 'report.json':
+                      buckets = ['after-board', 'after-paper']
+                  elif '-paper--' in source.name:
+                      buckets = ['after-paper']
+                  else:
+                      buckets = ['after-board']
+                  for bucket in buckets:
+                      target = root / 'initial-evidence-pack' / bucket / phase / source.name
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      os.link(source, target)
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}
-          path: ${{ runner.temp }}/initial-evidence/
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-before
+          path: ${{ runner.temp }}/initial-evidence-pack/before/
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-after-board
+          path: ${{ runner.temp }}/initial-evidence-pack/after-board/
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-after-paper
+          path: ${{ runner.temp }}/initial-evidence-pack/after-paper/
           retention-days: 14

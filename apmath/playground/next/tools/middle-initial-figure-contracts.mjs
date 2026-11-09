@@ -1,5 +1,5 @@
 /**
- * Semantic, rendered-pixel contracts for the initial circle/sector figures.
+ * Semantic, rendered-pixel contracts for initial circle/sector and tangent figures.
  * Pass directly to page.evaluate(sampleInitialFigure). All helpers deliberately
  * live inside the function so it has no closure or runtime-source dependency.
  *
@@ -9,13 +9,14 @@
 export function sampleInitialFigure() {
   const lab = window.lab;
   const unit = lab?.id || null, id = String(lab?.scene?.id || ''), tab = lab?.tab || null;
-  const result = { version: 1, unit, id, tab, applicable: false, status: 'NOT_APPLICABLE', checks: [], failures: [],
+  const result = { version: 2, unit, id, tab, applicable: false, status: 'NOT_APPLICABLE', checks: [], failures: [],
     limitation: 'Analytic contour and region probes only; independent visual readability and mathematical review remain required.' };
   const names = ['star', 'ss2', 'lens', 'ex22', 'ring', 'semis', 'tri'];
   const f1 = id.startsWith('f1-') ? id.slice(3) : null;
-  if (unit !== 'g7-circle-sector' || !(names.includes(f1) || id === 'f3-leaf-len')) return result;
+  const tangent = unit === 'g9-circle' && id === 'c6-8';
+  if (!tangent && (unit !== 'g7-circle-sector' || !(names.includes(f1) || id === 'f3-leaf-len'))) return result;
   const s = lab.s || {}, progress = f1 ? Number(s[`f1_${f1}_t`] || 0) : Number(s.f3t || 0);
-  if (tab !== 'problem' && (progress > 0.001 || s.playing)) {
+  if (!tangent && tab !== 'problem' && (progress > 0.001 || s.playing)) {
     result.reason = 'The initial-figure contract does not assert transformed animation frames.';
     return result;
   }
@@ -62,7 +63,39 @@ export function sampleInitialFigure() {
   const region = (name, p, q) => regions.push({ name, p, q });
   const value = (name, fallback) => { const v = Number(s[`f1_${f1}_${name}`]); return Number.isFinite(v) ? v : fallback; };
   const a = value('a', f1 === 'star' ? 10 : f1 === 'lens' ? 8 : f1 === 'ex22' ? 4 : 6);
-  if (f1 === 'star') {
+  if (tangent) {
+    let g;
+    try { g = lab.scene.ci.model(s, { tab, problem: tab === 'problem' || tab === 'review' }).g; }
+    catch (e) { fail('tangent-model-unavailable', String(e?.message || e)); result.status = 'FAIL'; return result; }
+    if (!g || ![g.P, g.A, g.B, g.T, g.c].every(p => p && Number.isFinite(p.x) && Number.isFinite(p.y)) || !Number.isFinite(g.r) || !(g.r > 0)) {
+      fail('tangent-model-nonfinite', 'Finite P, A, B, T, center and positive radius are required.');
+      result.status = 'FAIL'; return result;
+    }
+    const length = (p, q) => Math.hypot(p.x - q.x, p.y - q.y);
+    const { P, A, B, T, c: center, r } = g;
+    const geometry = (name, residual) => {
+      const pass = Number.isFinite(residual) && Math.abs(residual) <= 1e-7;
+      result.checks.push({ kind: 'essential-geometry', name, normalizedResidual: residual, tolerance: 1e-7, pass });
+      if (!pass) fail('essential-tangency-geometry-invalid', name);
+    };
+    // Recalculate from the actual rendered model's coordinates. The displayed
+    // PT=sqrt(PA*PB) value alone passed even when T was far outside the circle.
+    for (const [name, point] of Object.entries({ A, B, T })) geometry(`${name}-on-original-circle`, length(point, center) / r - 1);
+    geometry('radius-perpendicular-to-PT', ((T.x - P.x) * (T.x - center.x) + (T.y - P.y) * (T.y - center.y)) / (length(P, T) * r));
+    const power = length(P, A) * length(P, B);
+    geometry('PT-squared-equals-PA-times-PB', (length(P, T) ** 2 - power) / Math.max(1, power));
+    const xy = p => [p.x, p.y];
+    curve('original-circle', center.x, center.y, r, [19, 71, 137, 203, 281]);
+    line('original-tangent-PT', xy(P), xy(T));
+    line('original-secant-PB', xy(P), xy(B));
+    const at = project(xy(T)), outward = project([T.x + (T.x - center.x) / r, T.y + (T.y - center.y) / r]);
+    const dx = outward.x - at.x, dy = outward.y - at.y, normalLength = Math.hypot(dx, dy);
+    const sides = [-1, 1].map(sign => patch({ x: at.x + dx / normalLength * 8 * sign, y: at.y + dy / normalLength * 8 * sign }).mean);
+    const contrast = Math.max(...patch(at, 2).values.map(v => Math.min(distance(v, sides[0]), distance(v, sides[1]))));
+    const inView = visible(at), pass = inView && contrast >= 26;
+    result.checks.push({ kind: 'essential-contact-point', name: 'contact-T', inView, contrast: +contrast.toFixed(2), pass });
+    if (!pass) fail('essential-tangent-contact-missing-or-clipped', 'contact-T');
+  } else if (f1 === 'star') {
     [[0, 0, 0], [a, 0, 90], [a, a, 180], [0, a, 270]].forEach(([x, y, start], i) => curve(`quarter-${i + 1}`, x, y, a / 2, [17, 33, 51, 69, 78].map(t => start + t)));
     region('star-versus-cut', [.51 * a, .54 * a], [.17 * a, .16 * a]);
   } else if (f1 === 'ss2') {

@@ -148,8 +148,35 @@
       PARAMS[pre + k] = P[pre + k];
     });
     const modeOf = (lab) => (lab && lab.tab) || 'explore';
-    let measuring = false;
+    let measuring = false, fitStage = '', fitBoard = null;
     const box = spec.box || { x: [-2, 2], y: [-2, 2] };
+    const fitForStage = (s, lab) => {
+      if (measuring || !lab || s !== lab.s || !lab.board || !lab._measureFocus) return;
+      const b = lab.board, i = b.insets;
+      const key = [b.W, b.H, i.top, i.right, i.bottom, i.left].join('|');
+      if (fitStage === key && fitBoard === b && sc._focus) return;
+      const q = sv(s), keep = { ...s }, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab, step = s.step;
+      let uni = null;
+      measuring = true;
+      try {
+        b.setFocus(CANON, true);
+        for (const patch of spec.fit || [{}]) {
+          Object.keys(patch).forEach((k) => { q[k] = patch[k]; });
+          for (const md of ['explore', 'review', 'problem']) {
+            lab.tab = md; s.step = md === 'review' ? 99 : step;
+            const f = lab._measureFocus(sc);
+            if (f) uni = unionFocus(uni, f);
+          }
+        }
+      } catch (e) { /* 맞춤 실패 시 기본 범위 */ }
+      finally {
+        lab.tab = tab;
+        Object.keys(s).forEach((k) => { if (!(k in keep)) delete s[k]; });
+        Object.assign(s, keep); Object.assign(b, view);
+        measuring = false;
+      }
+      if (uni) { sc._focus = uni; fitStage = key; fitBoard = b; b.setFocus(uni, false); }
+    };
     const sc = {
       id: spec.id, title: spec.title, short: spec.short || spec.title, question: spec.question,
       boardKind: 'figure', autoFit: true, notesTitle: spec.notesTitle || '꼭 기억할 점',
@@ -167,27 +194,7 @@
         q.questionKey = spec.problem(q).key + '|' + q.seed;
         s.playing = false;
         sc._focus = null;
-        if (main && lab.board && lab._measureFocus) {
-          const keep = { ...s }, b = lab.board, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab, step = s.step;
-          b.setFocus(CANON, true);
-          let uni = null;
-          measuring = true;
-          try {
-            for (const patch of spec.fit || [{}]) {
-              Object.keys(patch).forEach((k) => { q[k] = patch[k]; });
-              for (const md of ['explore', 'review', 'problem']) {
-                lab.tab = md; s.step = md === 'review' ? 99 : step;
-                const f = lab._measureFocus(sc);
-                if (f) uni = unionFocus(uni, f);
-              }
-            }
-          } catch (e) { /* 맞춤 실패 시 기본 범위 */ }
-          measuring = false;
-          lab.tab = tab;
-          Object.keys(keep).forEach((k) => { s[k] = keep[k]; });
-          Object.assign(b, view);
-          sc._focus = uni;
-        }
+        if (main) { fitStage = ''; fitForStage(s, lab); }
       },
       controls: () => (spec.controls || []).map((k) => pre + k),
       presets: () => (spec.presets || []).map((p) => ({
@@ -208,11 +215,12 @@
       },
       focus: () => sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] },
       view: (s, lab) => {
+        fitForStage(s, lab);
         const q = sv(s), mode = modeOf(lab);
         const questionKey = spec.problem(q).key + '|' + q.seed;
         if (!measuring && q.questionKey !== questionKey) { q.questionKey = questionKey; q.pk = ''; q.pi = -1; s.revealed = false; s.step = 0; }
         if (!measuring && spec.currentFocus && lab && s === lab.s && lab.board) {
-          const current = spec.currentFocus(q, mode);
+          const current = spec.currentFocus(q, mode, lab.board);
           lab.board.setFocus(current || sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] }, false);
         }
         const v = (spec.view ? spec.view(q, mode, lab) : {}) || {};
@@ -348,6 +356,10 @@
     return c;
   }
   const lineAt = (g, i, str, color, o = {}) => g.text([0, -1], str, { dy: 36 + i * 28, size: 17, color, ...o });
+  // 좁은 문제 화면에는 계산줄이 없으므로 시계와 시각 표시에 맞춥니다.
+  // 탐구·풀이에서 쓰던 계산줄 여백 때문에 숫자와 바늘이 겹치지 않게 합니다.
+  const clockProblemFocus = (q, mode, b) => mode === 'problem' && b.W < 560
+    ? { x: [-1.3, 1.3], y: [-1.6, 1.2] } : null;
 
   /* ---- 4-1 시침과 분침이 이루는 각 ---- */
   const sClock = build({
@@ -355,6 +367,7 @@
     question: '시계의 시침과 분침은 각각 12에서 몇 도 돌아 있을까? 두 바늘 사이의 각은 어떻게 구할까?',
     guide: '막대나 <b>바늘 끝(노랑·하늘 점)</b>을 끌어 시각을 바꿔 보세요. 분침은 1분에 <b>6°</b>, 시침은 1시간에 <b>30°</b>(1분에 <b>0.5°</b>)씩 움직여서, 분이 지나면 <b>시침도 조금씩</b> 앞으로 가요.',
     box: { x: [-1.3, 1.3], y: [-3, 1.3] },
+    currentFocus: clockProblemFocus,
     params: { h: hourParam, m: minParam },
     controls: ['h', 'm'],
     presets: timePresets(),
@@ -408,6 +421,7 @@
   /* ---- 4-2 분이 지나면 사잇각은? (분침이 시침을 1분에 5.5°씩 따라잡는다) ---- */
   const sChase = build({
     id: 'ck2', title: '분이 지나면 사잇각은?', short: '분이 지나면',
+    currentFocus: clockProblemFocus,
     question: '분침은 1분에 6°, 시침은 1분에 0.5° 움직여요. 분이 지날수록 두 바늘 사이의 각은 어떻게 변할까?',
     guide: '<b>분 막대</b>를 끌거나 ▶를 눌러 분침을 돌려 보세요. 분침은 시침보다 1분에 <b>5.5°</b>씩 더 회전해요. 작은 쪽 사잇각은 두 바늘의 위치에 따라 줄거나 늘고, 0° 또는 180°에 이르면 변화 방향이 바뀌어요.',
     box: { x: [-1.3, 1.3], y: [-3.3, 1.3] },

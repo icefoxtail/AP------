@@ -183,7 +183,14 @@
         ang(b, A, B, Cc, { color: 'sky', r: 30, label: dg(a), size: lf, labelDist: 50 });
       }
       b.point(O, { color: 'rose', r: 5.5 }); b.point(I, { color: 'green', r: 5.5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
-      if (same) T(b, O, 'O = I', { dx: 24, dy: 0, size: 16, color: 'rose' }); else { T(b, O, 'O', { dx: 14, dy: 12, size: 17, color: 'rose' }); T(b, I, 'I', { dx: 14, dy: -12, size: 17, color: 'green' }); }
+      if (same) T(b, O, 'O = I', { dx: 24, dy: 0, size: 16, color: 'rose' });
+      else if (!C.thumb && Math.abs(I.y - O.y) * (b.k || 60) < 44) {
+        // 가까운 두 중심은 이름을 서로 바깥쪽에 두고 실제 점에 연결합니다.
+        // 고정 O 아래/I 위 배치는 O가 위쪽일 때 두 이름의 위치를 뒤바꿨습니다.
+        const oUp = O.y < I.y;
+        T(b, O, 'O', { dx: 16, dy: oUp ? -14 : 14, size: 17, color: 'rose', leaderAnchor: O, leader: true });
+        T(b, I, 'I', { dx: 16, dy: oUp ? 14 : -14, size: 17, color: 'green', leaderAnchor: I, leader: true });
+      } else { T(b, O, 'O', { dx: 14, dy: 12, size: 17, color: 'rose' }); T(b, I, 'I', { dx: 14, dy: -12, size: 17, color: 'green' }); }
       tagOut(b, A, O, 'A', { size: 18 }); tagOut(b, B, O, 'B', { size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 });
       if (!C.thumb && !C.problem) {
         let row, col = 'sky';

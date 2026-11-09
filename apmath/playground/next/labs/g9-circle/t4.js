@@ -211,8 +211,8 @@
       const th = g.a / 2, kth = g.k * g.a / 2, rk = g.k === 1 ? 1 : 2;
       if (pr) {
         // 호 AB 에 대한 원주각 ∠ADB, 호 CD 에 대한 원주각 ∠CAD / ∠CBD
-        if (q.kind === 0) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, Pp, A, D, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: 50, size: S(b), color: 'rose', noBig: true }); }
-        if (q.kind === 1) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 28, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: 50, size: S(b), color: 'sky', noBig: true }); }
+        if (q.kind === 0) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, Pp, A, D, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: b.ciMobileProblem ? 28 : 50, size: S(b), color: 'rose', noBig: true }); }
+        if (q.kind === 1) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 28, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: b.ciMobileProblem ? 28 : 50, size: S(b), color: 'sky', noBig: true }); }
         if (q.kind === 2) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, B, Cc, D, { color: 'sky', rings: 2, label: dgx(q.k * q.th), r: 28, size: S(b) }); ang(b, Pp, A, B, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); }
         return;
       }

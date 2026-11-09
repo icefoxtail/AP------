@@ -65,7 +65,7 @@
     (spec.lines || []).forEach((ln) => pts.push(f(ln.a), f(ln.b)));
     const bb = bboxOf(pts), cen = { x: (bb.x0 + bb.x1) / 2, y: (bb.y0 + bb.y1) / 2 };
     fit(b, bb, { l: 104, r: 70, t: 56, b: 70 });
-    S3.planeFig(g, spec.poly, { horiz, axisText: '회전축 l', ext: spec.ext, axisDx: -38 });
+    S3.planeFig(g, spec.poly, { horiz, axisText: '회전축 l', ext: spec.ext, axisDx: spec.axisDx == null ? -38 : spec.axisDx });
     (spec.lines || []).forEach((ln) => { b.seg(f(ln.a), f(ln.b), { color: AMB, width: 2.6 }); });
     (spec.rights || []).forEach((r) => {
       const c = f(r.c), a = f([r.c[0] + r.da[0], r.c[1] + r.da[1]]), d = f([r.c[0] + r.db[0], r.c[1] + r.db[1]]);
@@ -250,8 +250,9 @@
       if (C.problem) {
         prob2D(b, {
           poly: [[0, 0], [M.pb, 0], [M.pt, M.ph], [0, M.ph]], horiz: M.pax === 'h',
+          axisDx: b.W < 560 && !b.thumb && M.pax !== 'h' ? -46 : undefined,
           rights: [{ c: [0, 0], da: [0.45, 0], db: [0, 0.45] }, { c: [0, M.ph], da: [0.45, 0], db: [0, -0.45] }],
-          labels: [{ a: [0, 0], b: [M.pb, 0], text: `${M.pb} cm` }, { a: [0, M.ph], b: [M.pt, M.ph], text: `${M.pt} cm` }, { a: [0, 0], b: [0, M.ph], text: `${M.ph} cm`, out: M.pax === 'h' ? [0, -1] : [-1, 0] }]
+          labels: [{ a: [0, 0], b: [M.pb, 0], text: `${M.pb} cm` }, { a: [0, M.ph], b: [M.pt, M.ph], text: `${M.pt} cm`, out: b.W < 560 && !b.thumb && M.pax !== 'h' ? [0, 1] : undefined }, { a: [0, 0], b: [0, M.ph], text: `${M.ph} cm`, out: M.pax === 'h' ? [0, -1] : [-1, 0] }]
         });
         return;
       }
@@ -377,7 +378,13 @@
         const w = M.pw;
         let poly, labels, rights = [], horiz = false, lines = [];
         if (M.c5 === 'rect0') { poly = [[0, 0], [w, 0], [w, 4], [0, 4]]; labels = [{ a: [0, 0], b: [w, 0], text: `${w} cm` }, { a: [w, 0], b: [w, 4], text: '4 cm' }]; }
-        else if (M.c5 === 'rect1') { poly = [[2, 0], [2 + w, 0], [2 + w, 4], [2, 4]]; labels = [{ a: [2, 0], b: [2 + w, 0], text: `${w} cm` }, { a: [2, 0], b: [2, 4], text: '4 cm' }, { a: [0, -0.5], b: [2, -0.5], text: '축까지 2 cm', out: [0, -1] }]; lines = [{ a: [0, -0.5], b: [2, -0.5] }]; }
+        else if (M.c5 === 'rect1') {
+          const narrow = b.W < 560 && !b.thumb, widthY = narrow ? 4 : 0;
+          poly = [[2, 0], [2 + w, 0], [2 + w, 4], [2, 4]];
+          // 짧은 모바일 무대에서는 너비는 윗변에, 축까지의 거리는 아랫쪽에 둡니다.
+          labels = [{ a: [2, widthY], b: [2 + w, widthY], text: `${w} cm`, out: narrow ? [0, 1] : undefined }, { a: [2, 0], b: [2, 4], text: '4 cm' }, { a: [0, -0.5], b: [2, -0.5], text: '축까지 2 cm', out: [0, -1] }];
+          lines = [{ a: [0, -0.5], b: [2, -0.5] }];
+        }
         else if (M.c5 === 'tri') { rights = [{ c: [2.4, 1.8], da: [-0.6, 0.8], db: [-0.8, -0.6] }]; poly = [[0, 0], [2.4, 1.8], [0, 5]]; labels = [{ a: [0, 0], b: [2.4, 1.8], text: '3 cm', out: [1, -0.6] }, { a: [2.4, 1.8], b: [0, 5], text: '4 cm', out: [1, 0.6] }, { a: [0, 0], b: [0, 5], text: '5 cm', out: [-1, 0] }]; }
         else { poly = [[0, 0], [3, 0], [0, 4]]; labels = [{ a: [0, 0], b: [3, 0], text: '3 cm' }, { a: [0, 0], b: [0, 4], text: '4 cm', out: [-1, 0] }]; rights = [{ c: [0, 0], da: [0.5, 0], db: [0, 0.5] }]; }
         prob2D(b, { poly, horiz, labels, rights, lines });
