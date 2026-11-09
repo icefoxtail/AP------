@@ -9,7 +9,7 @@
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 1072824 bytes
-- 시험지 JS 총 크기: 57209949 bytes
+- 시험지 JS 총 크기: 57209764 bytes
 - 인덱스 크기: 11338943 bytes
 - 로드 실패 파일: 0
 
