@@ -1339,7 +1339,34 @@
         w.path([...sec.path, goatPoint(sec, th)], { color: 'rose', width: 2.6, alpha: 0.95, ref: 'rope' });
         if (sec.chain === 'A') {
           const P = goatPoint(sec, th), nrm = [-Math.sin(th), Math.cos(th)];
-          w.text([(sec.c[0] + P[0]) / 2 + nrm[0] * 0.65, (sec.c[1] + P[1]) / 2 + nrm[1] * 0.65], `끈 ${num(M.L)} m`, { color: 'rose' });
+          const middle = [(sec.c[0] + P[0]) / 2, (sec.c[1] + P[1]) / 2];
+          const pos = [middle[0] + nrm[0] * 0.65, middle[1] + nrm[1] * 0.65];
+          const text = `끈 ${num(M.L)} m`, style = { align: 'center', baseline: 'middle', weight: 800, size: 13.5, color: 'rose' };
+          let moved = false;
+          if (sc.id === 'gt-kennel') {
+            const size = b.annotationSize(text, style), at = w.toS(pos);
+            const caption = w.toS([sec.c[0] + Math.cos(th) * sec.R * 0.58, sec.c[1] + Math.sin(th) * sec.R * 0.58]);
+            const rows = [`r = ${num(sec.R)}`, `${sec.deg}°`];
+            const crowded = rows.some((row, i) => {
+              const rowSize = b.annotationSize(row, style), rowY = caption.y + (i - 0.5) * 16;
+              return Math.abs(at.x - caption.x) < (size.width + rowSize.width) / 2
+                && Math.abs(at.y - rowY) < (size.height + rowSize.height) / 2;
+            });
+            if (crowded) {
+              // Keep the given rope length separate from the 270° sector caption.
+              // Its connector points to the actual rope midpoint, not the angle.
+              const anchor = w.toS(middle);
+              const captionTop = caption.y - 8 - b.annotationSize(rows[0], style).height / 2;
+              const target = {
+                x: Math.max(size.width / 2 + 8, anchor.x - size.width / 2 - 18),
+                y: Math.max(size.height / 2 + 8, Math.min(anchor.y - size.height / 2 - 18, captionTop - size.height / 2 - 8))
+              };
+              b.leader(anchor, target, { px: true, ...size, color: 'rose', lineWidth: 1.2, gap: 4, ref: 'rope' });
+              b.stext(target.x, target.y, text, style);
+              moved = true;
+            }
+          }
+          if (!moved) w.text(pos, text, { color: 'rose' });
         }
       }
     }

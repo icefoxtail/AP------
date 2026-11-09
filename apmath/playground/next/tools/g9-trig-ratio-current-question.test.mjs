@@ -297,7 +297,7 @@ test('all scene drawings: given → construction → final use current question;
   for (const sc of scenes) {
     seed = 1701; const s = {}; sc.enter(s);
     for (const tab of ['explore', 'problem', 'review']) for (const step of tab === 'review' ? [1, 2, 3, sc.steps(s).length] : [0]) {
-      s.step = step; const b = board(); sc.draw(b, s, {}, { tab }); assert.ok(b.log.length > 5, sc.id);
+      s.step = step; const b = annotationBoard(390, 490); sc.draw(b, s, {}, { tab }); assert.ok(b.log.length > 5, sc.id);
     }
   }
   const sc = scene('r1-1'), s = {}; sc.enter(s); const originalDraw = sc.tg.draw, originalPdraw = sc.tg.pdraw;

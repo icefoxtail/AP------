@@ -402,6 +402,25 @@
     const kpx = b.k;
     const colOf = (rt) => ARC_COL[rt.arc % ARC_COL.length];
     const compact = kpx < 10; // 길이 아주 긴 그림을 작은 화면에 통째로 담을 때: 겹치는 보조 글자는 줄입니다
+    // 진행 후의 길이·중심각만 실제 글자 크기로 배치합니다. 처음 그림, 문제,
+    // 미리보기/경계 측정과 반원의 기존 표현은 그대로 유지합니다.
+    const arrange = !thumb && !b._bbox && !sc.plain && !sc.outline && spec.shape !== 'semi' && sc.fracs.some(fr => fr > 0);
+    const occupied = [], pending = [];
+    const textBox = (x, y, text, o) => {
+      const size = b.annotationSize(text, o), align = o.align || 'center', base = o.baseline || 'middle';
+      const left = x - (align === 'center' ? size.width / 2 : align === 'right' ? size.width : 0);
+      const top = y - (base === 'middle' ? size.height / 2 : base === 'top' ? 0 : size.height * .8);
+      return { left, right: left + size.width, top, bottom: top + size.height };
+    };
+    const trackText = (draw) => {
+      if (!arrange) return draw();
+      const original = b._text;
+      b._text = function (x, y, text, o = {}, screen) {
+        if (text != null && (o.alpha == null || o.alpha > 0)) occupied.push(textBox(x, y, text, o));
+        return original.call(this, x, y, text, o, screen);
+      };
+      try { return draw(); } finally { b._text = original; }
+    };
     const outline = (pos) => pos.slice(0, n);
     const cen = (pos) => { const o = outline(pos); return { x: o.reduce((t, p) => t + p.x, 0) / o.length, y: o.reduce((t, p) => t + p.y, 0) / o.length }; };
     const away = (p, c, px) => { const dx = p.x - c.x, dy = p.y - c.y, l = Math.hypot(dx, dy) || 1; return { dx: (dx / l) * px, dy: (-dy / l) * px }; };
@@ -423,7 +442,7 @@
       ctx.fill();
       ctx.restore();
     };
-    const label = (p, text, o = {}) => {
+    const pastOutside = (p, text, o = {}) => {
       // 따라가는 화면 밖으로 지난 호/점의 주석을 반쯤 남기지 않습니다.
       // 현재 도형의 조건은 화면 맞춤으로 보존하며 전체 보기에서는 모두 표시합니다.
       if (o.past && sc.localFocus && !thumb && !b._bbox) {
@@ -431,9 +450,17 @@
         const rows = Array.isArray(text) ? text : [text];
         const width = Math.max(...rows.map(row => [...String(row)].reduce((w, ch) => w + size * (ch.charCodeAt(0) >= 0x1100 ? 1 : .67), 0))) + 8;
         const height = size * 1.35 * rows.length, x = S.x + (o.dx || 0), y = S.y + (o.dy || 0);
-        if (x - width / 2 < 6 || x + width / 2 > b.W - (b.W < 560 ? 28 : 6) || y - height / 2 < (b.insets.top || 0) + 4 || y + height / 2 > b.H - (b.insets.bottom || 0) - 4) return;
+        return x - width / 2 < 6 || x + width / 2 > b.W - (b.W < 560 ? 28 : 6) || y - height / 2 < (b.insets.top || 0) + 4 || y + height / 2 > b.H - (b.insets.bottom || 0) - 4;
       }
-      b.text(P(p), text, { size: FS.len, weight: 800, align: 'center', baseline: 'middle', ...o });
+      return false;
+    };
+    const label = (p, text, o = {}) => {
+      if (pastOutside(p, text, o)) return;
+      trackText(() => b.text(P(p), text, { size: FS.len, weight: 800, align: 'center', baseline: 'middle', ...o }));
+    };
+    const later = (p, text, o, anchors, kind) => {
+      if (arrange) { if (!pastOutside(p, text, o)) pending.push({ p, text, o, anchors, kind }); }
+      else label(p, text, o);
     };
     const vlabel = (p, c, text, color, size, past = false) => { const o = away(p, c, 17); label(p, text, { dx: o.dx, dy: o.dy, color: color || 'ink', size: size || FS.name, past }); };
     const pastArc = (rt) => rt.i !== (sc.tab === 'review' && sc.item && sc.item.rot != null ? sc.item.rot : Math.min(sc.k, N - 1));
@@ -448,7 +475,8 @@
       const o = outward(pos[a], pos[bb], pos);
       // 처음·끝 반원을 함께 담는 모바일 문제에서는 반지름과 중심 O를 서로 다른 줄에 둡니다.
       const offset = spec.shape === 'semi' && sc.plain && b.W < 560 && !thumb ? 48 : 19;
-      label({ x: o.mx, y: o.my }, text, { dx: o.nx * offset, dy: -o.ny * offset, size: FS.len, color: 'ink', weight: 800 });
+      const mid = { x: o.mx, y: o.my };
+      later(mid, text, { dx: o.nx * offset, dy: -o.ny * offset, size: FS.len, color: 'ink', weight: 800 }, [mid], 'given-length');
     };
     const drawMarks = (pos, o) => {
       if (thumb) return;
@@ -461,7 +489,7 @@
       }
       sh.angles.forEach((a) => {
         if (o.onlyGiven && !a.given) return;
-        b.angle(q(a.i), q(a.i + 1), q(a.i - 1), { r: 22, rings: a.rings, color: 'amber', label: a.label ? `${snapInt(Math.round(a.deg * 100) / 100)}°` : undefined, labelGap: 15, size: FS.ang });
+        trackText(() => b.angle(q(a.i), q(a.i + 1), q(a.i - 1), { r: 22, rings: a.rings, color: 'amber', label: a.label ? `${snapInt(Math.round(a.deg * 100) / 100)}°` : undefined, labelGap: 15, size: FS.ang }));
       });
     };
     const drawLens = (pos, diag) => {
@@ -479,7 +507,7 @@
     b.hline(0, { color: 'muted', width: 3 });
     if (!thumb) {
       const ys = b.toS(P({ x: 0, y: 0 })).y;
-      b.stext(b.W - (b.panes ? 0 : b.insets.right) - 24, ys + 16, 'l', { color: 'muted', size: 16, weight: 800, align: 'center', baseline: 'middle' });
+      trackText(() => b.stext(b.W - (b.panes ? 0 : b.insets.right) - 24, ys + 16, 'l', { color: 'muted', size: 16, weight: 800, align: 'center', baseline: 'middle' }));
     }
 
     /* ---------- 교과서 문제 그림(풀이 전): 처음·끝 모양과 자취, 주어진 길이·각만 ---------- */
@@ -585,8 +613,12 @@
         const rho = inside ? rhoPx / kpx : rt.r;
         const anchor = { x: rt.C.x + rho * Math.cos(m), y: rt.C.y + rho * Math.sin(m) };
         const ox = inside ? 0 : Math.cos(m) * 34, oy = inside ? 0 : -Math.sin(m) * 34;
-        label(anchor, `r=${rOf(rt)}`, { dx: ox, dy: oy - 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) });
-        label(anchor, `${live}°`, { dx: ox, dy: oy + 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) });
+        const sweep = rt.theta * D2R * fr, at = (a, r) => ({ x: rt.C.x + r * Math.cos(a), y: rt.C.y + r * Math.sin(a) });
+        // 옮긴 글자는 실제로 그린 반지름·현재 각의 호에 연결합니다.
+        const radii = [at(rt.phi0, rt.r / 2), at(rt.phi0 - sweep, rt.r / 2)];
+        const angle = at(rt.phi0 - sweep / 2, rt.r * kpx >= 44 ? 18 / kpx : rt.r);
+        later(anchor, `r=${rOf(rt)}`, { dx: ox, dy: oy - 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) }, radii, 'radius');
+        later(anchor, `${live}°`, { dx: ox, dy: oy + 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) }, [angle], 'central-angle');
         if (rt.r * kpx >= 44) { // 중심각 표시(중심 가까이에 작은 호)
           const S = b.toS(P(rt.C));
           ctx.save();
@@ -658,6 +690,49 @@
             }
           });
         });
+      }
+    }
+    // 점 이름·내각을 먼저 확보한 뒤 길이와 중심각을 가까운 빈 곳에 둡니다.
+    // 배치만 달라지며 도형의 좌표, 카메라, 회전량, 풀이 공개 단계는 바꾸지 않습니다.
+    if (arrange) {
+      const edges = outline(pos).map(P).map(p => b.toS(p));
+      const overlap = (a, c) => a.left < c.right + 2 && a.right > c.left - 2 && a.top < c.bottom + 2 && a.bottom > c.top - 2;
+      const crosses = (box, a, c) => {
+        let lo = 0, hi = 1;
+        for (const [v, d, min, max] of [[a.x, c.x - a.x, box.left - 2, box.right + 2], [a.y, c.y - a.y, box.top - 2, box.bottom + 2]]) {
+          if (Math.abs(d) < 1e-9) { if (v < min || v > max) return false; }
+          else { const p = (min - v) / d, q = (max - v) / d; lo = Math.max(lo, Math.min(p, q)); hi = Math.min(hi, Math.max(p, q)); if (lo > hi) return false; }
+        }
+        return true;
+      };
+      for (const item of pending) {
+        const S = b.toS(P(item.p)), o = { size: FS.len, weight: 800, align: 'center', baseline: 'middle', ...item.o };
+        const preferred = { x: S.x + (o.dx || 0), y: S.y + (o.dy || 0) };
+        const size = b.annotationSize(item.text, o), anchors = item.anchors.map(p => b.toS(P(p)));
+        const connection = (p) => anchors.filter(a => {
+          const dx = Math.max(0, Math.abs(a.x - p.x) - size.width / 2), dy = Math.max(0, Math.abs(a.y - p.y) - size.height / 2);
+          return Math.hypot(dx, dy) >= 6;
+        }).sort((a, c) => Math.hypot(a.x - p.x, a.y - p.y) - Math.hypot(c.x - p.x, c.y - p.y))[0];
+        const clear = (p) => {
+          const box = { left: p.x - size.width / 2, right: p.x + size.width / 2, top: p.y - size.height / 2, bottom: p.y + size.height / 2 };
+          return box.left >= 6 && box.right <= b.W - (b.W < 560 ? 28 : 6) && box.top >= (b.insets.top || 0) + 4 && box.bottom <= b.H - (b.insets.bottom || 0) - 4 &&
+            !occupied.some(q => overlap(box, q)) && !edges.some((a, i) => crosses(box, a, edges[(i + 1) % edges.length])) &&
+            (Math.hypot(p.x - preferred.x, p.y - preferred.y) < 1 || connection(p));
+        };
+        let chosen = clear(preferred) ? preferred : null;
+        // 화면 픽셀로 탐색하여 확대율이나 cm 값이 바뀌어도 글자 간격을 지킵니다.
+        for (let r = 8; !chosen && r <= Math.max(b.W, b.H); r += 8) {
+          for (let j = 0; j < 24; j++) {
+            const a = -Math.PI / 2 + j * Math.PI / 12, candidate = { x: preferred.x + r * Math.cos(a), y: preferred.y + r * Math.sin(a) };
+            if (clear(candidate)) { chosen = candidate; break; }
+          }
+        }
+        chosen = chosen || preferred;
+        if (Math.hypot(chosen.x - preferred.x, chosen.y - preferred.y) > 1) {
+          const anchor = connection(chosen);
+          b.leader(anchor, chosen, { px: true, width: size.width, height: size.height, gap: 2, lineWidth: 1.2, color: o.color, part: o.part, ref: 'rolling-' + item.kind });
+        }
+        trackText(() => b.text(P(item.p), item.text, { ...o, dx: chosen.x - S.x, dy: chosen.y - S.y }));
       }
     }
   }

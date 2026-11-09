@@ -240,6 +240,63 @@ test('reflection review refuses a changed question before capturing the mismatch
   assert.equal(f.captured.some(s => s.startsWith('target-reflection-construction-step2-')), false);
 });
 
+test('retained review exploration adds exactly 26 bound endpoint frames on the existing common profiles', async () => {
+  const ids = ['bas-1', 'bas-4', 'bas-6', 'bas-9', 'bas-11', 'adv-8', 'bas-14'];
+  const profiles = ['pc-paper', 'pc-board', 'tablet-portrait-paper', 'tablet-portrait-board', 'tablet-landscape-paper', 'tablet-landscape-board', 'mobile-paper', 'mobile-board'];
+  let added = 0;
+  for (const profile of profiles) {
+    const f = fixture('common-functions');
+    for (const id of ids) {
+      const rows = await f.run(id, profile);
+      if (!['pc-paper', 'mobile-board'].includes(profile)) {
+        assert.deepEqual(rows, [], id + '/' + profile + ' remains outside the common target profiles');
+        continue;
+      }
+      const extra = rows.filter(e => e.state.startsWith('target-function-retained-review-t'));
+      assert.deepEqual(extra.map(e => e.actual.state.t), id === 'bas-14' ? [0] : [0, 1], id + '/' + profile);
+      assert.equal(rows.length, id === 'bas-14' ? 3 : 2);
+      if (id === 'bas-14') {
+        assert.deepEqual(rows.slice(0, 2).map(e => [e.state, e.actual.state.t]), [['target-root-directions-1', 0.6], ['target-root-directions-2', 1]], 'both existing direction targets retain their names and values');
+      }
+      for (const e of extra) {
+        added++;
+        assert.equal(e.actual.scene, id);
+        assert.equal(e.actual.tab, 'explore');
+        assert.equal(e.actual.step, 4, 'the real tab transition retains the completed review step');
+        assert.equal(e.actual.step, e.fixture.previousReviewStep);
+        assert.equal(e.actual.revealed, false);
+        assert.equal(e.actual.state.playing, false);
+        assert.equal(e.actual.state.t, e.fixture.t);
+        assert.ok(e.actual.conditionText.length > 0);
+        assert.equal(e.conditionSHA256, createHash('sha256').update(e.actual.conditionText).digest('hex'));
+        assert.equal(e.fixture.conditionSHA256, e.conditionSHA256);
+        assert.equal(e.fixture.variantIndex, e.actual.variantIndex);
+        assert.equal(e.method, 'visible-slider-input-and-tab-transition');
+        assert.equal(e.nativeInteractionPass, false, 'this target does not replace the native interaction gate');
+        assert.equal(e.visualVerdict, 'AWAITING_INDEPENDENT_REVIEW');
+        assert.ok(f.measured.includes(e.state) && f.captured.includes(e.state));
+      }
+      assert.equal(new Set(rows.map(e => e.conditionSHA256)).size, 1, 'all old and new frames retain the fixed question');
+    }
+  }
+  assert.equal(added, 26, 'additive targets leave the 1304 required base states unchanged');
+});
+
+test('retained review endpoint capture rejects changed questions or a lost review step', async () => {
+  const changed = fixture('common-functions'), clone = changed.lab.refs.problemText.cloneNode;
+  changed.lab.refs.problemText.cloneNode = () => {
+    const node = clone();
+    if (changed.lab.tab === 'explore' && changed.lab.s.t === 1) node.textContent += ' changed question';
+    return node;
+  };
+  await assert.rejects(changed.run('bas-1'), /Retained review exploration question changed/);
+  assert.equal(changed.captured.length, 1, 'the changed second endpoint is rejected before capture');
+  const lost = fixture('common-functions'), setTab = lost.lab.setTab.bind(lost.lab);
+  lost.lab.setTab = tab => { setTab(tab); if (tab === 'explore') lost.lab.s.step = 0; };
+  await assert.rejects(lost.run('bas-1'), /Retained review exploration state changed/);
+  assert.equal(lost.captured.length, 0);
+});
+
 test('all selected repairs resolve actual source controls and emit measured evidence or explicit debt', async () => {
   let scenes = 0, frames = 0;
   for (const name of ['common-circle-eq', 'common-functions', 'common-irrational', 'common-rational', 'alg-sequence', 'alg-sine-cosine-law']) {
@@ -362,21 +419,22 @@ test('different inputs sharing an output remain highlighted with a visible value
   assert.equal(lastAtOutput.args[2].halo, false);
 });
 
-function drawDecreasingCounterexample(tab, step, t) {
-  const { lab } = fixture('common-functions');
-  lab.goScene(lab.list.findIndex(s => s.id === 'bas-7'));
+function drawFunctionScene(id, tab, step, t, existingLab) {
+  const lab = existingLab || fixture('common-functions').lab;
+  if (!existingLab) lab.goScene(lab.list.findIndex(s => s.id === id));
+  assert.equal(lab.scene.id, id);
   lab.setTab(tab); lab.setStep(step); lab.s.t = t;
   const marks = [], no = () => {};
   const board = { W: 1000, H: 700, k: 1, lw: 1, fs: 1, font: 'sans-serif',
     colors: {}, _ts: () => 1, color: c => c, toS: (x,y) => ({x,y}),
     ctx: new Proxy({ measureText: s => ({width: String(s).length * 7}) }, {get: (o,k) => k in o ? o[k] : no}) };
-  for (const method of ['seg', 'point', 'handle', 'right', '_text']) {
+  for (const method of ['seg', 'path', 'poly', 'circle', 'text', 'point', 'handle', 'right', '_text']) {
     board[method] = (...args) => { marks.push({method,args}); return board; };
   }
   const view = lab.scene.view(lab.s, lab);
   lab.scene.draw(board, lab.s, view, lab);
   const segments = color => marks.filter(m => m.method === 'seg' && m.args[2].color === color).map(m => m.args.slice(0,2));
-  return { marks, view, f: segments('#38bdf8'), inverse: segments('#f472b6') };
+  return { lab, marks, view, f: segments('#38bdf8'), inverse: segments('#f472b6') };
 }
 
 // Independent segment intersection calculation. In particular, a positive-length
@@ -404,11 +462,12 @@ function commonPoints(left, right) {
 
 test('the decreasing-function diagram has exactly three isolated inverse intersections at every comparison step', () => {
   for (const tab of ['explore','review']) for (const step of [0,1,2,3,4]) for (const t of [0,1]) {
-    const {marks,f,inverse} = drawDecreasingCounterexample(tab,step,t);
+    const {marks,f,inverse} = drawFunctionScene('bas-7',tab,step,t);
     assert.ok(f.length >= 4);
     // Design coordinates have downward-positive y: both x and screen y increase.
     for (const [a,b] of f) assert.ok(b.x>a.x && b.y>a.y, 'strictly decreasing function');
-    if (!inverse.length) { assert.equal(tab,'explore'); assert.ok(t<=.2 && step<2); continue; }
+    assert.equal(inverse.length > 0, tab !== 'explore' || t > .2, 'exploration follows its comparison slider, not a retained review step');
+    if (!inverse.length) continue;
     const fixed = marks.find(m => m.method === 'point' && m.args[1].color === '#fbbf24').args[0];
     const mirrorSum=fixed.x+fixed.y;
     assert.equal(inverse.length,f.length);
@@ -428,7 +487,7 @@ test('the decreasing-function diagram has exactly three isolated inverse interse
 });
 
 test('the decreasing-function final comparison keeps the slope -1 chord and perpendicular marker', () => {
-  const {marks,view}=drawDecreasingCounterexample('review',4,0);
+  const {marks,view}=drawFunctionScene('bas-7','review',4,0);
   assert.match(view.guide,/3개의 교점/);
   const chord=marks.find(m=>m.method==='seg' && m.args[2].color==='#fb7185' && m.args[2].dash?.join(',')==='4,4');
   assert.ok(chord,'outer symmetric pair is connected');
@@ -436,6 +495,58 @@ test('the decreasing-function final comparison keeps the slope -1 chord and perp
   assert.ok(Math.abs((b.y-a.y)-(b.x-a.x))<1e-8,'screen slope +1 means mathematical slope -1');
   const [o,p,q]=marks.find(m=>m.method==='right').args;
   assert.ok(Math.abs((p.x-o.x)*(q.x-o.x)+(p.y-o.y)*(q.y-o.y))<1e-8,'symmetry line and chord are perpendicular');
+});
+
+test('slider-owned exploration restores the first-entry diagram after completing review without discarding that review step', () => {
+  const cases = {
+    'bas-1': [0,.4,.5,.6,1], 'bas-4': [0,.005,.5,1],
+    'bas-5': [0,.195,.2,.495,.5,.895,.9,1], 'bas-6': [0,.05,.055,1],
+    'bas-7': [0,.2,.205,1], 'bas-9': [0,.1,.105,1],
+    'bas-11': [.3,.445,.45,.65,.795,.8,1],
+    'bas-14': [.25,.495,.5,.6,.895,.9,1],
+    'adv-8': [0,.145,.15,.345,.35,.6,.75,.755,.85,.855,1]
+  };
+  const serial = value => JSON.parse(JSON.stringify(value));
+  for (const [id, values] of Object.entries(cases)) for (const t of values) {
+    const first = drawFunctionScene(id,'explore',0,t);
+    const completed = drawFunctionScene(id,'review',4,t);
+    const revisited = drawFunctionScene(id,'explore',4,t,completed.lab);
+    assert.equal(revisited.lab.s.step,4, id + ': retained review state is preserved');
+    assert.equal(revisited.lab.s.t,t, id + ': rendering does not replace the chosen slider value');
+    assert.deepEqual(serial(revisited.marks),serial(first.marks), id + '/' + t + ': first-entry geometry');
+    assert.deepEqual(serial(revisited.view),serial(first.view), id + '/' + t + ': first-entry guide/status');
+    // The production shell calls presets with state only, unlike view/draw.
+    const labels = lab => lab.scene.presets(lab.s).map(p => p.label);
+    assert.deepEqual(serial(labels(revisited.lab)),serial(labels(first.lab)), id + ': preset meaning');
+    assert.equal(revisited.lab.params.t.format(t,revisited.lab.s),first.lab.params.t.format(t,first.lab.s), id + ': current slider readout');
+    const restored = drawFunctionScene(id,'review',4,t,revisited.lab);
+    assert.deepEqual(serial(restored.marks),serial(completed.marks), id + ': return to the completed fixed review');
+    assert.deepEqual(serial(restored.view),serial(completed.view), id + ': completed review text is preserved');
+  }
+});
+
+test('retained-step exploration obeys composition thresholds and the original-function preset', () => {
+  const pointLabels = marks => marks.filter(m => ['point','handle'].includes(m.method)).map(m => m.args.at(-1).label);
+  for (const [t,count] of [[0,0],[.195,0],[.2,1],[.495,1],[.5,2],[.895,2],[.9,3],[1,3]]) {
+    const completed = drawFunctionScene('bas-5','review',4,t);
+    const current = drawFunctionScene('bas-5','explore',4,t,completed.lab);
+    const labels = pointLabels(current.marks);
+    assert.equal(labels.filter(s => /f(?:²|³)?\(a\)/.test(s)).length,count, 'requested iterate count at t=' + t);
+  }
+  const completed = drawFunctionScene('bas-7','review',4,1), lab = completed.lab;
+  lab.setTab('explore');
+  Object.assign(lab.s,lab.scene.presets(lab.s)[0].set);
+  const original = drawFunctionScene('bas-7','explore',lab.s.step,lab.s.t,lab);
+  assert.equal(original.inverse.length,0);
+  assert.equal(pointLabels(original.marks).filter(s => /바깥|\(-3, 3\)|\(3, -3\)/.test(s)).length,0);
+  assert.equal(original.marks.filter(m => m.method === 'right').length,0);
+  assert.doesNotMatch(original.view.guide,/전체 보조선|3개의 교점/);
+  Object.assign(lab.s,lab.scene.presets(lab.s)[1].set);
+  const compared = drawFunctionScene('bas-7','explore',lab.s.step,lab.s.t,lab);
+  assert.equal(compared.inverse.length,5,'inverse curve returns at the comparison endpoint');
+  assert.equal(pointLabels(compared.marks).filter(s => /\(-3, 3\)|\(3, -3\)/.test(s)).length,2,'the two off-axis intersection coordinates return');
+  assert.equal(compared.marks.filter(m => m.method === 'right').length,0,'review-only chord annotation stays in review');
+  assert.equal(drawFunctionScene('bas-7','review',lab.s.step,0,lab).marks.filter(m => m.method === 'right').length,1);
 });
 
 test('circle line clipping retains distinct boundary endpoints and rejects a corner-only contact', () => {

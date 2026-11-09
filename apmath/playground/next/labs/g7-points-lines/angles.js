@@ -465,13 +465,17 @@
     },
     draw: (g, q, mode, step) => {
       const c = clockOf(q.h, q.m), A0 = 30 * c.hh, ch = 5.5 * q.m, d = A0 - ch, ad = Math.abs(d), rev = mode === 'review';
+      // 작은 숫자판의 값은 바늘·시각 숫자와 겹치지 않게 아래 계산줄에서 읽어요.
+      // 실제 시계 반지름을 기준으로 하므로 세로 태블릿의 작은 시계도 보호합니다.
+      const faceLabels = g.thumb || g.k(1) >= 90;
       const wedges = [];
-      if (rev && step === 1 && A0 > 0) wedges.push({ from: 0, len: A0, r: 0.25, color: 'amber', ref: 'h', label: A0 + '°', fa: 0.22 });
-      if (mode === 'explore' || (rev && step >= 4)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: c.gap >= 25 ? n1(c.gap) + '°' : '' });
+      if (rev && step === 1 && A0 > 0) wedges.push({ from: 0, len: A0, r: 0.25, color: 'amber', ref: 'h', label: faceLabels ? A0 + '°' : '', fa: 0.22 });
+      if (mode === 'explore' || (rev && step >= 4)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: faceLabels && c.gap >= 25 ? n1(c.gap) + '°' : '' });
       drawClock(g, q, mode, { wedges, ref12: rev && step <= 1, ghostHour: rev && step === 1 ? A0 : null });
       g.box(-1, -1, 1, -1);
       if (mode === 'problem') return;
       const lines = [];
+      if (!faceLabels && rev && step === 1) lines.push({ t: `정각의 시침  30°×${c.hh} = ${A0}°`, c: 'amber', ref: 'h' });
       if (mode === 'explore' || (rev && step >= 3)) lines.push({ t: `5.5°×${q.m} = ${n1(ch)}°  따라잡음`, c: 'sky', ref: 'm' });
       if (mode === 'explore' || (rev && step >= 4)) {
         lines.push({ t: `사잇각  |${A0}° − ${n1(ch)}°| = ${n1(ad)}°`, c: 'green', ref: 'g' });
@@ -484,7 +488,13 @@
       g.dot([xe, yb], { color: 'green', r: 5 });
       g.text([x0, yb], '0°', { dy: 24, size: 14, color: 'muted', align: 'left' });
       g.text([x1, yb], '180°', { dy: 24, size: 14, color: 'muted', align: 'right' });
-      lines.forEach((l, i) => g.text([0, yb], l.t, { dy: 52 + i * 27, size: 17, color: l.c, ...(l.ref ? { ref: l.ref } : {}) }));
+      lines.forEach((l, i) => {
+        // 180°를 넘는 소수 각도도 계산줄 끝이 잘리지 않게 실제 글자 폭에 맞춥니다.
+        // 자동 맞춤을 측정할 때의 원래 범위는 유지합니다.
+        const measured = !g.b._bbox && !faceLabels ? g.b.annotationSize(l.t, { size: 17 }).width : 0;
+        const size = measured > g.b.W - 24 ? Math.max(14, 17 * (g.b.W - 24) / measured) : 17;
+        g.text([0, yb], l.t, { dy: 52 + i * 27, size, color: l.c, ...(l.ref ? { ref: l.ref } : {}) });
+      });
     },
     problem: (q) => {
       const ch = gapChoices(q.h, q.m);

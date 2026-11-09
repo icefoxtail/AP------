@@ -28,6 +28,40 @@
   };
 
   /* ---- 탑과 두 관측점 ---- */
+  // A text box may fit the canvas while lying on a different side of the triangle.
+  // Test the projected sides themselves before relocating the two standard heights.
+  function heightBoxHits(a, z, q, gap = 4) {
+    let lo = 0, hi = 1;
+    for (const [axis, min, max] of [['x', q.x0 - gap, q.x1 + gap], ['y', q.y0 - gap, q.y1 + gap]]) {
+      const d = z[axis] - a[axis];
+      if (Math.abs(d) < 1e-9) { if (a[axis] < min || a[axis] > max) return false; }
+      else { const t0 = (min - a[axis]) / d, t1 = (max - a[axis]) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); }
+    }
+    return lo <= hi;
+  }
+  function standardHeightTag(b, A, H, B, C, value) {
+    const a = b.toS(A), h = b.toS(H), sides = [b.toS(B), b.toS(C)];
+    let size = b.annotationSize(value, { size: 16, weight: 800 }), w = size.width, hh = size.height + 2;
+    const box = (x, y) => ({ x0: x - w / 2, x1: x + w / 2, y0: y - hh / 2, y1: y + hh / 2 });
+    const original = box(a.x - 8 - w / 2, a.y + (h.y - a.y) * .3);
+    if (!sides.some(p => heightBoxHits(a, p, original))) return false;
+    value = value.replace(/\s*=\s*/, '=');
+    size = b.annotationSize(value, { size: 16, weight: 800 }); w = size.width; hh = size.height + 2;
+    const clear = q => q.x0 >= 6 && q.x1 <= b.W - 32 && q.y0 >= 48 && q.y1 <= h.y - 32 &&
+      !sides.some(p => heightBoxHits(a, p, q)) && !(b._tgBoxes || []).some(p => q.x0 < p.x1 + 3 && q.x1 > p.x0 - 3 && q.y0 < p.y1 + 3 && q.y1 > p.y0 - 3);
+    const candidates = [];
+    // Prefer a value on AH itself, clear of both oblique sides. If the interior
+    // is too narrow, use the empty exterior and retain a connector to AH.
+    for (let dy = 0; dy <= (h.y - a.y) * .25; dy += 2) for (const dx of [0, -8, 8, -16, 16]) candidates.push({ x: clamp(a.x + dx, w / 2 + 6, b.W - 32 - w / 2), y: (a.y + h.y) / 2 + dy });
+    candidates.push({ x: clamp(a.x - w / 2 - 28, w / 2 + 6, b.W - 32 - w / 2), y: Math.max(48 + hh / 2, a.y - 28) });
+    for (const f of [.5, .4, .3, .6]) for (const x of [w / 2 + 10, b.W - 36 - w / 2]) candidates.push({ x, y: a.y + (h.y - a.y) * f });
+    const target = candidates.find(p => clear(box(p.x, p.y)));
+    if (!target) return false;
+    const anchor = mid(A, H), at = b.toS(anchor);
+    line(b, A, H, 'rose', 3);
+    T(b, anchor, value, { dx: target.x - at.x, dy: target.y - at.y, size: 16, color: 'rose', leaderAnchor: anchor, leader: true });
+    return true;
+  }
   // o = { h, xb, xc, side:'opp'|'same', step, L:{a,h,B,C,x,y,hx}, handle, s }
   function drawTower(b, o) {
     const { h, xb } = o, xc = o.same ? -o.xc : o.xc, st = o.step == null ? 99 : o.step;
@@ -50,7 +84,7 @@
     if (o.handle) { b.handle('B', B, { color: 'sky', r: 8, ariaLabel: '관측점 B 끌기', drag: o.handle.B }); b.handle('C', Cc, { color: 'green', r: 8, ariaLabel: '관측점 C 끌기', drag: o.handle.C }); }
     else { b.point(B, { color: 'sky', r: 5 }); b.point(Cc, { color: 'green', r: 5 }); }
     T(b, B, 'B', { dy: 22, dx: -4, size: 17, color: 'sky' }); T(b, Cc, 'C', { dy: 22, dx: 4, size: 17, color: 'green' });
-    if (L.h) {
+    if (L.h && !(o.identifyHeight && !b.thumb && standardHeightTag(b, A, H0, B, Cc, L.h))) {
       const heightCallout = o.heightCallout && !b.thumb && b.W < 560, at = G.lerp(A, H0, heightCallout ? .56 : .3);
       T(b, at, L.h, { dx: L.hx ? 0 : -8, size: L.hx ? 21 : 16, color: L.hx ? 'amber' : 'rose', align: L.hx ? 'center' : 'right', ...(heightCallout ? { leaderAnchor: at, leader: true } : {}) });
     }
@@ -179,7 +213,7 @@
     model: (s) => { const a = vi(Math.round(s.t53a)), R = heightFrom(a, 45, 60, false); return { a, ...R }; },
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99;
-      drawTower(b, { h: M.h.v, xb: M.bh.v, xc: M.ch.v, step: st, L: { B: '45°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h', BH: show(1) ? 'BH = h' : '', CH: show(1) ? `CH = ${vcan(vdiv(vi(1), vsq(3)))}h` : '' }, rows: show(2) ? [{ t: `BH + CH = h + \\frac{√3}{3}h = ${M.a.v}`, c: 'amber' }] : [] });
+      drawTower(b, { h: M.h.v, xb: M.bh.v, xc: M.ch.v, step: st, identifyHeight: true, L: { B: '45°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h', BH: show(1) ? 'BH = h' : '', CH: show(1) ? `CH = ${vcan(vdiv(vi(1), vsq(3)))}h` : '' }, rows: show(2) ? [{ t: `BH + CH = h + \\frac{√3}{3}h = ${M.a.v}`, c: 'amber' }] : [] });
     },
     steps: (M) => [
       '$\\angle B=45^{\\circ}$ 이므로 $BH=AH=h$, $\\angle C=60^{\\circ}$ 이므로 $CH=\\frac{h}{\\tan60^{\\circ}}=\\frac{\\sqrt{3}}{3}h$ 예요.',
@@ -205,7 +239,7 @@
     model: (s) => { const a = vi(Math.round(s.t53a)), h = vmul(vdiv(vsq(3), vi(2)), a); return { a, h, R: heightFrom(a, 30, 60, true) }; },
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99, R = M.R;
-      drawTower(b, { h: R.h.v, xb: R.bh.v, xc: R.ch.v, same: true, step: st, mountain: true, iso: show(1), L: { B: '30°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h' }, rows: show(1) ? [{ t: '∠BAC = 60° − 30° = 30° → AC = BC', c: 'amber' }] : [] });
+      drawTower(b, { h: R.h.v, xb: R.bh.v, xc: R.ch.v, same: true, step: st, mountain: true, iso: show(1), identifyHeight: true, L: { B: '30°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h' }, rows: show(1) ? [{ t: '∠BAC = 60° − 30° = 30° → AC = BC', c: 'amber' }] : [] });
     },
     steps: (M) => [
       '$\\angle ACH=60^{\\circ}$ 는 $\\triangle ABC$ 의 외각이에요. 외각은 이웃하지 않는 두 내각의 합이므로 $\\angle BAC=60^{\\circ}-30^{\\circ}=30^{\\circ}$ 예요.',

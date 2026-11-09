@@ -35,6 +35,36 @@
     const d = pt(Math.cos(th * DEG), -Math.sin(th * DEG));
     return { P: pt(0, 0), A: pt(-t * p, 0), C: pt((1 - t) * p, 0), B: pt(d.x * q * u, d.y * q * u), D: pt(-d.x * q * (1 - u), -d.y * q * (1 - u)) };
   }
+  function diagonalBoxHits(a, z, q, gap = 4) {
+    let lo = 0, hi = 1;
+    for (const [axis, min, max] of [['x', q.x0 - gap, q.x1 + gap], ['y', q.y0 - gap, q.y1 + gap]]) {
+      const d = z[axis] - a[axis];
+      if (Math.abs(d) < 1e-9) { if (a[axis] < min || a[axis] > max) return false; }
+      else { const t0 = (min - a[axis]) / d, t1 = (max - a[axis]) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); }
+    }
+    return lo <= hi;
+  }
+  function identifiedDiagonalTag(b, g, value) {
+    const anchor = lerp(g.A, g.C, .28), at = b.toS(anchor), bs = b.toS(g.B), ds = b.toS(g.D);
+    const size = b.annotationSize(value, { size: 16, weight: 800 }), w = size.width, h = size.height + 2;
+    const box = (x, y) => ({ x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 });
+    if (!diagonalBoxHits(bs, ds, box(at.x, at.y + 20))) return false;
+    const vertices = [g.A, g.B, g.C, g.D].map(p => b.toS(p));
+    const clear = q => q.x0 >= 6 && q.x1 <= b.W - 32 && q.y0 >= 8 && q.y1 <= b.H - b.insets.bottom - 8 &&
+      !diagonalBoxHits(bs, ds, q) && !vertices.some((p, i) => diagonalBoxHits(p, vertices[(i + 1) % 4], q)) &&
+      !(b._tgBoxes || []).some(p => q.x0 < p.x1 + 3 && q.x1 > p.x0 - 3 && q.y0 < p.y1 + 3 && q.y1 > p.y0 - 3);
+    const candidates = [];
+    for (const dy of [-40, -56, -72, 40, 56]) for (const dx of [0, -w / 2 - 14, w / 2 + 14]) candidates.push({ x: at.x + dx, y: at.y + dy });
+    const between = (p, a, z) => p.x >= Math.min(a.x, z.x) - 1e-6 && p.x <= Math.max(a.x, z.x) + 1e-6 && p.y >= Math.min(a.y, z.y) - 1e-6 && p.y <= Math.max(a.y, z.y) + 1e-6;
+    const target = candidates.find(p => {
+      if (!clear(box(p.x, p.y))) return false;
+      const crossing = G.inter(at, p, bs, ds);
+      return !crossing || !between(crossing, at, p) || !between(crossing, bs, ds);
+    });
+    if (!target) return false;
+    T(b, anchor, value, { dx: target.x - at.x, dy: target.y - at.y, size: 16, color: 'sky', leaderAnchor: anchor, leader: true });
+    return true;
+  }
   function drawDiag(b, g, o = {}) {
     const { A, B, C, D, P: Pp } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C, D]);
     // 평행사변형(2배)
@@ -49,7 +79,7 @@
     ang(b, Pp, C, B, { color: 'amber', r: 28, label: o.th, labelDist: 51, size: 15 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.handle) b.handle('P', Pp, { color: 'violet', r: 8, ariaLabel: '교점 P 끌기', drag: o.handle }); else b.point(Pp, { color: 'violet', r: 4.5 });
-    if (o.p) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
+    if (o.p && !(o.identifyAC && !b.thumb && identifiedDiagonalTag(b, g, o.p))) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
     if (o.q) T(b, lerp(B, D, /= x$/.test(o.q) ? 0.64 : 0.18), o.q, { dx: 14, dy: /= x$/.test(o.q) ? 6 : -4, size: /= x$/.test(o.q) ? 20 : 16, color: /= x$/.test(o.q) ? 'amber' : 'green', align: 'left' });
     rowsD.forEach((r, i) => T(b, pt(0, Math.max(...visible.map((w) => w.y))), r.t, { dy: 44 + i * 26, size: r.size || 16, color: r.c }));
   }
@@ -77,7 +107,7 @@
       notes: notes('$\\theta$ 는 두 대각선이 이루는 각이에요. 두 변이 이루는 각이 아니에요.', '$\\theta$ 가 예각이든 둔각이든 $\\sin\\theta=\\sin(180^{\\circ}-\\theta)$ 라 넓이는 같아요.')
     }),
     gen: () => diagProblem('uf', false),
-    pdraw: (b, q, C) => diagPdraw(b, q, C)
+    pdraw: (b, q, C) => diagPdraw(b, q, C, true)
   };
   function diagProblem(tag, askQ) {
     const th = pick(TH), p = pick([4, 6, 8, 10, 12]), q = pick([3, 4, 5, 6, 8]);
@@ -100,9 +130,9 @@
       askQ ? `$x=\\frac{2\\times${vtex(S)}}{${p}\\times${vtex(sinD(th))}}$를 계산해요.` : `$\\sin ${th}^{\\circ}=${vtex(sinD(th))}$를 대입해요. 이 각은 두 변의 끼인각이 아니라 두 대각선의 사잇각입니다.`
     ];
   }
-  function diagPdraw(b, qq, C) {
+  function diagPdraw(b, qq, C, identifyAC = false) {
     const f = qq.fig, rows = f.ask === 'area' ? [{ t: C.last ? `□ABCD의 넓이 = ${qq.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] : [{ t: `□ABCD의 넓이 = ${f.S}`, c: 'amber', size: 17 }];
-    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: C.review ? C.step : 0, k2: C.review && C.step >= 2 ? 1 : 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' && !C.last ? 'BD = x' : `BD = ${f.q}`, rows });
+    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: C.review ? C.step : 0, k2: C.review && C.step >= 2 ? 1 : 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' && !C.last ? 'BD = x' : `BD = ${f.q}`, rows, identifyAC });
   }
 
   /* ====================================================================== 평행사변형 */

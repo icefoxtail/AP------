@@ -14,6 +14,7 @@ on:
       - 'apmath/playground/next/labs/g9-*.html'
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/tools/middle-initial-*'
+      - 'apmath/playground/next/tools/scene-smoke*'
       - 'apmath/playground/next/tools/apl-stage-insets.test.mjs'
       - '.github/workflows/middle-initial-figure.yml'
       - '.github/workflows/middle-initial-public.yml'
@@ -43,7 +44,7 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Existing all-lab scene smoke at its original five environments
+      - name: All-lab scene smoke at its original five environments
         shell: bash
         env:
           NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
@@ -53,12 +54,14 @@ jobs:
             if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
             sleep 1
           done
-          node apmath/playground/next/tools/scene-smoke.mjs 2>&1 | tee "$RUNNER_TEMP/scene-smoke.log"
+          node apmath/playground/next/tools/scene-smoke.mjs --report "$RUNNER_TEMP/scene-smoke-report.json" 2>&1 | tee "$RUNNER_TEMP/scene-smoke.log"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: middle-initial-${{ github.run_id }}-existing-scene-smoke
-          path: ${{ runner.temp }}/scene-smoke*.log
+          path: |
+            ${{ runner.temp }}/scene-smoke*.log
+            ${{ runner.temp }}/scene-smoke-report.json
           retention-days: 14
   inventory:
     runs-on: ubuntu-24.04
@@ -75,6 +78,8 @@ jobs:
         run: echo "units=$(node apmath/playground/next/tools/middle-initial-figure-audit.mjs --list-units)" >> "$GITHUB_OUTPUT"
       - name: Initial figure regression contracts
         run: node --test apmath/playground/next/tools/middle-initial-*.test.mjs apmath/playground/next/tools/apl-stage-insets.test.mjs
+      - name: Actual annotation, semantic measurement and failure-report regressions
+        run: node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/scene-smoke-orchestration.test.mjs
       - name: Middle mathematical and scene-state regressions
         run: node --test apmath/playground/next/tools/g7-*.test.mjs apmath/playground/next/tools/g8-*.test.mjs apmath/playground/next/tools/g9-*.test.mjs
   browser:

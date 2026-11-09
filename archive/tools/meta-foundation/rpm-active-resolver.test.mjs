@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { objectSha } from '../pipeline-core/canonical.mjs';
@@ -272,6 +273,56 @@ test('M1/M2/M3 RPM semantic FINAL is independent of legacy projection gaps', () 
     assert.equal(evidence.projectionStatus, 'PROJECTION_UNMATERIALIZED', grade + ' projection status');
     assert.equal(validateResolverEvidence(input, evidence, { repoRoot: root }).status, 'PASS', grade + ' receipt parity');
   }
+});
+
+test('an appended geometry mapping can promote its exact RPM-only row with an explicit decision', t => {
+  const crosswalkFile = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json';
+  const doc = JSON.parse(fs.readFileSync(path.join(root, crosswalkFile), 'utf8'));
+  const placeholder = doc.records.find(row => row.id === 'H2-GEO-RPM-048');
+  assert.equal(placeholder.mappingStatus, 'RPM_ONLY');
+  const input = makeInput({ ...placeholder, standardCourse: '기하' });
+  input.curriculumContext.grade = 'H2';
+  const original = resolveMetaRoute(input, { repoRoot: root, registry });
+  assert.equal(original.projectionReasonCode, 'RPM_ONLY_COMPATIBILITY_PROJECTION');
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'rpm-promotion-test-'));
+  t.after(() => fs.rmSync(fixtureRoot, { recursive: true, force: true }));
+  for (const { path: relative } of original.authorityRefs) {
+    const target = path.join(fixtureRoot, relative);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.copyFileSync(path.join(root, relative), target);
+  }
+  const promoted = {
+    ...placeholder,
+    id: 'H2-GEO-RPM-FIXTURE-PROMOTION',
+    standardCourse: '기하',
+    mappingStatus: 'DIRECT_ACTIVE',
+    bindingStatus: 'ACTIVE',
+    problemTypeKey: 'PT_GEO_CONIC_TANGENT',
+    templateKey: 'TPL_GEO_TANGENT_ORTHOGONAL',
+    promotesRpmOnlyRowId: 'unrelated-row',
+  };
+  doc.records.push(promoted);
+  const fixture = path.join(fixtureRoot, crosswalkFile);
+  const resolve = () => {
+    fs.writeFileSync(fixture, JSON.stringify(doc));
+    return resolveMetaRoute(input, { repoRoot: fixtureRoot, registry });
+  };
+  assert.equal(resolve().projectionReasonCode, 'CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS');
+  promoted.promotesRpmOnlyRowId = placeholder.id;
+  assert.equal(resolve().projectionReasonCode, 'CROSSWALK_ROW_SELECTION_PENDING');
+  input.familyTemplateSelection = {
+    stage: 'POST_CROSSWALK',
+    inputBundleSha: original.inputBundleSha,
+    crosswalkRecordId: promoted.id,
+    templateKey: promoted.templateKey,
+    decisiveStepReason: '수직인 직선의 기울기에서 접선 기울기를 정한다.',
+  };
+  const result = resolve();
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
+  assert.equal(result.templateKey, promoted.templateKey);
+  assert.equal(placeholder.mappingStatus, 'RPM_ONLY');
+  input.familyTemplateSelection.inputBundleSha = 'sha256:stale';
+  assert.equal(resolve().projectionReasonCode, 'CROSSWALK_ROW_SELECTION_PENDING');
 });
 
 test('candidate leakage in the first semantic decision is rejected', () => {

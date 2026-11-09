@@ -135,7 +135,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q3-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 부등식의 해와 공통 범위를 세 줄의 수직선으로 나타낸 그림.",
+    "solutionImageCaption": "예: 매개변수가 0일 때 두 부등식의 해를 같은 눈금에서 비교하였다. 첫째 부등식의 왼쪽 구간이 공통 범위에 들어오지 않고 3이 포함되도록 경계를 비교한다. 정답은 -2 이상 3 미만이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -229,7 +232,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q5-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간의 일곱 정수와 이를 포함하는 열린 절댓값 구간을 비교한 수직선.",
+    "solutionImageCaption": "예: 양의 정수 매개변수가 6일 때의 열린 구간을 그렸다. -2부터 4까지의 일곱 정수 중 중심 2에서 가장 먼 정수까지 포함하려면 매개변수가 4보다 커야 한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -273,7 +279,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q6-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 열린 경계를 기준으로 서로 반대 방향으로 뻗는 두 반직선.",
+    "solutionImageCaption": "예: 절댓값 계수와 오른쪽 값이 모두 1인 경우를 그리고, 오른쪽 값을 계수로 나눈 경계를 새 문자로 나타내었다. 양의 계수에서는 각각 반직선의 해가 있으므로 두 해가 모두 없으려면 계수와 오른쪽 값이 모두 0이어야 한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -320,7 +329,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q7-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: -2와 6을 열린 끝으로 갖는 구간과 그 안의 일곱 정수를 표시한 수직선.",
+    "solutionImageCaption": "최고차항 계수가 양수이므로 판별식이 음수여야 한다. 이를 정리한 열린 구간에 속하는 정수 일곱 개를 더한다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -369,7 +381,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q8-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선과 그 두 직선에 수직인 직선을 좌표평면에 나타낸 그림.",
+    "solutionImageCaption": "평행한 첫째와 둘째 직선의 기울기를 같게 놓고, 첫째와 셋째 직선의 기울기의 곱을 -1로 놓는다. 음수 조건을 적용하면 두 상수는 각각 3과 -1이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -417,7 +432,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q9-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에 있는 네 점의 좌표와 중점에서 외분점 및 끝점까지의 길이를 나타낸 그림.",
+    "solutionImageCaption": "외분점과 중점의 좌표를 구해 한 직선 위의 순서를 확인하고, 중점에서 두 점까지의 거리를 비교한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -464,7 +482,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q10-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 주어진 점과 직선 위의 점을 잇는 두 선분을 나타낸 좌표 그림.",
+    "solutionImageCaption": "직선 위의 점의 가로좌표를 매개변수로 두어 두 거리의 제곱의 합을 나타낸다. 완전제곱식으로 정리하면 가로좌표가 -2일 때 최솟값을 갖는다. 정답은 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -508,7 +529,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q11-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 절편의 좌표와 세로좌표가 15인 점을 나타낸 직선.",
+    "solutionImageCaption": "두 절편으로 기울기가 2분의 3인 직선을 정한다. 이 직선에 세로좌표가 15인 점을 대입하여 가로좌표를 구한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -556,7 +580,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q12-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 두 변 위 교점을 이은 선분과 원점 쪽에 색칠한 작은 삼각형.",
+    "solutionImageCaption": "절단선이 두 변과 만나는 점을 잡으면 원점 쪽 삼각형의 넓이는 매개변수 제곱의 4분의 1이다. 전체 넓이의 절반과 같게 놓고 해당 교점들이 변 위에 있는지 확인한다. 정답은 2√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -651,7 +678,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q14-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가능한 두 마름모를 나란히 놓고 네 변의 같은 길이를 표시한 그림.",
+    "solutionImageCaption": "대각선의 중점이 같다는 조건에서 두 상수의 관계를 얻는다. 이웃한 변의 길이가 같다는 조건으로 두 마름모를 구한 뒤 제곱의 합을 비교한다. 정답은 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -700,7 +730,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q15-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 교점에서 만나는 주어진 두 직선과 두 각 이등분선을 나타낸 그림.",
+    "solutionImageCaption": "각의 이등분선 위에서는 두 주어진 직선까지의 거리가 같다. 절댓값 등식을 두 경우로 풀어 양의 기울기를 갖는 이등분선을 고른다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -746,7 +779,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q16-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 점을 잇는 직선과 이에 수직인 직선을 나타낸 좌표 그림.",
+    "solutionImageCaption": "두 점을 지나는 직선의 기울기와 주어진 직선의 기울기의 곱을 -1로 놓는다. 수직선이 되는 특수한 경우도 따로 확인하면 상수는 3분의 1이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -793,7 +829,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q17-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 기준 직선과 그 양쪽의 평행선, 같은 길이의 두 수선을 나타낸 그림.",
+    "solutionImageCaption": "평행한 직선 사이의 거리는 상수항 차의 절댓값을 법선계수의 길이로 나눈 값이다. 기준 직선의 양쪽에서 같은 거리만큼 떨어진 두 직선의 상수항을 구해 더한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -833,7 +872,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q18-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 직각 꼭짓점 후보와 각 후보로 만든 직각삼각형을 나타낸 좌표 그림.",
+    "solutionImageCaption": "두 후보를 첨자 붙은 점으로 구별하였다. 꼭짓점에서 만나는 두 변의 기울기의 곱을 -1로 놓아 얻은 이차방정식에 근과 계수의 관계를 적용한다. 정답은 -9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -875,7 +917,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q19-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 2 미만인 범위와 문자로 나타낸 아래쪽 경계 이상인 범위 및 두 범위의 공통 부분을 표시한 수직선.",
+    "solutionImageCaption": "아래쪽 경계는 새 문자로 나타내었다. 가까운 점을 비교한 조건은 2 미만이고, 나머지 조건은 아래쪽 경계 이상이므로 공통 범위에 속하는 정수를 확인한다. 정답은 -1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -919,7 +964,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형과 한 꼭짓점에서 밑변에 내린 수선 및 직각을 표시한 좌표 그림.",
+    "solutionImageCaption": "밑변의 길이와 그 직선의 방정식을 좌표로 구한다. 나머지 꼭짓점에서 밑변까지의 거리를 높이로 삼아 밑변과 높이의 곱의 절반을 계산한다. 정답은 (1) 3√5, (2) x-2y-3=0, (3) 5분의 8√5, (4) 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -959,7 +1007,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q21-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 삼각형을 이루지 않는 세 가지 배치를 비교한 그림.",
+    "solutionImageCaption": "첫째 평행 경우에는 상수가 2분의 3이고, 둘째 평행 경우에는 -3이다. 세 직선이 한 점에서 만나는 경우의 상수는 8분의 15이므로 세 값을 더한다. 정답은 8분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -998,6 +1049,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q22-solution.svg"
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 가로축 위에 있는 경우와 가로축에 접하는 경우를 비교한 그림.",
+    "solutionImageCaption": "예: 원래 상수에서 3을 뺀 값을 새 문자로 치환하고 그 값이 1과 5인 그래프를 비교하였다. 이차항 계수가 양수이면 꼭짓점이 가로축보다 위에 있어야 하며, 이차항 계수가 0인 경우도 원래 식에서 확인한다. 가로축에 접하는 경계는 엄격한 부등식을 만족하지 않아 제외한다. 정답은 3 이상 8 미만이다.",
+    "solutionImageSize": "full"
   }
 ];

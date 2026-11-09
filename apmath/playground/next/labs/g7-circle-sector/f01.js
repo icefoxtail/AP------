@@ -505,7 +505,22 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     fig.forEach((it) => {
       if (givensOnly && it.when !== 'g') return;
       const shift = offsets && offsets.get(it);
-      drawItem(b, shift ? { ...it, dy: (it.dy || 0) + shift } : it, 0, givensOnly ? 1 : whenA(c, it.when));
+      let item = shift ? { ...it, dy: (it.dy || 0) + shift } : it;
+      if (it.triangleSide && !c.problem && !c.mode && !b.thumb) {
+        const handle = c.M.handles.find(h => h.id === 'C'), hp = b.toS(P(handle.p[0], handle.p[1]));
+        const at = b.toS(P(it.p[0], it.p[1])), size = b.annotationSize(it.text, { size: it.size || 14, weight: 800 });
+        // annotationSize includes3px padding; test the glyph box against C's
+        // actual control point before moving this explicitly named side value.
+        const x = at.x + (it.dx || 0), y = at.y + (it.dy || 0);
+        const dx = Math.max(0, Math.abs(hp.x - x) - (size.width - 6) / 2);
+        const dy = Math.max(0, Math.abs(hp.y - y) - (size.height - 6) / 2);
+        if (Math.hypot(dx, dy) < 6.5 * b.hr + 3) {
+          // Keep C's name and its full halo unobstructed after a short-side drag.
+          const nameSize = b.annotationSize('C', { size: 14, weight: 800 });
+          item = { ...item, dy: hp.y - 14 - (nameSize.height + size.height) / 2 - 8 - at.y };
+        }
+      }
+      drawItem(b, item, 0, givensOnly ? 1 : whenA(c, it.when));
     });
   }
 
@@ -953,8 +968,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       const abTxt = intAB ? `AB=${Math.round(AB)}` : 'AB'; // 정수가 아니면 √ 대신 이름만(제곱근은 중3)
       const fig = [
         { k: 'right', v: [Cp.x, Cp.y], p: [Ap.x, Ap.y], q: [Bp.x, Bp.y], when: 'g', size: 12 },
-        T([(Ap.x + Cp.x) / 2, (Ap.y + Cp.y) / 2], `AC=${ac}`, { dx: -4, dy: -14, color: 'ink', when: 'g' }),
-        T([(Bp.x + Cp.x) / 2, (Bp.y + Cp.y) / 2], `BC=${bc}`, { dx: 6, dy: -14, color: 'ink', when: 'g' }),
+        T([(Ap.x + Cp.x) / 2, (Ap.y + Cp.y) / 2], `AC=${ac}`, { dx: -4, dy: -14, color: 'ink', when: 'g', triangleSide: true }),
+        T([(Bp.x + Cp.x) / 2, (Bp.y + Cp.y) / 2], `BC=${bc}`, { dx: 6, dy: -14, color: 'ink', when: 'g', triangleSide: true }),
         T([0, 0], abTxt, { dy: 17, color: 'ink', when: 's' }),
         { k: 'dot', p: [0, 0], when: 's' },
         T([Ap.x, 0], 'A', { dx: -10, dy: -12, when: 'g' }), T([Bp.x, 0], 'B', { dx: 10, dy: -12, when: 'g' }), T([Cp.x, Cp.y], 'C', { dy: -14, when: 'g' })

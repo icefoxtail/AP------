@@ -27,7 +27,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED"
+    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선과 −1부터 2까지의 음영 영역",
+    "solutionImageCaption": "35부터 50까지를 표준화하면 경계는 −1과 2이다. 두 경계 사이의 확률은 약 0.8185이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -177,7 +181,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED"
+    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 성별에서 위험 단어 포함 여부로 나뉘는 확률 경로와 강조된 위험 경로",
+    "solutionImageCaption": "먼저 위험 단어가 포함될 전체 확률을 두 성별 경로의 확률로 합한다. 그중 남학생 경로의 비율은 14분의 5이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -239,7 +247,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "metaStatus": "PARTIAL_CANONICAL_LOOKUP"
+    "metaStatus": "PARTIAL_CANONICAL_LOOKUP",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 증가한 뒤 x=3에서 꼭짓점에 도달하고 x=4에서 끝나는 확률밀도 그래프와 음영 구간",
+    "solutionImageCaption": "확률밀도함수의 전체 넓이는 1이고, 꼭짓점은 (3, 2분의 1)이다. 1≤x≤3의 넓이는 3분의 2이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -270,7 +282,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED"
+    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: m과 n의 6×6 조합표 중 강조된 여섯 칸",
+    "solutionImageCaption": "넓이가 12보다 큰 경우는 n이 3 또는 6이고 m이 4, 5, 6인 여섯 쌍이다. 전체 36쌍 중 확률은 6분의 1이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 10,
@@ -304,7 +320,11 @@ window.questionBank = [
     "metaStatus": "PARTIAL_CANONICAL_LOOKUP",
     "sourceMode": "AUDITED_REPAIR",
     "sourceProvenance": "R3 q10 repair: normal approximation without continuity correction is now explicit in the student stem.",
-    "repairReason": "원문은 정규근사를 지정하지 않았다. R3 발문에 연속성 보정 없이 정규근사하도록 명시된 조건을 수정 이력으로 결속했다."
+    "repairReason": "원문은 정규근사를 지정하지 않았다. R3 발문에 연속성 보정 없이 정규근사하도록 명시된 조건을 수정 이력으로 결속했다.",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z=1.5 오른쪽 꼬리 음영",
+    "solutionImageCaption": "총점 조건은 득점 횟수 Y≥30이며 평균 24, 표준편차 4로 표준화하면 z≥1.5이다. 정규근삿값은 약 0.0668이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -362,7 +382,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED"
+    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 95%와 99% 모평균 신뢰구간을 겹쳐 비교한 수직선",
+    "solutionImageCaption": "같은 중심에서 99% 구간이 더 넓다. 자연수 개수는 26개로, 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -391,7 +415,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED"
+    "metaStatus": "LOOKUP_EVIDENCE_ATTACHED",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 −1.88부터 1.88까지 대칭 음영 영역",
+    "solutionImageCaption": "표준오차는 4이고 신뢰구간 길이로부터 경계 z는 ±1.88이다. 중앙 확률은 94%이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 14,
@@ -451,7 +479,11 @@ window.questionBank = [
     "metaStatus": "PARTIAL_CANONICAL_LOOKUP",
     "sourceMode": "AUDITED_REPAIR",
     "sourceProvenance": "R3 q15 repair: normal approximation without continuity correction is explicit in the student stem.",
-    "repairReason": "원문은 정규근사를 지정하지 않았다. R3 발문에 연속성 보정 없이 정규근사하도록 명시된 조건을 수정 이력으로 결속했다."
+    "repairReason": "원문은 정규근사를 지정하지 않았다. R3 발문에 연속성 보정 없이 정규근사하도록 명시된 조건을 수정 이력으로 결속했다.",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z=1.5 오른쪽 꼬리 음영",
+    "solutionImageCaption": "표준화 경계 z=1.5의 오른쪽 꼬리 면적이다. 정답은 약 0.0668이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -474,7 +506,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "metaStatus": "PARTIAL_CANONICAL_LOOKUP"
+    "metaStatus": "PARTIAL_CANONICAL_LOOKUP",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0부터 2까지 증가하는 확률밀도 곡선과 1부터 2까지의 음영 구간",
+    "solutionImageCaption": "확률밀도 그래프에서 1≤x≤2 아래 면적을 구한다. 정답은 4분의 3이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 17,
@@ -502,7 +538,11 @@ window.questionBank = [
     "metaStatus": "PARTIAL_CANONICAL_LOOKUP",
     "sourceMode": "AUDITED_REPAIR",
     "sourceProvenance": "R3 q17 repair: positive scale condition a>0 is explicit in the student stem.",
-    "repairReason": "원문에서 부호가 정해지지 않던 표준화 상수의 부호 조건 a>0을 발문에 명시하여 해를 유일하게 했다."
+    "repairReason": "원문에서 부호가 정해지지 않던 표준화 상수의 부호 조건 a>0을 발문에 명시하여 해를 유일하게 했다.",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z=0.5부터 1.5까지 음영 구간",
+    "solutionImageCaption": "X를 표준화하면 13≤X≤17은 2/σ≤Z≤6/σ이고, 표에서 P(0.5≤Z≤1.5)=0.2417이므로 경계는 0.5와 1.5이다. 정답은 a=1/4, b=−11/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -579,6 +619,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "metaStatus": "PARTIAL_CANONICAL_LOOKUP"
+    "metaStatus": "PARTIAL_CANONICAL_LOOKUP",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 번 추출한 값의 수형도에서 표본평균이 음수인 세 경로를 강조",
+    "solutionImageCaption": "표본평균이 음수인 세 경로만 강조한다. 정답은 3분의 4이다.",
+    "solutionImageSize": "full"
   }
 ];
