@@ -30357,6 +30357,39 @@ window.mainDB = {
       "primaryStandardCourse": "미적분I"
     },
     {
+      "file": "textbooks/비상교육_미적분1/비상_미적분1_부정적분과정적분_중단원학습점검_고2/비상_미적분1_부정적분과정적분_중단원학습점검_고2.js",
+      "school": "비상교육",
+      "topic": "비상 미적분Ⅰ 부정적분과 정적분 중단원 학습 점검",
+      "grade": "고2",
+      "examType": "textbook",
+      "subject": "미적분I",
+      "contentType": "교과서",
+      "qCount": 14,
+      "primaryStandardCourse": "미적분I"
+    },
+    {
+      "file": "textbooks/비상교육_확률과통계/비상_확률과통계_순열과조합_중단원학습점검_고2/비상_확률과통계_순열과조합_중단원학습점검_고2.js",
+      "school": "비상교육",
+      "topic": "비상 확률과 통계 순열과 조합 중단원 학습 점검",
+      "grade": "고2",
+      "examType": "textbook",
+      "subject": "확률과 통계",
+      "contentType": "교과서",
+      "qCount": 19,
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "textbooks/비상교육_확률과통계/비상_확률과통계_확률의뜻과활용_중단원학습점검_고2/비상_확률과통계_확률의뜻과활용_중단원학습점검_고2.js",
+      "school": "비상교육",
+      "topic": "비상 확률과 통계 확률의 뜻과 활용 중단원 학습 점검",
+      "grade": "고2",
+      "examType": "textbook",
+      "subject": "확률과 통계",
+      "contentType": "교과서",
+      "qCount": 17,
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "types/high/h1/여러가지방정식과부등식_고1_유형_모의고사.js",
       "school": "",
       "topic": "여러가지방정식과부등식",
