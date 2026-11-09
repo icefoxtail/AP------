@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "O",
+          "A",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "O",
+          "B",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "central",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 120,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "givenP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 60,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "sectorArc",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lengthPA",
+        "ownerSegment": "PA",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "접점에서 반지름과 접선이 수직이며 두 접선이 같으므로 ∠APO=30°이다. PA=6cm에서 OA=2√3cm이고 ∠AOB=120°이므로 부채꼴 OAB의 넓이는 4πcm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PA,PB는 접선이고 PA=6cm, ∠APB=60°. 두 직각삼각형의 합동으로 OP가 ∠APB를 이등분한다. OA=2√3cm, OP=4√3cm, ∠AOB=120°는 원문 조건으로 유도한 구성이다. 구할 부채꼴은 작은 호 AB와 두 반지름의 영역이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 접선과 반지름이 이루는 직각, 60°와 120°에 대응하는 작은 호 AB를 구분해 부채꼴 넓이를 설명한다. 라벨에 여유를 둔다."
+  ]
+}

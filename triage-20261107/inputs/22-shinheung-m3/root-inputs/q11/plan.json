@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "160"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "220"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "280"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "54"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given1",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 30,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 67,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "answer",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 53,
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "∠ADB=30°이므로 호 AB=60°이고 주어진 조건에 따라 호 BC도 60°이다. ∠DAC=67°이므로 호 DC=134°, 남은 호 AD=106°이어서 ∠ABD=53°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "호 AB=호 BC, ∠ADB=30°, ∠DAC=67°이다. 따라서 차례대로 호 AB=60°, BC=60°, DC=134°, AD=106°. 반지름과 회전은 설명용 예시다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 두 호와 나머지 두 호의 크기를 원주각과 연결해 구할 각을 표시한다. 점과 각 라벨은 여유 있게 배치한다."
+  ]
+}

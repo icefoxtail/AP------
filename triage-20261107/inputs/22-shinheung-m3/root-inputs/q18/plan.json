@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "M",
+          "O"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "perp",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "base"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cross",
+        "op": "INTERSECTION",
+        "inputs": [
+          "perp",
+          "circle"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "cross"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "M",
+            "O"
+          ],
+          "sign": 1
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "O",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "HP",
+      "refs": [
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "A",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "right",
+        "refs": [
+          "A",
+          "M",
+          "O"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "half",
+        "ownerSegment": "HP",
+        "text": "x-2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radius",
+        "ownerSegment": "OP",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknown",
+        "ownerSegment": "OH",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "현의 절반 AM=4cm이고, 반지름을 x라 할 때 현과 원의 아래끝 사이가 2cm이므로 중심에서 현까지의 거리 OM=x−2이다. x²=(x−2)²+4²에서 x=5cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 현의 반은 4cm, 현과 원의 아래 끝 사이가 2cm, 반지름은 x이다. 원의 중심은 현의 수직이등분선 위에 있고 x²=(x−2)²+4²의 해 x=5에 따라 OM=3으로 구성한다. 좌표 방향은 정규화다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 중심·현의 중점·현 끝의 직각삼각형과 x−2,4,x를 표시한다. 점·길이 라벨의 여백을 확보한다."
+  ]
+}

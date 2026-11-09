@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "M",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "perp",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "base"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cross",
+        "op": "INTERSECTION",
+        "inputs": [
+          "perp",
+          "circle"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "cross"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "M",
+            "A"
+          ],
+          "sign": 1
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "A",
+    "O"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "HP",
+      "refs": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "right",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "half",
+        "ownerSegment": "HP",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radius",
+        "ownerSegment": "OP",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknown",
+        "ownerSegment": "OH",
+        "text": "d",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "접시의 중심 O에서 길이 8cm인 막대의 중점 M까지 이은 선분은 막대에 수직이다. 반지름 OA=6cm, AM=4cm이므로 d²+4²=6²이고 d=2√5cm이다. 원문 사진은 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 6cm, 현 역할의 막대 길이 8cm이며 M은 막대 중점이다. M을 원점, MA를 양의 축으로 둔 것은 정규화다. 중심에서 현의 중점까지 이은 선분이 수직임을 사용해 직각삼각형을 구성한다. A, M, O, d는 설명을 위한 보조 표기다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 접시 사진의 원과 막대를 직각삼각형으로 분리해 반지름, 반현과 중심거리를 표시한다. 라벨에 여유를 둔다."
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightM",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightN",
+        "refs": [
+          "O",
+          "N",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "중심에서 현에 내린 수선은 현을 이등분하므로 AB=CD에서 AM=CN이다. OA=OC는 반지름이고 두 삼각형 OAM, OCN은 직각삼각형이므로 RHS 합동이다. 결론 OM=ON을 미리 사용한 ③과 OA=CN으로 둔 ④가 옳지 않다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=CD인 두 현과 중심에서 내린 수선 OM, ON을 고려한다. 좌표와 반지름 10은 조건을 만족하는 한 예시이며 일반적인 RHS 합동을 설명한다. OM=ON은 결론이지 합동의 선행 가정이 아니다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직각삼각형의 반지름과 반현을 구분하고 결론인 수선의 길이를 표시한다. 점들이 겹치지 않도록 여유 있게 배치한다."
+  ]
+}

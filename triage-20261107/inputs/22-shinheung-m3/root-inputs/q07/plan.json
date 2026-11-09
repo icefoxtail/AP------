@@ -1,0 +1,471 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T",
+    "W",
+    "X",
+    "Y",
+    "Z"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cA",
+    "cB",
+    "cC",
+    "cD",
+    "small"
+  ],
+  "displaySegments": [
+    {
+      "id": "WX",
+      "refs": [
+        "W",
+        "X"
+      ]
+    },
+    {
+      "id": "XY",
+      "refs": [
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "YZ",
+      "refs": [
+        "Y",
+        "Z"
+      ]
+    },
+    {
+      "id": "ZW",
+      "refs": [
+        "Z",
+        "W"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "oa",
+        "ownerSegment": "OA",
+        "text": "sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ot",
+        "ownerSegment": "OT",
+        "text": "r",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "큰 원 네 개의 중심은 한 변이 2cm인 정사각형을 이룬다. 그 중심 O에서 큰 원의 중심 A까지는 대각선의 절반인 √2cm이다. 작은 원의 반지름을 r이라 하면 OA=1+r이므로 r=√2−1cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 1cm인 원 4개가 정사각형 내부에 서로 맞닿고 작은 원이 그 사이에 접한다. 큰 원 중심은 (±1,±1), 작은 원의 중심은 O=(0,0)인 정규화 구성이다. 중심거리 √2=1+r에서 작은 원의 반지름 √2−1을 얻는다. A,B,C,D,O,T와 정사각형 꼭짓점은 설명을 위한 보조 이름이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심을 이어 생긴 한 변 2cm의 정사각형과 중심거리 √2를 보여 주고 큰 원의 반지름 1, 작은 원의 반지름 r의 접점을 구분한다. 라벨에는 여유와 지시선을 사용한다."
+  ]
+}
