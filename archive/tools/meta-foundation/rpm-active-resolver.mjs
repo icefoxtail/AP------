@@ -278,6 +278,27 @@ function crosswalkMatch(file, context, rpmPath, scopeRelation = 'CURRENT_SCOPE')
       ? rows.filter(item => (item.subUnitKey == null || item.subUnitKey === context.subUnitKey)
         && (!item.standardCourse || !context.standardCourse || item.standardCourse === context.standardCourse))
       : rows;
+    if (scopeRelation === 'CURRENT_SCOPE') {
+      // An appended, explicitly linked mapping can replace an unmapped placeholder
+      // in this decision only. It must not shadow a previous mapping or another scope.
+      const effective = applicable.filter(placeholder => {
+        if (placeholder.mappingStatus !== 'RPM_ONLY' || placeholder.bindingStatus !== 'NO_ACTIVE_MAPPING'
+          || placeholder.problemTypeKey || placeholder.templateKey || placeholder.templateCandidates?.length
+          || !text(placeholder.id) || applicable.filter(item => item.id === placeholder.id).length !== 1) return true;
+        return !applicable.some(item => item.promotesRpmOnlyRowId === placeholder.id
+          && item.mappingStatus === 'DIRECT_ACTIVE' && item.bindingStatus === 'ACTIVE'
+          && text(item.problemTypeKey) && text(item.templateKey)
+          && item.standardUnitKey === placeholder.standardUnitKey
+          && item.subUnitKey === placeholder.subUnitKey
+          && item.standardCourse === context.standardCourse
+          && (!placeholder.standardCourse || item.standardCourse === placeholder.standardCourse));
+      });
+      if (effective.length !== applicable.length) {
+        // The RPM leaf may also describe a question whose template has yet to be added.
+        // Require a decision tied to this question even when only one promotion exists.
+        return { doc, row: null, duplicate: true, candidates: effective, requiresSelection: true };
+      }
+    }
     if (applicable.length === 1) return { doc, row: applicable[0], duplicate: false };
     if (!applicable.length) return { doc, row: null, duplicate: false, l2Mismatch: true };
     return { doc, row: null, duplicate: true, candidates: applicable };
@@ -533,7 +554,8 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
     // Several rows share this leaf and unit. They are usable only when each is a complete ACTIVE DIRECT row; the
     // question's decisive step then picks one row AFTER the crosswalk lookup (same rule as FAMILY_ACTIVE).
     const candidates = matched.candidates || [];
-    const complete = candidates.length > 1 && candidates.every(item => item.mappingStatus === 'DIRECT_ACTIVE'
+    const complete = candidates.length >= (matched.requiresSelection ? 1 : 2)
+      && candidates.every(item => item.mappingStatus === 'DIRECT_ACTIVE'
       && item.bindingStatus === 'ACTIVE' && text(item.problemTypeKey) && text(item.templateKey));
     if (!complete) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS');
     const selection = input.familyTemplateSelection;
