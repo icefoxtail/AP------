@@ -1,0 +1,103 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "초점이 $F$인 포물선 $y^2=4px$ 위의 한 점 $A$에서 포물선의",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "1",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "C",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    },
+    {
+      "id": "k1",
+      "through": [
+        "B",
+        "F"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sBF",
+      "from": "B",
+      "to": "F"
+    }
+  ],
+  "caption": "포물선 y^2=4px 위의 점 A, 준선에 내린 수선의 발 B, 선분 BF와 포물선의 교점 C (p는 문자이므로 한 예로 그린 그림)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 포물선 위의 점, B는 A에서 준선에 내린 수선의 발, C는 선분 BF와 포물선이 만나는 점이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=BF (문제가 준 조건). p는 문자이므로 한 예(p=1)로 그린다.",
+      "mappedTo": [
+        "segments",
+        "conic"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB와 BF가 같은 길이가 되는 점 A의 위치와 교점 C의 위치"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q15-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-problem.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 15,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

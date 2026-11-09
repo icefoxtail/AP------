@@ -1,0 +1,108 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "직각삼각형 $VOA$에서 $VA=2\\sqrt3$, $AO=2\\sqrt2$",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 2,
+      "names": "ABCDV",
+      "points": [
+        {
+          "id": "O",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "V",
+      "to": "O",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "O",
+      "to": "A",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "V",
+      "to": "A",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "V",
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "V",
+          "A"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "V",
+          "A",
+          "O"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "V",
+      "to": "A"
+    },
+    {
+      "from": "O",
+      "to": "A"
+    },
+    {
+      "from": "V",
+      "to": "O"
+    }
+  ],
+  "caption": "정사각뿔의 꼭짓점 V에서 밑면에 내린 수선의 발 O(대각선의 교점)와 직각삼각형 VOA. VA=2√3, AO=2√2, VO=2",
+  "sourceConditions": [
+    "밑면 한 변의 길이 4",
+    "옆모서리의 길이 2√3"
+  ],
+  "newVisualInformation": [
+    "수선의 발 O, 직각삼각형 VOA와 각 θ, 세 변의 길이"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q08-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q08-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q08-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q08-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 8,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

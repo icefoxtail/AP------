@@ -1,0 +1,75 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "따라서 접선은 $y=2x+3$, $y=2x-3$이고",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "5",
+    "bSquared": "11",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "S",
+      "kind": "POINT",
+      "x": "-10/3",
+      "y": "-11/3",
+      "coordinates": true
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "x": "10/3",
+      "y": "11/3",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "slope": "2",
+      "intercept": "3",
+      "tangent": true,
+      "label": "l_1"
+    },
+    {
+      "id": "t2",
+      "slope": "2",
+      "intercept": "-3",
+      "tangent": true,
+      "label": "l_2"
+    }
+  ],
+  "caption": "쌍곡선 x^2/5-y^2/11=1에 접하고 기울기가 2인 두 접선 l_1: y=2x+3, l_2: y=2x-3과 접점 S, T",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 x^2/5-y^2/11=1에 접하고 기울기가 2인 직선을 구한다.",
+      "mappedTo": [
+        "conic",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 접선과 접점 S(-10/3,-11/3), T(10/3,11/3), y절편 3과 -3"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q05-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q05-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q05-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q05-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 5,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

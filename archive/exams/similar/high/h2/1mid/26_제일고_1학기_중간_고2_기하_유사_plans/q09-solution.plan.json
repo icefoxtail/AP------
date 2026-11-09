@@ -1,0 +1,71 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "-3",
+      "axis": "Y"
+    },
+    {
+      "id": "c2",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "2"
+      ],
+      "aSquared": "16",
+      "bSquared": "9",
+      "major": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "C",
+      "kind": "CENTER",
+      "curve": "c2"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "y": "-2",
+      "branch": "POS",
+      "curve": "c1"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "P",
+      "curve": "c1",
+      "label": "l"
+    }
+  ],
+  "caption": "포물선 x²=−12y 위의 점 P(a,−2)에서의 접선이 타원의 중심 C(0,2)를 지나 타원의 넓이를 이등분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원의 중심 (0,2), 접점 (a,-2), a^2=24",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선이 타원의 중심을 지나 넓이를 이등분하는 모습"
+  ],
+  "sourceQuote": "타원의 넓이를 이등분하는 직선은 타원의 중심을 지난다.",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q09-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q09-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q09-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q09-solution.svg"
+  }
+}

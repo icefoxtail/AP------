@@ -1,0 +1,2440 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_효천고_1학기_중간_고2_확률과통계_유사-candidate-v1",
+  "examUid": "26_효천고_1학기_중간_고2_확률과통계_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js",
+  "expectedSourceBlobSha1": "34cfd074d318725dc1ccfa6da1922be72259e9dd",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "registryChanges": [
+    {
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_효천고_1학기_중간_고2_확률과통계_유사.registry.json",
+      "registrySha256": "f6b1061ab8401be6ae9a5f5b6dc5dddfe929509ab729bbaf2e513d15cd189326",
+      "keys": [
+        "EXT-L4-PS-SURJECTION-FUNCTION-COUNT",
+        "EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT"
+      ],
+      "details": {
+        "generatedL4": [
+          {
+            "key": "EXT-L4-PS-SURJECTION-FUNCTION-COUNT",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "치역과 공역이 같은 함수의 개수(여집합 계산)",
+            "definition": "정의역의 원소 수가 공역의 원소 수보다 많은 유한집합 사이의 함수에서, 전체 함수의 개수(중복순열)에서 치역에 나오지 않는 원소가 있는 함수의 개수를 빼서 치역과 공역이 같은 함수의 개수를 세는 사고.",
+            "parentRpmRecordId": "H2-PS-RPM-033",
+            "parentRpmL1": "경우의 수",
+            "parentRpmL2": "순열과 조합",
+            "parentRpmL3": "순열",
+            "parentRpmL4": "중복·원순열",
+            "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "parentTemplateKey": null,
+            "parentTemplateCandidates": [
+              "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "TPL_CIRCULAR_PERMUTATION"
+            ],
+            "standardUnitKey": "H22-PS-01",
+            "subUnitKey": "H22-PS-01-CORE",
+            "standardCourse": "확률과 통계",
+            "curriculum": "2022",
+            "basis": "RPM H2-PS-RPM-033의 L4 \"중복·원순열\"은 중복순열·같은 것이 있는 순열·원순열의 배열 수를 다루며, 함수의 치역이 공역 전체가 되는 조건을 여집합(치역에서 빠지는 원소)으로 세는 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "26_효천고_1학기_중간_고2_확률과통계_유사",
+              "qid": 9
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-09",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "함숫값의 곱이 주어진 값이 되는 함수의 개수",
+            "definition": "정의역 원소별 함숫값(음수 포함)의 곱이 주어진 값이 되는 함수의 개수를, 곱의 절댓값을 소인수분해해 절댓값의 구성과 배열(같은 것이 있는 순열)을 정하고, 부호의 곱이 양수가 되는 부호 배정(음수 개수의 홀짝)을 곱하여 세는 사고.",
+            "parentRpmRecordId": "H2-PS-RPM-033",
+            "parentRpmL1": "경우의 수",
+            "parentRpmL2": "순열과 조합",
+            "parentRpmL3": "순열",
+            "parentRpmL4": "중복·원순열",
+            "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "parentTemplateKey": null,
+            "parentTemplateCandidates": [
+              "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "TPL_CIRCULAR_PERMUTATION"
+            ],
+            "standardUnitKey": "H22-PS-01",
+            "subUnitKey": "H22-PS-01-CORE",
+            "standardCourse": "확률과 통계",
+            "curriculum": "2022",
+            "basis": "RPM H2-PS-RPM-033의 L4 \"중복·원순열\"은 배열 수 자체를 다루며, 함숫값의 곱 조건을 절댓값의 구성·배열과 부호의 홀짝 배정으로 나누어 세는 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "26_효천고_1학기_중간_고2_확률과통계_유사",
+              "qid": 11
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-09",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedCrossConcepts": [],
+        "generatedConditions": []
+      }
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "중복조합",
+          "l4": "중복을 허용한 선택",
+          "recordId": "H2-PS-RPM-036",
+          "l3Label": "중복조합",
+          "l4Label": "중복을 허용한 선택",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-036 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "중복조합",
+        "rpmPrimaryL4": "중복을 허용한 선택",
+        "rpmPrimaryRecordId": "H2-PS-RPM-036",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "중복조합 기호를 조합으로 바꾸어 한 번 계산하는 기본 정의 확인이라 하",
+        "difficultyBasis": "공식 ${}_{n}H_{r}={}_{n+r-1}C_{r}$ 대입과 조합 계산 한 단계라 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 기호 하나로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "공식에 대입해 조합의 값을 구하는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "중복조합의 값을 조합의 값으로 바꾸어 계산한다.",
+          "crossConcept": "nHr=n+r-1Cr 변환과 조합 계산은 Primary(중복을 허용한 선택) 내부 단계라 별도 교차 개념 없음(비해당 확인).",
+          "condition": "해당 조건 없음(풀이에 범위·정수·양수 제한을 쓰지 않음).",
+          "integration": "단일 풀이 구조라 NONE.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 중복조합의 뜻과 계산"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 1,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-036",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 중복조합의 값을 조합의 값으로 바꾸어 계산한다. → 중복조합>중복을 허용한 선택; PT/TPL(PT_COUNTING_SELECTION_DISTRIBUTION,TPL_REPEATED_COMBINATION_DISTRIBUTION) 기준 크로스워크 H2-PS-RPM-036 → 경우의 수>순열과 조합",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "이항정리 핵심 개념",
+        "conceptClusterKey": "H22-PS-02-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "이항정리",
+          "l3": "이항계수",
+          "l4": "이항계수의 성질",
+          "recordId": "H2-PS-RPM-040",
+          "l3Label": "이항계수",
+          "l4Label": "이항계수의 성질",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-040 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "이항정리",
+        "rpmPrimaryL3": "이항계수",
+        "rpmPrimaryL4": "이항계수의 성질",
+        "rpmPrimaryRecordId": "H2-PS-RPM-040",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "이항계수의 총합 2^n을 알고 빠진 두 항만 빼는 기본 성질 확인이라 하",
+        "difficultyBasis": "총합 공식과 두 항 제외라는 두 단계의 짧은 계산이라 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 조합 기호의 합으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "이항계수의 총합 공식을 적용하는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이항계수의 총합 성질로 일부 항의 합을 구한다.",
+          "crossConcept": "총합 2^n에서 빠진 항을 빼는 것은 Primary(이항계수의 성질) 내부 단계라 별도 교차 개념 없음(비해당 확인).",
+          "condition": "해당 조건 없음.",
+          "integration": "단일 풀이 구조라 NONE.",
+          "curriculum": "2022 확률과 통계 이항정리: 이항계수의 성질"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 2,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "이항정리"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-040",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 이항계수의 총합 성질로 일부 항의 합을 구한다. → 이항계수>이항계수의 성질; PT/TPL(PT_BINOMIAL_THEOREM,TPL_BINOMIAL_COEFFICIENT_IDENTITY) 기준 크로스워크 H2-PS-RPM-040 → 경우의 수>이항정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "중복·원순열",
+          "recordId": "H2-PS-RPM-033",
+          "l3Label": "순열",
+          "l4Label": "중복·원순열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-033 (FAMILY_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "중복·원순열",
+        "rpmPrimaryRecordId": "H2-PS-RPM-033",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "같은 문자가 두 쌍인 순열을 n!/(p!q!)로 세는 기본 유형이라 하",
+        "difficultyBasis": "같은 문자가 두 종류라 나누는 값을 두 번 정해야 하는 점에서 1보다 한 단계 높은 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 단어 하나로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "같은 문자로 나누는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "같은 것이 있는 순열의 수를 n!/(p!q!)로 구한다.",
+          "crossConcept": "같은 문자 처리는 Primary(중복·원순열)의 결정 단계라 별도 교차 개념 없음(비해당 확인).",
+          "condition": "해당 조건 없음.",
+          "integration": "단일 풀이 구조라 NONE.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 같은 것이 있는 순열"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 3,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-033",
+        "method": "CROSSWALK_FAMILY_TEMPLATE_SELECTION",
+        "basis": "결정 단계 확인(문항·해설 대조): 같은 것이 있는 순열의 수를 n!/(p!q!)로 구한다. → 순열>중복·원순열; PT/TPL(PT_COUNTING_ARRANGEMENT,TPL_IDENTICAL_OBJECT_PERMUTATION) 기준 크로스워크 H2-PS-RPM-033 (FAMILY_ACTIVE 후보 TPL_IDENTICAL_OBJECT_PERMUTATION을 결정 단계로 선택) → 경우의 수>순열과 조합",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "이항정리 핵심 개념",
+        "conceptClusterKey": "H22-PS-02-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "이항정리",
+          "l3": "이항정리",
+          "l4": "특정 항의 계수",
+          "recordId": "H2-PS-RPM-039",
+          "l3Label": "이항정리",
+          "l4Label": "특정 항의 계수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-039 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "이항정리",
+        "rpmPrimaryL3": "이항정리",
+        "rpmPrimaryL4": "특정 항의 계수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-039",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "일반항에서 r을 정해 계수를 구하는 기본 유형이라 하",
+        "difficultyBasis": "밑의 계수 3과 음수 부호가 함께 있어 부호·거듭제곱 처리가 필요한 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "일반항에서 r을 정해 계수를 계산하는 풀이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이항정리의 일반항으로 특정 항의 계수를 구한다.",
+          "crossConcept": "일반항 적용은 Primary(특정 항의 계수) 자체라 별도 교차 개념 없음(비해당 확인).",
+          "condition": "해당 조건 없음.",
+          "integration": "단일 풀이 구조라 NONE.",
+          "curriculum": "2022 확률과 통계 이항정리: 이항정리의 일반항"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 4,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "이항정리"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-039",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 이항정리의 일반항으로 특정 항의 계수를 구한다. → 이항정리>특정 항의 계수; PT/TPL(PT_BINOMIAL_THEOREM,TPL_BINOMIAL_TERM_COEFFICIENT) 기준 크로스워크 H2-PS-RPM-039 → 경우의 수>이항정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "subUnit": "조건부확률의 계산과 활용",
+        "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "조건부확률",
+          "l4": "조건부확률 계산",
+          "recordId": "H2-PS-RPM-046",
+          "l3Label": "조건부확률",
+          "l4Label": "조건부확률 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-046 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "조건부확률",
+        "rpmPrimaryL4": "조건부확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-046",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+        "crossConceptKeys": [
+          "CC_PROBABILITY_MULTIPLICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "첫째 확률과 둘째 조건부확률을 곱하는 기본 곱셈정리 계산이라 하",
+        "difficultyBasis": "두 단계 확률의 곱이며 남은 공의 개수만 바꾸면 되는 가장 단순한 조건부확률 계산이라 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 공의 개수와 추출 규칙만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "REQUIRED",
+          "solutionReason": "첫 번째 결과에 따라 두 번째 확률이 달라지는 구조를 수형도로 보여 주면 조건부확률의 곱셈을 이해하기 쉽다."
+        },
+        "metaRationale": {
+          "problemType": "비복원 추출에서 첫 번째와 두 번째 사건이 연달아 일어날 확률을 구한다.",
+          "crossConcept": "P(A∩B)=P(A)P(B|A)로 두 사건의 확률을 곱하는 확률의 곱셈정리를 결정 단계에서 쓴다.",
+          "condition": "해당 조건 없음.",
+          "integration": "첫 번째 확률을 구한 뒤 조건부확률을 곱하는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 조건부확률: 조건부확률과 확률의 곱셈정리"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 5,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "조건부확률",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagReason": "등록 위험(미검증): 2022 H22-PS-04는 컴파일된 ACTIVE 바인딩이 subUnitKey=null(STANDARD_UNIT_DIRECT)뿐이고 소형 메타는 H22-PS-04-CONDITIONAL_PROBABILITY(크로스워크 H2-PS-RPM-046 행의 소단원)를 쓴다. 등록기 resolve()가 (curriculum,course,unit,subUnit,PT) 바인딩을 찾지 못해 'ACTIVE curriculum binding missing'으로 거부할 수 있다. 등록(main_merge_master --apply) 단계의 실제 결과로 확인하고, 거부되면 sub를 null로 낮추거나 H22-PS-04-CONDITIONAL_PROBABILITY 바인딩을 정식 추가해야 한다."
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-046",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 비복원 추출에서 첫 번째와 두 번째 사건이 연달아 일어날 확률을 구한다. → 조건부확률>조건부확률 계산; PT/TPL(PT_CONDITIONAL_PROBABILITY,TPL_CONDITIONAL_PROBABILITY_DIRECT) 기준 크로스워크 H2-PS-RPM-046 → 확률>조건부확률",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "독립시행",
+          "l4": "이항형 시행",
+          "recordId": "H2-PS-RPM-049",
+          "l3Label": "독립시행",
+          "l4Label": "이항형 시행",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-049 (DIRECT_BINDING_GAP, 2022) / RPM_BINDING_GAP: 2022 binding MISSING, parent는 UNIT_LABEL(확률>확률의 뜻과 활용)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "독립시행",
+        "rpmPrimaryL4": "이항형 시행",
+        "rpmPrimaryRecordId": "H2-PS-RPM-049",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "crossConceptKeys": [
+          "CC_COIN_TOSS_EXPERIMENT",
+          "CC_MUTUALLY_EXCLUSIVE_EVENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "독립시행의 확률 공식을 두 경우에 적용해 더하는 기본 문제라 하",
+        "difficultyBasis": "공식 적용이 두 번이고 합의 법칙을 함께 쓰는 점에서 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 시행 횟수와 사건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "독립시행의 확률 공식을 두 경우에 적용하는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "동전 던지기 독립시행에서 앞면이 k번 이상 나올 확률을 구한다.",
+          "crossConcept": "앞면이 1/2인 동전 던지기 대칭 시행 모델과, 7번 또는 8번인 배반인 경우의 확률을 더하는 합의 법칙을 쓴다.",
+          "condition": "'이상'이라는 횟수 범위는 경우 나누기 구조로 처리하며 별도 조건 키는 없다.",
+          "integration": "7번 또는 8번인 경우로 나누어 더하는 구조라 CASE_BRANCH.",
+          "curriculum": "2022 확률과 통계 확률: 독립시행의 확률"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 6,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H2-PS-RPM-049",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 동전 던지기 독립시행에서 앞면이 k번 이상 나올 확률을 구한다. → 독립시행>이항형 시행; PT/TPL(PT_PROBABILITY_REPEATED_TRIALS,TPL_INDEPENDENT_TRIAL_PROBABILITY) 기준 크로스워크 H2-PS-RPM-049 (크로스워크 H2-PS-RPM-049은 H22-PS-04 바인딩 MISSING이나, canonical bindings.json에 H22-PS-03의 PT_PROBABILITY_REPEATED_TRIALS ACTIVE 바인딩이 있어 H22-PS-03-PROBABILITY_BASIC로 결속) → 확률>조건부확률",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09",
+        "reviewerChange": {
+          "round": 1,
+          "reviewer": "independent-reviewer",
+          "before": {
+            "L2": "조건부확률",
+            "parentRefMode": "CROSSWALK_EXACT"
+          },
+          "reason": "크로스워크 H2-PS-RPM-049/050은 bindingStatus MISSING(비ACTIVE)이라 crosswalkRef를 실을 수 없고, 단원 H22-PS-03 바인딩·단원 라벨('확률의 뜻과 활용')과 L2 '조건부확률'이 달라 등록기 withTargetParent가 'canonical target parent mismatch'로 거부함. 원본 기출 분류(H15-PS-03 확률의 뜻과 활용)와 기존 ACTIVE 바인딩(H22-PS-03-PROBABILITY_BASIC/APPLICATION)에 맞춰 부모를 단원 라벨로 결속.",
+          "evidenceDebt": "EVIDENCE_DEBT: 독립시행의 RPM Primary 리프(H2-PS-RPM-049/050, 확률>조건부확률>독립시행)는 2022 바인딩이 MISSING이라 등록 경로(rpmPrimaryPath)로 실리지 않음. 크로스워크에 H22-PS-03 단원 ACTIVE 행이 생기면 재지정."
+        }
+      }
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "이항정리 핵심 개념",
+        "conceptClusterKey": "H22-PS-02-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "이항정리",
+          "l3": "이항정리",
+          "l4": "특정 항의 계수",
+          "recordId": "H2-PS-RPM-039",
+          "l3Label": "이항정리",
+          "l4Label": "특정 항의 계수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-039 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "이항정리",
+        "rpmPrimaryL3": "이항정리",
+        "rpmPrimaryL4": "특정 항의 계수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-039",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [
+          "CC_BINOMIAL_COEFFICIENT_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 계수를 일반항으로 구하고 방정식을 푸는 중간 수준의 이항정리 문제라 중",
+        "difficultyBasis": "일반항 두 번 적용 후 a에 대한 방정식 풀이와 a≠0 판단까지 이어지는 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "일반항으로 계수를 구하고 방정식을 푸는 대수 계산이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이항정리로 두 항의 계수를 a로 나타내고 같다고 놓아 미지수를 구한다.",
+          "crossConcept": "두 특정 차수의 계수를 같다고 놓아 미지수 a의 거듭제곱 방정식을 푸는 계수 조건 방정식을 쓴다.",
+          "condition": "a≠0 조건으로 a^2으로 나누거나 a=0을 제외해 해를 선택한다(COND_NONZERO).",
+          "integration": "계수를 구한 뒤 방정식을 푸는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 이항정리: 이항정리의 일반항과 계수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 7,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "이항정리"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-039",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 이항정리로 두 항의 계수를 a로 나타내고 같다고 놓아 미지수를 구한다. → 이항정리>특정 항의 계수; PT/TPL(PT_BINOMIAL_THEOREM,TPL_BINOMIAL_TERM_COEFFICIENT) 기준 크로스워크 H2-PS-RPM-039 → 경우의 수>이항정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "이항정리 핵심 개념",
+        "conceptClusterKey": "H22-PS-02-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "이항정리",
+          "l3": "이항정리",
+          "l4": "특정 항의 계수",
+          "recordId": "H2-PS-RPM-039",
+          "l3Label": "이항정리",
+          "l4Label": "특정 항의 계수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-039 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "이항정리",
+        "rpmPrimaryL3": "이항정리",
+        "rpmPrimaryL4": "특정 항의 계수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-039",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [
+          "CC_EXPONENT_SUM_COMBINATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "이항정리와 다항식의 곱을 결합하여 목표 차수의 항만 골라 계수를 구하는 중간 수준이라 중",
+        "difficultyBasis": "곱의 전개에서 차수 조합 두 경우를 찾고 이항정리 일반항을 적용해야 하는 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "차수 조합을 골라 계수를 곱해 더하는 대수 계산이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이항정리로 한 인수의 계수를 구하고 다른 인수와 곱해 특정 차수의 계수를 구한다.",
+          "crossConcept": "두 다항식의 곱에서 지수의 합이 목표 차수 5가 되는 항의 짝만 골라 계수를 곱해 더한다.",
+          "condition": "해당 조건 없음.",
+          "integration": "x^5이 만들어지는 두 경우로 나누어 더하는 구조라 CASE_BRANCH.",
+          "curriculum": "2022 확률과 통계 이항정리: 이항정리를 이용한 계수 구하기(곱의 전개 포함)"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 8,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "이항정리"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-039",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 이항정리로 한 인수의 계수를 구하고 다른 인수와 곱해 특정 차수의 계수를 구한다. → 이항정리>특정 항의 계수; PT/TPL(PT_BINOMIAL_THEOREM,TPL_BINOMIAL_TERM_COEFFICIENT) 기준 크로스워크 H2-PS-RPM-039 → 경우의 수>이항정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "치역과 공역이 같은 함수의 개수(여집합 계산)",
+          "recordId": "H2-PS-RPM-033",
+          "l3Label": "순열",
+          "l4Label": "치역과 공역이 같은 함수의 개수(여집합 계산)",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-PS-SURJECTION-FUNCTION-COUNT",
+          "parentRpmL4": "중복·원순열",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-PS-RPM-033"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "치역과 공역이 같은 함수의 개수(여집합 계산)",
+        "rpmPrimaryRecordId": "H2-PS-RPM-033",
+        "rpmGeneratedL4Key": "EXT-L4-PS-SURJECTION-FUNCTION-COUNT",
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_SURJECTION_COUNT",
+        "crossConceptKeys": [
+          "CC_INCLUSION_EXCLUSION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "중복순열로 전체 함수 수를 세고 여집합을 빼는 두 단계 구조라 중",
+        "difficultyBasis": "전체 함수 수, 한 원소 제외, 두 원소 제외의 겹침 처리까지 세 단계의 여집합 계산이라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 집합과 함수 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "전체 함수에서 여집합 함수를 빼는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "치역과 공역이 같은 함수의 개수를 전체 함수에서 치역에 빠지는 원소가 있는 함수를 빼서 구한다.",
+          "crossConcept": "치역에서 빠지는 원소가 여러 개일 때 겹쳐 센 경우를 보정하는 포함배제 원리를 쓴다.",
+          "condition": "치역=공역 조건은 TPL_SURJECTION_COUNT(Primary 확장 L4) 자체이며 별도 조건 키로 분리하지 않는다.",
+          "integration": "전체 함수에서 여집합 함수를 단계별로 빼는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 중복순열과 여집합을 이용한 함수의 개수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 9,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H2-PS-RPM-033",
+        "method": "CROSSWALK_RPM_PATH_GENERATED_L4",
+        "basis": "결정 단계 확인(문항·해설 대조): 치역과 공역이 같은 함수의 개수를 전체 함수에서 치역에 빠지는 원소가 있는 함수를 빼서 구한다. → 순열>치역과 공역이 같은 함수의 개수(여집합 계산); PT/TPL(PT_FUNCTION_COUNTING,TPL_SURJECTION_COUNT) 기준 크로스워크 H2-PS-RPM-033 (정확한 L4가 없어 parent H2-PS-RPM-033 아래 Generated L4 EXT-L4-PS-SURJECTION-FUNCTION-COUNT; PT/TPL은 canonical ACTIVE 바인딩 H22-PS-01-CORE의 PT_FUNCTION_COUNTING/TPL_SURJECTION_COUNT) → 경우의 수>순열과 조합",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09",
+        "reviewerChange": {
+          "round": 1,
+          "reviewer": "independent-reviewer",
+          "before": {
+            "parentRefMode": "CROSSWALK_PARENT_RECORD"
+          },
+          "reason": "문항 PT/TPL(PT_FUNCTION_COUNTING/TPL_SURJECTION_COUNT)과 정확히 같은 ACTIVE 크로스워크 행이 H2-PS-RPM-033(PT_COUNTING_ARRANGEMENT, FAMILY 후보 TPL_IDENTICAL_OBJECT_PERMUTATION/TPL_CIRCULAR_PERMUTATION)에 없으므로 CROSSWALK_EXACT/PARENT_RECORD가 아니라 UNIT_LABEL(L2 '순열과 조합'=단원 라벨)로 기록. RPM 경로 값 자체는 변경 없음."
+        }
+      }
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "일렬 배열",
+          "recordId": "H2-PS-RPM-032",
+          "l3Label": "순열",
+          "l4Label": "일렬 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-032 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "일렬 배열",
+        "rpmPrimaryRecordId": "H2-PS-RPM-032",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_COMBINATION_ORDER"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "표의 거리 값을 읽고 대소 조건을 순열의 수로 바꾸는 중간 수준이라 중",
+        "difficultyBasis": "같은 거리 쌍을 제외하는 판단과 나머지 순열을 곱하는 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "가게별 거리는 AP Table Engine 파이프 표로 발문에 넣었고 별도 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "표에서 읽은 거리 값은 해설에 다시 적었고 경우를 세는 계산이 핵심이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "서로 다른 대상을 가게에 배정하되 두 대상 사이의 대소 조건을 만족하는 경우의 수를 센다.",
+          "crossConcept": "먼저 두 기사가 맡을 가게 쌍을 조합으로 고른 뒤 나머지를 순열로 배정하는 조합 후 순서 배정을 쓴다.",
+          "condition": "서연이 맡은 가게의 거리가 민준의 거리보다 커야 한다는 두 변수 사이의 대소 조건(COND_INEQUALITY_CONSTRAINT)을 적용한다.",
+          "integration": "가게 쌍 선택 후 나머지 배정을 곱하는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 조건이 있는 순열과 조합"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 10,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-032",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 서로 다른 대상을 가게에 배정하되 두 대상 사이의 대소 조건을 만족하는 경우의 수를 센다. → 순열>일렬 배열; PT/TPL(PT_COUNTING_ARRANGEMENT,TPL_PERMUTATION_STANDARD_CONSTRAINT) 기준 크로스워크 H2-PS-RPM-032 → 경우의 수>순열과 조합",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "함숫값의 곱이 주어진 값이 되는 함수의 개수",
+          "recordId": "H2-PS-RPM-033",
+          "l3Label": "순열",
+          "l4Label": "함숫값의 곱이 주어진 값이 되는 함수의 개수",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT",
+          "parentRpmL4": "중복·원순열",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-PS-RPM-033"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "함숫값의 곱이 주어진 값이 되는 함수의 개수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-033",
+        "rpmGeneratedL4Key": "EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT",
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+        "crossConceptKeys": [
+          "CC_IDENTICAL_OBJECT_PERMUTATION",
+          "CC_CASE_BRANCHING"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "곱 조건을 절댓값 구성, 배열, 부호로 나누어 세는 다단계 개수 문제라 상",
+        "difficultyBasis": "소인수 구성 파악, 같은 것이 있는 순열, 부호의 홀짝 배정, X에 -3이 없다는 함정까지 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "곱 조건은 발문에 수식 상자로 넣었고 학생이 풀 때 별도 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "절댓값 구성과 부호를 나누어 세는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "함숫값의 곱 조건을 만족하는 함수의 개수를 절댓값의 구성과 부호로 나누어 센다.",
+          "crossConcept": "절댓값 3,2,2,1,1을 배정하는 같은 것이 있는 순열과, 부호 배정을 음수 개수가 0·2·4인 경우로 나누는 경우 나누기를 쓴다.",
+          "condition": "다섯 함숫값의 곱이 12라는 함숫값 관계 조건(COND_FUNCTION_VALUE_CONSTRAINT)이 개수를 결정한다.",
+          "integration": "절댓값 구성, 배열, 부호를 차례로 곱하는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 같은 것이 있는 순열과 경우의 수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 11,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H2-PS-RPM-033",
+        "method": "CROSSWALK_RPM_PATH_GENERATED_L4",
+        "basis": "결정 단계 확인(문항·해설 대조): 함숫값의 곱 조건을 만족하는 함수의 개수를 절댓값의 구성과 부호로 나누어 센다. → 순열>함숫값의 곱이 주어진 값이 되는 함수의 개수; PT/TPL(PT_FUNCTION_COUNTING,TPL_CONSTRAINED_FUNCTION_COUNT) 기준 크로스워크 H2-PS-RPM-033 (정확한 L4가 없어 parent H2-PS-RPM-033 아래 Generated L4 EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT; PT/TPL은 canonical ACTIVE 바인딩 H22-PS-01-CORE의 PT_FUNCTION_COUNTING/TPL_CONSTRAINED_FUNCTION_COUNT) → 경우의 수>순열과 조합",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09",
+        "reviewerChange": {
+          "round": 1,
+          "reviewer": "independent-reviewer",
+          "before": {
+            "parentRefMode": "CROSSWALK_PARENT_RECORD"
+          },
+          "reason": "문항 PT/TPL(PT_FUNCTION_COUNTING/TPL_CONSTRAINED_FUNCTION_COUNT)과 정확히 같은 ACTIVE 크로스워크 행이 H2-PS-RPM-033(PT_COUNTING_ARRANGEMENT, FAMILY 후보 TPL_IDENTICAL_OBJECT_PERMUTATION/TPL_CIRCULAR_PERMUTATION)에 없으므로 CROSSWALK_EXACT/PARENT_RECORD가 아니라 UNIT_LABEL(L2 '순열과 조합'=단원 라벨)로 기록. RPM 경로 값 자체는 변경 없음."
+        }
+      }
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043",
+          "l3Label": "확률의 기본",
+          "l4Label": "확률 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-043 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [
+          "CC_DICE_EXPERIMENT"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "제곱수의 합 조건을 해석해 경우를 세는 중간 수준의 확률 문제라 중",
+        "difficultyBasis": "제곱수 합 3의 분해, 각 변수의 해 구하기, 눈의 범위 밖 해 제외까지 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 주사위와 식 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "제곱수의 합을 분해하고 경우를 세는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "주사위 세 번의 눈의 수가 제곱식 조건을 만족할 확률을 경우의 수의 비로 구한다.",
+          "crossConcept": "세 번 던져 나오는 눈의 순서쌍을 표본공간으로 놓는 주사위 던지기 시행 모델을 쓴다.",
+          "condition": "눈의 수가 1 이상 6 이하라는 범위 때문에 x=0을 제외한다(COND_RANGE).",
+          "integration": "제곱수 분해 후 각 변수의 해를 곱하는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 확률의 뜻과 활용: 수학적 확률"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 12,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-043",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 주사위 세 번의 눈의 수가 제곱식 조건을 만족할 확률을 경우의 수의 비로 구한다. → 확률의 기본>확률 계산; PT/TPL(PT_PROBABILITY_PROPERTIES_APPLICATION,TPL_PROBABILITY_BASIC_COUNT_RATIO) 기준 크로스워크 H2-PS-RPM-043 → 확률>확률의 뜻과 활용",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "subUnit": "조건부확률의 계산과 활용",
+        "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "조건부확률",
+          "l4": "조건부확률 계산",
+          "recordId": "H2-PS-RPM-046",
+          "l3Label": "조건부확률",
+          "l4Label": "조건부확률 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-046 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "조건부확률",
+        "rpmPrimaryL4": "조건부확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-046",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+        "crossConceptKeys": [
+          "CC_CONTINGENCY_TABLE_PROBABILITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "비율 조건으로 분할표를 채우고 조건부확률을 구하는 중간 수준이라 중",
+        "difficultyBasis": "여자·남자 비율, 남자의 비 관계로 미지수 설정, 분할표 완성, 조건부확률 계산의 4단계 정리라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 비율과 조건을 글로 완결하여 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "풀이에 필요한 분할표를 AP Table Engine 파이프 표로 해설에 직접 넣었고 별도 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "비율로 주어진 조건을 분할표로 정리해 조건부확률 P(여자|샌드위치)를 구한다.",
+          "crossConcept": "두 범주로 나눈 분할표를 완성하고 조건 사건의 부분합을 분모로 삼는 분할표에서의 조건부확률을 쓴다.",
+          "condition": "모든 회원이 한 가지만 선택한다는 서술은 표의 합이 맞는 구조일 뿐 해를 제한하는 별도 조건 키는 없다.",
+          "integration": "표를 완성한 뒤 조건부확률을 계산하는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 조건부확률: 조건부확률의 계산과 분할표"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 13,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "조건부확률",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagReason": "등록 위험(미검증): 2022 H22-PS-04는 컴파일된 ACTIVE 바인딩이 subUnitKey=null(STANDARD_UNIT_DIRECT)뿐이고 소형 메타는 H22-PS-04-CONDITIONAL_PROBABILITY(크로스워크 H2-PS-RPM-046 행의 소단원)를 쓴다. 등록기 resolve()가 (curriculum,course,unit,subUnit,PT) 바인딩을 찾지 못해 'ACTIVE curriculum binding missing'으로 거부할 수 있다. 등록(main_merge_master --apply) 단계의 실제 결과로 확인하고, 거부되면 sub를 null로 낮추거나 H22-PS-04-CONDITIONAL_PROBABILITY 바인딩을 정식 추가해야 한다."
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-046",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 비율로 주어진 조건을 분할표로 정리해 조건부확률 P(여자|샌드위치)를 구한다. → 조건부확률>조건부확률 계산; PT/TPL(PT_CONDITIONAL_PROBABILITY,TPL_CONDITIONAL_PROBABILITY_DIRECT) 기준 크로스워크 H2-PS-RPM-046 → 확률>조건부확률",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "subUnit": "조건부확률의 계산과 활용",
+        "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "사건의 독립",
+          "l4": "독립 판정",
+          "recordId": "H2-PS-RPM-047",
+          "l3Label": "사건의 독립",
+          "l4Label": "독립 판정",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-047 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "사건의 독립",
+        "rpmPrimaryL4": "독립 판정",
+        "rpmPrimaryRecordId": "H2-PS-RPM-047",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+        "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+        "crossConceptKeys": [
+          "CC_MUTUALLY_EXCLUSIVE_EVENTS",
+          "CC_INDEPENDENCE_PROOF"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "독립·배반·조건부확률의 정의를 보기마다 구분해 판정하는 중간 수준이라 중",
+        "difficultyBasis": "여사건의 독립 증명, 배반일 때 조건부확률 계산, 합집합의 여사건 표현까지 세 보기를 각각 증명해야 하는 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 사건 사이의 관계를 글과 식으로 완결하여 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "각 보기를 확률의 정의로 증명하는 풀이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "사건의 독립·배반 관련 보기의 참·거짓을 정의로 판정한다.",
+          "crossConcept": "배반사건이면 P(A∩B)=0이라는 성질과, 독립이면 여사건끼리도 독립임을 곱의 꼴로 전개해 증명하는 개념을 쓴다.",
+          "condition": "P(A)≠0, P(B)≠0이어야 배반사건이 독립이 아니고 조건부확률이 정의된다(COND_NONZERO).",
+          "integration": "보기별로 독립 판정하는 구조라 CASE_BRANCH.",
+          "curriculum": "2022 확률과 통계 조건부확률: 사건의 독립과 종속"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 14,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "조건부확률",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagReason": "등록 위험(미검증): 2022 H22-PS-04는 컴파일된 ACTIVE 바인딩이 subUnitKey=null(STANDARD_UNIT_DIRECT)뿐이고 소형 메타는 H22-PS-04-CONDITIONAL_PROBABILITY(크로스워크 H2-PS-RPM-046 행의 소단원)를 쓴다. 등록기 resolve()가 (curriculum,course,unit,subUnit,PT) 바인딩을 찾지 못해 'ACTIVE curriculum binding missing'으로 거부할 수 있다. 등록(main_merge_master --apply) 단계의 실제 결과로 확인하고, 거부되면 sub를 null로 낮추거나 H22-PS-04-CONDITIONAL_PROBABILITY 바인딩을 정식 추가해야 한다."
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-047",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 사건의 독립·배반 관련 보기의 참·거짓을 정의로 판정한다. → 사건의 독립>독립 판정; PT/TPL(PT_EVENT_INDEPENDENCE,TPL_EVENT_INDEPENDENCE_JUDGMENT) 기준 크로스워크 H2-PS-RPM-047 → 확률>조건부확률",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "중복조합",
+          "l4": "정수해 개수",
+          "recordId": "H2-PS-RPM-037",
+          "l3Label": "중복조합",
+          "l4Label": "정수해 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-037 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "중복조합",
+        "rpmPrimaryL4": "정수해 개수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-037",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE",
+          "CC_CASE_BRANCHING"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "변수 하나를 고정해 경우를 나누고 치환으로 중복조합을 세는 중간 수준이라 중",
+        "difficultyBasis": "z별 경우 나누기, y≥2z 치환, 정수해 개수 공식, 합산의 4단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "조건은 발문에 식 상자로 넣었고 학생이 풀 때 별도 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "경우를 나누어 정수해의 개수를 세는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "조건이 있는 음이 아닌 정수해의 개수를 변수 하나로 경우를 나누고 중복조합으로 센다.",
+          "crossConcept": "y≥2z 조건을 y=2z+y'로 치환하여 음이 아닌 정수해 문제로 바꾸는 개념과 z의 값별로 나누는 경우 나누기를 쓴다.",
+          "condition": "음이 아닌 정수 조건, z≤3이라는 범위, y≥2z라는 변수 사이의 부등식 조건이 해의 개수를 결정한다.",
+          "integration": "z=0,1,2,3의 경우를 나누어 더하는 구조라 CASE_BRANCH.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 중복조합과 정수해의 개수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 15,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-037",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 조건이 있는 음이 아닌 정수해의 개수를 변수 하나로 경우를 나누고 중복조합으로 센다. → 중복조합>정수해 개수; PT/TPL(PT_COUNTING_SELECTION_DISTRIBUTION,TPL_REPEATED_COMBINATION_DISTRIBUTION) 기준 크로스워크 H2-PS-RPM-037 → 경우의 수>순열과 조합",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "중복조합",
+          "l4": "정수해 개수",
+          "recordId": "H2-PS-RPM-037",
+          "l3Label": "중복조합",
+          "l4Label": "정수해 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-037 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "중복조합",
+        "rpmPrimaryL4": "정수해 개수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-037",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_CASE_BRANCHING"
+        ],
+        "conditionKeys": [
+          "COND_LOWER_BOUND"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 색의 공 분배에 하한 조건이 걸려 경우를 나누어 중복조합으로 세는 다단계 문제라 상",
+        "difficultyBasis": "흰 공 분포 네 형태 분류, 부족한 검은 공 먼저 배정, 남은 공 중복조합, 순열 곱·합산까지 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 공과 상자의 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "흰 공 분포별로 경우를 나누어 세는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "서로 다른 상자에 같은 색 공을 최소 개수 조건으로 나누는 경우의 수를 중복조합으로 센다.",
+          "crossConcept": "흰 공의 분포 형태에 따라 경우를 나누어 각각 계산해 더하는 경우 나누기를 쓴다.",
+          "condition": "각 상자에 공이 2개 이상이라는 하한 조건(COND_LOWER_BOUND)이 먼저 채울 검은 공의 수를 정한다.",
+          "integration": "흰 공 분포 형태별로 나누어 더하는 구조라 CASE_BRANCH.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 중복조합을 이용한 분배"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 16,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-037",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 서로 다른 상자에 같은 색 공을 최소 개수 조건으로 나누는 경우의 수를 중복조합으로 센다. → 중복조합>정수해 개수; PT/TPL(PT_COUNTING_SELECTION_DISTRIBUTION,TPL_REPEATED_COMBINATION_DISTRIBUTION) 기준 크로스워크 H2-PS-RPM-037 → 경우의 수>순열과 조합",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "독립시행",
+          "l4": "반복 시행의 확률",
+          "recordId": "H2-PS-RPM-050",
+          "l3Label": "독립시행",
+          "l4Label": "반복 시행의 확률",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-050 (DIRECT_BINDING_GAP, 2022) / RPM_BINDING_GAP: 2022 binding MISSING, parent는 UNIT_LABEL(확률>확률의 뜻과 활용)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "독립시행",
+        "rpmPrimaryL4": "반복 시행의 확률",
+        "rpmPrimaryRecordId": "H2-PS-RPM-050",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "crossConceptKeys": [
+          "CC_LINEAR_CONSTRAINT",
+          "CC_MUTUALLY_EXCLUSIVE_EVENTS"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "점의 이동을 이동 횟수 n의 식으로 바꾸고 부등식으로 가능한 n을 찾아 독립시행으로 계산하는 다단계 문제라 상",
+        "difficultyBasis": "확률 설정, 위치를 3n-6으로 모델링, 부등식으로 n 범위 결정, 세 경우의 독립시행 확률 합산까지 4단계라 4",
+        "visualNecessity": {
+          "problem": "REQUIRED",
+          "problemReason": "수직선 위의 두 점 A(-3), B(3)과 원점에 있는 점 P의 위치가 발문의 조건이라 학생이 보아야 한다.",
+          "solution": "EXEMPT",
+          "solutionReason": "위치 3n-6을 식으로 정리하는 풀이이며, 문제의 두 점 A(-3), B(3)의 값은 해설에 다시 적었고 새로 보탤 그림이 없다."
+        },
+        "metaRationale": {
+          "problemType": "반복 시행에서 점의 최종 위치 조건을 성공 횟수로 바꾸어 독립시행의 확률을 구한다.",
+          "crossConcept": "이동 횟수의 합이 6이라는 관계로 -1 이동 횟수를 6-n으로 소거해 위치를 n의 일차식으로 나타내고, n=1,2,3이 서로 배반인 경우임을 이용해 더한다.",
+          "condition": "이동 횟수 n이 정수라는 조건으로 부등식 1≤n≤3에서 n=1,2,3만 취한다(COND_INTEGER).",
+          "integration": "위치 식, 부등식, 확률 합산을 차례로 하는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 확률: 독립시행의 확률"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 17,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H2-PS-RPM-050",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 반복 시행에서 점의 최종 위치 조건을 성공 횟수로 바꾸어 독립시행의 확률을 구한다. → 독립시행>반복 시행의 확률; PT/TPL(PT_PROBABILITY_REPEATED_TRIALS,TPL_INDEPENDENT_TRIAL_PROBABILITY) 기준 크로스워크 H2-PS-RPM-050 (크로스워크 H2-PS-RPM-050은 H22-PS-04 바인딩 MISSING이나, canonical bindings.json에 H22-PS-03의 PT_PROBABILITY_REPEATED_TRIALS ACTIVE 바인딩이 있어 H22-PS-03-PROBABILITY_BASIC로 결속) → 확률>조건부확률",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09",
+        "reviewerChange": {
+          "round": 1,
+          "reviewer": "independent-reviewer",
+          "before": {
+            "L2": "조건부확률",
+            "parentRefMode": "CROSSWALK_EXACT"
+          },
+          "reason": "크로스워크 H2-PS-RPM-049/050은 bindingStatus MISSING(비ACTIVE)이라 crosswalkRef를 실을 수 없고, 단원 H22-PS-03 바인딩·단원 라벨('확률의 뜻과 활용')과 L2 '조건부확률'이 달라 등록기 withTargetParent가 'canonical target parent mismatch'로 거부함. 원본 기출 분류(H15-PS-03 확률의 뜻과 활용)와 기존 ACTIVE 바인딩(H22-PS-03-PROBABILITY_BASIC/APPLICATION)에 맞춰 부모를 단원 라벨로 결속.",
+          "evidenceDebt": "EVIDENCE_DEBT: 독립시행의 RPM Primary 리프(H2-PS-RPM-049/050, 확률>조건부확률>독립시행)는 2022 바인딩이 MISSING이라 등록 경로(rpmPrimaryPath)로 실리지 않음. 크로스워크에 H22-PS-03 단원 ACTIVE 행이 생기면 재지정."
+        }
+      }
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043",
+          "l3Label": "확률의 기본",
+          "l4Label": "확률 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-043 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [
+          "CC_COMBINATORICS_COUNTING",
+          "CC_CASE_BRANCHING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "최솟값·최댓값 쌍으로 경우를 나누어 조합으로 세는 다단계 확률 문제라 상",
+        "difficultyBasis": "(최솟값, 최댓값) 쌍 열거, 사이 수 선택, 합의 세 경우 합산, 전체 대비 확률까지 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 공의 번호와 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "최솟값과 최댓값의 쌍을 나누어 조합으로 세는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "동시에 꺼낸 수의 최댓값과 최솟값의 합 조건을 만족할 확률을 조합으로 센 경우의 수의 비로 구한다.",
+          "crossConcept": "(최솟값, 최댓값)별로 사이의 수를 조합으로 고르는 경우의 수 계산과 합 m+M의 값에 따른 경우 나누기를 쓴다.",
+          "condition": "해당 조건 키 없음(합의 범위는 경우 나누기에서 처리).",
+          "integration": "경우의 수를 센 뒤 확률로 바꾸는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 확률의 뜻과 활용: 조합을 이용한 수학적 확률"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 18,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-043",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 동시에 꺼낸 수의 최댓값과 최솟값의 합 조건을 만족할 확률을 조합으로 센 경우의 수의 비로 구한다. → 확률의 기본>확률 계산; PT/TPL(PT_PROBABILITY_PROPERTIES_APPLICATION,TPL_PROBABILITY_BASIC_COUNT_RATIO) 기준 크로스워크 H2-PS-RPM-043 → 확률>확률의 뜻과 활용",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "subUnit": "조건부확률의 계산과 활용",
+        "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "조건부확률",
+          "l4": "조건부확률 계산",
+          "recordId": "H2-PS-RPM-046",
+          "l3Label": "조건부확률",
+          "l4Label": "조건부확률 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-046 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "조건부확률",
+        "rpmPrimaryL4": "조건부확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-046",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+        "crossConceptKeys": [
+          "CC_COMBINATORICS_COUNTING",
+          "CC_NUMBER_PARITY",
+          "CC_INDEPENDENT_TRIALS_REPLACEMENT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "복원 반복 시행의 결과를 세 종류의 횟수로 나누고 홀짝 조건을 해석해 조건부확률을 구하는 최상위 문제라 상",
+        "difficultyBasis": "세 종류 횟수 설정, 공 개수의 홀짝을 Y의 홀짝으로 해석, 분모·분자를 각각 반복 시행으로 계산, 조건부확률 정의 적용의 다단계라 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 상자와 카드의 규칙을 글로 완결하여 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "세 종류의 횟수를 식으로 나타내고 확률을 계산하는 풀이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "반복 시행으로 쌓이는 공의 개수 조건을 해석해 조건부확률 P(A|B)=P(A∩B)/P(B)를 구한다.",
+          "crossConcept": "세 종류의 결과가 나오는 순서를 세는 경우의 수 계산, 공 개수의 홀짝 판정, 카드를 다시 넣는 복원 추출이 독립시행이 되는 모델링을 쓴다.",
+          "condition": "해당 조건 키 없음(홀짝 조건은 사건 B를 정의하는 부분이라 CC_NUMBER_PARITY로 반영).",
+          "integration": "사건을 식으로 번역한 뒤 분모와 분자를 차례로 구해 나누는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 조건부확률: 조건부확률과 독립시행"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 19,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "조건부확률",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagReason": "등록 위험(미검증): 2022 H22-PS-04는 컴파일된 ACTIVE 바인딩이 subUnitKey=null(STANDARD_UNIT_DIRECT)뿐이고 소형 메타는 H22-PS-04-CONDITIONAL_PROBABILITY(크로스워크 H2-PS-RPM-046 행의 소단원)를 쓴다. 등록기 resolve()가 (curriculum,course,unit,subUnit,PT) 바인딩을 찾지 못해 'ACTIVE curriculum binding missing'으로 거부할 수 있다. 등록(main_merge_master --apply) 단계의 실제 결과로 확인하고, 거부되면 sub를 null로 낮추거나 H22-PS-04-CONDITIONAL_PROBABILITY 바인딩을 정식 추가해야 한다."
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-046",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 반복 시행으로 쌓이는 공의 개수 조건을 해석해 조건부확률 P(A|B)=P(A∩B)/P(B)를 구한다. → 조건부확률>조건부확률 계산; PT/TPL(PT_CONDITIONAL_PROBABILITY,TPL_CONDITIONAL_PROBABILITY_DIRECT) 기준 크로스워크 H2-PS-RPM-046 → 확률>조건부확률",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "이항정리 핵심 개념",
+        "conceptClusterKey": "H22-PS-02-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "이항정리",
+          "l3": "이항정리",
+          "l4": "전개식의 항",
+          "recordId": "H2-PS-RPM-038",
+          "l3Label": "이항정리",
+          "l4Label": "전개식의 항",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-038 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "이항정리",
+        "rpmPrimaryL3": "이항정리",
+        "rpmPrimaryL4": "전개식의 항",
+        "rpmPrimaryRecordId": "H2-PS-RPM-038",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_TERM_COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "전개식의 항의 개수를 지수 배분의 중복조합으로 바꾸어 세는 중간 수준의 서술형이라 중",
+        "difficultyBasis": "항의 모양 파악, 지수 합 방정식으로의 재해석, 중복조합 계산과 서술을 요구하는 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 요구 사항만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "지수의 합을 중복조합으로 세는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "다항식 전개식의 서로 다른 항의 개수를 지수의 음이 아닌 정수해의 개수로 바꾸어 센다.",
+          "crossConcept": "각 문자의 지수의 합이 일정한 음이 아닌 정수해의 개수를 중복조합으로 세는 전개식 항의 개수 개념을 쓴다.",
+          "condition": "지수가 음이 아닌 정수라는 조건(COND_INTEGER)이 해의 개수를 정한다.",
+          "integration": "항의 개수 문제를 지수 배분의 개수 문제로 재해석하는 구조라 REINTERPRETATION.",
+          "curriculum": "2022 확률과 통계 이항정리와 중복조합: 다항식 전개식의 항"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 20,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "이항정리"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-038",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 다항식 전개식의 서로 다른 항의 개수를 지수의 음이 아닌 정수해의 개수로 바꾸어 센다. → 이항정리>전개식의 항; PT/TPL(PT_BINOMIAL_THEOREM,TPL_BINOMIAL_TERM_COEFFICIENT) 기준 크로스워크 H2-PS-RPM-038 → 경우의 수>이항정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "subUnit": "확률의 활용",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "독립시행",
+          "l4": "반복 시행의 확률",
+          "recordId": "H2-PS-RPM-050",
+          "l3Label": "독립시행",
+          "l4Label": "반복 시행의 확률",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-050 (DIRECT_BINDING_GAP, 2022) / RPM_BINDING_GAP: 2022 binding MISSING, parent는 UNIT_LABEL(확률>확률의 뜻과 활용)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "독립시행",
+        "rpmPrimaryL4": "반복 시행의 확률",
+        "rpmPrimaryRecordId": "H2-PS-RPM-050",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "crossConceptKeys": [
+          "CC_DICE_EXPERIMENT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 시행을 하나의 독립시행으로 재해석해 독립시행의 확률을 구하는 중간 수준의 서술형이라 중",
+        "difficultyBasis": "두 시행 합치기 발상, 성공 확률 설정, 독립시행 공식 적용의 3단계이고 서술이 필요해 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 시행 횟수와 사건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "두 시행을 합쳐 독립시행의 확률 공식을 적용하는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "서로 다른 두 독립시행의 성공 횟수의 합을 하나의 독립시행으로 보고 확률을 구한다.",
+          "crossConcept": "주사위 한 번에서 3의 배수의 눈이 나올 확률 1/3을 정하는 주사위 던지기 시행 모델을 쓴다.",
+          "condition": "해당 조건 키 없음.",
+          "integration": "a+b를 합친 7번의 시행으로 재해석하는 구조라 REINTERPRETATION.",
+          "curriculum": "2022 확률과 통계 확률: 독립시행의 확률"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 22,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "확률의 뜻과 활용",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H2-PS-RPM-050",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 서로 다른 두 독립시행의 성공 횟수의 합을 하나의 독립시행으로 보고 확률을 구한다. → 독립시행>반복 시행의 확률; PT/TPL(PT_PROBABILITY_REPEATED_TRIALS,TPL_INDEPENDENT_TRIAL_PROBABILITY) 기준 크로스워크 H2-PS-RPM-050 (크로스워크 H2-PS-RPM-050은 H22-PS-04 바인딩 MISSING이나, canonical bindings.json에 H22-PS-03의 PT_PROBABILITY_REPEATED_TRIALS ACTIVE 바인딩이 있어 H22-PS-03-PROBABILITY_APPLICATION로 결속) → 확률>조건부확률",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09",
+        "reviewerChange": {
+          "round": 1,
+          "reviewer": "independent-reviewer",
+          "before": {
+            "L2": "조건부확률",
+            "parentRefMode": "CROSSWALK_EXACT"
+          },
+          "reason": "크로스워크 H2-PS-RPM-049/050은 bindingStatus MISSING(비ACTIVE)이라 crosswalkRef를 실을 수 없고, 단원 H22-PS-03 바인딩·단원 라벨('확률의 뜻과 활용')과 L2 '조건부확률'이 달라 등록기 withTargetParent가 'canonical target parent mismatch'로 거부함. 원본 기출 분류(H15-PS-03 확률의 뜻과 활용)와 기존 ACTIVE 바인딩(H22-PS-03-PROBABILITY_BASIC/APPLICATION)에 맞춰 부모를 단원 라벨로 결속.",
+          "evidenceDebt": "EVIDENCE_DEBT: 독립시행의 RPM Primary 리프(H2-PS-RPM-049/050, 확률>조건부확률>독립시행)는 2022 바인딩이 MISSING이라 등록 경로(rpmPrimaryPath)로 실리지 않음. 크로스워크에 H22-PS-03 단원 ACTIVE 행이 생기면 재지정."
+        }
+      }
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "subUnit": "조건부확률의 계산과 활용",
+        "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "조건부확률",
+          "l4": "조건부확률 계산",
+          "recordId": "H2-PS-RPM-046",
+          "l3Label": "조건부확률",
+          "l4Label": "조건부확률 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-046 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "조건부확률",
+        "rpmPrimaryL4": "조건부확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-046",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+        "crossConceptKeys": [
+          "CC_PROBABILITY_AXIOMS"
+        ],
+        "conditionKeys": [
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "조건부확률의 정의와 확률의 범위를 결합해 최댓값을 구하는 상 수준의 서술형이라 상",
+        "difficultyBasis": "조건부확률로 P(A), P(B)를 x로 표현, 덧셈정리, 합사건 확률 1 이하 부등식, 최댓값의 실현 가능성 확인까지 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 확률 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "확률을 문자로 놓고 식을 세워 부등식을 푸는 풀이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "조건부확률의 정의와 확률의 덧셈정리로 두 사건의 교사건 확률의 최댓값을 구한다.",
+          "crossConcept": "합사건의 확률이 1을 넘지 않는다는 확률의 기본 성질과 덧셈정리를 부등식 설정에 쓴다.",
+          "condition": "P(A∪B)≤1이라는 확률의 상한이 x의 최댓값을 정한다(COND_UPPER_BOUND).",
+          "integration": "문자 설정, 덧셈정리, 부등식을 차례로 쓰는 순차 구조라 SEQUENTIAL.",
+          "curriculum": "2022 확률과 통계 조건부확률: 조건부확률의 뜻과 확률의 덧셈정리"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 23,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "확률",
+        "L2": "조건부확률",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagReason": "등록 위험(미검증): 2022 H22-PS-04는 컴파일된 ACTIVE 바인딩이 subUnitKey=null(STANDARD_UNIT_DIRECT)뿐이고 소형 메타는 H22-PS-04-CONDITIONAL_PROBABILITY(크로스워크 H2-PS-RPM-046 행의 소단원)를 쓴다. 등록기 resolve()가 (curriculum,course,unit,subUnit,PT) 바인딩을 찾지 못해 'ACTIVE curriculum binding missing'으로 거부할 수 있다. 등록(main_merge_master --apply) 단계의 실제 결과로 확인하고, 거부되면 sub를 null로 낮추거나 H22-PS-04-CONDITIONAL_PROBABILITY 바인딩을 정식 추가해야 한다."
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-046",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 조건부확률의 정의와 확률의 덧셈정리로 두 사건의 교사건 확률의 최댓값을 구한다. → 조건부확률>조건부확률 계산; PT/TPL(PT_CONDITIONAL_PROBABILITY,TPL_CONDITIONAL_PROBABILITY_DIRECT) 기준 크로스워크 H2-PS-RPM-046 → 확률>조건부확률",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09"
+      }
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "확률과통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "중복·원순열",
+          "recordId": "H2-PS-RPM-033",
+          "l3Label": "순열",
+          "l4Label": "중복·원순열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-probability-statistics crosswalk record H2-PS-RPM-033 (FAMILY_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "중복·원순열",
+        "rpmPrimaryRecordId": "H2-PS-RPM-033",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "crossConceptKeys": [
+          "CC_CASE_BRANCHING",
+          "CC_COMBINATION_SELECTION"
+        ],
+        "conditionKeys": [
+          "COND_LOWER_BOUND",
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 24,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "인원 조건을 경우 나누기와 중복순열로 세는 서술형이라 중",
+        "difficultyBasis": "서윤의 수령 개수 세 경우 분류, 각 경우의 중복순열, 하준이 0개 제외, 합산의 다단계 서술이라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 학생과 연필, 규칙을 글로 완결하여 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "서윤이가 받는 개수별로 경우를 나누어 세는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "서로 다른 물건을 사람에게 모두 나누어 주되 인원별 개수 조건을 만족하는 경우의 수를 센다.",
+          "crossConcept": "서윤이가 받는 연필 수에 따라 경우를 나누고, 받을 연필을 조합으로 고르는 개념을 쓴다.",
+          "condition": "하준이는 적어도 1자루(COND_LOWER_BOUND), 서윤이는 2자루 이하(COND_UPPER_BOUND)라는 개수 조건이 경우를 정한다.",
+          "integration": "서윤이가 받는 개수별로 나누어 더하는 구조라 CASE_BRANCH.",
+          "curriculum": "2022 확률과 통계 순열과 조합: 중복순열과 경우의 수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 24,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence/probability-statistics (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-09",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "순열과 조합"
+      },
+      "reason": "26_효천고_1학기_중간_고2_확률과통계 Q24: 원본 Q24의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "curriculum": "2022",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H2-PS-RPM-033",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 서로 다른 물건을 사람에게 모두 나누어 주되 인원별 개수 조건을 만족하는 경우의 수를 센다. → 순열>중복·원순열; PT/TPL(PT_COUNTING_REPEATED_ASSIGNMENT,TPL_REPEATED_PERMUTATION_ASSIGNMENT) 기준 크로스워크 H2-PS-RPM-033 (RPM H2-PS-RPM-033 FAMILY 후보에 중복순열 배정 TPL이 없어 canonical ACTIVE 바인딩 H22-PS-01-CORE의 PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT를 사용) → 경우의 수>순열과 조합",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-09",
+        "reviewerChange": {
+          "round": 1,
+          "reviewer": "independent-reviewer",
+          "before": {
+            "parentRefMode": "CROSSWALK_EXACT"
+          },
+          "reason": "문항 PT/TPL(PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT)과 정확히 같은 ACTIVE 크로스워크 행이 H2-PS-RPM-033(PT_COUNTING_ARRANGEMENT, FAMILY 후보 TPL_IDENTICAL_OBJECT_PERMUTATION/TPL_CIRCULAR_PERMUTATION)에 없으므로 CROSSWALK_EXACT/PARENT_RECORD가 아니라 UNIT_LABEL(L2 '순열과 조합'=단원 라벨)로 기록. RPM 경로 값 자체는 변경 없음."
+        }
+      }
+    }
+  ],
+  "openDefects": [
+    {
+      "qids": [
+        5,
+        13,
+        14,
+        19,
+        22
+      ],
+      "kind": "메타",
+      "severity": "medium",
+      "status": "UNVERIFIED_REGISTRATION_RISK",
+      "reason": "등록 위험(미검증): 2022 H22-PS-04는 컴파일된 ACTIVE 바인딩이 subUnitKey=null(STANDARD_UNIT_DIRECT)뿐이고 소형 메타는 H22-PS-04-CONDITIONAL_PROBABILITY(크로스워크 H2-PS-RPM-046 행의 소단원)를 쓴다. 등록기 resolve()가 (curriculum,course,unit,subUnit,PT) 바인딩을 찾지 못해 'ACTIVE curriculum binding missing'으로 거부할 수 있다. 등록(main_merge_master --apply) 단계의 실제 결과로 확인하고, 거부되면 sub를 null로 낮추거나 H22-PS-04-CONDITIONAL_PROBABILITY 바인딩을 정식 추가해야 한다.",
+      "foundRound": 1
+    }
+  ]
+}

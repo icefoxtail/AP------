@@ -1,0 +1,91 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "HYPERBOLA",
+      "center": [
+        "-1",
+        "2"
+      ],
+      "aSquared": "16",
+      "bSquared": "9",
+      "transverse": "Y"
+    },
+    {
+      "id": "c2",
+      "kind": "ELLIPSE",
+      "center": [
+        "-1",
+        "2"
+      ],
+      "aSquared": "49",
+      "bSquared": "24",
+      "major": "Y"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "c1"
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "curve": "c1"
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "side": 1,
+      "curve": "c1"
+    },
+    {
+      "id": "A'",
+      "kind": "VERTEX",
+      "side": -1,
+      "curve": "c1"
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "curve": "c1"
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "curve": "c1"
+    }
+  ],
+  "caption": "쌍곡선 (y−2)²/16−(x+1)²/9=1의 초점 F, F′, 꼭짓점 A, A′, 점근선과, 같은 초점을 갖는 타원 (x+1)²/24+(y−2)²/49=1을 함께 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선의 중심 (-1,2), a^2=16, b^2=9, c=5와 타원의 c^2=49-24=25",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "쌍곡선의 초점·꼭짓점·점근선과 같은 초점을 갖는 타원의 위치"
+  ],
+  "sourceQuote": "$c^2=49-24=25$이므로",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q05-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q05-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q05-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q05-solution.svg"
+  }
+}

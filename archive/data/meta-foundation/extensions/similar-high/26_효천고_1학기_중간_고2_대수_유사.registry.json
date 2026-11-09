@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_효천고_1학기_중간_고2_대수_유사",
+  "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-EXPLOG-PIECEWISE-BIJECTION-LATTICE-COUNT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "구간별 지수·로그함수의 일대일 대응 조건과 두 함수 사이 정수 순서쌍 개수",
+      "definition": "지수식과 로그식 두 가지로 이루어진 구간별 함수가 일대일 대응일 조건을 두 가지의 치역이 경계에서 이어지는 등식으로 세우고, 그 등식의 양변 부호로 경계 매개변수의 범위(정확한 값이 아님)를 정한 뒤, 그 범위로 각 정수 a에서 쓰이는 가지를 가려 f(a)≤b≤g(a)를 만족시키는 정수 순서쌍의 개수를 세는 유형.",
+      "parentRpmRecordId": "H2-M1-RPM-087",
+      "parentRpmL1": "지수함수와 로그함수",
+      "parentRpmL2": "로그함수",
+      "parentRpmL3": "로그함수의 그래프",
+      "parentRpmL4": "증가·감소",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "parentTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "RPM H2-M1-RPM-087의 L4 \"증가·감소\"는 로그함수 그래프의 증감 판정이며, 구간별 지수·로그 함수의 일대일 대응 조건(치역 이음)으로 경계 매개변수의 범위를 정하고 격자점을 세는 구조를 구분하지 못한다. 기존 확장 EXT-L4-EXPONENTIAL-GRAPH-REGION-LATTICE-POINT-COUNT는 지수함수 그래프와 직선으로 둘러싸인 영역의 격자점 개수라 일대일 대응 조건과 로그식 가지를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_효천고_1학기_중간_고2_대수_유사",
+        "qid": 17
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [
+    {
+      "key": "EXT-CROSS-REAL-ROOT-PARITY-SIGN",
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_강남여고_1학기_중간_고2_대수_유사.registry.json",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_중간_고2_대수_유사",
+        "qid": 1
+      },
+      "reusedIn": [
+        {
+          "stem": "26_효천고_1학기_중간_고2_대수_유사",
+          "qid": 14
+        }
+      ],
+      "note": "이미 커밋된 확장 키를 이름·정의 변경 없이 재사용한다(새 키 아님)."
+    }
+  ],
+  "aliasProposals": [],
+  "uidAssignments": [
+    {
+      "stem": "26_효천고_1학기_중간_고2_대수_유사",
+      "qid": 17,
+      "generatedKeys": [
+        "EXT-L4-EXPLOG-PIECEWISE-BIJECTION-LATTICE-COUNT"
+      ]
+    }
+  ],
+  "noStudentRelease": true
+}

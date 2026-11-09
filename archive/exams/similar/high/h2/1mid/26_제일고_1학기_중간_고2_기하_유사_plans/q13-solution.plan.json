@@ -1,0 +1,67 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "ELLIPSE",
+      "center": [
+        "1",
+        "-3"
+      ],
+      "aSquared": "16",
+      "bSquared": "4",
+      "major": "Y"
+    },
+    {
+      "id": "c2",
+      "kind": "HYPERBOLA",
+      "center": [
+        "1",
+        "-3"
+      ],
+      "aSquared": "4",
+      "bSquared": "8",
+      "transverse": "Y"
+    }
+  ],
+  "points": [
+    {
+      "id": "C",
+      "kind": "CENTER",
+      "curve": "c1"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "c1"
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "curve": "c1"
+    }
+  ],
+  "caption": "중심이 (1,−3)으로 같고 두 초점 F, F′을 공유하는 타원 C₁과 쌍곡선 C₂를 나타낸 그림이다(a=−3일 때).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "C2의 중심 (1,-3), c^2=12, C1: (x-1)^2/4+(y+3)^2/16=1 (a=-3), c^2=12",
+      "mappedTo": [
+        "conics",
+        "points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원과 쌍곡선이 같은 중심·같은 초점을 갖는 모습"
+  ],
+  "sourceQuote": "$c^2=4+8=12$이므로",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q13-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q13-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q13-solution.svg"
+  }
+}

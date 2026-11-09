@@ -1,0 +1,113 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "세 꼭짓점이 $(0,0)$, $(5,5)$, $(3,-3)$인 삼각형",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "15",
+    "bSquared": "15",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "A",
+      "kind": "LINE_LINE",
+      "lines": [
+        "k1",
+        "s1"
+      ],
+      "coordinates": true
+    },
+    {
+      "id": "B",
+      "kind": "LINE_LINE",
+      "lines": [
+        "k1",
+        "s2"
+      ],
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "y=x"
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "y=-x"
+    },
+    {
+      "id": "k1",
+      "slope": "4",
+      "intercept": "-15",
+      "tangent": true
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "O",
+        "A",
+        "B"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "접선 y=4x-15가 두 점근선과 만나는 점 A(5,5), B(3,-3)와 원점 O로 이루어진 삼각형 OAB의 넓이는 15이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 x^2-y^2=15 위의 점 (4,1)에서의 접선 y=4x-15",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 y=x, y=-x와의 교점 A(5,5), B(3,-3)",
+      "mappedTo": [
+        "lines",
+        "points",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 OAB의 세 꼭짓점 좌표"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q13-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q13-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q13-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 13,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}
