@@ -897,10 +897,21 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
 }
 
 // --- the author plan ----------------------------------------------------------------------------------------------------------------------------
-const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()]{1,24}$/;
+// A figure caption {math?,text?,weight?} (shared by the number-line, quadratic-inequality and composite chains). math is plain ASCII math (k=-2, a=1/8, V=8a^5b^3) and, since
+// EXT-20261109-g, may hold stacked fractions written with the frac command (u=\frac{X-m}{k}: a caption shows a stacked fraction, never a slash); text is Korean/plain text,
+// and weight "MATH" (opt-in, only with text) draws that text with the weight of the math beside it so the caption reads in one face.
+const CAPTION_MATH_CHARS=/^(?:[A-Za-z0-9=+\-<>.,()\/^{}]|\\frac(?=\{))+$/;
+export const captionMathValid=value=>{
+  if(typeof value!=='string'||!CAPTION_MATH_CHARS.test(value)||value.replaceAll('\\frac','f').length>24)return false;
+  let depth=0;for(const ch of value){if(ch==='{')depth++;else if(ch==='}'&&--depth<0)return false;}
+  return depth===0;
+};
+export const captionValid=value=>isPlain(value)&&Object.keys(value).every(key=>['math','text','weight'].includes(key))&&(!!value.math||!!value.text)
+  &&(value.math===undefined||captionMathValid(value.math))&&(value.text===undefined||(typeof value.text==='string'&&!!value.text&&value.text.length<=24))
+  &&(value.weight===undefined||(value.weight==='MATH'&&!!value.text));
 function caption(value,fallback){
   if(value===undefined)return fallback;
-  if(!isPlain(value)||Object.keys(value).some(key=>!['math','text'].includes(key))||(!value.math&&!value.text)||(value.math!==undefined&&(typeof value.math!=='string'||!CAPTION_MATH.test(value.math)))||(value.text!==undefined&&(typeof value.text!=='string'||!value.text||value.text.length>24)))bad('CHAIN_CAPTION_INVALID');
+  if(!captionValid(value))bad('CHAIN_CAPTION_INVALID');
   return value;
 }
 /**

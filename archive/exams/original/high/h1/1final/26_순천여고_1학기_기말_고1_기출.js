@@ -139,7 +139,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 −5와 9는 열린 끝점이고, 그 사이 정수들이 점으로 표시되어 있다.",
+    "solutionImageCaption": "절댓값 부등식을 풀면 −5<x<9이다. 이 범위의 정수는 −4부터 8까지이므로 양 끝 정수를 포함하여 센다. 정답은 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -167,7 +171,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축과 (−5,0), (3,0)에서 만나며 꼭짓점은 (−1,−16)이다.",
+    "solutionImageCaption": "두 근의 곱이 −15이므로 다른 근 b는 −5이다. 두 근의 합이 −a이므로 a=2이고, 두 값을 더한다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -223,7 +231,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 부등식의 닫힌 구간 −2부터 3까지와, 둘째 부등식의 2분의 3 이하 또는 2 이상인 범위를 수직선에서 비교하고 공통 범위의 정수점을 표시한다.",
+    "solutionImageCaption": "절댓값 부등식의 해는 −2≤x≤3이다. 이차부등식의 해 x≤2분의 3 또는 x≥2와 공통인 범위에서 정수 −2, −1, 0, 1, 2, 3을 더한다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -280,9 +292,10 @@ window.questionBank = [
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q10-solution-graph.svg",
-    "solutionImageAlt": "치환 변수 t에 대한 이차함수 y=(t-1)^2-9의 그래프와 끝점·꼭짓점",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t의 구간 −1≤t≤3에서 위로 열린 포물선의 양 끝점은 (−1,−5), (3,−5)이고 꼭짓점은 (1,−9)이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "t=x²−2x로 치환하면 −1≤t≤3이다. 이차함수의 끝점과 꼭짓점에서 최대·최솟값을 비교한다. 정답은 4이다."
   },
   {
     "id": 11,
@@ -310,7 +323,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: −1≤x≤1에서 포물선 y=(x+1)²이 왼쪽 끝 (−1,0)에서 x축에 접하고 (1,4)까지 올라간다.",
+    "solutionImageCaption": "x=−1에서 함수값이 4a+4이므로 a≥−1이 필요하다. 경계값을 대입하면 y=(x+1)²이 되어 주어진 구간 전체에서 0 이상이다. 정답은 −1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -339,9 +356,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q12-solution-b5.svg",
-    "solutionImageAlt": "-4≤x≤3에서 최댓값은 점 D의 13, 최솟값은 점 B, C의 -5이다.",
-    "solutionImageCaption": "-4≤x≤3에서 최댓값은 점 D의 13, 최솟값은 점 B, C의 -5이다.",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 그래프의 구간 끝점 D와 E, 꺾인 점 A, 두 최솟점 B와 C를 표시한다. 주황 점선 y=13은 D를 지나고 초록 점선 y=−5는 B와 C를 지난다.",
+    "solutionImageCaption": "−4≤x≤3에서 두 최솟점의 높이는 −5이고 왼쪽 끝점 D의 높이 13이 최댓값이다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -482,7 +499,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로와 세로에 각각 1부터 6까지의 주사위 눈이 있는 표에서, 두 눈의 차가 ±4인 칸과 ±5인 칸을 서로 다른 농도로 표시한다.",
+    "solutionImageCaption": "판별식이 음수여야 하므로 |a−b|<4이다. 표에서 옅게 칠한 네 칸과 짙게 칠한 두 칸을 전체 36가지에서 제외한다. 정답은 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -538,7 +559,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 m인 곡선이 원점에서 시작해 오른쪽 위로 휘며 올라간다. 그림은 m=0부터 m=6까지이다.",
+    "solutionImageCaption": "두 실근의 조건은 m≥0이다. 근의 제곱합에서 2분의 1을 뺀 값을 y=(2분의 1)m²+4m, 곧 y=(2분의 1)(m+4)²−8로 그렸다. 이 값은 m≥0에서 음수가 아니고 m=0에서 0이다. 그림은 m=6까지만 그렸다. 정답은 2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -566,7 +591,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−4x+3이 x축과 (1,0), (3,0)에서 만나고 꼭짓점은 (2,−1)이다.",
+    "solutionImageCaption": "두 근의 합으로부터 정수 후보는 k=2뿐이다. 이때 이차인수의 근은 1과 3이어서 열린 구간 (1,3)의 끝점에 놓인다. 정답은 0개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -590,7 +619,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 a인 아래로 열린 포물선 y=16−a²이 가로축과 (−4,0), (4,0)에서 만나며 꼭짓점은 (0,16)이다.",
+    "solutionImageCaption": "이차인수의 판별식이 양수인 조건을 4로 나누면 16−a²>0이므로 포물선이 가로축 위에 있는 범위를 읽는다. 일차인수의 근과 겹치는 a=0을 추가로 제외한다. 정답은 −4<a<0 또는 0<a<4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -614,7 +647,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−9x+18이 x축과 3, 6에서 만나고, x축에 네 정수 후보 3, 4, 5, 6이 표시되어 있다.",
+    "solutionImageCaption": "첫째 부등식에서 정수 후보는 3, 4, 5, 6이다. 둘째 부등식은 열린 구간 n−2<x<n에 있는 정수 n−1 하나만 제외하므로, 그 값이 네 후보 중 하나여야 한다. 정답은 n=4, 5, 6, 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -643,7 +680,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 양 끝 A, B와 꼭짓점 (3,6), 조명 기둥 AC, 주황 접선 CD, 접점 E 및 삼각형 BDE와 점선 높이를 표시한다.",
+    "solutionImageCaption": "포물선은 y=−(3분의 2)x²+4x이고, C를 지나 조형물에 접하는 빛의 직선은 y=−2x+(2분의 27)이다. D의 x좌표는 4분의 27, E의 높이는 2분의 9이므로 밑변 BD=4분의 3과 높이를 이용한다. 정답은 16분의 27 m²이다.",
+    "solutionImageSize": "full"
   }
 ];
 

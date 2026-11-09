@@ -145,7 +145,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 f(x)의 포물선이 꼭짓점에서 x축과 접하는 그래프.",
+    "solutionImageCaption": "예: a=2−√10인 경우 f(x)=x²+2ax+4a+6은 꼭짓점에서 x축과 접한다. 한 점에서 만날 조건은 판별식이 0이므로 a²−4a−6=0이다. 근과 계수의 관계로 두 a값의 곱을 구한다. 정답은 −6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -292,7 +296,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 0≤x≤5의 세 포물선 F(x), G(x), H(x), 꼭짓점 (1, −8), (3, 8)과 x=5인 꼭짓점을 표시한 그래프.",
+    "solutionImageCaption": "F(x), G(x), H(x)는 각각 a=1, 3, 5인 f(x)이다. f(x)=−2(x−a)²+2a²−10이므로 세 경우 모두 주어진 구간의 꼭짓점에서 최댓값을 갖는다. g(1)=−8, g(3)=8을 이용하여 세 최댓값의 합을 구한다. 정답은 40이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -366,7 +374,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−4x와 직선 y=−2x+3의 두 교점 A, B 및 x축으로 향하는 점선.",
+    "solutionImageCaption": "예: k=3인 경우 두 교점의 x좌표를 α, β로 표시했다. 일반적으로 α+β=2, αβ=−k이므로 f(k)=4+4k, g(k)=−k이다. 주어진 조건은 k²=256이고 k>0이다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -404,9 +416,10 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q11-solution-graph.svg",
-    "solutionImageAlt": "문항 11 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a와 세로축 y의 포물선, a=4인 꼭짓점과 0과 8의 열린 끝점을 나타낸 그래프.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "세로축 y는 b²이다. b²=4a(8−a)의 대칭축 a=4가 0<a<8 안에 있으므로 꼭짓점에서 최대이다. 정답은 64이다."
   },
   {
     "id": 12,
@@ -444,9 +457,10 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q12-solution-graph.svg",
-    "solutionImageAlt": "문항 12 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 (1, 8), 대칭인 두 점 (−2, −10)과 (4, −10), 끝점 (6, −42)를 표시하고 4≤x≤6을 다른 색으로 강조한 포물선.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "f(−2)=f(4)이므로 대칭축은 x=1이고, 최댓값이 8이므로 a=4, b=6이다. 구간 [4, 6]에서는 함수가 감소하여 최댓값은 −10, 최솟값은 −42이다. 정답은 32이다."
   },
   {
     "id": 13,
@@ -557,7 +571,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 끊어지는 함수 g(x)의 두 포물선 조각과, 닫힌 끝점 (0, 2)와 오른쪽 꼭짓점을 지나 세 점에서 만나는 수평선 y=t를 나타낸 예시 그래프.",
+    "solutionImageCaption": "예: a=5, b=2인 경우의 g(x)=f(x)−x이다. f(x)=x+t의 실근은 g(x)=t의 교점이며, x≤0에서는 (0, b)가 닫힌 끝점이고 x>0에서는 (0, −b)가 열린 끝점이다. t=b일 때 수평선이 닫힌 끝점과 오른쪽 꼭짓점을 지나 세 점에서 만난다. 이 세 근의 합이 −4가 되도록 a, b를 정한다. 정답은 17이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -619,7 +637,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 b=a²와 점선 b=16, 그 아래의 자연수 점 (1, 1), (2, 4), (3, 9)를 표시한 그래프.",
+    "solutionImageCaption": "첫 방정식이 중근을 가지므로 b=a²이고, 두 번째 방정식이 서로 다른 두 실근을 가지므로 b<16이다. 자연수 순서쌍은 (1, 1), (2, 4), (3, 9)이므로 m=3이고 n=14이다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -651,10 +673,10 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q18-solution-g1-complete.svg",
-    "solutionImageAlt": "포물선 y=-2x^2+12와 직선 y=4x의 교점 A, B 및 x축에 내린 수선의 발 C, D와 삼각형 AOC, BOD를 나타낸다.",
-    "solutionImageCaption": "교점 A, B에서 x축으로 내린 수선의 발 C, D와 두 삼각형 AOC, BOD의 넓이 관계를 보여 준다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)와 주황 직선 y=4x의 교점 A, B, 수선의 발 C, D와 초록색 삼각형 AOC 및 분홍색 삼각형 BOD.",
+    "solutionImageCaption": "그림의 f(x)는 −2x²+m이다. 교점의 x좌표 α, β에 대해 두 삼각형의 넓이는 2α², 2β²이다. α+β=−2, αβ=−m÷2와 넓이 합 32를 이용한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -716,6 +738,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=f(x)에 색이 다른 세 직선 y=−4x+1, y=0, y=4x+3이 각각 한 점에서 접하는 그래프.",
+    "solutionImageCaption": "예: f(x)=ax²+bx+c에 m=−1, 0, 1인 세 직선이 각각 접하는 모습이다. 모든 실수 m에서 접하려면 연립한 이차방정식의 판별식 (16+8a)m²+(4a−8b)m+b²−4ac가 항상 0이어야 한다. 각 계수를 비교한다. 정답은 a=−2, b=−1, c=−(8분의 1)이다.",
+    "solutionImageSize": "full"
   }
 ];

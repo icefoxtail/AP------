@@ -15,9 +15,9 @@ window.questionBank = [
     "image": "",
     "answer": "①",
     "solution": "선분 $AB$를 $AP:PB=2:1$로 내분하는 점을 $P(a,b)$라 하자.\n내분점의 좌표는 양 끝점의 좌표에 반대쪽의 비를 곱하여 구한다.\n$a=\\dfrac{1\\cdot(-2)+2\\cdot4}{2+1}$\n$=\\dfrac{-2+8}{3}=2$이다.\n$b=\\dfrac{1\\cdot1+2\\cdot(-2)}{2+1}$\n$=\\dfrac{1-4}{3}=-1$이다.\n따라서\n$a+b=2+(-1)=1$이다.\n정답은 ①이다.",
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q01-solution.svg",
-    "solutionImageAlt": "좌표평면의 선분 AB 위에 내분점 P(2, -1)을 표시하고 AP:PB=2:1인 관계를 보여주는 그림",
-    "solutionImageCaption": "내분점 P(2, -1)는 선분 AB를 2:1로 나눈다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 A(−2,1), B(4,−2)와 내분점 P(2,−1), 비가 2:1인 두 구간을 파랑과 주황으로 나타낸 그림.",
+    "solutionImageCaption": "내분점의 좌표는 양 끝점 좌표에 반대쪽의 비를 곱해 구한다. P의 좌표가 (2,−1)이므로 a+b를 계산한다. 정답은 1이다.",
     "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "1",
@@ -66,9 +66,9 @@ window.questionBank = [
     "image": "",
     "answer": "④",
     "solution": "주어진 원의 방정식을 완전제곱식으로 고친다.\n$x^2+y^2+6x-8y+16=0$\n$(x^2+6x+9)+(y^2-8y+16)=9$\n$(x+3)^2+(y-4)^2=9$이다.\n원의 표준형과 비교하면 중심은 $(-3,4)$이고 반지름은 $3$이다.\n따라서\n$a=-3,\\quad b=4,\\quad r=3$이므로\n$a+b+2r=-3+4+2\\cdot3=7$이다.\n정답은 ④이다.",
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q02-solution.svg",
-    "solutionImageAlt": "좌표평면에서 중심이 (-3, 4), 반지름이 3인 원과 중심에서 원 위 점까지의 반지름을 표시한 그림",
-    "solutionImageCaption": "완전제곱식에서 중심 (-3, 4)와 반지름 3을 읽는다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 C(−3,4), 반지름 3인 원과 중심에서 y축 접점까지의 반지름을 나타낸 그림.",
+    "solutionImageCaption": "완전제곱식으로 고치면 (x+3)²+(y−4)²=9이다. 중심은 (−3,4), 반지름은 3이므로 a+b+2r을 계산한다. 정답은 7이다.",
     "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "2",
@@ -164,10 +164,10 @@ window.questionBank = [
     "image": "",
     "answer": "②",
     "solution": "$AC=BC$이므로 두 선분의 길이의 제곱을 같게 놓는다.\n$AC^2=(a+1)^2+(1-2)^2$\n$=(a+1)^2+1$이다.\n$BC^2=(a-2)^2+(1-3)^2$\n$=(a-2)^2+4$이다.\n따라서\n$(a+1)^2+1=(a-2)^2+4$\n$a^2+2a+2=a^2-4a+8$\n$6a=6$\n$a=1$이다.\n정답은 ②이다.",
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q4-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면 위의 점 A(-1,2), B(2,3)와 중점 M, 선분 AB의 수직이등분선, y=1 위의 점 C를 나타낸 그림. AC와 BC가 같은 길이임이 색으로 표시되어 있다.",
-    "solutionImageCaption": "AB의 수직이등분선과 y=1의 교점 C에서 AC=BC이므로, 상수 a의 값은 1이다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q4-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 A(−1,2), B(2,3), y=1 위의 C(a,1)와 길이가 같은 선분 AC, BC를 나타낸 그림.",
+    "solutionImageCaption": "두 선분의 길이가 같으므로 AC²=BC²로 놓는다. (a+1)²+1=(a−2)²+4를 정리해 a를 구한다. 정답은 1이다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "4",
     "sourcePageNo": 1,
@@ -266,10 +266,10 @@ window.questionBank = [
     "image": "",
     "answer": "①",
     "solution": "주어진 대칭이동은 $(x,y)$를 $(-x,-y)$로 옮기는 원점 대칭이다.\n원래 직선의 방정식은\n$3x-4y+5=0$이다.\n원점 대칭은 두 번 하면 원래 위치로 돌아가므로, 옮겨진 점 $(x,y)$를 원래 직선으로 되돌린 좌표 $(-x,-y)$를 대입한다.\n$3(-x)-4(-y)+5=0$\n$-3x+4y+5=0$\n$3x-4y-5=0$이다.\n따라서 옮겨진 직선의 방정식은 $3x-4y-5=0$이다.\n정답은 ①이다.",
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q6-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원점을 지나는 대칭으로 점 (3,1)이 (-3,-1)로 옮겨지고, 직선 3x-4y+5=0과 그 대칭인 평행선이 y축과 만나는 점의 좌표가 각각 5/4, -5/4로 표시된 그림.",
-    "solutionImageCaption": "원점 대칭으로 두 직선의 y절편이 5/4에서 -5/4로 옮겨지므로, 옮겨진 직선의 방정식은 3x-4y-5=0이다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q6-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 P(3,1)이 Q(−3,−1)로 대칭이동하고, 파란 원래 직선이 주황 직선으로 옮겨지는 그림.",
+    "solutionImageCaption": "원점 대칭에서 y절편은 4분의 5에서 −4분의 5로 바뀐다. 정답은 3x−4y−5=0이다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "6",
     "sourcePageNo": 1,
@@ -317,10 +317,10 @@ window.questionBank = [
     "image": "",
     "answer": "④",
     "solution": "먼저 원의 중심을 구한다.\n$x^2+y^2-8x-2y+8=0$\n$(x-4)^2+(y-1)^2=9$이므로 중심은 $(4,1)$이다.\n옮긴 원 $x^2+y^2=9$의 중심은 $(0,0)$이다.\n따라서 모든 점을 $x$축 방향으로 $-4$, $y$축 방향으로 $-1$만큼 평행이동한다.\n점 $(a,3)$의 이동 후 좌표는\n$(a-4,3-1)=(a-4,2)$이다.\n이 점이 $(1,b)$이므로\n$a-4=1,\\quad b=2$\n$a=5,\\quad b=2$이다.\n따라서 $ab=5\\cdot2=10$이다.\n정답은 ④이다.",
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q7-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 중심 C(4,1)인 원이 중심 C'(0,0)인 원으로, 점 P(5,3)이 P'(1,2)로 평행이동하는 모습을 두 원과 화살표로 나타낸 그림.",
-    "solutionImageCaption": "두 원의 중심과 점 P가 각각 C'(0,0), P'(1,2)로 옮겨지는 평행이동이므로 ab의 값은 10이다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q7-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 원의 중심 C(4,1)이 (0,0)으로, 점 P(5,3)이 Q(1,2)로 같은 방향과 거리만큼 평행이동하는 두 화살표를 나타낸 그림.",
+    "solutionImageCaption": "원의 중심이 (4,1)에서 (0,0)으로 옮겨지므로 모든 점은 왼쪽으로 4, 아래로 1만큼 이동한다. a=5, b=2이므로 정답은 10이다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "7",
     "sourcePageNo": 2,
@@ -398,7 +398,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": [],
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: y=mx+1과 y=(4−n)x−1의 평행 표시 및 y=nx+3과의 직각을 나타낸 좌표평면.",
+    "solutionImageCaption": "예: m=2+√5, n=2−√5인 경우를 그렸다. 수직 조건에서 mn=−1, 평행 조건에서 m+n=4를 얻으므로 m²+n²=(m+n)²−2mn으로 계산한다. 정답은 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -497,10 +501,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "tags": ["도형"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q10-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원점이 중심인 두 원 x²+y²=20, x²+y²=8과, 큰 원 위의 점 P(4,2)에서의 접선 l₁, 작은 원 위의 점 Q(a,b)에서의 접선 l₂가 평행(같은 파랑)하게 그려져 있다. 반지름 OP와 OQ는 같은 직선 위에 있다.",
-    "solutionImageCaption": "l₁: 2x+y=10(기울기 −2)에 평행한 l₂: ax+by=8에서 a=2b이고, a²+b²=8에서 b²=8/5이다. 따라서 ab=2b²=16/5, 정답 ④.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q10-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 원점 중심의 두 원과 접점 P(4,2), Q(a,b)에서의 평행한 파란 접선 l₁, l₂ 및 접점의 직각을 나타낸 그림.",
+    "solutionImageCaption": "두 접선이 평행하므로 a=2b이고, 작은 원 위에서 a²+b²=8이다. 따라서 b²은 5분의 8이며 정답은 5분의 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -599,9 +603,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "tags": ["도형"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q12-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 (0,0), (1,1), (9,1)을 직선 x=a로 나눈 그림으로 두 부분이 같은 파란색이다. 오른쪽은 오른쪽 작은 삼각형을 확대해 밑변 6, 높이 2/3을 표시한 그림이다.",
-    "solutionImageCaption": "전체 넓이 4의 절반인 오른쪽 삼각형은 밑변 6, 높이 2/3이므로 넓이가 2이고, 따라서 a=3이다(정답 ②).",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q12-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 세 꼭짓점이 (0,0), (1,1), (9,1)인 삼각형에서 점선 x=a의 양쪽 영역을 주황과 파랑으로 구분한 그림.",
+    "solutionImageCaption": "삼각형 전체 넓이는 4이므로 오른쪽 삼각형의 넓이를 2로 놓는다. 가로 길이 9−a, 세로 길이 1−9분의 a를 이용하면 (9−a)²=36이다. 정답은 3이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -650,10 +654,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "tags": ["표"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q13-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에서 점 (-1,2)를 출발해 (0,1), (1,0), (-1,0), (0,-1)을 지나 다시 (0,1)로 돌아오는 다섯 번의 이동이 순서 번호 1~5가 붙은 화살표로 그려져 있다. 평행이동 (나)인 1·2·4회는 파란 화살표, 원점 대칭 (가)인 3·5회는 주황 화살표이며, 1회와 5회의 도착점이 같은 (0,1)임이 보인다.",
-    "solutionImageCaption": "(나)는 파랑, (가)는 주황 화살표. 1회 후와 5회 후가 모두 (0,1)이므로 4회마다 같은 점으로 돌아오고, 17=1+4·4이므로 17회 후의 점은 (0,1)이다. 정답 ⑤.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q13-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 출발점 P(−1,2)에서 Q와 중간점들을 거쳐 다시 Q로 돌아오는 이동 경로이며, 평행이동은 파랑, 원점 대칭은 주황으로 표시한 그림.",
+    "solutionImageCaption": "그림의 Q는 1회 이동 후의 점이고, 이후 네 번마다 같은 Q로 돌아온다. 17=1+4×4이므로 17회 이동 후에도 Q에 도착한다. 정답은 (0,1)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -701,10 +705,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "tags": ["도형"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q14-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 A(6,4), B(2,1), C(4,0)과 x축 위의 D(3/2,0)가 있고, AC와 BD가 같은 파란색 평행 표시로 묶여 있다. 직선 AD도 그려져 있다.",
-    "solutionImageCaption": "두 삼각형 ABC와 ACD는 밑변 AC가 같고 넓이도 같으므로 BD∥AC이고, D는 (3/2,0)이다. 따라서 직선 AD의 기울기는 8/9이다. 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q14-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: A(6,4), B(2,1), C(4,0)과 x축 위의 D를 나타내고, 공통 밑변 AC에 평행한 BD를 파란 표식으로 묶은 그림.",
+    "solutionImageCaption": "두 삼각형은 밑변 AC와 넓이가 같으므로 BD∥AC이고 D의 좌표는 (2분의 3,0)이다. 정답은 직선 AD의 기울기 9분의 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -854,10 +858,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "wide": false,
     "tags": ["도형"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q17-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원의 중심 C에서 현 AB에 내린 수선 CH가 현을 이등분하여 AH=HB가 같은 길이 표시로 묶여 있고, CH=4, 반지름 r=6이 표시되어 있다. H에서의 직각도 보인다.",
-    "solutionImageCaption": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 AH=HB이고, CH=4, 반지름 6에서 AH=2√5, AB=4√5이다. 삼각형 ABC의 넓이가 8√5이므로 a=2√5이다. 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q17-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 중심 C에서 현 AB에 내린 수선 CH의 길이가 4이고 AH=HB이며, 반지름 r과 H의 직각을 나타낸 그림.",
+    "solutionImageCaption": "CH=4와 r²=a²+16에서 AH²=r²−CH²=a²이므로 AH=a이다. 삼각형의 넓이가 4a이므로 정답은 2√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -905,10 +909,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "tags": ["도형"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q18-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면 위 평행사변형 ABCD의 두 대각선 AC(파랑)와 BD(주황)가 점 M에서 서로를 이등분하는 모습(MA=MC, MB=MD 표식). 대각선 BD 위에 삼각형 ABC의 무게중심 G₁(4,4)와 삼각형 ACD의 무게중심 G₂(5,3), 꼭짓점 B(3,5), 삼각형 OAC의 무게중심 G가 표시되어 있다. A, C의 위치는 합 A+C=(9,7)만으로 정해지므로 한 예로 그렸다.",
-    "solutionImageCaption": "평행사변형의 두 대각선은 서로를 이등분하므로 A+C=B+D=(9,7)이고(그림의 A, C는 합이 (9,7)인 한 예), 무게중심 G₁(4,4), G₂(5,3)에서 B(3,5), G(3,7/3)을 얻는다. 따라서 a×b×c×d=3·5·3·7/3=105, 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q18-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 대각선 AC와 BD가 M에서 서로를 이등분하고, 무게중심 G₁(4,4), G₂(5,3), G와 B(3,5)를 보인 그림.",
+    "solutionImageCaption": "예: A(3,1), C(6,6)로 그렸다. 대각선의 이등분과 무게중심 공식에서 B=(3,5), G=(3,3분의 7)을 얻는다. 정답은 105이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1100,10 +1104,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "tags": ["그래프"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q22-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에서 아래로 볼록한 포물선 f(파랑)와 위로 볼록하고 꼭짓점이 (2,1)인 곡선 F(주황)를 그린 그림. 곡선 F는 f와 한 점 P에서 접한다.",
-    "solutionImageCaption": "곡선 f는 y=ax², 곡선 h는 f를 x축에 대하여 대칭이동한 y=-ax², 곡선 F는 h를 x축 방향으로 2, y축 방향으로 1만큼 평행이동한 y=-a(x-2)²+1이고, f와 F가 오직 한 점 P에서 접할 때 a=1/2이다. 정답은 1/2이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q22-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)와 꼭짓점이 (2,1)인 주황 포물선 F가 점 P에서 접하는 좌표평면.",
+    "solutionImageCaption": "f(x)=ax²를 x축에 대하여 대칭이동한 후 오른쪽으로 2, 위로 1만큼 옮기면 F는 y=−a(x−2)²+1이다. 두 포물선이 한 점에서 만나려면 (x−1)²=1÷(2a)−1에서 오른쪽이 0이어야 한다. 정답은 2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1193,9 +1197,9 @@ window.questionBank = [
       "도형"
     ],
     "visualDisposition": "PROBLEM_IMAGE_REQUIRED_SOURCE_PRESERVED_SOLUTION_IMAGE_NOT_REQUIRED",
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q24-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 포물선 y=-x²+5x-4와 직선 y=x-1이 A(1,0), B(3,2)에서 만나고, 포물선 위의 점 C(2,2)와 같은 x의 직선 위 점 사이 세로 거리 h=1을 점선으로 보인 삼각형 ABC.",
-    "solutionImageCaption": "삼각형 ABC의 넓이는 같은 x에서 포물선과 직선 AB 사이의 세로 거리 h(x)와 같고, x=2에서 h=1로 최대이므로 최댓값은 1이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q24-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선과 주황 직선 AB, 그 사이의 삼각형 ABC와 같은 x에서의 세로 간격 h를 점선으로 보인 그림.",
+    "solutionImageCaption": "직선 AB는 y=x−1이고, 같은 x에서 포물선과 직선의 세로 간격은 h(x)=−x²+4x−3이다. AB=2√2이고 수직 높이는 h(x)를 √2로 나눈 값이므로 삼각형 넓이는 h(x)와 같다. x=2에서 이 식이 최대가 된다. 정답은 1이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -32,6 +32,13 @@
 ### 2026-11-09 엔진 확장 회차 d(브랜치 engine/ext-20261109-d)
 - 한글+영문 혼합 축 이름(`x(분)`)이 변수만 수식 글꼴(`typography.mjs` MIXED), 통계 패널의 영문 축 이름·범례·계열 이름이 수식 글꼴. 24 효천 고1 q14(절댓값 유리함수)는 새 패밀리 없이 `multi-curve` `RATIONAL abs:true`로 그려짐(골든 `item134ext4q14abs`). `GEOMETRY_WORKER_TIMEOUT_MS`는 0 초과 600000 이하만 사용. 설계표 `briefs/engine-font-unify.md` 4회차.
 
+### 2026-11-09 엔진 확장 회차 g(브랜치 engine/ext-20261109-g, 글꼴 통일 2차·경우의 수 칸 그림)
+- 글꼴 통일(옵트인, 기본 출력 바이트 불변): 수직선·이차부등식 연쇄·합성 패널 캡션 `math`에 세로분수 `\frac{X-m}{k}`(`displaystyle`)·`weight:"MATH"`(평문 캡션을 수식 굵기로), 수형도 `chart.labelWeight:"MATH"`, 대응도·벤·표 이름 수식 글꼴 상한 6→8자(`f(f(x))`). 골든 `item140ext7q17captionfrac`·`item141ext7q11treeweight`·`item142ext7q18treeweight`·`item143ext7palmaq18name`. 22개 통계·집합 골든 plan의 모델·spec 비교는 변경 전과 동일.
+- 새 통계 도형 `SLOTS`(경우의 수 칸: `count`/`fixed` 칸, 사이의 ×/+ 기호, 제목): 24 효천 고1 Q03·Q04·Q12 골든 `item144~146ext7*slots`. 관측기 `audit_slots`(`SC_SLOT_*`). 남은 구조 공백: 문자 `n·r` 개수 라벨·이중계산 나란히 비교(Q10), 대칭 중복 제거 나눗셈(Q12 보조), 소인수 지수 선택(Q02).
+- 근호 좌표 표기 정리: 구성 점 좌표 `scalarExpression`이 `-1-sqrt(10)`, `-sqrt(10)`으로 쓰고(예전 `-1+(-1√10)`), 선 라벨의 단일 음의 근호 상수는 `y=x-sqrt(10)`(예전 `y=x+(-sqrt(10))`).
+- 구간별 다항 `referenceLines[].hideLabel`(옵트인, 위쪽 띠의 `y=1` 끄기; 22 금당 수II Q08 골든 `item147ext7q08hidelabel`). 점 이름 P는 새 옵션 없이 `overlays.points[].unnamed:true`로 해결. 근호 표기 정리는 기존 골든 `item70d`·`item70f`·`item82`·`item88g3b`의 라벨 글자를 바꾼다(사용자 확인 필요).
+- 확인만 한 것: 22 순천고 확통 Q04는 `DENSITY_TRIANGLE` 없이 `piecewise-polynomial`+`regions`로 그려진다(골든 `item148ext7q04density`, 꼭짓점 좌표 숨김은 `coordinateBand.hide`). 22 순천고 수II Q11은 세제곱근 기울기(`16**(1/3)-2`)가 `PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID`(`p+q*sqrt(r)` 문법 밖)라 엔진 공백으로 남김.
+
 ### 2026-11-09 엔진 확장 회차 f(브랜치 engine/ext-20261109-f, 지시선·plan으로 안 풀리는 것만)
 - 구간별 다항 `regions`가 기약 삼차 조각의 구간 **밖** 실근 때문에 `PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM`으로 거절되던 것을, 구간 안 실근 수를 스투름으로 세어 0이면 통과하게 함(`graph_framing.py` `_pp_real_roots_inside`, 22 금당 수II q18, 골든 `item138ext6q18cubicarea`, 지시서 `briefs/engine-region-cubic-no-root-inside.md`). 나머지(q02·q19·q21·COORDINATE_LEADER_PANEL_CONFLICT)는 plan 수정으로 풀려 엔진 변경 없이 AUTHOR_GUIDE에 사용법만 남김(골든 `item139ext6q21hidelabels`).
 
