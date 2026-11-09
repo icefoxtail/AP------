@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "0",
+      "-1",
+      "1"
+    ],
+    "shades": [
+      {
+        "curve": "Z",
+        "from": "-1",
+        "to": "1"
+      }
+    ]
+  },
+  "caption": "정규밀도는 평균 m에 관하여 좌우 대칭이다. 표준화한 −1≤Z≤1의 양쪽 넓이가 같아 ㄱ과 ㄴ이 참임을 보여준다. ㄷ은 별도 확률 관계로 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정규밀도는 평균 m에 관하여 좌우 대칭이다. 표준화한 −1≤Z≤1의 양쪽 넓이가 같아 ㄱ과 ㄴ이 참임을 보여준다. ㄷ은 별도 확률 관계로 판단한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 정규분포 확률 구간과 표준화의 관계가 이해에 도움이 되어 계획한다. 점과 축값 라벨은 여유 있게 배치한다."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2/9"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0.6666666666666666
+      }
+    ],
+    "exactCoordinates": {
+      "B": [
+        "3",
+        "2/3"
+      ]
+    },
+    "regions": [
+      {
+        "id": "prob",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "전체 넓이가 1이므로 k=2/9이다. 1≤x≤2의 음영 넓이는 1/3이고 문제의 6P는 2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전체 넓이가 1이므로 k=2/9이다. 1≤x≤2의 음영 넓이는 1/3이고 문제의 6P는 2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 확률밀도의 구간 확률을 면적으로 보여 주어 이해를 돕는다. 좌표 라벨은 지시선과 여유 있는 배치를 계획한다."
+  ]
+}

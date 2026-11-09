@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "0",
+      "1",
+      "3"
+    ],
+    "shades": [
+      {
+        "curve": "Z",
+        "from": "1",
+        "to": "3"
+      }
+    ]
+  },
+  "caption": "X의 평균 50과 표준편차 4로 표준화하면 54는 z=1, 62는 z=3이다. 색칠한 P(1≤Z≤3)=0.4987−0.3413=0.1574이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "X는 N(50,4²)이고 표는 P(0≤Z≤1)=0.3413, P(0≤Z≤3)=0.4987을 준다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 정규분포에서 확률 구간과 표준화가 이해에 도움이 되므로 그림을 계획한다. z=1과 z=3 사이를 표시하며 0과의 면적 차를 설명한다. 축값은 여유 있게 배치한다."
+  ]
+}

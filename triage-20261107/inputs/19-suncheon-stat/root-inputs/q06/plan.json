@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/2",
+          "1/4"
+        ]
+      },
+      {
+        "coefficients": [
+          "1/2",
+          "-1/4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "1/2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 0.5
+      },
+      {
+        "id": "R",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "0",
+        "1/2"
+      ]
+    },
+    "regions": [
+      {
+        "id": "prob",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "1/2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "L",
+    "M",
+    "R"
+  ],
+  "caption": "전체 넓이 4k=1에서 k=1/4이다. 음영은 −1≤X≤1/2의 확률이며 3/8+7/32=19/32이므로 p+q=51이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전체 넓이 4k=1에서 k=1/4이다. 음영은 −1≤X≤1/2의 확률이며 3/8+7/32=19/32이므로 p+q=51이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 확률밀도의 구간 확률을 면적으로 보여 주어 이해를 돕는다. 좌표 라벨은 지시선과 여유 있는 배치를 계획한다."
+  ]
+}
