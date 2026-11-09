@@ -122,6 +122,11 @@
         if (t.length < 2 || t.charAt(0) !== '|' || t.charAt(t.length - 1) !== '|') return null;
         var cells = t.slice(1, -1).split('|');
         var isSep = cells.every(function (c) { return SEP_CELL_RE.test(c); });
+        if (cells.length === 1 && !isSep) {
+            // a one-column row must look like a table row (spaces inside the pipes) and carry text or explicit $math$, not a bare |x-1| expression
+            var inner = cells[0];
+            if (!/^\s/.test(inner) || !/\s$/.test(inner) || !(/[가-힣ㄱ-ㅎㅏ-ㅣ]/.test(inner.replace(MATH_TOKEN_RE, '')) || inner.indexOf(MATH_OPEN) !== -1)) return null;
+        }
         return { cells: cells, isSep: isSep, tail: tail, lead: lead };
     }
 
@@ -141,6 +146,7 @@
         var headerEmpty = data.length > 1 && data[0].every(function (c) { return !c.trim(); });
         var noHeader = false;
         if (headerEmpty) { data.shift(); noHeader = true; }
+        if (cols === 1 && !hasSep) noHeader = true;      // condition boxes: every row is a plain cell
         var horizontal = !noHeader && cols >= 2 && cols > data.length && data.length >= 2 &&
             data.slice(1).every(function (r) { return isShortLabel(r[0]); });
         var out = ['<table>'];
@@ -282,13 +288,39 @@
         var set = {};
         String(attrs['class'] || '').split(/\s+/).forEach(function (c) { if (/^ap-(?!table-wrap)/.test(c) && c !== 'ap-table') set[c] = 1; });
         (extra || []).forEach(function (c) { set[c] = 1; });
-        var order = ['ap-shade', 'ap-cell-text', 'ap-table-wide', 'ap-table-grid'];
+        var order = ['ap-shade', 'ap-cell-blank', 'ap-cell-text', 'ap-table-wide', 'ap-table-grid', 'ap-table-custom-borders'];
         var names = Object.keys(set).sort(function (a, b) {
             var ia = order.indexOf(a), ib = order.indexOf(b);
             if (ia === -1) ia = 99; if (ib === -1) ib = 99;
             return ia - ib || (a < b ? -1 : a > b ? 1 : 0);
         });
         return names;
+    }
+
+    // Border declarations of a td/th style attribute: only border / border-top|right|bottom|left are
+    // ever kept (drawn lines of synthetic-division style tables); everything else is the engine's job.
+    var BORDER_PROPS = ['border', 'border-top', 'border-right', 'border-bottom', 'border-left'];
+    function borderDecls(style) {
+        var found = {};
+        String(style || '').split(';').forEach(function (d) {
+            var i = d.indexOf(':');
+            if (i < 0) return;
+            var name = d.slice(0, i).trim().toLowerCase();
+            var value = d.slice(i + 1).trim().replace(/\s+/g, ' ');
+            if (BORDER_PROPS.indexOf(name) === -1 || !value || !/^[\w\s#.,()%-]+$/.test(value) || /url|expression/i.test(value)) return;
+            found[name] = value;
+        });
+        return BORDER_PROPS.filter(function (n) { return found[n] !== undefined; }).map(function (n) { return n + ':' + found[n]; });
+    }
+    // A table is "custom-border" when its cells switch the grid off (border:none / 0) or draw single sides.
+    function isCustomBorderDecl(d) {
+        var i = d.indexOf(':');
+        var name = d.slice(0, i), value = d.slice(i + 1);
+        if (name !== 'border') return true;
+        return /^(none|0|0px|hidden)\b/i.test(value);
+    }
+    function isBlankCell(text) {
+        return text.replace(/&nbsp;|&#160;|&#xa0;|<br\s*\/?>|\s| /gi, '') === '';
     }
 
     function posInt(v) { var n = parseInt(v, 10); return n >= 1 ? n : 0; }
@@ -302,6 +334,7 @@
         STRUCT_TAG_RE.lastIndex = 0;
         var flushText = function (text) {
             if (!text) return;
+            if (!prevCell && !/S/.test(text)) return;     // whitespace between table tags carries nothing
             if (prevCell) { prevCell.text += text; }
             pieces.push(text);
         };
@@ -319,7 +352,7 @@
                     pieces.push('</table>');
                 } else {
                     var wasGrid = /\bap-table-grid\b/.test(attrs['class'] || '');
-                    var tp = { kind: 'table', attrs: attrs, wide: false, grid: wasGrid };
+                    var tp = { kind: 'table', attrs: attrs, wide: false, grid: wasGrid, custom: /\bap-table-custom-borders\b/.test(attrs['class'] || '') };
                     stack.push({ piece: tp, max: 0, cur: 0, grid: wasGrid });
                     pieces.push(tp);
                 }
@@ -338,7 +371,8 @@
                     if (top.cur > top.max) top.max = top.cur;
                     if (/\bwidth\s*:\s*\d/i.test(attrs.style || '') && /\bheight\s*:\s*\d/i.test(attrs.style || '')) top.grid = true;
                 }
-                var cp = { kind: 'cell', tag: tag, attrs: attrs, text: '' };
+                var cp = { kind: 'cell', tag: tag, attrs: attrs, text: '', tbl: top ? top.piece : null, borders: borderDecls(attrs.style) };
+                if (top && cp.borders.some(isCustomBorderDecl)) top.piece.custom = true;
                 pieces.push(cp);
                 prevCell = cp;
             } else {
@@ -349,8 +383,8 @@
         return pieces.map(function (p) {
             if (typeof p === 'string') return p;
             if (p.kind === 'table') {
-                var tc = TABLE_CLASS + (p.wide ? ' ap-table-wide' : '') + (p.grid ? ' ap-table-grid' : '');
-                var extra = apClasses(p.attrs).filter(function (c) { return c !== 'ap-table-wide' && c !== 'ap-table-grid'; });
+                var tc = TABLE_CLASS + (p.wide ? ' ap-table-wide' : '') + (p.grid ? ' ap-table-grid' : '') + (p.custom ? ' ap-table-custom-borders' : '');
+                var extra = apClasses(p.attrs).filter(function (c) { return c !== 'ap-table-wide' && c !== 'ap-table-grid' && c !== 'ap-table-custom-borders'; });
                 return '<table class="' + tc + (extra.length ? ' ' + extra.join(' ') : '') + '">';
             }
             if (p.kind === 'plain') {
@@ -361,7 +395,8 @@
             var a = p.attrs;
             var extraCls = [];
             if (grayShade(a.style)) extraCls.push('ap-shade');
-            if (hangulCount(p.text) >= HANGUL_LONG) extraCls.push('ap-cell-text');
+            if (isBlankCell(p.text)) extraCls.push('ap-cell-blank');
+            else if (hangulCount(p.text) >= HANGUL_LONG) extraCls.push('ap-cell-text');
             var cc = apClasses(a, extraCls);
             var out = '<' + p.tag;
             if (cc.length) out += ' class="' + cc.join(' ') + '"';
@@ -369,6 +404,7 @@
             if (cs > 1) out += ' colspan="' + cs + '"';
             if (rs > 1) out += ' rowspan="' + rs + '"';
             if (/^(col|row|colgroup|rowgroup)$/i.test(a.scope || '')) out += ' scope="' + a.scope.toLowerCase() + '"';
+            if (p.tbl && p.tbl.custom && p.borders.length) out += ' style="' + p.borders.join('; ') + '"';
             return out + '>';
         }).join('');
     }

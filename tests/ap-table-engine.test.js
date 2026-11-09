@@ -111,7 +111,7 @@ test('rows separated by <br> (no newlines) become a table without splitting in-c
 
 test('empty cells are preserved and comparison signs in text/math are escaped', () => {
   const out = renderApTables('표\n\n| 상담실 이용경험 | 1학년 | 2학년 | 합계 |\n| 있음 | 24 |  |  |\n| 없음 |  | 49 |  |\n| 합계 |  |  | 150 |\n');
-  assert.equal(count(out, /<td><\/td>/g), 6);
+  assert.equal(count(out, /<td class="ap-cell-blank"><\/td>/g), 6);
   const sign = renderApTables('| 구분 | 값 |\n| <첫 번째> | $a<b$ |');
   assert.match(sign, /<td>&lt;첫 번째&gt;<\/td><td>\$a&lt;b\$<\/td>/);
 });
@@ -287,4 +287,67 @@ test('wrapLatex (engine.html) with the engine loaded: pipe table survives typese
   } finally {
     if (before === undefined) delete globalThis.ApTableEngine; else globalThis.ApTableEngine = before;
   }
+});
+
+test('custom-border table (synthetic division, 26 금당고 고1 qid 18): border-* of the cells are kept, everything else is dropped', () => {
+  const src = field('high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js', 18, 'content');
+  assert.match(src, /border:none; border-right:1px solid #000; width:34px/);
+  const out = renderApTables(src);
+  assert.match(out, /<table class="ap-table question-table ap-table-custom-borders">/);
+  assert.match(out, /<td style="border:none; border-right:1px solid #000">3<\/td>/);
+  assert.match(out, /<td class="ap-cell-blank" style="border:none; border-top:1px solid #000; border-right:1px solid #000"><\/td>/);
+  assert.match(out, /<td style="border:none; border-top:1px solid #000">\$-2\$<\/td>/);
+  assert.match(out, /<td style="border:none">\$a\$<\/td>/);
+  assert.doesNotMatch(out, /width:|padding|font-size|text-align|margin|table-layout|border-collapse/);
+  assert.equal(count(out, /style="/g), 15, 'one border style per cell, nothing on table/tr');
+  assert.equal(renderApTables(out), out, 'idempotent');
+  assert.deepEqual(extractTableCells(out), extractTableCells(src));
+  // a full-grid inline border is ordinary design, not a custom-border table
+  const plain = renderApTables('<table><tr><td style="border:1px solid #000;padding:3px">a</td></tr></table>');
+  assert.doesNotMatch(plain, /custom-borders|style=/);
+});
+
+test('the stylesheet draws no grid for custom-border tables and the narrow solution variant inherits the text size', () => {
+  const css = fs.readFileSync(path.join(root, 'archive', 'css', 'ap-table.css'), 'utf8');
+  assert.match(css, /table\.ap-table\.ap-table\.ap-table-custom-borders td \{ border: 0; \}/);
+  assert.match(css, /:not\(\.ap-table-custom-borders\) thead th/);
+  const narrow = css.match(/\.sol-fit-narrow :is\(\.sol-exp, \[data-semantic-content="1"\]\) table\.ap-table\.ap-table \{[^}]*\}/);
+  assert.ok(narrow, 'narrow variant exists');
+  assert.match(narrow[0], /font-size: inherit/);
+  assert.match(css, /--ap-table-font-size: 9pt/);
+  assert.match(css, /table\.ap-table\.ap-table \{[^}]*font-size: var\(--ap-table-font-size\)/, 'everywhere else the table keeps the 9pt token');
+});
+
+test('fill-in cells (empty, whitespace, &nbsp;) get ap-cell-blank (22 효천고 기말 확률과통계 qid 24)', () => {
+  const src = field('high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js', 24, 'content');
+  const out = renderApTables(src);
+  assert.ok(count(out, /<td class="ap-cell-blank">&nbsp;<\/td>/g) >= 14);
+  assert.doesNotMatch(out, /<td>&nbsp;<\/td>/);
+  assert.match(out, /<th>1행<\/th>/);
+  assert.match(out, /ap-table-wide/);
+  const mixed = renderApTables('<table><tr><td> </td><td>&nbsp;&nbsp;</td><td></td><td><br></td><td>0</td></tr></table>');
+  assert.equal(count(mixed, /ap-cell-blank/g), 4);
+  const pipe = renderApTables('| a | b |\n| 1 |  |');
+  assert.match(pipe, /<td class="ap-cell-blank"><\/td>/);
+  const css = fs.readFileSync(path.join(root, 'archive', 'css', 'ap-table.css'), 'utf8');
+  assert.match(css, /\.ap-cell-blank \{ min-width: 8mm; height: var\(--ap-table-row-min\); \}/);
+});
+
+test('one-column tables: no header without a separator row; header kept with one (25 순천여고 대수 qid 18)', () => {
+  const src = field('high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js', 18, 'content');
+  const out = renderApTables(src);
+  assert.equal(count(out, /<table\b/g), 1);
+  assert.equal(count(out, /<th\b/g), 0);
+  assert.equal(count(out, /<tr>/g), 2);
+  assert.match(out, /<td>\(가\) \$f\(x\)/);
+  assert.match(out, /<td>\(나\) /);
+  const withSep = renderApTables('| 보기 |\n| :--- |\n| ㄱ. 첫째 |\n| ㄴ. 둘째 |');
+  assert.equal(count(withSep, /<th scope="col">보기<\/th>/g), 1);
+  assert.equal(count(withSep, /<td>/g), 2);
+});
+
+test('one-column false positives: bare |x-1| style lines and rows without inner spaces stay text', () => {
+  for (const c of ['|x-1|\n|x+2|', '| x-1 |\n| x+2 |', '|a|\n|b|', '|보기|\n|ㄱ. 첫째|', '앞\n|x-1|\n|x+2|\n뒤']) assert.equal(renderApTables(c), c, c);
+  assert.equal(count(renderApTables('| 보기 |\n| ㄱ. 첫째 |'), /<table\b/g), 1);
+  assert.equal(count(renderApTables('| 보기 |\n| $x+1$ |'), /<table\b/g), 1, 'explicit $math$ rows count');
 });

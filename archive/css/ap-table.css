@@ -74,10 +74,10 @@ table.ap-table.ap-table td {
 table.ap-table.ap-table th { font-weight: 600; }
 
 /* header rule: under the first row when it is made of header cells */
-table.ap-table.ap-table thead th,
-table.ap-table.ap-table thead td,
-table.ap-table.ap-table:not(:has(thead)) > tbody > tr:first-child > th,
-table.ap-table.ap-table:not(:has(thead)) > tr:first-child > th {
+table.ap-table.ap-table:not(.ap-table-custom-borders) thead th,
+table.ap-table.ap-table:not(.ap-table-custom-borders) thead td,
+table.ap-table.ap-table:not(.ap-table-custom-borders):not(:has(thead)) > tbody > tr:first-child > th,
+table.ap-table.ap-table:not(.ap-table-custom-borders):not(:has(thead)) > tr:first-child > th {
     border-bottom: var(--ap-table-line-head) solid var(--ap-table-color-outer);
 }
 
@@ -89,9 +89,10 @@ table.ap-table.ap-table th.ap-cell-text {
     word-break: normal;
 }
 
-/* empty answer cells keep a usable size */
+/* fill-in cells (empty, whitespace or &nbsp; only) keep a usable size */
 table.ap-table.ap-table td:empty,
-table.ap-table.ap-table th:empty { min-width: 8mm; }
+table.ap-table.ap-table th:empty,
+table.ap-table.ap-table .ap-cell-blank { min-width: 8mm; height: var(--ap-table-row-min); }
 table.ap-table.ap-table.ap-table-grid td,
 table.ap-table.ap-table.ap-table-grid th { min-width: 12mm; height: 12mm; }
 
@@ -102,6 +103,12 @@ table.ap-table.ap-table.ap-table-wide td { padding-left: 1mm; padding-right: 1mm
 .ap-shade,
 table.ap-table.ap-table .ap-shade { background: var(--ap-table-shade); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
+/* custom-border tables (e.g. synthetic division): the author draws the lines on single cells, so no grid.
+   Cell borders stay inline (border-*), the font, padding and alignment tokens above still apply. */
+table.ap-table.ap-table.ap-table-custom-borders { border: 0; }
+table.ap-table.ap-table.ap-table-custom-borders th,
+table.ap-table.ap-table.ap-table-custom-borders td { border: 0; }
+
 table.ap-table.ap-table mjx-container { max-width: 100%; }
 
 /* narrow solution box (engine.html .sol-fit-narrow rule is 0,4,1 and forces table-layout:fixed) */
@@ -110,6 +117,7 @@ table.ap-table.ap-table mjx-container { max-width: 100%; }
     max-width: 100% !important;
     table-layout: auto;
     box-sizing: border-box;
+    font-size: inherit;   /* follows the (possibly stepped-down) solution text, no extra shrinking */
 }
 .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) table.ap-table.ap-table :is(td, th) {
     overflow-wrap: anywhere;
