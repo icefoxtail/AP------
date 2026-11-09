@@ -14,6 +14,7 @@ OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
 LEADER_ONLY_MIN_PX=14.0
+LEADER_MAY_CROSS_ASYMPTOTE=re.compile(r'asymptote-|rational-asymptote-')   # (EXT-20261109-e) a point callout's leader may cross a dashed asymptote like an axis, tick or guide (never a curve or a line)
 RING_LABEL_OWN_REACH_PX=60.0   # the independent observer refuses a leaderless overlay coordinate label farther than this from its own dot
 POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112,128,144,160,180,210,240,270,300)
 NEAR_RELOCATION_LEADER_MIN_GAP=20
@@ -890,7 +891,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         if force_leader:default_gaps=()
         leader_only=bool(label.get('leaderOnly'))
         # leaderOnly (G7c): a thin leader may cross the axes, ticks and dashed guides (they are guides, not the curves it must not be confused with); never a curve or another line.
-        leader_skip=frozenset(o['id'] for o in obstacles if leader_only and isinstance(o.get('id'),str) and (o.get('kind') in {'axis','tick'} or re.search(r'-guide(-[xy])?$',o['id']) or o['id'].startswith('overlay-guide-')))
+        leader_skip=frozenset(o['id'] for o in obstacles if leader_only and isinstance(o.get('id'),str) and (o.get('kind') in {'axis','tick'} or re.search(r'-guide(-[xy])?$',o['id']) or o['id'].startswith('overlay-guide-') or LEADER_MAY_CROSS_ASYMPTOTE.match(o['id'])))
         if leader_only:default_gaps=()
         if label.get('regionLeader',{}).get('only'):default_gaps=()
         if tick_callout is not None:

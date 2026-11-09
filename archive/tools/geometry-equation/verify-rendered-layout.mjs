@@ -409,7 +409,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   for(const leader of capture.geometry.filter(v=>v.kind==='leader'))for(const other of capture.geometry.filter(v=>v.id!==leader.id&&v.points)) {
     if(publication&&isOwnRegionExit(leader,other,capture.geometry))continue;
     // G7c: a curve-name leader (leaderOnly label, id *-curve-name-owner-leader) is a thin guide that may cross the axes, ticks and dashed guides, never a curve or a line. (G18c) So may a point callout's leader (overlay-callout-*): the layout looks for a place that crosses nothing first and falls back to the axes only when the figure leaves none.
-    if((/-curve-name-owner-leader$/.test(leader.id)||/^overlay-callout-.+-owner-leader$/.test(leader.id))&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-/.test(String(other.id))))continue;
+    if((/-curve-name-owner-leader$/.test(leader.id)||/^overlay-callout-.+-owner-leader$/.test(leader.id))&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-|^asymptote-|^rational-asymptote-/.test(String(other.id))))continue;
     if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}

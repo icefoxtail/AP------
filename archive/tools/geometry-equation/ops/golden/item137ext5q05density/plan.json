@@ -1,0 +1,130 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "1/6"
+    ]
+   },
+   {
+    "coefficients": [
+     "1/2",
+     "-1/12"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "2",
+    "y": "1/3"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "0",
+    "6"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   0,
+   6
+  ],
+  "viewport": [
+   -1,
+   7,
+   -0.05,
+   0.4
+  ],
+  "axisTickValues": {
+   "x": [
+    "2",
+    "4",
+    "6"
+   ],
+   "y": [
+    "1/3"
+   ]
+  },
+  "axisTitles": {
+   "x": "x",
+   "y": "f(x)"
+  },
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 0,
+    "y": 0
+   },
+   {
+    "id": "M",
+    "x": 2,
+    "y": "1/3"
+   },
+   {
+    "id": "B",
+    "x": 6,
+    "y": 0
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "curveX": "4",
+     "coordinates": true,
+     "labelDirection": "NE"
+    }
+   ],
+   "guides": [
+    {
+     "id": "gP",
+     "from": "P",
+     "axis": "x"
+    }
+   ]
+  },
+  "regions": [
+   {
+    "id": "rightTail",
+    "upper": "f",
+    "lower": "axis",
+    "from": "4",
+    "to": "6",
+    "fill": "LIGHT"
+   }
+  ],
+  "axisScale": {
+   "x": 1,
+   "y": 12
+  }
+ },
+ "caption": "???? ????? x=4?? 6??? ??? ??? ????.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "?? ???? ??? 1??? ??? ??? 1/3??.",
+   "mappedTo": "graphPlan.breakpoints"
+  },
+  {
+   "id": "c2",
+   "condition": "x=4?? ??? 1/6??.",
+   "mappedTo": "graphPlan.overlays.points.P"
+  },
+  {
+   "id": "c3",
+   "condition": "??? ??? x=4?? 6?? ?? ??? ???.",
+   "mappedTo": "graphPlan.regions"
+  }
+ ],
+ "newVisualInformation": [
+  "??? ???? ???? ?? 4?X?6? ?? ??"
+ ]
+}
