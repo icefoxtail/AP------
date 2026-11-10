@@ -14,7 +14,7 @@ function loadUnit() {
     addEventListener(name, callback) { listeners[name] = callback; }, querySelector() { return null; }
   };
   const ctx = vm.createContext({ window: { innerWidth: 1440, matchMedia: () => ({ matches: false }) }, document });
-  for (const name of ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 'video']) {
+  for (const name of ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 'lesson']) {
     vm.runInContext(fs.readFileSync(path.join(labDir, name + '.js'), 'utf8'), ctx, { filename: name + '.js' });
   }
   const groups = ctx.window.APL_SV_GROUPS;

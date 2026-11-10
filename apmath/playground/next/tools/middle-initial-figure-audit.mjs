@@ -352,7 +352,7 @@ async function run() {
           return row;
         };
         try {
-          await page.goto(`${base}${unit.id}.html?theme=${theme}&initial-inventory=1`,{waitUntil:'load'});
+          await page.goto(`${base}${unit.id}.html?theme=${theme}&manual=1&initial-inventory=1`,{waitUntil:'load'});
           await page.waitForFunction(()=>window.lab?.list?.length>0);
           const readScenes = () => page.evaluate(()=>lab.list.map((s,index)=>({id:String(s.id),title:s.title,short:s.short,gi:s.gi,index,groupIndex:s.group.scenes.findIndex(x=>x.id===s.id)})));
           const registered = await readScenes();
@@ -363,7 +363,7 @@ async function run() {
           const combined = new Map(registered.map(s=>[s.id+'@'+s.gi,s]));
           for(const entry of dest.hashEntries){
             errors.length=0;
-            await page.goto(`${base}${unit.id}.html?theme=${theme}&initial-legacy=${encodeURIComponent(entry.id)}#s=${encodeURIComponent(entry.id)}`,{waitUntil:'load'});
+            await page.goto(`${base}${unit.id}.html?theme=${theme}&manual=1&initial-legacy=${encodeURIComponent(entry.id)}#s=${encodeURIComponent(entry.id)}`,{waitUntil:'load'});
             await page.waitForFunction(()=>window.lab?.list?.length>0);
             await page.evaluate(()=>document.fonts.ready);await page.evaluate(installObservation);await settle();
             const actual=await page.evaluate(()=>String(lab.scene.id));
@@ -390,7 +390,7 @@ async function run() {
             errors.length=0;
             // A distinct query forces a new document; changing only the hash does
             // not run this app's initial restoration code.
-            await page.goto(`${base}${unit.id}.html?theme=${theme}&initial-document=${scene.index}#s=${encodeURIComponent(scene.id+'@'+scene.gi)}`,{waitUntil:'load'});
+            await page.goto(`${base}${unit.id}.html?theme=${theme}&manual=1&initial-document=${scene.index}#s=${encodeURIComponent(scene.id+'@'+scene.gi)}`,{waitUntil:'load'});
             await page.waitForFunction(()=>window.lab?.list?.length>0);
             await page.evaluate(()=>document.fonts.ready);
             await page.evaluate(installObservation);

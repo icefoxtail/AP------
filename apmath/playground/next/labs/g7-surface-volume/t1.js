@@ -43,7 +43,7 @@
   // 분수가 들어간 값은 세로로 길게 그려지므로 두 줄로 나누지 않고 한 줄로 둡니다
   // o.small: 면이 글자보다 좁으면(px 폭) 면 밖의 빈 자리에 이름 붙은 글자를 놓습니다
   const aLab = (D, p, name, val, o = {}) => {
-    if (o.small != null && !o.fig && o.small < wTxt(D, `${name} ${val}`, o.size || 14) + 8) { D.label(p, `${name} ${val}`, { dir: { x: 0, y: -1 }, gap: 8, size: o.size || 14, alpha: o.alpha }); return null; }
+    if (o.small != null && !o.fig && o.small < wTxt(D, `${name} ${val}`, o.size || 14) + 8) { D.label(p, `${name} ${val}`, { dir: o.dir || { x: 0, y: -1 }, gap: o.gap || 8, size: o.size || 14, alpha: o.alpha }); return null; }
     return D.areaLab(p, name, val, String(val).includes('/') ? Object.assign({}, o, { maxW: undefined }) : o);
   };
   // 한 줄 글자: 무대보다 길면 글자를 줄이고, 무대 안에 들어오게 가운데를 옮겨요 (화면 픽셀 좌표)
@@ -117,7 +117,8 @@
       }
       const sn=solidNet(poly,h,1,bm.smooth,bm.root),e=G.ease(C.t),yaw=s.svYaw==null?28:s.svYaw,pitch=s.svPitch==null?22:s.svPitch;
       const frame=u=>{const cam=G.camOf(yaw*(1-u),pitch*(1-u)),pose=G.netPose(sn.net,u),p=[];sn.net.pieces.forEach((f,k)=>f.pts.forEach(v=>p.push(G.proj(cam,G.applyT(pose[k],v)))));const box=G.bboxOf(p);return {pose,box,cx:(box.x0+box.x1)/2,cy:(box.y0+box.y1)/2};};
-      const frames=Array.from({length:9},(_,i)=>frame(i/8)),W=Math.max(...frames.map(f=>f.box.x1-f.box.x0)),H=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
+      const entryFit=s.lessonEntry&&(C.t||0)<0.02; // 해설 우선 진입 화면: 닫힌 입체만 보이므로 펼친 전개도 크기가 아니라 입체에 맞춰 크게(탐구·수업 모드는 그대로)
+      const frames=Array.from({length:entryFit?1:9},(_,i)=>frame(i/8)),W=Math.max(...frames.map(f=>f.box.x1-f.box.x0)),H=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
       const src=scene3(b,s,C),extent=Math.max(bm.ex,bm.ez)*sc/2,off=src.hx(-W/2-extent-3),base=prismMesh(poly,0,h,{simple:true,smooth:bm.smooth});
       const srcPts=[];for(const x of [-extent,extent])for(const z of [-extent,extent])for(const y of [0,h])srcPts.push(src.P(add3(off,v3(x,y,z))));
       const sb=G.bboxOf(srcPts),sy=-(sb.y0+sb.y1)/2, pair=b.W>=1000;
@@ -138,13 +139,58 @@
       }
       const nx=-W/2;if(pair&&nx-sb.x1>.3)src.arrow({x:sb.x1+.1,y:-H/2-.5},{x:nx-.1,y:-H/2-.5},'muted',1.4);
     };
+    // 부피(정리 탭): 단계마다 한 가지씩 — 1 밑면(하늘색 강조 + 밑넓이 + 반지름) → 2 높이(노랑 치수선, 조각이 모여 한 덩어리일 때) → 3 부피(초록 결과).
+    // 결과는 해설이 재생 중이면(s.lessonOn) 해설이 svShowV 를 켤 때까지 아낍니다(결론 자막보다 먼저 보이지 않게). 값이 작은 그림에서는 글자를 그림 밖으로 빼고 선으로 이어요.
+    const volLabels = (b,s,M,C,D,g) => {
+      const { poly, h, gap, open, pair } = g, bm = M.bm, st = C.step || 0;
+      const yTop = h / 2 + 2 * gap, top3 = (p) => v3(p[0], yTop, p[1]), cTop = v3(0, yTop, 0);
+      const xs = poly.map((p) => D.px(top3(p))), x0 = Math.min(...xs.map((q) => q.x)), x1 = Math.max(...xs.map((q) => q.x)), y0 = Math.min(...xs.map((q) => q.y)), y1 = Math.max(...xs.map((q) => q.y));
+      const c = D.px(cTop), faceW = x1 - x0, faceH = y1 - y0;
+      const txt = (x, y, str, color, size) => { b.text(b.toW(x, y), str, { color, size: D.fs(size), weight: 800, align: 'center', baseline: 'middle' }); };
+      const line = (ax, ay, bx, by, color) => b.path([b.toW(ax, ay), b.toW(bx, by)], { color, width: 1.8, alpha: 0.9 });
+      if (st >= 1) {
+        D.panel(poly.map(top3), 'sky', 0.30, 'sky', 2.6); // 밑면 강조
+        const name = `밑넓이 ${plainVal(M.S)}`, w = wTxt(D, name, 14) + 8;
+        if (faceW >= w * 1.45 && faceH >= 30) {
+          // 면이 넉넉하면 면 안, 반지름 선이 뻗는 오른쪽을 피해 왼쪽 반에
+          const lx = c.x - Math.min(faceW * 0.5 - w / 2 - 4, w / 2 + 16);
+          txt(lx, c.y - faceH * 0.05, name, 'ink', 14);
+          D.boxes.push({ x0: lx - w / 2, x1: lx + w / 2, y0: c.y - faceH * 0.05 - 10, y1: c.y - faceH * 0.05 + 10 });
+        } else {
+          // 면이 좁으면 면 밖(오른쪽 위)으로 빼고 면의 중심과 선으로 잇습니다
+          const lx = x1 + 12 + w / 2, ly = y0 - 8;
+          line(c.x, c.y, lx - w / 2, ly + 6, 'ink');
+          D.dot(cTop, 'ink', 3.5);
+          txt(lx, ly, name, 'ink', 14);
+          D.boxes.push({ x0: lx - w / 2, x1: lx + w / 2, y0: ly - 10, y1: ly + 10 });
+        }
+        if (st === 1 && bm.shape === 'circ' && !pair) {
+          const rim = D.rimPick(cTop, poly.map(top3));
+          D.radius(cTop, rim, `반지름 ${bm.r}`, { size: 13, end: faceW < b.W * 0.55 });
+        }
+      }
+      if (st >= 2 && !pair) {
+        // 해설 재생 중: 조각이 벌어져 있는 동안은 높이를 재지 않고(모였을 때 나타남). 해설이 아닌 정리 탭: 조각이 늘 벌어져 있으므로(stepT 1) 벌어진 쌓임 전체에 높이를 항상 그립니다.
+        const alpha = s.lessonOn ? Math.max(0, Math.min(1, 1 - open * 8)) : 1, yEnd = s.lessonOn ? h / 2 : h / 2 + 2 * gap;
+        const left = poly.reduce((a, p) => (D.P(v3(p[0], 0, p[1])).x < D.P(v3(a[0], 0, a[1])).x ? p : a), poly[0]);
+        D.dim(v3(left[0], -h / 2, left[1]), v3(left[0], yEnd, left[1]), `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 16, color: 'amber', size: 14, alpha });
+      }
+      if (st >= 3 && (!s.lessonOn || s.svShowV)) {
+        const str = `부피 = ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)} cm³`;
+        const ty = Math.min(y0, D.px(v3(0, -h / 2, 0)).y) - 30;
+        const W = b.W - b.insets.left - b.insets.right, size = Math.max(11, Math.min(16, (15 * W * 0.94) / (wTxt(D, str, 15) * 1.1)));
+        txt(Math.max(b.insets.left + 8 + wTxt(D, str, size) / 2, Math.min(b.W - b.insets.right - 8 - wTxt(D, str, size) / 2, c.x)), Math.max(14, ty), str, 'green', size);
+      }
+    };
     const drawVol = (b,s,M,C) => {
       const bm=M.bm, sc=4.6/Math.max(bm.ex,bm.ez,M.h), poly=scaledPoly(bm,sc), h=M.h*sc;
       const D=scene3(b,s,C), width=Math.max(bm.ex,bm.ez)*sc, src=D.hx(-width*1.6), smooth=bm.smooth, pair=!C.problem && b.W>=1000;
       if(C.problem){const mesh=prismMesh(poly,-h/2,h/2,{simple:true,smooth});D.fit(mesh.faces.flatMap(f=>f.pts),[],{l:12,r:12,t:12,b:12});D.body({mesh,fill:'sky',alpha:.035,edge:'ink',edgeW:2});return;}
       const open=G.ease(C.problem?0:C.t), gap=(0.45+0.35*width)*open, pts=[];
       for(const x of [-width/2,width/2])for(const z of [-width/2,width/2])for(const y of [-h/2,h/2+2*gap]) {pts.push(v3(x,y,z));if(pair)pts.push(add3(v3(x,y,z),src));}
-      D.fit(pts,[],{l:25,r:(!C.problem&&!b.thumb&&window.innerWidth>=700&&b.W>=560?245:25),t:pair?65:25,b:pair?65:25});
+      const lab=C.review&&!b.thumb; // 정리 탭(해설 재생 포함): 자막이 말하는 값을 그림에 보입니다. 탐구·문제 탭과 작은 그림은 예전 그대로입니다.
+      if(lab) D.fit(pts,[],{l:pair?25:(D.narrow?74:90),r:25,t:pair?65:62,b:pair?65:28});
+      else D.fit(pts,[],{l:25,r:(!C.problem&&!b.thumb&&window.innerWidth>=700&&b.W>=560?245:25),t:pair?65:25,b:pair?65:25});
       const ref=xfMesh(prismMesh(poly,-h/2,h/2,{simple:true,smooth}),G.shiftT(src));
       if(pair) D.body({mesh:ref,fill:'sky',alpha:.035,edge:'ink',edgeW:2});
       if(pair&&!b.thumb){
@@ -157,6 +203,7 @@
         const y0=-h/2+i*h/3+i*gap,y1=y0+h/3;
         D.body({mesh:prismMesh(poly,y0,y1,{simple:true,smooth}),fill:'sky',alpha:.06,edge:'ink',edgeW:1.7});
       }
+      if(lab) volLabels(b,s,M,C,D,{poly,h,gap,open,pair,sc});
       const a=D.P(src),q=D.P(v3(0,0,0)),y=Math.min(D.P(v3(0,h/2+2*gap,0)).y,D.P(add3(src,v3(0,h/2,0))).y)-.8;
       if(pair&&q.x-a.x>width+1)D.arrow({x:a.x+width/2+.1,y},{x:q.x-width/2-.1,y},'muted',1.4);
     };
@@ -223,7 +270,8 @@
               rimTo = D.rimPick(c3, pts.map((p) => at(k, p)));
               if (first) { const rp = D.px(rimTo), R = Math.hypot(rp.x - cs.x, rp.y - cs.y); dx = -0.12 * R; dy = -0.23 * faceH; maxW = R * 1.6; } // 반지름 중심 점과 글자 끝이 맞닿지 않게 중심 위쪽에
             }
-            if (!C.problem) aLab(D, c3, '밑넓이', plainVal(M.S), { dx, dy, maxW });
+            // 작은 화면(가로 휴대폰)에서 원이 글자보다 좁으면 「밑넓이 9π」를 면 밖 왼쪽으로 빼 반지름 선과 겹치지 않게 합니다(넓은 면은 예전 그대로)
+            if (!C.problem) aLab(D, c3, '밑넓이', plainVal(M.S), bm.shape === 'circ' ? { dx, dy, maxW, small: faceW, dir: { x: -1, y: -0.15 }, gap: 20 } : { dx, dy, maxW });
             if (!first) return;
             first = false;
             if (bm.shape === 'circ') D.radius(c3, rimTo, `반지름 ${bm.r}`, { end: true });
