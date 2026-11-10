@@ -451,10 +451,10 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "m=3-√7일 때 포물선 y=x²-2(m-1)x의 꼭짓점 V에서 직선 y=-4m+1=-11+4√7이 접한다. m=3+√7일 때도 꼭짓점에서 접한다.",
-    "solutionImageCaption": "m=3-√7일 때 포물선 y=x²-2(m-1)x의 꼭짓점 V에서 직선 y=-4m+1=-11+4√7이 접한다. m=3+√7일 때도 꼭짓점에서 접한다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 파란 포물선 y=x²−2(m−1)x와 x축에 평행한 주황 직선 y=−4m+1이 포물선의 꼭짓점 V에서 접하는 모양의 그림이다.",
+    "solutionImageCaption": "접하는 모양을 나타낸 그림이다. 두 식을 같게 놓은 이차방정식이 중근을 가지므로 판별식을 0으로 놓으면 m에 대한 이차방정식 m²−6m+2=0을 얻는다. 이 방정식의 두 근의 합이 구하는 값이다. 정답은 6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -498,7 +498,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 파란 포물선 y=x²−(a+1)x−2와 오른쪽 아래로 기울어진 주황 직선 y=−2x+1이 두 점에서 만나는 그림. 두 교점에서 x축으로 내린 점선의 발이 각각 α, β로 표시되어 있다.",
+    "solutionImageCaption": "예: 조건을 만족하는 한 경우의 모양을 그린 그림이다. 두 교점의 x좌표 α, β는 x²+(1−a)x−3=0의 두 근이므로 근과 계수의 관계로 α+β=a−1, αβ=−3이다. |α−β|=4에서 (α−β)²=16을 이용해 a를 구하고 a가 양수인 값을 택한다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -541,7 +545,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 파란 포물선 f(x)와 아래로 볼록한 주황 포물선 g(x)가 점 P에서 만나고, g(x)의 꼭짓점이 Q인 그림. P와 Q에서 x축과 y축으로 점선이 그려져 있다.",
+    "solutionImageCaption": "g(x)의 꼭짓점은 Q(−4분의 1, 8분의 23)이고, 점 P의 x좌표가 −1이므로 P(−1, 4)이다. f(x)가 두 점 P, Q를 지난다는 조건으로 a, b에 대한 연립방정식을 세워 풀면 a와 b를 구할 수 있다. 정답은 −2분의 1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -584,9 +592,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "k=1/2일 때 직선이 포물선에 접하고, k가 이보다 크면 만나지 않는다.",
-    "solutionImageCaption": "k=1/2일 때 직선이 포물선에 접하고, k가 이보다 크면 만나지 않는다.",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 파란 포물선 y=−2x²+3x와 주황 직선 y=x+k를 그린 그림. 직선이 포물선보다 위쪽에 있어 두 그래프가 만나지 않는다.",
+    "solutionImageCaption": "예: k=1인 직선을 그린 그림으로 포물선과 만나지 않는다. 두 식을 같게 놓은 방정식 2x²−2x+k=0이 실근을 갖지 않으려면 판별식이 음수여야 하므로 k의 범위가 정해진다. 그 경계값이 a이다. 정답은 2분의 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -762,7 +770,10 @@ window.questionBank = [
     "originalCategory": "다항식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q18-solution.svg"
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 직각인 직각삼각형 ABC. 직각을 낀 두 변은 c=1, b=1로, 빗변은 a=√2로 표시되어 있다.",
+    "solutionImageCaption": "조건 (가)에서 세 변 중 두 변의 길이가 같고, (나)에서 a²=b²+c²이므로 a는 b나 c와 같을 수 없어 b=c이다. (다)에서 c가 자연수이므로 c=1이 되어 삼각형 ABC는 A가 직각인 직각이등변삼각형이고 a=√2이다. 정답은 2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -934,9 +945,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "직선 y=mx+12가 m=11/3이면 x=-3, -2/3, 8/3에서, m=2√2이면 x=-√2와 바깥 두 점에서 만나 서로 다른 세 점이 된다.",
-    "solutionImageCaption": "직선 y=mx+12가 m=11/3이면 x=-3, -2/3, 8/3에서, m=2√2이면 x=-√2와 바깥 두 점에서 만나 서로 다른 세 점이 된다.",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 h(x)의 그래프와 점 (0,12)를 지나는 직선 y=mx+12를 그린 그림. 파란 두 곡선 f(x) 부분 사이에 초록 곡선 g(x) 부분이 점 A와 B에서 이어지고 꼭짓점 C가 표시되어 있다. 주황 직선이 그래프와 네 점에서 만나는 예이다.",
+    "solutionImageCaption": "예: m=3인 직선을 그렸으며 이때는 교점이 네 개이다. A, B는 f(x)와 g(x) 부분이 이어지는 점이고 C는 g(x) 부분의 꼭짓점이다. 직선은 항상 점 (0,12)를 지나므로, f 부분과 g 부분에서 생기는 교점의 개수를 따로 세어 서로 다른 세 점에서 만나는 m의 값을 찾고 그 곱을 구한다. 정답은 3분의 22√2이다.",
     "solutionImageSize": "full"
   }
 ];

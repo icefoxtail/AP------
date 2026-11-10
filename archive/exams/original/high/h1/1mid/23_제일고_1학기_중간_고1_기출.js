@@ -536,9 +536,9 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "두 직선의 교점 C를 지나고 2x-y+4=0과 평행한 직선을 그립니다.",
-    "solutionImageCaption": "두 직선의 교점 C를 지나고 2x-y+4=0과 평행한 직선을 그립니다.",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 l(파랑)과 m(초록)이 점 C(3, −2)에서 만나고, 직선 2x−y+4=0(주황)과 이에 평행하며 C를 지나는 직선 2x−y+c=0(보라)을 그린 그림이다.",
+    "solutionImageCaption": "두 직선 l, m을 연립하면 교점은 C(3, −2)이다. 직선 2x−y+4=0과 평행한 직선은 2x−y+c=0 꼴이다. 이 직선이 C를 지나므로 대입하면 c=−8이다. 정답은 2x−y−8=0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -582,7 +582,11 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 점 A(−2, 1), B(4, 5)를 잇는 직선(파랑)과, 점 A를 지나며 이 직선에 수직인 직선(주황)을 그린 그림이다. 점선으로 가로 6, 세로 4인 직각삼각형을 표시했다.",
+    "solutionImageCaption": "점 A에서 점 B까지 가로로 6, 세로로 4만큼 가므로 직선 AB의 기울기는 6분의 4, 즉 3분의 2이다. 수직인 직선의 기울기는 −2분의 3이다. 보기 중 3x+2y−1=0은 y=(−2분의 3)x+2분의 1로 기울기가 −2분의 3이다. 정답은 3x+2y−1=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -625,9 +629,9 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "3x-2y-4=0에서 거리가 √13인 평행한 두 직선 (k=-18, k=34)",
-    "solutionImageCaption": "3x-2y-4=0에서 거리가 √13인 평행한 두 직선 (k=-18, k=34)",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 3x−2y−4=0(파랑)과 이에 평행한 직선 −6x+4y+k=0 두 개(주황, 초록)를 그렸다. 파란 직선 위의 점 P에서 수직으로 양쪽 직선 위의 점 Q, R까지의 거리가 각각 √13이다.",
+    "solutionImageCaption": "둘째 직선을 −2로 나누면 3x−2y−2분의 k=0이므로 두 직선은 평행하다. 평행한 두 직선 사이의 거리는 |4−2분의 k|÷√13이고 이 값이 √13이므로 |4−2분의 k|=13이다. 그래서 주황 직선은 k=−18, 초록 직선은 k=34이다. 정답은 16이다.",
     "solutionImageSize": "full"
   },
   {
@@ -672,9 +676,9 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "각 AOB의 이등분선이 선분 AB와 만나는 점 P이다.",
-    "solutionImageCaption": "각 AOB의 이등분선이 선분 AB와 만나는 점 P이다.",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점 O와 두 점 A(3, 4), B(5, −12)를 꼭짓점으로 하는 삼각형을 그렸다. OA는 5, OB는 13이고, 각 AOB의 이등분선(점선)이 선분 AB와 만나는 점 P가 있다. 이등분선으로 나뉜 두 각은 같은 크기 α로 표시했고 선분 AP는 파랑, PB는 주황이다.",
+    "solutionImageCaption": "OA=5, OB=13이다. 각의 이등분선 정리에 의해 AP:PB=OA:OB=5:13이므로 P는 선분 AB를 5:13으로 내분하는 점이다. 내분점 공식으로 P의 좌표를 구한다. 정답은 (9분의 32, −9분의 4)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -760,9 +764,9 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "두 직선과 그 각을 이등분하는 두 직선 (모두 교점 P를 지난다)",
-    "solutionImageCaption": "두 직선과 그 각을 이등분하는 두 직선 (모두 교점 P를 지난다)",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 3x−y−7=0(파랑)과 x−3y+3=0(초록)이 점 P(3, 2)에서 만나고, 두 직선이 이루는 각을 이등분하는 두 직선 m(주황), n(보라)도 모두 P를 지난다.",
+    "solutionImageCaption": "각의 이등분선 위의 점은 두 직선까지의 거리가 같다. 두 직선의 x, y 계수로 만든 √(3²+1²)과 √(1²+3²)이 모두 √10으로 같으므로 3x−y−7=±(x−3y+3)에서 이등분선을 구한다. +일 때는 x+y−5=0으로 직선 m이고, −일 때는 x−y−1=0으로 직선 n이다. 정답은 x+y−5=0과 x−y−1=0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -871,9 +875,9 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "두 직선과 x축이 만드는 삼각형에서 꼭짓점 C와 밑변 AB의 중점 M을 잇는 넓이 이등분선",
-    "solutionImageCaption": "A=(-6,0), B=(2,0), C=(-6/13,48/13), M=(-2,0) · 중선 CM이 넓이를 이등분",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 2x−3y+12=0, 3x+2y−6=0과 x축이 이루는 삼각형 ABC이다. A(−6, 0), B(2, 0)이고 두 직선은 C에서 직각으로 만난다. 변 AB의 중점 M(−2, 0)과 C를 잇는 점선이 삼각형을 같은 넓이의 두 삼각형으로 나눈다.",
+    "solutionImageCaption": "두 직선이 수직이므로 a=3이고 m은 3x+2y−6=0이다. 교점은 C(−13분의 6, 13분의 48), x축과의 교점은 A(−6, 0), B(2, 0)이다. 꼭짓점 C를 지나 넓이를 이등분하는 직선은 AB의 중점 M(−2, 0)을 지난다. 정답은 12x−5y+24=0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -915,9 +919,9 @@ window.questionBank = [
     "originalCategory": "좌표평면과 직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "외분점 D,E와 수직이등분선, 점 A의 위치 조건을 나타낸 해설 도형",
-    "solutionImageCaption": "D=(2,4), E=(6,0), 수직이등분선 y=x-2 · A=(10,8)",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 D(2, 4), E(6, 0)을 잇는 선분(파랑)과 그 중점 H, H를 지나 DE에 수직인 직선 y=x−2(주황), H를 중심으로 하는 원, 그리고 원과 직선이 제1사분면에서 만나는 점 A를 나타낸 그림이다. 축의 눈금은 D, E, H의 좌표를 읽을 수 있게 표시했다.",
+    "solutionImageCaption": "D가 AB를, E가 AC를 3:2로 외분하므로 B와 C를 A로 나타낼 수 있다. AB=AC이므로 A는 DE의 수직이등분선 y=x−2 위에 있다. 무게중심의 성질로 H(4, 2)에서 A까지의 거리가 6√2임을 구하면 A는 중심 H, 반지름 6√2인 원 위에 있다. 제1사분면에서 직선과 원의 교점을 찾으면 정답은 (10, 8)이다.",
     "solutionImageSize": "full"
   }
 ];
