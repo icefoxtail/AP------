@@ -274,7 +274,10 @@ window.questionBank = [
       "sourcePage": 1
     },
     "metaEvidenceDebt": [],
-    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q4-solution.svg"
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 이차함수의 그래프. 꼭짓점 (−1, 2)는 왼쪽 파란 부분에 있고, 주황색으로 표시한 구간 0≤x≤1의 양 끝점 (0, 3)과 (1, 6)이 점으로 찍혀 있다. 꼭짓점과 오른쪽 끝점에서 x축까지 점선이 내려와 있다.",
+    "solutionImageCaption": "y=(x+1)²+2이므로 꼭짓점은 x=−1이고 그래프는 아래로 볼록하다. 구간 0≤x≤1은 꼭짓점보다 오른쪽(그림의 주황색 부분)에 있어 x가 커질수록 y도 커진다. 그래서 왼쪽 끝 x=0에서 최솟값 3, 오른쪽 끝 x=1에서 최댓값 6을 얻는다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -802,9 +805,9 @@ window.questionBank = [
       "sourcePage": 2
     },
     "metaEvidenceDebt": [],
-    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "a=4, b=6일 때 포물선과 직선은 x좌표가 -3, 1인 두 점에서 만난다.",
-    "solutionImageCaption": "a=4, b=6일 때 포물선과 직선은 x좌표가 -3, 1인 두 점에서 만난다.",
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²+ax+3과 주황 직선 y=2x+b가 두 점 (−3, 0), (1, 8)에서 만나는 그림. 두 교점의 좌표가 점 옆에 적혀 있다. a와 b의 값은 그림에 쓰여 있지 않다.",
+    "solutionImageCaption": "두 식의 y값이 같은 곳이 교점이므로 x²+ax+3=2x+b, 즉 x²+(a−2)x+(3−b)=0의 두 근이 −3, 1이다. 근의 합 −2=−(a−2)에서 a=4, 근의 곱 −3=3−b에서 b=6이다. 따라서 a+b=10이다. 정답은 10이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1223,7 +1226,11 @@ window.questionBank = [
           }
         ]
       }
-    ]
+    ],
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심이 O이고 반지름이 b인 원과, 원 밖의 점 A에서 그은 직선이 있다. 직선은 원과 점 B, C에서 만나며 A, B, D, C 순서로 놓여 있다. 점 D에서 중심 O로 올린 선분은 직선과 수직이고 길이는 a이다. 선분 OC와 점선 OB의 길이는 b이고, 선분 BD와 DC의 길이는 각각 d이다. 그림 아래에는 A, B, D를 따로 펴서 그린 선분이 있고, 선분 AB의 길이는 2b−d, 선분 AD의 길이는 2b로 표시되어 있다.",
+    "solutionImageCaption": "OD⊥BC이고 OB=OC=b이므로 직각삼각형 ODB, ODC가 합동이어서 DB=DC이다. DC=d라 하면 d²=b²−a²이고, AD=2b이므로 AB=2b−d, AC=2b+d이다. 합 AB+AC=4b, 곱 AB·AC=4b²−d²=a²+3b²이므로 근이 AB, AC인 이차방정식은 x²−4bx+a²+3b²=0이다. 정답은 x²−4bx+a²+3b²=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1366,7 +1373,10 @@ window.questionBank = [
       "sourcePage": 3
     },
     "metaEvidenceDebt": [],
-    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q18-solution.svg"
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 변의 길이를 a, b, c로 나타낸 삼각형이다. 왼쪽 변이 a, 오른쪽 변이 b, 아래쪽 변이 c이다. 변의 이름을 정하기 위한 일반적인 삼각형이며 실제 모양을 나타내는 그림이 아니다.",
+    "solutionImageCaption": "그림은 변의 길이를 a, b, c로 이름 붙이기 위한 일반적인 삼각형이다(실제 모양은 아래 계산으로 정해진다). x²+4xy+3y²=(x+y)(x+3y)이므로 두 일차식을 (x+y+u)(x+3y+v)로 놓고 계수를 비교하면 u=0, v=−2b이다. 상수항이 uv=0이어야 하므로 b²−a²−c²=0, 즉 b²=a²+c²이다. 양수 a, b, c에서 b가 가장 긴 변이고 그 제곱이 나머지 두 변의 제곱의 합이므로 변 b가 빗변인 직각삼각형이다. 정답은 빗변의 길이가 b인 직각삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1392,7 +1402,7 @@ window.questionBank = [
     "image": "assets/images/22_강남여고_1학기_중간_고1_기출/q19.png",
     "answer": "③",
     "solution": "[키포인트]\n포물선이 지면과 만나는 두 지점의 높이를 0으로 두어 이차함수를 세우고, 꼭짓점에서의 높이를 구한다.\n\n풀이 과정\n수평거리 $x$를 $A$에서부터 잰 거리(m), 지면으로부터의 높이를 $y$라 두면 공의 궤적은 $A$, $B$에서 지면과 만나므로 $x=0$, $x=6$에서 $y=0$이다. 따라서 $y=kx(6-x)$로 놓을 수 있다.\n$C$는 $A$에서 $4.5$m 떨어져 있고 기둥 높이는 $3$m이며, $P$는 기둥 꼭대기보다 다시 $3$m 위이므로 $P=(4.5,6)$이다. 이를 대입하면\n$6=k\\cdot4.5\\cdot(6-4.5)=k\\cdot4.5\\cdot1.5$이므로 $k=\\dfrac89$이다.\n두 근 $0$, $6$의 중점에서 대칭축이 지나므로 꼭짓점의 수평좌표는 $x=3$이다. 이때 높이는 $y=\\dfrac89\\cdot3\\cdot3=8$이다.\n\n결론\n따라서 공이 가장 높이 올라갔을 때의 높이는 8m이고 정답은 ③이다.",
-    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q19-solution-v2.svg",
     "category": "이차함수의 최댓값과 최솟값",
     "originalCategory": "이차함수의 최댓값과 최솟값",
     "standardCourse": "수학(상)",
@@ -1439,7 +1449,10 @@ window.questionBank = [
       "sourcePdfSha256": "753c0f9ec97f960c34b0a6ab13704a7119e665373d2f2de4b935bee287ed0ceb",
       "sourcePage": 3
     },
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImageAlt": "해설 그림: 왼쪽 점 A에서 오른쪽 점 B까지 위로 볼록한 포물선 궤적이 그려져 있다. A에서 4.5m 떨어진 C에 주황색 기둥(높이 3)이 서 있고, 기둥 꼭대기에서 점선으로 3만큼 위인 점 (2분의 9, 6)을 포물선이 지난다. 포물선의 꼭대기 V에서 x축까지 점선이 내려와 x=3을 가리킨다.",
+    "solutionImageCaption": "A를 원점, A에서 잰 수평거리를 x로 두면 포물선은 x=0, x=6에서 높이 0이므로 y=kx(6−x)로 놓는다. 기둥 꼭대기 위 3m 지점은 A에서 4.5m, 높이 6m이므로 6=k·4.5·1.5에서 k=9분의 8이다. 꼭짓점은 두 근의 중점 x=3이므로 이때의 높이는 9분의 8·3·3=8이다. 정답은 8m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1465,7 +1478,7 @@ window.questionBank = [
     "image": "assets/images/22_강남여고_1학기_중간_고1_기출/q20.png",
     "answer": "⑤",
     "solution": "[키포인트]\n직사각형의 높이를 변수로 두면 두 직선의 교점 조건으로 가로 길이를 나타낼 수 있고, 넓이는 이차함수가 된다.\n\n풀이 과정\n직사각형의 높이를 $t$라 두면 $x$축과 두 직선으로 둘러싸인 영역에서 $0\\le t\\le3$이다.\n$l_1$은 $y=2x+1$이므로 왼쪽 위 꼭짓점의 $x$좌표는 $\\frac{t-1}{2}$이다. $l_2$는 $y=4-x$이므로 오른쪽 위 꼭짓점의 $x$좌표는 $4-t$이다. 따라서 가로 길이는\n$(4-t)-\\frac{t-1}{2}=\\frac{9-3t}{2}$이다.\n넓이는 $S(t)=t(9-3t)/2$이고, 완전제곱식으로 고치면\n$S(t)=-\\dfrac32(t-\\dfrac32)^2+\\dfrac{27}{8}$이다. 꼭짓점의 높이 좌표 $t=\\dfrac32$는 $0\\le t\\le3$에 포함되므로 넓이의 최댓값은 $\\dfrac{27}{8}$이다.\n\n결론\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q20-solution-v2.svg",
     "category": "이차함수의 최댓값과 최솟값",
     "originalCategory": "이차함수의 최댓값과 최솟값",
     "standardCourse": "수학(상)",
@@ -1514,7 +1527,10 @@ window.questionBank = [
       "sourcePdfSha256": "753c0f9ec97f960c34b0a6ab13704a7119e665373d2f2de4b935bee287ed0ceb",
       "sourcePage": 4
     },
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImageAlt": "해설 그림: 직선 y=2x+1(파랑)과 직선 y=−x+4(주황)와 x축으로 둘러싸인 삼각형이다. 꼭짓점 (1, 3)과 x축 위의 두 점 (−2분의 1, 0), (4, 0)이 표시되어 있다. 그 안에 초록색 직사각형이 한 변을 x축 위에 두고, 위쪽 꼭짓점 P는 파란 직선 위에, Q는 주황 직선 위에 놓여 있다. 직사각형의 오른쪽 세로 변(높이)의 길이를 t로 표시했고, 그림은 t=2인 예이다.",
+    "solutionImageCaption": "그림은 t=2인 예이다. 직사각형의 높이(초록 세로 변)를 t라 하면 파란 직선 y=2x+1 위의 점 P의 x좌표는 2분의 (t−1), 주황 직선 y=−x+4 위의 점 Q의 x좌표는 4−t이므로 가로 길이는 2분의 (9−3t)이다. 넓이는 S(t)=2분의 t(9−3t)이고 0≤t≤3이다. 완전제곱식으로 고치면 S(t)=−2분의 3·(t−2분의 3)²+8분의 27이고 t=2분의 3이 구간 안에 있다. 정답은 8분의 27이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1720,7 +1736,7 @@ window.questionBank = [
     "choices": [],
     "answer": "15",
     "solution": "[키포인트]\n꼭짓점을 구간 안에 놓아 최솟값을 정하고, 끝점 값과 최댓값 조건으로 구간의 다른 끝을 찾는다.\n\n풀이 과정\n$y=x^2+6x+m=(x+3)^2+m-9$이므로 꼭짓점은 $x=-3$이다. $a<-3$이고 오른쪽 끝이 $-1$이므로 $-3$은 구간 $[a,-1]$ 안에 있다. 최솟값은 꼭짓점에서 $m-9$이므로\n$m-9=-1$, $m=8$이다.\n위로 열린 포물선의 구간 최댓값은 두 끝점 중 하나에서 얻는다. 오른쪽 끝에서 $y(-1)=1-6+8=3$이므로 최댓값 15는 왼쪽 끝 $x=a$에서 나온다.\n$a^2+6a+8=15$에서 $a^2+6a-7=0$, 즉 $(a+7)(a-1)=0$이다. 조건 $a<-3$을 적용하면 $a=-7$이다. 따라서 $m-a=8-(-7)=15$이다.\n\n결론\n따라서 구하는 값은 15이다.",
-    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q24-solution.svg",
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q24-solution-v2.svg",
     "category": "이차함수의 최댓값과 최솟값",
     "originalCategory": "이차함수의 최댓값과 최솟값",
     "standardCourse": "수학(상)",
@@ -1767,6 +1783,9 @@ window.questionBank = [
       "sourcePdfSha256": "753c0f9ec97f960c34b0a6ab13704a7119e665373d2f2de4b935bee287ed0ceb",
       "sourcePage": 4
     },
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 이차함수의 그래프가 구간의 왼쪽 끝점 (−7, 15)에서 시작해 꼭짓점 (−3, −1)을 지나 오른쪽 끝점 (−1, 3)에서 끝난다. 양 끝점에서 x축까지 점선이 내려와 있다.",
+    "solutionImageCaption": "y=(x+3)²+m−9이므로 꼭짓점은 x=−3이고 a<−3이라 구간 a≤x≤−1 안에 있다. 최솟값은 꼭짓점에서 m−9=−1이므로 m=8이다. 오른쪽 끝의 값은 3이므로 최댓값 15는 왼쪽 끝에서 나오고, a²+6a+8=15에서 a=−7이다. 따라서 m−a=8−(−7)=15이다. 정답은 15이다.",
+    "solutionImageSize": "full"
   }
 ];

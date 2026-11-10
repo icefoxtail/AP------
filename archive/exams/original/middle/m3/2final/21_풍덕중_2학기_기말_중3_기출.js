@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A, B, P가 있고, 호 AB는 초록색, 이 호를 보는 중심각 ∠AOB=60°는 파란색, 원주각 ∠APB=x는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "호 AB를 보는 중심각 ∠AOB는 60°이다. 같은 호를 보는 원주각은 중심각 크기의 절반이므로 x=60°÷2이다. 정답은 30°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -84,7 +88,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_REUSED",
-    "decisiveStep": "두 24° 원주각이 같은 크기의 두 아래쪽 호를 보이고, 4 cm 표시가 한쪽 작은 호이며 x 화살표는 두 작은 호 전체를 가리킨다."
+    "decisiveStep": "두 24° 원주각이 같은 크기의 두 아래쪽 호를 보이고, 4 cm 표시가 한쪽 작은 호이며 x 화살표는 두 작은 호 전체를 가리킨다.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 한 점에서 세 점 A, B, C로 선분이 그어져 있다. 크기가 같은 두 원주각 24°와 그 호 AB, 호 BC는 파란색이고, 호 AB의 길이는 4cm, 두 호를 합친 호 AC의 길이는 x cm로 표시되어 있다.",
+    "solutionImageCaption": "크기가 같은 두 원주각 24°가 보는 호 AB와 호 BC의 길이는 같으므로 각각 4cm이다. x는 두 호를 합친 호 AC의 길이이므로 x=4+4이다. 정답은 8cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -167,7 +175,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 꼭짓점이 A, B, C, D인 사각형과 대각선 BD가 있다. 삼각형 BCD의 ∠CBD=30°는 파란색, ∠BDC=70°는 주황색, ∠BCD=x는 초록색, 마주 보는 ∠BAD=y는 분홍색으로 표시되어 있다.",
+    "solutionImageCaption": "삼각형 BCD에서 x=180°−30°−70°이다. 원에 내접한 사각형에서 마주 보는 두 각의 합은 180°이므로 y=180°−x이다. 정답은 x=80°, y=100°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -210,7 +222,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 점 P에서 그은 두 접선 PA, PB와 원 위의 점 C가 있다. 원주각 ∠ACB=70°는 파란색, 중심각 ∠AOB는 주황색, 접점에서 반지름과 접선이 이루는 두 직각은 초록색, ∠APB=x는 분홍색으로 표시되어 있다.",
+    "solutionImageCaption": "호 AB를 보는 원주각이 70°이므로 중심각 ∠AOB=140°이다. 반지름은 접선에 수직이므로 꼭짓점이 A, O, B, P인 사각형에서 x=360°−90°−90°−140°이다. 정답은 40°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -252,7 +268,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심각 ∠AOB=60°가 보는 호 AB(길이 6cm)는 파란색, 호 CD(길이 9cm)와 그 호를 보는 원주각 ∠CPD=x는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "중심각 60°에 대한 호가 6cm이므로 원 둘레는 36cm이다. 호 CD는 9cm이므로 중심각이 360°×(9÷36)=90°이고, 원주각 x는 그 절반이다. 정답은 45°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -295,7 +315,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 꼭짓점이 A, B, C, D인 사각형과 대각선 BD, 점 C에서의 접선 CP가 있다. ∠BAD=75°는 파란색, ∠BDC=25°는 초록색, ∠BCD는 분홍색, 크기가 같은 ∠CBD(라벨 없음)와 접선과 현이 이루는 ∠DCP=x는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "원에 내접한 사각형이므로 ∠BCD=180°−75°=105°이고, 삼각형 BCD에서 ∠CBD=180°−105°−25°이다. 접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=∠CBD이다. 정답은 50°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -337,7 +361,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원 O의 지름 AB와 반지름 OC, OD가 있고, 두 할선 AD와 BC의 연장선이 점 E에서 만난다. 반원의 호 AB는 주황색, 중심각 ∠DOC=48°와 호 DC는 파란색, ∠DEC=x는 초록색으로 표시되어 있다.",
+    "solutionImageCaption": "AB가 지름이므로 호 AB는 180°이고, 호 DC는 중심각과 같은 48°이다. 두 할선이 원 밖의 점에서 이루는 각은 두 호의 크기의 차의 절반이므로 x=(180°−48°)÷2이다. 정답은 66°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -379,7 +407,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 원이 점 P, Q에서 만나고, 점 A, P, B와 점 D, Q, C가 각각 한 직선 위에 있다. ∠BPQ=52°는 파란색, ∠APQ는 주황색, ∠ADQ=x는 초록색으로 표시되어 있다.",
+    "solutionImageCaption": "A, P, B가 한 직선이므로 ∠APQ=180°−52°=128°이다. A, P, Q, D가 한 원 위에 있으므로 마주 보는 ∠APQ와 ∠ADQ의 합이 180°이고 x=180°−128°이다. 정답은 52°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -421,7 +453,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 P에서 두 할선 PD, PC가 있고, 두 현 AC와 BD가 점 E에서 만난다. ∠APB=30°는 파란색, ∠ADB=15°와 그 호 AB는 주황색, 호 DC는 초록색, ∠DEC=x는 분홍색으로 표시되어 있다.",
+    "solutionImageCaption": "∠ADB=15°가 호 AB를 보므로 호 AB=30°이다. 두 할선이 원 밖에서 이루는 각 30°는 호 DC와 호 AB의 차의 절반이므로 호 DC=90°이다. 두 현이 원 안에서 만날 때 x는 마주 보는 호 AB와 DC의 합의 절반이다. 정답은 60°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -463,7 +499,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 원주각 ∠BED=60°는 파란색, 중심각 ∠COD=76°와 호 CD는 주황색, 호 BC와 이 호를 보는 원주각 ∠BAC=x는 초록색으로 표시되어 있다.",
+    "solutionImageCaption": "∠BED=60°가 호 BCD를 보므로 호 BCD=120°이다. 중심각 ∠COD=76°이므로 호 CD=76°이고 호 BC=120°−76°=44°이다. x는 호 BC를 보는 원주각이므로 호의 절반이다. 정답은 22°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -505,7 +545,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC, ABD에서 AB=AC=5cm는 파란색, 점 E에서 AE=3cm는 주황색, BE=EC=4cm는 초록색, 구하는 DE는 분홍색 선분이다. AE와 BC는 직각으로 만난다.",
+    "solutionImageCaption": "AB=AC=5cm인 이등변삼각형에서 AE는 BC에 수직이므로 BE=EC이고 BE=√(5²−3²)=4cm이다. 두 현 AD, BC가 E에서 만나므로 AE×DE=BE×EC, 즉 3×DE=4×4이다. 정답은 3분의 16cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -856,7 +900,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 개의 도형이 두 줄로 놓여 있다. 왼쪽 위는 원 위에서 두 현 AC(파란색)와 BD(주황색)가 점 E에서 만나는 그림이고, 오른쪽 위는 점 P에서 시작하는 두 선분 위에 점 D, A와 점 C, B가 있는 그림이다. 아래 두 그림은 같은 방향으로 따로 그린 삼각형 PDC와 삼각형 PBA이며, 대응하는 변 PD와 PB는 파란색, PC와 PA는 주황색, DC와 BA는 초록색, 공통인 각 P는 보라색이다.",
+    "solutionImageCaption": "두 현이 만나는 경우는 AE×EC=2×6=12이고 BE×ED=4×3=12로 같으므로 한 원 위에 있다. 두 할선이 만나는 경우 한 원 위에 있다면 삼각형 PDC와 PBA가 닮아 PD×PA=PC×PB이어야 한다. 그런데 PD×PA=3×7=21, PC×PB=2×8=16으로 달라 한 원 위에 있지 않다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -898,7 +946,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 꼭짓점이 A, B, C, D인 사각형의 두 대각선 AC, BD가 점 E에서 만난다. 변 BC는 반지름 OB, OC와 길이가 같아 초록색 눈금으로 표시되고, 중심각 ∠BOC와 호 BC는 주황색, ∠ACD=64°와 그 호 AD는 파란색, ∠AED=x는 분홍색으로 표시되어 있다.",
+    "solutionImageCaption": "BC가 반지름과 같으므로 삼각형 OBC는 정삼각형이고 호 BC=60°이다. 원주각 ∠ACD=64°가 보는 호 AD는 128°이다. 두 현이 원 안에서 만나므로 x는 호 AD와 호 BC의 합의 절반이다. 정답은 94°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -934,7 +986,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 꼭짓점이 A, B, C, D인 사각형에서 마주 보는 두 각 ∠B=x는 파란색, ∠ADC=(3x−20)°는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "원에 내접한 사각형에서 마주 보는 두 각의 합은 180°이므로 (3x−20)+x=180이다. 4x=200이다. 정답은 x=50이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1051,6 +1107,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "visualDisposition": "SOURCE_IMAGE_REUSED"
+    "visualDisposition": "SOURCE_IMAGE_REUSED",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 점 C에서의 접선 위에 점 T, H가 있고, AH는 접선에 수직이다. 점 O에서 AH에 내린 수선인 점선 보조선과 직각 표시(주황색)가 있고, 길이가 같은 OA, OC, 점선 보조선 끝에서 H까지의 선분은 파란색 눈금으로 표시되어 있다. 접선과의 두 직각 표시는 초록색이며 AH=6cm, 반지름 4.5cm가 표시되어 있다.",
+    "solutionImageCaption": "AB=9이므로 반지름은 4.5cm이다. OC와 AH는 모두 접선에 수직이라 평행하므로, 점 O에서 AH에 내린 수선(점선)의 발에서 H까지의 길이도 4.5cm이고 그 발에서 A까지는 6−4.5=1.5cm이다. 점선의 길이가 CH이므로 직각삼각형에서 CH²+1.5²=4.5²이다. 정답은 3√2cm이다.",
+    "solutionImageSize": "full"
   }
 ];

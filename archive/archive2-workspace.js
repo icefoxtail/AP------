@@ -7,6 +7,8 @@
   const O = window.Archive2Output;
   const Parts = window.Archive2Papers;
   const History = window.Archive2History;
+  // Similar-problem sets paired with their original exams (computed once per catalog load).
+  const Similar = window.Archive2Similar;
   // Unified 2022-based unit layer (user decision 2026-10-29). When the shared module is not
   // loaded the compose screen falls back to the canonical-parent scope list.
   const Unified = window.Archive2UnifiedUnits;
@@ -527,8 +529,14 @@
   const quickPreset = () => quickState.presets[state.view] || "standard";
   const isQuickAssessmentView = () => Boolean(Quick?.isQuickView(state.view));
   // One navigation tab ("빠른 평가") stays active on all four products.
-  const navViewActive = (el) => el.dataset.navKey === "quick"
-    ? isQuickAssessmentView() : el.dataset.view === state.view;
+  // Menu entries carry data-nav-key; 빠른 평가 covers the four quick products and 보관함 covers
+  // 저장한 시험지 + 출제 내역. Other [data-view] buttons (view switch, quick tabs) match their own view.
+  const navViewActive = (el) => {
+    const key = el.dataset.navKey;
+    if (key === "quick") return isQuickAssessmentView();
+    if (key && window.Archive2Navigation?.matches) return window.Archive2Navigation.matches(key, state.view);
+    return el.dataset.view === state.view;
+  };
 
   function scheduleFinderFilterRender() {
     clearTimeout(finderFilterRenderTimer);
@@ -1809,6 +1817,24 @@
       filters.school = "";
     return filters;
   }
+  // What changing one finder filter (a select, the grade buttons) does besides storing the value.
+  function applyFinderFilterChange(key) {
+    if (key === "grade") {
+      state.sources = [];
+      state.find.semanticSubject = "";
+      state.find.family = "";
+    }
+    if (key === "semanticSubject") {
+      state.find.courseKey = "";
+      state.find.family = "";
+    }
+    if (["grade", "curriculumKey", "courseKey", "semanticSubject"].includes(key))
+      Object.assign(state.find, reconcileFinderFilters(state.find));
+    if (["material", "grade", "curriculumKey", "courseKey", "semanticSubject"].includes(key))
+      reconcileFinderSchool(state.find);
+    state.page = 0;
+    urlState();
+  }
   function finderFamilyLabel(value) {
     return (
       {
@@ -1843,17 +1869,35 @@
         filters.yearTo ||
         filters.family ||
         filters.file ||
-        filters.query,
+        filters.query ||
+        filters.grade ||
+        filters.similarOnly,
     );
   }
+  // Same look as the home search: a large pill box and 찾기. Words are matched together (AND).
   function finderSearchMarkup(filters) {
-    return `<div class="finder-search-zone"><div class="finder-search-row"><label class="finder-search-box" aria-label="학교·단원·과목 검색"><span aria-hidden="true">⌕</span><input id="finder-query" value="${esc(filters.query || "")}" placeholder="학교명, 과목, 단원으로 검색"></label>${button("finder-search", "검색", 'class="primary finder-search-submit"')}</div></div>`;
+    return `<div class="find-search-row"><label class="visually-hidden" for="finder-query">학교, 학년, 시험으로 검색</label><input id="finder-query" type="search" value="${esc(filters.query || "")}" placeholder="순천고 고1 1학기 중간" autocomplete="off" enterkeyhint="search">${button("finder-search", "찾기", 'type="button" class="primary find-search-submit"')}</div>`;
+  }
+  const FINDER_TERMS = Object.freeze([
+    ["1-mid", "1학기 중간"], ["1-final", "1학기 기말"], ["2-mid", "2학기 중간"], ["2-final", "2학기 기말"],
+  ]);
+  // Grade buttons (grade colors, press again to clear) and the four exam terms.
+  function finderQuickMarkup(filters) {
+    const grades = HOME_GRADES.map(([label, id]) =>
+      button("finder-grade", esc(label), `type="button" class="find-grade grade-${id}" data-grade="${label}" aria-pressed="${filters.grade === label}"`)).join("");
+    const terms = FINDER_TERMS.map(([value, label]) =>
+      button("finder-axis-quick", esc(label), `type="button" class="find-term" data-axis="${value}" aria-pressed="${filters.axis === value}"`)).join("");
+    return `<div class="find-quick"><div class="find-grades" role="group" aria-label="학년">${grades}</div><span class="find-divider" aria-hidden="true"></span><div class="find-terms" role="group" aria-label="시험 시기">${terms}</div></div>`;
+  }
+  // The one-exam filter (a link to a file) is shown by the exam's title, never by its file name.
+  function finderFileLabel(file) {
+    const exam = (state.catalog?.exams || []).find((item) => C.normalizeFile(item.file) === C.normalizeFile(file));
+    return exam ? O.displayTitle(exam) : "선택한 시험지";
   }
   function finderActiveMarkup(filters) {
     const active = [
       ["학교", filters.school],
-      ["시험지", filters.file ? String(filters.file).split("/").pop() : ""],
-      ["시험", filters.axis ? finderAxisLabel(filters.axis) : ""],
+      ["시험지", filters.file ? finderFileLabel(filters.file) : ""],
       [
         "연도",
         filters.yearFrom || filters.yearTo
@@ -1879,51 +1923,42 @@
         : ""
     }</div>`;
   }
-  function finderPrimaryFilterMarkup(filters) {
+  // The filters that stay out of the way: 교육과정, 과목, 학교, 연도 (and the old 과목 계열 while no unified list exists).
+  // Grade and term are the buttons above; nothing was dropped, only moved.
+  function finderMoreFiltersMarkup(filters) {
+    const schools = finderSchoolValues(filters);
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
       projected = C.hasSubjectProjection?.(filters.grade) === true;
+    let subjectField = "";
     if (unifiedIndex()) {
       const subjects = Unified.subjectChoices(filters.grade || "");
-      const subjectField = subjects.length
-        ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(subjects, filters.semanticSubject || Unified.subjectForFamily(filters.family), "전체 과목")}</select></label>`
-        : "";
-      return `<div class="finder-filter-core"><label class="finder-field"><span>학년</span><select data-filter="grade" data-group="find">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, "전체 학년")}</select></label><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${subjectField}</div>`;
+      if (subjects.length)
+        subjectField = `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(subjects, filters.semanticSubject || Unified.subjectForFamily(filters.family), "전체 과목")}</select></label>`;
+    } else {
+      const courses = finderCourseOptions(filters);
+      subjectField = projected
+        ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(courses, filters.semanticSubject, highSemantic ? "과목 선택" : "전체 과목")}</select></label>`
+        : `<label class="finder-field finder-course"><span>과목</span><select data-filter="courseKey" data-group="find">${options(courses, filters.courseKey, "전체 과목")}</select></label>`;
     }
-    const courses = finderCourseOptions(filters);
-    const courseField = projected
-      ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(courses, filters.semanticSubject, highSemantic ? "과목 선택" : "전체 과목")}</select></label>`
-      : `<label class="finder-field finder-course"><span>과목</span><select data-filter="courseKey" data-group="find">${options(courses, filters.courseKey, "전체 과목")}</select></label>`;
-    return `<div class="finder-filter-core"><label class="finder-field"><span>학년</span><select data-filter="grade" data-group="find">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, "전체 학년")}</select></label><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${courseField}</div>`;
+    const familyField = filters.grade || unifiedIndex()
+      ? ""
+      : `<label class="finder-field finder-family"><span>과목 계열</span><select data-filter="family" data-group="find">${options(
+          [
+            { value: "COMMON_1", label: "공통수학1 계열" },
+            { value: "COMMON_2", label: "공통수학2 계열" },
+            { value: "ALGEBRA", label: "대수 계열" },
+            { value: "CALCULUS", label: "미적분 기초 계열" },
+            { value: "CALCULUS_ADVANCED", label: "미적분 심화 계열" },
+            { value: "PROB_STATS", label: "확률과통계" },
+            { value: "GEOMETRY", label: "기하" },
+          ],
+          filters.family,
+          "전체 계열",
+        )}</select></label>`;
+    const open = state.findMoreOpen || filters.curriculumKey || filters.courseKey || filters.semanticSubject || filters.school || filters.yearFrom || filters.yearTo || filters.family;
+    return `<details class="find-more"${open ? " open" : ""}><summary>과목 · 학교 · 연도</summary><div class="find-more-fields"><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${subjectField}<label class="finder-field finder-school"><span>학교</span><select data-filter="school" data-group="find">${options(schools, filters.school, "전체 학교")}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label>${familyField}</div></details>`;
   }
-  function finderDetailFilterMarkup(filters) {
-    const schools = finderSchoolValues(filters);
-    return `<div class="finder-filter-detail"><label class="finder-field finder-school"><span>학교</span><select data-filter="school" data-group="find">${options(schools, filters.school, "전체 학교")}</select></label><label class="finder-field finder-term"><span>시험 시기</span><select data-filter="axis" data-group="find">${options(
-      [
-        { value: "1-mid", label: "1학기 중간" },
-        { value: "1-final", label: "1학기 기말" },
-        { value: "2-mid", label: "2학기 중간" },
-        { value: "2-final", label: "2학기 기말" },
-      ],
-      filters.axis,
-      "전체 시험",
-    )}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label><div class="finder-axis-quick" role="group" aria-label="시험 시기 빠른 선택">${[["1-mid","1학기 중간"],["1-final","1학기 기말"],["2-mid","2학기 중간"],["2-final","2학기 기말"]].map(([value,label])=>button("finder-axis-quick",label,`type="button" data-axis="${value}" aria-pressed="${filters.axis===value}"`)).join("")}</div>${
-      filters.grade || unifiedIndex()
-        ? ""
-        : `<label class="finder-field finder-family"><span>과목 계열</span><select data-filter="family" data-group="find">${options(
-            [
-              { value: "COMMON_1", label: "공통수학1 계열" },
-              { value: "COMMON_2", label: "공통수학2 계열" },
-              { value: "ALGEBRA", label: "대수 계열" },
-              { value: "CALCULUS", label: "미적분 기초 계열" },
-              { value: "CALCULUS_ADVANCED", label: "미적분 심화 계열" },
-              { value: "PROB_STATS", label: "확률과통계" },
-              { value: "GEOMETRY", label: "기하" },
-            ],
-            filters.family,
-            "전체 계열",
-          )}</select></label>`
-    }</div>`;
-  }
+
 
   // Search text per exam, built once per catalog: the exam's visible values (never JSON keys) plus
   // the uid and L1-L4 text of its questions. Every search term must occur somewhere in it.
@@ -1962,8 +1997,12 @@
     }
     return text;
   }
-  function findExams() {
-    const f = state.find;
+  // One rule for every way into the finder (menu, address, back button): without a material it lists
+  // 학교 기출; a link to one exam file keeps listing every kind so the file is found.
+  function applyDefaultFinderMaterial() {
+    if (state.find.material === undefined && !state.find.file) state.find.material = "exam";
+  }
+  function findExams(f = state.find) {
     // Words are separated by spaces and may come in any order; "1학기 기말" stays one word.
     const terms = String(f.query || "")
       .replace(/(\d)\s*학기\s*(기말|중간)/g, "$1학기$2")
@@ -1987,10 +2026,18 @@
       if (!unifiedIndex() && f.family && !f.grade && !exam.courseFamilies.includes(f.family))
         return false;
       if (!finderIdentityMatch(exam, f)) return false;
+      if (f.similarOnly && findSimilarFilterApplies(f) && !similarPairs().setsFor(exam.file).length) return false;
       if (!terms.length) return true;
       const text = findSearchText(exam);
       return terms.every((term) => text.includes(term));
-    }).sort(C.compareNewest);
+    }).sort(compareFindRows);
+  }
+  // Newest year first (the shared rule); inside one year the later term comes first (2학기 기말 → 1학기 중간).
+  function compareFindRows(a, b) {
+    const byYear = C.compareNewest(a, b);
+    if (byYear) return byYear;
+    const term = (exam) => (Number(exam.semester) || 0) * 2 + (exam.examType === "final" ? 1 : 0);
+    return term(b) - term(a);
   }
   function originalSettingsForExam(exam) {
     let storedQpp = 4;
@@ -2431,31 +2478,261 @@
       if (isQuickAssessmentView()) render();
     }
   }
+  // ---- Home ----------------------------------------------------------------------------------
+  // "Recently opened" is a light record kept only in this browser. Every read and write is
+  // guarded: a blocked or full storage must never stop an exam from opening (runtime contract).
+  const RECENT_EXAMS_KEY = "APMATH_ARCHIVE2_RECENT_EXAMS_v1";
+  const RECENT_EXAMS_MAX = 8;
+  function readRecentExams() {
+    try {
+      const rows = JSON.parse(localStorage.getItem(RECENT_EXAMS_KEY) || "[]");
+      return (Array.isArray(rows) ? rows : [])
+        .filter((row) => row && typeof row.file === "string" && row.file)
+        .slice(0, RECENT_EXAMS_MAX);
+    } catch {
+      return [];
+    }
+  }
+  function rememberRecentExam(exam, now = Date.now()) {
+    try {
+      const file = String(exam?.file || "");
+      if (!file) return;
+      const rows = readRecentExams().filter((row) => row.file !== file);
+      rows.unshift({ file, at: now });
+      localStorage.setItem(RECENT_EXAMS_KEY, JSON.stringify(rows.slice(0, RECENT_EXAMS_MAX)));
+    } catch {
+      /* a recent-open record is optional */
+    }
+  }
+  const HOME_GRADES = Object.freeze([
+    ["중1", "m1"], ["중2", "m2"], ["중3", "m3"], ["고1", "h1"], ["고2", "h2"], ["고3", "h3"],
+  ]);
+  const gradeClass = (grade) => {
+    const found = HOME_GRADES.find(([label]) => label === String(grade || "").slice(0, 2));
+    return found ? `grade-${found[1]}` : "grade-none";
+  };
+  // Schools with the most original exams, computed from the loaded catalog (never a fixed list).
+  function homeSchoolChips(limit = 8) {
+    const counts = new Map();
+    for (const exam of state.catalog?.exams || []) {
+      if (!exam.school || !O.matchesMaterial(exam, "exam")) continue;
+      counts.set(exam.school, (counts.get(exam.school) || 0) + 1);
+    }
+    return [...counts]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ko"))
+      .slice(0, limit)
+      .map(([school, count]) => ({ school, count }));
+  }
+  function relativeDayLabel(at, now = Date.now()) {
+    const days = Math.floor((startOfDay(now) - startOfDay(at)) / 86400000);
+    if (!Number.isFinite(days) || days < 0) return "";
+    if (days === 0) return "오늘";
+    if (days === 1) return "어제";
+    if (days < 7) return `${days}일 전`;
+    if (days < 14) return "지난주";
+    const date = new Date(at);
+    return `${date.getMonth() + 1}월 ${date.getDate()}일`;
+  }
+  function startOfDay(value) {
+    const date = new Date(value);
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+  }
+  // Recently opened exams that still exist in the catalog; with no record yet, the newest exams.
+  function homeExamList(limit = 5) {
+    const exams = state.catalog?.exams || [];
+    const indexByFile = new Map(exams.map((exam, index) => [exam.file, index]));
+    const opened = [];
+    for (const row of readRecentExams()) {
+      const index = indexByFile.get(row.file);
+      if (index !== undefined) opened.push({ index, exam: exams[index], at: row.at });
+      if (opened.length >= limit) break;
+    }
+    if (opened.length) return { kind: "opened", rows: opened };
+    const newest = exams
+      .map((exam, index) => ({ index, exam }))
+      .filter((row) => O.matchesMaterial(row.exam, "exam"))
+      .sort((a, b) => C.compareNewest(a.exam, b.exam))
+      .slice(0, Math.min(limit, 3));
+    return { kind: "newest", rows: newest };
+  }
+  // ---- One exam row (shared by 학교별 기출 and the home list) -------------------------------------
+  // Spine (year + grade), title, subject · count · range, the exam buttons and, on the right, the
+  // similar problems of this exam. Both screens draw rows with this one function so they never drift.
+  const NO_SIMILAR = Object.freeze({
+    setsFor: () => [], originalFileFor: () => null, unlinked: [],
+    stats: Object.freeze({ sets: 0, linked: 0, unlinked: 0, originalsWithSimilar: 0, byRule: {} }),
+  });
+  function similarPairs() {
+    return Similar?.pairsFor?.(state.catalog) || NO_SIMILAR;
+  }
+  // The "유사문제 있는 시험만" check only means something for original exams.
+  const findSimilarFilterApplies = (filters) => !filters.material || filters.material === "exam";
+  let examIndexCache = null;
+  function examIndexOf(exam) {
+    const exams = state.catalog?.exams || [];
+    if (!examIndexCache || examIndexCache.exams !== exams)
+      examIndexCache = { exams, byFile: new Map(exams.map((item, index) => [item.file, index])) };
+    return examIndexCache.byFile.get(exam?.file) ?? -1;
+  }
+  // Opening a similar set counts as opening its exam for the home "최근 연 기출" list.
+  function recentTarget(exam) {
+    const originalFile = similarPairs().originalFileFor(exam?.file);
+    const index = originalFile ? examIndexOf({ file: originalFile }) : -1;
+    return index >= 0 ? state.catalog.exams[index] : exam;
+  }
+  function examRowRangeText(exam) {
+    const units = (list) => unique(list.map((value) => String(value || "").trim())).join(" ~ ");
+    const ranges = (exam.courseRanges || [])
+      .map((range) => ({ course: range.standardCourse || "", text: units([range.rangeStartUnit, range.rangeEndUnit]) }))
+      .filter((range) => range.text);
+    if (!ranges.length) return units([exam.rangeStartUnit, exam.rangeEndUnit]);
+    return ranges.length === 1 ? ranges[0].text : ranges.map((range) => `${range.course} ${range.text}`.trim()).join(" · ");
+  }
+  function similarCellMarkup(exam, index, pairs) {
+    const sets = pairs.setsFor(exam.file);
+    if (!sets.length) return '<div class="exam-row-sim none">유사문제 없음</div>';
+    if (sets.length === 1) {
+      const set = sets[0];
+      const setIndex = examIndexOf(set);
+      const setTitle = O.displayTitle(set);
+      return `<div class="exam-row-sim has"><div class="exam-row-sim-head"><strong>유사문제</strong>${set.qCount ? ` <span>· ${esc(set.qCount)}문항</span>` : ""}</div><div class="exam-row-sim-actions" role="group" aria-label="${esc(setTitle)} 열기·출제">${button("source-output-direct", "열기", `type="button" data-exam="${setIndex}" data-mode="exam" aria-label="${esc(setTitle)} 시험지 열기"`)}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}" aria-label="${esc(setTitle)} 반에 출제"`)}</div></div>`;
+    }
+    return `<div class="exam-row-sim has"><div class="exam-row-sim-head"><strong>유사문제</strong> <span>${sets.length}세트</span></div><div class="exam-row-sim-actions">${button("similar-list", "보기", `type="button" data-exam="${index}" aria-label="${esc(O.displayTitle(exam))} 유사문제 ${sets.length}세트 보기"`)}</div></div>`;
+  }
+  // options: { at } relative-day label, { range } show the unit range, { more } 더보기 menu, { selected }.
+  function examRowMarkup(exam, index, options = {}) {
+    const pairs = options.pairs || similarPairs();
+    const kind = O.materialKind?.(exam) || "exam";
+    const year = String(exam.year || "").slice(-2);
+    const title = O.displayTitle(exam);
+    // The spine already shows year and grade, so an exam row title is school + term only; any missing field keeps the full title.
+    const period = exam.examType === "mid" ? "중간고사" : exam.examType === "final" ? "기말고사" : "";
+    const shortTitle = exam.school && period && exam.semester && kind === "exam"
+      ? `${exam.school} ${exam.semester}학기 ${period}` : title;
+    const subject = exam.primaryStandardCourse || unique((exam.courseRanges || []).map((range) => range.standardCourse)).join(" · ") || exam.subject;
+    const meta = [subject, exam.qCount ? `${exam.qCount}문항` : "", options.at ? relativeDayLabel(options.at) : ""]
+      .filter(Boolean).join(" · ");
+    const badges = `${kind !== "exam" && exam.contentType ? badge(exam.contentType) : ""}${exam.gradeConflict ? badge("학년 충돌", "warn") : ""}`;
+    const originalFile = kind === "similar" ? pairs.originalFileFor(exam.file) : null;
+    const original = originalFile ? state.catalog.exams[examIndexOf({ file: originalFile })] : null;
+    const tag = original ? `<div class="exam-row-tag">${esc(O.displayTitle(original))} 기출의 유사문제</div>` : "";
+    const range = options.range ? examRowRangeText(exam) : "";
+    const withSimilarCell = kind === "exam";
+    const similarCount = withSimilarCell ? pairs.setsFor(exam.file).length : 0;
+    const direct = ([mode, label]) =>
+      button("source-output-direct", label, `type="button" data-exam="${index}" data-mode="${mode}"`);
+    const more = options.more
+      ? `<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", options.selected ? "선택됨" : "문항 선택", `data-exam="${index}" aria-pressed="${!!options.selected}" class="small"`)}</div></details>`
+      : "";
+    return `<article class="exam-row ${gradeClass(exam.grade)}${options.selected ? " selected" : ""}${withSimilarCell ? "" : " no-sim"}" data-similar-count="${similarCount}">
+      <div class="exam-row-spine"><span class="exam-row-year">${esc(year || "–")}</span><span class="exam-row-grade">${esc(exam.grade || "")}</span></div>
+      <div class="exam-row-main">${button("source-output-direct", esc(shortTitle), `type="button" class="exam-row-title" title="${esc(title)}" aria-label="${esc(title)} 시험지 열기" data-exam="${index}" data-mode="exam"`)}${tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}</div>
+      <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "반에 출제", `type="button" class="primary" data-exam="${index}"`)}${more}</div>
+      ${withSimilarCell ? similarCellMarkup(exam, index, pairs) : ""}
+    </article>`;
+  }
+  // Two or more similar sets: one dialog lists them with the same four buttons as the exam.
+  function openSimilarList(exam) {
+    const sets = similarPairs().setsFor(exam?.file);
+    if (!sets.length) return;
+    const rows = sets.map((set) => {
+      const setIndex = examIndexOf(set);
+      const setTitle = O.displayTitle(set);
+      const detail = [set.primaryStandardCourse || set.subject, set.qCount ? `${set.qCount}문항` : ""].filter(Boolean).join(" · ");
+      const direct = ([mode, label]) =>
+        button("source-output-direct", label, `type="button" data-exam="${setIndex}" data-mode="${mode}"`);
+      return `<article class="similar-set"><div class="similar-set-main"><strong>${esc(setTitle)}</strong><div class="muted">${esc(detail)}</div></div><div class="similar-set-actions" role="group" aria-label="${esc(setTitle)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}"`)}</div></article>`;
+    }).join("");
+    showDialog(`${O.displayTitle(exam)} · 유사문제`, `<p class="muted">이 기출의 유사문제 ${sets.length}세트입니다.</p><div class="similar-sets">${rows}</div>`);
+  }
+  const homeExamRowMarkup = ({ index, exam, at }) => examRowMarkup(exam, index, { at });
   function renderHome() {
     const recent = drafts().slice(0, 3);
-    const grades = ["중1", "중2", "중3", "고1", "고2", "고3"];
-    return `<section class="archive-home">
-      <header class="archive-home-heading"><h1>홈</h1></header>
-      <section class="panel archive-home-start">
-        <form id="archive-home-search" class="archive-home-search" role="search">
-          <label class="archive-home-search-box" aria-label="학교·단원·과목 검색"><span aria-hidden="true">⌕</span><input id="archive-home-query" placeholder="학교명, 과목, 단원으로 검색" autocomplete="off"></label>
-          ${button("home-search", "검색", 'type="button" class="primary archive-home-search-submit"')}
-        </form>
-        <div class="archive-home-grades" aria-label="학년 빠른 진입">${grades.map((grade) => button("home-grade", grade, `data-grade="${grade}"`)).join("")}</div>
+    const schools = homeSchoolChips();
+    const examList = homeExamList();
+    // 학교 기출 is the search above; the four quick assessments come first, 생성문제 last.
+    const products = HOME_PRODUCT_REGISTRY
+      .filter((product) => product.productKey !== "school-exams")
+      .sort((a, b) => (a.productKey === "generated-bank") - (b.productKey === "generated-bank"));
+    const productMarkup = (product) => {
+      const count = Quick?.PRODUCTS?.[
+        { "five-minute-test": "five-minute", "subunit-assessment": "subunit-test", "unit-assessment": "unit-test", "exam-prep": "monthly-test" }[product.productKey]
+      ]?.count;
+      return button(
+        "home-product",
+        `<span>${esc(product.label)}</span>${count ? `<span class="home-quick-count"><span class="home-quick-num">${count}</span>문항</span>` : '<span class="home-quick-open">열기</span>'}`,
+        `type="button" class="home-quick-item" data-product-key="${esc(product.productKey)}" data-route-owner="${esc(product.routeOwner || "")}" data-availability="${String(product.availability)}"`,
+      );
+    };
+    return `<div class="archive-home">
+      <h1 class="visually-hidden">JS 아카이브 홈</h1>
+      <div class="home-top">
+        <section class="home-find" aria-labelledby="home-find-title">
+          <h2 id="home-find-title" class="home-title">학교 기출 찾기</h2>
+          <form id="archive-home-search" class="home-search" role="search">
+            <label class="visually-hidden" for="archive-home-query">학교, 학년, 시험으로 검색</label>
+            <input id="archive-home-query" type="search" placeholder="순천고 고1 1학기 중간" autocomplete="off" enterkeyhint="search">
+            ${button("home-search", "찾기", 'type="button" class="primary home-search-submit"')}
+          </form>
+          <p class="home-hint">학교, 학년, 시험을 띄어 쓰면 모두 맞는 시험지만 나옵니다. 유사문제가 있는 기출은 옆에 함께 나옵니다.</p>
+          <div class="home-chips" aria-label="시험지가 많은 학교">${schools.map(({ school }) => button("home-school", esc(school), `type="button" class="home-chip" data-school="${esc(school)}"`)).join("")}${button("home-all-schools", "전체 학교", 'type="button" class="home-link"')}</div>
+        </section>
+        <section class="home-units" aria-labelledby="home-units-title">
+          <h2 id="home-units-title" class="home-title">단원별로 난이도 골라 주기</h2>
+          <div class="home-grades">${HOME_GRADES.map(([label, id]) => `<a class="home-grade grade-${id}" href="unit-past-exams.html?ready=1&amp;grade=${id}">${label}</a>`).join("")}</div>
+          <p class="home-hint">학년을 누르면 그 학년의 단원별 기출이 열립니다.</p>
+        </section>
+      </div>
+      <section class="home-recent" aria-labelledby="home-recent-title">
+        <div class="home-section-head"><h2 id="home-recent-title">${examList.kind === "opened" ? "최근 연 기출" : "최근 연도 기출"}</h2>${button("home-all-schools", "학교별 기출 전체 보기", 'type="button" class="home-link"')}</div>
+        ${examList.rows.length ? `<div class="exam-rows">${examList.rows.map(homeExamRowMarkup).join("")}</div>` : '<p class="muted">기출 목록을 불러오면 이곳에 표시됩니다.</p>'}
       </section>
-      <section class="archive-home-products-section">
-        <div class="archive-home-section-head"><h2>바로 쓰는 자료·평가</h2></div>
-        <div class="archive-home-products">${HOME_PRODUCT_REGISTRY.map(homeProductMarkup).join("")}</div>
-      </section>
-      <section class="archive-home-drafts-section">
-        <div class="archive-home-section-head"><h2>만들던 문제지</h2></div>
-        <div class="archive-home-drafts">${recent.length
-          ? recent.map((d, i) => `<article class="archive-home-draft"><div><h3>${esc(d.header?.title || d.title || "문제지")}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div>${button("restore", "이어하기", `data-draft="${i}"`)}</article>`).join("")
-          : '<div class="empty archive-home-empty">저장된 작업이 없습니다.</div>'}</div>
-      </section>
-    </section>`;
+      <div class="home-bottom">
+        <section class="home-drafts" aria-labelledby="home-drafts-title">
+          <h2 id="home-drafts-title">만들던 문제지</h2>
+          ${recent.length
+            ? recent.map((d, i) => `<div class="home-draft"><div class="home-draft-main"><div class="home-draft-title">${esc(d.header?.title || d.title || "문제지")}</div><div class="home-draft-meta">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</div></div>${button("restore", "이어하기", `type="button" data-draft="${i}"`)}</div>`).join("")
+            : '<p class="muted home-empty">저장된 작업이 없습니다.</p>'}
+        </section>
+        <section class="home-quick" aria-labelledby="home-quick-title">
+          <h2 id="home-quick-title">빠른 평가</h2>
+          <div class="home-quick-list">${products.map(productMarkup).join("")}</div>
+        </section>
+      </div>
+      <nav class="home-tools" aria-label="그 밖의 도구"><a href="problem-bank-search.html">유형·개념으로 문항 찾기</a><button type="button" class="home-link" data-view="health">자료 점검</button><a href="index.html?legacy=1">아카이브 1.0</a></nav>
+    </div>`;
   }
 
+  // "순천고 고1 기출 14개": the conditions in words, then what is being counted.
+  function findSummaryText(filters, count) {
+    const query = String(filters.query || "").trim();
+    const squash = (value) => String(value || "").replace(/\s+/g, "");
+    const parts = [];
+    if (query) parts.push(query);
+    if (filters.school && !squash(query).includes(squash(filters.school))) parts.push(filters.school);
+    if (filters.grade && !squash(query).includes(filters.grade)) parts.push(filters.grade);
+    if (filters.axis) {
+      const label = finderAxisLabel(filters.axis);
+      if (!squash(query).includes(squash(label))) parts.push(label);
+    }
+    if (filters.yearFrom || filters.yearTo) parts.push(`${filters.yearFrom || "…"}~${filters.yearTo || "…"}년`);
+    const material = filters.material;
+    const kind = material === "exam" ? "기출" : material === "textbook" ? "교과서" : material ? "기출 외 시험지" : "시험지";
+    // With no condition the heading uses the name of the view the teacher chose.
+    const viewName = material === "exam" ? "학교 기출" : material === "textbook" ? "교과서" : material ? "기출 외 시험지" : "전체 시험지";
+    return `${parts.length ? `${parts.join(" ")} ${kind}` : viewName} ${count.toLocaleString()}개`;
+  }
+  // Nothing in 학교 기출: say so, and tell the teacher when the same conditions do match other material
+  // (counted only now, never during a normal render).
+  function emptyFindMarkup() {
+    const f = state.find;
+    if (f.material === "exam" && !f.similarOnly) {
+      const other = findExams({ ...f, material: "nonexam" }).length;
+      if (other)
+        return `<div class="empty find-empty-other"><p>학교 기출에는 없습니다. 기출 외 시험지에 ${other.toLocaleString()}개가 있습니다.</p>${button("material", "기출 외 시험지 보기", 'data-material="nonexam" class="primary"')}</div>`;
+    }
+    return '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>';
+  }
   function renderFind() {
     reconcileFinderSchool(state.find);
     const exams = findExams();
@@ -2465,18 +2742,21 @@
       replaceFinderUrlState();
     }
     const page = exams.slice(state.page * 18, (state.page + 1) * 18);
-    return `<div class="finder-surface"><div class="intro finder-intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
-      <section class="panel finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>${finderSearchMarkup(state.find)}${finderActiveMarkup(state.find)}<div class="finder-filter-bar">${finderPrimaryFilterMarkup(state.find)}${finderDetailFilterMarkup(state.find)}</div></section>
-      ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기 →</span></a>' : ""}
-      <div class="resultbar finder-resultbar"><strong>${state.find.material === "textbook" ? "교과서" : state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
-      <div class="finder-results-wrap"><div class="exam-list">${page
-        .map((e) => {
-          const n = state.catalog.exams.indexOf(e),
-            selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions finder-card-actions" role="group" aria-label="${esc(O.displayTitle(e))} 시험·해설·정답·출제·더보기">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></details></div></article>`;
-        })
-        .join("")}</div></div>
-      ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
+    const pairs = similarPairs();
+    const withSimilar = exams.filter((exam) => pairs.setsFor(exam.file).length).length;
+    const showSimilarFilter = findSimilarFilterApplies(state.find);
+    const rows = page
+      .map((e) => examRowMarkup(e, examIndexOf(e), {
+        pairs, range: true, more: true, selected: state.sources.includes(e.file),
+      }))
+      .join("");
+    return `<div class="finder-surface find-surface"><div class="intro finder-intro"><h1>학교별 기출</h1>${button("go-compose", "문제지 만들기")}</div>
+      <div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>
+      <section class="find-panel" aria-label="검색 조건">${finderSearchMarkup(state.find)}${finderQuickMarkup(state.find)}<div class="find-options">${showSimilarFilter ? `<label class="find-check"><input type="checkbox" data-filter="similarOnly" data-group="find"${state.find.similarOnly ? " checked" : ""}>유사문제 있는 시험만</label>` : ""}${finderMoreFiltersMarkup(state.find)}</div>${finderActiveMarkup(state.find)}</section>
+      ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기</span></a>' : ""}
+      <div class="find-resultbar"><h2>${esc(findSummaryText(state.find, exams.length))}</h2>${showSimilarFilter && withSimilar ? `<span class="find-sim-count">유사문제 있는 시험 ${withSimilar.toLocaleString()}개</span>` : ""}</div>
+      <div class="exam-rows find-rows">${showSimilarFilter && exams.length ? '<div class="exam-rows-head" aria-hidden="true"><span>기출</span><span>이 시험의 유사문제</span></div>' : ""}${rows}</div>
+      ${!exams.length ? emptyFindMarkup() : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
       ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기", 'data-use-sources="true"')}</div></div>` : ""}</div>`;
   }
@@ -2839,7 +3119,7 @@
     return `<div class="mobile-actions">${button("mobile-inspector", "출력 설정")}${button("print", "출력", `class="small" ${blocked ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions"><button type="button" class="phone-quick-link" data-view="five-minute">빠른 평가</button>${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
     <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
@@ -2854,7 +3134,7 @@
   }
   function renderRecent() {
     const list = drafts(), f = state.recentFilters;
-    return `<div class="history-surface"><div class="intro history-intro"><div><h1>출제 내역</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
+    return `<div class="history-surface">${window.Archive2Navigation?.libraryTabs?.("recent") || ""}<div class="intro history-intro"><div><h1>출제 내역</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
       <section class="panel history-panel" aria-labelledby="history-heading"><div class="history-heading"><h2 id="history-heading">최근 출제</h2></div>
       <div class="history-filters">
         <label class="history-period-filter">기간<span class="history-period"><input type="date" data-recent-filter="from" aria-label="시작일" value="${esc(f.from)}"><span aria-hidden="true">~</span><input type="date" data-recent-filter="to" aria-label="끝일" value="${esc(f.to)}"></span></label>
@@ -3308,7 +3588,16 @@
               `<tr><th>${label ? `${esc(label)} <span class="muted">(${esc(code)})</span>` : esc(code)}</th><td>${fmt(count)}${total ? ` <span class="muted">· ${((count / total) * 100).toFixed(1)}%</span>` : ""}</td></tr>`,
           )
           .join("")
-      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다(엄격한 승인 지표이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>문항 목록 버전 ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
+      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다(엄격한 승인 지표이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>문항 목록 버전 ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>${renderUnlinkedSimilar()}`;
+  }
+  // Similar sets whose original exam could not be told for certain (see archive2-similar.js).
+  function renderUnlinkedSimilar() {
+    const pairs = similarPairs();
+    const rows = pairs.unlinked || [];
+    const title = `원본 기출과 연결되지 않은 유사문제 ${rows.length.toLocaleString()}개`;
+    if (!rows.length) return `<p class="muted health-unlinked-none">${esc(title)}</p>`;
+    return `<details class="health-unlinked"><summary>${esc(title)}</summary><p class="muted">같은 학교·학년·연도·학기·시험의 기출을 하나로 정할 수 없는 유사문제입니다. 틀린 짝보다 짝이 없는 편이 안전해서 연결하지 않았습니다. 파일 이름을 <code>&lt;원본 기출 이름&gt;_유사</code> 꼴로 고치면 연결됩니다.</p><table class="health-table"><tbody>${rows.map(({ exam, reason }) =>
+      `<tr><th>${esc(String(exam.file || "").split("/").pop().replace(/\.js$/i, ""))}</th><td>${esc(reason)}</td></tr>`).join("")}</tbody></table></details>`;
   }
   function applyFiveMinuteViewGuard() {
     if (!isAssessmentRecipeMode()) return;
@@ -3375,6 +3664,7 @@
     if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
       document.body.dataset.archiveView = state.view;
+      window.Archive2Navigation?.sync?.(state.view);
       document.querySelectorAll("[data-view]").forEach((button) => {
         button.classList.toggle("active", navViewActive(button));
         button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
@@ -3386,7 +3676,7 @@
       )
         .then((result) => { if (result !== false) status("저장한 시험지를 불러왔습니다."); })
         .catch((error) => {
-          $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
+          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
           status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);
         });
       return;
@@ -3411,6 +3701,7 @@
       );
     });
     document.body.dataset.archiveView = state.view;
+    window.Archive2Navigation?.sync?.(state.view);
     $("content").innerHTML =
       state.view === "home"
         ? renderHome()
@@ -4170,7 +4461,7 @@
   }
   const FINDER_URL_KEYS = [
     "grade", "curriculumKey", "courseKey", "semanticSubject", "school",
-    "yearFrom", "yearTo", "axis", "query", "family", "material", "file",
+    "yearFrom", "yearTo", "axis", "query", "family", "material", "file", "similarOnly",
   ];
   const RECENT_URL_KEYS = ["from", "to", "grade", "subject", "query"];
   const QUICK_URL_KEYS = { grade: "qgrade", subject: "qsubject" };
@@ -4187,6 +4478,8 @@
     if (state.view === "find") {
       for (const key of FINDER_URL_KEYS)
         if (state.find[key]) url.searchParams.set(key, state.find[key]);
+      // 전체 (every kind of material) is an explicit choice; without a material the finder lists 학교 기출.
+      if (state.find.material === "") url.searchParams.set("material", "all");
       if (state.page > 0) url.searchParams.set("page", String(state.page));
     } else if (state.view === "recent") {
       for (const key of RECENT_URL_KEYS)
@@ -4354,6 +4647,7 @@
           clearUidRoute({ url: false });
         }
         state.view = b.dataset.view;
+        if (state.view === "find") applyDefaultFinderMaterial();
         if (state.view === "saved") state.savedPaperId = "";
         urlState();
         render();
@@ -4520,10 +4814,12 @@
         quickState.bundle.clear();
         replaceUrlState();
         render();
-      } else if (a === "home-grade") {
+      } else if (a === "home-school" || a === "home-all-schools") {
+        // A school chip searches that school by name (the same search the box runs); 전체 학교 opens everything.
         rememberCurrentHistoryEntry();
         state.sources = [];
-        state.find = { grade: b.dataset.grade || "" };
+        const school = a === "home-school" ? b.dataset.school || "" : "";
+        state.find = school ? { query: school, material: "exam" } : { material: "exam" };
         state.view = "find";
         state.page = 0;
         urlState();
@@ -4532,11 +4828,12 @@
       } else if (a === "home-search") {
         rememberCurrentHistoryEntry();
         const query = $("archive-home-query")?.value.trim() || "";
-        state.find = query ? { query } : {};
+        state.find = query ? { query, material: "exam" } : { material: "exam" };
         state.view = "find";
         state.page = 0;
         urlState();
         render();
+        window.scrollTo(0, 0);
       } else if (a === "go-compose") {
         rememberCurrentHistoryEntry();
         const sources = b.dataset.useSources === "true" ? state.sources.slice() : [];
@@ -4546,6 +4843,7 @@
         state.custom = {};
         state.view = "compose";
         state.filters = { school: "", ...state.find };
+        delete state.filters.similarOnly; // a finder-only choice, not a compose condition
         let findSubject = state.find.semanticSubject || "";
         if (!state.filters.grade) {
           // A subject chosen without a grade opens compose on the grade that teaches it.
@@ -4600,10 +4898,21 @@
         urlState();
         render();
       } else if (a === "finder-axis-quick") {
-        state.find.axis = b.dataset.axis === state.find.axis ? "" : b.dataset.axis;
+        const axis = b.dataset.axis;
+        state.find.axis = axis === state.find.axis ? "" : axis;
         state.page = 0;
         urlState();
         render();
+        document.querySelector(`[data-action="finder-axis-quick"][data-axis="${axis}"]`)?.focus?.({ preventScroll: true });
+      } else if (a === "finder-grade") {
+        // Same effect as choosing the grade in the old select; pressing the chosen grade again clears it.
+        const grade = b.dataset.grade || "";
+        state.find.grade = state.find.grade === grade ? "" : grade;
+        applyFinderFilterChange("grade");
+        render();
+        document.querySelector(`[data-action="finder-grade"][data-grade="${grade}"]`)?.focus?.({ preventScroll: true });
+      } else if (a === "similar-list") {
+        openSimilarList(state.catalog.exams[Number(b.dataset.exam)]);
       } else if (a === "finder-reset") {
         for (const key of [
           "curriculumKey",
@@ -4615,6 +4924,8 @@
           "yearTo",
           "family",
           "query",
+          "grade",
+          "similarOnly",
         ])
           state.find[key] = "";
         state.page = 0;
@@ -4646,8 +4957,10 @@
         invalidate();
         render();
       } else if (a === "source-issue") {
+        rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "targets");
       } else if (a === "source-output-direct") {
+        rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         await openFinderOutput(state.catalog.exams[Number(b.dataset.exam)], b.dataset.mode || "exam");
       } else if (a === "original-print") {
         await originalPrint();
@@ -4854,7 +5167,7 @@
     event.preventDefault();
     rememberCurrentHistoryEntry();
     const query = $("archive-home-query")?.value.trim() || "";
-    state.find = query ? { query } : {};
+    state.find = query ? { query, material: "exam" } : { material: "exam" };
     state.view = "find";
     state.page = 0;
     urlState();
@@ -4971,29 +5284,7 @@
           }
           invalidate();
         } else {
-          if (el.dataset.filter === "grade") {
-            state.sources = [];
-            state.find.semanticSubject = "";
-            state.find.family = "";
-          }
-          if (el.dataset.filter === "semanticSubject") {
-            state.find.courseKey = "";
-            state.find.family = "";
-          }
-          if (
-            ["grade", "curriculumKey", "courseKey", "semanticSubject"].includes(
-              el.dataset.filter,
-            )
-          )
-            Object.assign(state.find, reconcileFinderFilters(state.find));
-          if (
-            ["material", "grade", "curriculumKey", "courseKey", "semanticSubject"].includes(
-              el.dataset.filter,
-            )
-          )
-            reconcileFinderSchool(state.find);
-          state.page = 0;
-          urlState();
+          applyFinderFilterChange(el.dataset.filter);
         }
         if (el.dataset.group === "find") {
           scheduleFinderFilterRender();
@@ -5189,6 +5480,10 @@
     urlState();
     render();
   });
+  // The "과목 · 학교 · 연도" fold stays open across the re-render a filter change causes.
+  document.addEventListener("toggle", (event) => {
+    if (event.target?.classList?.contains("find-more")) state.findMoreOpen = event.target.open;
+  }, true);
   window.addEventListener("message", (event) => {
     const frame = $("original-issue-frame");
     const savedPaperFrame = $("saved-paper-issue-frame");
@@ -5327,6 +5622,10 @@
     const quickRoute = isQuickAssessmentView();
     for (const k of FINDER_URL_KEYS)
       if (!quickRoute && p.has(k)) state.find[k] = p.get(k);
+    if (!quickRoute && state.view === "find") {
+      if (state.find.material === "all") state.find.material = "";
+      else applyDefaultFinderMaterial();
+    }
     const requestedPage = Number.parseInt(p.get("page") || "0", 10);
     state.page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 0;
     state.recentFilters = Object.fromEntries(

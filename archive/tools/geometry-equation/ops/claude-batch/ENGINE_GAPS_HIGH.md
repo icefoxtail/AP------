@@ -36,6 +36,7 @@
 - **정규분포 영역 칠하기에 팔레트 색 옵션 없음**
   - tone 1·2 회색만 된다. 색 구분 최우선 원칙과 충돌한다.
   - 사례: 21 효천 확통 Q18. 지금은 진하기 두 단계로 우회한다.
+  - 해결: PR #1627 (`shades` 항목의 `color`: BLUE·WARM·GREEN·ROSE·VIOLET, tone과 함께 못 씀)
 - **수직선 점 최대 8개** (`NUMBER_LINE_POINTS_INVALID`)
   - 사례: 19 금당 확통 Q21. 10개 위치가 필요하다.
 - **TREE 라벨**
@@ -52,6 +53,9 @@
 - **경우의 수 도식 primitive 없음**
   - 사례: 24 효천 고1 2학기 기말 구형 SVG 9개
   - 필요한 도식: 소인수 지수 선택 상자, 고정 슬롯 배열, 그룹 선택 짝짓기, 자리 배열 패턴, 이중계산 비교 패널 등
+
+- multi-curve 곡선 이름은 점 없는 지시선·자기 곡선 옆 고정 배치를 지원하지 않는다(overlays.names curveX가 OVERLAY_CURVE_UNSUPPORTED:multi-curve로 거절, callout은 owner 점 필수). 22 금당 고1 1mid Q10·Q21, 22 강남여 1mid Q11.
+- composite 두 번째 그래프 패널의 축 이름을 x, y에서 바꿀 수 없다(22 강남여 1mid Q20).
 
 ## 해결됨
 

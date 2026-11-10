@@ -813,15 +813,16 @@ function solveNormal(c){
   if(!Array.isArray(shadesRaw)||shadesRaw.length>NORM_MAX_SHADES)bad('STAT_NORMAL_SHADE_INVALID');
   const zOf=(k,u)=>framed?qdiv(u,k.scaleQ):zOfX(k,u);
   const shades=shadesRaw.map(raw=>{
-    onlyKeys(raw,['curve','from','to','tone'],'STAT_NORMAL_SHADE_INVALID');
+    onlyKeys(raw,['curve','from','to','tone','color'],'STAT_NORMAL_SHADE_INVALID');
     const k=raw.curve===undefined?curves[0]:byId.get(raw.curve)??bad('STAT_NORMAL_SHADE_INVALID');
     const from=raw.from??null,to=raw.to??null;
     if(from===null&&to===null)bad('STAT_NORMAL_SHADE_INVALID');
     if(raw.tone!==undefined&&raw.tone!==1&&raw.tone!==2)bad('STAT_NORMAL_SHADE_INVALID');
+    if(raw.color!==undefined&&(!isPaletteName(raw.color)||raw.tone!==undefined))bad('STAT_NORMAL_SHADE_COLOR_INVALID');   // a palette colour (BLUE WARM GREEN ROSE VIOLET) tells regions apart; it replaces the grey tone, never both
     const a=from===null?null:refTick(from),b=to===null?null:refTick(to);
     if(a&&b&&qcmp(a.u,b.u)>=0)bad('STAT_NORMAL_SHADE_RANGE');
     const za=a?qnum(zOf(k,a.u)):null,zb=b?qnum(zOf(k,b.u)):null;
-    return {curve:k.id,from:a?qstr(a.u):null,to:b?qstr(b.u):null,tone:raw.tone??1,area:r6(normalArea(za,zb)),label:null};
+    return {curve:k.id,from:a?qstr(a.u):null,to:b?qstr(b.u):null,tone:raw.tone??1,...(raw.color!==undefined?{color:raw.color}:{}),area:r6(normalArea(za,zb)),label:null};
   });
   const labelsRaw=c.areaLabels===undefined?[]:c.areaLabels;
   if(!Array.isArray(labelsRaw)||labelsRaw.length>shades.length)bad('STAT_NORMAL_AREA_LABEL_INVALID');
@@ -1083,6 +1084,7 @@ const STYLE={
   reflineDash:'stroke="#333" stroke-width="1.8" fill="none" stroke-dasharray="7 4"',trend:'stroke="#555" stroke-width="3.2" fill="none"',trendHead:'fill="#555" stroke="none"',
   meanLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="6 4"',medianLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="2 3"',
   ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`])),
+  ...Object.fromEntries(PALETTE_NAMES.map(name=>['shade'+name,`fill="${PALETTE[name].fill}" fill-opacity="${PALETTE[name].opacity}" stroke="none"`])),   // a normal-curve area in a palette colour (G20)
   ...Object.fromEntries(PALETTE_NAMES.flatMap(name=>[['branchHi'+name,`stroke="${PALETTE[name].line}" stroke-width="3" fill="none"`],['markRing'+name,`fill="none" stroke="${PALETTE[name].line}" stroke-width="1.8"`]]))
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
@@ -1562,7 +1564,7 @@ function normalSpec(m,ctx){
     top.push(...inner);
     if(ub===null)top.push(...pts.get(c.id).filter(([x])=>x>=xb));else top.push([xb,yb]);
     const poly=[[xa,BASE],...top,[xb,BASE]];
-    prims.push({t:'polygon',id:`shade-${j}`,role:'shade',cls:`shade${s.tone}`,points:poly,data:{curve:c.id,tone:s.tone},layer:24});
+    prims.push({t:'polygon',id:`shade-${j}`,role:'shade',cls:`shade${s.color??s.tone}`,points:poly,data:s.color===undefined?{curve:c.id,tone:s.tone}:{curve:c.id,color:s.color},layer:24});
     if(ua!==null)prims.push(L(`edge-${j}-from`,'shade-edge','rule',xa,BASE,xa,ya,{shade:j},32));
     if(ub!==null)prims.push(L(`edge-${j}-to`,'shade-edge','rule',xb,BASE,xb,yb,{shade:j},32));
     // the weighted middle of the area: where a label is most welcome

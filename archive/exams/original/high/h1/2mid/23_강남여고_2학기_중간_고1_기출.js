@@ -62,9 +62,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "합집합의 원소 수와 여집합의 원소 수를 연결한다.\n$n(U)=40$, $n(A)=18$, $n(A\\cap B)=9$, $n(A^C\\cap B^C)=12$이다.\n$A^C\\cap B^C=(A\\cup B)^C$를 이용해 먼저 $n(A\\cup B)$를 구한다.\n$n((A\\cup B)^C)=12$이므로 $n(A\\cup B)=40-12=28$이다.\n한편 $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$이므로 $28=18+n(B)-9$이다.\n따라서 $n(B)=19$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "전체 40명과 A·B의 겹친 영역 및 바깥 영역을 나타낸 수치 Venn diagram",
-    "solutionImageCaption": "바깥 영역에서 합집합을 구하고 겹친 영역을 중복 보정하는 계산 구조",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 두 집합 A, B의 원이 겹쳐 있고 겹친 부분은 회색이다. 직사각형 위쪽에 n(U)=40, 원 A 위쪽에 n(A)=18이 적혀 있다. A에만 속한 부분에 9, 겹친 부분에 9, B에만 속한 부분에 x, 두 원 바깥에 12가 적혀 있다.",
+    "solutionImageCaption": "두 원 바깥의 12개를 전체 40개에서 빼면 n(A∪B)=28이다. 겹친 9개는 A와 B에서 두 번 세어지므로 n(A∪B)=n(A)+n(B)−n(A∩B)에서 28=18+n(B)−9이다. 이 식에서 n(B)를 구한다. 정답은 19이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -125,9 +125,9 @@ window.questionBank = [
     "wide": false,
     "content": "벤 다이어그램에서 $n(U)=40$, $n(A)=23$, $n(B)=19$, $n(A\\cup B)=35$일 때, 색칠한 부분을 나타내는 집합의 원소의 개수는? [3.2점]",
     "image": "assets/images/23_강남여고_2학기_중간_고1_기출/q04.png",
-    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "두 집합 Venn diagram의 영역별 원소 수와 색칠 영역의 합",
-    "solutionImageCaption": "교집합 7과 바깥 영역 5를 더해 12",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q4-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 두 집합 A, B의 원이 겹쳐 있고, 두 원의 공통 부분과 원 바깥 부분이 회색으로 칠해져 있다. A에만 속한 부분에 23−x, 공통 부분에 x, B에만 속한 부분에 19−x, 원 바깥에 y가 적혀 있다.",
+    "solutionImageCaption": "A는 23개, B는 19개, A∪B는 35개이다. 공통 부분의 개수 x는 23+19−35로, 바깥 부분의 개수 y는 전체 40개에서 35를 뺀 값으로 구한다. 색칠한 두 부분은 서로 겹치지 않으므로 x와 y를 더한 값이 색칠한 부분의 원소 수이다. 정답은 12이다.",
     "solutionImageSize": "full",
     "choices": [
       "$12$",
@@ -318,9 +318,9 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q9-solution-composition.svg",
-    "solutionImageAlt": "X에서 Y로 가는 f와 Y에서 X로 가는 g를 세 열로 이은 대응도. 1→5, 4→3, 5→4 화살표가 굵게 표시되어 있다.",
-    "solutionImageCaption": "1→5→4를 따라 (g∘f)(1)=4이고, 5→4→3을 따라 (f∘g)(5)=3이다.",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 열 X, Y, X로 이루어진 대응도. 파란 화살표는 f이고 1→5, 2→4, 3→6, 4→3으로 이어지며, 주황 화살표는 g이고 3→1, 4→3, 5→4, 6→3으로 이어진다. 1→5, 4→3, 5→4 화살표가 굵게 표시되어 있다.",
+    "solutionImageCaption": "(g∘f)(1)은 1에서 f의 화살표를 따라 간 뒤 그 값에서 g의 화살표를 따라 가고, (f∘g)(5)는 5에서 g의 화살표를 따라 간 뒤 그 값에서 f의 화살표를 따라 간다. 굵은 세 화살표를 따라 두 값을 각각 구해 더한다. 정답은 7이다.",
     "solutionImageSize": "full",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -423,7 +423,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이 있다. 첫째 줄은 a−1보다 크고 a+2보다 작은 구간으로 양 끝이 빈 점이다. 둘째 줄은 2a−3 이상 10 이하인 구간으로 양 끝이 찬 점이다. 셋째 줄은 두 구간의 공통 부분인 2a−3 이상 a+2 미만 구간이다. a=3일 때의 그림이다.",
+    "solutionImageCaption": "그림은 a=3인 예이고 둘째 줄의 10은 이때 a²+a−2의 값이다. 역이 거짓이 되려면 가정 a−1<x<a+2를 만족하면서 결론을 만족하지 않는, 즉 2a−3≤x≤a²+a−2인 x가 있어야 하므로 두 구간이 겹쳐야 한다. a의 값에 따라 두 구간이 겹치는 경우를 가려 조건에 맞는 양의 정수 a의 개수를 센다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -532,7 +536,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 두 집합 A, B의 원이 겹쳐 있다. 두 원이 겹친 부분만 흰색이고 나머지 영역은 모두 회색으로 칠해져 있다.",
+    "solutionImageCaption": "A*B=(U−A)∪(U−B)=Aᶜ∪Bᶜ이고 이는 회색으로 칠한 (A∩B)ᶜ, 즉 두 원의 공통 부분을 뺀 전체 영역이다. 보기의 B 자리에 Aᶜ, ∅, U를 각각 넣어 A*B를 계산하고 참인 것을 고른다. 정답은 ㄴ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -566,7 +574,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 두 집합 A, B의 원이 겹쳐 있고, A에만 속한 부분이 회색으로 칠해져 있다. A에만 속한 부분에 1, 2, 3, 두 원이 겹친 부분에 4, 5, 6, B에만 속한 부분에 7, 8이 적혀 있다.",
+    "solutionImageCaption": "X∩Aᶜ=∅이므로 X는 A의 부분집합이고, (A−B)∪X=X이므로 회색 부분의 원소 1, 2, 3은 모든 X에 들어간다. 겹친 부분의 4, 5, 6은 각각 넣거나 뺄 수 있으므로 X는 2³=8개이다. 원소마다 몇 개의 X에 들어 있는지 세어 모든 원소의 합을 더한다. 정답은 108이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -634,9 +646,9 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q18-solution-inverse-pair.svg",
-    "solutionImageAlt": "일대일대응 f와 g를 세 열로 이은 대응도. f의 3→1과 g의 4→2 화살표가 굵게 표시되어 있다.",
-    "solutionImageCaption": "f(3)=1, g(4)=2이므로 1에 대응하는 f의 정의역 원소는 3, 2에 대응하는 g의 정의역 원소는 4이다.",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 열 X, X, X로 이루어진 대응도. 파란 화살표는 f이고 1→3, 2→2, 3→1, 4→4로 이어지며, 주황 화살표는 g이고 1→1, 2→4, 3→3, 4→2로 이어진다. f의 3→1 화살표와 g의 4→2 화살표가 굵게 표시되어 있다.",
+    "solutionImageCaption": "f(1)=3과 (g∘f)(1)=3에서 g(3)=3이고, g가 일대일이므로 (g∘f)(2)=g(2)에서 f(2)=2이다. 남은 조건과 일대일대응을 이용하면 f(3)=1, g(4)=2가 정해지므로 f의 역함수 값은 f의 화살표를 거꾸로, g의 역함수 값은 g의 화살표를 거꾸로 읽는다. 두 값을 더하면 정답은 7이다.",
     "solutionImageSize": "full",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -671,7 +683,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=f(x)가 있다. x<0에서는 위로 볼록한 포물선이고 x≥0에서는 오른쪽 위로 올라가는 직선이며 두 부분이 y축 위의 점에서 이어진다. 곡선 위의 점 P는 x=−3, 점 Q는 x=1인 곳에 있고 각각 x축으로 점선이 내려와 있다. 곡선 옆에 f(x)라고 적혀 있다.",
+    "solutionImageCaption": "h(x+2)=f(x)에서 h(t)=f(t−2)이므로 h(−1)=f(−3), h(3)=f(1)이다. 그림에서 x=−3인 점 P는 x<0 부분의 포물선 위, x=1인 점 Q는 x≥0 부분의 직선 위에 있으므로 각각 그 구간의 식으로 함숫값을 구한다. 두 값을 더하면 정답은 −4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -707,10 +723,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q20-solution-inverse-area.svg",
-    "solutionImageAlt": "좌표평면에 (2, 0)에서 꺾이는 함수 f의 그래프와 (0, 2)에서 꺾이는 역함수 g의 그래프, 직선 y=x, 교점 A, M, B, 두 그래프 사이의 색칠한 두 영역을 나타낸 그림.",
-    "solutionImageCaption": "두 그래프는 A(-4, 3), M, B(3, -4)에서 만나고 y=x에 대하여 대칭이다. 색칠한 두 영역의 넓이는 각각 3분의 7이다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 꺾인 그래프 y=f(x), 주황 꺾인 그래프 y=g(x), 검은 직선 y=x가 있다. f는 점 P(2, 0)에서, g는 점 Q(0, 2)에서 꺾인다. 두 그래프는 A(−4, 3), M(3분의 2, 3분의 2), B(3, −4)에서 만나고 그 사이의 두 영역이 회색으로 칠해져 있다.",
+    "solutionImageCaption": "g는 f의 역함수이므로 y=g(x)의 그래프는 y=f(x)의 그래프를 직선 y=x에 대하여 대칭이동한 것이다. 두 그래프의 교점 A, M, B를 구하면 한쪽 영역은 꼭짓점이 A, Q, M인 삼각형이고, 다른 쪽 영역은 y=x에 대하여 대칭이므로 넓이가 같다. 한 삼각형의 넓이를 구해 2배 하면 전체 넓이를 분수로 나타낼 수 있다. 정답은 17이다.",
+    "solutionImageSize": "full",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -739,7 +755,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄이 있다. 위쪽 수직선에는 2 이상 20 이하인 q의 구간이 굵게 그려져 있고, 아래쪽 수직선에는 k 이상 4k 이하인 p의 구간이 굵게 그려져 있다. k=3일 때의 그림이며 p의 구간이 q의 구간 안에 들어 있다.",
+    "solutionImageCaption": "그림은 k=3인 예이다. p의 진리집합 k≤x≤4k가 q의 진리집합 2≤x≤20에 포함되려면 왼쪽 끝은 k≥2, 오른쪽 끝은 4k≤20이어야 한다. 두 조건을 모두 만족하는 양의 정수 k를 찾아 더한다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -767,7 +787,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 두 집합 A, B의 원이 겹쳐 있고, A에만 속한 부분이 회색으로 칠해져 있다. A에만 속한 부분에 1, 2, 두 원이 겹친 부분에 3, 4, B에만 속한 부분에 5, 6이 적혀 있다.",
+    "solutionImageCaption": "A∩X=X는 X⊂A이고, (A−B)∪X=X는 A−B⊂X이다. 따라서 회색 부분의 원소 1, 2는 X에 반드시 들어가고, 겹친 부분의 원소 3, 4는 각각 넣거나 뺄 수 있다. B에만 속한 5, 6은 X에 들어갈 수 없다. 정답은 {1, 2}, {1, 2, 3}, {1, 2, 4}, {1, 2, 3, 4}이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

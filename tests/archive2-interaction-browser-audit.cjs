@@ -33,7 +33,7 @@ const server=http.createServer((req,res)=>{
   await page.locator('[data-action="source-output-direct"]').first().waitFor({timeout:60000});
   for(const mode of ['exam','sol','ans']){
    const promise=page.waitForEvent('popup');const start=Date.now();
-   await page.locator(`.exam .actions [data-action="source-output-direct"][data-mode="${mode}"]`).first().click();
+   await page.locator(`.exam-row .exam-row-actions [data-action="source-output-direct"][data-mode="${mode}"]`).first().click();
    const popup=await promise;
    await popup.waitForURL(/engine.html/,{timeout:10000});
    console.log('ORIGINAL_URL',mode,popup.url(),'openedMs',Date.now()-start);
