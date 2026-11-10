@@ -1,0 +1,391 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "75",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AB15",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "15"
+        }
+      },
+      {
+        "id": "AC8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "BC17",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "17"
+        }
+      },
+      {
+        "id": "touchAB",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "incircle",
+          "T1",
+          "lineAB"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "touchAC",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "incircle",
+          "T2",
+          "lineAC"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "touchBC",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "incircle",
+          "T3",
+          "lineBC"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "T1",
+    "T2",
+    "T3"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "incircle"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "IT1",
+      "refs": [
+        "I",
+        "T1"
+      ]
+    }
+  ],
+  "caption": "BC=17이고 [ABC]=60 cm²이다. 내접원 넓이 공식 [ABC]=rs와 반둘레 20에서 60=20r이므로 r=3 cm이다.",
+  "accessibilityDescription": "BC=17이고 [ABC]=60 cm²이다. 내접원 넓이 공식 [ABC]=rs와 반둘레 20에서 60=20r이므로 r=3 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직각삼각형의 두 직각변은 15 cm와 8 cm이고 I는 내심이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 ABC, 내심 I, 세 접점 및 반지름 3의 내접원을 표시한다. 기존 q22.svg는 읽기 전용 원본으로 보존한다."
+  ],
+  "sourceQuote": "서술형 2) 다음 그림에서 △ABC는 ∠A=90°인 직각삼각형이고, 점 I는 △ABC의 내심이다. 선분 AB의 길이가 15 cm, 선분 AC의 길이가 8 cm일 때, 다음 물음에 답하시오. [5점]\n(1) 선분 BC의 길이를 구하는 과정을 쓰시오. [2점]\n(2) △ABC의 내접원의 반지름의 길이 r cm를 구하는 과정을 자세히 쓰시오. [3점]",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "직각변 15/8 비율을 유지하고 내접원, 중심, 접점 세 개를 나타낸다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "15",
+        "side": "BELOW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "17",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "radius3",
+        "at": [
+          4.0,
+          2.2
+        ],
+        "text": "r=3",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# 20 향림중 중2 2학기 기말 입력 검증
+
+- FIGURE: 21개 (Q01–17, Q21–24)
+- EXEMPT: Q18–20 3개
+- 각 FIGURE 문항의 item.json, plan.json, publish.json 작성 완료
+- pinned construction contract validate/execute/point provenance: 21/21 PASS
+- JSON/package structure: PASS
+- Q11 원문 해설 SVG와 q22.svg source asset: 원본 보존, 덮어쓰기 없음
+- 렌더링 및 최종 리뷰: 요청에 따라 미실행
+- 원격/브랜치 쓰기: 0 (별도 보존 담당자 작업)
+
+- Q01: PASS; 11 nodes, 6 condition audits
+- Q02: PASS; 4 nodes, 0 condition audits
+- Q03: PASS; 5 nodes, 4 condition audits
+- Q04: PASS; 5 nodes, 0 condition audits
+- Q05: PASS; 8 nodes, 2 condition audits
+- Q06: PASS; 10 nodes, 4 condition audits
+- Q07: PASS; 6 nodes, 5 condition audits
+- Q08: PASS; 9 nodes, 3 condition audits
+- Q09: PASS; 5 nodes, 0 condition audits
+- Q10: PASS; 8 nodes, 4 condition audits
+- Q11: PASS; 5 nodes, 5 condition audits
+- Q12: PASS; 7 nodes, 7 condition audits
+- Q13: PASS; 6 nodes, 6 condition audits
+- Q14: PASS; 9 nodes, 6 condition audits
+- Q15: PASS; 7 nodes, 3 condition audits
+- Q16: PASS; 9 nodes, 8 condition audits
+- Q17: PASS; 7 nodes, 3 condition audits
+- Q21: PASS; 8 nodes, 2 condition audits
+- Q22: PASS; 11 nodes, 6 condition audits
+- Q23: PASS; 8 nodes, 2 condition audits
+- Q24: PASS; 12 nodes, 7 condition audits

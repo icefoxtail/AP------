@@ -1,0 +1,458 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "foldLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "H",
+          "I"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "C",
+          "foldLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "B",
+          "foldLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "foldedEdge",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "foldedEdge",
+          "ABline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "DI6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "I"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "IC10",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "I",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "10"
+        }
+      },
+      {
+        "id": "DE8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "AE8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "AF32thirds",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "F"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "rational",
+          "numerator": "32",
+          "denominator": "3"
+        }
+      },
+      {
+        "id": "FOnAB",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "F",
+          "ABline"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "FOnGE",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "F",
+          "foldedEdge"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H",
+    "I",
+    "E",
+    "G",
+    "F"
+  ],
+  "displayLines": [
+    "foldLine"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "HI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "HG",
+      "refs": [
+        "H",
+        "G"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "DI",
+      "refs": [
+        "D",
+        "I"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    }
+  ],
+  "caption": "C를 접어 E로 옮기면 BC는 GE로, CI는 IE로 옮겨져 GE⊥IE이다. △AEF∼△DIE이다. DI=6, IC=10에서 정사각형 변은 16, DE=AE=8이며 8:6=AF:8에서 AF=32/3 cm이다.",
+  "accessibilityDescription": "C를 접어 E로 옮기면 BC는 GE로, CI는 IE로 옮겨져 GE⊥IE이다. △AEF∼△DIE이다. DI=6, IC=10에서 정사각형 변은 16, DE=AE=8이며 8:6=AF:8에서 AF=32/3 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 ABCD에서 접는 선 HI를 따라 C→E, B→G로 접고 F는 GE와 AB의 교점이다. DI=6, IC=10, DE=8이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형 ABCD와 접는 선 HI, C의 반사점 E 및 B의 반사점 G를 정확히 구성한다. 접힌 내부와 원래 변을 구분하고 E/G/F 라벨은 지시선으로 둔다."
+  ],
+  "sourceQuote": "서술형 4) 그림과 같은 정사각형 $ABCD$를 $\\overline{HI}$를 접는 선으로 하여 꼭짓점 $C$가 $\\overline{AD}$ 위의 점 $E$에 오도록 접었다. 다음 물음에 답하시오. [5점]\n(1) 닮음인 삼각형 한 쌍을 찾아 기호로 나타내고, 닮음 조건을 쓰시오. [2점]\n(2) $\\overline{AE}$의 길이를 구하시오. [1점]\n(3) $\\overline{AF}$의 길이를 구하는 과정을 자세히 쓰시오. [2점]",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "정사각형 외곽과 접는 선 HI, 접힌 삼각형 HGE 및 △AEF/△DIE를 구분한다. F는 GE와 AB의 실제 교점으로 둔다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dDI",
+        "from": "D",
+        "to": "I",
+        "label": "6",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dIC",
+        "from": "I",
+        "to": "C",
+        "label": "10",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dDE",
+        "from": "D",
+        "to": "E",
+        "label": "8",
+        "side": "ABOVE",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "af",
+        "at": [
+          1.2,
+          10.7
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

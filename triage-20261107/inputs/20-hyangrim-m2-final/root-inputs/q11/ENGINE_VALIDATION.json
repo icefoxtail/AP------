@@ -1,0 +1,384 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "797fa311a757e9597359bd014917f4e6ff228c853dbfdcf82a50ab7413b23f80",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "H",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 5,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "H"
+    ],
+    "conditionAuditCount": 5
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "16"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          16.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "11",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          5.5,
+          5.809475019311125
+        ],
+        "precisionDigits": 17
+      },
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "7"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          7.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "H": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "11",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          5.5,
+          0.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {},
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "AD7",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "7"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "7"
+        }
+      },
+      {
+        "id": "DB9",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "9"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      },
+      {
+        "id": "AC8",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "8"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "BC12",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "12"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "CD6",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "6"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "H",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "H"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "AD7",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "7"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "7"
+      }
+    },
+    {
+      "id": "DB9",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "9"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "9"
+      }
+    },
+    {
+      "id": "AC8",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "8"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "8"
+      }
+    },
+    {
+      "id": "BC12",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "12"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "12"
+      }
+    },
+    {
+      "id": "CD6",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "6"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "6"
+      }
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

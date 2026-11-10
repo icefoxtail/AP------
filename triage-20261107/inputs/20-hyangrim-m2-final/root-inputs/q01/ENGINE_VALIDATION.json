@@ -1,0 +1,729 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "bec3aaf3fa04affab7a29e6990cb654dc32120cd500510ac97ffcfddf6e14e51",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "I",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "E",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "F",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 11,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "I",
+      "incircle",
+      "lineAB",
+      "lineBC",
+      "lineCA"
+    ],
+    "conditionAuditCount": 6
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "8"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          8.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          1.5,
+          8.874119674649425
+        ],
+        "precisionDigits": 17
+      },
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          3.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "E": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "111",
+            "denominator": "22"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "15",
+                "denominator": "22"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          5.045454545454546,
+          4.033690761204284
+        ],
+        "precisionDigits": 17
+      },
+      "F": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          0.5,
+          2.958039891549808
+        ],
+        "precisionDigits": 17
+      },
+      "I": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "7"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          3.0,
+          2.53546276418555
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "lineAB": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "lineBC": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "-13",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          -8.874119674649425,
+          -6.5,
+          70.9929573971954
+        ]
+      },
+      "lineCA": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          8.874119674649425,
+          -1.5,
+          0.0
+        ]
+      }
+    },
+    "circles": {
+      "incircle": {
+        "centerExact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "7"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "35"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "radiusExact": {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "35"
+                }
+              ]
+            }
+          ]
+        },
+        "approximation": [
+          3.0,
+          2.53546276418555,
+          2.53546276418555
+        ]
+      }
+    },
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "AB8",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "8"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "AF3",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "3"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "3"
+        }
+      },
+      {
+        "id": "CE6",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "6"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "touchD",
+        "sourceConditionId": "c1",
+        "kind": "TANGENCY_AT_POINT",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_CIRCLE",
+          "TANGENT_CONTAINS_CONTACT",
+          "TANGENT_PERPENDICULAR_TO_RADIUS"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      },
+      {
+        "id": "touchE",
+        "sourceConditionId": "c1",
+        "kind": "TANGENCY_AT_POINT",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_CIRCLE",
+          "TANGENT_CONTAINS_CONTACT",
+          "TANGENT_PERPENDICULAR_TO_RADIUS"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      },
+      {
+        "id": "touchF",
+        "sourceConditionId": "c1",
+        "kind": "TANGENCY_AT_POINT",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_CIRCLE",
+          "TANGENT_CONTAINS_CONTACT",
+          "TANGENT_PERPENDICULAR_TO_RADIUS"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "E",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "F",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "I",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "dependencies": [
+          "I"
+        ]
+      },
+      {
+        "nodeId": "lineAB",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "lineBC",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "nodeId": "lineCA",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "C"
+        ]
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "I",
+      "incircle",
+      "lineAB",
+      "lineBC",
+      "lineCA"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "AB8",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "8"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "8"
+      }
+    },
+    {
+      "id": "AF3",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "3"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "3"
+      }
+    },
+    {
+      "id": "CE6",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "6"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "6"
+      }
+    },
+    {
+      "id": "touchD",
+      "sourceConditionId": "c1",
+      "kind": "TANGENCY_AT_POINT",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE",
+        "TANGENT_CONTAINS_CONTACT",
+        "TANGENT_PERPENDICULAR_TO_RADIUS"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "touchE",
+      "sourceConditionId": "c1",
+      "kind": "TANGENCY_AT_POINT",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE",
+        "TANGENT_CONTAINS_CONTACT",
+        "TANGENT_PERPENDICULAR_TO_RADIUS"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "touchF",
+      "sourceConditionId": "c1",
+      "kind": "TANGENCY_AT_POINT",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE",
+        "TANGENT_CONTAINS_CONTACT",
+        "TANGENT_PERPENDICULAR_TO_RADIUS"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

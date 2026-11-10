@@ -1,0 +1,547 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "c00415f10086fb7182a2a48426d64de3e4ab91465742dddb4a18bfb4fb3d5237",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "L0",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "M0",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N0",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "L1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "M1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 9,
+    "dependencyOrder": [
+      "L0",
+      "L1",
+      "M0",
+      "M1",
+      "N0",
+      "N1",
+      "parallelL",
+      "parallelM",
+      "parallelN"
+    ],
+    "conditionAuditCount": 6
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "L0": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "L1": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "30"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          30.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "M0": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "15"
+          }
+        ],
+        "approximation": [
+          0.0,
+          15.0
+        ],
+        "precisionDigits": 17
+      },
+      "M1": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "30"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "7"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "integer",
+            "value": "15"
+          }
+        ],
+        "approximation": [
+          16.771243444677047,
+          15.0
+        ],
+        "precisionDigits": 17
+      },
+      "N0": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "27"
+          }
+        ],
+        "approximation": [
+          0.0,
+          27.0
+        ],
+        "precisionDigits": 17
+      },
+      "N1": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "30"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-9"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "7"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "integer",
+            "value": "27"
+          }
+        ],
+        "approximation": [
+          6.188238200418684,
+          27.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "parallelL": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "parallelM": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "-15"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          -15.0
+        ]
+      },
+      "parallelN": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "-27"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          -27.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "leftLN27",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "27"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "27"
+        }
+      },
+      {
+        "id": "leftMN12",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "12"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "rightLM20",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "20"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "20"
+        }
+      },
+      {
+        "id": "rightMN16",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "16"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "16"
+        }
+      },
+      {
+        "id": "LMparallel",
+        "sourceConditionId": "c1",
+        "kind": "PARALLEL",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PARALLEL"
+        ],
+        "observed": true
+      },
+      {
+        "id": "MNparallel",
+        "sourceConditionId": "c1",
+        "kind": "PARALLEL",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PARALLEL"
+        ],
+        "observed": true
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "L0",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "L1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "M0",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "M1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N0",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "parallelL",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "L0",
+          "L1"
+        ]
+      },
+      {
+        "nodeId": "parallelM",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "M0",
+          "M1"
+        ]
+      },
+      {
+        "nodeId": "parallelN",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "N0",
+          "N1"
+        ]
+      }
+    ],
+    "order": [
+      "L0",
+      "L1",
+      "M0",
+      "M1",
+      "N0",
+      "N1",
+      "parallelL",
+      "parallelM",
+      "parallelN"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "leftLN27",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "27"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "27"
+      }
+    },
+    {
+      "id": "leftMN12",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "12"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "12"
+      }
+    },
+    {
+      "id": "rightLM20",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "20"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "20"
+      }
+    },
+    {
+      "id": "rightMN16",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "16"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "16"
+      }
+    },
+    {
+      "id": "LMparallel",
+      "sourceConditionId": "c1",
+      "kind": "PARALLEL",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PARALLEL"
+      ],
+      "observed": true
+    },
+    {
+      "id": "MNparallel",
+      "sourceConditionId": "c1",
+      "kind": "PARALLEL",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PARALLEL"
+      ],
+      "observed": true
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

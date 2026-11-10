@@ -1,0 +1,384 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "23fac9c74661f618fc12c9ec8b106ca10cc4e90d20971e6e48fed4d02da52baa",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 6,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "ADline",
+      "BCline"
+    ],
+    "conditionAuditCount": 5
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "16"
+          },
+          {
+            "kind": "integer",
+            "value": "12"
+          }
+        ],
+        "approximation": [
+          16.0,
+          12.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "25"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          25.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "16"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          16.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "ADline": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "-16"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          -16.0
+        ]
+      },
+      "BCline": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "BD16",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "16"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "16"
+        }
+      },
+      {
+        "id": "AD12",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "12"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "AB20",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "20"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "20"
+        }
+      },
+      {
+        "id": "DC9",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "9"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      },
+      {
+        "id": "heightPerp",
+        "sourceConditionId": "c1",
+        "kind": "PERPENDICULAR",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PERPENDICULAR"
+        ],
+        "observed": true
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "ADline",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "D"
+        ]
+      },
+      {
+        "nodeId": "BCline",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "ADline",
+      "BCline"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "BD16",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "16"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "16"
+      }
+    },
+    {
+      "id": "AD12",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "12"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "12"
+      }
+    },
+    {
+      "id": "AB20",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "20"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "20"
+      }
+    },
+    {
+      "id": "DC9",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "9"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "9"
+      }
+    },
+    {
+      "id": "heightPerp",
+      "sourceConditionId": "c1",
+      "kind": "PERPENDICULAR",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PERPENDICULAR"
+      ],
+      "observed": true
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

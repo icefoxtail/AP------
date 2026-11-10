@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "BD16",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "16"
+        }
+      },
+      {
+        "id": "AD12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "AB20",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "20"
+        }
+      },
+      {
+        "id": "DC9",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      },
+      {
+        "id": "heightPerp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "ADline",
+          "BCline"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "caption": "AD⊥BC, BD=16, AD=12에서 AD²=BD·DC이므로 y=DC=9이다. △ABD에서 AB=x=20이므로 x−y=11, 정답 ③이다.",
+  "accessibilityDescription": "AD⊥BC, BD=16, AD=12에서 AD²=BD·DC이므로 y=DC=9이다. △ABD에서 AB=x=20이므로 x−y=11, 정답 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD⊥BC, ∠BAC=90°, BD=16, AD=12, x=AB, y=DC이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 ABC의 빗변 BC 위 높이 AD와 발 D, x=AB, y=DC를 표시한다."
+  ],
+  "sourceQuote": "다음 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AD}\\perp\\overline{BC}$일 때, $x-y$의 값은? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "B-D-C를 수평으로 두고 A를 D 위에 둔다. 높이와 빗변을 명확히 구분.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "16",
+        "side": "BELOW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "12",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "xAB",
+        "at": [
+          7.2,
+          6.5
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yDC",
+        "at": [
+          20.4,
+          1.2
+        ],
+        "text": "y",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ]
+}

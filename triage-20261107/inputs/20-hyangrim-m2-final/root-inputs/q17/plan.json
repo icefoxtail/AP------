@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Gp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "Mmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "M",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "AD12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "GGp4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "G",
+          "Gp"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "G",
+    "Gp"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "DM",
+      "refs": [
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "GGp",
+      "refs": [
+        "G",
+        "Gp"
+      ]
+    }
+  ],
+  "caption": "M은 BC의 중점이고 G/G′는 두 삼각형의 무게중심이다. △MAD에서 MG:MA=MG′:MD=1:3이므로 GG′∥AD, GG′:AD=1:3이다. AD=12에서 GG′=4 cm, 정답 ②이다.",
+  "accessibilityDescription": "M은 BC의 중점이고 G/G′는 두 삼각형의 무게중심이다. △MAD에서 MG:MA=MG′:MD=1:3이므로 GG′∥AD, GG′:AD=1:3이다. AD=12에서 GG′=4 cm, 정답 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "M은 BC 중점, G/G′는 각 삼각형의 무게중심, AD=12 cm이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 삼각형 ABC/DBC의 무게중심 G/G′, 공통 밑변 BC, AD 및 GG′를 표시한다. 직사각형 모양은 도식 예시이며 원문이 직각을 주는 것은 아니다."
+  ],
+  "sourceQuote": "다음 그림에서 점 $G$, $G'$은 각각 $\\triangle ABC$와 $\\triangle DBC$의 무게중심일 때, $\\overline{GG'}$의 길이는? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "BC를 수평으로 두고 A/D를 위에 배치한다. GG′는 AD와 평행한 짧은 내부 선분으로 보인다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "12",
+        "side": "ABOVE",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dGGp",
+        "from": "G",
+        "to": "Gp",
+        "label": "4",
+        "side": "ABOVE",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ]
+  }
+}

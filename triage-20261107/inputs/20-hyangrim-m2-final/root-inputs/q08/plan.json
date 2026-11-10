@@ -1,0 +1,396 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AC1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AC2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-23"
+            },
+            {
+              "kind": "integer",
+              "value": "-15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-23"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BC1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BC2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AC15",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "15"
+        }
+      },
+      {
+        "id": "AB17",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "17"
+        }
+      },
+      {
+        "id": "BC8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "AC1",
+    "AC2",
+    "AB1",
+    "AB2",
+    "BC1",
+    "BC2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AAC1",
+      "refs": [
+        "A",
+        "AC1"
+      ]
+    },
+    {
+      "id": "AC1AC2",
+      "refs": [
+        "AC1",
+        "AC2"
+      ]
+    },
+    {
+      "id": "AC2C",
+      "refs": [
+        "AC2",
+        "C"
+      ]
+    },
+    {
+      "id": "AAB1",
+      "refs": [
+        "A",
+        "AB1"
+      ]
+    },
+    {
+      "id": "AB1AB2",
+      "refs": [
+        "AB1",
+        "AB2"
+      ]
+    },
+    {
+      "id": "AB2B",
+      "refs": [
+        "AB2",
+        "B"
+      ]
+    },
+    {
+      "id": "BBC1",
+      "refs": [
+        "B",
+        "BC1"
+      ]
+    },
+    {
+      "id": "BC1BC2",
+      "refs": [
+        "BC1",
+        "BC2"
+      ]
+    },
+    {
+      "id": "BC2C",
+      "refs": [
+        "BC2",
+        "C"
+      ]
+    }
+  ],
+  "caption": "AC²=225이므로 AC=15, AB²=289이므로 AB=17이다. ∠ACB=90°이므로 BC²=17²−15²=64, BC=8이고 [ABC]=60 cm², 정답 ④이다.",
+  "accessibilityDescription": "AC²=225이므로 AC=15, AB²=289이므로 AB=17이다. ∠ACB=90°이므로 BC²=17²−15²=64, BC=8이고 [ABC]=60 cm², 정답 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직각삼각형 ABC의 변 바깥 정사각형 넓이 중 AC 쪽은 225, AB 쪽은 289이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 세 변 바깥의 정사각형을 표시한다. 225와 289는 원문에 주어진 넓이이며 세 번째 정사각형 넓이 64는 풀이에서 얻는다."
+  ],
+  "sourceQuote": "다음 그림은 직각삼각형 $ABC$의 세 변을 각각 한 변으로 하는 정사각형을 그린 것이다. $\\square{}ACHI=225\\text{ cm}^2$, $\\square ADEB=289\\text{ cm}^2$일 때, $\\triangle ABC$의 넓이는? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "세 정사각형을 각 변 바깥에 붙인다. 정사각형 면적 수는 각 내부에 표기.",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "areaAC",
+        "at": [
+          -8,
+          11
+        ],
+        "text": "225",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "areaAB",
+        "at": [
+          -17,
+          -17
+        ],
+        "text": "289",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "areaBC",
+        "at": [
+          5,
+          -5
+        ],
+        "text": "64",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ]
+}

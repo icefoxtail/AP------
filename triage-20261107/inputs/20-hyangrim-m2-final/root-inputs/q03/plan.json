@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "OA2",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "OB2",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "OC3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "3"
+        }
+      },
+      {
+        "id": "OD3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "caption": "OA=OB=2, OC=OD=3이지만 OA≠OC, OB≠OD이다. 따라서 서로 다른 대각선의 반쪽끼리 같은 조건만으로 평행사변형이라고 할 수 없으므로 정답 ②이다.",
+  "accessibilityDescription": "OA=OB=2, OC=OD=3이지만 OA≠OC, OB≠OD이다. 따라서 서로 다른 대각선의 반쪽끼리 같은 조건만으로 평행사변형이라고 할 수 없으므로 정답 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반례 사각형에서 O는 AC와 BD의 교점이고 OA=OB=2, OC=OD=3이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "O에서 교차하는 대각선과 사각형을 표시하고 OA=OB 및 OC=OD만 표시한다. 사각형은 평행사변형이라고 표기하지 않는다."
+  ],
+  "sourceQuote": "다음 $\\square ABCD$에서 평행사변형이 아닌 것을 고르면? (단, 점 $O$는 두 대각선 $AC$와 $BD$의 교점이다.) (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "대각선이 O에서 수직으로 만나며 작은 두 반쪽과 큰 두 반쪽의 표식을 다르게 한다.",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "pair2",
+        "count": 1,
+        "segments": [
+          "AO",
+          "BO"
+        ]
+      },
+      {
+        "id": "pair3",
+        "count": 2,
+        "segments": [
+          "CO",
+          "DO"
+        ]
+      }
+    ]
+  }
+}

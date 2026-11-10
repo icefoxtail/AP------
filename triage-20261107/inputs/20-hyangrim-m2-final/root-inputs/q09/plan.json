@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-868241",
+              "denominator": "500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4924039",
+              "denominator": "500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4131759",
+              "denominator": "500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4924039",
+              "denominator": "500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6003427",
+              "denominator": "995405"
+            },
+            {
+              "kind": "rational",
+              "numerator": "13702580",
+              "denominator": "608773"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "caption": "평행사변형에서 ∠D=∠B=80°, ∠ACD=50°라서 ∠DAC=50°이다. AE가 이를 이등분하므로 y=25°, x=80°이고 x−y=55°, 정답 ③이다.",
+  "accessibilityDescription": "평행사변형에서 ∠D=∠B=80°, ∠ACD=50°라서 ∠DAC=50°이다. AE가 이를 이등분하므로 y=25°, x=80°이고 x−y=55°, 정답 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행사변형 ABCD에서 ∠B=80°, ∠ACD=50°, AE는 ∠DAC 이등분선이고 E는 BC 연장선에 있다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형 ABCD, 대각선 AC, BC 연장선 위 E와 ∠DAC의 이등분선 AE를 표시한다. 좌표는 각도 배치용 근사이며 정확한 원문 각도값을 사용한다."
+  ],
+  "sourceQuote": "다음 평행사변형 $ABCD$에서 $\\angle DAC$의 이등분선이 $\\overline{BC}$의 연장선과 만나는 점을 $E$라고 하자. $\\angle B=80^\\circ$, $\\angle ACD=50^\\circ$일 때, $\\angle x-\\angle y$의 값은? (5점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "BC를 C 너머까지 연장하고 AE를 AC와 AD 사이에 둔다. x/y 라벨을 분리.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenB80",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 80,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "givenACD50",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 50,
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "x",
+        "at": [
+          8.0,
+          12.0
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "at": [
+          6.6,
+          20.6
+        ],
+        "text": "y",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

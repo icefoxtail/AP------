@@ -1,0 +1,489 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "11"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "11"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "31",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "11"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "11"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DFline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BEline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "Dmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "Emid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "Fmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "C",
+          "F",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "DF9",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "F"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      },
+      {
+        "id": "EF5",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "E",
+          "F"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        }
+      },
+      {
+        "id": "BG12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "G"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "AC20",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "20"
+        }
+      },
+      {
+        "id": "DFparallelBE",
+        "kind": "PARALLEL",
+        "refs": [
+          "DFline",
+          "BEline"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    }
+  ],
+  "caption": "D/E/F는 각각 BC/AC/CE의 중점이고 G는 무게중심이다. DF=9에서 BE=18, BG=12이다. EF=5에서 CE=10, AC=20이므로 x+y=32, 정답 ②이다.",
+  "accessibilityDescription": "D/E/F는 각각 BC/AC/CE의 중점이고 G는 무게중심이다. DF=9에서 BE=18, BG=12이다. EF=5에서 CE=10, AC=20이므로 x+y=32, 정답 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "D/E/F는 BC/AC/CE의 중점, G는 △ABC의 무게중심, DF=9, EF=5, x=BG, y=AC이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "△ABC의 중선 AD/BE, D/E/F, 무게중심 G를 표시한다. DF∥BE, DF=9, EF=5, BG=x, AC=y를 표시하고 가까운 라벨은 지시선으로 뺀다."
+  ],
+  "sourceQuote": "다음 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고 $\\overline{BE}\\parallel\\overline{DF}$일 때, $x+y$의 값은? (5점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "BC를 바닥에 두고 A는 위쪽 오른편에 둔다. D/E/F/G를 확대해 라벨이 겹치지 않도록 한다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dDF",
+        "from": "D",
+        "to": "F",
+        "label": "9",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dEF",
+        "from": "E",
+        "to": "F",
+        "label": "5",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "x",
+        "at": [
+          6.0,
+          2.8
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "at": [
+          10.2,
+          10.5
+        ],
+        "text": "y",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "27"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "30"
+                },
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "7"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "30"
+                },
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "7"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "9"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "27"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parallelL",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "L0",
+          "L1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parallelM",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "M0",
+          "M1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parallelN",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "N0",
+          "N1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "leftLN27",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "L0",
+          "N0"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "27"
+        }
+      },
+      {
+        "id": "leftMN12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "M0",
+          "N0"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "rightLM20",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "L1",
+          "M1"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "20"
+        }
+      },
+      {
+        "id": "rightMN16",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "M1",
+          "N1"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "16"
+        }
+      },
+      {
+        "id": "LMparallel",
+        "kind": "PARALLEL",
+        "refs": [
+          "parallelL",
+          "parallelM"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "MNparallel",
+        "kind": "PARALLEL",
+        "refs": [
+          "parallelM",
+          "parallelN"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L0",
+    "M0",
+    "N0",
+    "L1",
+    "M1",
+    "N1"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "line_l",
+      "refs": [
+        "L0",
+        "L1"
+      ]
+    },
+    {
+      "id": "line_m",
+      "refs": [
+        "M0",
+        "M1"
+      ]
+    },
+    {
+      "id": "line_n",
+      "refs": [
+        "N0",
+        "N1"
+      ]
+    },
+    {
+      "id": "L0M0",
+      "refs": [
+        "L0",
+        "M0"
+      ]
+    },
+    {
+      "id": "M0N0",
+      "refs": [
+        "M0",
+        "N0"
+      ]
+    },
+    {
+      "id": "L0N0",
+      "refs": [
+        "L0",
+        "N0"
+      ]
+    },
+    {
+      "id": "L1M1",
+      "refs": [
+        "L1",
+        "M1"
+      ]
+    },
+    {
+      "id": "M1N1",
+      "refs": [
+        "M1",
+        "N1"
+      ]
+    }
+  ],
+  "caption": "왼쪽 횡선에서 l–m=27−12=15이다. 대응선분의 비 20:x=15:12에서 x=16, 정답 ⑤이다.",
+  "accessibilityDescription": "왼쪽 횡선에서 l–m=27−12=15이다. 대응선분의 비 20:x=15:12에서 x=16, 정답 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "l,m,n은 평행하고 왼쪽 횡선 l–n=27, m–n=12, 오른쪽 횡선 l–m=20이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 평행선 l/m/n과 두 횡선을 그린다. 왼쪽 전체 l–n=27, m–n=12 및 오른쪽 l–m=20, m–n=x를 대응 위치에 표시한다."
+  ],
+  "sourceQuote": "다음 그림에서 $l\\parallel m\\parallel n$일 때, $x$의 값은? (3점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "세 수평 평행선에 왼쪽 수직 횡선과 오른쪽 사선 횡선을 그린다. 각 길이 라벨이 대응 위치인지 확인한다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dL0N0",
+        "from": "L0",
+        "to": "N0",
+        "label": "27",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dM0N0",
+        "from": "M0",
+        "to": "N0",
+        "label": "12",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dL1M1",
+        "from": "L1",
+        "to": "M1",
+        "label": "20",
+        "side": "ABOVE",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "x",
+        "at": [
+          1.8,
+          21.3
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "at": [
+          32,
+          1
+        ],
+        "text": "l",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "at": [
+          18,
+          15.8
+        ],
+        "text": "m",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "n",
+        "at": [
+          8,
+          28
+        ],
+        "text": "n",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

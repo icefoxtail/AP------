@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "ABparallelDC",
+        "kind": "PARALLEL",
+        "refs": [
+          "ABline",
+          "DCline"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "BCparallelAD",
+        "kind": "PARALLEL",
+        "refs": [
+          "BCline",
+          "ADline"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "caption": "AB∥DC이므로 ∠BAC=∠DCA이고 BC∥AD이므로 ∠BCA=∠DAC이다. AC는 공통변이므로 △ABC≅△CDA이며 대응변의 길이가 각각 같다.",
+  "accessibilityDescription": "AB∥DC이므로 ∠BAC=∠DCA이고 BC∥AD이므로 ∠BCA=∠DAC이다. AC는 공통변이므로 △ABC≅△CDA이며 대응변의 길이가 각각 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행사변형 ABCD의 대각선 AC를 그어 △ABC와 △CDA를 비교한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형 ABCD와 대각선 AC를 표시한다. 두 쌍의 평행한 대변과 엇각 관계가 드러나도록 배치한다."
+  ],
+  "sourceQuote": "서술형 1) 다음 보기는 「평행사변형 $ABCD$의 두 쌍의 대변의 길이가 각각 같음」을 설명한 것이다. 빈칸 안에 알맞은 문장 또는 기호를 정확하게 쓰시오. [5점]\n<보기>\n그림과 같이 평행사변형 $ABCD$에서 대각선 $AC$를 그으면 $\\triangle ABC$와 $\\triangle CDA$에서\n$\\overline{AB}\\parallel\\overline{DC}$이므로 $\\angle BAC=\\angle DCA$ (엇각) …… ㉠\n(1) [빈칸] (엇각) …… ㉡ [2점]\n$\\overline{AC}$는 공통인 변 …… ㉢\n이다. ㉠, ㉡, ㉢에 의해 한 대응변의 길이가 같고, 그 양 끝 각의 크기가 각각 같으므로 (2) [빈칸]이다. [1점]\n따라서 $\\overline{AB}=\\overline{CD}$, $\\overline{BC}=\\overline{DA}$이므로 평행사변형 $ABCD$의 두 쌍의 (3) [빈칸]. [2점]",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "사각형 꼭짓점은 A-B-C-D 순서의 평행사변형으로 그리고 AC 대각선을 표시."
+}

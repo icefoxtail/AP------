@@ -1,0 +1,500 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "315"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "315"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "111",
+              "denominator": "22"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "315"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "22"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "315"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "315"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "7"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AB8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "AF3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "F"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "3"
+        }
+      },
+      {
+        "id": "CE6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "touchD",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "incircle",
+          "D",
+          "lineAB"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "touchE",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "incircle",
+          "E",
+          "lineBC"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "touchF",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "incircle",
+          "F",
+          "lineCA"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "incircle"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "ID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "IE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "IF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "caption": "내심 I의 내접원과 접점 D/E/F를 표시한다. AB=8, AF=3, CE=6에서 AD=3, BD=BE=5, CE=CF=6이므로 BE+CF=11 cm, 정답 ④이다.",
+  "accessibilityDescription": "내심 I의 내접원과 접점 D/E/F를 표시한다. AB=8, AF=3, CE=6에서 AD=3, BD=BE=5, CE=CF=6이므로 BE+CF=11 cm, 정답 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "△ABC의 내심 I, D/E/F는 각각 AB/BC/CA의 접점이고 AB=8, AF=3, CE=6이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "△ABC와 내접원, 세 접점을 표시한다. 주어진 AB=8, AF=3, CE=6을 나타내고 접선 길이 같은 쌍은 서로 다른 표식으로 표시한다."
+  ],
+  "sourceQuote": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심일 때, $\\overline{BE}$의 길이와 $\\overline{CF}$의 길이의 합은? (3점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "삼각형과 원은 넉넉히 배치하고 접점 라벨은 변에 닿지 않게 지시선으로 분리.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "BELOW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dAF",
+        "from": "A",
+        "to": "F",
+        "label": "3",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dCE",
+        "from": "C",
+        "to": "E",
+        "label": "6",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "sameA",
+        "count": 1,
+        "segments": [
+          "AD",
+          "AF"
+        ]
+      },
+      {
+        "id": "sameB",
+        "count": 1,
+        "segments": [
+          "BD",
+          "BE"
+        ]
+      },
+      {
+        "id": "sameC",
+        "count": 2,
+        "segments": [
+          "CE",
+          "CF"
+        ]
+      }
+    ]
+  }
+}

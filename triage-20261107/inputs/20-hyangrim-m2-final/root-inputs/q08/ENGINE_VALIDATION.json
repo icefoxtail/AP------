@@ -1,0 +1,417 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "f28a95d4e9f0758c928806f02890a8bc276f71848df7ce9aba0cf724a4c7f90c",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "AC1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "AC2",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "AB1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "AB2",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "BC1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "BC2",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 9,
+    "dependencyOrder": [
+      "A",
+      "AB1",
+      "AB2",
+      "AC1",
+      "AC2",
+      "B",
+      "BC1",
+      "BC2",
+      "C"
+    ],
+    "conditionAuditCount": 3
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-15"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          -15.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "AB1": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-23"
+          },
+          {
+            "kind": "integer",
+            "value": "-15"
+          }
+        ],
+        "approximation": [
+          -23.0,
+          -15.0
+        ],
+        "precisionDigits": 17
+      },
+      "AB2": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-8"
+          },
+          {
+            "kind": "integer",
+            "value": "-23"
+          }
+        ],
+        "approximation": [
+          -8.0,
+          -23.0
+        ],
+        "precisionDigits": 17
+      },
+      "AC1": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-15"
+          },
+          {
+            "kind": "integer",
+            "value": "15"
+          }
+        ],
+        "approximation": [
+          -15.0,
+          15.0
+        ],
+        "precisionDigits": 17
+      },
+      "AC2": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "15"
+          }
+        ],
+        "approximation": [
+          0.0,
+          15.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "-8"
+          }
+        ],
+        "approximation": [
+          0.0,
+          -8.0
+        ],
+        "precisionDigits": 17
+      },
+      "BC1": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "8"
+          },
+          {
+            "kind": "integer",
+            "value": "-8"
+          }
+        ],
+        "approximation": [
+          8.0,
+          -8.0
+        ],
+        "precisionDigits": 17
+      },
+      "BC2": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "8"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          8.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {},
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "AC15",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "15"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "15"
+        }
+      },
+      {
+        "id": "AB17",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "17"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "17"
+        }
+      },
+      {
+        "id": "BC8",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "8"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "AB1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "AB2",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "AC1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "AC2",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "BC1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "BC2",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      }
+    ],
+    "order": [
+      "A",
+      "AB1",
+      "AB2",
+      "AC1",
+      "AC2",
+      "B",
+      "BC1",
+      "BC2",
+      "C"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "AC15",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "15"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "15"
+      }
+    },
+    {
+      "id": "AB17",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "17"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "17"
+      }
+    },
+    {
+      "id": "BC8",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "8"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "8"
+      }
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

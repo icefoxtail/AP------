@@ -1,0 +1,330 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "bfa5ccfd12ef34cd513ff5e48af064a652d0c0ef1e40183818acce8bacbbc9fb",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 8,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "ABline",
+      "ADline",
+      "BCline",
+      "DCline"
+    ],
+    "conditionAuditCount": 2
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "8"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          8.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "11"
+          },
+          {
+            "kind": "integer",
+            "value": "5"
+          }
+        ],
+        "approximation": [
+          11.0,
+          5.0
+        ],
+        "precisionDigits": 17
+      },
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "5"
+          }
+        ],
+        "approximation": [
+          3.0,
+          5.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "ABline": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "ADline": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-5"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          -5.0,
+          3.0,
+          0.0
+        ]
+      },
+      "BCline": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-5"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "40"
+          }
+        ],
+        "approximation": [
+          -5.0,
+          3.0,
+          40.0
+        ]
+      },
+      "DCline": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "-5"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          -5.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "ABparallelDC",
+        "sourceConditionId": "c1",
+        "kind": "PARALLEL",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PARALLEL"
+        ],
+        "observed": true
+      },
+      {
+        "id": "BCparallelAD",
+        "sourceConditionId": "c1",
+        "kind": "PARALLEL",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PARALLEL"
+        ],
+        "observed": true
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "ABline",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "ADline",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "D"
+        ]
+      },
+      {
+        "nodeId": "BCline",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "nodeId": "DCline",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "C",
+          "D"
+        ]
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "ABline",
+      "ADline",
+      "BCline",
+      "DCline"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "ABparallelDC",
+      "sourceConditionId": "c1",
+      "kind": "PARALLEL",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PARALLEL"
+      ],
+      "observed": true
+    },
+    {
+      "id": "BCparallelAD",
+      "sourceConditionId": "c1",
+      "kind": "PARALLEL",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PARALLEL"
+      ],
+      "observed": true
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

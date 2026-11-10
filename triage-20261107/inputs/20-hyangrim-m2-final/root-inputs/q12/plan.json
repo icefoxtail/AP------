@@ -1,0 +1,394 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DEline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AB12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "AD8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "AE6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "BC9",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      },
+      {
+        "id": "DE6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "AC9",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      },
+      {
+        "id": "DEparallelBC",
+        "kind": "PARALLEL",
+        "refs": [
+          "DEline",
+          "BCline"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "caption": "AD:AB=8:12=2:3, DE∥BC이므로 △ADE∼△ABC이다. DE:BC=AE:AC=2:3에서 x=6, y=9이고 x+y=15, 정답 ③이다.",
+  "accessibilityDescription": "AD:AB=8:12=2:3, DE∥BC이므로 △ADE∼△ABC이다. DE:BC=AE:AC=2:3에서 x=6, y=9이고 x+y=15, 정답 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "D∈AB, E∈AC, DE∥BC, AD=8, AB=12, AE=6, BC=9이며 DE=x, AC=y이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "△ABC 안의 D/E와 DE∥BC를 표시한다. AB=12, AD=8, AE=6, BC=9, DE=x, AC=y를 원문대로 나타낸다."
+  ],
+  "sourceQuote": "다음 $\\triangle ABC$에서 $\\overline{BC}\\parallel\\overline{DE}$일 때, $x+y$의 값은? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "A 위쪽, BC 아래쪽으로 두고 DE는 BC와 평행한 내부 선분으로 배치.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "BELOW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "8",
+        "side": "ABOVE",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dAE",
+        "from": "A",
+        "to": "E",
+        "label": "6",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "9",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "x",
+        "at": [
+          5.7,
+          4.6
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "at": [
+          2.3,
+          6.0
+        ],
+        "text": "y",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

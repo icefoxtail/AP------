@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2747477",
+              "denominator": "200000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "454963",
+              "denominator": "250000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "BI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "CI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "caption": "BI는 ∠B의 이등분선이므로 ∠B=70°이다. ∠C=70°이므로 ∠A=40°이고 AI도 이등분선이므로 ∠IAC=20°, 정답 ①이다.",
+  "accessibilityDescription": "BI는 ∠B의 이등분선이므로 ∠B=70°이다. ∠C=70°이므로 ∠A=40°이고 AI도 이등분선이므로 ∠IAC=20°, 정답 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "I는 △ABC의 내심이고 ∠IBA=35°, ∠C=70°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC와 세 이등분선의 교점 I를 표시한다. 비정수 각도 좌표는 그림 배치용 근사이며 35°와 70° 표기는 정확한 원문 값이다."
+  ],
+  "sourceQuote": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\angle IBA=35^\\circ$, $\\angle C=70^\\circ$일 때, $\\angle IAC$의 크기는? (3점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "좌우 대칭에 가까운 삼각형을 넓게 그리고 BI, AI를 얇게 그린다. 각도값은 변 라벨과 떨어뜨린다.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenIBA35",
+        "refs": [
+          "I",
+          "B",
+          "A"
+        ],
+        "value": 35,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "givenC70",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 70,
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

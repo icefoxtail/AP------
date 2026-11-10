@@ -1,0 +1,451 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "Dmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "Emid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "Fmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "C",
+          "F",
+          "A"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "AB4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      },
+      {
+        "id": "BC6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "CA8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "A"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "caption": "D/E/F는 각각 AB/BC/CA의 중점이므로 중점삼각형의 둘레는 (4+6+8)/2=9 cm, 정답 ⑤이다.",
+  "accessibilityDescription": "D/E/F는 각각 AB/BC/CA의 중점이므로 중점삼각형의 둘레는 (4+6+8)/2=9 cm, 정답 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "△ABC에서 AB=4, BC=6, CA=8이고 D/E/F는 각 변의 중점이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "△ABC의 각 변 중점 D/E/F와 중점삼각형 DEF를 표시하고 변 AB=4, BC=6, CA=8을 나타낸다."
+  ],
+  "sourceQuote": "다음 $\\triangle ABC$에서 세 변의 중점을 각각 $D$, $E$, $F$라 할 때, $\\triangle DEF$의 둘레의 길이는? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "삼각형 안쪽에 중점삼각형을 둔다. 중점 라벨을 변 위 표시와 겹치지 않게 둔다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "4",
+        "side": "BELOW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dCA",
+        "from": "C",
+        "to": "A",
+        "label": "8",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "mAB",
+        "count": 1,
+        "segments": [
+          "AD",
+          "DB"
+        ]
+      },
+      {
+        "id": "mBC",
+        "count": 2,
+        "segments": [
+          "BE",
+          "EC"
+        ]
+      },
+      {
+        "id": "mCA",
+        "count": 3,
+        "segments": [
+          "CF",
+          "FA"
+        ]
+      }
+    ]
+  }
+}

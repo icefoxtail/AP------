@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2097749",
+              "denominator": "250000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2097749",
+              "denominator": "250000"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "2097749",
+                  "denominator": "250000"
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CDline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "rectRight",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "ABline",
+          "ADline"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "rectParallel",
+        "kind": "PARALLEL",
+        "refs": [
+          "ABline",
+          "CDline"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "caption": "∠BOC=100°이므로 ∠AOD도 100°이다. △AOD의 밑각 x=40°이고 y=90°−x=50°이므로 y−x=10°, 정답 ④이다.",
+  "accessibilityDescription": "∠BOC=100°이므로 ∠AOD도 100°이다. △AOD의 밑각 x=40°이고 y=90°−x=50°이므로 y−x=10°, 정답 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직사각형 ABCD의 대각선 교점은 O이고 ∠BOC=100°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형 ABCD의 대각선과 교점 O를 표시하고 ∠BOC=100°, x=∠ADO, y=∠DAB를 원본 위치에 맞춰 나타낸다.",
+    "좌표의 너비는 100° 표시를 재현하기 위한 도식용 근사이며, 원문 각도 표기는 정확한 값이다."
+  ],
+  "sourceQuote": "다음 그림과 같은 직사각형 $ABCD$에서 $\\angle BOC=100^\\circ$일 때, $\\angle y-\\angle x$의 값은? (단, 점 $O$는 두 대각선의 교점이다.) (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "직사각형 높이는 너비보다 조금 크게 둔다. x는 D, y는 A, 100°는 O에 둔다.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenBOC100",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 100,
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "x",
+        "at": [
+          1.0,
+          8.2
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "at": [
+          1.2,
+          1.2
+        ],
+        "text": "y",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "Dmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "Emid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "Fmid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "C",
+          "F",
+          "A"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "GD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "caption": "세 중선은 △ABC를 넓이가 같은 여섯 작은 삼각형으로 나눈다. BEGD는 그중 두 개이므로 넓이는 전체의 1/3, 즉 90÷3=30 cm²이고 정답 ①이다.",
+  "accessibilityDescription": "세 중선은 △ABC를 넓이가 같은 여섯 작은 삼각형으로 나눈다. BEGD는 그중 두 개이므로 넓이는 전체의 1/3, 즉 90÷3=30 cm²이고 정답 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "△ABC 넓이는 90 cm², D/E/F는 각 변의 중점이고 G는 세 중선의 교점이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 중선 AD/BE/CF의 교점 G와 사각형 BEGD를 표시하고 이 사각형만 음영 처리한다. [ABC]=90 cm²는 입력 조건이다."
+  ],
+  "sourceQuote": "다음 $\\triangle ABC$에서 점 $D$, $E$, $F$는 세 변의 중점이다. $\\triangle ABC$의 넓이가 $90\\text{ cm}^2$일 때, $\\square BEGD$의 넓이는? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "BEGD가 B를 포함하는 사각형으로 보이고 G/D가 위쪽에 위치하도록 넓게 배치.",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "areaABC",
+        "at": [
+          9.3,
+          8.2
+        ],
+        "text": "90 cm²",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "regions": [
+    {
+      "id": "quadBEGD",
+      "fill": "LIGHT",
+      "factRole": "CONCLUSION",
+      "shapes": [
+        {
+          "polygon": [
+            "B",
+            "E",
+            "G",
+            "D"
+          ]
+        }
+      ]
+    }
+  ]
+}

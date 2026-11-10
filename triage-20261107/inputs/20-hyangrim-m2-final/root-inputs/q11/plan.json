@@ -1,0 +1,339 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AD7",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "7"
+        }
+      },
+      {
+        "id": "DB9",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "D",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      },
+      {
+        "id": "AC8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "BC12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "CD6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "H",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "AB=AD+DB=7+9=16이다. CH⊥AB이고 AH=11/2이므로 CH²=135/4, DH=3/2이다. △CDH에서 CD²=36이므로 CD=6 cm, 정답 ④이다.",
+  "accessibilityDescription": "AB=AD+DB=7+9=16이다. CH⊥AB이고 AH=11/2이므로 CH²=135/4, DH=3/2이다. △CDH에서 CD²=36이므로 CD=6 cm, 정답 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD=7, DB=9, AC=8, BC=12이며 H는 C에서 AB에 내린 수선의 발이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "△ABC와 AB 위의 D/H, C에서 내린 수선 CH를 표시한다. D와 H는 가까우므로 각 라벨을 지시선으로 분리하고 기존 해설 SVG는 건드리지 않는다."
+  ],
+  "sourceQuote": "다음 그림에서 $\\overline{CD}$의 길이를 구하면? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "AB 수평이며 H와 D가 가까운 위치로 실제 비율 유지, 라벨은 지시선으로 배치.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "7",
+        "side": "ABOVE",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dDB",
+        "from": "D",
+        "to": "B",
+        "label": "9",
+        "side": "ABOVE",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "cd",
+        "at": [
+          6.4,
+          3.5
+        ],
+        "text": "?",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,650 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "7f5d8b1698137f321ccab9a9ec220195287ab4a91d60b7263bb6caf7ee585c32",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "H",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "I",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "E",
+      "op": "LINE_REFLECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "G",
+      "op": "LINE_REFLECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "F",
+      "op": "LINE_INTERSECTION",
+      "factRole": "CONCLUSION",
+      "classification": "DERIVED_POINT"
+    }
+  ],
+  "validation": {
+    "nodeCount": 12,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "H",
+      "I",
+      "ABline",
+      "foldLine",
+      "E",
+      "G",
+      "foldedEdge",
+      "F"
+    ],
+    "conditionAuditCount": 7
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "16"
+          }
+        ],
+        "approximation": [
+          0.0,
+          16.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "16"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          16.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "16"
+          },
+          {
+            "kind": "integer",
+            "value": "16"
+          }
+        ],
+        "approximation": [
+          16.0,
+          16.0
+        ],
+        "precisionDigits": 17
+      },
+      "H": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "2"
+          }
+        ],
+        "approximation": [
+          0.0,
+          2.0
+        ],
+        "precisionDigits": 17
+      },
+      "I": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "16"
+          },
+          {
+            "kind": "integer",
+            "value": "10"
+          }
+        ],
+        "approximation": [
+          16.0,
+          10.0
+        ],
+        "precisionDigits": 17
+      },
+      "E": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "8"
+          },
+          {
+            "kind": "integer",
+            "value": "16"
+          }
+        ],
+        "approximation": [
+          8.0,
+          16.0
+        ],
+        "precisionDigits": 17
+      },
+      "G": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "-8",
+            "denominator": "5"
+          },
+          {
+            "kind": "rational",
+            "numerator": "16",
+            "denominator": "5"
+          }
+        ],
+        "approximation": [
+          -1.6,
+          3.2
+        ],
+        "precisionDigits": 17
+      },
+      "F": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "rational",
+            "numerator": "16",
+            "denominator": "3"
+          }
+        ],
+        "approximation": [
+          0.0,
+          5.333333333333333
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "ABline": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "foldLine": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-8"
+          },
+          {
+            "kind": "integer",
+            "value": "16"
+          },
+          {
+            "kind": "integer",
+            "value": "-32"
+          }
+        ],
+        "approximation": [
+          -8.0,
+          16.0,
+          -32.0
+        ]
+      },
+      "foldedEdge": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "-64",
+            "denominator": "5"
+          },
+          {
+            "kind": "rational",
+            "numerator": "48",
+            "denominator": "5"
+          },
+          {
+            "kind": "rational",
+            "numerator": "-256",
+            "denominator": "5"
+          }
+        ],
+        "approximation": [
+          -12.8,
+          9.6,
+          -51.2
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "DI6",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "6"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "IC10",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "10"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "10"
+        }
+      },
+      {
+        "id": "DE8",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "8"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "AE8",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "8"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "AF32thirds",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "rational",
+          "numerator": "32",
+          "denominator": "3"
+        },
+        "expected": {
+          "kind": "rational",
+          "numerator": "32",
+          "denominator": "3"
+        }
+      },
+      {
+        "id": "FOnAB",
+        "sourceConditionId": "c1",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_LINE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      },
+      {
+        "id": "FOnGE",
+        "sourceConditionId": "c1",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_LINE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "H",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "I",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "ABline",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "foldLine",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "H",
+          "I"
+        ]
+      },
+      {
+        "nodeId": "E",
+        "op": "LINE_REFLECTION",
+        "dependencies": [
+          "C",
+          "foldLine"
+        ]
+      },
+      {
+        "nodeId": "G",
+        "op": "LINE_REFLECTION",
+        "dependencies": [
+          "B",
+          "foldLine"
+        ]
+      },
+      {
+        "nodeId": "foldedEdge",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "E",
+          "G"
+        ]
+      },
+      {
+        "nodeId": "F",
+        "op": "LINE_INTERSECTION",
+        "dependencies": [
+          "ABline",
+          "foldedEdge"
+        ]
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "H",
+      "I",
+      "ABline",
+      "foldLine",
+      "E",
+      "G",
+      "foldedEdge",
+      "F"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "DI6",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "6"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "6"
+      }
+    },
+    {
+      "id": "IC10",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "10"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "10"
+      }
+    },
+    {
+      "id": "DE8",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "8"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "8"
+      }
+    },
+    {
+      "id": "AE8",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "8"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "8"
+      }
+    },
+    {
+      "id": "AF32thirds",
+      "sourceConditionId": "c1",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "rational",
+        "numerator": "32",
+        "denominator": "3"
+      },
+      "expected": {
+        "kind": "rational",
+        "numerator": "32",
+        "denominator": "3"
+      }
+    },
+    {
+      "id": "FOnAB",
+      "sourceConditionId": "c1",
+      "kind": "INCIDENCE_POINT_ON_LINE",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_LINE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "FOnGE",
+      "sourceConditionId": "c1",
+      "kind": "INCIDENCE_POINT_ON_LINE",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_LINE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

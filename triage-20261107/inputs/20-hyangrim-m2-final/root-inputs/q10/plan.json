@@ -1,0 +1,600 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "div",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "96"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "548"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "264"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "548"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4449757",
+              "denominator": "988655"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5006461",
+              "denominator": "778872"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-15"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "8"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "neg",
+                              "args": [
+                                {
+                                  "kind": "expression",
+                                  "op": "div",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "96"
+                                    },
+                                    {
+                                      "kind": "expression",
+                                      "op": "sqrt",
+                                      "args": [
+                                        {
+                                          "kind": "integer",
+                                          "value": "548"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "div",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "264"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "548"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-15"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "numerator": "-4449757",
+                          "denominator": "988655"
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "5006461",
+                      "denominator": "778872"
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AB8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "BC12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "EF6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "E",
+          "F"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "FG9",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "F",
+          "G"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "caption": "두 사각형은 ABCD∼EFGH이고 대응비는 4:3이므로 넓이의 비는 16:9이다. ⑤의 8:6은 넓이의 비가 아닌 길이의 비이므로 옳지 않다.",
+  "accessibilityDescription": "두 사각형은 ABCD∼EFGH이고 대응비는 4:3이므로 넓이의 비는 16:9이다. ⑤의 8:6은 넓이의 비가 아닌 길이의 비이므로 옳지 않다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각형 ABCD∼EFGH, AB=8, EF=6, BC=12, FG=9이고 ∠A=125°, ∠B=70°, ∠C=80°, ∠D=85°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "큰 ABCD와 작은 EFGH를 대응 순서대로 나란히 둔다. 작은 도형은 큰 도형의 3/4 크기이며 각도는 원문 값으로 표기한다.",
+    "70° 등 비정수 각은 좌표 그림에서 시각적으로 근사하고 원문 각도 표기는 정확한 값으로 보존한다. 작은 도형은 3/4 축척이다."
+  ],
+  "sourceQuote": "아래 그림에서 $\\square ABCD\\sim\\square EFGH$일 때, 다음 중 옳지 않은 것은? (4점)",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "layoutIntent": "큰 도형은 오른쪽, 작은 도형은 왼쪽에 두고 EFGH가 ABCD의 3/4 축척 복사본으로 읽히게 한다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "BELOW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dEF",
+        "from": "E",
+        "to": "F",
+        "label": "6",
+        "side": "BELOW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dFG",
+        "from": "F",
+        "to": "G",
+        "label": "9",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "A125",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 125,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B70",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 70,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C80",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 80,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D85",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "value": 85,
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}
