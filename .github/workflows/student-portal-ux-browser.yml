@@ -35,6 +35,11 @@ jobs:
         id: chrome
         with:
           chrome-version: stable
+      - name: Install Korean glyphs for visual fidelity
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends fonts-noto-cjk
+          fc-list :lang=ko family | head -n 3
       - name: Install isolated browser test driver
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
