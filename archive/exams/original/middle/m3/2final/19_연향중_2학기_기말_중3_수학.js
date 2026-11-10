@@ -700,7 +700,7 @@ window.examData = {
         "$5\\sqrt{2}\\text{ (cm)}$"
       ],
       "answer": "②",
-      "solution": "그림에서 큰 원의 중심 $O$가 작은 원 $O\\prime$ 위에 있으므로 작은 원의 반지름은 $OO\\prime=O\\prime B=3$ cm이다. 두 원은 $B$에서 내접하므로 큰 원의 반지름은 $OB=OO\\prime+O\\prime B=6$ cm이고 $AO\\prime=AO+OO\\prime=6+3=9$ cm이다.\\n$AP$는 작은 원의 접선이므로 $O\\prime P\\perp AP$이다. 직각삼각형 $AO\\prime P$에서 $AP=\\sqrt{AO\\prime^2-O\\prime P^2}=\\sqrt{9^2-3^2}=6\\sqrt2$ cm이다. 또한 $\\cos\\angle AO\\prime P=\\frac{3}{9}=\\frac{1}{3}$이고 $A,O\\prime,B$가 한 직선 위이므로 $\\cos\\angle BO\\prime P=-\\frac{1}{3}$이다.\\n삼각형 $BO\\prime P$에서 코사인 법칙을 쓰면 $BP^2=3^2+3^2-2\\cdot3\\cdot3\\cdot(-\\frac{1}{3})=24$이므로 $BP=2\\sqrt6$ cm이다.",
+      "solution": "그림에서 큰 원의 중심 $O$가 작은 원 $O\\prime$ 위에 있으므로 작은 원의 반지름은 $OO\\prime=O\\prime B=3$ cm이다. 두 원은 $B$에서 내접하므로 큰 원의 반지름은 $OB=OO\\prime+O\\prime B=6$ cm이고 $AO\\prime=AO+OO\\prime=6+3=9$ cm이다.\n$AP$는 작은 원의 접선이므로 $O\\prime P\\perp AP$이고 $O\\prime P=3$ cm이다. 직각삼각형 $AO\\prime P$에서 $AP=\\sqrt{9^2-3^2}=6\\sqrt2$ cm이다.\n점 $P$에서 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $O\\prime PA$와 $O\\prime HP$는 $\\angle O\\prime$을 공유하고 각각 $\\angle P$, $\\angle H$가 직각이므로 $\\triangle O\\prime PA\\sim\\triangle O\\prime HP$이다. 따라서 $O\\prime H:O\\prime P=O\\prime P:O\\prime A$에서 $O\\prime H:3=3:9$이므로 $O\\prime H=1$ cm이고, $PH:AP=O\\prime P:O\\prime A$에서 $PH=6\\sqrt2\\times\\dfrac{3}{9}=2\\sqrt2$ cm이다.\n$H$는 $A$와 $O\\prime$ 사이에 있으므로 $HB=HO\\prime+O\\prime B=1+3=4$ cm이다. 직각삼각형 $PHB$에서 $BP^2=PH^2+HB^2=(2\\sqrt2)^2+4^2=24$이므로 $BP=2\\sqrt6$ cm이다.",
       "level": "상",
       "difficultyBucket": 4,
       "meta": {
