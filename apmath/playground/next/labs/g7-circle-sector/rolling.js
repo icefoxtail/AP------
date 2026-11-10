@@ -1154,7 +1154,9 @@
         const hold = !!(s.lessonOn && !s.rlShow);
         const arcFr = (rt) => sc.fracs[rt.i];
         const done = M.arcs.filter((rt) => arcFr(rt) >= 1 - 1e-9);
-        const partial = M.arcs.some((rt) => arcFr(rt) > 1e-9 && arcFr(rt) < 1 - 1e-9); // 도는 중에는 깨끗한 π 꼴이 안 나오므로 「…」
+        // 호가 하나뿐인 장면(rl-turn60 …)은 호 하나의 길이가 곧 정답이라, 해설 재생 중(hold)에는 그 길이도 함께 아낍니다(「지금까지 움직인 거리」 · 띠의 「㉠ 6π」).
+        const sole = hold && M.arcs.length === 1;
+        const partial = sole || M.arcs.some((rt) => arcFr(rt) > 1e-9 && arcFr(rt) < 1 - 1e-9); // 도는 중에는 깨끗한 π 꼴이 안 나오므로 「…」
         const i = Math.min(sc.k, N - 1), rt = M.rots[i], P = rt.pname;
         const finished = sc.k >= N;
         const live = finished ? rt.theta : Math.round(rt.theta * sc.f);
@@ -1173,7 +1175,7 @@
         }));
         // 띠(움직인 거리를 한 줄로 이어 붙인 모양)
         const segsOf = (fracOf) => M.arcs.filter((a) => fracOf(a) > 0).map((a) => ({
-          text: fracOf(a) >= 1 - 1e-9 ? `${JAMO[a.arc]} ${coefPlain(a.coef)}` : JAMO[a.arc], weight: Math.round(a.coef * fracOf(a) * 100) / 100, color: ARC_COL[a.arc % ARC_COL.length]
+          text: fracOf(a) >= 1 - 1e-9 && !sole ? `${JAMO[a.arc]} ${coefPlain(a.coef)}` : JAMO[a.arc], weight: Math.round(a.coef * fracOf(a) * 100) / 100, color: ARC_COL[a.arc % ARC_COL.length]
         }));
         const sumAll = sumPlain(M.arcs.map((a) => a.coef));
         let tape;

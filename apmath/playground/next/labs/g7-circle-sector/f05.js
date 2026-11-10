@@ -222,7 +222,8 @@
       if (!st.plain) {
         if (st.sum) caption(b, '둘레 = 조각의 길이의 합', M.sumText, 'ink', 'amber', captionBottom);
         else if (st.cur >= 0) caption(b, NUM[st.cur] + ' ' + G[st.cur].name, G[st.cur].cap, M.P[G[st.cur].idx[0]].color, 'ink', captionBottom);
-        else caption(b, '경계를 호와 선분으로 나누어요', '▶ 재생하면 조각마다 길이를 구해요', 'ink', 'muted', captionBottom);
+        // 해설 진입 화면(s.lessonEntry)·재생 중(s.lessonOn)에는 「▶ 재생하면…」 안내를 뺍니다: 같은 화면의 해설 ▶ 와 헷갈리기 때문입니다(탐구·정리 화면은 그대로).
+        else caption(b, '경계를 호와 선분으로 나누어요', s.lessonEntry || s.lessonOn ? '' : '▶ 재생하면 조각마다 길이를 구해요', 'ink', 'muted', captionBottom);
       }
       if (tab === 'explore' && D.handles) D.handles(b, s, M, st, lab);
     }

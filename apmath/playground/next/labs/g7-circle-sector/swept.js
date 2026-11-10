@@ -813,7 +813,8 @@
         { id: 'sectors', name: `모서리 부채꼴 ${M.n}개`, desc: `반지름 ${num(2 * r)}, 중심각 합 360°`, value: `${num(4 * r * r)}π`, color: 'amber' },
         { id: 'path', name: '원의 중심이 간 길', desc: `${num(M.per)} + ${num(2 * r)}π`, value: `${num(M.per)} + ${num(2 * r)}π`, color: 'violet' }
       ];
-      const done = t >= 0.96;
+      // hold: 해설 재생 중(s.lessonOn)에는 해설이 s.swShow 를 켤 때까지 결과(넓이·거리) 칩과 요약을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+      const done = t >= 0.96 && !(s.lessonOn && !s.swShow);
       const chips = done ? (path
         ? [{ k: '중심이 움직인 거리', html: `$${num(M.per)}+${num(2 * r)}\\pi$ cm`, color: 'rose' }]
         : [{ k: '지나간 자리의 넓이', html: `$${num(M.rectArea)}+${num(4 * r * r)}\\pi$ cm²`, color: 'rose' }]) : [];

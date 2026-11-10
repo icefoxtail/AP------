@@ -627,8 +627,14 @@
     let st;
     if (b.thumb) st = { tab: 'thumb', mode: 'none', target: 0, lab: 0, flags: {} };
     else st = stateFor(spec, s, lab, P, m);
+    // 해설 재생 중(s.lessonOn)에는 재생기가 s.dragging 을 쥐어 scene.tick 이 멈추므로, 정리 탭 step 이 바뀔 때 조각이 가로로 갈라지는 정도(f02uShow)가 따라가지 못합니다.
+    // 그래서 재생 중에만 그리면서 직접 목표(st.target)로 보내고, 도착할 때까지 다음 프레임을 부릅니다(정리 탭을 그냥 쓸 때는 tick 이 하던 일 그대로).
+    if (!b.thumb && s.lessonOn && st.tab === 'review') {
+      const cur = s.f02uShow == null ? 0 : s.f02uShow, diff = st.target - cur;
+      if (Math.abs(diff) > 0.01) { s.f02uShow = cur + diff * 0.2; if (lab && lab.invalidate) lab.invalidate(); } else s.f02uShow = st.target;
+    }
     const u = b.thumb || st.tab === 'problem' ? 0 : st.tab === 'review' ? (s.f02uShow == null ? 0 : s.f02uShow) : (s[gid(spec.id, 'u')] || 0);
-    if (s.dragging && b.__f02Focus && !b.thumb) b.setFocus(b.__f02Focus, false); // 손잡이를 끄는 동안에는 크기를 고정
+    if (s.dragging && !s.lessonOn && b.__f02Focus && !b.thumb) b.setFocus(b.__f02Focus, false); // 손잡이를 끄는 동안에는 크기를 고정(해설 재생 중에는 재생기가 dragging 을 쥐므로 제외: 조각이 갈라지면 그림 틀이 따라가야 함)
     else { fitView(b, G, m, st, u); b.__f02Focus = b.focus; }
     renderModel(b, G, m, st, s, u);
   }
@@ -1168,6 +1174,8 @@
         const list = spec.steps(P, m), stp = list[clamp(step, 1, list.length) - 1];
         v.chips = stp && stp.chip ? [stp.chip] : [];
       }
+      // 해설 진입 화면(s.lessonEntry): 탐구 탭의 결론 칩(넓이·둘레의 답)을 ▶ 를 누르기 전에는 보이지 않습니다. 탐구·정리·문제 화면과 해설 재생 중(정리 탭 step 칩)은 그대로입니다.
+      if (s.lessonEntry) v.chips = [];
       return v;
     };
     return scene;
