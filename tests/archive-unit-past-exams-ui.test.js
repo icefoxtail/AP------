@@ -15,7 +15,8 @@ test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 �
   assert.match(html, /question-meta\.js/);
   assert.match(html, /unit-past-exams\.css\?v=20261110-login-1/);
   assert.match(html, /question-index\.js\?v=20261110a/);
-  assert.match(html, /question-meta\.js\?v=20261110a/);
+  // question-meta.js is shared with engine.html and mixer.html, so its version must match theirs.
+  assert.match(html, /question-meta\.js\?v=archive-metadata-v1-phase1b-20260826b/);
   assert.ok(html.indexOf('archive2-canonical.js') < html.indexOf('archive2-core.js'), 'canonical core must load before its browser consumer');
   assert.ok(html.indexOf('archive2-output-contract.js') < html.indexOf('archive2-output.js'), 'output contract must load before its producer');
   assert.ok(html.indexOf('archive2-output.js') < html.indexOf('unit-past-exams.js'), 'Unit Past must load the existing Output Envelope producer first');
