@@ -50,8 +50,14 @@ const cases = [
   // a figure drawn on a small canvas displays narrower than the column, whatever its class
   { id: 10, name: "small canvas full svg", image: "/__fx/small-canvas-full.svg", size: "full", bytes: svg(384, 320) },
   { id: 11, name: "small canvas medium svg", image: "/__fx/small-canvas-medium.svg", size: "medium", bytes: svg(384, 320) },
+  // older hand-made SVGs narrower than 384 were drawn 1:1: shown at their natural width (factor 1), capped at the column
+  { id: 12, name: "hand-made 120 svg", image: "/__fx/hand-120.svg", size: "medium", bytes: svg(120, 120) },
+  { id: 13, name: "hand-made 300 svg", image: "/__fx/hand-300.svg", size: "full", bytes: svg(300, 240) },
+  { id: 14, name: "hand-made 383 svg", image: "/__fx/hand-383.svg", size: "large", bytes: svg(383, 300) },
 ];
 const K = 0.6;
+const SCALED_MIN_WIDTH = 384;
+const factorFor = (naturalWidth) => (naturalWidth >= SCALED_MIN_WIDTH ? K : 1);
 const bank = cases.map((item) => ({
   id: item.id, content: `fixture ${item.id}`, choices: [], answer: "1", solution: "해설 $x=1$이다.",
   solutionImage: item.image, solutionImageSize: item.size, solutionImageAlt: item.name,
@@ -114,14 +120,16 @@ const byName = (rows, name) => { const fixture = cases.find((item) => item.name 
 test("PC: svg solution figures are shown at natural width x k capped at the column, never class-capped", async () => {
   const rows = await measure(1440);
   const natural = { "tall medium svg": [420, 480], "wide medium svg": [900, 600], "large svg": [520, 400], "small svg": [520, 400], "full svg": [520, 400],
-    "medium svg with cache buster": [420, 480], "small canvas full svg": [384, 320], "small canvas medium svg": [384, 320] };
+    "medium svg with cache buster": [420, 480], "small canvas full svg": [384, 320], "small canvas medium svg": [384, 320],
+    // under 384 (hand-made, drawn 1:1) the factor is 1: natural width, capped at the column
+    "hand-made 120 svg": [120, 120], "hand-made 300 svg": [300, 240], "hand-made 383 svg": [383, 300] };
   for (const [name, [naturalWidth, naturalHeight]] of Object.entries(natural)) {
     const row = byName(rows, name);
     assert.ok(row, name);
     // fails if a 145px / 180px / 105px height cap or a 72% / 92% / 48% width cap is back for an svg
     assert.equal(row.maxHeight, "none", `${name} must not be height-capped: ${JSON.stringify(row)}`);
     assert.equal(row.maxWidth, "100%", `${name} must not be width-capped: ${JSON.stringify(row)}`);
-    const expectedWidth = Math.min(naturalWidth * K, row.column);
+    const expectedWidth = Math.min(naturalWidth * factorFor(naturalWidth), row.column);
     assert.ok(Math.abs(row.width - expectedWidth) <= 1, `${name} should be ${expectedWidth}px wide: ${JSON.stringify(row)}`);
     assert.ok(Math.abs(row.height - expectedWidth * naturalHeight / naturalWidth) <= 1.5, `${name} keeps its aspect ratio: ${JSON.stringify(row)}`);
   }
@@ -132,6 +140,10 @@ test("PC: svg solution figures are shown at natural width x k capped at the colu
     const row = byName(rows, name);
     assert.ok(row.width < row.column - 20, `${name} should be narrower than the column: ${JSON.stringify(row)}`);
   }
+  // a 120-wide hand-made figure is shown at 120 (not 72), a 300-wide one at min(300, column)
+  assert.ok(Math.abs(byName(rows, "hand-made 120 svg").width - 120) <= 1, JSON.stringify(byName(rows, "hand-made 120 svg")));
+  const hand300 = byName(rows, "hand-made 300 svg");
+  assert.ok(Math.abs(hand300.width - Math.min(300, hand300.column)) <= 1, JSON.stringify(hand300));
   // a wide canvas still reaches the column and no further
   assert.ok(Math.abs(byName(rows, "wide medium svg").width - byName(rows, "wide medium svg").column) <= 1);
 });

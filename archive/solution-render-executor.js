@@ -34,6 +34,14 @@
     // so that they are about 12 CSS px at this scale (base font 20 x 0.6); the size-class caps (105/145/180px)
     // made published medium figures unreadable (6-7px). Raster images keep the size-class caps.
     const SOLUTION_SVG_DISPLAY_K = 0.6;
+    // The x0.6 factor applies only to SVGs at least this wide. The figure engine draws its labels at 20 SVG units on canvases
+    // that are (almost) never narrower than 384 (graph/construction minimum 384; solid, number line, stat and container figures
+    // are wider), so x0.6 gives them ~12 px labels. Older hand-made SVGs narrower than this were drawn 1:1 (a 120x120 figure with
+    // 13-14 px labels): they are shown at their natural width (factor 1), still capped at the column, never shrunk.
+    // The step at the threshold is accepted: 383 -> min(383, column) while 384 -> 230; no engine canvas lies below 384 and
+    // hand-made SVGs between 250 and 383 were drawn for 1:1 display.
+    const SOLUTION_SVG_SCALED_MIN_WIDTH = 384;
+    const solutionSvgDisplayFactor = natural => (natural >= SOLUTION_SVG_SCALED_MIN_WIDTH ? SOLUTION_SVG_DISPLAY_K : 1);
     const SVG_SOURCE_PATTERN = /(?:\.svg(?:[?#]|$)|^data:image\/svg\+xml)/i;
     function applySolutionSvgDisplayWidth(scope) {
         if (!scope?.querySelectorAll) return 0;
@@ -44,7 +52,7 @@
             if (!SVG_SOURCE_PATTERN.test(img.getAttribute('src') || '')) return;
             const natural = Number(img.naturalWidth) || 0;
             if (natural <= 0) return;
-            img.style.width = `${Math.round(natural * SOLUTION_SVG_DISPLAY_K * 100) / 100}px`;
+            img.style.width = `${Math.round(natural * solutionSvgDisplayFactor(natural) * 100) / 100}px`;
             applied += 1;
         });
         return applied;
@@ -712,5 +720,5 @@ async function renderComposed({ area, items, deps }) {
     }
 }
 
-    return Object.freeze({ render, renderComposed, applySolutionSvgDisplayWidth, SOLUTION_SVG_DISPLAY_K });
+    return Object.freeze({ render, renderComposed, applySolutionSvgDisplayWidth, SOLUTION_SVG_DISPLAY_K, SOLUTION_SVG_SCALED_MIN_WIDTH });
 });

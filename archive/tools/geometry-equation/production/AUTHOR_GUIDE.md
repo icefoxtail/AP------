@@ -955,7 +955,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 ### 5-1. 해설 그림의 화면 표시 크기: 캔버스 크기가 정한다 (2026-11-11 사용자 결정)
 
-- 학생 화면은 해설 SVG를 **자연 폭 × 0.6**(칸 폭이 상한, 높이는 자동)으로 보인다. 저장된 `solutionImageSize`(small·medium·large·full)는 SVG 표시에 더 이상 영향이 없고, 래스터(png/jpg)만 옛 등급 상한을 쓴다. 라벨 글자 크기 20(SVG 단위)이면 화면에서 12 CSS px가 된다.
+- 학생 화면은 해설 SVG를 **자연 폭 × 0.6**(칸 폭이 상한, 높이는 자동; 자연 폭 384 미만의 옛 수제 SVG만 ×1)으로 보인다. 저장된 `solutionImageSize`(small·medium·large·full)는 SVG 표시에 더 이상 영향이 없고, 래스터(png/jpg)만 옛 등급 상한을 쓴다. 라벨 글자 크기 20(SVG 단위)이면 화면에서 12 CSS px가 된다.
 - 그래서 그림이 화면에서 차지하는 크기는 캔버스(루트 `width`·`height`)가 정한다. 단순한 그림은 작은 캔버스로, 복잡한 그림은 큰 캔버스로 그린다. 크기 등급으로 줄이거나 키울 수 없다.
 
 ## 6. 오류가 오면 이렇게 고친다
