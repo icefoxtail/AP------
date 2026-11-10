@@ -137,7 +137,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X의 원소 1, 2, 3, 4를 세 열(x, f(x), f(f(x)))로 늘어놓고 함수 f의 대응을 화살표로 이은 대응도. 1에서 시작해 3을 거쳐 2로 가는 파란 경로와 3에서 시작해 2를 거쳐 4로 가는 주황 경로가 굵게 표시되어 있다.",
+    "solutionImageCaption": "그림의 화살표는 f(1)=3, f(2)=4, f(3)=2, f(4)=1이다. 파란 경로에서 (f∘f)(1)=f(3)=2이고, f∘f⁻¹은 항등함수이므로 (f∘f⁻¹)(2)=2이다. 주황 경로는 3→2→4이므로 (f∘f)(3)=4, 즉 (f∘f)⁻¹(4)=3이다. 세 값을 더하면 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -205,7 +209,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 x좌표가 −1에서 2까지인 파란 선분이 왼쪽 위에서 오른쪽 아래로 내려간다. 양 끝점 (−1,2)와 (2,−1)이 점으로 찍혀 있고 각 끝점에서 두 축으로 점선이 내려와 눈금 −1, 2를 가리킨다.",
+    "solutionImageCaption": "a<0이므로 f는 감소하고, X에서 X로의 일대일대응이 되려면 왼쪽 끝 x=−1에서 최댓값 2, 오른쪽 끝 x=2에서 최솟값 −1이어야 한다. 그래프의 양 끝점 (−1,2), (2,−1)을 지나는 식에서 a=−1, b=1이다. 따라서 a²+b²을 계산하면 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -239,7 +247,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 두 집합 P, Q의 원이 겹쳐 있다. P와 Q가 겹친 부분과 P 바깥 전체가 회색으로 칠해져 있고, P에만 속하고 Q에는 속하지 않는 초승달 모양 부분만 흰색이다.",
+    "solutionImageCaption": "(P∩Q)∪Pᶜ=U이려면 회색으로 칠한 부분이 전체를 채워야 하므로 흰색인 P−Q 부분은 비어 있어야 한다. 따라서 P⊂Q이고 명제 p→q가 항상 참이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -273,7 +285,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROOF",
     "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄이 같은 눈금으로 있다. 첫째 줄 q에는 −4와 5에 속이 빈 점이 찍힌 −4<x<5 구간이, 둘째 줄 ~p에는 a−2와 a+2에 속이 찬 점이 찍힌 a−2≤x≤a+2 구간이 굵게 그려져 있고, 0의 눈금이 표시되어 있다.",
+    "solutionImageCaption": "예: a=0으로 그린 그림이다. ~p의 진리집합은 [a−2, a+2]이고 q의 진리집합은 (−4, 5)이다. 닫힌구간이 열린구간 안에 들어가려면 a−2>−4, a+2<5여야 하므로 −2<a<3이다. 이 범위의 정수는 −1, 0, 1, 2이므로 정답은 4개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -311,9 +327,9 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "A와 B의 구간을 수직선에 표시한 집합 해설",
-    "solutionImageCaption": "A∩B=(−1,3]가 되도록 B=(−∞,−5)∪(−1,∞)",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이 같은 눈금으로 있다. 첫째 줄 A는 −5에서 3까지 양 끝이 속이 찬 구간, 둘째 줄 B는 −5의 왼쪽 전체와 −1의 오른쪽 전체를 나타내는 두 반직선(−5와 −1은 속이 빈 점), 셋째 줄 A∩B는 −1(속이 빈 점)에서 3(속이 찬 점)까지의 구간이다.",
+    "solutionImageCaption": "x²+2x−15≤0에서 A=[−5,3]이다. A∪B=ℝ이고 A∩B=(−1,3]이므로 B는 A의 바깥 (−∞,−5)와 (3,∞), 그리고 A 안의 (−1,3]을 모두 포함해야 한다. 따라서 B=(−∞,−5)∪(−1,∞)이고 x²+ax+b=(x+5)(x+1)이므로 a=6, b=5이다. 정답은 1이다.",
     "solutionImageSize": "full",
     "level": "중",
     "category": "집합과 이차부등식",
@@ -437,9 +453,9 @@ window.questionBank = [
       "$\\dfrac52$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "원점 중심 반지름 √5인 원과 직선 y=m(x+3)-1의 두 교점 조건을 나타낸 좌표평면",
-    "solutionImageCaption": "직선과 원의 중심 사이 거리를 반지름과 비교하여 두 교점이 되는 기울기 범위를 구한다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점이 중심인 파란 원이 있고, 왼쪽 아래 점 S(−3,−1)에서 나온 주황 선분 두 개가 원에 접하며 위쪽과 아래쪽으로 뻗어 접선이라고 쓰여 있다. S에서 오른쪽으로 가는 초록 수평 선분은 원과 두 점에서 만나며 교점 2개라고 쓰여 있다.",
+    "solutionImageCaption": "직선 y=m(x+3)−1은 m의 값에 관계없이 점 S(−3,−1)을 지난다. 원과 서로 다른 두 점에서 만나는 직선은 S에서 원에 그은 두 접선(주황) 사이에 있고, 초록 선분은 그 예이다. 원점에서 직선까지의 거리가 √5보다 작아야 하므로 (3m−1)²<5(m²+1)에서 −2분의 1<m<2이다. 따라서 a+b를 구하면 정답은 2분의 3이다.",
     "solutionImageSize": "full",
     "solution": "원과 직선이 서로 다른 두 점에서 만나려면 원의 중심에서 직선까지의 거리가 반지름보다 작아야 한다.\n\n직선은 $y=m(x+3)-1$, 원은 $x^2+y^2=5$이다.\n\n직선을 일반형으로 바꾸고 원점과 직선 사이의 거리를 이용한다.\n\n직선을 일반형으로 나타내면\n$mx-y+3m-1=0$이다.\n원점에서 이 직선까지의 거리는\n$\\dfrac{|3m-1|}{\\sqrt{m^2+1}}$이고, 원의 반지름은 $\\sqrt5$이다.\n서로 다른 두 점에서 만나려면\n$\\dfrac{|3m-1|}{\\sqrt{m^2+1}}<\\sqrt5$이다.\n양변이 음수가 아니므로 제곱하여\n$(3m-1)^2<5(m^2+1)$,\n$4m^2-6m-4<0$,\n$(2m+1)(m-2)<0$을 얻는다.\n따라서 $-\\dfrac12<m<2$이므로 $a=-\\dfrac12$, $b=2$이고\n$a+b=\\dfrac32$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SA-11-INTERSECTION",
@@ -513,7 +529,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 전체집합 U 안에 큰 원 P와 그 안에 회색으로 칠한 작은 원 Q가 들어 있고, 오른쪽은 U 안에 서로 떨어진 두 원 P와 R이 있으며 R이 회색으로 칠해져 있다.",
+    "solutionImageCaption": "p는 q이기 위한 필요조건이므로 Q⊂P이고, r은 ~p이기 위한 충분조건이므로 R⊂Pᶜ(P와 R은 겹치지 않음)이다. 이에 따라 P∩Q=Q(ㄱ 참), Q⊂P에서 Pᶜ⊂Qᶜ이므로 R⊂Qᶜ(ㄴ 참), P−R=P≠∅(ㄷ 거짓), P∪Qᶜ=U(ㄹ 참)이다. 정답은 ㄱ, ㄴ, ㄹ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -548,9 +568,9 @@ window.questionBank = [
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "P가 선분 AB의 중점일 때 AP=BP이므로 4·AP·BP는 최댓값 45를 갖는다.",
-    "solutionImageCaption": "P가 선분 AB의 중점일 때 AP=BP이므로 4·AP·BP는 최댓값 45를 갖는다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 2x+y−6=0이 그려져 있고, x축과 만나는 점 A(3,0), y축과 만나는 점 B(0,6), 두 점 사이의 점 P가 찍혀 있다. 선분 BP는 주황, 선분 AP는 파랑으로 굵게 칠해져 있다.",
+    "solutionImageCaption": "예: 점 P를 선분 AB 위에 하나 잡은 그림이다. A(3,0), B(0,6)이므로 AB=3√5이고, P가 선분 AB 위에 있으므로 l₁+l₂=3√5이다. 합이 일정한 두 양수의 곱은 (l₁+l₂)²≥4l₁l₂에서 4l₁l₂≤45이고, P가 AB의 중점일 때 등호가 성립한다. 정답은 45이다.",
     "solutionImageSize": "full"
   },
   {
@@ -575,9 +595,9 @@ window.questionBank = [
       "$\\dfrac{11}2\\pi$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "점 P, Q, R을 이은 직각삼각형과 그 외접원의 지름 PR",
-    "solutionImageCaption": "내분점 P·Q·R의 위치와 Q에서의 직각을 확인한 뒤, 빗변 PR을 외접원의 지름으로 사용한다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점선 정사각형 O, A, B, C가 있고 그 변 위에 점 P(0,3), Q(3,4), R(4,1)이 찍혀 있다. P, Q, R를 지나는 파란 원이 그려져 있고, 주황 선분 PQ, QR이 Q에서 직각을 이루며, 초록 선분 PR이 원의 중심 M을 지나는 지름이다.",
+    "solutionImageCaption": "내분점은 P(0,3), Q(3,4), R(4,1)이다. 직선 PQ의 기울기는 3분의 1, QR의 기울기는 −3이므로 곱이 −1이어서 삼각형 PQR은 Q에서 직각이다. 따라서 빗변 PR(초록)이 외접원의 지름이고 중심 M은 PR의 중점이다. 반지름이 √5이므로 원의 넓이는 5π이고, 정답은 5π이다.",
     "solutionImageSize": "full",
     "solution": "세 점이 이루는 삼각형이 직각삼각형이면 외접원의 지름은 빗변이다.\n\n$P,Q,R$는 각각 $OA,AB,BC$를 $3:1$로 내분한다.\n\n세 점의 좌표를 구하고 두 직선의 기울기로 직각 여부를 확인한다.\n\n내분점 공식을 적용하면\n$P=(0,3)$, $Q=(3,4)$, $R=(4,1)$이다.\n직선 $PQ$의 기울기는\n$\\dfrac{4-3}{3-0}=\\dfrac13$이고, 직선 $QR$의 기울기는\n$\\dfrac{1-4}{4-3}=-3$이다.\n두 기울기의 곱이 $-1$이므로 $PQ\\perp QR$이고, 삼각형 $PQR$은 $Q$에서 직각이다.\n따라서 외접원의 지름은 빗변 $PR$이다.\n$PR=\\sqrt{(4-0)^2+(1-3)^2}=\\sqrt{20}=2\\sqrt5$이므로 반지름은 $\\sqrt5$이다.\n원의 넓이는 $\\pi(\\sqrt5)^2=5\\pi$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
@@ -618,7 +638,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 {1, 2, 3, 4, 5}의 원소를 세 열(x, f(x), f(f(x)))로 늘어놓고 함수 f의 대응을 화살표로 이은 대응도. 5에서 시작해 2를 거쳐 3으로 가는 파란 경로와 4에서 시작해 1을 거쳐 다시 4로 가는 주황 경로가 굵게 표시되어 있다.",
+    "solutionImageCaption": "예로 든 f는 f(1)=4, f(2)=3, f(3)=5, f(4)=1, f(5)=2이다. 소수 2, 3, 5는 서로 돌아가며 3번 적용하면 제자리로 돌아오고, 1과 4는 2번 적용하면 제자리로 돌아온다. 99는 3의 배수이므로 f⁹⁹(5)=5이고 99는 홀수이므로 f⁹⁹(4)=1이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -652,7 +676,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 파란 포물선 y=f(x)와 수평 점선 세 개가 있다. 주황 점선 y=−4는 꼭짓점에 닿고, 초록 점선 y=3은 포물선과 두 점에서 만나며, 분홍 점선 y=−6은 포물선 아래쪽에 떨어져 있다.",
+    "solutionImageCaption": "f(x)=x(x−4)=(x−2)²−4이고 최솟값은 −4이다. t=f(x)로 놓으면 t=−4일 때 x는 1개, t>−4일 때 x는 2개, t<−4일 때 x는 없다. f(t)=k의 두 근의 합이 4이므로 한 근이 −4, 다른 근이 8이어야 x가 모두 3개이다. 이때 k=f(−4)=32이므로 정답은 32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -691,9 +719,9 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "수학 동아리와 과학 동아리 교집합의 최댓값과 최솟값을 비교한 Venn diagram",
-    "solutionImageCaption": "교집합 최댓값 17, 최솟값 17+22−30=9",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 전체집합 U 안에 큰 원 S와 그 안에 작은 원 M이 들어 있고, M 안은 a명, S에서 M을 뺀 부분은 5명, 두 원 바깥은 8명이라고 쓰여 있다. 오른쪽은 M과 S 두 원이 겹쳐 있고, M만은 8명, 겹친 부분은 b명, S만은 13명, 두 원 바깥은 0명이라고 쓰여 있다.",
+    "solutionImageCaption": "M은 수학 동아리 17명, S는 과학 동아리 22명이고 전체는 30명이다. 왼쪽처럼 M이 S 안에 들어가면 S만 5명, 바깥 8명이고 교집합이 가장 커서 a=17이다. 오른쪽처럼 M과 S가 전체를 채워 둘 다 하지 않은 학생이 0명이면 교집합이 가장 작고 n(M∩S)=17+22−30으로 구해 M만 8명, S만 13명이다. 정답은 a=17, b=9이다.",
     "solutionImageSize": "full",
     "level": "중",
     "category": "집합의 원소의 개수",
@@ -749,7 +777,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 이차함수 그래프가 있다. 파란 위로 볼록한 곡선(a=0)은 x축 아래에만 있고, 주황 아래로 볼록한 곡선(a=2)은 양쪽 끝에서 x축 위로 올라간다. 각 곡선의 오른쪽 끝에 a=0, a=2라는 이름이 붙어 있다.",
+    "solutionImageCaption": "예: a=0과 a=2로 그린 그림이다. 모든 실수 x에 대하여 식이 0 이하이려면 그래프가 x축 아래에 머물러야 하므로 아래로 볼록한 경우(a>1)는 안 된다. a=1이면 식은 항상 −2이고, a<1이면 x=−1에서 최댓값 −a−1이 0 이하여야 하므로 a≥−1이다. 정답은 (1) 모든 실수 x에 대하여 (a−1)x²+2(a−1)x−2≤0이다. (2) −1≤a≤1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -778,6 +810,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=f(x)와 주황 곡선 y=g(x), 초록 점선 y=x가 있다. 두 곡선은 점선에 대해 대칭이고 점선 위의 두 점 P, Q에서 만난다. 파란 곡선의 시작점의 좌표 (1, 5분의 6)과 주황 곡선의 시작점의 좌표 (5분의 6, 1)가 표시되어 있다.",
+    "solutionImageCaption": "예: k=5분의 11(=2.2)로 그린 그림이다. f는 x≥1에서 증가하므로 역함수 g가 있고, 두 그래프의 교점은 y=x 위에 있다. 따라서 f(x)=x, 즉 x²−3x+k=0이 정의역 x≥1에서 서로 다른 두 실근을 가져야 한다. 판별식에서 k<4분의 9, 작은 근이 1 이상이어야 하므로 k≥2이다. 정답은 2≤k<4분의 9이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {invokeVisualContinuation,nativeImageInput} from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
 import {canonicalJson,objectSha,bytesSha,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {questionUidV2} from '../../pipeline-core/question-uid.mjs';
-import {loadBank} from '../build-visual-render-matrix.mjs';
+import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath} from '../record-visual-browser-evidence.mjs';
 import {assetIdentity,planHash} from './contracts.mjs';
 import {commitStage,generatedPath,currentWorkRoot,bindRunWorkspace,withWorkRoot,isEngineOutputPath,calculationStage} from './store.mjs';
@@ -52,6 +52,11 @@ const equalUnitCanvas=p=>{
 const RATIONAL_OVERVIEW_CANVAS=Object.freeze({width:520,height:420,panel:140});
 // Band rows: 34 px apart, or 56 when a label in the row has a fraction (written at full text size, about 48 px high, plus the 6 px layout clearance).
 const bandRowPitch=texts=>texts.some(text=>String(text).includes('/'))?56:34;
+// A refusal that also carries repair data for the author's result file (error-guidance.mjs turns it into result.fix). The Error (message, class) is unchanged and
+// hintData is not enumerable, so nothing that prints or compares the error sees it. hintData holds only numbers and ids the engine itself computed.
+const withHint=(error,hintData)=>Object.defineProperty(error,'hintData',{value:hintData,enumerable:false,configurable:true});
+export const CANVAS_RANGE={width:[384,720],height:[320,600]};   // coordinateCanvas bounds (CSS px of the intrinsic frame)
+const graphBandIds=(panelLabels,required)=>panelLabels.map(labelId=>{const m=/^required-point-(\d+)-coordinate-panel$/.exec(labelId);return m?required?.[Number(m[1])-1]?.id:undefined;}).filter(id=>typeof id==='string');
 const bandRowCenters=(pitches,firstCenter)=>{let top=firstCenter-17;return pitches.map(pitch=>{const center=top+pitch/2;top+=pitch;return center;});};
 const graphViewport=(values,canvas=GRAPH_OVERVIEW_CANVAS)=>({
   xMin:values[0],xMax:values[1],yMin:values[2],yMax:values[3],
@@ -155,7 +160,7 @@ export function displayGeometryInventory(plan,model){
     const ids=plan[field]??defaults??Object.keys(available||{}).filter(id=>!(type==='POINT'&&frameHelpers.has(id)));
     if(!Array.isArray(ids)||new Set(ids).size!==ids.length||ids.some(id=>!Object.hasOwn(available||{},id)))throw Error('INVALID_DISPLAY_GEOMETRY_INVENTORY:'+field);
     const mandatory=plan.mathPlan.nodes.filter(n=>n.outputType===type&&!n.op.startsWith('NORMALIZATION_')&&(n.op==='SOURCE_POINT'||['GIVEN','CONCLUSION'].includes(n.factRole))).map(n=>n.id);
-    if(mandatory.some(id=>!ids.includes(id)))throw Error('REQUIRED_SOURCE_GEOMETRY_NOT_DISPLAYED:'+field);
+    if(mandatory.some(id=>!ids.includes(id)))throw withHint(Error('REQUIRED_SOURCE_GEOMETRY_NOT_DISPLAYED:'+field),{kind:'SOURCE_GEOMETRY_NOT_DISPLAYED',field,missing:mandatory.filter(id=>!ids.includes(id))});
     return Object.fromEntries(ids.map(id=>[id,available[id]]));
   };
   const points=select('displayPoints',model.points,'POINT'),lines=select('displayLines',model.lines,'LINE');
@@ -873,7 +878,7 @@ function specForFamily(plan,model,id){
     const pitches=rows.map(row=>bandRowPitch(row.map(textOf)));
     const bandExtra=rows.length?26+pitches.reduce((sum,pitch)=>sum+pitch,0):0;// 14 px under the last row keeps the axis letter clear of it
     // The Archive solution image is at most 640 CSS px high at the 0.5823 display scale: 1099 intrinsic px for a figure at one scale.
-    if(canvas.height+bandExtra>(p.plotCanvas!==undefined?1099:800))throw Error('COORDINATE_PANEL_TOO_TALL');
+    if(canvas.height+bandExtra>(p.plotCanvas!==undefined?1099:800))throw withHint(Error('COORDINATE_PANEL_TOO_TALL'),{kind:'PANEL_TOO_TALL',site:'GRAPH',limit:p.plotCanvas!==undefined?1099:800,height:canvas.height+bandExtra,canvasHeight:canvas.height,bandHeight:bandExtra,bandRows:rows.length,bandIds:graphBandIds(panelLabels,p.requiredPoints)});
     if(p.graphRegionFeatures!==undefined){
       const regionRows=p.graphRegionFeatures?.regions,declarations=p.regions??[];
       if(!Array.isArray(regionRows)||!Array.isArray(declarations)||regionRows.length!==declarations.length)throw Error('GRAPH_REGION_FEATURE_INVENTORY_REQUIRED');
@@ -1040,12 +1045,12 @@ function specForFamily(plan,model,id){
   const calloutFacts=calloutSpec(plan,model,callouts,pointNames);objects.push(...calloutFacts.objects);Object.assign(factRolesByLabel,calloutFacts.factRolesByLabel);   // E37
   const coordinateCanvas=plan.coordinateCanvas??{width:384,height:320};
   if(plan.coordinateCanvas!==undefined&&model.coordinateMode!=='SOURCE_COORDINATES'&&!isPlaneFigure(plan))throw Error('COORDINATE_CANVAS_SOURCE_FRAME_REQUIRED');
-  if(!Number.isSafeInteger(coordinateCanvas.width)||coordinateCanvas.width<384||coordinateCanvas.width>720||!Number.isSafeInteger(coordinateCanvas.height)||coordinateCanvas.height<320||coordinateCanvas.height>600)throw Error('COORDINATE_CANVAS_BOUNDS_INVALID');
+  if(!Number.isSafeInteger(coordinateCanvas.width)||coordinateCanvas.width<CANVAS_RANGE.width[0]||coordinateCanvas.width>CANVAS_RANGE.width[1]||!Number.isSafeInteger(coordinateCanvas.height)||coordinateCanvas.height<CANVAS_RANGE.height[0]||coordinateCanvas.height>CANVAS_RANGE.height[1])throw withHint(Error('COORDINATE_CANVAS_BOUNDS_INVALID'),{kind:'CANVAS_BOUNDS',current:{width:coordinateCanvas.width,height:coordinateCanvas.height},range:CANVAS_RANGE});
   // The coordinate band adds height above the plot (two columns; 34 px rows, 56 with a fraction) instead of shrinking the plot.
   const textOf=labelId=>objects.find(object=>object.id===labelId)?.text??'',panelRows=Array.from({length:Math.ceil(panelLabels.length/2)},(_,r)=>panelLabels.slice(2*r,2*r+2));
   const panelPitches=panelRows.map(row=>bandRowPitch(row.map(textOf))),panelCenters=bandRowCenters(panelPitches,55);
   const topInset=panelLabels.length?26+panelPitches.reduce((sum,pitch)=>sum+pitch,0):0,height=coordinateCanvas.height+topInset;
-  if(height>600)throw Error('COORDINATE_PANEL_TOO_TALL');
+  if(height>CANVAS_RANGE.height[1])throw withHint(Error('COORDINATE_PANEL_TOO_TALL'),{kind:'PANEL_TOO_TALL',site:'COORDINATE',limit:CANVAS_RANGE.height[1],height,canvasHeight:coordinateCanvas.height,minCanvasHeight:CANVAS_RANGE.height[0],bandHeight:topInset,bandRows:panelRows.length,bandIds:panelLabels.map(labelId=>labelId.replace(/-coordinate-panel$/,''))});
   const equationLabelCenters=Object.fromEntries(panelLabels.map((labelId,i)=>[labelId,[panelLabels.length===1?coordinateCanvas.width/2:coordinateCanvas.width*(i%2?.72:.28),panelCenters[Math.floor(i/2)]]]));
   // A plane figure with a label on a circular arc (outside its circle) widens its frame so the label has canvas room; every other figure keeps the tight frame.
   const frame=dimensionFraming(plan,model,points,arcLabelFraming(plan,model,points,{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad},coordinateCanvas),coordinateCanvas,calloutDimensionSites(callouts));
@@ -1212,7 +1217,7 @@ function piecewisePolynomialSpec(plan,id){
   const rows=[...lineLabels.map(labelId=>[labelId]),...Array.from({length:coordinateRows},(_,r)=>panelLabels.slice(r*columns,r*columns+columns))];
   const pitches=rows.map(row=>bandRowPitch(row.map(textOf)));
   const bandExtra=rows.length?26+pitches.reduce((sum,pitch)=>sum+pitch,0):0;
-  if(canvas.height+bandExtra>1099)throw Error('COORDINATE_PANEL_TOO_TALL');
+  if(canvas.height+bandExtra>1099)throw withHint(Error('COORDINATE_PANEL_TOO_TALL'),{kind:'PANEL_TOO_TALL',site:'GRAPH',limit:1099,height:canvas.height+bandExtra,canvasHeight:canvas.height,bandHeight:bandExtra,bandRows:rows.length,bandIds:graphBandIds(panelLabels,required)});
   const rowCenters=bandRowCenters(pitches,headerPx?135:55);
   const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[r<lineLabels.length||panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
   // A piecewise reference curve's own domain ends are drawn as hollow/filled dots by the engine (their own ids, never the function's).
@@ -1332,7 +1337,7 @@ function piecewiseDiscontinuousSpec(plan,id){
   const rows=[...lineLabels.map(labelId=>[labelId]),...Array.from({length:coordinateRows},(_,r)=>panelLabels.slice(r*columns,r*columns+columns))];
   const pitches=rows.map(row=>bandRowPitch(row.map(textOf)));
   const bandExtra=rows.length?26+pitches.reduce((sum,pitch)=>sum+pitch,0):0;
-  if(canvas.height+bandExtra>1099)throw Error('COORDINATE_PANEL_TOO_TALL');
+  if(canvas.height+bandExtra>1099)throw withHint(Error('COORDINATE_PANEL_TOO_TALL'),{kind:'PANEL_TOO_TALL',site:'GRAPH',limit:1099,height:canvas.height+bandExtra,canvasHeight:canvas.height,bandHeight:bandExtra,bandRows:rows.length,bandIds:graphBandIds(panelLabels,required)});
   const rowCenters=bandRowCenters(pitches,55);
   const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
   return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),...(p.axisVariable?{axisVariable:p.axisVariable}:{}),tickLabelFallbackCallout:true,equationLabelCenters:bandCenters,discontinuousEndpointFeatures:{schemaVersion:'PIECEWISE_DISCONTINUOUS_ENDPOINTS_v1',markers:[...features.markers,...sharedMarkers]},discontinuousEndpointFeaturePolicy:{schemaVersion:'PIECEWISE_DISCONTINUOUS_ENDPOINT_POLICY_v1',markerRadiusIntrinsicPx:4}},objects};
@@ -1574,7 +1579,7 @@ export async function recordNativeSolutionOverlay({questionUid,sourceRegistryRef
     if(!archiveAssetPath||actualBase.archiveAssetPath!==archiveAssetPath||actualBase.candidateSvgRef?.sha256!==svgRef.sha256)throw Error('NATIVE_OVERLAY_BASE_ASSET_BINDING_MISMATCH');
     const identity=assetIdentity(questionUid,'SOLUTION_VISUAL');
     const folderRelative=overlayFolderRelative,folder=overlayFolder;
-    const candidateCode=baseCandidateCode+'\n;window.questionBank.find(q=>q.id==='+ordinal+').solution = '+JSON.stringify(patch.patchedSolution)+';\n';
+    const candidateCode=baseCandidateCode+bankAliasSuffix(baseCandidateCode)+'\n;window.questionBank.find(q=>q.id==='+ordinal+').solution = '+JSON.stringify(patch.patchedSolution)+';\n';
     const candidateRelative=folderRelative+'/'+workspace.examUid+'.js',candidatePath=generatedPath(root,candidateRelative);
     fs.writeFileSync(candidatePath,candidateCode,{flag:'wx'});
     const candidateRef=fileRef(root,candidateRelative),candidateBank=loadBank(candidateCode),candidateQuestion=candidateBank.find(item=>item.id===ordinal);
@@ -1909,7 +1914,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
     if(finalDisplayEnvelope.status!=='PASS')throw Error('UNSUPPORTED_DISPLAY_ENVELOPE:'+canonicalJson({sizeClassStatus:finalDisplayEnvelope.status,profiles:finalDisplayEnvelope.profiles.map(value=>({sizeClass:value.sizeClass,status:value.supportStatus,errors:value.finalAudit.errors}))}));
     console.log(JSON.stringify({stage:'ACTUAL_ARCHIVE',uid}));
     const patch={solutionImage:archiveAssetRef,solutionImageSize:finalDisplayEnvelope.sizeClass,solutionImageAlt:plan.caption};
-    const candidate=raw+'\n;Object.assign(window.questionBank.find(q=>q.id==='+ordinal+'),'+JSON.stringify(patch)+');\n';
+    const candidate=raw+bankAliasSuffix(raw)+'\n;Object.assign(window.questionBank.find(q=>q.id==='+ordinal+'),'+JSON.stringify(patch)+');\n';
     const patched=JSON.parse(JSON.stringify(loadBank(candidate))),original=JSON.parse(JSON.stringify(bank));
     const touched=['solutionImage','solutionImageSize','solutionImageAlt'];
     for(let i=0;i<original.length;i++){const before={...original[i]},after={...patched[i]};if(before.id===ordinal)for(const field of touched){delete before[field];delete after[field];}if(canonicalJson(before)!==canonicalJson(after))throw Error('ARCHIVE_PROTECTED_FIELD_MUTATION');}

@@ -9,7 +9,7 @@ const fs=require('fs'),path=require('path');
 const js=process.argv[2];
 if(!js){console.error('usage: node .tmp/work/exam-figs.cjs <시험지 JS>');process.exit(2);}
 global.window={};eval(fs.readFileSync(js,'utf8'));
-const bank=window.questionBank;
+const bank=window.questionBank??window.examData?.questions;
 function classify(rel){
   if(!rel)return {kind:'NONE'};
   const p=path.join('archive',rel);

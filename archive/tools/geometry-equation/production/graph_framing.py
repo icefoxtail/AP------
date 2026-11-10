@@ -9,6 +9,14 @@ import sympy as S
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_engine.palette import PALETTE_NAMES as OVERLAY_COLOR_NAMES   # (G12-2) the colour-group names of the plane figures (BLUE WARM GREEN ROSE VIOLET)
 _x=S.Symbol('x',real=True)
+
+class HintedValueError(ValueError):
+    """A refusal that also carries machine-readable repair data for the author's result file. str(error) is the unchanged code (tests and
+    callers match on it); worker.py sends hint_data beside the code as result.hintData, and render-plan.mjs turns it into result.fix.
+    hint_data holds only values the engine computed itself (exact point coordinates, intervals), never a free text."""
+    def __init__(self,message,hint_data=None):
+        super().__init__(message)
+        self.hint_data=hint_data
 # A repeated real root of a cubic/quartic is a root of gcd(p,p'), a degree<=2 factor of rational coefficients: it is either rational or
 # p+q*sqrt(r). The isolating interval pins its location; a width beyond this bound means the location is not representable.
 REPEATED_ROOT_MAX_ISOLATION_WIDTH=S.Rational(1,10**9)
@@ -2184,22 +2192,37 @@ def fit_piecewise_polynomial(plan):
         normalized.append({'id':point['id'],'x':floats['x'],'y':floats['y'],**({'marker':'NONE'} if point.get('marker')=='NONE' else {})});required_xy.append((floats['x'],floats['y']))
     required=normalized
     marked=lambda x_value,y_value:any(abs(px-float(x_value))<=1e-9*max(1,abs(px)) and abs(py-float(y_value))<=1e-9*max(1,abs(py)) for px,py in required_xy)
+    def missing_key_points():
+        """Every corner, in-piece vertex and reference-curve vertex that requiredPoints does not mark yet, as exact {x,y} texts (the author adds them all at once)."""
+        try:
+            rows=list(corners)+[(x_value,y_value) for x_value,y_value,_ in extrema]
+            for row in refs:
+                if row['kind']=='quadratic':
+                    h=_pp_norm(-row['coefficients'][1]/(2*row['coefficients'][2]));rows.append((h,ref_value(row,h)))
+                else:rows+=list(row['corners'])+[(x_value,y_value) for x_value,y_value,_ in row['extrema']]
+            found=[];seen=set()
+            for x_value,y_value in rows:
+                if marked(x_value,y_value):continue
+                pair=(_pp_text(x_value),_pp_text(y_value))
+                if pair not in seen:seen.add(pair);found.append({'x':pair[0],'y':pair[1]})
+            return {'kind':'ADD_REQUIRED_POINTS','points':found} if found else None
+        except (ValueError,KeyError,TypeError):return None
     for x_value,y_value in corners:
-        if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_CORNER_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
+        if not marked(x_value,y_value):raise HintedValueError('PIECEWISE_POLY_CORNER_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value),missing_key_points())
     for x_value,y_value,_ in extrema:
-        if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
+        if not marked(x_value,y_value):raise HintedValueError('PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value),missing_key_points())
     # The vertex of a quadratic reference curve, and every corner and in-piece vertex of a piecewise one, is a key point the author must mark.
     for row in refs:
         if row['kind']=='quadratic':
             h=_pp_norm(-row['coefficients'][1]/(2*row['coefficients'][2]))
             row['vertex']=(h,ref_value(row,h))
-            if not marked(h,row['vertex'][1]):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(h))
+            if not marked(h,row['vertex'][1]):raise HintedValueError('PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(h),missing_key_points())
             continue
         row['vertex']=None
         for x_value,y_value in row['corners']:
-            if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CORNER_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value))
+            if not marked(x_value,y_value):raise HintedValueError('PIECEWISE_POLY_REFERENCE_CURVE_CORNER_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value),missing_key_points())
         for x_value,y_value,_ in row['extrema']:
-            if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value))
+            if not marked(x_value,y_value):raise HintedValueError('PIECEWISE_POLY_REFERENCE_CURVE_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value),missing_key_points())
     # The display formula (optional) must be the same function as the pieces: exact values at nine points of every piece.
     formula=plan.get('formula')
     if formula is not None:
@@ -2630,7 +2653,10 @@ def _pd_name_label(plan,shared):
     if 'anchorX' in raw:
         anchor=pp_exact_value(str(raw['anchorX']))
         pieces=piecewise_discontinuous_pieces(shared)
-        if not any(pd_defines_at(piece,anchor) for piece in pieces):raise ValueError('CURVE_NAME_LEADER_ANCHOR_OFF_CURVE')
+        if not any(pd_defines_at(piece,anchor) for piece in pieces):
+            try:defined=[[None if piece['a'] is None else _pp_text(piece['a']),None if piece['b'] is None else _pp_text(piece['b'])] for piece in pieces]
+            except (ValueError,KeyError,TypeError):defined=None
+            raise HintedValueError('CURVE_NAME_LEADER_ANCHOR_OFF_CURVE',{'kind':'ANCHOR_X_OFF_CURVE','defined':defined} if defined else None)
         row['anchorX']=str(raw['anchorX'])
     return row
 
@@ -2735,8 +2761,17 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
         normalized.append({'id':point['id'],'x':floats['x'],'y':floats['y']});required_xy.append((floats['x'],floats['y']))
     required=normalized
     marked=lambda x_value,y_value:any(abs(px-float(x_value))<=1e-9*max(1,abs(px)) and abs(py-float(y_value))<=1e-9*max(1,abs(py)) for px,py in required_xy)
+    def missing_key_points():
+        try:
+            found=[];seen=set()
+            for x_value,y_value,_ in extrema:
+                if marked(x_value,y_value):continue
+                pair=(_pp_text(x_value),_pp_text(y_value))
+                if pair not in seen:seen.add(pair);found.append({'x':pair[0],'y':pair[1]})
+            return {'kind':'ADD_REQUIRED_POINTS','points':found} if found else None
+        except (ValueError,KeyError,TypeError):return None
     for x_value,y_value,_ in extrema:
-        if not marked(x_value,y_value):raise ValueError('PIECEWISE_DISCONTINUOUS_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
+        if not marked(x_value,y_value):raise HintedValueError('PIECEWISE_DISCONTINUOUS_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value),missing_key_points())
     def key_at(x_float,y_float):
         return next((point for point in required if abs(point['x']-x_float)<=1e-9*max(1,abs(x_float)) and abs(point['y']-y_float)<=1e-9*max(1,abs(y_float))),None)
     markers=piecewise_discontinuous_markers(pieces,jumps)
@@ -2763,7 +2798,9 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
     if window is not None:
         if not isinstance(window,list) or len(window)!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or abs(v)>1e6 for v in window) or not window[0]<window[1]:raise ValueError('PIECEWISE_DISCONTINUOUS_X_WINDOW_INVALID')
         window=[float(window[0]),float(window[1])]
-        if any(not window[0]<=px<=window[1] for px,_ in key):raise ValueError('PIECEWISE_DISCONTINUOUS_X_WINDOW_TOO_SMALL')
+        if any(not window[0]<=px<=window[1] for px,_ in key):
+            key_xs=[px for px,_ in key]
+            raise HintedValueError('PIECEWISE_DISCONTINUOUS_X_WINDOW_TOO_SMALL',{'kind':'X_WINDOW_TOO_SMALL','window':window,'keyMin':min(key_xs),'keyMax':max(key_xs)})
     xs=[p[0] for p in key];span=max(xs)-min(xs);extend=max(1.0,.2*span)
     ys=[p[1] for p in key];ylo,yhi=min(ys),max(ys);band=max(1.0,.25*(yhi-ylo))
     def arm(anchor,direction):

@@ -125,7 +125,7 @@ window.questionBank = [
     "wide": false,
     "content": "벤 다이어그램에서 $n(U)=40$, $n(A)=23$, $n(B)=19$, $n(A\\cup B)=35$일 때, 색칠한 부분을 나타내는 집합의 원소의 개수는? [3.2점]",
     "image": "assets/images/23_강남여고_2학기_중간_고1_기출/q04.png",
-    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q4-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 두 집합 A, B의 원이 겹쳐 있고, 두 원의 공통 부분과 원 바깥 부분이 회색으로 칠해져 있다. A에만 속한 부분에 23−x, 공통 부분에 x, B에만 속한 부분에 19−x, 원 바깥에 y가 적혀 있다.",
     "solutionImageCaption": "A는 23개, B는 19개, A∪B는 35개이다. 공통 부분의 개수 x는 23+19−35로, 바깥 부분의 개수 y는 전체 40개에서 35를 뺀 값으로 구한다. 색칠한 두 부분은 서로 겹치지 않으므로 x와 y를 더한 값이 색칠한 부분의 원소 수이다. 정답은 12이다.",
     "solutionImageSize": "full",

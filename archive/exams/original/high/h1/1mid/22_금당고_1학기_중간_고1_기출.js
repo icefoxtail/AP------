@@ -161,9 +161,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "완전제곱식으로 고친다.\n$y=x^2-2x+5=(x-1)^2+4$이다.\n$(x-1)^2\\ge0$이므로 최솟값은 $4$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "꼭짓점 (1,4)에서 최솟값 4를 갖는다.",
-    "solutionImageCaption": "꼭짓점 (1,4)에서 최솟값 4를 갖는다.",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 포물선 y=x²−2x+5에 꼭짓점이 점으로 표시되어 있고, 꼭짓점을 지나는 세로 점선 x=1이 있다. 꼭짓점은 가로축보다 위에 있다.",
+    "solutionImageCaption": "완전제곱식으로 고치면 y=(x−1)²+4이므로 꼭짓점이 축 x=1 위에 놓인다. 포물선이 위로 열려 있어 꼭짓점에서 가장 낮고, 그 높이가 최솟값이다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -286,7 +286,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "②",
-    "solution": "$y=x^2-2x+k=(x-1)^2+k-1$이다.\n구간 $1\\le x\\le3$에서 $(x-1)^2$은 $x=3$일 때 가장 크고 그 값은 $4$이다.\n따라서 최댓값은\n$4+k-1=k+3$이다.\n$k+3=10$이므로 $k=7$이다.\n정답은 ②이다."
+    "solution": "$y=x^2-2x+k=(x-1)^2+k-1$이다.\n구간 $1\\le x\\le3$에서 $(x-1)^2$은 $x=3$일 때 가장 크고 그 값은 $4$이다.\n따라서 최댓값은\n$4+k-1=k+3$이다.\n$k+3=10$이므로 $k=7$이다.\n정답은 ②이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색으로 강조된 구간 1≤x≤3을 가진 위로 열린 포물선 y=x²−2x+k의 예이다. 축 x=1을 점선으로 표시했고, 구간의 왼쪽 끝은 꼭짓점으로 최소, 오른쪽 끝은 최대로 표시했다.",
+    "solutionImageCaption": "예: k=0으로 그린 포물선이다. y=(x−1)²+k−1이므로 구간 1≤x≤3은 축 x=1의 오른쪽에서 시작해 함수값이 증가한다. 최댓값은 x=3에서 나오며 k+3=10이다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -407,9 +411,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "먼저 $x$축에 접하는 조건을 쓴다.\n$x^2+4ax+b=0$이 중근을 가지므로\n$(4a)^2-4b=0$, 따라서 $b=4a^2$이다.\n이제 직선 $y=2x$와 만나려면\n$x^2+(4a-2)x+4a^2=0$이 실근을 가져야 한다.\n판별식은\n$(4a-2)^2-16a^2=4-16a$이다.\n따라서 $4-16a\\ge0$이므로 $a\\le\\dfrac14$이다.\n그러므로 $a$의 최댓값은 $\\dfrac14$이고 정답은 ④이다.",
-    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "a가 최대일 때 y=x^2+x+1/4는 x축에 접하고 직선 y=2x에도 접한다",
-    "solutionImageCaption": "a가 최대일 때 y=x^2+x+1/4는 x축에 접하고 직선 y=2x에도 접한다",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 가로축 위 눈금 1에 있는 파란 포물선이 가로축에 접하고(접점 표시), 주황색 직선 y=2x와 두 점에서 만나는 예이다. 포물선에는 y=x²+4ax+b라는 이름을 지시선으로 달았다.",
+    "solutionImageCaption": "예: a=−(2분의 1), b=1로 그린 그림이다. 가로축에 접하므로 b=4a²이고, 직선 y=2x와 만나려면 x²+(4a−2)x+4a²=0의 판별식이 0 이상이어야 한다. 이 판별식은 4−16a이므로 a≤4분의 1이다. 정답은 4분의 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -451,9 +455,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "식에서 $a$가 붙은 부분을 묶으면\n$y=x^2-5+a(x+1)$이다.\n따라서 $x=-1$일 때 $a$와 관계없이 $y=-4$이므로\n$P=(-1,-4)$이다.\n$P$가 꼭짓점이므로 축의 방정식은 $x=-1$이다.\n축 $x=-\\dfrac a2=-1$에서 $a=2$이다.\n따라서 함수는\n$y=x^2+2x-3=(x-1)(x+3)$이고\n두 $x$절편은 $1,-3$이다.\n그러므로\n$|\\alpha|+|\\beta|=1+3=4$이다.\n정답은 ②이다.",
-    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "꼭짓점 P(-1,-4)이고 x절편은 -3과 1",
-    "solutionImageCaption": "꼭짓점 P(-1,-4)이고 x절편은 -3과 1",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²+2x−3에 꼭짓점 (−1,−4), 가로축과 만나는 두 점 (−3,0), (1,0)이 점으로 표시되어 있고, 꼭짓점을 지나는 세로 점선 x=−1이 있다.",
+    "solutionImageCaption": "식을 y=x²−5+a(x+1)로 묶으면 a와 관계없이 점 (−1,−4)를 지나므로 P(−1,−4)이다. P가 꼭짓점이므로 축 x=−1에서 a=2이고, y=(x−1)(x+3)이므로 x절편은 1과 −3이다. 따라서 |α|+|β|=1+3이다. 정답은 4이다.",
     "solutionImageSize": "full",
   },
   {
@@ -842,6 +846,10 @@ window.questionBank = [
     "content": "두 이차함수 $f(x)=(x-a)^2-a^2$, $g(x)=-(x-2a)^2+4a^2+b$가 다음 조건을 만족시킨다. (가) 방정식 $f(x)=g(x)$는 서로 다른 두 실근 $\\alpha$, $\\beta$를 갖는다. (나) $\\beta-\\alpha=2$. (다) $f(\\beta)-g(\\alpha)\\le g(2a)-f(a)$. (라) $g(\\beta)=f(\\alpha)+5a^2+b$. 다음 조건을 모두 만족하는 $a$, $b$에 대하여 $ab$의 값을 구하고 서술하시오. (단, $a$, $b$는 상수이다.) [10점]",
     "choices": [],
     "answer": "$-32$",
-    "solution": "두 함수를 전개하면 $f(x)=x^2-2ax$, $g(x)=-x^2+4ax+b$이다.\n$f(x)=g(x)$에서 $2x^2-6ax-b=0$이므로 근의 합은 $\\alpha+\\beta=3a$이다. 조건 $\\beta-\\alpha=2$로부터 $\\alpha=\\dfrac{3a-2}{2}$, $\\beta=\\dfrac{3a+2}{2}$이다.\n두 근의 곱을 이용하면 $\\alpha\\beta=-\\dfrac b2$이고 $((\\alpha+\\beta)^2-(\\beta-\\alpha)^2)/4=\\alpha\\beta$이므로 $b=2-\\dfrac92a^2$이다.\n조건 (다)의 좌변은 $f(\\beta)-g(\\alpha)=g(\\beta)-g(\\alpha)=2(4a-(\\alpha+\\beta))=2a$이고 우변은 $g(2a)-f(a)=5a^2+b$이다. $b=2-\\dfrac92a^2$를 대입하면 $2a\\le5a^2+b$는 $0\\le\\dfrac12(a-2)^2$이므로 항상 성립한다.\n조건 (라)에 $\\alpha,\\beta$를 대입한다. $g(\\beta)= -\\beta^2+4a\\beta+b$, $f(\\alpha)=\\alpha^2-2a\\alpha$이므로 $g(\\beta)=f(\\alpha)+5a^2+b$는 $\\dfrac12(a-2)^2=0$으로 정리된다. 따라서 $a=2$이고 $b=2-\\dfrac92(4)=-16$이다.\n그러므로 $ab=2(-16)=-32$이다."
+    "solution": "두 함수를 전개하면 $f(x)=x^2-2ax$, $g(x)=-x^2+4ax+b$이다.\n$f(x)=g(x)$에서 $2x^2-6ax-b=0$이므로 근의 합은 $\\alpha+\\beta=3a$이다. 조건 $\\beta-\\alpha=2$로부터 $\\alpha=\\dfrac{3a-2}{2}$, $\\beta=\\dfrac{3a+2}{2}$이다.\n두 근의 곱을 이용하면 $\\alpha\\beta=-\\dfrac b2$이고 $((\\alpha+\\beta)^2-(\\beta-\\alpha)^2)/4=\\alpha\\beta$이므로 $b=2-\\dfrac92a^2$이다.\n조건 (다)의 좌변은 $f(\\beta)-g(\\alpha)=g(\\beta)-g(\\alpha)=2(4a-(\\alpha+\\beta))=2a$이고 우변은 $g(2a)-f(a)=5a^2+b$이다. $b=2-\\dfrac92a^2$를 대입하면 $2a\\le5a^2+b$는 $0\\le\\dfrac12(a-2)^2$이므로 항상 성립한다.\n조건 (라)에 $\\alpha,\\beta$를 대입한다. $g(\\beta)= -\\beta^2+4a\\beta+b$, $f(\\alpha)=\\alpha^2-2a\\alpha$이므로 $g(\\beta)=f(\\alpha)+5a^2+b$는 $\\dfrac12(a-2)^2=0$으로 정리된다. 따라서 $a=2$이고 $b=2-\\dfrac92(4)=-16$이다.\n그러므로 $ab=2(-16)=-32$이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f(x)와 주황 곡선 g(x)가 두 점 (2,−4), (4,0)에서 만난다. f는 위로 열린 포물선, g는 아래로 열린 포물선이고, 두 곡선의 이름은 지시선으로 달았다.",
+    "solutionImageCaption": "두 식을 전개해 f(x)=g(x)를 정리하면 2x²−6ax−b=0이고 근의 합은 3a이다. β−α=2로부터 α, β를 a로 나타내고 조건 (다), (라)를 정리하면 a=2, b=−16이 되어, 그림은 이때의 두 포물선과 교점 (2,−4), (4,0)이다. 따라서 ab를 구하면 정답은 −32이다.",
+    "solutionImageSize": "full"
   }
 ];
