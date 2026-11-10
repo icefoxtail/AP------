@@ -181,3 +181,16 @@ test('the alert is styled to be seen: >=14px text, >=44px close target, above ba
   assert.ok(Number(/min-height:\s*(\d+)px/.exec(button[1])?.[1]) >= 44, 'close target at least 44px tall');
   assert.ok(Number(/min-width:\s*(\d+)px/.exec(button[1])?.[1]) >= 44, 'close target at least 44px wide');
 });
+
+test('teacherErrorMessage drops a leading CODE: but keeps the Korean reason behind it', () => {
+  const source = read('archive2-workspace.js');
+  const start = source.indexOf('  const HANGUL = ');
+  const end = source.indexOf('  // Errors also get a fixed, dismissible alert');
+  assert.ok(start > 0 && end > start, 'teacherErrorMessage block found');
+  const teacherErrorMessage = new Function(`${source.slice(start, end)}; return teacherErrorMessage;`)();
+  assert.equal(teacherErrorMessage(new Error('AUTH_REQUIRED: 로그인이 필요합니다.')), '로그인이 필요합니다.');
+  assert.equal(teacherErrorMessage('3번 문항의 정답이 비어 있습니다.'), '3번 문항의 정답이 비어 있습니다.');
+  assert.equal(teacherErrorMessage(new Error('Failed to fetch'), '다시 시도해 주세요.'), '다시 시도해 주세요.');
+  assert.equal(teacherErrorMessage(new Error('SERVER_ERROR: internal'), '다시 시도해 주세요.'), '다시 시도해 주세요.');
+  assert.match(teacherErrorMessage(null), /다시 시도/);
+});

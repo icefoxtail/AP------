@@ -644,8 +644,9 @@
   // `fallback`. The original error keeps its `code`/`message` for diagnosis.
   const GENERIC_ERROR = "작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
   function teacherErrorMessage(error, fallback = GENERIC_ERROR) {
-    const text = String(typeof error === "string" ? error : error?.message || "");
-    return HANGUL.test(text) && !/^[A-Z][A-Z0-9_]{3,}:/.test(text) ? text : fallback;
+    // Same rule as status(): a leading CODE: is dropped and the Korean reason behind it is kept.
+    const text = String(typeof error === "string" ? error : error?.message || "").replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
+    return HANGUL.test(text) ? text : fallback;
   }
   // Errors also get a fixed, dismissible alert so a failure below the fold (or behind a dialog) is not missed.
   let errorToastEl = null;
