@@ -140,8 +140,8 @@ window.questionBank = [
       "$102^\\circ$",
       "$108^\\circ$"
     ],
-    "answer": "①",
-    "solution": "$\\angle ADB=34^\\circ$이므로 호 $AB$의 크기는\n$2\\times34^\\circ=68^\\circ$이다.\n호 $CD$는 호 $AB$의 2배이므로\n$\\overset{\\frown}{CD}=2\\times68^\\circ=136^\\circ$이다.\n원 안에서 만나는 두 현이 만드는 각 $x$는 마주 보는 두 호의 합의 절반이다.\n두 나머지 호의 합은\n$360^\\circ-68^\\circ-136^\\circ=156^\\circ$이다.\n따라서\n$x=156^\\circ\\div2=78^\\circ$이다.\n그러므로 정답은 ①이다.",
+    "answer": "④",
+    "solution": "$\\angle ADB=34^\\circ$이므로 호 $AB$의 크기는\n$2\\times34^\\circ=68^\\circ$이다.\n호 $CD$는 호 $AB$의 2배이므로\n$\\overset{\\frown}{CD}=2\\times68^\\circ=136^\\circ$이다.\n원 안에서 만나는 두 현이 만드는 각은 그 각과 맞꼭지각이 마주 보는 두 호의 합의 절반이다.\n$\\angle x$는 두 현 $AC$, $BD$의 교점에서 $D$와 $C$ 쪽에 있는 각이므로 호 $CD$를 마주 보고, 그 맞꼭지각은 호 $AB$를 마주 본다.\n따라서\n$x=(68^\\circ+136^\\circ)\\div2=102^\\circ$이다.\n그러므로 정답은 ④이다.",
     "tags": [
       "도형",
       "원의 성질"
