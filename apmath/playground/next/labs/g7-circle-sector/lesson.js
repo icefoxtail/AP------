@@ -624,5 +624,461 @@ window.APL_LESSONS['g7-circle-sector'] = {
         ]
       }
     ]
+  },
+
+  /* ---------- 반원 둘레 (g7-circle-sector.html periScene('semi') z2-semi, 정리 탭) · 2장 20초 · z2-sector 와 같은 방법 ----------
+     r=6(장면 기본값). 경계 = ① 반원호 πr = 6π, ② 지름 2r = 12 → 둘레 6π+12 (장면 steps). csP 목표: 호 끝 = 100×6π/(6π+12) = 61.10154703516573, 끝 = 100.
+     step 2(호 길이) → step 3(합계, 마지막 자막). 정리 탭이 「둘레 = ?」 를 마지막 단계까지 아낍니다(z2-sector 주석 참고). */
+  'z2-semi': {
+    title: '반원의 둘레는?',
+    answer: '$6\\pi+12$',
+    answerText: '$6\\pi+12$ cm',
+    summary: '반원 둘레 = 반원의 호 + 지름',
+    task: '반지름을 바꿔 반원의 호와 지름의 합으로 둘레가 구해지는지 확인해 보세요',
+    tab: 'review',
+    chapters: [
+      {
+        length: 10,
+        title: '먼저 호',
+        start: { csR: 6, csP: 0 },
+        cues: [
+          { at: 0, say: '지름이 12 cm인 반원의 둘레를 구해요.', step: 2 },
+          { at: 0.5, to: { csP: 61.10154703516573 }, dur: 4, ease: 'smooth' },
+          { at: 5, say: '둘레는 경계선의 길이를 더해요. 먼저 호는 $6\\pi$ cm.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '지름까지 더하기',
+        cues: [
+          { at: 0, say: '아래쪽 경계는 지름, 12 cm예요.', to: { csP: 100 }, dur: 3.5, ease: 'smooth' },
+          { at: 3.5, say: '둘레 = 반원의 호 + 지름' },
+          { at: 7, say: '$6\\pi+12$ cm', step: 3 }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 사분원 둘레 (periScene('quarter') z2-quarter, 정리 탭) · 3장 30초 ----------
+     r=6. 경계 = ① 사분원호 2π·6·90/360 = 3π, ② 반지름 6, ③ 반지름 6 → 3π+12. csP 목표는 z2-sector 와 같음(43.99…, 71.995…, 100). step 2 → 3 → 4(마지막 자막). */
+  'z2-quarter': {
+    title: '사분원의 둘레는?',
+    answer: '$3\\pi+12$',
+    answerText: '$3\\pi+12$ cm',
+    summary: '사분원 둘레 = 호 + 반지름 2개',
+    task: '반지름을 바꿔 호와 반지름 두 개의 합으로 둘레가 구해지는지 확인해 보세요',
+    tab: 'review',
+    chapters: [
+      {
+        length: 9,
+        title: '먼저 호',
+        start: { csR: 6, csP: 0 },
+        cues: [
+          { at: 0, say: '반지름 6 cm인 사분원의 둘레를 구해요.', step: 2 },
+          { at: 0.5, to: { csP: 43.99008464884426 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '둘레는 경계선의 길이를 더해요. 먼저 호는 $3\\pi$ cm.' }
+        ]
+      },
+      {
+        length: 9,
+        title: '반지름 두 개',
+        cues: [
+          { at: 0, say: '사분원의 경계에는 반지름 두 개도 있어요.', step: 3 },
+          { at: 0.5, to: { csP: 71.99504232442213 }, dur: 4, ease: 'smooth' },
+          { at: 5, say: '첫 번째 반지름은 6 cm예요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '둘레는?',
+        cues: [
+          { at: 0, say: '나머지 반지름도 6 cm예요.', to: { csP: 100 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '둘레 = 호 + 반지름 + 반지름' },
+          { at: 8.5, say: '$3\\pi+6+6=3\\pi+12$ cm', step: 4 }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 활꼴 둘레 (periScene('segment') z2-segment, 정리 탭) · 2장 20초 ----------
+     r=6, 중심각 60°(csS 기본값). 경계 = ① 호 AB 2π·6·60/360 = 2π, ② 현 AB = 반지름 6(60° 일 때만 정수로 말함) → 2π+6. csP 목표: 호 끝 = 100×2π/(2π+6) = 51.15273563044784.
+     현의 길이는 마지막 단계(step 3)에서 라벨로 나오므로 「6 cm」 는 그 자막과 함께 말합니다. 반지름 두 개는 활꼴의 경계가 아님(점선, 둘레에 포함되지 않음). */
+  'z2-segment': {
+    title: '활꼴의 둘레는?',
+    answer: '$2\\pi+6$',
+    answerText: '$2\\pi+6$ cm',
+    summary: '활꼴 둘레 = 호 + 현',
+    task: '중심각을 60°나 180°로 바꿔 호와 현의 합으로 둘레가 구해지는지 확인해 보세요',
+    tab: 'review',
+    chapters: [
+      {
+        length: 10,
+        title: '먼저 호',
+        start: { csR: 6, csS: 60, csP: 0 },
+        cues: [
+          { at: 0, say: '중심각이 60°인 활꼴의 둘레를 구해요.', step: 2 },
+          { at: 0.5, to: { csP: 51.15273563044784 }, dur: 4, ease: 'smooth' },
+          { at: 5, say: '먼저 호 AB는 $2\\pi$ cm.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '현까지 더하기',
+        cues: [
+          { at: 0, say: '호의 두 끝을 곧게 이은 선분이 **현**이에요.', to: { csP: 100 }, dur: 3.5, ease: 'smooth' },
+          { at: 3.5, say: '활꼴의 둘레 = 호 + 현' },
+          { at: 7, say: '현은 6 cm, 둘레 $=2\\pi+6$ cm', step: 3 }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 호의 길이로 넓이 구하기 (basic.js 1610, sectorSpec 교재 16-10) · 3장 28초 · tab:'review' ----------
+     호 l=4π(주어짐), 중심각 80°(주어짐) → 반지름 r: 2π·r·80/360 = 4π → r = 9 → 넓이 π·9²·80/360 = 18π (장면 steps ① r=9 ② 18π). 80/360 = 2/9, 40° 조각 9개 중 2개.
+     재생 전용 그림(basic.js sectorSpec): div 로 원을 40° 조각 9개로 나눈 점선(thMax<350 인 장면은 원 전체와 틀을 재생·진입 화면에서만 확장). 정리 탭 step 1 에서 r, step 2 에서 넓이가 나옵니다. */
+  '1610': {
+    title: '호의 길이로 넓이 구하기',
+    answer: '$18\\pi$',
+    answerText: '$18\\pi$ cm²',
+    summary: '반지름을 먼저 구한 뒤 넓이 = $\\pi r^2\\times\\frac{\\theta}{360}$',
+    task: '호의 길이나 중심각을 바꿔 반지름을 거쳐 넓이를 구해 보세요',
+    tab: 'review',
+    chapters: [
+      {
+        length: 9,
+        title: '원의 몇 분의 몇?',
+        start: { b1610_r: 9, b1610_th: 80, b1610_div: 0 },
+        cues: [
+          { at: 0, say: '호의 길이는 $4\\pi$ cm, 중심각은 80°예요.', set: { b1610_ref: 0 }, step: 0 },
+          { at: 0.2, to: { b1610_div: 1 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '한 바퀴 360° 중 80°는 $\\frac29$예요.' }
+        ]
+      },
+      {
+        length: 9,
+        title: '반지름 구하기',
+        cues: [
+          { at: 0, say: '호 = 원주 × $\\frac29$, 원주는 $2\\pi r$.' },
+          { at: 4.5, say: '$2\\pi r\\times\\frac{80}{360}=4\\pi$, $r=9$', step: 1 }
+        ]
+      },
+      {
+        length: 10,
+        title: '넓이는?',
+        cues: [
+          { at: 0, say: '원의 넓이는 $\\pi\\times9^2=81\\pi$.', set: { b1610_ref: 2 } },
+          { at: 3.5, say: '부채꼴은 원의 $\\frac29$, $81\\pi\\times\\frac29$.' },
+          { at: 7, say: '넓이 $=18\\pi$ cm²', step: 2 }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 호의 길이로 반지름 구하기 (basic.js 1808, sectorSpec 교재 18-08) · 3장 28초 · tab:'review' ----------
+     중심각 45°, 호 l=3π(주어짐) → 2π·r·45/360 = 3π → r = 12 (장면 steps). 45/360 = 1/8, 45° 조각 8개 중 1개 → 원주 = 3π×8 = 24π = 2π·r.
+     반지름·원주가 정답을 가르쳐 주므로 ref 라벨(원주)은 쓰지 않고, 정리 탭 step 2(마지막 자막)에서 r 이 나옵니다. */
+  '1808': {
+    title: '호의 길이로 반지름 구하기',
+    answer: '$12$',
+    answerText: '$r=12$ cm',
+    summary: '호 = $2\\pi r\\times\\frac{\\theta}{360}$ 에서 $r$을 구해요',
+    task: '중심각이나 호의 길이를 바꿔 반지름이 어떻게 달라지는지 확인해 보세요',
+    tab: 'review',
+    chapters: [
+      {
+        length: 9,
+        title: '원의 몇 분의 몇?',
+        start: { b1808_r: 12, b1808_th: 45, b1808_div: 0 },
+        cues: [
+          { at: 0, say: '호의 길이는 $3\\pi$ cm, 중심각은 45°예요.', set: { b1808_ref: 0 }, step: 0 },
+          { at: 0.2, to: { b1808_div: 1 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '한 바퀴 360° 중 45°는 $\\frac18$이에요.' }
+        ]
+      },
+      {
+        length: 9,
+        title: '원주는 호의 8배',
+        cues: [
+          { at: 0, say: '호는 원주의 $\\frac18$이므로 원주는 호의 8배.' },
+          { at: 4.5, say: '원주 $=3\\pi\\times8=24\\pi$ cm', step: 1 }
+        ]
+      },
+      {
+        length: 10,
+        title: '반지름은?',
+        cues: [
+          { at: 0, say: '원주는 $2\\pi r$이므로 $2\\pi r=24\\pi$.' },
+          { at: 4, say: '양쪽을 $2\\pi$로 나누면?' },
+          { at: 7, say: '반지름 $r=12$ cm', step: 2 }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 정사각형 속 두 반원 → 삼각형 (f04.js f4-sq12, 탐구 탭) · 3장 31초 ----------
+     a=12(장면 기본값). 잎 모양 조각 ①②를 각각 제자리에서 돌려 끼우면 직각삼각형(두 변 a): ½·12·12 = 72 (장면 steps). t 구간·hold 는 f4-swirl 과 같음(0.12~0.30 조각 ①② 표시 · 0.38~0.74 회전 · 0.80~0.96 결과, 결과 라벨 「삼각형」「72」·캡션·칩은 f4_sq12_show 로). */
+  'f4-sq12': {
+    title: '두 조각을 돌리면 삼각형',
+    answer: '$72$',
+    answerText: '$72$ cm²',
+    summary: '색칠한 부분 = 직각삼각형 $\\frac12\\times a\\times a$',
+    task: '한 변 a를 바꿔도 색칠한 부분이 직각삼각형이 되는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '옮길 조각 찾기',
+        start: { f4_sq12_a: 12, f4_sq12_t: 0 },
+        cues: [
+          { at: 0, say: '한 변이 12 cm인 정사각형 안에 반원 둘이 있어요.', set: { f4_sq12_show: false }, to: { f4_sq12_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '잎 모양의 두 조각 ①, ②를 옮겨 볼 거예요.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '돌려서 끼우기',
+        cues: [
+          { at: 0, say: '두 조각을 각각 **제자리에서 돌려요**.', to: { f4_sq12_t: 0.78 }, dur: 5.5, ease: 'smooth' },
+          { at: 6, say: '빈 곳에 꼭 맞게 끼워져요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '삼각형의 넓이',
+        cues: [
+          { at: 0, say: '색칠한 부분은 **직각삼각형**이 돼요.', to: { f4_sq12_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '직각을 낀 두 변은 모두 12 cm.' },
+          { at: 8.5, say: '넓이 $=\\frac12\\times12\\times12=72$ cm²', set: { f4_sq12_show: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 파인 사분원 · 붙은 사분원 → 직사각형 (f04.js f4-slideq, 탐구 탭) · 3장 31초 ----------
+     W=10, H=6, r=4(장면 기본값). 붙은 사분원을 왼쪽으로 W 만큼 밀면 직사각형 10×6 = 60 (장면 steps). 라벨 「10 cm」「6 cm」「4」. */
+  'f4-slideq': {
+    title: '사분원을 밀면 직사각형',
+    answer: '$60$',
+    answerText: '$60$ cm²',
+    summary: '색칠한 부분 = 가로 × 세로',
+    task: '가로·세로·반지름을 바꿔도 색칠한 부분이 직사각형이 되는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '파인 곳과 붙은 곳',
+        start: { f4_slideq_W: 10, f4_slideq_H: 6, f4_slideq_r: 4, f4_slideq_t: 0 },
+        cues: [
+          { at: 0, say: '왼쪽 위가 파이고, 오른쪽에 같은 사분원이 붙었어요.', set: { f4_slideq_show: false }, to: { f4_slideq_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '가로 10 cm, 세로 6 cm, 사분원의 반지름은 4.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '가로로 밀기',
+        cues: [
+          { at: 0, say: '붙은 사분원 ①을 왼쪽으로 **가로로 밀어요**.', to: { f4_slideq_t: 0.78 }, dur: 5.5, ease: 'smooth' },
+          { at: 6, say: '파인 곳과 크기·방향이 같아 꼭 맞아요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '직사각형의 넓이',
+        cues: [
+          { at: 0, say: '색칠한 부분이 **직사각형**이 돼요.', to: { f4_slideq_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '넓이는 가로 × 세로.' },
+          { at: 8.5, say: '넓이 $=10\\times6=60$ cm²', set: { f4_slideq_show: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 정사각형 속 원 → 직사각형 (f04.js f4-inscr, 탐구 탭) · 3장 31초 ----------
+     r=4(장면 기본값), 한 변 2r=8. 원의 오른쪽 반원 ①을 중심 기준 180° 돌려 왼쪽 빈 반원에 끼우면 색칠한 부분은 정사각형의 왼쪽 절반 = 가로 r × 세로 2r = 4×8 = 32 (장면 steps). 라벨 「8 cm」「r=4」. */
+  'f4-inscr': {
+    title: '정사각형 속 원의 절반',
+    answer: '$32$',
+    answerText: '$32$ cm²',
+    summary: '색칠한 부분 = 정사각형의 절반',
+    task: '반지름 r을 바꿔도 색칠한 부분이 정사각형의 절반인지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '옮길 조각 찾기',
+        start: { f4_inscr_r: 4, f4_inscr_t: 0 },
+        cues: [
+          { at: 0, say: '한 변 8 cm인 정사각형에 원이 꼭 맞게 들어 있어요.', set: { f4_inscr_show: false }, to: { f4_inscr_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '원의 오른쪽 반원 ①을 옮겨 볼 거예요.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '돌려서 끼우기',
+        cues: [
+          { at: 0, say: '원의 중심을 기준으로 **180°** 돌려요.', to: { f4_inscr_t: 0.78 }, dur: 5.5, ease: 'smooth' },
+          { at: 6, say: '왼쪽의 빈 반원에 꼭 맞게 끼워져요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '색칠한 부분의 넓이',
+        cues: [
+          { at: 0, say: '색칠한 부분은 정사각형의 **왼쪽 절반**이에요.', to: { f4_inscr_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '가로는 반지름 4, 세로는 한 변 8.' },
+          { at: 8.5, say: '넓이 $=4\\times8=32$ cm²', set: { f4_inscr_show: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 부채꼴 고리의 조각 옮기기 (f04.js f4-ringmv, 탐구 탭) · 3장 31초 ----------
+     R=6, r=3, 중심각 60°(장면 기본값). 작은 부채꼴 ①을 돌려 고리의 빈 곳에 끼우면 색칠한 부분은 큰 부채꼴: π·6²·60/360 = 6π (장면 steps). 라벨 「60°」「R=6」「r=3」(r=3 은 조각이 옮겨 가면 사라짐). */
+  'f4-ringmv': {
+    title: '고리 조각을 옮기면 부채꼴',
+    answer: '$6\\pi$',
+    answerText: '$6\\pi$ cm²',
+    summary: '색칠한 부분 = 큰 부채꼴 $\\pi R^2\\times\\frac{\\theta}{360}$',
+    task: 'R, r, 중심각을 바꿔도 색칠한 부분이 큰 부채꼴이 되는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '옮길 조각 찾기',
+        start: { f4_ringmv_R: 6, f4_ringmv_r: 3, f4_ringmv_th: 60, f4_ringmv_t: 0 },
+        cues: [
+          { at: 0, say: '큰 부채꼴 $R$은 6, 작은 부채꼴 $r$은 3, 중심각은 60°.', set: { f4_ringmv_show: false }, to: { f4_ringmv_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '작은 부채꼴 ①을 고리의 빈 곳에 끼울 거예요.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '돌려서 끼우기',
+        cues: [
+          { at: 0, say: '작은 부채꼴 ①을 **돌려서** 옮겨요.', to: { f4_ringmv_t: 0.78 }, dur: 5.5, ease: 'smooth' },
+          { at: 6, say: '중심각이 같아서 꼭 맞게 끼워져요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '큰 부채꼴의 넓이',
+        cues: [
+          { at: 0, say: '색칠한 부분은 반지름 6, 중심각 60°인 **큰 부채꼴**.', to: { f4_ringmv_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '넓이 $=\\pi\\times6^2\\times\\frac{60}{360}$' },
+          { at: 8.5, say: '넓이 $=6\\pi$ cm²', set: { f4_ringmv_show: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 고리 모양: 큰 부채꼴 − 작은 부채꼴 · 넓이 (f01.js f1-ring, 탐구 탭, mode 0) · 3장 31초 ----------
+     R=6, r=3, 중심각 90°(장면 기본값). 큰 부채꼴 π·6²·90/360 = 9π, 작은 부채꼴 π·3²·90/360 = 9π/4, 색칠한 부분 = 9π − 9π/4 = 27π/4. 라벨 「90°」「R=6」「r=3」, 캡션 「전체 (큰 부채꼴) 9π」「파낸 부분 (작은 부채꼴) 9π/4」.
+     결과(27π/4)는 f1_ring_show 로 아끼고, 정답은 식 전체로 둡니다(파낸 부분 9π/4 를 먼저 말하므로). 넓이만 합니다(둘레는 step 만 있는 모드: f1-ss2 와 같은 이유). */
+  'f1-ring': {
+    title: '큰 부채꼴 − 작은 부채꼴',
+    answer: '$9\\pi-\\frac{9\\pi}{4}=\\frac{27\\pi}{4}$',
+    answerText: '$9\\pi-\\frac{9\\pi}{4}=\\frac{27\\pi}{4}$ cm²',
+    summary: '고리 모양 = 큰 부채꼴 − 작은 부채꼴',
+    task: 'R, r, 중심각을 바꿔도 (큰 부채꼴 − 작은 부채꼴)로 구해지는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '파낸 작은 부채꼴',
+        start: { f1_ring_R: 6, f1_ring_r: 3, f1_ring_th: 90, f1_ring_t: 0 },
+        cues: [
+          { at: 0, say: '큰 부채꼴에서 작은 부채꼴을 파냈어요.', set: { f1_ring_mode: 0, f1_ring_show: false }, to: { f1_ring_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '$R$은 6, $r$은 3, 중심각은 모두 90°예요.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '두 넓이 구하기',
+        cues: [
+          { at: 0, say: '큰 부채꼴의 넓이 $=\\pi\\times6^2\\times\\frac{90}{360}=9\\pi$', to: { f1_ring_t: 0.74 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '작은 부채꼴은 $\\pi\\times3^2\\times\\frac{90}{360}=\\frac{9\\pi}{4}$' }
+        ]
+      },
+      {
+        length: 12,
+        title: '빼서 구하기',
+        cues: [
+          { at: 0, say: '색칠한 부분 = 큰 부채꼴 − 작은 부채꼴', to: { f1_ring_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '큰 부채꼴 $9\\pi$에서 $\\frac{9\\pi}{4}$를 빼요.' },
+          { at: 8.5, say: '$9\\pi-\\frac{9\\pi}{4}=\\frac{27\\pi}{4}$ cm²', set: { f1_ring_show: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 정사각형에서 잎 모양 파내기 · 넓이 (f01.js f1-lens, 탐구 탭, mode 0) · 3장 31초 ----------
+     a=8. 정사각형 64, 잎 모양 = 사분원 둘 − 정사각형 = 2·(π·8²/4) − 64 = 32π − 64, 색칠한 부분 = 64 − (32π − 64) = 128 − 32π. 라벨 「8 cm」, 캡션 「전체 (정사각형) 64」「파낸 부분 (잎 모양) 32π−64」. */
+  'f1-lens': {
+    title: '정사각형 − 잎 모양',
+    answer: '$128-32\\pi$',
+    answerText: '$128-32\\pi$ cm²',
+    summary: '색칠한 부분 = 정사각형 − 잎 모양',
+    task: '한 변 a를 바꿔도 색칠한 부분이 (정사각형 − 잎 모양)으로 구해지는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '파낼 잎 모양',
+        start: { f1_lens_a: 8, f1_lens_t: 0 },
+        cues: [
+          { at: 0, say: '마주 보는 두 꼭짓점의 사분원이 겹친 **잎 모양**을 파냈어요.', set: { f1_lens_mode: 0, f1_lens_show: false }, to: { f1_lens_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '정사각형의 한 변은 8 cm예요.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '잎 모양의 넓이',
+        cues: [
+          { at: 0, say: '잎 모양 = 사분원 둘 − 정사각형', to: { f1_lens_t: 0.74 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '잎 모양의 넓이 $=32\\pi-64$' }
+        ]
+      },
+      {
+        length: 12,
+        title: '빼서 구하기',
+        cues: [
+          { at: 0, say: '색칠한 부분 = 정사각형 − 잎 모양', to: { f1_lens_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '정사각형 $8\\times8=64$에서 $32\\pi-64$를 빼요.' },
+          { at: 8.5, say: '$64-(32\\pi-64)=128-32\\pi$ cm²', set: { f1_lens_show: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 정사각형에서 사분원과 반원 사이 파내기 · 넓이 (f01.js f1-ex22, 탐구 탭, mode 0) · 3장 31초 ----------
+     a=4. 정사각형 16, 파낸 부분 = 사분원 π·4²/4 = 4π 에서 반원 π·2²/2 = 2π 를 뺀 2π, 색칠한 부분 = 16 − 2π. 라벨 「4 cm」「4」「2」, 캡션 「전체 (정사각형) 16」「파낸 부분 (사분원−반원) 2π」. */
+  'f1-ex22': {
+    title: '정사각형 − (사분원 − 반원)',
+    answer: '$16-2\\pi$',
+    answerText: '$16-2\\pi$ cm²',
+    summary: '색칠한 부분 = 정사각형 − 파낸 부분',
+    task: '한 변 a를 바꿔도 같은 방법으로 구해지는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '파낸 부분 찾기',
+        start: { f1_ex22_a: 4, f1_ex22_t: 0 },
+        cues: [
+          { at: 0, say: '사분원과 반원 사이의 흰 부분을 파냈어요.', set: { f1_ex22_mode: 0, f1_ex22_show: false }, to: { f1_ex22_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '정사각형의 한 변은 4 cm, 반원의 반지름은 2.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '파낸 부분의 넓이',
+        cues: [
+          { at: 0, say: '파낸 부분 = 사분원 − 반원', to: { f1_ex22_t: 0.74 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '파낸 부분의 넓이 $=4\\pi-2\\pi=2\\pi$' }
+        ]
+      },
+      {
+        length: 12,
+        title: '빼서 구하기',
+        cues: [
+          { at: 0, say: '색칠한 부분 = 정사각형 − 파낸 부분', to: { f1_ex22_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '정사각형 $4\\times4=16$에서 $2\\pi$를 빼요.' },
+          { at: 8.5, say: '$16-2\\pi$ cm²', set: { f1_ex22_show: true } }
+        ]
+      }
+    ]
   }
 };

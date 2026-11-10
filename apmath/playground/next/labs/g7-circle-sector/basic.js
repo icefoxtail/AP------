@@ -801,17 +801,21 @@
       draw(g, q, mode, step) {
         const O = [0, 0], r = q.r, R = r * SU, th = q.th, m = th / 2, v = sQ(q);
         g.reserve(box[0], box[1]);
+        // 해설(재생·진입 화면)에서 반원 이하(thMax<350)만 그리는 장면(1610·1808)도 원 전체를 보여 주므로 틀에 원 전체를 넣습니다. 다른 화면은 그대로.
+        if ((q.lessonOn || q.lessonEntry) && thMax < 350) g.reserve([-R - 6, -R - 6], [R + 6, R + 6]);
         // 원 전체(흐리게)와 부채꼴
         if (th < thMax) g.arc(O, R, th, thMax >= 350 ? 360 : thMax, { color: 'muted', alpha: 0.6, width: 1.8, dash: [5, 6] });
         g.arc(O, R, 0, th, { sector: true, fill: 'sky', fillAlpha: ['1210', '1609', '1610'].includes(o.id) ? 0.08 : 0.3, stroke: false });
         // 해설 재생 중(q.lessonOn)에만: 원 전체를 이 부채꼴과 같은 중심각의 조각으로 나눈 선(div)과 기준값 라벨(ref). 나머지 화면은 그대로입니다.
         if (q.lessonOn) {
           const u = gcd(Math.round(th), 360), rest = (th + 360) / 2;
+          if (thMax < 350) g.arc(O, R, thMax, 360, { color: 'muted', alpha: 0.6, width: 1.8, dash: [5, 6] });
           if (q.div > 0 && 360 / u <= 12) {
             for (let a = u; a < 360 - 0.5; a += u) if (Math.abs(a - th) > 0.5) g.seg(O, g.pol(O, R, a), { color: 'violet', width: 1.8, dash: [6, 5], alpha: 0.85 * q.div });
             for (let a = th; a < 360 - 0.5; a += u) g.arc(O, R, a, a + u, { sector: true, fill: 'violet', fillAlpha: 0.1 * q.div, stroke: false });
           }
           if (q.ref === 1) g.out(g.pol(O, R, rest), rest, `원주 ${piS(2 * r)} cm`, { color: 'sky', size: 16 }, 32);
+          else if (q.ref === 2 && u < 90) g.out(g.pol(O, R, rest), rest, `원의 넓이 ${piS(r * r)} cm²`, { color: 'sky', size: 15 }, 32); // 조각이 좁으면 원 바깥에 지시선으로
           else if (q.ref === 2) { const pa = th + u / 2, pp = g.pol(O, R * 0.58, pa); g.text(pp, '원의 넓이', { color: 'sky', size: 15, dy: -26 }); g.text(pp, `${piS(r * r)} cm²`, { color: 'sky', size: 15, dy: -7 }); }
         }
         g.seg(O, [R, 0], { color: 'ink', width: 2.8 });

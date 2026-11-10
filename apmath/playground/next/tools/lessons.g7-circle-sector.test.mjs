@@ -57,11 +57,26 @@ const SCENE_STATE = {
   'f1-star': { f1_star_a: [6, 16], f1_star_t: [0, 1], f1_star_mode: [0, 1], f1_star_show: null },
   'f4-slide': { f4_slide_W: [6, 14], f4_slide_r: [2, 5], f4_slide_t: [0, 1], f4_slide_show: null },
   // html periScene('sector'): csR 2~12 · csA 30~300(15 단위) · csP 0~100(펼친 띠 위의 점 P)
-  'z2-sector': { csR: [2, 12], csA: [30, 300], csP: [0, 100] }
+  'z2-sector': { csR: [2, 12], csA: [30, 300], csP: [0, 100] },
+  'z2-semi': { csR: [2, 12], csP: [0, 100] },
+  'z2-quarter': { csR: [2, 12], csP: [0, 100] },
+  'z2-segment': { csR: [2, 12], csS: [30, 180], csP: [0, 100] },
+  // basic.js sectorSpec 1610·1808: th 10~180(thMax 180)
+  '1610': { b1610_r: [3, 12], b1610_th: [10, 180], b1610_div: [0, 1], b1610_ref: [0, 2] },
+  '1808': { b1808_r: [3, 12], b1808_th: [10, 180], b1808_div: [0, 1], b1808_ref: [0, 2] },
+  // f04.js 나머지 옮기기 장면
+  'f4-sq12': { f4_sq12_a: [6, 16], f4_sq12_t: [0, 1], f4_sq12_show: null },
+  'f4-slideq': { f4_slideq_W: [6, 14], f4_slideq_H: [4, 8], f4_slideq_r: [2, 6], f4_slideq_t: [0, 1], f4_slideq_show: null },
+  'f4-inscr': { f4_inscr_r: [2, 6], f4_inscr_t: [0, 1], f4_inscr_show: null },
+  'f4-ringmv': { f4_ringmv_R: [4, 12], f4_ringmv_r: [1, 11], f4_ringmv_th: [30, 90], f4_ringmv_t: [0, 1], f4_ringmv_show: null },
+  // f01.js 빼기 장면(넓이 mode 0)
+  'f1-ring': { f1_ring_R: [4, 12], f1_ring_r: [1, 11], f1_ring_th: [30, 360], f1_ring_t: [0, 1], f1_ring_mode: [0, 1], f1_ring_show: null },
+  'f1-lens': { f1_lens_a: [4, 12], f1_lens_t: [0, 1], f1_lens_mode: [0, 1], f1_lens_show: null },
+  'f1-ex22': { f1_ex22_a: [4, 12], f1_ex22_t: [0, 1], f1_ex22_mode: [0, 1], f1_ex22_show: null }
 };
 
 // 정리 탭(tab:'review')은 정리 탭이 같은 문제를 그리고 구하는 값을 단계별로만 보여 주는 것을 확인한 장면에만 켭니다.
-const REVIEW_OK = new Set(['1209', '1102', '1609', 'z2-sector']);
+const REVIEW_OK = new Set(['1209', '1102', '1609', 'z2-sector', 'z2-semi', 'z2-quarter', 'z2-segment', '1610', '1808']);
 
 /* 자막이 말하는 숫자를 장면 공식으로 다시 계산한 값. 해설마다 허용 숫자 집합(자막에 나오는 모든 숫자는 여기에 있어야 함)과 계산 근거를 적습니다. */
 const FACTS = {
@@ -110,6 +125,39 @@ const FACTS = {
     const r = 6, deg = 90, arc = (r * deg) / 180, lines = 2 * r; // 호 = 2π·6·90/360 = 3π, 반지름 둘 6+6 = 12
     assert.deepEqual([arc, lines], [3, 12]);
     return { allowed: [r, deg, arc, lines], note: 'r=6 90° · 호 3π · 반지름 6, 6 · 3π+6+6=3π+12' };
+  },
+  'z2-semi': () => { const r = 6, arc = r, dia = 2 * r; assert.deepEqual([arc, dia], [6, 12]); return { allowed: [arc, dia], note: '반원호 6π · 지름 12 · 6π+12' }; },
+  'z2-quarter': () => { const r = 6, arc = (r * 90) / 180; assert.equal(arc, 3); return { allowed: [r, arc, 2 * r], note: '사분원호 3π · 반지름 6, 6 · 3π+12' }; },
+  'z2-segment': () => { const r = 6, arc = (r * 60) / 180; assert.equal(arc, 2); return { allowed: [60, arc, r], note: '활꼴 60° · 호 2π · 현 6(=반지름) · 2π+6' }; },
+  '1610': () => {
+    const l = 4, th = 80; // 2πr·80/360 = 4π → r = 4·360/(2·80) = 9
+    const R = (l * 360) / (2 * th), S = (R * R * th) / 360;
+    assert.deepEqual([R, S], [9, 18]);
+    return { allowed: [l, th, 360, 2, 9, R * R, S], note: '호 4π · 80° · 2/9 · r=9 · 81π × 2/9 = 18π' };
+  },
+  '1808': () => {
+    const l = 3, th = 45, circ = (l * 360) / th, r = circ / 2;
+    assert.deepEqual([circ, r], [24, 12]);
+    return { allowed: [l, th, 360, 1, 8, 2, circ, r], note: '호 3π · 45° · 1/8 · 원주 24π · r=12' };
+  },
+  'f4-sq12': () => { const a = 12, S = (a * a) / 2; assert.equal(S, 72); return { allowed: [a, 1, 2, S], note: 'a=12 · ½×12×12=72' }; },
+  'f4-slideq': () => { const W = 10, H = 6, r = 4; assert.equal(W * H, 60); return { allowed: [W, H, r, W * H], note: '가로 10 · 세로 6 · r=4 · 60' }; },
+  'f4-inscr': () => { const r = 4, s2 = 2 * r; assert.equal(r * s2, 32); return { allowed: [s2, r, 180, r * s2], note: '한 변 8 · r=4 · 180° · 4×8=32' }; },
+  'f4-ringmv': () => { const R = 6, r = 3, th = 60, S = (R * R * th) / 360; assert.equal(S, 6); return { allowed: [R, r, th, 360, 2, S], note: 'R=6 r=3 60° · π×6²×60/360=6π' }; },
+  'f1-ring': () => {
+    const R = 6, r = 3, th = 90, big = (R * R * th) / 360, small = (r * r * th) / 360, res = big - small; // π 의 계수
+    assert.deepEqual([big, small, res], [9, 2.25, 6.75]);
+    return { allowed: [R, r, th, 360, 2, big, 4, 27, 7], note: 'R=6 r=3 90° · 큰 9π · 작은 9π/4 · 27π/4' };
+  },
+  'f1-lens': () => {
+    const a = 8, sq = a * a; // 잎 = 2·(π·64/4) − 64 = 32π − 64, 색칠 = 64 − (32π − 64) = 128 − 32π
+    assert.deepEqual([2 * 16, sq, 2 * sq], [32, 64, 128]);
+    return { allowed: [a, 2, 32, sq, 2 * sq], note: 'a=8 · 정사각형 64 · 잎 32π−64 · 128−32π' };
+  },
+  'f1-ex22': () => {
+    const a = 4, sq = a * a, quarter = (a * a) / 4, half = ((a / 2) ** 2) / 2, white = quarter - half; // π 의 계수
+    assert.deepEqual([sq, quarter, half, white], [16, 4, 2, 2]);
+    return { allowed: [a, a / 2, sq, quarter, half], note: 'a=4 · 정사각형 16 · 사분원 4π − 반원 2π = 2π · 16−2π' };
   },
   'z3-circleProof': () => {
     const r = 6, N = 16, circ = 2 * r, half = r, S = r * r; // π 의 계수
@@ -257,7 +305,7 @@ test('장면 소스: 해설 전용 그림·정답 아끼기는 재생 중(lesson
   assert.match(f04, /hideRes: true/, 'f4-swirl: 결과가 나오면 r=3 라벨을 지우는 표시(재생 중에만)');
   assert.match(f04, /c\.s && c\.s\.lessonOn && it\.hideRes/, 'hideRes 는 재생 중에만');
   // 해설이 이 표시를 쓰는 규칙: show 는 첫 장 at:0 에서 false, 결론 자막에서 true
-  for (const [id, key] of [['f4-swirl', 'f4_swirl_show'], ['f1-ss2', 'f1_ss2_show'], ['f3-leaf-len', 'f3Show'], ['rl-rect', 'rlShow'], ['gt-kennel', 'gtShow']]) {
+  for (const [id, key] of [['f4-swirl', 'f4_swirl_show'], ['f1-ss2', 'f1_ss2_show'], ['f3-leaf-len', 'f3Show'], ['rl-rect', 'rlShow'], ['gt-kennel', 'gtShow'], ['f4-sq12', 'f4_sq12_show'], ['f4-slideq', 'f4_slideq_show'], ['f4-inscr', 'f4_inscr_show'], ['f4-ringmv', 'f4_ringmv_show'], ['f1-ring', 'f1_ring_show'], ['f1-lens', 'f1_lens_show'], ['f1-ex22', 'f1_ex22_show']]) {
     const lesson = core.lessonList(LESSONS[id])[0];
     assert.equal(lesson.chapters[0].cues[0].set[key], false, `${id}: 첫 장 at:0 에서 ${key}=false`);
     const last = lesson.chapters.at(-1).cues.at(-1);
@@ -306,4 +354,27 @@ test('z2-sector: 점 P 목표값이 경계 길이 비율(호 3π, 반지름 6, 6
   const lastCue = lesson.chapters.at(-1).cues.at(-1);
   assert.ok(lastCue.step === 4 && lastCue.say.includes('3\\pi+12'), '합계는 마지막 자막과 함께(step 4)');
   assert.ok(lesson.chapters.flatMap((ch) => ch.cues).every((c) => !(c.to && c.step !== undefined)), '같은 칸에 to 와 step 을 함께 쓰지 않는다');
+});
+
+test('z2-semi·quarter·segment: 점 P 목표값이 경계 길이 비율로 다시 계산한 값과 같고 step 이 호 → (둘째 선) → 합계 순서', () => {
+  const P = Math.PI, want = {
+    'z2-semi': { cum: [(100 * 6 * P) / (6 * P + 12)], steps: [2, 3] },
+    'z2-quarter': { cum: [(100 * 3 * P) / (3 * P + 12), (100 * (3 * P + 6)) / (3 * P + 12)], steps: [2, 3, 4] },
+    'z2-segment': { cum: [(100 * 2 * P) / (2 * P + 6)], steps: [2, 3] }
+  };
+  for (const [id, w] of Object.entries(want)) {
+    const lesson = core.lessonList(LESSONS[id])[0];
+    const ends = lesson.chapters.map((ch) => ch.cues.flatMap((c) => (c.to && c.to.csP != null ? [c.to.csP] : [])).at(-1));
+    w.cum.forEach((v, i) => assert.ok(Math.abs(ends[i] - v) < 1e-9, id + ' csP ' + i));
+    assert.equal(ends.at(-1), 100, id + ' 끝은 100');
+    assert.deepEqual(Array.from(lesson.chapters.flatMap((ch) => ch.cues.filter((c) => c.step !== undefined).map((c) => c.step))), w.steps, id + ' step');
+    assert.ok(lesson.chapters.flatMap((ch) => ch.cues).every((c) => !(c.to && c.step !== undefined)), id + ' to 와 step 같은 칸 금지');
+    assert.ok(lesson.chapters.at(-1).cues.at(-1).step === w.steps.at(-1), id + ' 합계는 마지막 자막과 함께');
+  }
+});
+
+test('basic.js sectorSpec: thMax<350 장면(1610·1808)도 재생·진입 화면에서만 원 전체와 틀을 보인다', () => {
+  const basic = read('basic.js');
+  assert.match(basic, /if \(\(q\.lessonOn \|\| q\.lessonEntry\) && thMax < 350\) g\.reserve/);
+  assert.match(basic, /if \(thMax < 350\) g\.arc\(O, R, thMax, 360,/);
 });
