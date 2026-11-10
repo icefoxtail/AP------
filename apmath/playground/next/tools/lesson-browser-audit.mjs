@@ -176,6 +176,8 @@ for (const labId of targets) {
           check('entry: question text is not truncated', !q || (!q.clipped && q.ws !== 'nowrap'), JSON.stringify(q));
           const qs = await page.evaluate(() => [...document.querySelectorAll('.apl-question')].filter((e) => e.checkVisibility()).map((e) => e.innerText));
           check('entry: exactly one question is shown', qs.length === 1, JSON.stringify(qs));
+          const clean0 = await page.evaluate(() => { const vis = (sel) => [...document.querySelectorAll(sel)].filter((e) => e.checkVisibility()).length; const st = document.querySelector('.apl-stage').getBoundingClientRect(), q = [...document.querySelectorAll('.apl-question')].find((e) => e.checkVisibility()); return { tip: vis('.sv-student-tip'), tools: vis('.apl-float.br'), gap: q ? Math.round(q.getBoundingClientRect().top - st.bottom) : null }; });
+          check('entry: only figure + question + ▶ (no hint box, no stage tool buttons, question right under the stage)', clean0.tip === 0 && clean0.tools === 0 && clean0.gap != null && clean0.gap <= 24, JSON.stringify(clean0));
           // 진입 화면의 그림은 ▶ 가 시작할 때(t=0)의 모습: 첫 장 start 값과 at:0 칸의 set, 탭·lessonOn 은 그대로
           const first = sc.lessons[0];
           const c0 = first.chapters[0].cues.find((c) => c.at === 0) || {};
@@ -391,6 +393,7 @@ for (const labId of targets) {
         };
         await toEnded(); await page.locator('.apl-vend-btns button', { hasText: '직접 해 보기' }).click(); await clean('ended 「직접 해 보기」');
         await toEnded(); await page.locator('.apl-vendx').click(); await clean('ended ✕');
+        if (narrow) { await toEnded(); await page.keyboard.press('Escape'); await clean('ended Esc (dismisses the end card like ✕)'); }
         await toEnded(); await page.evaluate((i) => lab.goScene((i + 1) % lab.list.length), sc.i); await clean('ended scene change');
         await page.evaluate((i) => lab.goScene(i), sc.i);
         await toEnded();

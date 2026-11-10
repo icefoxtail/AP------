@@ -226,6 +226,11 @@
     });
     // set 으로 바꾸는 상태값은 모두 첫 장의 at:0 칸에서 시작값이 정해져 있어야 합니다: 그래야 재생(다시 보기 포함)마다 같은 값에서 시작하고,
     // 앞선 재생이 남긴 값(예: 결론 라벨을 켜는 표시)이 다음 재생에 새어 들어가지 않습니다.
+    // to 로 움직이는 숫자 상태값도 모두 첫 장 start 에 시작값이 있어야 합니다(다시 보기가 앞선 재생이 남긴 값에서 시작하지 않게, 위 set 규칙의 숫자판).
+    const start0 = (ch[0] && ch[0].start && typeof ch[0].start === 'object') ? ch[0].start : {};
+    const toKeys = new Set();
+    ch.forEach((c) => ((c && c.cues) || []).forEach((q) => { if (q && q.to && typeof q.to === 'object' && !Array.isArray(q.to)) Object.keys(q.to).forEach((k) => toKeys.add(k)); }));
+    toKeys.forEach((k) => { if (!(k in start0)) errors.push(`to.${k}: 첫 장 start 에 시작값을 적어야 합니다(다시 보기 때도 같은 값에서 시작하게)`); });
     const setKeys = new Set();
     ch.forEach((c) => (c && c.cues ? c.cues : []).forEach((q) => { if (q && q.set && typeof q.set === 'object') Object.keys(q.set).forEach((k) => setKeys.add(k)); }));
     const first0 = ch[0] && Array.isArray(ch[0].cues) ? ch[0].cues.find((q) => q && q.at === 0 && q.set && typeof q.set === 'object') : null;

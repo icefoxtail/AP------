@@ -182,6 +182,8 @@
       document.body.classList.toggle('apl-lessonfirst', first);
       // 진입 화면의 그림은 ▶ 가 시작할 때의 모습(해설의 t=0 상태)입니다. 장면이 바뀔 때만 맞추고, manual=1·수업 모드는 장면의 기본값 그대로 둡니다.
       if (first && reset) this._applyStart(cs);
+      // 장면이 진입 화면 전용으로 그림을 맞출 수 있게 표시(s.lessonEntry): 해설 우선 진입 화면일 때만 true
+      if (!!lab.s.lessonEntry !== first) { lab.s.lessonEntry = first; lab.invalidate(true); }
       ui.entry.hidden = !show;
       if (!show) return;
       const mode = first ? 'first' : 'inline';
@@ -323,6 +325,10 @@
       window.addEventListener('pointercancel', rehold);
       document.addEventListener('visibilitychange', () => { if (document.hidden && this.state === 'playing') this.pause(); });
       document.addEventListener('keydown', (e) => {
+        // 끝 카드(휴대폰·태블릿 세로 해설): Esc 는 ✕ 와 같이 카드를 닫고 직접 해 보기로
+        if (this.state === 'ended' && e.key === 'Escape' && document.body.classList.contains('apl-vid') && !(this.lab.toc && this.lab.toc.isOpen) && !document.querySelector('.apl-dialog')) {
+          e.stopImmediatePropagation(); e.preventDefault(); this._dismissEnd(); return;
+        }
         if (this.state !== 'playing' && this.state !== 'paused') return;
         if (e.metaKey || e.ctrlKey || e.altKey) return;
         const k = e.key;
@@ -425,6 +431,7 @@
       this._pre = { step: s.step, part: s.part };
       // 재생 동안 재생기가 쥐는 상태: lessonOn(장면이 정답을 미리 그리지 않게 하는 표시), review 해설이면 정리 탭 + dragging
       this._deferBuild = false;
+      s.lessonEntry = false;
       this._lessonOn = true;
       s.lessonOn = true;
       this._holdDrag = false;

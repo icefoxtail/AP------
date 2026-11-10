@@ -117,7 +117,8 @@
       }
       const sn=solidNet(poly,h,1,bm.smooth,bm.root),e=G.ease(C.t),yaw=s.svYaw==null?28:s.svYaw,pitch=s.svPitch==null?22:s.svPitch;
       const frame=u=>{const cam=G.camOf(yaw*(1-u),pitch*(1-u)),pose=G.netPose(sn.net,u),p=[];sn.net.pieces.forEach((f,k)=>f.pts.forEach(v=>p.push(G.proj(cam,G.applyT(pose[k],v)))));const box=G.bboxOf(p);return {pose,box,cx:(box.x0+box.x1)/2,cy:(box.y0+box.y1)/2};};
-      const frames=Array.from({length:9},(_,i)=>frame(i/8)),W=Math.max(...frames.map(f=>f.box.x1-f.box.x0)),H=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
+      const entryFit=s.lessonEntry&&(C.t||0)<0.02; // 해설 우선 진입 화면: 닫힌 입체만 보이므로 펼친 전개도 크기가 아니라 입체에 맞춰 크게(탐구·수업 모드는 그대로)
+      const frames=Array.from({length:entryFit?1:9},(_,i)=>frame(i/8)),W=Math.max(...frames.map(f=>f.box.x1-f.box.x0)),H=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
       const src=scene3(b,s,C),extent=Math.max(bm.ex,bm.ez)*sc/2,off=src.hx(-W/2-extent-3),base=prismMesh(poly,0,h,{simple:true,smooth:bm.smooth});
       const srcPts=[];for(const x of [-extent,extent])for(const z of [-extent,extent])for(const y of [0,h])srcPts.push(src.P(add3(off,v3(x,y,z))));
       const sb=G.bboxOf(srcPts),sy=-(sb.y0+sb.y1)/2, pair=b.W>=1000;
@@ -169,9 +170,10 @@
         }
       }
       if (st >= 2 && !pair) {
-        const alpha = Math.max(0, Math.min(1, 1 - open * 8)); // 조각이 벌어져 있을 때는 높이를 재지 않습니다
+        // 해설 재생 중: 조각이 벌어져 있는 동안은 높이를 재지 않고(모였을 때 나타남). 해설이 아닌 정리 탭: 조각이 늘 벌어져 있으므로(stepT 1) 벌어진 쌓임 전체에 높이를 항상 그립니다.
+        const alpha = s.lessonOn ? Math.max(0, Math.min(1, 1 - open * 8)) : 1, yEnd = s.lessonOn ? h / 2 : h / 2 + 2 * gap;
         const left = poly.reduce((a, p) => (D.P(v3(p[0], 0, p[1])).x < D.P(v3(a[0], 0, a[1])).x ? p : a), poly[0]);
-        D.dim(v3(left[0], -h / 2, left[1]), v3(left[0], h / 2, left[1]), `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 16, color: 'amber', size: 14, alpha });
+        D.dim(v3(left[0], -h / 2, left[1]), v3(left[0], yEnd, left[1]), `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 16, color: 'amber', size: 14, alpha });
       }
       if (st >= 3 && (!s.lessonOn || s.svShowV)) {
         const str = `부피 = ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)} cm³`;

@@ -205,8 +205,13 @@ body.apl-vid .apl-lentry { display: none !important; }
   body.apl-lessonfirst:not(.apl-vid) .apl-question small { display: block; margin-bottom: 2px; }
   body.apl-lessonfirst:not(.apl-vid) .apl-question .q { overflow: visible; white-space: normal; }
   body.apl-lessonfirst:not(.apl-vid) .apl-question::after { display: none; }
+  /* 패널이 짧아 화면이 남으면 격자의 자동 줄이 남는 높이를 나눠 가져 그림 아래에 빈 띠가 생김 → 위에서부터 붙임 */
+  body.apl-lessonfirst:not(.apl-vid) .apl-main { align-content: start; }
+  /* 진입 화면은 「그림 + 질문 + ▶」만: 장면의 힌트 상자와 무대의 도구 단추(맞춤·펜)는 「직접 해 보기」 뒤에 나타남(그림을 가리지 않게) */
+  body.apl-lessonfirst:not(.apl-vid) .sv-student-tip, body.apl-lessonfirst:not(.apl-vid) .apl-float.br { display: none !important; }
   /* 슬라이더 수에 따라 무대를 줄이는 규칙(44svh)을 쓰지 않고 기본 크기(54svh) 그대로 */
-  html body.apl-lessonfirst:not(.apl-vid):has(.apl-main) .apl-stage { height: clamp(300px, 54svh, 560px); }
+  /* 낮은 화면(360×640 등)에서는 질문이 고정 ▶ 막대 뒤로 숨지 않도록 무대를 줄입니다(머리글 약 145 + 질문 약 80 + 막대 약 125 를 뺀 높이). 844 높이에서는 예전 54svh 그대로 */
+  html body.apl-lessonfirst:not(.apl-vid):has(.apl-main) .apl-stage { height: clamp(240px, min(54svh, calc(100svh - 360px)), 560px); }
   body.apl-lessonfirst:not(.apl-vid) .apl-panel-inner { padding-bottom: calc(120px + env(safe-area-inset-bottom)); }
 }
 /* 휴대폰 가로: 장면 띠를 접고 그림(왼쪽)과 문제·▶(오른쪽 열)을 한 화면에 */

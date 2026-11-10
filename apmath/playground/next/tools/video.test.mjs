@@ -452,6 +452,19 @@ const withSets = (label, sets, patch = {}) => {
   return { ...L, ...(label ? { label } : {}), ...patch };
 };
 
+test('validateLesson: to 로 움직이는 숫자 상태값은 모두 첫 장 start 에 시작값이 있어야 한다(다시 보기가 남은 값에서 시작하지 않게)', () => {
+  const L = goodLesson();
+  assert.deepEqual(core.validateLesson(L).errors, []);
+  const noStart = { ...L, chapters: [{ ...L.chapters[0], start: undefined }, L.chapters[1], L.chapters[2]] };
+  assert.ok(core.validateLesson(noStart).errors.some((e) => e.includes('to.x') && e.includes('start')), '첫 장 start 가 없으면 오류');
+  const lateKey = { ...L, chapters: [L.chapters[0], { ...L.chapters[1], cues: [{ ...L.chapters[1].cues[0], to: { y: 3 } }, L.chapters[1].cues[1]] }, L.chapters[2]] };
+  assert.ok(core.validateLesson(lateKey).errors.some((e) => e.includes('to.y')), '뒷장에서만 움직이는 값도 첫 장 start 에 있어야 함');
+  const ok = { ...lateKey, chapters: [{ ...L.chapters[0], start: { x: 0, y: 0 } }, lateKey.chapters[1], L.chapters[2]] };
+  assert.deepEqual(core.validateLesson(ok).errors, [], 'start 에 적으면 통과');
+  // 실제 해설 셋(부채꼴 · 겉넓이 · 부피)은 이미 이 규칙을 지킨다(위 해설별 형식 검사가 같은 규칙으로 통과)
+  for (const l of [...core.lessonList(sectorLessons['z3-sectorProof']), ...core.lessonList(surfaceLessons['sv1-1'])]) assert.deepEqual(core.validateLesson(l).errors, [], l.title);
+});
+
 test('validateLessonSet: 해설 1~3개, 둘 이상이면 label 필수·6자 이하·겹침 금지, 한 해설의 set 키는 나머지도 at:0 에서 정해야 한다', () => {
   const A = withSets('겉넓이', { mode: 'a', open: false }), B = withSets('부피', { mode: 'b', open: false });
   assert.deepEqual(core.validateLessonSet(goodLesson()).errors, [], '해설 하나(객체)는 label 없이 통과');
