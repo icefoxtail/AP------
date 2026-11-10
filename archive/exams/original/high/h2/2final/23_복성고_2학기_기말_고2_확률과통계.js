@@ -36,7 +36,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 분기에서 한 사건의 여사건이 갈라지고, 그 안에서 다른 사건과 그 여사건의 두 경로가 나뉘며 경로별 확률이 표시된 수형도이다.",
+    "solutionImageCaption": "여사건 안에서 사건과 그 여사건의 관계를 읽는다. 정답은 13/18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -73,7 +77,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 흰 공 수가 0개부터 4개까지인 다섯 가지가 경우의 수와 함께 나뉘고, 2개 이상인 세 가지가 강조되어 있다.",
+    "solutionImageCaption": "전체 126가지 가운데 흰 공이 2개 이상인 세 가지 경우를 강조했다. 정답은 9/14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -147,7 +155,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 남학생은 전체의 48%이고, 그 안에서 희망 남학생은 전체의 30%, 비희망 남학생은 전체의 18%임을 나타낸 수형도이다.",
+    "solutionImageCaption": "전체 학생 중 남학생은 48%, 희망 남학생은 30%이다. 정답은 5/8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -184,7 +196,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 먼저 차는 팀의 실패 위치를 첫 번째부터 다섯 번째까지 나눈 수형도이다.",
+    "solutionImageCaption": "먼저 차는 팀의 실패 위치가 다섯 경우로 나뉜다. 나머지 선수는 모두 성공한다. 정답은 0.8⁹이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -258,7 +274,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본평균의 기댓값 50과 표준편차 2를 두 갈래로 나누어 나타낸 수형도이다.",
+    "solutionImageCaption": "기댓값 50과 표준편차 2를 더한다. 정답은 52이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -383,7 +403,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 중심 0과 대칭 경계 -1.96, 1.96 사이가 칠해져 있다.",
+    "solutionImageCaption": "95% 신뢰구간의 전체 길이는 양쪽 오차한계의 합이다. 정답은 144이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -420,7 +444,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 중심 0과 대칭 경계 -2.58, 2.58 사이가 칠해져 있다.",
+    "solutionImageCaption": "표본평균은 10이고 표준오차는 2이므로 오차한계는 5.16이다. 정답은 4.84≤m≤15.16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -457,7 +485,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 0인 표준정규곡선에서 0과 4 사이의 영역이 칠해져 있다.",
+    "solutionImageCaption": "두 확률을 표준화하면 경계는 각각 4와 √n이다. 곡선 아래 같은 넓이에 해당하는 경계를 비교한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -535,7 +567,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 확률변수 X가 가질 수 있는 눈 1, 2, 4가 각각 빈도만큼 점으로 표시된 점도표이다.",
+    "solutionImageCaption": "1, 2, 4의 빈도에 따라 기댓값을 구한 뒤 선형변환의 성질을 쓴다. 정답은 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -575,7 +611,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 75인 종 모양 곡선에서 실제 값 69, 71, 75, 81이 표시되고, 69와 81이 대칭을 이루며 71 오른쪽이 칠해져 있다.",
+    "solutionImageCaption": "표본평균 값 69와 81은 평균 75를 기준으로 대칭이다. 구하는 영역은 71의 오른쪽이다. 정답은 0.8413이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -612,7 +652,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: −1부터 3까지 세 직선과 가로축이 보인다. 가로축 아래를 지나는 직선의 왼쪽 부분과 오른쪽으로 높아지는 직선 아래 영역이 칠해져 있다.",
+    "solutionImageCaption": "첫째 함수는 높이 1/4인 직사각형으로 넓이가 1이다. 둘째 함수는 음수인 구간이 있다. 셋째 함수 아래 사다리꼴의 넓이도 1이다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -693,7 +737,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 중심 0과 예시 경계 -2, 2 사이가 칠해져 있다.",
+    "solutionImageCaption": "예: 표준정규분포의 ±2 중앙 구간으로 양쪽 경계가 대칭임을 보인다. 신뢰구간 길이에서 k를 구한다. 정답은 k=5(y−x)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -728,7 +776,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −0.5부터 0.5까지와 1부터 1.5까지 두 구간이 칠해져 있다.",
+    "solutionImageCaption": "한 물건의 무게가 주어진 구간에 들 확률은 표에서 약 0.40이다. 600개의 개수를 평균 240, 표준편차 12인 정규분포로 근사한다. 구간의 표준화 값 1과 1.5 사이 넓이를 표에서 구한다. 정답은 0.08이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -764,8 +816,8 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 평균 0인 표준정규곡선에서 표준화 경계 -1.6의 왼쪽 꼬리가 칠해져 있다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 0인 표준정규곡선에서 표준화 경계 −1.6의 왼쪽 꼬리가 칠해져 있다.",
     "solutionImageCaption": "표준정규분포표에서 1.6까지의 넓이는 0.45이므로 왼쪽 꼬리 넓이는 0.05이다. 이에 따라 평균은 4.6이다. 정답은 4.6이다.",
     "solutionImageSize": "full"
   }

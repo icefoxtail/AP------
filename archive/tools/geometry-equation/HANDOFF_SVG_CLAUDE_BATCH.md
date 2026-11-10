@@ -95,7 +95,17 @@ dots 입력 fetch → launch-open(구현) → last.txt → launch-rev-open(검�
  → pubflow → jscheck → runtime → archive/data 되돌림 → 커밋 → PR → CI 녹색 → 병합 → 새 브랜치
 ```
 
-**시험지 단위 흐름(2026-11-09 사용자 결정, 이후 기본):**
+**Sonnet 2단계 흐름(2026-11-10 사용자 결정, 루나 사용량 문제로 루나 대체 — 이후 기본):**
+```
+bash .tmp/work/next-sonnet.sh            (QUEUE.txt 첫 줄 → dots 초안 받기 → PROMPT_ONLY=1 launch-exam.sh 로 구현 지시서만 생성)
+ → Sonnet(effort medium) 구현: prompts/sonnet-impl.md ({PROMPT}=exam-impl/PROMPT.md, {OUT}=exam-impl)
+ → REV=<runs/key/exam-revN> PROMPT_ONLY=1 launch-exam-rev.sh <key> <JS>   (검수 지시서만 생성)
+ → Sonnet(effort high) 검수+최종: prompts/sonnet-review-final.md (독립 검수·직접 수정 → make-dec-exam → build-pub BAD none)
+ → 메인: PNG 몇 장 확인 → pubflow → jscheck → 커밋 → PR → CI 녹색 → 병합(4~6개씩)
+```
+동시 실행은 구현 3 + 검수 2 정도(렌더 슬롯 2+우선 1이 병목). 루나 체계(launch-exam.sh 직접 실행)는 남은 실행이 끝나면 쓰지 않는다. 원본 JS의 명백한 기계적 손상(예: "$1"→",")은 묻지 않고 별도 PR로 먼저 복구한다(사용자 지시 2026-11-10).
+
+**시험지 단위 흐름(2026-11-09 사용자 결정, 루나 체계 — 2026-11-10부터 위 Sonnet 2단계로 대체):**
 ```
 launch-exam.sh <key> <JS>        (루나 high: 전 문항 판정·구현 → runs/<key>/exam-impl[N]/{TABLE.md,SUMMARY.md,qNN/})
  → launch-exam-rev.sh <key> <JS> (루나 xhigh: 판정 타당성·구형 핵심 관계 보존 검수 → exam-rev[N]/{TABLE.md,REVIEW.md,qNN/})
@@ -216,13 +226,13 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
 
 ---
 
-## 11. 집 PC 라인: 고1 1학기 중간·기말, 2학기 중간 (2026-11-09~)
-- 2026-11-09 사용자 결정: 집 PC는 중등 대신 고1 1mid·1final·2mid를 맡는다(고1 2학기 기말·고2는 고등 PC). 브랜치 `svg-mid/batchNN-…`, 엔진 공백은 `ops/claude-batch/ENGINE_GAPS_MIDDLE.md`. 이유: PC별 담당을 나눠 겹침을 막기 위해서다.
-- 순서: 첫 묶음 이후 최신 연도부터 내림차순(그림 수·학기 무관). 대기열 `mkqueue-h1.cjs` → `qrun.sh`(슬롯 3, 렌더가 `render.lock` 하나라 더 늘려도 대기만 길어진다). 이유: 최신 시험지가 학생에게 먼저 필요하다.
-- 고1 1학기는 함수 위주: 일차·이차함수 문항은 그래프가 필요하면 빠짐없이 만든다(`exam-common.sh` `exam_subject`). 이유: 함수 문항은 그래프가 풀이 이해의 핵심이다.
-- 시험지 전체 플랜은 루나가 구현하며 세운다(DeepSeek은 이 PC에서만 허용되나 그림을 못 봐 쓰지 않기로 함). 이유: 그림을 보지 못하면 플랜이 어긋난다.
-- 함정: caption 수식을 "엑스·와이·루트"로 소리 풀어 쓰던 것 → 지시문에 기호 사용 명시. 근호 좌표 자동 표기 "−1+(−1√10)" → SOURCE_POINT 식 좌표로 우회. `exam-common.sh`를 고칠 때 따옴표 하나가 빠져 실행 13건이 분류표 없이 돌았음 → 고친 뒤 `bash -n`으로 확인.
+## 11. 집 PC 라인: 고1 1학기 중간·기말, 2학기 중간 (2026-11-09~)
+- 2026-11-09 사용자 결정: 집 PC는 중등 대신 고1 1mid·1final·2mid를 맡는다(고1 2학기 기말·고2는 고등 PC). 브랜치 `svg-mid/batchNN-…`, 엔진 공백은 `ops/claude-batch/ENGINE_GAPS_MIDDLE.md`. 이유: PC별 담당을 나눠 겹침을 막기 위해서다.
+- 순서: 첫 묶음 이후 최신 연도부터 내림차순(그림 수·학기 무관). 대기열 `mkqueue-h1.cjs` → `qrun.sh`(슬롯 3, 렌더가 `render.lock` 하나라 더 늘려도 대기만 길어진다). 이유: 최신 시험지가 학생에게 먼저 필요하다.
+- 고1 1학기는 함수 위주: 일차·이차함수 문항은 그래프가 필요하면 빠짐없이 만든다(`exam-common.sh` `exam_subject`). 이유: 함수 문항은 그래프가 풀이 이해의 핵심이다.
+- 시험지 전체 플랜은 루나가 구현하며 세운다(DeepSeek은 이 PC에서만 허용되나 그림을 못 봐 쓰지 않기로 함). 이유: 그림을 보지 못하면 플랜이 어긋난다.
+- 함정: caption 수식을 "엑스·와이·루트"로 소리 풀어 쓰던 것 → 지시문에 기호 사용 명시. 근호 좌표 자동 표기 "−1+(−1√10)" → SOURCE_POINT 식 좌표로 우회. `exam-common.sh`를 고칠 때 따옴표 하나가 빠져 실행 13건이 분류표 없이 돌았음 → 고친 뒤 `bash -n`으로 확인.
 - 골든 표본(25 효천·25 매산여 2학기 중간)은 이제 게시한다: rebind-m2-create-golden-sample-evidence.mjs --source <JS>로 재고정(#1572), 사용자 결정 2026-11-10 '지금은 골든 아님'. 이유: 게시하면 봉인 증거 SHA가 달라져 m2 create-gate 테스트가 실패하므로 재고정이 필요하다. 주의: 게시 뒤 `git checkout -- archive/data`를 하면 재고정한 증거 10개(archive/data/r2e-intake/m2/*.create.physical-evidence.json)가 되돌려지니 그 파일은 제외한다.
-- 첫 PR: 이번 5개 시험지(제목만; 25 효천고 2학기 중간은 위 사유로 제외).
-
+- 첫 PR: 이번 5개 시험지(제목만; 25 효천고 2학기 중간은 위 사유로 제외).
+
 - 2026-11-10 흐름 전환: 루나 사용량 한도로 고1 시험지는 DeepSeek 초안(`ds-launch-exam.sh`, `qrun-ds.sh`) → Sonnet A 구현·검수(`prompts/sonnet-exam-impl.md`) → Sonnet B 최종(`sonnet-final.md`) 순서로 돌린다. 이유: 루나를 쓸 수 없어도 대기열이 멈추지 않게 하기 위해서다. 위의 "플랜은 루나가 구현" 항목은 루나 한도가 풀릴 때까지 이 흐름이 대신한다.
