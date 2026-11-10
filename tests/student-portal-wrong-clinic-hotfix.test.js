@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const studentIndex = fs.readFileSync(path.join(root, 'apmath', 'student', 'index.html'), 'utf8');
@@ -82,14 +83,41 @@ assert(
     studentIndex.includes('function openHomeOmrInput(assignmentId)') &&
     studentIndex.includes('function renderStudentQuickActions()') &&
     studentIndex.includes('${renderOmrHomeSection()}') &&
-    studentIndex.includes("isTeacherPreview?'':renderWrongClinicPackets()") &&
+    studentIndex.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
     studentIndex.includes('${renderStudentQuickActions()}') &&
-    studentIndex.indexOf('${renderOmrHomeSection()}') < studentIndex.indexOf('renderGeometryLabEntry()}') &&
-    studentIndex.indexOf('renderGeometryLabEntry()}') < studentIndex.indexOf("isTeacherPreview?'':renderWrongClinicPackets()") &&
     studentIndex.includes('portal-support-grid') &&
-    studentIndex.includes('const visible = list.slice(0, 2);'),
-  'student portal home should prioritize OMR, wrong clinic, compact task/planner actions, then support sections'
+    studentIndex.includes('const visible = materialShowAll ? list : list.slice(0, 2);'),
+  'student portal home should retain OMR, wrong clinic, and task/planner entry points with an expandable supporting-material list'
 );
+
+const home = studentIndex.slice(studentIndex.indexOf('function renderHome('), studentIndex.indexOf('function renderAssignments('));
+const orderedSections = ['renderOmrHomeSection()', 'renderGeometryLabEntry()', 'renderWrongClinicPackets()', 'id="clinic-learning-history"', 'renderStudentQuickActions()'].map(value => home.indexOf(value));
+assert(orderedSections.every((position, index) => position >= 0 && (index === 0 || position > orderedSections[index - 1])), 'home should follow the student priority: exams, lab, clinic/records, then planner and assignments');
+assert.match(home, /<details id="student-review-section" class="portal-disclosure">/, 'supporting review records should remain discoverable in a labelled disclosure');
+const quickActions = studentIndex.match(/function renderStudentQuickActions\(\) \{[\s\S]*?\n    \}/);
+assert(quickActions && quickActions[0].includes('onclick="openPlanner()"') && quickActions[0].includes('onclick="renderAssignments()"'), 'both planner and assignment actions must remain available');
+
+const materialRenderer = studentIndex.match(/function renderMaterialWrongAssignments\(\) \{[\s\S]*?\n    \}/);
+const materialToggle = studentIndex.match(/function toggleMaterialAssignmentList\(\) \{[\s\S]*?\n    \}/);
+assert(materialRenderer && materialToggle, 'supporting materials should expose the complete list through a toggle');
+const materialElement = { outerHTML: '' };
+const materialContext = {
+  materialShowAll: false,
+  getMaterialWrongAssignments: () => Array.from({ length: 4 }, (_, index) => ({ assignment_id: `material-${index + 1}`, assignment_title: `자료 ${index + 1}` })),
+  getMaterialWrongStatus: () => ({ className: '', label: '미제출' }),
+  escapeHtml: value => String(value ?? ''),
+  $: id => id === 'material-wrong-section' ? materialElement : null
+};
+vm.createContext(materialContext);
+vm.runInContext(materialRenderer[0] + '\n' + materialToggle[0], materialContext);
+const materialCount = markup => (markup.match(/class="portal-assignment-row"/g) || []).length;
+assert.strictEqual(materialCount(materialContext.renderMaterialWrongAssignments()), 2, 'supporting materials should start with a compact two-item preview');
+assert(materialContext.renderMaterialWrongAssignments().includes('전체 4개 보기'), 'the preview should disclose a route to every loaded material');
+materialContext.toggleMaterialAssignmentList();
+assert.strictEqual(materialCount(materialElement.outerHTML), 4, 'expanding supporting materials must reveal every loaded item');
+assert(materialElement.outerHTML.includes("openMaterialWrongOmr('material-4')"), 'items outside the preview must retain their wrong-number entry action');
+materialContext.toggleMaterialAssignmentList();
+assert.strictEqual(materialCount(materialElement.outerHTML), 2, 'the full list should be collapsible without mutating source data');
 
 assert(
   studentSw.includes("navigator") === false &&

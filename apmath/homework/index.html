@@ -10,310 +10,19 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <style>
-    :root {
-      --primary:#1A5CFF;
-      --success:#00B894;
-      --error:#E8414F;
-      --warning:#FFA502;
-      --bg:#F2F4F6;
-      --surface:#FFFFFF;
-      --surface-2:#F8FAFC;
-      --border:#E5E8EB;
-      --text:#191F28;
-      --text-soft:#4E5968;
-      --secondary:#6B7684;
-    }
-    * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; outline:none; }
-    html { min-height:100%; background:var(--bg); }
-    body {
-      margin:0;
-      min-height:100vh;
-      min-height:100dvh;
-      font-family:Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background:
-        radial-gradient(circle at 18% -8%, rgba(26,92,255,0.12) 0, rgba(26,92,255,0.04) 34%, transparent 58%),
-        linear-gradient(180deg, #F8FAFC 0%, var(--bg) 52%, #EEF2F7 100%);
-      color:var(--text);
-      line-height:1.5;
-      word-break:keep-all;
-    }
-    button, input { font-family:inherit; }
-    button { cursor:pointer; }
-    .top {
-      position:sticky;
-      top:0;
-      z-index:20;
-      min-height:58px;
-      padding:0 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      background:rgba(248,250,252,0.92);
-      border-bottom:1px solid rgba(229,232,235,0.82);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-    }
-    .brand { display:flex; flex-direction:column; gap:1px; min-width:0; }
-    .brand-main { font-size:17px; font-weight:700; color:var(--text); letter-spacing:-0.35px; line-height:1.2; }
-    .brand-sub { font-size:11px; font-weight:700; color:var(--secondary); letter-spacing:-0.1px; line-height:1.2; }
-    .chip {
-      min-width:0;
-      max-width:48%;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      font-size:12px;
-      font-weight:700;
-      color:var(--primary);
-      text-align:right;
-      background:rgba(26,92,255,0.08);
-      border:1px solid rgba(26,92,255,0.14);
-      border-radius:999px;
-      padding:6px 10px;
-    }
-    .chip:empty { display:none; }
-    .app { width:100%; max-width:520px; margin:0 auto; padding:18px 14px calc(30px + env(safe-area-inset-bottom)); }
-    .hero {
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      padding:6px 2px 16px;
-    }
-    .hero-kicker { font-size:12px; font-weight:700; color:var(--primary); line-height:1.4; }
-    .hero-title { margin:0; font-size:25px; font-weight:700; letter-spacing:-0.8px; line-height:1.18; color:var(--text); }
-    .hero-desc { margin:0; font-size:13px; font-weight:700; color:var(--secondary); line-height:1.55; }
-
-    .visual-wrap {
-      position:relative;
-      min-height:150px;
-      margin:2px 0 8px;
-      border-radius:28px;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.50) 16%, transparent 34%),
-        linear-gradient(135deg, rgba(26,92,255,0.12) 0%, rgba(124,58,237,0.10) 52%, rgba(0,184,148,0.12) 100%);
-      border:1px solid rgba(229,232,235,0.86);
-      box-shadow:0 12px 32px rgba(25,31,40,0.045);
-    }
-    .visual-orb {
-      position:absolute;
-      border-radius:999px;
-      opacity:.86;
-      pointer-events:none;
-    }
-    .visual-orb.one { width:82px; height:82px; right:-18px; top:-20px; background:rgba(26,92,255,0.15); }
-    .visual-orb.two { width:58px; height:58px; left:22px; bottom:-20px; background:rgba(0,184,148,0.16); }
-    .visual-orb.three { width:22px; height:22px; right:96px; bottom:22px; background:rgba(255,165,2,0.22); }
-    .visual-book {
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:176px;
-      height:100px;
-      transform:translate(-50%, -48%) rotate(-2deg);
-      border-radius:24px;
-      background:#fff;
-      border:1px solid rgba(229,232,235,0.95);
-      box-shadow:0 20px 46px rgba(25,31,40,0.10);
-    }
-    .visual-book:before {
-      content:'';
-      position:absolute;
-      left:50%;
-      top:14px;
-      bottom:14px;
-      width:1px;
-      background:rgba(229,232,235,0.95);
-    }
-    .visual-line {
-      position:absolute;
-      left:22px;
-      height:7px;
-      border-radius:999px;
-      background:#E5E8EB;
-    }
-    .visual-line.a { top:26px; width:52px; }
-    .visual-line.b { top:44px; width:38px; }
-    .visual-line.c { top:62px; width:56px; }
-    .visual-line.d { top:26px; left:104px; width:46px; }
-    .visual-line.e { top:44px; left:104px; width:34px; }
-    .visual-check {
-      position:absolute;
-      right:22px;
-      bottom:18px;
-      width:42px;
-      height:42px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#00B894 0%,#12C99B 100%);
-      color:#fff;
-      font-size:25px;
-      font-weight:700;
-      box-shadow:0 12px 24px rgba(0,184,148,0.24);
-    }
-    .visual-pencil {
-      position:absolute;
-      left:calc(50% - 112px);
-      top:38px;
-      width:62px;
-      height:14px;
-      border-radius:999px;
-      background:linear-gradient(90deg,#FFA502 0%,#FFA502 72%,#F8D9A6 72%,#F8D9A6 100%);
-      transform:rotate(-24deg);
-      box-shadow:0 10px 22px rgba(255,165,2,0.20);
-    }
-    .visual-pencil:after {
-      content:'';
-      position:absolute;
-      right:-10px;
-      top:1px;
-      border-left:12px solid #4E5968;
-      border-top:6px solid transparent;
-      border-bottom:6px solid transparent;
-    }
-    .card {
-      background:rgba(255,255,255,0.96);
-      border:1px solid rgba(229,232,235,0.92);
-      border-radius:22px;
-      padding:18px;
-      box-shadow:0 8px 26px rgba(25,31,40,0.045);
-      margin-bottom:14px;
-    }
-    .title { margin:0; font-size:21px; font-weight:700; line-height:1.25; letter-spacing:-0.45px; color:var(--text); }
-    .meta { margin-top:9px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:12px; font-weight:700; color:var(--secondary); }
-    .meta-pill { display:inline-flex; align-items:center; min-height:26px; padding:4px 9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); color:var(--text-soft); }
-    .meta-pill.primary { color:var(--primary); background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.14); }
-    .desc {
-      margin-top:15px;
-      padding:14px;
-      border-radius:16px;
-      background:var(--surface-2);
-      border:1px solid rgba(229,232,235,0.72);
-      color:var(--text);
-      font-size:14px;
-      font-weight:700;
-      line-height:1.65;
-      white-space:pre-wrap;
-      word-break:break-word;
-    }
-    .input {
-      width:100%;
-      min-height:52px;
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:var(--surface);
-      color:var(--text);
-      padding:13px 15px;
-      font-size:16px;
-      font-weight:700;
-      box-shadow:none;
-    }
-    .input::placeholder { color:#A0A8B2; }
-    .btn {
-      width:100%;
-      min-height:52px;
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:var(--surface-2);
-      color:var(--text);
-      font-size:15px;
-      font-weight:700;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      transition:transform .12s ease, opacity .12s ease, background .12s ease;
-    }
-    .btn-primary { background:linear-gradient(135deg,#1A5CFF 0%,#4F46E5 100%); color:#fff; border:none; box-shadow:0 12px 24px rgba(26,92,255,0.22); }
-    .btn:active { transform:scale(0.99); }
-    .btn[disabled] { opacity:.58; pointer-events:none; }
-    .stack { display:flex; flex-direction:column; gap:11px; }
-    .notice {
-      font-size:13px;
-      font-weight:700;
-      color:var(--secondary);
-      line-height:1.58;
-      padding:12px 13px;
-      background:var(--surface-2);
-      border:1px solid rgba(229,232,235,0.72);
-      border-radius:16px;
-    }
-    .notice strong { color:var(--text); font-weight:700; }
-    .done-mark {
-      width:62px;
-      height:62px;
-      border-radius:22px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(0,184,148,0.12);
-      color:var(--success);
-      font-size:31px;
-      font-weight:700;
-      margin-bottom:14px;
-      border:1px solid rgba(0,184,148,0.18);
-    }
-    .status-box {
-      margin-top:15px;
-      padding:14px;
-      border-radius:16px;
-      background:rgba(0,184,148,0.08);
-      border:1px solid rgba(0,184,148,0.16);
-      color:var(--text);
-      font-size:13px;
-      font-weight:700;
-      line-height:1.6;
-    }
-    .footer-note {
-      padding:2px 4px 0;
-      font-size:11px;
-      font-weight:700;
-      color:var(--secondary);
-      text-align:center;
-      line-height:1.5;
-    }
-    .toast {
-      position:fixed;
-      left:50%;
-      bottom:calc(24px + env(safe-area-inset-bottom));
-      transform:translateX(-50%);
-      background:#191F28;
-      color:#fff;
-      padding:11px 15px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:700;
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .18s ease, transform .18s ease;
-      z-index:100;
-      white-space:nowrap;
-      box-shadow:0 10px 28px rgba(25,31,40,0.18);
-    }
-    .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
-    @media (max-width:380px) {
-      .app { padding-left:12px; padding-right:12px; }
-      .card { padding:16px; border-radius:20px; }
-      .hero-title { font-size:23px; }
-      .title { font-size:20px; }
-    }
-  </style>
-    <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.11.02.3">
-  <link rel="stylesheet" href="../css/apms-student-experience.css?v=2026.11.11.1">
+  <link rel="stylesheet" href="../css/student-tools.css?v=2026.11.11.2">
 </head>
-<body class="apms-student-homework">
+<body class="student-tool-page homework-page">
+  <a class="skip-link" href="#app">본문으로 이동</a>
   <header class="top">
-    <div class="brand">
-      <div class="brand-main">AP Math OS</div>
-      <div class="brand-sub">과제 제출</div>
+    <div class="top-inner">
+      <a class="top-back" href="../student/">‹ 학생 포털</a>
+      <div class="brand"><span class="brand-main">AP Math</span><span class="brand-sub">과제 제출</span></div>
+      <div id="student-chip" class="chip"></div>
     </div>
-    <div id="student-chip" class="chip"></div>
   </header>
-  <main id="app" class="app"></main>
-  <div id="toast" class="toast"></div>
+  <main id="app" class="app" tabindex="-1"><p class="notice" role="status">과제를 불러오고 있어요.</p></main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script>
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
@@ -327,6 +36,7 @@
     let submission = null;
     let isSubmitting = false;
     let selectedFiles = [];
+    const selectedFilePreviews = new Map();
 
     function $(id) { return document.getElementById(id); }
     function escapeHtml(value) {
@@ -380,26 +90,18 @@
       if (!r.ok || data.success === false) throw new Error(data.message || data.error || '업로드 실패');
       return data;
     }
-    function renderHero() {
+    function renderHero(step = 'verify') {
+      const steps = ['verify', 'photos', 'done'];
+      const labels = ['PIN 확인', '사진 선택', '제출 완료'];
+      const current = steps.indexOf(step);
       return `
-        <section class="hero">
-          <div class="visual-wrap" aria-hidden="true">
-            <span class="visual-orb one"></span>
-            <span class="visual-orb two"></span>
-            <span class="visual-orb three"></span>
-            <span class="visual-pencil"></span>
-            <div class="visual-book">
-              <span class="visual-line a"></span>
-              <span class="visual-line b"></span>
-              <span class="visual-line c"></span>
-              <span class="visual-line d"></span>
-              <span class="visual-line e"></span>
-              <span class="visual-check">✓</span>
-            </div>
-          </div>
-          <div class="hero-kicker">AP수학 과제 확인</div>
-          <h1 class="hero-title">숙제 사진을<br>제출해 주세요.</h1>
-          <p class="hero-desc">PIN으로 본인 확인 후 사진을 올리면 선생님 클래스룸에서 바로 확인할 수 있어요.</p>
+        <section class="tool-intro">
+          <p class="tool-eyebrow">학습 도구</p>
+          <h1 class="tool-title">과제 제출</h1>
+          <p class="tool-description">풀어 둔 숙제를 사진으로 올려 주세요.</p>
+          <ol class="homework-steps" aria-label="제출 단계">
+            ${steps.map((key, i) => `<li class="${i === current ? 'current' : i < current ? 'complete' : ''}" ${i === current ? 'aria-current="step"' : ''}><span class="step-number" aria-hidden="true">${i < current ? '✓' : i + 1}</span>${labels[i]}</li>`).join('')}
+          </ol>
         </section>
       `;
     }
@@ -408,8 +110,8 @@
       $('app').innerHTML = `
         ${renderHero()}
         <section class="card">
-          <h1 class="title">접속 오류</h1>
-          <div class="desc">${escapeHtml(message)}</div>
+          <h2 class="title">과제를 열 수 없어요</h2>
+          <div class="desc">${escapeHtml(message)}</div><a class="btn" href="../student/">학생 포털로 돌아가기</a>
         </section>
         <div class="footer-note">링크가 계속 열리지 않으면 선생님께 다시 받아 주세요.</div>
       `;
@@ -419,7 +121,7 @@
       const due = `${assignment.due_date || ''}${assignment.due_time ? ` ${assignment.due_time}` : ''}`.trim();
       return `
         <section class="card">
-          <h1 class="title">${escapeHtml(assignment.title || '숙제')}</h1>
+          <h2 class="title">${escapeHtml(assignment.title || '숙제')}</h2>
           <div class="meta">
             ${assignment.class_name ? `<span class="meta-pill">${escapeHtml(assignment.class_name)}</span>` : ''}
             ${due ? `<span class="meta-pill primary">마감 ${escapeHtml(due)}</span>` : ''}
@@ -435,9 +137,11 @@
         ${renderAssignmentCard()}
         <section class="card">
           <div class="stack">
-            <div class="notice"><strong>숙제 사진 제출</strong><br>PIN 번호를 입력하면 숙제 사진을 제출할 수 있어요.</div>
+            <h2 class="section-title">본인 확인</h2>
+            <p class="muted">선생님께 받은 개인 PIN을 입력하세요.</p>
+            <label class="field-label" for="pin-input">개인 PIN</label>
             <input id="pin-input" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')verifyPin(false)">
-            <button class="btn btn-primary" onclick="verifyPin(false)">확인</button>
+            <button class="btn btn-primary" onclick="verifyPin(false)">확인하고 사진 선택</button>
           </div>
         </section>
       `;
@@ -450,17 +154,31 @@
       if (value < 1024 * 1024) return `${(value / 1024).toFixed(1)}KB`;
       return `${(value / (1024 * 1024)).toFixed(2)}MB`;
     }
+    function syncSelectedFilePreviews() {
+      for (const [file, url] of selectedFilePreviews) {
+        if (!selectedFiles.includes(file)) {
+          URL.revokeObjectURL(url);
+          selectedFilePreviews.delete(file);
+        }
+      }
+      selectedFiles.forEach(file => {
+        if (!selectedFilePreviews.has(file)) selectedFilePreviews.set(file, URL.createObjectURL(file));
+      });
+    }
     function renderSelectedFiles() {
-      if (!selectedFiles.length) return `<div class="notice">사진은 최대 3장까지 올릴 수 있어요.</div>`;
+      syncSelectedFilePreviews();
+      if (!selectedFiles.length) return `<div class="empty">선택한 사진이 없어요.<br><span class="muted">사진을 선택하면 여기에 표시됩니다.</span></div>`;
       return `
+        <div class="file-count" role="status">선택한 사진 <strong>${selectedFiles.length}</strong> / 3장</div>
         <div class="stack">
           ${selectedFiles.map((file, index) => `
-            <div class="notice" style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
-              <div style="min-width:0;">
-                <div style="font-size:13px; font-weight:700; color:var(--text); overflow-wrap:anywhere;">${escapeHtml(file.name || `사진 ${index + 1}`)}</div>
-                <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px;">${escapeHtml(file.type || 'image')} · ${formatBytes(file.size)}</div>
+            <div class="selected-file">
+              <img class="file-thumbnail" src="${escapeHtml(selectedFilePreviews.get(file))}" alt="선택한 사진 ${index + 1}" onerror="this.hidden=true">
+              <div class="file-info">
+                <div class="file-name">${escapeHtml(file.name || `사진 ${index + 1}`)}</div>
+                <div class="muted">${formatBytes(file.size)}</div>
               </div>
-              <button class="btn" style="width:auto; min-height:36px; padding:0 12px; font-size:12px; border-color:rgba(232,65,79,0.16); color:var(--error); background:rgba(232,65,79,0.08);" onclick="removeSelectedFile(${index})">삭제</button>
+              <button type="button" class="btn file-remove" aria-label="사진 ${index + 1} 선택 취소" onclick="removeSelectedFile(${index})">빼기</button>
             </div>
           `).join('')}
         </div>
@@ -469,9 +187,8 @@
     function renderUploadGuide() {
       return `
         <div class="notice">
-          <strong>제출 전 확인</strong><br>
-          사진은 최대 3장까지 올릴 수 있어요.<br>
-          이미지 파일만 제출할 수 있고, 파일당 최대 6MB까지 가능합니다.
+          <strong>글씨가 잘 보이는 사진을 골라 주세요.</strong><br>
+          최대 3장 · 사진 한 장당 6MB까지 제출할 수 있어요.
         </div>
       `;
     }
@@ -483,12 +200,14 @@
       }
       const isClosed = String(assignment?.status || '').trim() === 'closed';
       $('app').innerHTML = `
-        ${renderHero()}
+        ${renderHero('photos')}
         ${renderAssignmentCard()}
         <section class="card">
+          <h2 class="section-title">숙제 사진</h2>
           <div class="stack">
             ${isClosed ? `<div class="notice"><strong>마감 안내</strong><br>마감된 숙제입니다.</div>` : renderUploadGuide()}
             ${isClosed ? '' : `
+              <label class="field-label" for="photo-input">사진 선택</label>
               <input id="photo-input" class="input" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple onchange="handleFileChange(event)">
               <div id="file-list">${renderSelectedFiles()}</div>
               <button id="submit-btn" class="btn btn-primary" onclick="submitHomeworkPhotos()">제출하기</button>
@@ -501,13 +220,14 @@
     function renderDone(submittedAt) {
       $('student-chip').textContent = student?.name || '';
       $('app').innerHTML = `
-        ${renderHero()}
+        ${renderHero('done')}
         ${renderAssignmentCard()}
         <section class="card">
           <div class="done-mark">✓</div>
-          <h1 class="title">제출 완료</h1>
+          <h2 class="title">제출했어요</h2>
           <div class="meta">${escapeHtml(submittedAt || '방금 제출됨')}</div>
           <div class="status-box">선생님이 숙제 사진을 확인할 수 있어요.</div>
+          <a class="btn btn-primary done-return" href="../student/">학생 포털로 돌아가기</a>
         </section>
       `;
     }
@@ -517,6 +237,7 @@
     }
     function removeSelectedFile(index) {
       selectedFiles = selectedFiles.filter((_, i) => i !== index);
+      if (!selectedFiles.length && $('photo-input')) $('photo-input').value = '';
       updateFileList();
     }
     async function compressImageFile(file) {
@@ -640,6 +361,7 @@
         const data = await apiUpload('homework-photo/upload', formData);
         submission = { ...(submission || {}), is_submitted: 1, submitted_at: data.submitted_at || '방금 제출됨' };
         selectedFiles = [];
+        syncSelectedFilePreviews();
         toast('제출되었습니다.');
         renderDone(submission.submitted_at);
       } catch (e) {

@@ -25,9 +25,9 @@ assert(
 assert(
   studentPortal.includes('localStorage.setItem(`mixedQuestions_${key}`, JSON.stringify(payload.questions))') &&
     studentPortal.includes('localStorage.setItem(`mixedMeta_${key}`') &&
-    studentPortal.includes("openOmrReview('${assignmentId}', 'exam')") &&
-    studentPortal.includes("openOmrReview('${assignmentId}', 'ans')") &&
-    studentPortal.includes("openOmrReview('${assignmentId}', 'sol')"),
+    studentPortal.includes("openOmrReview('${escapeHtml(exam.assignment_id)}', 'exam')") &&
+    studentPortal.includes("openOmrReview('${escapeHtml(exam.assignment_id)}', 'ans')") &&
+    studentPortal.includes("openOmrReview('${escapeHtml(exam.assignment_id)}', 'sol')"),
   'student review actions should restore the saved mixed paper before opening exam, answer, or solution'
 );
 
