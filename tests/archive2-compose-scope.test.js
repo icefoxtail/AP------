@@ -577,16 +577,16 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-canonical.js', '20261104-source-meta-approval-1'],
     ['archive2-core.js', '20261110-recency-1'],
     ['meta-foundation-runtime.js', '20261029-health-reasons-1'],
-    ['archive2-history.js', '20261004-class-grade-fallback-1'],
-    ['archive2-workspace.js', '20261110-review-a-1'],
+    ['archive2-history.js', '20261110-teacher-copy-1'],
+    ['archive2-workspace.js', '20261110-teacher-copy-1'],
     ['archive2-unified-units.js', '20261030-s11-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261029-source-meta-conflict-1/);
-  assert.match(html, /archive2-library\.js\?v=20261003-navigation-s5-3/);
-  assert.match(html, /archive2\.css\?v=20261110-review-a-1/);
-  assert.match(html, /archive2-papers\.js\?v=20261110-review-a-1/);
+  assert.match(html, /archive2-library\.js\?v=20261110-teacher-copy-1/);
+  assert.match(html, /archive2\.css\?v=20261110-teacher-copy-1/);
+  assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
   assert.match(html, /archive2-navigation\.js\?v=20261030-s8-1/);
 });
 
@@ -1253,7 +1253,7 @@ test('Saved Paper revision Draft preserves the immutable source snapshot and lin
 
   const changedSource = structuredClone(paper);
   changedSource.snapshot.questions[0].sourceFingerprint = 'changed-source-fingerprint';
-  assert.throws(() => w.applySavedPaperRevision(changedSource), /원본 문항이 변경되었습니다/);
+  assert.throws(() => w.applySavedPaperRevision(changedSource), /원본 문항이 바뀌어/);
 
   ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   ctx.APMATH_API_BASE = "https://archive.test/api";
