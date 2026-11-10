@@ -53,7 +53,7 @@ strong { font-weight: 600; }
 .logout { min-height: 44px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: transparent; color: var(--secondary); font-size: 13px; }
 .logout:hover { background: var(--surface-2); color: var(--text); }
 .student-nav { display: flex; gap: 32px; align-items: stretch; position: sticky; top: 76px; z-index: 39; padding: 0 max(32px, calc((100% - 1088px) / 2)); min-height: 56px; border-bottom: 1px solid var(--border); background: var(--bg); }
-.nav-item { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 10px 4px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--secondary); font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+.nav-item { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 56px; padding: 10px 4px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--secondary); font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; }
 .nav-item.active { border-bottom-color: var(--text); color: var(--text); font-weight: 600; }
 .nav-item:hover { color: var(--text); }
 .app { max-width: 1152px; margin: 0 auto; padding: 40px 32px 64px; outline: none; }
@@ -73,7 +73,7 @@ strong { font-weight: 600; }
 .btn-primary { background: var(--action-primary); border-color: var(--action-primary); color: var(--on-primary); }
 .btn-primary:hover:not(:disabled) { background: var(--action-primary-hover); color: var(--on-primary); }
 .btn-quiet { border-color: var(--border); background: transparent; }
-.back-btn { justify-self: start; min-height: 44px; padding: 9px 0; border: 0; border-radius: 0; background: transparent; color: var(--secondary); }
+.back-btn { justify-self: start; min-width: 44px; min-height: 44px; padding: 9px 0; border: 0; border-radius: 0; background: transparent; color: var(--secondary); }
 .back-btn:hover:not(:disabled) { color: var(--text); background: transparent; }
 .notice { padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-2); color: var(--text-soft); font-size: 14px; line-height: 1.65; }
 .empty { padding: 36px 24px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--secondary); text-align: center; font-size: 14px; line-height: 1.7; }
@@ -165,6 +165,12 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
 .omr-actions .review-btn[onclick^="downloadExamPdf"] { grid-column: 1 / -1; order: 3; border: 0; min-height: 44px; }
 .button-meta { font-size: 12px; font-weight: 400; opacity: .8; }
 .omr-review-unavailable { margin: 0 0 14px; font-size: 13px; color: var(--secondary); line-height: 1.7; }
+.exam-lineage { margin-top: 16px; border-top: 1px solid var(--border-soft); }
+.exam-lineage > summary { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--secondary); font-size: 12px; list-style: none; }
+.exam-lineage > summary::-webkit-details-marker { display: none; }
+.exam-lineage > summary span { font-size: 17px; }
+.exam-lineage[open] > summary span { transform: rotate(45deg); }
+.exam-lineage .clinic-lineage { margin: 0; }
 .omr-filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
 .omr-filter-tab, .material-range-tab { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--secondary); font-size: 14px; }
 .omr-filter-tab.active, .material-range-tab.active { color: var(--primary); background: var(--primary-soft); border-color: var(--primary); font-weight: 500; }
@@ -249,8 +255,9 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
   .portal-omr-home-list { grid-template-columns: 1fr; }
   .portal-omr-home-list .omr-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .9fr); gap: 16px 24px; }
   .portal-omr-home-list .omr-top { margin-bottom: 0; }
-  .portal-omr-home-list .omr-actions { margin: 0; padding: 0; border: 0; }
-  .portal-omr-home-list .clinic-lineage { grid-column: 1 / -1; }
+  .portal-omr-home-list .omr-actions { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding: 0; border: 0; }
+  .portal-omr-home-list .omr-review-unavailable { grid-column: 1; }
+  .portal-omr-home-list .exam-lineage { grid-column: 1 / -1; }
   body[data-student-view="login"] .app, body[data-student-view="boot"] .app { gap: 40px; }
   .login-card { padding: 28px; }
 }
@@ -293,6 +300,7 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
   .omr-title { font-size: 18px; }
   .omr-actions .btn { min-height: 44px; font-size: 13px; }
   .omr-actions .exam-open { grid-column: auto; }
+  .omr-actions.no-input .exam-open { grid-column: 1 / -1; }
   .omr-actions .omr-start { grid-column: auto; min-height: 48px; font-size: 13px; }
   .omr-actions.review-hidden .omr-start { grid-column: 1 / -1; }
   .button-meta { display: none; }
@@ -315,14 +323,15 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
   .omr-filter-tab { padding-inline: 10px; font-size: 13px; }
   .omr-sheet { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
   .omr-no { min-height: 48px; }
-  .omr-instructions { margin: 20px 0; padding-block: 16px; }
+  .omr-workspace { gap: 12px; }
+  .omr-instructions { margin: 16px 0; padding-block: 12px; }
   .omr-instructions strong { font-size: 15px; }
   .omr-instructions p { font-size: 13px; }
-  .omr-draft-summary { grid-template-columns: 1fr; gap: 8px; font-size: 13px; }
+  .omr-draft-summary { grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: 12px; }
   .omr-reference-actions { gap: 8px; }
   .omr-reference-actions .btn { flex: 1 1 72px; padding-inline: 8px; font-size: 12px; }
-  .omr-submit-bar { bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 8px); gap: 12px; padding: 16px; flex-wrap: wrap; border-radius: 12px; }
-  .omr-submit-bar > div { flex: 1 1 100%; font-size: 13px; }
+  .omr-submit-bar { bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 8px); gap: 8px; padding: 12px 16px; flex-wrap: wrap; border-radius: 12px; }
+  .omr-submit-bar > div { flex: 1 1 100%; font-size: 12px; }
   .omr-submit-bar > .btn { width: 100%; min-width: 0; }
   .result-card { padding: 24px 20px; }
   .recorded-score { padding-top: 24px; }

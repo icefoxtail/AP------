@@ -55,7 +55,7 @@ function createStudentPortalFixture() {
       { sessionId:'qa-partial', assignmentId:'qa-old', title:'일부 문항만 확인한 기록', className:'QA 반', examDate:'2024-01-15', score:70, questionCount:20, state:'partial', itemsMissing:true, counts:{ observed:20, correct:10, wrong:4, partial:2, unchecked:4 } },
       { sessionId:'qa-legacy', title:'오답 수만 남아 있는 이전 기록', examDate:'2024-01-10', questionCount:20, state:'legacy', counts:{ wrong:3 } }
     ], page: { hasMore: false, nextCursor: null }, summary: { attempts:{ loaded:3 }, questions:{ observed:40, correct:28, wrong:6, partial:2, unchecked:4 }, uniqueQuestion:{ confirmed:30, unverified:10 }, unclassified:{ legacyWrongs:3 } }, types: [
-      { key:'qa-type', label:'도형의 성질', depth:3, observed:20, wrong:2, evidence:[{ assignmentId:'qa-complete',sessionId:'qa-session' }] }
+      { key:'qa-type', label:'도형의 성질', depth:'L3', observed:20, wrong:2, evidence:[{ assignmentId:'qa-complete',sessionId:'qa-session' }] }
     ] },
     plans: [ { id: 'qa-plan', title: '삼각형 오답 다시 풀기', subject: '수학', plan_date: today, is_done: 0, updated_at: today + 'T00:00:00Z' } ]
   };

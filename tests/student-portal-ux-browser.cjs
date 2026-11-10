@@ -22,7 +22,7 @@ const output = path.resolve(arg('output') || path.join(require('node:os').tmpdir
 const baseline = arg('baseline');
 const screensOnly = process.argv.includes('--screens-only');
 const servePort = arg('serve');
-const report = { fixture: 'synthetic; all API calls intercepted; no production student writes; review destination HTML is a test target, while real output-envelope code runs', revision:arg('revision') || null, startedAt:new Date().toISOString(), completed:false, screenshots: [], checks: [], failures: [], pageErrors: [], unhandledApi: [], observations:[] };
+const report = { fixture: 'synthetic; all API calls intercepted; no production student writes; review destination HTML is a test target, while real output-envelope code runs; CDN fonts isolated and system CJK fallback used', revision:arg('revision') || null, startedAt:new Date().toISOString(), completed:false, screenshots: [], checks: [], failures: [], pageErrors: [], unhandledApi: [], observations:[] };
 const viewports = [[360,800],[390,844],[800,1280],[1280,800],[1440,900]];
 fs.mkdirSync(output, { recursive: true });
 
@@ -247,6 +247,8 @@ async function behaviorSuite(browser, base, check) {
     assert.match(await page.locator('#app').innerText(),/기록.*점수|기록된.*점수/);
     await capture(page,'submitted-result-390');
     await page.goBack();
+    await page.locator('#omr-tab-all').waitFor();
+    await page.goForward();
     await page.locator('.recorded-score').waitFor();
     assert.equal(await page.locator('#omr-submit-btn').count(),0);
     await openExams(page);
@@ -442,13 +444,30 @@ async function behaviorSuite(browser, base, check) {
     const fallback=page.locator('.webgl-fallback .cta-entrance');
     const fallbackVisible=await fallback.isVisible();
     report.observations.push({labUniverse:fallbackVisible?'real WebGL fallback route':'3D entry route'});
-    await capture(page,'lab-universe-390');
+    for(const [width,height]of [[320,800],...viewports]){
+      await page.setViewportSize({width,height});
+      const boxes=await page.locator('.top-nav .universe-portal-link,.top-controls button').evaluateAll(nodes=>nodes.map(node=>{const r=node.getBoundingClientRect();return {name:node.getAttribute('aria-label'),x:r.x,y:r.y,right:r.right,bottom:r.bottom,width:r.width,height:r.height,visible:!!node.getClientRects().length};}));
+      assert.equal(boxes.length,4);
+      for(const box of boxes){assert.ok(box.visible);assert.ok(box.x>=0&&box.right<=width+1,`${box.name} outside viewport`);}
+      for(let a=0;a<boxes.length;a++)for(let b=a+1;b<boxes.length;b++){
+        const A=boxes[a],B=boxes[b];
+        assert.ok(!(Math.min(A.right,B.right)-Math.max(A.x,B.x)>1&&Math.min(A.bottom,B.bottom)-Math.max(A.y,B.y)>1),`${A.name} overlaps ${B.name}`);
+      }
+      await capture(page,'lab-universe-'+width);
+    }
+    await page.setViewportSize({width:390,height:844});
     if(fallbackVisible)await fallback.click();else await page.locator('#btnEnterLab').click();
     await page.waitForURL(/\/playground\/next\/index\.html#g8$/,{timeout:20000});
     await page.locator('.hub-course[aria-pressed="true"]').waitFor();
     assert.match(await page.locator('.hub-course[aria-pressed="true"]').innerText(),/중2/);
     await page.getByRole('button',{name:'목록으로 보기',exact:true}).click();
+    assert.equal(await page.locator('.hub-trail a').count(),2);
+    assert.equal(await page.locator('.hub-portal-link').getAttribute('href'),'../../student/');
     await capture(page,'lab-hub-g8-390');
+    await page.getByRole('button',{name:'테마 바꾸기',exact:true}).click();
+    await page.waitForFunction(()=>document.documentElement.dataset.theme==='board');
+    await capture(page,'lab-hub-board-390');
+    await page.getByRole('button',{name:'테마 바꾸기',exact:true}).click();
     await page.locator('.hub-card a[href*="g8-triangles.html"]').first().click();
     await page.waitForURL(/g8-triangles\.html/);
     await page.waitForFunction(()=>document.querySelectorAll('svg').length>0 && document.querySelector('button'));
@@ -456,9 +475,11 @@ async function behaviorSuite(browser, base, check) {
     await capture(page,'lab-triangles-390');
     await page.goBack();
     await page.waitForURL(/\/playground\/next\/index\.html#g8$/);
-    await page.goBack();
+    await page.locator('.hub-portal-link').click();
+    await page.locator('#student-portal-omr-home-section').waitFor();
+    await page.locator('#student-nav a').click();
     await page.waitForURL(/\/playground\/index\.html#g8$/);
-    await page.goBack();
+    await page.locator('.top-nav .universe-portal-link').click();
     await page.locator('#student-portal-omr-home-section').waitFor();
   }));
   await check('homework PIN, photo selection, failure recovery and completion use the real UI', () => withStudent({name:'homework'}, async (page,state) => {
@@ -504,21 +525,21 @@ async function behaviorSuite(browser, base, check) {
   }));
   await check('planner calendar, draft recovery, settings and timer preserve accessible controls',()=>withStudent({name:'planner'},async(page,state)=>{
     await page.goto(base+'/apmath/planner/?student_id=qa-student&pin=0000');
-    await page.getByText('삼각형 오답 다시 풀기',{exact:true}).waitFor();
+    await page.locator('.plan-item-title').filter({hasText:'삼각형 오답 다시 풀기'}).waitFor();
     await page.getByRole('button',{name:'다음 날짜',exact:true}).click();
     await page.getByText('아직 할 일이 없어요.',{exact:true}).waitFor();
     await page.getByRole('button',{name:'오늘',exact:true}).click();
-    await page.getByText('삼각형 오답 다시 풀기',{exact:true}).waitFor();
-    await page.getByText('월별 달력 보기',{exact:true}).click();
+    await page.locator('.plan-item-title').filter({hasText:'삼각형 오답 다시 풀기'}).waitFor();
+    await page.locator('.mobile-calendar > summary').click();
     await capture(page,'planner-calendar-390');
-    await page.getByText('월별 달력 보기',{exact:true}).click();
+    await page.locator('.mobile-calendar > summary').click();
     await page.getByRole('button',{name:'+ 할 일 추가',exact:true}).click();
-    await page.getByLabel('할 일',{exact:true}).fill('합성 검수 계획');
+    await page.getByRole('dialog').getByLabel('할 일',{exact:true}).fill('합성 검수 계획');
     state.failPlanSave=true;
     await page.getByRole('button',{name:'계획 저장',exact:true}).click();
     await page.getByText('QA 계획 저장 지연',{exact:true}).waitFor();
     assert.ok(await page.getByRole('dialog').isVisible());
-    assert.equal(await page.getByLabel('할 일',{exact:true}).inputValue(),'합성 검수 계획');
+    assert.equal(await page.getByRole('dialog').getByLabel('할 일',{exact:true}).inputValue(),'합성 검수 계획');
     await capture(page,'planner-save-error-390');
     state.failPlanSave=false;
     await page.getByRole('button',{name:'계획 저장',exact:true}).click();
@@ -546,7 +567,7 @@ async function behaviorSuite(browser, base, check) {
     await page.getByRole('button',{name:'집중 타이머 닫기',exact:true}).click();
     await page.evaluate(()=>localStorage.setItem('APMATH_THEME','dark'));
     await page.reload();
-    await page.getByText('삼각형 오답 다시 풀기',{exact:true}).waitFor();
+    await page.locator('.plan-item-title').filter({hasText:'삼각형 오답 다시 풀기'}).waitFor();
     await capture(page,'planner-dark-390');
     assert.ok(state.requests.some(r=>r.endpoint==='planner-auth'));
   }));
