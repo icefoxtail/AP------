@@ -2337,6 +2337,58 @@ function getLevelRank(level, mode = 'high-first') {
     return table[String(level || '').trim()] ?? 999;
 }
 
+// 옛 출력 전달 방식(mixedQuestions_/mixedMeta_) 보관 관리.
+// 읽는 쪽(mixed_engine.html 열기·새로고침, index.html 출제)은 방금 만든 자료만 다시 읽으므로
+// 최근 MIXED_SNAPSHOT_KEEP개만 남기고 오래된 쌍을 지운다. 이 두 접두사 외의 키는 지우지 않는다.
+const MIXED_SNAPSHOT_INDEX_KEY = 'archiveMixedSnapshotIndex_v1';
+const MIXED_SNAPSHOT_KEEP = 10;
+const MIXED_SNAPSHOT_KEEP_ON_QUOTA = 3;
+function mixedSnapshotCandidates() {
+    const times = new Map();
+    try {
+        const saved = JSON.parse(localStorage.getItem(MIXED_SNAPSHOT_INDEX_KEY) || '[]');
+        if (Array.isArray(saved)) saved.forEach(entry => { if (entry && typeof entry.k === 'string' && Number.isFinite(entry.t)) times.set(entry.k, entry.t); });
+    } catch (e) { /* 색인이 깨졌으면 키 이름에서 찾는다 */ }
+    for (let i = 0; i < localStorage.length; i++) {
+        const match = /^mixed(?:Questions|Meta)_(mix_(\d{10,}))$/.exec(localStorage.key(i) || '');
+        if (match && !times.has(match[1])) times.set(match[1], Number(match[2]));
+    }
+    return [...times].map(([k, t]) => ({ k, t })).sort((a, b) => b.t - a.t);
+}
+function pruneMixedSnapshots(keepCount, protectKey) {
+    try {
+        const list = mixedSnapshotCandidates();
+        const kept = new Set(list.slice(0, keepCount).map(entry => entry.k));
+        if (protectKey) kept.add(protectKey);
+        list.forEach(entry => {
+            if (kept.has(entry.k)) return;
+            try { localStorage.removeItem('mixedQuestions_' + entry.k); localStorage.removeItem('mixedMeta_' + entry.k); } catch (e) { /* 다음 정리에서 다시 */ }
+        });
+        localStorage.setItem(MIXED_SNAPSHOT_INDEX_KEY, JSON.stringify(list.filter(entry => kept.has(entry.k))));
+    } catch (e) { /* 정리는 보조 동작이라 실패해도 쓰기를 막지 않는다 */ }
+}
+function storeMixedSnapshot(key, questions, meta) {
+    let questionsJson, metaJson;
+    try { questionsJson = JSON.stringify(questions); metaJson = JSON.stringify(meta); } catch (error) { return { ok: false, error }; }
+    const write = () => {
+        localStorage.setItem('mixedQuestions_' + key, questionsJson);
+        try { localStorage.setItem('mixedMeta_' + key, metaJson); }
+        catch (error) { try { localStorage.removeItem('mixedQuestions_' + key); } catch (e) { /* ignore */ } throw error; }
+    };
+    pruneMixedSnapshots(MIXED_SNAPSHOT_KEEP - 1, key);
+    try { write(); }
+    catch (first) {
+        pruneMixedSnapshots(MIXED_SNAPSHOT_KEEP_ON_QUOTA, key);
+        try { write(); } catch (second) { return { ok: false, error: second }; }
+    }
+    try {
+        const list = mixedSnapshotCandidates().filter(entry => entry.k !== key);
+        list.push({ k: key, t: Date.now() });
+        localStorage.setItem(MIXED_SNAPSHOT_INDEX_KEY, JSON.stringify(list.sort((a, b) => b.t - a.t)));
+    } catch (e) { /* 색인 저장 실패: 자료는 저장됨 */ }
+    return { ok: true };
+}
+
 function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
     if(cart.length === 0) return alert('카트가 비어있습니다.');
     const orderMode = document.getElementById('cart-level-order').value;
@@ -2363,8 +2415,12 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
         }
     };
     const sessionKey = 'mix_' + Date.now();
-    localStorage.setItem('mixedQuestions_' + sessionKey, JSON.stringify(exportCart));
-    localStorage.setItem('mixedMeta_' + sessionKey, JSON.stringify(meta));
+    const stored = storeMixedSnapshot(sessionKey, exportCart, meta);
+    if (!stored.ok) {
+        console.warn('[mixer] 출력 자료 저장 실패', stored.error);
+        alert('출력할 문항을 브라우저에 저장하지 못했습니다(저장 공간 부족).\n오래된 출력 자료는 이미 정리했습니다. 문항 수를 줄여 다시 시도하거나, 다른 탭을 닫고 새로고침한 뒤 다시 시도해 주세요.');
+        return;
+    }
     let url = `mixed_engine.html?qpp=${document.getElementById('print-qpp').value}&key=${sessionKey}`;
     if (withSubmitQr) {
         url += '&submitQr=1';

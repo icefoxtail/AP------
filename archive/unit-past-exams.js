@@ -433,11 +433,63 @@
       const stepLabel = core.stepSelectionLabel(paper.difficultySteps);
       if (stepLabel) meta.difficultyStepLabel = stepLabel;
     }
+    paper.legacySnapshotStored = true;
     if (!readyShelf()) {
-      localStorage.setItem(`mixedQuestions_${paper.snapshotKey}`, JSON.stringify(questions));
-      localStorage.setItem(`mixedMeta_${paper.snapshotKey}`, JSON.stringify(meta));
+      const stored = storeMixedSnapshot(paper.snapshotKey, questions, meta);
+      paper.legacySnapshotStored = stored.ok;
+      if (!stored.ok) console.warn('[unit-past] 출제 연결용 자료 저장 실패', stored.error);
     }
     return meta;
+  }
+  // 옛 출력 전달 방식(mixedQuestions_/mixedMeta_) 보관 관리. mixer.html의 같은 이름 함수와 같은 규칙이다.
+  // 읽는 쪽은 방금 만든 자료만 다시 읽으므로 최근 개수만 남기고 오래된 쌍을 지운다. 두 접두사 외의 키는 지우지 않는다.
+  const MIXED_SNAPSHOT_INDEX_KEY = 'archiveMixedSnapshotIndex_v1';
+  const MIXED_SNAPSHOT_KEEP = 10;
+  const MIXED_SNAPSHOT_KEEP_ON_QUOTA = 3;
+  function mixedSnapshotCandidates() {
+    const times = new Map();
+    try {
+      const saved = JSON.parse(localStorage.getItem(MIXED_SNAPSHOT_INDEX_KEY) || '[]');
+      if (Array.isArray(saved)) saved.forEach(entry => { if (entry && typeof entry.k === 'string' && Number.isFinite(entry.t)) times.set(entry.k, entry.t); });
+    } catch (e) { /* 색인이 깨졌으면 키 이름에서 찾는다 */ }
+    for (let i = 0; i < localStorage.length; i++) {
+      const match = /^mixed(?:Questions|Meta)_(mix_(\d{10,}))$/.exec(localStorage.key(i) || '');
+      if (match && !times.has(match[1])) times.set(match[1], Number(match[2]));
+    }
+    return [...times].map(([k, t]) => ({ k, t })).sort((a, b) => b.t - a.t);
+  }
+  function pruneMixedSnapshots(keepCount, protectKey) {
+    try {
+      const list = mixedSnapshotCandidates();
+      const kept = new Set(list.slice(0, keepCount).map(entry => entry.k));
+      if (protectKey) kept.add(protectKey);
+      list.forEach(entry => {
+        if (kept.has(entry.k)) return;
+        try { localStorage.removeItem(`mixedQuestions_${entry.k}`); localStorage.removeItem(`mixedMeta_${entry.k}`); } catch (e) { /* 다음 정리에서 다시 */ }
+      });
+      localStorage.setItem(MIXED_SNAPSHOT_INDEX_KEY, JSON.stringify(list.filter(entry => kept.has(entry.k))));
+    } catch (e) { /* 정리는 보조 동작이라 실패해도 쓰기를 막지 않는다 */ }
+  }
+  function storeMixedSnapshot(key, questions, meta) {
+    let questionsJson, metaJson;
+    try { questionsJson = JSON.stringify(questions); metaJson = JSON.stringify(meta); } catch (error) { return { ok: false, error }; }
+    const write = () => {
+      localStorage.setItem(`mixedQuestions_${key}`, questionsJson);
+      try { localStorage.setItem(`mixedMeta_${key}`, metaJson); }
+      catch (error) { try { localStorage.removeItem(`mixedQuestions_${key}`); } catch (e) { /* ignore */ } throw error; }
+    };
+    pruneMixedSnapshots(MIXED_SNAPSHOT_KEEP - 1, key);
+    try { write(); }
+    catch (first) {
+      pruneMixedSnapshots(MIXED_SNAPSHOT_KEEP_ON_QUOTA, key);
+      try { write(); } catch (second) { return { ok: false, error: second }; }
+    }
+    try {
+      const list = mixedSnapshotCandidates().filter(entry => entry.k !== key);
+      list.push({ k: key, t: Date.now() });
+      localStorage.setItem(MIXED_SNAPSHOT_INDEX_KEY, JSON.stringify(list.sort((a, b) => b.t - a.t)));
+    } catch (e) { /* 색인 저장 실패: 자료는 저장됨 */ }
+    return { ok: true };
   }
   async function prepareOutputEnvelope(paper, questions, meta, mode = 'exam') {
     const output = window.Archive2Output;
@@ -537,6 +589,8 @@
         url.searchParams.set('outputOwnerId', outputEnvelope.ownerId);
         openReadyAssignment(url, paper);
       } else {
+        // 이 경로의 출제 화면은 브라우저에 저장한 문항을 읽는다. 저장하지 못했으면 빈 출제 화면으로 넘기지 않는다.
+        if (paper.legacySnapshotStored === false) throw new Error('출제할 문항을 브라우저에 저장하지 못했습니다(저장 공간 부족). 오래된 출력 자료는 이미 정리했습니다. 다른 탭을 닫고 새로고침한 뒤 다시 시도해 주세요.');
         localStorage.setItem(`APMATH_UNIT_PAST_ASSIGN_${paper.snapshotKey}`, JSON.stringify(pending));
         window.location.href = appendSessionHash(url.toString());
       }
@@ -1850,6 +1904,7 @@
   function renderSafeFallback(message) {
     const app = document.getElementById('unit-content');
     if (!app) return;
+    setStatus('');
     app.innerHTML = `<div class="unit-error unit-fallback"><strong>단원별 출제 도구를 불러오지 못했습니다.</strong><br>${escapeHtml(message || '일시적인 로딩 오류입니다.')}<div class="unit-fallback-actions"><a class="unit-btn" href="index.html?legacy=1">기존 아카이브 전체 문제지로 이동</a><a class="unit-btn" href="mixer.html">기존 믹서 출제로 이동</a></div></div>`;
   }
   function clearProfileSelection(options = {}) {
@@ -1981,13 +2036,25 @@
   async function init() {
     const app = document.getElementById('unit-content');
     if (!core) { renderSafeFallback('단원 집계 모듈을 불러오지 못했습니다.'); return; }
-    if (!isTeacherSession()) { app.innerHTML = '<div class="unit-error">단원별 기출은 AP Math OS 선생님 로그인 후 사용할 수 있습니다.<br><a href="index.html">아카이브로 돌아가기</a></div>'; setStatus('선생님 로그인 후 사용할 수 있습니다.', true); return; }
+    if (!isTeacherSession()) { renderLoginRequired(app); return; }
     if (!Array.isArray(window.questionIndex)) { renderSafeFallback('question-index.js를 불러오지 못했습니다.'); return; }
-    try { await loadMetadata(); } catch (error) { state.metadataError = true; console.warn(error); }
-    state.index = joinApprovedMetadata(window.questionIndex);
-    const requested = new URLSearchParams(window.location.search).get('grade');
-    if (core.PROFILES[requested]) selectProfile(requested);
-    else { state.profileId = ''; state.catalog = null; renderCatalog(); }
+    try {
+      try { await loadMetadata(); } catch (error) { state.metadataError = true; console.warn(error); }
+      state.index = joinApprovedMetadata(window.questionIndex);
+      const requested = new URLSearchParams(window.location.search).get('grade');
+      if (core.PROFILES[requested]) selectProfile(requested);
+      else { state.profileId = ''; state.catalog = null; renderCatalog(); }
+    } catch (error) {
+      // 렌더 중 예외가 나도 "집계하는 중"에서 멈추지 않게 원인과 다음 행동을 보여 준다.
+      console.error(error);
+      renderSafeFallback(`화면을 만드는 중 오류가 발생했습니다. 새로고침(F5)해 다시 시도해 주세요. (${error?.message || '알 수 없는 오류'})`);
+    }
+  }
+  function renderLoginRequired(app) {
+    // 안내는 이 상자 한 번만 보인다(상태 줄은 비운다). 로그인은 같은 출처의 AP Math OS(`../apmath/`)에서 하고,
+    // 로그인 정보는 localStorage(APMATH_SESSION)로 공유되므로 돌아와 "로그인 후 다시 확인"을 누르면 된다.
+    setStatus('');
+    app.innerHTML = '<section class="unit-login-required" aria-labelledby="unit-login-title"><h2 id="unit-login-title">선생님 로그인이 필요합니다</h2><p>단원별 기출은 AP Math OS 선생님 계정으로 로그인한 뒤 사용할 수 있습니다. 로그인 창에서 로그인한 다음 이 화면으로 돌아와 &lsquo;로그인 후 다시 확인&rsquo;을 눌러 주세요.</p><div class="unit-login-actions"><a class="unit-btn primary" href="../apmath/" target="_blank" rel="noopener">선생님 로그인</a><button type="button" class="unit-btn" onclick="location.reload()">로그인 후 다시 확인</button><a class="unit-btn ghost" href="index.html">아카이브로 돌아가기</a></div></section>';
   }
   window.addEventListener('popstate', restoreFromUrl);
   window.UnitPastExams = { init, selectProfile, clearProfileSelection, selectSemanticSubject, clearSemanticSubject, openFineBuilder, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, updateStepSelection, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, previewExistingPaper, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
