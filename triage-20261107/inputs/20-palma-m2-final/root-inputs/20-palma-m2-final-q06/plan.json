@@ -1,0 +1,130 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "오른쪽 그림에서 $BC\\parallel DE$, $AB\\parallel EF$일 때, $BD$의 길이는? [4점]",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "rational", "numerator": "81", "denominator": "5"},
+            {"kind": "rational", "numerator": "108", "denominator": "5"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "0"},
+            {"kind": "integer", "value": "0"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "18"},
+            {"kind": "integer", "value": "0"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "9"},
+            {"kind": "integer", "value": "12"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "17"},
+            {"kind": "integer", "value": "12"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "8"},
+            {"kind": "integer", "value": "0"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sBC", "refs": ["B", "C"]},
+    {"id": "sDE", "refs": ["D", "E"]},
+    {"id": "sEF", "refs": ["E", "F"]}
+  ],
+  "planeMarks": {
+    "parallels": [
+      {"id": "p1", "count": 1, "segments": ["sDE", "sBC"]},
+      {"id": "p2", "count": 2, "segments": ["sAB", "sEF"]}
+    ],
+    "dimensions": [
+      {"id": "dAD", "from": "A", "to": "D", "label": "12", "unit": "cm", "side": "LEFT", "value": "12", "factRole": "GIVEN"},
+      {"id": "dDE", "from": "D", "to": "E", "label": "8", "unit": "cm", "side": "ABOVE", "value": "8", "factRole": "GIVEN"},
+      {"id": "dFC", "from": "F", "to": "C", "label": "10", "unit": "cm", "side": "BELOW", "value": "10", "factRole": "GIVEN"}
+    ]
+  },
+  "caption": "평행사변형 BDEF에서 BF=DE=8 cm이므로 BC=18 cm다. △ADE∼△ABC의 닮음비는 4:9이어서 AB=27 cm, BD=15 cm이다. 각도는 한 예시 배치이며 정답은 ④이다.",
+  "accessibilityDescription": "삼각형 ABC에서 D는 AB 위, E는 AC 위, F는 BC 위에 있고 DE와 BC, AB와 EF가 각각 평행한 한 예시 배치.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD=12 cm, DE=8 cm, FC=10 cm이며 D, E, F는 각각 AB, AC, BC 위에 있다.",
+      "mappedTo": ["mathPlan.nodes", "displaySegments", "planeMarks", "caption"]
+    },
+    {
+      "id": "c2",
+      "condition": "BC ∥ DE이고 AB ∥ EF이다.",
+      "mappedTo": ["displaySegments", "planeMarks.parallels", "caption"]
+    }
+  ],
+  "newVisualInformation": [
+    "각도는 원문이 정하지 않으므로 조건을 만족하는 하나의 비직각 배치만 사용하고 각도 수치는 표시하지 않는다."
+  ]
+}
