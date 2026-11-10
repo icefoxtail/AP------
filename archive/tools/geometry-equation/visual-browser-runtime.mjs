@@ -33,7 +33,13 @@ export function assertOutput(file) {
   if(real!==rootReal&&!real.startsWith(rootReal+path.sep)&&!rootReal.startsWith(real+path.sep))throw Error('TEMPORARY_WORKSPACE_ESCAPE');
   return target;
 }
+// GEOMETRY_CAPTURE_TIMEOUT_MS (0 < ms <= 600000) sets every browser wait of the render capture and layout pre-checks (page.goto, waitForFunction, screenshots,
+// setContent). Unset or invalid: the fixed defaults stay exactly as they were (60 s for the Archive page wait, Playwright's 30 s elsewhere). Raise it on a loaded PC.
+export const captureTimeoutMs=(defaultMs,raw=process.env.GEOMETRY_CAPTURE_TIMEOUT_MS)=>{const v=Number(raw);return raw!==undefined&&raw!==''&&Number.isFinite(v)&&v>0&&v<=600000?v:defaultMs;};
 export async function launchBrowser() {
   const executablePath=process.env.GEOMETRY_BROWSER_EXECUTABLE;
-  return playwright().chromium.launch({...(executablePath?{executablePath}:{channel:process.env.GEOMETRY_BROWSER_CHANNEL||'chrome'}),headless:true});
+  const browser=await playwright().chromium.launch({...(executablePath?{executablePath}:{channel:process.env.GEOMETRY_BROWSER_CHANNEL||'chrome'}),headless:true});
+  const wait=captureTimeoutMs(null);
+  if(wait){const open=browser.newPage.bind(browser);browser.newPage=async(...args)=>{const page=await open(...args);page.setDefaultTimeout(wait);page.setDefaultNavigationTimeout(wait);return page;};}
+  return browser;
 }
