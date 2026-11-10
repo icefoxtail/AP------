@@ -88,7 +88,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²+2x의 그래프와 그 아래쪽에 주황색으로 그린 수평선 y=k(예: k=−3). 포물선 위의 한 점에 식 이름표가, 꼭짓점에는 지시선으로 이름표가 붙어 있고, 수평선 곁에 y=k 이름표가 있다.",
+    "solutionImageCaption": "그림은 예로 k=−3인 경우를 나타낸 것이다. 포물선 y=x²+2x의 꼭짓점이 (−1, −1)이므로 최솟값은 −1이다. 직선 y=k가 그래프와 만나지 않으려면 k가 이 최솟값보다 작아야 한다. 정답은 k<−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -404,9 +408,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q9-solution.svg",
-    "solutionImageAlt": "꼭짓점 x=1의 오른쪽에서 함수가 증가하므로 x=k=5일 때 최댓값 18이다.",
-    "solutionImageCaption": "꼭짓점 x=1의 오른쪽에서 함수가 증가하므로 x=k=5일 때 최댓값 18이다.",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=x²−2x+3의 그래프. 위쪽에 식 f(x)=x²−2x+3이 적혀 있고, 구간 2≤x≤k의 왼쪽 끝점(x=2)과 오른쪽 끝점(x=k, 예: k=4)에서 x축까지 세로 점선을 내렸으며 각각 지시선 이름표가 붙어 있다.",
+    "solutionImageCaption": "그림은 예로 k=4인 경우를 나타낸 것이다. f(x)=x²−2x+3에서 구간 2≤x≤k는 꼭짓점 x=1의 오른쪽이므로 함수는 이 구간에서 증가한다. 따라서 최댓값은 오른쪽 끝점 x=k에서 생기고, k²−2k+3=18을 풀어 k를 구한다. 정답은 5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -452,10 +456,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "k가 변해도 포물선은 항상 x축에 접한다. (a=1/2, b=1/4)",
-    "solutionImageCaption": "k가 변해도 포물선은 항상 x축에 접한다. (a=1/2, b=1/4)",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축과 이차함수 f(x)의 그래프 두 개. 파란 곡선은 k=0일 때, 주황 곡선은 k=1일 때이며 각각 지시선으로 이름표가 붙어 있다. 두 곡선 모두 x축에 한 점에서 접하고 접점에 점이 찍혀 있다.",
+    "solutionImageCaption": "파란 곡선은 k=0일 때, 주황 곡선은 k=1일 때의 f(x)의 그래프이다. 두 경우 모두 x축에 한 점에서 접한다. k가 변해도 항상 접하려면 판별식이 모든 k에서 0이어야 하므로, 계수를 비교해 a와 b를 구한다. 정답은 a+b=4분의 3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -900,7 +904,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 f(x)의 그래프 위에 높이가 같은 두 점 A, B가 있고 이를 잇는 파란 선분이 있다. 점 B를 지나는 기울기 3인 주황 직선과 점 A를 지나는 기울기 1인 초록 직선이 점 C에서 곡선과 만난다. 세 점 A, B, C를 꼭짓점으로 하는 삼각형이 연한 파란색으로 칠해져 있다.",
+    "solutionImageCaption": "그림은 예로 t=8인 경우를 나타낸 것이다. A와 B의 함수값이 같아서 a+b=5이고, 두 직선의 기울기에서 b+c=8, a+c=6을 얻는다. 세 점의 x좌표를 구해 밑변과 높이를 계산한다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1018,6 +1026,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 f(x)의 그래프에서 구간 0≤x≤2에 해당하는 부분을 주황색으로 굵게 그렸다. 구간의 왼쪽 끝점에 M, 오른쪽 끝점에 m 지시선 이름표가 있고 m에서 x축까지 세로 점선이 있다. 구간 오른쪽에 대칭축 x=2분의 5를 세로 점선으로 나타내고 f(x) 이름표가 곡선 위 한 점에 붙어 있다.",
+    "solutionImageCaption": "f(x)=x²−5x+b에서 대칭축 x=2분의 5가 구간 0≤x≤2의 오른쪽에 있으므로 함수는 이 구간에서 감소한다. 따라서 최댓값은 x=0, 최솟값은 x=2에서 생긴다. M=2m을 이용해 b를 구한 뒤 2a+b를 계산한다. 정답은 2a+b=17이다.",
+    "solutionImageSize": "full"
   }
 ];

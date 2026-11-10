@@ -251,7 +251,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: x축에 한 점에서 접하는 아래로 볼록한 포물선. 그래프가 x축에 닿는 점에 중근이라는 글자가 붙어 있다.",
+    "solutionImageCaption": "이차방정식이 중근을 가지면 판별식이 0이고, 이차함수의 그래프는 x축에 접한다(그림은 접하는 모양의 예). 판별식을 계산하면 D=4(p−1)(p−4)이므로 D=0에서 p=1 또는 p=4이다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -469,9 +473,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "a=-1은 x축과 만나지 않고, a=-7은 y축에 대칭인 두 점에서 만난다",
-    "solutionImageCaption": "a=-1은 x축과 만나지 않고, a=-7은 y축에 대칭인 두 점에서 만난다",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y축에 대하여 대칭인 아래로 볼록한 포물선. x축과 (−2, 0), (2, 0)에서 만난다.",
+    "solutionImageCaption": "두 교점의 x좌표가 절댓값이 같고 부호가 반대이면 두 근의 합이 0이므로 그래프는 y축에 대하여 대칭이다(그림은 두 근이 −2, 2인 예). 근의 합 −(a²+8a+7)=0에서 a=−1 또는 a=−7이고, a=−1이면 y=x²+2가 되어 x축과 만나지 않는다. 정답은 −7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -517,7 +521,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: x축에 한 점에서 접하는 아래로 볼록한 포물선. 그래프가 x축에 닿는 점에 접점이라는 글자가 붙어 있다.",
+    "solutionImageCaption": "x축과 한 점에서 만나면 그래프가 x축에 접하므로 판별식이 0이다(그림은 접하는 모양의 예). (m+k)²−4(m−k)²=0에서 k=3분의 m 또는 k=3m이다. m이 자연수이므로 k의 최솟값은 m=1일 때의 3분의 1이다. 정답은 3분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -657,7 +665,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/24_매산고_1학기_중간_고1_기출/q15.png",
     "imageAlt": "문제의 이차함수 그래프와 사각형 ABCD",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)는 꼭짓점 A(−3, −4)에서 x축 위의 점 B(1, 0)을 지나고, 주황 포물선 g(x)는 꼭짓점 C(3, 12)에서 y축 위의 점 P(0, 6)을 지난다. 점 D(−3, 0)과 네 점 A, B, C, D를 이은 사각형이 회색으로 칠해져 있고 선분 CD가 점 P를 지난다.",
+    "solutionImageCaption": "사각형 ABCD의 넓이는 8a이므로 8a=32에서 a=4이다. 직선 CD는 y=2x+6이므로 g(x)의 y절편은 6이고, 이로부터 f(x), g(x)가 정해진다. 4f(t)−3g(t)=3(t−1)²−28이므로 −4≤t≤3에서 최솟값은 t=1일 때 −28, 최댓값은 t=−4일 때 47이다. 정답은 19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -695,7 +707,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 k<5인 범위가 굵은 선으로 표시되고, 5는 속이 빈 점이다. 자연수 1, 2, 3, 4가 점으로 찍혀 있다.",
+    "solutionImageCaption": "서로 다른 두 실근을 가지려면 판별식 D가 0보다 커야 한다. D=8(5−k)>0에서 k<5이고, k가 자연수이므로 1, 2, 3, 4이다. 이들의 합을 구한다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -734,10 +750,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "a=-1일 때 y=x^3-3x+2는 x=1에서, a=1/8일 때 y=x^3-3/4x-1/4는 x=-1/2에서 x축에 접하는 두 그래프",
-    "solutionImageCaption": "a=-1이면 (x-1)^2(x+2)=0, a=1/8이면 (x-1)(x+1/2)^2=0이므로 두 경우 모두 서로 다른 실근이 2개이고, 중근인 x=1과 x=-1/2에서 그래프가 x축에 접한다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축과 (−2, 0)에서 만나고 다른 한 점에서는 x축에 접하는 삼차함수의 그래프. 접하는 점에 중근이라는 글자가 붙어 있다.",
+    "solutionImageCaption": "삼차방정식의 서로 다른 실근이 2개이려면 그래프가 x축과 한 점에서 만나고 다른 한 점에서는 접해야 한다(그림은 그 모양의 예). 주어진 식은 (x−1)(x²+x+2a)로 인수분해되므로 x²+x+2a가 중근을 갖는 경우와 x=1을 근으로 갖는 경우를 따진다. 정답은 −1, 8분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -856,6 +872,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 f(x)와 점 P(1, 2)를 지나는 직선 g(x)가 두 점에서 만난다. 포물선 위의 점 A(2, 2), B(4, 1)에서 x축으로 점선이 내려와 x축의 2와 4를 가리킨다.",
+    "solutionImageCaption": "A, B의 좌표를 f(x)=x²+ax+b에 대입하면 a, b가 정해진다. 직선 g(x)=nx+2−n은 n에 관계없이 (1,2)를 지난다(그림은 n=−2분의 1인 예). 2≤x≤4에서 두 점에서 만나려면 f(x)−g(x)의 양 끝값, 축의 위치, 판별식 조건을 모두 따진다. 정답은 (1) a=−2분의 13, b=11이고, (2) √14−2분의 9<n≤−3분의 1이다.",
+    "solutionImageSize": "full"
   }
 ];

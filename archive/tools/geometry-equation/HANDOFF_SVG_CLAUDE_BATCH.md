@@ -236,3 +236,4 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
 - 첫 PR: 이번 5개 시험지(제목만; 25 효천고 2학기 중간은 위 사유로 제외).
 
 - 2026-11-10 흐름 전환: 루나 사용량 한도로 고1 시험지는 DeepSeek 초안(`ds-launch-exam.sh`, `qrun-ds.sh`) → Sonnet A 구현·검수(`prompts/sonnet-exam-impl.md`) → Sonnet B 최종(`sonnet-final.md`) 순서로 돌린다. 이유: 루나를 쓸 수 없어도 대기열이 멈추지 않게 하기 위해서다. 위의 "플랜은 루나가 구현" 항목은 루나 한도가 풀릴 때까지 이 흐름이 대신한다.
+- 2026-11-10 오전: OpenCode Go(DeepSeek) 월 사용량 소진 임박 → 소진 뒤에는 Sonnet A가 `prompts/sonnet-exam-create.md`로 판정·플랜·구현·자체검수를 하고 Sonnet B가 최종 검수한다. 이유: DeepSeek 없이도 대기열이 멈추지 않게 하고, 고치는 자와 검수자 분리는 유지하기 위해서다. 이미 ds-draft가 있는 시험지는 `sonnet-exam-impl.md`로 마친다.

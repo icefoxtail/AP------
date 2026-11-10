@@ -57,5 +57,6 @@
 | `ds-svgtext.cjs` | DeepSeek 초안의 SVG 텍스트(글자·수식) 점검 보조 |
 | `prompts/ds-exam-draft.md` | DeepSeek 시험지 초안 지시서 |
 | `prompts/sonnet-exam-impl.md` | Sonnet A 구현·검수 지시서(DeepSeek 초안 → Sonnet A 구현·검수 → Sonnet B 최종) |
+| `prompts/sonnet-exam-create.md` | DeepSeek 월 한도 소진 뒤 Sonnet A가 판정·플랜·구현·PNG 자체검수를 한 번에(2026-11-10) |
 | `prompts/publish-brief.md` | 게시 절차 실행자(Sonnet) 지시서(build-pub→pubflow→골든 재고정→jscheck→runtime→PR) |
 | `ENGINE_GAPS.md` | 엔진이 못 그려 OPEN으로 남긴 문항과 사유(엔진 업그레이드 때 사용) |
