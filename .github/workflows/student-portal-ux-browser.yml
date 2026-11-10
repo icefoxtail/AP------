@@ -1,0 +1,57 @@
+name: Student Portal UX Browser
+
+on:
+  pull_request:
+    paths:
+      - 'apmath/student/**'
+      - 'apmath/css/apms-student-experience.css'
+      - 'apmath/homework/index.html'
+      - 'apmath/planner/index.html'
+      - 'tests/student-portal-experience-browser.cjs'
+      - '.github/workflows/student-portal-ux-browser.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'apmath/student/**'
+      - 'apmath/css/apms-student-experience.css'
+      - 'apmath/homework/index.html'
+      - 'apmath/planner/index.html'
+      - 'tests/student-portal-experience-browser.cjs'
+      - '.github/workflows/student-portal-ux-browser.yml'
+  workflow_dispatch:
+
+jobs:
+  browser-ux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install isolated browser test driver
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: |
+          mkdir -p "$RUNNER_TEMP/student-playwright"
+          npm install --prefix "$RUNNER_TEMP/student-playwright" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Verify student UX in real Chrome
+        env:
+          NODE_PATH: ${{ runner.temp }}/student-playwright/node_modules
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          STUDENT_UX_SHOTS_DIR: ${{ runner.temp }}/student-portal-ux
+        run: node tests/student-portal-experience-browser.cjs
+      - name: Save screenshot and geometry evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-portal-ux-${{ github.run_id }}
+          path: ${{ runner.temp }}/student-portal-ux/
+          if-no-files-found: warn
+          retention-days: 14
