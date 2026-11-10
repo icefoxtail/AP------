@@ -1,19 +1,25 @@
 {
   "schema": "ARCHIVE_OUTPUT_CORRECTNESS_REFERENCES_V1",
   "performanceBase": "8a6a71af2317060dacd877a7a7af86d347dc06e6",
-  "performanceReference": "d8b04e0e3597209c8862755b6e969d809b94fb9d",
+  "performanceReference": "b9d77f8a32e245f29c672de100178bb1ebf4c617",
   "originalBase": "f446e62a29f90d6d30a76b295e5c226f5ead72d2",
-  "originalReference": "6f30f21e0b4e20ae40e0bde9a3acadb534bd52e7",
+  "originalReference": "9efb9633b19b966b0611a10bc352172f217c2dcd",
   "corrections": [
     "Shared reminder-image width constraint moved unchanged from original engine",
     "Existing 15s solution-image budget also used for cold exam-image preparation",
     "Inline-width source diagrams constrained in solution reminders (15a6dd95fd)",
     "AP Table Engine v1 table normalisation (4a0be8de31, 9628eff584, 7fffacdb01, 99cdecf175)",
-    "<p> rendered as a line block without default margins (ed48384c2d)"
+    "<p> rendered as a line block without default margins (ed48384c2d)",
+    "Solution SVG display rule (2026-11-11 user decision): an .svg solution figure is shown at naturalWidth x 0.6 (1:1 below 384px wide), capped at the column, regardless of its size class; raster keeps the class caps. Changes solution block heights and therefore solution page counts on purpose (branches review-reference/output-20261111-solution-svg-size-performance and -original)"
   ],
   "sourceDataChanged": false,
   "historicalUncorrectedEvidenceRun": "42161431317",
   "previousPerformanceReferences": [
+    {
+      "sha": "d8b04e0e3597209c8862755b6e969d809b94fb9d",
+      "replaced": "2026-11-11",
+      "reason": "Solution SVG display rule (naturalWidth x 0.6 instead of size-class caps) intentionally changes solution block heights and page counts. New performance reference = this commit plus only that rule (b9d77f8a32), no performance code. The original-renderer reference moved the same way: 6f30f21e0b4e20ae40e0bde9a3acadb534bd52e7 -> 9efb9633b19b966b0611a10bc352172f217c2dcd."
+    },
     {
       "sha": "4a262850e4574f9e006ba0bd69a5f2aa31b84019",
       "replaced": "2026-11-10",
