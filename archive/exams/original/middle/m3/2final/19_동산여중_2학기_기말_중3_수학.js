@@ -557,7 +557,7 @@ window.examData = {
       "id": "q15",
       "number": 15,
       "score": 3.0,
-      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. 중심각 $x=\\angle AOQ$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>",
+      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. $\\angle QRB=x$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>",
       "choices": [
         "$34^\\circ$",
         "$45^\\circ$",
@@ -565,8 +565,8 @@ window.examData = {
         "$58^\\circ$",
         "$64^\\circ$"
       ],
-      "answer": "⑤",
-      "solution": "$\\angle APQ=32^\\circ$는 호 AQ를 보는 원주각이고 $\\angle AOQ$는 같은 호를 보는 중심각이다.\n중심각은 원주각의 2배이므로 $x=\\angle AOQ=2\\cdot32^\\circ=64^\\circ$이다. 답은 ⑤이다.",
+      "answer": "④",
+      "solution": "$\\angle APQ$와 $\\angle ARQ$는 같은 호 AQ를 보는 원주각이므로 $\\angle ARQ=\\angle APQ=32^\\circ$이다.\n$\\overline{AB}$가 지름이므로 반원을 보는 원주각 $\\angle ARB=90^\\circ$이다.\n따라서 $x=\\angle QRB=\\angle ARB-\\angle ARQ=90^\\circ-32^\\circ=58^\\circ$이다. 답은 ④이다.",
       "level": "하",
       "category": "원주각",
       "originalCategory": "원주각",
