@@ -109,7 +109,11 @@ for (const labId of targets) {
       const url = `${base}${labId}.html#s=${encodeURIComponent(sc.id + '@' + sc.gi)}`;
       const load = async (hash) => {
         await page.goto(hash == null ? url : `${base}${labId}.html${hash}`, { waitUntil: 'load' });
-        if (hash != null) await page.reload({ waitUntil: 'load' }); // 해시만 바뀌면 새 문서가 아니므로
+        if (hash != null) {
+          // 해시만 바뀌면 새 문서가 아니므로 다시 읽되, 직전 문서의 아이콘 등 자원을 중단하지 않습니다.
+          await page.waitForLoadState('networkidle', { timeout: 10000 });
+          await page.reload({ waitUntil: 'load' });
+        }
         await page.waitForFunction(() => window.lab && lab.video && lab.list.length && lab.board);
         await page.waitForFunction(() => document.fonts.ready.then(() => true));
         await sleep(500);
@@ -258,6 +262,8 @@ for (const labId of targets) {
             await page.waitForFunction((k) => lab.video.state === 'playing' && lab.video.lessonIndex === k, sc.k, { timeout: 5000 }).then(() => check(`play=${sc.k + 1} starts lesson ${sc.k + 1}`, true), () => check(`play=${sc.k + 1} starts lesson ${sc.k + 1}`, false, 'not playing the expected lesson'));
           }
           await page.goto(`${base}${labId}.html?manual=1#s=${encodeURIComponent(sc.id + '@' + sc.gi)}`, { waitUntil: 'load' });
+          // load 이벤트 뒤에도 진행 중인 아이콘 요청을 기다린 후 기존 새로고침 검사를 수행합니다.
+          await page.waitForLoadState('networkidle', { timeout: 10000 });
           await page.reload({ waitUntil: 'load' });
           await page.waitForFunction(() => window.lab && lab.video && lab.board);
           await sleep(400);
