@@ -34,7 +34,7 @@ const issue = (id, paperId, extra = {}) => ({
 // A host whose [data-issue-slot] / [data-history-note] children can be filled in place, like the real DOM.
 function makeHost() {
   const host = {
-    innerHTML: "", slots: new Map(), note: null, prepend() {},
+    innerHTML: "", slots: new Map(), hiddenSlots: new Map(), note: null, prepend() {},
     querySelectorAll(selector) {
       if (selector === "[data-issue-slot]") {
         return [...host.innerHTML.matchAll(/data-issue-slot data-paper-id="([^"]+)"/g)].map((match) => {
@@ -42,13 +42,14 @@ function makeHost() {
             dataset: { paperId: match[1] },
             set innerHTML(value) { host.slots.set(match[1], value); },
             get innerHTML() { return host.slots.get(match[1]) ?? ""; },
+            set hidden(value) { host.hiddenSlots.set(match[1], value); },
           };
           return slot;
         });
       }
       if (selector === "[data-history-note]")
         return /data-history-note/.test(host.innerHTML)
-          ? [{ set textContent(value) { host.note = value; } }] : [];
+          ? [{ set innerHTML(value) { host.note = value; } }] : [];
       return [];
     },
   };
@@ -95,7 +96,6 @@ test("history is grouped by saved_paper_id: another paper's issues never mix in"
     const first = host.slots.get(pid(1)), second = host.slots.get(pid(2)), third = host.slots.get(pid(3));
     assert.match(first, /출제 5회 · 취소 1회/);
     assert.equal((first.match(/class="paper-issue(?: is-cancelled)?"/g) || []).length, 6);
-    assert.match(first, /이전 출제 3개 더 보기/);
     assert.match(first, /<details class="paper-issues-older">/);
     assert.match(first, /제출 <strong>18<\/strong> \/ 24/);
     assert.match(second, /출제 1회/);
@@ -109,6 +109,8 @@ test("history is grouped by saved_paper_id: another paper's issues never mix in"
     const shown = first.split('<details class="paper-issues-older">')[0];
     assert.deepEqual([...shown.matchAll(/paper-issue-date">(\d+월 \d+일)</g)].map((m) => m[1]), ["11월 5일", "11월 4일", "11월 3일"]);
     assert.match(host.note, /최근 90일/);
+    // F4: the fold button says 접기 once open (the label swap is CSS; aria-expanded follows the element)
+    assert.match(first, /<summary aria-expanded="false"><span class="when-closed">이전 출제 3개 더 보기<\/span><span class="when-open">접기<\/span><\/summary>/);
   } finally { restore(); }
 });
 
@@ -171,8 +173,14 @@ test("a failed history leaves the list and its buttons working, and 다시 시�
     const host = makeHost();
     await freshLibrary().render(host, "", "ACTIVE");
     await tick();
-    assert.match(host.slots.get(pid(1)), /출제 이력을 불러오지 못했습니다/);
-    assert.match(host.slots.get(pid(1)), /data-library-action="history-retry">다시 시도/);
+    // One message above the list (not one per card); the cards' history areas are empty and hidden.
+    assert.match(host.note, /출제 이력을 불러오지 못했습니다/);
+    assert.match(host.note, /data-library-action="history-retry">다시 시도/);
+    assert.equal(host.slots.get(pid(1)), "");
+    assert.equal(host.slots.get(pid(2)), "");
+    assert.equal(host.hiddenSlots.get(pid(1)), true);
+    const failureTexts = (host.innerHTML + [...host.slots.values()].join("") + host.note).match(/불러오지 못했습니다/g) || [];
+    assert.equal(failureTexts.length, 1, "the failure is said once");
     assert.match(host.innerHTML, /문제지 1/);
     // the list keeps working while the history is down
     await host.onclick({ target: { closest: () => ({ dataset: { libraryAction: "distribute", paperId: pid(2) } }) }, preventDefault() {}, stopPropagation() {} });
@@ -182,6 +190,9 @@ test("a failed history leaves the list and its buttons working, and 다시 시�
     assert.equal(calls.filter((route) => route.startsWith(SUMMARY)).length, 2);
     assert.match(host.slots.get(pid(1)), /출제 1회/);
     assert.match(host.slots.get(pid(2)), /아직 출제하지 않았습니다/);
+    assert.equal(host.hiddenSlots.get(pid(1)), false);
+    assert.match(host.note, /최근 90일까지 보입니다/);
+    assert.doesNotMatch(host.note, /불러오지 못했습니다/);
   } finally { restore(); }
 });
 
@@ -198,7 +209,8 @@ test("the first draw says 확인 중 and a slow history never delays the list", 
     const result = await freshLibrary().render(host, "", "ACTIVE");
     assert.notEqual(result, false);
     assert.match(host.innerHTML, /문제지 1/);
-    assert.match(host.innerHTML, /출제 이력 확인 중…/);
+    assert.equal((host.innerHTML.match(/출제 이력 확인 중…/g) || []).length, 1, "'확인 중' appears once above the list, not on every card");
+    assert.match(host.innerHTML, /data-issue-slot data-paper-id="[^"]+" aria-label="[^"]*" hidden>/);
     assert.match(host.innerHTML, /data-library-action="distribute"/);
     slow.resolve({ assignments: [issue("a1", pid(1))] });
     await tick();

@@ -56,6 +56,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **출제 내역 줄(`view=recent`)**: 같은 `.exam-row` 구성요소, 날짜순, 책등에 출제 월·일과 대상 학년. 출처 표시는 `saved_paper_id`가 있으면 "보관함 문제지"(눌러 보관함의 그 문제지로), 없고 `archive_file`이 `MIXED:`로 시작하면 "단원별 기출", 그 밖의 파일이면 "학교 기출"이다. 기간·학년·반·과목·검색 필터와 포커스·늦은 응답 무시 규칙은 그대로다.
 - **학생별 확인**(`assignmentStatus`)은 출제 내역뿐 아니라 보관함 줄에서도 열린다(`isStatusView`). 보관함에서 열 때 `recentSelectedAssignmentId`를 비우는 이유: 이전 출제 내역 선택이 남아 있으면 응답이 현재 요청으로 인정되지 않았다.
 - **로그인 판정은 `archive/archive2-session.js` 한 곳**(교사·관리자·owner 역할, id `t_admin`, 로그인 id `admin`)이고 왼쪽 메뉴와 단원별 기출이 같이 쓴다. 교사가 아닌 계정이 로그인돼 있으면 메뉴에 "선생님 계정으로 로그인해 주세요"가 나온다. 서버가 `owner`를 거부하는 곳이 있어도 판정을 좁히지 않는다(기존 동작 유지). 단원별 기출 페이지는 시작할 때 인라인으로 `init()`을 부르므로 이 스크립트를 `defer` 없이 먼저 불러야 한다.
+- **로그인이 없을 때 화면(2026-11-10 조정)**: 교사 세션이 아니면(`teacherSessionOk`, 판정은 `archive2-session.js`) `view=saved`·`view=recent`는 API를 한 번도 부르지 않고 `data-login-notice` 안내 하나만 그린다(오류 아님, 알림·토스트 없음). 서버가 401/403을 줘도 같은 안내다. 그 밖의 오류는 본문에 한 번만 보이게 `error.archive2ShownInline`을 달아 `status()` 토스트가 같은 문장을 되풀이하지 않게 했다. 출제 이력 불러오기 실패·확인 중 문구는 카드마다가 아니라 목록 위 `data-history-note` 한 줄에만 둔다.
 - 새 파일을 만들면 `tools/archive-pages-release-manifest.json`의 `archiveRootFiles`에 올려야 학생·교사 사이트에 배포된다.
 
 ## 단원별 기출 선택 규칙 (2026-11-10 사용자 결정)

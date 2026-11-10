@@ -499,7 +499,9 @@ test('compact history markup separates drafts, preserves the detail action and e
   let markup = h.w.renderRecent();
   for (const filter of ['from', 'to', 'grade', 'subject', 'query']) assert.ok(markup.includes(`data-recent-filter="${filter}"`));
   assert.match(markup, /id="recent-class"/); assert.match(markup, /전체 반/);
-  assert.match(markup, /대상 중3/); assert.match(markup, /시험지 고1 · 공통수학1/);
+  // Calm one-line facts: the paper's grade is named only when it differs from the class's grade (중3 class, 고1 paper).
+  assert.match(markup, /시험지는 고1/); assert.match(markup, /<span>공통수학1<\/span>/);
+  assert.doesNotMatch(markup, /대상 중3|출제 번호 ·|PDF 준비 완료/);
   assert.match(markup, /<aside class="history-drafts"/);
   assert.match(markup, /학생별 확인/);
   assert.match(markup, /data-mode="exam" class="small"[^>]*>시험/);
@@ -646,7 +648,8 @@ test('history load failures do not display old-class cards as new results', asyn
   await assert.rejects(h.w.loadRecent(), /test list unavailable/);
   assert.equal(h.w.state.recentRows.length, 0);
   assert.doesNotMatch(h.w.recentAssignmentMarkup(), /test list unavailable/);
-  assert.match(h.w.recentAssignmentMarkup(), /history-result-state">작업을 처리하지 못했습니다/);
+  assert.match(h.w.recentAssignmentMarkup(), /history-result-state" role="alert">작업을 처리하지 못했습니다/);
+  assert.match(h.w.recentAssignmentMarkup(), /data-action="recent-retry"[^>]*>다시 시도/);
 });
 test('Korean IME title search applies at compositionend and leaves unrelated filters untouched', async () => {
   const h = recentHarness(); const f = historyFixture(h); h.w.state.recentRows = f.rows; h.w.state.recentClassId = '';

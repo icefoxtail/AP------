@@ -223,10 +223,7 @@
     return `<li class="paper-issue${issue.cancelled ? " is-cancelled" : ""}"><span class="paper-issue-class">${esc(klass)}</span>${date ? `<span class="paper-issue-date">${esc(date)}</span>` : ""}${issue.cancelled ? '<span class="paper-issue-cancelled">취소됨</span>' : progress}<button type="button" class="paper-issue-check" data-library-action="issue-status" data-assignment-id="${esc(issue.id)}" aria-label="${esc(klass)} ${esc(date)} 출제 학생별 확인">학생별 확인</button></li>`;
   }
   function issuesMarkup(paperId, history) {
-    if (!history || history.state === "loading")
-      return '<p class="paper-issues-note" role="status">출제 이력 확인 중…</p>';
-    if (history.state === "error")
-      return '<p class="paper-issues-note is-error" role="alert">출제 이력을 불러오지 못했습니다. <button type="button" class="paper-issues-retry" data-library-action="history-retry">다시 시도</button></p>';
+    if (!history || history.state !== "ready") return "";
     const rows = history.byPaper.get(String(paperId)) || [];
     if (!rows.length) return '<p class="paper-issues-note">아직 출제하지 않았습니다.</p>';
     const active = rows.filter((row) => !row.cancelled).length;
@@ -236,11 +233,16 @@
       : `출제 없음 · 취소 ${cancelled}회`;
     const recent = rows.slice(0, HISTORY_VISIBLE), older = rows.slice(HISTORY_VISIBLE);
     return `<p class="paper-issues-summary">${esc(summary)}</p><ul class="paper-issue-list">${recent.map(issueRowMarkup).join("")}</ul>${older.length
-      ? `<details class="paper-issues-older"><summary>이전 출제 ${older.length}개 더 보기</summary><ul class="paper-issue-list">${older.map(issueRowMarkup).join("")}</ul></details>`
+      ? `<details class="paper-issues-older"><summary aria-expanded="false"><span class="when-closed">이전 출제 ${older.length}개 더 보기</span><span class="when-open">접기</span></summary><ul class="paper-issue-list">${older.map(issueRowMarkup).join("")}</ul></details>`
       : ""}`;
   }
+  // The one line above the list: what the history covers, that it is loading, or that it failed (with 다시 시도).
   function historyNoteMarkup(history) {
-    return history?.truncated
+    if (history?.state === "error")
+      return '<span class="is-error" role="alert">출제 이력을 불러오지 못했습니다.</span> <button type="button" class="paper-issues-retry" data-library-action="history-retry">다시 시도</button>';
+    if (!history || history.state === "loading")
+      return `<span role="status">출제 이력 확인 중… (최근 ${HISTORY_DAYS}일까지 보입니다)</span>`;
+    return history.truncated
       ? `출제 이력은 최근 ${HISTORY_DAYS}일까지 보입니다. 출제가 매우 많아 일부는 보이지 않을 수 있습니다.`
       : `출제 이력은 최근 ${HISTORY_DAYS}일까지 보입니다.`;
   }
@@ -279,7 +281,7 @@
       <div class="exam-row-spine"><span class="exam-row-grade">${esc(paper.grade || "")}</span><span class="exam-row-year">${esc(count)}</span><span class="exam-row-unit">문항</span></div>
       <div class="exam-row-main"><h2 class="saved-row-title">${esc(title)}</h2><div class="exam-row-meta">${meta}${stateBadge}</div></div>
       ${actions}
-      ${trashed ? "" : `<div class="paper-issues" data-issue-slot data-paper-id="${id}" aria-label="${esc(title)} 출제 이력">${issuesMarkup(paper.id, history)}</div>`}
+      ${trashed ? "" : `${(() => { const body = issuesMarkup(paper.id, history); return `<div class="paper-issues" data-issue-slot data-paper-id="${id}" aria-label="${esc(title)} 출제 이력"${body ? "" : " hidden"}>${body}</div>`; })()}`}
     </article>`;
   }
 
@@ -288,15 +290,15 @@
     const cards = papers.map((paper) => paperRowMarkup(paper, withHistory)).join("");
     const tabs = [["ACTIVE", "내 보관함"], ["ARCHIVED", "보관"], ["TRASHED", "휴지통"]];
     const emptyCopy = statusFilter === "ACTIVE"
-      ? "저장한 시험지가 없습니다. 문제지 만들기에서 시험지를 저장해 주세요."
-      : statusFilter === "ARCHIVED" ? "보관한 시험지가 없습니다." : "휴지통이 비어 있습니다.";
+      ? "저장한 문제지가 없습니다. 문제지 만들기에서 문제지를 저장해 주세요."
+      : statusFilter === "ARCHIVED" ? "보관한 문제지가 없습니다." : "휴지통이 비어 있습니다.";
     const note = HISTORY_STATUSES.includes(statusFilter) && papers.length
-      ? `<p class="muted saved-library-history-note" data-history-note>${esc(historyNoteMarkup(history))}</p>` : "";
-    return `<div class="saved-library">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<div class="intro"><div><h1>보관함</h1><p class="muted">저장한 시험지를 다시 열어 출력하거나 반에 출제하고, 누구에게 언제 냈는지 바로 확인합니다.</p></div><a class="button-like primary" href="workspace.html?view=compose">문제지 만들기</a></div>
+      ? `<p class="muted saved-library-history-note" data-history-note>${historyNoteMarkup(history)}</p>` : "";
+    return `<div class="saved-library">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<div class="intro"><div><h1>보관함</h1><p class="muted">저장한 문제지를 다시 열어 출력하거나 반에 출제하고, 누구에게 언제 냈는지 바로 확인합니다.</p></div><a class="button-like primary" href="workspace.html?view=compose">문제지 만들기</a></div>
       ${message ? `<p class="callout" role="status" aria-live="polite">${esc(message)}</p>` : ""}
       <div class="actions" role="tablist" aria-label="보관함 상태">${tabs.map(([value, label]) => `<button type="button" data-library-action="status" data-status="${value}" class="${statusFilter === value ? "active" : ""}">${label}</button>`).join("")}</div>
       ${note}
-      <section class="saved-paper-list exam-rows" aria-label="저장한 시험지 목록">${cards || `<div class="empty">${emptyCopy}</div>`}</section>
+      <section class="saved-paper-list exam-rows" aria-label="저장한 문제지 목록">${cards || `<div class="empty">${emptyCopy}</div>`}</section>
       ${cursor ? '<div class="actions saved-library-more"><button type="button" data-library-action="more">더 불러오기</button></div>' : ""}</div>`;
   }
 
@@ -309,9 +311,11 @@
       return;
     }
     host.querySelectorAll("[data-issue-slot]").forEach((slot) => {
-      slot.innerHTML = issuesMarkup(slot.dataset?.paperId, history);
+      const body = issuesMarkup(slot.dataset?.paperId, history);
+      slot.innerHTML = body;
+      slot.hidden = !body;
     });
-    host.querySelectorAll("[data-history-note]").forEach((note) => { note.textContent = historyNoteMarkup(history); });
+    host.querySelectorAll("[data-history-note]").forEach((note) => { note.innerHTML = historyNoteMarkup(history); });
   }
 
   let historyRequestSeq = 0;
@@ -364,7 +368,7 @@
   async function render(host, paperId = "", statusFilter = "ACTIVE", options = {}) {
     if (!host) return;
     const version = ++libraryViewVersion;
-    host.innerHTML = '<div class="panel loading" role="status">저장한 시험지를 불러오고 있습니다.</div>';
+    host.innerHTML = '<div class="panel loading" role="status">저장한 문제지를 불러오고 있습니다.</div>';
     const client = apiClient();
     if (paperId) {
       let data;
@@ -532,6 +536,14 @@
         ownerDocument.querySelectorAll(".saved-paper-more[open]").forEach((menu) => { menu.open = false; });
       });
       outsideCloseDocument = ownerDocument;
+    }
+    if (typeof host.addEventListener === "function" && !host.archive2ToggleBound) {
+      host.archive2ToggleBound = true;
+      host.addEventListener("toggle", (event) => {
+        const summary = event.target?.querySelector?.(":scope > summary");
+        if (summary && event.target.classList?.contains("paper-issues-older"))
+          summary.setAttribute("aria-expanded", String(Boolean(event.target.open)));
+      }, true);
     }
     host.onclick = async (event) => {
       if (!event.target.closest(".saved-paper-more"))

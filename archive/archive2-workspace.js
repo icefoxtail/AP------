@@ -3133,6 +3133,7 @@
       .filter(Boolean);
   }
   function renderRecent() {
+    if (!teacherSessionOk()) return loginNoticeMarkup("recent");
     const list = drafts(), f = state.recentFilters;
     return `<div class="history-surface">${window.Archive2Navigation?.libraryTabs?.("recent") || ""}<div class="intro history-intro"><div><h1>출제 내역</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
       <section class="panel history-panel" aria-labelledby="history-heading"><div class="history-heading"><h2 id="history-heading">최근 출제</h2></div>
@@ -3147,7 +3148,7 @@
   }
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
-    if (state.recentError) return `<p class="error history-result-state">${esc(teacherErrorMessage(state.recentError))}</p>`;
+    if (state.recentError) return `<p class="error history-result-state" role="alert">${esc(teacherErrorMessage(state.recentError))} ${button("recent-retry", "다시 시도", 'class="small"')}</p>`;
     const rows = History.filterAssignments(state.recentRows, {
       ...state.recentFilters, classId: state.recentClassId,
     });
@@ -3157,24 +3158,24 @@
     const ordered = History.groupByDate(rows).flatMap((group) => group.rows);
     if (!ordered.length) return '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
     return `<div class="exam-rows history-rows">${ordered.map((a) => {
-        const paperMeta = [a.contentGrade, a.subjectLabel].filter(Boolean).join(" · ");
         const source = recentSourceOf(rawById.get(a.id));
         const progress = a.submittedCount !== null && a.recipientCount !== null
           ? [`제출 ${a.submittedCount}/${a.recipientCount}`]
           : [a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
             a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`];
+        // The spine and the class name already say the students' grade; the paper's grade is named only when it differs.
+        const otherGrade = a.contentGrade && a.targetGrade && a.contentGrade !== a.targetGrade
+          ? `시험지는 ${a.contentGrade}` : "";
         const metadata = [a.className, ...progress,
           a.questionCount === null ? "" : `${a.questionCount}문항`,
-          a.targetGrade ? `대상 ${a.targetGrade}` : "",
-          paperMeta ? `시험지 ${paperMeta}` : "",
-          `출제 번호 · ${a.id}`].filter(Boolean);
+          a.subjectLabel, otherGrade].filter(Boolean);
       const lifecycle = [
         a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
         a.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(a.replacementAssignmentId)}</span>` : "",
         a.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(a.replacesAssignmentId)}</span>` : "",
         a.isReviewOnly ? `<span class="history-state-chip review-only">열람 전용${a.reviewOnlyCount === null ? "" : ` · ${a.reviewOnlyCount}명`}</span>` : "",
       ].filter(Boolean).join("");
-      const pdfLabel = a.pdfReady ? "PDF 준비 완료" : a.pdfStatus === "failed"
+      const pdfLabel = a.pdfReady ? "" : a.pdfStatus === "failed"
         ? "PDF 준비 실패" : a.pdfStatus === "generating" ? "PDF 준비 중" : "PDF 준비 필요";
       const pdfRetryPending = recentPdfRetryIds.has(String(a.id));
       const pdfRetry = !a.pdfReady && a.pdfStatus !== "generating"
@@ -3185,7 +3186,7 @@
         : `<span class="history-source">${esc(source.label)}</span>`;
       const day = /^\d{4}-(\d{2})-(\d{2})$/.exec(a.date);
       const spineDate = day ? [`${Number(day[1])}월`, String(Number(day[2]))] : ["", "–"];
-      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(a.title)}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `<span${index === 0 && value === a.className ? ' class="history-class"' : value.startsWith("출제 번호") ? ' class="history-id"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}<div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div></div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></article>`;
+      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}" title="출제 번호 ${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(a.title)}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `${index ? '<span aria-hidden="true">·</span>' : ""}<span${index === 0 && value === a.className ? ' class="history-class"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}${pdfLabel ? `<div class="history-pdf-actions"><span class="history-pdf">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div>` : ""}</div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></article>`;
       }).join("")}</div>`;
   }
   // Where an assignment came from: a saved paper (link back to 보관함), a school exam, or 단원별 기출.
@@ -3306,6 +3307,8 @@
     return next;
   }
   function isCurrentAuthorityError(error) {
+    // A failure the list already shows (or the login notice) is never announced a second time.
+    if (error?.archive2ShownInline) return false;
     const authority = error?.archive2Authority;
     if (authority?.kind === "recent")
       return recentRequestIsCurrent(authority.version, authority.view, authority.selection);
@@ -3334,6 +3337,14 @@
   }
   async function loadRecent() {
     if (state.view !== "recent") return false;
+    if (!teacherSessionOk()) {
+      state.recentLoading = false;
+      state.recentError = "";
+      state.recentAuth = true;
+      showLoginNotice("recent");
+      return false;
+    }
+    state.recentAuth = false;
     if (recentRefetchTimer !== null) {
       clearTimeout(recentRefetchTimer);
       recentRefetchTimer = null;
@@ -3380,6 +3391,10 @@
     } catch (error) {
       if (!isCurrentRequest()) return false;
       state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
+      state.recentAuth = isAuthError(error);
+      if (state.recentAuth) showLoginNotice("recent");
+      // The list shows this failure (or the login notice); callers must not raise a second alert for it.
+      try { error.archive2ShownInline = true; } catch {}
       throw recentAuthorityError(error, {
         version,
         view: requestedView,
@@ -3683,6 +3698,26 @@
       renderTaxonomyRowsCache = null;
     }
   }
+  // 보관함 and 출제 내역 are teacher-only. A session that is not a teacher's (none, expired, student, parent) is
+  // not an error: the screen says so once and never calls the API. Without archive2-session.js nothing is judged.
+  function teacherSessionOk() {
+    const rule = window.Archive2Session;
+    if (!rule?.state) return true;
+    const memory = window.__APMATH_AUTH_MEMORY || {};
+    if (memory.login_id && memory.raw_password) return true;
+    return rule.state(session()).loggedIn;
+  }
+  const isAuthError = (error) => error?.status === 401 || error?.status === 403;
+  function loginNoticeMarkup(kind) {
+    const saved = kind === "saved";
+    return `<section class="panel login-notice" data-login-notice="${kind}">${window.Archive2Navigation?.libraryTabs?.(kind) || ""}<h1>${saved ? "보관함" : "출제 내역"}</h1><p>선생님 계정으로 로그인하면 ${saved ? "보관함" : "출제 내역"}을 볼 수 있습니다.</p><p><a class="button-like primary" href="../apmath/" target="_blank" rel="noopener">선생님 로그인</a></p><p class="muted">로그인한 뒤 이 화면으로 돌아오면 됩니다.</p></section>`;
+  }
+  function showLoginNotice(kind) {
+    hideErrorToast();
+    $("status").textContent = "";
+    $("status").classList.remove("error");
+    $("content").innerHTML = loginNoticeMarkup(kind);
+  }
   function renderContent() {
     noteRenderedViewTransition();
     if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
@@ -3693,16 +3728,25 @@
         button.classList.toggle("active", navViewActive(button));
         button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
       });
+      if (!teacherSessionOk()) {
+        window.Archive2Library?.invalidatePendingRequests?.();
+        showLoginNotice("saved");
+        return;
+      }
       window.Archive2Library.render(
         $("content"),
         state.savedPaperId || "",
         state.savedLibraryStatusFilter || "ACTIVE",
       )
-        .then((result) => { if (result !== false) status("저장한 시험지를 불러왔습니다."); })
         .catch((error) => {
-          const loginNeeded = error?.status === 401 || error?.status === 403 || /로그인/.test(String(error?.message || ""));
-          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p>${loginNeeded ? '<p><a class="button-like primary" href="../apmath/" target="_blank" rel="noopener">선생님 로그인</a> 로그인한 뒤 이 화면으로 돌아와 새로고침해 주세요.</p>' : ""}<a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
-          status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);
+          if (state.view !== "saved") return;
+          // Not signed in as a teacher (or the session expired): one notice. Anything else: one alert with a retry.
+          if (isAuthError(error) || /교사 로그인이 필요/.test(String(error?.message || ""))) {
+            showLoginNotice("saved");
+            return;
+          }
+          hideErrorToast();
+          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "문제지를 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."))}</p><p><button type="button" class="primary" data-action="library-reload">다시 시도</button></p></section>`;
         });
       return;
     }
@@ -4695,6 +4739,14 @@
         await openRecentAssignmentStatus(b.dataset.assignment);
         return;
       }
+      if (a === "library-reload") {
+        render();
+        return;
+      }
+      if (a === "recent-retry") {
+        await loadRecent().catch(() => false);
+        return;
+      }
       if (a === "recent-open-saved") {
         // 출제 내역 row made from a saved paper: back to that paper in 보관함.
         invalidateRecentRequests();
@@ -5602,6 +5654,14 @@
     }
   });
   window.addEventListener("pagehide", save);
+  // A login made in another tab: coming back to a login notice shows the real screen.
+  function resumeAfterLogin() {
+    if (document.hidden || !document.querySelector?.("[data-login-notice]") || !teacherSessionOk()) return;
+    render();
+    if (state.view === "recent") loadRecent().catch(() => false);
+  }
+  document.addEventListener("visibilitychange", resumeAfterLogin);
+  window.addEventListener("storage", (event) => { if (!event.key || event.key === "APMATH_SESSION") resumeAfterLogin(); });
   window.addEventListener("popstate", async () => {
     state.assignmentStatusLoadVersion++;
     const previousSelection = state.recentSelectedAssignmentId;
@@ -5863,7 +5923,6 @@
     const savedOnBoot = state.view === "saved";
     if (savedOnBoot) {
       render();
-      status("저장한 시험지를 서버에서 불러오고 있습니다.");
     }
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
@@ -5900,7 +5959,7 @@
       if (state.uidRoute?.error) status(state.uidRoute.error, true);
       if (!(savedOnBoot && state.view === "saved")) render();
       // The catalog totals live on the "자료 점검" screen; the status line only reports progress and problems.
-      if (!state.uidRoute?.error) status(state.view === "saved" ? "저장한 시험지를 불러왔습니다." : "");
+      if (!state.uidRoute?.error) status("");
       const previous = drafts();
       if (state.view === "recent") {
         const selectedAssignmentId = state.recentSelectedAssignmentId;
