@@ -1253,7 +1253,7 @@ window.questionBank = [
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
     },
     "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 내접하는 오각형 ABCDE에서 ∠ABC=100°, 중심각 ∠COD=50°를 표시한 그림.",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 꼭짓점이 A, B, C, D, E인 오각형에서 ∠ABC=100°, 중심각 ∠COD=50°를 표시한 그림.",
     "solutionImageCaption": "∠ABC=100°가 보는 호 AEDC는 200°이고, 호 CD=50°이므로 점 E를 지나는 호 AD는 150°이다. 점 E를 포함하지 않는 호 AD는 360°−150°=210°이다. ∠AED는 이 호를 보는 원주각이므로 그 절반이다. 정답은 105°이다.",
     "solutionImageSize": "full"
   },
