@@ -69,11 +69,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q001_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 선분 AB=a의 양 끝점 A, B에서 각각 ∠A, ∠B를 작도해 두 반직선이 만나는 점 C로 삼각형 ABC를 완성한 그림.",
-    "solutionImageCaption": "한 변 AB와 양 끝각 ∠A, ∠B로 정해지는 삼각형 ABC",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q001_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 길이가 a인 선분 AB의 양 끝점 A, B에서 각각 파란 호의 ∠A와 주황 호의 ∠B를 그렸을 때, 두 반직선이 만나는 점 C로 삼각형 ABC가 만들어지는 그림.",
+    "solutionImageCaption": "한 변 AB와 그 양 끝각 ∠A, ∠B로 삼각형을 작도할 때는 각의 꼭짓점이 될 점 A, B가 먼저 정해져 있어야 한다. 그래서 ∠B만 그린 뒤 아직 점 A를 정하지 않은 채 ∠A를 먼저 작도하는 순서는 성립하지 않는다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -145,7 +145,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": []
+    "itemHoldReasons": [],
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 길이 12 cm인 선분 AB의 양 끝점 A, B를 중심으로 반지름 6 cm인 두 원을 그린 그림. 두 원은 선분 AB의 중점 M에서 한 점으로만 만난다.",
+    "solutionImageCaption": "눈금 없는 자로는 길이를 잴 수 없고 컴퍼스로 길이를 옮긴다. 세 변이 12 cm, 6 cm, 6 cm이면 A, B를 중심으로 반지름 6 cm인 두 원이 선분 AB의 중점 M에서 맞닿기만 하므로 꼭짓점이 생기지 않아 삼각형을 만들 수 없다(6+6=12). 정답은 ②, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -211,11 +215,11 @@ window.questionBank = [
     "tagStatus": "reviewed_repair",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 DEF를 나란히 놓고 대응변 AB=DE=4 cm, BC=EF=5 cm와 대응각 ∠B=∠E=48°를 같은 표식으로 나타낸 그림.",
-    "solutionImageCaption": "△ABC≡△DEF의 대응변과 대응각",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 합동인 두 삼각형 ABC와 DEF에서 대응하는 변과 각을 같은 색·같은 눈금으로 묶은 그림. AB와 DE는 파랑 눈금 1개, BC와 EF는 주황 눈금 2개, AC와 DF는 초록 눈금 3개이며, 각 B와 각 E는 같은 분홍색 호이고 각 B에 48°가 적혀 있다.",
+    "solutionImageCaption": "△ABC≡△DEF에서 대응하는 꼭짓점은 A↔D, B↔E, C↔F이다. 따라서 AB=DE=4 cm, BC=EF=5 cm, AC=DF이고 ∠E=∠B=48°이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -281,11 +285,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q004_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q4-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 오각기둥 ABCDE-FGHIJ를 문제와 같은 배치로 그리고, 모서리 BC는 굵게, 모서리 EJ는 빨간색으로 강조했으며 보이지 않는 모서리 AF, FG, FJ는 점선으로 나타낸 그림",
-    "solutionImageCaption": "오각기둥에서 모서리 BC와 EJ는 만나지도 평행하지도 않는 꼬인 위치에 있다",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q004_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q4-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 같은 오각기둥 두 개. 왼쪽은 모서리 BC를 굵게, BC와 한 점에서 만나는 모서리 AB, BG, CH, CD를 빨간색으로 나타냈고, 오른쪽은 모서리 BC를 굵게, BC와 평행한 모서리 GH를 빨간색으로 나타낸 그림.",
+    "solutionImageCaption": "BC와 AB, BG, CH, CD는 한 점에서 만나고 GH는 BC와 평행하다. 나머지 모서리 중 만나지도 평행하지도 않은 모서리는 EJ뿐이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -356,11 +360,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q005_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 변 6 cm와 각 75°, 40°가 주어진 삼각형에 나머지 한 각 65°를 표시해 6 cm 변의 양 끝각이 40°와 65°임을 보여 주는 그림.",
-    "solutionImageCaption": "나머지 각 65°와 6 cm 변의 양 끝각 40°, 65°",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q005_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 문제와 같은 삼각형에 아래 꼭짓점의 나머지 각 65°를 주황색 호로 더한 그림. 6 cm인 변은 굵게 표시되어 그 양 끝각이 40°와 65°임을 보여 준다.",
+    "solutionImageCaption": "나머지 한 각은 180°−75°−40°=65°이다. 6 cm인 변의 양 끝각이 40°, 65°로 정해지므로 삼각형은 하나로 정해지고, 세 각이 모두 달라 이등변삼각형도 아니다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -503,10 +507,10 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q7-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 반비례 관계 y=b/x의 그래프 위의 점 P에서 x축, y축에 내린 수선의 발 A, B와 원점 O로 만든 직사각형 OAPB를 색칠하고 그 넓이 b를 안에 적은 그림.",
-    "solutionImageCaption": "직사각형 OAPB의 넓이는 b이다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q7-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 반비례 관계 y=b/x의 그래프(제1사분면과 제3사분면의 두 곡선) 위의 점 P에서 x축, y축에 내린 수선의 발 A, B와 원점 O로 이루어진 직사각형 OAPB를 회색으로 칠하고, 그 안에 b를 적은 그림.",
+    "solutionImageCaption": "반비례 그래프 위의 점 P에서 좌표축에 수선을 내리면 직사각형 OAPB의 가로는 x, 세로는 b/x이므로 넓이는 x와 b/x의 곱 b이다. 따라서 b가 커지면 넓이도 커진다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -576,10 +580,10 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 반비례 관계 y=-80/x의 그래프가 제2사분면과 제4사분면을 지나며 점 (-4, 20)과 (4, -20)을 지나는 그림.",
-    "solutionImageCaption": "y=-80/x의 그래프",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반비례 관계 y=-80/x의 그래프. 곡선이 제2사분면과 제4사분면에 있고 두 점 (-4, 20)과 (4, -20)이 표시되어 있다.",
+    "solutionImageCaption": "반비례식은 xy=k이고 (-4)×20=-80이므로 y=-80/x이다. x=4이면 y=-20이고, 비례상수가 음수여서 그래프는 제2사분면과 제4사분면을 지난다. 옳은 것은 ㄹ 하나뿐이므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -651,11 +655,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q009_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q9-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 평행한 두 직선 m, n과 두 직선이 이루는 삼각형에서, 세 직선이 만나는 점의 두 각 a, b가 아래쪽 두 꼭짓점의 50°, 60°와 엇각으로 같음을 같은 호 표시로 나타낸 그림.",
-    "solutionImageCaption": "평행선 m, n에서 엇각으로 a=50°, b=60°",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q009_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q9-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 문제와 같은 그림에서 각 a와 50°의 호를 같은 파란색으로, 각 b와 60°의 호를 같은 주황색으로 칠해 엇각으로 같은 짝을 보여 주는 그림.",
+    "solutionImageCaption": "m∥n이므로 엇각의 크기가 같다. ∠a는 50°인 각과, ∠b는 60°인 각과 각각 엇각이므로 a=50°, b=60°이고 b−a=10°이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -724,7 +728,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": []
+    "itemHoldReasons": [],
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 일의 양을 가로(시간)×세로(기계 수)인 직사각형의 넓이로 나타낸 그림. 왼쪽은 세로 24대, 가로 5시간과 15시간으로 나뉜 직사각형으로 앞부분(120)은 파란색, 남은 부분(360)은 주황색이다. 오른쪽은 가로 10시간, 세로 36대로 넓이가 360인 주황색 직사각형이다. 가로 길이는 시간을 일정한 비율로 늘려 그렸다.",
+    "solutionImageCaption": "한 대가 한 시간에 하는 일을 1로 두면 일의 양은 기계 수×시간이다. 전체는 24×20=480이고 처음 5시간에 24×5=120을 했으므로 남은 일은 360이다. 이를 10시간에 끝내려면 기계가 360÷10=36대 필요하고, 이미 24대가 있으므로 36−24대를 더 투입한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -795,11 +803,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 각 변의 중점 E, F, G, H를 이은 그림에서 같은 눈금의 변과 같은 호의 각을 표시하고, 합동인 네 귀퉁이 삼각형 AEH와 CGF, EBF와 GDH를 같은 색으로 칠한 그림.",
-    "solutionImageCaption": "중점으로 만든 네 귀퉁이 삼각형의 SAS 합동",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 세 장의 그림. 왼쪽 위는 평행사변형 ABCD에서 중점으로 나뉜 변에 같은 눈금(AE, EB, CG, GD는 1개, AH, HD, BF, FC는 2개)을 표시하고 귀퉁이 삼각형 AEH와 CGF는 파란색, EBF와 GDH는 주황색으로 칠한 그림이다. 오른쪽 위와 아래는 합동인 두 삼각형 AEH와 CGF, EBF와 GDH를 각각 떼어 같은 방향으로 나란히 놓고 같은 눈금과 같은 색의 각을 표시한 그림이다.",
+    "solutionImageCaption": "평행사변형에서 AB=CD, AD=BC이고 E, F, G, H가 중점이므로 AE=CG, AH=CF이다. 또 ∠A=∠C이므로 △AEH≡△CGF(SAS)이고, 같은 방법으로 △EBF≡△GDH(SAS)이며 이로부터 EF=GH를 얻는다. EH∥FG이지만 EFGH가 항상 마름모인 것은 아니다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -872,11 +880,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에서 AB와 CD가 점 O에서 만나는 그림에서 엇각 ∠CAO=∠DBO, ∠ACO=∠BDO를 같은 호로, AC=BD를 같은 눈금으로 표시하고 삼각형 AOC와 BOD를 색칠한 그림.",
-    "solutionImageCaption": "엇각과 AC=BD로 만드는 △AOC≡△BOD",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 두 장의 그림. 왼쪽은 평행한 두 직선 l, m 사이에서 엇각으로 같은 ∠CAO와 ∠DBO를 파란 호로, ∠ACO와 ∠BDO를 주황 호로 표시하고 삼각형 AOC와 BOD를 칠한 문제 그림이다. 오른쪽은 삼각형 AOC와 BOD를 떼어 같은 방향으로 나란히 놓고 같은 색의 호로 같은 각을 표시한 그림이다.",
+    "solutionImageCaption": "l∥m이므로 엇각이 같아 ∠CAO=∠DBO, ∠ACO=∠BDO이다. 여기에 두 각 사이의 변 AC=BD가 주어지면 한 변과 그 양 끝각이 각각 같으므로 △AOC≡△BOD(ASA)이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -947,11 +955,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q013_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q13-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾은선에 꺾인 점마다 평행 보조선(점선)을 그어 엇각이 같은 30°, 20°, 80°를 호로 표시하고 100°와 x가 놓인 각을 보여 주는 그림.",
-    "solutionImageCaption": "평행 보조선과 엇각으로 구하는 ∠x",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q013_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q13-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 문제 그림의 두 꺾인 점에서 l, m에 평행한 점선 보조선을 그은 그림. 엇각으로 같은 30°를 초록색, 20°를 파란색, 80°를 주황색 호로 표시하고 아래 꺾인 점의 100°는 20°와 80°로 나뉘며, 위 꺾인 점의 ∠x는 바깥 호로 나타냈다.",
+    "solutionImageCaption": "두 꺾인 점에서 l, m에 평행한 보조선을 그으면 엇각이 같다. 아래 꺾인 점의 100°는 20°와 80°로 나뉘므로 가운데 선분은 수평선과 80°를 이룬다. 위 꺾인 점에서 ∠x=(180°−80°)+30°이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1022,11 +1030,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 반비례 y=a/x의 그래프(제1사분면)와 그 아래쪽의 자연수 좌표 점 16개가 열마다 찍혀 있고, x축 아래에 열별 개수 7, 3, 2, 1, 1, 1, 1이 적혀 있는 그림.",
-    "solutionImageCaption": "y=a/x의 그래프 아래쪽(그래프 위의 점은 제외)에서 자연수 좌표 점을 x=1, 2, …, 7인 열마다 세면 7+3+2+1+1+1+1=16개이다.",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면에 반비례 y=a/x의 그래프가 있고, x축과 y축에 눈금이 1부터 8까지 표시되어 있다. 그래프 아래쪽에는 자연수 좌표의 점이 x=1, 2, …, 7인 열마다 7개, 3개, 2개, 1개, 1개, 1개, 1개 찍혀 있고, x축 아래 줄에 \"열별 개수\"라는 이름과 함께 각 열의 개수가 적혀 있다. 그래프 위에 놓인 격자점 네 개에는 \"제외\"라고 표시되어 있다.",
+    "solutionImageCaption": "그래프 아래쪽의 자연수 좌표 점은 xy<a를 만족한다(그래프 위의 점은 제외). a=8일 때 x=1, 2, …, 7인 열마다 세면 7+3+2+1+1+1+1=16개이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1099,11 +1107,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q015_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 두 직선 l, m이 직선 n과 만나는 그림에서 위 교점의 95°와 맞꼭지각 ∠b를 같은 호로 표시하고, 아래 교점의 ∠d를 따로 표시해 ∠d와 ∠b가 엇각 위치임을 보여 주는 그림.",
-    "solutionImageCaption": "맞꼭지각 ∠b=95°와 ∠d의 엇각 위치",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q015_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 두 패널. 왼쪽은 위쪽 교점에서 95° 각과 맞꼭지각 위치인 ∠b를 같은 파란색 호로 표시했고, 오른쪽은 ∠d와 ∠b를 같은 회색 부채꼴로 표시해 두 각이 엇각 위치임을 보여 준다.",
+    "solutionImageCaption": "위 교점에서 ∠b는 95°의 맞꼭지각이므로 ∠b=95°이다. ∠d와 엇각인 각은 ∠b이므로 구하는 크기는 95°이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1388,10 +1396,10 @@ window.questionBank = [
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.svg",
     "imageSize": "full",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 스마트폰 사용 시간 20명의 줄기와 잎 그림에서 작은 쪽 10번째와 11번째 잎 a, b를 동그라미로 표시하고, 줄기 0의 5~10시간 잎 7, 8, 9를 도수 3으로, 줄기 2의 20~25시간 잎 3을 도수 1로 괄호 묶어 보여 준다.",
-    "solutionImageCaption": "중앙값은 크기 순 10번째와 11번째 값 10+a, 10+b의 평균이고, 5~10시간은 3명, 20~25시간은 1명이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 스마트폰 사용 시간 20명의 줄기와 잎 그림에서 크기 순 10번째와 11번째 잎인 a, b를 동그라미로 표시하고, 줄기 0의 5시간 이상 10시간 미만 잎 7, 8, 9를 괄호로 묶어 도수 3으로, 줄기 2의 20시간 이상 25시간 미만 잎 3을 괄호로 묶어 도수 1로 나타낸 그림.",
+    "solutionImageCaption": "20개 자료의 중앙값은 크기 순 10번째와 11번째 값 10+a, 10+b의 평균이므로 (20+a+b)/2=16에서 a+b=12이다. 5~10시간은 3명이므로 A=3, 20~25시간은 1명이므로 B=1이다. 따라서 a+b+A+B=16이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1463,6 +1471,10 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 스마트폰 사용 시간 20명의 줄기와 잎 그림에서 줄기 0의 잎 1, 1, 3, 3을 괄호로 묶어 도수 4로, 줄기 3의 잎 0, 0, 1, 1, 1을 괄호로 묶어 도수 5로 나타낸 그림.",
+    "solutionImageCaption": "줄기와 잎에서 계급별 도수를 직접 세면 0~5시간은 4명, 30~35시간은 5명이다. 도수가 가장 높은 계급이 0~5시간이라는 설명이 옳지 않다. 정답은 ②이다.",
+    "solutionImageSize": "full",
       },
   {
     "id": 21,
@@ -1527,7 +1539,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q021_visual.png",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q021_question-v2.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q21-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 한 점 O에서 만나는 세 직선에서 맞꼭지각인 ∠AOF와 ∠EOB를 같은 호로 표시해, 직선 CD 아래쪽의 세 각 (2x+2)°, (5x+17)°, (59-x)°가 한 직선 위에 모이는 모양을 보여 주는 그림.",
     "solutionImageCaption": "직선 CD 아래쪽 세 각의 합이 180°",
@@ -1597,12 +1609,12 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_visual.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_question-v2.svg",
     "imageSize": "large",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q22-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에서 직선 y=5/6x, y=-1/2x가 y=-5와 만나는 점 A(-6,-5), B(10,-5)와 선분 AB를 3:1로 나누는 점 K를 나타내고, AK=12, KB=4와 점 K에서 x축에 내린 수선(직각 표시)을 보여 주는 그림.",
-    "solutionImageCaption": "A, B, K와 K에서 x축에 내린 수선",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q22-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 y=-5를 대입해 얻은 두 점 A(-6,-5), B(10,-5)의 좌표를 표시하고, 선분 AB를 AK:KB=3:1로 나누는 점 K에서 x축에 내린 수선을 직각 표시가 있는 점선으로 나타낸 그림.",
+    "solutionImageCaption": "y=-5를 두 정비례식에 대입하면 A(-6,-5), B(10,-5)이므로 AB=16이다. AK:KB=3:1이므로 K는 A에서 B 쪽으로 3/4만큼 간 점이라 K(6,-5)이다. K에서 x축에 내린 수선의 발은 (6,0)이다. 정답은 (a) 16, (b) (6,-5), (c) (6,0)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1669,10 +1681,10 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 정삼각형 ABC에서 BD=CE인 점 D, E를 잡고 AD와 BE의 교점을 P라 한 그림에 BD=CE 눈금, 합동인 삼각형 ABD와 BCE 색칠, 같은 각 α와 60°, ∠APB=120°와 ∠APE를 표시한 그림.",
-    "solutionImageCaption": "△ABD≡△BCE로 얻는 α와 ∠APB=120°",
-    "solutionImageSize": "medium"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_question-v2.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 두 패널. 왼쪽은 정삼각형 ABC에서 BD=CE인 점 D, E와 선분 AD, BE의 교점 P를 그리고, 삼각형 ABD와 BCE를 회색으로 칠해 AB=BC, BD=CE, AD=BE를 눈금으로, 같은 각 60°와 α를 같은 색 호로, ∠APB=120°를 표시했다. 오른쪽은 삼각형 ABD와 BCE를 떼어 같은 방향으로 나란히 놓고 대응하는 변과 각을 같은 색과 표시로 보여 준다.",
+    "solutionImageCaption": "AB=BC, ∠ABD=∠BCE=60°, BD=CE이므로 △ABD≡△BCE(SAS)이다. ∠BAD=∠CBE=α라 하면 ∠ABE=60°-α이므로 ∠APB=180°-α-(60°-α)=120°이다. B, P, E가 한 직선 위이므로 ∠APE=180°-120°=60°이다. 정답은 60°이다.",
+    "solutionImageSize": "full"
   }
 ];

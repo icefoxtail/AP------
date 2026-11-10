@@ -36,3 +36,14 @@
 - 벤 다이어그램에 색 옵션이 없고 바깥 영역 음영이 개수 라벨과 겹침 (23 강남여 2mid Q02·Q04·Q15, 2026-11-10)
 - 수직선 끝점 매개변수는 일차식만 받음 (23 강남여 2mid Q12, 2026-11-10)
 - 조각 다항식 referenceCurves에는 nameLabel 지시선을 쓸 수 없음 (23 강남여 2mid Q20, 2026-11-10)
+- 반비례 그래프의 "곡선과 두 좌표축 사이 영역" 색칠 불가 (26 왕운중 2학기 중간 중1 Q14 문제 그림): rational-spike-v1은 graphPlan.regions를 못 받고(GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL), multi-curve-figure-v1의 regions(under)는 곡선이 창 위로 나가는 구간의 표본점을 버려서 y축 옆이 쐐기 모양으로 비는 채로 그려지며, halfPlane은 그림 틀(여백 포함) 끝까지 번진다. 필요: 곡선이 창 위로 나가면 영역 다각형을 창 위 경계에서 잘라 닫기(코너점 추가), 또는 rational-spike-v1에 regions 지원(under, from 생략 시 y축까지). 지금은 곡선·축·O·식 y=a/x만 그리고 영역 색칠은 뺐다(게시).
+- 격자점 점 모양·색 지정 불가 (26 왕운중 2학기 중간 중1 Q14 해설 그림): overlays.latticePoints 점은 검정 r=2.4 고정이고 overlays.points(curveX) 점도 검정 채운 점뿐이라, "세는 점(파랑)"과 "그래프 위의 점(속 빈 장밋빛, 제외)"을 점 모양·색으로 구분할 수 없다. callouts "제외"(TEXT)를 그래프 위 점 4개에 달아 우회(게시). 필요: overlays.points[].marker(OPEN/CLOSED)·color, latticePoints.color. 그래프 아래 영역의 연한 초록 음영도 위와 같은 이유로 뺐다.
+- 일반 데이터 표(행·열에 임의 문자·숫자, 빈칸·기호 칸 허용) 그림 없음 (26 왕운중 2학기 중간 중1 Q06 x·y 대응표와 빈칸 a, Q18 읽은 책 수·학생 수 도수 표, Q19 계급·도수 표의 빈칸 A·B): stat은 DICE_TABLE·MEMBERSHIP_TABLE만 있다. 문제 그림 UNSUPPORTED로 옛 그림 유지(Q19는 줄기와 잎만 신형으로 바꾸면 표가 사라져 문제가 깨지므로 해설 그림만 신형 STEM_LEAF로 게시). 필요: 표 capability(칸에 문자 허용) 또는 AP Table Engine 표와의 연결.
+- 기호(x, y)가 섞인 한 줄 자료 나열 상자 그림 없음 (26 왕운중 2학기 중간 중1 Q17 문제 그림): DOT_PLOT은 정수만, STEM_LEAF는 줄기·잎이라 둥근 상자 안의 변량 줄(6 7 8 8 8 x y 10 10 10)을 못 그림. 옛 그림 유지(UNSUPPORTED).
+- 같은 색을 서로 다른 크기의 두 각에 칠할 수 없음(ANGLE_COLOR_GROUP_MISMATCH) → 한 각이 두 묶음(맞꼭지각 묶음, 엇각 묶음)에 동시에 속하는 표시 불가 (26 왕운중 2학기 중간 중1 Q15 해설 그림): 패널 두 개로 나누고 두 번째 패널은 ∠d와 ∠b를 같은 회색 부채꼴로 칠해 엇각 위치만 보이게 우회(게시). 필요: 한 각에 호 색과 부채꼴 색을 따로 주는 옵션.
+- 좌표평면에서 선분이 지나는 축 위 눈금 라벨이 빠짐(LAYOUT_INVENTORY_INCOMPLETE) (26 왕운중 2학기 중간 중1 Q22 문제 그림): y=-5 선분 AB가 눈금 −5 자리를 지나면 눈금 라벨을 못 놓아, 축 위 숨은 점 + textLabels "-5"로 우회(게시). 필요: 선분 아래 눈금 라벨 건너뛰기 대신 지시선·위치 조정.
+- composite-panels 패널을 세로로 쌓을 수 없음(2열 이하, 패널 폭 420 이하) (26 왕운중 2학기 중간 중1 Q23 해설 그림 등): 폰에서 오른쪽 패널(떼어 놓은 두 삼각형)이 작게 보인다. 필요: 세로 배치(1열) 옵션.
+- composite-panels는 서로 다른 패널이 같은 점 이름을 쓰지 못함(POINT_DISPLAY_NAME_DUPLICATE) (26 왕운중 2학기 중간 중1 Q12·Q23 해설 그림): 합동 패널 둘이 같은 이름 점이 필요하면 한쪽 점 id를 바꾸고 숨은 점 + textLabels로 같은 글자를 보이게 우회(게시). 필요: 패널별 이름 범위(점 이름이 패널 안에서만 유일하면 허용).
+- composite-panels·solid 출력은 루트 role=img·title이 없음(손으로 a11y 보강) (26 왕운중 2학기 중간 중1 Q01·Q03·Q04·Q11·Q12·Q15·Q23): upgrade-svg-accessibility로 title·desc를 덧붙였다. 필요: 엔진이 composite·solid 출력에 title·desc를 직접 넣기.
+- stem-leaf classGroups 괄호에 색 옵션 없음 (26 왕운중 2학기 중간 중1 Q19·Q20 해설 그림): 서로 다른 계급 괄호를 모두 같은 색으로 그린다. 필요: classGroups[].color.
+- solid-figure-v1 투영 고정(방위 28°)과 모서리 강조가 굵게·빨강뿐 (26 왕운중 2학기 중간 중1 Q04 문제·해설 그림): 문제 그림의 배치와 조금 다르고(앞 모서리 CD가 약간 기움) 강조 색을 고를 수 없다. 필요: 투영 방위 옵션, 모서리별 선 색.
