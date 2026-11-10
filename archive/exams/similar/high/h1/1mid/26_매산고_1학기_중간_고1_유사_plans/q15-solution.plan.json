@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "두 점 $A(1, 0)$, $B(6, 0)$에서 만난다",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "7",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "domain": [
+      0.5,
+      6.5
+    ],
+    "viewport": [
+      -1,
+      8,
+      -3,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 3.5,
+        "y": 6.25
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "0"
+      ],
+      "B": [
+        "6",
+        "0"
+      ],
+      "V": [
+        "7/2",
+        "25/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "h(x)=f(x)-g(x)=-(x-1)(x-6)의 그래프는 x축과 A(1,0), B(6,0)에서 만나고 꼭짓점은 V(7/2, 25/4)이다.",
+  "sourceConditions": [
+    {
+      "id": "q15-S1",
+      "condition": "h(x)=f(x)-g(x)=-(x-1)(x-6)의 x절편 A(1,0), B(6,0)과 꼭짓점 V(7/2,25/4)",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "f와 g의 차 h의 두 근과 꼭짓점을 보여 최댓값의 위치와 값을 읽게 한다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고1_유사/q15-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q15-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q15-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q15-solution.svg"
+  }
+}

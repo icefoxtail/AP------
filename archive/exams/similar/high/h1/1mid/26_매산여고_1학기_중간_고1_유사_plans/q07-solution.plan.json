@@ -1,0 +1,86 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$=(x-2)^2-3$",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "y=x^2-4x+1=(x-2)^2-3의 꼭짓점 (2,-3)은 -1≤x≤4에 포함된다.",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "구간의 양 끝점에서 y(-1)=6, y(4)=1이다.",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "구간 -1≤x≤4에서 꼭짓점이 최솟값, 왼쪽 끝점이 최댓값이 됨을 보여 준다."
+  ],
+  "caption": "이차함수 y=x^2-4x+1의 그래프에서 구간 -1≤x≤4의 양 끝점 (-1,6), (4,1)과 꼭짓점 (2,-3)을 나타낸 그림",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "-4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -2,
+      5,
+      -4,
+      8
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "xl",
+          "x": "-1"
+        },
+        {
+          "id": "xr",
+          "x": "4"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "V",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "V": "V",
+    "B": "B"
+  },
+  "assetPath": "assets/images/26_매산여고_1학기_중간_고1_유사/q7-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/engine_evidence/q07-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/engine_evidence/q07-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/engine_evidence/q07-solution.svg"
+  }
+}

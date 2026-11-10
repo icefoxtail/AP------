@@ -7,9 +7,9 @@
   function studentReturnTarget(baseUrl) {
     try {
       const source = new URL(baseUrl);
-      if (!source.pathname.startsWith('/apmath/student/')) return '';
+      if (!/^\/(?:[^/]+\/)*apmath\/student\/(?:index\.html)?$/.test(source.pathname)) return '';
       const params = new URLSearchParams();
-      for (const key of ['teacher_preview', 'student_id', 'omr', 'assignment_id', 'wrong_clinic']) {
+      for (const key of ['teacher_preview', 'student_id', 'view', 'omr', 'assignment_id', 'wrong_clinic']) {
         const value = source.searchParams.get(key);
         if (value) params.set(key, value);
       }
@@ -57,5 +57,5 @@
     if (returnTarget) url.searchParams.set('studentReturnTo', returnTarget);
     return url.href;
   }
-  return { prepare };
+  return { prepare, studentReturnTarget };
 });

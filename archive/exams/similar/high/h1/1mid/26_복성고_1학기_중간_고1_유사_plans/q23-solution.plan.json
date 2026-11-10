@@ -1,0 +1,97 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4/5",
+      "6",
+      "-1"
+    ],
+    "domain": [
+      -0.5,
+      6.5
+    ],
+    "viewport": [
+      -1.5,
+      7.5,
+      -2.5,
+      11.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 0,
+        "y": 0.8
+      },
+      {
+        "id": "Q",
+        "x": 6,
+        "y": 0.8
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": 9.8
+      },
+      {
+        "id": "R",
+        "x": 5,
+        "y": 5.8
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "0",
+        "4/5"
+      ],
+      "Q": [
+        "6",
+        "4/5"
+      ],
+      "V": [
+        "3",
+        "49/5"
+      ],
+      "R": [
+        "5",
+        "29/5"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "a",
+          "x": "3"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=-(x-3)²+49/5의 그래프는 직선 x=3에 대하여 대칭이고 꼭짓점 (3, 49/5)에서 최대이며, 구간 0≤x≤6의 양 끝 (0, 4/5), (6, 4/5)에서 최소이고, 점 (5, 29/5)를 지난다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "p=3, m=-1/5, q=49/5이면 f(x)=-(x-3)²+49/5이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 x=3에 대하여 구간 0≤x≤6의 두 끝값이 같아 최솟값이 양 끝에서 생김을 보여 준다."
+  ],
+  "sourceQuote": "꼭짓점 $x=3$에 대하여 대칭이므로 양 끝값이 같고",
+  "assetPath": "assets/images/26_복성고_1학기_중간_고1_유사/q23-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q23-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q23-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q23-solution.svg"
+  }
+}

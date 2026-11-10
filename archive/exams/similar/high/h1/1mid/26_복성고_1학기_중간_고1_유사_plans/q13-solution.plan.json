@@ -1,0 +1,98 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "16",
+      "-10",
+      "1"
+    ],
+    "domain": [
+      -0.5,
+      10.5
+    ],
+    "viewport": [
+      -2,
+      12,
+      -11,
+      19
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 8,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 5,
+        "y": -9
+      },
+      {
+        "id": "R",
+        "x": 3,
+        "y": -5
+      },
+      {
+        "id": "S",
+        "x": 0,
+        "y": 16
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "2",
+        "0"
+      ],
+      "Q": [
+        "8",
+        "0"
+      ],
+      "V": [
+        "5",
+        "-9"
+      ],
+      "R": [
+        "3",
+        "-5"
+      ],
+      "S": [
+        "0",
+        "16"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=(x-5)²-9의 그래프는 꼭짓점 (5, -9)에서 x축과 두 점 (2, 0), (8, 0)에서 만나며, 점 (3, -5)를 지나고 y축과 (0, 16)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "m=5이면 f(x)=(x-5)²-9이고 두 근은 2, 8이며 f(3)=-5이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근이 모두 양수인 이차함수의 꼭짓점·x절편·y절편의 위치를 보여 준다."
+  ],
+  "sourceQuote": "$m=5$이면 두 근이 $2,\\ 8$로 $0<\\alpha<\\beta$를",
+  "assetPath": "assets/images/26_복성고_1학기_중간_고1_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q13-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q13-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q13-solution.svg"
+  }
+}

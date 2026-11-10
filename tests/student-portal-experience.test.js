@@ -56,8 +56,8 @@
   context.cases=cases;
   vm.runInContext('omrData={exams:cases};',context);
   const home=vm.runInContext('renderOmrHomeSection()',context);
-  assert.strictEqual((home.match(/<article class="omr-card"/g)||[]).length,3,'home has bounded three exam previews');
-  assert(home.includes('전체 5개 보기'),'all exam list remains accessible');
+  assert.strictEqual((home.match(/<article class="portal-recent-item"/g)||[]).length,1,'home has one compact recent learning item');
+  assert(home.includes('onclick="renderOmrExams()"'),'all exam list remains accessible');
   const groups=vm.runInContext('groupStudentPortalExams(getStudentPortalAssignments())',context);
   assert.strictEqual(groups.pending.length,2,'pending counts use recorded submission state');
   assert.strictEqual(groups.complete.length,2,'submitted counts use recorded submission state');
@@ -113,5 +113,5 @@
     assert(new RegExp('--'+token+':\\s*'+value).test(css),'both scopes share the APMS '+token+' token');
   }
   assert(toolsCss.includes('.homework-page')&&toolsCss.includes('.planner-page'),'consistent family styles cover both lower pages');
-  console.log('Student portal runtime UX contracts passed: full exam list, 3 preview, state actions, OMR toggle/submit, teacher preview, shared style.');
+  console.log('Student portal runtime UX contracts passed: full exam list, one recent item, state actions, OMR toggle/submit, teacher preview, shared style.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

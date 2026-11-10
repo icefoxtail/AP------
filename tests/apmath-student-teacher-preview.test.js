@@ -27,15 +27,19 @@ assert(
 );
 
 assert(
-  portalHtml.includes('const isTeacherPreview = !!teacherPreviewStudentId;') &&
+  portalHtml.includes("const isTeacherPreview = previewParams.get('teacher_preview') === '1';") &&
+    portalHtml.includes('if (!teacherPreviewStudentId) {') &&
     portalHtml.includes('headers.Authorization = `Bearer ${teacherToken}`;') &&
     portalHtml.includes("if (isTeacherPreview) throw new Error('학생 화면 확인에서는 저장할 수 없습니다.');") &&
     portalHtml.includes("session = { student_id: teacherPreviewStudentId, teacher_preview: true };") &&
-    portalHtml.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
+    portalHtml.includes('function renderPreviewNotice()') &&
+    portalHtml.includes('function renderUnavailableFeature(title, reason)') &&
+    portalHtml.includes("renderUnavailableFeature('오답 클리닉'") &&
+    portalHtml.includes("renderUnavailableFeature('수업자료 오답'") &&
     portalHtml.includes("isTeacherPreview || submitted ? '' :") &&
     portalHtml.includes("if (isTeacherPreview) {") &&
     !portalHtml.includes('교사 미리보기 ·'),
-  'student portal should use a bannerless, read-only teacher preview session'
+  'student portal should expose explicit read-only and unavailable states without substituting student credentials'
 );
 
 assert(

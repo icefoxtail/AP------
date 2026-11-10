@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "2",
+        "intercept": "6",
+        "intersectionX": [
+          "1-sqrt(7)",
+          "1+sqrt(7)"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": "1-sqrt(7)",
+        "y": "8-2*sqrt(7)"
+      },
+      {
+        "id": "Q",
+        "x": "1+sqrt(7)",
+        "y": "8+2*sqrt(7)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "포물선 y=x²과 직선 y=2x+6이 두 점 P, Q에서 만나고 P의 x좌표는 1-√7이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "y=x²과 y=ax+b의 교점 P, Q의 x좌표는 1-√7, 1+√7이고 a=2, b=6이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점 P, Q와 직선 y=2x+6의 위치를 포물선과 함께 보여 준다."
+  ],
+  "sourceQuote": "직선은 $y=2x+6$이고 두 교점은",
+  "assetPath": "assets/images/26_강남여고_1학기_중간_고1_유사/q7-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q07-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q07-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q07-solution.svg"
+  }
+}

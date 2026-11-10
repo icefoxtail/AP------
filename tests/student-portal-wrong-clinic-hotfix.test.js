@@ -83,17 +83,18 @@ assert(
     studentIndex.includes('function openHomeOmrInput(assignmentId)') &&
     studentIndex.includes('function renderStudentQuickActions()') &&
     studentIndex.includes('${renderOmrHomeSection()}') &&
-    studentIndex.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
+    studentIndex.includes('function renderClinicList()') &&
+    studentIndex.includes('function renderLearningHistory()') &&
+    studentIndex.includes('function renderMaterialList()') &&
     studentIndex.includes('${renderStudentQuickActions()}') &&
-    studentIndex.includes('portal-support-grid') &&
     studentIndex.includes('const visible = materialShowAll ? list : list.slice(0, 2);'),
-  'student portal home should retain OMR, wrong clinic, and task/planner entry points with an expandable supporting-material list'
+  'student portal should retain OMR, wrong clinic, records, and task/planner entry points with an expandable material list'
 );
 
-const home = studentIndex.slice(studentIndex.indexOf('function renderHome('), studentIndex.indexOf('function renderAssignments('));
-const orderedSections = ['renderOmrHomeSection()', 'renderGeometryLabEntry()', 'renderWrongClinicPackets()', 'id="clinic-learning-history"', 'renderStudentQuickActions()'].map(value => home.indexOf(value));
-assert(orderedSections.every((position, index) => position >= 0 && (index === 0 || position > orderedSections[index - 1])), 'home should follow the student priority: exams, lab, clinic/records, then planner and assignments');
-assert.match(home, /<details id="student-review-section" class="portal-disclosure">/, 'supporting review records should remain discoverable in a labelled disclosure');
+const home = studentIndex.slice(studentIndex.indexOf('function renderHome('), studentIndex.indexOf('function renderPreviewNotice('));
+assert(home.indexOf('renderStudentQuickActions()') >= 0 && home.indexOf('renderStudentQuickActions()') < home.indexOf('renderOmrHomeSection()'), 'four primary features must precede recent learning');
+assert(!home.includes('renderWrongClinicPackets()') && !home.includes('id="clinic-learning-history"'), 'home must not stack full review and history sections');
+assert(home.includes('onclick="renderMore()"'), 'retained supporting features must be discoverable through more');
 const quickActions = studentIndex.match(/function renderStudentQuickActions\(\) \{[\s\S]*?\n    \}/);
 assert(quickActions && quickActions[0].includes('onclick="openPlanner()"') && quickActions[0].includes('onclick="renderAssignments()"'), 'both planner and assignment actions must remain available');
 

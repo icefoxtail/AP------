@@ -1,0 +1,124 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "오른쪽 윗꼭짓점의 $x$좌표를 $t$라 두자",
+  "caption": "포물선 y=6-(2/3)x² 안의 직사각형 SRPQ이다. 오른쪽 윗꼭짓점의 x좌표가 t=3/2일 때 둘레가 최대가 된다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "6",
+      "0",
+      "-2/3"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -1,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "0",
+        "6"
+      ],
+      "A": [
+        "-3",
+        "0"
+      ],
+      "B": [
+        "3",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3/2"
+        },
+        {
+          "id": "Q",
+          "curveX": "-3/2"
+        },
+        {
+          "id": "R",
+          "axis": "x",
+          "value": "3/2"
+        },
+        {
+          "id": "S",
+          "axis": "x",
+          "value": "-3/2"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "S",
+            "R",
+            "P",
+            "Q"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "S": "S"
+  },
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "포물선 y=6-(2/3)x²과 오른쪽 윗꼭짓점의 x좌표 t",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "t=3/2일 때 가로 3, 세로 9/2인 둘레 최대 직사각형의 위치를 보여 준다."
+  ],
+  "assetPath": "assets/images/26_금당고_1학기_중간_고1_유사/q14-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q14-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q14-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q14-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "ordinal": 14,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

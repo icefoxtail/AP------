@@ -81,7 +81,7 @@ function studentFunction(name) {
   return declaration;
 }
 
-function renderStudentHomeWithExam(overrides = {}) {
+function renderStudentScreensWithExam(overrides = {}) {
   const exam = {
     assignment_id: 'student-pdf-assignment',
     exam_title: 'Issued paper',
@@ -92,39 +92,49 @@ function renderStudentHomeWithExam(overrides = {}) {
     ...overrides
   };
   const context = vm.createContext({
-    URL,
+    URL, URLSearchParams,
     isTeacherPreview: false,
+    teacherPreviewStudentId: '', omrListFilter: 'all',
+    homeData: { student: { grade: '중2' } }, session: {},
     window: { location: { href: 'https://student.example/apmath/student/' } },
-    getStudentPortalAssignments: () => [exam]
+    getStudentPortalAssignments: () => [exam],
+    splitAssignments: () => ({ missing: [], done: [] })
   });
   vm.runInContext([
     'escapeHtml', 'getStudentPortalRecordedSubmission', 'buildOmrReviewUrl',
     'isOmrReviewAvailable', 'isLegacyMixedOmrReview', 'renderOmrReviewActions',
-    'renderOmrPdfAction', 'renderOmrExamCard', 'renderOmrHomeSection'
+    'renderOmrPdfAction', 'renderOmrExamCard', 'renderOmrHomeSection',
+    'groupStudentPortalExams', 'geometryLabHref', 'renderGeometryLabEntry',
+    'renderStudentQuickActions', 'renderOmrExamBrowser'
   ].map(studentFunction).join('\n'), context);
-  return context.renderOmrHomeSection();
+  return {
+    home: context.renderStudentQuickActions() + context.renderOmrHomeSection(),
+    exams: context.renderOmrExamBrowser([exam])
+  };
 }
 
-test('student home exposes a ready PDF through the shared exam-card renderer', () => {
+test('the home exam entrance leads to the full list with each ready PDF download', () => {
   for (const readiness of [{ pdf_status: 'ready' }, { pdf_status: 'pending', pdf_ready: true }]) {
-    const html = renderStudentHomeWithExam(readiness);
+    const { home, exams: html } = renderStudentScreensWithExam(readiness);
+    assert.match(home, /data-portal-feature="exams" onclick="renderOmrExams\(\)"/, 'the first-level home control opens the actual exam list');
+    assert.match(html, /data-assignment-id="student-pdf-assignment"/, 'the full list contains the issued assignment');
     const download = html.match(/<button\b[^>]*onclick="downloadExamPdf\('student-pdf-assignment'\)"[^>]*>/);
-    assert.ok(download, 'a server-ready artifact must have its assignment-specific download action on home');
+    assert.ok(download, 'a server-ready artifact must have its assignment-specific download action in the full exam list');
     assert.ok(!/\bdisabled\b/.test(download[0]), 'a ready PDF download must be enabled');
     assert.ok(html.includes("renderOmrInput('student-pdf-assignment')"), 'a normal unsubmitted assignment retains its OMR action');
   }
 });
 
-test('student home keeps review-only assignments read-only even when a PDF is ready', () => {
-  const html = renderStudentHomeWithExam({ is_review_only: true, pdf_ready: true });
+test('the full student exam list keeps review-only assignments read-only even when a PDF is ready', () => {
+  const { exams: html } = renderStudentScreensWithExam({ is_review_only: true, pdf_ready: true });
   assert.ok(!html.includes('downloadExamPdf('), 'review-only assignments must retain the existing PDF restriction');
   assert.ok(!html.includes('renderOmrInput('), 'review-only assignments must not expose OMR input');
   assert.ok(html.includes("openOmrReview('student-pdf-assignment', 'exam')"), 'the existing read-only paper viewer remains available');
 });
 
-test('student home cannot offer a download before the PDF artifact is ready', () => {
+test('the full student exam list cannot offer a download before the PDF artifact is ready', () => {
   for (const pdf_status of ['pending', 'generating', 'failed']) {
-    const html = renderStudentHomeWithExam({ pdf_status });
+    const { exams: html } = renderStudentScreensWithExam({ pdf_status });
     assert.ok(!html.includes('downloadExamPdf('), `${pdf_status} artifacts must not produce a download action`);
     if (pdf_status !== 'pending') {
       assert.match(html, /<button\b[^>]*disabled[^>]*>PDF [^<]+<\/button>/, `${pdf_status} PDF status must remain non-interactive`);
