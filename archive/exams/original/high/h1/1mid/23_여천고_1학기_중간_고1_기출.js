@@ -587,7 +587,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²+ax+3과 주황 직선 y=2x+b가 두 점에서 만나는 그림이다. 두 교점에서 x축으로 점선이 내려와 x좌표 −2와 1이 적혀 있고, 포물선 위쪽 끝 곁과 직선 아래쪽 끝 곁에 각각 식이 적혀 있다.",
+    "solutionImageCaption": "두 교점의 x좌표는 x²+ax+3=2x+b, 즉 x²+(a−2)x+(3−b)=0의 두 근 −2, 1이다. 근과 계수의 관계에서 −2+1=−(a−2), (−2)·1=3−b이므로 a=3, b=5이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -637,7 +641,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 f(x)와 점 (0,2)를 지나는 직선 y=mx+2가 한 점 T에서 접하는 그림이다. 직선은 y축 위의 점 (0,2)에서 오른쪽 아래로 내려가며 포물선은 원점과 x축 위의 한 점을 지난다. 포물선 오른쪽 아래 끝 곁에 f(x)가 적혀 있다.",
+    "solutionImageCaption": "f(x)는 이차함수 y=−(3분의 1)x²+x이다. 직선을 y=mx+2로 두고 연립하면 x²−3(1−m)x+6=0이고 접하므로 판별식이 0이다. 9(1−m)²−24=0에서 m의 값 두 개를 얻고 기울기가 음수인 것을 고른다. 정답은 기울기가 3분의 (3−2√6)이고 y절편이 2인 직선 y=mx+2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -686,9 +694,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q15-solution-graph.svg",
-    "solutionImageAlt": "문항 15 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 −1≤x≤3에서 y=x²−4x+k의 그래프이다. x축에 −1, 2, 3의 눈금이 있고 꼭짓점 (2,5)에서 x축과 y축 쪽으로 점선이 있으며 왼쪽 끝점 곁에 식이 적혀 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=x²−4x+k=(x−2)²+k−4이고 꼭짓점의 x좌표 2가 구간 안에 있으므로 최솟값은 k−4=5에서 k=9이다. 위로 열린 포물선이므로 최댓값은 양 끝점 중 x=2에서 더 먼 x=−1의 함숫값이다. 정답은 14이다."
   },
   {
     "id": 16,
@@ -738,7 +747,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: a=−1일 때 f(x)=x²+2(1+a)x+a²+1의 그래프이다. 아래로 볼록한 포물선이 x축 위쪽에만 있어 x축과 만나지 않고, 오른쪽 곡선 위 점 곁에 f(x)가 적혀 있다.",
+    "solutionImageCaption": "예: a=−1로 그린 그림이다. f(x)=x²+2(1+a)x+a²+1이 x축과 만나지 않으려면 판별식이 음수여야 한다. D=4(1+a)²−4(a²+1)=8a<0에서 a<0인데 a는 자연수이므로 조건에 맞는 값이 없다. 정답은 0개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -786,9 +799,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q17-solution-graph.svg",
-    "solutionImageAlt": "문항 17 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 f(x)와 직선 y=3x−6의 그림이다. 포물선은 x축과 두 점 α, β에서 만나고 꼭짓점 V는 x=1의 점선 끝에서 직선 위에 있다. x=2의 점선 끝 점 곁에 f(2)가, 왼쪽 위 끝 곁에 f(x)가 적혀 있다.",
+    "solutionImageSize": "medium",
+    "solutionImageCaption": "f(x)=(x−α)(x−β)이고 α+β=2이므로 대칭축은 x=1이다. 꼭짓점의 x좌표 1을 y=3x−6에 넣으면 꼭짓점의 y좌표가 −3이므로 f(1)=−3이다. f(x)=x²−2x+αβ에서 αβ를 구해 f(2)를 계산한다. 정답은 −2이다."
   },
   {
     "id": 18,
@@ -837,9 +851,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q18-solution-b4.svg",
-    "solutionImageAlt": "조건을 만족하는 한 예로 f(x)=(x-2)², g(x)=-x²+10을 그리면 f는 x축에 접하고 두 그래프는 제2사분면의 A와 제1사분면의 B에서 만난다.",
-    "solutionImageCaption": "조건을 만족하는 한 예로 f(x)=(x-2)², g(x)=-x²+10을 그리면 f는 x축에 접하고 두 그래프는 제2사분면의 A와 제1사분면의 B에서 만난다.",
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: 두 이차함수 그림이다. 파란 포물선 f(x)는 점 P에서 x축에 접하고, 주황 포물선 g(x)는 위로 볼록하며 두 곡선이 제2사분면의 점 A와 제1사분면의 점 B에서 만난다. 오른쪽 위 끝 곁에 f(x), 아래쪽 끝 곁에 g(x)가 적혀 있다.",
+    "solutionImageCaption": "예: f(x)=(x−2)², g(x)=−x²+10으로 그린 그림이다. f가 x축에 접하므로 a²−4b=0이어서 ㄱ은 참이다. 두 교점이 제1사분면과 제2사분면에 있어 두 근의 곱 2분의 (b+d)가 음수이므로 a²−4d>0이고 ㄴ은 거짓이다. 서로 다른 두 점에서 만나므로 (a+c)²−8(b+d)>0이어서 ㄷ은 참이다. 정답은 ㄱ, ㄷ이다.",
     "solutionImageSize": "full"
   },
   {
@@ -921,9 +935,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q20-solution-graph.svg",
-    "solutionImageAlt": "문항 20 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 f(x)의 그림이다. 꼭짓점 (2,−3)에서 x축으로 점선이 있고 x축과 만나는 두 점 P, Q를 잇는 굵은 선분에 길이 2가 적혀 있다. 높이가 같은 두 점 f(−1), f(5)가 점선으로 이어져 있고 y축 위의 점 곁에 f(0)이 적혀 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "f(−1)=f(5)에서 대칭축은 x=2이고 꼭짓점은 (2,−3)이다. PQ=2이므로 x절편은 1, 3이고 f(x)=a(x−2)²−3에 f(1)=0을 넣어 a를 구한다. 그 a로 f(0)을 계산한다. 정답은 9이다."
   },
   {
     "id": 21,
@@ -1009,9 +1024,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q22-solution-graph.svg",
-    "solutionImageAlt": "좌표평면에 아래로 볼록한 포물선 y=(9/2)(x−1)²+8과 직선 y=18x−10이 그려져 있고, 꼭짓점 (1,8)과 다른 교점 (5,80)이 표시되어 있으며 1≤x≤5에서 최솟값은 8이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: a=1일 때의 그림이다. 파란 포물선 f(x)와 초록 직선 y=4ax−10이 x=1, x=5에서 만나고 두 점에서 x축으로 점선이 내려와 있다. x=1의 점에 최솟값이라고 적혀 있고 1≤x≤5인 포물선 부분은 주황색으로 굵게 표시되어 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "예: a=1로 그린 그림이다. f(x)−(4ax−10)=a(x−1)(x−5)이므로 f(x)=a(x−1)²+4a−10이다. a>0이고 구간 1≤x≤5에 꼭짓점 x=1이 있으므로 최솟값은 f(1)=4a−10=8이다. 정답은 450이다."
   },
   {
     "id": 23,

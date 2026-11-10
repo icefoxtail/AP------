@@ -159,7 +159,11 @@ window.questionBank = [
     "category": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "이차함수"
+    "originalCategory": "이차함수",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=2x²+x+a와 주황 직선 y=5x+2가 한 점 T에서 접하는 그림이다. 포물선 위쪽 끝 곁에 식 y=2x²+x+a, 직선 아래쪽 끝 곁에 식 y=5x+2가 적혀 있다.",
+    "solutionImageCaption": "접점에서 포물선과 직선의 y값이 같으므로 2x²+x+a=5x+2, 즉 2x²−4x+a−2=0이 중근을 가져야 한다. 판별식이 0이므로 (−4)²−4·2·(a−2)=0, 즉 32−8a=0이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -279,7 +283,11 @@ window.questionBank = [
     "category": "절댓값 부등식",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "절댓값"
+    "originalCategory": "절댓값",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 −1과 3 사이의 구간이 굵게 표시되어 있고, 아래 줄에는 −1, 가운데 점(중심), 3이 있으며 중심에서 양 끝까지의 거리가 각각 b로 표시되어 있다.",
+    "solutionImageCaption": "해가 −a−b≤x≤−a+b이므로 구간의 중심은 −a이고 양 끝까지의 거리는 b이다. 해 −1≤x≤3의 중심은 1이므로 −a=1이고 폭의 절반은 2이므로 b=2이다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -360,9 +368,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "originalCategory": "이차함수",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q9-solution.svg",
-    "solutionImageAlt": "k=2 또는 k=-2일 때 두 교점 사이의 거리는 4이다.",
-    "solutionImageCaption": "k=2 또는 k=-2일 때 두 교점 사이의 거리는 4이다.",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 f(x)가 x축과 두 점에서 만나는 그림이다. 두 점에 α, β가 붙어 있고 두 점을 잇는 굵은 선분 위에 길이 4가 적혀 있다. 오른쪽 곡선 위 점 곁에 f(x)가 적혀 있다.",
+    "solutionImageCaption": "두 근을 α, β라 하면 α+β=k, αβ=−3이다. (α−β)²=(α+β)²−4αβ=k²+12이고 두 점 사이의 거리가 4이므로 k²+12=16이다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -405,7 +413,11 @@ window.questionBank = [
     "category": "연립부등식",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "연립부등식"
+    "originalCategory": "연립부등식",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: k=3일 때의 수직선 세 줄 그림이다. 첫째 줄은 x가 2분의 (k−1) 이하인 범위, 둘째 줄은 x가 3분의 1 이상인 범위이고, 셋째 줄은 두 범위의 공통 범위를 굵게 나타낸다.",
+    "solutionImageCaption": "예: k=3으로 그린 그림이다. 두 부등식을 정리하면 x는 2분의 (k−1) 이하이고 3분의 1 이상이다. 공통 범위가 있으려면 3분의 1이 2분의 (k−1) 이하여야 하므로 k는 3분의 5 이상이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -489,9 +501,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "originalCategory": "이차부등식",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "a=2일 때 -1≤x≤2에서 최솟값은 0이다",
-    "solutionImageCaption": "a=2일 때 -1≤x≤2에서 최솟값은 0이다",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 −1≤x≤2에서 y=(x−1)²의 그래프이다. 왼쪽 끝점 (−1,4), 꼭짓점 (1,0), 오른쪽 끝점 (2,1)이 표시되어 있고 곡선 위 점 곁에 식이 적혀 있으며 x축에 −1, 1, 2의 눈금이 있다.",
+    "solutionImageCaption": "x²−2x−a²+5=(x−1)²+4−a²이므로 구간 −1≤x≤2에서 (x−1)²의 최솟값을 본다. x=1에서 최솟값 0이므로 4−a²≥0이면 부등식이 항상 성립하고, 이는 −2≤a≤2이다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -615,7 +627,11 @@ window.questionBank = [
     "category": "이차부등식",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "이차부등식"
+    "originalCategory": "이차부등식",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=−1일 때 f(x)=ax²−2ax−3의 그래프이다. 위로 볼록한 포물선이 x축 아래에만 있고 왼쪽 곡선 위 점 곁에 f(x)가 적혀 있다.",
+    "solutionImageCaption": "f(x)=ax²−2ax−3이라 하자. a=0이면 f(x)=−3이므로 해가 없다. a≠0일 때는 그래프가 위로 볼록하고 x축 아래에만 있어야 하므로 a<0이고 판별식 D=4a(a+3)<0이다. 따라서 −3<a<0이고 a=0까지 포함해 센다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -698,7 +714,11 @@ window.questionBank = [
     "category": "절댓값 부등식",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "절댓값"
+    "originalCategory": "절댓값",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: k=2일 때의 그림이다. 파란 꺾인 그래프 F(x)가 x=−3, x=1에서 꺾이고 x축에 −3과 1의 눈금과 점선이 있다. x=1의 점에 최솟값이라고 적혀 있고 그래프 아래에 주황색 가로선 y=k가 있다. 세 조각의 식이 각각 곁에 적혀 있다.",
+    "solutionImageCaption": "예: k=2로 그린 그림이다. F(x)=2|x−1|+|x+3|이라 하면 x<−3에서 −3x−1, −3≤x<1에서 5−x, x≥1에서 3x+1이다. 모든 실수 x에서 F(x)≥k이려면 직선 y=k가 그래프의 가장 낮은 점 아래 또는 그 높이에 있어야 하므로 k는 F(x)의 최솟값 이하이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -743,7 +763,11 @@ window.questionBank = [
     "category": "이차부등식",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "도형의 넓이"
+    "originalCategory": "도형의 넓이",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC 안의 직사각형 PQCR 그림이다. 삼각형 APR는 주황색, 삼각형 PBQ는 파란색, 직사각형은 회색으로 칠해져 있다. 변 BC에 6, 변 AC에 12가 적혀 있고 QC는 a, RC는 12−2a, AR는 2a, QB는 6−a로 표시되어 있으며 C, Q, R에 직각 표시가 있다.",
+    "solutionImageCaption": "예: a=2분의 9로 그린 그림이다. QC=a이면 RC=12−2a, AR=2a이므로 직사각형의 넓이는 12a−2a², 삼각형 APR의 넓이는 a², 삼각형 PBQ의 넓이는 (6−a)²이다. 두 넓이 조건에서 4<a<6이므로 m+n=10이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -826,9 +850,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "originalCategory": "이차함수",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "구간 -1≤x≤3에서 최댓값은 양 끝점 중 하나",
-    "solutionImageCaption": "구간 -1≤x≤3에서 최댓값은 양 끝점 중 하나",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: t=0일 때 구간 −1≤x≤3에서 y=x²−4tx−5의 그래프이다. 왼쪽 끝점 곁에 4t−4, 오른쪽 끝점 곁에 4−12t가 적혀 있고 x축에 −1과 3의 눈금과 점선이 있다.",
+    "solutionImageCaption": "예: t=0으로 그린 그림이다. 아래로 볼록한 포물선이므로 구간 −1≤x≤3에서 최댓값은 양 끝점 중 큰 값이고 g(t)=max(4t−4, 4−12t)이다. 두 값 중 하나가 0이고 다른 하나가 0 이하인 t를 모두 구해 더한다. 정답은 3분의 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -900,7 +924,11 @@ window.questionBank = [
     "category": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "이차함수"
+    "originalCategory": "이차함수",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 f(x)와 직선 g(x)의 그래프이다. 포물선은 x축과 −2, 3에서 만나고 직선과는 x=−1, x=1에서 만나며 두 교점에서 x축으로 점선이 내려와 있다. 두 교점 사이의 포물선은 주황색으로 굵게 표시되어 있고 직선 곁에 g(x), 포물선 아래쪽 끝 곁에 f(x)가 적혀 있다.",
+    "solutionImageCaption": "f(−2)=f(3)=0이므로 f(x)=a(x+2)(x−3)으로 둔다. f(x)≥g(x)의 해가 −1≤x≤1이므로 f(x)−g(x)=a(x+1)(x−1)이고 a<0이다. 계수를 비교하면 a=−1이고 g(x)=x+b에서 b=5이다. 정답은 f(x)=−x²+x+6, g(x)=x+5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -939,6 +967,10 @@ window.questionBank = [
     "category": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "이차함수"
+    "originalCategory": "이차함수",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−9 안의 직사각형 ABCD 그림이다. 꼭짓점 A, D는 x축 위에, B, C는 포물선 위에 있다. 가로 BC는 2t, 세로 CD는 9−t²로 표시되어 있고 x축에 −3과 3의 눈금이 있으며 예로 t=2인 모양을 그렸다.",
+    "solutionImageCaption": "예: t=2인 모양으로 그렸다. C(t, t²−9)가 제4사분면에 있으므로 0<t<3이고 B(−t, t²−9)이다. 가로는 2t, 세로는 9−t²이므로 둘레 L(t)=2{2t+(9−t²)}이고, 완전제곱으로 정리해 최댓값을 구한다. 정답은 (1) L(t)=−2t²+4t+18, (2) 20이다.",
+    "solutionImageSize": "full"
   }
 ];
