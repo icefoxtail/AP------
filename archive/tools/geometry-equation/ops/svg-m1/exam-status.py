@@ -10,7 +10,7 @@ for q in sys.argv[1:]:
         if q not in n: continue
         rel=f.relative_to(ROOT); e=ex.get(n); js=f.read_text(encoding='utf-8-sig')
         figs={int(x) for x in re.findall(r'q(\d+)-solution[^"\'\s]*\.svg',js)}
-        script="const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify(c.window.questionBank.filter(q=>q.solutionImage).map(q=>[q.id,q.solutionImage])))"
+        script="const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify((c.window.questionBank??c.window.examData?.questions).filter(q=>q.solutionImage).map(q=>[q.id,q.solutionImage])))"
         si=json.loads(run(['node','-e',script,f],cwd=ROOT).stdout); figs.update(x[0] for x in si)
         print(f'== {n}\n ledger: {e["status"] if e else "NOT_IN_LEDGER"}'+(f" open={[i['ord'] for i in e.get('items',[]) if i['state'] not in ('PUBLISHED','EXEMPT')]}" if e else ''))
         print(' existing solution svg:',sorted(figs))

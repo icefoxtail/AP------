@@ -67,7 +67,7 @@ function replaceFields(text,obj,fields){
   }
   return Object.keys(missing).length?insertFields(text,[open,close],missing):text;
 }
-const bankOf=text=>{const w={};vm.runInNewContext(text.replace(/^﻿/,''),{window:w});return w.questionBank;};
+const bankOf=text=>{const w={};vm.runInNewContext(text.replace(/^﻿/,''),{window:w});return w.questionBank??(Array.isArray(w.examData?.questions)?w.examData.questions:w.questionBank);};
 
 // ---- plan the work per exam -------------------------------------------------------------------------------------------------
 const byExam=new Map();for(const r of rows){const rel=r.src.split(/archive[\\/]/).pop();(byExam.get(rel)||byExam.set(rel,[]).get(rel)).push(r);}

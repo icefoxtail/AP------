@@ -47,6 +47,11 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 유사문제 짝은 카탈로그에 필드가 없어 `archive/archive2-similar.js`의 규칙(이름 `<원본 identityTitle>_유사…` → 학교·학년·연도·학기·시험 종류가 같은 원본이 하나 → 과목으로 좁혀 하나)으로 **실행 시 한 번 계산**하며, **모호하면 연결하지 않는다**. 이유: 교사가 다른 시험의 유사문제를 학생에게 주는 일이 없는 편이 안전하다. 연결 못 한 세트는 `자료 점검` 맨 아래에 나온다.
 - 학교별 기출은 기본이 "학교 기출"(`material=exam`)이고 "전체"는 주소에 `material=all`로 남는다. 시험 줄은 학교별 기출과 홈이 같은 함수(`examRowMarkup`)로 그린다.
 
+## 원본 시험지 두 형식 (2026-11-10)
+
+- 원본 시험지 JS는 `window.questionBank`(+`examTitle`) 형식과 `window.examData = {title, questions}`만 있는 형식이 있다. 엔진(`screen-runtime-adapter.js`의 원본 로더, `engine.html` 레거시 `init()`)은 **questionBank가 있으면 그것만 쓰고, 없을 때만** `examData.questions`·`examData.title`을 읽는다. 시험지 파일에 별칭 두 줄을 일일이 붙이지 않는다. 이유: 별칭을 붙이면 원본 해시 고정값이 깨지고, 별칭이 없는 36개는 학생 화면에서 `EMPTY_SOURCE_DATA`로 비어 보였다. 회귀 테스트: `tests/archive-examdata-source-fallback.test.js`.
+- 어댑터는 시험지를 불러오기 전에 `questionBank`·`examData`·`examTitle`·`examDisplayTitle`을 지우고 불러온 뒤 원래대로 되돌린다. 연속으로 시험지를 열어도 앞 시험지의 문항이 남지 않게 하는 장치이니 이름 목록에서 빼지 않는다.
+
 ## 보관함·출제 내역 통합 (2026-11-10)
 
 - 메뉴는 "보관함 · 출제 내역" 하나인데 화면은 두 개(`view=saved`, `view=recent`)를 오가야 해서, 교사가 "이 문제지를 어느 반에 언제 냈고 몇 명이 풀었나"를 보려면 제목으로 맞춰 봐야 했다. 이제 **보관함의 문제지 줄 안에 그 문제지의 출제 이력이 붙는다**(`archive2-library.js`의 `paperRowMarkup`, `issuesMarkup`). 줄 모양은 시험 줄과 같은 `.exam-row` 구성요소(`saved-row` 변형)이고 디자인은 `archive/DESIGN.md`의 "보관함 줄" 단락이다.
