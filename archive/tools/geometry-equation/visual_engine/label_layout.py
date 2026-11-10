@@ -549,9 +549,19 @@ def point_box_has_unambiguous_owner(box,owner,competitors):
             if owner_distance2+POINT_OWNER_DISTANCE_TOLERANCE_PX2>=competitor_distance2:return False
     return True
 
-def tick_box_respects_owner(box,at,axis):
-    """Keep a tick label on an axis-normal side of its actual owner tick."""
-    x,y=at
+def tick_ink_box(box,ink):
+    """The rectangle the glyphs of a measured label really cover. ink=[x,y,width,height] is the ink extent the browser reported for the label's frozen fragment,
+    relative to the fragment's own top-left corner (the label box). A label without that report has its box as its ink."""
+    if ink is None:return box
+    return Box(box.x+ink[0],box.y+ink[1],ink[2],ink[3])
+
+def tick_box_respects_owner(box,at,axis,ink=None):
+    """Keep a tick label on an axis-normal side of its actual owner tick.
+
+    The rendered-layout verifier measures alignment and the gap to the axis on the label's ink rectangle, not on the (wider) typesetter box, so with an
+    ink report the same test is made here on that rectangle: a position this accepts is never refused after rendering (box edge 16 away from the axis
+    is 17.5 away at ink for a one-digit label at font 20)."""
+    x,y=at;box=tick_ink_box(box,ink)
     if axis=='x':
         aligned=abs((box.x+box.width/2)-x)<=TICK_LABEL_ALIGNMENT_TOLERANCE
         gaps=(y-box.bottom,box.y-y)
@@ -875,7 +885,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (owner_marker is None or not owner_check or not label.get('lineBarrier') or not line_between(tuple(label['at']),box,occupied,owner_incident_ids(tuple(label['at']),owner_marker,occupied)))
-                and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
+                and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'],label.get('tickInk'))))
         def tie_to_owner(end):
             leader_id=label['id']+'-owner-leader'
             leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target'],**({'pathLabelFallback':True} if label.get('_pathFallback') else {})})
