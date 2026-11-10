@@ -5,766 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#F3F4F6">
+  <meta name="theme-color" content="#faf9f7">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.02.5">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.02.5">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.02.5">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.02.5">
+  <link rel="manifest" href="./manifest.json?v=2026.11.10.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.10.1">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.10.1">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.10.1">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.02.5"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.02.5"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.10.1"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.10.1"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.11.02.5">
-  <style>
-    :root {
-      --primary:#111827;
-      --primary-2:#374151;
-      --accent:#4B5563;
-      --primary-rgb:17,24,39;
-      --primary-soft:#F3F4F6;
-      --success:#00B894;
-      --error:#E8414F;
-      --warning:#FFA502;
-      --bg:#F2F4F6;
-      --surface:#FFFFFF;
-      --surface-2:#F8FAFC;
-      --border:#E5E8EB;
-      --text:#191F28;
-      --text-soft:#4E5968;
-      --secondary:#6B7684;
-      --shadow:0 22px 60px rgba(15,23,42,0.13);
-      --soft-shadow:0 12px 30px rgba(25,31,40,0.075);
-    }
-    * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; outline:none; }
-    html { min-height:100%; background:#F2F4F6; }
-    body {
-      margin:0;
-      min-height:100vh;
-      min-height:100dvh;
-      font-family:Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color:var(--text);
-      line-height:1.5;
-      word-break:keep-all;
-      background:
-        radial-gradient(circle at 12% 0%, rgba(255,255,255,0.92) 0, rgba(255,255,255,0.35) 30%, transparent 52%),
-        linear-gradient(180deg,#EEF2F7 0%,#F3F4F6 42%,#F7F8FA 100%);
-      background-size:100% 100%;
-      animation:none;
-    }
-    @keyframes apStudentBg {
-      0% { background-position:0% 50%; }
-      50% { background-position:100% 50%; }
-      100% { background-position:0% 50%; }
-    }
-    @media (prefers-reduced-motion: reduce) { body { animation:none; } }
-    button, input { font-family:inherit; }
-    button { cursor:pointer; }
-    .top {
-      position:sticky;
-      top:0;
-      z-index:20;
-      min-height:58px;
-      padding:0 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      background:rgba(255,255,255,0.82);
-      border-bottom:1px solid rgba(17,24,39,0.08);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-      color:var(--text);
-    }
-    .brand { display:flex; align-items:center; gap:9px; min-width:0; }
-    .brand-logo { width:30px; height:30px; border-radius:10px; display:block; box-shadow:0 6px 14px rgba(17,24,39,0.10); }
-    .brand-copy { display:flex; flex-direction:column; gap:1px; min-width:0; }
-    .brand-main { font-size:17px; font-weight:500; color:var(--text); letter-spacing:-0.35px; line-height:1.2; text-shadow:none; }
-    .brand-sub { font-size:12px; font-weight:500; color:var(--secondary); letter-spacing:-0.1px; line-height:1.2; }
-    .top-actions { display:flex; align-items:center; gap:8px; min-width:0; }
-    .chip {
-      max-width:150px;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      font-size:12px;
-      font-weight:500;
-      color:var(--text);
-      text-align:right;
-      background:#F3F4F6;
-      border:1px solid rgba(17,24,39,0.10);
-      border-radius:999px;
-      padding:6px 10px;
-      backdrop-filter:blur(10px);
-    }
-    .chip:empty { display:none; }
-    .logout {
-      border:1px solid rgba(17,24,39,0.12);
-      background:#FFFFFF;
-      color:#374151;
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:12px;
-      font-weight:500;
-    }
-    .logout.hidden { display:none; }
-    .app {
-      width:100%;
-      max-width:1120px;
-      min-height:calc(100vh - 58px);
-      margin:0 auto;
-      padding:clamp(22px,5vw,58px) clamp(18px,5vw,68px) calc(34px + env(safe-area-inset-bottom));
-      display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(320px,430px);
-      gap:clamp(26px,6vw,70px);
-      align-items:center;
-    }
-    .hero { display:flex; flex-direction:column; gap:22px; min-width:0; color:var(--text); }
-    .hero-kicker {
-      width:fit-content;
-      display:inline-flex;
-      align-items:center;
-      min-height:32px;
-      padding:7px 12px;
-      border-radius:999px;
-      background:#F3F4F6;
-      border:1px solid rgba(17,24,39,0.10);
-      color:#374151;
-      font-size:12px;
-      font-weight:500;
-      line-height:1.2;
-      backdrop-filter:blur(10px);
-    }
-    .hero-title { margin:0; font-size:clamp(38px,5.8vw,68px); font-weight:500; letter-spacing:-2.8px; line-height:0.98; color:var(--text); text-shadow:none; }
-    .hero-desc { margin:0; max-width:520px; font-size:clamp(15px,1.45vw,18px); font-weight:500; color:var(--secondary); line-height:1.7; }
-    .visual-wrap {
-      position:relative;
-      width:min(100%,450px);
-      min-height:188px;
-      border-radius:34px;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.48) 18%, transparent 42%),
-        linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.12) 100%);
-      border:1px solid rgba(255,255,255,0.30);
-      box-shadow:0 24px 64px rgba(15,23,42,0.18);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-    }
-    .visual-orb { position:absolute; border-radius:999px; opacity:.9; pointer-events:none; }
-    .visual-orb.one { width:92px; height:92px; right:-20px; top:-24px; background:rgba(255,255,255,0.22); }
-    .visual-orb.two { width:62px; height:62px; left:22px; bottom:-18px; background:rgba(0,184,148,0.22); }
-    .visual-orb.three { width:24px; height:24px; right:84px; bottom:38px; background:rgba(255,210,94,0.45); }
-    .visual-card {
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:186px;
-      min-height:110px;
-      transform:translate(-50%, -50%) rotate(-2deg);
-      border-radius:26px;
-      background:rgba(255,255,255,0.96);
-      border:1px solid rgba(255,255,255,0.72);
-      box-shadow:0 24px 54px rgba(15,23,42,0.18);
-      padding:24px 22px;
-    }
-    .visual-line { height:8px; border-radius:999px; background:#DDE3EA; margin-bottom:11px; }
-    .visual-line.a { width:92px; }
-    .visual-line.b { width:132px; }
-    .visual-line.c { width:74px; margin-bottom:0; }
-    .visual-check {
-      position:absolute;
-      right:18px;
-      bottom:16px;
-      width:44px;
-      height:44px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#00856C 0%,#009A7D 100%);
-      color:#fff;
-      font-size:25px;
-      font-weight:500;
-      box-shadow:0 12px 24px rgba(0,184,148,0.24);
-    }
-    .card {
-      background:rgba(255,255,255,0.95);
-      border:1px solid rgba(255,255,255,0.58);
-      border-radius:30px;
-      padding:26px 24px 24px;
-      box-shadow:var(--shadow);
-      margin-bottom:14px;
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-    }
-    .login-card { width:100%; }
-    .card-title { margin:0; font-size:22px; font-weight:500; line-height:1.25; letter-spacing:-0.65px; color:var(--text); }
-    .card-desc { margin:8px 0 0; font-size:13px; font-weight:400; color:var(--secondary); line-height:1.6; }
-    .input {
-      width:100%;
-      min-height:58px;
-      border:1px solid rgba(229,232,235,0.96);
-      border-radius:18px;
-      background:#F8FAFC;
-      color:var(--text);
-      padding:15px 16px;
-      font-size:16px;
-      font-weight:500;
-      box-shadow:none;
-    }
-    .input::placeholder, .material-quick-input::placeholder { color:#5F6B7A; opacity:1; }
-    .btn {
-      width:100%;
-      min-height:56px;
-      border:1px solid var(--border);
-      border-radius:18px;
-      background:var(--surface-2);
-      color:var(--text);
-      font-size:15px;
-      font-weight:500;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      transition:transform .12s ease, opacity .12s ease, background .12s ease;
-    }
-    .btn-primary { background:#111827; color:#fff; border:none; box-shadow:0 12px 24px rgba(17,24,39,0.18); }
-    .btn-primary:hover { background:#1F2937; }
-    .btn:active { transform:scale(0.985); }
-    .btn[disabled] { opacity:.58; pointer-events:none; }
-    .stack { display:flex; flex-direction:column; gap:12px; }
-    .notice {
-      font-size:13px;
-      font-weight:500;
-      color:var(--secondary);
-      line-height:1.58;
-      padding:13px 14px;
-      background:var(--surface-2);
-      border:1px solid rgba(229,232,235,0.80);
-      border-radius:18px;
-    }
-    .notice strong { color:var(--text); font-weight:500; }
-    .student-shell { width:100%; max-width:760px; margin:0 auto; grid-column:1 / -1; align-self:start; }
-    .student-profile-card {
-      display:grid;
-      grid-template-columns:minmax(0,1fr) auto;
-      gap:18px;
-      align-items:center;
-      background:rgba(255,255,255,0.95);
-    }
-    .profile-name { margin:0; font-size:25px; font-weight:500; letter-spacing:-0.8px; line-height:1.18; color:var(--text); }
-    .profile-sub { margin:7px 0 0; font-size:13px; font-weight:400; color:var(--secondary); }
-    .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; min-width:190px; }
-    .summary-box { border:1px solid var(--border); border-radius:18px; background:var(--surface-2); padding:13px; text-align:center; }
-    .summary-value { font-size:24px; font-weight:500; color:#111827; line-height:1; }
-    .summary-label { margin-top:6px; font-size:12px; font-weight:400; color:var(--secondary); }
-    .portal-assignments-card { padding:18px 18px 16px; }
-    .portal-assignments-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
-    .portal-assignments-note { margin-top:2px; font-size:12px; font-weight:400; color:var(--secondary); }
-    .portal-assignments-list { display:flex; flex-direction:column; gap:8px; margin-top:14px; }
-    .portal-assignment-row {
-      width:100%;
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:var(--surface-2);
-      padding:12px 13px;
-      box-shadow:none;
-      text-align:left;
-    }
-    .portal-assignment-row.is-clickable { cursor:pointer; }
-    .portal-assignment-line { font-size:13px; font-weight:500; color:var(--text); line-height:1.5; }
-    .portal-assignment-line .muted { color:var(--secondary); }
-    .portal-assignment-meta { margin-top:7px; display:flex; flex-wrap:wrap; gap:6px; }
-    .portal-assignment-pill {
-      display:inline-flex;
-      align-items:center;
-      min-height:22px;
-      padding:0 8px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:var(--surface);
-      color:var(--secondary);
-      font-size:12px;
-      font-weight:500;
-    }
-    .portal-assignment-pill.type-mixed { color:#374151; border-color:rgba(17,24,39,0.12); background:#F3F4F6; }
-    .portal-assignment-pill.type-clinic { color:#4B5563; border-color:rgba(17,24,39,0.12); background:#F9FAFB; }
-    .portal-assignment-pill.status-pending { color:#374151; border-color:rgba(17,24,39,0.12); background:#F3F4F6; }
-    .portal-assignment-pill.status-done { color:#00705A; border-color:rgba(0,184,148,0.18); background:rgba(0,184,148,0.10); }
-    .portal-assignment-pill.status-muted { color:var(--secondary); border-color:var(--border); background:var(--surface); }
-    .portal-assignment-actions { margin-top:10px; display:flex; gap:8px; }
-    .portal-assignment-actions .btn { width:auto; min-height:36px; padding:0 12px; border-radius:12px; font-size:12px; }
-    .portal-assignments-more { margin-top:10px; text-align:right; font-size:12px; font-weight:400; color:var(--secondary); }
-    .portal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
-    .portal-card { display:flex; flex-direction:column; gap:14px; min-height:218px; }
-    .portal-grid.compact { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .portal-grid.compact .portal-card { min-height:auto; }
-    .portal-support-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
-    .portal-quick-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:14px; }
-    .portal-quick-actions .btn { min-height:44px; border-radius:14px; }
-    .portal-lab-entry { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:64px; padding:12px 18px; border-radius:22px; text-decoration:none; color:var(--text); }
-    .portal-lab-entry:active { transform:scale(0.985); }
-    .portal-lab-entry-text { display:flex; flex-direction:column; gap:2px; min-width:0; }
-    .portal-lab-entry-title { font-size:16px; font-weight:600; color:var(--text); }
-    .portal-lab-entry-sub { font-size:13px; font-weight:400; color:var(--text-soft); }
-    .portal-lab-entry-go { flex:0 0 auto; font-size:20px; line-height:1; color:var(--text-soft); }
-    .portal-omr-home-list { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
-    .portal-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex:1; }
-    .portal-mark { flex:0 0 auto; width:42px; height:42px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:#F3F4F6; color:#374151; border:1px solid rgba(17,24,39,0.08); }
-    .portal-mark svg { width:22px; height:22px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
-    .portal-mark.green { background:rgba(0,184,148,0.10); color:var(--success); }
-    .portal-mark.orange { background:rgba(255,165,2,0.12); color:var(--warning); }
-    .omr-list-header { padding:4px 2px 0; }
-    .omr-list-header .card-title { font-size:24px; }
-    .omr-browser { margin-top:22px; }
-    .omr-filter-tabs {
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      border:1px solid #D1D5DB;
-      border-radius:14px;
-      overflow:hidden;
-      background:#FFFFFF;
-    }
-    .clinic-view-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:12px; }
-    .clinic-status-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:8px; }
-    .omr-list-view-filter-tabs { grid-template-columns:repeat(4,minmax(0,1fr)); }
-    .omr-filter-tab {
-      min-width:0;
-      min-height:46px;
-      border:0;
-      border-right:1px solid #E5E7EB;
-      background:#FFFFFF;
-      color:#6B7280;
-      font-size:13px;
-      font-weight:600;
-      line-height:1.2;
-      cursor:pointer;
-    }
-    .omr-filter-tab:last-child { border-right:0; }
-    .omr-filter-tab:hover { background:#F9FAFB; color:#111827; }
-    .omr-filter-tab:focus-visible { position:relative; z-index:1; outline:3px solid rgba(17,24,39,0.18); outline-offset:-3px; }
-    .omr-filter-tab.active { background:#F3F4F6; color:#111827; }
-    .omr-filter-count { margin-left:4px; color:inherit; font-variant-numeric:tabular-nums; }
-    .omr-filter-note { margin:11px 2px 0; font-size:12px; line-height:1.5; color:var(--secondary); }
-    .omr-list {
-      display:flex;
-      flex-direction:column;
-      margin-top:16px;
-      overflow:hidden;
-      border:1px solid #E5E7EB;
-      border-radius:18px;
-      background:#FFFFFF;
-    }
-    .omr-list .omr-card { border:0; border-bottom:1px solid #E5E7EB; border-radius:0; box-shadow:none; }
-    .omr-list .omr-card:last-child { border-bottom:0; }
-    .omr-list > .empty { border:0; border-radius:0; background:#FFFFFF; }
-    .omr-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
-    .omr-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
-    .omr-title { font-size:15px; font-weight:500; color:var(--text); line-height:1.35; }
-    .omr-meta { margin-top:6px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; }
-    .omr-status { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:12px; font-weight:500; }
-    .omr-status.pending { background:#F3F4F6; color:#4B5563; }
-    .omr-status.done { background:rgba(0,184,148,0.10); color:#00705A; }
-    .omr-status.lifecycle { background:rgba(232,65,79,0.08); color:#9B2831; }
-    .omr-sheet { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:14px; }
-    .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:500; display:flex; align-items:center; justify-content:center; }
-    .omr-no.wrong { background:rgba(232,65,79,0.10); border-color:rgba(232,65,79,0.22); color:var(--error); }
-    .omr-submit-bar { position:sticky; bottom:0; z-index:10; padding:12px 0 calc(12px + env(safe-area-inset-bottom)); background:linear-gradient(180deg,rgba(242,244,246,0),rgba(242,244,246,0.92) 28%,rgba(242,244,246,0.98)); }
-    .material-wrong-tools { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-    .material-range-tabs { display:flex; gap:8px; overflow-x:auto; padding:4px 0 10px; scrollbar-width:none; }
-    .material-range-tabs::-webkit-scrollbar { display:none; }
-    .material-range-tab { flex:0 0 auto; min-height:36px; padding:0 12px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; }
-    .material-range-tab.active { background:#F3F4F6; border-color:rgba(17,24,39,0.16); color:#111827; }
-    .material-quick-input { width:100%; min-height:46px; border-radius:14px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); padding:0 14px; font-size:14px; font-weight:500; box-sizing:border-box; }
-    .material-selected { margin-top:12px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; word-break:break-word; }
-    .material-no-wrong { background:rgba(0,184,148,0.10) !important; color:#00705A !important; border-color:rgba(0,184,148,0.18) !important; }
-    .assignment-list { display:flex; flex-direction:column; gap:10px; }
-    .assignment-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
-    .assignment-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
-    .assignment-title { font-size:15px; font-weight:500; color:var(--text); line-height:1.35; }
-    .assignment-meta { margin-top:6px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; }
-    .assignment-desc { margin-top:10px; padding:11px 12px; border-radius:15px; background:var(--surface-2); border:1px solid rgba(229,232,235,0.82); color:var(--text); font-size:13px; font-weight:400; line-height:1.58; white-space:pre-wrap; word-break:break-word; }
-    .status-pill { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:12px; font-weight:500; }
-    .status-pill.missing { background:rgba(232,65,79,0.10); color:#C0222F; }
-    .status-pill.done { background:rgba(0,184,148,0.10); color:#00705A; }
-    .section-title { margin:18px 4px 10px; font-size:14px; font-weight:500; color:#fff; }
-    .empty { padding:24px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400; background:rgba(255,255,255,0.92); border:1px dashed rgba(229,232,235,0.96); border-radius:22px; }
-    .row-actions { display:flex; gap:8px; margin-top:13px; flex-wrap:wrap; }
-    .row-actions .btn { min-height:44px; border-radius:15px; font-size:13px; }
-    .omr-actions {
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:8px;
-      margin-top:14px;
-    }
-    .omr-actions .btn {
-      width:100%;
-      min-width:0;
-      height:46px;
-      min-height:46px;
-      padding:0 10px;
-      border-radius:14px;
-      font-size:13px;
-      font-weight:600;
-      white-space:nowrap;
-      box-shadow:none;
-      line-height:1;
-    }
-    .omr-actions.review-hidden {
-      grid-template-columns:1fr;
-    }
-    .omr-actions.is-review-only { grid-template-columns:repeat(4,minmax(0,1fr)); }
-    .omr-review-unavailable { margin:12px 0 0; padding:10px 12px; border-radius:12px; background:#F9FAFB; color:#6B7280; font-size:12px; line-height:1.55; }
-    .back-btn {
-      width:auto;
-      min-height:40px;
-      padding:8px 14px;
-      font-size:12px;
-      border-radius:999px;
-      margin-bottom:12px;
-      background:#F3F4F6;
-      border:1px solid rgba(17,24,39,0.12);
-      color:#374151;
-      box-shadow:0 8px 18px rgba(17,24,39,0.08);
-    }
-    .back-btn:hover { background:#E5E7EB; color:#111827; }
-    .review-btn {
-      flex:1 1 120px;
-      min-height:40px;
-      border-radius:14px;
-      border:1px solid rgba(17,24,39,0.14);
-      background:#FFFFFF;
-      color:#374151;
-      font-size:12px;
-      font-weight:500;
-      box-shadow:none;
-    }
-    .review-btn:hover { background:#F3F4F6; color:#111827; }
-    .review-btn.solution {
-      border-color:rgba(17,24,39,0.16);
-      background:#F9FAFB;
-      color:#111827;
-    }
-    .omr-actions .review-btn,
-    .omr-actions .btn-primary {
-      flex:none;
-      border-radius:14px;
-      font-size:13px;
-      font-weight:600;
-    }
-    .omr-actions .btn-primary {
-      background:#111827;
-      color:#FFFFFF;
-      box-shadow:0 8px 18px rgba(17,24,39,0.16);
-    }
-    @media (max-width:420px) {
-      .omr-actions:not(.review-hidden) {
-        grid-template-columns:repeat(2,minmax(0,1fr));
-      }
-    }
-
-    .install-card {
-      margin-top:2px;
-      padding:14px;
-      border-radius:20px;
-      background:#FFFFFF;
-      border:1px solid rgba(17,24,39,0.10);
-      display:none;
-      gap:12px;
-      align-items:flex-start;
-    }
-    .install-card.show { display:flex; }
-    .install-card.compact { margin:0 0 14px; background:rgba(255,255,255,0.94); box-shadow:var(--soft-shadow); }
-    .install-icon {
-      flex:0 0 auto;
-      width:40px;
-      height:40px;
-      border-radius:15px;
-      background:#FFFFFF url('./icons/icon-192.png?v=2026.11.02.5') center/cover no-repeat;
-      color:transparent;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      font-weight:500;
-      box-shadow:0 10px 20px rgba(17,24,39,0.12);
-      overflow:hidden;
-    }
-    .install-body { min-width:0; flex:1; }
-    .install-title { font-size:13px; font-weight:500; color:var(--text); line-height:1.35; }
-    .install-desc { margin-top:4px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.55; }
-    .install-actions { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
-    .install-mini-btn {
-      width:auto;
-      min-height:36px;
-      padding:0 12px;
-      border-radius:12px;
-      border:1px solid rgba(17,24,39,0.12);
-      background:#fff;
-      color:#374151;
-      font-size:12px;
-      font-weight:500;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:none;
-    }
-    .install-mini-btn.primary { background:#111827; color:#fff; border-color:#111827; }
-
-    .toast {
-      position:fixed;
-      left:50%;
-      bottom:calc(24px + env(safe-area-inset-bottom));
-      transform:translateX(-50%);
-      background:#191F28;
-      color:#fff;
-      padding:11px 15px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:500;
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .18s ease, transform .18s ease;
-      z-index:100;
-      white-space:nowrap;
-      box-shadow:0 10px 28px rgba(25,31,40,0.18);
-    }
-    .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
-    .student-update-notice {
-      position:fixed;
-      left:50%;
-      bottom:calc(18px + env(safe-area-inset-bottom));
-      width:min(92vw,420px);
-      transform:translateX(-50%);
-      display:none;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 13px 12px 15px;
-      border:1px solid rgba(17,24,39,0.12);
-      border-radius:18px;
-      background:rgba(255,255,255,0.96);
-      color:var(--text);
-      box-shadow:0 14px 34px rgba(17,24,39,0.16);
-      z-index:120;
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-    }
-    .student-update-notice.show { display:flex; }
-    .student-update-copy { min-width:0; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.45; }
-    .student-update-copy strong { display:block; margin-bottom:2px; font-size:13px; font-weight:600; color:var(--text); }
-    .student-update-btn {
-      flex:0 0 auto;
-      min-height:36px;
-      border:0;
-      border-radius:12px;
-      padding:0 13px;
-      background:#111827;
-      color:#fff;
-      font-size:12px;
-      font-weight:600;
-    }
-    .student-app-version {
-      margin-top:12px;
-      text-align:center;
-      font-size:12px;
-      font-weight:500;
-      color:var(--secondary);
-    }
-    @media (max-width:860px) {
-      body { background:
-        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%),
-        linear-gradient(180deg,#EEF2F7 0%,#F3F4F6 44%,#F7F8FA 100%); animation:none; }
-      .app {
-        max-width:520px;
-        min-height:auto;
-        display:flex;
-        flex-direction:column;
-        gap:18px;
-        padding:24px 16px calc(32px + env(safe-area-inset-bottom));
-        align-items:stretch;
-      }
-      .hero { gap:15px; }
-      .hero-title { font-size:34px; letter-spacing:-1.8px; line-height:1.04; }
-      .hero-desc { font-size:14px; line-height:1.6; }
-      .visual-wrap { width:100%; min-height:132px; border-radius:28px; box-shadow:0 18px 42px rgba(15,23,42,0.16); }
-      .visual-card { width:158px; min-height:94px; padding:20px 18px; border-radius:24px; }
-      .visual-line { height:7px; margin-bottom:9px; }
-      .visual-line.a { width:82px; }
-      .visual-line.b { width:116px; }
-      .visual-line.c { width:66px; }
-      .visual-check { width:40px; height:40px; border-radius:15px; font-size:23px; }
-      .card { border-radius:28px; padding:22px 16px 18px; }
-      .student-shell { max-width:520px; }
-      .omr-list-header .card-title { font-size:22px; }
-      .student-profile-card { grid-template-columns:1fr; }
-      .summary-grid { min-width:0; width:100%; }
-      .portal-grid { grid-template-columns:1fr; gap:12px; }
-      .portal-grid.compact,
-      .portal-support-grid,
-      .portal-quick-actions { grid-template-columns:1fr; }
-      .portal-card { min-height:auto; }
-      .omr-sheet { grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
-      .omr-no { min-height:44px; }
-      .omr-actions { gap:7px; }
-      .omr-actions .btn { height:42px; min-height:42px; padding:0 6px; font-size:12px; border-radius:13px; }
-
-      .section-title { color:var(--text); }
-    }
-    @media (max-width:380px) {
-      .app { padding-left:12px; padding-right:12px; }
-      .card { padding:20px 16px 17px; border-radius:26px; }
-      .hero-title { font-size:31px; }
-      .chip { max-width:120px; }
-      .top { padding-left:14px; padding-right:14px; }
-      .omr-actions { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
-      .omr-actions .btn { height:42px; min-height:42px; padding:0 4px; font-size:12px; }
-      .omr-filter-tab { font-size:12px; }
-    }
-    /* 확대 허용(2026-11-01 결정) 후 iOS가 16px 미만 입력칸에 포커스할 때 화면을 자동 확대하는 것을 막는다. 휴대폰 폭에서만. */
-    @media (max-width:767px) {
-      input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=button]):not([type=submit]),
-      select, textarea { font-size:16px !important; }
-    }
-  </style>
-  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.11.02.5">
-  <style>
-    body.student-portal-theme {
-      --primary:#111827;
-      --primary-dark:#030712;
-      --primary-soft:#F3F4F6;
-      --primary-rgb:17,24,39;
-      --accent:#4B5563;
-      --subj-math-bg:#F3F4F6;
-      --subj-math-text:#374151;
-      /* 글자로 쓰이는 의미색은 본문 대비 4.5:1 이상으로 짙게 둔다 (WCAG 2.2 AA). apms-theme-override.css의 :root 값을 이긴다. */
-      --success:#00705A;
-      --warning:#A64B00;
-      --error:#C0222F;
-      background:
-        radial-gradient(circle at 12% 0%, rgba(255,255,255,0.92) 0, rgba(255,255,255,0.35) 30%, transparent 52%),
-        linear-gradient(180deg,#EEF2F7 0%,#F3F4F6 42%,#F7F8FA 100%) !important;
-    }
-    /* 입력칸 포커스: 공유 CSS의 outline(2px, 간격 2px)과 진한 테두리가 겹쳐 이중 링이 되므로, 간격을 없애 하나의 진한 링(#111827, 흰 카드 위 17:1)으로 합친다. */
-    body.student-portal-theme .input:focus-visible,
-    body.student-portal-theme .material-quick-input:focus-visible {
-      outline:2px solid var(--primary);
-      outline-offset:0;
-    }
-    body.student-portal-theme .hero-kicker,
-    body.student-portal-theme .portal-assignment-pill.type-mixed,
-    body.student-portal-theme .portal-assignment-pill.status-pending,
-    body.student-portal-theme .omr-status.pending,
-    body.student-portal-theme .material-range-tab.active {
-      background:#F3F4F6 !important;
-      border-color:rgba(17,24,39,0.12) !important;
-      color:#374151 !important;
-    }
-    body.student-portal-theme .btn-primary,
-    body.student-portal-theme button.btn-primary,
-    body.student-portal-theme .install-mini-btn.primary {
-      background:#111827 !important;
-      border-color:#111827 !important;
-      color:#FFFFFF !important;
-      box-shadow:0 8px 20px rgba(17,24,39,0.18) !important;
-    }
-    body.student-portal-theme .portal-mark {
-      background:#F3F4F6 !important;
-      color:#374151 !important;
-      border:1px solid rgba(17,24,39,0.08) !important;
-    }
-    body.student-portal-theme .summary-value {
-      color:#111827 !important;
-    }
-    body.student-portal-theme .omr-card {
-      background:#FFFFFF !important;
-      border:1px solid #E5E7EB !important;
-      box-shadow:none !important;
-      color:#111827 !important;
-    }
-    /* 시험지 목록은 바깥 틀 하나 안에 구분선으로 이어진 행이다. 공유 CSS의 카드 모서리 16px·카드별 테두리가 행마다 파인 홈을 만들지 않게 평평하게 둔다. */
-    body.student-portal-theme .omr-list .omr-card {
-      border-width:0 0 1px !important;
-      border-radius:0 !important;
-    }
-    body.student-portal-theme .omr-list .omr-card:last-child {
-      border-bottom-width:0 !important;
-    }
-    body.student-portal-theme .omr-card .omr-title {
-      color:#111827 !important;
-      font-weight:600 !important;
-    }
-    body.student-portal-theme .omr-card .omr-meta {
-      color:#4B5563 !important;
-    }
-    body.student-portal-theme .omr-card .omr-status.pending {
-      background:#F3F4F6 !important;
-      border:0 !important;
-      color:#374151 !important;
-    }
-    body.student-portal-theme .omr-card .omr-status.done {
-      background:rgba(0,184,148,0.10) !important;
-      color:#00705A !important;
-    }
-    body.student-portal-theme .omr-filter-tab:focus-visible {
-      outline:3px solid #111827 !important;
-      outline-offset:-4px !important;
-      box-shadow:inset 0 0 0 1px #FFFFFF !important;
-    }
-    body.student-portal-theme .omr-card .omr-actions {
-      display:grid !important;
-      visibility:visible !important;
-    }
-    body.student-portal-theme .omr-card .omr-actions .review-btn {
-      background:#FFFFFF !important;
-      border:1px solid #D1D5DB !important;
-      color:#111827 !important;
-      box-shadow:none !important;
-    }
-    body.student-portal-theme .omr-card .omr-actions .review-btn:hover {
-      background:#F9FAFB !important;
-    }
-    body.student-portal-theme .omr-card .omr-actions .btn-primary {
-      background:#111827 !important;
-      border-color:#111827 !important;
-      color:#FFFFFF !important;
-      box-shadow:0 8px 18px rgba(17,24,39,0.16) !important;
-    }
-    @media (max-width:520px) {
-      body.student-portal-theme .omr-card .omr-actions {
-        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
-        gap:7px !important;
-      }
-      body.student-portal-theme .omr-card .omr-actions.is-review-only {
-        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-      }
-      body.student-portal-theme .omr-card .omr-actions .btn {
-        min-width:0 !important;
-        height:42px !important;
-        min-height:42px !important;
-        padding:0 4px !important;
-        font-size:12px !important;
-        white-space:nowrap !important;
-      }
-      body.student-portal-theme .omr-list .omr-card .omr-actions:not(.is-review-only):not(.review-hidden) {
-        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.10.1">
 </head>
 <body class="student-portal-theme">
+  <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.02.5" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.10.1" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -775,8 +41,9 @@
       <button id="logout-btn" class="logout hidden" onclick="logoutStudent()">로그아웃</button>
     </div>
   </header>
-  <main id="app" class="app"></main>
-  <div id="toast" class="toast"></div>
+  <nav id="student-nav" class="student-nav" aria-label="학생 포털" hidden></nav>
+  <main id="app" class="app" tabindex="-1"></main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <div id="student-update-notice" class="student-update-notice" role="status" aria-live="polite"></div>
 
   <script>
@@ -786,7 +53,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.02.5';
+    const STUDENT_APP_VERSION = '2026.11.10.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -809,6 +76,7 @@
     let omrIndex = null;
     let omrLoadedAssignmentId = null;
     let omrDraft = null;
+    let omrResultAssignmentId = '';
     let omrListFilter = 'all';
     let materialWrongData = null;
     let wrongClinicData = null;
@@ -819,10 +87,16 @@
     let latestWrongClinicRefresh = null;
     let pendingWrongClinicOpen = null;
     let materialWrongDraft = null;
+    let materialWrongTargetId = '';
     let wrongClinicDraft = null;
     let isLoading = false;
     let deferredInstallPrompt = null;
     let clinicLearningController = null;
+    let materialShowAll = false;
+    let studentHistoryRestoring = false;
+    let studentHistoryReady = false;
+    let pendingStudentWrites = 0;
+    const pendingOmrSubmissionIds = new Set();
 
     function $(id) { return document.getElementById(id); }
     function escapeHtml(value) {
@@ -872,6 +146,8 @@
           isLoadingViewGeneration = null;
         }
       }
+      updateStudentNavigation(view);
+      recordStudentView(view);
       return captureStudentView();
     }
     function captureStudentView() {
@@ -881,6 +157,70 @@
       return Boolean(viewContext) && viewContext.view === expectedView &&
         currentStudentView === expectedView && viewContext.generation === studentViewGeneration;
     }
+    function updateStudentNavigation(view) {
+      document.body.dataset.studentView = view;
+      const nav = $('student-nav');
+      if (!nav) return;
+      nav.hidden = !session?.student_id || ['boot', 'login', 'preview-error'].includes(view);
+      if (nav.hidden) return;
+      const restoreNavFocus = nav.contains(document.activeElement);
+      const selected = view.startsWith('omr-') ? 'exams' : ['clinic-review', 'material-wrong'].includes(view) ? 'review' : 'home';
+      const navigationHtml = `
+        <button type="button" class="nav-item ${selected === 'home' ? 'active' : ''}" ${selected === 'home' ? 'aria-current="page"' : ''} onclick="renderHome()">홈</button>
+        <button type="button" class="nav-item ${selected === 'exams' ? 'active' : ''}" ${selected === 'exams' ? 'aria-current="page"' : ''} onclick="renderOmrExams()">시험지</button>
+        ${isTeacherPreview ? '' : `<a class="nav-item" href="${geometryLabHref()}">실험실</a>`}
+        <button type="button" class="nav-item ${selected === 'review' ? 'active' : ''}" ${selected === 'review' ? 'aria-current="page"' : ''} onclick="openStudentReview()">복습·기록</button>
+      `;
+      if (nav.innerHTML !== navigationHtml) nav.innerHTML = navigationHtml;
+      if (restoreNavFocus) requestAnimationFrame(() => {
+        if (document.activeElement === document.body) $('app')?.focus({ preventScroll: true });
+      });
+    }
+    function openStudentReview() {
+      if (currentStudentView !== 'home') renderHome();
+      const target = $('student-review-section');
+      if (target) {
+        target.open = true;
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+        target.querySelector('summary')?.focus({ preventScroll: true });
+      }
+    }
+    function recordStudentView(view) {
+      if (studentHistoryRestoring) { studentHistoryRestoring = false; return; }
+      if (!session?.student_id || ['boot', 'login', 'preview-error'].includes(view)) return;
+      const state = { apStudentView: view };
+      if (view === 'omr-input') state.assignmentId = omrDraft?.assignment_id || '';
+      if (view === 'omr-result') state.assignmentId = omrResultAssignmentId;
+      if (view === 'clinic-review') state.packetKey = wrongClinicDraft?.packet_key || '';
+      if (view === 'material-wrong') state.assignmentId = materialWrongTargetId || materialWrongDraft?.assignment_id || '';
+      const previous = window.history.state;
+      try {
+        if (!studentHistoryReady) { window.history.replaceState(state, '', window.location.href); studentHistoryReady = true; }
+        else if (previous?.apStudentView !== view || previous?.assignmentId !== state.assignmentId || previous?.packetKey !== state.packetKey) {
+          window.history.pushState(state, '', window.location.href);
+          window.scrollTo(0, 0);
+        }
+      } catch (e) { /* Navigation remains available if history is unavailable. */ }
+    }
+    async function restoreStudentView(event) {
+      if (!hasPortalReadAccess() || !event.state?.apStudentView) return;
+      studentHistoryRestoring = true;
+      try {
+        const view = event.state.apStudentView;
+        if (view === 'omr-list') await renderOmrExams();
+        else if (view === 'assignments') renderAssignments();
+        else if (view === 'omr-input' || view === 'omr-result') {
+          const exam = findOmrExam(event.state.assignmentId);
+          if (!exam) await renderOmrExams();
+          else if (getStudentPortalRecordedSubmission(exam) === 'submitted') renderOmrResult(exam);
+          else if (omrDraft?.assignment_id === exam.assignment_id) { enterStudentView('omr-input', false, true); drawOmrInput(exam); }
+          else renderOmrInput(exam.assignment_id);
+        } else if (view === 'clinic-review' && findWrongClinicPacket(event.state.packetKey)) renderWrongClinicReview(event.state.packetKey);
+        else if (view === 'material-wrong' && event.state.assignmentId) await openMaterialWrongOmr(event.state.assignmentId);
+        else renderHome();
+      } finally { studentHistoryRestoring = false; }
+    }
+    window.addEventListener('popstate', restoreStudentView);
     function renderStudentAppVersion() {
       return `<div class="student-app-version">v${escapeHtml(STUDENT_APP_VERSION)}</div>`;
     }
@@ -923,11 +263,23 @@
       el.classList.add('show');
     }
     function reloadStudentPortalWithVersion(version) {
+      if (hasUnfinishedStudentWork() && !confirm('아직 저장하지 않은 선택은 사라집니다. 업데이트할까요?')) return;
       const nextVersion = encodeURIComponent(version || STUDENT_APP_VERSION);
       const url = new URL(window.location.href);
       url.searchParams.set('v', nextVersion);
       url.searchParams.set('t', String(Date.now()));
       window.location.replace(url.toString());
+    }
+    function hasUnfinishedStudentWork() {
+      if (isLoading || pendingStudentWrites > 0 || ['omr-input', 'clinic-review', 'material-wrong'].includes(currentStudentView)) return true;
+      if (omrDraft && getStudentPortalRecordedSubmission(findOmrExam(omrDraft.assignment_id)) !== 'submitted' &&
+        JSON.stringify(normalizeOmrWrongIds(omrDraft.wrong_ids)) !== JSON.stringify(normalizeOmrWrongIds(omrDraft.saved_wrong_ids))) return true;
+      if (wrongClinicDraft && JSON.stringify(normalizeWrongClinicWrongIds(wrongClinicDraft.wrong_ids)) !==
+        JSON.stringify(normalizeWrongClinicWrongIds(wrongClinicDraft.saved_wrong_ids))) return true;
+      return Boolean(materialWrongDraft && (
+        JSON.stringify(Array.from(materialWrongDraft.wrong_numbers).sort((a, b) => a - b)) !== JSON.stringify(materialWrongDraft.saved_wrong_numbers || []) ||
+        materialWrongDraft.is_no_wrong !== materialWrongDraft.saved_is_no_wrong || materialWrongDraft.quick_input
+      ));
     }
     function setTopStudent(name) {
       $('student-chip').textContent = name || '';
@@ -1001,6 +353,9 @@
       session = next;
       if (contextChanged) {
         studentRequestGeneration += 1;
+        studentHistoryReady = false;
+        materialShowAll = false;
+        omrDraft = null;
         disposeClinicLearningView();
         homeData = null;
         homeIndex = null;
@@ -1010,6 +365,8 @@
         omrListFilter = 'all';
         materialWrongData = null;
         materialWrongDraft = null;
+        materialWrongTargetId = '';
+        omrResultAssignmentId = '';
         wrongClinicData = null;
         wrongClinicLoadError = '';
         wrongClinicView = 'recent';
@@ -1063,7 +420,7 @@
       try {
         const url = new URL(window.location.href);
         url.searchParams.delete('wrong_clinic');
-        window.history.replaceState(null, '', url.toString());
+        window.history.replaceState(window.history.state, '', url.toString());
       } catch (e) {}
     }
     function clearSession() {
@@ -1075,6 +432,13 @@
       sessionStorage.removeItem('PLANNER_SID');
       sessionStorage.removeItem('PLANNER_PIN');
       session = null;
+      studentHistoryReady = false;
+      materialShowAll = false;
+      omrDraft = null;
+      materialWrongDraft = null;
+      materialWrongTargetId = '';
+      omrResultAssignmentId = '';
+      materialWrongData = null;
       homeData = null;
       homeIndex = null;
       omrData = null;
@@ -1162,20 +526,14 @@
     function renderHero() {
       return `
         <section class="hero">
-          <div class="visual-wrap" aria-hidden="true">
-            <span class="visual-orb one"></span>
-            <span class="visual-orb two"></span>
-            <span class="visual-orb three"></span>
-            <div class="visual-card">
-              <div class="visual-line a"></div>
-              <div class="visual-line b"></div>
-              <div class="visual-line c"></div>
-              <div class="visual-check">✓</div>
-            </div>
-          </div>
-          <div class="hero-kicker">AP수학 학생 포털</div>
-          <h1 class="hero-title">AP Math OS</h1>
-          <p class="hero-desc">과제, 플래너, OMR을 한곳에서 확인해요.</p>
+          <p class="hero-kicker">AP MATH · STUDENT</p>
+          <h1 class="hero-title">시험지부터<br>복습까지.</h1>
+          <p class="hero-desc">풀고, 채점하고, 다시 이해하는 수학.<br>나의 학습을 한곳에서 이어가세요.</p>
+          <ol class="login-steps" aria-label="학생 포털 사용 순서">
+            <li><span>01</span> 내 시험지 확인</li>
+            <li><span>02</span> 틀린 번호 체크 · OMR 제출</li>
+            <li><span>03</span> 정답과 해설로 복습</li>
+          </ol>
         </section>
       `;
     }
@@ -1187,11 +545,13 @@
         <section class="card login-card">
           <div class="stack">
             <div>
-              <h1 class="card-title">학생 로그인</h1>
+              <h2 class="card-title">학생 로그인</h2>
               <p class="card-desc">이름과 PIN은 선생님께 받은 정보로 입력하세요.</p>
             </div>
             ${message ? `<div class="notice"><span style="font-weight:600;">확인 필요</span><br>${escapeHtml(message)}</div>` : ''}
+            <label class="field-label" for="student-name">이름</label>
             <input id="student-name" class="input" type="text" autocomplete="name" placeholder="이름 입력" onkeydown="if(event.key==='Enter')$('student-pin').focus()">
+            <label class="field-label" for="student-pin">개인 PIN</label>
             <input id="student-pin" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')loginStudent()">
             <button id="login-btn" class="btn btn-primary" onclick="loginStudent()">로그인</button>
             ${renderInstallCard()}
@@ -1199,7 +559,7 @@
           </div>
         </section>
       `;
-      setTimeout(() => $('student-name')?.focus(), 80);
+      if (window.matchMedia('(min-width: 768px)').matches) setTimeout(() => $('student-name')?.focus(), 80);
     }
     async function loginStudent() {
       if (isLoading) return;
@@ -1324,10 +684,12 @@
       if (Array.isArray(omrData?.exams)) return omrData.exams.slice();
       return getStudentPortalHomeIndex().classExamAssignments.slice();
     }
-    async function loadMaterialWrongAssignments(force = false) {
-      if (!session?.student_id || !session?.student_token) return { items: [] };
+    async function loadMaterialWrongAssignments(force = false, request = beginStudentRequest('materialList')) {
+      if (!request.studentId || !request.studentToken) return { items: [] };
       if (!force && materialWrongData?.items) return materialWrongData;
-      materialWrongData = await apiGet(`material-omr/student-assignments?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      const next = await apiGet(`material-omr/student-assignments?student_id=${encodeURIComponent(request.studentId)}`, request.studentToken);
+      if (!isStudentRequestCurrent(request)) return null;
+      materialWrongData = next;
       return materialWrongData;
     }
     function getMaterialWrongAssignments() {
@@ -1342,13 +704,17 @@
       if (!session?.student_id || !session?.student_token) return;
       const root = $('material-wrong-section');
       if (!root) return;
+      const request = beginStudentRequest('materialList');
+      const view = captureStudentView();
       try {
-        await loadMaterialWrongAssignments(true);
+        await loadMaterialWrongAssignments(true, request);
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'home')) return;
         const nextRoot = $('material-wrong-section');
         if (nextRoot) nextRoot.outerHTML = renderMaterialWrongAssignments();
       } catch (e) {
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'home')) return;
         const nextRoot = $('material-wrong-section');
-        if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty">수업자료 오답을 불러오지 못했습니다.</div>';
+        if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty" role="alert">수업자료 오답을 불러오지 못했습니다.<br><button type="button" class="btn" onclick="refreshMaterialWrongAssignments()">다시 불러오기</button></div>';
       }
     }
     async function loadWrongClinicPackets(force = false, request = beginStudentRequest('clinic')) {
@@ -1492,10 +858,13 @@
       if (!packet) return toast('오답 클리닉을 찾을 수 없습니다.');
       const count = Math.max(0, Number(packet.item_count || 0));
       if (!count) return toast('문항 수를 확인할 수 없습니다.');
-      wrongClinicDraft = {
-        packet_key: String(packet.packet_key || ''),
-        wrong_ids: normalizeWrongClinicWrongIds(packet.review_wrong_ids)
-      };
+      if (wrongClinicDraft?.packet_key !== String(packet.packet_key || '')) {
+        wrongClinicDraft = {
+          packet_key: String(packet.packet_key || ''),
+          wrong_ids: normalizeWrongClinicWrongIds(packet.review_wrong_ids),
+          saved_wrong_ids: normalizeWrongClinicWrongIds(packet.review_wrong_ids)
+        };
+      }
       enterStudentView('clinic-review', false, true);
       drawWrongClinicReview(packet);
     }
@@ -1504,14 +873,14 @@
       const wrongSet = new Set(normalizeWrongClinicWrongIds(wrongClinicDraft?.wrong_ids));
       const buttons = Array.from({ length: count }, (_, idx) => {
         const no = idx + 1;
-        return `<button class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" onclick="toggleWrongClinicWrong(${no})">${no}</button>`;
+        return `<button type="button" class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" aria-label="${no}번 오답" aria-pressed="${wrongSet.has(no)}" data-clinic-no="${no}" onclick="toggleWrongClinicWrong(${no})">${no}</button>`;
       }).join('');
       $('app').innerHTML = `
         <div class="student-shell">
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="card">
             <h1 class="card-title">${escapeHtml(packet.title || '오답 클리닉')}</h1>
-            <p class="card-desc">정답과 해설을 확인한 뒤, 다시 틀린 번호만 선택해 저장하세요.</p>
+            <p class="eyebrow">클리닉 복습</p><p class="card-desc">정답과 해설을 확인한 뒤, 다시 틀린 번호만 선택해 저장하세요. 시험 OMR 제출과 별도로 저장됩니다.</p>
             <div class="notice" style="margin-top:14px;">선택한 오답 <span style="font-weight:600;">${wrongSet.size}개</span></div>
             <div class="omr-sheet">${buttons}</div>
           </section>
@@ -1522,13 +891,18 @@
       `;
     }
     function toggleWrongClinicWrong(no) {
-      if (!wrongClinicDraft) return;
+      if (isLoading || !wrongClinicDraft) return;
       const wrong = new Set(normalizeWrongClinicWrongIds(wrongClinicDraft.wrong_ids));
       if (wrong.has(no)) wrong.delete(no);
       else wrong.add(no);
       wrongClinicDraft.wrong_ids = Array.from(wrong).sort((a, b) => a - b);
       const packet = findWrongClinicPacket(wrongClinicDraft.packet_key);
-      if (packet) drawWrongClinicReview(packet);
+      if (packet) {
+        const scrollY = window.scrollY;
+        drawWrongClinicReview(packet);
+        document.querySelector(`[data-clinic-no="${no}"]`)?.focus({ preventScroll: true });
+        window.scrollTo(0, scrollY);
+      }
     }
     async function saveWrongClinicReviewWrongs() {
       if (isLoading || !wrongClinicDraft) return;
@@ -1544,6 +918,7 @@
       const btn = $('wrong-clinic-review-save-btn');
       isLoading = true;
       isLoadingViewGeneration = view.generation;
+      pendingStudentWrites += 1;
       if (btn) {
         btn.disabled = true;
         btn.textContent = '저장 중...';
@@ -1558,6 +933,7 @@
         });
         if (!isStudentRequestCurrent(request) || wrongClinicDraft !== draft) return;
         Object.assign(packet, data.packet || {});
+        draft.saved_wrong_ids = wrongIds;
         const draftUnchanged = wrongClinicDraft === draft &&
           JSON.stringify(normalizeWrongClinicWrongIds(draft.wrong_ids)) === JSON.stringify(wrongIds);
         const returnHomeAfterSave = isStudentViewCurrent(view, 'clinic-review') && draftUnchanged;
@@ -1573,6 +949,7 @@
           toast(e.message || '오답 저장에 실패했습니다.');
         }
       } finally {
+        pendingStudentWrites = Math.max(0, pendingStudentWrites - 1);
         if (isStudentRequestCurrent(request) && isLoadingViewGeneration === view.generation) {
           isLoading = false;
           isLoadingViewGeneration = null;
@@ -1690,7 +1067,7 @@
     }
     function renderMaterialWrongAssignments() {
       const list = getMaterialWrongAssignments();
-      const visible = list.slice(0, 2);
+      const visible = materialShowAll ? list : list.slice(0, 2);
       const rows = visible.length ? visible.map(item => {
         const status = getMaterialWrongStatus(item);
         const isSubmitted = Number(item.is_submitted || 0) === 1;
@@ -1717,25 +1094,43 @@
           </div>
           <div class="portal-assignments-list">${rows}</div>
           <div class="portal-assignments-note">수업자료 원문은 열리지 않습니다.</div>
+          ${list.length > 2 ? `<button type="button" class="list-more" onclick="toggleMaterialAssignmentList()">${materialShowAll ? '최근 2개만 보기' : `전체 ${list.length}개 보기`}</button>` : ''}
         </section>
       `;
     }
+    function toggleMaterialAssignmentList() {
+      materialShowAll = !materialShowAll;
+      const section = $('material-wrong-section');
+      if (section) section.outerHTML = renderMaterialWrongAssignments();
+    }
     async function openMaterialWrongOmr(assignmentId) {
-      if (!assignmentId || !session?.student_id || !session?.student_token) return;
+      if (isTeacherPreview || !assignmentId || !session?.student_id || !session?.student_token) return;
+      materialWrongTargetId = String(assignmentId);
+      const request = beginStudentRequest('materialOpen');
+      const view = enterStudentView('material-wrong', false, true);
+      if (String(materialWrongDraft?.assignment_id || '') === materialWrongTargetId) {
+        drawMaterialWrongOmr();
+        return;
+      }
+      $('app').innerHTML = '<div class="student-shell"><button type="button" class="btn back-btn" onclick="renderHome()">← 홈</button><div class="empty" role="status">수업자료 오답을 불러오는 중입니다.</div></div>';
       try {
-        const data = await apiGet(`material-omr/assignment?assignment_id=${encodeURIComponent(assignmentId)}&student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+        const data = await apiGet(`material-omr/assignment?assignment_id=${encodeURIComponent(assignmentId)}&student_id=${encodeURIComponent(request.studentId)}`, request.studentToken);
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'material-wrong')) return;
         materialWrongDraft = {
           assignment_id: assignmentId,
           material: data.material,
           assignment: data.assignment,
           wrong_numbers: new Set((data.submission?.wrong_numbers || []).map(Number).filter(Number.isFinite)),
+          saved_wrong_numbers: (data.submission?.wrong_numbers || []).map(Number).filter(Number.isFinite).sort((a, b) => a - b),
+          saved_is_no_wrong: Number(data.submission?.is_no_wrong || 0) === 1 ? 1 : 0,
           range_start: Number(data.material?.number_start || 1),
           range_size: 100,
           is_no_wrong: Number(data.submission?.is_no_wrong || 0) === 1 ? 1 : 0
         };
         drawMaterialWrongOmr();
       } catch (e) {
-        toast(e.message || '수업자료 오답을 불러오지 못했습니다.');
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'material-wrong')) return;
+        $('app').innerHTML = `<div class="student-shell"><button type="button" class="btn back-btn" onclick="renderHome()">← 홈</button><div class="empty" role="alert"><strong>수업자료를 불러오지 못했습니다.</strong><p>${escapeHtml(e.message || '연결을 확인해 주세요.')}</p><button type="button" class="btn" onclick="openMaterialWrongOmr('${escapeHtml(assignmentId)}')">다시 불러오기</button></div></div>`;
       }
     }
     function getMaterialWrongBounds() {
@@ -1754,17 +1149,18 @@
     }
     function drawMaterialWrongOmr() {
       if (!materialWrongDraft) return;
+      materialWrongTargetId = String(materialWrongDraft.assignment_id || '');
       enterStudentView('material-wrong');
       const { start, end } = getMaterialWrongBounds();
       const currentStart = Math.min(Math.max(Number(materialWrongDraft.range_start || start), start), end);
       const currentEnd = Math.min(end, currentStart + 99);
       const ranges = materialWrongRanges().map(r => `
-        <button class="material-range-tab ${r.start === currentStart ? 'active' : ''}" onclick="setMaterialWrongRange(${r.start})">${r.start}-${r.end}</button>
+        <button type="button" class="material-range-tab ${r.start === currentStart ? 'active' : ''}" aria-pressed="${r.start === currentStart}" onclick="setMaterialWrongRange(${r.start})">${r.start}-${r.end}</button>
       `).join('');
       const buttons = [];
       for (let no = currentStart; no <= currentEnd; no += 1) {
         const selected = materialWrongDraft.wrong_numbers.has(no);
-        buttons.push(`<button class="omr-no ${selected ? 'wrong' : ''}" onclick="toggleMaterialWrongNo(${no})">${no}</button>`);
+        buttons.push(`<button type="button" class="omr-no ${selected ? 'wrong' : ''}" aria-label="${no}번 오답" aria-pressed="${selected}" data-material-no="${no}" onclick="toggleMaterialWrongNo(${no})">${no}</button>`);
       }
       const selected = Array.from(materialWrongDraft.wrong_numbers).sort((a, b) => a - b);
       $('app').innerHTML = `
@@ -1776,11 +1172,11 @@
             <div class="material-range-tabs">${ranges}</div>
             <div class="omr-sheet">${buttons.join('')}</div>
             <div class="material-wrong-tools">
-              <input id="material-quick-input" class="material-quick-input" placeholder="빠른 입력: 123,124,130 또는 123-128" onkeydown="if(event.key==='Enter')applyMaterialQuickInput()">
+              <label class="field-label" for="material-quick-input">오답 번호 빠른 입력</label><input id="material-quick-input" class="material-quick-input" value="${escapeHtml(materialWrongDraft.quick_input || '')}" placeholder="예: 123,124,130 또는 123-128" oninput="materialWrongDraft.quick_input=this.value" onkeydown="if(event.key==='Enter')applyMaterialQuickInput()">
               <button class="btn" onclick="applyMaterialQuickInput()">빠른 입력</button>
               <button class="btn material-no-wrong" onclick="markMaterialNoWrong()">오답 없음</button>
             </div>
-            <div class="material-selected">선택됨: ${selected.length ? selected.join(', ') : '없음'}</div>
+            <div class="material-selected" id="material-selected" role="status">선택됨: ${selected.length ? selected.join(', ') : '없음'}</div>
           </section>
           <div class="omr-submit-bar">
             <button id="material-submit-btn" class="btn btn-primary" onclick="submitMaterialWrongOmr()">제출</button>
@@ -1790,17 +1186,21 @@
       `;
     }
     function setMaterialWrongRange(start) {
-      if (!materialWrongDraft) return;
+      if (isLoading || !materialWrongDraft) return;
       materialWrongDraft.range_start = Number(start);
       drawMaterialWrongOmr();
     }
     function toggleMaterialWrongNo(no) {
-      if (!materialWrongDraft) return;
+      if (isLoading || !materialWrongDraft) return;
       const n = Number(no);
       materialWrongDraft.is_no_wrong = 0;
       if (materialWrongDraft.wrong_numbers.has(n)) materialWrongDraft.wrong_numbers.delete(n);
       else materialWrongDraft.wrong_numbers.add(n);
-      drawMaterialWrongOmr();
+      const button = document.querySelector(`[data-material-no="${n}"]`);
+      const selected = materialWrongDraft.wrong_numbers.has(n);
+      if (button) { button.classList.toggle('wrong', selected); button.setAttribute('aria-pressed', String(selected)); }
+      const numbers = Array.from(materialWrongDraft.wrong_numbers).sort((a, b) => a - b);
+      if ($('material-selected')) $('material-selected').textContent = `선택됨: ${numbers.length ? numbers.join(', ') : '없음'}`;
     }
     function parseMaterialQuickInput(raw) {
       const { start, end } = getMaterialWrongBounds();
@@ -1818,7 +1218,7 @@
       return [...new Set(out.filter(n => Number.isFinite(n) && n >= start && n <= end))].sort((a, b) => a - b);
     }
     function applyMaterialQuickInput() {
-      if (!materialWrongDraft) return;
+      if (isLoading || !materialWrongDraft) return;
       const input = $('material-quick-input');
       const parsed = parseMaterialQuickInput(input?.value || '');
       if (!parsed.length) {
@@ -1827,10 +1227,11 @@
       }
       parsed.forEach(no => materialWrongDraft.wrong_numbers.add(no));
       materialWrongDraft.is_no_wrong = 0;
+      materialWrongDraft.quick_input = '';
       drawMaterialWrongOmr();
     }
     function markMaterialNoWrong() {
-      if (!materialWrongDraft) return;
+      if (isLoading || !materialWrongDraft) return;
       materialWrongDraft.wrong_numbers.clear();
       materialWrongDraft.is_no_wrong = 1;
       drawMaterialWrongOmr();
@@ -1838,31 +1239,51 @@
     }
     async function submitMaterialWrongOmr() {
       if (isLoading || !materialWrongDraft) return;
+      const request = beginStudentRequest('materialMutation');
+      const view = captureStudentView();
+      if (!isStudentViewCurrent(view, 'material-wrong')) return;
+      const draft = materialWrongDraft;
       const btn = $('material-submit-btn');
       isLoading = true;
+      isLoadingViewGeneration = view.generation;
+      pendingStudentWrites += 1;
       if (btn) {
         btn.disabled = true;
         btn.textContent = '제출 중...';
       }
       try {
-        const wrongNumbers = Array.from(materialWrongDraft.wrong_numbers).sort((a, b) => a - b);
+        const wrongNumbers = Array.from(draft.wrong_numbers).sort((a, b) => a - b);
+        const isNoWrong = draft.is_no_wrong ? 1 : 0;
         await apiPost('material-omr/submit', {
-          assignment_id: materialWrongDraft.assignment_id,
-          student_id: session.student_id,
-          token: session.student_token,
-          student_token: session.student_token,
+          assignment_id: draft.assignment_id,
+          student_id: request.studentId,
+          token: request.studentToken,
+          student_token: request.studentToken,
           wrong_numbers: wrongNumbers,
-          is_no_wrong: materialWrongDraft.is_no_wrong ? 1 : 0
+          is_no_wrong: isNoWrong
         });
-        toast('수업자료 오답이 제출되었습니다.');
+        if (!isStudentRequestCurrent(request)) return;
         materialWrongData = null;
-        materialWrongDraft = null;
-        renderHome();
+        if (materialWrongDraft === draft) {
+          draft.saved_wrong_numbers = wrongNumbers;
+          draft.saved_is_no_wrong = isNoWrong;
+          const draftUnchanged = JSON.stringify(Array.from(draft.wrong_numbers).sort((a, b) => a - b)) === JSON.stringify(wrongNumbers) && (draft.is_no_wrong ? 1 : 0) === isNoWrong;
+          if (isStudentViewCurrent(view, 'material-wrong') && draftUnchanged) {
+            toast('수업자료 오답이 제출되었습니다.');
+            materialWrongDraft = null;
+            renderHome();
+            openStudentReview();
+          }
+        }
       } catch (e) {
-        toast(e.message || '제출에 실패했습니다.');
+        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'material-wrong')) toast(e.message || '제출에 실패했습니다.');
       } finally {
-        isLoading = false;
-        if (btn) {
+        pendingStudentWrites = Math.max(0, pendingStudentWrites - 1);
+        if (isStudentRequestCurrent(request) && isLoadingViewGeneration === view.generation) {
+          isLoading = false;
+          isLoadingViewGeneration = null;
+        }
+        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'material-wrong') && btn?.isConnected) {
           btn.disabled = false;
           btn.textContent = '제출';
         }
@@ -1888,92 +1309,29 @@
     }
     function renderOmrHomeSection() {
       const visible = getStudentPortalAssignments();
-      const hasCompleteReviewSet = !exactOmrAssignmentId && Array.isArray(omrData?.exams) &&
-        visible.length > 0 && visible.length < 150 &&
-        visible.every(row => isOmrReviewAvailable(row));
-      const description = isTeacherPreview
-        ? '학생에게 출제된 시험지와 기록된 상태를 확인합니다.'
-        : hasCompleteReviewSet
-          ? '출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다. 조회된 시험 제출 상태와 기록 결과를 확인하세요. 클리닉 오답 체크는 시험 제출과 별도입니다.'
-          : visible.length
-            ? `현재 조회된 ${visible.length}개 시험지입니다. 원본 파일이 제공되는 시험지에서 문제·정답·해설을 확인할 수 있습니다. 시험 제출 상태와 클리닉 오답 체크는 별도입니다.`
-            : '현재 조회된 출제 시험지가 없습니다. 시험 제출 결과와 클리닉 오답 체크는 별도입니다.';
-      const rows = visible.length ? visible.map(row => {
-        const assignmentId = escapeHtml(String(row?.assignment_id || ''));
-        const examDate = escapeHtml(String(row?.exam_date || ''));
-        const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험지');
-        const questionCount = Number(row?.question_count || 0);
-        const className = escapeHtml(String(row?.class_name || '').trim());
-        const meta = [className, examDate, questionCount ? `${questionCount}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
-        const submittedStatus = getStudentPortalRecordedSubmission(row);
-        const submitted = submittedStatus === 'submitted';
-        const scoreLabel = submitted && row?.score !== null && row?.score !== undefined && row?.score !== '' && Number.isFinite(Number(row.score))
-          ? ` · ${row.score}점`
-          : '';
-        return `
-          <div class="omr-card" id="student-assignment-${assignmentId}" data-assignment-id="${assignmentId}">
-            <div class="omr-top">
-              <div style="min-width:0;">
-                <div class="omr-title">${examTitle}</div>
-                <div class="omr-meta">${escapeHtml(meta || 'OMR 입력 필요')}</div>
-              </div>
-              <span class="omr-status ${submittedStatus === 'unknown' ? '' : submitted ? 'done' : 'pending'}">${submittedStatus === 'unknown' ? '제출 상태 확인 필요' : submitted ? `시험 제출 완료${scoreLabel}` : (isTeacherPreview ? '출제됨' : '입력 필요')}</span>
-            </div>
-            ${window.StudentClinicLineageView ? window.StudentClinicLineageView.renderCard(row) : ''}
-            <div class="row-actions">
-              ${renderOmrPdfAction(row)}
-              ${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>'}
-              ${isTeacherPreview || submitted ? '' : submittedStatus === 'unknown' ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
-            </div>
-          </div>
-        `;
-      }).join('') : `
-        <div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '바로 입력할 OMR이 없습니다.'}</div>
-      `;
+      const recent = visible.slice(0, 3);
       return `
-        <section id="student-portal-omr-home-section" class="card portal-assignments-card">
+        <section id="student-portal-omr-home-section" class="card portal-assignments-card home-exams">
           <div class="portal-assignments-head">
             <div>
+              <p class="eyebrow">나의 학습</p>
               <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : '내 시험지'}</h2>
-              <p class="card-desc">${description}</p>
+              <p class="card-desc">최근 출제된 시험지입니다. 직접 채점한 뒤 틀린 번호를 체크하세요.</p>
             </div>
-            <div class="portal-mark orange">${renderIcon('omr')}</div>
+            <button type="button" class="btn btn-quiet" onclick="renderOmrExams()">전체 ${visible.length}개 보기 <span aria-hidden="true">→</span></button>
           </div>
-          <div class="portal-omr-home-list">${rows}</div>
-          <div class="portal-quick-actions">
-            <button class="btn btn-primary" onclick="renderOmrExams()">출제 시험지 목록 보기 (${visible.length})</button>
-          </div>
+          <div class="portal-omr-home-list">${recent.length ? recent.map(renderOmrExamCard).join('') : '<div class="empty"><strong>아직 출제된 시험지가 없어요.</strong><p>선생님이 시험지를 배정하면 여기에 표시됩니다.</p></div>'}</div>
+          ${visible.length > recent.length ? `<button type="button" class="list-more" onclick="renderOmrExams()">이전 시험지까지 모두 보기 (${visible.length}) <span aria-hidden="true">→</span></button>` : ''}
         </section>
       `;
     }
     function renderStudentQuickActions() {
-      if (isTeacherPreview) {
-        return `
-          <section class="card portal-assignments-card">
-            <div class="portal-assignments-head">
-              <div>
-                <h2 class="card-title">과제 · 시험지</h2>
-                <p class="card-desc">학생에게 보이는 출제 내용을 확인합니다.</p>
-              </div>
-            </div>
-            <div class="portal-quick-actions">
-              <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
-              <button class="btn" onclick="renderOmrExams()">시험지 보기</button>
-            </div>
-          </section>
-        `;
-      }
       return `
-        <section class="card portal-assignments-card">
-          <div class="portal-assignments-head">
-            <div>
-              <h2 class="card-title">과제 · 플래너</h2>
-              <p class="card-desc">필요할 때 바로 엽니다.</p>
-            </div>
-          </div>
+        <section class="student-tools" aria-label="학습 도구">
+          <div><h2 class="section-title">학습 도구</h2><p class="card-desc">계획과 과제도 여기서 확인해요.</p></div>
           <div class="portal-quick-actions">
-            <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
-            <button class="btn" onclick="openPlanner()">플래너 열기</button>
+            ${isTeacherPreview ? '' : `<button type="button" class="tool-link" onclick="openPlanner()"><span class="tool-icon">${renderIcon('planner')}</span><span><strong>나의 플래너</strong><small>계획하고 공부 시간 기록하기</small></span><span aria-hidden="true">→</span></button>`}
+            <button type="button" class="tool-link" onclick="renderAssignments()"><span class="tool-icon">${renderIcon('task')}</span><span><strong>과제 확인</strong><small>과제 확인과 사진 제출</small></span><span aria-hidden="true">→</span></button>
           </div>
         </section>
       `;
@@ -1990,10 +1348,11 @@
     function renderGeometryLabEntry() {
       return `<a id="portal-geometry-lab-entry" class="card portal-lab-entry" href="${geometryLabHref()}" aria-label="도형실험실 열기. 도형을 직접 움직여 보기">
               <span class="portal-lab-entry-text">
-                <span class="portal-lab-entry-title">도형실험실</span>
-                <span class="portal-lab-entry-sub">도형을 직접 움직여 보기</span>
+                <span class="eyebrow">눈으로 이해하는 수학</span>
+                <span class="portal-lab-entry-title">도형·수학 실험실</span>
+                <span class="portal-lab-entry-sub">도형을 직접 움직여 보기 · 그래프로 개념 확인하기</span>
               </span>
-              <span class="portal-lab-entry-go" aria-hidden="true">›</span>
+              <span class="portal-lab-entry-go">실험실 입장 <span aria-hidden="true">→</span></span>
             </a>`;
     }
     function clinicLearningFetchPage({ studentKey, period, filter, cursor, pageSize }) {
@@ -2050,53 +1409,46 @@
       clinicLearningController = null;
     }
     function renderHome(options = {}) {
+      const openSections = options.preserveView ? Array.from(document.querySelectorAll('.portal-disclosure[open]'), el => el.id) : [];
       enterStudentView('home', options.preserveView === true, options.preserveView !== true);
       const student = homeData?.student || session || {};
-      const { missing, done } = splitAssignments();
+      const groups = groupStudentPortalExams(getStudentPortalAssignments());
       const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
       setTopStudent(student.name || session?.name || '');
       if (isTeacherPreview && student.name) document.title = `${student.name} 학생 화면`;
       $('app').innerHTML = `
         <div class="student-shell">
-          <section class="card student-profile-card">
+          ${isTeacherPreview ? '<div class="notice preview-notice" role="status">선생님 미리보기 · 학생의 화면을 읽기 전용으로 확인하고 있습니다.</div>' : ''}
+          <section class="student-profile-card">
             <div>
-              <p class="hero-kicker" style="margin:0 0 12px;color:#374151;background:#F3F4F6;border-color:rgba(17,24,39,0.12);">AP수학 학생 화면</p>
-              <h1 class="profile-name">${escapeHtml(student.name || '학생')} 학생</h1>
-              <p class="profile-sub">${escapeHtml(schoolGrade || 'AP수학 학생 포털')}</p>
+              <p class="eyebrow">${escapeHtml(schoolGrade || 'AP MATH STUDENT')}</p>
+              <h1 class="profile-name">${escapeHtml(student.name || '학생')} 학생의 학습</h1>
+              <p class="profile-sub">시험지를 확인하고, 틀린 문제를 다시 이해해요.</p>
             </div>
-            <div class="summary-grid">
-              <div class="summary-box">
-                <div class="summary-value">${missing.length}</div>
-                <div class="summary-label">미제출 과제</div>
-              </div>
-              <div class="summary-box">
-                <div class="summary-value">${done.length}</div>
-                <div class="summary-label">제출 완료</div>
-              </div>
+            <div class="summary-grid" aria-label="조회된 시험지 상태">
+              <button type="button" class="summary-box" onclick="omrListFilter='pending';renderOmrExams()"><span class="summary-value">${groups.pending.length}</span><span class="summary-label">진행 중</span></button>
+              <button type="button" class="summary-box" onclick="omrListFilter='complete';renderOmrExams()"><span class="summary-value">${groups.complete.length}</span><span class="summary-label">제출 완료</span></button>
             </div>
           </section>
-          ${isTeacherPreview ? '' : renderInstallCard(true)}
-          ${isTeacherPreview ? '' : renderGeometryLabEntry()}
           ${renderOmrHomeSection()}
-          <section class="card portal-assignments-card" aria-label="내 학습 기록 요약">
-            <div class="portal-assignments-head">
-              <div>
-                <h2 class="card-title">내 학습 기록 요약</h2>
-                <p class="card-desc">현재 불러온 기록 기준의 관측 요약입니다. 숙련도·회복률·전체 기간 판정이 아닙니다.${isTeacherPreview ? ' 선생님 미리보기에서는 읽기 전용입니다.' : ''}</p>
-              </div>
+          ${isTeacherPreview ? '' : renderGeometryLabEntry()}
+          <details id="student-review-section" class="portal-disclosure">
+            <summary><span><strong>복습 · 학습 기록</strong><small>오답 클리닉과 지금까지의 기록을 확인해요.</small></span><span class="disclosure-arrow" aria-hidden="true">＋</span></summary>
+            <div class="review-sections">
+              ${isTeacherPreview ? '' : renderWrongClinicPackets()}
+              <section class="card portal-assignments-card" aria-label="내 학습 기록 요약">
+                <div class="portal-assignments-head"><div><h2 class="card-title">내 학습 기록</h2><p class="card-desc">선택한 기간에 불러온 기록을 보여드려요. 일부 문항이 확인되지 않은 점수는 따로 표시합니다.${isTeacherPreview ? ' 선생님 미리보기에서는 읽기 전용입니다.' : ''}</p></div></div>
+                <div id="clinic-learning-history"></div>
+              </section>
+              ${isTeacherPreview ? '' : `<div class="portal-support-grid">${renderMaterialWrongAssignments()}</div>`}
             </div>
-            <div id="clinic-learning-history"></div>
-          </section>
-          ${isTeacherPreview ? '' : renderWrongClinicPackets()}
+          </details>
           ${renderStudentQuickActions()}
-          ${isTeacherPreview ? '' : `
-            <div class="portal-support-grid">
-              ${renderMaterialWrongAssignments()}
-            </div>
-          `}
+          ${isTeacherPreview ? '' : renderInstallCard(true)}
           ${renderStudentAppVersion()}
         </div>
       `;
+      openSections.forEach(id => { const section = $(id); if (section) section.open = true; });
       if (!isTeacherPreview && typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
       mountClinicLearningView();
     }
@@ -2423,7 +1775,7 @@
       const answerUrl = buildOmrReviewUrl(exam, 'ans');
       const solutionUrl = buildOmrReviewUrl(exam, 'sol');
       return `
-        ${examUrl ? `<button type="button" class="btn review-btn" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'exam')">시험지 보기</button>` : '<button type="button" class="btn review-btn" disabled>시험지 보기</button>'}
+        ${examUrl ? `<button type="button" class="btn review-btn exam-open" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'exam')">시험지 보기</button>` : '<button type="button" class="btn review-btn" disabled>시험지 보기</button>'}
         ${answerUrl ? `<button type="button" class="btn review-btn" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'ans')">정답 보기</button>` : '<button type="button" class="btn review-btn" disabled>정답 보기</button>'}
         ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'sol')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
       `;
@@ -2447,7 +1799,7 @@
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="omr-list-header">
             <h1 class="card-title">시험지 목록</h1>
-            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 문항 수를 확인합니다.' : '시험지를 확인하고 필요한 OMR을 작성하세요.'}</p>
+            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 기록을 확인합니다.' : '시험지 확인 → 직접 채점 → 틀린 번호 체크 → 해설 복습'}</p>
           </section>
           <div class="omr-browser"><div class="empty">시험지를 불러오는 중입니다.</div></div>
         </div>
@@ -2467,7 +1819,7 @@
         if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'omr-list')) return;
         toast(e.message || '시험지를 불러오지 못했습니다.');
         const root = document.querySelector('.omr-browser');
-        if (root) root.innerHTML = '<div class="empty">시험지를 불러오지 못했습니다.</div>';
+        if (root) root.innerHTML = '<div class="empty" role="alert"><strong>시험지를 불러오지 못했어요.</strong><p>연결을 확인한 뒤 다시 시도해 주세요.</p><button type="button" class="btn" onclick="renderOmrExams()">다시 불러오기</button></div>';
       }
     }
     function renderOmrExamCard(exam) {
@@ -2477,8 +1829,9 @@
       const showReview = isOmrReviewAvailable(exam);
       const showPdf = !!renderOmrPdfAction(exam);
       const isLegacyMixedReview = isLegacyMixedOmrReview(exam);
-      const showActionArea = showReview || showPdf || isTeacherPreview || !submitted;
-      const hasActionContent = showReview || showPdf || isTeacherPreview || (!submitted && !submissionUnknown);
+      const canInput = !submitted && !submissionUnknown && !exam.is_review_only && !exam.is_cancelled && !exam.is_replaced;
+      const showActionArea = showReview || showPdf || isTeacherPreview || submitted || canInput;
+      const hasActionContent = showActionArea;
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
       const statusParts = [];
@@ -2487,7 +1840,7 @@
       if (exam.is_cancelled) statusParts.push('취소됨');
       if (exam.is_replaced) statusParts.push('대체됨');
       if (exam.is_review_only) statusParts.push('열람 전용');
-      const status = statusParts.join(' · ');
+      const status = statusParts.join(' · ') || '진행 중';
       const statusClass = exam.is_cancelled || exam.is_replaced || exam.is_review_only
         ? 'lifecycle' : submitted ? 'done' : submissionUnknown ? '' : 'pending';
       return `
@@ -2501,12 +1854,14 @@
           </div>
           ${window.StudentClinicLineageView ? window.StudentClinicLineageView.renderCard(exam) : ''}
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
+          ${!showReview && !isLegacyMixedReview ? '<p class="omr-review-unavailable">연결된 시험지 파일이 없습니다. 종이 시험지를 확인하거나 선생님께 문의하세요.</p>' : ''}
           ${showActionArea && hasActionContent ? `
-            <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
+            <div class="omr-actions ${submitted ? 'is-submitted' : ''} ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
               ${showPdf ? renderOmrPdfAction(exam) : ''}
               ${showReview ? renderOmrReviewActions(exam) : ''}
+              ${submitted ? `<button type="button" class="btn score-open" onclick="renderOmrResult(findOmrExam('${escapeHtml(exam.assignment_id)}'))">점수·오답 확인</button>` : ''}
               ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
-              ${isTeacherPreview || submitted ? '' : submissionUnknown ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}
+              ${isTeacherPreview || submitted ? '' : submissionUnknown || exam.is_review_only || exam.is_cancelled || exam.is_replaced ? '' : `<button class="btn btn-primary omr-start" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">틀린 번호 체크 <span class="button-meta">OMR</span></button>`}
             </div>
           ` : ''}
         </article>
@@ -2543,52 +1898,104 @@
         toast('제출 상태를 확인할 수 없습니다. 중복 제출을 피하려면 선생님에게 확인하세요.');
         return;
       }
+      if (exam.is_review_only || exam.is_cancelled || exam.is_replaced) {
+        toast('열람 전용 시험지는 OMR을 제출할 수 없습니다.');
+        return;
+      }
       const count = Number(exam.question_count || 0);
       if (!count) {
         toast('문항 수가 없어 입력할 수 없습니다.');
         return;
       }
-      omrDraft = {
-        assignment_id: exam.assignment_id,
-        wrong_ids: normalizeOmrWrongIds(exam.wrong_ids)
-      };
+      if (omrDraft?.assignment_id !== exam.assignment_id) {
+        omrDraft = {
+          assignment_id: exam.assignment_id,
+          wrong_ids: normalizeOmrWrongIds(exam.wrong_ids),
+          saved_wrong_ids: normalizeOmrWrongIds(exam.wrong_ids)
+        };
+      }
       enterStudentView('omr-input', false, true);
       drawOmrInput(exam);
     }
     function drawOmrInput(exam) {
       const count = Number(exam.question_count || 0);
       const wrongSet = new Set(normalizeOmrWrongIds(omrDraft?.wrong_ids));
+      const pending = pendingOmrSubmissionIds.has(`${studentRequestGeneration}|${exam.assignment_id}`);
       const meta = [exam.class_name || '', exam.exam_date || '', `${count}문항`].filter(Boolean).join(' · ');
       const buttons = Array.from({ length: count }, (_, idx) => {
         const no = idx + 1;
-        return `<button class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" onclick="toggleOmrWrong(${no})">${no}</button>`;
+        return `<button type="button" class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" data-omr-no="${no}" aria-label="${no}번 오답" aria-pressed="${wrongSet.has(no)}" onclick="toggleOmrWrong(${no})"><span>${no}</span><span class="omr-selected-mark" aria-hidden="true">✓</span></button>`;
       }).join('');
       $('app').innerHTML = `
-        <div class="student-shell">
+        <div class="student-shell omr-workspace">
           <button class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
           <section class="card">
+            <p class="eyebrow">OMR · 틀린 번호 체크</p>
             <h1 class="card-title">${escapeHtml(exam.exam_title || 'OMR 입력')}</h1>
-            <p class="card-desc">${escapeHtml(meta)}<br>틀린 번호만 눌러 빨간색으로 표시한 뒤 제출하세요.</p>
-            <div class="notice" style="margin-top:14px;">현재 선택한 오답 <span style="font-weight:600;">${wrongSet.size}개</span> · 예상 점수 <span style="font-weight:600;">${Math.round(((count - wrongSet.size) / count) * 100)}점</span></div>
-            <div class="omr-sheet">${buttons}</div>
+            <p class="card-desc">${escapeHtml(meta)}</p>
+            <div class="omr-instructions"><strong>채점한 뒤, 틀린 번호만 눌러주세요.</strong><p>선택한 번호는 오답으로 기록돼요. 다시 누르면 선택이 해제됩니다.</p></div>
+            <div class="omr-draft-summary" id="omr-draft-summary" role="status" aria-live="polite"></div>
+            <div class="omr-sheet" role="group" aria-label="오답 번호 선택">${buttons}</div>
+            <p class="omr-selection-detail" id="omr-selection-detail"></p>
+            <div class="omr-reference-actions">${renderOmrReviewActions(exam)}</div>
           </section>
           <div class="omr-submit-bar">
-            <button id="omr-submit-btn" class="btn btn-primary" onclick="submitOmr()">OMR 제출</button>
+            <p>모두 맞았다면 번호를 선택하지 않고 제출하세요.<br><strong>제출 후에는 수정할 수 없어요.</strong></p>
+            <button id="omr-submit-btn" class="btn btn-primary" onclick="submitOmr()" ${pending ? 'disabled' : ''}>${pending ? '제출 중...' : 'OMR 제출'}</button>
           </div>
         </div>
       `;
+      updateOmrDraftSummary(exam);
     }
     function toggleOmrWrong(no) {
-      if (isLoading || !omrDraft) return;
+      if (isLoading || !omrDraft || pendingOmrSubmissionIds.has(`${studentRequestGeneration}|${omrDraft.assignment_id}`)) return;
       const wrong = new Set(normalizeOmrWrongIds(omrDraft.wrong_ids));
       if (wrong.has(no)) wrong.delete(no);
       else wrong.add(no);
       omrDraft.wrong_ids = Array.from(wrong).sort((a, b) => a - b);
+      const button = document.querySelector(`[data-omr-no="${no}"]`);
+      if (button) { button.classList.toggle('wrong', wrong.has(no)); button.setAttribute('aria-pressed', String(wrong.has(no))); }
       const exam = findOmrExam(omrDraft.assignment_id);
-      if (exam) drawOmrInput(exam);
+      if (exam) updateOmrDraftSummary(exam);
+    }
+    function updateOmrDraftSummary(exam) {
+      const wrong = normalizeOmrWrongIds(omrDraft?.wrong_ids);
+      const count = Number(exam.question_count || 0);
+      const summary = $('omr-draft-summary');
+      if (summary) summary.innerHTML = `<div><span>선택한 오답</span><strong>${wrong.length}<small>개</small></strong></div><div><span>예상 점수</span><strong>${count ? Math.round(((count - wrong.length) / count) * 100) : 0}<small>점</small></strong></div><p>문항 수로 계산한 예상값입니다. 최종 기록 점수는 제출 후 확인하세요.</p>`;
+      const detail = $('omr-selection-detail');
+      if (detail) detail.textContent = wrong.length ? `선택한 번호: ${wrong.join(', ')}` : '선택한 오답이 없습니다.';
+    }
+    function renderOmrResult(exam) {
+      if (!exam || getStudentPortalRecordedSubmission(exam) !== 'submitted') return;
+      omrResultAssignmentId = String(exam.assignment_id || '');
+      if (currentStudentView === 'omr-input' && String(window.history.state?.assignmentId || '') === omrResultAssignmentId) {
+        try { window.history.replaceState({ apStudentView: 'omr-result', assignmentId: omrResultAssignmentId }, '', window.location.href); } catch (e) {}
+      }
+      enterStudentView('omr-result', false, true);
+      window.scrollTo(0, 0);
+      const hasScore = exam.score !== null && exam.score !== undefined && exam.score !== '' && Number.isFinite(Number(exam.score));
+      const hasWrongRecord = Array.isArray(exam.wrong_ids);
+      const wrong = normalizeOmrWrongIds(exam.wrong_ids);
+      $('app').innerHTML = `
+        <div class="student-shell result-shell">
+          <button type="button" class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
+          <section class="card result-card">
+            <p class="result-status">OMR 제출 완료</p>
+            <h1 class="card-title">${escapeHtml(exam.exam_title || '시험지')}</h1>
+            <div class="recorded-score"><span>기록 점수</span><strong>${hasScore ? escapeHtml(exam.score) : '확인 필요'}${hasScore ? '<small>점</small>' : ''}</strong></div>
+            <p class="card-desc">${hasScore ? '제출한 결과가 저장되었습니다.' : '제출은 완료됐어요. 점수는 선생님께 확인해 주세요.'} 제출한 OMR은 다시 수정할 수 없습니다.</p>
+            <div class="recorded-wrongs"><strong>${hasWrongRecord ? wrong.length ? `오답 ${wrong.length}개` : '기록된 오답 없음' : '오답 번호 확인 필요'}</strong><span>${hasWrongRecord ? wrong.length ? wrong.map(no => `${no}번`).join(' · ') : '정답과 해설로 풀이를 확인해 보세요.' : '이 기록에는 오답 번호가 제공되지 않았습니다. 선생님께 확인해 주세요.'}</span></div>
+            <div class="omr-actions is-submitted">${renderOmrReviewActions(exam)}${renderOmrPdfAction(exam)}</div>
+            <button type="button" class="list-more" onclick="renderOmrExams()">다른 시험지 확인하기 →</button>
+          </section>
+        </div>
+      `;
     }
     async function submitOmr() {
       if (isLoading || !omrDraft) return;
+      const pendingKey = `${studentRequestGeneration}|${omrDraft.assignment_id}`;
+      if (pendingOmrSubmissionIds.has(pendingKey)) return toast('이 시험지의 제출 결과를 확인하고 있습니다.');
       const request = beginStudentRequest('omrMutation');
       const view = captureStudentView();
       if (!isStudentViewCurrent(view, 'omr-input')) return;
@@ -2599,9 +2006,12 @@
       const submissionStatus = getStudentPortalRecordedSubmission(exam);
       if (submissionStatus === 'submitted') return toast('이미 제출한 OMR은 다시 제출할 수 없습니다.');
       if (submissionStatus === 'unknown') return toast('제출 상태를 확인할 수 없습니다. 선생님에게 확인하세요.');
+      if (exam.is_review_only || exam.is_cancelled || exam.is_replaced) return toast('열람 전용 시험지는 OMR을 제출할 수 없습니다.');
       const btn = $('omr-submit-btn');
       isLoading = true;
       isLoadingViewGeneration = view.generation;
+      pendingStudentWrites += 1;
+      pendingOmrSubmissionIds.add(pendingKey);
       if (btn) {
         btn.disabled = true;
         btn.textContent = '제출 중...';
@@ -2623,22 +2033,24 @@
         omrIndex = null;
         const draftUnchanged = omrDraft === draft &&
           JSON.stringify(normalizeOmrWrongIds(draft.wrong_ids)) === JSON.stringify(wrongIds);
-        if (isStudentViewCurrent(view, 'omr-input') && draftUnchanged) {
+        if (currentStudentView === 'omr-input' && draftUnchanged) {
           toast('OMR이 제출되었습니다.');
-          await renderOmrExams();
+          renderOmrResult(exam);
         }
       } catch (e) {
         if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'omr-input') && omrDraft === draft) {
           toast(e.message || 'OMR 제출에 실패했습니다.');
         }
       } finally {
+        pendingOmrSubmissionIds.delete(pendingKey);
+        pendingStudentWrites = Math.max(0, pendingStudentWrites - 1);
         if (isStudentRequestCurrent(request) && isLoadingViewGeneration === view.generation) {
           isLoading = false;
           isLoadingViewGeneration = null;
         }
-        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'omr-input') && btn?.isConnected) {
-          btn.disabled = false;
-          btn.textContent = 'OMR 제출';
+        if (isStudentRequestCurrent(request) && currentStudentView === 'omr-input' && omrDraft === draft) {
+          const activeButton = $('omr-submit-btn');
+          if (activeButton) { activeButton.disabled = false; activeButton.textContent = 'OMR 제출'; }
         }
       }
     }
@@ -2709,6 +2121,10 @@
 
       navigator.serviceWorker.addEventListener('controllerchange', () => {
         if (!hadStudentWorkerController || studentWorkerReloading) return;
+        if (hasUnfinishedStudentWork()) {
+          showStudentUpdateNotice(STUDENT_APP_VERSION, '작성 중인 내용을 먼저 제출하거나 저장한 뒤 업데이트하세요.');
+          return;
+        }
         studentWorkerReloading = true;
         window.location.reload();
       });

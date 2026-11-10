@@ -29,7 +29,7 @@
     var STYLE_ID = 'clinic-learning-view-style';
 
     var LABELS = {
-        title: '내 학습 기록 요약',
+        title: '내 학습 기록',
         period: {
             '30d': '최근 30일',
             '90d': '최근 90일',
@@ -38,8 +38,8 @@
         },
         filter: {
             all: '전체 기록',
-            wrong: '오답이 있는 기록',
-            unchecked: '미확인 문항이 있는 기록'
+            wrong: '오답 포함',
+            unchecked: '미확인 포함'
         },
         state: {
             complete: '문항별 확인 완료',
@@ -49,7 +49,7 @@
         },
         counts: {
             attempts: '이번 페이지 응시',
-            observed: '관측 문항',
+            observed: '집계 문항',
             correct: '정답',
             wrong: '오답',
             partial: '부분 점수',
@@ -60,9 +60,9 @@
         },
         summaryTitle: '이번 페이지 요약',
         summaryScope: '요약·유형 수치는 마지막으로 불러온 페이지 기준입니다. 아래 목록은 지금까지 불러온 기록 전체입니다.',
-        typesTitle: '이번 페이지 유형별 관측',
+        typesTitle: '이번 페이지 유형별 기록',
         typesTruncated: '유형 그룹이 많아 일부 유형만 표시했습니다.',
-        evidence: '근거 시험',
+        evidence: '해당 시험 보기',
         rowsTitle: '응시 기록',
         rowsCount: '지금까지 불러온 응시',
         partialRow: '일부 문항만 확인됨',
@@ -71,8 +71,8 @@
         legacyRow: '문항 정보 없이 오답 수만 있습니다.',
         reset: '처음부터 다시',
         depth: {
-            L4: '세부유형 L4',
-            L3: '유형 L3',
+            L4: '세부 유형',
+            L3: '유형',
             unit: '단원',
             unclassified: '미분류'
         },
@@ -80,11 +80,11 @@
         moreLoading: '다음 기록을 불러오는 중입니다…',
         empty: '선택한 기간에 표시할 학습 기록이 없습니다.',
         error: '학습 기록을 불러오지 못했습니다.',
-        more: '더 보기',
+        more: '이전 기록 더 보기',
         haveMore: '다음 기록이 더 있습니다.',
         allLoaded: '더 불러올 기록이 없습니다.',
         stalled: '같은 위치의 기록이 반복되어 더 불러오기를 멈췄습니다.',
-        openSource: '기록 보기',
+        openSource: '시험지 보기',
         noSource: '연결된 시험지 정보 없음',
         retry: '다시 시도',
         staleIgnored: '이전 조회 결과는 무시했습니다.'
@@ -117,39 +117,45 @@
         var style = doc.createElement('style');
         style.id = STYLE_ID;
         style.textContent = [
-            '.clv-root{display:flex;flex-direction:column;gap:14px;}',
-            '.clv-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;}',
-            '.clv-title{font-size:16px;font-weight:700;margin:0;}',
-            '.clv-controls{display:flex;flex-wrap:wrap;gap:8px;}',
+            '.clv-root{display:flex;flex-direction:column;gap:20px;min-width:0;color:var(--text,#1c1917);font-size:14px;line-height:1.6;}',
+            '.clv-root *{box-sizing:border-box;}',
+            '.clv-head{display:flex;flex-direction:column;gap:12px;}',
+            '.clv-title{font-size:18px;line-height:1.35;font-weight:600;letter-spacing:-.02em;margin:0;}',
+            '.clv-controls{display:flex;flex-wrap:wrap;gap:8px 16px;}',
             '.clv-tabs{display:flex;gap:6px;flex-wrap:wrap;}',
-            '.clv-tab{border:1px solid #d6dae2;background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;cursor:pointer;color:#3c4351;}',
-            '.clv-tab[aria-pressed="true"]{border-color:#2f6bff;background:#eef3ff;color:#1b4ed8;font-weight:700;}',
-            '.clv-scope{font-size:12px;color:#5a6273;margin:0;line-height:1.5;}',
-            '.clv-summary-section{display:flex;flex-direction:column;gap:8px;}',
-            '.clv-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;}',
-            '.clv-stat{border:1px solid #e4e7ee;border-radius:10px;padding:8px 10px;background:#fbfcfe;}',
-            '.clv-stat-label{font-size:12px;color:#6a7285;margin:0 0 2px;}',
-            '.clv-stat-value{font-size:16px;font-weight:700;margin:0;color:#22293a;}',
-            '.clv-notices{margin:0;padding-left:16px;font-size:12px;color:#5a6273;line-height:1.6;}',
-            '.clv-section-title{font-size:13px;font-weight:700;margin:0;color:#2f3646;}',
-            '.clv-types{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}',
-            '.clv-type{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;border-bottom:1px dashed #e8ebf1;padding-bottom:6px;font-size:12px;color:#4b5364;}',
-            '.clv-type-label{font-weight:600;color:#22293a;}',
-            '.clv-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}',
-            '.clv-row{border:1px solid #e4e7ee;border-radius:10px;padding:10px;background:#fff;display:flex;flex-direction:column;gap:5px;}',
+            '.clv-tab{min-height:44px;border:1px solid var(--control-border,#857e78);background:var(--surface,#fff);border-radius:8px;padding:8px 10px;font:inherit;font-size:13px;line-height:1.35;cursor:pointer;color:var(--secondary,#6b645f);}',
+            '.clv-tab[aria-pressed="true"]{border-color:var(--primary,#2563eb);background:var(--accent-soft,#eef4ff);color:var(--primary,#2563eb);font-weight:600;}',
+            '.clv-tab:focus-visible,.clv-btn:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:3px;}',
+            '.clv-scope{font-size:12px;color:var(--secondary,#6b645f);margin:0;line-height:1.6;overflow-wrap:anywhere;}',
+            '.clv-summary-section,.clv-types-section,.clv-rows-section{display:flex;flex-direction:column;gap:12px;}',
+            '.clv-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:var(--border,#e8e5e0);border:1px solid var(--border,#e8e5e0);border-radius:12px;overflow:hidden;}',
+            '.clv-stat{padding:12px 14px;background:var(--surface-2,#f5f3f0);min-width:0;}',
+            '.clv-stat-label{font-size:12px;color:var(--secondary,#6b645f);margin:0 0 4px;}',
+            '.clv-stat-value{font-size:20px;line-height:1.3;font-weight:600;font-variant-numeric:tabular-nums;margin:0;color:var(--text,#1c1917);}',
+            '.clv-notices{margin:0;padding:12px 12px 12px 28px;border-radius:8px;background:var(--surface-2,#f5f3f0);font-size:12px;color:var(--secondary,#6b645f);line-height:1.6;}',
+            '.clv-section-title{font-size:15px;font-weight:600;line-height:1.5;margin:0;color:var(--text,#1c1917);}',
+            '.clv-types{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}',
+            '.clv-type{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;border-bottom:1px solid var(--border,#e8e5e0);padding:12px 0;font-size:12px;color:var(--secondary,#6b645f);}',
+            '.clv-type-label{font-size:14px;font-weight:500;color:var(--text,#1c1917);overflow-wrap:anywhere;}',
+            '.clv-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}',
+            '.clv-row{border:1px solid var(--border,#e8e5e0);border-radius:12px;padding:16px;background:var(--surface,#fff);display:flex;flex-direction:column;gap:8px;min-width:0;}',
             '.clv-row-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline;}',
-            '.clv-row-title{font-size:13px;font-weight:600;color:#1f2733;}',
-            '.clv-row-state{font-size:12px;border-radius:999px;background:#f1f3f8;color:#4a5266;padding:2px 8px;}',
-            '.clv-row-state.is-partial,.clv-row-state.is-unknown{background:#fff6e6;color:#8a5a00;}',
-            '.clv-row-state.is-legacy{background:#f3f0ff;color:#4b3ba8;}',
-            '.clv-row-meta,.clv-row-counts{font-size:12px;color:#5a6273;margin:0;}',
-            '.clv-row-actions{display:flex;gap:8px;}',
-            '.clv-btn{border:1px solid #cfd6e2;background:#fff;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;color:#2f3646;}',
+            '.clv-row-title{font-size:15px;font-weight:600;color:var(--text,#1c1917);overflow-wrap:anywhere;}',
+            '.clv-row-state{font-size:12px;line-height:1.5;border-radius:6px;background:var(--surface-2,#f5f3f0);color:var(--secondary,#6b645f);padding:3px 8px;}',
+            '.clv-row-state.is-complete{background:var(--success-soft,#ecfdf3);color:var(--success,#15803d);}',
+            '.clv-row-state.is-partial,.clv-row-state.is-unknown{background:var(--warning-soft,#fdf3e3);color:var(--warning,#b45309);}',
+            '.clv-row-meta{font-size:12px;color:var(--secondary,#6b645f);margin:0;overflow-wrap:anywhere;}',
+            '.clv-row-counts{font-size:14px;color:var(--text,#1c1917);margin:0;font-variant-numeric:tabular-nums;}',
+            '.clv-row-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}',
+            '.clv-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid var(--control-border,#857e78);background:var(--surface,#fff);border-radius:8px;padding:10px 14px;font:inherit;font-size:14px;line-height:1.4;cursor:pointer;color:var(--text,#1c1917);}',
             '.clv-btn:disabled{opacity:.55;cursor:default;}',
-            '.clv-btn.clv-primary{border-color:#2f6bff;color:#1b4ed8;font-weight:600;}',
-            '.clv-status{font-size:12px;color:#5a6273;min-height:16px;}',
-            '.clv-status.is-error{color:#b3261e;}',
-            '.clv-empty{font-size:13px;color:#5a6273;border:1px dashed #d6dae2;border-radius:10px;padding:16px;text-align:center;}'
+            '.clv-btn.clv-primary{border-color:var(--action-primary,#1c1917);background:var(--action-primary,#1c1917);color:var(--on-primary,#fff);font-weight:500;align-self:flex-start;}',
+            '.clv-status{font-size:12px;color:var(--secondary,#6b645f);margin:0;min-height:0;}',
+            '.clv-status:empty{display:none;}',
+            '.clv-status.is-error{color:var(--error,#b91c1c);}',
+            '.clv-empty{font-size:14px;color:var(--secondary,#6b645f);background:var(--surface-2,#f5f3f0);border:1px solid var(--border,#e8e5e0);border-radius:12px;padding:28px 20px;text-align:center;}',
+            '@media(hover:hover){.clv-btn:not(:disabled):hover,.clv-tab:not([aria-pressed="true"]):hover{background:var(--surface-2,#f5f3f0);}.clv-btn.clv-primary:not(:disabled):hover{background:var(--action-primary-hover,#292524);}}',
+            '@media(max-width:600px){.clv-controls{flex-direction:column;}.clv-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);}.clv-tab{padding:8px 4px;}.clv-summary{grid-template-columns:repeat(2,minmax(0,1fr));}.clv-row{padding:14px;}}'
         ].join('');
         doc.head.appendChild(style);
     }
@@ -434,7 +440,7 @@
                 item.appendChild(el('span', 'clv-type-label', type && type.label ? type.label : '유형 미분류'));
                 var depthLabel = type && labels.depth && labels.depth[type.depth] ? labels.depth[type.depth] : '';
                 if (depthLabel) item.appendChild(el('span', null, depthLabel));
-                item.appendChild(el('span', null, '관측 ' + toCount(type && type.observed)));
+                item.appendChild(el('span', null, '집계 ' + toCount(type && type.observed)));
                 item.appendChild(el('span', null, '오답 ' + toCount(type && type.wrong)));
                 if (toCount(type && type.partial) > 0) {
                     item.appendChild(el('span', null, '부분 ' + toCount(type.partial)));
@@ -492,12 +498,12 @@
             var countParts = [];
             if (row.state === 'legacy') {
                 // Legacy rows have no question-level statuses: never show
-                // '관측 0' as if the attempt contained zero questions.
+                // '집계 0' as if the attempt contained zero questions.
                 countParts.push('오답 ' + toCount(counts.wrong));
             } else if (row.itemsNotInspected) {
                 countParts.push('문항 정보 확인 불가');
             } else {
-                countParts.push('관측 ' + toCount(counts.observed));
+                countParts.push('집계 ' + toCount(counts.observed));
                 countParts.push('정답 ' + toCount(counts.correct));
                 countParts.push('오답 ' + toCount(counts.wrong));
                 if (toCount(counts.partial) > 0) countParts.push('부분 ' + toCount(counts.partial));
@@ -610,7 +616,7 @@
             }
 
             if (state.rows.length) {
-                var rowsSection = el('section');
+                var rowsSection = el('section', 'clv-rows-section');
                 rowsSection.appendChild(el('h4', 'clv-section-title',
                     labels.rowsTitle + ' (' + labels.rowsCount + ' ' + state.rows.length + '건)'));
                 var list = el('ul', 'clv-rows');

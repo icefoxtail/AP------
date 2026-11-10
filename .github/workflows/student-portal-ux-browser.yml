@@ -1,0 +1,89 @@
+name: Student portal UX browser
+
+on:
+  pull_request:
+    paths:
+      - 'apmath/student/**'
+      - 'apmath/homework/**'
+      - 'apmath/planner/**'
+      - 'apmath/playground/index.html'
+      - 'apmath/playground/universe/universe.css'
+      - 'apmath/playground/next/kit/apl-hub.js'
+      - 'apmath/playground/next/kit/apl-hub.css'
+      - 'apmath/css/student-tools.css'
+      - 'tests/student-portal-ux-browser.cjs'
+      - 'tests/fixtures/student-portal-ux-api.cjs'
+      - '.github/workflows/student-portal-ux-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: student-portal-ux-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  synthetic-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out the exact proposed revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /apmath/student/
+            /apmath/homework/
+            /apmath/planner/
+            /apmath/css/
+            /apmath/playground/
+            /archive/*.js
+            /tests/student-portal-ux-browser.cjs
+            /tests/fixtures/student-portal-ux-api.cjs
+      - name: Check out the baseline for visual comparison
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha || 'main' }}
+          path: baseline
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /apmath/student/
+            /apmath/homework/
+            /apmath/planner/
+            /apmath/css/
+            /archive/*.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/student-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/student-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install --no-install-recommends -y fonts-noto-cjk
+      - name: Capture baseline with synthetic data
+        env:
+          NODE_PATH: ${{ runner.temp }}/student-browser/node_modules
+        run: |
+          node source/tests/student-portal-ux-browser.cjs --screens-only \
+            --source-root="$GITHUB_WORKSPACE/baseline" \
+            --output="$RUNNER_TEMP/student-portal-ux/baseline" \
+            --revision="$(git -C baseline rev-parse HEAD)"
+      - name: Verify real product screens with isolated synthetic API responses
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/student-browser/node_modules
+        run: |
+          node source/tests/student-portal-ux-browser.cjs \
+            --output="$RUNNER_TEMP/student-portal-ux/proposed" \
+            --revision="$(git -C source rev-parse HEAD)"
+      - name: Upload screenshots and machine readable evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: student-portal-ux-${{ github.run_id }}
+          path: ${{ runner.temp }}/student-portal-ux/
+          if-no-files-found: error
+          retention-days: 14

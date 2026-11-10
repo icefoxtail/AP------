@@ -18,8 +18,12 @@ test('학생 포털 홈에 도형실험실 입구가 있고 학생 화면에만 
   assert.match(html, /id="portal-geometry-lab-entry"/);
   assert.match(html, /도형을 직접 움직여 보기/);
   assert.match(html, /\$\{isTeacherPreview \? '' : renderGeometryLabEntry\(\)\}/, '선생님 미리보기에는 입구를 넣지 않는다');
-  const home = html.slice(html.indexOf('function renderHome('));
-  assert.ok(home.indexOf('renderGeometryLabEntry()') < home.indexOf('renderOmrHomeSection()'), '입구는 홈 위쪽(시험지 카드 앞)에 있어야 한다');
+  const home = html.slice(html.indexOf('function renderHome('), html.indexOf('function renderAssignments('));
+  const exams = home.indexOf('renderOmrHomeSection()');
+  const lab = home.indexOf('renderGeometryLabEntry()');
+  const review = home.indexOf('id="student-review-section"');
+  const tools = home.indexOf('renderStudentQuickActions()');
+  assert.ok(exams >= 0 && lab > exams && review > lab && tools > review, '실제 사용 우선순위에 따라 시험지 다음에 실험실을 두고 복습·기록과 과제 도구보다 앞에 둔다');
 });
 
 test('입구 경로가 Universe(첫 화면)를 가리킨다', () => {
@@ -50,4 +54,38 @@ test('Universe는 받은 학년 해시를 허브로 그대로 넘기고, 허브�
   assert.match(uni, /sessionStorage\.setItem\('apl:viaUniverse', '1'\)/, 'Universe가 입구 표시를 남긴다');
   assert.match(hub, /location\.replace\('\.\.\/index\.html'\+location\.hash\)/, '허브를 바로 열면 해시를 유지한 채 Universe로 간다');
   assert.match(hub, /catch\(e\)\{\}/, 'sessionStorage가 막히면 허브를 그대로 보여 준다');
+});
+
+test('Universe와 허브에서 학생 포털로 같은 탭에 돌아갈 수 있고 좁은 화면도 기존 도구를 유지한다', () => {
+  const playground = path.join(root, 'apmath', 'playground');
+  const universe = fs.readFileSync(path.join(playground, 'index.html'), 'utf8');
+  const universeStyles = fs.readFileSync(path.join(playground, 'universe', 'universe.css'), 'utf8');
+  const hubSource = fs.readFileSync(path.join(playground, 'next', 'kit', 'apl-hub.js'), 'utf8');
+  const hubStyles = fs.readFileSync(path.join(playground, 'next', 'kit', 'apl-hub.css'), 'utf8');
+  const portalLink = universe.match(/<a class="universe-portal-link" href="([^"]+)" aria-label="학생 포털로 돌아가기">/);
+  assert.ok(portalLink, 'Universe 머리글에 이름이 명확한 학생 포털 복귀 링크가 있어야 한다');
+  assert.equal(path.resolve(playground, portalLink[1]), studentDir, '복귀는 학생 포털 경로로 간다');
+  assert.ok(!portalLink[0].includes('target='), '복귀는 새 탭을 만들지 않는다');
+  assert.match(universe, /class="webgl-fallback"[\s\S]*?class="universe-portal-link" href="\.\.\/student\/"/, '3D를 사용할 수 없어도 포털로 돌아갈 수 있다');
+
+  const trail = hubSource.match(/const trail = ([\s\S]*?);\n/);
+  assert.ok(trail, '허브 경로 내비게이션이 있어야 한다');
+  const nav = vm.runInNewContext(trail[1], {
+    h: (tag, attributes, ...children) => ({ tag, attributes, children }),
+    icon: () => ''
+  });
+  const links = nav.children[0].children;
+  assert.equal(nav.tag, 'nav');
+  const hubPortal = links.find(link => link.attributes.class === 'hub-portal-link');
+  assert.ok(hubPortal && hubPortal.tag === 'a', '허브에도 키보드로 선택할 수 있는 포털 복귀 링크가 있어야 한다');
+  assert.equal(hubPortal.attributes['aria-label'], '학생 포털로 돌아가기');
+  assert.equal(path.resolve(playground, 'next', hubPortal.attributes.href), studentDir, '허브 복귀 링크도 같은 학생 포털로 간다');
+  assert.ok(links.some(link => link.attributes.href === '../index.html'), '기존 Universe 복귀 링크도 남겨 둔다');
+  assert.match(universeStyles, /\.universe-portal-link\s*\{[^}]*min-height:\s*44px/, 'Universe 복귀 링크는 44px 터치 높이를 확보한다');
+  assert.match(hubStyles, /\.hub-trail a\s*\{[^}]*min-height:\s*44px/, '허브 복귀 링크는 44px 터치 높이를 확보한다');
+  assert.match(universeStyles, /\.top-controls\s*\{\s*grid-column:\s*1\s*\/\s*-1/, '좁은 화면의 기존 도구는 별도 행에 자리를 둔다');
+  assert.ok(!/#btnToggleMotion\s*\{[^}]*display:\s*none/.test(universeStyles), '320px에서도 모션 버튼을 숨기지 않는다');
+  for (const id of ['btnToggleHud', 'btnToggleMotion', 'btnEnterLab']) {
+    assert.match(universe, new RegExp(`<button[^>]+id="${id}"`), `기존 ${id} 도구를 유지한다`);
+  }
 });

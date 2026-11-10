@@ -7,7 +7,8 @@
 (function (root) {
   'use strict';
 
-  const VERSION = '2026.11.02.5';
+  const VERSION = '2026.11.10.1';
+  const STYLE_ID = 'student-clinic-lineage-style';
   const ASSIGNMENT_ID = /^[A-Za-z0-9_:.\-]{1,80}$/;
 
   const REASON_LABELS = {
@@ -42,10 +43,37 @@
     return REASON_LABELS[text(reason)] || '기준 시험 관계를 확인할 수 없습니다.';
   }
 
+  function ensureStyles() {
+    const doc = root.document;
+    if (!doc || !doc.head || doc.getElementById(STYLE_ID)) return;
+    const style = doc.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent = [
+      '.clinic-lineage{margin-top:12px;padding:14px 16px;border-radius:8px;background:var(--surface-2,#f5f3f0);border:1px solid var(--border,#e8e5e0);color:var(--text,#1c1917);font-size:14px;line-height:1.6;}',
+      '.clinic-lineage-title{font-size:12px;font-weight:600;color:var(--secondary,#6b645f);margin:0 0 8px;}',
+      '.clinic-lineage-row{margin-top:4px;overflow-wrap:anywhere;}',
+      '.clinic-lineage-row strong{font-weight:600;}',
+      '.clinic-lineage-meta,.clinic-lineage-note{font-size:12px;color:var(--secondary,#6b645f);overflow-wrap:anywhere;}',
+      '.clinic-lineage-note{margin-top:6px;}',
+      '.clinic-lineage-note.is-unavailable{color:var(--warning,#b45309);}',
+      '.clinic-lineage-links{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}',
+      '.clinic-lineage-derived{display:flex;flex-direction:column;gap:8px;margin-top:10px;}',
+      '.clinic-lineage-derived-row{display:flex;justify-content:space-between;gap:12px;align-items:center;}',
+      '.clinic-lineage-derived-row + .clinic-lineage-derived-row{border-top:1px solid var(--border,#e8e5e0);padding-top:8px;}',
+      '.clinic-lineage-exam{min-width:0;overflow-wrap:anywhere;}',
+      '.clinic-lineage-exam .clinic-lineage-meta{display:block;}',
+      '.clinic-lineage .clinic-lineage-link{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-height:44px;margin:0;padding:10px 14px;border:1px solid var(--control-border,#857e78);border-radius:8px;background:var(--surface,#fff);color:var(--text,#1c1917);font:inherit;font-size:14px;line-height:1.4;cursor:pointer;}',
+      '.clinic-lineage .clinic-lineage-link:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:3px;}',
+      '@media(hover:hover){.clinic-lineage .clinic-lineage-link:hover{background:var(--bg,#faf9f7);}}',
+      '@media(max-width:600px){.clinic-lineage{padding:12px;}.clinic-lineage-derived-row{gap:8px;}}'
+    ].join('');
+    doc.head.appendChild(style);
+  }
+
   function nodeButton(assignmentId, label, key) {
     const id = text(assignmentId);
     if (!ASSIGNMENT_ID.test(id)) return '';
-    return `<button type="button" class="btn" data-clinic-lineage-link="${escapeHtml(key || id)}" onclick="StudentClinicLineageView.focusNode('${escapeHtml(id)}')">${escapeHtml(label)}</button>`;
+    return `<button type="button" class="btn clinic-lineage-link" data-clinic-lineage-link="${escapeHtml(key || id)}" onclick="StudentClinicLineageView.focusNode('${escapeHtml(id)}')">${escapeHtml(label)}</button>`;
   }
 
   function attemptLine(lineage) {
@@ -73,10 +101,10 @@
     const note = availability === 'cancelled' ? '기준 시험이 취소되어 열 수 없습니다.'
       : availability === 'excluded' ? '기준 시험에서 제외되어 열 수 없습니다.' : '';
     return `
-      <div class="clinic-lineage-row" style="margin-top:6px;font-size:13px;color:#111827;">기준 시험: <strong>${title}</strong>${meta ? ` · ${meta}` : ''}</div>
-      <div class="clinic-lineage-row" style="margin-top:2px;font-size:12px;color:#4B5563;">${escapeHtml(attemptLine(lineage))}</div>
-      ${note ? `<div class="clinic-lineage-note" style="margin-top:2px;font-size:12px;color:#92400E;">${escapeHtml(note)}</div>` : ''}
-      ${unavailable ? '' : `<div class="clinic-lineage-links" style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;">${nodeButton(source.assignmentId, '기준 시험 보기', `source-${source.assignmentId}`)}</div>`}
+      <div class="clinic-lineage-row">기준 시험: <strong>${title}</strong>${meta ? `<span class="clinic-lineage-meta"> · ${meta}</span>` : ''}</div>
+      <div class="clinic-lineage-row clinic-lineage-meta">${escapeHtml(attemptLine(lineage))}</div>
+      ${note ? `<div class="clinic-lineage-note is-unavailable">${escapeHtml(note)}</div>` : ''}
+      ${unavailable ? '' : `<div class="clinic-lineage-links">${nodeButton(source.assignmentId, '기준 시험 보기', `source-${source.assignmentId}`)}</div>`}
     `;
   }
 
@@ -85,23 +113,23 @@
     if (!derived.length) return '';
     const rows = derived.slice(0, 8).map(item => {
       const title = escapeHtml(text(item.examTitle) || '보충 시험');
-      const modeLabel = text(item.mode) === 'same_uid' ? '같은 UID 재연습'
+      const modeLabel = text(item.mode) === 'same_uid' ? '같은 문제 다시 풀기'
         : text(item.mode) === 'similar_uid' ? '유사문항 보충'
           : text(item.mode) === 'ordinary_transfer' ? '전용 시험' : '';
       const meta = [text(item.examDate), modeLabel]
         .filter(Boolean).map(escapeHtml).join(' · ');
-      return `<div style="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:6px;">
-        <span style="font-size:13px;color:#111827;min-width:0;overflow-wrap:anywhere;">${title}${meta ? `<span style="color:#6B7280;"> · ${meta}</span>` : ''}</span>
-        ${nodeButton(item.assignmentId, '열기', `derived-${item.assignmentId}`)}
+      return `<div class="clinic-lineage-derived-row">
+        <span class="clinic-lineage-exam">${title}${meta ? `<span class="clinic-lineage-meta">${meta}</span>` : ''}</span>
+        ${nodeButton(item.assignmentId, '시험 보기', `derived-${item.assignmentId}`)}
       </div>`;
     }).join('');
-    return `<div class="clinic-lineage-derived" style="margin-top:8px;">${rows}</div>`;
+    return `<div class="clinic-lineage-derived">${rows}</div>`;
   }
 
   function shell(titleText, body) {
     return `
-      <section class="clinic-lineage" style="margin-top:10px;padding:10px 12px;border-radius:12px;background:#F8FAFC;border:1px solid rgba(17,24,39,0.08);">
-        <div style="font-size:12px;font-weight:700;color:#374151;">${escapeHtml(titleText)}</div>
+      <section class="clinic-lineage">
+        <div class="clinic-lineage-title">${escapeHtml(titleText)}</div>
         ${body}
       </section>
     `;
@@ -110,24 +138,25 @@
   function renderCard(exam) {
     const lineage = exam && typeof exam === 'object' ? exam.clinic_lineage : null;
     if (!lineage || typeof lineage !== 'object') return '';
+    ensureStyles();
     const status = text(lineage.status);
     const derived = derivedRows(lineage);
     if (text(lineage.relation) === 'source_of_follow_up') {
       return derived ? shell('이 시험에서 이어진 보충 시험', derived) : '';
     }
-    const title = text(lineage.mode) === 'same_uid' ? '기준 시험 → 같은 UID 재연습'
+    const title = text(lineage.mode) === 'same_uid' ? '기준 시험 → 같은 문제 다시 풀기'
       : text(lineage.mode) === 'similar_uid' ? '기준 시험 → 유사문항 보충 시험'
         : '기준 시험 → 보충 시험';
     if (status === 'verified' && lineage.source) {
       return shell(title, `${sourceRow(lineage)}${derived}`);
     }
     if (status === 'unknown') {
-      return shell(title, `<div style="margin-top:6px;font-size:12px;color:#4B5563;">${escapeHtml(reasonLabel(lineage.reason))}</div>`);
+      return shell(title, `<div class="clinic-lineage-note">${escapeHtml(reasonLabel(lineage.reason))}</div>`);
     }
     if (status === 'unavailable') {
-      return shell(title, `<div style="margin-top:6px;font-size:12px;color:#92400E;">${escapeHtml(reasonLabel(lineage.reason))}</div>`);
+      return shell(title, `<div class="clinic-lineage-note is-unavailable">${escapeHtml(reasonLabel(lineage.reason))}</div>`);
     }
-    return shell(title, `<div style="margin-top:6px;font-size:12px;color:#4B5563;">${escapeHtml(reasonLabel(lineage.reason))}</div>`);
+    return shell(title, `<div class="clinic-lineage-note">${escapeHtml(reasonLabel(lineage.reason))}</div>`);
   }
 
   function focusNode(assignmentId) {
@@ -135,8 +164,9 @@
     if (!ASSIGNMENT_ID.test(id)) return;
     const card = document.getElementById(`student-assignment-${id}`);
     if (card) {
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      card.style.boxShadow = '0 0 0 2px #2563EB';
+      const reducedMotion = typeof root.matchMedia === 'function' && root.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+      card.style.boxShadow = '0 0 0 2px var(--primary, #2563eb)';
       setTimeout(() => { card.style.boxShadow = ''; }, 1600);
       return;
     }

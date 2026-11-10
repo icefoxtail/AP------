@@ -2,13 +2,14 @@
 // index.html의 STUDENT_APP_VERSION, manifest.json version,
 // student-version.json version과 반드시 같은 값으로 올린다.
 // 함께 확인할 값: index.html 정적 리소스 ?v= query.
-const STUDENT_SW_VERSION = '2026.11.02.5';
+const STUDENT_SW_VERSION = '2026.11.10.1';
 const CACHE_NAME = `apmath-student-portal-${STUDENT_SW_VERSION}`;
 
 const APP_SHELL = [
   `./?v=${STUDENT_SW_VERSION}`,
   `./index.html?v=${STUDENT_SW_VERSION}`,
   `./manifest.json?v=${STUDENT_SW_VERSION}`,
+  `./student-portal.css?v=${STUDENT_SW_VERSION}`,
   `./icons/icon-192.png?v=${STUDENT_SW_VERSION}`,
   `./icons/icon-512.png?v=${STUDENT_SW_VERSION}`,
   `./icons/apple-touch-icon.png?v=${STUDENT_SW_VERSION}`
