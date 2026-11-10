@@ -1,0 +1,60 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 6,
+      "height": 8,
+      "orientation": "APEX_UP",
+      "axis": true
+    }
+  ],
+  "section": {
+    "solid": "cone",
+    "kind": "LEVEL",
+    "at": "1/2"
+  },
+  "dims": [
+    {
+      "solid": "cone",
+      "radius": "bottom",
+      "label": "6"
+    },
+    {
+      "solid": "cone",
+      "height": true,
+      "label": "8"
+    },
+    {
+      "solid": "cone",
+      "radius": "level",
+      "label": "3"
+    },
+    {
+      "solid": "cone",
+      "level": true,
+      "label": "4"
+    }
+  ],
+  "solidCaption": {
+    "text": "원뿔과 중간 단면"
+  },
+  "caption": "원뿔의 높이는 8, 잘린 작은 원뿔은 높이 4·반지름 3이므로 원뿔대의 부피는 96π−12π=84π이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 반지름 6, 원뿔 부피 96π, 밑면과 단면 중심 사이 거리 4.",
+      "mappedTo": [
+        "solids",
+        "section",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "전체 높이 8과 단면 반지름 3은 조건에서 구한 값이다."
+  ]
+}
