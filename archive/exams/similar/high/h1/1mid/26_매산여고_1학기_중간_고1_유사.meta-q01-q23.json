@@ -1,0 +1,2323 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_매산여고_1학기_중간_고1_유사-candidate-v1",
+  "examUid": "26_매산여고_1학기_중간_고1_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사.js",
+  "expectedSourceBlobSha1": "2b703a3a31e96ac60ba915aab1df4b3ad8af9c91",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "registryChanges": [
+    {
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_매산여고_1학기_중간_고1_유사.registry.json",
+      "registrySha256": "e4cd031e12c1528e0e39b116b6ab88285fe3e2546407e0bb24819ad603c4e661",
+      "keys": [
+        "EXT-TPL-FACTOR-THEOREM-COEFFICIENT-DETERMINATION"
+      ],
+      "details": {
+        "generatedL4": [],
+        "generatedCrossConcepts": [],
+        "generatedConditions": [],
+        "generatedProblemTypes": [],
+        "generatedTemplates": [
+          {
+            "key": "EXT-TPL-FACTOR-THEOREM-COEFFICIENT-DETERMINATION",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "인수정리로 미정계수 결정",
+            "definition": "다항식이 일차식(또는 일차식의 제곱)으로 나누어떨어지거나 인수로 갖는다는 조건에서 인수정리 P(a)=0을 세워 다항식의 미정계수를 연립방정식으로 결정하는 풀이 골격.",
+            "parentRpmRecordId": "H1-RPM-145",
+            "parentRpmL1": "다항식",
+            "parentRpmL2": "항등식과 나머지정리",
+            "parentRpmL3": "인수정리",
+            "parentRpmL4": "미정계수 결정",
+            "parentKey": "PT_H1_FACTOR_THEOREM",
+            "parentLabelKo": "인수정리",
+            "parentKind": "CANONICAL_PROBLEM_TYPE",
+            "internalSkeleton": "나누어떨어지는 조건 확인 -> 인수정리 P(a)=0(필요하면 조립제법으로 몫에 다시 적용) -> 미정계수 연립 -> 요구값 계산",
+            "standardUnitKey": "H22-C-02",
+            "subUnitKey": "H22-C-02-CORE",
+            "standardCourse": "공통수학1",
+            "curriculum": "2022",
+            "basis": "PT_H1_FACTOR_THEOREM은 H22-C-02-CORE에 ACTIVE로 바인딩되어 있으나 canonical TPL이 하나도 없다. 크로스워크 H1-RPM-145(인수정리>미정계수 결정)는 RPM_ONLY라 템플릿이 비어 있어 Q9, Q10에서 사용한다.",
+            "firstUsed": {
+              "stem": "26_매산여고_1학기_중간_고1_유사",
+              "qid": 9
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-10",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "reusedGeneratedKeys": [],
+        "aliasProposals": []
+      }
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "차수·계수 정리",
+          "recordId": "H1-RPM-134",
+          "l3Label": "다항식의 덧셈과 뺄셈",
+          "l4Label": "차수·계수 정리",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-134"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "차수·계수 정리",
+        "rpmPrimaryRecordId": "H1-RPM-134",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 다항식의 합·차를 전개한 뒤 계수를 읽는 직접 계산 1~2단계라 하",
+        "difficultyBasis": "분배와 동류항 정리만 하면 되는 단일 절차라 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "다항식 전개와 동류항 정리가 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "다항식의 덧셈·뺄셈을 전개한 뒤 특정 항의 계수를 구한다.",
+          "crossConcept": "Primary(차수·계수 정리) 바깥에서 정답에 기여한 개념이 없다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "한 번의 전개로 끝나는 단일 절차라 NONE.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 덧셈과 뺄셈"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 1,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-134",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 다항식의 덧셈·뺄셈을 전개한 뒤 특정 항의 계수를 구한다. → 다항식의 덧셈과 뺄셈; PT/TPL(PT_H1_POLY_OPERATION_EXPANSION,TPL_H1_POLY_OPERATION_DIRECT)이 크로스워크 H1-RPM-134의 RPM 경로(다항식>다항식의 연산>다항식의 덧셈과 뺄셈>차수·계수 정리)와 canonical 바인딩으로 확인 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 곱셈",
+          "l4": "고차식 전개",
+          "recordId": "H1-RPM-137",
+          "l3Label": "다항식의 곱셈",
+          "l4Label": "고차식 전개",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-137"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 곱셈",
+        "rpmPrimaryL4": "고차식 전개",
+        "rpmPrimaryRecordId": "H1-RPM-137",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 이차식의 곱에서 필요한 항만 골라 계수를 구하는 3단계 계산이라 중",
+        "difficultyBasis": "세 쌍의 곱을 골라 더하는 한 번의 선택 절차라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "항의 곱을 골라 더하는 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 다항식의 곱에서 특정 차수 항의 계수를 구한다.",
+          "crossConcept": "Primary(고차식 전개) 바깥에서 정답에 기여한 개념이 없다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "필요한 항만 모아 더하는 단일 절차라 NONE.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 곱셈"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 2,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-137",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 다항식의 곱에서 특정 차수 항의 계수를 구한다. → 다항식의 곱셈; PT/TPL(PT_H1_POLY_OPERATION_EXPANSION,TPL_H1_POLY_OPERATION_DIRECT)이 크로스워크 H1-RPM-137의 RPM 경로(다항식>다항식의 연산>다항식의 곱셈>고차식 전개)와 canonical 바인딩으로 확인 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "나머지정리",
+          "l4": "일차식으로 나눈 나머지",
+          "recordId": "H1-RPM-142",
+          "l3Label": "나머지정리",
+          "l4Label": "일차식으로 나눈 나머지",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-142"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "나머지정리",
+        "rpmPrimaryL4": "일차식으로 나눈 나머지",
+        "rpmPrimaryRecordId": "H1-RPM-142",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "나머지정리로 함숫값 P(3)을 대입하는 직접 계산 1~2단계라 하",
+        "difficultyBasis": "공식 한 번 적용과 단순 계산만 필요해 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "나머지정리로 P(3)을 계산하는 것이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "일차식으로 나눈 나머지를 나머지정리로 함숫값 계산해 구한다.",
+          "crossConcept": "Primary(나머지정리) 바깥에서 정답에 기여한 개념이 없다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "함숫값 하나를 구하는 단일 절차라 NONE.",
+          "curriculum": "공통수학1 항등식과 나머지 정리: 나머지정리"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 3,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-142",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 일차식으로 나눈 나머지를 나머지정리로 함숫값 계산해 구한다. → 나머지정리; PT/TPL(PT_H1_REMAINDER_THEOREM,TPL_H1_REMAINDER_DIRECT_SUBSTITUTION)이 크로스워크 H1-RPM-142의 RPM 경로(다항식>항등식과 나머지정리>나머지정리>일차식으로 나눈 나머지)와 canonical 바인딩으로 확인 → 다항식>항등식과 나머지정리 / EVIDENCE: 크로스워크 H1-RPM-142는 RPM_ONLY(PT/TPL 미기재)이나 canonical PT_H1_REMAINDER_THEOREM/TPL_H1_REMAINDER_DIRECT_SUBSTITUTION가 H22-C-02-CORE에 ACTIVE로 바인딩되어 있어 결속했다.",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+        "subUnit": "복소수의 뜻과 표현",
+        "conceptClusterKey": "H22-C-04-COMPLEX_BASIC",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "복소수",
+          "l3": "복소수의 뜻",
+          "l4": "서로 같은 복소수",
+          "recordId": "H1-RPM-155",
+          "l3Label": "복소수의 뜻",
+          "l4Label": "서로 같은 복소수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-155"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "복소수",
+        "rpmPrimaryL3": "복소수의 뜻",
+        "rpmPrimaryL4": "서로 같은 복소수",
+        "rpmPrimaryRecordId": "H1-RPM-155",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "crossConceptKeys": [
+          "CC_COMPLEX_CONJUGATE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "켤레복소수를 구하고 실수부·허수부를 비교하는 3~4단계라 중",
+        "difficultyBasis": "켤레 → 정리 → 두 방정식 비교의 순차 절차라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "복소수의 상등을 실수부·허수부로 나누는 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "복소수가 서로 같을 조건으로 실수부와 허수부를 비교해 미지수를 구한다.",
+          "crossConcept": "우변의 켤레복소수를 먼저 구하는 단계가 Primary(서로 같은 복소수) 바깥에서 기여한다.",
+          "condition": "x, y가 실수라는 서술만 있고 해를 제한하는 별도 조건 키는 없다.",
+          "integration": "켤레복소수 → 좌변 정리 → 실수부·허수부 비교의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 복소수와 이차방정식: 복소수의 뜻과 상등, 켤레복소수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 4,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "복소수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-155",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 복소수가 서로 같을 조건으로 실수부와 허수부를 비교해 미지수를 구한다. → 복소수의 뜻; PT/TPL(PT_H1_COMPLEX_OPERATION,TPL_H1_COMPLEX_COMPONENT_OPERATION)이 크로스워크 H1-RPM-155의 RPM 경로(방정식과 부등식>복소수>복소수의 뜻>서로 같은 복소수)와 canonical 바인딩으로 확인 → 방정식과 부등식>복소수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "conceptClusterKey": "H22-C-04-COMPLEX_OPERATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "복소수",
+          "l3": "복소수의 연산",
+          "l4": "켤레복소수",
+          "recordId": "H1-RPM-157",
+          "l3Label": "복소수의 연산",
+          "l4Label": "켤레복소수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-157"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "복소수",
+        "rpmPrimaryL3": "복소수의 연산",
+        "rpmPrimaryL4": "켤레복소수",
+        "rpmPrimaryRecordId": "H1-RPM-157",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+        "crossConceptKeys": [
+          "CC_COMPLEX_DIVISION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "켤레복소수로 분모를 실수화한 뒤 덧셈을 하는 3~4단계라 중",
+        "difficultyBasis": "분모 실수화 → 분자 곱 → 덧셈 정리의 순차 절차라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "켤레복소수를 곱해 분모를 실수로 만드는 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "켤레복소수를 이용해 복소수의 나눗셈을 a+bi꼴로 정리한다.",
+          "crossConcept": "분수 꼴 복소수를 a+bi꼴로 바꾸는 복소수의 나눗셈 절차가 Primary(켤레복소수) 바깥에서 기여한다.",
+          "condition": "a, b가 실수라는 표현 형식 외의 제한 조건이 없다.",
+          "integration": "분모 실수화 → 분자 전개 → 나머지 항과 덧셈의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 복소수와 이차방정식: 복소수의 사칙연산, 켤레복소수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 5,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "복소수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-157",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 켤레복소수를 이용해 복소수의 나눗셈을 a+bi꼴로 정리한다. → 복소수의 연산; PT/TPL(PT_H1_COMPLEX_OPERATION,TPL_H1_COMPLEX_CONJUGATE_NORM)이 크로스워크 H1-RPM-157의 RPM 경로(방정식과 부등식>복소수>복소수의 연산>켤레복소수)와 canonical 바인딩으로 확인 → 방정식과 부등식>복소수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "그래프와 근",
+          "l4": "판별식과 위치",
+          "recordId": "H1-RPM-167",
+          "l3Label": "그래프와 근",
+          "l4Label": "판별식과 위치",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-167"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "그래프와 근",
+        "rpmPrimaryL4": "판별식과 위치",
+        "rpmPrimaryRecordId": "H1-RPM-167",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "crossConceptKeys": [
+          "CC_DISCRIMINANT_ZERO_CONDITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "그래프와 x축의 접촉을 판별식 0으로 바꾸어 푸는 3~4단계라 중",
+        "difficultyBasis": "판별식 계산과 인수분해로 끝나는 한 방향 절차라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "판별식을 0으로 놓는 계산이 풀이의 핵심이고 접점은 완전제곱식으로 확인하므로 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이차함수의 그래프가 x축과 한 점에서 만나는 조건을 판별식으로 구한다.",
+          "crossConcept": "판별식이 0인 조건(중근)을 쓰는 단계가 Primary(판별식과 위치) 안에 포함되어 보조 개념으로 기록했다.",
+          "condition": "실수 k라는 서술 외에 해를 제한하는 별도 조건 키는 없다.",
+          "integration": "판별식 계산과 방정식 풀이로 한 번에 끝나는 절차라 NONE.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 이차함수의 그래프와 x축의 위치 관계"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 6,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-167",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 이차함수의 그래프가 x축과 한 점에서 만나는 조건을 판별식으로 구한다. → 그래프와 근; PT/TPL(PT_H1_QUADRATIC_GRAPH_INTERSECTION,TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY)이 크로스워크 H1-RPM-167의 RPM 경로(방정식과 부등식>이차방정식과 이차함수>그래프와 근>판별식과 위치)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-170"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "완전제곱식 → 꼭짓점 위치 확인 → 끝점 비교의 3~4단계라 중",
+        "difficultyBasis": "익숙한 절차에 한 번의 위치 판단(꼭짓점이 구간 안)이 더해져 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 구간 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 구간 -1≤x≤4에서 꼭짓점 (2,-3)이 최솟값, 끝점 (-1,6)이 최댓값임을 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "제한된 구간에서 이차함수의 최댓값과 최솟값을 꼭짓점과 끝점으로 구한다.",
+          "crossConcept": "이차식을 완전제곱식으로 고쳐 꼭짓점을 구하는 단계가 Primary(구간 최대·최소) 바깥에서 기여한다.",
+          "condition": "x의 범위가 구간으로 제한되어 최댓값·최솟값이 결정된다.",
+          "integration": "완전제곱식 → 꼭짓점 위치 판단 → 끝점 값 비교의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 이차함수의 최대·최소"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 7,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 제한된 구간에서 이차함수의 최댓값과 최솟값을 꼭짓점과 끝점으로 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL)이 크로스워크 H1-RPM-170의 RPM 경로(방정식과 부등식>이차방정식과 이차함수>최대·최소>구간 최대·최소)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 곱셈",
+          "l4": "곱셈공식",
+          "recordId": "H1-RPM-136",
+          "l3Label": "다항식의 곱셈",
+          "l4Label": "곱셈공식",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-136"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 곱셈",
+        "rpmPrimaryL4": "곱셈공식",
+        "rpmPrimaryRecordId": "H1-RPM-136",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+        "crossConceptKeys": [
+          "CC_RATIONALIZATION_OF_DENOMINATOR"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "분모 유리화 → 합과 곱 → 세제곱합 공식의 3~4단계라 중",
+        "difficultyBasis": "유리화와 곱셈공식 변형을 차례로 쓰는 순차 절차라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "유리화와 곱셈공식 대입이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "곱셈공식을 변형한 x³+y³=(x+y)³−3xy(x+y)로 대칭식의 값을 구한다.",
+          "crossConcept": "분모를 유리화하여 x, y를 구하는 단계가 Primary(곱셈공식) 바깥에서 기여한다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "유리화 → x+y, xy 계산 → 공식 대입의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 다항식의 연산: 곱셈공식의 변형(중학교 근호의 분모 유리화 포함)"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 8,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-136",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 곱셈공식을 변형한 x³+y³=(x+y)³−3xy(x+y)로 대칭식의 값을 구한다. → 다항식의 곱셈; PT/TPL(PT_H1_POLY_FORMULA_SYMMETRIC,TPL_H1_FORMULA_SYMMETRIC)이 크로스워크 H1-RPM-136의 RPM 경로(다항식>다항식의 연산>다항식의 곱셈>곱셈공식)와 canonical 바인딩으로 확인 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "인수정리",
+          "l4": "미정계수 결정",
+          "recordId": "H1-RPM-145",
+          "l3Label": "인수정리",
+          "l4Label": "미정계수 결정",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-145"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "인수정리",
+        "rpmPrimaryL4": "미정계수 결정",
+        "rpmPrimaryRecordId": "H1-RPM-145",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+        "templateKey": "EXT-TPL-FACTOR-THEOREM-COEFFICIENT-DETERMINATION",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION",
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "제수 인수분해 → 두 조건 → 연립의 3~4단계라 중",
+        "difficultyBasis": "인수정리로 두 식을 세우고 연립하는 두 단계 구조라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "인수정리로 두 식을 세워 연립하는 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "나누어떨어지는 조건에서 인수정리로 두 미정계수를 결정한다.",
+          "crossConcept": "제수 x²−x−2를 인수분해하는 단계와 두 일차방정식을 연립하는 단계가 Primary(인수정리 미정계수 결정) 바깥에서 기여한다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "인수분해 → 두 조건식 → 연립 풀이의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 항등식과 나머지 정리: 인수정리와 미정계수 결정"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 9,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-145",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 나누어떨어지는 조건에서 인수정리로 두 미정계수를 결정한다. → 인수정리; PT/TPL(PT_H1_FACTOR_THEOREM,EXT-TPL-FACTOR-THEOREM-COEFFICIENT-DETERMINATION)이 크로스워크 H1-RPM-145의 RPM 경로(다항식>항등식과 나머지정리>인수정리>미정계수 결정)와 canonical 바인딩으로 확인 → 다항식>항등식과 나머지정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "인수정리",
+          "l4": "미정계수 결정",
+          "recordId": "H1-RPM-145",
+          "l3Label": "인수정리",
+          "l4Label": "미정계수 결정",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-145"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "인수정리",
+        "rpmPrimaryL4": "미정계수 결정",
+        "rpmPrimaryRecordId": "H1-RPM-145",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+        "templateKey": "EXT-TPL-FACTOR-THEOREM-COEFFICIENT-DETERMINATION",
+        "crossConceptKeys": [
+          "CC_REMAINDER_THEOREM_SQUARE_FACTOR",
+          "CC_POLYNOMIAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "중근 조건을 두 번의 나누어떨어짐으로 나누어 푸는 4~5단계라 중",
+        "difficultyBasis": "P(2)=0 → 조립제법으로 몫 구하기 → 몫도 인수라는 두 번째 조건의 순차 절차라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "인수정리와 조립제법으로 몫을 구하는 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "(x−2)²을 인수로 가질 조건에서 인수정리를 두 번 적용해 두 미정계수를 구한다.",
+          "crossConcept": "완전제곱식을 인수로 가질 때 몫도 같은 일차식을 인수로 갖는다는 성질과 조립제법(다항식의 나눗셈)이 Primary 바깥에서 기여한다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "P(2)=0 → 몫 구하기 → 몫에 다시 인수정리의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 항등식과 나머지 정리: 인수정리, 조립제법"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 10,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-145",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): (x−2)²을 인수로 가질 조건에서 인수정리를 두 번 적용해 두 미정계수를 구한다. → 인수정리; PT/TPL(PT_H1_FACTOR_THEOREM,EXT-TPL-FACTOR-THEOREM-COEFFICIENT-DETERMINATION)이 크로스워크 H1-RPM-145의 RPM 경로(다항식>항등식과 나머지정리>인수정리>미정계수 결정)와 canonical 바인딩으로 확인 → 다항식>항등식과 나머지정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_EQUATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "이차방정식의 근",
+          "l4": "판별식",
+          "recordId": "H1-RPM-161",
+          "l3Label": "이차방정식의 근",
+          "l4Label": "판별식",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-161"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "이차방정식의 근",
+        "rpmPrimaryL4": "판별식",
+        "rpmPrimaryRecordId": "H1-RPM-161",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "판별식 부호 조건 → 부등식 → 자연수 개수의 3~4단계라 중",
+        "difficultyBasis": "판별식과 일차부등식을 풀고 자연수만 세는 순차 절차라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "판별식 부호와 일차부등식 풀이가 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이차방정식이 서로 다른 두 허근을 갖는 조건을 판별식으로 구한다.",
+          "crossConcept": "Primary(판별식) 바깥에서 정답에 기여한 개념이 없다.",
+          "condition": "k가 자연수라는 조건이 개수를 세는 마지막 단계를 결정한다.",
+          "integration": "판별식 → 일차부등식 → 자연수 개수 세기의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 복소수와 이차방정식: 이차방정식의 판별식"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 11,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-161",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 이차방정식이 서로 다른 두 허근을 갖는 조건을 판별식으로 구한다. → 이차방정식의 근; PT/TPL(PT_H1_QUADRATIC_DISCRIMINANT,TPL_H1_DISCRIMINANT_ROOT_EXISTENCE)이 크로스워크 H1-RPM-161의 RPM 경로(방정식과 부등식>이차방정식>이차방정식의 근>판별식)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "항등식",
+          "l4": "미정계수법",
+          "recordId": "H1-RPM-140",
+          "l3Label": "항등식",
+          "l4Label": "미정계수법",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-140"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "항등식",
+        "rpmPrimaryL4": "미정계수법",
+        "rpmPrimaryRecordId": "H1-RPM-140",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_IDENTITY_PARAMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "근의 정의로 대입한 뒤 k에 대한 항등식으로 바꾸어 푸는 4~5단계라 중",
+        "difficultyBasis": "모든 k에서 성립을 k에 대한 항등식으로 재해석해야 하는 한 번의 관점 전환이 있어 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "x=−2를 대입해 k에 대한 항등식으로 정리하는 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "모든 실수 k에서 성립하는 조건을 k에 대한 항등식으로 보고 계수를 비교해 상수를 구한다.",
+          "crossConcept": "매개변수 k에 대한 항등식으로 바꾸는 단계가 Primary(미정계수법)와 함께 결정 단계라 보조 개념으로 기록했다.",
+          "condition": "실수 k의 값에 관계없이 항상 성립한다는 서술은 항등식 풀이 구조에 포함되어 별도 조건 키를 쓰지 않았다.",
+          "integration": "이차방정식의 근 조건을 k에 대한 항등식으로 다시 해석하므로 REINTERPRETATION.",
+          "curriculum": "공통수학1 항등식과 나머지 정리: 항등식과 미정계수법"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 12,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-140",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 모든 실수 k에서 성립하는 조건을 k에 대한 항등식으로 보고 계수를 비교해 상수를 구한다. → 항등식; PT/TPL(PT_H1_POLY_IDENTITY_COEFFICIENT,TPL_H1_IDENTITY_COEFFICIENT_COMPARE)이 크로스워크 H1-RPM-140의 RPM 경로(다항식>항등식과 나머지정리>항등식>미정계수법)와 canonical 바인딩으로 확인 → 다항식>항등식과 나머지정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "직선과 포물선",
+          "l4": "교점 개수",
+          "recordId": "H1-RPM-168",
+          "l3Label": "직선과 포물선",
+          "l4Label": "교점 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-168"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "직선과 포물선",
+        "rpmPrimaryL4": "교점 개수",
+        "rpmPrimaryRecordId": "H1-RPM-168",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_DISCRIMINANT_APPLICATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "교점 조건을 이차방정식으로 바꾸고 판별식을 쓰는 3~4단계라 중",
+        "difficultyBasis": "그래프의 교점을 방정식의 실근으로 바꾸는 한 번의 재해석이 있어 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "교점 방정식의 판별식 부호가 풀이의 핵심이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이차함수와 직선이 서로 다른 두 점에서 만나는 조건을 판별식으로 구한다.",
+          "crossConcept": "교점 방정식의 판별식으로 실근 조건을 확인하는 단계가 보조 개념으로 기여한다.",
+          "condition": "k가 자연수라는 조건이 최댓값을 결정한다.",
+          "integration": "그래프의 교점을 이차방정식의 서로 다른 두 실근으로 다시 해석하므로 REINTERPRETATION.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 이차함수와 직선의 위치 관계"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 13,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-168",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 이차함수와 직선이 서로 다른 두 점에서 만나는 조건을 판별식으로 구한다. → 직선과 포물선; PT/TPL(PT_H1_QUADRATIC_GRAPH_INTERSECTION,TPL_H1_QUADRATIC_INTERSECTION_TANGENCY)이 크로스워크 H1-RPM-168의 RPM 경로(방정식과 부등식>이차방정식과 이차함수>직선과 포물선>교점 개수)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-170"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_VERTEX",
+          "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "완전제곱식 → 꼭짓점이 구간에 포함될 조건 → 부등식의 4~5단계라 중",
+        "difficultyBasis": "최솟값 g(t)=꼭짓점의 값이라는 조건을 구간 포함 조건으로 바꾸는 재해석이 있어 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 구간 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "꼭짓점이 구간에 포함될 조건을 부등식으로 푸는 것이 풀이의 전부이고 새로 보탤 그림 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "움직이는 구간에서 이차함수의 최솟값이 꼭짓점의 값이 되도록 하는 구간의 위치 범위를 구한다.",
+          "crossConcept": "완전제곱식으로 꼭짓점을 구하는 단계와 꼭짓점과 구간의 위치 관계를 따지는 단계가 Primary 바깥에서 기여한다.",
+          "condition": "구간 [t, t+4]가 움직이는 범위 조건이 답을 결정한다.",
+          "integration": "g(t)=−2를 꼭짓점이 구간에 포함된다는 조건으로 다시 해석하므로 REINTERPRETATION.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 이차함수의 최대·최소"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 14,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 움직이는 구간에서 이차함수의 최솟값이 꼭짓점의 값이 되도록 하는 구간의 위치 범위를 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL)이 크로스워크 H1-RPM-170의 RPM 경로(방정식과 부등식>이차방정식과 이차함수>최대·최소>구간 최대·최소)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 나눗셈",
+          "l4": "몫과 나머지",
+          "recordId": "H1-RPM-139",
+          "l3Label": "다항식의 나눗셈",
+          "l4Label": "몫과 나머지",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-139"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 나눗셈",
+        "rpmPrimaryL4": "몫과 나머지",
+        "rpmPrimaryRecordId": "H1-RPM-139",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_DIVISION",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+        "crossConceptKeys": [
+          "CC_FACTOR_THEOREM",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "몫·나머지 관계로 식 세우기 → 나누어떨어짐 조건 → 인수정리 → 값 계산의 5단계 이상이라 상",
+        "difficultyBasis": "나눗셈 항등식에서 P를 한 문자로 정리하고 약분 논리로 인수 조건을 얻는 복합 구조라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "나눗셈 항등식과 인수정리를 쓰는 대수 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "몫과 나머지의 관계를 나눗셈 항등식으로 세워 삼차다항식을 결정한다.",
+          "crossConcept": "나누어떨어지는 조건을 인수정리(P(−1)=0)로 바꾸는 단계가 Primary(몫과 나머지) 바깥에서 기여한다.",
+          "condition": "최고차항의 계수가 1이라는 서술은 몫의 형태를 정하는 데 쓰이나 별도 조건 키는 쓰지 않았다.",
+          "integration": "식 세우기 → 약분으로 인수 조건 도출 → 미지수 결정의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 나눗셈, 항등식과 나머지 정리: 인수정리"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 15,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-139",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 몫과 나머지의 관계를 나눗셈 항등식으로 세워 삼차다항식을 결정한다. → 다항식의 나눗셈; PT/TPL(PT_H1_POLY_DIVISION,TPL_H1_POLY_DIVISION_EXECUTION)이 크로스워크 H1-RPM-139의 RPM 경로(다항식>다항식의 연산>다항식의 나눗셈>몫과 나머지)와 canonical 바인딩으로 확인 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "나머지정리",
+          "l4": "고차식 조건",
+          "recordId": "H1-RPM-143",
+          "l3Label": "나머지정리",
+          "l4Label": "고차식 조건",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-143"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "나머지정리",
+        "rpmPrimaryL4": "고차식 조건",
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [
+          "CC_DIVISION_ALGORITHM",
+          "CC_REMAINDER_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "세 번의 나눗셈 항등식을 세워 함숫값으로 바꾸는 5단계 이상이라 상",
+        "difficultyBasis": "합성 제수 나머지를 함숫값 관계로 재해석하고 두 조건을 결합하는 구조라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "나눗셈 항등식에 값을 대입하는 대수 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "여러 인수에 대한 나머지 조건을 나눗셈 항등식의 함숫값으로 결합해 합성 제수의 나머지 값을 구한다.",
+          "crossConcept": "나눗셈 항등식으로 피제수를 복원하는 단계와 x=−1, x=2를 대입해 나머지 값을 함숫값으로 바꾸는 단계가 기여한다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "g의 값을 f의 함숫값으로 다시 해석하여 주어진 나머지에서 읽으므로 REINTERPRETATION.",
+          "curriculum": "공통수학1 항등식과 나머지 정리: 나머지정리, 나눗셈 항등식"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 16,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-143",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 여러 인수에 대한 나머지 조건을 나눗셈 항등식의 함숫값으로 결합해 합성 제수의 나머지 값을 구한다. → 나머지정리; PT/TPL(PT_H1_REMAINDER_THEOREM,TPL_H1_REMAINDER_COMPOSITE_DIVISOR)이 크로스워크 H1-RPM-143의 RPM 경로(다항식>항등식과 나머지정리>나머지정리>고차식 조건)와 canonical 바인딩으로 확인 → 다항식>항등식과 나머지정리 / EVIDENCE: 크로스워크 H1-RPM-143은 FAMILY_ACTIVE(PT_H1_REMAINDER_THEOREM만 기재, TPL 없음)이나 canonical TPL_H1_REMAINDER_COMPOSITE_DIVISOR(여러 인수·근의 나머지 조건을 결합한 합성 제수)가 같은 PT 아래 ACTIVE이다.",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "conceptClusterKey": "H22-C-04-COMPLEX_OPERATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "복소수",
+          "l3": "i의 거듭제곱",
+          "l4": "주기성",
+          "recordId": "H1-RPM-158",
+          "l3Label": "i의 거듭제곱",
+          "l4Label": "주기성",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-158"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "복소수",
+        "rpmPrimaryL3": "i의 거듭제곱",
+        "rpmPrimaryL4": "주기성",
+        "rpmPrimaryRecordId": "H1-RPM-158",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+        "crossConceptKeys": [
+          "CC_SERIES_SUM"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "밑의 제곱 → 주기 정리 → 네 경우의 합 → 실수부·허수부 정리의 5단계 이상이라 상",
+        "difficultyBasis": "n을 4로 나눈 나머지에 따른 네 경우를 나누어 합산하고 남는 항까지 처리해 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "i의 거듭제곱 주기와 합의 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "복소수 거듭제곱의 주기성을 이용해 n을 4로 나눈 나머지별로 항을 정리해 합을 구한다.",
+          "crossConcept": "각 경우의 n, n+4, …의 합을 등차수열의 합처럼 더하는 계산이 Primary 바깥에서 기여한다.",
+          "condition": "n이 자연수라는 조건으로 합의 항 범위가 1~30으로 정해진다.",
+          "integration": "n을 4로 나눈 나머지에 따라 네 경우로 나누어 계산하므로 CASE_BRANCH.",
+          "curriculum": "공통수학1 복소수와 이차방정식: i의 거듭제곱(주기성)과 복소수의 사칙연산"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 17,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "복소수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-158",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 복소수 거듭제곱의 주기성을 이용해 n을 4로 나눈 나머지별로 항을 정리해 합을 구한다. → i의 거듭제곱; PT/TPL(PT_H1_COMPLEX_POWER_ROOT,TPL_H1_COMPLEX_I_PERIOD)이 크로스워크 H1-RPM-158의 RPM 경로(방정식과 부등식>복소수>i의 거듭제곱>주기성)와 canonical 바인딩으로 확인 → 방정식과 부등식>복소수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_EQUATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "근과 계수의 관계",
+          "l4": "근의 합·곱",
+          "recordId": "H1-RPM-162",
+          "l3Label": "근과 계수의 관계",
+          "l4Label": "근의 합·곱",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-162"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "근과 계수의 관계",
+        "rpmPrimaryL4": "근의 합·곱",
+        "rpmPrimaryRecordId": "H1-RPM-162",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+        "crossConceptKeys": [
+          "CC_ROOT_REDUCTION_SYMMETRIC",
+          "CC_SIMULTANEOUS_EQUATION",
+          "CC_QUADRATIC_RECONSTRUCTION_CONDITIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "f를 미정계수로 두고 근의 차수 축소, 두 식의 소거, 세 조건의 연립까지 5단계 이상이라 상",
+        "difficultyBasis": "근의 관계로 차수를 낮추고 두 식을 빼서 v=0을 얻은 뒤 연립하는 깊은 복합 구조라 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "근과 계수의 관계와 계수 연립이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "근과 계수의 관계와 이차방정식의 근에 의한 차수 축소로 이차식 f의 계수를 결정한다.",
+          "crossConcept": "근을 대입한 관계식으로 차수를 낮추는 단계와 세 조건을 연립해 이차식을 복원하는 단계가 Primary 바깥에서 기여한다.",
+          "condition": "두 근이 서로 다르다는 사실이 v(β−α)=0에서 v=0을 얻는 데 쓰이나 별도 조건 키는 쓰지 않았다.",
+          "integration": "차수 축소 → 식의 소거 → 계수 연립 → 값 계산이 서로 얽혀 DEEP_COMPOSITE.",
+          "curriculum": "공통수학1 복소수와 이차방정식: 이차방정식의 근과 계수의 관계"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 18,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-162",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 근과 계수의 관계와 이차방정식의 근에 의한 차수 축소로 이차식 f의 계수를 결정한다. → 근과 계수의 관계; PT/TPL(PT_H1_ROOT_COEFFICIENT_RELATION,TPL_H1_VIETA_SYMMETRIC_VALUE)이 크로스워크 H1-RPM-162의 RPM 경로(방정식과 부등식>이차방정식>근과 계수의 관계>근의 합·곱)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "직선과 포물선",
+          "l4": "교점 개수",
+          "recordId": "H1-RPM-168",
+          "l3Label": "직선과 포물선",
+          "l4Label": "교점 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-168"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "직선과 포물선",
+        "rpmPrimaryL4": "교점 개수",
+        "rpmPrimaryRecordId": "H1-RPM-168",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 포물선의 교점 수를 구간별로 세고 공통점 경우까지 따지는 5단계 이상이라 상",
+        "difficultyBasis": "꼭짓점 경계 경우와 공통점 겹침 경우를 나누어 모두 찾아야 하는 분기 구조라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 직선 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "UNSUPPORTED",
+          "solutionReason": "두 포물선과 꼭짓점·교점을 plan으로 렌더했으나(ARCHIVE_BOUND) 엔진이 두 곡선을 같은 선 모양으로 그려 어느 것이 f이고 g인지 구별하기 어렵고, 점 좌표 표시가 곡선에서 떨어진 위쪽에 모여 학생이 읽기 어려워 채택하지 않았다. 해설 글이 꼭짓점, 두 교점, 구간별 교점 개수를 모두 계산으로 적어 풀이를 완결한다."
+        },
+        "metaRationale": {
+          "problemType": "수평선과 두 포물선의 교점 개수를 비교해 서로 다른 교점이 정확히 3개가 되는 경우를 찾는다.",
+          "crossConcept": "완전제곱식으로 두 포물선의 꼭짓점(최솟값·최댓값)을 구하는 단계가 Primary 바깥에서 기여한다.",
+          "condition": "서로 다른 교점의 개수가 정확히 3이라는 조건이 경우를 결정한다.",
+          "integration": "t의 범위별로 교점 수를 나누고 경계·공통점 경우를 따로 확인하므로 CASE_BRANCH.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 이차함수의 그래프와 직선의 위치 관계"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 19,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-168",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 수평선과 두 포물선의 교점 개수를 비교해 서로 다른 교점이 정확히 3개가 되는 경우를 찾는다. → 직선과 포물선; PT/TPL(PT_H1_QUADRATIC_GRAPH_INTERSECTION,TPL_H1_QUADRATIC_INTERSECTION_TANGENCY)이 크로스워크 H1-RPM-168의 RPM 경로(방정식과 부등식>이차방정식과 이차함수>직선과 포물선>교점 개수)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-170"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "꼭짓점 위치를 조건별로 나누어 a의 범위를 구하고 값의 범위까지 구하는 5단계 이상이라 상",
+        "difficultyBasis": "두 구간에서 꼭짓점의 위치에 따른 최대·최소를 경우 나누어 비교하는 구조라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건 (가), (나)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "꼭짓점 위치에 따른 경우 나누기와 부등식 풀이가 풀이의 핵심이라 새로 보탤 그림 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "문자 a가 포함된 이차함수의 구간별 최대·최소 조건에서 a의 범위를 구하고 함숫값의 범위를 구한다.",
+          "crossConcept": "꼭짓점과 구간의 위치에 따라 극값이 달라지는 경우를 나누는 단계가 Primary 바깥에서 기여한다.",
+          "condition": "구간으로 제한된 x의 범위가 최댓값·최솟값을 결정한다.",
+          "integration": "꼭짓점의 위치(a의 범위)에 따라 경우를 나누어 조건을 적용하므로 CASE_BRANCH.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 이차함수의 최대·최소"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 20,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 문자 a가 포함된 이차함수의 구간별 최대·최소 조건에서 a의 범위를 구하고 함숫값의 범위를 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL)이 크로스워크 H1-RPM-170의 RPM 경로(방정식과 부등식>이차방정식과 이차함수>최대·최소>구간 최대·최소)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_EQUATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "근과 계수의 관계",
+          "l4": "근으로 방정식 구성",
+          "recordId": "H1-RPM-163",
+          "l3Label": "근과 계수의 관계",
+          "l4Label": "근으로 방정식 구성",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-163"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "근과 계수의 관계",
+        "rpmPrimaryL4": "근으로 방정식 구성",
+        "rpmPrimaryRecordId": "H1-RPM-163",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [
+          "CC_ROOT_REDUCTION_SYMMETRIC"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "근과 계수의 관계, 차수 축소, 새 두 근의 합·곱, 방정식 구성의 4~5단계라 중",
+        "difficultyBasis": "차수 축소로 분모를 일차식으로 만든 뒤 합과 곱을 구해 방정식을 세우는 순차 구조라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "근과 계수의 관계를 이용한 대수 계산이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "근과 계수의 관계로 변환된 두 근의 합과 곱을 구해 새 이차방정식을 구성한다.",
+          "crossConcept": "근이 방정식을 만족한다는 사실로 차수를 낮추는 단계가 Primary(근으로 방정식 구성) 바깥에서 기여한다.",
+          "condition": "별도 제한 조건이 없다.",
+          "integration": "합·곱 구하기 → 차수 축소 → 새 합·곱 → 방정식 구성의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 복소수와 이차방정식: 이차방정식의 근과 계수의 관계"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 21,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q21: 원본 Q21의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-163",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 근과 계수의 관계로 변환된 두 근의 합과 곱을 구해 새 이차방정식을 구성한다. → 근과 계수의 관계; PT/TPL(PT_H1_ROOT_COEFFICIENT_RELATION,TPL_H1_VIETA_TRANSFORMED_ROOT)이 크로스워크 H1-RPM-163의 RPM 경로(방정식과 부등식>이차방정식>근과 계수의 관계>근으로 방정식 구성)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "조건식 활용",
+          "recordId": "H1-RPM-171",
+          "l3Label": "최대·최소",
+          "l4Label": "조건식 활용",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-171"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "조건식 활용",
+        "rpmPrimaryRecordId": "H1-RPM-171",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_ISOSCELES_RIGHT_TRIANGLE",
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "문자 설정, 두 삼각형의 넓이, 넓이 식 정리, 완전제곱식으로 최대 결정의 5단계 이상이라 상",
+        "difficultyBasis": "도형 조건을 이차식으로 모델링하고 정의역 확인까지 하는 서술형 복합 구조라 4",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 직각이등변삼각형 ABC, 변 AB 위의 점 P와 수선의 발 Q, 평행선과 변 AC의 교점 R, 색칠한 사각형 PQCR의 위치를 나타낸 그림이다(AP=5인 한 예).",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 삼각형 APR와 삼각형 BPQ가 직각이등변삼각형이고 AP=AR=x, BP=12-x이며 남는 사각형이 PQCR임을 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "도형의 넓이를 한 변의 길이 x에 대한 이차함수로 나타내어 완전제곱식으로 최댓값을 구한다.",
+          "crossConcept": "직각이등변삼각형의 변·넓이 관계와 삼각형 넓이 공식, 완전제곱식 변형이 Primary(조건식 활용) 바깥에서 기여한다.",
+          "condition": "P가 AB의 내부에 있다는 조건이 x의 범위(0<x<12)와 최댓값의 존재를 결정한다.",
+          "integration": "x 설정 → 넓이 식 → 이차식 정리 → 완전제곱식으로 최댓값의 순차 절차라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 이차함수의 최대·최소(중학교 도형 포함)"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 22,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-171",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 도형의 넓이를 한 변의 길이 x에 대한 이차함수로 나타내어 완전제곱식으로 최댓값을 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_MODEL)이 크로스워크 H1-RPM-171의 RPM 경로(방정식과 부등식>이차방정식과 이차함수>최대·최소>조건식 활용)와 canonical 바인딩으로 확인 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 나눗셈",
+          "l4": "몫과 나머지",
+          "recordId": "H1-RPM-139",
+          "l3Label": "다항식의 나눗셈",
+          "l4Label": "몫과 나머지",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-139"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 나눗셈",
+        "rpmPrimaryL4": "몫과 나머지",
+        "rpmPrimaryRecordId": "H1-RPM-139",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_DIVISION",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_DEGREE_INFERENCE",
+          "CC_DIVISION_ALGORITHM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "나눗셈 항등식, 차수 논증, 상수 결정, 계수 결정, 전개와 값 계산의 5단계 이상이라 상",
+        "difficultyBasis": "두 나눗셈 조건에서 차수를 논증해 P, Q를 복원하는 깊은 복합 구조라 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건 (가), (나)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "나눗셈 항등식과 차수 논증이 풀이의 전부라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 나눗셈 조건에서 나머지의 차수 제한으로 P(x), Q(x)의 차수를 정하고 다항식을 복원한다.",
+          "crossConcept": "나머지의 차수가 제수보다 낮아야 한다는 조건으로 차수를 추론하는 단계와 나눗셈 정리로 f를 복원하는 단계가 Primary 바깥에서 기여한다.",
+          "condition": "모든 항의 계수가 실수라는 조건이 u³=−1에서 u=−1을 고르는 데 쓰이나 별도 조건 키는 쓰지 않았다.",
+          "integration": "차수 추론 → 상수 결정 → 계수 결정 → 값 계산이 서로 얽혀 DEEP_COMPOSITE.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 나눗셈(몫과 나머지의 차수)"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 23,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_매산여고_1학기_중간_고1_유사 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": "H1-RPM-139",
+        "method": "CROSSWALK_RPM_PATH_CANONICAL_BINDING",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 나눗셈 조건에서 나머지의 차수 제한으로 P(x), Q(x)의 차수를 정하고 다항식을 복원한다. → 다항식의 나눗셈; PT/TPL(PT_H1_POLY_DIVISION,TPL_H1_POLY_DIVISION_EXECUTION)이 크로스워크 H1-RPM-139의 RPM 경로(다항식>다항식의 연산>다항식의 나눗셈>몫과 나머지)와 canonical 바인딩으로 확인 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    }
+  ]
+}

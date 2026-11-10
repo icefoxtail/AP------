@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_매산여고_1학기_중간_고1_유사",
+  "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [],
+  "generatedCrossConcepts": [],
+  "generatedConditions": [],
+  "generatedProblemTypes": [],
+  "generatedTemplates": [
+    {
+      "key": "EXT-TPL-FACTOR-THEOREM-COEFFICIENT-DETERMINATION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "인수정리로 미정계수 결정",
+      "definition": "다항식이 일차식(또는 일차식의 제곱)으로 나누어떨어지거나 인수로 갖는다는 조건에서 인수정리 P(a)=0을 세워 다항식의 미정계수를 연립방정식으로 결정하는 풀이 골격.",
+      "parentRpmRecordId": "H1-RPM-145",
+      "parentRpmL1": "다항식",
+      "parentRpmL2": "항등식과 나머지정리",
+      "parentRpmL3": "인수정리",
+      "parentRpmL4": "미정계수 결정",
+      "parentKey": "PT_H1_FACTOR_THEOREM",
+      "parentLabelKo": "인수정리",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "나누어떨어지는 조건 확인 -> 인수정리 P(a)=0(필요하면 조립제법으로 몫에 다시 적용) -> 미정계수 연립 -> 요구값 계산",
+      "standardUnitKey": "H22-C-02",
+      "subUnitKey": "H22-C-02-CORE",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "PT_H1_FACTOR_THEOREM은 H22-C-02-CORE에 ACTIVE로 바인딩되어 있으나 canonical TPL이 하나도 없다. 크로스워크 H1-RPM-145(인수정리>미정계수 결정)는 RPM_ONLY라 템플릿이 비어 있어 Q9, Q10에서 사용한다.",
+      "firstUsed": {
+        "stem": "26_매산여고_1학기_중간_고1_유사",
+        "qid": 9
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-10",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true,
+  "reusedGeneratedKeys": []
+}
