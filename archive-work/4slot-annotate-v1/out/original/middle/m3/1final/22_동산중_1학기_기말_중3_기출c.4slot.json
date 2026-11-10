@@ -12,51 +12,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$x^2+2x-24$를",
-            "term": "이차식"
+            "quote": "$x^2+2x-24$를 $(x+a)(x+b)$로 인수분해하였을 때,",
+            "term": "인수분해"
           },
           {
             "src": "solution",
-            "quote": "$(x+a)(x+b)=x^2+(a+b)x+ab$이므로",
-            "term": "전개식"
+            "quote": "$(x+a)(x+b)$를 전개해 $x$의 계수를 비교한다.",
+            "term": "계수"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$a+b$의 값을 구하면?",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "따라서 $a+b=2$이고",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
-            "src": "stem",
-            "quote": "$(x+a)(x+b)$로 인수분해하였을 때",
-            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(x+a)(x+b)=x^2+(a+b)x+ab$이므로,",
+            "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "$x$의 계수를 비교한다.",
+            "quote": "$(x+a)(x+b)$를 전개해 $x$의 계수를 비교한다.",
             "term": "계수비교",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "주어진 식의 $x$의 계수 $2$가 $a+b$이다.",
+            "term": "합",
+            "evidenceType": "IMPLIED",
+            "justification": "계수 비교로 합 결정"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "주어진 식의 $x$의 계수 $2$가",
-            "term": "계수"
+            "quote": "따라서 $a+b=2$이고 정답은 ①.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "인수분해 전개식의 일차항 계수를 원 식과 비교하여 a+b의 값을 결정함"
+        "method": "인수분해된 두 일차식의 곱을 전개하여 일차항 계수를 직접 비교하여 a+b의 값을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -68,12 +70,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$x^2+Ax-8$을",
-            "term": "이차식"
+            "quote": "$x^2+Ax-8$을 $(x+a)(x+b)$로 인수분해할 때,",
+            "term": "인수분해"
           },
           {
             "src": "stem",
-            "quote": "단, $a, b$는 정수",
+            "quote": "(단, $a, b$는 정수)",
             "term": "정수"
           }
         ],
@@ -82,44 +84,38 @@
             "src": "stem",
             "quote": "$A$의 값이 될 수 <u>없는</u> 것은?",
             "term": "판정"
-          },
-          {
-            "src": "solution",
-            "quote": "가능한 $A$는 $-7,7,-2,2$이다.",
-            "term": "합"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "두 정수의 곱을 이용해",
-            "term": "곱",
-            "evidenceType": "NAMED"
-          },
-          {
-            "src": "stem",
-            "quote": "$(x+a)(x+b)$로 인수분해할 때",
-            "term": "인수분해",
+            "quote": "$(x+a)(x+b)=x^2+(a+b)x+ab$",
+            "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "정수 인수쌍은 $(1,-8),(-1,8),(2,-4),(-2,4)$",
+            "quote": "정수 인수쌍은 $(1,-8),(-1,8),(2,-4),(-2,4)$ 및 순서 교환뿐이다.",
             "term": "순서쌍",
-            "evidenceType": "IMPLIED",
-            "justification": "곱이 -8인 가능한 모든 정수 순서쌍을 나열함"
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "인수분해한 두 정수의 곱을 이용해 가능한 합을 전부 정리한다.",
+            "term": "곱",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$ab=-8,\\quad A=a+b$",
-            "term": "음수"
+            "quote": "가능한 $A$는 $-7,7,-2,2$이다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "상수항 -8이 되는 정수 순서쌍들의 합을 전수 조사하여 불가능한 계수 A를 판정함"
+        "method": "곱이 -8이 되는 모든 정수 순서쌍을 나열하고 각각의 합을 조사하여 가능한 계수 A를 판정함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -131,13 +127,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$(x-3)^2-2(x-3)-3$을",
+            "quote": "$(x-3)^2-2(x-3)-3$을 두 일차식의 곱으로 인수분해하였을 때,",
             "term": "다항식"
           },
           {
-            "src": "solution",
-            "quote": "반복되는 괄호를 하나의 문자처럼 보고",
-            "term": "공통부분"
+            "src": "stem",
+            "quote": "두 일차식의 곱으로 인수분해하였을 때,",
+            "term": "일차식"
           }
         ],
         "goal": [
@@ -145,11 +141,6 @@
             "src": "stem",
             "quote": "두 일차식의 합을 구하면?",
             "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "$(x-6)+(x-2)=2x-8$이다.",
-            "term": "결정"
           }
         ],
         "method": [
@@ -157,7 +148,8 @@
             "src": "solution",
             "quote": "$t=x-3$이라 두면",
             "term": "치환",
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "반복되는 공통부분을 한 문자 t로 치환"
           },
           {
             "src": "solution",
@@ -166,22 +158,23 @@
             "evidenceType": "NAMED"
           },
           {
-            "src": "stem",
-            "quote": "두 일차식의 곱으로",
-            "term": "일차식",
-            "evidenceType": "NAMED"
+            "src": "solution",
+            "quote": "$(x-6)+(x-2)=2x-8$이다. 정답은 ②.",
+            "term": "다항식",
+            "evidenceType": "IMPLIED",
+            "justification": "두 일차식을 환원하여 덧셈"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$2x-8$",
-            "term": "음수"
+            "src": "solution",
+            "quote": "$(x-6)+(x-2)=2x-8$이다. 정답은 ②.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "공통부분 x-3을 t로 치환하여 인수분해한 후 x의 두 일차식으로 환원해 합을 구함"
+        "method": "공통부분 x-3을 t로 치환하여 인수분해한 후 x로 환원하여 두 일차식의 합을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -193,25 +186,25 @@
         "given": [
           {
             "src": "stem",
-            "quote": "넓이가 $6a^2+11a-10$인 직사각형의",
+            "quote": "넓이가 $6a^2+11a-10$인 직사각형의 가로의 길이가 $3a-2$일 때,",
             "term": "직사각형"
           },
           {
             "src": "stem",
-            "quote": "가로의 길이가 $3a-2$일 때",
-            "term": "길이"
+            "quote": "넓이가 $6a^2+11a-10$인 직사각형의",
+            "term": "넓이"
           },
           {
-            "src": "solution",
-            "quote": "직사각형의 넓이=가로×세로임을 활용한다.",
-            "term": "넓이"
+            "src": "stem",
+            "quote": "가로의 길이가 $3a-2$일 때,",
+            "term": "길이"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "세로의 길이를 구하면?",
-            "term": "결정"
+            "term": "일차식"
           }
         ],
         "method": [
@@ -219,6 +212,12 @@
             "src": "solution",
             "quote": "$6a^2+11a-10=(3a-2)(2a+5)$",
             "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "직사각형의 넓이=가로×세로임을 활용한다.",
+            "term": "곱",
             "evidenceType": "NAMED"
           },
           {
@@ -231,13 +230,13 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "세로 길이는 $2a+5$이다.",
-            "term": "일차식"
+            "quote": "가로 길이가 $3a-2$이므로 세로 길이는 $2a+5$이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "직사각형 넓이 다항식을 주어진 가로 일차식으로 인수분해하여 세로 길이를 도출함"
+        "method": "직사각형의 넓이 식을 가로 일차식을 포함하는 두 일차식의 곱으로 인수분해하여 세로 길이를 도출함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -249,25 +248,20 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$3(x+2y)^2-x-2y-2=A(3x+6y+2)$일 때",
+            "quote": "$3(x+2y)^2-x-2y-2=A(3x+6y+2)$일 때,",
             "term": "등식"
           },
           {
-            "src": "solution",
-            "quote": "$x+2y$를 한 문자로 바꿔",
-            "term": "공통부분"
+            "src": "stem",
+            "quote": "다항식 $A$를 구하면?",
+            "term": "다항식"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "다항식 $A$를 구하면?",
-            "term": "다항식"
-          },
-          {
-            "src": "solution",
-            "quote": "$A=t-1=x+2y-1$이다.",
-            "term": "결정"
+            "term": "일차식"
           }
         ],
         "method": [
@@ -275,25 +269,33 @@
             "src": "solution",
             "quote": "$t=x+2y$라고 두면",
             "term": "치환",
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "공통부분 x+2y를 문자 t로 치환"
           },
           {
             "src": "solution",
-            "quote": "=(t-1)(3t+2)$이다.",
+            "quote": "$3(x+2y)^2-x-2y-2=3t^2-t-2$",
+            "term": "동류항",
+            "evidenceType": "IMPLIED",
+            "justification": "식의 항들을 묶어 정리"
+          },
+          {
+            "src": "solution",
+            "quote": "$=(t-1)(3t+2)$이다.",
             "term": "인수분해",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$x+2y-1$",
-            "term": "일차식"
+            "src": "solution",
+            "quote": "$A=t-1=x+2y-1$이다. 정답은 ④.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "공통부분 x+2y를 치환하여 이차식을 인수분해한 뒤 인수 형태를 대조하여 다항식 A를 결정함"
+        "method": "공통부분 x+2y를 치환하여 2차식을 인수분해한 후 주어진 인수를 제외한 다항식 A를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -305,13 +307,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$3ax^2-3x-4=12x(x-3)$이",
-            "term": "방정식"
+            "quote": "$3ax^2-3x-4=12x(x-3)$이 $x$에 관한 이차방정식이 되기 위한",
+            "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "이차방정식에서 $x^2$의 계수가 0이 되면 안 된다.",
-            "term": "계수"
+            "src": "stem",
+            "quote": "상수 $a$의 조건은?",
+            "term": "상수"
           }
         ],
         "goal": [
@@ -319,44 +321,39 @@
             "src": "stem",
             "quote": "상수 $a$의 조건은?",
             "term": "조건"
-          },
-          {
-            "src": "solution",
-            "quote": "$3a\\ne12$, 즉 $a\\ne4$이므로",
-            "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "12x^2-36x",
+            "quote": "$3ax^2-3x-4=12x^2-36x$",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
             "quote": "$(3a-12)x^2+33x-4=0$",
-            "term": "이항",
+            "term": "동류항",
             "evidenceType": "IMPLIED",
-            "justification": "우변의 식을 전개 후 좌변으로 이항하여 최고차항 계수를 정리함"
+            "justification": "모든 항을 좌변으로 이항하여 정리"
           },
           {
-            "src": "stem",
-            "quote": "이차방정식이 되기 위한",
-            "term": "이차방정식",
+            "src": "solution",
+            "quote": "이차방정식에서 $x^2$의 계수가 0이 되면 안 된다.",
+            "term": "계수",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "stem",
-            "quote": "상수 $a$의 조건",
-            "term": "상수"
+            "src": "solution",
+            "quote": "$3a\\ne12$, 즉 $a\\ne4$이므로 정답은 ⑤.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "우변을 전개 후 한쪽으로 모아 이차항 계수 3a-12가 0이 아니라는 조건으로 a의 범위를 판정함"
+        "method": "우변을 전개하고 좌변으로 이항하여 정리한 뒤 이차항 계수가 0이 아니어야 하는 조건으로부터 a의 범위를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -368,13 +365,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2+2x-3=0$의",
+            "quote": "이차방정식 $x^2+2x-3=0$의 한 근을 $x=p$,",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "한 근을 $x=p$",
-            "term": "근"
+            "quote": "$2x^2-x-1=0$의 한 근을 $x=q$라고 할 때,",
+            "term": "해"
           }
         ],
         "goal": [
@@ -382,38 +379,39 @@
             "src": "stem",
             "quote": "$2p^2+4p-2q^2+q$의 값을 구하면?",
             "term": "식의값"
-          },
-          {
-            "src": "solution",
-            "quote": "2p^2+4p-2q^2+q=6-1=5",
-            "term": "결정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "근이라는 사실을 식에 대입한다.",
+            "quote": "근 $p,q$를 직접 구할 필요 없이 근이라는 사실을 식에 대입한다.",
             "term": "대입",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "2(p^2+2p)=6",
-            "term": "등식의성질",
+            "quote": "$p^2+2p-3=0\\Rightarrow p^2+2p=3$",
+            "term": "등식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "따라서 $2p^2+4p-2q^2+q=6-1=5$이다.",
+            "term": "차",
             "evidenceType": "IMPLIED",
-            "justification": "근의 성립식의 양변에 2를 곱하여 주어진 고차 부분의 값을 계산함"
+            "justification": "구한 두 식의 값을 빼서 최종 값 도출"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$p^2+2p-3=0\\Rightarrow p^2+2p=3$",
-            "term": "등식"
+            "quote": "따라서 $2p^2+4p-2q^2+q=6-1=5$이다. 정답은 ⑤.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "두 이차방정식에 각 근을 대입해 얻은 등식을 변형하여 목표 다항식의 값을 계산함"
+        "method": "근을 각각의 이차방정식에 대입하여 얻은 2차식의 값을 변형식에 직접 대입하여 식의 값을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -425,52 +423,54 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2-2x-8=0$과",
+            "quote": "이차방정식 $x^2-2x-8=0$과 $2x^2-7x-4=0$의 공통근을 구하면?",
             "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "$x^2-2x-8=(x-4)(x+2)=0$",
-            "term": "이차식"
+            "src": "stem",
+            "quote": "공통근을 구하면?",
+            "term": "공통근"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "공통근을 구하면?",
-            "term": "공통근"
-          },
-          {
-            "src": "solution",
-            "quote": "공통되는 근은 $4$이므로",
-            "term": "결정"
+            "term": "해"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "두 이차방정식을 각각 인수분해한 뒤",
+            "quote": "두 이차방정식을 각각 인수분해한 뒤 공통된 근을 찾는다.",
             "term": "인수분해",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "공통된 근을 찾는다.",
-            "term": "공통부분",
+            "quote": "$x^2-2x-8=(x-4)(x+2)=0$",
+            "term": "일차식",
             "evidenceType": "IMPLIED",
-            "justification": "두 방정식의 해집합의 교집합인 공통근을 판별함"
+            "justification": "인수분해된 일차식들의 곱"
+          },
+          {
+            "src": "solution",
+            "quote": "양쪽에 공통되는 근은 $4$이므로 정답은 ④.",
+            "term": "등식",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식을 모두 만족하는 근 확인"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$x=4$ 또는 $x=-2$이다.",
-            "term": "실근"
+            "quote": "양쪽에 공통되는 근은 $4$이므로 정답은 ④.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "두 이차방정식을 각각 인수분해하여 해를 구한 후 양쪽에 공통으로 속하는 실근을 결정함"
+        "method": "두 이차방정식을 각각 인수분해하여 해의 집합을 구한 후 공통으로 포함되는 근을 찾음"
       },
       "steps": [],
       "scenarioNote": ""
@@ -482,13 +482,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $3x^2+5x-2=0$의",
+            "quote": "이차방정식 $3x^2+5x-2=0$의 두 근 중",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "두 근 중 큰 근을 $a$, 작은 근을 $b$라고 할 때",
-            "term": "부등식"
+            "quote": "두 근 중 큰 근을 $a$, 작은 근을 $b$라고 할 때,",
+            "term": "해"
           }
         ],
         "goal": [
@@ -496,11 +496,6 @@
             "src": "stem",
             "quote": "$3a-b$의 값을 구하면?",
             "term": "식의값"
-          },
-          {
-            "src": "solution",
-            "quote": "3a-b=3\\times\\frac13-(-2)=1+2=3",
-            "term": "결정"
           }
         ],
         "method": [
@@ -513,6 +508,13 @@
           {
             "src": "solution",
             "quote": "두 근의 대소를 구별해 값을 대입한다.",
+            "term": "부등식",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근의 대소 비교"
+          },
+          {
+            "src": "solution",
+            "quote": "$3a-b=3\\times\\frac13-(-2)=1+2=3$이다.",
             "term": "대입",
             "evidenceType": "NAMED"
           }
@@ -520,18 +522,13 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "작은 근 $b=-2$이므로",
-            "term": "음수"
-          },
-          {
-            "src": "solution",
-            "quote": "큰 근 $a=\\frac13$",
+            "quote": "$x=\\frac13$ 또는 $x=-2$이다.",
             "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "이차방정식을 인수분해하여 두 유리수 근을 구하고 대소 관계에 맞추어 식 3a-b의 값을 계산함"
+        "method": "이차방정식을 인수분해하여 두 근을 구하고 대소 관계에 따라 a, b를 정한 뒤 일차식에 대입해 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -543,52 +540,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2+(k-2)x+16=0$이",
+            "quote": "$x$에 관한 이차방정식 $x^2+(k-2)x+16=0$이",
             "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "r^2=16",
-            "term": "거듭제곱"
+            "src": "stem",
+            "quote": "중근을 가질 때, $k$의 값과 그 때의 중근이 바른 것은?",
+            "term": "중근"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "중근을 가질 때",
-            "term": "중근"
-          },
-          {
-            "src": "solution",
-            "quote": "맞는 것은 $(k,x)=(10,-4)$이므로",
-            "term": "판정"
+            "quote": "$k$의 값과 그 때의 중근이 바른 것은?",
+            "term": "해"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "완전제곱식으로 정리된다.",
+            "quote": "중근인 경우 완전제곱식으로 정리된다.",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "=(x-r)^2=x^2-2rx+r^2$",
-            "term": "계수비교",
+            "quote": "$r^2=16\\Rightarrow r=4$ 또는 $r=-4$이다.",
+            "term": "제곱근",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$r=-4$이면 $k-2=8\\Rightarrow k=10$, 중근 $x=-4$이다.",
+            "term": "등식",
             "evidenceType": "IMPLIED",
-            "justification": "완전제곱식 전개식의 일차항 계수와 상수항을 원 식과 계수비교함"
+            "justification": "계수 비교로 k와 중근 결정"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$k=10, x=-4$",
+            "src": "solution",
+            "quote": "이 중 선택지와 맞는 것은 $(k,x)=(10,-4)$이므로 정답은 ②.",
             "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "이차방정식이 중근을 가질 완전제곱식 조건을 이용하여 계수비교로 상수 k와 중근 x를 결정함"
+        "method": "이차방정식이 중근을 가질 조건을 완전제곱식 꼴로 세워 상수항 제곱근으로부터 k와 중근을 도출함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -600,59 +598,54 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $3x^2+ax+b=0$의",
+            "quote": "$x$에 관한 이차방정식 $3x^2+ax+b=0$의 두 근이",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "두 근이 $x=-3, x=\\frac{2}{3}$일 때",
-            "term": "유리수"
+            "quote": "두 근이 $x=-3, x=\\frac{2}{3}$일 때,",
+            "term": "해"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$a+b$의 값은?",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "$a+b=7-6=1$이다.",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "두 근을 갖는 인수식으로 만든다.",
+            "quote": "두 근이 주어졌으면 그 두 근을 갖는 인수식으로 만든다.",
             "term": "인수분해",
             "evidenceType": "IMPLIED",
-            "justification": "주어진 두 근으로 인수분해형 이차방정식을 작성함"
+            "justification": "두 근을 갖는 일차식들의 곱으로 식 작성"
           },
           {
             "src": "solution",
-            "quote": "$=3x^2+7x-6$이다.",
+            "quote": "$=3\\left(x^2+\\frac73x-2\\right)$",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
             "quote": "따라서 $a=7$, $b=-6$이고",
-            "term": "계수비교",
+            "term": "계수",
             "evidenceType": "IMPLIED",
-            "justification": "전개된 식과 원 식의 계수를 비교하여 a와 b를 결정함"
+            "justification": "전개식과 계수 비교"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "b=-6",
-            "term": "음수"
+            "quote": "$a+b=7-6=1$이다. 정답은 ①.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "두 근을 이용하여 최고차항 계수가 3인 이차방정식을 전개한 뒤 계수비교를 통해 a+b를 계산함"
+        "method": "주어진 두 근으로부터 이차방정식을 작성하고 전개하여 계수 a와 b를 구한 뒤 합을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -664,58 +657,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2-6x-2=0$을",
+            "quote": "이차방정식 $x^2-6x-2=0$을 제곱근을 이용한 해를 구하기 위하여",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "$(x-p)^2=q$의 꼴로 고칠 때",
-            "term": "표준형"
+            "quote": "$(x-p)^2=q$의 꼴로 고칠 때,",
+            "term": "완전제곱식"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$p+q$의 값을 구하면?",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "따라서 $p=3$, $q=11$, $p+q=14$",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
             "quote": "일차항 계수의 절반을 제곱하여 완전제곱식을 만든다.",
-            "term": "완전제곱식",
-            "evidenceType": "NAMED"
+            "term": "제곱근",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근을 이용한 풀이를 위한 완전제곱식 변형"
           },
           {
             "src": "solution",
             "quote": "양변에 $9$를 더하면",
-            "term": "등식의성질",
-            "evidenceType": "IMPLIED",
-            "justification": "양변에 같은 수를 더해 완전제곱식 꼴로 변형함"
+            "term": "등식",
+            "evidenceType": "NAMED"
           },
           {
-            "src": "stem",
-            "quote": "제곱근을 이용한 해를 구하기 위하여",
-            "term": "제곱근",
+            "src": "solution",
+            "quote": "따라서 $p=3$, $q=11$, $p+q=14$로 정답은 ⑤.",
+            "term": "합",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$(x-3)^2=11$이다.",
-            "term": "자연수"
+            "quote": "따라서 $p=3$, $q=11$, $p+q=14$로 정답은 ⑤.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "상수항을 이항하고 양변에 일차항 계수 절반의 제곱을 더해 (x-p)^2=q 꼴로 만들어 p+q를 구함"
+        "method": "이차방정식 양변에 적절한 상수를 더해 완전제곱식 (x-p)^2=q 꼴로 변형하고 p와 q의 합을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -727,12 +715,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2+ax+b=0$의",
+            "quote": "이차방정식 $x^2+ax+b=0$의 해를 구하였더니",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "해를 구하였더니 $x=3 \\pm \\sqrt{5}$이었다.",
+            "quote": "$x=3 \\pm \\sqrt{5}$이었다. $a+b$의 값을 구하면?",
             "term": "무리수"
           }
         ],
@@ -740,26 +728,27 @@
           {
             "src": "stem",
             "quote": "$a+b$의 값을 구하면?",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "a+b=-6+4=-2",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "두 근의 합은 $(3+\\sqrt5)+(3-\\sqrt5)=6$이다.",
+            "quote": "근 $3\\pm\\sqrt5$의 합과 곱을 이용한다.",
             "term": "근과계수의관계",
             "evidenceType": "IMPLIED",
-            "justification": "두 무리수 근의 합과 곱을 이용해 이차방정식 계수를 결정함"
+            "justification": "두 근의 합과 곱을 계수와 연결"
+          },
+          {
+            "src": "solution",
+            "quote": "두 근의 합은 $(3+\\sqrt5)+(3-\\sqrt5)=6$이다.",
+            "term": "합",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
             "quote": "두 근의 곱은 $(3+\\sqrt5)(3-\\sqrt5)=9-5=4$이다.",
-            "term": "합차공식",
+            "term": "곱",
             "evidenceType": "NAMED"
           }
         ],
@@ -767,12 +756,12 @@
           {
             "src": "solution",
             "quote": "$a=-6,\\quad b=4$",
-            "term": "음수"
+            "term": "상수"
           }
         ]
       },
       "reasons": {
-        "method": "켤레무리수 두 근의 합과 곱을 계산하여 근과 계수의 관계로 미정계수 a와 b를 결정하고 합을 구함"
+        "method": "두 무리수 근의 합과 곱을 구하고 근과 계수의 관계를 통해 계수 a와 b를 결정하여 합을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -784,12 +773,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $\\frac{1}{2}x^2-x+\\frac{1}{3}=0$의",
+            "quote": "이차방정식 $\\frac{1}{2}x^2-x+\\frac{1}{3}=0$의 근을 구하였더니",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "단, $a, b, c$는 자연수이고",
+            "quote": "단, $a, b, c$는 자연수이고,",
             "term": "자연수"
           }
         ],
@@ -797,46 +786,39 @@
           {
             "src": "stem",
             "quote": "$a+b+c$의 값을 구하면?",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "$a+b+c=3+3+3=9$이고",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
             "quote": "양변에 $6$을 곱하면 $3x^2-6x+2=0$이다.",
-            "term": "등식의성질",
-            "evidenceType": "IMPLIED",
-            "justification": "양변에 분모의 최소공배수를 곱하여 정수 계수화함"
+            "term": "등식",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "근의 공식으로",
+            "quote": "근의 공식에 대입해 근호를 간단히 한 뒤,",
             "term": "근의공식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "=\\frac{6\\pm2\\sqrt3}{6}=\\frac{3\\pm\\sqrt3}{3}$이다.",
-            "term": "약분",
-            "evidenceType": "IMPLIED",
-            "justification": "분모와 분자의 공약수를 나누어 기약분수 형태로 정리함"
+            "quote": "$=\\frac{6\\pm\\sqrt{12}}{6}=\\frac{6\\pm2\\sqrt3}{6}=\\frac{3\\pm\\sqrt3}{3}$이다.",
+            "term": "제곱근",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "stem",
-            "quote": "$\\sqrt{c}$는 더 이상 간단히 할 수 없는 꼴이다.",
-            "term": "근호"
+            "src": "solution",
+            "quote": "따라서 $a+b+c=3+3+3=9$이고 정답은 ③이다.",
+            "term": "자연수"
           }
         ]
       },
       "reasons": {
-        "method": "분수 계수 이차방정식을 정수화한 뒤 근의 공식을 적용하고 근호와 분수를 간단히 하여 a+b+c를 계산함"
+        "method": "분수 계수를 정수로 변환한 뒤 근의 공식을 적용하고 근호 안을 가장 간단한 형태로 정리하여 a+b+c를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -848,59 +830,52 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2-6x-k+2=0$이",
+            "quote": "$x$의 값이 실수일 때, 이차방정식 $x^2-6x-k+2=0$이",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "$x$의 값이 실수일 때",
-            "term": "실수"
+            "quote": "서로 다른 두 근을 갖을 조건을 구하면?",
+            "term": "실근"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "서로 다른 두 근을 갖을 조건을 구하면?",
-            "term": "조건"
-          },
-          {
-            "src": "solution",
-            "quote": "따라서 $k>-7$로",
-            "term": "판정"
+            "term": "부등식"
           }
         ],
         "method": [
           {
             "src": "solution",
             "quote": "서로 다른 두 실근은 제곱식 우변이 양수일 때 생긴다.",
-            "term": "실근",
-            "evidenceType": "IMPLIED",
-            "justification": "완전제곱식 우변이 양수이어야 서로 다른 두 실근을 가짐을 이용함"
-          },
-          {
-            "src": "solution",
-            "quote": "$(x-3)^2=k-2+9=k+7$",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
+            "quote": "$(x-3)^2=k-2+9=k+7$",
+            "term": "등식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
             "quote": "서로 다른 두 근을 가지려면 $k+7>0$이어야 한다.",
-            "term": "부등식의성질",
-            "evidenceType": "IMPLIED",
-            "justification": "일차부등식을 풀어 k의 범위를 도출함"
+            "term": "조건",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$k > -7$",
+            "src": "solution",
+            "quote": "따라서 $k>-7$로 정답은 ①.",
             "term": "부등식"
           }
         ]
       },
       "reasons": {
-        "method": "이차방정식을 완전제곱식으로 변형하여 우변이 양수이어야 한다는 서로 다른 두 실근 조건을 적용함"
+        "method": "이차방정식을 완전제곱식으로 변형하고 우변이 양수가 되는 조건을 통해 서로 다른 두 실근을 갖는 k의 범위를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -916,9 +891,9 @@
             "term": "짝수"
           },
           {
-            "src": "solution",
-            "quote": "n은 양의 짝수",
-            "term": "양수"
+            "src": "stem",
+            "quote": "연속하는 세 양의 짝수가 있다.",
+            "term": "자연수"
           }
         ],
         "goal": [
@@ -926,47 +901,43 @@
             "src": "stem",
             "quote": "세 짝수의 합을 구하면?",
             "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "합은 24이므로",
-            "term": "결정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "연속하는 세 양의 짝수를 n−2, n, n+2",
-            "term": "모델링",
+            "quote": "연속하는 세 양의 짝수를 n−2, n, n+2(n은 양의 짝수)라 하자.",
+            "term": "미지수",
             "evidenceType": "IMPLIED",
-            "justification": "연속하는 세 짝수를 n을 기준으로 미지수 설정함"
-          },
-          {
-            "src": "solution",
-            "quote": "n²−6n−16=(n−8)(n+2)=0에서",
-            "term": "인수분해",
-            "evidenceType": "NAMED"
+            "justification": "연속하는 짝수를 n을 이용하여 대수적으로 설정"
           },
           {
             "src": "solution",
             "quote": "n²=3{(n−2)+(n+2)}+16=6n+16.",
             "term": "이차방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "문제 조건으로부터 이차방정식 식 세우기"
+          },
+          {
+            "src": "solution",
+            "quote": "n²−6n−16=(n−8)(n+2)=0에서 n=8 또는 n=−2이다.",
+            "term": "인수분해",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "stem",
-            "quote": "가운데 수의 제곱은 나머지 두 수의 합의 3배보다 16만큼 클 때",
-            "term": "거듭제곱"
+            "src": "solution",
+            "quote": "n은 양의 짝수이므로 n=8만 가능하다.",
+            "term": "자연수"
           }
         ]
       },
       "reasons": {
-        "method": "연속하는 세 짝수를 미지수로 모델링하여 이차방정식을 세우고 인수분해로 양의 짝수를 구해 세 수의 합을 계산함"
+        "method": "연속하는 세 짝수를 n-2, n, n+2로 설정하고 조건에 따른 이차방정식을 세워 푼 뒤 양의 짝수 해의 합을 구함"
       },
       "steps": [],
-      "scenarioNote": "연속 짝수 문제"
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 17,
@@ -974,62 +945,54 @@
       "slots": {
         "given": [
           {
-            "src": "stem",
-            "quote": "몇 명의 학생들에게 자두 80개를 똑같이 나누어 주었더니",
-            "term": "자연수"
-          },
-          {
             "src": "solution",
-            "quote": "한 명당 자두 수는 $\\frac{80}{n}$이다.",
-            "term": "유리식"
+            "quote": "학생 수는 자연수이며, 배분된 자두 개수는 학생 수보다 2 작다.",
+            "term": "자연수"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "학생수를 구하면?",
-            "term": "결정"
-          },
-          {
-            "src": "solution",
-            "quote": "학생 수는 양수이므로 $n=10$이다.",
-            "term": "해"
+            "quote": "이때, 학생수를 구하면?",
+            "term": "자연수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "80=n(n-2)",
-            "term": "모델링",
+            "quote": "학생 수를 $n$이라 하면 한 명당 자두 수는 $\\frac{80}{n}$이다.",
+            "term": "미지수",
             "evidenceType": "IMPLIED",
-            "justification": "학생 수와 인당 배분량의 곱으로 이차방정식을 모델링함"
+            "justification": "학생 수를 미지수 n으로 설정"
           },
           {
             "src": "solution",
-            "quote": "$(n-10)(n+8)=0$",
-            "term": "인수분해",
-            "evidenceType": "NAMED"
+            "quote": "$\\frac{80}{n}=n-2\\Rightarrow 80=n(n-2)$",
+            "term": "이차방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "조건식을 전개하여 이차방정식 도출"
           },
           {
             "src": "solution",
             "quote": "$n^2-2n-80=0$",
-            "term": "이차방정식",
-            "evidenceType": "NAMED"
+            "term": "인수분해",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식 인수분해"
           }
         ],
         "condition": [
           {
-            "src": "stem",
-            "quote": "학생수 보다 2만큼 작다고 한다.",
-            "term": "차"
+            "src": "solution",
+            "quote": "$n=10$ 또는 $n=-8$인데 학생 수는 양수이므로 $n=10$이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "실생활 배분 상황을 미지수 n의 이차방정식으로 세우고 인수분해하여 자연수 조건에 맞는 학생수를 구함"
+        "method": "학생 수를 미지수로 놓고 문제 상황을 이차방정식으로 모델링하여 푼 후 자연수 조건에 맞는 해를 구함"
       },
       "steps": [],
-      "scenarioNote": "자두 배분 문제"
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 18,
@@ -1038,17 +1001,17 @@
         "given": [
           {
             "src": "stem",
-            "quote": "넓이가 $48\\text{m}^2$인 직사각형의",
-            "term": "직사각형"
-          },
-          {
-            "src": "stem",
             "quote": "길이가 $20\\text{m}$인 철망으로",
             "term": "길이"
           },
           {
-            "src": "solution",
-            "quote": "넓이가 48m²이므로",
+            "src": "stem",
+            "quote": "넓이가 $48\\text{m}^2$인 직사각형의 강아지 놀이터를 만들려고 할 때,",
+            "term": "직사각형"
+          },
+          {
+            "src": "stem",
+            "quote": "넓이가 $48\\text{m}^2$인 직사각형의",
             "term": "넓이"
           }
         ],
@@ -1057,24 +1020,25 @@
             "src": "stem",
             "quote": "$x$값들의 합을 구하면?",
             "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "구하는 합은 10",
-            "term": "결정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "x(20−2x)=48.",
-            "term": "모델링",
-            "evidenceType": "IMPLIED",
-            "justification": "철망 둘레와 넓이 관계로 이차방정식을 모델링함"
+            "quote": "다른 변의 길이를 y라 하면 2x+y=20, 즉 y=20−2x이다.",
+            "term": "등식",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "x²−10x+24=(x−4)(x−6)=0",
+            "quote": "넓이가 48m²이므로 x(20−2x)=48.",
+            "term": "이차방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이 조건식으로부터 이차방정식 구성"
+          },
+          {
+            "src": "solution",
+            "quote": "이를 정리하면 x²−10x+24=(x−4)(x−6)=0이므로 x=4 또는 6이다.",
             "term": "인수분해",
             "evidenceType": "NAMED"
           }
@@ -1082,21 +1046,16 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "2x+y=20, 즉 y=20−2x이다.",
-            "term": "일차방정식"
-          },
-          {
-            "src": "solution",
-            "quote": "양의 넓이 조건에 맞으므로",
-            "term": "양수"
+            "quote": "두 값 모두 철망 길이와 양의 넓이 조건에 맞으므로 구하는 합은 10, 정답 ④이다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "담장을 제외한 철망 둘레와 직사각형 넓이로 이차방정식을 세우고 인수분해하여 가능한 x값들의 합을 구함"
+        "method": "철망 길이 관계식으로 가로와 세로 길이를 x로 표현하고 넓이 식으로부터 이차방정식을 세워 가능한 x값들의 합을 계산함"
       },
       "steps": [],
-      "scenarioNote": "강아지 놀이터 울타리"
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 19,
@@ -1104,34 +1063,34 @@
       "slots": {
         "given": [
           {
-            "src": "solution",
-            "quote": "이차함수는 정리했을 때 $y=ax^2+bx+c\\;(a\\ne0)$꼴이다.",
+            "src": "stem",
+            "quote": "다음 중 이차함수인 것을 찾으면?",
             "term": "이차함수"
           },
           {
             "src": "solution",
-            "quote": "다항식이 아니다.",
+            "quote": "④에는 $x$가 분모에 있으므로 다항식이 아니다.",
             "term": "다항식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "다음 중 이차함수인 것을 찾으면?",
+            "quote": "이차함수인 것을 찾으면?",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "(2x+3)(x-2)=2x^2-x-6",
-            "term": "전개",
+            "quote": "이차함수는 정리했을 때 $y=ax^2+bx+c\\;(a\\ne0)$꼴이다.",
+            "term": "계수",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "$x^2$의 계수 2가 0이 아니므로",
-            "term": "계수",
+            "quote": "⑤ $(2x+3)(x-2)=2x^2-x-6$이다.",
+            "term": "전개",
             "evidenceType": "NAMED"
           },
           {
@@ -1139,19 +1098,19 @@
             "quote": "①, ②는 일차식이고 ③은 $x^3$항이 남는다.",
             "term": "차수",
             "evidenceType": "IMPLIED",
-            "justification": "각 보기의 최고차항 차수를 분석하여 이차식 여부를 판정함"
+            "justification": "각 식의 최고차항 차수 판정"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$y=(2x+3)(x-2)$",
-            "term": "등식"
+            "src": "solution",
+            "quote": "$x^2$의 계수 2가 0이 아니므로 이차함수는 ⑤이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "보기의 식들을 전개 및 정리하여 최고차항의 차수가 2차이고 계수가 0이 아닌 이차함수를 선별함"
+        "method": "주어진 각 식을 전개 및 정리하여 최고차항의 차수가 2이고 계수가 0이 아닌 이차함수 식을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1165,23 +1124,13 @@
             "src": "stem",
             "quote": "이차함수 $f(x)=2x^2-3x+2$에서",
             "term": "이차함수"
-          },
-          {
-            "src": "solution",
-            "quote": "f(0)=2\\cdot0^2-3\\cdot0+2=2",
-            "term": "정수"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$f(0)+f(2)$의 값을 구하면?",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "$f(0)+f(2)=2+4=6$이므로",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
@@ -1193,21 +1142,28 @@
           },
           {
             "src": "solution",
-            "quote": "f(2)=2\\cdot2^2-3\\cdot2+2=8-6+2=4",
+            "quote": "$f(0)=2\\cdot0^2-3\\cdot0+2=2$",
             "term": "함숫값",
+            "evidenceType": "IMPLIED",
+            "justification": "함수식에 독립변수 대입하여 값 계산"
+          },
+          {
+            "src": "solution",
+            "quote": "$f(0)+f(2)=2+4=6$이므로 정답은 ②.",
+            "term": "합",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "6",
-            "term": "양수"
+            "src": "solution",
+            "quote": "$f(0)+f(2)=2+4=6$이므로 정답은 ②.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "이차함수에 x=0과 x=2를 각각 대입하여 계산한 두 함숫값의 합을 구함"
+        "method": "이차함수에 x=0과 x=2를 각각 대입하여 두 함숫값을 구한 후 합을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1219,7 +1175,7 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$y=-2x^2$의 그래프에 대한 다음 설명 중",
+            "quote": "$y=-2x^2$의 그래프에 대한 다음 설명 중 <u>틀린</u> 것을 찾으면?",
             "term": "이차함수"
           },
           {
@@ -1238,32 +1194,33 @@
         "method": [
           {
             "src": "solution",
-            "quote": "$|a|=3$이므로 $|a|=2$인 그래프보다 폭이 좁다.",
+            "quote": "$y=-2x^2$: $a=-2<0$이므로 위로 볼록하고 꼭짓점은 $(0,0)$이다.",
+            "term": "꼭짓점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$y=3x^2$: $|a|=3$이므로 $|a|=2$인 그래프보다 폭이 좁다.",
             "term": "절댓값",
             "evidenceType": "NAMED"
           },
           {
-            "src": "choices",
-            "quote": "$x>0$일 때, $x$의 값이 증가하면 $y$값은 감소한다.",
-            "term": "증가",
+            "src": "solution",
+            "quote": "또한 $y=2x^2$와는 $x$축 대칭이고,",
+            "term": "대칭이동",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$a=-2<0$이므로 위로 볼록하고",
-            "term": "위로볼록"
-          },
-          {
-            "src": "solution",
-            "quote": "꼭짓점은 $(0,0)$이다.",
-            "term": "원점"
+            "quote": "따라서 ③의 '더 좁다'는 설명이 거꾸로 되어 틀렸다.",
+            "term": "부등식"
           }
         ]
       },
       "reasons": {
-        "method": "이차항 계수의 음수 부호와 절댓값 폭 비교 및 증가감소 성질을 검토하여 옳지 않은 설명을 판별함"
+        "method": "이차함수의 기본 성질인 꼭짓점, 볼록 방향, 절댓값에 따른 폭, x축 대칭 관계를 확인하여 틀린 설명을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1276,56 +1233,58 @@
           {
             "src": "stem",
             "quote": "원점을 꼭짓점으로 하는 이차함수의 그래프가",
-            "term": "이차함수"
+            "term": "원점"
+          },
+          {
+            "src": "stem",
+            "quote": "원점을 꼭짓점으로 하는 이차함수의 그래프가",
+            "term": "꼭짓점"
           },
           {
             "src": "stem",
             "quote": "점 $(2, 2)$를 지나고 있다.",
-            "term": "원점"
-          },
-          {
-            "src": "solution",
-            "quote": "점 (2,2)를 지나므로",
-            "term": "좌표"
+            "term": "점"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$k$값을 구하면?",
-            "term": "매개변수"
-          },
-          {
-            "src": "solution",
-            "quote": "k=(1/2)×(−3)²=9/2",
-            "term": "결정"
+            "term": "상수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "식을 y=ax²으로 쓸 수 있다.",
-            "term": "표준형",
+            "quote": "포물선의 꼭짓점이 원점 O이므로 식을 y=ax²으로 쓸 수 있다.",
+            "term": "이차함수",
             "evidenceType": "IMPLIED",
-            "justification": "원점이 꼭짓점인 기본형 식을 세움"
+            "justification": "꼭짓점이 원점인 포물선 기본형 식 설정"
           },
           {
             "src": "solution",
-            "quote": "2=4a, 따라서 a=1/2이다.",
+            "quote": "점 (2,2)를 지나므로 2=4a, 따라서 a=1/2이다.",
             "term": "대입",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "점 (2,2)를 지나므로 2=4a, 따라서 a=1/2이다.",
+            "term": "계수",
+            "evidenceType": "IMPLIED",
+            "justification": "대입을 통해 최고차항 계수 결정"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "\\frac{9}{2}",
+            "src": "solution",
+            "quote": "k=(1/2)×(−3)²=9/2, 정답 ④이다.",
             "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "원점을 꼭짓점으로 하는 포물선에 점 (2,2)를 대입하여 계수 a를 구하고 x=-3을 대입해 k값을 결정함"
+        "method": "꼭짓점이 원점인 이차함수 기본형에 지난 점 (2,2)를 대입해 계수를 구한 뒤 x=-3을 대입하여 k를 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1338,58 +1297,55 @@
           {
             "src": "stem",
             "quote": "$x^2$의 계수가 1인 이차식을 인수분해하는데",
-            "term": "이차식"
-          },
-          {
-            "src": "solution",
-            "quote": "갑돌이가 구한 식의 상수항은 원래 식과 같다.",
-            "term": "상수항"
-          },
-          {
-            "src": "solution",
-            "quote": "갑순이가 구한 식의 $x$의 계수는 원래 식과 같다.",
             "term": "계수"
+          },
+          {
+            "src": "stem",
+            "quote": "갑순이는 상수항을 잘못 보고",
+            "term": "상수항"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "바르게 인수분해하여라.",
-            "term": "결정"
-          },
-          {
-            "src": "solution",
-            "quote": "바른 인수분해는 $(x+8)(x-3)$이다.",
-            "term": "인수"
+            "quote": "처음 이차식을 구하여 바르게 인수분해하여라.",
+            "term": "이차식"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "전개하면",
+            "quote": "다시 전개하면 $x^2+5x-24$가 되어 두 조건을 모두 만족한다.",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
             "quote": "곱이 $-24$, 합이 $5$인 두 정수는 $8$과 $-3$이므로",
-            "term": "인수분해",
+            "term": "곱",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "따라서 처음 이차식은 $x^2+5x-24$, 바른 인수분해는 $(x+8)(x-3)$이다.",
+            "term": "다항식",
+            "evidenceType": "IMPLIED",
+            "justification": "바르게 복원된 이차다항식을 인수분해"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "처음 이차식은 $x^2+5x-24$",
+            "quote": "곱이 $-24$, 합이 $5$인 두 정수는 $8$과 $-3$이므로",
             "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "두 학생의 전개 결과로부터 올바른 일차항 계수와 상수항을 추출해 원래 식을 복원하고 바르게 인수분해함"
+        "method": "각 학생이 잘못 보지 않은 항을 각각 전개하여 원래의 계수와 상수항을 복원한 후 올바르게 인수분해함"
       },
       "steps": [],
-      "scenarioNote": "잘못 보고 푼 문제"
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 24,
@@ -1398,36 +1354,26 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2+ax-6=0$의",
+            "quote": "이차방정식 $x^2+ax-6=0$의 한 근이 $x=-3$이고,",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "한 근이 $x=-3$이고",
-            "term": "근"
-          },
-          {
-            "src": "stem",
-            "quote": "다른 한 근이 이차방정식 $3x^2-4x+b=0$의 근이 될 때",
-            "term": "공통근"
+            "quote": "한 근이 $x=-3$이고, 다른 한 근이 이차방정식 $3x^2-4x+b=0$의 근이 될 때,",
+            "term": "해"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "상수 $a+b$의 값을 구하여라.",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "따라서 $a+b=1+(-4)=-3$이다.",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "먼저 대입하여 $a$를 구한다.",
+            "quote": "첫 이차방정식 $x^2+ax-6=0$의 한 근이 $-3$이므로 먼저 대입하여 $a$를 구한다.",
             "term": "대입",
             "evidenceType": "NAMED"
           },
@@ -1439,22 +1385,22 @@
           },
           {
             "src": "solution",
-            "quote": "다른 한 근은 $2$이다.",
-            "term": "일차방정식",
+            "quote": "문제의 조건에 따라 $2$는 둘째 방정식 $3x^2-4x+b=0$의 근이기도 하다.",
+            "term": "계수",
             "evidenceType": "IMPLIED",
-            "justification": "대입 후 일차방정식을 풀어 미정상수 a와 b를 도출함"
+            "justification": "두 번째 방정식에 근을 대입해 계수 b 도출"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "b=-4",
-            "term": "음수"
+            "quote": "따라서 $a+b=1+(-4)=-3$이다.",
+            "term": "상수"
           }
         ]
       },
       "reasons": {
-        "method": "주어진 근을 첫 번째 식에 대입해 a를 구하고 인수분해로 다른 한 근을 얻어 두 번째 식에 대입해 b를 구한 뒤 합을 계산함"
+        "method": "첫 번째 방정식에 근 -3을 대입하여 a를 구하고 인수분해로 다른 근 2를 찾은 후 두 번째 식에 대입해 b를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1466,51 +1412,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차함수 $y=ax^2$의 그래프가",
+            "quote": "이차함수 $y=ax^2$의 그래프가 점 $(3, b)$를 지나고,",
             "term": "이차함수"
           },
           {
             "src": "stem",
-            "quote": "점 $(3, b)$를 지나고",
-            "term": "좌표"
+            "quote": "점 $(3, b)$를 지나고,",
+            "term": "점"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$ab$의 값을 구하여라.",
-            "term": "곱"
-          },
-          {
-            "src": "solution",
-            "quote": "따라서 ab=(2/3)×6=4이다.",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "x축에 대하여 대칭이동하면",
+            "quote": "주어진 그래프 y=-(2/3)x²을 x축에 대하여 대칭이동하면",
             "term": "대칭이동",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "그래프가 (3,b)를 지나므로",
-            "term": "대입",
+            "quote": "모든 점의 y좌표 부호만 반대이므로 새 식은 y=(2/3)x²이다.",
+            "term": "부호",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "그래프가 (3,b)를 지나므로 b=(2/3)×3²=6이다.",
+            "term": "대입",
+            "evidenceType": "IMPLIED",
+            "justification": "점의 좌표를 식에 대입하여 미지수 b 결정"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "a=2/3이다.",
-            "term": "양수"
+            "quote": "따라서 ab=(2/3)×6=4이다.",
+            "term": "상수"
           }
         ]
       },
       "reasons": {
-        "method": "x축 대칭이동 성질로 계수 a를 구하고 지나는 점의 좌표를 대입하여 b를 구한 뒤 ab를 계산함"
+        "method": "x축 대칭 성질을 이용해 계수 a를 구하고 지난 점 (3,b)를 대입하여 b를 구한 뒤 두 상수의 곱을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1519,7 +1467,7 @@
   "candidates": [],
   "selfCheck": {
     "items": 25,
-    "quotesChecked": 191,
+    "quotesChecked": 176,
     "quotesNotFound": 0,
     "warningsRechecked": [],
     "notes": ""
