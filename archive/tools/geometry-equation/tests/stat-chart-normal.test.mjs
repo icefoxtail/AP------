@@ -83,6 +83,11 @@ test('normal-curve plans that cannot be drawn faithfully are refused with their 
   refuse(c({shades:[{from:'52',to:'47'}]}),'STAT_NORMAL_SHADE_RANGE');refuse(c({shades:[{from:'47',to:'47'}]}),'STAT_NORMAL_SHADE_RANGE');
   refuse(c({shades:[{from:'48',to:'50'}]}),'STAT_NORMAL_BOUNDARY_NOT_TICKED');                                                   // a boundary must be a marked position
   refuse(c({shades:Array(7).fill({from:'47',to:'50'})}),'STAT_NORMAL_SHADE_INVALID');
+  // G20: a shade may take a palette colour instead of a grey tone; anything else is refused with its own code
+  for(const bad of ['RED','blue','LIGHT','',1,null,true,['BLUE']])refuse(c({shades:[{from:'47',to:'50',color:bad}]}),'STAT_NORMAL_SHADE_COLOR_INVALID');
+  refuse(c({shades:[{from:'47',to:'50',color:'BLUE',tone:1}]}),'STAT_NORMAL_SHADE_COLOR_INVALID');                                   // a colour replaces the tone, never both
+  for(const name of ['BLUE','WARM','GREEN','ROSE','VIOLET'])assert.equal(solveStatChart(c({shades:[{from:'47',to:'50',color:name}]})).shades[0].color,name);
+  assert.ok(!JSON.stringify(solveStatChart(c({shades:[{from:'47',to:'50'},{from:'50',to:'52',tone:2}]}))).includes('color'),'a plan without colour has the old model');
   refuse(c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text:'0.4000'}]}),'STAT_NORMAL_AREA_LABEL_MISMATCH');                // not the area under the curve
   refuse(c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text:'0.5+0.1'}]}),'STAT_NORMAL_AREA_LABEL_MISMATCH');
   refuse(c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:1,text:'p'}]}),'STAT_NORMAL_AREA_LABEL_INVALID');
@@ -192,6 +197,18 @@ test('the observer passes normal-curve figures and catches each wrong curve, are
     svg=await compose(wide);r=await pass(wide,svg);assert.ok(/id="area-0-leader"/.test(svg),'placement LEADER draws the leader');
     assert.ok(caught(await audit({...wide,areaLabels:[{shade:0,text:'0.6826',placement:'INSIDE'}]},svg)),'only LEADER is a placement');
 
+    // ---- G20: two areas in two palette colours (BLUE, WARM) pass the observer; the plain default draws the old grey shades
+    assert.ok(/id="shade-0"[^>]*fill="#111"[^>]*fill-opacity="0.16"/.test(svg)&&!/fill="#7fa6e8"|fill="#f2a65a"/.test(svg),'no colour key: the grey tones as before');
+    const colored={...split,shades:[{from:'47',to:'50',color:'BLUE'},{from:'50',to:'52',color:'WARM'}]};
+    const csvg=await compose(colored);
+    await pass(colored,csvg);
+    assert.ok(/id="shade-0"[^>]*fill="#7fa6e8"[^>]*fill-opacity="0.32"/.test(csvg)&&/id="shade-1"[^>]*fill="#f2a65a"[^>]*fill-opacity="0.42"/.test(csvg),'the two areas carry the BLUE and WARM tints');
+    assert.ok(has(await audit({...colored,shades:[{from:'47',to:'50',color:'GREEN'},{from:'50',to:'52',color:'WARM'}]},csvg),'SC_NORMAL_SHADE_STYLE:0'),'the plan names another colour than the drawn one');
+    assert.ok(has(await audit(colored,csvg.replace('fill="#f2a65a"','fill="#e98aa8"')),'SC_NORMAL_SHADE_STYLE:1'),'a drawn tint that is not the planned colour');
+    assert.ok(has(await audit(colored,csvg.replace(/(id="shade-0"[^>]*) fill-opacity="[\d.]+"/,'$1 fill-opacity="0.42"')),'SC_NORMAL_SHADE_STYLE:0'),'a drawn opacity that is not the colour opacity');
+    assert.ok(has(await audit(split,csvg),'SC_NORMAL_SHADE_STYLE:0'),'a coloured figure against a grey plan');
+    for(const bad of ['RED','blue',1])assert.ok(caught(await audit({...colored,shades:[{from:'47',to:'50',color:bad},{from:'50',to:'52',color:'WARM'}]},csvg)),'an invalid colour in the plan: '+bad);
+    assert.ok(caught(await audit({...colored,shades:[{from:'47',to:'50',color:'BLUE',tone:1},{from:'50',to:'52',color:'WARM'}]},csvg)),'colour and tone together');
     // ---- a framed curve: letters, the symmetric pair, a level line across the two tops
     svg=await compose(framed);
     r=await pass(framed,svg);
