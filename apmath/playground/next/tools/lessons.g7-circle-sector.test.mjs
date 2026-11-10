@@ -52,11 +52,16 @@ const SCENE_STATE = {
   'gt-kennel': { gtQ: [1, 6], gtL: [1, 16], gtT: [0, 1], gtShow: null },
   // basic.js build() 의 1102(u 0.5~2.5 · t1 10~60 · t2 10~80 · y 20~120)와 1609(sectorSpec)
   '1102': { b1102_u: [0.5, 2.5], b1102_t1: [10, 60], b1102_t2: [10, 80], b1102_y: [20, 120] },
-  '1609': { b1609_r: [3, 12], b1609_th: [10, 350], b1609_div: [0, 1], b1609_ref: [0, 2] }
+  '1609': { b1609_r: [3, 12], b1609_th: [10, 350], b1609_div: [0, 1], b1609_ref: [0, 2] },
+  // f01.js f1-star: a 6~16 · t 0~1 · mode · show / f04.js f4-slide: W 6~14 · r 2~5 · t 0~1 · show
+  'f1-star': { f1_star_a: [6, 16], f1_star_t: [0, 1], f1_star_mode: [0, 1], f1_star_show: null },
+  'f4-slide': { f4_slide_W: [6, 14], f4_slide_r: [2, 5], f4_slide_t: [0, 1], f4_slide_show: null },
+  // html periScene('sector'): csR 2~12 · csA 30~300(15 단위) · csP 0~100(펼친 띠 위의 점 P)
+  'z2-sector': { csR: [2, 12], csA: [30, 300], csP: [0, 100] }
 };
 
 // 정리 탭(tab:'review')은 정리 탭이 같은 문제를 그리고 구하는 값을 단계별로만 보여 주는 것을 확인한 장면에만 켭니다.
-const REVIEW_OK = new Set(['1209', '1102', '1609']);
+const REVIEW_OK = new Set(['1209', '1102', '1609', 'z2-sector']);
 
 /* 자막이 말하는 숫자를 장면 공식으로 다시 계산한 값. 해설마다 허용 숫자 집합(자막에 나오는 모든 숫자는 여기에 있어야 함)과 계산 근거를 적습니다. */
 const FACTS = {
@@ -90,6 +95,21 @@ const FACTS = {
     const r = 9, S = 27, circle = r * r, k = circle / S; // 넓이의 π 계수
     assert.deepEqual([circle, circle / S, 360 / k], [81, 3, 120]);
     return { allowed: [r, 2, S, circle, 1, 3, 360, 120], note: 'r=9 · 27π÷81π=1/3 · 360°×1/3=120°' };
+  },
+  'f1-star': () => {
+    const a = 10, r = a / 2, whole = a * a, part = r * r; // 사분원 4개 = 원 1개(π 의 계수 r²)
+    assert.deepEqual([r, whole, part], [5, 100, 25]);
+    return { allowed: [a, r, 1, 2, 4, whole, part], note: 'a=10 · r=5 · 사분원 4개 = 원 1개 · 정사각형 100 · 원 25π · 100−25π' };
+  },
+  'f4-slide': () => {
+    const W = 10, r = 3, H = 2 * r, area = W * H;
+    assert.deepEqual([H, area], [6, 60]);
+    return { allowed: [W, r, 2, H, area], note: '가로 10 · 반지름 3 · 세로 2×3=6 · 10×6=60' };
+  },
+  'z2-sector': () => {
+    const r = 6, deg = 90, arc = (r * deg) / 180, lines = 2 * r; // 호 = 2π·6·90/360 = 3π, 반지름 둘 6+6 = 12
+    assert.deepEqual([arc, lines], [3, 12]);
+    return { allowed: [r, deg, arc, lines], note: 'r=6 90° · 호 3π · 반지름 6, 6 · 3π+6+6=3π+12' };
   },
   'z3-circleProof': () => {
     const r = 6, N = 16, circ = 2 * r, half = r, S = r * r; // π 의 계수
@@ -275,4 +295,15 @@ test('SCENE_STATE 표가 장면 소스의 상태값 이름·범위와 같다', (
   assert.match(swept, /gtT: \{ value: 0, min: 0, max: 1/);
   assert.match(swept, /gtQ: \{ value: 2, min: 1, max: 6/);
   assert.match(swept, /gtL: \{ value: 5, min: 1, max: 16/);
+});
+
+test('z2-sector: 점 P 목표값이 경계 길이 비율(호 3π, 반지름 6, 6)로 다시 계산한 값과 같다', () => {
+  const lesson = core.lessonList(LESSONS['z2-sector'])[0];
+  const arc = 3 * Math.PI, total = arc + 12, cum1 = (100 * arc) / total, cum2 = (100 * (arc + 6)) / total;
+  const ends = lesson.chapters.map((ch) => ch.cues.flatMap((c) => (c.to && c.to.csP != null ? [c.to.csP] : [])).at(-1));
+  assert.ok(Math.abs(ends[0] - cum1) < 1e-9 && Math.abs(ends[1] - cum2) < 1e-9 && ends[2] === 100, '경계 끝에서 멈춤(정확한 값이라야 점 P 라벨이 「3π cm」처럼 깨끗이 나옴)');
+  assert.deepEqual(Array.from(lesson.chapters.flatMap((ch) => ch.cues.filter((c) => c.step !== undefined).map((c) => c.step))), [2, 3, 4], '정리 탭 단계: 2(호) → 3(둘째 선) → 4(합계, 마지막 자막)');
+  const lastCue = lesson.chapters.at(-1).cues.at(-1);
+  assert.ok(lastCue.step === 4 && lastCue.say.includes('3\\pi+12'), '합계는 마지막 자막과 함께(step 4)');
+  assert.ok(lesson.chapters.flatMap((ch) => ch.cues).every((c) => !(c.to && c.step !== undefined)), '같은 칸에 to 와 step 을 함께 쓰지 않는다');
 });

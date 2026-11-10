@@ -478,7 +478,7 @@ function periScene(type) {
       if (s.csP > 0) b.seg({ x: xl, y: yt }, { x: xl + Wt * s.csP / 100, y: yt }, { color: 'amber', width: 8, alpha: 0.95 });
       const px = xl + Wt * s.csP / 100;
       b.handle('P', { x: px, y: yt }, { color: 'amber', ariaLabel: '점 P (끌어서 이동)', drag: (w) => { s.playing = false; s.csP = clamp(Math.round((w.x - xl) / Wt * 100), 0, 100); } });
-      if (s.csP > 0 && traceReady) {
+      if (s.csP > 0 && traceReady && !(s.lessonOn && !tp.ex)) { // 해설 재생 중에는 경계의 끝(정확한 값)에서만 점 P 의 거리 라벨을 그림(움직이는 동안의 근삿값 「≈ 7.56 cm」 방지)
         const distanceLabel = motionCm(tp.ex, tp.distance), half = (textW(distanceLabel, 16) / 2 + 8) / (b.k || 100);
         const labelX = half * 2 < Wt ? clamp(px, xl + half, xl + Wt - half) : xl + Wt / 2;
         T(b, { x: labelX, y: yt }, distanceLabel, { dy: -52, color: 'amber', size: 16 });

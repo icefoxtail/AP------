@@ -3,6 +3,9 @@
    window.APL_LESSONS['g7-circle-sector'] = { '<장면 id>': 해설, ... }
    해설 = 쇼츠 규칙을 지키는 장(8~15초) 2~6개를 이어 붙인 것. 형식: kit/apl-video-core.js 맨 위 주석, docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md 「해설(lesson)」.
    - 자막은 장면의 탐구 질문·정리 단계(steps)·규칙에서만 가져오고 새 수학 주장을 만들지 않습니다. 기호(r, l)는 쓰기 전에 뜻을 말합니다. 정답은 마지막 장에서만.
+   - 이 파일의 해설은 tools/lessons.g7-circle-sector.test.mjs 가 검사합니다(상태값 표 SCENE_STATE · 자막 숫자 재계산 FACTS · 정답 조기 노출 · 장면 소스). 해설을 더하면 그 표에도 적습니다.
+   - 장면 코드에는 재생 중(s.lessonOn)·진입 화면(s.lessonEntry)에서만 바뀌는 것만 더했습니다: 정답을 아끼는 hold(f01 f1_*_show · f03 f3Show · f04 f4_*_show · rolling rlShow · swept gtShow · html csShowS), 정리 탭 0단계 진입 그림·칩 숨김(basic.js), sectorSpec 의 div·ref(원을 같은 조각으로 나눈 점선 · 원주/원의 넓이 라벨), z2 점 P 라벨 정확한 값만.
+   - 해설로 대체한 쇼츠: 1209, f4-swirl, f1-ss2, f3-leaf-len, f5-sq4, rl-rect, gt-kennel (video.js 에는 1210 만 남음).
    ========================================================================== */
 window.APL_LESSONS = window.APL_LESSONS || {};
 
@@ -338,6 +341,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
      u=1(5°에 해당하는 호 1 cm → 1°당 0.2 cm), 왼쪽 30° ↔ 6 cm, 오른쪽 45° ↔ x, 아래쪽 y° ↔ 15 cm. 장면 steps ① 6 : x = 30 : 45 → x = 9 ② 6 : 15 = 30 : y → y = 75 ③ x + y = 9 + 75 = 84.
      정리 탭을 쓰는 이유: 정리 탭은 구하는 값을 「x cm」·「y°」로 두고 step 1(x)·2(y)에서만 보여 주고 그림도 탐구 탭보다 크게 그립니다(탐구 탭은 x·y 가 처음부터 보임). 같은 값의 같은 문제입니다.
      첫 장의 움직임: 오른쪽 중심각 b1102_t2 를 45° → 60°(5° 계단) → 45° 로 오갑니다. 호가 중심각을 따라 같은 비율로 늘어나고 줄어드는 것을 보여 주는 것이 정비례의 핵심이고, 끝 값이 교재 수치(45°)와 같아서 이어지는 풀이의 그림이 바뀌지 않습니다.
+     값(t2)이 바뀌면 steps 글이 달라져 셸이 step 을 1 로 되돌리므로(VIDEO_FINDINGS #20) 움직이는 동안 「x = 10 cm」「x = 11 cm」처럼 호의 길이가 중심각을 따라 변하는 값이 보이고(그대로 정비례의 모습), 움직임이 끝난 5.5초 칸에서 step 0 으로 되돌립니다.
      b1102_u·t1·y 는 start 에 적어 교재 수치를 못 박습니다. step 0 에는 합 칩(x+y=84)을 그리지 않습니다(basic.js build 의 step 0 칩 숨김). */
   '1102': {
     title: '호는 중심각에 정비례',
@@ -494,6 +498,129 @@ window.APL_LESSONS['g7-circle-sector'] = {
           { at: 0, say: '끝으로 B를 도는 작은 부채꼴, 반지름 2 m, 90°.', to: { gtT: 1 }, dur: 4.5, ease: 'smooth' },
           { at: 5, say: '큰 부채꼴은 $12\\pi$, 작은 부채꼴은 각각 $\\pi$.' },
           { at: 8.5, say: '영역 $=12\\pi+\\pi+\\pi=14\\pi$ m²', set: { gtShow: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 부채꼴 둘레 (g7-circle-sector.html periScene('sector') z2-sector, 정리 탭) · 3장 30초 · tab:'review' ----------
+     r=6, 중심각 90°(장면 기본값). 경계 = ① 호 AB 2π·6·90/360 = 3π, ② 반지름 6, ③ 반지름 6 → 둘레 3π+6+6 = 3π+12 (cm) (장면 steps).
+     정리 탭을 쓰는 이유: 정리 탭은 step 이 오를 때마다 경계의 길이가 하나씩 보이고 「둘레 = ?」 를 마지막 단계(step 4)까지 아낍니다(탐구 탭은 「합계 3π + 12 cm」가 처음부터 보임). 같은 값(r, 중심각)의 같은 문제입니다.
+     점 P(csP 0~100)는 펼친 띠 위의 위치이고, 경계 비율은 호 3π ≈ 9.42, 반지름 6, 6 → 합 21.42 라 호가 끝나는 곳은 csP = 100×3π/(3π+12) ≈ 43.99, 첫 반지름이 끝나는 곳은 ≈ 71.995 입니다(tools 테스트가 다시 계산).
+     step 은 값(csP)을 움직이는 칸과 다른 칸에 둡니다(같은 칸의 to+step 경고). step 2 에서 호 길이, step 3 에서 두 번째 선, step 4(마지막 자막)에서 합계가 나옵니다. */
+  'z2-sector': {
+    title: '부채꼴의 둘레는?',
+    answer: '$3\\pi+12$',
+    answerText: '$3\\pi+12$ cm',
+    summary: '둘레 = 호의 길이 + 반지름 2개',
+    task: '반지름과 중심각을 바꿔 호와 반지름 두 개의 합으로 둘레가 구해지는지 확인해 보세요',
+    tab: 'review',
+    chapters: [
+      {
+        length: 9,
+        title: '먼저 호',
+        start: { csR: 6, csA: 90, csP: 0 },
+        cues: [
+          { at: 0, say: '반지름 6 cm, 중심각 90°인 부채꼴의 둘레를 구해요.', step: 2 },
+          { at: 0.5, to: { csP: 43.99008464884426 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '둘레는 경계선의 길이를 더해요. 먼저 호는 $3\\pi$ cm.' }
+        ]
+      },
+      {
+        length: 9,
+        title: '반지름 두 개',
+        cues: [
+          { at: 0, say: '부채꼴의 경계에는 반지름 두 개도 있어요.', step: 3 },
+          { at: 0.5, to: { csP: 71.99504232442213 }, dur: 4, ease: 'smooth' },
+          { at: 5, say: '첫 번째 반지름은 6 cm예요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '둘레는?',
+        cues: [
+          { at: 0, say: '나머지 반지름도 6 cm예요.', to: { csP: 100 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '둘레 = 호 + 반지름 + 반지름' },
+          { at: 8.5, say: '$3\\pi+6+6=3\\pi+12$ cm', step: 4 }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 정사각형에서 사분원 4개 파내기 · 넓이 (f01.js f1-star, 탐구 탭, mode 0) · 3장 31초 ----------
+     a=10(정사각형의 한 변), 사분원 반지름 r=a/2=5. 정사각형 10×10 = 100, 파낸 사분원 4개 = 원 1개 π·5² = 25π, 색칠한 부분 = 100 − 25π (장면 steps ① 정사각형 ② 사분원 4개 = 원 1개 ③ 파낸 부분 25π ④ 정사각형 − 원).
+     t(f1_star_t) 구간: 0~0.12 처음(「전체 (정사각형) 100 cm²」·「r=5」) · 0.12~0.30 파낼 사분원 표시 · 0.38~0.74 옆으로 꺼냄(「사분원 4개 = 원 1개」, 0.6 부터 「파낸 부분 (원 1개) 25π cm²」) · 0.80~0.96 결과(캡션·칩은 f1_star_show 를 켤 때까지 아낌, f01.js lessonHold).
+     장면은 넓이(mode 0)와 둘레(mode 1)를 묻지만 둘레는 정리 탭 step 으로만 경계가 나와 움직임이 없어 넓이만 합니다(f1-ss2 와 같은 이유). */
+  'f1-star': {
+    title: '정사각형 − 사분원 4개',
+    answer: '$100-25\\pi$',
+    answerText: '$100-25\\pi$ cm²',
+    summary: '색칠한 부분 = 정사각형 − 원 1개',
+    task: '한 변 a를 바꿔도 색칠한 부분이 (정사각형 − 원 1개)로 구해지는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '사분원 4개를 파냈어요',
+        start: { f1_star_a: 10, f1_star_t: 0 },
+        cues: [
+          { at: 0, say: '정사각형의 네 모서리에서 **사분원**을 파냈어요.', set: { f1_star_mode: 0, f1_star_show: false }, to: { f1_star_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '한 변은 10 cm, 사분원의 반지름은 5 cm예요.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '모으면 원 하나',
+        cues: [
+          { at: 0, say: '파낸 사분원 4개를 모아 보면?', to: { f1_star_t: 0.74 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '반지름 5 cm인 원 1개, 넓이 $\\pi\\times5^2=25\\pi$.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '빼서 구하기',
+        cues: [
+          { at: 0, say: '색칠한 부분 = 정사각형 − 원 1개', to: { f1_star_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '정사각형 $10\\times10=100$, 원 $25\\pi$.' },
+          { at: 8.5, say: '$100-25\\pi$ cm²', set: { f1_star_show: true } }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- 파인 반원 · 붙은 반원 → 직사각형 (f04.js f4-slide, 탐구 탭) · 3장 31초 ----------
+     W=10(가로), 반원의 반지름 r=3 → 세로 2r=6 (장면 기본값). 파인 반원과 붙은 반원은 같아서 붙은 반원을 왼쪽으로 W 만큼 밀면 직사각형 10×6 = 60 (cm²) (장면 steps).
+     t 구간: 0~0.12 처음(「10 cm」「3」) · 0.12~0.30 붙은 반원 ① 표시 · 0.38~0.74 가로로 밀기 · 0.80~0.96 결과(「10 × 6」·캡션·칩은 f4_slide_show 를 켤 때까지 아낌, f04.js lessonHold). */
+  'f4-slide': {
+    title: '반원을 밀면 직사각형',
+    answer: '$60$',
+    answerText: '$60$ cm²',
+    summary: '색칠한 부분 = 가로 × 세로',
+    task: '가로 W나 반지름 r을 바꿔도 색칠한 부분이 직사각형이 되는지 확인해 보세요',
+    chapters: [
+      {
+        length: 9,
+        title: '파인 곳과 붙은 곳',
+        start: { f4_slide_W: 10, f4_slide_r: 3, f4_slide_t: 0 },
+        cues: [
+          { at: 0, say: '왼쪽은 반원만큼 파이고, 오른쪽에 반원이 붙었어요.', set: { f4_slide_show: false }, to: { f4_slide_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '가로는 10 cm, 반원의 반지름은 3 cm예요.' }
+        ]
+      },
+      {
+        length: 10,
+        title: '가로로 밀기',
+        cues: [
+          { at: 0, say: '붙은 반원 ①을 왼쪽으로 **가로로 밀어요**.', to: { f4_slide_t: 0.78 }, dur: 5.5, ease: 'smooth' },
+          { at: 6, say: '파인 반원과 크기가 같아서 꼭 맞아요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '직사각형의 넓이',
+        cues: [
+          { at: 0, say: '색칠한 부분이 **직사각형**이 돼요.', to: { f4_slide_t: 0.96 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '가로 10 cm, 세로는 지름 $2\\times3$ cm.' },
+          { at: 8.5, say: '넓이 $=10\\times6=60$ cm²', set: { f4_slide_show: true } }
         ]
       }
     ]
