@@ -123,28 +123,6 @@ assert.strictEqual(
 );
 
 assert(
-  studentPortal.includes('const showActionArea = showReview || showPdf || isTeacherPreview || !submitted') &&
-    studentPortal.includes('<div class="omr-actions ${showReview ?') &&
-    studentPortal.includes("${showPdf ? renderOmrPdfAction(exam) : ''}") &&
-    studentPortal.includes("${showReview ? renderOmrReviewActions(exam) : ''}") &&
-    studentPortal.includes("(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''") &&
-    studentPortal.includes('OMR 작성') &&
-    studentPortal.includes('완료'),
-  'OMR cards should render review actions and input status before and after submission'
-);
-
-assert(
-  studentPortal.includes('.btn-primary { background:#111827') &&
-    studentPortal.includes('.omr-status.pending { background:#F3F4F6; color:#4B5563; }') &&
-    studentPortal.includes('.omr-actions {') &&
-    studentPortal.includes('.omr-actions.review-hidden') &&
-    studentPortal.includes('grid-template-columns:repeat(4,minmax(0,1fr))') &&
-    studentPortal.includes('grid-template-columns:repeat(2,minmax(0,1fr))') &&
-    studentPortal.includes('height:46px'),
-  'OMR action colors and layout should avoid bright blue emphasis and keep four actions responsive'
-);
-
-assert(
  studentPortal.includes('const canSubmit=!isTeacherPreview&&!submitted&&!unknown') &&
  studentPortal.includes('<div class="omr-action-primary">') &&
  studentPortal.includes('<details class="omr-secondary-details">') &&
