@@ -14,7 +14,7 @@ if not SVG2PNG.exists():
 key, jsrel, srcdir, decf = sys.argv[1:5]
 exam = Path(jsrel).stem
 # 문항 id: 숫자면 TABLE 번호 = id. 문자열 id(q01.., s01..)면 TABLE/폴더 번호 = 문제은행 순서(1부터). ord 는 id 그대로.
-_script = "const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify(c.window.questionBank.map(q=>q.id)))"
+_script = "const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify((c.window.questionBank??c.window.examData?.questions).map(q=>q.id)))"
 bank_ids = json.loads(subprocess.run(['node', '-e', _script, jsrel], cwd=ROOT, check=True, capture_output=True, text=True, encoding='utf-8').stdout)
 str_ids = any(not isinstance(i, int) for i in bank_ids)
 def id_of(n):  # TABLE 번호 -> ord

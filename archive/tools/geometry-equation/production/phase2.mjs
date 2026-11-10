@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {invokeVisualContinuation,nativeImageInput} from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
 import {canonicalJson,objectSha,bytesSha,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {questionUidV2} from '../../pipeline-core/question-uid.mjs';
-import {loadBank} from '../build-visual-render-matrix.mjs';
+import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath} from '../record-visual-browser-evidence.mjs';
 import {assetIdentity,planHash} from './contracts.mjs';
 import {commitStage,generatedPath,currentWorkRoot,bindRunWorkspace,withWorkRoot,isEngineOutputPath,calculationStage} from './store.mjs';
@@ -1579,7 +1579,7 @@ export async function recordNativeSolutionOverlay({questionUid,sourceRegistryRef
     if(!archiveAssetPath||actualBase.archiveAssetPath!==archiveAssetPath||actualBase.candidateSvgRef?.sha256!==svgRef.sha256)throw Error('NATIVE_OVERLAY_BASE_ASSET_BINDING_MISMATCH');
     const identity=assetIdentity(questionUid,'SOLUTION_VISUAL');
     const folderRelative=overlayFolderRelative,folder=overlayFolder;
-    const candidateCode=baseCandidateCode+'\n;window.questionBank.find(q=>q.id==='+ordinal+').solution = '+JSON.stringify(patch.patchedSolution)+';\n';
+    const candidateCode=baseCandidateCode+bankAliasSuffix(baseCandidateCode)+'\n;window.questionBank.find(q=>q.id==='+ordinal+').solution = '+JSON.stringify(patch.patchedSolution)+';\n';
     const candidateRelative=folderRelative+'/'+workspace.examUid+'.js',candidatePath=generatedPath(root,candidateRelative);
     fs.writeFileSync(candidatePath,candidateCode,{flag:'wx'});
     const candidateRef=fileRef(root,candidateRelative),candidateBank=loadBank(candidateCode),candidateQuestion=candidateBank.find(item=>item.id===ordinal);
@@ -1914,7 +1914,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
     if(finalDisplayEnvelope.status!=='PASS')throw Error('UNSUPPORTED_DISPLAY_ENVELOPE:'+canonicalJson({sizeClassStatus:finalDisplayEnvelope.status,profiles:finalDisplayEnvelope.profiles.map(value=>({sizeClass:value.sizeClass,status:value.supportStatus,errors:value.finalAudit.errors}))}));
     console.log(JSON.stringify({stage:'ACTUAL_ARCHIVE',uid}));
     const patch={solutionImage:archiveAssetRef,solutionImageSize:finalDisplayEnvelope.sizeClass,solutionImageAlt:plan.caption};
-    const candidate=raw+'\n;Object.assign(window.questionBank.find(q=>q.id==='+ordinal+'),'+JSON.stringify(patch)+');\n';
+    const candidate=raw+bankAliasSuffix(raw)+'\n;Object.assign(window.questionBank.find(q=>q.id==='+ordinal+'),'+JSON.stringify(patch)+');\n';
     const patched=JSON.parse(JSON.stringify(loadBank(candidate))),original=JSON.parse(JSON.stringify(bank));
     const touched=['solutionImage','solutionImageSize','solutionImageAlt'];
     for(let i=0;i<original.length;i++){const before={...original[i]},after={...patched[i]};if(before.id===ordinal)for(const field of touched){delete before[field];delete after[field];}if(canonicalJson(before)!==canonicalJson(after))throw Error('ARCHIVE_PROTECTED_FIELD_MUTATION');}

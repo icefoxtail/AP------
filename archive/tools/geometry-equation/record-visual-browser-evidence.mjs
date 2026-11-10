@@ -7,7 +7,7 @@ import {sha256} from './verify-visual-engine-static.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
 import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../pipeline-core/question-uid.mjs';
-import {loadBank} from './build-visual-render-matrix.mjs';
+import {loadBank,bankAliasSuffix} from './build-visual-render-matrix.mjs';
 
 export function normalizeArchiveImageUrlPath(url){
   try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
@@ -206,7 +206,9 @@ export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal
   const index=bank.findIndex(q=>q.id===sourceOrdinal);if(index<0)throw Error('DISPLAY_ENVELOPE_SOURCE_ORDINAL_MISSING');
   const candidateName=path.basename(sourceRef.path),candidatePath=assertOutput(path.join(run,candidateName));
   if(fs.existsSync(candidatePath))throw Error('IMMUTABLE_PREFLIGHT_CANDIDATE_EXISTS');
-  fs.writeFileSync(candidatePath,sourceBytes,{flag:'wx'});
+  // The engine reads window.questionBank only: a source with just window.examData gets the alias appended, any other source is copied byte for byte.
+  const aliasSuffix=bankAliasSuffix(sourceBytes.toString('utf8'));
+  fs.writeFileSync(candidatePath,aliasSuffix?Buffer.concat([sourceBytes,Buffer.from(aliasSuffix,'utf8')]):sourceBytes,{flag:'wx'});
   const rawSha=ref=>ref.sha256.slice(7),candidateRef=fileRef(repoRoot,path.relative(repoRoot,candidatePath).replaceAll('\\','/'));
   const sourceInfo={id:targetId,sourcePath:sourceRef.path,sourceSha256:rawSha(sourceRef),candidatePath:path.relative(repoRoot,candidatePath).replaceAll('\\','/'),candidateSha256:rawSha(candidateRef),questionCount:bank.length,assets:[]};
   const row={...sourceInfo,mode:'sol',viewport:'desktop-envelope',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourceRef.path.replace(/^archive\//,'')),requireLocalResources:blockExternalRequests,requireQrRenderer:blockExternalRequests,envelopeTargets:[{id:targetId,questionId:sourceOrdinal,displayOrdinal:index+1,intrinsicSvg,sizeClasses,sourceAuthorityStatus}]};
