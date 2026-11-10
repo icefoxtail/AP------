@@ -21,3 +21,5 @@
 - 반원 그리기 불가 → 전체 원으로 대체 (23 순천고 1학기 중간 Q19)
 - 좌표 직선(overlay)에 한글·그리스 문자 라벨 불가(OVERLAY_LABEL_INVALID) → 색 구분·callout 우회 (23 순천고 Q13, 23 매산여고)
 - multi-curve는 곡선 1개를 받지 않음(MULTI_CURVE_COUNT_INVALID) → 같은 곡선을 둘로 나눠 그림 (23 매산고 Q12)
+- 반비례 그래프의 "곡선과 두 좌표축 사이 영역" 색칠 불가 (26 왕운중 2학기 중간 중1 Q14 문제 그림): rational-spike-v1은 graphPlan.regions를 못 받고(GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL), multi-curve-figure-v1의 regions(under)는 곡선이 창 위로 나가는 구간의 표본점을 버려서 y축 옆이 쐐기 모양으로 비는 채로 그려지며, halfPlane은 그림 틀(여백 포함) 끝까지 번진다. 필요: 곡선이 창 위로 나가면 영역 다각형을 창 위 경계에서 잘라 닫기(코너점 추가), 또는 rational-spike-v1에 regions 지원(under, from 생략 시 y축까지). 지금은 곡선·축·O·식 y=a/x만 그리고 영역 색칠은 뺐다(게시).
+- 격자점 점 모양·색 지정 불가 (26 왕운중 2학기 중간 중1 Q14 해설 그림): overlays.latticePoints 점은 검정 r=2.4 고정이고 overlays.points(curveX) 점도 검정 채운 점뿐이라, "세는 점(파랑)"과 "그래프 위의 점(속 빈 장밋빛, 제외)"을 점 모양·색으로 구분할 수 없다. callouts "제외"(TEXT)를 그래프 위 점 4개에 달아 우회(게시). 필요: overlays.points[].marker(OPEN/CLOSED)·color, latticePoints.color. 그래프 아래 영역의 연한 초록 음영도 위와 같은 이유로 뺐다.
