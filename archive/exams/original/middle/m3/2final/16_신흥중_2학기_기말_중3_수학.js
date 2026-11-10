@@ -167,8 +167,8 @@ window.examData = {
         "$50^\\circ$",
         "$60^\\circ$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "접선과 현이 이루는 각의 크기는 그 현에 대한 원주각의 크기와 같다. 그림에서 $\\angle x$는 호 $AB$에 대한 원주각 $\\angle \\mathrm{ACB}$이므로 $\\angle x=\\angle \\mathrm{BAT}=40^\\circ$이다.<br>$\\angle y$는 같은 호 $AB$에 대한 중심각 $\\angle \\mathrm{AOB}$이고, 중심각의 크기는 원주각의 크기의 2배이므로 $\\angle y=2\\angle x=80^\\circ$이다.<br>따라서 $\\angle y-\\angle x=80^\\circ-40^\\circ=40^\\circ$이다. 정답은 ③이다."
     },
     {
       "id": 13,
