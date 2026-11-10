@@ -12,6 +12,11 @@ import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame, isObservedAxisDecoration } from './scene-smoke-semantic-calibration.mjs';
+import { sampleInitialFigure } from './middle-initial-figure-contracts.mjs';
+import { adjudicateSmokeMeasurement } from './scene-smoke-measurement-gate.mjs';
 
 // The high-school profile uses the same scene renderer, with the four contract
 // viewports, both themes and explicit step/variant interactions. Legacy CLI
@@ -27,6 +32,7 @@ const argv = process.argv.slice(2);
 const optVal = (k) => { const i = argv.indexOf(k); if (i < 0) return null; const v = argv[i + 1]; argv.splice(i, v === undefined ? 1 : 2); return v ?? ''; };
 const onlyArg = optVal('--only');
 const runsArg = optVal('--runs');
+const reportArg = optVal('--report');
 const base = (argv[0] || 'http://127.0.0.1:8765/apmath/playground/next/labs/').replace(/\/?$/, '/');
 const onlyTest = (() => {
   if (!onlyArg) return null;
@@ -55,76 +61,118 @@ const RUNS = runsArg ? ALL_RUNS.filter((r) => r.name.includes(runsArg)) : ALL_RU
 if (onlyTest && !pages.length) { console.error(`--only ${onlyArg}: 맞는 실험실이 없습니다`); process.exit(2); }
 if (!RUNS.length) { console.error(`--runs ${runsArg}: 맞는 환경이 없습니다`); process.exit(2); }
 
-const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
-let failed = 0;
+let browser, activeContext, activePage, activeRun, runIndex = 0, failed = 0;
+const collectFinalFrame = new Function(`return function collectFinalFrame() {
+  ${isObservedAxisDecoration.toString()}
+  ${deriveSparseFigureContract.toString()}
+  ${evaluateSmokeSemanticCalibration.toString()}
+  ${captureSmokeCalibrationFrame.toString()}
+  ${sampleInitialFigure.toString()}
+  ${adjudicateSmokeMeasurement.toString()}
+  const frame = captureSmokeCalibrationFrame();
+  const previousDraws = window.__initialFigureDraws; let initial;
+  try { window.__initialFigureDraws = frame.draws; initial = sampleInitialFigure(); }
+  finally { if (previousDraws === undefined) delete window.__initialFigureDraws; else window.__initialFigureDraws = previousDraws; }
+  const semantic = evaluateSmokeSemanticCalibration(frame, initial), measurement = adjudicateSmokeMeasurement(frame, semantic);
+  return { id: lab.scene.id, ink: frame.legacy.ink, clipped: frame.legacy.clipped, samplingStep: frame.legacy.samplingStep,
+    legacy: semantic.legacy, measurement, semantic: { status: semantic.status, analyticContract: semantic.contract?.key,
+      applicable: semantic.contract?.applicable, failures: semantic.failures, unknown: semantic.unknown,
+      actualGlyphMeasurement: semantic.actualGlyphMeasurement,
+      checks: semantic.checks.map(({probes, ...check}) => check), initial },
+    annotationObservation: { invocations: frame.annotations.length, glyphs: frame.glyphs.length, fractionBars: frame.fractionBars.length,
+      complete: frame.annotationCaptureComplete && frame.glyphCaptureComplete && frame.fractionBarCaptureComplete } };
+}`)();
+const report = { version: 1, startedAt: new Date().toISOString(), source: null, alphaThreshold: 30, minimumInk: 200,
+  clippingToleranceCssPx: 2, studentVisualQuality: 'NOT_ASSERTED', runs: [], sourceFiles: [] };
+report.runs = pages.flatMap(file => RUNS.map(({ name, theme, ...device }) => ({ file, environment: name, theme, device,
+  status: 'NOT_RUN', originalLegacyStatus: 'NOT_RUN', errors: [], rows: [] })));
+try { report.source = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); } catch {}
+for (const file of ['scene-smoke.mjs', 'scene-smoke-semantic-calibration.mjs', 'scene-smoke-measurement-gate.mjs', 'middle-initial-figure-contracts.mjs'])
+  report.sourceFiles.push({ file, sha256: createHash('sha256').update(fs.readFileSync(new URL(file, import.meta.url))).digest('hex') });
+try {
+browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
 for (const file of pages) {
   for (const run of RUNS) {
     const { name, theme, ...device } = run;
-    const ctx = await browser.newContext(device);
-    const page = await ctx.newPage();
-    const errors = [];
+    activeRun = report.runs[runIndex++]; activeRun.status = 'RUNNING'; activeRun.stage = 'new-context';
+    const ctx = activeContext = await browser.newContext(device);
+    const page = activePage = await ctx.newPage();
+    const errors = activeRun.errors;
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+    activeRun.stage = 'navigation';
     await page.goto(`${base}${file}?theme=${theme}`, { waitUntil: 'networkidle' });
+    activeRun.stage = 'wait-for-shell';
     await page.waitForFunction(() => window.lab && window.lab.board);
-    const rows = await page.evaluate(async () => {
-      const b = lab.board;
-      // 실제로 그려진 라벨의 화면 상자를 기록합니다(가장자리에서 뒤집기·밀어 넣기까지 반영된 최종 위치).
-      let boxes = [];
-      const drawText = b._text;
-      b._text = function (x, y, str, o = {}, screen) {
-        if (str != null && str !== '' && !screen && !this._bbox) {
-          const c = this.ctx;
-          const size = (o.size || 13) * this.fs * this._ts();
-          c.save();
-          c.font = `${o.weight || 750} ${size}px ${this.font}`;
-          const w = c.measureText(String(str)).width;
-          c.restore();
-          const al = o.align || 'center', bl = o.baseline || 'alphabetic';
-          const x0 = x + (al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0);
-          const y0 = y + (bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * 0.8);
-          boxes.push({ x0, x1: x0 + w, y0, y1: y0 + size, str: String(str) });
-        }
-        return drawText.call(this, x, y, str, o, screen);
-      };
+    activeRun.stage = 'scene-rendering';
+    const rows = await page.evaluate(async ({ collector }) => {
+      const collect = new Function('return (' + collector + ')')();
       const out = [];
+      const progress = window.__sceneSmokeProgress = { rows: out, sceneIds: lab.list.map(scene => scene.id), activeId: null };
       for (let i = 0; i < lab.list.length; i++) {
+        progress.activeId = lab.list[i].id;
         lab.goScene(i);
         lab.render();
         await new Promise((r) => requestAnimationFrame(r)); // 무대 위 칩·도구 크기가 정해진 뒤의 배치로 검사
-        boxes = [];
-        lab.render();
-        const c = b.canvas;
-        const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
-        let ink = 0;
-        // 표본 수는 캔버스 넓이와 상관없이 일정하게 둡니다(무대 위 띠·아래 받침으로 그림이 작아져도 가는 선 그림이 '빈 그림'으로 잘못 걸리지 않게. 예전 1280×820 캔버스 기준 31칸 간격과 같은 밀도).
-        const step = Math.min(31, Math.max(1, Math.round((c.width * c.height) / 20360)));
-        for (let k = 3; k < d.length; k += 4 * step) if (d[k] > 30) ink++;
-        const clipped = boxes.filter((q) => Math.max(-q.x0, q.x1 - b.W, -q.y0, q.y1 - b.H) > 2).map((q) => q.str.slice(0, 20));
+        // Observe this same final render, including actual emitted glyphs. The
+        // old sampled ink, raw TeX boxes and 200/30/2px thresholds are retained.
+        const observed = collect();
         // 장면을 차례로 넘긴 뒤에도 화면의 조작부(막대·칩·버튼)가 장면 정의와 같은 개수로 보이는지(같은 조작부 장면이 이어질 때 사라지던 오류)
         const L = (f) => (typeof f === 'function' ? f(lab.s) : f) || [];
         const want = L(lab.scene.controls).filter((k) => lab.params[k]).length + L(lab.scene.presets).length + L(lab.scene.actions).length;
         // 넓은 화면에서는 조작부가 무대 위 띠·아래 받침으로 옮겨 가므로(refs.controls 밖) 화면 전체에서 찾습니다. 장면 칩(.apl-subscenes)·도구 막대는 이 선택자에 걸리지 않습니다.
         const have = [...document.querySelectorAll('.apl-ctl, .apl-presets .apl-chip, .apl-actions-row button')].filter((e) => e.checkVisibility()).length;
-        out.push({ id: lab.scene.id, ink, clipped, ctl: have === want ? '' : `${have}/${want}`, guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim() });
+        out.push({ ...observed, ctl: have === want ? '' : `${have}/${want}`, guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim() });
       }
-      b._text = drawText;
+      progress.activeId = null;
       return out;
-    });
+    }, { collector: collectFinalFrame.toString() });
     const blank = rows.filter((r) => r.ink < 200);
     const noGuide = rows.filter((r) => !r.guide);
     const clipped = rows.filter((r) => r.clipped.length);
     const noCtl = rows.filter((r) => r.ctl);
-    const ok = !errors.length && !blank.length && !noGuide.length && !clipped.length && !noCtl.length;
+    const measurementFailed = rows.filter(r => r.measurement.status !== 'PASS');
+    const ok = !errors.length && !measurementFailed.length && !noGuide.length && !noCtl.length;
     if (!ok) failed++;
+    Object.assign(activeRun, { status: ok ? 'PASS' : 'FAIL', rows, stage: 'complete',
+      originalLegacyStatus: errors.length || blank.length || noGuide.length || clipped.length || noCtl.length ? 'FAIL' : 'PASS' });
     console.log(`${ok ? 'PASS' : 'FAIL'} ${file} [${name}] 장면 ${rows.length}개` +
       (errors.length ? ` · 오류 ${errors.length}: ${errors[0].slice(0, 120)}` : '') +
-      (blank.length ? ` · 빈 그림: ${blank.map((r) => r.id).join(', ')}` : '') +
+      (blank.length ? ` · 기존 저잉크 관측(<200): ${blank.map((r) => r.id).join(', ')}` : '') +
       (noGuide.length ? ` · 안내 없음: ${noGuide.map((r) => r.id).join(', ')}` : '') +
-      (clipped.length ? ` · 잘린 라벨: ${clipped.map((r) => `${r.id}(${r.clipped.join(', ')})`).join('; ')}` : '') +
+      (clipped.length ? ` · 기존 raw 라벨 경계: ${clipped.map((r) => `${r.id}(${r.clipped.join(', ')})`).join('; ')}` : '') +
+      (measurementFailed.length ? ` · 표시 계약 실패: ${measurementFailed.map(r => `${r.id}(${r.measurement.failures.join(',')})`).join('; ')}` : '') +
       (noCtl.length ? ` · 조작부 누락: ${noCtl.map((r) => `${r.id}(${r.ctl})`).join(', ')}` : ''));
+    for (const row of rows.filter(r => r.measurement.corrections.length)) console.log(JSON.stringify({ type: 'MEASUREMENT_CORRECTION',
+      file, environment: name, id: row.id, originalLegacyStatus: row.legacy.status, finalStatus: row.measurement.status, corrections: row.measurement.corrections }));
     await ctx.close();
+    activeContext = activePage = null;
   }
 }
-await browser.close();
+} catch (error) {
+  failed++;
+  report.abort = { name: error.name || 'Error', message: error.message || String(error),
+    file: activeRun?.file || null, environment: activeRun?.environment || null, stage: activeRun?.stage || 'launch' };
+  if (activeRun) {
+    activeRun.status = 'FAIL'; activeRun.originalLegacyStatus = 'UNKNOWN'; activeRun.abort = report.abort;
+    activeRun.remainingSceneCoverage = 'UNKNOWN';
+    try {
+      const progress = await activePage?.evaluate(() => window.__sceneSmokeProgress || null);
+      if (progress) {
+        activeRun.rows = progress.rows; activeRun.failedSceneId = progress.activeId;
+        const completed = new Set(progress.rows.map(row => row.id));
+        activeRun.notRunSceneIds = progress.sceneIds.filter(id => !completed.has(id) && id !== progress.activeId);
+        activeRun.remainingSceneCoverage = 'RECORDED';
+      }
+    } catch { /* A crashed page cannot provide partial rows; keep UNKNOWN. */ }
+  }
+  console.error(`FAIL scene smoke aborted: ${JSON.stringify(report.abort)}`);
+} finally {
+  for (const [resource, value] of [['context', activeContext], ['browser', browser]]) {
+    try { await value?.close(); }
+    catch (error) { failed++; (report.cleanupErrors ||= []).push({ resource, message: error.message || String(error) }); }
+  }
+  report.finishedAt = new Date().toISOString(); report.status = failed ? 'FAIL' : 'PASS';
+  if (reportArg) { fs.mkdirSync(path.dirname(path.resolve(reportArg)), { recursive: true }); fs.writeFileSync(reportArg, JSON.stringify(report, null, 2) + '\n'); }
+}
 process.exit(failed ? 1 : 0);

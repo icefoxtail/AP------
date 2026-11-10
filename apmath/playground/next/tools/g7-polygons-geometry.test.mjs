@@ -13,6 +13,8 @@ const ctx = vm.createContext({ window: {}, Math: seededMath, document: {
   documentElement: { dataset: {} }, getElementById() { return null; }, createElement() { return {}; }, head: { append() {} }, addEventListener() {}
 } });
 for (const name of ['core', 't1', 't2', 't3', 't4']) vm.runInContext(fs.readFileSync(path.join(root, name + '.js'), 'utf8'), ctx, { filename: name + '.js' });
+ctx.window.APLab = { clamp: (value, lo, hi) => Math.max(lo, Math.min(hi, value)) };
+vm.runInContext(fs.readFileSync(new URL('../kit/apl-board.js', import.meta.url), 'utf8'), ctx);
 const G = ctx.window.APL_PG, groups = ctx.window.APL_PG_GROUPS, scenes = groups.flatMap((g) => g.scenes);
 const params = Object.assign({}, ...groups.map((g) => g.params));
 const by = (id) => scenes.find((sc) => sc.id === id);
@@ -24,8 +26,11 @@ const number = (text) => { const m = String(text).match(/-?\d+(?:\.\d+)?(?:\/\d+
 const close = (a, b, why) => assert.ok(Math.abs(a - b) < 1e-6, `${why}: ${a} != ${b}`);
 const finite = (x) => typeof x === 'number' ? Number.isFinite(x) : Array.isArray(x) ? x.every(finite) : x && typeof x === 'object' ? Object.values(x).every(finite) : true;
 function render(id, s, tab, width = 900, height = 650) {
-  const calls = [], b = { W: width, H: height, insets: { left: 0, right: 0, top: 0, bottom: 0 }, pad: .02, k: 80, thumb: false, calls };
-  for (const method of ['path', 'seg', 'poly', 'text', 'point', 'arc', 'right', 'circle', 'ticks', 'handle']) b[method] = (...args) => { calls.push({ method, args }); return b; };
+  const calls = [], b = Object.create(ctx.window.APLab.Board.prototype);
+  Object.assign(b,{ W: width, H: height, insets: { left: 0, right: 0, top: 0, bottom: 0 }, pad: .02, thumb: false, calls,
+    kind:'figure',aspect:'1:1',focus:{x:[-2,2],y:[-2,2]},zoom:1,panX:0,panY:0,panes:null,paneId:null,fs:1 });
+  b.annotationSize=(label,o={})=>({width:G.textW(label,o.size||16)+6,height:(o.size||16)+6});
+  for (const method of ['path', 'seg', 'poly', 'text', 'point', 'arc', 'right', 'circle', 'ticks', 'handle','leader']) b[method] = (...args) => { calls.push({ method, args }); return b; };
   const sc = by(id), lab = { tab, s, scene: sc }, v = sc.view(s, lab); sc.draw(b, s, v, lab);
   return { b, v, texts: calls.filter((c) => c.method === 'text').map((c) => String(c.args[1])) };
 }

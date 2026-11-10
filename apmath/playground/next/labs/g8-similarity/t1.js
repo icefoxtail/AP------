@@ -28,6 +28,26 @@
   /* ====================================================================== 공용: 직각사다리꼴 ABCD (AB=6, BC=5, CD=2, DA=3 의 k배) */
   const trap = (k, ox) => [pt(ox, 0), pt(ox + 6 * k, 0), pt(ox + 2 * k, -3 * k), pt(ox, -3 * k)]; // A B C D
   const TC = ['sky', 'green', 'amber', 'rose'];
+  function trapAngles(b, Pt) {
+    const compact = phone(b) && !b.thumb;
+    // On a phone CD can be shorter than the old 24px arc plus the 16px
+    // right-angle square. Keep both marks inside their own corner of CD.
+    const shortSide = Math.hypot(Pt[2].x - Pt[3].x, Pt[2].y - Pt[3].y) * b.k;
+    const rightRadius = compact ? Math.min(26, shortSide * 0.3 / 0.62) : 26;
+    const acuteRadius = compact ? Math.min(24, shortSide * 0.75) : 24;
+    const obtuseRadius = compact ? Math.min(24, shortSide * 0.42) : 24;
+    ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose', r: rightRadius });
+    ang(b, Pt[3], Pt[0], Pt[2], { color: 'rose', r: rightRadius });
+    ang(b, Pt[1], Pt[0], Pt[2], { color: 'rose', rings: 1, r: acuteRadius });
+    const mark = ang(b, Pt[2], Pt[1], Pt[3], { color: 'rose', rings: compact ? 1 : 2, r: obtuseRadius });
+    if (compact) {
+      // The second arc still denotes the corresponding obtuse angle. Its
+      // spacing scales too, so it remains a positive radius at ratios 1:4.
+      const start = Math.atan2(Pt[1].y - Pt[2].y, Pt[1].x - Pt[2].x);
+      b.arc(Pt[2], (obtuseRadius - Math.min(4.6, obtuseRadius * 0.45)) / b.k, start, 2 * mark.mid - start,
+        { color: 'rose', width: 2.2, ccw: mark.mid < start });
+    }
+  }
 
   /* ====================================================================== 1. 닮은 두 평면도형 */
   const corr = {
@@ -60,10 +80,7 @@
         Pt.forEach((p, i) => { b.point(p, { color: !prob && st >= 1 ? TC[i] : 'ink', r: 5 }); tagOut(b, p, c, nm[i], { size: 17, gap: 12, color: !prob && st >= 1 ? TC[i] : 'ink' }); });
         // 각 표시: ∠A=∠D=직각(네모), ∠B 호 1개, ∠C 호 2개
         if (prob || st >= 3) {
-          ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose' });
-          ang(b, Pt[3], Pt[0], Pt[2], { color: 'rose' });
-          ang(b, Pt[1], Pt[0], Pt[2], { color: 'rose', rings: 1, r: 24 });
-          ang(b, Pt[2], Pt[1], Pt[3], { color: 'rose', rings: 2, r: 24 });
+          trapAngles(b, Pt);
         }
       };
       draw1(Pl, cl, 'ABCD', 0, m);
@@ -125,8 +142,7 @@
       [[Pl, cl, 'ABCD', 'sky', m], [Pr, cr, 'EFGH', 'green', n]].forEach(([Pt, c, nm, col, k]) => {
         fillPoly(b, Pt, col, 0.1); poly(b, Pt, 'ink', 3.6);
         Pt.forEach((p, i) => vtx(b, p, c, nm[i], { r: 4.5 }));
-        ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose' }); ang(b, Pt[3], Pt[0], Pt[2], { color: 'rose' });
-        ang(b, Pt[1], Pt[0], Pt[2], { color: 'rose', rings: 1, r: 24 }); ang(b, Pt[2], Pt[1], Pt[3], { color: 'rose', rings: 2, r: 24 });
+        trapAngles(b, Pt);
       });
       // 주어진 것: AB, EF (그림에 모두 표시). 둘레는 글로 주어짐(그림 아래)
       sideTag(b, Pl[0], Pl[1], cl, String(6 * m), { color: 'sky' }); sideTag(b, Pr[0], Pr[1], cr, String(6 * n), { color: 'green' });
@@ -206,9 +222,20 @@
     model: (s) => { const type = s.smSolid || 'tet', m = clamp(Math.round(s.smM), 1, 4), n = clamp(Math.round(s.smN), 1, 4), g = gcd(m, n); return { type, m, n, g, base: BASE[type], names: ELAB[type] }; },
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, type = prob ? pk.type : M.type, m = prob ? pk.m : M.m, n = prob ? pk.n : M.n, base = BASE[type];
-      const e1 = extent(type, m), e2 = extent(type, n), gap = 1.8 + 0.25 * Math.max(m, n), X2 = e1.w + gap;
+      const e1 = extent(type, m), e2 = extent(type, n);
+      let gap = 1.8 + 0.25 * Math.max(m, n), X2 = e1.w + gap;
       const hh = Math.max(e1.h, e2.h), yb = type === 'tet' ? 0.55 * Math.max(m, n) : type === 'cyl' ? 0.3 * BASE.cyl[0] * Math.max(m, n) : 0;
-      fit(b, { x0: -0.3, x1: X2 + e2.w + 0.3, y0: -hh - 0.3, y1: 0.8 + yb }, { t: 40, b: 70, l: 40, r: 44 });
+      const fitSolids = () => fit(b, { x0: -0.3, x1: X2 + e2.w + 0.3, y0: -hh - 0.3, y1: 0.8 + yb }, { t: 40, b: 70, l: 40, r: 44 });
+      fitSolids();
+      // The inward-facing D/F names need room between the two tetrahedra.
+      // A world-space gap alone collapses on the short mobile problem canvas.
+      if (phone(b) && type === 'tet' && !b.thumb) {
+        for (let attempt = 0; attempt < 4 && gap * b.k < 51.9; attempt++) {
+          gap = 52 / b.k;
+          X2 = e1.w + gap;
+          fitSolids();
+        }
+      }
       const st = C.step, shown = prob || st >= 2;
       const labFor = (k, who) => (i) => {
         if (prob) {
@@ -433,10 +460,10 @@
       return { tag: pk.askAlways ? '항상 닮은 도형 찾기' : '닮음이 아닐 수 있는 도형', key: pk.items.join(''), stem: pk.askAlways ? '다음 중 항상 닮은 도형인 것은? (그림의 ①~⑤는 보기 순서)' : '다음 중 항상 닮은 도형이라고 할 수 없는 것은? (그림의 ①~⑤는 보기 순서)', choices: items.map((it, i) => ({ h: it.h, p: it.h, ok: it.ok, hint: it.hint })), wide: false };
     }
   };
-  // 문제 그림: 보기의 도형 다섯 개를 ①~⑤ 번호와 함께 가로로 나란히
+  // 문제 그림: 넓은 화면은 한 줄, 휴대폰은 번호를 왼쪽에 붙인 두 열.
   function drawAlwaysProblem(b, M) {
-    const items = M.pk.items, n = items.length, step = 3.4, cols = phone(b) ? 2 : n;
-    fit(b, { x0: -1.4, x1: step * (cols - 1) + 1.4, y0: -3.2, y1: 4 * (Math.ceil(n / cols) - 1) + .7 }, { t: 26, b: 36, l: 24, r: 24 });
+    const items = M.pk.items, n = items.length, narrow = phone(b), step = narrow ? 7.4 : 3.4, cols = narrow ? 2 : n;
+    fit(b, { x0: -1.4, x1: step * (cols - 1) + 1.4, y0: -3.2, y1: 4 * (Math.ceil(n / cols) - 1) + .7 }, { t: 26, b: 36, l: narrow ? 44 : 24, r: 24 });
     items.forEach((t, i) => {
       const cx = step * (i % cols), dy = 4 * Math.floor(i / cols);
       const point = G.pt; const shifted = (x, y) => point(x, y + dy);
@@ -455,7 +482,8 @@
         else if (t === 'rti') Pt = [shifted(cx - 1.2, 0), shifted(cx + 1.2, 0), shifted(cx - 1.2, -2.4)];
         fillPoly(b, Pt, 'sky', 0.12); poly(b, Pt, 'ink', 3.4);
       }
-      T(b, shifted(cx, 0), G.NUM[i], { dy: 26, size: 26, color: 'amber' });
+      if (narrow) T(b, shifted(cx - 1.4, -1.2), G.NUM[i], { dx: -18, size: 26, color: 'amber' });
+      else T(b, shifted(cx, 0), G.NUM[i], { dy: 26, size: 26, color: 'amber' });
     });
   }
 

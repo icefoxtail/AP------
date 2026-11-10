@@ -1,0 +1,108 @@
+name: Middle smoke semantic experiment
+
+# Isolated diagnosis only. The production smoke and all required checks remain
+# unchanged. Its original failure exit is intentionally retained below.
+on:
+  push:
+    branches: ['audit/apmath-initial-smoke-20261109']
+    paths:
+      - 'apmath/playground/next/tools/scene-smoke-semantic-calibration*'
+      - 'apmath/playground/next/tools/scene-smoke-measurement-gate*'
+      - 'apmath/playground/next/tools/apmath-smoke-semantic-experiment.mjs'
+      - '.github/workflows/middle-smoke-semantic-experiment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: middle-smoke-semantic-experiment-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  actual-semantic-controls:
+    name: Original smoke and semantic experiment (${{ matrix.phase }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - phase: baseline
+            source: d69709250e06005f6e4d8fc4cea15667bc5d3ded
+          - phase: candidate
+            source: 9bf1bb63bdc32dfa25195fb784c69d5c6290ddb6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and bind the immutable source
+        shell: bash
+        env:
+          EXPERIMENT_SOURCE: ${{ matrix.source }}
+          EXPERIMENT_PHASE: ${{ matrix.phase }}
+        run: |
+          npm install --prefix "$RUNNER_TEMP/semantic-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/semantic-browser/node_modules/.bin/playwright" install --with-deps chromium
+          git fetch --no-tags --depth=1 origin "$EXPERIMENT_SOURCE"
+          git worktree add --detach "$RUNNER_TEMP/semantic-source" "$EXPERIMENT_SOURCE"
+          mkdir -p "$RUNNER_TEMP/semantic-evidence"
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const record = {purpose:'EXPERIMENT_ONLY_NO_QUALITY_VERDICT',phase:process.env.EXPERIMENT_PHASE,source:process.env.EXPERIMENT_SOURCE,workflow:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,legacyMinimumInk:200,legacyAlphaThreshold:30,glyphToleranceCssPx:2,legacyGateOverride:false};
+          fs.writeFileSync(`${process.env.RUNNER_TEMP}/semantic-evidence/context.json`,JSON.stringify(record,null,2)+'\n');
+          NODE
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$RUNNER_TEMP/semantic-source" > "$RUNNER_TEMP/semantic-evidence/server.log" 2>&1 &
+          for attempt in {1..20}; do
+            if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null
+      - name: Prototype and existing critical-contract unit controls
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/middle-initial-figure-contracts.test.mjs 2>&1 | tee "$RUNNER_TEMP/semantic-evidence/unit-controls.log"
+      - name: Original unmodified smoke with its original failure exit
+        if: ${{ !cancelled() }}
+        shell: bash
+        env:
+          NODE_PATH: ${{ runner.temp }}/semantic-browser/node_modules
+        run: |
+          node "$RUNNER_TEMP/semantic-source/apmath/playground/next/tools/scene-smoke.mjs" http://127.0.0.1:8765/apmath/playground/next/labs/ --only alg-sequence,g7-surface-volume,g8-pythagoras,g9-trig-ratio 2>&1 | tee "$RUNNER_TEMP/semantic-evidence/original-smoke.log"
+      - name: Actual source-bound positive and destructive negative experiments
+        if: ${{ !cancelled() }}
+        shell: bash
+        env:
+          NODE_PATH: ${{ runner.temp }}/semantic-browser/node_modules
+          EXPERIMENT_SOURCE: ${{ matrix.source }}
+          EXPERIMENT_PHASE: ${{ matrix.phase }}
+        run: |
+          node apmath/playground/next/tools/apmath-smoke-semantic-experiment.mjs --root "$RUNNER_TEMP/semantic-source" --base-url http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/semantic-evidence/actual" --phase "$EXPERIMENT_PHASE" --expected-sha "$EXPERIMENT_SOURCE" 2>&1 | tee "$RUNNER_TEMP/semantic-evidence/experiment.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-semantic-${{ github.run_id }}-${{ matrix.phase }}-report
+          path: |
+            ${{ runner.temp }}/semantic-evidence/*.json
+            ${{ runner.temp }}/semantic-evidence/*.log
+            ${{ runner.temp }}/semantic-evidence/actual/*.json
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-semantic-${{ github.run_id }}-${{ matrix.phase }}-canvas
+          path: ${{ runner.temp }}/semantic-evidence/actual/*-canvas.png
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-semantic-${{ github.run_id }}-${{ matrix.phase }}-viewport
+          path: ${{ runner.temp }}/semantic-evidence/actual/*-page.png
+          retention-days: 14

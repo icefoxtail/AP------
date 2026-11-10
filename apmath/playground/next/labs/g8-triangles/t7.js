@@ -80,8 +80,10 @@
       const { a, b: bb, obc, ibc, obi, boc, bic, g } = M, { A, B, C: Cc, O, I } = g, kind = t7kind(M, s), same = M.same;
       const cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
       const seen = new Set(idx >= 0 ? ST.slice(0, idx + 1).map((x) => x.f) : []), at = (x) => f === x, has = (x) => seen.has(x);
-      const narrowW = b.W < 560;
-      fit(b, bboxOf([A, B, Cc, O, I]), { t: 50, b: idx < 0 ? 72 : narrowW ? 112 : 122, l: narrowW ? 40 : 54, r: narrowW ? 40 : 54 });
+      const narrowW = b.W < 560, mobileQuestion = narrowW && !b.thumb;
+      // 문제의 기본 삼각형부터 충분히 보여 줍니다. 작은 무대에서 고정된
+      // 여백/각 글자 거리가 A와 B의 조건을 O·I 쪽으로 밀어내지 않게 합니다.
+      fit(b, bboxOf([A, B, Cc, O, I]), { t: mobileQuestion ? 28 : 50, b: mobileQuestion ? (idx < 0 ? 52 : 92) : idx < 0 ? 72 : narrowW ? 112 : 122, l: narrowW ? 40 : 54, r: narrowW ? 40 : 54 });
       const k = b.k || 60, lf = fs(b, 14), px = (n) => n / k, isProb = idx < 0, gv = at('given');
       const oUp = O.y <= I.y, close = !same && Math.abs(I.y - O.y) * k < 84; // O·I 가 가까우면 위쪽 점의 각 글자는 점 위에, 아래쪽 점의 각 글자는 점 아래에 둡니다
       const rotO = close && oUp ? 180 : 0, rotI = close && !oUp ? 180 : 0;
@@ -100,7 +102,11 @@
       if (strongCI) line(b, Cc, I, 'green', 3, { dash: [7, 5] }); else line(b, Cc, I, 'ink', 1.4, { alpha: 0.22, dash: [7, 5] });
       if (gv || at('oc')) { tick(b, O, B, 2, 'rose'); tick(b, O, Cc, 2, 'rose'); }
       // ∠A (주어진 값): 주어진 것에서 색, 이후에는 값만 남긴 회색
-      if (isProb || gv) ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56, fa: gv ? 0.5 : 0.2 });
+      if (mobileQuestion) {
+        const ar = Math.min(30, .3 * Math.min(dist(A, O), dist(A, I)) * k), col = isProb || gv ? 'sky' : 'ink';
+        ang(b, A, B, Cc, { color: col, r: ar, fa: gv ? .5 : isProb ? .2 : 0, alpha: isProb || gv ? 1 : .38 });
+        T(b, A, dg(a), { dx: -56, dy: 26, size: 16, color: col, alpha: isProb || gv ? 1 : .38, leaderAnchor: pt(A.x, A.y + px(ar)), leader: true });
+      } else if (isProb || gv) ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56, fa: gv ? 0.5 : 0.2 });
       else FD(b, A, B, Cc, { r: 34, label: dg(a), size: 15, labelDist: 56 });
       // ∠B=∠C (이등변): B쪽 한 곳만, 값은 꼭짓점 바깥에
       if (has('base') && K !== 'trap') {
@@ -124,7 +130,13 @@
       const xv = kind === 'obi' ? obi : kind === 'obc' ? obc : kind === 'diff' ? Math.abs(boc - bic) : ibc;
       const xArc = isProb || gv || at('eq') || at('ans'), narrowX = xv < 15, xl = at('ans') && !narrowX ? `x=${xv}°` : 'x', xs = 18;
       const dirX = (th, d, lbl) => T(b, B, lbl, { dx: Math.cos(th) * d, dy: Math.sin(th) * d, size: xs, color: 'amber' });
-      if (kind === 'ibc') { if (xArc && !(at('eq') && false)) ang(b, B, I, Cc, { color: 'amber', r: 38, label: xl, size: xs, labelDist: 60, fa: 0.3 }); else dirX(-ibc / 2 * DEG, 60, xl); }
+      if (mobileQuestion && (isProb || gv) && kind !== 'diff') {
+        const ends = kind === 'obi' ? [O, I] : kind === 'obc' ? [O, Cc] : [I, Cc];
+        const xr = Math.min(42, .36 * Math.min(dist(B, O), dist(B, I)) * k);
+        const marker = ang(b, B, ends[0], ends[1], { color: 'amber', r: xr, fa: .3 });
+        const anchor = pt(B.x + px(xr) * Math.cos(marker.mid), B.y + px(xr) * Math.sin(marker.mid));
+        T(b, B, xl, { dx: -32, dy: -24, size: xs, color: 'amber', leaderAnchor: anchor, leader: true });
+      } else if (kind === 'ibc') { if (xArc && !(at('eq') && false)) ang(b, B, I, Cc, { color: 'amber', r: 38, label: xl, size: xs, labelDist: 60, fa: 0.3 }); else dirX(-ibc / 2 * DEG, 60, xl); }
       else if (kind === 'obi') {
         // ∠OBI 는 작은 각이라 글자 x 를 선 밖으로 빼고 짧은 선으로 이어요(값은 그림 아래 한 줄에)
         const th = -(obc + ibc) / 2 * DEG, from = pt(B.x + px(66) * Math.cos(th), B.y + px(66) * Math.sin(th)), to = pt(from.x + px(2), B.y + px(7)); // x 는 B의 각이므로 O에서 먼 변 BC 아래에 둡니다
@@ -141,7 +153,10 @@
       }
       // 점과 이름(점 이름만 그림 안에)
       b.point(O, { color: 'rose', r: 5.5 }); b.point(I, { color: 'green', r: 5.5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
-      if (same) T(b, O, 'O=I', { dx: 24, dy: 0, size: 16, color: 'rose' }); else {
+      if (same) T(b, O, 'O=I', { dx: 24, dy: 0, size: 16, color: 'rose' }); else if (mobileQuestion) {
+        T(b, O, 'O', { dx: -26, dy: -8, size: 17, color: 'rose', leaderAnchor: O, leader: true });
+        T(b, I, 'I', { dx: 26, dy: 8, size: 17, color: 'green', leaderAnchor: I, leader: true });
+      } else {
         const tight = close && Math.abs(I.y - O.y) * k < 34;
         T(b, O, 'O', { dx: 16, dy: tight && !oUp ? -2 : -14, size: 17, color: 'rose' }); T(b, I, 'I', { dx: 16, dy: tight && oUp ? -2 : -14, size: 17, color: 'green' });
       }
@@ -149,7 +164,7 @@
       // 그림 아래: 단계 설명 한 줄, 그 아래에 점 이름의 뜻
       const capSz = 15, plainCap = cur ? String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2') : '', two = cur && G.textW(plainCap, fs(b, capSz)) * 1.1 > Math.max(180, b.W - 28);
       if (cur) solveCap(b, pt(0, 0), cur, { dy: 46, size: capSz });
-      T(b, pt(0, 0), same ? 'O=I: 외심이자 내심' : 'O: 외심 · I: 내심', { dy: cur ? (two ? 78 : 74) : 46, size: fs(b, 14), color: 'ink', alpha: 0.8 });
+      T(b, pt(0, 0), same ? 'O=I: 외심이자 내심' : 'O: 외심 · I: 내심', { dy: cur ? (two ? 78 : 74) : mobileQuestion ? 32 : 46, size: fs(b, 14), color: 'ink', alpha: 0.8 });
     }
   };
   const m1 = {
@@ -183,7 +198,14 @@
         ang(b, A, B, Cc, { color: 'sky', r: 30, label: dg(a), size: lf, labelDist: 50 });
       }
       b.point(O, { color: 'rose', r: 5.5 }); b.point(I, { color: 'green', r: 5.5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
-      if (same) T(b, O, 'O = I', { dx: 24, dy: 0, size: 16, color: 'rose' }); else { T(b, O, 'O', { dx: 14, dy: 12, size: 17, color: 'rose' }); T(b, I, 'I', { dx: 14, dy: -12, size: 17, color: 'green' }); }
+      if (same) T(b, O, 'O = I', { dx: 24, dy: 0, size: 16, color: 'rose' });
+      else if (!C.thumb && Math.abs(I.y - O.y) * (b.k || 60) < 44) {
+        // 가까운 두 중심은 이름을 서로 바깥쪽에 두고 실제 점에 연결합니다.
+        // 고정 O 아래/I 위 배치는 O가 위쪽일 때 두 이름의 위치를 뒤바꿨습니다.
+        const oUp = O.y < I.y;
+        T(b, O, 'O', { dx: 16, dy: oUp ? -14 : 14, size: 17, color: 'rose', leaderAnchor: O, leader: true });
+        T(b, I, 'I', { dx: 16, dy: oUp ? 14 : -14, size: 17, color: 'green', leaderAnchor: I, leader: true });
+      } else { T(b, O, 'O', { dx: 14, dy: 12, size: 17, color: 'rose' }); T(b, I, 'I', { dx: 14, dy: -12, size: 17, color: 'green' }); }
       tagOut(b, A, O, 'A', { size: 18 }); tagOut(b, B, O, 'B', { size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 });
       if (!C.thumb && !C.problem) {
         let row, col = 'sky';
@@ -316,13 +338,17 @@
     },
     draw: SVB.runner({
       box: () => ({ x0: -1.2, x1: 1.2, y0: -1.15, y1: 1.15 }), padT: 40,
+      padding: (b, M, s, idx) => b.W < 560 ? { t: 26, b: idx < 0 ? 72 : 110, l: 40, r: 40 } : { t: 40, b: idx < 0 ? 80 : 132, l: 54, r: 54 },
       base: (b, M) => { const { O, A, B, C: Cc } = m4g(); b.circle(O, 1, { color: 'rose', width: 2.4, alpha: 0.6 }); b.circle(O, 0.5, { color: 'green', width: 2.4, alpha: 0.8 }); fillPoly(b, [A, B, Cc], 'sky', 0.1); poly(b, [A, B, Cc], 'ink', 3.4); },
       legend: () => 'O: 외심이자 내심 · D: BC의 중점',
       st: {
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc, D } = m4g(), v = (s.trV || 0) % 3, rr = fs(X.b, 15);
           L.ln(A, D, 'ink', 2.4, { dash: [6, 5] }); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 3); L.tk(O, z, 1, 'amber'); }); L.ang(D, O, B, { color: 'sky', r: 14 });
-          if (v === 0 || v === 2) L.sd(O, D, pt(-50, 0), `${M.r} cm`, { color: 'green', size: rr, gap: 8, keep: true }); else L.sd(O, A, pt(50, 0), `${M.R} cm`, { color: 'rose', size: rr, gap: 8, keep: true });
+          if (X.nw) {
+            const od = v === 0 || v === 2, p = mid(O, od ? D : A);
+            L.tx(p, `${od ? M.r : M.R} cm`, { dx: od ? 96 : -54, color: od ? 'green' : 'rose', size: rr, keep: true, leaderAnchor: p, leader: true });
+          } else if (v === 0 || v === 2) L.sd(O, D, pt(-50, 0), `${M.r} cm`, { color: 'green', size: rr, gap: 8, keep: true }); else L.sd(O, A, pt(50, 0), `${M.R} cm`, { color: 'rose', size: rr, gap: 8, keep: true });
         },
         half: (L, M) => { const { O, B, C: Cc } = m4g(); L.ln(O, B, 'rose', 4.4); L.ang(B, O, Cc, { color: 'green', r: 30, label: '30°', size: 15, labelDist: 52, fa: 0.4 }); },
         rt: (L, M) => { const { O, B, D } = m4g(); L.fl([O, B, D], 'amber', 0.3); L.ln(O, D, 'green', 4.4); L.ln(O, B, 'rose', 4.4); L.ang(D, O, B, { color: 'sky', r: 14 }); L.tk(O, D, 1, 'green'); L.tk(O, B, 2, 'rose'); },
@@ -331,6 +357,7 @@
       x: (b, M, s, X) => {
         const { O, A, D } = m4g(), v = (s.trV || 0) % 3, rr = fs(b, 15);
         if (v === 0) G.sideTag(b, O, A, pt(50, 0), X.xVal ? `${M.R} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 });
+        else if (v === 1 && X.nw) T(b, mid(O, D), X.xVal ? `${M.r} cm` : 'x', { dx: 96, color: 'amber', size: fs(b, X.xVal ? 15 : 18), leaderAnchor: mid(O, D), leader: true });
         else if (v === 1) G.sideTag(b, O, D, pt(-50, 0), X.xVal ? `${M.r} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 });
         else G.sideTag(b, A, D, pt(50, 0), X.xVal ? `${M.h} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 38 });
         void rr;
@@ -383,8 +410,14 @@
     },
     draw: SVB.runner({
       box: (M, s) => { const g = m5geo(M, s), pts = []; if (g.showL) pts.push(g.L.A, g.L.B, g.L.C, g.L.O, g.L.DO); if (g.showR) pts.push(g.R.A, g.R.B, g.R.C, g.R.I, g.R.D); return bboxOf(pts); }, padL: 44,
-      base: (b, M, s) => { const g = m5geo(M, s); if (g.v === 1) b.circle(g.R.I, dist(g.R.I, g.R.D), { color: 'green', width: 2.2, alpha: 0.7 }); if (g.showL) { const { A, B, C: Cc } = g.L; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } if (g.showR) { const { A, B, C: Cc } = g.R; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } },
-      legend: (M, s) => { const v = (s.trV || 0) % 3; return v === 0 ? 'O: 외심 · D: O에서 BC에 내린 수선의 발' : v === 1 ? 'I: 내심 · D: I에서 BC에 내린 수선의 발' : '왼쪽 O: 외심 · 오른쪽 I: 내심 · D: 수선의 발'; },
+      padding: (b, M, s, idx) => {
+        if (b.W >= 560 || (s.trV || 0) % 3 === 2) return { t: b.W < 560 ? 48 : 68, b: idx < 0 ? (b.W < 560 ? 72 : 80) : (b.W < 560 ? 126 : 132), l: 44, r: 44 };
+        const cur = idx < 0 ? null : m5Solve.steps(M, s)[idx], two = cur && G.textW(String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2'), fs(b, 15)) * 1.1 > Math.max(180, b.W - 28);
+        return { t: 28, b: idx < 0 ? 104 : two ? 148 : 128, l: 44, r: 44 };
+      },
+      captionDy: (X) => X.compactRoleLegend ? 76 : 52,
+      base: (b, M, s, X) => { const g = m5geo(M, s); X.compactRoleLegend = X.nw && !g.both; if (g.v === 1) b.circle(g.R.I, dist(g.R.I, g.R.D), { color: 'green', width: 2.2, alpha: 0.7 }); if (g.showL) { const { A, B, C: Cc } = g.L; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } if (g.showR) { const { A, B, C: Cc } = g.R; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } },
+      legend: (M, s, X) => { const v = (s.trV || 0) % 3; if (X.nw && v !== 2) return ''; return v === 0 ? 'O: 외심 · D: O에서 BC에 내린 수선의 발' : v === 1 ? 'I: 내심 · D: I에서 BC에 내린 수선의 발' : '왼쪽 O: 외심 · 오른쪽 I: 내심 · D: 수선의 발'; },
       dyn: (name, M, s) => stmtDyn(M5POOL, m5.prob)(name, M, s),
       st: {
         given: (L, M, s, X) => {
@@ -408,6 +441,11 @@
         const g = m5geo(M, s);
         if (g.showL) { const { A, B, C: Cc, O, DO } = g.L; b.point(O, { color: 'rose', r: 5.5 }); b.point(DO, { color: 'rose', r: 4 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4 })); T(b, O, 'O', { dx: 12, dy: -10, size: 17, color: 'rose' }); T(b, DO, 'D', { dy: 16, size: 17 }); [[A, 'A'], [B, 'B'], [Cc, 'C']].forEach(([p, nm]) => tagOut(b, p, g.gc, nm, { size: 17 })); }
         if (g.showR) { const { A, B, C: Cc, I, D } = g.R, gc = pt(g.gc.x + g.off, g.gc.y); b.point(I, { color: 'green', r: 5.5 }); b.point(D, { color: 'green', r: 4 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4 })); T(b, I, 'I', { dx: 12, dy: -10, size: 17, color: 'green' }); T(b, D, 'D', { dy: 16, size: 17 }); [[A, 'A'], [B, 'B'], [Cc, 'C']].forEach(([p, nm]) => tagOut(b, p, gc, nm, { size: 17 })); }
+        if (X.nw && !g.both) {
+          const box = b._trBox, p = pt((box.x0 + box.x1) / 2, box.y1), cur = X.cur, two = cur && G.textW(String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2'), fs(b, 15)) * 1.1 > Math.max(180, b.W - 28);
+          // 길이 조건과 풀이 설명 아래에 짧은 범례를 둡니다.
+          T(b, p, `${g.v === 0 ? 'O: 외심' : 'I: 내심'} · D: 수선의 발`, { dy: X.prob ? 78 : two ? 124 : 104, size: fs(b, 14), alpha: 0.8 });
+        }
       }
     })
   };

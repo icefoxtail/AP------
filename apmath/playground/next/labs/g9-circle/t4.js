@@ -211,8 +211,8 @@
       const th = g.a / 2, kth = g.k * g.a / 2, rk = g.k === 1 ? 1 : 2;
       if (pr) {
         // 호 AB 에 대한 원주각 ∠ADB, 호 CD 에 대한 원주각 ∠CAD / ∠CBD
-        if (q.kind === 0) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, Pp, A, D, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: 50, size: S(b), color: 'rose', noBig: true }); }
-        if (q.kind === 1) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 28, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: 50, size: S(b), color: 'sky', noBig: true }); }
+        if (q.kind === 0) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, Pp, A, D, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: b.ciMobileProblem ? 28 : 50, size: S(b), color: 'rose', noBig: true }); }
+        if (q.kind === 1) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 28, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: b.ciMobileProblem ? 28 : 50, size: S(b), color: 'sky', noBig: true }); }
         if (q.kind === 2) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, B, Cc, D, { color: 'sky', rings: 2, label: dgx(q.k * q.th), r: 28, size: S(b) }); ang(b, Pp, A, B, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); }
         return;
       }
@@ -352,8 +352,10 @@
       if (pr) {
         ang(b, g.A, g.B, g.C, { color: 'sky', rings: 1, label: dgx(q.A0), r: 30, size: S(b) });
         const bcv = { 30: 1, 45: Math.SQRT2, 60: Math.sqrt(3) }[q.A0], bcs = q.A0 === 30 ? String(q.a) : q.A0 === 45 ? `${q.a}√2` : `${q.a}√3`;
-        if (q.ask === 'R') { segTag(b, g.B, g.C, 'BC=' + bcs, { away: g.A, color: 'sky', size: S(b), gap: 14 }); segTag(b, O, g.B, 'x', { away: g.C, gap: 12 }); }
-        else { segTag(b, g.B, g.C, 'x', { away: g.A, gap: 14 }); segTag(b, O, g.B, String(q.a), { away: g.C, color: 'sky', size: S(b), gap: 12 }); }
+        // Name OB on its open C side so x cannot be read as AB. At 60 degrees,
+        // use the upper part of the radius to clear the nearby BC annotation.
+        if (q.ask === 'R') { segTag(b, g.B, g.C, 'BC=' + bcs, { away: g.A, color: 'sky', size: S(b), gap: 14 }); segTag(b, O, g.B, 'x', { toward: g.C, f: q.A0 === 60 ? 0.3 : 0.5, gap: 12, leader: true }); }
+        else { segTag(b, g.B, g.C, 'x', { away: g.A, gap: 14 }); segTag(b, O, g.B, String(q.a), { toward: g.C, f: q.A0 === 60 ? 0.3 : 0.5, color: 'sky', size: S(b), gap: 12, leader: true }); }
         return;
       }
       ang(b, g.A, g.B, g.C, { color: 'rose', rings: 1, label: dgx(g.A0), r: 30, size: S(b) });

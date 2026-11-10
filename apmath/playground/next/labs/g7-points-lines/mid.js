@@ -27,12 +27,17 @@
   };
 
   // 길이 글자: 조각이 좁으면 위아래로 번갈아 놓아 겹치지 않게
-  const lenLabels = (b, X, y, list) => list.forEach((q, i) => {
-    const w = (X(q.c) - X(q.a)) * (b.k || 30), size = q.size || 15;
-    const labelWidth = Array.from(q.text).reduce((n, c) => n + (c.charCodeAt(0) >= 0x1100 ? size : size * 0.62), 0);
-    const lv = w < labelWidth + 12 ? i % 2 : 0;
-    T(b, { x: (X(q.a) + X(q.c)) / 2, y }, q.text, { dy: -(24 + lv * 20), color: q.color || 'ink', size: q.size || 15 });
-  });
+  const lenLabels = (b, X, y, list) => {
+    let above = 0;
+    list.forEach((q, i) => {
+      const w = (X(q.c) - X(q.a)) * (b.k || 30), size = q.size || 15;
+      const labelWidth = Array.from(q.text).reduce((n, c) => n + (c.charCodeAt(0) >= 0x1100 ? size : size * 0.62), 0);
+      const lv = w < labelWidth + 12 ? i % 2 : 0;
+      above = Math.max(above, 24 + lv * 20 + size * 0.65);
+      T(b, { x: (X(q.a) + X(q.c)) / 2, y }, q.text, { dy: -(24 + lv * 20), color: q.color || 'ink', size: q.size || 15 });
+    });
+    return above;
+  };
   const bar = (b, X, y, a, c, color, o = {}) => {
     b.seg({ x: X(a), y }, { x: X(c), y }, { color, width: o.width || 8, alpha: o.alpha == null ? 1 : o.alpha, glow: !!o.glow, cap: 'butt' });
   };
@@ -79,11 +84,13 @@
       b.ticks({ x: X(0), y: 0 }, { x: X(M.M), y: 0 }, { color: 'ink' }); b.ticks({ x: X(M.M), y: 0 }, { x: X(M.a), y: 0 }, { color: 'ink' });
       b.ticks({ x: X(M.a), y: 0 }, { x: X(M.N), y: 0 }, { color: 'ink', count: 2 }); b.ticks({ x: X(M.N), y: 0 }, { x: X(M.L), y: 0 }, { color: 'ink', count: 2 });
       [[0, 'A'], [M.M, 'M'], [M.a, 'C'], [M.N, 'N'], [M.L, 'B']].forEach(([c, n]) => pt(b, X(c), 0, n, { color: n === 'C' ? 'amber' : n === 'M' || n === 'N' ? 'green' : 'ink' }));
-      if (C.tab === 'explore') lenLabels(b, X, 0, [{ a: 0, c: M.M, text: `○ ${half(M.p)}`, color: 'sky' }, { a: M.M, c: M.a, text: `○ ${half(M.p)}`, color: 'sky' }, { a: M.a, c: M.N, text: `△ ${half(M.q)}`, color: 'rose' }, { a: M.N, c: M.L, text: `△ ${half(M.q)}`, color: 'rose' }]);
-      else lenLabels(b, X, 0, [{ a: 0, c: M.M, text: '○', color: 'sky' }, { a: M.M, c: M.a, text: '○', color: 'sky' }, { a: M.a, c: M.N, text: '△', color: 'rose' }, { a: M.N, c: M.L, text: '△', color: 'rose' }]);
+      const above = lenLabels(b, X, 0, [{ a: 0, c: M.M, symbol: '○', value: M.p, color: 'sky' }, { a: M.M, c: M.a, symbol: '○', value: M.p, color: 'sky' }, { a: M.a, c: M.N, symbol: '△', value: M.q, color: 'rose' }, { a: M.N, c: M.L, symbol: '△', value: M.q, color: 'rose' }].map(q => ({ ...q, text: C.tab === 'explore' ? `${q.symbol} ${half(q.value)}` : q.symbol })));
       const reverse = (s.plSeed || 0) % 2 === 1;
       const showAB = C.tab === 'explore' || !reverse || (C.tab === 'review' && st >= 3);
-      PL.dim(b, { x: X(0), y: -2.0 }, { x: X(M.L), y: -2.0 }, showAB ? `AB = ${M.L} cm` : 'AB = ?', { color: 'ink', dy: -16 });
+      // Staggered part labels must stay below the total-length bracket even
+      // when each half is only a few screen pixels wide on a phone.
+      const abY = b.W < 560 ? Math.min(-2, -(above + 8) / (b.k || 30)) : -2;
+      PL.dim(b, { x: X(0), y: abY }, { x: X(M.L), y: abY }, showAB ? `AB = ${M.L} cm` : 'AB = ?', { color: 'ink', dy: -16 });
       if (C.tab === 'explore') {
         PL.dim(b, { x: X(0), y: 2.4 }, { x: X(M.a), y: 2.4 }, `AC = ${M.a} cm`, { color: 'sky', dy: 18, width: 2.6 });
         PL.dim(b, { x: X(M.a), y: 2.4 }, { x: X(M.L), y: 2.4 }, `CB = ${M.b} cm`, { color: 'rose', dy: 18, width: 2.6 });

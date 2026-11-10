@@ -414,7 +414,7 @@
            prob(M,s)→{tag,stem|html,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n,M) }
      문제·풀이 탭은 s.pyQ(= gen 이 뽑은 슬라이더 값 묶음)를 덮어쓴 같은 상태로 만듭니다. */
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
-  function makeScene(D) {
+  function makeScene(D, sceneParams) {
     const A = D.anim;
     const actions = A ? () => [
       {
@@ -442,6 +442,10 @@
         answer: (s) => answerText(D, s)
       },
       enter: (s, lab) => {
+        // pyIb is a right-triangle leg in t5 and an isosceles base in t6.
+        // Restore this module's label/range before the shell builds controls or
+        // restores hash values; global parameter merge order must not choose it.
+        if (lab && s === lab.s && lab.params && sceneParams) Object.assign(lab.params, sceneParams);
         D.init(s);
         s.pySeed = 0; s.pyPick = null; s.playing = false; s.pyQ = null;
         s.pyQ = D.gen(s, null);
@@ -493,7 +497,7 @@
   }
 
   function register(order, id, title, short, params, scenes) {
-    (window.APL_PY_GROUPS = window.APL_PY_GROUPS || []).push({ order, id, title, short, params, scenes: scenes.map(makeScene) });
+    (window.APL_PY_GROUPS = window.APL_PY_GROUPS || []).push({ order, id, title, short, params, scenes: scenes.map((D) => makeScene(D, params)) });
   }
   const notes = (...li) => `<ul class="py-notes">${li.map((x) => `<li>${x}</li>`).join('')}</ul>`;
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });

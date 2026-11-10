@@ -272,7 +272,7 @@
       if (C.problem) r1 = '다각형의 외각의 크기의 합은?';
       else if (C.review && C.step === 0) r1 = '각 꼭짓점의 외각을 확인해요';
       else if (C.review && C.step === 1) r1 = `꼭짓점마다 외각이 하나씩 있어요 (${n}개)`;
-      else if (t < 0.95) r1 = n <= 6 ? `외각의 합 = ${eps.join('° + ')}° = 360°` : `외각 ${n}개의 합 = ${eps.reduce((a, c) => a + c, 0)}°`;
+      else if (t < 0.95) r1 = n <= 6 && b.W >= 560 ? `외각의 합 = ${eps.join('° + ')}° = 360°` : `외각 ${n}개의 합 = ${eps.reduce((a, c) => a + c, 0)}°`;
       else { r1 = '한 점에 모인 외각 = 한 바퀴'; r2 = `${n}개의 외각의 합 = 360°`; c1 = 'amber'; }
       T(b, pt(0, yb), r1, { dy: 44, size: b.W < 560 ? 15 : 17, color: c1 });
       T(b, pt(0, yb), r2, { dy: 72, size: 17, color: 'amber' });
@@ -305,7 +305,11 @@
     // given[i] : {kind:'int'|'ext', v} (i=0..3), x 는 꼭짓점 E(i=4)
     const { V, eps, ints } = M;
     const th = [0]; for (let i = 1; i < 5; i++) th[i] = th[i - 1] + eps[i];
-    fit(b, { x0: -1.05, x1: 1.05, y0: -1.05, y1: 1.05 }, { t: 40, b: 124, l: 52, r: 52 });
+    const compact = !C.thumb && b.W < 560;
+    // 세로 태블릿의 문제 캔버스는 툴바를 빼면 높이가 337px뿐입니다.
+    // 실제 오각형에 맞추고 한 줄 발문 여백만 남겨 A·B의 각 조건을 분리합니다.
+    const shortProblem = !C.thumb && C.problem && b.W >= 560 && b.W < 900 && b.H - b.insets.top - b.insets.bottom < 360;
+    fit(b, compact || shortProblem ? bboxOf(V) : { x0: -1.05, x1: 1.05, y0: -1.05, y1: 1.05 }, compact ? { t: 48, b: 48, l: 54, r: 54 } : shortProblem ? { t: 40, b: 96, l: 72, r: 72 } : { t: 40, b: 124, l: 52, r: 52 });
     const cen = pt(0, 0), st = C.step;
     fillPoly(b, V, 'sky', 0.1);
     poly(b, V, 'ink', 3.4);
@@ -317,15 +321,15 @@
       const showInt = g.kind === 'int' ? true : (C.full || st >= 1) && !C.problem;
       const showExt = g.kind === 'ext' ? true : showAllExt && !isX ? true : (isX && (C.full || st >= 3) && !C.problem);
       if (showInt) {
-        const lab = isX ? (C.problem || (C.review && st < 3) ? 'x' : `x=${ints[i]}°`) : `${ints[i]}°`;
-        ang(b, p, u, w, { color: isX ? 'amber' : 'sky', r: 30, label: lab, size: 16, fa: isX ? 0.28 : 0.22 });
+        const lab = isX ? (C.problem || (C.review && st < 3) ? 'x' : `${compact ? '' : 'x='}${ints[i]}°`) : `${ints[i]}°`;
+        ang(b, p, u, w, { color: isX ? 'amber' : 'sky', r: compact ? 16 : 30, label: lab, size: 16, fa: isX ? 0.28 : 0.22, ...(compact ? { labelDist: 29 } : {}) });
       }
       if (showExt) {
         const a0 = th[(i + 4) % 5];
         const ext = pt(p.x + cos(a0) * 0.4, p.y + sin(a0) * 0.4);
         b.path([p, ext], { color: 'rose', width: 2, dash: [5, 4] });
         const faded = (g.kind === 'int' && !isX);
-        ang(b, p, ext, w, { color: 'rose', r: 46, label: `${eps[i]}°`, size: 15, fa: faded ? 0.12 : 0.26, alpha: faded ? 0.8 : 1, labelDist: 76 });
+        ang(b, p, ext, w, { color: 'rose', r: compact ? 22 : 46, label: `${eps[i]}°`, size: 15, fa: faded ? 0.12 : 0.26, alpha: faded ? 0.8 : 1, labelDist: compact ? 42 : 76 });
       }
     }
     V.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (C.txt) tagOut(b, p, cen, LET[i], { size: 18, gap: 11 }); });
@@ -351,7 +355,7 @@
       model,
       draw(b, s, M, C) {
         const r = pentDraw(b, M, C, M.given, kind);
-        if (!C.txt) return;
+        if (!C.txt || (!C.thumb && b.W < 560)) return;
         const st = C.step, yb = r.yb;
         let r1, r2 = '', c1 = 'sky';
         const sumE = M.sum4;

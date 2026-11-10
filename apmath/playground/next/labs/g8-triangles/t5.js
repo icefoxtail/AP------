@@ -67,7 +67,7 @@
     function runner(spec) {
       return function (b, s, M, C, ST, idx) {
         const nw = b.W < 560, cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
-        const box = spec.box(M, s);
+        const box = spec.box(M, s, b);
         const side = spec.padL || (nw ? 40 : 54);
         const padding = spec.padding ? spec.padding(b, M, s, idx) : { t: spec.padT || (nw ? 48 : 68), b: idx < 0 ? (nw ? 72 : 80) : (nw ? 126 : 132), l: side, r: side };
         G.fit(b, box, padding);
@@ -81,8 +81,8 @@
         // 그림 아래: 단계 설명 한 줄, 그 아래에 점 이름의 뜻
         const capSz = 15, plain = cur ? String(cur.cap).replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1$2') : '', two = cur && G.textW(plain, G.fs(b, capSz)) * 1.1 > Math.max(180, b.W - 28);
         const p0 = G.pt((box.x0 + box.x1) / 2, box.y1);
-        if (cur) G.solveCap(b, p0, cur, { dy: 52, size: capSz });
-        const lg = spec.legend ? spec.legend(M, s) : '';
+        if (cur) G.solveCap(b, p0, cur, { dy: spec.captionDy ? spec.captionDy(X) : 52, size: capSz });
+        const lg = spec.legend ? spec.legend(M, s, X) : '';
         if (lg) G.T(b, p0, lg, { dy: cur ? (two ? 106 : 80) : 52, size: G.fs(b, 14), color: 'ink', alpha: 0.8 });
       };
     }
@@ -163,6 +163,23 @@
 
   SVB.stmtDyn = stmtDyn; SVB.xLbl = xLbl; SVB.xOut = xOut; // t6·t7 이 함께 씁니다
 
+  // 짧은 문제·풀이 무대에서 중복 범례의 빈칸이 원래 도형을 축소하지 않게
+  // 합니다. 점의 뜻은 바로 아래 발문에 남고 풀이 단계 설명도 유지합니다.
+  // 이 설정은 아래에서 명시한 외심·내심 다섯 장면에만 적용합니다.
+  const mobileQuestionFrame = (box, legend, smallBox = box) => ({
+    box: (M, s, b) => {
+      const value = b.W < 560 ? smallBox : box;
+      return typeof value === 'function' ? value(M, s) : value;
+    },
+    padding: (b, M, s, idx) => b.W < 560
+      ? { t: 30, b: idx < 0 ? 30 : 56, l: 38, r: 38 }
+      : { t: 68, b: idx < 0 ? 80 : 132, l: 54, r: 54 },
+    captionDy: (X) => X.nw ? 36 : 52,
+    legend: (M, s, X) => X.nw ? '' : legend
+  });
+  const MOBILE_CIRCLE_BOX = { x0: -1.02, x1: 1.02, y0: -1.02, y1: 1.02 };
+  SVB.mobileQuestionFrame = mobileQuestionFrame;
+
   /* ---------------------------------------------------------------- 1. 외심 */
   const O1POOL = [
     { h: '$\\overline{OA}=\\overline{OB}=\\overline{OC}$', f: () => true, w: () => '외심 O는 세 변의 수직이등분선의 교점이고, 수직이등분선 위의 점은 선분의 두 끝점에서 같은 거리에 있어요.', c: () => 'OA=OB=OC (외접원의 반지름)', d: (L, M) => { const { O, A, B, C: Cc } = M.g; [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 3.6); }); L.tk(O, A, 2, 'rose'); L.tk(O, B, 2, 'rose'); L.tk(O, Cc, 2, 'rose'); } },
@@ -199,9 +216,8 @@
       return out;
     },
     draw: SVB.runner({
-      box: () => RBOX,
+      ...mobileQuestionFrame(RBOX, 'O: 외심 · D, E, F: 변의 중점', MOBILE_CIRCLE_BOX),
       base: (b, M) => cBase(b, M.g),
-      legend: () => 'O: 외심 · D, E, F: 변의 중점',
       dyn: (name, M, s) => stmtDyn(O1POOL, o1.prob)(name, M, s),
       st: {
         given: (L, M, s, X) => {
@@ -221,7 +237,15 @@
       },
       x: (b, M, s, X) => {
         const { O, A, B } = M.g, v = (s.trV || 0) % 3;
-        if (v === 0) { if (!X.at('rad')) G.sideTag(b, O, B, pt(1, -1), X.xVal ? `${M.R} cm` : 'x', { color: 'amber', size: fs(b, 18), gap: 10 }); }
+        if (v === 0 && !X.at('rad')) {
+          const label = X.xVal ? `${M.R} cm` : 'x';
+          if (X.nw) {
+            // OB와 가까운 변·중점 눈금 사이에 x를 끼워 넣지 않고,
+            // 원 왼쪽의 글자를 실제 반지름 OB의 중점에 연결합니다.
+            const anchor = mid(O, B), q = b.toS(anchor), o = b.toS(O);
+            T(b, anchor, label, { dx: o.x - b.k - 26 - q.x, dy: -28, color: 'amber', size: fs(b, 18), leaderAnchor: anchor, leader: true });
+          } else G.sideTag(b, O, B, pt(1, -1), label, { color: 'amber', size: fs(b, 18), gap: 10 });
+        }
         else if (v === 1) { if (M.z < 25) xOut(b, A, O, B, xLbl(X, M.z), { arc: X.xArc, r: 30, dist: 54 }); else ang(b, A, O, B, { color: 'amber', r: 30, label: xLbl(X, M.z), size: 17, labelDist: 52, noMark: !X.xArc, fa: 0.3 }); }
       },
       top: (b, M, s, X) => {
@@ -326,14 +350,16 @@
       return out;
     },
     draw: SVB.runner({
-      box: () => RTBOX,
+      ...mobileQuestionFrame(RTBOX, 'O: 외심 (빗변 AB의 중점)', MOBILE_CIRCLE_BOX),
       base: rtBase,
-      legend: () => 'O: 외심 (빗변 AB의 중점)',
       st: {
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 3, R = M.R;
           L.ang(Cc, A, B, { color: 'sky', r: 24 }); L.ln(O, Cc, 'rose', 3.2); L.tk(A, O, 1, 'amber'); L.tk(O, B, 1, 'amber');
-          L.ang(A, B, Cc, { color: 'sky', r: 36, label: '30°', size: 16, labelDist: 56, keep: true }); L.ang(B, A, Cc, { color: 'sky', r: 30, label: '60°', size: 16, labelDist: 50, keep: true });
+          // 30° 안쪽에 긴 숫자를 밀어 넣으면 외심 O에 붙습니다. 좁은
+          // 무대에서는 A 바로 바깥에 놓고 실제 A의 호와 지시선으로 잇습니다.
+          L.ang(A, B, Cc, { color: 'sky', r: X.nw ? Math.min(36, .3 * X.b.k) : 36, label: '30°', size: 16, labelDist: X.nw ? 36 : 56, labelRot: X.nw ? -50 : 0, keep: true });
+          L.ang(B, A, Cc, { color: 'sky', r: X.nw ? Math.min(30, .25 * X.b.k) : 30, label: '60°', size: 16, labelDist: X.nw ? Math.min(50, .46 * X.b.k) : 50, keep: true });
           if (v === 1) L.sd(B, Cc, pt(-1, 1), `${R} cm`, { color: 'sky', size: fs(X.b, 16), gap: 10, keep: true }); else L.dm(A, B, pt(0, -2), `${2 * R} cm`, { color: 'sky', size: fs(X.b, 16), off: 28, keep: true });
         },
         rad: (L, M, s, X) => { const { O, B, C: Cc } = M.g, v = (s.trV || 0) % 3; L.ln(O, B, 'rose', 4.4); L.ln(O, Cc, 'rose', 4.4); L.tk(O, B, 2, 'rose'); L.tk(O, Cc, 2, 'rose'); if (v !== 1) { L.sd(O, Cc, pt(1, 1), `${M.R} cm`, { color: 'rose', size: fs(X.b, 15), gap: 10 }); } },
@@ -449,8 +475,8 @@
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
           [B, Cc, A].forEach((z) => L.ln(O, z, 'rose', 3.2));
-          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: lblAvoid(X.b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), keep: true });
-          else L.ang(O, B, Cc, { color: 'sky', r: 22, label: dg(M.boc), size: 16, labelDist: lblAvoid(X.b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: rotTo(O, B, Cc, Cc, 30), keep: true });
+          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: X.nw ? lblAvoid(X.b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc) : 38, labelRot: X.nw ? awayRot(A, B, Cc, O) : 180, keep: true });
+          else L.ang(O, B, Cc, { color: 'sky', r: X.nw ? Math.min(22, .2 * X.b.k) : 22, label: dg(M.boc), size: 16, labelDist: 34, labelRot: 180, keep: true });
         },
         iso: (L, M) => { const { O, A, B, C: Cc } = M.g; L.fl([O, A, B], 'sky', 0.14); L.fl([O, A, Cc], 'green', 0.14); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 4); L.tk(O, z, 1, 'rose'); }); },
         base: (L, M) => {
@@ -467,8 +493,10 @@
       x: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
         if (v === 1 && X.K === 'trap') return;
-        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.boc), size: 17, labelDist: lblAvoid(b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: rotTo(O, B, Cc, Cc, 30), noMark: !X.xArc, fa: 0.3 });
-        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: lblAvoid(b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), noMark: !X.xArc, fa: 0.3 });
+        // 화면 폭과 관계없이 O각의 값은 O 아래에 연결하고 A각은 A 가까이에 둡니다.
+        // 현 BC를 피하려다 값이 다른 각의 위치까지 멀어지는 것을 막아요.
+        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: X.nw ? Math.min(22, .2 * b.k) : 22, label: xLbl(X, M.boc), size: 17, labelDist: 34, labelRot: 180, noMark: !X.xArc, fa: 0.3 });
+        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: X.nw ? lblAvoid(b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc) : 38, labelRot: X.nw ? awayRot(A, B, Cc, O) : 180, noMark: !X.xArc, fa: 0.3 });
       },
       top: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g;
@@ -493,9 +521,8 @@
       ];
     },
     draw: SVB.runner({
-      box: () => RBOX,
+      ...mobileQuestionFrame(RBOX, 'O: 외심 (중심)', MOBILE_CIRCLE_BOX),
       base: (b, M) => { const { O, A, B, C: Cc } = M.g; b.circle(O, 1, { color: 'sky', width: 2.2, alpha: 0.6, dash: [6, 5] }); fillPoly(b, [A, B, Cc], 'sky', 0.1); poly(b, [A, B, Cc], 'ink', 3.4); },
-      legend: () => 'O: 외심 (중심)',
       st: {
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g;
@@ -506,7 +533,11 @@
         sum: (L, M, s, X) => { const { O, A, B, C: Cc } = M.g; L.ang(O, A, B, { color: 'rose', r: 30, label: String(M.a), size: 15, labelDist: 48, keep: !X.has('ab') }); L.ang(O, B, Cc, { color: 'green', r: 30, label: String(M.b), size: 15, labelDist: 48, keep: true }); L.ang(O, Cc, A, { color: 'violet', r: 30, label: String(M.c), size: 15, labelDist: 48, keep: true }); },
         ab: (L, M) => { const { O, A, B } = M.g; L.ang(O, A, B, { color: 'rose', r: 30, label: dg(M.ab), size: 16, labelDist: 50, fa: 0.4, keep: true }); },
       },
-      x: (b, M, s, X) => { const { C: Cc, A, B } = M.g; ang(b, Cc, A, B, { color: 'amber', r: 34, label: X.xVal ? dg(M.ab / 2) : 'x', size: 17, labelDist: 56, noMark: !(X.xArc || X.at('half')), fa: 0.3 }); },
+      x: (b, M, s, X) => {
+        const { C: Cc, A, B } = M.g, compact = X.nw || b.k < 140;
+        // 세로 태블릿도 원이 작으면 C의 각 값을 중심 O까지 밀어 넣지 않습니다.
+        ang(b, Cc, A, B, { color: 'amber', r: compact ? Math.min(34, .24 * b.k) : 34, label: X.xVal ? dg(M.ab / 2) : 'x', size: 17, labelDist: compact ? Math.min(56, .4 * b.k) : 56, labelRot: compact && !X.nw ? M.ab / 4 + 30 : 0, noMark: !(X.xArc || X.at('half')), fa: 0.3 });
+      },
       top: (b, M, s, X) => cTop(b, M.g, X)
     })
   };
@@ -646,8 +677,10 @@
       } else {
         if (show(2)) { tick(b, O, Cc, 1, 'amber'); G.sideTag(b, O, Cc, pt(1, 1), `${R} cm`, { color: 'rose', size: fs(b, 16), gap: 10 }); }
         if (show(3)) dim(b, A, B, pt(0, -2), `${2 * R} cm`, { color: 'sky', size: fs(b, 16), off: 28 });
-        ang(b, A, O, Cc, { color: 'sky', r: 30, rings: 1, label: dg(al), size: 14, labelDist: 46, noMark: true });
-        if (show(2)) { ang(b, B, Cc, A, { color: 'green', r: 28, rings: 2, label: dg(be), size: 14, labelDist: 48 }); ang(b, A, B, Cc, { color: 'sky', r: 28, rings: 1, label: dg(al), size: 14, labelDist: 46 }); }
+        // AO와 AB는 같은 반직선이므로 A의 조건은 한 번만 표시합니다.
+        // 같은 50°를 두 번 배치하면 두 번째 글자가 빗변 위로 밀립니다.
+        ang(b, A, B, Cc, { color: 'sky', r: show(2) ? 28 : 30, rings: 1, label: dg(al), size: 14, labelDist: 46, noMark: !show(2) });
+        if (show(2)) ang(b, B, Cc, A, { color: 'green', r: 28, rings: 2, label: dg(be), size: 14, labelDist: 48 });
       }
       [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); b.point(O, { color: 'rose', r: 5.5 });
       T(b, A, 'A', { dx: -14, dy: 4, size: 18 }); T(b, B, 'B', { dx: 14, dy: 4, size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 }); T(b, O, 'O', { dy: 18, size: 18, color: 'rose' });
@@ -879,7 +912,11 @@
         ang(b, Cc, A, B, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 56 });
       } else {
         ang(b, O, A, B, { color: 'rose', r: 22, label: dg(ab), size: 13, labelDist: 40 }); ang(b, O, B, Cc, { color: 'green', r: 22, label: dg(bc), size: 13, labelDist: 40 }); ang(b, O, Cc, A, { color: 'violet', r: 22, label: dg(ca), size: 13, labelDist: 40 });
-        if (show(3)) { ang(b, Cc, A, B, { color: 'amber', r: 34, label: dg(ab / 2), size: 15, labelDist: 56 }); }
+        if (show(3)) {
+          // C의 원주각은 중심각 무리 밖으로 빼고 실제 C각 호에 연결합니다.
+          const narrow = b.W < 560 && !C.thumb;
+          ang(b, Cc, A, B, { color: 'amber', r: narrow ? Math.min(28, .24 * b.k) : 34, label: dg(ab / 2), size: 15, labelDist: narrow ? Math.min(40, .48 * b.k) : 56, labelRot: narrow ? ab / 4 + 30 : 0 });
+        }
       }
       b.point(O, { color: 'rose', r: 5.5 }); [A, B, Cc].forEach((q) => b.point(q, { color: 'ink', r: 4.5 }));
       T(b, O, 'O', { dx: 12, dy: -10, size: 18, color: 'rose' }); tagOut(b, A, O, 'A', { size: 18 }); tagOut(b, B, O, 'B', { size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 });

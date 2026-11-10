@@ -129,20 +129,43 @@ window.addEventListener('DOMContentLoaded', () => APLab.createLab({
 node --test apmath/playground/next/tools/catalog.test.mjs     # 카탈로그·경로·키트 문법·.gitignore 누락·manifest·HTML 로컬 참조 (CI 등록됨)
 node apmath/playground/next/tools/gen-manifest.mjs              # 카탈로그를 바꿨다면 manifest.json 다시 만들기
 python3 -m http.server 8765 &                                   # 저장소 루트에서
-node apmath/playground/next/tools/scene-smoke.mjs               # 모든 장면 × (PC 칠판·PC 종이·휴대폰) 렌더 검사
+node apmath/playground/next/tools/scene-smoke.mjs --report /tmp/scene-smoke-report.json # 모든 장면 × 기존 다섯 환경
 ```
+
+### 중등 장면의 최초 기본 도형 검사
+
+```bash
+node --test apmath/playground/next/tools/middle-initial-*.test.mjs apmath/playground/next/tools/apl-stage-insets.test.mjs
+node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root . --themes board,paper --out /tmp/middle-initial-evidence
+```
+
+실제 Chromium과 Playwright가 필요합니다. 검사기는 최신 카탈로그의 중1·중2·중3 실험실을 찾고, 각 페이지의 실제 등록 목록과 초기 해시 전용 장면을 읽습니다. 별칭 주소는 도착 장면을 검사하되 고유 장면 수에 중복 집계하지 않습니다. 화면 크기는 `1440×900`, `820×1180`, `1024×768`, `390×844`, `360×800`입니다. 후보 CI는 기본 종이 테마와 칠판 테마를 모두 검사합니다.
+
+장면마다 새 문서 최초 진입, 실제 장면 버튼 재선택, 다른 장면을 거친 복귀, 탐구·문제 탭의 초기 상태를 검사합니다. 표시되는 진행 막대가 있는 위험 장면은 PC·작은 모바일에서 중간값·완료·초기화도 확인하며, 실제 실행 범위를 원장에 기록합니다. 렌더 예외, 숨거나 화면 밖에 있는 무대, 도형 명령 누락, 조절기와 모델 값 불일치, 실제 글자 영역과 도구막대의 충돌, 예상하지 않은 자동 재생·정답 공개는 실패합니다. 원과 부채꼴의 파내기·잎 모양에는 실제 픽셀의 원호와 영역 구분을 확인하는 별도 회귀 조건이 있습니다.
+
+`.github/workflows/middle-initial-figure.yml`이 관련 PR에서 전체 중등 장면을 자동 발견해 실행합니다. `report.json`과 원본 캡처는 소스·캡처 SHA와 함께 외부 증거로 보존합니다. 자동 통과는 학생 관점의 시각 품질 판정이 아닙니다. 핵심 도형의 의미, 가독성, 문제 조건과의 일치는 독립적인 실제 화면 검수로 확인하고, 미실행·불확실 항목을 `NOT_RUN`·`UNKNOWN`으로 남깁니다.
+
+실제 조작 회귀는 재생·일시 정지·드래그·진행 막대·초기화·풀이 단계 버튼을 사용하며, 각 시도와 결과를 원장에 남깁니다. 이산 도형 손잡이는 짧은 이동이 같은 도형에 머무를 수 있어 무대 안의 다른 지점도 실제 포인터로 시도합니다. 풀이 단계 이후에도 기본 색칠 영역이 남는지, 새 문제를 만드는 장면은 자신의 조건과 카메라를 올바르게 복원하는지 별도로 검사합니다. 기존 `scene-smoke.mjs` 전체 검사도 원래 다섯 환경에서 함께 실행합니다.
+
+운영 검증은 `.github/workflows/middle-initial-public.yml`에서 별도로 실행합니다. 자동 실행은 성공한 Pages release의 정확한 run/attempt 산출물과 실제 배포 step을 대조해 게시된 `source_sha`를 선택합니다. 수동 실행은 `expected_main_sha`를 명시합니다. 검사기는 정적 파일의 응답 바이트뿐 아니라 Chromium이 실제로 받은 각 HTML/JS/CSS 응답을 해당 Git SHA의 파일과 비교하고, 도중에 같은 경로의 내용이 바뀌어도 실패합니다. 운영 화면 검사는 모든 중등 실험실의 위험 장면을 PC·작은 모바일·두 테마에서 확인하는 표적 회귀이며, 선택하지 않은 장면은 `NOT_RUN`으로 기록합니다. 이 운영 표본은 병합 전 전체 장면·다섯 뷰포트 검사와 독립 시각검수를 대체하지 않습니다.
 
 ### 5.1 scene-smoke가 보는 것
 
-`labs/*.html`의 모든 실험실을 열어 **모든 장면 × (PC 칠판 · PC 종이 · 휴대폰 390px)** 에서 다음을 봅니다. 하나라도 걸리면 FAIL(종료 코드 1)입니다.
+`labs/*.html`의 모든 실험실을 열어 **모든 장면 × (PC 칠판 · PC 종이 · 휴대폰 390px · 태블릿 세로 · 태블릿 가로)** 에서 다음을 봅니다. 하나라도 검증되지 않으면 FAIL(종료 코드 1)입니다.
 
 1. 실행 오류(`pageerror`·콘솔 error)
-2. 빈 무대(그려진 점이 거의 없음)
+2. 빈 무대, 사라진 필수 윤곽선·면·호, 화면 밖 또는 식별할 수 없을 만큼 작아진 기본 도형
 3. 안내(guide) 문구 없음
-4. 무대 밖으로 잘린 라벨(가장자리 뒤집기·밀어 넣기가 끝난 최종 위치 기준)
+4. 무대 밖으로 잘린 실제 글자·분수선(가장자리 뒤집기·밀어 넣기가 끝난 최종 위치 기준)
 5. 조작부 누락 — 막대·칩·버튼 개수가 장면 정의와 다름(같은 조작부 장면이 이어질 때 조작부가 사라지던 오류). 조작부 캐시 키는 **조작부 상자 자체**에 붙어 있어서, 상자가 새로 만들어지는 어떤 경로든 조작부를 다시 짓습니다.
 
-라벨 뒤집기를 끄면 공통접선 장면이 실패하는 것으로 검사 자체도 확인했습니다. 장면 수는 늘 바뀌므로 숫자 대신 이 검사가 PASS인지를 기준으로 삼습니다.
+기존 잉크 표본의 `200`, 알파 `30`, 경계 허용량 `2px`는 유지하며 원래 실패도 JSON 원장에 남깁니다. 원래부터 가는 선으로 이루어진 지정 장면은 해당 도형의 필수 선분·주어진 점·실제 픽셀·표시 크기·초기 상태를 모두 확인해야 저잉크 관측을 측정 오차로 판정합니다. 미등록 장면의 저잉크 관측은 계속 실패합니다. 수식 원문 문자열이 실제 분수보다 길어 생긴 경계 오류는 같은 그리기 호출의 모든 글자와 분수선이 불투명하게 화면 안에 표시됐을 때만 보정합니다. 서로 다른 호출의 증거를 합치거나 누락된 글자를 허용하지 않습니다.
+
+좌표축의 숫자 눈금과 기본 `O/x/y`는 원래 `Board.axes` 호출, 관측된 그래프 영역, 실제 Canvas `clip` 호출이 모두 일치할 때만 경계 장식 관측으로 분리합니다. 잘린 원래 글자 경계와 클립 영역도 JSON 원장에 남깁니다. 도형 라벨·분수선·직접 그린 텍스트·사용자가 지정한 축 이름에는 이 구분을 적용하지 않습니다. 누락되거나 위조된 호출·클립 증거도 실패합니다.
+
+`scene-smoke-semantic-calibration.test.mjs`와 `scene-smoke-measurement-gate.test.mjs`는 빈 그림, 숨김·투명도·화면 밖 이동·과도한 축소, 보조선만 남은 상태, 분자·분모·분수선 누락 및 잘못된 관측 증거가 실패하는지 확인합니다. 실제 Chromium 음성 대조 실험은 `apmath-smoke-semantic-experiment.mjs`와 별도 워크플로에서 수행합니다. 원과 부채꼴의 잎 모양, 원의 접선, 선택한 다면체 면과 같이 별도 초기 도형 계약이 있는 장면은 잉크가 많아도 계약 위반 시 실패합니다. 이 검사 통과는 학생 관점 시각검수 완료를 뜻하지 않습니다.
+
+`--report`를 지정하면 실행·탐색·렌더 예외가 나도 실패 단계와 회수 가능한 완료 행, 남은 환경을 저장합니다. 회수할 수 없는 장면 범위는 `UNKNOWN`, 시작하지 않은 환경은 `NOT_RUN`으로 기록합니다. `scene-smoke-orchestration.test.mjs`는 실제 CLI에 브라우저 전송 실패를 주입해 이 기록과 자원 정리, 실패 종료 코드를 확인합니다.
 
 ### 5.2 새 실험실 / 수정 시 체크리스트
 
@@ -151,7 +174,7 @@ node apmath/playground/next/tools/scene-smoke.mjs               # 모든 장면 
 1. **`kit/apl-catalog.js`** — 항목 추가·수정(`next` 경로 포함). 파일 이름은 `catalog.js`가 아니라 `apl-catalog.js`(`.gitignore` 규칙 회피).
 2. **`node apmath/playground/next/tools/gen-manifest.mjs`** — 카탈로그를 바꿨다면 `../manifest.json`을 다시 만든 뒤 함께 커밋.
 3. **`node --test apmath/playground/next/tools/catalog.test.mjs`** — 카탈로그·경로·키트 문법·manifest·HTML 로컬 참조(404) 정합성. CI에도 등록되어 있음.
-4. **`node apmath/playground/next/tools/scene-smoke.mjs`** — 정적 서버를 띄운 뒤 모든 장면을 3개 환경에서 검사. 새 실험실뿐 아니라 키트(`apl-board.js`·`apl-shell.js`·`apl.css`)를 고쳤을 때도 전체를 한 번 돌립니다.
+4. **`node apmath/playground/next/tools/scene-smoke.mjs`** — 정적 서버를 띄운 뒤 모든 장면을 5개 환경에서 검사. 새 실험실뿐 아니라 키트(`apl-board.js`·`apl-shell.js`·`apl.css`)를 고쳤을 때도 전체를 한 번 돌립니다.
 5. 실제 화면 확인 — PC와 휴대폰 폭에서 그림이 가려지지 않고, 버튼이 동작하는지 한 번 열어 봅니다. 원본과 그림·글이 어긋난 곳은 `[2.0 수정]` 주석으로 남깁니다.
 
 ### 5.3 기존 실험실 검사에서 찾은 문제

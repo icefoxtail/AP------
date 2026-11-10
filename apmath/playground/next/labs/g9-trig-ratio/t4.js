@@ -85,12 +85,32 @@
   function sasGeom(a, c, beta) { const A = pt(c * Math.cos(beta * DEG), -c * Math.sin(beta * DEG)); return { B: pt(0, 0), C: pt(a, 0), A, H: pt(A.x, 0) }; }
   function drawSas(b, g, L, o = {}) {
     const { A, B, C, H } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C]), obt = H.x < 0;
-    fit(b, bboxOf([A, B, C, H]), { t: 50, b: 126 + (L.rows ? L.rows.length * 26 : 0), l: 54, r: 54 });
+    const compact = o.compactQuestion && !b.thumb && b.W < 560;
+    const padding = compact
+      ? { t: 28, b: L.HC ? 114 : L.BH ? 88 : 62, l: 62, r: 42, problemTop: 28 }
+      : { t: 50, b: 126 + (L.rows ? L.rows.length * 26 : 0), l: 54, r: 54 };
+    const bounds = bboxOf([A, B, C, H]);
+    fit(b, bounds, padding);
+    // In the obtuse diagram the old right-hand AH value can sit on AB or AC.
+    // Move only a colliding value to the empty side of the actual altitude.
+    let heightCallout = false;
+    if (obt && L.AH && st >= 1 && !b.thumb && b.annotationSize) {
+      const size = b.annotationSize(L.AH, { size: 15, weight: 800 });
+      // Reserve the column before painting: a later AB length label may also
+      // require the outside position even when the triangle alone had room.
+      if (b.toS(mid(A, H)).x < size.width + 36) fit(b, bounds, { ...padding, l: Math.max(padding.l, size.width + 36) });
+      const m = b.toS(mid(A, H)), as = b.toS(A), bs = b.toS(B);
+      // The complete value must fit between AH and the nearer sloping side AB.
+      // A value already beyond AB is ambiguous too, even without touching a pixel.
+      const insideGap = (bs.x - as.x) * (m.y - size.height / 2 - 3 - as.y) / (b.toS(H).y - as.y);
+      heightCallout = insideGap < 22 + size.width + 8;
+    }
     fillPoly(b, [A, B, C], 'sky', 0.08);
     if (st >= 1) { fillPoly(b, [A, B, H], 'rose', 0.14); fillPoly(b, [A, H, C], 'green', 0.12); }
     poly(b, [A, B, C], 'ink', 3.4);
     if (st >= 1) { line(b, A, H, 'violet', 3.2, { dash: dashed }); if (obt) line(b, H, B, 'violet', 2.6, { dash: dashed }); else if (H.x > C.x) line(b, C, H, 'violet', 2.6, { dash: dashed }); ang(b, H, A, C, { color: 'violet', r: 18 }); }
-    if (L.angB !== false) ang(b, B, C, A, { color: 'amber', r: 34, label: L.angB, size: 16 });
+    const angleR = compact ? Math.min(24, Math.min(G.dist(A, B), G.dist(C, B)) * b.k * .24) : 34;
+    if (L.angB !== false) ang(b, B, C, A, { color: 'amber', r: angleR, label: compact ? '' : L.angB, size: 16 });
     if (obt && st >= 2) ang(b, B, H, A, { color: 'rose', r: 30, label: L.angOut, size: 16, rings: 2 });
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (st >= 1) { b.point(H, { color: 'violet', r: 4 }); T(b, H, 'H', { dy: 20, size: 17, color: 'violet' }); }
@@ -104,11 +124,41 @@
       const text = String(value).includes('=') ? String(value) : `${name} = ${value}`;
       T(b, mid(P0, Q0), text, { dy: dy + 12, size: 14, color });
     };
-    if (L.a) dimension(B, C, L.a.t, 'BC', 32, L.a.c || 'green');
+    if (L.a) dimension(B, C, L.a.t, 'BC', compact ? 24 : 32, L.a.c || 'green');
     if (L.AC) sideTag(b, A, C, cen, L.AC.t, { color: L.AC.c || 'amber', size: L.AC.size || 17, f: obt ? 0.88 : 0.5 });
-    if (L.AH && st >= 1) T(b, mid(A, H), L.AH, { dx: obt ? 22 : -4, size: 15, color: 'violet', align: obt ? 'left' : 'right' });
-    if (L.BH && st >= 1) dimension(B, H, L.BH, 'BH', 62, 'rose');
-    if (L.HC && st >= 1) dimension(H, C, L.HC, 'HC', 92, 'green');
+    let insideOffset = 22;
+    if (obt && L.AH && st >= 1 && !b.thumb && b.annotationSize && !heightCallout) {
+      const m = b.toS(mid(A, H)), size = b.annotationSize(L.AH, { size: 15, weight: 800 });
+      const free = [22, 14, 6].find(dx => !(b._tgBoxes || []).some(r => m.x + dx < r.x1 + 3 && m.x + dx + size.width > r.x0 - 3 && m.y - size.height / 2 < r.y1 + 3 && m.y + size.height / 2 > r.y0 - 3));
+      if (free == null) heightCallout = true; else insideOffset = free;
+    }
+    let heightOffset = { dx: -26, dy: 0 };
+    if (heightCallout) {
+      const m = b.toS(mid(A, H)), size = b.annotationSize(L.AH, { size: 15, weight: 800 }), choices = [];
+      // Very flat triangles can put A or the exterior angle beside AH. Choose a
+      // free position in the left column before the unit's text layout runs, so
+      // its generic collision avoidance cannot push AH back onto the triangle.
+      placements: for (let right = m.x - 26; right >= size.width + 4; right -= 8) {
+        for (let offset = 0; offset <= b.H; offset += 12) for (const sign of offset ? [-1, 1] : [1]) {
+          const y = m.y + sign * offset, q = { x0: right - size.width, x1: right, y0: y - size.height / 2, y1: y + size.height / 2 };
+          if (q.y0 < 4 || q.y1 > b.H - b.insets.bottom - 4) continue;
+          if ((b._tgBoxes || []).some(r => q.x0 < r.x1 + 3 && q.x1 > r.x0 - 3 && q.y0 < r.y1 + 3 && q.y1 > r.y0 - 3)) continue;
+          choices.push({ dx: right - m.x, dy: sign * offset });
+          if (offset === 0 && right === m.x - 26) break placements;
+        }
+      }
+      choices.sort((a, z) => Math.hypot(a.dx + 26, a.dy) - Math.hypot(z.dx + 26, z.dy));
+      if (choices.length) heightOffset = choices[0];
+    }
+    if (L.AH && st >= 1) T(b, mid(A, H), L.AH, { ...(heightCallout ? heightOffset : { dx: obt ? insideOffset : -4 }), size: 15, color: 'violet', align: heightCallout ? 'right' : obt ? 'left' : 'right',
+      ...(heightCallout ? { leaderAnchor: mid(A, H), leader: true } : {}) });
+    if (L.BH && st >= 1) dimension(B, H, L.BH, 'BH', compact ? 50 : 62, 'rose');
+    if (L.HC && st >= 1) dimension(H, C, L.HC, 'HC', compact ? 76 : 92, 'green');
+    if (compact && L.angB !== false) {
+      const a = Math.atan2(A.y - B.y, A.x - B.x) / 2;
+      T(b, B, L.angB, { dx: -32, dy: -28, color: 'amber', size: 16,
+        leaderAnchor: pt(B.x + Math.cos(a) * angleR / b.k, B.y + Math.sin(a) * angleR / b.k), leader: true });
+    }
     (L.rows || []).forEach((r, i) => T(b, pt((Math.min(B.x, A.x) + C.x) / 2, 0), r.t, { dy: 138 + i * 26, size: 16, color: r.c }));
   }
   function sasModel(a, c, beta) {
@@ -162,7 +212,7 @@
         `직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=${vtex(vpow2(ahv))}+${vtex(vpow2(hc))}$입니다. 양의 제곱근을 구해요.`
       ], { kind: 'sas', a, c: cV.v, angle: beta, answer: ac.v });
     },
-    pdraw: (b, q, C) => { const f = q.fig, g = sasGeom(f.a, f.c, f.beta); drawSas(b, g, { angB: `${f.beta}°`, c: { t: f.cl, c: 'sky' }, a: { t: `${f.a}`, c: 'green' }, AC: { t: C.last ? f.work.ac : 'x', c: 'amber', size: 21 }, angOut: `${f.work.w}°`, AH: C.review && C.step >= 2 ? f.work.ah : null, BH: C.review && C.step >= 2 ? f.work.bh : null, HC: C.review && C.step >= 3 ? f.work.hc : null }, { step: C.review ? C.step : 0 }); }
+    pdraw: (b, q, C) => { const f = q.fig, g = sasGeom(f.a, f.c, f.beta); drawSas(b, g, { angB: `${f.beta}°`, c: { t: f.cl, c: 'sky' }, a: { t: `${f.a}`, c: 'green' }, AC: { t: C.last ? f.work.ac : 'x', c: 'amber', size: 21 }, angOut: `${f.work.w}°`, AH: C.review && C.step >= 2 ? f.work.ah : null, BH: C.review && C.step >= 2 ? f.work.bh : null, HC: C.review && C.step >= 3 ? f.work.hc : null }, { step: C.review ? C.step : 0, compactQuestion: !obtuse }); }
   });
   const sasA = sasScene('sasAcuteLen', '두 변과 끼인각으로 길이 구하기', '두 변과 끼인각', false);
   const sasO = sasScene('sasObtuseLen', '[심화] 끼인각이 둔각일 때', '[심화] 끼인각이 둔각', true);

@@ -69,7 +69,20 @@
       T(b, O, 'O', { dx: -15, dy: -14, size: 17 });
       T(b, Mm, 'M', d > 0 ? { dy: 18, size: 17 } : { dx: 16, dy: 14, size: 17 });
       if (pr && q.kind === 2) segTag(b, O, A, 'x', { away: Mm, ...X(b) }); else rx(b, O, A, cv(R), Mm);
-      if (d > 0) { if (pr && q.kind === 0) segTag(b, O, Mm, 'x', { toward: B, gap: 11, ...X(b) }); else rx(b, O, Mm, cv(d), B, 'green'); }
+      if (d > 0) {
+        if (pr && q.kind === 0) {
+          // 화면 폭뿐 아니라 OM 옆 글자와 OB 사이의 실제 간격을 봅니다.
+          // 세로 태블릿도 문제 판이 낮으면 x가 OB 위에 놓일 수 있어요.
+          const anchor = mid(O, Mm), gap = Math.abs(b.toS(mid(O, B)).x - b.toS(anchor).x);
+          const labelSize = Math.max(19, X(b).size), xHalf = G.textW('x', labelSize) / 2;
+          const valueHalf = Math.max(xHalf, G.textW(cv(d), labelSize) / 2), offset = 11 + xHalf;
+          const obSlant = g.h / d * (labelSize * 1.15 + 6) / 2;
+          const needed = Math.max(2 * offset, offset + valueHalf + 10 + obSlant);
+          if (!b.thumb && (b.W < 560 || gap < needed)) {
+            T(b, anchor, 'OM=x', { dx: R * b.k + 40, ...X(b), leaderAnchor: anchor, leader: true });
+          } else segTag(b, O, Mm, 'x', { toward: B, gap: 11, ...X(b) });
+        } else rx(b, O, Mm, cv(d), B, 'green');
+      }
       if (pr) T(b, Mm, q.kind === 1 ? 'AB=x' : `AB=${2 * q.am}`, { dy: 42, size: S(b) + (q.kind === 1 ? 3 : 0), color: q.kind === 1 ? 'rose' : 'sky', leaderAnchor: Mm, leader: true });
       else {
         if (ex || st >= 3) { T(b, lerp(A, Mm, 0.5), 'AM=' + cv(g.h), { dy: 40, size: S(b), color: 'green', leaderAnchor: lerp(A, Mm, .5), leader: true }); T(b, lerp(Mm, B, 0.5), 'BM=' + cv(g.h), { dy: 40, size: S(b), color: 'green', leaderAnchor: lerp(Mm, B, .5), leader: true }); }

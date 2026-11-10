@@ -95,7 +95,10 @@
   }
   /* 각 표시: 꼭짓점 V 에서 반직선 VA → VB 방향의 작은 각. rings = 호 개수(같은 각은 같은 개수). 직각이면 네모. */
   function ang(b, V, A, B, o = {}) {
-    const k = b.k || 60, r = (o.r || 26) * (b.thumb ? 0.7 : 1);
+    const k = b.k || 60, requestedR = (o.r || 26) * (b.thumb ? 0.7 : 1);
+    // On the short problem board a fixed pixel arc can reach the next vertex.
+    // Keep it local to its two rays; a callout identifies its value separately.
+    const r = b.ciMobileProblem ? Math.min(requestedR, Math.min(dist(V, A), dist(V, B)) * k * .28) : requestedR;
     const a0 = Math.atan2(A.y - V.y, A.x - V.x), a1 = Math.atan2(B.y - V.y, B.x - V.x);
     let d = ((a1 - a0 + PI * 3) % (PI * 2)) - PI;
     if (o.big) d = d > 0 ? d - PI * 2 : d + PI * 2;
@@ -108,13 +111,14 @@
         b.arc(V, rw, a0, a0 + d, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
         const rings = o.rings || 1;
         b.arc(V, rw, a0, a0 + d, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
-        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, a0, a0 + d, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
+        const ringGap = b.ciMobileProblem ? Math.min(4.6, r / (rings + 1)) : 4.6;
+        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * ringGap) / k, a0, a0 + d, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
       }
     }
     if (o.label) {
       const size = o.size || 15;
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
-      const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 34));
+      const dst = o.labelDist != null ? o.labelDist : b.ciMobileProblem ? Math.max(r + 10, Math.min(need, r + 22)) : Math.max(r + 14, Math.min(need, r + 34));
       const la = am + (o.labelRot || 0) * DEG;
       // Keep the continuous angle-bisector placement. Only an explicit rotation
       // outside the angle needs a callout before collision avoidance moves it.
@@ -122,7 +126,7 @@
       const outside = o.labelRot != null && turn > Math.abs(d) + 1e-6;
       const square = !o.big && Math.abs(deg - 90) < .6 && !o.noRight, corner = Math.min(r * .62, 17) / k;
       const anchor = square ? add(V, add(mul(unit(sub(A, V)), corner), mul(unit(sub(B, V)), corner))) : pt(V.x + Math.cos(am) * rw, V.y + Math.sin(am) * rw);
-      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: outside });
+      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: outside || !!b.ciMobileProblem });
     }
     return { deg, mid: am };
   }
@@ -153,7 +157,10 @@
     const aw = Math.max(10, b.W - b.insets.left - b.insets.right), ah = Math.max(10, b.H - b.insets.top - b.insets.bottom);
     const pp = b.pad * Math.min(aw, ah), W = aw - 2 * pp, H = ah - 2 * pp;
     const base = b.thumb ? 5 : narrow ? 30 : 46;
-    const pad = { l: o.l == null ? base : o.l, r: o.r == null ? base : o.r, t: Math.max(o.t == null ? base : o.t, b.thumb ? 0 : 58), b: o.b == null ? base : o.b };
+    const compact = b.ciMobileProblem;
+    const pad = { l: o.l == null ? base : o.l, r: o.r == null ? base : o.r,
+      t: compact ? 28 : Math.max(o.t == null ? base : o.t, b.thumb ? 0 : 58),
+      b: compact ? (compact === 'c4-3' ? 44 : 32) : o.b == null ? base : o.b };
     let bw = Math.max(1e-6, box.x1 - box.x0), bh = Math.max(1e-6, box.y1 - box.y0);
     let k = Math.max(3, Math.min((W - pad.l - pad.r) / bw, (H - pad.t - pad.b) / bh));
     if (o.maxK) k = Math.min(k, o.maxK);
@@ -388,6 +395,9 @@
 
   // 단원 안에서만 적용하는 라벨 배치. 도형 크기를 줄이지 않고 겹치는 글자를
   // 화면 픽셀 단위로 벌리고, 멀어진 라벨은 원래 위치와 가는 지시선으로 연결합니다.
+  // These six actual short-screen problem diagrams need more drawing room.
+  // Scope the override to one draw so exploration and other scenes cannot inherit it.
+  const mobileProblemScenes = new Set(['c2-2', 'c4-3', 'c4-5', 'c4-6', 'c4-8', 'c5-3']);
   function drawLabels(b, draw, answer) {
     if (b.thumb || !b.toS || !b.toW) { draw(); return; }
     const original = b.text, queue = [];
@@ -409,7 +419,7 @@
       const shifts = [[0, 0], [0, -14], [0, 14], [-16, 0], [16, 0], [0, -28], [0, 28], [-28, -14], [28, -14], [-28, 14], [28, 14], [-40, 0], [40, 0], [0, -44], [0, 44], [-44, -28], [44, -28], [-44, 28], [44, 28]];
       let best;
       for (const [dx, dy] of shifts) {
-        const x = clamp(x0 + dx, 12 + width / 2, b.W - 12 - width / 2), y = clamp(y0 + dy, 48 + height / 2, b.H - toolbar - 14 - height / 2);
+        const x = clamp(x0 + dx, 12 + width / 2, b.W - 12 - width / 2), y = clamp(y0 + dy, (b.ciMobileProblem ? 12 : 48) + height / 2, b.H - toolbar - 14 - height / 2);
         const box = { l: x - width / 2, r: x + width / 2, t: y - height / 2, b: y + height / 2 };
         const score = placed.reduce((n, a) => n + overlap(a, box) * 1000, 0) + (x - x0) ** 2 + (y - y0) ** 2;
         if (!best || score < best.score) best = { x, y, box, score };
@@ -418,7 +428,8 @@
       // never to its former text position. Unanchored explanatory text has no leader.
       if (o.leaderAnchor && (o.leader || Math.hypot(best.x - x0, best.y - y0) > 13)) {
         const target = b.toS(o.leaderAnchor), alpha = o.alpha == null ? .72 : o.alpha;
-        if (b.leader) b.leader(target, best, { px: true, width, height, alpha, ref: o.ref });
+        if (b.leader) b.leader(target, best, { px: true, width, height, alpha, ref: o.ref,
+          ...(b.ciMobileProblem ? { color: o.color || 'muted', lineWidth: 1.4 } : {}) });
         else {
           // Lightweight renderers can omit Board.leader; keep the same geometric
           // anchor and stop outside the final text box in that path as well.
@@ -513,19 +524,22 @@
         return v;
       },
       draw: (b, s, v, lab) => {
-        const C = baseCtx(s, lab, !!b.thumb);
-        if (b.thumb) C.step = 99;
-        if (C.review && D.solve) {
-          const sol = currentSolution(D, s), step = clamp(s.step || 1, 1, sol.steps.length);
-          drawLabels(b, () => {
-            D.draw(b, s, sol.model, { ...PC, review: true, t: 1 });
-            if (sol.draw) sol.draw(b, step);
-          }, step === sol.steps.length ? sol.display : null);
-          return;
-        }
-        const M = D.model(s, C);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        drawLabels(b, () => D.draw(b, s, M, C));
+        const C = baseCtx(s, lab, !!b.thumb), previousLayout = b.ciMobileProblem;
+        b.ciMobileProblem = !b.thumb && b.W < 560 && (C.problem || C.review && D.solve) && mobileProblemScenes.has(D.id) ? D.id : null;
+        try {
+          if (b.thumb) C.step = 99;
+          if (C.review && D.solve) {
+            const sol = currentSolution(D, s), step = clamp(s.step || 1, 1, sol.steps.length);
+            drawLabels(b, () => {
+              D.draw(b, s, sol.model, { ...PC, review: true, t: 1 });
+              if (sol.draw) sol.draw(b, step);
+            }, step === sol.steps.length ? sol.display : null);
+            return;
+          }
+          const M = D.model(s, C);
+          C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+          drawLabels(b, () => D.draw(b, s, M, C));
+        } finally { b.ciMobileProblem = previousLayout; }
       }
     };
   }

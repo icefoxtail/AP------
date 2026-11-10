@@ -402,11 +402,21 @@ try {
             const buttons = page.locator('.apl-actions-row button');
             await buttons.nth(play).click(); await page.waitForTimeout(250);
             const during = await page.evaluate(() => ({ playing: !!lab.s.playing, state: JSON.stringify(lab.s) }));
-            if (during.playing) await buttons.nth(play).click();
-            const paused = await page.evaluate(() => !lab.s.playing);
+            // A dragged animation can finish while Playwright is preparing its
+            // next pointer click. Check and invoke the native pause action in
+            // one browser task so a completed animation cannot be restarted.
+            const pauseObservation = await page.evaluate(index => {
+              const beforePause = { playing: !!lab.s.playing, state: JSON.stringify(lab.s) };
+              const button = (lab._actionBtns || [])[index]?.b;
+              let clicked = false;
+              if (beforePause.playing && button?.checkVisibility()) { button.click(); clicked = true; }
+              return { beforePause, clicked, afterPause: { playing: !!lab.s.playing, state: JSON.stringify(lab.s) } };
+            }, play);
+            const paused = !pauseObservation.afterPause.playing;
             const pass = during.state !== before && paused;
-            dest.interactions.push({ id: scene.id, run: run.name, control: 'play-pause', executed: true, pass });
-            if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'play-pause-state' });
+            const observations = { before, during, ...pauseObservation };
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'play-pause', executed: true, pass, observations });
+            if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'play-pause-state', observations });
             await measure(scene, 'after-play-pause');
           } else {
             (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'play-pause', reason: 'no-play-action' });

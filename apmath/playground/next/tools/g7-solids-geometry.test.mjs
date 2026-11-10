@@ -86,6 +86,111 @@ async function load() {
 const questionKey = (scene, state) => scene.so.prob(scene.so.model(state), state).key;
 const shownAnswer = (lab) => { lab.s.soPick = null; lab.s.revealed = true; lab.s.step = call(lab.scene.steps, lab.s).length; };
 
+// Conservative text boxes in the production Board's screen coordinates. These
+// numerical guards accompany, and do not replace, source-bound browser captures.
+function labelBox(lab, item) {
+  assert.ok(item, 'the required given label is present');
+  const size = item.options.size * lab.board.fs * lab.board._ts();
+  const width = lab.api.textW(item.text, size), align = item.options.align || 'center';
+  const left = item.x - (align === 'right' ? width : align === 'left' ? 0 : width / 2);
+  return { left, right: left + width, top: item.y - size / 2, bottom: item.y + size / 2 };
+}
+const labelGap = (a, b) => Math.max(a.left - b.right, b.left - a.right, a.top - b.bottom, b.top - a.bottom);
+function labelInStage(lab, box, name) {
+  assert.ok(box.left >= lab.board.insets.left + 2 && box.right <= lab.board.W - lab.board.insets.right - 2, `${name} remains horizontally visible`);
+  assert.ok(box.top >= lab.board.insets.top + 2 && box.bottom <= lab.board.H - lab.board.insets.bottom - 2, `${name} remains above the toolbar reservation`);
+}
+const mobileBoards = [{ w: 390, inquiry: 326, tallInquiry: 411, problem: 309 }, { w: 360, inquiry: 307, tallInquiry: 387, problem: 291 }];
+
+await test('mobile trapezoid givens keep the rotation-axis identifier separate from the upper length', async () => {
+  const lab = await load();
+  for (const view of mobileBoards) for (const upper of [1, 2, 4]) {
+    const scene = lab.go('s1-3');
+    Object.assign(lab.s, { soPB: 5, soPT: upper, soPH: 3, soPax: 'v' });
+    lab.tab = 'problem'; lab.board.resize(view.w, view.problem); lab.board.setInsets({ bottom: 60 });
+    const drawing = lab.draw(), axis = labelBox(lab, drawing.textItems.find((t) => t.text === '회전축 l'));
+    const upperLabel = labelBox(lab, drawing.textItems.find((t) => t.text === `${upper} cm`));
+    assert.ok(labelGap(axis, upperLabel) >= 4, `${view.w}px upper ${upper}: axis l is readable beside the given length; ${JSON.stringify({ axis, upperLabel })}`);
+    labelInStage(lab, axis, 'rotation axis'); labelInStage(lab, upperLabel, 'upper length');
+    const poly = drawing.paths.find((p) => p.options.fill === 'amber');
+    assert.deepEqual(Array.from(poly.points, (p) => [p.x, p.y]), [[0, 0], [5, 0], [upper, 3], [0, 3]]);
+    assert.equal(scene.so.prob(scene.so.model(lab.s)).choices.find((c) => c.ok).p, '25π cm²');
+    assert.equal(lab._answerOpen(), false);
+  }
+});
+
+await test('mobile off-axis rectangle separates its width from its distance to the axis', async () => {
+  const lab = await load();
+  for (const view of mobileBoards) for (const width of [2, 3]) {
+    const scene = lab.go('s1-5'); Object.assign(lab.s, { soC5: 'rect1', soP5w: width });
+    lab.tab = 'problem'; lab.board.resize(view.w, view.problem); lab.board.setInsets({ bottom: 60 });
+    const drawing = lab.draw(), widthLabel = labelBox(lab, drawing.textItems.find((t) => t.text === `${width} cm`));
+    const distance = labelBox(lab, drawing.textItems.find((t) => t.text === '축까지 2 cm'));
+    assert.ok(labelGap(widthLabel, distance) >= 5, `${view.w}px width ${width}: two distinct givens have separate text`);
+    labelInStage(lab, widthLabel, 'rectangle width'); labelInStage(lab, distance, 'axis distance');
+    assert.deepEqual(Array.from(drawing.paths.find((p) => p.options.fill === 'amber').points, (p) => [p.x, p.y]), [[2, 0], [2 + width, 0], [2 + width, 4], [2, 4]]);
+    assert.equal(scene.so.prob(scene.so.model(lab.s)).choices.find((c) => c.ok).p, '속이 빈 원기둥');
+    assert.equal(lab._answerOpen(), false);
+  }
+});
+
+await test('mobile shortest-path cone keeps point A separate from the radius and preserves the unseen answer', async () => {
+  const lab = await load();
+  for (const view of mobileBoards) for (const angle of [60, 180]) for (const radius of [1, 2, 4]) {
+    const scene = lab.go('s4-2'); Object.assign(lab.s, { soQa: angle, soQr: radius });
+    lab.tab = 'problem'; lab.board.resize(view.w, view.problem); lab.board.setInsets({ bottom: 60 });
+    const drawing = lab.draw(), point = labelBox(lab, drawing.textItems.find((t) => t.text === 'A'));
+    const radiusLabel = labelBox(lab, drawing.textItems.find((t) => t.text === `r = ${radius} cm`));
+    assert.ok(labelGap(point, radiusLabel) >= 5, `${view.w}px ${angle}°: A does not cover the radius unit`);
+    labelInStage(lab, point, 'A'); labelInStage(lab, radiusLabel, 'radius');
+    const slant = radius * (angle === 60 ? 6 : 2), answer = angle === 60 ? slant : 2 * slant;
+    assert.equal(scene.so.prob(scene.so.model(lab.s)).choices.find((c) => c.ok).p, `${answer} cm`);
+    assert.ok(!drawing.texts.some((t) => /AA′ =/.test(t)));
+    assert.equal(lab._answerOpen(), false);
+  }
+});
+
+await test('mobile partial-cone nets give OP and OP-prime separate length labels at each position', async () => {
+  const lab = await load();
+  for (const view of mobileBoards) for (const angle of [60, 180]) for (const radius of [1, 2, 7]) {
+    const R = radius * (angle === 60 ? 6 : 2);
+    for (const p of new Set([1, Math.min(20, R / 2), Math.min(20, R)])) {
+      const scene = lab.go('s4-3'); Object.assign(lab.s, { soAng3: angle, soTr: radius, soTp: p });
+      lab.board.resize(view.w, view.tallInquiry); lab.board.setInsets({ bottom: 60 });
+      const drawing = lab.draw(), lengths = drawing.textItems.filter((t) => t.text === `${p}` && t.options.color === 'rose');
+      assert.equal(lengths.length, 2, 'each of the two legs retains its length');
+      const boxes = lengths.map((t) => labelBox(lab, t));
+      assert.ok(labelGap(...boxes) >= 6, `${view.w}px ${angle}° r=${radius} p=${p}: OP and OP′ cannot read as one number`);
+      boxes.forEach((box) => labelInStage(lab, box, 'OP length'));
+      labelInStage(lab, labelBox(lab, drawing.textItems.find((t) => t.text === `R = ${R}`)), 'whole slant length');
+      assert.equal(scene.so.model(lab.s).ans, angle === 60 ? p : 2 * p);
+      lab.tab = 'review'; lab.s.step = 1;
+      assert.ok(!lab.draw().texts.some((t) => /PP′ =/.test(t)), 'initial review still withholds the shortest-path answer');
+    }
+  }
+});
+
+await test('mobile frustum net keeps both arc equations legible before, during, and after removal', async () => {
+  const lab = await load();
+  for (const view of mobileBoards) for (const [small, large, factor] of [[2, 4, 3], [1, 2, 2], [6, 7, 5]]) for (const progress of [0, 0.5, 1]) {
+    const scene = lab.go('s3-5'); Object.assign(lab.s, { soF1: small, soF2: large, soFk: factor, soFg: progress });
+    lab.board.resize(view.w, view.inquiry); lab.board.setInsets({ bottom: 60 });
+    const drawing = lab.draw(), big = labelBox(lab, drawing.textItems.find((t) => t.text === `큰 호 = 2π×${large} = ${2 * large}π`));
+    const little = labelBox(lab, drawing.textItems.find((t) => t.text === `작은 호 = 2π×${small} = ${2 * small}π`));
+    assert.ok(labelGap(big, little) >= 6, `${view.w}px progress ${progress}: arc equations have independent lines`);
+    labelInStage(lab, big, 'large arc equation'); labelInStage(lab, little, 'small arc equation');
+    const band = drawing.paths.find((p) => p.options.fill === 'sky' && p.options.close), piece = drawing.paths.find((p) => p.options.fill === 'amber');
+    assert.ok(band && band.options.fillAlpha > 0 && piece && piece.options.fillAlpha > 0, 'annular sector and moving small sector remain visible');
+    assert.equal(scene.so.model(lab.s).area, factor * (large * large - small * small));
+    const independentlyComputedArea = Math.abs(band.points.reduce((sum, p, i) => { const q = band.points[(i + 1) % band.points.length]; return sum + p.x * q.y - p.y * q.x; }, 0)) / 2;
+    assert.ok(Math.abs(independentlyComputedArea / Math.PI - factor * (large * large - small * small)) < 0.01 * factor * (large * large - small * small));
+    lab.tab = 'problem'; lab.s.step = 1;
+    const problem = lab.draw();
+    assert.ok(!problem.texts.some((t) => /큰 호 =|작은 호 =/.test(t)), 'question givens do not expose either sought arc equation');
+    assert.equal(lab._answerOpen(), false);
+  }
+});
+
 await test('all 22 scenes relock manual answers when the actual question changes, including cloned shell scenes', async () => {
   const lab = await load();
   assert.equal(lab.list.length, 22);
@@ -213,6 +318,58 @@ await test('rotation and folding labels stay synchronized until the real end, an
     play.run(lab.s, lab);
     assert.equal(lab.s[key], 0, `${id} completed replay starts at zero`);
   }
+});
+
+await test('s2-5 first entry shows the original symmetric section and preserves folding, reset, and problem geometry', async () => {
+  const lab = await load(), scene = lab.go('s2-5');
+  const actions = call(scene.actions), play = actions.find((action) => action.id === 'play'), reset = actions.find((action) => action.id === 'reset');
+  const halves = () => {
+    const paths = lab.draw().paths;
+    return ['red', 'amber'].map((color) => {
+      const half = paths.find((p) => p.options.fill === color && p.options.close);
+      assert.ok(half && half.options.fillAlpha > 0, `${color} original half is visible`);
+      return half.points;
+    });
+  };
+  const assertFold = (points, expectedRatio) => {
+    const [right, left] = points;
+    assert.equal(left.length, right.length);
+    assert.ok(right.some((p) => p.x > 0), 'the original section has nonzero width');
+    right.forEach((p, i) => {
+      assert.ok(Math.abs(left[i].x - expectedRatio * p.x) < 1e-10);
+      assert.ok(Math.abs(left[i].y - p.y) < 1e-10);
+    });
+  };
+  for (const preset of call(scene.presets, lab.s)) {
+    preset.apply(lab.s, lab);
+    assert.equal(lab.s.playing, false);
+    assert.equal(lab.s.revealed, false);
+    const original = halves();
+    assertFold(original, -1); // Unfolded halves reflect across the displayed vertical axis.
+    assert.ok(lab.draw().texts.includes('접기 전'));
+    assert.match(call(scene.view, lab.s, lab).status.text, /접기 전/);
+    lab.tab = 'problem';
+    const problem = lab.draw().paths;
+    lab.tab = 'explore';
+    play.run(lab.s, lab);
+    scene.tick(lab.s, 1, lab);
+    assertFold(halves(), -Math.SQRT1_2); // One second of the four-second fold is 45 degrees.
+    assert.ok(lab.draw().texts.includes('45° 접는 중'));
+    scene.tick(lab.s, 3, lab);
+    assertFold(halves(), 1);
+    assert.equal(lab.s.playing, false);
+    assert.equal(lab.s.revealed, false);
+    assert.ok(lab.draw().texts.includes('두 반쪽이 꼭 겹쳐져요'));
+    lab.tab = 'problem';
+    assert.deepEqual(lab.draw().paths, problem, 'fold animation does not change the question geometry');
+    lab.tab = 'explore';
+    reset.run(lab.s, lab);
+    assert.deepEqual(halves(), original, 'reset restores the complete original section');
+  }
+  lab.s.soFold = 1;
+  lab.go('s2-1');
+  lab.go('s2-5');
+  assertFold(halves(), -1);
 });
 
 await test('dependent length sliders and point presets retain the actual geometric value', async () => {

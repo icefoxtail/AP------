@@ -564,7 +564,7 @@
            prob(M,s)→{tag,stem|html,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n,M) } */
   // $…$ 안의 < > 는 HTML 로 이스케이프되어 수식 오류가 나므로 \lt \gt 로 바꿉니다.
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
-  function makeScene(D) {
+  function makeScene(D, sceneParams) {
     const A = D.anim, SV = D.solve;
     const actions = A ? () => [
       {
@@ -595,6 +595,11 @@
       reviewTitles: SV ? { steps: '풀이 · 단계마다 그림이 바뀌어요', solution: '빠른 풀이' } : undefined,
       solution: SV && SV.quick ? { quickTitle: SV.quickTitle || '10초 컷', quickTag: '10초 컷', quick: (s) => SV.quick(D.model(s), s) } : undefined,
       enter: (s, lab) => {
+        // Several modules reuse a state key for different sides or angles.
+        // Keep the existing share/hash keys while restoring the active module's
+        // labels, units and ranges before controls and hash values are built.
+        // Thumbnail entry uses a separate state and must not alter live controls.
+        if (lab && s === lab.s && lab.params && sceneParams) Object.assign(lab.params, sceneParams);
         D.init(s);
         s.trSeed = 0; s.trPick = null; s.trShow = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
@@ -642,7 +647,7 @@
   }
 
   function register(order, id, title, short, params, scenes) {
-    (window.APL_TR_GROUPS = window.APL_TR_GROUPS || []).push({ order, id, title, short, params, scenes: scenes.map(makeScene) });
+    (window.APL_TR_GROUPS = window.APL_TR_GROUPS || []).push({ order, id, title, short, params, scenes: scenes.map((D) => makeScene(D, params)) });
   }
   const notes = (...li) => `<ul class="tr-notes">${li.map((x) => `<li>${x}</li>`).join('')}</ul>`;
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
@@ -730,7 +735,7 @@
     }
   }
   function mkSolve(plan, extra) {
-    return Object.assign({ steps: (M, s) => plan(M, s).steps, draw: (b, s, M, C, ST, idx) => render(b, plan(M, s), idx) }, extra || {});
+    return Object.assign({ steps: (M, s) => plan(M, s).steps, draw: (b, s, M, C, ST, idx) => render(b, plan(M, s, b), idx) }, extra || {});
   }
   G.SVK = K; G.mkSolve = mkSolve;
   // 좁은 각의 라벨 위치: 각 VA–VB 의 이등분선에서 변 VA 쪽(side='A') 또는 VB 쪽(side='B')으로 (반각+extra)° 돌린 labelRot.

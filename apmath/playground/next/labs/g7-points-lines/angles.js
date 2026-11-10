@@ -148,8 +148,35 @@
       PARAMS[pre + k] = P[pre + k];
     });
     const modeOf = (lab) => (lab && lab.tab) || 'explore';
-    let measuring = false;
+    let measuring = false, fitStage = '', fitBoard = null;
     const box = spec.box || { x: [-2, 2], y: [-2, 2] };
+    const fitForStage = (s, lab) => {
+      if (measuring || !lab || s !== lab.s || !lab.board || !lab._measureFocus) return;
+      const b = lab.board, i = b.insets;
+      const key = [b.W, b.H, i.top, i.right, i.bottom, i.left].join('|');
+      if (fitStage === key && fitBoard === b && sc._focus) return;
+      const q = sv(s), keep = { ...s }, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab, step = s.step;
+      let uni = null;
+      measuring = true;
+      try {
+        b.setFocus(CANON, true);
+        for (const patch of spec.fit || [{}]) {
+          Object.keys(patch).forEach((k) => { q[k] = patch[k]; });
+          for (const md of ['explore', 'review', 'problem']) {
+            lab.tab = md; s.step = md === 'review' ? 99 : step;
+            const f = lab._measureFocus(sc);
+            if (f) uni = unionFocus(uni, f);
+          }
+        }
+      } catch (e) { /* 맞춤 실패 시 기본 범위 */ }
+      finally {
+        lab.tab = tab;
+        Object.keys(s).forEach((k) => { if (!(k in keep)) delete s[k]; });
+        Object.assign(s, keep); Object.assign(b, view);
+        measuring = false;
+      }
+      if (uni) { sc._focus = uni; fitStage = key; fitBoard = b; b.setFocus(uni, false); }
+    };
     const sc = {
       id: spec.id, title: spec.title, short: spec.short || spec.title, question: spec.question,
       boardKind: 'figure', autoFit: true, notesTitle: spec.notesTitle || '꼭 기억할 점',
@@ -167,27 +194,7 @@
         q.questionKey = spec.problem(q).key + '|' + q.seed;
         s.playing = false;
         sc._focus = null;
-        if (main && lab.board && lab._measureFocus) {
-          const keep = { ...s }, b = lab.board, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab, step = s.step;
-          b.setFocus(CANON, true);
-          let uni = null;
-          measuring = true;
-          try {
-            for (const patch of spec.fit || [{}]) {
-              Object.keys(patch).forEach((k) => { q[k] = patch[k]; });
-              for (const md of ['explore', 'review', 'problem']) {
-                lab.tab = md; s.step = md === 'review' ? 99 : step;
-                const f = lab._measureFocus(sc);
-                if (f) uni = unionFocus(uni, f);
-              }
-            }
-          } catch (e) { /* 맞춤 실패 시 기본 범위 */ }
-          measuring = false;
-          lab.tab = tab;
-          Object.keys(keep).forEach((k) => { s[k] = keep[k]; });
-          Object.assign(b, view);
-          sc._focus = uni;
-        }
+        if (main) { fitStage = ''; fitForStage(s, lab); }
       },
       controls: () => (spec.controls || []).map((k) => pre + k),
       presets: () => (spec.presets || []).map((p) => ({
@@ -208,11 +215,12 @@
       },
       focus: () => sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] },
       view: (s, lab) => {
+        fitForStage(s, lab);
         const q = sv(s), mode = modeOf(lab);
         const questionKey = spec.problem(q).key + '|' + q.seed;
         if (!measuring && q.questionKey !== questionKey) { q.questionKey = questionKey; q.pk = ''; q.pi = -1; s.revealed = false; s.step = 0; }
         if (!measuring && spec.currentFocus && lab && s === lab.s && lab.board) {
-          const current = spec.currentFocus(q, mode);
+          const current = spec.currentFocus(q, mode, lab.board);
           lab.board.setFocus(current || sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] }, false);
         }
         const v = (spec.view ? spec.view(q, mode, lab) : {}) || {};
@@ -348,6 +356,10 @@
     return c;
   }
   const lineAt = (g, i, str, color, o = {}) => g.text([0, -1], str, { dy: 36 + i * 28, size: 17, color, ...o });
+  // 좁은 문제 화면에는 계산줄이 없으므로 시계와 시각 표시에 맞춥니다.
+  // 탐구·풀이에서 쓰던 계산줄 여백 때문에 숫자와 바늘이 겹치지 않게 합니다.
+  const clockProblemFocus = (q, mode, b) => mode === 'problem' && b.W < 560
+    ? { x: [-1.3, 1.3], y: [-1.6, 1.2] } : null;
 
   /* ---- 4-1 시침과 분침이 이루는 각 ---- */
   const sClock = build({
@@ -355,6 +367,7 @@
     question: '시계의 시침과 분침은 각각 12에서 몇 도 돌아 있을까? 두 바늘 사이의 각은 어떻게 구할까?',
     guide: '막대나 <b>바늘 끝(노랑·하늘 점)</b>을 끌어 시각을 바꿔 보세요. 분침은 1분에 <b>6°</b>, 시침은 1시간에 <b>30°</b>(1분에 <b>0.5°</b>)씩 움직여서, 분이 지나면 <b>시침도 조금씩</b> 앞으로 가요.',
     box: { x: [-1.3, 1.3], y: [-3, 1.3] },
+    currentFocus: clockProblemFocus,
     params: { h: hourParam, m: minParam },
     controls: ['h', 'm'],
     presets: timePresets(),
@@ -383,10 +396,13 @@
     },
     draw: (g, q, mode, step) => {
       const c = clockOf(q.h, q.m), rev = mode === 'review', show = (n) => mode === 'explore' || (rev && step >= n);
+      // 작은 시계 안의 수치는 숫자판을 가리므로 같은 색의 아래 계산줄에서 읽습니다.
+      // 호와 두 바늘은 그대로 두고, 풀이 단계별 수치 공개도 아래 줄과 함께 유지합니다.
+      const faceLabels = g.thumb || g.b.W >= 560;
       const wedges = [];
-      if (rev && step >= 1) wedges.push({ from: 0, len: c.th, r: 0.2, color: 'amber', ref: 'h', label: n1(c.th) + '°', fa: 0.22 });
-      if (rev && step >= 2) wedges.push({ from: 0, len: c.tm, r: 0.4, color: 'sky', ref: 'm', label: n1(c.tm) + '°', fa: 0.16 });
-      if (mode === 'explore' || (rev && step >= 3)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: c.gap >= 25 ? n1(c.gap) + '°' : '' });
+      if (rev && step >= 1) wedges.push({ from: 0, len: c.th, r: 0.2, color: 'amber', ref: 'h', label: faceLabels ? n1(c.th) + '°' : '', fa: 0.22 });
+      if (rev && step >= 2) wedges.push({ from: 0, len: c.tm, r: 0.4, color: 'sky', ref: 'm', label: faceLabels ? n1(c.tm) + '°' : '', fa: 0.16 });
+      if (mode === 'explore' || (rev && step >= 3)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: faceLabels && c.gap >= 25 ? n1(c.gap) + '°' : '' });
       drawClock(g, q, mode, { wedges, ref12: rev && step <= 2 });
       g.box(-1, -1, 1, -1);
       if (mode === 'problem') return;
@@ -408,6 +424,7 @@
   /* ---- 4-2 분이 지나면 사잇각은? (분침이 시침을 1분에 5.5°씩 따라잡는다) ---- */
   const sChase = build({
     id: 'ck2', title: '분이 지나면 사잇각은?', short: '분이 지나면',
+    currentFocus: clockProblemFocus,
     question: '분침은 1분에 6°, 시침은 1분에 0.5° 움직여요. 분이 지날수록 두 바늘 사이의 각은 어떻게 변할까?',
     guide: '<b>분 막대</b>를 끌거나 ▶를 눌러 분침을 돌려 보세요. 분침은 시침보다 1분에 <b>5.5°</b>씩 더 회전해요. 작은 쪽 사잇각은 두 바늘의 위치에 따라 줄거나 늘고, 0° 또는 180°에 이르면 변화 방향이 바뀌어요.',
     box: { x: [-1.3, 1.3], y: [-3.3, 1.3] },
@@ -448,13 +465,17 @@
     },
     draw: (g, q, mode, step) => {
       const c = clockOf(q.h, q.m), A0 = 30 * c.hh, ch = 5.5 * q.m, d = A0 - ch, ad = Math.abs(d), rev = mode === 'review';
+      // 작은 숫자판의 값은 바늘·시각 숫자와 겹치지 않게 아래 계산줄에서 읽어요.
+      // 실제 시계 반지름을 기준으로 하므로 세로 태블릿의 작은 시계도 보호합니다.
+      const faceLabels = g.thumb || g.k(1) >= 90;
       const wedges = [];
-      if (rev && step === 1 && A0 > 0) wedges.push({ from: 0, len: A0, r: 0.25, color: 'amber', ref: 'h', label: A0 + '°', fa: 0.22 });
-      if (mode === 'explore' || (rev && step >= 4)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: c.gap >= 25 ? n1(c.gap) + '°' : '' });
+      if (rev && step === 1 && A0 > 0) wedges.push({ from: 0, len: A0, r: 0.25, color: 'amber', ref: 'h', label: faceLabels ? A0 + '°' : '', fa: 0.22 });
+      if (mode === 'explore' || (rev && step >= 4)) wedges.push({ from: c.start, len: c.gap, r: 0.3, color: 'green', rings: 2, ref: 'g', label: faceLabels && c.gap >= 25 ? n1(c.gap) + '°' : '' });
       drawClock(g, q, mode, { wedges, ref12: rev && step <= 1, ghostHour: rev && step === 1 ? A0 : null });
       g.box(-1, -1, 1, -1);
       if (mode === 'problem') return;
       const lines = [];
+      if (!faceLabels && rev && step === 1) lines.push({ t: `정각의 시침  30°×${c.hh} = ${A0}°`, c: 'amber', ref: 'h' });
       if (mode === 'explore' || (rev && step >= 3)) lines.push({ t: `5.5°×${q.m} = ${n1(ch)}°  따라잡음`, c: 'sky', ref: 'm' });
       if (mode === 'explore' || (rev && step >= 4)) {
         lines.push({ t: `사잇각  |${A0}° − ${n1(ch)}°| = ${n1(ad)}°`, c: 'green', ref: 'g' });
@@ -467,7 +488,13 @@
       g.dot([xe, yb], { color: 'green', r: 5 });
       g.text([x0, yb], '0°', { dy: 24, size: 14, color: 'muted', align: 'left' });
       g.text([x1, yb], '180°', { dy: 24, size: 14, color: 'muted', align: 'right' });
-      lines.forEach((l, i) => g.text([0, yb], l.t, { dy: 52 + i * 27, size: 17, color: l.c, ...(l.ref ? { ref: l.ref } : {}) }));
+      lines.forEach((l, i) => {
+        // 180°를 넘는 소수 각도도 계산줄 끝이 잘리지 않게 실제 글자 폭에 맞춥니다.
+        // 자동 맞춤을 측정할 때의 원래 범위는 유지합니다.
+        const measured = !g.b._bbox && !faceLabels ? g.b.annotationSize(l.t, { size: 17 }).width : 0;
+        const size = measured > g.b.W - 24 ? Math.max(14, 17 * (g.b.W - 24) / measured) : 17;
+        g.text([0, yb], l.t, { dy: 52 + i * 27, size, color: l.c, ...(l.ref ? { ref: l.ref } : {}) });
+      });
     },
     problem: (q) => {
       const ch = gapChoices(q.h, q.m);
@@ -591,6 +618,8 @@
     question: '맞꼭지각은 크기가 같아요. 두 맞꼭지각이 x에 대한 식으로 주어지면 x는 어떻게 구할까?',
     guide: (q) => `막대나 <b>두 반직선의 끝점</b>을 끌어 x를 바꿔 보세요. 두 각 <b>(${ex1(q.a1, q.b1)})°</b>와 <b>(${ex1(q.a2, q.b2)})°</b>가 같아질 때만 두 반직선이 <b>한 직선</b>이 되어 맞꼭지각이 돼요. 그때 x를 찾으면 돼요.`,
     box: { x: [-1.8, 1.8], y: [-3.2, 1.9] },
+    currentFocus: (q, mode, b) => mode === 'problem' && b.W < 560
+      ? { x: [-2.5, 2.5], y: [-1.9, 1.9] } : null,
     state: { a1: 3, b1: 10, a2: 5, b2: -20 },
     params: { x: { value: 8, min: 8, max: 36, step: 1, color: 'amber', label: 'x의 값', hint: '두 각이 같아지는 x를 찾아보세요', format: (v) => `x = ${Math.round(v)}` } },
     controls: ['x'],
@@ -627,8 +656,21 @@
       g.ang(O, 180, 180 + A2, { r, color: c2, rings: eq ? 2 : 1, ref: ['b', 'eq', 'x', 'val'] });
       g.dot(O, { color: 'ink', r: 5 });
       const lab1 = `(${ex1(q.a1, q.b1)})°`, lab2 = `(${ex1(q.a2, q.b2)})°`;
-      g.angText(O, 0, A1, lab1, { r, color: c1, ref: ['a', 'eq', 'x', 'val'] });
-      g.angText(O, 180, 180 + A2, lab2, { r, color: c2, ref: ['b', 'eq', 'x', 'val'] });
+      if (prob && !g.thumb && !g.b._bbox && g.b.W < 560) {
+        // 두 식의 실제 글자 상자가 각의 양쪽 선에 닿지 않도록 이등분선 위에 놓습니다.
+        const label = (start, angle, text, color, ref) => {
+          const t = angle * D2R, m = (start + angle / 2) * D2R;
+          const size = g.b.annotationSize(text, { size: 16, weight: 800 });
+          const across = Math.abs(Math.sin(t)) * size.width / 2 + Math.abs(Math.cos(t)) * size.height / 2;
+          const dist = Math.max(r + 14, (Math.max(size.height / 2, across) + 4) / Math.sin(t / 2));
+          g.text(O, text, { dx: Math.cos(m) * dist, dy: -Math.sin(m) * dist, color, ref });
+        };
+        label(0, A1, lab1, c1, ['a', 'eq', 'x', 'val']);
+        label(180, A2, lab2, c2, ['b', 'eq', 'x', 'val']);
+      } else {
+        g.angText(O, 0, A1, lab1, { r, color: c1, ref: ['a', 'eq', 'x', 'val'] });
+        g.angText(O, 180, 180 + A2, lab2, { r, color: c2, ref: ['b', 'eq', 'x', 'val'] });
+      }
       if (mode === 'explore') {
         g.handle('u1', g.pol(O, L, A1), { color: 'amber', ariaLabel: '위쪽 반직선 끝', drag: (w) => { const a = mod(Math.atan2(w.y, w.x) / D2R, 360); q.x = clamp(Math.round((a - q.b1) / q.a1), PARAMS.ve_x.min, PARAMS.ve_x.max); } });
         g.handle('u2', g.pol(O, L, 180 + A2), { color: 'rose', ariaLabel: '아래쪽 반직선 끝', drag: (w) => { const a = mod(Math.atan2(w.y, w.x) / D2R - 180, 360); q.x = clamp(Math.round((a - q.b2) / q.a2), PARAMS.ve_x.min, PARAMS.ve_x.max); } });
@@ -697,6 +739,10 @@
     question: '세 직선이 한 점에서 만나면 여섯 개의 각이 생겨요. 한 직선 위의 각을 모두 더하면 몇 도일까?',
     guide: '<b>직선 끝의 노란 점</b>을 끌어 각을 바꿔 보세요. 한 직선 위에 놓인 세 각 ∠a, ∠b, ∠c의 합은 언제나 <b>평각 180°</b>이고, 마주 보는 각(같은 색·같은 호의 수)은 크기가 같아요.',
     box: { x: [-1.8, 1.8], y: [-3.2, 1.8] },
+    // 문제에는 아래 계산줄이 없으므로 세 직선과 주어진 각에 맞춥니다.
+    // 끝점 손잡이가 대수식의 첫 글자를 덮지 않도록 기본 도형의 크기를 확보합니다.
+    currentFocus: (q, mode, b) => mode === 'problem' && b.W < 560
+      ? { x: [-2.6, 2.6], y: [-2.2, 2.2] } : null,
     params: {
       a: { value: 40, min: 15, max: 120, step: 5, color: 'amber', label: '∠a', hint: '그림의 직선 끝점을 끌어도 돼요', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.bb = Math.min(q.bb, 165 - q.a); } },
       bb: { value: 60, min: 15, max: 120, step: 5, color: 'rose', label: '∠b', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.a = Math.min(q.a, 165 - q.bb); } }
@@ -968,6 +1014,18 @@
     question: '삼각형 ABC에서 꼭짓점 A와 변 BC(를 늘인 직선) 사이의 거리는 어느 선분의 길이일까?',
     guide: '<b>점 A</b>를 가로로 끌어 보세요. A에서 직선 BC에 직각으로 내린 선분 <b>AH</b>가 점 A와 직선 BC 사이의 거리예요. A가 변 BC 밖으로 나가면 수선의 발 H는 <b>변을 늘인 직선</b> 위에 생겨요.',
     box: { x: [-2.6, 8.6], y: [-3, 6.8] },
+    currentFocus: (q, mode, b) => {
+      if (mode !== 'problem' || b.W >= 560) return null;
+      const [pb, ph] = TRIPLES[q.ti], ins = b.insets;
+      const width = b.W - ins.left - ins.right, height = b.H - ins.top - ins.bottom;
+      const pad = b.pad * Math.min(width, height);
+      const a = b.annotationSize('A', { size: 20, weight: 800 });
+      const bc = b.annotationSize(`BC = ${pb} cm`, { size: 17, weight: 800 });
+      const ca = b.annotationSize(`CA = ${ph} cm`, { size: 17, weight: 800 });
+      const left = 64 * b.fs, right = 22 + ca.width, top = 30 + a.height / 2, bottom = 54 + bc.height / 2;
+      const k = Math.max(.001, Math.min((width - 2 * pad - left - right) / pb, (height - 2 * pad - top - bottom) / ph));
+      return { x: [-left / k, pb + right / k], y: [-ph - top / k, bottom / k] };
+    },
     state: { sa: 2, ti: 0 },
     params: {
       b: { value: 5, min: 3, max: 6, step: 1, color: 'sky', label: '변 BC의 길이', format: (v) => `${Math.round(v)} cm` },
@@ -1007,7 +1065,13 @@
         g.text(A, 'A', { dy: -22, size: 20 }); g.text(B, 'B', { dx: -16, dy: 18, size: 20 }); g.text(C, 'C', { dx: 18, dy: 18, size: 20 });
         g.text([pb / 2, 0], `BC = ${pb} cm`, { dy: 46, size: 17, color: 'sky' });
         g.text([pb, ph / 2], `CA = ${ph} cm`, { dx: 12, align: 'left', size: 17, color: rev && step >= 1 ? 'rose' : 'sky', ref: ['ac', 'dist'] });
-        g.text([pb / 2, ph / 2], `AB = ${pab} cm`, { dx: -14, dy: -18, size: 17, color: rev && step >= 3 ? 'violet' : 'sky', align: 'center', ref: ['ab'] });
+        let abDx = -14, abDy = -18;
+        if (prob && !g.thumb && !g.b._bbox && g.b.W < 560) {
+          const size = g.b.annotationSize(`AB = ${pab} cm`, { size: 17, weight: 800 });
+          const nx = -ph / pab, ny = -pb / pab, gap = Math.abs(nx) * size.width / 2 + Math.abs(ny) * size.height / 2 + 8;
+          abDx = nx * gap; abDy = ny * gap;
+        }
+        g.text([pb / 2, ph / 2], `AB = ${pab} cm`, { dx: abDx, dy: abDy, size: 17, color: rev && step >= 3 ? 'violet' : 'sky', align: 'center', ref: ['ab'] });
         if (rev && step >= 1) g.text(C, '∠C = 90°', { dx: -62, dy: -22, size: 16, color: 'amber', ref: ['ac'] });
         if (rev && step >= 2) g.text([pb, 0], `거리 = AC = ${ph} cm`, { dy: 54, size: 17, color: 'green', ref: ['dist'] });
         return;

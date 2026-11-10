@@ -15,7 +15,7 @@ const close=(a,b,message)=>assert.ok(Math.abs(a-b)<1e-7,`${message}: ${a} vs ${b
 const angle=(a,v,b)=>Math.acos(Math.max(-1,Math.min(1,((a.x-v.x)*(b.x-v.x)+(a.y-v.y)*(b.y-v.y))/(Math.hypot(a.x-v.x,a.y-v.y)*Math.hypot(b.x-v.x,b.y-v.y)))))*180/Math.PI;
 const area=ps=>Math.abs(ps.reduce((n,p,i)=>{const q=ps[(i+1)%ps.length];return n+p.x*q.y-p.y*q.x;},0))/2;
 const finite=x=>typeof x==='number'?Number.isFinite(x):Array.isArray(x)?x.every(finite):x&&typeof x==='object'?Object.values(x).every(finite):true;
-function board(W=390,H=310){const calls=[],b={W,H,insets:{left:0,right:0,top:0,bottom:0},pad:.02,thumb:false,calls};Object.defineProperty(b,'k',{get(){if(!b.focus)return 40;return Math.min((W-2*b.pad*Math.min(W,H))/(b.focus.x[1]-b.focus.x[0]),(H-2*b.pad*Math.min(W,H))/(b.focus.y[1]-b.focus.y[0]));}});for(const method of ['path','seg','poly','text','point','arc','right','circle','ticks','handle'])b[method]=(...args)=>{calls.push({method,args});return b;};return b;}
+function board(W=390,H=310){const calls=[],b={W,H,insets:{left:0,right:0,top:0,bottom:0},pad:.02,thumb:false,calls};Object.defineProperty(b,'k',{get(){if(!b.focus)return 40;return Math.min((W-2*b.pad*Math.min(W,H))/(b.focus.x[1]-b.focus.x[0]),(H-2*b.pad*Math.min(W,H))/(b.focus.y[1]-b.focus.y[0]));}});for(const method of ['path','seg','poly','text','point','arc','right','circle','ticks','handle','leader'])b[method]=(...args)=>{calls.push({method,args});return b;};return b;}
 function draw(id,s,tab,W=390,H=310){const sc=by(id),b=board(W,H),lab={tab,s,scene:sc};sc.draw(b,s,{},lab);return b;}
 function labels(b){return b.calls.filter(c=>c.method==='text').map(({args:[p,text,o]})=>{const x=b.W/2+(p.x-(b.focus.x[0]+b.focus.x[1])/2)*b.k+(o.dx||0),y=b.H/2+(p.y-(b.focus.y[0]+b.focus.y[1])/2)*b.k+(o.dy||0),size=o.size||16,w=G.textW(text,size);return {text:String(text),x0:x-w/2,x1:x+w/2,y0:y-size/2,y1:y+size/2};});}
 const overlap=(a,b)=>Math.min(a.x1,b.x1)>Math.max(a.x0,b.x0)&&Math.min(a.y1,b.y1)>Math.max(a.y0,b.y0);
@@ -104,4 +104,41 @@ test('independent geometry oracles agree with answers for eight varied construct
 });
 test('problem and step one have the same geometry; every step renders finite numbers at all stage sizes',()=>{
  for(const sc of scenes){const s=state(sc.id);for(let j=0;j<6;j++){const{D}=get(sc.id,s);if(j)D.reroll(s);s.step=1;const a=draw(sc.id,s,'problem').calls,b=draw(sc.id,s,'review').calls;assert.deepEqual(JSON.parse(JSON.stringify(b)),JSON.parse(JSON.stringify(a)),sc.id+' step1');for(const [W,H]of[[1000,700],[820,600],[684,500],[390,310]])for(let k=1;k<=sc.steps(s).length;k++){s.step=k;assert.ok(finite(draw(sc.id,s,'review',W,H).calls),`${sc.id} step${k} ${W}`);}}}
+});
+
+// The first mobile CI screenshots had a 45/40 px base square. Use the real Board
+// transform and the observed 58 px bottom inset, not the zero-inset helper above.
+ctx.window.APLab={clamp:(x,a,b)=>Math.max(a,Math.min(b,x))};
+vm.runInContext(fs.readFileSync(new URL('../kit/apl-board.js',import.meta.url),'utf8'),ctx);
+function rotationProblemScreen(s,tab,W,H){
+ const b=Object.create(ctx.window.APLab.Board.prototype),texts=[],paths=[];
+ Object.assign(b,{W,H,pad:.02,kind:'figure',aspect:'1:1',insets:{left:0,right:0,top:0,bottom:58},zoom:1,panX:0,panY:0,fs:1,thumb:false,panes:null,paneId:null,focus:{x:[-5,5],y:[-4,4]}});
+ b.path=(points,options={})=>paths.push({points:points.map(p=>({...p})),options});
+ for(const method of ['point','right','ticks','arc','handle'])b[method]=()=>{};
+ b.text=(p,text,o={})=>{
+  const at=b.toS(p),size=(o.size||16)*b.fs*b._ts(),w=G.textW(text,size),x=at.x+(o.dx||0),y=at.y+(o.dy||0);
+  texts.push({text:String(text),x0:x-w/2,x1:x+w/2,y0:y-size/2,y1:y+size/2});
+ };
+ const sc=by('q6-6');sc.draw(b,s,{}, {tab,s,scene:sc});
+ return {b,texts,paths};
+}
+for(const [W,H] of [[390,309],[360,291]])test(`q6-6 ${W}px problem gives the squares readable size without clipping the givens`,()=>{
+ const initial=state('q6-6'),first=rotationProblemScreen(initial,'problem',W,H),m=get('q6-6',initial).m;
+ assert.ok(m.S*first.b.k>=110,`initial base square side ${m.S*first.b.k}px is too small for its point names and overlapping region`);
+ for(const S of [4,6,8])for(const K of [0,1])for(const rot of [0,1/18,.28,.5,17/18,1]){
+  const s=state('q6-6',{qfSp:S,qfK:K,qfRot:rot}),unknown=K===0?'x':'□ABCD의 넓이 = x';
+  for(const tab of ['problem','review']){
+   s.step=1;const {b,texts,paths}=rotationProblemScreen(s,tab,W,H);
+   assert.ok(S*b.k>=90,`${W}/${S}/${K}/${rot}: base square side ${S*b.k}px`);
+   assert.ok(texts.some(t=>t.text===unknown),'the question target remains unknown at the first step');
+   for(const name of ['A','B','C','D','E','F','G','O'])assert.ok(texts.some(t=>t.text===name),'missing point '+name);
+   for(const t of texts)assert.ok(t.x0>=0&&t.x1<=W&&t.y0>=0&&t.y1<=H-58,`${W}/${S}/${K}/${rot}/${tab}: clipped ${JSON.stringify(t)}`);
+   for(const p of paths.flatMap(x=>x.points)){const q=b.toS(p);assert.ok(q.x>=0&&q.x<=W&&q.y>=0&&q.y<=H-58,'a square must stay above the toolbar');}
+  }
+  const problem=rotationProblemScreen(s,'problem',W,H),review=rotationProblemScreen(s,'review',W,H);
+  assert.deepEqual(review.paths,problem.paths,'step one retains the current problem geometry');
+  s.step=by('q6-6').steps(s).length;
+  const final=rotationProblemScreen(s,'review',W,H);
+  assert.ok(!final.texts.some(t=>t.text===unknown),'only the final step resolves the unknown');
+ }
 });

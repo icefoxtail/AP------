@@ -20,6 +20,26 @@ const scene = id => scenes.find(sc => sc.id === id);
 const state = sc => { const s = { ...defaults }; sc.enter(s); return s; };
 const close = (a, b) => Math.hypot(...a.map((v, i) => v - b[i])) < 1e-8;
 
+test('every initial and reentered camera pose is representable by its native slider', () => {
+  const params = Object.assign({}, ...groups.map(group => group.params));
+  for (const sc of scenes) {
+    const s = state(sc), first = { yaw: s.phYaw, pitch: s.phPitch };
+    for (const reentry of [false, true]) {
+      if (reentry) { s.phYaw = 87; s.phPitch = 12; sc.enter(s); }
+      assert.deepEqual({ yaw: s.phYaw, pitch: s.phPitch }, first, `${sc.id}: original camera pose restored`);
+      const active = typeof sc.controls === 'function' ? sc.controls(s) : sc.controls || [];
+      for (const key of ['phYaw', 'phPitch'].filter(key => active.includes(key))) {
+        const p = params[key], v = s[key];
+        assert.ok(Number.isFinite(v) && v >= p.min && v <= p.max,
+          `${sc.id}: ${key}=${v} would be silently clamped by native range [${p.min}, ${p.max}]`);
+        assert.ok(Math.abs((v - p.min) / p.step - Math.round((v - p.min) / p.step)) < 1e-8,
+          `${sc.id}: the displayed initial camera angle must be a representable range step`);
+      }
+      assert.equal(s.playing, false); assert.equal(s.revealed, false);
+    }
+  }
+});
+
 test('current-question solution math survives HTML escaping and production KaTeX rendering', t => {
   const renderContext = vm.createContext({ window: {}, document: { ...document, documentElement: { setAttribute() {}, getAttribute() { return 'paper'; } } },
     URLSearchParams, location: { search: '' }, localStorage: { getItem() { return null; }, setItem() {} } });

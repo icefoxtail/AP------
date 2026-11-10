@@ -35,6 +35,63 @@
     const d = pt(Math.cos(th * DEG), -Math.sin(th * DEG));
     return { P: pt(0, 0), A: pt(-t * p, 0), C: pt((1 - t) * p, 0), B: pt(d.x * q * u, d.y * q * u), D: pt(-d.x * q * (1 - u), -d.y * q * (1 - u)) };
   }
+  function diagonalBoxHits(a, z, q, gap = 4) {
+    let lo = 0, hi = 1;
+    for (const [axis, min, max] of [['x', q.x0 - gap, q.x1 + gap], ['y', q.y0 - gap, q.y1 + gap]]) {
+      const d = z[axis] - a[axis];
+      if (Math.abs(d) < 1e-9) { if (a[axis] < min || a[axis] > max) return false; }
+      else { const t0 = (min - a[axis]) / d, t1 = (max - a[axis]) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); }
+    }
+    return lo <= hi;
+  }
+  function identifiedDiagonalTag(b, g, value) {
+    const anchor = lerp(g.A, g.C, .28), at = b.toS(anchor), bs = b.toS(g.B), ds = b.toS(g.D);
+    const size = b.annotationSize(value, { size: 16, weight: 800 }), w = size.width, h = size.height + 2;
+    const box = (x, y) => ({ x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 });
+    if (!diagonalBoxHits(bs, ds, box(at.x, at.y + 20))) return false;
+    const vertices = [g.A, g.B, g.C, g.D].map(p => b.toS(p));
+    const clear = q => q.x0 >= 6 && q.x1 <= b.W - 32 && q.y0 >= 8 && q.y1 <= b.H - b.insets.bottom - 8 &&
+      !diagonalBoxHits(bs, ds, q) && !vertices.some((p, i) => diagonalBoxHits(p, vertices[(i + 1) % 4], q)) &&
+      !(b._tgBoxes || []).some(p => q.x0 < p.x1 + 3 && q.x1 > p.x0 - 3 && q.y0 < p.y1 + 3 && q.y1 > p.y0 - 3);
+    const candidates = [];
+    for (const dy of [-40, -56, -72, 40, 56]) for (const dx of [0, -w / 2 - 14, w / 2 + 14]) candidates.push({ x: at.x + dx, y: at.y + dy });
+    const between = (p, a, z) => p.x >= Math.min(a.x, z.x) - 1e-6 && p.x <= Math.max(a.x, z.x) + 1e-6 && p.y >= Math.min(a.y, z.y) - 1e-6 && p.y <= Math.max(a.y, z.y) + 1e-6;
+    const target = candidates.find(p => {
+      if (!clear(box(p.x, p.y))) return false;
+      const crossing = G.inter(at, p, bs, ds);
+      return !crossing || !between(crossing, at, p) || !between(crossing, bs, ds);
+    });
+    if (!target) return false;
+    T(b, anchor, value, { dx: target.x - at.x, dy: target.y - at.y, size: 16, color: 'sky', leaderAnchor: anchor, leader: true });
+    return true;
+  }
+  function identifiedBDTag(b, g, value) {
+    const unknown = /= x$/.test(value), size = unknown ? 20 : 16;
+    const initialAnchor = lerp(g.B, g.D, unknown ? .64 : .18), initialAt = b.toS(initialAnchor), ac = [b.toS(g.A), b.toS(g.C)];
+    const measure = b.annotationSize(value, { size, weight: 800 }), w = measure.width, h = measure.height + 2;
+    const box = (x, y) => ({ x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 });
+    const labels = b._tgBoxes || [], intersectsLabel = q => labels.some(p => q.x0 < p.x1 + 3 && q.x1 > p.x0 - 3 && q.y0 < p.y1 + 3 && q.y1 > p.y0 - 3);
+    const original = box(initialAt.x + 14 + w / 2, initialAt.y + (unknown ? 6 : -4));
+    // T's normal text collision avoidance cannot know that the horizontal
+    // diagonal is AC. Keep BD attached to its own segment when a shift is needed.
+    if (!diagonalBoxHits(ac[0], ac[1], original) && !intersectsLabel(original)) return false;
+    const vertices = [g.A, g.B, g.C, g.D].map(p => b.toS(p));
+    const clear = q => q.x0 >= 6 && q.x1 <= b.W - 32 && q.y0 >= 8 && q.y1 <= b.H - b.insets.bottom - 8 &&
+      !diagonalBoxHits(ac[0], ac[1], q) && !vertices.some((p, i) => diagonalBoxHits(p, vertices[(i + 1) % 4], q)) && !intersectsLabel(q);
+    // The angle label itself can cover the usual point on a short BD. Move
+    // the anchor along BD, never onto AC or across the diagonal intersection.
+    for (const f of unknown ? [.64, .72, .82, .28, .18, .12] : [.18, .28, .34, .12, .64, .72, .82]) {
+      const anchor = lerp(g.B, g.D, f), at = b.toS(anchor), dir = at.y <= b.toS(g.P).y ? -1 : 1, candidates = [];
+      for (const dy of [32, 48, 64, 80, 96]) for (const dx of [0, w / 2 + 18, -w / 2 - 18, w + 28, -w - 28]) candidates.push({ x: at.x + dx, y: at.y + dir * dy });
+      const target = candidates.find(p => clear(box(p.x, p.y)) &&
+        !labels.some(q => diagonalBoxHits(at, p, q, 1)) &&
+        !vertices.some(q => diagonalBoxHits(at, p, { x0: q.x - 6, x1: q.x + 6, y0: q.y - 6, y1: q.y + 6 }, 0)));
+      if (!target) continue;
+      T(b, anchor, value, { dx: target.x - at.x, dy: target.y - at.y, size, color: unknown ? 'amber' : 'green', leaderAnchor: anchor, leader: true });
+      return true;
+    }
+    return false;
+  }
   function drawDiag(b, g, o = {}) {
     const { A, B, C, D, P: Pp } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C, D]);
     // 평행사변형(2배)
@@ -49,8 +106,8 @@
     ang(b, Pp, C, B, { color: 'amber', r: 28, label: o.th, labelDist: 51, size: 15 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.handle) b.handle('P', Pp, { color: 'violet', r: 8, ariaLabel: '교점 P 끌기', drag: o.handle }); else b.point(Pp, { color: 'violet', r: 4.5 });
-    if (o.p) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
-    if (o.q) T(b, lerp(B, D, /= x$/.test(o.q) ? 0.64 : 0.18), o.q, { dx: 14, dy: /= x$/.test(o.q) ? 6 : -4, size: /= x$/.test(o.q) ? 20 : 16, color: /= x$/.test(o.q) ? 'amber' : 'green', align: 'left' });
+    if (o.p && !(o.identifyAC && !b.thumb && identifiedDiagonalTag(b, g, o.p))) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
+    if (o.q && !(o.identifyBD && !b.thumb && identifiedBDTag(b, g, o.q))) T(b, lerp(B, D, /= x$/.test(o.q) ? 0.64 : 0.18), o.q, { dx: 14, dy: /= x$/.test(o.q) ? 6 : -4, size: /= x$/.test(o.q) ? 20 : 16, color: /= x$/.test(o.q) ? 'amber' : 'green', align: 'left' });
     rowsD.forEach((r, i) => T(b, pt(0, Math.max(...visible.map((w) => w.y))), r.t, { dy: 44 + i * 26, size: r.size || 16, color: r.c }));
   }
   const diagM = (p, q, th) => { const S = vdiv(vmul(vi(p * q), sinD(th)), vi(2)); return { p, q, th, S, dbl: vmul(vi(p * q), sinD(th)) }; };
@@ -77,7 +134,7 @@
       notes: notes('$\\theta$ 는 두 대각선이 이루는 각이에요. 두 변이 이루는 각이 아니에요.', '$\\theta$ 가 예각이든 둔각이든 $\\sin\\theta=\\sin(180^{\\circ}-\\theta)$ 라 넓이는 같아요.')
     }),
     gen: () => diagProblem('uf', false),
-    pdraw: (b, q, C) => diagPdraw(b, q, C)
+    pdraw: (b, q, C) => diagPdraw(b, q, C, true)
   };
   function diagProblem(tag, askQ) {
     const th = pick(TH), p = pick([4, 6, 8, 10, 12]), q = pick([3, 4, 5, 6, 8]);
@@ -100,9 +157,9 @@
       askQ ? `$x=\\frac{2\\times${vtex(S)}}{${p}\\times${vtex(sinD(th))}}$를 계산해요.` : `$\\sin ${th}^{\\circ}=${vtex(sinD(th))}$를 대입해요. 이 각은 두 변의 끼인각이 아니라 두 대각선의 사잇각입니다.`
     ];
   }
-  function diagPdraw(b, qq, C) {
+  function diagPdraw(b, qq, C, identifyAC = false) {
     const f = qq.fig, rows = f.ask === 'area' ? [{ t: C.last ? `□ABCD의 넓이 = ${qq.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] : [{ t: `□ABCD의 넓이 = ${f.S}`, c: 'amber', size: 17 }];
-    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: C.review ? C.step : 0, k2: C.review && C.step >= 2 ? 1 : 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' && !C.last ? 'BD = x' : `BD = ${f.q}`, rows });
+    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: C.review ? C.step : 0, k2: C.review && C.step >= 2 ? 1 : 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' && !C.last ? 'BD = x' : `BD = ${f.q}`, rows, identifyAC, identifyBD: identifyAC });
   }
 
   /* ====================================================================== 평행사변형 */
@@ -159,13 +216,18 @@
   function rhGeo(a, th) { const pL = 2 * a * Math.sin((th / 2) * DEG), qL = 2 * a * Math.cos((th / 2) * DEG), O = pt(0, 0); return { O, A: pt(-qL / 2, 0), C: pt(qL / 2, 0), B: pt(0, -pL / 2), D: pt(0, pL / 2), p: pL, q: qL }; }
   function drawRh(b, a, th, o = {}) {
     const g = rhGeo(a, th), { A, B, C, D, O } = g, cen = O;
-    fit(b, bboxOf([A, B, C, D]), { t: 54, b: 58 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
+    const compact = o.compactQuestion && !b.thumb && b.W < 560;
+    fit(b, bboxOf([A, B, C, D]), compact ? { t: 28, b: 28 + (o.rows ? o.rows.length * 26 : 0), l: 58, r: 48, problemTop: 28 } : { t: 54, b: 58 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
     fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [B, C, D, A], 'ink', 3.4);
     if (o.diag !== false) { line(b, A, C, 'violet', 2.6, { dash: dashed }); line(b, B, D, 'violet', 2.6, { dash: dashed }); ang(b, O, C, B, { color: 'ink', r: 14 }); }
-    if (o.th) ang(b, A, B, D, { color: 'amber', r: 34, label: o.th, size: 16 });
+    // A short diagonal can put the inline angle value on C even on a tablet.
+    const externalAngle = compact || (o.compactQuestion && !b.thumb && g.q * b.k < 100);
+    const angleR = externalAngle ? Math.min(24, Math.min(g.p, g.q) * (b.k || 60) * .28) : 34;
+    if (o.th) ang(b, A, B, D, { color: 'amber', r: angleR, label: externalAngle ? '' : o.th, size: 16 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     [[A, B], [B, C], [C, D], [D, A]].forEach(([p0, q0]) => tick(b, p0, q0, 1, 'sky'));
     if (o.a) sideTag(b, A, B, cen, o.a, { color: 'sky', size: o.as || 17 });
+    if (o.th && externalAngle) T(b, A, o.th, { dx: -42, dy: -30, color: 'amber', size: 16, leaderAnchor: pt(A.x + angleR / b.k, A.y), leader: true });
     if (o.p) T(b, mid(B, O), o.p, { dx: 10, size: 16, color: 'violet', align: 'left' });
     if (o.q) T(b, mid(O, C), o.q, { dy: 18, size: 16, color: 'violet' });
     (o.rows || []).forEach((r, i) => T(b, pt(0, D.y), r.t, { dy: 40 + i * 26, size: r.size || 16, color: r.c }));
@@ -215,8 +277,8 @@
     },
     pdraw: (b, q, C) => {
       const f = q.fig;
-      if (f.ask === 'sa') drawRh(b, f.a, f.th, { diag: C.review && C.step >= 2, th: `${f.th}°`, a: `${f.a}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] });
-      else { const a = Math.sqrt(f.p * f.p + f.q * f.q) / 2, th = 2 * Math.atan2(f.p / 2, f.q / 2) / DEG; drawRh(b, a, th, { p: `${f.p}`, q: `${f.q}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
+      if (f.ask === 'sa') drawRh(b, f.a, f.th, { compactQuestion: true, diag: C.review && C.step >= 2, th: `${f.th}°`, a: `${f.a}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] });
+      else { const a = Math.sqrt(f.p * f.p + f.q * f.q) / 2, th = 2 * Math.atan2(f.p / 2, f.q / 2) / DEG; drawRh(b, a, th, { compactQuestion: true, p: `${f.p}`, q: `${f.q}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
     }
   };
 

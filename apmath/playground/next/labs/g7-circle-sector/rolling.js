@@ -156,6 +156,16 @@
     const dx = p.x - c.x, dy = p.y - c.y, co = Math.cos(a), si = Math.sin(a);
     return { x: c.x + dx * co + dy * si, y: c.y - dx * si + dy * co };
   };
+  // 자취를 관찰하는 점 외의 꼭짓점도 회전 도중 더 높이 올라갈 수 있습니다.
+  // 시작·끝 도형만으로 맞추지 않고 각 꼭짓점 호의 극값을 함께 담습니다.
+  const pivotExtent = (points, rt) => points.flatMap((p) => {
+    const r = Math.hypot(p.x - rt.C.x, p.y - rt.C.y), a = Math.atan2(p.y - rt.C.y, p.x - rt.C.x);
+    const out = [p, rotCW(p, rt.C, rt.theta * D2R)];
+    for (let j = Math.ceil((a - rt.theta * D2R) / (Math.PI / 2)); j <= Math.floor(a / (Math.PI / 2)); j++) {
+      out.push({ x: rt.C.x + r * Math.cos(j * Math.PI / 2), y: rt.C.y + r * Math.sin(j * Math.PI / 2) });
+    }
+    return out;
+  });
 
   const finishModel = (M) => {
     const { states, rots } = M;
@@ -163,6 +173,11 @@
     const upd = (x, y) => { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); };
     states.forEach((st) => st.forEach((p) => upd(p.x, p.y)));
     rots.forEach((rt) => {
+      if (rt.kind === 'pivot') pivotExtent(states[rt.i].slice(0, M.nOut), rt).forEach(p => upd(p.x, p.y));
+      else { // 둥근 부분의 굴림: 회전 중심의 이동 구간과 반지름을 함께 담습니다.
+        const r = Math.max(...states[rt.i].slice(0, M.nOut).map(p => Math.hypot(p.x - rt.C.x, p.y - rt.C.y)));
+        upd(rt.C.x - r, rt.C.y - r); upd(rt.C.x + rt.len + r, rt.C.y + r);
+      }
       if (rt.arc < 0) return;
       if (rt.kind === 'roll') { upd(rt.C.x, rt.C.y); upd(rt.C.x + rt.len, rt.C.y); return; }
       for (let j = 0; j <= 24; j++) { const a = rt.phi0 - (rt.theta * D2R * j) / 24; upd(rt.C.x + rt.r * Math.cos(a), rt.C.y + rt.r * Math.sin(a)); }
@@ -277,8 +292,7 @@
       cur.slice(0, M.nOut).forEach((p) => pts.push(p));
       pts.push({ x: rt.C.x, y: rt.C.y }, { x: rt.C.x + rt.len * f, y: rt.C.y }, { x: Math.min(...cur.map((p) => p.x)) - 0.3 * rt.r, y: 0 });
     } else {
-      M.states[k].slice(0, M.nOut).forEach((p) => pts.push(p));
-      M.states[k + 1].slice(0, M.nOut).forEach((p) => pts.push(p));
+      pivotExtent(M.states[k].slice(0, M.nOut), rt).forEach((p) => pts.push(p));
       for (let j = 0; j <= 12; j++) { const a = rt.phi0 - (rt.theta * D2R * j) / 12; pts.push({ x: rt.C.x + rt.r * Math.cos(a), y: rt.C.y + rt.r * Math.sin(a) }); }
       pts.push({ x: rt.C.x, y: 0 });
     }
@@ -388,6 +402,25 @@
     const kpx = b.k;
     const colOf = (rt) => ARC_COL[rt.arc % ARC_COL.length];
     const compact = kpx < 10; // 길이 아주 긴 그림을 작은 화면에 통째로 담을 때: 겹치는 보조 글자는 줄입니다
+    // 진행 후의 길이·중심각만 실제 글자 크기로 배치합니다. 처음 그림, 문제,
+    // 미리보기/경계 측정과 반원의 기존 표현은 그대로 유지합니다.
+    const arrange = !thumb && !b._bbox && !sc.plain && !sc.outline && spec.shape !== 'semi' && sc.fracs.some(fr => fr > 0);
+    const occupied = [], pending = [];
+    const textBox = (x, y, text, o) => {
+      const size = b.annotationSize(text, o), align = o.align || 'center', base = o.baseline || 'middle';
+      const left = x - (align === 'center' ? size.width / 2 : align === 'right' ? size.width : 0);
+      const top = y - (base === 'middle' ? size.height / 2 : base === 'top' ? 0 : size.height * .8);
+      return { left, right: left + size.width, top, bottom: top + size.height };
+    };
+    const trackText = (draw) => {
+      if (!arrange) return draw();
+      const original = b._text;
+      b._text = function (x, y, text, o = {}, screen) {
+        if (text != null && (o.alpha == null || o.alpha > 0)) occupied.push(textBox(x, y, text, o));
+        return original.call(this, x, y, text, o, screen);
+      };
+      try { return draw(); } finally { b._text = original; }
+    };
     const outline = (pos) => pos.slice(0, n);
     const cen = (pos) => { const o = outline(pos); return { x: o.reduce((t, p) => t + p.x, 0) / o.length, y: o.reduce((t, p) => t + p.y, 0) / o.length }; };
     const away = (p, c, px) => { const dx = p.x - c.x, dy = p.y - c.y, l = Math.hypot(dx, dy) || 1; return { dx: (dx / l) * px, dy: (-dy / l) * px }; };
@@ -409,8 +442,28 @@
       ctx.fill();
       ctx.restore();
     };
-    const label = (p, text, o) => b.text(P(p), text, { size: FS.len, weight: 800, align: 'center', baseline: 'middle', ...o });
-    const vlabel = (p, c, text, color, size) => { const o = away(p, c, 17); label(p, text, { dx: o.dx, dy: o.dy, color: color || 'ink', size: size || FS.name }); };
+    const pastOutside = (p, text, o = {}) => {
+      // 따라가는 화면 밖으로 지난 호/점의 주석을 반쯤 남기지 않습니다.
+      // 현재 도형의 조건은 화면 맞춤으로 보존하며 전체 보기에서는 모두 표시합니다.
+      if (o.past && sc.localFocus && !thumb && !b._bbox) {
+        const S = b.toS(P(p)), size = (o.size || FS.len) * (b.fs || 1) * (b._ts ? b._ts() : 1);
+        const rows = Array.isArray(text) ? text : [text];
+        const width = Math.max(...rows.map(row => [...String(row)].reduce((w, ch) => w + size * (ch.charCodeAt(0) >= 0x1100 ? 1 : .67), 0))) + 8;
+        const height = size * 1.35 * rows.length, x = S.x + (o.dx || 0), y = S.y + (o.dy || 0);
+        return x - width / 2 < 6 || x + width / 2 > b.W - (b.W < 560 ? 28 : 6) || y - height / 2 < (b.insets.top || 0) + 4 || y + height / 2 > b.H - (b.insets.bottom || 0) - 4;
+      }
+      return false;
+    };
+    const label = (p, text, o = {}) => {
+      if (pastOutside(p, text, o)) return;
+      trackText(() => b.text(P(p), text, { size: FS.len, weight: 800, align: 'center', baseline: 'middle', ...o }));
+    };
+    const later = (p, text, o, anchors, kind) => {
+      if (arrange) { if (!pastOutside(p, text, o)) pending.push({ p, text, o, anchors, kind }); }
+      else label(p, text, o);
+    };
+    const vlabel = (p, c, text, color, size, past = false) => { const o = away(p, c, 17); label(p, text, { dx: o.dx, dy: o.dy, color: color || 'ink', size: size || FS.name, past }); };
+    const pastArc = (rt) => rt.i !== (sc.tab === 'review' && sc.item && sc.item.rot != null ? sc.item.rot : Math.min(sc.k, N - 1));
     const outward = (a, bb, pos) => { // 선분 a-b 의 바깥쪽(도형 중심 반대쪽) 단위 벡터
       const dx = bb.x - a.x, dy = bb.y - a.y, l = Math.hypot(dx, dy) || 1;
       let nx = dy / l, ny = -dx / l;
@@ -418,7 +471,13 @@
       if ((mx - c.x) * nx + (my - c.y) * ny < 0) { nx = -nx; ny = -ny; }
       return { nx, ny, mx, my };
     };
-    const segLabel = (pos, a, bb, text) => { const o = outward(pos[a], pos[bb], pos); label({ x: o.mx, y: o.my }, text, { dx: o.nx * 19, dy: -o.ny * 19, size: FS.len, color: 'ink', weight: 800 }); };
+    const segLabel = (pos, a, bb, text) => {
+      const o = outward(pos[a], pos[bb], pos);
+      // 처음·끝 반원을 함께 담는 모바일 문제에서는 반지름과 중심 O를 서로 다른 줄에 둡니다.
+      const offset = spec.shape === 'semi' && sc.plain && b.W < 560 && !thumb ? 48 : 19;
+      const mid = { x: o.mx, y: o.my };
+      later(mid, text, { dx: o.nx * offset, dy: -o.ny * offset, size: FS.len, color: 'ink', weight: 800 }, [mid], 'given-length');
+    };
     const drawMarks = (pos, o) => {
       if (thumb) return;
       const q = (i) => P(pos[((i % n) + n) % n]);
@@ -430,7 +489,17 @@
       }
       sh.angles.forEach((a) => {
         if (o.onlyGiven && !a.given) return;
-        b.angle(q(a.i), q(a.i + 1), q(a.i - 1), { r: 22, rings: a.rings, color: 'amber', label: a.label ? `${snapInt(Math.round(a.deg * 100) / 100)}°` : undefined, labelGap: 15, size: FS.ang });
+        const draw = () => b.angle(q(a.i), q(a.i + 1), q(a.i - 1), { r: 22, rings: a.rings, color: 'amber', label: a.label ? `${snapInt(Math.round(a.deg * 100) / 100)}°` : undefined, labelGap: 15, size: FS.ang });
+        if (arrange && spec.id === 'rl-turn45' && a.given && a.label) {
+          // B의 주어진 각은 자취 호보다 먼저 그리면 호·지난 점 이름에 가립니다.
+          // 각 표시 자체는 그대로 두고 글자만 실제 22px 각 호에 연결해 배치합니다.
+          const original = b._text;
+          b._text = (x, y, text, options) => {
+            const V = b.toS(q(a.i)), anchor = b.toW(V.x + (x - V.x) * 22 / 37, V.y + (y - V.y) * 22 / 37);
+            pending.unshift({ p: pos[a.i], text, o: { ...options, dx: x - V.x, dy: y - V.y }, anchors: [{ x: anchor.x, y: FIG ? -anchor.y : anchor.y }], kind: 'given-angle' });
+          };
+          try { draw(); } finally { b._text = original; }
+        } else trackText(draw);
       });
     };
     const drawLens = (pos, diag) => {
@@ -448,7 +517,7 @@
     b.hline(0, { color: 'muted', width: 3 });
     if (!thumb) {
       const ys = b.toS(P({ x: 0, y: 0 })).y;
-      b.stext(b.W - (b.panes ? 0 : b.insets.right) - 24, ys + 16, 'l', { color: 'muted', size: 16, weight: 800, align: 'center', baseline: 'middle' });
+      trackText(() => b.stext(b.W - (b.panes ? 0 : b.insets.right) - 24, ys + 16, 'l', { color: 'muted', size: 16, weight: 800, align: 'center', baseline: 'middle' }));
     }
 
     /* ---------- 교과서 문제 그림(풀이 전): 처음·끝 모양과 자취, 주어진 길이·각만 ---------- */
@@ -530,10 +599,10 @@
       const fr = sc.fracs[rt.i];
       if (!sc.outline && fr <= 0) return;
       if (sc.outline && sc.tab !== 'review') return;
-      if (rt.kind === 'roll') { label({ x: rt.C.x + (rt.len * Math.max(fr, 0.0)) / 2, y: rt.C.y }, JAMO[rt.arc], { dy: -(sc.outline ? 16 : 16), color: colOf(rt), size: FS.arc, part: rt.arc }); return; }
+      if (rt.kind === 'roll') { label({ x: rt.C.x + (rt.len * Math.max(fr, 0.0)) / 2, y: rt.C.y }, JAMO[rt.arc], { dy: -(sc.outline ? 16 : 16), color: colOf(rt), size: FS.arc, part: rt.arc, past: pastArc(rt) }); return; }
       const m = rt.phi0 - (rt.theta * D2R) / 2;
       const pt = { x: rt.C.x + rt.r * Math.cos(m), y: rt.C.y + rt.r * Math.sin(m) };
-      label(pt, JAMO[rt.arc], { dx: Math.cos(m) * 16, dy: -Math.sin(m) * 16, color: colOf(rt), size: FS.arc, part: rt.arc });
+      label(pt, JAMO[rt.arc], { dx: Math.cos(m) * 16, dy: -Math.sin(m) * 16, color: colOf(rt), size: FS.arc, part: rt.arc, past: pastArc(rt) });
     });
 
     // (6) 안쪽 글자: 반지름 r 과 중심각 (크게)
@@ -545,7 +614,7 @@
         const c = colOf(rt), live = fr < 1 ? Math.round(rt.theta * fr) : rt.theta;
         if (rt.kind === 'roll') {
           const mid = { x: rt.C.x + (rt.len * fr) / 2, y: rt.C.y };
-          label(mid, `r=${rOf(rt)}  ${live}°`, { dy: 18, color: c, size: FS.sec, part: rt.arc });
+          label(mid, `r=${rOf(rt)}  ${live}°`, { dy: 18, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) });
           return;
         }
         const m = rt.phi0 - (rt.theta * D2R) / 2;
@@ -554,8 +623,12 @@
         const rho = inside ? rhoPx / kpx : rt.r;
         const anchor = { x: rt.C.x + rho * Math.cos(m), y: rt.C.y + rho * Math.sin(m) };
         const ox = inside ? 0 : Math.cos(m) * 34, oy = inside ? 0 : -Math.sin(m) * 34;
-        label(anchor, `r=${rOf(rt)}`, { dx: ox, dy: oy - 9, color: c, size: FS.sec, part: rt.arc });
-        label(anchor, `${live}°`, { dx: ox, dy: oy + 9, color: c, size: FS.sec, part: rt.arc });
+        const sweep = rt.theta * D2R * fr, at = (a, r) => ({ x: rt.C.x + r * Math.cos(a), y: rt.C.y + r * Math.sin(a) });
+        // 옮긴 글자는 실제로 그린 반지름·현재 각의 호에 연결합니다.
+        const radii = [at(rt.phi0, rt.r / 2), at(rt.phi0 - sweep, rt.r / 2)];
+        const angle = at(rt.phi0 - sweep / 2, rt.r * kpx >= 44 ? 18 / kpx : rt.r);
+        later(anchor, `r=${rOf(rt)}`, { dx: ox, dy: oy - 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) }, radii, 'radius');
+        later(anchor, `${live}°`, { dx: ox, dy: oy + 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) }, [angle], 'central-angle');
         if (rt.r * kpx >= 44) { // 중심각 표시(중심 가까이에 작은 호)
           const S = b.toS(P(rt.C));
           ctx.save();
@@ -590,11 +663,11 @@
       const g = M.states[j], cg = cen(g);
       const cnt = M.rots.slice(0, j).filter((r) => r.arc >= 0).length;
       b.point(P(g[T]), { hollow: true, color: 'rose', r: 5, glow: false });
-      vlabel(g[T], cg, M.names[T] + primes(cnt), 'rose', FS.len);
+      vlabel(g[T], cg, M.names[T] + primes(cnt), 'rose', FS.len, true);
     }
     if (spec.primeLast && sc.nGhost > 0) {
       const g = M.states[0], cg = cen(g);
-      M.labelIdx.forEach((i) => { if (i === T || Math.hypot(g[i].x - pos[i].x, g[i].y - pos[i].y) < 1e-6) return; vlabel(g[i], cg, M.names[i], 'muted', FS.len); });
+      M.labelIdx.forEach((i) => { if (i === T || Math.hypot(g[i].x - pos[i].x, g[i].y - pos[i].y) < 1e-6) return; vlabel(g[i], cg, M.names[i], 'muted', FS.len, true); });
     }
     b.point(P(pos[T]), { color: 'rose', r: 7 });
 
@@ -627,6 +700,61 @@
             }
           });
         });
+      }
+    }
+    // 점 이름·내각을 먼저 확보한 뒤 길이와 중심각을 가까운 빈 곳에 둡니다.
+    // 배치만 달라지며 도형의 좌표, 카메라, 회전량, 풀이 공개 단계는 바꾸지 않습니다.
+    if (arrange) {
+      const edges = outline(pos).map(P).map(p => b.toS(p));
+      const overlap = (a, c) => a.left < c.right + 2 && a.right > c.left - 2 && a.top < c.bottom + 2 && a.bottom > c.top - 2;
+      const crosses = (box, a, c, padding = 2) => {
+        let lo = 0, hi = 1;
+        for (const [v, d, min, max] of [[a.x, c.x - a.x, box.left - padding, box.right + padding], [a.y, c.y - a.y, box.top - padding, box.bottom + padding]]) {
+          if (Math.abs(d) < 1e-9) { if (v < min || v > max) return false; }
+          else { const p = (min - v) / d, q = (max - v) / d; lo = Math.max(lo, Math.min(p, q)); hi = Math.min(hi, Math.max(p, q)); if (lo > hi) return false; }
+        }
+        return true;
+      };
+      const trajectories = [];
+      if (pending.some(item => item.kind === 'given-angle')) M.rots.forEach(rt => {
+        const fr = sc.fracs[rt.i];
+        if (rt.arc < 0 || fr <= 0 || rt.kind !== 'pivot') return;
+        const sweep = rt.theta * D2R * fr, count = Math.max(1, Math.ceil(Math.abs(sweep) * rt.r * kpx / 4));
+        let previous = b.toS(P({ x: rt.C.x + rt.r * Math.cos(rt.phi0), y: rt.C.y + rt.r * Math.sin(rt.phi0) }));
+        for (let i = 1; i <= count; i++) {
+          const a = rt.phi0 - sweep * i / count, next = b.toS(P({ x: rt.C.x + rt.r * Math.cos(a), y: rt.C.y + rt.r * Math.sin(a) }));
+          trajectories.push([previous, next]); previous = next;
+        }
+      });
+      for (const item of pending) {
+        const S = b.toS(P(item.p)), o = { size: FS.len, weight: 800, align: 'center', baseline: 'middle', ...item.o };
+        const preferred = { x: S.x + (o.dx || 0), y: S.y + (o.dy || 0) };
+        const size = b.annotationSize(item.text, o), anchors = item.anchors.map(p => b.toS(P(p)));
+        const connection = (p) => anchors.filter(a => {
+          const dx = Math.max(0, Math.abs(a.x - p.x) - size.width / 2), dy = Math.max(0, Math.abs(a.y - p.y) - size.height / 2);
+          return Math.hypot(dx, dy) >= 6;
+        }).sort((a, c) => Math.hypot(a.x - p.x, a.y - p.y) - Math.hypot(c.x - p.x, c.y - p.y))[0];
+        const clear = (p) => {
+          const box = { left: p.x - size.width / 2, right: p.x + size.width / 2, top: p.y - size.height / 2, bottom: p.y + size.height / 2 };
+          return box.left >= 6 && box.right <= b.W - (b.W < 560 ? 28 : 6) && box.top >= (b.insets.top || 0) + 4 && box.bottom <= b.H - (b.insets.bottom || 0) - 4 &&
+            !occupied.some(q => overlap(box, q)) && !edges.some((a, i) => crosses(box, a, edges[(i + 1) % edges.length])) &&
+            !(item.kind === 'given-angle' && trajectories.some(([a, c]) => crosses(box, a, c, 5))) &&
+            (Math.hypot(p.x - preferred.x, p.y - preferred.y) < 1 || connection(p));
+        };
+        let chosen = clear(preferred) ? preferred : null;
+        // 화면 픽셀로 탐색하여 확대율이나 cm 값이 바뀌어도 글자 간격을 지킵니다.
+        for (let r = 8; !chosen && r <= Math.max(b.W, b.H); r += 8) {
+          for (let j = 0; j < 24; j++) {
+            const a = -Math.PI / 2 + j * Math.PI / 12, candidate = { x: preferred.x + r * Math.cos(a), y: preferred.y + r * Math.sin(a) };
+            if (clear(candidate)) { chosen = candidate; break; }
+          }
+        }
+        chosen = chosen || preferred;
+        if (Math.hypot(chosen.x - preferred.x, chosen.y - preferred.y) > 1) {
+          const anchor = connection(chosen);
+          b.leader(anchor, chosen, { px: true, width: size.width, height: size.height, gap: 2, lineWidth: 1.2, color: o.color, part: o.part, ref: 'rolling-' + item.kind });
+        }
+        trackText(() => b.text(P(item.p), item.text, { ...o, dx: chosen.x - S.x, dy: chosen.y - S.y }));
       }
     }
   }
@@ -972,7 +1100,9 @@
         s.cfg = { ...spec.base };
         s.rlSeed = 1; s.rlPick = -1;
         s.rlReviewQuestion = false; s.rlQuestionScene = spec.id; s.rlQuestionKey = null; s.rlQuestionProgress = null; s.rlPrincipleStep = 1;
-        resetRun(s, !!(lab && s === lab.s));
+        // First show the original figure and givens. The explicit play action
+        // starts the existing demonstration after the student has inspected it.
+        resetRun(s, false);
         syncSliders(spec, s);
       },
       controls: () => ['rlT'].concat((spec.sliders || []).filter((sl) => !sl.hidden).map((sl) => sl.param)),
@@ -1071,7 +1201,7 @@
         const sc = scenario(spec, s, lab, thumb);
         const full = focusOf(sc.M);
         if (!thumb) {
-          const key = sc.tab + JSON.stringify(sc.M.cfg) + '|' + b.W + '|' + b.H;
+          const key = spec.id + '|' + sc.tab + JSON.stringify(sc.M.cfg) + '|' + b.W + '|' + b.H + '|' + JSON.stringify(b.insets);
           // 작은 화면에서 길이 너무 길면: 지금 일어나는 회전만 크게(부드럽게 따라가며)
           let target = full;
           const area = b._area(), pad = b.pad * Math.min(area.w, area.h);
@@ -1082,9 +1212,14 @@
             else if (sc.tab === 'review' && sc.item && sc.item.rot != null) target = regionOf(sc.M, sc.item.rot, 1);
           }
           // 모형 바깥의 치수와 아래 손잡이 글자는 픽셀 크기입니다. 세계 좌표 여백만 쓰면 작은 배율에서 잘립니다.
-          const tk = Math.max(1, Math.min((area.w - 2 * pad) / (target.x[1] - target.x[0]), (area.h - 2 * pad) / Math.abs(target.y[1] - target.y[0])));
-          target = { x: [target.x[0] - 28 / tk, target.x[1] + 28 / tk], y: [target.y[0] - (b.kind === 'figure' ? 12 : 40) / tk, target.y[1] + (b.kind === 'figure' ? 40 : 12) / tk] };
+          sc.localFocus = target !== full;
+          const pl = 36, pr = b.W < 560 ? 56 : 36, pt = b.kind === 'figure' ? 12 : 40, pb = b.kind === 'figure' ? 40 : 12;
+          const tk = Math.max(.1, Math.min((area.w - 2 * pad - pl - pr) / (target.x[1] - target.x[0]), (area.h - 2 * pad - pt - pb) / Math.abs(target.y[1] - target.y[0])));
+          target = { x: [target.x[0] - pl / tk, target.x[1] + pr / tk], y: [target.y[0] - pt / tk, target.y[1] + pb / tk] };
           if (b.__rlKey !== key && !s.dragging) { b.__rlKey = key; b.setFocus(target, true); }
+          // shell은 재진입 때 기본 focus를 되돌립니다. 정지 상태에 이전
+          // 카메라 보간을 이어 붙이지 않고 동일한 첫 그림으로 즉시 맞춥니다.
+          else if (!s.dragging && (!s.playing || sc.tab !== 'explore')) b.focus = target;
           else if (b.focus !== target && !s.dragging) {
             const f0 = b.focus, e = 0.2;
             const mix = (a, c) => a + (c - a) * e;
@@ -1093,6 +1228,8 @@
             if (diff < 0.02) b.focus = target;
             else { b.focus = nf; if (lab) lab.invalidate(); }
           }
+          // 전체 자취로 돌아가는 마지막 보간 프레임도 아직은 부분 보기입니다.
+          sc.localFocus = sc.localFocus || b.focus !== target;
         }
         paint(b, sc, spec, s);
       },

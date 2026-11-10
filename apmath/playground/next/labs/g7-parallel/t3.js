@@ -256,8 +256,14 @@
         wedge(b, Cc, 180, angOf(Cc, B), { color: 'green', rings: 2, text: 'd', r: 20, size: 16, fa: 0.2 });
       }
       if (!mid && (prob || C.mode === 'explore' || st === 1 || st >= 3)) {
-        wedge(b, B, angOf(B, A), angOf(B, Cc), { color: prob ? 'ink' : 'green', rings: 3, text: G.I + '°', r: 34, fa: 0.1, size: 16, tcolor: prob ? 'ink' : 'green' });
-        wedge(b, Cc, angOf(Cc, B), angOf(Cc, D), { color: prob ? 'ink' : 'green', rings: 3, text: G.I + '°', r: 34, fa: 0.1, size: 16, tcolor: prob ? 'ink' : 'green' });
+        // 좁은 문제 그림에서는 두 이등분선 끝이 중앙에서 만나 내각 값이 겹칩니다.
+        // 각각의 꼭짓점 높이에 값을 두고 작은 호와 연결해 B, C의 조건을 구별합니다.
+        const compact = prob && b.W < 560;
+        const interiorMark = { color: prob ? 'ink' : 'green', rings: 3, text: G.I + '°', r: compact ? 20 : 34, fa: 0.1, size: 16, tcolor: prob ? 'ink' : 'green' };
+        const atB = compact ? { dx: -48, dy: Math.max(0, 24 - (B.y - A.y) * b.k) } : null;
+        const atC = compact ? { dx: -48, dy: -Math.max(0, 24 - (D.y - Cc.y) * b.k) } : null;
+        wedge(b, B, angOf(B, A), angOf(B, Cc), { ...interiorMark, at: atB });
+        wedge(b, Cc, angOf(Cc, B), angOf(Cc, D), { ...interiorMark, at: atC });
       }
       if (mid) {
         const cv = wdeg(180, angOf(B, Cc)), dv = wdeg(180, angOf(Cc, B));

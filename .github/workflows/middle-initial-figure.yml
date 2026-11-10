@@ -1,0 +1,175 @@
+name: Middle initial figure
+
+on:
+  push:
+    branches: ['fix/apmath-middle-initial-figure-20261109*']
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/next/labs/g7-*/**'
+      - 'apmath/playground/next/labs/g7-*.html'
+      - 'apmath/playground/next/labs/g8-*/**'
+      - 'apmath/playground/next/labs/g8-*.html'
+      - 'apmath/playground/next/labs/g9-*/**'
+      - 'apmath/playground/next/labs/g9-*.html'
+      - 'apmath/playground/next/kit/**'
+      - 'apmath/playground/next/tools/middle-initial-*'
+      - 'apmath/playground/next/tools/scene-smoke*'
+      - 'apmath/playground/next/tools/apl-stage-insets.test.mjs'
+      - '.github/workflows/middle-initial-figure.yml'
+      - '.github/workflows/middle-initial-public.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # Always run the complete suite on the latest branch head. Superseded heads
+  # must not keep a second full census queued ahead of the current candidate.
+  group: middle-initial-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  existing-scene-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install real Chromium for the existing complete scene smoke
+        run: |
+          npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: All-lab scene smoke at its original five environments
+        shell: bash
+        env:
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/scene-smoke-server.log" 2>&1 &
+          for attempt in {1..20}; do
+            if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
+            sleep 1
+          done
+          node apmath/playground/next/tools/scene-smoke.mjs --report "$RUNNER_TEMP/scene-smoke-report.json" 2>&1 | tee "$RUNNER_TEMP/scene-smoke.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-existing-scene-smoke
+          path: |
+            ${{ runner.temp }}/scene-smoke*.log
+            ${{ runner.temp }}/scene-smoke-report.json
+          retention-days: 14
+  inventory:
+    runs-on: ubuntu-24.04
+    outputs:
+      units: ${{ steps.inventory.outputs.units }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: inventory
+        run: echo "units=$(node apmath/playground/next/tools/middle-initial-figure-audit.mjs --list-units)" >> "$GITHUB_OUTPUT"
+      - name: Initial figure regression contracts
+        run: node --test apmath/playground/next/tools/middle-initial-*.test.mjs apmath/playground/next/tools/apl-stage-insets.test.mjs
+      - name: Actual annotation, semantic measurement and failure-report regressions
+        run: node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/scene-smoke-orchestration.test.mjs apmath/playground/next/tools/local-axis-origin-visibility.test.mjs
+      - name: Middle mathematical and scene-state regressions
+        run: node --test apmath/playground/next/tools/g7-*.test.mjs apmath/playground/next/tools/g8-*.test.mjs apmath/playground/next/tools/g9-*.test.mjs
+  browser:
+    needs: inventory
+    strategy:
+      fail-fast: false
+      matrix:
+        unit: ${{ fromJSON(needs.inventory.outputs.units) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install real Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Existing hub browser regressions
+        if: matrix.unit == 'g7-points-lines'
+        env:
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+        run: node --test apmath/playground/next/tools/hub-no-legacy.test.mjs
+      - name: Observe unmodified main baseline
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || '5472d9b0f2b2deba067126baf54a0479037654ab' }}
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+          UNIT: ${{ matrix.unit }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          git worktree add --detach "$RUNNER_TEMP/initial-baseline" "$BASE_SHA"
+          node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root "$RUNNER_TEMP/initial-baseline" --units "$UNIT" --out "$RUNNER_TEMP/initial-evidence/before" --baseline-observe
+      - name: Verify all initial scenes at five viewports
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+          UNIT: ${{ matrix.unit }}
+        run: node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root . --units "$UNIT" --themes board,paper --out "$RUNNER_TEMP/initial-evidence/after"
+      - name: Partition evidence without changing captured bytes
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          root = Path(os.environ['RUNNER_TEMP'])
+          for phase in ('before', 'after'):
+              for source in (root / 'initial-evidence' / phase).glob('*'):
+                  if not source.is_file():
+                      continue
+                  if phase == 'before':
+                      buckets = ['before']
+                  elif source.name == 'report.json':
+                      buckets = ['after-board', 'after-paper']
+                  elif '-paper--' in source.name:
+                      buckets = ['after-paper']
+                  else:
+                      buckets = ['after-board']
+                  for bucket in buckets:
+                      target = root / 'initial-evidence-pack' / bucket / phase / source.name
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      os.link(source, target)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-report
+          path: ${{ runner.temp }}/initial-evidence/after/report.json
+          compression-level: 9
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-before
+          path: ${{ runner.temp }}/initial-evidence-pack/before/
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-after-board
+          path: ${{ runner.temp }}/initial-evidence-pack/after-board/
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}-after-paper
+          path: ${{ runner.temp }}/initial-evidence-pack/after-paper/
+          retention-days: 14

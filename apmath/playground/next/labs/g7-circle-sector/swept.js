@@ -1227,7 +1227,56 @@
       const outside = sec.chain !== 'A' && sec.R * w.b.k < 95; // 작은 부채꼴은 글자가 들어가지 않으니 호 바깥에 적습니다
       const f = sec.chain === 'A' ? 0.58 : 0.6;
       const pos = outside ? [sec.c[0] + Math.cos(mid) * (sec.R + 0.95), sec.c[1] + Math.sin(mid) * (sec.R + 0.95)] : [sec.c[0] + Math.cos(mid) * sec.R * f, sec.c[1] + Math.sin(mid) * sec.R * f];
-      w.text(pos, label, { color: outside ? sec.col : 'ink', alpha: k, ref: ref || sec.id });
+      let lines = label, dx = 0;
+      if (o.labelAbove && outside) {
+        const rows = Array.isArray(label) ? label : [label], b = w.b;
+        const sizes = rows.map(row => b.annotationSize(row, { size: 13.5, weight: 800 }));
+        const width = Math.max(...sizes.map(size => size.width)), height = Math.max(...sizes.map(size => size.height)) + 16 * (rows.length - 1);
+        const at = w.toS(pos), letter = w.toS([sec.c[0], sec.c[1] + 0.6]);
+        const name = b.annotationSize('C', { size: 14, weight: 800 }), safeRight = b.W - 32;
+        const overlapsName = (p) => Math.abs(p.x - letter.x) < (width + name.width) / 2 + 6 && Math.abs(p.y - letter.y) < (height + name.height) / 2 + 6;
+        if (overlapsName(at) || at.x + width / 2 > safeRight) {
+          // The green radius calculation must not turn the vertex name C into
+          // a misleading "C = ...". Keep both rows above C with an arc anchor.
+          const labelAt = { x: clamp(at.x, width / 2 + 8, safeRight - width / 2),
+            y: Math.max(height / 2 + 8, Math.min(at.y, letter.y - name.height / 2 - height / 2 - 8)) };
+          if (overlapsName(labelAt)) labelAt.x = Math.max(width / 2 + 8, letter.x - name.width / 2 - width / 2 - 8);
+          const anchor = w.toS(goatPoint(sec, mid));
+          b.leader(anchor, labelAt, { px: true, width, height, color: sec.col, lineWidth: 1.2, gap: 5, alpha: k, ref: ref || sec.id });
+          rows.forEach((row, i) => b.stext(labelAt.x, labelAt.y + (i - (rows.length - 1) / 2) * 16, row,
+            { align: 'center', baseline: 'middle', weight: 800, size: 13.5, color: sec.col, alpha: k, ref: ref || sec.id }));
+          return;
+        }
+      }
+      if (o.labelBelow && outside) {
+        const rows = Array.isArray(label) ? label : [label], b = w.b;
+        const width = Math.max(...rows.map(row => b.annotationSize(row, { size: 13.5, weight: 800 }).width));
+        const at = w.toS(pos), safeRight = b.W - 32;
+        if (at.x + width / 2 > safeRight) {
+          // A long radius calculation beside B can sit behind the contents
+          // handle. Place it below B and connect it to this small sector's arc.
+          const center = w.toS(sec.c), height = 16 * rows.length;
+          const labelAt = { x: Math.max(width / 2 + 10, Math.min(center.x, safeRight - width / 2)), y: center.y + 48 };
+          const anchor = w.toS(goatPoint(sec, sec.t0 + (sec.t1 - sec.t0) * 0.12));
+          b.leader(anchor, labelAt, { px: true, width, height, color: sec.col, lineWidth: 1.2, gap: 5, alpha: k, ref: ref || sec.id });
+          rows.forEach((row, i) => b.stext(labelAt.x, labelAt.y + (i - (rows.length - 1) / 2) * 16, row,
+            { align: 'center', baseline: 'middle', weight: 800, size: 13.5, color: sec.col, alpha: k, ref: ref || sec.id }));
+          return;
+        }
+      }
+      if (o.labelRight != null) {
+        const x = w.toS(pos).x;
+        const width = (rows) => Math.max(...rows.map((row) => w.b.annotationSize(row, { size: 13.5, weight: 800 }).width));
+        lines = Array.isArray(label) ? label : [label];
+        if (x + width(lines) / 2 > o.labelRight) {
+          // 개집 풀이의 오른쪽 작은 부채꼴: 긴 반지름 식은 등호 앞에서
+          // 나누어 목차 손잡이를 피하고, C 이름과 겹치지 않게 합니다.
+          const split = lines[0].lastIndexOf(' = ');
+          if (split > 1) lines = [lines[0].slice(0, split), lines[0].slice(split + 1), ...lines.slice(1)];
+          dx = Math.min(0, o.labelRight - x - width(lines) / 2);
+        }
+      }
+      w.text(pos, lines, { color: outside ? sec.col : 'ink', alpha: k, ref: ref || sec.id, ...(dx ? { dx } : {}) });
     }
   }
 
@@ -1262,7 +1311,10 @@
           label = [`r = ${num(sec.R)}`, `${sec.deg}°`];
           if (tab === 'review' && sec.chain !== 'A') label = [`r = ${num(M.L)}−${num(sec.used)} = ${num(sec.R)}`, `${sec.deg}°`];
         }
-        drawGoatSector(w, sec, { thumb, k, u, label });
+        drawGoatSector(w, sec, { thumb, k, u, label,
+          labelRight: sc.id === 'gt-kennel' && tab === 'review' && b.W < 560 ? b.W - 32 : null,
+          labelAbove: sc.id === 'gt-tri' && sec.id === 'C' && tab === 'review' && b.W < 560,
+          labelBelow: sc.id === 'gt-tri' && sec.id === 'B' && tab === 'review' && b.W < 560 });
       });
     }
     drawFence(w, M, thumb, true);
@@ -1298,7 +1350,9 @@
       w.seg(M.V[0], P, { color: 'rose', width: 3.2 });
       const nrm = [-Math.sin(th), Math.cos(th)];
       w.text([(M.V[0][0] + P[0]) / 2 + nrm[0] * 0.65, (M.V[0][1] + P[1]) / 2 + nrm[1] * 0.65], `${num(M.L)} m`, { color: 'rose' });
-      w.point(P, { color: 'orange', r: 7.5, label: kd.animal, dx: 12, dy: -12, size: 13.5 });
+      // 작은 정삼각형 문제는 끈 반대쪽에 이름을 두고, 개집의 아래쪽 이름 배치는 유지합니다.
+      const compactTriangle = sc.id === 'gt-tri' && b.W < 380 && b.H < 330;
+      w.point(P, { color: 'orange', r: 7.5, label: kd.animal, dx: compactTriangle ? -12 : 12, align: compactTriangle ? 'right' : 'left', dy: sc.id === 'gt-kennel' && b.W < 560 ? 20 : -12, size: 13.5 });
     } else if (tab === 'review' && step >= 1 && step <= 3) {
       const sec = M.order[step - 1];
       if (sec) {
@@ -1306,7 +1360,34 @@
         w.path([...sec.path, goatPoint(sec, th)], { color: 'rose', width: 2.6, alpha: 0.95, ref: 'rope' });
         if (sec.chain === 'A') {
           const P = goatPoint(sec, th), nrm = [-Math.sin(th), Math.cos(th)];
-          w.text([(sec.c[0] + P[0]) / 2 + nrm[0] * 0.65, (sec.c[1] + P[1]) / 2 + nrm[1] * 0.65], `끈 ${num(M.L)} m`, { color: 'rose' });
+          const middle = [(sec.c[0] + P[0]) / 2, (sec.c[1] + P[1]) / 2];
+          const pos = [middle[0] + nrm[0] * 0.65, middle[1] + nrm[1] * 0.65];
+          const text = `끈 ${num(M.L)} m`, style = { align: 'center', baseline: 'middle', weight: 800, size: 13.5, color: 'rose' };
+          let moved = false;
+          if (sc.id === 'gt-kennel') {
+            const size = b.annotationSize(text, style), at = w.toS(pos);
+            const caption = w.toS([sec.c[0] + Math.cos(th) * sec.R * 0.58, sec.c[1] + Math.sin(th) * sec.R * 0.58]);
+            const rows = [`r = ${num(sec.R)}`, `${sec.deg}°`];
+            const crowded = rows.some((row, i) => {
+              const rowSize = b.annotationSize(row, style), rowY = caption.y + (i - 0.5) * 16;
+              return Math.abs(at.x - caption.x) < (size.width + rowSize.width) / 2
+                && Math.abs(at.y - rowY) < (size.height + rowSize.height) / 2;
+            });
+            if (crowded) {
+              // Keep the given rope length separate from the 270° sector caption.
+              // Its connector points to the actual rope midpoint, not the angle.
+              const anchor = w.toS(middle);
+              const captionTop = caption.y - 8 - b.annotationSize(rows[0], style).height / 2;
+              const target = {
+                x: Math.max(size.width / 2 + 8, anchor.x - size.width / 2 - 18),
+                y: Math.max(size.height / 2 + 8, Math.min(anchor.y - size.height / 2 - 18, captionTop - size.height / 2 - 8))
+              };
+              b.leader(anchor, target, { px: true, ...size, color: 'rose', lineWidth: 1.2, gap: 4, ref: 'rope' });
+              b.stext(target.x, target.y, text, style);
+              moved = true;
+            }
+          }
+          if (!moved) w.text(pos, text, { color: 'rose' });
         }
       }
     }

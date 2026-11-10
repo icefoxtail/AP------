@@ -135,8 +135,23 @@
       line(b, pt(xm, y - 0.04), pt(xm, y + h + 0.04), 'ink', 3);
       if (C.txt) {
         const showRatio = C.problem || (C.review && st === 0);
-        T(b, pt((x0 + xm) / 2, y), showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
-        T(b, pt((xm + x0 + W) / 2, y), showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
+        const inside = pt((x0 + xm) / 2, y), outside = pt((xm + x0 + W) / 2, y);
+        if (C.problem && !C.thumb && b.W < 560 && b.toS) {
+          // 짧은 비율 막대에서도 두 조건을 따로 읽고, 해당 색 면에 연결해요.
+          // 정답인 n이나 다각형은 문제 단계에서 보여 주지 않습니다.
+          const center = b.toS(pt(0, y));
+          const labels = [{ p: inside, text: `내각 ${a}`, color: 'sky', side: -1 }, { p: outside, text: `외각 ${bb}`, color: 'rose', side: 1 }];
+          const sizes = labels.map(v => b.annotationSize ? b.annotationSize(v.text, { size: 17, weight: 800 }) : { width: textW(v.text, 17) + 6, height: 23 });
+          const spread = Math.max(W * K / 2, (sizes[0].width + sizes[1].width) / 4 + 8);
+          labels.forEach((v, i) => {
+            const anchor = b.toS(v.p), label = pt(center.x + v.side * spread, anchor.y - 26);
+            if (b.leader) b.leader(anchor, label, { ...sizes[i], px: true, color: v.color, lineWidth: 1.2, gap: 2 });
+            T(b, v.p, v.text, { dx: label.x - anchor.x, dy: label.y - anchor.y, color: v.color, size: 17 });
+          });
+        } else {
+          T(b, inside, showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
+          T(b, outside, showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
+        }
         T(b, pt(0, y), `${a} : ${bb}`, { dy: h * K + 18, color: 'ink', size: 17 });
         if (!C.problem) T(b, pt(0, y), '(내각 + 외각 = 180°)', { dy: h * K + 40, color: 'muted', size: 14 });
       }
@@ -216,7 +231,68 @@
       if (showD) { line(b, A, Cc, 'green', 3.6); line(b, B, D, 'green', 3.6); }
       const nm = (p) => { const i = Pn.indexOf(p); return LET[(i - M.v + n) % n]; };
       if (!C.problem) {
-        if (C.full || st >= 1) ang(b, B, A, Cc, { color: 'amber', r: 26, noMark: !(st === 1 && C.review), fa: 0.12, label: st === 1 && C.review ? `${fmtN(I)}°` : '', size: 15, labelDist: 50 });
+        if (C.full || st >= 1) {
+          const first = st === 1 && C.review;
+          const mark = { color: 'amber', r: 26, noMark: !first, fa: 0.12, label: first ? `${fmtN(I)}°` : '', size: 15, labelDist: 50 };
+          let callout;
+          if (first && !C.thumb && b.W < 560 && b.toS) {
+            // 내각의 값이 대각선 AC 위에서 P의 각처럼 보이지 않게 합니다.
+            // 꼭짓점을 바꿔도 선·점·이름을 피한 자리에서 B의 호에 연결해요.
+            const measure = (text, size) => b.annotationSize ? b.annotationSize(text, { size, weight: 800 }) : { width: textW(text, size) + 6, height: size + 6 };
+            const boxAt = (p, w, h) => ({ l: p.x - w / 2, r: p.x + w / 2, t: p.y - h / 2, b: p.y + h / 2 });
+            const avoid = [], points = Pn.map(p => b.toS(p)), cross = b.toS(Pp), origin = b.toS(B);
+            Pn.forEach(p => {
+              const q = b.toS(p), u = unit(p), name = nm(p), m = measure(name, 17);
+              const d = Math.abs(u.x) * textW(name, 17) / 2 + Math.abs(u.y) * 17 * 0.55 + 10;
+              avoid.push(boxAt(q, 16, 16), boxAt(pt(q.x + u.x * d, q.y + u.y * d), m.width + 4, m.height + 4));
+            });
+            const pm = measure('P', 17), label = measure(mark.label, mark.size);
+            avoid.push(boxAt(cross, 16, 16), boxAt(pt(cross.x, cross.y + 16), pm.width + 4, pm.height + 4));
+            const edges = points.map((p, i) => [p, points[(i + 1) % n]]).concat([[b.toS(A), b.toS(Cc)], [b.toS(B), b.toS(D)]]);
+            const intersects = (p, q, box) => {
+              let lo = 0, hi = 1;
+              for (const [axis, a, z] of [['x', box.l, box.r], ['y', box.t, box.b]]) {
+                const d = q[axis] - p[axis];
+                if (Math.abs(d) < 1e-9) { if (p[axis] < a || p[axis] > z) return false; }
+                else { const u = (a - p[axis]) / d, v = (z - p[axis]) / d; lo = Math.max(lo, Math.min(u, v)); hi = Math.min(hi, Math.max(u, v)); }
+              }
+              return lo <= hi;
+            };
+            const bisector = unit(add(unit(sub(A, B)), unit(sub(Cc, B)))), middle = Math.atan2(bisector.y, bisector.x);
+            const start = Math.atan2(A.y - B.y, A.x - B.x), end = Math.atan2(Cc.y - B.y, Cc.x - B.x);
+            const sweep = ((end - start + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+            const maxRadius = Math.min(mark.r, len(sub(A, B)) * b.k * 0.55), yb = Math.max(...points.map(p => p.y));
+            let placement;
+            for (const radius of [maxRadius, maxRadius * 0.8, maxRadius * 0.6, Math.min(maxRadius, 10)]) {
+              for (const fraction of [0.5, 0.25, 0.75, 0.1, 0.9]) {
+                const angle = start + sweep * fraction, anchor = pt(origin.x + Math.cos(angle) * radius, origin.y + Math.sin(angle) * radius);
+                for (const distance of [40, 44, 48, 52, 36, 56, 60, 64, 72, 80, 88, 96, 104, 112]) {
+                  for (const turn of [-120, 120, -90, 90, -60, 60, -150, 150, 0, -30, 30]) {
+                    const a = middle + turn * DEG, target = pt(origin.x + Math.cos(a) * distance, origin.y + Math.sin(a) * distance);
+                    const box = boxAt(target, label.width + 4, label.height + 4);
+                    if (box.l < 4 || box.r > b.W - 28 || box.t < 4 || box.b > Math.min(b.H - b.insets.bottom - 4, yb + 34)) continue;
+                    if (avoid.some(z => Math.min(box.r, z.r) > Math.max(box.l, z.l) && Math.min(box.b, z.b) > Math.max(box.t, z.t))) continue;
+                    const dx = anchor.x - target.x, dy = anchor.y - target.y, span = Math.hypot(dx, dy);
+                    const edge = Math.min(Math.abs(dx) > 1e-9 ? label.width / (2 * Math.abs(dx)) : Infinity, Math.abs(dy) > 1e-9 ? label.height / (2 * Math.abs(dy)) : Infinity);
+                    if (span * (1 - edge) < 12) continue; // 라벨에 먹히지 않는 길이의 지시선
+                    if (edges.some(([p, q]) => intersects(p, q, box)) || avoid.some(z => intersects(anchor, target, z))) continue;
+                    placement = { r: radius }; callout = { anchor, target, metrics: label }; break;
+                  }
+                  if (placement) break;
+                }
+                if (placement) break;
+              }
+              if (placement) break;
+            }
+            Object.assign(mark, placement);
+          }
+          ang(b, B, A, Cc, callout ? { ...mark, label: '' } : mark);
+          if (callout) {
+            b.leader(callout.anchor, callout.target, { ...callout.metrics, px: true, color: 'muted', alpha: 0.78 });
+            const origin = b.toS(B);
+            T(b, B, mark.label, { dx: callout.target.x - origin.x, dy: callout.target.y - origin.y, color: 'amber', size: mark.size });
+          }
+        }
         if (C.full || st >= 2) {
           ang(b, A, B, Cc, { color: 'sky', rings: 1, r: 28, label: n <= 9 ? `${fmtN(h)}°` : '', size: 15, labelDist: 56 });
           ang(b, Cc, A, B, { color: 'sky', rings: 1, r: 28 });
@@ -224,7 +300,9 @@
           ang(b, D, B, Cc, { color: 'sky', rings: 1, r: 28 });
         }
         if (C.full || st >= 3) {
-          ang(b, B, A, D, { color: 'green', rings: 2, r: 38, label: n <= 9 ? `${fmtN(M.ab)}°` : '', size: 14, labelDist: 36, labelRot: 22 });
+          // 작은 화면에서는 보조각 값을 변 바깥으로 옮기고 실제 호에 연결합니다.
+          const compact = !C.thumb && b.W < 560;
+          ang(b, B, A, D, { color: 'green', rings: 2, r: 38, label: n <= 9 ? `${fmtN(M.ab)}°` : '', size: 14, labelDist: compact ? 48 : 36, labelRot: compact ? 90 : 22, leader: compact });
           ang(b, Pp, A, B, { color: 'amber', r: 26, label: `${fmtN(x)}°`, size: 18, fa: 0.28, labelDist: 52 });
         }
       } else ang(b, Pp, A, B, { color: 'amber', r: 26, label: 'x', size: 18, fa: 0.28, labelDist: 46 });
@@ -318,7 +396,20 @@
         }
         if (!C.problem && (C.full || st >= 2)) ang(b, A, Pp, Q, { color: 'amber', r: 36, label: `${fmtN(x)}°`, size: 16, fa: 0.14, labelDist: 62 });
         if (valid && (C.problem || C.full || st >= 3)) {
-          ang(b, Pp, Q, A, { color: 'amber', r: 28, rings: 1, label: C.problem ? 'x' : `${fmtN(base)}°`, size: C.problem ? 17 : 15, fa: 0.26, labelDist: 46, labelRot: 40 });
+          const label = C.problem ? 'x' : `${fmtN(base)}°`, size = C.problem ? 17 : 15;
+          let placement = { labelDist: 46, labelRot: 40 };
+          if (!C.thumb && b.W < 560 && b.toS) {
+            // 좁은 ∠APQ의 값이 A의 내각이나 AB의 길이처럼 보이지 않게
+            // 그림 위의 여백에 두고, 기존 각의 호에서 지시선을 연결합니다.
+            const measure = b.annotationSize ? b.annotationSize(label, { size, weight: 800 }) : { width: textW(label, size) + 6, height: size + 6 };
+            const p = b.toS(Pp), u = unit(add(unit(sub(Q, Pp)), unit(sub(A, Pp))));
+            // 정삼각형끼리 붙이면 P가 왼쪽 끝에 가까워집니다. 각의 호와
+            // 연결은 유지하고, 분수까지 포함한 글자 상자 전체를 화면 안에 둡니다.
+            const x = clamp(p.x - measure.width / 2 - 40, b.insets.left + 8 + measure.width / 2, b.W - b.insets.right - 8 - measure.width / 2);
+            const dx = x - p.x, dy = 14 + measure.height / 2 - p.y;
+            placement = { labelDist: Math.hypot(dx, dy), labelRot: (Math.atan2(dy, dx) - Math.atan2(u.y, u.x)) / DEG, leader: true };
+          }
+          ang(b, Pp, Q, A, { color: 'amber', r: 28, rings: 1, label, size, fa: 0.26, ...placement });
           ang(b, Q, A, Pp, { color: 'amber', r: 28, rings: 1, fa: 0.26 });
         }
       }
@@ -372,6 +463,39 @@
   };
 
   /* ====================================================================== 5. 한 꼭짓점에서 그은 대각선이 나누는 각 */
+  function fanQuestionMark(b, A, Pn, n, v, k) {
+    const mark = { r: 46, label: 'x', size: 18, fa: 0.22, labelDist: 70 };
+    if (b.thumb || b.W >= 560 || !b.toS) return mark;
+    const at = (j) => Pn[(v + j) % n], size = n > 9 ? 14 : 17;
+    const measure = (label, fs) => b.annotationSize ? b.annotationSize(label, { size: fs, weight: 800 }) : { width: textW(label, fs) + 6, height: fs + 6 };
+    const label = measure('x', 18), avoid = [];
+    // 꼭짓점을 바꿔도 x가 다른 점이나 그 이름을 덮지 않는 바깥 자리를 고릅니다.
+    Pn.forEach((p, i) => {
+      const q = b.toS(p), u = unit(p), name = LET[(i - v + n) % n];
+      const d = Math.abs(u.x) * textW(name, size) / 2 + Math.abs(u.y) * size * 0.55 + 10;
+      const x = q.x + u.x * d, y = q.y + u.y * d, box = measure(name, size);
+      avoid.push({ l: q.x - 8, r: q.x + 8, t: q.y - 8, b: q.y + 8 });
+      avoid.push({ l: x - box.width / 2, r: x + box.width / 2, t: y - box.height / 2, b: y + box.height / 2 });
+    });
+    const origin = b.toS(A), outward = Math.atan2(A.y, A.x);
+    const u = unit(add(unit(sub(at(1), A)), unit(sub(at(k + 1), A)))), middle = Math.atan2(u.y, u.x);
+    const yb = Math.max(...Pn.map((p) => b.toS(p).y));
+    mark.r = Math.min(mark.r, len(sub(at(1), A)) * b.k * 0.6);
+    mark.leader = true;
+    const anchorR = Math.abs(k * 180 / n - 90) < 0.6 ? Math.min(mark.r * 0.62, 17) * Math.SQRT2 : mark.r;
+    const anchor = pt(origin.x + u.x * anchorR, origin.y + u.y * anchorR);
+    for (const d of [38, 42, 46, 50, 54, 58, 62, 66, 70, 74, 78, 34, 30]) for (const turn of [45, -45, 60, -60, 30, -30, 75, -75, 90, -90, 0]) {
+      const a = outward + turn * DEG, x = origin.x + Math.cos(a) * d, y = origin.y + Math.sin(a) * d;
+      const box = { l: x - label.width / 2, r: x + label.width / 2, t: y - label.height / 2, b: y + label.height / 2 };
+      if (box.l < 2 || box.r > b.W - 2 || box.t < 2 || box.b > Math.min(b.H - b.insets.bottom - 2, yb + 34)) continue;
+      if (avoid.some((z) => Math.min(box.r, z.r) > Math.max(box.l, z.l) && Math.min(box.b, z.b) > Math.max(box.t, z.t))) continue;
+      const dx = x - anchor.x, dy = y - anchor.y, t = clamp(((origin.x - anchor.x) * dx + (origin.y - anchor.y) * dy) / (dx * dx + dy * dy), 0, 1);
+      if (Math.hypot(anchor.x + t * dx - origin.x, anchor.y + t * dy - origin.y) < 8) continue;
+      return { ...mark, labelDist: d, labelRot: (a - middle) / DEG, leader: true };
+    }
+    // 바깥 여백이 없으면 기존 이등분선 위의 자리도 실제 호에 연결합니다.
+    return mark;
+  }
   const fan = {
     id: 'p4-fan', title: '한 꼭짓점에서 그은 대각선이 나누는 각', short: '대각선이 나누는 각',
     question: '정n각형의 한 꼭짓점에서 대각선을 모두 그으면 그 꼭짓점의 내각은 어떻게 나뉠까?',
@@ -394,7 +518,7 @@
       if (!C.problem && (C.full || st >= 1)) ang(b, A, at(1), at(n - 1), { color: 'amber', r: 30, noMark: !(C.review && st === 1), fa: 0.12, label: C.review && st === 1 ? `${fmtN(I)}°` : '', size: 15, labelDist: 56 });
       // 같은 크기의 각: 대각선이 나눈 n−2개의 각
       if (!C.problem && (C.full || st >= 2)) for (let j = 1; j <= n - 2; j++) ang(b, A, at(j), at(j + 1), { color: 'sky', rings: 1, r: 36, label: j === Math.ceil((n - 2) / 2) ? `${fmtN(h)}°` : '', size: 15 });
-      if (C.problem) ang(b, A, at(1), at(k + 1), { color: 'amber', r: 46, label: 'x', size: 18, fa: 0.22, labelDist: 70 });
+      if (C.problem) ang(b, A, at(1), at(k + 1), { color: 'amber', ...fanQuestionMark(b, A, Pn, n, v, k) });
       Pn.forEach((p) => b.point(p, { color: 'ink', r: n > 9 ? 3.8 : 4.5 }));
       if (C.txt) {
         Pn.forEach((p, i) => tagOut(b, p, O, LET[(i - v + n) % n], { size: n > 9 ? 14 : 17, gap: 10 }));

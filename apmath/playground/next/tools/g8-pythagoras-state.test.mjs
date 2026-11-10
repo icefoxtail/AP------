@@ -39,6 +39,27 @@ const setup = (id, q) => {
   return { sc, s, text: () => sc.steps(s).join('\n') };
 };
 
+test('initial controls describe the displayed side across semicircle/isosceles scenes and reentry', () => {
+  const lab = { ...U.lab, params: { ...U.params } };
+  const s = Object.fromEntries(Object.entries(lab.params).map(([key, p]) => [key, p.value]));
+  lab.s = s;
+  for (const id of ['py5-hippo', 'py6-iso', 'py5-semi', 'py6-iso', 'py5-hippo']) {
+    const sc = byId(id);
+    sc.enter(s, lab);
+    const p = lab.params.pyIb, isBase = id === 'py6-iso';
+    assert.equal(p.label, isBase ? '밑변 BC' : '직각변 b (AC)', id);
+    assert.deepEqual([p.min, p.max, p.step, p.color], isBase ? [4, 24, 2, 'sky'] : [2, 15, 1, 'green'], id);
+    assert.equal(s.pyIb, isBase ? 10 : 8, id + ': initial length');
+    for (let value = p.min; value <= p.max; value += p.step) {
+      s.pyIb = value;
+      const m = sc.py.model(s);
+      assert.equal(isBase ? m.bc : m.b, value, id + ': control and displayed length agree');
+    }
+  }
+  byId('py6-iso').enter({ ...s }, lab);
+  assert.equal(lab.params.pyIb.label, '직각변 b (AC)', 'a scene thumbnail must not alter the active controls');
+});
+
 // Records the real scene's drawing commands without claiming to rasterize a
 // browser screenshot. Used only for numerical, stage and interaction contracts.
 function commandBoard(width = 390, height = 440) {
@@ -343,7 +364,7 @@ test('visual regression: current lengths, areas, foot names and comparison formu
   const tree=layoutDrawing('py5-tree',{pyTa:11,pyTb:3,pyT1:40,pyT2:55,pyShade:'ab'});
   assert.equal(tree.labels.some(x=>/^AC²/.test(x.text)),false,'unselected branch does not add irrelevant area labels');
   const both=layoutDrawing('py5-tree',{pyTa:11,pyTb:3,pyT1:40,pyT2:55,pyShade:'all'});
-  separated(both,'3','AC²=9');separated(both,'A','AC²=9');separated(both,'S₃','S₄');
+  separated(both,'AC=3','AC²=9');separated(both,'A','AC²=9');separated(both,'S₃','S₄');
 });
 
 test('visual regression: every FC fraction stays inside the mobile canvas and vertex labels clear wide-screen tools', () => {

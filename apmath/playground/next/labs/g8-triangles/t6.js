@@ -61,7 +61,7 @@
 
   /* -------------------------------------------------------------------- 풀이 흐름: 장면별 풀이 (문제와 같은 상태·같은 숫자)
      원칙: 그림 안에는 점 이름만 · 지금 단계만 색(앞 단계는 회색) · 대칭으로 같은 쪽은 주어진 것에서만 진하게 · 좁은 각은 x 만 두고 값은 그림 아래 한 줄에 */
-  const SVB = G.svB, { stmtDyn, xLbl, xOut } = SVB; void xOut;
+  const SVB = G.svB, { stmtDyn, xLbl, xOut, mobileQuestionFrame } = SVB; void xOut;
   const nBase = (o = {}) => (b, M) => { const g = M.g; if (!o.noCirc) b.circle(g.I, g.r, { color: 'green', width: 2.4, alpha: 0.8 }); fillPoly(b, [g.A, g.B, g.C], 'sky', 0.07); poly(b, [g.A, g.B, g.C], 'ink', 3.4); };
   const nTop = (o = {}) => (b, M, s, X) => {
     const g = o.geom ? o.geom(M) : M.g, { A, B, C: Cc, I, D, E, F } = g;
@@ -119,13 +119,15 @@
       return out;
     },
     draw: SVB.runner({
-      box: nBox, base: nBase(), top: nTop(), legend: () => NLEG,
+      ...mobileQuestionFrame(nBox, NLEG), base: nBase(), top: nTop(),
       dyn: (name, M, s) => stmtDyn(N1POOL, n1.prob)(name, M, s),
       st: {
         given: (L, M, s, X) => {
           const g = M.g, v = (s.trV || 0) % 3, { A, B, C: Cc, I, D } = g;
           bisL(L, g); feetL(L, g); ringMarks(L, g);
-          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 62, fa: 0.06, label: dg(2 * M.al), size: 16, labelDist: 82, keep: true }); // 전체 각은 바깥 호에, 반쪽 x 는 안쪽 호에
+          // 전체 각의 숫자는 A 바깥에 연결하고 반쪽 x는 A 안쪽에 둡니다.
+          // 고정 82px 거리가 내심 I를 넘어가지 않도록 모바일만 조정합니다.
+          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: X.nw ? Math.min(50, .4 * dist(A, I) * X.b.k) : 62, fa: 0.06, label: dg(2 * M.al), size: 16, labelDist: X.nw ? 40 : 82, labelRot: X.nw ? -65 : 0, keep: true });
           if (v === 1) L.sd(I, D, pt(I.x, I.y - 50), `${M.r} cm`, { color: 'rose', size: fs(X.b, 15), gap: 8, keep: true });
         },
         bis: (L, M) => { const { A, B, C: Cc, I } = M.g; L.ln(A, I, 'green', 4.4); L.ang(A, B, I, { color: 'sky', r: 32, fa: 0.4 }); L.ang(A, I, Cc, { color: 'sky', r: 32, fa: 0.4 }); },
@@ -134,7 +136,7 @@
       },
       x: (b, M, s, X) => {
         const { A, B, I, E } = M.g, v = (s.trV || 0) % 3;
-        if (v === 0) ang(b, A, B, I, { noMark: true, color: 'amber', label: xLbl(X, M.al), size: 17, labelDist: 46 });
+        if (v === 0) ang(b, A, B, I, { noMark: true, color: 'amber', label: xLbl(X, M.al), size: 17, labelDist: X.nw ? Math.min(46, .32 * dist(A, I) * b.k) : 46 });
         else if (v === 1) { if (!X.at('all')) G.sideTag(b, I, E, pt(I.x, I.y + 30), X.xVal ? `${M.r} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 }); }
       }
     })
@@ -300,6 +302,16 @@
   };
 
   /* ---------------------------------------------------------------- 5. 내심의 각 */
+  // 짧은 문제 무대에서도 ∠BIC의 값이 밑변 BC의 길이처럼 보이지 않게
+  // 내심에서 BC까지의 실제 화면 높이 안에 호와 글자를 함께 둡니다.
+  const n5CompactAngle = (b, g) => b.W < 560 || dist(g.I, g.D) * b.k < 100;
+  const n5BicLayout = (b, g) => {
+    if (!n5CompactAngle(b, g)) return { r: 34, labelDist: 56 };
+    const h = dist(g.I, g.D) * b.k, u = unit(sub(g.B, g.I)), v = unit(sub(g.C, g.I));
+    const midAngle = Math.atan2(u.y + v.y, u.x + v.x);
+    const labelRot = clamp((angBetween(g.C, g.B, g.I) - angBetween(g.B, g.I, g.C)) * .4, -12, 12);
+    return { r: Math.min(34, .25 * h), labelDist: Math.min(56, (h - 1) / (2 * Math.sin(midAngle + labelRot * DEG))), labelRot };
+  };
   const n5Solve = {
     steps: (M, s) => {
       const v = (s.trV || 0) % 3, { al, be, ga, bic } = M, out = [];
@@ -323,23 +335,29 @@
       return out;
     },
     draw: SVB.runner({
-      box: nBox, base: nBase({ noCirc: true }), top: nTop({ noFeet: true, idx: 0, idy: 22 }), legend: () => 'I: 내심',
+      ...mobileQuestionFrame(nBox, 'I: 내심'), base: nBase({ noCirc: true }),
+      top: (b, M, s, X) => nTop({ noFeet: true, idx: n5CompactAngle(b, M.g) ? 14 : 0, idy: n5CompactAngle(b, M.g) ? -14 : 22 })(b, M, s, X),
       st: {
         given: (L, M, s, X) => {
           const g = M.g, { A, B, C: Cc, I } = g, v = (s.trV || 0) % 3;
           bisL(L, g); ringMarks(L, g);
-          if (v === 0) L.ang(A, B, Cc, { noMark: true, color: 'sky', label: dg(2 * M.al), size: 16, labelDist: 70, keep: true });
-          else if (v === 1) L.ang(I, B, Cc, { color: 'sky', r: 34, label: dg(M.bic), size: 16, labelDist: 56, keep: true });
+          if (v === 0) L.ang(A, B, Cc, { noMark: true, color: 'sky', label: dg(2 * M.al), size: 16, labelDist: X.nw ? Math.min(70, .42 * dist(A, I) * X.b.k) : 70, keep: true });
+          else if (v === 1) L.ang(I, B, Cc, { color: 'sky', ...n5BicLayout(X.b, g), label: dg(M.bic), size: 16, keep: true });
           else { L.ang(B, A, Cc, { noMark: true, color: 'green', label: dg(M.be), size: 15, labelDist: 56, keep: !X.has('dbl') }); L.ang(Cc, B, A, { noMark: true, color: 'violet', label: dg(M.ga), size: 15, labelDist: 56, keep: !X.has('dbl') }); }
         },
-        half: (L, M, s, X) => { const { A, B, C: Cc, I } = M.g; L.ln(B, I, 'green', 4.2); L.ln(Cc, I, 'violet', 4.2); L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, label: '×', size: 17, labelDist: 54, fa: 0.4 }); L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, label: '■', size: 15, labelDist: 54, fa: 0.4 }); },
+        half: (L, M, s, X) => {
+          const { A, B, C: Cc, I } = M.g, near = (P) => X.nw ? Math.min(54, .38 * dist(P, I) * X.b.k) : 54;
+          L.ln(B, I, 'green', 4.2); L.ln(Cc, I, 'violet', 4.2);
+          L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, label: '×', size: 17, labelDist: near(B), fa: 0.4 });
+          L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, label: '■', size: 15, labelDist: near(Cc), fa: 0.4 });
+        },
         sum: (L, M, s) => { const { A, B, C: Cc, I } = M.g, v = (s.trV || 0) % 3; L.fl([I, B, Cc], 'amber', 0.2); L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, fa: 0.4 }); L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, fa: 0.4 }); void v; },
         dbl: (L, M) => { const { A, B, C: Cc } = M.g; L.ang(B, A, Cc, { color: 'green', r: 40, label: dg(2 * M.be), size: 15, labelDist: 60, fa: 0.3, keep: true }); L.ang(Cc, B, A, { color: 'violet', r: 40, label: dg(2 * M.ga), size: 15, labelDist: 60, fa: 0.3, keep: true }); },
         eq: (L, M, s) => { const { A, B, C: Cc, I } = M.g, v = (s.trV || 0) % 3; if (v === 0) { L.ang(B, I, Cc, { color: 'green', r: 36, rings: 2, fa: 0.3 }); L.ang(Cc, B, I, { color: 'violet', r: 36, rings: 3, fa: 0.3 }); } else if (v === 1) { L.ang(B, A, Cc, { color: 'green', r: 40, label: dg(2 * M.be), size: 15, labelDist: 60, fa: 0.3 }); } }
       },
       x: (b, M, s, X) => {
         const { A, B, C: Cc, I } = M.g, v = (s.trV || 0) % 3;
-        if (v === 0) ang(b, I, B, Cc, { color: 'amber', r: 34, label: xLbl(X, M.bic), size: 17, labelDist: 56, noMark: !X.xArc, fa: 0.3 });
+        if (v === 0) ang(b, I, B, Cc, { color: 'amber', ...n5BicLayout(b, M.g), label: xLbl(X, M.bic), size: X.nw ? 16 : 17, noMark: !X.xArc, fa: 0.3 });
         else ang(b, A, B, Cc, { color: 'amber', r: 44, label: xLbl(X, 2 * M.al), size: 17, labelDist: 70, noMark: !X.xArc, fa: 0.3 });
       }
     })
@@ -888,7 +906,13 @@
         else if (C.review && st === 2) { row = `x+y=${c}, y+z=${a}, z+x=${bb}`; col = 'ink'; }
         else if (C.review && st === 3) { row = `x=${x}, y=${y}, z=${z} (cm)`; col = 'amber'; }
         else row = `AB=${c}, BC=${a}, CA=${bb} → AF=${x}, BD=${y}, CE=${z} (cm)`;
-        rowT(b, pt((A.x + B.x + Cc.x) / 3, Math.max(B.y, Cc.y)), row, { dy: 66, size: fs(b, 15), color: col });
+        // 주어진 세 변은 그림에도 있으므로 좁은 탐구 무대에서는 접선 길이만 한 줄로 씁니다.
+        // 두 줄로 나눈 요약이 접점 D와 BD의 길이 위로 밀려 올라오지 않게 합니다.
+        const compactCaption = !C.review && b.W < 560 && G.textW(row, fs(b, 15)) * 1.1 > Math.max(180, b.W - 28);
+        if (compactCaption) row = `AF=${x}, BD=${y}, CE=${z} (cm)`;
+        const captionPoint = pt((A.x + B.x + Cc.x) / 3, Math.max(B.y, Cc.y));
+        const captionDy = compactCaption ? b.H - (b.insets.bottom || 0) - 24 - b.toS(captionPoint).y : 66;
+        rowT(b, captionPoint, row, { dy: captionDy, size: fs(b, 15), color: col });
       }
     },
     steps: (M) => [

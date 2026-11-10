@@ -28,12 +28,54 @@
   };
 
   /* ---- 탑과 두 관측점 ---- */
+  // A text box may fit the canvas while lying on a different side of the triangle.
+  // Test the projected sides themselves before relocating the two standard heights.
+  function heightBoxHits(a, z, q, gap = 4) {
+    let lo = 0, hi = 1;
+    for (const [axis, min, max] of [['x', q.x0 - gap, q.x1 + gap], ['y', q.y0 - gap, q.y1 + gap]]) {
+      const d = z[axis] - a[axis];
+      if (Math.abs(d) < 1e-9) { if (a[axis] < min || a[axis] > max) return false; }
+      else { const t0 = (min - a[axis]) / d, t1 = (max - a[axis]) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); }
+    }
+    return lo <= hi;
+  }
+  function standardHeightTag(b, A, H, B, C, value) {
+    const a = b.toS(A), h = b.toS(H), sides = [b.toS(B), b.toS(C)];
+    let size = b.annotationSize(value, { size: 16, weight: 800 }), w = size.width, hh = size.height + 2;
+    const box = (x, y) => ({ x0: x - w / 2, x1: x + w / 2, y0: y - hh / 2, y1: y + hh / 2 });
+    const original = box(a.x - 8 - w / 2, a.y + (h.y - a.y) * .3);
+    if (!sides.some(p => heightBoxHits(a, p, original))) return false;
+    value = value.replace(/\s*=\s*/, '=');
+    size = b.annotationSize(value, { size: 16, weight: 800 }); w = size.width; hh = size.height + 2;
+    const clear = q => q.x0 >= 6 && q.x1 <= b.W - 32 && q.y0 >= 48 && q.y1 <= h.y - 32 &&
+      !sides.some(p => heightBoxHits(a, p, q)) && !(b._tgBoxes || []).some(p => q.x0 < p.x1 + 3 && q.x1 > p.x0 - 3 && q.y0 < p.y1 + 3 && q.y1 > p.y0 - 3);
+    const candidates = [];
+    // Prefer a value on AH itself, clear of both oblique sides. If the interior
+    // is too narrow, use the empty exterior and retain a connector to AH.
+    for (let dy = 0; dy <= (h.y - a.y) * .25; dy += 2) for (const dx of [0, -8, 8, -16, 16]) candidates.push({ x: clamp(a.x + dx, w / 2 + 6, b.W - 32 - w / 2), y: (a.y + h.y) / 2 + dy });
+    candidates.push({ x: clamp(a.x - w / 2 - 28, w / 2 + 6, b.W - 32 - w / 2), y: Math.max(48 + hh / 2, a.y - 28) });
+    for (const f of [.5, .4, .3, .6]) for (const x of [w / 2 + 10, b.W - 36 - w / 2]) candidates.push({ x, y: a.y + (h.y - a.y) * f });
+    const target = candidates.find(p => clear(box(p.x, p.y)));
+    if (!target) return false;
+    const anchor = mid(A, H), at = b.toS(anchor);
+    line(b, A, H, 'rose', 3);
+    T(b, anchor, value, { dx: target.x - at.x, dy: target.y - at.y, size: 16, color: 'rose', leaderAnchor: anchor, leader: true });
+    return true;
+  }
   // o = { h, xb, xc, side:'opp'|'same', step, L:{a,h,B,C,x,y,hx}, handle, s }
   function drawTower(b, o) {
     const { h, xb } = o, xc = o.same ? -o.xc : o.xc, st = o.step == null ? 99 : o.step;
     const H0 = pt(0, 0), A = pt(0, -h), B = pt(-xb, 0), Cc = pt(xc, 0), L = o.L || {};
     const xs = [B.x, Cc.x, 0];
     fit(b, bboxOf([pt(Math.min(...xs), -h), pt(Math.max(...xs), 0)]), { t: 54, b: 58 + (L.a && (L.BH === 'x' || L.CH === 'x') ? 44 : 0) + (o.rows ? o.rows.length * 26 : 0), l: 58, r: 58 });
+    // A current standard-height question has no top chip on a narrow stage.
+    // Its fixed reservations previously shrank AH below the angle-label span.
+    // Refit only when that actual projection is too small; keep the dimension
+    // line under BC and the original taller/wider arrangements unchanged.
+    if (o.currentStandard && !b.thumb && b.W < 560 && h * b.k < 110) {
+      const groundUnknown = L.a && (L.BH === 'x' || L.CH === 'x');
+      fit(b, bboxOf([pt(Math.min(...xs), -h), pt(Math.max(...xs), 0)]), { t: 28, problemTop: 28, b: groundUnknown ? 88 : 64, l: 50, r: 50 });
+    }
     const gx0 = Math.min(...xs) - 0.6, gx1 = Math.max(...xs) + 0.6;
     line(b, pt(gx0, 0), pt(gx1, 0), 'muted', 3);
     if (st >= 1) { fillPoly(b, [A, B, H0], 'sky', 0.14); fillPoly(b, o.same ? [A, Cc, H0] : [A, H0, Cc], 'green', 0.16); }
@@ -41,8 +83,10 @@
     line(b, A, H0, 'ink', 5); line(b, A, B, 'ink', 2.6); line(b, A, Cc, 'ink', 2.6);
     if (o.iso) { tick(b, A, Cc, 1, 'amber'); tick(b, B, Cc, 1, 'amber'); }
     ang(b, H0, o.same ? Cc : B, A, { color: 'ink', r: 16 });
-    ang(b, B, H0, A, { color: 'sky', r: 38, label: L.B, size: 16 });
-    ang(b, Cc, H0, A, { color: 'green', r: 36, label: L.C, size: 16, rings: 2 });
+    const angleRadius = (V, U, Z, radius) => o.currentStandard && !b.thumb
+      ? Math.min(radius, Math.max(12, .34 * b.k * Math.min(Math.hypot(U.x - V.x, U.y - V.y), Math.hypot(Z.x - V.x, Z.y - V.y)))) : radius;
+    ang(b, B, H0, A, { color: 'sky', r: angleRadius(B, H0, A, 38), label: L.B, size: 16 });
+    ang(b, Cc, H0, A, { color: 'green', r: angleRadius(Cc, H0, A, 36), label: L.C, size: 16, rings: 2 });
     if (L.x) ang(b, A, B, H0, { color: 'sky', r: 30, label: L.x, size: 15, labelDist: 46 });
     if (L.y) ang(b, A, H0, Cc, { color: 'green', r: 30, label: L.y, size: 15, rings: 2, labelDist: 46 });
     b.point(A, { color: 'ink', r: 5 }); tagOut(b, A, pt(0, 3), 'A', { size: 17, gap: 11 });
@@ -50,7 +94,10 @@
     if (o.handle) { b.handle('B', B, { color: 'sky', r: 8, ariaLabel: '관측점 B 끌기', drag: o.handle.B }); b.handle('C', Cc, { color: 'green', r: 8, ariaLabel: '관측점 C 끌기', drag: o.handle.C }); }
     else { b.point(B, { color: 'sky', r: 5 }); b.point(Cc, { color: 'green', r: 5 }); }
     T(b, B, 'B', { dy: 22, dx: -4, size: 17, color: 'sky' }); T(b, Cc, 'C', { dy: 22, dx: 4, size: 17, color: 'green' });
-    if (L.h) T(b, G.lerp(A, H0, 0.3), L.h, { dx: L.hx ? 0 : -8, size: L.hx ? 21 : 16, color: L.hx ? 'amber' : 'rose', align: L.hx ? 'center' : 'right' });
+    if (L.h && !(o.identifyHeight && !b.thumb && standardHeightTag(b, A, H0, B, Cc, L.h))) {
+      const heightCallout = o.heightCallout && !b.thumb && b.W < 560, at = G.lerp(A, H0, heightCallout ? .56 : .3);
+      T(b, at, L.h, { dx: L.hx ? 0 : -8, size: L.hx ? 21 : 16, color: L.hx ? 'amber' : 'rose', align: L.hx ? 'center' : 'right', ...(heightCallout ? { leaderAnchor: at, leader: true } : {}) });
+    }
     const askG = L.BH === 'x' || L.CH === 'x';
     if (L.a && !askG) { line(b, pt(Math.min(B.x, Cc.x), 0), pt(Math.max(B.x, Cc.x), 0), 'amber', 4); T(b, mid(B, Cc), L.a, { dy: 44, size: 17, color: 'amber' }); }
     else if (L.a) { // 구하는 것이 BH·CH 일 때: BC 는 땅 아래의 치수선으로 따로 표시
@@ -103,7 +150,8 @@
       if (f.ask !== 'ch') L.CH = C.last ? f.work.ch : 'CH';
     }
     if (C.last) L[{ h: 'h', bh: 'BH', ch: 'CH' }[f.ask]] = f.work[f.ask];
-    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: C.review ? C.step - 1 : 0, mountain: f.mount, L });
+    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: C.review ? C.step - 1 : 0, mountain: f.mount, L,
+      currentStandard: !!C.standardHeight, identifyHeight: !!C.standardHeight && !L.hx });
   }
 
   /* ====================================================================== 1. 두 지점에서 올려본 각 */
@@ -120,7 +168,7 @@
     },
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99, d1 = (v) => `≈${fmtN(v)}°`;
-      drawTower(b, { h: M.h, xb: M.xb, xc: M.xc, step: st, L: { B: d1(M.B), C: d1(M.C), x: show(1) ? 'x' : '', y: show(1) ? 'y' : '', a: `${M.a}`, h: `${M.h}`, BH: show(1) ? `${M.xb}` : '', CH: show(1) ? `${M.xc}` : '' }, handle: C.tab === 'explore' && !C.thumb ? { B: px(s, 't51b', -1), C: px(s, 't51c', 1) } : null, rows: show(3) ? [{ t: `h = \\frac{${M.a}}{tan x + tan y} = ${M.h}`, c: 'amber' }] : [] });
+      drawTower(b, { h: M.h, xb: M.xb, xc: M.xc, step: st, heightCallout: true, L: { B: d1(M.B), C: d1(M.C), x: show(1) ? 'x' : '', y: show(1) ? 'y' : '', a: `${M.a}`, h: `${M.h}`, BH: show(1) ? `${M.xb}` : '', CH: show(1) ? `${M.xc}` : '' }, handle: C.tab === 'explore' && !C.thumb ? { B: px(s, 't51b', -1), C: px(s, 't51c', 1) } : null, rows: show(3) ? [{ t: `h = \\frac{${M.a}}{tan x + tan y} = ${M.h}`, c: 'amber' }] : [] });
     },
     steps: (M) => [
       `탑의 높이를 $h=AH$ 라 하고 $\\angle BAH=x$, $\\angle CAH=y$ 라 해요. 올려본 각이 $\\angle B=${fmtN(M.B)}^{\\circ}$, $\\angle C=${fmtN(M.C)}^{\\circ}$ 이면 $x=90^{\\circ}-\\angle B$, $y=90^{\\circ}-\\angle C$ 예요.`,
@@ -176,7 +224,7 @@
     model: (s) => { const a = vi(Math.round(s.t53a)), R = heightFrom(a, 45, 60, false); return { a, ...R }; },
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99;
-      drawTower(b, { h: M.h.v, xb: M.bh.v, xc: M.ch.v, step: st, L: { B: '45°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h', BH: show(1) ? 'BH = h' : '', CH: show(1) ? `CH = ${vcan(vdiv(vi(1), vsq(3)))}h` : '' }, rows: show(2) ? [{ t: `BH + CH = h + \\frac{√3}{3}h = ${M.a.v}`, c: 'amber' }] : [] });
+      drawTower(b, { h: M.h.v, xb: M.bh.v, xc: M.ch.v, step: st, identifyHeight: true, L: { B: '45°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h', BH: show(1) ? 'BH = h' : '', CH: show(1) ? `CH = ${vcan(vdiv(vi(1), vsq(3)))}h` : '' }, rows: show(2) ? [{ t: `BH + CH = h + \\frac{√3}{3}h = ${M.a.v}`, c: 'amber' }] : [] });
     },
     steps: (M) => [
       '$\\angle B=45^{\\circ}$ 이므로 $BH=AH=h$, $\\angle C=60^{\\circ}$ 이므로 $CH=\\frac{h}{\\tan60^{\\circ}}=\\frac{\\sqrt{3}}{3}h$ 예요.',
@@ -190,7 +238,7 @@
       notes: notes('$h$ 에 대한 일차방정식 $(1+\\frac{\\sqrt{3}}{3})h=a$ 를 풀 때 분모를 유리화해요.')
     }),
     gen: () => heightProblem([[45, 60]], '45°·60°인 삼각형의 높이', ['h', 'h', 'bh', 'ch'], false),
-    pdraw: pdrawTower
+    pdraw: (b, q, C) => pdrawTower(b, q, { ...C, standardHeight: true })
   };
 
   /* ====================================================================== 4. 30°·60° 이등변 (산의 높이) */
@@ -202,7 +250,7 @@
     model: (s) => { const a = vi(Math.round(s.t53a)), h = vmul(vdiv(vsq(3), vi(2)), a); return { a, h, R: heightFrom(a, 30, 60, true) }; },
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99, R = M.R;
-      drawTower(b, { h: R.h.v, xb: R.bh.v, xc: R.ch.v, same: true, step: st, mountain: true, iso: show(1), L: { B: '30°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h' }, rows: show(1) ? [{ t: '∠BAC = 60° − 30° = 30° → AC = BC', c: 'amber' }] : [] });
+      drawTower(b, { h: R.h.v, xb: R.bh.v, xc: R.ch.v, same: true, step: st, mountain: true, iso: show(1), identifyHeight: true, L: { B: '30°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h' }, rows: show(1) ? [{ t: '∠BAC = 60° − 30° = 30° → AC = BC', c: 'amber' }] : [] });
     },
     steps: (M) => [
       '$\\angle ACH=60^{\\circ}$ 는 $\\triangle ABC$ 의 외각이에요. 외각은 이웃하지 않는 두 내각의 합이므로 $\\angle BAC=60^{\\circ}-30^{\\circ}=30^{\\circ}$ 예요.',
@@ -216,7 +264,7 @@
       notes: notes('이 경우는 $\\tan$ 의 차를 쓰지 않고 이등변삼각형을 찾는 것이 더 빨라요.')
     }),
     gen: () => { const q = heightProblem([[30, 60]], '30°·60°인 둔각삼각형의 높이', ['h'], true); q.fig.mount = true; q.stem = q.stem.replace('지면에 수직인 탑 $AH$ 가 있고', '산 꼭대기 $A$ 에서 지면에 내린 수선의 발이 $H$ 이고'); return q; },
-    pdraw: pdrawTower
+    pdraw: (b, q, C) => pdrawTower(b, q, { ...C, standardHeight: true })
   };
 
   /* ====================================================================== 5. 눈높이가 있는 나무 */
@@ -341,17 +389,23 @@
   /* ====================================================================== 7. 부러진 나무 */
   function drawBroken(b, d, th, o = {}) {
     const t = th * DEG, h = d * Math.tan(t), Lb = d / Math.cos(t), O = pt(0, 0), Pp = pt(0, -h), Q = pt(d, 0), Rr = pt(0, -h - Lb);
-    fit(b, bboxOf([pt(-0.5, -h - Lb), pt(d + 0.5, 0)]), { t: 60, b: 58, l: 70, r: 54 });
+    const compact = o.compactQuestion && !b.thumb && b.W < 560;
+    fit(b, bboxOf([pt(-0.5, -h - Lb), pt(d + 0.5, 0)]), compact ? { t: 28, b: 40, l: 58, r: 58, problemTop: 28 } : { t: 60, b: 58, l: 70, r: 54 });
     line(b, pt(-1.2, 0), pt(d + 1.2, 0), 'muted', 3);
     line(b, O, Pp, 'ink', 6); line(b, Pp, Q, 'green', 5);
     line(b, Pp, Rr, 'muted', 3, { dash: dashed });
-    ang(b, Q, Pp, O, { color: 'amber', r: 36, label: o.tl || `${th}°`, size: 16 }); ang(b, O, Q, Pp, { color: 'ink', r: 16 });
+    const angleR = compact ? Math.min(24, d * (b.k || 60) * .26) : 36;
+    ang(b, Q, Pp, O, { color: 'amber', r: angleR, label: compact ? '' : o.tl || `${th}°`, size: 16 }); ang(b, O, Q, Pp, { color: 'ink', r: 16 });
     const L = o.L || {};
     T(b, mid(O, Q), L.d || '', { dy: 22, size: 17, color: 'sky' });
     if (L.h) T(b, mid(O, Pp), L.h, { dx: -8, size: L.hx ? 21 : 17, color: L.hx ? 'amber' : 'rose', align: 'right' });
     if (L.L) T(b, mid(Pp, Q), L.L, { dx: 12, dy: -6, size: L.Lx ? 21 : 17, color: L.Lx ? 'amber' : 'green', align: 'left' });
     if (L.H) { const x = -0.9; line(b, pt(x, 0), pt(x, -h - Lb), 'amber', 3); T(b, pt(x, -(h + Lb) / 2), L.H, { dx: -8, size: 21, color: 'amber', align: 'right' }); }
     b.point(Pp, { color: 'ink', r: 4.5 }); b.point(Q, { color: 'ink', r: 4.5 }); b.point(O, { color: 'ink', r: 4.5 });
+    if (compact) {
+      const am = -Math.PI + t / 2, anchor = pt(Q.x + Math.cos(am) * angleR / b.k, Q.y + Math.sin(am) * angleR / b.k);
+      T(b, Q, o.tl || `${th}°`, { dx: 34, dy: -30, color: 'amber', size: 16, leaderAnchor: anchor, leader: true });
+    }
     (o.rows || []).forEach((r, i) => T(b, pt(d / 2, 0), r.t, { dy: 46 + i * 26, size: 16, color: r.c }));
   }
   const broken = {
@@ -394,7 +448,7 @@
         kind === 'H' ? `부러지기 전 높이는 두 부분의 합 $h+L=${vtex(h)}+${vtex(Lb)}$입니다.` : `문제에서 요구한 부분은 ${kind === 'h' ? '남은 줄기 $h$' : '부러진 부분 $L$'}입니다. 전체 높이와 구별해요.`
       ], { kind: 'broken-tree', distance: d, angle: th, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q, C) => drawBroken(b, q.fig.d, q.fig.th, { L: { ...q.fig.L, ...(C.review && C.step >= 3 ? Object.fromEntries(['h', 'L'].filter((k) => k !== q.fig.kind).map((k) => [k, q.fig.work[k]])) : {}), ...(C.last ? { [q.fig.kind]: q.fig.work[q.fig.kind], hx: false, Lx: false } : {}) } })
+    pdraw: (b, q, C) => drawBroken(b, q.fig.d, q.fig.th, { compactQuestion: true, L: { ...q.fig.L, ...(C.review && C.step >= 3 ? Object.fromEntries(['h', 'L'].filter((k) => k !== q.fig.kind).map((k) => [k, q.fig.work[k]])) : {}), ...(C.last ? { [q.fig.kind]: q.fig.work[q.fig.kind], hx: false, Lx: false } : {}) } })
   };
 
   G.register(50, 't5', '⑤ 높이·거리', '높이·거리', PARAMS, [r51, r52, r53, r54, tree, pend, broken]);

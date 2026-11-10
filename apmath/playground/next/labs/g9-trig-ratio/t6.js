@@ -100,14 +100,16 @@
   /* ====================================================================== 정삼각형 */
   function drawEq(b, a, o = {}) {
     const H = (a * Math.sqrt(3)) / 2, A = pt(0, -H), B = pt(-a / 2, 0), C = pt(a / 2, 0), Hh = pt(0, 0), st = o.step == null ? 99 : o.step;
-    fit(b, bboxOf([A, B, C]), { t: 54, b: 56 + (o.rows ? o.rows.length * 26 : 0), l: 60, r: 60 });
+    const compact = o.compactQuestion && !b.thumb && b.W < 560;
+    fit(b, bboxOf([A, B, C]), compact ? { t: 28, b: 40 + (o.rows ? o.rows.length * 32 : 0), l: 42, r: 42, problemTop: 28 } : { t: 54, b: 56 + (o.rows ? o.rows.length * 26 : 0), l: 60, r: 60 });
     fillPoly(b, [A, B, C], 'sky', 0.14); poly(b, [A, B, C], 'ink', 3.4);
     if (st >= 1 || (o.L && o.L.hx)) { line(b, A, Hh, 'violet', 3.2, { dash: dashed }); ang(b, Hh, B, A, { color: 'violet', r: 16 }); b.point(Hh, { color: 'violet', r: 4 }); T(b, Hh, 'H', { dy: 20, size: 17, color: 'violet' }); }
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, pt(0, -H / 3), n, { size: 17, gap: 11 }); });
-    ang(b, B, C, A, { color: 'amber', r: 32, label: '60°', size: 15 }); ang(b, C, A, B, { color: 'amber', r: 32, label: '60°', size: 15 }); ang(b, A, B, C, { color: 'amber', r: 32, label: '60°', size: 15 });
+    const angle = compact ? { r: 22, labelDist: 36 } : { r: 32 };
+    ang(b, B, C, A, { color: 'amber', ...angle, label: '60°', size: 15 }); ang(b, C, A, B, { color: 'amber', ...angle, label: '60°', size: 15 }); ang(b, A, B, C, { color: 'amber', ...angle, label: '60°', size: 15 });
     tick(b, A, B, 1, 'green'); tick(b, A, C, 1, 'green'); tick(b, B, C, 1, 'green');
     const L = o.L || {}, cen = pt(0, -H / 3);
-    if (L.a) sideTag(b, B, C, cen, L.a, { color: L.ax ? 'amber' : 'green', size: L.ax ? 21 : 17, flip: false, gap: 24 });
+    if (L.a) sideTag(b, B, C, cen, L.a, { color: L.ax ? 'amber' : 'green', size: L.ax ? 21 : 17, flip: false, gap: compact ? 16 : 24, ...(compact ? { f: .25 } : {}) });
     if (L.h) T(b, mid(A, Hh), L.h, { dx: 6, dy: 6, size: L.hx ? 21 : 16, color: L.hx ? 'amber' : 'violet', align: 'left' });
     (o.rows || []).forEach((r, i) => T(b, pt(0, 0), r.t, { dy: 64 + i * 26, size: r.size || 16, color: r.c }));
   }
@@ -144,7 +146,7 @@
         kind === 'a' ? `$a^2=\\frac{4\\times${vtex(S)}}{\\sqrt{3}}=${vtex(vpow2(a))}$이므로 양의 제곱근을 택해요.` : kind === 'S' ? `$S=\\frac{1}{2}\\times${vtex(a)}\\times${vtex(h)}$를 계산해요.` : '높이를 묻고 있으므로 구한 수선의 길이를 답으로 써요. 넓이와 구별해요.'
       ], { kind: 'equilateral', side: a.v, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q, C) => drawEq(b, q.fig.a, { step: C.review ? C.step : 0, L: { ...q.fig.L, ...(C.review && C.step >= 3 && q.fig.kind === 'S' ? { h: q.fig.work.h } : {}), ...(C.last ? { a: q.fig.work.a, h: q.fig.work.h, hx: false, ax: false } : {}) }, rows: C.last && q.fig.kind === 'S' ? [{ t: `넓이 = ${q.fig.work.S}`, c: 'amber' }] : q.fig.rows })
+    pdraw: (b, q, C) => drawEq(b, q.fig.a, { compactQuestion: true, step: C.review ? C.step : 0, L: { ...q.fig.L, ...(C.review && C.step >= 3 && q.fig.kind === 'S' ? { h: q.fig.work.h } : {}), ...(C.last ? { a: q.fig.work.a, h: q.fig.work.h, hx: false, ax: false } : {}) }, rows: C.last && q.fig.kind === 'S' ? [{ t: `넓이 = ${q.fig.work.S}`, c: 'amber' }] : q.fig.rows })
   };
 
   /* ====================================================================== r6-1 넓이로 변 구하기 */

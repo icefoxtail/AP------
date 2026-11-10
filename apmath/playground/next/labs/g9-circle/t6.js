@@ -34,8 +34,18 @@
     c6P: P('∠P의 크기', 20, 50, 2, 30, { color: 'rose', format: degF }),
     c6h: P('현 BC의 높이(∠BAT)', 30, 70, 5, 40, { color: 'sky', format: degF }),
     c6be: P('∠ABC의 크기', 40, 80, 2, 64, { color: 'sky', format: degF }),
-    c6pa: P('PA', 2, 8, 1, 4, { color: 'sky', format: lenF }),
-    c6pb: P('PB', 2, 12, 1, 6, { color: 'green', format: lenF }),
+    c6pa: { ...P('PA', 2, 8, 1, 4, { color: 'sky', format: lenF }), onInput: (s, lab) => {
+      if (lab?.scene?.id === 'c6-8') s.c6pb = Math.max(s.c6pb, s.c6pa + 1);
+    } },
+    c6pb: { ...P('PB', 2, 12, 1, 6, { color: 'green', format: lenF }), onInput: (s, lab) => {
+      if (lab?.scene?.id === 'c6-8') {
+        s.c6pb = Math.max(3, s.c6pb);
+        s.c6pa = Math.min(s.c6pa, s.c6pb - 1);
+        // 조작 중인 막대는 공통 shell이 덮어쓰지 않으므로 자체 보정값도 함께 반영합니다.
+        const input = lab._ctls?.c6pb?.input;
+        if (input && +input.value !== s.c6pb) input.value = String(s.c6pb);
+      }
+    } },
     c6pc: P('PC', 2, 10, 1, 3, { color: 'amber', format: lenF })
   };
 
@@ -492,7 +502,9 @@
   const tsG = (a, b) => {
     // 점 P=(0,0), 할선은 x축 위. 원의 중심은 현 AB 의 수직이등분선 위(위쪽)에 둡니다.
     const A = pt(a, 0), B = pt(b, 0), t = Math.sqrt(a * b), Cc = pt(0, 0), rr = (b - a) / 2, yc = -rr * 0.9, c = pt((a + b) / 2, yc), r = Math.hypot(rr, yc);
-    const d = Math.hypot(c.x, c.y), th = Math.atan2(c.y, c.x) / DEG, al = Math.acos(clamp(r / d, -1, 1)) / DEG, Tt = add(Cc, mul(pt(Math.cos((th - al) * DEG), Math.sin((th - al) * DEG)), Math.sqrt(d * d - r * r)));
+    // 직각삼각형 PCT에서 P의 각은 sin(∠CPT)=r/PC로 구합니다.
+    // 중심 C의 각을 사용하면 PT 길이는 맞아도 T가 원 위에 놓이지 않습니다.
+    const d = Math.hypot(c.x, c.y), th = Math.atan2(c.y, c.x) / DEG, al = Math.asin(clamp(r / d, -1, 1)) / DEG, Tt = add(Cc, mul(pt(Math.cos((th - al) * DEG), Math.sin((th - al) * DEG)), Math.sqrt(d * d - r * r)));
     return { a, b, t, A, B, P: Cc, T: Tt, c, r, pt: Math.sqrt(d * d - r * r) };
   };
   const tsc = {
@@ -527,7 +539,7 @@
       `지금: $\\overline{PT}^2=${fmtN(M.g.a)}\\times ${fmtN(M.g.b)}=${fmtN(M.g.a * M.g.b)}$, $\\overline{PT}=${nt(M.g.t)}$.`
     ],
     view: (M) => ({
-      guide: '막대로 <b>PA, PB</b>를 바꿔 보세요. 접선의 길이 PT는 늘 <b>√(PA·PB)</b>예요. [심화]',
+      guide: '막대로 <b>PA, PB</b>를 바꿔 보세요. A가 P에 더 가까우므로 <b>PA &lt; PB</b>가 되도록 두 길이가 함께 조절됩니다. 접선의 길이 PT는 늘 <b>√(PA·PB)</b>예요. [심화]',
       readouts: [rd('PA·PB', fmtN(M.g.a * M.g.b), 'sky'), rd('PT²', fmtN(M.g.t * M.g.t), 'green', '늘 같아요'), rd('PT', ntD(M.g.t), 'rose', '√(PA·PB)')],
       rule: '[심화] 원 밖의 점 P에서 접선 PT와 할선 PAB에 대하여 $PT^2=PA\\cdot PB$',
       notes: notes('이 장면은 <b>심화</b>예요. 접선과 현이 이루는 각으로 닮음을 찾아요.')
@@ -554,4 +566,15 @@
   };
 
   G.register(60, 'c6', '접선과 현', '접선과 현', PARAMS, [alt, both, kill, parl, iso, pin, pout, tsc]);
+  // 공유 주소의 값은 enter 뒤에 복원됩니다. 이전 주소의 PA≥PB도 첫
+  // view에서 조작값으로 정규화하여 수학 모델만 다른 길이를 그리지 않게 합니다.
+  const tangentScene = window.APL_CI_GROUPS.find(group => group.id === 'c6').scenes.find(scene => scene.id === 'c6-8');
+  const tangentView = tangentScene.view;
+  tangentScene.view = (s, lab) => {
+    if ((lab?.tab || 'explore') === 'explore') {
+      s.c6pb = Math.max(3, s.c6pb);
+      s.c6pa = Math.min(s.c6pa, s.c6pb - 1);
+    }
+    return tangentView(s, lab);
+  };
 })();

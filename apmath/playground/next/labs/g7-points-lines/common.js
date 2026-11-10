@@ -83,6 +83,7 @@
   /* ------------------------------------------------------------------ 장면 만들기 */
   PL.scene = function (spec) {
     const kind = spec.kind || 'figure';
+    let fitting = false, fitStage = '', fitBoard = null;
     const model = (s) => spec.model(s);
     const nSteps = (s) => spec.steps(model(s), s).length;
     const ctxOf = (s, lab, thumb) => {
@@ -108,6 +109,27 @@
       return h;
     };
     const boxOf = (b) => (typeof spec.box === 'function' ? spec.box(b) : spec.box);
+    // The first enter can precede the stage's final size and toolbar insets.
+    // Re-measure only when that available area changes, from the same seed view
+    // as a fresh entry. Keep the student's values, answer state and pan/zoom.
+    const fitForStage = (s, lab) => {
+      if (fitting || !lab || s !== lab.s || !lab.board || !lab._measureFocus) return;
+      const b = lab.board, i = b.insets;
+      const key = [b.W, b.H, i.top, i.right, i.bottom, i.left].join('|');
+      if (fitStage === key && fitBoard === b && scene._focus) return;
+      const keep = { ...s }, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY };
+      fitting = true;
+      let focus;
+      try {
+        b.setFocus({ x: [-5, 5], y: [-4, 4] }, true);
+        focus = lab._measureFocus(scene);
+      } finally {
+        Object.keys(s).forEach((k) => { if (!(k in keep)) delete s[k]; });
+        Object.assign(s, keep); Object.assign(b, view);
+        fitting = false;
+      }
+      if (focus) { scene._focus = focus; fitStage = key; fitBoard = b; b.setFocus(focus, false); }
+    };
     const scene = {
       id: spec.id, title: spec.title, short: spec.short || spec.title, _pl: spec, _plKey: keyOf, boardKind: kind,
       question: spec.question,
@@ -128,14 +150,16 @@
         Object.assign(s, typeof spec.init === 'function' ? spec.init(s) : spec.init || {});
         s.plSeed = 0; s.plPick = null; s.playing = false; s.plQuestionKey = keyOf(s);
         if (lab && lab.board && s === lab.s) {
-          scene._focus = null;
+          scene._focus = null; fitStage = '';
           lab.board.onPanDrag = spec.orbit ? (dx, dy) => { spec.orbit(lab.s, dx, dy); lab.invalidate(true); } : null;
+          fitForStage(s, lab);
         } else { const bx = boxOf({ W: 900 }); scene._focus = bx ? { x: [bx[0], bx[2]], y: [bx[1], bx[3]] } : null; } // 장면 목록의 작은 그림용
       },
       tick: spec.tick,
       view: (s, lab) => {
+        fitForStage(s, lab);
         const questionKey = keyOf(s);
-        if (s.plQuestionKey !== questionKey) { s.plQuestionKey = questionKey; s.plPick = null; s.revealed = false; s.step = 0; }
+        if (!fitting && s.plQuestionKey !== questionKey) { s.plQuestionKey = questionKey; s.plPick = null; s.revealed = false; s.step = 0; }
         const M = model(s), C = ctxOf(s, lab);
         const v = { guide: spec.guide(M, s) };
         if (C.tab === 'problem') { v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' }; return v; }

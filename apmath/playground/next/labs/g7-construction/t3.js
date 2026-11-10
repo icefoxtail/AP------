@@ -429,8 +429,11 @@
       const ticks = {}, angs = {}, A1 = T1, A2 = T2, SK = ['c', 'a', 'b']; // 변 키: AB=c, BC=a, CA=b
       [0, 1, 2].forEach((i) => { if (set.has(i)) ticks[SK[i]] = { n: i + 1, color: gv.has(i) ? 'sky' : 'amber' }; });
       [0, 1, 2].forEach((i) => { if (set.has(3 + i)) angs['ABC'[i]] = { c: gv.has(3 + i) ? 'sky' : 'amber', rings: i + 1, t: '', r: 24 }; });
-      drawTri(b, T1, { fill: 'sky', fa: 0.08, names: ['A', 'B', 'C'], ticks, angs });
-      drawTri(b, T2, { fill: 'sky', fa: 0.08, names: ['D', 'E', 'F'], ticks, angs });
+      const narrow = b.W < 560;
+      // 안쪽 꼭짓점 이름을 서로 향해 밀지 않고 각 점의 바로 아래에 둡니다.
+      drawTri(b, T1, { fill: 'sky', fa: 0.08, names: narrow ? ['A', '', 'C'] : ['A', 'B', 'C'], ticks, angs });
+      drawTri(b, T2, { fill: 'sky', fa: 0.08, names: narrow ? ['', 'E', 'F'] : ['D', 'E', 'F'], ticks, angs });
+      if (narrow) { T(b, T1[1], 'B', { dy: 18, size: 17 }); T(b, T2[0], 'D', { dy: 18, size: 17 }); }
       if (C.txt) {
         const k = congKind(set), col = k ? 'green' : 'rose';
         const txt = k ? `${k} 합동 조건을 만족해요 → △ABC ≡ △DEF ✓` : `아직 부족해요 → 합동이라고 할 수 없어요`;

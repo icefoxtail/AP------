@@ -141,8 +141,9 @@
       const corners = [-1, 1].flatMap((sy) => [-1, 1].map((sz2) => add3(mul3(FR.e1, d), add3(mul3(FR.e2, sy * L), mul3(FR.e3, sz2 * L)))));
       const narrow = b.W < 560, boxSz = narrow ? 80 : 140, showBox = sec.count >= 3 && C.txt, keepBox = narrow && showBox; // 넓이 0인 끝점에서는 없는 실제 모양 상자의 자리를 비워 두지 않아 큐브와 접촉점을 크게 보여 줍니다.
       const nLines = st >= 1 && st <= 3 ? 2 : 1;
-      // 단면의 실제 모양 상자는 입체 아래(휴대폰)에 따로 자리를 둬서 입체의 모서리를 가리지 않게 합니다
-      D.fitPts(wv.concat(corners), { t: topFor(nLines, 17), b: keepBox ? boxSz + 24 : 40, l: 36, r: 36 });
+      // 휴대폰의 실제 모양 상자는 왼쪽 아래에 두고 그 오른쪽에 입체를 맞춥니다.
+      // 상자 높이를 화면 전체 아래 여백으로 빼면 원래 정육면체가 손잡이만큼 작아집니다.
+      D.fitPts(wv.concat(corners), { t: topFor(nLines, 17), b: keepBox ? 32 : 40, l: keepBox ? boxSz + 24 : 36, r: 36 });
       const S = solidOf(wv);
       const hit = (fi) => sec.faces.includes(fi);
       // 입체 면: 단면이 지나는 면을 강조

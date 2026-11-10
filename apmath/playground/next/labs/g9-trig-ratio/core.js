@@ -336,7 +336,9 @@
     const pp = b.pad * Math.min(aw, ah), W = aw - 2 * pp, H = ah - 2 * pp;
     const base = b.thumb ? 5 : narrow ? 34 : 52;
     const pad = { l: o.l == null ? base : o.l, r: o.r == null ? base : o.r, t: o.t == null ? base : o.t, b: o.b == null ? base : o.b };
-    if (G_STATE.problem && !b.thumb) pad.t = Math.max(pad.t, 62); // 문제 탭: 오른쪽 위 「그림을 보고 풀어 보세요」 칩이 그림을 가리지 않게 위쪽을 비워 둡니다
+    // Keep the desktop question-chip clearance by default. Only an explicitly
+    // opted-in compact question may use the space where that chip is absent.
+    if (G_STATE.problem && !b.thumb) pad.t = Math.max(pad.t, o.problemTop == null ? 62 : o.problemTop);
     const bw = Math.max(1e-6, box.x1 - box.x0), bh = Math.max(1e-6, box.y1 - box.y0);
     let k = Math.max(3, Math.min((W - pad.l - pad.r) / bw, (H - pad.t - pad.b) / bh));
     if (o.maxK) k = Math.min(k, o.maxK);

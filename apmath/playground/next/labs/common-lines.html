@@ -430,7 +430,17 @@ window.addEventListener('DOMContentLoaded', function () {
       c.font = `800 ${12.5 * b.fs}px ${b.font}`;
       c.textAlign = 'right';
       c.textBaseline = 'top';
-      c.fillText('O', org.x - 6, org.y + 5);
+      // 원점 글자가 native clip 바깥에 완전히 있으면 보이지 않는 draw만 생략합니다.
+      // 일부라도 걸치거나 측정·변환 조건이 다르면 기존 렌더를 그대로 유지합니다.
+      const originX = org.x - 6, originY = org.y + 5, originInk = c.measureText('O'), originTransform = c.getTransform();
+      const originBounds = [originX - originInk.actualBoundingBoxLeft, originX + originInk.actualBoundingBoxRight,
+        originY - originInk.actualBoundingBoxAscent, originY + originInk.actualBoundingBoxDescent];
+      const plainOrigin = originBounds.every(Number.isFinite) && originBounds[1] > originBounds[0] && originBounds[3] > originBounds[2]
+        && originTransform && originTransform.a > 0 && originTransform.d > 0 && originTransform.b === 0 && originTransform.c === 0
+        && originTransform.e === 0 && originTransform.f === 0 && c.shadowBlur === 0 && c.shadowOffsetX === 0 && c.shadowOffsetY === 0
+        && c.filter === 'none' && c.globalCompositeOperation === 'source-over';
+      const outsideOrigin = originBounds[1] < -2 || originBounds[0] > W + 2 || originBounds[3] < -2 || originBounds[2] > H + 2;
+      if (!plainOrigin || !outsideOrigin) c.fillText('O', originX, originY);
       c.textAlign = 'right';
       c.textBaseline = 'bottom';
       c.fillText('x', W - 8, Math.min(Math.max(org.y - 6, 18), H - 4));

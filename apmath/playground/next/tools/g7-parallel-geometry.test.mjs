@@ -173,3 +173,52 @@ test('judgement problem review follows every current option and restores explora
     assert.equal(sc.steps(s).length, 3, 'principle exploration retains its original three steps');
   }
 });
+
+// Match the mobile board sizes and 60 px tool inset in the Chromium audit. The
+// production transform matters here: a large zero-inset test board misses the
+// two interior-angle labels meeting at the centre of the small polygon.
+context.window.APLab = { clamp: (x, a, b) => Math.max(a, Math.min(b, x)) };
+vm.runInContext(fs.readFileSync(path.join(root, 'kit/apl-board.js'), 'utf8'), context);
+function polygonProblemScreen(s, W, H) {
+  const b = Object.create(context.window.APLab.Board.prototype), texts = [], arcs = [], paths = [], leaders = [];
+  Object.assign(b, { W, H, pad: .02, kind: 'figure', aspect: '1:1', insets: { left: 0, right: 0, top: 0, bottom: 60 }, zoom: 1, panX: 0, panY: 0, fs: 1, thumb: false, panes: null, paneId: null });
+  b.path = (p, o = {}) => paths.push({ p: p.map(v => ({ ...v })), o });
+  b.arc = (p, r, a, z, o = {}) => arcs.push({ p, r, a, z, o });
+  for (const method of ['point', 'right', 'ticks', 'handle']) b[method] = () => {};
+  b.leader = (anchor, target) => leaders.push({ anchor, target });
+  b.annotationSize = (text, o) => ({ width: context.window.APL_PA_KIT.textW(text, o.size) + 6, height: o.size + 6 });
+  b.text = (p, text, o = {}) => {
+    const P = b.toS(p), size = o.size * b.fs * b._ts(), width = context.window.APL_PA_KIT.textW(text, size);
+    const x = P.x + (o.dx || 0), y = P.y + (o.dy || 0);
+    texts.push({ text: String(text), p, x0: x - width / 2 - 2, x1: x + width / 2 + 2, y0: y - size / 2 - 2, y1: y + size / 2 + 2 });
+  };
+  const sc = get('p3-3'); sc.draw(b, s, {}, { tab: 'problem', s, scene: sc });
+  return { b, texts, arcs, paths, leaders };
+}
+const textOverlap = (a, b) => Math.min(a.x1, b.x1) > Math.max(a.x0, b.x0) && Math.min(a.y1, b.y1) > Math.max(a.y0, b.y0);
+for (const [W, H] of [[390, 309], [360, 291]]) test(`p3-3 ${W}px problem keeps both given interior angles separately readable`, () => {
+  const sc = get('p3-3');
+  for (const n of [6, 5, 8]) for (const t of [40, 0, 15, 30, 50, 60, 75, 100]) {
+    const s = state(sc, { hN: n, hT: t }), m = sc.pa.model(s);
+    const { b, texts, arcs, paths, leaders } = polygonProblemScreen(s, W, H), given = texts.filter(x => x.text === m.I + '°');
+    assert.equal(given.length, 2, 'B and C must each retain their stated interior angle');
+    assert.ok(!textOverlap(given[0], given[1]), `${W}px n=${n}, tilt=${t}: the two ${m.I}° labels merge`);
+    for (const label of given) {
+      assert.ok(label.x0 >= 0 && label.x1 <= W && label.y0 >= 0 && label.y1 <= H - 60, 'given angle is clipped or enters the tool region');
+      for (const other of texts.filter(x => !given.includes(x))) assert.ok(!textOverlap(label, other), `${W}px n=${n}, tilt=${t}: given angle covers ${other.text}: ${JSON.stringify({ label, other })}`);
+    }
+    assert.equal(leaders.length, 2, 'each separately placed value connects to its own angle mark');
+    for (const i of [1, 2]) {
+      near(angle(m.V[i - 1], m.V[i], m.V[i + 1]), m.I, 'geometric interior angle');
+      const marks = arcs.filter(x => length(x.p, m.V[i]) < 1e-8);
+      assert.equal(marks.length, 4, 'filled sector and three equal-angle arcs are retained');
+      for (const mark of marks) near((mark.z - mark.a) * 180 / Math.PI, m.I, 'drawn arc matches the interior angle');
+    }
+    const polygon = paths.find(x => x.p.length === n && x.o.close);
+    assert.deepEqual(JSON.parse(JSON.stringify(polygon.p)), JSON.parse(JSON.stringify(m.V)), 'the original regular polygon is unchanged');
+    near(answer(sc, s), 2 * m.I - 180 - m.a, 'answer');
+    assert.ok(texts.some(x => x.text === 'x'), 'the required angle remains unknown');
+    assert.ok(!texts.some(x => x.text === m.b + '°' && length(x.p, m.V[3]) < 1e-8), 'the answer is not revealed at D');
+    assert.ok(Number.isFinite(b.k));
+  }
+});

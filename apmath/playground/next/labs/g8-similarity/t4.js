@@ -130,12 +130,16 @@
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? xGeo(pk.m, pk.n, pk.r) : M;
       // Keep the outward A/D names below the board's upper status badge.
       // Inverse ratios place the large top triangle directly beneath that badge.
-      fit(b, bboxOf([g.A, g.D, g.B, g.C]), { t: 74, b: 66, l: 52, r: 52 });
+      // The problem has no exploration badge or bottom explanation. Reserving
+      // those two rows on a short phone board shrinks the small triangle to 21px.
+      const mobileProblem = prob && phone(b) && b.H < 320;
+      fit(b, bboxOf([g.A, g.D, g.B, g.C]), mobileProblem ? { t: 30, b: 34, l: 36, r: 36 } : { t: 74, b: 66, l: 52, r: 52 });
       const cen = g.O, upperColor = g.m <= g.n ? 'sky' : 'green', lowerColor = g.m <= g.n ? 'green' : 'sky';
       fillPoly(b, [g.O, g.A, g.D], upperColor, 0.18); fillPoly(b, [g.O, g.B, g.C], lowerColor, 0.18);
       line(b, g.A, g.D, 'ink', 3.6); line(b, g.B, g.C, 'ink', 3.6); line(b, g.A, g.C, 'ink', 3.6); line(b, g.D, g.B, 'ink', 3.6);
       par(b, g.A, g.D, 1, 'green'); par(b, g.B, g.C, 1, 'green');
-      if (prob || !C.review || st >= 1) { ang(b, g.A, g.D, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.C, g.B, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.D, g.A, g.O, { color: 'violet', rings: 2, r: 20 }); ang(b, g.B, g.C, g.O, { color: 'violet', rings: 2, r: 20 }); }
+      const angleR = (v, p, q) => mobileProblem ? Math.max(8, Math.min(20, Math.min(dist(v, p), dist(v, q)) * b.k * 0.28)) : 20;
+      if (prob || !C.review || st >= 1) { ang(b, g.A, g.D, g.O, { color: 'rose', rings: 1, r: angleR(g.A, g.D, g.O) }); ang(b, g.C, g.B, g.O, { color: 'rose', rings: 1, r: angleR(g.C, g.B, g.O) }); ang(b, g.D, g.A, g.O, { color: 'violet', rings: 2, r: angleR(g.D, g.A, g.O) }); ang(b, g.B, g.C, g.O, { color: 'violet', rings: 2, r: angleR(g.B, g.C, g.O) }); }
       const mark = (p, q) => 0;
       const sz = 16, lb = (p, q, t, col, gap) => t != null && sideTag(b, p, q, cen, t, { color: col, size: sz, gap: gap || 12 });
       const lbIn = (p, q, t, col) => T(b, lerp(p, q, 0.5), t, { size: sz, color: col, dx: ((p.y > q.y ? 1 : 1) * 14), dy: 0 });
@@ -304,7 +308,8 @@
     model: (s) => ({ ...fourGeo(clamp(Math.round(s.smFu), 1, 3)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? fourGeo(pk.t) : M;
-      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 96, l: 90, r: 90 });
+      const compactProblem = prob && b.W < 560;
+      fit(b, bboxOf([g.A, g.B, g.C]), compactProblem ? { t: 26, b: 62, l: 64, r: 64 } : { t: 44, b: 96, l: 90, r: 90 });
       const cen = centroid([g.A, g.B, g.C]);
       const cols = ['sky', 'green', 'amber', 'rose'];
       const T4 = [[g.A, g.D, g.F], [g.D, g.B, g.E], [g.F, g.E, g.C], [g.D, g.E, g.F]];
@@ -314,8 +319,8 @@
       tick(b, g.A, g.D, 1, 'amber'); tick(b, g.D, g.B, 1, 'amber'); tick(b, g.B, g.E, 2, 'amber'); tick(b, g.E, g.C, 2, 'amber'); tick(b, g.C, g.F, 3, 'amber'); tick(b, g.F, g.A, 3, 'amber');
       const sz = 16, dm = (p, q, c, v) => dim(b, p, q, c, String(v), { color: 'sky', off: 38, size: sz }), lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
-        if (pk.kind === 0) { dm(g.A, g.B, cen, g.AB); dm(g.A, g.C, cen, g.AC); dm(g.B, g.C, cen, g.BC); T(b, centroid([g.D, g.E, g.F]), 'x', { size: 17, color: 'amber' }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 둘레', { dy: 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
-        else { T(b, centroid([g.A, g.D, g.F]), '', {}); T(b, cen, `△ABC의 넓이 ${g.S}`, { size: phone(b) ? 12 : 14, color: 'sky', dx: g.B.x * 0 }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 넓이 x', { dy: 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
+        if (pk.kind === 0) { dm(g.A, g.B, cen, g.AB); dm(g.A, g.C, cen, g.AC); dm(g.B, g.C, cen, g.BC); T(b, centroid([g.D, g.E, g.F]), 'x', { size: 17, color: 'amber' }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 둘레', { dy: compactProblem ? 60 : 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
+        else { T(b, centroid([g.A, g.D, g.F]), '', {}); T(b, cen, `△ABC의 넓이 ${g.S}`, { size: phone(b) ? 12 : 14, color: 'sky', dx: g.B.x * 0 }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 넓이 x', { dy: compactProblem ? 60 : 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
       } else {
         dm(g.A, g.B, cen, g.AB); dm(g.A, g.C, cen, g.AC); dm(g.B, g.C, cen, g.BC);
         if (!C.review || st >= 2) T4.forEach((Tr, i) => T(b, centroid(Tr), String(g.s4), { size: 15, color: cols[i] }));

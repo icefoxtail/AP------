@@ -505,7 +505,22 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     fig.forEach((it) => {
       if (givensOnly && it.when !== 'g') return;
       const shift = offsets && offsets.get(it);
-      drawItem(b, shift ? { ...it, dy: (it.dy || 0) + shift } : it, 0, givensOnly ? 1 : whenA(c, it.when));
+      let item = shift ? { ...it, dy: (it.dy || 0) + shift } : it;
+      if (it.triangleSide && !c.problem && !c.mode && !b.thumb) {
+        const handle = c.M.handles.find(h => h.id === 'C'), hp = b.toS(P(handle.p[0], handle.p[1]));
+        const at = b.toS(P(it.p[0], it.p[1])), size = b.annotationSize(it.text, { size: it.size || 14, weight: 800 });
+        // annotationSize includes3px padding; test the glyph box against C's
+        // actual control point before moving this explicitly named side value.
+        const x = at.x + (it.dx || 0), y = at.y + (it.dy || 0);
+        const dx = Math.max(0, Math.abs(hp.x - x) - (size.width - 6) / 2);
+        const dy = Math.max(0, Math.abs(hp.y - y) - (size.height - 6) / 2);
+        if (Math.hypot(dx, dy) < 6.5 * b.hr + 3) {
+          // Keep C's name and its full halo unobstructed after a short-side drag.
+          const nameSize = b.annotationSize('C', { size: 14, weight: 800 });
+          item = { ...item, dy: hp.y - 14 - (nameSize.height + size.height) / 2 - 8 - at.y };
+        }
+      }
+      drawItem(b, item, 0, givensOnly ? 1 : whenA(c, it.when));
     });
   }
 
@@ -526,9 +541,11 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     if (c.mode) { renderPeri(b, c, outlineOnly); return; }
     const ox = dx * mv;
     if (mv > 0.01) { outline(b, shiftP(M.outer, dx), 'muted', 1.8, { dash: [6, 5], alpha: 0.75 * mv }); drawCtx(dx, 0.45 * mv); }
-    fillEO(b, [M.outer], 'ink', 0.1 * (1 - hi));
-    fillEO(b, remPolys, 'sky', 0.44 * hi + 0.16 * res);
-    M.cuts.forEach((g) => fillEO(b, g.polys.map((p) => shiftP(p, ox)), 'amber', 0.6 * hi));
+    // [2.0 수정] 파낼 부분의 윤곽과 남은 면은 문제의 기본 도형입니다.
+    // 진행률 0에서도 구별되며, 재생은 같은 도형을 강조하고 옆으로 옮깁니다.
+    fillEO(b, [M.outer], 'ink', 0.04 * (1 - hi));
+    fillEO(b, remPolys, 'sky', 0.22 + 0.22 * hi + 0.16 * res);
+    M.cuts.forEach((g) => fillEO(b, g.polys.map((p) => shiftP(p, ox)), 'amber', 0.12 + 0.48 * hi));
     M.over.forEach((o) => {
       const a = hi * (1 - mv);
       fillEO(b, o.polys, o.color, (o.alpha || 0.2) * 0.55 * a);
@@ -537,7 +554,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     outline(b, M.outer, 'ink', 2.6);
     drawCtx(0, 0.9);
     if (mv > 0.02) flat.forEach((p) => outline(b, p, 'amber', 2, { dash: [6, 4], alpha: 0.9 * hi }));
-    M.cuts.forEach((g) => g.polys.forEach((p) => outline(b, shiftP(p, ox), 'amber', 2.4, { alpha: hi })));
+    M.cuts.forEach((g) => g.polys.forEach((p) => outline(b, shiftP(p, ox), 'amber', 2.4, { alpha: 0.8 + 0.2 * hi })));
     drawFig(b, c);
     M.part.forEach((it) => drawItem(b, it, ox, whenA(c, it.when)));
     const cp = M.cap;
@@ -549,7 +566,9 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   function renderPeri(b, c, outlineOnly = false) {
     const M = c.M, [x0, y0, x1] = M.box, cx = (x0 + x1) / 2;
     const flat = [].concat(...M.cuts.map((g) => g.polys));
-    if (!outlineOnly) fillEO(b, [M.outer].concat(flat), 'sky', 0.2);
+    // The shaded remainder is the given object whose boundary is being traced.
+    // Keep it visible while revealing only the current perimeter component.
+    fillEO(b, [M.outer].concat(flat), 'sky', 0.2);
     outline(b, M.outer, 'ink', 1.6, { alpha: 0.5 });
     flat.forEach((p) => outline(b, p, 'ink', 1.4, { alpha: 0.5 }));
     M.ctx.forEach((p) => outline(b, p, 'ink', 1.5, { alpha: 0.7 }));
@@ -949,8 +968,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       const abTxt = intAB ? `AB=${Math.round(AB)}` : 'AB'; // 정수가 아니면 √ 대신 이름만(제곱근은 중3)
       const fig = [
         { k: 'right', v: [Cp.x, Cp.y], p: [Ap.x, Ap.y], q: [Bp.x, Bp.y], when: 'g', size: 12 },
-        T([(Ap.x + Cp.x) / 2, (Ap.y + Cp.y) / 2], `AC=${ac}`, { dx: -4, dy: -14, color: 'ink', when: 'g' }),
-        T([(Bp.x + Cp.x) / 2, (Bp.y + Cp.y) / 2], `BC=${bc}`, { dx: 6, dy: -14, color: 'ink', when: 'g' }),
+        T([(Ap.x + Cp.x) / 2, (Ap.y + Cp.y) / 2], `AC=${ac}`, { dx: -4, dy: -14, color: 'ink', when: 'g', triangleSide: true }),
+        T([(Bp.x + Cp.x) / 2, (Bp.y + Cp.y) / 2], `BC=${bc}`, { dx: 6, dy: -14, color: 'ink', when: 'g', triangleSide: true }),
         T([0, 0], abTxt, { dy: 17, color: 'ink', when: 's' }),
         { k: 'dot', p: [0, 0], when: 's' },
         T([Ap.x, 0], 'A', { dx: -10, dy: -12, when: 'g' }), T([Bp.x, 0], 'B', { dx: 10, dy: -12, when: 'g' }), T([Cp.x, Cp.y], 'C', { dy: -14, when: 'g' })

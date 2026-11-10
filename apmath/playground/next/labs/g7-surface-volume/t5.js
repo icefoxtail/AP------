@@ -775,8 +775,14 @@
       }
       if (showRows) {
         slideTiles(rows, te);
-        drawRows(D, rows, 0, rowTop);
-        if (te > 0.95 && C.tab !== 'explore') totalText(D, rows, rowTop, `겉넓이 = 면 넓이의 합 = ${plainVal(M.surf)}`, 64);
+        // 좁은 정리 화면에서는 조각이 겹친 채 이동하는 동안 계산값까지
+        // 겹쳐 읽히지 않게 합니다. 면은 계속 보이고, 펼침을 마치면 값이 나타납니다.
+        const movingReview = C.review && narrow && te < 0.999;
+        const shownRows = movingReview ? { ...rows, rows: rows.rows.map(L => ({ ...L,
+          tiles: L.tiles.map(tile => ({ ...tile, label: '', lab: '', cap: '', capt: '' }))
+        })) } : rows;
+        drawRows(D, shownRows, 0, rowTop);
+        if (te > 0.95 && !movingReview && C.tab !== 'explore' && (!C.review || st >= 4)) totalText(D, rows, rowTop, `겉넓이 = 면 넓이의 합 = ${plainVal(M.surf)}`, 64);
       }
       if (volParts) {
         G.drawBars(D, volParts, 0, rowTop, 5.6, 0, {});

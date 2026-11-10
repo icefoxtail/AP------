@@ -57,11 +57,20 @@
       const h = Math.sqrt(h2), Bp = pt(-half, 0), Cp = pt(half, 0), Ap = pt(0, -h), H = pt(0, 0);
       fit(b, bboxOf([Ap, Bp, Cp, pt(0, 1.2)]), { t: 40, b: 52, l: 44, r: 44 });
       const st = (n) => !C.review || C.step >= n;
+      const compactHeight = C.givens && kind === 0 && !b.thumb && b.W <= 820 && half * b.k < 60;
+      const heightAt = lerp(Ap, H, compactHeight ? 0.68 : 0.5);
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.07);
       if (st(1)) { fillPoly(b, [Ap, Bp, H], 'sky', 0.22); fillPoly(b, [Ap, H, Cp], 'green', 0.2); }
       poly(b, [Ap, Bp, Cp], 'ink', 3.4);
       tick(b, Ap, Bp, 2, 'amber'); tick(b, Ap, Cp, 2, 'amber');
-      if (st(1)) { line(b, Ap, H, 'rose', 3, { dash: [7, 6] }); b.right(H, Bp, Ap, { size: 11, color: 'rose' }); b.point(H, { color: 'rose', r: 4 }); T(b, H, 'H', { dy: 18, size: 16, color: 'rose' }); }
+      if (st(1)) {
+        if (compactHeight) {
+          // 높이 표시는 AH 자체에 놓습니다. 글자 자리만 비워 AC의 같은 길이 눈금과 구별합니다.
+          line(b, Ap, pt(0, heightAt.y - 13 / b.k), 'rose', 3, { dash: [7, 6] });
+          line(b, pt(0, heightAt.y + 13 / b.k), H, 'rose', 3, { dash: [7, 6] });
+        } else line(b, Ap, H, 'rose', 3, { dash: [7, 6] });
+        b.right(H, Bp, Ap, { size: 11, color: 'rose' }); b.point(H, { color: 'rose', r: 4 }); T(b, H, 'H', { dy: 18, size: 16, color: 'rose' });
+      }
       if (st(2) && !prob) { tick(b, Bp, H, 1, 'sky'); tick(b, H, Cp, 1, 'sky'); }
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
       // 길이 (그림 안): 문제 kind=0 은 BC, AB 를 주고 높이 x, kind=1 은 BC 와 넓이를 주고 AB 를 구함
@@ -69,9 +78,9 @@
       if (C.full || kind === 0 || C.answer) { sideTag(b, Ap, Bp, Cp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Ap, Cp, Bp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); }
       else sideTag(b, Ap, Bp, Cp, 'x', { color: 'amber', size: 18, gap: 12 });
       if (st(1) || prob) {
-        if (C.full || C.answer || C.review && kind === 1 && C.step >= 3) T(b, lerp(Ap, H, 0.5), hi ? `${hi}` : `h²=${h2}`, { dx: hi ? 14 : 34, size: 17, color: 'rose' });
+        if (C.full || C.answer || C.review && kind === 1 && C.step >= 3) T(b, heightAt, hi ? `${hi}` : `h²=${h2}`, { dx: compactHeight ? 0 : hi ? 14 : 34, size: 17, color: 'rose' });
       }
-      if (!C.answer && kind === 0) T(b, lerp(Ap, H, 0.5), 'x', { dx: 14, size: 18, color: 'rose' });
+      if (!C.answer && kind === 0) T(b, heightAt, 'x', { dx: compactHeight ? 0 : 14, size: 18, color: 'rose' });
       if (kind === 1 && C.givens) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 16, color: 'ink' });
       if (!prob && st(2)) { T(b, lerp(Bp, H, 0.5), `${half}`, { dy: 16, size: 15, color: 'sky' }); T(b, lerp(H, Cp, 0.5), `${half}`, { dy: 16, size: 15, color: 'sky' }); }
       if (C.full && area != null) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 15, color: 'ink' });

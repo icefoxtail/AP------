@@ -50,10 +50,12 @@
     drawBox(b, cam, V3);
     line(b, E, Gp, 'sky', 3.6); line(b, A, Gp, 'green', 3.6); line(b, A, E, 'rose', 3.6);
     b.right(E, A, Gp, { color: 'ink', size: 13 });
-    ang(b, Gp, E, A, { color: 'amber', r: 34, label: o.xl, size: o.xl === 'x' ? 20 : 16, labelDist: 52 });
+    const angleCallout = !b.thumb && b.W < 560 && o.xl === '∠G';
+    ang(b, Gp, E, A, { color: 'amber', r: 34, label: angleCallout ? '' : o.xl, size: o.xl === 'x' ? 20 : 16, labelDist: 52 });
     names3(b, P2, NMB, cen);
     const L = o.L || {};
     if (L.AE) lab3(b, A, E, cen, L.AE, 'rose', { size: L.AEs }); if (L.EG) lab3(b, E, Gp, cen, L.EG, 'sky', { gap: 14 }); if (L.AG) T(b, mid(A, Gp), L.AG, { dx: 6, dy: 18, size: L.AGs || 16, color: L.AGc || 'green', align: 'left' });
+    if (angleCallout) T(b, Gp, o.xl, { dx: 44, dy: 28, color: 'amber', size: 16, leaderAnchor: Gp, leader: true });
     (o.rows || []).forEach((r, i) => T(b, pt(cen.x, Math.max(...P2.map((q) => q.y))), r.t, { dy: 44 + i * 26, size: r.size || 16, color: r.c }));
   }
   const cube = {

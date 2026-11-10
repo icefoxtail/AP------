@@ -47,7 +47,8 @@
       const { A, B, C, D, Dp, E } = M, st = cx.step;
       const t = cx.problem ? 1 : cx.review ? (st >= 2 ? 1 : 0) : cx.t, done = t >= 0.999;
       const yb = 0.31 * M.w + 0.3;
-      fit(b, { x0: -0.4, x1: M.w + 0.4, y0: -M.w * tanD(40) - 0.3, y1: yb }, { t: 30, b: 76, l: 40, r: 40 });
+      const compactProblem = cx.problem && b.W < 560;
+      fit(b, compactProblem ? bboxOf([A, B, C, D, Dp]) : { x0: -0.4, x1: M.w + 0.4, y0: -M.w * tanD(40) - 0.3, y1: yb }, compactProblem ? { t: 28, b: 32, l: 36, r: 36 } : { t: 30, b: 76, l: 40, r: 40 });
       const Dt = foldP(D, A, C, t);
       fillPoly(b, [A, B, C], 'sky', 0.1); poly(b, [A, B, C], 'ink', 3.4);
       if (t > 0.001) { poly(b, [A, C, D], 'muted', 2, { dash: [6, 6], alpha: 0.7 }); }
@@ -214,7 +215,7 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E, S } = M, st = cx.step, sq = [A, B, C, D], O = pt(S / 2, -S / 2);
-      fit(b, bboxOf(sq), { t: 50, b: 94, l: 50, r: 50 });
+      fit(b, bboxOf(sq), cx.problem && b.W < 560 ? { t: 28, b: 32, l: 36, r: 36 } : { t: 50, b: 94, l: 50, r: 50 });
       fillPoly(b, sq, 'sky', 0.08); poly(b, sq, 'ink', 3.4);
       fillPoly(b, [E, B, C], 'green', 0.18); poly(b, [E, B, C], 'green', 3.4);
       line(b, A, E, 'ink', 3); line(b, D, E, 'ink', 3);
@@ -233,7 +234,21 @@
       ang(b, E, B, C, { color: 'green', rings: 1, r: 24, label: '60°', size: 13, labelDist: 38 });
       if (show(1)) ang(b, B, A, E, { color: 'rose', rings: 2, r: 28, label: '30°', size: 14, labelDist: 52 });
       if (show(2)) { ang(b, A, B, E, { color: 'sky', rings: 1, r: 26, label: '75°', size: 14, labelDist: 40 }); ang(b, E, A, B, { color: 'sky', rings: 1, r: 26 }); ang(b, D, C, E, { color: 'sky', rings: 1, r: 26, label: '75°', size: 14, labelDist: 40 }); ang(b, E, C, D, { color: 'sky', rings: 1, r: 26 }); ang(b, C, D, E, { color: 'rose', rings: 2, r: 28, label: '30°', size: 14, labelDist: 52 }); }
-      if (show(3)) { ang(b, A, E, D, { color: 'amber', rings: 1, r: 30, label: '15°', size: 13, labelDist: 58 }); ang(b, E, A, D, { color: 'amber', rings: 1, r: 26, label: '150°', size: 13, labelDist: 40 }); }
+      if (show(3)) {
+        const mark = ang(b, A, E, D, { color: 'amber', rings: 1, r: 30 });
+        const k = b.k || 60, dx = Math.cos(mark.mid) * 58, dy = Math.sin(mark.mid) * 58;
+        const box = typeof b.annotationSize === 'function' ? b.annotationSize('15°', { size: 13, weight: 800 }) : { width: G.textW('15°', 13) + 6, height: 19 };
+        const ex = (E.x - A.x) * k - dx, ey = (E.y - A.y) * k - dy;
+        // A's short 15° wedge must not read as part of E's 150° arc.
+        const nearE = Math.hypot(Math.max(0, Math.abs(ex) - box.width / 2), Math.max(0, Math.abs(ey) - box.height / 2)) < 32;
+        if (!b.thumb && nearE) {
+          const anchor = add(A, pt(Math.cos(mark.mid) * 30 / k, Math.sin(mark.mid) * 30 / k));
+          const label = add(A, pt(37 / k, -22 / k));
+          b.leader(anchor, label, { ...box, color: 'amber', lineWidth: 1.2, gap: 2 });
+          T(b, label, '15°', { color: 'amber', size: 13 });
+        } else T(b, A, '15°', { color: 'amber', size: 13, dx, dy });
+        ang(b, E, A, D, { color: 'amber', rings: 1, r: 26, label: '150°', size: 13, labelDist: 40 });
+      }
       dotN(b, { A, B, C, D }, O); b.point(E, { color: 'amber', r: 5 }); T(b, E, 'E', { dy: -16, size: 17, color: 'amber' });
       sd(b, B, C, O, `${S}`, 'sky');
       const cap = cx.review ? ['정삼각형 EBC: ∠EBC=60°, BE=BC=AB', '∠ABE=90°−60°=30° → 이등변 △ABE의 밑각 ∠BAE=∠BEA=75°', '∠EAD=90°−75°=15°, ∠AED=180°−15°−15°=150°'][clamp(st, 1, 3) - 1] : '∠ABE=30° · ∠BAE=∠BEA=75° · ∠EAD=15° · ∠AED=150°';
@@ -348,7 +363,11 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, O, sq2, over } = M, st = cx.step, R = M.S * 1.45;
-      fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 30, b: 74, l: 40, r: 40 });
+      // 휴대폰의 정지된 문제 그림은 현재 두 정사각형에 맞춥니다. 회전 전체의
+      // 빈 공간과 탐구 설명문 여백까지 잡으면 기본 정사각형이 40px대로 작아져요.
+      const compactProblem = cx.problem && b.W < 560;
+      const box = compactProblem ? bboxOf([A, B, C, D, ...sq2]) : { x0: -R, x1: R, y0: -R, y1: R };
+      fit(b, box, compactProblem ? { t: 30, b: M.K === 1 ? 48 : 30, l: 34, r: 34 } : { t: 30, b: 74, l: 40, r: 40 });
       fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [A, B, C, D], 'ink', 3.4);
       const names = ['E', 'F', 'G'];
       fillPoly(b, sq2, 'amber', 0.1); poly(b, sq2, 'amber', 3.2);
@@ -360,7 +379,7 @@
       sq2.slice(1).forEach((q, i) => { b.point(q, { color: 'amber', r: 4.5 }); tagOut(b, q, O, names[i], { size: 16, gap: 10, color: 'amber' }); });
       if (cx.problem) {
         if (M.K === 0) sd(b, A, B, O, `${M.S}`, 'sky');
-        else T(b, pt(0, R), '□ABCD의 넓이 = x', { dy: 8, size: b.W < 560 ? 15 : 17, color: 'rose' });
+        else T(b, compactProblem ? pt((box.x0 + box.x1) / 2, box.y1) : pt(0, R), '□ABCD의 넓이 = x', { dy: compactProblem ? 28 : 8, size: b.W < 560 ? 15 : 17, color: 'rose' });
         T(b, centroid2(over), M.K === 0 ? 'x' : `${M.ov}`, { size: 20, color: M.K === 0 ? 'rose' : 'green' });
         return;
       }

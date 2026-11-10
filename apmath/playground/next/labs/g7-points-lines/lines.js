@@ -90,7 +90,8 @@
       guide(b, [M.A, M.B], y[0], y[4] - 0.35);
       mainLine(b, y[0]);
       b.point({ x: M.A, y: 0 }, { color: 'ink', r: 5.5 }); b.point({ x: M.B, y: 0 }, { color: 'ink', r: 5.5 });
-      T(b, { x: M.A, y: 0 }, 'A', { dy: 22, size: 18 }); T(b, { x: M.B, y: 0 }, 'B', { dy: 22, size: 18 });
+      const nameDy = !C.thumb && C.tab !== 'explore' && b.W < 560 ? -20 : 22;
+      T(b, { x: M.A, y: 0 }, 'A', { dy: nameDy, size: 18 }); T(b, { x: M.B, y: 0 }, 'B', { dy: nameDy, size: 18 });
       rowLabel(b, y[1], '직선 AB = 직선 BA', 'sky', st, st === 1);
       straight(b, y[1], 'sky', al(st, st === 1));
       rowLabel(b, y[2], '반직선 AB (A에서 B쪽으로)', 'violet', st, st === 2);
