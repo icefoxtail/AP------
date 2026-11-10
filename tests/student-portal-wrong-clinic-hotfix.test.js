@@ -82,8 +82,10 @@ assert(
     studentIndex.includes('function openHomeOmrInput(assignmentId)') &&
     studentIndex.includes('function renderStudentQuickActions()') &&
     studentIndex.includes('${renderOmrHomeSection()}') &&
-    studentIndex.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
+    studentIndex.includes("isTeacherPreview?'':renderWrongClinicPackets()") &&
     studentIndex.includes('${renderStudentQuickActions()}') &&
+    studentIndex.indexOf('${renderOmrHomeSection()}') < studentIndex.indexOf('renderGeometryLabEntry()}') &&
+    studentIndex.indexOf('renderGeometryLabEntry()}') < studentIndex.indexOf("isTeacherPreview?'':renderWrongClinicPackets()") &&
     studentIndex.includes('portal-support-grid') &&
     studentIndex.includes('const visible = list.slice(0, 2);'),
   'student portal home should prioritize OMR, wrong clinic, compact task/planner actions, then support sections'
