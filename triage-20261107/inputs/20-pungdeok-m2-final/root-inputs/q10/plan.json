@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "firstLine",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "secondExample",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Y1",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "firstLine",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y2",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "secondExample",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "Y1",
+    "Y2"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "firstLine",
+    "secondExample"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "해가 없으려면 두 직선의 기울기가 같고 y절편이 달라야 한다. 따라서 일반 조건은 a=2, b≠1이다. 그림은 설명용 예시 b=2를 택해 y=2x−1과 y=2x−2의 평행 관계를 보이며, b=2가 주어진 조건으로 읽히지 않도록 예시라고 표시한다. 정답은 ②이다.",
+  "accessibilityDescription": "해가 없으려면 두 직선의 기울기가 같고 y절편이 달라야 한다. 따라서 일반 조건은 a=2, b≠1이다. 그림은 설명용 예시 b=2를 택해 y=2x−1과 y=2x−2의 평행 관계를 보이며, b=2가 주어진 조건으로 읽히지 않도록 예시라고 표시한다. 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "연립방정식 $\\begin{cases} ax-y=1 \\\\ 4x-2y=2b \\end{cases}$의 해가 없을 때, 두 수 $a$, $b$의 조건을 각각 구하면? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행한 서로 다른 두 직선은 만나지 않는다는 점을 보이는 동시에 b=2는 조건의 예시값임을 캡션과 선 라벨에서 명시한다."
+  ],
+  "sourceQuote": "연립방정식 $\\begin{cases} ax-y=1 \\\\ 4x-2y=2b \\end{cases}$의 해가 없을 때, 두 수 $a$, $b$의 조건을 각각 구하면? [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "line1_label",
+        "at": [
+          -1.6,
+          -4.5
+        ],
+        "text": "y=2x−1",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "line2_label",
+        "at": [
+          -1.6,
+          -6.3
+        ],
+        "text": "예시 b=2: y=2x−2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y1_label",
+        "at": "Y1",
+        "text": "(0,−1)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "E"
+      },
+      {
+        "id": "y2_label",
+        "at": "Y2",
+        "text": "(0,−2)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "W"
+      }
+    ]
+  }
+}

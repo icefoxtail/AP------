@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "equationGraph",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Xint",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "equationGraph",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Yint",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "equationGraph",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "Xint",
+    "Yint"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "equationGraph"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "2x+3y−6=0을 정리하면 y=−2x/3+2이다. x절편 (3,0), y절편 (0,2)를 지나는 하강 직선이며, 원문 선택지 전체 PNG는 보존하고 해설 그래프만 별도로 표시한다. 정답은 ⑤이다.",
+  "accessibilityDescription": "2x+3y−6=0을 정리하면 y=−2x/3+2이다. x절편 (3,0), y절편 (0,2)를 지나는 하강 직선이며, 원문 선택지 전체 PNG는 보존하고 해설 그래프만 별도로 표시한다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 중 일차방정식 $2x+3y-6=0$의 그래프는? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 보기 PNG는 건드리지 않고 해설에서 절편이 정확한 대표 직선을 별도로 표현한다."
+  ],
+  "sourceQuote": "다음 중 일차방정식 $2x+3y-6=0$의 그래프는? [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "graph_label",
+        "at": [
+          1.5,
+          0.5
+        ],
+        "text": "y=−2x/3+2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X_label",
+        "at": "Xint",
+        "text": "(3,0)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SE"
+      },
+      {
+        "id": "Y_label",
+        "at": "Yint",
+        "text": "(0,2)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NW"
+      }
+    ]
+  }
+}

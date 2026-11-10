@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sourceGraph",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parallelGraph",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Pgood",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "sourceGraph",
+          "x2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Pwrong",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "Pgood",
+    "Pwrong"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "sourceGraph",
+    "parallelGraph"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "원본 직선은 y=−x/2+2이고, y=−x/2−2는 기울기가 같아 평행하다. x=2에서 원본 그래프의 점은 (2,1)이며 보기의 (2,−1)은 선 위가 아님을 함께 표시한다. 정답은 ①, ⑤이다. 원본 PNG는 보존한다.",
+  "accessibilityDescription": "원본 직선은 y=−x/2+2이고, y=−x/2−2는 기울기가 같아 평행하다. x=2에서 원본 그래프의 점은 (2,1)이며 보기의 (2,−1)은 선 위가 아님을 함께 표시한다. 정답은 ①, ⑤이다. 원본 PNG는 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 그래프에 대한 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 직선·평행선, 실제 그래프 점과 오답 후보점을 비교해 기울기와 절편 조건을 분명히 한다."
+  ],
+  "sourceQuote": "다음 그래프에 대한 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "source_label",
+        "at": [
+          -2.4,
+          3.3
+        ],
+        "text": "원본: y=−x/2+2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parallel_label",
+        "at": [
+          -2.4,
+          -0.8
+        ],
+        "text": "y=−x/2−2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "good_label",
+        "at": "Pgood",
+        "text": "(2,1)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NE"
+      },
+      {
+        "id": "wrong_label",
+        "at": "Pwrong",
+        "text": "보기 (2,−1)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SE"
+      }
+    ]
+  }
+}

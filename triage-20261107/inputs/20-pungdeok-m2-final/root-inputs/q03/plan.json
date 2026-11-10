@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "f",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "f",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "f"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "직선 y=3x−3의 x절편 A=(1,0), y절편 B=(0,−3)을 좌표축 교점으로 표시한다. 정답은 ③이다.",
+  "accessibilityDescription": "직선 y=3x−3의 x절편 A=(1,0), y절편 B=(0,−3)을 좌표축 교점으로 표시한다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 일차함수 $y=3x-3$의 그래프에서 $x$축과 만나는 점을 $A$, $y$축과 만나는 점을 $B$라 할 때, 두 점 $A$, $B$의 좌표를 각각 구하면? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절편이 각각 x축과 y축 위에 있음을 점과 좌표로 연결해 표시한다."
+  ],
+  "sourceQuote": "다음 일차함수 $y=3x-3$의 그래프에서 $x$축과 만나는 점을 $A$, $y$축과 만나는 점을 $B$라 할 때, 두 점 $A$, $B$의 좌표를 각각 구하면? [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "f_label",
+        "at": [
+          1.8,
+          4.4
+        ],
+        "text": "y=3x−3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A_label",
+        "at": "A",
+        "text": "A=(1,0)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SE"
+      },
+      {
+        "id": "B_label",
+        "at": "B",
+        "text": "B=(0,−3)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SW"
+      }
+    ]
+  }
+}

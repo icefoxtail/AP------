@@ -1,0 +1,180 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "q": 1,
+      "check": "linear-function count; constant slope excluded",
+      "status": "PASS",
+      "expected": "four selected functions",
+      "actual": "y=x, 2x/5+7/5, -3x-1, -x"
+    },
+    {
+      "q": 2,
+      "check": "translated point lies on shifted graph",
+      "status": "PASS",
+      "expected": "(2,-1)",
+      "actual": "y(2)=-1"
+    },
+    {
+      "q": 3,
+      "check": "x/y intercepts of y=3x-3",
+      "status": "PASS",
+      "expected": "(1,0), (0,-3)",
+      "actual": "(1,0), (0,-3)"
+    },
+    {
+      "q": 4,
+      "check": "three points are collinear on y=-2x-4",
+      "status": "PASS",
+      "expected": "a=-3",
+      "actual": "(-2,0), (1,-6), (-3,2)"
+    },
+    {
+      "q": 5,
+      "check": "parallel slope implies k",
+      "status": "PASS",
+      "expected": "k=6",
+      "actual": "k/2=3"
+    },
+    {
+      "q": 6,
+      "check": "source slope, parallel slope, option point status",
+      "status": "PASS",
+      "expected": "(2,1) on; (2,-1) off",
+      "actual": "slopes both -1/2"
+    },
+    {
+      "q": 7,
+      "check": "line through given points has slope 1 and intercept 4",
+      "status": "PASS",
+      "expected": "y=x+4",
+      "actual": "slope=1, b=4"
+    },
+    {
+      "q": 8,
+      "check": "intercepts satisfy 2x+3y-6=0",
+      "status": "PASS",
+      "expected": "(3,0), (0,2)",
+      "actual": "(3,0), (0,2)"
+    },
+    {
+      "q": 9,
+      "check": "x-intercept and parallel-to-y-axis equation",
+      "status": "PASS",
+      "expected": "x=1/2",
+      "actual": "x=1/2"
+    },
+    {
+      "q": 10,
+      "check": "no-solution conditions",
+      "status": "PASS",
+      "expected": "a=2, b≠1; example b=2",
+      "actual": "same slopes 2, y-intercepts -1 and -2 differ"
+    },
+    {
+      "q": 22,
+      "check": "elevator domain and 30m arrival",
+      "status": "PASS",
+      "expected": "x=20; domain [0,30]",
+      "actual": "height(20)=30, height(30)=0"
+    },
+    {
+      "q": 23,
+      "check": "intersection and triangle area",
+      "status": "PASS",
+      "expected": "(2,-2), area 6",
+      "actual": "(2,-2), area 6"
+    },
+    {
+      "q": 24,
+      "check": "dice-pair condition and probability",
+      "status": "PASS",
+      "expected": "ab≠6; 8/9",
+      "actual": "4 excluded pairs [(1, 6), (2, 3), (3, 2), (6, 1)]; probability 8/9"
+    },
+    {
+      "q": 11,
+      "check": "divisors of 6 among die faces",
+      "status": "PASS",
+      "expected": "4 cases",
+      "actual": "[1,2,3,6]"
+    },
+    {
+      "q": 12,
+      "check": "ties in rock-paper-scissors",
+      "status": "PASS",
+      "expected": "3 cases",
+      "actual": "rock-rock, paper-paper, scissors-scissors"
+    },
+    {
+      "q": 13,
+      "check": "multiples of 3 or 5 from 1 to 15",
+      "status": "PASS",
+      "expected": "7 cases",
+      "actual": "5+3-1=7"
+    },
+    {
+      "q": 14,
+      "check": "snack and drink combinations",
+      "status": "PASS",
+      "expected": "9 cases",
+      "actual": "3×3=9"
+    },
+    {
+      "q": 15,
+      "check": "candidate satisfies all three source baseball judgments",
+      "status": "PASS",
+      "expected": "369 is the sole matching choice",
+      "actual": "['369']"
+    },
+    {
+      "q": 16,
+      "check": "defective-product probability",
+      "status": "PASS",
+      "expected": "3/100",
+      "actual": "3/100"
+    },
+    {
+      "q": 17,
+      "check": "coin-and-die probability",
+      "status": "PASS",
+      "expected": "3/12=1/4",
+      "actual": "1/2×3/6=1/4"
+    },
+    {
+      "q": 18,
+      "check": "prime sectors on 1 through 10",
+      "status": "PASS",
+      "expected": "2/5",
+      "actual": "4/10=2/5"
+    },
+    {
+      "q": 19,
+      "check": "at least one head in two coin tosses",
+      "status": "PASS",
+      "expected": "3/4",
+      "actual": "3/4"
+    },
+    {
+      "q": 20,
+      "check": "AB among AO×BO outcomes",
+      "status": "PASS",
+      "expected": "1/4",
+      "actual": "1/4"
+    },
+    {
+      "q": 21,
+      "check": "prize split from win probabilities",
+      "status": "PASS",
+      "expected": "A 72, B 24 (만원)",
+      "actual": "A 72, B 24"
+    },
+    {
+      "q": 25,
+      "check": "same-color probability without replacement",
+      "status": "PASS",
+      "expected": "7/15",
+      "actual": "12/90+30/90=42/90=7/15"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "intersectA",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "intersectB",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "parallelB",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "rational",
+            "numerator": "-2",
+            "denominator": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "intersectA",
+          "intersectB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "intersectA",
+    "intersectB",
+    "parallelB"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "일반적으로 두 직선의 기울기가 다를 조건은 ab≠6이다. 예시 (a,b)=(2,2)는 y=−x+3과 y=−2x/3+2/3이 만나고, 예시 (2,3)는 y=−x+3과 y=−x+2/3이 평행하여 만나지 않는다. 주사위 순서쌍은 36가지이며 ab=6인 4가지를 제외하면 확률은 32/36=8/9이다.",
+  "accessibilityDescription": "일반적으로 두 직선의 기울기가 다를 조건은 ab≠6이다. 예시 (a,b)=(2,2)는 y=−x+3과 y=−2x/3+2/3이 만나고, 예시 (2,3)는 y=−x+3과 y=−x+2/3이 평행하여 만나지 않는다. 주사위 순서쌍은 36가지이며 ab=6인 4가지를 제외하면 확률은 32/36=8/9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "&lt;서술형 3&gt; 한 개의 주사위를 두 번 던져 처음에 나오는 눈의 수를 $a$, 나중에 나오는 눈의 수를 $b$라고 할 때, 연립방정식 $\\begin{cases} 2x+ay=6 \\\\ bx+3y=2 \\end{cases}$의 그래프가 한 점에서 만날 때 확률을 구하시오.\n(1) 모든 경우의 수를 구하시오. (단답형) [1점]\n(2) 그래프가 한 점에서 만날 조건을 구하시오. (서술형) [2점]\n(3) 그래프가 한 점에서 만날 확률을 구하시오. (서술형) [2점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "일반적인 기울기 비교 조건을 중심에 두고, 만나는 예와 평행한 예를 별도 라벨로 대비한다. 두 예시는 임의 선택이며 확률 결론은 36개 전체 순서쌍 계산이다."
+  ],
+  "sourceQuote": "&lt;서술형 3&gt; 한 개의 주사위를 두 번 던져 처음에 나오는 눈의 수를 $a$, 나중에 나오는 눈의 수를 $b$라고 할 때, 연립방정식 $\\begin{cases} 2x+ay=6 \\\\ bx+3y=2 \\end{cases}$의 그래프가 한 점에서 만날 때 확률을 구하시오.\n(1) 모든 경우의 수를 구하시오. (단답형) [1점]\n(2) 그래프가 한 점에서 만날 조건을 구하시오. (서술형) [2점]\n(3) 그래프가 한 점에서 만날 확률을 구하시오. (서술형) [2점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "i1_label",
+        "at": [
+          -2.5,
+          4.4
+        ],
+        "text": "(2,2): y=−x+3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "i2_label",
+        "at": [
+          2.5,
+          -1.2
+        ],
+        "text": "(2,2): y=−2x/3+2/3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p_label",
+        "at": "P",
+        "text": "(7,−4)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SE"
+      },
+      {
+        "id": "p1_label",
+        "at": [
+          -2.5,
+          -1.5
+        ],
+        "text": "(2,3): y=−x+3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2_label",
+        "at": [
+          2.6,
+          -3.1
+        ],
+        "text": "(2,3): y=−x+2/3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

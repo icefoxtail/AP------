@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fX",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f25",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "rational",
+            "numerator": "-2",
+            "denominator": "5"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "rational",
+            "numerator": "-7",
+            "denominator": "5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fm3",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fm1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "fX",
+    "f25",
+    "fm3",
+    "fm1"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "두 패널에 정답인 그래프 y=x, y=(2/5)x+7/5, y=−3x−1, y=−x를 나누어 표시한다. 네 식은 모두 y=ax+b에서 a≠0이므로 정답은 4개(④)이다. 보기 중 xy=1은 반비례, y=5는 상수함수이며, y=−x(x+1)+x²는 정리하면 y=−x이다.",
+  "accessibilityDescription": "두 패널에 정답인 그래프 y=x, y=(2/5)x+7/5, y=−3x−1, y=−x를 나누어 표시한다. 네 식은 모두 y=ax+b에서 a≠0이므로 정답은 4개(④)이다. 보기 중 xy=1은 반비례, y=5는 상수함수이며, y=−x(x+1)+x²는 정리하면 y=−x이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 보기 중 일차함수인 것은 모두 몇 개인가? [4점]\n<보기>\nㄱ. $xy=1$\nㄴ. $x+2=y+2$\nㄷ. $y=\\frac{2x+7}{5}$\nㄹ. $y=-3x-1$\nㅁ. $y=5$\nㅂ. $y=-x(x+1)+x^2$",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "함수 그래프를 적극 시각화해 식의 기울기·절편과 일차함수 판별을 눈으로 비교할 수 있게 한다. 네 선은 라벨이 겹치지 않도록 두 패널로 나누어 배치한다."
+  ],
+  "sourceQuote": "다음 보기 중 일차함수인 것은 모두 몇 개인가? [4점]\n<보기>\nㄱ. $xy=1$\nㄴ. $x+2=y+2$\nㄷ. $y=\\frac{2x+7}{5}$\nㄹ. $y=-3x-1$\nㅁ. $y=5$\nㅂ. $y=-x(x+1)+x^2$",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "f_x_label",
+        "at": [
+          3.5,
+          3.9
+        ],
+        "text": "y=x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f_25_label",
+        "at": [
+          3.5,
+          2.8
+        ],
+        "text": "y=(2/5)x+7/5",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f_m3_label",
+        "at": [
+          -1.4,
+          3.2
+        ],
+        "text": "y=−3x−1",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f_m1_label",
+        "at": [
+          -3.7,
+          3.7
+        ],
+        "text": "y=−x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "layoutIntent": "두 개의 좌표 패널에 각각 두 그래프를 나누어 표시하고, 패널마다 축과 수치 눈금을 독립 배치한다."
+}

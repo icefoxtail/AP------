@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "givenLine",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vertical",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "givenLine",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "givenLine",
+    "vertical"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "y=−2x+1의 x절편은 (1/2,0)이다. 이 점을 지나고 y축에 평행한 직선은 x=1/2이므로 정답은 ③이다.",
+  "accessibilityDescription": "y=−2x+1의 x절편은 (1/2,0)이다. 이 점을 지나고 y축에 평행한 직선은 x=1/2이므로 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선 $y=-2x+1$ 위의 점 $(a,0)$을 지나고, $y$축에 평행한 직선의 방정식을 구하면? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 직선의 x절편과 그 점을 지나는 수직선을 함께 표시해 세로선은 함수 그래프가 아닌 x=상수 직선임을 구분한다."
+  ],
+  "sourceQuote": "직선 $y=-2x+1$ 위의 점 $(a,0)$을 지나고, $y$축에 평행한 직선의 방정식을 구하면? [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "given_label",
+        "at": [
+          -2.2,
+          4.4
+        ],
+        "text": "y=−2x+1",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vertical_label",
+        "at": [
+          0.5,
+          4.7
+        ],
+        "text": "x=1/2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "W"
+      },
+      {
+        "id": "P_label",
+        "at": "P",
+        "text": "(1/2,0)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SE"
+      }
+    ]
+  }
+}

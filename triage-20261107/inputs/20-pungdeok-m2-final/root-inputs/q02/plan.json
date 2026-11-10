@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "original",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "shifted",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "translatedY",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "answerPoint",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "translatedY",
+    "answerPoint"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "original",
+    "shifted"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "vertical_shift",
+      "refs": [
+        "O",
+        "translatedY"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "원래 그래프 y=−2x와 위로 3만큼 옮긴 그래프 y=−2x+3을 함께 표시한다. y축 위에서 (0,0)에서 (0,3)으로의 이동을 표시하고, 옮긴 선 위의 점 (2,−1)을 강조한다. 정답은 ④이다.",
+  "accessibilityDescription": "원래 그래프 y=−2x와 위로 3만큼 옮긴 그래프 y=−2x+3을 함께 표시한다. y축 위에서 (0,0)에서 (0,3)으로의 이동을 표시하고, 옮긴 선 위의 점 (2,−1)을 강조한다. 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 일차함수 $y=-2x$의 그래프에서 $y$축의 방향으로 3만큼 평행이동한 그래프 위에 있는 점은? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동 전후의 그래프와 정답 점을 같은 좌표평면에서 비교해 이동 방향과 함숫값 변화를 보인다."
+  ],
+  "sourceQuote": "다음 일차함수 $y=-2x$의 그래프에서 $y$축의 방향으로 3만큼 평행이동한 그래프 위에 있는 점은? [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "original_label",
+        "at": [
+          -2.0,
+          3.8
+        ],
+        "text": "y=−2x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "shifted_label",
+        "at": [
+          -2.0,
+          6.1
+        ],
+        "text": "y=−2x+3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p_label",
+        "at": "answerPoint",
+        "text": "(2,−1)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SE"
+      },
+      {
+        "id": "shift_label",
+        "at": "translatedY",
+        "text": "위로 3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "E"
+      }
+    ]
+  }
+}

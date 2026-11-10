@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y1",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "f1",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Y2",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "f2",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "f1",
+          "f2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "Y1",
+    "Y2",
+    "P"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "f1",
+    "f2"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "tri1",
+      "refs": [
+        "Y1",
+        "P"
+      ]
+    },
+    {
+      "id": "tri2",
+      "refs": [
+        "P",
+        "Y2"
+      ]
+    },
+    {
+      "id": "tri3",
+      "refs": [
+        "Y2",
+        "Y1"
+      ]
+    }
+  ],
+  "caption": "두 직선 y=−2x+2, y=x−4의 y절편은 각각 (0,2), (0,−4)이고 교점은 (2,−2)이다. 두 직선과 y축이 만드는 삼각형의 넓이는 1/2×6×2=6이다. 기존 q23-solution.svg는 보존하며 이 입력 계획은 새 엔진 결과 후보로만 둔다.",
+  "accessibilityDescription": "두 직선 y=−2x+2, y=x−4의 y절편은 각각 (0,2), (0,−4)이고 교점은 (2,−2)이다. 두 직선과 y축이 만드는 삼각형의 넓이는 1/2×6×2=6이다. 기존 q23-solution.svg는 보존하며 이 입력 계획은 새 엔진 결과 후보로만 둔다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "&lt;서술형 2&gt; 두 일차방정식 $2x+y-2=0$과 $x-y-4=0$에 대하여 다음 물음에 답하시오.\n(1) 두 일차방정식의 $x$, $y$절편을 포함한 개략적인 그래프를 그리시오. (서술형) [2점]\n(2) 두 일차방정식의 교점의 좌표를 구하시오. (서술형) [2점]\n(3) 두 일차방정식 그래프와 $y$축과 둘러싸인 도형의 넓이를 구하시오. (서술형) [2점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 y절편과 교점을 정확한 좌표로 표시하고 y축을 한 변으로 하는 삼각형 영역 및 넓이를 보인다."
+  ],
+  "sourceQuote": "&lt;서술형 2&gt; 두 일차방정식 $2x+y-2=0$과 $x-y-4=0$에 대하여 다음 물음에 답하시오.\n(1) 두 일차방정식의 $x$, $y$절편을 포함한 개략적인 그래프를 그리시오. (서술형) [2점]\n(2) 두 일차방정식의 교점의 좌표를 구하시오. (서술형) [2점]\n(3) 두 일차방정식 그래프와 $y$축과 둘러싸인 도형의 넓이를 구하시오. (서술형) [2점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "f1_label",
+        "at": [
+          -1.0,
+          5.0
+        ],
+        "text": "y=−2x+2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f2_label",
+        "at": [
+          3.6,
+          -1.0
+        ],
+        "text": "y=x−4",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y1_label",
+        "at": "Y1",
+        "text": "(0,2)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NW"
+      },
+      {
+        "id": "y2_label",
+        "at": "Y2",
+        "text": "(0,−4)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SW"
+      },
+      {
+        "id": "P_label",
+        "at": "P",
+        "text": "(2,−2)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NE"
+      }
+    ]
+  },
+  "regions": [
+    {
+      "id": "triangle",
+      "fill": "LIGHT",
+      "factRole": "CONCLUSION",
+      "shapes": [
+        {
+          "polygon": [
+            "Y1",
+            "P",
+            "Y2"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sourceGraph",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parallelGraph",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sourceX",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "sourceGraph",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sourceY",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "sourceGraph",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "sourceX",
+    "sourceY"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "sourceGraph",
+    "parallelGraph"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "원본 그림의 직선은 (0,−3), (1,0)을 지나므로 기울기는 3이다. y=(k/2)x−1이 평행하려면 k/2=3, 따라서 k=6이고 정답은 ⑤이다. 원본 PNG는 그대로 보존한다.",
+  "accessibilityDescription": "원본 그림의 직선은 (0,−3), (1,0)을 지나므로 기울기는 3이다. y=(k/2)x−1이 평행하려면 k/2=3, 따라서 k=6이고 정답은 ⑤이다. 원본 PNG는 그대로 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일차함수 $y=\\frac{k}{2}x-1$의 그래프가 오른쪽 그림의 그래프와 평행할 때, $k$의 값은? (단, $k$는 수) [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 직선과 절편·기울기가 같은 평행선을 함께 그려 평행 조건과 k를 확인한다."
+  ],
+  "sourceQuote": "일차함수 $y=\\frac{k}{2}x-1$의 그래프가 오른쪽 그림의 그래프와 평행할 때, $k$의 값은? (단, $k$는 수) [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "source_label",
+        "at": [
+          1.4,
+          4.2
+        ],
+        "text": "원본: y=3x−3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parallel_label",
+        "at": [
+          -1.8,
+          -5.9
+        ],
+        "text": "평행: y=3x−1",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sourceX_label",
+        "at": "sourceX",
+        "text": "(1,0)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NE"
+      },
+      {
+        "id": "sourceY_label",
+        "at": "sourceY",
+        "text": "(0,−3)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SW"
+      }
+    ]
+  }
+}

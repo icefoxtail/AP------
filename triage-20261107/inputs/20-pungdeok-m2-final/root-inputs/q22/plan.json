@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "elevator",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-90"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t20",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-20"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "start",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "elevator",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "ground",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "elevator",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "at30m",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "elevator",
+          "t20"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "start",
+    "ground",
+    "at30m"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "operating_graph",
+      "refs": [
+        "start",
+        "ground"
+      ]
+    }
+  ],
+  "caption": "승강기의 높이는 y=90−3x이고 실제 운행 범위는 0≤x≤30이다. 그래프 본문은 (0,90)에서 지상 도착점 (30,0)까지의 선분으로 제한하고, (20,30)을 표시해 30m 도착 시각이 20초임을 보인다. 범위 밖은 그리지 않는다.",
+  "accessibilityDescription": "승강기의 높이는 y=90−3x이고 실제 운행 범위는 0≤x≤30이다. 그래프 본문은 (0,90)에서 지상 도착점 (30,0)까지의 선분으로 제한하고, (20,30)을 표시해 30m 도착 시각이 20초임을 보인다. 범위 밖은 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "&lt;서술형 1&gt; 지상으로부터 $90\\text{ m}$ 높이에서 출발하여 초속 $3\\text{ m}$로 내려오는 어떤 승강기가 있다. 이 승강기가 출발한 지 $x$초 후의 지상으로부터의 높이를 $y\\text{ m}$라고 할 때, 다음 물음에 답하시오.\n(1) $y$를 $x$에 대한 식으로 나타내시오. (서술형) [2점]\n(2) 승강기가 지상으로부터 $30\\text{ m}$ 높이에 도착하는 것은 출발한 지 몇 초 후인지 구하시오. (서술형) [2점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "운행의 시간·높이 관계를 좌표그래프로 보여 주되 물리적으로 의미 없는 시간 범위는 표시하지 않는다."
+  ],
+  "sourceQuote": "&lt;서술형 1&gt; 지상으로부터 $90\\text{ m}$ 높이에서 출발하여 초속 $3\\text{ m}$로 내려오는 어떤 승강기가 있다. 이 승강기가 출발한 지 $x$초 후의 지상으로부터의 높이를 $y\\text{ m}$라고 할 때, 다음 물음에 답하시오.\n(1) $y$를 $x$에 대한 식으로 나타내시오. (서술형) [2점]\n(2) 승강기가 지상으로부터 $30\\text{ m}$ 높이에 도착하는 것은 출발한 지 몇 초 후인지 구하시오. (서술형) [2점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "graph_label",
+        "at": [
+          8,
+          68
+        ],
+        "text": "y=90−3x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "start_label",
+        "at": "start",
+        "text": "(0,90)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NW"
+      },
+      {
+        "id": "ground_label",
+        "at": "ground",
+        "text": "(30,0)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SE"
+      },
+      {
+        "id": "answer_label",
+        "at": "at30m",
+        "text": "(20,30), 20초",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NW"
+      },
+      {
+        "id": "domain_label",
+        "at": [
+          15,
+          -8
+        ],
+        "text": "0≤x≤30",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}
