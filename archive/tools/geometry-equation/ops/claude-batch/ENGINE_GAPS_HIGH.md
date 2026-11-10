@@ -54,6 +54,9 @@
   - 사례: 24 효천 고1 2학기 기말 구형 SVG 9개
   - 필요한 도식: 소인수 지수 선택 상자, 고정 슬롯 배열, 그룹 선택 짝짓기, 자리 배열 패턴, 이중계산 비교 패널 등
 
+- multi-curve 곡선 이름은 점 없는 지시선·자기 곡선 옆 고정 배치를 지원하지 않는다(overlays.names curveX가 OVERLAY_CURVE_UNSUPPORTED:multi-curve로 거절, callout은 owner 점 필수). 22 금당 고1 1mid Q10·Q21, 22 강남여 1mid Q11.
+- composite 두 번째 그래프 패널의 축 이름을 x, y에서 바꿀 수 없다(22 강남여 1mid Q20).
+
 ## 해결됨
 
 - 문자열 문항 id(q01 …) 시험지의 캡처 거절(`ORDINAL_NOT_IN_BANK`) — 해결: PR #1597
