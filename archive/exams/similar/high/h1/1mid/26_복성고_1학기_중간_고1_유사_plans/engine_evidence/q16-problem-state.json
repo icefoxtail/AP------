@@ -1,0 +1,498 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+  "ordinal": 16
+ },
+ "identity": {
+  "questionUid": "26_복성고_1학기_중간_고1_기출|16",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:2f4ce5f360418241558c05c52cc626162c64089fe4e801238410630d04303497",
+  "assetId": "va-d1231d1249fb944bd9cdcb7a17f9ee90464ce463dd64630b525ff8cf6338c632"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "sourceQuote": "직각삼각형 $ABC$ 안에 직사각형을 그리려 한다.",
+  "sourceConditions": [
+   {
+    "id": "q16-c1",
+    "condition": "∠B=90°인 직각삼각형 ABC (AB=α, BC=β, α<β)",
+    "mappedTo": "A,B,C"
+   },
+   {
+    "id": "q16-c2",
+    "condition": "직사각형의 두 변이 선분 AB, BC 위에 있고 한 꼭짓점 D가 선분 AC 위에 있다",
+    "mappedTo": "D, 직사각형"
+   }
+  ],
+  "newVisualInformation": [
+   "직각삼각형 ABC 안에 두 변이 AB, BC 위에 놓이고 꼭짓점 D가 AC 위에 있는 직사각형"
+  ],
+  "caption": "∠B가 직각인 직각삼각형 ABC 안에, 두 변이 선분 AB, BC 위에 있고 한 꼭짓점 D가 빗변 AC 위에 있는 직사각형을 그린 그림",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "B",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "A",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "4"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "C",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "8"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "D",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "rational",
+        "numerator": "5",
+        "denominator": "2"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "P",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "Q",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "rational",
+        "numerator": "5",
+        "denominator": "2"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ],
+   "conditionAudits": []
+  },
+  "displaySegments": [
+   {
+    "id": "sAB",
+    "refs": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "id": "sBC",
+    "refs": [
+     "B",
+     "C"
+    ]
+   },
+   {
+    "id": "sCA",
+    "refs": [
+     "C",
+     "A"
+    ]
+   },
+   {
+    "id": "sQD",
+    "refs": [
+     "Q",
+     "D"
+    ]
+   },
+   {
+    "id": "sDP",
+    "refs": [
+     "D",
+     "P"
+    ]
+   }
+  ],
+  "displayPoints": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "P",
+   "Q"
+  ],
+  "hiddenPointNames": [
+   "P",
+   "Q"
+  ],
+  "rightAngles": [
+   {
+    "id": "rB",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ]
+   }
+  ],
+  "assetPath": "assets/images/26_복성고_1학기_중간_고1_유사/q16.svg"
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "A": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "4"
+     }
+    ],
+    "approximation": [
+     0,
+     4
+    ],
+    "precisionDigits": 17
+   },
+   "B": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     0,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "C": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "8"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     8,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "D": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "rational",
+      "numerator": "5",
+      "denominator": "2"
+     }
+    ],
+    "approximation": [
+     3,
+     2.5
+    ],
+    "precisionDigits": 17
+   },
+   "P": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     3,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "Q": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "rational",
+      "numerator": "5",
+      "denominator": "2"
+     }
+    ],
+    "approximation": [
+     0,
+     2.5
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "A",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "B",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "C",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "D",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "P",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "Q",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "P",
+   "Q"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">∠B가 직각인 직각삼각형 ABC 안에, 두 변이 선분 AB, BC 위에 있고 한 꼭짓점 D가 빗변 AC 위에 있는 직사각형을 그린 그림</title><desc id=\"visual-desc\">점과 도형의 관계를 확인한다.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"sAB\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"49.142857143\" y1=\"88.571428571\" x2=\"49.142857143\" y2=\"231.428571429\"/></g><g data-layer=\"30\"><line id=\"sBC\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"49.142857143\" y1=\"231.428571429\" x2=\"334.857142857\" y2=\"231.428571429\"/></g><g data-layer=\"30\"><line id=\"sCA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"334.857142857\" y1=\"231.428571429\" x2=\"49.142857143\" y2=\"88.571428571\"/></g><g data-layer=\"30\"><line id=\"sQD\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"49.142857143\" y1=\"142.142857143\" x2=\"156.285714286\" y2=\"142.142857143\"/></g><g data-layer=\"30\"><line id=\"sDP\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"156.285714286\" y1=\"142.142857143\" x2=\"156.285714286\" y2=\"231.428571429\"/></g><g data-layer=\"60\"><polyline id=\"rB\" data-role=\"indicator\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"none\" points=\"49.142857143,221.428571429 59.142857143,221.428571429 59.142857143,231.428571429\"/></g><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"49.142857143\" cy=\"88.571428571\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"B\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"49.142857143\" cy=\"231.428571429\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"C\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"334.857142857\" cy=\"231.428571429\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"D\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"156.285714286\" cy=\"142.142857143\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"P\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"156.285714286\" cy=\"231.428571429\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"Q\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"49.142857143\" cy=\"142.142857143\" r=\"3.2\"/></g><g data-layer=\"90\"><g id=\"A-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"A\" data-fragment-sha=\"sha256:7550b394cb1ecdcf0d56a8f48316b6a31d1b95a6cf4e6735f5d89e6376911b6f\" transform=\"translate(41.642857143 62.251428571)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"14.32\" viewBox=\"0 0 15 14.32\" data-outline-width=\"15\" data-outline-height=\"14.32\" id=\"lb-e2ab84a1f71e1f15dcd476c331baca580df77b404ec8f6f8ced1915c0e009428\" data-owner=\"A\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.32) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D434\" d=\"M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"B-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"B\" data-fragment-sha=\"sha256:be310a81a76a93aa6e316fb5b129736a275a01ed24032ba1191cd40208dde527\" transform=\"translate(61.142857143 243.428571429)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.18\" height=\"13.66\" viewBox=\"0 0 15.18 13.66\" data-outline-width=\"15.18\" data-outline-height=\"13.66\" id=\"lb-c685669db665bb7b152fc03ff70148898cd62dac5593a2b5bc4a7827add7fef3\" data-owner=\"B\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.66) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D435\" d=\"M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"C-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"C\" data-fragment-sha=\"sha256:557b72640636e84e06fb063f128cc038b5977bc08018594e98fee3c21140179d\" transform=\"translate(346.857142857 204.888571429)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.2\" height=\"14.54\" viewBox=\"0 0 15.2 14.54\" data-outline-width=\"15.2\" data-outline-height=\"14.54\" id=\"lb-758fc62936d988634942a151c8540644476f275b31194c38d6782e63b1f0deb3\" data-owner=\"C\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.1) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D436\" d=\"M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"D-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"D\" data-fragment-sha=\"sha256:fa43c82b029606464c357a236947ea28168f8651eac264b852eb4c01c8ff3fc4\" transform=\"translate(168.285714286 116.482857143)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16.56\" height=\"13.66\" viewBox=\"0 0 16.56 13.66\" data-outline-width=\"16.56\" data-outline-height=\"13.66\" id=\"lb-841fbf9aa85b8544c0f512ec754cc024ba56cef30c0afd6685bc6e8b7f3d41dd\" data-owner=\"D\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.66) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D437\" d=\"M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:0720bfc5cc7e89d7858588bd06316976d0433fb513dffeab466685041c2a9199",
+   "modelSha256": "sha256:2b8d0ca93e8d88520a5eb366702b5fa897e3c2304d8b235e2efd6f7a55ac3968",
+   "typographyPolicySha256": "sha256:61c731c919a4530c5305a6d39ea2bbead12a9d8d3fa1783796b5cd69709b0151",
+   "specSha256": "sha256:09cd1906a8a56e8e38f67c2456376a7ca6171ef444b90b3445469fce95e3930b",
+   "fragmentSha256s": {
+    "A-name": "sha256:7550b394cb1ecdcf0d56a8f48316b6a31d1b95a6cf4e6735f5d89e6376911b6f",
+    "B-name": "sha256:be310a81a76a93aa6e316fb5b129736a275a01ed24032ba1191cd40208dde527",
+    "C-name": "sha256:557b72640636e84e06fb063f128cc038b5977bc08018594e98fee3c21140179d",
+    "D-name": "sha256:fa43c82b029606464c357a236947ea28168f8651eac264b852eb4c01c8ff3fc4"
+   },
+   "measurementsSha256": "sha256:305e0e67cf11da205ed07aa509cf846c2b6db4179246227f15f2d9e5e2bbcbd2",
+   "svgSha256": "sha256:28ba8d13bf4601165bced35f6f01ce6148df79d9d3a53469e282a99fa10396bf",
+   "witnessSha256": "sha256:fdfd9424fce8ecb435cdc118f6e3506c65b1640f6bee4740d0ac66774f995083",
+   "staticAuditSha256": "sha256:8bf1fd69ba9c3f7d1128c8a41c57140328627fdb958023c2fbd3396310650aa5",
+   "renderedLayoutSha256": "sha256:a17110f316eeefe61f3626cccc7b6163748d8cffa6c73a1584e15b621704d82e"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 298.140625,
+    "height": 248.45052083333331
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:28ba8d13bf4601165bced35f6f01ce6148df79d9d3a53469e282a99fa10396bf",
+   "policySha256": "sha256:61c731c919a4530c5305a6d39ea2bbead12a9d8d3fa1783796b5cd69709b0151",
+   "candidateBankSha256": "sha256:91e0edfafe736465de9fb23d537e2b0661b9188d3c6f2d23efd517e940dd537e",
+   "assetPath": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/assets/images/26_복성고_1학기_중간_고1_기출/q16-solution.svg",
+   "assetResponseSha256": "sha256:28ba8d13bf4601165bced35f6f01ce6148df79d9d3a53469e282a99fa10396bf",
+   "archiveRowSha256": "sha256:80149f1593f9c0a3a6ab3eff2b190782c29c1980d010624dc906d05d3911dfe0",
+   "screenshotSha256s": {
+    "image": "sha256:7b8eff22d1d10bbb9ee9a8a054de643f317ab966b1e02a1fa80c977a377e5acc",
+    "context": "sha256:e74a2ee2153f582717981351cc5d066ccb7ae00a96b3dfb70e49e00facd5e479",
+    "page": "sha256:bf8f1761e447f02b38fc4bc70a890f015bcf0fa10540ba22d1fba4c3beebfdef"
+   },
+   "matrixSha256": "sha256:ca6759b9ebe12a4d9f45a323b5250a8ec7d943cd8f65da5d385ea997a4d5ad62",
+   "engineSha256": "sha256:6e41e4e9791186d024b364c63cd523577402854e91067c2897c02ae5203f4e1e"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-fc11a73f",
+   "asset": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/assets/images/26_복성고_1학기_중간_고1_기출/q16-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/candidates/26_복성고_1학기_중간_고1_기출.js",
+   "matrix": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-d1231d1249fb944bd9cdcb7a17f9ee90464ce463dd64630b525ff8cf6338c632-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-d1231d1249fb944bd9cdcb7a17f9ee90464ce463dd64630b525ff8cf6338c632-sol-desktop-va-d1231d1249fb944bd9cdcb7a17f9ee90464ce463dd64630b525ff8cf6338c632.png",
+    "context": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-d1231d1249fb944bd9cdcb7a17f9ee90464ce463dd64630b525ff8cf6338c632-sol-desktop-va-d1231d1249fb944bd9cdcb7a17f9ee90464ce463dd64630b525ff8cf6338c632-context.png",
+    "page": ".tmp/archive/pilot-capture-fc11a73f/26_복성고_1학기_중간_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-d1231d1249fb944bd9cdcb7a17f9ee90464ce463dd64630b525ff8cf6338c632-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+    "bytes": 65901,
+    "sha256": "sha256:1b24218b63f7b0b4fa896cfe043ff7a80b24e3ddcc105d2b09ff9f23d95a1e15"
+   },
+   "originalQuestionSha256": "sha256:a604d53d16c81314f3d5b074ee086a065266462067a3a1f85d6d32bf375e382d",
+   "questionCount": 24,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 16
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.7764078776041666,
+  "expectedDisplayScale": 0.7764078776041666,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

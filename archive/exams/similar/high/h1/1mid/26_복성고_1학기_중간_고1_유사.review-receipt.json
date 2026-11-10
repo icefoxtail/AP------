@@ -1,0 +1,314 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_복성고_1학기_중간_고1_유사",
+  "candidateJsPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사.meta-q01-q24.json",
+  "candidateGitBlobSha1": "6292b99e3793ae5b319672554358551bd16d0ab9",
+  "reviewTimestamp": "2026-11-10T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 24,
+    "answerMatches": 24,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rv/frozen_blind.json (session scratchpad, not committed)",
+    "freezeFileSha1": "1b89ac006265fbc9ee06216e95dd8bd2ae8ac916",
+    "method": "학생에게 보이는 필드(content, choices, points, Q16 문제 그림)만 덤프해 sympy/python(전수 열거 포함)으로 풀고 답을 동결한 뒤 저장된 answer/solution/meta와 원본을 열어 대조했다. Q24는 g 차수·인수 경우를 groebner로 전수 확인, Q14/Q12/Q15는 열거로 확인.",
+    "disclosure": "Q1~Q3은 파일 앞부분 덤프에서 정답(④,②,③)이 노출된 뒤 직접 풀이로 재도출했다(자명한 하 문항). 나머지 21문항은 저장 정답·해설을 보기 전에 동결. 동결 시점에 Q14는 조건 가의 b=0 포함 여부로 51(포함)/36(제외) 두 해석을 기록했고 저장 정답은 51이다.",
+    "frozenAnswers": {
+      "1": "④",
+      "2": "②",
+      "3": "③",
+      "4": "①",
+      "5": "③",
+      "6": "②",
+      "7": "④",
+      "8": "①",
+      "9": "③",
+      "10": "⑤",
+      "11": "④",
+      "12": "②",
+      "13": "①",
+      "14": "③ if b=0 allowed in cond 가 (51); ① if b=0 excluded (36) -- ambiguity",
+      "15": "④",
+      "16": "② (pending figure check)",
+      "17": "⑤",
+      "18": "①",
+      "19": "⑤",
+      "20": "⑤",
+      "21": "6x^2-30x+25=0",
+      "22": "8",
+      "23": "29/5",
+      "24": "196"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "candidateAnswer": "④",
+      "blindDerivation": "x축: D/4=4>0 교점, y=x+5: D=-7<0 없음, y=3x-1: D=17>0 교점 -> (가),(다) ④"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "candidateAnswer": "②",
+      "blindDerivation": "3A=9x^2-6x+15, 2B=2x^2+8x-14, 차 7x^2-14x+29 -> ②"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "candidateAnswer": "③",
+      "blindDerivation": "전개식 x계수 2(a+1)-3=9 -> a=5, 상수항 2a-3b=1 -> b=3, a+3b=14 -> ③ (sympy 확인)"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "candidateAnswer": "①",
+      "blindDerivation": "(1+i)^5=-4-4i, (4/(1-i))^2=8i, ((1-i)/(1+i))^5=(-i)^5=-i, 합 -4+3i, a^2+b^2=25 -> ①"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "candidateAnswer": "③",
+      "blindDerivation": "모서리합 4(a+b+c)=44 -> 11, 세 면대각선 제곱합 2(a^2+b^2+c^2)=90 -> 45, 겉넓이 121-45=76 -> ③"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "candidateAnswer": "②",
+      "blindDerivation": "x=2: c=2, x=-3: a=1, x=0: b=2, ab+c=4 -> ② (sympy 계수비교 일치)"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "candidateAnswer": "④",
+      "blindDerivation": "D1=4k-15<0 -> k<15/4, D2/4=-k-3<0 -> k>-3, 정수 -2..3 6개 -> ④ (열거 확인)"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "candidateAnswer": "①",
+      "blindDerivation": "15^10 mod 7=1, 31 mod 7=3, 합 mod 7=4, 목요일+4=월요일 -> ① (pow 확인)"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "candidateAnswer": "③",
+      "blindDerivation": "교점 -2/3, 2, h=-3x^2+4x+4=-3(x-2/3)^2+16/3, 꼭짓점 구간 안 -> 16/3 ③"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "candidateAnswer": "⑤",
+      "blindDerivation": "f=(x-2)Q+5, Q=(x-1)(x-3)S+3x+2, f를 (x-2)(x-3)으로 나눈 R=11x-17 (f(2)=5,f(3)=16), R(4)=27 -> ⑤"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "candidateAnswer": "④",
+      "blindDerivation": "D/4=(12a-60)k+4a^2-b>=0 모든 k -> a=5, b<=100, 최대 105 -> ④"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "candidateAnswer": "②",
+      "blindDerivation": "(1+i)/(1-i)=i, w=(√3+i)/2 위수 12, 합=2이면 둘 다 1 -> 12의 배수, 200 이하 16개 -> ② (n=1..200 수치 열거 16)"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "candidateAnswer": "①",
+      "blindDerivation": "f=(x-m)^2-9, f(3)=-5 -> m=1 또는 5, 0<α -> m=5, f(0)=16 -> ①"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③ if b=0 allowed in cond 가 (51); ① if b=0 excluded (36) -- ambiguity",
+      "blindMatch": true,
+      "candidateAnswer": "③",
+      "blindDerivation": "조건 가: a!=0이고 (a<0,b>0) 또는 b=0, 나: b>c. (i) a<0,b>0: 3*12=36, (ii) b=0,c<0: 15 -> 51 ③ (전수 열거 51, b=0 제외 해석 36은 발문 규칙상 부적합)"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "candidateAnswer": "④",
+      "blindDerivation": "19^4+14*19^2+81=(361+9-38)(361+9+38)=332*408=2^5*3*17*83, 83 고정, 1632를 두 자리 두 수 곱 4가지 -> ④ (열거 4)"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "② (pending figure check)",
+      "blindMatch": true,
+      "candidateAnswer": "②",
+      "blindDerivation": "α+β=6, αβ=7, 직사각형 최대 넓이=αβ/4=7/4 (D가 빗변 중점) -> ②"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "candidateAnswer": "⑤",
+      "blindDerivation": "a^2+b^2=4, 2(a^2-b^2)=4 -> a^2=3, m=-2a, n=4, m^2+n^2=12+16=28 -> ⑤"
+    },
+    {
+      "qid": 18,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "candidateAnswer": "①",
+      "blindDerivation": "B(-3,0), b=3a, D(0,3a), C(-6,18+3a), S1=3a^2/2, S2=27+27a/2, S2=2S1 -> a=6 -> ① (sympy)"
+    },
+    {
+      "qid": 19,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "candidateAnswer": "⑤",
+      "blindDerivation": "B 원점 좌표, 중심 (x,6-x), BP=2 -> x^2-16x+40=0, x=8-2√6, 식=6x-10=38-12√6, p+q=26 -> ⑤"
+    },
+    {
+      "qid": 20,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "candidateAnswer": "⑤",
+      "blindDerivation": "PQ=-(x^2-3x+5)(x^2-3x-3), P,Q 최고차 +-1, P(2)<Q(2), 판별식 5-k^2=0 -> k=±√5, 곱 -5 -> ⑤ (sympy)"
+    },
+    {
+      "qid": 21,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "6x^2-30x+25=0",
+      "blindMatch": true,
+      "candidateAnswer": "$6x^2-30x+25=0$",
+      "blindDerivation": "α+β=2, αβ=2/3, 새 두 근 합 5, 곱 25/6 -> 6x^2-30x+25=0"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "8",
+      "blindMatch": true,
+      "candidateAnswer": "8",
+      "blindDerivation": "꼭짓점 x=2a>2; 꼭짓점이 구간 안이면 4a^2=18 -> a=3√2/2>3/2 모순; 아니면 f(3)=18 -> a=9/4, 최솟값 f(1)=8"
+    },
+    {
+      "qid": 23,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "29/5",
+      "blindMatch": true,
+      "candidateAnswer": "29/5",
+      "blindDerivation": "최댓값이 같으므로 0<p<=3, 최솟값 조건에서 p=3, f(6)=f(0)=q-9=-4m, q=m+10 -> m=-1/5, q=49/5, f(5)=29/5"
+    },
+    {
+      "qid": 24,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "196",
+      "blindMatch": true,
+      "candidateAnswer": "196",
+      "blindDerivation": "g 일차, Q 일차, g(3)=0, Q(5)=0, 계수비교(groebner)로 g=5(x-3), f=2x^2-8x-10 유일, f(-2)=14, 196"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "24 vs 24",
+    "pointsSum": "100 vs 100 (원본 content의 (n점) 표기 합 100, 문항별 배점 동일)",
+    "perQuestionPoints": "all equal",
+    "questionTypes": "all equal (객관식 1-20, 서술형 21-24)",
+    "notes": [
+      "Q7: 원본 판별식 보기 판정, 유사는 두 포물선과 직선이 모두 안 만나는 정수 k 개수(접하는 경계 k=-3 제외 처리가 해설에 명시). 구조 동일.",
+      "Q12: 원본 8의 배수(합 12개), 유사 i^n과 w^n(w=(√3+i)/2, 위수 12)이 모두 1이어야 해 12의 배수 16개. 같은 실수부분 1 논법, 공통수학1 범위.",
+      "Q14: 원본 가 조건 sqrt(bc)/sqrt(a)=sqrt(bc/a)를 유사에서 sqrt(b)/sqrt(a)=-sqrt(b/a)로 바꿨고 음수 제곱근 규칙을 발문에 명시. 원본처럼 0 카드(b=0) 경우를 따로 세는 구조가 유지되고 36은 b=0 누락 오답으로 기능한다. 모호성 없음으로 판단.",
+      "Q15: 원본 13^4+2*13^2+9, 유사 19^4+14*19^2+81 = (x^2+9)^2-4x^2 형 인수분해 후 소수 83 때문에 한 수가 83으로 고정돼 두 자리 곱 쌍 4가지. 원본(소인수 분해 후 약수 선택)과 같은 난이도.",
+      "Q20·Q24: 원본과 같은 치환·차수 추론 구조. Q24는 원본 최댓값 대신 값을 묻지만 g(3)=0/Q(5)=0 경우 분기 논증이 필요하고 해가 하나로 정해져 모호성 없음.",
+      "Q5·Q19: 원본에는 문제 그림이 있었으나 유사는 발문 글로 완결(EXEMPT 사유 기재). 해설 그림은 UNSUPPORTED."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 4,
+    "note": "MC 1-20; max-min=0. 원본 정답 번호와 같은 문항은 Q10(⑤)뿐이고 값은 다름"
+  },
+  "mathReview": "24문항 전수 블라인드 독립 풀이 후 저장 해설을 끝까지 읽어 논리·중간 계산·교육과정(2022 개정 공통수학1: 다항식, 방정식과 부등식, 경우의 수) 확인. 정답 불일치 0건, 해설 오류 0건, 보기 5지 유일 정답(Q7 k 후보 {-2..3} 6개, Q14 51 등). 범위 밖 방법 없음. 해설지 렌더 시 가로 넘침·KaTeX 오류 0.",
+  "reviewerEdits": [],
+  "metaReview": {
+    "jsMetaConsistency": "JS 24문항과 meta items[].after의 level/difficultyBucket/단원·소단원·개념군/PT/TPL/크로스개념/조건/통합패턴/sourceQid/variationType/RPM 레코드·L3·L4 라벨 불일치 0(스크립트 대조). expectedSourceBlobSha1 = JS git blob sha1(6292b99e...).",
+    "keyExistence": "PT 15종, TPL 19종, CC 48종, COND 7종, RPM 레코드 모두 canonical taxonomy/condition_registry/concepts/크로스워크(high1.json)에서 실재(누락 0). TPL은 모두 해당 PT의 자식으로 등록돼 있음. 새 확장 키 0개(registryChanges [], aliasProposals 없음), EVIDENCE_DEBT 0건.",
+    "coverage": "standardCourse/curriculum/course/단원/소단원/개념군/RPM L1~L4+recordId/PT/TPL/crossConceptKeys/conditionKeys/통합패턴/level/difficultyBucket/sourceQid/variationType/provenance 모두 24/24 (conditionKeys 비어있는 문항은 크로스 전용으로 []; 해당 없음 근거는 metaRationale.condition에 기록)",
+    "judgments": [
+      "Q3: 크로스워크 H1-RPM-134 DIRECT_ACTIVE의 TPL_H1_POLY_OPERATION_DIRECT를 따랐다(원본은 TPL_H1_POLY_COEFFICIENT_EXTRACTION). 해설 결정 단계가 선택적 계수 추출이라 COEFFICIENT_EXTRACTION도 타당하지만 크로스워크 정합을 우선한 생성자 판단을 결함으로 보지 않음. 참고 사항.",
+      "Q10(RPM-143)·Q11(RPM-165)·Q24(RPM-143) FAMILY_ACTIVE 행의 TPL 선택: selectionRule(decisive step)에 따라 Q10=NESTED_DIVISION(몫 Q를 다시 나눔), Q11=PARAMETER_IDENTITY(모든 k에 대해 성립 -> k 계수 0), Q24=COMPOSITE_DIVISOR(합성 제수 x^2g-250). 해설과 일치, 적정.",
+      "Q13: RPM-166 행(PT_H1_QUADRATIC_GRAPH_INTERSECTION)에 PT_H1_QUADRATIC_RECONSTRUCTION/ROOT_VERTEX를 결합. 결정 단계가 근·꼭짓점으로 함수식 복원이고 canonical TPL 정의(근, 축, 꼭짓점, 한 점)와 일치하며 원본 Q13도 같은 PT. 크로스워크 행의 상위 L1/L2만 따른 것으로 parentAssignment에 기록돼 있어 적정.",
+      "Q14: PT_COUNTING_ARRANGEMENT/TPL_PERMUTATION_STANDARD_CONSTRAINT는 probability-statistics 팩 소속이지만 크로스워크 H1-RPM-189(공통수학1, DIRECT_ACTIVE)가 직접 지정한 쌍이고 원본 Q14도 같은 쌍. 하네스 TAXONOMY_CROSS_PACK_REFERENCE WARN은 설계상 경고이며 결함 아님.",
+      "Q19: PT_H1_POLY_DIVISION(RPM-139)는 해설 마지막 결정 단계(x^2-16x+40으로 나눈 나머지로 식 값 계산)에 근거. 기하 설정 단계는 CC_PYTHAGOREAN_THEOREM/CC_CIRCLE_CHORD_PERP_BISECTOR에 기록. 원본의 PT_CIRCLE_LINE_RELATION과 달라졌으나 중등/고등 canonical 대응 근거가 있어 허용."
+    ],
+    "changes": "없음"
+  },
+  "visualReview": {
+    "problemFigures": "Q16만 문제 그림(construction-spike-v1, ARCHIVE_BOUND). 렌더 PNG 직접 확인: 순백 배경, 직각 B 표식, D만 빗변 위 점으로 표시, 직사각형이 최대인 중점 배치가 아니라 임의 위치라 정답 누설 없음. 그림 비율 AB:BC가 약 1:2(실제 1.59:4.41=1:2.78)인 개략도이나 AB<BC가 분명히 보여 학생 이해에 지장 없음(low 관찰, 결함 아님).",
+    "solutionFigures": "Q9, Q13, Q16, Q18, Q22, Q23 rsvg PNG 직접 확인. 수식 라벨·점 좌표가 해설과 일치하고 겹침·잘림 없음. Q9 y절편 미표시, Q18 포물선 꼭짓점 라벨 없음 정도의 경미한 생략뿐. 모두 해설 본문이 값을 다시 적어 해설지만으로 풀이 이해 가능.",
+    "unsupported": "Q5(직육면체 solid 그림), Q19(무리수 중심 좌표 원) 해설 그림 UNSUPPORTED(사유 기재, 해설 글로 완결) -> 하네스 WARN으로만 표시.",
+    "planAudit": "48개 plan 모두 유효 JSON. 문제 plan 23개 EXEMPT+사유, Q16 활성. 해설 plan 활성 6(Q9,Q13,Q16,Q18,Q22,Q23) engineEvidence(result/state/svg) 존재, UNSUPPORTED 2(Q5,Q19), 나머지 EXEMPT+사유. SVG 7개 모두 role=img, title/desc 있음.",
+    "engineRender": "playwright(Chrome)로 engine.html?data=exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사.js&mode=exam|sol 를 PC 1100px, 휴대폰 400px로 열어 확인: 24문항 로드, KaTeX 오류 0, 깨진 이미지 0, 가로 넘침 0, 해설지 전체 렌더 완료(약 40초 소요, 처음에는 '수식 정리 중' 표시). 해설지 PC 화면 일부(1~4, 19~21번) 캡처 육안 확인."
+  },
+  "harness": {
+    "draftPhase": "NOT_RUN",
+    "strict": "node tools/harness/verify_similar_exam.mjs 26_복성고_1학기_중간_고1_유사 : GATE_PASS exit 0 (24문항, 100점, 정답 분포 4/4/4/4/4). WARN 4건: VISUAL_DEBT_ACKNOWLEDGED Q5,Q19, TAXONOMY_CROSS_PACK_REFERENCE(PT_COUNTING_ARRANGEMENT/TPL_PERMUTATION_STANDARD_CONSTRAINT, 크로스워크 H1-RPM-189 지정 쌍), RECEIPT_QUALIFIED_PASS."
+  },
+  "NOT_RUN": [
+    "실제 학생 폰 기기 확인",
+    "main_merge_master.py 운영병합(지시상 push 금지)",
+    "tools/run-tests.js 전체 테스트(오케스트레이터 병합 직전 1회)"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 5,
+      "qid_ref": "26_복성고_1학기_중간_고1_유사#5",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림 UNSUPPORTED(직육면체 입체 그림 엔진 계약 없음). 해설 글이 a,b,c와 세 면 대각선을 모두 정의해 풀이 완결.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 19,
+      "qid_ref": "26_복성고_1학기_중간_고1_유사#19",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림 UNSUPPORTED(무리수 중심·반지름 좌표를 엔진이 받지 못함). 해설 글이 좌표 설정과 모든 식을 적어 풀이 완결. 원본에 있던 문제 그림도 유사에서는 발문 글로 대체됨.",
+      "severity": "low",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 24/24 일치, JS·메타 수정 0건, 메타 키 전수 실재·정합 확인, 소형 시각 부채 2건(Q5,Q19 해설 그림 UNSUPPORTED, low)만 잔존."
+}
