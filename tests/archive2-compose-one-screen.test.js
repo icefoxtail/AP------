@@ -63,7 +63,7 @@ function harness(data = structuredClone(catalog)) {
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderCompose, renderResult, renderResultSummary,
       renderResultEmpty, renderMobileActions, renderResultFinish, renderPaper, planRows, request, pool, review, generate, invalidate,
-      saveAndAssign, currentSavedPaperIds, applyFiveMinuteViewGuard, FIVE_MINUTE_GUARD, filterMarkup, newDraft, saveWorkSignature,
+      saveAndAssign, currentSavedPaperIds, draft, applyDraft, focusComposeResult, composeLiveMarkup, applyFiveMinuteViewGuard, FIVE_MINUTE_GUARD, filterMarkup, newDraft, saveWorkSignature,
       setHooks: hooks => {
         if (hooks.savePapers) savePapers = hooks.savePapers;
         if (hooks.openSavedPaperAssign) openSavedPaperAssign = hooks.openSavedPaperAssign;
@@ -449,12 +449,12 @@ test('?recipe= 로 들어오면 문항 수는 평가 방식이 정하고 저장�
   assert.match(html, /id="count"/);
 });
 
-test('조건 순서는 학년 → 과목 → 단원 → 난이도 단계 → 문항 수이고, 문항 수 옆 설명은 숫자와 한 문장이다', () => {
+test('조건 순서는 학년 → 과목 → 난이도 단계 → 문항 수 → 단원(긴 목록) → 더 자세한 조건 → 요약이고, 문항 수 옆 설명은 숫자와 한 문장이다', () => {
   const { w } = harness();
   const unit = pickUnit(w);
   w.state.scopes = [unit.key];
   const left = w.renderCompose();
-  const order = ['data-action="compose-grade"', 'data-action="compose-subject"', 'data-scope=', 'id="compose-difficulty-label"', 'id="count"']
+  const order = ['data-action="compose-grade"', 'data-action="compose-subject"', 'id="compose-difficulty-label"', 'id="count"', 'data-scope=', 'class="compose-detail cz-detail"', 'data-cz-live']
     .map(token => left.indexOf(token));
   assert.ok(order.every((position, i) => position > 0 && (!i || position > order[i - 1])), 'order ' + order);
   assert.match(left, /고르지 않으면 모든 단계에서 뽑습니다./);
@@ -489,4 +489,153 @@ test('뽑은 뒤 화면 상태 줄에는 개발용 처리 시간이나 결과 �
   assert.doesNotMatch(statusNode.textContent, /ms|중복 없음/);
   assert.match(w.state.composeAnnounce, /\d+문항을 선택했습니다/);
   assert.match(w.renderCompose(), /class="visually-hidden" role="status" aria-live="polite" data-cz-announce>\d+문항을 선택했습니다/);
+});
+
+// ---- K1~K5 (2026-11-11) ---------------------------------------------------------------------------------
+// 문항을 전부 쓰는 작은 단원(다시 만들기에서 지금 문항을 빼면 후보가 없다).
+function pickSmallUnit(w) {
+  w.state.filters = { grade: '고1' };
+  const scope = w.scopeOptions().filter(item => !item.unclassified && item.count >= 4 && item.count <= 50).sort((x, y) => x.count - y.count)[0];
+  assert.ok(scope, 'test catalog has a small unit');
+  return scope;
+}
+
+test('K1 고정 외 다시 만들기: 새로 뽑을 문항이 모자라 결과가 줄어들면 적용하지 않고 지금 문제지를 그대로 두며 안내한다', () => {
+  const { w } = harness();
+  const unit = pickSmallUnit(w);
+  w.state.scopes = [unit.key];
+  w.state.distribution = 'pool';
+  w.state.count = unit.count; // 단원의 문항을 전부 쓴다
+  w.generate();
+  const before = w.state.selected.map(row => row.questionUid);
+  assert.ok(before.length >= 4);
+  w.generate(true);
+  assert.deepEqual(w.state.selected.map(row => row.questionUid), before, 'same questions in the same order');
+  assert.match(w.state.composeNotice, /바꿔 넣을 문항이 모자라 지금 문제지를 그대로 둡니다/);
+  assert.match(w.renderResult(), /data-compose-notice[^>]*>바꿔 넣을 문항이 모자라 지금 문제지를 그대로 둡니다. 문항을 하나씩 교체하거나 조건을 넓혀 주세요./);
+  // 고정한 문항이 있어도 같다(고정은 그대로).
+  w.state.pins = [before[0]];
+  w.generate(true);
+  assert.deepEqual(w.state.selected.map(row => row.questionUid), before);
+  assert.deepEqual(plain(w.state.pins), [before[0]]);
+  // 결과를 비우는 조건 변경은 안내를 지운다.
+  w.invalidate();
+  assert.equal(w.state.composeNotice, '');
+});
+
+test('K1 고정 외 다시 만들기: 후보가 충분하면 정상으로 바뀌고 고정한 문항은 남는다', () => {
+  const { w } = harness();
+  const unit = pickUnit(w);
+  w.state.scopes = [unit.key];
+  w.state.distribution = 'pool';
+  w.state.count = 3;
+  w.state.composeNotice = '이전 안내';
+  w.generate();
+  assert.equal(w.state.composeNotice, '', 'a fresh draw clears the notice');
+  const before = w.state.selected.map(row => row.questionUid);
+  w.state.pins = [before[0]];
+  w.generate(true);
+  assert.equal(w.state.composeNotice, '');
+  assert.equal(w.state.selected.length, before.length);
+  assert.ok(w.state.selected.some(row => row.questionUid === before[0]), 'the pinned question stays');
+  assert.ok(w.state.selected.some(row => !before.includes(row.questionUid)), 'unpinned ones were replaced');
+});
+
+test('K1 같은 조건으로 다시 뽑기는 지금 문항을 후보에서 빼지 않아 모자라게 줄지 않는다', () => {
+  const { w } = harness();
+  const unit = pickUnit(w);
+  w.state.scopes = [unit.key];
+  w.state.distribution = 'pool';
+  w.state.count = unit.count; // 단원의 문항을 전부 쓴다
+  w.generate();
+  const first = w.state.selected.length;
+  assert.ok(first > 0);
+  w.generate();
+  assert.equal(w.state.selected.length, first, 'drawing again from the same pool keeps the size');
+});
+
+test('K3 좁은 화면에서는 뽑은 뒤 결과 머리로 스크롤하고 포커스를 옮기고, 두 칸(PC)에서는 하지 않는다', () => {
+  const { w, ctx, document } = harness();
+  const calls = [];
+  const target = {
+    attrs: {}, setAttribute(name, value) { this.attrs[name] = value; },
+    scrollIntoView(options) { calls.push(['scroll', options]); }, focus(options) { calls.push(['focus', options]); },
+  };
+  document.querySelector = selector => (selector === '[data-cz-result-title]' ? target : null);
+  ctx.matchMedia = () => ({ matches: false });
+  w.focusComposeResult();
+  assert.deepEqual(plain(calls), [['scroll', { behavior: 'smooth', block: 'start' }], ['focus', { preventScroll: true }]]);
+  assert.equal(target.attrs.tabindex, '-1');
+  calls.length = 0;
+  ctx.matchMedia = query => ({ matches: query.includes('prefers-reduced-motion') });
+  w.focusComposeResult();
+  assert.equal(calls[0][1].behavior, 'auto', 'reduced motion jumps at once');
+  calls.length = 0;
+  ctx.matchMedia = query => ({ matches: query.includes('min-width: 1100px') });
+  w.focusComposeResult();
+  assert.deepEqual(calls, [], 'two-column layout does not scroll');
+  // generate()가 실제로 부른다.
+  ctx.matchMedia = () => ({ matches: false });
+  const unit = pickUnit(w);
+  w.state.scopes = [unit.key];
+  w.state.distribution = 'pool';
+  w.state.count = 3;
+  w.generate();
+  assert.ok(calls.some(call => call[0] === 'scroll'));
+});
+
+test('K4 요청 합계가 400문항을 넘으면 요약 줄에서 미리 알리고 버튼을 막는다', () => {
+  const { w } = harness();
+  w.state.filters = { grade: '고1' };
+  const units = w.scopeOptions().filter(item => !item.unclassified);
+  assert.ok(units.length >= 2, 'test catalog has two units');
+  w.state.scopes = units.slice(0, 2).map(item => item.key);
+  w.state.distribution = 'equal';
+  w.state.count = 250; // 단원마다 250 → 500
+  const html = w.renderComposition();
+  assert.match(html, /data-cz-feasible="limit"[^>]*>한 번에 최대 400문항입니다\(지금 요청 500문항\)/);
+  assert.match(html, /data-action="generate"[^>]*disabled/);
+  assert.match(w.renderMobileActions(null), /최대 400문항<\/strong><span class="cz-bar-note">지금 요청 500문항/);
+  assert.match(w.renderMobileActions(null), /data-action="generate"[^>]*disabled/);
+  w.state.count = 150; // 300은 괜찮다
+  assert.doesNotMatch(w.renderComposition(), /data-cz-feasible="limit"/);
+});
+
+test('K5a 조건이 바뀌어 결과가 비워질 때 고정해 둔 문항도 함께 지워졌다고 알린다', () => {
+  const { w } = harness();
+  const unit = pickUnit(w);
+  w.state.scopes = [unit.key];
+  w.state.distribution = 'pool';
+  w.state.count = Math.min(4, unit.count);
+  w.generate();
+  w.state.pins = w.state.selected.slice(0, 2).map(row => row.questionUid);
+  w.invalidate();
+  assert.equal(w.state.selected.length, 0);
+  assert.match(w.renderResultEmpty(), /조건이 바뀌었습니다[\s\S]*고정해 둔 2문항도 함께 지워졌습니다/);
+  // 고정이 없었으면 그 문장은 없다.
+  w.state.count = Math.min(4, unit.count);
+  w.generate();
+  w.invalidate();
+  assert.doesNotMatch(w.renderResultEmpty(), /고정해 둔/);
+});
+
+test('K5b 모자라게 뽑은 문제지를 초안에서 복원해도 모자람 안내가 남는다', () => {
+  const { w } = harness();
+  const unit = pickUnit(w);
+  w.state.scopes = [unit.key];
+  w.state.distribution = 'pool';
+  w.state.count = unit.count + 5;
+  w.generate();
+  assert.equal(w.state.composeShortage.length, 1);
+  const saved = JSON.parse(JSON.stringify(w.draft()));
+  assert.equal(saved.composeShortage.length, 1);
+  w.state.composeShortage = [];
+  w.applyDraft(saved);
+  assert.equal(w.state.composeShortage.length, 1);
+  assert.equal(w.state.composeShortage[0].requested, unit.count + 5);
+  assert.match(w.renderResultSummary(w.review()), /모자라서 있는 만큼만 넣었습니다/);
+  // 이전 형식의 초안(필드 없음)은 안내 없이 열린다.
+  delete saved.composeShortage;
+  w.applyDraft(saved);
+  assert.deepEqual(plain(w.state.composeShortage), []);
 });

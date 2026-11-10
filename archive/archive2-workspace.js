@@ -520,6 +520,8 @@
     // 문제지 만들기 한 화면: 뽑은 뒤 모자랐던 곳, 뽑은 결과가 있었는데 조건이 바뀌어 비워졌는지, 미리보기·출력 설정 접힘.
     composeShortage: [],
     composeStale: false,
+    composeStalePins: 0,
+    composeNotice: "",
     previewOpen: true,
     outputSettingsOpen: false,
     scopeGroupOpen: {},
@@ -759,6 +761,7 @@
       "saveResultSignature",
       "saveResultState",
       "derivationSource",
+      "composeShortage",
     ];
     return {
       schemaVersion: C.VERSION,
@@ -884,6 +887,8 @@
       saveResultSignature: (v) => typeof v === "string",
       saveResultState: (v) => ["", "SAVED", "FAILED", "SAVING", "RESULT_UNKNOWN"].includes(v),
       derivationSource: (v) => v === null || isObj(v),
+      composeShortage: (v) => Array.isArray(v) && v.length <= 200 && v.every((item) => isObj(item) &&
+        isStr(item.label, 500) && isBuckets(item.difficultyBuckets) && isInt(item.requested, 0, 100000) && isInt(item.got, 0, 100000)),
       pins: (v) => isStrArr(v, 5000),
       selected: (v) => Array.isArray(v) && v.length <= 400 && v.every((r) => isObj(r) &&
         isStr(r.questionUid, 200) && (r.rowId === undefined || isStr(r.rowId, 2000)) &&
@@ -1026,8 +1031,12 @@
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
     state.derivationSource = data.derivationSource || null;
-    state.composeShortage = [];
+    // 모자라게 뽑은 문제지는 모자람 안내도 함께 복원한다(결과가 없으면 안내할 것도 없다).
+    state.composeShortage = data.selected.length && Array.isArray(data.composeShortage)
+      ? data.composeShortage.map((item) => ({ label: item.label, difficultyBuckets: item.difficultyBuckets, requested: item.requested, got: item.got }))
+      : [];
     state.composeStale = false;
+    state.composeNotice = "";
     state.includeExtended = data.includeExtended === true;
     state.derivedBaseQuestions = null;
     derivedBaseLoad = null;
@@ -1257,7 +1266,11 @@
         "이미 출제한 문제지는 보존됩니다. 아직 출제하지 않은 문제지에서 문항을 교체하거나 다시 만들어 주세요.",
       );
     // 결과가 있었는데 조건이 바뀌면 오른쪽이 빈 화면이 되지 않게 "조건이 바뀌었습니다" 안내를 띄운다.
-    if (state.selected.length) state.composeStale = true;
+    if (state.selected.length) {
+      state.composeStale = true;
+      state.composeStalePins = state.pins.length;
+    }
+    state.composeNotice = "";
     state.composeShortage = [];
     state.selected = [];
     state.pins = [];
@@ -2851,15 +2864,16 @@
         const open = explicit !== undefined ? explicit
           : wideScreen || names.length === 1 || g === names[0] || g === currentSubject || members.some(scopeIsSelected);
         return `<details class="scope-group" data-scope-group="${esc(g)}"${open ? " open" : ""}><summary class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</summary>${members.map(s =>
-          `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`
+          `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}${s.unclassified ? ' <span class="scope-hint">단원 정보가 아직 없는 문항 · 선택하면 함께 출제</span>' : ""}</label><small>${s.count}문항</small></div>`
         ).join("")}</details>`;
       }).join("")}</div>`;
     };
     const unifiedNotice = unifiedIndex()
-      ? `<p class="muted">출제할 단원을 고르세요. 2015·2022 개정 문항이 한 목록에 함께 들어 있고, 숫자는 지금 출제할 수 있는 문항 수입니다. ‘단원 미분류’는 단원 정보가 아직 없는 문항으로, 선택하면 함께 출제됩니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
+      ? `<p class="muted">출제할 단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
       : "";
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
       ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 단원입니다. 숫자는 지금 출제할 수 있는 문항 수이며, 같은 문항은 한 번만 셉니다. 난이도를 고르지 않으면 난이도가 정해지지 않은 문항까지 포함해 전체에서 고릅니다.</p>'}
+      ${groupMarkup(basic, false)}
       ${rangeOptions.length ? `<details class="range-more"><summary>연속 범위로 고르기</summary><div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         rangeOptions,
         rangeOptions[0]?.value ?? 0,
@@ -2868,8 +2882,7 @@
         rangeOptions,
         rangeOptions.at(-1)?.value ?? 0,
         null,
-      )}</select></label>${button("scope-range", "연속 범위 선택")}</div></details>` : ""}
-      ${groupMarkup(basic, false)}`;
+      )}</select></label>${button("scope-range", "연속 범위 선택")}</div></details>` : ""}`;
   }
   function bucketButtons(current, row = "") {
     return `<div class="bucket-set" role="group" aria-label="난이도 선택">${button("bucket-all", "전체", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
@@ -2962,11 +2975,14 @@
     const countValid = state.distribution === "all" ||
       (Number.isInteger(state.count) && state.count >= 1 && state.count <= 400);
     const regenerate = state.selected.length > 0;
+    const overLimit = countValid && requested > 400;
     let line;
     if (!rows.length)
       line = '<p class="cz-feasible muted" data-cz-feasible="empty">단원을 고르면 뽑을 수 있는 문항 수가 여기에 보입니다.</p>';
     else if (!countValid)
       line = '<p class="cz-feasible muted" data-cz-feasible="count">문항 수는 1~400 사이로 입력해 주세요.</p>';
+    else if (overLimit)
+      line = `<p class="cz-feasible danger-text" data-cz-feasible="limit">한 번에 최대 400문항입니다(지금 요청 ${requested}문항). 단원이나 문항 수를 줄여 주세요.</p>`;
     else if (!possible)
       line = '<p class="cz-feasible danger-text" data-cz-feasible="none">고른 조건에 맞는 문항이 없습니다. 단원이나 난이도 단계 조건을 넓혀 보세요.</p>';
     else {
@@ -2976,8 +2992,8 @@
         line += `<p class="cz-feasible-note" data-cz-feasible-short>모자라도 막지 않고 있는 만큼만 넣습니다. ${shortages.slice(0, 3).map((item) =>
           `${esc(composeStepLabel(item.row))}: 요청 ${item.row.count} · 가능 ${item.available}`).join(" / ")}${shortages.length > 3 ? ` 외 ${shortages.length - 3}곳` : ""}</p>`;
     }
-    const disabled = !rows.length || state.sealed || state.busy || !countValid || !possible;
-    composeLiveInfo = { requested, possible, disabled, hasRows: rows.length > 0 };
+    const disabled = !rows.length || state.sealed || state.busy || !countValid || !possible || overLimit;
+    composeLiveInfo = { requested, possible, disabled, hasRows: rows.length > 0, overLimit };
     return `<div class="cz-live" data-cz-live>${line}${button(
       "generate",
       regenerate ? "같은 조건으로 다시 뽑기" : "문제지 만들기",
@@ -2987,8 +3003,14 @@
   function composeFilesMarkup() {
     return `<div class="cz-files" role="group" aria-label="작업 파일">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div>`;
   }
+  // 조건 순서: 학년 → 과목 → 난이도 단계 → 문항 수 → 단원(긴 목록) → 더 자세한 조건 → 요약 + 문제지 만들기.
+  // 짧은 조작을 위에 두고 긴 단원 목록을 마지막에 두어, 목록이 길어도 단계·문항 수가 화면 아래로 밀리지 않는다.
   function renderComposition() {
-    if (state.derivationSource) return renderDerivedComposition();
+    const parts = composeParts();
+    return parts.amount + parts.tail;
+  }
+  function composeParts() {
+    if (state.derivationSource) return { amount: renderDerivedComposition(), tail: "" };
     const fixedAssessment = isAssessmentRecipeMode();
     if (fixedAssessment) {
       state.distribution = "pool";
@@ -3051,9 +3073,9 @@
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : esc(row.difficultyBuckets.join(" · ")) || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${esc(row.count)}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : esc(row.count)}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       <p class="muted">조건에 맞는 문항을 최신 연도부터(2026년, 2025년, 2024년 순) 선택하고, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p>
       ${composeFilesMarkup()}</div></details>`;
-    return `<div class="cz-block cz-amount"><div class="compose-difficulty cz-levels"><strong id="compose-difficulty-label">난이도 단계</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 모든 단계에서 뽑습니다.</p></div>
-      <div class="cz-amount-row"><span class="cz-label" id="compose-count-label">문항 수</span>${stepper}<span class="cz-amount-note">${amountNote}</span></div></div>
-      ${detail}${composeLiveMarkup({ rows, perRow, shortages })}`;
+    const amount = `<div class="cz-block cz-amount"><div class="compose-difficulty cz-levels"><div class="cz-levels-head"><strong id="compose-difficulty-label">난이도 단계</strong><span class="muted">고르지 않으면 모든 단계에서 뽑습니다.</span></div>${bucketButtons(state.buckets)}</div>
+      <div class="cz-amount-row"><span class="cz-label" id="compose-count-label">문항 수</span>${stepper}<span class="cz-amount-note">${amountNote}</span></div></div>`;
+    return { amount, tail: `${detail}${composeLiveMarkup({ rows, perRow, shortages })}` };
   }
   // Year spread of the generated paper, in the recency order the selection used.
   function yearDistribution(records) {
@@ -3280,7 +3302,9 @@
       if (state.derivationSource) return "";
       const info = composeLiveInfo;
       const disabled = !info || info.disabled;
-      return `<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text">${info?.hasRows
+      return `<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text">${info?.hasRows && info.overLimit
+        ? `<strong class="cz-bar-count">최대 400문항</strong><span class="cz-bar-note">지금 요청 ${info.requested}문항</span>`
+        : info?.hasRows
         ? `<strong class="cz-bar-count">${info.possible}문항 가능</strong><span class="cz-bar-note">요청 ${info.requested}문항</span>`
         : '<strong class="cz-bar-count">조건을 고르세요</strong><span class="cz-bar-note">단원을 고르면 문항 수가 보입니다</span>'}</div>${button("generate", "문제지 만들기", `class="primary cz-bar-main" ${disabled ? "disabled" : ""}`)}</div>`;
     }
@@ -3299,12 +3323,15 @@
   function renderResultEmpty() {
     const earlier = drafts().filter((item) => item.draftId !== state.draftId && item.selected?.length).length;
     return `${state.composeStale
-      ? '<div class="callout cz-stale" role="status" data-compose-stale><strong>조건이 바뀌었습니다.</strong> <strong>문제지 만들기</strong>를 누르면 새로 뽑습니다.</div>'
+      ? `<div class="callout cz-stale" role="status" data-compose-stale><strong>조건이 바뀌었습니다.</strong> <strong>문제지 만들기</strong>를 누르면 새로 뽑습니다.${state.composeStalePins ? ` 고정해 둔 ${state.composeStalePins}문항도 함께 지워졌습니다.` : ""}</div>`
       : ""}<div class="cz-empty"><h2>만들어진 문제지가 여기에 나옵니다</h2><p data-cz-empty-guide><span class="cz-dir-wide">왼쪽</span><span class="cz-dir-narrow">위</span>에서 조건을 고르고 <strong>문제지 만들기</strong>를 누르면 여기에 문제지가 나옵니다.</p>${composeSourceNote()}${earlier ? `<p class="cz-entry" data-cz-entry="drafts">이어서 할 수 있는 이전 작업이 ${earlier}개 있습니다. ${`<button type="button" class="cz-link" data-view="recent">출제 내역에서 이어하기</button>`}</p>` : ""}</div>`;
   }
   function renderResult(r = state.selected.length ? review() : null) {
     const unknown = state.saveResultState === "RESULT_UNKNOWN";
-    const top = `<div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div>`;
+    const notice = state.composeNotice
+      ? `<div class="callout cz-notice" role="status" data-compose-notice>${esc(state.composeNotice)}</div>`
+      : "";
+    const top = `<div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div>${notice}`;
     if (!r) return `${top}${renderResultEmpty()}`;
     return `${top}<div class="cz-result-body" ${unknown ? "inert" : ""}>${renderResultSummary(r)}${renderPaper()}${renderOutputSettings()}${renderResultFinish(r)}</div>`;
   }
@@ -3316,7 +3343,8 @@
     const sources = state.sources.length
       ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>`
       : "";
-    return `${receiptNote}${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${sources}<div class="cz-block compose-range cz-scope">${renderScopes()}</div>${renderComposition()}`;
+    const parts = composeParts();
+    return `${receiptNote}${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${sources}${parts.amount}<div class="cz-block compose-range cz-scope">${renderScopes()}</div>${parts.tail}`;
   }
   function renderCompose() {
     const unknown = state.saveResultState === "RESULT_UNKNOWN";
@@ -4373,6 +4401,7 @@
       rebuildUnissued();
       return;
     }
+    state.composeNotice = "";
     state.seed = crypto.randomUUID();
     const req = request();
     if (!rebuild) req.pins = [];
@@ -4388,6 +4417,13 @@
         "문제지를 만들 수 없습니다",
         `<p>${result.errors.map(esc).join("<br>")}</p><p>범위·난이도·고정 문항을 확인한 뒤 다시 만들어 주세요.</p>`,
       );
+      return;
+    }
+    // 고정 외 다시 만들기는 지금 문항을 후보에서 빼고 뽑으므로 새 문항이 모자라면 문제지가 조용히 줄어든다. 줄어들면 적용하지 않고
+    // 지금 문제지를 그대로 둔다("모자라도 막지 않음"은 새로 만들 때만 적용한다).
+    if (rebuild && result.selected.length < state.selected.length) {
+      state.composeNotice = "바꿔 넣을 문항이 모자라 지금 문제지를 그대로 둡니다. 문항을 하나씩 교체하거나 조건을 넓혀 주세요.";
+      render();
       return;
     }
     // 모자라도 막지 않는다(단원별 기출과 같은 원칙): 있는 만큼만 넣고, 어디가 얼마나 모자랐는지 결과 위에 알린다.
@@ -4422,12 +4458,26 @@
     if (!rebuild) state.pins = [];
     save();
     render();
+    if (!rebuild) focusComposeResult();
     // 화면 상태 줄에는 내지 않는다(오른쪽 결과 요약과 겹치고, 처리 시간은 교사에게 필요 없다). 화면 읽기 프로그램용
     // 숨은 안내(composeAnnounce)에만 두고, 처리 시간은 콘솔과 ?perf=1에서만 보인다.
     state.composeAnnounce = `${result.selected.length}문항을 선택했습니다.`;
     status("");
     if (new URLSearchParams(location.search).get("perf") === "1") status(`${result.selected.length}문항 선택 · 중복 없음 · ${result.diagnostics.elapsedMs}ms`);
     else console.debug("[archive2] generate", result.selected.length, "questions", result.diagnostics.elapsedMs + "ms");
+  }
+  // 좁은 화면(조건이 위, 결과가 아래)에서는 뽑은 결과가 화면 밖 아래에 생기므로 결과 머리로 옮기고 포커스를 둔다. 두 칸(PC)은
+  // 결과가 바로 옆에 보여 스크롤하지 않는다. 움직임 줄이기 설정이면 부드러운 스크롤 없이 바로 이동한다.
+  function focusComposeResult() {
+    try {
+      if (window.matchMedia?.("(min-width: 1100px)")?.matches) return;
+      const target = document.querySelector("[data-cz-result-title]");
+      if (!target) return;
+      target.setAttribute("tabindex", "-1");
+      const reduce = Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+      target.scrollIntoView?.({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      target.focus?.({ preventScroll: true });
+    } catch {}
   }
   function showDialog(title, body) {
     $("modal").classList.remove("original-issue-dialog", "saved-paper-issue-dialog");
@@ -4486,6 +4536,7 @@
       after,
       wasPinned: state.pins.includes(before.questionUid),
     });
+    state.composeNotice = "";
     state.selected = next;
     state.pins = state.pins.map((uid) =>
       uid === before.questionUid ? after.questionUid : uid,
@@ -4906,6 +4957,7 @@
       draftId: crypto.randomUUID(),
       composeShortage: [],
       composeStale: false,
+      composeNotice: "",
       selected: [],
       sources: [],
       scopes: [],
@@ -5566,6 +5618,7 @@
         state.issueDate = "";
         state.composeShortage = [];
         state.composeStale = false;
+        state.composeNotice = "";
         state.selected = [];
         state.pins = [];
         state.rows = [];

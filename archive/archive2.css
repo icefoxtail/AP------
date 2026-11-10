@@ -4048,7 +4048,7 @@ body[data-archive-view="compose"] .cz-scope > .resultbar h2 {
 .cz-scope .scope-list {
   grid-template-columns: minmax(0, 1fr);
   gap: 10px;
-  max-height: clamp(320px, 45vh, 520px);
+  max-height: clamp(280px, calc(100vh - 550px), 560px);
   margin-top: 0;
   padding-right: 4px;
   overflow-y: auto;
@@ -4642,8 +4642,8 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  min-height: 56px;
-  padding: 6px 12px;
+  min-height: 52px;
+  padding: 4px 12px;
   list-style: none;
   cursor: pointer;
 }
@@ -4671,10 +4671,39 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   transform: rotate(-135deg);
 }
 .cz-scope .scope-item {
-  min-height: 48px;
+  min-height: 44px;
 }
-.cz-levels > p.muted {
+.cz-scope .range-more {
+  margin-top: 4px;
+}
+.cz-levels-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  margin-bottom: 8px;
+}
+.cz-levels-head .muted {
   margin: 0;
+  font-size: 13px;
   white-space: normal;
   overflow-wrap: anywhere;
+}
+
+/* 결과 머리는 상단 고정 띠에 가리지 않게 스크롤하고, 직접 고르지 않은 포커스 테두리는 내지 않는다. */
+.cz-result-title {
+  scroll-margin-top: 72px;
+}
+.cz-result-title:focus {
+  outline: none;
+}
+.cz-notice {
+  margin: 0;
+}
+.cz-scope .scope-hint {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 400;
 }
