@@ -38,7 +38,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 B가 직각인 직각삼각형. 꼭짓점 A의 각은 분홍색 호로 표시하고, 맞은편 변 BC는 주황색 5, 이웃한 변 AB는 파란색 12, 빗변 CA는 13이다.",
+    "solutionImageCaption": "sin A=5/13이므로 빗변을 13, 맞은편 변을 5로 두면 피타고라스 정리로 이웃한 변은 12이다. tan A는 맞은편 변을 이웃한 변으로 나눈 값이므로 12분의 5이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 B가 직각인 직각삼각형. 빗변 CA는 12cm이고, 맞은편 변 BC는 주황색, 이웃한 변 AB는 파란색이며 꼭짓점 A의 각은 분홍색 호이다.",
+    "solutionImageCaption": "sin A=BC/AC=2/3이고 AC=12cm이므로 BC=8cm이다. 피타고라스 정리로 AB의 제곱은 144−64=80이므로 AB=4√5cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -121,7 +129,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 B가 직각인 직각삼각형. 꼭짓점 A의 각은 분홍색 30도, 꼭짓점 C의 각은 보라색 60도이고, 맞은편 변 BC는 주황색 1, 이웃한 변 AB는 파란색 루트 3, 빗변 CA는 2이다.",
+    "solutionImageCaption": "30도와 60도를 가진 직각삼각형의 세 변은 1, √3, 2이다. 사인은 맞은편÷빗변, 코사인은 이웃한÷빗변으로 sin30°, sin60°, cos30°, cos60°를 읽어 대입하면 값을 구한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -163,7 +175,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름이 1인 사분원. 중심 O에서 원 위의 점 A까지 파란색 반지름 1, 점 A에서 가로축에 내린 수선의 발 B까지 주황색 변 OB가 있고, 각 AOB는 분홍색 55도이다.",
+    "solutionImageCaption": "반지름 OA=1이 빗변이고 각 AOB=55도에 이웃한 변이 OB이므로 cos55도=OB/OA이다. 사분원의 눈금에서 OB는 약 0.57이므로 cos55도≈0.57이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -204,7 +220,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 B가 직각인 직각삼각형. 주황색 변은 3cm, 파란색 변은 x, 초록색 빗변은 y이고, 꼭짓점 A의 각은 45도이다.",
+    "solutionImageCaption": "tan45도=1이므로 파란 변 x는 주황 변 3cm와 같아 x=3cm이다. 초록 빗변은 피타고라스 정리로 y=3√2cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -245,7 +265,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 B가 직각인 직각삼각형. 밑변 AB는 초록색 20m, 세워진 부분 BC는 파란색, 부러진 부분 CA는 주황색이고 꼭짓점 A의 각은 30도이다.",
+    "solutionImageCaption": "세워진 부분 BC=20tan30도=20/√3m, 부러진 부분 CA=BC÷sin30도=40/√3m이다. 처음 높이는 두 부분의 합이므로 60/√3=20√3m이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -287,7 +311,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 옥상 A에서 수평선 AD를 긋고 점 D에서 위로 주황색 BD, 아래로 파란색 DC를 이은 그림. 수평 거리 AD는 초록색 30m, 올려다본 각은 60도, 내려다본 각은 45도이다.",
+    "solutionImageCaption": "내려다본 각이 45도이므로 DC=30m이고, 올려다본 각이 60도이므로 BD=30√3m이다. 백화점의 높이 BC=BD+DC=30√3+30=(30+30√3)m이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -330,7 +358,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C. 변 AB는 파란색 4cm, 변 BC는 주황색 5cm이고 두 변 사이의 끼인각 B는 분홍색 60도이다.",
+    "solutionImageCaption": "끼인각이 60도인 두 변이 4cm, 5cm이므로 넓이는 2분의 1×4×5×sin60도이다. 이는 10×(√3/2)=5√3cm²이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -376,7 +408,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C. 변 AB는 파란색 6cm, 변 BC는 주황색 10cm이고 두 변 사이의 예각 B는 분홍색 호로 표시했다.",
+    "solutionImageCaption": "넓이 공식 15√2=2분의 1×6×10×sin B에서 sin B=√2/2이다. 각 B는 예각이므로 45도이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -420,7 +456,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원의 중심 O에서 현에 내린 수선 OM은 파란색 8cm이고 반지름 OA는 주황색 10cm이다. 수선의 발 M이 현을 둘로 나누어 초록색 절반이 서로 같다.",
+    "solutionImageCaption": "수선의 발 M이 현을 이등분하므로 AM=x/2이다. 직각삼각형 OMA에서 AM²=10²−8²=36이므로 AM=6cm이고 현 전체는 두 배인 12이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -462,7 +502,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 원 O와 길이가 같은 두 현 AB, CD 및 중심에서 내린 수선 OM, ON이다. 가운데와 오른쪽은 같은 방향으로 펼친 두 직각삼각형으로, 반지름은 주황색, 현의 절반은 초록색, 수선은 분홍색이다.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=CN이다. OA=OC(반지름)이고 두 직각삼각형은 빗변과 한 직각변이 같아 합동이므로 OM=ON이다. 빈칸에는 차례로 OC, CN, ON이 들어간다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -504,7 +548,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 A, B, C, D. 마주 보는 변 AB 20cm와 CD 12cm는 파란색, 마주 보는 변 DA 10cm와 BC x cm는 주황색이다.",
+    "solutionImageCaption": "외접사각형에서 AB+CD=AD+BC이므로 20+12=10+x이다. 따라서 x=22이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -547,7 +595,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 세 점 A, B, P. 중심각 AOB는 주황색 110도, 같은 호 AB를 보는 원주각 APB는 파란색 x이고 호 AB는 초록색이다.",
+    "solutionImageCaption": "호 AB에 대한 중심각이 110도이므로 원주각은 그 절반이다. 따라서 x=110도÷2=55도이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -590,7 +642,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 세 점 A, B, C와 삼각형. 호 AB는 파란색 10, 호 BC는 주황색 3, 호 CA는 초록색 5로 표시했고 꼭짓점 B의 각은 분홍색 호이다.",
+    "solutionImageCaption": "호의 비의 합이 18이므로 한 비는 360도÷18=20도이다. 각 B가 보는 호 AC는 5×20도=100도이고 원주각은 그 절반이므로 50도이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -633,7 +689,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 원에는 접선과 반지름이 이루는 직각, 같은 색의 두 반지름, 중심각 x, 점 P의 30도가 표시되어 있고, 접점 A의 60도와 30도 각은 옆에 크게 다시 그렸다. 오른쪽 원에는 같은 색의 두 반지름, 점 B의 25도, 접선과 현이 이루는 각 y가 표시되어 있다.",
+    "solutionImageCaption": "왼쪽에서 접선과 OA가 수직이므로 ∠OAP=90도−60도=30도이고, OA=OP이므로 x=180도−30도−30도=120도이다. 오른쪽에서 ∠OAB=∠OBA=25도이므로 y=90도−25도=65도이다. 따라서 x+y=185도이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -675,7 +735,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 한 점 P에서 원과 두 점씩 만나는 두 할선. 한 할선에서 PA는 파란색 3, AB는 초록색 6, 다른 할선에서 PC는 주황색 4, CD는 분홍색 x이다.",
+    "solutionImageCaption": "PA×PB=PC×PD이므로 3×(3+6)=4×(4+x)이다. 27=16+4x이므로 x=11/4이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -719,7 +783,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O와 원 밖의 점 P. 점 P에서 접점 T까지의 접선은 주황색 x, 중심을 지나는 할선의 바깥 부분 PA는 파란색 2이고 반지름은 초록색 3이다.",
+    "solutionImageCaption": "반지름이 3이므로 지름은 6이고 점 P에서 먼 교점까지의 길이는 2+6=8이다. 접선과 할선의 관계로 PT²=2×8=16이므로 x=4이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -761,7 +829,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "상"
+    "level": "상",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 A, B, C, D의 변을 연장해 만난 두 점 P, Q. 점 P의 각은 파란색 46도, 점 Q의 각은 주황색 38도이고 구하는 각 PAQ는 초록색 x이다.",
+    "solutionImageCaption": "네 호를 a, b, c, d라 하면 a−c=92도, d−b=76도이고 합이 360도이므로 b+c=96도이다. ∠PAQ는 호 BCD를 보는 원주각이므로 96도의 절반이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -799,7 +871,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 꼭짓점 A에서 밑변 BC에 수선 AD를 그은 그림. BD는 파란색 3cm, DC는 주황색 x cm, AD는 초록색 y cm이고 같은 색의 두 각이 서로 같다.",
+    "solutionImageCaption": "직각삼각형 ABD에서 ∠BAD=40도이고 AD가 이등분선이므로 ∠DAC=40도, ∠C=50도이다. y=AD=3tan50도=3×1.1918=3.5754cm이고, x=y÷tan50도=3cm이다. 따라서 x=3cm, y=3.5754cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -837,7 +913,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 A, B, C, D를 초록색으로 칠하고 두 대각선을 그린 그림. 대각선 AC는 파란색 7cm, 대각선 BD는 주황색 9cm이며 두 대각선이 만나는 점 E에서 이루는 예각은 분홍색 30도이다.",
+    "solutionImageCaption": "네 삼각형의 넓이의 합은 2분의 1×(AE+CE)×(BE+DE)×sin30도이다. 이는 2분의 1×7×9×2분의 1=63/4cm²이다. 따라서 사각형의 넓이는 63/4cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -873,7 +953,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 원 O와 원 밖의 점 P에서 그은 두 접선 PA, PB이다. 가운데와 오른쪽은 같은 방향으로 펼친 두 직각삼각형으로, 반지름은 주황색, 접선의 길이는 초록색, 공통인 빗변은 파란색이다.",
+    "solutionImageCaption": "(1) 반지름은 접점에서 접선과 수직이므로 ∠OAP=∠OBP=90도이다. (2) OA=OB이고 빗변 OP가 공통이므로 두 직각삼각형은 합동이다. 따라서 대응하는 변의 길이가 같아 AP=BP이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -912,6 +996,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "상"
+    "level": "상",
+    "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 원에 그은 접선 PT와 할선 PAB. PA는 파란색 4cm, AB는 초록색 12cm, PT는 주황색 8cm, AT는 보라색 7cm, BT는 분홍색 x cm이다. 점 T에서 할선에 내린 수선 TH는 검정색이고 수선의 발 H는 점 A 바로 왼쪽에 있다.",
+    "solutionImageCaption": "접선과 할선의 관계로 PT²=PA×PB=4×16이므로 PT=8cm이다. 점 T에서 할선에 수선 TH를 내리면 발 H는 A의 바로 왼쪽이고 PH=31/8이다. 피타고라스 정리로 BT²=196이므로 BT=14cm이다. 정답은 14cm이다.",
+    "solutionImageSize": "full"
   }
 ];
