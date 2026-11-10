@@ -33,9 +33,9 @@ window.questionBank = [
     "subUnit": "삼각형의 좌표와 무게중심",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q1-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 두 중선이 만나는 점이 무게중심 G(2,1)이다.",
-    "solutionImageCaption": "삼각형 ABC의 두 중선이 만나는 점이 무게중심 G(2,1)이다.",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 세 점 A(5,2), B(2,4), C(-1,-3)을 꼭짓점으로 하는 삼각형이 있다. 각 꼭짓점에서 마주 보는 변의 중점까지 세 점선(중선)이 그어져 있고 세 중선이 한 점 G에서 만난다.",
+    "solutionImageCaption": "삼각형의 무게중심 G는 세 중선의 교점이고, 세 꼭짓점의 x좌표의 평균과 y좌표의 평균으로 구한다. x좌표는 (5+2+(-1))을 3으로 나누고 y좌표는 (2+4+(-3))을 3으로 나눈다. 정답은 (2, 1)이다.",
     "solutionImageSize": "full"
   },
                     {
@@ -73,9 +73,9 @@ window.questionBank = [
     "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "직선 2x−y+1=0과 점 P(−1,4)에서 직선에 내린 수선의 발 H(1,3)를 표시하고, 선분 PH의 길이가 √5임을 나타낸 그림.",
-    "solutionImageCaption": "P=(−1,4) · H=(1,3), 거리=√5",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 직선 2x−y+1=0과 점 P(−1,4)가 있다. 점 P에서 직선에 수직으로 내린 선분 PH가 굵게 그려져 있고 수선의 발 H에 직각 표시가 있다.",
+    "solutionImageCaption": "점 P(−1,4)에서 직선 2x−y+1=0에 내린 수선의 발을 H라 하면 선분 PH의 길이가 점과 직선 사이의 거리이다. 이 거리는 직선의 식에 점의 좌표를 대입한 값의 절댓값을 계수의 제곱합의 제곱근으로 나누어 구한다. 정답은 √5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -109,9 +109,9 @@ window.questionBank = [
     "subUnit": "도형의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "원점 O와 A(2,5), B(4,3)를 꼭짓점으로 하는 삼각형 OAB의 넓이는 7이다.",
-    "solutionImageCaption": "원점 O와 A(2,5), B(4,3)를 꼭짓점으로 하는 삼각형 OAB의 넓이는 7이다.",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 원점 O와 점 A(2,5), B(4,3)를 꼭짓점으로 하는 삼각형 OAB가 파란색으로 칠해져 있다.",
+    "solutionImageCaption": "원점과 두 점 A(2,5), B(4,3)로 이루어진 삼각형 OAB(파랑)의 넓이는 두 점의 좌표를 엇갈려 곱한 차의 절댓값의 절반으로 구한다. 2×3−4×5=−14이므로 절댓값 14의 절반이다. 정답은 7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -176,7 +176,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-07-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 원점 O를 중심으로 하는 원 x²+y²=8과 직선 x+y=k가 있다. 직선은 원에 한 점 T에서 접하고, 중심 O에서 T까지의 반지름이 그려져 있으며 직선과 직각이고 길이는 2√2로 적혀 있다.",
+    "solutionImageCaption": "연립방정식의 해가 한 쌍이면 직선 x+y=k가 원 x²+y²=8에 접한다. 접점은 직선 y=x 위에 있어 x=y=2분의 k이고, 이를 원의 방정식에 대입하면 k²=16이다. k는 양의 실수이므로 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -209,7 +213,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차식 x²−2ax+a+6의 그래프를 a의 값에 따라 세 개 그린 그림이다. a가 −2인 파랑 포물선은 점 (−2,0)에서, a가 3인 주황 포물선은 점 (3,0)에서 x축에 닿고, a가 0인 초록 포물선은 x축과 만나지 않고 위쪽에 있다.",
+    "solutionImageCaption": "부등식 x²−2ax+a+6≤0의 해가 존재하지 않으려면 그래프가 x축과 만나지 않고 x축 위쪽에 있어야 한다. 파랑(a가 −2)과 주황(a가 3)은 x축에 닿는 경계이고, 그 사이의 a에서는 초록처럼 x축 위쪽에 놓인다. 판별식 D<0인 a의 범위에서 정수 a의 개수를 센다. 정답은 4개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -274,13 +282,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트]\n마름모는 평행사변형이므로 두 대각선의 중점이 같고, 이웃한 두 변의 길이가 같다.\n조건 정리\n$A(a,0)$, $B(b,-2)$, $C(5,2)$, $D(1,4)$이다.\n풀이 과정\n먼저 사각형 $ABCD$가 평행사변형이 되려면 두 대각선 $AC$, $BD$의 중점이 같아야 한다.\n$AC$의 중점은 $\\left(\\dfrac{a+5}{2},1\\right)$이고,\n$BD$의 중점은 $\\left(\\dfrac{b+1}{2},1\\right)$이다.\n따라서\n$\\dfrac{a+5}{2}=\\dfrac{b+1}{2}$이므로 $b=a+4$이다.\n이제 마름모가 되려면 이웃한 두 변 $AB$, $BC$의 길이가 같아야 한다.\n$b=a+4$이므로\n$\\overline{AB}^2=(b-a)^2+(-2-0)^2=4^2+(-2)^2=20$이다.\n또\n$\\overline{BC}^2=(5-b)^2+(2-(-2))^2$\n$=(5-(a+4))^2+4^2=(1-a)^2+16$이다.\n두 길이가 같으므로\n$(1-a)^2+16=20$\n$(1-a)^2=4$\n$1-a=\\pm2$이다.\n따라서 $a=-1$ 또는 $a=3$이고, $a>0$이므로 $a=3$이다.\n$b=a+4=7$이므로\n$a\\times b=3\\times7=21$이다.\n결론\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "마름모 ABCD의 꼭짓점 A(3,0), B(7,−2), C(5,2), D(1,4)와 두 대각선의 중점 O(4,1)를 표시하고, AB²=BC²=20임을 나타낸 그림.",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 파란색으로 칠한 사각형 A, B, C, D가 있고 꼭짓점의 좌표는 A(3,0), B(7,−2), C(5,2), D(1,4)이다. 두 대각선이 점선으로 그어져 있고 중점 M에서 만난다. 네 변에는 길이가 같다는 주황색 표시가 있고 변 AB와 BC에는 2√5가 적혀 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "마름모는 평행사변형이므로 두 대각선 AC, BD의 중점이 같고, 이웃한 두 변의 길이가 같다. 중점이 같다는 조건에서 b=a+4이고 AB²=20이므로 BC²=(1−a)²+16=20에서 a>0이면 a=3, b=7이다. 정답은 21이다."
   },
   {
     "id": 9,
@@ -312,7 +321,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=f(x)=x²−2x+5의 포물선이 파란색으로 그려져 있고, 구간 −1≤x≤2에 해당하는 부분이 주황색으로 강조되어 있다. 꼭짓점 (1,4)와 오른쪽 끝점 (2,5), 왼쪽 끝점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "y=x²−2x+k=(x−1)²+k−1에서 꼭짓점의 x좌표 1이 구간 −1≤x≤2 안에 있으므로 최솟값은 x=1일 때의 k−1=4이고 k=5이다. 구간의 양 끝에서 f(2)=5와 f(−1)을 비교하면 왼쪽 끝이 더 크다(그림의 주황 부분). 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -345,7 +358,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
     "subUnit": "절댓값 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 f(x)=|x|+|x−1|의 그래프가 파란색 꺾인 선으로 그려져 있고 가로로 주황색 직선 y=3이 있다. 그래프가 직선과 만나는 두 점 (−1,3)과 (2,3)이 표시되고, 두 점 사이에서 그래프가 직선 아래에 있는 부분이 초록색으로 강조되어 있다.",
+    "solutionImageCaption": "f(x)=|x|+|x−1|로 놓고 x<0, 0≤x<1, x≥1로 나누면 각각 −2x+1, 1, 2x−1이다. 이 그래프가 직선 y=3과 만나는 점은 x=−1과 x=2이고, 그래프가 직선 아래에 있는 구간(초록)이 −1≤x≤2이므로 m=−1, n=2이다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -378,7 +395,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 눈금의 수직선 세 줄이다. 첫째 식의 해는 −1보다 작거나 2보다 큰 범위이고, 둘째 식의 해는 a 이상 4 이하이며, 공통 범위는 2보다 크고 4 이하이다.",
+    "solutionImageCaption": "예: a=1인 경우의 수직선이다. 첫째 식의 해는 x<−1 또는 x>2이고 둘째 식의 해는 a≤x≤4이다. a의 위치에 따라 공통 범위가 어떻게 달라지는지 보고, 공통 범위가 정확히 2<x≤4가 되도록 하는 a의 범위를 구한다. 정답은 −1≤a≤2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -444,7 +465,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 판별식 D를 a의 이차함수로 그린 파란 포물선이고 가로축 위의 구간 −1부터 3분의 1까지가 초록색이며 양 끝점의 좌표가 표시되어 있다. 아래 그림은 S=α²+β²를 a의 이차함수로 그린 파란 포물선으로, 그 구간에 해당하는 부분이 초록색이고 가장 높은 점 (−1,2)와 가장 낮은 점 (3분의 1, 9분의 2)이 표시되어 있으며 두 높이를 주황 점선으로 이었다.",
+    "solutionImageCaption": "두 실근이 있으려면 판별식 D가 0 이상이어야 하므로 −1≤a≤3분의 1이다. 이때 S=α²+β²로 놓으면 S=(α+β)²−2αβ=2−(a+1)²이고 이 구간에서 a=−1일 때 최댓값 2, a=3분의 1일 때 최솟값 9분의 2이다. 정답은 9분의 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -469,9 +494,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트]\n$x$축과 $y$축에 모두 접하고 중심이 제1사분면에 있으면 원의 중심은 $(r,r)$이다.\n조건 정리\n원의 반지름을 $r$이라 하자. 그러면 원의 중심은 $(r,r)$이다.\n풀이 과정\n원이 직선 $6x+8y-9=0$에 접한다는 것은, 중심 $(r,r)$에서 이 직선까지의 거리가 반지름 $r$과 같다는 뜻이다.\n따라서\n$\\dfrac{|6r+8r-9|}{\\sqrt{6^2+8^2}}=r$이다.\n분모는 $\\sqrt{36+64}=10$이므로\n$\\dfrac{|14r-9|}{10}=r$\n$|14r-9|=10r$이다.\n절댓값을 풀면 두 경우가 나온다.\n(i) $14r-9=10r$이면 $4r=9$이므로 $r=\\dfrac94$이다.\n(ii) $14r-9=-10r$이면 $24r=9$이므로 $r=\\dfrac38$이다.\n따라서 두 반지름은 $\\dfrac94$, $\\dfrac38$이고\n$r_1+r_2=\\dfrac94+\\dfrac38=\\dfrac{18}{8}+\\dfrac38=\\dfrac{21}{8}$이다.\n결론\n\n계산/도식 확인: 중심이 제1사분면에 있으므로 두 축까지의 거리가 같은 중심은 (r,r)로 정해진다. 그림의 두 원은 직선까지의 거리도 각각 r이 되어 6x+8y−9=0에 접한다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "두 좌표축과 직선 6x+8y−9=0에 접하는 중심 (3/8,3/8), (9/4,9/4)의 두 원",
-    "solutionImageCaption": "거리 조건 |14r−9|/10=r에서 두 반지름을 구한다.",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 직선 6x+8y−9=0이 있고, x축과 y축에 모두 접하면서 이 직선에 접하는 두 원이 있다. 파란 큰 원과 주황 작은 원이 직선과 각각 접점 T₁, T₂에서 접하고, 각 원의 중심에서 접점까지의 반지름에 직각 표시가 있고, 큰 원의 반지름은 4분의 9로 적혀 있다.",
+    "solutionImageCaption": "x축, y축에 모두 접하고 중심이 제1사분면에 있으면 중심은 (r,r)이고 반지름은 r이다. 중심에서 직선까지의 거리가 r이므로 |14r−9|÷10=r에서 r=4분의 9 또는 r=8분의 3이다. 그림의 파란 큰 원은 반지름 4분의 9, 주황 작은 원은 반지름 8분의 3이고, T₁, T₂는 각각 파란 원, 주황 원이 직선에 접하는 점이다(두 중심은 점으로만 표시). 두 반지름의 합을 구한다. 정답은 8분의 21이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
@@ -509,7 +534,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 꼭짓점이 구간 안에 있는 경우의 f(x)의 그래프로, 꼭짓점 (0,1)이 구간의 오른쪽 끝에 있고 구간 −2≤x≤0에 해당하는 부분이 초록색이며 주황 점선 y=1이 꼭짓점을 지난다. 아래 그림은 꼭짓점이 구간 왼쪽에 있는 경우의 f(x)의 그래프로, 꼭짓점이 구간의 왼쪽 밖에 점으로 표시되어 있고 구간에 해당하는 부분이 초록색이며 구간의 왼쪽 끝점 (−2,1)이 주황 점선 y=1 위에 있다.",
+    "solutionImageCaption": "f(x)=−(x−a)²−a+1은 꼭짓점의 x좌표가 a이다. 꼭짓점이 구간 −2≤x≤0 안에 있으면 최댓값은 f(a)=−a+1이므로 a=0이고, 꼭짓점이 구간 왼쪽에 있으면 f(−2)=1에서 a=−4이다. 꼭짓점이 구간 오른쪽에 있는 경우는 조건에 맞는 값이 없다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 16,
@@ -543,9 +572,9 @@ window.questionBank = [
     "choiceColumns": 3,
     "answer": "①",
     "solution": "[키포인트]\n주어진 직선식을 $k$가 붙은 부분과 붙지 않은 부분으로 나누면 모든 직선이 지나는 공통점을 찾을 수 있다.\n조건 정리\n직선 $l$의 방정식은 $(k-2)x+(2k-3)y+4k-3=0$이다.\n풀이 과정\n식을 $k$에 대하여 정리하면\n$k(x+2y+4)+(-2x-3y-3)=0$이다.\n따라서 모든 직선 $l$은 두 직선\n$x+2y+4=0$, $-2x-3y-3=0$의 교점을 지난다.\n두 식을 풀면\n$x+2y=-4$, $2x+3y=-3$이다.\n첫 번째 식을 $2$배하면 $2x+4y=-8$이고, 여기서 $2x+3y=-3$을 빼면 $y=-5$이다.\n$x+2(-5)=-4$이므로 $x=6$이다.\n즉 모든 직선 $l$은 $(6,-5)$를 지난다. 이 점은 제4사분면에 있으므로 ㄱ은 참이다.\nㄴ을 보자. $k=0$이면 직선 $l$은\n$-2x-3y-3=0$이고, 이는 $2x+3y+3=0$과 같은 직선이다.\n따라서 ㄴ은 거짓이다.\nㄷ을 보자. 원점과 직선 $l$ 사이의 거리가 $1$이려면\n$\\dfrac{|4k-3|}{\\sqrt{(k-2)^2+(2k-3)^2}}=1$이다.\n양변을 제곱하면\n$(4k-3)^2=(k-2)^2+(2k-3)^2$\n$16k^2-24k+9=5k^2-16k+13$\n$11k^2-8k-4=0$이다.\n이 이차방정식은 판별식이 $(-8)^2-4\\cdot11\\cdot(-4)=240>0$이므로 서로 다른 두 실근을 갖는다.\n따라서 그런 실수 $k$는 2개이고, ㄷ은 거짓이다.\n결론\n옳은 것은 ㄱ뿐이므로 정답은 ①이다.",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "직선족 (k−2)x+(2k−3)y+4k−3=0이 k=0, 1일 때의 직선을 포함해 모두 지나는 공통점 V(6,−5)를 제4사분면에 표시한 그림.",
-    "solutionImageCaption": "교점 · 거리 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 점 V(6,−5)가 있고 V를 지나는 직선 세 개가 있다. 기울어진 직선 2x+3y+3=0, 수평선 y+5=0, 수직선 x−6=0이다. 점 V는 제4사분면에 있다.",
+    "solutionImageCaption": "식을 k(x+2y+4)+(−2x−3y−3)=0으로 정리하면 모든 직선 l은 두 직선 x+2y+4=0과 2x+3y+3=0의 교점 V(6,−5)를 지난다. V는 제4사분면에 있으므로 ㄱ은 참이다. k가 0, 2분의 3, 2인 직선 세 개를 그렸고, k=0이면 l이 직선 2x+3y+3=0과 같아져 ㄴ은 거짓이다. 원점에서 l까지의 거리가 1이면 11k²−8k−4=0이고 판별식이 양수이므로 k는 2개여서 ㄷ은 거짓이다. 옳은 것은 ㄱ뿐이므로 정답은 ㄱ이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -575,9 +604,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트]\n$y=m|x|$는 오른쪽에서는 $y=mx$, 왼쪽에서는 $y=-mx$이다. 원과 각 직선 사이의 위치 관계를 거리로 판단한다.\n조건 정리\n원의 중심은 $(1,2)$이고 반지름은 $\\sqrt3$이다.\n풀이 과정\n먼저 오른쪽 가지 $y=mx$를 생각한다. 직선은 $mx-y=0$이고, 중심 $(1,2)$에서 이 직선까지의 거리는\n$\\dfrac{|m-2|}{\\sqrt{m^2+1}}$이다.\n이 직선이 원과 서로 다른 두 점에서 만나려면 이 거리가 반지름 $\\sqrt3$보다 작아야 하므로\n$\\dfrac{|m-2|}{\\sqrt{m^2+1}}&lt;\\sqrt3$이다.\n양변을 제곱하면\n$(m-2)^2&lt;3(m^2+1)$\n$m^2-4m+4&lt;3m^2+3$\n$2m^2+4m-1>0$이다.\n$m>0$에서 이것은\n$m>\\dfrac{-2+\\sqrt6}{2}$일 때 성립한다.\n다음 왼쪽 가지 $y=-mx$를 생각한다. 직선은 $mx+y=0$이고, 중심 $(1,2)$에서 이 직선까지의 거리는\n$\\dfrac{|m+2|}{\\sqrt{m^2+1}}$이다.\n이 직선이 원과 만나려면\n$\\dfrac{|m+2|}{\\sqrt{m^2+1}}&lt;\\sqrt3$이어야 하므로\n$(m+2)^2&lt;3(m^2+1)$\n$m^2+4m+4&lt;3m^2+3$\n$2m^2-4m-1>0$이다.\n$m>0$에서 이것은\n$m>\\dfrac{2+\\sqrt6}{2}$일 때 성립한다.\n오른쪽 가지 $y=mx$는 $x\\ge0$에서만 그래프에 포함되고, 왼쪽 가지 $y=-mx$는 $x\\le0$에서만 그래프에 포함된다. 중심 $(1,2)$이 오른쪽에 있으므로 작은 $m$에서는 오른쪽 가지 쪽 교점이 먼저 생기고, $m$이 더 커져 왼쪽 가지가 원과 만나기 시작하면 전체 교점 수가 더 늘어난다.\n따라서 교점이 정확히 2개가 되려면 오른쪽 가지는 원과 만나고, 왼쪽 가지는 아직 만나지 않아야 한다.\n즉\n$\\dfrac{-2+\\sqrt6}{2}&lt;m&lt;\\dfrac{2+\\sqrt6}{2}$이다.\n그러므로\n$a=\\dfrac{-2+\\sqrt6}{2}$, $b=\\dfrac{2+\\sqrt6}{2}$이고\n$ab=\\dfrac{(\\sqrt6-2)(\\sqrt6+2)}{4}=\\dfrac{6-4}{4}=\\dfrac12$이다.\n결론\n\n계산/도식 확인: y=m|x|는 x≥0에서 y=mx, x≤0에서 y=−mx인 두 가지이다. 원의 y좌표 범위는 2−√3부터 2+√3까지로 모두 양수이므로, 오른쪽 직선과 왼쪽 직선의 교점은 각각 자기 가지에만 놓인다. 오른쪽 가지의 임계값 a=(√6−2)/2에서 두 교점이 생기고, 왼쪽 가지는 b=(√6+2)/2에서 처음 접한다. 따라서 a<m<b일 때 전체 교점이 정확히 2개이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "원 (x−1)²+(y−2)²=3과 V자 그래프 y=m|x|의 두 가지 및 임계 기울기를 표시한 그림",
-    "solutionImageCaption": "오른쪽 가지와 왼쪽 가지의 교점 조건을 나누어 정확히 두 교점인 범위를 구한다.",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 중심 C(1,2)인 원이 있고 원점에서 뻗는 두 반직선이 있다. 오른쪽으로 뻗는 파란 반직선은 원에 접하며 m이 a일 때를, 왼쪽으로 뻗는 주황 반직선은 원에 접하며 m이 b일 때를 나타낸다. 중심 C에서 두 접점 T₁, T₂까지의 반지름에 직각 표시와 같은 길이 표시가 있고 반지름 하나에 √3이 적혀 있다.",
+    "solutionImageCaption": "y=m|x|는 x≥0에서 y=mx, x≤0에서 y=−mx이고 원의 중심 (1,2), 반지름 √3이다. 직선과 중심 사이의 거리가 √3보다 작으면 원과 두 점에서 만나므로, 오른쪽 가지는 m>2분의 (√6−2)에서 원과 만나고 왼쪽 가지는 m>2분의 (√6+2)에서 비로소 원과 만난다. 그림에서 파랑은 오른쪽 가지가 접하는 순간(m=a), 주황은 왼쪽 가지가 접하는 순간(m=b)이다. 교점이 정확히 2개이려면 두 값 사이이므로 a=2분의 (√6−2), b=2분의 (√6+2)이다. 정답은 2분의 1이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-11-INTERSECTION",
     "subUnit": "원과 직선·원의 교점",
@@ -609,7 +638,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 한 직선 위에 네 점이 순서대로 놓여 있다. 왼쪽 아래부터 외분점 Q(−11,−1), 점 A(−5,2), 내분점 P(−3,3), 점 B(1,5)이고 P와 Q를 잇는 선분이 주황색이다.",
+    "solutionImageCaption": "선분 AB를 1대 2로 내분하는 점 P는 A에 가까운 점이므로 P(−3,3)이고, 1대 2로 외분하는 점 Q는 A의 바깥쪽에 있어 Q(−11,−1)이다. 두 점 P, Q 사이의 거리(주황 선분)는 거리 공식으로 구한다. 정답은 4√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -628,9 +661,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$y=1$, $y=\\dfrac43x-\\dfrac53$",
     "solution": "[키포인트]\n점 $(2,1)$을 지나는 직선을 기울기 $a$로 놓고, 원의 중심에서 직선까지의 거리가 반지름과 같도록 한다.\n조건 정리\n원의 중심은 원점 $(0,0)$이고 반지름은 $1$이다. 접선은 점 $(2,1)$을 지난다.\n풀이 과정\n점 $(2,1)$을 지나고 기울기가 $a$인 직선을\n$y=a(x-2)+1$이라고 하자.\n정리하면\n$ax-y-2a+1=0$이다.\n이 직선이 원 $x^2+y^2=1$에 접하려면, 원의 중심 $(0,0)$에서 직선까지의 거리가 반지름 $1$과 같아야 한다.\n따라서\n$\\dfrac{| -2a+1 |}{\\sqrt{a^2+1}}=1$이다.\n양변을 제곱하면\n$(-2a+1)^2=a^2+1$\n$4a^2-4a+1=a^2+1$\n$3a^2-4a=0$\n$a(3a-4)=0$이다.\n따라서 $a=0$ 또는 $a=\\dfrac43$이다.\n$a=0$이면 $y=1$이다.\n$a=\\dfrac43$이면\n$y=\\dfrac43(x-2)+1=\\dfrac43x-\\dfrac83+1=\\dfrac43x-\\dfrac53$이다.\n결론\n\n계산/도식 확인: 기울기 a=0은 수평 접선 y=1을 뜻하고, a=4/3은 두 번째 접선 y=4x/3−5/3을 뜻한다. 점 (2,1)에서 원에 그은 두 접선이므로 두 결과를 모두 포함해야 한다.\n따라서 접선의 방정식은 $y=1$, $y=\\dfrac43x-\\dfrac53$이다.",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "원 x²+y²=1과 외부점 P(2,1)에서 그은 두 접선 y=1, y=4x/3−5/3 및 접점을 표시한 그림",
-    "solutionImageCaption": "점과 원을 잇는 접선의 기울기 조건으로 두 접선의 방정식을 구한다.",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 원점을 중심으로 하는 반지름 1인 원이 있고, 점 P(2,1)에서 원에 그은 두 접선이 있다. 두 접선은 원에 접점 T₁, T₂에서 닿고, 원의 중심 O에서 각 접점까지의 반지름에 직각 표시와 같은 길이 표시가 있으며 한 반지름에 길이 1이 적혀 있다.",
+    "solutionImageCaption": "점 (2,1)을 지나고 기울기가 a인 직선 y=a(x−2)+1에서 원의 중심 O(0,0)까지의 거리가 반지름 1과 같아야 접한다. 거리 조건을 정리하면 a(3a−4)=0이므로 a=0 또는 a=3분의 4이다. 따라서 접선은 두 개이다(그림의 두 직선). 정답은 y=1, y=3분의 4x−3분의 5이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
@@ -689,7 +722,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
     "subUnit": "연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 눈금의 수직선 세 줄이다. 첫째 식의 해는 0보다 작거나 n+2보다 큰 범위이고, 둘째 식의 해는 n−1 이상 2n+3 이하이며, 공통 범위는 n+2보다 크고 2n+3 이하이다. 공통 범위 안의 정수가 점으로 표시되어 있다.",
+    "solutionImageCaption": "예: n=3인 경우의 수직선이다. 첫째 식에서 x<0 또는 x>n+2, 둘째 식에서 n−1≤x≤2n+3이고 n이 자연수이므로 공통 범위는 n+2<x≤2n+3이다. 이 범위의 정수는 n+3부터 2n+3까지 n+1개이므로 f(n)=n+1이고, f(1)부터 f(10)까지 합을 구한다. 정답은 65이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -714,12 +751,13 @@ window.questionBank = [
     "choices": [],
     "answer": "$3$초, $2\\sqrt{13}$",
     "solution": "[키포인트]\n출발 신호 후 지난 시간을 $t$초로 두고, $A$와 $B$의 좌표를 각각 $t$로 나타낸 뒤 거리의 제곱을 최소로 만든다.\n조건 정리\n점 $A$는 $t=0$부터 움직이고, 점 $B$는 $t=2$부터 움직인다.\n풀이 과정\n직선 $y=2x$에서 $x$가 $1$만큼 증가하면 $y$는 $2$만큼 증가하므로 이동거리는 $\\sqrt{1^2+2^2}=\\sqrt5$이다.\n점 $A$의 속력이 매초 $\\sqrt5$이므로, 출발 후 $t$초일 때 $A$의 좌표는\n$A(t)=(t,2t)$이다.\n먼저 $0\\le t\\le2$일 때 점 $B$는 아직 움직이지 않았으므로 $B=(9,0)$이다.\n이때\n$\\overline{AB}^2=(t-9)^2+(2t)^2=5t^2-18t+81$이다.\n이 식은 $t=\\dfrac{9}{5}$에서 최소가 되고, 그 최소 거리의 제곱은 $\\dfrac{324}{5}$이다.\n다음 $t\\ge2$일 때 점 $B$는 $(9,0)$에서 왼쪽으로 매초 $2$만큼 움직인다.\n$t=2$ 이후 움직인 시간은 $t-2$초이므로\n$B(t)=(9-2(t-2),0)=(13-2t,0)$이다.\n따라서\n$\\overline{AB}^2=\\{t-(13-2t)\\}^2+(2t)^2$\n$=(3t-13)^2+4t^2$\n$=13t^2-78t+169$이다.\n완전제곱식으로 고치면\n$13t^2-78t+169=13(t-3)^2+52$이다.\n따라서 $t\\ge2$에서 최소는 $t=3$일 때이고, 이때\n$\\overline{AB}_{\\min}=\\sqrt{52}=2\\sqrt{13}$이다.\n앞에서 $0\\le t\\le2$일 때의 최소 거리의 제곱은 $\\dfrac{324}{5}$이고, $52=\\dfrac{260}{5}$가 더 작으므로 전체 최소는 $t=3$일 때이다.\n결론\n따라서 $\\overline{AB}$가 최소가 되는 시간은 출발 신호 후 $3$초이고, 그때의 최솟값은 $2\\sqrt{13}$이다.",
-    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "점 A가 y=2x 위를 A(t)=(t,2t)로, 점 B가 (9,0)에서 왼쪽으로 움직일 때, t=3에서 A(3,6)과 B(7,0)을 표시하고 최소거리 AB=2√13임을 나타낸 그림.",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: S=AB²을 t의 함수로 그린 그림이다. t가 0에서 2까지는 파란 곡선이 내려가 꼭짓점 (5분의 9, 5분의 324)에 닿고, t가 2 이상에서는 주황 곡선이 이어지며 초록 점선으로 나타낸 파란 곡선의 최솟값 높이보다 더 아래까지 내려갔다가 다시 올라간다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "출발 신호 후 t초일 때 A(t,2t)이다. 0≤t≤2에서는 B(9,0)이고 S=AB²=5t²−18t+81이어서 t=5분의 9일 때 최소 5분의 324이다(파랑, 이 최솟값의 높이를 초록 점선으로 표시). t≥2에서는 B(13−2t,0)이고 S=13(t−3)²+52이며 이 구간의 최솟값은 5분의 324보다 작다(주황, 점선 아래까지 내려간다). 정답은 3초, 2√13이다."
   }
 ];
