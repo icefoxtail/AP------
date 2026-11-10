@@ -37,7 +37,7 @@ const okAssignment = (call, extra = {}) => ({
 });
 
 // post(call, n): n = 이 (반, 문제지)에 대한 몇 번째 POST인지. 값을 돌려주면 성공, 던지면 실패.
-function makeApi({ classes = CLASSES, roster = ROSTER, post = (call) => okAssignment(call), rosterFail = new Set(), classesError = null, pdf = null } = {}) {
+function makeApi({ classes = CLASSES, roster = ROSTER, post = (call) => okAssignment(call), rosterFail = new Set(), classesError = null, pdf = null, submitted = new Set() } = {}) {
   const calls = [];
   const counts = new Map();
   let postInflight = 0, maxPostInflight = 0;
@@ -55,7 +55,7 @@ function makeApi({ classes = CLASSES, roster = ROSTER, post = (call) => okAssign
       if (route.startsWith("/class-exam-assignments/roster?")) {
         const classId = new URLSearchParams(route.split("?")[1]).get("class_id");
         if (rosterFail.has(classId)) throw httpError(500, { error: "server" });
-        return { success: true, students: (roster[classId] || []).map((id) => ({ id, name: `학생 ${id}` })) };
+        return { success: true, students: (roster[classId] || []).map((id) => ({ id, name: `학생 ${id}`, already_submitted: submitted.has(id) })) };
       }
       if (isPost) {
         const key = `${call.body.saved_paper_id}|${call.body.class_id}`;
@@ -268,10 +268,13 @@ test("502 + assignment.id(PDF만 실패)는 출제 성공이고 PDF 다시 준�
   const html = Assign.renderBody(model);
   assert.match(html, /PDF만 준비 실패/);
   assert.match(html, /data-assign-action="pdf"/);
+  assert.match(html, /출제는 됐습니다\. 출력용 PDF 준비가 늦어지고 있으니 PDF 다시 준비 버튼을 눌러 주세요./);
+  assert.doesNotMatch(html, /Browser Rendering|시간 초과/, "서버 원문은 화면에 내지 않는다");
   assert.doesNotMatch(Assign.renderFoot(model), /data-assign-action="retry"/, "실패 건이 없으니 출제 재시도 버튼은 없다");
   await model.retryPdf(job.key);
   assert.equal(job.status, "ok-pdf");
-  assert.equal(job.pdfError, "또 실패");
+  assert.match(job.pdfError, /PDF를 아직 준비하지 못했습니다/);
+  assert.doesNotMatch(Assign.renderBody(model), /또 실패/, "재시도 실패 원문도 화면에 내지 않는다");
   await model.retryPdf(job.key);
   assert.equal(job.status, "ok");
   assert.equal(api.calls.filter((c) => /\/pdf$/.test(c.route)).length, 2);
@@ -297,7 +300,8 @@ test("409는 그 건만 실패하고 나머지는 계속 진행하며 서버 문
   await model.start();
   assert.deepEqual(model.state.jobs.map((j) => j.status), ["failed", "ok"]);
   assert.equal(api.posts().length, 2);
-  assert.doesNotMatch(model.state.jobs[0].message, /ADD_RECIPIENTS|Assignment/);
+  assert.doesNotMatch(model.state.jobs[0].message, /ADD_RECIPIENTS|Assignment|roster|같은 번호/);
+  assert.equal(model.state.jobs[0].message, "이 반에 이미 보낸 출제와 학생 구성이 다릅니다. 출제 내역에서 먼저 확인해 주세요.");
   assert.match(model.state.jobs[0].message, /학생 구성/);
   assert.equal(model.state.authLost, false);
   // 알려지지 않은 영어 오류는 가린다
@@ -305,15 +309,31 @@ test("409는 그 건만 실패하고 나머지는 계속 진행하며 서버 문
   assert.match(Assign.friendlyMessage(httpError(409, { error: "대상 반보다 높은 학년의 source 문항은 기본 출제할 수 없습니다." }), 409), /반 학년보다 높은/);
 });
 
-test("취소된 출제와 같은 키(409)는 번호를 버리고 새 번호로 다시 보낸다", async () => {
-  const post = (call, n) => { if (n === 1) throw httpError(409, { error: "취소된 Assignment는 RETRY로 다시 배포할 수 없습니다." }); return okAssignment(call); };
+test("취소된 출제와 같은 키(409)는 자동으로 다시 보내지 않고, 교사가 '새로 출제'를 누르면 새 번호로 한 번 보낸다", async () => {
+  const post = (call, n) => { if (n === 1 && call.body.class_id === "c1") throw httpError(409, { error: "취소된 Assignment는 RETRY로 다시 배포할 수 없습니다." }); return okAssignment(call); };
   const { model, api } = await build({ api: makeApi({ post }) });
   await pick(model, "c1");
+  await pick(model, "c2");
   await model.start();
-  assert.equal(model.state.jobs[0].status, "failed");
-  await model.retryFailed();
+  assert.deepEqual(model.state.jobs.map((j) => j.status), ["cancelled", "ok"]);
+  assert.equal(model.state.jobs[0].message, "이 출제는 취소된 상태입니다.");
+  const html = Assign.renderBody(model);
+  assert.match(html, /취소된 출제/);
+  assert.match(html, /이 출제는 취소된 상태입니다\./);
+  assert.match(html, /data-assign-action="reissue"/);
+  assert.match(html, />새로 출제</);
+  assert.doesNotMatch(Assign.renderFoot(model), /data-assign-action="retry"/, "일괄 다시 시도에는 취소된 건이 들어가지 않는다");
+  assert.match(Assign.renderFoot(model), /취소된 출제 1건/);
+  const before = api.posts().length;
+  assert.equal(await model.retryFailed(), false, "다시 시도 대상이 아니다");
+  assert.equal(await model.confirmUnknown(), false);
+  assert.equal(api.posts().length, before, "자동 POST 0회");
+  const firstId = api.posts()[0].body.assignment_batch_id;
+  assert.equal(await model.reissue(model.state.jobs[0].key), true);
+  assert.equal(api.posts().length, before + 1, "새로 출제는 한 번만 보낸다");
+  assert.notEqual(api.posts().at(-1).body.assignment_batch_id, firstId, "새 batch id");
   assert.equal(model.state.jobs[0].status, "ok");
-  assert.notEqual(api.posts()[1].body.assignment_batch_id, api.posts()[0].body.assignment_batch_id);
+  assert.equal(await model.reissue(model.state.jobs[1].key), false, "취소 상태가 아닌 건에는 쓸 수 없다");
 });
 
 test("401이면 남은 건을 보내지 않고 멈추며 이미 된 건은 결과표에 남고, 로그인 뒤 이어서 보낸다", async () => {
@@ -412,6 +432,46 @@ test("학생을 일부 빼면 student_ids에 반영되고, 전부 빼면 그 반
   assert.equal(api.posts().length, 1);
 });
 
+test("'아직 안 본 학생만' 빠른 선택은 이미 응시한 학생을 빼고 student_ids에 반영된다", async () => {
+  const api = makeApi({ submitted: new Set(["s6", "s8"]) });
+  const { model } = await build({ api });
+  await pick(model, "c3");
+  model.toggleStudentList("c3");
+  let html = Assign.renderBody(model);
+  assert.match(html, /data-assign-action="students-unsubmitted"/);
+  assert.match(html, /아직 안 본 학생만/);
+  assert.match(html, /응시함/);
+  assert.equal(model.unsubmittedCount(model.state.classes.find((c) => c.id === "c3")), 2);
+  assert.equal(model.selectUnsubmitted("c3"), true);
+  assert.deepEqual(model.plan().classes[0].studentIds, ["s7", "s9"]);
+  html = Assign.renderBody(model);
+  assert.match(html, /2명에게 출제 \(2명 제외\)/);
+  assert.match(html, /students-unsubmitted"[^>]*aria-pressed="true"/);
+  model.selectAllStudents("c3");
+  assert.equal(model.plan().classes[0].studentIds.length, 4);
+  model.selectUnsubmitted("c3");
+  await model.start();
+  assert.deepEqual(api.posts()[0].body.student_ids, ["s7", "s9"]);
+});
+
+test("모두 응시한 반은 '아직 안 본 학생만'이 비활성이고 '모두 응시했습니다'가 보인다", async () => {
+  const { model } = await build({ api: makeApi({ submitted: new Set(["s4", "s5"]) }) });
+  await pick(model, "c2");
+  model.toggleStudentList("c2");
+  const html = Assign.renderBody(model);
+  assert.match(html, /students-unsubmitted"[^>]*disabled/);
+  assert.match(html, /모두 응시했습니다/);
+  assert.equal(model.selectUnsubmitted("c2"), false);
+  assert.equal(model.plan().classes[0].studentIds.length, 2, "선택은 그대로 전체");
+});
+
+test("문제지가 여러 권이면 빠른 선택을 보이지 않는다(제출 여부는 한 시험 기준)", async () => {
+  const { model } = await build({ papers: [paper(P1), paper(P2)], api: makeApi({ submitted: new Set(["s4"]) }) });
+  await pick(model, "c2");
+  model.toggleStudentList("c2");
+  assert.doesNotMatch(Assign.renderBody(model), /students-unsubmitted|응시함/);
+});
+
 test("명단을 못 불러온 반은 빼고 진행할 수 있고, 학생 0명 반은 고를 수 없다", async () => {
   const { model, api } = await build({ api: makeApi({ rosterFail: new Set(["c2"]) }) });
   await pick(model, "c1");
@@ -479,6 +539,8 @@ test("서버가 준 문자열은 이스케이프해서 그린다", async () => {
   for (const html of [select.head, select.body, select.foot, done.head, done.body, done.foot])
     assert.doesNotMatch(html, /<img/i);
   assert.match(done.body, /&lt;img/);
+  assert.doesNotMatch(done.body, /한글 오류/, "서버가 준 한글 문장도 알려진 문구가 아니면 일반 안내로 바꾼다");
+  assert.match(done.body, /출제하지 못했습니다/);
 });
 
 test("옛 경로로 되돌리는 주소 스위치", () => {

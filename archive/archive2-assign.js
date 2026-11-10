@@ -142,11 +142,17 @@
   }
 
   // ---- 서버 오류를 교사 말로 -------------------------------------------------------------------------
-  // 서버 메시지는 한글이면 그대로 쓰되, 알려진 문구는 교사가 할 일을 알려 주는 말로 바꾼다. 코드·영어는 가린다.
+  // 서버 문장은 화면에 내지 않는다(영문·코드형은 물론 한글이어도 "roster"·"Assignment" 같은 내부 용어가 섞인다).
+  // 알려진 문구만 교사가 할 일을 알려 주는 말로 바꾸고, 그 밖에는 일반 안내를 낸다. 원문은 콘솔에만 남긴다.
+  const CANCELLED_MESSAGE = "이 출제는 취소된 상태입니다.";
+  const PDF_DELAY_MESSAGE = "출제는 됐습니다. 출력용 PDF 준비가 늦어지고 있으니 PDF 다시 준비 버튼을 눌러 주세요.";
+  const PDF_RETRY_MESSAGE = "PDF를 아직 준비하지 못했습니다. 잠시 뒤 PDF 다시 준비 버튼을 다시 눌러 주세요.";
+  const GENERIC_FAILURE = "출제하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
+  const warnRaw = (raw) => { try { if (raw) console.warn("[archive2-assign] server message:", raw); } catch { /* 콘솔이 없어도 된다 */ } };
   const KNOWN_MESSAGES = [
-    [/고정 roster/, "이 반에 같은 번호로 이미 보낸 출제와 학생 구성이 다릅니다. 출제 내역에서 먼저 확인해 주세요."],
+    [/고정 roster/, "이 반에 이미 보낸 출제와 학생 구성이 다릅니다. 출제 내역에서 먼저 확인해 주세요."],
     [/이미 배부된 시험/, "같은 날 이 반에 낸 시험지와 내용이 달라 출제할 수 없습니다. 출제 내역을 확인해 주세요."],
-    [/취소된 Assignment/, "취소한 출제와 같은 건이라 거절되었습니다. 다시 시도하면 새 출제로 보냅니다."],
+    [/취소된 Assignment/, CANCELLED_MESSAGE],
     [/대상 반보다 높은 학년/, "이 문제지에는 반 학년보다 높은 학년의 문항이 있어 이 반에는 낼 수 없습니다."],
     [/반 학년을 확인할 수 없/, "반 학년 정보가 없어 출제할 수 없습니다. APMS에서 반 학년을 확인해 주세요."],
     [/반 소속 또는 재원 상태가 변경/, "학생 명단이 바뀌었습니다. 패널을 닫고 다시 열어 주세요."],
@@ -160,10 +166,10 @@
     if (status === 403) return "이 반에 출제할 권한이 없습니다.";
     if (status === 404) return "문제지나 반을 찾을 수 없습니다.";
     if (status === 503) return "서버가 준비 중입니다. 잠시 뒤 다시 시도해 주세요.";
-    if (HANGUL.test(raw)) return raw;
-    return "출제하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
+    warnRaw(raw);
+    return GENERIC_FAILURE;
   }
-  // kind: ok-pdf(출제는 저장됨) | failed(서버가 거절, 만들어지지 않음) | unknown(응답을 못 받아 모름)
+  // kind: ok-pdf(출제는 저장됨) | failed(서버가 거절, 만들어지지 않음) | cancelled(같은 번호의 출제가 취소됨) | unknown(응답을 못 받아 모름)
   function classifyError(error) {
     const status = Number(error?.status) || 0;
     const assignment = error?.data?.assignment;
@@ -171,7 +177,7 @@
       // 서버는 출제를 저장한 뒤 PDF 생성에 실패하면 502와 함께 assignment를 돌려준다: 출제는 된 것이다.
       return {
         kind: "ok-pdf", assignmentId: text(assignment.id),
-        message: text(assignment.pdf_error || error?.data?.error) || "PDF 준비가 끝나지 않았습니다.",
+        message: PDF_DELAY_MESSAGE, raw: text(assignment.pdf_error || error?.data?.error),
       };
     }
     if (status === 401) {
@@ -181,7 +187,8 @@
     if (noAnswer) {
       return { kind: "unknown", message: "서버에서 응답을 받지 못했습니다. 출제가 되었는지 확인이 필요합니다." };
     }
-    return { kind: "failed", message: friendlyMessage(error, status), cancelledConflict: /취소된 Assignment/.test(text(error?.data?.error || error?.message)) };
+    if (/취소된 Assignment/.test(text(error?.data?.error || error?.message))) return { kind: "cancelled", message: CANCELLED_MESSAGE };
+    return { kind: "failed", message: friendlyMessage(error, status) };
   }
 
   // ---- 상태 기계 ------------------------------------------------------------------------------------
@@ -292,8 +299,8 @@
       return true;
     }
     function friendlyLoadError(error) {
-      const raw = text(error?.message);
-      return HANGUL.test(raw) && !/^[A-Z][A-Z0-9_]{3,}:/.test(raw) ? raw : "반 목록을 불러오지 못했습니다. 다시 시도해 주세요.";
+      warnRaw(text(error?.message));
+      return "반 목록을 불러오지 못했습니다. 다시 시도해 주세요.";
     }
 
     async function loadRoster(classId) {
@@ -316,7 +323,7 @@
       }
       if (token !== cls.token) return false;
       const roster = (Array.isArray(data?.students) ? data.students : [])
-        .filter((s) => text(s?.id)).map((s) => ({ id: text(s.id), name: text(s.name) || "이름 없음" }));
+        .filter((s) => text(s?.id)).map((s) => ({ id: text(s.id), name: text(s.name) || "이름 없음", submitted: Boolean(s.already_submitted) }));
       cls.roster = roster;
       cls.rosterState = "ready";
       cls.studentIds = null;
@@ -356,6 +363,20 @@
       if (!cls || state.phase !== "select") return;
       cls.studentIds = null;
       emit();
+    }
+    // '아직 안 본 학생만': 이 시험을 이미 제출한 학생(roster의 already_submitted, 옛 모달의 '이 시험 미응시자만'과 같은 필드)을 뺀다.
+    // 결석생에게 며칠 뒤 따로 낼 때 쓴다. 모두 제출했으면 아무것도 바꾸지 않는다.
+    function unsubmittedCount(cls) {
+      return cls?.roster ? cls.roster.filter((student) => !student.submitted).length : 0;
+    }
+    function selectUnsubmitted(classId) {
+      const cls = classById(classId);
+      if (!cls || state.phase !== "select" || cls.rosterState !== "ready") return false;
+      const ids = cls.roster.filter((student) => !student.submitted).map((student) => student.id);
+      if (!ids.length) return false;
+      cls.studentIds = ids.length === cls.roster.length ? null : new Set(ids);
+      emit();
+      return true;
     }
     function toggleStudentList(classId) {
       const cls = classById(classId);
@@ -463,7 +484,8 @@
       const pdfStatus = text(assignment.pdf_status);
       if (pdfStatus && pdfStatus !== "ready") {
         job.status = "ok-pdf";
-        job.pdfError = text(assignment.pdf_error || response?.error) || "PDF 준비가 끝나지 않았습니다.";
+        warnRaw(text(assignment.pdf_error || response?.error));
+        job.pdfError = PDF_DELAY_MESSAGE;
       } else job.status = "ok";
       store.clear(job.paperId, job.classId, job.date);
       state.dirty = true;
@@ -474,6 +496,7 @@
       if (info.kind === "ok-pdf") {
         job.status = "ok-pdf";
         job.assignmentId = info.assignmentId;
+        warnRaw(info.raw);
         job.pdfError = info.message;
         job.message = "";
         store.clear(job.paperId, job.classId, job.date);
@@ -482,17 +505,12 @@
       }
       job.status = info.kind;
       job.message = info.message;
-      if (info.kind === "failed") {
-        store.mark(job.paperId, job.classId, job.date, "failed");
-        if (info.cancelledConflict) {
-          // 같은 키의 출제가 취소되어 있다: 이 번호로는 다시 낼 수 없으니 번호를 버리고 새로 보낸다.
-          store.clear(job.paperId, job.classId, job.date);
-          job.rebuild = true;
-        }
-      }
+      if (info.kind === "failed" || info.kind === "cancelled") store.mark(job.paperId, job.classId, job.date, "failed");
     }
     async function sendJob(job) {
       if (job.rebuild) {
+        // 교사가 '새로 출제'를 직접 눌렀을 때만: 취소된 건의 번호를 버리고 새 번호를 만든다.
+        store.clear(job.paperId, job.classId, job.date);
         job.batchId = store.ensure(job.paperId, job.classId, job.date).id;
         job.body = bodyFor(job);
         job.rebuild = false;
@@ -570,6 +588,13 @@
     }
     // 실패한 건과 보내지 못한 건을 같은 본문·같은 batch id로 다시 보낸다.
     const retryFailed = () => resume(["failed", "queued"]);
+    // 취소된 출제와 같은 번호(409)는 자동으로 다시 보내지 않는다. 교사가 '새로 출제'를 직접 누른 그 건만 새 번호로 보낸다.
+    function reissue(key) {
+      const job = state.jobs.find((row) => row.key === key);
+      if (!job || job.status !== "cancelled" || state.working || state.phase !== "done") return Promise.resolve(false);
+      job.rebuild = true;
+      return resume(["cancelled"], key);
+    }
     // 응답을 못 받은 건을 같은 본문·같은 batch id로 다시 보낸다: 서버에 이미 있으면 그 건이 돌아온다.
     const confirmUnknown = (key = null) => resume(["unknown"], key);
 
@@ -586,10 +611,11 @@
         if (text(assignment?.pdf_status) === "ready") {
           job.status = "ok";
           job.pdfError = "";
-        } else job.pdfError = text(assignment?.pdf_error || response?.error) || "PDF를 아직 준비하지 못했습니다.";
+        } else { warnRaw(text(assignment?.pdf_error || response?.error)); job.pdfError = PDF_RETRY_MESSAGE; }
       } catch (error) {
         if (Number(error?.status) === 401) state.authLost = true;
-        job.pdfError = error?.timeout ? "응답이 늦습니다. 잠시 뒤 다시 시도해 주세요." : friendlyMessage(error, Number(error?.status) || 0);
+        warnRaw(text(error?.data?.error || error?.message));
+        job.pdfError = PDF_RETRY_MESSAGE;
       } finally {
         job.pdfBusy = false;
         emit();
@@ -613,7 +639,7 @@
     function results() {
       const count = (status) => state.jobs.filter((job) => job.status === status).length;
       return {
-        total: state.jobs.length, ok: count("ok"), okPdf: count("ok-pdf"), failed: count("failed"),
+        total: state.jobs.length, ok: count("ok"), okPdf: count("ok-pdf"), failed: count("failed"), cancelled: count("cancelled"),
         unknown: count("unknown"), queued: count("queued"), running: count("running"),
       };
     }
@@ -621,7 +647,7 @@
     return {
       state, load, loadRoster, toggleClass, toggleStudent, selectAllStudents, toggleStudentList, toggleCombo, setDate,
       plan, canSubmit, start, retryFailed, confirmUnknown, retryPdf, isBusy, requestClose, results,
-      dupInfo, pendingNotes, store,
+      dupInfo, pendingNotes, store, selectUnsubmitted, unsubmittedCount, reissue,
       retryRoster: loadRoster,
       subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     };
@@ -680,11 +706,16 @@
     } else if (cls.checked && cls.rosterState === "ready" && !empty) {
       const excluded = cls.roster.length - students;
       const summary = excluded ? `${students}명에게 출제 (${excluded}명 제외)` : `전체 ${students}명에게 출제`;
+      const unsubmitted = model.unsubmittedCount(cls);
+      const onlyUnsubmitted = Boolean(cls.studentIds) && cls.studentIds.size === unsubmitted && cls.roster.every((student) => cls.studentIds.has(student.id) !== Boolean(student.submitted));
+      // 빠른 선택은 문제지가 한 권일 때만 뜻이 분명하다(제출 여부는 그 시험 기준).
+      const quick = model.state.papers.length === 1
+        ? `<div class="assign-quick" role="group" aria-label="빠른 선택"><button type="button" class="small" data-assign-action="students-all" data-class-id="${id}" data-focus="all-${id}" aria-pressed="${cls.studentIds ? "false" : "true"}">전체</button><button type="button" class="small" data-assign-action="students-unsubmitted" data-class-id="${id}" data-focus="unsub-${id}" aria-pressed="${onlyUnsubmitted ? "true" : "false"}"${unsubmitted ? "" : " disabled"}>아직 안 본 학생만</button>${unsubmitted ? "" : '<span class="assign-muted">모두 응시했습니다</span>'}</div>` : "";
       const grid = cls.expanded
-        ? `<ul class="assign-student-grid">${cls.roster.map((student) => {
+        ? `${quick}<ul class="assign-student-grid">${cls.roster.map((student) => {
           const on = !cls.studentIds || cls.studentIds.has(student.id);
-          return `<li><label><input type="checkbox" data-assign-action="student" data-class-id="${id}" data-student-id="${esc(student.id)}" data-focus="student-${id}-${esc(student.id)}"${on ? " checked" : ""}><span>${esc(student.name)}</span></label></li>`;
-        }).join("")}</ul>${excluded ? `<button type="button" class="assign-link" data-assign-action="students-all" data-class-id="${id}" data-focus="all-${id}">전체 선택</button>` : ""}`
+          return `<li><label><input type="checkbox" data-assign-action="student" data-class-id="${id}" data-student-id="${esc(student.id)}" data-focus="student-${id}-${esc(student.id)}"${on ? " checked" : ""}><span>${esc(student.name)}${student.submitted && model.state.papers.length === 1 ? ' <small class="assign-muted">응시함</small>' : ""}</span></label></li>`;
+        }).join("")}</ul>`
         : "";
       studentsBlock = `<div class="assign-students"><p><span>${summary}</span> <button type="button" class="assign-link" data-assign-action="students-toggle" data-class-id="${id}" data-focus="students-${id}" aria-expanded="${cls.expanded ? "true" : "false"}">${cls.expanded ? "학생 목록 접기" : "학생 고르기"}</button></p>${grid}</div>`;
     }
@@ -754,7 +785,7 @@
   }
   const STATUS_LABEL = {
     queued: "대기 중", running: "출제 중…", ok: "출제됨", "ok-pdf": "출제됨 · PDF만 준비 실패",
-    failed: "실패", unknown: "결과 확인 필요",
+    failed: "실패", cancelled: "취소된 출제", unknown: "결과 확인 필요",
   };
   function jobMarkup(model, job) {
     const multi = model.state.papers.length > 1;
@@ -762,9 +793,10 @@
     const label = authStopped ? "보내지 않음" : job.status === "ok" && job.already ? "이미 출제됨 (같은 건)"
       : job.status === "ok" && job.attempts > 1 ? "출제됨 (다시 확인해 같은 건으로 처리)" : STATUS_LABEL[job.status];
     const id = esc(job.assignmentId);
-    const detail = job.status === "ok-pdf" ? job.pdfError : job.status === "failed" || job.status === "unknown" ? job.message : "";
+    const detail = job.status === "ok-pdf" ? job.pdfError : ["failed", "unknown", "cancelled"].includes(job.status) ? job.message : "";
     const actions = [];
     if (job.status === "unknown") actions.push(`<button type="button" class="small" data-assign-action="confirm" data-key="${esc(job.key)}" data-focus="confirm-${esc(job.key)}">확인하기</button>`);
+    if (job.status === "cancelled") actions.push(`<button type="button" class="small" data-assign-action="reissue" data-key="${esc(job.key)}" data-focus="reissue-${esc(job.key)}">새로 출제</button>`);
     if (job.status === "ok-pdf") actions.push(`<button type="button" class="small" data-assign-action="pdf" data-key="${esc(job.key)}" data-focus="pdf-${esc(job.key)}"${job.pdfBusy ? " disabled" : ""}>${job.pdfBusy ? "PDF 준비 중…" : "PDF 다시 준비"}</button>`);
     const outputs = (job.status === "ok" || job.status === "ok-pdf") && job.assignmentId && model.state.outputLinks !== false
       ? `<span class="assign-result-outputs" role="group" aria-label="출력">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, name]) => `<button type="button" class="small" data-action="assignment-output-direct" data-assignment="${id}" data-mode="${mode}">${name}</button>`).join("")}</span>` : "";
@@ -810,6 +842,7 @@
       if (r.ok + r.okPdf) bits.push(`출제됨 ${r.ok + r.okPdf}건${r.okPdf ? ` (PDF만 실패 ${r.okPdf}건)` : ""}`);
       if (r.unknown) bits.push(`확인 필요 ${r.unknown}건`);
       if (r.failed) bits.push(`실패 ${r.failed}건`);
+      if (r.cancelled) bits.push(`취소된 출제 ${r.cancelled}건`);
       if (r.queued) bits.push(`보내지 않음 ${r.queued}건`);
       const needRetry = r.failed + r.queued > 0;
       const buttons = [];
@@ -950,6 +983,8 @@
       else if (action === "roster-retry") model.retryRoster(classId);
       else if (action === "students-toggle") model.toggleStudentList(classId);
       else if (action === "students-all") model.selectAllStudents(classId);
+      else if (action === "students-unsubmitted") model.selectUnsubmitted(classId);
+      else if (action === "reissue") model.reissue(el.dataset.key).catch(() => {});
       else if (action === "retry") { el.disabled = true; model.retryFailed().catch(() => {}); }
       else if (action === "confirm") model.confirmUnknown(el.dataset.key).catch(() => {});
       else if (action === "confirm-all") { el.disabled = true; model.confirmUnknown().catch(() => {}); }
