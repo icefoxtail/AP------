@@ -237,8 +237,8 @@ window.examData = {
         "$24^\\circ$",
         "$25^\\circ$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "점 $A$와 $D$를 이으면 한 호에 대한 원주각의 크기는 중심각의 크기의 $\\dfrac12$이므로 $\\angle ADB=\\dfrac12\\angle AOB=\\dfrac12\\times32^\\circ=16^\\circ$이고, $\\angle CAD=\\dfrac12\\angle COD=\\dfrac12\\times78^\\circ=39^\\circ$이다.<br>$\\triangle PAD$에서 $\\angle CAD$는 $\\angle PAD$의 외각이므로 $\\angle CAD=\\angle APD+\\angle ADP$이다.<br>점 $B$가 선분 $DP$ 위에 있으므로 $\\angle ADP=\\angle ADB=16^\\circ$이다.<br>따라서 $\\angle CPD=\\angle CAD-\\angle ADB=39^\\circ-16^\\circ=23^\\circ$이다. 정답은 ③이다."
     },
     {
       "id": 18,
