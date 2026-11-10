@@ -1540,6 +1540,214 @@
     return buildStepPapers(unit, unit.selectableRecords, options.scope || unit.paperScope || COMMON_SCOPE, options);
   }
 
+  // ---- 여러 단원 x 여러 단계 선택 (단원 x 단계 표) ----------------------------------------------------
+  // User decision 2026-11-10: teachers pick many units and difficulty steps at once. Default = every
+  // question of the chosen cells; "칸마다 N문항" takes at most N per cell and a cell with fewer questions
+  // simply gives what it has (reported in `shortages`, never an error). One question is used once.
+  const SELECTION_ORDERS = Object.freeze(['recent', 'unit', 'step']);
+  const DEFAULT_SELECTION_SEED = 'unitpast-grid-v1';
+
+  function normalizeStepCell(value) {
+    if (value === null || value === undefined || value === '') return STEP_NONE;
+    const text = String(value).trim();
+    if (STEP_TOKENS.includes(text)) return text;
+    if (/^(?:none|unknown)$/i.test(text)) return STEP_NONE;
+    return null;
+  }
+
+  // Cell counts per unit: { [unitKey]: { 1..5, none, total } }. Computed once per grade by the screen
+  // (never inside a render), from the units' automatically selectable records.
+  function countGrid(units) {
+    const grid = {};
+    for (const unit of Array.isArray(units) ? units : []) {
+      const row = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, [STEP_NONE]: 0, total: 0 };
+      for (const record of Array.isArray(unit && unit.selectableRecords) ? unit.selectableRecords : []) {
+        row[getStepToken(record)] += 1;
+        row.total += 1;
+      }
+      grid[unit.key] = row;
+    }
+    return grid;
+  }
+
+  function selectionStepLabel(tokens) {
+    const list = STEP_TOKENS.filter(token => tokens.includes(token));
+    if (!list.length) return '';
+    if (list.length === STEP_TOKENS.length) return '전체 단계';
+    const numeric = list.filter(token => token !== STEP_NONE).map(Number);
+    let text = '';
+    if (numeric.length === 1) text = `${numeric[0]}단계`;
+    else if (numeric.length > 1) {
+      const contiguous = numeric[numeric.length - 1] - numeric[0] + 1 === numeric.length;
+      text = contiguous ? `${numeric[0]}~${numeric[numeric.length - 1]}단계` : `${numeric.join('·')}단계`;
+    }
+    if (list.includes(STEP_NONE)) text = text ? `${text} · ${STEP_LABEL_NONE}` : STEP_LABEL_NONE;
+    return text;
+  }
+
+  function selectionUnitLabel(unitNames) {
+    if (unitNames.length <= 1) return unitNames[0] || '';
+    return `${unitNames[0]} 외 ${unitNames.length - 1}단원`;
+  }
+
+  // Headings of a paper built from several units. `primary: 'unit'` = unit heading (level 1) with the
+  // step as sub heading; `primary: 'step'` = step heading with the unit as sub heading. A one-unit
+  // selection has no unit heading (same look as buildStepSections).
+  function buildSelectionSections(records, options = {}) {
+    const list = Array.isArray(records) ? records : [];
+    const primaryUnit = options.primary === 'unit';
+    const showUnit = options.showUnit !== false;
+    const nameOf = options.unitNames instanceof Map ? options.unitNames : new Map();
+    const sections = [];
+    let prevUnit = null;
+    let prevToken = null;
+    let prevLegacy = null;
+    list.forEach((record, index) => {
+      const unitKey = String(record.mappedUnitKey || '');
+      const token = getStepToken(record);
+      const uid = getQuestionUid(record);
+      const unitTitle = nameOf.get(unitKey) || String(record.mappedUnit || '') || unitKey;
+      const push = (title, level) => sections.push({ at: index, uid, title, level });
+      const first = prevUnit === null;
+      const unitChanged = unitKey !== prevUnit;
+      const tokenChanged = token !== prevToken;
+      if (primaryUnit && showUnit) {
+        if (first || unitChanged) push(unitTitle, 1);
+        if (first || unitChanged || tokenChanged) push(stepTokenLabel(token), 2);
+      } else if (primaryUnit) {
+        if (first || tokenChanged) push(stepTokenLabel(token), 1);
+      } else {
+        if (first || tokenChanged) push(stepTokenLabel(token), 1);
+        if (showUnit && (first || tokenChanged || unitChanged)) push(unitTitle, 2);
+      }
+      if (token === STEP_NONE) {
+        const legacy = getLegacyDifficultyLabel(record);
+        if (first || tokenChanged || unitChanged || legacy !== prevLegacy) push(`기존 분류: ${legacy}`, 2);
+        prevLegacy = legacy;
+      } else prevLegacy = null;
+      prevUnit = unitKey;
+      prevToken = token;
+    });
+    return sections;
+  }
+
+  // selection: [{ unitKey, step }] (step 1..5, or 'none' / null / 'UNKNOWN' = 단계 미지정).
+  // options: { units | catalog, perCell: null | N, order: 'recent' | 'unit' | 'step', seed, target, max }.
+  //   recent: papers are cut newest year first (paper 1 = newest); inside a paper unit -> easy step first.
+  //   unit:   papers are cut in unit order; inside a paper unit -> step -> newest year.
+  //   step:   papers are cut easy step first; inside a paper step -> unit -> newest year.
+  // Never throws for an empty selection, an unknown unit or an empty cell: it returns what exists.
+  function buildSelectionPapers(selection, options = {}) {
+    const units = Array.isArray(options.units) ? options.units : (options.catalog && Array.isArray(options.catalog.units) ? options.catalog.units : []);
+    const unitByKey = new Map(units.map((unit, index) => [unit.key, { unit, index }]));
+    const rawPerCell = Number(options.perCell);
+    const perCell = Number.isFinite(rawPerCell) && rawPerCell >= 1 ? Math.floor(rawPerCell) : null;
+    const order = SELECTION_ORDERS.includes(options.order) ? options.order : 'recent';
+    const seed = options.seed || DEFAULT_SELECTION_SEED;
+
+    const cellMap = new Map();
+    for (const raw of Array.isArray(selection) ? selection : []) {
+      const found = raw && unitByKey.get(String(raw.unitKey || '').trim());
+      const token = raw ? normalizeStepCell(raw.step) : null;
+      if (!found || !token) continue;
+      cellMap.set(`${found.unit.key}|${token}`, { unitKey: found.unit.key, step: token, unitIndex: found.index });
+    }
+    const cells = [...cellMap.values()].sort((a, b) => a.unitIndex - b.unitIndex || STEP_TOKENS.indexOf(a.step) - STEP_TOKENS.indexOf(b.step));
+
+    const taken = new Set();
+    const picked = [];
+    const unitIndexOf = new Map();
+    const cellReports = [];
+    for (const cell of cells) {
+      const unit = unitByKey.get(cell.unitKey).unit;
+      const pool = (Array.isArray(unit.selectableRecords) ? unit.selectableRecords : []).filter(record => getStepToken(record) === cell.step);
+      const ordered = perCell ? sortForSelection(pool, `${seed}|${cell.unitKey}|${cell.step}`) : pool;
+      let got = 0;
+      for (const record of ordered) {
+        if (perCell && got >= perCell) break;
+        const identity = getRecordIdentity(record);
+        if (taken.has(identity)) continue;
+        taken.add(identity);
+        picked.push(record);
+        unitIndexOf.set(record, cell.unitIndex);
+        got += 1;
+      }
+      cellReports.push({ unitKey: cell.unitKey, step: cell.step, available: pool.length, wanted: perCell, got });
+    }
+    const shortages = perCell
+      ? cellReports.filter(cell => cell.got < perCell).map(cell => ({ unitKey: cell.unitKey, step: cell.step, wanted: perCell, got: cell.got }))
+      : [];
+
+    const base = { order, perCell, cells: cellReports, shortages, total: picked.length, papers: [], unitKeys: [], seed };
+    if (!picked.length) return base;
+
+    const usedCells = cellReports.filter(cell => cell.got > 0);
+    const usedUnitIndexes = [...new Set(usedCells.map(cell => unitByKey.get(cell.unitKey).index))].sort((a, b) => a - b);
+    const usedUnits = usedUnitIndexes.map(index => units[index]);
+    const usedTokens = [...new Set(usedCells.map(cell => cell.step))];
+    const unitNames = new Map(usedUnits.map(unit => [unit.key, unit.name]));
+    const multiUnit = usedUnits.length > 1;
+    const uIdx = record => (unitIndexOf.has(record) ? unitIndexOf.get(record) : 9999);
+    const stepOf = record => getStepSortKey(record);
+    const legacyThenRest = compareStepRecords;
+    const cutCompare = order === 'unit'
+      ? (a, b) => uIdx(a) - uIdx(b) || compareRecords(a, b)
+      : order === 'step'
+        ? (a, b) => stepOf(a).step - stepOf(b).step || stepOf(a).legacy - stepOf(b).legacy || compareRecords(a, b)
+        : compareRecords;
+    const innerCompare = order === 'step'
+      ? (a, b) => stepOf(a).step - stepOf(b).step || stepOf(a).legacy - stepOf(b).legacy || uIdx(a) - uIdx(b) || legacyThenRest(a, b)
+      : (a, b) => uIdx(a) - uIdx(b) || legacyThenRest(a, b);
+
+    const scope = (usedUnits[0] && usedUnits[0].paperScope) || options.scope || COMMON_SCOPE;
+    const split = splitIntoPapers(picked, {
+      target: options.target || scope.targetQuestionsPerPaper,
+      max: options.max || scope.hardMaxQuestionsPerPaper,
+      compare: cutCompare
+    }).map(records => [...records].sort(innerCompare));
+
+    const unitLabel = selectionUnitLabel(usedUnits.map(unit => unit.name));
+    const stepLabel = selectionStepLabel(usedTokens);
+    const baseTitle = [unitLabel, stepLabel].filter(Boolean).join(' · ');
+    const snapshotUnitKey = usedUnits.length === 1 ? usedUnits[0].key : `multi-${fnv1a(usedUnits.map(unit => unit.key).join(','))}`;
+    const difficultySteps = normalizeStepSelection(usedTokens);
+    const sectionOptions = { primary: order === 'step' || !multiUnit ? 'step' : 'unit', showUnit: multiUnit, unitNames };
+    base.unitKeys = usedUnits.map(unit => unit.key);
+    base.unitNames = usedUnits.map(unit => unit.name);
+    base.courses = [...new Set(usedUnits.map(unit => unit.course))];
+    base.stepLabel = stepLabel;
+    base.unitLabel = unitLabel;
+    base.snapshotUnitKey = snapshotUnitKey;
+    base.papers = split.map((records, index) => {
+      const years = records.map(getExamYear).filter(isValidExamYear);
+      const paperUnits = usedUnits.filter(unit => records.some(record => uIdx(record) === unitByKey.get(unit.key).index));
+      return {
+        index: index + 1,
+        gridId: `grid-${index + 1}`,
+        title: split.length === 1 ? baseTitle : `${baseTitle} · ${index + 1}권/${split.length}권`,
+        count: records.length,
+        sourceCount: new Set(records.map(record => record.sourceFile)).size,
+        records,
+        stepGrouped: true,
+        selectionGrouped: true,
+        sectionOptions,
+        difficultySteps,
+        stepSummary: summarizeSteps(records),
+        unitNames: paperUnits.map(unit => unit.name),
+        yearMin: years.length ? Math.min(...years) : 0,
+        yearMax: years.length ? Math.max(...years) : 0,
+        sections: buildSelectionSections(records, sectionOptions),
+        snapshotKey: buildSnapshotKey(snapshotUnitKey, records, scope, {
+          mode: 'grid',
+          difficultySteps,
+          seed: `${seed}|${order}|${perCell || 'all'}`,
+          paperKey: `${index + 1}/${split.length}`
+        })
+      };
+    });
+    return base;
+  }
+
   function fnv1a(text) {
     let hash = 0x811c9dc5;
     for (let i = 0; i < text.length; i += 1) {
@@ -1664,6 +1872,10 @@
     summarizeSteps,
     buildStepSections,
     buildUnitPapers,
+    SELECTION_ORDERS,
+    countGrid,
+    buildSelectionSections,
+    buildSelectionPapers,
     getSubUnitKey,
     getSubUnitParentKey,
     getSubUnitLabel,
