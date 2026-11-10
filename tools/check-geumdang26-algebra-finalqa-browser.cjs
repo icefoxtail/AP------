@@ -42,10 +42,10 @@ async function main(){
   await send('Page.addScriptToEvaluateOnNewDocument',{source:"localStorage.setItem('APMATH_SESSION',JSON.stringify({id:'finalqa-read-only',role:'teacher'}));window.print=()=>true"});
   // Finder: real student/teacher catalogue must show original exam with 21 questions.
   await send('Page.navigate',{url:base+'workspace.html?view=find'});
-  await wait("!!document.querySelector('#finder-query')&&document.querySelectorAll('.exam-list article').length>0",'Archive finder');
+  await wait("!!document.querySelector('#finder-query')&&document.querySelectorAll('.exam-rows article').length>0",'Archive finder');
   await run("(()=>{const x=document.querySelector('#finder-query');x.value='26_금당고';document.querySelector('[data-action=\"finder-search\"]').click();return true})()");
-  await wait("document.querySelector('.exam-list')?.innerText.includes('금당고')",'Geumdang finder search');
-  const finder=await run("(()=>[...document.querySelectorAll('.exam-list article')].filter(e=>e.innerText.includes('금당고')&&e.innerText.includes('대수')&&e.innerText.includes('21')).map(e=>e.innerText.slice(0,240)))()");
+  await wait("document.querySelector('.exam-rows')?.innerText.includes('금당고')",'Geumdang finder search');
+  const finder=await run("(()=>[...document.querySelectorAll('.exam-rows article')].filter(e=>e.innerText.includes('금당고')&&e.innerText.includes('대수')&&e.innerText.includes('21')).map(e=>e.innerText.slice(0,240)))()");
   if(!finder.length)throw Error('2026 Geumdang exam missing in real Finder result: '+JSON.stringify(finder));
   const modes={};
   for(const mode of ['exam','sol','ans']){

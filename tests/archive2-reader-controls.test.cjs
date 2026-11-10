@@ -34,7 +34,7 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261110-shell-1/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261110-shell-1/);
+  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261110-similar-1/);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {

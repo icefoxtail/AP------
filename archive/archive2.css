@@ -2359,78 +2359,6 @@ body[data-archive-view="compose"] .compose-create-bar {
 }
 
 
-/* Finder: one compact desktop filter row; exam period stays directly reachable on phones. */
-.finder-surface .finder-filter-bar {
-  display: grid;
-  grid-template-columns:
-    minmax(112px, .8fr) minmax(130px, .9fr) minmax(125px, 1fr)
-    minmax(125px, 1fr) minmax(135px, 1.1fr) minmax(185px, 1.5fr);
-  align-items: end;
-  gap: 8px 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--line-soft);
-}
-.finder-surface .finder-filter-bar > .finder-filter-core,
-.finder-surface .finder-filter-bar > .finder-filter-detail {
-  display: contents;
-}
-.finder-surface .finder-axis-quick {
-  display: none;
-}
-.finder-surface .finder-filter-bar .finder-year,
-.finder-surface .finder-filter-bar .finder-course,
-.finder-surface .finder-filter-bar .finder-school,
-.finder-surface .finder-filter-bar .finder-family {
-  grid-column: auto;
-}
-@media (max-width: 1320px) {
-  .finder-surface .finder-filter-bar {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-@media (max-width: 700px) {
-  .finder-surface .finder-filter-bar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px 9px;
-    padding-top: 8px;
-  }
-  .finder-surface .finder-filter-bar .finder-course,
-  .finder-surface .finder-filter-bar .finder-year,
-  .finder-surface .finder-filter-bar .finder-family {
-    grid-column: 1 / -1;
-  }
-  .finder-surface .finder-filter-bar .finder-school,
-  .finder-surface .finder-filter-bar .finder-term {
-    grid-column: auto;
-  }
-  .finder-surface .finder-axis-quick {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 7px;
-    order: 1;
-  }
-  .finder-surface .finder-axis-quick button {
-    min-width: 0;
-    min-height: 44px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-field);
-    background: var(--chip);
-    color: var(--ink);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 7px 5px;
-  }
-  .finder-surface .finder-axis-quick button[aria-pressed="true"] {
-    color: var(--surface);
-    border-color: var(--ink);
-    background: var(--ink);
-  }
-  .finder-surface .finder-filter-bar .finder-year {
-    order: 2;
-  }
-}
-
 /* S7 simple compose: difficulty is a primary control, extra conditions stay in 세부 조건. */
 body[data-archive-view="compose"] .compose-subject-note {
   margin: 0;
@@ -3005,73 +2933,6 @@ body[data-archive-view="compose"] .compose-step-number {
 .home-recent .home-link {
   font-size: 14px;
 }
-.home-exam {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--surface);
-}
-.home-spine {
-  flex: 0 0 72px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 0;
-  background: var(--grade);
-  color: #fff;
-}
-.home-spine-year {
-  font-family: var(--font-display);
-  font-size: 28px;
-  line-height: 1;
-}
-.home-spine-grade {
-  font-size: 14px;
-  font-weight: 700;
-}
-.home-exam-main {
-  flex: 1 1 220px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 8px 16px;
-}
-.home-exam-title {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 16px;
-  text-align: left;
-}
-.home-exam-title:hover {
-  background: transparent;
-  color: var(--brand-ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.home-exam-meta {
-  margin-top: -6px;
-  padding-bottom: 4px;
-  color: var(--ink-2);
-  font-size: 14px;
-}
-.home-exam-actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 14px;
-}
 .home-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -3225,31 +3086,6 @@ body[data-archive-view="compose"] .compose-step-number {
   .home-bottom h2 {
     font-size: 19px;
   }
-  .home-spine {
-    flex-basis: 56px;
-    padding: 8px 0;
-  }
-  .home-spine-year {
-    font-size: 24px;
-  }
-  .home-spine-grade {
-    font-size: 13px;
-  }
-  .home-exam-main {
-    flex-basis: calc(100% - 56px);
-    padding: 8px 12px;
-  }
-  .home-exam-actions {
-    flex: 1 1 100%;
-    padding: 8px 10px;
-    border-top: 1px solid var(--line);
-  }
-  .home-exam-actions button {
-    flex: 1 1 0;
-    min-width: 0;
-    padding: 0 4px;
-    font-size: 15px;
-  }
   .home-quick-list {
     grid-template-columns: 1fr;
   }
@@ -3348,4 +3184,562 @@ body[data-archive-view="compose"] .compose-step-number {
   border-color: var(--grade);
   background: var(--grade);
   color: #fff;
+}
+
+/* ---- Exam rows and 학교별 기출 (2026-11-10: similar problems beside the exam) ------------------
+   One row = grade-colored spine (year + grade), title, subject · count · range, the exam buttons and
+   the similar-problem cell. 학교별 기출 and the home list draw it with the same function. The row
+   layout follows the width of its list (container), so it works in the 232px-menu layout, on a tablet
+   and on a phone alike. */
+.exam-rows {
+  container-type: inline-size;
+  container-name: exam-rows;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.exam-rows-head {
+  display: none;
+}
+.exam-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-areas:
+    "spine main"
+    "actions actions"
+    "sim sim";
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.exam-row.no-sim {
+  grid-template-areas:
+    "spine main"
+    "actions actions";
+}
+.exam-row.selected {
+  background: var(--selected);
+}
+.exam-row-spine {
+  grid-area: spine;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-radius: 11px 0 0 0;
+  background: var(--grade);
+  color: #fff;
+}
+.exam-row-year {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1;
+}
+.exam-row-grade {
+  font-size: 13px;
+  font-weight: 700;
+}
+.exam-row-main {
+  grid-area: main;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 12px;
+}
+.exam-row-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  text-align: left;
+}
+.exam-row-title:hover {
+  background: transparent;
+  color: var(--brand-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.exam-row-tag {
+  margin-top: -6px;
+  color: var(--brand-ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+.exam-row-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 8px;
+  margin-top: -6px;
+  padding-bottom: 4px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.exam-row-range {
+  padding-bottom: 4px;
+  color: var(--ink-2);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.exam-row-actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--line);
+}
+.exam-row-actions > button,
+.exam-row-actions > .finder-card-more {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.exam-row-actions > button {
+  padding: 0 8px;
+  font-size: 15px;
+}
+.exam-row-actions .finder-card-more > summary {
+  padding: 0 10px;
+  font-size: 15px;
+}
+.exam-row-sim {
+  grid-area: sim;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 0 0 11px 11px;
+}
+.exam-row-sim.has {
+  background: var(--brand-soft);
+  color: var(--ink);
+}
+.exam-row-sim.has strong {
+  color: var(--brand-ink);
+}
+.exam-row-sim-head span {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.exam-row-sim-actions {
+  display: flex;
+  gap: 6px;
+}
+.exam-row-sim-actions button {
+  padding: 0 16px;
+  border-color: var(--brand-ink);
+  background: var(--surface);
+  color: var(--brand-ink);
+  font-size: 15px;
+}
+.exam-row-sim-actions button:hover {
+  background: var(--brand-soft);
+}
+.exam-row-sim-actions button.primary {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fff;
+}
+.exam-row-sim-actions button.primary:hover {
+  border-color: var(--brand-hover);
+  background: var(--brand-hover);
+}
+.exam-row-sim.none {
+  display: none;
+  color: var(--muted);
+  font-size: 14px;
+}
+@container exam-rows (min-width: 560px) {
+  .exam-row {
+    grid-template-columns: 68px minmax(0, 1fr);
+    grid-template-areas:
+      "spine main"
+      "spine actions"
+      "sim sim";
+  }
+  .exam-row.no-sim {
+    grid-template-areas:
+      "spine main"
+      "spine actions";
+  }
+  .exam-row-spine {
+    border-radius: 11px 0 0 0;
+  }
+  .exam-row.no-sim .exam-row-spine {
+    border-radius: 11px 0 0 11px;
+  }
+  .exam-row-year {
+    font-size: 28px;
+  }
+  .exam-row-grade {
+    font-size: 14px;
+  }
+  .exam-row-main {
+    padding: 8px 16px 0;
+  }
+  .exam-row-actions {
+    justify-content: flex-start;
+    padding: 0 16px 10px;
+    border-top: 0;
+  }
+  .exam-row-actions > button,
+  .exam-row-actions > .finder-card-more {
+    flex: 0 0 auto;
+  }
+  .exam-row-actions > button {
+    padding: 0 14px;
+  }
+}
+@container exam-rows (min-width: 920px) {
+  .exam-rows-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 6px;
+    border-bottom: 2px solid var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .exam-rows-head span:first-child {
+    padding-left: 84px;
+  }
+  .exam-rows-head span:last-child {
+    box-sizing: border-box;
+    width: 316px;
+    padding-left: 14px;
+    color: var(--brand-ink);
+  }
+  .exam-row {
+    grid-template-columns: 68px minmax(0, 1fr) auto 316px;
+    grid-template-areas: "spine main actions sim";
+  }
+  .exam-row.no-sim {
+    grid-template-columns: 68px minmax(0, 1fr) auto;
+    grid-template-areas: "spine main actions";
+  }
+  .exam-row-spine,
+  .exam-row.no-sim .exam-row-spine {
+    border-radius: 11px 0 0 11px;
+  }
+  .exam-row-main {
+    padding: 8px 16px;
+  }
+  .exam-row-actions {
+    padding: 0 14px;
+  }
+  .exam-row-sim {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 0 11px 11px 0;
+  }
+  .exam-row-sim.none {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-left: 1px solid var(--line);
+  }
+}
+
+.find-surface {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1120px;
+}
+.find-surface .intro {
+  margin: 0;
+}
+.find-surface .material-switch,
+.find-surface .material-nav {
+  margin: 0;
+}
+.find-surface .material-switch {
+  flex-wrap: wrap;
+}
+.find-surface .material-switch button {
+  min-height: 44px;
+}
+.find-surface .assessment-entry {
+  margin: 0;
+}
+.find-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.find-search-row {
+  display: flex;
+  gap: 10px;
+}
+.find-search-row input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 52px;
+  box-sizing: border-box;
+  padding: 0 22px;
+  border: 2px solid var(--ink);
+  border-radius: 26px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 17px;
+}
+.find-search-submit {
+  flex: none;
+  white-space: nowrap;
+  min-height: 52px;
+  padding: 0 30px;
+  border-radius: 26px;
+  font-size: 16px;
+}
+.find-quick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.find-grades,
+.find-terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.find-divider {
+  width: 1px;
+  height: 24px;
+  margin: 0 6px;
+  background: var(--line);
+}
+.find-grade {
+  min-width: 60px;
+  padding: 0 14px;
+  border: 2px solid var(--grade);
+  border-radius: var(--radius-field);
+  background: var(--surface);
+  color: var(--ink);
+}
+.find-grade:hover {
+  background: var(--chip);
+}
+.find-grade[aria-pressed="true"],
+.find-grade[aria-pressed="true"]:hover {
+  border-color: var(--grade);
+  background: var(--grade);
+  color: #fff;
+}
+.find-term {
+  padding: 0 16px;
+  font-weight: 500;
+}
+.find-term[aria-pressed="true"] {
+  font-weight: 700;
+}
+.find-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 20px;
+}
+.find-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--brand-ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+.find-check input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--ink);
+}
+.find-more {
+  margin-left: auto;
+}
+.find-more[open] {
+  flex: 1 1 100%;
+}
+.find-more > summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 44px;
+  padding: 0 4px;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.find-more > summary::-webkit-details-marker {
+  display: none;
+}
+.find-more > summary::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+}
+.find-more[open] > summary::after {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+.find-more-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px 14px;
+  padding: 6px 0 4px;
+}
+.find-more-fields .finder-year {
+  grid-column: span 2;
+}
+.find-surface .finder-active-zone {
+  margin: 0;
+}
+.find-resultbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.find-resultbar h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.find-sim-count {
+  color: var(--brand-ink);
+  font-weight: 700;
+}
+.find-surface .pager {
+  margin-top: 4px;
+}
+.similar-sets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.similar-set {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--brand-soft);
+}
+.similar-set-main {
+  flex: 1 1 220px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.similar-set-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.similar-set-actions button.primary {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fff;
+}
+.health-unlinked > summary,
+.health-unlinked-none {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+.health-unlinked > summary {
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .find-surface {
+    gap: 12px;
+  }
+  .find-surface .material-switch {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .find-surface .material-switch button {
+    padding: 0 4px;
+    font-size: 14px;
+  }
+  .find-search-row {
+    gap: 8px;
+  }
+  .find-search-row input {
+    padding: 0 18px;
+  }
+  .find-search-submit {
+    padding: 0 22px;
+  }
+  .find-quick {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .find-grades,
+  .find-terms {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 3px 0;
+  }
+  .find-grades button,
+  .find-terms button {
+    flex: 0 0 auto;
+  }
+  .find-grade {
+    min-width: 54px;
+    padding: 0 10px;
+  }
+  .find-term {
+    padding: 0 14px;
+    font-size: 15px;
+  }
+  .find-divider {
+    display: none;
+  }
+  .find-more-fields .finder-year {
+    grid-column: auto;
+  }
+  .find-resultbar h2 {
+    font-size: 18px;
+  }
+  .find-sim-count {
+    font-size: 15px;
+  }
+  .similar-set-actions button {
+    padding: 0 12px;
+  }
+}
+.find-empty-other {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.find-empty-other p {
+  margin: 0;
 }

@@ -34,23 +34,33 @@ async function main(){
   await send('Page.addScriptToEvaluateOnNewDocument',{source:"localStorage.setItem('APMATH_SESSION',JSON.stringify({id:'local-read-only',role:'teacher'}));"});
   await send('Emulation.setDeviceMetricsOverride',{width:1440,height:960,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url:'http://127.0.0.1:'+server.address().port+'/archive/workspace.html?view=find'});
-  await wait("!!document.querySelector('.finder-filter-bar [data-filter=\"axis\"]')",'finder filters');
-  const desktop=await run("(()=>{const root=document.querySelector('.finder-filter-bar');const labels=[...root.querySelectorAll('.finder-field')].filter(el=>getComputedStyle(el).display!=='none'&&!el.classList.contains('finder-family'));const tops=labels.map(el=>el.getBoundingClientRect().top);return {count:labels.length,rows:new Set(tops.map(n=>Math.round(n))).size,overflow:root.scrollWidth>root.clientWidth+2,axis:!!root.querySelector('select[data-filter=\"axis\"]')}})()");
-  if(desktop.count!==6||desktop.rows!==1||desktop.overflow||!desktop.axis)throw Error('Desktop filters are not one row: '+JSON.stringify(desktop));
+  await wait("!!document.querySelector('.find-panel .find-grade')",'finder filters');
+  const visibleTall=`(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>=44})`;
+  const desktop=await run(`(()=>{const tall=${visibleTall};const grades=[...document.querySelectorAll('.find-grade')],terms=[...document.querySelectorAll('.find-term')];const tops=[...grades,...terms].map(el=>Math.round(el.getBoundingClientRect().top));return {grades:grades.length,terms:terms.length,tall:[...grades,...terms].every(tall),oneRow:new Set(tops).size===1,overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,similar:!!document.querySelector('.find-check input[data-filter="similarOnly"]')}})()`);
+  if(desktop.grades!==6||desktop.terms!==4||!desktop.tall||!desktop.oneRow||desktop.overflow||!desktop.similar)throw Error('Desktop filters are not one row: '+JSON.stringify(desktop));
+  // The fold keeps every other filter (nothing was removed, only moved).
+  await run("(()=>{const d=document.querySelector('.find-more');if(!d.open)d.querySelector('summary').click();return true})()");
+  await wait("document.querySelector('.find-more').open",'open the fold');
+  const fold=await run("(()=>{const q=s=>!!document.querySelector('.find-more [data-filter=\"'+s+'\"]');return {curriculum:q('curriculumKey'),subject:q('semanticSubject')||q('courseKey'),school:q('school'),from:q('yearFrom'),to:q('yearTo'),overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2}})()");
+  if(!fold.curriculum||!fold.subject||!fold.school||!fold.from||!fold.to||fold.overflow)throw Error('Folded filters missing/overflow: '+JSON.stringify(fold));
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
-  await wait("!!document.querySelector('.finder-axis-quick button') && getComputedStyle(document.querySelector('.finder-axis-quick')).display==='grid'",'visible mobile term shortcuts');
-  const mobile=await run("(()=>{const root=document.querySelector('.finder-filter-bar'),buttons=[...document.querySelectorAll('.finder-axis-quick button')];return {buttons:buttons.map(x=>({label:x.textContent,visible:x.getBoundingClientRect().height>=44})),overflow:root.scrollWidth>root.clientWidth+2}})()");
+  await wait("!!document.querySelector('.find-term')&&getComputedStyle(document.querySelector('.find-divider')).display==='none'",'visible mobile term shortcuts');
+  const mobile=await run(`(()=>{const tall=${visibleTall};const buttons=[...document.querySelectorAll('.find-term')];return {buttons:buttons.map(x=>({label:x.textContent,visible:tall(x)})),overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2}})()`);
   if(mobile.buttons.length!==4||mobile.buttons.some(x=>!x.visible)||mobile.overflow)throw Error('Mobile controls missing/overflow: '+JSON.stringify(mobile));
   for(const [label,value] of [['1학기 중간','1-mid'],['1학기 기말','1-final'],['2학기 중간','2-mid'],['2학기 기말','2-final']]){
    const click=JSON.stringify(label);
-   await run("(()=>{const b=[...document.querySelectorAll('.finder-axis-quick button')].find(x=>x.textContent==="+click+");if(!b)throw Error('missing term');b.click();return true})()");
-   await wait("document.querySelector('select[data-filter=\"axis\"]').value==="+JSON.stringify(value),"term "+label);
-   const pressed=await run("document.querySelector('.finder-axis-quick button[aria-pressed=\"true\"]')?.textContent");
+   await run("(()=>{const b=[...document.querySelectorAll('.find-term')].find(x=>x.textContent==="+click+");if(!b)throw Error('missing term');b.click();return true})()");
+   await wait("new URLSearchParams(location.search).get('axis')==="+JSON.stringify(value),"term "+label);
+   const pressed=await run("[...document.querySelectorAll('.find-term[aria-pressed=\"true\"]')].map(x=>x.textContent).join('|')");
    if(pressed!==label)throw Error('Wrong highlighted term '+pressed);
   }
-  await run("(()=>{document.querySelector('.finder-axis-quick button[aria-pressed=\"true\"]').click();return true})()");
-  await wait("document.querySelector('select[data-filter=\"axis\"]').value===''",'deselect mobile term');
-  console.log('ARCHIVE2_FINDER_FILTER_CHROME_PASS '+JSON.stringify({desktop,mobile,mobileTermSelection:4,repeatTapClears:true}));
+  await run("(()=>{document.querySelector('.find-term[aria-pressed=\"true\"]').click();return true})()");
+  await wait("!new URLSearchParams(location.search).get('axis')",'deselect mobile term');
+  await run("(()=>{[...document.querySelectorAll('.find-grade')].find(x=>x.textContent==='고1').click();return true})()");
+  await wait("new URLSearchParams(location.search).get('grade')==='고1'&&document.querySelector('.find-grade[aria-pressed=\"true\"]')?.textContent==='고1'",'grade button');
+  await run("(()=>{document.querySelector('.find-grade[aria-pressed=\"true\"]').click();return true})()");
+  await wait("!new URLSearchParams(location.search).get('grade')",'grade button clears');
+  console.log('ARCHIVE2_FINDER_FILTER_CHROME_PASS '+JSON.stringify({desktop,fold,mobile,mobileTermSelection:4,repeatTapClears:true}));
  }finally{
   ws?.close();proc.kill('SIGTERM');await new Promise(resolve=>server.close(resolve));
   try{fs.rmSync(profile,{recursive:true,force:true});}catch(e){}

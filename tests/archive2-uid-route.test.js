@@ -65,7 +65,7 @@ function harness(data) {
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderHealth, unifiedHealth, unifiedIndex, planRows, request, pool,
       draft, applyDraft, generate, review, applySourceRoute, applyUidRoute, clearUidRoute, syncUidRoute, readUrl, routeUrl, newDraft, renderUidRoute, filterMarkup, reconcileUnifiedFilters, compactSaveFilters,
       selectedScopeOptions, workspaceMatches, workspaceEligibility, applySavedPaperRevision,
-      findExams, reconcileFinderFilters, finderPrimaryFilterMarkup, finderDetailFilterMarkup, renderComposition};
+      findExams, reconcileFinderFilters, finderMoreFiltersMarkup, renderComposition};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
