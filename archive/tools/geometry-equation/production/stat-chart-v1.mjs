@@ -22,6 +22,7 @@ const ACCESSIBLE_NAMES={
   SCATTER:['산점도','두 변량의 값을 점으로 나타내 두 변량 사이의 관계를 보여 주는 그래프이다.'],
   DICE_TABLE:['두 주사위의 표','두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.'],
   TREE:['확률 나무그림','가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.'],
+  SLOTS:['자리별 경우의 수 칸','자리마다 고를 수 있는 경우의 수를 칸에 적어 곱의 법칙(또는 합의 법칙)을 보여 주는 그림이다.'],
   DOT_PLOT:['점도표','자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.'],
   NORMAL_CURVE:['정규분포 곡선','정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.']
 };
@@ -90,6 +91,7 @@ export function solveStatChart(chart,opts={}){
     case 'SCATTER':return solveScatter(chart,opts);
     case 'DICE_TABLE':return solveDice(chart);
     case 'TREE':return solveTree(chart);
+    case 'SLOTS':return solveSlots(chart);
     case 'DOT_PLOT':return solveDot(chart,opts);
     case 'NORMAL_CURVE':return solveNormal(chart);
     default:return bad('STAT_KIND_UNSUPPORTED');
@@ -963,8 +965,32 @@ function solveDice(c){
   return {schemaVersion:MODEL_VERSION,kind:'DICE_TABLE',...(rect?{cols,rows}:{faces}),cell,...(cell==='EXPR'?{cellExpr:c.cellExpr}:{}),colVar,rowVar,...(col.show!=='LETTER'?{colLabel:col.show==='TEXT'?col.text:null}:{}),...(row.show!=='LETTER'?{rowLabel:row.show==='TEXT'?row.text:null}:{}),
     highlight:c.highlight??null,...(groups?{highlightGroups:groups}:{}),cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:cols.length*rows.length};
 }
+// SLOTS (EXT-20261109-g): a row of boxes, one per place or group to fill, each holding the number of ways to fill it (count) or the fixed letter already placed there (fixed), with an optional
+// short title above. Between two neighbouring count boxes stands the rule's sign (x for the product rule, + for the sum rule). The picture never writes the total: the solution does.
+const SLOT_TITLE_BAD=/[\u0000-\u001f<>&"\\]/;
+function solveSlots(c){
+  onlyKeys(c,['kind','slots','join'],'STAT_CHART_PLAN_INVALID');
+  if(c.join!==undefined&&c.join!=='TIMES'&&c.join!=='PLUS')bad('STAT_SLOTS_JOIN_INVALID');
+  if(!Array.isArray(c.slots)||c.slots.length<2||c.slots.length>8)bad('STAT_SLOTS_INVALID');
+  const slots=c.slots.map((raw,index)=>{
+    onlyKeys(raw,['fixed','count','title'],'STAT_SLOTS_INVALID');
+    if((raw.fixed===undefined)===(raw.count===undefined))bad('STAT_SLOTS_INVALID');
+    if(raw.title!==undefined&&(typeof raw.title!=='string'||raw.title.length<1||raw.title.length>4||SLOT_TITLE_BAD.test(raw.title)))bad('STAT_SLOTS_TITLE_INVALID');
+    const title=raw.title??null;
+    if(raw.fixed!==undefined){
+      if(typeof raw.fixed!=='string'||!/^[A-Za-z0-9]{1,3}$/.test(raw.fixed))bad('STAT_SLOTS_FIXED_INVALID');
+      return {index,kind:'FIXED',text:raw.fixed,title};
+    }
+    if(typeof raw.count!=='string'||!/^[1-9][0-9]{0,3}$/.test(raw.count))bad('STAT_SLOTS_COUNT_INVALID');
+    return {index,kind:'COUNT',text:raw.count,title};
+  });
+  if(!slots.some(slot=>slot.kind==='COUNT'))bad('STAT_SLOTS_NO_COUNT');
+  return {schemaVersion:MODEL_VERSION,kind:'SLOTS',join:c.join??'TIMES',slots};
+}
 function solveTree(c){
-  onlyKeys(c,['kind','root','showPathProbability','highlightPaths','pathColumn','leafLayout'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','root','showPathProbability','highlightPaths','pathColumn','leafLayout','labelWeight'],'STAT_CHART_PLAN_INVALID');
+  // labelWeight MATH (EXT-20261109-g, opt-in): the Korean/plain node names are drawn with the weight of the math labels (probabilities, letters) beside them, so the tree reads in one face
+  if(c.labelWeight!==undefined&&c.labelWeight!=='MATH')bad('STAT_TREE_LABEL_WEIGHT_INVALID');
   if(c.showPathProbability!==undefined&&typeof c.showPathProbability!=='boolean')bad('STAT_CHART_PLAN_INVALID');
   // pathColumn (E34): the path probabilities stand in one column right of the deepest leaf instead of each beside its own leaf (for leaves of different depths, whose wide labels would meet the deeper branches)
   if(c.pathColumn!==undefined&&typeof c.pathColumn!=='boolean')bad('STAT_CHART_PLAN_INVALID');
@@ -1017,7 +1043,7 @@ function solveTree(c){
     }
     lit.sort((a,b)=>leaves.findIndex(n=>n.id===a)-leaves.findIndex(n=>n.id===b));
   }
-  return {schemaVersion:MODEL_VERSION,kind:'TREE',...(c.leafLayout==='COMPACT'?{leafLayout:'COMPACT'}:{}),showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(litColor.size?{highlightColors:Object.fromEntries([...litColor.entries()].sort())}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
+  return {schemaVersion:MODEL_VERSION,kind:'TREE',...(c.leafLayout==='COMPACT'?{leafLayout:'COMPACT'}:{}),showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(litColor.size?{highlightColors:Object.fromEntries([...litColor.entries()].sort())}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),...(c.labelWeight==='MATH'?{labelWeight:'MATH'}:{}),
     nodes:nodes.map(n=>({id:n.id,parent:n.parent,depth:n.depth,label:n.label,p:n.p&&qstr(n.p),path:hasP&&!n.children.length?qstr(n.path):null,children:n.children})),leaves:leaves.map(n=>n.id)};
 }
 
@@ -1053,7 +1079,7 @@ const STYLE={
   region1:'fill="#111" fill-opacity="0.12" stroke="none"',region2:'fill="#111" fill-opacity="0.26" stroke="none"',refline:'stroke="#333" stroke-width="1.8" fill="none"',
   ncurve0:'stroke="#111" stroke-width="2" fill="none"',ncurve1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="8 4"',ncurve2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',
   shade1:'fill="#111" fill-opacity="0.16" stroke="none"',shade2:'fill="#111" fill-opacity="0.34" stroke="none"',guide:'stroke="#444" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
-  leader:'stroke="#333" stroke-width="1" fill="none"',
+  leader:'stroke="#333" stroke-width="1" fill="none"',slotCount:'fill="#fff" stroke="#111" stroke-width="1.4"',slotFixed:'fill="#d9d9d9" stroke="#111" stroke-width="1.4"',
   reflineDash:'stroke="#333" stroke-width="1.8" fill="none" stroke-dasharray="7 4"',trend:'stroke="#555" stroke-width="3.2" fill="none"',trendHead:'fill="#555" stroke="none"',
   meanLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="6 4"',medianLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="2 3"',
   ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`])),
@@ -1379,6 +1405,23 @@ function diceSpec(m,ctx){
   }
   return {size:{width,height},prims,labels};
 }
+const SLOT_W=64,SLOT_H=52,SLOT_GAP=36;
+function slotsSpec(m,ctx){
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,n=m.slots.length,titled=m.slots.some(slot=>slot.title!==null),titleH=titled?Math.ceil(1.5*fontPx)+6:0;
+  const x0=SAFE+14,y0=SAFE+14+titleH,width=2*x0+n*SLOT_W+(n-1)*SLOT_GAP,height=y0+SLOT_H+SAFE+14,cy=y0+SLOT_H/2;
+  const prims=[],labels=[];
+  for(const slot of m.slots){
+    const id=`slot-${slot.index}`,x=x0+slot.index*(SLOT_W+SLOT_GAP);
+    prims.push(rect(id,'slot',slot.kind==='FIXED'?'slotFixed':'slotCount',x,y0,SLOT_W,SLOT_H,{index:slot.index,kind:slot.kind},40));
+    labels.push(math(`${id}-label`,'slot-value',id,slot.text,slot.text,'center','middle',x+SLOT_W/2,cy,{value:slot.text,index:slot.index}));
+    if(slot.title!==null)labels.push(/^[A-Za-z0-9]{1,3}$/.test(slot.title)
+      ?math(`${id}-title`,'slot-title',id,slot.title,slot.title,'center','bottom',x+SLOT_W/2,y0-6,{value:slot.title,index:slot.index})
+      :{...textLabel(`${id}-title`,'slot-title',id,slot.title,'center','bottom',x+SLOT_W/2,y0-6,{value:slot.title,index:slot.index}),weight:'MATH'});
+    const next=m.slots[slot.index+1];
+    if(next&&slot.kind==='COUNT'&&next.kind==='COUNT')labels.push(math(`slot-sign-${slot.index}`,'slot-sign',id,m.join==='PLUS'?'+':'\\times',m.join==='PLUS'?'+':'×','center','middle',x+SLOT_W+SLOT_GAP/2,cy,{index:slot.index}));
+  }
+  return {size:{width,height},prims,labels};
+}
 const TREE_COLW=150,TREE_ROW=68,TREE_X0=44,TREE_TOP=58;
 // A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
 const treeRow=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
@@ -1409,7 +1452,7 @@ function treeSpec(m,ctx){
     const p=c.get(n.id);
     if(n.label!==null){
       const asMath=/^[A-Za-z0-9]{1,3}$/.test(n.label);
-      labels.push(asMath?math(`node-${n.id}`,'node',n.id,n.label,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}):textLabel(`node-${n.id}`,'node',n.id,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}));
+      labels.push(asMath?math(`node-${n.id}`,'node',n.id,n.label,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}):{...textLabel(`node-${n.id}`,'node',n.id,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}),...(m.labelWeight==='MATH'?{weight:'MATH'}:{})});
     }else prims.push({t:'circle',id:`node-${n.id}`,role:'point',cls:'dot',cx:p.x,cy:p.y,r:4,data:{node:n.id},layer:70});
     if(lit.has(n.id))prims.push({t:'ellipse',id:`leaf-ring-${n.id}`,role:'leaf-ring',cls:'markRing'+(m.highlightColors?.[n.id]??''),cx:p.x,cy:p.y,rx:9,ry:9,data:{leaf:n.id},layer:65});
     if(n.parent!==null){
@@ -1552,7 +1595,7 @@ function normalSpec(m,ctx){
   const H=Math.ceil((m.zAxis?zy:BASE+TICK+4)+rowH+SAFE);
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
-const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
+const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
 export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
 export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');
@@ -1829,7 +1872,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
     for(const label of spec.labels){
       let fragment;
-      try{fragment=typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
+      try{fragment=typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('STAT_TYPESET_ERROR',{labelId:label.id,code:error.message});}
       const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});

@@ -1,0 +1,98 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "9",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "9",
+      "branch": "NEG"
+    },
+    {
+      "id": "A",
+      "kind": "LINE_LINE",
+      "lines": [
+        "t1",
+        "t2"
+      ],
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "tangent": true,
+      "at": "P"
+    },
+    {
+      "id": "t2",
+      "tangent": true,
+      "at": "Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q"
+    },
+    {
+      "id": "sAP",
+      "from": "A",
+      "to": "P"
+    },
+    {
+      "id": "sAQ",
+      "from": "A",
+      "to": "Q"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "A",
+        "P",
+        "Q"
+      ],
+      "fill": "NONE"
+    }
+  ],
+  "caption": "a=9, p=3일 때 두 접점 P, Q에서의 접선의 교점 A(−9,0)이고 삼각형 APQ는 한 변의 길이가 12√3인 정삼각형이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=9, p=3, P(9,6sqrt3), Q(9,-6sqrt3), A(-9,0), 정삼각형 APQ(한 변 12sqrt3)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 접선의 교점 A와 정삼각형 APQ"
+  ],
+  "sourceQuote": "$A(-a,0)$이다.",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q21-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q21-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q21-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q21-solution.svg"
+  }
+}

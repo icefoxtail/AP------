@@ -173,7 +173,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 A(−1,2)와 B(2,6)를 잇는 선분을 그리고, 그 위의 점 P에서 PA는 파랑, PB는 주황으로 나누어 나타낸 그림.",
+    "solutionImageCaption": "두 거리의 합은 선분 AB 위에 점 P가 있을 때 가장 작고, 그 값은 두 점 A, B 사이의 거리와 같다. 두 점의 좌표 차 3과 4로 AB의 길이를 구한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -217,9 +221,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "수직이등분선은 선분 AB의 중점 M을 지나고 AB와 수직이다.",
-    "solutionImageCaption": "수직이등분선은 선분 AB의 중점 M을 지나고 AB와 수직이다.",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 점 A(4,−1), B(−2,2)를 잇는 파란 선분과 그 중점 M이 있고, 두 반쪽의 길이가 같다는 눈금이 표시되어 있다. M을 지나 선분 AB와 직각으로 만나는 직선이 직각 표시와 함께 그려져 있고, M의 좌표 (1, 2분의 1)이 적혀 있다.",
+    "solutionImageCaption": "선분 AB의 중점 M은 AM과 MB의 길이가 같은 점이다. 수직이등분선은 M을 지나고 선분 AB와 수직으로 만나는 직선이므로, 두 직선의 기울기의 곱은 −1이다. 정답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -266,7 +270,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 하는 원에 두 직선이 접하는 그림. 파란 직선 x−2y+5=0은 접점 T₁에서, 주황 직선 x−2y−5=0은 접점 T₂에서 원에 접하고, 중심 O에서 두 접점까지 점선 반지름과 직각 표시가 있다.",
+    "solutionImageCaption": "원 x²+y²=5의 중심 O에서 직선 x−2y+a=0까지의 거리가 반지름 √5 이하이면 원과 직선이 만난다. 거리는 |a|를 √5로 나눈 값이므로 |a|≤5이고, 접하는 경계는 a=−5와 a=5이다. −5부터 5까지의 정수를 세면 된다. 정답은 11개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -311,9 +319,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "두 원의 넓이를 모두 이등분하는 직선은 두 중심 A, B를 지난다.",
-    "solutionImageCaption": "두 원의 넓이를 모두 이등분하는 직선은 두 중심 A, B를 지난다.",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 중심이 A인 파란 원과 중심이 B인 주황 원이 있고, 두 중심을 지나는 직선이 그려져 있다. y축에 1과 7, x축에 2의 눈금이 있어 A(0,1), B(2,7)을 읽을 수 있다.",
+    "solutionImageCaption": "원의 넓이를 이등분하는 직선은 원의 중심을 지난다. 파란 원 C₁의 중심은 A(0,1)이고, x축 방향으로 2, y축 방향으로 6만큼 평행이동한 주황 원 C₂의 중심은 B(2,7)이다. 직선 l은 두 중심 A, B를 모두 지난다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -409,10 +417,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q9-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면 위의 삼각형 OAB(O(0,0), A(6,0), B(3,6))와 세 변을 3:1로 내분하는 점 C(9/2,0), D(15/4,9/2), E, 점선 삼각형 CDE와 그 무게중심 G(3,2)를 나타낸 그림.",
-    "solutionImageCaption": "OC:CA=AD:DB=BE:EO=3:1이므로 C(9/2,0), D(15/4,9/2), E(3/4,3/2)이고, 삼각형 CDE의 무게중심은 G(3,2)이다. 따라서 a+b=3+2=5이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q9-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 삼각형 OAB에서 세 변 OA, AB, BO를 각각 3:1로 나누는 점 C, D, E를 표시하고, 세 점을 점선으로 이은 삼각형 CDE와 그 무게중심 G를 나타낸 그림. 점 A, B, C, D에는 좌표가 적혀 있다.",
+    "solutionImageCaption": "세 선분을 각각 3:1로 내분하는 점 C, D, E의 좌표는 C(2분의 9, 0), D(4분의 15, 2분의 9), E(4분의 3, 2분의 3)이다. 세 점의 좌표를 평균하면 삼각형 CDE의 무게중심 G를 얻고, G의 좌표를 (a,b)라 할 때 a+b를 계산한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -460,7 +468,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 집합 A, B, C의 벤다이어그램 세 개. 첫째는 집합 A, 둘째는 B에서 C를 뺀 부분, 셋째는 A와 B의 겹친 부분 중 C에 속하지 않는 영역을 회색으로 색칠했다.",
+    "solutionImageCaption": "먼저 B에서 C에 속한 부분을 뺀 B−C를 잡고, 그중 A에도 속하는 부분이 A∩(B−C)이다. 이 영역은 A와 B에는 속하고 C에는 속하지 않으므로 A∩B∩Cᶜ와 같다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -548,7 +560,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 하고 반지름이 √10인 원, 원 밖의 점 T(−3,4)에서 원에 그은 두 접선과 접점 P, Q, 두 접점을 잇는 현 PQ, 중심 O에서 현에 내린 점선 수선과 수선의 발 D를 나타낸 그림.",
+    "solutionImageCaption": "두 접점 P, Q를 지나는 현 PQ의 방정식은 −3x+4y=10이다. 원의 중심 O에서 이 직선까지의 거리를 구하면 된다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -643,7 +659,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시로 a=6을 택했을 때의 위로 볼록한 포물선 y=−x²+6x−5의 그래프. x축과 두 점 (1,0), (5,0)에서 만나고, 꼭짓점 (3,4)가 x축 위쪽에 있다.",
+    "solutionImageCaption": "예: a=6일 때 f(x)=−x²+6x−5는 x=1과 x=5에서 0이 되고, 1<x<5에서 f(x)>0이다. 부정 명제가 참이려면 f(x)≥0인 실수 x가 존재해야 하므로, 이차함수의 최댓값이 0 이상이어야 한다. 정답은 a≤−2√5 또는 a≥2√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -690,7 +710,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 중심 C₁이 (0,1)인 파란 원 f(x,y)=0과 중심 C₂가 (1,−1)인 주황 원 g(x,y)=0이 있고, C₁에서 C₂로 향하는 점선 화살표가 있다. y축에 1과 −1, x축에 1의 눈금이 있다.",
+    "solutionImageCaption": "왼쪽 위의 파란 원 f(x,y)=0의 중심은 C₁(0,1), 오른쪽 아래의 주황 원 g(x,y)=0의 중심은 C₂(1,−1)이고 두 원의 반지름은 모두 1이다. 중심이 오른쪽으로 1, 아래로 2만큼 움직였으므로 각 보기의 식이 이 이동을 나타내는지 확인한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -785,9 +809,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "호 AB 위를 움직이는 P와 양쪽 직선에 대한 대칭점 P1, P2 및 최단거리 선분의 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 중심으로 하는 원과 호 AB(초록), 호 위의 점 P, 직선 OB에 대한 P의 대칭점 P₁, 직선 OA에 대한 대칭점 P₂가 있다. 선분 P₁P₂가 OB와 만나는 점 Q, OA와 만나는 점 R이 있고, PQ와 P₁Q는 파랑, PR과 P₂R은 주황으로 같은 길이를 눈금으로 표시했다. O에서 ∠P₁OP₂에 직각 표시가 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "예: 호 AB 위의 점 P를 직선 OB, OA에 대칭이동한 점을 각각 P₁, P₂라 하면 PQ=P₁Q(파랑)이고 PR=P₂R(주황)이다. 따라서 삼각형 PQR의 둘레는 P₁Q+QR+RP₂와 같고, 네 점 P₁, Q, R, P₂가 한 직선 위에 있을 때 가장 작다. ∠P₁OP₂=90°이고 OP₁=OP₂=2이다. 정답은 2√2이다."
   },
   {
     "id": 18,
@@ -833,9 +858,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 각의 이등분선 AH, 무게중심 G, 삼각형 GHC의 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 A, B, C를 꼭짓점으로 하는 삼각형이 있다. 각 A의 이등분선(주황)이 변 BC와 만나는 점 H에는 좌표 (2,1)이 적혀 있고, 이등분선으로 나뉜 두 각은 같은 보라색으로 표시했다. 무게중심 G와 H, C를 이은 삼각형 GHC를 초록으로 그렸다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "각 A의 이등분선(주황)이 변 BC와 만나는 점 H는 BH:HC=AB:AC=1:3을 만족하므로 H(2,1)이다. 무게중심 G(3분의 4, 3분의 2)와 H, C를 이은 삼각형 GHC를 초록으로 표시했고, 그림에서 G는 초록 삼각형의 세 번째 꼭짓점이다. 정답은 2분의 3이다."
   },
   {
     "id": 19,
@@ -885,7 +911,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4인 큰 원 안에 왼쪽 아래 반원(파랑)과 오른쪽 위 반원(주황)으로 이루어진 태극 모양이 있고, 점 (−2,0)을 지나는 예시 직선 y=½(x+2)가 그려져 있다. 직선과 태극 모양이 만나는 다섯 점이 점으로 표시되어 있고, 왼쪽 아래의 두 점은 서로 가깝다.",
+    "solutionImageCaption": "예: m=½일 때 직선 y=½(x+2)는 점 (−2,0)을 지나 큰 원과 두 점, 오른쪽 위 반원과 두 점, 왼쪽 아래 반원과 한 점에서 만나 모두 다섯 점에서 만난다(왼쪽 아래의 두 점은 가깝게 붙어 있다). 오른쪽 위 반원과 두 점에서 만나려면 중심에서 직선까지의 거리가 반지름 2보다 작아야 한다. 정답은 0<m<3분의 √3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1005,9 +1035,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "세 직선이 이루는 직각삼각형과 빗변 AB의 중점 M을 중심으로 하는 외접원",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 x=3y, 주황 직선 y=−3x, 초록 직선 x+2y=10이 있다. 세 직선이 만나는 점 O, A(6,2), B(−2,6)로 이루어진 삼각형이 있고 O에 직각 표시가 있다. AB의 중점 M과 O를 잇는 점선, 점 O, A, B를 지나는 원이 그려져 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "파란 직선 l:x−3y=0과 주황 직선 m:3x+y=0은 기울기의 곱이 −1이라 O에서 수직이다. 초록 직선 n:x+2y=10과의 교점이 A(6,2), B(−2,6)이므로 삼각형 OAB는 O에서 직각이고, 빗변 AB가 외접원의 지름이다. 따라서 외접원의 중심은 AB의 중점 M이다. 정답은 (x−2)²+(y−4)²=20이다."
   },
   {
     "id": 23,
@@ -1047,8 +1078,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "두 쌍의 평행선의 교점 네 개가 이루는 평행사변형과 높이·너비",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 수직선 x=−2, x=2와 두 직선 4x−3y=−10, 4x−3y=10이 있고, 네 교점 P₁(2,6), P₂(−2, 3분의 2), P₃(−2,−6), P₄(2, −3분의 2)를 이은 평행사변형이 있다. 수직인 두 변은 파랑, 비스듬한 두 변은 주황이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "점 Pₙ은 직선 x=0에서 거리가 2이므로 x=±2 위에 있고, 직선 4x−3y=0에서 거리가 2이므로 4x−3y=±10 위에 있다. 네 교점을 이으면 평행사변형이 되고, 수직인 두 변 사이의 거리는 4, 한 수직변의 길이는 3분의 20이다. 정답은 3분의 80이다."
   }
 ];

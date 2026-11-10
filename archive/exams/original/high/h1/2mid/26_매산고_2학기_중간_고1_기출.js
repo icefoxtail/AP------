@@ -109,7 +109,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합 A, B의 공통 부분에 2와 4를 놓고 합집합 영역을 색칠한 벤다이어그램이다.",
+    "solutionImageCaption": "A∪B에는 어느 한 집합에라도 속하는 원소를 중복 없이 모은다. 원소 1, 2, 3, 4, 6, 8의 합을 구하면 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -167,9 +171,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "서로 수직인 두 직선의 기울기와 교점을 나타낸 좌표 그림",
-    "solutionImageCaption": "두 직선의 기울기는 각각 3과 -1/3이므로 곱이 -1이다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 직선 y=3x+2와 기울기가 −3분의 1이고 y절편이 5인 직선이 수직으로 만나고 교점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "두 직선의 기울기는 3과 1−k이다. 수직인 두 직선의 기울기의 곱이 −1이라는 조건을 적용하면 정답은 3분의 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -227,7 +231,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (1,8)에서 가로로 b만큼, 세로로 −3만큼 이동하여 점 (2,5)에 도달하는 경로이다.",
+    "solutionImageCaption": "평행이동한 좌표 (1+b,a−3)를 (2,5)와 비교한다. b=1, a=8을 더하면 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -285,9 +293,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "두 원 C1, C2의 중심과 반지름을 비교한 해설 그림",
-    "solutionImageCaption": "C1의 반지름 3과 C2의 반지름 4를 확인하면 합이 7이다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심이 (−2,1), (3,−5)인 두 원과 서로 다른 색의 반지름 3, R을 표시한 그림이다.",
+    "solutionImageCaption": "첫째 원을 완전제곱식으로 정리하면 중심은 (−2,1), 반지름은 3이다. 반지름의 합이 7이므로 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -344,7 +352,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 점 A, B, C가 이루는 삼각형과 x축 위에 놓인 무게중심 G를 표시한 그림이다.",
+    "solutionImageCaption": "무게중심의 y좌표는 세 꼭짓점의 y좌표의 평균이다. (1−4+k)를 3으로 나눈 값이 0이므로 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -404,9 +416,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "원의 중심과 반지름 제곱 4-k의 조건을 나타낸 해설 그림",
-    "solutionImageCaption": "원이 되려면 반지름의 제곱 $4-k$가 0보다 커야 한다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 (−2,1)인 원에서 반지름을 √(4−k)로 표시한 그림이다.",
+    "solutionImageCaption": "예: k=0인 원의 크기로 중심과 반지름을 나타냈다. 원이 되려면 4−k가 양수여야 하며 0이면 중심 한 점만 남으므로 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -467,9 +479,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "포물선과 접선, 그 접선과 평행한 직선을 나타낸 그래프",
-    "solutionImageCaption": "점 (1,0)에서의 접선 기울기는 중근 조건으로 2이고, 구하는 직선도 기울기 2이다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−1, 점 T(1,0)에서의 접선 l, 점 P(2,3)을 지나는 평행선이 서로 다른 색으로 표시되어 있다.",
+    "solutionImageCaption": "접선과 포물선의 교점이 T에서 하나로 겹치는 조건으로 접선의 기울기 2를 얻는다. P를 지나는 평행선은 y=2x−1이므로 정답은 −1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -530,9 +542,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q9-solution.svg",
-    "solutionImageAlt": "평행이동한 원의 두 가능한 중심과 접선까지의 거리를 나타낸 그림",
-    "solutionImageCaption": "두 가능한 중심에서 직선까지의 거리가 모두 반지름 5와 같다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선의 양쪽에 놓인 두 원에서 중심과 접점을 잇는 반지름을 각각 5로 표시한 그림이다.",
+    "solutionImageCaption": "평행이동한 원의 중심은 (k−1,1)이고 반지름은 5이다. 중심과 직선 사이의 거리가 5라는 조건에서 두 k값을 구해 더하면 정답은 −1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -592,9 +604,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "두 직선과 작은 각의 이등분선, 등거리 관계를 나타낸 그림",
-    "solutionImageCaption": "각의 이등분선 위의 점은 두 직선까지의 거리가 같다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=0과 y=3분의 4x 사이의 이등분선 y=mx 위 점 R에서 두 변에 내린 수선의 길이가 같게 표시되어 있다.",
+    "solutionImageCaption": "해설의 점 R(1,m)에서 두 직선까지의 거리를 비교한다. m=(4−3m)를 5로 나눈 값이라는 식을 풀면 정답은 2분의 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -655,9 +667,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "점 A, B에서 직선 l에 내린 수선과 거리비를 나타낸 그림",
-    "solutionImageCaption": "$AA'=3\\sqrt5$, $BB'=2\\sqrt5$이므로 거리비는 3:2이다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB가 직선 l과 P에서 만나며 A, B에서 내린 수선의 길이가 각각 3√5와 2√5로 표시되어 있다.",
+    "solutionImageCaption": "점과 직선 사이의 거리 공식을 적용하고 수선 길이의 비를 3:2로 놓는다. 양수 조건과 선분이 직선을 만나는 조건을 확인하면 정답은 19이다.",
     "solutionImageSize": "full"
   },
   {
@@ -721,9 +733,9 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_매산고_2학기_중간_고1_기출/q012_visual.png",
     "imageSize": "full",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "점 A를 직선 y=x에 대칭이동한 A'와 원, 최단점 P, 교점 Q를 나타낸 해설 그림",
-    "solutionImageCaption": "AQ=A'Q로 바꾸면 꺾인 거리 AQ+QP가 A'에서 원까지의 최단거리로 바뀐다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A와 대칭점 A′, y=x 위의 Q, 원 위의 P와 중심 C를 나타냈다. 반지름 PC는 오른쪽에 확대해 길이 1을 표시했다.",
+    "solutionImageCaption": "A를 y=x에 대하여 대칭이동하면 A′Q+QP≥A′P이다. 오른쪽은 반지름 PC=1의 확대 그림이다. 중심까지의 거리에서 반지름을 빼면 정답은 2√17−1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -780,7 +792,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합 A와 B가 겹친 벤다이어그램에서 공통 부분을 제외한 양쪽 부분을 색칠하였다.",
+    "solutionImageCaption": "S(A,B)는 A와 B 중 한 집합에만 속하는 원소들의 집합이다. 공통 부분의 개수 관계와 여집합 조건을 확인하고 반례로 ㄷ을 제외하면 정답은 ㄱ, ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -838,9 +854,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "직선과 접하는 두 가능한 원을 함께 나타낸 해설 그림",
-    "solutionImageCaption": "중심 $(-a,a)$에서 직선까지의 거리가 반지름 $|a|$와 같아지는 두 경우를 비교한다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=4분의 3x+2에 접하는 크기가 다른 두 원과 각 중심에서 접점까지의 반지름을 표시한 그림이다.",
+    "solutionImageCaption": "a=0이면 원점 한 점이 직선 위에 없으므로 제외한다. a≠0에서 중심과 직선 사이의 거리를 |a|와 같게 두면 a=3분의 2 또는 4이므로 정답은 3분의 14이다.",
     "solutionImageSize": "full"
   },
   {
@@ -906,9 +922,9 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_매산고_2학기_중간_고1_기출/q015_visual.png",
     "imageSize": "full",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "원 중심 A에서 직선 y=mx에 내린 수선 AH와 현의 반쪽 BH, 선분 OH를 나타낸 해설 그림",
-    "solutionImageCaption": "H는 A에서 직선 y=mx에 내린 수선의 발이다. 직각삼각형 AHB와 $OH:BH=\\sqrt3:1$을 함께 이용한다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 중심 A(4,4)에서 직선 y=mx에 내린 수선 AH와 반지름 AB, 선분 OH, BH를 구분한 그림이다.",
+    "solutionImageCaption": "직각삼각형 AOH와 ABH에서 피타고라스 정리로 OH²와 BH²를 구한다. OH²=3BH²와 0<m<1을 적용하면 정답은 2−√3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1014,9 +1030,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 세 내분점 M,N,P와 삼각형 MNP의 무게중심 G를 나타낸 그림",
-    "solutionImageCaption": "세 내분점의 좌표를 구한 뒤 그 평균으로 무게중심 G(2,3)을 얻는다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 각 변을 2:1로 내분한 M, N, P와 삼각형 MNP의 무게중심 G를 표시한 그림이다.",
+    "solutionImageCaption": "내분점은 M(−2,6), N(4,1), P(4,2)이다. 세 점의 좌표를 각각 평균하여 구하면 정답은 (2,3)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1071,9 +1087,9 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_매산고_2학기_중간_고1_기출/q018_visual.png",
     "imageSize": "full",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "중심 (-3,0), 반지름 1인 왼쪽 아래 사분원호와 두 반지름 선분을 좌표축에 정확히 나타낸 해설 그림",
-    "solutionImageCaption": "원래 점 (u,v)는 (v-1,u+1)로 옮겨지므로 중심은 (-3,0), 끝점은 (-4,0), (-3,-1)로 변환된다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 사분원호 하나와 그 중심에서 양 끝점을 잇는 두 선분을 서로 다른 색으로 나타낸 그림이다.",
+    "solutionImageCaption": "원래 점 (u,v)는 (v−1,u+1)로 옮겨진다. 중심과 끝점에 이 변환을 적용하면 정답은 중심 (−3,0), 반지름 1인 왼쪽 아래 사분원호와 선분 (−4,0)−(−3,0), (−3,0)−(−3,−1)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1129,9 +1145,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "A(-2,4), B(4,1), X(6,0)이 한 직선 위에 놓이는 거리차 최댓값 상황",
-    "solutionImageCaption": "|XA-XB|≤AB의 등호는 A, B, X가 일직선이고 B가 사이에 있을 때 성립한다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A(−2,4), B(4,1), X(6,0)이 이 순서로 일직선에 있고 AB의 길이를 3√5로 표시하였다.",
+    "solutionImageCaption": "두 제곱근을 XA, XB로 해석하면 거리 차의 절댓값은 AB 이하이다. 직선 AB와 x축이 만나는 X(6,0)에서 등호가 성립하므로 정답은 18√5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1186,7 +1202,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: B가 A 안에 포함되며 n(A)=6, n(B)=2가 수식 글꼴로 표시되어 있고 A−B 영역이 파랑으로 색칠되어 있다.",
+    "solutionImageCaption": "B⊆A이므로 C는 A−B의 공집합이 아닌 부분집합이다. 남은 네 원소의 선택에서 공집합을 제외하면 정답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1242,9 +1262,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "현 AB의 중점 M과 수직이등분선 위 두 원의 중심 O1(7,4), O2(1,0)",
-    "solutionImageCaption": "반지름 √26인 두 원의 중심은 현 AB의 수직이등분선 위에서 M으로부터 √13 떨어진 두 점이다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 현 AB의 중점 M과 수직이등분선 위의 두 중심 O₁, O₂, 반지름 삼각형이 표시되어 있다. M에서 두 중심까지의 거리는 같으며 한쪽 거리를 √13으로 표시했다.",
+    "solutionImageCaption": "원주각이 45°이므로 작은 중심각은 90°이고 반지름은 √26이다. 중심은 M(4,2)에서 √13만큼 떨어진 두 점 (7,4), (1,0)이다. 두 중심의 x좌표를 곱하면 정답은 7이다.",
     "solutionImageSize": "full"
   }
 ];

@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {bytesSha,canonicalJson,objectSha,safePath} from '../../pipeline-core/canonical.mjs';
 import {typesetter,composeTypographyProbe} from './typography.mjs';
 import {calculationStage,commitStage} from './store.mjs';
+import {captureTimeoutMs} from '../visual-browser-runtime.mjs';
 import {dependency,dependencyRoot} from './dependencies.mjs';
 import {repoRoot} from './run.mjs';
 
@@ -55,7 +56,7 @@ export async function runTypographySpike() {
     await page.waitForFunction(()=>{
       const imgs=[...document.querySelectorAll('#print-area .sol-image-wrap img')].filter(i=>i.getBoundingClientRect().width>0);
       return imgs.length===2&&imgs.every(i=>i.complete&&i.naturalWidth>0);
-    },null,{timeout:60000});
+    },null,{timeout:captureTimeoutMs(60000)});
     await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;if(window.APPrintRuntime?.waitUntilReady)await window.APPrintRuntime.waitUntilReady();});
     const images=await page.evaluate(()=>[...document.querySelectorAll('#print-area .sol-image-wrap img')].filter(i=>i.getBoundingClientRect().width>0).map(i=>{const r=i.getBoundingClientRect();return {src:i.src,width:r.width,height:r.height,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight};}));
     const observations=[];

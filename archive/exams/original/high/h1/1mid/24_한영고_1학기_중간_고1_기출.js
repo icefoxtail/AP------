@@ -248,7 +248,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=−x²+2x+3과 점 P(−1,3)이 있다. P를 지나는 초록색 직선 n과 주황색 직선 l이 포물선에 각각 한 점에서 접한다. 직선 n은 꼭짓점 근처의 위쪽 부분에서, 직선 l은 포물선의 왼쪽 아래 부분에서 접한다.",
+    "solutionImageCaption": "점 P(−1,3)을 지나 포물선 y=−x²+2x+3에 접하는 두 직선을 l, n이라 하고 그림에 나타냈다. 접선을 y=mx+m+3으로 두고 포물선과 연립해 판별식이 0이 되게 하면 m²−8m+4=0이므로 두 접선의 기울기는 이 이차방정식의 두 근이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -290,7 +294,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 한 원 x²+y²=20과 파란 직선 y=x, 주황 직선 y=−2x가 그려져 있다. 원과 두 직선이 만나는 네 점의 좌표 (−√10,−√10), (√10,√10), (−2,4), (2,−4)가 각 점 곁에 표시되어 있다.",
+    "solutionImageCaption": "원 x²+y²=20과 두 직선 y=x, y=−2x가 만나는 네 점의 좌표를 구해 각 점에서 x+2y의 값을 비교한다. 교점은 (−√10,−√10), (√10,√10), (−2,4), (2,−4)이다. 정답은 3√10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -457,7 +465,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/24_한영고_1학기_중간_고1_기출/q11.svg"
+    "image": "assets/images/24_한영고_1학기_중간_고1_기출/q11.svg",
+    "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f(x), 주황 곡선 g(x), 초록 점선 y=2g(x)가 그려져 있다. f는 x절편 (−1,0), (2,0)을, g는 x절편 (−4,0), (2,0)을 가지며, f와 2g는 두 점 (−3,10), (2,0)에서 만난다.",
+    "solutionImageCaption": "x절편을 읽으면 f(x)=x²−x−2, g(x)=−x²−2x+8이다. 초록 점선은 y=2g(x)이고, f(x)=2g(x)의 두 근은 f와 점선이 만나는 두 점의 x좌표 2와 −3이다. 정답은 α−β=5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -656,7 +668,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄에 x>1, x≤3분의 (−2a−1), 공통 범위와 정수 2, 3을 나타냈다.",
+    "solutionImageCaption": "두 부등식을 풀면 x>1과 x≤3분의 (−2a−1)이다. 공통 범위 안에 정수가 2와 3의 두 개만 들어가야 한다. 그림은 이 상황을 한 예로 나타낸 것이다. 3≤3분의 (−2a−1)<4에서 정수 a는 −6, −5이다. 정답은 −11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -692,7 +708,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=x²+2(1−k)x+k²+3의 그래프를 k=0과 k=−3인 두 경우로 그렸다. 주황 곡선(k=0)은 x축과 만나지 않고, 파란 곡선(k=−3)은 x축과 두 점 (−6,0), (−2,0)에서 만난다.",
+    "solutionImageCaption": "이차방정식의 좌변을 x에 대한 함수 y=x²+2(1−k)x+k²+3으로 보면, 실근을 갖는다는 것은 그래프가 x축과 만난다는 뜻이다. 예로 k=0이면 x축과 만나지 않아 실근이 없고, k=−3이면 두 점에서 만나 실근 −6, −2를 갖는다. 판별식에서 4분의 D=(1−k)²−(k²+3)=−2k−2가 0 이상이어야 하므로 정답은 k≤−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -804,7 +824,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 밑변 BC가 10인 삼각형 ABC 안에 BC와 평행한 윗변 RQ를 가진 직사각형 PQRS가 있다. R, Q는 AB, AC 위에, P, S는 BC 위에 있고 RQ의 길이는 x, 직사각형의 높이는 y로 표시되어 있다. 점 A에서 BC에 내린 수선 중 RQ 위쪽 부분은 6−y로 표시되어 있다.",
+    "solutionImageCaption": "넓이가 30인 삼각형 ABC의 높이는 6이다. 직사각형의 높이를 y라 하면 RQ와 BC가 평행하므로 닮음에서 RQ=x에 대해 10분의 x=6분의 (6−y)이고, 넓이는 S=−(5분의 3)(x−5)²+15이다. 예: 그림은 y=2일 때 RQ=3분의 20인 경우이다. 정답은 RQ=5, 넓이 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

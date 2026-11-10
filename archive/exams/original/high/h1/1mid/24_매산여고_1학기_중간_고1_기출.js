@@ -409,9 +409,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "k=-4이면 x축에 닿고, k=2이면 직선에 접하므로 k는 -4 이상 2 미만이다.",
-    "solutionImageCaption": "k=-4이면 x축에 닿고, k=2이면 직선에 접하므로 k는 -4 이상 2 미만이다.",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 두 포물선과 직선이 있다. 파란 포물선(k=−4)은 꼭짓점 (2, 0)에서 x축에 접하고, 주황 포물선(k=2)은 점 (1, 5)에서 초록 직선 y=2x+3에 접한다.",
+    "solutionImageCaption": "y=−x²+4x+k의 그래프는 k의 값에 따라 위아래로 움직이는 같은 모양의 포물선이다. k=−4일 때 x축에 접하고, k=2일 때 직선 y=2x+3에 접한다. x축과는 만나고 직선과는 만나지 않는 k의 범위를 구해 그 안의 정수를 모두 더한다. 정답은 −9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -453,9 +453,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "-2≤x≤3에서 최솟값 4는 꼭짓점, 최댓값은 x=-2일 때 20이다.",
-    "solutionImageCaption": "-2≤x≤3에서 최솟값 4는 꼭짓점, 최댓값은 x=-2일 때 20이다.",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 −2≤x≤3에서 위로 열린 포물선이 그려져 있고, 꼭짓점 (2, 4)와 구간 양 끝의 점이 표시되어 있다. 위쪽에 식 y=(x−2)²+4가 적혀 있고, 왼쪽 끝점이 오른쪽 끝점보다 높다.",
+    "solutionImageCaption": "y=x²−4x+k의 최솟값이 4이므로 k=8이고 y=x²−4x+8이다. 꼭짓점 (2, 4)는 구간 안에 있고, 두 끝점 중 x=−2에서 함숫값이 더 크다. 정답은 20이다.",
     "solutionImageSize": "full"
   },
   {
@@ -622,9 +622,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "t=f(x)가 -2≤t≤-1일 때 y=-t^2+6t-3: t가 커질수록 y가 커짐",
-    "solutionImageCaption": "t=f(x)가 -2≤t≤-1일 때 y=-t^2+6t-3: t가 커질수록 y가 커짐",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 t인 좌표평면에 위로 볼록한 포물선이 있고 꼭짓점 (3, 6)이 표시되어 있다. 꼭짓점의 왼쪽 곡선 위에 점 A, B가 있고, 두 점에서 t축까지 점선이 내려와 t=−2와 t=−1을 나타낸다. A가 B보다 아래에 있다.",
+    "solutionImageCaption": "−1≤x≤0과 0<x≤2에서 f(x)의 값의 범위는 모두 −2≤f(x)≤−1이다. t=f(x)로 치환하면 y=−t²+6t−3이고, 그림처럼 −2≤t≤−1은 꼭짓점의 t좌표 3보다 왼쪽에 있어 t가 커질수록 y가 커진다. 그래서 t=−2일 때 최솟값, t=−1일 때 최댓값이다. 정답은 −29이다.",
     "solutionImageSize": "full"
   },
   {
@@ -665,7 +665,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널에는 a=−2일 때 y=x²의 그래프와 수평선 y=2, y=−5가, 아래 패널에는 a=4일 때 같은 포물선과 수평선 y=8, y=1이 그려져 있다. 수평선과 포물선이 만나는 점은 작은 점으로 표시되어 있고, 패널마다 교점 수가 다르다.",
+    "solutionImageCaption": "y=x²으로 치환하면 방정식은 (y−a−4)(y−a+3)=0이다. a=−2일 때는 y=2가 두 점에서 만나고 y=−5는 만나지 않아 서로 다른 실근이 2개이다. a=4일 때는 y=8과 y=1이 각각 두 점에서 만나 서로 다른 실근이 4개이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -747,9 +751,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "a=5/4이면 -1≤x≤1에서 x=1일 때, a=-5/4이면 x=-1일 때 최댓값 4를 가지므로 두 a의 곱은 -25/16이다.",
-    "solutionImageCaption": "a=5/4이면 -1≤x≤1에서 x=1일 때, a=-5/4이면 x=-1일 때 최댓값 4를 가지므로 두 a의 곱은 -25/16이다.",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 포물선이 있고 꼭짓점 V가 오른쪽 위에 있다. x=−1, x=1에 해당하는 곡선 위의 점 A, B에서 x축까지 점선이 있으며, 구간 안에서는 B가 A보다 높다.",
+    "solutionImageCaption": "예: a=1이면 y=−x²+4x의 꼭짓점 V의 x좌표 2가 구간 −1≤x≤1의 오른쪽 밖에 있어, 구간 안에서는 x가 커질수록 y가 커진다. 그래서 최댓값은 오른쪽 끝점 B에서 생긴다. a가 음수이면 왼쪽 끝점에서 생긴다. 이 끝점의 값이 4가 되는 a를 구해 곱한다. 정답은 −16분의 25이다.",
     "solutionImageSize": "full"
   },
   {
@@ -888,9 +892,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "꼭짓점 P(3, -16)인 포물선과 x절편 -1, 7",
-    "solutionImageCaption": "꼭짓점 P(3, -16)인 포물선과 x절편 -1, 7",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 꼭짓점 P를 가지고, x축과 두 점 A, B에서 만난다. 점에는 이름만 붙어 있고 좌표는 쓰지 않았다.",
+    "solutionImageCaption": "(1) 식을 a에 대하여 정리하면 a의 계수가 0이 되는 x에서 a와 관계없이 지나는 점 P를 얻는다. (2) P가 꼭짓점이면 a=−6이고, 이때 그래프는 그림처럼 x축과 두 점 A, B에서 만난다. 정답은 (1) (3, −16), (2) −1, 7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -927,9 +931,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "m=2/3이면 직선 y=mx+4m-1이 그래프와 서로 다른 세 점에서 만난다(1/2<m<6-2√7의 한 예).",
-    "solutionImageCaption": "m=2/3이면 직선 y=mx+4m-1이 그래프와 서로 다른 세 점에서 만난다(1/2<m<6-2√7의 한 예).",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 조각은 위로 열린 포물선, 오른쪽 조각은 아래로 열린 포물선이 x=−2에서 이어져 있고, 기울어진 직선이 왼쪽 조각과 한 점, 오른쪽 조각과 두 점에서 만나 교점 세 개가 표시되어 있다. 점 (−2, 0)과 (−1, 1)의 좌표가 보이고, 위쪽에 직선의 식이 적혀 있다.",
+    "solutionImageCaption": "예: m=3분의 2일 때 직선이 그래프와 서로 다른 세 점에서 만난다. 왼쪽 조각에서는 한 점, 오른쪽 조각에서는 두 점에서 만난다. 경계값을 기준으로 교점 수를 세면 세 점이 되는 m의 범위는 두 구간이다. 정답은 m<−12−2√34 또는 2분의 1<m<6−2√7이다.",
     "solutionImageSize": "full"
   }
 ];

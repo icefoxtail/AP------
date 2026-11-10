@@ -109,7 +109,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 5에 열린 끝점을 두고 오른쪽으로 이어지는 k의 범위이다.",
+    "solutionImageCaption": "짝수 판별식은 5−k이며, 서로 다른 두 허근을 가지려면 이 값이 음수여야 한다. 따라서 k>5이고, 이를 만족하는 정수 중 가장 작은 값을 고른다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -294,9 +298,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "포물선과 직선의 두 교점 A, B의 x좌표의 합이 a+b이다.",
-    "solutionImageCaption": "포물선과 직선의 두 교점 A, B의 x좌표의 합이 a+b이다.",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=3x²−4x−7과 주황 직선 y=10x+10이 두 점에서 만나며 두 교점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "두 그래프의 교점의 x좌표는 3x²−14x−17=0의 두 근이다. 근과 계수의 관계로 a+b는 3분의 14이므로 α=3, β=14이다. 정답은 17이다.",
     "solutionImageSize": "full"
   },
   {
@@ -515,7 +519,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 특수한 복소수 $z$는 거듭제곱을 통해 $z^{n}=1$이 되는 주기를 찾아 계산을 단순화한다.\n조건 정리: $z = \\frac{\\sqrt{2}(1-i)}{(1+i)(1-i)} = \\frac{\\sqrt{2}(1-i)}{2} = \\frac{1-i}{\\sqrt{2}}$이다.\n풀이 방향: $z$를 제곱하여 규칙성을 확인하고, 연속된 $z^{n}$의 합이 0이 되는 구간을 찾는다.\n정석 풀이: $z^{2} = (\\frac{1-i}{\\sqrt{2}})^{2} = \\frac{1-2i-1}{2} = -i$이다. 이어서 $z^{4} = (-i)^{2} = -1$이고 $z^{8} = (-1)^{2} = 1$이다. 주기가 8이므로 $z^{1}+z^{2}+ \\dots +z^{8}$의 합을 구해보면 $z+z^{2}+z^{3}+z^{4}+z^{5}+z^{6}+z^{7}+z^{8} = z-i-zi-1-z+i+zi+1 = 0$이다. 따라서 $1 + (z+ \\dots +z^{8}) + (z^{9}+ \\dots +z^{16}) + (z^{17}+ \\dots +z^{24}) = 1 + 0 + 0 + z^{24}$가 된다. $z^{24} = (z^{8})^{3} = 1^{3} = 1$이므로 전체 합은 $1+0+0+0=1$이다. (단, 1부터 시작하는 8개 단위 $1+z+ \\dots +z^{7}=0$으로 묶어도 결과는 동일함)\n결론: 따라서 정답은 ②이다.",
+    "solution": "[키포인트] 특수한 복소수 $z$는 거듭제곱을 통해 $z^{n}=1$이 되는 주기를 찾아 계산을 단순화한다.\n조건 정리: $z = \\frac{\\sqrt{2}(1-i)}{(1+i)(1-i)} = \\frac{\\sqrt{2}(1-i)}{2} = \\frac{1-i}{\\sqrt{2}}$이다.\n풀이 방향: $z$를 제곱하여 규칙성을 확인하고, 연속된 $z^{n}$의 합이 0이 되는 구간을 찾는다.\n정석 풀이: $z^{2} = (\\frac{1-i}{\\sqrt{2}})^{2} = \\frac{1-2i-1}{2} = -i$이다. 이어서 $z^{4} = (-i)^{2} = -1$이고 $z^{8} = (-1)^{2} = 1$이다. 주기가 8이므로 $z^{1}+z^{2}+ \\dots +z^{8}$의 합을 구해보면 $z+z^{2}+z^{3}+z^{4}+z^{5}+z^{6}+z^{7}+z^{8} = z-i-zi-1-z+i+zi+1 = 0$이다. 따라서 $1 + (z+ \\dots +z^{8}) + (z^{9}+ \\dots +z^{16}) + (z^{17}+ \\dots +z^{24}) = 1 + 0 + 0 + 0$이 된다. 참고로 $z^{24} = (z^{8})^{3} = 1^{3} = 1$이다. 따라서 전체 합은 $1+0+0+0=1$이다. (단, 1부터 시작하는 8개 단위 $1+z+ \\dots +z^{7}=0$으로 묶어도 결과는 동일함)\n결론: 따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -596,7 +600,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: m<0 또는 m>4인 범위 아래에 짝수 후보를 놓고 범위 안의 점은 고리, 제외되는 점은 가위표로 표시하였다.",
+    "solutionImageCaption": "중근 조건에서 n은 m²의 4분의 1이므로 m은 짝수이며 카드 범위에서 −8≤m≤8이다. 다른 방정식의 판별식 조건은 m<0 또는 m>4이므로 −8, −6, −4, −2, 6, 8이 가능하다. 정답은 6개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -634,7 +642,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC 안의 직사각형은 주황색, 그 위의 작은 삼각형은 파란색으로 칠해져 있다. 밑변 4, 직사각형의 높이 x와 폭 y, 작은 삼각형의 높이 3−x가 표시되어 있다.",
+    "solutionImageCaption": "예: 직사각형 높이 x=1인 배치이며, 전체 삼각형의 높이는 3이다. 닮음비로 y는 3분의 4에 3−x를 곱한 값이고, 넓이 S=xy는 S=−(3분의 4)x²+4x이다. 이 이차함수는 x가 2분의 3일 때 최댓값을 갖는다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -739,7 +751,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 R(x)가 두 점 (1,0)과 (3,2)를 지나며, 두 번째 점에서 좌표축으로 점선이 이어진다.",
+    "solutionImageCaption": "나머지는 일차식이며 R(1)=0, R(3)=2를 만족한다. 두 점으로 계수를 정한다. 정답은 R(x)=x−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -770,7 +786,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 시간 t에 따른 높이 h의 파란 곡선에 처음 점, 최대 높이의 점, 1초 때의 점과 수면 도달점이 표시되어 있다. 처음 높이는 2이고, 1초 때의 점에서 시간축으로 점선이 내려온다.",
+    "solutionImageCaption": "h(t)=−5t²+4t+2에서 h(t)=0인 양의 해가 수면 도달 시간이다. 완전제곱식으로 정리하면 t가 5분의 2일 때 최대이며, 처음 높이와 1초 때 높이를 비교하면 최소 높이를 얻는다. 정답은 (1) 5분의 (2+√14)초, (2) 5분의 14m, (3) 1m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -832,6 +852,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
     "subUnit": "연립방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑과 주황의 두 직선이 좌표 (−3,−1)에서 만나는 모습이다.",
+    "solutionImageCaption": "파란 직선은 x=3y, 주황 직선은 x=y−2이며 두 경우에서 함께 세는 점은 (−3,−1)이다. 각 경우에서 두 번째 방정식의 실근 수를 세고, 공통점이 조건을 만족할 때 중복을 한 번 뺀다. 정답은 k=1 또는 k=3이다.",
+    "solutionImageSize": "full"
   }
 ];

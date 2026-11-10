@@ -55,7 +55,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 f(x)=x/2-5와 x축 아래의 색칠 영역, 경계점 (2,0)와 (2,-4)",
+    "solutionImageCaption": "구간 [0,2]에서 직선은 x축 아래에 놓인다. 색칠한 영역이 정적분의 부호와 넓이의 관계를 보여 준다. 정답은 -9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -435,15 +439,15 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q14-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: v(t)=−2t+6의 시간-속도 그래프. t=3 전후의 두 삼각형은 넓이가 9로 같아 같은 색으로 칠했다(앞으로 9, 뒤로 9).",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q14-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 시각 t에 대한 속도 v(t)=−2t+6의 그래프. t=3에서 t축과 만나고, 그 앞뒤의 색칠 영역 S₁, S₂가 있다.",
+    "solutionImageSize": "full",
     "solution": "방향이 바뀌는 시각을 먼저 구한다.\n$v(t)=-2t+6=0$에서\n$t=3$이다.\n$0\\le t<3$에서는 $v(t)>0$이므로 오른쪽으로, $3<t\\le6$에서는 $v(t)<0$이므로 왼쪽으로 움직인다.\n이동거리는 속도의 절댓값을 적분하므로 구간을 나누어\n$S=\\displaystyle\\int_0^3(6-2t)dt+\\int_3^6(2t-6)dt$이다.\n\n첫 번째 이동거리는\n$\\displaystyle\\int_0^3(6-2t)dt$\n$=[6t-t^2]_0^3$\n$=(18-9)-0=9$이다.\n두 번째 이동거리는\n$\\displaystyle\\int_3^6(2t-6)dt$\n$=[t^2-6t]_3^6$\n$=(36-36)-(9-18)=9$이다.\n따라서 총 이동거리는\n$9+9=18$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImageCaption": "0~3은 앞으로 9, 3~6은 뒤로 9 움직이므로 총 이동거리는 9+9=18, 정답은 ②이다."
+    "solutionImageCaption": "속도 v(t)=−2t+6은 t=3에서 부호가 바뀐다. S₁은 앞으로, S₂는 뒤로 움직인 거리이므로 두 넓이를 더한다. 정답은 18이다."
   },
   {
     "id": 15,
@@ -601,7 +605,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 y=−6(x−2)² 포물선이 x=2에서 x축에 접하는 그래프",
+    "solutionImageCaption": "F의 도함수 F′(x)=−6(x−2)²의 그래프이다. x=2에서 x축에 접하고 그 앞뒤에서 부호가 바뀌지 않아 F의 극값이 없다. 정답은 −15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -686,10 +694,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$0\\lt k\\lt 4$",
     "solution": "절댓값 안의 부호부터 판단한다.\n$f(x)+x=\\dfrac12x^3-3x^2+\\dfrac{17}{2}x$\n$=\\dfrac12x\\{(x-3)^2+8\\}$이다.\n괄호 안은 항상 양수이므로 $f(x)+x$의 부호는 $x$의 부호와 같다.\n\n$x<0$이면 $|f(x)+x|=-f(x)-x$이므로\n$f(x)-f(x)-x=7x+k$\n$-8x=k,\\quad x=-\\dfrac{k}{8}$이다.\n이 해가 $x<0$에 있으려면 $k>0$이어야 하므로 음의 구간에서는 $k>0$일 때 해가 하나, $k\\le0$일 때 해가 없다.\n\n$x\\ge0$이면 $|f(x)+x|=f(x)+x$이다.\n따라서\n$2f(x)+x=7x+k$\n$2f(x)-6x=k$\n$x^3-6x^2+9x=k$\n$x(x-3)^2=k$이다.\n$y=\\phi(x)=x(x-3)^2$ $(x\\ge0)$라 두면\n$\\phi'(x)=3(x-1)(x-3)$이고\n$\\phi(0)=0,\\quad\\phi(1)=4,\\quad\\phi(3)=0$이다.\n따라서 $[0,1]$에서 증가, $[1,3]$에서 감소, $[3,\\infty)$에서 증가한다.\n그래프와 $y=k$의 교점 수는\n$k<0$일 때 $0$개,\n$k=0$일 때 $x=0,3$의 $2$개,\n$0<k<4$일 때 $3$개,\n$k=4$일 때 $x=1$과 $x=4$의 $2$개,\n$k>4$일 때 $1$개이다.\n\n음의 구간의 해 수까지 더하면 $k<0$일 때 총 $0$개, $k=0$일 때 총 $2$개,\n$0<k<4$일 때 $3+1=4$개, $k=4$일 때 $2+1=3$개, $k>4$일 때 $1+1=2$개이다.\n따라서 서로 다른 실근이 $4$개가 되는 범위는\n$0<k<4$이다.",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q22-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: x<0에서 y=-8x, x≥0에서 y=x(x-3)²를 이은 그래프와 수평선 y=k. 극대점 (1,4), 극소점 (3,0)이 있고, 0<k<4일 때 수평선이 그래프와 서로 다른 네 점에서 만난다.",
-    "solutionImageCaption": "예: 0<k<4인 k의 수평선 y=k는 서로 다른 네 점에서 만난다. 따라서 구하는 범위는 0<k<4이다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q22-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: p(x)=x(x−3)²의 극대점 (1,4), 극소점 (3,0), 예시 수평선 y=1과 직선 y=−8x",
+    "solutionImageCaption": "예: k=1에서 양의 구간의 세 교점과 음의 구간의 한 교점을 함께 본다. 경계 높이는 0과 4이므로 네 해가 생기는 범위는 그 사이이다. 정답은 0<k<4이다.",
+    "solutionImageSize": "full",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",

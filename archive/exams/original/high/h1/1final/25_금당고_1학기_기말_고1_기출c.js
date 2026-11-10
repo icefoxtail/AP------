@@ -142,7 +142,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 −4와 6을 닫힌 끝점으로 연결하고 그 사이의 정수점을 표시하였다.",
+    "solutionImageCaption": "절댓값 부등식을 풀면 −4≤x≤6이다. 양 끝점을 포함하여 정수를 센다. 정답은 11개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -321,7 +325,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 꺾이는 점의 좌표가 (3, 4), (5, 2)인 절댓값 그래프와 수평선 y=4 및 두 교점이 표시되어 있다.",
+    "solutionImageCaption": "x=3과 x=5를 경계로 절댓값을 풀면 세 일차식으로 나뉜다. 그래프가 y=4 이하인 범위는 3 이상 3분의 17 이하이고 정수해는 3, 4, 5이다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -392,7 +400,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: −1과 7 사이 및 −1과 4 사이의 열린 구간을 비교하고 공통 범위 안의 정수점을 표시하였다.",
+    "solutionImageCaption": "두 근의 곱이 음수라는 조건은 −1<p<7이고 두 근의 합이 양수라는 조건은 −1<p<4이다. 공통 범위의 정수 p는 0, 1, 2, 3이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -465,7 +477,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²+1과 주황 직선 y=4x−3, 초록 직선 y=5x−3이 그려지고 접점과 두 교점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: a=1에서는 b=4의 직선이 포물선에 접하고 b=5의 직선은 두 점에서 만난다. 일반적으로 교점이 존재할 조건은 b²≥4a+12이며 각 a에서 가능한 b의 개수를 합한다. 정답은 10개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -540,9 +556,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q15-solution.svg",
-    "solutionImageAlt": "5a>0이므로 부호는 x(x-1)과 같고, 그래프가 x축 아래에 있는 구간은 0<x<1이다.",
-    "solutionImageCaption": "5a>0이므로 부호는 x(x-1)과 같고, 그래프가 x축 아래에 있는 구간은 0<x<1이다.",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선 y=x(x−1)이 x축과 0, 1에서 만나며 꼭짓점 V는 x축 아래에 있다.",
+    "solutionImageCaption": "f(3x)−f(2x)=5ax(x−1), a>0이므로 0<x<1에서 음수이다. 정답은 0개이다.",
     "solutionImageSize": "full"
   },
   {
@@ -611,7 +627,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 정팔각형 위에 주황색 삼각형을 겹쳐, 정팔각형의 변을 두 개 공유하는 예, 한 개 공유하는 예, 공유하지 않는 예를 나란히 표시하였다.",
+    "solutionImageCaption": "전체 삼각형에서 정팔각형의 변을 두 개 공유하는 경우와 정확히 한 개 공유하는 경우를 뺀다. 각각 연속된 세 꼭짓점 선택과 공유할 변 및 나머지 꼭짓점 선택으로 세면 8개와 32개이다. 정답은 16개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -713,7 +733,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축과 2분의 3 및 2에서 만나고 x=1과 x=3에서의 점은 x축 위에 있으며 꼭짓점은 x축 아래에 있다.",
+    "solutionImageCaption": "예: m=2분의 7일 때 g(x)=x²−mx+3의 두 근이 1과 3 사이에 있다. 서로 다른 두 실근, 축의 위치, g(1)>0과 g(3)>0을 함께 적용하면 2√3<m<4이다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -775,6 +799,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 직각삼각형은 두 직각변이 α와 β이고 빗변이 1이며, 둘째는 직각변이 1과 β이고 빗변이 α이다. α인 변은 파랑, β인 변은 주황, 길이 1인 변은 초록으로 구분하였다.",
+    "solutionImageCaption": "인수분해하면 서로 다른 세 근은 1과 이차방정식의 두 근 α, β이고 α+β=3분의 4이다. 1이 빗변이면 α²+β²=1을, α가 빗변이면 α²−β²=1을 이용하며 β가 빗변인 경우는 이름만 바뀐다. 정답은 6분의 7과 192분의 175이다.",
+    "solutionImageSize": "full"
   }
 ];

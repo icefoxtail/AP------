@@ -122,7 +122,11 @@ window.questionBank = [
     "category": "근과 계수의 관계",
     "originalCategory": "근과 계수의 관계",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 y=x²−2x−3의 그래프이다. x축과 만나는 왼쪽 점을 a, 오른쪽 점을 b로 붙였고, 꼭짓점에서 x축의 점 x=1까지 대칭축을 점선으로 그렸다.",
+    "solutionImageCaption": "x축과의 두 교점 a, b는 대칭축 x=1의 양쪽에 같은 거리만큼 떨어져 있다. 그래서 두 점의 가운데가 x=1이고 a+b=2×1이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -246,9 +250,9 @@ window.questionBank = [
     "originalCategory": "이차방정식의 판별식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "a=3이면 x축과 두 점에서 만나고, a=4이면 만나지 않는다.",
-    "solutionImageCaption": "a=3이면 x축과 두 점에서 만나고, a=4이면 만나지 않는다.",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=2x²−5x+a의 그래프를 a=2일 때(파란색)와 a=4일 때(주황색)로 같은 좌표평면에 그렸다. a=2의 포물선은 x축과 두 점에서 만나고, a=4의 포물선은 전체가 x축 위쪽에 있어 만나지 않는다.",
+    "solutionImageCaption": "예: a=2이면 포물선이 x축과 두 점에서 만나고 a=4이면 만나지 않는다. 서로 다른 두 점에서 만나려면 판별식 D=25−8a가 양수여야 하므로 a는 8분의 25보다 작다. 이를 만족시키는 자연수 a는 1, 2, 3이다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -382,7 +386,7 @@ window.questionBank = [
       "이차함수",
       "직선의 방정식"
     ],
-    "content": "이차함수 $y=x^2-(k+7)x+2=0$의 그래프와 직선 $y=-x+k$가 접하도록 하는 모든 상수 $k$의 값의 곱은? [4점]",
+    "content": "이차함수 $y=x^2-(k+7)x+2$의 그래프와 직선 $y=-x+k$가 접하도록 하는 모든 상수 $k$의 값의 곱은? [4점]",
     "choices": [
       "$-28$",
       "$-16$",
@@ -391,7 +395,7 @@ window.questionBank = [
       "$28$"
     ],
     "answer": "⑤",
-    "solution": "문제에는 이차함수 식 뒤에 $=0$이 함께 인쇄되어 있지만, 그래프를 묻는 문맥에 따라 함수식은 $y=x^2-(k+7)x+2$로 해석한다.\n두 그래프의 교점에서는\n$x^2-(k+7)x+2=-x+k$이므로\n$x^2-(k+6)x+(2-k)=0$이다.\n접하려면 이 이차방정식이 중근을 가져야 하므로\n$(k+6)^2-4(2-k)=0$이다.\n정리하면\n$k^2+16k+28=0$이다.\n이 방정식의 두 근의 곱은 $28$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "두 그래프의 교점에서는\n$x^2-(k+7)x+2=-x+k$이므로\n$x^2-(k+6)x+(2-k)=0$이다.\n접하려면 이 이차방정식이 중근을 가져야 하므로\n$(k+6)^2-4(2-k)=0$이다.\n정리하면\n$k^2+16k+28=0$이다.\n이 방정식의 두 근의 곱은 $28$이다.\n따라서 정답은 ⑤이다.",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
@@ -414,7 +418,11 @@ window.questionBank = [
     "originalCategory": "이차함수의 그래프",
     "layoutTag": "grid",
     "wide": false,
-    "sourceSemanticNote": "PRINTED_EXTRA_EQUALS_ZERO_NONBLOCKING: source evidence confirms printed '=0' after quadratic expression; source text preserved, graph interpreted by stated quadratic-function context."
+    "sourceSemanticNote": "PRINTED_EXTRA_EQUALS_ZERO_NONBLOCKING: source evidence confirms printed '=0' after quadratic expression; source text preserved, graph interpreted by stated quadratic-function context.",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²−5x+2와 주황 직선 y=−x−2가 한 점에서 접하는 그림이다. 접하는 점에 점이 찍혀 있고 접점이라고 적혀 있다.",
+    "solutionImageCaption": "예: k=−2일 때 포물선 y=x²−5x+2와 직선 y=−x−2는 한 점에서 접한다. 접하려면 두 식을 연립한 이차방정식이 중근을 가져야 하고, 그 판별식 조건에서 k²+16k+28=0이 나온다. 정답은 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -433,7 +441,7 @@ window.questionBank = [
       "$-5$"
     ],
     "answer": "④",
-    "solution": "음수의 제곱근 계산 규칙을 이용해 두 조건에서 $x$, $y$의 범위를 정한다.\n첫 번째 등식\n$\\sqrt{x-1}\\sqrt{y-2}=-\\sqrt{(x-1)(y-2)}$\n에서 두 근호 안이 모두 음수이면 등식이 성립하고, 한쪽이 $0$인 경우도 등식이 성립한다.\n두 번째 등식에서 $x\\ne-1$이므로 분자는 $0$이 아니다. 따라서\n$\\dfrac{\\sqrt{x+1}}{\\sqrt{y+1}}=-\\sqrt{\\dfrac{x+1}{y+1}}$\n이 성립하려면 $x+1>0$, $y+1<0$이어야 한다.\n즉 $x>-1$, $y<-1$이다.\n이때 $y-2<0$이므로 첫 번째 등식이 성립하려면 $x-1\\le0$이어야 한다.\n따라서 $-1<x\\le1$, $y<-1$이다.\n그러므로\n$|x-2|=2-x$,\n$(\\sqrt{x})^2=x$,\n$|y-3|=3-y$,\n$\\sqrt{y^2}=|y|=-y$이다.\n주어진 식은\n$(2-x)+x-(3-y)-y=-1$이다.\n따라서 정답은 ④이다.",
+    "solution": "음수의 제곱근 계산 규칙을 이용해 두 조건에서 $x$, $y$의 범위를 정한다.\n첫 번째 등식\n$\\sqrt{x-1}\\sqrt{y-2}=-\\sqrt{(x-1)(y-2)}$\n에서 두 근호 안이 모두 음수이면 등식이 성립하고, 한쪽이 $0$인 경우도 등식이 성립한다.\n두 번째 등식에서 $x\\ne-1$이므로 분자는 $0$이 아니다. 따라서\n$\\dfrac{\\sqrt{x+1}}{\\sqrt{y+1}}=-\\sqrt{\\dfrac{x+1}{y+1}}$\n이 성립하려면 $x+1>0$, $y+1<0$이어야 한다.\n즉 $x>-1$, $y<-1$이다.\n이때 $y-2<0$이므로 첫 번째 등식이 성립하려면 $x-1\\le0$이어야 한다.\n따라서 $-1<x\\le1$, $y<-1$이다.\n그러므로\n$|x-2|=2-x$,\n$(\\sqrt{x})^2=x$ ($\\sqrt{x}$가 실수이려면 $x\\ge0$이어야 하므로 실제 범위는 $0\\le x\\le1$이다),\n$|y-3|=3-y$,\n$\\sqrt{y^2}=|y|=-y$이다.\n주어진 식은\n$(2-x)+x-(3-y)-y=-1$이다.\n따라서 정답은 ④이다.",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
@@ -498,7 +506,11 @@ window.questionBank = [
     "category": "이차함수의 최대최소",
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 a로 한 아래로 볼록한 포물선이다. 꼭짓점이 a=1 바로 아래에 점으로 찍혀 있고 점선이 a축의 눈금 1까지 이어지며, 오른쪽 곡선 위 점 곁에 M이라고 적혀 있다. 그려진 곡선은 모두 가로축 아래에 있다.",
+    "solutionImageCaption": "최댓값 M을 a에 대한 식으로 나타내면 M=(a−1)²−7이다. 그림에서 곡선의 높이가 M의 값이고, 이 그래프는 a=1에서 가장 낮다. 정답은 −7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -624,9 +636,9 @@ window.questionBank = [
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "꼭짓점 (3, 10)과 y=-8의 두 교점 (0, -8), (6, -8)",
-    "solutionImageCaption": "꼭짓점 (3, 10)과 y=-8의 두 교점 (0, -8), (6, -8)",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 0≤x≤4에서 위로 볼록한 포물선 y=−2x²+12x−8을 그린 그림이다. 꼭짓점에 최댓값 10이 적혀 있고 오른쪽 끝점에 x=k가 적혀 있다. 주황색 수평선 y=−8이 곡선의 왼쪽 끝점을 지난다.",
+    "solutionImageCaption": "예: k=4일 때 구간 0≤x≤k에서 최댓값은 꼭짓점의 값 10, 최솟값은 x=0에서의 값 −8이다. 오른쪽 끝의 함숫값이 −8보다 작아지지 않아야 하므로 k의 범위가 정해진다. 정답은 9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -669,9 +681,9 @@ window.questionBank = [
     "originalCategory": "이차함수의 그래프",
     "layoutTag": "grid",
     "wide": true,
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "점 P(0, 1)을 지나는 두 접선 y=10x+1, y=-2x+1이 각각 A(3, 31), B(-3, 7)에서 접한다.",
-    "solutionImageCaption": "점 P(0, 1)을 지나는 두 접선 y=10x+1, y=-2x+1이 각각 A(3, 31), B(-3, 7)에서 접한다.",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 (0,1)을 지나는 두 직선 y=10x+1(주황색)과 y=−2x+1(초록색)이 포물선 y=x²+4x+10(파란색)에 접하는 그림이다. 접점 (3,31)과 (−3,7)에 점이 찍혀 있고 좌표가 적혀 있다.",
+    "solutionImageCaption": "점 (0,1)을 지나는 직선 y=mx+1이 포물선에 접하려면 x²+(4−m)x+9=0이 중근을 가져야 하므로 m=10 또는 m=−2이다. 두 접선은 접점 (3,31), (−3,7)에서 포물선에 닿는다. 이 두 접선과 y=−2x²+k의 그래프가 만나지 않을 조건을 판별식으로 따지면 정수 k의 최댓값이 정해진다. 정답은 −12이다.",
     "solutionImageSize": "full"
   },
   {
@@ -839,7 +851,11 @@ window.questionBank = [
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
     "wide": true,
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 y 위에 그린 아래로 볼록한 포물선의 일부이다. 원점에서 시작해 t축 아래로 내려갔다가 위로 올라가며, 가장 낮은 점에서 t축까지 점선이 이어지고 t=8분의 5가 적혀 있다. 오른쪽 끝 점 곁에 PQ²−BP가 적혀 있다.",
+    "solutionImageCaption": "BP=BQ=t라 두면 PQ²=5분의 4 t²이므로 PQ²−BP=5분의 4 t²−t이다. 이 이차식의 그래프는 t=8분의 5에서 가장 낮다. 정답은 −16분의 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -945,6 +961,10 @@ window.questionBank = [
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
     "wide": true,
-    "imageSize": "medium"
+    "imageSize": "medium",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 높이, 세로축이 넓이인 좌표평면에 그린 위로 볼록한 포물선이다. 원점에서 시작해 가운데에서 가장 높고, 가장 높은 점에서 가로축까지 점선이 이어지며 y=√3이 적혀 있다. 곡선 위 점 곁에 넓이 A가 적혀 있고 곡선의 양 끝은 속이 빈 점이다.",
+    "solutionImageCaption": "정삼각형의 높이는 2√3 m이고, 출입문의 높이를 y m라 하면 넓이 A는 y에 대한 위로 볼록한 이차식이다. 이 그래프는 y=√3에서 가장 높고 그 값이 최댓값이다. 그림은 높이 0부터 2√3 m 가까이까지의 그래프이다. 정답은 2√3 m²이다.",
+    "solutionImageSize": "full"
   }
 ];

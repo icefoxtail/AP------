@@ -6,7 +6,7 @@ window.questionBank = [
     "choices": [
       "길이가 같은 두 호에 대한 중심각의 크기는 같다.",
       "한 호에 대한 중심각의 크기는 그 호에 대한 원주각의 크기의 2배이다.",
-      "중심각의 크기가 $180^\\\\circ$일 때, 현은 지름이 된다.",
+      "중심각의 크기가 $180^\\circ$일 때, 현은 지름이 된다.",
       "중심각의 크기가 2배 커지면 그 중심각에 대한 현의 길이도 2배 길어진다.",
       "중심각의 크기가 3배 커지면 그 중심각에 대한 호의 길이도 3배 길어진다."
     ],
@@ -125,13 +125,13 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "content": "아래 그림의 원 $O$에서 $\\\\overline{AB}\\\\perp\\\\overline{OM}$, $\\\\overline{CD}\\\\perp\\\\overline{ON}$이고, $\\\\overline{OM}=4\\\\rm\\,cm$, $\\\\overline{ON}=3\\\\rm\\,cm$, $\\\\overline{CD}=10\\\\rm\\,cm$일 때, $\\\\overline{AB}$의 길이는? (3점)",
+    "content": "아래 그림의 원 $O$에서 $\\overline{AB}\\perp\\overline{OM}$, $\\overline{CD}\\perp\\overline{ON}$이고, $\\overline{OM}=4\\rm\\,cm$, $\\overline{ON}=3\\rm\\,cm$, $\\overline{CD}=10\\rm\\,cm$일 때, $\\overline{AB}$의 길이는? (3점)",
     "choices": [
-      "$10\\\\rm\\,cm$",
-      "$6\\\\sqrt2\\\\rm\\,cm$",
-      "$\\\\sqrt{34}\\\\rm\\,cm$",
-      "$2\\\\sqrt{34}\\\\rm\\,cm$",
-      "$10\\\\sqrt2\\\\rm\\,cm$"
+      "$10\\rm\\,cm$",
+      "$6\\sqrt2\\rm\\,cm$",
+      "$\\sqrt{34}\\rm\\,cm$",
+      "$2\\sqrt{34}\\rm\\,cm$",
+      "$10\\sqrt2\\rm\\,cm$"
     ],
     "answer": "②",
     "solution": "중심에서 현에 내린 수선은 현을 이등분한다. 따라서 CD의 반은 5 cm이다.\n반지름²=ON²+(CD/2)²\n=3²+5²=34\nOM=4 cm이므로 AB의 반을 h라 하면\nh²=반지름²-OM²=34-16=18\nh=3√2\nAB=2h=6√2 cm이다. 따라서 ②이다.",
@@ -209,7 +209,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "content": "다음 중 아래 자료에 대한 설명으로 옳지 않은 것은? (4점)\\\n$3,8,7,9,7,10,12$",
+    "content": "다음 중 아래 자료에 대한 설명으로 옳지 않은 것은? (4점)\n$3,8,7,9,7,10,12$",
     "choices": [
       "변량 중에 평균이 있다.",
       "평균과 중앙값은 서로 같다.",
@@ -250,13 +250,13 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "content": "다음 그림에서 $\\\\overline{AB}$가 원 $O$의 지름이고 $\\\\angle DAB=51^\\\\circ$일 때, $\\\\angle ACD$의 크기는? (4점)",
+    "content": "다음 그림에서 $\\overline{AB}$가 원 $O$의 지름이고 $\\angle DAB=51^\\circ$일 때, $\\angle ACD$의 크기는? (4점)",
     "choices": [
-      "$27^\\\\circ$",
-      "$35^\\\\circ$",
-      "$37^\\\\circ$",
-      "$39^\\\\circ$",
-      "$40^\\\\circ$"
+      "$27^\\circ$",
+      "$35^\\circ$",
+      "$37^\\circ$",
+      "$39^\\circ$",
+      "$40^\\circ$"
     ],
     "answer": "④",
     "solution": "AB가 지름이므로 ∠ADB=90°이다. 삼각형 ABD에서\n∠ABD=180°-90°-51°=39°이다.\n∠ABD와 ∠ACD는 같은 현 AD를 보는 원주각이므로 크기가 같다. 따라서 ∠ACD=39°이고 ④이다.",
@@ -292,7 +292,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "content": "그림에서 점 $P$는 두 현 $AC$, $BD$의 교점이고 $\\\\angle ABD=54^\\\\circ$, $\\\\angle BPC=81^\\\\circ$, 호 $BC=5\\\\rm\\,cm$일 때, 호 $AD$의 길이는? (4점)",
+    "content": "그림에서 점 $P$는 두 현 $AC$, $BD$의 교점이고 $\\angle ABD=54^\\circ$, $\\angle BPC=81^\\circ$, 호 $BC=5\\rm\\,cm$일 때, 호 $AD$의 길이는? (4점)",
     "choices": [
       "10cm",
       "11cm",
@@ -334,13 +334,13 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "content": "그림의 원 $O$에서 $\\\\overline{OD}\\\\perp\\\\overline{AB}$, $\\\\overline{OE}\\\\perp\\\\overline{BC}$, $\\\\overline{OD}=\\\\overline{OE}$이고 $\\\\angle BAC:\\\\angle ABC=5:2$일 때, $\\\\angle BAC$의 크기는? (4점)",
+    "content": "그림의 원 $O$에서 $\\overline{OD}\\perp\\overline{AB}$, $\\overline{OE}\\perp\\overline{BC}$, $\\overline{OD}=\\overline{OE}$이고 $\\angle BAC:\\angle ABC=5:2$일 때, $\\angle BAC$의 크기는? (4점)",
     "choices": [
-      "$70^\\\\circ$",
-      "$72^\\\\circ$",
-      "$74^\\\\circ$",
-      "$75^\\\\circ$",
-      "$76^\\\\circ$"
+      "$70^\\circ$",
+      "$72^\\circ$",
+      "$74^\\circ$",
+      "$75^\\circ$",
+      "$76^\\circ$"
     ],
     "answer": "④",
     "solution": "OD와 OE는 중심 O에서 현 AB, BC까지의 거리이고 두 거리가 같다. 중심에서 같은 거리에 있는 현의 길이는 같으므로 AB=BC이다. 따라서 같은 현을 보는 원주각도 같아 ∠ACB=∠BAC이다.\n∠BAC:∠ABC=5:2이므로 ∠BAC=5k, ∠ABC=2k, ∠ACB=5k라 놓는다.\n12k=180°\nk=15°\n∠BAC=75°이므로 ④이다.",
@@ -376,13 +376,13 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "content": "아래 그림과 같이 원에 내접하는 오각형 $ABCDE$에서 $\\\\angle B=130^\\\\circ$, $\\\\angle E=100^\\\\circ$이다. 직선 $CT$가 원의 접선일 때, $\\\\angle DCT$의 크기는? (4점)",
+    "content": "아래 그림과 같이 원에 내접하는 오각형 $ABCDE$에서 $\\angle B=130^\\circ$, $\\angle E=100^\\circ$이다. 직선 $CT$가 원의 접선일 때, $\\angle DCT$의 크기는? (4점)",
     "choices": [
-      "$46^\\\\circ$",
-      "$48^\\\\circ$",
-      "$50^\\\\circ$",
-      "$52^\\\\circ$",
-      "$54^\\\\circ$"
+      "$46^\\circ$",
+      "$48^\\circ$",
+      "$50^\\circ$",
+      "$52^\\circ$",
+      "$54^\\circ$"
     ],
     "answer": "③",
     "solution": "원에 내접한 오각형의 호를 AB, BC, CD, DE, EA라 하자.\n∠B=130°가 보는 호 A-E-D-C는 260°이므로 AB+BC=360°-260°=100°이다.\n∠E=100°가 보는 호 D-C-B-A는 200°이므로 AB+BC+CD=200°이다.\n따라서 CD=100°이다. 접선과 현 CD가 이루는 각은 현 CD를 보는 원주각의 크기이므로\n∠DCT=∠DAC=CD/2=50°이다. ③이다.",
@@ -420,11 +420,11 @@ window.questionBank = [
     "id": 11,
     "content": "원 $O$의 지름 $\\overline{AB}$의 길이가 $10$이고 원 위의 점 $C$에 대하여 $\\overline{AC}=8$이다.\n$\\angle CAB=\\angle x$일 때, $\\tan x$의 값은? (4점)",
     "choices": [
-      "$\\\\dfrac35$",
-      "$\\\\dfrac34$",
-      "$\\\\dfrac45$",
-      "$\\\\dfrac43$",
-      "$\\\\dfrac54$"
+      "$\\dfrac35$",
+      "$\\dfrac34$",
+      "$\\dfrac45$",
+      "$\\dfrac43$",
+      "$\\dfrac54$"
     ],
     "answer": "②",
     "solution": "지름 AB에 대한 원주각은 직각이므로\n∠ACB=90°이다.\n삼각형 ABC에서 피타고라스 정리를 쓰면\nBC²=AB²-AC²\n=10²-8²\n=36\nBC=6이다.\n∠CAB=x이므로\ntan x=BC/AC\n=6/8\n=3/4이다.\n따라서 구하는 값은 3/4이다.",
@@ -501,13 +501,13 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "content": "그림과 같이 점 $O$를 중심으로 하는 두 원에서 큰 원의 현 $AB$는 작은 원의 접선이고 색칠한 부분의 넓이가 $32\\\\pi\\\\rm\\,cm^2$일 때, $\\\\overline{AB}$의 길이는? (4점)",
+    "content": "그림과 같이 점 $O$를 중심으로 하는 두 원에서 큰 원의 현 $AB$는 작은 원의 접선이고 색칠한 부분의 넓이가 $32\\pi\\rm\\,cm^2$일 때, $\\overline{AB}$의 길이는? (4점)",
     "choices": [
-      "$8\\\\sqrt2\\\\rm\\,cm$",
-      "$6\\\\sqrt2\\\\rm\\,cm$",
-      "$4\\\\sqrt2\\\\rm\\,cm$",
-      "$4\\\\sqrt3\\\\rm\\,cm$",
-      "$8\\\\sqrt3\\\\rm\\,cm$"
+      "$8\\sqrt2\\rm\\,cm$",
+      "$6\\sqrt2\\rm\\,cm$",
+      "$4\\sqrt2\\rm\\,cm$",
+      "$4\\sqrt3\\rm\\,cm$",
+      "$8\\sqrt3\\rm\\,cm$"
     ],
     "answer": "①",
     "solution": "큰 원의 반지름을 R, 작은 원의 반지름을 r라 하자. AB는 작은 원의 접선이므로 중심 O에서 AB까지의 거리는 r이다. 큰 원에서 현 AB의 반은\nAB/2=√(R²-r²)\n이다. 색칠한 넓이는 두 원의 넓이 차이이므로\nπ(R²-r²)=32π\nR²-r²=32.\n따라서 AB=2√32=8√2 cm이고 ①이다.",
@@ -543,13 +543,13 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "content": "그림에서 $\\\\angle AOB=246^\\\\circ$이고 호 $PA:PB=2:1$일 때, $\\\\angle PAB$의 크기는? (4점)",
+    "content": "그림에서 $\\angle AOB=246^\\circ$이고 호 $PA:PB=2:1$일 때, $\\angle PAB$의 크기는? (4점)",
     "choices": [
-      "$20^\\\\circ$",
-      "$19^\\\\circ$",
-      "$18^\\\\circ$",
-      "$17^\\\\circ$",
-      "$16^\\\\circ$"
+      "$20^\\circ$",
+      "$19^\\circ$",
+      "$18^\\circ$",
+      "$17^\\circ$",
+      "$16^\\circ$"
     ],
     "answer": "②",
     "solution": "∠AOB=246°는 큰 중심각이므로 작은 호 AB의 중심각은\n360°-246°=114°이다. P가 작은 호 AB 위에 있고 호 PA:호 PB=2:1이므로\n호 PB=114°/(2+1)=38°이다.\n∠PAB는 호 PB를 보는 원주각이므로\n∠PAB=38°/2=19°이다. 따라서 ②이다.",
@@ -585,13 +585,13 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "content": "그림에서 $\\\\overline{AB}$는 원 $O$의 지름이고, 호 $BC=\\\\dfrac13$호 $AB$이다. $\\\\overline{AC}$의 연장선과 점 $B$를 접점으로 하는 원 $O$의 접선의 교점을 $D$라 할 때, $\\\\angle CBD$의 크기는? (5점)",
+    "content": "그림에서 $\\overline{AB}$는 원 $O$의 지름이고, 호 $BC=\\dfrac13$호 $AB$이다. $\\overline{AC}$의 연장선과 점 $B$를 접점으로 하는 원 $O$의 접선의 교점을 $D$라 할 때, $\\angle CBD$의 크기는? (5점)",
     "choices": [
-      "$20^\\\\circ$",
-      "$25^\\\\circ$",
-      "$30^\\\\circ$",
-      "$35^\\\\circ$",
-      "$40^\\\\circ$"
+      "$20^\\circ$",
+      "$25^\\circ$",
+      "$30^\\circ$",
+      "$35^\\circ$",
+      "$40^\\circ$"
     ],
     "answer": "③",
     "solution": "AB는 지름이므로 호 AB는 180°이다. 호 BC는 그 1/3인 60°이므로 중심각 ∠BOC=60°이다. OB=OC이므로 삼각형 OBC는 정삼각형이고 ∠OBC=60°이다. 접선 BD는 반지름 OB와 수직이므로\n∠CBD=90°-60°=30°이다. ③이다.",
@@ -668,13 +668,13 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "content": "그림에서 점 $D$는 $\\\\overline{EC}$와 $\\\\overline{AF}$의 교점이고 $\\\\angle BEC=39^\\\\circ$, $\\\\angle AFB=27^\\\\circ$일 때, 사각형 $ABCD$가 원에 내접하도록 하는 $\\\\angle x$의 크기는? (5점)",
+    "content": "그림에서 점 $D$는 $\\overline{EC}$와 $\\overline{AF}$의 교점이고 $\\angle BEC=39^\\circ$, $\\angle AFB=27^\\circ$일 때, 사각형 $ABCD$가 원에 내접하도록 하는 $\\angle x$의 크기는? (5점)",
     "choices": [
-      "$66^\\\\circ$",
-      "$63^\\\\circ$",
-      "$60^\\\\circ$",
-      "$59^\\\\circ$",
-      "$57^\\\\circ$"
+      "$66^\\circ$",
+      "$63^\\circ$",
+      "$60^\\circ$",
+      "$59^\\circ$",
+      "$57^\\circ$"
     ],
     "answer": "⑤",
     "solution": "삼각형 BEC에서 ∠BCE=180°-39°-x=141°-x이다. 삼각형 BAF에서 ∠BAF=180°-27°-x=153°-x이다.\nA,D,F는 한 직선 위에 있고 C,D,E도 한 직선 위에 있으므로 사각형 ABCD에서 ∠BAD=153°-x, ∠BCD=141°-x이다.\nABCD가 원에 내접하면 마주 보는 각의 합은 180°이다.\n(153°-x)+(141°-x)=180°\n294°-2x=180°\n2x=114°\nx=57°이다. ⑤이다.",
@@ -710,13 +710,13 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "그림에서 $\\\\overline{PT}$는 원 $O$의 접선이고, $\\\\overline{PT}=\\\\overline{TB}$, $\\\\overline{PA}=6\\\\rm\\,cm$일 때, 색칠한 부분의 넓이는? (5점)",
+    "content": "그림에서 $\\overline{PT}$는 원 $O$의 접선이고, $\\overline{PT}=\\overline{TB}$, $\\overline{PA}=6\\rm\\,cm$일 때, 색칠한 부분의 넓이는? (5점)",
     "choices": [
-      "$6\\\\pi+9\\\\sqrt3\\\\rm\\,cm^2$",
-      "$\\\\dfrac83\\\\pi+4\\\\sqrt3\\\\rm\\,cm^2$",
-      "$\\\\dfrac52\\\\pi+\\\\dfrac{9\\\\sqrt3}4\\\\rm\\,cm^2$",
-      "$4\\\\pi+\\\\dfrac{3\\\\sqrt3}2\\\\rm\\,cm^2$",
-      "$\\\\dfrac32\\\\pi+\\\\dfrac{3\\\\sqrt3}4\\\\rm\\,cm^2$"
+      "$6\\pi+9\\sqrt3\\rm\\,cm^2$",
+      "$\\dfrac83\\pi+4\\sqrt3\\rm\\,cm^2$",
+      "$\\dfrac52\\pi+\\dfrac{9\\sqrt3}4\\rm\\,cm^2$",
+      "$4\\pi+\\dfrac{3\\sqrt3}2\\rm\\,cm^2$",
+      "$\\dfrac32\\pi+\\dfrac{3\\sqrt3}4\\rm\\,cm^2$"
     ],
     "answer": "①",
     "solution": "P,A,O,B가 한 직선이고 PT는 접선이므로 △OPT는 T에서 직각이다. 또 PT=TB이고 접선과 현이 이루는 각을 이용하면 △PTB의 두 밑각은 30°이다. 따라서 △OPT에서 ∠OPT=30°이다.\nOA=OT=r, OP=PA+AO=6+r이고 sin30°=OT/OP이므로\n1/2=r/(r+6)\nr=6 cm이다.\n같은 접선-현 각 관계로 ∠AOT=60°, ∠TOB=120°이다.\n색칠한 넓이는 부채꼴 AOT와 삼각형 OTB의 넓이의 합이다.\n(60°/360°)π·6²=6π\n(1/2)·6·6·sin120°=9√3\n넓이=6π+9√3 cm²이므로 ①이다.",
@@ -752,7 +752,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "단답형 1. 아래 그림에서 다섯 점 $A,B,C,D,E$는 원을 5등분하는 점이다. $\\\\angle x+\\\\angle z-\\\\angle y$를 구하시오. (4점)",
+    "content": "단답형 1. 아래 그림에서 다섯 점 $A,B,C,D,E$는 원을 5등분하는 점이다. $\\angle x+\\angle z-\\angle y$를 구하시오. (4점)",
     "choices": [],
     "answer": "0°",
     "solution": "다섯 점이 원을 5등분하므로 한 호의 중심각은 360°/5=72°이다.\n∠x는 두 호를 보는 원주각이므로 x=(2×72°)/2=72°이다.\n교차하는 두 현이 만드는 위쪽 각은 마주 보는 두 호의 합의 절반이므로 y=(2×72°+72°)/2=108°이다.\n∠z는 한 호를 보는 원주각이므로 z=72°/2=36°이다.\nx+z-y=72°+36°-108°=0°이다.",
@@ -788,7 +788,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "content": "단답형 2. 아래 그림에서 원 $O$는 직각삼각형 $ABC$의 내접원이고, $\\\\angle A$의 이등분선이 원 $O$의 중심을 지난다. $\\\\overline{BD}=10\\\\rm\\,cm$, $\\\\overline{CD}=6\\\\rm\\,cm$일 때, 내접원 $O$의 반지름의 길이를 구하시오. (4점)",
+    "content": "단답형 2. 아래 그림에서 원 $O$는 직각삼각형 $ABC$의 내접원이고, $\\angle A$의 이등분선이 원 $O$의 중심을 지난다. $\\overline{BD}=10\\rm\\,cm$, $\\overline{CD}=6\\rm\\,cm$일 때, 내접원 $O$의 반지름의 길이를 구하시오. (4점)",
     "choices": [],
     "answer": "4 cm",
     "solution": "BD=10 cm, CD=6 cm이므로 BC=16 cm이다. AD가 ∠A의 이등분선이므로 각의 이등분선 정리에 따라\nAB:AC=BD:DC=10:6=5:3.\nAC=h라 하면 AB=5h/3이다. △ABC는 C에서 직각이므로\nAB²=AC²+BC²\n(5h/3)²=h²+16²\n25h²/9=h²+256\n16h²/9=256\nh=12, AB=20이다. 내접원의 반지름 r은 직각삼각형에서\nr=(AC+BC-AB)/2=(12+16-20)/2=4 cm이다.",
@@ -824,7 +824,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "content": "서술형 1. 다음 표는 5개의 변량 $A,B,C,D,E$의 편차를 나타낸 것이다. 평균이 7일 때, 아래 물음에 답하시오. (단, $x<0$)\\\n| 변량 | A | B | C | D | E |\\\n| 편차 | 2 | $2x^2-1$ | 4 | -5 | -2 |\\\n(1) 변량 $C$의 값을 구하시오. (1점)\\\n(2) $x$의 값을 구하는 풀이과정과 답을 모두 서술하시오. (2점)\\\n(3) 표준편차를 구하는 풀이과정과 답을 모두 서술하시오. (3점)",
+    "content": "서술형 1. 다음 표는 5개의 변량 $A,B,C,D,E$의 편차를 나타낸 것이다. 평균이 7일 때, 아래 물음에 답하시오. (단, $x<0$)\n| 변량 | A | B | C | D | E |\n| 편차 | 2 | $2x^2-1$ | 4 | -5 | -2 |\n(1) 변량 $C$의 값을 구하시오. (1점)\n(2) $x$의 값을 구하는 풀이과정과 답을 모두 서술하시오. (2점)\n(3) 표준편차를 구하는 풀이과정과 답을 모두 서술하시오. (3점)",
     "choices": [],
     "answer": "(1) 11, (2) -1, (3) √10",
     "solution": "편차의 합은 0이다.\n2+(2x²-1)+4-5-2=0\n2x²-2=0\nx²=1. x<0이므로 x=-1이다.\nB의 편차는 2(-1)²-1=1이다. 평균이 7이므로 C=7+4=11이다.\n표준편차는 편차 제곱의 평균의 제곱근이다.\nσ=√((2²+1²+4²+(-5)²+(-2)²)/5)\n=√(50/5)=√10이다.",
@@ -896,7 +896,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "서술형 3. 원 $O$의 지름 $\\\\overline{AB}$의 양 끝 점에서 그은 접선과 원 $O$ 위의 한 점 $P$에서 그은 접선이 만나는 점을 각각 $C,D$라고 하자. $\\\\overline{AC}=3\\\\rm\\,cm$, $\\\\overline{BD}=9\\\\rm\\,cm$일 때, $\\\\overline{AB}$의 길이를 구하는 풀이과정과 답을 모두 쓰시오. (7점)",
+    "content": "서술형 3. 원 $O$의 지름 $\\overline{AB}$의 양 끝 점에서 그은 접선과 원 $O$ 위의 한 점 $P$에서 그은 접선이 만나는 점을 각각 $C,D$라고 하자. $\\overline{AC}=3\\rm\\,cm$, $\\overline{BD}=9\\rm\\,cm$일 때, $\\overline{AB}$의 길이를 구하는 풀이과정과 답을 모두 쓰시오. (7점)",
     "choices": [],
     "answer": "6√3 cm",
     "solution": "한 점에서 원에 그은 두 접선의 길이는 같다.\nAC=CP=3 cm, BD=DP=9 cm이다.\nC, P, D가 한 직선 위에 있으므로\nCD=CP+PD=3+9=12 cm이다.\n두 끝점 A, B의 접선은 서로 평행하고 AB와 수직이다.\n그림에서 두 평행선 위 C와 D의 위치 차는\nBD-AC=9-3=6 cm이다.\n따라서 AB, 6 cm, CD가 직각삼각형을 이루어\nCD²=AB²+6²\nAB²=12²-6²=108\nAB=6√3 cm이다.",

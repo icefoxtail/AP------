@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_효천고_1학기_중간_고2_확률과통계_유사",
+  "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-PS-SURJECTION-FUNCTION-COUNT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "치역과 공역이 같은 함수의 개수(여집합 계산)",
+      "definition": "정의역의 원소 수가 공역의 원소 수보다 많은 유한집합 사이의 함수에서, 전체 함수의 개수(중복순열)에서 치역에 나오지 않는 원소가 있는 함수의 개수를 빼서 치역과 공역이 같은 함수의 개수를 세는 사고.",
+      "parentRpmRecordId": "H2-PS-RPM-033",
+      "parentRpmL1": "경우의 수",
+      "parentRpmL2": "순열과 조합",
+      "parentRpmL3": "순열",
+      "parentRpmL4": "중복·원순열",
+      "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "parentTemplateKey": null,
+      "parentTemplateCandidates": [
+        "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "TPL_CIRCULAR_PERMUTATION"
+      ],
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "standardCourse": "확률과 통계",
+      "curriculum": "2022",
+      "basis": "RPM H2-PS-RPM-033의 L4 \"중복·원순열\"은 중복순열·같은 것이 있는 순열·원순열의 배열 수를 다루며, 함수의 치역이 공역 전체가 되는 조건을 여집합(치역에서 빠지는 원소)으로 세는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_효천고_1학기_중간_고2_확률과통계_유사",
+        "qid": 9
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "함숫값의 곱이 주어진 값이 되는 함수의 개수",
+      "definition": "정의역 원소별 함숫값(음수 포함)의 곱이 주어진 값이 되는 함수의 개수를, 곱의 절댓값을 소인수분해해 절댓값의 구성과 배열(같은 것이 있는 순열)을 정하고, 부호의 곱이 양수가 되는 부호 배정(음수 개수의 홀짝)을 곱하여 세는 사고.",
+      "parentRpmRecordId": "H2-PS-RPM-033",
+      "parentRpmL1": "경우의 수",
+      "parentRpmL2": "순열과 조합",
+      "parentRpmL3": "순열",
+      "parentRpmL4": "중복·원순열",
+      "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "parentTemplateKey": null,
+      "parentTemplateCandidates": [
+        "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "TPL_CIRCULAR_PERMUTATION"
+      ],
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "standardCourse": "확률과 통계",
+      "curriculum": "2022",
+      "basis": "RPM H2-PS-RPM-033의 L4 \"중복·원순열\"은 배열 수 자체를 다루며, 함숫값의 곱 조건을 절댓값의 구성·배열과 부호의 홀짝 배정으로 나누어 세는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_효천고_1학기_중간_고2_확률과통계_유사",
+        "qid": 11
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-09",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [],
+  "aliasProposals": [],
+  "uidAssignments": [
+    {
+      "stem": "26_효천고_1학기_중간_고2_확률과통계_유사",
+      "qid": 9,
+      "generatedKeys": [
+        "EXT-L4-PS-SURJECTION-FUNCTION-COUNT"
+      ]
+    },
+    {
+      "stem": "26_효천고_1학기_중간_고2_확률과통계_유사",
+      "qid": 11,
+      "generatedKeys": [
+        "EXT-L4-PS-FUNCTION-VALUE-PRODUCT-COUNT"
+      ]
+    }
+  ],
+  "noStudentRelease": true
+}

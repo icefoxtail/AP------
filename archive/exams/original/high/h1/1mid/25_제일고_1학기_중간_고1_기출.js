@@ -434,7 +434,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 분자 조건과 분모 조건을 나타낸 두 수직선과 공통 범위의 정수점.",
+    "solutionImageCaption": "분자 a+3은 0 이상이고 분모 a−3은 음수여야 한다. 따라서 −3≤a<3에 속하는 정수를 센다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -471,7 +475,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 y=f(x)와 주황 y=f(x+1)의 두 포물선과 각각의 x절편을 표시한 그림.",
+    "solutionImageCaption": "예: f(x)를 4분의 1×(x+2)(x−5)로 택해 근의 이동을 나타냈다. y=f(x+1)은 y=f(x)를 왼쪽으로 1만큼 옮긴 그래프이므로 두 근은 −3과 4이다. 정답은 −12이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -508,7 +516,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 판별식 조건의 공통 범위를 나타내며 왼쪽 끝은 닫히고 오른쪽 끝은 열린 수직선.",
+    "solutionImageCaption": "두 판별식 조건을 합치면 −(2분의 9)≤k<1이다. 이 범위에서 가장 큰 정수를 고른다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -580,9 +592,10 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "k=0일 때 y=x²과 k=−1일 때 y=(x+1)²−3의 그래프가 각각 직선 y=3x−9/4에 접하는 두 장면을 그린 그림. 접점 (3/2,9/4)과 (1/2,−3/4)을 표시해 a=3, b=−9/4임을 보여준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²과 주황 포물선 y=(x+1)²−3에 초록 직선이 각각 접하며 접점과 꼭짓점의 좌표가 표시된 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "예: 파란 포물선은 k=0, 주황 포물선은 k=−1인 경우이고 두 포물선은 같은 직선에 접한다. 접할 조건을 k의 항등식으로 정리하면 a=3, b=−4분의 9를 얻는다. 정답은 4분의 3이다."
   },
   {
     "id": 17,
@@ -643,7 +656,7 @@ window.questionBank = [
       "원"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 한 변의 길이가 8인 정사각형 $ABCD$에 $DE=4, DF=3$이 되도록 점 $E, F$가 각각 변 $AD$와 $CD$ 위에 있다. 선분 $EF$ 위에 한 점 $P$를 잡고 점 $P$에서 변 $AB, BC$에 내린 수선의 발을 각각 $M, N$이라 할 때, 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]<br/><div style='text-align:center; margin:10px 0;'><svg width='300' height='300' viewBox='-20 -20 340 340' style='background:white;'><rect x='0' y='0' width='300' height='300' fill='none' stroke='black' stroke-width='2'/><text x='-15' y='15' font-size='14'>A</text><text x='-15' y='315' font-size='14'>B</text><text x='305' y='315' font-size='14'>C</text><text x='305' y='15' font-size='14'>D</text><circle cx='300' cy='150' r='3' fill='black'/><text x='310' y='155' font-size='14'>E</text><circle cx='187.5' cy='0' r='3' fill='black'/><text x='180' y='-5' font-size='14'>F</text><line x1='300' y1='150' x2='187.5' y2='0' stroke='black' stroke-width='2'/><circle cx='243.75' cy='75' r='4' fill='black'/><text x='250' y='70' font-size='14' font-weight='bold'>P</text><line x1='243.75' y1='75' x2='0' y2='75' stroke='black' stroke-width='1' stroke-dasharray='4'/><line x1='243.75' y1='75' x2='243.75' y2='300' stroke='black' stroke-width='1' stroke-dasharray='4'/><text x='-15' y='80' font-size='14'>M</text><text x='238' y='320' font-size='14'>N</text><rect x='0' y='75' width='243.75' height='225' fill='#f0f0f0' stroke='black' stroke-width='1.5'/><text x='150' y='320' font-size='14' text-anchor='middle'>8</text></svg></div>",
+    "content": "다음 그림과 같이 한 변의 길이가 8인 정사각형 $ABCD$에 $DE=4, DF=3$이 되도록 점 $E, F$가 각각 변 $CD$와 $AD$ 위에 있다. 선분 $EF$ 위에 한 점 $P$를 잡고 점 $P$에서 변 $AB, BC$에 내린 수선의 발을 각각 $M, N$이라 할 때, 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]<br/><div style='text-align:center; margin:10px 0;'><svg width='300' height='300' viewBox='-20 -20 340 340' style='background:white;'><rect x='0' y='0' width='300' height='300' fill='none' stroke='black' stroke-width='2'/><text x='-15' y='15' font-size='14'>A</text><text x='-15' y='315' font-size='14'>B</text><text x='305' y='315' font-size='14'>C</text><text x='305' y='15' font-size='14'>D</text><circle cx='300' cy='150' r='3' fill='black'/><text x='310' y='155' font-size='14'>E</text><circle cx='187.5' cy='0' r='3' fill='black'/><text x='180' y='-5' font-size='14'>F</text><line x1='300' y1='150' x2='187.5' y2='0' stroke='black' stroke-width='2'/><circle cx='243.75' cy='75' r='4' fill='black'/><text x='250' y='70' font-size='14' font-weight='bold'>P</text><line x1='243.75' y1='75' x2='0' y2='75' stroke='black' stroke-width='1' stroke-dasharray='4'/><line x1='243.75' y1='75' x2='243.75' y2='300' stroke='black' stroke-width='1' stroke-dasharray='4'/><text x='-15' y='80' font-size='14'>M</text><text x='238' y='320' font-size='14'>N</text><rect x='0' y='75' width='243.75' height='225' fill='#f0f0f0' stroke='black' stroke-width='1.5'/><text x='150' y='320' font-size='14' text-anchor='middle'>8</text></svg></div>",
     "choices": [
       "39",
       "$\\frac{118}{3}$",
@@ -652,7 +665,7 @@ window.questionBank = [
       "$\\frac{121}{3}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 도형을 좌표평면에 배치하여 선분 위의 점을 변수로 나타내고, 사각형의 넓이를 이차함수로 표현하여 최댓값을 구한다.\n조건 정리: $D$를 원점 $(0,0)$으로 하면 $A(0,8), C(8,0), B(8,8)$이다. $E$는 $AD$ 위에서 $DE=4$이므로 $(0,4)$, $F$는 $CD$ 위에서 $DF=3$이므로 $(3,0)$이다.\n풀이 방향: 직선 $EF$의 방정식을 구하고 그 위의 점 $P$를 설정하여 직사각형 $PMBN$의 가로와 세로 길이를 도출한다.\n정석 풀이:\n1) 직선 $EF$는 $x$절편이 3, $y$절편이 4이므로 $\\frac{x}{3} + \\frac{y}{4} = 1$, 즉 $y = -\\frac{4}{3}x+4$이다.\n2) 점 $P$의 좌표를 $(t, -\\frac{4}{3}t+4)$라 하면, $0 \\le t \\le 3$이다.\n3) 사각형 $PMBN$의 가로 길이는 $B$의 $x$좌표에서 $P$의 $x$좌표를 뺀 $8-t$이다.\n4) 사각형 $PMBN$의 세로 길이는 $B$의 $y$좌표에서 $P$의 $y$좌표를 뺀 $8-(-\\frac{4}{3}t+4) = \\frac{4}{3}t+4$이다.\n5) 넓이 $S(t) = (8-t)(\\frac{4}{3}t+4) = -\\frac{4}{3}t^2 + \\frac{20}{3}t + 32$이다.\n6) 위로 볼록한 이차함수이므로 꼭짓점 $t = -\\frac{\\frac{20}{3}}{2(-\\frac{4}{3})} = \\frac{20}{8} = \\frac{5}{2}$일 때 최대이다.\n7) 최댓값 $S(\\frac{5}{2}) = (8-\\frac{5}{2})(\\frac{4}{3} \\cdot \\frac{5}{2}+4) = \\frac{11}{2} \\cdot (\\frac{10}{3}+4) = \\frac{11}{2} \\cdot \\frac{22}{3} = \\frac{121}{3}$이다.\n결론: 따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 도형을 좌표평면에 배치하여 선분 위의 점을 변수로 나타내고, 사각형의 넓이를 이차함수로 표현하여 최댓값을 구한다.\n조건 정리: $D$를 원점 $(0,0)$으로 하면 $A(8,0), C(0,8), B(8,8)$이다. $E$는 $CD$ 위에서 $DE=4$이므로 $(0,4)$, $F$는 $AD$ 위에서 $DF=3$이므로 $(3,0)$이다.\n풀이 방향: 직선 $EF$의 방정식을 구하고 그 위의 점 $P$를 설정하여 직사각형 $PMBN$의 가로와 세로 길이를 도출한다.\n정석 풀이:\n1) 직선 $EF$는 $x$절편이 3, $y$절편이 4이므로 $\\frac{x}{3} + \\frac{y}{4} = 1$, 즉 $y = -\\frac{4}{3}x+4$이다.\n2) 점 $P$의 좌표를 $(t, -\\frac{4}{3}t+4)$라 하면, $0 \\le t \\le 3$이다.\n3) 사각형 $PMBN$의 가로 길이는 $B$의 $x$좌표에서 $P$의 $x$좌표를 뺀 $8-t$이다.\n4) 사각형 $PMBN$의 세로 길이는 $B$의 $y$좌표에서 $P$의 $y$좌표를 뺀 $8-(-\\frac{4}{3}t+4) = \\frac{4}{3}t+4$이다.\n5) 넓이 $S(t) = (8-t)(\\frac{4}{3}t+4) = -\\frac{4}{3}t^2 + \\frac{20}{3}t + 32$이다.\n6) 위로 볼록한 이차함수이므로 꼭짓점 $t = -\\frac{\\frac{20}{3}}{2(-\\frac{4}{3})} = \\frac{20}{8} = \\frac{5}{2}$일 때 최대이다.\n7) 최댓값 $S(\\frac{5}{2}) = (8-\\frac{5}{2})(\\frac{4}{3} \\cdot \\frac{5}{2}+4) = \\frac{11}{2} \\cdot (\\frac{10}{3}+4) = \\frac{11}{2} \\cdot \\frac{22}{3} = \\frac{121}{3}$이다.\n결론: 따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -780,8 +793,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q22-solution-graph.svg",
-    "solutionImageAlt": "−2≤x≤3에서 이차함수 y=(x−2)²−8의 그래프를 그리고 꼭짓점 (2,−8)에서 최솟값 −8, 끝점 (−2,8)에서 최댓값 8, 다른 끝점 (3,−7)을 표시한 그림.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: −2≤x≤3에서 위로 열린 포물선 f(x)의 양 끝점과 꼭짓점을 표시한 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "대칭축 x=2가 주어진 구간에 있으므로 x=2에서 최솟값 a−4를 갖는다. 축에서 더 먼 끝점 x=−2에서 최댓값 a+12를 가지므로 (a−4)(a+12)=−64를 푼다. 정답은 −4이다."
   }
 ];

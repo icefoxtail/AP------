@@ -33,7 +33,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산여고_1학기_기말_고1_기출c/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: x축과 y축이 있는 좌표평면에 아래로 볼록한 포물선이 그려져 있고 그 위에 식 y=(x−3)²−1이 적혀 있다. 포물선은 x축과 두 점 (2, 0), (4, 0)에서 만나고, 두 점 사이에서는 곡선이 x축 아래에 있다.",
+    "solutionImageCaption": "이차식 x²−6x+8=(x−2)(x−4)이므로 그래프 y=x²−6x+8은 x축과 x=2, x=4에서 만난다. 그림의 식 (x−3)²−1은 x²−6x+8을 정리한 같은 식이다. 그래프가 x축 아래에 있거나 x축에 닿는 구간이 함숫값이 0 이하인 구간이다. 정답은 2≤x≤4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -288,7 +292,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_매산여고_1학기_기말_고1_기출c/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 놓인 세 개의 수직선에 이차부등식의 해인 두 조각, 일차부등식의 해인 오른쪽으로 뻗는 반직선, 두 해의 공통 범위를 차례로 나타내었고, 공통 범위 안의 자연수 6과 7이 점으로 표시되어 있다. a=13일 때의 그림이다.",
+    "solutionImageCaption": "예: a=13일 때 첫째 부등식의 해는 x<1 또는 x>5이고 둘째 부등식의 해는 x<2분의 15이다. 공통 범위 5<x<2분의 15에 자연수 6과 7이 들어가므로, 자연수해가 2개가 되는 경계는 7과 8 사이에 있다. 정답은 12<a≤14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -748,7 +756,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산여고_1학기_기말_고1_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a 위의 두 수직선에 판별식 조건에서 나온 열린구간 −3<a<3과 절댓값 부등식의 해 a>1을 각각 굵은 띠로 표시했다.",
+    "solutionImageCaption": "모든 실수 x에 대하여 x²−2ax+9>0이 성립하려면 판별식의 4분의 1인 a²−9가 0보다 작아야 하므로 −3<a<3이다. 이 범위에서 a−3<0, a+3>0이므로 절댓값을 풀면 a>1이다. 정답은 1<a<3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

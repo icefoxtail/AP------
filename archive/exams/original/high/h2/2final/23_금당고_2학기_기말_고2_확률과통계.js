@@ -162,7 +162,11 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 비와 비가 오지 않는 두 갈래가 목표 달성과 미달로 나뉘는 확률 수형도.",
+    "solutionImageCaption": "비가 올 때와 오지 않을 때의 목표 달성 확률을 각각 나누어 계산한다. 정답은 0.69이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -292,9 +296,9 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INTEGER"
     ],
-    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 평균 80, 표준편차 4인 정규곡선의 왼쪽 꼬리가 73.4에서부터 색칠되어 있고, 경계는 표준화 눈금 -1.65에 해당한다.",
-    "solutionImageCaption": "발아 개수의 정규근사에서 왼쪽 꼬리 0.05의 경계는 73.4이다. 이 경계 이하의 정수 최댓값을 구한다. 정답은 73이다.",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정규곡선의 왼쪽 꼬리와 경계 73.4를 나타낸 그림.",
+    "solutionImageCaption": "왼쪽 꼬리의 0.05 경계는 73.4이므로 이 값 이하의 정수 중 가장 큰 수를 고른다. 정답은 73이다.",
     "solutionImageSize": "full"
   },
   {
@@ -426,7 +430,11 @@ window.questionBank = [
     "crossConceptKeys": [
       "CC_COMPLETE_SQUARE"
     ],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: Y의 값 −2, 0, 2가 0을 중심으로 좌우에 놓이는 수형도.",
+    "solutionImageCaption": "Y=X−3으로 바꾸면 값 −2, 0, 2가 0을 중심으로 양쪽 같은 거리에 놓인다. 정답은 a=b=1/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -467,7 +475,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −2부터 2까지의 안쪽 영역과 −3부터 3까지의 더 넓은 영역을 겹쳐 비교한 그림.",
+    "solutionImageCaption": "신뢰도 95%는 −2≤z≤2(진한 영역), 99%는 −3≤z≤3(옅은 영역까지)의 중심 구간이다. 99%의 구간이 더 넓다. 정답은 3점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -508,7 +520,11 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 10인 곡선 Y의 0 미만 꼬리와 5부터 15까지의 영역, 평균 16인 곡선 X의 10부터 22까지의 영역과 28 이상 꼬리를 나타낸 그림.",
+    "solutionImageCaption": "Y의 0 미만 꼬리와 X의 28 이상 꼬리는 확률이 같고, Y의 5~15 구간과 X의 10~22 구간은 각각 평균을 중심으로 한 구간이다. 정답은 52이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -549,7 +565,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 -1부터 1까지의 중심 영역을 표시한 그림.",
+    "solutionImageCaption": "두 중심 확률이 같을 때 공통으로 놓이는 영역을 나타낸다. 정답은 k=1/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -682,7 +702,11 @@ window.questionBank = [
     "crossConceptKeys": [
       "CC_COMBINATORICS_COUNTING"
     ],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 예선 참가 자리와 예선 면제 자리에서 우승 또는 탈락으로 나뉘는 확률 수형도.",
+    "solutionImageCaption": "선수 배정 자리에 따라 우승 확률이 달라짐을 나누어 계산한다. 정답은 3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -728,7 +752,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA",
       "CC_COMBINATORICS_COUNTING"
     ],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: X의 값 0, 3, 12, 27로 나뉘는 확률 수형도.",
+    "solutionImageCaption": "같은 눈이 포함되면 값은 0이고, 서로 다른 세 꼭짓점에서는 넓이 제곱별 확률로 나누어 기댓값을 구한다. 정답은 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -813,7 +841,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗면이 흰색인 8개 면을 양면이 흰 카드의 6개 면과 흰색·붉은색 카드의 2개 면으로 나눈 수형도.",
+    "solutionImageCaption": "윗면이 흰 면 8개를 세면 양면이 흰 카드의 면이 6개, 흰색·붉은색 카드의 면이 2개이다. 이 중 다른 면도 흰 경우를 센다. 정답은 3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -927,6 +959,10 @@ window.questionBank = [
     "crossConceptKeys": [
       "CC_COMBINATORICS_COUNTING"
     ],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자에서 원점 O에서 도착점 P까지 오른쪽과 위쪽으로 이어지는 최소 경로.",
+    "solutionImageCaption": "원점 O에서 도착점 P까지 가는 최소 경로의 예를 나타낸다. 일곱 걸음 조건에서 최소보다 두 걸음 더 움직인 경로를 센다. 정답은 8/49이다.",
+    "solutionImageSize": "full"
   }
 ];

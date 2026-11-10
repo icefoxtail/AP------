@@ -1,0 +1,132 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "수직선 위에 두 점 $A(-3)$, $B(3)$이 있고",
+  "sourceConditions": [
+    {
+      "id": "q17-c1",
+      "condition": "수직선 위에 두 점 A(-3), B(3)이 있고 점 P가 원점에 놓여 있다.",
+      "mappedTo": "A,P,B"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선 위 점 A(-3), 원점에 있는 점 P, 점 B(3)의 위치"
+  ],
+  "caption": "수직선 위의 점 A(-3), 원점에 놓인 점 P, 점 B(3)의 위치를 나타낸 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "seg-PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "P",
+    "B"
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tA",
+        "at": "A",
+        "text": "-3",
+        "anchor": "S"
+      },
+      {
+        "id": "tP",
+        "at": "P",
+        "text": "0",
+        "anchor": "S"
+      },
+      {
+        "id": "tB",
+        "at": "B",
+        "text": "3",
+        "anchor": "S"
+      }
+    ]
+  },
+  "assetPath": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사/q17.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/engine_evidence/q17-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/engine_evidence/q17-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/engine_evidence/q17-problem.svg"
+  }
+}

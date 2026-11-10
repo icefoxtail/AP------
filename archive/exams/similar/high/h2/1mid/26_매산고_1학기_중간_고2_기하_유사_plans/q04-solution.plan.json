@@ -1,0 +1,95 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "$BC\\perp AB$, $BC\\perp BF$이고 $AB$, $BF$는",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 4
+      },
+      "height": 3,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "C",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "B",
+        "F",
+        "E"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "C",
+        "D",
+        "H",
+        "G"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "B",
+        "refs": [
+          "C",
+          "A"
+        ]
+      },
+      {
+        "at": "B",
+        "refs": [
+          "C",
+          "F"
+        ]
+      },
+      {
+        "at": "C",
+        "refs": [
+          "B",
+          "D"
+        ]
+      },
+      {
+        "at": "C",
+        "refs": [
+          "B",
+          "G"
+        ]
+      }
+    ]
+  },
+  "caption": "직선 BC와 수직인 두 평면 ABFE(파란색)와 CDHG(주황색). BC는 각 평면 안의 서로 만나는 두 모서리에 모두 수직이다.",
+  "sourceConditions": [
+    "직육면체 ABCD-EFGH",
+    "직선 BC"
+  ],
+  "newVisualInformation": [
+    "BC와 수직인 평면 ABFE, CDHG와 직각 표시"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q04-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q04-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q04-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q04-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 4,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

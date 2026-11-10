@@ -1,0 +1,91 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "9",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "0",
+      "y": "5"
+    },
+    {
+      "id": "P",
+      "kind": "TANGENT_FROM",
+      "from": "R",
+      "which": 1
+    },
+    {
+      "id": "Q",
+      "kind": "TANGENT_FROM",
+      "from": "R",
+      "which": 2
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "tangent": true,
+      "at": "P"
+    },
+    {
+      "id": "t2",
+      "tangent": true,
+      "at": "Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q",
+      "label": "8"
+    },
+    {
+      "id": "sQF",
+      "from": "Q",
+      "to": "F",
+      "label": "\\frac{9}{5}"
+    },
+    {
+      "id": "sFP",
+      "from": "F",
+      "to": "P",
+      "label": "\\frac{41}{5}"
+    }
+  ],
+  "caption": "접점 P(−4,9/5), Q(4,9/5)와 초점 F(4,0)을 꼭짓점으로 하는 삼각형의 세 변 PQ=8, QF=9/5, PF=41/5를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(-4,9/5), Q(4,9/5), F(4,0), PQ=8, QF=9/5, PF=41/5",
+      "mappedTo": [
+        "points",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 PQF의 세 변의 길이"
+  ],
+  "sourceQuote": "$\\overline{PQ}=8$",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q17-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-solution.svg"
+  }
+}

@@ -33,7 +33,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q1-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 원의 중심과 내접삼각형, 105도·60도 조건 및 x 각 표시",
+    "solutionImageCaption": "첫째 그림에서 105도 원주각이 보는 큰 호의 중심각은 210도이므로 나머지 중심각은 150도이다. 둘째 그림에서 60도 중심각을 보는 원주각은 그 절반이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -67,7 +70,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q2-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 A, B, C, D, E와 중심 O, 60도·70도 각 및 50도 중심각",
+    "solutionImageCaption": "∠BED가 보는 호 BD의 중심각은 120도이고, ∠COD는 70도이므로 ∠BOC는 50도이다. 같은 호 BC를 보는 원주각은 중심각의 절반이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -101,7 +107,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q3-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 A, B, C와 중심 O, 세 호의 비 3·4·5, 120도 중심각과 x 표시",
+    "solutionImageCaption": "호의 비 AB:BC:CA가 3:4:5이므로 호 BC에 대한 중심각은 120도이다. 같은 호를 보는 원주각은 중심각의 절반이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -136,7 +145,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q4-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 도형과 지름 AB, 중심 O, 세 각을 크게 나타낸 보조 각 그림",
+    "solutionImageCaption": "AB가 지름이므로 ∠ADB는 직각이고, A, D, E가 한 직선에 있어 ∠EDB도 직각이다. 46도 중심각과 같은 호를 보는 원주각은 23도이다. 정답은 ②, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -168,7 +180,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q5-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형 ABCD와 중심 O, 두 주어진 각 30도·70도 및 x·y 표시",
+    "solutionImageCaption": "삼각형 BCD의 내각 합을 이용하면 x는 80도이다. 내접사각형 ABCD에서 마주 보는 각의 합은 180도이므로 y는 100도이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -200,7 +215,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q6-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 장면의 원에 내접한 사각형과 마주 보는 각, 주어진 각 100도·70도·60도·95도 및 x·y 표기",
+    "solutionImageCaption": "첫째 내접사각형에서 마주 보는 각의 합은 180도이므로 x는 110도, y는 80도이다. 둘째 그림은 외각과 그 맞은편 내각 및 60도 각의 선형 관계를 보여 준다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -234,7 +252,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q7-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형과 두 연장선, 50도·20도 조건 및 x 각",
+    "solutionImageCaption": "두 연장 삼각형의 각 관계와 내접사각형의 마주 보는 각 관계를 함께 쓰면 A는 105도, D는 125도이다. 따라서 x는 55도이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -268,7 +289,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q8-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 오각형과 중심 O, 호의 200도·130도 표시, 115도·100도 각 및 x",
+    "solutionImageCaption": "115도 원주각이 보는 호 BCDE는 230도이므로 나머지 호 BAE는 130도이다. 100도 원주각이 보는 호 CBAE는 200도이므로 호 BC의 중심각 x는 70도이다. 같은 호를 보는 원주각은 중심각의 절반이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -302,7 +326,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q9-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 도형과 접선 AT, 지름 AC, 두 직각 및 같은 호를 보는 원주각 표시",
+    "solutionImageCaption": "지름 AC와 접선 AT는 서로 수직이고, 지름을 보는 원주각도 직각이다. 같은 호 CB를 보는 두 원주각이 같으므로 그 보각인 두 각도 같다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -336,7 +363,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q10-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 장면의 원·접선·현 도형, 첫째 ∠ABC가 120도, 둘째 ∠CAU가 40도·∠ACB가 80도 및 x 표시",
+    "solutionImageCaption": "첫째 장면은 ∠ABC가 120도이고 x는 접선과 현 AC가 이루는 각이다. 둘째 장면은 ∠CAU가 40도, ∠ACB가 80도인 삼각형에서 x를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -370,7 +400,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q11-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원과 이등변삼각형, 접선 PT, 두 35도 각 및 x 표시와 확대된 35도 각",
+    "solutionImageCaption": "AP=AT이므로 두 밑각이 각각 35도이고, 접선과 현 AT가 이루는 각도 35도이다. 삼각형 ABT의 나머지 각은 75도이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -404,7 +437,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q12-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형과 지름 BC, 접선 AQ, 55도·90도 조건 및 x·y 표시와 확대된 55도 각",
+    "solutionImageCaption": "접선과 현 AB가 이루는 각이 55도이므로 같은 호를 보는 원주각도 55도이다. BC는 지름이어서 ∠BAC는 90도이고, 삼각형 ABC에서 x는 35도이다. 바깥 삼각형에서 ∠PAB는 125도이므로 y는 20도이다. 따라서 x+y는 55도이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -433,7 +469,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 티셔츠 치수 점도표에서 95호 점이 가장 높게 쌓이고 평균선과 중앙값선이 표시된 그림",
+    "solutionImageCaption": "95호가 가장 많이 쌓여 최빈값은 95이다. 평균 96과 중앙값 95를 함께 비교하면 최빈값에 대한 설명이 옳다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -462,7 +502,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 제기차기 개수 점도표에서 7개 자리에 점 두 개가 쌓인 그림",
+    "solutionImageCaption": "최빈값이 7이 되려면 x는 7이다. 자료를 작은 순서로 놓으면 가운데 두 값이 6과 7이므로 중앙값을 구할 수 있다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -549,7 +593,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 자유투 성공 횟수 점도표에서 평균선과 각 점의 편차를 표시한 그림",
+    "solutionImageCaption": "평균 7을 기준으로 편차의 제곱의 합은 40이고 자료가 8개이므로 분산은 5이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -578,7 +626,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 취미 활동 시간 점도표에서 평균선과 각 점의 편차를 표시한 그림",
+    "solutionImageCaption": "평균 4를 기준으로 편차의 제곱의 합은 10이므로 분산은 2이고 표준편차는 분산의 양의 제곱근인 √2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -610,7 +662,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: x와 y의 산점도에서 두 점을 다른 색과 제외 범례로 표시",
+    "solutionImageCaption": "두 표시점을 제외한 나머지 점은 한 방향의 띠를 이루지 않는다. 두 변량 사이에 뚜렷한 상관관계가 없다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -642,7 +698,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 필기와 실기 점수의 산점도, y=x 경계선과 그 위쪽으로 표시된 두 점",
+    "solutionImageCaption": "실기 점수가 필기 점수보다 높은 점은 y>x인 두 점이다. 10명 중 비율은 20%이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -669,7 +729,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q21-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형 ABCD와 중심 O, 마주 보는 두 호의 a와 b 표시",
+    "solutionImageCaption": "A와 C가 보는 두 호의 중심각을 각각 a와 b라 하면 한 바퀴의 합은 360도이다. 원주각은 보는 중심각의 절반이므로 두 마주 보는 각의 합은 180도이다. 정답은 180도이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -698,7 +761,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q22-solution.svg"
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형과 지름 BC, 접선 PT, 62도·90도 조건 및 x·y 각 표시",
+    "solutionImageCaption": "접선과 현 TB의 각이 62도이므로 같은 현을 보는 원주각도 62도이다. BC가 지름이므로 각 BTC는 직각이고, 같은 호 TC를 보는 두 원주각은 같다. 정답은 x=28도, y=28도이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

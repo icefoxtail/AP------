@@ -37,9 +37,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q1-solution.svg",
-    "solutionImageAlt": "판별식이 0이 되는 두 경우 모두 x축에 접한다.",
-    "solutionImageCaption": "판별식이 0이 되는 두 경우 모두 x축에 접한다.",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란색 포물선과 주황색 포물선이 각각 원점과 x좌표가 3인 점에서 x축에 접한다.",
+    "solutionImageCaption": "x축에 접할 때 이차방정식의 판별식이 0이 된다. k²+6k=0에서 얻은 두 k 값의 합을 구한다. 정답은 −6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -77,7 +77,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: m>3과 1≤m≤10의 두 수직선 아래에 공통 범위와 그 안의 정수점이 표시되어 있다.",
+    "solutionImageCaption": "x로 묶은 뒤 남은 이차방정식은 0이 아닌 서로 다른 두 실근을 가져야 한다. 판별식 조건 m>3을 10 이하의 자연수 범위와 함께 적용한다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -148,7 +152,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: x≥−3, x≤−1과 공통 범위 −3≤x≤−1이 같은 눈금의 수직선에 표시되어 있다.",
+    "solutionImageCaption": "주어진 연속부등식을 두 일차부등식으로 나누면 x≥−3과 x≤−1이다. 공통 범위의 양 끝값을 더한다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -184,7 +192,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: x≥1과 x≤3의 공통 범위가 양 끝을 포함하는 수직선 구간으로 표시되어 있다.",
+    "solutionImageCaption": "절댓값 부등식을 −x≤2x−3≤x로 바꾸어 두 조건을 푼다. 공통 범위는 1≤x≤3이므로 양 끝값의 차를 구한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -248,7 +260,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a, 세로축 S인 좌표평면에 아래로 열린 파란색 포물선과 꼭짓점이 표시되어 있다.",
+    "solutionImageCaption": "닮음을 이용하면 직사각형의 가로 길이는 60−3a이고 넓이는 S(a)=60a−3a²이다. 이를 완전제곱꼴로 고쳐 0<a<20 안의 꼭짓점에서 넓이가 최대임을 확인한다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -506,7 +522,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색 포물선 f(x)와 주황색 직선 y=−x+3이 한 점에서 접하고 포물선 꼭짓점에서 x축으로 점선이 내려가 있다.",
+    "solutionImageCaption": "f(−3)=f(1)이므로 대칭축은 x=−1이고 a=2이다. 직선과 만나는 조건의 경계에서는 두 그래프가 접하여 b가 4분의 21이며 f(2)=8+b이다. 정답은 4분의 53이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -543,7 +563,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색 포물선 y=x²−2x+5와 주황색 수평선 y=5가 모두 x축 위에 놓여 있다.",
+    "solutionImageCaption": "예: 파란색은 k=1인 경우이며, 주황색은 이차항과 일차항이 사라지는 경우이다. 해가 없으려면 식이 모든 x에서 양수여야 하므로 상수함수인 경우와 0<k<5인 경우를 함께 확인한다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -573,7 +597,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색 포물선 h(x)의 두 x절편과 꼭짓점이 보이고, x=−4에서 x=0까지의 곡선이 주황색으로 강조되어 있다.",
+    "solutionImageCaption": "교점의 x좌표에서 h(x)=0이므로 h(x)=a(x+7)(x+1)이고 축은 x=−4이다. 최댓값 9로부터 a=−1을 구하면 주어진 범위에서 축으로부터 가장 먼 x=0에서 최솟값을 갖는다. 정답은 −7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -610,7 +638,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 열린 구간의 두 끝 16과 2분의 33, 그리고 16 다음 정수의 위치를 나타내는 점이 수직선에 표시되어 있다.",
+    "solutionImageCaption": "예: a²가 2분의 33인 경우 오른쪽 공통 범위와 16 다음 정수의 위치를 비교하였다. 왼쪽 공통 범위에는 항상 정수가 없으며, 오른쪽에서도 다음 정수가 포함되지 않아야 한다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -647,7 +679,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: a₁₁·a₁₂에 대응하는 파랑·주황 포물선은 x축과 만나지 않는다. a₂₁의 초록 포물선은 x축과 두 점에서 만나고 a₂₂의 분홍 포물선은 x축에 접한다.",
+    "solutionImageCaption": "각 aᵢⱼ에 대응하는 이차방정식의 실근 개수를 x축과의 교점으로 확인하여 A를 채운다. A²=A이므로 거듭제곱의 성분 합은 같다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -709,9 +745,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q20-solution.svg",
-    "solutionImageAlt": "-2≤x≤0에서 양 끝점의 함숫값 3이 최댓값",
-    "solutionImageCaption": "-2≤x≤0에서 양 끝점의 함숫값 3이 최댓값",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: −2≤x≤0의 닫힌 구간에 파란색 포물선이 그려져 있고 꼭짓점 (−1, 1)에서 x축으로 점선이 내려가 있다.",
+    "solutionImageCaption": "완전제곱꼴 y=2(x+1)²+1에서 축은 x=−1이다. 구간의 양 끝점은 축에서 같은 거리만큼 떨어져 있어 같은 함숫값을 가지며 이 값이 최댓값이다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -761,9 +797,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q22-solution.svg",
-    "solutionImageAlt": "3x²+x-2≤0의 해는 그래프가 x축 아래에 있는 -1≤x≤2/3이다.",
-    "solutionImageCaption": "3x²+x-2≤0의 해는 그래프가 x축 아래에 있는 -1≤x≤2/3이다.",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선은 x축의 −1과 3분의 2에서 만나며, 두 근 사이의 x축 아래 부분이 주황색으로 강조되어 있다.",
+    "solutionImageCaption": "a=−2, b=6을 대입하면 3x²+x−2≤0이다. x축 아래의 닫힌 구간 −1≤x≤3분의 2에서 정수를 센다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {

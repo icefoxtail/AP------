@@ -120,7 +120,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 정규곡선 두 개에 평균 a, b와 눈금 f(a), g(b)를 표시하고 각 경계까지의 왼쪽 누적 영역을 칠한 그림.",
+    "solutionImageCaption": "예: 첫 누적확률은 절반보다 크고 둘째는 절반보다 작다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -288,7 +292,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 -2부터 1까지와 -1부터 2까지의 두 구간을 서로 다른 음영으로 겹쳐 나타낸 그림.",
+    "solutionImageCaption": "두 구간의 겹친 부분과 대칭인 양 끝 넓이를 비교한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -328,7 +336,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 1.96 오른쪽의 꼬리 영역을 칠한 그림.",
+    "solutionImageCaption": "상위 2.5% 경계의 표준화 값 1.96에서 오른쪽 꼬리 영역을 나타냈다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -449,9 +461,9 @@ window.questionBank = [
       "확률과 통계",
       "모집단과 표본"
     ],
-    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 표준정규곡선에서 -1/3과 4/3 사이의 영역을 칠한 그림. 눈금은 소수 근삿값 -0.333과 1.333으로 표시했다.",
-    "solutionImageCaption": "표준화한 두 경계는 a=-1/3, b=4/3이며, 그림의 눈금에는 소수 근삿값 -0.333과 1.333으로 표시했다. 표준정규곡선에서 그 사이의 영역을 나타냈다. 정답은 1이다.",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 경계 a와 b 사이의 영역을 칠한 그림.",
+    "solutionImageCaption": "표본평균을 표준화한 두 경계는 a=-1/3, b=4/3이고, 그 사이의 영역이 구하는 확률이다. 정답은 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -536,7 +548,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "모집단과 표본"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 -2보다 작은 쪽과 2보다 큰 쪽의 두 꼬리를 칠한 그림.",
+    "solutionImageCaption": "표준화한 경계 -2와 2 바깥의 양쪽 꼬리가 구하는 확률이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -696,7 +712,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "기댓값과 분산"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 주사위 눈 a를 가로, 둘째 눈 b를 세로로 둔 표에서 차가 0, 1, 2인 칸을 회색으로 강조한다.",
+    "solutionImageCaption": "첫째 주사위 눈을 a, 둘째 주사위 눈을 b로 두고 차가 0, 1, 2인 순서쌍을 센다. 이를 시행 횟수와 기댓값에 적용한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -736,7 +756,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 a보다 왼쪽 꼬리는 진한 회색, 2보다 오른쪽 꼬리는 연한 회색으로 칠하고 두 꼬리의 넓이를 p로 같게 나타낸 그림.",
+    "solutionImageCaption": "a 왼쪽의 꼬리(진한 회색)와 2 오른쪽의 꼬리(연한 회색)는 평균을 기준으로 대칭이라 넓이 p가 같다. 따라서 P(Z≤2)=P(Z≥a)이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -854,7 +878,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 1 왼쪽과 -1 오른쪽의 두 영역을 칠한 그림.",
+    "solutionImageCaption": "두 표준화 구간은 중심을 기준으로 대칭이다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

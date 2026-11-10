@@ -1,0 +1,1978 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_제일고_1학기_중간_고2_기하_유사-candidate-v1",
+  "examUid": "26_제일고_1학기_중간_고2_기하_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사.js",
+  "expectedSourceBlobSha1": "c4ef5f057efca9ae555430f23f5d3930cf28297f",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "registryChanges": [
+    {
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_제일고_1학기_중간_고2_기하_유사.registry.json",
+      "registrySha256": "3f1bcc26f1c96b877d1c54121fe2492828cc83f753876f590493f36d23fa1641",
+      "keys": [
+        "EXT-CROSS-CONIC-COMMON-FOCI",
+        "EXT-CROSS-PARABOLA-FOCAL-DISTANCE-DIRECTRIX-SUM-MINIMUM",
+        "EXT-TPL-SPACE-PLANE-DETERMINATION-CASE-CHECK",
+        "EXT-TPL-CONIC-EQUATION-DERIVATION-FROM-DEFINITION"
+      ],
+      "details": {
+        "generatedL4": [],
+        "generatedCrossConcepts": [
+          {
+            "key": "EXT-CROSS-CONIC-COMMON-FOCI",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "초점을 공유하는 타원과 쌍곡선",
+            "definition": "타원과 쌍곡선이 같은 두 점을 초점으로 가지면 타원의 c^2=a^2-b^2와 쌍곡선의 c^2=a^2+b^2가 같다는 조건으로 계수를 구하거나, 두 곡선의 교점에서 두 초점까지의 거리의 합과 차를 연립하는 개념.",
+            "parentKey": "CC_ELLIPSE",
+            "parentLabelKo": "타원",
+            "standardUnitKey": "H22-GE-01",
+            "subUnitKey": "H22-GE-01-CORE",
+            "standardCourse": "기하",
+            "curriculum": "2022",
+            "basis": "CC_ELLIPSE와 CC_HYPERBOLA는 각 곡선의 정의만 다루며 두 곡선이 초점을 공유할 때의 초점거리 일치와 교점의 거리 합·차 연립을 구분하지 못한다. Q13, Q23에서 사용.",
+            "firstUsed": {
+              "stem": "26_제일고_1학기_중간_고2_기하_유사",
+              "qid": 13
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-09",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-PARABOLA-FOCAL-DISTANCE-DIRECTRIX-SUM-MINIMUM",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "포물선 위 점의 초점거리를 준선거리로 바꾸는 거리합의 최솟값",
+            "definition": "포물선 위의 점 P에서 초점까지의 거리를 준선까지의 거리로 바꾸어, P에서 다른 정점까지의 거리와의 합이 최소가 되는 위치(정점에서 준선에 내린 수선 위)와 그 최솟값을 구하는 개념.",
+            "parentKey": "CC_PARABOLA",
+            "parentLabelKo": "포물선",
+            "standardUnitKey": "H22-GE-01",
+            "subUnitKey": "H22-GE-01-CORE",
+            "standardCourse": "기하",
+            "curriculum": "2022",
+            "basis": "CC_PARABOLA는 초점과 준선에 이르는 거리가 같다는 정의만 다루며, 이를 이용해 다른 정점과의 거리의 합을 최소화하는 변환을 구분하지 못한다. Q20에서 사용.",
+            "firstUsed": {
+              "stem": "26_제일고_1학기_중간_고2_기하_유사",
+              "qid": 20
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-09",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedProblemTypes": [],
+        "generatedTemplates": [
+          {
+            "key": "EXT-TPL-SPACE-PLANE-DETERMINATION-CASE-CHECK",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "평면의 결정조건에 보기별로 대조하는 판정",
+            "definition": "보기로 주어진 점·직선의 조합마다 평면의 결정조건(세 점, 직선과 점, 만나는 두 직선, 평행한 두 직선)에 해당하는지 확인하고 해당하지 않는 것(또는 해당하는 것)을 고르는 풀이 골격.",
+            "parentRpmRecordId": "H2-GEO-RPM-053",
+            "parentRpmL1": "공간도형과 공간좌표",
+            "parentRpmL2": "공간도형",
+            "parentRpmL3": "직선과 평면",
+            "parentRpmL4": "평행·수직",
+            "parentKey": "PT_GEO_SPACE_FIGURE",
+            "parentLabelKo": "공간도형 문제",
+            "parentKind": "CANONICAL_PROBLEM_TYPE",
+            "internalSkeleton": "보기별 점·직선 조합 확인 -> 결정조건과 대조 -> 조건이 어긋나는 보기 선택",
+            "standardUnitKey": "H22-GE-03",
+            "subUnitKey": "H22-GE-03-CORE",
+            "standardCourse": "기하",
+            "curriculum": "2022",
+            "basis": "canonical 공간도형 TPL은 두 직선 사이의 각, 이면각, 수선의 발·정사영뿐이며 평면의 결정조건을 보기별로 판정하는 골격이 없다. Q6에서 사용.",
+            "firstUsed": {
+              "stem": "26_제일고_1학기_중간_고2_기하_유사",
+              "qid": 6
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-09",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-TPL-CONIC-EQUATION-DERIVATION-FROM-DEFINITION",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "이차곡선의 정의에서 방정식을 유도하는 과정 완성",
+            "definition": "두 초점으로부터의 거리의 합(또는 차)이 일정한 점의 자취라는 정의에서 출발해 양변을 제곱하고 정리하여 표준방정식에 이르는 유도 과정의 빈칸을 채우는 풀이 골격.",
+            "parentRpmRecordId": "H2-GEO-RPM-041",
+            "parentRpmL1": "이차곡선",
+            "parentRpmL2": "이차곡선",
+            "parentRpmL3": "타원",
+            "parentRpmL4": "정의와 방정식",
+            "parentKey": "PT_GEO_ELLIPSE",
+            "parentLabelKo": "타원 문제",
+            "parentKind": "CANONICAL_PROBLEM_TYPE",
+            "internalSkeleton": "정의식 -> 근호 제곱 -> 정리 -> 치환 -> 표준형",
+            "standardUnitKey": "H22-GE-01",
+            "subUnitKey": "H22-GE-01-CORE",
+            "standardCourse": "기하",
+            "curriculum": "2022",
+            "basis": "canonical 타원 TPL은 표준방정식 해석과 축·초점 관계 활용뿐이며 정의에서 방정식을 유도하는 과정의 빈칸 채우기 골격이 없다. Q11에서 사용.",
+            "firstUsed": {
+              "stem": "26_제일고_1학기_중간_고2_기하_유사",
+              "qid": 11
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-09",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ]
+      }
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "포물선",
+          "l4": "초점·준선",
+          "recordId": "H2-GEO-RPM-040",
+          "l3Label": "포물선",
+          "l4Label": "초점·준선",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-040 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "포물선",
+        "rpmPrimaryL4": "초점·준선",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+        "crossConceptKeys": [
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "표준형 y^2=4px에서 초점 (p,0)을 읽는 기본 공식 적용이라 하",
+        "difficultyBasis": "공식에 대입해 한 단계로 닫히므로 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 포물선 y²=−16x는 꼭짓점이 원점이고 왼쪽으로 열려 있으며, 초점 F(−4,0)과 준선 x=4를 갖는다."
+        },
+        "metaRationale": {
+          "problemType": "포물선 y^2=4px의 4p를 계수와 비교해 초점의 x좌표를 구한다. (PT/TPL: PT_GEO_PARABOLA / TPL_GEO_PARABOLA_FOCUS_DIRECTRIX)",
+          "crossConcept": "포물선의 표준형과 초점의 위치 관계를 쓴다.",
+          "condition": "제한 조건 없이 식만으로 값이 정해져 조건 키가 필요 없다(풀이 어디에서도 범위·부호 제한을 쓰지 않음).",
+          "integration": "한 단계 계산이라 NONE.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 1,
+          "variationNote": "원본 Q1은 위로 열린 포물선 x^2=20y의 초점을 묻고, 유사는 왼쪽으로 열린 포물선 y^2=-16x의 초점을 묻도록 열린 방향과 값을 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "포물선",
+          "l4": "초점·준선",
+          "recordId": "H2-GEO-RPM-040",
+          "l3Label": "포물선",
+          "l4Label": "초점·준선",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-040 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "포물선",
+        "rpmPrimaryL4": "초점·준선",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+        "crossConceptKeys": [
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "포물선의 정의를 두 번 적용하는 기본 길이 계산이라 하",
+        "difficultyBasis": "AF=AM, AB=AF+FB, BN=BF 세 관계를 순서대로 잇는 2단계라 2",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 포물선의 초점 F를 지나는 직선과 포물선의 교점 A, B에서 준선 l에 내린 수선의 발 M, N을 나타낸 그림이다(AM=9, AB=15를 만족하는 한 예).",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 포물선 위의 점에서 초점까지의 거리와 준선까지의 거리가 같다: AF=AM=9, BF=BN=6, 따라서 AB=15."
+        },
+        "metaRationale": {
+          "problemType": "초점을 지나는 현의 양 끝점에서 초점까지의 거리를 준선까지의 거리로 바꾸어 길이를 구한다. (PT/TPL: PT_GEO_PARABOLA / TPL_GEO_PARABOLA_FOCUS_DIRECTRIX)",
+          "crossConcept": "포물선 위의 점에서 초점까지의 거리와 준선까지의 거리가 같다는 정의를 쓴다.",
+          "condition": "길이가 주어질 뿐 풀이를 제한하는 조건 키가 필요하지 않다.",
+          "integration": "AF=AM -> BF=AB-AF -> BN=BF 순서로 이어지는 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 2,
+          "variationNote": "원본 Q2는 AM=5, AF 관계로 BN을 구했고, 유사는 AM=9, AB=15로 주어 BN=6을 구한다(포물선의 값이 달라진다).",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "타원",
+          "l4": "초점·장축·단축",
+          "recordId": "H2-GEO-RPM-042",
+          "l3Label": "타원",
+          "l4Label": "초점·장축·단축",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-042 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "타원",
+        "rpmPrimaryL4": "초점·장축·단축",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+        "crossConceptKeys": [
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "초점의 좌표에서 c를 읽고 c^2=a^2-b^2에 대입하는 기본 문항이라 하",
+        "difficultyBasis": "공식 한 번과 양수 b 선택뿐이라 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 장축이 y축 위에 있는 타원에서 초점거리 OF=3, 단축의 반 OB=b=6, 장축의 반 FB=a=3√5의 관계를 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "장축이 y축 위에 있는 타원에서 초점의 좌표로 c를 읽어 b^2를 구한다. (PT/TPL: PT_GEO_ELLIPSE / TPL_GEO_ELLIPSE_AXIS_FOCUS)",
+          "crossConcept": "타원의 장축·단축·초점 사이의 관계 c^2=a^2-b^2를 쓴다.",
+          "condition": "b>0이 b^2=36에서 b=6을 고르는 데 쓰인다.",
+          "integration": "한 단계 계산이라 NONE.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 3,
+          "variationNote": "원본 Q3은 장축이 x축 위인 타원(초점 (±2,0))에서 a를 구했고, 유사는 장축이 y축 위인 타원(분모 45, 초점 (0,±3))에서 b를 구하도록 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "standardUnit": "이차곡선의 접선",
+        "subUnitKey": "H22-GE-02-CORE",
+        "subUnit": "이차곡선의 접선 핵심 개념",
+        "conceptClusterKey": "H22-GE-02-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선의 접선",
+          "l3": "타원의 접선",
+          "l4": "접점형",
+          "recordId": "H2-GEO-RPM-049",
+          "l3Label": "타원의 접선",
+          "l4Label": "접점형",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-049 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선의 접선",
+        "rpmPrimaryL3": "타원의 접선",
+        "rpmPrimaryL4": "접점형",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-049",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_CONIC_TANGENT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "접점이 주어진 타원의 접선 공식을 쓰고 한 점을 대입하는 기본 문항이라 하",
+        "difficultyBasis": "접선 식을 세운 뒤 대입하는 2단계 계산이지만 단계가 단순해 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 점의 좌표만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 타원 위의 점 (2,3)에서의 접선 x+2y=8은 점 (−12,10)을 지난다."
+        },
+        "metaRationale": {
+          "problemType": "타원 위의 점에서의 접선의 방정식을 세우고 지나는 점의 좌표를 대입해 미지수를 구한다. (PT/TPL: PT_GEO_CONIC_TANGENT / TPL_GEO_TANGENT_ON_CONIC)",
+          "crossConcept": "타원 위의 점 (x1,y1)에서의 접선 x1x/a^2+y1y/b^2=1을 쓴다.",
+          "condition": "접점이 주어져 있어 별도 제한 조건 키가 필요하지 않다.",
+          "integration": "접선 식 -> 대입의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 4,
+          "variationNote": "원본 Q4의 구조(타원 위의 점에서의 접선이 지나는 점의 미지 좌표)를 유지하고 타원 x^2/16+y^2/12=1, 접점 (2,3)으로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선의 접선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "이차곡선의 이동",
+          "l4": "평행이동",
+          "recordId": "H2-GEO-RPM-045",
+          "l3Label": "이차곡선의 이동",
+          "l4Label": "평행이동",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-045 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "이차곡선의 이동",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-045",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_HYPERBOLA",
+        "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+        "crossConceptKeys": [
+          "CC_HYPERBOLA",
+          "CC_PARALLEL_TRANSLATION",
+          "CC_ELLIPSE",
+          "CC_ASYMPTOTE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "평행이동한 쌍곡선의 중심·초점·꼭짓점·점근선을 보기마다 판정하는 개념 확인이라 중",
+        "difficultyBasis": "보기 5개를 각각 독립으로 판정하고 평행이동을 반영해야 하므로 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 보기 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 쌍곡선 (y−2)²/16−(x+1)²/9=1의 초점 F, F′, 꼭짓점 A, A′, 점근선과, 같은 초점을 갖는 타원 (x+1)²/24+(y−2)²/49=1을 함께 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "평행이동한 쌍곡선의 중심, 초점, 꼭짓점, 점근선과 공초점 타원 조건을 보기별로 판정한다. (PT/TPL: PT_GEO_HYPERBOLA / TPL_GEO_HYPERBOLA_STANDARD_EQUATION)",
+          "crossConcept": "쌍곡선의 평행이동, 점근선, 초점의 성질과 같은 초점을 갖는 타원의 관계를 보기에서 모두 쓴다.",
+          "condition": "보기별 독립 판정이며 풀이를 제한하는 조건 키가 필요하지 않다.",
+          "integration": "보기별 독립 판정이라 CASE_BRANCH.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 5,
+          "variationNote": "원본 Q5는 쌍곡선의 성질 판정 문항이고, 유사는 세로 방향 쌍곡선 (y-2)^2/16-(x+1)^2/9=1의 성질과 공초점 타원 보기로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "standardUnit": "공간도형",
+        "subUnitKey": "H22-GE-03-CORE",
+        "subUnit": "공간도형 핵심 개념",
+        "conceptClusterKey": "H22-GE-03-CORE",
+        "rpmPrimary": {
+          "l1": "공간도형과 공간좌표",
+          "l2": "공간도형",
+          "l3": "직선과 평면",
+          "l4": "평면이 하나로 결정되는 조건 판별",
+          "recordId": "H2-GEO-RPM-053",
+          "l3Label": "직선과 평면",
+          "l4Label": "평면이 하나로 결정되는 조건 판별",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-GEO-PLANE-DETERMINATION-CONDITION",
+          "parentRpmL4": "평행·수직",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-GEO-RPM-053; 크로스워크 행이 RPM_ONLY라 PT/TPL은 canonical PT 또는 확장 TPL에 연결"
+        },
+        "rpmPrimaryL1": "공간도형과 공간좌표",
+        "rpmPrimaryL2": "공간도형",
+        "rpmPrimaryL3": "직선과 평면",
+        "rpmPrimaryL4": "평면이 하나로 결정되는 조건 판별",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+        "rpmGeneratedL4Key": "EXT-L4-GEO-PLANE-DETERMINATION-CONDITION",
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+        "templateKey": "EXT-TPL-SPACE-PLANE-DETERMINATION-CASE-CHECK",
+        "crossConceptKeys": [
+          "CC_SPACE_FIGURE",
+          "CC_SPATIAL_POSITION_RELATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "평면의 결정조건 네 가지를 보기마다 대조하는 기본 개념 확인이라 하",
+        "difficultyBasis": "보기 5개를 정의와 하나씩 대조하는 1단계 판정이라 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 평면의 결정조건을 말로 묻는 문항이라 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "각 보기를 평면의 결정조건 네 가지에 대조하는 판정이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "직선·점·평면의 조합이 평면을 하나로 결정하는지 보기마다 판정한다. (PT/TPL: PT_GEO_SPACE_FIGURE / EXT-TPL-SPACE-PLANE-DETERMINATION-CASE-CHECK)",
+          "crossConcept": "평면이 하나로 결정되는 네 조건(세 점, 직선과 점, 만나는 두 직선, 평행한 두 직선)과 꼬인 위치에 있는 두 직선은 한 평면에 놓이지 않는다는 위치 관계 판별을 쓴다(CC_SPACE_FIGURE, CC_SPATIAL_POSITION_RELATION).",
+          "condition": "공간도형의 위치 관계 서술이며 별도 제한 조건 키가 필요하지 않다.",
+          "integration": "보기별 독립 판정이라 CASE_BRANCH.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 6,
+          "variationNote": "원본 Q6과 같이 평면이 하나로 결정되지 않는 조건 하나를 고르게 하되, 보기의 도형 조합을 모두 새로 구성했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "공간도형과 공간좌표",
+        "L2": "공간도형"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전) / 독립 검수(R1)에서 CrossConcept 보강",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "쌍곡선",
+          "l4": "점근선",
+          "recordId": "H2-GEO-RPM-044",
+          "l3Label": "쌍곡선",
+          "l4Label": "점근선",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-044 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "쌍곡선",
+        "rpmPrimaryL4": "점근선",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-044",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_HYPERBOLA",
+        "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+        "crossConceptKeys": [
+          "CC_HYPERBOLA",
+          "CC_ASYMPTOTE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "점근선의 기울기 b/a와 초점거리 c로 a, b를 구하는 기본 연립 계산이라 하",
+        "difficultyBasis": "b/a=3/4과 a^2+b^2=25를 연립하는 2단계라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 쌍곡선 x²/16−y²/9=1에서 a=4, b=3, 초점거리 c=5이고 점근선 y=3x/4가 점 (4,3)을 지나는 모습을 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "점근선의 기울기와 초점의 좌표에서 a, b를 구해 허축의 길이를 구한다. (PT/TPL: PT_GEO_HYPERBOLA / TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS)",
+          "crossConcept": "쌍곡선의 점근선 y=±(b/a)x와 c^2=a^2+b^2를 함께 쓴다.",
+          "condition": "a>0, b>0이 연립해에서 양수 해를 고르는 데 쓰인다.",
+          "integration": "점근선 기울기 -> c^2=a^2+b^2 -> 허축 길이 2b의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 7,
+          "variationNote": "원본 Q7은 주축의 길이와 점근선으로 a+b를 구했고, 유사는 한 초점 (5,0)과 점근선 y=3x/4로 허축의 길이를 구하도록 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "이차곡선의 이동",
+          "l4": "조건으로 방정식",
+          "recordId": "H2-GEO-RPM-046",
+          "l3Label": "이차곡선의 이동",
+          "l4Label": "조건으로 방정식",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-046 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "이차곡선의 이동",
+        "rpmPrimaryL4": "조건으로 방정식",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-046",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_PARALLEL_TRANSLATION",
+          "CC_VERTICAL_SEGMENT_LENGTH"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "초점 조건으로 평행이동한 타원의 식을 세우고 y축과의 교점 거리를 구하는 문항이라 중",
+        "difficultyBasis": "중심·a^2·b^2 결정 -> 식 세우기 -> 교점 -> 거리의 4단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 초점의 좌표와 장축의 길이만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 두 초점 (−1,−2), (7,−2)와 중심 (3,−2)를 갖는 타원이 y축과 만나는 두 점 A, B 사이의 거리는 24/5이다."
+        },
+        "metaRationale": {
+          "problemType": "두 초점과 장축의 길이로 평행이동한 타원의 방정식을 세우고 y축과의 두 교점 사이의 거리를 구한다. (PT/TPL: PT_GEO_ELLIPSE / TPL_GEO_ELLIPSE_STANDARD_EQUATION)",
+          "crossConcept": "타원의 정의에서 중심, a, b를 정하고 평행이동한 표준형을 세운다.",
+          "condition": "교점이 서로 다른 두 점이라는 서술은 주어진 정보이며 해를 가르는 데 쓰이지 않아 조건 키가 필요하지 않다.",
+          "integration": "중심 -> 방정식 -> 교점 -> 거리의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 8,
+          "variationNote": "원본 Q8의 구조(초점과 장축으로 타원을 세워 y축과의 교점 거리)를 유지하고 초점 (-1,-2),(7,-2), 장축 10으로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "standardUnit": "이차곡선의 접선",
+        "subUnitKey": "H22-GE-02-CORE",
+        "subUnit": "이차곡선의 접선 핵심 개념",
+        "conceptClusterKey": "H22-GE-02-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선의 접선",
+          "l3": "포물선의 접선",
+          "l4": "접점형",
+          "recordId": "H2-GEO-RPM-047",
+          "l3Label": "포물선의 접선",
+          "l4Label": "접점형",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-047 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선의 접선",
+        "rpmPrimaryL3": "포물선의 접선",
+        "rpmPrimaryL4": "접점형",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-047",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_PARABOLA",
+          "CC_CONIC_TANGENT",
+          "CC_ELLIPSE",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "포물선의 접선이 타원의 중심을 지난다는 조건으로 접점을 구하는 다단계 문항이라 중",
+        "difficultyBasis": "넓이 이등분 조건 해석 -> 접선 식 -> 접점 결정 -> a^2+b^2의 4단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 곡선의 식만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 포물선 x²=−12y 위의 점 P(a,−2)에서의 접선이 타원의 중심 C(0,2)를 지나 타원의 넓이를 이등분한다."
+        },
+        "metaRationale": {
+          "problemType": "타원의 넓이를 이등분하는 직선이 중심을 지난다는 사실과 포물선의 접선 공식을 연결해 접점을 구한다. (PT/TPL: PT_GEO_CONIC_TANGENT / TPL_GEO_TANGENT_ON_CONIC)",
+          "crossConcept": "포물선 위의 점에서의 접선의 방정식과 타원의 중심의 성질을 쓴다.",
+          "condition": "접점의 좌표가 접선 조건으로 정해지고 별도 제한 조건 키가 필요하지 않다.",
+          "integration": "넓이 이등분 -> 접선 -> 접점의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 9,
+          "variationNote": "원본 Q9와 같은 구조(포물선의 접선이 타원의 넓이를 이등분)에서 포물선 x^2=-12y, 타원 중심 (0,2)로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선의 접선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-03",
+        "standardUnit": "공간도형",
+        "subUnitKey": "H22-GE-03-CORE",
+        "subUnit": "공간도형 핵심 개념",
+        "conceptClusterKey": "H22-GE-03-CORE",
+        "rpmPrimary": {
+          "l1": "공간도형과 공간좌표",
+          "l2": "공간도형",
+          "l3": "두 직선이 이루는 각",
+          "l4": "평행선에 의한 각의 환원",
+          "recordId": "H2-GEO-RPM-084",
+          "l3Label": "두 직선이 이루는 각",
+          "l4Label": "평행선에 의한 각의 환원",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-084 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "공간도형과 공간좌표",
+        "rpmPrimaryL2": "공간도형",
+        "rpmPrimaryL3": "두 직선이 이루는 각",
+        "rpmPrimaryL4": "평행선에 의한 각의 환원",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-084",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+        "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+        "crossConceptKeys": [
+          "CC_SPACE_FIGURE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "정사면체와 정팔면체에서 평행 이동으로 두 직선이 이루는 각을 환원해 구하는 문항이라 중",
+        "difficultyBasis": "각 환원, 삼각형 길이 계산, 삼각비 곱의 3단계라 3",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 정사면체 ABCD와 정팔면체 EFGHIJ(위 꼭짓점 E, 아래 꼭짓점 J, 가운데 정사각형 FGHI)를 나타낸 그림이다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 정사면체에서 CD의 중점 M에 대하여 AM, BM은 CD에 수직이다."
+        },
+        "metaRationale": {
+          "problemType": "정다면체의 두 모서리가 이루는 각을 평행한 모서리로 옮겨 삼각형의 각으로 바꾸어 삼각비를 구한다. (PT/TPL: PT_GEO_SPACE_FIGURE / TPL_GEO_SPACE_LINES_ANGLE)",
+          "crossConcept": "꼬인 두 직선이 이루는 각을 평행이동으로 환원하고 정삼각형·직각삼각형의 길이 관계를 쓴다.",
+          "condition": "도형의 모서리 길이가 모두 같다는 정다면체의 정의에 의한 것이며 별도 조건 키가 필요하지 않다.",
+          "integration": "각 환원 -> 길이 -> 삼각비 곱의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 10,
+          "variationNote": "원본 Q10은 AC와 BD, EF와 GH의 각으로 sin x cos를 구했고, 유사는 AB와 CD, EF와 HI의 각으로 sin x tan를 구하도록 직선의 쌍과 삼각비를 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "공간도형과 공간좌표",
+        "L2": "공간도형",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagReason": "문제·해설 그림(composite-panels)에 role=\"img\"와 title/desc 없음(엔진 산출물, 저강도 시각 부채). 정답·학생 판독에는 영향 없음."
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "타원",
+          "l4": "정의와 방정식",
+          "recordId": "H2-GEO-RPM-041",
+          "l3Label": "타원",
+          "l4Label": "정의와 방정식",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-041 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "타원",
+        "rpmPrimaryL4": "정의와 방정식",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-041",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "EXT-TPL-CONIC-EQUATION-DERIVATION-FROM-DEFINITION",
+        "crossConceptKeys": [
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "정의에서 방정식을 유도하는 과정의 빈칸을 채우는 이해 확인 문항이라 중",
+        "difficultyBasis": "정의 적용, 두 번 제곱, 치환의 흐름을 읽어야 해 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식을 유도하는 과정의 빈칸을 묻는 문항이라 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 거리 정의에서 제곱을 거쳐 식을 정리하는 대수 계산이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 초점으로부터의 거리의 합이 일정한 점의 자취로부터 타원의 방정식을 유도하는 과정의 빈칸을 채운다. (PT/TPL: PT_GEO_ELLIPSE / EXT-TPL-CONIC-EQUATION-DERIVATION-FROM-DEFINITION)",
+          "crossConcept": "타원의 정의 PF+PF'=2a를 제곱하여 정리하는 유도 과정을 쓴다.",
+          "condition": "a>c>0 조건은 문제 문장에 식으로 들어 있어 별도 조건 키를 붙이지 않는다.",
+          "integration": "정의 -> 제곱 -> 정리 -> 치환의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 11,
+          "variationNote": "원본 Q11이 쌍곡선의 방정식 유도였고, 유사는 같은 형식의 빈칸(가, 나, 다)으로 타원의 방정식 유도 과정으로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "쌍곡선",
+          "l4": "정의와 방정식",
+          "recordId": "H2-GEO-RPM-043",
+          "l3Label": "쌍곡선",
+          "l4Label": "정의와 방정식",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-043 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "쌍곡선",
+        "rpmPrimaryL4": "정의와 방정식",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-043",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_HYPERBOLA",
+        "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+        "crossConceptKeys": [
+          "CC_HYPERBOLA",
+          "CC_PYTHAGOREAN",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "지름에 대한 원주각이 직각임을 이용해 거리의 차를 구하는 문항이라 중",
+        "difficultyBasis": "직각삼각형 확인, 곱·제곱합 연립, 차 계산의 3단계라 3",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 초점이 F, F′인 쌍곡선과 F, F′을 지름의 양 끝점으로 하는 원, 두 곡선의 교점 P와 삼각형 PF′F를 나타낸 그림이다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: FF′이 지름인 원 위의 점 P에서 ∠F′PF=90°이고, PF=10, PF′=24, FF′=26이므로 |PF′−PF|=14이다."
+        },
+        "metaRationale": {
+          "problemType": "FF'이 지름인 원 위의 점 P에서 직각삼각형을 만들고 넓이와 피타고라스 정리로 |PF'-PF|를 구해 주축의 길이를 구한다. (PT/TPL: PT_GEO_HYPERBOLA / TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS)",
+          "crossConcept": "쌍곡선의 정의 |PF'-PF|=2a와 주축의 길이 2a의 관계를 쓴다.",
+          "condition": "교점 P가 한 점이라는 서술만 있어 조건 키가 필요하지 않다.",
+          "integration": "직각 확인 -> 연립 -> 차 -> 주축의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 12,
+          "variationNote": "원본 Q12와 같은 구조(초점을 지름으로 하는 원과 쌍곡선의 교점, 삼각형의 넓이로 주축)에서 초점 (±13,0), 넓이 120으로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "이차곡선의 이동",
+          "l4": "조건으로 방정식",
+          "recordId": "H2-GEO-RPM-046",
+          "l3Label": "이차곡선의 이동",
+          "l4Label": "조건으로 방정식",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-046 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "이차곡선의 이동",
+        "rpmPrimaryL4": "조건으로 방정식",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-046",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_HYPERBOLA",
+          "CC_PARALLEL_TRANSLATION",
+          "EXT-CROSS-CONIC-COMMON-FOCI"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "일반형을 표준형으로 바꿔 두 곡선의 초점거리가 같다는 조건으로 미지수를 구하는 문항이라 중",
+        "difficultyBasis": "완전제곱식 변형 두 번, 초점거리 비교, 미지수 결정의 4단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 곡선의 식만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 중심이 (1,−3)으로 같고 두 초점 F, F′을 공유하는 타원 C₁과 쌍곡선 C₂를 나타낸 그림이다(a=−3일 때)."
+        },
+        "metaRationale": {
+          "problemType": "일반형으로 주어진 타원과 쌍곡선을 완전제곱식으로 표준형으로 바꾸고 두 초점이 일치하는 조건으로 상수를 구한다. (PT/TPL: PT_GEO_ELLIPSE / TPL_GEO_ELLIPSE_AXIS_FOCUS)",
+          "crossConcept": "타원의 c^2=a^2-b^2와 쌍곡선의 c^2=a^2+b^2가 같다는 공초점 조건을 쓴다.",
+          "condition": "상수 a가 타원이 존재하는 범위(양수 b^2)를 만족하는지 확인하지만 문제 조건으로 주어진 제한은 없다.",
+          "integration": "표준형 변환 -> 초점거리 비교 -> 미지수의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 13,
+          "variationNote": "원본 Q13과 같은 구조(타원과 쌍곡선의 두 초점이 일치할 때 상수)에서 두 곡선의 식과 중심을 모두 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "standardUnit": "이차곡선의 접선",
+        "subUnitKey": "H22-GE-02-CORE",
+        "subUnit": "이차곡선의 접선 핵심 개념",
+        "conceptClusterKey": "H22-GE-02-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선의 접선",
+          "l3": "타원의 접선",
+          "l4": "기울기·조건형",
+          "recordId": "H2-GEO-RPM-050",
+          "l3Label": "타원의 접선",
+          "l4Label": "기울기·조건형",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-050 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선의 접선",
+        "rpmPrimaryL3": "타원의 접선",
+        "rpmPrimaryL4": "기울기·조건형",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-050",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_CONIC_TANGENT",
+          "CC_PARALLEL_LINE_DISTANCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "기울기가 주어진 접선으로 타원 위의 점과 직선 사이의 최단 거리를 구하는 문항이라 중",
+        "difficultyBasis": "기울기형 접선, 접선 선택, 평행선 사이의 거리의 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 타원과 직선의 식만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 점선인 직선 y=2x−10과 평행한 타원의 접선 y=2x−6의 접점 T(2,−2)에서 직선까지의 거리가 최솟값 4√5/5이다."
+        },
+        "metaRationale": {
+          "problemType": "주어진 직선과 평행한 타원의 접선을 구하고 가까운 접선과 직선 사이의 거리로 최솟값을 구한다. (PT/TPL: PT_GEO_CONIC_TANGENT / TPL_GEO_TANGENT_ON_CONIC)",
+          "crossConcept": "기울기가 m인 타원의 접선 y=mx±sqrt(a^2m^2+b^2)과 평행한 두 직선 사이의 거리를 쓴다.",
+          "condition": "두 접선 중 직선에 가까운 쪽을 택하는 판단이 있으나 문제가 주는 제한 조건은 아니다.",
+          "integration": "접선 -> 선택 -> 거리의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 14,
+          "variationNote": "원본 Q14와 같은 구조(타원 위의 점과 직선 사이의 거리의 최솟값)에서 타원 x^2/6+y^2/12=1, 직선 y=2x-10으로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선의 접선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "standardUnit": "이차곡선의 접선",
+        "subUnitKey": "H22-GE-02-CORE",
+        "subUnit": "이차곡선의 접선 핵심 개념",
+        "conceptClusterKey": "H22-GE-02-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선의 접선",
+          "l3": "쌍곡선의 접선",
+          "l4": "접점형",
+          "recordId": "H2-GEO-RPM-085",
+          "l3Label": "쌍곡선의 접선",
+          "l4Label": "접점형",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-085 직접 지정(크로스워크 mappingStatus=DIRECT_ACTIVE); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선의 접선",
+        "rpmPrimaryL3": "쌍곡선의 접선",
+        "rpmPrimaryL4": "접점형",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-085",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+        "crossConceptKeys": [
+          "CC_HYPERBOLA",
+          "CC_CONIC_TANGENT",
+          "CC_PERPENDICULAR_SLOPE",
+          "CC_DISTANCE_FORMULA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "접선, 수선, 쌍곡선과의 교점, 거리 계산을 차례로 잇는 다단계 문항이라 상",
+        "difficultyBasis": "접선 -> 수선의 발 -> 교점 선택 -> 거리의 곱의 4단계라 4",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 쌍곡선 위의 점 P에서의 접선 l, 원점 O에서 l에 내린 수선의 발 H, 직선 OH가 쌍곡선과 제2사분면에서 만나는 점 Q를 나타낸 그림이다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 접점 P(4,2), 수선의 발 H(12/5,−6/5), 점 Q(−4,2)를 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "쌍곡선 위의 점에서의 접선에 원점에서 수선을 내려 수선의 발과 쌍곡선과의 교점을 구하고 거리의 제곱을 계산한다. (PT/TPL: PT_GEO_CONIC_TANGENT / TPL_GEO_TANGENT_ORTHOGONAL)",
+          "crossConcept": "쌍곡선의 접선의 방정식과 접선에 수직인 직선의 기울기 관계를 쓴다.",
+          "condition": "교점이 제2사분면에 있다는 조건이 두 교점 중 하나를 고르는 데 쓰인다.",
+          "integration": "접선 -> 수선의 발 -> 교점 -> 거리의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 15,
+          "variationNote": "원본 Q15의 구조(쌍곡선의 접선, 원점에서의 수선의 발, 직선 OH와 쌍곡선의 제2사분면 교점)를 유지하고 쌍곡선을 x^2-y^2=12, 접점을 P(4,2)로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선의 접선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "포물선",
+          "l4": "초점·준선",
+          "recordId": "H2-GEO-RPM-040",
+          "l3Label": "포물선",
+          "l4Label": "초점·준선",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-040 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "포물선",
+        "rpmPrimaryL4": "초점·준선",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+        "crossConceptKeys": [
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "준선과 직선 x=9p 위의 점의 좌표를 p로 나타내 길이를 연결하는 문항이라 중",
+        "difficultyBasis": "좌표 설정, BH의 절댓값 계산, AH 계산의 3단계지만 식이 단순해 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 길이 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: p=2인 경우(p=−2이면 좌우 대칭)의 그림으로, BH=10|p|=20이고 AH=6|p|=12이다."
+        },
+        "metaRationale": {
+          "problemType": "p에 대한 식으로 BH와 AH를 나타내고 BH=20으로 |p|를 구해 AH를 계산한다. (PT/TPL: PT_GEO_PARABOLA / TPL_GEO_PARABOLA_FOCUS_DIRECTRIX)",
+          "crossConcept": "포물선 y^2=4px의 준선 x=-p와 초점 관계를 쓴다.",
+          "condition": "p≠0이 |p|로 길이를 나타내고 부호 경우를 정리하는 데 쓰인다.",
+          "integration": "BH -> |p| -> AH의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 16,
+          "variationNote": "원본 Q16과 같은 구조(포물선과 직선 x=kp의 교점, 준선과 x축의 교점 B, BH의 길이로 AH)에서 직선의 위치를 9p, BH=20으로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "standardUnit": "이차곡선의 접선",
+        "subUnitKey": "H22-GE-02-CORE",
+        "subUnit": "이차곡선의 접선 핵심 개념",
+        "conceptClusterKey": "H22-GE-02-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선의 접선",
+          "l3": "타원의 접선",
+          "l4": "기울기·조건형",
+          "recordId": "H2-GEO-RPM-050",
+          "l3Label": "타원의 접선",
+          "l4Label": "기울기·조건형",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-050 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선의 접선",
+        "rpmPrimaryL3": "타원의 접선",
+        "rpmPrimaryL4": "기울기·조건형",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-050",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_CONIC_TANGENT",
+          "CC_DISTANCE_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "곡선 밖의 점에서 접선을 구해 접점과 초점으로 삼각형의 둘레를 구하는 다단계 문항이라 상",
+        "difficultyBasis": "접선 기울기 결정, 접점 계산, 세 변의 길이 계산의 4단계라 4",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 점 R(0,5)에서 타원에 그은 두 접선의 접점 P, Q와 타원의 한 초점 F, 삼각형 PQF를 나타낸 그림이다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 접점 P(−4,9/5), Q(4,9/5)와 초점 F(4,0)을 꼭짓점으로 하는 삼각형의 세 변 PQ=8, QF=9/5, PF=41/5를 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "곡선 밖의 점에서 타원에 그은 두 접선의 접점을 구하고 초점과 이은 삼각형의 둘레를 구한다. (PT/TPL: PT_GEO_CONIC_TANGENT / TPL_GEO_TANGENT_FROM_OUTSIDE_POINT)",
+          "crossConcept": "타원 밖의 점을 지나는 접선의 판별식 조건 또는 접점 공식과 두 점 사이의 거리를 쓴다.",
+          "condition": "접점이 두 개 존재한다는 구조가 풀이에 쓰이지만 문제가 주는 제한 조건 키는 없다.",
+          "integration": "접점 -> 변의 길이 -> 둘레의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 17,
+          "variationNote": "원본 Q17과 같은 구조(점 (0,5)에서 타원에 그은 접선의 접점 P, Q와 한 초점 F로 삼각형의 둘레)에서 타원을 9x^2+25y^2=225로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선의 접선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "타원",
+          "l4": "초점·장축·단축",
+          "recordId": "H2-GEO-RPM-042",
+          "l3Label": "타원",
+          "l4Label": "초점·장축·단축",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-042 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "타원",
+        "rpmPrimaryL4": "초점·장축·단축",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_INTERNAL_DIVISION",
+          "CC_DISTANCE_FORMULA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 타원과 내분점을 연결하고 공통 초점으로 둘째 타원의 식을 구하는 다단계 문항이라 상",
+        "difficultyBasis": "점 P 결정, 내분점 Q, 새 타원의 a^2·b^2, 값 계산의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 초점의 좌표와 거리 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 타원 C′ 위의 점 P는 FP=FF′=18, PF′=12를 만족하고, FP를 1:2로 내분하는 점 Q는 한 초점이 F인 타원 x²/16+y²/25=1 위에 있다."
+        },
+        "metaRationale": {
+          "problemType": "첫째 타원의 정의로 점 P를 정하고 내분점 Q가 둘째 타원 위에 있음을 이용해 계수를 구한다. (PT/TPL: PT_GEO_ELLIPSE / TPL_GEO_ELLIPSE_AXIS_FOCUS)",
+          "crossConcept": "타원의 정의 PF+PF'=2a와 선분의 내분점의 좌표를 쓴다.",
+          "condition": "a>0, b>0이라는 제한이 해 a=±4, b=±5 중에서 ab=20을 정하는 데 쓰이므로 COND_POSITIVE를 둔다(독립 검수에서 보강).",
+          "integration": "P 결정 -> Q -> 둘째 타원의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 18,
+          "variationNote": "원본 Q18과 같은 구조(FF'=FP인 점 P, FP의 내분점 Q가 한 초점이 F인 다른 타원 위에 있을 때의 값)에서 초점 F(0,3), F'(0,-15), 장축 30, 내분비 1:2로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "타원",
+          "l4": "초점·장축·단축",
+          "recordId": "H2-GEO-RPM-042",
+          "l3Label": "타원",
+          "l4Label": "초점·장축·단축",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-042 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "타원",
+        "rpmPrimaryL4": "초점·장축·단축",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "직각삼각형에서 초점거리를 구해 타원의 정의로 둘레를 구하는 문항이라 상",
+        "difficultyBasis": "FF' 계산, a의 결정, 거리합 이용의 3단계에 도형 해석이 더해져 4",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 타원의 두 초점 F, F′과 F를 지나고 x축에 수직인 직선 위의 점 A, 선분 AF와 타원의 교점 P를 나타낸 그림이다(AF=7, AF′=25).",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: FF′=24이므로 c=12, a=13이고, 삼각형 PF′F의 둘레는 PF+PF′+FF′=2a+FF′=26+24=50이다."
+        },
+        "metaRationale": {
+          "problemType": "직각삼각형 AF'F에서 FF'을 구해 타원의 c, a를 정하고 삼각형 PF'F의 둘레를 구한다. (PT/TPL: PT_GEO_ELLIPSE / TPL_GEO_ELLIPSE_AXIS_FOCUS)",
+          "crossConcept": "타원의 두 초점으로부터의 거리의 합이 2a로 일정하다는 정의를 쓴다.",
+          "condition": "a>5라는 범위 조건이 a=±13 중 a=13을 고르고 장축이 x축 방향임을 정하는 데 쓰이므로 COND_RANGE를 둔다(독립 검수에서 보강).",
+          "integration": "FF' -> a -> 둘레의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 19,
+          "variationNote": "원본 Q19와 같은 구조(초점을 지나 x축에 수직인 직선 위의 점 A, 직각삼각형 AF'F, 삼각형 PF'F의 둘레)에서 AF=7, AF'=25로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "포물선",
+          "l4": "초점·준선",
+          "recordId": "H2-GEO-RPM-040",
+          "l3Label": "포물선",
+          "l4Label": "초점·준선",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-040 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "포물선",
+        "rpmPrimaryL4": "초점·준선",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+        "crossConceptKeys": [
+          "CC_PARABOLA",
+          "CC_HYPERBOLA",
+          "CC_PARALLEL_TRANSLATION",
+          "EXT-CROSS-PARABOLA-FOCAL-DISTANCE-DIRECTRIX-SUM-MINIMUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "포물선의 거리합 최솟값을 구한 뒤 쌍곡선의 방정식으로 연결하는 다단계 문항이라 상",
+        "difficultyBasis": "초점·준선 해석, 최솟값 m, 쌍곡선의 a·b 결정, 방정식의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 점의 좌표만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 포물선 위의 점 P가 F′의 바로 위에 있을 때 PF=(준선까지의 거리)=26/3, PF′=10/3이고 PF+PF′는 최솟값 12를 갖는다."
+        },
+        "metaRationale": {
+          "problemType": "포물선 위의 점에서 초점까지의 거리를 준선까지의 거리로 바꾸어 PF+PF'의 최솟값을 구하고 그 값을 이용해 쌍곡선의 방정식을 구한다. (PT/TPL: PT_GEO_PARABOLA / TPL_GEO_PARABOLA_FOCUS_DIRECTRIX)",
+          "crossConcept": "포물선의 정의와 쌍곡선의 정의 |QF-QF'|=2a를 차례로 쓴다.",
+          "condition": "제한 조건 없이 식만으로 값이 정해진다.",
+          "integration": "최솟값 -> a -> 방정식의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 20,
+          "variationNote": "원본 Q20과 같은 구조(포물선 위의 점과 두 점 F, F'에 대한 거리합의 최솟값, 그 값으로 정해지는 쌍곡선)에서 포물선 (x-4)^2=-24(y-6)으로 바꾸고 거리합이 최소가 되는 값을 새로 구성했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "standardUnit": "이차곡선의 접선",
+        "subUnitKey": "H22-GE-02-CORE",
+        "subUnit": "이차곡선의 접선 핵심 개념",
+        "conceptClusterKey": "H22-GE-02-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선의 접선",
+          "l3": "포물선의 접선",
+          "l4": "접점형",
+          "recordId": "H2-GEO-RPM-047",
+          "l3Label": "포물선의 접선",
+          "l4Label": "접점형",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-047 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선의 접선",
+        "rpmPrimaryL3": "포물선의 접선",
+        "rpmPrimaryL4": "접점형",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-047",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_PARABOLA",
+          "CC_CONIC_TANGENT",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 접점에서의 접선의 교점과 각 조건으로 삼각형의 넓이를 연결하는 서술형이라 상",
+        "difficultyBasis": "접점, 접선, 교점, 각 조건, 넓이 방정식의 5단계지만 구조가 정형이라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 각, 넓이 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: a=9, p=3일 때 두 접점 P, Q에서의 접선의 교점 A(−9,0)이고 삼각형 APQ는 한 변의 길이가 12√3인 정삼각형이다."
+        },
+        "metaRationale": {
+          "problemType": "포물선 위의 두 접점에서 접선을 구해 교점 A를 찾고 각 APQ=60도와 넓이로 a와 p를 구한다. (PT/TPL: PT_GEO_CONIC_TANGENT / TPL_GEO_TANGENT_ON_CONIC) 접점 P, Q가 포물선 위에 주어지고 그 점에서의 접선식을 세우므로 곡선 밖의 점에서 그은 접선(FROM_OUTSIDE_POINT)이 아니라 접점이 주어진 접선(ON_CONIC)으로 독립 검수에서 교체했다.",
+          "crossConcept": "포물선의 접선의 방정식과 삼각형의 넓이 공식을 쓴다.",
+          "condition": "a, p가 양수이고 P, Q가 각각 제1사분면, 제4사분면의 점이라는 조건으로 접점의 부호를 정한다.",
+          "integration": "접점 -> 교점 -> 각 조건 -> 넓이의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 21,
+          "variationNote": "원본 Q21과 같은 구조(x=a와 포물선의 두 교점 P, Q에서의 접선의 교점 A, 각 APQ와 삼각형 APQ의 넓이로 a+p)에서 각과 넓이의 값을 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선의 접선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q21: 원본 Q21의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "standardUnit": "이차곡선의 접선",
+        "subUnitKey": "H22-GE-02-CORE",
+        "subUnit": "이차곡선의 접선 핵심 개념",
+        "conceptClusterKey": "H22-GE-02-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선의 접선",
+          "l3": "쌍곡선의 접선",
+          "l4": "접점형",
+          "recordId": "H2-GEO-RPM-085",
+          "l3Label": "쌍곡선의 접선",
+          "l4Label": "접점형",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-085 직접 지정(크로스워크 mappingStatus=DIRECT_ACTIVE); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선의 접선",
+        "rpmPrimaryL3": "쌍곡선의 접선",
+        "rpmPrimaryL4": "접점형",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-085",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+        "crossConceptKeys": [
+          "CC_HYPERBOLA",
+          "CC_CONIC_TANGENT",
+          "CC_PERPENDICULAR_SLOPE"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "문자 상수로 주어진 쌍곡선의 접선과 법선을 일반적으로 풀이해 불변량을 찾는 서술형이라 상",
+        "difficultyBasis": "접선, 수직인 직선의 기울기, 두 교점의 좌표, 곱의 불변성까지 5단계라 5",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "공식 엔진으로 렌더했다: 쌍곡선 위의 점 P에서의 접선 l이 x축과 만나는 점 Q, P를 지나고 l에 수직인 직선이 x축과 만나는 점 R을 나타낸 그림이다(a=3, b=2인 한 예).",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: a=3, b=2, 점 P(5,8/3)인 한 예에서 접선 l과 x축의 교점 Q(9/5,0), P를 지나고 l에 수직인 직선과 x축의 교점 R(65/9,0)을 나타낸 그림이며 OQ×OR=13=a²+b²이다."
+        },
+        "metaRationale": {
+          "problemType": "쌍곡선 위의 일반 점에서의 접선과 법선이 x축과 만나는 점의 좌표를 구해 OQ x OR의 값을 문자식으로 구한다. (PT/TPL: PT_GEO_CONIC_TANGENT / TPL_GEO_TANGENT_ORTHOGONAL)",
+          "crossConcept": "쌍곡선의 접선의 방정식과 접선에 수직인 직선의 기울기를 문자 계수로 쓴다.",
+          "condition": "꼭짓점이 아닌 점이라는 조건으로 y1≠0이 보장되어 법선의 기울기와 R의 좌표를 구하는 나눗셈이 가능하므로 COND_NONZERO를 둔다(독립 검수에서 보강).",
+          "integration": "접선 -> 법선 -> 두 교점 -> 곱의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 22,
+          "variationNote": "원본 Q22는 타원의 접선과 법선(a^2-b^2)이었고, 유사는 쌍곡선의 접선과 법선으로 바꾸어 OQ x OR=a^2+b^2를 구한다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선의 접선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "기하",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "기하",
+        "standardUnitKey": "H22-GE-01",
+        "standardUnit": "이차곡선",
+        "subUnitKey": "H22-GE-01-CORE",
+        "subUnit": "이차곡선 핵심 개념",
+        "conceptClusterKey": "H22-GE-01-CORE",
+        "rpmPrimary": {
+          "l1": "이차곡선",
+          "l2": "이차곡선",
+          "l3": "쌍곡선",
+          "l4": "정의와 방정식",
+          "recordId": "H2-GEO-RPM-043",
+          "l3Label": "쌍곡선",
+          "l4Label": "정의와 방정식",
+          "l4Source": "CROSSWALK_RECORD",
+          "mappingNote": "canonical RPM 리프 H2-GEO-RPM-043 직접 지정(크로스워크 mappingStatus=RPM_ONLY); canonical 기하 pack의 PT/TPL 바인딩을 사용"
+        },
+        "rpmPrimaryL1": "이차곡선",
+        "rpmPrimaryL2": "이차곡선",
+        "rpmPrimaryL3": "쌍곡선",
+        "rpmPrimaryL4": "정의와 방정식",
+        "rpmPrimaryRecordId": "H2-GEO-RPM-043",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+        "crossConceptKeys": [
+          "CC_ELLIPSE",
+          "CC_HYPERBOLA",
+          "CC_AREA",
+          "EXT-CROSS-CONIC-COMMON-FOCI"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "공통 초점을 갖는 타원과 쌍곡선의 교점에서 거리를 정의로 구해 삼각형의 넓이를 구하는 서술형이라 상",
+        "difficultyBasis": "초점거리, 타원의 a, 두 정의식의 연립, 삼각형 넓이의 5단계라 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 곡선의 식과 장축의 길이만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "공식 엔진으로 렌더했다: 두 초점 F, F′을 공유하는 쌍곡선과 타원(장축 20)의 제1사분면 교점 P에서 PF=7, PF′=13, FF′=10인 삼각형 PF′F를 나타낸 그림이다."
+        },
+        "metaRationale": {
+          "problemType": "타원과 쌍곡선의 정의로 교점 P에서 두 초점까지의 거리를 구하고 삼각형 PF'F의 넓이를 구한다. (PT/TPL: PT_GEO_ELLIPSE / TPL_GEO_ELLIPSE_AXIS_FOCUS)",
+          "crossConcept": "타원의 정의 PF+PF'=2a와 쌍곡선의 정의 |PF'-PF|=2a'를 연립한다.",
+          "condition": "교점이 제1사분면에 있다는 조건이 PF'>PF 순서를 정하는 데 쓰인다.",
+          "integration": "거리 합과 차 -> 변의 길이 -> 넓이의 SEQUENTIAL.",
+          "curriculum": "2022 개정 기하 범위의 방법만 사용한다(이차곡선의 정의·표준형·접선 공식, 공간도형의 위치 관계; 미적분·벡터 미사용)."
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-09",
+          "reviewRequired": true,
+          "sourceQid": 23,
+          "variationNote": "원본 Q23은 PF=4가 주어져 삼각형 PF'O의 넓이를 구했고, 유사는 장축의 길이 20이 주어져 두 정의식을 연립한 뒤 삼각형 PF'F의 넓이를 구하도록 바꾸었다(초점 (±5,0), 쌍곡선 x^2/9-y^2/16=1).",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        },
+        "L1": "이차곡선",
+        "L2": "이차곡선"
+      },
+      "reason": "26_제일고_1학기_중간_고2_기하_유사 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    }
+  ],
+  "openDefects": [
+    {
+      "qid": 10,
+      "qid_ref": "26_제일고_1학기_중간_고2_기하_유사#10",
+      "kind": "visual-problem-figure",
+      "reason": "문제 그림 q10.svg와 해설 그림 q10-solution.svg가 엔진 composite-panels 산출물이라 root에 role=\"img\"와 <title>/<desc>가 없다(손편집 금지 산출물, 엔진 한계). 그림의 정사면체·정팔면체 선과 꼭짓점 라벨은 렌더로 확인했고 정답 누설은 없으며, 발문이 그림 속 라벨 기호를 모두 글로 지시한다.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": "ALL_ENGINE_SVG",
+      "qid_ref": "26_제일고_1학기_중간_고2_기하_유사#2,12,15,17,19,22 문제 그림 및 해설 그림 21개",
+      "kind": "visual-accessibility-info",
+      "reason": "ellipse-figure-v1 엔진 산출 SVG는 role=\"img\"는 있으나 <title>/<desc>를 내지 않는다(main에 병합된 26_금당고_2학기_중간_고2_기하 SVG도 같음). 해설 그림은 JS solutionImageAlt로 설명을 제공한다. 문제 그림은 JS에 alt 필드가 없다(기존 승인 유사시험지 26_강남여고 대수도 같음). 엔진 한계이며 학생 화면 판독·정답에는 영향 없음.",
+      "severity": "info",
+      "round": 1
+    }
+  ]
+}

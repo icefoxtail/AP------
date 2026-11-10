@@ -56,9 +56,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q1-solution.svg",
-    "solutionImageAlt": "두 점과 y절편을 표시한 직선 그래프",
-    "solutionImageCaption": "두 점을 잇는 직선의 기울기와 y절편을 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 점 (−5, 3), (1, −2)를 지나는 직선과 가로·세로 변화량.",
+    "solutionImageCaption": "두 점의 좌표 차로 구한 기울기는 −6분의 5이다. 이를 직선의 식에 대입해 y절편을 구한다. 정답은 −6분의 7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -114,7 +114,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합 A와 B의 원소를 소속 영역에 나눈 벤다이어그램.",
+    "solutionImageCaption": "A에는 1, 3, 5, 7, 9, 11이 들어 있고, 2는 B에만 들어 있다. 두 집합의 공통 원소와 A에만 속하는 원소를 구분하면 각 보기를 판단할 수 있다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -173,9 +177,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "점 P에서 직선에 내린 수선과 거리",
-    "solutionImageCaption": "수선의 발 H와 거리 2√2를 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 직선에 내린 수선 PH와 그 길이.",
+    "solutionImageCaption": "점과 직선 사이의 거리는 수선 PH의 길이이다. 주어진 거리 2√2를 거리 공식에 대입하고 a>0을 적용한다. 정답은 2분의 15이다.",
     "solutionImageSize": "full"
   },
   {
@@ -233,9 +237,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "직선 위 점의 평행이동 대응",
-    "solutionImageCaption": "이동 (3,1)이 직선 방향과 같아 직선이 보존된다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 위의 점 Q와 평행이동한 점 Q′, 두 점을 잇는 이동 화살표.",
+    "solutionImageCaption": "원래 직선 위의 점 Q(−1, 1)을 옮기면 Q′(2, 2)에 놓인다. 이동 방향이 직선과 평행하여 이동 전후 직선은 일치한다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -354,9 +358,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "평행 조건과 수직 조건",
-    "solutionImageCaption": "a=2의 평행과 b=9의 수직 관계를 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 서로 평행한 두 직선과 서로 수직인 두 직선을 색으로 구분한 좌표 그림.",
+    "solutionImageCaption": "파란색과 주황색 직선은 기울기가 같고 절편이 달라 평행하다. 초록색과 보라색 직선의 기울기의 곱은 −1이므로 수직이다. 정답은 18이다.",
     "solutionImageSize": "full"
   },
   {
@@ -416,9 +420,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "포물선의 절편과 내분점",
-    "solutionImageCaption": "C가 AB를 4:1로 내분함을 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 이차함수의 두 축과의 교점 A, B 및 선분 AB의 내분점 C.",
+    "solutionImageCaption": "그래프의 축과의 교점은 A(−2분의 1, 0), B(0, −1)이다. C의 x좌표는 지시선으로, y좌표는 점선과 축 눈금으로 표시했으며 AB를 4:1로 내분하는 조건을 적용한다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -478,9 +482,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "원과 외부점의 접선",
-    "solutionImageCaption": "접점에서 반지름과 접선이 수직임을 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 P에서 원에 그은 두 접선, 접점의 좌표와 수직인 반지름.",
+    "solutionImageCaption": "원점에서 접선까지의 거리는 반지름 2√2와 같다. 두 접선에 x=1을 대입하고 a>0인 경우를 고른다. 정답은 13이다.",
     "solutionImageSize": "full"
   },
   {
@@ -542,7 +546,11 @@ window.questionBank = [
     "image": "assets/images/26_복성고_2학기_중간_고1_기출/q009_visual.png",
     "visualAsset": "assets/images/26_복성고_2학기_중간_고1_기출/q009_visual.png",
     "hasVisualAsset": true,
-    "visualAssetType": "graph"
+    "visualAssetType": "graph",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 양의 기울기를 갖고 y절편의 부호가 서로 다른 두 직선의 예.",
+    "solutionImageCaption": "예: a=−1, b=1, c=2로 잡아 원래 직선과 변형한 직선의 위치를 비교하였다. 원래 직선은 기울기가 양수이고 y절편이 음수이며, 변형한 직선은 기울기와 y절편이 모두 양수이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -602,9 +610,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "k의 허용 구간과 대표 원",
-    "solutionImageCaption": "−2<k<8에서 반지름 제곱이 양수임을 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: k=3일 때의 원과 중심, 반지름 및 원이 되는 k의 범위.",
+    "solutionImageCaption": "예: k=3인 원은 중심이 (4, 3)이고 반지름이 5이다. 일반적으로 반지름의 제곱은 25−(k−3)²이므로 −2<k<8에서만 원이 된다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -664,7 +672,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q11-solution.svg"
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x에 대칭인 A와 A′, 삼각형 APB 및 일직선 위의 A′, P, B.",
+    "solutionImageCaption": "A를 y=x에 대칭이동한 A′를 이용하면 AP=A′P이다. A′, P, B가 한 직선 위에 있을 때 AP+PB가 최소이고, 여기에 고정된 AB를 더한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -787,9 +798,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "y=x에 대한 두 직선의 대칭",
-    "solutionImageCaption": "대칭축과 두 직선, 둘러싸인 영역을 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x에 대칭인 두 직선과 두 축으로 둘러싸인 영역을 같은 넓이의 두 삼각형으로 나눈 그림.",
+    "solutionImageCaption": "두 직선의 축과의 교점은 (3분의 4, 0), (0, 3분의 4)이고 서로의 교점은 (2, 2)이다. 원점과 교점을 이으면 같은 넓이의 두 삼각형으로 나뉜다. 정답은 3분의 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -851,7 +862,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 2의 배수 집합 A와 3의 배수 집합 B의 합집합을 칠한 벤다이어그램.",
+    "solutionImageCaption": "A는 2의 배수, B는 3의 배수의 집합이다. 두 집합의 합집합 바깥을 포함배제 원리로 센다. 정답은 576이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -908,7 +923,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 구례를 선택한 집합 A와 여수를 선택한 집합 B의 인원 및 합집합을 나타낸 벤다이어그램.",
+    "solutionImageCaption": "A는 구례, B는 여수를 선택한 학생의 집합이다. 공통 학생 수 x의 범위 20≤x≤60을 합집합의 인원 160−x에 적용한다. 정답은 40이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -967,7 +986,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 원소와 나머지 원소를 한쪽에 모은 두 집합의 예.",
+    "solutionImageCaption": "예: 공통 원소 2, 3, 5, 7을 제외한 원소를 모두 B에 배치하였다. 나머지 원소 합을 한쪽에 몰아줄 때 두 집합의 원소 합의 곱이 최소가 된다. 정답은 765이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1022,7 +1045,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 집합식이 나타내는 영역을 각각 칠한 세 개의 벤다이어그램.",
+    "solutionImageCaption": "차집합을 여집합과의 교집합으로 바꾸면 각 식이 같은 소속 조건을 나타냄을 알 수 있다. 합집합에서 C를 제외한 영역, 정확히 한 집합에 속하는 영역, A와 B에 속하면서 C에는 속하지 않는 영역을 비교한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1079,9 +1106,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "점 A_n의 반복 이동 경로",
-    "solutionImageCaption": "거리 패턴 2, 2√2, 2가 반복됨을 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 대칭이동과 평행이동을 반복하는 A₁부터 A₇까지의 연속 이동 경로.",
+    "solutionImageCaption": "두 좌표가 같은 점에서 시작하면 평행이동, 대칭이동, 평행이동이 반복된다. 세 이동 거리 2, 2√2, 2를 한 묶음으로 계산하고 19번의 이동을 세면 된다. 정답은 14이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1139,9 +1166,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "원점에서 원에 그은 두 접선",
-    "solutionImageCaption": "두 접선의 기울기가 c/b의 극값을 준다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 B인 원과 원점에서 그은 두 접선, 접점에서 수직인 반지름.",
+    "solutionImageCaption": "AB=10이므로 자취는 중심 B(4, −5), 반지름 2인 원이다. 원점과 원 위 점을 잇는 직선의 기울기는 두 접선에서 극값을 가지며, 접선 조건으로 두 극값의 합을 구한다. 정답은 3분의 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1200,9 +1227,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "점 P와 수선의 발 H",
-    "solutionImageCaption": "PH와 직선 l의 수직 관계를 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 직선 ℓ에 내린 수선과 수선의 발 H, 수직 관계.",
+    "solutionImageCaption": "PH의 기울기를 m이라 하면 주어진 좌표 차의 비에서 m=3분의 4이다. ℓ과 PH의 수직 조건으로 a와 b를 정한 뒤 H가 ℓ 위에 있다는 조건에 대입한다. 정답은 a=3, b=4, k=−25분의 22이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1258,7 +1285,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 소수 p, q와 소수가 아닌 원소 d로 이루어진 집합 X의 구조.",
+    "solutionImageCaption": "X의 원소만 표시한 도식이다. p, q는 서로 다른 소수이고 d는 소수가 아닌 원소이며, d의 소인수가 p, q 안에만 있도록 경우를 센다. 정답은 50이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1310,9 +1341,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "원과 두 경계 접선 및 C",
-    "solutionImageCaption": "양의 경계 접점만 C 위에 있음을 확인한다.",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원과 두 경계 접선, 수평선 C 및 두 접점의 위치.",
+    "solutionImageCaption": "수평선 C는 y=√6이다. 집합 조건은 원과 직선의 모든 교점이 C 위에 있다는 뜻이다. 원과 만나지 않는 경우와 접하는 두 경우를 나누고, 두 접점 중 C 위에 놓인 접점을 확인한다. 정답은 k<−3분의 √6 또는 k≥3분의 √6이다.",
     "solutionImageSize": "full"
   }
 ];

@@ -145,7 +145,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 f(x)의 포물선이 꼭짓점에서 x축과 접하는 그래프.",
+    "solutionImageCaption": "예: a=2−√10인 경우 f(x)=x²+2ax+4a+6은 꼭짓점에서 x축과 접한다. 한 점에서 만날 조건은 판별식이 0이므로 a²−4a−6=0이다. 근과 계수의 관계로 두 a값의 곱을 구한다. 정답은 −6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -292,7 +296,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 0≤x≤5의 세 포물선 F(x), G(x), H(x), 꼭짓점 (1, −8), (3, 8)과 x=5인 꼭짓점을 표시한 그래프.",
+    "solutionImageCaption": "F(x), G(x), H(x)는 각각 a=1, 3, 5인 f(x)이다. f(x)=−2(x−a)²+2a²−10이므로 세 경우 모두 주어진 구간의 꼭짓점에서 최댓값을 갖는다. g(1)=−8, g(3)=8을 이용하여 세 최댓값의 합을 구한다. 정답은 40이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -366,7 +374,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−4x와 직선 y=−2x+3의 두 교점 A, B 및 x축으로 향하는 점선.",
+    "solutionImageCaption": "예: k=3인 경우 두 교점의 x좌표를 α, β로 표시했다. 일반적으로 α+β=2, αβ=−k이므로 f(k)=4+4k, g(k)=−k이다. 주어진 조건은 k²=256이고 k>0이다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -404,9 +416,10 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q11-solution-graph.svg",
-    "solutionImageAlt": "문항 11 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a와 세로축 y의 포물선, a=4인 꼭짓점과 0과 8의 열린 끝점을 나타낸 그래프.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "세로축 y는 b²이다. b²=4a(8−a)의 대칭축 a=4가 0<a<8 안에 있으므로 꼭짓점에서 최대이다. 정답은 64이다."
   },
   {
     "id": 12,
@@ -444,9 +457,10 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q12-solution-graph.svg",
-    "solutionImageAlt": "문항 12 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 (1, 8), 대칭인 두 점 (−2, −10)과 (4, −10), 끝점 (6, −42)를 표시하고 4≤x≤6을 다른 색으로 강조한 포물선.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "f(−2)=f(4)이므로 대칭축은 x=1이고, 최댓값이 8이므로 a=4, b=6이다. 구간 [4, 6]에서는 함수가 감소하여 최댓값은 −10, 최솟값은 −42이다. 정답은 32이다."
   },
   {
     "id": 13,
@@ -553,11 +567,15 @@ window.questionBank = [
       "19"
     ],
     "answer": "④",
-    "solution": "[키포인트]\n방정식의 실근의 개수는 두 그래프의 교점의 개수와 같음을 이용하여 접선 또는 극값 조건을 파악하는 것이 핵심이다.\n\n조건 정리\n- 함수 $f(x)$는 $x=0$을 기준으로 두 이차함수로 나뉜다.\n- $b>0$\n- $f(x)=x+t$의 교점이 $3$개가 되는 $t$의 값은 오직 하나 존재한다.\n- 그 $3$개의 교점의 $x$좌표 합은 $-4$이다.\n\n풀이 방향 설정\n방정식 $f(x)=x+t$를 $f(x)-x=t$로 변형하여 새로운 함수 $g(x)=f(x)-x$의 그래프와 상수 함수 $y=t$의 교점을 분석한다. 교점이 $3$개가 되는 순간이 단 한 번이려면 두 포물선의 꼭짓점의 $y$좌표 또는 $x=0$에서 그래프가 끊어진 두 값이 서로 일치하는 특수한 상황이어야 한다.\n\n풀이 과정\n1. 함수 $g(x) = f(x)-x$를 정의한다.\n$g(x) = \\begin{cases} x^2+(a-1)x+b & (x \\le 0) \\\\ -x^2+(a-1)x-b & (x > 0) \\end{cases}$\n$b>0$이므로 $x=0$에서 $g(0)=b$이고, $x>0$인 쪽에서 $x$가 $0$에 가까워질 때 $g(x)$는 $-b$에 가까워지므로 $g(x)$의 그래프는 $x=0$에서 $b$와 $-b$로 끊어져 있다.\n\n2. 각 구간에서 $g(x)$의 최댓값/최솟값을 찾는다.\n$x \\le 0$인 구간에서 $g(x)$는 아래로 볼록하며, 대칭축은 $x = -\\frac{a-1}{2}$이다.\n$x > 0$인 구간에서 $g(x)$는 위로 볼록하며, 대칭축은 $x = \\frac{a-1}{2}$이다.\n교점이 $3$개가 되는 $t$가 오직 하나 존재하려면, 두 포물선의 꼭짓점의 $y$좌표 중 하나가 $x=0$에서 끊어진 값인 $b$ 또는 $-b$와 일치해야 한다.\n각 포물선의 꼭짓점의 $y$좌표를 구하면, $x \\le 0$에서의 최솟값 $m = b - \\frac{(a-1)^2}{4}$이고, $x > 0$에서의 최댓값 $M = -b + \\frac{(a-1)^2}{4}$이다.\n교점이 $3$개인 선이 유일하려면 $M=b$ 이거나 $m=-b$가 성립해야 한다. 이 두 조건은 모두 $\\frac{(a-1)^2}{4} = 2b$, 즉 $(a-1)^2 = 8b$로 귀결된다.\n\n3. 조건 (나)를 이용해 식을 푼다.\n유일한 $t$값은 $t=b$ (또는 $-b$)일 때 성립한다. $t=b$라고 가정하고 방정식을 푼다.\n- $x \\le 0$ 범위:\n$x^2+(a-1)x+b = b \\implies x^2+(a-1)x=0 \\implies x(x+a-1)=0$\n따라서 실근은 $x=0$ 또는 $x=-(a-1)$이다.\n- $x > 0$ 범위:\n$-x^2+(a-1)x-b = b \\implies x^2-(a-1)x+2b=0$\n앞서 구한 $(a-1)^2=8b$를 대입하면 $2b = \\frac{(a-1)^2}{4}$이다.\n방정식은 $x^2-(a-1)x+\\frac{(a-1)^2}{4}=0 \\implies (x-\\frac{a-1}{2})^2=0$이 되어 $x = \\frac{a-1}{2}$ 중근을 갖는다.\n\n세 실근은 $0, -(a-1), \\frac{a-1}{2}$이다. 조건 (나)에 의해 이 합이 $-4$이다.\n$0 - (a-1) + \\frac{a-1}{2} = -\\frac{a-1}{2} = -4$\n$a-1=8$이므로 $a=9$이다.\n이를 $(a-1)^2=8b$에 대입하면 $8^2 = 8b$이므로 $b=8$이다.\n$b>0$ 조건도 만족한다.\n\n4. 최종 값 계산\n구하고자 하는 값은 $a+b$이다.\n$a+b = 9+8 = 17$\n\n결론\n따라서 정답은 ④이다.",
+    "solution": "[키포인트]\n방정식의 실근의 개수는 두 그래프의 교점의 개수와 같음을 이용하여 접선 또는 극값 조건을 파악하는 것이 핵심이다.\n\n조건 정리\n- 함수 $f(x)$는 $x=0$을 기준으로 두 이차함수로 나뉜다.\n- $b>0$\n- $f(x)=x+t$의 교점이 $3$개가 되는 $t$의 값은 오직 하나 존재한다.\n- 그 $3$개의 교점의 $x$좌표 합은 $-4$이다.\n\n풀이 방향 설정\n방정식 $f(x)=x+t$를 $f(x)-x=t$로 변형하여 새로운 함수 $g(x)=f(x)-x$의 그래프와 상수 함수 $y=t$의 교점을 분석한다. 교점이 $3$개가 되는 순간이 단 한 번이려면 두 포물선의 꼭짓점의 $y$좌표 또는 $x=0$에서 그래프가 끊어진 두 값이 서로 일치하는 특수한 상황이어야 한다.\n\n풀이 과정\n1. 함수 $g(x) = f(x)-x$를 정의한다.\n$g(x) = \\begin{cases} x^2+(a-1)x+b & (x \\le 0) \\\\ -x^2+(a-1)x-b & (x > 0) \\end{cases}$\n$b>0$이므로 $x=0$에서 $g(0)=b$이고, $x>0$인 쪽에서 $x$가 $0$에 가까워질 때 $g(x)$는 $-b$에 가까워지므로 $g(x)$의 그래프는 $x=0$에서 $b$와 $-b$로 끊어져 있다.\n\n2. 각 구간에서 $g(x)$의 최댓값/최솟값을 찾는다.\n$x \\le 0$인 구간에서 $g(x)$는 아래로 볼록하며, 대칭축은 $x = -\\frac{a-1}{2}$이다.\n$x > 0$인 구간에서 $g(x)$는 위로 볼록하며, 대칭축은 $x = \\frac{a-1}{2}$이다.\n교점이 $3$개가 되는 $t$가 오직 하나 존재하려면, 두 포물선의 꼭짓점의 $y$좌표 중 하나가 $x=0$에서 끊어진 값인 $b$ 또는 $-b$와 일치해야 한다.\n각 포물선의 꼭짓점의 $y$좌표를 구하면, $x \\le 0$에서의 최솟값 $m = b - \\frac{(a-1)^2}{4}$이고, $x > 0$에서의 최댓값 $M = -b + \\frac{(a-1)^2}{4}$이다.\n교점이 $3$개인 선이 유일하려면 $M=b$ 이거나 $m=-b$가 성립해야 한다. 이 두 조건은 모두 $\\frac{(a-1)^2}{4} = 2b$, 즉 $(a-1)^2 = 8b$로 귀결된다.\n\n3. 조건 (나)를 이용해 식을 푼다.\n유일한 $t$값은 $t=b$일 때 성립한다. ($t=-b$이면 서로 다른 실근이 $2$개뿐이다.) $t=b$로 놓고 방정식을 푼다.\n- $x \\le 0$ 범위:\n$x^2+(a-1)x+b = b \\implies x^2+(a-1)x=0 \\implies x(x+a-1)=0$\n따라서 실근은 $x=0$ 또는 $x=-(a-1)$이다.\n- $x > 0$ 범위:\n$-x^2+(a-1)x-b = b \\implies x^2-(a-1)x+2b=0$\n앞서 구한 $(a-1)^2=8b$를 대입하면 $2b = \\frac{(a-1)^2}{4}$이다.\n방정식은 $x^2-(a-1)x+\\frac{(a-1)^2}{4}=0 \\implies (x-\\frac{a-1}{2})^2=0$이 되어 $x = \\frac{a-1}{2}$ 중근을 갖는다.\n\n세 실근은 $0, -(a-1), \\frac{a-1}{2}$이다. 조건 (나)에 의해 이 합이 $-4$이다.\n$0 - (a-1) + \\frac{a-1}{2} = -\\frac{a-1}{2} = -4$\n$a-1=8$이므로 $a=9$이다.\n이를 $(a-1)^2=8b$에 대입하면 $8^2 = 8b$이므로 $b=8$이다.\n$b>0$ 조건도 만족한다.\n\n4. 최종 값 계산\n구하고자 하는 값은 $a+b$이다.\n$a+b = 9+8 = 17$\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 끊어지는 함수 g(x)의 두 포물선 조각과, 닫힌 끝점 (0, 2)와 오른쪽 꼭짓점을 지나 세 점에서 만나는 수평선 y=t를 나타낸 예시 그래프.",
+    "solutionImageCaption": "예: a=5, b=2인 경우의 g(x)=f(x)−x이다. f(x)=x+t의 실근은 g(x)=t의 교점이며, x≤0에서는 (0, b)가 닫힌 끝점이고 x>0에서는 (0, −b)가 열린 끝점이다. t=b일 때 수평선이 닫힌 끝점과 오른쪽 꼭짓점을 지나 세 점에서 만난다. 이 세 근의 합이 −4가 되도록 a, b를 정한다. 정답은 17이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -619,7 +637,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 b=a²와 점선 b=16, 그 아래의 자연수 점 (1, 1), (2, 4), (3, 9)를 표시한 그래프.",
+    "solutionImageCaption": "첫 방정식이 중근을 가지므로 b=a²이고, 두 번째 방정식이 서로 다른 두 실근을 가지므로 b<16이다. 자연수 순서쌍은 (1, 1), (2, 4), (3, 9)이므로 m=3이고 n=14이다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -651,10 +673,10 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q18-solution-g1-complete.svg",
-    "solutionImageAlt": "포물선 y=-2x^2+12와 직선 y=4x의 교점 A, B 및 x축에 내린 수선의 발 C, D와 삼각형 AOC, BOD를 나타낸다.",
-    "solutionImageCaption": "교점 A, B에서 x축으로 내린 수선의 발 C, D와 두 삼각형 AOC, BOD의 넓이 관계를 보여 준다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)와 주황 직선 y=4x의 교점 A, B, 수선의 발 C, D와 초록색 삼각형 AOC 및 분홍색 삼각형 BOD.",
+    "solutionImageCaption": "그림의 f(x)는 −2x²+m이다. 교점의 x좌표 α, β에 대해 두 삼각형의 넓이는 2α², 2β²이다. α+β=−2, αβ=−m÷2와 넓이 합 32를 이용한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -716,6 +738,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=f(x)에 색이 다른 세 직선 y=−4x+1, y=0, y=4x+3이 각각 한 점에서 접하는 그래프.",
+    "solutionImageCaption": "예: f(x)=ax²+bx+c에 m=−1, 0, 1인 세 직선이 각각 접하는 모습이다. 모든 실수 m에서 접하려면 연립한 이차방정식의 판별식 (16+8a)m²+(4a−8b)m+b²−4ac가 항상 0이어야 한다. 각 계수를 비교한다. 정답은 a=−2, b=−1, c=−(8분의 1)이다.",
+    "solutionImageSize": "full"
   }
 ];

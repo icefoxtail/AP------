@@ -5,7 +5,7 @@
 K=$1; JS=$2
 [ -n "$K" ] && [ -n "$JS" ] || { echo "usage: launch-exam-rev.sh <tablekey> <시험지 JS 저장소 상대경로>" >&2; exit 2; }
 source "$(dirname "$0")/env.sh"; source "$(dirname "$0")/exam-common.sh"; cd "$R"
-need_codex || exit 1; need_svgm1 || exit 1
+{ [ -n "${PROMPT_ONLY:-}" ] || need_codex || exit 1; }; need_svgm1 || exit 1
 [ -f "$JS" ] || { echo "ERROR: 시험지 JS가 없다(저장소 루트 기준): $JS" >&2; exit 1; }
 if [ -z "${IMPL:-}" ]; then
   L=$(ls -1 ".tmp/work/runs/$K" 2>/dev/null | grep -E '^exam-impl[0-9]*$' | sort -V | tail -1)
@@ -35,5 +35,7 @@ INP=$(exam_inputs "$K")
   echo
   echo "${EXTRA:-}"
 } > "$REV/PROMPT.md"
+# PROMPT_ONLY=1: 지시서만 만들고 Codex는 띄우지 않는다(Sonnet 에이전트가 이 PROMPT.md를 직접 수행, 2026-11-10)
+if [ -n "${PROMPT_ONLY:-}" ]; then echo "$REV/PROMPT.md"; exit 0; fi
 "$CODEX_BIN" exec -c model_reasoning_effort="${EFFORT:-xhigh}" --skip-git-repo-check -C "$CODEX_CWD" --add-dir "$R_WIN" -o "$REV/last.txt" - < "$REV/PROMPT.md" > "$REV/codex.log" 2>&1
 echo "exam-rev $K exit=$? rev=$REV"

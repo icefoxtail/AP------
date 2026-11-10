@@ -1,0 +1,103 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "sqrt(2)",
+    "coefficients": [
+      "1",
+      "1",
+      "-4"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      8
+    ],
+    "viewport": [
+      -2,
+      8,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "6"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "6"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "6"
+        },
+        {
+          "id": "C",
+          "x": "6",
+          "y": "-4"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "O",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "pointNames": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "O": "O"
+    }
+  },
+  "caption": "y=(√2)^x-4의 그래프, 점근선 y=-4, x=6인 세 점 A(6,4), B(6,0), C(6,-4)와 삼각형 AOC를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "a^6=8, a=√2일 때 곡선 y=(√2)^x-4 위의 A(6,4), x축 위의 B(6,0), 점근선 y=-4 위의 C(6,-4)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 AOC의 밑변 AC(길이 8)와 높이 OB(길이 6)의 위치 관계"
+  ],
+  "sourceQuote": "$A=(t,a^t-4)$ ($t>0$)라 두면",
+  "assetPath": "assets/images/26_효천고_1학기_중간_고2_대수_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사_plans/engine_evidence/q12-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사_plans/engine_evidence/q12-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사_plans/engine_evidence/q12-solution.svg"
+  }
+}

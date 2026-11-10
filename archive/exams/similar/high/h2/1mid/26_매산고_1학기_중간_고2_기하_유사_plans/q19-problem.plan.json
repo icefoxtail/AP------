@@ -1,0 +1,122 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "두 평면 $\\alpha,\\beta$의 교선을 $l$이라 하자.",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "M",
+        "at": [
+          1,
+          0,
+          "3/2"
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "point": "O",
+        "extent": {
+          "center": [
+            0.9,
+            0,
+            1.05
+          ],
+          "u": [
+            1.7,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0,
+            1.05
+          ]
+        }
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "point": "O",
+        "fill": "WARM",
+        "extent": {
+          "center": [
+            0.9,
+            -0.95,
+            0
+          ],
+          "u": [
+            1.7,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0.95,
+            0
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      },
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "O",
+          "M"
+        ]
+      }
+    ]
+  },
+  "caption": "서로 수직인 두 평면 α, β와 교선 l, 평면 α 위에 있고 l과 한 점에서 만나는 직선 m",
+  "sourceConditions": [
+    "서로 수직인 두 평면 α, β의 교선 l",
+    "평면 α 위의 직선 m"
+  ],
+  "newVisualInformation": [
+    "두 평면 α, β와 교선 l, 직선 m의 위치"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q19-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q19-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q19-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q19-problem.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 19,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

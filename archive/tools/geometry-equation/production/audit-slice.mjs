@@ -49,7 +49,7 @@ export function auditSlice(root,resultRef){
     const actualEvidence=JSON.parse(readBoundFile(root,finalAudit.actualRef));
     const bankStage=stages.findLast(s=>s.stage==='ARCHIVE_BANK'),candidateRef=bankStage.outputs.find(o=>o.path.endsWith('.js'));
     const bank=loadBank(readBoundFile(root,candidateRef).toString('utf8'));
-    const ordinal=Number(result.identity.questionUid.split('|').at(-1)),question=bank.find(q=>q.id===ordinal);
+    const ordinalTail=result.identity.questionUid.split('|').at(-1),ordinal=/^\d+$/.test(ordinalTail)?Number(ordinalTail):ordinalTail,question=bank.find(q=>q.id===ordinal);
     if(question?.solutionImage!==actualEvidence.archiveAssetPath)errors.push('ARCHIVE_BANK_DISPLAY_ENVELOPE_ASSET_MISMATCH');
     if(question?.solutionImageSize!==envelope.sizeClass)errors.push('ARCHIVE_BANK_DISPLAY_ENVELOPE_SIZE_MISMATCH');
     if(envelope.policyChange&&envelope.policyChange.to!==envelope.sizeClass)errors.push('DISPLAY_ENVELOPE_POLICY_CHANGE_NOT_EXPLICIT');

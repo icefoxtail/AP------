@@ -179,7 +179,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 왼쪽 가지에서 −2≤x≤0인 부분을 주황색으로 강조한 그래프. 양 끝점과 꼭짓점의 좌표 및 점선 대칭축 x=1이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=−x²+2x+3으로 두면 대칭축 x=1은 주어진 구간의 오른쪽에 있다. 이 구간에서 f(x)가 증가하므로 최솟값은 f(−2)=−5이고 최댓값은 f(0)=3이다. 두 값의 합을 구하면 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -202,7 +206,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다음은 다항식 $3x^2-5x+6$을 $x-1$로 나누는 과정을 나타낸 것이다. 이때 상수 $a,b$에 대하여 $a+b$의 값은? [4.3점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><tr><td></td><td>$ax-2$</td></tr><tr><td>$x-1)$</td><td>$3x^2-5x+6$</td></tr><tr><td></td><td>$3x^2-3x$</td></tr><tr><td></td><td>$-2x+6$</td></tr><tr><td></td><td>$-2x+2$</td></tr><tr><td></td><td>$4$</td></tr></table></div>",
+    "content": "다음은 다항식 $3x^2-5x+6$을 $x-1$로 나누는 과정을 나타낸 것이다. 이때 상수 $a,b$에 대하여 $a+b$의 값은? [4.3점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><tr><td></td><td>$ax-2$</td></tr><tr><td>$x-1)$</td><td>$3x^2-5x+6$</td></tr><tr><td></td><td>$3x^2-3x$</td></tr><tr><td></td><td>$-2x+6$</td></tr><tr><td></td><td>$-2x+2$</td></tr><tr><td></td><td>$b$</td></tr></table></div>",
     "choices": [
       "3",
       "4",
@@ -252,7 +256,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차함수 y=R(x)의 파란 직선이 두 점 (1, 7), (3, −9)를 지난다. 두 점의 좌표를 표시하고 직선 이름을 지시선으로 연결한 그래프.",
+    "solutionImageCaption": "R(1)=7, R(3)=−9이므로 나머지 R(x)는 그림의 두 점을 지나는 일차식이다. 두 조건으로 기울기와 상수항을 정해 R(5)를 계산하면 정답은 −25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -359,7 +367,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시로 포물선 y=(x−6)²가 꼭짓점 (6, 0)에서 x축에 접하는 그래프.",
+    "solutionImageCaption": "예: 판별식이 0인 경계의 이차함수는 y=(x−6)²로서 x축에 접한다. 주어진 이차방정식의 실근 조건은 짝수 판별식 −4k+32≥0이므로 k≤8이다. 가능한 양의 정수 k의 개수를 세면 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -566,7 +578,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "[상] $x \\ge 1$인 실수 $x$에 대하여 세 모서리의 길이가 각각 $x-1, x+1, x+2$ 인 직육면체의 겉넓이의 최솟값은? [4.7점]",
+    "content": "[상] $x>1$인 실수 $x$에 대하여 세 모서리의 길이가 각각 $x-1, x+1, x+2$ 인 직육면체의 겉넓이를 $S$라 할 때, $S$의 값이 될 수 없는 가장 큰 자연수는? [4.7점]",
     "choices": [
       "10",
       "12",
@@ -575,7 +587,7 @@ window.questionBank = [
       "18"
     ],
     "answer": "②",
-    "solution": "[키포인트] 직육면체의 겉넓이 공식 $S = 2(ab+bc+ca)$를 세 변의 길이에 적용하여 이차함수 모델을 만든다.\n조건 정리: $a=x-1, b=x+1, c=x+2$이며 $x \\ge 1$이다.\n풀이 방향: 겉넓이 함수 $S(x)$를 구성하고 주어진 범위 내에서 최솟값을 결정한다.\n정석 풀이:\n1) 겉넓이 식 구성: $S(x) = 2\\{(x-1)(x+1) + (x+1)(x+2) + (x-1)(x+2)\\}$\n2) 전개 및 정리: $S(x) = 2\\{(x^2-1) + (x^2+3x+2) + (x^2+x-2)\\} = 2(3x^2+4x-1) = 6x^2+8x-2$이다.\n3) 함수 분석: 대칭축은 $x = -\\frac{8}{2 \\cdot 6} = -\\frac{2}{3}$이다. 아래로 볼록한 포물선이며 범위 $x \\ge 1$은 대칭축의 오른쪽에 위치한다.\n4) 최솟값 결정: $x \\ge 1$ 범위에서 함수는 증가하므로 경계값 $x=1$에서 최솟값을 갖는다.\n5) 값 대입: $S(1) = 6(1)^2 + 8(1) - 2 = 12$이다.\n결론: 따라서 정답은 ②이다.",
+    "solution": "[키포인트] 직육면체의 겉넓이 공식 $S = 2(ab+bc+ca)$를 세 변의 길이에 적용하여 이차함수 모델을 만든다.\n조건 정리: $a=x-1, b=x+1, c=x+2$이며 $x>1$이다(모서리의 길이는 양수).\n풀이 방향: 겉넓이 함수 $S(x)$를 구성하고 주어진 범위에서 $S(x)$가 가질 수 있는 값의 범위를 구한다.\n정석 풀이:\n1) 겉넓이 식 구성: $S(x) = 2\\{(x-1)(x+1) + (x+1)(x+2) + (x-1)(x+2)\\}$\n2) 전개 및 정리: $S(x) = 2\\{(x^2-1) + (x^2+3x+2) + (x^2+x-2)\\} = 2(3x^2+4x-1) = 6x^2+8x-2$이다.\n3) 함수 분석: 대칭축은 $x = -\\frac{8}{2 \\cdot 6} = -\\frac{2}{3}$이다. 아래로 볼록한 포물선이며 범위 $x>1$은 대칭축의 오른쪽에 위치한다.\n4) 값의 범위 결정: $x>1$ 범위에서 $S(x)$는 연속이면서 증가하고 $x$가 커지면 한없이 커진다. 따라서 $S(x)>S(1)$이고, $S$는 $S(1)$보다 큰 모든 값을 가진다.\n5) 값 대입: $S(1) = 6(1)^2 + 8(1) - 2 = 12$이다. $x=1$이면 한 모서리의 길이가 $0$이어서 직육면체가 되지 않으므로 $S=12$는 나타나지 않는다. 따라서 $S>12$이고, $S$가 될 수 없는 가장 큰 자연수는 $12$이다.\n결론: 따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -653,7 +665,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=P(x)는 x축의 2와 3에서 만나고 주황 포물선 y=Q(x)는 1과 4에서 만난다. 두 포물선은 같은 대칭축을 가지며 세로로 떨어져 있다.",
+    "solutionImageCaption": "P−Q=2이므로 두 이차다항식의 근의 합은 같아 연속한 네 근이 가운데 두 수와 양 끝 두 수로 나뉜다. Q(−1)=10을 적용하면 Q=(x−1)(x−4), P=(x−2)(x−3)이다. PQ=(x²−5x+5)²−1에서 k=1, a=−5, b=5이므로 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -711,12 +727,16 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림과 같이 반지름의 길이가 10인 원 $O$의 지름 $AB$와 현 $CD$가 만나는 점 $P$에 대하여 $CP=9$, $DP=6$이다. 선분 $AP$와 선분 $BP$의 길이를 두 근으로 하고, $x^2$의 계수가 1인 이차방정식을 구하고 그 풀이 과정을 서술하시오. [6.0점]",
     "choices": [],
     "answer": "x^2-20x+54=0",
-    "solution": "반지름이 10이므로 지름 AB=20이다. 지름 AB와 현 CD가 P에서 만나므로 교차하는 두 현의 정리에 따라 AP·PB=CP·PD=9·6=54이다. P는 A,B 사이에 있으므로 AP+PB=20. 두 근이 AP, PB인 monic 이차식은 x²−(AP+PB)x+AP·PB=0이므로 x²−20x+54=0이다.",
+    "solution": "반지름이 10이므로 지름 AB=20이다. 지름 AB와 현 CD가 P에서 만나므로 교차하는 두 현의 정리에 따라 AP·PB=CP·PD=9·6=54이다. P는 A,B 사이에 있으므로 AP+PB=20. 두 근이 AP, PB이고 최고차항의 계수가 1인 이차식은 x²−(AP+PB)x+AP·PB=0이므로 x²−20x+54=0이다.",
     "image": "assets/images/25_순천여고_1학기_중간_고1_기출/q20.png",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O 안에서 파란 지름 AB와 주황 현 CD가 P에서 만나는 그림. CP에는 9, PD에는 6이 표시되고 아래에 끌어낸 지름에서 반지름 10과 지름 20을 비교한다.",
+    "solutionImageCaption": "지름 AB의 길이는 20이므로 AP+PB=20이다. 교차현의 정리에 따라 AP·PB=CP·PD=9×6=54이다. 두 근의 합과 곱으로 이차방정식을 세우면 정답은 x²−20x+54=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -747,6 +767,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 x, 세로축이 t인 그래프에서 0≤x≤3인 포물선 t=(x−2)²+2가 그려져 있다. 양 끝점 (0, 6), (3, 3)과 꼭짓점 (2, 2)의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=x²−4x+6으로 치환하면 그림에서 2≤t≤6임을 알 수 있고 y=(t−a)²+1이다. a<2이면 t=2에서, a>6이면 t=6에서 최솟값을 가지며 2≤a≤6이면 최솟값이 1이다. 양 바깥 경우에 최솟값 5를 적용하면 정답은 0, 8이다.",
+    "solutionImageSize": "full"
   }
 ];

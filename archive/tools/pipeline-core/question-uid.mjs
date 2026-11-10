@@ -4,7 +4,10 @@ export const QUESTION_UID_VERSION = 'QUESTION_UID_v2';
 export const SOURCE_EXAM_ID_REGISTRY_VERSION = 'SOURCE_EXAM_ID_REGISTRY_v1';
 export const UID_MIGRATION_EVIDENCE_VERSION = 'UID_MIGRATION_EVIDENCE_v1';
 
+// A source question is named by its 1-based integer id, or, for banks whose ids are strings ("q01", "s01"), by that id exactly as the bank writes it.
+export const SOURCE_QUESTION_ID_PATTERN = /^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 function requirePositiveOrdinal(value) {
+  if (typeof value === 'string' && SOURCE_QUESTION_ID_PATTERN.test(value)) return value;
   if (!Number.isSafeInteger(value) || value < 1) throw new Error('QUESTION_ORDINAL_INVALID');
   return value;
 }
@@ -24,7 +27,8 @@ export function parseQuestionUidV2(value) {
   const separator = value.lastIndexOf('|');
   if (separator <= 0 || separator === value.length - 1) throw new Error('QUESTION_UID_V2_INVALID');
   const sourceExamId = value.slice(0, separator);
-  const sourceQuestionOrdinal = Number(value.slice(separator + 1));
+  const tail = value.slice(separator + 1);
+  const sourceQuestionOrdinal = SOURCE_QUESTION_ID_PATTERN.test(tail) ? tail : Number(tail);
   if (questionUidV2(sourceExamId, sourceQuestionOrdinal) !== value) throw new Error('QUESTION_UID_V2_INVALID');
   return { sourceExamId, sourceQuestionOrdinal };
 }

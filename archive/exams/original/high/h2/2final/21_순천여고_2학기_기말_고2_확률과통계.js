@@ -281,7 +281,11 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "ACTIVE_PT_TPL_BINDING_GAP"
+    "metaProjectionStatus": "ACTIVE_PT_TPL_BINDING_GAP",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 A는 2가 나오지 않는 경우, 원 B는 5가 나오지 않는 경우를 나타낸다. 겹친 곳에 3333이 있고 회색 바깥은 곱이 10의 배수가 되는 경우다.",
+    "solutionImageCaption": "예: 3333은 두 사건이 겹치는 한 경우다. A는 2가 없음, B는 5가 없음이며 바깥은 두 수가 모두 나온 사건이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -357,7 +361,11 @@ window.questionBank = [
     ],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 입력값 1, 2, 3의 화살표가 모두 같은 함숫값 u로 향하는 대응도다.",
+    "solutionImageCaption": "비내림차순과 f(1)=f(3)에서 앞의 세 함수값이 같아져 중복조합에서 한 값으로 압축된다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -394,7 +402,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: A 또는 B로 갈라지는 수형도에서 각 가지마다 흰 공 두 개와 그 외 결과가 나뉘고 분수 확률이 표시되어 있다.",
+    "solutionImageCaption": "주머니 A와 B를 고른 뒤 흰 공 두 개를 뽑는 경로를 따라 각 확률을 곱한다. 흰 공 두 개가 나온 조건에서 A 경로의 비율을 구한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -478,7 +490,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 문항에서 정답 가지에는 확률 1/5와 5점, 오답 가지에는 확률 4/5와 −d점이 표시되어 있다.",
+    "solutionImageCaption": "한 문항의 기댓값을 0으로 두고 오답 감점 d를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -515,7 +531,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 위치가 다른 두 종 모양 곡선이 한 점에서 만나며, Y 곡선의 만나는 점 오른쪽 영역이 칠해져 있다.",
+    "solutionImageCaption": "두 분포의 평균과 교점 위치를 비교하고 Y의 오른쪽 영역을 읽는다. 교점은 평균 사이의 중점에 놓인다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -552,7 +572,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 기준점 오른쪽 영역이 칠해져 있고 기준점과 평균 위치가 축에 표시되어 있다.",
+    "solutionImageCaption": "40분은 표준점수 z=0.6이다. 회색 영역은 40분 이상인 집단이고, 두 집단의 버스 이용 비율을 가중해 더한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -589,7 +613,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "rpmSemanticStatus": "CURRENT_L4_SURVEY_JUDGMENT_COVERAGE_GAP",
-    "metaProjectionStatus": "RPM_L4_AND_EXACT_BINDING_GAP"
+    "metaProjectionStatus": "RPM_L4_AND_EXACT_BINDING_GAP",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 조사 방법에서 표본조사는 전체 조사가 곤란하거나 파괴검사일 때, 전수조사는 개별 확인이나 전체 측정일 때로 나뉜다.",
+    "solutionImageCaption": "조사 대상 전체의 조사 가능성과 목적에 따라 표본조사·전수조사를 구분한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -626,7 +654,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 오른쪽 꼬리가 칠해져 있으며 평균 위치와 꼬리 경계가 축에 표시되어 있다.",
+    "solutionImageCaption": "화물 36개의 총무게 평균과 표준편차를 먼저 구하고 경고 확률에 해당하는 오른쪽 꼬리 경계를 표준화한다. 그 경계를 총무게 단위로 되돌린다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -663,7 +695,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 기준점 오른쪽 꼬리 영역이 칠해져 있다.",
+    "solutionImageCaption": "두 표본평균의 표준편차를 비교하고 지역 B의 기준값을 표준화한다. 표준정규분포의 오른쪽 꼬리 확률을 읽는다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -700,7 +736,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 길이 L의 변화를 세 가지로 나눈 수형도로, 신뢰도가 커지면 L이 커지고, 표본 크기 n이 커지면 L이 작아지며, 둘 다 커지면 방향이 정해지지 않는다고 표시되어 있다.",
+    "solutionImageCaption": "L은 신뢰구간의 길이, n은 표본의 크기이다. 신뢰도를 높이면 L이 커지고 n을 키우면 L이 작아지며, 둘을 함께 키우면 L의 증감을 단정할 수 없다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -774,7 +814,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 가운데 영역이 양쪽 경계 사이에 칠해져 있다.",
+    "solutionImageCaption": "신뢰구간 반폭과 표준오차로 표준점수 경계를 구한 뒤 가운데 영역의 확률을 두 배로 계산한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -875,6 +919,10 @@ window.questionBank = [
     ],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "R1_DIRECT_AUTHORITY_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
-    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN"
+    "metaProjectionStatus": "EXACT_ACTIVE_LOOKUP_OFFICIAL_RESOLVER_NOT_RUN",
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: Y가 2, 3, 4, 5일 때 공의 개수가 각각 10개, ?, ?, 5개로 표시된 수형도다.",
+    "solutionImageCaption": "Y의 가능한 값별 빈도를 두고 다섯 번의 분산을 더한다. 정답은 (1) 3개와 2개, (2) 159/20이다.",
+    "solutionImageSize": "full"
   }
 ];

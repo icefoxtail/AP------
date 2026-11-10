@@ -1,0 +1,121 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "x",
+        "elements": [
+          "u",
+          "v"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "f(x)",
+        "elements": [
+          "u",
+          "v"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "f(f(x))",
+        "elements": [
+          "u",
+          "v"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z",
+        "color": "WARM"
+      }
+    ],
+    "highlightPaths": [
+      {
+        "path": [
+          "u",
+          "v",
+          "u"
+        ],
+        "startColumn": 0,
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "v",
+          "u",
+          "v"
+        ],
+        "startColumn": 0,
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "예: u와 v가 서로 대응하면 두 번 합성 뒤 처음 값으로 돌아온다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(f(x))=x이다.",
+      "mappedTo": [
+        "arrows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 번 합성 후 원래 입력으로 돌아오는 두 경로를 보여준다."
+  ]
+}

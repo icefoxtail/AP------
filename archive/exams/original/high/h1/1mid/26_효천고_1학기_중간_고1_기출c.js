@@ -312,9 +312,9 @@ window.questionBank = [
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q9-solution.svg",
-    "solutionImageAlt": "k=-5일 때 직선이 포물선에 접한다",
-    "solutionImageCaption": "k=-5일 때 직선이 포물선에 접한다",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 직선이 한 점에서 접하고 꼭짓점과 접점의 좌표가 표시된 그래프",
+    "solutionImageCaption": "f(x)=x²+4x−4이며, 접하는 경계에서 직선을 위로 옮기면 교점이 생긴다. 정답은 k≥−5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -389,7 +389,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 만나는 위쪽 수평선 및 꼭짓점보다 낮아 만나지 않는 아래쪽 수평선을 비교한 그래프",
+    "solutionImageCaption": "x²−5x=t로 두어 얻은 두 후보 t=6과 t=−16을 각각 u, v로 표시했다. 포물선과 만나지 않는 수평선 y=v가 허근에 해당한다. 정답은 −16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -500,7 +504,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 두 원과 수평선 및 원점과 제1사분면 교점의 좌표",
+    "solutionImageCaption": "풀이에서 복소수의 실수부와 허수부를 두 실수 좌표로 두면 두 원과 수평선의 조건을 얻는다. 원점은 조건에서 제외되므로 남는 교점으로 두 계수를 계산한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -531,7 +539,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 포물선과 오른쪽으로 이동한 포물선의 영점을 비교한 그래프",
+    "solutionImageCaption": "예: 최고차항 계수를 −1, 수평 이동량을 4로 두었다. 이동한 두 근 a+1, a+3의 곱을 주어진 조건과 비교한다. 정답은 1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -606,9 +618,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q17-solution.svg",
-    "solutionImageAlt": "구간이 꼭짓점을 포함하지 않는 두 경우의 최솟값 -1, 최댓값 7",
-    "solutionImageCaption": "구간이 꼭짓점을 포함하지 않는 두 경우의 최솟값 -1, 최댓값 7",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점을 포함하지 않는 포물선 위 두 강조 구간과 네 끝점의 좌표를 비교한 그래프",
+    "solutionImageCaption": "강조한 두 구간은 꼭짓점을 포함하지 않으면서 최댓값 7과 최솟값 −1을 갖는다. 각 구간의 왼쪽 끝이 k이므로 정답은 0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -641,7 +653,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 두 절편과 꼭짓점, 평행한 두 선, 교점에서 수선의 발까지의 선분과 삼각형",
+    "solutionImageCaption": "예: 두 번째 절편을 3으로 두어 평행 관계와 수선의 발을 나타냈다. 평행한 두 선의 기울기에서 교점의 가로 위치를 구한 뒤, 삼각형의 밑변과 높이로 마지막 조건을 검토한다. 정답은 ㄱ, ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -759,7 +775,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 C와 원점을 지나는 두 직선이 각각 두 점에서 만나는 그림",
+    "solutionImageCaption": "가로좌표 x=a, 세로좌표 y=b로 두면 원 C는 x²+y²=50이다. 인수분해로 나눈 두 직선에서 각각 두 교점을 구한다. 정답은 (2√10, √10), (−2√10, −√10), (−5, 5), (5, −5)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -831,7 +851,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 직선이 한 점에서 접하며 접점과 꼭짓점의 좌표가 표시된 그래프",
+    "solutionImageCaption": "예: 매개변수가 1인 경우에 두 그래프가 접하는 모습을 나타냈다. 항상 한 점에서 만나려면 판별식이 매개변수에 대한 항등식으로 0이어야 하므로 계수를 비교한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -856,9 +880,9 @@ window.questionBank = [
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q26-solution.svg",
-    "solutionImageAlt": "m=-5/2일 때 직선 y=-5/2x-6이 꺾임점 A를 지나며 y=h(x)의 그래프와 세 점에서 만난다.",
-    "solutionImageCaption": "m=-5/2일 때 직선 y=-5/2x-6이 꺾임점 A를 지나며 y=h(x)의 그래프와 세 점에서 만난다.",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q26-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간별 함수와 경계점 하나를 지나는 직선이 세 점에서 만나는 그래프",
+    "solutionImageCaption": "예: m=−2.5인 직선을 그렸다. 경계의 포함 여부와 접하는 경우를 구분해 안쪽과 바깥쪽 교점 수를 센다. 정답은 −4.5이다.",
     "solutionImageSize": "full"
   }
 ];

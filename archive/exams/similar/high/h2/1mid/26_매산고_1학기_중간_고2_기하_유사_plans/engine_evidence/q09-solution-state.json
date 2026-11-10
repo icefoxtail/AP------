@@ -1,0 +1,384 @@
+{
+ "meta": {
+  "dir": "q09-solution",
+  "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+  "ordinal": 9
+ },
+ "identity": {
+  "questionUid": "26_매산고_1학기_중간_고2_기하|9",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:85c329287e32febae71ba24800eea7866827be181600e9bd969abd390a116660",
+  "assetId": "va-165100448895b230df349458bf5a5afd16086f09782f0ab82c7c4777e7e1ec4d"
+ },
+ "plan": {
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "이 직선은 점근선 $y=\\sqrt3x$에 평행하므로 접선이 아니다.",
+  "conic": {
+   "kind": "HYPERBOLA",
+   "center": [
+    "0",
+    "0"
+   ],
+   "aSquared": "1",
+   "bSquared": "3",
+   "transverse": "X"
+  },
+  "points": [
+   {
+    "id": "O",
+    "kind": "ORIGIN"
+   }
+  ],
+  "lines": [
+   {
+    "id": "s1",
+    "role": "ASYMPTOTE",
+    "sign": 1,
+    "dashed": true
+   },
+   {
+    "id": "s2",
+    "role": "ASYMPTOTE",
+    "sign": -1,
+    "dashed": true
+   },
+   {
+    "id": "k1",
+    "slope": "sqrt(3)",
+    "intercept": "2",
+    "label": "l"
+   }
+  ],
+  "caption": "쌍곡선 x^2-y^2/3=1과 점근선 y=±√3x, 점근선 y=√3x와 평행한 직선 l: y=√3x+2",
+  "sourceConditions": [
+   {
+    "id": "c1",
+    "condition": "쌍곡선 x^2-y^2/3=1의 접선이 될 수 없는 직선을 찾는다.",
+    "mappedTo": [
+     "conic",
+     "lines"
+    ]
+   }
+  ],
+  "newVisualInformation": [
+   "점근선과 평행한 직선은 쌍곡선과 한 점에서만 만나 접선이 아니다."
+  ]
+ },
+ "model": {
+  "modelVersion": "ELLIPSE_FIGURE_MODEL_v1",
+  "capability": "ellipse-figure-v1",
+  "mode": "CONIC",
+  "conic": {
+   "kind": "HYPERBOLA",
+   "transverse": "X",
+   "center": {
+    "x": {
+     "exact": "0",
+     "value": 0
+    },
+    "y": {
+     "exact": "0",
+     "value": 0
+    }
+   },
+   "aSquared": {
+    "exact": "1",
+    "value": 1
+   },
+   "bSquared": {
+    "exact": "3",
+    "value": 3
+   },
+   "cSquared": {
+    "exact": "4",
+    "value": 4
+   },
+   "foci": [
+    {
+     "x": {
+      "exact": "2",
+      "value": 2
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    {
+     "x": {
+      "exact": "-2",
+      "value": -2
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    }
+   ],
+   "vertices": [
+    {
+     "x": {
+      "exact": "1",
+      "value": 1
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    {
+     "x": {
+      "exact": "-1",
+      "value": -1
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    }
+   ],
+   "asymptoteSlope": {
+    "exact": "sqrt(3)",
+    "value": 1.7320508075688772
+   },
+   "equation": "x**2 - y**2/3 - 1"
+  },
+  "points": [
+   {
+    "id": "O",
+    "kind": "ORIGIN",
+    "x": {
+     "exact": "0",
+     "value": 0
+    },
+    "y": {
+     "exact": "0",
+     "value": 0
+    },
+    "labels": true,
+    "onCurve": false,
+    "foot": null
+   }
+  ],
+  "segments": [],
+  "polygons": [],
+  "lines": [
+   {
+    "id": "s1",
+    "role": "ASYMPTOTE",
+    "type": "SLOPE",
+    "label": null,
+    "dashed": true,
+    "hidden": false,
+    "through": null,
+    "tangent": false,
+    "general": {
+     "a": {
+      "exact": "-sqrt(3)",
+      "value": -1.7320508075688772
+     },
+     "b": {
+      "exact": "1",
+      "value": 1
+     },
+     "c": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    "slope": {
+     "exact": "sqrt(3)",
+     "value": 1.7320508075688772
+    },
+    "intercept": {
+     "exact": "0",
+     "value": 0
+    }
+   },
+   {
+    "id": "s2",
+    "role": "ASYMPTOTE",
+    "type": "SLOPE",
+    "label": null,
+    "dashed": true,
+    "hidden": false,
+    "through": null,
+    "tangent": false,
+    "general": {
+     "a": {
+      "exact": "sqrt(3)",
+      "value": 1.7320508075688772
+     },
+     "b": {
+      "exact": "1",
+      "value": 1
+     },
+     "c": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    "slope": {
+     "exact": "-sqrt(3)",
+     "value": -1.7320508075688772
+    },
+    "intercept": {
+     "exact": "0",
+     "value": 0
+    }
+   },
+   {
+    "id": "k1",
+    "role": null,
+    "type": "SLOPE",
+    "label": "l",
+    "dashed": false,
+    "hidden": false,
+    "through": null,
+    "tangent": false,
+    "general": {
+     "a": {
+      "exact": "-sqrt(3)",
+      "value": -1.7320508075688772
+     },
+     "b": {
+      "exact": "1",
+      "value": 1
+     },
+     "c": {
+      "exact": "2",
+      "value": 2
+     }
+    },
+    "slope": {
+     "exact": "sqrt(3)",
+     "value": 1.7320508075688772
+    },
+    "intercept": {
+     "exact": "2",
+     "value": 2
+    }
+   }
+  ],
+  "bbox": {
+   "minX": -2,
+   "maxX": 2,
+   "minY": -1.7320508075688772,
+   "maxY": 1.7320508075688772
+  }
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 288 267\" width=\"288\" height=\"267\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" data-ellipse-figure=\"ellipse-figure-v1\" data-conic=\"HYPERBOLA\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"6\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\"><rect width=\"288\" height=\"267\" fill=\"#fff\"/><g data-layer=\"10\"><line id=\"axis-x\" data-role=\"axis\" data-axis=\"x\" x1=\"34\" y1=\"133.72\" x2=\"254\" y2=\"133.72\" fill=\"none\" stroke=\"#444\" stroke-width=\"1.1\"/></g><g data-layer=\"10\"><line id=\"axis-y\" data-role=\"axis\" data-axis=\"y\" x1=\"144\" y1=\"233\" x2=\"144\" y2=\"34.44\" fill=\"none\" stroke=\"#444\" stroke-width=\"1.1\"/></g><g data-layer=\"11\"><polygon id=\"axis-x-head\" data-role=\"axis-head\" data-axis=\"x\" points=\"254,133.72 245,130.12 245,137.32\" fill=\"#444\" stroke=\"none\"/></g><g data-layer=\"11\"><polygon id=\"axis-y-head\" data-role=\"axis-head\" data-axis=\"y\" points=\"144,34.44 140.4,43.44 147.6,43.44\" fill=\"#444\" stroke=\"none\"/></g><g data-layer=\"25\"><path id=\"curve-pos\" data-role=\"curve\" data-curve=\"HYPERBOLA\" data-branch=\"POS\" d=\"M213.9 233 L213.65 232.48 L213.31 231.75 L212.97 231.03 L212.63 230.31 L212.29 229.59 L211.96 228.88 L211.63 228.17 L211.3 227.47 L210.98 226.77 L210.65 226.07 L210.33 225.37 L210.02 224.68 L209.7 223.99 L209.39 223.31 L209.08 222.63 L208.77 221.95 L208.46 221.27 L208.16 220.6 L207.86 219.93 L207.56 219.26 L207.26 218.6 L206.96 217.94 L206.67 217.29 L206.38 216.63 L206.09 215.98 L205.81 215.33 L205.53 214.69 L205.24 214.05 L204.97 213.41 L204.69 212.77 L204.42 212.14 L204.14 211.51 L203.87 210.88 L203.61 210.26 L203.34 209.64 L203.08 209.02 L202.82 208.4 L202.56 207.79 L202.3 207.18 L202.04 206.57 L201.79 205.96 L201.54 205.36 L201.29 204.76 L201.05 204.16 L200.8 203.57 L200.56 202.98 L200.32 202.39 L200.08 201.8 L199.84 201.21 L199.61 200.63 L199.38 200.05 L199.15 199.47 L198.92 198.9 L198.69 198.32 L198.47 197.75 L198.25 197.19 L198.03 196.62 L197.81 196.06 L197.59 195.5 L197.38 194.94 L197.17 194.38 L196.96 193.82 L196.75 193.27 L196.54 192.72 L196.34 192.17 L196.13 191.63 L195.93 191.08 L195.73 190.54 L195.54 190 L195.34 189.46 L195.15 188.93 L194.96 188.4 L194.77 187.86 L194.58 187.33 L194.39 186.81 L194.21 186.28 L194.03 185.76 L193.85 185.23 L193.67 184.71 L193.49 184.2 L193.32 183.68 L193.14 183.17 L192.97 182.65 L192.8 182.14 L192.63 181.63 L192.47 181.12 L192.3 180.62 L192.14 180.11 L191.98 179.61 L191.82 179.11 L191.66 178.61 L191.51 178.12 L191.35 177.62 L191.2 177.13 L191.05 176.63 L190.9 176.14 L190.76 175.65 L190.61 175.16 L190.47 174.68 L190.33 174.19 L190.19 173.71 L190.05 173.23 L189.91 172.75 L189.77 172.27 L189.64 171.79 L189.51 171.31 L189.38 170.84 L189.25 170.36 L189.12 169.89 L189 169.42 L188.88 168.95 L188.75 168.48 L188.63 168.02 L188.51 167.55 L188.4 167.08 L188.28 166.62 L188.17 166.16 L188.06 165.7 L187.95 165.24 L187.84 164.78 L187.73 164.32 L187.62 163.87 L187.52 163.41 L187.42 162.96 L187.31 162.5 L187.22 162.05 L187.12 161.6 L187.02 161.15 L186.93 160.7 L186.83 160.25 L186.74 159.8 L186.65 159.36 L186.56 158.91 L186.48 158.47 L186.39 158.02 L186.31 157.58 L186.22 157.14 L186.14 156.7 L186.06 156.26 L185.99 155.82 L185.91 155.38 L185.83 154.94 L185.76 154.51 L185.69 154.07 L185.62 153.63 L185.55 153.2 L185.48 152.77 L185.42 152.33 L185.35 151.9 L185.29 151.47 L185.23 151.04 L185.17 150.61 L185.11 150.18 L185.06 149.75 L185 149.32 L184.95 148.89 L184.9 148.46 L184.85 148.03 L184.8 147.61 L184.75 147.18 L184.7 146.76 L184.66 146.33 L184.61 145.91 L184.57 145.48 L184.53 145.06 L184.49 144.63 L184.46 144.21 L184.42 143.79 L184.39 143.37 L184.35 142.94 L184.32 142.52 L184.29 142.1 L184.26 141.68 L184.24 141.26 L184.21 140.84 L184.19 140.42 L184.16 140 L184.14 139.58 L184.12 139.16 L184.1 138.74 L184.09 138.32 L184.07 137.9 L184.06 137.48 L184.05 137.06 L184.04 136.65 L184.03 136.23 L184.02 135.81 L184.01 135.39 L184.01 134.97 L184 134.55 L184 134.14 L184 133.72 L184 133.3 L184 132.88 L184.01 132.46 L184.01 132.05 L184.02 131.63 L184.03 131.21 L184.04 130.79 L184.05 130.37 L184.06 129.95 L184.07 129.53 L184.09 129.12 L184.1 128.7 L184.12 128.28 L184.14 127.86 L184.16 127.44 L184.19 127.02 L184.21 126.6 L184.24 126.18 L184.26 125.76 L184.29 125.34 L184.32 124.91 L184.35 124.49 L184.39 124.07 L184.42 123.65 L184.46 123.23 L184.49 122.8 L184.53 122.38 L184.57 121.95 L184.61 121.53 L184.66 121.11 L184.7 120.68 L184.75 120.25 L184.8 119.83 L184.85 119.4 L184.9 118.97 L184.95 118.55 L185 118.12 L185.06 117.69 L185.11 117.26 L185.17 116.83 L185.23 116.4 L185.29 115.97 L185.35 115.54 L185.42 115.1 L185.48 114.67 L185.55 114.24 L185.62 113.8 L185.69 113.37 L185.76 112.93 L185.83 112.49 L185.91 112.06 L185.99 111.62 L186.06 111.18 L186.14 110.74 L186.22 110.3 L186.31 109.85 L186.39 109.41 L186.48 108.97 L186.56 108.52 L186.65 108.08 L186.74 107.63 L186.83 107.19 L186.93 106.74 L187.02 106.29 L187.12 105.84 L187.22 105.39 L187.31 104.93 L187.42 104.48 L187.52 104.03 L187.62 103.57 L187.73 103.11 L187.84 102.66 L187.95 102.2 L188.06 101.74 L188.17 101.28 L188.28 100.81 L188.4 100.35 L188.51 99.89 L188.63 99.42 L188.75 98.95 L188.88 98.48 L189 98.02 L189.12 97.54 L189.25 97.07 L189.38 96.6 L189.51 96.12 L189.64 95.65 L189.77 95.17 L189.91 94.69 L190.05 94.21 L190.19 93.73 L190.33 93.24 L190.47 92.76 L190.61 92.27 L190.76 91.78 L190.9 91.29 L191.05 90.8 L191.2 90.31 L191.35 89.82 L191.51 89.32 L191.66 88.82 L191.82 88.32 L191.98 87.82 L192.14 87.32 L192.3 86.82 L192.47 86.31 L192.63 85.8 L192.8 85.29 L192.97 84.78 L193.14 84.27 L193.32 83.76 L193.49 83.24 L193.67 82.72 L193.85 82.2 L194.03 81.68 L194.21 81.16 L194.39 80.63 L194.58 80.1 L194.77 79.57 L194.96 79.04 L195.15 78.51 L195.34 77.97 L195.54 77.43 L195.73 76.89 L195.93 76.35 L196.13 75.81 L196.34 75.26 L196.54 74.71 L196.75 74.16 L196.96 73.61 L197.17 73.06 L197.38 72.5 L197.59 71.94 L197.81 71.38 L198.03 70.82 L198.25 70.25 L198.47 69.68 L198.69 69.11 L198.92 68.54 L199.15 67.96 L199.38 67.39 L199.61 66.81 L199.84 66.22 L200.08 65.64 L200.32 65.05 L200.56 64.46 L200.8 63.87 L201.05 63.27 L201.29 62.68 L201.54 62.07 L201.79 61.47 L202.04 60.87 L202.3 60.26 L202.56 59.65 L202.82 59.03 L203.08 58.42 L203.34 57.8 L203.61 57.18 L203.87 56.55 L204.14 55.93 L204.42 55.3 L204.69 54.66 L204.97 54.03 L205.24 53.39 L205.53 52.75 L205.81 52.1 L206.09 51.45 L206.38 50.8 L206.67 50.15 L206.96 49.49 L207.26 48.83 L207.56 48.17 L207.86 47.51 L208.16 46.84 L208.46 46.16 L208.77 45.49 L209.08 44.81 L209.39 44.13 L209.7 43.44 L210.02 42.75 L210.33 42.06 L210.65 41.37 L210.98 40.67 L211.3 39.97 L211.63 39.26 L211.96 38.55 L212.29 37.84 L212.63 37.13 L212.97 36.41 L213.31 35.68 L213.65 34.96 L213.9 34.44\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.7\"/></g><g data-layer=\"25\"><path id=\"curve-neg\" data-role=\"curve\" data-curve=\"HYPERBOLA\" data-branch=\"NEG\" d=\"M74.1 233 L74.35 232.48 L74.69 231.75 L75.03 231.03 L75.37 230.31 L75.71 229.59 L76.04 228.88 L76.37 228.17 L76.7 227.47 L77.02 226.77 L77.35 226.07 L77.67 225.37 L77.98 224.68 L78.3 223.99 L78.61 223.31 L78.92 222.63 L79.23 221.95 L79.54 221.27 L79.84 220.6 L80.14 219.93 L80.44 219.26 L80.74 218.6 L81.04 217.94 L81.33 217.29 L81.62 216.63 L81.91 215.98 L82.19 215.33 L82.47 214.69 L82.76 214.05 L83.03 213.41 L83.31 212.77 L83.58 212.14 L83.86 211.51 L84.13 210.88 L84.39 210.26 L84.66 209.64 L84.92 209.02 L85.18 208.4 L85.44 207.79 L85.7 207.18 L85.96 206.57 L86.21 205.96 L86.46 205.36 L86.71 204.76 L86.95 204.16 L87.2 203.57 L87.44 202.98 L87.68 202.39 L87.92 201.8 L88.16 201.21 L88.39 200.63 L88.62 200.05 L88.85 199.47 L89.08 198.9 L89.31 198.32 L89.53 197.75 L89.75 197.19 L89.97 196.62 L90.19 196.06 L90.41 195.5 L90.62 194.94 L90.83 194.38 L91.04 193.82 L91.25 193.27 L91.46 192.72 L91.66 192.17 L91.87 191.63 L92.07 191.08 L92.27 190.54 L92.46 190 L92.66 189.46 L92.85 188.93 L93.04 188.4 L93.23 187.86 L93.42 187.33 L93.61 186.81 L93.79 186.28 L93.97 185.76 L94.15 185.23 L94.33 184.71 L94.51 184.2 L94.68 183.68 L94.86 183.17 L95.03 182.65 L95.2 182.14 L95.37 181.63 L95.53 181.12 L95.7 180.62 L95.86 180.11 L96.02 179.61 L96.18 179.11 L96.34 178.61 L96.49 178.12 L96.65 177.62 L96.8 177.13 L96.95 176.63 L97.1 176.14 L97.24 175.65 L97.39 175.16 L97.53 174.68 L97.67 174.19 L97.81 173.71 L97.95 173.23 L98.09 172.75 L98.23 172.27 L98.36 171.79 L98.49 171.31 L98.62 170.84 L98.75 170.36 L98.88 169.89 L99 169.42 L99.12 168.95 L99.25 168.48 L99.37 168.02 L99.49 167.55 L99.6 167.08 L99.72 166.62 L99.83 166.16 L99.94 165.7 L100.05 165.24 L100.16 164.78 L100.27 164.32 L100.38 163.87 L100.48 163.41 L100.58 162.96 L100.69 162.5 L100.78 162.05 L100.88 161.6 L100.98 161.15 L101.07 160.7 L101.17 160.25 L101.26 159.8 L101.35 159.36 L101.44 158.91 L101.52 158.47 L101.61 158.02 L101.69 157.58 L101.78 157.14 L101.86 156.7 L101.94 156.26 L102.01 155.82 L102.09 155.38 L102.17 154.94 L102.24 154.51 L102.31 154.07 L102.38 153.63 L102.45 153.2 L102.52 152.77 L102.58 152.33 L102.65 151.9 L102.71 151.47 L102.77 151.04 L102.83 150.61 L102.89 150.18 L102.94 149.75 L103 149.32 L103.05 148.89 L103.1 148.46 L103.15 148.03 L103.2 147.61 L103.25 147.18 L103.3 146.76 L103.34 146.33 L103.39 145.91 L103.43 145.48 L103.47 145.06 L103.51 144.63 L103.54 144.21 L103.58 143.79 L103.61 143.37 L103.65 142.94 L103.68 142.52 L103.71 142.1 L103.74 141.68 L103.76 141.26 L103.79 140.84 L103.81 140.42 L103.84 140 L103.86 139.58 L103.88 139.16 L103.9 138.74 L103.91 138.32 L103.93 137.9 L103.94 137.48 L103.95 137.06 L103.96 136.65 L103.97 136.23 L103.98 135.81 L103.99 135.39 L103.99 134.97 L104 134.55 L104 134.14 L104 133.72 L104 133.3 L104 132.88 L103.99 132.46 L103.99 132.05 L103.98 131.63 L103.97 131.21 L103.96 130.79 L103.95 130.37 L103.94 129.95 L103.93 129.53 L103.91 129.12 L103.9 128.7 L103.88 128.28 L103.86 127.86 L103.84 127.44 L103.81 127.02 L103.79 126.6 L103.76 126.18 L103.74 125.76 L103.71 125.34 L103.68 124.91 L103.65 124.49 L103.61 124.07 L103.58 123.65 L103.54 123.23 L103.51 122.8 L103.47 122.38 L103.43 121.95 L103.39 121.53 L103.34 121.11 L103.3 120.68 L103.25 120.25 L103.2 119.83 L103.15 119.4 L103.1 118.97 L103.05 118.55 L103 118.12 L102.94 117.69 L102.89 117.26 L102.83 116.83 L102.77 116.4 L102.71 115.97 L102.65 115.54 L102.58 115.1 L102.52 114.67 L102.45 114.24 L102.38 113.8 L102.31 113.37 L102.24 112.93 L102.17 112.49 L102.09 112.06 L102.01 111.62 L101.94 111.18 L101.86 110.74 L101.78 110.3 L101.69 109.85 L101.61 109.41 L101.52 108.97 L101.44 108.52 L101.35 108.08 L101.26 107.63 L101.17 107.19 L101.07 106.74 L100.98 106.29 L100.88 105.84 L100.78 105.39 L100.69 104.93 L100.58 104.48 L100.48 104.03 L100.38 103.57 L100.27 103.11 L100.16 102.66 L100.05 102.2 L99.94 101.74 L99.83 101.28 L99.72 100.81 L99.6 100.35 L99.49 99.89 L99.37 99.42 L99.25 98.95 L99.12 98.48 L99 98.02 L98.88 97.54 L98.75 97.07 L98.62 96.6 L98.49 96.12 L98.36 95.65 L98.23 95.17 L98.09 94.69 L97.95 94.21 L97.81 93.73 L97.67 93.24 L97.53 92.76 L97.39 92.27 L97.24 91.78 L97.1 91.29 L96.95 90.8 L96.8 90.31 L96.65 89.82 L96.49 89.32 L96.34 88.82 L96.18 88.32 L96.02 87.82 L95.86 87.32 L95.7 86.82 L95.53 86.31 L95.37 85.8 L95.2 85.29 L95.03 84.78 L94.86 84.27 L94.68 83.76 L94.51 83.24 L94.33 82.72 L94.15 82.2 L93.97 81.68 L93.79 81.16 L93.61 80.63 L93.42 80.1 L93.23 79.57 L93.04 79.04 L92.85 78.51 L92.66 77.97 L92.46 77.43 L92.27 76.89 L92.07 76.35 L91.87 75.81 L91.66 75.26 L91.46 74.71 L91.25 74.16 L91.04 73.61 L90.83 73.06 L90.62 72.5 L90.41 71.94 L90.19 71.38 L89.97 70.82 L89.75 70.25 L89.53 69.68 L89.31 69.11 L89.08 68.54 L88.85 67.96 L88.62 67.39 L88.39 66.81 L88.16 66.22 L87.92 65.64 L87.68 65.05 L87.44 64.46 L87.2 63.87 L86.95 63.27 L86.71 62.68 L86.46 62.07 L86.21 61.47 L85.96 60.87 L85.7 60.26 L85.44 59.65 L85.18 59.03 L84.92 58.42 L84.66 57.8 L84.39 57.18 L84.13 56.55 L83.86 55.93 L83.58 55.3 L83.31 54.66 L83.03 54.03 L82.76 53.39 L82.47 52.75 L82.19 52.1 L81.91 51.45 L81.62 50.8 L81.33 50.15 L81.04 49.49 L80.74 48.83 L80.44 48.17 L80.14 47.51 L79.84 46.84 L79.54 46.16 L79.23 45.49 L78.92 44.81 L78.61 44.13 L78.3 43.44 L77.98 42.75 L77.67 42.06 L77.35 41.37 L77.02 40.67 L76.7 39.97 L76.37 39.26 L76.04 38.55 L75.71 37.84 L75.37 37.13 L75.03 36.41 L74.69 35.68 L74.35 34.96 L74.1 34.44\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.7\"/></g><g data-layer=\"30\"><line id=\"line-s1\" data-role=\"line\" data-line=\"s1\" x1=\"86.68\" y1=\"233\" x2=\"201.32\" y2=\"34.44\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.3\" stroke-dasharray=\"7 5\"/></g><g data-layer=\"30\"><line id=\"line-s2\" data-role=\"line\" data-line=\"s2\" x1=\"201.32\" y1=\"233\" x2=\"86.68\" y2=\"34.44\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.3\" stroke-dasharray=\"7 5\"/></g><g data-layer=\"30\"><line id=\"line-k1\" data-role=\"line\" data-line=\"k1\" x1=\"40.49\" y1=\"233\" x2=\"155.13\" y2=\"34.44\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.3\"/></g><g data-layer=\"40\"><circle id=\"point-O\" data-role=\"point\" data-point=\"O\" cx=\"144\" cy=\"133.72\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"90\"><g id=\"point-O\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-O\" data-point=\"O\" data-tex=\"O\" data-fragment-sha=\"sha256:b5e5434a8e595c49bda8e4a7258d85889c0cd74a6907ebe0349d7dd8c6e05599\" data-box=\"161.746618,138.291279,15.26,14.52\" transform=\"translate(161.746618 138.291279)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.26\" height=\"14.52\" viewBox=\"0 0 15.26 14.52\" data-outline-width=\"15.26\" data-outline-height=\"14.52\" id=\"lb-15cb880125998d8b973e2d4f919d976eca2c52dd0a608ae02c88224e3875ba87\" data-owner=\"ellipse-point-O\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.08) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"line-k1\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"line\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-line-k1\" data-line=\"k1\" data-tex=\"l\" data-fragment-sha=\"sha256:6d775e139fee32d1fcd693f3e60b5a9351fe16b61443614e506da2a3df49da99\" data-box=\"55.927075,218.050852,5.96,14.1\" transform=\"translate(55.927075 218.050852)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"5.96\" height=\"14.1\" viewBox=\"0 0 5.96 14.1\" data-outline-width=\"5.96\" data-outline-height=\"14.1\" id=\"lb-d1455c9a75a42fad3d4c3f571634bb0aa8a32f01ef88e5cdbfd04c035f8b92fc\" data-owner=\"ellipse-line-k1\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.88) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D459\" d=\"M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z\"></path></g></g></g></g></svg></g></g></svg>",
+  "lineage": {
+   "planSha256": "sha256:37093f5388ffc8bb660a0838111e13ad30714b7130106733c03f67fe365e3dff",
+   "modelSha256": "sha256:9be32edef45ee3f110b1ffc5250198a04104059903f14f0f97deb0cf25db0b02",
+   "typographyPolicySha256": "sha256:f071bbcfdf0e75004cbc0f19b15bd3c2bb291b1788119ebf8cd659286dfe12a3",
+   "specSha256": "sha256:f79afcca4da203dc91dcc1e26d1e9027e757aae85befb47ff2dbffb5a28b52f7",
+   "fragmentSha256s": {
+    "point-O": "sha256:b5e5434a8e595c49bda8e4a7258d85889c0cd74a6907ebe0349d7dd8c6e05599",
+    "line-k1": "sha256:6d775e139fee32d1fcd693f3e60b5a9351fe16b61443614e506da2a3df49da99"
+   },
+   "svgSha256": "sha256:7c4905f1ce53957059ef22e9092e8d0d523f8a16a1ef3058cbd6c8dc533db100",
+   "staticAuditSha256": "sha256:de54e2fb8bf3b427425cc92988cc494833f0779c0900fd852dc3efd63fd5b8dd",
+   "renderedLayoutSha256": "sha256:ad1646ab7ca88f37c8a1be91a8ee450f4325a59acf9dbf2b93f6d4745088d1a1"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 288,
+    "height": 267
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "productionAuthorized": false
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:7c4905f1ce53957059ef22e9092e8d0d523f8a16a1ef3058cbd6c8dc533db100",
+   "policySha256": "sha256:f071bbcfdf0e75004cbc0f19b15bd3c2bb291b1788119ebf8cd659286dfe12a3",
+   "candidateBankSha256": "sha256:ebed4d778c04034c822382f9f0a49f8a97da54b2a2c7cf3fd3c47f8a03a5dc0b",
+   "assetPath": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/assets/images/26_매산고_1학기_중간_고2_기하/q09-solution.svg",
+   "assetResponseSha256": "sha256:7c4905f1ce53957059ef22e9092e8d0d523f8a16a1ef3058cbd6c8dc533db100",
+   "archiveRowSha256": "sha256:2b9d4ffe38e098cf6075ada06337514b4675a2ddcd69eb8787c7188ad5c570f0",
+   "screenshotSha256s": {
+    "image": "sha256:9108f6d4ff2276448730d732a34b93ce821a508221a98a4af245d9435f33d41c",
+    "context": "sha256:18ac898432cad781f4eb20111f688ab61810a45960223b6dcb2868ab09d26f90",
+    "page": "sha256:e93f23afcb860336fb6c5d1fda4a41838a7ad8e3626a8832adf8199a9c363d8a"
+   },
+   "matrixSha256": "sha256:53fd69c3ee34a6ec2ad7a0f046cd5fa356c63dbf37a4588507356adf72409cf0",
+   "engineSha256": "sha256:1a32af053469acb7d21529248bec60f29e1d8076ab4c47c8ee1aac2ee7ae6b23"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-391a04e5",
+   "asset": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/assets/images/26_매산고_1학기_중간_고2_기하/q09-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/candidates/26_매산고_1학기_중간_고2_기하.js",
+   "matrix": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-165100448895b230df349458bf5a5afd16086f09782f0ab82c7c4777e7e1ec4d-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-165100448895b230df349458bf5a5afd16086f09782f0ab82c7c4777e7e1ec4d-sol-desktop-va-165100448895b230df349458bf5a5afd16086f09782f0ab82c7c4777e7e1ec4d.png",
+    "context": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-165100448895b230df349458bf5a5afd16086f09782f0ab82c7c4777e7e1ec4d-sol-desktop-va-165100448895b230df349458bf5a5afd16086f09782f0ab82c7c4777e7e1ec4d-context.png",
+    "page": ".tmp/archive/pilot-capture-391a04e5/26_매산고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-165100448895b230df349458bf5a5afd16086f09782f0ab82c7c4777e7e1ec4d-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+    "bytes": 44092,
+    "sha256": "sha256:929cf8df7101000659f6b32155edb00cade1450dc9f592a71cf3ec2a3095225f"
+   },
+   "originalQuestionSha256": "sha256:84ece7495ae04fd62df0063fb6b7fe3372fe9689a8c9de2ab7b57d5034df2857",
+   "questionCount": 21,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 9
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 1,
+  "expectedDisplayScale": 1,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

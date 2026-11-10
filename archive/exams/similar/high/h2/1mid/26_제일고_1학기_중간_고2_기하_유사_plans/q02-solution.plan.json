@@ -1,0 +1,105 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "18/5",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "27/5",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    },
+    {
+      "id": "M",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "N",
+      "kind": "FOOT",
+      "from": "B",
+      "onto": "l",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    },
+    {
+      "id": "k1",
+      "through": [
+        "A",
+        "F"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAM",
+      "from": "A",
+      "to": "M",
+      "label": "9"
+    },
+    {
+      "id": "sBN",
+      "from": "B",
+      "to": "N",
+      "label": "6"
+    },
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "9"
+    },
+    {
+      "id": "sBF",
+      "from": "B",
+      "to": "F",
+      "label": "6"
+    }
+  ],
+  "caption": "포물선 위의 점에서 초점까지의 거리와 준선까지의 거리가 같다: AF=AM=9, BF=BN=6, 따라서 AB=15.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AF=AM=9, AB=AF+FB=15에서 BF=6, BN=BF=6",
+      "mappedTo": [
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AF=AM, BF=BN이라는 포물선의 정의가 같은 길이 표시로 보인다."
+  ],
+  "sourceQuote": "$\\overline{AF}=\\overline{AM}=9$",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q02-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q02-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q02-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q02-solution.svg"
+  }
+}

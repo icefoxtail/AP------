@@ -1,0 +1,84 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "4",
+      "6"
+    ],
+    "p": "-6",
+    "axis": "Y"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "F'",
+      "kind": "POINT",
+      "x": "-4",
+      "y": "0"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "-4"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "l",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPH",
+      "from": "P",
+      "to": "H",
+      "label": "\\frac{26}{3}"
+    },
+    {
+      "id": "sPG",
+      "from": "P",
+      "to": "F'",
+      "label": "\\frac{10}{3}"
+    }
+  ],
+  "caption": "포물선 위의 점 P가 F′의 바로 위에 있을 때 PF=(준선까지의 거리)=26/3, PF′=10/3이고 PF+PF′는 최솟값 12를 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(-4,10/3), PF=12-y=26/3, PF'=y=10/3, 합 12",
+      "mappedTo": [
+        "conic",
+        "points",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "합이 최소가 되는 점 P의 위치와 PF, PH, PF′의 길이"
+  ],
+  "sourceQuote": "$\\overline{PF}=12-y$이다.",
+  "assetPath": "assets/images/26_제일고_1학기_중간_고2_기하_유사/q20-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q20-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q20-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사_plans/engine_evidence/q20-solution.svg"
+  }
+}

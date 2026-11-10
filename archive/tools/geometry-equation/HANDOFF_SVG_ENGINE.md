@@ -21,6 +21,13 @@
 
 ## 00. 최신 현황과 다음 할 일 (2026-11-03, 먼저 읽기)
 
+### 2026-11-10 엔진 확장 회차 h(브랜치 engine/ext-20261110-h)
+- **문자열 문항 id(21 왕의중·21 연향중 2학기 기말 중3):** 은행 id가 `"q01"`·`"s01"`인 시험지는 id를 그대로 쓴다. UID는 `<시험지>|q01`(`question-uid.mjs`: 정수 id 또는 `^[A-Za-z][A-Za-z0-9_-]{0,31}$`; 정수 UID는 그대로). `render-plan` item의 `ordinal`에 `"s01"`을 쓰면 되고(`construction-archive-capture-v1.mjs`·`record-visual-browser-evidence.mjs`가 같은 id로 은행 문항을 찾는다, 정수 id 시험지의 바이트 불변), 게시 도구(`ops/svg-m1`의 `make-packet`·`publish.mjs`·`publish-exam.py`·`pubflow.py`·`ledger-upsert.py`·`verify-published.mjs`·`verify-publication-fonts.mjs`, 공용 `portable_root.py`)도 `ord`에 문자열 id를 받아 해설 그림 파일을 `<id>-solution.svg`(예 `s01-solution.svg`; 정수 id는 기존 `q<N>-solution.svg`)로 이름 짓는다. 원본 시험지 JS의 id는 바꾸지 않는다(숫자 id 사본 `_tmp_wangui_numeric`은 정식 해법이 아니다). 검증: `tests/string-question-id.test.mjs`(UID·캡처의 은행 조회·publish 도구 apply), 실제 렌더 `ordinal:"s01"` -> ARCHIVE_BOUND(`questionUid ...|s01`). 남은 것: `exam-status.py` 등 보조 도구와 시험지 마감 원장(`exam-figure-ledger.json`) 항목의 `ord`가 문자열인 경우의 소비자(원장 소비 테스트는 없다)는 첫 시험지를 닫을 때 확인.
+- **렌더 캡처 대기시간(PR #1595):** `GEOMETRY_CAPTURE_TIMEOUT_MS`(0 초과 600000 이하)가 Archive 캡처·화면 사전검사의 goto·waitForFunction·스크린샷 대기를 정한다. 없으면 예전 값 그대로.
+- **수직선 점 상한 8 -> 12(`number-line-v1.mjs` `MAX_POINTS`):** 19 금당고 확통 Q21 같은 10자리 수직선. 기존 plan은 8개 이하라 영향 없음. 점 모양은 `FILLED`·`HOLLOW`(`OPEN`은 `NUMBER_LINE_POINT_STYLE_INVALID`). **실제 10점 렌더는 이 PC가 너무 느려(렌더 1건 40분 이상) 이번 회차에 끝내지 못했다 - 병합 전에 10점 plan으로 확인 필요.**
+- **벤다이어그램 이름이 원 선에 닿을 때 `labelGap`(옵트인, 22 순천고 확통 Q18):** `diagram.labelGap:4`(정수 2~12)이면 집합 이름이 모든 원의 선에서 그만큼 떨어지고(부분집합 안쪽 집합은 바깥 원 안에서), 원 둘레를 한 바퀴 돌며 자리를 찾는다. 없으면 이전과 같은 바이트. 관측기는 `SD_SET_LABEL_TOUCHES_CIRCLE`, 거절 `SET_LABEL_GAP_INVALID`/`SD_LABEL_GAP_INVALID`. **실제 Q18 렌더(`labelGap:4`)는 같은 이유로 미검증 - 병합 전에 확인 필요.**
+- **22 순천고 확통 Q09(구간별 다항 `regions` 값 `3/8`)는 이번 회차에서 해결하지 못했다:** 지금 `3/8`은 영역 안 y축 왼쪽에 놓여 영역 가운데가 아니다. `overlays.callouts`는 곡선 위 점에서만 지시선이 시작해 영역 안 빈 점에는 못 쓴다 -> 엔진 후보(영역 라벨 지시선).
+
 ### 2026-11-09 엔진 확장 회차 a(별도 Sonnet 라인, 브랜치 engine/ext-20261109-a)
 - **축 눈금 분수 세로분수:** `axisTickValues`의 분수 문자열(`"2/5"`, `"4/35"`)이 빗금이 아니라 세로분수로 그려진다(`visual_engine/engine.py` 눈금 라벨 `tex`). 확률밀도처럼 납작한 그래프의 세로 확대는 새 기능 없이 기존 `graphPlan.axisScale:{"x":1,"y":10}`로 된다(골든 `item130ext1probdensity`, 22 효천 확통 기말 q24; 사용법은 가이드 G18c 덧붙임 아래 단락). 지시서 `ops/svg-m1/briefs/engine-tick-fraction-stacked.md`.
 
@@ -31,6 +38,13 @@
 
 ### 2026-11-09 엔진 확장 회차 d(브랜치 engine/ext-20261109-d)
 - 한글+영문 혼합 축 이름(`x(분)`)이 변수만 수식 글꼴(`typography.mjs` MIXED), 통계 패널의 영문 축 이름·범례·계열 이름이 수식 글꼴. 24 효천 고1 q14(절댓값 유리함수)는 새 패밀리 없이 `multi-curve` `RATIONAL abs:true`로 그려짐(골든 `item134ext4q14abs`). `GEOMETRY_WORKER_TIMEOUT_MS`는 0 초과 600000 이하만 사용. 설계표 `briefs/engine-font-unify.md` 4회차.
+
+### 2026-11-09 엔진 확장 회차 g(브랜치 engine/ext-20261109-g, 글꼴 통일 2차·경우의 수 칸 그림)
+- 글꼴 통일(옵트인, 기본 출력 바이트 불변): 수직선·이차부등식 연쇄·합성 패널 캡션 `math`에 세로분수 `\frac{X-m}{k}`(`displaystyle`)·`weight:"MATH"`(평문 캡션을 수식 굵기로), 수형도 `chart.labelWeight:"MATH"`, 대응도·벤·표 이름 수식 글꼴 상한 6→8자(`f(f(x))`). 골든 `item140ext7q17captionfrac`·`item141ext7q11treeweight`·`item142ext7q18treeweight`·`item143ext7palmaq18name`. 22개 통계·집합 골든 plan의 모델·spec 비교는 변경 전과 동일.
+- 새 통계 도형 `SLOTS`(경우의 수 칸: `count`/`fixed` 칸, 사이의 ×/+ 기호, 제목): 24 효천 고1 Q03·Q04·Q12 골든 `item144~146ext7*slots`. 관측기 `audit_slots`(`SC_SLOT_*`). 남은 구조 공백: 문자 `n·r` 개수 라벨·이중계산 나란히 비교(Q10), 대칭 중복 제거 나눗셈(Q12 보조), 소인수 지수 선택(Q02).
+- 근호 좌표 표기 정리: 구성 점 좌표 `scalarExpression`이 `-1-sqrt(10)`, `-sqrt(10)`으로 쓰고(예전 `-1+(-1√10)`), 선 라벨의 단일 음의 근호 상수는 `y=x-sqrt(10)`(예전 `y=x+(-sqrt(10))`).
+- 구간별 다항 `referenceLines[].hideLabel`(옵트인, 위쪽 띠의 `y=1` 끄기; 22 금당 수II Q08 골든 `item147ext7q08hidelabel`). 점 이름 P는 새 옵션 없이 `overlays.points[].unnamed:true`로 해결. 근호 표기 정리는 기존 골든 `item70d`·`item70f`·`item82`·`item88g3b`의 라벨 글자를 바꾼다(사용자 확인 필요).
+- 확인만 한 것: 22 순천고 확통 Q04는 `DENSITY_TRIANGLE` 없이 `piecewise-polynomial`+`regions`로 그려진다(골든 `item148ext7q04density`, 꼭짓점 좌표 숨김은 `coordinateBand.hide`). 22 순천고 수II Q11은 세제곱근 기울기(`16**(1/3)-2`)가 `PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID`(`p+q*sqrt(r)` 문법 밖)라 엔진 공백으로 남김.
 
 ### 2026-11-09 엔진 확장 회차 f(브랜치 engine/ext-20261109-f, 지시선·plan으로 안 풀리는 것만)
 - 구간별 다항 `regions`가 기약 삼차 조각의 구간 **밖** 실근 때문에 `PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM`으로 거절되던 것을, 구간 안 실근 수를 스투름으로 세어 0이면 통과하게 함(`graph_framing.py` `_pp_real_roots_inside`, 22 금당 수II q18, 골든 `item138ext6q18cubicarea`, 지시서 `briefs/engine-region-cubic-no-root-inside.md`). 나머지(q02·q19·q21·COORDINATE_LEADER_PANEL_CONFLICT)는 plan 수정으로 풀려 엔진 변경 없이 AUTHOR_GUIDE에 사용법만 남김(골든 `item139ext6q21hidelabels`).

@@ -80,7 +80,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²−4x+4가 x축에 (2, 0)에서 닿고, 주황 직선 y=−2x+3이 포물선에 점 (1, 1)에서 닿는 그래프. 곡선과 직선 곁에 각각 식이 적혀 있다.",
+    "solutionImageCaption": "y=x²−4x+4=(x−2)²은 x=2에서 x축과 중근을 가지므로 x축에 접한다. 직선 y=−2x+3과 연립하면 (x−1)²=0으로 중근이므로 점 (1,1)에서 접한다. 따라서 두 관계는 모두 접한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -571,7 +575,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 C가 직각인 직각삼각형 ABC. 변 BC는 a, 변 CA는 b, 빗변 AB는 c로 표시되어 있고, 꼭짓점 A의 각은 60°이다. 삼각형 안에 넓이 2√3이 적혀 있다.",
+    "solutionImageCaption": "조건 ㄱ을 정리하면 (a²+b²)²=c⁴이므로 a²+b²=c²이고 ∠C=90°이다. ∠A=60°이므로 세 변의 비는 a:b:c=√3:1:2이다. 넓이 ½ab=2√3에서 b=2, a=2√3, c=4가 된다. 정답은 6+2√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -613,7 +621,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/24_팔마고_1학기_중간_고1_기출/q15.png"
+    "image": "assets/images/24_팔마고_1학기_중간_고1_기출/q15.png",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑변 12, 높이 24인 직각삼각형 안에 주황색 직사각형이 직각 꼭짓점에 붙어 있다. 직사각형의 가로는 x, 세로는 y이고, 왼쪽에 높이 24, 아래쪽에 밑변 12를 나타내는 치수선이 있다.",
+    "solutionImageCaption": "그림은 직사각형의 한 예이다. 직사각형의 오른쪽 위 꼭짓점이 빗변 위에 있으므로 y=24−2x이고, 넓이 S=x(24−2x)=−2(x−6)²+72는 x=6일 때 최대이다. 이때 y=12이므로 둘레는 2(6+12)이다. 정답은 36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -737,7 +749,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 y=x²−4x+5. 주황색으로 굵게 칠한 부분은 x가 0 이상 4 이하인 구간이고, 꼭짓점 (2, 1)과 양 끝점 (0, 5), (4, 5)가 좌표와 함께 표시되어 있다. 점 (4, 5)에서 x축으로 점선이 내려와 있다.",
+    "solutionImageCaption": "y=x²−4x+5=(x−2)²+1이므로 꼭짓점은 (2,1)이고 구간의 길이는 항상 4이다. 구간이 꼭짓점을 포함하면 최솟값은 꼭짓점에서, 최댓값은 꼭짓점에서 먼 끝점에서 생긴다(그림은 k=2일 때의 예). 이 조건으로 최댓값과 최솟값의 합이 11이 되는 k를 구하면 1과 3이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -920,6 +936,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/24_팔마고_1학기_중간_고1_기출/q23.png"
+    "image": "assets/images/24_팔마고_1학기_중간_고1_기출/q23.png",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각이고 AC는 6이다. 변 BC 위의 점 D에서 점 C까지를 지름으로 하는 반원이 변 AB와 점 E에서 접한다. 중심 O에서 접점 E로 점선 반지름 r이 그어져 있고 직각 표시가 있다. 아래쪽에 BD는 2, 지름 CD는 2r로 표시되어 있다.",
+    "solutionImageCaption": "점 B에서 접선 BE와 할선 BDC에 대하여 BE²=BD·BC이고 BD=2, BC=2+2r이므로 BE²=4r+4이다. 중심 O에서 접점 E로 그은 반지름 OE는 AB에 수직이므로 삼각형 BEO와 BCA는 닮음이고 BE : BC = r : 6이다. 두 식을 연립해 r을 구한다. 정답은 (1) 4r+4, (2) r=3이다.",
+    "solutionImageSize": "full"
   }
 ];

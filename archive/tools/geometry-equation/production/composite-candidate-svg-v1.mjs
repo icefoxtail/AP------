@@ -6,6 +6,7 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {NUMBER_LINE_CAPABILITY,composeNumberLinePanel} from './quadratic-inequality-chain-v1.mjs';
+import {captionMathValid} from './number-line-v1.mjs';
 import {SOLID_CAPABILITY,GRID_PANEL_WIDTH,composeSolidFigurePanel} from './solid-figure-v1.mjs';
 import {isPlaneFigure} from './plane-marks.mjs';
 import {FIGURE_CAPABILITY as SET_DIAGRAM_CAPABILITY,solveDiagram as solveSetDiagram,composeSetDiagramFigure} from './set-diagram-v1.mjs';
@@ -131,8 +132,9 @@ export function compositePanels(plan){
   const three=!grid&&!setGrid&&!statGrid&&plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
   const checked=plan.panels.map((panel,index)=>{
     const caption=panel?.caption;
-    if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
-      ||(caption.math!==undefined&&(typeof caption.math!=='string'||!CAPTION_MATH.test(caption.math)))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24)))bad('PANEL_CAPTION_'+index);
+    if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text','weight'].includes(key))||(!caption.math&&!caption.text)
+      ||(caption.math!==undefined&&(typeof caption.math!=='string'||!(CAPTION_MATH.test(caption.math)||captionMathValid(caption.math))))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24))
+      ||(caption.weight!==undefined&&(caption.weight!=='MATH'||!caption.text)))bad('PANEL_CAPTION_'+index);
     if(setGrid){
       // A Venn panel is only {capability,diagram} (a VENN diagram): the composite owns the figure's caption, conditions and quote, the grid owns the panel width.
       const panelPlan=panel.plan,code=reason=>new Stop('PANEL_'+index+':'+reason,{reason:'PANEL_'+index+':'+reason});
@@ -293,7 +295,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       const fragments=[];
       for(const [kind,value] of [['MATH',panel.caption.math],['TEXT',panel.caption.text]]){
         if(!value)continue;
-        try{fragments.push(typeset({id:`p${panel.index+1}-caption-${kind.toLowerCase()}`,owner:`panel-${panel.index+1}`,factRole:'GIVEN',fontPx:typographyPolicy.baseFontPx,panelId:`p${panel.index+1}`,...(kind==='MATH'?{kind,tex:value}:{kind,text:value})},identity));}
+        try{fragments.push(typeset({id:`p${panel.index+1}-caption-${kind.toLowerCase()}`,owner:`panel-${panel.index+1}`,factRole:'GIVEN',fontPx:typographyPolicy.baseFontPx,panelId:`p${panel.index+1}`,...(kind==='MATH'?{kind,tex:value.includes('\\frac')?'\\displaystyle '+value:value}:{kind,text:value,...(panel.caption.weight==='MATH'?{weight:'MATH'}:{})})},identity));}
         catch(error){if(!isDomainCode(error))throw error;throw new Stop('COMPOSITE_CAPTION_TYPESET_ERROR',{panel:panel.index,code:error.message});}
       }
       if(header){
@@ -327,7 +329,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       const spaces=[...text].map((character,k)=>character===' '?k:-1).filter(k=>k>0&&k<text.length-1).sort((a,b)=>Math.abs(a-middle)-Math.abs(b-middle)||a-b);
       for(const k of spaces){
         try{
-          const halves=[text.slice(0,k).trim(),text.slice(k+1).trim()].map((value,n)=>typeset({id:`p${panel.index+1}-caption-text-${n+1}`,owner:`panel-${panel.index+1}`,factRole:'GIVEN',fontPx:typographyPolicy.baseFontPx,panelId:`p${panel.index+1}`,kind:'TEXT',text:value},identity));
+          const halves=[text.slice(0,k).trim(),text.slice(k+1).trim()].map((value,n)=>typeset({id:`p${panel.index+1}-caption-text-${n+1}`,owner:`panel-${panel.index+1}`,factRole:'GIVEN',fontPx:typographyPolicy.baseFontPx,panelId:`p${panel.index+1}`,kind:'TEXT',text:value,...(panel.caption.weight==='MATH'?{weight:'MATH'}:{})},identity));
           if(halves.every(fragment=>fragment.intrinsic.width<=captionLimit)){lineage.captionFragmentSha256s[i]=halves.map(fragment=>fragment.fragmentSha256);return halves.map(fragment=>[fragment]);}
         }catch(error){if(!isDomainCode(error))throw error;}
       }

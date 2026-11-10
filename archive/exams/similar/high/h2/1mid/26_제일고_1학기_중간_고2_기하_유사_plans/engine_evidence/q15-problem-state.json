@@ -1,0 +1,460 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+  "ordinal": 15,
+  "dir": "q15-problem"
+ },
+ "identity": {
+  "questionUid": "26_제일고_1학기_중간_고2_기하|15",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:c898d8341338f7dfd70851d5cb7b159d28fe7ea69f4e1949fe2d3bd12d64b173",
+  "assetId": "va-4d3db5467b118d2eed65b4fd23cbfca889be614b2a6cc787604e9afd10f4b9a2"
+ },
+ "plan": {
+  "capability": "ellipse-figure-v1",
+  "conic": {
+   "kind": "HYPERBOLA",
+   "center": [
+    "0",
+    "0"
+   ],
+   "aSquared": "12",
+   "bSquared": "12",
+   "transverse": "X"
+  },
+  "points": [
+   {
+    "id": "O",
+    "kind": "ORIGIN"
+   },
+   {
+    "id": "P",
+    "kind": "ON_CONIC",
+    "x": "4",
+    "sign": "POS"
+   },
+   {
+    "id": "H",
+    "kind": "FOOT",
+    "from": "O",
+    "onto": "l",
+    "rightAngle": true
+   },
+   {
+    "id": "Q",
+    "kind": "LINE_CONIC",
+    "line": "m",
+    "which": 1
+   }
+  ],
+  "lines": [
+   {
+    "id": "l",
+    "tangent": true,
+    "at": "P",
+    "label": "l"
+   },
+   {
+    "id": "m",
+    "through": [
+     "O",
+     "H"
+    ],
+    "hidden": true
+   }
+  ],
+  "segments": [
+   {
+    "id": "sOH",
+    "from": "O",
+    "to": "H"
+   },
+   {
+    "id": "sHQ",
+    "from": "H",
+    "to": "Q"
+   }
+  ],
+  "caption": "쌍곡선 위의 점 P에서의 접선 l, 원점 O에서 l에 내린 수선의 발 H, 직선 OH가 쌍곡선과 제2사분면에서 만나는 점 Q를 나타낸 그림이다.",
+  "sourceConditions": [
+   {
+    "id": "c1",
+    "condition": "쌍곡선 x^2-y^2=12 위의 점 P(4,2)에서의 접선 l, O에서 l에 내린 수선의 발 H, 직선 OH와 쌍곡선의 제2사분면 교점 Q",
+    "mappedTo": [
+     "conic",
+     "points",
+     "lines"
+    ]
+   }
+  ],
+  "newVisualInformation": [
+   "접선 l, 수선의 발 H, 점 Q의 위치"
+  ],
+  "sourceQuote": "원점 $O$에서 직선 $l$에 내린 수선의 발을 $H$"
+ },
+ "model": {
+  "modelVersion": "ELLIPSE_FIGURE_MODEL_v1",
+  "capability": "ellipse-figure-v1",
+  "mode": "CONIC",
+  "conic": {
+   "kind": "HYPERBOLA",
+   "transverse": "X",
+   "center": {
+    "x": {
+     "exact": "0",
+     "value": 0
+    },
+    "y": {
+     "exact": "0",
+     "value": 0
+    }
+   },
+   "aSquared": {
+    "exact": "12",
+    "value": 12
+   },
+   "bSquared": {
+    "exact": "12",
+    "value": 12
+   },
+   "cSquared": {
+    "exact": "24",
+    "value": 24
+   },
+   "foci": [
+    {
+     "x": {
+      "exact": "2*sqrt(6)",
+      "value": 4.898979485566356
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    {
+     "x": {
+      "exact": "-2*sqrt(6)",
+      "value": -4.898979485566356
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    }
+   ],
+   "vertices": [
+    {
+     "x": {
+      "exact": "2*sqrt(3)",
+      "value": 3.4641016151377544
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    {
+     "x": {
+      "exact": "-2*sqrt(3)",
+      "value": -3.4641016151377544
+     },
+     "y": {
+      "exact": "0",
+      "value": 0
+     }
+    }
+   ],
+   "asymptoteSlope": {
+    "exact": "1",
+    "value": 1
+   },
+   "equation": "x**2/12 - y**2/12 - 1"
+  },
+  "points": [
+   {
+    "id": "O",
+    "kind": "ORIGIN",
+    "x": {
+     "exact": "0",
+     "value": 0
+    },
+    "y": {
+     "exact": "0",
+     "value": 0
+    },
+    "labels": true,
+    "onCurve": false,
+    "foot": null
+   },
+   {
+    "id": "P",
+    "kind": "ON_CONIC",
+    "x": {
+     "exact": "4",
+     "value": 4
+    },
+    "y": {
+     "exact": "2",
+     "value": 2
+    },
+    "labels": true,
+    "onCurve": true,
+    "foot": null
+   },
+   {
+    "id": "H",
+    "kind": "FOOT",
+    "x": {
+     "exact": "12/5",
+     "value": 2.4
+    },
+    "y": {
+     "exact": "-6/5",
+     "value": -1.2
+    },
+    "labels": true,
+    "onCurve": false,
+    "foot": {
+     "from": "O",
+     "onto": "l",
+     "rightAngle": true
+    }
+   },
+   {
+    "id": "Q",
+    "kind": "LINE_CONIC",
+    "x": {
+     "exact": "-4",
+     "value": -4
+    },
+    "y": {
+     "exact": "2",
+     "value": 2
+    },
+    "labels": true,
+    "onCurve": true,
+    "foot": null
+   }
+  ],
+  "segments": [
+   {
+    "id": "sOH",
+    "from": "O",
+    "to": "H",
+    "label": null,
+    "dashed": false
+   },
+   {
+    "id": "sHQ",
+    "from": "H",
+    "to": "Q",
+    "label": null,
+    "dashed": false
+   }
+  ],
+  "polygons": [],
+  "lines": [
+   {
+    "id": "l",
+    "role": null,
+    "type": "SLOPE",
+    "label": "l",
+    "dashed": false,
+    "hidden": false,
+    "through": null,
+    "tangent": true,
+    "general": {
+     "a": {
+      "exact": "2/3",
+      "value": 0.6666666666666666
+     },
+     "b": {
+      "exact": "-1/3",
+      "value": -0.3333333333333333
+     },
+     "c": {
+      "exact": "2",
+      "value": 2
+     }
+    },
+    "slope": {
+     "exact": "2",
+     "value": 2
+    },
+    "intercept": {
+     "exact": "-6",
+     "value": -6
+    },
+    "tangencyPoint": {
+     "x": {
+      "exact": "4",
+      "value": 4
+     },
+     "y": {
+      "exact": "2",
+      "value": 2
+     }
+    }
+   },
+   {
+    "id": "m",
+    "role": null,
+    "type": "SLOPE",
+    "label": null,
+    "dashed": false,
+    "hidden": true,
+    "through": [
+     "O",
+     "H"
+    ],
+    "tangent": false,
+    "general": {
+     "a": {
+      "exact": "-6/5",
+      "value": -1.2
+     },
+     "b": {
+      "exact": "-12/5",
+      "value": -2.4
+     },
+     "c": {
+      "exact": "0",
+      "value": 0
+     }
+    },
+    "slope": {
+     "exact": "-1/2",
+     "value": -0.5
+    },
+    "intercept": {
+     "exact": "0",
+     "value": 0
+    }
+   }
+  ],
+  "bbox": {
+   "minX": -4.898979485566356,
+   "maxX": 4.898979485566356,
+   "minY": -3.4641016151377544,
+   "maxY": 3.4641016151377544
+  }
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 406\" width=\"520\" height=\"406\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" data-ellipse-figure=\"ellipse-figure-v1\" data-conic=\"HYPERBOLA\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"6\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\"><rect width=\"520\" height=\"406\" fill=\"#fff\"/><g data-layer=\"10\"><line id=\"axis-x\" data-role=\"axis\" data-axis=\"x\" x1=\"34\" y1=\"203.44\" x2=\"485.92\" y2=\"203.44\" fill=\"none\" stroke=\"#444\" stroke-width=\"1.1\"/></g><g data-layer=\"10\"><line id=\"axis-y\" data-role=\"axis\" data-axis=\"y\" x1=\"259.96\" y1=\"372\" x2=\"259.96\" y2=\"34.87\" fill=\"none\" stroke=\"#444\" stroke-width=\"1.1\"/></g><g data-layer=\"11\"><polygon id=\"axis-x-head\" data-role=\"axis-head\" data-axis=\"x\" points=\"485.92,203.44 476.92,199.84 476.92,207.04\" fill=\"#444\" stroke=\"none\"/></g><g data-layer=\"11\"><polygon id=\"axis-y-head\" data-role=\"axis-head\" data-axis=\"y\" points=\"259.96,34.87 256.36,43.87 263.56,43.87\" fill=\"#444\" stroke=\"none\"/></g><g data-layer=\"25\"><path id=\"curve-pos\" data-role=\"curve\" data-curve=\"HYPERBOLA\" data-branch=\"POS\" d=\"M478.17 372 L477.52 371.17 L476.62 370 L475.73 368.83 L474.84 367.68 L473.96 366.52 L473.09 365.37 L472.22 364.23 L471.36 363.09 L470.5 361.95 L469.65 360.82 L468.8 359.69 L467.97 358.57 L467.13 357.45 L466.31 356.34 L465.49 355.23 L464.67 354.13 L463.87 353.03 L463.06 351.93 L462.27 350.84 L461.48 349.76 L460.69 348.67 L459.91 347.6 L459.14 346.52 L458.37 345.45 L457.61 344.39 L456.86 343.32 L456.11 342.27 L455.36 341.21 L454.62 340.16 L453.89 339.12 L453.16 338.07 L452.44 337.04 L451.72 336 L451.01 334.97 L450.31 333.95 L449.61 332.92 L448.91 331.9 L448.23 330.89 L447.54 329.88 L446.86 328.87 L446.19 327.87 L445.52 326.86 L444.86 325.87 L444.21 324.87 L443.56 323.88 L442.91 322.9 L442.27 321.91 L441.63 320.94 L441.01 319.96 L440.38 318.99 L439.76 318.02 L439.15 317.05 L438.54 316.09 L437.93 315.13 L437.34 314.17 L436.74 313.22 L436.15 312.27 L435.57 311.32 L434.99 310.38 L434.42 309.44 L433.85 308.5 L433.29 307.57 L432.73 306.63 L432.18 305.71 L431.63 304.78 L431.09 303.86 L430.55 302.94 L430.02 302.02 L429.49 301.11 L428.96 300.2 L428.45 299.29 L427.93 298.38 L427.42 297.48 L426.92 296.58 L426.42 295.68 L425.93 294.79 L425.44 293.9 L424.95 293.01 L424.47 292.12 L424 291.24 L423.53 290.35 L423.06 289.47 L422.6 288.6 L422.15 287.72 L421.69 286.85 L421.25 285.98 L420.81 285.12 L420.37 284.25 L419.94 283.39 L419.51 282.53 L419.08 281.67 L418.67 280.82 L418.25 279.96 L417.84 279.11 L417.44 278.26 L417.04 277.42 L416.64 276.57 L416.25 275.73 L415.86 274.89 L415.48 274.05 L415.1 273.22 L414.73 272.38 L414.36 271.55 L414 270.72 L413.64 269.89 L413.28 269.07 L412.93 268.24 L412.58 267.42 L412.24 266.6 L411.9 265.78 L411.57 264.96 L411.24 264.15 L410.92 263.33 L410.6 262.52 L410.28 261.71 L409.97 260.9 L409.66 260.1 L409.36 259.29 L409.06 258.49 L408.77 257.69 L408.48 256.89 L408.19 256.09 L407.91 255.29 L407.63 254.5 L407.36 253.7 L407.09 252.91 L406.83 252.12 L406.57 251.33 L406.31 250.54 L406.06 249.75 L405.81 248.97 L405.57 248.18 L405.33 247.4 L405.1 246.62 L404.87 245.84 L404.64 245.06 L404.42 244.28 L404.2 243.5 L403.99 242.73 L403.78 241.95 L403.57 241.18 L403.37 240.41 L403.17 239.63 L402.98 238.86 L402.79 238.1 L402.61 237.33 L402.43 236.56 L402.25 235.79 L402.08 235.03 L401.91 234.26 L401.75 233.5 L401.59 232.74 L401.43 231.98 L401.28 231.21 L401.13 230.45 L400.99 229.69 L400.85 228.94 L400.71 228.18 L400.58 227.42 L400.46 226.66 L400.33 225.91 L400.21 225.15 L400.1 224.4 L399.99 223.64 L399.88 222.89 L399.78 222.14 L399.68 221.39 L399.59 220.63 L399.5 219.88 L399.41 219.13 L399.33 218.38 L399.25 217.63 L399.17 216.88 L399.1 216.13 L399.04 215.38 L398.98 214.64 L398.92 213.89 L398.86 213.14 L398.81 212.39 L398.77 211.64 L398.72 210.9 L398.69 210.15 L398.65 209.4 L398.62 208.66 L398.6 207.91 L398.57 207.17 L398.56 206.42 L398.54 205.67 L398.53 204.93 L398.53 204.18 L398.52 203.44 L398.53 202.69 L398.53 201.94 L398.54 201.2 L398.56 200.45 L398.57 199.71 L398.6 198.96 L398.62 198.21 L398.65 197.47 L398.69 196.72 L398.72 195.97 L398.77 195.23 L398.81 194.48 L398.86 193.73 L398.92 192.98 L398.98 192.24 L399.04 191.49 L399.1 190.74 L399.17 189.99 L399.25 189.24 L399.33 188.49 L399.41 187.74 L399.5 186.99 L399.59 186.24 L399.68 185.49 L399.78 184.73 L399.88 183.98 L399.99 183.23 L400.1 182.47 L400.21 181.72 L400.33 180.96 L400.46 180.21 L400.58 179.45 L400.71 178.69 L400.85 177.94 L400.99 177.18 L401.13 176.42 L401.28 175.66 L401.43 174.9 L401.59 174.13 L401.75 173.37 L401.91 172.61 L402.08 171.84 L402.25 171.08 L402.43 170.31 L402.61 169.54 L402.79 168.78 L402.98 168.01 L403.17 167.24 L403.37 166.47 L403.57 165.69 L403.78 164.92 L403.99 164.14 L404.2 163.37 L404.42 162.59 L404.64 161.81 L404.87 161.03 L405.1 160.25 L405.33 159.47 L405.57 158.69 L405.81 157.9 L406.06 157.12 L406.31 156.33 L406.57 155.54 L406.83 154.75 L407.09 153.96 L407.36 153.17 L407.63 152.38 L407.91 151.58 L408.19 150.78 L408.48 149.98 L408.77 149.18 L409.06 148.38 L409.36 147.58 L409.66 146.77 L409.97 145.97 L410.28 145.16 L410.6 144.35 L410.92 143.54 L411.24 142.72 L411.57 141.91 L411.9 141.09 L412.24 140.27 L412.58 139.45 L412.93 138.63 L413.28 137.81 L413.64 136.98 L414 136.15 L414.36 135.32 L414.73 134.49 L415.1 133.66 L415.48 132.82 L415.86 131.98 L416.25 131.14 L416.64 130.3 L417.04 129.45 L417.44 128.61 L417.84 127.76 L418.25 126.91 L418.67 126.06 L419.08 125.2 L419.51 124.34 L419.94 123.48 L420.37 122.62 L420.81 121.76 L421.25 120.89 L421.69 120.02 L422.15 119.15 L422.6 118.27 L423.06 117.4 L423.53 116.52 L424 115.64 L424.47 114.75 L424.95 113.87 L425.44 112.98 L425.93 112.08 L426.42 111.19 L426.92 110.29 L427.42 109.39 L427.93 108.49 L428.45 107.58 L428.96 106.68 L429.49 105.76 L430.02 104.85 L430.55 103.93 L431.09 103.01 L431.63 102.09 L432.18 101.17 L432.73 100.24 L433.29 99.31 L433.85 98.37 L434.42 97.43 L434.99 96.49 L435.57 95.55 L436.15 94.6 L436.74 93.65 L437.34 92.7 L437.93 91.74 L438.54 90.78 L439.15 89.82 L439.76 88.86 L440.38 87.89 L441.01 86.91 L441.63 85.94 L442.27 84.96 L442.91 83.97 L443.56 82.99 L444.21 82 L444.86 81 L445.52 80.01 L446.19 79.01 L446.86 78 L447.54 76.99 L448.23 75.98 L448.91 74.97 L449.61 73.95 L450.31 72.93 L451.01 71.9 L451.72 70.87 L452.44 69.84 L453.16 68.8 L453.89 67.76 L454.62 66.71 L455.36 65.66 L456.11 64.61 L456.86 63.55 L457.61 62.49 L458.37 61.42 L459.14 60.35 L459.91 59.28 L460.69 58.2 L461.48 57.12 L462.27 56.03 L463.06 54.94 L463.87 53.84 L464.67 52.74 L465.49 51.64 L466.31 50.53 L467.13 49.42 L467.97 48.3 L468.8 47.18 L469.65 46.05 L470.5 44.92 L471.36 43.79 L472.22 42.65 L473.09 41.5 L473.96 40.35 L474.84 39.2 L475.73 38.04 L476.62 36.87 L477.52 35.71 L478.17 34.87\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.7\"/></g><g data-layer=\"25\"><path id=\"curve-neg\" data-role=\"curve\" data-curve=\"HYPERBOLA\" data-branch=\"NEG\" d=\"M41.75 372 L42.4 371.17 L43.3 370 L44.19 368.83 L45.08 367.68 L45.96 366.52 L46.83 365.37 L47.7 364.23 L48.56 363.09 L49.42 361.95 L50.27 360.82 L51.11 359.69 L51.95 358.57 L52.78 357.45 L53.61 356.34 L54.43 355.23 L55.24 354.13 L56.05 353.03 L56.85 351.93 L57.65 350.84 L58.44 349.76 L59.23 348.67 L60 347.6 L60.78 346.52 L61.54 345.45 L62.31 344.39 L63.06 343.32 L63.81 342.27 L64.56 341.21 L65.3 340.16 L66.03 339.12 L66.76 338.07 L67.48 337.04 L68.19 336 L68.9 334.97 L69.61 333.95 L70.31 332.92 L71 331.9 L71.69 330.89 L72.38 329.88 L73.05 328.87 L73.73 327.87 L74.39 326.86 L75.06 325.87 L75.71 324.87 L76.36 323.88 L77.01 322.9 L77.65 321.91 L78.28 320.94 L78.91 319.96 L79.54 318.99 L80.16 318.02 L80.77 317.05 L81.38 316.09 L81.98 315.13 L82.58 314.17 L83.18 313.22 L83.76 312.27 L84.35 311.32 L84.93 310.38 L85.5 309.44 L86.07 308.5 L86.63 307.57 L87.19 306.63 L87.74 305.71 L88.29 304.78 L88.83 303.86 L89.37 302.94 L89.9 302.02 L90.43 301.11 L90.95 300.2 L91.47 299.29 L91.99 298.38 L92.49 297.48 L93 296.58 L93.5 295.68 L93.99 294.79 L94.48 293.9 L94.97 293.01 L95.45 292.12 L95.92 291.24 L96.39 290.35 L96.86 289.47 L97.32 288.6 L97.77 287.72 L98.22 286.85 L98.67 285.98 L99.11 285.12 L99.55 284.25 L99.98 283.39 L100.41 282.53 L100.83 281.67 L101.25 280.82 L101.67 279.96 L102.08 279.11 L102.48 278.26 L102.88 277.42 L103.28 276.57 L103.67 275.73 L104.06 274.89 L104.44 274.05 L104.82 273.22 L105.19 272.38 L105.56 271.55 L105.92 270.72 L106.28 269.89 L106.64 269.07 L106.99 268.24 L107.34 267.42 L107.68 266.6 L108.02 265.78 L108.35 264.96 L108.68 264.15 L109 263.33 L109.32 262.52 L109.64 261.71 L109.95 260.9 L110.26 260.1 L110.56 259.29 L110.86 258.49 L111.15 257.69 L111.44 256.89 L111.73 256.09 L112.01 255.29 L112.29 254.5 L112.56 253.7 L112.83 252.91 L113.09 252.12 L113.35 251.33 L113.61 250.54 L113.86 249.75 L114.11 248.97 L114.35 248.18 L114.59 247.4 L114.82 246.62 L115.05 245.84 L115.28 245.06 L115.5 244.28 L115.72 243.5 L115.93 242.73 L116.14 241.95 L116.35 241.18 L116.55 240.41 L116.74 239.63 L116.94 238.86 L117.13 238.1 L117.31 237.33 L117.49 236.56 L117.67 235.79 L117.84 235.03 L118.01 234.26 L118.17 233.5 L118.33 232.74 L118.49 231.98 L118.64 231.21 L118.79 230.45 L118.93 229.69 L119.07 228.94 L119.2 228.18 L119.33 227.42 L119.46 226.66 L119.58 225.91 L119.7 225.15 L119.82 224.4 L119.93 223.64 L120.04 222.89 L120.14 222.14 L120.24 221.39 L120.33 220.63 L120.42 219.88 L120.51 219.13 L120.59 218.38 L120.67 217.63 L120.74 216.88 L120.81 216.13 L120.88 215.38 L120.94 214.64 L121 213.89 L121.06 213.14 L121.11 212.39 L121.15 211.64 L121.19 210.9 L121.23 210.15 L121.27 209.4 L121.3 208.66 L121.32 207.91 L121.34 207.17 L121.36 206.42 L121.38 205.67 L121.39 204.93 L121.39 204.18 L121.4 203.44 L121.39 202.69 L121.39 201.94 L121.38 201.2 L121.36 200.45 L121.34 199.71 L121.32 198.96 L121.3 198.21 L121.27 197.47 L121.23 196.72 L121.19 195.97 L121.15 195.23 L121.11 194.48 L121.06 193.73 L121 192.98 L120.94 192.24 L120.88 191.49 L120.81 190.74 L120.74 189.99 L120.67 189.24 L120.59 188.49 L120.51 187.74 L120.42 186.99 L120.33 186.24 L120.24 185.49 L120.14 184.73 L120.04 183.98 L119.93 183.23 L119.82 182.47 L119.7 181.72 L119.58 180.96 L119.46 180.21 L119.33 179.45 L119.2 178.69 L119.07 177.94 L118.93 177.18 L118.79 176.42 L118.64 175.66 L118.49 174.9 L118.33 174.13 L118.17 173.37 L118.01 172.61 L117.84 171.84 L117.67 171.08 L117.49 170.31 L117.31 169.54 L117.13 168.78 L116.94 168.01 L116.74 167.24 L116.55 166.47 L116.35 165.69 L116.14 164.92 L115.93 164.14 L115.72 163.37 L115.5 162.59 L115.28 161.81 L115.05 161.03 L114.82 160.25 L114.59 159.47 L114.35 158.69 L114.11 157.9 L113.86 157.12 L113.61 156.33 L113.35 155.54 L113.09 154.75 L112.83 153.96 L112.56 153.17 L112.29 152.38 L112.01 151.58 L111.73 150.78 L111.44 149.98 L111.15 149.18 L110.86 148.38 L110.56 147.58 L110.26 146.77 L109.95 145.97 L109.64 145.16 L109.32 144.35 L109 143.54 L108.68 142.72 L108.35 141.91 L108.02 141.09 L107.68 140.27 L107.34 139.45 L106.99 138.63 L106.64 137.81 L106.28 136.98 L105.92 136.15 L105.56 135.32 L105.19 134.49 L104.82 133.66 L104.44 132.82 L104.06 131.98 L103.67 131.14 L103.28 130.3 L102.88 129.45 L102.48 128.61 L102.08 127.76 L101.67 126.91 L101.25 126.06 L100.83 125.2 L100.41 124.34 L99.98 123.48 L99.55 122.62 L99.11 121.76 L98.67 120.89 L98.22 120.02 L97.77 119.15 L97.32 118.27 L96.86 117.4 L96.39 116.52 L95.92 115.64 L95.45 114.75 L94.97 113.87 L94.48 112.98 L93.99 112.08 L93.5 111.19 L93 110.29 L92.49 109.39 L91.99 108.49 L91.47 107.58 L90.95 106.68 L90.43 105.76 L89.9 104.85 L89.37 103.93 L88.83 103.01 L88.29 102.09 L87.74 101.17 L87.19 100.24 L86.63 99.31 L86.07 98.37 L85.5 97.43 L84.93 96.49 L84.35 95.55 L83.76 94.6 L83.18 93.65 L82.58 92.7 L81.98 91.74 L81.38 90.78 L80.77 89.82 L80.16 88.86 L79.54 87.89 L78.91 86.91 L78.28 85.94 L77.65 84.96 L77.01 83.97 L76.36 82.99 L75.71 82 L75.06 81 L74.39 80.01 L73.73 79.01 L73.05 78 L72.38 76.99 L71.69 75.98 L71 74.97 L70.31 73.95 L69.61 72.93 L68.9 71.9 L68.19 70.87 L67.48 69.84 L66.76 68.8 L66.03 67.76 L65.3 66.71 L64.56 65.66 L63.81 64.61 L63.06 63.55 L62.31 62.49 L61.54 61.42 L60.78 60.35 L60 59.28 L59.23 58.2 L58.44 57.12 L57.65 56.03 L56.85 54.94 L56.05 53.84 L55.24 52.74 L54.43 51.64 L53.61 50.53 L52.78 49.42 L51.95 48.3 L51.11 47.18 L50.27 46.05 L49.42 44.92 L48.56 43.79 L47.7 42.65 L46.83 41.5 L45.96 40.35 L45.08 39.2 L44.19 38.04 L43.3 36.87 L42.4 35.71 L41.75 34.87\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.7\"/></g><g data-layer=\"30\"><line id=\"segment-sOH\" data-role=\"segment\" data-from=\"O\" data-to=\"H\" x1=\"259.96\" y1=\"203.44\" x2=\"355.96\" y2=\"251.44\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.3\"/></g><g data-layer=\"30\"><line id=\"segment-sHQ\" data-role=\"segment\" data-from=\"H\" data-to=\"Q\" x1=\"355.96\" y1=\"251.44\" x2=\"99.96\" y2=\"123.44\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.3\"/></g><g data-layer=\"30\"><line id=\"line-l\" data-role=\"line\" data-line=\"l\" x1=\"295.68\" y1=\"372\" x2=\"464.24\" y2=\"34.87\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.3\"/></g><g data-layer=\"35\"><polyline id=\"rightangle-H\" data-role=\"right-angle\" data-foot=\"H\" points=\"348.8,247.86 345.23,255.01 352.38,258.59\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.1\"/></g><g data-layer=\"40\"><circle id=\"point-O\" data-role=\"point\" data-point=\"O\" cx=\"259.96\" cy=\"203.44\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"40\"><circle id=\"point-P\" data-role=\"point\" data-point=\"P\" cx=\"419.96\" cy=\"123.44\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"40\"><circle id=\"point-H\" data-role=\"point\" data-point=\"H\" cx=\"355.96\" cy=\"251.44\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"40\"><circle id=\"point-Q\" data-role=\"point\" data-point=\"Q\" cx=\"99.96\" cy=\"123.44\" r=\"3.2\" fill=\"#111\" stroke=\"none\"/></g><g data-layer=\"90\"><g id=\"point-O\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-O\" data-point=\"O\" data-tex=\"O\" data-fragment-sha=\"sha256:1be7fc125c00357e48a5051e40b3e915f297623dcdf04eb5ee7b701fad9c4a36\" data-box=\"238.187044,210.318071,15.26,14.52\" transform=\"translate(238.187044 210.318071)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.26\" height=\"14.52\" viewBox=\"0 0 15.26 14.52\" data-outline-width=\"15.26\" data-outline-height=\"14.52\" id=\"lb-2473065afa5fd44dd5881fe5c7751bd93b5bff75172fbe1be03a23a5e79508f0\" data-owner=\"ellipse-point-O\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.08) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"point-P\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-P\" data-point=\"P\" data-tex=\"P\" data-fragment-sha=\"sha256:07128822654a0d8ea64351b9aadcb86e1e398d4daf7952dc2a061a4d89182a9c\" data-box=\"428.011329,120.323395,15.02,13.66\" transform=\"translate(428.011329 120.323395)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.02\" height=\"13.66\" viewBox=\"0 0 15.02 13.66\" data-outline-width=\"15.02\" data-outline-height=\"13.66\" id=\"lb-a94029d1911fc0b77b52d2966d247e0f09bd3c9c54ca2ba2bdf77eda430f2d1a\" data-owner=\"ellipse-point-P\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.66) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D443\" d=\"M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"point-H\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-H\" data-point=\"H\" data-tex=\"H\" data-fragment-sha=\"sha256:a56ef49b41e2b5eeae1bb7408d345435d508cccd07109a2d63aac68abbbd3e45\" data-box=\"361.390014,251.761353,17.76,13.66\" transform=\"translate(361.390014 251.761353)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.76\" height=\"13.66\" viewBox=\"0 0 17.76 13.66\" data-outline-width=\"17.76\" data-outline-height=\"13.66\" id=\"lb-acdb137a38271e320d772be3c423956770d83d1b8c4fd16b0cb34dbfad3b14da\" data-owner=\"ellipse-point-H\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.66) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D43B\" d=\"M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"point-Q\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"point\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-point-Q\" data-point=\"Q\" data-tex=\"Q\" data-fragment-sha=\"sha256:8cc89c59bce96832fae03ce6cfeaed80a54c5a723da3abf09aca23bc522e2cbb\" data-box=\"76.154096,112.626636,15.82,17.96\" transform=\"translate(76.154096 112.626636)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.82\" height=\"17.96\" viewBox=\"0 0 15.82 17.96\" data-outline-width=\"15.82\" data-outline-height=\"17.96\" id=\"lb-d0bd7c2a0b42a13f09d5bc16bfed3bc58be1676693307bc3bcf0a917f3d45588\" data-owner=\"ellipse-point-Q\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.08) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D444\" d=\"M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"line-l\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"line\" data-priority=\"0\" data-font-px=\"20\" data-owner=\"ellipse-line-l\" data-line=\"l\" data-tex=\"l\" data-fragment-sha=\"sha256:776e5d6d3a9ae924fa9c6cda8c684f192bcd933418024db2e1b2a6fe8c3bb4af\" data-box=\"315.23239,346.717336,5.96,14.1\" transform=\"translate(315.23239 346.717336)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"5.96\" height=\"14.1\" viewBox=\"0 0 5.96 14.1\" data-outline-width=\"5.96\" data-outline-height=\"14.1\" id=\"lb-26a844e687bd69ffd7e497734ff8297e1b4e1085132b40e06eff04610ef7e162\" data-owner=\"ellipse-line-l\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.88) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D459\" d=\"M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z\"></path></g></g></g></g></svg></g></g></svg>",
+  "lineage": {
+   "planSha256": "sha256:1ee0f4c07006b06f33146744874d2bf6627c6c1388c82454b01e6771b08de4ac",
+   "modelSha256": "sha256:6e834e2b391075efd2467666c0513c2e7c12c2aa14506ed36fb245aa958602e0",
+   "typographyPolicySha256": "sha256:3cc85d347a56027f9d619454cf39ffb85778c916668385d09f8a17b8185e8b0d",
+   "specSha256": "sha256:5ac75f3d8c96cd227d558a44839b7030c95e7fc4d86ffb89f84e6861f0f4609b",
+   "fragmentSha256s": {
+    "point-O": "sha256:1be7fc125c00357e48a5051e40b3e915f297623dcdf04eb5ee7b701fad9c4a36",
+    "point-P": "sha256:07128822654a0d8ea64351b9aadcb86e1e398d4daf7952dc2a061a4d89182a9c",
+    "point-H": "sha256:a56ef49b41e2b5eeae1bb7408d345435d508cccd07109a2d63aac68abbbd3e45",
+    "point-Q": "sha256:8cc89c59bce96832fae03ce6cfeaed80a54c5a723da3abf09aca23bc522e2cbb",
+    "line-l": "sha256:776e5d6d3a9ae924fa9c6cda8c684f192bcd933418024db2e1b2a6fe8c3bb4af"
+   },
+   "svgSha256": "sha256:9a85cefe3aff7aba302f45fca9f22e0d9edec8cf29763a4efda4d48df5b0e4ad",
+   "staticAuditSha256": "sha256:006c474afd23af16bce858da7703ff4ed19c66b9cb42a886994f1bae0ae7cad8",
+   "renderedLayoutSha256": "sha256:7ed174d5f815cbf656763991af3ba45e692c0745355acc90557b86814a46deba"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 298.140625,
+    "height": 232.7790264423077
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "productionAuthorized": false
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:9a85cefe3aff7aba302f45fca9f22e0d9edec8cf29763a4efda4d48df5b0e4ad",
+   "policySha256": "sha256:3cc85d347a56027f9d619454cf39ffb85778c916668385d09f8a17b8185e8b0d",
+   "candidateBankSha256": "sha256:906fdab2d48d46d1ee12e8a059b282ca0983c46762455654c5a5255fdedd0c75",
+   "assetPath": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/assets/images/26_제일고_1학기_중간_고2_기하/q15-solution.svg",
+   "assetResponseSha256": "sha256:9a85cefe3aff7aba302f45fca9f22e0d9edec8cf29763a4efda4d48df5b0e4ad",
+   "archiveRowSha256": "sha256:14136a2bfdd2f837ac00a1936851faad10a1e1f60d05569039c7d2246601ed36",
+   "screenshotSha256s": {
+    "image": "sha256:a2275e0ba6c712771fb8ca86027dbefed3109ac5709d1d788c6cea47cee569ec",
+    "context": "sha256:57ec28a48f0064ce63918d0c64773f29c6095384030021a08a93e1c2fdc9a5fd",
+    "page": "sha256:843dd07ebedb588ab6d9642f894772c961c1b4b8e5e9b9e3ff555873b83f3707"
+   },
+   "matrixSha256": "sha256:b0b584e8abf6ce9bc15249fd722cbd8fca5b364d90133e8c1d92e8be97cb9fa7",
+   "engineSha256": "sha256:1a32af053469acb7d21529248bec60f29e1d8076ab4c47c8ee1aac2ee7ae6b23"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-a81b56cc",
+   "asset": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/assets/images/26_제일고_1학기_중간_고2_기하/q15-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/candidates/26_제일고_1학기_중간_고2_기하.js",
+   "matrix": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-4d3db5467b118d2eed65b4fd23cbfca889be614b2a6cc787604e9afd10f4b9a2-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-4d3db5467b118d2eed65b4fd23cbfca889be614b2a6cc787604e9afd10f4b9a2-sol-desktop-va-4d3db5467b118d2eed65b4fd23cbfca889be614b2a6cc787604e9afd10f4b9a2.png",
+    "context": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-4d3db5467b118d2eed65b4fd23cbfca889be614b2a6cc787604e9afd10f4b9a2-sol-desktop-va-4d3db5467b118d2eed65b4fd23cbfca889be614b2a6cc787604e9afd10f4b9a2-context.png",
+    "page": ".tmp/archive/pilot-capture-a81b56cc/26_제일고_1학기_중간_고2_기하/visual-engine/production/archive-capture/archive-render/attempt-01/va-4d3db5467b118d2eed65b4fd23cbfca889be614b2a6cc787604e9afd10f4b9a2-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+    "bytes": 52830,
+    "sha256": "sha256:b1db6d6ebec962d25357c256caea01e1a99b9abe72aa8865e9073439dc28e393"
+   },
+   "originalQuestionSha256": "sha256:84e3c6a5e2f5188493ad1328487bce25570d72229a29f55e0057065b90df4ff4",
+   "questionCount": 23,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 15
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.5733473557692308,
+  "expectedDisplayScale": 0.5733473557692308,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

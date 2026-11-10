@@ -51,7 +51,8 @@ const elementText=(raw,max,code)=>{
   return {text,math};
 };
 // (EXT-20261109-c) one font: a name or element without Korean letters (A, 10, AB, g(0), f(x)) is math like every other letter and number of the figure
-const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9()]{1,6}$/.test(text);
+// (EXT-20261109-g) up to 8 characters, the length cleanText allows a name: f(f(x)) (7) used to fall back to the thin plain-text face
+const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9()]{1,8}$/.test(text);
 
 // --- set expressions: ∪ ∩ - and a postfix complement (ᶜ, ^c, ^C), with U the universal set --------------------------------
 function parseShade(raw,setIds){
@@ -125,7 +126,7 @@ const countNameTex=(name,count)=>`n(${name})=${count}`;
 
 // --- exact regions: the atomic cells of 1-3 sets -------------------------------------------------------------------------------------------
 function solveVenn(venn){
-  onlyKeys(venn,['kind','sets','elements','shade','subset','disjoint','universe','countStyle'],'SET_DIAGRAM_PLAN_INVALID');
+  onlyKeys(venn,['kind','sets','elements','shade','subset','disjoint','universe','countStyle','labelGap'],'SET_DIAGRAM_PLAN_INVALID');
   if(!Array.isArray(venn.sets)||venn.sets.length<1||venn.sets.length>3)bad(venn.sets?.length>3?'SET_COUNT_UNSUPPORTED':'SET_DIAGRAM_PLAN_INVALID');
   const sets=venn.sets.map(raw=>{
     onlyKeys(raw,['id','name','count','countUnit'],'SET_DIAGRAM_PLAN_INVALID');
@@ -175,6 +176,12 @@ function solveVenn(venn){
     // n(M)=19 is a formula: the set must be named by one letter or digit
     if(countStyle==='n'&&sets.some(set=>set.count!==undefined&&!labelMath(set.name)))bad('SET_COUNT_INVALID');
   }
+  // labelGap (opt-in): a set's name stands at least this many px clear of every circle's line (and, for the inner set of a subset pair, wholly inside the outer circle).
+  let labelGap;
+  if(venn.labelGap!==undefined){
+    if(!Number.isInteger(venn.labelGap)||venn.labelGap<2||venn.labelGap>12)bad('SET_LABEL_GAP_INVALID');
+    labelGap=venn.labelGap;
+  }
   if(universe)for(const set of sets)if(set.count!==undefined&&Number(set.count)>Number(universe.count))bad('SET_COUNT_INVALID');
   if(subset&&sets[subset.inner].count!==undefined&&sets[subset.outer].count!==undefined&&Number(sets[subset.inner].count)>Number(sets[subset.outer].count))bad('SET_COUNT_INVALID');
   if(chain)for(let k=0;k+1<chain.length;k++)if(sets[chain[k]].count!==undefined&&sets[chain[k+1]].count!==undefined&&Number(sets[chain[k]].count)>Number(sets[chain[k+1]].count))bad('SET_COUNT_INVALID');
@@ -210,7 +217,7 @@ function solveVenn(venn){
     cells.push({mask,region:members.length?members.join('∩'):'OUTSIDE',members,shade:shade?shade.cells.includes(mask):false,
       elements:elements.filter(e=>e.cell===mask).map(e=>e.index)});
   }
-  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':chain?'CHAIN':disjoint?'DISJOINT':'OVERLAP',sets,subset,...(chain?{chain}:{}),...(disjoint?{disjoint}:{}),elements,cells,shade,...(universe?{universe}:{}),...(countStyle?{countStyle}:{})};
+  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':chain?'CHAIN':disjoint?'DISJOINT':'OVERLAP',sets,subset,...(chain?{chain}:{}),...(disjoint?{disjoint}:{}),elements,cells,shade,...(universe?{universe}:{}),...(countStyle?{countStyle}:{}),...(labelGap?{labelGap}:{})};
 }
 // A mapping element is a short Hangul/alphanumeric text (up to 4 characters, as always) or, since G17, a signed number, a fraction or a short root
 // (-2, 1/2, -1/2, √2, 2√3; up to 6 characters). The typed hyphen-minus is shown as the real minus sign U+2212; the figure writes it as a math label.
@@ -653,7 +660,7 @@ function vennSpec(model,layout){
     labels.push(Object.assign(elementLabel(`element-${element.index}`,'element',`element-${element.index}`,element,'start','top',0,0,
       {element:element.index,cell:model.cells[element.cell].region}),{placement:'element',cellMask:element.cell}));
   }
-  return {size,prims,labels,kind:'VENN',layout,setIds:model.sets.map(s=>s.id),vennLayoutKind:model.layout,subset:model.subset,...(model.chain?{chain:model.chain}:{}),geometry:{rect:{...U},circles:circles.map(c=>({...c}))},...(model.universe?{universeCounted:true}:{})};
+  return {size,prims,labels,kind:'VENN',layout,setIds:model.sets.map(s=>s.id),vennLayoutKind:model.layout,subset:model.subset,...(model.chain?{chain:model.chain}:{}),geometry:{rect:{...U},circles:circles.map(c=>({...c}))},...(model.universe?{universeCounted:true}:{}),...(model.labelGap?{labelGap:model.labelGap}:{})};
 }
 function mappingSpec(model,layout){
   const prims=[],labels=[];
@@ -806,14 +813,17 @@ function resolveVenn(spec,placed){
     // a counted group never crosses a circle's line: it is wholly outside its own circle and wholly in or wholly out of each other (the inner set of B⊂A is named inside A)
     const clear=box=>circles.every((other,i)=>{const relation=boxEllipseRelation({x:box.x-4,y:box.y-4,width:box.width+8,height:box.height+8},other);return i===setIndex?relation==='OUTSIDE':relation!=='CROSSES';});
     let chosen=null,leader=null;
-    for(const angle of [0,-14,14,-28,28,-42,42,-60,60]){
+    // labelGap (opt-in): the name keeps that many px clear of every circle's line and may go all round its circle to find such a place.
+    const gap=spec.labelGap??0,grow=box=>({x:box.x-gap,y:box.y-gap,width:box.width+2*gap,height:box.height+2*gap});
+    for(const angle of gap?[0,-14,14,-28,28,-42,42,-60,60,-90,90,-120,120,-150,150,180]:[0,-14,14,-28,28,-42,42,-60,60]){
       const rad=angle*Math.PI/180,dx=direction.x*Math.cos(rad)-direction.y*Math.sin(rad),dy=direction.x*Math.sin(rad)+direction.y*Math.cos(rad);
       for(let distance=c.r+10;distance<=c.r+80;distance+=2){
         const cx=c.cx+dx*distance,cy=c.cy+dy*distance,x=cx-width/2,y=cy-height/2;
         const box={x,y,width,height};
         if(x<U.x+4||y<U.y+4||x+width>U.x+U.w-4||y+height>U.y+U.h-4)continue;
-        const relation=boxEllipseRelation(box,c);
+        const relation=boxEllipseRelation(gap?grow(box):box,c);
         if(relation!=='OUTSIDE')continue;
+        if(gap&&!circles.every((other,i)=>{if(i===setIndex)return true;const r=boxEllipseRelation(grow(box),other);return spec.vennLayoutKind==='SUBSET'&&setIndex===spec.subset.inner&&i===spec.subset.outer?r==='INSIDE':r!=='CROSSES';}))continue;
         const high=Math.max(norm2(x,y,c),norm2(x+width,y,c),norm2(x,y+height,c),norm2(x+width,y+height,c));
         if((Math.sqrt(high)-1)*c.r<6)continue;
         if(counted&&!clear(box))continue;

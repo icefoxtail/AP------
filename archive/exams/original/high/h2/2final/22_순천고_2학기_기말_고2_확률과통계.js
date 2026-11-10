@@ -169,7 +169,11 @@ window.questionBank = [
       "객관식",
       "확률분포"
     ],
-    "image": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q4.png"
+    "image": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q4.png",
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 10까지 이어지는 밀도 그래프가 x=a에서 높이 b에 이르고 다시 x축으로 내려온다. x=0부터 a까지의 왼쪽 삼각형 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "전체 밀도 삼각형의 넓이는 1이고 왼쪽 음영 영역의 넓이는 2/5이다. 두 넓이 관계를 이용한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -253,7 +257,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "신뢰구간"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 표시된 43.55부터 56.45까지의 닫힌 구간과 그 중심 50.",
+    "solutionImageCaption": "첫 신뢰구간은 표본평균 50을 중심으로 좌우 반폭이 6.45이다. 이 구간으로 모집단 표준편차를 구한 다음, 95% 신뢰구간의 길이 조건에 적용한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -346,7 +354,11 @@ window.questionBank = [
       "객관식",
       "확률분포"
     ],
-    "image": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q8.png"
+    "image": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q8.png",
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 정규곡선 패널에서 평균 0과 50, 오른쪽 꼬리 음영이 표시되어 있다. 두 번째 패널의 경계는 기호 n으로 표시되어 있다.",
+    "solutionImageCaption": "개인 시간의 기준 35분은 표준화하면 평균에서 2만큼 오른쪽이다. 인원수 정규근사에서 n은 평균 50보다 표준편차 7의 2배만큼 떨어진 경계로 놓여 같은 오른쪽 꼬리를 비교한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
       {
     "id": 9,
@@ -397,7 +409,11 @@ window.questionBank = [
     "sourceProvenance": "ALIVE_REPLACEMENT_FROM_INVALID_DENSITY:SUPERVISORY_REPAIR_20261020_Q09",
     "replacementReason": "The original conditions imply g(-1)=-1/4, so its proposed probability density is negative. Replaced it with a valid even density and a central-interval probability condition that determine positive a,b uniquely.",
     "replacementStage": "SUPERVISORY_PUBLICATION",
-    "difficultyReviewStatus": "REASSESSED_AFTER_ALIVE_REPLACEMENT"
+    "difficultyReviewStatus": "REASSESSED_AFTER_ALIVE_REPLACEMENT",
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 -1부터 1까지 대칭인 V자 밀도 그래프에서 가운데 -1/2부터 1/2까지의 아래쪽 영역이 음영 처리되어 있다.",
+    "solutionImageCaption": "대칭인 밀도곡선 아래 전체 넓이는 1이고 가운데 구간의 넓이는 3/8이다. 두 넓이 조건을 비교한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -438,7 +454,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "확률의 덧셈정리"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본공간 안에서 두 사건 A와 B가 겹치며, 공통 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "A와 B를 더하면 교집합을 두 번 세므로 덧셈정리에서 한 번 뺀다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -522,7 +542,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "조건부확률"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 겹치는 두 원 A와 B의 공통 부분이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "독립인 A와 B의 겹친 영역은 두 사건이 동시에 일어나는 경우를 나타낸다. 덧셈정리에서는 이 겹친 부분을 한 번 빼어 중복을 없앤다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -563,7 +587,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "조건부확률"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 400명으로 표시된 사각형 안에 2학년 160명과 축구 280명의 두 집합이 겹치며 공통 부분이 음영 처리되어 있다.",
+    "solutionImageCaption": "축구를 선택한 학생 가운데 2학년인 부분이 조건부확률의 분자다. 전체 축구 학생을 조건부 표본공간으로 삼아 그 안의 2학년 비율을 계산한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -694,7 +722,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "확률분포"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 0부터 4까지 점 가운데 2, 3, 4가 조건을 만족하는 구간에 포함되어 강조되어 있다.",
+    "solutionImageCaption": "그림의 k는 문제의 확률변수 K를 뜻한다. 네 번의 가상 이동에서 거리는 4+k이므로 6 이상 도달 조건은 k≥2다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -778,7 +810,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "조건부확률"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 큰 집합 E 안에 작은 집합 F가 완전히 포함되고, F의 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "조건 사건 E 안에 목표 사건 F가 포함된다. 조건부확률은 E 영역 가운데 F가 차지하는 비율이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -850,7 +886,11 @@ window.questionBank = [
     "tags": [
       "서술형",
       "확률분포"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선이 z=t에서 나뉘며 왼쪽 영역과 오른쪽 꼬리 영역이 서로 다른 음영으로 표시되어 있다. t는 2/3을 뜻한다.",
+    "solutionImageCaption": "표준정규곡선의 t=2/3에서 왼쪽 누적영역과 오른쪽 여사건 영역이 나뉜다. 오른쪽 꼬리와 4/σ까지의 왼쪽 누적확률을 비교하면 단조성으로 4/σ≥t가 되어 σ의 최댓값을 얻는다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

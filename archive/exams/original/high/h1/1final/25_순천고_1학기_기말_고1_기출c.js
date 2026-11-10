@@ -33,7 +33,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이다. (가)는 x<−1 또는 x>2이고 −1과 2가 속이 빈 점이다. (나)는 −2≤x≤3이고 −2와 3이 속이 찬 점이다. 맨 아래 줄은 두 범위가 겹치는 −2≤x<−1 또는 2<x≤3이다.",
+    "solutionImageCaption": "(가) 2<x²−x에서 (x−2)(x+1)>0이므로 x<−1 또는 x>2이고, (나) x²−x≤6에서 (x−3)(x+2)≤0이므로 −2≤x≤3이다. 두 범위의 공통부분은 −2≤x<−1 또는 2<x≤3이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -308,7 +312,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이다. (가)는 |x−1|≤3의 해 −2≤x≤4이고 양 끝이 속이 찬 점이다. (나)는 |x−1|≥1의 해 x≤0 또는 x≥2이고 0과 2가 속이 찬 점이다. 맨 아래 줄은 공통 범위 −2≤x≤0 또는 2≤x≤4이고, 그 위에 정수점 −2, −1, 0, 2, 3, 4가 표시되어 있다.",
+    "solutionImageCaption": "||x−1|−2|≤1은 1≤|x−1|≤3과 같다. (가) |x−1|≤3에서 −2≤x≤4, (나) |x−1|≥1에서 x≤0 또는 x≥2이므로 공통 범위는 −2≤x≤0 또는 2≤x≤4이고, 정수 x는 −2, −1, 0, 2, 3, 4의 6개이다. 그 합이 6이므로 m+n=12이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -409,7 +417,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 이차함수 y=f(x)의 그래프에 수평선 y=2와 점선으로 그은 대칭축 x=4가 있다. 수평선과 만나는 두 점에서 x축으로 점선을 내려 x좌표 p, s를 나타내고, 그래프가 x축과 만나는 두 점의 x좌표를 q, r로 나타내었다. p, q, r, s는 x축 위에 이 순서로 놓이고, p와 s, q와 r은 대칭축 양쪽에 같은 거리로 있다.",
+    "solutionImageCaption": "예: 대칭축이 x=4인 이차함수에서 f(x)=2인 x가 p, s이고 f(x)=0인 x가 q, r이다. 대칭축이 같으므로 p+s=q+r, 즉 q−p=s−r이다. f(x)−2≥0의 해는 x≤p 또는 x≥s이고, f(−2x)<0의 해는 −(2분의 r)<x<−(2분의 q)이다. 따라서 옳은 것은 ㄴ뿐이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -479,7 +491,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 1≤x≤3에서의 포물선 y=x²+2x+5와 직선 y=10x를 나타내었다. x축에는 1과 3이 표시되어 있고, 이 구간에서 직선이 포물선보다 위에 있다.",
+    "solutionImageCaption": "예: a=10일 때 직선 y=10x는 1≤x≤3에서 포물선 y=x²+2x+5보다 위에 있다. x>0이므로 ax>x²+2x+5에서 a>x+2+(x분의 5)이다. 1≤x≤3에서 x+2+(x분의 5)의 최댓값은 x=1일 때이므로 모든 x에서 성립하려면 a가 그 최댓값보다 커야 한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -514,7 +530,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄이다. (가)는 x≤−2이고 −2가 속이 찬 점이며 왼쪽으로 뻗는다. (나)는 x>1이고 1이 속이 빈 점이며 오른쪽으로 뻗는다. 두 범위는 서로 반대쪽에 있어 겹치는 부분이 없다.",
+    "solutionImageCaption": "주어진 해 x≤2와 x<−1에서 a>0, b=2a, c<0, d=c이다. (가) ax+b≤0은 x≤−2이고 (나) −cx+d>0은 x>1이므로 두 범위가 겹치지 않는다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -550,7 +570,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 파란 곡선 f(x)와 위로 볼록한 주황 곡선 g(x)가 두 점에서 만난다. 왼쪽 교점의 x좌표는 b이고, 오른쪽 교점은 x축 위에 있어 x좌표가 d이다. g가 x축과 만나는 왼쪽 점의 x좌표는 a, f가 x축과 만나는 왼쪽 점의 x좌표는 c이며, x축 위에 a, b, c, d가 이 순서로 놓여 있다.",
+    "solutionImageCaption": "예: f(x)=½x²−x−1.5(파랑), g(x)=−¼x²−¼x+3(주황)이다. 두 그래프의 교점의 x좌표는 b, d이고, g(x)=0의 해는 a, d, f(x)=0의 해는 c, d이다. f(x)−g(x)>0의 해는 x<b 또는 x>d이다. f(x)g(x)<0의 해는 x<a 또는 c<x<d 또는 x>d이므로 x=d에서는 성립하지 않는다. 따라서 옳은 것은 ㄱ, ㄴ이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -614,7 +638,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
     "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 a로 하는 좌표평면에 이차함수 y=a²+2a−1의 그래프를 −3≤a≤2인 구간만 나타내었다. 꼭짓점 (−1, −2)와 양 끝점 (−3, 2), (2, 7)이 점으로 표시되어 있다.",
+    "solutionImageCaption": "판별식을 쓰면 실수해가 존재할 조건이 −3≤a≤2이다. 그림의 세로축 y는 a²+2a−1의 값이다. 이 구간에서 a²+2a−1=(a+1)²−2는 a=−1일 때 최솟값 −2를, a=2일 때 최댓값 7을 가지므로 p=−2, q=7이다. 따라서 q−p=9이다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -726,7 +754,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이다. k=2분의 3일 때의 그림이다. (a)는 −2≤x≤3이고 양 끝이 속이 찬 점이다. (b)는 2분의 1<x<2분의 7이고 양 끝이 속이 빈 점이다. 맨 아래 줄은 공통 범위 2분의 1<x≤3이고 그 위에 정수점 1, 2, 3이 표시되어 있다.",
+    "solutionImageCaption": "예: k=2분의 3일 때 (a)는 −2≤x≤3, (b)는 2분의 1<x<2분의 7이므로 공통 범위는 2분의 1<x≤3이고 정수는 1, 2, 3의 세 개이다. 1, 3이 포함되려면 k>1이고 0이 빠지려면 k≤2이므로 (3)의 k의 범위는 1<k≤2이다. 정답은 (1) −2≤x≤3, (2) k>0일 때 2−k<x<2+k이고 k≤0일 때 해가 없다, (3) 1<k≤2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -754,6 +786,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천고_1학기_기말_고1_기출c/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 모양의 그림 두 개이다. 위쪽의 긴 영역 A와 아래쪽의 긴 영역 F 사이에 B, C, D, E가 차례로 놓여 있고, B, C, D, E는 모두 A, F와 맞닿아 있다. 왼쪽 그림은 A와 F가 같은 파란색이고, 오른쪽 그림은 A는 파란색, F는 주황색이다. B, C, D, E는 회색으로 아직 칠하지 않았다.",
+    "solutionImageCaption": "B, C, D, E는 차례로 이웃하고 각각 A, F와도 이웃한다(회색은 아직 칠하지 않은 영역). A와 F의 색이 같으면 5×4×3×3×3=540가지이고, 색이 다르면 5×4×3×2×2×2=480가지이므로 모두 1020가지이다. 정답은 1020이다.",
+    "solutionImageSize": "full"
   }
 ];

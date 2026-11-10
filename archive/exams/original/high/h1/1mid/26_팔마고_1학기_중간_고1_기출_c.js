@@ -172,9 +172,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q4-solution.svg",
-    "solutionImageAlt": "k=8일 때 꼭짓점 V(1, 1)이 x축 위에 있어 그래프가 x축과 만나지 않는다.",
-    "solutionImageCaption": "k=8일 때 꼭짓점 V(1, 1)이 x축 위에 있어 그래프가 x축과 만나지 않는다.",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 x축보다 위에 놓인 위로 열린 포물선.",
+    "solutionImageCaption": "예: k=9일 때 꼭짓점은 (1, 2)이고 그래프는 x축과 만나지 않는다. 일반적으로 최솟값 k−7이 양수여야 하므로 k>7이다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -219,9 +219,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q5-solution.svg",
-    "solutionImageAlt": "k=-33/8이면 직선 y=-2x+k는 포물선에 한 점 T에서 접한다.",
-    "solutionImageCaption": "k=-33/8이면 직선 y=-2x+k는 포물선에 한 점 T에서 접한다.",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 기울기가 음수인 직선이 한 점에서 접하고 접점 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=2x²+3x−1로 두면 두 그래프의 교점 방정식은 2x²+5x−(k+1)=0이다. 한 점에서 만나려면 판별식 33+8k가 0이므로 k는 −8분의 33이다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -397,7 +397,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 반대 방향으로 열린 두 포물선 사이에 직사각형 ABCD가 놓이고 오른쪽 아래 꼭짓점에 x=t가 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=3−3분의 x², g(x)=x²−9로 두고 t=1인 직사각형을 그렸다. 가로 2t와 세로 12−3분의 4t²로 둘레의 최댓값을 구한다. 정답은 2분의 51이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -439,7 +443,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−4x와 두 수평 점선이 있으며 위쪽 점선은 두 점에서 만나고 아래쪽 점선은 만나지 않는다.",
+    "solutionImageCaption": "t=x²−4x로 두면 t=−5 또는 t=−2이다. 포물선의 최솟값 −4와 두 높이를 비교하고, 실근이 있는 경우에 근과 계수의 관계를 적용한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -571,7 +579,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 a인 큰 정사각형과 한 변이 b인 작은 정사각형이 나란히 놓여 있다.",
+    "solutionImageCaption": "두 정사각형의 둘레에서 a+b=20이고 넓이에서 a²+b²=218이다. 이를 이용하면 ab=91이므로 a, b를 두 근으로 하는 식은 t²−20t+91=0이다. a>b인 조건으로 큰 값을 고른다. 정답은 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -660,9 +672,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q15-solution.svg",
-    "solutionImageAlt": "f(x)=3x^2+6x-2의 그래프와 직선 y=7, 구간 끝점의 함숫값",
-    "solutionImageCaption": "f(x)=3x^2+6x-2의 그래프와 직선 y=7, 구간 끝점의 함숫값",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 f(x)의 그래프와 직선 y=7의 두 교점 및 구간 양 끝점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "두 교점 조건으로 f(x)=a(x+3)(x−1)+7이고 a>0이다. 구간 −2≤x≤2에서는 오른쪽 끝점의 함수값이 더 크므로 f(2)=22에서 a=3을 얻는다. 정답은 43이다.",
     "solutionImageSize": "full"
   },
   {
@@ -804,7 +816,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 a, b는 0의 왼쪽에, c, d는 오른쪽에 작은 순서대로 놓인다. 바깥 두 근과 안쪽 두 근이 각각 0에 대하여 대칭이다.",
+    "solutionImageCaption": "a=−√u, b=−√v, c=√v, d=√u로 두면 ad+bc=−(u+v)이다. u+v=2m+3을 주어진 합과 연결한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -844,7 +860,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 a인 정사각형을 넓이가 b², c²인 두 영역으로 나누고, 두 작은 정사각형의 같은 넓이와 각각 같은 색으로 짝지었다.",
+    "solutionImageCaption": "a²=b²+c²를 정사각형의 넓이로 나타내고 같은 넓이를 색으로 짝지었다. 피타고라스 정리의 역을 적용한다. 정답은 a가 빗변인 직각삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -957,6 +977,10 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간별 이차함수 h(x)와 두 직선이 표시되어 있다. 한 직선은 왼쪽 경계점을 지나고, 다른 직선은 가운데 포물선에 접한다.",
+    "solutionImageCaption": "직선 y=mx+7은 m=2인 경계의 경우와 m=2√3−2인 접선의 경우에 각각 세 점에서 만난다. 두 m의 합으로 S를 구한다. 정답은 120이다.",
+    "solutionImageSize": "full"
   }
 ];

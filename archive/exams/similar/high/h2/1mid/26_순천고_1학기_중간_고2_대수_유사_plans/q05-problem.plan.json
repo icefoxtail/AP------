@@ -1,0 +1,80 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "3",
+      "-2"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      -2.9,
+      6
+    ],
+    "viewport": [
+      -4,
+      7,
+      -4,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula",
+      "reference",
+      "boundary"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "0",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-2",
+          "y": "-2",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "증가하는 로그함수 y=log_2(x+a)+b의 그래프가 두 점 (-2, -2), (1, 0)을 지나며, 왼쪽에서 한 수직 점근선에 한없이 가까워진다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "그래프가 점 (-2, -2)를 지난다.",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "그래프가 점 (1, 0)을 지난다.",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "증가하는 로그함수 그래프의 모양, 수직 점근선이 있다는 것, 그래프가 지나는 두 점 (-2, -2), (1, 0)의 위치를 보여 준다."
+  ],
+  "sourceQuote": "그래프가 두 점 $(-2,-2)$, $(1,0)$을 지날 때",
+  "assetPath": "assets/images/26_순천고_1학기_중간_고2_대수_유사/q05.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-problem.svg"
+  }
+}

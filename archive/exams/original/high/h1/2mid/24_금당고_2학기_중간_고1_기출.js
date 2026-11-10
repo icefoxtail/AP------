@@ -32,9 +32,10 @@ window.questionBank = [
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "점 P(1,2)를 이동벡터 (2,3)만큼 옮긴 P′(3,5)를 화살표와 함께 나타낸 좌표평면이다. x좌표에 2, y좌표에 3을 더하는 평행이동을 보여 준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(1,2)에서 오른쪽 위의 점 P′로 향하는 점선 화살표가 그려져 있고, 화살표 곁에 이동량 x축 +2, y축 +3이 적혀 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "평행이동에서는 각 좌표에 이동량을 그대로 더한다. 점 (1,2)를 x축 방향으로 2, y축 방향으로 3만큼 옮기면 x좌표는 1+2, y좌표는 2+3이 된다. 이동한 점 P′의 좌표는 (3,5)이다. 정답은 ⑤이다."
   },
   {
     "id": 2,
@@ -101,9 +102,9 @@ window.questionBank = [
     "answer": "①",
     "solution": "벤다이어그램에서 한 집합이 다른 집합의 안쪽에 놓이면 부분집합 관계이다.\n그림에서 집합 $A$를 나타내는 곡선 전체가 집합 $B$를 나타내는 곡선의 안쪽에 있다.\n그림의 안쪽 집합과 바깥쪽 집합을 확인한다.\n$A$의 모든 원소는 $B$에도 속하므로 $A\\subset B$이다.\n나머지 보기들은 그림에서 항상 성립하지 않는다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q03.png",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "A가 B 안에 들어 있는 포함관계를 나타낸 해설 벤다이어그램이다.",
-    "solutionImageCaption": "도형에서 A⊂B 관계를 읽는다",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 큰 원 B가 있고, 그 안쪽에 색칠된 작은 원 A가 완전히 들어 있다.",
+    "solutionImageCaption": "그림에서 집합 A를 나타내는 곡선 전체가 집합 B를 나타내는 곡선의 안쪽에 있다. 따라서 A의 모든 원소는 B에도 속하므로 A⊂B이다. 정답은 ①이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -201,7 +202,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 포물선 y=x²(파랑), 꺾인 직선 y=|x|(초록), 직선 y=x+2(주황)가 그려져 있고, 가로선 y=3이 포물선과 두 점, y=|x|와 두 점, 직선 y=x+2와 한 점에서 만난다.",
+    "solutionImageCaption": "일대일함수는 어떤 가로선도 그래프와 두 번 이상 만나지 않아야 한다. 가로선 y=3은 y=x²과 y=|x|의 그래프와 두 점에서 만나므로 일대일함수가 아니고, y=x+2와는 한 점에서 만난다. x²+y²=4는 함수가 아니고 y=4는 함숫값이 모두 같다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -298,9 +303,10 @@ window.questionBank = [
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "직선 y=2x−1을 (1,−2)만큼 평행이동한 y=2x−5와 점 P(3,1)을 표시한 좌표평면이다. (0,−1)이 (1,−3)으로 옮겨지고 P가 이동한 직선 위에 있음을 보여 준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기가 같은 두 직선이 있다. 왼쪽 직선 y=2x+k의 일부는 파랑, 오른쪽 직선 y=2x+k−4의 일부는 주황으로 칠해져 있다. 왼쪽 직선 위의 점에서 오른쪽 직선 위의 점으로 가는 점선 화살표가 있고, 오른쪽 직선 위에 점 (3,1)이 표시되어 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "x축 방향으로 1, y축 방향으로 −2만큼 평행이동하면 y=2(x−1)+k−2=2x+k−4이다. 이 직선이 점 (3,1)을 지나므로 1=6+k−4에서 k를 구한다. 그림의 점선 화살표는 이동 전 직선 위의 점이 이동 후 직선 위로 옮겨지는 모습이다. 정답은 ③이다."
   },
   {
     "id": 10,
@@ -329,9 +335,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "조건의 명제가 참이면 두 진리집합 사이에 포함관계가 생긴다.\n$\\sim p$의 진리집합은 $P^C$, $\\sim q$의 진리집합은 $Q^C$이다.\n명제 $\\sim p\\Rightarrow\\sim q$를 진리집합의 포함관계로 바꾼다.\n명제가 참이므로 $P^C\\subset Q^C$이다.\n여집합을 취하면 포함관계의 방향이 바뀌어 $Q\\subset P$이다.\n따라서 $P\\cap Q=Q$가 항상 성립한다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q10-solution-venn.svg",
-    "solutionImageAlt": "진리집합 Q가 P 안에 완전히 들어가고 Q의 영역만 색칠된 벤다이어그램이다.",
-    "solutionImageCaption": "Q⊂P이므로 P∩Q=Q이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 큰 원 P가 있고, 그 안쪽에 색칠된 작은 원 Q가 완전히 들어 있다.",
+    "solutionImageCaption": "~p⇒~q가 참이므로 Pᶜ⊂Qᶜ이다. 여집합을 취하면 포함관계의 방향이 바뀌어 Q⊂P이다. 그림에서 Q는 P 안에 들어 있으므로 P∩Q=Q가 항상 성립한다. 정답은 ④이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
@@ -365,9 +371,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "분배법칙으로 왼쪽 집합을 간단히 정리한다.\n$A\\cup(A^C\\cap B)=A$이다.\n$X\\cup(Y\\cap Z)=(X\\cup Y)\\cap(X\\cup Z)$를 적용한다.\n$A\\cup(A^C\\cap B)=(A\\cup A^C)\\cap(A\\cup B)=U\\cap(A\\cup B)=A\\cup B$이다.\n따라서 조건은 $A\\cup B=A$가 되고, 이는 $B\\subset A$를 뜻한다.\n그러므로 $B-A=\\varnothing$이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "B 전체가 A 안에 들어가는 포함관계를 나타낸 해설 벤다이어그램이다.",
-    "solutionImageCaption": "B−A가 비어 있어 B의 모든 원소가 A 안에 있는 관계",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U를 나타내는 직사각형 안에 큰 원 A가 있고, 그 안쪽에 색칠된 작은 원 B가 완전히 들어 있다.",
+    "solutionImageCaption": "A∪(Aᶜ∩B)=(A∪Aᶜ)∩(A∪B)=U∩(A∪B)=A∪B이므로 조건은 A∪B=A이다. 이는 B⊂A를 뜻하므로 그림처럼 B가 A 안에 들어 있고 B−A는 공집합이다. 정답은 ④이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -467,9 +473,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "적어도 하루 시청한 학생 수를 먼저 구한 뒤 교집합이 음수가 될 수 없다는 조건을 이용한다.\n전체는 $228$명이고, 적어도 하루 시청한 학생 수와 어느 날도 시청하지 않은 학생 수의 차는 $172$명이다.\n합과 차로 합집합의 크기를 구하고, 토요일과 일요일 시청자 수를 문자로 둔다.\n적어도 하루 시청한 학생 수를 $u$, 어느 날도 시청하지 않은 학생 수를 $v$라 하면 $u+v=228$, $u-v=172$이다.\n두 식을 더하면 $2u=400$이므로 $u=200$이다.\n일요일 시청자 수를 $t$라 하면 토요일 시청자 수는 $t+20$이다.\n두 날 모두 시청한 학생 수를 $i$라 하면 $(t+20)+t-i=200$이므로 $i=2t-180$이다.\n$i\\ge0$이므로 $t\\ge90$이다.\n토요일에만 시청한 학생 수는 $(t+20)-i=200-t$이므로 $t$가 가장 작은 $90$일 때 최대가 되고, 그 값은 $110$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q14-solution-venn.svg",
-    "solutionImageAlt": "토요일 집합 A에만 110명, 두 날 모두 0명, 일요일 집합 B에만 90명, 어느 쪽에도 속하지 않는 28명을 나타낸 벤다이어그램이다.",
-    "solutionImageCaption": "합집합 200명, 어느 날도 시청하지 않은 28명일 때 토요일에만 시청한 학생은 최대 110명이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 안에 두 원 토, 일이 겹쳐 있다. 토만 시청한 부분에 200−t, 두 날 모두 시청한 부분에 2t−180, 일만 시청한 부분에 180−t, 두 원 밖에 28이 적혀 있다.",
+    "solutionImageCaption": "적어도 하루 시청한 학생은 200명, 어느 날도 시청하지 않은 학생은 28명이다. 일요일 시청자를 t라 하면 토요일 시청자는 t+20이고 두 날 모두 시청한 학생은 2t−180이다. 이 값이 0 이상이어야 하므로 t≥90이고, 토요일에만 시청한 학생 수 200−t는 t가 작을수록 크다. 정답은 ③이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -498,15 +504,16 @@ window.questionBank = [
     "choices": [],
     "answer": "⑤",
     "solution": "새 식의 두 입력을 원래 좌표로 놓고, 원래 도형의 꼭짓점이 어디로 이동하는지 계산한다.\n원래 도형의 꼭짓점은 $(1,-3)$, $(4,-3)$, $(4,0)$이다.\n$u=y+1$, $v=-x-3$으로 놓아 원래 좌표 $(u,v)$와 새 좌표 $(x,y)$의 관계를 구한다.\n$u=y+1$, $v=-x-3$에서 $x=-v-3$, $y=u-1$이다.\n따라서 원래 점 $(u,v)$는 새 좌표 $(-v-3,\\,u-1)$로 옮겨진다.\n$(1,-3)$은 $(0,0)$으로, $(4,-3)$은 $(0,3)$으로, $(4,0)$은 $(-3,3)$으로 옮겨진다.\n그러므로 새 도형은 제2사분면에 있고 꼭짓점이 $(0,0)$, $(0,3)$, $(-3,3)$인 삼각형이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "꼭짓점 A(1,−3), B(4,−3), C(4,0)인 삼각형과 이를 옮긴 A′(0,0), B′(0,3), C′(−3,3)인 삼각형을 한 좌표평면에 함께 그린 그림이다. 대응하는 꼭짓점의 좌표 변화를 화살표로 보여 준다.",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 삼각형 ABC와 주황 삼각형 A′B′C′가 있다. 파란 삼각형은 제4사분면 쪽에 있고 주황 삼각형은 제2사분면 쪽에 있으며 A′은 원점이다. x축에 −3, 1, 4, y축에 −3, 3의 눈금 숫자가 있다.",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q15.png",
     "imageSize": "tall",
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "u=y+1, v=−x−3으로 놓으면 원래 점 (u,v)는 새 좌표 (−v−3, u−1)로 옮겨진다. 이에 따라 A(1,−3), B(4,−3), C(4,0)은 각각 (0,0), (0,3), (−3,3)으로 옮겨져 제2사분면의 삼각형 A′B′C′가 된다. 정답은 ⑤이다."
   },
   {
     "id": 16,
@@ -537,14 +544,15 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "대각선의 교점 주위 네 삼각형에서는 서로 마주 보는 두 넓이의 곱이 같다.\n$[OAB]=16$, $[OCD]=9$이고, 나머지 두 삼각형의 넓이를 $[OBC]=x$, $[ODA]=y$라 하자.\n같은 높이를 갖는 삼각형의 넓이비로 $xy$를 구한 뒤 $x+y$의 최솟값을 구한다.\n삼각형 $OAB$와 $OBC$는 꼭짓점 $B$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{x}{16}=\\dfrac{OC}{OA}$이다.\n삼각형 $ODA$와 $OCD$는 꼭짓점 $D$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{9}{y}=\\dfrac{OC}{OA}$이다.\n따라서 $\\dfrac{x}{16}=\\dfrac9y$이고 $xy=144$이다.\n사각형의 넓이는 $16+9+x+y=25+x+y$이다.\n$(x-y)^2\\ge0$에서 $x+y\\ge2\\sqrt{xy}=24$이므로 전체 넓이는 $49$ 이상이다.\n$x=y=12$일 때 등호가 성립할 수 있으므로 최솟값은 $49$이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "사각형 ABCD의 대각선 교점 O 주위 네 삼각형에 [OAB]=16, [OBC]=12, [OCD]=9, [ODA]=12를 표시한 그림이다. xy=144에서 x=y=12일 때 전체 넓이가 49로 최소가 됨을 보여 준다.",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD의 대각선 AC와 BD가 점 O에서 만나 네 삼각형으로 나뉘어 있다. 삼각형 OAB(16)와 OCD(9)는 파랑, 삼각형 OBC(x)와 ODA(y)는 주황으로 칠해져 있다.",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q16.png",
     "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
     "subUnit": "도형의 방정식 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "[OAB]=16, [OCD]=9, [OBC]=x, [ODA]=y라 하자. 16분의 x와 y분의 9가 모두 OC:OA와 같으므로 xy=144이고, 사각형의 넓이는 25+x+y이다. x+y≥2√(xy)=24이므로 넓이의 최솟값을 구한다. 정답은 ④이다."
   },
   {
     "id": 17,
@@ -664,15 +672,16 @@ window.questionBank = [
     "choices": [],
     "answer": "$15$",
     "solution": "대칭이동으로 각 선분의 길이를 보존한 뒤, 먼저 삼각부등식으로 모든 경우의 하한을 구하고 실제로 그 하한이 만들어지는 점을 확인한다.\n$P$는 선분 $AB$ 위, $Q$는 $y$축 위, $R$은 $x$축 위에 있고 $Q\\ne R$이다.\n$P$를 $y$축에 대하여 대칭이동한 점을 $P'$, $C(5,4)$를 $x$축에 대하여 대칭이동한 점을 $C'(5,-4)$라 하여 삼각부등식을 적용한다.\n대칭이동에 의해 $PQ=P'Q$, $RC=RC'$이므로 $PQ+QR+RC=P'Q+QR+RC'$이다.\n세 점을 잇는 꺾은선의 길이는 양 끝점 사이의 거리보다 작을 수 없으므로 $P'Q+QR+RC'\\ge P'C'$이다.\n$C'$를 다시 $y$축에 대하여 대칭이동한 점을 $D(-5,-4)$라 하면 $P'C'=PD$이므로 모든 $P,Q,R$에 대하여 $PQ+QR+RC\\ge PD$이다.\n따라서 전체 길이는 점 $D$와 선분 $AB$ 사이의 거리 이상이다.\n$A(4,8)$, $B(8,5)$를 지나는 직선의 방정식은 $3x+4y-44=0$이다.\n점 $D(-5,-4)$에서 이 직선까지의 거리는 $\\dfrac{|3(-5)+4(-4)-44|}{\\sqrt{3^2+4^2}}=\\dfrac{75}{5}=15$이다.\n또 직선 $DA$의 기울기는 $\\dfrac{8-(-4)}{4-(-5)}=\\dfrac43$이고, 직선 $AB$의 기울기는 $\\dfrac{5-8}{8-4}=-\\dfrac34$이다.\n두 직선의 기울기의 곱이 $-1$이므로 $DA\\perp AB$이다.\n따라서 점 $D$에서 직선 $AB$에 내린 수선의 발은 선분 위의 점 $A$이다.\n따라서 모든 경우에 $PQ+QR+RC\\ge15$이다.\n이제 $P=A$로 잡으면 $P'=(-4,8)$이다.\n선분 $P'C'$는 $y$축과 $Q=\\left(0,\\dfrac83\\right)$에서 만나고, 그 다음 $x$축과 $R=(2,0)$에서 만난다.\n두 점은 서로 다르고 $P',Q,R,C'$가 한 직선 위에 이 순서로 놓이므로 $P'Q+QR+RC'=P'C'=15$이다.\n따라서 하한 $15$가 실제로 성립한다.\n따라서 구하는 최솟값은 $15$이다.",
-    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q20-solution-path.svg",
-    "solutionImageAlt": "P를 y축에 대하여 대칭이동한 점 P′와 C를 x축에 대하여 대칭이동한 점 C′를 이으면 y축 위의 Q와 x축 위의 R을 지나는 한 직선이 되고, 이때 PQ+QR+RC는 P′C′와 같아 최솟값 15가 된다.",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 A, B, C가 있다. A를 y축에 대칭이동한 점 P′, C를 x축에 대칭이동한 점 C′가 있고, 굵은 붉은 선분 P′QRC′는 한 직선이며 Q는 y축 위, R은 x축 위의 점이다. 점 D에서 A로 가는 점선과 선분 AB는 A에서 직각을 이루고 같은 길이 표시가 있다.",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q20.png",
     "imageSize": "full",
     "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
     "subUnit": "도형의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "P를 y축에 대칭이동한 점을 P′, C를 x축에 대칭이동한 점을 C′라 하면 PQ+QR+RC=P′Q+QR+RC′≥P′C′이다. C′를 y축에 대칭이동한 점 D(−5,−4)를 잡으면 P′C′=PD이므로 구하는 값은 점 D와 선분 AB 사이의 거리 이상이다. 직선 DA와 AB가 수직이므로 P=A일 때 이 하한이 실제로 성립한다. 정답은 15이다."
   },
   {
     "id": 21,
@@ -699,6 +708,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 타원에 n의 값 98, 99, 100이, 오른쪽 타원에 f(n)의 값 99, 100, 98이 적혀 있고, 98에서 99로, 99에서 100으로, 100에서 98로 가는 파란 화살표가 있다.",
+    "solutionImageCaption": "f(100)=98, f(99)=100, f(98)=99이고 아래쪽으로 내려가며 같은 값이 반복되어 f(n)은 98, 99, 100을 주기 3으로 되풀이한다. 70부터 99까지 30개의 수에서 각 값이 10번씩 나오므로 합은 10×(98+99+100)이다. 정답은 2970이다.",
+    "solutionImageSize": "full"
   }
 ];

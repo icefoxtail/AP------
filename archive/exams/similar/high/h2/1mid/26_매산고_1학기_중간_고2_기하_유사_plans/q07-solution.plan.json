@@ -1,0 +1,81 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "$x$좌표가 양수인 초점은 $(2,k)$이다.",
+  "ellipses": [
+    {
+      "id": "C1",
+      "center": [
+        "-1",
+        "0"
+      ],
+      "semiAxisSquared": {
+        "major": "16",
+        "minor": "7"
+      },
+      "majorAxis": "X"
+    },
+    {
+      "id": "C2",
+      "center": [
+        "-1",
+        "5"
+      ],
+      "semiAxisSquared": {
+        "major": "16",
+        "minor": "7"
+      },
+      "majorAxis": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F1",
+      "kind": "FOCUS",
+      "side": 1,
+      "ellipseId": "C1"
+    },
+    {
+      "id": "F2",
+      "kind": "FOCUS",
+      "side": 1,
+      "ellipseId": "C2"
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "slope": "3/4",
+      "intercept": "1"
+    }
+  ],
+  "caption": "k=0, k=5일 때의 두 타원 C1, C2와 각 타원의 x좌표가 양수인 초점 F1(2,0), F2(2,5), 직선 3x-4y+4=0",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 (x+1)^2/16+(y-k)^2/7=1에서 x좌표가 양수인 초점과 직선 3x-4y+4=0 사이의 거리가 2이다.",
+      "mappedTo": [
+        "ellipses",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=0과 k=5인 두 타원의 오른쪽 초점이 직선에서 같은 거리 2만큼 떨어져 있다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q07-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q07-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q07-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q07-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 7,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

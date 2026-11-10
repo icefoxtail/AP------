@@ -16,7 +16,7 @@ export const FIGURE_MODEL_VERSION='NUMBER_LINE_FIGURE_MODEL_v1',FIGURE_SPEC_VERS
 const OBSERVER_SCRIPT=fileURLToPath(new URL('number-line-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
 const bad=code=>{throw Error(code);};
-const MAX_ROWS=4,MAX_POINTS=8,MAX_INTEGERS=25,MAX_TICK_INTEGERS=24,MAX_SUBDIVISIONS=8,MIN_TICK_GAP=6;
+const MAX_ROWS=4,MAX_POINTS=12,MAX_INTEGERS=25,MAX_TICK_INTEGERS=24,MAX_SUBDIVISIONS=8,MIN_TICK_GAP=6;
 // A point may be named by one Hangul consonant letter (ㄱ..ㅎ) in place of a capital letter.
 const JAMO=/^[\u3131-\u314E]$/u,CAPITAL=/^[A-Z]$/;
 // E35: a POINTS point with no value is a letter point (a, -a, n); its id is the name written below its dot.
@@ -897,10 +897,21 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
 }
 
 // --- the author plan ----------------------------------------------------------------------------------------------------------------------------
-const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()]{1,24}$/;
+// A figure caption {math?,text?,weight?} (shared by the number-line, quadratic-inequality and composite chains). math is plain ASCII math (k=-2, a=1/8, V=8a^5b^3) and, since
+// EXT-20261109-g, may hold stacked fractions written with the frac command (u=\frac{X-m}{k}: a caption shows a stacked fraction, never a slash); text is Korean/plain text,
+// and weight "MATH" (opt-in, only with text) draws that text with the weight of the math beside it so the caption reads in one face.
+const CAPTION_MATH_CHARS=/^(?:[A-Za-z0-9=+\-<>.,()\/^{}]|\\frac(?=\{))+$/;
+export const captionMathValid=value=>{
+  if(typeof value!=='string'||!CAPTION_MATH_CHARS.test(value)||value.replaceAll('\\frac','f').length>24)return false;
+  let depth=0;for(const ch of value){if(ch==='{')depth++;else if(ch==='}'&&--depth<0)return false;}
+  return depth===0;
+};
+export const captionValid=value=>isPlain(value)&&Object.keys(value).every(key=>['math','text','weight'].includes(key))&&(!!value.math||!!value.text)
+  &&(value.math===undefined||captionMathValid(value.math))&&(value.text===undefined||(typeof value.text==='string'&&!!value.text&&value.text.length<=24))
+  &&(value.weight===undefined||(value.weight==='MATH'&&!!value.text));
 function caption(value,fallback){
   if(value===undefined)return fallback;
-  if(!isPlain(value)||Object.keys(value).some(key=>!['math','text'].includes(key))||(!value.math&&!value.text)||(value.math!==undefined&&(typeof value.math!=='string'||!CAPTION_MATH.test(value.math)))||(value.text!==undefined&&(typeof value.text!=='string'||!value.text||value.text.length>24)))bad('CHAIN_CAPTION_INVALID');
+  if(!captionValid(value))bad('CHAIN_CAPTION_INVALID');
   return value;
 }
 /**

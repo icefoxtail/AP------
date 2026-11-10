@@ -3,13 +3,13 @@ window.examTitle = "21_팔마중_2학기_기말_중3_기출";
 window.questionBank = [
   {
     "id": 1,
-    "content": "다음 그림의 원 $O$에서 $\\\\angle x$의 크기는? (3점)",
+    "content": "다음 그림의 원 $O$에서 $\\angle x$의 크기는? (3점)",
     "choices": [
-      "$70^\\\\circ$",
-      "$80^\\\\circ$",
-      "$90^\\\\circ$",
-      "$100^\\\\circ$",
-      "$110^\\\\circ$"
+      "$70^\\circ$",
+      "$80^\\circ$",
+      "$90^\\circ$",
+      "$100^\\circ$",
+      "$110^\\circ$"
     ],
     "answer": "⑤",
     "solution": "주어진 중심각은 $140^\\circ$이고, $x$가 보는 호는 그 반대쪽 큰 호이다.\n큰 호의 중심각은\n$360^\\circ-140^\\circ=220^\\circ$이다.\n원주각은 같은 호에 대한 중심각의 절반이므로\n$x=220^\\circ\\div2=110^\\circ$이다.\n따라서 정답은 ⑤이다.",
@@ -42,17 +42,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 두 점 A, B와 중심 O를 이은 중심각 140도, 큰 호 AB를 보는 점 P의 원주각 x",
+    "solutionImageCaption": "중심각이 140°이므로 점 P가 보는 반대쪽 큰 호는 360°−140°=220°이다. 원주각은 같은 호의 중심각의 절반이므로 x는 220°의 절반이다. 정답은 ⑤ 110°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
-    "content": "다음 그림의 원 $O$에서 $\\\\angle x$의 크기는? (3점)",
+    "content": "다음 그림의 원 $O$에서 $\\angle x$의 크기는? (3점)",
     "choices": [
-      "$40^\\\\circ$",
-      "$50^\\\\circ$",
-      "$60^\\\\circ$",
-      "$70^\\\\circ$",
-      "$80^\\\\circ$"
+      "$40^\\circ$",
+      "$50^\\circ$",
+      "$60^\\circ$",
+      "$70^\\circ$",
+      "$80^\\circ$"
     ],
     "answer": "③",
     "solution": "$20^\\circ$인 원주각이 보는 호의 길이는 $5\\rm\\,cm$이다.\n$x$가 보는 호의 길이는\n$5+10=15\\rm\\,cm$이다.\n같은 원에서 호의 길이와 그 호에 대한 원주각의 크기는 비례한다.\n따라서\n$x:20^\\circ=15:5$\n$x=20^\\circ\\times3=60^\\circ$이다.\n따라서 정답은 ③이다.",
@@ -85,17 +89,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에서 호 AB 5cm가 보는 원주각 20도와 호 AB와 호 BC를 합친 호 AC가 보는 원주각 x",
+    "solutionImageCaption": "20°인 원주각이 보는 호 AB는 5cm이고 호 BC는 10cm이므로 x가 보는 호 AC는 15cm이다. 같은 원에서 원주각의 크기는 호의 길이에 비례하므로 20°의 3배가 x이다. 정답은 ③ 60°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
-    "content": "다음 그림의 원 $O$에서 $\\\\angle x$의 크기는? (4점)",
+    "content": "다음 그림의 원 $O$에서 $\\angle x$의 크기는? (4점)",
     "choices": [
-      "$50^\\\\circ$",
-      "$60^\\\\circ$",
-      "$70^\\\\circ$",
-      "$80^\\\\circ$",
-      "$90^\\\\circ$"
+      "$50^\\circ$",
+      "$60^\\circ$",
+      "$70^\\circ$",
+      "$80^\\circ$",
+      "$90^\\circ$"
     ],
     "answer": "②",
     "solution": "$AC$는 중심 $O$를 지나므로 지름이다.\n지름에 대한 원주각은 $90^\\circ$이므로\n$\\angle ADC=90^\\circ$이다.\n삼각형 $ACD$에서\n$\\angle ACD=180^\\circ-90^\\circ-30^\\circ=60^\\circ$이다.\n$\\angle ACD$와 $x=\\angle ABD$는 같은 호 $AD$를 본다.\n따라서\n$x=60^\\circ$이다.\n그러므로 정답은 ②이다.",
@@ -128,20 +136,24 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AC와 직각 표시 ∠ADC, 30도인 ∠DAC, 같은 호 AD를 보는 두 원주각 ∠ACD와 x",
+    "solutionImageCaption": "AC는 지름이므로 ∠ADC=90°이다. 삼각형 ACD에서 ∠ACD=180°−90°−30°=60°이다. ∠ACD와 x는 같은 호 AD를 보는 원주각이므로 크기가 같다. 정답은 ② 60°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
-    "content": "그림에서 호 $CD=2$호 $AB$, $\\\\angle ADB=34^\\\\circ$일 때, $\\\\angle x$의 크기는? (4점)",
+    "content": "그림에서 호 $CD=2$호 $AB$, $\\angle ADB=34^\\circ$일 때, $\\angle x$의 크기는? (4점)",
     "choices": [
-      "$78^\\\\circ$",
-      "$82^\\\\circ$",
-      "$98^\\\\circ$",
-      "$102^\\\\circ$",
-      "$108^\\\\circ$"
+      "$78^\\circ$",
+      "$82^\\circ$",
+      "$98^\\circ$",
+      "$102^\\circ$",
+      "$108^\\circ$"
     ],
-    "answer": "①",
-    "solution": "$\\angle ADB=34^\\circ$이므로 호 $AB$의 크기는\n$2\\times34^\\circ=68^\\circ$이다.\n호 $CD$는 호 $AB$의 2배이므로\n$\\overset{\\frown}{CD}=2\\times68^\\circ=136^\\circ$이다.\n원 안에서 만나는 두 현이 만드는 각 $x$는 마주 보는 두 호의 합의 절반이다.\n두 나머지 호의 합은\n$360^\\circ-68^\\circ-136^\\circ=156^\\circ$이다.\n따라서\n$x=156^\\circ\\div2=78^\\circ$이다.\n그러므로 정답은 ①이다.",
+    "answer": "④",
+    "solution": "$\\angle ADB=34^\\circ$이므로 호 $AB$의 크기는\n$2\\times34^\\circ=68^\\circ$이다.\n호 $CD$는 호 $AB$의 2배이므로\n$\\overset{\\frown}{CD}=2\\times68^\\circ=136^\\circ$이다.\n원 안에서 만나는 두 현이 만드는 각은 그 각과 맞꼭지각이 마주 보는 두 호의 합의 절반이다.\n$\\angle x$는 두 현 $AC$, $BD$의 교점에서 $D$와 $C$ 쪽에 있는 각이므로 호 $CD$를 마주 보고, 그 맞꼭지각은 호 $AB$를 마주 본다.\n따라서\n$x=(68^\\circ+136^\\circ)\\div2=102^\\circ$이다.\n그러므로 정답은 ④이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -171,17 +183,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 두 현 AC, BD의 교점 P, 호 AB 68도(파랑), 호 CD 136도(주황), ∠ADB 34도와 각 x=∠DPC",
+    "solutionImageCaption": "∠ADB=34°이므로 호 AB는 2×34°=68°이고, 호 CD는 호 AB의 2배인 136°이다. ∠x는 호 CD를 마주 보고 그 맞꼭지각은 호 AB를 마주 보므로 x는 두 호의 합 68°+136°의 절반이다. 정답은 ④ 102°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
-    "content": "그림에서 직선 $AT$가 원 $O$의 접선이고 점 $A$가 접점이다. $\\\\overline{AB}=\\\\overline{BC}$이고 $\\\\angle ABC=64^\\\\circ$일 때, $\\\\angle BAT$의 크기는? (4점)",
+    "content": "그림에서 직선 $AT$가 원 $O$의 접선이고 점 $A$가 접점이다. $\\overline{AB}=\\overline{BC}$이고 $\\angle ABC=64^\\circ$일 때, $\\angle BAT$의 크기는? (4점)",
     "choices": [
-      "$50^\\\\circ$",
-      "$54^\\\\circ$",
-      "$58^\\\\circ$",
-      "$64^\\\\circ$",
-      "$70^\\\\circ$"
+      "$50^\\circ$",
+      "$54^\\circ$",
+      "$58^\\circ$",
+      "$64^\\circ$",
+      "$70^\\circ$"
     ],
     "answer": "③",
     "solution": "$\\angle ABC=64^\\circ$이므로 호 $AC$의 크기는\n$2\\times64^\\circ=128^\\circ$이다.\n따라서 나머지 두 호 $AB$, $BC$의 합은\n$360^\\circ-128^\\circ=232^\\circ$이다.\n$\\overline{AB}=\\overline{BC}$이므로 두 호의 크기도 같다.\n$\\overset{\\frown}{AB}=232^\\circ\\div2=116^\\circ$이다.\n$\\angle ACB$는 호 $AB$에 대한 원주각이므로\n$\\angle ACB=116^\\circ\\div2=58^\\circ$이다.\n접선과 현 $AB$가 이루는 각은 반대쪽 원주각과 같으므로\n$\\angle BAT=58^\\circ$이다.\n따라서 정답은 ③이다.",
@@ -214,17 +230,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 접선 AT 위의 접점 A와 원 위의 점 B, C로 이루어진 삼각형, 호 AC 128도와 같은 길이의 호 AB, BC",
+    "solutionImageCaption": "∠ABC=64°이므로 호 AC는 128°이고, 나머지 두 호의 합은 232°이다. AB=BC이므로 호 AB와 호 BC는 각각 116°이다. 원주각 ∠ACB는 호 AB의 절반이고, 접선과 현이 이루는 각 ∠BAT는 그 호에 대한 원주각과 같다. 정답은 ③ 58°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
-    "content": "그림에서 $\\\\angle ABE=35^\\\\circ$, $\\\\angle ADC=70^\\\\circ$일 때, $\\\\angle x+\\\\angle y$의 값은? (4점)",
+    "content": "그림에서 $\\angle ABE=35^\\circ$, $\\angle ADC=70^\\circ$일 때, $\\angle x+\\angle y$의 값은? (4점)",
     "choices": [
-      "$100^\\\\circ$",
-      "$105^\\\\circ$",
-      "$110^\\\\circ$",
-      "$115^\\\\circ$",
-      "$120^\\\\circ$"
+      "$100^\\circ$",
+      "$105^\\circ$",
+      "$110^\\circ$",
+      "$115^\\circ$",
+      "$120^\\circ$"
     ],
     "answer": "②",
     "solution": "$\\angle ABE=35^\\circ$와 $\\angle ADE$는 같은 호 $AE$를 보는 원주각이다.\n따라서\n$y=\\angle ADE=35^\\circ$이다.\n네 점 $A,B,C,D$가 한 원 위에 있으므로 사각형 $ABCD$의 마주 보는 각의 합은 $180^\\circ$이다.\n$\\angle ABC=180^\\circ-\\angle ADC=180^\\circ-70^\\circ=110^\\circ$이다.\n$x$는 $\\angle ABC$와 이웃한 바깥각이므로\n$x=180^\\circ-110^\\circ=70^\\circ$이다.\n따라서\n$x+y=70^\\circ+35^\\circ=105^\\circ$이다.\n그러므로 정답은 ②이다.",
@@ -257,17 +277,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 원 위의 점 E, 같은 호 AE를 보는 두 원주각 35도와 y, 바깥각 x",
+    "solutionImageCaption": "∠ABE와 ∠ADE는 같은 호 AE를 보는 원주각이므로 y=35°이다. 원에 내접하는 사각형 ABCD에서 ∠ABC=180°−70°=110°이고, x는 그 바깥각이므로 x=70°이다. 따라서 x+y=105°이다. 정답은 ② 105°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
-    "content": "다음 그림과 같이 점 $P$에서 원 $O$에 그은 두 접선의 접점을 각각 $A$, $B$라 하고, 호 $AB$ 위의 한 점 $Q$에 대하여 $\\\\angle AQB=115^\\\\circ$일 때, $\\\\angle APB$의 크기는? (4점)",
+    "content": "다음 그림과 같이 점 $P$에서 원 $O$에 그은 두 접선의 접점을 각각 $A$, $B$라 하고, 호 $AB$ 위의 한 점 $Q$에 대하여 $\\angle AQB=115^\\circ$일 때, $\\angle APB$의 크기는? (4점)",
     "choices": [
-      "$50^\\\\circ$",
-      "$52.5^\\\\circ$",
-      "$55^\\\\circ$",
-      "$57.5^\\\\circ$",
-      "$60^\\\\circ$"
+      "$50^\\circ$",
+      "$52.5^\\circ$",
+      "$55^\\circ$",
+      "$57.5^\\circ$",
+      "$60^\\circ$"
     ],
     "answer": "①",
     "solution": "$\\angle AQB=115^\\circ$가 보는 호 $AB$는 $Q$를 포함하지 않는 큰 호이다.\n그 호의 크기는\n$2\\times115^\\circ=230^\\circ$이다.\n두 접점 $A,B$ 사이의 작은 호의 크기는\n$360^\\circ-230^\\circ=130^\\circ$이다.\n두 접선이 이루는 각은 $180^\\circ$에서 작은 호의 크기를 뺀 값이다.\n따라서\n$\\angle APB=180^\\circ-130^\\circ=50^\\circ$이다.\n그러므로 정답은 ①이다.",
@@ -300,17 +324,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선과 접점 A, B, 원 위의 점 Q, 큰 호 230도와 중심각 130도",
+    "solutionImageCaption": "∠AQB=115°가 보는 호는 점 Q를 포함하지 않는 큰 호이므로 230°이다. 작은 호 AB는 360°−230°=130°이고 중심각 ∠AOB도 130°이다. 사각형 PAOB에서 ∠PAO=∠PBO=90°이므로 x=180°−130°이다. 정답은 ① 50°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
-    "content": "그림에서 $\\\\overline{AB}$는 원 $O$의 지름이고, $\\\\overline{AB}$의 연장선과 점 $T$에서의 접선의 교점을 $P$라 하자. $\\\\angle ATP=30^\\\\circ$이고 $\\\\overline{AB}=8\\\\sqrt3$일 때, $\\\\triangle ABT$의 넓이는? (4점)",
+    "content": "그림에서 $\\overline{AB}$는 원 $O$의 지름이고, $\\overline{AB}$의 연장선과 점 $T$에서의 접선의 교점을 $P$라 하자. $\\angle ATP=30^\\circ$이고 $\\overline{AB}=8\\sqrt3$일 때, $\\triangle ABT$의 넓이는? (4점)",
     "choices": [
       "$16$",
-      "$16\\\\sqrt3$",
-      "$16\\\\sqrt6$",
+      "$16\\sqrt3$",
+      "$16\\sqrt6$",
       "$24$",
-      "$24\\\\sqrt3$"
+      "$24\\sqrt3$"
     ],
     "answer": "⑤",
     "solution": "$AB$가 지름이므로\n$\\angle ATB=90^\\circ$이다.\n접선과 현 $AT$가 이루는 각 $\\angle ATP=30^\\circ$는 반대쪽 원주각 $\\angle ABT$와 같다.\n따라서 $\\angle ABT=30^\\circ$이고\n$\\angle BAT=60^\\circ$이다.\n직각삼각형 $ABT$에서\n$AT=AB\\sin30^\\circ=8\\sqrt3\\times\\dfrac12=4\\sqrt3$,\n$BT=AB\\sin60^\\circ=8\\sqrt3\\times\\dfrac{\\sqrt3}{2}=12$이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\times4\\sqrt3\\times12=24\\sqrt3$이다.\n그러므로 정답은 ⑤이다.",
@@ -343,17 +371,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB와 접점 T에서의 접선, 직각삼각형 ABT의 직각과 30도, 60도 각, 변 AB와 BT의 길이",
+    "solutionImageCaption": "AB는 지름이므로 ∠ATB=90°이다. 접선과 현이 이루는 각 ∠ATP=30°는 ∠ABT와 같으므로 ∠BAT=60°이다. 직각삼각형 ABT에서 AT=4√3, BT=12이므로 직각을 낀 두 변의 곱의 절반이 넓이이다. 정답은 ⑤ 24√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
-    "content": "네 점 $A,B,C,D$는 한 원 위에 있고, $\\\\overleftrightarrow{BA}$와 $\\\\overleftrightarrow{CD}$의 교점을 $P$, $\\\\overleftrightarrow{AD}$와 $\\\\overleftrightarrow{BC}$의 교점을 $Q$라 하자. $\\\\angle B=55^\\\\circ$, $\\\\angle Q=37^\\\\circ$일 때, $\\\\angle x$의 크기는? (4점)",
+    "content": "네 점 $A,B,C,D$는 한 원 위에 있고, $\\overleftrightarrow{BA}$와 $\\overleftrightarrow{CD}$의 교점을 $P$, $\\overleftrightarrow{AD}$와 $\\overleftrightarrow{BC}$의 교점을 $Q$라 하자. $\\angle B=55^\\circ$, $\\angle Q=37^\\circ$일 때, $\\angle x$의 크기는? (4점)",
     "choices": [
-      "$31^\\\\circ$",
-      "$33^\\\\circ$",
-      "$35^\\\\circ$",
-      "$37^\\\\circ$",
-      "$39^\\\\circ$"
+      "$31^\\circ$",
+      "$33^\\circ$",
+      "$35^\\circ$",
+      "$37^\\circ$",
+      "$39^\\circ$"
     ],
     "answer": "②",
     "solution": "호 $AB,BC,CD,DA$의 크기를 각각 $a,b,c,d$라 하자.\n$\\angle B=55^\\circ$이므로\n$c+d=2\\times55^\\circ=110^\\circ$이다.\n점 $Q$에서 만나는 두 할선의 바깥각은 두 호의 차의 절반이다.\n따라서\n$a-c=2\\times37^\\circ=74^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$a+c+2d=(a-c)+2(c+d)=74^\\circ+220^\\circ=294^\\circ$이다.\n따라서\n$b-d=(a+b+c+d)-(a+c+2d)=360^\\circ-294^\\circ=66^\\circ$이다.\n점 $P$에서 만나는 두 할선의 바깥각은 호 $BC$와 호 $AD$의 차의 절반이다.\n따라서\n$x=\\dfrac{b-d}{2}=33^\\circ$이다.\n그러므로 정답은 ②이다.",
@@ -386,11 +418,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 두 바깥점 P, Q, 색으로 구분한 네 호 AB, BC, CD, DA 및 주어진 각 55도, 37도",
+    "solutionImageCaption": "그림에서 호 AB(파랑), BC(초록), CD(주황), DA(분홍)의 크기를 각각 a, b, c, d라 한다. ∠B=55°에서 c+d=110°이고, ∠Q=37°에서 a−c=74°이다. 네 호의 합이 360°이므로 b−d=66°이다. 점 P에서의 각 x는 호 BC와 호 DA의 차의 절반이다. 정답은 ② 33°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
-    "content": "다음은 지민이의 7회에 걸친 턱걸이 횟수를 조사하여 나타낸 것이다. 턱걸이 횟수의 평균과 최빈값이 같을 때, $x$의 값은? (3점)\\\\n$7,x,8,10,7,6,7$",
+    "content": "다음은 지민이의 7회에 걸친 턱걸이 횟수를 조사하여 나타낸 것이다. 턱걸이 횟수의 평균과 최빈값이 같을 때, $x$의 값은? (3점)\n$7,x,8,10,7,6,7$",
     "choices": [
       "4",
       "5",
@@ -437,7 +473,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "content": "다음 자료 $A$와 $B$의 중앙값을 구하여 더한 값은? (4점)\\\\n$A: 23,11,15,7,21,9,2$\\\\n$B: 6,4,0,-3,-2,2,-1,5$",
+    "content": "다음 자료 $A$와 $B$의 중앙값을 구하여 더한 값은? (4점)\n$A: 23,11,15,7,21,9,2$\n$B: 6,4,0,-3,-2,2,-1,5$",
     "choices": [
       "8",
       "10",
@@ -531,7 +567,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "content": "다음 자료의 최빈값이 $4$, 평균은 $7$, 중앙값을 $c$라고 할 때, $a+b-c$의 값은? (4점)\\\\n$3,4,a,9,b,4,9,8,5,8$",
+    "content": "다음 자료의 최빈값이 $4$, 평균은 $7$, 중앙값을 $c$라고 할 때, $a+b-c$의 값은? (4점)\n$3,4,a,9,b,4,9,8,5,8$",
     "choices": [
       "13.5",
       "14",
@@ -674,11 +710,11 @@ window.questionBank = [
     "id": 16,
     "content": "자료 $14,22,8,26,10$의 표준편차는? (4점)",
     "choices": [
-      "$4\\\\sqrt2$",
-      "$2\\\\sqrt{10}$",
-      "$4\\\\sqrt3$",
-      "$2\\\\sqrt{13}$",
-      "$2\\\\sqrt{14}$"
+      "$4\\sqrt2$",
+      "$2\\sqrt{10}$",
+      "$4\\sqrt3$",
+      "$2\\sqrt{13}$",
+      "$2\\sqrt{14}$"
     ],
     "answer": "③",
     "solution": "자료의 평균은\n$\\dfrac{14+22+8+26+10}{5}=16$이다.\n평균과 각 자료의 차는\n$-2,6,-8,10,-6$이다.\n분산은\n$\\dfrac{(-2)^2+6^2+(-8)^2+10^2+(-6)^2}{5}$\n$=\\dfrac{4+36+64+100+36}{5}=48$이다.\n따라서 표준편차는\n$\\sqrt{48}=4\\sqrt3$이다.\n그러므로 정답은 ③이다.",
@@ -719,7 +755,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "content": "자료 $a,b,c$의 평균이 $6$, 표준편차가 $\\\\sqrt{10}$일 때, 자료 $3,a,b,c,9$의 분산은? (4점)",
+    "content": "자료 $a,b,c$의 평균이 $6$, 표준편차가 $\\sqrt{10}$일 때, 자료 $3,a,b,c,9$의 분산은? (4점)",
     "choices": [
       "9.2",
       "9.3",
@@ -768,11 +804,11 @@ window.questionBank = [
     "id": 18,
     "content": "$A$, $B$ 두 반의 턱걸이 기록을 조사하였더니 각 반의 학생 수, 평균과 표준편차가 다음 표와 같았다. 두 반 전체 30명의 표준편차는? (4점)",
     "choices": [
-      "$\\\\dfrac{\\\\sqrt3}3$",
-      "$\\\\dfrac{\\\\sqrt6}3$",
-      "$\\\\dfrac{2\\\\sqrt3}3$",
-      "$\\\\dfrac{2\\\\sqrt6}3$",
-      "$2\\\\sqrt6$"
+      "$\\dfrac{\\sqrt3}3$",
+      "$\\dfrac{\\sqrt6}3$",
+      "$\\dfrac{2\\sqrt3}3$",
+      "$\\dfrac{2\\sqrt6}3$",
+      "$2\\sqrt6$"
     ],
     "answer": "④",
     "solution": "두 반의 평균이 모두 $7$이므로 전체 평균도 $7$이다.\nA반의 편차 제곱의 합은\n$10\\times(\\sqrt2)^2=20$이다.\nB반의 편차 제곱의 합은\n$20\\times(\\sqrt3)^2=60$이다.\n전체 편차 제곱의 합은\n$20+60=80$이다.\n따라서 전체 분산은\n$\\dfrac{80}{30}=\\dfrac83$이고, 표준편차는\n$\\sqrt{\\dfrac83}=\\dfrac{2\\sqrt6}{3}$이다.\n그러므로 정답은 ④이다.",
@@ -861,7 +897,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "content": "다음 보기 중에서 두 변량 사이의 산점도가 대체로 오른쪽 그림과 같은 모양이 되는 것을 모두 고른 것은? (4점)\\\\nㄱ. 위도와 평균 기온\\\\nㄴ. 물 사용량과 수도 요금\\\\nㄷ. 통학 거리와 소요 시간\\\\nㄹ. 자동차의 이동거리와 남은 기름의 양",
+    "content": "다음 보기 중에서 두 변량 사이의 산점도가 대체로 오른쪽 그림과 같은 모양이 되는 것을 모두 고른 것은? (4점)\nㄱ. 위도와 평균 기온\nㄴ. 물 사용량과 수도 요금\nㄷ. 통학 거리와 소요 시간\nㄹ. 자동차의 이동거리와 남은 기름의 양",
     "choices": [
       "ㄱ, ㄹ",
       "ㄴ, ㄷ",
@@ -911,11 +947,11 @@ window.questionBank = [
     "id": 21,
     "content": "다음 산점도는 어느 반 학생 20명의 1학기 성적과 2학기 성적을 조사하여 나타낸 것이다. 1학기보다 2학기에 성적이 향상된 학생의 비율은? (4점)",
     "choices": [
-      "$\\\\dfrac15$",
-      "$\\\\dfrac14$",
-      "$\\\\dfrac3{10}$",
-      "$\\\\dfrac25$",
-      "$\\\\dfrac7{20}$"
+      "$\\dfrac15$",
+      "$\\dfrac14$",
+      "$\\dfrac3{10}$",
+      "$\\dfrac25$",
+      "$\\dfrac7{20}$"
     ],
     "answer": "④",
     "solution": "좌표평면에서 2학기 성적이 1학기 성적보다 높은 점은 대각선 $y=x$보다 위에 있다.\n그림에서 대각선 위에 있는 점은\n$(65,80),(70,90),(75,80),(75,85)$\n$(80,85),(80,95),(85,95),(90,100)$\n의 8개이다.\n전체 학생은 20명이므로\n$\\dfrac{8}{20}=\\dfrac25$이다.\n따라서 향상된 학생의 비율은 $\\dfrac25$이다.\n그러므로 정답은 ④이다.",
@@ -953,11 +989,15 @@ window.questionBank = [
     ],
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 1학기 성적과 2학기 성적의 산점도 20개 점, 대각선 y=x와 그 위쪽의 파란 점 8개",
+    "solutionImageCaption": "대각선 y=x보다 위쪽에 있는 점은 2학기 성적이 1학기보다 오른 학생이다. 파란 점 8개가 그 점이므로 전체 20명 중 8명이다. 비율은 20분의 8, 곧 5분의 2이다. 정답은 ④ 5분의 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
-    "content": "서술형 1. 다음과 같은 원 $O$에 내접하는 정오각형 $ABCDE$가 있다. 호 $CD$의 원주각을 구하고, 그 크기를 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\\\\n(1) 호 $CD$에 대한 원주각을 3개 구하시오. (3점)\\\\n(2) 호 $CD$에 대한 중심각의 크기를 이용하여 원주각의 크기를 풀이과정을 쓰고 구하시오. (2점)",
+    "content": "서술형 1. 다음과 같은 원 $O$에 내접하는 정오각형 $ABCDE$가 있다. 호 $CD$의 원주각을 구하고, 그 크기를 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\n(1) 호 $CD$에 대한 원주각을 3개 구하시오. (3점)\n(2) 호 $CD$에 대한 중심각의 크기를 이용하여 원주각의 크기를 풀이과정을 쓰고 구하시오. (2점)",
     "choices": [],
     "answer": "(1) ∠CAD=∠CBD=∠CED=36° (2) 36°",
     "solution": "정오각형의 꼭짓점은 원을 5등분한다.\n따라서 호 $CD$의 중심각은\n$360^\\circ\\div5=72^\\circ$이다.\n호 $CD$에 대한 원주각은 호 $CD$의 양 끝점이 아닌 원 위의 꼭짓점에서 만든다.\n따라서 세 각은\n$\\angle CAD,\\;\\angle CBD,\\;\\angle CED$이다.\n원주각은 같은 호에 대한 중심각의 절반이므로\n$\\angle CAD=\\angle CBD=\\angle CED=72^\\circ\\div2=36^\\circ$이다.",
@@ -990,11 +1030,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 정오각형 ABCDE에서 호 CD에 대한 중심각 72도와 세 원주각 CAD, CBD, CED",
+    "solutionImageCaption": "정오각형의 꼭짓점은 원을 5등분하므로 호 CD의 중심각은 360°÷5=72°이다. 호 CD에 대한 원주각은 C, D가 아닌 꼭짓점 A, B, E에서 만든 ∠CAD, ∠CBD, ∠CED이다. 이 세 원주각은 같은 호를 보므로 크기가 같고 중심각의 절반이다. 정답은 (1) ∠CAD, ∠CBD, ∠CED (2) 36°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
-    "content": "서술형 2. 아래 그림과 같이 원 $O$의 지름 $BC$의 연장선과 접선 $PA$가 만날 때, $\\\\angle x$의 크기를 풀이과정을 쓰고 구하시오. (5점)",
+    "content": "서술형 2. 아래 그림과 같이 원 $O$의 지름 $BC$의 연장선과 접선 $PA$가 만날 때, $\\angle x$의 크기를 풀이과정을 쓰고 구하시오. (5점)",
     "choices": [],
     "answer": "46°",
     "solution": "$BC$가 지름이므로\n$\\angle BAC=90^\\circ$이다.\n접선과 현 $AB$가 이루는 각이 $68^\\circ$이므로 접선-현각 정리에 따라\n$\\angle ACB=68^\\circ$이다.\n삼각형 $ABC$에서\n$\\angle ABC=180^\\circ-90^\\circ-68^\\circ=22^\\circ$이다.\n$PA$와 접선의 오른쪽 방향은 일직선의 반대쪽이므로\n$\\angle PAB=180^\\circ-68^\\circ=112^\\circ$이다.\n삼각형 $PAB$에서\n$x=180^\\circ-112^\\circ-22^\\circ=46^\\circ$이다.",
@@ -1027,7 +1071,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 BC의 연장선과 접선 PA가 만나는 점 P, 접선과 현 AB가 이루는 각 68도, 직각 BAC와 각 x",
+    "solutionImageCaption": "BC는 지름이므로 ∠BAC=90°이다. 접선과 현 AB가 이루는 각 68°는 같은 호의 원주각 ∠ACB와 같다. 삼각형 ABC에서 ∠ABC=180°−90°−68°=22°이고, ∠PAB=180°−68°=112°이다. 삼각형 PAB의 내각의 합에서 x를 구한다. 정답은 46°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1070,11 +1118,15 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "decisiveStep": "A=14, B=16, C=15+20=35이므로 A+B-C=14+16-35=-5이다.",
     "visualDisposition": "NATIVE_SOURCE_CHART_ONLY_CROP_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "Chart-only crop compared against native PDF page 5; title, key, stem row and all twelve leaves are preserved exactly, with duplicate prompt text and repeated subquestion removed from the image."
+    "visualEvidence": "Chart-only crop compared against native PDF page 5; title, key, stem row and all twelve leaves are preserved exactly, with duplicate prompt text and repeated subquestion removed from the image.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗몸일으키기 횟수 12개를 나타낸 줄기와 잎 그림, 가운데 두 값 강조",
+    "solutionImageCaption": "자료를 작은 순서로 쓰면 1, 2, 3, 11, 15, 15, 17, 18, 20, 20, 21, 25이다. 자료가 12개이므로 가운데 두 값인 6번째와 7번째 값(동그라미)의 평균이 중앙값이다. 평균은 합 168을 12로 나눈 값이고, 최빈값은 두 번씩 나타나는 15와 20이다. 정답은 -5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
-    "content": "서술형 4. 자료 $a-1,a+2,a+3,a+4$의 분산을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\\\\n(1) 자료의 평균을 구하시오. (2점)\\\\n(2) 각 변량에 대한 편차를 구하시오. (1점)\\\\n(3) 분산을 구하시오. (2점)",
+    "content": "서술형 4. 자료 $a-1,a+2,a+3,a+4$의 분산을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\n(1) 자료의 평균을 구하시오. (2점)\n(2) 각 변량에 대한 편차를 구하시오. (1점)\n(3) 분산을 구하시오. (2점)",
     "choices": [],
     "answer": "(1) a+2 (2) -3, 0, 1, 2 (3) 7/2",
     "solution": "자료의 평균은\n$\\dfrac{(a-1)+(a+2)+(a+3)+(a+4)}{4}$\n$=\\dfrac{4a+8}{4}=a+2$이다.\n각 자료에서 평균을 뺀 편차는\n$(a-1)-(a+2)=-3$,\n$(a+2)-(a+2)=0$,\n$(a+3)-(a+2)=1$,\n$(a+4)-(a+2)=2$이다.\n따라서 분산은\n$\\dfrac{(-3)^2+0^2+1^2+2^2}{4}$\n$=\\dfrac{9+0+1+4}{4}=\\dfrac72$이다.",
