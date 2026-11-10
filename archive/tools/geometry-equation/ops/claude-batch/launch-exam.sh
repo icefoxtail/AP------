@@ -6,7 +6,7 @@
 K=$1; JS=$2
 [ -n "$K" ] && [ -n "$JS" ] || { echo "usage: launch-exam.sh <tablekey> <시험지 JS 저장소 상대경로>" >&2; exit 2; }
 source "$(dirname "$0")/env.sh"; source "$(dirname "$0")/exam-common.sh"; cd "$R"
-need_codex || exit 1; need_svgm1 || exit 1
+{ [ -n "${PROMPT_ONLY:-}" ] || need_codex || exit 1; }; need_svgm1 || exit 1
 [ -f "$JS" ] || { echo "ERROR: 시험지 JS가 없다(저장소 루트 기준): $JS" >&2; exit 1; }
 if [ -z "${OUT:-}" ]; then
   OUT=.tmp/work/runs/$K/exam-impl; i=1
@@ -28,5 +28,7 @@ INP=$(exam_inputs "$K")
   echo
   echo "${EXTRA:-}"
 } > "$OUT/PROMPT.md"
+# PROMPT_ONLY=1: 지시서만 만들고 Codex는 띄우지 않는다(Sonnet 에이전트가 이 PROMPT.md를 직접 수행, 2026-11-10)
+if [ -n "${PROMPT_ONLY:-}" ]; then echo "$OUT/PROMPT.md"; exit 0; fi
 "$CODEX_BIN" exec -c model_reasoning_effort="high" --skip-git-repo-check -C "$CODEX_CWD" --add-dir "$R_WIN" -o "$OUT/last.txt" - < "$OUT/PROMPT.md" > "$OUT/codex.log" 2>&1
 echo "exam-impl $K exit=$? out=$OUT"

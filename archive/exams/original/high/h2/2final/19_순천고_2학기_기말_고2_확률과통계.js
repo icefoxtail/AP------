@@ -160,7 +160,11 @@ window.questionBank = [
     "rpmSemanticStatus": "HOLD",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 확률밀도 곡선 아래에서 1부터 2까지의 구간을 음영 처리했다.",
+    "solutionImageCaption": "전체 넓이로 k=2/9를 정하고, 음영 넓이 P(1≤X≤2)는 1/3이다. 구하는 값 6P(1≤X≤2)는 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -270,7 +274,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 값 1, 2, 4, 8 위에 각각 1, 2, 4, 8개의 점이 쌓여 확률의 비를 나타낸 점도표.",
+    "solutionImageCaption": "점 하나는 전체 확률의 1/15이며, 기댓값은 17/3이다. p+q는 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -328,7 +336,11 @@ window.questionBank = [
     "rpmSemanticStatus": "HOLD",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 모양 확률밀도 곡선 아래에서 −1부터 1/2까지의 구간을 음영 처리했다.",
+    "solutionImageCaption": "전체 넓이로 k=1/4을 정하고, 두 구간의 확률은 3/8과 7/32이다. 구하는 값은 51이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -387,7 +399,11 @@ window.questionBank = [
     "rpmSemanticStatus": "HOLD",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 확률밀도 곡선 아래 왼쪽 L과 오른쪽 R 영역을 서로 다른 음영으로 나타냈다.",
+    "solutionImageCaption": "왼쪽과 오른쪽 확률은 1:2이다. 오른쪽 적분으로 구한 p+q는 35이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -441,7 +457,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 1과 3 사이의 넓이를 음영 처리했다.",
+    "solutionImageCaption": "54와 62를 표준화하면 1과 3이고, 표의 넓이 차로 구한 확률은 0.1574이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -495,7 +515,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 4가 같은 두 종모양 곡선으로 모집단은 넓고 표본평균은 좁게 나타냈다.",
+    "solutionImageCaption": "모집단의 표준편차는 10, 표본평균의 표준편차는 2이다. 평균과 표준편차의 합은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -549,7 +573,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 0을 중심으로 −1.96과 1.96 사이를 색칠했다.",
+    "solutionImageCaption": "표준오차는 0.3이고, 중심 6에서 1.96배의 오차한계를 적용한다. 신뢰구간은 5.412 이상 6.588 이하이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -661,7 +689,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 −2 오른쪽 꼬리 넓이를 색칠했다.",
+    "solutionImageCaption": "평균 300, 표준편차 10으로 정규근사하면 280은 표준화 값 −2이다. 연속성 보정 없이 구한 확률은 0.9772이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -715,7 +747,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 −1.5 왼쪽 꼬리 넓이를 색칠했다.",
+    "solutionImageCaption": "표본평균의 평균은 400, 표준편차는 2이다. 왼쪽 꼬리 0.0668의 경계 c는 397이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -771,7 +807,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 600인 표본평균 곡선 아래에서 주어진 끝값 590.2와 609.8 사이를 색칠했다.",
+    "solutionImageCaption": "신뢰구간 중심은 600, 반폭은 9.8이다. 계산한 xbar+n은 664이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -825,7 +865,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선 아래 −0.5부터 2까지의 구간을 색칠했다.",
+    "solutionImageCaption": "정상 상자 무게는 표준화 구간 −0.5에서 2에 해당한다. 구하는 확률은 0.6687이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -879,7 +923,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균을 중심으로 −1과 1 사이의 두 영역을 나누어 같은 넓이로 표시했다.",
+    "solutionImageCaption": "정규밀도는 평균 m을 축으로 대칭이어서 두 영역의 넓이가 같다. 옳은 보기는 ㄱ과 ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -933,7 +981,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 오른쪽 꼬리를 0.28과 1.13에서 나누어 색칠했다.",
+    "solutionImageCaption": "0.28 오른쪽 전체 넓이가 0.39이고, 그 안의 1.13 오른쪽 짙은 넓이가 0.13이다. 구하는 k는 51.3분이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -989,7 +1041,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 18과 22인 정규곡선에서 23부터 26까지의 넓이를 비교했다.",
+    "solutionImageCaption": "가능한 평균은 18부터 22이고, 평균을 22로 두었을 때 확률이 최대다. 최댓값은 0.2857이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1043,7 +1099,11 @@ window.questionBank = [
     "rpmSemanticStatus": "HOLD",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로와 세로를 r 단위로 본 밀도 곡선에서 가운데 직사각형과 반원, 양쪽 삼각형을 구분했다.",
+    "solutionImageCaption": "가운데는 직사각형과 반원, 양끝은 두 삼각형이다. 구하는 확률은 (π+4)/(π+6)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1093,7 +1153,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 2부터 2.5까지의 좁은 오른쪽 구간을 색칠했다.",
+    "solutionImageCaption": "표본평균의 표준편차는 2이고 표준화한 구간은 2부터 2.5까지다. 구하는 확률은 0.0166이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1143,6 +1207,10 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "projectionStatus": "REUSE",
     "canonicalOwnerPack": "PROBABILITY_STATISTICS",
-    "bindingOwnerPack": "PROBABILITY_STATISTICS"
+    "bindingOwnerPack": "PROBABILITY_STATISTICS",
+    "solutionImage": "assets/images/19_순천고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 중심에서 양쪽 2.5까지 가운데 영역을 색칠했다.",
+    "solutionImageCaption": "표본평균의 표준오차는 1이고 오차한계는 2.5다. 표의 근삿값으로 구한 신뢰도 α는 98이다.",
+    "solutionImageSize": "full"
   }
 ];
