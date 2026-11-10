@@ -347,7 +347,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q6-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이다. 첫째 줄은 판별식 조건으로 a가 −1 이상인 범위, 둘째 줄은 주어진 조건으로 a가 4 이하인 범위, 셋째 줄은 둘을 겹친 공통 범위로 −1에서 4까지(양 끝 포함)를 보인다.",
+    "solutionImageCaption": "a≠0이면 판별식 D=[2(a+2)]²−4a²=16(a+1)≥0에서 a≥−1이다. a=0이면 방정식이 4x=0이 되어 실근 x=0을 가지므로 a=0도 조건에 맞는다. 그림은 a≥−1과 a≤4의 공통 범위 −1≤a≤4를 수직선에 나타낸 것이고, 이 범위에 들어가는 정수의 개수를 센다. 정답은 6개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -632,7 +636,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q11-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위아래로 놓인 두 포물선이다. 파란 포물선(a=−2)은 x축과 x좌표가 −2분의 1인 점과 1인 점, 서로 다른 두 점에서 만나고, 그 위쪽의 주황 포물선(a=1)은 x축과 만나지 않는다.",
+    "solutionImageCaption": "x축과 만나려면 방정식 2x²−x+a+1=0이 실근을 가져야 하므로 판별식 D=1−8(a+1)≥0이어야 한다. 그림은 a가 커질수록 y=2x²−x+a+1의 그래프가 위로 올라가는 모습으로, 예: a=−2(파랑)이면 x축과 서로 다른 두 점에서 만나고 a=1(주황)이면 만나지 않는다. D≥0을 풀어 a의 범위를 구한다. 정답은 a≤−8분의 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -809,9 +817,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "a=2일 때 x축에 접하는 포물선이 직선 y=5x와 두 점에서 만난다",
-    "solutionImageCaption": "a=2일 때 x축에 접하는 포물선이 직선 y=5x와 두 점에서 만난다",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q14-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 x축에 접하는 파란 포물선(a=−4)이 초록 직선 y=5x와 서로 다른 두 점에서 만나는 모습이고, 아래 그림은 x축에 접하는 주황 포물선(a=4)이 같은 직선 y=5x와 만나지 않는 모습이다. 각 포물선의 꼭짓점이 x축 위에 점으로 찍혀 있다.",
+    "solutionImageCaption": "x축에 접하므로 판별식이 0이어서 b=4분의 a²이고 그래프는 꼭짓점이 x축 위에 있다. 직선 y=5x와 서로 다른 두 점에서 만나려면 x²+(a−5)x+b=0의 판별식 (a−5)²−4b=25−10a가 양수여야 하므로 a<2분의 5이다. 그림은 예: a=−4(파랑)이면 두 점에서 만나고 a=4(주황)이면 만나지 않는 모습이다. 이를 만족하는 정수 a의 최댓값을 구한다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -827,8 +835,8 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "꼭짓점 x=3과 구간 [0,a]의 두 위치 관계",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q15-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 두 그림 모두 파란 포물선 y=(x−3)²+a에서 0≤x≤a인 부분을 굵은 주황으로 나타내고, 초록 점선 y=4, 검은 점선 x=3, x축 위의 점 a를 보인다. 위 그림은 a가 3 이하인 경우로 꼭짓점이 구간 밖에 있고 구간의 오른쪽 끝에서 높이가 4이다. 아래 그림은 a가 3 이상인 경우로 꼭짓점이 구간 안에 있고 그 높이가 4이다.",
     "solutionImageSize": "full",
     "solution": "0<a≤3이면 구간 [0,a]에서 꼭짓점 x=3이 오른쪽에 있으므로 최솟값은 (a-3)^2+a이다. 이를 4와 같게 하면 a=(5±√5)/2이고 이 중 a≤3인 값은 (5-√5)/2이다. a≥3이면 꼭짓점이 구간에 들어 최솟값은 a이므로 a=4이다. 두 값의 합은 (13-√5)/2이므로 ②이다.",
     "tags": [
@@ -875,7 +883,8 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "상"
+    "level": "상",
+    "solutionImageCaption": "0<a≤3이면 꼭짓점 x=3이 구간 밖 오른쪽에 있어 최솟값은 x=a에서 (a−3)²+a이고, 이를 4와 같게 하면 a=2분의 (5−√5)이다. a≥3이면 꼭짓점이 구간에 들어 최솟값이 a이므로 a=4이다. 위 그림은 a=2분의 (5−√5), 아래 그림은 a=4인 경우이고, 두 a의 합을 구한다. 정답은 2분의 (13−√5)이다."
   },
   {
     "id": 16,
@@ -1101,9 +1110,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "f(x)=3x^2-3x+3을 -1≤x≤1에서 보면 최댓값은 9, 최솟값은 9/4이다.",
-    "solutionImageCaption": "f(x)=3x^2-3x+3을 -1≤x≤1에서 보면 최댓값은 9, 최솟값은 9/4이다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q19-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선 f(x)=3x²−3x+3과 초록 점선 y=3, 그리고 점 (0,3), (1,3)을 보인다. 아래 그림은 같은 포물선에서 −1≤x≤1인 부분을 굵은 주황으로 나타내고, 왼쪽 끝점 (−1,9), 가장 낮은 점 (2분의 1, 4분의 9), 오른쪽 끝점 (1,3)과 높이 9와 높이 4분의 9의 가로 점선을 보인다.",
+    "solutionImageCaption": "f(x)=Ax²+Bx+3으로 두면 f(x+1)−f(x)=2Ax+A+B=6x이므로 A=3, B=−3이고 f(x)=3x²−3x+3이다. 위 그림에서 f(0)=f(1)=3이다. 아래 그림에서 구간 −1≤x≤1의 최솟값은 꼭짓점 x=2분의 1에서의 4분의 9이고, 최댓값은 x=−1에서의 9이다. 정답은 4분의 45이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1169,8 +1178,8 @@ window.questionBank = [
       "서술형",
       "인수분해"
     ],
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "직각삼각형 ABC에서 a=BC=3, b=CA=4, c=AB=5이며 직각은 C",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q21-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC이다. 꼭짓점 C에 직각 표시가 있고, 변 BC에 a=3, 변 CA에 b=4, 변 AB에 c=5가 쓰여 있다.",
     "solutionImageSize": "full",
     "sourceQid": "q21",
     "questionUid": "qid_v1_7c81095e70639770de10d2fb8df925b3e93890f2525e191e481bf4b75ecafb24",
@@ -1224,7 +1233,8 @@ window.questionBank = [
     "subUnitConfidence": "approved_source",
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageCaption": "주어진 식을 묶으면 c(a+b)(a²+b²−c²)=0이고 c>0, a+b>0이므로 a²+b²=c²이다. 따라서 삼각형 ABC는 C에서 직각인 직각삼각형이다. a=3, c=5이면 b²=25−9=16이므로 b=4이고, 넓이는 2분의 ab이다. 정답은 6이다."
   },
   {
     "id": 22,
@@ -1277,6 +1287,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "상"
+    "level": "상",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q22-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 m=0일 때의 파란 포물선 y=x²−5와 주황 직선 y=2x가 만나는 두 점에서 x축으로 내린 점선, x축 위의 점 α, β, 점선 x=1을 보인다. 아래 그림은 h=m²+2m−6의 그래프이고, m<3인 부분이 굵은 주황이며 m=3에서 속이 빈 점과 점선이 있고, 꼭짓점에서 m축으로 내린 점선 위에 m=−1이 쓰여 있다.",
+    "solutionImageCaption": "두 교점의 x좌표 α, β는 x²+(2m−2)x+m²−5=0의 두 근이므로 α+β=2−2m, αβ=m²−5이고 (α−1)(β−1)=αβ−(α+β)+1=m²+2m−6이다. 서로 다른 두 점에서 만나려면 판별식 24−8m>0, 즉 m<3이어야 한다. 위 그림은 예: m=0일 때 포물선 y=x²−5와 직선 y=2x의 교점의 x좌표 α, β와 x=1이고, 아래 그림은 h(m)=(α−1)(β−1)의 그래프로 m<3에서 꼭짓점의 m좌표 m=−1이 이 범위에 속한다. 정답은 −7이다.",
+    "solutionImageSize": "full"
   }
 ];
