@@ -102,7 +102,7 @@ test("history is grouped by saved_paper_id: another paper's issues never mix in"
     assert.match(second, /고1 B반/);
     assert.match(second, /제출 <strong>19<\/strong> \/ 19/);
     assert.doesNotMatch(second, /고2 A반|이전 출제/);
-    assert.match(third, /아직 출제하지 않았습니다/);
+    assert.match(third, /최근 90일 안에 출제한 기록이 없습니다/);
     for (const text of [first, second, third])
       assert.doesNotMatch(text, /학교기출반|단원별반|다른 선생님 문제지반/, "direct issues and other papers are not shown");
     // newest first: the three shown rows are 11/05, 11/04, 11/03
@@ -189,7 +189,7 @@ test("a failed history leaves the list and its buttons working, and 다시 시�
     await host.onclick({ target: { closest: () => ({ dataset: { libraryAction: "history-retry" } }) }, preventDefault() {}, stopPropagation() {} });
     assert.equal(calls.filter((route) => route.startsWith(SUMMARY)).length, 2);
     assert.match(host.slots.get(pid(1)), /출제 1회/);
-    assert.match(host.slots.get(pid(2)), /아직 출제하지 않았습니다/);
+    assert.match(host.slots.get(pid(2)), /최근 90일 안에 출제한 기록이 없습니다/);
     assert.equal(host.hiddenSlots.get(pid(1)), false);
     assert.match(host.note, /최근 90일까지 보입니다/);
     assert.doesNotMatch(host.note, /불러오지 못했습니다/);
@@ -346,7 +346,7 @@ test("refreshHistory re-reads the history of the list that is on screen", async 
     const host = makeHost();
     await library.render(host, "", "ACTIVE");
     await tick();
-    assert.match(host.slots.get(pid(1)), /아직 출제하지 않았습니다/);
+    assert.match(host.slots.get(pid(1)), /최근 90일 안에 출제한 기록이 없습니다/);
     answer = [issue("fresh", pid(1))];
     assert.equal(library.refreshHistory(), true);
     await tick();
