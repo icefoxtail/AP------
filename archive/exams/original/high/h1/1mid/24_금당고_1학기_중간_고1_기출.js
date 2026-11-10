@@ -122,7 +122,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:ORDERED_ROOT_EXPRESSION",
-    "sourceSemanticNote": "R2_MINIMAL_REPAIR_ROOT_ORDER_EXPLICIT: added α<β to remove the source-order ambiguity while preserving the intended answer ③."
+    "sourceSemanticNote": "R2_MINIMAL_REPAIR_ROOT_ORDER_EXPLICIT: added α<β to remove the source-order ambiguity while preserving the intended answer ③.",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 파란 포물선 y=x²+4x+3이 x축과 두 점 (−3, 0), (−1, 0)에서 만난다. 왼쪽 교점에는 α, 오른쪽 교점에는 β가 표시되어 있다.",
+    "solutionImageCaption": "포물선 y=x²+4x+3이 x축과 만나는 두 점의 x좌표가 이차방정식 x²+4x+3=0의 두 근이다. α<β이므로 왼쪽 교점이 α=−3, 오른쪽 교점이 β=−1이다. 따라서 α−β+αβ=−3−(−1)+3=1이다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -163,9 +167,9 @@ window.questionBank = [
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "y=(x-1)^2+4의 그래프: 꼭짓점에서 최솟값 4",
-    "solutionImageCaption": "y=(x-1)^2+4의 그래프: 꼭짓점에서 최솟값 4",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 파란 포물선 y=(x−1)²+4의 일부가 그려져 있다. 꼭짓점이 그래프에서 가장 낮은 점이고, 꼭짓점에서 x축의 1까지 세로 점선이 내려와 있다.",
+    "solutionImageCaption": "(x−1)²은 0 이상이므로 y=(x−1)²+4는 꼭짓점 x=1에서 가장 작다. 그래프는 아래로 볼록하여 꼭짓점이 가장 낮은 점이다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -532,7 +536,11 @@ window.questionBank = [
     "category": "이차함수의 최대최소",
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 위로 볼록한 파란 포물선 y=h(x)가 x축과 두 점 −a−2, 3a+2에서 만난다. 두 근의 한가운데 x=a에서 꼭짓점 P(a)까지 세로 점선이 올라가 있다.",
+    "solutionImageCaption": "예: h(x)=f(x)−g(x)는 최고차항의 계수가 −1이고 두 근이 −a−2, 3a+2이므로 꼭짓점의 x좌표는 두 근의 가운데 a이다. 최댓값 P(a)는 두 근의 간격 4a+4의 절반을 제곱한 4(a+1)²이다. 정답은 P(1)=16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -659,9 +667,9 @@ window.questionBank = [
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "축 x=3에 대칭인 포물선에서 구간 [2,4]의 최솟값은 f(2)=f(4)=4이다.",
-    "solutionImageCaption": "축 x=3에 대칭인 포물선에서 구간 [2,4]의 최솟값은 f(2)=f(4)=4이다.",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 파란 포물선 y=f(x)가 x=3에 대하여 대칭이고 x축과 원점과 x=6에서 만난다. x축의 2, 3, 4에서 세로 점선이 올라가고, 2와 4 사이의 곡선은 주황색으로 굵게 표시되어 있으며 양 끝점 높이가 같다. 3의 점선은 꼭짓점까지 이어진다.",
+    "solutionImageCaption": "예: 그림은 k=1인 경우의 모양이다. f(6)=0이고 x=3이 대칭축이므로 f(x)=k{9−(x−3)²}이다. 길이 2인 구간의 최솟값이 가장 클 때는 구간이 [2,4](주황색)일 때이고 f(2)=f(4)=8k=4이므로 k는 2분의 1이다. 정답은 f(3)=9k=2분의 9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -772,6 +780,10 @@ window.questionBank = [
     "category": "이차함수의 그래프",
     "originalCategory": "이차함수의 그래프",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x), 주황 포물선 g(x), 초록 직선 h(x)가 그려져 있다. 직선 h(x)는 f(x)와 점 α에서, g(x)와 점 β에서 접하고, 두 포물선은 왼쪽 위의 점 p와 두 접점 사이의 점 q에서 만난다. α가 β보다 왼쪽에 있다.",
+    "solutionImageCaption": "h(x)가 접선이므로 f(x)−h(x)=3(x−α)², g(x)−h(x)=(x−β)²이다. 두 포물선의 교점은 3(x−α)²=(x−β)²에서 구하고, β=2α이므로 x를 α로 나눈 값을 t로 두면 2t²−2t−1=0이다. 그림은 α=1, β=2인 예이고 p, q는 두 교점의 x좌표이다. 정답은 √3이다.",
+    "solutionImageSize": "full"
   }
 ];

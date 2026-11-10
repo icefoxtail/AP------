@@ -281,7 +281,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "newVisualInformation": [],
-    "decisiveStep": "(x+1)²−3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정"
+    "decisiveStep": "(x+1)²−3의 꼭짓점과 닫힌구간 끝값으로 최솟값·최댓값 결정",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 −1≤x≤2에서 아래로 볼록한 포물선 y=x²+2x−2의 일부를 그린 그래프이다. 왼쪽 끝이 꼭짓점이고 x축의 −1까지 점선이 이어져 있으며, 오른쪽 끝에는 점이 있고 x축의 2까지 점선이 내려와 있다.",
+    "solutionImageCaption": "y=x²+2x−2=(x+1)²−3이므로 꼭짓점의 x좌표 −1이 구간 −1≤x≤2의 왼쪽 끝이다. 그래프는 꼭짓점에서 가장 낮고 오른쪽 끝 x=2에서 가장 높다. 정답은 최솟값 −3, 최댓값 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -827,7 +831,11 @@ window.questionBank = [
     "newVisualInformation": [],
     "problemVisualReason": "원본 그래프가 문제의 근 위치·교점을 주는 필수 입력",
     "solutionVisualReason": "원본 그림이 풀이의 결정 관계를 이미 충분히 제공하며 같은 그래프 반복은 새 정보를 더하지 않음",
-    "decisiveStep": "f+2g=(x−α)(3x−β−2γ)"
+    "decisiveStep": "f+2g=(x−α)(3x−β−2γ)",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)와 주황 포물선 g(x)가 아래로 볼록하게 그려져 있다. 두 포물선이 x축 위의 점 α에서 만나 교차하고, f(x)는 x축 위의 점 β에서, g(x)는 x축 위의 점 γ에서 다시 x축과 만난다. 세 점은 왼쪽부터 α, β, γ 순서이다.",
+    "solutionImageCaption": "f(x)는 x축과 α, β에서, g(x)는 α, γ에서 만난다. 이차항의 계수가 모두 1이므로 f(x)=(x−α)(x−β), g(x)=(x−α)(x−γ)이고 f(x)+2g(x)=(x−α){3x−(β+2γ)}이다. 그림의 α, β, γ 위치는 예이다. 정답은 α 이외의 근 3분의 (β+2γ)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1183,9 +1191,9 @@ window.questionBank = [
     "solutionVisualDisposition": "EXEMPT",
     "newVisualInformation": [],
     "decisiveStep": "−2x²+(x+2)²=−(x−2)²+8",
-    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "y=x+2를 대입하면 y=-x^2+4x+4이고, 꼭짓점 V(2, 8)에서 최댓값 8을 갖는다.",
-    "solutionImageCaption": "y=x+2를 대입하면 y=-x^2+4x+4이고, 꼭짓점 V(2, 8)에서 최댓값 8을 갖는다.",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선 y=−x²+4x+4가 그려져 있고, 꼭짓점에서 x축까지 점선이 내려가 있다. x축에는 2가 표시되어 있다.",
+    "solutionImageCaption": "y=x+2를 대입하고 완전제곱꼴로 고치면 그래프는 아래로 열리고 꼭짓점의 x좌표가 2이다. 따라서 x=2일 때 가장 높고 최댓값은 꼭짓점의 y좌표이다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1398,7 +1406,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "newVisualInformation": [],
-    "decisiveStep": "D=−3(a−3)²+4에서 a=2,3,4, 합 9"
+    "decisiveStep": "D=−3(a−3)²+4에서 a=2,3,4, 합 9",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a, 세로축 D인 좌표평면에 위로 볼록한 포물선 D=−3(a−3)²+4가 그려져 있다. 꼭짓점의 가로 좌표는 3이고, 가로축의 2, 3, 4에서 점선이 포물선 위의 점까지 올라가 있다. 포물선은 가로축과 2보다 약간 작은 값과 4보다 약간 큰 값에서 만난다.",
+    "solutionImageCaption": "정수근을 가지려면 판별식 D=−3(a−3)²+4가 0 이상이어야 한다. 그래프에서 D≥0인 구간은 가로축과 만나는 두 점 사이이고, 이 구간 안의 정수 a는 2, 3, 4이다. 각 값에서 두 근이 정수인지 확인해 더한다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1472,7 +1484,11 @@ window.questionBank = [
     "newVisualInformation": [],
     "problemVisualReason": "원본 그래프가 문제의 근 위치·교점을 주는 필수 입력",
     "solutionVisualReason": "원본 그림이 풀이의 결정 관계를 이미 충분히 제공하며 같은 그래프 반복은 새 정보를 더하지 않음",
-    "decisiveStep": "중점에서 g−f=3(β−α)²/4=3이므로 CD=2"
+    "decisiveStep": "중점에서 g−f=3(β−α)²/4=3이므로 CD=2",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=f(x)와 주황 직선 y=g(x)가 두 점 A, B에서 만난다. A와 B의 x좌표의 평균(α와 β의 평균)인 위치에서, x축의 점부터 세로 점선이 올라가 포물선 위의 점 P에 이르고, P에서 직선 위의 점 Q까지 굵은 선분 PQ가 이어지며 옆에 3이 쓰여 있다. x축에는 A, B 바로 아래의 점 C, D가 있다.",
+    "solutionImageCaption": "f(x)−g(x)=3(x−α)(x−β)이므로 x가 α와 β의 중점일 때 g(x)−f(x)는 (β−α)²의 4분의 3배이다. 이것이 PQ=3이므로 (β−α)²=4이고, CD=β−α이다. 그림의 위치와 모양은 예이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1666,7 +1682,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "newVisualInformation": [],
-    "decisiveStep": "D=4a(m−3)+m²−4n+4≡0에서 4mn=39"
+    "decisiveStep": "D=4a(m−3)+m²−4n+4≡0에서 4mn=39",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²−2x+3과 주황 직선 l이 오른쪽 위에서 한 점 T에서만 접한다. 포물선의 꼭짓점에서 x축까지 세로 점선이 내려와 있고, 직선 l은 꼭짓점 오른쪽 아래를 지나 접점 T로 올라간다.",
+    "solutionImageCaption": "예: a=1일 때 포물선 y=x²−2x+3이 직선 l과 한 점 T에서 접한다. 모든 a에서 접하려면 판별식 D=4a(m−3)+m²−4n+4가 항상 0이어야 하므로 m=3이고 n은 4분의 13이다. 정답은 39이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1729,9 +1749,9 @@ window.questionBank = [
     "metaFoundationPackId": "H1_FOUNDATION",
     "metaFoundationPackVersion": "1.0.0",
     "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
-    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q24-solution.svg",
-    "solutionImageAlt": "직육면체의 세 모서리 방향과 반대 꼭짓점을 잇는 공간 대각선을 나타낸, 길이 비율을 표시하지 않는 사시도",
-    "solutionImageCaption": "서로 수직인 세 모서리 길이 a,b,c와 공간 대각선 d의 관계 d²=a²+b²+c²",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직육면체 ABCD-EFGH에서 서로 수직인 세 모서리 AB, BC, BF의 길이를 각각 a, b, c로 표시하고, 마주 보는 두 꼭짓점 A와 G를 잇는 공간 대각선 d를 붉은색으로 그린 그림이다. 꼭짓점 B에서 세 모서리가 서로 수직임을 직각 표시로 나타냈다.",
+    "solutionImageCaption": "직육면체의 가로, 세로, 높이 a, b, c는 서로 수직이고, 그림의 길이 비율은 실제 값과 무관하다. 근과 계수의 관계에서 a+b+c=5√2, ab+bc+ca=15이므로 공간 대각선의 제곱은 d²=a²+b²+c²=(a+b+c)²−2(ab+bc+ca)=20이다. 정답은 2√5이다.",
     "solutionImageSize": "full",
     "taxonomyStatus": "CONFIRMED",
     "foundationTaxonomyStatus": "CONFIRMED",
