@@ -1,0 +1,402 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "삼각형 ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ct",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "T"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bp",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "B",
+                "ct"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "ct",
+                "bp"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rA",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "c50",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 50,
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "10",
+              "unit": "cm",
+              "side": "BELOW"
+            }
+          ]
+        },
+        "caption": "조건 ①일 때 ∠A=90°, ∠C=50°",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "조건 ①일 때 ∠A=90°, ∠C=50°",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "rightAngles",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "보기 ①을 가정한 예시다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 DEF"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "E",
+                "F"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "15"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "40"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "et",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "E",
+                "T"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "fp",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "F",
+                "et"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "et",
+                "fp"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "FD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rD",
+            "refs": [
+              "E",
+              "D",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "e40",
+              "refs": [
+                "D",
+                "E",
+                "F"
+              ],
+              "value": 40,
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dEF",
+              "from": "E",
+              "to": "F",
+              "label": "15",
+              "unit": "cm",
+              "side": "BELOW"
+            }
+          ]
+        },
+        "caption": "조건 ①일 때 ∠D=90°, ∠E=40°",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "조건 ①일 때 ∠D=90°, ∠E=40°",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "rightAngles",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "보기 ①을 가정한 예시다."
+        ]
+      }
+    }
+  ],
+  "caption": "보기 ①이면 ∠A=∠D=90°, ∠B=∠E=40°, ∠C=∠F=50°이므로 AA 닮음이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본에서 ∠C=50°, ∠E=40°, BC=10cm, EF=15cm. 보기 ①은 ∠A=∠D=90°이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "보기 ①을 가정한 그림이며 주어진 사실과 가정을 구분한다."
+  ],
+  "sourceQuote": "$\\triangle ABC$와 $\\triangle DEF$가 닮은 도형이 되기 위해"
+}

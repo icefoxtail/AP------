@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ad",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "E",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rF",
+      "refs": [
+        "E",
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dCD",
+        "from": "C",
+        "to": "D",
+        "label": "15",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dFD",
+        "from": "F",
+        "to": "D",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rEBD",
+        "fill": "LIGHT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "polygon": [
+              "E",
+              "B",
+              "F",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "AB:CD=2:3이므로 BF:FD=2:3, FD=12에서 BF=8·BD=20이다. EF=6이므로 [EBD]=60cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB∥EF∥CD, AB=10cm, CD=15cm, FD=12cm이며 그림에서 EF⊥BD.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "F는 E에서 BD에 내린 수선의 발이고 색칠은 구하는 삼각형 EBD다."
+  ],
+  "sourceQuote": "$AB=10\\text{ cm}$, $CD=15\\text{ cm}$, $FD=12\\text{ cm}$"
+}

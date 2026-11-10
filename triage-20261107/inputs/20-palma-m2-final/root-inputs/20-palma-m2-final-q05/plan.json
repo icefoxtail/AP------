@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ef",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "O",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ef",
+          "ad"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ef",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "EO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "E",
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "16",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "dBO",
+        "from": "B",
+        "to": "O",
+        "label": "10",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "caption": "BD=20cm, OD=10cm이고 △EOD∽△BAD이므로 DE:20=10:16, DE=25/2cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직사각형 ABCD에서 AB=12cm, BC=16cm, EF는 BD의 수직이등분선.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "O는 대각선 BD의 중점, E와 F는 수직이등분선과 위·아래 변의 교점이다."
+  ],
+  "sourceQuote": "$EF$가 대각선 $BD$의 수직이등분선일 때"
+}

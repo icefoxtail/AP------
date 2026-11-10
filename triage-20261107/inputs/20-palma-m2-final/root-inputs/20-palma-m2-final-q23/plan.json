@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "18",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dGD",
+        "from": "G",
+        "to": "D",
+        "label": "5",
+        "unit": "cm",
+        "side": "LEFT"
+      }
+    ]
+  },
+  "caption": "GD=5에서 AD=15, BC=30이다. 피타고라스 정리로 AB=24이므로 [ABC]=216cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=90°, AC=18cm, G는 무게중심, GD=5cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "D는 빗변 BC의 중점이다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "sourceQuote": "$AC=18\\text{ cm}$이고 $GD=5\\text{ cm}$"
+}

@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "54"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "GE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    },
+    {
+      "id": "FE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "54",
+        "unit": "cm",
+        "side": "LEFT"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallel",
+        "count": 1,
+        "segments": [
+          "FE",
+          "BD"
+        ]
+      }
+    ]
+  },
+  "caption": "E가 AC의 중점이고 FE∥DC이므로 F는 AD의 중점이다. AF=27, AG=36에서 FG=9cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "G는 ABC의 무게중심, FE∥BC, AD=54cm. 원본 그림에서 B,G,E와 A,F,G,D는 각각 일직선이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 관계를 만족하는 예시이며 E는 AC, F는 AD의 중점이다."
+  ],
+  "sourceQuote": "$AD=54\\text{ cm}$일 때, $FG$의 길이는?"
+}

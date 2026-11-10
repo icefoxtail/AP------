@@ -1,0 +1,249 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "F"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "GF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "CG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "GE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rAEGF",
+        "fill": "MEDIUM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "E",
+              "G",
+              "F"
+            ]
+          }
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "mAB",
+        "count": 1,
+        "segments": [
+          "AE",
+          "EB"
+        ]
+      },
+      {
+        "id": "mAC",
+        "count": 2,
+        "segments": [
+          "FA",
+          "CF"
+        ]
+      }
+    ]
+  },
+  "caption": "E,F는 중점이므로 [AEF]=54/4=27/2, [EGF]=[AEF]/3=9/2이다. [AEGF]=18cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "G는 ABC의 무게중심, [ABC]=54cm², 원본 그림에서 E,F는 AB,AC의 중점.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예시 삼각형의 넓이는 실제로 54cm²이고 보조선 EF로 넓이를 나눈다."
+  ],
+  "sourceQuote": "$\\triangle ABC$의 넓이가 $54\\text{ cm}^2$일 때"
+}

@@ -1,0 +1,346 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "GD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "DH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "HA",
+      "refs": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBE",
+        "from": "B",
+        "to": "E",
+        "label": "4",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "7",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "four",
+        "count": 1,
+        "segments": [
+          "HA",
+          "EB",
+          "FC",
+          "GD"
+        ]
+      }
+    ]
+  },
+  "caption": "바깥 정사각형 넓이 49에서 밑변과 높이가 3,4인 직각삼각형 4개의 넓이 24를 빼면 [EFGH]=25cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 ABCD의 한 변은 7cm, AH=BE=CF=DG=4cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "네 꼭짓점의 직각삼각형은 두 직각변의 길이가 3cm와 4cm다."
+  ],
+  "sourceQuote": "$AH=BE=CF=DG=4\\text{ cm}$",
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "H",
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "E",
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "F",
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "G",
+        "D",
+        "H"
+      ]
+    }
+  ]
+}

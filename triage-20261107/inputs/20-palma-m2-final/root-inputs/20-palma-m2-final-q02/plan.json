@@ -1,0 +1,118 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원뿔 A"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 8,
+            "height": 6,
+            "orientation": "APEX_UP",
+            "axis": true
+          }
+        ],
+        "dims": [
+          {
+            "solid": "cone",
+            "slant": true,
+            "label": "10"
+          },
+          {
+            "solid": "cone",
+            "radius": "bottom",
+            "label": "8"
+          }
+        ],
+        "solidCaption": {
+          "text": "원뿔 A"
+        },
+        "caption": "원뿔 A",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "닮은 두 원뿔의 모선 비 10:15와 밑면 반지름 비 8:12.",
+            "mappedTo": [
+              "solids",
+              "dims",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "작은 원뿔 반지름 8cm는 닮음비로 구한 값이다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "원뿔 B"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 12,
+            "height": 9,
+            "orientation": "APEX_UP",
+            "axis": true
+          }
+        ],
+        "dims": [
+          {
+            "solid": "cone",
+            "slant": true,
+            "label": "15"
+          },
+          {
+            "solid": "cone",
+            "radius": "bottom",
+            "label": "12"
+          }
+        ],
+        "solidCaption": {
+          "text": "원뿔 B"
+        },
+        "caption": "원뿔 B",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "닮은 두 원뿔의 모선 비 10:15와 밑면 반지름 비 8:12.",
+            "mappedTo": [
+              "solids",
+              "dims",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "작은 원뿔 반지름 8cm는 닮음비로 구한 값이다."
+        ]
+      }
+    }
+  ],
+  "caption": "모선의 비가 10:15=2:3이므로 작은 원뿔의 반지름은 12×2/3=8cm, 밑면 둘레는 16πcm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닮은 원뿔 A,B의 모선은 10cm,15cm이고 B의 밑면 반지름은 12cm.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원뿔은 높이와 반지름이 2:3인 한 예시다."
+  ],
+  "sourceQuote": "원뿔 A의 밑면의 둘레의 길이는?"
+}

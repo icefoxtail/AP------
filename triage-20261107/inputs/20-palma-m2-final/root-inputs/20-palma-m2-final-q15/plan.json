@@ -1,0 +1,351 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "12",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "33",
+                      "denominator": "25"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "8",
+                      "denominator": "25"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "55"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "44",
+                      "denominator": "25"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "-6",
+                      "denominator": "25"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "55"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "BN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "NM",
+      "refs": [
+        "N",
+        "M"
+      ]
+    },
+    {
+      "id": "MA",
+      "refs": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "CN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "CM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dCM",
+        "from": "C",
+        "to": "M",
+        "label": "3",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dCN",
+        "from": "C",
+        "to": "N",
+        "label": "4",
+        "side": "BELOW"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "third",
+        "count": 1,
+        "segments": [
+          "BN",
+          "NM",
+          "MA"
+        ]
+      }
+    ]
+  },
+  "caption": "AB를 3등분한 길이를 t라 하면, 직각 조건과 CN=4, CM=3에서 t²=5이다. 따라서 AB²=9t²=45이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직각삼각형 ABC에서 AB의 삼등분점은 N,M, CM=3, CN=4.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "좌표는 주어진 직각·삼등분·두 길이를 정확히 만족하며 좁은 라벨은 지시선으로 분리한다."
+  ],
+  "sourceQuote": "$MC=3$, $NC=4$일 때"
+}

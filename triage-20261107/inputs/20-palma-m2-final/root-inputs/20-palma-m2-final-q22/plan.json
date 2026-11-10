@@ -1,0 +1,261 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "am",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "M"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "G",
+          "am"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G",
+    "M",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "MG",
+      "refs": [
+        "M",
+        "G"
+      ]
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HM",
+      "refs": [
+        "H",
+        "M"
+      ]
+    },
+    {
+      "id": "AG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rG",
+      "refs": [
+        "A",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "G",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBG",
+        "from": "B",
+        "to": "G",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "dGC",
+        "from": "G",
+        "to": "C",
+        "label": "2",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "caption": "BC=10이고 빗변의 중점 M에서 AM=5다. AG²=BG×GC=16, 또 AG²=AH×AM이므로 AH=16/5cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=90°, BM=CM, AG⊥BC, GH⊥AM, BG=8cm, CG=2cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "M은 BC의 중점이고 H는 G에서 AM에 내린 수선의 발이다."
+  ],
+  "sourceQuote": "$BG=8\\text{ cm}$, $CG=2\\text{ cm}$"
+}

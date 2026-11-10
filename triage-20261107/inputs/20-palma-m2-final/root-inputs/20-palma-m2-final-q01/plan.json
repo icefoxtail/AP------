@@ -1,0 +1,262 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "caption": "두 정사각형은 대응각이 모두 90°이고 대응변의 비가 일정하므로 항상 닮는다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "보기 중 두 정사각형은 항상 닮은 도형이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "displayCircles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "크기만 다른 두 도형의 예시다."
+  ],
+  "sourceQuote": "다음 중 항상 닮은 도형인 것은?"
+}

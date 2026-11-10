@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "ac"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "A",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "9",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT",
+        "offset": 2
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dAE",
+        "from": "A",
+        "to": "E",
+        "label": "x",
+        "unit": "cm",
+        "side": "RIGHT",
+        "offset": 2
+      }
+    ]
+  },
+  "caption": "∠ADC=∠AEB=90°, ∠DAC=∠BAE이므로 △ADC∽△AEB이다. 12:9=6:x에서 x=9/2cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 그림에서 AB=9cm, AC=12cm, AD=6cm, AE=x, CD⊥AB, BE⊥AC.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 길이와 직각 조건을 만족하는 예시다."
+  ],
+  "sourceQuote": "$AB\\perp CD$, $AC\\perp BE$라 하자."
+}
