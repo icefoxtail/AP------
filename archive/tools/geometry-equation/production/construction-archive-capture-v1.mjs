@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha,canonicalJson,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {compositePanelBytes} from './composite-candidate-svg-v1.mjs';
-import {parseQuestionUidV2} from '../../pipeline-core/question-uid.mjs';
+import {parseQuestionUidV2,SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath,archiveAssetSha256} from '../record-visual-browser-evidence.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
@@ -60,7 +60,8 @@ function checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProg
   checkIdentity(identity);
   const invalid=(reason,extra)=>{throw new Stop('ARCHIVE_INPUT_INVALID',{reason,...extra});};
   if(!DISPLAY_SIZE_CLASSES.includes(requestedSizeClass))invalid('SIZE_CLASS');
-  if(!Number.isSafeInteger(ordinal)||ordinal<1)invalid('ORDINAL');
+  // ordinal: the question's integer id, or its string id exactly as the bank writes it ("q01", "s01").
+  if(!(Number.isSafeInteger(ordinal)&&ordinal>=1)&&!(typeof ordinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(ordinal)))invalid('ORDINAL');
   if(typeof runId!=='string'||!RUN_ID.test(runId))invalid('RUN_ID');
   if(onProgress!==undefined&&typeof onProgress!=='function')invalid('ON_PROGRESS');
   if(typeof sourcePath!=='string'||!sourcePath.startsWith('archive/exams/')||!sourcePath.endsWith('.js')||requireOriginal&&!sourcePath.startsWith('archive/exams/original/'))invalid('SOURCE_SCOPE');
@@ -224,14 +225,14 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
 
     createRun(input.runRoot,runId);
     // asset: the L1 bytes, written once, read back
-    const assetName=`q${String(ordinal).padStart(2,'0')}-solution.svg`,archiveAssetRef=`assets/images/${input.examUid}/${assetName}`;// phase2.mjs 690-691
+    const assetName=typeof ordinal==='string'?`${ordinal}-solution.svg`:`q${String(ordinal).padStart(2,'0')}-solution.svg`,archiveAssetRef=`assets/images/${input.examUid}/${assetName}`;// phase2.mjs 690-691
     const assetFile=path.join(input.examRoot,archiveAssetRef);
     writeNew(assetFile,Buffer.from(composed.svg,'utf8'));lineage.assetPath=rel(assetFile);
     const written=bytesSha(fs.readFileSync(assetFile));
     if(written!==svgSha256)throw new Stop('ARCHIVE_ASSET_WRITE_MISMATCH',{expected:svgSha256,written});
     // candidate bank: only the three solutionImage* fields of the target question change (phase2.mjs 727-734)
     const patch={solutionImage:archiveAssetRef,solutionImageSize:requestedSizeClass,solutionImageAlt:alt};
-    const candidate=input.raw+'\n;Object.assign(window.questionBank.find(q=>q.id==='+ordinal+'),'+JSON.stringify(patch)+');\n';
+    const candidate=input.raw+'\n;Object.assign(window.questionBank.find(q=>q.id==='+JSON.stringify(ordinal)+'),'+JSON.stringify(patch)+');\n';
     const patched=clone(loadBank(candidate)),original=clone(input.bank);
     if(patched.length!==original.length)throw new Stop('ARCHIVE_PROTECTED_FIELD_MUTATION',{reason:'QUESTION_COUNT'});
     original.forEach((question,index)=>{

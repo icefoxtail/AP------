@@ -268,7 +268,7 @@ def inside_contours(x, y, contours):
 
 
 # --- counts (the opt-in headcount labels of a Venn diagram) ---------------------------------------------------------------------------------
-VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle')
+VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle', 'labelGap')
 SET_KEYS = ('id', 'name', 'count', 'countUnit')
 UNIVERSE_KEYS = ('name', 'count', 'countUnit')
 COUNT_PATTERN = re.compile(r'^(0|[1-9][0-9]{0,3})$')
@@ -382,6 +382,9 @@ def audit_venn(plan, doc):
         if first and second and math.hypot(first['cx'] - second['cx'], first['cy'] - second['cy']) < first['rx'] + second['rx'] + 2:
             doc.err('SD_DISJOINT_GEOMETRY:%s:%s' % (pair[0], pair[1]))
     style, counts, uni = count_plan(plan)
+    label_gap = plan.get('labelGap')
+    if label_gap is not None and (isinstance(label_gap, bool) or not isinstance(label_gap, int) or not 2 <= label_gap <= 12):
+        fail('SD_LABEL_GAP_INVALID')
     if style == 'n' and uni['count'] is None and not any(counts.values()):
         fail('SD_COUNT_INVALID')
     # universal-set label (with its headcount when the plan gives one)
@@ -447,6 +450,11 @@ def audit_venn(plan, doc):
         if not counted:
             if boundary_distance(centre, ellipse) > 60:
                 doc.err('SD_SET_LABEL_NOT_NEXT_TO_SET:' + set_id)
+            if label_gap is not None:
+                # labelGap: the name stands clear of every circle's line by the gap (1 px of rounding slack), and clear of its own circle altogether
+                grown = (box[0] - (label_gap - 1), box[1] - (label_gap - 1), box[2] + 2 * (label_gap - 1), box[3] + 2 * (label_gap - 1))
+                if any(box_relation(grown, other)[0] == 'CROSSES' for other in ordered) or box_relation(grown, ellipse)[0] != 'OUTSIDE':
+                    doc.err('SD_SET_LABEL_TOUCHES_CIRCLE:' + set_id)
             continue
         # a counted set: every label of its group stands wholly outside the circles, and the group belongs to its own circle
         for part in group:
