@@ -88,7 +88,8 @@ test('home shows the chips as school searches and grade buttons as links to the 
   assert.match(markup, /학교, 학년, 시험을 띄어 쓰면 모두 맞는 시험지만 나옵니다\./);
   for (const [label, id] of [['중1', 'm1'], ['중2', 'm2'], ['중3', 'm3'], ['고1', 'h1'], ['고2', 'h2'], ['고3', 'h3']])
     assert.match(markup, new RegExp(`href="unit-past-exams\\.html\\?ready=1&amp;grade=${id}">${label}</a>`));
-  assert.doesNotMatch(markup, /다시 열기|유사문제/, 'sections that need later stages are not shown');
+  assert.match(markup, /유사문제가 있는 기출은 옆에 함께 나옵니다./);
+  assert.doesNotMatch(markup, /다시 열기/, 'sections that need later stages are not shown');
 });
 
 test('recent opens are kept newest first, deduplicated and capped at 8', () => {
@@ -129,7 +130,7 @@ test('recently opened exams come first with the existing exam actions; missing f
   const markup = home.renderHome();
   assert.match(markup, /최근 연 기출/);
   assert.doesNotMatch(markup, /gone\.js/);
-  assert.match(markup, /home-exam grade-m2/);
+  assert.match(markup, /exam-row grade-m2/);
   for (const mode of ['exam', 'sol', 'ans'])
     assert.match(markup, new RegExp(`data-action="source-output-direct"[^>]*data-exam="1" data-mode="${mode}"`));
   assert.match(markup, /data-action="source-issue"[^>]*data-exam="1"/);
@@ -143,7 +144,7 @@ test('home rows drop year and grade from the title (the spine shows them) and ke
     exam('b.js', '', { school: '' }),
   ], records: [], taxonomy: [] };
   const markup = home.renderHome();
-  assert.match(markup, /class="home-exam-title" title="2025 가나고 고1" aria-label="2025 가나고 고1 시험지 열기"[^>]*>가나고 1학기 중간고사</);
+  assert.match(markup, /class="exam-row-title" title="2025 가나고 고1" aria-label="2025 가나고 고1 시험지 열기"[^>]*>가나고 1학기 중간고사</);
   assert.doesNotMatch(markup, />2025 가나고 고1 1학기/, 'no year/grade in the visible title');
   assert.match(markup, /<span class="home-quick-num">\d+<\/span>문항|<span class="home-quick-open">열기<\/span>/);
 });

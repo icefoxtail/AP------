@@ -284,6 +284,22 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-assignment-pdf-retry.test.cjs']
   },
   {
+    label: 'tests/archive2-home.test.cjs',
+    args: ['--test', 'tests/archive2-home.test.cjs']
+  },
+  {
+    label: 'tests/archive2-navigation.test.cjs',
+    args: ['--test', 'tests/archive2-navigation.test.cjs']
+  },
+  {
+    label: 'tests/archive2-similar.test.cjs',
+    args: ['--test', 'tests/archive2-similar.test.cjs']
+  },
+  {
+    label: 'tests/archive2-find-similar.test.cjs',
+    args: ['--test', 'tests/archive2-find-similar.test.cjs']
+  },
+  {
     label: 'tests/archive2-worker-runtime.mjs (workerd + D1)',
     args: ['tests/archive2-worker-runtime.mjs']
   },

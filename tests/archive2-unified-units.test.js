@@ -65,7 +65,7 @@ function harness(data) {
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderHealth, unifiedHealth, unifiedIndex, planRows, request, pool,
       draft, applyDraft, generate, review, applySourceRoute, filterMarkup, reconcileUnifiedFilters, compactSaveFilters,
       selectedScopeOptions, workspaceMatches, workspaceEligibility, applySavedPaperRevision,
-      findExams, reconcileFinderFilters, finderPrimaryFilterMarkup, finderDetailFilterMarkup, renderComposition};
+      findExams, reconcileFinderFilters, finderMoreFiltersMarkup, renderComposition};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -605,13 +605,13 @@ test('finder subject filter uses the units an exam covers (2015 수학(상) with
 test('finder filter markup and URL reconcile use unified subjects without 과목 계열', async () => {
   const data = await catalog();
   const { w } = harness(data);
-  const field = filters => w.finderPrimaryFilterMarkup(filters);
+  const field = filters => w.finderMoreFiltersMarkup(filters);
   const optionLabels = html => [...(html.match(/data-filter="semanticSubject"[^>]*>([\s\S]*?)<\/select>/)?.[1] || '').matchAll(/<option[^>]*>([^<]*)</g)].map(match => match[1]);
   assert.deepEqual(optionLabels(field({})), ['전체 과목', '공통수학1', '공통수학2', '대수', '미적분Ⅰ', '확률과 통계', '미적분Ⅱ', '기하']);
   assert.deepEqual(optionLabels(field({ grade: '고1' })), ['전체 과목', '공통수학1', '공통수학2']);
   assert.deepEqual(optionLabels(field({ grade: '고2' })), ['전체 과목', '대수', '미적분Ⅰ', '확률과 통계', '미적분Ⅱ', '기하']);
   assert.ok(!/semanticSubject/.test(field({ grade: '중2' })));
-  assert.ok(!/과목 계열|finder-family|data-filter="family"/.test(w.finderDetailFilterMarkup({}) + field({})));
+  assert.ok(!/과목 계열|finder-family|data-filter="family"/.test(field({})));
   assert.ok(!/수학\(상\)|수학\(하\)/.test(field({ grade: '고1' })));
   // legacy URLs: family and unified subject values survive; foreign values are dropped
   assert.deepEqual(plain(w.reconcileFinderFilters({ family: 'COMMON_2' })).semanticSubject, 'COMMON_MATH_2');

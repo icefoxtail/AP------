@@ -594,7 +594,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q17-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(0,1), A(3,9), B(7,5)가 있고 선분 AB와 삼각형 PAB가 옅게 칠해져 있다. 점 P를 지나는 두 경계 직선 PA(y=8/3x+1, 기울기 8/3)와 PB(y=4/7x+1, 기울기 4/7)가 선분 밖까지 연장되어 있다. 직선 y=ax+1이 선분 AB와 만나려면 4/7≤a≤8/3이고, 정수 a는 1, 2의 2개이다. 정답은 ②이다.",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(0,1), A(3,9), B(7,5)가 있고 선분 AB와 삼각형 PAB가 옅게 칠해져 있다. 점 P를 지나는 두 경계 직선 PA(y=8/3x+1, 기울기 8/3)와 PB(y=4/7x+1, 기울기 4/7)가 선분 밖까지 연장되어 있다. 직선 y=ax+1이 선분 AB와 만나려면 4/7≤a≤8/3이어야 한다.",
     "solutionImageCaption": "직선 y=ax+1은 a의 값에 관계없이 점 P(0,1)을 지난다. 선분 AB와 만나려면 PA의 기울기 8/3과 PB의 기울기 4/7 사이여야 하므로 4/7≤a≤8/3이고, 정수 a는 1, 2의 2개이다. 정답 ②",
     "solutionImageSize": "medium"
   },
