@@ -221,41 +221,84 @@ window.APL_LESSONS['g7-circle-sector'] = {
      t(f1_ss2_t) 구간: 0~0.12 처음 모양(「전체 (부채꼴) 9π」 캡션) · 0.12~0.30 파낼 반원(주황) 표시 · 0.38~0.74 반원을 옆으로 꺼냄(0.6 부터 「파낸 부분 (반원) 9π/2」 캡션) · 0.80~0.96 결과(캡션·칩).
      색칠한 부분의 넓이(정답)는 파낸 반원의 넓이와 같아서(9π/2) 정답을 식 전체로 둡니다(answer: 9π − 9π/2 = 9π/2). 결과 캡션·칩은 해설이 f1_ss2_show 를 켤 때까지 아낍니다(f01.js lessonHold).
      장면은 넓이(mode 0)와 둘레(mode 1)를 함께 묻지만, 둘레는 정리 탭 단계(step)로만 경계가 한 줄씩 나오고 움직임(to)이 없어 첫 장의 「첫 1초 안에 움직임」을 정직하게 채울 수 없어 이번에는 넓이만 합니다(survey.md). */
-  'f1-ss2': {
-    title: '부채꼴 − 반원의 넓이',
-    answer: '$9\\pi-\\frac{9\\pi}{2}=\\frac{9\\pi}{2}$',
-    answerText: '$9\\pi-\\frac{9\\pi}{2}=\\frac{9\\pi}{2}$ cm²',
-    summary: '색칠한 부분 = 부채꼴 − 반원',
-    task: '한 변 a를 바꿔도 색칠한 부분이 (부채꼴 − 반원)으로 구해지는지 확인해 보세요',
-    chapters: [
-      {
-        length: 9,
-        title: '파낼 반원 찾기',
-        start: { f1_ss2_a: 6, f1_ss2_t: 0 },
-        cues: [
-          { at: 0, say: '부채꼴에서 **반원**(주황)을 파냈어요.', set: { f1_ss2_mode: 0, f1_ss2_show: false }, to: { f1_ss2_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '반원의 지름은 부채꼴의 한 변, 6 cm예요.' }
-        ]
-      },
-      {
-        length: 10,
-        title: '두 넓이 구하기',
-        cues: [
-          { at: 0, say: '부채꼴의 넓이 $=\\pi\\times6^2\\times\\frac{90}{360}=9\\pi$', to: { f1_ss2_t: 0.74 }, dur: 4.5, ease: 'smooth' },
-          { at: 5, say: '반원(반지름 3)의 넓이 $=\\pi\\times3^2\\times\\frac12=\\frac{9\\pi}{2}$' }
-        ]
-      },
-      {
-        length: 12,
-        title: '빼서 구하기',
-        cues: [
-          { at: 0, say: '색칠한 부분 = 부채꼴 − 반원', to: { f1_ss2_t: 0.96 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '부채꼴 $9\\pi$에서 반원 $\\frac{9\\pi}{2}$를 빼요.' },
-          { at: 8.5, say: '$9\\pi-\\frac{9\\pi}{2}=\\frac{9\\pi}{2}$ cm²', set: { f1_ss2_show: true } }
-        ]
-      }
-    ]
-  },
+  'f1-ss2': [
+    {
+      title: '부채꼴 − 반원의 넓이',
+      label: '넓이',
+      answer: '$9\\pi-\\frac{9\\pi}{2}=\\frac{9\\pi}{2}$',
+      answerText: '$9\\pi-\\frac{9\\pi}{2}=\\frac{9\\pi}{2}$ cm²',
+      summary: '색칠한 부분 = 부채꼴 − 반원',
+      task: '한 변 a를 바꿔도 색칠한 부분이 (부채꼴 − 반원)으로 구해지는지 확인해 보세요',
+      chapters: [
+        {
+          length: 9,
+          title: '파낼 반원 찾기',
+          start: { f1_ss2_a: 6, f1_ss2_t: 0 },
+          cues: [
+            { at: 0, say: '부채꼴에서 **반원**(주황)을 파냈어요.', set: { f1_ss2_mode: 0, f1_ss2_show: false }, to: { f1_ss2_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+            { at: 4.5, say: '반원의 지름은 부채꼴의 한 변, 6 cm예요.' }
+          ]
+        },
+        {
+          length: 10,
+          title: '두 넓이 구하기',
+          cues: [
+            { at: 0, say: '부채꼴의 넓이 $=\\pi\\times6^2\\times\\frac{90}{360}=9\\pi$', to: { f1_ss2_t: 0.74 }, dur: 4.5, ease: 'smooth' },
+            { at: 5, say: '반원(반지름 3)의 넓이 $=\\pi\\times3^2\\times\\frac12=\\frac{9\\pi}{2}$' }
+          ]
+        },
+        {
+          length: 12,
+          title: '빼서 구하기',
+          cues: [
+            { at: 0, say: '색칠한 부분 = 부채꼴 − 반원', to: { f1_ss2_t: 0.96 }, dur: 4, ease: 'smooth' },
+            { at: 4.5, say: '부채꼴 $9\\pi$에서 반원 $\\frac{9\\pi}{2}$를 빼요.' },
+            { at: 8.5, say: '$9\\pi-\\frac{9\\pi}{2}=\\frac{9\\pi}{2}$ cm²', set: { f1_ss2_show: true } }
+          ]
+        }
+      ]
+    },
+    /* ---------- 부채꼴에서 반원 파내기 · 둘레 (f01.js f1-ss2, 정리 탭, mode 1) · 3장 30초 · kit 규칙 필요(첫 장이 step 으로 시작) ----------
+       a=6. 둘레 = 반원의 호 2π·3·½ = 3π + 부채꼴의 호 2π·6·90/360 = 3π + 한 변 6 = 6π+6 (cm) (장면 stepsP). 정리 탭 step n 에서 n 번째 경계가 그려지고 라벨이 나옵니다(step 4 에서 합계).
+       움직이는 값(to)이 없는 장면이라 첫 장은 step 칸(at:0)으로 시작합니다. */
+    {
+      title: '부채꼴−반원의 둘레',
+      label: '둘레',
+      tab: 'review',
+      answer: '$6\\pi+6$',
+      answerText: '$6\\pi+6$ cm',
+      summary: '둘레 = 반원의 호 + 부채꼴의 호 + 한 변',
+      task: '한 변 a를 바꿔도 같은 세 부분의 합으로 둘레가 구해지는지 확인해 보세요',
+      chapters: [
+        {
+          length: 9,
+          title: '반원의 호',
+          start: { f1_ss2_a: 6 },
+          cues: [
+            { at: 0, say: '둘레를 이루는 선을 하나씩 따라가 봐요.', set: { f1_ss2_mode: 1, f1_ss2_show: false }, step: 1 },
+            { at: 4.5, say: '반원의 호는 $2\\pi\\times3\\times\\frac12=3\\pi$.' }
+          ]
+        },
+        {
+          length: 10,
+          title: '부채꼴의 호',
+          cues: [
+            { at: 0, say: '다음은 부채꼴의 호예요.', step: 2 },
+            { at: 5, say: '직각이니 원의 $\\frac14$, $2\\pi\\times6\\times\\frac14=3\\pi$.' }
+          ]
+        },
+        {
+          length: 11,
+          title: '한 변을 더하면',
+          cues: [
+            { at: 0, say: '정사각형의 한 변도 둘레예요.', step: 3 },
+            { at: 4, say: '둘레 = 호 + 호 + 한 변' },
+            { at: 7.5, say: '$3\\pi+3\\pi+6=6\\pi+6$ cm', step: 4 }
+          ]
+        }
+      ]
+    }
+  ],
 
   /* ---------- 정사각형 안의 잎 모양 · 둘레 (f03.js f3-leaf-len, 탐구 탭) · 3장 31초 ----------
      a=6(한 변 = 두 호의 반지름, 장면 기본값). 호 하나 2π·6·90/360 = 3π, 둘 3π+3π = 6π (= 반지름 6 원 둘레의 절반 = 반원의 호). 장면 steps 4단계.
@@ -551,41 +594,83 @@ window.APL_LESSONS['g7-circle-sector'] = {
      a=10(정사각형의 한 변), 사분원 반지름 r=a/2=5. 정사각형 10×10 = 100, 파낸 사분원 4개 = 원 1개 π·5² = 25π, 색칠한 부분 = 100 − 25π (장면 steps ① 정사각형 ② 사분원 4개 = 원 1개 ③ 파낸 부분 25π ④ 정사각형 − 원).
      t(f1_star_t) 구간: 0~0.12 처음(「전체 (정사각형) 100 cm²」·「r=5」) · 0.12~0.30 파낼 사분원 표시 · 0.38~0.74 옆으로 꺼냄(「사분원 4개 = 원 1개」, 0.6 부터 「파낸 부분 (원 1개) 25π cm²」) · 0.80~0.96 결과(캡션·칩은 f1_star_show 를 켤 때까지 아낌, f01.js lessonHold).
      장면은 넓이(mode 0)와 둘레(mode 1)를 묻지만 둘레는 정리 탭 step 으로만 경계가 나와 움직임이 없어 넓이만 합니다(f1-ss2 와 같은 이유). */
-  'f1-star': {
-    title: '정사각형 − 사분원 4개',
-    answer: '$100-25\\pi$',
-    answerText: '$100-25\\pi$ cm²',
-    summary: '색칠한 부분 = 정사각형 − 원 1개',
-    task: '한 변 a를 바꿔도 색칠한 부분이 (정사각형 − 원 1개)로 구해지는지 확인해 보세요',
-    chapters: [
-      {
-        length: 9,
-        title: '사분원 4개를 파냈어요',
-        start: { f1_star_a: 10, f1_star_t: 0 },
-        cues: [
-          { at: 0, say: '정사각형의 네 모서리에서 **사분원**을 파냈어요.', set: { f1_star_mode: 0, f1_star_show: false }, to: { f1_star_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '한 변은 10 cm, 사분원의 반지름은 5 cm예요.' }
-        ]
-      },
-      {
-        length: 10,
-        title: '모으면 원 하나',
-        cues: [
-          { at: 0, say: '파낸 사분원 4개를 모아 보면?', to: { f1_star_t: 0.74 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '반지름 5 cm인 원 1개, 넓이 $\\pi\\times5^2=25\\pi$.' }
-        ]
-      },
-      {
-        length: 12,
-        title: '빼서 구하기',
-        cues: [
-          { at: 0, say: '색칠한 부분 = 정사각형 − 원 1개', to: { f1_star_t: 0.96 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '정사각형 $10\\times10=100$, 원 $25\\pi$.' },
-          { at: 8.5, say: '$100-25\\pi$ cm²', set: { f1_star_show: true } }
-        ]
-      }
-    ]
-  },
+  'f1-star': [
+    {
+      title: '정사각형 − 사분원 4개',
+      label: '넓이',
+      answer: '$100-25\\pi$',
+      answerText: '$100-25\\pi$ cm²',
+      summary: '색칠한 부분 = 정사각형 − 원 1개',
+      task: '한 변 a를 바꿔도 색칠한 부분이 (정사각형 − 원 1개)로 구해지는지 확인해 보세요',
+      chapters: [
+        {
+          length: 9,
+          title: '사분원 4개를 파냈어요',
+          start: { f1_star_a: 10, f1_star_t: 0 },
+          cues: [
+            { at: 0, say: '정사각형의 네 모서리에서 **사분원**을 파냈어요.', set: { f1_star_mode: 0, f1_star_show: false }, to: { f1_star_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+            { at: 4.5, say: '한 변은 10 cm, 사분원의 반지름은 5 cm예요.' }
+          ]
+        },
+        {
+          length: 10,
+          title: '모으면 원 하나',
+          cues: [
+            { at: 0, say: '파낸 사분원 4개를 모아 보면?', to: { f1_star_t: 0.74 }, dur: 5, ease: 'smooth' },
+            { at: 5.5, say: '반지름 5 cm인 원 1개, 넓이 $\\pi\\times5^2=25\\pi$.' }
+          ]
+        },
+        {
+          length: 12,
+          title: '빼서 구하기',
+          cues: [
+            { at: 0, say: '색칠한 부분 = 정사각형 − 원 1개', to: { f1_star_t: 0.96 }, dur: 4, ease: 'smooth' },
+            { at: 4.5, say: '정사각형 $10\\times10=100$, 원 $25\\pi$.' },
+            { at: 8.5, say: '$100-25\\pi$ cm²', set: { f1_star_show: true } }
+          ]
+        }
+      ]
+    },
+    /* ---------- 정사각형에서 사분원 4개 파내기 · 둘레 (f01.js f1-star, 정리 탭, mode 1) · 3장 29초 · kit 규칙 필요(첫 장이 step 으로 시작) ----------
+       a=10, r=5. 둘레 = 사분원의 호 4개, 호 하나 2π·5·90/360 = 5π/2, 합 4×5π/2 = 10π (= 원 하나의 둘레 2π·5) (장면 stepsP). step 1 에서 호 4개, step 2 에서 호 길이 라벨, step 3 에서 합계. */
+    {
+      title: '별 모양의 둘레',
+      label: '둘레',
+      tab: 'review',
+      answer: '$10\\pi$',
+      answerText: '$10\\pi$ cm',
+      summary: '둘레 = 사분원의 호 4개 = 원 1개의 둘레',
+      task: '한 변 a를 바꿔도 둘레가 원 하나의 둘레와 같은지 확인해 보세요',
+      chapters: [
+        {
+          length: 9,
+          title: '둘레는 호 4개',
+          start: { f1_star_a: 10 },
+          cues: [
+            { at: 0, say: '색칠한 별 모양의 둘레는 사분원의 호 4개예요.', set: { f1_star_mode: 1, f1_star_show: false }, step: 1 },
+            { at: 4.5, say: '호 하나는 원의 둘레의 $\\frac14$이에요.' }
+          ]
+        },
+        {
+          length: 10,
+          title: '호 하나의 길이',
+          cues: [
+            { at: 0, say: '한 변이 10 cm이니 호의 반지름은 5.', step: 2 },
+            { at: 5, say: '호 하나 $=2\\pi\\times5\\times\\frac14=\\frac{5\\pi}{2}$' }
+          ]
+        },
+        {
+          length: 10,
+          title: '네 호를 더하면',
+          cues: [
+            { at: 0, say: '네 호의 길이는 모두 같아요.' },
+            { at: 3.5, say: '둘레 = 호 하나 × 4' },
+            { at: 7, say: '$4\\times\\frac{5\\pi}{2}=10\\pi$ cm', step: 3 }
+          ]
+        }
+      ]
+    }
+  ],
 
   /* ---------- 파인 반원 · 붙은 반원 → 직사각형 (f04.js f4-slide, 탐구 탭) · 3장 31초 ----------
      W=10(가로), 반원의 반지름 r=3 → 세로 2r=6 (장면 기본값). 파인 반원과 붙은 반원은 같아서 붙은 반원을 왼쪽으로 W 만큼 밀면 직사각형 10×6 = 60 (cm²) (장면 steps).

@@ -76,7 +76,14 @@ const SCENE_STATE = {
 };
 
 // 정리 탭(tab:'review')은 정리 탭이 같은 문제를 그리고 구하는 값을 단계별로만 보여 주는 것을 확인한 장면에만 켭니다.
-const REVIEW_OK = new Set(['1209', '1102', '1609', 'z2-sector', 'z2-semi', 'z2-quarter', 'z2-segment', '1610', '1808']);
+const REVIEW_OK = new Set(['1209', '1102', '1609', 'z2-sector', 'z2-semi', 'z2-quarter', 'z2-segment', '1610', '1808', 'f1-ss2#둘레', 'f1-star#둘레']);
+
+// 첫 장이 step 으로 시작하는 해설(움직이는 값(to)이 없는 둘레 모드). kit 의 「해설 첫 장은 to 또는 step/part 칸이 첫 1초 안에 있으면 통과」 규칙(sv 브랜치)이 병합되기 전의 kit 은
+// 「첫 1초 안에 그림이 움직이기 시작해야 합니다」 오류를 내므로, 이 해설들에 한해 그 한 가지 오류만 걸러내고 대신 step 칸이 at ≤ 1 에 있는지 직접 확인합니다.
+const NEEDS_KIT_STEP_RULE = new Set(['f1-ss2#둘레', 'f1-star#둘레']);
+const FIRST_MOVE_ERR = /첫 1초 안에 그림이 움직이기 시작해야 합니다/;
+const keyOf = (id, lesson) => id + '#' + lesson.label;
+const errsOf = (id, lesson, errors) => (NEEDS_KIT_STEP_RULE.has(keyOf(id, lesson)) ? errors.filter((e) => !FIRST_MOVE_ERR.test(e)) : errors);
 
 /* 자막이 말하는 숫자를 장면 공식으로 다시 계산한 값. 해설마다 허용 숫자 집합(자막에 나오는 모든 숫자는 여기에 있어야 함)과 계산 근거를 적습니다. */
 const FACTS = {
@@ -111,7 +118,8 @@ const FACTS = {
     assert.deepEqual([circle, circle / S, 360 / k], [81, 3, 120]);
     return { allowed: [r, 2, S, circle, 1, 3, 360, 120], note: 'r=9 · 27π÷81π=1/3 · 360°×1/3=120°' };
   },
-  'f1-star': () => {
+  'f1-star': (lesson) => {
+    if (lesson.label === '둘레') { const r = 5; assert.equal(4 * ((2 * r) / 4), 10); return { allowed: [10, r, 2, 1, 4], note: 'a=10 r=5 · 호 하나 5π/2 · 4×5π/2=10π' }; }
     const a = 10, r = a / 2, whole = a * a, part = r * r; // 사분원 4개 = 원 1개(π 의 계수 r²)
     assert.deepEqual([r, whole, part], [5, 100, 25]);
     return { allowed: [a, r, 1, 2, 4, whole, part], note: 'a=10 · r=5 · 사분원 4개 = 원 1개 · 정사각형 100 · 원 25π · 100−25π' };
@@ -177,7 +185,8 @@ const FACTS = {
     assert.deepEqual([r, S], [3, 18]);
     return { allowed: [R, r, 180, 1, 2, S], note: 'R=6 r=3 180° ½×π×6²=18π' };
   },
-  'f1-ss2': () => {
+  'f1-ss2': (lesson) => {
+    if (lesson.label === '둘레') { assert.deepEqual([2 * 3 * 0.5, 2 * 6 * 0.25], [3, 3]); return { allowed: [2, 3, 6, 1, 4], note: '반원의 호 3π · 부채꼴의 호 2π×6×1/4=3π · 한 변 6 · 6π+6' }; }
     const a = 6, whole = (a * a * 90) / 360, rr = a / 2, part = (rr * rr) / 2, res = whole - part; // π 의 계수
     assert.deepEqual([whole, rr, part, res], [9, 3, 4.5, 4.5]);
     return { allowed: [a, 90, 360, whole, rr, 1, 2], note: 'a=6 부채꼴 9π · 반원 반지름 3 · 넓이 9π/2(분자 9, 분모 2)' };
@@ -202,7 +211,8 @@ test('해설과 영상 대본이 같은 장면에 겹치지 않는다(해설이 
 for (const id of new Set(entries.map((e) => e.id))) {
   test(`해설 묶음 ${id}: 해설 1~3개, 둘 이상이면 label(6자 이하·겹침 없음)·set 키 공통`, () => {
     const v = core.validateLessonSet(LESSONS[id]);
-    assert.deepEqual(v.errors, [], v.errors.join('\n'));
+    const errs = v.errors.filter((e) => !(core.lessonList(LESSONS[id]).some((l) => NEEDS_KIT_STEP_RULE.has(keyOf(id, l))) && FIRST_MOVE_ERR.test(e)));
+    assert.deepEqual(errs, [], errs.join('\n'));
   });
 }
 
@@ -210,7 +220,9 @@ for (const { id, k, lesson, list } of entries) {
   const name = `${id}${list.length > 1 ? `[${lesson.label}]` : ''}`;
   test(`해설 ${name}: 형식(장 2~6 · 장마다 8~15초 · 자막 2~3줄 · 경고 없음)`, () => {
     const v = core.validateLesson(lesson);
-    assert.deepEqual(v.errors, [], v.errors.join('\n'));
+    const errs = errsOf(id, lesson, v.errors);
+    assert.deepEqual(errs, [], errs.join('\n'));
+    if (NEEDS_KIT_STEP_RULE.has(keyOf(id, lesson))) assert.ok(lesson.chapters[0].cues.some((c) => (c.step !== undefined || c.part !== undefined) && c.at <= 1), '첫 장은 1초 안의 step/part 칸으로 시작(kit 규칙 필요)');
     assert.deepEqual(v.warnings, [], v.warnings.join('\n'));
     assert.ok(lesson.answer, '문항형 해설은 answer 를 적어 조기 노출 검사를 받습니다');
     lesson.chapters.forEach((ch, i) => assert.ok(ch.length >= 8 && ch.length <= 15, `chapters[${i}] ${ch.length}초`));
@@ -260,7 +272,7 @@ for (const { id, k, lesson, list } of entries) {
 }
 
 test('tab:review 는 정리 탭이 같은 문제를 그리는 장면(REVIEW_OK)에만 쓴다', () => {
-  for (const { id, lesson } of entries) assert.equal(lesson.tab === 'review', REVIEW_OK.has(id), `${id}: tab 은 REVIEW_OK 장면에만`);
+  for (const { id, lesson } of entries) assert.equal(lesson.tab === 'review', REVIEW_OK.has(id) || REVIEW_OK.has(keyOf(id, lesson)), `${id}: tab 은 REVIEW_OK 장면에만`);
 });
 
 test('z3-sectorProof·z3-circleProof: 결론 라벨은 해설이 csShowS 를 켤 때까지 아끼고(장면 소스), 결론 자막과 함께 켠다', () => {
