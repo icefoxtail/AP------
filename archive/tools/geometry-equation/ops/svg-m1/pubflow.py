@@ -3,7 +3,7 @@
 # Relative paths resolve against manifest directory. Local apply, verify, gates and ledger only.
 import glob, json, math, os, re, sys
 from pathlib import Path
-from portable_root import repo_root, run, validate_triage, require_hash, is_question_key, solution_name
+from portable_root import repo_root, run, validate_triage, require_hash, valid_ord, asset_name
 ROOT=repo_root(); S=Path(__file__).resolve().parent; R=S/'runs'
 def read(p): return json.loads(Path(p).read_text(encoding='utf-8-sig'))
 def write(p, data): Path(p).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
@@ -38,7 +38,7 @@ def main():
             if not e.get(key): raise ValueError(f'{name}: missing {key}')
         triage,_=validate_triage(ROOT,src,read(file_path(e['triage'])))
         ties=e.get('allowTieOrdinals',[])
-        if not isinstance(ties,list) or any(not is_question_key(o) for o in ties): raise ValueError('invalid allowTieOrdinals')
+        if not isinstance(ties,list) or any(not valid_ord(o) for o in ties): raise ValueError('invalid allowTieOrdinals')
         ties_file=R/f'allow-ties-{name}.json'; write(ties_file,ties)
         dest=R/f'publish-rows-{name}.json'
         if dest.exists(): dest.unlink()
@@ -66,7 +66,7 @@ def main():
         require_hash(r['reviewPublish'],r['publishSha256'])
     publish(True)
     for r in batch:
-        asset=r.get('asset') or solution_name(r['ord'])
+        asset=r.get('asset') or asset_name(r['ord'])
         require_hash(ROOT/'archive/assets/images'/Path(r['src']).stem/asset,r['sha256'])
     verification=R/'verify-batch.json'
     if verification.exists(): verification.unlink()
@@ -96,7 +96,7 @@ def main():
     for e in entries:
         name=e['exam']; triage_path=file_path(e['triage']); tri=read(triage_path)
         if not isinstance(tri,list) or not tri: raise ValueError(f'{name}: empty triage')
-        published={str(r['ord']):f"assets/images/{name}/{r.get('asset') or solution_name(r['ord'])}" for r in batch if Path(r['src']).stem==name}
+        published={str(r['ord']):f"assets/images/{name}/{r.get('asset') or asset_name(r['ord'])}" for r in batch if Path(r['src']).stem==name}
         reviewers=sorted({x['reviewer'] for x in read(file_path(e['review']))})
         spec={'exam':name,'src':sources[name],'camp':e['camp'],'closedBy':e.get('closedBy'), 'triage':str(triage_path),'published':published,'open':{str(x['ord']):['OPEN_LAYOUT','plan 대기'] for x in tri if x['decision'] in ('FIGURE','REPLACE') and str(x['ord']) not in published},'note':f"{len(published)}개 게시; 독립 검수: {', '.join(reviewers)}; 해설 페이지와 실제 표시 글자 크기 검증; 공통 CREATE 게이트 회귀 {passes[-1]}개 통과."}
         if e.get('exempt_override'): spec['exempt_override']=e['exempt_override']

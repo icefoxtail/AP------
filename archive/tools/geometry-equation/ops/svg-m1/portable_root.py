@@ -30,18 +30,20 @@ def run(argv, *, cwd, timeout=120, env=None):
     env['PYTHONUTF8'] = '1'
     return subprocess.run([str(x) for x in argv], cwd=cwd, env=env, capture_output=True, text=True, encoding='utf-8', errors='strict', timeout=timeout, check=True)
 
-import re
-QUESTION_KEY = re.compile(r'^[A-Za-z][A-Za-z0-9_-]{0,31}$')
-def is_question_key(o):
-    """A bank question id: a positive integer, or a string id such as 'q01' / 's01' (banks whose ids are strings)."""
-    return (type(o) is int and o >= 1) or (isinstance(o, str) and QUESTION_KEY.match(o) is not None)
-def question_key(text):
-    """A question id read back from JSON object keys / CLI text: digits are the integer id, anything else the string id."""
-    return int(text) if str(text).isdigit() else text
-def solution_name(o, version=None):
-    """Published solution figure file name: q<N>-solution[-vK].svg for integer ids, <id>-solution[-vK].svg for string ids."""
-    stem = o if isinstance(o, str) else f'q{o}'
-    return f'{stem}-solution' + (f'-v{version}' if version else '') + '.svg'
+def valid_ord(o):
+    # 숫자 번호(1, 2, ...) 또는 문자열 id(q01, s01, ...). bool 은 거부.
+    return (type(o) is int and o >= 1) or (type(o) is str and o.strip() != '' and o == o.strip())
+
+def ord_key(k):
+    # JSON 객체 키(문자열) -> ord: 숫자 문자열이면 int, 아니면 문자열 id 그대로.
+    return int(k) if isinstance(k, int) or (isinstance(k, str) and k.isdigit()) else k
+
+def asset_name(o, suffix=''):
+    # 엔진 규칙: 숫자 번호 → q{n}-solution.svg, 문자열 id → <id>-solution.svg
+    return (f'q{o}' if type(o) is int else str(o)) + f'-solution{suffix}.svg'
+
+def item_key(camp, o):
+    return f'{camp}-q{o}' if type(o) is int else f'{camp}-{o}'
 
 def source_bank(root, src):
     import json
@@ -53,7 +55,7 @@ def source_bank(root, src):
     result={}
     for q in rows:
         o=q.get('id')
-        if not is_question_key(o) or o in result: raise ValueError('invalid or duplicate source ord')
+        if not valid_ord(o) or o in result: raise ValueError('invalid or duplicate source ord')
         result[o]=q
     return result
 
@@ -63,7 +65,7 @@ def validate_triage(root, src, rows):
     allowed={'FIGURE','REPLACE','KEEP','KEEP_EXISTING','EXEMPT','UNSUPPORTED','CONTENT','NO_SOURCE_FIGURE'}
     for row in rows:
         o=row.get('ord')
-        if not is_question_key(o) or o in result: raise ValueError('invalid or duplicate triage ord')
+        if not valid_ord(o) or o in result: raise ValueError('invalid or duplicate triage ord')
         if row.get('decision') not in allowed: raise ValueError(f'q{o}: invalid decision')
         result[o]=row
     if set(result)!=set(bank): raise ValueError('triage ords do not match source bank')
