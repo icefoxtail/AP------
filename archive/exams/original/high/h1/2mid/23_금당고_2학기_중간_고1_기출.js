@@ -33,9 +33,10 @@ window.questionBank = [
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "점 P(3,4)와 x축에 대하여 대칭인 P′(3,−4)를 x축과 함께 나타낸 좌표평면이다. x좌표는 그대로이고 y좌표의 부호만 바뀌는 이동을 보여 준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 P와, 점 P에서 x축까지 수직으로 내려 같은 거리만큼 반대쪽에 놓인 점 P′가 점선으로 이어져 있다. 점 P 곁에 좌표 (3,4)가 적혀 있고, 선분 PP′는 x축과 직각을 이루며 x축 위아래 두 부분에 같은 길이 표시가 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "x축에 대하여 대칭이동하면 x좌표는 그대로이고 y좌표의 부호만 바뀐다. 그림에서 P와 P′는 x축에서 같은 거리에 있고 선분 PP′는 x축과 수직이다. 정답은 ③이다."
   },
   {
     "id": 2,
@@ -69,9 +70,10 @@ window.questionBank = [
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "직선 y=−2x+2를 (3,1)만큼 평행이동한 y=−2x+9를 나란히 그린 좌표평면이다. 점 (0,2)가 (3,3)으로 옮겨지는 이동벡터 (3,1)이 표시되어 있다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기가 같은 두 직선이 있다. 왼쪽 직선 y=ax+2의 일부는 파랑, 오른쪽 직선 y=−2x+9의 일부는 주황으로 칠해져 있다. 왼쪽 직선 위의 점 (0,2)에서 오른쪽 직선 위의 점 (3,3)으로 가는 점선 화살표가 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "x축 방향으로 3, y축 방향으로 1만큼 평행이동하면 y−1=a(x−3)+2, 곧 y=ax−3a+3이다. 이 식이 y=−2x+9와 같도록 x의 계수를 비교해 a를 구하고 상수항도 확인한다. 점선 화살표는 점 (0,2)가 (3,3)으로 옮겨지는 모습이다. 정답은 ①이다."
   },
   {
     "id": 3,
@@ -239,9 +241,10 @@ window.questionBank = [
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "포물선 y=2x²+4x+5의 꼭짓점 V(−1,3)을 (2,−2)만큼 옮긴 V′(1,1)을 표시한 그림이다. 이동한 꼭짓점이 직선 y=x 위에 놓이는 모습을 보여 준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파랑 포물선과 주황 포물선, 초록 직선 y=x가 있다. 파랑 포물선 y=2x²+4x+5의 꼭짓점 V(−1,3)에서 주황 포물선의 꼭짓점 V′로 가는 점선이 있고, V′는 직선 y=x 위에 놓여 있다. 주황 포물선에는 이동한 포물선이라는 이름이 붙어 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=2x²+4x+5=2(x+1)²+3이므로 처음 꼭짓점은 V(−1,3)이다. x축 방향으로 2, y축 방향으로 k만큼 이동하면 꼭짓점은 V′(1, 3+k)가 되고, 이 점이 직선 y=x 위에 있으므로 두 좌표가 같다. 그림에는 처음 포물선(파랑)과 이동한 포물선(주황), 직선 y=x(초록)가 있다. 정답은 ①이다."
   },
   {
     "id": 8,
@@ -309,7 +312,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 직사각형 안에 두 원 A, B가 겹쳐 있다. A에만 속하는 곳에 1과 3, 두 원이 겹친 곳에 2와 6, B에만 속하는 곳에 4와 12가 적혀 있고, B에만 속하는 부분이 색칠되어 있다.",
+    "solutionImageCaption": "2∈B이고 k는 1이 아닌 자연수이므로 k=2, a=1이고, 6∈B에서 3∈A이다. 교집합의 2, 6도 A의 원소이므로 A={1,2,3,6}, B={2,4,6,12}이다. 그림의 색칠한 부분은 B−A이며, 이 부분의 원소를 모두 더한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -408,13 +415,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "먼저 조건을 완전제곱식으로 정리하여 대칭의 중심을 구한다.\n\n$a^2+b^2=2a+4b-5$이고 원래 직선은 $y=-3x+2$이다.\n\n$(a,b)$를 구한 뒤 점대칭의 좌표 관계를 직선의 식에 대입한다.\n\n$a^2-2a+b^2-4b+5=0$이므로 $(a-1)^2+(b-2)^2=0$이다. 따라서 $(a,b)=(1,2)$이다. 대칭이동한 점을 $(x,y)$라 하면 원래 점은 $(2-x,4-y)$이다. 원래 점이 직선 위에 있으므로 $4-y=-3(2-x)+2$이다. 정리하면 $3x+y-8=0$이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "직선 l:y=−3x+2와 이를 점 S(1,2)에 대하여 점대칭이동한 l′:y=−3x+8을 나란히 그린 그림이다. 두 직선이 대칭 중심 S에서 같은 거리에 있음을 보여 준다.",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=−3x+2의 일부가 파랑으로, 그 직선을 점 S에 대하여 대칭이동한 직선의 일부가 주황으로 칠해져 있다. 파랑 직선 위의 점 P와 주황 직선 위의 점 P′가 S를 지나는 점선으로 이어져 있고, 점 S는 선분 PP′의 가운데로 두 쪽에 같은 길이 표시가 있다. 그림 위쪽에 S(1,2)가 적혀 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "a²+b²=2a+4b−5를 (a−1)²+(b−2)²=0으로 정리하면 (a,b)=(1,2)이다. 그림에서 직선 위의 점 P(−1,5)를 S에 대하여 대칭이동한 점 P′(3,−1)이 이동한 직선(주황) 위에 놓이고 S는 PP′의 중점이다. 대칭이동한 점을 (x,y)라 하면 원래 점은 (2−x, 4−y)이다. 정답은 ④이다."
   },
   {
     "id": 13,
@@ -445,9 +453,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "대칭차의 원소 수를 $A-B$와 $B-A$로 나누어 나타낸다.\n\n$n(A)=4$이고 $n((A\\cup B)-(A\\cap B))=2$이다.\n\n$n(A-B)$를 기준으로 가능한 경우를 모두 조사한다.\n\n$n(A-B)=x$, $n(A\\cap B)=y$, $n(B-A)=z$라 하자. 그러면 $x+y=4$이고 대칭차의 원소 수가 $2$이므로 $x+z=2$이다. 따라서 $x=0,1,2$가 가능하다. 이때 $y=4-x$, $z=2-x$이므로 $n(B)=y+z=6-2x$이다. 가능한 값은 $6,4,2$이고 그 합은 $12$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "A만·A와 B의 교집합·B만 세 영역의 수를 변수로 나타낸 수치 Venn diagram",
-    "solutionImageCaption": "대칭차집합은 A만과 B만 영역의 합이라는 점을 수치로 읽는 도식",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 직사각형 안에 두 원 A, B가 겹쳐 있고 A 옆에 n(A)=4가 적혀 있다. A에만 속하는 곳에 x, 두 원이 겹친 곳에 y, B에만 속하는 곳에 z가 적혀 있고, 겹친 부분을 뺀 양쪽 부분이 색칠되어 있다.",
+    "solutionImageCaption": "A에만 속하는 원소 수를 x, 공통 원소 수를 y, B에만 속하는 원소 수를 z라 하면 x+y=4이다. 색칠한 부분의 원소 수가 x+z=2이므로 가능한 x는 0, 1, 2이고 n(B)=y+z=6−2x이다. 가능한 n(B)의 값을 모두 더한다. 정답은 ①이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -486,7 +494,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 직사각형 안에 큰 원 Q가 있고, 그 안에 파랑으로 칠한 작은 원 P가 완전히 들어 있다. Q 바깥 오른쪽에는 주황으로 칠한 원 R이 Q와 겹치지 않게 그려져 있다.",
+    "solutionImageCaption": "Pᶜ∪Q=U는 P⊂Q를, Q−R=Q는 Q와 R이 공통 원소를 갖지 않음을 뜻한다. 그림은 P(파랑)가 Q 안에 있고 R(주황)이 Q 밖에 있는 모양이다. 이 관계로 보기 ㄱ~ㅁ의 참·거짓을 하나씩 판별한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -552,13 +564,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "두 교점의 $x$좌표의 평균이 중점 $M$의 $x$좌표이고, $MH$는 그 절댓값이다.\n\n대칭이동한 포물선은 $y=f(x)$, 대칭이동한 직선은 $y=g(x)$이다.\n\n두 식을 구해 교점의 $x$좌표를 찾고 산술평균과 기하평균의 관계를 적용한다.\n\n$y=(x+a)^2-a^2$을 $y$축에 대하여 대칭이동하면 $f(x)=(-x+a)^2-a^2=x^2-2ax$이다. $y=-\\dfrac4a x$를 $x$축에 대하여 대칭이동하면 $g(x)=\\dfrac4a x$이다. 교점에서는 $x^2-2ax=\\dfrac4a x$이므로 $x=0$ 또는 $x=2a+\\dfrac4a$이다. 따라서 중점의 $x$좌표는 $a+\\dfrac2a$이고 $a\\gt0$이므로 $MH=a+\\dfrac2a$이다. $a+\\dfrac2a\\ge2\\sqrt2$이며 등호는 $a=\\dfrac2a$일 때 성립하므로 $a=\\sqrt2$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "y축에 대칭한 포물선 f:y=x²−2√2x와 x축에 대칭한 직선 g:y=2√2x의 교점 A(0,0), B, 중점 M(2√2,8)을 표시한 그림이다. M에서 y축에 내린 수선 MH의 길이가 2√2임을 보여 준다.",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파랑 포물선 y=f(x)와 주황 직선 y=g(x)가 원점 A와 점 B에서 만난다. 선분 AB의 중점 M에서 y축에 내린 수선의 발 H까지 초록 선분이 그려져 있고, x축에 3과 6, y축에 6과 12가 표시되어 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "예: a=2인 경우다. f(x)=x²−4x, g(x)=2x이고 두 교점은 A(0,0), B(6,12), 중점은 M(3,6)이며 MH는 M의 x좌표와 같다. 일반의 a에서는 f(x)=x²−2ax이고 g(x)는 a분의 4에 x를 곱한 식이며, 교점의 x좌표는 0과 2a+(a분의 4)이므로 MH=a+(a분의 2)이다. 이 값이 최소가 되는 a를 산술평균과 기하평균의 관계로 구한다. 정답은 ①이다."
   },
   {
     "id": 17,
@@ -594,9 +607,10 @@ window.questionBank = [
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q17-solution-graph.svg",
-    "solutionImageAlt": "문항 17 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파랑 곡선 y=h(x)가 가로선 y=0(초록)에 접하고, 가로선 y=2(주황)와 두 점에서 만나며, 가로선 y=−2(분홍)와는 만나지 않는다. 교점의 좌표 (0,2), (3분의 4,0), (3분의 8,2)가 적혀 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "h(x)=f(x)−x로 두면 중심의 x좌표는 곡선 y=h(x)와 세 직선 y=−2, 0, 2의 교점의 x좌표이다. 교점이 모두 세 개가 되려면 곡선이 y=0에 접하고 y=2와 두 점에서 만나야 하며, x1=0, 합 4에서 접점의 x좌표는 3분의 4이다. 최솟값 조건으로 h(0)=2임을 정하고 f를 구한다. 정답은 ④이다."
   },
   {
     "id": 18,
@@ -622,13 +636,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$3\\sqrt{10}$",
     "solution": "꺾인 경로의 최솟값은 한 점을 직선 $y=x$에 대하여 대칭이동하여 두 점 사이의 직선거리로 바꾼다.\n\n$P,Q$는 서로 독립적으로 직선 $y=x$ 위를 움직인다.\n\n$AP+PB$와 $BQ+QC$를 각각 따로 최소화한 뒤 더한다.\n\n$A(-1,1)$을 $y=x$에 대하여 대칭이동하면 $A'(1,-1)$이다. $P$가 $y=x$ 위에 있으므로 $AP=A'P$이고 $AP+PB\\ge A'B$이다. 선분 $A'B$는 $y=x$와 만나므로 등호가 성립하며 $A'B=\\sqrt{(1-0)^2+(-1-2)^2}=\\sqrt{10}$이다.\n또 $C(4,6)$을 대칭이동하면 $C'(6,4)$이다. 같은 방법으로 $BQ+QC=BQ+QC'\\ge BC'$이고 선분 $BC'$도 $y=x$와 만나므로 등호가 성립한다. $BC'=\\sqrt{(6-0)^2+(4-2)^2}=2\\sqrt{10}$이다. 두 등호를 각각 만족시키는 $P,Q$를 잡을 수 있으므로 전체 최솟값은 $\\sqrt{10}+2\\sqrt{10}=3\\sqrt{10}$이다.\n따라서 구하는 최솟값은 $3\\sqrt{10}$이다.",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "직선 y=x에 대한 대칭점 A′(1,−1), C′(6,4)와 B(0,2), y=x 위의 P, Q(3,3)를 표시한 좌표평면이다. A′B=√10과 BC′=2√10을 더해 최솟값 3√10이 됨을 보여 준다.",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=x와 점 A(−1,1), B(0,2), C(4,6), 그리고 y=x에 대하여 A, C와 대칭인 점 A′(1,−1), C′(6,4)가 있다. 선분 A′B는 파랑, 선분 BC′는 주황이며 직선 y=x와 만나는 점이 각각 P, Q이다. A에서 P, Q에서 C로 가는 선분은 점선이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "A를 직선 y=x에 대하여 대칭이동한 A′(1,−1)에서 AP=A′P이므로 AP+PB≥A′B이고, 선분 A′B가 직선 y=x와 만나는 점이 P이다. 같은 방법으로 C′(6,4)에서 BQ+QC≥BC′이고 BC′와 직선의 교점이 Q이다. A′B=√10, BC′=2√10이므로 두 값을 더한다. 정답은 3√10이다."
   },
   {
     "id": 19,
@@ -685,7 +700,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 네 줄이 위에서부터 r, p, ~p, q의 진리집합을 나타낸다. r은 −7 이하, p는 −k−2보다 작은 부분과 k보다 큰 부분, ~p는 −k−2 이상 k 이하, q는 −2보다 크고 2보다 작은 부분이며, 닫힌 끝은 찬 점, 열린 끝은 빈 점이다.",
+    "solutionImageCaption": "예: k=3일 때의 모양이다. p의 진리집합은 (−∞,−k−2)∪(k,∞), ~p의 진리집합은 [−k−2,k]이다. q가 ~p이기 위한 충분조건이므로 (−2,2)가 [−k−2,k]에 포함되어야 하고, p가 r이기 위한 필요조건이므로 (−∞,−7]이 p의 진리집합에 포함되어야 한다. 두 조건을 만족하는 자연수 k를 모두 더한다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -702,9 +721,9 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 2] 그림과 같이 중심이 원점 $O$이고 반지름의 길이가 $4$인 원에 중심이 $(2,0)$이고 반지름의 길이가 $2$인 반원이 접해 있는 도형을 $C_1$이라 하자. 도형 $C_1$을 원점에 대하여 대칭이동한 도형을 $C_2$라 하자. 도형 $C_1$ 위의 모든 점의 집합을 $A$, 도형 $C_2$ 위의 모든 점의 집합을 $B$, 직선 $y=a(x+2)$ 위의 모든 점의 집합을 $C$라 하자. $f(a)=n((A\\cup B)\\cap C)$일 때, 함수 $f(a)$를 구하는 과정을 서술하시오. (단, $a$는 실수이다.) [10점]",
     "image": "assets/images/23_금당고_2학기_중간_고1_기출/q21.png",
-    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "큰 원과 중심이 (2,0), (-2,0)인 위쪽·아래쪽 반원, 점 (-2,0)을 지나는 직선의 교점 개수",
-    "solutionImageCaption": "큰 원과 두 반원의 교점 중 겹치는 점을 조정하고, 위 반원의 접선 기울기에서 경우를 나눈다.",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4인 큰 원 안에 왼쪽 아래 반원(파랑)과 오른쪽 위 반원(주황)이 있고, 점 (−2,0)을 지나는 직선 y=2분의 1(x+2)가 그려져 있다. 직선과 도형이 만나는 다섯 점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "예: a를 2분의 1로 잡은 직선이다. 직선 y=a(x+2)는 항상 점 (−2,0)을 지나므로 큰 원과 두 점, 왼쪽 아래 반원(파랑)과 한 점에서 만난다(a=0이면 겹치는 점을 한 번만 센다). 오른쪽 위 반원(주황)과의 교점 수는 중심 (2,0)에서 직선까지의 거리와 반지름 2를 비교하여 정한다. 정답은 a≤0일 때 3, 0<a<3분의 √3일 때 5, a=3분의 √3일 때 4, a>3분의 √3일 때 3이다.",
     "solutionImageSize": "full",
     "choices": [],
     "answer": "$f(a)=\\begin{cases}3&(a\\le0)\\\\5&(0\\lt a\\lt\\dfrac{\\sqrt3}{3})\\\\4&(a=\\dfrac{\\sqrt3}{3})\\\\3&(a\\gt\\dfrac{\\sqrt3}{3})\\end{cases}$",
