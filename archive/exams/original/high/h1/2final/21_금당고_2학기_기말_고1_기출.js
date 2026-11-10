@@ -110,9 +110,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 평행이동한 식을 $y=\\sqrt{a(x-m)}+n$으로 놓고 비교한다.\n조건 정리: $\\sqrt{2-2x}+4=\\sqrt{-2(x-1)}+4$이다.\n풀이 방향: 근호 안의 계수와 이동량을 직접 비교한다.\n정석 풀이: $a=-2$, $m=1$, $n=4$이므로 $a+m+n=-2+1+4=3$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "평행이동한 무리함수의 끝점을 나타낸 해설 그래프",
-    "solutionImageCaption": "y=√(2−2x)+4의 끝점 (1,4)와 이동량을 확인한다.",
+    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 곡선 y=√(ax)가 원점 (0,0)에서 시작해 왼쪽 위로 뻗고, 이것을 x축 방향으로 m만큼 옮긴 주황 곡선 y=√(a(x−m))가 점 (1,0)에서 시작한다. 아래 그림은 이 주황 곡선을 y축 방향으로 n만큼 옮긴 초록 곡선 y=√(2−2x)+4가 점 (1,4)에서 시작하고, 점선이 x축의 눈금 1과 y축의 눈금 4를 가리킨다.",
+    "solutionImageCaption": "y=√(2−2x)+4=√(−2(x−1))+4이므로 a=−2이다. 위 그림에서 y=√(ax)의 그래프(파랑)를 x축 방향으로 m만큼 평행이동한 그래프(주황)의 시작점이 (0,0)에서 (1,0)으로 옮겨지므로 m=1이다. 아래 그림에서 이 주황 그래프를 y축 방향으로 n만큼 평행이동한 그래프(초록)가 y=√(2−2x)+4의 그래프이고 시작점이 (1,4)이므로 n=4이다. 정답은 3이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
@@ -228,9 +228,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 함수와 역함수의 그래프의 교점은 직선 $y=x$ 위에 있다.\n조건 정리: $f(x)=(x-3)^2+1$, 정의역은 $x\\ge3$이다.\n풀이 방향: $f(x)=x$를 풀고 정의역에 맞는 해를 고른다.\n정석 풀이: $x^2-6x+10=x$에서 $x^2-7x+10=0$, 즉 $(x-2)(x-5)=0$이다. 정의역에서 $x=5$이므로 $P=(5,5)$이다. 따라서 $OP=\\sqrt{5^2+5^2}=5\\sqrt2$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "함수와 역함수의 교점 P를 나타낸 해설 그래프",
-    "solutionImageCaption": "정의역 x≥3에서 교점 P=(5,5)와 OP=5√2를 확인한다.",
+    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=f(x)가 점 (3,1)에서 시작해 오른쪽 위로, 주황 곡선 y=f⁻¹(x)가 점 (1,3)에서 시작해 오른쪽 위로 뻗고, 초록 점선 y=x 위의 점 P(5,5)에서 두 곡선이 만난다. 원점 O에서 P까지 분홍 선분이 그어져 있다.",
+    "solutionImageCaption": "f(x)=(x−3)²+1(x≥3)의 그래프와 그 역함수의 그래프는 직선 y=x에 대하여 대칭이므로 두 그래프의 교점은 y=x 위에 있다. x²−6x+10=x를 풀면 x=2 또는 x=5이고 정의역 x≥3에서 x=5이므로 P(5,5)이다. 분홍 선분 OP의 길이를 피타고라스 정리로 구한다. 정답은 5√2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
@@ -263,7 +263,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 유리함수 f(x)와 초록 점선 y=x, f의 점근선 x=−2와 y=2를 보이고, f 위의 점 (−4, 2분의 9)를 표시한다. 아래 그림은 f(파랑)와 그 역함수 g(주황)를 y=x에 대하여 대칭으로 보이고, g의 점근선 x=2와 y=−2, 그리고 f 위의 점 (−4, 2분의 9)와 g 위의 점 (2분의 9, −4)를 잇는 점선을 보인다. 이 점선은 y=x에 의해 서로 바뀌는 대응점 쌍을 이은 것이다.",
+    "solutionImageCaption": "f(g(x))=x이므로 g는 f의 역함수이다. y=(x+2)분의 (2x−1)에서 x를 y로 나타내 x와 y를 바꾸면 g(x)=(x−2)분의 (−2x−1)이므로 a=−2, b=−1, c=−2이다. 위 그림의 f(파랑)는 점근선이 x=−2, y=2이고, 아래 그림에서 f와 g(주황)의 그래프는 직선 y=x(초록 점선)에 대하여 대칭이어서 점 (−4, 2분의 9)와 (2분의 9, −4)가 서로 대응하며, g의 점근선은 x=2, y=−2로 f의 점근선에서 x와 y의 역할이 바뀐다. 정답은 −5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -319,7 +323,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 주황 곡선 y=g(x)가 점 (1,0)에서, 파란 곡선 y=f(x)가 점 (4,0)에서 시작해 오른쪽 위로 뻗는다. x=2에서 g 위의 점과 x=7에서 f 위의 점이 같은 높이의 점선으로 이어지고, x축 눈금 2와 7이 표시되어 있다.",
+    "solutionImageCaption": "f⁻¹(g(x))=3x+1의 양변에 f를 적용하면 g(x)=f(3x+1)=√(2(3x+1)−8)=√(6x−6)이고, x≥1이면 3x+1≥4이므로 f의 정의역 조건을 만족한다. 따라서 x=2에서의 g의 값은 x=7에서의 f의 값과 같다(점선). 정답은 √6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -347,7 +355,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=f(x)가 점 (2분의 3, 2)에서 시작해 왼쪽 위로 뻗고, −3≤x≤1인 부분은 주황색으로 굵게 표시되어 있다. 주황 부분의 양 끝점 (−3,5)와 (1,3)에서 x축과 y축으로 점선이 이어진다. 문제에서 주어진 점 (−11,7)은 구간을 크게 보이려고 그리지 않았다.",
+    "solutionImageCaption": "점 (−11,7)을 지나므로 7=√(a+22)+2에서 a=3이고 f(x)=√(3−2x)+2이다(그림에서는 구간을 크게 보이려고 점 (−11,7)을 그리지 않았다). 이 함수는 감소하므로 −3≤x≤1(주황)에서 x=−3일 때 최댓값 M=5, x=1일 때 최솟값 m=3을 갖는다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -519,7 +531,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=√(5x)와, 점 A(−3,0)를 지나는 직선 y=m(x+3)이 그려져 있다. 직선은 곡선과 두 점 B, C에서 만나고, 선분 AB는 초록, 선분 BC는 분홍으로 칠했다. B와 C에서 x축으로 내린 점선이 눈금 9분의 5와 5를 가리킨다.",
+    "solutionImageCaption": "A(−3,0)이고 B, C의 x좌표를 r₁<r₂라 하면 AB:BC=3:2에서 3r₂=5r₁+6이고, 방정식 m²x²+(6m²−5)x+9m²=0에서 r₁r₂=9이다. 이를 풀면 r₁=5분의 9, r₂=5이고, r₁+r₂=5분의 34=(m²분의 5)−6에서 m²=64분의 25, m=8분의 5이다. 따라서 240m=150이다. 정답은 150이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -623,11 +639,11 @@ window.questionBank = [
     "answer": "$900$",
     "solution": "[키포인트] 두 점의 $x$좌표 비만 남도록 삼각형 넓이를 정리한 뒤 산술·기하평균을 사용한다.\n조건 정리: $A=(a,\\dfrac{20}{a})$, $B=(b,-\\dfrac{45}{b})$로 둘 수 있고 $a,b>0$이다.\n풀이 방향: 원점과 두 점으로 이루어진 삼각형의 넓이를 넓이 계산으로 계산한다.\n정석 풀이: 넓이 $S$는 $S=\\dfrac12\\left|a\\left(-\\dfrac{45}{b}\\right)-b\\left(\\dfrac{20}{a}\\right)\\right|=\\dfrac12\\left(\\dfrac{45a}{b}+\\dfrac{20b}{a}\\right)$이다. $t=\\dfrac{a}{b}>0$라 두면 $S=\\dfrac12\\left(45t+\\dfrac{20}{t}\\right)$. 산술·기하평균에 의해 $45t+\\dfrac{20}{t}\\ge2\\sqrt{900}=60$이므로 $S\\ge30$이다. 등호는 $45t=\\dfrac{20}{t}$일 때 성립하므로 실제 최솟값은 $30$이다. 따라서 최솟값의 제곱은 $30^2=900$이다.\n따라서 구하는 값은 $900$이다.",
 
-    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/21_금당고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "두 반비례 함수와 삼각형의 최솟값을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 좌표평면의 제1사분면에 파란 곡선 y=x분의 20이, 제4사분면에 주황 곡선 y=−(x분의 45)가 그려져 있다. 점 A(a, a분의 20)와 점 B(b, −(b분의 45))를 원점 O와 이어 만든 삼각형 OAB가 연한 회색으로 칠해져 있고, A와 B에서 x축으로 내린 점선의 발에 a, b가 적혀 있다. 점 A, B의 위치는 예시이고, 두 점선은 A와 B에서 x축으로 내린 수선이다.",
 
-    "solutionImageCaption": "A=(a,20/a), B=(b,−45/b)에서 a/b=2/3일 때 최소 넓이 30을 확인한다.",
+    "solutionImageCaption": "A(a, a분의 20), B(b, −(b분의 45))로 놓으면 삼각형 OAB의 넓이는 S=2분의 1×(b분의 45a+a분의 20b)이다. t=b분의 a(t>0)로 두면 S=2분의 1×(45t+t분의 20)이고, 산술평균과 기하평균의 관계에 의해 45t+t분의 20≥60이므로 S≥30이며 등호는 t=3분의 2일 때 성립한다. 그림의 점 A, B의 위치는 예시이다. 정답은 900이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
