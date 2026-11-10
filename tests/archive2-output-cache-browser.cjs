@@ -938,8 +938,10 @@ async function knownReal50Clipping(session, initial) {
     requireThat(observed.length === attempt, 'KNOWN_CLIP_ATTEMPT_NOT_OBSERVED');
     const call = observed.at(-1);
     const cause = call.causes[0];
+    // page 8 -> 9 (2026-11-11, solution SVG display rule naturalWidth x 0.6): the larger solution figures before this reminder
+    // image add one solution page, so the same clipped image now sits on page 9. Every other pinned value is unchanged.
     requireThat(call.causes.length === 1 && call.qpp === 4 && call.attemptedMode === 'sol' &&
-      cause?.sourceRef === expectedSourceRef && cause.tag === 'IMG' && cause.page === 8 &&
+      cause?.sourceRef === expectedSourceRef && cause.tag === 'IMG' && cause.page === 9 &&
       cause.columnClientWidth === 340 && cause.columnScrollWidth === 432 &&
       Math.abs(cause.imageX - 12) <= 1 && Math.abs(cause.imageWidth - 420) <= 1 && Math.abs(cause.imageHeight - 300) <= 1 &&
       cause.imageNaturalWidth === 420 && cause.imageNaturalHeight === 300 && cause.imageLoaded,
