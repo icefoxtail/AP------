@@ -15,8 +15,19 @@ const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
 const plain = value => JSON.parse(JSON.stringify(value));
 
-function harness(data = structuredClone(catalog)) {
-  data = withTestAssignments(data);
+// The test catalog is the real one (about 28,000 records). Cloning it for every test took about 2 seconds
+// each and pushed this file past the runner's 60-second limit (tools/run-tests.js). No test here changes the
+// catalog itself (they only change w.state), so they share one prepared copy; the last test checks that.
+let sharedCatalog = null, sharedFinderIndex = null, sharedCatalogDigest = null;
+const catalogDigest = data => crypto.createHash('sha256')
+  .update(JSON.stringify([data.indexVersion, data.records.length, (data.exams || []).length, data.records.map(row => row.questionUid)])).digest('hex');
+function harness() {
+  if (!sharedCatalog) {
+    sharedCatalog = withTestAssignments(structuredClone(catalog));
+    sharedFinderIndex = core.buildFinderIndex(sharedCatalog);
+    sharedCatalogDigest = catalogDigest(sharedCatalog);
+  }
+  const data = sharedCatalog;
   const events = new Map(), nodes = new Map(), storage = new Map();
   const node = id => {
     if (!nodes.has(id)) nodes.set(id, {
@@ -73,7 +84,7 @@ function harness(data = structuredClone(catalog)) {
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.byUid = new Map(data.records.map(row => [row.questionUid, row]));
-  w.state.finderIndex = core.buildFinderIndex(data);
+  w.state.finderIndex = sharedFinderIndex;
   w.state.indexVersion = data.indexVersion;
   return {
     w, ctx, document, events,
@@ -638,4 +649,9 @@ test('K5b 모자라게 뽑은 문제지를 초안에서 복원해도 모자람 �
   delete saved.composeShortage;
   w.applyDraft(saved);
   assert.deepEqual(plain(w.state.composeShortage), []);
+});
+
+test('the tests above shared one catalog and none of them changed it', () => {
+  harness();
+  assert.equal(catalogDigest(sharedCatalog), sharedCatalogDigest);
 });
