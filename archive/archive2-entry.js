@@ -26,6 +26,19 @@
     originalSettings = O.settings(value);
     if (AssignTarget) AssignTarget.qpp = originalSettings.qpp;
   };
+  // Called by the workspace page that embeds this one (same origin; it verifies the ready
+  // message's origin and source frame before calling). Ignored when not embedded.
+  let parentSource = null;
+  window.setArchive2OriginalSource = function (value) {
+    if (!embedded || !value) return;
+    const { file, sourceHash, identityTitle } = value;
+    if (
+      typeof file === "string" && file &&
+      typeof sourceHash === "string" && sourceHash &&
+      typeof identityTitle === "string" && identityTitle
+    )
+      parentSource = { file, sourceHash, identityTitle };
+  };
   window.prepareArchive2OriginalAssignment = async function (
     classRow,
     item,
@@ -39,17 +52,25 @@
         header: { title: O.displayTitle(item), subtitle: item.subject },
       });
     if (!originalQuestions) {
-      const response = await fetch("data/archive2-catalog.json");
-      if (!response.ok)
-        throw new Error("원본 문항 목록을 불러오지 못했습니다.");
-      const catalog = Archive2Core.decodeCatalog(await response.json());
-      originalQuestions = await Archive2Source.load(
-        item.file,
-        new Map(catalog.sourceHashes).get(item.file),
-      );
-      originalIdentityTitle =
-        catalog.exams.find((e) => e.file === item.file)?.identityTitle ||
-        item.file.split("/").pop().replace(/\.js$/, "");
+      const provided = parentSource && parentSource.file === item.file ? parentSource : null;
+      if (provided) {
+        // The workspace already holds this exam's hash and title; do not download and parse the
+        // whole catalog again. The hash is still verified by Archive2Source.load.
+        originalQuestions = await Archive2Source.load(item.file, provided.sourceHash);
+        originalIdentityTitle = provided.identityTitle;
+      } else {
+        const response = await fetch("data/archive2-catalog.json");
+        if (!response.ok)
+          throw new Error("원본 문항 목록을 불러오지 못했습니다.");
+        const catalog = Archive2Core.decodeCatalog(await response.json());
+        originalQuestions = await Archive2Source.load(
+          item.file,
+          new Map(catalog.sourceHashes).get(item.file),
+        );
+        originalIdentityTitle =
+          catalog.exams.find((e) => e.file === item.file)?.identityTitle ||
+          item.file.split("/").pop().replace(/\.js$/, "");
+      }
     }
     const body = {
       contract_version: "archive2-v1",
