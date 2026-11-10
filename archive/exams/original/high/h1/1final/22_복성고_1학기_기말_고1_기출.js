@@ -32,9 +32,10 @@ window.questionBank = [
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "점 P(−1,5)를 이동벡터 (2,−1)만큼 평행이동한 점 P′(1,4)를 좌표평면에 화살표로 표시한다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P(−1,5)에서 오른쪽으로 2만큼 간 점 (1,5)와, 거기서 아래로 1만큼 간 점 P′를 화살표로 이은 좌표평면 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "점을 x축 방향으로 2, y축 방향으로 −1만큼 평행이동하면 x좌표에 2를 더하고 y좌표에 −1을 더한다. 먼저 x축 방향으로 2만큼 옮기면 (1,5)가 되고, 이어서 y축 방향으로 −1만큼 옮기면 y좌표가 5−1이 된다. 정답은 (1,4)이다."
   },
   {
     "id": 2,
@@ -91,9 +92,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트]\n원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $xx_1+yy_1=r^2$으로 나타낼 수 있다.\n조건 정리\n점 $(3,1)$은 원 $x^2+y^2=10$ 위의 점이다.\n풀이 과정\n접선의 방정식은\n$3x+y=10$이다.\n이를 $y=mx+n$ 꼴로 정리하면\n$y=-3x+10$이다.\n따라서 $m=-3$, $n=10$이다.\n그러므로\n$m\\times n=(-3)\\times10=-30$이다.\n결론\n\n계산/도식 확인: 그림의 반지름 $OT$는 접선과 수직이고, 접선 $3x+y=10$은 $y=-3x+10$이므로 기울기와 절편은 각각 $m=-3$, $n=10$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "원 x²+y²=10의 접점 T(3,1), 접선 3x+y=10, x절편 (10,0)을 표시한 그림",
-    "solutionImageCaption": "접선의 기울기와 y절편을 읽어 m×n을 계산한다.",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=10과 원 위의 점 T(3,1), 원점 O에서 T까지의 반지름, 점 T에서의 접선 3x+y−10=0이 그려져 있고 반지름과 접선이 직각을 이루는 그림.",
+    "solutionImageCaption": "원 x²+y²=10 위의 점 T(3,1)에서의 접선은 3x+y=10이고 반지름 OT와 수직이다. y=mx+n 꼴로 정리하면 y=−3x+10이므로 m=−3, n=10이다. 정답은 −30이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
@@ -130,7 +131,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=x²+3x−10의 그래프가 x축과 (−5,0), (2,0)에서 만나는 모습과, 그래프가 x축 아래에 있는 구간 −5<x<2를 나타낸 수직선.",
+    "solutionImageCaption": "x²+3x−10=(x+5)(x−2)이므로 그래프는 x=−5와 x=2에서 x축과 만나고 두 점 사이에서 x축 아래에 있다. 따라서 해는 −5<x<2이고 α=−5, β=2이다. 정답은 −7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -226,7 +231,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=−x²+2x+3의 그래프에서 0≤x≤3인 부분을 주황색으로 굵게 나타내고, 꼭짓점 (1,4)와 양 끝점 (0,3), (3,0)을 표시한 그림.",
+    "solutionImageCaption": "y=−(x−1)²+4이므로 꼭짓점의 x좌표 1이 구간 0≤x≤3 안에 있어 최댓값은 M=4이다. 구간의 양 끝에서 함숫값은 x=0일 때 3, x=3일 때 0이므로 최솟값은 m=0이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -260,9 +269,9 @@ window.questionBank = [
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "y=x-3은 두 점에서 만나고 y=x-13/4은 접한다",
-    "solutionImageCaption": "y=x-3은 두 점에서 만나고 y=x-13/4은 접한다",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−2x−1(파랑)과 기울기가 1인 세 직선이 있다. 주황 직선 y=x−1은 두 점 (0,−1), (3,2)에서 만나고, 초록 직선 y=x−4분의 13은 접점에서 접하며, 분홍 직선 y=x−4는 만나지 않는다.",
+    "solutionImageCaption": "예: y=x−k에서 k=1이면 두 점에서 만나고, k=4이면 만나지 않으며, 접하는 경계는 k=4분의 13이다. x²−2x−1=x−k를 정리한 x²−3x+k−1=0의 판별식 D=13−4k가 양수이어야 하므로 k<4분의 13이고, 자연수 k는 1, 2, 3이다. 정답은 3개이다.",
     "solutionImageSize": "full"
   },
   {
@@ -297,9 +306,10 @@ window.questionBank = [
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "중심 (−2,−1), 반지름 √3인 원을 평행이동해 중심 (2,1)이 된 원을 원점에 대하여 대칭이동하면 다시 중심 (−2,−1)로 돌아와 처음 원과 겹치는 모습을 보여 준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 A(−2,−1)인 파란 원과 평행이동한 주황 원이 있고, 두 중심 A, A′와 원점 O를 잇는 점선에 같은 길이 표시와 화살표가 있는 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 A(−2,−1), 반지름 √3인 원을 x축 방향으로 a, y축 방향으로 b만큼 평행이동하면 중심은 A′(a−2, b−1)이 된다. 이 원을 원점에 대하여 대칭이동한 도형이 처음 원과 같으려면 두 중심 A, A′이 원점에 대하여 대칭이어야 하므로 a−2=2, b−1=1이다. 정답은 6이다."
   },
   {
     "id": 10,
@@ -332,7 +342,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
     "subUnit": "절댓값 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=2|x−1|(파랑)과 g(x)=5−|x+3|(주황)의 그래프가 두 점 (0,2)와 (3분의 4, 3분의 2)에서 만나고, 두 점 사이에서 f의 그래프(초록)가 g의 그래프 아래에 있는 그림.",
+    "solutionImageCaption": "x=1과 x=−3을 기준으로 구간을 나누어 푼다. 2|x−1|≤5−|x+3|은 f(x)≤g(x)이므로 두 그래프가 만나는 두 점 사이를 찾으면 0≤x≤3분의 4이다. 이 범위의 정수는 0과 1이다. 정답은 2개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -362,14 +376,15 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트]\n직사각형의 높이를 문자로 두고, 닮음을 이용하여 그 높이에서의 가로 길이를 나타낸다.\n조건 정리\n삼각형의 밑변은 $10$, 높이는 $8$이다. 직사각형의 높이를 $x$라 하자.\n풀이 과정\n밑변에서 높이 $x$만큼 올라간 곳에서 삼각형의 가로 길이는 닮음에 의해 선형적으로 줄어든다.\n높이가 $0$일 때 가로 길이는 $10$, 높이가 $8$일 때 가로 길이는 $0$이므로, 높이 $x$에서의 가로 길이는\n$10\\left(1-\\dfrac{x}{8}\\right)=10-\\dfrac54x$이다.\n따라서 직사각형의 넓이 $S$는\n$S=x\\left(10-\\dfrac54x\\right)$\n$=-\\dfrac54x^2+10x$이다.\n이 이차함수는 아래로 열린 포물선이므로 꼭짓점에서 최댓값을 갖는다.\n꼭짓점의 $x$좌표는\n$x=-\\dfrac{10}{2\\times(-\\frac{5}{4})}=4$이다.\n따라서 최댓값은\n$S=-\\dfrac54\\times4^2+10\\times4=-20+40=20$이다.\n결론\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "밑변 BC=10, 높이 8인 이등변삼각형 ABC에 내접한 직사각형 DEFG를 그리고, 높이 x일 때 가로 길이 10−5x/4, 최대 넓이 20이 되는 x=4인 경우를 표시한다.",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 밑변 BC가 10, 높이 8인 이등변삼각형 A, B, C에 직사각형 D, E, F, G가 내접해 있고, 직사각형의 세로가 x, 가로가 10−(4분의 5)x로 표시된 그림.",
     "solutionImageSize": "full",
     "image": "assets/images/22_복성고_1학기_기말_고1_기출/q11.png",
     "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
     "subUnit": "도형의 방정식 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "예: x=3일 때의 그림이다. 높이 x에서 삼각형의 가로 길이는 10(1−8분의 x)=10−(4분의 5)x이므로 넓이는 S=x(10−(4분의 5)x)=−(4분의 5)x²+10x이다. 이 이차함수는 꼭짓점 x=4에서 최댓값을 갖는다. 정답은 20이다."
   },
   {
     "id": 12,
@@ -394,9 +409,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트]\n한 점을 지나는 직선을 기울기 $m$으로 나타내는 방식은 수직선 형태의 직선을 빠뜨릴 수 있다.\n조건 정리\n점 $(2,-2)$은 원 $x^2+y^2=4$의 바깥쪽에 있는 점이다. 이 점에서 원에 그은 접선은 두 개가 나올 수 있다.\n풀이 과정\nㄱ에서는 접선의 방정식을 $y=m(x-2)-2$로 두었다. 이 식은 기울기가 있는 직선만 나타낸다.\n그런데 점 $(2,-2)$를 지나는 수직선 $x=2$도 생각해야 한다.\n실제로 $x=2$를 원 $x^2+y^2=4$에 대입하면\n$4+y^2=4$에서 $y=0$이다.\n즉 직선 $x=2$는 원과 한 점 $(2,0)$에서 만나므로 접선이다.\n처음 단계 ㄱ에서 이 접선을 빠뜨렸으므로 처음으로 틀린 곳은 ㄱ이다.\n결론\n\n계산/도식 확인: 기울기 $m$으로 나타낸 직선은 수직선 $x=2$를 포함하지 않는다. 그림처럼 $x=2$를 원에 대입하면 $4+y^2=4$에서 접점 $(2,0)$이 나오므로, ㄱ에서 이 접선을 빠뜨린 것이 첫 오류이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "점 P(2,−2)에서 원에 그은 수평 접선과 수직 접선을 비교한 그림",
-    "solutionImageCaption": "기울기식에 포함되지 않는 수직선 x=2를 빠뜨린 것이 첫 오류다.",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=4와 원 밖의 점 P(2,−2)에서 그은 두 접선이 있다. 주황 접선 y=−2는 접점 (0,−2)에서, 초록 접선 x=2는 접점 (2,0)에서 원에 닿고, 각 접점에서 반지름과 직각을 이루는 그림.",
+    "solutionImageCaption": "점 P에서 원에 그은 접선은 두 개이다. 기울기 m으로 둔 y=m(x−2)−2에서는 y=−2만 나오고, 기울기가 없는 수직선 x=2는 포함되지 않는다. x=2를 원에 대입하면 접점 (2,0)이 나오므로 x=2도 접선이다. 정답은 ㄱ이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
@@ -491,9 +506,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트]\n직선 $y=x$에 대한 대칭이동은 점 $(a,b)$를 $(b,a)$로 보낸다. 두 같은 크기의 원에 동시에 접하는 가장 작은 원은 두 중심을 잇는 선 위에서 두 원 사이에 끼어 있는 원이다.\n조건 정리\n원 $C$의 중심은 $(-1,3)$이고 반지름은 $\\sqrt2$이다.\n풀이 과정\n직선 $y=x$에 대하여 대칭이동하면 중심 $(-1,3)$은 $(3,-1)$로 옮겨진다.\n따라서 원 $C'$의 중심은 $(3,-1)$이고 반지름도 $\\sqrt2$이다.\n두 중심 사이의 거리는\n$\\sqrt{(3-(-1))^2+(-1-3)^2}$\n$=\\sqrt{4^2+(-4)^2}$\n$=4\\sqrt2$이다.\n두 원의 반지름이 모두 $\\sqrt2$이므로 두 원 사이의 빈 거리는\n$4\\sqrt2-\\sqrt2-\\sqrt2=2\\sqrt2$이다.\n가장 작은 원이 두 원 사이에서 동시에 접하려면 이 빈 거리의 절반이 그 원의 반지름이다.\n따라서 작은 원의 반지름은\n$\\dfrac{2\\sqrt2}{2}=\\sqrt2$이다.\n넓이는\n$\\pi(\\sqrt2)^2=2\\pi$이다.\n결론\n\n계산/도식 확인: 두 원의 중심을 잇는 선분의 중점은 $(1,1)$이다. 작은 원이 두 원 사이에서 각각 접하려면 세 중심이 한 직선 위에 있고, 중심 사이의 빈 길이 $4\\sqrt2-2\\sqrt2=2\\sqrt2$를 양쪽으로 나누므로 작은 원의 반지름은 $\\sqrt2$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "대칭으로 생긴 두 원과 그 사이에서 동시에 접하는 가장 작은 원을 나타낸 그림",
-    "solutionImageCaption": "두 원 사이의 중심선 위에서 세 원의 접점 조건을 확인한다.",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 (−1,3)인 원 C(파랑)와 직선 y=x에 대칭인 중심 (3,−1)인 원 C′(주황), 두 중심을 잇는 점선의 중점 M을 중심으로 하는 초록 원이 세 원이 차례로 접하게 그려진 그림.",
+    "solutionImageCaption": "원 C(파랑)의 중심은 (−1,3), 직선 y=x에 대칭인 원 C′(주황)의 중심은 (3,−1)이고 두 중심 사이의 거리는 4√2, 두 원의 반지름은 모두 √2이다. 두 원 사이에서 가장 작은 접하는 원(초록)은 두 중심의 중점 M(1,1)을 중심으로 하고 반지름은 (4√2−2√2)÷2=√2이다. 정답은 2π이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-11-TANGENT",
     "subUnit": "원과 접선",
@@ -598,9 +613,9 @@ window.questionBank = [
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q18-solution-b4.svg",
-    "solutionImageAlt": "a=6일 때 두 해의 공통 범위는 4<x<6이고 정수는 5 하나뿐이다. a가 6보다 커지면 6도 들어가고, 5 이하이면 5가 빠진다.",
-    "solutionImageCaption": "a=6일 때 두 해의 공통 범위는 4<x<6이고 정수는 5 하나뿐이다. a가 6보다 커지면 6도 들어가고, 5 이하이면 5가 빠진다.",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 부등식의 해 x<0 또는 x>4와 1<x<a, 그 공통 범위 4<x<a를 세 줄의 수직선으로 나타내고, a=2분의 11일 때 공통 범위 안의 정수 5를 점으로 표시한 그림.",
+    "solutionImageCaption": "예: a=2분의 11일 때의 그림이다. 첫째 부등식의 해는 x<0 또는 x>4이고, a>1이면 둘째 부등식의 해는 1<x<a이므로 공통 범위는 4<x<a이다. 정수 5만 들어가려면 a>5이어야 하고 6이 들어가면 안 되므로 a≤6이다. 정답은 5<a≤6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -634,7 +649,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: m≤−1 또는 m≥3, −3≤m<5, 그리고 공통 범위 −3≤m≤−1과 3≤m<5를 세 줄의 수직선으로 나타내고, 공통 범위의 정수 −3, −2, −1, 3, 4를 점으로 표시한 그림.",
+    "solutionImageCaption": "첫째 줄은 이차방정식이 실근을 갖는 조건이고, 둘째 줄은 부등식이 모든 실수 x에 대하여 성립하는 조건이다. 두 범위의 공통 부분에 있는 정수는 −3, −2, −1, 3, 4이고 이들의 합은 −3−2−1+3+4이다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -660,7 +679,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
     "subUnit": "치환과 연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=10과 직선 x=3y(주황), 직선 x=−y(초록)이 만나는 네 점 A, B, C, D를 좌표평면에 나타낸 그림. 점 A, B는 x=3y 위, 점 C, D는 x=−y 위에 있다.",
+    "solutionImageCaption": "x²−2xy−3y²=(x−3y)(x+y)=0에서 x=3y 또는 x=−y이다. 각각을 x²+y²=10에 대입하면 직선마다 원과 두 점에서 만나 모두 네 쌍의 해가 나온다. 정답은 (3,1), (−3,−1), (√5,−√5), (−√5,√5)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -714,6 +737,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=h(x)의 그래프(주황)와 이차함수 y=x²−2x−7의 그래프(파랑). x<4에서 높이 2인 반직선(오른쪽 끝은 속이 빈 점), 점 (4,1), x>4에서 높이 0인 반직선(왼쪽 끝은 속이 빈 점)이 그려져 있다.",
+    "solutionImageCaption": "(1)에서 f와 g의 교점은 f(x)=0의 근과 같아서 k=2일 때 2개이다. 그래프에서 h(x)=2인 x<4 부분은 포물선과 한 점에서 만나고 점 (4,1)에서도 만나며, h(x)=0인 x>4 부분은 포물선과 만나지 않는다. 정답은 (1) 2, (2) k<4이면 2, k=4이면 1, k>4이면 0, (3) 2이다.",
+    "solutionImageSize": "full"
   }
 ];
