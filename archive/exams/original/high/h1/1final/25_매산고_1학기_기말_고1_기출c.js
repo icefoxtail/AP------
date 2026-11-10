@@ -175,7 +175,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 두 일차부등식의 해 x>-2와 x≤1을 각각 나타내고, 겹치는 공통 범위와 그 안의 정수점을 표시한 그림.",
+    "solutionImageCaption": "두 일차부등식의 해를 각각 구하면 x>-2와 x≤1이다. 같은 수직선에 나타내면 공통 범위는 -2<x≤1이고, 이 범위에 들어가는 정수를 센다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -246,7 +250,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄에 a=1일 때의 첫째 부등식의 해 x≥−10/3, 둘째 부등식의 해 x<−1/3, 두 해의 공통 범위 −10/3≤x<−1/3을 같은 눈금으로 나타내고, 공통 범위 안의 정수점 −3, −2, −1을 표시한 그림.",
+    "solutionImageCaption": "예: a=1일 때 첫째 부등식의 해는 x≥−10/3, 둘째 부등식의 해는 x<−1/3이고, 공통 범위에 정수 −3, −2, −1이 들어가 합이 −6이다. a가 커지면 오른쪽 끝 (2a−3)/3이 오른쪽으로 움직여 정수 0, 1이 차례로 들어오므로 정수의 합이 −6인 a의 범위를 찾는다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -281,7 +289,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 f(x)와 꺾인 직선 모양의 절댓값 그래프 g(x)가 두 점 A, B에서 만나고, 두 점 사이에서 g의 그래프가 f의 그래프 위에 있는 부분을 색칠한 그림.",
+    "solutionImageCaption": "f(x)=x²−4x+5, g(x)=|2x−3|이라 하자. x²−4x+5=(x−2)²+1은 항상 양수이므로 절댓값을 그대로 벗길 수 있고, 두 그래프는 x=2와 x=4에서 만난다. 두 교점 사이에서 g의 그래프가 f의 그래프보다 위에 있으므로 이 구간의 정수 x의 합을 구한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -318,7 +330,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: k=4일 때 x축과 만나지 않고 위로 열린 포물선과, 경계인 k=6일 때 x축에 한 점에서 접하는 포물선을 위아래로 비교한 그림.",
+    "solutionImageCaption": "예: k=4일 때 그래프는 x축 위에 있고, 경계인 k=6일 때는 x축에 접한다. k=3이면 식이 6이 되어 모든 실수 x에 대하여 성립한다. 판별식이 음수가 되는 k의 범위를 구하면 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -526,9 +542,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q15-solution.svg",
-    "solutionImageAlt": "k=7/8이면 직선 y=x+k가 y=x²-2|x|+1의 그래프와 서로 다른 네 점에서 만난다. k=3/4와 k=1일 때는 세 점이고, 네 점인 범위는 3/4<k<1이다.",
-    "solutionImageCaption": "k=7/8이면 직선 y=x+k가 y=x²-2|x|+1의 그래프와 서로 다른 네 점에서 만난다. k=3/4와 k=1일 때는 세 점이고, 네 점인 범위는 3/4<k<1이다.",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 y=x²−2|x|+1과 주황색 직선 y=x+k가 서로 다른 네 점에서 만나는 그림. 곡선 위의 점 (−1, 0), (0, 1), (1, 0)이 표시되어 있다.",
+    "solutionImageCaption": "곡선 y=x²−2|x|+1과 직선 y=x+k의 교점이 4개인 경우를 그렸다. x≥0과 x<0으로 나누어 각 구간의 교점 수를 세면 k의 범위의 양 끝이 정해진다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -613,9 +629,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q18-solution.svg",
-    "solutionImageAlt": "두 포물선은 x=-1/3, x=3에서 만나고, 그 사이에서 g의 그래프가 f의 그래프보다 위에 있어 f(x)≤g(x)의 해는 -1/3≤x≤3이다.",
-    "solutionImageCaption": "두 포물선은 x=-1/3, x=3에서 만나고, 그 사이에서 g의 그래프가 f의 그래프보다 위에 있어 f(x)≤g(x)의 해는 -1/3≤x≤3이다.",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 f(x)와 위로 볼록한 포물선 g(x)가 두 점에서 만나고, 두 교점 사이에서 g의 그래프가 f의 그래프보다 위에 있는 부분을 색칠한 그림. f의 꼭짓점 (2, −5/4)와 g의 꼭짓점 (1, 1)이 표시되어 있다.",
+    "solutionImageCaption": "조건 (가), (나)로 f(x)=x²/4−x−1/4, g(x)=−x²/2+x+1/2을 얻는다. 두 그래프는 두 점에서 만나고, 두 교점 사이에서 g의 그래프가 f의 그래프보다 위에 있으므로 이 범위가 f(x)≤g(x)의 해이다. 정답은 −1/3≤x≤3이다.",
     "solutionImageSize": "full"
   },
   {

@@ -8,6 +8,8 @@ const flag=n=>flags.includes(n),opt=n=>{const i=flags.indexOf(n);return i>=0?fla
 const apply=flag('--apply'),limit=Number(opt('--exams')||1e9),only=opt('--only');
 const rows=JSON.parse(fs.readFileSync(rowsPath,'utf8'));
 const NEW_KEYS=['solutionImage','solutionImageAlt','solutionImageCaption','solutionImageSize'];
+// A bank whose ids are strings ("q01", "s01") names its figure after the id itself; integer ids keep q<N>-solution.svg.
+const solName=o=>typeof o==='string'?o+'-solution.svg':'q'+o+'-solution.svg';
 
 // ---- a tiny scanner: positions of every object's braces, skipping strings --------------------------------------------------
 function scan(text){
@@ -35,7 +37,7 @@ function topKeys(text,open,close){
   return keys;
 }
 function findQuestionObject(text,pairs,qid){
-  const re=new RegExp('(?:"id"|\\bid)\\s*:\\s*'+qid+'\\b','g');const hits=[];let m;
+  const re=new RegExp('(?:"id"|\\bid)\\s*:\\s*'+(typeof qid==='string'?'["\']'+qid+'["\']':qid+'\\b'),'g');const hits=[];let m;
   while((m=re.exec(text))){
     // innermost object that contains this position
     let best=null;for(const [o,c] of pairs)if(o<m.index&&c>m.index&&(best===null||o>best[0]))best=[o,c];
@@ -76,7 +78,7 @@ for(const [rel,items] of exams){
   let text=fs.readFileSync(file,'utf8'),before;
   try{before=bankOf(text);}catch(e){res.status='UNPARSEABLE:'+String(e).slice(0,60);report.push(res);continue;}
   let patched=text;const assets=[];
-  for(const it of items.sort((a,b)=>a.ord-b.ord)){
+  for(const it of items.sort((a,b)=>typeof a.ord==='string'||typeof b.ord==='string'?String(a.ord).localeCompare(String(b.ord)):a.ord-b.ord)){
     const q=before.find(x=>x.id===it.ord);
     if(!q){res.items.push({ord:it.ord,skip:'NO_SUCH_QUESTION'});continue;}
     // Any existing solutionImage* field means someone already registered (or half-registered) a figure for this question: never overwrite, report it.
@@ -84,7 +86,7 @@ for(const [rel,items] of exams){
     // m1 campaign: alt/caption/size come from the row (author publish.json), not from a state file.
     const size=it.size||'medium',caption=String(it.caption||'').trim(),alt=String(it.alt||'').trim();
     if(!caption||!alt){res.items.push({ord:it.ord,skip:'NO_CAPTION_OR_ALT'});continue;}
-    const assetRel=`assets/images/${uid}/${it.asset||('q'+it.ord+'-solution.svg')}`;
+    const assetRel=`assets/images/${uid}/${it.asset||solName(it.ord)}`;
     // Never overwrite an existing file: a figure with this name already exists in the repository (possibly another question's registered figure).
     if(fs.existsSync(path.join(root,'archive',assetRel))){res.items.push({ord:it.ord,skip:'ASSET_ALREADY_EXISTS'});continue;}
     const pairs=scan(patched),obj=findQuestionObject(patched,pairs,it.ord);

@@ -434,7 +434,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 분자 조건과 분모 조건을 나타낸 두 수직선과 공통 범위의 정수점.",
+    "solutionImageCaption": "분자 a+3은 0 이상이고 분모 a−3은 음수여야 한다. 따라서 −3≤a<3에 속하는 정수를 센다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -471,7 +475,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 y=f(x)와 주황 y=f(x+1)의 두 포물선과 각각의 x절편을 표시한 그림.",
+    "solutionImageCaption": "예: f(x)를 4분의 1×(x+2)(x−5)로 택해 근의 이동을 나타냈다. y=f(x+1)은 y=f(x)를 왼쪽으로 1만큼 옮긴 그래프이므로 두 근은 −3과 4이다. 정답은 −12이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -508,7 +516,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 판별식 조건의 공통 범위를 나타내며 왼쪽 끝은 닫히고 오른쪽 끝은 열린 수직선.",
+    "solutionImageCaption": "두 판별식 조건을 합치면 −(2분의 9)≤k<1이다. 이 범위에서 가장 큰 정수를 고른다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -580,9 +592,10 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "k=0일 때 y=x²과 k=−1일 때 y=(x+1)²−3의 그래프가 각각 직선 y=3x−9/4에 접하는 두 장면을 그린 그림. 접점 (3/2,9/4)과 (1/2,−3/4)을 표시해 a=3, b=−9/4임을 보여준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=x²과 주황 포물선 y=(x+1)²−3에 초록 직선이 각각 접하며 접점과 꼭짓점의 좌표가 표시된 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "예: 파란 포물선은 k=0, 주황 포물선은 k=−1인 경우이고 두 포물선은 같은 직선에 접한다. 접할 조건을 k의 항등식으로 정리하면 a=3, b=−4분의 9를 얻는다. 정답은 4분의 3이다."
   },
   {
     "id": 17,
@@ -780,8 +793,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q22-solution-graph.svg",
-    "solutionImageAlt": "−2≤x≤3에서 이차함수 y=(x−2)²−8의 그래프를 그리고 꼭짓점 (2,−8)에서 최솟값 −8, 끝점 (−2,8)에서 최댓값 8, 다른 끝점 (3,−7)을 표시한 그림.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: −2≤x≤3에서 위로 열린 포물선 f(x)의 양 끝점과 꼭짓점을 표시한 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "대칭축 x=2가 주어진 구간에 있으므로 x=2에서 최솟값 a−4를 갖는다. 축에서 더 먼 끝점 x=−2에서 최댓값 a+12를 가지므로 (a−4)(a+12)=−64를 푼다. 정답은 −4이다."
   }
 ];

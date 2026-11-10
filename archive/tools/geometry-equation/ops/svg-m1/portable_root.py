@@ -30,6 +30,19 @@ def run(argv, *, cwd, timeout=120, env=None):
     env['PYTHONUTF8'] = '1'
     return subprocess.run([str(x) for x in argv], cwd=cwd, env=env, capture_output=True, text=True, encoding='utf-8', errors='strict', timeout=timeout, check=True)
 
+import re
+QUESTION_KEY = re.compile(r'^[A-Za-z][A-Za-z0-9_-]{0,31}$')
+def is_question_key(o):
+    """A bank question id: a positive integer, or a string id such as 'q01' / 's01' (banks whose ids are strings)."""
+    return (type(o) is int and o >= 1) or (isinstance(o, str) and QUESTION_KEY.match(o) is not None)
+def question_key(text):
+    """A question id read back from JSON object keys / CLI text: digits are the integer id, anything else the string id."""
+    return int(text) if str(text).isdigit() else text
+def solution_name(o, version=None):
+    """Published solution figure file name: q<N>-solution[-vK].svg for integer ids, <id>-solution[-vK].svg for string ids."""
+    stem = o if isinstance(o, str) else f'q{o}'
+    return f'{stem}-solution' + (f'-v{version}' if version else '') + '.svg'
+
 def source_bank(root, src):
     import json
     source = (root / src).resolve()
@@ -40,7 +53,7 @@ def source_bank(root, src):
     result={}
     for q in rows:
         o=q.get('id')
-        if type(o) is not int or o<1 or o in result: raise ValueError('invalid or duplicate source ord')
+        if not is_question_key(o) or o in result: raise ValueError('invalid or duplicate source ord')
         result[o]=q
     return result
 
@@ -50,7 +63,7 @@ def validate_triage(root, src, rows):
     allowed={'FIGURE','REPLACE','KEEP','KEEP_EXISTING','EXEMPT','UNSUPPORTED','CONTENT','NO_SOURCE_FIGURE'}
     for row in rows:
         o=row.get('ord')
-        if type(o) is not int or o<1 or o in result: raise ValueError('invalid or duplicate triage ord')
+        if not is_question_key(o) or o in result: raise ValueError('invalid or duplicate triage ord')
         if row.get('decision') not in allowed: raise ValueError(f'q{o}: invalid decision')
         result[o]=row
     if set(result)!=set(bank): raise ValueError('triage ords do not match source bank')

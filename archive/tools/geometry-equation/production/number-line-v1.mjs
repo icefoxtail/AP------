@@ -16,7 +16,7 @@ export const FIGURE_MODEL_VERSION='NUMBER_LINE_FIGURE_MODEL_v1',FIGURE_SPEC_VERS
 const OBSERVER_SCRIPT=fileURLToPath(new URL('number-line-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
 const bad=code=>{throw Error(code);};
-const MAX_ROWS=4,MAX_POINTS=8,MAX_INTEGERS=25,MAX_TICK_INTEGERS=24,MAX_SUBDIVISIONS=8,MIN_TICK_GAP=6;
+const MAX_ROWS=4,MAX_POINTS=12,MAX_INTEGERS=25,MAX_TICK_INTEGERS=24,MAX_SUBDIVISIONS=8,MIN_TICK_GAP=6;
 // A point may be named by one Hangul consonant letter (ㄱ..ㅎ) in place of a capital letter.
 const JAMO=/^[\u3131-\u314E]$/u,CAPITAL=/^[A-Z]$/;
 // E35: a POINTS point with no value is a letter point (a, -a, n); its id is the name written below its dot.

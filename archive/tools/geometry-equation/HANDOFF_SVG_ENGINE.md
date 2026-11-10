@@ -21,6 +21,13 @@
 
 ## 00. 최신 현황과 다음 할 일 (2026-11-03, 먼저 읽기)
 
+### 2026-11-10 엔진 확장 회차 h(브랜치 engine/ext-20261110-h)
+- **문자열 문항 id(21 왕의중·21 연향중 2학기 기말 중3):** 은행 id가 `"q01"`·`"s01"`인 시험지는 id를 그대로 쓴다. UID는 `<시험지>|q01`(`question-uid.mjs`: 정수 id 또는 `^[A-Za-z][A-Za-z0-9_-]{0,31}$`; 정수 UID는 그대로). `render-plan` item의 `ordinal`에 `"s01"`을 쓰면 되고(`construction-archive-capture-v1.mjs`·`record-visual-browser-evidence.mjs`가 같은 id로 은행 문항을 찾는다, 정수 id 시험지의 바이트 불변), 게시 도구(`ops/svg-m1`의 `make-packet`·`publish.mjs`·`publish-exam.py`·`pubflow.py`·`ledger-upsert.py`·`verify-published.mjs`·`verify-publication-fonts.mjs`, 공용 `portable_root.py`)도 `ord`에 문자열 id를 받아 해설 그림 파일을 `<id>-solution.svg`(예 `s01-solution.svg`; 정수 id는 기존 `q<N>-solution.svg`)로 이름 짓는다. 원본 시험지 JS의 id는 바꾸지 않는다(숫자 id 사본 `_tmp_wangui_numeric`은 정식 해법이 아니다). 검증: `tests/string-question-id.test.mjs`(UID·캡처의 은행 조회·publish 도구 apply), 실제 렌더 `ordinal:"s01"` -> ARCHIVE_BOUND(`questionUid ...|s01`). 남은 것: `exam-status.py` 등 보조 도구와 시험지 마감 원장(`exam-figure-ledger.json`) 항목의 `ord`가 문자열인 경우의 소비자(원장 소비 테스트는 없다)는 첫 시험지를 닫을 때 확인.
+- **렌더 캡처 대기시간(PR #1595):** `GEOMETRY_CAPTURE_TIMEOUT_MS`(0 초과 600000 이하)가 Archive 캡처·화면 사전검사의 goto·waitForFunction·스크린샷 대기를 정한다. 없으면 예전 값 그대로.
+- **수직선 점 상한 8 -> 12(`number-line-v1.mjs` `MAX_POINTS`):** 19 금당고 확통 Q21 같은 10자리 수직선. 기존 plan은 8개 이하라 영향 없음. 점 모양은 `FILLED`·`HOLLOW`(`OPEN`은 `NUMBER_LINE_POINT_STYLE_INVALID`). **실제 10점 렌더는 이 PC가 너무 느려(렌더 1건 40분 이상) 이번 회차에 끝내지 못했다 - 병합 전에 10점 plan으로 확인 필요.**
+- **벤다이어그램 이름이 원 선에 닿을 때 `labelGap`(옵트인, 22 순천고 확통 Q18):** `diagram.labelGap:4`(정수 2~12)이면 집합 이름이 모든 원의 선에서 그만큼 떨어지고(부분집합 안쪽 집합은 바깥 원 안에서), 원 둘레를 한 바퀴 돌며 자리를 찾는다. 없으면 이전과 같은 바이트. 관측기는 `SD_SET_LABEL_TOUCHES_CIRCLE`, 거절 `SET_LABEL_GAP_INVALID`/`SD_LABEL_GAP_INVALID`. **실제 Q18 렌더(`labelGap:4`)는 같은 이유로 미검증 - 병합 전에 확인 필요.**
+- **22 순천고 확통 Q09(구간별 다항 `regions` 값 `3/8`)는 이번 회차에서 해결하지 못했다:** 지금 `3/8`은 영역 안 y축 왼쪽에 놓여 영역 가운데가 아니다. `overlays.callouts`는 곡선 위 점에서만 지시선이 시작해 영역 안 빈 점에는 못 쓴다 -> 엔진 후보(영역 라벨 지시선).
+
 ### 2026-11-09 엔진 확장 회차 a(별도 Sonnet 라인, 브랜치 engine/ext-20261109-a)
 - **축 눈금 분수 세로분수:** `axisTickValues`의 분수 문자열(`"2/5"`, `"4/35"`)이 빗금이 아니라 세로분수로 그려진다(`visual_engine/engine.py` 눈금 라벨 `tex`). 확률밀도처럼 납작한 그래프의 세로 확대는 새 기능 없이 기존 `graphPlan.axisScale:{"x":1,"y":10}`로 된다(골든 `item130ext1probdensity`, 22 효천 확통 기말 q24; 사용법은 가이드 G18c 덧붙임 아래 단락). 지시서 `ops/svg-m1/briefs/engine-tick-fraction-stacked.md`.
 

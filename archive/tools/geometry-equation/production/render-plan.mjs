@@ -14,6 +14,7 @@ import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs'
 import * as cap from './construction-archive-capture-v1.mjs';
 import * as obs from './archive-inverse-observation-v1.mjs';
 import {fileRef} from '../../pipeline-core/canonical.mjs';
+import {SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import {expandDiscontinuousPair} from './discontinuous-pair-v1.mjs';
 import {expandPlaneVectors} from './plane-vectors.mjs';
@@ -46,7 +47,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     return result;
   };
   try{
-    if(typeof meta.sourcePath!=='string'||!Number.isSafeInteger(meta.ordinal))throw new Error('item needs sourcePath (string) and ordinal (integer)');
+    if(typeof meta.sourcePath!=='string'||!(Number.isSafeInteger(meta.ordinal)&&meta.ordinal>=1||typeof meta.ordinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(meta.ordinal)))throw new Error('item needs sourcePath (string) and ordinal (integer, or the string id of a bank whose ids are strings)');
     const examUid=path.basename(meta.sourcePath,'.js');
     const identity=assetIdentity(`${examUid}|${meta.ordinal}`,'SOLUTION_VISUAL','decisive-relation');
     row.identity=identity;
