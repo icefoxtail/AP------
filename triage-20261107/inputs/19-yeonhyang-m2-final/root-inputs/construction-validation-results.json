@@ -1,0 +1,4731 @@
+[
+  {
+    "question": "q01",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "7b5f31d0a8d3471229d088514d3532763aec1b9ba3e0a292b204b71db43031c8",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "D",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "E",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "F",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "G",
+          "op": "CENTROID",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "GL",
+          "op": "TRANSLATE_POINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        }
+      ],
+      "validation": {
+        "nodeCount": 8,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "GL"
+        ],
+        "conditionAuditCount": 2
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ],
+            "approximation": [
+              3.0,
+              6.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              9.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              1.5,
+              3.0
+            ],
+            "precisionDigits": 17
+          },
+          "E": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "9",
+                "denominator": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              4.5,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "F": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              6.0,
+              3.0
+            ],
+            "precisionDigits": 17
+          },
+          "G": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              4.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          },
+          "GL": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ],
+            "approximation": [
+              3.0,
+              4.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "gDivision",
+            "sourceConditionId": "c1",
+            "kind": "MIDPOINT_RATIO",
+            "status": "PASS",
+            "checks": [
+              "COLLINEAR",
+              "BETWEEN_ENDPOINTS",
+              "DISTANCE_RATIO"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "2"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "2"
+            }
+          },
+          {
+            "id": "cDivision",
+            "sourceConditionId": "c1",
+            "kind": "MIDPOINT_RATIO",
+            "status": "PASS",
+            "checks": [
+              "COLLINEAR",
+              "BETWEEN_ENDPOINTS",
+              "DISTANCE_RATIO"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "2"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "2"
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "nodeId": "E",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "F",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "G",
+            "op": "CENTROID",
+            "dependencies": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "GL",
+            "op": "TRANSLATE_POINT",
+            "dependencies": [
+              "G"
+            ]
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "GL"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "gDivision",
+          "sourceConditionId": "c1",
+          "kind": "MIDPOINT_RATIO",
+          "status": "PASS",
+          "checks": [
+            "COLLINEAR",
+            "BETWEEN_ENDPOINTS",
+            "DISTANCE_RATIO"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        {
+          "id": "cDivision",
+          "sourceConditionId": "c1",
+          "kind": "MIDPOINT_RATIO",
+          "status": "PASS",
+          "checks": [
+            "COLLINEAR",
+            "BETWEEN_ENDPOINTS",
+            "DISTANCE_RATIO"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "2"
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q02",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "93bb18538dff6814dc32d973733360c570111b08a815af8ffd41d087f51fdd7a",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "D",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "G",
+          "op": "CENTROID",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "Gp",
+          "op": "CENTROID",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "GL",
+          "op": "TRANSLATE_POINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "GpL",
+          "op": "TRANSLATE_POINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        }
+      ],
+      "validation": {
+        "nodeCount": 8,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "G",
+          "GL",
+          "Gp",
+          "GpL"
+        ],
+        "conditionAuditCount": 0
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ],
+            "approximation": [
+              3.0,
+              6.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              9.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "9",
+                "denominator": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              4.5,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "G": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              4.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          },
+          "GL": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "14",
+                "denominator": "5"
+              },
+              {
+                "kind": "rational",
+                "numerator": "16",
+                "denominator": "5"
+              }
+            ],
+            "approximation": [
+              2.8,
+              3.2
+            ],
+            "precisionDigits": 17
+          },
+          "Gp": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "13",
+                "denominator": "3"
+              },
+              {
+                "kind": "rational",
+                "numerator": "2",
+                "denominator": "3"
+              }
+            ],
+            "approximation": [
+              4.333333333333333,
+              0.6666666666666666
+            ],
+            "precisionDigits": 17
+          },
+          "GpL": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "86",
+                "denominator": "15"
+              },
+              {
+                "kind": "rational",
+                "numerator": "-8",
+                "denominator": "15"
+              }
+            ],
+            "approximation": [
+              5.733333333333333,
+              -0.5333333333333333
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "G",
+            "op": "CENTROID",
+            "dependencies": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "GL",
+            "op": "TRANSLATE_POINT",
+            "dependencies": [
+              "G"
+            ]
+          },
+          {
+            "nodeId": "Gp",
+            "op": "CENTROID",
+            "dependencies": [
+              "B",
+              "C",
+              "G"
+            ]
+          },
+          {
+            "nodeId": "GpL",
+            "op": "TRANSLATE_POINT",
+            "dependencies": [
+              "Gp"
+            ]
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "G",
+          "GL",
+          "Gp",
+          "GpL"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q03",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "654f688d38fbdff7e435c75611533765135a6a9d11d0a7faab9fbfa6cc2f0ab3",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "M",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "G",
+          "op": "CENTROID",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "Gp",
+          "op": "CENTROID",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        }
+      ],
+      "validation": {
+        "nodeCount": 6,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "G",
+          "Gp"
+        ],
+        "conditionAuditCount": 1
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "9"
+              }
+            ],
+            "approximation": [
+              6.0,
+              9.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              12.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "M": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              6.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "G": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              4.0,
+              3.0
+            ],
+            "precisionDigits": 17
+          },
+          "Gp": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              8.0,
+              3.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "centroidGap",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "4"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "4"
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "M",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "G",
+            "op": "CENTROID",
+            "dependencies": [
+              "A",
+              "B",
+              "M"
+            ]
+          },
+          {
+            "nodeId": "Gp",
+            "op": "CENTROID",
+            "dependencies": [
+              "A",
+              "C",
+              "M"
+            ]
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "G",
+          "Gp"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "centroidGap",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "4"
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q04",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "ac2b42f97c2508983cc327cd1f6f929a5308caa669993103ea98eb415edcd2f8",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "U",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "V",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "P",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "Q",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "R",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "S",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        }
+      ],
+      "validation": {
+        "nodeCount": 9,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "U",
+          "V"
+        ],
+        "conditionAuditCount": 3
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "-6"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              -6.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "-8"
+              }
+            ],
+            "approximation": [
+              0.0,
+              -8.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "P": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "-6"
+              },
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ],
+            "approximation": [
+              -6.0,
+              6.0
+            ],
+            "precisionDigits": 17
+          },
+          "Q": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ],
+            "approximation": [
+              0.0,
+              6.0
+            ],
+            "precisionDigits": 17
+          },
+          "R": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "integer",
+                "value": "-8"
+              }
+            ],
+            "approximation": [
+              8.0,
+              -8.0
+            ],
+            "precisionDigits": 17
+          },
+          "S": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              8.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "U": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "-14"
+              },
+              {
+                "kind": "integer",
+                "value": "-6"
+              }
+            ],
+            "approximation": [
+              -14.0,
+              -6.0
+            ],
+            "precisionDigits": 17
+          },
+          "V": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "-8"
+              },
+              {
+                "kind": "integer",
+                "value": "-14"
+              }
+            ],
+            "approximation": [
+              -8.0,
+              -14.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "hypotenuse",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "10"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "10"
+            }
+          },
+          {
+            "id": "leg8",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "8"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "8"
+            }
+          },
+          {
+            "id": "leg6",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "6"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "6"
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "P",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "Q",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "R",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "S",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "U",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "V",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "U",
+          "V"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "hypotenuse",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        {
+          "id": "leg8",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        {
+          "id": "leg6",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "6"
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q05",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "18d9a5464d58666a2645342c2455d09a4a8e5cf5aaefff1b72b81e5d9618a7a4",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        }
+      ],
+      "validation": {
+        "nodeCount": 4,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "conditionAuditCount": 4
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "approximation": [
+              0.0,
+              8.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "15"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              15.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              6.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "BCis15",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "15"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "15"
+            }
+          },
+          {
+            "id": "ACis17",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "17"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "17"
+            }
+          },
+          {
+            "id": "BDis6",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "6"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "6"
+            }
+          },
+          {
+            "id": "ADis10",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "10"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "10"
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "BCis15",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        {
+          "id": "ACis17",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "17"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "17"
+          }
+        },
+        {
+          "id": "BDis6",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        {
+          "id": "ADis10",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "10"
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q06",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "8da31130a98a5ec299dc650466e4ce91b727ace533392e6b6555b75fde0a22dd",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "E",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "F",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "G",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        }
+      ],
+      "validation": {
+        "nodeCount": 7,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "conditionAuditCount": 3
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ],
+            "approximation": [
+              0.0,
+              12.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              12.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ],
+            "approximation": [
+              12.0,
+              12.0
+            ],
+            "precisionDigits": 17
+          },
+          "E": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "16"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              16.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "F": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "16"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ],
+            "approximation": [
+              16.0,
+              4.0
+            ],
+            "precisionDigits": 17
+          },
+          "G": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ],
+            "approximation": [
+              12.0,
+              4.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "largeSide",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "12"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "12"
+            }
+          },
+          {
+            "id": "diagonalAE",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "20"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "20"
+            }
+          },
+          {
+            "id": "smallSide",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "4"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "4"
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "E",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "F",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "G",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "largeSide",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        {
+          "id": "diagonalAE",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "20"
+          }
+        },
+        {
+          "id": "smallSide",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "4"
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q08",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "c435d5c534560fb39adb8a6ca1f90cf259192e4ca4d7b51a981962818dc3f3c3",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "O",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "T",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "R",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "S",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "L",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        }
+      ],
+      "validation": {
+        "nodeCount": 14,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "L",
+          "O",
+          "R",
+          "S",
+          "T",
+          "bottomCircle",
+          "circ",
+          "leftCircle",
+          "rightCircle",
+          "topCircle"
+        ],
+        "conditionAuditCount": 12
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "16"
+              }
+            ],
+            "approximation": [
+              0.0,
+              16.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              12.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "16"
+              }
+            ],
+            "approximation": [
+              12.0,
+              16.0
+            ],
+            "precisionDigits": 17
+          },
+          "L": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "approximation": [
+              0.0,
+              8.0
+            ],
+            "precisionDigits": 17
+          },
+          "O": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "approximation": [
+              6.0,
+              8.0
+            ],
+            "precisionDigits": 17
+          },
+          "R": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "approximation": [
+              12.0,
+              8.0
+            ],
+            "precisionDigits": 17
+          },
+          "S": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              6.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "T": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "16"
+              }
+            ],
+            "approximation": [
+              6.0,
+              16.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {
+          "bottomCircle": {
+            "centerExact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "radiusExact": {
+              "kind": "integer",
+              "value": "6"
+            },
+            "approximation": [
+              6.0,
+              0.0,
+              6.0
+            ]
+          },
+          "circ": {
+            "centerExact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "radiusExact": {
+              "kind": "integer",
+              "value": "10"
+            },
+            "approximation": [
+              6.0,
+              8.0,
+              10.0
+            ]
+          },
+          "leftCircle": {
+            "centerExact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "radiusExact": {
+              "kind": "integer",
+              "value": "8"
+            },
+            "approximation": [
+              0.0,
+              8.0,
+              8.0
+            ]
+          },
+          "rightCircle": {
+            "centerExact": [
+              {
+                "kind": "integer",
+                "value": "12"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "radiusExact": {
+              "kind": "integer",
+              "value": "8"
+            },
+            "approximation": [
+              12.0,
+              8.0,
+              8.0
+            ]
+          },
+          "topCircle": {
+            "centerExact": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "16"
+              }
+            ],
+            "radiusExact": {
+              "kind": "integer",
+              "value": "6"
+            },
+            "approximation": [
+              6.0,
+              16.0,
+              6.0
+            ]
+          }
+        },
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "circleMembership1",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership2",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership3",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership4",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership5",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership6",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership7",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership8",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership9",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership10",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership11",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "circleMembership12",
+            "sourceConditionId": "c1",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "L",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "nodeId": "O",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "R",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "nodeId": "S",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "T",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "nodeId": "bottomCircle",
+            "op": "CIRCLE_CENTER_RADIUS",
+            "dependencies": [
+              "S"
+            ]
+          },
+          {
+            "nodeId": "circ",
+            "op": "CIRCLE_CENTER_RADIUS",
+            "dependencies": [
+              "O"
+            ]
+          },
+          {
+            "nodeId": "leftCircle",
+            "op": "CIRCLE_CENTER_RADIUS",
+            "dependencies": [
+              "L"
+            ]
+          },
+          {
+            "nodeId": "rightCircle",
+            "op": "CIRCLE_CENTER_RADIUS",
+            "dependencies": [
+              "R"
+            ]
+          },
+          {
+            "nodeId": "topCircle",
+            "op": "CIRCLE_CENTER_RADIUS",
+            "dependencies": [
+              "T"
+            ]
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "L",
+          "O",
+          "R",
+          "S",
+          "T",
+          "bottomCircle",
+          "circ",
+          "leftCircle",
+          "rightCircle",
+          "topCircle"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "circleMembership1",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership2",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership3",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership4",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership5",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership6",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership7",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership8",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership9",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership10",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership11",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "circleMembership12",
+          "sourceConditionId": "c1",
+          "kind": "CIRCLE_MEMBERSHIP",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_CIRCLE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q14",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "51fec810a011ee3ec520884e754dcf5da5b6e4e7f054bd607117c48870da865b",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "E",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "F",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "G",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        }
+      ],
+      "validation": {
+        "nodeCount": 9,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "l",
+          "m"
+        ],
+        "conditionAuditCount": 1
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "7"
+              }
+            ],
+            "approximation": [
+              0.0,
+              7.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "7"
+              }
+            ],
+            "approximation": [
+              2.0,
+              7.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "integer",
+                "value": "7"
+              }
+            ],
+            "approximation": [
+              5.0,
+              7.0
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "7"
+              }
+            ],
+            "approximation": [
+              9.0,
+              7.0
+            ],
+            "precisionDigits": 17
+          },
+          "E": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              -1.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "F": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              4.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "G": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "10"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              10.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {
+          "l": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "-7"
+              }
+            ],
+            "approximation": [
+              0.0,
+              1.0,
+              -7.0
+            ]
+          },
+          "m": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          }
+        },
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "parallelLines",
+            "sourceConditionId": "c1",
+            "kind": "PARALLEL",
+            "status": "PASS",
+            "checks": [
+              "DIRECTION_VECTORS_PARALLEL"
+            ],
+            "observed": true
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "E",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "F",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "G",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "l",
+            "op": "SOURCE_LINE",
+            "dependencies": []
+          },
+          {
+            "nodeId": "m",
+            "op": "SOURCE_LINE",
+            "dependencies": []
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "l",
+          "m"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "parallelLines",
+          "sourceConditionId": "c1",
+          "kind": "PARALLEL",
+          "status": "PASS",
+          "checks": [
+            "DIRECTION_VECTORS_PARALLEL"
+          ],
+          "observed": true
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q17",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "fe8591e99a6cc47940f4d9e67fe4b0f6e606eab3d0e0eadffd50a9318ce3484e",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "p00",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p02",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p04",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p12",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p13",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p11",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p10",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p23",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p22",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p21",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p20",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p32",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p31",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p42",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p40",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "p24",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        }
+      ],
+      "validation": {
+        "nodeCount": 16,
+        "dependencyOrder": [
+          "p00",
+          "p02",
+          "p04",
+          "p10",
+          "p11",
+          "p12",
+          "p13",
+          "p20",
+          "p21",
+          "p22",
+          "p23",
+          "p24",
+          "p31",
+          "p32",
+          "p40",
+          "p42"
+        ],
+        "conditionAuditCount": 0
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "p00": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "p02": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              0.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          },
+          "p04": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ],
+            "approximation": [
+              0.0,
+              4.0
+            ],
+            "precisionDigits": 17
+          },
+          "p10": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              1.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "p11": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ],
+            "approximation": [
+              1.0,
+              1.0
+            ],
+            "precisionDigits": 17
+          },
+          "p12": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              1.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          },
+          "p13": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              1.0,
+              3.0
+            ],
+            "precisionDigits": 17
+          },
+          "p20": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              2.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "p21": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ],
+            "approximation": [
+              2.0,
+              1.0
+            ],
+            "precisionDigits": 17
+          },
+          "p22": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              2.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          },
+          "p23": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              2.0,
+              3.0
+            ],
+            "precisionDigits": 17
+          },
+          "p24": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ],
+            "approximation": [
+              2.0,
+              4.0
+            ],
+            "precisionDigits": 17
+          },
+          "p31": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ],
+            "approximation": [
+              3.0,
+              1.0
+            ],
+            "precisionDigits": 17
+          },
+          "p32": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              3.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          },
+          "p40": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              4.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "p42": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              4.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [],
+        "transcript": [
+          {
+            "nodeId": "p00",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p02",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p04",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p10",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p11",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p12",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p13",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p20",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p21",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p22",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p23",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p24",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p31",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p32",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p40",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "p42",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          }
+        ],
+        "order": [
+          "p00",
+          "p02",
+          "p04",
+          "p10",
+          "p11",
+          "p12",
+          "p13",
+          "p20",
+          "p21",
+          "p22",
+          "p23",
+          "p24",
+          "p31",
+          "p32",
+          "p40",
+          "p42"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q21",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "2586ccd7d9f45328b43263966ccc78ea4f9f486caecd2b84b5ded174fbf66341",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "D",
+          "op": "MIDPOINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "G",
+          "op": "CENTROID",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "Gp",
+          "op": "CENTROID",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "GL",
+          "op": "TRANSLATE_POINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        },
+        {
+          "nodeId": "GpL",
+          "op": "TRANSLATE_POINT",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "classification": "DERIVED_POINT"
+        }
+      ],
+      "validation": {
+        "nodeCount": 8,
+        "dependencyOrder": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "G",
+          "GL",
+          "Gp",
+          "GpL"
+        ],
+        "conditionAuditCount": 4
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "18"
+              }
+            ],
+            "approximation": [
+              9.0,
+              18.0
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "18"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              18.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              9.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "G": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ],
+            "approximation": [
+              9.0,
+              6.0
+            ],
+            "precisionDigits": 17
+          },
+          "GL": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "7"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ],
+            "approximation": [
+              7.0,
+              8.0
+            ],
+            "precisionDigits": 17
+          },
+          "Gp": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              9.0,
+              2.0
+            ],
+            "precisionDigits": 17
+          },
+          "GpL": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "11"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              11.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "givenAG",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "12"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "12"
+            }
+          },
+          {
+            "id": "GD",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "6"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "6"
+            }
+          },
+          {
+            "id": "GGp",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "4"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "4"
+            }
+          },
+          {
+            "id": "AGp",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "16"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "16"
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "G",
+            "op": "CENTROID",
+            "dependencies": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "nodeId": "GL",
+            "op": "TRANSLATE_POINT",
+            "dependencies": [
+              "G"
+            ]
+          },
+          {
+            "nodeId": "Gp",
+            "op": "CENTROID",
+            "dependencies": [
+              "B",
+              "C",
+              "G"
+            ]
+          },
+          {
+            "nodeId": "GpL",
+            "op": "TRANSLATE_POINT",
+            "dependencies": [
+              "Gp"
+            ]
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "G",
+          "GL",
+          "Gp",
+          "GpL"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "givenAG",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        {
+          "id": "GD",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        {
+          "id": "GGp",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        {
+          "id": "AGp",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "16"
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  {
+    "question": "q22",
+    "runnerExit": 0,
+    "result": {
+      "status": "PASS",
+      "contractSource": {
+        "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+        "bytes": 27356,
+        "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+        "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+      },
+      "mathPlanSha256": "91279afe020671ad3c77e2a6f45851ed91ddedad8621b00b261d53538478446f",
+      "stages": {
+        "construction.validate": "PASS",
+        "construction.execute": "PASS"
+      },
+      "pointProvenance": [
+        {
+          "nodeId": "R",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "S",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "T",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "U",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "V",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        },
+        {
+          "nodeId": "W",
+          "op": "SOURCE_POINT",
+          "factRole": "GIVEN",
+          "classification": "SOURCE_POINT_LITERAL"
+        }
+      ],
+      "validation": {
+        "nodeCount": 6,
+        "dependencyOrder": [
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "W"
+        ],
+        "conditionAuditCount": 6
+      },
+      "model": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "R": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "S": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              4.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "T": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "approximation": [
+              0.0,
+              4.47213595499958
+            ],
+            "precisionDigits": 17
+          },
+          "U": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              9.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "V": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "13"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              13.0,
+              0.0
+            ],
+            "precisionDigits": 17
+          },
+          "W": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "9"
+              },
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ],
+            "approximation": [
+              9.0,
+              6.0
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {},
+        "lines": {},
+        "circles": {},
+        "pointSets": {},
+        "conditionAudits": [
+          {
+            "id": "firstLeg4",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "4"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "4"
+            }
+          },
+          {
+            "id": "firstHyp6",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "6"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "6"
+            }
+          },
+          {
+            "id": "secondLeg4",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "4"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "4"
+            }
+          },
+          {
+            "id": "secondLeg6",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "6"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "6"
+            }
+          },
+          {
+            "id": "firstOtherLeg",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            "expected": {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "secondHyp",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "13"
+                    }
+                  ]
+                }
+              ]
+            },
+            "expected": {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "13"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "R",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "S",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "T",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "U",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "V",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "W",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          }
+        ],
+        "order": [
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "W"
+        ],
+        "coordinateMode": "CONSTRUCTED_REALIZATION"
+      },
+      "conditionAudits": [
+        {
+          "id": "firstLeg4",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        {
+          "id": "firstHyp6",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        {
+          "id": "secondLeg4",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        {
+          "id": "secondLeg6",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        {
+          "id": "firstOtherLeg",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "expected": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "secondHyp",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              }
+            ]
+          },
+          "expected": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "provenanceAudit": {
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  }
+]

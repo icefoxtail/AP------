@@ -1,0 +1,79 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1,
+        "depth": 1
+      },
+      "height": 1,
+      "names": {
+        "base": [
+          "E",
+          "H",
+          "G",
+          "F"
+        ],
+        "top": [
+          "A",
+          "D",
+          "C",
+          "B"
+        ]
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "H",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "H",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "G",
+      "to": "C",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "labels": [
+    {
+      "text": "출발점",
+      "at": "E"
+    },
+    {
+      "text": "도착점",
+      "at": "C"
+    }
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "caption": "정육면체의 맞은편 꼭짓점 사이 최단경로는 서로 다른 세 방향의 모서리를 각각 한 번씩 지나는 순서로 정해진다. 3×2×1=6가지이므로 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 그림과 같은 정육면체에서 개미가 모서리를 따라 이동한다고 할 때, 개미가 출발점에서 도착점까지 최단거리로 이동할 수 있는 모든 경우의 수를 구하면? [4점]",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "labels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 최단경로 E→H→G→C를 강조하고 나머지 모서리는 정육면체의 기본 윤곽으로 남긴다. 숨은 모서리는 고정 직교투영의 깊이 판정으로 점선 처리한다."
+  ],
+  "sourceQuote": "다음 그림과 같은 정육면체에서 개미가 모서리를 따라 이동한다고 할 때, 개미가 출발점에서 도착점까지 최단거리로 이동할 수 있는 모든 경우의 수를 구하면? [4점]"
+}

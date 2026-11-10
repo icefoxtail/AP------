@@ -1,0 +1,543 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "MIDPOINT",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "topCircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rightCircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "R"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bottomCircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "leftCircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "circleMembership1",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "circ",
+          "A"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership2",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "circ",
+          "B"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership3",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "circ",
+          "C"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership4",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "circ",
+          "D"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership5",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "topCircle",
+          "A"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership6",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "topCircle",
+          "D"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership7",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "rightCircle",
+          "D"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership8",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "rightCircle",
+          "C"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership9",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "bottomCircle",
+          "B"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership10",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "bottomCircle",
+          "C"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership11",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "leftCircle",
+          "A"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "circleMembership12",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "leftCircle",
+          "B"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "caption": "가로 12 cm, 세로 16 cm 직사각형에서 네 초승달 영역은 실제 원호로 둘러싸인다. 네 영역의 넓이 합은 직사각형 넓이 12×16=192 cm²이므로 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 그림은 가로, 세로의 길이가 각각 $12\\text{ cm}$, $16\\text{ cm}$인 직사각형 $ABCD$의 각 변을 지름으로 하는 반원을 그린 후, 네 점 $A$, $B$, $C$, $D$를 지나는 원을 그린 것이다. 색칠한 부분의 넓이를 구하면? [5점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원의 각 반지름과 반원 호를 보존하고, 네 초승달을 직선과 정확한 원호가 혼합된 닫힌 영역으로 색칠한다."
+  ],
+  "sourceQuote": "다음 그림은 가로, 세로의 길이가 각각 $12\\text{ cm}$, $16\\text{ cm}$인 직사각형 $ABCD$의 각 변을 지름으로 하는 반원을 그린 후, 네 점 $A$, $B$, $C$, $D$를 지나는 원을 그린 것이다. 색칠한 부분의 넓이를 구하면? [5점]",
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "topOuter",
+        "circle": "topCircle",
+        "center": "T",
+        "from": "A",
+        "to": "D",
+        "side": "CW",
+        "highlight": true
+      },
+      {
+        "id": "rightOuter",
+        "circle": "rightCircle",
+        "center": "R",
+        "from": "D",
+        "to": "C",
+        "side": "CW",
+        "highlight": true
+      },
+      {
+        "id": "bottomOuter",
+        "circle": "bottomCircle",
+        "center": "S",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "highlight": true
+      },
+      {
+        "id": "leftOuter",
+        "circle": "leftCircle",
+        "center": "L",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "highlight": true
+      }
+    ],
+    "regions": [
+      {
+        "id": "topLune",
+        "fill": "LIGHT",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "T",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "rightLune",
+        "fill": "LIGHT",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "loop": {
+              "start": "D",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "R",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "bottomLune",
+        "fill": "LIGHT",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "S",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "leftLune",
+        "fill": "LIGHT",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "L",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

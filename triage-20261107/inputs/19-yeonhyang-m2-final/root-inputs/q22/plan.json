@@ -1,0 +1,368 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "20"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "firstLeg4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "R",
+          "S"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      },
+      {
+        "id": "firstHyp6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "S",
+          "T"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "secondLeg4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "U",
+          "V"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      },
+      {
+        "id": "secondLeg6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "U",
+          "W"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "firstOtherLeg",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "R",
+          "T"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        }
+      },
+      {
+        "id": "secondHyp",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "V",
+          "W"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "52"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "RS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "ST",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "TR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "UV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "VW",
+      "refs": [
+        "V",
+        "W"
+      ]
+    },
+    {
+      "id": "WU",
+      "refs": [
+        "W",
+        "U"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightR",
+      "refs": [
+        "S",
+        "R",
+        "T"
+      ]
+    },
+    {
+      "id": "rightU",
+      "refs": [
+        "V",
+        "U",
+        "W"
+      ]
+    }
+  ],
+  "caption": "왼쪽 예시는 6이 빗변이라 a²=6²−4²=20이고, 오른쪽 예시는 a가 빗변이라 a²=4²+6²=52이다. 가능한 값은 20, 52이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "[서술형2] 세 변의 길이가 각각 $4$, $6$, $a$인 삼각형이 직각삼각형이 되도록 하는 $a^2$의 값을 모두 구하여라. [5점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 경우를 나란히 독립적인 예시 삼각형으로 그린다. 왼쪽은 6을 빗변으로, 오른쪽은 a를 빗변으로 하고 각각 직각 표식을 둔다."
+  ],
+  "sourceQuote": "[서술형2] 세 변의 길이가 각각 $4$, $6$, $a$인 삼각형이 직각삼각형이 되도록 하는 $a^2$의 값을 모두 구하여라. [5점]",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "r4",
+        "from": "R",
+        "to": "S",
+        "label": "4",
+        "side": "BELOW",
+        "offset": 1
+      },
+      {
+        "id": "rA",
+        "from": "R",
+        "to": "T",
+        "label": "a",
+        "side": "LEFT",
+        "offset": 1
+      },
+      {
+        "id": "s6",
+        "from": "S",
+        "to": "T",
+        "label": "6",
+        "side": "ABOVE",
+        "offset": 1
+      },
+      {
+        "id": "u4",
+        "from": "U",
+        "to": "V",
+        "label": "4",
+        "side": "BELOW",
+        "offset": 1
+      },
+      {
+        "id": "u6",
+        "from": "U",
+        "to": "W",
+        "label": "6",
+        "side": "LEFT",
+        "offset": 1
+      },
+      {
+        "id": "vA",
+        "from": "V",
+        "to": "W",
+        "label": "a",
+        "side": "ABOVE",
+        "offset": 1
+      }
+    ]
+  }
+}

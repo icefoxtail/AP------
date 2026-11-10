@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Gp",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "G"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-6",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "6",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GpL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Gp"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "7",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-6",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "Gp",
+    "GL",
+    "GpL"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "CG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "BGp",
+      "refs": [
+        "B",
+        "Gp"
+      ]
+    },
+    {
+      "id": "DGp",
+      "refs": [
+        "D",
+        "Gp"
+      ]
+    },
+    {
+      "id": "leadG",
+      "refs": [
+        "G",
+        "GL"
+      ]
+    },
+    {
+      "id": "leadGp",
+      "refs": [
+        "Gp",
+        "GpL"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "caption": "ABC의 넓이는 72 cm²이고 두 무게중심의 높이비로 [G′BD]=[ABC]/18=4 cm²이다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $G'$은 $\\triangle GBC$의 무게중심이다. $\\triangle ABC$의 넓이가 $72\\text{ cm}^2$일 때, $\\triangle G'BD$의 넓이를 구하면? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "D는 BC의 중점이고 두 무게중심을 구분한다. 작은 삼각형 G′BD만 영역으로 강조하고 전체 72 cm²는 원문 조건으로 유지한다."
+  ],
+  "sourceQuote": "다음 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $G'$은 $\\triangle GBC$의 무게중심이다. $\\triangle ABC$의 넓이가 $72\\text{ cm}^2$일 때, $\\triangle G'BD$의 넓이를 구하면? [4점]",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "smallTriangle",
+        "fill": "LIGHT",
+        "label": "4",
+        "unit": "cm^2",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "polygon": [
+              "G",
+              "B",
+              "D"
+            ]
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "labelG",
+        "at": "GL",
+        "text": "G",
+        "labelKind": "TEXT",
+        "anchor": "W",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labelGp",
+        "at": "GpL",
+        "text": "G′",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "G",
+    "Gp",
+    "GL",
+    "GpL"
+  ],
+  "unmarkedPointNames": [
+    "GL",
+    "GpL"
+  ]
+}

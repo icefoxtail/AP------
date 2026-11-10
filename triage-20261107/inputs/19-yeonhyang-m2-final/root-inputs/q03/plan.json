@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "M"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Gp",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "M",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "centroidGap",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "G",
+          "Gp"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "G",
+    "Gp"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "GGp",
+      "refs": [
+        "G",
+        "Gp"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "caption": "BC=12 cm일 때 G와 G′는 BC와 평행한 같은 높이에 놓이고 GG′=4 cm이다. 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 삼각형 $ABC$에서 점 $M$은 $BC$의 중점이고 두 점 $G$, $G'$은 각각 두 삼각형 $ABM$, $AMC$의 무게중심이다. $BC=12\\text{ cm}$일 때, $GG'$의 길이를 구하면? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BC의 중점을 나누어 두 삼각형의 무게중심을 표시하고 GG′와 BC의 평행 및 거리 4 cm를 나타낸다."
+  ],
+  "sourceQuote": "다음 삼각형 $ABC$에서 점 $M$은 $BC$의 중점이고 두 점 $G$, $G'$은 각각 두 삼각형 $ABM$, $AMC$의 무게중심이다. $BC=12\\text{ cm}$일 때, $GG'$의 길이를 구하면? [4점]",
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallelCentroidBase",
+        "count": 1,
+        "segments": [
+          "GGp",
+          "BC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "baseLength",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "offset": 1
+      },
+      {
+        "id": "centroidGap",
+        "from": "G",
+        "to": "Gp",
+        "label": "4",
+        "unit": "cm",
+        "factRole": "CONCLUSION",
+        "side": "ABOVE",
+        "offset": 1
+      }
+    ]
+  }
+}

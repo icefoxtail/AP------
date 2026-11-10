@@ -1,0 +1,342 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Gp",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "G"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GpL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Gp"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "givenAG",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "G"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "GD",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "G",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "GGp",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "G",
+          "Gp"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      },
+      {
+        "id": "AGp",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "Gp"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "16"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "Gp",
+    "GL",
+    "GpL"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "GGp",
+      "refs": [
+        "G",
+        "Gp"
+      ]
+    },
+    {
+      "id": "leadG",
+      "refs": [
+        "G",
+        "GL"
+      ]
+    },
+    {
+      "id": "leadGp",
+      "refs": [
+        "Gp",
+        "GpL"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "caption": "AG=12 cm이면 GD=6 cm이고 삼각형 BCG의 무게중심 G′에 대해 GG′=4 cm이다. A, G, G′가 같은 직선 위에 있으므로 AG′=16 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "[서술형1] 다음 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $G'$은 $\\triangle BCG$의 무게중심이다. $AG=12\\text{ cm}$일 때, $AG'$의 길이를 구하여라. [5점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "G와 G′는 같은 중선 위에 있고 AG=12, AG′=16을 나타낸다. 점 이름은 겹치지 않도록 각각 지시선으로 분리한다."
+  ],
+  "sourceQuote": "[서술형1] 다음 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $G'$은 $\\triangle BCG$의 무게중심이다. $AG=12\\text{ cm}$일 때, $AG'$의 길이를 구하여라. [5점]",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "givenAG",
+        "from": "A",
+        "to": "G",
+        "label": "12",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "side": "LEFT",
+        "offset": 1
+      },
+      {
+        "id": "ggpDistance",
+        "from": "G",
+        "to": "Gp",
+        "label": "4",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "side": "RIGHT",
+        "offset": 1
+      },
+      {
+        "id": "answerAGp",
+        "from": "A",
+        "to": "Gp",
+        "label": "16",
+        "unit": "cm",
+        "factRole": "CONCLUSION",
+        "side": "LEFT",
+        "offset": 2
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "labelG",
+        "at": "GL",
+        "text": "G",
+        "labelKind": "TEXT",
+        "anchor": "W",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labelGp",
+        "at": "GpL",
+        "text": "G′",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "G",
+    "Gp",
+    "GL",
+    "GpL"
+  ],
+  "unmarkedPointNames": [
+    "GL",
+    "GpL"
+  ]
+}

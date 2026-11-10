@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "modelVersion": "SOLID_FIGURE_MODEL_v2",
+  "projection": {
+    "yawDeg": 28,
+    "pitchDeg": 20
+  },
+  "vertices": [
+    "E",
+    "H",
+    "G",
+    "F",
+    "A",
+    "D",
+    "C",
+    "B"
+  ],
+  "hiddenEdges": [
+    [
+      "E",
+      "F"
+    ],
+    [
+      "G",
+      "F"
+    ],
+    [
+      "F",
+      "B"
+    ]
+  ],
+  "route": [
+    {
+      "from": "E",
+      "to": "H",
+      "style": "AUTO",
+      "role": "ACCENT",
+      "hidden": false,
+      "runs": null
+    },
+    {
+      "from": "H",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT",
+      "hidden": false,
+      "runs": null
+    },
+    {
+      "from": "G",
+      "to": "C",
+      "style": "AUTO",
+      "role": "ACCENT",
+      "hidden": false,
+      "runs": null
+    }
+  ],
+  "labels": [
+    {
+      "id": "tl1",
+      "text": "출발점",
+      "at": {
+        "kind": "VERTEX",
+        "key": "E"
+      }
+    },
+    {
+      "id": "tl2",
+      "text": "도착점",
+      "at": {
+        "kind": "VERTEX",
+        "key": "C"
+      }
+    }
+  ],
+  "size": {
+    "width": 480,
+    "height": 199
+  },
+  "specPrimitiveCount": 15
+}

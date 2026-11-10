@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "BCis15",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "15"
+        }
+      },
+      {
+        "id": "ACis17",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "17"
+        }
+      },
+      {
+        "id": "BDis6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "ADis10",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "10"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "BD=6, DC=9이므로 BC=15이다. AC=17에서 x=AB=8이고, 삼각형 ABD에서 y=AD=10이다. x+y=18이므로 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 직각삼각형 $ABC$에서 $x+y$의 값을 구하면? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "D는 BC 위에 있으며 두 직각삼각형 ABC와 ABD를 구분한다. x, y는 문제의 미지수로 표시하고 답을 그림에 선행 노출하지 않는다."
+  ],
+  "sourceQuote": "다음 직각삼각형 $ABC$에서 $x+y$의 값을 구하면? [4점]",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "xLabel",
+        "from": "A",
+        "to": "B",
+        "label": "x",
+        "side": "LEFT",
+        "offset": 1
+      },
+      {
+        "id": "yLabel",
+        "from": "A",
+        "to": "D",
+        "label": "y",
+        "side": "RIGHT",
+        "offset": 1
+      },
+      {
+        "id": "bdLabel",
+        "from": "B",
+        "to": "D",
+        "label": "6",
+        "side": "BELOW",
+        "offset": 1
+      },
+      {
+        "id": "dcLabel",
+        "from": "D",
+        "to": "C",
+        "label": "9",
+        "side": "BELOW",
+        "offset": 2
+      },
+      {
+        "id": "acLabel",
+        "from": "A",
+        "to": "C",
+        "label": "17",
+        "side": "ABOVE",
+        "offset": 1
+      }
+    ]
+  }
+}
