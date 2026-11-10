@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap" />
     <link rel="stylesheet" href="archive2-tokens.css?v=20261110-shell-1" />
-    <link rel="stylesheet" href="archive2.css?v=20261110-library-2" />
+    <link rel="stylesheet" href="archive2.css?v=20261110-first-paint-1" />
     <link rel="stylesheet" href="archive2-history.css?v=20261110-library-2" />
     <link rel="stylesheet" href="archive2-navigation.css?v=20261110-library-2" />
     <style>
@@ -27,6 +27,7 @@
       .quick-bundle-entry > button { width: 100%; }
       .quick-bundle-entry > label { display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
     </style>
+    <script defer src="archive2-boot.js?v=20261110-first-paint-1"></script>
     <script defer src="archive2-session.js?v=20261110-library-2"></script>
     <script defer src="archive2-navigation.js?v=20261110-library-2"></script>
     <script defer src="mixer-selector.js?v=20261009-meta1"></script>
@@ -42,17 +43,19 @@
     <script defer src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
     <script defer src="archive2-papers.js?v=20261110-teacher-copy-1"></script>
     <script defer src="archive2-similar.js?v=20261110-similar-1"></script>
-    <script defer src="meta-foundation-runtime.js?v=20261029-health-reasons-1"></script>
+    <script defer src="meta-foundation-runtime.js?v=20261110-first-paint-1"></script>
     <script defer src="archive2-history.js?v=20261110-teacher-copy-1"></script>
     <script defer src="archive2-library.js?v=20261110-library-2"></script>
-    <script defer src="archive2-workspace.js?v=20261110-library-2"></script>
+    <script defer src="archive2-workspace.js?v=20261110-first-paint-1"></script>
   </head>
   <body>
     <a class="skip" href="#content">본문으로 이동</a>
     <header data-archive-navigation="workspace"></header>
-    <div id="status" class="status" role="status" aria-live="polite">
-      문항 목록을 준비하고 있습니다.
+    <div id="boot-progress" class="boot-progress" role="status" aria-live="polite">
+      <p class="boot-progress-text"><span data-boot-label>화면을 준비하고 있습니다.</span> <span data-boot-count aria-hidden="true"></span></p>
+      <div class="boot-progress-track" aria-hidden="true"><span class="boot-progress-bar" data-boot-bar></span></div>
     </div>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
     <main id="content" tabindex="-1">
       <div class="loading">아카이브를 불러오는 중…</div>
     </main>
