@@ -789,7 +789,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에서 -11≤x≤3 구간에만 그려진 오른쪽 아래로 내려가는 직선 y=-x/3+1/3이다. 왼쪽 끝점은 (-11, 4)이고 오른쪽 끝점은 (3, -2/3)이며 오른쪽 끝점에 최솟값 b가 표시되어 있다. 최댓값 4는 x=-11에서, 최솟값 b=-2/3은 x=3에서 생겨 a=-1/3, a-b=1/3이고 정답은 ①이다.",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 -11≤x≤3 구간에만 그려진 오른쪽 아래로 내려가는 직선 y=-x/3+1/3이다. 왼쪽 끝점은 (-11, 4)이고 오른쪽 끝점은 (3, -2/3)이며 오른쪽 끝점에 최솟값 b가 표시되어 있다. 최댓값 4는 x=-11에서, 최솟값 b=-2/3은 x=3에서 생긴다.",
     "solutionImageCaption": "a<0이므로 x=-11에서 최댓값 4를 가져 1/3-11a=4, a=-1/3이다. x=3에서 최솟값 b=-2/3이고 a-b=1/3이다. 정답 ①",
     "solutionImageSize": "medium"
   },

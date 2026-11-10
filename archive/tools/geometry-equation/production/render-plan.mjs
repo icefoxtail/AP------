@@ -27,6 +27,7 @@ import * as ell from './ellipse-figure-v1.mjs';
 import * as cfv from './container-fill-v1.mjs';
 import * as lpf from './lattice-path-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
+import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
@@ -40,10 +41,14 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
   const tag=crypto.randomUUID().slice(0,8);
   const row={item:name,status:undefined};
   let stage='read-plan';
+  // Attempt log (<outDir>/attempts.jsonl, append only): one line per attempt below and one "final" line per render. Instrumentation only.
+  const startedAt=Date.now(),log=createAttemptLog({outDir,item:name,invocation:tag,planSha256:planDigest(planInput)});
+  const attemptVariant=suffix=>suffix?String(suffix).replace(/^-/,''):(row.fallback?.length?row.fallback[row.fallback.length-1].to:'initial');
   const write=(file,text)=>fs.writeFileSync(path.join(outDir,file),text);
   const finish=()=>{
     const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,identity:row.identity};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
+    log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt});
     return result;
   };
   try{
@@ -63,7 +68,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
-    row.capability=authored.capability;
+    row.capability=authored.capability;log.setPlan(authored,meta.fam);
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
       stage='packet';
@@ -175,6 +180,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       stage=authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY?'chain':stage;
       let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
       for(let attempt=0;attempt<3;attempt++){
+      const watch=stopwatch();
       checked=comp.compositePanels(current);framedPanels=[];panelModels=[];const panelSizes=[];
       for(const panel of checked){
         if(comp.isPlanePanel(panel.plan)){
@@ -214,6 +220,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
         framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
         panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});
       }
+      watch.lap('panels');
       plan={...current,panels:framedPanels};const stackLayout=comp.compositePanelLayout(checked);
       // The caption rows are as tall as the captions need at the measured font (E7): a figure whose captions fit keeps the standard row, so its measured size is the
       // first one; when the composed figure came out taller (or shorter) than measured, the policy is measured again for the size it really has and composed again.
@@ -222,13 +229,16 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
         const {width,height}=comp.compositeStackSize(panelSizes,comp.compositeSharedRowCount(checked),stackLayout,captionRow);
         stage='measure';
         measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${attempt?'-retry'+attempt:''}${pass?'-size'+pass:''}`});
+        watch.lap('measure');
         if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
         stage='compose';
         composed=await comp.composeCompositeCandidate({plan,panels:framedPanels.map((panel,i)=>({plan:panel.plan,model:panelModels[i]})),identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+        watch.lap('compose');
         const composedHeight=composed.status==='COMPOSED'?Number(/<svg [^>]*\sheight="([\d.]+)"/.exec(composed.svg)?.[1]):height;
         if(composed.status!=='COMPOSED'||!(composedHeight>0)||Math.abs(composedHeight-height)<1e-6)break;
         captionRow+=(composedHeight-height)/stackLayout.rows;
       }
+      log.attempt({variant:attemptVariant(''),stage,ok:composed.status==='COMPOSED',code:errorCode(composed),detail:composed.detail??composed.status,fallback:row.fallback?.map(f=>f.to),watch});
       const failed=composed.status==='COMPOSITE_PANEL_NOT_COMPOSED'&&composed.detail?.status==='LAYOUT_INVENTORY_INCOMPLETE'?composed.detail:null;
       if(!failed||attempt===2)break;
       // A plane panel has no graph band or y-squeeze fallback: its own observer reports the label it could not place, and the panel fails as written.
@@ -274,18 +284,28 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     let model=m.result;
     // spec -> Archive policy -> L1, once; a construction plan whose labels found no room is retried once with coordinatePlacement PANEL.
     const attempt=async(candidatePlan,suffix)=>{
+      const watch=stopwatch();
+      try{
       stage='spec';
-      const spec=specFor(candidatePlan,model,identity.assetId);// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
+      const spec=specFor(candidatePlan,model,identity.assetId);watch.lap('spec');// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
       let size=model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)?'full':'medium';
       stage='measure';
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);
       // A wide family graph (520-610 px) cannot reach the requested profile font scale at medium; the same figure is retried once at full.
       if(measured.status!=='MEASURED'&&size==='medium'&&JSON.stringify(measured.detail??'').includes('REQUESTED_PROFILE_FONT_SCALE')){size='full';measured=await measure(size,'-full');}
+      watch.lap('measure');
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
       const composed=await composeConstructionCandidate({plan:candidatePlan,model,identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+      watch.lap('compose');
+      log.attempt({variant:attemptVariant(suffix),stage,ok:composed.status==='COMPOSED',code:errorCode(composed),detail:composed.detail??composed.status,fallback:row.fallback?.map(f=>f.to),watch});
       return {size,measured,composed};
+      }catch(error){
+        // A thrown attempt (measure refused, composer crashed) is logged here; the render itself still fails exactly as before.
+        log.attempt({variant:attemptVariant(suffix),stage:error?.stage??stage,ok:false,code:errorCode(error?.stage?error.detail:error?.message),detail:error?.stage?error.detail:error?.message,fallback:row.fallback?.map(f=>f.to),watch});
+        throw error;
+      }
     };
     let {size,measured,composed}=await attempt(plan,'');
     // Fallback 1: only the coordinates that found no room go to the band. Fallback 2: every coordinate goes to the band.
@@ -356,7 +376,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     row.status='ARCHIVE_BOUND';row.sizeClass=size;
     return finish();
   }catch(error){
-    row.status='FAILED';row.stage=error?.stage??stage;row.detail=error?.stage?clip(error.detail):String(error?.message||error).slice(0,600);
+    row.status='FAILED';row.stage=error?.stage??stage;row.code=errorCode(error?.stage?error.detail:error?.message)??(error instanceof SyntaxError?'PLAN_JSON_INVALID':undefined);row.detail=error?.stage?clip(error.detail):String(error?.message||error).slice(0,600);
     return finish();
   }
 }
