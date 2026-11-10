@@ -28,9 +28,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "sourcePdf": "2023_제일고2_수2_2기말.pdf",
-    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 그래프와 가로축의 3 눈금에 대응하는 점.",
-    "solutionImageCaption": "부정적분을 미분해 얻은 일차함수의 그래프에서 입력에 대응하는 위치를 확인한다. 정답은 5이다.",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 도함수로 얻은 직선과 x=3의 입력 눈금을 표시한다.",
+    "solutionImageCaption": "F(x)를 미분해 얻은 직선에서 주어진 입력을 확인한다. 정답은 5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -558,10 +558,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "image": "assets/images/23_제일고_2학기_기말_고2_수학II/q17.png",
-    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q17-solution.svg",
-    "solutionImageAlt": "정사각뿔의 중심 단면에서 높이와 내접 직육면체의 높이·한 변을 표시한 그림",
-    "solutionImageCaption": "닮음을 이용하면 직육면체의 윗면 한 변은 높이에 따라 선형으로 줄어든다.",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각뿔의 중심 단면인 삼각형 안에 직육면체의 단면이 들어 있고 높이와 윗변 길이를 표시한다.",
+    "solutionImageCaption": "전체 높이 H는 3√2를 2로 나눈 값이고, h는 H의 3분의 1일 때 평행단면 한 변은 2이다. 정답은 2√2이다.",
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -741,9 +742,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "sourcePdf": "2023_제일고2_수2_2기말.pdf",
-    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼차함수가 한 점에서 x축을 지나고 다른 점에서 접하는 그래프.",
-    "solutionImageCaption": "경계 a=32에서 도함수는 x=4에서 부호를 바꾸지 않아 g는 한 번만 감소한 뒤 증가한다. 양수 a의 최솟값은 32이다. 정답은 32이다.",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 도함수는 x=−2에서 음수에서 양수로 바뀌고 x=4에서 0이 되어도 양수 부호가 유지된다.",
+    "solutionImageCaption": "도함수의 부호가 한 번만 바뀌므로 g는 한 번만 극소를 갖는다. 정답은 32이다.",
     "solutionImageSize": "full"
   }
 ];

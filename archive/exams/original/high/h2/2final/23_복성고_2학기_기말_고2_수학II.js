@@ -188,9 +188,9 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: P와 Q의 속도 곡선과 두 부호 영역.",
-    "solutionImageCaption": "가로축은 시각 t, 세로축은 속도다. vP(t)와 vQ(t)는 각각 P와 Q의 속도를 나타내며, 속도 차의 부호 있는 넓이가 0이면 두 점의 위치가 같다. 정답은 ②이다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 시각에 따른 두 속도 곡선과 곡선 사이의 두 영역.",
+    "solutionImageCaption": "두 속도 차의 부호 있는 넓이가 상쇄되는 시각을 찾는다. 정답은 2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -252,9 +252,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 닫힌 구간에서 사차함수의 양 끝점과 내부 극점이 표시되어 있다.",
-    "solutionImageCaption": "양 끝점과 내부 극점의 함수값을 비교해 최댓값과 최솟값을 찾는다. 정답은 ③이다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 0부터 2까지 함수의 양 끝값과 내부 최솟값을 나타낸 그래프.",
+    "solutionImageCaption": "양 끝점과 내부 임계점의 함숫값을 비교한다. 정답은 17이다.",
     "solutionImageSize": "full"
   },
   {
@@ -319,9 +319,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "image": "assets/images/23_복성고_2학기_기말_고2_수학II/q10.png",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q10-solution.svg",
-    "solutionImageAlt": "도함수의 영점 -7, -3, -2, 2, 7과 부호 변화를 표시한 부호표",
-    "solutionImageCaption": "도함수의 부호 변화로 극대·극소 위치를 판정한다."
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 극대가 되는 x의 값 -3, 2와 극소가 되는 x의 값 -7, -2, 7이 두 줄로 나뉘어 표시되어 있다.",
+    "solutionImageCaption": "도함수의 부호가 양에서 음으로 바뀌면 극대, 음에서 양으로 바뀌면 극소이다. 정답은 -3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -416,9 +417,9 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 원함수의 일부와 원점을 지나는 기울기 1인 직선이 같은 눈금 간격으로 그려져 있다.",
-    "solutionImageCaption": "원함수와 기울기 1인 직선의 대칭으로 역함수 아래 넓이를 해석한다. 정답은 5/4이다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=f(x), 직선 y=x, 직선 y=2와 0에서 1까지의 세로 경계로 이루어진 직사각형이 있고 곡선 아래 영역 S1과 곡선 위쪽 영역 S2가 나뉘어 칠해져 있다.",
+    "solutionImageCaption": "곡선 아래 넓이 S1과 역함수 아래 넓이 S2를 합하면 가로 1 세로 2인 직사각형이다. 정답은 5/4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -448,9 +449,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 매개변수를 2로 둔 예에서 삼차함수의 극소점과 극대점, 구간 경계가 표시되어 있다.",
-    "solutionImageCaption": "예: 매개변수가 2일 때 극소점은 주어진 구간 안에, 극대점은 그 오른쪽에 놓인다. 정답은 ⑤이다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시 a=2인 삼차함수의 극솟점은 −1과 1 사이에, 극댓점은 1 오른쪽에 있다.",
+    "solutionImageCaption": "예: a=2에서 두 임계점의 위치를 확인한다. 정답은 1<a<3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -480,9 +481,9 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼차함수가 x축에 접하는 점과 x축을 가로지르는 점, 극소점이 표시되어 있다.",
-    "solutionImageCaption": "예: 경계 사례에서 그래프가 x축에 접하는 중근과 한 단순근을 갖는다. 정답은 ③이다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수가 x축에 접하는 점, x축을 가로지르는 점, 극솟점을 나타낸 예시 그래프.",
+    "solutionImageCaption": "예: 경계에서 중근과 단순근의 부호 변화를 비교한다. 정답은 −5/27이다.",
     "solutionImageSize": "full"
   },
   {
@@ -514,9 +515,9 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q16-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 절댓값 함수와 포물선, 두 교점과 절댓값 함수의 꺾임점 사이의 영역.",
-    "solutionImageCaption": "두 그래프의 교점은 x=-2와 x=1이고 절댓값 함수는 x=-1에서 식이 바뀐다. 꺾임점을 기준으로 위쪽 함수와 아래쪽 함수의 차를 적분해 넓이를 합한다. 정답은 ④이다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q16-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 함수와 포물선이 두 점에서 만나고, 두 곡선 사이의 영역을 이룬다.",
+    "solutionImageCaption": "두 교점 사이에서 곡선 사이 넓이를 구간별로 나눈다. 정답은 7/2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -610,9 +611,9 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: t에 따라 일정하게 유지되다가 증가하는 함수의 그래프가 그려져 있다.",
-    "solutionImageCaption": "누적 최댓값 그래프 아래 넓이를 두 구간으로 나누어 적분한다. 정답은 ②이다.",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 적분 구간에서 g(t) 그래프 아래의 두 양의 영역을 나타낸 그림.",
+    "solutionImageCaption": "구간별로 나눈 g(t) 아래의 넓이를 합한다. 정답은 52이다.",
     "solutionImageSize": "full"
   },
   {
@@ -693,6 +694,10 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 좌표축 위쪽에 놓이고, 곡선 위에 도함수 식이 표시되어 있다.",
+    "solutionImageCaption": "예: k=0일 때 도함수 그래프는 x축 위에 놓여 구간에서 증가하는 모습을 보인다. 도함수의 부호를 이용해 조건을 판정한다. 정답은 −6≤k≤7이다.",
+    "solutionImageSize": "full"
   }
 ];
