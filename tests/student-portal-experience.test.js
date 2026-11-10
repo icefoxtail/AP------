@@ -11,7 +11,7 @@
   assert(bootAt>0,'boot entrypoint present');
   const program=source.slice(0,bootAt);
   const app={innerHTML:''},browser={innerHTML:''};
-  const elements={'app':app,'student-chip':{textContent:''},'omr-wrong-count':{textContent:'1개'},'omr-expected-score':{textContent:'80점'}};
+  const elements={'app':app,'student-chip':{textContent:''},'toast':{textContent:'',classList:{add(){},remove(){}}},'omr-submit-btn':{disabled:false,textContent:'',isConnected:true},'omr-wrong-count':{textContent:'1개'},'omr-expected-score':{textContent:'80점'}};
   const nodes=Array.from({length:5},()=>({
     attrs:{},wrong:false,
     setAttribute(k,v){this.attrs[k]=v;},
