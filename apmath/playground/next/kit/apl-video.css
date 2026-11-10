@@ -96,6 +96,9 @@ body.apl-vplaying .apl-vbar .apl-vctl { display: none; }
   .apl-vbar > * { max-width: none; }
   .apl-vbtn .lbl { display: none; }
   .apl-vcap { min-height: 0; font-size: 16px; }
+  /* 끝 카드는 오른쪽 열(높이 약 300px)에 들어가도록 머리줄과 「이제 직접 해 보세요」 줄을 줄임(안내는 「직접 해 보기」 뒤 패널에 같은 글로 남음) */
+  body.apl-vid .apl-vend-h, body.apl-vid .apl-vtaskline { display: none; }
+  body.apl-vid .apl-vsum { font-size: 16px; padding: 4px 8px; }
 }
 
 /* ---------- 2-1. 영상 제목: 별도 머리글 줄에서 크게 → 2초 뒤 작게(해설은 장이 바뀔 때마다 「2/3 · 장 제목」) ---------- */
@@ -140,6 +143,10 @@ body.apl-vid .apl-vtbar[data-phase="small"] .apl-vtbig { display: none; }
   font-size: 22px; font-weight: 800; line-height: 1.5; letter-spacing: -.02em; text-align: center; overflow-wrap: anywhere;
 }
 .apl-vsum .katex { font-size: 1.15em; }
+.apl-vans { display: flex; align-items: baseline; justify-content: center; gap: 8px; padding: 2px 0; font-size: var(--fs-lg); font-weight: 800; color: var(--text); }
+.apl-vans[hidden] { display: none; }
+.apl-vans b { color: var(--m-green); font-size: var(--fs-sm); font-weight: 800; }
+.apl-vans .katex { font-size: 1.1em; }
 .apl-vtaskline { display: grid; gap: 2px; padding: 0 2px; font-size: var(--fs-md); line-height: 1.55; color: var(--text); }
 .apl-vtaskline b { color: var(--m-amber); font-weight: 800; font-size: var(--fs-sm); }
 /* 주 버튼은 하나: 「다음 ▶」(마지막이면 「목차로」). 보조 두 개는 한 줄에 나란히 */
@@ -167,20 +174,28 @@ body.apl-vid .apl-vtbar[data-phase="small"] .apl-vtbig { display: none; }
 .apl-lentry { display: grid; gap: 2px; justify-items: stretch; }
 .apl-lgo { width: 100%; min-height: 52px; font-size: var(--fs-md); font-weight: 800; justify-content: center; gap: 8px; }
 .apl-lgo .apl-ico { width: 20px; height: 20px; }
+/* 해설이 여럿이면 해설마다 ▶ 단추를 나란히(2개 = 반반, 3개 = 3등분). 글자는 줄이지 않고, 초 표시가 모자라면 둘째 줄로 내립니다. */
+.apl-lbtns { display: flex; gap: 8px; width: 100%; }
+.apl-lbtns .apl-lgo { flex: 1 1 0; min-width: 0; }
+.apl-lgo.multi { min-height: 56px; flex-wrap: wrap; align-content: center; row-gap: 0; column-gap: 6px; padding: 6px 8px; line-height: 1.25; }
+.apl-lgo.multi .m { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.apl-lgo.multi .s { font-size: 13px; font-weight: 700; opacity: .9; white-space: nowrap; }
+.apl-lgo.multi.wrap .d { display: none; }
 .apl-lmanual {
   min-height: 44px; padding: 0 12px; border: 0; background: transparent; color: var(--text-2);
   font: 650 var(--fs-sm) var(--font-ui); text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
 }
 .apl-lmanual:hover { color: var(--text); }
 .apl-lentry[data-mode="inline"] .apl-lmanual { display: none; }
-.apl-lentry[data-mode="inline"] .apl-lgo { min-height: 48px; }
+.apl-lentry[data-mode="inline"] .apl-lgo:not(.multi) { min-height: 48px; }
 @media (pointer: coarse) { .apl-lgo { min-height: 56px; } }
 .apl-lentry[data-mode="first"] {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; justify-items: center;
   padding: 10px 14px calc(6px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line);
   background: color-mix(in srgb, var(--panel) 94%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
-.apl-lentry[data-mode="first"] .apl-lgo { max-width: 560px; min-height: 56px; }
+.apl-lentry[data-mode="first"] .apl-lbtns { max-width: 560px; }
+.apl-lentry[data-mode="first"] .apl-lgo { min-height: 56px; }
 body.apl-vid .apl-lentry { display: none !important; }
 @media (max-width: 859px) {
   body.apl-lessonfirst:not(.apl-vid) .apl-tabs,
@@ -247,6 +262,14 @@ body.apl-vid .apl-lentry { display: none !important; }
   color: var(--m-amber); font-size: var(--fs-xs); font-weight: 800; white-space: nowrap;
 }
 .apl-toc-item .vid .tri { font-size: 11px; }
+/* 해설이 여럿인 장면: 제목 한 줄 + 해설 단추들 */
+.apl-toc-item.multi { display: grid; gap: 6px; align-items: start; justify-content: stretch; cursor: default; }
+.apl-toc-item.multi:hover { background: transparent; }
+.apl-toc-item.multi .apl-toc-title { display: flex; flex-direction: column; gap: 1px; width: 100%; min-height: 36px; padding: 4px 2px; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; }
+.apl-toc-item.multi .apl-toc-title .flag { font-style: normal; font-size: 10.5px; font-weight: 800; color: var(--m-rose); }
+.apl-toc-lessons { display: flex; gap: 8px; flex-wrap: wrap; }
+.apl-toc-lessons .vid { min-height: 44px; cursor: pointer; }
+.apl-toc-lessons .vid .lb { font-weight: 800; }
 .apl-toc-list.only-video .apl-toc-item:not(.has-video) { display: none; }
 .apl-toc-list.only-video .apl-toc-group.no-video { display: none; }
 .apl-toc-scrim { position: fixed; inset: 0; z-index: 65; background: var(--scrim); animation: apl-fade .18s var(--ease); }

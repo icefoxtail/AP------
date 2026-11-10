@@ -10,7 +10,8 @@
    - #…&play=1 (s=장면id 와 함께): 장면을 연 뒤 바로 재생. 그 밖에는 절대 자동 재생하지 않습니다(CI 가 막음).
    - 재생 중에 그림을 만지면 멈춥니다. prefers-reduced-motion 이면 자동 재생 대신 자막을 한 칸씩 넘깁니다.
    [쓰는 법] 실험실 페이지에서 kit/apl-video-core.js · apl-player.js · apl-toc.js · apl-video.css 를 apl-shell.js 다음에 불러오고,
-   createLab({ ..., videos: { 장면id: 대본 }, lessons: { 장면id: 해설 } }) 또는 장면에 video: 대본 / lesson: 해설 을 줍니다(해설이 영상보다 우선). 자세한 형식: docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md
+   createLab({ ..., videos: { 장면id: 대본 }, lessons: { 장면id: 해설 또는 [해설, 해설(최대 3)] } }) 또는 장면에 video: 대본 / lesson: 해설 을 줍니다(해설이 영상보다 우선).
+   한 장면에 해설이 여럿이면(예: 겉넓이 / 부피) 진입 화면에 해설마다 ▶ 단추가 나란히 있고 단추 하나가 그 해설을 바로 재생합니다. 끝 카드의 「다음 ▶」는 같은 장면의 다음 해설 → 다음 장면 순서입니다. 자세한 형식: docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md
    ========================================================================== */
 (function () {
   'use strict';
@@ -56,20 +57,28 @@
       this._holdDrag = false;
       this._pre = null;
       this._ch = -1;
+      this.lessonIndex = 0; // 지금 재생 중인(또는 마지막으로 재생한) 해설이 그 장면의 몇 번째인지
+      this._entrySig = '';
       this.manual = urlParam('manual') === '1';
       this.explored = this.manual || this._readExplored();
       this._build();
       this._wrap();
       this._bind();
-      this._syncEntry();
+      this._syncEntry(true);
       // #…&play=1 : 해설 링크로 열면 장면을 연 뒤 바로 재생(그 밖에는 자동 재생하지 않음)
-      if (urlParam('play') === '1' && !lab.teach) {
-        requestAnimationFrame(() => setTimeout(() => { if (this.state === 'idle' && this.has(lab.index)) this.play(lab.index); }, 0));
+      // play=1 은 첫 해설, play=2·3 은 그 번째 해설, play=<label>(예: play=부피)은 그 이름의 해설
+      const pv = urlParam('play');
+      if (pv && !lab.teach) {
+        requestAnimationFrame(() => setTimeout(() => {
+          const k = this._playParam(pv, lab.index);
+          if (this.state === 'idle' && k >= 0) this.play(lab.index, k);
+        }, 0));
       }
     }
 
     /* ------------------------------ 대본 ------------------------------ */
-    lessonOf(i) {
+    /** 장면에 붙은 해설 묶음(해설 하나 또는 배열) — 원본 그대로. */
+    lessonsRaw(i) {
       const sc = this.lab.list[i];
       if (!sc) return null;
       const def = this.lab.def;
@@ -79,6 +88,9 @@
       }
       return sc.lesson || null;
     }
+    /** 장면의 해설 목록(항상 배열). */
+    lessonsOf(i) { return core.lessonList(this.lessonsRaw(i)); }
+    lessonOf(i) { return this.lessonsOf(i)[0] || null; }
     videoOf(i) {
       const sc = this.lab.list[i];
       if (!sc) return null;
@@ -87,45 +99,68 @@
     }
     /** 장면에 재생할 수 있는 원본(해설이 영상보다 우선). */
     scriptOf(i) { return this.lessonOf(i) || this.videoOf(i); }
-    compiled(i) {
+    /** 장면에서 재생할 수 있는 것의 목록(검사를 통과한 해설들, 없으면 영상 하나). 목록 순서 = 진입 화면 단추 순서. */
+    entries(i) {
       const sc = this.lab.list[i];
-      if (!sc) return null;
-      const lesson = this.lessonOf(i);
-      if (lesson) {
-        let c = this._cache.get(lesson);
-        if (c === undefined) {
-          const v = core.validateLesson(lesson);
-          if (v.errors.length) { console.warn(`[해설] ${sc.id}: ${v.errors.join(' / ')}`); c = null; } else c = core.compileLesson(lesson);
-          this._cache.set(lesson, c);
+      if (!sc) return [];
+      const raw = this.lessonsRaw(i);
+      if (raw) {
+        let list = this._cache.get(raw);
+        if (list === undefined) {
+          const v = core.validateLessonSet(raw);
+          if (v.errors.length) { console.warn(`[해설] ${sc.id}: ${v.errors.join(' / ')}`); list = []; } else list = core.lessonList(raw).map((l) => core.compileLesson(l));
+          this._cache.set(raw, list);
         }
-        if (c) return c;
+        if (list.length) return list;
       }
       const script = this.videoOf(i);
-      if (!script) return null;
+      if (!script) return [];
       let c = this._cache.get(script);
       if (c === undefined) {
         const v = core.validate(script);
         if (v.errors.length) {
           console.warn(`[영상 대본] ${sc.id}: ${v.errors.join(' / ')}`);
-          c = null;
+          c = [];
         } else {
-          c = core.compile(script);
-          c.kind = 'video';
-          c.tab = null;
-          c.answer = null;
-          c.chapters = [{ at: 0, length: c.length, title: c.title || '' }];
+          const one = core.compile(script);
+          one.kind = 'video';
+          one.tab = null;
+          one.answer = null;
+          one.answerText = null;
+          one.label = null;
+          one.chapters = [{ at: 0, length: one.length, title: one.title || '' }];
+          c = [one];
         }
         this._cache.set(script, c);
       }
       return c;
     }
-    has(i) { return !!this.compiled(i); }
+    compiled(i, k) { return this.entries(i)[k || 0] || null; }
+    has(i) { return this.entries(i).length > 0; }
     count() { return this.lab.list.reduce((n, _, i) => n + (this.has(i) ? 1 : 0), 0); }
-    lengthOf(i) { const c = this.compiled(i); return c ? c.length : 0; }
+    lengthOf(i, k) { const c = this.compiled(i, k); return c ? c.length : 0; }
+    /** 목차·진입 화면용: [{k, label, length, title}] */
+    lessonInfo(i) { return this.entries(i).map((c, k) => ({ k, label: c.label, length: c.length, title: c.title })); }
+    /** play=… 값이 가리키는 해설 번호(없으면 -1) */
+    _playParam(v, i) {
+      const list = this.entries(i);
+      if (!list.length) return -1;
+      const byLabel = list.findIndex((c) => c.label && c.label === v);
+      if (byLabel >= 0) return byLabel;
+      return /^[1-3]$/.test(v) && +v <= list.length ? +v - 1 : -1;
+    }
     /** i 다음으로 해설·영상이 있는 장면(없으면 -1). */
     nextIndex(i) {
       for (let k = i + 1; k < this.lab.list.length; k++) if (this.has(k)) return k;
       return -1;
+    }
+
+    /** 끝 카드의 「다음 ▶」가 가는 곳: 같은 장면의 다음 해설 → 다음 해설·영상 장면의 첫 해설. 없으면 null(「목차로」). */
+    nextTarget() {
+      const list = this.entries(this.index);
+      if (this.lessonIndex + 1 < list.length) return { i: this.index, k: this.lessonIndex + 1, label: list[this.lessonIndex + 1].label };
+      const n = this.nextIndex(this.index);
+      return n >= 0 ? { i: n, k: 0, label: null } : null;
     }
 
     /* ------------------------------ 진입 화면 상태 ------------------------------ */
@@ -138,19 +173,62 @@
       this._syncEntry();
     }
     /** 장면에 해설·영상이 있으면 진입 ▶ 를 보이고(해설 우선 화면), 없으면 아무것도 바꾸지 않습니다. */
-    _syncEntry() {
+    _syncEntry(reset) {
       const lab = this.lab, ui = this.ui, i = lab.index;
-      const cs = this.state === 'idle' ? this.compiled(i) : null;
+      const entries = this.state === 'idle' ? this.entries(i) : [];
+      const cs = entries[0] || null; // 진입 화면의 그림은 첫 해설의 t=0 모습
       const show = !!cs && !lab.teach && !this.manual;
       const first = show && NARROW.matches && !this.explored;
       document.body.classList.toggle('apl-lessonfirst', first);
+      // 진입 화면의 그림은 ▶ 가 시작할 때의 모습(해설의 t=0 상태)입니다. 장면이 바뀔 때만 맞추고, manual=1·수업 모드는 장면의 기본값 그대로 둡니다.
+      if (first && reset) this._applyStart(cs);
       ui.entry.hidden = !show;
       if (!show) return;
       const mode = first ? 'first' : 'inline';
       ui.entry.dataset.mode = mode;
-      ui.entryGo.innerHTML = icon('play') + `<span>해설 보기 · ${Math.round(cs.length)}초</span>`;
-      ui.entryGo.setAttribute('aria-label', `해설 보기, ${Math.round(cs.length)}초`);
+      ui.entry.dataset.n = String(entries.length);
+      this._buildEntryButtons(entries);
       if (mode === 'first') { if (ui.entry.parentNode !== document.body) document.body.append(ui.entry); } else if (ui.entry.parentNode !== lab.ui.panelInner || lab.ui.panelInner.firstElementChild !== ui.entry) lab.ui.panelInner.prepend(ui.entry);
+      this._fitEntryLabels();
+    }
+    /** 해설마다 ▶ 단추 하나(해설이 하나면 「▶ 해설 보기 · NN초」, 여럿이면 「▶ 겉넓이 · 29초」). 단추 하나로 그 해설이 바로 재생됩니다. */
+    _buildEntryButtons(entries) {
+      const ui = this.ui;
+      const sig = entries.map((c) => `${c.label || ''}:${Math.round(c.length)}`).join('|');
+      if (sig === this._entrySig && ui.entryBtns.childElementCount === entries.length) return;
+      this._entrySig = sig;
+      ui.entryBtns.innerHTML = '';
+      const multi = entries.length > 1;
+      entries.forEach((c, k) => {
+        const sec = Math.round(c.length);
+        const b = h('button', { class: 'apl-btn primary apl-lgo' + (multi ? ' multi' : ''), type: 'button', 'aria-label': multi ? `${c.label} 해설 보기, ${sec}초` : `해설 보기, ${sec}초`, onclick: () => this._entryGo(k) });
+        b.innerHTML = multi
+          ? `<span class="m">${icon('play')}<span class="l">${APLab.esc(c.label)}</span></span><span class="s"><span class="d">· </span>${sec}초</span>`
+          : icon('play') + `<span>해설 보기 · ${sec}초</span>`;
+        ui.entryBtns.append(b);
+      });
+    }
+    /** 단추 안에서 초 표시가 둘째 줄로 내려갔으면(글자를 줄이지 않고 줄바꿈) 앞의 점을 감춥니다. */
+    _fitEntryLabels() {
+      cancelAnimationFrame(this._fitRaf);
+      this._fitRaf = requestAnimationFrame(() => {
+        this.ui.entryBtns.querySelectorAll('.apl-lgo.multi').forEach((b) => {
+          b.classList.remove('wrap');
+          const m = b.querySelector('.m'), sp = b.querySelector('.s');
+          if (m && sp && sp.offsetTop > m.offsetTop + 2) b.classList.add('wrap');
+        });
+      });
+    }
+
+    /** 해설의 t=0 상태(첫 장 start · at:0 칸의 set)를 장면에 적용합니다. lessonOn·탭·step 은 건드리지 않고, 결론을 드러내는 것도 없습니다. */
+    _applyStart(cs) {
+      const lab = this.lab, s = lab.s;
+      const base = { nums: {}, sets: {}, step: s.step, part: s.part };
+      Object.keys(cs.tracks).forEach((k) => { base.nums[k] = typeof s[k] === 'number' ? s[k] : 0; });
+      cs.setKeys.forEach((k) => { base.sets[k] = s[k]; });
+      const st = core.stateAt(cs, 0, base);
+      Object.assign(s, st.nums, st.sets);
+      lab.invalidate(true);
     }
 
     /* ------------------------------ 화면 ------------------------------ */
@@ -171,6 +249,7 @@
       ui.live = h('div', { class: 'apl-vctl' }, ui.play, ui.prev, ui.next, ui.replay, ui.slow, h('span', { class: 'sp' }), ui.close);
       ui.prog = h('div', { class: 'apl-vprog' }, ui.rangeWrap, ui.time, ui.mini);
       ui.endSum = h('div', { class: 'apl-vsum' });
+      ui.endAns = h('div', { class: 'apl-vans', hidden: true });
       ui.endTask = h('div', { class: 'apl-vtaskline' });
       ui.endNext = h('button', { class: 'apl-btn primary apl-vbtn apl-vnext', onclick: () => this.playNext() });
       ui.endGo = h('button', { class: 'apl-btn apl-vbtn', html: icon('hand') + '<span>직접 해 보기</span>', onclick: () => this._dismissEnd() });
@@ -178,7 +257,7 @@
       ui.endX = h('button', { class: 'apl-icon-btn apl-vendx', 'aria-label': '카드 닫기', html: icon('x'), onclick: () => this._dismissEnd() });
       ui.end = h('div', { class: 'apl-vend', hidden: true },
         h('div', { class: 'apl-vend-h' }, h('span', { class: 'ttl', html: icon('check') + '<span>한 줄 정리</span>' }), ui.endX),
-        ui.endSum, ui.endTask, ui.endNext, h('div', { class: 'apl-vend-btns' }, ui.endAgain, ui.endGo));
+        ui.endSum, ui.endAns, ui.endTask, ui.endNext, h('div', { class: 'apl-vend-btns' }, ui.endAgain, ui.endGo));
       // 큰 제목과 작은 제목 모두 무대 위 별도 줄을 써 칩·도형을 가리지 않습니다.
       ui.tText = h('span', { class: 'tt' });
       ui.tbar = h('div', { class: 'apl-vtbar', 'aria-hidden': 'true' }, ui.tText);
@@ -188,9 +267,9 @@
       ui.bar = h('div', { class: 'apl-vbar', hidden: true, role: 'region', 'aria-label': '영상 해설' }, ui.cap, ui.prog, ui.live, ui.end);
       this.lab.ui.stage.append(ui.bar);
       // 해설 우선 진입 ▶ (휴대폰: 화면 아래 고정 · 그 밖: 패널 맨 위)
-      ui.entryGo = h('button', { class: 'apl-btn primary apl-lgo', onclick: () => this._entryGo() });
+      ui.entryBtns = h('div', { class: 'apl-lbtns' });
       ui.entryManual = h('button', { class: 'apl-lmanual', type: 'button', text: '직접 해 보기', onclick: () => this._setExplored(true) });
-      ui.entry = h('div', { class: 'apl-lentry', hidden: true, role: 'group', 'aria-label': '해설 보기' }, ui.entryGo, ui.entryManual);
+      ui.entry = h('div', { class: 'apl-lentry', hidden: true, role: 'group', 'aria-label': '해설 보기' }, ui.entryBtns, ui.entryManual);
       this.lab.ui.panelInner.prepend(ui.entry);
       // 진행 막대는 0~1000 정수 위치로 다룹니다
       ui.range.max = '1000';
@@ -210,7 +289,7 @@
         if (!this._internal && this.state !== 'idle') this._leave(false);
         this._clearTaskNote();
         const r = orig(i, o);
-        if (!this._internal) this._syncEntry();
+        if (!this._internal) this._syncEntry(true);
         return r;
       };
       this._goScene = orig;
@@ -227,6 +306,7 @@
         return r;
       };
       if (NARROW.addEventListener) NARROW.addEventListener('change', () => this._syncEntry());
+      window.addEventListener('resize', () => { if (!this.ui.entry.hidden) this._fitEntryLabels(); });
     }
 
     _bind() {
@@ -238,7 +318,7 @@
         if (this.state === 'playing' && performance.now() - (this._startedAt || 0) > 300) { this.pause(); APLab.toast('멈췄어요. 그림을 움직여 보고, ▶ 로 이어 볼 수 있어요'); }
       }, true);
       // 정리 탭으로 그리는 해설은 s.dragging 을 true 로 쥐고 있어야 장면 tick 이 값을 끌어당기지 않습니다. 보드의 끌기가 끝나며 false 로 되돌리면 다시 쥡니다.
-      const rehold = () => { if (this._holdDrag) setTimeout(() => { if (this._holdDrag && (this.state === 'playing' || this.state === 'paused')) this.lab.s.dragging = true; }, 0); };
+      const rehold = () => { if (this._holdDrag) setTimeout(() => { if (this._holdDrag && (this.state === 'playing' || this.state === 'paused' || this.state === 'ended')) this.lab.s.dragging = true; }, 0); };
       window.addEventListener('pointerup', rehold);
       window.addEventListener('pointercancel', rehold);
       document.addEventListener('visibilitychange', () => { if (document.hidden && this.state === 'playing') this.pause(); });
@@ -269,9 +349,9 @@
     }
 
     /** 진입 ▶ : 빠르게 두 번 눌러도 재생 루프는 하나(이미 재생 중이면 무시). */
-    _entryGo() {
+    _entryGo(k) {
       if (this.state !== 'idle') return;
-      this.play(this.lab.index);
+      this.play(this.lab.index, k || 0);
     }
 
     /** 영상 제목(대본 title, 없으면 장면 제목)을 크게 띄웠다가 TITLE_BIG_MS 뒤 머리글로 줄입니다. 해설은 큰 제목 = 해설 제목, 머리글 = 지금 장의 제목. 움직임 줄이기 설정이면 머리글만 보입니다. */
@@ -324,9 +404,10 @@
     }
 
     /* ------------------------------ 재생 ------------------------------ */
-    play(i) {
+    play(i, k) {
       const lab = this.lab;
-      const cs = this.compiled(i);
+      k = k || 0;
+      const cs = this.compiled(i, k);
       if (!cs) { lab.goScene(i); return false; }
       if (this.state !== 'idle') this._leave(false);
       if (lab.pen && lab.pen.on) lab.setPen(false);
@@ -336,12 +417,14 @@
       this._clearTaskNote();
       const s = lab.s;
       this.index = i;
+      this.lessonIndex = k;
       this.cs = cs;
       this.base = { nums: {}, sets: {}, step: s.step, part: s.part };
       Object.keys(cs.tracks).forEach((k) => { this.base.nums[k] = typeof s[k] === 'number' ? s[k] : 0; });
       cs.setKeys.forEach((k) => { this.base.sets[k] = s[k]; });
       this._pre = { step: s.step, part: s.part };
       // 재생 동안 재생기가 쥐는 상태: lessonOn(장면이 정답을 미리 그리지 않게 하는 표시), review 해설이면 정리 탭 + dragging
+      this._deferBuild = false;
       this._lessonOn = true;
       s.lessonOn = true;
       this._holdDrag = false;
@@ -368,9 +451,10 @@
     }
     /** 끝 카드의 「다음 ▶」 : 다음 해설 장면을 바로 재생, 없으면 목차를 엽니다. */
     playNext() {
-      const n = this.nextIndex(this.index);
-      if (n >= 0) { this.play(n); return; }
+      const t = this.nextTarget();
+      if (t) { this.play(t.i, t.k); return; }
       this._leave(false);
+      this._syncEntry(true); // 목차 뒤의 진입 화면은 다시 해설의 t=0 모습
       if (this.lab.toc) this.lab.toc.open();
     }
     toggle() {
@@ -434,7 +518,7 @@
     }
     replay() {
       if (this.index < 0) return;
-      this.play(this.index);
+      this.play(this.index, this.lessonIndex);
     }
 
     /** 시각 t 의 상태를 장면에 적용합니다. */
@@ -523,22 +607,29 @@
       this.state = 'ended';
       this._hideTitle(); // 끝 카드가 나오면 제목은 숨김(머리글 줄은 영상 화면이 풀리며 함께 사라짐)
       const lab = this.lab, cs = this.cs;
-      this._release();
       // 해설은 휴대폰·태블릿 세로에서 영상 화면(그림 크게 + 아래 끝 카드)을 그대로 두고, 영상(쇼츠)과 넓은 화면은 예전처럼 탐구 패널 맨 위에 끝 카드를 둡니다.
+      // 영상 화면을 둘 때는 마지막 장면(정리 탭 그림·마지막 단계·lessonOn)을 그대로 붙들고 있다가, 끝 카드를 닫는 모든 길(_leave)에서 한꺼번에 되돌립니다
+      // (끝나자마자 탐구 탭 그림으로 바뀌면 길이 표시와 정답이 사라지기 때문).
       const keepStage = cs.kind === 'lesson' && NARROW.matches;
-      if (!keepStage) {
+      this._deferBuild = keepStage;
+      if (keepStage) {
+        lab.invalidate(true);
+      } else {
+        this._release();
         this._layout(false); // 탐구 화면(패널)으로 돌아옴. 그림은 끝난 상태 그대로
         if (lab.ui.main.classList.contains('panel-off')) lab.togglePanel();
+        lab._buildPanel();
+        lab.invalidate(true);
+        lab._saveHashSoon();
       }
-      lab._buildPanel();
-      lab.invalidate(true);
-      lab._saveHashSoon();
       this.ui.bar.dataset.mode = 'end';
       this.ui.endSum.innerHTML = richHtml(cs.summary);
+      this.ui.endAns.hidden = !cs.answerText;
+      this.ui.endAns.innerHTML = cs.answerText ? `<b>정답</b> <span>${richHtml(cs.answerText)}</span>` : '';
       this.ui.endTask.innerHTML = `<b>이제 직접 해 보세요</b><span>${richHtml(cs.task)}</span>`;
-      const nxt = this.nextIndex(this.index);
-      this.ui.endNext.innerHTML = nxt >= 0 ? '<span>다음</span>' + icon('play') : icon('list') + '<span>목차로</span>';
-      this.ui.endNext.setAttribute('aria-label', nxt >= 0 ? '다음 해설 보기' : '목차로');
+      const nxt = this.nextTarget();
+      this.ui.endNext.innerHTML = nxt ? '<span>다음</span>' + icon('play') + (nxt.label ? `<span>${APLab.esc(nxt.label)}</span>` : '') : icon('list') + '<span>목차로</span>';
+      this.ui.endNext.setAttribute('aria-label', nxt ? (nxt.label ? `다음 해설 ${nxt.label} 보기` : '다음 해설 보기') : '목차로');
       this.ui.end.hidden = false;
       document.body.classList.add('apl-vend-on');
       document.body.classList.remove('apl-vplaying');
@@ -561,8 +652,10 @@
       this.lab.ui.stage.append(this.ui.bar); // 패널 재구성 전에 재생 막대를 보존
       document.body.classList.remove('apl-vend-on', 'apl-vplaying');
       this._layout(false);
-      if (rebuild) { this.lab.tab = 'explore'; this.lab._buildPanel(); this.lab.invalidate(true); this.lab._saveHashSoon(); }
-      if (!this._internal) this._syncEntry();
+      const deferred = this._deferBuild;
+      this._deferBuild = false;
+      if (rebuild || deferred) { this.lab.tab = 'explore'; this.lab._buildPanel(); this.lab.invalidate(true); this.lab._saveHashSoon(); }
+      if (!this._internal) this._syncEntry(); // 나갈 때는 값을 되돌리지 않음(✕ 뒤에는 정리된 값 그대로 탐구)
     }
     close() {
       if (this.state === 'idle') return;

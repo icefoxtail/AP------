@@ -10,10 +10,12 @@ window.APL_LESSONS['g7-circle-sector'] = {
   /* ---------- 부채꼴 넓이 (g7-circle-sector.html proofScene('sector') z3-sectorProof) · 3장 30초 ----------
      r=6, 중심각 120°: 조각 수 Kof = max(2, 2·⌈120/20⌉) = 12. 호의 길이 l = 2π·6·120/360 = 4π, 가로 = l÷2 = 2π, 세로 = r = 6, 넓이 S = ½·6·4π = 12π (= π·6²·120/360 = 36π/3 ✓).
      (90° 는 가로가 3π/2 라 분수가 되어 120° 를 씁니다.) csT(조각을 가로로 미는 정도 0~100): 0 → 20(나눔) → 54(맞물림, 55 부터 가로·세로·넓이 라벨이 그려짐) → 100.
-     장면은 csT ≥ 55 에서 결론 라벨 「S = ½rl = 12π cm²」을 바로 그리므로, 재생 동안(s.lessonOn)은 해설이 csShowS 를 켤 때까지 그 라벨만 아낍니다(g7-circle-sector.html proofScene). */
+     장면은 csT ≥ 55 에서 결론 라벨 「S = ½rl = 12π cm²」을 바로 그리므로, 재생 동안(s.lessonOn)은 해설이 csShowS 를 켤 때까지 그 라벨만 아낍니다(g7-circle-sector.html proofScene).
+     csShowS 는 첫 장 at:0 칸에서 false 로 시작합니다(validateLesson 규칙: set 키는 첫 장 at:0 에 시작값 필수) — 다시 보기에서 앞선 재생이 남긴 true 가 새지 않게. */
   'z3-sectorProof': {
     title: '부채꼴 넓이는 왜 ½rl?',
     answer: '$12\\pi$',
+    answerText: '$12\\pi$ cm²',
     summary: '부채꼴 넓이 $S=\\frac12 rl$',
     task: '반지름과 중심각을 바꿔도 가로가 $l$의 절반, 세로가 $r$인지 확인해 보세요',
     chapters: [
@@ -22,7 +24,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '조각으로 나누기',
         start: { csR: 6, csS: 120, csT: 0 },
         cues: [
-          { at: 0, say: '반지름 6 cm, 중심각 120°인 부채꼴이에요.', to: { csT: 20 }, dur: 4, ease: 'smooth' },
+          { at: 0, say: '반지름 6 cm, 중심각 120°인 부채꼴이에요.', set: { csShowS: false }, to: { csT: 20 }, dur: 4, ease: 'smooth' },
           { at: 4.5, say: '호 길이는 $l=4\\pi$ cm. 12조각을 위아래로 번갈아 놓아요.' }
         ]
       },

@@ -91,6 +91,8 @@ jobs:
             sleep 1
           done
           node apmath/playground/next/tools/lesson-browser-audit.mjs http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/lesson-audit" 2>&1 | tee "$RUNNER_TEMP/lesson-audit.log"
+          # 한 장면에 해설이 여럿일 때의 장치(해설별 ▶ 단추 · 다음 해설 · 오가기)는 시험용 둘째 해설을 끼워 넣어 같은 장면(sv1-1)에서 검사합니다
+          node apmath/playground/next/tools/lesson-browser-audit.mjs http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/lesson-audit-multi" --multi-fixture --only g7-surface-volume:sv1-1 2>&1 | tee "$RUNNER_TEMP/lesson-audit-multi.log"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -98,6 +100,8 @@ jobs:
           path: |
             ${{ runner.temp }}/lesson-audit.log
             ${{ runner.temp }}/lesson-audit/
+            ${{ runner.temp }}/lesson-audit-multi.log
+            ${{ runner.temp }}/lesson-audit-multi/
           retention-days: 14
   inventory:
     runs-on: ubuntu-24.04

@@ -13,8 +13,10 @@ window.APL_LESSONS['g7-surface-volume'] = {
      (이전 영상 대본은 sv11Started 를 켜지 않아 전개도가 펼쳐지지 않았으므로 이 해설로 대신했습니다.) */
   'sv1-1': {
     title: '원기둥의 겉넓이',
+    label: '겉넓이', // 해설이 하나뿐이면 진입 화면에는 「해설 보기」로 보입니다. 같은 장면에 해설(예: 부피)이 더해지면 이 이름이 단추 글자가 됩니다
     tab: 'review',
     answer: '$48\\pi$',
+    answerText: '$48\\pi$ cm²',
     summary: '겉넓이 = 밑넓이 × 2 + 옆넓이',
     task: '밑면 모양과 길이를 바꿔 겉넓이가 어떻게 달라지는지 해 보세요',
     chapters: [

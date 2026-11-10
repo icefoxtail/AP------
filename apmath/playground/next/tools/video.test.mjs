@@ -302,7 +302,8 @@ const goodLesson = () => ({
   ]
 });
 
-for (const [id, lesson] of Object.entries(allLessons)) {
+// 한 장면의 해설이 배열이어도(여럿) 해설마다 같은 검사를 합니다.
+for (const [id, lesson] of Object.entries(allLessons).flatMap(([k, v]) => core.lessonList(v).map((l) => [k, l]))) {
   test(`해설 ${id}: 형식 검사(장 수·장별 쇼츠 규칙·경고 없음)`, () => {
     const v = core.validateLesson(lesson);
     assert.deepEqual(v.errors, [], `해설 오류:\n${v.errors.join('\n')}`);
@@ -423,6 +424,86 @@ test('validateLesson: 정답이 마지막 장보다 먼저(자막·장 제목·�
   assert.ok(core.validateLesson({ ...P, chapters: [{ ...P.chapters[0], cues: [P.chapters[0].cues[0], { ...P.chapters[0].cues[1], say: '넓이는 12π예요.' }] }, P.chapters[1], P.chapters[2]] }).errors.some((e) => e.includes('정답')), 'π 표기 차이');
 });
 
+test('validateLesson: set 키는 첫 장 at:0 칸에 시작값이 있어야 한다(다시 보기가 앞선 재생의 값에서 시작하지 않게), answerText 검사', () => {
+  const L = goodLesson();
+  const withSet = (c0, laterSet) => ({ ...L, chapters: [{ ...L.chapters[0], cues: [{ ...L.chapters[0].cues[0], ...c0 }, L.chapters[0].cues[1]] }, L.chapters[1], { ...L.chapters[2], cues: [L.chapters[2].cues[0], { ...L.chapters[2].cues[1], ...laterSet }] }] });
+  assert.ok(core.validateLesson(withSet({}, { set: { reveal: true } })).errors.some((e) => e.includes('set.reveal')), 'at:0 에 시작값 없는 set 키');
+  assert.deepEqual(core.validateLesson(withSet({ set: { reveal: false } }, { set: { reveal: true } })).errors, [], 'at:0 에 시작값이 있으면 통과');
+  // 재생 시작 상태는 장면에 남은 값(base)과 상관없이 같다: 앞선 재생이 reveal 을 true 로 남겨도 t=0 과 결론 직전은 false
+  const lesson = withSet({ set: { reveal: false } }, { set: { reveal: true } });
+  const cs = core.compileLesson(lesson);
+  for (const left of [undefined, false, true]) {
+    const base = { nums: { x: 0 }, sets: { reveal: left }, step: 0, part: null };
+    assert.equal(core.stateAt(cs, 0, base).sets.reveal, false, `base=${left}: t=0`);
+    assert.equal(core.stateAt(cs, cs.length - 5, base).sets.reveal, false, `base=${left}: 결론 자막 직전`);
+    assert.equal(core.stateAt(cs, cs.length - 0.1, base).sets.reveal, true, `base=${left}: 결론 자막`);
+  }
+  assert.ok(core.validateLesson({ ...L, answerText: '값은 7' }).errors.some((e) => e.includes('answerText')), 'answerText 에 answer 없음');
+  assert.deepEqual(core.validateLesson({ ...L, answerText: '$42$ cm²' }).errors, []);
+  assert.equal(core.compileLesson(L).answerText, '$42$', 'answerText 기본값은 answer');
+});
+
+// ---------- 한 장면에 해설이 여럿(배열) ----------
+const withSets = (label, sets, patch = {}) => {
+  const L = goodLesson();
+  L.chapters[0].cues[0] = { ...L.chapters[0].cues[0], ...(sets ? { set: sets } : {}) };
+  return { ...L, ...(label ? { label } : {}), ...patch };
+};
+
+test('validateLessonSet: 해설 1~3개, 둘 이상이면 label 필수·6자 이하·겹침 금지, 한 해설의 set 키는 나머지도 at:0 에서 정해야 한다', () => {
+  const A = withSets('겉넓이', { mode: 'a', open: false }), B = withSets('부피', { mode: 'b', open: false });
+  assert.deepEqual(core.validateLessonSet(goodLesson()).errors, [], '해설 하나(객체)는 label 없이 통과');
+  assert.deepEqual(core.validateLessonSet([goodLesson()]).errors, [], '배열 하나도 label 없이 통과');
+  assert.deepEqual(core.validateLessonSet([A, B]).errors, [], '둘');
+  assert.deepEqual(core.validateLessonSet([A, B, withSets('둘레', { mode: 'c', open: false })]).errors, [], '셋');
+  assert.ok(core.validateLessonSet([A, B, withSets('넓이', { mode: 'd', open: false }), withSets('모두', { mode: 'e', open: false })]).errors.some((e) => e.includes('3개까지')), '넷은 오류');
+  assert.ok(core.validateLessonSet([]).errors.length, '빈 배열');
+  assert.ok(core.validateLessonSet([A, withSets(null, { mode: 'b', open: false })]).errors.some((e) => e.includes('label 이 필수')), '둘 이상이면 label 필수');
+  assert.ok(core.validateLessonSet([A, withSets('겉넓이', { mode: 'b', open: false })]).errors.some((e) => e.includes('겹칩니다')), 'label 겹침');
+  assert.ok(core.validateLessonSet([A, withSets('가나다라마바사', { mode: 'b', open: false })]).errors.some((e) => e.includes('label')), 'label 7자');
+  assert.ok(core.validateLessonSet([A, withSets('$x$', { mode: 'b', open: false })]).errors.some((e) => e.includes('label')), 'label 에 수식');
+  assert.deepEqual(core.validateLessonSet([A, withSets('여섯글자여섯', { mode: 'b', open: false })]).errors, [], 'label 6자는 허용');
+  // 한 해설만 바꾸는 set 키(다른 해설은 at:0 에 시작값이 없음)는 해설을 오갈 때 값이 샐 수 있어 오류
+  const leak = core.validateLessonSet([withSets('겉넓이', { mode: 'a', reveal: false }, { answer: '$42$' }), withSets('부피', { mode: 'b' })]);
+  assert.ok(leak.errors.some((e) => e.includes('set.reveal')), `다른 해설이 정하지 않은 set 키: ${leak.errors.join('/')}`);
+  // 각 해설은 해설 단위로도 검사된다(정답 조기 노출은 해설마다)
+  const early = withSets('부피', { mode: 'b', open: false });
+  early.chapters[0].cues[1] = { ...early.chapters[0].cues[1], say: '정답은 $42$일까요?' };
+  assert.ok(core.validateLessonSet([A, early]).errors.some((e) => e.includes('lessons[1]') && e.includes('정답')), '둘째 해설의 정답 조기 노출');
+  assert.deepEqual(core.lessonList(A), [A]);
+  assert.deepEqual(core.lessonList([A, B]), [A, B]);
+  assert.deepEqual(core.lessonList(null), []);
+  assert.equal(core.compileLesson(A).label, '겉넓이');
+  assert.equal(core.compileLesson(goodLesson()).label, null);
+});
+
+test('해설 여럿: 두 해설을 오가며 재생해도(겉넓이 → 부피 → 겉넓이) 장면에 남은 값과 상관없이 각 해설의 t=0·결론 직전이 같다', () => {
+  const A = withSets('겉넓이', { mode: 'a', open: false }, { answer: '$42$' }), B = withSets('부피', { mode: 'b', open: false }, { answer: '$42$' });
+  A.chapters[2].cues[1] = { ...A.chapters[2].cues[1], set: { open: true } };
+  B.chapters[2].cues[1] = { ...B.chapters[2].cues[1], set: { open: true } };
+  assert.deepEqual(core.validateLessonSet([A, B]).errors, []);
+  const [ca, cb] = [core.compileLesson(A), core.compileLesson(B)];
+  // 앞 해설을 끝까지 본 뒤 장면에 남은 값(open:true, mode:'b')에서 시작해도 같다
+  let left = { open: true, mode: 'b' };
+  for (const [cs, mode] of [[ca, 'a'], [cb, 'b'], [ca, 'a'], [cb, 'b']]) {
+    const base = { nums: { x: 0 }, sets: { ...left }, step: 0, part: null };
+    assert.deepEqual({ ...core.stateAt(cs, 0, base).sets }, { mode, open: false }, `${mode}: t=0`);
+    assert.equal(core.stateAt(cs, cs.length - 5, base).sets.open, false, `${mode}: 결론 직전`);
+    left = { ...core.stateAt(cs, cs.length, base).sets };
+    assert.equal(left.open, true, `${mode}: 끝`);
+  }
+});
+
+test('player·toc: 해설 단추 · 다음 해설 · play=<label> · 목차의 해설별 단추가 소스에 있다', () => {
+  const player = fs.readFileSync(path.resolve(DIR, '../kit/apl-player.js'), 'utf8');
+  assert.match(player, /nextTarget\(\) \{[\s\S]*lessonIndex \+ 1 < list\.length/, '같은 장면의 다음 해설이 먼저');
+  assert.match(player, /_playParam\(v, i\)/, 'play=<label|번호>');
+  assert.match(player, /this\.play\(this\.index, this\.lessonIndex\)/, '다시 보기는 방금 본 해설');
+  assert.match(player, /_entryGo\(k\)/, '해설 단추 하나가 그 해설을 바로 재생');
+  const toc = fs.readFileSync(path.resolve(DIR, '../kit/apl-toc.js'), 'utf8');
+  assert.match(toc, /this\.go\(i, x\.k\)/, '목차: 해설별 단추가 자기 해설을 재생');
+});
+
 test('compileLesson: 둘째 장 이후의 start 는 장이 시작하는 순간의 즉시 설정이고, 장 사이 값은 이어진다', () => {
   const L = goodLesson();
   L.chapters[1] = { ...L.chapters[1], start: { x: 5, y: 7 } };
@@ -486,11 +567,12 @@ test('해설 z3-sectorProof: 자막의 모든 숫자가 부채꼴 공식(r=6, 12
   // 결론 라벨은 해설이 csShowS 를 켤 때까지 아낀다(탐구 화면은 그대로)
   assert.match(html, /if \(!\(st\.lessonOn && !st\.csShowS\)\) T\(b, \{ x: xc, y: Yb \}/, 'S 라벨 표시 조건');
   assert.ok(chapterCues(lesson).some((c) => c.set && c.set.csShowS === true && c.say && c.say.includes(`${S}\\pi`)), '결론 자막과 함께 csShowS');
-  assert.ok(lesson.chapters.slice(0, 2).every((ch) => ch.cues.every((c) => !(c.set && 'csShowS' in c.set))), '앞 두 장은 csShowS 를 켜지 않는다');
+  assert.ok(lesson.chapters.slice(0, 2).every((ch) => ch.cues.every((c) => !(c.set && c.set.csShowS === true))), '앞 두 장은 csShowS 를 켜지 않는다(첫 장 at:0 의 false 제외)');
+  assert.deepEqual(JSON.parse(JSON.stringify(lesson.chapters[0].cues[0].set)), { csShowS: false }, '첫 장 at:0 에서 csShowS 는 false 로 시작(다시 보기에서 true 가 새지 않게)');
 });
 
 test('해설 sv1-1: 자막의 모든 숫자가 원기둥 공식(r=3, h=5)으로 다시 계산한 값이다', () => {
-  const lesson = surfaceLessons['sv1-1'], start = lesson.chapters[0].start;
+  const lesson = core.lessonList(surfaceLessons['sv1-1'])[0], start = lesson.chapters[0].start;
   const r = start.sR, h = start.sH;
   const base = r * r, two = 2 * base, per = 2 * r, lat = per * h, total = two + lat; // 밑넓이 πr², 밑면 2개, 둘레 2πr, 옆넓이 둘레×높이 (모두 π 의 계수)
   assert.deepEqual([r, h, base, two, per, lat, total], [3, 5, 9, 18, 6, 30, 48]);
@@ -521,6 +603,6 @@ test('player·shell: 해설 재생기는 해설을 영상보다 먼저 찾고, �
     const body = player.slice(player.indexOf(where), player.indexOf(where) + 2500);
     assert.match(body, /this\._release\(\)/, `${where} 가 _release 를 부른다`);
   }
-  assert.match(player, /urlParam\('play'\) === '1'/, 'play=1 만 자동 재생');
+  assert.match(player, /const pv = urlParam\('play'\);\s*if \(pv && !lab\.teach\)/, 'play=… 가 있을 때만 자동 재생(없으면 재생하지 않음)');
   assert.match(player, /urlParam\('manual'\) === '1'/, 'manual=1');
 });
