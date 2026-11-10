@@ -247,7 +247,7 @@ window.questionBank = [
       "삼각형",
       "도형"
     ],
-    "content": "오른쪽 그림에서 $BC\\parallel DE$, $AB\\parallel EF$일 때, $DE$의 길이는? [4점]",
+    "content": "오른쪽 그림에서 $BC\\parallel DE$, $AB\\parallel EF$일 때, $BD$의 길이는? [4점]",
     "choices": [
       "$12\\text{ cm}$",
       "$13\\text{ cm}$",
@@ -270,7 +270,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "④",
-    "solution": "평행한 두 쌍의 변이 있으므로 $BDEF$는 평행사변형이다.\n따라서\n$BF=DE$, $EF=BD=8\\text{ cm}$이다.\n또\n$AB=AD+DB=12+8=20\\text{ cm}$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.\n따라서\n$\\dfrac{DE}{BC}=\\dfrac{AD}{AB}=\\dfrac{12}{20}=\\dfrac35$이다.\n$DE=x$라 하면 $BC=BF+FC=x+10$이므로\n$\\dfrac{x}{x+10}=\\dfrac35$이다.\n$5x=3x+30$, $x=15$이다.\n따라서 정답은 ④이다.",
+    "solution": "평행한 두 쌍의 변이 있으므로 $BDEF$는 평행사변형이다.\n따라서\n$BF=DE=8\\text{ cm}$이다.\n또\n$BC=BF+FC=8+10=18\\text{ cm}$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.\n따라서\n$\\dfrac{DE}{BC}=\\dfrac{AD}{AB}=\\dfrac{8}{18}=\\dfrac49$이다.\n$BD=x$라 하면 $AB=AD+BD=12+x$이므로\n$\\dfrac{12}{12+x}=\\dfrac49$이다.\n$9\\times12=4(12+x)$이므로 $108=48+4x$, $x=15$이다.\n따라서 정답은 ④이다.",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
