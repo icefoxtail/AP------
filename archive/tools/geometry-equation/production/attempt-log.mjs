@@ -4,6 +4,7 @@
 // Line fields: ts, kind ('attempt'|'final'), item, invocation (one renderPlan call), run (one process), planSha256, capability, family,
 //   attemptIndex (1.. within the invocation; attempt lines), attempts (count so far; final line), stage, ok, status (final), code, detail (<=200 chars),
 //   fallback (coordinate-label chain steps used so far, e.g. ["COORDINATE_LEADER"]), variant (which retry this attempt was), durationMs, stageMs.
+//   A failed "final" line also carries hint (the engine's advice strings, each cut to 300 chars) and fix (the machine-usable repair steps of figure-result.json), or null.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -71,10 +72,10 @@ export function createAttemptLog({outDir,item,invocation,planSha256=null}){
         write({kind:'attempt',...common(),attemptIndex:attempts,variant,stage:stage??null,ok:!!ok,code:ok?null:(code??'UNCLASSIFIED'),detail:ok?null:text200(detail),fallback:fallback&&fallback.length?fallback:null,durationMs:watch?.total?.()??null,stageMs:watch?.ms&&Object.keys(watch.ms).length?{...watch.ms}:null});
       }catch{/* ignore */}
     },
-    final({status,stage,code=null,detail=null,fallback=null,durationMs=null}){
+    final({status,stage,code=null,detail=null,fallback=null,durationMs=null,hint=null,fix=null}){
       try{
         const ok=status!=='FAILED';
-        write({kind:'final',...common(),attempts,stage:stage??null,ok,status:status??null,code:ok?null:(code??'UNCLASSIFIED'),detail:ok?null:text200(detail),fallback:fallback&&fallback.length?fallback:null,durationMs});
+        write({kind:'final',...common(),attempts,stage:stage??null,ok,status:status??null,code:ok?null:(code??'UNCLASSIFIED'),detail:ok?null:text200(detail),fallback:fallback&&fallback.length?fallback:null,hint:!ok&&Array.isArray(hint)&&hint.length?hint.map(h=>String(h).slice(0,300)):null,fix:!ok&&Array.isArray(fix)&&fix.length?fix:null,durationMs});
       }catch{/* ignore */}
     },
   };

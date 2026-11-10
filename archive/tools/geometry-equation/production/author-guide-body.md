@@ -953,6 +953,16 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 ## 6. 오류가 오면 이렇게 고친다
 
+**오류 결과의 hint/fix 읽는 법.** 렌더가 실패하면 `<name>-result.json`(과 `attempts.jsonl`의 마지막 줄)에 기존 칸(`status`, `stage`, `detail`)은 그대로 두고 아래 칸이 더해진다. 표준 출력은 짧게 줄여 있으니 이 파일을 본다. `fix`는 제안이므로 적용한 뒤 다시 렌더해서 확인한다.
+- `code`: 오류 코드. `detail`은 600자에서 잘린 원래 값이다. 잘리지 않은 전문은 `detailFull`에, 오류 목록이 있으면 `errors`에 들어 있다.
+- `hint`: 그 코드에 대한 엔진의 고정 안내문(최대 4개, 구체적인 것이 먼저). 라벨은 지우지 말고 지시선·좌표 띠·캔버스로 끌어내라고 안내한다.
+- `fix`: 고칠 곳을 기계가 읽을 수 있게 적은 조각 목록(없는 코드도 있다). 값은 엔진이 계산한 수·id와 계약 상수뿐이고 답이 될 문구는 싣지 않는다. 한 조각은 `{path, op, …}`이다. `path`는 고칠 plan 칸(합성 그림이면 `panels[1].plan.…`), `op`는 `add`(목록에 더한다)·`set`(이 값으로 바꾼다)·`remove`(뺀다)·`compare`(`current`가 `required`와 같아야 한다)·`choose`(`options` 중 하나를 고른다. 한 option의 `steps`는 함께 적용한다)다. 그 밖의 칸은 `value`(쓸 값), `ids`(대상 id), `labels`(자리를 못 찾은 라벨 id), `range`(허용 범위), `current`(지금 값), `limit`·`overBy`(한도와 넘은 양), `contains`(품어야 할 범위), `needs:["id"]`(더하는 항목에 새 id가 필요), `suggestion`(`LEADER_LINE`·`VIEWPORT_EXPANSION`·`PANEL_SPLIT`: 배치기가 직접 내는 세 해결책을 이 plan의 옵션 이름으로 옮긴 것)이다.
+  - `*_NOT_IN_REQUIRED_POINTS`(`PIECEWISE_POLY_CORNER_…`, `…_EXTREMUM_…`, `…_REFERENCE_CURVE_…`, `PIECEWISE_DISCONTINUOUS_EXTREMUM_…`): `{path:"graphPlan.requiredPoints",op:"add",value:[{x,y}],needs:["id"]}`. 엔진이 계산한 꺾임점·극값을 새 id를 붙여 그대로 더한다(빠진 것이 한꺼번에 나온다). 쌍으로 쓴 두 번째 함수의 점이면 `path`가 `graphPlan.referenceCurves[0].requiredPoints`다.
+  - `COORDINATE_CANVAS_BOUNDS_INVALID`: 폭 384~720, 높이 320~600의 정수다. `value`가 가장 가까운 허용값이다.
+  - `COORDINATE_PANEL_TOO_TALL`: `limit`(한도), `current`(지금 높이), 캔버스 높이를 낮추거나 띠 좌표를 점 옆(지시선)으로 되돌리는 `options`.
+  - `LAYOUT_INVENTORY_INCOMPLETE`: `labels`와 이 plan에 실제로 있는 해결책(`coordinateLeader`, `coordinatePanel`, `coordinateCanvas`, `planeMarks.callouts`). 엔진이 자동으로 이미 해 본 단계(`fallback`)는 다시 권하지 않는다.
+  - `REQUIRED_SOURCE_GEOMETRY_NOT_DISPLAYED`: 빠진 id(`ids`). `COMPOSITE_INPUT_NOT_CANONICAL`: 정규 JSON이 아닌 값의 `path`. `CURVE_NAME_LEADER_ANCHOR_OFF_CURVE`: 곡선이 정의된 x 구간(`range.x`). `PIECEWISE_DISCONTINUOUS_X_WINDOW_TOO_SMALL`: 창이 품어야 할 범위(`contains`). `EQUAL_UNIT_SCALE_MISMATCH`: 선언한 비율(`current`)과 요구되는 비율(`required`).
+
 - `NAME_NOT_IN_SOLUTION`: 그림의 점 이름이 풀이에 없다. 풀이에 쓴 이름으로 id를 바꾼다.
 - `POINT_DISPLAY_NAME_INVALID:<id>`: `pointNames` 값이 허용 형식이 아니다(대문자 한 글자 + 프라임 + 아래첨자 1~9). `T_1`, `A'`, `T₁`처럼 고친다. `POINT_NAME_TARGET_UNKNOWN:<id>`: 키가 그림이 그리는 점의 id가 아니다. `POINT_DISPLAY_NAME_DUPLICATE:<이름>`: 두 점이 같은 이름을 보인다. `POINT_NAME_TARGET_HIDDEN:<id>`: 숨긴 점에는 이름을 못 붙인다. `POINT_DISPLAY_NAME_MISMATCH` / `POINT_DISPLAY_NAME_NOT_SHOWN`: 최종 SVG에 그려진 글자가 plan의 이름과 다르다(독립 관측기가 글리프에서 읽는다). 이 코드는 엔진 결함 신호이니 이름을 바꿔 보고, 그래도 나면 보고한다.
 - `SOURCE_QUOTE_MISSING` / `SOURCE_QUOTE_NOT_IN_ITEM` (작성 파이프라인의 실행기가 내는 코드): plan 최상위에 `sourceQuote`를 넣는다. 12~40자, 이 문항의 발문 또는 풀이에서 글자 그대로 복사한다.
@@ -1145,6 +1155,16 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - x 범위에 비해 y 범위가 훨씬 커서 곡선이 너무 좁아지면 엔진이 거절한다. 두 축이 서로 다른 양인 문장제(횟수 대 금액)이면 3-5절의 `applicationAxes`를 쓴다. 순수 수학 그래프이면 그림을 포기하고 UNSUPPORTED를 쓴다.
 
 ## 6. 오류가 오면 이렇게 고친다
+
+**오류 결과의 hint/fix 읽는 법.** 렌더가 실패하면 `<name>-result.json`(과 `attempts.jsonl`의 마지막 줄)에 기존 칸(`status`, `stage`, `detail`)은 그대로 두고 아래 칸이 더해진다. 표준 출력은 짧게 줄여 있으니 이 파일을 본다. `fix`는 제안이므로 적용한 뒤 다시 렌더해서 확인한다.
+- `code`: 오류 코드. `detail`은 600자에서 잘린 원래 값이다. 잘리지 않은 전문은 `detailFull`에, 오류 목록이 있으면 `errors`에 들어 있다.
+- `hint`: 그 코드에 대한 엔진의 고정 안내문(최대 4개, 구체적인 것이 먼저). 라벨은 지우지 말고 지시선·좌표 띠·캔버스로 끌어내라고 안내한다.
+- `fix`: 고칠 곳을 기계가 읽을 수 있게 적은 조각 목록(없는 코드도 있다). 값은 엔진이 계산한 수·id와 계약 상수뿐이고 답이 될 문구는 싣지 않는다. 한 조각은 `{path, op, …}`이다. `path`는 고칠 plan 칸(합성 그림이면 `panels[1].plan.…`), `op`는 `add`(목록에 더한다)·`set`(이 값으로 바꾼다)·`remove`(뺀다)·`compare`(`current`가 `required`와 같아야 한다)·`choose`(`options` 중 하나를 고른다. 한 option의 `steps`는 함께 적용한다)다. 그 밖의 칸은 `value`(쓸 값), `ids`(대상 id), `labels`(자리를 못 찾은 라벨 id), `range`(허용 범위), `current`(지금 값), `limit`·`overBy`(한도와 넘은 양), `contains`(품어야 할 범위), `needs:["id"]`(더하는 항목에 새 id가 필요), `suggestion`(`LEADER_LINE`·`VIEWPORT_EXPANSION`·`PANEL_SPLIT`: 배치기가 직접 내는 세 해결책을 이 plan의 옵션 이름으로 옮긴 것)이다.
+  - `*_NOT_IN_REQUIRED_POINTS`(`PIECEWISE_POLY_CORNER_…`, `…_EXTREMUM_…`, `…_REFERENCE_CURVE_…`, `PIECEWISE_DISCONTINUOUS_EXTREMUM_…`): `{path:"graphPlan.requiredPoints",op:"add",value:[{x,y}],needs:["id"]}`. 엔진이 계산한 꺾임점·극값을 새 id를 붙여 그대로 더한다(빠진 것이 한꺼번에 나온다). 쌍으로 쓴 두 번째 함수의 점이면 `path`가 `graphPlan.referenceCurves[0].requiredPoints`다.
+  - `COORDINATE_CANVAS_BOUNDS_INVALID`: 폭 384~720, 높이 320~600의 정수다. `value`가 가장 가까운 허용값이다.
+  - `COORDINATE_PANEL_TOO_TALL`: `limit`(한도), `current`(지금 높이), 캔버스 높이를 낮추거나 띠 좌표를 점 옆(지시선)으로 되돌리는 `options`.
+  - `LAYOUT_INVENTORY_INCOMPLETE`: `labels`와 이 plan에 실제로 있는 해결책(`coordinateLeader`, `coordinatePanel`, `coordinateCanvas`, `planeMarks.callouts`). 엔진이 자동으로 이미 해 본 단계(`fallback`)는 다시 권하지 않는다.
+  - `REQUIRED_SOURCE_GEOMETRY_NOT_DISPLAYED`: 빠진 id(`ids`). `COMPOSITE_INPUT_NOT_CANONICAL`: 정규 JSON이 아닌 값의 `path`. `CURVE_NAME_LEADER_ANCHOR_OFF_CURVE`: 곡선이 정의된 x 구간(`range.x`). `PIECEWISE_DISCONTINUOUS_X_WINDOW_TOO_SMALL`: 창이 품어야 할 범위(`contains`). `EQUAL_UNIT_SCALE_MISMATCH`: 선언한 비율(`current`)과 요구되는 비율(`required`).
 
 - `NAME_NOT_IN_SOLUTION`: 그림의 점 이름이 풀이에 없다. 풀이에 쓴 이름으로 id를 바꾼다.
 - `POINT_DISPLAY_NAME_INVALID:<id>`: `pointNames` 값이 허용 형식이 아니다(대문자 한 글자 + 프라임 + 아래첨자 1~9). `T_1`, `A'`, `T₁`처럼 고친다. `POINT_NAME_TARGET_UNKNOWN:<id>`: 키가 그림이 그리는 점의 id가 아니다. `POINT_DISPLAY_NAME_DUPLICATE:<이름>`: 두 점이 같은 이름을 보인다. `POINT_NAME_TARGET_HIDDEN:<id>`: 숨긴 점에는 이름을 못 붙인다. `POINT_DISPLAY_NAME_MISMATCH` / `POINT_DISPLAY_NAME_NOT_SHOWN`: 최종 SVG에 그려진 글자가 plan의 이름과 다르다(독립 관측기가 글리프에서 읽는다). 이 코드는 엔진 결함 신호이니 이름을 바꿔 보고, 그래도 나면 보고한다.

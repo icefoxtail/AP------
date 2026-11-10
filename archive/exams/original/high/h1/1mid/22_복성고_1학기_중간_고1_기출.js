@@ -41,7 +41,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "두 점 사이의 거리 공식을 사용한다.\n$x$좌표의 차는 $1-(-1)=2$, $y$좌표의 차는 $3-2=1$이다.\n따라서\n$AB=\\sqrt{2^2+1^2}=\\sqrt5$이다.\n정답은 ⑤이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY"
+    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 두 점 A(1,3), B(−1,2)를 파란 선분으로 잇고, 점 A에서 내린 세로 점선과 점 B에서 그은 가로 점선이 직각으로 만나 직각삼각형을 이룬다. 세로 점선에 1, 가로 점선에 2가 적혀 있다.",
+    "solutionImageCaption": "두 점 사이의 거리는 가로 변과 세로 변을 두 변으로 하는 직각삼각형의 빗변이다. x좌표의 차 2와 y좌표의 차 1을 피타고라스 정리에 넣으면 된다. 정답은 √5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -83,7 +87,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "원의 중심이 $(-1,4)$이고 반지름의 길이가 $2$이다.\n중심이 $(a,b)$이고 반지름이 $r$인 원의 방정식은\n$(x-a)^2+(y-b)^2=r^2$이다.\n따라서\n$(x+1)^2+(y-4)^2=4$이다.\n정답은 ③이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY"
+    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 중심 C(−1,4)인 원이 있고, 중심에서 오른쪽 원 위의 점까지 파란 반지름 선분이 그려져 있으며 반지름의 길이 r이 적혀 있다.",
+    "solutionImageCaption": "원의 방정식은 중심의 좌표 (a,b)와 반지름 r을 (x−a)²+(y−b)²=r²에 대입하여 얻는다. 중심 (−1,4)와 반지름 2를 대입하면 (x+1)²+(y−4)²=4이다. 정답은 (x+1)²+(y−4)²=4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -206,9 +214,9 @@ window.questionBank = [
     "solution": "점 $(-1,5)$를 지나고 기울기가 $2$이므로 점기울기식을 쓴다.\n$y-5=2(x+1)$이다.\n따라서\n$f(x)=2x+7$이고\n$f(1)=2+7=9$이다.\n정답은 ④이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
     "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "점 (-1,5)를 지나고 기울기가 2인 직선 위에서 x=1일 때 y=9이다.",
-    "solutionImageCaption": "점 (-1,5)를 지나고 기울기가 2인 직선 위에서 x=1일 때 y=9이다.",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 오른쪽 위로 올라가는 직선 y=f(x)가 그려져 있다. 직선 위의 점 P(−1,5)에서 오른쪽으로 1, 위로 2만큼 가는 점선 직각 기울기 표시가 있고, x축 위 x=1에서 올린 세로 점선이 직선 위의 점 R까지 이어진다.",
+    "solutionImageCaption": "점 P(−1,5)에서 오른쪽으로 1만큼 갈 때 위로 2만큼 올라가므로 기울기가 2이다. 점기울기식으로 f(x)=2x+7을 얻고 x=1일 때의 값이 점 R의 y좌표이다. 정답은 9이다.",
     "solutionImageSize": "full"
   },
   {
@@ -416,9 +424,9 @@ window.questionBank = [
     "solution": "세 변의 내분점 $D$, $E$, $F$의 좌표를 차례대로 구한다.\n$AD:DB=2:1$이므로\n$D=\\left(\\dfrac{-1+2\\cdot3}{3},\\dfrac{2+2\\cdot1}{3}\\right)=\\left(\\dfrac53,\\dfrac43\\right)$이다.\n$BE:EC=2:1$이므로\n$E=\\left(\\dfrac{3+2\\cdot4}{3},\\dfrac{1+2\\cdot3}{3}\\right)=\\left(\\dfrac{11}3,\\dfrac73\\right)$이다.\n$CF:FA=2:1$이므로\n$F=\\left(\\dfrac{4+2\\cdot(-1)}3,\\dfrac{3+2\\cdot2}3\\right)=\\left(\\dfrac23,\\dfrac73\\right)$이다.\n삼각형 $DEF$의 무게중심 $(a,b)$는 세 꼭짓점의 각 좌표를 더해 $3$으로 나눈 점이다.\n따라서\n$a=\\dfrac{5+11+2}{3\\cdot3}=\\dfrac{18}{9}=2$이고,\n$b=\\dfrac{4+7+7}{3\\cdot3}=\\dfrac{18}{9}=2$이다.\n그러므로 $a+b=2+2=4$이고 정답은 ⑤이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
     "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 세 변을 2:1로 내분하는 점 D, E, F와 삼각형 DEF의 무게중심 G(2, 2)",
-    "solutionImageCaption": "삼각형 ABC의 세 변을 2:1로 내분하는 점 D, E, F와 삼각형 DEF의 무게중심 G(2, 2)",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 파란 삼각형 ABC와 세 변 위의 내분점 D, E, F를 이은 주황 삼각형 DEF가 있고 DEF의 안쪽은 초록으로 칠해져 있다. 삼각형 DEF의 무게중심 G가 점으로 찍혀 있다.",
+    "solutionImageCaption": "각 변을 2 대 1로 내분하는 점 D, E, F의 좌표를 내분점 공식으로 구한다. 삼각형 DEF의 무게중심은 세 꼭짓점 좌표의 평균이다(파란 삼각형 ABC의 변, 주황 삼각형 DEF의 변). 이 점의 좌표를 (a,b)라 할 때 a+b를 구하면 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -501,7 +509,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "평행한 두 직선 사이의 거리 공식을 쓴다.\n$3x+4y-1=0$, $3x+4y+k=0$ 사이의 거리는\n$\\dfrac{|k-(-1)|}{\\sqrt{3^2+4^2}}=\\dfrac{|k+1|}{5}$이다.\n이 값이 $2$이므로\n$|k+1|=10$이다.\n따라서 $k=9$ 또는 $k=-11$이고 가능한 값의 합은\n$9+(-11)=-2$이다.\n정답은 ③이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY"
+    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 오른쪽 아래로 내려가는 서로 평행한 세 직선이 그려져 있다. 가운데 파란 직선 l 위의 점 P에서 아래쪽 주황 직선 m₁의 점 A, 위쪽 초록 직선 m₂의 점 B로 수직인 점선이 그어져 있고 각각 길이 2가 적혀 있다.",
+    "solutionImageCaption": "평행한 두 직선 사이의 거리는 한 직선 위의 점에서 다른 직선까지의 수선의 길이이다. 직선 l에서 거리 2인 평행선은 파란 직선의 양쪽(주황, 초록)에 하나씩 있어 k가 두 값을 갖는다. 두 값을 더하면 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -587,7 +599,11 @@ window.questionBank = [
     "answer": "②",
     "solution": "직선 위의 점의 $y$좌표부터 채운다.\n$P$는 $y=2x-1$ 위에 있으므로 $f(a)=2a-1$이다.\n$Q$는 $y=2x+5$ 위에 있으므로 $g(b)=2b+5$이다.\n$PR:RQ=1:2$이므로\n$R=\\left(\\dfrac{2a+b}{3},\\dfrac{2(2a-1)+(2b+5)}{3}\\right)$\n$=\\left(\\dfrac{2a+b}{3},\\dfrac{2b+4a+3}{3}\\right)$이다.\n따라서 $h(a)=4a+3$이다.\n$f(1)=1$, $g(-1)=3$, $h(0)=3$이므로\n$f(1)+g(-1)+h(0)=7$이다.\n정답은 ②이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY"
+    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 기울기가 같은 세 직선이 그려져 있다. 아래쪽 파란 직선 l₁ 위의 점 P와 위쪽 주황 직선 l₂ 위의 점 Q를 점선으로 잇고, 두 직선 사이의 초록 직선 y=2x+1 위에 내분점 R이 찍혀 있다.",
+    "solutionImageCaption": "예: a=−1, b=1일 때 P(−1,−3), Q(1,7)이고 PQ를 1 대 2로 내분하는 점 R은 초록 직선 y=2x+1 위에 있다. 일반적으로 (가)=2a−1, (나)=2b+5, (다)=4a+3이며 대입하면 f(1)+g(−1)+h(0)을 얻는다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -630,9 +646,9 @@ window.questionBank = [
     "solution": "두 직선의 기울기 곱이 $-1$임을 이용한다.\n두 점 $(2,1)$, $(7,a-1)$을 지나는 직선의 기울기는\n$\\dfrac{(a-1)-1}{7-2}=\\dfrac{a-2}{5}$이다.\n만약 $a=0$이면 직선 $3x=-4$는 수직선이다.\n이때 첫째 직선의 기울기는 $-\\dfrac25\\ne0$이므로 두 직선은 수직일 수 없다.\n따라서 $a\\ne0$이다.\n직선 $3x+ay=-4$의 기울기는 $-\\dfrac3a$이다.\n두 직선이 수직이므로\n$\\dfrac{a-2}{5}\\left(-\\dfrac3a\\right)=-1$이다.\n$3(a-2)=5a$에서 $a=-3$이다.\n정답은 ①이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
     "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "a=-3일 때 두 직선은 서로 수직이다.",
-    "solutionImageCaption": "a=-3일 때 두 직선은 서로 수직이다.",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 오른쪽 아래로 내려가는 파란 직선 l₁과 오른쪽 위로 올라가는 주황 직선 l₂가 직각으로 만나며 교점에 직각 표시가 있다. l₁ 위에 점 P(2,1)과 점 Q가 있다.",
+    "solutionImageCaption": "l₁은 두 점 P(2,1), Q(7,a−1)을 지나는 직선이고 l₂는 직선 3x+ay=−4이다. 두 직선이 수직이면 기울기의 곱이 −1이므로 5분의 (a−2)와 −3분의 a를 곱한 값이 −1이다(그림은 그 상황에서의 모습이다). 정답은 −3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -765,9 +781,9 @@ window.questionBank = [
     "solution": "먼저 점 $P$를 지나는 직선과 $x$축의 교점 $Q$를 구한다.\n직선의 방정식은\n$y-\\dfrac{t^2}{4}=\\dfrac t2(x-t)$이다.\n$y=0$을 대입하면 $x=\\dfrac t2$이므로\n$Q\\left(\\dfrac t2,0\\right)$이다.\n점 $Q\\left(\\dfrac t2,0\\right)$와 $A(0,1)$을 $3:2$로 외분하는 점을 $R$이라 하자.\n외분점의 좌표 공식을 $x$, $y$좌표에 각각 적용하면\n$R=\\left(\\dfrac{3\\cdot0-2\\cdot(\\frac{t}{2})}{3-2},\\dfrac{3\\cdot1-2\\cdot0}{3-2}\\right)=(-t,3)$이다.\n$R$이 $y=\\dfrac14x^2$ 위에 있으므로\n$3=\\dfrac{t^2}{4}$이다.\n$t>0$이므로 $t=2\\sqrt3$이다.\n따라서\n$Q=(\\sqrt3,0)$, $P=(2\\sqrt3,3)$, $R=(-2\\sqrt3,3)$이다.\n$RP=4\\sqrt3$이고 $Q$에서 직선 $RP$까지의 높이는 $3$이므로\n삼각형 $RQP$의 넓이는\n$\\dfrac12\\cdot4\\sqrt3\\cdot3=6\\sqrt3$이다.\n정답은 ④이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
     "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "R이 포물선 위에 있으면 t=2√3이므로 P, R의 높이는 3이고 P에서의 접선이 x축과 만나는 점이 Q이다.",
-    "solutionImageCaption": "R이 포물선 위에 있으면 t=2√3이므로 P, R의 높이는 3이고 P에서의 접선이 x축과 만나는 점이 Q이다.",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 아래로 볼록한 포물선과 포물선 위의 점 P를 지나는 직선 l이 그려져 있다. 직선 l은 x축의 점 Q를 지난다. 점 R은 포물선 위에서 P와 높이가 같고 점 A는 y축 위에 있으며 삼각형 RQP가 옅게 칠해져 있고 변 RQ가 점 A를 지난다.",
+    "solutionImageCaption": "포물선은 y=(4분의 1)x²이다. 직선 l은 P를 지나 x축과 Q에서 만나고, R은 선분 QA를 3 대 2로 외분하는 점으로 직선 RQ 위에 A가 놓인다. R이 포물선 위에 있다는 조건으로 t=2√3를 얻으면 P와 R의 높이는 같고, 밑변 RP와 높이를 이용해 삼각형 RQP의 넓이를 구한다. 정답은 6√3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -839,7 +855,10 @@ window.questionBank = [
     "solution": "점들의 상대적 위치만 필요하므로 한 직선 위에 간단한 좌표를 잡는다.\n$A=0$, $B=3$으로 두면 $AB=3$이다.\n$P$는 $AB$를 $2:1$로 내분하므로 $P=2$이다.\n$Q$는 $AB$를 $2:1$로 외분하므로 $Q=6$이다.\n따라서 점의 순서는 $A-P-B-Q$이고\n$PB=1$, $BQ=3$이다.\n그러므로 점 $B$는 선분 $PQ$를 $1:3$으로 내분하는 점이다.\n(1) $1:3$, (2) 내분이다.\n(3) 그림은 아래와 같이 $A-P-B-Q$의 순서와 $PB:BQ=1:3$을 나타내면 된다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
     "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 왼쪽부터 A(0), P(2), B(3), Q(6)가 차례로 표시되어 있고 A와 B 사이에서 AP와 PB 구간에 비 2와 1이 적혀 있다.",
+    "solutionImageCaption": "A=0, B=3으로 두면 P는 AB를 2 대 1로 내분하여 2이고 Q는 AB를 2 대 1로 외분하여 6이다. 점의 순서는 A, P, B, Q이다. 이 그림에서 PB와 BQ의 길이로 점 B가 선분 PQ를 나누는 비와 내분·외분 여부를 읽는다. 정답은 (1) 1:3, (2) 내분, (3) 그림과 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -879,7 +898,11 @@ window.questionBank = [
     "answer": "\\dfrac{1}{2}",
     "solution": "두 직선 $y=3x$, $y=-\\dfrac13x$의 기울기 곱은 $-1$이므로 두 직선은 원점에서 서로 수직이다.\n따라서 세 직선이 만드는 삼각형이 이등변삼각형이면 원점을 꼭짓점으로 하는 두 직각변의 길이가 같아야 한다.\n직선 $y=mx+4$와 $y=3x$의 교점을 $A$라 하면\n$x_A=\\dfrac4{3-m}$이고\n$OA=\\sqrt{1^2+3^2}|x_A|=\\dfrac{4\\sqrt{10}}{|3-m|}$이다.\n직선 $y=mx+4$와 $y=-\\dfrac13x$의 교점을 $B$라 하면\n$x_B=-\\dfrac{12}{1+3m}$이고\n$OB=\\dfrac{4\\sqrt{10}}{|1+3m|}$이다.\n$OA=OB$이므로\n$|3-m|=|1+3m|$이다.\n따라서 $m=\\dfrac12$ 또는 $m=-2$이고, $m>0$이므로\n$m=\\dfrac12$이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY"
+    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 직선 y=3x, 직선 y=−3분의 x, 직선 y=mx+4가 그려져 있다. 앞의 두 직선은 원점 O에서 직각으로 만나고 세 직선이 삼각형 OAB를 둘러싼다. 원점에서 A, B까지의 두 변은 같은 길이 표시가 있다.",
+    "solutionImageCaption": "두 직선 y=3x와 y=−3분의 x는 기울기의 곱이 −1이므로 원점 O에서 수직이다. 직선 y=mx+4가 이 두 직선과 만나는 점을 A, B라 하면 이등변삼각형이 되려면 OA=OB이어야 한다(그림은 이 상황이다). 정답은 2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -63,6 +63,9 @@ def main():
             status, result = 'UNSUPPORTED', {'code':'UNSUPPORTED_WORKER_ACTION'}
     except (ValueError, KeyError, TypeError) as error:
         status, result = 'ERROR', {'code':str(error)}
+        # A refusal that carries repair data (graph_framing.HintedValueError) sends it beside the code; render-plan.mjs strips it into result.fix.
+        hint_data = getattr(error, 'hint_data', None)
+        if hint_data is not None: result['hintData'] = hint_data
     print(json.dumps({'wireVersion':VERSION,'inputObjectSha256':input_hash,'status':status,'result':result},ensure_ascii=False,allow_nan=False))
 
 if __name__ == '__main__': main()

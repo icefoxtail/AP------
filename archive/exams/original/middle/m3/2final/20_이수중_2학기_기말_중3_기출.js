@@ -182,7 +182,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "②",
-    "solution": "접점에서 반지름과 접선은 수직이므로\n\\angle OTP=90^\\circ이다.\n직각삼각형 OPT에서 피타고라스 정리를 쓰면\nPT^2+OT^2=OP^2\nPT^2+5^2=10^2\nPT^2=75\nPT=5\\sqrt3이다.\n그러므로 정답은 ②이다.",
+    "solution": "접점에서 반지름과 접선은 수직이므로\n\\angle OTP=90^\\circ이다.\n직각삼각형 OPT에서 피타고라스 정리를 쓰면\nPT^2+OT^2=OP^2\nPT^2+5^2=10^2\nPT^2=75\nPT=5\\sqrt{3}이다.\n그러므로 정답은 ②이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -296,7 +296,7 @@ window.questionBank = [
       "$60\\rm\\,cm^2$"
     ],
     "answer": "②",
-    "solution": "접점에서 반지름과 접선은 수직이다.\n직각삼각형 OAP에서\nAP^2+OA^2=OP^2\nAP^2+9^2=15^2\nAP^2=144\nAP=12이다.\n두 접선의 길이가 같으므로 BP=12이다.\n사각형 APBO는 직각삼각형 OAP와 OBP로 나뉜다.\n넓이=\\frac12\\cdot9\\cdot12+\\frac12\\cdot9\\cdot12\n=108\\rm\\,cm^2이다.\n그러므로 정답은 ②이다.",
+    "solution": "접점에서 반지름과 접선은 수직이다.\n직각삼각형 OAP에서\nAP^2+OA^2=OP^2\nAP^2+9^2=15^2\nAP^2=144\nAP=12이다.\n두 접선의 길이가 같으므로 BP=12이다.\n사각형 APBO는 직각삼각형 OAP와 OBP로 나뉜다.\n넓이=\\frac{1}{2}\\cdot9\\cdot12+\\frac{1}{2}\\cdot9\\cdot12\n=108\\rm\\,cm^2이다.\n그러므로 정답은 ②이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -353,7 +353,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "③",
-    "solution": "한 점에서 원에 그은 두 접선의 길이는 같다.\nBD=BE=x,\\quad AD=AF=y,\\quad CE=CF=z라 두자.\n주어진 변의 길이에서\nx+y=8,\\quad y+z=7,\\quad x+z=6이다.\n첫째 식과 셋째 식을 더하고 둘째 식을 빼면\n2x=8+6-7=7\nx=\\frac72이다.\n따라서 BE=\\frac72이고 정답은 ③이다.",
+    "solution": "한 점에서 원에 그은 두 접선의 길이는 같다.\nBD=BE=x,\\quad AD=AF=y,\\quad CE=CF=z라 두자.\n주어진 변의 길이에서\nx+y=8,\\quad y+z=7,\\quad x+z=6이다.\n첫째 식과 셋째 식을 더하고 둘째 식을 빼면\n2x=8+6-7=7\nx=\\frac{7}{2}이다.\n따라서 BE=\\frac{7}{2}이고 정답은 ③이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -410,7 +410,7 @@ window.questionBank = [
       "$30^\\circ$"
     ],
     "answer": "②",
-    "solution": "중심각 \\angle AOB=120^\\circ이다.\n점 P의 원주각 x와 중심각은 같은 호 AB를 본다.\n따라서\nx=\\frac12\\angle AOB=\\frac12\\cdot120^\\circ=60^\\circ이다.\n그러므로 정답은 ②이다.",
+    "solution": "중심각 \\angle AOB=120^\\circ이다.\n점 P의 원주각 x와 중심각은 같은 호 AB를 본다.\n따라서\nx=\\frac{1}{2}\\angle AOB=\\frac{1}{2}\\cdot120^\\circ=60^\\circ이다.\n그러므로 정답은 ②이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -524,7 +524,7 @@ window.questionBank = [
       "$140^\\circ$"
     ],
     "answer": "④",
-    "solution": "중심각 \\angle AOB=100^\\circ이므로 작은 호 AB의 크기는 100^\\circ이다.\n점 C는 작은 호 AB 위에 있으므로 \\angle ACB는 큰 호 AB를 본다.\n큰 호 AB의 크기는\n360^\\circ-100^\\circ=260^\\circ이다.\n따라서\n\\angle ACB=\\frac12\\cdot260^\\circ=130^\\circ이다.\n그러므로 정답은 ④이다.",
+    "solution": "중심각 \\angle AOB=100^\\circ이므로 작은 호 AB의 크기는 100^\\circ이다.\n점 C는 작은 호 AB 위에 있으므로 \\angle ACB는 큰 호 AB를 본다.\n큰 호 AB의 크기는\n360^\\circ-100^\\circ=260^\\circ이다.\n따라서\n\\angle ACB=\\frac{1}{2}\\cdot260^\\circ=130^\\circ이다.\n그러므로 정답은 ④이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -581,7 +581,7 @@ window.questionBank = [
       "$42^\\circ$"
     ],
     "answer": "①",
-    "solution": "교차하는 두 현이 만드는 각의 크기는 마주 보는 두 호의 합의 절반이다.\n호 BC의 크기를 t^\\circ라 하면\n2\\widehat{AD}=3\\widehat{BC}에서\n\\widehat{AD}=\\frac32t^\\circ이다.\n\\angle BPC=70^\\circ이므로\n\\frac12\\left(t+\\frac32t\\right)=70\n\\frac52t=140\nt=56이다.\n각 x는 호 BC에 대한 원주각이므로\nx=\\frac12\\cdot56^\\circ=28^\\circ이다.\n그러므로 정답은 ①이다.",
+    "solution": "교차하는 두 현이 만드는 각의 크기는 마주 보는 두 호의 합의 절반이다.\n호 BC의 크기를 t^\\circ라 하면\n2\\widehat{AD}=3\\widehat{BC}에서\n\\widehat{AD}=\\frac{3}{2}t^\\circ이다.\n\\angle BPC=70^\\circ이므로\n\\frac{1}{2}(t+\\frac{3}{2}t)=70\n\\frac{5}{2}t=140\nt=56이다.\n각 x는 호 BC에 대한 원주각이므로\nx=\\frac{1}{2}\\cdot56^\\circ=28^\\circ이다.\n그러므로 정답은 ①이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -638,7 +638,7 @@ window.questionBank = [
       "$60^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "AD와 AF는 원에 그은 두 접선이고 \\angle A=50^\\circ이다.\n두 반지름 OD, OF는 각각 접선에 수직이므로\n\\angle DOF=180^\\circ-50^\\circ=130^\\circ이다.\n또 \\angle EFD=55^\\circ이므로 이 각이 보는 호 ED는\n\\widehat{ED}=2\\cdot55^\\circ=110^\\circ이다.\n원의 세 호의 합은 360^\\circ이므로\n\\widehat{FE}=360^\\circ-130^\\circ-110^\\circ=120^\\circ이다.\n따라서 호 FE를 보는 원주각은\nx=\\angle FDE=\\frac12\\cdot120^\\circ=60^\\circ이다.\n그러므로 정답은 ⑤이다.",
+    "solution": "AD와 AF는 원에 그은 두 접선이고 \\angle A=50^\\circ이다.\n두 반지름 OD, OF는 각각 접선에 수직이므로\n\\angle DOF=180^\\circ-50^\\circ=130^\\circ이다.\n또 \\angle EFD=55^\\circ이므로 이 각이 보는 호 ED는\n\\widehat{ED}=2\\cdot55^\\circ=110^\\circ이다.\n원의 세 호의 합은 360^\\circ이므로\n\\widehat{FE}=360^\\circ-130^\\circ-110^\\circ=120^\\circ이다.\n따라서 호 FE를 보는 원주각은\nx=\\angle FDE=\\frac{1}{2}\\cdot120^\\circ=60^\\circ이다.\n그러므로 정답은 ⑤이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -695,7 +695,7 @@ window.questionBank = [
       "$40^\\circ$"
     ],
     "answer": "③",
-    "solution": "원에 내접한 사각형에서 한 외각은 그와 마주 보는 내각과 같다.\n또는 외부의 두 할선이 이루는 각은 큰 호와 작은 호의 차의 절반이다.\n\\angle ADC=115^\\circ이므로 호 ABC의 크기는\n2\\cdot115^\\circ=230^\\circ이다.\n따라서 호 AB+호 BC=230^\\circ이고\n호 AD+호 CD=130^\\circ이다.\n\\angle BPC=30^\\circ이므로\n호 BC-호 AD=2\\cdot30^\\circ=60^\\circ이다.\n구하는 외각 x는\nx=\\frac12(\\text{호 }AB-\\text{호 }CD)\n=\\frac12\\{(230^\\circ-\\text{호 }BC)-(130^\\circ-\\text{호 }AD)\\}\n=\\frac12(100^\\circ-60^\\circ)=20^\\circ이다.\n그러므로 정답은 ③이다.",
+    "solution": "원에 내접한 사각형에서 한 외각은 그와 마주 보는 내각과 같다.\n또는 외부의 두 할선이 이루는 각은 큰 호와 작은 호의 차의 절반이다.\n\\angle ADC=115^\\circ이므로 호 ABC의 크기는\n2\\cdot115^\\circ=230^\\circ이다.\n따라서 호 AB+호 BC=230^\\circ이고\n호 AD+호 CD=130^\\circ이다.\n\\angle BPC=30^\\circ이므로\n호 BC-호 AD=2\\cdot30^\\circ=60^\\circ이다.\n구하는 외각 x는\nx=\\frac{1}{2}(\\text{호 }AB-\\text{호 }CD)\n=\\frac{1}{2}\\{(230^\\circ-\\text{호 }BC)-(130^\\circ-\\text{호 }AD)\\}\n=\\frac{1}{2}(100^\\circ-60^\\circ)=20^\\circ이다.\n그러므로 정답은 ③이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -974,7 +974,7 @@ window.questionBank = [
     "content": "오른쪽 그림에서 $\\overline{OP}=\\overline{OQ}$이고 $\\angle ACB=50^\\circ$, $\\overline{AC}=6\\rm\\,cm$일 때, 다음 물음에 답하시오. (5점, 각 1점)\\n(1) $\\overline{AQ}$의 길이를 구하시오.\\n(2) $\\overline{AB}$의 길이를 구하시오.\\n(3) $\\overline{BP}$의 길이를 구하시오.\\n(4) $\\angle y$의 크기를 구하시오.\\n(5) $\\angle x$의 크기를 구하시오.",
     "choices": [],
     "answer": "AQ=3 cm; AB=6 cm; BP=3 cm; y=50°; x=80°",
-    "solution": "OP와 OQ는 각각 현 AB와 AC에 수직이고 OP=OQ이다.\n중심에서 같은 거리에 있는 두 현은 길이가 같으므로\nAB=AC이다.\n따라서 삼각형 ABC는 이등변삼각형이고\n\\angle B=\\angle C=50^\\circ,\\quad \\angle A=80^\\circ이다.\n\n(1) 중심에서 현 AC에 내린 수선은 현을 이등분하므로\nAQ=\\frac12AC=3\\rm\\,cm이다.\n\n(2) AB=AC=6\\rm\\,cm이다.\n\n(3) 중심에서 현 AB에 내린 수선은 현을 이등분하므로\nBP=\\frac12AB=3\\rm\\,cm이다.\n\n(4) y=\\angle ABC=50^\\circ이다.\n\n(5) x=\\angle BAC=80^\\circ이다.",
+    "solution": "OP와 OQ는 각각 현 AB와 AC에 수직이고 OP=OQ이다.\n중심에서 같은 거리에 있는 두 현은 길이가 같으므로\nAB=AC이다.\n따라서 삼각형 ABC는 이등변삼각형이고\n\\angle B=\\angle C=50^\\circ,\\quad \\angle A=80^\\circ이다.\n\n(1) 중심에서 현 AC에 내린 수선은 현을 이등분하므로\nAQ=\\frac{1}{2}AC=3\\rm\\,cm이다.\n\n(2) AB=AC=6\\rm\\,cm이다.\n\n(3) 중심에서 현 AB에 내린 수선은 현을 이등분하므로\nBP=\\frac{1}{2}AB=3\\rm\\,cm이다.\n\n(4) y=\\angle ABC=50^\\circ이다.\n\n(5) x=\\angle BAC=80^\\circ이다.",
     "tags": [
       "도형",
       "원의 성질"
