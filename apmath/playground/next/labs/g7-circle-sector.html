@@ -568,7 +568,8 @@ function proofScene(type) {
           T(b, { x: xc, y: Yt - 0.12 }, circ ? `가로 → πr = ${cmOf(ex(r))}` : `가로 → l ÷ 2 = ${cmOf(ex(r * st.csS, 360))}`, { dy: -22, color: 'amber', size: 16 });
           b.seg({ x: xl - 0.12, y: Yt }, { x: xl - 0.12, y: Yb }, { color: 'rose', width: 2.5, alpha: al });
           tagN(b, { x: xl - 0.12, y: (Yt + Yb) / 2 }, -1, 0, compact ? '세로 → r' : `세로 → r = ${r} cm`, { color: 'rose', size: 16, gap: 8 });
-          T(b, { x: xc, y: Yb }, circ ? `S = πr² = ${cm2Of(ex(r * r))}` : `S = ½rl = ${cm2Of(ex(r * r * st.csS, 360))}`, { dy: 28, color: 'green', size: 17 });
+          // 해설(lesson) 재생 중(st.lessonOn)에는 결론 라벨을 해설이 csShowS 를 켤 때까지 아껴 둡니다(유도 자막보다 정답이 먼저 보이지 않게). 탐구 화면은 그대로.
+          if (!(st.lessonOn && !st.csShowS)) T(b, { x: xc, y: Yb }, circ ? `S = πr² = ${cm2Of(ex(r * r))}` : `S = ½rl = ${cm2Of(ex(r * r * st.csS, 360))}`, { dy: 28, color: 'green', size: 17 });
         }
         const yh = Yb + (compact ? 0.85 : 0.65), half = Math.max(0.7, Math.min(1.2, W * 0.6));
         const xa = xc - half, xb = xc + half;
@@ -587,8 +588,8 @@ function proofScene(type) {
           b.setFocus(CANON_VIEW, true);
           b.begin({ emph: b.emph });
           for (let pass = 0; pass < 2; pass++) {
-            const a = b.measure(() => paint({ ...s, csT: 0 }));
-            const z = b.measure(() => paint({ ...s, csT: 100 }));
+            const a = b.measure(() => paint({ ...s, csT: 0, lessonOn: false }));
+            const z = b.measure(() => paint({ ...s, csT: 100, lessonOn: false })); // 라벨을 아껴 두는 동안에도 맞춤 범위는 결론 라벨까지 포함
             if (a && z) {
               const box = { x0: Math.min(a.x0, z.x0), y0: Math.min(a.y0, z.y0), x1: Math.max(a.x1, z.x1), y1: Math.max(a.y1, z.y1), texts: [...a.texts, ...z.texts] };
               b.setFocus(b.fitBox(box, { margin: 0.025, px: 14 }), true);
@@ -658,7 +659,7 @@ mineGroups.forEach((g) => g.scenes.forEach((sc) => {
   sc.autoFit = true;
 }));
 
-const MODULES = ['basic', 'f01', 'f02', 'f03', 'f04', 'f05', 'rolling', 'swept', 'video', 'video-a', 'video-b']; // video*: 영상 대본(window.APL_VIDEOS) — 그룹이 아니라 장면 id별 대본 데이터. video-a/b 는 두 작업이 같은 파일을 동시에 고치지 않도록 나눈 파일
+const MODULES = ['basic', 'f01', 'f02', 'f03', 'f04', 'f05', 'rolling', 'swept', 'video', 'video-a', 'video-b', 'lesson']; // lesson: 해설(window.APL_LESSONS, 장 여러 개를 이어 정답까지) · video*: 영상 대본(window.APL_VIDEOS) — 그룹이 아니라 장면 id별 대본 데이터. video-a/b 는 두 작업이 같은 파일을 동시에 고치지 않도록 나눈 파일
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -802,6 +803,7 @@ function start() {
     state: { csN: 16 },
     params,
     videos: (window.APL_VIDEOS || {})['g7-circle-sector'], // 장면 id → 영상 대본 (kit/apl-player.js, labs/g7-circle-sector/video.js)
+    lessons: (window.APL_LESSONS || {})['g7-circle-sector'], // 장면 id → 해설 (labs/g7-circle-sector/lesson.js). 해설이 있는 장면은 영상보다 해설이 먼저
     groups
   });
   const setupLearningLevels = () => {

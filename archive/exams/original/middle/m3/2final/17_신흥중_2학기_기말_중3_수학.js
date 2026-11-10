@@ -67,8 +67,8 @@ window.examData = {
         "$\\tan x = \\overline{\\mathrm{CD}}$",
         "$\\cos x = \\overline{\\mathrm{OD}}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "$\\cos x = \\overline{\\mathrm{OD}}$",
+      "solution": "반지름이 1이므로 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OD}}=1$이다.<br>직각삼각형 $\\mathrm{OAB}$에서 $\\sin x=\\dfrac{\\overline{\\mathrm{AB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{AB}}$, $\\cos x=\\dfrac{\\overline{\\mathrm{OB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{OB}}$이다.<br>$y=90^\\circ-x$이므로 $\\sin y=\\dfrac{\\overline{\\mathrm{OB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{OB}}$, $\\cos y=\\dfrac{\\overline{\\mathrm{AB}}}{\\overline{\\mathrm{OA}}}=\\overline{\\mathrm{AB}}$이다.<br>직각삼각형 $\\mathrm{OCD}$에서 $\\tan x=\\dfrac{\\overline{\\mathrm{CD}}}{\\overline{\\mathrm{OD}}}=\\overline{\\mathrm{CD}}$이다.<br>그러나 $\\cos x=\\overline{\\mathrm{OB}}$이고 $\\overline{\\mathrm{OD}}=1$이므로 $\\cos x=\\overline{\\mathrm{OD}}$는 옳지 않다. 따라서 옳지 않은 것은 ⑤이다."
     },
     {
       "id": 5,
@@ -113,8 +113,8 @@ window.examData = {
         "$15\\sqrt{3}\\text{ cm}^2$",
         "$10\\sqrt{3}\\text{ cm}^2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "$10\\sqrt{3}\\text{ cm}^2$",
+      "solution": "평행사변형에서 $BC=AD=10\\text{ cm}$이고 $M$이 $BC$의 중점이므로 $MC=5\\text{ cm}$이다.<br>꼭짓점 $A$에서 $BC$에 내린 수선의 길이는 $AB\\sin60^\\circ=8\\times\\dfrac{\\sqrt{3}}{2}=4\\sqrt{3}\\text{ cm}$이다.<br>따라서 $\\triangle AMC=(\\dfrac{1}{2})\\times MC\\times(4\\sqrt{3})=(\\dfrac{1}{2})\\times5\\times4\\sqrt{3}=10\\sqrt{3}\\text{ cm}^2$이다."
     },
     {
       "id": 8,
@@ -127,8 +127,8 @@ window.examData = {
         "$25\\text{ cm}$",
         "$20\\sqrt{21}\\text{ cm}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "$20\\sqrt{21}\\text{ cm}$",
+      "solution": "직각삼각형 $ABH$에서 $BH=AB\\cos60^\\circ=80\\times\\dfrac{1}{2}=40\\text{ cm}$, $AH=AB\\sin60^\\circ=80\\times\\dfrac{\\sqrt{3}}{2}=40\\sqrt{3}\\text{ cm}$이다.<br>$HC=BC-BH=100-40=60\\text{ cm}$이다.<br>직각삼각형 $AHC$에서 $AC=\\sqrt{AH^2+HC^2}=\\sqrt{4800+3600}=\\sqrt{8400}=20\\sqrt{21}\\text{ cm}$이다."
     },
     {
       "id": 9,
@@ -351,8 +351,8 @@ window.examData = {
       "score": 6,
       "question": "[서술형 1] 다음 그림을 보고 알맞은 값을 구하여라. (6점)<br><img src=\"assets/images/17_신흥중_2학기_기말_중3_수학/s01.png\" /><br>(1) $\\sin x$값은?(2점)<br>(2) $\\cos x$ 값은?(2점)<br>(3) $\\tan x$ 값은?(2점)",
       "choices": [],
-      "answer": "(1) $\\dfrac{\\sqrt{5}}{3}$, (2) $\\dfrac{2}{3}$, (3) $\\dfrac{\\sqrt{5}}{2}$",
-      "solution": "$\\angle A=90^\\circ$이고 $BC=12\\text{ cm}$, $AB=8\\text{ cm}$이므로 $AC=\\sqrt{BC^2-AB^2}=\\sqrt{144-64}=4\\sqrt{5}\\text{ cm}$이다.<br>그림의 수직선은 $BC$와 수직이므로 $x+\\angle C=90^\\circ$이고, $\\triangle ABC$에서도 $\\angle B+\\angle C=90^\\circ$이다.<br>따라서 $x=\\angle B$이다.<br>그러므로 (1) $\\sin x=AC/BC=(4\\sqrt{5})/12=\\sqrt{5}/3$, (2) $\\cos x=AB/BC=\\frac{8}{12}=\\frac{2}{3}$, (3) $\\tan x=AC/AB=(4\\sqrt{5})/8=\\sqrt{5}/2$이다."
+      "answer": "(1) $\\dfrac{15}{17}$, (2) $\\dfrac{8}{17}$, (3) $\\dfrac{15}{8}$",
+      "solution": "$\\angle A=90^\\circ$이고 $BC=17\\text{ cm}$, $AB=8\\text{ cm}$이므로 $AC=\\sqrt{BC^2-AB^2}=\\sqrt{289-64}=15\\text{ cm}$이다.<br>그림의 수직선은 $BC$와 수직이므로 $x+\\angle C=90^\\circ$이고, $\\triangle ABC$에서도 $\\angle B+\\angle C=90^\\circ$이다.<br>따라서 $x=\\angle B$이다.<br>그러므로 (1) $\\sin x=AC/BC=\\dfrac{15}{17}$, (2) $\\cos x=AB/BC=\\dfrac{8}{17}$, (3) $\\tan x=AC/AB=\\dfrac{15}{8}$이다."
     },
     {
       "id": 22,

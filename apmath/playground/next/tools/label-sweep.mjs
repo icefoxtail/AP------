@@ -83,7 +83,7 @@ async function openPage(browser, baseUrl, lab, env) {
   const errors = [];
   page.on('pageerror', (e) => errors.push(`pageerror: ${e && e.message ? e.message : e}`));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`console.error: ${m.text()}`); });
-  const url = baseUrl.replace(/\/$/, '') + '/' + lab + '.html';
+  const url = baseUrl.replace(/\/$/, '') + '/' + lab + '.html?manual=1';
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForFunction(() => window.lab && window.APLab && window.APLab.Board, null, { timeout: 60000 });
   // 글꼴이 늦게 뜨면 글자 폭이 달라져 상자가 어긋나므로, 준비(또는 8초)까지 기다립니다.
