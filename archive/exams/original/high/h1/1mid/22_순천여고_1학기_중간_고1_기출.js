@@ -324,9 +324,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "k=-2+2√2일 때 포물선 y=x²+kx+3이 직선 y=-2x+1에 점 T에서 접한다. k=-2-2√2일 때도 접점이 x=√2인 접선이 된다.",
-    "solutionImageCaption": "k=-2+2√2일 때 포물선 y=x²+kx+3이 직선 y=-2x+1에 점 T에서 접한다. k=-2-2√2일 때도 접점이 x=√2인 접선이 된다.",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 두 그림 모두 파란 포물선 y=x²+kx+3과 주황 직선 y=−2x+1이 점 T 한 점에서만 닿는다. 위 그림은 k=−2+2√2일 때로 접점 T가 y축 왼쪽에 있고, 아래 그림은 k=−2−2√2일 때로 접점 T가 y축 오른쪽 아래쪽에 있다.",
+    "solutionImageCaption": "두 식을 연립하면 x²+(k+2)x+2=0이고, 접하려면 중근을 가져야 하므로 판별식 (k+2)²−8=0이다. 따라서 k=−2±2√2의 두 값이 있고 두 그림이 각각 그 경우(파란 포물선, 주황 직선)이다. 두 값의 합을 구한다. 정답은 −4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -371,7 +371,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=7일 때의 수직선 세 줄 그림이다. 첫째 줄은 x가 −2분의 3보다 큰 범위(속이 빈 점), 둘째 줄은 x가 2분의 a 이하인 범위(속이 찬 점), 셋째 줄은 두 범위의 공통 범위이고 그 위에 정수 −1, 0, 1, 2, 3이 점으로 표시되어 있다.",
+    "solutionImageCaption": "예: a=7로 그렸다. 첫째 부등식에서 x>−2분의 3이므로 정수는 −1 이상이고, 둘째 부등식에서 x≤2분의 a이다. 정수 x가 −1, 0, 1, …, m까지일 때 합이 5가 되는 것은 m=3뿐이므로 3≤2분의 a<4, 즉 6≤a<8이다. 정수 a의 최솟값을 구한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -459,9 +463,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "k=2일 때 y=-x^2-2x+2의 구간 -2≤x≤1에서의 그래프",
-    "solutionImageCaption": "k=2일 때 y=-x^2-2x+2의 구간 -2≤x≤1에서의 그래프",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 y=−x²−2x+2의 그래프이다. 구간 −2≤x≤1에 해당하는 부분이 주황색으로 굵게 그려져 있고 양 끝점은 A(−2, 2), B(1, −1)이다. 점선 x=−1은 꼭짓점 V를 지나는 대칭축이고, 초록 점선 y=−1은 점 B의 높이를 나타낸다.",
+    "solutionImageCaption": "y=−(x+1)²+k+1이므로 꼭짓점의 x좌표 −1이 구간 −2≤x≤1 안에 있어 꼭짓점 V에서 최대이다. 최솟값은 구간의 두 끝점 중 낮은 점 B(x=1)에서 k−3이므로 k−3=−1, 즉 k=2이다(그림은 k=2). 이때 최댓값은 꼭짓점의 y좌표 k+1이다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -680,7 +684,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에 직사각형이 네 꼭짓점을 원 위에 두고 내접해 있다. 직사각형의 한 대각선이 원의 중심 O를 지나는 지름이고 그 길이가 4√5로 표시되어 있다. 아래쪽 긴 변은 a, 오른쪽 짧은 변은 b로 표시되어 있고 오른쪽 아래 꼭짓점에 직각 표시가 있다. 그림은 변의 길이를 정확한 비율로 그리지 않았다.",
+    "solutionImageCaption": "원에 내접한 직사각형의 대각선은 원의 지름이므로 길이가 반지름 2√5의 2배인 4√5이다. 긴 변을 a, 짧은 변을 b라 하면 둘레가 24이므로 a+b=12이고, 피타고라스 정리에서 a²+b²=80이다. 따라서 ab=32이고 a, b는 t²−12t+32=0의 두 근이다. 그림은 변의 길이를 정확한 비율로 그리지 않았다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -766,7 +774,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 변 AB 위의 점 P를 AP=2로 잡아 그린 직각삼각형 ABC이다. 꼭짓점 A에서 직각, 꼭짓점 B에서 60°이다. 점 P에서 변 BC에 내린 수선의 발 Q, P를 지나 BC와 평행한 직선이 변 AC와 만나는 점 R이 있고, 사다리꼴 P, Q, C, R가 주황색으로 칠해져 있다. 변 AP는 p, PB는 5−p로 변 AB 바깥쪽에, PR는 2p로 PR 위쪽에, PQ는 2분의 √3(5−p)로 PQ 곁에, QC는 2분의 (p+15)로 변 BC 아래의 치수선에 표시되어 있다.",
+    "solutionImageCaption": "예: AP=2로 그렸다. AP=p라 하면 PR∥BC이므로 PR=2p, 점 P와 BC 사이의 거리 PQ는 2분의 √3(5−p), QC는 2분의 (p+15)이다. 사다리꼴 P, Q, C, R의 넓이는 8분의 5√3(p+3)(5−p)=8분의 5√3{16−(p−1)²}이므로 0<p<5에서 p=1일 때 최대이다. 정답은 10√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -812,7 +824,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 두 그림 모두 파란 포물선 y=2x²과 주황 직선 y=ax+4가 제1사분면의 점 A와 제2사분면의 점 B에서 만나고, A, B에서 x축에 내린 수선의 발이 C, D이다. 삼각형 AOC는 파랑, 삼각형 DOB는 주황으로 칠해져 있다. 위 그림은 C, D의 x좌표를 u, −v로 놓은 일반적인 모양이고, 아래 그림은 넓이의 비가 8:1일 때로 C, D의 x좌표가 2, −1로 적혀 있다.",
+    "solutionImageCaption": "위 그림은 u, v를 일반적으로 그린 모양이다. A의 x좌표를 u, B의 x좌표를 −v(u, v>0)라 하면 S₁=u³(파랑 삼각형), S₂=v³(주황 삼각형)이다. S₁:S₂=8:1에서 u=2v이고, 2x²=ax+4의 두 근 u, −v의 곱 −uv=−2에서 uv=2이므로 v=1, u=2이다(아래 그림). 두 근의 합 u−v=1은 2분의 a와 같다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -855,7 +871,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선으로 그린 이익 P(t)의 그래프이다. 가로축은 t, 세로축은 P(천 원 단위)이다. 0≤t≤20에 해당하는 부분이 주황색으로 굵게 그려져 있고 양 끝점은 t=0과 t=20에서 가로축 위에 있다. 점선은 가로축의 눈금 10에서 꼭짓점 V까지 이어져 있다.",
+    "solutionImageCaption": "가격을 100+20t원이라 하면 판매량은 2000−100t개, 한 개당 이익은 20t원이므로 이익 P(t)=20t(2000−100t)=−2000(t−10)²+200000이다. 그림은 이 이차함수를 세로축 천 원 단위로 그린 것으로, 0≤t≤20에서 꼭짓점 V(t=10)에서 최대가 된다. 이때 판매 가격은 300원, 판매량은 1000개이다. 정답은 200000원이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -892,7 +912,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 파란 포물선 y=f(x)의 그래프이다. x축과 점 A(−3, 0), B(1, 0)에서 만나고, 대칭축 x=−1(점선) 위의 꼭짓점 V(−1, −2)에서 최솟값을 갖는다. 초록 점선 y=−2가 꼭짓점의 높이를 보이고, x=3에서 x축까지 점선이 이어지는 곡선 위의 점 P가 있다.",
+    "solutionImageCaption": "x축과 x=−3, x=1에서 만나므로 f(x)=a(x+3)(x−1)이고, 축은 x=−1이다. 최솟값 f(−1)=−4a=−2에서 a=2분의 1이다. 따라서 f(3)은 그림의 점 P의 y좌표이고 2분의 1×6×2로 구한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -931,9 +955,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "a=-5일 때 포물선 y=x^2-10과 직선 y=-10x-25의 두 교점",
-    "solutionImageCaption": "a=-5일 때 포물선 y=x^2-10과 직선 y=-10x-25의 두 교점",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 두 그림 모두 파란 포물선 y=x²+2a와 주황 직선 y=2ax−a²을 그렸다. 위 그림은 a=3일 때로 직선이 포물선 아래에 있어 두 그래프가 만나지 않는다. 아래 그림은 다른 후보일 때로 직선이 포물선과 서로 다른 두 점 A, B에서 만난다.",
+    "solutionImageCaption": "교점의 x좌표는 x²−2ax+a²+2a=0의 두 근이므로 곱이 a²+2a=15이고 (a+5)(a−3)=0에서 후보가 두 개이다. 그중 a=3이면 판별식이 −8a=−24로 음수라 위 그림처럼 만나지 않고, 다른 후보에서는 판별식이 양수라 아래 그림처럼 서로 다른 두 점 A, B에서 만난다. 두 근의 합은 2a이다. 정답은 a=−5, b=−10이다.",
     "solutionImageSize": "full"
   },
   {
