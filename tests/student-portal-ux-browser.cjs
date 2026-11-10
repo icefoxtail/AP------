@@ -541,6 +541,43 @@ async function behaviorSuite(browser, base, check) {
     await page.getByRole('heading',{name:'과제를 열 수 없어요',exact:true}).waitFor();
     await capture(page,'homework-invalid-link-390');
   }));
+  await check('planner invalid and PIN entry states never offer editing across viewports',async()=>{
+    for(const [width,height] of [[390,844],[1440,900]]) {
+      const context=await browser.newContext({viewport:{width,height},serviceWorkers:'block'});
+      const state=await instrument(context,{loggedIn:false});
+      const page=await context.newPage();
+      page.setDefaultTimeout(10000);
+      page.on('pageerror',error=>report.pageErrors.push({scenario:'planner-entry-'+width,message:error.message}));
+      try {
+        await page.goto(base+'/apmath/planner/');
+        await page.getByRole('heading',{name:'플래너를 열 수 없어요',exact:true}).waitFor();
+        assert.equal(await page.locator('#mobile-add-btn').isVisible(),false);
+        assert.equal(await page.getByRole('dialog').isVisible(),false);
+        assert.equal(state.requests.filter(r=>r.endpoint.startsWith('planner')).length,0);
+        await capture(page,'planner-invalid-link-'+width);
+        await page.getByRole('link',{name:'학생 포털로 돌아가기',exact:true}).click();
+        await page.locator('#student-name').waitFor();
+
+        await page.goto(base+'/apmath/planner/?student_id=qa-student');
+        await page.locator('#pin-input').waitFor();
+        assert.equal(await page.locator('#mobile-add-btn').isVisible(),false);
+        assert.equal(await page.getByRole('dialog').isVisible(),false);
+        assert.equal(state.requests.filter(r=>r.endpoint.startsWith('planner')).length,0);
+        await capture(page,'planner-pin-'+width);
+        await page.locator('#pin-input').fill('0000');
+        await page.getByRole('button',{name:'플래너 열기',exact:true}).click();
+        await page.locator('.plan-item-title').filter({hasText:'삼각형 오답 다시 풀기'}).waitFor();
+        assert.equal(await page.locator('#mobile-add-btn').isVisible(),width<768);
+        assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,0);
+        if(width>=768) {
+          await page.locator('#quick-title').fill('합성 PC 빠른 추가');
+          await page.locator('.quick-form button').click();
+          await page.getByText('합성 PC 빠른 추가',{exact:true}).waitFor();
+          assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,1);
+        }
+      } finally { await context.close(); }
+    }
+  });
   await check('planner calendar, draft recovery, settings and timer preserve accessible controls',()=>withStudent({name:'planner'},async(page,state)=>{
     await page.goto(base+'/apmath/planner/?student_id=qa-student&pin=0000');
     await page.locator('.plan-item-title').filter({hasText:'삼각형 오답 다시 풀기'}).waitFor();

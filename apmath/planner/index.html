@@ -764,7 +764,7 @@
       select, textarea { font-size:16px !important; }
     }
   </style>
-  <link rel="stylesheet" href="../css/student-tools.css?v=2026.11.11.2">
+  <link rel="stylesheet" href="../css/student-tools.css?v=2026.11.11.3">
 </head>
 <body class="student-tool-page planner-page">
   <script>
@@ -1293,6 +1293,7 @@
 
     function renderError(message) {
       $('student-chip').textContent = '';
+      $('mobile-add-btn').style.display = 'none';
       $('app').innerHTML = `
         <div class="pin-wrap">
           <div class="pin-card">
