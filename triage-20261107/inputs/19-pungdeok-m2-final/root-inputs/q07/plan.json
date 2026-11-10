@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "givenPointOnLine",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "given"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "given"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "점 (−4,−2)를 x+ay+8=0에 대입하면 −4−2a+8=0이므로 a=2이다. 따라서 그래프는 x+2y+8=0, 즉 y=−x/2−4이고 정답은 ⑤이다.",
+  "accessibilityDescription": "점 (−4,−2)를 x+ay+8=0에 대입하면 −4−2a+8=0이므로 a=2이다. 따라서 그래프는 x+2y+8=0, 즉 y=−x/2−4이고 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일차방정식 $x+ay+8=0$의 그래프가 점 $(-4,-2)$를 지날 때, 수 $a$의 값은? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 주어진 점과 그 점을 통과하는 정확한 직선을 축과 함께 표시한다."
+  ],
+  "sourceQuote": "일차방정식 $x+ay+8=0$의 그래프가 점 $(-4,-2)$를 지날 때, 수 $a$의 값은? [4점]",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "PLabel",
+        "at": "P",
+        "text": "(−4,−2)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SW"
+      },
+      {
+        "id": "lineLabel",
+        "at": [
+          -7.0,
+          -1.8
+        ],
+        "text": "x+ay+8=0, a=2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 440
+  },
+  "hiddenPointStyle": "NONE",
+  "hiddenPointNames": [
+    "O"
+  ]
+}

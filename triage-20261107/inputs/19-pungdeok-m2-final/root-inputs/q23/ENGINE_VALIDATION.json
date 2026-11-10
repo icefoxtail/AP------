@@ -1,0 +1,706 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "73d31d3828f13b1a61217b657be2fc27ba9cf89e9a2ca0a5d59182fc6943124b",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "O",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "dial",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_CIRCLE_LITERAL"
+    },
+    {
+      "nodeId": "N1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N2",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N3",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N4",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N5",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N6",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N7",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N8",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N9",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N10",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N11",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "N12",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "flagTop",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "flagTip",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "flagBottom",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 17,
+    "dependencyOrder": [
+      "N1",
+      "N10",
+      "N11",
+      "N12",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7",
+      "N8",
+      "N9",
+      "O",
+      "flagBottom",
+      "flagTip",
+      "flagTop",
+      "dial"
+    ],
+    "conditionAuditCount": 0
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "N1": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          1.5,
+          2.598076211353316
+        ],
+        "precisionDigits": 17
+      },
+      "N10": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          }
+        ],
+        "approximation": [
+          -2.598076211353316,
+          1.5
+        ],
+        "precisionDigits": 17
+      },
+      "N11": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          -1.5,
+          2.598076211353316
+        ],
+        "precisionDigits": 17
+      },
+      "N12": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ],
+        "approximation": [
+          0.0,
+          3.0
+        ],
+        "precisionDigits": 17
+      },
+      "N2": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          }
+        ],
+        "approximation": [
+          2.598076211353316,
+          1.5
+        ],
+        "precisionDigits": 17
+      },
+      "N3": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          3.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "N4": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          }
+        ],
+        "approximation": [
+          2.598076211353316,
+          -1.5
+        ],
+        "precisionDigits": 17
+      },
+      "N5": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          1.5,
+          -2.598076211353316
+        ],
+        "precisionDigits": 17
+      },
+      "N6": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "-3"
+          }
+        ],
+        "approximation": [
+          0.0,
+          -3.0
+        ],
+        "precisionDigits": 17
+      },
+      "N7": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          -1.5,
+          -2.598076211353316
+        ],
+        "precisionDigits": 17
+      },
+      "N8": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          }
+        ],
+        "approximation": [
+          -2.598076211353316,
+          -1.5
+        ],
+        "precisionDigits": 17
+      },
+      "N9": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-3"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          -3.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "O": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "flagBottom": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "rational",
+            "numerator": "18",
+            "denominator": "5"
+          }
+        ],
+        "approximation": [
+          0.0,
+          3.6
+        ],
+        "precisionDigits": 17
+      },
+      "flagTip": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "rational",
+            "numerator": "19",
+            "denominator": "5"
+          }
+        ],
+        "approximation": [
+          1.0,
+          3.8
+        ],
+        "precisionDigits": 17
+      },
+      "flagTop": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "4"
+          }
+        ],
+        "approximation": [
+          0.0,
+          4.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {},
+    "circles": {
+      "dial": {
+        "centerExact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "radiusExact": {
+          "kind": "integer",
+          "value": "3"
+        },
+        "approximation": [
+          0.0,
+          0.0,
+          3.0
+        ]
+      }
+    },
+    "pointSets": {},
+    "conditionAudits": [],
+    "transcript": [
+      {
+        "nodeId": "N1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N10",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N11",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N12",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N2",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N3",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N4",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N5",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N6",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N7",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N8",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "N9",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "flagBottom",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "flagTip",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "flagTop",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "dial",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "dependencies": [
+          "O"
+        ]
+      }
+    ],
+    "order": [
+      "N1",
+      "N10",
+      "N11",
+      "N12",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7",
+      "N8",
+      "N9",
+      "O",
+      "flagBottom",
+      "flagTip",
+      "flagTop",
+      "dial"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

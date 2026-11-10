@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "eq1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "eq2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "eq1",
+          "eq2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Px",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Py",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Px",
+    "Py"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "eq1",
+    "eq2"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "projectX",
+      "refs": [
+        "P",
+        "Px"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "projectY",
+      "refs": [
+        "P",
+        "Py"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "두 그래프의 교점은 (2,1)이다. 첫째 식에 대입하면 a=1, 둘째 식에 대입하면 b=−4이므로 a+b=−3이고 정답은 ①이다. 점선은 교점의 좌표를 각 축에 투영한다.",
+  "accessibilityDescription": "두 그래프의 교점은 (2,1)이다. 첫째 식에 대입하면 a=1, 둘째 식에 대입하면 b=−4이므로 a+b=−3이고 정답은 ①이다. 점선은 교점의 좌표를 각 축에 투영한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 그림은 연립방정식 $\\begin{cases} ax+2y=4 \\ x+by=-2 \\end{cases}$의 해를 구하기 위해 그래프를 그린 것이다. 이때 두 수 $a$, $b$에 대하여 $a+b$의 값은? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해를 두 직선의 정확한 교점으로 표시하고, 수선 투영으로 두 좌표를 분리해 읽는다."
+  ],
+  "sourceQuote": "다음 그림은 연립방정식 $\\begin{cases} ax+2y=4 \\ x+by=-2 \\end{cases}$의 해를 구하기 위해 그래프를 그린 것이다. 이때 두 수 $a$, $b$에 대하여 $a+b$의 값은? [4점]",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "eq1Label",
+        "at": [
+          -3.0,
+          0.5
+        ],
+        "text": "ax+2y=4 (a=1)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "eq2Label",
+        "at": [
+          4.0,
+          4.0
+        ],
+        "text": "x+by=−2 (b=−4)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PLabel",
+        "at": "P",
+        "text": "(2,1)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "NE"
+      },
+      {
+        "id": "PxLabel",
+        "at": "Px",
+        "text": "x=2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "S"
+      },
+      {
+        "id": "PyLabel",
+        "at": "Py",
+        "text": "y=1",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "W"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "hiddenPointStyle": "NONE",
+  "hiddenPointNames": [
+    "O",
+    "Px",
+    "Py"
+  ]
+}

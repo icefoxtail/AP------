@@ -1,0 +1,211 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "e26822eab88fa52d45553f90bbbf0399a0d588be6454e6eeadc4999a19b304ca",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "O",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "xAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "yAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "f2",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "f3",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 5,
+    "dependencyOrder": [
+      "O",
+      "f2",
+      "f3",
+      "xAxis",
+      "yAxis"
+    ],
+    "conditionAuditCount": 0
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "O": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "f2": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "-3"
+          }
+        ],
+        "approximation": [
+          0.5,
+          1.0,
+          -3.0
+        ]
+      },
+      "f3": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-3"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ],
+        "approximation": [
+          -3.0,
+          1.0,
+          3.0
+        ]
+      },
+      "xAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "yAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [],
+    "transcript": [
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "f2",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "f3",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "xAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "yAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      }
+    ],
+    "order": [
+      "O",
+      "f2",
+      "f3",
+      "xAxis",
+      "yAxis"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

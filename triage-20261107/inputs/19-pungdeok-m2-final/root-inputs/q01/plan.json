@@ -1,0 +1,176 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f3",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "f2",
+    "f3"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "예시로 두 그래프 y=−x/2+3, y=3x−3을 좌표축 위에 정확히 그렸다. 둘 다 y=ax+b (a≠0) 꼴이므로 정답은 ②, ③이다. 이 그림은 두 정답 선택지의 예시 그래프이며, y=5는 상수함수, xy=3은 반비례 관계, y=x(x+1)은 이차식이라는 분류는 원문 보기 설명을 따른다.",
+  "accessibilityDescription": "예시로 두 그래프 y=−x/2+3, y=3x−3을 좌표축 위에 정확히 그렸다. 둘 다 y=ax+b (a≠0) 꼴이므로 정답은 ②, ③이다. 이 그림은 두 정답 선택지의 예시 그래프이며, y=5는 상수함수, xy=3은 반비례 관계, y=x(x+1)은 이차식이라는 분류는 원문 보기 설명을 따른다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 중 $y$가 $x$에 대한 일차함수인 것을 모두 고르면? (정답 2개) [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정답인 두 식만 그래프로 보이고, 그림은 정답 선택지의 예시임을 명시한다. 기울기와 y절편을 식 라벨로 구분한다."
+  ],
+  "sourceQuote": "다음 중 $y$가 $x$에 대한 일차함수인 것을 모두 고르면? (정답 2개) [4점]",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "f2label",
+        "at": [
+          2.2,
+          4.7
+        ],
+        "text": "y=−x/2+3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f3label",
+        "at": [
+          -2.0,
+          -5.5
+        ],
+        "text": "y=3x−3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

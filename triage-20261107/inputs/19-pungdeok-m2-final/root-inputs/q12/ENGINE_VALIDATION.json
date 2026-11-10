@@ -1,0 +1,523 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "cc26270f6288e54ae4106f3d8e832f41e6bd102fe93e002fe86c5b19141d3721",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "v00",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v10",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v20",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v30",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v01",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v11",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v21",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v31",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v02",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v12",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v22",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v32",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v03",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v13",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v23",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "v33",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 16,
+    "dependencyOrder": [
+      "v00",
+      "v01",
+      "v02",
+      "v03",
+      "v10",
+      "v11",
+      "v12",
+      "v13",
+      "v20",
+      "v21",
+      "v22",
+      "v23",
+      "v30",
+      "v31",
+      "v32",
+      "v33"
+    ],
+    "conditionAuditCount": 0
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "v00": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "v01": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      },
+      "v02": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "2"
+          }
+        ],
+        "approximation": [
+          0.0,
+          2.0
+        ],
+        "precisionDigits": 17
+      },
+      "v03": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ],
+        "approximation": [
+          0.0,
+          3.0
+        ],
+        "precisionDigits": 17
+      },
+      "v10": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "v11": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          1.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      },
+      "v12": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "2"
+          }
+        ],
+        "approximation": [
+          1.0,
+          2.0
+        ],
+        "precisionDigits": 17
+      },
+      "v13": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ],
+        "approximation": [
+          1.0,
+          3.0
+        ],
+        "precisionDigits": 17
+      },
+      "v20": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          2.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "v21": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          2.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      },
+      "v22": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "2"
+          }
+        ],
+        "approximation": [
+          2.0,
+          2.0
+        ],
+        "precisionDigits": 17
+      },
+      "v23": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ],
+        "approximation": [
+          2.0,
+          3.0
+        ],
+        "precisionDigits": 17
+      },
+      "v30": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          3.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "v31": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          3.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      },
+      "v32": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "2"
+          }
+        ],
+        "approximation": [
+          3.0,
+          2.0
+        ],
+        "precisionDigits": 17
+      },
+      "v33": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ],
+        "approximation": [
+          3.0,
+          3.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {},
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [],
+    "transcript": [
+      {
+        "nodeId": "v00",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v01",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v02",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v03",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v10",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v11",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v12",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v13",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v20",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v21",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v22",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v23",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v30",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v31",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v32",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "v33",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      }
+    ],
+    "order": [
+      "v00",
+      "v01",
+      "v02",
+      "v03",
+      "v10",
+      "v11",
+      "v12",
+      "v13",
+      "v20",
+      "v21",
+      "v22",
+      "v23",
+      "v30",
+      "v31",
+      "v32",
+      "v33"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

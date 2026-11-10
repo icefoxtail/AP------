@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "reference",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "answer",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "POnGiven",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "given"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "POnAnswer",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "answer"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "parallelSlope2",
+        "kind": "PARALLEL",
+        "refs": [
+          "reference",
+          "answer"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "given",
+    "reference",
+    "answer"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "주어진 직선과 x축의 교점은 P=(−2,0)이다. 기울기 2인 기준선 y=2x와 평행하면서 P를 지나는 직선은 y=2x+4, 즉 2x−y+4=0이므로 정답은 ②이다.",
+  "accessibilityDescription": "주어진 직선과 x축의 교점은 P=(−2,0)이다. 기울기 2인 기준선 y=2x와 평행하면서 P를 지나는 직선은 y=2x+4, 즉 2x−y+4=0이므로 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일차방정식 $2x-3y+4=0$의 그래프와 $x$축 위에서 만나고, 직선 $y=2x$와 평행한 직선의 방정식은? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 직선, 기울기 비교용 y=2x, P를 지나는 구하는 직선을 각기 식으로 표기해 구분한다."
+  ],
+  "sourceQuote": "일차방정식 $2x-3y+4=0$의 그래프와 $x$축 위에서 만나고, 직선 $y=2x$와 평행한 직선의 방정식은? [4점]",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "givenLabel",
+        "at": [
+          -3.8,
+          1.1
+        ],
+        "text": "2x−3y+4=0",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "refLabel",
+        "at": [
+          2.5,
+          6.0
+        ],
+        "text": "기준선 y=2x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ansLabel",
+        "at": [
+          -3.0,
+          -1.5
+        ],
+        "text": "구하는 선 y=2x+4",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PLabel",
+        "at": "P",
+        "text": "(−2,0)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "S"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "hiddenPointStyle": "NONE",
+  "hiddenPointNames": [
+    "O"
+  ]
+}

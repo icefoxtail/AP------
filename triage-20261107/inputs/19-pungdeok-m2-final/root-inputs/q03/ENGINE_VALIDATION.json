@@ -1,0 +1,240 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "a66f5c468a69edad72f0d950eddab79b011b266619f41603f3fb714dad828326",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "O",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "xAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "yAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "orig",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "shifted",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 6,
+    "dependencyOrder": [
+      "D",
+      "O",
+      "orig",
+      "shifted",
+      "xAxis",
+      "yAxis"
+    ],
+    "conditionAuditCount": 0
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "-2"
+          }
+        ],
+        "approximation": [
+          0.0,
+          -2.0
+        ],
+        "precisionDigits": 17
+      },
+      "O": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "orig": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-3"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          -3.0,
+          1.0,
+          0.0
+        ]
+      },
+      "shifted": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-3"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "2"
+          }
+        ],
+        "approximation": [
+          -3.0,
+          1.0,
+          2.0
+        ]
+      },
+      "xAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "yAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [],
+    "transcript": [
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "orig",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "shifted",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "xAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "yAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      }
+    ],
+    "order": [
+      "D",
+      "O",
+      "orig",
+      "shifted",
+      "xAxis",
+      "yAxis"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

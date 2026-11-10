@@ -1,0 +1,312 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "b969f0a13e4a4fdd365b37bebfc32b12da64ada3d6f318f2d0a1f8552dbbc0b3",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "O",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "xAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "yAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "eq1",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "eq2",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "P",
+      "op": "LINE_INTERSECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "Px",
+      "op": "PERPENDICULAR_FOOT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "Py",
+      "op": "PERPENDICULAR_FOOT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    }
+  ],
+  "validation": {
+    "nodeCount": 8,
+    "dependencyOrder": [
+      "O",
+      "eq1",
+      "eq2",
+      "xAxis",
+      "yAxis",
+      "P",
+      "Px",
+      "Py"
+    ],
+    "conditionAuditCount": 0
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "O": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "P": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          2.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      },
+      "Px": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          2.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "Py": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "eq1": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "-2"
+          }
+        ],
+        "approximation": [
+          0.5,
+          1.0,
+          -2.0
+        ]
+      },
+      "eq2": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "4"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "2"
+          }
+        ],
+        "approximation": [
+          -0.25,
+          1.0,
+          -0.5
+        ]
+      },
+      "xAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "yAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [],
+    "transcript": [
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "eq1",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "eq2",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "xAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "yAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "P",
+        "op": "LINE_INTERSECTION",
+        "dependencies": [
+          "eq1",
+          "eq2"
+        ]
+      },
+      {
+        "nodeId": "Px",
+        "op": "PERPENDICULAR_FOOT",
+        "dependencies": [
+          "P",
+          "xAxis"
+        ]
+      },
+      {
+        "nodeId": "Py",
+        "op": "PERPENDICULAR_FOOT",
+        "dependencies": [
+          "P",
+          "yAxis"
+        ]
+      }
+    ],
+    "order": [
+      "O",
+      "eq1",
+      "eq2",
+      "xAxis",
+      "yAxis",
+      "P",
+      "Px",
+      "Py"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

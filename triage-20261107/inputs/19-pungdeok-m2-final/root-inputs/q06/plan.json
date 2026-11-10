@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sourceExample",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "reflectedExample",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sourceY",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "sourceExample",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mirrorX",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "reflectedExample",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mirrorY",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "reflectedExample",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "sourceY",
+    "mirrorX",
+    "mirrorY"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "sourceExample",
+    "reflectedExample"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "원문 그림이 주는 정보는 y=ax−b의 기울기가 양수이고 y절편이 양수라는 점뿐이다. 이를 설명하는 예시로 y=x+1과 그 x축 대칭 y=−x−1을 그렸다. 계수 1, −1은 예시값이며 원문에서 주어진 값이 아니다. 대칭 직선은 제2·3·4사분면을 지나고 제1사분면은 지나지 않으므로 정답은 ①이다.",
+  "accessibilityDescription": "원문 그림이 주는 정보는 y=ax−b의 기울기가 양수이고 y절편이 양수라는 점뿐이다. 이를 설명하는 예시로 y=x+1과 그 x축 대칭 y=−x−1을 그렸다. 계수 1, −1은 예시값이며 원문에서 주어진 값이 아니다. 대칭 직선은 제2·3·4사분면을 지나고 제1사분면은 지나지 않으므로 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일차함수 $y=ax-b$의 그래프가 아래 그림과 같을 때, 일차함수 $y=-ax+b$의 그래프가 지나지 않는 사분면은? (단, $a$, $b$는 수) [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그래프가 주는 부호 정보만 유지하고, 구체식은 이해를 돕는 예시임을 그림 안에서 명시한다. x축 대칭 직선과 각 사분면을 함께 표시한다."
+  ],
+  "sourceQuote": "일차함수 $y=ax-b$의 그래프가 아래 그림과 같을 때, 일차함수 $y=-ax+b$의 그래프가 지나지 않는 사분면은? (단, $a$, $b$는 수) [4점]",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "exampleSource",
+        "at": [
+          1.7,
+          3.5
+        ],
+        "text": "예시: y=x+1",
+        "labelKind": "TEXT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "exampleMirror",
+        "at": [
+          -3.6,
+          -5.6
+        ],
+        "text": "예시: y=−x−1",
+        "labelKind": "TEXT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "q2",
+        "at": [
+          -5.2,
+          1.7
+        ],
+        "text": "제2사분면",
+        "labelKind": "TEXT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "q3",
+        "at": [
+          -0.7,
+          -3.5
+        ],
+        "text": "제3사분면",
+        "labelKind": "TEXT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "q4",
+        "at": [
+          4.2,
+          -2.7
+        ],
+        "text": "제4사분면",
+        "labelKind": "TEXT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "noQ1",
+        "at": [
+          4.0,
+          4.0
+        ],
+        "text": "제1사분면은 지나지 않음",
+        "labelKind": "TEXT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "hiddenPointStyle": "NONE",
+  "hiddenPointNames": [
+    "O"
+  ]
+}

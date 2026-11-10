@@ -1,0 +1,235 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "90777d78572c03a7f0fa90d904e3a090cf85c6d5ab56a512d120a9f0ec0a52ed",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "O",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "P",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "xAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "yAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "given",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 5,
+    "dependencyOrder": [
+      "O",
+      "P",
+      "given",
+      "xAxis",
+      "yAxis"
+    ],
+    "conditionAuditCount": 1
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "O": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "P": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-4"
+          },
+          {
+            "kind": "integer",
+            "value": "-2"
+          }
+        ],
+        "approximation": [
+          -4.0,
+          -2.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "given": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "4"
+          }
+        ],
+        "approximation": [
+          0.5,
+          1.0,
+          4.0
+        ]
+      },
+      "xAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "yAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "givenPointOnLine",
+        "sourceConditionId": "c1",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_LINE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "P",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "given",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "xAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "yAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      }
+    ],
+    "order": [
+      "O",
+      "P",
+      "given",
+      "xAxis",
+      "yAxis"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "givenPointOnLine",
+      "sourceConditionId": "c1",
+      "kind": "INCIDENCE_POINT_ON_LINE",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_LINE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

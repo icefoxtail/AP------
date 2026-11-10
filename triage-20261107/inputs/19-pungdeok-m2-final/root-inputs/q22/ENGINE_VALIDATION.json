@@ -1,0 +1,194 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "520ff3d3cc6ae6afe2dbe6a792384f986e886d92521a85320a3d39151f90bb53",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "P0",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "P1",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "lineA",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "lineB",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    }
+  ],
+  "validation": {
+    "nodeCount": 4,
+    "dependencyOrder": [
+      "P0",
+      "P1",
+      "lineA",
+      "lineB"
+    ],
+    "conditionAuditCount": 1
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "P0": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "-1"
+          }
+        ],
+        "approximation": [
+          0.0,
+          -1.0
+        ],
+        "precisionDigits": 17
+      },
+      "P1": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          1.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "lineA": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-2"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          -2.0,
+          1.0,
+          1.0
+        ]
+      },
+      "lineB": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "-2"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          -2.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "sameDirection",
+        "sourceConditionId": "c1",
+        "kind": "PARALLEL",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PARALLEL"
+        ],
+        "observed": true
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "P0",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "P1",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "lineA",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "lineB",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      }
+    ],
+    "order": [
+      "P0",
+      "P1",
+      "lineA",
+      "lineB"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "sameDirection",
+      "sourceConditionId": "c1",
+      "kind": "PARALLEL",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PARALLEL"
+      ],
+      "observed": true
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

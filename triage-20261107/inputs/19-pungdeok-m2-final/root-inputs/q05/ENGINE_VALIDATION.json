@@ -1,0 +1,374 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "97da9caf4ca0e29b8b4b37a8573e7fcfe80f25df3c24ea76a11c20d765763943",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "O",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "xAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "yAxis",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "given",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "parallel",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "xThree",
+      "op": "SOURCE_LINE",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_LINE_LITERAL"
+    },
+    {
+      "nodeId": "P",
+      "op": "LINE_INTERSECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "X",
+      "op": "LINE_INTERSECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "Y",
+      "op": "LINE_INTERSECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    }
+  ],
+  "validation": {
+    "nodeCount": 9,
+    "dependencyOrder": [
+      "O",
+      "given",
+      "parallel",
+      "xAxis",
+      "xThree",
+      "yAxis",
+      "P",
+      "X",
+      "Y"
+    ],
+    "conditionAuditCount": 1
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "O": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "P": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "-1"
+          }
+        ],
+        "approximation": [
+          3.0,
+          -1.0
+        ],
+        "precisionDigits": 17
+      },
+      "X": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.5,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "Y": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "given": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "-1"
+          }
+        ],
+        "approximation": [
+          0.6666666666666666,
+          1.0,
+          -1.0
+        ]
+      },
+      "parallel": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          }
+        ],
+        "approximation": [
+          0.6666666666666666,
+          1.0,
+          1.0
+        ]
+      },
+      "xAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "xThree": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "-3"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          -3.0
+        ]
+      },
+      "yAxis": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "throughP",
+        "sourceConditionId": "c1",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_LINE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "given",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "parallel",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "xAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "xThree",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "yAxis",
+        "op": "SOURCE_LINE",
+        "dependencies": []
+      },
+      {
+        "nodeId": "P",
+        "op": "LINE_INTERSECTION",
+        "dependencies": [
+          "given",
+          "xThree"
+        ]
+      },
+      {
+        "nodeId": "X",
+        "op": "LINE_INTERSECTION",
+        "dependencies": [
+          "given",
+          "xAxis"
+        ]
+      },
+      {
+        "nodeId": "Y",
+        "op": "LINE_INTERSECTION",
+        "dependencies": [
+          "given",
+          "yAxis"
+        ]
+      }
+    ],
+    "order": [
+      "O",
+      "given",
+      "parallel",
+      "xAxis",
+      "xThree",
+      "yAxis",
+      "P",
+      "X",
+      "Y"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "throughP",
+      "sourceConditionId": "c1",
+      "kind": "INCIDENCE_POINT_ON_LINE",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_LINE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

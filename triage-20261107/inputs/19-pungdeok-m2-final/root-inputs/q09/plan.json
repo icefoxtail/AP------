@@ -1,0 +1,178 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vertical",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "vertical",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "vertical"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "원문 그래프의 직선은 x=−2인 수직선이다. 2x−1=k에 x=−2를 대입하면 k=2(−2)−1=−5이므로 정답은 ①이다.",
+  "accessibilityDescription": "원문 그래프의 직선은 x=−2인 수직선이다. 2x−1=k에 x=−2를 대입하면 k=2(−2)−1=−5이므로 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일차방정식 $2x-1=k$의 그래프가 오른쪽 그림과 같을 때, 수 $k$의 값은? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y값이 일정한 수평선과 혼동하지 않도록 x=−2인 수직 직선을 좌표축과 교점으로 표시한다."
+  ],
+  "sourceQuote": "일차방정식 $2x-1=k$의 그래프가 오른쪽 그림과 같을 때, 수 $k$의 값은? [4점]",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "verticalLabel",
+        "at": [
+          -3.5,
+          5.0
+        ],
+        "text": "x=−2 (수직선)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "formula",
+        "at": [
+          2.7,
+          4.7
+        ],
+        "text": "2x−1=k",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "pointLabel",
+        "at": "P",
+        "text": "(−2,0)",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "anchor": "SW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 440
+  },
+  "hiddenPointStyle": "NONE",
+  "hiddenPointNames": [
+    "O"
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "orig",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "shifted",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "D"
+  ],
+  "displayLines": [
+    "xAxis",
+    "yAxis",
+    "orig",
+    "shifted"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "y=3x를 y축 방향으로 −2만큼 옮기면 y=3x−2가 된다. 두 직선은 기울기 3으로 평행하고, 수직 화살표가 한 점의 이동량 −2를 보인다. 정답은 ⑤이다.",
+  "accessibilityDescription": "y=3x를 y축 방향으로 −2만큼 옮기면 y=3x−2가 된다. 두 직선은 기울기 3으로 평행하고, 수직 화살표가 한 점의 이동량 −2를 보인다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "$y=3x$의 그래프를 $y$축의 방향으로 $-2$만큼 평행이동한 그래프의 식은? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 평행 직선과 동일 x에서 아래로 2만큼 이동하는 화살표를 표시한다."
+  ],
+  "sourceQuote": "$y=3x$의 그래프를 $y$축의 방향으로 $-2$만큼 평행이동한 그래프의 식은? [4점]",
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "down2",
+        "from": "O",
+        "to": "D",
+        "label": "−2",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "origLabel",
+        "at": [
+          -2.4,
+          -6.2
+        ],
+        "text": "y=3x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "shiftLabel",
+        "at": [
+          1.4,
+          -6.2
+        ],
+        "text": "y=3x−2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "shiftNote",
+        "at": [
+          0.55,
+          -1.0
+        ],
+        "text": "y방향 −2",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "hiddenPointStyle": "NONE",
+  "hiddenPointNames": [
+    "O",
+    "D"
+  ]
+}
