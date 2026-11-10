@@ -9,28 +9,30 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.11.2">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.11.2">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.11.2">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.11.2">
+  <link rel="manifest" href="./manifest.json?v=2026.11.11.3">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.11.3">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.11.3">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.11.3">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
-  <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.11.2"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.11.2"></script>
+  <script src="./archive-review-output.js?v=20261111-student-navigation-1"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.11.3"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.11.3"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.11.3">
+  <script src="../js/student-navigation.js?v=2026.11.11.3" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.11.2">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.11.3">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.11.2" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.11.3" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -41,7 +43,7 @@
       <button id="logout-btn" class="logout hidden" onclick="logoutStudent()">로그아웃</button>
     </div>
   </header>
-  <nav id="student-nav" class="student-nav" aria-label="학생 포털" hidden></nav>
+  <nav id="student-nav" class="student-global-nav" aria-label="학생 포털" hidden></nav>
   <main id="app" class="app" tabindex="-1"></main>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <div id="student-update-notice" class="student-update-notice" role="status" aria-live="polite"></div>
@@ -53,7 +55,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.11.2';
+    const STUDENT_APP_VERSION = '2026.11.11.3';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -61,7 +63,7 @@
     const teacherPreviewStudentId = previewParams.get('teacher_preview') === '1'
       ? String(previewParams.get('student_id') || '').trim()
       : '';
-    const isTeacherPreview = !!teacherPreviewStudentId;
+    const isTeacherPreview = previewParams.get('teacher_preview') === '1';
     const exactOmrAssignmentId = String(previewParams.get('assignment_id') || '').trim();
 
     let session = null;
@@ -98,6 +100,7 @@
     let pendingStudentWrites = 0;
     const pendingOmrSubmissionIds = new Set();
     let studentReloadApproved = false;
+    let initialStudentRouteConsumed = false;
 
     function $(id) { return document.getElementById(id); }
     function escapeHtml(value) {
@@ -137,7 +140,7 @@
         studentRequestSequences[request.resource] === request.sequence;
     }
     function enterStudentView(view, preserveCurrent = false, forceNew = false) {
-      if (currentStudentView === 'home' && view !== 'home' && clinicLearningController) disposeClinicLearningView();
+      if (currentStudentView !== view && clinicLearningController) disposeClinicLearningView();
       if (preserveCurrent && currentStudentView === view) return captureStudentView();
       if (currentStudentView !== view || forceNew) {
         currentStudentView = view;
@@ -165,12 +168,16 @@
       nav.hidden = !session?.student_id || ['boot', 'login', 'preview-error'].includes(view);
       if (nav.hidden) return;
       const restoreNavFocus = nav.contains(document.activeElement);
-      const selected = selectedOverride || (view.startsWith('omr-') ? 'exams' : ['clinic-review', 'material-wrong'].includes(view) ? 'review' : 'home');
+      const selected = selectedOverride || (view.startsWith('omr-') ? 'exams' : view === 'planner-unavailable' ? 'planner' : view === 'home' ? 'home' : 'more');
+      if (window.StudentPortalNavigation) {
+        window.StudentPortalNavigation.mount({
+          host: nav, active: selected, onNavigate: navigateStudentPortal,
+          context: { preview: isTeacherPreview, studentId: String(session.student_id) }
+        });
+        return;
+      }
       const navigationHtml = `
-        <button type="button" class="nav-item ${selected === 'home' ? 'active' : ''}" ${selected === 'home' ? 'aria-current="page"' : ''} onclick="renderHome()">홈</button>
-        <button type="button" class="nav-item ${selected === 'exams' ? 'active' : ''}" ${selected === 'exams' ? 'aria-current="page"' : ''} onclick="renderOmrExams()">시험지</button>
-        ${isTeacherPreview ? '' : `<a class="nav-item" href="${geometryLabHref()}">실험실</a>`}
-        <button type="button" class="nav-item ${selected === 'review' ? 'active' : ''}" ${selected === 'review' ? 'aria-current="page"' : ''} onclick="openStudentReview()">복습·기록</button>
+        ${[['home','홈'],['exams','시험지'],['labs','실험실'],['planner','플래너'],['more','더보기']].map(([key,label]) => `<button type="button" class="student-global-link ${selected === key ? 'active' : ''}" ${selected === key ? 'aria-current="page"' : ''} onclick="navigateStudentPortal('${key}')">${label}</button>`).join('')}
       `;
       if (nav.innerHTML !== navigationHtml) nav.innerHTML = navigationHtml;
       if (restoreNavFocus) requestAnimationFrame(() => {
@@ -178,14 +185,22 @@
       });
     }
     function openStudentReview() {
-      if (currentStudentView !== 'home') renderHome();
-      const target = $('student-review-section');
-      if (target) {
-        target.open = true;
-        updateStudentNavigation('home', 'review');
-        target.scrollIntoView({ behavior: 'auto', block: 'start' });
-        target.querySelector('summary')?.focus({ preventScroll: true });
-      }
+      renderMore();
+    }
+    function navigateStudentPortal(view) {
+      if (!hasPortalReadAccess()) return isTeacherPreview ? renderPreviewError('선생님 로그인이 필요합니다.') : renderLogin();
+      if (view === 'exams') return renderOmrExams();
+      if (view === 'labs') { window.location.href = geometryLabHref(); return; }
+      if (view === 'planner') return openPlanner();
+      if (view === 'more') return renderMore();
+      if (view === 'assignments') return renderAssignments();
+      if (view === 'history') return renderLearningHistory();
+      if (view === 'clinic') return renderClinicList();
+      if (view === 'materials') return renderMaterialList();
+      return renderHome();
+    }
+    function studentRouteForView(view) {
+      return ({ 'omr-list':'exams', 'omr-input':'exams', 'omr-result':'exams', 'clinic-list':'clinic', 'clinic-review':'clinic', 'material-list':'materials', 'material-wrong':'materials', 'learning-history':'history', 'planner-unavailable':'planner' })[view] || view;
     }
     function recordStudentView(view) {
       if (studentHistoryRestoring) { studentHistoryRestoring = false; return; }
@@ -197,9 +212,11 @@
       if (view === 'material-wrong') state.assignmentId = materialWrongTargetId || materialWrongDraft?.assignment_id || '';
       const previous = window.history.state;
       try {
-        if (!studentHistoryReady) { window.history.replaceState(state, '', window.location.href); studentHistoryReady = true; }
+        const url = new URL(window.location.href);
+        url.searchParams.set('view', studentRouteForView(view));
+        if (!studentHistoryReady) { window.history.replaceState(state, '', url.toString()); studentHistoryReady = true; }
         else if (previous?.apStudentView !== view || previous?.assignmentId !== state.assignmentId || previous?.packetKey !== state.packetKey) {
-          window.history.pushState(state, '', window.location.href);
+          window.history.pushState(state, '', url.toString());
           window.scrollTo(0, 0);
         }
       } catch (e) { /* Navigation remains available if history is unavailable. */ }
@@ -211,6 +228,11 @@
         const view = event.state.apStudentView;
         if (view === 'omr-list') await renderOmrExams();
         else if (view === 'assignments') renderAssignments();
+        else if (view === 'more') renderMore();
+        else if (view === 'learning-history') renderLearningHistory();
+        else if (view === 'clinic-list') renderClinicList();
+        else if (view === 'material-list') renderMaterialList();
+        else if (view === 'planner-unavailable') renderPlannerUnavailable();
         else if (view === 'omr-input' || view === 'omr-result') {
           const exam = findOmrExam(event.state.assignmentId);
           if (!exam) await renderOmrExams();
@@ -433,6 +455,7 @@
     }
     function clearSession() {
       studentRequestGeneration += 1;
+      window.StudentPortalNavigation?.clearContext();
       disposeClinicLearningView();
       localStorage.removeItem(SESSION_KEY);
       localStorage.removeItem('PLANNER_SID');
@@ -567,7 +590,7 @@
           </div>
         </section>
       `;
-      if (window.matchMedia('(min-width: 768px)').matches) setTimeout(() => $('student-name')?.focus(), 80);
+      if (window.matchMedia('(min-width: 768px)').matches) $('student-name')?.focus({ preventScroll: true });
     }
     async function loginStudent() {
       if (isLoading) return;
@@ -634,15 +657,17 @@
         if (!isStudentRequestCurrent(request)) return;
         renderHome();
         const homeView = captureStudentView();
-        if (!isTeacherPreview) {
-          pendingWrongClinicOpen = getPendingWrongClinicKeyFromUrl()
-            ? { request: continuation, view: homeView }
-            : null;
+        if (!isTeacherPreview && getPendingWrongClinicKeyFromUrl()) {
+          pendingWrongClinicOpen = { request: continuation, view: homeView };
           await refreshWrongClinicPackets();
           if (!isStudentRequestCurrent(continuation) || !isStudentViewCurrent(homeView, 'home')) return;
         }
         if (!isStudentRequestCurrent(continuation) || !isStudentViewCurrent(homeView, 'home')) return;
-        if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
+        const requestedView = initialStudentRouteConsumed ? '' : String(previewParams.get('view') || '');
+        initialStudentRouteConsumed = true;
+        if (['home', 'exams', 'labs', 'planner', 'more', 'assignments', 'history', 'clinic', 'materials'].includes(requestedView)) {
+          if (requestedView !== 'home') await navigateStudentPortal(requestedView);
+        } else if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
           await renderOmrExams();
         }
       } catch (e) {
@@ -716,11 +741,11 @@
       const view = captureStudentView();
       try {
         await loadMaterialWrongAssignments(true, request);
-        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'home')) return;
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view)) return;
         const nextRoot = $('material-wrong-section');
         if (nextRoot) nextRoot.outerHTML = renderMaterialWrongAssignments();
       } catch (e) {
-        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'home')) return;
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view)) return;
         const nextRoot = $('material-wrong-section');
         if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty" role="alert">수업자료 오답을 불러오지 못했습니다.<br><button type="button" class="btn" onclick="refreshMaterialWrongAssignments()">다시 불러오기</button></div>';
       }
@@ -780,6 +805,9 @@
       url.searchParams.set('packet', key);
       url.searchParams.set('mode', mode);
       url.searchParams.set('fit', 'screen');
+      url.searchParams.set('studentReview', '1');
+      const returnTo = window.StudentPortalNavigation?.portalHref('clinic');
+      if (returnTo) url.searchParams.set('studentReturnTo', returnTo);
       if (sameTab) {
         window.location.href = url.toString();
         return;
@@ -1091,7 +1119,7 @@
             <div class="portal-assignment-actions"><button type="button" class="btn btn-primary" onclick="openMaterialWrongOmr('${escapeHtml(item.assignment_id)}')">${isSubmitted ? '오답 수정' : '오답 입력'}</button></div>
           </div>
         `;
-      }).join('') : '<div class="empty">배정된 수업자료 오답이 없습니다.</div>';
+      }).join('') : `<div class="empty" role="status">${materialWrongData === null ? '수업자료 오답을 불러오는 중입니다.' : '배정된 수업자료 오답이 없습니다.'}</div>`;
       return `
         <section id="material-wrong-section" class="card portal-assignments-card">
           <div class="portal-assignments-head">
@@ -1317,57 +1345,59 @@
     }
     function renderOmrHomeSection() {
       const visible = getStudentPortalAssignments();
-      const priority = exam => {
-        const status = getStudentPortalRecordedSubmission(exam);
-        if (status === 'pending' && !exam.is_cancelled && !exam.is_replaced && !exam.is_review_only) return 0;
-        return status === 'submitted' ? 1 : 2;
-      };
-      const recent = visible.slice().sort((a, b) => priority(a) - priority(b) ||
-        String(b.exam_date || b.created_at || '').localeCompare(String(a.exam_date || a.created_at || ''))).slice(0, 3);
+      const recent = visible.slice().sort((a, b) =>
+        String(b.exam_date || b.created_at || '').localeCompare(String(a.exam_date || a.created_at || ''))).slice(0, 1);
+      const exam = recent[0];
+      const status = exam ? getStudentPortalRecordedSubmission(exam) : '';
+      const lifecycle = exam?.is_cancelled ? '취소됨' : exam?.is_replaced ? '대체됨' : exam?.is_review_only ? '열람 전용' : '';
+      const statusText = [status === 'submitted' ? '제출 완료' : status === 'pending' ? (lifecycle ? '' : '진행 중') : '상태 확인 필요', lifecycle].filter(Boolean).join(' · ');
+      const actionText = isTeacherPreview || lifecycle || status === 'unknown' ? '시험지 확인' : status === 'submitted' ? '결과 · 복습' : '학습 이어가기';
       return `
-        <section id="student-portal-omr-home-section" class="card portal-assignments-card home-exams">
-          <div class="portal-assignments-head">
-            <div>
-              <p class="eyebrow">나의 학습</p>
-              <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : '내 시험지'}</h2>
-              <p class="card-desc">${isTeacherPreview ? '출제된 시험지와 제출 상태를 읽기 전용으로 확인합니다.' : '진행 중인 시험지부터 보여 드려요. 직접 채점한 뒤 틀린 번호를 체크하세요.'}</p>
-            </div>
-            <button type="button" class="btn btn-quiet" onclick="renderOmrExams()">전체 ${visible.length}개 보기 <span aria-hidden="true">→</span></button>
-          </div>
-          <div class="portal-omr-home-list">${recent.length ? recent.map(renderOmrExamCard).join('') : '<div class="empty"><strong>아직 출제된 시험지가 없어요.</strong><p>선생님이 시험지를 배정하면 여기에 표시됩니다.</p></div>'}</div>
-          ${visible.length > recent.length ? `<button type="button" class="list-more" onclick="renderOmrExams()">이전 시험지까지 모두 보기 (${visible.length}) <span aria-hidden="true">→</span></button>` : ''}
+        <section id="student-portal-omr-home-section" class="portal-recent" aria-labelledby="recent-learning-title">
+          <div class="portal-recent-head"><h2 id="recent-learning-title" class="section-title">최근 시험지</h2><button type="button" class="btn back-btn" onclick="renderOmrExams()">전체 보기 <span aria-hidden="true">→</span></button></div>
+          ${exam ? `<article class="portal-recent-item">
+            <div><span class="recent-status">${escapeHtml(statusText)}${exam.exam_date ? ' · ' + escapeHtml(exam.exam_date) : ''}</span><h3>${escapeHtml(exam.exam_title || '시험지')}</h3></div>
+            <button type="button" class="btn" onclick="openRecentLearning('${escapeHtml(exam.assignment_id)}')">${actionText}</button>
+          </article>` : '<p class="portal-recent-empty">선생님이 시험지를 배정하면 여기에 표시됩니다.</p>'}
         </section>
       `;
+    }
+    async function openRecentLearning(assignmentId) {
+      const request = beginStudentRequest('recentLearning');
+      const view = captureStudentView();
+      try {
+        await loadOmrExams(false);
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'home')) return;
+        const exam = findOmrExam(assignmentId);
+        if (!exam) return renderOmrExams();
+        if (getStudentPortalRecordedSubmission(exam) === 'submitted') return renderOmrResult(exam);
+        if (isTeacherPreview || exam.is_review_only || exam.is_cancelled || exam.is_replaced || getStudentPortalRecordedSubmission(exam) === 'unknown') return renderOmrExams();
+        renderOmrInput(assignmentId);
+      } catch (e) { if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'home')) toast(e.message || '시험지를 불러오지 못했습니다.'); }
     }
     function renderStudentQuickActions() {
+      const groups = groupStudentPortalExams(getStudentPortalAssignments());
+      const { missing } = splitAssignments();
       return `
-        <section class="student-tools" aria-label="학습 도구">
-          <div><h2 class="section-title">학습 도구</h2><p class="card-desc">계획과 과제도 여기서 확인해요.</p></div>
-          <div class="portal-quick-actions">
-            ${isTeacherPreview ? '' : `<button type="button" class="tool-link" onclick="openPlanner()"><span class="tool-icon">${renderIcon('planner')}</span><span><strong>나의 플래너</strong><small>계획하고 공부 시간 기록하기</small></span><span aria-hidden="true">→</span></button>`}
-            <button type="button" class="tool-link" onclick="renderAssignments()"><span class="tool-icon">${renderIcon('task')}</span><span><strong>과제 확인</strong><small>과제 확인과 사진 제출</small></span><span aria-hidden="true">→</span></button>
-          </div>
+        <section class="portal-feature-grid" aria-label="바로 시작">
+          <button type="button" class="portal-feature" data-portal-feature="exams" onclick="renderOmrExams()"><span class="feature-heading"><strong>내 시험지</strong><span aria-hidden="true">→</span></span><span class="feature-description">시험지 · OMR · 해설</span><span class="feature-status">${isTeacherPreview ? '읽기 전용' : `진행 ${groups.pending.length} · 완료 ${groups.complete.length}`}</span></button>
+          ${renderGeometryLabEntry()}
+          <button type="button" class="portal-feature" data-portal-feature="planner" onclick="openPlanner()"><span class="feature-heading"><strong>학습 플래너</strong><span aria-hidden="true">→</span></span><span class="feature-description">계획 · 공부 시간</span><span class="feature-status">${isTeacherPreview ? '학생 로그인 필요 · 사유 보기' : '오늘의 계획 확인'}</span></button>
+          <button type="button" class="portal-feature" data-portal-feature="assignments" onclick="renderAssignments()"><span class="feature-heading"><strong>과제</strong><span aria-hidden="true">→</span></span><span class="feature-description">내용 확인 · 사진 제출</span><span class="feature-status">${isTeacherPreview ? '내용 보기 · 읽기 전용' : `미제출 ${missing.length}개`}</span></button>
         </section>
       `;
     }
-    // 도형실험실 입구. 첫 화면은 늘 AP Math Universe(playground/index.html)이고, 거기서 「입장」하면 실험실 허브로 간다.
-    // 같은 탭으로 열어 브라우저 뒤로 가기로 포털에 돌아온다(플래너와 같은 방식).
-    // 학년이 중1~중3이면 학년 해시(#g7·#g8·#g9)를 붙이고, Universe가 입장할 때 허브의 학년 필터로 그대로 넘긴다. 그 외 학년은 해시 없음.
+    // 학생은 한 번에 실제 실험실 목록으로 진입한다. 미리보기에도 공개 실험실을 표시한다.
     function geometryLabHref() {
-      const base = '../playground/index.html';
+      const base = '../playground/next/';
       const grade = String((homeData?.student || session || {}).grade || '');
       const m = grade.match(/중\s*(?:학교)?\s*([123])/);
-      return m ? `${base}#g${Number(m[1]) + 6}` : base;
+      const params = new URLSearchParams({ portal: '1' });
+      if (isTeacherPreview) { params.set('teacher_preview', '1'); params.set('student_id', teacherPreviewStudentId); }
+      return `${base}?${params.toString()}${m ? `#g${Number(m[1]) + 6}` : ''}`;
     }
     function renderGeometryLabEntry() {
-      return `<a id="portal-geometry-lab-entry" class="card portal-lab-entry" href="${geometryLabHref()}" aria-label="도형실험실 열기. 도형을 직접 움직여 보기">
-              <span class="portal-lab-entry-text">
-                <span class="eyebrow">눈으로 이해하는 수학</span>
-                <span class="portal-lab-entry-title">도형·수학 실험실</span>
-                <span class="portal-lab-entry-sub">도형을 직접 움직여 보기 · 그래프로 개념 확인하기</span>
-              </span>
-              <span class="portal-lab-entry-go">실험실 입장 <span aria-hidden="true">→</span></span>
-            </a>`;
+      return `<a id="portal-geometry-lab-entry" class="portal-feature" data-portal-feature="labs" href="${geometryLabHref()}"><span class="feature-heading"><strong>도형·수학 실험실</strong><span aria-hidden="true">→</span></span><span class="feature-description">도형 · 그래프 탐구</span><span class="feature-status">${isTeacherPreview ? '공개 실험실 · 이용 가능' : '직접 움직이며 이해하기'}</span></a>`;
     }
     function clinicLearningFetchPage({ studentKey, period, filter, cursor, pageSize }) {
       const request = beginStudentRequest('learningHistory');
@@ -1388,13 +1418,16 @@
           return data;
         });
     }
-    function clinicLearningOpenSource(ref) {
+    async function clinicLearningOpenSource(ref) {
       const assignmentId = String(ref?.assignmentId || '');
-      if (assignmentId && window.StudentClinicLineageView && typeof window.StudentClinicLineageView.focusNode === 'function') {
-        window.StudentClinicLineageView.focusNode(assignmentId);
-        return;
-      }
-      toast('연결된 시험지를 현재 목록에서 확인할 수 없습니다. 새로고침 후 다시 확인하세요.');
+      if (!assignmentId) return toast('연결된 시험지를 현재 목록에서 확인할 수 없습니다.');
+      omrListFilter = 'all';
+      const opening = renderOmrExams();
+      const destination = captureStudentView();
+      await opening;
+      if (!isStudentViewCurrent(destination, 'omr-list')) return;
+      if (!findOmrExam(assignmentId)) return toast('연결된 시험지를 현재 목록에서 확인할 수 없습니다.');
+      window.StudentClinicLineageView?.focusNode(assignmentId);
     }
     function ensureClinicLearningController() {
       if (clinicLearningController) return clinicLearningController;
@@ -1424,48 +1457,70 @@
       clinicLearningController = null;
     }
     function renderHome(options = {}) {
-      const openSections = options.preserveView ? Array.from(document.querySelectorAll('.portal-disclosure[open]'), el => el.id) : [];
       enterStudentView('home', options.preserveView === true, options.preserveView !== true);
       const student = homeData?.student || session || {};
-      const groups = groupStudentPortalExams(getStudentPortalAssignments());
       const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
       setTopStudent(student.name || session?.name || '');
       if (isTeacherPreview && student.name) document.title = `${student.name} 학생 화면`;
       $('app').innerHTML = `
-        <div class="student-shell">
-          ${isTeacherPreview ? '<div class="notice preview-notice" role="status">선생님 미리보기 · 학생의 화면을 읽기 전용으로 확인하고 있습니다.</div>' : ''}
-          <section class="student-profile-card">
+        <div class="student-shell portal-home">
+          ${renderPreviewNotice()}
+          <section class="portal-home-heading">
             <div>
-              <p class="eyebrow">${escapeHtml(schoolGrade || 'AP MATH STUDENT')}</p>
               <h1 class="profile-name">${escapeHtml(student.name || '학생')} 학생의 학습</h1>
-              <p class="profile-sub">시험지를 확인하고, 틀린 문제를 다시 이해해요.</p>
-            </div>
-            <div class="summary-grid" aria-label="조회된 시험지 상태">
-              <button type="button" class="summary-box" onclick="omrListFilter='pending';renderOmrExams()"><span class="summary-value">${groups.pending.length}</span><span class="summary-label">진행 중</span></button>
-              <button type="button" class="summary-box" onclick="omrListFilter='complete';renderOmrExams()"><span class="summary-value">${groups.complete.length}</span><span class="summary-label">제출 완료</span></button>
+              <p class="profile-sub">${escapeHtml(schoolGrade || 'AP MATH')} · 원하는 학습을 바로 시작하세요.</p>
             </div>
           </section>
-          ${renderOmrHomeSection()}
-          ${isTeacherPreview ? '' : renderGeometryLabEntry()}
-          <details id="student-review-section" class="portal-disclosure">
-            <summary><span><strong>복습 · 학습 기록</strong><small>오답 클리닉과 지금까지의 기록을 확인해요.</small></span><span class="disclosure-arrow" aria-hidden="true">＋</span></summary>
-            <div class="review-sections">
-              ${isTeacherPreview ? '' : renderWrongClinicPackets()}
-              <section class="card portal-assignments-card" aria-label="내 학습 기록 요약">
-                <div class="portal-assignments-head"><div><h2 class="card-title">내 학습 기록</h2><p class="card-desc">선택한 기간에 불러온 기록을 보여드려요. 일부 문항이 확인되지 않은 점수는 따로 표시합니다.${isTeacherPreview ? ' 선생님 미리보기에서는 읽기 전용입니다.' : ''}</p></div></div>
-                <div id="clinic-learning-history"></div>
-              </section>
-              ${isTeacherPreview ? '' : `<div class="portal-support-grid">${renderMaterialWrongAssignments()}</div>`}
-            </div>
-          </details>
           ${renderStudentQuickActions()}
-          ${isTeacherPreview ? '' : renderInstallCard(true)}
+          ${renderOmrHomeSection()}
+          <button type="button" class="portal-more-entry" onclick="renderMore()"><span><strong>학습 기록 · 오답 복습</strong><small>오답 클리닉, 수업자료 오답도 여기서</small></span><span aria-hidden="true">→</span></button>
           ${renderStudentAppVersion()}
         </div>
       `;
-      openSections.forEach(id => { const section = $(id); if (section) section.open = true; });
-      if (!isTeacherPreview && typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
+      if (options.preserveView !== true) window.scrollTo(0, 0);
+    }
+    function renderPreviewNotice() {
+      return isTeacherPreview ? '<div class="notice preview-notice" role="status"><strong>선생님 미리보기 · 읽기 전용</strong><span>기능별 이용 범위를 표시합니다. 학생 기록은 변경되지 않습니다.</span></div>' : '';
+    }
+    function renderMore() {
+      enterStudentView('more', false, true);
+      $('app').innerHTML = `<div class="student-shell portal-secondary">
+        ${renderPreviewNotice()}
+        <header><h1 class="card-title">더보기</h1><p class="card-desc">학습 기록과 오답을 한곳에서 찾아보세요.</p></header>
+        <section class="portal-menu-list" aria-label="전체 학습 메뉴">
+          <button type="button" class="portal-menu-item" onclick="renderLearningHistory()"><span><strong>학습 기록</strong><small>기간별 시험 결과와 복습 기록</small></span><span class="menu-availability">${isTeacherPreview ? '읽기 전용' : '기록 보기'} <span aria-hidden="true">→</span></span></button>
+          <button type="button" class="portal-menu-item" onclick="renderClinicList()"><span><strong>오답 클리닉</strong><small>나에게 배포된 문제와 해설 · 오답 체크</small></span><span class="menu-availability">${isTeacherPreview ? '이용 제한 · 사유 보기' : '클리닉 열기'} <span aria-hidden="true">→</span></span></button>
+          <button type="button" class="portal-menu-item" onclick="renderMaterialList()"><span><strong>수업자료 오답</strong><small>배정된 수업자료의 틀린 번호 입력</small></span><span class="menu-availability">${isTeacherPreview ? '이용 제한 · 사유 보기' : '오답 입력'} <span aria-hidden="true">→</span></span></button>
+          <button type="button" class="portal-menu-item" onclick="renderAssignments()"><span><strong>과제</strong><small>과제 내용 · 마감일 · 사진 제출</small></span><span class="menu-availability">${isTeacherPreview ? '내용 보기 · 읽기 전용' : '과제 보기'} <span aria-hidden="true">→</span></span></button>
+        </section>
+        ${renderInstallCard(true)}${renderStudentAppVersion()}
+      </div>`;
+    }
+    function renderLearningHistory() {
+      enterStudentView('learning-history', false, true);
+      $('app').innerHTML = `<div class="student-shell portal-secondary">${renderPreviewNotice()}
+        <button type="button" class="btn back-btn" onclick="renderMore()">← 더보기</button>
+        <header><h1 class="card-title">학습 기록</h1><p class="card-desc">기간별 시험 결과와 복습 기록을 확인하세요. 일부 문항이 확인되지 않은 점수는 따로 표시합니다.</p></header>
+        <section class="card" aria-label="내 학습 기록"><div id="clinic-learning-history"></div></section>
+      </div>`;
       mountClinicLearningView();
+    }
+    function renderUnavailableFeature(title, reason) {
+      return `<section class="card portal-unavailable" aria-labelledby="unavailable-title"><h1 id="unavailable-title" class="card-title">${escapeHtml(title)}</h1><span class="feature-status">미리보기 이용 제한</span><p class="card-desc">${escapeHtml(reason)}</p><p class="card-desc">학생이 자신의 이름과 PIN으로 로그인하면 이용할 수 있습니다.</p><button type="button" class="btn" onclick="renderMore()">다른 학습 기능 보기</button></section>`;
+    }
+    function renderPlannerUnavailable() {
+      enterStudentView('planner-unavailable', false, true);
+      $('app').innerHTML = `<div class="student-shell portal-secondary">${renderPreviewNotice()}${renderUnavailableFeature('학습 플래너', '플래너의 개인 계획과 공부 시간은 학생 PIN 인증이 필요합니다. 선생님 미리보기에는 플래너 조회 권한이 없어 내용을 열 수 없습니다.')}</div>`;
+    }
+    function renderClinicList() {
+      enterStudentView('clinic-list', false, true);
+      $('app').innerHTML = `<div class="student-shell portal-secondary">${renderPreviewNotice()}<button type="button" class="btn back-btn" onclick="renderMore()">← 더보기</button>${isTeacherPreview ? renderUnavailableFeature('오답 클리닉', '개인 오답 클리닉의 문제와 제출 기록은 학생 인증으로만 조회할 수 있습니다. 선생님 미리보기에서 학생 인증을 대신 사용하지 않습니다.') : '<h1 class="section-title">오답 복습</h1>' + renderWrongClinicPackets()}</div>`;
+      if (!isTeacherPreview) refreshWrongClinicPackets();
+    }
+    function renderMaterialList() {
+      enterStudentView('material-list', false, true);
+      $('app').innerHTML = `<div class="student-shell portal-secondary">${renderPreviewNotice()}<button type="button" class="btn back-btn" onclick="renderMore()">← 더보기</button>${isTeacherPreview ? renderUnavailableFeature('수업자료 오답', '수업자료의 개인 오답 조회와 입력에는 학생 인증이 필요합니다. 현재 선생님 미리보기에는 이 기능의 조회 권한이 없습니다.') : '<h1 class="section-title">수업자료 복습</h1>' + renderMaterialWrongAssignments()}</div>`;
+      if (!isTeacherPreview) refreshMaterialWrongAssignments();
     }
     function renderAssignments() {
       enterStudentView('assignments', false, true);
@@ -1473,10 +1528,11 @@
       setTopStudent(homeData?.student?.name || session?.name || '');
       $('app').innerHTML = `
         <div class="student-shell">
+          ${renderPreviewNotice()}
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="card">
             <h1 class="card-title">과제 목록</h1>
-            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 과제 내용과 마감일을 확인합니다.' : '미제출 과제를 먼저 확인하세요.'}</p>
+            <p class="card-desc">${isTeacherPreview ? '과제 내용과 마감일은 읽기 전용입니다. 사진 제출과 제출 취소는 학생 로그인 후 이용할 수 있습니다.' : '미제출 과제를 먼저 확인하세요.'}</p>
           </section>
           <div class="section-title">미제출 과제</div>
           <div class="assignment-list">
@@ -1509,7 +1565,7 @@
             <span class="status-pill ${done ? 'done' : 'missing'}">${statusText}</span>
           </div>
           ${description ? `<div class="assignment-desc">${escapeHtml(description)}</div>` : '<div class="assignment-desc">선생님이 등록한 과제 상세가 없습니다. 과제 제목과 마감일을 확인하세요.</div>'}
-          ${isTeacherPreview ? '' : `
+          ${isTeacherPreview ? '<p class="preview-action-reason">읽기 전용 · 사진 제출과 제출 취소는 학생 로그인 후 이용할 수 있습니다.</p>' : `
             <div class="row-actions">
               <button class="btn ${done ? '' : 'btn-primary'}" onclick="location.href='${url}'">${buttonText}</button>
               ${done ? `<button class="btn" style="color:var(--error); background:rgba(232,65,79,0.08); border-color:rgba(232,65,79,0.16);" onclick="cancelHomeworkSubmission('${safeAssignmentId}')">제출취소</button>` : ''}
@@ -1536,7 +1592,7 @@
       }
     }
     function openPlanner() {
-      if (isTeacherPreview) return toast('학생 화면 확인에서는 플래너를 열 수 없습니다.');
+      if (isTeacherPreview) return renderPlannerUnavailable();
       if (!session?.student_id) return toast('로그인이 필요합니다.');
 
       if (session?.pin) {
@@ -1548,8 +1604,6 @@
 
       const params = new URLSearchParams();
       params.set('student_id', String(session.student_id));
-      if (session?.pin) params.set('pin', String(session.pin));
-
       location.href = `../planner/?${params.toString()}`;
     }
     async function loadOmrExams(force = false) {
@@ -1702,6 +1756,9 @@
 
       url.searchParams.set('mode', isExam ? 'exam' : (isSolution ? 'sol' : 'ans'));
       url.searchParams.set('fit', 'screen');
+      url.searchParams.set('studentReview', '1');
+      const returnTarget = window.StudentArchiveReviewOutput?.studentReturnTarget?.(window.location.href);
+      if (returnTarget) url.searchParams.set('studentReturnTo', returnTarget);
       if(rc2){url.searchParams.set('qpp',String(frozenPayload.meta.qpp||4));url.searchParams.set('studio','1');url.searchParams.set('studentReview','1');url.searchParams.set('submitQr','0');url.searchParams.set('solQr','0');url.searchParams.set('preRegistered','1');url.searchParams.set('assignmentRegistered','1');url.searchParams.set('assignmentId',exam.assignment_id);}
       else if (isSolution) url.searchParams.set('solQr', '1');
       return url.toString();
@@ -1812,10 +1869,11 @@
       setTopStudent(homeData?.student?.name || session?.name || '');
       $('app').innerHTML = `
         <div class="student-shell">
+          ${renderPreviewNotice()}
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="omr-list-header">
             <h1 class="card-title">시험지 목록</h1>
-            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 기록을 확인합니다.' : '시험지 확인 → 직접 채점 → 틀린 번호 체크 → 해설 복습'}</p>
+            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 기록을 읽기 전용으로 확인합니다. OMR 입력·제출은 학생 로그인에서만 가능합니다.' : '시험지 확인 → 직접 채점 → 틀린 번호 체크 → 해설 복습'}</p>
           </section>
           <div class="omr-browser"><div class="empty">시험지를 불러오는 중입니다.</div></div>
         </div>
@@ -1871,6 +1929,7 @@
           </div>
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
           ${!showReview && !isLegacyMixedReview ? '<p class="omr-review-unavailable">연결된 시험지 파일이 없습니다. 종이 시험지를 확인하거나 선생님께 문의하세요.</p>' : ''}
+          ${isTeacherPreview ? '<p class="omr-review-unavailable">읽기 전용 미리보기입니다. 학생 기록을 보호하기 위해 OMR 입력·제출은 제공하지 않습니다.</p>' : ''}
           ${submissionUnknown ? '<p class="omr-review-unavailable">제출 상태를 확인할 수 없습니다. 중복 제출을 피하려면 선생님께 확인하세요.</p>' : ''}
           ${showActionArea && hasActionContent ? `
             <div class="omr-actions ${submitted ? 'is-submitted' : ''} ${canInput && !isTeacherPreview ? '' : 'no-input'} ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
@@ -1997,6 +2056,7 @@
       const wrong = normalizeOmrWrongIds(exam.wrong_ids);
       $('app').innerHTML = `
         <div class="student-shell result-shell">
+          ${renderPreviewNotice()}
           <button type="button" class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
           <section class="card result-card">
             <p class="result-status">OMR 제출 완료</p>
@@ -2104,6 +2164,10 @@
       console.info('[student portal] version:', STUDENT_APP_VERSION);
       checkStudentPortalVersion();
       if (isTeacherPreview) {
+        if (!teacherPreviewStudentId) {
+          renderPreviewError('미리보기할 학생 정보가 없습니다. 선생님 페이지에서 학생을 선택해 다시 열어 주세요.');
+          return;
+        }
         session = { student_id: teacherPreviewStudentId, teacher_preview: true };
         if (!readTeacherPreviewToken()) {
           renderPreviewError('선생님 로그인이 만료되었습니다. 선생님 페이지에서 다시 로그인해 주세요.');

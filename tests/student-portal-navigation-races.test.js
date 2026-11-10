@@ -28,7 +28,7 @@ const functionNames = [
   'escapeHtml', 'beginStudentRequest', 'captureStudentAuthContext',
   'isStudentAuthContextCurrent', 'isStudentRequestCurrent',
   'enterStudentView', 'captureStudentView', 'isStudentViewCurrent',
-  'recordStudentView', 'restoreStudentView', 'hasPortalReadAccess',
+  'recordStudentView', 'studentRouteForView', 'restoreStudentView', 'hasPortalReadAccess', 'renderPreviewNotice',
   'normalizeOmrWrongIds', 'normalizeWrongClinicWrongIds',
   'getStudentPortalRecordedSubmission', 'loadMaterialWrongAssignments',
   'refreshMaterialWrongAssignments', 'openMaterialWrongOmr',

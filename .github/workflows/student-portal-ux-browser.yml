@@ -8,9 +8,13 @@ on:
       - 'apmath/planner/**'
       - 'apmath/playground/index.html'
       - 'apmath/playground/universe/universe.css'
-      - 'apmath/playground/next/kit/apl-hub.js'
+      - 'apmath/playground/next/**'
       - 'apmath/playground/next/kit/apl-hub.css'
       - 'apmath/css/student-tools.css'
+      - 'apmath/css/student-navigation.css'
+      - 'apmath/js/student-navigation.js'
+      - 'apmath/wrong_print_engine.html'
+      - 'archive/archive2-reader-controls.js'
       - 'apmath/css/apms-student-experience.css'
       - 'tests/student-portal-*'
       - 'tests/apmath-student-teacher-preview.test.js'
@@ -24,9 +28,13 @@ on:
       - 'apmath/planner/**'
       - 'apmath/playground/index.html'
       - 'apmath/playground/universe/universe.css'
-      - 'apmath/playground/next/kit/apl-hub.js'
+      - 'apmath/playground/next/**'
       - 'apmath/playground/next/kit/apl-hub.css'
       - 'apmath/css/student-tools.css'
+      - 'apmath/css/student-navigation.css'
+      - 'apmath/js/student-navigation.js'
+      - 'apmath/wrong_print_engine.html'
+      - 'archive/archive2-reader-controls.js'
       - 'apmath/css/apms-student-experience.css'
       - 'tests/student-portal-*'
       - 'tests/apmath-student-teacher-preview.test.js'
@@ -59,12 +67,19 @@ jobs:
             /apmath/css/
             /apmath/playground/
             /apmath/js/student.js
-            /apmath/worker-backup/worker/index.js
-            /apmath/worker-backup/worker/routes/
+            /apmath/js/student-navigation.js
+            /apmath/wrong_print_engine.html
+            /apmath/worker-backup/worker/
             /archive/*.js
+            /archive/*.css
+            /archive/css/
+            /archive/js/
+            /archive/vendor/
+            /archive/data/svg-accessibility-index.js
             /archive/engine.html
             /archive/mixed_engine.html
             /tests/student-portal-*
+            /tests/student-navigation-subpages.test.cjs
             /tests/apmath-student-teacher-preview.test.js
             /tests/fixtures/student-portal-ux-api.cjs
       - name: Check out the exact baseline for visual comparison
@@ -92,10 +107,11 @@ jobs:
           node tests/student-portal-wrong-clinic-hotfix.test.js
           node tests/apmath-student-teacher-preview.test.js
           node tests/student-portal-omr-history-routes.test.js
+          node tests/student-navigation-subpages.test.cjs
       - name: Install isolated Chromium test runtime and Korean glyphs
         if: ${{ !cancelled() }}
         run: |
-          npm install --prefix "$RUNNER_TEMP/student-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          npm install --prefix "$RUNNER_TEMP/student-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1 esbuild@0.28.1 miniflare@4.20260708.1 @cloudflare/puppeteer@1.4.0
           "$RUNNER_TEMP/student-browser/node_modules/.bin/playwright" install --with-deps chromium
           sudo apt-get install --no-install-recommends -y fonts-noto-cjk
       - name: Capture baseline with synthetic data
@@ -123,6 +139,14 @@ jobs:
         run: |
           export STUDENT_UX_REVISION="$(git -C source rev-parse HEAD)"
           node source/tests/student-portal-experience-browser.cjs
+      - name: Verify feature access using real Worker authentication in isolated D1
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/student-browser/node_modules
+        run: |
+          node source/tests/student-portal-accessibility-browser.cjs \
+            --output="$RUNNER_TEMP/student-portal-ux/accessibility" \
+            --revision="$(git -C source rev-parse HEAD)"
       - name: Upload screenshots and machine readable evidence
         uses: actions/upload-artifact@v4
         if: always()

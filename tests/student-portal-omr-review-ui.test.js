@@ -174,7 +174,7 @@ assert(
     /order:\s*-1/.test(styleRule('.omr-actions .omr-start')) &&
     /min-height:\s*48px/.test(styleRule('.omr-actions .omr-start')) &&
     /\.omr-actions\.review-hidden \.omr-start\s*\{\s*grid-column:\s*1\s*\/\s*-1/.test(studentStyles) &&
-    /\.portal-omr-home-list, \.omr-list\s*\{\s*grid-template-columns:\s*1fr/.test(studentStyles),
+    /\.omr-list\s*\{\s*grid-template-columns:\s*1fr/.test(studentStyles),
   'shared exam cards should prioritize opening the exam and checking wrong numbers, retain 44px controls, and collapse the list on phones'
 );
 
