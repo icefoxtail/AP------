@@ -19,7 +19,7 @@ test('학생 포털 홈에 도형실험실 입구가 있고 학생 화면에만 
   assert.match(html, /도형을 직접 움직여 보기/);
   assert.match(html, /\$\{isTeacherPreview \? '' : renderGeometryLabEntry\(\)\}/, '선생님 미리보기에는 입구를 넣지 않는다');
   const home = html.slice(html.indexOf('function renderHome('));
-  assert.ok(home.indexOf('renderGeometryLabEntry()') < home.indexOf('renderOmrHomeSection()'), '입구는 홈 위쪽(시험지 카드 앞)에 있어야 한다');
+  assert.ok(home.indexOf('renderOmrHomeSection()') < home.indexOf('renderGeometryLabEntry()'), '학생의 주 사용 기능인 시험지를 실험실보다 먼저 노출한다');
 });
 
 test('입구 경로가 Universe(첫 화면)를 가리킨다', () => {
