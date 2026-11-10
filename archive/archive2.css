@@ -2154,44 +2154,7 @@ body[data-archive-view="compose"] .compose-create-bar {
   margin: 0 auto;
 }
 .saved-paper-list {
-  display: grid;
-  gap: 12px;
-}
-.saved-paper-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--surface);
-}
-.saved-paper-card h2 {
-  margin: 0 0 6px;
-  font-size: 17px;
-}
-.saved-paper-card p {
-  margin: 0;
-}
-.saved-paper-card .actions {
-  justify-content: flex-end;
-}
-.saved-paper-card-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-}
-.saved-paper-primary-actions {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(58px, 1fr));
-  gap: 6px;
-}
-.saved-paper-primary-actions button {
-  min-height: 44px;
-  padding: 7px 9px;
-  white-space: nowrap;
+  margin-top: 4px;
 }
 .saved-paper-more-wrap {
   align-items: center;
@@ -2254,26 +2217,6 @@ body[data-archive-view="compose"] .compose-create-bar {
   margin: 16px 0 64px;
 }
 @media (max-width: 760px) {
-  .saved-paper-card {
-    display: grid;
-    gap: 10px;
-  }
-  .saved-paper-card-actions {
-    width: 100%;
-    justify-content: stretch;
-  }
-  .saved-paper-primary-actions {
-    flex: 1 1 auto;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  .saved-paper-primary-actions button {
-    min-width: 0;
-    padding-inline: 4px;
-    font-size: 12px;
-  }
-  .saved-paper-card-actions > .saved-paper-more {
-    flex: 0 0 auto;
-  }
   .saved-paper-preview {
     min-height: 72vh;
   }
@@ -2742,10 +2685,6 @@ dialog::backdrop {
 }
 .floating button:hover {
   background: var(--chip);
-}
-.saved-library .saved-paper-card,
-.saved-paper-card {
-  border-radius: var(--radius-card);
 }
 .saved-library-back,
 .saved-paper-back {
@@ -3450,6 +3389,235 @@ body[data-archive-view="compose"] .compose-step-number {
     justify-content: flex-start;
     flex-direction: row;
     border-left: 1px solid var(--line);
+  }
+}
+
+/* ---- 보관함 줄 + 출제 내역 줄 (2026-11-10) ---------------------------------------------------------
+   Same row component as the exam rows above: grade-colored spine, title, meta, buttons. A saved paper's
+   spine shows its grade and question count (not a year); its row ends with the issue history area.
+   An 출제 내역 row's spine shows the issue date. */
+.exam-row-unit {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.saved-row,
+.exam-row.saved-row {
+  grid-template-areas:
+    "spine main"
+    "actions actions"
+    "issues issues";
+}
+.exam-row.saved-row.no-issues {
+  grid-template-areas:
+    "spine main"
+    "actions actions";
+}
+.saved-row-title {
+  margin: 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.exam-row-meta .badge {
+  margin-left: 2px;
+}
+/* A title can wrap to several lines, so the meta line below it does not tuck up under it. */
+.saved-row .saved-row-title {
+  min-height: 40px;
+}
+.saved-row .exam-row-meta,
+.history-card .history-title + .exam-row-meta {
+  margin-top: 0;
+}
+.saved-row .exam-row-actions,
+.history-card .exam-row-actions {
+  flex-wrap: wrap;
+}
+.exam-row-actions > .saved-paper-more {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.exam-row-actions .saved-paper-more > summary {
+  padding: 0 10px;
+  font-size: 15px;
+}
+.paper-issues {
+  grid-area: issues;
+  box-sizing: border-box;
+  padding: 8px 14px 10px;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 11px 11px;
+  background: var(--chip);
+  color: var(--ink);
+  font-size: 14px;
+}
+.paper-issues-note {
+  margin: 0;
+  min-height: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 8px;
+  color: var(--muted);
+}
+.paper-issues-note.is-error {
+  color: var(--danger-ink);
+}
+.paper-issues-retry,
+.paper-issue-check {
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--brand-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.paper-issues-retry:hover,
+.paper-issue-check:hover {
+  background: transparent;
+  color: var(--brand-hover);
+}
+.paper-issues-summary {
+  margin: 0;
+  padding-top: 2px;
+  font-weight: 700;
+}
+.paper-issue-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.paper-issue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 14px;
+  min-height: 44px;
+  border-top: 1px solid var(--line);
+}
+.paper-issue:first-child {
+  border-top: 0;
+}
+.paper-issue-class {
+  font-weight: 700;
+}
+.paper-issue-date {
+  color: var(--ink-2);
+}
+.paper-issue-count {
+  font-variant-numeric: tabular-nums;
+}
+.paper-issue-check {
+  margin-left: auto;
+}
+.paper-issue.is-cancelled,
+.paper-issue.is-cancelled .paper-issue-date {
+  color: var(--muted);
+}
+.paper-issue-cancelled {
+  font-weight: 700;
+}
+.paper-issues-older > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--brand-ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+.saved-library-history-note {
+  margin: 4px 0 10px;
+  font-size: 14px;
+}
+.history-title {
+  margin: 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.history-source {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 24px;
+  margin-top: -6px;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 700;
+}
+.history-source + .exam-row-meta {
+  margin-top: 0;
+}
+.history-source.is-link {
+  min-height: 44px;
+  margin-bottom: -10px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--brand-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.history-source.is-link:hover {
+  background: transparent;
+  color: var(--brand-hover);
+}
+.history-class {
+  color: var(--ink);
+  font-weight: 700;
+}
+.history-id {
+  color: var(--muted);
+  font-size: 13px;
+}
+@container exam-rows (min-width: 560px) {
+  .exam-row.saved-row {
+    grid-template-columns: 68px minmax(0, 1fr);
+    grid-template-areas:
+      "spine main"
+      "spine actions"
+      "issues issues";
+  }
+  .exam-row.saved-row.no-issues {
+    grid-template-areas:
+      "spine main"
+      "spine actions";
+  }
+  .exam-row.saved-row.no-issues .exam-row-spine {
+    border-radius: 11px 0 0 11px;
+  }
+  .exam-row-actions > .saved-paper-more {
+    flex: 0 0 auto;
+  }
+}
+@container exam-rows (min-width: 920px) {
+  .exam-row.saved-row {
+    grid-template-columns: 68px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "spine main actions"
+      "issues issues issues";
+  }
+  .exam-row.saved-row.no-issues {
+    grid-template-areas: "spine main actions";
+  }
+  .exam-row.saved-row .exam-row-spine {
+    border-radius: 11px 0 0 0;
+  }
+  .exam-row.saved-row.no-issues .exam-row-spine {
+    border-radius: 11px 0 0 11px;
   }
 }
 

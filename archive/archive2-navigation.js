@@ -58,6 +58,10 @@
     "monthly-test": "종합평가",
   };
   const LOGIN_URL = "../apmath/";
+  // The teacher rule lives in archive2-session.js (shared with 단원별 기출). Without it nobody counts as logged in.
+  const Session = typeof module === "object" && module.exports && typeof require === "function"
+    ? require("./archive2-session.js")
+    : (typeof globalThis !== "undefined" ? globalThis.Archive2Session : undefined);
 
   const esc = (value) =>
     String(value ?? "").replace(/[&<>"']/g, (c) =>
@@ -89,28 +93,23 @@
   }
 
   function readSession() {
-    try {
-      return JSON.parse(localStorage.getItem("APMATH_SESSION") || "null");
-    } catch (error) {
-      return null;
-    }
+    return Session?.read ? Session.read() : null;
   }
 
   // Login is owned by AP Math OS (../apmath/); the archive only reads the shared session.
+  // loggedIn means a teacher session; another account signed in on this browser reports needsTeacher instead.
   function loginState(session, now = Date.now()) {
-    if (!session || typeof session !== "object") return { loggedIn: false, name: "" };
-    const token = session.session_token || session.sessionToken;
-    const loginId = session.login_id || session.loginId || session.user?.login_id;
-    if (!token && !loginId) return { loggedIn: false, name: "" };
-    const expires = Date.parse(session.expires_at || "");
-    if (Number.isFinite(expires) && expires < now) return { loggedIn: false, name: "" };
-    const name = String(session.name || session.user?.name || "").trim().slice(0, 12);
-    return { loggedIn: true, name };
+    return Session?.state ? Session.state(session, now) : { loggedIn: false, needsTeacher: false, name: "" };
   }
 
   function loginMarkup(session, role) {
     const state = loginState(session);
     const cls = `archive-login ${role}`;
+    if (state.needsTeacher) {
+      // The phone top bar is narrow: the short text there, the full sentence for the side menu and screen readers.
+      const text = role === "archive-login-top" ? "선생님 로그인" : "선생님 계정으로 로그인해 주세요";
+      return `<a class="${cls}" data-login="teacher" href="${LOGIN_URL}" target="_blank" rel="noopener" title="선생님 계정으로 로그인해 주세요">${text}</a>`;
+    }
     if (!state.loggedIn)
       return `<a class="${cls}" data-login="out" href="${LOGIN_URL}" target="_blank" rel="noopener">선생님 로그인</a>`;
     return `<span class="${cls} is-in" data-login="in">${state.name ? `<strong>${esc(state.name)}</strong> ` : ""}로그인됨</span>`;

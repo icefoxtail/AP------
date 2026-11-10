@@ -27,7 +27,7 @@ const unitPastFixtureData = Array.from({ length: 12 }, (_, index) => ({
 const unitPastFixtureHtml = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><base href="./"><title>Unit Past preview regression</title></head>
 <body class="unit-page"><div id="unit-kicker"></div><h1 id="unit-title"></h1><div id="unit-summary"></div><div id="unit-status" role="status" aria-live="polite"></div><nav id="unit-stepper"></nav><select id="unit-qpp"><option value="4" selected>4문항</option></select><main id="unit-content"></main>
-<script src="archive2-core.js"></script><script src="unit-past-exams-core.js"></script><script src="unit-past-exams.js"></script>
+<script src="archive2-core.js"></script><script src="unit-past-exams-core.js"></script><script src="archive2-session.js"></script><script src="unit-past-exams.js"></script>
 <script>window.ARCHIVE_META_FOUNDATION_RUNTIME={status:'ACTIVE',ownedScopes:[],taxonomyRows:[]};window.questionIndex=${JSON.stringify(unitPastFixtureData.map((question) => ({ ...question, sourceFile: unitPastFixtureFile, sourceQuestionNo: question.id })))};window.UnitPastExams.init();</script></body></html>`;
 const archive2ExamData = "exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js";
 const archive2ExamSource = path.join(root, "archive", archive2ExamData);

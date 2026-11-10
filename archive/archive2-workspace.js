@@ -589,7 +589,7 @@
           "Basic " + btoa(unescape(encodeURIComponent(login + ":" + password))),
       };
     throw new Error(
-      "교사 로그인이 필요합니다. 기존 아카이브에서 로그인한 뒤 돌아와 주세요.",
+      "교사 로그인이 필요합니다. 선생님 계정으로 로그인한 뒤 돌아와 주세요.",
     );
   }
   async function api(route, body, method = body ? "POST" : "GET") {
@@ -3151,15 +3151,23 @@
     const rows = History.filterAssignments(state.recentRows, {
       ...state.recentFilters, classId: state.recentClassId,
     });
-    return History.groupByDate(rows).map((group) =>
-      `<section class="history-date-group"><h3 class="history-date-heading">${group.date ? `<time datetime="${esc(group.date)}">${esc(group.date)}</time>` : "—"}<small class="muted">${group.rows.length}개</small></h3><div class="history-grid">${group.rows.map((a) => {
+    // One row per assignment, newest date first. The raw list keeps saved_paper_id / archive_file, which the
+    // normalized rows drop (archive2-history.js stays untouched so the Worker is not redeployed).
+    const rawById = new Map((state.recentAssignments || []).map((raw) => [String(raw?.id ?? "").trim(), raw]));
+    const ordered = History.groupByDate(rows).flatMap((group) => group.rows);
+    if (!ordered.length) return '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
+    return `<div class="exam-rows history-rows">${ordered.map((a) => {
         const paperMeta = [a.contentGrade, a.subjectLabel].filter(Boolean).join(" · ");
-        const metadata = [a.targetGrade ? `대상 ${a.targetGrade}` : "",
-          paperMeta ? `시험지 ${paperMeta}` : "", a.className,
-          `출제 번호 · ${a.id}`,
+        const source = recentSourceOf(rawById.get(a.id));
+        const progress = a.submittedCount !== null && a.recipientCount !== null
+          ? [`제출 ${a.submittedCount}/${a.recipientCount}`]
+          : [a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
+            a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`];
+        const metadata = [a.className, ...progress,
           a.questionCount === null ? "" : `${a.questionCount}문항`,
-          a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
-          a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`].filter(Boolean);
+          a.targetGrade ? `대상 ${a.targetGrade}` : "",
+          paperMeta ? `시험지 ${paperMeta}` : "",
+          `출제 번호 · ${a.id}`].filter(Boolean);
       const lifecycle = [
         a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
         a.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(a.replacementAssignmentId)}</span>` : "",
@@ -3172,9 +3180,23 @@
       const pdfRetry = !a.pdfReady && a.pdfStatus !== "generating"
         ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}" class="small"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`)
         : "";
-      return `<article class="history-card" data-assignment-id="${esc(a.id)}"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}<div class="history-card-footer"><div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div><div class="actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
-      }).join("")}</div></section>`
-    ).join("") || '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
+      const sourceLine = !source ? "" : source.kind === "saved"
+        ? `<button type="button" class="history-source is-link" data-action="recent-open-saved" data-paper-id="${esc(source.paperId)}" aria-label="보관함에서 이 문제지 열기">${esc(source.label)}</button>`
+        : `<span class="history-source">${esc(source.label)}</span>`;
+      const day = /^\d{4}-(\d{2})-(\d{2})$/.exec(a.date);
+      const spineDate = day ? [`${Number(day[1])}월`, String(Number(day[2]))] : ["", "–"];
+      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(a.title)}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `<span${index === 0 && value === a.className ? ' class="history-class"' : value.startsWith("출제 번호") ? ' class="history-id"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}<div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div></div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></article>`;
+      }).join("")}</div>`;
+  }
+  // Where an assignment came from: a saved paper (link back to 보관함), a school exam, or 단원별 기출.
+  function recentSourceOf(raw) {
+    if (!raw) return null;
+    const paperId = String(raw.saved_paper_id ?? "").trim();
+    if (paperId) return { kind: "saved", label: "보관함 문제지", paperId };
+    const file = String(raw.archive_file ?? "").trim();
+    if (/^MIXED:/i.test(file)) return { kind: "unit", label: "단원별 기출" };
+    if (file) return { kind: "school", label: "학교 기출" };
+    return null;
   }
   function updateRecentResults() {
     updateRecentFilterOptions();
@@ -3256,6 +3278,8 @@
     }
     state.recentLoading = false;
   }
+  // 학생별 확인 opens from 출제 내역 and from the issue history inside each 보관함 row.
+  const isStatusView = (view) => view === "recent" || view === "saved";
   function recentRequestIsCurrent(version, requestedView, expectedSelection) {
     return version === state.recentLoadVersion &&
       requestedView === "recent" && state.view === requestedView &&
@@ -3287,7 +3311,7 @@
       return recentRequestIsCurrent(authority.version, authority.view, authority.selection);
     if (authority?.kind === "assignment-status")
       return authority.version === state.assignmentStatusLoadVersion &&
-        authority.view === "recent" && state.view === authority.view &&
+        isStatusView(authority.view) && state.view === authority.view &&
         String(state.recentSelectedAssignmentId || "") === authority.selection &&
         (!authority.selection || authority.selection === authority.assignmentId) &&
         authority.pdfMutationVersion === recentPdfMutationVersion(authority.assignmentId);
@@ -3408,7 +3432,7 @@
   }
   function isCurrentPdfRetryAuthority(authority) {
     return Boolean(authority &&
-      authority.view === "recent" && state.view === authority.view &&
+      isStatusView(authority.view) && state.view === authority.view &&
       String(state.recentSelectedAssignmentId || "") === authority.selection &&
       (!authority.selection || authority.selection === authority.assignmentId) &&
       (!authority.modalWasOpen || (
@@ -3447,7 +3471,7 @@
     const pdfMutationVersion = recentPdfMutationVersion(assignmentId);
     const isCurrentRequest = () =>
       version === state.assignmentStatusLoadVersion &&
-      requestedView === "recent" && state.view === requestedView &&
+      isStatusView(requestedView) && state.view === requestedView &&
       String(state.recentSelectedAssignmentId || "") === expectedSelection &&
       (!expectedSelection || expectedSelection === assignmentId) &&
       pdfMutationVersion === recentPdfMutationVersion(assignmentId);
@@ -3676,7 +3700,8 @@
       )
         .then((result) => { if (result !== false) status("저장한 시험지를 불러왔습니다."); })
         .catch((error) => {
-          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
+          const loginNeeded = error?.status === 401 || error?.status === 403 || /로그인/.test(String(error?.message || ""));
+          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p>${loginNeeded ? '<p><a class="button-like primary" href="../apmath/" target="_blank" rel="noopener">선생님 로그인</a> 로그인한 뒤 이 화면으로 돌아와 새로고침해 주세요.</p>' : ""}<a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
           status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);
         });
       return;
@@ -4536,9 +4561,13 @@
         "",
         routeUrl(),
       );
+    } else if (state.view === "saved") {
+      // Opened from an issue-history row in 보관함: a leftover 출제 내역 selection must not block it.
+      state.recentSelectedAssignmentId = "";
     }
     await assignmentStatus(assignmentId);
   }
+  window.Archive2WorkspaceOpenAssignmentStatus = openRecentAssignmentStatus;
   function restoreCurrentHistoryScroll() {
     const top = Math.max(0, Number(history.state?.archive2ScrollY) || 0);
     const restore = () => window.scrollTo(0, top);
@@ -4664,6 +4693,12 @@
       }
       if (a === "assignment-status") {
         await openRecentAssignmentStatus(b.dataset.assignment);
+        return;
+      }
+      if (a === "recent-open-saved") {
+        // 출제 내역 row made from a saved paper: back to that paper in 보관함.
+        invalidateRecentRequests();
+        showSavedPaper(b.dataset.paperId);
         return;
       }
       if (a === "assignment-output-direct") {
@@ -5546,6 +5581,11 @@
   $("modal").addEventListener?.("close", () => {
     state.assignmentStatusLoadVersion++;
     if (state.view === "recent") updateRecentResults();
+    // An issue made from a 보관함 row shows up in that row's history without a reload.
+    if (state.view === "saved" && state.originalReceipts?.length) {
+      state.originalReceipts = [];
+      window.Archive2Library?.refreshHistory?.();
+    }
   });
   $("modal").addEventListener("cancel", (event) => {
     if (originalIssueBusy()) event.preventDefault();
