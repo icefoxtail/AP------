@@ -5,7 +5,7 @@
 const fs=require('fs'),path=require('path');const [key,js]=process.argv.slice(2);const W='.tmp/work';
 const md=fs.readFileSync(`${W}/triage-20261107/${key}.md`,'utf8');const tri={};
 for(const m of md.matchAll(/^\|\s*Q?(\d+)\s*\|\s*([A-Z_-]+)/gm))tri[+m[1]]=m[2];
-global.window={};eval(fs.readFileSync(js,'utf8'));const img=new Set(window.questionBank.filter(q=>q.solutionImage).map(q=>q.id));
+global.window={};eval(fs.readFileSync(js,'utf8'));const img=new Set((window.questionBank??window.examData?.questions).filter(q=>q.solutionImage).map(q=>q.id));
 const rev=new Set(fs.readdirSync(`${W}/runs/${key}/rev`).filter(d=>/^q\d+$/.test(d)).map(d=>+d.slice(1)));
 const dec={};for(const [o,d] of Object.entries(tri)){const n=+o;
  if(rev.has(n))dec[n]=img.has(n)?'REPLACE':'FIGURE';

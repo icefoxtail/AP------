@@ -49,7 +49,7 @@ def source_bank(root, src):
     import json
     source = (root / src).resolve()
     if not source.is_relative_to((root / 'archive/exams/original').resolve()): raise ValueError('source outside original exams')
-    script = "const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify(c.window.questionBank.map(q=>({id:q.id,image:q.solutionImage||''}))))"
+    script = "const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify((c.window.questionBank??c.window.examData?.questions).map(q=>({id:q.id,image:q.solutionImage||''}))))"
     rows = json.loads(run(['node','-e',script,source],cwd=root).stdout)
     if not isinstance(rows,list) or not rows: raise ValueError('empty source bank')
     result={}

@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha,canonicalJson,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {compositePanelBytes} from './composite-candidate-svg-v1.mjs';
 import {parseQuestionUidV2,SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
-import {loadBank} from '../build-visual-render-matrix.mjs';
+import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath,archiveAssetSha256} from '../record-visual-browser-evidence.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
@@ -232,7 +232,7 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
     if(written!==svgSha256)throw new Stop('ARCHIVE_ASSET_WRITE_MISMATCH',{expected:svgSha256,written});
     // candidate bank: only the three solutionImage* fields of the target question change (phase2.mjs 727-734)
     const patch={solutionImage:archiveAssetRef,solutionImageSize:requestedSizeClass,solutionImageAlt:alt};
-    const candidate=input.raw+'\n;Object.assign(window.questionBank.find(q=>q.id==='+JSON.stringify(ordinal)+'),'+JSON.stringify(patch)+');\n';
+    const candidate=input.raw+bankAliasSuffix(input.raw)+'\n;Object.assign(window.questionBank.find(q=>q.id==='+JSON.stringify(ordinal)+'),'+JSON.stringify(patch)+');\n';
     const patched=clone(loadBank(candidate)),original=clone(input.bank);
     if(patched.length!==original.length)throw new Stop('ARCHIVE_PROTECTED_FIELD_MUTATION',{reason:'QUESTION_COUNT'});
     original.forEach((question,index)=>{

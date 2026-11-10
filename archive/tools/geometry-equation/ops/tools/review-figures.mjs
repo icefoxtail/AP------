@@ -11,7 +11,7 @@ const browser=await launchBrowser();
 let rows=JSON.parse(fs.readFileSync(rowsPath,'utf8'));
 if(process.env.REVIEW_FILTER){const keep=new Set(JSON.parse(fs.readFileSync(process.env.REVIEW_FILTER,'utf8')));rows=rows.filter(r=>keep.has(path.basename(r.src.split(String.fromCharCode(92)).join('/'),'.js')+'__q'+r.ord));}fs.mkdirSync(outDir,{recursive:true});
 const log=(...a)=>console.log('[review]',...a);
-const bankOf=text=>{const w={};vm.runInNewContext(text.replace(/^\uFEFF/,''),{window:w});return w.questionBank;};
+const bankOf=text=>{const w={};vm.runInNewContext(text.replace(/^\uFEFF/,''),{window:w});return w.questionBank??(Array.isArray(w.examData?.questions)?w.examData.questions:w.questionBank);};
 const banks=new Map();
 const itemDirs=[];
 for(const r of rows){

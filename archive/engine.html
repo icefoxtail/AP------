@@ -56,7 +56,7 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
-    <script src="screen-runtime-adapter.js?v=20261106-output-performance-2"></script>
+    <script src="screen-runtime-adapter.js?v=20261110-examdata-fallback-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
@@ -1693,7 +1693,8 @@ async function init() {
         try {
             await waitForMathJaxOrContinue();
             if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
-            const qb = window.questionBank;
+            // questionBank가 없을 때만 window.examData(별칭 줄이 없는 원본 시험지 형식)로 읽는다.
+            const qb = window.questionBank || window.examData;
             const loadedQuestions = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
             const sourceArchiveFile = String(safeDataUrl)
                 .replace(/^[^#?]*\/exams\//i, '')
@@ -1704,7 +1705,7 @@ async function init() {
                 ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
                 : question);
             AppState.canonicalData = buildArchiveCanonicalData(sourceArchiveFile);
-            AppState.title = window.examTitle || p.get('title') || recentLaunch?.title || '수학 시험지';
+            AppState.title = window.examTitle || (!window.questionBank && (window.examData?.title || window.examData?.examTitle)) || p.get('title') || recentLaunch?.title || '수학 시험지';
             AppState.identityTitle = AppState.title;
             AppState.displayTitle = window.examDisplayTitle || AppState.title;
             AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);

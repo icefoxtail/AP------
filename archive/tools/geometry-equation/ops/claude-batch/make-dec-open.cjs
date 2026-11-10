@@ -9,7 +9,7 @@ const pf=`${W}/dec-${key}.json`;const prev=fs.existsSync(pf)?JSON.parse(fs.readF
 // current ledger state wins over old tables (later OPEN fills publish more items; 2026-11-09 19 금당 bug)
 {const L=JSON.parse(fs.readFileSync('archive/tools/geometry-equation/production/exam-figure-ledger.json','utf8'));const nm=js.split('/').pop().replace(/\.js$/,'');const e=L.exams.find(x=>x.exam===nm);
  if(e)for(const i of e.items)base[i.ord]=i.state==='PUBLISHED'?'FIGURE':i.state==='EXEMPT'?'EXEMPT':i.state==='OPEN_CONTENT'?'CONTENT':i.state.startsWith('OPEN')?'UNSUPPORTED':base[i.ord];}
-global.window={};eval(fs.readFileSync(js,'utf8'));const img=new Set(window.questionBank.filter(q=>q.solutionImage).map(q=>q.id));
+global.window={};eval(fs.readFileSync(js,'utf8'));const img=new Set((window.questionBank??window.examData?.questions).filter(q=>q.solutionImage).map(q=>q.id));
 const ro=fs.readdirSync(`${W}/runs/${key}/${srcSub||"rev-open"}`).filter(d=>/^q\d+$/.test(d)).map(d=>+d.slice(1));
 const dec={};for(const [k,v] of Object.entries(base)){const n=+k;dec[n]=(v==='FIGURE'||v==='REPLACE')?(img.has(n)?'KEEP_EXISTING':'UNSUPPORTED'):v;}
 for(const n of ro)dec[n]=img.has(n)?'REPLACE':'FIGURE';
