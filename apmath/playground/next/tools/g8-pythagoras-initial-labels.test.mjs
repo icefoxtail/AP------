@@ -122,7 +122,7 @@ for (const [W, H] of compact) test(`py6-iso ${W}px x belongs to AH rather than t
   }
 });
 
-for (const [W, H] of [[360, 307], [390, 326]]) test(`py8-quad ${W}px vertex names remain separate from both equations while rotating`, () => {
+for (const [W, H] of [[360, 307], [390, 326], [820, 420], [683, 475]]) test(`py8-quad ${W}px vertex names remain separate from both equations while rotating`, () => {
   for (const rotation of [0, 20, 45, 70, 90]) for (const values of [[3, 4, 5, 2], [1, 12, 12, 1], [12, 1, 1, 12]]) {
     const s = rt.state('py8-quad'); [s.pyQa, s.pyQb, s.pyQc, s.pyQd] = values; s.pyQr = rotation;
     const M = rt.scene('py8-quad').py.model(s), b = draw(rt, 'py8-quad', s, W, H, 'explore');

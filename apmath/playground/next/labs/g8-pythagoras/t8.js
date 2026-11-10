@@ -52,7 +52,7 @@
       const O = pt(0, 0), A = R(pt(0, -a)), Cc = R(pt(0, c)), B = R(pt(-bb, 0)), D = R(pt(d, 0));
       const ext = Math.max(a, bb, c, d);
       const shapeBox = bboxOf([A, B, Cc, D]);
-      const separateFooter = C.full && !b.thumb && b.W < 560;
+      const separateFooter = C.full && !b.thumb && b.W < 900;
       fit(b, shapeBox, { t: 44, b: C.full ? (separateFooter ? 96 : 74) : C.answer ? 60 : 44, l: 58, r: 58 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [A, B, Cc, D], 'ink', 0.07); poly(b, [A, B, Cc, D], 'ink', 3.4);
