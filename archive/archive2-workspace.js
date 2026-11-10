@@ -527,8 +527,14 @@
   const quickPreset = () => quickState.presets[state.view] || "standard";
   const isQuickAssessmentView = () => Boolean(Quick?.isQuickView(state.view));
   // One navigation tab ("빠른 평가") stays active on all four products.
-  const navViewActive = (el) => el.dataset.navKey === "quick"
-    ? isQuickAssessmentView() : el.dataset.view === state.view;
+  // Menu entries carry data-nav-key; 빠른 평가 covers the four quick products and 보관함 covers
+  // 저장한 시험지 + 출제 내역. Other [data-view] buttons (view switch, quick tabs) match their own view.
+  const navViewActive = (el) => {
+    const key = el.dataset.navKey;
+    if (key === "quick") return isQuickAssessmentView();
+    if (key && window.Archive2Navigation?.matches) return window.Archive2Navigation.matches(key, state.view);
+    return el.dataset.view === state.view;
+  };
 
   function scheduleFinderFilterRender() {
     clearTimeout(finderFilterRenderTimer);
@@ -1847,7 +1853,7 @@
     );
   }
   function finderSearchMarkup(filters) {
-    return `<div class="finder-search-zone"><div class="finder-search-row"><label class="finder-search-box" aria-label="학교·단원·과목 검색"><span aria-hidden="true">⌕</span><input id="finder-query" value="${esc(filters.query || "")}" placeholder="학교명, 과목, 단원으로 검색"></label>${button("finder-search", "검색", 'class="primary finder-search-submit"')}</div></div>`;
+    return `<div class="finder-search-zone"><div class="finder-search-row"><label class="finder-search-box" aria-label="학교·단원·과목 검색"><input id="finder-query" value="${esc(filters.query || "")}" placeholder="학교명, 과목, 단원으로 검색"></label>${button("finder-search", "검색", 'class="primary finder-search-submit"')}</div></div>`;
   }
   function finderActiveMarkup(filters) {
     const active = [
@@ -2431,29 +2437,154 @@
       if (isQuickAssessmentView()) render();
     }
   }
+  // ---- Home ----------------------------------------------------------------------------------
+  // "Recently opened" is a light record kept only in this browser. Every read and write is
+  // guarded: a blocked or full storage must never stop an exam from opening (runtime contract).
+  const RECENT_EXAMS_KEY = "APMATH_ARCHIVE2_RECENT_EXAMS_v1";
+  const RECENT_EXAMS_MAX = 8;
+  function readRecentExams() {
+    try {
+      const rows = JSON.parse(localStorage.getItem(RECENT_EXAMS_KEY) || "[]");
+      return (Array.isArray(rows) ? rows : [])
+        .filter((row) => row && typeof row.file === "string" && row.file)
+        .slice(0, RECENT_EXAMS_MAX);
+    } catch {
+      return [];
+    }
+  }
+  function rememberRecentExam(exam, now = Date.now()) {
+    try {
+      const file = String(exam?.file || "");
+      if (!file) return;
+      const rows = readRecentExams().filter((row) => row.file !== file);
+      rows.unshift({ file, at: now });
+      localStorage.setItem(RECENT_EXAMS_KEY, JSON.stringify(rows.slice(0, RECENT_EXAMS_MAX)));
+    } catch {
+      /* a recent-open record is optional */
+    }
+  }
+  const HOME_GRADES = Object.freeze([
+    ["중1", "m1"], ["중2", "m2"], ["중3", "m3"], ["고1", "h1"], ["고2", "h2"], ["고3", "h3"],
+  ]);
+  const gradeClass = (grade) => {
+    const found = HOME_GRADES.find(([label]) => label === String(grade || "").slice(0, 2));
+    return found ? `grade-${found[1]}` : "grade-none";
+  };
+  // Schools with the most original exams, computed from the loaded catalog (never a fixed list).
+  function homeSchoolChips(limit = 8) {
+    const counts = new Map();
+    for (const exam of state.catalog?.exams || []) {
+      if (!exam.school || !O.matchesMaterial(exam, "exam")) continue;
+      counts.set(exam.school, (counts.get(exam.school) || 0) + 1);
+    }
+    return [...counts]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ko"))
+      .slice(0, limit)
+      .map(([school, count]) => ({ school, count }));
+  }
+  function relativeDayLabel(at, now = Date.now()) {
+    const days = Math.floor((startOfDay(now) - startOfDay(at)) / 86400000);
+    if (!Number.isFinite(days) || days < 0) return "";
+    if (days === 0) return "오늘";
+    if (days === 1) return "어제";
+    if (days < 7) return `${days}일 전`;
+    if (days < 14) return "지난주";
+    const date = new Date(at);
+    return `${date.getMonth() + 1}월 ${date.getDate()}일`;
+  }
+  function startOfDay(value) {
+    const date = new Date(value);
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+  }
+  // Recently opened exams that still exist in the catalog; with no record yet, the newest exams.
+  function homeExamList(limit = 5) {
+    const exams = state.catalog?.exams || [];
+    const indexByFile = new Map(exams.map((exam, index) => [exam.file, index]));
+    const opened = [];
+    for (const row of readRecentExams()) {
+      const index = indexByFile.get(row.file);
+      if (index !== undefined) opened.push({ index, exam: exams[index], at: row.at });
+      if (opened.length >= limit) break;
+    }
+    if (opened.length) return { kind: "opened", rows: opened };
+    const newest = exams
+      .map((exam, index) => ({ index, exam }))
+      .filter((row) => O.matchesMaterial(row.exam, "exam"))
+      .sort((a, b) => C.compareNewest(a.exam, b.exam))
+      .slice(0, Math.min(limit, 3));
+    return { kind: "newest", rows: newest };
+  }
+  function homeExamRowMarkup({ index, exam, at }) {
+    const year = String(exam.year || "").slice(-2);
+    const title = O.displayTitle(exam);
+    const meta = [
+      exam.primaryStandardCourse || exam.subject,
+      exam.qCount ? `${exam.qCount}문항` : "",
+      at ? relativeDayLabel(at) : "",
+    ].filter(Boolean).join(" · ");
+    const direct = ([mode, label]) =>
+      button("source-output-direct", label, `type="button" data-exam="${index}" data-mode="${mode}"`);
+    return `<article class="home-exam ${gradeClass(exam.grade)}">
+      <div class="home-spine"><span class="home-spine-year">${esc(year)}</span><span class="home-spine-grade">${esc(exam.grade || "")}</span></div>
+      <div class="home-exam-main">${button("source-output-direct", esc(title), `type="button" class="home-exam-title" data-exam="${index}" data-mode="exam"`)}<div class="home-exam-meta">${esc(meta)}</div></div>
+      <div class="home-exam-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "반에 출제", `type="button" class="primary" data-exam="${index}"`)}</div>
+    </article>`;
+  }
   function renderHome() {
     const recent = drafts().slice(0, 3);
-    const grades = ["중1", "중2", "중3", "고1", "고2", "고3"];
-    return `<section class="archive-home">
-      <header class="archive-home-heading"><h1>홈</h1></header>
-      <section class="panel archive-home-start">
-        <form id="archive-home-search" class="archive-home-search" role="search">
-          <label class="archive-home-search-box" aria-label="학교·단원·과목 검색"><span aria-hidden="true">⌕</span><input id="archive-home-query" placeholder="학교명, 과목, 단원으로 검색" autocomplete="off"></label>
-          ${button("home-search", "검색", 'type="button" class="primary archive-home-search-submit"')}
-        </form>
-        <div class="archive-home-grades" aria-label="학년 빠른 진입">${grades.map((grade) => button("home-grade", grade, `data-grade="${grade}"`)).join("")}</div>
+    const schools = homeSchoolChips();
+    const examList = homeExamList();
+    // 학교 기출 is the search above; the four quick assessments come first, 생성문제 last.
+    const products = HOME_PRODUCT_REGISTRY
+      .filter((product) => product.productKey !== "school-exams")
+      .sort((a, b) => (a.productKey === "generated-bank") - (b.productKey === "generated-bank"));
+    const productMarkup = (product) => {
+      const count = Quick?.PRODUCTS?.[
+        { "five-minute-test": "five-minute", "subunit-assessment": "subunit-test", "unit-assessment": "unit-test", "exam-prep": "monthly-test" }[product.productKey]
+      ]?.count;
+      return button(
+        "home-product",
+        `<span>${esc(product.label)}</span><span class="home-quick-count">${count ? `${count}문항` : "열기"}</span>`,
+        `type="button" class="home-quick-item" data-product-key="${esc(product.productKey)}" data-route-owner="${esc(product.routeOwner || "")}" data-availability="${String(product.availability)}"`,
+      );
+    };
+    return `<div class="archive-home">
+      <h1 class="visually-hidden">JS 아카이브 홈</h1>
+      <div class="home-top">
+        <section class="home-find" aria-labelledby="home-find-title">
+          <h2 id="home-find-title" class="home-title">학교 기출 찾기</h2>
+          <form id="archive-home-search" class="home-search" role="search">
+            <label class="visually-hidden" for="archive-home-query">학교, 학년, 시험으로 검색</label>
+            <input id="archive-home-query" type="search" placeholder="순천고 고1 1학기 중간" autocomplete="off" enterkeyhint="search">
+            ${button("home-search", "찾기", 'type="button" class="primary home-search-submit"')}
+          </form>
+          <p class="home-hint">학교, 학년, 시험을 띄어 쓰면 모두 맞는 시험지만 나옵니다.</p>
+          <div class="home-chips" aria-label="시험지가 많은 학교">${schools.map(({ school }) => button("home-school", esc(school), `type="button" class="home-chip" data-school="${esc(school)}"`)).join("")}${button("home-all-schools", "전체 학교", 'type="button" class="home-link"')}</div>
+        </section>
+        <section class="home-units" aria-labelledby="home-units-title">
+          <h2 id="home-units-title" class="home-title">단원별로 난이도 골라 주기</h2>
+          <div class="home-grades">${HOME_GRADES.map(([label, id]) => `<a class="home-grade grade-${id}" href="unit-past-exams.html?ready=1&amp;grade=${id}">${label}</a>`).join("")}</div>
+          <p class="home-hint">학년을 누르면 그 학년의 단원별 기출이 열립니다.</p>
+        </section>
+      </div>
+      <section class="home-recent" aria-labelledby="home-recent-title">
+        <div class="home-section-head"><h2 id="home-recent-title">${examList.kind === "opened" ? "최근 연 기출" : "최근 연도 기출"}</h2>${button("home-all-schools", "학교별 기출 전체 보기", 'type="button" class="home-link"')}</div>
+        ${examList.rows.length ? examList.rows.map(homeExamRowMarkup).join("") : '<p class="muted">기출 목록을 불러오면 이곳에 표시됩니다.</p>'}
       </section>
-      <section class="archive-home-products-section">
-        <div class="archive-home-section-head"><h2>바로 쓰는 자료·평가</h2></div>
-        <div class="archive-home-products">${HOME_PRODUCT_REGISTRY.map(homeProductMarkup).join("")}</div>
-      </section>
-      <section class="archive-home-drafts-section">
-        <div class="archive-home-section-head"><h2>만들던 문제지</h2></div>
-        <div class="archive-home-drafts">${recent.length
-          ? recent.map((d, i) => `<article class="archive-home-draft"><div><h3>${esc(d.header?.title || d.title || "문제지")}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div>${button("restore", "이어하기", `data-draft="${i}"`)}</article>`).join("")
-          : '<div class="empty archive-home-empty">저장된 작업이 없습니다.</div>'}</div>
-      </section>
-    </section>`;
+      <div class="home-bottom">
+        <section class="home-drafts" aria-labelledby="home-drafts-title">
+          <h2 id="home-drafts-title">만들던 문제지</h2>
+          ${recent.length
+            ? recent.map((d, i) => `<div class="home-draft"><div class="home-draft-main"><div class="home-draft-title">${esc(d.header?.title || d.title || "문제지")}</div><div class="home-draft-meta">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</div></div>${button("restore", "이어하기", `type="button" data-draft="${i}"`)}</div>`).join("")
+            : '<p class="muted home-empty">저장된 작업이 없습니다.</p>'}
+        </section>
+        <section class="home-quick" aria-labelledby="home-quick-title">
+          <h2 id="home-quick-title">빠른 평가</h2>
+          <div class="home-quick-list">${products.map(productMarkup).join("")}</div>
+        </section>
+      </div>
+      <nav class="home-tools" aria-label="그 밖의 도구"><a href="problem-bank-search.html">유형·개념으로 문항 찾기</a><button type="button" class="home-link" data-view="health">자료 점검</button><a href="index.html?legacy=1">아카이브 1.0</a></nav>
+    </div>`;
   }
 
   function renderFind() {
@@ -2465,15 +2596,15 @@
       replaceFinderUrlState();
     }
     const page = exams.slice(state.page * 18, (state.page + 1) * 18);
-    return `<div class="finder-surface"><div class="intro finder-intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
+    return `<div class="finder-surface"><div class="intro finder-intro"><div><h1>학교별 기출</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
       <section class="panel finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>${finderSearchMarkup(state.find)}${finderActiveMarkup(state.find)}<div class="finder-filter-bar">${finderPrimaryFilterMarkup(state.find)}${finderDetailFilterMarkup(state.find)}</div></section>
-      ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기 →</span></a>' : ""}
+      ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기</span></a>' : ""}
       <div class="resultbar finder-resultbar"><strong>${state.find.material === "textbook" ? "교과서" : state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
       <div class="finder-results-wrap"><div class="exam-list">${page
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions finder-card-actions" role="group" aria-label="${esc(O.displayTitle(e))} 시험·해설·정답·출제·더보기">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></details></div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade, "grade-badge " + gradeClass(e.grade))}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions finder-card-actions" role="group" aria-label="${esc(O.displayTitle(e))} 시험·해설·정답·출제·더보기">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></details></div></article>`;
         })
         .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
@@ -2839,7 +2970,7 @@
     return `<div class="mobile-actions">${button("mobile-inspector", "출력 설정")}${button("print", "출력", `class="small" ${blocked ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions"><button type="button" class="phone-quick-link" data-view="five-minute">빠른 평가</button>${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
     <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
@@ -2854,7 +2985,7 @@
   }
   function renderRecent() {
     const list = drafts(), f = state.recentFilters;
-    return `<div class="history-surface"><div class="intro history-intro"><div><h1>출제 내역</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
+    return `<div class="history-surface">${window.Archive2Navigation?.libraryTabs?.("recent") || ""}<div class="intro history-intro"><div><h1>출제 내역</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
       <section class="panel history-panel" aria-labelledby="history-heading"><div class="history-heading"><h2 id="history-heading">최근 출제</h2></div>
       <div class="history-filters">
         <label class="history-period-filter">기간<span class="history-period"><input type="date" data-recent-filter="from" aria-label="시작일" value="${esc(f.from)}"><span aria-hidden="true">~</span><input type="date" data-recent-filter="to" aria-label="끝일" value="${esc(f.to)}"></span></label>
@@ -3375,6 +3506,7 @@
     if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
       document.body.dataset.archiveView = state.view;
+      window.Archive2Navigation?.sync?.(state.view);
       document.querySelectorAll("[data-view]").forEach((button) => {
         button.classList.toggle("active", navViewActive(button));
         button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
@@ -3386,7 +3518,7 @@
       )
         .then((result) => { if (result !== false) status("저장한 시험지를 불러왔습니다."); })
         .catch((error) => {
-          $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
+          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
           status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);
         });
       return;
@@ -3411,6 +3543,7 @@
       );
     });
     document.body.dataset.archiveView = state.view;
+    window.Archive2Navigation?.sync?.(state.view);
     $("content").innerHTML =
       state.view === "home"
         ? renderHome()
@@ -4520,10 +4653,12 @@
         quickState.bundle.clear();
         replaceUrlState();
         render();
-      } else if (a === "home-grade") {
+      } else if (a === "home-school" || a === "home-all-schools") {
+        // A school chip searches that school by name (the same search the box runs); 전체 학교 opens everything.
         rememberCurrentHistoryEntry();
         state.sources = [];
-        state.find = { grade: b.dataset.grade || "" };
+        const school = a === "home-school" ? b.dataset.school || "" : "";
+        state.find = school ? { query: school } : {};
         state.view = "find";
         state.page = 0;
         urlState();
@@ -4537,6 +4672,7 @@
         state.page = 0;
         urlState();
         render();
+        window.scrollTo(0, 0);
       } else if (a === "go-compose") {
         rememberCurrentHistoryEntry();
         const sources = b.dataset.useSources === "true" ? state.sources.slice() : [];
@@ -4646,8 +4782,10 @@
         invalidate();
         render();
       } else if (a === "source-issue") {
+        rememberRecentExam(state.catalog.exams[Number(b.dataset.exam)]);
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "targets");
       } else if (a === "source-output-direct") {
+        rememberRecentExam(state.catalog.exams[Number(b.dataset.exam)]);
         await openFinderOutput(state.catalog.exams[Number(b.dataset.exam)], b.dataset.mode || "exam");
       } else if (a === "original-print") {
         await originalPrint();

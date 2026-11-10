@@ -1,4 +1,5 @@
-/* Archive 2.0 shared navigation shell. Route ownership stays with existing workspace/unit runtimes. */
+/* Archive 2.0 shared navigation shell (PC/tablet-landscape left menu, phone top bar + bottom menu).
+   Route ownership stays with the workspace/unit runtimes. The design lives in archive/DESIGN.md. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
@@ -17,118 +18,188 @@
     document.body.classList.add("archive2-shell");
     if (mode === "unit") document.body.classList.add("archive2-unit-surface");
     host.className = "archive-navigation";
-    host.innerHTML = api.markup(mode);
+    host.innerHTML = api.markup(mode, { session: api.readSession() });
     host.hidden = false;
     api.bind(host);
+    api.watchLogin(host);
   }
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
-  const icons = {
-    home: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-5.5h5V20"/></svg>',
-    find: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v15H4z"/><path d="M7 3.5h10v4H7z"/><path d="M8 11h8M8 15h6"/></svg>',
-    unit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M7 8h1M16 8h1M7 12h1M16 12h1"/></svg>',
-    compose: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v5h5M8 14h8M12 10v8"/></svg>',
-    recent: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V5h7l2 2"/></svg>',
-    library: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6.8c1 0 1.7.7 1.7 1.7v13.3c0-1-.7-1.7-1.7-1.7H4zM20 4.5h-6.8c-1 0-1.7.7-1.7 1.7v13.3c0-1 .7-1.7 1.7-1.7H20z"/></svg>',
-    quick: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7"/><path d="M12 13.5V9.5M9.5 3.5h5M12 6.5v0M18.2 6.8l1.2-1.2"/></svg>',
-    saved: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6.8c1 0 1.7.7 1.7 1.7v13.3c0-1-.7-1.7-1.7-1.7H4zM20 4.5h-6.8c-1 0-1.7.7-1.7 1.7v13.3c0-1 .7-1.7 1.7-1.7H20z"/></svg>',
-  };
-  const home = ["home", "홈", "workspace.html?view=home"];
-  const tasks = [
-    ["find", "기출·자료", "workspace.html?view=find"],
-    ["unit", "단원별 기출", "unit-past-exams.html?ready=1"],
-    ["compose", "문제지 만들기", "workspace.html?view=compose"],
-    ["quick", "빠른 평가", "workspace.html?view=five-minute"],
-    ["saved", "저장한 시험지", "workspace.html?view=saved"],
-    ["recent", "출제 내역", "workspace.html?view=recent"],
+  // Text only: no icons (design rule). `view` is the workspace route a button opens.
+  const SIDEBAR = [
+    { key: "home", label: "홈", view: "home", url: "workspace.html?view=home" },
+    { key: "find", label: "학교별 기출", view: "find", url: "workspace.html?view=find" },
+    { key: "unit", label: "단원별 기출", view: "", url: "unit-past-exams.html?ready=1" },
+    { key: "compose", label: "문제지 만들기", view: "compose", url: "workspace.html?view=compose" },
+    { key: "quick", label: "빠른 평가", view: "five-minute", url: "workspace.html?view=five-minute" },
+    { key: "library", label: "보관함 · 출제 내역", view: "saved", url: "workspace.html?view=saved" },
   ];
-
-  // 5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가 share one navigation tab.
+  // Phone: 빠른 평가 is reached from the 홈 and 만들기 screens, so 만들기 stays current there.
+  const TABS = [
+    { key: "home", label: "홈", view: "home", url: "workspace.html?view=home" },
+    { key: "find", label: "학교별", view: "find", url: "workspace.html?view=find" },
+    { key: "unit", label: "단원별", view: "", url: "unit-past-exams.html?ready=1" },
+    { key: "make", label: "만들기", view: "compose", url: "workspace.html?view=compose" },
+    { key: "library", label: "보관함", view: "saved", url: "workspace.html?view=saved" },
+  ];
+  // 5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가 share the 빠른 평가 menu entry.
   const QUICK_VIEWS = ["five-minute", "subunit-test", "unit-test", "monthly-test"];
+  const WORKSPACE_VIEWS = ["home", "find", "compose", "saved", "recent", "health", ...QUICK_VIEWS];
+  // Name shown in the phone top bar on every screen except 홈.
+  const VIEW_TITLES = {
+    find: "학교별 기출",
+    compose: "문제지 만들기",
+    saved: "보관함",
+    recent: "출제 내역",
+    health: "자료 점검",
+    "five-minute": "5분 테스트",
+    "subunit-test": "소단원 평가",
+    "unit-test": "중단원 평가",
+    "monthly-test": "종합평가",
+  };
+  const LOGIN_URL = "../apmath/";
 
-  function currentKey(mode) {
+  const esc = (value) =>
+    String(value ?? "").replace(/[&<>"']/g, (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+  function matches(key, view) {
+    if (key === "quick") return QUICK_VIEWS.includes(view);
+    if (key === "make") return view === "compose" || QUICK_VIEWS.includes(view);
+    if (key === "library") return view === "saved" || view === "recent";
+    if (key === "unit") return view === "unit";
+    return key === view;
+  }
+
+  function titleFor(view) {
+    return view === "unit" ? "단원별 기출" : VIEW_TITLES[view] || "";
+  }
+
+  function currentView(mode) {
     if (mode === "unit") return "unit";
     const search = typeof location === "undefined" ? "" : location.search || "";
     const view = new URLSearchParams(search).get("view");
-    if (QUICK_VIEWS.includes(view)) return "quick";
-    return ["home", "find", "compose", "saved", "recent", "health"].includes(view)
-      ? view
-      : "home";
+    return WORKSPACE_VIEWS.includes(view) ? view : "home";
   }
 
-  function itemMarkup(mode, item, active, extraClass = "") {
-    const [key, label, url] = item;
-    const current =
-      key === active ? ' aria-current="page" class="active"' : "";
-    const body = `<span class="archive-nav-icon">${icons[key]}</span><span class="archive-nav-label">${label}</span>`;
-    if (mode === "workspace" && key !== "unit") {
-      const view = key === "quick" ? QUICK_VIEWS[0] : key;
-      return `<button type="button" data-view="${view}"${key === "quick" ? ' data-nav-key="quick"' : ""}${current}${extraClass ? ` data-nav-role="${extraClass}"` : ""}>${body}</button>`;
+  // Which sidebar key is current for a view (kept for callers that want one key).
+  function currentKey(mode) {
+    const view = currentView(mode);
+    return (SIDEBAR.find((item) => matches(item.key, view)) || {}).key || (view === "health" ? "" : "home");
+  }
+
+  function readSession() {
+    try {
+      return JSON.parse(localStorage.getItem("APMATH_SESSION") || "null");
+    } catch (error) {
+      return null;
     }
-    return `<a href="${url}"${current}${extraClass ? ` data-nav-role="${extraClass}"` : ""}>${body}</a>`;
   }
 
-  function secondaryMarkup(mode, mobile = false) {
-    const menuAttrs = mobile ? ' role="menuitem"' : "";
+  // Login is owned by AP Math OS (../apmath/); the archive only reads the shared session.
+  function loginState(session, now = Date.now()) {
+    if (!session || typeof session !== "object") return { loggedIn: false, name: "" };
+    const token = session.session_token || session.sessionToken;
+    const loginId = session.login_id || session.loginId || session.user?.login_id;
+    if (!token && !loginId) return { loggedIn: false, name: "" };
+    const expires = Date.parse(session.expires_at || "");
+    if (Number.isFinite(expires) && expires < now) return { loggedIn: false, name: "" };
+    const name = String(session.name || session.user?.name || "").trim().slice(0, 12);
+    return { loggedIn: true, name };
+  }
+
+  function loginMarkup(session, role) {
+    const state = loginState(session);
+    const cls = `archive-login ${role}`;
+    if (!state.loggedIn)
+      return `<a class="${cls}" data-login="out" href="${LOGIN_URL}" target="_blank" rel="noopener">선생님 로그인</a>`;
+    return `<span class="${cls} is-in" data-login="in">${state.name ? `<strong>${esc(state.name)}</strong> ` : ""}로그인됨</span>`;
+  }
+
+  function itemMarkup(mode, item, view, role) {
+    const active = matches(item.key, view);
+    const current = active ? ' aria-current="page" class="active"' : "";
+    const keyAttr = ` data-nav-key="${item.key}"`;
+    const body = `<span class="archive-nav-label">${item.label}</span>`;
+    if (mode === "workspace" && item.view)
+      return `<button type="button" data-view="${item.view}"${keyAttr}${current} data-nav-role="${role}">${body}</button>`;
+    return `<a href="${item.url}"${keyAttr}${current} data-nav-role="${role}">${body}</a>`;
+  }
+
+  function toolsMarkup(mode) {
     const health =
       mode === "workspace"
-        ? `<button type="button" data-view="health"${menuAttrs}>자료 점검</button>`
-        : `<a href="workspace.html?view=health"${menuAttrs}>자료 점검</a>`;
-    return `<a href="index.html?legacy=1"${menuAttrs}>아카이브 1.0</a>${health}`;
+        ? '<button type="button" data-view="health">자료 점검</button>'
+        : '<a href="workspace.html?view=health">자료 점검</a>';
+    return `<a href="index.html?legacy=1">아카이브 1.0</a>${health}<a href="problem-bank-search.html">유형·개념으로 문항 찾기</a>`;
   }
 
-  function markup(mode) {
-    const active = currentKey(mode);
-    const mobileItems = [home, ...tasks];
+  function markup(mode, options = {}) {
+    const view = options.view || currentView(mode);
+    const session = options.session || null;
+    const home = view === "home";
+    const title = titleFor(view);
     return `<aside class="archive-sidebar">
-        <a class="archive-navigation-brand" href="workspace.html?view=home"><span class="archive-brand-mark">A</span><span class="archive-brand-copy"><strong>JS 아카이브 <span>2.0</span></strong></span></a>
-        <div class="archive-sidebar-home">${itemMarkup(mode, home, active, "home")}</div>
-        <nav class="archive-navigation-tasks" aria-label="아카이브 작업">${tasks.map((item) => itemMarkup(mode, item, active, "task")).join("")}</nav>
-        <div class="archive-navigation-tools">${secondaryMarkup(mode)}</div>
+        <a class="archive-navigation-brand" href="workspace.html?view=home">JS 아카이브</a>
+        <nav class="archive-navigation-tasks" aria-label="주 메뉴">${SIDEBAR.map((item) => itemMarkup(mode, item, view, "task")).join("")}</nav>
+        <div class="archive-sidebar-foot">${loginMarkup(session, "archive-login-side")}<div class="archive-navigation-tools">${toolsMarkup(mode)}</div></div>
       </aside>
-      <div class="archive-mobile-topbar">
-        <a class="archive-mobile-brand" href="workspace.html?view=home">JS 아카이브 <span>2.0</span></a>
-        <div class="archive-mobile-tools">
-          <button type="button" class="archive-mobile-tools-trigger" aria-label="아카이브 1.0 · 자료 점검" aria-haspopup="menu" aria-expanded="false" aria-controls="archive-mobile-tools-menu">•••</button>
-          <div id="archive-mobile-tools-menu" class="archive-mobile-tools-menu" role="menu" hidden>${secondaryMarkup(mode, true)}</div>
-        </div>
+      <div class="archive-mobile-topbar${home ? " is-home" : ""}">
+        <a class="archive-mobile-brand" href="workspace.html?view=home">JS 아카이브</a>
+        <span class="archive-mobile-title">${esc(title)}</span>
+        ${loginMarkup(session, "archive-login-top")}
       </div>
-      <nav class="archive-mobile-tabs" aria-label="아카이브 작업">${mobileItems.map((item) => itemMarkup(mode, item, active, "mobile")).join("")}</nav>`;
+      <nav class="archive-mobile-tabs" aria-label="하단 메뉴">${TABS.map((item) => itemMarkup(mode, item, view, "mobile")).join("")}</nav>`;
   }
 
-  function bind(host) {
-    const trigger = host.querySelector?.(".archive-mobile-tools-trigger");
-    const menu = host.querySelector?.(".archive-mobile-tools-menu");
-    const tools = host.querySelector?.(".archive-mobile-tools");
-    if (!trigger || !menu || !tools) return;
+  // The workspace is one page: it tells the shell which screen is showing.
+  function sync(view, host) {
+    const doc = typeof document === "undefined" ? null : document;
+    host = host || doc?.querySelector?.("[data-archive-navigation]");
+    if (!host?.querySelector) return;
+    const top = host.querySelector(".archive-mobile-topbar");
+    if (top) {
+      top.classList.toggle("is-home", view === "home");
+      const title = top.querySelector(".archive-mobile-title");
+      if (title) title.textContent = titleFor(view);
+    }
+    host.querySelectorAll("[data-nav-key]").forEach((el) => {
+      const active = matches(el.dataset.navKey, view);
+      el.classList.toggle("active", active);
+      if (active) el.setAttribute("aria-current", "page");
+      else el.removeAttribute("aria-current");
+    });
+  }
 
-    let open = false;
-    const setOpen = (next, returnFocus = false) => {
-      open = Boolean(next);
-      trigger.setAttribute("aria-expanded", String(open));
-      menu.hidden = !open;
-      if (!open && returnFocus) trigger.focus();
+  // Two-way switch shown at the top of 보관함 and 출제 내역 (they share one menu entry).
+  function libraryTabs(active) {
+    const tab = (view, label) =>
+      `<button type="button" data-view="${view}" aria-pressed="${view === active}">${label}</button>`;
+    return `<div class="view-switch" role="group" aria-label="보관함과 출제 내역">${tab("saved", "보관함")}${tab("recent", "출제 내역")}</div>`;
+  }
+
+  function bind() {}
+
+  // A login made in another tab shows up when the teacher comes back.
+  function watchLogin(host) {
+    if (typeof window === "undefined" || !window.addEventListener || !document?.addEventListener) return;
+    const refresh = () => {
+      const session = readSession();
+      host.querySelectorAll?.(".archive-login").forEach((el) => {
+        const role = el.classList.contains("archive-login-top") ? "archive-login-top" : "archive-login-side";
+        el.outerHTML = loginMarkup(session, role);
+      });
     };
-
-    trigger.addEventListener("click", (event) => {
-      event.stopPropagation();
-      setOpen(!open);
+    window.addEventListener("storage", (event) => {
+      if (!event.key || event.key === "APMATH_SESSION") refresh();
     });
-    menu.addEventListener("click", (event) => {
-      if (event.target.closest('a,[role="menuitem"],button')) setOpen(false);
-    });
-    document.addEventListener("pointerdown", (event) => {
-      if (open && !tools.contains(event.target)) setOpen(false);
-    });
-    document.addEventListener("focusin", (event) => {
-      if (open && !tools.contains(event.target)) setOpen(false);
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && open) {
-        event.preventDefault();
-        setOpen(false, true);
-      }
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) refresh();
     });
   }
 
-  return { markup, bind, currentKey };
+  return {
+    markup, bind, currentKey, currentView, matches, sync, libraryTabs,
+    readSession, loginState, loginMarkup, watchLogin, titleFor,
+    ITEMS: { SIDEBAR, TABS },
+  };
 });

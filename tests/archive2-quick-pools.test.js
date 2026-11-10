@@ -379,7 +379,8 @@ test('the quick products have one navigation tab that stays active on all four v
   const markup = navigation.markup('workspace');
   assert.match(markup, /data-view="five-minute" data-nav-key="quick"/);
   assert.match(navigation.markup('unit'), /href="workspace.html\?view=five-minute"/);
-  assert.equal((markup.match(/빠른 평가/g) || []).length, 2, 'desktop sidebar and mobile tabs');
+  assert.equal((markup.match(/빠른 평가/g) || []).length, 1, 'one PC menu entry; the phone menu has 5 cells and reaches it from 홈 and 만들기');
+  assert.match(read('archive2-workspace.js'), /class="phone-quick-link" data-view="five-minute"/, '만들기 screen links to 빠른 평가');
   const html = read('workspace.html');
   const order = ['archive2-unified-units.js', 'archive2-quick-pools.js', 'archive2-workspace.js'].map(file => html.indexOf(file));
   assert.ok(order.every((position, i) => position > 0 && (!i || position > order[i - 1])));

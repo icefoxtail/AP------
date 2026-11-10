@@ -144,14 +144,14 @@
       const restore = paper.legacy_tombstone
         ? '<span class="muted">기존 삭제 항목은 복원할 수 없습니다.</span>'
         : `<button type="button" data-library-action="library-status" data-paper-id="${esc(paper.id)}" data-status="ACTIVE">복원</button>`;
-      return `<section class="panel saved-paper-detail"><div class="intro"><div><p class="muted"><button type="button" class="saved-library-back" data-library-action="list">저장한 시험지</button> / 휴지통</p><h1>${esc(title)}</h1><p class="muted">휴지통 항목에서는 출력과 출제를 사용할 수 없습니다.</p></div><div class="actions">${restore}</div></div></section>`;
+      return `<section class="panel saved-paper-detail"><div class="intro"><div><p class="muted"><button type="button" class="saved-library-back" data-library-action="list">보관함</button> / 휴지통</p><h1>${esc(title)}</h1><p class="muted">휴지통 항목에서는 출력과 출제를 사용할 수 없습니다.</p></div><div class="actions">${restore}</div></div></section>`;
     }
     const statusLabel = status === "ARCHIVED" ? "보관 중" : "내 보관함";
     const statusAction = status === "ARCHIVED"
       ? `<button type="button" data-library-action="library-status" data-status="ACTIVE">보관함으로 복원</button>`
       : `<button type="button" data-library-action="library-status" data-status="ARCHIVED">보관</button>`;
     return `<section class="panel saved-paper-detail">
-      <div class="intro"><div><p class="muted"><button type="button" class="saved-library-back" data-library-action="list">저장한 시험지</button> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div>
+      <div class="intro"><div><p class="muted"><button type="button" class="saved-library-back" data-library-action="list">보관함</button> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div>
         <div class="actions saved-paper-more-wrap"><button type="button" class="primary" data-library-action="distribute" data-paper-id="${esc(paper.id)}">출제</button><details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu"><a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a><button type="button" data-library-action="copy">정확히 복사</button><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></details></div></div>
       <div class="actions saved-paper-modes" role="group" aria-label="출력 미리보기">
         ${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
@@ -195,7 +195,7 @@
     const emptyCopy = statusFilter === "ACTIVE"
       ? "저장한 시험지가 없습니다. 문제지 만들기에서 시험지를 저장해 주세요."
       : statusFilter === "ARCHIVED" ? "보관한 시험지가 없습니다." : "휴지통이 비어 있습니다.";
-    return `<div class="saved-library"><div class="intro"><div><h1>저장한 시험지</h1><p class="muted">저장한 완성본을 다시 열고 출력하거나, 반과 학생을 골라 출제합니다.</p></div><a class="button-like primary" href="workspace.html?view=compose">문제지 만들기</a></div>
+    return `<div class="saved-library">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<div class="intro"><div><h1>보관함</h1><p class="muted">저장한 완성본을 다시 열고 출력하거나, 반과 학생을 골라 출제합니다.</p></div><a class="button-like primary" href="workspace.html?view=compose">문제지 만들기</a></div>
       ${message ? `<p class="callout" role="status" aria-live="polite">${esc(message)}</p>` : ""}
       <div class="actions" role="tablist" aria-label="보관함 상태">${tabs.map(([value, label]) => `<button type="button" data-library-action="status" data-status="${value}" class="${statusFilter === value ? "active" : ""}">${label}</button>`).join("")}</div>
       <section class="panel saved-paper-list" aria-label="저장한 시험지 목록">${cards || `<div class="empty">${emptyCopy}</div>`}</section>
