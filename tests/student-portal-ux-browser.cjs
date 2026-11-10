@@ -541,7 +541,7 @@ async function behaviorSuite(browser, base, check) {
     await page.getByRole('heading',{name:'과제를 열 수 없어요',exact:true}).waitFor();
     await capture(page,'homework-invalid-link-390');
   }));
-  await check('planner invalid and PIN entry states never offer editing across viewports',async()=>{
+  await check('planner entry states gate editing and PC drafts survive viewport changes',async()=>{
     for(const [width,height] of [[390,844],[1440,900]]) {
       const context=await browser.newContext({viewport:{width,height},serviceWorkers:'block'});
       const state=await instrument(context,{loggedIn:false});
@@ -591,12 +591,32 @@ async function behaviorSuite(browser, base, check) {
         assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,0);
         if(width>=768) {
           await page.locator('#quick-title').fill('합성 PC 빠른 추가');
+          await page.locator('#quick-subject').fill('기하');
           assert.equal(await page.locator('#quick-title').inputValue(),'합성 PC 빠른 추가');
+          await page.locator('#quick-title').focus();
+          await page.locator('#quick-title').evaluate(el=>el.setSelectionRange(2,6,'backward'));
+          for(const [nextWidth,nextHeight] of [[1440,720],[1280,800],[390,844],[1440,900]]) {
+            await page.setViewportSize({width:nextWidth,height:nextHeight});
+            await page.waitForFunction(()=>!!document.querySelector(innerWidth<768?'.mobile-calendar':'.dashboard'));
+            // Observe past the real 150ms resize debounce, so an assertion
+            // cannot pass just before a delayed renderer erases the draft.
+            await page.waitForTimeout(200);
+            assert.equal(await page.locator('#quick-title').inputValue(),'합성 PC 빠른 추가');
+            assert.equal(await page.locator('#quick-subject').inputValue(),'기하');
+            if(nextWidth===1280 || nextHeight===720) {
+              assert.equal(await page.evaluate(()=>document.activeElement?.id),'quick-title');
+              assert.deepEqual(await page.locator('#quick-title').evaluate(el=>[el.selectionStart,el.selectionEnd,el.selectionDirection]),[2,6,'backward']);
+            }
+            if(nextWidth<768) assert.notEqual(await page.evaluate(()=>document.activeElement?.id),'quick-title');
+            assert.equal(await page.locator('#mobile-add-btn').isVisible(),nextWidth<768);
+            assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,0);
+          }
           await page.locator('.quick-form button').click();
           await page.getByText('합성 PC 빠른 추가',{exact:true}).waitFor();
           const writes=state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST');
           assert.equal(writes.length,1);
           assert.equal(writes[0].body.title,'합성 PC 빠른 추가');
+          assert.equal(writes[0].body.subject,'기하');
           assert.equal(writes[0].body.plan_date,await page.locator('.plan-date').innerText());
           await capture(page,'planner-pc-quick-add-'+width);
         }

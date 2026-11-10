@@ -1721,7 +1721,26 @@
     window.addEventListener('resize', () => {
       clearTimeout(window.__resizeTimer);
       window.__resizeTimer = setTimeout(() => {
-        if (student) renderPlanner();
+        if (!student) return;
+        const app = $('app');
+        const mobileLayout = !!app?.querySelector('.mobile-calendar');
+        const desktopLayout = !!app?.querySelector('.dashboard');
+        // CSS handles resizing within one layout, including keyboard height
+        // changes. Replacing the form here would erase an unfinished plan.
+        if ((!mobileLayout && !desktopLayout) || mobileLayout === isMobile()) return;
+        const title = $('quick-title')?.value ?? '';
+        const subject = $('quick-subject')?.value ?? '';
+        const active = document.activeElement;
+        const focusedId = /^quick-(title|subject)$/.test(active?.id || '') ? active.id : null;
+        const selection = focusedId ? [active.selectionStart, active.selectionEnd, active.selectionDirection] : null;
+        renderPlanner();
+        if ($('quick-title')) $('quick-title').value = title;
+        if ($('quick-subject')) $('quick-subject').value = subject;
+        const restored = focusedId && $(focusedId);
+        if (restored?.getClientRects().length) {
+          restored.focus({ preventScroll: true });
+          restored.setSelectionRange(...selection);
+        }
       }, 150);
     });
 
