@@ -92,7 +92,7 @@ async function preparePage(context, product, unit, id, theme) {
   await page.addInitScript(() => { const original = requestAnimationFrame; window.__holdAxisRAF = false;
     let seed = 19647; Math.random = () => ((seed = (1664525 * seed + 1013904223) >>> 0) / 4294967296);
     window.requestAnimationFrame = callback => original(time => { if (!window.__holdAxisRAF) callback(time); }); });
-  await page.goto(`${product.base}${unit}.html?theme=${theme}`, { waitUntil: 'networkidle' });
+  await page.goto(`${product.base}${unit}.html?theme=${theme}&manual=1`, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => window.lab?.list?.length);
   await page.evaluate(async target => { const index = lab.list.findIndex(scene => scene.id === target); if (index < 0) throw Error('Missing scene');
     for (let i = 0; i <= index; i++) { lab.goScene(i); lab.render(); await new Promise(resolve => requestAnimationFrame(resolve)); lab.render(); }

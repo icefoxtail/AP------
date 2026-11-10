@@ -43,7 +43,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 'video'];
+const MODULES = ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 'lesson'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -98,7 +98,7 @@ function start() {
     },
     // 장면에 들어올 때마다 화면 범위를 처음 상태로 되돌립니다. 그림 맞춤은 장면 그리기에서 매번 합니다.
     enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { lab.board.fit(); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },
-    videos: (window.APL_VIDEOS || {})['g7-surface-volume'],
+    lessons: (window.APL_LESSONS || {})['g7-surface-volume'], // 장면 id → 해설 (labs/g7-surface-volume/lesson.js)
     params,
     groups
   });

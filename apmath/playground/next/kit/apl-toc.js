@@ -139,30 +139,46 @@
           group = h('section', { class: 'apl-toc-group', role: 'group' });
           list.append(group);
         }
-        const has = !!(p && p.has(i));
-        if (has) nVideo++;
+        const info = p ? p.lessonInfo(i) : [];
+        const has = info.length > 0;
+        if (has) nVideo += info.length;
         const sp = APLab.splitFlag(sc.short || sc.title);
         const cur = i === lab.index;
+        if (info.length > 1) {
+          // 해설이 여럿인 장면: 제목(누르면 탐구 화면) 아래에 해설마다 「▶ 겉넓이 29초」 단추. 단추 하나가 그 해설을 바로 재생합니다.
+          const multi = h('div', { class: 'apl-toc-item multi has-video', 'aria-current': cur ? 'true' : null, dataset: { i: String(i) } },
+            h('button', { class: 'apl-toc-title', onclick: () => { this.close(true); lab.goScene(i); } },
+              sp.flag ? h('i', { class: 'flag', text: sp.flag }) : null, h('span', { class: 'tx', text: sp.text })),
+            h('div', { class: 'apl-toc-lessons' }, ...info.map((x) => h('button', {
+              class: 'vid', dataset: { k: String(x.k) }, 'aria-label': `${sp.text} ${x.label} 해설 ${Math.round(x.length)}초`,
+              html: `<span class="tri">▶</span><span class="lb">${APLab.esc(x.label)}</span><span class="sec">${Math.round(x.length)}초</span>`,
+              onclick: () => this.go(i, x.k)
+            }))));
+          group.append(multi);
+          return;
+        }
         const row = h('button', {
           class: 'apl-toc-item' + (has ? ' has-video' : ''), 'aria-current': cur ? 'true' : null, dataset: { i: String(i) },
-          'aria-label': `${sp.text}${has ? `. 영상 ${Math.round(p.lengthOf(i))}초` : ''}`,
+          'aria-label': `${sp.text}${has ? `. 영상 ${Math.round(info[0].length)}초` : ''}`,
           onclick: () => this.go(i)
         },
         h('span', { class: 'ti' }, sp.flag ? h('i', { class: 'flag', text: sp.flag }) : null, h('span', { class: 'tx', text: sp.text })),
-        has ? h('span', { class: 'vid', html: `<span class="tri">▶</span><span class="sec">${Math.round(p.lengthOf(i))}초</span>` }) : null);
+        has ? h('span', { class: 'vid', html: `<span class="tri">▶</span><span class="sec">${Math.round(info[0].length)}초</span>` }) : null);
         group.append(row);
       });
       // 영상 없는 장면만 있는 묶음은 「영상만」 보기에서 머리글도 숨깁니다
       list.querySelectorAll('.apl-toc-group').forEach((g) => { g.classList.toggle('no-video', !g.querySelector('.has-video')); });
-      this.ui.sub.textContent = nVideo ? `${lab.def.title} · 영상 ${nVideo}개` : lab.def.title;
+      // 해설(장 여러 개)과 쇼츠를 함께 세고, 모두 보면 얼마나 걸리는지 합계 시간을 보여 줍니다
+      const total = Math.round(lab.list.reduce((n, _, i) => n + (p ? p.lessonInfo(i).reduce((a, x) => a + x.length, 0) : 0), 0));
+      this.ui.sub.textContent = nVideo ? `${lab.def.title} · 영상·해설 ${nVideo}개 · 합계 ${Math.floor(total / 60)}분 ${String(total % 60).padStart(2, '0')}초` : lab.def.title;
       this.ui.filter.hidden = !nVideo;
       if (!nVideo) this.setOnlyVideo(false);
     }
 
-    go(i) {
+    go(i, k) {
       const lab = this.lab, p = this.player;
       this.close(true);
-      if (p && p.has(i)) p.play(i);
+      if (p && p.has(i)) p.play(i, k || 0);
       else lab.goScene(i);
     }
 

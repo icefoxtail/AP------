@@ -4707,3 +4707,140 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   font-size: 12px;
   font-weight: 400;
 }
+
+/* ---- 첫 화면 먼저: 자료 준비 진행 표시 (2026-11-10) ----------------------------------------------
+   맨 위 얇은 줄은 화면에 고정이라 나타나고 사라져도 아래 내용이 밀리지 않는다. 홈의 기출 칸과 준비 중 화면의
+   자리 표시는 채워질 내용과 같은 높이로 잡아 둔다. 색은 토큰만 쓰고, 움직임 줄이기 설정을 따른다. */
+.boot-progress {
+  position: fixed;
+  z-index: 56; /* above the phone top bar (55) so the line shows on its bottom edge */
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.boot-progress[hidden] {
+  display: none;
+}
+.boot-progress-track {
+  height: 4px;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+.boot-progress-bar {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--brand);
+  transition: width 0.25s ease-out;
+}
+.boot-progress-text {
+  margin: 0;
+  padding: 3px 48px 0;
+  text-align: right;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-2);
+}
+@media (min-width: 961px) {
+  .boot-progress {
+    left: var(--archive2-sidebar-width);
+  }
+}
+/* Tablet and phone: the line sits on the bottom edge of the red top bar (white on red) so it never covers the
+   first heading; the words stay for screen readers and are also written inside the placeholder that is waiting. */
+@media (max-width: 960px) {
+  .boot-progress {
+    top: calc(var(--archive2-mobile-topbar) - 4px);
+  }
+  .boot-progress > .boot-progress-track {
+    background: transparent;
+  }
+  .boot-progress > .boot-progress-track .boot-progress-bar {
+    background: var(--surface);
+  }
+  .boot-progress > .boot-progress-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .boot-progress-bar {
+    transition: none;
+  }
+}
+.boot-wait {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 560px;
+}
+.boot-wait h1 {
+  margin: 0;
+}
+.boot-wait .boot-progress-text,
+.home-recent-pending .boot-progress-text {
+  padding: 0;
+  text-align: left;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ink-2);
+}
+.boot-wait .boot-progress-track,
+.home-recent-pending .boot-progress-track {
+  border-radius: 2px;
+  background: var(--line);
+}
+/* The text and line sit on top of the placeholder rows, so the block is exactly as tall as the three rows
+   that replace it (no jump when the real rows arrive). */
+.home-recent-pending {
+  position: relative;
+}
+.home-recent-status {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.home-recent-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home-recent-skeleton span {
+  display: block;
+  height: 88px;
+  border-radius: var(--radius-card);
+  background: var(--chip);
+}
+.home-recent-status .boot-progress-track {
+  background: var(--surface);
+}
+/* Real rows are taller where the exam row stacks (about 166px on a tablet, 181px on a phone, on average). */
+@media (max-width: 960px) {
+  .home-recent-skeleton span {
+    height: 166px;
+  }
+}
+@media (max-width: 700px) {
+  .home-recent-skeleton span {
+    height: 181px;
+  }
+}
+.home-chip-list {
+  display: contents;
+}
+.home-chip.is-pending {
+  display: inline-block;
+  min-width: 76px;
+  background: var(--chip);
+}

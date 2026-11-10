@@ -37,6 +37,11 @@
         </div>
       </a>
 
+      <a class="universe-portal-link" href="../student/" aria-label="학생 포털로 돌아가기">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5-7 7 7 7M5 12h14"/></svg>
+        <span>학생 포털</span>
+      </a>
+
       <div class="top-controls">
         <button class="glass-btn" id="btnToggleHud" type="button" aria-label="우주 감상 모드 전환" title="화면의 글자를 숨기고 우주만 감상합니다">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -84,6 +89,7 @@
       <h2>3D 하드웨어 가속 필요</h2>
       <p>AP Math Universe 3D 엔진은 JavaScript 및 WebGL 2.0 지원 브라우저에서 실행됩니다.</p>
       <a class="cta-entrance" href="./next/index.html">메인 실험실 허브로 직접 입장</a>
+      <a class="universe-portal-link" href="../student/">학생 포털로 돌아가기</a>
     </div>
   </noscript>
 
@@ -130,6 +136,7 @@
         <h2>3D 그래픽 초기화 실패</h2>
         <p>기기의 WebGL 가속을 시작할 수 없습니다. 메인 허브를 통해 모든 수학 실험실을 이용하실 수 있습니다.</p>
         <a class="cta-entrance" href="${hubHref}">실험실 허브 바로가기</a>
+        <a class="universe-portal-link" href="../student/">학생 포털로 돌아가기</a>
       `;
       document.body.appendChild(fallback);
     }
