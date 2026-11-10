@@ -1007,7 +1007,7 @@ window.questionBank = [
       "평행선과 선분의 길이",
       "도형"
     ],
-    "content": "다음 그림에서 $BC\\parallel DE$일 때, $x-y$의 값은? [4점]",
+    "content": "다음 그림에서 $BC\\parallel DE$이고 $BC=15\\text{ cm}$일 때, $x-y$의 값은? [4점]",
     "choices": [
       "$-6$",
       "$-5$",
@@ -1017,7 +1017,7 @@ window.questionBank = [
     ],
     "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q18.png",
     "answer": "①",
-    "solution": "$BC\\parallel DE$이므로 $\\triangle AED\\sim\\triangle ACB$이다. 그림에서 $\\angle EAD=90^\\circ$이다.\n\n$x^2+8^2=10^2$\n$x^2+64=100$\n$x^2=36$\n$x=6$\n\n닮음비에서 $x/AC=AD/AB$이므로\n$\\frac{6}{9}=\\frac{8}{y}$\n$6y=72$\n$y=12$\n\n$x-y=6-12=-6$이므로 정답은 ①이다.",
+    "solution": "$BC\\parallel DE$이므로 $\\triangle AED\\sim\\triangle ACB$이다. 대응하는 변의 길이의 비는 같으므로\n$AE:AC=AD:AB=ED:CB$이다.\n\n$ED:CB=10:15=2:3$이므로\n$\\frac{x}{9}=\\frac{2}{3}$에서 $x=6$이다.\n$\\frac{8}{y}=\\frac{2}{3}$에서 $2y=24$, $y=12$이다.\n\n$x-y=6-12=-6$이므로 정답은 ①이다.",
     "layoutTag": "",
     "wide": false,
     "sourceMode": "ORIGINAL",
