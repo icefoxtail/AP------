@@ -1,0 +1,362 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "$\\overline{BC}$에 내린 수선의 발을 $Q$라 하고",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=90°이고 AB=AC=12인 직각이등변삼각형 ABC",
+      "mappedTo": "A,B,C"
+    },
+    {
+      "id": "c2",
+      "condition": "AB의 내부의 점 P에서 BC에 내린 수선의 발 Q",
+      "mappedTo": "P,Q"
+    },
+    {
+      "id": "c3",
+      "condition": "P를 지나고 BC에 평행한 직선이 AC와 만나는 점 R",
+      "mappedTo": "R"
+    }
+  ],
+  "newVisualInformation": [
+    "직각이등변삼각형 ABC와 점 P, Q, R의 위치, 사각형 PQCR(색칠)"
+  ],
+  "caption": "∠A가 직각인 직각이등변삼각형 ABC에서 변 AB 위의 점 P, P에서 변 BC에 내린 수선의 발 Q, P를 지나 BC에 평행한 직선과 변 AC의 교점 R을 나타내고 사각형 PQCR을 색칠한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "linePQ",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "linePR",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "ab12",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "ac12",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "pqbc",
+        "sourceConditionId": "c2",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "linePQ",
+          "lineBC"
+        ]
+      },
+      {
+        "id": "prbc",
+        "sourceConditionId": "c3",
+        "kind": "PARALLEL",
+        "refs": [
+          "linePR",
+          "lineBC"
+        ]
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rgPQCR",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "Q",
+              "C",
+              "R"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assetPath": "assets/images/26_매산여고_1학기_중간_고1_유사/q22.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/engine_evidence/q22-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/engine_evidence/q22-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/engine_evidence/q22-problem.svg"
+  }
+}

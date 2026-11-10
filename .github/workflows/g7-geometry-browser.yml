@@ -42,6 +42,9 @@ jobs:
           fetch-depth: 1
           sparse-checkout: |
             apmath/playground
+            apmath/css
+            apmath/js
+            apmath/student
             .github/workflows
       - uses: actions/setup-node@v4
         with:

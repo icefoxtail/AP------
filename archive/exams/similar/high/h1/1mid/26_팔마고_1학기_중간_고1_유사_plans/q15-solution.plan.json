@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-16",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2x^2-8x-16",
+    "domain": [
+      -3,
+      6
+    ],
+    "viewport": [
+      -3,
+      6,
+      -26,
+      12
+    ],
+    "referenceLines": [
+      {
+        "id": "k",
+        "y": "-6",
+        "intersectionX": [
+          "-1",
+          "5"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -24
+      },
+      {
+        "id": "P",
+        "x": -2,
+        "y": 8
+      },
+      {
+        "id": "Q",
+        "x": 3,
+        "y": -22
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "V": "V",
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "직선 y=-6과 x=-1, 5에서 만나는 f(x)=2x^2-8x-16에서 구간 -2<=x<=3의 최댓값은 끝점 P(-2,8)에서 나온다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "f(x)=a(x+1)(x-5)-6, a=2이면 f(x)=2x^2-8x-16이고 구간 끝점 f(-2)=8, f(3)=-22이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점 x=-1, 5와 구간 끝점 P(-2,8), Q(3,-22)를 보여 주어 최댓값이 왼쪽 끝점에서 나옴을 확인하게 한다."
+  ],
+  "sourceQuote": "최댓값은 $f(-2)$이다.",
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고1_유사/q15-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q15-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q15-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q15-solution.svg"
+  }
+}

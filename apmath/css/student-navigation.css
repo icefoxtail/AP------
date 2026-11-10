@@ -1,0 +1,91 @@
+/* One set of destinations on the portal, learning tools, readers and labs. */
+.student-global-nav {
+  --nav-bg: var(--surface, var(--card, #fff));
+  --nav-ink: var(--text, #1c1917);
+  --nav-muted: var(--secondary, var(--text-3, #6b645f));
+  --nav-line: var(--border, var(--line, #e8e5e0));
+  box-sizing: border-box;
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: 100%;
+  max-width: 1120px;
+  min-height: 56px;
+  margin: 0 auto;
+  padding: 4px 12px;
+  border-bottom: 1px solid var(--nav-line);
+  background: var(--nav-bg);
+  color: var(--nav-ink);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  isolation: isolate;
+}
+.student-global-nav[hidden] { display: none !important; }
+.student-global-link {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 46px;
+  padding: 7px 4px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--nav-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.student-global-link svg { flex: none; width: 21px; height: 21px; }
+.student-global-nav .student-global-link { color: var(--nav-muted); }
+.student-global-nav .student-global-link.active, .student-global-nav .student-global-link:hover { color: var(--nav-ink); }
+.student-global-link.active { color: var(--nav-ink); background: var(--surface-2, var(--card-2, #f5f3f0)); font-weight: 700; }
+.student-global-link:hover { color: var(--nav-ink); }
+.student-global-link:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
+.student-nav-labs .student-global-nav { top: 0; max-width: none; }
+.student-nav-reader .student-global-nav { top: 60px; max-width: none; }
+@media screen and (min-width: 768px) {
+  .student-nav-labs .hub-top, .student-nav-labs .apl-bar { top: 56px; }
+  .student-nav-labs .hub-bar { top: 121px; }
+  .student-nav-labs .universe-ui { top: 56px; }
+  .student-nav-labs .apl-app { min-height: calc(100svh - 56px); }
+  .student-nav-labs .apl-stage { top: calc(var(--bar-h) + var(--rail-h) + 56px); }
+}
+@media screen and (min-width: 860px) {
+  .student-nav-labs .apl-stage { height: calc(100svh - var(--bar-h) - var(--rail-h) - 56px); }
+}
+@media screen and (min-width: 1280px) {
+  .student-nav-labs:not(.apl-many) .apl-stage { top: calc(var(--bar-h) + 56px); height: calc(100svh - var(--bar-h) - 56px); }
+}
+@media screen and (max-width: 767px) {
+  .has-student-common-nav { --student-navigation-space: calc(66px + env(safe-area-inset-bottom)); padding-bottom: var(--student-navigation-space); scroll-padding-bottom: calc(var(--student-navigation-space) + 16px); }
+  .student-global-nav, .student-nav-labs .student-global-nav, .student-nav-reader .student-global-nav {
+    position: fixed;
+    inset: auto 0 0;
+    width: 100%;
+    max-width: none;
+    min-height: var(--student-navigation-space);
+    padding: 4px max(4px, env(safe-area-inset-left)) max(4px, env(safe-area-inset-bottom)) max(4px, env(safe-area-inset-right));
+    border-top: 1px solid var(--nav-line);
+    border-bottom: 0;
+    box-shadow: 0 -3px 16px #1c191708;
+  }
+  .student-global-link { flex-direction: column; gap: 4px; min-height: 57px; padding: 5px 2px; border-radius: 8px; font-size: 12px; }
+  .student-nav-labs .universe-ui { bottom: var(--student-navigation-space); }
+  .has-student-common-nav.student-tool-page .app { padding-bottom: 32px; }
+  .has-student-common-nav.planner-page .app { padding-bottom: 96px; }
+  .has-student-common-nav.planner-page .mobile-add { bottom: calc(var(--student-navigation-space) + 14px); }
+  .has-student-common-nav.planner-page .planner-timer-mini { bottom: calc(var(--student-navigation-space) + 80px); }
+  .has-student-common-nav.planner-page:has(.planner-timer-mini:not(.hidden)) .app { padding-bottom: 350px; }
+  .has-student-common-nav .toast { bottom: calc(var(--student-navigation-space) + 16px); }
+}
+@media print {
+  .student-global-nav { display: none !important; }
+  .has-student-common-nav { padding-bottom: 0 !important; }
+}

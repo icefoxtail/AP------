@@ -12,6 +12,9 @@
   // Unified 2022-based unit layer (user decision 2026-10-29). When the shared module is not
   // loaded the compose screen falls back to the canonical-parent scope list.
   const Unified = window.Archive2UnifiedUnits;
+  // First screen first (2026-11-10): archive2-boot.js owns progress, timing marks and the paint gate.
+  // Every use is optional so test harnesses and pages without it keep working.
+  const Boot = window.Archive2Boot;
   const frozenPaperCache = new Map();
   const composeMetaQueryCache = new Map();
   let renderComposeMetaFilters = null;
@@ -276,11 +279,12 @@
   }
   function activeAssessmentRecipeUids() {
     const recipe = activeAssessmentRecipe();
-    if (!recipe || !state.metaIndex?.length) return null;
+    const metaIndex = recipe ? ensureMetaIndex() : null;
+    if (!recipe || !metaIndex?.length) return null;
     const key = `${recipe.key}:${state.indexVersion}`;
     if (assessmentRecipeCache.key === key) return assessmentRecipeCache.uids;
     const result = AssessmentRecipes.queryRecipe(
-      state.metaIndex,
+      metaIndex,
       recipe.key,
       {},
       { profile: "DIRECT", count: recipe.defaultCount },
@@ -294,7 +298,7 @@
   }
   function assessmentSelectionOptions() {
     if (!isAssessmentRecipeMode() || !AssessmentRecipes?.representativeGroup) return {};
-    const byUid = new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+    const byUid = new Map((ensureMetaIndex() || []).map(row => [row.questionUid || row.uid, row]));
     return { representativeGroupFor: record =>
       AssessmentRecipes.representativeGroup(byUid.get(record.questionUid)) };
   }
@@ -592,7 +596,9 @@
       "교사 로그인이 필요합니다. 선생님 계정으로 로그인한 뒤 돌아와 주세요.",
     );
   }
-  async function api(route, body, method = body ? "POST" : "GET") {
+  // options (optional): { headers, timeoutMs } for one call. The 반에 출제 panel (archive2-assign.js) sends the
+  // X-Archive2-Contract header and its own time limits through it; every other caller is unchanged.
+  async function api(route, body, method = body ? "POST" : "GET", options = {}) {
     const base = (
       window.APMATH_API_BASE ||
       "https://ap-math-os-v2612.js-pdf.workers.dev/api"
@@ -600,8 +606,10 @@
     // Read requests give up after 30s so a stalled server cannot freeze the page. The saved-paper
     // POST is idempotent by save_batch_id and a timeout (no HTTP status) already falls into the
     // RESULT_UNKNOWN recovery path of savePapers(), so it gets a longer limit. Other writes
-    // (assignment, PDF) keep waiting: aborting them could hide a half-finished issue.
-    const timeoutMs = method === "GET" ? 30000
+    // (assignment, PDF) keep waiting unless the caller gives a limit: aborting them could hide a half-finished issue,
+    // so the assign panel treats a timeout as "결과 확인 필요" and re-sends the same batch id.
+    const timeoutMs = Number.isFinite(options.timeoutMs) && options.timeoutMs > 0 ? options.timeoutMs
+      : method === "GET" ? 30000
       : route === "/archive-saved-papers" ? 90000 : 0;
     const controller = timeoutMs && typeof AbortController === "function" ? new AbortController() : null;
     const perform = async () => {
@@ -610,6 +618,7 @@
         headers: {
           ...headers(),
           ...(body ? { "Content-Type": "application/json" } : {}),
+          ...(options.headers || {}),
         },
         ...(body ? { body: JSON.stringify(body) } : {}),
         ...(controller ? { signal: controller.signal } : {}),
@@ -1548,11 +1557,7 @@
       return (!filters.L1 || scopeText(supplementalParent.L1) === scopeText(filters.L1)) &&
         (!filters.L2 || scopeText(supplementalParent.L2) === scopeText(filters.L2));
     }
-    if (state.catalog?.records && state.metaIndexSource !== state.catalog.records) {
-      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
-      state.metaIndexSource = state.catalog.records;
-      composeMetaQueryCache.clear();
-    }
+    ensureMetaIndex();
     let allowed = renderComposeMetaFilters?.get(filters);
     if (!allowed) {
       // Existing MF-qualified selectors keep their established canonical authority path.
@@ -2114,7 +2119,45 @@
     $("modal").classList.add("saved-paper-issue-dialog");
     setOriginalStep("targets");
   }
-  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperIssue;
+  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperAssign;
+  // 저장본 출제(보관함 줄·상세·문제지 만들기 저장 뒤)는 화면 안 패널(archive2-assign.js)로 연다. 옛 iframe 모달은
+  // 주소에 assign=legacy가 있을 때(되돌릴 길)와 학교 기출·단원별 출제에서 그대로 쓴다.
+  function assignRequest(route, opt = {}) {
+    // 로그인이 없으면 요청을 보내지 않고 401로 알려 패널이 로그인 안내를 그린다(headers()의 일반 Error가 '응답 없음'으로 읽히지 않게).
+    if (!teacherSessionOk()) {
+      const error = new Error("교사 로그인이 필요합니다.");
+      error.status = 401;
+      return Promise.reject(error);
+    }
+    return api(route, opt.body, opt.method || (opt.body ? "POST" : "GET"), { headers: opt.headers, timeoutMs: opt.timeoutMs });
+  }
+  async function openSavedPaperAssign(id, options = {}) {
+    const paperId = String(id || "").trim();
+    if (!paperId) throw new Error("출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
+    const Assign = window.Archive2Assign;
+    if (!Assign?.open || Assign.useLegacy(location.search)) return openSavedPaperIssue(paperId);
+    if (Assign.isOpen()) return undefined;
+    state.originalReceipts = [];
+    let papers = Array.isArray(options.papers) ? options.papers : [];
+    if (!papers.length) {
+      // 문제지 만들기에서 저장한 직후처럼 목록 정보가 없을 때는 한 권만 서버에서 읽어 이름·학년·문항 수를 얻는다.
+      const data = await api("/archive-saved-papers/" + encodeURIComponent(paperId));
+      const paper = data.paper;
+      if (!paper?.id) throw new Error("저장한 시험지를 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
+      if (paper.library_status === "TRASHED") throw new Error("휴지통의 시험지는 출제할 수 없습니다. 보관함으로 복원한 뒤 출제해 주세요.");
+      papers = [paper];
+    }
+    const opener = document.activeElement;
+    Assign.open({
+      papers,
+      history: options.history || window.Archive2Library?.currentHistory?.() || null,
+      request: assignRequest,
+      opener,
+      // 출제가 하나라도 저장되면(끝났을 때·닫을 때) 보관함 줄의 출제 이력을 새로 고친다.
+      onDone: () => { window.Archive2Library?.refreshHistory?.(); },
+    });
+    return undefined;
+  }
   function originalIssueBusy() {
     return Boolean(
       $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.() ||
@@ -2252,9 +2295,11 @@
   function quickPools() {
     const index = unifiedIndex();
     if (!Quick || !index) return null;
-    if (quickPoolCache.index !== index || quickPoolCache.meta !== state.metaIndex) {
-      const metaByUid = new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row]));
-      quickPoolCache = { index, meta: state.metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
+    // Quick pools use the recorded-meta index; it is built here (not at boot) so it can never be missing.
+    const metaIndex = ensureMetaIndex();
+    if (quickPoolCache.index !== index || quickPoolCache.meta !== metaIndex) {
+      const metaByUid = new Map((metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+      quickPoolCache = { index, meta: metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
     }
     return quickPoolCache.pools;
   }
@@ -2646,10 +2691,54 @@
     showDialog(`${O.displayTitle(exam)} · 유사문제`, `<p class="muted">이 기출의 유사문제 ${sets.length}세트입니다.</p><div class="similar-sets">${rows}</div>`);
   }
   const homeExamRowMarkup = ({ index, exam, at }) => examRowMarkup(exam, index, { at });
+  // ---- First screen first (2026-11-10) ----------------------------------------------------------
+  // The catalog (tens of thousands of questions) takes seconds to download, verify and resolve. The home,
+  // 보관함 and 출제 내역 do not need it, so they are drawn first. The two home parts that read the catalog
+  // (school chips, recent exam rows) start as placeholders of the final height and are filled in place.
+  const HOME_CHIP_PLACEHOLDERS = 8; // homeSchoolChips() returns at most 8
+  const bootWaitText = '<p class="boot-wait-text"><span data-boot-label>자료 준비 중</span> <span data-boot-count aria-hidden="true"></span></p><div class="boot-progress-track" aria-hidden="true"><span class="boot-progress-bar" data-boot-bar></span></div>';
+  function homeChipsMarkup() {
+    if (!state.catalog)
+      return state.bootError ? "" : '<span class="home-chip is-pending" aria-hidden="true"></span>'.repeat(HOME_CHIP_PLACEHOLDERS);
+    return homeSchoolChips().map(({ school }) => button("home-school", esc(school), `type="button" class="home-chip" data-school="${esc(school)}"`)).join("");
+  }
+  function homeRecentTitle() {
+    if (!state.catalog) return readRecentExams().length ? "최근 연 기출" : "최근 연도 기출";
+    return homeExamList().kind === "opened" ? "최근 연 기출" : "최근 연도 기출";
+  }
+  function homeRecentBodyMarkup() {
+    if (!state.catalog) {
+      if (state.bootError)
+        return `<p class="callout danger" role="alert">${esc(state.bootError)} ${button("boot-retry", "다시 시도", 'class="small"')}</p>`;
+      return `<div class="home-recent-pending" data-boot-wait="loading" aria-busy="true"><div class="home-recent-skeleton" aria-hidden="true"><span></span><span></span><span></span></div><div class="home-recent-status">${bootWaitText}</div></div>`;
+    }
+    const examList = homeExamList();
+    return examList.rows.length
+      ? `<div class="exam-rows">${examList.rows.map(homeExamRowMarkup).join("")}</div>`
+      : '<p class="muted">기출 목록을 불러오면 이곳에 표시됩니다.</p>';
+  }
+  // Called when the catalog arrives (or fails): replaces only the two placeholder hosts, so text typed in
+  // the search box and keyboard focus stay where they are.
+  function fillHomeFromCatalog() {
+    if (state.view !== "home") return;
+    const chips = document.querySelector('[data-home-fill="chips"]');
+    const body = document.querySelector('[data-home-fill="recent"]');
+    const title = document.getElementById("home-recent-title");
+    if (chips) chips.innerHTML = homeChipsMarkup();
+    if (title) title.textContent = homeRecentTitle();
+    if (body) body.innerHTML = homeRecentBodyMarkup();
+  }
+  const PREPARING_TITLES = { find: "학교별 기출", compose: "문제지 만들기", health: "자료 점검" };
+  // Body of a screen that cannot be drawn before the catalog: the screen name and the live progress.
+  // The menu already switched; when the catalog is ready the real screen replaces this by itself.
+  function preparingMarkup() {
+    const title = (isQuickAssessmentView() && Quick?.PRODUCTS[state.view]?.title) || PREPARING_TITLES[state.view] || "아카이브";
+    if (state.bootError)
+      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.bootError)}</p><p>${button("boot-retry", "다시 시도", 'class="primary"')} <a href="index.html?legacy=1">기존 아카이브 열기</a></p></section>`;
+    return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1>${bootWaitText}<p class="muted">자료 준비가 끝나면 이 화면이 저절로 열립니다.</p></section>`;
+  }
   function renderHome() {
     const recent = drafts().slice(0, 3);
-    const schools = homeSchoolChips();
-    const examList = homeExamList();
     // 학교 기출 is the search above; the four quick assessments come first, 생성문제 last.
     const products = HOME_PRODUCT_REGISTRY
       .filter((product) => product.productKey !== "school-exams")
@@ -2675,7 +2764,7 @@
             ${button("home-search", "찾기", 'type="button" class="primary home-search-submit"')}
           </form>
           <p class="home-hint">학교, 학년, 시험을 띄어 쓰면 모두 맞는 시험지만 나옵니다. 유사문제가 있는 기출은 옆에 함께 나옵니다.</p>
-          <div class="home-chips" aria-label="시험지가 많은 학교">${schools.map(({ school }) => button("home-school", esc(school), `type="button" class="home-chip" data-school="${esc(school)}"`)).join("")}${button("home-all-schools", "전체 학교", 'type="button" class="home-link"')}</div>
+          <div class="home-chips" aria-label="시험지가 많은 학교"><span class="home-chip-list" data-home-fill="chips">${homeChipsMarkup()}</span>${button("home-all-schools", "전체 학교", 'type="button" class="home-link"')}</div>
         </section>
         <section class="home-units" aria-labelledby="home-units-title">
           <h2 id="home-units-title" class="home-title">단원별로 난이도 골라 주기</h2>
@@ -2684,8 +2773,8 @@
         </section>
       </div>
       <section class="home-recent" aria-labelledby="home-recent-title">
-        <div class="home-section-head"><h2 id="home-recent-title">${examList.kind === "opened" ? "최근 연 기출" : "최근 연도 기출"}</h2>${button("home-all-schools", "학교별 기출 전체 보기", 'type="button" class="home-link"')}</div>
-        ${examList.rows.length ? `<div class="exam-rows">${examList.rows.map(homeExamRowMarkup).join("")}</div>` : '<p class="muted">기출 목록을 불러오면 이곳에 표시됩니다.</p>'}
+        <div class="home-section-head"><h2 id="home-recent-title">${homeRecentTitle()}</h2>${button("home-all-schools", "학교별 기출 전체 보기", 'type="button" class="home-link"')}</div>
+        <div data-home-fill="recent">${homeRecentBodyMarkup()}</div>
       </section>
       <div class="home-bottom">
         <section class="home-drafts" aria-labelledby="home-drafts-title">
@@ -3383,8 +3472,10 @@
       const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
       if (!isCurrentRequest()) return false;
       state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
+      // Without the catalog the exam lookup is empty (grade/subject fall back to the saved fields);
+      // refreshRecentRowsFromCatalog() normalizes again when the catalog arrives.
       state.recentRows = History.normalizeAssignments(
-        state.recentAssignments, classRows, state.catalog.exams, C,
+        state.recentAssignments, classRows, state.catalog?.exams || [], C,
       );
       rememberRecentSubjectOptions(state.recentRows);
       return true;
@@ -3595,10 +3686,33 @@
     }
     return result;
   }
+  // Both counts are needed only by the 자료 점검 screen; they used to be computed at boot (about 1s).
+  function ensureHealthStats() {
+    if (state.healthComposeScope !== null || !state.catalog?.records) return;
+    state.healthUnified = unifiedHealth();
+    state.healthComposeScope = state.healthUnified
+      ? state.healthUnified.placed
+      : state.catalog.records.reduce(
+        (n, record) => n + (C.generalUseEligibility(record).ok && workspaceScopeParent(record) ? 1 : 0), 0);
+  }
+  // The recorded-meta index is built the first time a screen needs it (quick assessments, compose meta
+  // filters), never at boot. Tests that set metaIndex and metaIndexSource together keep their index.
+  function ensureMetaIndex() {
+    if (!state.catalog?.records || !ProblemBankMeta) return state.metaIndex;
+    if (state.metaIndexSource !== state.catalog.records) {
+      Boot?.begin?.("meta-index");
+      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
+      state.metaIndexSource = state.catalog.records;
+      composeMetaQueryCache.clear();
+      Boot?.end?.("meta-index");
+    }
+    return state.metaIndex;
+  }
   const UNPLACED_REASON_LABELS = {
     GRADE_UNRESOLVED: "학년 근거 없음(등록 학년 미확정)",
   };
   function renderHealth() {
+    ensureHealthStats();
     const h = state.catalog.health,
       total = Number(h.questions) || 0,
       fmt = (n) => Number(n || 0).toLocaleString(),
@@ -3677,6 +3791,7 @@
       invalidateRecentRequests();
   }
   function render() {
+    dropStaleDeferredClick();
     // Reuse scope counts only within this render. Every interaction rechecks
     // the current filters, catalog quality gates and previous-round exclusions.
     scopeRenderCache = null;
@@ -3718,16 +3833,19 @@
     $("status").classList.remove("error");
     $("content").innerHTML = loginNoticeMarkup(kind);
   }
+  function syncViewNavigation() {
+    document.body.dataset.archiveView = state.view;
+    window.Archive2Navigation?.sync?.(state.view);
+    document.querySelectorAll("[data-view]").forEach((button) => {
+      button.classList.toggle("active", navViewActive(button));
+      button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
+    });
+  }
   function renderContent() {
     noteRenderedViewTransition();
     if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
-      document.body.dataset.archiveView = state.view;
-      window.Archive2Navigation?.sync?.(state.view);
-      document.querySelectorAll("[data-view]").forEach((button) => {
-        button.classList.toggle("active", navViewActive(button));
-        button.setAttribute("aria-current", navViewActive(button) ? "page" : "false");
-      });
+      syncViewNavigation();
       if (!teacherSessionOk()) {
         window.Archive2Library?.invalidatePendingRequests?.();
         showLoginNotice("saved");
@@ -3750,7 +3868,16 @@
         });
       return;
     }
-    if (!state.catalog) return;
+    if (!state.catalog) {
+      // First screen first: home and 출제 내역 are drawn without the catalog; every other screen shows its
+      // name and the progress, and render() draws it for real as soon as the catalog is ready.
+      syncViewNavigation();
+      $("content").innerHTML = state.view === "home" ? renderHome()
+        : state.view === "recent" ? renderRecent()
+          : preparingMarkup();
+      Boot?.refresh?.();
+      return;
+    }
     const questionList = $("question-list");
     if (questionList) state.questionListOpen = questionList.open;
     const detail = document.querySelector(".compose-detail");
@@ -4701,6 +4828,52 @@
     render();
     scheduleSave();
   }
+  // Actions that never read the catalog; everything else waits for it (see deferUntilCatalog).
+  const CATALOG_FREE_ACTIONS = new Set([
+    "boot-retry", "home-product", "home-school", "home-all-schools", "home-search", "delete-draft", "close-dialog",
+    "assignment-status", "assignment-output-direct", "assignment-output", "assignment-pdf", "library-reload",
+    "recent-retry", "recent-open-saved", "saved-output", "saved-paper-issue", "saved-paper-view",
+  ]);
+  let deferredClick = null;
+  const DEFERRED_NOTICE = "자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.";
+  // A button that needs the catalog was pressed before it is ready: say so and press it again when it is.
+  function deferUntilCatalog(b) {
+    if (state.bootError) { status(state.bootError, true); return; }
+    deferredClick = { dataset: { ...b.dataset }, view: state.view };
+    status(DEFERRED_NOTICE);
+  }
+  // Leaving the screen cancels the pending press: it must not fire later when the teacher comes back to
+  // that screen, and its notice must not stay on the screen they moved to.
+  function dropStaleDeferredClick() {
+    if (!deferredClick || deferredClick.view === state.view) return;
+    deferredClick = null;
+    if ($("status")?.textContent === DEFERRED_NOTICE) status("");
+  }
+  function replayDeferredClick() {
+    const pending = deferredClick;
+    deferredClick = null;
+    if (!pending || pending.view !== state.view) return;
+    const el = document.createElement("button");
+    el.type = "button";
+    el.hidden = true;
+    for (const [key, value] of Object.entries(pending.dataset)) el.dataset[key] = value;
+    document.body.appendChild(el);
+    try { el.click(); } finally { el.remove(); }
+  }
+  // Opens a route of this same page without reloading it, so the catalog that is being prepared is not
+  // thrown away (a reload would start the whole download, hash check and resolve again).
+  function openRouteInPage(target) {
+    let url;
+    try { url = new URL(String(target), location.href); } catch { return false; }
+    if (url.origin !== location.origin || url.pathname !== location.pathname) return false;
+    rememberCurrentHistoryEntry();
+    history.pushState({ archive2ScrollY: 0 }, "", url.href);
+    readUrl();
+    syncUidRoute();
+    render();
+    window.scrollTo(0, 0);
+    return true;
+  }
   document.addEventListener("click", async (event) => {
     if (!event.target.closest(".finder-card-more, .compose-saved-continuity-more, .history-draft-actions details"))
       document.querySelectorAll(".finder-card-more[open], .compose-saved-continuity-more[open], .history-draft-actions details[open]")
@@ -4729,6 +4902,11 @@
         return;
       }
       const a = b.dataset.action;
+      if (a === "boot-retry") { location.reload(); return; }
+      if (!state.catalog && a && !CATALOG_FREE_ACTIONS.has(a)) {
+        deferUntilCatalog(b);
+        return;
+      }
       // While a save result is unknown only actions that change the saved contents stay locked.
       // Local output, work backup, closing a dialog and sheet toggles never touch the save identity.
       if (state.saveResultState === "RESULT_UNKNOWN" && !UNKNOWN_RESULT_ALLOWED_ACTIONS.has(a)) {
@@ -4883,6 +5061,7 @@
         )
           return;
         const target = product.routeResolver();
+        if (target && !state.catalog && openRouteInPage(target)) return;
         if (target) location.href = String(target);
       } else if (a === "quick-unit") {
         await openQuickAssessment([b.dataset.unitKey]);
@@ -5190,7 +5369,7 @@
         b.dataset.paperId,
         b.dataset.mode || "exam",
       );
-      else if (a === "saved-paper-issue") await openSavedPaperIssue(b.dataset.paperId);
+      else if (a === "saved-paper-issue") await openSavedPaperAssign(b.dataset.paperId);
       else if (a === "saved-paper-view") showSavedPaper(b.dataset.paperId);
       else if (a === "print") await print();
       else if (a === "save-paper") await savePapers();
@@ -5663,6 +5842,8 @@
   document.addEventListener("visibilitychange", resumeAfterLogin);
   window.addEventListener("storage", (event) => { if (!event.key || event.key === "APMATH_SESSION") resumeAfterLogin(); });
   window.addEventListener("popstate", async () => {
+    // 반에 출제 패널이 열려 있으면 뒤로 가기는 패널이 처리한다(진행 중이면 막고, 아니면 패널만 닫는다).
+    if (window.Archive2Assign?.handlePopState?.()) return;
     state.assignmentStatusLoadVersion++;
     const previousSelection = state.recentSelectedAssignmentId;
     readUrl();
@@ -5918,58 +6099,99 @@
       state.header.title = state.title;
     }
   }
+  // 출제 내역 list: started at boot when the URL opens it. It never waits for the catalog.
+  async function loadRecentOnBoot() {
+    const selectedAssignmentId = state.recentSelectedAssignmentId;
+    try {
+      const loaded = await loadRecent();
+      if (loaded && selectedAssignmentId && state.view === "recent" &&
+        state.recentSelectedAssignmentId === selectedAssignmentId)
+        await assignmentStatus(selectedAssignmentId);
+    } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+  }
+  // The catalog adds the exam lookup the recent rows use for grade/subject: normalize again (cheap).
+  function refreshRecentRowsFromCatalog() {
+    if (state.view !== "recent" || state.recentLoading || !state.recentAssignments?.length) return;
+    state.recentRows = History.normalizeAssignments(state.recentAssignments, classRows, state.catalog.exams, C);
+    rememberRecentSubjectOptions(state.recentRows);
+    updateRecentResults();
+  }
+  // Screens that read the unified unit index / recorded-meta index get them built before they are drawn,
+  // while the progress text ("문항 목록 정리 중") is already on screen. The rest builds them when idle.
+  const viewNeedsUnifiedIndex = () => ["find", "compose", "health"].includes(state.view) || isQuickAssessmentView();
+  async function settleIndexesForView() {
+    const unified = viewNeedsUnifiedIndex(), meta = isQuickAssessmentView();
+    if (!unified && !meta) return;
+    Boot?.setStage?.("index");
+    await Boot?.nextPaint?.();
+    if (unified) unifiedIndex();
+    if (meta) ensureMetaIndex();
+  }
+  // Idle warm-up, one step per idle slot, so the next screen does not pay for them (each step is skipped
+  // when something already built it). Nothing here is needed for correctness.
+  function scheduleIndexWarmUp() {
+    if (!Boot?.idle) return;
+    const steps = [() => unifiedIndex(), () => ensureHealthStats(), () => ensureMetaIndex()];
+    const next = () => {
+      const step = steps.shift();
+      if (!step) return;
+      try { step(); } catch (e) { console.warn("[archive2] index warm-up skipped:", e); }
+      Boot.idle(next, 10000);
+    };
+    Boot.idle(next, 10000);
+  }
   (async () => {
     readUrl();
-    const savedOnBoot = state.view === "saved";
-    if (savedOnBoot) {
-      render();
-    }
+    Boot?.mountProgress?.($("boot-progress"));
+    // 1) First screen: home / 보관함 / 출제 내역 are drawn now; every other screen shows its progress.
+    render();
+    Boot?.firstPaint?.();
+    if (state.view === "recent") loadRecentOnBoot();
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw Object.assign(new Error("단원·분류 기준을 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "CANONICAL_AUTHORITY_UNAVAILABLE" });
-      state.catalog = await window.applyArchiveMetaFoundationCatalog();
-      state.useMode = "general";
+      const catalog = await window.applyArchiveMetaFoundationCatalog();
       if (!ProblemBankMeta) throw Object.assign(new Error("문항 분류 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "PROBLEM_BANK_META_UNAVAILABLE" });
-      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
-      state.metaIndexSource = state.catalog.records;
+      Boot?.begin?.("index");
+      Boot?.setStage?.("index");
+      state.useMode = "general";
+      state.indexVersion = catalog.indexVersion;
+      state.byUid = new Map(
+        catalog.records
+          .filter((r) => r.questionUid)
+          .map((r) => [r.questionUid, r]),
+      );
+      state.finderIndex = C.buildFinderIndex(catalog);
+      // The recorded-meta index and the 자료 점검 counts are built when a screen needs them (or when idle).
+      state.metaIndex = [];
+      state.metaIndexSource = null;
+      state.healthUnified = null;
+      state.healthComposeScope = null;
       composeMetaQueryCache.clear();
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
       )
         .then((r) => (r.ok ? r.json() : null))
         .catch(() => null);
-      state.indexVersion = state.catalog.indexVersion;
-      state.finderIndex = C.buildFinderIndex(state.catalog);
-      // Compose runs in general mode: it offers records with general-use
-      // eligibility AND a scope parent. Count them once here (this also warms
-      // workspaceScopeParent's per-record cache) for the status line and health view.
-      state.healthUnified = unifiedHealth();
-      state.healthComposeScope = state.healthUnified
-        ? state.healthUnified.placed
-        : state.catalog.records.reduce(
-          (n, record) => n + (C.generalUseEligibility(record).ok && workspaceScopeParent(record) ? 1 : 0), 0);
-      state.byUid = new Map(
-        state.catalog.records
-          .filter((r) => r.questionUid)
-          .map((r) => [r.questionUid, r]),
-      );
+      // The catalog becomes visible to every handler only now, with its derived maps already in place.
+      state.catalog = catalog;
+      await settleIndexesForView();
       readUrl();
       applySourceRoute();
       syncUidRoute();
       if (state.uidRoute?.error) status(state.uidRoute.error, true);
-      if (!(savedOnBoot && state.view === "saved")) render();
+      // 2) Draw what the catalog adds. Home fills its two placeholders in place; 보관함 and 출제 내역
+      // are already on screen; every other screen is drawn now.
+      if (state.view === "home") fillHomeFromCatalog();
+      else if (state.view === "recent") refreshRecentRowsFromCatalog();
+      else if (state.view !== "saved") render();
       // The catalog totals live on the "자료 점검" screen; the status line only reports progress and problems.
       if (!state.uidRoute?.error) status("");
+      Boot?.end?.("index");
+      Boot?.finish?.(false);
+      replayDeferredClick();
+      scheduleIndexWarmUp();
       const previous = drafts();
-      if (state.view === "recent") {
-        const selectedAssignmentId = state.recentSelectedAssignmentId;
-        try {
-          const loaded = await loadRecent();
-          if (loaded && selectedAssignmentId && state.view === "recent" &&
-            state.recentSelectedAssignmentId === selectedAssignmentId)
-            await assignmentStatus(selectedAssignmentId);
-        } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
-      }
       restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {
         const sourceId = state.editSavedPaperId;
@@ -5981,16 +6203,21 @@
           `<p>${esc(previous[0].header?.title || previous[0].title)} · ${previous[0].selected?.length || 0}문항</p>${button("restore", "이전 작업 복원", 'data-draft="0" class="primary"')} ${button("close-dialog", "새로 시작")}`,
         );
     } catch (e) {
+      Boot?.finish?.(true);
       if (state.view === "saved") {
-        if (!savedOnBoot) render();
         status("문항 목록을 사용할 수 없어도 저장한 시험지는 서버에서 열 수 있습니다.");
         return;
       }
       console.error("[archive2] startup failed:", e?.code || "", e);
       const startupMessage = teacherErrorMessage(e, "아카이브 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
-      $("content").innerHTML =
-        `<div class="empty">${esc(startupMessage)}<p><a href="index.html?legacy=1">기존 아카이브 열기</a></p></div>`;
-      status(startupMessage, true);
+      state.bootError = startupMessage;
+      // Home and 출제 내역 stay usable; the home placeholders turn into the message, any other screen shows it.
+      // The reason is written where the screen is waiting (home: the recent-exam block, others: the body), so
+      // no alert repeats it. 출제 내역 and 보관함 have no such place and keep the alert.
+      if (state.view === "home") fillHomeFromCatalog();
+      else if (state.view !== "recent")
+        $("content").innerHTML = preparingMarkup();
+      if (state.view === "recent") status(startupMessage, true);
     }
   })();
 })();

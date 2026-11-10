@@ -101,7 +101,7 @@ for (const file of pages) {
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
     activeRun.stage = 'navigation';
-    await page.goto(`${base}${file}?theme=${theme}`, { waitUntil: 'networkidle' });
+    await page.goto(`${base}${file}?theme=${theme}&manual=1`, { waitUntil: 'networkidle' });
     activeRun.stage = 'wait-for-shell';
     await page.waitForFunction(() => window.lab && window.lab.board);
     activeRun.stage = 'scene-rendering';

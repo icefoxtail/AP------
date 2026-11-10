@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "-4",
+        "intercept": "-1",
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 0,
+        "y": -1
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": -5
+      }
+    ],
+    "sampleNote": "k=1",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "k=1일 때 포물선 y=x²-4x-1과 직선 y=-4x-1은 점 T(0, -1)에서 접한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "k=1이면 y=x²-4x-1과 y=-4x-1이 점 T(0,-1)에서 접한다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=1일 때 포물선과 직선이 한 점에서 접하는 모습을 보여 준다."
+  ],
+  "sourceQuote": "포물선 $y=x^2-4x-1$과 직선 $y=-4x-1$은",
+  "assetPath": "assets/images/26_강남여고_1학기_중간_고1_유사/q22-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q22-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q22-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q22-solution.svg"
+  }
+}

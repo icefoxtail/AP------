@@ -153,10 +153,18 @@
   const baseReady = window.__ARCHIVE_METADATA_READY__;
   const baseGet = window.getArchiveQuestionMetadata;
   const baseMerge = window.mergeArchiveQuestionMetadata;
+  // workspace.html loads archive2-boot.js first: it fetches reviewed-exam-meta together with the catalog and holds
+  // the big files back until the first screen is painted. Hashes are still verified by canonical.loadInputBundle.
+  const Boot = window.Archive2Boot;
+  const rawFetcher = (url) => fetch(url, { cache: "no-cache" });
+  const pause = () => (Boot && typeof Boot.yield === "function" ? Boot.yield() : undefined);
   const runtimeReady = window.Archive2Canonical.loadInputBundle(
-    (url) => fetch(url, { cache: "no-cache" }),
+    Boot && typeof Boot.fetcher === "function" ? Boot.fetcher(rawFetcher) : rawFetcher,
     document.baseURI,
-  ).then((bundle) => {
+  ).then(async (bundle) => {
+    if (Boot && typeof Boot.bundleDone === "function") Boot.bundleDone();
+    if (Boot && typeof Boot.begin === "function") Boot.begin("resolve");
+    await pause();
     inputBundle = bundle;
     const resources = bundle.resources;
     const runtimeUrls = [...new Set([...RUNTIME_URLS, ...(bundle.runtimeInputPaths || []).filter(path => !window.Archive2Canonical.RUNTIME_INPUT_PATHS.includes(path))])];
@@ -237,14 +245,18 @@
     };
     window.ARCHIVE_META_FOUNDATION_RUNTIMES = packs;
     window.ARCHIVE_META_FOUNDATION_RUNTIME = runtime;
+    await pause();
     finalCatalog = window.Archive2Canonical.resolveCatalog({ versionBundle: bundle });
+    await pause();
     // One pass over the resolved records: the strict (automatic) count and the
     // per-reason exclusion tally must come from the same final canonical
     // authority. The build-time reason counts in archive2-catalog.json predate
     // the runtime overlay and are not reused.
     const exclusionReasons = {};
     let automatic = 0;
+    let visited = 0;
     for (const record of finalCatalog.records) {
+      if (++visited % 3000 === 0) await pause();
       const result = window.Archive2Core.basicEligibility(record, { canonicalAuthority: finalCatalog.canonicalAuthority });
       if (result.ok) automatic += 1;
       for (const reason of result.reasons) exclusionReasons[reason] = (exclusionReasons[reason] || 0) + 1;
@@ -260,6 +272,7 @@
     finalByUid = new Map(finalCatalog.records.filter((record) => record.questionUid)
       .map((record) => [record.questionUid, record]));
     window.ARCHIVE2_FINAL_CATALOG = finalCatalog;
+    if (Boot && typeof Boot.end === "function") Boot.end("resolve");
     return runtime;
   });
   window.__META_FOUNDATION_RUNTIME_READY__ = runtimeReady;

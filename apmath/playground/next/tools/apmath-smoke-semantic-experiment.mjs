@@ -144,7 +144,7 @@ async function open(labId, run, hash = '') {
   await page.addInitScript(() => { const native = window.requestAnimationFrame.bind(window);
     window.__apmExperimentHoldRAF = false; window.requestAnimationFrame = cb => native(t => { if (!window.__apmExperimentHoldRAF) cb(t); }); });
   try {
-    await page.goto(`${base}${labId}.html?theme=${theme}${hash ? '#s=' + encodeURIComponent(hash) : ''}`, { waitUntil: 'networkidle' });
+    await page.goto(`${base}${labId}.html?theme=${theme}&manual=1${hash ? '#s=' + encodeURIComponent(hash) : ''}`, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => window.lab?.board && window.lab.list?.length);
     const environment = [], guard = await createScreenshotGuard(page, { expectedTouch: !!run.hasTouch, onObservation: v => environment.push(v) });
     return { page, context, errors, guard, environment };

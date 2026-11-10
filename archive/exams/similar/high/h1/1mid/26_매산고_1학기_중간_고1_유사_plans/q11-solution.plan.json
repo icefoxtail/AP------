@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "접점 $T(\\sqrt{2}, \\sqrt{2}-1)$에서 접한다",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1-4*sqrt(2)",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      3
+    ],
+    "viewport": [
+      -1,
+      4,
+      -2,
+      6
+    ],
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "1",
+        "intercept": "-1",
+        "intersectionX": [
+          "sqrt(2)"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/4+sqrt(2)",
+        "y": "-9/8+sqrt(2)"
+      },
+      {
+        "id": "T",
+        "x": "sqrt(2)",
+        "y": "-1+sqrt(2)"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "T": "T"
+  },
+  "hiddenPointNames": [
+    "V"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "k=1-4√2일 때 y=2x²+kx+3의 그래프가 직선 y=x-1에 접점 T에서 접한다.",
+  "sourceConditions": [
+    {
+      "id": "q11-S1",
+      "condition": "k=1-4√2일 때 y=2x^2+kx+3과 직선 y=x-1이 접점 T(√2,√2-1)에서 접한다",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식 D=0 조건에서 포물선과 직선이 한 점(접점 T)에서 만나는 모습을 보여 준다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고1_유사/q11-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q11-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q11-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q11-solution.svg"
+  }
+}

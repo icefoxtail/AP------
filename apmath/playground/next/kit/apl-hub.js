@@ -27,7 +27,7 @@
     let u = rel(lab.next);
     if (state.teach) u += '?teach=1';
     if (sceneNo) u += '#n=' + sceneNo;
-    return u;
+    return window.StudentPortalNavigation?.withContext(u) || u;
   }
   function remember(lab) {
     APLab.pushRecent({ id: lab.id, title: lab.title, course: COURSE[lab.course].name, href: lab.next });
@@ -59,9 +59,10 @@
     h('a', { class: 'hub-brand', href: './index.html', html: `<span class="hub-mark"><svg viewBox="0 0 32 32" fill="none" stroke-linecap="round"><path d="M4 24c5 0 7-14 12-14s7 8 12 8" stroke="var(--m-ink)" stroke-width="2.6"/><path d="M5 17.5 27 7.5" stroke="var(--m-rose)" stroke-width="2.2"/><circle cx="16" cy="10.6" r="3.4" fill="var(--m-amber)"/></svg></span><span><b>AP Math 실험실</b><small>도형·함수 시각화</small></span>` }),
     h('div', { class: 'hub-search' }, APLab.iconEl('search'), search, h('span', { class: 'apl-kbd', text: '/' })),
     h('div', { class: 'hub-tools' }, teachSw, themeBtn)));
-  // 3D 우주(입구 화면)로 돌아가는 얇은 링크 줄. 머리글 위에 놓여 스크롤하면 사라집니다.
-  const trail = h('nav', { class: 'hub-trail', 'aria-label': '입구 화면' }, h('div', { class: 'hub-trail-in' },
-    h('a', { href: '../index.html', html: `${icon('back')}<span>AP Math Universe</span>` })));
+  // 입구 화면·학생 포털로 돌아가는 링크 줄. 머리글 위에 놓여 스크롤하면 사라집니다.
+  const trail = h('nav', { class: 'hub-trail', 'aria-label': '학생 포털과 실험실 이동' }, h('div', { class: 'hub-trail-in' },
+    h('a', { href: '../index.html', html: `${icon('back')}<span>AP Math Universe</span>` }),
+    h('a', { class: 'hub-portal-link', href: '../../student/', 'aria-label': '학생 포털로 돌아가기', html: `${icon('back')}<span>학생 포털</span>` })));
 
   /* ---------- 첫 안내(얇게): 노선도가 화면의 주인공입니다 ---------- */
   const total = CAT.labs.length;

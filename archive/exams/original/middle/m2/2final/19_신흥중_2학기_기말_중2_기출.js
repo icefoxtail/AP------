@@ -208,8 +208,8 @@ window.questionBank = [
       "$12\\text{ cm}^2$"
     ],
     "image": "assets/images/19_신흥중_2학기_기말_중2_기출/q04.png",
-    "solution": "직사각형의 꼭짓점을 $A=(0,4)$, $B=(0,0)$, $C=(6,0)$, $D=(6,4)$로 둔다.\n그러면 $M=(3,0)$, $N=(6,2)$이다.\n\n$Q$는 대각선 $AC$와 선분 $BN$의 교점이다.\n$AC:y=4-\\dfrac23x$, $BN:y=\\dfrac13x$이므로\n$4-\\dfrac23x=\\dfrac13x$\n$x=4$, $y=\\dfrac43$이다.\n따라서 $Q=(4,\\dfrac43)$이다.\n\n색칠한 사각형은 $QNCM$이다.\n좌표 넓이 공식으로\n$[QNCM]=\\dfrac12\\left|4\\cdot2+6\\cdot0+6\\cdot0+3\\cdot\\dfrac43-\\left(\\dfrac43\\cdot6+2\\cdot6\\right)\\right|$\n$=\\dfrac12|12-20|=4$이다.\n\n그러므로 정답은 ①이다.",
-    "answer": "①",
+    "solution": "직사각형 $ABCD$의 넓이는 $6\\times4=24\\text{ cm}^2$이다.\n그림에서 $P$는 $AM$과 $BD$의 교점, $Q$는 $AN$과 $BD$의 교점이고 색칠한 부분은 오각형 $PQNCM$이다.\n\n$M$, $N$은 각각 $BC$, $CD$의 중점이므로\n$\\triangle ABM=\\dfrac12\\times3\\times4=6\\text{ cm}^2$, $\\triangle AND=\\dfrac12\\times6\\times2=6\\text{ cm}^2$, $\\triangle MCN=\\dfrac12\\times3\\times2=3\\text{ cm}^2$이다.\n따라서 사각형 $AMCN$의 넓이는 $24-6-6=12\\text{ cm}^2$이고 $\\triangle AMN=12-3=9\\text{ cm}^2$이다.\n\n$AD\\parallel BM$이므로 $\\triangle PAD\\sim\\triangle PMB$이고 $AP:PM=AD:MB=6:3=2:1$이다.\n$AB\\parallel DN$이므로 $\\triangle QAB\\sim\\triangle QND$이고 $AQ:QN=AB:ND=4:2=2:1$이다.\n\n$\\triangle APN$과 $\\triangle AMN$은 높이가 같으므로 넓이의 비는 $AP:AM=2:3$이다. 따라서 $\\triangle APN=\\dfrac23\\times9=6\\text{ cm}^2$이다.\n$\\triangle APQ$와 $\\triangle APN$은 높이가 같으므로 넓이의 비는 $AQ:AN=2:3$이다. 따라서 $\\triangle APQ=\\dfrac23\\times6=4\\text{ cm}^2$이다.\n\n색칠한 부분의 넓이는 사각형 $AMCN$의 넓이에서 $\\triangle APQ$의 넓이를 뺀 것이므로 $12-4=8\\text{ cm}^2$이다.\n\n그러므로 정답은 ③이다.",
+    "answer": "③",
     "layoutTag": "grid",
     "wide": false,
     "level": "중",

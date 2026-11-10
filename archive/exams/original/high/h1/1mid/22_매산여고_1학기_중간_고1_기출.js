@@ -243,7 +243,11 @@ window.questionBank = [
     "category": "이차방정식",
     "originalCategory": "이차방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q6-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 가로축 k, 세로축 D인 아래로 볼록한 포물선 D=4(k−1)(2k−5)의 그래프이다. k축과 만나는 두 점이 k=1(「1 제외」 표시)과 k=2분의 5이고, 두 점 바깥쪽 구간(D가 0 이상)은 주황색, 두 점 사이 구간(D가 음수)은 파란색이다.",
+    "solutionImageCaption": "이차방정식이 실근을 가지려면 판별식 D=4(k−1)(2k−5)가 0 이상이어야 하므로 위 그래프에서 D≥0인 주황색 구간 k≤1 또는 k≥2분의 5이다. 그런데 k=1이면 이차항이 사라져 이차방정식이 아니므로 제외한다(그림의 k=1 점은 위치를 보이는 표시이고 이 값은 해에서 빼야 한다). 따라서 실근을 가지는 k의 범위는 k<1 또는 k≥2분의 5이다. 정답은 2분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -285,7 +289,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q7-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 포물선 y=x²−4x+3(파랑)과 직선 m=5(주황), m=7(초록)이다. 주황 직선은 포물선과 두 점에서 만나고, 초록 직선은 점 (3, 0)에서 접한다. 아래 그림은 같은 포물선과 점선 초록 직선 m=7, 실선 주황 직선 m=9로, m=9인 직선은 포물선과 만나지 않는다.",
+    "solutionImageCaption": "직선 y=2x−m+1은 기울기 2로 고정된 채 m이 커질수록 아래로 평행이동한다. 포물선과 연립한 x²−6x+m+2=0의 판별식은 28−4m이고, m=5이면 두 점에서 만나고 m=7이면 점 (3, 0)에서 접하며 m=9이면 만나지 않는다. 만나지 않는 조건은 28−4m<0, 즉 m>7이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -448,9 +456,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "x축과 만나는 점 P, Q와 꼭짓점 V(6,-4)",
-    "solutionImageCaption": "x축과 만나는 점 P, Q와 꼭짓점 V(6,-4)",
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q11-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 포물선 y=x²+4x−4와 그 위의 두 점 (a, 2b), (b, 2a)이고 두 점에서 x축으로 점선이 내려온다. 두 번째 점은 포물선의 꼭짓점이다. 아래 그림은 y=(x+2a)(x+2b)의 그래프로 x축과 x=4, x=8에서 만나고, 꼭짓점 V에서 x축 위 x=6으로 점선이 내려온다.",
+    "solutionImageCaption": "f(a)=2b, f(b)=2a를 변끼리 빼고 더하면 a+b=−6, ab=8이므로 a와 b는 방정식 t²+6t+8=0의 두 근이고 a<b에서 a=−4, b=−2이다(위 그림은 이 두 점이다). 따라서 y=(x+2a)(x+2b)=(x−8)(x−4)이고 아래 그림처럼 x=4, x=8에서 x축과 만나며 꼭짓점 V의 x좌표는 6이다. 꼭짓점의 y좌표가 최솟값이다. 정답은 −4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -494,9 +502,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "t=x^2-2x로 놓으면 -1≤t≤3에서 y=-t^2-t+4이고, 꼭짓점 V에서 최댓값, 끝점 B에서 최솟값을 갖는다.",
-    "solutionImageCaption": "t=x^2-2x로 놓으면 -1≤t≤3에서 y=-t^2-t+4이고, 꼭짓점 V에서 최댓값, 끝점 B에서 최솟값을 갖는다.",
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q12-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 t=x²−2x의 −1≤x≤1 구간 그래프이고 양 끝점 (−1, 3), (1, −1)에서 t축으로 점선이 있다. 아래 그림은 y=−t²−t+4의 −1≤t≤3 구간 그래프이고 꼭짓점 (−2분의 1, 4분의 17)과 양 끝점 (−1, 4), (3, −8)이 표시되어 있다.",
+    "solutionImageCaption": "t=x²−2x=(x−1)²−1이고 −1≤x≤1이므로 위 그림처럼 −1≤t≤3이다. 이때 y=−t²−t+4=−(t+2분의 1)²+4분의 17이고, 꼭짓점 t=−2분의 1이 구간 안에 있으므로 최댓값 M=4분의 17이다. 최솟값은 양 끝점의 값 4와 −8 중 작은 값이므로 m=−8이다. 정답은 M+m=−4분의 15이다.",
     "solutionImageSize": "full"
   },
   {
@@ -618,7 +626,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q15-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 예로 그린 두 포물선 f(x)(파랑)와 g(x)(주황)이다. 두 곡선은 두 점에서 만나고 두 교점에서 x축 위의 α, β까지 점선이 올라가며, α와 β 사이의 길이 5가 x축 위에 굵은 선으로 표시되어 있다. g의 꼭짓점에는 g(a), f의 꼭짓점에는 f(2a)가 적혀 있다.",
+    "solutionImageCaption": "예: a=3, b=28인 경우의 그림이다. f(x)=x²−4ax, g(x)=−x²+2ax−b이고 f(x)=g(x)에서 2x²−6ax+b=0이므로 α+β=3a, αβ=2분의 b이고 β−α=5에서 b=2분의 (9a²−25)이다. 교점에서 f(α)=g(α), f(β)=g(β)이므로 ㄴ의 좌변은 f(α)−g(β)=g(α)−g(β)=5a이고 우변은 g의 꼭짓점과 f의 꼭짓점의 y좌표의 차 g(a)−f(2a)=2분의 (a²+25)이다. 정답은 ㄴ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -659,9 +671,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "a=0일 때 점 P(0,2)에서 포물선에 그은 두 접선",
-    "solutionImageCaption": "a=0일 때 점 P(0,2)에서 포물선에 그은 두 접선",
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q16-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 파랑 포물선 y=x²+3x+4와 그 아래쪽 바깥의 점 P를 지나는 두 접선이 있다. 주황 접선은 완만하게 올라가며 기울기 m1, 초록 접선은 가파르게 올라가며 기울기 m2로 표시되고, 두 접선이 포물선에 닿는 접점이 점으로 찍혀 있다.",
+    "solutionImageCaption": "예: 점 P(a, 2)가 포물선 바깥에 있을 때 P를 지나 포물선에 접하는 직선은 두 개이다(파랑 포물선, 주황 접선의 기울기 m1, 초록 접선의 기울기 m2). 그림은 두 접선이 보이도록 P를 잡은 예시이고 a의 값은 아래 풀이로 구한다. 기울기가 m인 직선 y=m(x−a)+2와 포물선을 연립한 x²+(3−m)x+(ma+2)=0이 중근을 가지므로 D=0에서 m²−(6+4a)m+1=0이다. 두 접선의 기울기 m1, m2는 이 방정식의 두 근이므로 근과 계수의 관계에서 m1+m2=6+4a이고 이 값이 6이다. 정답은 0이다.",
     "solutionImageSize": "full"
   },
   {
@@ -704,7 +716,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q17-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 a=2분의 1일 때 구간 −1≤x≤3에서의 위로 볼록한 포물선 f(x)이고 꼭짓점 f(a)가 구간 안에 있다. 아래 그림은 a=2일 때 같은 구간의 그래프로 꼭짓점이 오른쪽에 치우쳐 있다. 두 그림 모두 x=−1, x=3의 점선과 양 끝점 f(−1), f(3), 꼭짓점 f(a)가 표시되어 있다.",
+    "solutionImageCaption": "예: a=2분의 1일 때(위)와 a=2일 때(아래)의 그래프이다. f(x)=−(x−a)²+a²−2a+4는 위로 볼록하고 f(−1)=3−4a, f(3)=−5+4a이다. −1≤a≤1이면 최댓값 f(a), 최솟값 f(3)이므로 합이 0이 되는 a²+2a−1=0에서 a=−1+√2이다. 1≤a≤3이면 최솟값은 f(−1)이므로 a²−6a+7=0에서 a=3−√2이다. a<−1 또는 a>3이면 꼭짓점이 구간 밖이라 최대·최소의 합이 −2로 조건에 맞지 않는다. 정답은 두 값의 합 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -846,9 +862,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "choices": [],
-    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "0≤x≤4에서 f(x)는 x=3에서 최대 5, x=0에서 최소 -4이다.",
-    "solutionImageCaption": "0≤x≤4에서 f(x)는 x=3에서 최대 5, x=0에서 최소 -4이다.",
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q21-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 대칭축이 x=3이고 최댓값 5를 갖는 위로 볼록한 포물선 y=f(x)의 0≤x≤4 구간으로, 점 (0, −4), 꼭짓점 (3, 5), 끝점 (4, 4)가 표시되어 있다. 아래 그림은 y=t²+4t−3의 −4≤t≤5 구간 그래프로 왼쪽 끝점 (−4, −3), 꼭짓점 V(t=−2), 오른쪽 끝점 Q(t=5)가 표시되어 있다.",
+    "solutionImageCaption": "(1) 대칭축 x=3, 최댓값 5, 점 (0, −4)를 이용해 f(x)의 식을 정한다. (2) 0≤x≤4에서 f(0)=−4, f(4)=4, f(3)=5이므로 t=f(x)는 −4≤t≤5의 값을 갖고, y=t²+4t−3을 완전제곱식으로 고치면 꼭짓점 t=−2가 이 범위 안에 있다. 최솟값은 꼭짓점 V의 y좌표이고 최댓값은 양 끝점 중 큰 오른쪽 끝점 Q의 y좌표이다. 정답은 (1) f(x)=−x²+6x−4, (2) 최댓값 42, 최솟값 −7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -885,7 +901,10 @@ window.questionBank = [
     "originalCategory": "삼각형",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q22-solution.svg",
-    "choices": []
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q22-solution-v4.svg",
+    "choices": [],
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 꼭짓점 A, B, C인 이등변삼각형으로 변 AB와 변 CA의 길이가 각각 10(같은 길이 표시), 밑변 BC의 길이가 12이다. 오른쪽 그림은 같은 삼각형에서 밑변의 중점 H로 수선 AH를 내린 그림으로 AH=8, BH=HC=6, 직각 표시가 있다.",
+    "solutionImageCaption": "조건 (가)를 인수분해하면 (a+b)(b−c)(a+b+c)=0이므로 b=c이고, (나)에서 b=c=10, (다)에서 a=12이다. 세 변이 10, 10, 12인 이등변삼각형이므로 꼭짓점 A에서 밑변 BC에 수선 AH를 내리면 BH=HC=6이고 피타고라스 정리에서 AH²+6²=10²이므로 높이는 8이다. 정답은 48이다.",
+    "solutionImageSize": "full"
   }
 ];

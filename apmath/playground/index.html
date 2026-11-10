@@ -15,6 +15,8 @@
     }
   }
   </script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.11.3">
+  <script defer src="../js/student-navigation.js?v=2026.11.11.3" data-student-nav-active="labs" data-student-nav-context-only="true"></script>
 </head>
 <body>
   <!-- 3D Cosmic Space Canvas -->
@@ -35,6 +37,11 @@
           <span class="brand-name">AP Math<span class="brand-universe"> Universe</span></span>
           <span class="brand-sub">도형·함수 시각화 실험실</span>
         </div>
+      </a>
+
+      <a class="universe-portal-link" href="../student/" aria-label="학생 포털로 돌아가기">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5-7 7 7 7M5 12h14"/></svg>
+        <span>학생 포털</span>
       </a>
 
       <div class="top-controls">
@@ -84,6 +91,7 @@
       <h2>3D 하드웨어 가속 필요</h2>
       <p>AP Math Universe 3D 엔진은 JavaScript 및 WebGL 2.0 지원 브라우저에서 실행됩니다.</p>
       <a class="cta-entrance" href="./next/index.html">메인 실험실 허브로 직접 입장</a>
+      <a class="universe-portal-link" href="../student/">학생 포털로 돌아가기</a>
     </div>
   </noscript>
 
@@ -103,7 +111,8 @@
     // 이 탭에서 Universe를 거쳤다는 표시. 허브(next/index.html)를 주소창 등으로 바로 연 경우에만 허브가 이 화면으로 보냅니다.
     try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (e) {}
     // 학생 포털·APMS에서 #g8 처럼 학년 해시를 붙여 오면 입장할 때 허브에 그대로 넘깁니다.
-    const hubHref = './next/index.html' + (/^#[a-z0-9]+$/.test(location.hash) ? location.hash : '');
+    const hubPath = './next/index.html' + (/^#[a-z0-9]+$/.test(location.hash) ? location.hash : '');
+    const hubHref = window.StudentPortalNavigation?.withContext(hubPath) || hubPath;
 
     let universe = null;
 
@@ -130,6 +139,7 @@
         <h2>3D 그래픽 초기화 실패</h2>
         <p>기기의 WebGL 가속을 시작할 수 없습니다. 메인 허브를 통해 모든 수학 실험실을 이용하실 수 있습니다.</p>
         <a class="cta-entrance" href="${hubHref}">실험실 허브 바로가기</a>
+        <a class="universe-portal-link" href="../student/">학생 포털로 돌아가기</a>
       `;
       document.body.appendChild(fallback);
     }

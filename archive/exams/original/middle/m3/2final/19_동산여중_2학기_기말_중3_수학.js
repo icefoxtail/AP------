@@ -44,7 +44,12 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q01.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q01_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q01-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ADE 안에 BC가 DE와 평행하게 놓인 문제 배치(AB는 5cm, AC는 4cm, BC는 3cm)와, 직각 꼭짓점을 오른쪽 아래에 두고 같은 방향으로 펼친 닮은 두 직각삼각형 ABC, AED이다. AB와 AE는 파란색, AC와 AD는 주황색, BC와 ED는 초록색이고 공통인 각 A는 분홍색으로 표시되어 있다.",
+      "solutionImageCaption": "직각삼각형 ABC에서 AB=5 cm, AC=4 cm이므로 피타고라스 정리로 BC=3 cm이다. 삼각형 ABC와 삼각형 AED는 닮음이고 각 A는 공통이다. 각 A의 맞은편 변 BC와 빗변 AB의 비가 sin A이므로 BC를 AB로 나눈 값이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q02",
@@ -83,7 +88,12 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q02.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q02_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q02-solution.svg",
+      "solutionImageAlt": "해설 그림: 각 C가 직각인 직각삼각형 ABC이다. AC는 15인 파란색 변, AB는 17인 주황색 변, BC는 8인 초록색 변이고 각 A는 분홍색으로 표시되어 있다.",
+      "solutionImageCaption": "15²+8²=17²이므로 각 C가 직각인 직각삼각형이다. 각 A에서 이웃한 변은 AC(파랑), 빗변은 AB(주황)이므로 cos A는 17분의 15이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q03",
@@ -121,7 +131,11 @@ window.examData = {
         "객관식",
         "삼각비",
         "직각삼각형"
-      ]
+      ],
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q03-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 변이 1, √3, 2이고 각이 30도, 60도, 90도인 직각삼각형과, 두 변이 1이고 빗변이 √2이며 각이 45도, 45도, 90도인 직각삼각형이다. 길이가 1인 변은 파란색, √3인 변은 초록색, 가장 긴 변은 주황색으로 표시되어 있다.",
+      "solutionImageCaption": "30°, 60°, 90° 직각삼각형에서 60°에 이웃한 변은 1, 빗변은 2이므로 cos 60°는 2분의 1이다. 30°의 맞은편 변은 1, 이웃한 변은 √3이므로 tan 30°는 √3분의 1, 곧 3분의 √3이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q04",
@@ -159,7 +173,11 @@ window.examData = {
         "객관식",
         "삼각비",
         "직각삼각형"
-      ]
+      ],
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q04-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 변이 1, √3, 2이고 각이 30도, 60도, 90도인 직각삼각형과, 두 변이 1이고 빗변이 √2이며 각이 45도, 45도, 90도인 직각삼각형이다. 길이가 1인 변은 파란색, √3인 변은 초록색, 가장 긴 변은 주황색으로 표시되어 있다.",
+      "solutionImageCaption": "30°, 60°, 90° 직각삼각형에서 tan 30°는 3분의 √3, tan 60°는 √3, sin 60°는 2분의 √3, cos 60°는 2분의 1이다. 45°, 45°, 90° 직각삼각형에서 tan 45°는 1, cos 45°는 2분의 √2이다. sin 0°=0, cos 0°=1, sin 90°=1이다. 따라서 옳은 것은 ①, ③이다. 정답은 ①, ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q05",
@@ -198,7 +216,12 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q05.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q05_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q05-solution.svg",
+      "solutionImageAlt": "해설 그림: 각 C가 직각이고 각 A가 30도인 직각삼각형 ABC이다. 빗변 AB는 4√3 cm로 표시된 주황색 변이고, 각 A의 맞은편 변 BC는 초록색이다.",
+      "solutionImageCaption": "빗변 AB=4√3 cm이고 각 A의 맞은편 변이 BC이므로 sin 30°=BC÷AB를 쓴다. sin 30°는 2분의 1이므로 BC=4√3×(2분의 1)=2√3 cm이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q06",
@@ -275,7 +298,12 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q07.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q07_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q07-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 점 A, B, C, D가 있는 문제 배치(DC는 √3 cm, 각 B는 60도, 각 D는 45도)와 직각이등변삼각형 BCD, 각 B가 60도인 직각삼각형 ABC이다. 변 BC와 DC는 주황색, AB는 초록색으로 표시되어 있다.",
+      "solutionImageCaption": "삼각형 BCD에서 각 C=90°, 각 D=45°이므로 각 CBD=45°이고 BC=DC=√3 cm이다. 직각삼각형 ABC에서 BC는 빗변이고 각 B=60°이므로 AB=BC×cos 60°이다. cos 60°는 2분의 1이므로 AB는 2분의 √3 cm이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q08",
@@ -314,7 +342,12 @@ window.examData = {
         "삼각비의 활용",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q08.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q08_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q08-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC의 꼭짓점 A에서 변 BC에 내린 수선의 발 H가 있다. BH는 4cm이고 HC와 같은 길이로 파란색이며, 높이 AH는 4√3 cm인 초록색 선분이고 각 B와 각 C는 60도로 분홍색이다.",
+      "solutionImageCaption": "직각삼각형 ABH에서 tan 60°=AH÷BH이므로 AH=4√3 cm이다. 직각삼각형 AHC도 같은 방법으로 HC=4 cm이므로 BC=BH+HC=8 cm이다. 넓이는 밑변 BC와 높이 AH로 구한다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q09",
@@ -354,7 +387,11 @@ window.examData = {
         "원",
         "넓이"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q09.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q09.png",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q09-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O에 내접한 정육각형(꼭짓점 A, B, F, D, C, E)와 중심에서 각 꼭짓점까지의 반지름이 파란색으로 그려져 있고, 삼각형 OAB가 주황색으로 칠해져 있다. 오른쪽에는 세 변이 모두 6cm이고 세 각이 모두 60도인 정삼각형 OAB가 있다.",
+      "solutionImageCaption": "지름이 12 cm이므로 반지름은 6 cm이고, 내접한 정육각형의 한 변도 6 cm이다. 정육각형은 한 변이 6 cm인 정삼각형 6개로 나뉘고, 정삼각형 하나의 넓이는 9√3 cm²이다. 따라서 6×9√3=54√3 cm²이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q10",
@@ -393,7 +430,11 @@ window.examData = {
         "삼각비의 활용",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q10.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q10.png",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 지면의 점 A에서 눈높이 1.4m 위의 시선이 건축물까지 5√3m 수평으로 이어지고, 시선과 꼭대기를 잇는 선이 60도를 이루는 그림이다. 눈높이 위쪽 건축물 높이는 h로 초록색이다.",
+      "solutionImageCaption": "눈높이에서 건축물 꼭대기까지의 높이를 h라 하면 tan 60°=h÷5√3이므로 h=15 m이다. 건축물의 높이는 여기에 눈높이 1.4 m를 더한 값이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q11",
@@ -432,7 +473,12 @@ window.examData = {
         "삼각비의 활용",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q11.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q11_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 수평선 위의 점 A, B, H와 H 바로 위의 꼭대기 C가 있다. AB는 1000m인 주황색 선분이고, BH와 CH는 같은 길이 h로 파란색이다. 각 A는 30도, 각 B는 45도이며 아래에 AH를 1000+h로 나타낸 치수선이 있다.",
+      "solutionImageCaption": "삼각형 BCH에서 tan 45°=1이므로 BH=CH=h이고 AH=1000+h이다. 삼각형 ACH에서 tan 30°=h÷(1000+h)=1÷√3이므로 (√3−1)h=1000이다. 따라서 h=500(√3+1) m이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q12",
@@ -471,7 +517,11 @@ window.examData = {
         "원의 성질",
         "현",
         "원"
-      ]
+      ],
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 첫째는 원 밖의 점 P에서 원에 그은 두 접선 PA, PB이고 접점에서 반지름과 직각이다. 둘째는 중심에서 같은 거리 초록색으로 떨어진 두 현이 수선의 발에서 같은 길이의 주황색 반으로 나뉜 그림이다. 셋째는 같은 호 AB를 보는 원주각 두 개가 파란색으로 같게 표시되고 중심각은 분홍색인 그림이다.",
+      "solutionImageCaption": "원 밖의 한 점에서 원에 그을 수 있는 접선은 2개이므로 ①이 옳지 않다. 중심에서 같은 거리에 있는 두 현은 길이가 같고, 중심에서 현에 내린 수선은 그 현을 이등분한다. 같은 호를 보는 원주각은 모두 같고 그 크기는 중심각의 2분의 1이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q13",
@@ -511,7 +561,12 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q13.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q13_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 5cm인 원 O 안에 평행한 두 현 AB, CD가 있고 중심에서 각 현에 내린 수선의 발 M, N이 있다. OM과 ON은 3cm인 초록색 선분이고 OA는 5cm인 파란색 선분이며 AM은 4cm이다.",
+      "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 M은 AB의 중점이다. 직각삼각형 OMA에서 AM=√(5²−3²)=4 cm이므로 AB=2×AM이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q14",
@@ -551,13 +606,18 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q14.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q14_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 지름 AB가 놓인 원 O에서 현 CD가 AB와 점 M에서 수직으로 만난다. AM은 4cm인 주황색, OM은 2cm인 보라색, 반지름 OC는 6cm인 파란색이고 CM은 4√2cm, MD는 CM과 같은 길이로 초록색이다.",
+      "solutionImageCaption": "지름이 12 cm이므로 반지름은 6 cm이고 OM=6−4=2 cm이다. 직각삼각형 OMC에서 CM=√(6²−2²)=4√2 cm이다. M은 현 CD의 중점이므로 CD=2×CM이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q15",
       "number": 15,
       "score": 3.0,
-      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. 중심각 $x=\\angle AOQ$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>",
+      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. $\\angle QRB=x$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>",
       "choices": [
         "$34^\\circ$",
         "$45^\\circ$",
@@ -565,8 +625,8 @@ window.examData = {
         "$58^\\circ$",
         "$64^\\circ$"
       ],
-      "answer": "⑤",
-      "solution": "$\\angle APQ=32^\\circ$는 호 AQ를 보는 원주각이고 $\\angle AOQ$는 같은 호를 보는 중심각이다.\n중심각은 원주각의 2배이므로 $x=\\angle AOQ=2\\cdot32^\\circ=64^\\circ$이다. 답은 ⑤이다.",
+      "answer": "④",
+      "solution": "$\\angle APQ$와 $\\angle ARQ$는 같은 호 AQ를 보는 원주각이므로 $\\angle ARQ=\\angle APQ=32^\\circ$이다.\n$\\overline{AB}$가 지름이므로 반원을 보는 원주각 $\\angle ARB=90^\\circ$이다.\n따라서 $x=\\angle QRB=\\angle ARB-\\angle ARQ=90^\\circ-32^\\circ=58^\\circ$이다. 답은 ④이다.",
       "level": "하",
       "category": "원주각",
       "originalCategory": "원주각",
@@ -590,7 +650,11 @@ window.examData = {
         "원주각",
         "중심각"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q15.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q15.png",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 지름 AB가 놓인 원 O 위에 점 P, Q, R이 있다. 호 AQ와 이를 보는 원주각 APQ, ARQ는 파란색으로 32도이고, 지름 위의 각 ARB는 직각이며, 구하는 각 QRB는 x로 분홍색이다.",
+      "solutionImageCaption": "각 APQ와 각 ARQ는 같은 호 AQ를 보는 원주각이므로 각 ARQ=32°이다. AB가 지름이므로 각 ARB=90°이다. 따라서 x=각 QRB=90°−32°=58°이다. 정답은 ④ 58°이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q16",
@@ -630,7 +694,12 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q16.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q16_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 지름 AB가 놓인 원 O 위에 점 C, P가 있다. AC는 4cm인 주황색, 지름 AB는 8로 표시한 보라색, BC는 초록색이다. 각 APC와 각 ABC는 30도로 파란색이고 각 ACB는 직각이다.",
+      "solutionImageCaption": "AB가 지름이므로 각 ACB=90°이고, 같은 호를 보는 원주각이므로 각 ABC=30°이다. sin 30°=AC÷AB에서 AB=8 cm이다. cos 30°=BC÷AB에서 BC=8×(2분의 √3)이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q17",
@@ -669,7 +738,12 @@ window.examData = {
         "원주각",
         "중심각"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q17.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q17_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D를 이은 사각형이다. 각 C는 85도로 파란색이고 마주 보는 각 A는 분홍색이다.",
+      "solutionImageCaption": "네 점이 한 원 위에 있으므로 네 점을 이은 사각형은 원에 내접한다. 마주 보는 두 각의 합이 180°이므로 각 BAD=180°−85°=95°이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q18",
@@ -708,7 +782,12 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q18.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q18_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 지름 AB가 10인 원 O 위의 점 C와 직각삼각형 ABC이다. BC는 6인 초록색, AC는 8인 파란색, AB는 10인 주황색 변이고 각 A는 분홍색이다.",
+      "solutionImageCaption": "AB가 지름이므로 각 ACB=90°이고 AC=√(10²−6²)=8이다. sin A는 BC÷AB, cos A는 AC÷AB이므로 두 값의 합은 10분의 (6+8)이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q19",
@@ -747,7 +826,12 @@ window.examData = {
         "원의 접선",
         "접점"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q19.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q19_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 원에 그은 두 접선 PA, PB와 접점 A, B가 있다. 반지름 OA, OB는 점선이고 접점에서 직각이며, 각 P는 35도로 파란색, 중심각 x는 분홍색이다.",
+      "solutionImageCaption": "접점에서 반지름과 접선이 수직이므로 각 OAP=각 OBP=90°이다. 꼭짓점이 A, O, B, P인 사각형의 내각의 합이 360°이므로 x+90°+35°+90°=360°이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q20",
@@ -786,7 +870,12 @@ window.examData = {
         "원의 접선",
         "접점"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q20.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q20_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 세 접점 D, E, F이다. 변 AB, BC, CA는 각각 7, 9, 8이다. 점 A에서 접점까지의 두 길이는 u로 파란색, B에서는 v로 주황색, C에서는 t로 초록색이다.",
+      "solutionImageCaption": "접선의 길이를 u, v, t라 하면 u+v=7, v+t=9, u+t=8이다. 두 번째와 세 번째 식을 더해 첫 번째를 빼면 2t=10이므로 t=5이다. CF=t이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "q21",
@@ -825,7 +914,12 @@ window.examData = {
         "원의 접선",
         "접점"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q21.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q21_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 지름 AT가 놓인 원 O와 점 T에서의 접선 위의 점 P이다. 각 A는 25도로 파란색, 각 APT는 분홍색이고 점 T에서 직각이다.",
+      "solutionImageCaption": "접선과 반지름은 수직이므로 각 ATP=90°이다. 삼각형 APT의 내각의 합이 180°이므로 각 APT=180°−90°−25°=65°이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "s01",
@@ -858,7 +952,12 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s01.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s01_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/s01-solution.svg",
+      "solutionImageAlt": "해설 그림: 각 B가 직각인 직각삼각형 ABC이다. AB는 3cm인 초록색, BC는 4cm인 파란색, 빗변 AC는 주황색 변이고 각 C는 분홍색이다.",
+      "solutionImageCaption": "피타고라스 정리로 AC=√(3²+4²)=5 cm이다. 각 C에서 맞은편 변은 AB(초록), 이웃한 변은 BC(파랑), 빗변은 AC(주황)이므로 sin C는 5분의 3, cos C는 5분의 4, tan C는 4분의 3이다. 정답은 AC=5 cm, sin C=5분의 3, cos C=5분의 4, tan C=4분의 3이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "s02",
@@ -891,7 +990,11 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s02.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s02.png",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/s02-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름이 1인 단위원에서 원점 O와 각 57도를 이루는 반직선이 원과 점 A에서, 오른쪽 접선과 점 C에서 만난다. 가로 선분 OB는 파란색(코사인), 세로 선분 AB는 초록색(사인), 접선 위의 선분 DC는 주황색(탄젠트)이다.",
+      "solutionImageCaption": "반지름이 1인 사분원에서 점 A의 가로좌표 OB가 코사인, 세로좌표 AB가 사인이고, 접선 x=1 위의 높이 DC가 탄젠트이다. 그림에서 읽은 값은 sin 57°≈0.84, cos 57°≈0.55, tan 57°≈1.54이다. 가로·세로 좌표는 이미 반올림한 근삿값이므로 0.84÷0.55를 다시 계산하지 않고 접선 위의 높이를 그대로 읽는다. 정답은 sin 57°≈0.84, cos 57°≈0.55, tan 57°≈1.54이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "s03",
@@ -925,7 +1028,12 @@ window.examData = {
         "기울기",
         "절편"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s03.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s03_question-v2.svg",
+      "imageSize": "full",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/s03-solution.svg",
+      "solutionImageAlt": "해설 그림: x축과 y축 위에 파란색 직선이 그려져 있다. 직선은 x축의 -2에서 x축과 만나고 x축과 이루는 각은 60도로 분홍색으로 표시되어 있다.",
+      "solutionImageCaption": "직선의 기울기는 x축과 이루는 각의 탄젠트이므로 tan 60°=√3이다. x절편 −2를 지나므로 y=√3x+b에 (−2, 0)을 넣으면 b=2√3이다. 정답은 (1) √3, (2) 2√3, (3) y=√3x+2√3이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "s04",
@@ -959,7 +1067,11 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s04.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s04.png",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/s04-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심이 O인 두 동심원이 있고 큰 원의 현 AB가 작은 원에 점 H에서 접한다. OH는 6cm인 파란색, OA는 8cm인 초록색, AH는 2√7cm이고 HB와 같은 길이로 주황색이다.",
+      "solutionImageCaption": "OH⊥AB이고 OH=6 cm, OA=8 cm이므로 AH=√(8²−6²)=2√7 cm이다. H는 AB의 중점이므로 AB=2×AH이다. 정답은 4√7 cm이다.",
+      "solutionImageSize": "full"
     }
   ],
   "sourceRef": "icefoxtail/AP------@18bfb06a8e153b3d91533a53aafbfecaee0b5fca",

@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const { test } = require('node:test');
 
 const root = path.resolve(__dirname, '..');
@@ -69,7 +70,77 @@ assert.ok(classroomPlanner.includes('PDF 다시 생성'), 'teacher exam detail s
 assert.ok(archiveIndex.includes('pdf_qpp:'), 'archive assignment should persist the selected QPP');
 assert.ok(assessment.includes('pdf_qpp:'), 'mixer assignment should persist the selected QPP');
 assert.ok(assessment.includes('출제본 PDF를 준비하는 중입니다.'), 'mixer class issuing should show PDF progress');
-assert.ok(studentPortal.includes('renderOmrPdfAction(row)'), 'student home cards should expose direct PDF download');
+
+function studentFunction(name) {
+  const start = studentPortal.search(new RegExp(`^    (?:async )?function ${name}\\(`, 'm'));
+  assert.notEqual(start, -1, `student renderer function not found: ${name}`);
+  const end = studentPortal.indexOf('\n    }', start);
+  assert.notEqual(end, -1, `student renderer function end not found: ${name}`);
+  const declaration = studentPortal.slice(start, end + '\n    }'.length);
+  new vm.Script(declaration, { filename: `student/index.html:${name}` });
+  return declaration;
+}
+
+function renderStudentScreensWithExam(overrides = {}) {
+  const exam = {
+    assignment_id: 'student-pdf-assignment',
+    exam_title: 'Issued paper',
+    question_count: 20,
+    is_submitted: 0,
+    archive_file: 'exams/synthetic-source.js',
+    pdf_status: 'ready',
+    ...overrides
+  };
+  const context = vm.createContext({
+    URL, URLSearchParams,
+    isTeacherPreview: false,
+    teacherPreviewStudentId: '', omrListFilter: 'all',
+    homeData: { student: { grade: '중2' } }, session: {},
+    window: { location: { href: 'https://student.example/apmath/student/' } },
+    getStudentPortalAssignments: () => [exam],
+    splitAssignments: () => ({ missing: [], done: [] })
+  });
+  vm.runInContext([
+    'escapeHtml', 'getStudentPortalRecordedSubmission', 'buildOmrReviewUrl',
+    'isOmrReviewAvailable', 'isLegacyMixedOmrReview', 'renderOmrReviewActions',
+    'renderOmrPdfAction', 'renderOmrExamCard', 'renderOmrHomeSection',
+    'groupStudentPortalExams', 'geometryLabHref', 'renderGeometryLabEntry',
+    'renderStudentQuickActions', 'renderOmrExamBrowser'
+  ].map(studentFunction).join('\n'), context);
+  return {
+    home: context.renderStudentQuickActions() + context.renderOmrHomeSection(),
+    exams: context.renderOmrExamBrowser([exam])
+  };
+}
+
+test('the home exam entrance leads to the full list with each ready PDF download', () => {
+  for (const readiness of [{ pdf_status: 'ready' }, { pdf_status: 'pending', pdf_ready: true }]) {
+    const { home, exams: html } = renderStudentScreensWithExam(readiness);
+    assert.match(home, /data-portal-feature="exams" onclick="renderOmrExams\(\)"/, 'the first-level home control opens the actual exam list');
+    assert.match(html, /data-assignment-id="student-pdf-assignment"/, 'the full list contains the issued assignment');
+    const download = html.match(/<button\b[^>]*onclick="downloadExamPdf\('student-pdf-assignment'\)"[^>]*>/);
+    assert.ok(download, 'a server-ready artifact must have its assignment-specific download action in the full exam list');
+    assert.ok(!/\bdisabled\b/.test(download[0]), 'a ready PDF download must be enabled');
+    assert.ok(html.includes("renderOmrInput('student-pdf-assignment')"), 'a normal unsubmitted assignment retains its OMR action');
+  }
+});
+
+test('the full student exam list keeps review-only assignments read-only even when a PDF is ready', () => {
+  const { exams: html } = renderStudentScreensWithExam({ is_review_only: true, pdf_ready: true });
+  assert.ok(!html.includes('downloadExamPdf('), 'review-only assignments must retain the existing PDF restriction');
+  assert.ok(!html.includes('renderOmrInput('), 'review-only assignments must not expose OMR input');
+  assert.ok(html.includes("openOmrReview('student-pdf-assignment', 'exam')"), 'the existing read-only paper viewer remains available');
+});
+
+test('the full student exam list cannot offer a download before the PDF artifact is ready', () => {
+  for (const pdf_status of ['pending', 'generating', 'failed']) {
+    const { exams: html } = renderStudentScreensWithExam({ pdf_status });
+    assert.ok(!html.includes('downloadExamPdf('), `${pdf_status} artifacts must not produce a download action`);
+    if (pdf_status !== 'pending') {
+      assert.match(html, /<button\b[^>]*disabled[^>]*>PDF [^<]+<\/button>/, `${pdf_status} PDF status must remain non-interactive`);
+    }
+  }
+});
 
 test('PDF cache identity stays stable across temporary output envelope requests', async () => {
   const { buildPdfIdentity } = await import('../apmath/worker-backup/worker/routes/exam-pdf.js');

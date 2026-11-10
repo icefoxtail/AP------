@@ -55,7 +55,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|1",
-    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하고, 직각삼각형 OHA에 피타고라스 정리를 적용한다."
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하고, 직각삼각형 OHA에 피타고라스 정리를 적용한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB에 중심 O에서 수선 OH를 내린 그림이다. 반지름 OA는 5cm, OH는 3cm이고, H에서 직각이며 AH와 HB는 같은 길이(분홍)이다.",
+    "solutionImageCaption": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 AH=HB이다. 직각삼각형 OHA에서 AH=4cm이므로 AB=2×4=8cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -112,7 +116,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|2",
-    "decisiveStep": "같은 중심거리의 두 현은 같고, 중심에서 현에 내린 수선은 현을 이등분한다."
+    "decisiveStep": "같은 중심거리의 두 현은 같고, 중심에서 현에 내린 수선은 현을 이등분한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 두 현 AB, CD에 중심에서 수선 OM, ON을 내린 그림이다. OM과 ON은 같은 길이(초록)이고, AM, MB, CN, ND는 모두 같은 길이(파랑)이다.",
+    "solutionImageCaption": "OM=ON이므로 AB=CD이다. 수선은 현을 이등분하므로 AM=BM, CN=DN이고 CD=2AM이다. 그러나 AM과 OM이 같다는 조건은 없다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -169,7 +177,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|3",
-    "decisiveStep": "같은 중심거리의 두 현이 같아져 이등변삼각형의 밑각을 구한다."
+    "decisiveStep": "같은 중심거리의 두 현이 같아져 이등변삼각형의 밑각을 구한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형 ABC이다. 중심에서 두 현 AB, AC에 내린 수선 OM, ON은 같은 길이(초록)이고, AB와 AC는 같은 길이(분홍)이다. 꼭지각은 50도, 두 밑각은 같은 크기(파랑)이다.",
+    "solutionImageCaption": "OM=ON이므로 AB=AC이고 삼각형 ABC는 이등변삼각형이다. 두 밑각은 (180°−50°)÷2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -226,7 +238,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|4",
-    "decisiveStep": "접선과 반지름의 수직 관계로 직각삼각형의 접선 길이를 구한다."
+    "decisiveStep": "접선과 반지름의 수직 관계로 직각삼각형의 접선 길이를 구한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 PT와 접점 T, 외부의 점 P를 나타낸 그림이다. 반지름 OT는 5, OP는 10이고 T에서 직각이다.",
+    "solutionImageCaption": "직각삼각형 OPT에서 PT²=10²−5²=75이므로 PT=5√3이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -283,7 +299,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|5",
-    "decisiveStep": "두 접선 삼각형의 합동으로 중심각과 이등변삼각형의 밑각을 구한다."
+    "decisiveStep": "두 접선 삼각형의 합동으로 중심각과 이등변삼각형의 밑각을 구한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 접선 PA, PB를 그은 그림이다. PA와 PB는 같은 길이(분홍), OA와 OB는 같은 길이(초록)이고 각 APB는 30도, 각 AOB는 150도(분홍)이다. 삼각형 AOB의 두 밑각은 같은 크기(파랑)이고 그중 하나가 x이다.",
+    "solutionImageCaption": "합동인 두 직각삼각형에서 각 APO는 15°, 각 AOP는 75°이므로 각 AOB는 150°이다. 삼각형 AOB는 이등변삼각형이므로 x=(180°−150°)÷2이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -340,7 +360,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|6",
-    "decisiveStep": "반지름과 접선이 이루는 직각삼각형에서 접선 길이를 구해 두 삼각형의 넓이를 합한다."
+    "decisiveStep": "반지름과 접선이 이루는 직각삼각형에서 접선 길이를 구해 두 삼각형의 넓이를 합한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 접선 PA, PB를 그은 그림이다. OA는 9cm, OP는 15cm, PA는 12cm이고 A, B에서 직각이다. 사각형 A, P, B, O가 합동인 두 직각삼각형(파랑)으로 나뉜다.",
+    "solutionImageCaption": "직각삼각형 OAP에서 AP=12cm이다. 합동인 두 삼각형의 넓이는 각각 2분의 1×9×12=54(cm²)이므로 사각형의 넓이는 108cm²이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -397,7 +421,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|7",
-    "decisiveStep": "꼭짓점에서 접점까지의 길이를 같게 놓아 세 변의 연립관계로 BE를 구한다."
+    "decisiveStep": "꼭짓점에서 접점까지의 길이를 같게 놓아 세 변의 연립관계로 BE를 구한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에 내접하는 원 O와 접점 D, E, F를 나타낸 그림이다. 세 변의 길이는 8, 6, 7이고, 한 꼭짓점에서 접점까지의 두 접선은 같은 색(파랑, 주황, 초록)으로 같은 길이를 나타낸다.",
+    "solutionImageCaption": "같은 점에서 그은 접선의 길이가 같으므로 BD=BE=x, AD=AF=y, CE=CF=z로 두면 x+y=8, y+z=7, x+z=6이다. 첫째 식과 셋째 식을 더하고 둘째 식을 빼면 2x=7이므로 x=2분의 7이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -454,7 +482,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|8",
-    "decisiveStep": "같은 호를 보는 원주각은 중심각의 절반이다."
+    "decisiveStep": "같은 호를 보는 원주각은 중심각의 절반이다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 호 AB(파랑)에 대한 중심각 AOB는 120도(파랑)이고, 원 위의 점 P에서 호 AB를 보는 원주각 x(주황)가 있다.",
+    "solutionImageCaption": "같은 호 AB에 대한 원주각은 중심각의 절반이므로 x=120°÷2=60°이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -511,7 +543,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|9",
-    "decisiveStep": "지름에 대한 직각과 같은 현을 보는 원주각의 크기를 이용한다."
+    "decisiveStep": "지름에 대한 직각과 같은 현을 보는 원주각의 크기를 이용한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 AC는 지름이고 B에서 직각이다. 각 CAB는 25도(주황)이다. 같은 현 AB를 보는 원주각 ACB와 ADB(초록)는 크기가 같고, ADB가 x이다.",
+    "solutionImageCaption": "AC가 지름이므로 각 ABC는 90°이다. 삼각형 ABC에서 각 ACB는 180°−90°−25°=65°이다. 같은 현 AB를 보는 원주각이므로 x=65°이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -568,7 +604,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|10",
-    "decisiveStep": "C가 놓인 쪽을 확인해 큰 호 AB를 구한 뒤 원주각을 계산한다."
+    "decisiveStep": "C가 놓인 쪽을 확인해 큰 호 AB를 구한 뒤 원주각을 계산한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB는 100도이고 작은 호 AB는 파랑, 큰 호 AB는 주황으로 표시되어 있다. 작은 호 위의 점 C에서 큰 호 AB를 보는 원주각이 x이다.",
+    "solutionImageCaption": "큰 호 AB는 360°−100°=260°이고 점 C는 큰 호 AB를 보는 원주각이므로 x=260°÷2=130°이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -625,7 +665,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|11",
-    "decisiveStep": "교차 현 각의 합 공식과 호의 비를 함께 사용한다."
+    "decisiveStep": "교차 현 각의 합 공식과 호의 비를 함께 사용한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D를 잇는 두 현 AC, BD가 점 P에서 만난다. 각 BPC는 70도(파랑), 호 BC는 주황(t), 호 AD는 분홍(t의 1.5배)이고 호 BC를 보는 원주각 BDC가 x(초록)이다.",
+    "solutionImageCaption": "호 BC를 t°라 하면 호 AD는 t의 2분의 3배이다. 2분의 1×(t+2분의 3t)=70에서 t=56이다. x는 호 BC를 보는 원주각이므로 x=56°÷2=28°이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -682,7 +726,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|12",
-    "decisiveStep": "접선이 이루는 각에서 중심각을 구하고, 남은 호로 원주각을 구한다."
+    "decisiveStep": "접선이 이루는 각에서 중심각을 구하고, 남은 호로 원주각을 구한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원 O와 접점 D, E, F를 이은 삼각형 DEF이다. 각 A는 50도(파랑), 각 DOF는 130도(분홍), 각 EFD는 55도(주황)이고 각 FDE가 x(초록)이다.",
+    "solutionImageCaption": "각 DOF=180°−50°=130°이다. 각 EFD=55°가 보는 호 ED는 110°이므로 호 FE=360°−130°−110°=120°이다. 따라서 x=120°÷2=60°이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -739,7 +787,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|13",
-    "decisiveStep": "두 외부 할선각과 내접각이 나타내는 호의 차를 연결한다."
+    "decisiveStep": "두 외부 할선각과 내접각이 나타내는 호의 차를 연결한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 A, B, C, D에서 변 AB, DC의 연장이 점 P에서, 변 AD, BC의 연장이 점 Q에서 만난다. 각 BPC는 30도(파랑), 각 ADC는 115도(주황)이고 각 AQB가 x(초록)이다.",
+    "solutionImageCaption": "각 ADC=115°에서 호 AB+호 BC=230°, 호 AD+호 CD=130°이다. 호 BC−호 AD=2×30°=60°이므로 호 AB−호 CD=100°−60°=40°이고 x=40°÷2=20°이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -796,7 +848,11 @@ window.questionBank = [
     "reviewStatus": "ITEM_RECOVERY_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|14",
-    "decisiveStep": "삼각형 ACD의 남은 각을 구하고, 현 AD를 보는 같은 쪽 원주각 ∠ACD와 ∠ABD를 같게 둔다."
+    "decisiveStep": "삼각형 ACD의 남은 각을 구하고, 현 AD를 보는 같은 쪽 원주각 ∠ACD와 ∠ABD를 같게 둔다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 A, B, C, D와 대각선 AC, BD이다. 각 CAD는 115도(파랑), 각 ADC는 40도(주황)이다. 옆에 확대한 두 그림은 점 A의 각 CAD와 점 B의 각 ABD(x)이다. 같은 현 AD를 보는 두 원주각(초록)은 같은 크기이고 B에서의 각이 x이다.",
+    "solutionImageCaption": "삼각형 ACD에서 각 ACD=180°−115°−40°=25°이다. 각 ABD와 각 ACD는 같은 현 AD를 보는 원주각이므로 x=25°이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -853,7 +909,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|15",
-    "decisiveStep": "접선과 현이 이루는 각은 해당 현을 보는 원주각과 같다."
+    "decisiveStep": "접선과 현이 이루는 각은 해당 현을 보는 원주각과 같다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A에서 접선 LT를 그은 그림이다. 접선과 현 AC가 이루는 각은 50도(주황), 접선과 현 AB가 이루는 각은 70도(파랑)이고, 같은 현 AB를 보는 원주각 ACB(x)는 70도와 같은 크기(파랑)로 표시했다.",
+    "solutionImageCaption": "접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=70°이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -910,7 +970,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|16",
-    "decisiveStep": "접선-현각으로 삼각형 ABD를 구하고 내접사각형의 대각을 사용한다."
+    "decisiveStep": "접선-현각으로 삼각형 ABD를 구하고 내접사각형의 대각을 사용한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 A, B, C, D와 대각선 BD, 점 A에서의 접선 LT이다. 왼쪽에 확대한 그림은 점 A 부근의 각이다. 접선과 현 AD가 이루는 각과 원주각 ABD는 30도(파랑), 각 ADB는 40도(주황), 각 DAB는 110도(분홍)이고 각 DCB가 x(초록)이다.",
+    "solutionImageCaption": "접선과 현 AD가 이루는 각 30°는 각 ABD와 같다. 삼각형 ABD에서 각 DAB=180°−40°−30°=110°이다. 내접사각형에서 x=180°−110°=70°이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -967,7 +1031,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|17",
-    "decisiveStep": "접선과 반지름의 수직, 반지름과 지름의 길이 관계로 각을 연쇄 계산한다."
+    "decisiveStep": "접선과 반지름의 수직, 반지름과 지름의 길이 관계로 각을 연쇄 계산한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 큰 반원의 지름 AB와 작은 반원(중심 O′, 지름 BC)을 그린 그림이다. 접점 Q에서 O′Q는 접선과 직각이고 O′C와 O′Q는 같은 길이(초록)이다. 각 QAC는 28도(파랑), 각 CO′Q는 62도(주황), 각 O′CQ는 59도(분홍)이고 각 AQC가 x(보라)이다.",
+    "solutionImageCaption": "각 CO′Q=62°이고 이등변삼각형에서 각 O′CQ=59°이므로 각 ACQ=121°이다. 삼각형 AQC에서 x=180°−28°−121°=31°이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1018,7 +1086,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|18",
-    "decisiveStep": "중심에서 같은 거리에 있는 현의 길이와 현의 수직이등분 성질을 사용한다."
+    "decisiveStep": "중심에서 같은 거리에 있는 현의 길이와 현의 수직이등분 성질을 사용한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC이다. 중심 O에서 현 AB, AC에 내린 수선의 발 P, Q는 각각 현의 중점이고 OP와 OQ는 같은 길이(초록)이다. AC는 6cm, 각 ACB는 50도이며 각 ABC(y)와 같은 크기(주황)이고 각 BAC가 x(분홍)이다.",
+    "solutionImageCaption": "AB=AC이고 AQ=2분의 1AC=3cm, AB=6cm, BP=2분의 1AB=3cm이다. 이등변삼각형이므로 y=50°, x=180°−50°−50°=80°이다. 정답은 AQ=3cm, AB=6cm, BP=3cm, y=50°, x=80°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1069,7 +1141,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|19",
-    "decisiveStep": "현의 수직이등분선과 피타고라스 정리로 반지름을 구한다."
+    "decisiveStep": "현의 수직이등분선과 피타고라스 정리로 반지름을 구한다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 모양 접시의 일부를 나타낸 그림이다. 현 AB의 중점 M에서 수직이등분선이 중심 O를 지나 원과 점 C에서 만난다. AM과 MB는 9cm로 같고(파랑) MC는 3cm이며 OM을 d, 반지름을 r이라 하였고 OA와 OC는 같은 길이(주황)이다. 오른쪽 선분은 OM과 MC를 늘려 그린 것이다.",
+    "solutionImageCaption": "OM=d라 하면 r=d+3이고 직각삼각형 OMA에서 (d+3)²=d²+81이다. 6d+9=81이므로 d=12이고 반지름은 15cm이다. 정답은 15cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1120,7 +1196,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|20",
-    "decisiveStep": "각 꼭짓점에서 접선 길이가 같음을 네 변에 대입해 합을 맞춘다."
+    "decisiveStep": "각 꼭짓점에서 접선 길이가 같음을 네 변에 대입해 합을 맞춘다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 A, B, C, D와 접점 P, Q, R, S이다. 각 꼭짓점에서 두 접점까지의 접선은 같은 색과 같은 표시로 같은 길이를 나타낸다(A 파랑, B 주황, C 초록, D 분홍).",
+    "solutionImageCaption": "AP=AS, BP=BQ, CQ=CR, DR=DS이다. AB+CD=(AP+PB)+(CR+RD)=(AS+BQ)+(CQ+DS)=(AS+SD)+(BQ+QC)=AD+BC이다. 따라서 AB+CD=AD+BC이다. 증명 과정은 해설과 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1171,7 +1251,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|21",
-    "decisiveStep": "10 m 현을 보는 원주각이 60°인 원의 호를 카메라 레일로 잡는다."
+    "decisiveStep": "10 m 현을 보는 원주각이 60°인 원의 호를 카메라 레일로 잡는다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 10m인 무대 AB를 보는 원주각 ACB가 60도(파랑)인 점 C와 원의 중심 O를 나타낸 그림이다. 중심각 AOB는 120도(주황)이다.",
+    "solutionImageCaption": "원주각이 60°이면 같은 호의 중심각은 120°이다. 현 AB=10m이므로 반지름은 R=3분의 10√3m이다. A, B를 잇는 큰 호 위의 어느 점에서도 AB를 보는 각이 60°이므로 카메라 레일은 이 큰 호 모양으로 설치한다. 정답은 현 AB를 보는 각이 60°인 원의 큰 호이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1222,6 +1306,10 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|22",
-    "decisiveStep": "높이의 수직 관계로 같은 지름을 직각으로 보는 두 각을 찾아 원에 내접함을 보인다."
+    "decisiveStep": "높이의 수직 관계로 같은 지름을 직각으로 보는 두 각을 찾아 원에 내접함을 보인다.",
+    "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 높이 AD, BE, CF와 높이의 교점 P를 나타낸 두 그림이다. 왼쪽은 변 AB를 지름(파랑)으로 하는 원과 D, E의 직각 표시, 오른쪽은 선분 AP를 지름(주황)으로 하는 원과 E, F의 직각 표시이며 원 위의 네 점이 만드는 사각형을 연한 색으로 칠했다.",
+    "solutionImageCaption": "변 AB를 지름으로 하는 원에서는 D와 E가 직각이라 네 점이 한 원 위에 있고, 선분 AP를 지름으로 하는 원에서는 E와 F가 직각이라 네 점이 한 원 위에 있다. 나머지 경우도 같은 방법으로 찾는다(지름 BC, CA, BP, CP). 정답은 사각형 A, B, D, E와 B, C, E, F와 C, A, D, F와 A, E, P, F와 B, D, P, F와 C, D, E, P이다.",
+    "solutionImageSize": "full"
   }
 ];

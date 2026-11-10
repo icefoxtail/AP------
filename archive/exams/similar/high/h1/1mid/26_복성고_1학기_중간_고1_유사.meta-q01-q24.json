@@ -1,0 +1,2432 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_복성고_1학기_중간_고1_유사-candidate-v1",
+  "examUid": "26_복성고_1학기_중간_고1_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사.js",
+  "expectedSourceBlobSha1": "6292b99e3793ae5b319672554358551bd16d0ab9",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "registryChanges": [],
+  "openDefects": [
+    {
+      "qid": 5,
+      "kind": "visual",
+      "severity": "low",
+      "round": 1,
+      "summary": "해설 그림 UNSUPPORTED: 직육면체 ABCD-EFGH와 삼각형 AFC를 그리는 입체 그림(solid-figure-v1)은 유사시험지 검사기(verify_similar_exam)에 입력 검증 계약이 없어 사용할 수 없다. 해설 글에서 변수 a, b, c와 세 대각선을 모두 적어 풀이를 완결했다. 심각도 low, 라운드 1."
+    },
+    {
+      "qid": 19,
+      "kind": "visual",
+      "severity": "low",
+      "round": 1,
+      "summary": "해설 그림 UNSUPPORTED: 원의 중심 (8-2√6, 2√6-2)와 반지름 8-2√6이 무리수여서 정확한 값으로 놓는 작도 점(construction-spike-v1은 정수·분수 좌표만 받는다)으로는 그릴 수 없고, 근사값으로 그리면 거짓 정확값이 된다. 해설 글에서 좌표와 식을 모두 적어 풀이를 완결했다. 심각도 low, 라운드 1."
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "직선과 포물선",
+          "l4": "교점 개수",
+          "recordId": "H1-RPM-168",
+          "l3Label": "직선과 포물선",
+          "l4Label": "교점 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-168 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "직선과 포물선",
+        "rpmPrimaryL4": "교점 개수",
+        "rpmPrimaryRecordId": "H1-RPM-168",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_LINE_INTERSECTION",
+          "CC_QUADRATIC_DISCRIMINANT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "이차함수와 직선의 교점 여부를 판별식으로 판정하는 직접 적용이라 하",
+        "difficultyBasis": "보기 세 개를 각각 연립해 판별식 부호를 한 번씩 확인하는 2단계 계산이라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 보기만으로 완결되고 판별식 계산이 핵심이어서 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "세 직선의 교점 여부를 판별식 부호로 확정하는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이차함수의 그래프와 만나는 직선을 보기에서 판별식으로 가려낸다.",
+          "crossConcept": "두 식을 연립한 이차방정식의 판별식 부호로 교점 존재를 판정하고(CC_QUADRATIC_LINE_INTERSECTION) 판별식 계산을 쓴다.",
+          "condition": "별도 범위·정수 제한이 없어 조건 키는 없다(근거: 풀이에서 제한이 쓰이지 않음).",
+          "integration": "보기별 독립 판정이라 CASE_BRANCH.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 직선과 포물선"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 1,
+          "variationNote": "그래프를 위로 볼록한 $y=-x^2+2x+3$으로 바꾸고, 원본의 직선 1개 정답을 보기 2개 정답((가), (다))으로 바꾸었다. x축 판정은 실근 존재, 나머지는 판별식 부호이다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-168",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 이차함수의 그래프와 만나는 직선을 보기에서 판별식으로 가려낸다. → 직선과 포물선; PT/TPL(PT_H1_QUADRATIC_GRAPH_INTERSECTION,TPL_H1_QUADRATIC_INTERSECTION_TANGENCY)이 크로스워크 H1-RPM-168의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "다항식의 덧셈·뺄셈",
+          "recordId": "H1-RPM-135",
+          "l3Label": "다항식의 덧셈과 뺄셈",
+          "l4Label": "다항식의 덧셈·뺄셈",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-135 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "다항식의 덧셈·뺄셈",
+        "rpmPrimaryRecordId": "H1-RPM-135",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_LINEAR_COMBINATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "다항식의 실수배와 덧셈·뺄셈을 그대로 계산하는 기본 연산이라 하",
+        "difficultyBasis": "실수배 두 번과 뺄셈 한 번을 하는 직접 계산 1단계라 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "동류항 정리 계산이 전부이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 다항식의 일차결합 $3A-2B$를 동류항끼리 정리한다.",
+          "crossConcept": "다항식의 실수배와 뺄셈에서 부호가 바뀌는 항을 동류항 정리로 계산한다.",
+          "condition": "제한 조건이 없어 조건 키는 없다.",
+          "integration": "한 번의 직접 계산이라 NONE.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 덧셈과 뺄셈"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 2,
+          "variationNote": "원본의 $2A+B$를 $3A-2B$로 바꾸어 뺄셈의 부호 처리가 들어가도록 했고 다항식의 계수도 모두 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-135",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 다항식의 일차결합 $3A-2B$를 동류항끼리 정리한다. → 다항식의 덧셈과 뺄셈; PT/TPL(PT_H1_POLY_OPERATION_EXPANSION,TPL_H1_POLY_OPERATION_DIRECT)이 크로스워크 H1-RPM-135의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "차수·계수 정리",
+          "recordId": "H1-RPM-134",
+          "l3Label": "다항식의 덧셈과 뺄셈",
+          "l4Label": "차수·계수 정리",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-134 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "차수·계수 정리",
+        "rpmPrimaryRecordId": "H1-RPM-134",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [
+          "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
+          "CC_EXPONENT_SUM_COMBINATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "전개한 뒤 특정 차수의 계수를 읽어 연립하는 직접 적용이라 하",
+        "difficultyBasis": "두 곱의 전개, 계수 비교, 미지수 두 개 순차 결정으로 2단계라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "전개와 계수 비교 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 곱을 전개하여 $x$의 계수와 상수항 조건에서 $a,b$를 정한다.",
+          "crossConcept": "곱의 전개에서 목표 차수에 기여하는 항만 모아 계수를 구한다.",
+          "condition": "$a,b$는 상수일 뿐 풀이를 제한하는 조건이 없어 조건 키는 없다.",
+          "integration": "계수 조건으로 $a$를 먼저 구한 뒤 $b$를 구하는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 덧셈과 뺄셈"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 3,
+          "variationNote": "원본의 $3(x-1)(x+a)+(x^2-2)(x+b)$를 $2(x+1)(x+a)+(x^2-3)(x+b)$로 바꾸고 조건 수치와 구하는 식($a+3b$)을 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-134",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 곱을 전개하여 $x$의 계수와 상수항 조건에서 $a,b$를 정한다. → 다항식의 덧셈과 뺄셈; PT/TPL(PT_H1_POLY_OPERATION_EXPANSION,TPL_H1_POLY_OPERATION_DIRECT)이 크로스워크 H1-RPM-134의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "conceptClusterKey": "H22-C-04-COMPLEX_OPERATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "복소수",
+          "l3": "복소수의 연산",
+          "l4": "사칙연산",
+          "recordId": "H1-RPM-156",
+          "l3Label": "복소수의 연산",
+          "l4Label": "사칙연산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-156 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "복소수",
+        "rpmPrimaryL3": "복소수의 연산",
+        "rpmPrimaryL4": "사칙연산",
+        "rpmPrimaryRecordId": "H1-RPM-156",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "crossConceptKeys": [
+          "CC_COMPLEX_DIVISION_RATIONALIZATION",
+          "CC_IMAGINARY_UNIT_PERIODICITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "분모의 켤레복소수를 곱하는 나눗셈과 거듭제곱을 세 번 반복하는 계산형이라 중",
+        "difficultyBasis": "세 항을 각각 유리화·거듭제곱한 뒤 합치고 $a^2+b^2$를 구하는 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "복소수의 사칙연산과 거듭제곱 계산이 전부이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "분수 꼴 복소수의 거듭제곱을 계산해 $a+bi$로 나타내고 $a^2+b^2$를 구한다.",
+          "crossConcept": "분모의 켤레복소수를 곱해 실수화하고 $i$의 거듭제곱 주기로 거듭제곱을 줄인다.",
+          "condition": "실수 $a,b$라는 서술 외에 풀이를 제한하는 조건이 없어 조건 키는 없다.",
+          "integration": "세 항을 차례로 계산해 합하는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 복소수: 복소수의 연산"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 4,
+          "variationNote": "원본의 $(1-i)^3, (2/(1+i))^4, ((1+i)/(1-i))^3$을 $(1+i)^5, (4/(1-i))^2, ((1-i)/(1+i))^5$로 바꾸고 지수와 분자를 바꾸어 결과가 $-4+3i$가 되도록 했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "복소수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-156",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 분수 꼴 복소수의 거듭제곱을 계산해 $a+bi$로 나타내고 $a^2+b^2$를 구한다. → 복소수의 연산; PT/TPL(PT_H1_COMPLEX_OPERATION,TPL_H1_COMPLEX_COMPONENT_OPERATION)이 크로스워크 H1-RPM-156의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>복소수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 곱셈",
+          "l4": "곱셈공식",
+          "recordId": "H1-RPM-136",
+          "l3Label": "다항식의 곱셈",
+          "l4Label": "곱셈공식",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-136 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 곱셈",
+        "rpmPrimaryL4": "곱셈공식",
+        "rpmPrimaryRecordId": "H1-RPM-136",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_ALGEBRAIC_VALUE_EVALUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "도형 조건을 합과 제곱합으로 바꾼 뒤 곱셈공식을 적용하는 중간 단계 응용이라 중",
+        "difficultyBasis": "모서리 합, 대각선 제곱의 합, 곱셈공식으로 이어지는 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "직육면체 ABCD-EFGH의 꼭짓점 배치와 세 모서리의 길이를 발문 글로 모두 정의해, 그림 없이도 풀 수 있게 완결했다.",
+          "solution": "UNSUPPORTED",
+          "solutionReason": "직육면체 ABCD-EFGH와 삼각형 AFC를 그리는 입체 그림(solid-figure-v1)은 유사시험지 검사기(verify_similar_exam)에 입력 검증 계약이 없어 사용할 수 없다. 해설 글에서 변수 a, b, c와 세 대각선을 모두 적어 풀이를 완결했다."
+        },
+        "metaRationale": {
+          "problemType": "직육면체의 모서리 합과 대각선 제곱의 합으로 겉넓이를 곱셈공식으로 구한다.",
+          "crossConcept": "면의 대각선에 피타고라스 정리를 적용하고 합과 제곱합에서 곱의 합을 구한다.",
+          "condition": "제한 조건이 없어 조건 키는 없다.",
+          "integration": "합 → 제곱합 → 곱셈공식의 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 곱셈"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 5,
+          "variationNote": "원본의 삼각형 BGD를 삼각형 AFC로 바꾸고 모서리 합(40→44)과 제곱합(76→90)을 바꾸었다. 그림 대신 꼭짓점 배치(밑면 ABCD, 모서리 AE·BF·CG·DH)를 글로 정의했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-136",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 직육면체의 모서리 합과 대각선 제곱의 합으로 겉넓이를 곱셈공식으로 구한다. → 다항식의 곱셈; PT/TPL(PT_H1_POLY_FORMULA_SYMMETRIC,TPL_H1_FORMULA_SYMMETRIC)이 크로스워크 H1-RPM-136의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "항등식",
+          "l4": "수치대입법",
+          "recordId": "H1-RPM-141",
+          "l3Label": "항등식",
+          "l4Label": "수치대입법",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-141 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "항등식",
+        "rpmPrimaryL4": "수치대입법",
+        "rpmPrimaryRecordId": "H1-RPM-141",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "crossConceptKeys": [
+          "CC_SPECIAL_VALUE_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "인수가 0이 되는 값을 대입해 미정계수를 차례로 구하는 표준 유형이라 중",
+        "difficultyBasis": "세 값 대입과 확인, 최종 식 계산의 2단계라 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "수치대입 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "항등식에 특수값을 대입해 $a,b,c$를 정하고 $ab+c$를 구한다.",
+          "crossConcept": "$x=2,\\,-3,\\,0$을 대입하는 수치대입법으로 미정계수를 하나씩 결정한다.",
+          "condition": "제한 조건이 없어 조건 키는 없다.",
+          "integration": "세 값을 차례로 대입해 구하는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 항등식과 나머지정리: 항등식"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 6,
+          "variationNote": "원본의 $a(x-5)+b(x+4)(x-5)=cx(x+4)+3x-6$을 $a(x-2)+b(x+3)(x-2)=cx(x+3)-3x-14$로 바꾸었고 세 값이 모두 정수가 되도록 하여 대입 순서와 확인 과정이 드러나게 했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-141",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 항등식에 특수값을 대입해 $a,b,c$를 정하고 $ab+c$를 구한다. → 항등식; PT/TPL(PT_H1_POLY_IDENTITY_COEFFICIENT,TPL_H1_IDENTITY_SPECIAL_VALUE)이 크로스워크 H1-RPM-141의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>항등식과 나머지정리",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "직선과 포물선",
+          "l4": "교점 개수",
+          "recordId": "H1-RPM-168",
+          "l3Label": "직선과 포물선",
+          "l4Label": "교점 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-168 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "직선과 포물선",
+        "rpmPrimaryL4": "교점 개수",
+        "rpmPrimaryRecordId": "H1-RPM-168",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_LINE_INTERSECTION",
+          "CC_QUADRATIC_DISCRIMINANT_NEGATIVE",
+          "CC_INTEGER_COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 이차함수와 직선의 위치 관계를 각각 판별식으로 처리하고 범위의 공통부분에서 정수를 세는 고난도 응용이라 상",
+        "difficultyBasis": "판별식 두 개, 부등식 두 개, 공통 범위, 경계값(접하는 경우) 제외까지 4단계 이상이라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 직선과 이차함수의 식만으로 완결되고 판별식 계산이 핵심이어서 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "판별식 부호로 범위를 정하는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "직선이 두 이차함수 그래프와 모두 만나지 않는 정수 $k$의 개수를 판별식으로 구한다.",
+          "crossConcept": "연립한 이차방정식의 판별식이 음수인 범위를 각각 구하고 정수 개수를 센다.",
+          "condition": "$k$가 정수라는 조건이 개수 세기에 쓰인다(COND_INTEGER).",
+          "integration": "두 범위를 순서대로 구해 공통부분에서 정수를 세는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 직선과 포물선"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 7,
+          "variationNote": "원본의 $y=2x+k$를 $y=-x+k$로, 두 이차함수를 $y=x^2+2x+6$, $y=-x^2+x-4$로 바꾸었다. 한쪽 경계(k=-3)가 접하는 경우여서 정수 개수에서 제외해야 하도록 했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-168",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 직선이 두 이차함수 그래프와 모두 만나지 않는 정수 $k$의 개수를 판별식으로 구한다. → 직선과 포물선; PT/TPL(PT_H1_QUADRATIC_GRAPH_INTERSECTION,TPL_H1_QUADRATIC_INTERSECTION_TANGENCY)이 크로스워크 H1-RPM-168의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "conceptClusterKey": "H22-C-03-FACTORIZATION",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "수의 계산",
+          "recordId": "H1-RPM-151",
+          "l3Label": "인수분해의 활용",
+          "l4Label": "수의 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-151 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해의 활용",
+        "rpmPrimaryL4": "수의 계산",
+        "rpmPrimaryRecordId": "H1-RPM-151",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_FACTORIZATION_NUMERICAL_APPLICATION",
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "큰 거듭제곱의 나머지를 인수분해 공식으로 처리하는 발상이 필요해 상",
+        "difficultyBasis": "공식 적용, 배수 판정, 나머지 계산, 요일 환산의 3~4단계이나 각 단계가 짧아 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 수식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "인수분해 공식으로 나머지를 구하는 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "큰 거듭제곱을 $7$로 나눈 나머지를 인수분해 공식으로 구해 요일을 정한다.",
+          "crossConcept": "$a^n-1$의 인수 $a-1$이 $7$의 배수임을 이용해 나머지를 구하는 수의 계산이다.",
+          "condition": "제한 조건이 없어 조건 키는 없다.",
+          "integration": "배수 판정 → 나머지 → 요일 환산의 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 인수분해: 인수분해의 활용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 8,
+          "variationNote": "원본의 $8^7+15$일 후(월요일 기준)를 $15^{10}+31$일 후(목요일 기준)로 바꾸었다. 밑 $15=7\\times2+1$을 이용하도록 했고 요일 환산 방향도 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "인수분해"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "인수분해",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-151",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 큰 거듭제곱을 $7$로 나눈 나머지를 인수분해 공식으로 구해 요일을 정한다. → 인수분해의 활용; PT/TPL(PT_H1_POLY_FACTORIZATION,TPL_H1_FACTORIZATION_APPLICATION)이 크로스워크 H1-RPM-151의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>인수분해",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-170 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_EXTREMA_BOUNDED_INTERVAL",
+          "CC_QUADRATIC_GRAPH_INTERSECTION"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 그래프의 교점을 구간으로 삼고 그 위에서 차함수의 최대를 판단하는 응용이라 상",
+        "difficultyBasis": "교점 계산, 차함수 정리, 완전제곱식, 꼭짓점의 구간 포함 판단으로 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 구간만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "해설의 결정 단계를 보이는 그림을 공식 엔진으로 렌더했다: 위로 볼록한 포물선 y=-3(x-2/3)^2+16/3이 x축과 x=-2/3, x=2에서 만나고 꼭짓점 (2/3, 16/3)이 두 교점 사이에 있어 최댓값을 가진다."
+        },
+        "metaRationale": {
+          "problemType": "두 이차함수의 교점의 $x$좌표 사이 구간에서 차함수 $h$의 최댓값을 구한다.",
+          "crossConcept": "교점 방정식을 풀어 구간을 정하고 꼭짓점이 구간 안에 있는지 확인한 뒤 최댓값을 구한다.",
+          "condition": "구간 $\\alpha\\le x\\le\\beta$ 안에서만 최댓값을 판단한다(COND_RESTRICTED_INTERVAL).",
+          "integration": "교점 → 차함수 → 구간 최댓값의 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 최대·최소"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 9,
+          "variationNote": "원본의 $f=2x^2+3x+1$, $g=-x^2+5x+9$를 $f=2x^2-x+1$, $g=-x^2+3x+5$로 바꾸었다. 교점이 $-2/3$, $2$이고 최댓값이 $16/3$이 되도록 설계했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 이차함수의 교점의 $x$좌표 사이 구간에서 차함수 $h$의 최댓값을 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL)이 크로스워크 H1-RPM-170의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "나머지정리",
+          "l4": "고차식 조건",
+          "recordId": "H1-RPM-143",
+          "l3Label": "나머지정리",
+          "l4Label": "고차식 조건",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-143 (FAMILY_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "나머지정리",
+        "rpmPrimaryL4": "고차식 조건",
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+        "crossConceptKeys": [
+          "CC_NESTED_DIVISION_REMAINDER",
+          "CC_LINEAR_REMAINDER_SETUP"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "연속된 두 나눗셈 관계를 하나의 식으로 연결해 이차식으로 나눈 나머지를 구하는 고난도 응용이라 상",
+        "difficultyBasis": "나눗셈 항등식 두 개의 연결, 두 값 대입, 일차 나머지식 설정, 연립으로 5단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 나눗셈 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "나눗셈 항등식과 값 대입 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "$f=(x-2)Q+5$와 $Q$의 나눗셈 조건을 연결해 $f$를 $(x-2)(x-3)$으로 나눈 나머지 $R(x)$의 값을 구한다.",
+          "crossConcept": "중첩된 몫·나머지 관계를 항등식으로 쓰고 $x=2,3$을 대입해 나머지를 일차식으로 결정한다.",
+          "condition": "제한 조건이 없어 조건 키는 없다.",
+          "integration": "첫째 나눗셈의 몫 $Q$를 둘째 조건과 엮어야 $f(3)$이 나오는 상호 의존 구조라 INTERDEPENDENT.",
+          "curriculum": "공통수학1 항등식과 나머지정리: 나머지정리"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 10,
+          "variationNote": "원본의 $x-1$, $x^2-5x+6$, $x^2-4x+3$을 $x-2$, $x^2-4x+3$, $x^2-5x+6$으로 바꾸고 나머지(4→5, 2x-1→3x+2)를 바꾸었다. 구하는 값을 $R(3)$에서 두 값이 모두 필요한 $R(4)$로 바꾸어 일차 나머지식을 직접 세우도록 했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-143",
+        "method": "CROSSWALK_FAMILY_TEMPLATE_SELECTION",
+        "basis": "결정 단계 확인(문항·해설 대조): $f=(x-2)Q+5$와 $Q$의 나눗셈 조건을 연결해 $f$를 $(x-2)(x-3)$으로 나눈 나머지 $R(x)$의 값을 구한다. → 나머지정리>고차식 조건; PT/TPL(PT_H1_REMAINDER_THEOREM,TPL_H1_REMAINDER_NESTED_DIVISION) 기준 크로스워크 H1-RPM-143 (FAMILY_ACTIVE 후보 TPL_H1_REMAINDER_NESTED_DIVISION을 결정 단계로 선택) → 다항식>항등식과 나머지정리",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_EQUATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "복소수 근",
+          "l4": "계수 조건",
+          "recordId": "H1-RPM-165",
+          "l3Label": "복소수 근",
+          "l4Label": "계수 조건",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-165 (FAMILY_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "복소수 근",
+        "rpmPrimaryL4": "계수 조건",
+        "rpmPrimaryRecordId": "H1-RPM-165",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_IDENTITY_PARAMETER",
+          "CC_DISCRIMINANT_APPLICATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "판별식이 매개변수 $k$의 일차식이 됨을 알아 계수를 $0$으로 두는 발상이 필요해 상",
+        "difficultyBasis": "판별식 전개, 일차항 소거 조건, 부등식, 정수 최댓값 결정의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "판별식 정리와 계수 비교 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이차방정식이 모든 실수 $k$에 대하여 실근을 갖는 조건에서 $a+b$의 최댓값을 구한다.",
+          "crossConcept": "판별식을 $k$에 대한 식으로 정리하고 모든 $k$에서 성립하도록 $k$의 계수를 $0$으로 둔다.",
+          "condition": "$a,b$가 정수라는 조건이 최댓값 결정에 쓰인다(COND_INTEGER).",
+          "integration": "계수 조건으로 $a$를 정한 뒤 $b$의 상한을 구하는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식: 복소수 근"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 11,
+          "variationNote": "원본의 $x^2-2(2k+3a)x+4k^2+48k+b$를 $x^2-2(3k+2a)x+9k^2+60k+b$로 바꾸었다. $a=5$, $b\\le100$이 되어 최댓값이 $105$이다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-165",
+        "method": "CROSSWALK_FAMILY_TEMPLATE_SELECTION",
+        "basis": "결정 단계 확인(문항·해설 대조): 이차방정식이 모든 실수 $k$에 대하여 실근을 갖는 조건에서 $a+b$의 최댓값을 구한다. → 복소수 근>계수 조건; PT/TPL(PT_H1_QUADRATIC_DISCRIMINANT,TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY) 기준 크로스워크 H1-RPM-165 (FAMILY_ACTIVE 후보 TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY을 결정 단계로 선택) → 방정식과 부등식>이차방정식",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "conceptClusterKey": "H22-C-04-COMPLEX_OPERATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "복소수",
+          "l3": "i의 거듭제곱",
+          "l4": "주기성",
+          "recordId": "H1-RPM-158",
+          "l3Label": "i의 거듭제곱",
+          "l4Label": "주기성",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-158 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "복소수",
+        "rpmPrimaryL3": "i의 거듭제곱",
+        "rpmPrimaryL4": "주기성",
+        "rpmPrimaryRecordId": "H1-RPM-158",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+        "crossConceptKeys": [
+          "CC_COMPLEX_PERIODICITY_4",
+          "CC_LEAST_COMMON_MULTIPLE",
+          "CC_COMPLEX_DIVISION_RATIONALIZATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 복소수 거듭제곱의 합이 $2$가 되는 조건에서 각각이 $1$이어야 함을 추론하고 주기를 결합하는 고난도 응용이라 상",
+        "difficultyBasis": "밑 정리, 실수부분 ≤ 1 논증, 두 주기 결합, 개수 세기의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 범위만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "복소수 거듭제곱의 주기를 대수 계산으로 따지는 풀이라 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 복소수의 거듭제곱의 합이 $2$가 되는 자연수 $n$의 개수를 주기성으로 구한다.",
+          "crossConcept": "$i$의 거듭제곱의 주기와 $w=\\dfrac{\\sqrt3+i}{2}$의 주기($w^3=i$, $w^{12}=1$)를 결합해 공통 배수를 찾는다.",
+          "condition": "$n$이 $200$ 이하의 자연수라는 조건이 개수 세기에 쓰인다(COND_NATURAL_NUMBER).",
+          "integration": "밑 정리 → 두 값이 모두 $1$ → 주기 결합 → 개수 세기의 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 복소수: i의 거듭제곱"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 12,
+          "variationNote": "원본의 $\\left(\\frac{(1+i)^2}{2}\\right)^n+\\left(\\frac{1+i}{\\sqrt2}\\right)^n=2$($n\\le100$, 8의 배수)를 $\\left(\\frac{1+i}{1-i}\\right)^n+\\left(\\frac{\\sqrt3+i}{2}\\right)^n=2$($n\\le200$, 12의 배수)로 바꾸어 두 번째 밑의 주기를 12로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "복소수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-158",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 복소수의 거듭제곱의 합이 $2$가 되는 자연수 $n$의 개수를 주기성으로 구한다. → i의 거듭제곱; PT/TPL(PT_H1_COMPLEX_POWER_ROOT,TPL_H1_COMPLEX_I_PERIOD)이 크로스워크 H1-RPM-158의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>복소수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "그래프와 근",
+          "l4": "x축과의 교점",
+          "recordId": "H1-RPM-166",
+          "l3Label": "그래프와 근",
+          "l4Label": "x축과의 교점",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-166 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "그래프와 근",
+        "rpmPrimaryL4": "x축과의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-166",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "crossConceptKeys": [
+          "CC_MIDPOINT_SYMMETRY",
+          "CC_AXIS_OF_SYMMETRY",
+          "CC_QUADRATIC_RECONSTRUCTION_CONDITIONS"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 근의 중점이 꼭짓점의 $x$좌표임을 이용해 식을 세우고 조건으로 후보를 가려내는 응용이라 상",
+        "difficultyBasis": "꼭짓점형 설정, 이차방정식 풀이로 후보 두 개, 근의 부호 조건으로 선택, 값 계산의 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "해설의 결정 단계를 보이는 그림을 공식 엔진으로 렌더했다: 꼭짓점 (5, -9)인 아래로 볼록한 포물선이 x축과 (2, 0), (8, 0)에서 만나고 점 (3, -5)를 지나며 y축과 (0, 16)에서 만난다."
+        },
+        "metaRationale": {
+          "problemType": "두 근의 중점에서의 함숫값과 한 점의 조건으로 이차함수를 정하고 $f(0)$을 구한다.",
+          "crossConcept": "두 교점의 중점이 축(꼭짓점의 $x$좌표)임을 이용해 꼭짓점형으로 식을 세운다.",
+          "condition": "두 근이 모두 양수라는 조건($0<\\alpha<\\beta$)으로 $m=1$을 제외한다(COND_POSITIVE).",
+          "integration": "$m=1,5$ 두 경우 중 조건에 맞는 것을 고르는 CASE_BRANCH.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 그래프와 근"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 13,
+          "variationNote": "원본의 $f((\\alpha+\\beta)/2)=-4$, $f(2)=5$, 구하는 값 $f(1)$을 $-9$, $f(3)=-5$, $f(0)$으로 바꾸었다. 두 후보($m=1,5$) 중 두 근이 모두 양수인 $m=5$를 가려내는 구조는 같다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_RPM_ROW",
+        "crosswalkRecordId": "H1-RPM-166",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "방정식과 부등식/이차방정식과 이차함수"
+        ],
+        "method": "CROSSWALK_RPM_ROW_WITH_CANONICAL_PT_TPL",
+        "basis": "결정 단계=두 근의 중점과 꼭짓점 조건으로 이차함수를 정하는 식 세우기; 크로스워크 H1-RPM-166(방정식과 부등식>이차방정식과 이차함수>그래프와 근>x축과의 교점)는 PT/TPL(PT_H1_QUADRATIC_GRAPH_INTERSECTION,TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY)이 x축과의 교점 관계 유형이라 이 문항의 결정 단계와 달라, 이 행의 상위 단원(L1/L2)만 따르고 canonical H1_FOUNDATION 팩의 PT/TPL(PT_H1_QUADRATIC_RECONSTRUCTION,TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX)을 풀이 구조에 맞춰 직접 선택(원본 Q13과 같은 PT)",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "subUnit": "순열",
+        "conceptClusterKey": "H22-C-08-PERMUTATION",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "특정 조건 배열",
+          "recordId": "H1-RPM-189",
+          "l3Label": "순열",
+          "l4Label": "특정 조건 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-189 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "특정 조건 배열",
+        "rpmPrimaryRecordId": "H1-RPM-189",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_NEGATIVE_RADICAL_OPERATION"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO",
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "음수의 제곱근 성질로 조건을 번역한 뒤 경우를 나누어 세는 중간 난도라 중",
+        "difficultyBasis": "조건 가 번역(두 경우), 조건 나 번역, 경우별 세기와 합의 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "카드에 적힌 수($-3$부터 $3$까지의 정수)를 발문에서 모두 글로 제시해 그림이 없어도 풀 수 있다.",
+          "solution": "EXEMPT",
+          "solutionReason": "조건 번역과 경우 세기가 핵심이며 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "카드 세 장을 차례로 뽑는 순서쌍 중 음수의 제곱근 조건과 절댓값 조건을 만족하는 개수를 센다.",
+          "crossConcept": "$a<0<b$일 때 $\\sqrt b/\\sqrt a=-\\sqrt{b/a}$가 성립하고 $b=0$일 때도 성립함을 이용해 조건을 부등식으로 번역한다.",
+          "condition": "분모 $a\\ne0$(COND_NONZERO)과 $b\\ge c$ 대소 조건(COND_INEQUALITY_CONSTRAINT)이 경우 세기를 결정한다.",
+          "integration": "$b>0$인 경우와 $b=0$인 경우로 나누어 세는 CASE_BRANCH.",
+          "curriculum": "공통수학1 경우의 수와 순열: 순열"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 14,
+          "variationNote": "원본의 $\\sqrt{bc}/\\sqrt a=\\sqrt{bc/a}$(실수 범위)를 허수 단위를 쓰는 $\\sqrt b/\\sqrt a=-\\sqrt{b/a}$로 바꾸고 조건 나를 $|b-c|=b-c$로 바꾸었다. 카드 그림은 숫자를 글로 제시해 대신했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-189",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 카드 세 장을 차례로 뽑는 순서쌍 중 음수의 제곱근 조건과 절댓값 조건을 만족하는 개수를 센다. → 순열; PT/TPL(PT_COUNTING_ARRANGEMENT,TPL_PERMUTATION_STANDARD_CONSTRAINT)이 크로스워크 H1-RPM-189의 DIRECT_ACTIVE 행과 정확히 일치 → 경우의 수>경우의 수와 순열",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "conceptClusterKey": "H22-C-03-FACTORIZATION",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "수의 계산",
+          "recordId": "H1-RPM-151",
+          "l3Label": "인수분해의 활용",
+          "l4Label": "수의 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-151 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해의 활용",
+        "rpmPrimaryL4": "수의 계산",
+        "rpmPrimaryRecordId": "H1-RPM-151",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_FACTORIZATION_NUMERICAL_APPLICATION",
+          "CC_PRIME_FACTORIZATION",
+          "CC_DIVISOR_PROPERTY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "큰 수의 식을 인수분해 공식으로 곱으로 바꾸고 소인수분해로 두 자리 수 조합을 따지는 고난도 응용이라 상",
+        "difficultyBasis": "공식 변형, 소인수분해, 소수 83의 위치 결정, 약수 쌍 열거의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "인수분해와 약수 열거 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "큰 수를 인수분해 공식으로 두 인수의 곱으로 바꾸고 소인수분해해 두 자리 자연수 세 개의 곱으로 나타내는 경우의 수를 센다.",
+          "crossConcept": "식의 값을 소인수분해해 소수 $83$을 한 인수로 확정하고 나머지의 약수 쌍을 열거한다.",
+          "condition": "$a,b,c$가 두 자리 자연수이고 $a<b<c$라는 조건이 경우 세기를 결정한다.",
+          "integration": "소인수 $83$ 확정 후 약수 쌍을 경우별로 세는 CASE_BRANCH.",
+          "curriculum": "공통수학1 인수분해: 인수분해의 활용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 15,
+          "variationNote": "원본의 $13^4+2\\times13^2+9=146\\times198$($73$ 고정, 3개)을 $19^4+14\\times19^2+81=408\\times332$($83$이 중간 크기가 될 수 있는 4개)로 바꾸었다. $83$이 가장 큰 수가 아닐 수 있어 순서쌍을 배열해 세어야 한다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "인수분해"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "인수분해",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-151",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 큰 수를 인수분해 공식으로 두 인수의 곱으로 바꾸고 소인수분해해 두 자리 자연수 세 개의 곱으로 나타내는 경우의 수를 센다. → 인수분해의 활용; PT/TPL(PT_H1_POLY_FACTORIZATION,TPL_H1_FACTORIZATION_APPLICATION)이 크로스워크 H1-RPM-151의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>인수분해",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "조건식 활용",
+          "recordId": "H1-RPM-171",
+          "l3Label": "최대·최소",
+          "l4Label": "조건식 활용",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-171 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "조건식 활용",
+        "rpmPrimaryRecordId": "H1-RPM-171",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_RECTANGLE_QUADRATIC_MODEL",
+          "CC_VIETAS_FORMULAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "닮음으로 변의 관계를 세워 넓이를 이차함수로 모델링하고 근과 계수의 관계로 값을 구하는 응용이라 상",
+        "difficultyBasis": "닮음식, 넓이의 이차식 정리, 최댓값 판정, 근과 계수의 관계의 4단계라 4",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "발문의 직각삼각형과 직사각형(꼭짓점 D가 빗변 위) 배치를 보이는 그림을 공식 엔진(PLANE_FIGURE_v1)으로 렌더했다.",
+          "solution": "RENDERED",
+          "solutionReason": "해설의 결정 단계를 보이는 그림을 공식 엔진으로 렌더했다: 직각삼각형 ABC 안의 직사각형 BPDQ에서 꼭짓점 D가 빗변 AC의 중점이고, 밑변 BP와 높이 BQ가 각각 직각변 BC, AB의 절반인 넓이 최대 배치이다."
+        },
+        "metaRationale": {
+          "problemType": "직각삼각형에 내접하는 직사각형의 넓이를 이차함수로 모델링해 최댓값을 근과 계수의 관계로 구한다.",
+          "crossConcept": "닮음으로 직사각형의 높이를 밑변의 일차식으로 나타내고 $\\alpha\\beta$를 근과 계수의 관계로 얻는다.",
+          "condition": "제한 조건이 없어 조건 키는 없다(근거: $0<u<\\beta$는 도형의 정의역일 뿐 해 선택에 쓰이지 않음).",
+          "integration": "닮음 → 넓이 → 최댓값 → 근과 계수의 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 최대·최소"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 16,
+          "variationNote": "원본의 $x^2-5x+3=0$을 $x^2-6x+7=0$으로 바꾸어 $\\alpha\\beta=7$, 최댓값 $7/4$로 바꾸었다. 직사각형이 직각 꼭짓점 B에 놓이는 배치는 같다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-171",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 직각삼각형에 내접하는 직사각형의 넓이를 이차함수로 모델링해 최댓값을 근과 계수의 관계로 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_MODEL)이 크로스워크 H1-RPM-171의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_EQUATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "복소수 근",
+          "l4": "허근",
+          "recordId": "H1-RPM-164",
+          "l3Label": "복소수 근",
+          "l4Label": "허근",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-164 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "복소수 근",
+        "rpmPrimaryL4": "허근",
+        "rpmPrimaryRecordId": "H1-RPM-164",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+        "crossConceptKeys": [
+          "CC_CONJUGATE_ROOT_THEOREM",
+          "CC_COMPLEX_CONJUGATE_PROPERTIES",
+          "CC_VIETA_FORMULAS_QUADRATIC"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "켤레복소수의 합·곱 성질로 조건을 실수부분·허수부분의 식으로 바꾸고 켤레근 정리와 근과 계수의 관계를 잇는 응용이라 상",
+        "difficultyBasis": "조건 번역 두 개, 연립으로 $a^2,b^2$ 결정, 켤레근 확인, 근과 계수의 관계의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "켤레복소수 계산과 근과 계수의 관계가 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "허근 $z$의 조건에서 실수부분·허수부분의 제곱을 구하고 근과 계수의 관계로 $m^2+n^2$를 구한다.",
+          "crossConcept": "실수 계수 이차방정식의 허근은 켤레복소수와 짝으로 근이므로 합과 곱이 $-m$, $n$이 된다.",
+          "condition": "제한 조건이 없어 조건 키는 없다(근거: $m,n$이 실수라는 서술만 있고 해 선택 제한이 없음).",
+          "integration": "조건 번역 → 연립 → 근과 계수의 관계로 이어지는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식: 복소수 근"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 17,
+          "variationNote": "원본의 조건 가($z^2+z\\bar z+\\bar z^2=0$)를 $z^2+\\bar z^2=z\\bar z$로, 조건 나($a^2+b^2=1$)를 $a^2+b^2=4$로 바꾸었다. 결과는 $a^2=3$, $b^2=1$, $m^2+n^2=28$이다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-164",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 허근 $z$의 조건에서 실수부분·허수부분의 제곱을 구하고 근과 계수의 관계로 $m^2+n^2$를 구한다. → 복소수 근; PT/TPL(PT_H1_COMPLEX_CONDITION_EQUATION,TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION)이 크로스워크 H1-RPM-164의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "그래프와 근",
+          "l4": "x축과의 교점",
+          "recordId": "H1-RPM-166",
+          "l3Label": "그래프와 근",
+          "l4Label": "x축과의 교점",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-166 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "그래프와 근",
+        "rpmPrimaryL4": "x축과의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-166",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "crossConceptKeys": [
+          "CC_PARABOLA_X_INTERCEPTS",
+          "CC_LINE_PARABOLA_INTERSECTION",
+          "CC_POLYGON_AREA_SHOELACE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "그래프의 절편·교점으로 도형의 좌표를 구하고 넓이 비로 미지수를 정하는 종합 응용이라 상",
+        "difficultyBasis": "절편 인수분해, 직선의 절편, 교점 계산, 두 넓이 계산, 비 방정식의 5단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "이차함수와 직선의 식, 점 A·B·C·D·O의 정의, 삼각형 AOD와 사각형 BODC의 꼭짓점 순서를 발문에서 글로 모두 정의해 그림 없이도 풀 수 있다.",
+          "solution": "RENDERED",
+          "solutionReason": "해설의 결정 단계를 보이는 그림을 공식 엔진으로 렌더했다: a=6일 때 포물선 y=x²-3x-18과 직선 y=-3x+18이 A(6,0)과 C(-6,36)에서 만나고, 삼각형 AOD와 사각형 BODC가 칠해져 있으며 선분 OC가 점선으로 사각형을 나눈다."
+        },
+        "metaRationale": {
+          "problemType": "포물선과 직선의 교점·절편으로 삼각형과 사각형의 넓이를 구해 넓이의 비에서 $a$를 정한다.",
+          "crossConcept": "포물선을 인수분해해 $x$절편을 얻고 직선과의 교점을 구한 뒤 사각형을 대각선으로 나누어 넓이를 계산한다.",
+          "condition": "$a,b$가 양수라는 조건으로 $a=-\\dfrac32$를 제외한다(COND_POSITIVE).",
+          "integration": "좌표 결정 → 넓이 → 비 방정식으로 이어지는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 그래프와 근"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 18,
+          "variationNote": "원본의 $y=x^2+(2-a)x-2a$, $y=-2x+b$ (a=4)를 $y=x^2+(3-a)x-3a$, $y=-3x+b$ (a=6)로 바꾸었다. 교점 $C$의 $x$좌표가 $-6$이 되고 $S_2=27+\\frac{27}{2}a$이다. 그림 없이도 점의 정의와 사각형의 꼭짓점 순서($B,O,D,C$)로 도형이 정해지도록 글로 완결했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-166",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 포물선과 직선의 교점·절편으로 삼각형과 사각형의 넓이를 구해 넓이의 비에서 $a$를 정한다. → 그래프와 근; PT/TPL(PT_H1_QUADRATIC_GRAPH_INTERSECTION,TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY)이 크로스워크 H1-RPM-166의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "conceptClusterKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "다항식의 연산",
+          "l3": "다항식의 나눗셈",
+          "l4": "몫과 나머지",
+          "recordId": "H1-RPM-139",
+          "l3Label": "다항식의 나눗셈",
+          "l4Label": "몫과 나머지",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-139 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "다항식의 연산",
+        "rpmPrimaryL3": "다항식의 나눗셈",
+        "rpmPrimaryL4": "몫과 나머지",
+        "rpmPrimaryRecordId": "H1-RPM-139",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_DIVISION",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_CIRCLE_CHORD_PERP_BISECTOR",
+          "CC_POLYNOMIAL_DIVISION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "도형 조건에서 이차방정식을 세우고 무리수 해를 다항식의 나눗셈으로 식의 값에 적용하는 종합 응용이라 상",
+        "difficultyBasis": "좌표 설정, 현의 길이에서 방정식, 제곱 후 해의 선택, 다항식 나눗셈과 무리수 정리의 5단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "정사각형 ABCD의 변과 원의 접하는 관계, 교점 P, Q와 BP<BQ를 발문에서 글로 모두 정의해 학생이 그림 없이 좌표를 잡아 풀 수 있다.",
+          "solution": "UNSUPPORTED",
+          "solutionReason": "원의 중심 (8-2√6, 2√6-2)와 반지름 8-2√6이 무리수여서 정확한 값으로 놓는 작도 점(construction-spike-v1은 정수·분수 좌표만 받는다)으로는 그릴 수 없고, 근사값으로 그리면 거짓 정확값이 된다. 해설 글에서 좌표와 식을 모두 적어 풀이를 완결했다."
+        },
+        "metaRationale": {
+          "problemType": "정사각형에 접하는 원의 반지름이 만족하는 이차방정식을 세워 그 해를 대입한 삼차식의 값을 $p+q\\sqrt6$ 꼴로 구한다.",
+          "crossConcept": "중심에서 현에 내린 수선과 피타고라스 정리로 반지름의 방정식을 세우고 삼차식을 이차식으로 나눈 나머지로 값을 낮춘다.",
+          "condition": "$0<x<6$ 범위로 해를 고르고($COND_RANGE$) $p,q$가 정수라는 조건으로 $p+q\\sqrt6$를 정한다(COND_INTEGER).",
+          "integration": "도형 → 방정식 → 해 선택 → 나눗셈이 엮이는 DEEP_COMPOSITE.",
+          "curriculum": "공통수학1 다항식의 연산: 다항식의 나눗셈"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 19,
+          "variationNote": "원본의 정사각형 한 변 $4$, $BP=1$, $x^3-8x^2+15x+37=p+q\\sqrt2$(답 57)를 한 변 $6$, $BP=2$, $x^3-12x^2-18x+150=p+q\\sqrt6$(답 26)로 바꾸었다. 그림 대신 정사각형·원의 위치 관계를 글로 정의했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "다항식의 연산"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "다항식의 연산",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-139",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 정사각형에 접하는 원의 반지름이 만족하는 이차방정식을 세워 그 해를 대입한 삼차식의 값을 $p+q\\sqrt6$ 꼴로 구한다. → 다항식의 나눗셈; PT/TPL(PT_H1_POLY_DIVISION,TPL_H1_POLY_DIVISION_EXECUTION)이 크로스워크 H1-RPM-139의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>다항식의 연산",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "conceptClusterKey": "H22-C-03-FACTORIZATION",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "인수분해",
+          "l3": "공통인수",
+          "l4": "단계적 인수분해",
+          "recordId": "H1-RPM-147",
+          "l3Label": "공통인수",
+          "l4Label": "단계적 인수분해",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-147 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "공통인수",
+        "rpmPrimaryL4": "단계적 인수분해",
+        "rpmPrimaryRecordId": "H1-RPM-147",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_GROUPING",
+          "CC_DISCRIMINANT_ZERO_DOUBLE_ROOT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "공통부분 치환으로 사차식을 인수분해하고 최고차항·실수 조건으로 가능한 이차식 쌍을 가려내는 최고난도 응용이라 상",
+        "difficultyBasis": "치환 인수분해, 기약성 판정, 계수 부호 경우 분류, 부등식 조건 선별, 중근 조건의 5단계 이상이라 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "치환과 인수분해, 판별식 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "사차식을 치환으로 인수분해해 이차다항식 $P,Q$를 정하고 $P(x)=Q(x+k)$가 중근일 조건에서 $k$의 곱을 구한다.",
+          "crossConcept": "네 일차식의 곱을 짝지어 공통부분으로 치환해 인수분해하고 중근 조건을 판별식 $0$으로 처리한다.",
+          "condition": "최고차항의 계수가 정수(COND_INTEGER)이고 $P(2)<Q(2)$(COND_INEQUALITY_CONSTRAINT)라는 조건으로 가능한 쌍을 가려낸다.",
+          "integration": "치환 인수분해, 경우 분류, 판별식이 서로 의존하는 DEEP_COMPOSITE.",
+          "curriculum": "공통수학1 인수분해: 공통인수"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 20,
+          "variationNote": "원본의 $-x(x-1)^2(x-2)+12$를 $-x(x-1)(x-2)(x-3)+15$로 바꾸었다. 치환 $t=x^2-3x$로 두 이차식 $A,B$를 얻고, 부호 경우 4가지 중 조건으로 2가지를 가린다. 답은 $-5$이다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "인수분해"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "인수분해",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-147",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 사차식을 치환으로 인수분해해 이차다항식 $P,Q$를 정하고 $P(x)=Q(x+k)$가 중근일 조건에서 $k$의 곱을 구한다. → 공통인수; PT/TPL(PT_H1_POLY_FACTORIZATION,TPL_H1_FACTORIZATION_STANDARD)이 크로스워크 H1-RPM-147의 DIRECT_ACTIVE 행과 정확히 일치 → 다항식>인수분해",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_EQUATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "근과 계수의 관계",
+          "l4": "근으로 방정식 구성",
+          "recordId": "H1-RPM-163",
+          "l3Label": "근과 계수의 관계",
+          "l4Label": "근으로 방정식 구성",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-163 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "근과 계수의 관계",
+        "rpmPrimaryL4": "근으로 방정식 구성",
+        "rpmPrimaryRecordId": "H1-RPM-163",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [
+          "CC_VIETA_FORMULAS_QUADRATIC",
+          "CC_QUADRATIC_EQUATION_FORMATION",
+          "CC_SYMMETRIC_POLYNOMIAL_EVALUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "근과 계수의 관계로 변형된 두 근의 합과 곱을 구해 이차방정식을 세우는 표준 서술형이라 중",
+        "difficultyBasis": "처음 근의 합·곱, 새 근의 합, 새 근의 곱, 방정식 구성과 계수 맞춤의 3단계라 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "근과 계수의 관계 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "이차방정식의 두 근으로 만든 새 두 수를 근으로 하는 이차방정식을 구한다.",
+          "crossConcept": "근과 계수의 관계로 $\\alpha+\\beta$, $\\alpha\\beta$를 구하고 새 근의 합과 곱을 대칭식으로 계산한다.",
+          "condition": "제한 조건이 없어 조건 키는 없다.",
+          "integration": "합과 곱을 차례로 구해 방정식을 세우는 순차 풀이라 SEQUENTIAL.",
+          "curriculum": "공통수학1 이차방정식: 근과 계수의 관계"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 21,
+          "variationNote": "원본의 $2x^2-4x+1=0$에서 근의 세제곱($8x^2-40x+1=0$)을 $3x^2-6x+2=0$에서 $\\alpha+1/\\beta$, $\\beta+1/\\alpha$를 근으로 하는 방정식($6x^2-30x+25=0$)으로 바꾸었다. 변환 방식이 달라 합과 곱의 계산이 달라진다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q21: 원본 Q21의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-163",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 이차방정식의 두 근으로 만든 새 두 수를 근으로 하는 이차방정식을 구한다. → 근과 계수의 관계; PT/TPL(PT_H1_ROOT_COEFFICIENT_RELATION,TPL_H1_VIETA_TRANSFORMED_ROOT)이 크로스워크 H1-RPM-163의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-170 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES",
+          "CC_QUADRATIC_EXTREMA_RESTRICTED_DOMAIN"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "꼭짓점과 구간의 위치에 따라 경우를 나누어 매개변수를 정하는 서술형 고난도라 상",
+        "difficultyBasis": "꼭짓점 위치의 두 경우 분석, 모순 판정, 매개변수 결정, 최솟값 계산의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 구간만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "해설의 결정 단계를 보이는 그림을 공식 엔진으로 렌더했다: 위로 볼록한 포물선 y=-(x-9/2)^2+81/4에서 구간 1≤x≤3의 점 (1, 8), (3, 18)이 표시되어 있고 꼭짓점 (9/2, 81/4)은 구간의 오른쪽 밖에 있어 구간에서 함수가 증가한다."
+        },
+        "metaRationale": {
+          "problemType": "구간에서의 최댓값이 주어진 이차함수에서 꼭짓점의 위치에 따라 $a$를 정하고 최솟값을 구한다.",
+          "crossConcept": "꼭짓점이 구간 안인지 밖인지에 따라 최댓값이 나오는 위치가 달라짐을 경우로 나눈다.",
+          "condition": "구간 $1\\le x\\le3$(COND_RESTRICTED_INTERVAL)과 $a>1$(COND_RANGE)이 경우 분류를 결정한다.",
+          "integration": "꼭짓점이 구간 안인 경우와 오른쪽 밖인 경우로 나누는 CASE_BRANCH.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 최대·최소"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 22,
+          "variationNote": "원본의 $-2x^2+10ax$ ($1\\le x\\le4$, 최댓값 100, 답 31)를 $-x^2+4ax$ ($1\\le x\\le3$, 최댓값 18, 답 8)로 바꾸었다. 꼭짓점이 구간 안인 경우가 모순으로 제외되는 구조는 같다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 구간에서의 최댓값이 주어진 이차함수에서 꼭짓점의 위치에 따라 $a$를 정하고 최솟값을 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL)이 크로스워크 H1-RPM-170의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-170 (DIRECT_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_INTERVAL_BOUNDS",
+          "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 구간의 최대·최소 조건을 함께 읽어 꼭짓점 위치와 계수를 정하는 서술형 고난도라 상",
+        "difficultyBasis": "최댓값 일치로 꼭짓점 위치 결정, 최솟값 조건으로 $p$ 결정, 둘째 구간 대칭 이용, $m,q$ 계산의 4단계라 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "RENDERED",
+          "solutionReason": "해설의 결정 단계를 보이는 그림을 공식 엔진으로 렌더했다: 꼭짓점 (3, 49/5)인 위로 볼록한 포물선과 대칭축 x=3이 있고, 구간 0≤x≤6의 양 끝점 (0, 4/5), (6, 4/5)와 점 (5, 29/5)가 표시되어 있다."
+        },
+        "metaRationale": {
+          "problemType": "두 구간에서의 최댓값·최솟값 조건으로 $p,q,m$을 정하고 $f(5)$를 구한다.",
+          "crossConcept": "두 구간의 최댓값이 같음에서 꼭짓점이 작은 구간 안에 있음을 알고, 양 끝점과 꼭짓점 사이 거리를 비교해 최솟값 위치를 정한다.",
+          "condition": "$p,q$가 양수(COND_POSITIVE)이고 두 구간(COND_RESTRICTED_INTERVAL)이 결정 단계에 쓰인다.",
+          "integration": "두 조건이 서로를 확정해 주는 INTERDEPENDENT.",
+          "curriculum": "공통수학1 이차방정식과 이차함수: 최대·최소"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 23,
+          "variationNote": "원본의 구간 $[0,2],[0,4]$와 값 $m+1, m+5, -3m$ (답 3/4)를 구간 $[0,3],[0,6]$과 값 $m+1, m+10, -4m$ (답 29/5)로 바꾸었다. 꼭짓점이 작은 구간의 오른쪽 끝에 놓여 큰 구간이 꼭짓점에 대해 대칭이 되도록 했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 구간에서의 최댓값·최솟값 조건으로 $p,q,m$을 정하고 $f(5)$를 구한다. → 최대·최소; PT/TPL(PT_H1_QUADRATIC_EXTREMA,TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL)이 크로스워크 H1-RPM-170의 DIRECT_ACTIVE 행과 정확히 일치 → 방정식과 부등식>이차방정식과 이차함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    },
+    {
+      "questionUid": 24,
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "conceptClusterKey": "H22-C-02-CORE",
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "나머지정리",
+          "l4": "고차식 조건",
+          "recordId": "H1-RPM-143",
+          "l3Label": "나머지정리",
+          "l4Label": "고차식 조건",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-143 (FAMILY_ACTIVE, 2022)"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "나머지정리",
+        "rpmPrimaryL4": "고차식 조건",
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [
+          "CC_DEGREE_DEDUCTION",
+          "CC_POLYNOMIAL_DEGREE_INFERENCE",
+          "CC_DIVISION_ALGORITHM"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 24,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "나눗셈의 차수 조건과 몫·인수 조건을 엮어 미지 다항식을 결정하는 최고난도 서술형이라 상",
+        "difficultyBasis": "차수 추론, 조건 나·다로 영점 배정, 계수 비교 연립, 삼차식 풀이, 값 계산의 5단계 이상이라 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "차수 추론과 계수 비교 계산이 핵심이고 그림이 보태는 관계가 없다."
+        },
+        "metaRationale": {
+          "problemType": "나눗셈 조건과 인수 조건으로 $f,g$를 정하고 $\\{f(-2)\\}^2$을 구한다.",
+          "crossConcept": "나머지의 차수가 제수의 차수보다 작아야 함으로 $g$가 일차식임을 얻고 나눗셈 항등식의 계수를 비교한다.",
+          "condition": "$|g(3)|<|g(5)|$ 조건이 영점 배정을 결정한다(COND_INEQUALITY_CONSTRAINT).",
+          "integration": "차수 추론, 영점 배정, 계수 비교가 서로 얽힌 DEEP_COMPOSITE.",
+          "curriculum": "공통수학1 항등식과 나머지정리: 나머지정리"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-10",
+          "reviewRequired": true,
+          "sourceQid": 24,
+          "variationNote": "원본의 $x^2g(x)-8$, 나머지 $-7\\{g-x\\}^2$, $(x-1)(x-2)$, $|g(1)|<|g(2)|$ (답 9)를 $x^2g(x)-250$, 나머지 $-4\\{g-2x\\}^2$, $(x-3)(x-5)$, $|g(3)|<|g(5)|$ (답 196)로 바꾸었다. 구하는 값도 $\\{f(-1)\\}^2$에서 $\\{f(-2)\\}^2$로 바꾸었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          },
+          "parentAssignment": {
+            "assignedBy": "claude-similar-high-gen",
+            "assignedAt": "2026-11-10",
+            "note": "상위 단원(L1/L2)을 크로스워크 행에서 배정. PT/TPL/키/문항 내용은 변경하지 않음"
+          }
+        },
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리"
+      },
+      "reason": "26_복성고_1학기_중간_고1_유사 Q24: 원본 Q24의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-143",
+        "method": "CROSSWALK_FAMILY_TEMPLATE_SELECTION",
+        "basis": "결정 단계 확인(문항·해설 대조): 나눗셈 조건과 인수 조건으로 $f,g$를 정하고 $\\{f(-2)\\}^2$을 구한다. → 나머지정리>고차식 조건; PT/TPL(PT_H1_REMAINDER_THEOREM,TPL_H1_REMAINDER_COMPOSITE_DIVISOR) 기준 크로스워크 H1-RPM-143 (FAMILY_ACTIVE 후보 TPL_H1_REMAINDER_COMPOSITE_DIVISOR을 결정 단계로 선택) → 다항식>항등식과 나머지정리",
+        "confidence": "MEDIUM",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-10"
+      }
+    }
+  ]
+}

@@ -52,7 +52,7 @@ const tagPanel=(run,index)=>{try{return run();}catch(error){if(error&&typeof err
 const stdoutView=r=>{const {detailFull,errors,hint,...rest}=r;return {...rest,...(hint?{hint:hint.map(h=>h.length>160?h.slice(0,160)+'...':h)}:{}),...(detailFull!==undefined?{detailFile:true}:{})};};
 
 // plan: a parsed plan object, or a path to plan.json. Returns the result record (also written as <name>-result.json).
-export async function renderPlan({item,plan:planInput,outDir,packetDir}){
+export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSizeClass}){
   fs.mkdirSync(outDir,{recursive:true});
   const meta={...item};
   const name=String(meta.dir??meta.tag??'figure');
@@ -312,7 +312,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       try{
       stage='spec';
       const spec=specFor(candidatePlan,model,identity.assetId);watch.lap('spec');// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
-      let size=model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)?'full':'medium';
+      let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
       stage='measure';
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);
