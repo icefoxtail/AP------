@@ -253,7 +253,7 @@ window.questionBank = [
       "모서리 $EJ$"
     ],
     "answer": "⑤",
-    "solution": "꼬인 위치는 만나지 않고, 평행하지도 않으며, 한 평면 위에도 놓이지 않는 두 직선의 위치 관계입니다.\n\n$BC$와 $AB,BG,CD$는 한 점에서 만나고, $GH$는 $BC$와 평행합니다. $EJ$는 $BC$와 만나지 않고 평행하지도 않으며 같은 평면 위에 놓이지 않습니다.\n\n따라서 정답은 ⑤입니다.",
+    "solution": "꼬인 위치는 만나지 않고, 평행하지도 않으며, 한 평면 위에도 놓이지 않는 두 직선의 위치 관계입니다.\n\n$BC$와 한 점에서 만나는 모서리는 $AB, BG, CH, CD$이고, $GH$는 $BC$와 평행합니다. 보기 중 $EJ$는 $BC$와 만나지 않고 평행하지도 않으며 같은 평면 위에 놓이지 않습니다.\n\n따라서 정답은 ⑤입니다.",
     "sourceQuestionNo": "4",
     "displayNo": "4",
     "sourceOrdinal": 4,
@@ -288,7 +288,7 @@ window.questionBank = [
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q004_question-v2.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q4-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 같은 오각기둥 두 개. 왼쪽은 모서리 BC를 굵게, BC와 한 점에서 만나는 모서리 AB, BG, CH, CD를 빨간색으로 나타냈고, 오른쪽은 모서리 BC를 굵게, BC와 평행한 모서리 GH를 빨간색으로 나타낸 그림.",
-    "solutionImageCaption": "BC와 AB, BG, CH, CD는 한 점에서 만나고 GH는 BC와 평행하다. 나머지 모서리 중 만나지도 평행하지도 않은 모서리는 EJ뿐이다. 정답은 ⑤이다.",
+    "solutionImageCaption": "BC와 AB, BG, CH, CD는 한 점에서 만나고 GH는 BC와 평행하다. 보기 중 BC와 만나지도 평행하지도 않은 모서리는 EJ이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
