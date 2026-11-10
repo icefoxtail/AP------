@@ -63,11 +63,14 @@ assert(
 );
 
 assert(
-  studentPortal.includes('const visible = getStudentPortalAssignments();') &&
-    studentPortal.includes('출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다.') &&
-    studentPortal.includes("${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type=\"button\" class=\"btn\" disabled>시험지 파일 없음</button>'}") &&
+  studentPortal.includes('const all = getStudentPortalAssignments();') &&
+    studentPortal.includes('all.slice().sort((a,b) => {') &&
+    studentPortal.includes('}).slice(0,3);') &&
+    studentPortal.includes('전체 시험지 ${all.length}개 보기') &&
+    studentPortal.includes('const exams = getVisibleOmrExams();') &&
+    studentPortal.includes('rows.length ? rows.map(renderOmrExamCard).join') &&
     studentPortal.includes("|| getStudentPortalAssignments().find(exam => String(exam.assignment_id) === key)"),
-  'home should render every canonical assignment with direct review actions'
+  'home should preview at most three issued exams while preserving the complete canonical exam list and review links'
 );
 
 console.log('student portal OMR history route checks passed');

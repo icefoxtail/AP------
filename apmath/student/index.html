@@ -5,26 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#F3F4F6">
+  <meta name="theme-color" content="#faf9f7">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.02.5">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.02.5">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.02.5">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.02.5">
+  <link rel="manifest" href="./manifest.json?v=2026.11.11.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.11.1">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.11.1">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.11.1">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.02.5"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.02.5"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.11.1"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.11.1"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.11.02.5">
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.11.11.1">
   <style>
     :root {
       --primary:#111827;
@@ -489,7 +489,7 @@
       width:40px;
       height:40px;
       border-radius:15px;
-      background:#FFFFFF url('./icons/icon-192.png?v=2026.11.02.5') center/cover no-repeat;
+      background:#FFFFFF url('./icons/icon-192.png?v=2026.11.11.1') center/cover no-repeat;
       color:transparent;
       display:flex;
       align-items:center;
@@ -636,7 +636,7 @@
       select, textarea { font-size:16px !important; }
     }
   </style>
-  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.11.02.5">
+  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.11.11.1">
   <style>
     body.student-portal-theme {
       --primary:#111827;
@@ -760,11 +760,12 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="../css/apms-student-experience.css?v=2026.11.11.1">
 </head>
 <body class="student-portal-theme">
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.02.5" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.11.1" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -786,7 +787,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.02.5';
+    const STUDENT_APP_VERSION = '2026.11.11.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1175,7 +1176,7 @@
           </div>
           <div class="hero-kicker">AP수학 학생 포털</div>
           <h1 class="hero-title">AP Math OS</h1>
-          <p class="hero-desc">과제, 플래너, OMR을 한곳에서 확인해요.</p>
+          <p class="hero-desc">시험지 확인부터 채점, 오답 복습까지 한곳에서 이어가요.</p>
         </section>
       `;
     }
@@ -1887,97 +1888,53 @@
       }
     }
     function renderOmrHomeSection() {
-      const visible = getStudentPortalAssignments();
-      const hasCompleteReviewSet = !exactOmrAssignmentId && Array.isArray(omrData?.exams) &&
-        visible.length > 0 && visible.length < 150 &&
-        visible.every(row => isOmrReviewAvailable(row));
-      const description = isTeacherPreview
-        ? '학생에게 출제된 시험지와 기록된 상태를 확인합니다.'
-        : hasCompleteReviewSet
-          ? '출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다. 조회된 시험 제출 상태와 기록 결과를 확인하세요. 클리닉 오답 체크는 시험 제출과 별도입니다.'
-          : visible.length
-            ? `현재 조회된 ${visible.length}개 시험지입니다. 원본 파일이 제공되는 시험지에서 문제·정답·해설을 확인할 수 있습니다. 시험 제출 상태와 클리닉 오답 체크는 별도입니다.`
-            : '현재 조회된 출제 시험지가 없습니다. 시험 제출 결과와 클리닉 오답 체크는 별도입니다.';
-      const rows = visible.length ? visible.map(row => {
-        const assignmentId = escapeHtml(String(row?.assignment_id || ''));
-        const examDate = escapeHtml(String(row?.exam_date || ''));
-        const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험지');
-        const questionCount = Number(row?.question_count || 0);
-        const className = escapeHtml(String(row?.class_name || '').trim());
-        const meta = [className, examDate, questionCount ? `${questionCount}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
-        const submittedStatus = getStudentPortalRecordedSubmission(row);
-        const submitted = submittedStatus === 'submitted';
-        const scoreLabel = submitted && row?.score !== null && row?.score !== undefined && row?.score !== '' && Number.isFinite(Number(row.score))
-          ? ` · ${row.score}점`
-          : '';
-        return `
-          <div class="omr-card" id="student-assignment-${assignmentId}" data-assignment-id="${assignmentId}">
-            <div class="omr-top">
-              <div style="min-width:0;">
-                <div class="omr-title">${examTitle}</div>
-                <div class="omr-meta">${escapeHtml(meta || 'OMR 입력 필요')}</div>
-              </div>
-              <span class="omr-status ${submittedStatus === 'unknown' ? '' : submitted ? 'done' : 'pending'}">${submittedStatus === 'unknown' ? '제출 상태 확인 필요' : submitted ? `시험 제출 완료${scoreLabel}` : (isTeacherPreview ? '출제됨' : '입력 필요')}</span>
-            </div>
-            ${window.StudentClinicLineageView ? window.StudentClinicLineageView.renderCard(row) : ''}
-            <div class="row-actions">
-              ${renderOmrPdfAction(row)}
-              ${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>'}
-              ${isTeacherPreview || submitted ? '' : submittedStatus === 'unknown' ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
-            </div>
-          </div>
-        `;
-      }).join('') : `
-        <div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '바로 입력할 OMR이 없습니다.'}</div>
-      `;
-      return `
-        <section id="student-portal-omr-home-section" class="card portal-assignments-card">
-          <div class="portal-assignments-head">
-            <div>
-              <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : '내 시험지'}</h2>
-              <p class="card-desc">${description}</p>
-            </div>
-            <div class="portal-mark orange">${renderIcon('omr')}</div>
-          </div>
-          <div class="portal-omr-home-list">${rows}</div>
-          <div class="portal-quick-actions">
-            <button class="btn btn-primary" onclick="renderOmrExams()">출제 시험지 목록 보기 (${visible.length})</button>
-          </div>
-        </section>
-      `;
-    }
+  const all = getStudentPortalAssignments();
+  const groups = groupStudentPortalExams(all);
+  const recent = all.slice().sort((a,b) => {
+    const priority = row => getStudentPortalRecordedSubmission(row)==='pending' ? 0 : getStudentPortalRecordedSubmission(row)==='submitted' ? 1 : 2;
+    return priority(a)-priority(b) || String(b.exam_date || b.created_at || '').localeCompare(String(a.exam_date || a.created_at || ''));
+  }).slice(0,3);
+  const rows = recent.map(row=>{
+    const id=escapeHtml(String(row.assignment_id||''));
+    const submitted=getStudentPortalRecordedSubmission(row);
+    const score = submitted==='submitted' && row.score!==null && row.score!==undefined && row.score!=='' && Number.isFinite(Number(row.score))
+      ? ` · 기록 점수 ${escapeHtml(String(row.score))}점` : '';
+    const label = submitted==='submitted' ? `제출 완료${score}` : submitted==='pending' ? (isTeacherPreview?'출제됨':'채점 대기') : '제출 상태 확인 필요';
+    const meta = [row.class_name,row.exam_date,row.question_count ? `${row.question_count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
+    const review = isOmrReviewAvailable(row);
+    const canSubmit = !isTeacherPreview && submitted==='pending' && !row.is_review_only && !row.is_cancelled && !row.is_replaced;
+    return `<article class="omr-card" id="student-assignment-${id}" data-assignment-id="${id}">
+      <div class="omr-top"><div style="min-width:0"><div class="omr-title">${escapeHtml(row.exam_title||'시험지')}</div><div class="omr-meta">${escapeHtml(meta)}</div></div>
+        <span class="omr-status ${submitted==='submitted'?'done':submitted==='pending'?'pending':''}">${label}</span>
+      </div>
+      <div class="home-review-actions">
+        ${canSubmit?`<button type="button" class="btn btn-primary" onclick="openHomeOmrInput('${id}')">틀린 번호 체크 · OMR</button>`:''}
+        ${review?`<button type="button" class="btn" onclick="openOmrReview('${id}', '${submitted==='submitted'?'sol':'exam'}')">${submitted==='submitted'?'해설로 복습':'시험지 보기'}</button>`:''}
+      </div>
+      ${submitted==='unknown'?'<p class="home-muted-note">중복 제출을 피하려면 선생님께 상태를 확인하세요.</p>':''}
+      ${window.StudentClinicLineageView ? window.StudentClinicLineageView.renderCard(row) : ''}
+    </article>`;
+  }).join('');
+  return `<section id="student-portal-omr-home-section" class="card portal-assignments-card" aria-label="내 시험지">
+    <div class="portal-section-head">
+      <div><h2 class="card-title">내 시험지</h2><p class="card-desc">${isTeacherPreview?'출제된 시험지와 제출 상태를 읽기 전용으로 확인합니다.':'시험지 확인 → 직접 채점 → 틀린 번호 체크 → 제출 · 복습'}</p></div>
+      <span class="portal-section-count">진행 중 ${groups.pending.length} · 제출 ${groups.complete.length}</span>
+    </div>
+    <div class="portal-omr-home-list">${rows || `<div class="empty">${isTeacherPreview?'출제된 시험지가 없습니다.':'아직 출제된 시험지가 없습니다.'}</div>`}</div>
+    <button type="button" class="home-exam-more" onclick="renderOmrExams()">전체 시험지 ${all.length}개 보기 →</button>
+  </section>`;
+}
     function renderStudentQuickActions() {
-      if (isTeacherPreview) {
-        return `
-          <section class="card portal-assignments-card">
-            <div class="portal-assignments-head">
-              <div>
-                <h2 class="card-title">과제 · 시험지</h2>
-                <p class="card-desc">학생에게 보이는 출제 내용을 확인합니다.</p>
-              </div>
-            </div>
-            <div class="portal-quick-actions">
-              <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
-              <button class="btn" onclick="renderOmrExams()">시험지 보기</button>
-            </div>
-          </section>
-        `;
-      }
-      return `
-        <section class="card portal-assignments-card">
-          <div class="portal-assignments-head">
-            <div>
-              <h2 class="card-title">과제 · 플래너</h2>
-              <p class="card-desc">필요할 때 바로 엽니다.</p>
-            </div>
-          </div>
-          <div class="portal-quick-actions">
-            <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
-            <button class="btn" onclick="openPlanner()">플래너 열기</button>
-          </div>
-        </section>
-      `;
-    }
+  return `<section class="card portal-assignments-card" aria-label="그 밖의 학습 기능">
+    <div class="portal-assignments-head">
+      <div><h2 class="card-title">플래너 · 과제</h2><p class="card-desc">필요할 때 확인하는 학습 도구입니다.</p></div>
+    </div>
+    <div class="home-secondary-links" style="margin-top:14px">
+      ${isTeacherPreview?'':`<button type="button" class="btn" onclick="openPlanner()">학습 플래너</button>`}
+      <button type="button" class="btn" onclick="renderAssignments()">과제 목록</button>
+    </div>
+  </section>`;
+}
     // 도형실험실 입구. 첫 화면은 늘 AP Math Universe(playground/index.html)이고, 거기서 「입장」하면 실험실 허브로 간다.
     // 같은 탭으로 열어 브라우저 뒤로 가기로 포털에 돌아온다(플래너와 같은 방식).
     // 학년이 중1~중3이면 학년 해시(#g7·#g8·#g9)를 붙이고, Universe가 입장할 때 허브의 학년 필터로 그대로 넘긴다. 그 외 학년은 해시 없음.
@@ -1988,7 +1945,7 @@
       return m ? `${base}#g${Number(m[1]) + 6}` : base;
     }
     function renderGeometryLabEntry() {
-      return `<a id="portal-geometry-lab-entry" class="card portal-lab-entry" href="${geometryLabHref()}" aria-label="도형실험실 열기. 도형을 직접 움직여 보기">
+      return `<a id="portal-geometry-lab-entry" class="card portal-lab-entry" href="${geometryLabHref()}" aria-label="도형실험실 열기. 도형·그래프를 움직이며 개념 이해하기">
               <span class="portal-lab-entry-text">
                 <span class="portal-lab-entry-title">도형실험실</span>
                 <span class="portal-lab-entry-sub">도형을 직접 움직여 보기</span>
@@ -2050,56 +2007,42 @@
       clinicLearningController = null;
     }
     function renderHome(options = {}) {
-      enterStudentView('home', options.preserveView === true, options.preserveView !== true);
-      const student = homeData?.student || session || {};
-      const { missing, done } = splitAssignments();
-      const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
-      setTopStudent(student.name || session?.name || '');
-      if (isTeacherPreview && student.name) document.title = `${student.name} 학생 화면`;
-      $('app').innerHTML = `
-        <div class="student-shell">
-          <section class="card student-profile-card">
-            <div>
-              <p class="hero-kicker" style="margin:0 0 12px;color:#374151;background:#F3F4F6;border-color:rgba(17,24,39,0.12);">AP수학 학생 화면</p>
-              <h1 class="profile-name">${escapeHtml(student.name || '학생')} 학생</h1>
-              <p class="profile-sub">${escapeHtml(schoolGrade || 'AP수학 학생 포털')}</p>
-            </div>
-            <div class="summary-grid">
-              <div class="summary-box">
-                <div class="summary-value">${missing.length}</div>
-                <div class="summary-label">미제출 과제</div>
-              </div>
-              <div class="summary-box">
-                <div class="summary-value">${done.length}</div>
-                <div class="summary-label">제출 완료</div>
-              </div>
-            </div>
-          </section>
-          ${isTeacherPreview ? '' : renderInstallCard(true)}
-          ${isTeacherPreview ? '' : renderGeometryLabEntry()}
-          ${renderOmrHomeSection()}
-          <section class="card portal-assignments-card" aria-label="내 학습 기록 요약">
-            <div class="portal-assignments-head">
-              <div>
-                <h2 class="card-title">내 학습 기록 요약</h2>
-                <p class="card-desc">현재 불러온 기록 기준의 관측 요약입니다. 숙련도·회복률·전체 기간 판정이 아닙니다.${isTeacherPreview ? ' 선생님 미리보기에서는 읽기 전용입니다.' : ''}</p>
-              </div>
-            </div>
-            <div id="clinic-learning-history"></div>
-          </section>
-          ${isTeacherPreview ? '' : renderWrongClinicPackets()}
-          ${renderStudentQuickActions()}
-          ${isTeacherPreview ? '' : `
-            <div class="portal-support-grid">
-              ${renderMaterialWrongAssignments()}
-            </div>
-          `}
-          ${renderStudentAppVersion()}
+  enterStudentView('home', options.preserveView === true, options.preserveView !== true);
+  const student = homeData?.student || session || {};
+  const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
+  const groups = groupStudentPortalExams(getStudentPortalAssignments());
+  setTopStudent(student.name || session?.name || '');
+  if(isTeacherPreview && student.name) document.title = `${student.name} 학생 화면`;
+  $('app').innerHTML=`
+    <div class="student-shell">
+      <section class="card student-profile-card">
+        <div><p class="hero-kicker" style="margin:0 0 9px">AP수학 · 나의 학습</p>
+          <h1 class="profile-name">${escapeHtml(student.name || '학생')} 학생</h1>
+          <p class="profile-sub">${escapeHtml(schoolGrade || 'AP수학 학생 포털')}${isTeacherPreview?' · 읽기 전용':''}</p>
         </div>
-      `;
-      if (!isTeacherPreview && typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
-      mountClinicLearningView();
-    }
+        <div class="summary-grid">
+          <div class="summary-box"><div class="summary-value">${groups.pending.length}</div><div class="summary-label">진행 중 시험지</div></div>
+          <div class="summary-box"><div class="summary-value">${groups.complete.length}</div><div class="summary-label">제출 완료 시험지</div></div>
+        </div>
+      </section>
+      ${renderOmrHomeSection()}
+      ${isTeacherPreview ? '' : renderGeometryLabEntry()}
+      <section class="card portal-assignments-card" aria-label="학습 기록">
+        <div class="portal-assignments-head"><div>
+          <h2 class="card-title">내 학습 기록</h2>
+          <p class="card-desc">제출과 복습 내역을 확인합니다. 현재 조회된 기록이며 숙련도 판정은 아닙니다.${isTeacherPreview?' 선생님 미리보기에서는 읽기 전용입니다.':''}</p>
+        </div></div>
+        <div id="clinic-learning-history"></div>
+      </section>
+      ${isTeacherPreview?'':renderWrongClinicPackets()}
+      ${isTeacherPreview?'':`<div class="portal-support-grid">${renderMaterialWrongAssignments()}</div>`}
+      ${renderStudentQuickActions()}
+      ${isTeacherPreview?'':renderInstallCard(true)}
+      ${renderStudentAppVersion()}
+    </div>`;
+  if(!isTeacherPreview && typeof refreshMaterialWrongAssignments==='function') refreshMaterialWrongAssignments();
+  mountClinicLearningView();
+}
     function renderAssignments() {
       enterStudentView('assignments', false, true);
       const { missing, done } = splitAssignments();
@@ -2417,17 +2360,16 @@
         toast(error.message || '출력을 준비하지 못했습니다. 시험지 목록에서 다시 열어 주세요.');
       }
     }
-    function renderOmrReviewActions(exam) {
-      if (!isOmrReviewAvailable(exam)) return '';
-      const examUrl = buildOmrReviewUrl(exam, 'exam');
-      const answerUrl = buildOmrReviewUrl(exam, 'ans');
-      const solutionUrl = buildOmrReviewUrl(exam, 'sol');
-      return `
-        ${examUrl ? `<button type="button" class="btn review-btn" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'exam')">시험지 보기</button>` : '<button type="button" class="btn review-btn" disabled>시험지 보기</button>'}
-        ${answerUrl ? `<button type="button" class="btn review-btn" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'ans')">정답 보기</button>` : '<button type="button" class="btn review-btn" disabled>정답 보기</button>'}
-        ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'sol')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
-      `;
-    }
+    function renderOmrReviewActions(exam, options = {}) {
+  if(!isOmrReviewAvailable(exam)) return '';
+  const examUrl=buildOmrReviewUrl(exam,'exam'), answerUrl=buildOmrReviewUrl(exam,'ans'), solutionUrl=buildOmrReviewUrl(exam,'sol');
+  const assignmentId=escapeHtml(String(exam.assignment_id||''));
+  return `
+    ${options.omitExam?'':examUrl?`<button type="button" class="btn review-btn" onclick="openOmrReview('${assignmentId}', 'exam')">시험지 보기</button>`:'<button type="button" class="btn review-btn" disabled>시험지 보기</button>'}
+    ${answerUrl?`<button type="button" class="btn review-btn" onclick="openOmrReview('${assignmentId}', 'ans')">정답 보기</button>`:'<button type="button" class="btn review-btn" disabled>정답 보기</button>'}
+    ${options.omitSolution?'':solutionUrl?`<button type="button" class="btn review-btn solution" onclick="openOmrReview('${assignmentId}', 'sol')">해설 보기</button>`:'<button type="button" class="btn review-btn" disabled>해설 보기</button>'}
+  `;
+}
     function renderOmrPdfAction(exam) {
       if (exam?.is_review_only === true) return '';
       const status = String(exam?.pdf_status || 'pending');
@@ -2447,7 +2389,7 @@
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="omr-list-header">
             <h1 class="card-title">시험지 목록</h1>
-            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 문항 수를 확인합니다.' : '시험지를 확인하고 필요한 OMR을 작성하세요.'}</p>
+            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 문항 수를 확인합니다.' : '시험지 보기 → 스스로 채점 → 틀린 번호 제출 → 결과와 해설 복습'}</p>
           </section>
           <div class="omr-browser"><div class="empty">시험지를 불러오는 중입니다.</div></div>
         </div>
@@ -2467,51 +2409,43 @@
         if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'omr-list')) return;
         toast(e.message || '시험지를 불러오지 못했습니다.');
         const root = document.querySelector('.omr-browser');
-        if (root) root.innerHTML = '<div class="empty">시험지를 불러오지 못했습니다.</div>';
+        if (root) root.innerHTML = '<div class="empty">시험지를 불러오지 못했습니다. 연결을 확인한 뒤 다시 시도해 주세요.</div>';
       }
     }
     function renderOmrExamCard(exam) {
-      const submittedStatus = getStudentPortalRecordedSubmission(exam);
-      const submitted = submittedStatus === 'submitted';
-      const submissionUnknown = submittedStatus === 'unknown';
-      const showReview = isOmrReviewAvailable(exam);
-      const showPdf = !!renderOmrPdfAction(exam);
-      const isLegacyMixedReview = isLegacyMixedOmrReview(exam);
-      const showActionArea = showReview || showPdf || isTeacherPreview || !submitted;
-      const hasActionContent = showReview || showPdf || isTeacherPreview || (!submitted && !submissionUnknown);
-      const count = Number(exam.question_count || 0);
-      const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
-      const statusParts = [];
-      if (submitted) statusParts.push(`시험 제출 완료${exam.score !== null && exam.score !== undefined && exam.score !== '' && Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}`);
-      else if (submissionUnknown) statusParts.push('제출 상태 확인 필요');
-      if (exam.is_cancelled) statusParts.push('취소됨');
-      if (exam.is_replaced) statusParts.push('대체됨');
-      if (exam.is_review_only) statusParts.push('열람 전용');
-      const status = statusParts.join(' · ');
-      const statusClass = exam.is_cancelled || exam.is_replaced || exam.is_review_only
-        ? 'lifecycle' : submitted ? 'done' : submissionUnknown ? '' : 'pending';
-      return `
-        <article class="omr-card" id="student-assignment-${escapeHtml(String(exam.assignment_id || ''))}" data-assignment-id="${escapeHtml(String(exam.assignment_id || ''))}">
-          <div class="omr-top">
-            <div style="min-width:0;">
-              <div class="omr-title">${escapeHtml(exam.exam_title || '시험지')}</div>
-              <div class="omr-meta">${escapeHtml(meta || 'AP수학 시험')}</div>
-            </div>
-            ${status ? `<span class="omr-status ${statusClass}">${escapeHtml(status)}</span>` : ''}
-          </div>
-          ${window.StudentClinicLineageView ? window.StudentClinicLineageView.renderCard(exam) : ''}
-          ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
-          ${showActionArea && hasActionContent ? `
-            <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
-              ${showPdf ? renderOmrPdfAction(exam) : ''}
-              ${showReview ? renderOmrReviewActions(exam) : ''}
-              ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
-              ${isTeacherPreview || submitted ? '' : submissionUnknown ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}
-            </div>
-          ` : ''}
-        </article>
-      `;
-    }
+  const status=getStudentPortalRecordedSubmission(exam);
+  const submitted=status==='submitted', unknown=status==='unknown';
+  const review=isOmrReviewAvailable(exam), pdf=!!renderOmrPdfAction(exam);
+  const id=escapeHtml(String(exam.assignment_id||''));
+  const meta=[exam.class_name,exam.exam_date,exam.question_count?`${exam.question_count}문항`:'문항 수 없음'].filter(Boolean).join(' · ');
+  const recordedScore=submitted && exam.score!==null && exam.score!==undefined && exam.score!=='' && Number.isFinite(Number(exam.score))
+    ? ` · 기록 점수 ${exam.score}점` : '';
+  const flag=[exam.is_cancelled?'취소됨':'',exam.is_replaced?'대체됨':'',exam.is_review_only?'열람 전용':''].filter(Boolean).join(' · ');
+  const label=flag || (submitted?`제출 완료${recordedScore}`:unknown?'제출 상태 확인 필요':isTeacherPreview?'출제됨':'진행 중');
+  const labelClass=flag?'lifecycle':submitted?'done':unknown?'':'pending';
+  const canSubmit=!isTeacherPreview&&!submitted&&!unknown&&!exam.is_review_only&&!exam.is_cancelled&&!exam.is_replaced;
+  const primaryReviewMode=submitted?'sol':'exam';
+  return `<article class="omr-card" id="student-assignment-${id}" data-assignment-id="${id}">
+    <div class="omr-top"><div style="min-width:0">
+      <div class="omr-title">${escapeHtml(exam.exam_title||'시험지')}</div>
+      <div class="omr-meta">${escapeHtml(meta)}</div>
+    </div><span class="omr-status ${labelClass}">${escapeHtml(label)}</span></div>
+    ${window.StudentClinicLineageView?window.StudentClinicLineageView.renderCard(exam):''}
+    ${isLegacyMixedOmrReview(exam)?'<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>':''}
+    <div class="omr-action-primary">
+      ${canSubmit?`<button type="button" class="btn btn-primary" onclick="renderOmrInput('${id}')">틀린 번호 체크 · OMR</button>`:''}
+      ${review?`<button type="button" class="btn ${submitted?'btn-primary':'review-btn'}" onclick="openOmrReview('${id}', '${primaryReviewMode}')">${submitted?'해설로 복습':'시험지 보기'}</button>`:''}
+      ${isTeacherPreview&&!review?'<button type="button" class="btn" disabled>시험지 파일 없음</button>':''}
+    </div>
+    ${unknown?'<p class="home-muted-note">제출 상태를 확인할 수 없습니다. 중복 제출을 피하려면 선생님께 확인하세요.</p>':''}
+    ${review||pdf?`<details class="omr-secondary-details"><summary>정답 · 해설 · PDF 등 더 보기</summary>
+      <div class="omr-actions">
+        ${pdf?renderOmrPdfAction(exam):''}
+        ${review?renderOmrReviewActions(exam,{omitExam:!submitted,omitSolution:submitted}):''}
+      </div>
+    </details>`:''}
+  </article>`;
+}
     function findOmrExam(assignmentId) {
       const key = String(assignmentId || '');
       return getOmrExams().find(exam => String(exam.assignment_id) === key)
@@ -2556,37 +2490,50 @@
       drawOmrInput(exam);
     }
     function drawOmrInput(exam) {
-      const count = Number(exam.question_count || 0);
-      const wrongSet = new Set(normalizeOmrWrongIds(omrDraft?.wrong_ids));
-      const meta = [exam.class_name || '', exam.exam_date || '', `${count}문항`].filter(Boolean).join(' · ');
-      const buttons = Array.from({ length: count }, (_, idx) => {
-        const no = idx + 1;
-        return `<button class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" onclick="toggleOmrWrong(${no})">${no}</button>`;
-      }).join('');
-      $('app').innerHTML = `
-        <div class="student-shell">
-          <button class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
-          <section class="card">
-            <h1 class="card-title">${escapeHtml(exam.exam_title || 'OMR 입력')}</h1>
-            <p class="card-desc">${escapeHtml(meta)}<br>틀린 번호만 눌러 빨간색으로 표시한 뒤 제출하세요.</p>
-            <div class="notice" style="margin-top:14px;">현재 선택한 오답 <span style="font-weight:600;">${wrongSet.size}개</span> · 예상 점수 <span style="font-weight:600;">${Math.round(((count - wrongSet.size) / count) * 100)}점</span></div>
-            <div class="omr-sheet">${buttons}</div>
-          </section>
-          <div class="omr-submit-bar">
-            <button id="omr-submit-btn" class="btn btn-primary" onclick="submitOmr()">OMR 제출</button>
-          </div>
-        </div>
-      `;
-    }
+  const count=Number(exam.question_count||0);
+  const wrongSet=new Set(normalizeOmrWrongIds(omrDraft?.wrong_ids));
+  const meta=[exam.class_name,exam.exam_date,`${count}문항`].filter(Boolean).join(' · ');
+  const expected=Math.round(((count-wrongSet.size)/count)*100);
+  const buttons=Array.from({length:count},(_,idx)=>{
+    const no=idx+1,selected=wrongSet.has(no);
+    return `<button type="button" class="omr-no ${selected?'wrong':''}" aria-pressed="${selected}" aria-label="${no}번 ${selected?'틀린 번호로 선택됨':'틀린 번호로 선택'}" onclick="toggleOmrWrong(${no})">${no}</button>`;
+  }).join('');
+  $('app').innerHTML=`<div class="student-shell">
+    <button type="button" class="btn back-btn" onclick="renderOmrExams()">← 시험지 목록</button>
+    <section class="card" aria-label="틀린 번호 체크">
+      <p class="hero-kicker" style="margin:0 0 9px">2단계 · 직접 채점 후 입력</p>
+      <h1 class="card-title">${escapeHtml(exam.exam_title||'OMR 입력')}</h1>
+      <p class="card-desc">${escapeHtml(meta)}</p>
+      <p class="omr-guide">시험지를 스스로 채점한 다음, <strong>틀린 번호만</strong> 눌러 주세요. 다시 누르면 선택이 해제됩니다.</p>
+      <div class="omr-progress" aria-live="polite" aria-atomic="true">
+        <span>틀린 번호 <strong id="omr-wrong-count">${wrongSet.size}개</strong></span>
+        <span>예상 점수 <strong id="omr-expected-score">${expected}점</strong></span>
+      </div>
+      <div class="omr-sheet" role="group" aria-label="틀린 문제 번호 선택">${buttons}</div>
+      <p class="omr-guide">예상 점수는 현재 선택 기준이며, 제출 후 기록 점수와 구별됩니다.</p>
+    </section>
+    <div class="omr-submit-bar">
+      <button id="omr-submit-btn" class="btn btn-primary" onclick="submitOmr()">틀린 번호 제출 · 기록하기</button>
+    </div>
+  </div>`;
+}
     function toggleOmrWrong(no) {
-      if (isLoading || !omrDraft) return;
-      const wrong = new Set(normalizeOmrWrongIds(omrDraft.wrong_ids));
-      if (wrong.has(no)) wrong.delete(no);
-      else wrong.add(no);
-      omrDraft.wrong_ids = Array.from(wrong).sort((a, b) => a - b);
-      const exam = findOmrExam(omrDraft.assignment_id);
-      if (exam) drawOmrInput(exam);
-    }
+  if(isLoading || !omrDraft) return;
+  const wrong=new Set(normalizeOmrWrongIds(omrDraft.wrong_ids));
+  if(wrong.has(no)) wrong.delete(no); else wrong.add(no);
+  omrDraft.wrong_ids=Array.from(wrong).sort((a,b)=>a-b);
+  const button=Array.from(document.querySelectorAll('.omr-sheet .omr-no'))[no-1];
+  if(button) {
+    const selected=wrong.has(no);
+    button.classList.toggle('wrong',selected);
+    button.setAttribute('aria-pressed',String(selected));
+    button.setAttribute('aria-label',`${no}번 ${selected?'틀린 번호로 선택됨':'틀린 번호로 선택'}`);
+  }
+  const exam=findOmrExam(omrDraft.assignment_id);
+  const count=Number(exam?.question_count||0);
+  if($('omr-wrong-count')) $('omr-wrong-count').textContent=`${wrong.size}개`;
+  if($('omr-expected-score')&&count) $('omr-expected-score').textContent=`${Math.round(((count-wrong.size)/count)*100)}점`;
+}
     async function submitOmr() {
       if (isLoading || !omrDraft) return;
       const request = beginStudentRequest('omrMutation');

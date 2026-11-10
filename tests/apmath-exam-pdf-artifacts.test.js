@@ -69,7 +69,7 @@ assert.ok(classroomPlanner.includes('PDF 다시 생성'), 'teacher exam detail s
 assert.ok(archiveIndex.includes('pdf_qpp:'), 'archive assignment should persist the selected QPP');
 assert.ok(assessment.includes('pdf_qpp:'), 'mixer assignment should persist the selected QPP');
 assert.ok(assessment.includes('출제본 PDF를 준비하는 중입니다.'), 'mixer class issuing should show PDF progress');
-assert.ok(studentPortal.includes('renderOmrPdfAction(row)'), 'student home cards should expose direct PDF download');
+assert.ok(studentPortal.includes('renderOmrPdfAction(exam)') && studentPortal.includes('<details class="omr-secondary-details">'), 'full student exam list must preserve working PDF download in secondary actions');
 
 test('PDF cache identity stays stable across temporary output envelope requests', async () => {
   const { buildPdfIdentity } = await import('../apmath/worker-backup/worker/routes/exam-pdf.js');
