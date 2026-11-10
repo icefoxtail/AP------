@@ -61,7 +61,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "2:1 비"
+    "rpmL4": "2:1 비",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 중선 AD, BE가 무게중심 G에서 만난다. E는 변 AC의 중점이라 AE와 EC가 같고 길이 8 cm이며, 파란색 BG는 6 cm, 주황색 GE는 3 cm이다. 오른쪽에는 중선 BE를 따로 펴서 BG와 GE의 길이를 나타냈다.",
+    "solutionImageCaption": "E는 AC의 중점이므로 AE=EC=8 cm에서 x=8이다. 무게중심 G는 중선 BE를 2:1로 나누므로 BG=6 cm일 때 GE=3 cm이고 y=3이다. 따라서 x+y를 구하면 된다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -125,7 +129,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "무게중심 넓이비"
+    "rpmL4": "무게중심 넓이비",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 세 중선이 무게중심 G에서 만난다. 왼쪽 그림은 점 A와 G에서 변 BC에 내린 점선 높이를 보이며 높이가 3h와 h이고 삼각형 GBD는 파란색 4이다. 오른쪽 그림은 세 중선이 삼각형을 넓이 4인 파란색 삼각형 6개로 나눈 모양이다.",
+    "solutionImageCaption": "D가 BC의 중점이므로 밑변 BD는 BC의 2분의 1이고, G의 높이는 A의 높이의 3분의 1이다. 따라서 삼각형 GBD의 넓이는 삼각형 ABC의 6분의 1이다. 세 중선이 만드는 6개의 삼각형은 넓이가 모두 같으므로 4의 6배가 ABC의 넓이이다. 정답은 24 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -189,7 +197,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "무게중심 좌표"
+    "rpmL4": "무게중심 좌표",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 점 B, M, D, N, C가 있고 BD는 18 cm, DC는 12 cm이다. 두 삼각형의 무게중심 G, G′을 이은 파란색 선분이 AD와 만난다. 오른쪽 그림은 삼각형 AMN에서 AM과 AN을 각각 같은 길이 3칸으로 나눈 모양으로, 꼭짓점 A 쪽 2칸 지점의 점 G, G′을 이은 파란색 선분이 MN과 평행하고, MD는 9 cm, DN은 6 cm, MN은 15 cm이다.",
+    "solutionImageCaption": "M, N이 BD, DC의 중점이므로 MD=9 cm, DN=6 cm이고 MN=15 cm이다. 무게중심은 중선 AM, AN을 2:1로 나누므로 삼각형 AGG′과 AMN은 닮음비가 2:3이고, 파란색 GG′은 MN의 3분의 2이다. 정답은 10 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -253,7 +265,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "교점으로 나눈 넓이"
+    "rpmL4": "교점으로 나눈 넓이",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 그림은 직사각형 A-B-C-D에서 가로 AD가 6 cm, 세로 AB가 4 cm이고 M, N이 BC, CD의 중점이며 오각형 P-Q-N-C-M이 파랗게 칠해져 있다. 둘째 그림은 AD와 BM이 평행한 닮은 삼각형 PAD와 PMB로 AD는 6 cm, BM은 3 cm이다. 셋째 그림은 AB와 DN이 평행한 닮은 삼각형 QAB와 QND로 AB는 4 cm, DN은 2 cm이다. 넷째 그림은 사각형 A-M-C-N 안에 분홍색 삼각형 APQ와 파란색 오각형이 놓인 모양이다.",
+    "solutionImageCaption": "AD∥BM이므로 삼각형 PAD와 PMB의 닮음비가 6:3=2:1이고 AP:PM=2:1이다. AB∥DN이므로 삼각형 QAB와 QND의 닮음비가 4:2=2:1이고 AQ:QN=2:1이다. 사각형 A-M-C-N은 24−6−6=12이고 삼각형 AMN은 12−3=9이다. 삼각형 APN은 9의 3분의 2인 6, 삼각형 APQ는 6의 3분의 2인 4이므로 색칠한 부분의 넓이는 12−4이고 정답은 ③ 8 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -317,7 +333,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "평행선과 무게중심"
+    "rpmL4": "평행선과 무게중심",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 중선 AD 위의 무게중심 G를 지나고 BC에 평행한 선분 FE가 변 AB, AC와 만나는 점이 F, E이다. 삼각형 AFD는 파란색으로 칠했다. 오른쪽 그림은 삼각형 ABD를 변 AB 위의 F로 나눈 모양으로, AF는 2k, FB는 k이며 삼각형 AFD는 파란색, 삼각형 FBD는 주황색이다.",
+    "solutionImageCaption": "삼각형 ABD의 넓이는 ABC의 절반인 18 cm²이다. AF:FB=2:1이므로 삼각형 AFD의 넓이는 ABD의 3분의 2이다. 정답은 12 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -381,7 +401,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "중선 분할 넓이"
+    "rpmL4": "중선 분할 넓이",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 중선 AD 위에 무게중심 G와 AD의 중점 M이 있고 삼각형 MGC가 파란색으로 칠해져 있다. 오른쪽에는 중선 AD를 같은 길이 6칸으로 나눈 그림으로, AM은 3a, MG는 파란색 a, AG는 4a, GD는 2a이다.",
+    "solutionImageCaption": "G는 AD를 AG:GD=2:1로 나누고 M은 AD의 중점이므로, AD를 6등분하면 MG는 AD의 6분의 1이다. D는 BC의 중점이라 삼각형 ADC는 ABC의 절반이다. 삼각형 MGC와 ADC는 높이가 같으므로 MGC는 ABC의 12분의 1이다. 정답은 24 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -446,7 +470,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "선분비를 이용한 복합도형"
+    "rpmL4": "선분비를 이용한 복합도형",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 AB의 길이는 18 cm, 변 AC의 길이는 12 cm이다. 파란색 선분 DE는 BC와 평행하며 무게중심 G와 내심 I를 지나고, 점선은 A에서 변 BC의 중점으로 그은 중선이다. 오른쪽 그림은 삼각형 ABC의 내접원과 A에서 BC에 내린 점선 높이 h, 내심 I에서 BC에 내린 점선 반지름 r을 나타내고 파란색 DE가 I를 지난다.",
+    "solutionImageCaption": "DE는 BC에 평행하고 무게중심 G를 지나므로 DE:BC=2:3이고, BC에서 DE까지의 거리는 높이 h의 3분의 1이다. 내심 I가 DE 위에 있으므로 r=h의 3분의 1이다. BC=a라 하면 넓이 S=2분의 1 곱하기 a 곱하기 h이고 S=r×s(s는 둘레의 절반)에서 h를 없애면 3a=a+30이므로 a=15 cm이다. 정답은 DE=3분의 2 곱하기 15=10 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -510,7 +538,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "정사각형 넓이와 변 길이"
+    "rpmL4": "정사각형 넓이와 변 길이",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 C가 직각인 직각삼각형 ABC의 세 변 위에 정사각형이 있다. 빗변 AB 위의 주황색 정사각형의 넓이는 100 cm², BC 위의 파란색 정사각형의 넓이는 64 cm²이고, AC 위의 초록색 정사각형은 넓이가 쓰여 있지 않다.",
+    "solutionImageCaption": "빗변 AB 위의 정사각형 넓이는 AB²=100이고 BC²=64이다. 피타고라스 정리 AB²=AC²+BC²에서 초록색 AC² = 100−64이다. 정답은 36 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -574,7 +606,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "직각삼각형과 정사각형 넓이"
+    "rpmL4": "직각삼각형과 정사각형 넓이",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변 위에 정사각형을 그린 문제 그림과, 같은 넓이의 정사각형(변 AB 위)과 직사각형(점 B, F, K, J)을 주황색으로 보인 그림, 그 절반인 삼각형 EBA와 삼각형 BFJ를 파란색으로 보인 그림, EB와 AC가 평행하고 AJ와 BF가 평행하여 삼각형 EBA와 EBC, 삼각형 ABF와 BFJ가 같은 밑변과 높이를 가짐을 보인 그림이다.",
+    "solutionImageCaption": "A에서 BC에 내린 수선의 발 J에 대해 AB²=BC×BJ이므로 AB 위의 정사각형과 직사각형(점 B, F, K, J)의 넓이가 같다. 삼각형 EBA와 BFJ는 각각 그 절반이다. EB∥AC이므로 삼각형 EBC는 EBA와, AJ∥BF이므로 삼각형 ABF는 BFJ와 넓이가 같다. 이 네 삼각형은 모두 AB² 의 절반으로 넓이가 같고 삼각형 BCI만 다르다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -635,7 +671,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "직각삼각형 판정"
+    "rpmL4": "직각삼각형 판정",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가장 긴 변 c를 주황색, 나머지 두 변 a, b를 파란색으로 나타낸 세 삼각형이다. 위쪽 왼쪽 그림은 각 C가 예각인 삼각형, 위쪽 오른쪽 그림은 직각인 삼각형, 아래쪽 그림은 둔각인 삼각형이다.",
+    "solutionImageCaption": "가장 긴 변을 c라 할 때 c²이 나머지 두 변의 제곱의 합보다 작으면 예각, 같으면 직각, 크면 둔각삼각형이다. ④는 가장 긴 변이 8이므로 8²=64와 5²+7²=74를 비교하면 64<74이어서 예각삼각형인데 둔각삼각형이라 했으므로 잘못되었다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -699,7 +739,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "반원과 직각삼각형 넓이"
+    "rpmL4": "반원과 직각삼각형 넓이",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A가 직각인 직각삼각형 ABC의 세 변을 각각 지름으로 하는 반원이 그려져 있다. 왼쪽 그림은 AB, AC 위의 반원과 BC 위의 반원 사이의 두 초승달을 파란색으로 칠한 모양이고, 오른쪽 그림은 두 초승달과 삼각형 ABC를 모두 같은 파란색으로 칠해 넓이가 같음을 보인다. AB는 12 cm, BC는 15 cm, AC는 9 cm이다.",
+    "solutionImageCaption": "피타고라스 정리로 AC²=15²−12²=81이므로 AC=9 cm이다. 두 직각변 위의 반원의 넓이의 합은 빗변 위의 반원의 넓이와 같으므로, 색칠한 두 초승달의 넓이의 합은 삼각형 ABC의 넓이 2분의 1×12×9와 같다. 정답은 54 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -763,7 +807,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "원기둥 옆면 최단거리"
+    "rpmL4": "원기둥 옆면 최단거리",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원기둥의 옆면을 펼친 직사각형이다. 위쪽 가로 변은 24π, 왼쪽 세로 변은 10π이고 왼쪽 위 꼭짓점 A와 오른쪽 아래 꼭짓점 B를 잇는 점선 대각선이 그려져 있다.",
+    "solutionImageCaption": "원기둥의 옆면을 펼치면 가로가 밑면의 둘레 2π×12=24π cm, 세로가 높이 10π cm인 직사각형이다. 한 바퀴 감는 실의 최단 경로는 점선 AB이고 직각삼각형의 빗변이므로 피타고라스 정리로 구한다. 정답은 26π cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -949,7 +997,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "인접 영역 색칠"
+    "rpmL4": "인접 영역 색칠",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원문의 타원 대신 직사각형으로 나타낸 그림이다. 위쪽의 영역 A와 아래쪽의 영역 B, C, D로 나뉘어 있다. 오른쪽 그림은 A는 4가지, B는 3가지, C는 2가지, D는 2가지 색을 칠할 수 있음을 보인다.",
+    "solutionImageCaption": "영역 A는 4가지 색 중 하나를 고르고, B는 A와 다른 3가지, C는 A와 B와 다른 2가지, D는 A와 C와 다른 2가지이다. 곱의 법칙으로 4×3×2×2를 구한다. 정답은 48가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1010,7 +1062,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "무승부 확률"
+    "rpmL4": "무승부 확률",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로에 갑이 낼 수 있는 가위, 바위, 보, 세로에 을이 낼 수 있는 가위, 바위, 보를 놓은 3×3 표이다. 같은 것을 내는 대각선의 세 칸이 파란색으로 칠해져 비김이라고 쓰여 있다.",
+    "solutionImageCaption": "두 사람이 낼 수 있는 전체 경우는 3×3=9가지이다. 무승부는 두 사람이 같은 것을 내는 경우이므로 표의 대각선 3칸(파란색)이다. 확률은 9분의 3이다. 정답은 3분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1194,7 +1250,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "경우를 나누어 구하는 확률"
+    "rpmL4": "경우를 나누어 구하는 확률",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 x, 세로 y의 6×6 표이다. y=x인 대각선의 6칸은 옅은 회색, y=x+1인 바로 위 대각선의 5칸은 진한 회색으로 칠해져 있다.",
+    "solutionImageCaption": "전체 경우는 6×6=36가지이다. y=x인 칸은 6가지(옅은 회색), y=x+1인 칸은 5가지(진한 회색)이고 두 경우는 겹치지 않는다. 따라서 유리한 경우는 6+5=11가지이다. 정답은 36분의 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1258,7 +1318,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "순서가 없는 경우"
+    "rpmL4": "순서가 없는 경우",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 0, 1, 2, 3, 4가 적힌 카드를 꼭짓점으로 하는 오각형과 모든 대각선이다. 0과 3, 1과 2, 2와 4를 잇는 세 선분은 파란색이다.",
+    "solutionImageCaption": "5장 중 2장을 뽑는 경우는 선분 한 개에 해당하고 모두 10가지이다. 큰 수를 십의 자리에 놓으면 두 장이 정해지면 수가 하나로 정해진다. 3의 배수는 30, 21, 42이므로 (0, 3), (1, 2), (2, 4)의 세 선분(파란색)이다. 정답은 10분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1317,7 +1381,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "무게중심과 직각삼각형 길이"
+    "rpmL4": "무게중심과 직각삼각형 길이",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A가 직각인 직각삼각형 ABC에서 AC는 18 cm이고, 빗변 BC의 중점 D와 무게중심 G가 있다. 중선 AD 위의 AG는 파란색, GD는 주황색이고 GD는 5 cm이다. 오른쪽 그림은 D를 중심으로 A, B, C를 지나는 초록색 반원과 반지름 DB, DC, DA이다.",
+    "solutionImageCaption": "(1) 무게중심 G는 중선 AD를 2:1로 나누므로 AG=2×GD로 구한다. (2) 직각삼각형에서 빗변의 중점 D는 세 꼭짓점에서 같은 거리에 있으므로 BD=CD=AD=AG+GD이고 BC=2AD이다. (3) 피타고라스 정리 AB²+AC²=BC²로 AB를 구한다. 정답은 (1) 10 cm, (2) 30 cm, (3) 24 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1376,7 +1444,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "직각삼각형 높이와 넓이"
+    "rpmL4": "직각삼각형 높이와 넓이",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 A, B, C, D인 직사각형에서 AB는 6 cm, AD는 8 cm이고 A에서 대각선 BD에 내린 수선의 발이 E이다. 위쪽 오른쪽 그림은 삼각형 ABD를 밑변 AB와 높이 AD로 본 모양이고 아래쪽 그림은 밑변 BD와 높이 AE로 본 모양이며 모두 파란색이다.",
+    "solutionImageCaption": "(1) 삼각형 ABD는 직각삼각형이므로 BD²=6²+8²에서 BD를 구한다. (2) 삼각형 ABD의 넓이를 AB, AD로 구한 값과 BD, AE로 구한 값이 같으므로 이를 이용해 AE를 구한다. 정답은 (1) 10 cm, (2) 4.8 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1434,6 +1506,10 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "auto_medium",
     "reviewStatus": "candidate",
-    "rpmL4": "순환 이동 확률"
+    "rpmL4": "순환 이동 확률",
+    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 A, B, C, D인 정사각형의 변에 A, B, C, D, A 순서로 화살표가 있다. 꼭짓점 A 곁에는 눈의 합 4, 8, 12, B 곁에는 5, 9, C 곁에는 2, 6, 10, D 곁에는 3, 7, 11이 적혀 있다.",
+    "solutionImageCaption": "주사위를 두 번 던져 나온 눈의 합이 4의 배수이면 말이 A로 돌아온다. 합이 4인 경우 3가지, 8인 경우 5가지, 12인 경우 1가지이다. 전체 경우의 수는 36가지이다. 정답은 (1) 9가지, (2) 4분의 1이다.",
+    "solutionImageSize": "full"
   }
 ];
