@@ -589,15 +589,46 @@
       window.APMATH_API_BASE ||
       "https://ap-math-os-v2612.js-pdf.workers.dev/api"
     ).replace(/\/$/, "");
-    const response = await fetch(base + route, {
-      method,
-      headers: {
-        ...headers(),
-        ...(body ? { "Content-Type": "application/json" } : {}),
-      },
-      ...(body ? { body: JSON.stringify(body) } : {}),
-    });
-    const data = await response.json().catch(() => ({}));
+    // Read requests give up after 30s so a stalled server cannot freeze the page. The saved-paper
+    // POST is idempotent by save_batch_id and a timeout (no HTTP status) already falls into the
+    // RESULT_UNKNOWN recovery path of savePapers(), so it gets a longer limit. Other writes
+    // (assignment, PDF) keep waiting: aborting them could hide a half-finished issue.
+    const timeoutMs = method === "GET" ? 30000
+      : route === "/archive-saved-papers" ? 90000 : 0;
+    const controller = timeoutMs && typeof AbortController === "function" ? new AbortController() : null;
+    const perform = async () => {
+      const result = await fetch(base + route, {
+        method,
+        headers: {
+          ...headers(),
+          ...(body ? { "Content-Type": "application/json" } : {}),
+        },
+        ...(body ? { body: JSON.stringify(body) } : {}),
+        ...(controller ? { signal: controller.signal } : {}),
+      });
+      return { response: result, data: await result.json().catch(() => ({})) };
+    };
+    let response, data;
+    if (timeoutMs) {
+      let timer;
+      const pending = perform();
+      pending.catch(() => {});
+      try {
+        ({ response, data } = await Promise.race([
+          pending,
+          new Promise((_, reject) => {
+            timer = setTimeout(() => {
+              controller?.abort();
+              const timeout = new Error("응답이 늦습니다. 잠시 뒤 다시 시도해 주세요.");
+              timeout.timeout = true;
+              reject(timeout);
+            }, timeoutMs);
+          }),
+        ]));
+      } finally {
+        clearTimeout(timer);
+      }
+    } else ({ response, data } = await perform());
     if (!response.ok || data.success === false) {
       const error = new Error(data.error || `요청 실패 (${response.status})`);
       error.status = response.status;
@@ -702,7 +733,87 @@
     clearTimeout(autosaveTimer);
     autosaveTimer = setTimeout(save, 450);
   }
+  // A backup file (or a stored draft) is untrusted input: its values end up in form fields, counters
+  // and requests. Every key is checked against the type draft() produces before anything is copied
+  // into state. The whole file is refused (nothing is applied) when a single value does not fit.
+  function validateDraftTypes(data) {
+    const fail = (key) => {
+      throw new Error(`이 작업 파일은 형식이 올바르지 않아 불러올 수 없습니다(항목: ${key}). 이 화면에서 내려받은 작업 백업 파일인지 확인해 주세요.`);
+    };
+    if (!data || typeof data !== "object" || Array.isArray(data)) fail("파일 전체");
+    const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+    const isInt = (v, min, max) => Number.isInteger(v) && v >= min && v <= max;
+    const isStr = (v, max = 4000) => typeof v === "string" && v.length <= max;
+    const isStrArr = (v, max = 60000) => Array.isArray(v) && v.length <= max && v.every((x) => isStr(x, 2000));
+    const isBuckets = (v) => Array.isArray(v) && v.length <= 5 && v.every((x) => isInt(x, 1, 5));
+    const isScalar = (v) => v === null || typeof v === "boolean" || isStr(v) || (typeof v === "number" && Number.isFinite(v));
+    const rules = {
+      draftId: (v) => typeof v === "string" && /^[A-Za-z0-9_-]{1,80}$/.test(v),
+      indexVersion: (v) => isStr(v, 200),
+      filters: (v) => isObj(v) && Object.values(v).every((x) =>
+        isScalar(x) || (Array.isArray(x) && x.length <= 500 && x.every(isScalar))),
+      scopes: (v) => isStrArr(v, 5000),
+      scopeSourcePaths: (v) => isStrArr(v),
+      scopeQuestionUids: (v) => isStrArr(v),
+      distribution: (v) => ["equal", "pool", "custom", "all"].includes(v),
+      count: (v) => isInt(v, 0, 1000),
+      buckets: isBuckets,
+      difficultyFilterVersion: (v) => isStr(v, 100),
+      includeExtended: (v) => typeof v === "boolean",
+      custom: (v) => isObj(v) && Object.values(v).every((x) => isObj(x) &&
+        (x.count === undefined || isInt(x.count, 0, 100000)) &&
+        (x.buckets === undefined || isBuckets(x.buckets))),
+      seed: (v) => isStr(v, 200),
+      rows: (v) => Array.isArray(v) && v.length <= 5000 && v.every((row) => isObj(row) &&
+        isStr(row.id, 2000) &&
+        (row.label === undefined || isStr(row.label)) &&
+        (row.count === undefined || isInt(row.count, 0, 100000)) &&
+        (row.difficultyBuckets === undefined || isBuckets(row.difficultyBuckets)) &&
+        (row.paths === undefined || isStrArr(row.paths)) &&
+        (row.scopeQuestionUids === undefined || isStrArr(row.scopeQuestionUids))),
+      round: (v) => isInt(v, 1, 999),
+      rounds: (v) => Array.isArray(v) && v.length <= 999 && v.every((round) => isObj(round) &&
+        isStrArr(round.questionUids) && (round.roundNo === undefined || isInt(round.roundNo, 1, 999))),
+      sealed: (v) => typeof v === "boolean",
+      title: (v) => isStr(v, 500),
+      qpp: (v) => [1, 2, 4, 6, 8].includes(v),
+      includeQr: (v) => typeof v === "boolean",
+      header: (v) => isObj(v) && ["title", "subtitle", "metaRight"].every((k) => v[k] === undefined || isStr(v[k], 500)) &&
+        ["showNameLine", "showScoreLine", "applyToSolution", "applyToAnswer"].every((k) => v[k] === undefined || typeof v[k] === "boolean"),
+      studentIds: (v) => isStrArr(v, 2000),
+      classId: (v) => isStr(v, 200),
+      studentLabels: (v) => isStrArr(v, 2000),
+      historyMode: (v) => isStr(v, 40),
+      recentDays: (v) => isInt(v, 0, 3650),
+      sources: (v) => isStrArr(v, 5000),
+      receipts: (v) => Array.isArray(v) && v.length <= 999 && v.every((r) => isObj(r) &&
+        ["key", "classId", "className", "id"].every((k) => r[k] === undefined || isStr(r[k], 500)) &&
+        (r.partIndex === undefined || isInt(r.partIndex, 0, 999)) &&
+        (r.questionUids === undefined || isStrArr(r.questionUids)) &&
+        (r.ready === undefined || typeof r.ready === "boolean")),
+      failedPart: (v) => v === null || (isObj(v) && isInt(v.index, 0, 999) && isStr(v.message)),
+      issueDate: (v) => isStr(v, 40),
+      saveBatchId: (v) => isStr(v, 200),
+      saveSignature: (v) => typeof v === "string",
+      savedPaperIds: (v) => isStrArr(v, 999),
+      lastSavedPaperIds: (v) => isStrArr(v, 999),
+      saveMessage: (v) => isStr(v),
+      saveError: (v) => isStr(v),
+      saveResultSignature: (v) => typeof v === "string",
+      saveResultState: (v) => ["", "SAVED", "FAILED", "SAVING", "RESULT_UNKNOWN"].includes(v),
+      derivationSource: (v) => v === null || isObj(v),
+      pins: (v) => isStrArr(v, 5000),
+      selected: (v) => Array.isArray(v) && v.length <= 400 && v.every((r) => isObj(r) &&
+        isStr(r.questionUid, 200) && (r.rowId === undefined || isStr(r.rowId, 2000)) &&
+        (r.sourceFingerprint === undefined || isStr(r.sourceFingerprint, 500))),
+    };
+    for (const [key, ok] of Object.entries(rules)) {
+      if (data[key] === undefined) continue;
+      if (!ok(data[key])) fail(key);
+    }
+  }
   function applyDraft(data) {
+    validateDraftTypes(data);
     if (
       data.schemaVersion !== C.VERSION ||
       data.taxonomyVersion !== C.TAXONOMY_VERSION ||
@@ -1740,22 +1851,51 @@
     }</div>`;
   }
 
+  // Search text per exam, built once per catalog: the exam's visible values (never JSON keys) plus
+  // the uid and L1-L4 text of its questions. Every search term must occur somewhere in it.
+  let findSearchIndex = null;
+  function findSearchText(exam) {
+    const catalog = state.catalog;
+    if (!findSearchIndex || findSearchIndex.exams !== catalog.exams || findSearchIndex.records !== catalog.records) {
+      const questionsByFile = new Map();
+      for (const r of catalog.records) {
+        const text = C.normalizeSearch([r.questionUid, r.L1, r.L2, r.L3, r.L4].filter(Boolean).join(" "));
+        if (!text) continue;
+        const list = questionsByFile.get(r.sourceFile);
+        if (list) list.push(text);
+        else questionsByFile.set(r.sourceFile, [text]);
+      }
+      findSearchIndex = { exams: catalog.exams, records: catalog.records, questionsByFile, text: new WeakMap() };
+    }
+    let text = findSearchIndex.text.get(exam);
+    if (text === undefined) {
+      const parts = [];
+      const collect = (value, depth) => {
+        if (typeof value === "string" || typeof value === "number") {
+          const piece = C.normalizeSearch(value);
+          if (piece) parts.push(piece);
+        } else if (depth < 4 && value && typeof value === "object") {
+          for (const item of Array.isArray(value) ? value : Object.values(value)) collect(item, depth + 1);
+        }
+      };
+      collect(exam, 0);
+      // The card title ("2026 팔마고 고3 1학기 중간고사") is built from separate fields, so words
+      // such as "1학기" or "중간고사" only exist in the displayed title.
+      collect(O.displayTitle(exam), 0);
+      parts.push(...(findSearchIndex.questionsByFile.get(exam.file) || []));
+      text = parts.join("\n");
+      findSearchIndex.text.set(exam, text);
+    }
+    return text;
+  }
   function findExams() {
     const f = state.find;
-    const query = C.normalizeSearch(f.query || "");
-    const matchingSources = query
-      ? new Set(
-          state.catalog.records
-            .filter((r) =>
-              C.normalizeSearch(
-                [r.questionUid, r.L1, r.L2, r.L3, r.L4]
-                  .filter(Boolean)
-                  .join(" "),
-              ).includes(query),
-            )
-            .map((r) => r.sourceFile),
-        )
-      : null;
+    // Words are separated by spaces and may come in any order; "1학기 기말" stays one word.
+    const terms = String(f.query || "")
+      .replace(/(\d)\s*학기\s*(기말|중간)/g, "$1학기$2")
+      .split(/\s+/)
+      .map(C.normalizeSearch)
+      .filter(Boolean);
     return state.catalog.exams.filter((exam) => {
       const hasYearFilter = Boolean(f.yearFrom || f.yearTo);
       const examYear = Number(exam.year);
@@ -1773,13 +1913,9 @@
       if (!unifiedIndex() && f.family && !f.grade && !exam.courseFamilies.includes(f.family))
         return false;
       if (!finderIdentityMatch(exam, f)) return false;
-      return (
-        !query ||
-        matchingSources.has(exam.file) ||
-        C.normalizeSearch(JSON.stringify(exam)).includes(
-          C.normalizeSearch(f.query),
-        )
-      );
+      if (!terms.length) return true;
+      const text = findSearchText(exam);
+      return terms.every((term) => text.includes(term));
     }).sort(C.compareNewest);
   }
   function originalSettingsForExam(exam) {
@@ -2432,10 +2568,10 @@
       ],
       state.distribution,
       null,
-    )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label></div>
+    )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${esc(state.count)}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label></div>
       <div class="compose-difficulty"><strong id="compose-difficulty-label">난이도</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 전체에서 출제합니다. 난이도를 고르면 해당 난이도가 확인된 문항만 선택합니다.</p></div>
       ${state.uidRoute ? "" : `<details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy" data-meta-facets><strong>개념·유형·풀이로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="metaL3" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.l3, state.filters.metaL3, "전체 개념")}</select></label><label>유형<select data-filter="metaPT" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.pt, state.filters.metaPT, "전체 유형")}</select></label><label>풀이<select data-filter="metaTPL" data-group="compose" ${facetDisabled}>${facetOptionMarkup(facets.tpl, state.filters.metaTPL, "전체 풀이")}</select></label><label class="check"><input type="checkbox" data-filter="metaApprovedOnly" data-group="compose" ${state.filters.metaApprovedOnly ? "checked" : ""} ${facetDisabled}>승인된 분류만</label></div><p class="muted">${esc(facetNote)}</p>${legacyAdvanced ? `<div class="compose-detail-fields"><label>기존 개념 조건<select data-filter="L3" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>기존 유형 조건<select data-filter="L4" data-group="compose" ${facetDisabled}>${advancedOptions(legacyAdvanced.types, state.filters.L4, "전체 유형")}</select></label></div>` : ""}</div></details>`}
-      ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ") || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
+      ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : esc(row.difficultyBuckets.join(" · ")) || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${esc(row.count)}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : esc(row.count)}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
       <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 문항을 완결된 최근 연도부터(2025년, 2024년, 2023년 순) 선택하고, 올해 시험은 그다음, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
   }
@@ -2459,7 +2595,7 @@
   }
   function renderInspector() {
     const r = state.selected.length ? review() : null;
-    const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
+    const summary = `<h2>${esc(state.round)}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
       <div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
       ${typeCoverageLine()}
       ${state.selected.length ? `<div class="summary-line" data-year-distribution><span>출제 연도</span><strong>${yearDistribution(state.selected).map((item) => `${esc(item.label)} ${item.count}문항`).join(" · ")}</strong></div>` : ""}
@@ -2487,7 +2623,7 @@
     const saveResultCurrent = Boolean(state.saveResultSignature) &&
       state.saveResultSignature === saveWorkSignature();
     const savedResult = state.saveResultState === "RESULT_UNKNOWN"
-      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. Draft 편집은 잠겨 있으며 본문 위의 저장 결과 확인 action을 사용할 수 있습니다.</div>'
+      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 작업 중인 문제지의 편집은 잠겨 있습니다. 본문 위의 ‘저장 결과 확인’을 눌러 주세요. 출력과 작업 백업은 사용할 수 있습니다.</div>'
       : state.saveError && saveResultCurrent
       ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(state.saveError)}</div>`
       : state.saveMessage && saveResultCurrent
@@ -2512,12 +2648,21 @@
       )}</div><div>${state.inspector === "header" ? header : summary + saveStaleNotice}</div>
       ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "출력", `class="small" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div><div class="actions" style="margin-top:12px">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div>${savedResult}` : '<p class="muted">문항을 선택한 뒤 시험지 저장을 눌러 완성본을 보관하세요.</p>'}</section></aside>`;
   }
+  // Local output and backup stay available while the save result is unknown (they do not change it).
+  function recoveryOutputMarkup() {
+    if (!state.selected.length) return button("backup", "작업 백업 다운로드", 'class="small"');
+    const r = review();
+    return `${button("print", "출력", `class="small" ${r.status === "HARD_BLOCK" ? "disabled" : ""}`)}${button("backup", "작업 백업 다운로드", 'class="small"')}${
+      r.warnings.length && r.status !== "HARD_BLOCK"
+        ? `<label class="check"><input type="checkbox" id="ack-warnings-recovery" ${state.ackWarnings ? "checked" : ""}>출력 전 안내를 확인했습니다.</label>`
+        : ""}`;
+  }
   function renderSaveRecovery() {
     if (state.saveResultState !== "RESULT_UNKNOWN") return "";
     return `<section class="callout danger compose-save-recovery" role="status" aria-live="polite">
       <strong>저장 결과를 확인할 수 없습니다.</strong>
-      <p>같은 요청 ID의 결과를 조회하거나 안전하게 재시도합니다. Draft는 확인될 때까지 잠겨 있습니다.</p>
-      ${button("save-paper", "저장 결과 확인", 'class="primary"')}
+      <p>같은 요청 ID의 결과를 조회하거나 안전하게 재시도합니다. 확인될 때까지 작업 중인 문제지는 수정할 수 없지만, 출력과 작업 백업은 지금도 할 수 있습니다.</p>
+      <div class="actions">${button("save-paper", "저장 결과 확인", 'class="primary"')}${recoveryOutputMarkup()}</div>
     </section>`;
   }
   function renderSavedContinuity() {
@@ -2603,7 +2748,8 @@
   }
   function renderMobileActions() {
     if (state.saveResultState === "RESULT_UNKNOWN")
-      return '<div class="mobile-actions">' + button("save-paper", "저장 결과 확인", 'class="primary"') + "</div>";
+      return '<div class="mobile-actions">' + button("save-paper", "저장 결과 확인", 'class="primary"') +
+        (state.selected.length ? button("print", "출력", 'class="small"') : "") + "</div>";
     const savedCurrent = state.saveResultState === "SAVED" &&
       Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
     if (savedCurrent && state.lastSavedPaperIds.length) {
@@ -2619,7 +2765,7 @@
     return `<div class="mobile-actions">${button("mobile-inspector", "출력 설정")}${button("print", "출력", `class="small" ${blocked ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">${state.derivationSource ? "원본 Saved Paper에서 복사한 새 Draft입니다. 원본은 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "원본 Saved Paper에서 복사한 새 Draft입니다. 원본은 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
     <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
@@ -3535,7 +3681,14 @@
           const i = state.selected.findIndex((r) =>
             box.dataset.sourceRef.endsWith("#" + r.questionUid),
           );
-          if (i >= 0) replace(i);
+          if (i < 0) return;
+          try {
+            if (state.saveResultState === "RESULT_UNKNOWN")
+              throw new Error("저장 결과를 확인할 때까지 문항을 바꿀 수 없습니다.");
+            replace(i);
+          } catch (error) {
+            status(error.message, true);
+          }
         });
       });
       frame.src = output.href;
@@ -3685,7 +3838,18 @@
     }
     return prepare();
   }
+  let printInFlight = false;
   async function print() {
+    // A double click must not open two output windows.
+    if (printInFlight) return;
+    printInFlight = true;
+    try {
+      await printOnce();
+    } finally {
+      printInFlight = false;
+    }
+  }
+  async function printOnce() {
     const receipt = state.receipts.find((row) =>
       row.partIndex === state.previewIndex && row.classId === state.classId,
     );
@@ -3718,6 +3882,9 @@
       const data = await api("/qr-classes");
       classRows = data.classes || data.data || [];
       if (!Array.isArray(classRows)) classRows = [];
+      rosterRequestSeq++;
+      rosterLoading = false;
+      rosterRows = [];
       showDialog(
         "출제 대상 학생",
         `<label>반<select id="target-class" aria-label="반">${options(
@@ -3737,11 +3904,36 @@
       );
     }
   }
+  // Only the newest class selection may fill the roster; a slow answer for an earlier class
+  // must never show (or apply) that class's students under the class now selected.
+  let rosterRequestSeq = 0;
+  let rosterLoading = false;
   async function loadRoster(id) {
-    const data = await api(
-      "/class-exam-assignments/roster?class_id=" + encodeURIComponent(id),
-    );
-    rosterRows = data.students || [];
+    const seq = ++rosterRequestSeq;
+    rosterRows = [];
+    const box = $("target-roster");
+    if (!id) {
+      rosterLoading = false;
+      if (box) box.innerHTML = '<p class="muted">반을 선택하면 현재 명단을 불러옵니다.</p>';
+      return;
+    }
+    rosterLoading = true;
+    if (box) box.innerHTML = '<p class="muted">명단을 불러오는 중입니다.</p>';
+    let data;
+    try {
+      data = await api(
+        "/class-exam-assignments/roster?class_id=" + encodeURIComponent(id),
+      );
+    } catch (error) {
+      if (seq !== rosterRequestSeq) return;
+      rosterLoading = false;
+      if (box) box.innerHTML = '<p class="muted">명단을 불러오지 못했습니다. 반을 다시 선택해 주세요.</p>';
+      throw error;
+    }
+    if (seq !== rosterRequestSeq) return;
+    rosterLoading = false;
+    rosterRows = Array.isArray(data.students) ? data.students : [];
+    if (!$("target-roster")) return;
     $("target-roster").innerHTML =
       `<div class="actions" style="margin-top:12px">${button("target-all", "전체 선택", 'class="small"')}</div><div class="roster">${rosterRows.map((s, i) => `<label class="check"><input type="checkbox" data-target-index="${i}" aria-label="${esc(s.name)}" ${state.studentIds.includes(s.id) ? "checked" : ""}>${esc(s.name)} <span class="muted">${esc(s.school_name || "")}</span></label>`).join("")}</div>`;
   }
@@ -4010,6 +4202,10 @@
   }
   window.Archive2WorkspaceShowSavedLibrary = showSavedLibrary;
   window.Archive2WorkspaceShowSavedPaper = showSavedPaper;
+  const UNKNOWN_RESULT_ALLOWED_ACTIONS = new Set([
+    "save-paper", "saved-output", "saved-paper-issue", "saved-paper-view",
+    "print", "backup", "close-dialog", "close-inspector", "mobile-inspector",
+  ]);
   function newDraft() {
     if (state.saveResultState === "RESULT_UNKNOWN") {
       status("현재 저장 결과를 먼저 확인한 뒤 새 작업을 시작하세요.", true);
@@ -4092,8 +4288,10 @@
         return;
       }
       const a = b.dataset.action;
-      if (state.saveResultState === "RESULT_UNKNOWN" && !["save-paper", "saved-output", "saved-paper-issue", "saved-paper-view"].includes(a)) {
-        status("저장 결과를 확인할 때까지 Draft 편집을 잠급니다.", true);
+      // While a save result is unknown only actions that change the saved contents stay locked.
+      // Local output, work backup, closing a dialog and sheet toggles never touch the save identity.
+      if (state.saveResultState === "RESULT_UNKNOWN" && !UNKNOWN_RESULT_ALLOWED_ACTIONS.has(a)) {
+        status("저장 결과를 확인할 때까지 작업 중인 문제지의 편집을 잠급니다. 출력과 작업 백업은 사용할 수 있습니다.", true);
         return;
       }
       if (a === "assignment-status") {
@@ -4493,6 +4691,10 @@
             i.checked = true;
           });
       else if (a === "target-apply") {
+        if (rosterLoading) {
+          status("학생 명단을 불러오는 중입니다. 잠시 뒤 다시 눌러 주세요.", true);
+          return;
+        }
         state.classId = $("target-class").value;
         const selected = [
           ...$("target-roster").querySelectorAll("input:checked"),
@@ -4586,7 +4788,16 @@
     window.scrollTo(0, 0);
   });
   document.addEventListener("change", async (event) => {
-    if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
+    if (state.saveResultState === "RESULT_UNKNOWN") {
+      // Acknowledging the warnings only unlocks local output; it does not edit the paper.
+      if (event.target.id === "ack-warnings-recovery") {
+        state.ackWarnings = event.target.checked;
+        refreshComposeSaveContinuity();
+        return;
+      }
+      render();
+      return;
+    }
     if (state.busy) return;
     const el = event.target;
     try {
@@ -4913,8 +5124,17 @@
       $("modal").close();
       return;
     }
-    if (fromOriginalFrame && event.data?.type === "archive2-original-ready")
+    if (fromOriginalFrame && event.data?.type === "archive2-original-ready") {
       frame.contentWindow.setArchive2OriginalSettings?.(state.originalSettings);
+      const exam = state.originalExam;
+      const sourceHash = exam && new Map(state.catalog.sourceHashes).get(exam.file);
+      if (exam && sourceHash)
+        frame.contentWindow.setArchive2OriginalSource?.({
+          file: exam.file,
+          sourceHash,
+          identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
+        });
+    }
     if ((fromOriginalFrame || fromSavedPaperFrame) && event.data?.type === "archive2-original-saved") {
       const a = event.data.assignment;
       state.originalReceipts = (state.originalReceipts || []).filter(
