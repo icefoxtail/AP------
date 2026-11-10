@@ -1,0 +1,311 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_팔마고_1학기_중간_고1_유사",
+  "candidateJsPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사.meta-q01-q22.json",
+  "candidateGitBlobSha1": "f2acbd15fba808e6078937e453b9f930208f4c78",
+  "reviewTimestamp": "2026-11-10T19:30:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 22,
+    "answerMatches": 22,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rv_pal/blind_frozen.json (session scratchpad, not committed)",
+    "freezeFileSha1": "1fb950ca0326f47cdf1f647a97833d30a96d3075",
+    "method": "학생에게 보이는 필드(content, choices, 문제 그림 Q9)만 덤프해 sympy/python으로 22문항 전부 풀고 답을 동결한 뒤 저장된 answer/solution/meta/원본을 열어 대조: 객관식 18/18, 서술형 4/4 일치. Q9는 문제 그림(PNG)을 직접 확인.",
+    "frozenAnswers": {
+      "1": "①",
+      "2": "④",
+      "3": "③",
+      "4": "②",
+      "5": "⑤",
+      "6": "③",
+      "7": "①",
+      "8": "④",
+      "9": "②",
+      "10": "⑤",
+      "11": "③",
+      "12": "①",
+      "13": "④",
+      "14": "②",
+      "15": "④",
+      "16": "⑤",
+      "17": "②",
+      "18": "①",
+      "19": "CA=AB isosceles (b=c)",
+      "20": "(1)2sqrt3 (2)30sqrt3 (3)1560sqrt3",
+      "21": "(1)(3,4),(0,5) (2)12",
+      "22": "17"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "분배 후 2x²-7x+13, a-b+c=2+7+13=22 (sympy)",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "√-5·√5=5i, √48/√-3=4/i=-4i, (√-2)²·i=-2i → 5i+4i-2i=7i (sympy)",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "합 5, 곱 7/2, (α-β)²=25-14=11 (sympy)",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "판별식 16-4(2k-13)<0 → k>8.5, 최소 정수 9 (sympy 부등식)",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "3x²+3x-(k+2)=0 중근 D=12k+33=0, k=-11/4, 16/11·11/4=4 (sympy)",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "sympy 인수분해 (x-3)(x-1)(x+2)(2x+1) → a,b,c,d=-3,-1,2,1/2, 합 -3/2",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "근 α,β에서 u=(β+2)/α, v=(α+2)/β를 sympy로 계산, p+q=-(u+v)+uv=-22-7=-29",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(3P+1)²=(3x²-2x)², 최고차 양수 → P=(3x²-2x-1)/3, P(2)=7/3",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "그림: A(t,-t²/2+4), D(t,t²-2), 둘레 -3t²+4t+12 최대 t=2/3에서 40/3 (0<t<√2 확인), 그림은 y축 대칭 직사각형이며 정답 수치 비노출",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "t=x²-6x, t²+13t+30=0 → t=-10(실근 없음), t=-3 → x²-6x+3=0, α²+β²=36-6=30",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "f=(x-1)²Q+ux+v=D·L+R를 sympy 연립, f(1)=14 (u=28,v=-14)",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "g(3/4)²=4, f(3/4)=5g(3/4)=±5, 나머지=10f(3/4)=±50, 최소 -50",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "a+b=18, a²+b²=170 → ab=77, (a-b)²=16, 넓이 차 72 (sympy)",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "ω²+ω+1=0, 3주기, 합=3+7ω, a+b=10 (sympy로 수치 확인)",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "f=a(x+1)(x-5)-6, 구간 [-2,3]에서 최대는 f(-2)=7a-6=8 → a=2, f(-3)=26",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "ζ=(1+i)/√2, 모든 (m,n)을 sympy로 전수 확인(800쌍), 최대 m+n=157 (m=80,n=77)",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "P=(x²-4x+5)(x-3), Q²=x²+(a-17)x+41-a → Q=x+4, a=25, P(0)Q(1)/a=-15·5/25=-3",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 18,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "t=x² 치환, 네 근 ±√u,±√v, ad+bc=-(u+v)=-(m²+2)=-11 → m=3, 판별식 73>0 확인",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 19,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "b=c인 이등변삼각형",
+      "blindMatch": true,
+      "blindDerivation": "(b-c)(ab+ac+bc)=0, 세 변 양수이므로 b=c → CA=AB 이등변삼각형"
+    },
+    {
+      "qid": 20,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "(1) 2√3 (2) 30√3 (3) 1560√3",
+      "blindMatch": true,
+      "blindDerivation": "(x-y)²=12 → 2√3, x³-y³=2√3·15=30√3, x³+y³=52, x⁶-y⁶=1560√3 (sympy)"
+    },
+    {
+      "qid": 21,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "(1) (3,4),(0,5) (2) 12",
+      "blindMatch": true,
+      "blindDerivation": "x=15-3y 대입 y²-9y+20=0 → (3,4),(0,5), αβ 최대 12 (sympy)"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "17",
+      "blindMatch": true,
+      "blindDerivation": "m을 격자 스캔(0.0001 간격)+경계 분석: 서로 다른 세 점은 m=-3, m=-2√2뿐, T=9+8=17"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "22 vs 22",
+    "pointsSum": "유사 100 (부동소수 합 100.00000000000001) vs 원본 배점 8문항만 표기, 합만 확인",
+    "perQuestionPoints": "원본 배점 불명 문항은 추정 배분, 합 100 확인",
+    "questionTypes": "객관식 1-18, 서술형 19-22 동일",
+    "notes": [
+      "Q19: 원본은 직각삼각형(a가 빗변), 유사는 이등변삼각형(b=c)으로 결론 유형이 다르나 같은 묶어 인수분해+양수 조건 구조이고 원본 답 암기 불가. 허용.",
+      "Q10: 원본 αβ, 유사 α²+β²로 한 단계 추가. Q13: 원본 a의 값, 유사 넓이의 차. Q21(2): α+β 최대 → αβ 최대. 모두 같은 풀이 구조.",
+      "Q14: 원본 x³=-1, 유사 x³=1(ω²+ω+1=0 직접 사용) - 같은 허근 주기 유형.",
+      "모든 정답 값이 원본과 다름(암기 불가), 객관식 분포 ①4 ②4 ③3 ④4 ⑤3 (max-min=1)."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 3,
+    "④": 4,
+    "⑤": 3,
+    "note": "MC 1-18; max-min=1"
+  },
+  "mathReview": "22문항 전수 블라인드 독립 풀이 후 저장 해설을 끝까지 읽어 논리·중간 계산·교육과정(2022 개정 공통수학1) 확인. 정답 불일치 0건, 5지 유일 정답. Q11 중간식 전개(x⁴+4x³+5x²-26x+16 등) 검산, Q17 (u,v) 후보 분석, Q22 구간별 교점 수 분석 및 격자 스캔과 일치. Q16 해설이 복소수 절댓값(공통수학1 범위 밖)을 근거로 불가능 경우를 제거해 ζ^m의 여덟 값 열거 방식으로 수정.",
+  "reviewerEdits": [
+    {
+      "qid": 13,
+      "kind": "meta",
+      "change": "RPM Primary를 H1-RPM-162(근과 계수의 관계)에서 H1-RPM-136(곱셈공식, PT_H1_POLY_FORMULA_SYMMETRIC/TPL_H1_FORMULA_SYMMETRIC)로 재판정. 해설과 메타 자체 근거(metaRationale)가 곱셈공식 변형(a+b, a²+b² → ab, (a-b)²)인데 Primary가 근과 계수로 되어 있어 불일치. JS 단원 필드·meta·parentAssignment 함께 수정."
+    },
+    {
+      "qid": 14,
+      "kind": "meta",
+      "change": "templateKey TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD → TPL_H1_COMPLEX_I_PERIOD. 공식 Resolver(rpm-active-resolver.mjs)가 H1-RPM-158(DIRECT_ACTIVE)에 대해 I_PERIOD를 반환하고 크로스워크에 ROOT_OF_UNITY_PERIOD 행이 없음."
+    },
+    {
+      "qid": 16,
+      "kind": "meta+solution",
+      "change": "templateKey를 위와 같이 TPL_H1_COMPLEX_I_PERIOD로 정정. 해설에서 '절댓값 √5'(공통수학1 범위 밖 복소수 절댓값) 근거를 ζ^m의 여덟 값 열거 후 불가능 판정으로 교체, meta difficultyBasis 문구도 맞춤."
+    },
+    {
+      "kind": "binding",
+      "change": "JS 수정 후 meta expectedSourceBlobSha1을 최종 JS blob으로 갱신."
+    }
+  ],
+  "metaReview": {
+    "jsMetaConsistency": "JS 22문항의 level/difficultyBucket/단원·소단원/개념군/PT/TPL/CrossConcept/Condition/integrationPattern/sourceQid/variationType/RPM 라벨이 meta와 완전 일치(불일치 0, 수정 후 재확인).",
+    "keyExistence": "PT/TPL/CC/COND 사용 키 distinct 82개 전부 canonical/compiled/runtime/crosswalk 레지스트리에 실재(누락 0), 새 확장 키 0개(registryChanges [] , registry 파일 없음 정상), aliasProposals 0, EVIDENCE_DEBT 0. 공식 Resolver 전 문항 재실행: 22/22 PT·TPL 일치(PROJECTION_REUSE), 수정 전에는 Q14·Q16 DIFF.",
+    "coverage": "standardCourse/curriculum/course/단원/소단원/개념군/RPM L1~L4/PT/TPL/CC/COND/integrationPattern/level/difficultyBucket/sourceQid/variationType/provenance/levelBasis/difficultyBasis/metaRationale 각 22/22 채움. RPM 기록 ID 전부 high1 크로스워크 DIRECT_ACTIVE/FAMILY_ACTIVE 행과 라벨·단원·PT 일치.",
+    "semanticNotes": [
+      "Q12·Q17은 H1-RPM-143(FAMILY_ACTIVE) 중 TPL_H1_REMAINDER_COMPOSITE_DIVISOR 선택: Q12는 서로 다른 일차 제수에서 값 대입 결합(CC_REMAINDER_THEOREM_COMPOSITE), Q17은 합성 제수(x²-4x+5)(x-3) 나누어떨어짐 조건. 타당.",
+      "Q14의 Primary H1-RPM-158(i의 거듭제곱|주기성)은 ω의 3주기 사용에 가장 가까운 RPM이며 더 맞는 RPM 행이 크로스워크에 없음(정보).",
+      "COND_DIVISIBILITY·CC_TANGENT_LINE_DISCRIMINANT 레지스트리 라벨이 문항 맥락과 약간 어긋나나 의미상 가장 가까운 canonical 키(정보)."
+    ]
+  },
+  "visualReview": {
+    "problemFigures": "Q9만 문제 그림(piecewise-polynomial-spike-v1, ARCHIVE_BOUND). PNG로 직접 확인: 순백 배경, A,B,C,D 라벨·(0,4),(0,-2) 표시, 직사각형은 y축 대칭 모식도이며 답 수치 비노출(정답 t=2/3와 다른 모식 위치). 발문 조건과 라벨 일치. 단 2단 인쇄 시 그림이 작아 A~D 라벨이 작게 보임(imageSize tall 시도는 오히려 더 작아져 full 유지).",
+    "solutionFigures": "Q4, Q5, Q10, Q15, Q22 PNG 직접 확인. Q4(꼭짓점 위치)·Q5(접점 T, 꼭짓점 V)·Q10(y=-3은 두 점, y=-10은 불만나)·Q15(P,Q,V와 y=-6)는 해설 풀이와 수치 일치·가림 없음. Q22는 m=-3 한 직선만 보여주며 세로 비율이 크게 눌려 접점 구간 판독이 어렵고 m=-2√2 접하는 경우는 그림에 없음(해설 글이 두 경우를 완결 서술).",
+    "unsupported": "없음. 나머지 문항 EXEMPT 사유 확인(순수 대수·그림 불필요).",
+    "plansAndSvg": "2×22 plan 44개 유효 JSON(EXEMPT 38, 활성 6), 활성 plan sourceQuote 12-40자, caption, assetPath, engineEvidence svg가 자산 바이트와 일치(6/6), SVG 순백 배경·title/desc·role=img, $ 잔존 없음."
+  },
+  "harness": {
+    "draftPhase": "verify_similar_exam.mjs --phase=draft: GATE_PASS (22문항, 최종 blob f2acbd15...).",
+    "strict": "node tools/harness/verify_similar_exam.mjs 26_팔마고_1학기_중간_고1_유사 (영수증 발급 후): GATE_PASS exit 0, WARN RECEIPT_QUALIFIED_PASS(PASS_WITH_VISUAL_DEBT)."
+  },
+  "runtime": {
+    "chrome": "실제 Chrome(CDP, tools/check-palma-legacy-similar-chrome.cjs를 이 시험지용으로 복제해 실행, 저장소 미수정): exam pages=6 qboxes=22 images=1, ans pages=1, sol pages=13 solboxes=27 images=5, 미렌더 수식 0, 이미지 로드 실패 0, 스크립트 오류 0, PDF 정상. 해설지 PDF 페이지 이미지로 가로 넘침 없음 확인.",
+    "NOT_RUN": [
+      "모바일 폭 화면 캡처",
+      "main_merge_master.py 운영병합(지시상 push 금지)"
+    ]
+  },
+  "NOT_RUN": [
+    "모바일 폭 화면 캡처",
+    "main_merge_master.py 운영병합"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 22,
+      "qid_ref": "26_팔마고_1학기_중간_고1_유사#22",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림이 m=-3 한 직선만 보여주고 세로 비율이 눌려 판독이 어려우며 m=-2√2 접하는 경우는 없음. 해설 글이 구간별 교점 수를 완결 서술하므로 풀이 이해에는 지장 없음.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 9,
+      "qid_ref": "26_팔마고_1학기_중간_고1_유사#9",
+      "kind": "visual-problem-figure",
+      "reason": "2단 인쇄에서 문제 그림이 작아 A~D 라벨이 작음(화면에서는 정상). 발문에 식·조건이 모두 있어 풀이에는 지장 없음.",
+      "severity": "low",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 22/22 일치, 직접 수정 Q13(RPM 재판정)·Q14·Q16(TPL 공식 Resolver 정정)·Q16 해설(절댓값 제거), 메타 22/22 완비·신규 확장 키 0, 실제 Chrome 렌더 PASS, 소형 시각 부채 2건(low)."
+}

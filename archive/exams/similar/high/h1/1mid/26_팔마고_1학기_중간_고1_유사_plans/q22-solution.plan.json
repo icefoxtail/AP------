@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      3.5
+    ],
+    "viewport": [
+      -4,
+      4,
+      -2,
+      17
+    ],
+    "referenceLines": [
+      {
+        "id": "L",
+        "slope": "-3",
+        "intercept": "6",
+        "intersectionX": [
+          "-3",
+          "1",
+          "2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "M": "M"
+  },
+  "caption": "m=-3일 때 직선 y=-3x+6은 y=h(x)의 그래프와 x=-3, 1, 2인 세 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "m=-3일 때 직선 y=-3x+6은 점 (2,0)을 지나고 x=-3, 1, 2에서 h(x)와 만난다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경계점 (2,0)을 지나는 직선이 y=h(x)와 세 점에서 만나는 경우를 보여 준다."
+  ],
+  "sourceQuote": "직선 $y=-3x+6$은 점 $(2,0)$을 지나고",
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고1_유사/q22-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q22-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q22-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q22-solution.svg"
+  }
+}

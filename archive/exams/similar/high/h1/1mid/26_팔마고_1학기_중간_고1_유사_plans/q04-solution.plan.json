@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-4x+5",
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "V": "V"
+  },
+  "caption": "k=9일 때 y=x^2-4x+5의 그래프는 꼭짓점 (2,1)이 x축 위쪽에 있어 x축과 만나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "k=9이면 y=x^2-4x+5=(x-2)^2+1이고 꼭짓점은 (2,1)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "최소 정수 k=9일 때 꼭짓점이 x축 위쪽에 있어 그래프가 x축과 만나지 않음을 보여 준다."
+  ],
+  "sourceQuote": "$k=9$일 때 $y=x^2-4x+5=(x-2)^2+1$이므로",
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고1_유사/q4-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q04-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q04-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/engine_evidence/q04-solution.svg"
+  }
+}
