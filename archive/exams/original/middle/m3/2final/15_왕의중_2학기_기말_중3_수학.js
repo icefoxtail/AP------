@@ -14,7 +14,11 @@ window.examData = {
         "$\\frac{12}{13}$"
       ],
       "answer": "① 5/13",
-      "solution": "△ABC에서 ∠A=90°이므로 피타고라스 정리를 쓰면\nBC²=12²+5²=144+25=169\nBC=13\nDE ⟂ BC이므로 x와 ∠B는 서로 여각이다. 따라서 cos x=sin∠B=AC/BC=5/13이다."
+      "solution": "△ABC에서 ∠A=90°이므로 피타고라스 정리를 쓰면\nBC²=12²+5²=144+25=169\nBC=13\nDE ⟂ BC이므로 x와 ∠B는 서로 여각이다. 따라서 cos x=sin∠B=AC/BC=5/13이다.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 A에서 직각인 직각삼각형으로 AB는 12, AC는 5이고 빗변 위의 점 D에서 BC에 내린 수선의 발 E가 있으며 각 BDE는 x(분홍), 각 B는 보라색이다. 오른쪽은 같은 삼각형으로 AC는 5(파랑), BC는 13(초록), AB는 12이다.",
+      "solutionImageCaption": "직각삼각형 ABC에서 BC²=12²+5²=169이므로 BC=13이다. 삼각형 BDE에서 각 BED=90°이므로 각 x와 각 B의 합은 90°이다. 따라서 cos x는 sin B와 같고, sin B는 빗변 BC분의 높이 AC이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
@@ -28,7 +32,11 @@ window.examData = {
         "$\\frac{1+2\\sqrt{2}}{2}$"
       ],
       "answer": "② (1+2√3)/2",
-      "solution": "∠A:∠B:∠C=2:1:3이고 삼각형의 내각의 합은 180°이므로\n∠A=180°×2/6=60°, ∠B=180°×1/6=30°, ∠C=180°×3/6=90°\nsin B+tan A=sin30°+tan60°\n=1/2+√3\n=(1+2√3)/2"
+      "solution": "∠A:∠B:∠C=2:1:3이고 삼각형의 내각의 합은 180°이므로\n∠A=180°×2/6=60°, ∠B=180°×1/6=30°, ∠C=180°×3/6=90°\nsin B+tan A=sin30°+tan60°\n=1/2+√3\n=(1+2√3)/2",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 C에서 직각인 직각삼각형으로 각 A는 60도(파랑), 각 B는 30도(주황)이다. 오른쪽은 같은 삼각형으로 AC는 1(파랑), BC는 루트 3(주황), 빗변 AB는 2(초록)이다.",
+      "solutionImageCaption": "세 각의 합이 180°이고 크기의 비가 2:1:3이므로 ∠A=60°, ∠B=30°, ∠C=90°이다. 이 삼각형의 세 변의 비는 1:√3:2이다. sin B는 빗변 분의 높이 AC이므로 2분의 1이고, tan A는 밑변 AC분의 높이 BC이므로 √3이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 3,
@@ -42,7 +50,11 @@ window.examData = {
         "$x$의 값이 작아지면 $\\sin x$, $\\cos x$의 값도 작아진다."
       ],
       "answer": "⑤",
-      "solution": "그림의 단위원에서 sin x는 높이 AC, cos x는 밑변 BC에 해당한다. x가 0°에 가까워지면 sin x는 0에 가까워져 작아지고, cos x는 1에 가까워져 커진다. 그러므로 sin x와 cos x가 모두 작아진다는 ⑤가 옳지 않다."
+      "solution": "그림의 단위원에서 sin x는 높이 AC, cos x는 밑변 BC에 해당한다. x가 0°에 가까워지면 sin x는 0에 가까워져 작아지고, cos x는 1에 가까워져 커진다. 그러므로 sin x와 cos x가 모두 작아진다는 ⑤가 옳지 않다.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 그림이다. 왼쪽 위는 중심이 B이고 반지름이 1인 사분원으로 호 위의 점 A에서 밑변 BD에 내린 수선의 발이 C이고, 점 D에서 세운 수선과 반직선 BA가 만나는 점이 E이며 각 x는 분홍이다. 오른쪽 위는 빗변이 1인 직각삼각형 ABC로 AC는 파랑, BC는 주황이다. 왼쪽 아래는 밑변이 1인 직각삼각형 BDE로 DE는 보라이다. 오른쪽 아래는 사분원에서 각 30도(파랑)와 각 60도(주황)를 이루는 두 반지름과 각 끝에서 내린 수선이다.",
+      "solutionImageCaption": "삼각형 ABC에서 빗변 BA=1이므로 sin x=AC, cos x=BC이다. 삼각형 BDE에서 BD=1이므로 tan x=DE이다. 각이 60°에서 30°로 작아지면 세로 길이(사인)는 짧아지고 가로 길이(코사인)는 길어진다. 따라서 x의 값이 작아지면 sin x는 작아지지만 cos x는 커진다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 4,
@@ -56,7 +68,11 @@ window.examData = {
         "㉠-㉡-㉣-㉤-㉢"
       ],
       "answer": "④ ㉤-㉢-㉣-㉡-㉠",
-      "solution": "탄젠트는 0°와 90° 사이에서 각이 커질수록 커지고, 사인은 커지며, 코사인은 작아진다.\n따라서 tan60°>tan45°=1이다.\nsin70°>sin60°=√3/2>1/2=cos60°이다.\nsin70°<1=tan45°이다.\nsin10°<sin30°=1/2=cos60°이다.\n그러므로 큰 것부터 ㉤, ㉢, ㉣, ㉡, ㉠ 순이다."
+      "solution": "탄젠트는 0°와 90° 사이에서 각이 커질수록 커지고, 사인은 커지며, 코사인은 작아진다.\n따라서 tan60°>tan45°=1이다.\nsin70°>sin60°=√3/2>1/2=cos60°이다.\nsin70°<1=tan45°이다.\nsin10°<sin30°=1/2=cos60°이다.\n그러므로 큰 것부터 ㉤, ㉢, ㉣, ㉡, ㉠ 순이다.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 그림이다. 왼쪽 위는 각이 60도, 30도, 90도인 직각삼각형으로 세 변의 길이는 1, 루트 3, 2이다. 오른쪽 위는 두 예각이 45도인 직각이등변삼각형으로 두 직각변은 1, 빗변은 루트 2이다. 아래 왼쪽은 길이가 1인 두 선분이 밑변과 10도, 30도를 이루고 끝에서 밑변에 내린 수선이 각각 파랑, 초록이며 초록 수선은 2분의 1이다. 아래 오른쪽은 반지름이 1인 사분원에서 70도를 이루는 반지름과 수선(주황)이다.",
+      "solutionImageCaption": "60°를 낀 삼각형에서 tan60°=√3이고 45°를 낀 삼각형에서 tan45°=1, cos60°=2분의 1이다. 사분원에서 반지름이 1이므로 각이 클수록 세로 길이인 사인이 길어지고 모두 1보다 작다. 따라서 sin70°<1=tan45°이고, sin70°>sin60°=2분의 √3>2분의 1=cos60°이며, sin10°<sin30°=2분의 1=cos60°이다. 큰 것부터 차례로 나열하면 tan60°, tan45°, sin70°, cos60°, sin10° 순이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,
@@ -70,7 +86,11 @@ window.examData = {
         "$5\\sqrt{7}$"
       ],
       "answer": "③ 3√7",
-      "solution": "C에서 AB에 수선을 내려 발을 H라 하자. △ACH는 ∠A=60°, ∠H=90°이고 AC=6인 직각삼각형이다. 30°–60°–90° 삼각형의 변의 비를 쓰면\nAH=3\nCH=3√3\nBH=AB−AH=9−3=6\n직각삼각형 BCH에서\nCB²=BH²+CH²\n=6²+(3√3)²\n=36+27=63\nCB=√63=3√7"
+      "solution": "C에서 AB에 수선을 내려 발을 H라 하자. △ACH는 ∠A=60°, ∠H=90°이고 AC=6인 직각삼각형이다. 30°–60°–90° 삼각형의 변의 비를 쓰면\nAH=3\nCH=3√3\nBH=AB−AH=9−3=6\n직각삼각형 BCH에서\nCB²=BH²+CH²\n=6²+(3√3)²\n=36+27=63\nCB=√63=3√7",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 CA가 6, AB가 9이고 각 A가 60도(파랑)인 삼각형이다. 오른쪽 위는 C에서 AB에 내린 수선의 발 H가 있는 그림으로 AH는 3, HB는 6, CH는 3 루트 3이고 각 ACH는 30도이다. 아래는 H에서 직각이고 HB가 6, CH가 3 루트 3인 직각삼각형 BCH이며 빗변 CB가 초록색이다.",
+      "solutionImageCaption": "C에서 AB에 수선의 발 H를 내리면 삼각형 ACH는 각 A가 60°인 직각삼각형이므로 AH=6×cos60°=3, CH=6×sin60°=3√3이다. 따라서 BH=9−3=6이다. 직각삼각형 BCH에서 피타고라스 정리로 CB²=6²+(3√3)²=63이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 6,
@@ -84,7 +104,11 @@ window.examData = {
         "$6\\sqrt{3}-1$"
       ],
       "answer": "④ 6√3−6",
-      "solution": "AH ⟂ BC이므로 △AHC는 ∠H=90°, ∠C=45°인 직각삼각형이다. 따라서 HC=AH라고 두면\nBH=12−HC=12−AH\n△ABH에서 tan30°=AH/BH이므로\n1/√3=AH/(12−AH)\n12−AH=√3·AH\n12=(√3+1)AH\nAH=12/(√3+1)\n=12(√3−1)/2=6√3−6"
+      "solution": "AH ⟂ BC이므로 △AHC는 ∠H=90°, ∠C=45°인 직각삼각형이다. 따라서 HC=AH라고 두면\nBH=12−HC=12−AH\n△ABH에서 tan30°=AH/BH이므로\n1/√3=AH/(12−AH)\n12−AH=√3·AH\n12=(√3+1)AH\nAH=12/(√3+1)\n=12(√3−1)/2=6√3−6",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 BC가 12cm이고 각 B가 30도(파랑), 각 C가 45도(주황)인 삼각형 ABC와 A에서 BC에 내린 수선의 발 H이다. 오른쪽 위는 H에서 직각이고 두 예각이 45도(주황)인 직각삼각형 AHC로 AH와 HC는 같은 길이 x이다. 아래는 H에서 직각이고 각 B가 30도인 직각삼각형 ABH로 AH는 x(파랑), BH는 12−x이다.",
+      "solutionImageCaption": "AH=x라 두면 삼각형 AHC는 ∠C=45°인 직각삼각형이므로 HC=x이고 BH=12−x이다. 삼각형 ABH에서 tan30°=AH÷BH이므로 √3분의 1=x÷(12−x)이다. 12−x=√3x에서 12=(√3+1)x이고 x=12÷(√3+1)=6(√3−1)=6√3−6이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 7,
@@ -98,7 +122,11 @@ window.examData = {
         "$14\\sqrt{3}\\text{ cm}^2$"
       ],
       "answer": "③ 12√3 cm²",
-      "solution": "AB=BC=6cm, ∠B=60°이므로 △ABC는 정삼각형이므로 AC=6cm이다. 정삼각형의 높이는 밑변을 반으로 나누므로\n높이=√(6²−3²)=√27=3√3cm\n△ABC의 넓이=1/2·6·3√3=9√3cm²\n△ADC에서 AD=CD=2√3cm이고 ∠D=120°이다. D에서 AC에 내린 높이를 DE라 하면 이등변삼각형의 꼭짓점각을 이등분하므로 ∠ADE=60°이고 AE=AC/2=3cm이다. 직각삼각형 ADE에서\nDE=√(AD²−AE²)\n=√((2√3)²−3²)\n=√(12−9)=√3cm\n△ADC의 넓이=1/2·6·√3=3√3cm²\n사각형 ABCD의 넓이=9√3+3√3=12√3cm²"
+      "solution": "AB=BC=6cm, ∠B=60°이므로 △ABC는 정삼각형이므로 AC=6cm이다. 정삼각형의 높이는 밑변을 반으로 나누므로\n높이=√(6²−3²)=√27=3√3cm\n△ABC의 넓이=1/2·6·3√3=9√3cm²\n△ADC에서 AD=CD=2√3cm이고 ∠D=120°이다. D에서 AC에 내린 높이를 DE라 하면 이등변삼각형의 꼭짓점각을 이등분하므로 ∠ADE=60°이고 AE=AC/2=3cm이다. 직각삼각형 ADE에서\nDE=√(AD²−AE²)\n=√((2√3)²−3²)\n=√(12−9)=√3cm\n△ADC의 넓이=1/2·6·√3=3√3cm²\n사각형 ABCD의 넓이=9√3+3√3=12√3cm²",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 그림이다. 왼쪽 위는 AB와 BC가 6cm, AD와 CD가 2 루트 3cm이고 각 B가 60도, 각 D가 120도인 사각형에 대각선 AC를 점선으로 그은 그림이다. 오른쪽 위는 한 변이 6cm인 정삼각형 ABC와 높이 AM이 3 루트 3cm인 그림이다. 아래 왼쪽은 AD와 CD가 2 루트 3cm이고 각 D가 120도인 이등변삼각형 ADC이다. 아래 오른쪽은 높이 DE로 만든 직각삼각형 ADE로 AE는 3cm, DE는 루트 3cm, AD는 2 루트 3cm이다.",
+      "solutionImageCaption": "AB=BC=6cm, ∠B=60°이므로 삼각형 ABC는 정삼각형이고 AC=6cm, 높이는 3√3cm이므로 넓이는 2분의 1×6×3√3=9√3cm²이다. 삼각형 ADC는 AD=CD=2√3cm, ∠D=120°이므로 DE=√3cm이고 넓이는 2분의 1×6×√3=3√3cm²이다. 사각형의 넓이는 이 두 넓이의 합이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -112,7 +140,11 @@ window.examData = {
         "$18\\text{ cm}$"
       ],
       "answer": "② 25cm",
-      "solution": "AM=BM이므로 M은 현 AB의 중점이고, 중심에서 현의 중점에 그은 선분 OM은 AB에 수직이다. 반지름을 x라 하면 OC=x이고 CM=3이므로 OM=x−3이다. 직각삼각형 OMA에서\nOA²=OM²+AM²\nx²=(x−3)²+4²\nx²=x²−6x+9+16\n6x=25\n따라서 6x=25cm이다."
+      "solution": "AM=BM이므로 M은 현 AB의 중점이고, 중심에서 현의 중점에 그은 선분 OM은 AB에 수직이다. 반지름을 x라 하면 OC=x이고 CM=3이므로 OM=x−3이다. 직각삼각형 OMA에서\nOA²=OM²+AM²\nx²=(x−3)²+4²\nx²=x²−6x+9+16\n6x=25\n따라서 6x=25cm이다.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 중심이 O인 원에서 현 AB와 그 중점 M, 중심에서 M을 지나 원 위의 점 C까지의 선분이다. AM은 4cm, MC는 3cm이다. 오른쪽은 M에서 직각인 직각삼각형 OMA로 AM은 4cm(파랑), OA는 x(초록), OM은 x−3(주황)이다.",
+      "solutionImageCaption": "M이 현 AB의 중점이므로 OM⊥AB이다. 반지름을 x라 하면 OC=x이고 CM=3이므로 OM=x−3이다. 직각삼각형 OMA에서 x²=(x−3)²+4²이고 정리하면 6x=25이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -140,7 +172,11 @@ window.examData = {
         "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 원 위의 점이면 $\\angle\\mathrm{A}=\\angle\\mathrm{DCE}$이다."
       ],
       "answer": "③",
-      "solution": "원 위의 점 A, B, C, D를 꼭짓점으로 하는 가로 1 cm, 세로 2 cm의 직사각형을 생각한다.\n직사각형은 원에 내접할 수 있고, AB=CD=1 cm, AD=BC=2 cm이다.\nAB+CD=1+1=2 cm\nAD+BC=2+2=4 cm\n두 합이 다르므로 항상 같다는 ③은 옳지 않다."
+      "solution": "원 위의 점 A, B, C, D를 꼭짓점으로 하는 가로 1 cm, 세로 2 cm의 직사각형을 생각한다.\n직사각형은 원에 내접할 수 있고, AB=CD=1 cm, AD=BC=2 cm이다.\nAB+CD=1+1=2 cm\nAD+BC=2+2=4 cm\n두 합이 다르므로 항상 같다는 ③은 옳지 않다.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 다섯 그림이다. 1번은 지름 AB와 원 위의 점 P에서 직각을 이루는 그림이다. 2번은 같은 파란색 호 AB와 호 CD에 대한 원주각 P, Q가 같은 주황색인 그림이다. 3번은 원에 내접하는 두 변이 1cm, 2cm인 직사각형으로 마주 보는 변이 같은 색이다. 4번은 접선 AT와 현 AB가 이루는 각과 호 AB에 대한 원주각 C가 같은 파란색인 그림이다. 5번은 원에 내접하는 사각형의 한 내각과 이웃한 외각 DCE가 같은 파란색인 그림이다.",
+      "solutionImageCaption": "지름에 대한 원주각은 90°이므로 1번은 옳다. 크기가 같은 호에 대한 원주각은 같으므로 2번은 옳다. 접선과 현이 이루는 각은 그 현에 대한 원주각과 같으므로 4번은 옳다. 내접 사각형의 한 외각은 그 이웃한 각의 대각과 크기가 같으므로 5번은 옳다. 3번은 두 변이 1cm, 2cm인 직사각형이 원에 내접하지만 AB+CD=2cm, AD+BC=4cm로 두 합이 다르므로 항상 같지 않다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -154,7 +190,11 @@ window.examData = {
         "$15\\text{ cm}$"
       ],
       "answer": "⑤ (15 cm)",
-      "solution": "접점을 차례로 E∈AB, F∈BC, G∈CD, H∈DA라 하자.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로 AE=AH, BE=BF, CF=CG, DG=DH이다.\nAB+CD=(AE+BE)+(CG+DG)\n=(AH+BF)+(CF+DH)\n=(AH+HD)+(BF+FC)\n=AD+BC=14+10=24 cm\nAB:CD=3:5이므로 CD는 합 24 cm의 5/8이다.\nCD=24×5/8=15 cm."
+      "solution": "접점을 차례로 E∈AB, F∈BC, G∈CD, H∈DA라 하자.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로 AE=AH, BE=BF, CF=CG, DG=DH이다.\nAB+CD=(AE+BE)+(CG+DG)\n=(AH+BF)+(CF+DH)\n=(AH+HD)+(BF+FC)\n=AD+BC=14+10=24 cm\nAB:CD=3:5이므로 CD는 합 24 cm의 5/8이다.\nCD=24×5/8=15 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원에 외접하는 사각형으로 AD는 14cm, BC는 10cm이고 AB와 CD의 길이는 3k, 5k이다. 오른쪽 위는 같은 사각형에서 각 꼭짓점에서 접점까지의 길이가 같은 쌍을 파랑, 주황, 초록, 분홍으로 나타낸 그림이다. 아래는 AB(3k)와 CD(5k)를 이은 위쪽 선분과 AD(14cm)와 BC(10cm)를 이은 아래쪽 선분을 접선의 길이 조각(파랑, 주황, 초록, 분홍)으로 나눈 그림이며 둘 다 24cm이다.",
+      "solutionImageCaption": "원에 외접하는 사각형에서 한 점에서 원에 그은 두 접선의 길이가 같으므로 AB+CD=AD+BC=14+10=24cm이다. AB:CD=3:5이므로 AB=3k, CD=5k라 하면 8k=24이고 k=3이다. 따라서 CD는 합 24cm의 8분의 5이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -168,7 +208,11 @@ window.examData = {
         "$120^\\circ$"
       ],
       "answer": "③ (100°)",
-      "solution": "A가 놓인 작은 호 BC의 중심각은 160°이다.\n∠A가 보는 큰 호 BC=360°−160°=200°\n∠A=200°÷2=100°"
+      "solution": "A가 놓인 작은 호 BC의 중심각은 160°이다.\n∠A가 보는 큰 호 BC=360°−160°=200°\n∠A=200°÷2=100°",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 중심이 O인 원에서 중심각 BOC가 160도(파랑)이고 원 위의 점 A에서 본 각 BAC가 x(분홍)인 그림이다. 오른쪽은 같은 원에서 점 A를 지나지 않는 작은 호 BC는 160도(파랑), 점 A가 놓인 큰 호 BC는 200도(주황)로 나타낸 그림이다.",
+      "solutionImageCaption": "중심각 BOC=160°이므로 점 A를 포함하지 않는 쪽의 작은 호 BC의 크기는 160°이고, 각 A가 보는 큰 호 BC는 360°−160°=200°이다. 원주각의 크기는 그 호의 크기의 절반이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -182,7 +226,11 @@ window.examData = {
         "$80^\\circ$"
       ],
       "answer": "② (66°)",
-      "solution": "호 AB=360°×1/5=72°이다.\n호 CD=360°×1/6=60°이다.\nCB를 그으면, ∠ACB는 호 AB를 보는 원주각이므로 ∠ACB=72°÷2=36°이다.\n∠CBD는 호 CD를 보는 원주각이므로 ∠CBD=60°÷2=30°이다.\nP는 AC 위에 있고, B-P-D가 한 직선이므로 △BPC에서 ∠BCP=36°, ∠PBC=30°이다.\n∠APB는 △BPC의 P에서의 외각이므로 외각의 성질에 따라\n∠APB=∠BCP+∠PBC=36°+30°=66°."
+      "solution": "호 AB=360°×1/5=72°이다.\n호 CD=360°×1/6=60°이다.\nCB를 그으면, ∠ACB는 호 AB를 보는 원주각이므로 ∠ACB=72°÷2=36°이다.\n∠CBD는 호 CD를 보는 원주각이므로 ∠CBD=60°÷2=30°이다.\nP는 AC 위에 있고, B-P-D가 한 직선이므로 △BPC에서 ∠BCP=36°, ∠PBC=30°이다.\n∠APB는 △BPC의 P에서의 외각이므로 외각의 성질에 따라\n∠APB=∠BCP+∠PBC=36°+30°=66°.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 원 위의 네 점 A, B, C, D와 두 현 AC, BD가 만나는 점 P이고 호 AB는 원주의 5분의 1(파랑), 호 CD는 원주의 6분의 1(주황)이며 각 APB는 x(분홍)이다. 오른쪽은 변 BC를 추가해 원주각 ACB 36도(파랑)와 원주각 CBD 30도(주황)를 나타낸 그림이다.",
+      "solutionImageCaption": "호 AB는 원주의 5분의 1이므로 360°×5분의 1=72°이고 원주각 ACB=36°이다. 호 CD는 원주의 6분의 1이므로 60°이고 원주각 CBD=30°이다. 삼각형 PBC에서 각 x는 P에서의 외각이므로 두 내각 ACB, CBD의 합과 같다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -196,7 +244,11 @@ window.examData = {
         "$40^\\circ$"
       ],
       "answer": "③ (30°)",
-      "solution": "∠ABC가 보는 호 ADC의 크기는 두 배이다.\n호 ADC=2×120°=240°\nCD는 지름이므로 호 CD=180°\n호 AD=240°−180°=60°\n∠ACD는 호 AD에 대한 원주각이다.\n∠ACD=60°÷2=30°"
+      "solution": "∠ABC가 보는 호 ADC의 크기는 두 배이다.\n호 ADC=2×120°=240°\nCD는 지름이므로 호 CD=180°\n호 AD=240°−180°=60°\n∠ACD는 호 AD에 대한 원주각이다.\n∠ACD=60°÷2=30°",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 중심이 O인 원에서 지름 CD, 접선 AT, 원 위의 점 B가 있고 각 ABC는 120도(주황), 각 ACD는 x(분홍)인 그림이다. 오른쪽은 같은 그림에서 반원인 호 CD는 180도(초록), 각 x가 보는 호 AD는 60도(파랑)로 나타낸 그림이다.",
+      "solutionImageCaption": "각 ABC=120°는 호 ADC에 대한 원주각이므로 호 ADC=2×120°=240°이다. CD는 지름이므로 호 CD=180°이고, 호 AD=240°−180°=60°이다. 각 x=각 ACD는 호 AD에 대한 원주각이므로 호의 크기의 절반이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -210,7 +262,11 @@ window.examData = {
         "$85^\\circ$"
       ],
       "answer": "② (70°)",
-      "solution": "접선과 현 AC가 이루는 각으로 ∠ABC=55°이다.\n호 AC=호 BC이므로 현 AC=현 BC이다.\n따라서 ∠A=∠B=55°\n∠C=180°−55°−55°=70°"
+      "solution": "접선과 현 AC가 이루는 각으로 ∠ABC=55°이다.\n호 AC=호 BC이므로 현 AC=현 BC이다.\n따라서 ∠A=∠B=55°\n∠C=180°−55°−55°=70°",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 원의 접선 AT와 현 AC가 이루는 각이 55도(파랑)이고 호 AC와 호 BC가 같은 주황색이며 각 ACB는 x(분홍)인 그림이다. 오른쪽은 CA와 CB가 같은 이등변삼각형 ABC로 두 밑각 A, B가 55도(파랑)이고 꼭지각이 x(분홍)이다.",
+      "solutionImageCaption": "접선과 현이 이루는 각은 그 현에 대한 원주각과 같으므로 ∠ABC=55°이다. 호 AC=호 BC이므로 현 CA=CB이고 ∠CAB=∠CBA=55°이다. 삼각형 ABC의 내각의 합은 180°이므로 x=180°−55°−55°이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,
@@ -224,7 +280,11 @@ window.examData = {
         "가, 나, 다, 라"
       ],
       "answer": "⑤ (가, 나, 다, 라)",
-      "solution": "가에서 AD와 BC의 교점을 X라 하자.\n교차점의 이웃한 각이 180°−100°=80°이다. 삼각형 XBD에서\n∠XDB=180°−80°−50°=50°\n따라서 ∠ADB=∠ACB=50°이고, 두 각이 같은 현 AB를 보므로 가는 한 원 위에 있다.\n나에서 AC와 BD의 교점을 X라 하자.\n∠AXD=90°, ∠DAX=60°이므로\n∠ADX=180°−90°−60°=30°\n따라서 ∠ADB=∠ACB=30°이고 두 각이 같은 현 AB를 보므로 나는 한 원 위에 있다.\n다에서는 ∠ADB=∠ACB=55°로 두 각이 같은 현 AB를 본다. 따라서 다도 한 원 위에 있다.\n라에서는 마주 보는 각의 합이\n85°+95°=180°\n이므로 라도 한 원 위에 있다.\n따라서 네 경우가 모두 해당하므로 ⑤이다."
+      "solution": "가에서 AD와 BC의 교점을 X라 하자.\n교차점의 이웃한 각이 180°−100°=80°이다. 삼각형 XBD에서\n∠XDB=180°−80°−50°=50°\n따라서 ∠ADB=∠ACB=50°이고, 두 각이 같은 현 AB를 보므로 가는 한 원 위에 있다.\n나에서 AC와 BD의 교점을 X라 하자.\n∠AXD=90°, ∠DAX=60°이므로\n∠ADX=180°−90°−60°=30°\n따라서 ∠ADB=∠ACB=30°이고 두 각이 같은 현 AB를 보므로 나는 한 원 위에 있다.\n다에서는 ∠ADB=∠ACB=55°로 두 각이 같은 현 AB를 본다. 따라서 다도 한 원 위에 있다.\n라에서는 마주 보는 각의 합이\n85°+95°=180°\n이므로 라도 한 원 위에 있다.\n따라서 네 경우가 모두 해당하므로 ⑤이다.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 그림이다. (가)는 두 대각선이 100도로 만나고 각 ACB와 각 CBD가 50도이며 구한 각 ADB도 50도로 각 ACB와 같은 파란색이다. (나)는 두 대각선이 수직이고 각 DAC는 60도(파랑), 각 ACB는 30도(주황)이며 구한 각 ADB도 30도(주황)이다. (다)는 변 AB를 보는 각 ADB와 각 ACB가 모두 55도(파랑)이다. (라)는 마주 보는 각 B가 85도(파랑), 각 C가 95도(주황)이다.",
+      "solutionImageCaption": "(가) 두 대각선의 교점을 X라 하면 삼각형 XBD에서 ∠XDB=180°−80°−50°=50°이므로 ∠ADB=∠ACB=50°이다. (나) 삼각형 ADX에서 ∠ADB=180°−90°−60°=30°이므로 ∠ADB=∠ACB=30°이다. (다) ∠ADB=∠ACB=55°이다. 세 경우 모두 같은 변 AB를 보는 두 각이 같으므로 네 점이 한 원 위에 있다. (라) 마주 보는 두 각의 합이 85°+95°=180°이므로 한 원 위에 있다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -238,7 +298,11 @@ window.examData = {
         "$64^\\circ$"
       ],
       "answer": "④ 58°",
-      "solution": "사각형 ABCD는 원에 내접하므로 ∠A+∠C=180°, ∠B+∠D=180°이다.\n△PAD에서 PA는 AB의 연장선이고 PD는 CD의 연장선이므로\n∠PAD=180°−∠A, ∠PDA=180°−∠D이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠D)+23°=180°\n∠A+∠D=203°이다.\n△QAB에서 QA는 AD의 연장선이고 QB는 BC의 연장선이므로\n∠QAB=180°−∠A, ∠QBA=180°−∠B이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠B)+41°=180°\n∠A+∠B=221°이다.\n∠D=180°−∠B이므로 ∠A+∠D=203°에 대입하면 ∠A−∠B=23°이다.\n∠A+∠B=221°와 ∠A−∠B=23°에서 ∠A=122°이다.\n∠A+∠C=180°이므로 x=∠C=58°."
+      "solution": "사각형 ABCD는 원에 내접하므로 ∠A+∠C=180°, ∠B+∠D=180°이다.\n△PAD에서 PA는 AB의 연장선이고 PD는 CD의 연장선이므로\n∠PAD=180°−∠A, ∠PDA=180°−∠D이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠D)+23°=180°\n∠A+∠D=203°이다.\n△QAB에서 QA는 AD의 연장선이고 QB는 BC의 연장선이므로\n∠QAB=180°−∠A, ∠QBA=180°−∠B이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠B)+41°=180°\n∠A+∠B=221°이다.\n∠D=180°−∠B이므로 ∠A+∠D=203°에 대입하면 ∠A−∠B=23°이다.\n∠A+∠B=221°와 ∠A−∠B=23°에서 ∠A=122°이다.\n∠A+∠C=180°이므로 x=∠C=58°.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 그림이다. 왼쪽 위는 원에 내접하는 사각형의 두 변을 연장한 점 P와 Q이고 각 P는 23도(파랑), 각 Q는 41도(주황), 각 C는 x(분홍)이다. 오른쪽 위는 각 P 23도, 각 PAD 58도(초록), 각 PDA 99도(보라)인 삼각형 PAD이다. 왼쪽 아래는 각 Q 41도(주황), 각 QAB 58도(초록), 각 QBA 81도인 삼각형 QAB이다. 오른쪽 아래는 원에 내접하는 사각형으로 각 A는 122도(파랑), 각 B는 99도(보라), 각 D는 81도이고 각 C는 x(분홍)이다.",
+      "solutionImageCaption": "삼각형 PAD에서 (180°−∠A)+(180°−∠D)+23°=180°이므로 ∠A+∠D=203°이다. 삼각형 QAB에서 (180°−∠A)+(180°−∠B)+41°=180°이므로 ∠A+∠B=221°이다. 내접 사각형에서 ∠B+∠D=180°이므로 ∠A−∠B=23°이고 ∠A=122°이다. 마주 보는 각의 합이 180°이므로 ∠C=180°−122°이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -252,7 +316,11 @@ window.examData = {
         "$\\sqrt{5}\\text{ cm}$"
       ],
       "answer": "② 2 cm",
-      "solution": "△APC와 △DPB에서 ∠APC=∠DPB는 맞꼭지각이다.\n∠ACP=∠ACD이고 ∠DBP=∠DBA이며, 두 원주각은 같은 호 AD를 본다.\n따라서 △APC∼△DPB이다.\n닮음비에서 AP/DP=PC/PB이므로 AP×PB=DP×PC이다.\n6×x=3×4\n6x=12\nx=2 cm."
+      "solution": "△APC와 △DPB에서 ∠APC=∠DPB는 맞꼭지각이다.\n∠ACP=∠ACD이고 ∠DBP=∠DBA이며, 두 원주각은 같은 호 AD를 본다.\n따라서 △APC∼△DPB이다.\n닮음비에서 AP/DP=PC/PB이므로 AP×PB=DP×PC이다.\n6×x=3×4\n6x=12\nx=2 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원의 두 현 AB, CD가 점 P에서 만나는 그림으로 AP는 6cm, CP는 4cm, DP는 3cm이고 PB는 x cm이다. 오른쪽 위는 AP 6cm(파랑), PC 4cm(주황)인 삼각형 APC이고 각 P는 분홍, 각 C는 초록이다. 아래는 DP 3cm(파랑), PB x cm(주황)인 삼각형 DPB이고 각 P는 분홍, 각 B는 초록이다.",
+      "solutionImageCaption": "삼각형 APC와 삼각형 DPB에서 각 APC=각 DPB는 맞꼭지각이고, 각 ACP와 각 DBP는 같은 호 AD에 대한 원주각이므로 같다. 따라서 두 삼각형은 닮음이다. 닮음비에서 AP:DP=PC:PB이므로 AP×PB=DP×PC이다. 6×x=3×4에서 6x=12이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -266,7 +334,11 @@ window.examData = {
         "$\\frac{48}{5}\\text{ cm}$"
       ],
       "answer": "① 11 cm",
-      "solution": "∠APB=90°이므로 △APB에서 피타고라스 정리를 쓰면\nAP²+BP²=AB²\nAP²+6²=10²\nAP²=64\nAP=8 cm이다.\n△APB와 △DPC에서 ∠APB=∠DPC는 맞꼭지각이고, ∠PAB=∠PDC는 같은 호 BC를 보는 원주각이다.\n따라서 △APB∼△DPC이다.\n닮음비에서 AP/DP=PB/PC이므로 AP×PC=DP×PB이다.\n8×PC=4×6\nPC=3 cm\nP는 A와 C 사이에 있으므로 AC=AP+PC=8+3=11 cm."
+      "solution": "∠APB=90°이므로 △APB에서 피타고라스 정리를 쓰면\nAP²+BP²=AB²\nAP²+6²=10²\nAP²=64\nAP=8 cm이다.\n△APB와 △DPC에서 ∠APB=∠DPC는 맞꼭지각이고, ∠PAB=∠PDC는 같은 호 BC를 보는 원주각이다.\n따라서 △APB∼△DPC이다.\n닮음비에서 AP/DP=PB/PC이므로 AP×PC=DP×PB이다.\n8×PC=4×6\nPC=3 cm\nP는 A와 C 사이에 있으므로 AC=AP+PC=8+3=11 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원에 내접하는 사각형의 두 대각선이 점 P에서 수직으로 만나는 그림으로 AB는 10cm, BP는 6cm, PD는 4cm이다. 오른쪽 위는 P에서 직각이고 AP는 8cm(파랑), BP는 6cm(주황), AB는 10cm(초록)인 삼각형 APB이다. 아래는 P에서 직각이고 DP는 4cm(파랑), PC는 3cm(주황)인 삼각형 DPC이며 두 삼각형에서 각 A와 각 D는 같은 분홍색이다.",
+      "solutionImageCaption": "삼각형 APB에서 AP²=10²−6²=64이므로 AP=8cm이다. 삼각형 APB와 삼각형 DPC는 ∠APB=∠DPC=90°이고 ∠PAB=∠PDC(같은 호 BC에 대한 원주각)이므로 닮음이다. 닮음비에서 AP:DP=PB:PC이므로 8×PC=4×6이고 PC=3cm이다. AC=AP+PC이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -280,7 +352,11 @@ window.examData = {
         "$2\\sqrt{6}\\text{ cm}$"
       ],
       "answer": "⑤ 2√6 cm",
-      "solution": "△APQ와 △MPB에서 ∠APQ=∠MPB는 맞꼭지각이다.\n∠AQP와 ∠MBP는 모두 호 AM을 보는 원주각이므로 두 삼각형은 닮음이다.\n닮음비에서 AP/MP=PQ/PB이므로 AP×PB=MP×PQ=3×5=15이다.\n호 AM=호 BM이므로 현 AM=현 BM이다. 따라서 △AMB는 이등변삼각형이다.\nAB 위의 중점을 N이라 하면 MN⊥AB이다. AP=a, PB=b라 두면\nBN=(a+b)/2, PN=|a−b|/2이다.\n피타고라스 정리로 BM²=MN²+BN², PM²=MN²+PN²이다.\n두 식을 빼면 BM²−PM²=BN²−PN²\n=((a+b)²−(a−b)²)/4=ab=AP×PB=15이다.\nBM²=PM²+15=3²+15=24\nBM=2√6 cm."
+      "solution": "△APQ와 △MPB에서 ∠APQ=∠MPB는 맞꼭지각이다.\n∠AQP와 ∠MBP는 모두 호 AM을 보는 원주각이므로 두 삼각형은 닮음이다.\n닮음비에서 AP/MP=PQ/PB이므로 AP×PB=MP×PQ=3×5=15이다.\n호 AM=호 BM이므로 현 AM=현 BM이다. 따라서 △AMB는 이등변삼각형이다.\nAB 위의 중점을 N이라 하면 MN⊥AB이다. AP=a, PB=b라 두면\nBN=(a+b)/2, PN=|a−b|/2이다.\n피타고라스 정리로 BM²=MN²+BN², PM²=MN²+PN²이다.\n두 식을 빼면 BM²−PM²=BN²−PN²\n=((a+b)²−(a−b)²)/4=ab=AP×PB=15이다.\nBM²=PM²+15=3²+15=24\nBM=2√6 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원의 두 현 AB, MQ가 점 P에서 만나는 그림으로 PM은 3cm, PQ는 5cm이고 호 AM과 호 BM이 같은 보라색이다. 현 AB 위의 PA, PB의 길이는 문자 a, b로 나타냈다. 오른쪽 위는 AP가 a(파랑), PQ가 5cm(주황)인 삼각형 APQ이고 각 P는 분홍, 각 Q는 초록이다. 아래는 MP가 3cm(파랑), PB가 b(주황)인 삼각형 MPB이고 각 P는 분홍, 각 B는 초록이다.",
+      "solutionImageCaption": "삼각형 APQ와 삼각형 MPB는 맞꼭지각과 같은 호 AM에 대한 원주각이 같으므로 닮음이다. 닮음비에서 AP:MP=PQ:PB이므로 AP×PB=MP×PQ=3×5=15이다. 호 AM=호 BM이므로 현 BM=AM이고, AB의 중점을 N이라 하면 MN⊥AB이다. 피타고라스 정리로 BM²−PM²=BN²−PN²=AP×PB=15이므로 BM²=3²+15=24이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
@@ -288,7 +364,11 @@ window.examData = {
       "question": "<p>(서술형 1) 다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=30^\\circ$, $\\angle\\mathrm{DBC}=45^\\circ$, $\\overline{\\mathrm{BC}}=20$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하여라. ($\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{CA}}$, $\\overline{\\mathrm{AD}}$의 길이를 구할 것. 단, $\\overline{\\mathrm{CA}}$는 삼각비를 이용하여 나타낼 것.) [4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/s01.png\"></p>",
       "choices": [],
       "answer": "AD=20√3−20 cm",
-      "solution": "∠ACB=90°, ∠A=30°이므로 tan30°=BC/CA.\n1/√3=20/CA.\nCA=20√3 cm.\n∠BCD=90°, ∠DBC=45°이므로 ∠BDC=45°.\n따라서 △BCD는 직각이등변삼각형이고 CD=BC=20 cm.\nAD=AC−CD=20√3−20 cm."
+      "solution": "∠ACB=90°, ∠A=30°이므로 tan30°=BC/CA.\n1/√3=20/CA.\nCA=20√3 cm.\n∠BCD=90°, ∠DBC=45°이므로 ∠BDC=45°.\n따라서 △BCD는 직각이등변삼각형이고 CD=BC=20 cm.\nAD=AC−CD=20√3−20 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 C에서 직각인 직각삼각형 ABC로 BC는 20, 각 A는 30도(파랑), 변 CA 위의 점 D에서 각 DBC는 45도(주황)이고 선분 AD는 분홍이다. 오른쪽 위는 BC가 20, 각 A가 30도(파랑)이고 CA가 20 루트 3(초록)인 삼각형 ABC이다. 아래는 C에서 직각이고 각 DBC가 45도(주황), BC와 CD가 모두 20(파랑)인 직각이등변삼각형 BCD이다.",
+      "solutionImageCaption": "삼각형 ABC에서 tan30°=BC÷CA이므로 √3분의 1=20÷CA이고 CA=20√3이다. 삼각형 BCD에서 ∠DBC=45°, ∠BCD=90°이므로 ∠BDC=45°이고 직각이등변삼각형이므로 CD=BC=20이다. 따라서 AD=CA−CD=20√3−20이다. 정답은 AD=20√3−20 cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
@@ -296,7 +376,11 @@ window.examData = {
       "question": "<p>(서술형 2) 그림의 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=45^\\circ$, $\\angle\\mathrm{C}=75^\\circ$이다. $\\overline{\\mathrm{BC}}=6\\sqrt{2}\\text{ cm}$일 때, 다음을 구하여라. [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/s02.png\"></p><p>(1) 삼각형의 둘레의 길이(3점)<br>(반드시 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{AB}}$의 길이를 삼각비를 이용하여 구한다음 둘레의 길이를 구할 것.)<br>(2) 삼각형의 넓이(1점) (풀이과정이 아무것도 없고 답만 있는 경우 0점 처리)</p>",
       "choices": [],
       "answer": "(1) 6+6√2+6√3 cm, (2) 18+6√3 cm²",
-      "solution": "∠A=180°−45°−75°=60°이다.\nC에서 AB에 수선 CH를 내린다.\n△BCH에서 sin45°=CH/BC이므로\nCH=6√2×sin45°=6√2×(√2/2)=6 cm이다.\ntan45°=CH/BH=1이므로 BH=6 cm이다.\n△ACH에서 ∠ACH=90°−60°=30°이다.\ntan30°=AH/CH이므로 AH=6×(1/√3)=2√3 cm이다.\nsin30°=AH/AC=1/2이므로 AC=2AH=4√3 cm이다.\nAB=AH+HB=2√3+6 cm이다.\n(1) 둘레=AB+BC+CA\n=(2√3+6)+6√2+4√3\n=6+6√2+6√3 cm\n(2) 넓이=1/2×AB×CH\n=1/2×(2√3+6)×6\n=18+6√3 cm²."
+      "solution": "∠A=180°−45°−75°=60°이다.\nC에서 AB에 수선 CH를 내린다.\n△BCH에서 sin45°=CH/BC이므로\nCH=6√2×sin45°=6√2×(√2/2)=6 cm이다.\ntan45°=CH/BH=1이므로 BH=6 cm이다.\n△ACH에서 ∠ACH=90°−60°=30°이다.\ntan30°=AH/CH이므로 AH=6×(1/√3)=2√3 cm이다.\nsin30°=AH/AC=1/2이므로 AC=2AH=4√3 cm이다.\nAB=AH+HB=2√3+6 cm이다.\n(1) 둘레=AB+BC+CA\n=(2√3+6)+6√2+4√3\n=6+6√2+6√3 cm\n(2) 넓이=1/2×AB×CH\n=1/2×(2√3+6)×6\n=18+6√3 cm².",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 각 B가 45도(파랑), 각 C가 75도(주황)이고 BC가 6 루트 2cm인 삼각형이다. 오른쪽 위는 H에서 직각이고 두 예각이 45도인 직각이등변삼각형 BCH로 BH와 CH가 6cm, BC는 6 루트 2cm이다. 아래는 H에서 직각이고 각 A는 60도(주황), 각 ACH는 30도(보라)인 삼각형 ACH로 AH는 2 루트 3cm, CH는 6cm, CA는 4 루트 3cm이다.",
+      "solutionImageCaption": "각 A=180°−45°−75°=60°이다. C에서 AB에 수선의 발 H를 내리면 삼각형 BCH에서 CH=BC×sin45°=6cm, BH=6cm이다. 삼각형 ACH에서 ∠ACH=30°이므로 AH=6×tan30°=2√3cm, AC=AH÷sin30°=4√3cm이다. AB=AH+HB=2√3+6cm이다. (1) 둘레는 AB+BC+CA이고, (2) 넓이는 2분의 1×AB×CH이다. 정답은 (1) 6+6√2+6√3 cm, (2) 18+6√3 cm²이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 23,
@@ -304,7 +388,11 @@ window.examData = {
       "question": "<p>(서술형 3) 그림에서 $\\triangle\\mathrm{ABC}$가 원에 외접하고, 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=7\\text{ cm}$, $\\overline{\\mathrm{BC}}=8\\text{ cm}$, $\\overline{\\mathrm{CA}}=5\\text{ cm}$일 때, $\\overline{\\mathrm{BF}}=x$의 값을 구하여라. [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/s03.png\"></p><p>(1) 식 세우기(2점) ($\\leftarrow$조건은 생략하고, 변 $\\mathrm{AC}$에 대하여 등식을 기재하시오)<br>(2) 답 구하기(2점)</p>",
       "choices": [],
       "answer": "BF=x=5 cm",
-      "solution": "같은 점에서 원에 그은 두 접선의 길이는 같으므로\nBD=BF=x, AD=AE, CE=CF이다.\nAB=AD+DB이므로 AD=7−x이다.\nBC=BF+FC이므로 CF=8−x이다.\nAC=AE+EC=AD+CF이다.\n5=(7−x)+(8−x)\n5=15−2x\n2x=10\nx=5 cm."
+      "solution": "같은 점에서 원에 그은 두 접선의 길이는 같으므로\nBD=BF=x, AD=AE, CE=CF이다.\nAB=AD+DB이므로 AD=7−x이다.\nBC=BF+FC이므로 CF=8−x이다.\nAC=AE+EC=AD+CF이다.\n5=(7−x)+(8−x)\n5=15−2x\n2x=10\nx=5 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 그림이다. 왼쪽은 삼각형 ABC의 내접원과 접점 D, E, F로 AB는 7cm, AC는 5cm, BC는 8cm이고 BF는 x cm이다. 오른쪽은 같은 그림에서 AD와 AE는 길이 7−x(파랑), BD와 BF는 길이 x(주황), CF와 CE는 길이 8−x(초록)로 나타낸 그림이다.",
+      "solutionImageCaption": "같은 점에서 원에 그은 두 접선의 길이가 같으므로 BD=BF=x, AD=AE=7−x, CF=CE=8−x이다. (1) 변 AC에 대한 등식은 AC=AE+EC이므로 5=(7−x)+(8−x)이다. (2) 5=15−2x에서 2x=10이므로 x=5이다. 정답은 BF=x=5 cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,
@@ -312,7 +400,11 @@ window.examData = {
       "question": "<p>(서술형 4) 그림에서 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$의 연장선의 교점이고, $\\overline{\\mathrm{AB}}=7\\text{ cm}$, $\\overline{\\mathrm{PA}}=5\\text{ cm}$, $\\overline{\\mathrm{PC}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{CD}}=x$의 값을 구하여라. [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/s04.png\"></p><p>(1) 식 세우기(2점) ($\\leftarrow$조건은 생략하고, $x$에 관한 등식을 기재하시오)<br>(2) 답 구하기(2점)</p>",
       "choices": [],
       "answer": "CD=x=11 cm",
-      "solution": "P-A-B 순서이므로 PB=PA+AB=5+7=12 cm이다.\nP-C-D 순서이므로 PD=PC+CD=4+x cm이다.\n△PAC와 △PDB에서 ∠APC=∠DPB는 같은 두 직선이 이루는 각이다.\nAP와 AB는 반대 방향이므로 ∠PAC=180°−∠BAC이다.\nABCD는 원에 내접하므로 ∠BAC+∠BDC=180°이다. 따라서 ∠BDC=180°−∠BAC이다.\nP-C-D 순서이므로 D에서 DP와 DC는 같은 방향이다. 따라서 ∠PDB=∠BDC이다.\n그러므로 ∠PAC=∠PDB이다.\n두 각이 같으므로 △PAC∼△PDB이다.\n닮음비에서 PA/PD=PC/PB이므로 PA×PB=PC×PD이다.\n5×12=4×(4+x)\n60=16+4x\n44=4x\nx=11 cm."
+      "solution": "P-A-B 순서이므로 PB=PA+AB=5+7=12 cm이다.\nP-C-D 순서이므로 PD=PC+CD=4+x cm이다.\n△PAC와 △PDB에서 ∠APC=∠DPB는 같은 두 직선이 이루는 각이다.\nAP와 AB는 반대 방향이므로 ∠PAC=180°−∠BAC이다.\nABCD는 원에 내접하므로 ∠BAC+∠BDC=180°이다. 따라서 ∠BDC=180°−∠BAC이다.\nP-C-D 순서이므로 D에서 DP와 DC는 같은 방향이다. 따라서 ∠PDB=∠BDC이다.\n그러므로 ∠PAC=∠PDB이다.\n두 각이 같으므로 △PAC∼△PDB이다.\n닮음비에서 PA/PD=PC/PB이므로 PA×PB=PC×PD이다.\n5×12=4×(4+x)\n60=16+4x\n44=4x\nx=11 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원 밖의 점 P에서 한 직선이 점 A, B에서, 다른 직선이 점 C, D에서 원과 만나는 그림으로 PA는 5cm, AB는 7cm, PC는 4cm, CD는 x cm이다. 오른쪽 위는 PA 5cm(초록), PC 4cm(주황)인 삼각형 PAC로 각 P는 분홍, 각 A는 파랑이다. 아래는 PD 4+x cm(초록), PB 12cm(주황)인 삼각형 PDB로 각 P는 분홍, 각 D는 파랑이다.",
+      "solutionImageCaption": "PB=PA+AB=12cm이고 PD=PC+CD=4+x cm이다. 삼각형 PAC와 삼각형 PDB는 각 P가 공통이고, 내접하는 사각형의 마주 보는 각의 합이 180°라서 각 PAC=각 PDB이므로 닮음이다. 닮음비에서 PA:PD=PC:PB이므로 PA×PB=PC×PD이다. (1) 식 5×12=4×(4+x)이고 (2) 60=16+4x에서 x=11이다. 정답은 CD=x=11 cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 25,
@@ -320,7 +412,11 @@ window.examData = {
       "question": "<p>(서술형 5) 그림에서 $\\triangle\\mathrm{ABC}$가 원에 외접하고, 세 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$은 접점이다. $\\overline{\\mathrm{AB}}=10\\text{ cm}$, 반지름 $\\overline{\\mathrm{OQ}}=2\\text{ cm}$일 때, $\\overline{\\mathrm{AP}}=x$의 길이를 구하여라. (단, $\\overline{\\mathrm{AP}} > \\overline{\\mathrm{BP}}$) [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/s05.png\"></p><p>(1) 식 세우기(2점) ($\\leftarrow$조건은 생략하고, $\\triangle\\mathrm{ABC}$의 세 변에 관한 등식을 기재하시오)<br>(2) 답 구하기(2점)</p>",
       "choices": [],
       "answer": "AP=x=6 cm",
-      "solution": "AP=AR=x, BP=BQ=10−x.\n∠C=90°이고 CO는 각의 이등분선이므로 ∠OCQ=45°이다.\nOQ ⟂ CQ이므로 △OCQ는 45°-45°-90° 삼각형이고 CQ=OQ=2 cm이다.\n같은 점 C에서 그은 두 접선의 길이는 같으므로 CR=CQ=2 cm.\nAB=AP+PB=x+(10−x)=10 cm.\nAC=AR+RC=x+2 cm.\nBC=BQ+QC=(10−x)+2=12−x cm.\nAB²=AC²+BC².\n10²=(x+2)²+(12−x)².\n100=2x²−20x+148.\n0=2x²−20x+48.\n0=x²−10x+24.\n0=(x−4)(x−6).\nx=4 또는 6.\nAP>BP이므로 x>10−x, 즉 x>5.\nx=6 cm."
+      "solution": "AP=AR=x, BP=BQ=10−x.\n∠C=90°이고 CO는 각의 이등분선이므로 ∠OCQ=45°이다.\nOQ ⟂ CQ이므로 △OCQ는 45°-45°-90° 삼각형이고 CQ=OQ=2 cm이다.\n같은 점 C에서 그은 두 접선의 길이는 같으므로 CR=CQ=2 cm.\nAB=AP+PB=x+(10−x)=10 cm.\nAC=AR+RC=x+2 cm.\nBC=BQ+QC=(10−x)+2=12−x cm.\nAB²=AC²+BC².\n10²=(x+2)²+(12−x)².\n100=2x²−20x+148.\n0=2x²−20x+48.\n0=x²−10x+24.\n0=(x−4)(x−6).\nx=4 또는 6.\nAP>BP이므로 x>10−x, 즉 x>5.\nx=6 cm.",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q25-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 C에서 직각인 직각삼각형 ABC에 내접하는 원 O와 접점 P, Q, R로 AB는 10cm, AP는 x cm, 반지름 OQ는 2cm이다. 오른쪽 위는 AP와 AR이 같은 파란색, BP와 BQ가 같은 주황색, CQ와 CR이 2cm인 같은 초록색이고 네 점 C, Q, O, R을 꼭짓점으로 하는 사각형이 한 변 2인 정사각형인 그림이다. 아래는 C에서 직각이고 AB는 10cm, AC는 x+2cm, BC는 12−x cm인 직각삼각형 ABC이다.",
+      "solutionImageCaption": "AP=AR=x, BP=BQ=10−x이다. 각 C가 90°이고 CO가 각의 이등분선이므로 삼각형 OCQ는 직각이등변삼각형이어서 CQ=OQ=2cm, CR=CQ=2cm이다. 따라서 AC=x+2, BC=12−x이고 AB²=AC²+BC²에서 10²=(x+2)²+(12−x)²이다. 정리하면 x²−10x+24=0이고 x=4 또는 6인데 AP>BP이므로 x>5이다. 정답은 AP=x=6 cm이다.",
+      "solutionImageSize": "full"
     }
   ]
 };
