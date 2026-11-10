@@ -1,0 +1,140 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "작은 사면체"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  4
+                ]
+              ]
+            },
+            "height": 7,
+            "apex": [
+              0,
+              0
+            ],
+            "names": {
+              "base": [
+                "B",
+                "C",
+                "D"
+              ],
+              "apex": "A"
+            }
+          }
+        ],
+        "dims": [
+          {
+            "from": "B",
+            "to": "C",
+            "label": "6"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "4"
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "label": "7"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "큰 사면체"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  12,
+                  0
+                ],
+                [
+                  12,
+                  8
+                ]
+              ]
+            },
+            "height": 14,
+            "apex": [
+              0,
+              0
+            ],
+            "names": {
+              "base": [
+                "F",
+                "G",
+                "H"
+              ],
+              "apex": "E"
+            }
+          }
+        ],
+        "dims": [
+          {
+            "from": "F",
+            "to": "G",
+            "label": "12"
+          },
+          {
+            "from": "G",
+            "to": "H",
+            "label": "8"
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "label": "14"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "닮음비는 1:2. EF=14에 대응하는 AB=x=7, CD=4에 대응하는 GH=y=8이므로 xy=56이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "△BCD와 △FGH가 대응, BC=6, FG=12, CD=4, EF=14.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 입체의 구체적 형태는 주어진 대응 길이에 맞춘 예시이며 원문에 없는 직각은 추론하지 않는다."
+  ],
+  "sourceQuote": "두 사면체는 서로 닮은 도형이다."
+}

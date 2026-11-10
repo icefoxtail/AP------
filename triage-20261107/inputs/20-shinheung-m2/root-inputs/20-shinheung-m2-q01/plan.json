@@ -1,0 +1,109 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "2",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "domain": [
+      -5.164953879971304,
+      5.164953879971304
+    ],
+    "viewport": [
+      -5.164953879971304,
+      5.164953879971304,
+      -5.164953879971304,
+      5.164953879971304
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "Q",
+        "x": 2,
+        "y": 1
+      }
+    ],
+    "formulaLabel": "y=2/x",
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1",
+    "rationalFeatures": {
+      "schemaVersion": "RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1",
+      "constant": "2",
+      "singularity": {
+        "kind": "VERTICAL_POLE",
+        "x": "0"
+      },
+      "horizontalAsymptoteY": "0",
+      "xIntercept": null,
+      "poleDirection": {
+        "left": "DOWN",
+        "right": "UP"
+      },
+      "asymptotes": {
+        "horizontal": {
+          "y": "0",
+          "drawn": false,
+          "reason": "ON_X_AXIS"
+        },
+        "vertical": {
+          "x": "0",
+          "drawn": false,
+          "reason": "ON_Y_AXIS"
+        }
+      }
+    },
+    "rationalFeaturePolicy": {
+      "schemaVersion": "RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_POLICY_v1",
+      "sourceDomain": "ALL_REALS_WITH_DENOMINATOR_EXCLUSION",
+      "degreeGrammar": "CONSTANT_OVER_LINEAR",
+      "singularityPolicy": "ONE_SIMPLE_REAL_POLE",
+      "horizontalAsymptotePolicy": "Y_EQUALS_ZERO_IS_THE_X_AXIS_NOT_DRAWN",
+      "asymptoteOnAxisPolicy": "AXIS_IS_THE_ASYMPTOTE_NO_DASHED_LINE",
+      "minimumFeatureSeparationCssPx": 1
+    },
+    "equalUnits": true,
+    "axisRatio": 1.0,
+    "plotCanvas": {
+      "width": 448,
+      "height": 448.0
+    }
+  },
+  "coordinateLeader": [
+    "P",
+    "Q"
+  ],
+  "caption": "ㄱ은 이차식, ㄷ은 반비례 y=2/x이므로 일차함수가 아니다. ㄴ·ㄹ·ㅁ 세 식이 일차함수다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ㄷ y=2/x는 x≠0인 반비례이고 ㄴ·ㄹ·ㅁ은 일차함수다.",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "유리함수가 이해에 도움이 되면 그림을 계획하라는 사용자 지시에 따라 ㄷ의 곡선을 표시한다. 나머지 선택지는 풀이의 식 비교로 구분한다."
+  ]
+}
