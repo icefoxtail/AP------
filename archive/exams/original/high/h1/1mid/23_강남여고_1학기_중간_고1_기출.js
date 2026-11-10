@@ -441,9 +441,9 @@ window.questionBank = [
     "rpmL2": "이차방정식",
     "rpmL3": "이차방정식의 근",
     "rpmL4": "판별식",
-    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "a=-3, a=1 일 때 그래프가 x축에 접한다.",
-    "solutionImageCaption": "a=-3, a=1 일 때 그래프가 x축에 접한다.",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축에 한 점(접점)에서 닿는 아래로 볼록한 포물선 f(x)를 나타낸 그림",
+    "solutionImageCaption": "f(x)=x²−2ax−2a+3의 그래프가 x축에 접하면 꼭짓점이 x축 위에 있어 f(x)=0이 중근을 갖는다. 따라서 판별식 D=4(a+3)(a−1)=0이다. 정답은 −3, 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -532,9 +532,9 @@ window.questionBank = [
     "rpmL2": "이차방정식과 이차함수",
     "rpmL3": "최대·최소",
     "rpmL4": "조건식 활용",
-    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q6-solution.svg",
-    "solutionImageAlt": "a=3일 때 직선과 교점 P(1, 1)을 지나고, 꼭짓점 V의 y좌표 3/4가 최솟값이다.",
-    "solutionImageCaption": "a=3일 때 직선과 교점 P(1, 1)을 지나고, 꼭짓점 V의 y좌표 3/4가 최솟값이다.",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 y=x²−3x+3과 직선 y=2x−1이 점 (1,1)에서 만나고, 포물선의 꼭짓점이 표시된 그림",
+    "solutionImageCaption": "교점의 x좌표 1을 직선에 대입하면 y=1이고, 포물선에서 1−3+a=1이므로 a=3이다. 이 포물선은 아래로 볼록하고 꼭짓점의 x좌표가 2분의 3이므로 꼭짓점의 y좌표가 최솟값이다. 정답은 4분의 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1164,7 +1164,10 @@ window.questionBank = [
     "rpmL2": "이차방정식과 이차함수",
     "rpmL3": "최대·최소",
     "rpmL4": "구간 최대·최소",
-    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q13-solution.svg"
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 0≤x≤3에서 xy를 x로 나타낸 아래로 볼록한 이차함수의 그래프. 왼쪽 끝점 A는 원점, 꼭짓점 V는 x=1(점선과 눈금 1), 오른쪽 끝점 B는 x=3에 있다.",
+    "solutionImageCaption": "y=2x−4이므로 xy=2(x−1)²−2이고, 그림의 세로축은 xy의 값이다. 꼭짓점 V(x=1)가 구간 안에 있어 최솟값은 V에서 생기고, 최댓값은 양 끝점 A, B 중 큰 값인 B에서 생긴다. 최댓값 6과 최솟값 −2의 합을 구한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1541,7 +1544,11 @@ window.questionBank = [
     "rpmL1": "방정식과 부등식",
     "rpmL2": "이차방정식과 이차함수",
     "rpmL3": "최대·최소",
-    "rpmL4": "조건식 활용"
+    "rpmL4": "조건식 활용",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 던진 지점 (0,2)에서 올라가 높이 6인 꼭짓점을 지나 x=10에서 땅에 떨어지는 포물선. 꼭짓점 아래 수평거리는 k로 표시되고 꼭짓점에서 두 축으로 점선이 그려져 있다.",
+    "solutionImageCaption": "던진 지점을 (0,2), 떨어진 지점을 (10,0), 꼭짓점을 (k,6)으로 놓고 y=a(x−k)²+6에 두 점을 대입한다. 두 식을 나누면 10−k를 k로 나눈 값이 2분의 √6이므로 k=10√6−20이고 p=−20, q=6이다. 정답은 −14이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1728,7 +1735,11 @@ window.questionBank = [
     "rpmL1": "방정식과 부등식",
     "rpmL2": "이차방정식과 이차함수",
     "rpmL3": "그래프와 근",
-    "rpmL4": "x축과의 교점"
+    "rpmL4": "x축과의 교점",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 f(파랑)는 x축과 α, β에서 만나고 꼭짓점 P에서 점선이 x축의 α, β의 중점까지 내려온다. 이차함수 g(주황)는 그 중점과 β에서 x축과 만나고 β에서 f와 접한다.",
+    "solutionImageCaption": "f(x)=(x−α)(x−β)이고 꼭짓점 P의 x좌표는 α, β의 중점 m이다. g의 x절편이 m과 β이고 이차항의 계수가 2이므로 g(x)=2(x−m)(x−β)이다. 따라서 f(x)+g(x)=(x−β)(3x−2α−β)이고 β 이외의 근은 3x−2α−β=0에서 얻는다. 정답은 3분의 (2α+β)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1825,7 +1836,11 @@ window.questionBank = [
     "sourceToMetaStatus": "CONFIRMED",
     "metaEvidenceDebt": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 C1(파랑)과 C2(주황)가 두 점 A, B에서 만나고, 두 점 사이를 지나는 y축에 평행한 점선 x=t가 C1과 P, C2와 Q에서 만나 사각형 APBQ가 색칠된 그림",
+    "solutionImageCaption": "예: t=3으로 그린 그림이며 C1, C2는 각각 C₁, C₂이다. 두 포물선의 교점은 A(0,7), B(8,−9)이고 PQ=−2t²+16t이다. 사각형 APBQ는 PQ를 공통 밑변으로 하는 두 삼각형의 합이므로 넓이는 4PQ=−8(t−4)²+128이다. 정답은 128이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -2081,7 +2096,11 @@ window.questionBank = [
     "rpmL1": "방정식과 부등식",
     "rpmL2": "이차방정식과 이차함수",
     "rpmL3": "직선과 포물선",
-    "rpmL4": "교점 개수"
+    "rpmL4": "교점 개수",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선 y=ax²과 직선 y=−2x−6이 점 (−2,−2)(A)와 오른쪽 아래의 점 B에서 만나는 그림",
+    "solutionImageCaption": "점 A(−2,−2)가 y=ax² 위에 있으므로 a=−(2분의 1)이다. 교점의 x좌표는 x²−4x−12=0에서 −2, 6이므로 B의 x좌표 m=6이고 직선에 대입하면 n=−18이다. 정답은 54이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

@@ -124,9 +124,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "드모르간 법칙으로 교집합의 원소 수를 먼저 구한다.\n$n(U)=20$, $n(A)=8$, $n(B)=9$, $n(A^C\\cup B^C)=18$이다.\n$A^C\\cup B^C=(A\\cap B)^C$를 이용한 뒤 합집합의 원소 수 공식을 적용한다.\n$n((A\\cap B)^C)=18$이므로 $n(A\\cap B)=20-18=2$이다.\n따라서 $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)=8+9-2=15$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "전체집합 20과 두 집합의 겹친 영역을 나타낸 수치 Venn diagram",
-    "solutionImageCaption": "두 여집합의 합집합이 겹친 영역의 여집합이라는 관계를 네 영역 수로 확인",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U(20명) 안에 두 집합 A(8명)와 B(9명)의 원이 겹쳐 있고, 겹치는 가운데 영역에 x(음영), A만의 영역에 8−x, B만의 영역에 9−x를 쓴 벤다이어그램.",
+    "solutionImageCaption": "그림에서 음영은 A∩B이고 원소 수를 x로 두었다. Aᶜ∪Bᶜ=(A∩B)ᶜ이므로 n((A∩B)ᶜ)=20−x=18이다. 이로부터 n(A∩B)를 구한 뒤 n(A∪B)=n(A)+n(B)−n(A∩B)를 계산한다. 정답은 15이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -163,7 +163,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄. 첫째 줄에 x<−3 또는 x>−2, 둘째 줄에 −2≤x≤2, 셋째 줄에 두 범위의 공통부분 −2<x≤2를 나타내고, 셋째 줄 위에 −1, 0, 1, 2에 점을 찍은 그림.",
+    "solutionImageCaption": "x²+5x+6>0의 해는 x<−3 또는 x>−2이고, x²−4≤0의 해는 −2≤x≤2이다. 두 범위의 공통부분은 −2<x≤2이고, 그 안의 정수는 −1, 0, 1, 2이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -195,7 +199,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 꺾은선 f(x)=|2x−1|−|x−1|과 주황 점선 수평선 y=2가 x=−2, 2에서 만나는 그래프. 두 교점에서 x축으로 점선이 내려와 눈금 −2, 2를 가리키고, 꺾이는 두 점의 좌표와 점 Q(1,1)이 표시되어 있다.",
+    "solutionImageCaption": "절댓값 안의 식이 0이 되는 x=2분의 1과 x=1에서 구간을 나누면 그래프는 꺾이는 점 (2분의 1, −2분의 1)과 Q(1,1)을 가진 세 조각의 꺾은선이다. 수평선 y=2와 x=−2, 2에서 만나고, 그래프가 수평선 아래에 있는 구간이 해이므로 −2≤x≤2이다. 이 범위의 정수를 센다. 정답은 5개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -260,7 +268,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 k=4분의 17인 포물선 f(x)=x²−(4분의 17)x+1의 그래프. x축과 만나는 두 근 사이를 음영으로 칠하고, 오른쪽 근 4와 x=5를 x축에 표시했으며 x=5에서 곡선까지 점선이 올라간다. 꼭짓점 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: k=4분의 17일 때 f(x)=x²−kx+1은 두 근 사이에서 음수이고, 그 구간이 A이다. 그림에서는 큰 근이 4로 5보다 작아 A가 0<x<5 안에 들어온다. A⊂B이려면 큰 근이 5 이하여야 하므로 f(5)=26−5k≥0이고, 판별식 조건 k>2와 합쳐 정수 k를 센다. 정답은 3개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -486,11 +498,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "두 합성식에서 공통으로 나타나는 $(g\\circ h)(x)$를 하나의 입력값으로 본다.\n$(g\\circ h)(x)=2x-3$이고 $f((g\\circ h)(x))=4x+1$이다.\n$t=2x-3$으로 놓아 $f(t)$를 구한 뒤 역함수를 계산한다.\n$t=2x-3$이면 $x=\\dfrac{t+3}{2}$이다.\n따라서 $f(t)=4\\cdot\\dfrac{t+3}{2}+1=2t+7$이다.\n즉 $f(x)=2x+7$이다.\n$f^{-1}(6)$을 $u$라 하면 $f(u)=6$이므로 $2u+7=6$이다.\n따라서 $u=-\\dfrac12$이다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q15-solution-v2.svg",
 
-    "solutionImageAlt": "합성함수로 얻은 선형함수와 역함숫값을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 파란 직선 y=2x+7은 왼쪽 위에, 주황 직선 y=2분의 (x−7)은 오른쪽 아래에 있고, 점선 y=x가 원점을 지나는 좌표평면. 파란 직선과 주황 직선은 점선 y=x에 대하여 대칭이다.",
 
-    "solutionImageCaption": "f(t)=2t+7 및 f⁻¹(6)=−1/2를 확인한다.",
+    "solutionImageCaption": "t=2x−3으로 놓으면 x=2분의 (t+3)이므로 f(t)=4×(2분의 (t+3))+1=2t+7, 즉 f(x)=2x+7이다. 역함수의 그래프는 y=x에 대하여 대칭이다. f⁻¹(6)=u라 하면 f(u)=6이므로 2u+7=6을 푼다. 정답은 −2분의 1이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
@@ -528,11 +540,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "바깥 절댓값부터 풀어 안쪽 절댓값의 값을 두 가지로 나눈다.\n$f(f(x))=||x-2|-2|=1$이다.\n$|x-2|-2=1$ 또는 $|x-2|-2=-1$로 나누어 푼다.\n첫째 경우 $|x-2|=3$이므로 $x=-1,5$이다.\n둘째 경우 $|x-2|=1$이므로 $x=1,3$이다.\n서로 다른 네 실근의 곱은 $(-1)\\times1\\times3\\times5=-15$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q16-solution-v2.svg",
 
-    "solutionImageAlt": "절댓값 합성함수의 네 해를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 파란 꺾은선 g(x)=||x−2|−2|와 주황 점선 수평선 y=1이 네 점에서 만나고, 각 교점에서 x축의 −1, 1, 3, 5로 점선이 내려오는 그래프. 꺾이는 점 (2,2), (4,0)과 원점 O(0,0)이 표시되어 있다.",
 
-    "solutionImageCaption": "F(x)=||x−2|−2|=1의 네 해 −1, 1, 3, 5를 확인한다.",
+    "solutionImageCaption": "g(x)=f(f(x))=||x−2|−2|라 하면 g(x)=1은 |x−2|−2=1 또는 −1이므로 |x−2|=3 또는 |x−2|=1이다. 그래프에서 수평선 y=1과 만나는 네 점의 x좌표는 −1, 1, 3, 5이고, 이 서로 다른 네 실근을 모두 곱한다. 정답은 −15이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
@@ -570,11 +582,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "양수 구간에서는 제곱함수, 음수 구간에서는 항등함수라는 점을 이용한다.\n$x\\ge0$이면 $f(x)=x^2$, $x<0$이면 $f(x)=x$이다.\n각 명제를 직접 계산하거나 그래프의 성질로 판단한다.\n\nㄱ에서 $f(16)=256$, $f(f(4))=f(16)=256$, $f(f(f(2)))=f(f(4))=f(16)=256$이므로 참이다. ㄴ에서 음수 구간에서는 $f(x)=x$이고 역함수도 같은 대응을 하므로 $f^{-1}(-7)=-7=f(-7)$이다. ㄷ에서 $(f\\circ f)(x)=9$의 해는 양수이고, 양수에서 $(f\\circ f)(x)=x^4$이므로 $x^4=9$에서 $x=\\sqrt3$이다. ㄹ에서 모든 $x<0$에 대하여 $f(x)=x$이므로 원함수와 역함수의 그래프는 음수 구간에서 서로 겹친다.\n따라서 교점은 3개 이상이다.\n따라서 ㄱ, ㄴ, ㄷ, ㄹ이 모두 옳고 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q17-solution-v2.svg",
 
-    "solutionImageAlt": "조각함수와 역함수의 겹침·대칭을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=x², 주황 곡선 y=√x, 두 곡선이 만나는 점 P, 원점에서 오른쪽 위로 뻗는 점선 y=x, 그리고 x<0에서 점선과 이어지는 초록 직선 y=x를 나타낸 그림.",
 
-    "solutionImageCaption": "x<0에서 y=x가 겹치고, x≥0에서 x²와 √x가 y=x에 대해 대칭임을 확인한다.",
+    "solutionImageCaption": "f(x)=x²(x≥0), f(x)=x(x<0)이므로 역함수는 x≥0에서 √x, x<0에서 x이다. x<0에서는 f와 역함수가 모두 y=x라 그래프가 겹치고(초록 직선), x>0에서는 y=x²과 y=√x가 점선 y=x에 대하여 대칭이며 점 P에서 만난다. 이를 이용해 ㄱ~ㄹ을 판별한다. 정답은 ㄱ, ㄴ, ㄷ, ㄹ이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
@@ -636,9 +648,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$5$명",
     "solution": "적어도 한 과목을 선택한 학생 수와 두 과목 모두 선택한 학생 수를 차례로 구한다.\n전체 20명, 수학 8명, 영어 6명, 어느 과목도 선택하지 않은 학생 9명이다.\n합집합의 원소 수를 구한 뒤 포함배제 원리를 적용한다.\n적어도 한 과목을 선택한 학생은 $20-9=11$명이다.\n두 과목 모두 선택한 학생 수를 $x$명이라 하면 $8+6-x=11$이므로 $x=3$이다.\n수학만 선택한 학생은 수학 선택자 8명에서 두 과목 모두 선택한 3명을 제외한 $8-3=5$명이다.\n따라서 수학만 선택한 학생은 $5$명이다.",
-    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "수학·영어 방과후수업 신청자를 네 영역으로 나눈 학생 수 Venn diagram",
-    "solutionImageCaption": "바깥 학생에서 합집합을 구하고 겹친 학생을 중복 보정하는 순서",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체 20명의 직사각형 안에 수학 8명, 영어 6명의 두 원이 겹쳐 있다. 두 과목 모두 선택한 가운데에 x, 수학만 선택한 영역에 8−x, 영어만 선택한 영역에 6−x, 어느 과목도 선택하지 않은 영역에 9가 쓰인 벤다이어그램.",
+    "solutionImageCaption": "적어도 한 과목을 선택한 학생은 20−9=11명이다. 두 과목 모두 선택한 학생을 x명이라 하면 8+6−x=11이므로 x=3이다. 수학만 선택한 학생은 수학 선택자에서 두 과목 모두 선택한 학생을 뺀 수이다. 정답은 5명이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_COUNT",
     "subUnit": "집합의 원소의 개수",
@@ -670,7 +682,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)=x²과 주황 계단 g(x)=[x]+2를 한 좌표평면에 나타낸 그림. 계단은 구간마다 높이가 다른 가로선이고 각 구간의 왼쪽 끝은 채운 점, 오른쪽 끝은 빈 점이다. x축에 −1, 1, 2, y축에 1, 2, 3, 4 눈금이 있다.",
+    "solutionImageCaption": "x²−[x]−2≤0은 x²≤[x]+2이므로 포물선 f(x)=x²이 계단 g(x)=[x]+2보다 위에 있지 않은 x를 찾는 문제이다. [x]가 일정한 구간 −1≤x<0, 0≤x<1, 1≤x<2에서 g의 값은 각각 1, 2, 3이고 x=2에서는 4이다. 그림에서 f가 g 아래에 있거나 g에 닿는 부분이 해이다. 정답은 −1≤x≤√3 또는 x=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -723,6 +739,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 a=1, b=−5일 때의 그래프. 파란 곡선이 왼쪽 위에서 점 (−1,2)를 지나 오른쪽 아래로 이어지고, 주황 점선 수평선 y=2가 그 점에서 곡선과 만난다. 곡선 곁에 f(x) 이름표가 있고 x축에 −1 눈금이 있다. 곡선의 일부 구간만 그렸다.",
+    "solutionImageCaption": "예: a=1, b=−5이면 f(x)는 x<−1에서 x²+x+2, x≥−1에서 −x²−5x−2이다. 두 조각이 (−1,2)에서 이어지고, 왼쪽 조각은 y>2, 오른쪽 조각은 y≤2의 값을 가져 치역이 겹치지도 비지도 않는다. 일대일대응이려면 b≤−2, a≤2이고 b=a−6이므로 a+b=2a−6을 a≤2에서 최대로 만든다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   }
 ];
