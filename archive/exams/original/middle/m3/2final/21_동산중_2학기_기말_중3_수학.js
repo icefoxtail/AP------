@@ -159,7 +159,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 세 점 A, B, C와 변 AB, AC의 중점 M, N, 원의 중심 O를 보여 주는 그림. OM, ON은 각각 AB, AC에 수직이다.",
+    "solutionImageCaption": "OM=ON이면 중심에서 같은 거리의 현이므로 AB=AC=9이다. OM이 AB에, ON이 AC에 수직이므로 M, N은 각 현의 중점이고 AM=AN=4.5이다. 삼각형 ABC에서 중점연결정리로 MN=BC의 절반=3이다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -246,7 +250,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_LENGTH",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB와 반지름 OC가 점 H에서 수직으로 만나고, H가 OC의 중점임을 같은 눈금으로 나타낸 그림.",
+    "solutionImageCaption": "AB는 OC의 수직이등분선이므로 OH=HC=r의 절반이고 AH=6이다. 직각삼각형 OHA에서 r²=6²+(r의 절반)²이다. 이를 풀면 r²=48이다. 정답은 4√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -333,7 +341,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 평행한 현 CD, 현 AD를 그리고 ∠ADC와 ∠DAB를 각각 20°로 표시한 그림.",
+    "solutionImageCaption": "AB와 CD가 평행하므로 엇각 ∠DAB=∠ADC=20°이다. 20°가 보는 호 AC와 호 DB는 각각 40°이고, 위쪽 반원이 180°이므로 호 CD는 100°이다. 호 DB 40°의 길이가 3π이므로 원둘레는 27π이고, 호 CD의 길이는 27π×100/360이다. 정답은 15π/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -420,7 +432,11 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 다섯 점 A, B, C, D, E와 중심각 ∠BOC=46°, 원주각 ∠CED=21°를 표시한 그림.",
+    "solutionImageCaption": "중심각 46°이므로 호 BC는 46°이고, 원주각 21°가 보는 호 CD는 42°이다. 호 BD=46°+42°=88°이다. ∠BAD는 호 BD를 보는 원주각이므로 호의 절반이다. 정답은 44°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -507,7 +523,11 @@ window.questionBank = [
       "templateKey": "TM_TANGENT_LENGTH",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에 원 O가 내접하고 접점 P, Q, R이 각 변 위에 있으며 접선 DE가 점 T에서 원에 접하는 그림. 삼각형 DBE의 세 변은 주황색이다.",
+    "solutionImageCaption": "꼭짓점 B에서 원에 그은 두 접선의 길이는 같아 BP=BR=(10+12−6)/2=8이다. D, E에서 원에 그은 접선의 길이도 각각 같으므로 DP=DT, ER=ET이다. 삼각형 DBE의 둘레는 BD+BE+DE=(BP−DP)+(BR−ER)+(DT+TE)=BP+BR이다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -594,7 +614,11 @@ window.questionBank = [
       "templateKey": "TM_TANGENT_LENGTH",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD 안의 원 O가 세 변과 선분 DE에 접하는 그림. 접점 S, Q, R과 직각 C를 표시했다.",
+    "solutionImageCaption": "원의 반지름은 높이 4의 절반인 2이다. 한 점에서 원에 그은 두 접선의 길이는 같으므로 DR=DS=4이고, ER=EQ=4−x이다. DE=8−x이고 직각삼각형 DCE에서 (8−x)²=4²+x²이다. 이를 풀면 x=3이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -681,7 +705,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 대각선이 점 P에서 수직으로 만나고 원 O에 외접하는 사각형 ABCD를 나타낸 그림.",
+    "solutionImageCaption": "대각선이 수직이므로 피타고라스 정리로 AB²+CD²=BC²+DA²이고 AB²−DA²=6²−4²=20이다. 원에 외접하는 사각형이므로 AB+CD=BC+DA에서 AB−DA=2이다. 따라서 (AB−DA)(AB+DA)=20에서 AB+DA=10이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -768,7 +796,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_LENGTH",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심이 같은 두 원에서 큰 원의 현 AB가 작은 원에 점 H에서 접하고, 두 원 사이의 부분에 빗금을 친 그림. 반지름 값은 예시이다.",
+    "solutionImageCaption": "작은 원의 반지름을 r, 큰 원의 반지름을 R이라 하자. 현 AB는 작은 원의 접선이므로 중심에서 AB까지의 거리가 r이고 AH=16/2=8이다. 직각삼각형 OHA에서 R²=r²+8²이다. 빗금친 넓이는 π(R²−r²)이다. 정답은 64π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -855,7 +887,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_DIVISION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 두 현 AD, BC가 원 안의 점 P에서 만나 ∠CPD=80°를 이루고, 현 BD를 그은 그림.",
+    "solutionImageCaption": "두 현이 원 안에서 만나므로 ∠CPD는 호 CD와 호 AB의 합의 절반이다. 호 CD=3×호 AB이므로 (3a+a)/2=80°에서 호 AB=40°, 호 CD=120°이다. ∠PBD는 호 CD를 보는 원주각이다. 정답은 60°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -942,7 +978,11 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 현 AD, AC, DC를 그리고 ∠DAO=35°, ∠AOD=110°를 표시한 그림.",
+    "solutionImageCaption": "OA=OD이므로 삼각형 AOD는 이등변삼각형이고 ∠ADO=35°이다. 따라서 ∠AOD=180°−35°−35°=110°이다. ∠ACD는 호 AD를 보는 원주각이므로 중심각의 절반이다. 정답은 55°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1029,7 +1069,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 점 P에서 만나는 두 할선 PA, PB 및 중심각 ∠COD=50°를 표시한 그림.",
+    "solutionImageCaption": "AB가 지름이므로 호 AB는 180°이고, ∠COD=50°이므로 호 CD는 50°이다. 원 밖의 점 P에서 만나는 두 할선이 이루는 각은 큰 호와 작은 호의 차의 절반이다. ∠CPD=(180°−50°)/2이다. 정답은 65°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1116,7 +1160,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A, B, C, E를 지나는 원과 그 바깥의 점 D를 나타내고, 크기가 같은 ∠A, ∠E는 파란색, ∠D는 주황색으로 표시한 그림. 도형의 배치는 근사 예시이다.",
+    "solutionImageCaption": "∠BAC=∠BEC=43°이므로 A, B, C, E는 한 원 위에 있다. ∠BDC=40°는 ∠BAC보다 작아 D는 원 ABC의 바깥에 있다. 세 점 A, B, C를 지나는 원은 하나뿐이므로 두 개 이상 그릴 수 있다는 보기가 틀렸다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1203,7 +1251,11 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 꼭짓점이 A, B, C, D, E인 오각형에서 ∠ABC=100°, 중심각 ∠COD=50°를 표시한 그림.",
+    "solutionImageCaption": "∠ABC=100°가 보는 호 AEDC는 200°이고, 호 CD=50°이므로 점 E를 지나는 호 AD는 150°이다. 점 E를 포함하지 않는 호 AD는 360°−150°=210°이다. ∠AED는 이 호를 보는 원주각이므로 그 절반이다. 정답은 105°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1280,7 +1332,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "M3-06 semantic unit is identified from the source and solution, but no exact primary RPM item for this task is established; no code or L3/L4 label is invented."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 세 점 A, B, C와 각 A의 이등분선이 변 BC와 만나는 점 D, 원과 다시 만나는 점 E를 나타낸 그림.",
+    "solutionImageCaption": "각의 이등분선 정리로 BD:DC=9:5이므로 BD=9k, DC=5k라 둘 수 있다. 교차하는 현의 정리로 AD·DE=BD·DC=45k²이므로 4AD=45k²이다. 한편 AD²=45−45k²이므로 AD²+4AD=45이다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1960,7 +2016,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 깨진 접시의 둥근 가장자리 일부인 호 위의 세 점 A, B, C와 현 AB, BC의 중점 M, N을 지나는 수직이등분선이 점 O에서 만나는 그림.",
+    "solutionImageCaption": "남은 가장자리 위에 세 점 A, B, C를 잡아 두 현 AB, BC를 긋는다. 원의 중심에서 현에 내린 수선은 현을 이등분하므로 중심은 각 현의 수직이등분선 위에 있다. 두 수직이등분선의 교점 O가 원의 중심이다. 정답은 두 현의 수직이등분선의 교점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -2041,7 +2101,11 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 원의 두 현의 연장선이 점 P에서 만나고, 현 AD와 BC가 점 Q에서 만나는 그림. ∠BPD=30°, ∠AQC=60°를 표시했다.",
+    "solutionImageCaption": "점 P에서 30°=(호 AC−호 BD)/2이므로 호 AC−호 BD=60°이다. 점 Q에서 60°=(호 AC+호 BD)/2이므로 두 호의 합은 120°이다. 연립하면 호 AC=90°, 호 BD=30°이다. ∠x, ∠y는 각각 호 BD, 호 AC를 보는 원주각이다. 정답은 x=15°, y=45°, 호 BD:호 AC=1:3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

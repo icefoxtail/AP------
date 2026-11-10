@@ -179,10 +179,10 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 포물선 y=f(x)=x²−2x−1 위의 두 점 (0,−1), (3,2)를 잇는 할선(기울기 1, 파란색)과, 이와 평행하게 곡선에 접하는 접선(기울기 1, 주황색)의 접점 x=c를 보여 주는 그림.",
-    "solutionImageCaption": "점 (0,−1)과 (3,2)를 잇는 할선의 기울기는 1이고, 이와 평행한 접선의 접점 x=c에서 f′(c)=1이다. 따라서 c=3/2이다. 정답 ②",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 기울기가 같은 두 직선이 보인다. 한 직선은 포물선을 두 점에서 지나고, 다른 직선은 한 점에서 접한다.",
+    "solutionImageCaption": "두 끝점을 잇는 할선과 기울기가 같은 접선을 한 그림에 나타낸다. 접점 x=c에서 접선의 기울기는 할선의 기울기 1과 같다. 정답은 2분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -206,15 +206,15 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q7-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: f(x)=-x³+3x+1의 그래프. x=-1에서 극소인 점 (-1,-1), x=1에서 극대인 점 (1,3)이 표시되어 있다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q7-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: f(x)=−x³+3x+1의 그래프에서 x=−1의 극소점 (−1,−1)과 x=1의 극대점 M(1,3)이 표시되어 있다.",
+    "solutionImageSize": "full",
     "solution": "극값의 위치는 도함수의 부호 변화로 찾는다.\n$f(x)=-x^3+3x+1$\n$f'(x)=-3x^2+3=-3(x+1)(x-1)$\n$x<-1$에서 $f'(x)<0$이므로 감소한다.\n$-1<x<1$에서 $f'(x)>0$이므로 증가한다.\n$x>1$에서 $f'(x)<0$이므로 다시 감소한다.\n따라서 $x=-1$에서 극소, $x=1$에서 극대이다.\n$m=f(-1)=1-3+1=-1$\n$M=f(1)=-1+3+1=3$\n$M+m=3+(-1)=2$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImageCaption": "f′(x)=−3(x+1)(x−1)이므로 x=−1에서 극소(극솟값 m=−1), x=1에서 극대(극댓값 M=3)이다. 따라서 M+m=2이다. 정답 ⑤"
+    "solutionImageCaption": "도함수의 부호 변화로 극소값 -1과 극대값 3을 확인한다. 두 값의 합을 구한다. 정답은 2이다."
   },
   {
     "id": 8,
@@ -338,15 +338,15 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q11-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: x>0에서 h(x)=x³-x²-x+5-a의 그래프(예: a=4). x=1까지 감소하다 증가하며 x=1에서 최솟값 4-a를 갖고, a=4이면 이 점이 x축에 접한다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q11-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 예: a=3. x>0의 그래프 일부에서 h(x)=x³−x²−x+2는 x=1에서 최솟값 1을 갖는다.",
+    "solutionImageSize": "full",
     "solution": "모든 $x>0$에서 $f(x)\\ge g(x)$이므로 $h(x)=f(x)-g(x)$가 항상 $0$ 이상이어야 한다.\n$h(x)=x^3-x^2-x+5-a$\n$h'(x)=3x^2-2x-1=(3x+1)(x-1)$\n$x>0$에서 $3x+1>0$이므로\n$0<x<1$에서는 $h'(x)<0$: 감소\n$x>1$에서는 $h'(x)>0$: 증가\n따라서 $x=1$에서 최솟값을 갖는다.\n$h(1)=1-1-1+5-a=4-a$\n모든 $x>0$에서 $h(x)\\ge0$이 되려면\n$4-a\\ge0$\n$\\Rightarrow a\\le4$\n실제로 $a=4$이면\n$h(x)=x^3-x^2-x+1=(x-1)^2(x+1)\\ge0\\quad(x>0)$\n이므로 최댓값 $4$는 가능하다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImageCaption": "예: a=4. x>0에서 h(x)는 x=1에서 최솟값 4-a를 가지므로 4-a≥0, 즉 a≤4이다. 따라서 a의 최댓값은 4이다. 정답 ②"
+    "solutionImageCaption": "예: a=3일 때 h(1)=1이다. 일반적으로 h(1)=4−a이므로 a의 최댓값은 4이다. 정답 ②"
   },
   {
     "id": 12,
@@ -465,15 +465,15 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q15-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 점 (1,−3)을 지나는 기울기 4의 직선 y=4x−7과, f′(x)가 4 이상인 예시 곡선 y=f(x)를 그린 그림. 구간 [1,4]에서 곡선이 직선보다 위에 있는 영역이 파란색으로 칠해져 있다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q15-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 예: 함수 y=x²+2x−6의 그래프와 점 (1,−3)을 지나는 기울기 4인 직선 y=4x−7이 있고, 구간 [1,4]에서 두 그래프 사이가 색칠되어 있다.",
+    "solutionImageSize": "full",
     "solution": "$f(x)$는 $[1,4]$에서 연속이고 $(1,4)$에서 미분가능하므로 평균값 정리를 적용할 수 있다.\n어떤 $c\\in(1,4)$에서\n$\\dfrac{f(4)-f(1)}{4-1}=f'(c)$\n가 성립한다.\n$f'(c)\\ge4$, $f(1)=-3$이므로\n$\\dfrac{f(4)+3}{3}\\ge4$\n$f(4)+3\\ge12$\n$\\Rightarrow f(4)\\ge9$\n\n이 하한이 실제로 가능한지 확인한다.\n$f(x)=4x-7$이면 $f(1)=-3$이고 모든 $x$에서 $f'(x)=4$이다.\n또 $f(4)=16-7=9$이므로 주어진 조건을 만족하면서 하한을 갖는다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImageCaption": "예: f(x)=x²+2x−6 (f′(x)=2x+2는 4 이상, f(1)=−3). f′(x)가 4 이상이면 [1,4]에서 f는 점 (1,−3)을 지나는 기울기 4의 직선 y=4x−7보다 위에 있으므로 f(4)는 4·4−7=9 이상이고 최솟값은 9이다. 정답 ⑤"
+    "solutionImageCaption": "예: f′(x)≥4이면 구간 [1,4]에서 f의 그래프는 점 (1,−3)을 지나는 기울기 4인 직선 y=4x−7 위쪽에 있다. 따라서 f(4)의 최솟값은 9이다. 정답 ⑤"
   },
   {
     "id": 16,
@@ -499,15 +499,15 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q16-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 사차함수 y=f(x)에서 a=3일 때(파랑 곡선)와 a=-2일 때(주황 곡선)를 한 그림에 그리고 점선 y=9를 그었다. 파랑 곡선은 (2,9)의 극소점에서, 주황 곡선은 (1,9)의 극대점에서 점선에 접하고 각각 바깥쪽에서 한 번씩 더 만난다.",
-    "solutionImageSize": "large",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q16-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 주황 곡선과 파랑 곡선이 수평선 y=9에 각각 한 점에서 접하고, 접점이 아닌 바깥쪽에서 한 번씩 더 만난다. 접점은 (1,9)와 D(2,9)이고, f(x)는 주황 곡선의 극소점 B(−1,−23) 곁에 표시된다.",
+    "solutionImageSize": "full",
     "solution": "증감표에서 도함수의 부호는 차례로 $-,+,-,+$이다.\n따라서\n$x=-1$에서 극소: $f(-1)=a-21$\n$x=1$에서 극대: $f(1)=a+11$\n$x=2$에서 극소: $f(2)=a+6$\n이다.\n이처럼 양 끝에서 함수값이 커지는 사차함수의 그래프와 수평선 $y=9$가 서로 다른 $3$개의 점에서 만나려면 극값 중 하나가 $9$여야 한다.\n\n① $x=1$의 극댓값이 $9$인 경우\n$a+11=9\\ \\Rightarrow\\ a=-2$\n이때 $f(-1)=-23<9$, $f(2)=4<9$이다.\n$x=1$에서 접하고 양쪽 바깥에서 한 번씩 만나므로 서로 다른 실근은 $3$개이다.\n\n② $x=2$의 극솟값이 $9$인 경우\n$a+6=9\\ \\Rightarrow\\ a=3$\n이때 $f(-1)=-18<9$, $f(1)=14>9$이다.\n왼쪽의 두 단조 구간에서 한 번씩 만나고 $x=2$에서 접하므로 서로 다른 실근은 $3$개이다.\n\n③ $x=-1$의 극솟값이 $9$인 경우\n$a-21=9\\ \\Rightarrow\\ a=30$\n이때 다른 극솟값 $f(2)=36>9$이다.\n$x=-1$에서 접할 뿐 다른 교점은 없으므로 서로 다른 실근은 $1$개이다.\n\n따라서 가능한 값은 $a=-2,\\ 3$이고 그 합은\n$-2+3=1$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImageCaption": "두 경우의 y=f(x)를 한 그림에 그렸다. a=3(파랑, 그림에서 g(x))은 x=2의 극솟값 a+6=9, a=-2(주황, 그림에서 f(x))는 x=1의 극댓값 a+11=9로 y=9에 접하고 서로 다른 세 점에서 만난다. 따라서 a=-2, 3이고 합은 1이므로 정답은 ①이다."
+    "solutionImageCaption": "주황 곡선 f는 a=−2일 때, 파랑 곡선 g는 a=3일 때의 y=f(x)이다. 둘 다 y=9에 접하며 서로 다른 세 점에서 만나므로 가능한 a의 합은 1이다. 정답 ①"
   },
   {
     "id": 17,
@@ -743,15 +743,15 @@ window.questionBank = [
     "content": "서술형3. 함수 $f(x)=\\displaystyle\\int_0^x(t^2-2t-3)dt$는 $x=a$에서 극솟값 $b$를 갖는다. 상수 $a$, $b$에 대하여 $a+b$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "-6",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q24-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: f(x)=x³/3-x²-3x의 그래프에서 x=-1의 극대점 (-1, 5/3)과 x=3의 극소점 (3, -9)을 점선과 지시선 라벨로 나타낸 그림. f(x) 이름은 오른쪽 곡선에 붙었다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q24-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³/3−x²−3x의 그래프에 극대점 (−1, 5/3)과 극소점 (3, −9)의 좌표가 표시된다.",
+    "solutionImageSize": "full",
     "solution": "적분으로 정의된 함수는 미분하면 피적분함수에 $t=x$를 대입한 식이 된다.\n$f(x)=\\displaystyle\\int_0^x(t^2-2t-3)\\,dt$\n$f'(x)=x^2-2x-3=(x+1)(x-3)$\n이다.\n\n도함수의 부호를 조사하면\n$x<-1$에서 $f'(x)>0$: 증가\n$-1<x<3$에서 $f'(x)<0$: 감소\n$x>3$에서 $f'(x)>0$: 증가\n이므로 $x=3$에서 극솟값을 갖는다.\n따라서 $a=3$이다.\n\n극솟값 $b$를 구하면\n$b=f(3)=\\displaystyle\\int_0^3(t^2-2t-3)\\,dt$\n$=\\left[\\dfrac{t^3}{3}-t^2-3t\\right]_0^3$\n$=\\left(\\dfrac{27}{3}-9-9\\right)-0$\n$=9-18=-9$\n$a+b=3+(-9)=-6$\n따라서 구하는 값은 $-6$이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImageCaption": "f′(x)=(x+1)(x-3)의 부호가 x=-1에서 +에서 -로, x=3에서 -에서 +로 바뀌므로 x=-1에서 극대, x=3에서 극소이다. 따라서 a=3, b=f(3)=-9이고 a+b=-6이다."
+    "solutionImageCaption": "f'의 부호 변화에서 x=3에서 극소가 되는 것을 알 수 있다. 그래프에 극대와 극소 좌표를 함께 표시했다. 정답은 -6이다."
   },
   {
     "id": 25,
