@@ -63,6 +63,28 @@ async function createLocalStudentWorker(root) {
   }
   await db.prepare('INSERT INTO exam_sessions (id,student_id,exam_title,score,exam_date,question_count,class_id,archive_file,assignment_id) VALUES (?,?,?,?,?,?,?,?,?)')
     .bind('qa-navigation-session', identity.id, '완료한 합성 검수 시험', 85, '2026-01-01', 20, 'qa-navigation-class', 'qa-navigation-synthetic.js', 'qa-navigation-complete').run();
+  // Small, explicitly synthetic issued snapshots exercise the real original
+  // and mixed readers. No production questions, answers or metadata are used.
+  const questions = [1, 2].map(id => ({
+    id, questionUid: 'qa-navigation-question-' + id,
+    type: 'subjective', content: '합성 검수 문제 ' + id + ': ' + id + ' + 1의 값을 구하세요.',
+    answer: String(id + 1), solution: '합성 검수 해설 ' + id + ': ' + id + '에 1을 더하면 ' + (id + 1) + '입니다.'
+  }));
+  for (const [id, archiveFile] of [
+    ['qa-navigation-second', 'MIXED:qa-navigation-snapshot'],
+    ['qa-navigation-complete', 'original/qa-navigation-snapshot.js']
+  ]) {
+    const snapshot = {
+      questions,
+      meta: { sourceKind: 'archive2-original', title: '합성 학생포털 이동 검수', sourceArchiveFile: archiveFile,
+        qpp: 2, includeQr: false, questionUids: questions.map(question => question.questionUid),
+        printHeaderOptions: { title: '합성 학생포털 이동 검수', showNameLine: false, showScoreLine: false } }
+    };
+    await db.prepare('UPDATE class_exam_assignments SET question_count=?,archive_file=?,mixed_payload_json=? WHERE id=?')
+      .bind(questions.length, archiveFile, JSON.stringify(snapshot), id).run();
+  }
+  await db.prepare('UPDATE exam_sessions SET exam_date=?,question_count=?,archive_file=?,score=? WHERE id=?')
+    .bind(today, questions.length, 'original/qa-navigation-snapshot.js', 50, 'qa-navigation-session').run();
   const request = (endpoint, options) => mf.dispatchFetch('http://local-worker.test/api/' + endpoint, options);
   const teacherResponse = await request('auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ login_id: identity.teacherLogin, password: identity.teacherPassword }) });
   const teacherSession = await teacherResponse.json();

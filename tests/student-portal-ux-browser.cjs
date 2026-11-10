@@ -390,21 +390,10 @@ async function behaviorSuite(browser, base, check) {
     assert.equal(await periods.nth(1).getAttribute('aria-pressed'),'true');
     for(const [width,height] of viewports){ await page.setViewportSize({width,height});await capture(page,'review-records-'+width); }
     const sourceCard=page.locator('[data-assignment-id="qa-complete"]');
-    if(await sourceCard.count()){
-      await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
-      assert.ok(await sourceCard.evaluate(el=>el.style.boxShadow),'a visible source exam is highlighted');
-    }else{
-      // Dedicated learning history uses the existing lineage fallback to
-      // open the authorized source exam when its card is not mounted.
-      const popupPromise=page.waitForEvent('popup');
-      await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
-      const popup=await popupPromise;
-      await popup.waitForURL(url=>url.pathname.endsWith('/archive/engine.html'));
-      const url=new URL(popup.url());
-      assert.equal(url.searchParams.get('mode'),'exam');
-      assert.equal(url.searchParams.get('data'),'qa-only.js');
-      await popup.close();
-    }
+    await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
+    await sourceCard.waitFor();
+    assert.ok(await sourceCard.evaluate(el=>el.style.boxShadow),'the exact source assignment is highlighted in the full exam list');
+    assert.equal(await page.locator('#student-nav [aria-current="page"]').getAttribute('data-student-destination'),'exams');
   }));
   await check('material wrong entry validates ranges and remains a separate submission', () => withStudent({name:'material'}, async (page,state) => {
     await openRetainedFeature(page,'renderMaterialList');
