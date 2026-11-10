@@ -25,7 +25,7 @@ for(const ex of report){
     else{
       await page.waitForTimeout(800);
       const shown=await page.evaluate(()=>[...document.querySelectorAll('#print-area img')].map(i=>({src:i.getAttribute('src')||'',w:i.naturalWidth,done:i.complete})));
-      for(const o of ords){const hit=shown.find(i=>i.src.includes('/q'+o+'-solution')||i.src.includes('q'+o+'-solution'));if(!hit||!hit.done||hit.w<=0)row.missing.push(o);}
+      for(const o of ords){const stem=typeof o==='string'?o:'q'+o;const hit=shown.find(i=>i.src.includes('/'+stem+'-solution')||i.src.includes(stem+'-solution'));if(!hit||!hit.done||hit.w<=0)row.missing.push(o);}
       if(row.missing.length)row.status='FIGURE_NOT_SHOWN';
     }
   }catch(e){row.status='ERROR:'+String(e.message).slice(0,60);}

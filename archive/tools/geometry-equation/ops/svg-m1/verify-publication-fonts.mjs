@@ -99,7 +99,7 @@ async function measure(svgBytes,display,treePath,depth=0){
 }
 try{
   for(const entry of batch){
-    if(!entry||typeof entry.src!=='string'||!Array.isArray(entry.ords)||!entry.ords.length||new Set(entry.ords).size!==entry.ords.length||entry.ords.some(o=>!Number.isInteger(o)||o<1))throw Error('invalid batch entry');
+    if(!entry||typeof entry.src!=='string'||!Array.isArray(entry.ords)||!entry.ords.length||new Set(entry.ords).size!==entry.ords.length||entry.ords.some(o=>!(Number.isInteger(o)&&o>=1||typeof o==='string'&&/^[A-Za-z][A-Za-z0-9_-]{0,31}$/.test(o))))throw Error('invalid batch entry');
     const file=path.resolve(ROOT,entry.src),original=path.join(archive,'exams/original');if(!file.startsWith(original+path.sep))throw Error('source outside original exams');
     const sourceBytes=fs.readFileSync(file),ctx={window:{}};vm.runInNewContext(sourceBytes.toString('utf8'),ctx);const bank=ctx.window.questionBank||ctx.window.examData?.questions;if(!Array.isArray(bank))throw Error('missing bank');
     const page=await browser.newPage({viewport:{width:1440,height:1000}});const responses=new Map();

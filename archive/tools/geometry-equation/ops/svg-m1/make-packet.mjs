@@ -27,7 +27,7 @@ function imagePath(ref){
 }
 const ids=new Set();
 const items=bank.map((q,i)=>{
-  if(!q||!Number.isInteger(q.id)||q.id!==i+1||ids.has(q.id)) throw Error(`invalid question id/ordinal at ${i+1}`);
+  if(!q||!(Number.isInteger(q.id)&&q.id===i+1||typeof q.id==='string'&&/^[A-Za-z][A-Za-z0-9_-]{0,31}$/.test(q.id))||ids.has(q.id)) throw Error(`invalid question id/ordinal at ${i+1}`);
   ids.add(q.id);
   const content=q.content||q.question;
   if(typeof content!=='string'||!content.trim()) throw Error(`missing content for q${q.id}`);
