@@ -56,6 +56,7 @@
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="native_print.js?v=20260915.2"></script>
     <script src="archive-asset-base.js?v=20261030-s21-1"></script>
+    <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20260911.5"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -306,6 +307,8 @@
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+        /* <p> in question/solution source is only a block line break: no default margins, no other styling. */
+        .q-content p, .sol-exp p, [data-semantic-content] p { margin: 0; }
         .sol-exp > svg { max-width: calc(100% - 20px); height: auto; }
         .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .sol-chunk { display: inline; }
@@ -428,6 +431,7 @@
         }
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
+    <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261011.2">
     <script src="render-state-normalizer.js?v=20261009.1"></script>
     <script src="screen-runtime.js?v=20260922.2"></script>
@@ -436,7 +440,7 @@
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
     <script src="exam-render-executor.js?v=20261029-sections-1"></script>
-    <script src="solution-render-executor.js?v=20261106-reminder-fit-1"></script>
+    <script src="solution-render-executor.js?v=20261107-reminder-inline-width-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
     <script src="render-feedback.js?v=20261106-solution-loading-1"></script>
@@ -1415,7 +1419,8 @@ async function recordMixedLayoutPromotionGate(area) {
 
 function prepareMixedCanonicalContent(question) {
     const raw = question.sourcePayload || {};
-    const rawContent = stripInlineImagesFromContent(raw.content || raw.question || question.content || '', !!question.image);
+    const rawContentSrc = stripInlineImagesFromContent(raw.content || raw.question || question.content || '', !!question.image);
+    const rawContent = globalThis.ApTableEngine ? globalThis.ApTableEngine.renderApTables(rawContentSrc) : rawContentSrc;
     const renderQuestion = AppState.mode === 'exam' ? { ...raw, __apExamSubjectiveSpacing: true } : raw;
     return sanitizeProtectedSegments(
         normalizeQuestionNotes(
@@ -1450,6 +1455,8 @@ let pageCount = 0;
 function wrapLatexPreserveBlocks(text) {
     if (text == null) return '';
     let s = String(text);
+    // AP Table Engine: pipe tables and legacy HTML tables become one canonical table before any text rewriting.
+    if (typeof globalThis !== 'undefined' && globalThis.ApTableEngine) s = globalThis.ApTableEngine.renderApTables(s);
     s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
     s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
     // A source line break within inline TeX is whitespace, not a prose BR.
@@ -1464,7 +1471,7 @@ function wrapLatexPreserveBlocks(text) {
     s = s.replace(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g, mathBlock =>
         mathBlock.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     );
-    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
+    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|\n*<\/?p(?![a-zA-Z])[^>]*>\n*|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
     });
     s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {

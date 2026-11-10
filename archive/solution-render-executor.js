@@ -11,7 +11,9 @@
     if (root?.document?.head && !root.document.getElementById('ap-solution-reminder-image-fit')) {
         const style = root.document.createElement('style');
         style.id = 'ap-solution-reminder-image-fit';
-        style.textContent = '.q-box.sol-box [data-semantic-content="1"] img { max-width: 100%; height: auto; }';
+        // Source exam figures may carry inline max-width:480px, which outranks an ordinary stylesheet rule.
+        // Only solution reminder images must fit the narrow column; keep the source and solution SVGs unchanged.
+        style.textContent = '.q-box.sol-box [data-semantic-content="1"] img { max-width: 100% !important; height: auto; }';
         root.document.head.appendChild(style);
     }
 
