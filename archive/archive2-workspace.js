@@ -596,7 +596,9 @@
       "교사 로그인이 필요합니다. 선생님 계정으로 로그인한 뒤 돌아와 주세요.",
     );
   }
-  async function api(route, body, method = body ? "POST" : "GET") {
+  // options (optional): { headers, timeoutMs } for one call. The 반에 출제 panel (archive2-assign.js) sends the
+  // X-Archive2-Contract header and its own time limits through it; every other caller is unchanged.
+  async function api(route, body, method = body ? "POST" : "GET", options = {}) {
     const base = (
       window.APMATH_API_BASE ||
       "https://ap-math-os-v2612.js-pdf.workers.dev/api"
@@ -604,8 +606,10 @@
     // Read requests give up after 30s so a stalled server cannot freeze the page. The saved-paper
     // POST is idempotent by save_batch_id and a timeout (no HTTP status) already falls into the
     // RESULT_UNKNOWN recovery path of savePapers(), so it gets a longer limit. Other writes
-    // (assignment, PDF) keep waiting: aborting them could hide a half-finished issue.
-    const timeoutMs = method === "GET" ? 30000
+    // (assignment, PDF) keep waiting unless the caller gives a limit: aborting them could hide a half-finished issue,
+    // so the assign panel treats a timeout as "결과 확인 필요" and re-sends the same batch id.
+    const timeoutMs = Number.isFinite(options.timeoutMs) && options.timeoutMs > 0 ? options.timeoutMs
+      : method === "GET" ? 30000
       : route === "/archive-saved-papers" ? 90000 : 0;
     const controller = timeoutMs && typeof AbortController === "function" ? new AbortController() : null;
     const perform = async () => {
@@ -614,6 +618,7 @@
         headers: {
           ...headers(),
           ...(body ? { "Content-Type": "application/json" } : {}),
+          ...(options.headers || {}),
         },
         ...(body ? { body: JSON.stringify(body) } : {}),
         ...(controller ? { signal: controller.signal } : {}),
@@ -2114,7 +2119,45 @@
     $("modal").classList.add("saved-paper-issue-dialog");
     setOriginalStep("targets");
   }
-  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperIssue;
+  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperAssign;
+  // 저장본 출제(보관함 줄·상세·문제지 만들기 저장 뒤)는 화면 안 패널(archive2-assign.js)로 연다. 옛 iframe 모달은
+  // 주소에 assign=legacy가 있을 때(되돌릴 길)와 학교 기출·단원별 출제에서 그대로 쓴다.
+  function assignRequest(route, opt = {}) {
+    // 로그인이 없으면 요청을 보내지 않고 401로 알려 패널이 로그인 안내를 그린다(headers()의 일반 Error가 '응답 없음'으로 읽히지 않게).
+    if (!teacherSessionOk()) {
+      const error = new Error("교사 로그인이 필요합니다.");
+      error.status = 401;
+      return Promise.reject(error);
+    }
+    return api(route, opt.body, opt.method || (opt.body ? "POST" : "GET"), { headers: opt.headers, timeoutMs: opt.timeoutMs });
+  }
+  async function openSavedPaperAssign(id, options = {}) {
+    const paperId = String(id || "").trim();
+    if (!paperId) throw new Error("출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
+    const Assign = window.Archive2Assign;
+    if (!Assign?.open || Assign.useLegacy(location.search)) return openSavedPaperIssue(paperId);
+    if (Assign.isOpen()) return undefined;
+    state.originalReceipts = [];
+    let papers = Array.isArray(options.papers) ? options.papers : [];
+    if (!papers.length) {
+      // 문제지 만들기에서 저장한 직후처럼 목록 정보가 없을 때는 한 권만 서버에서 읽어 이름·학년·문항 수를 얻는다.
+      const data = await api("/archive-saved-papers/" + encodeURIComponent(paperId));
+      const paper = data.paper;
+      if (!paper?.id) throw new Error("저장한 시험지를 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
+      if (paper.library_status === "TRASHED") throw new Error("휴지통의 시험지는 출제할 수 없습니다. 보관함으로 복원한 뒤 출제해 주세요.");
+      papers = [paper];
+    }
+    const opener = document.activeElement;
+    Assign.open({
+      papers,
+      history: options.history || window.Archive2Library?.currentHistory?.() || null,
+      request: assignRequest,
+      opener,
+      // 출제가 하나라도 저장되면(끝났을 때·닫을 때) 보관함 줄의 출제 이력을 새로 고친다.
+      onDone: () => { window.Archive2Library?.refreshHistory?.(); },
+    });
+    return undefined;
+  }
   function originalIssueBusy() {
     return Boolean(
       $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.() ||
@@ -5326,7 +5369,7 @@
         b.dataset.paperId,
         b.dataset.mode || "exam",
       );
-      else if (a === "saved-paper-issue") await openSavedPaperIssue(b.dataset.paperId);
+      else if (a === "saved-paper-issue") await openSavedPaperAssign(b.dataset.paperId);
       else if (a === "saved-paper-view") showSavedPaper(b.dataset.paperId);
       else if (a === "print") await print();
       else if (a === "save-paper") await savePapers();
@@ -5799,6 +5842,8 @@
   document.addEventListener("visibilitychange", resumeAfterLogin);
   window.addEventListener("storage", (event) => { if (!event.key || event.key === "APMATH_SESSION") resumeAfterLogin(); });
   window.addEventListener("popstate", async () => {
+    // 반에 출제 패널이 열려 있으면 뒤로 가기는 패널이 처리한다(진행 중이면 막고, 아니면 패널만 닫는다).
+    if (window.Archive2Assign?.handlePopState?.()) return;
     state.assignmentStatusLoadVersion++;
     const previousSelection = state.recentSelectedAssignmentId;
     readUrl();

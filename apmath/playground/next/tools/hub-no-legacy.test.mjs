@@ -3,7 +3,7 @@
 // 규칙(사용자 결정 2026-11-02): "2.0에 없는 건 연결하지 마." / "2.0에 이전 잔재가 있으면 안 돼."
 //  1) 허브가 그린 화면에 '2.0'·'기존'·'미리보기'·'이전 실험실' 문구가 없다(허브 머리말·버튼·배지 기준).
 //  2) 첫 화면은 늘 Universe: 허브를 바로 열면 Universe(학년 해시 유지) → 「입장」하면 허브(해시 유지), 실험실 뒤로 가기는 허브.
-//  3) 허브·Universe·셸에서 next/ 밖(Universe 제외)으로 가는 링크가 없다(옛 labs/·teacher-hub·compare 포함, 예외 없음).
+//  3) 옛 labs/·teacher-hub·compare로 연결하지 않는다. 현재 승인된 학생포털 복귀와 Universe만 next/ 밖 목적지다.
 // 정적 검사는 항상 돌고, 실제 화면 검사는 Playwright(Chromium)가 있을 때만 돈다(없으면 skip 사유를 출력).
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -27,7 +27,8 @@ test('허브·Universe·셸 소스에 옛 화면으로 가는 경로가 없다',
   const uni = read('index.html');
   const targets = [...uni.matchAll(/(?:href="|location\.href\s*=\s*')(\.[^"']*)/g)].map((m) => m[1]);
   assert.ok(targets.length > 0);
-  for (const t of targets) assert.ok(/^\.\/(next\/index\.html|index\.html|universe\/.*)$/.test(t), `Universe 링크: ${t}`);
+  for (const t of targets) assert.ok(t === '../student/' || /^\.\/(next\/index\.html|index\.html|universe\/.*)$/.test(t), `Universe 링크: ${t}`);
+  assert.ok(fs.existsSync(path.join(PLAYGROUND, '../student/index.html')), '학생포털 복귀는 실제 운영 진입점이어야 한다');
   assert.ok(!/<title>[^<]*(2\.0|미리보기)/.test(read('next/index.html')), 'next/index.html title');
 });
 
@@ -45,7 +46,7 @@ function serve() {
   return new Promise((ok) => srv.listen(0, '127.0.0.1', () => ok(srv)));
 }
 
-test('허브 화면: 금지 문구 0, next/ 밖 링크 0 (첫 방문·재방문, 노선도·목록)', { skip: chromium ? false : 'playwright 없음 — 화면 검사 NOT_RUN' }, async (t) => {
+test('허브 화면: 금지 문구 0, 외부 경로는 Universe·학생포털 복귀만 (첫 방문·재방문, 노선도·목록)', { skip: chromium ? false : 'playwright 없음 — 화면 검사 NOT_RUN' }, async (t) => {
   const srv = await serve();
   const base = `http://127.0.0.1:${srv.address().port}`;
   let browser;
@@ -75,7 +76,7 @@ test('허브 화면: 금지 문구 0, next/ 밖 링크 0 (첫 방문·재방문,
         for (const w of BAN) assert.ok(!info.text.includes(w), `[${visit}/${view}] 금지 문구 '${w}'`);
         assert.ok(info.links.length > 40, 'a 링크를 찾지 못함');
         for (const p of info.links) {
-          const ok = p.startsWith('/next/') || p === '/index.html';
+          const ok = p.startsWith('/next/') || p === '/index.html' || p === '/student/';
           assert.ok(ok && !BAD_LINK.test(p.replace('/next/labs/', '/next-lab/')), `[${visit}/${view}] next/ 밖 링크: ${p}`);
         }
         assert.match(info.cta, visit === 'first' ? /^시작하기 · / : /^이어서 하기 · /, `주 행동 문구 (${visit})`);

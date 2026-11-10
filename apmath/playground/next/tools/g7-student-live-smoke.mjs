@@ -72,7 +72,7 @@ const report = {
   limitations: ['Chromium PC/mobile viewport emulation, not physical devices.', 'One initial scene and its problem screen per unit/viewport; full scene inventory counts are checked, but all scenes are not rendered.', 'Structural answer locking and function-source checks do not prove every mathematical answer or visual layout.', 'No answer reveal, choice selection, slider change, submission, or remote write is performed.']
 };
 if (argv.includes('--plan')) {
-  console.log(JSON.stringify({ ...report, plannedURLs: UNITS.map(id => new URL(`${id}.html?theme=board`, base).href) }, null, 2));
+  console.log(JSON.stringify({ ...report, plannedURLs: UNITS.map(id => new URL(`${id}.html?theme=board&manual=1`, base).href) }, null, 2));
   process.exit(0);
 }
 if (fs.existsSync(path.join(out, 'results.json'))) throw Error('Output already contains results.json; choose a fresh --out directory to preserve evidence');
@@ -154,7 +154,7 @@ try {
   browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { headless: true });
   report.browserVersion = browser.version(); report.status = 'RUNNING'; persist();
   for (const unit of UNITS) for (const run of VIEWPORTS) {
-    const entry = entries.find(e => e.id === unit), url = new URL(`${unit}.html?theme=board`, base).href;
+    const entry = entries.find(e => e.id === unit), url = new URL(`${unit}.html?theme=board&manual=1`, base).href;
     const record = { unit, viewport: run, url, status: 'RUNNING', observations: [], captures: [], captureMetadata: {}, viewportCaptures: [], screenshotEnvironment: [], errors: [] }; report.pages.push(record);
     const context = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: run.name === 'mobile', deviceScaleFactor: 1, locale: 'ko-KR' });
     let page, screenshotGuard, listening = true;

@@ -25,6 +25,18 @@
      say   자막. **굵게**, $수식$ 가능
      step  정리 탭 단계 번호(s.step)를 바꿈. 탐구 화면에서 단계를 읽는 장면에서만 의미가 있음
      part  그림에서 강조할 부분 이름(s.part). 장면의 view().parts[].id 와 같은 값. null 이면 강조 해제
+
+   [해설(lesson)] 여러 장(chapter)을 이어 붙여 정답까지 한 번에 보여 주는 형식. 장 하나는 위 대본 그대로(쇼츠 규칙 8~15초 적용)이고, 해설은 장 2~6개입니다.
+     {
+       title:   '부채꼴 넓이는 왜 ½rl?',     // 해설 제목(20자 이하). 정답이 들어가면 안 됨
+       tab:     'review',                    // (선택) 재생 동안 정리 탭 상태로 그림을 그림(단계·보조선이 켜지는 장면만). 생략하면 탐구 탭
+       answer:  '$12\pi$',                  // (선택) 정답. 마지막 장 이전의 자막·제목에 나오면 검사 실패
+       label: '겉넓이',                      // (한 장면에 해설이 둘 이상이면 필수) 진입 화면 단추 글자, 6자 이하. 「▶ 겉넓이 · 29초」
+       answerText: '$12\pi$ cm²',           // (선택) 끝 카드에 「정답 …」으로 보일 글(단위 포함). 생략하면 answer
+       summary: '…', task: '…',              // 끝 화면(해설 전체에 하나)
+       chapters: [ 대본, 대본, … ]            // 각 장은 title 필수. 첫 장의 start 가 해설의 시작값, 둘째 장부터의 start 는 그 장이 시작하는 순간의 즉시 설정
+     }
+   validateLesson / compileLesson 이 검사·이어 붙이기를 합니다(compileLesson 결과는 compile 결과와 같은 모양 + chapters:[{at,length,title}]).
    ========================================================================== */
 (function (root, factory) {
   const api = factory();
@@ -38,6 +50,9 @@
 
   // 쇼츠 규칙(선생님 지적 2026-11-03: 24초·22초 샘플이 늘어진다): 8~15초, 자막 2~3줄, 한 줄 40자(휴대폰 화면 2줄 이내), 첫 1초 안에 그림이 움직이기 시작
   const LIMITS = { minLen: 8, maxLen: 15, minSay: 2, maxSay: 3, maxSayChars: 40, minSayGap: 2.5, maxSummaryChars: 40, maxTaskChars: 90, maxTitleChars: 20, maxFirstMoveAt: 1 };
+  const LESSON_LIMITS = { minChapters: 2, maxChapters: 6, maxPerScene: 3, maxLabelChars: 6 };
+  const LESSON_FIELDS = ['title', 'tab', 'answer', 'answerText', 'label', 'summary', 'task', 'chapters'];
+  const LESSON_TABS = ['review'];
   const EASE = {
     smooth: (x) => x * x * (3 - 2 * x),
     linear: (x) => x,
@@ -54,8 +69,13 @@
     return String(say == null ? '' : say).replace(/\*\*/g, '').replace(/\$[^$]*\$/g, 'xxxx').trim().length;
   }
 
-  /** 대본을 검사해 {errors, warnings} 를 돌려줍니다. 던지지 않습니다. */
-  function validate(script) {
+  /**
+   * 대본을 검사해 {errors, warnings} 를 돌려줍니다. 던지지 않습니다.
+   * opts.chapter: 해설의 한 장으로 검사(summary·task 는 해설 전체에 하나라 장에서는 선택, title 은 필수)
+   * opts.first === false: 해설의 둘째 장 이후 — 「첫 1초 안에 움직임」 규칙을 적용하지 않음(조건을 짚고 단계만 바꾸는 장이 있을 수 있음)
+   */
+  function validate(script, opts) {
+    opts = opts || {};
     const errors = [];
     const warnings = [];
     const err = (m) => errors.push(m);
@@ -78,8 +98,13 @@
       else if (script.title.trim().length > LIMITS.maxTitleChars) err(`title 이 너무 깁니다(${script.title.trim().length}자 > ${LIMITS.maxTitleChars}자)`);
       else if (/[<$]|\*\*/.test(script.title)) err('title 은 글자만 씁니다(HTML 태그·수식·**굵게** 불가)');
     }
-    textOk('summary', LIMITS.maxSummaryChars);
-    textOk('task', LIMITS.maxTaskChars);
+    if (opts.chapter) {
+      if (script.title == null) err('장에는 title 이 있어야 합니다');
+      ['summary', 'task'].forEach((n) => { if (script[n] != null) textOk(n, n === 'summary' ? LIMITS.maxSummaryChars : LIMITS.maxTaskChars); });
+    } else {
+      textOk('summary', LIMITS.maxSummaryChars);
+      textOk('task', LIMITS.maxTaskChars);
+    }
     const cues = script.cues;
     if (!Array.isArray(cues) || !cues.length) {
       err('cues 가 비어 있습니다');
@@ -114,6 +139,7 @@
           lastEnd[k] = c.at + dur;
         }
       }
+      if (c.to != null && c.step !== undefined) warnings.push(`${w}: 같은 칸에 to 와 step 을 함께 쓰지 않는 것이 안전합니다(값이 바뀌면 장면이 step 을 0으로 되돌릴 수 있음. 값은 앞 칸에서 먼저 맞추세요)`);
       if (c.set != null && (typeof c.set !== 'object' || Array.isArray(c.set))) err(`${w}.set 은 객체여야 합니다`);
       if (c.step != null && !(Number.isInteger(c.step) && c.step >= 0)) err(`${w}.step 은 0 이상의 정수여야 합니다`);
       if (c.part != null && typeof c.part !== 'string') err(`${w}.part 는 문자열(또는 null)이어야 합니다`);
@@ -127,7 +153,7 @@
       }
     });
     // 소개 줄 금지: 첫 칸 근처에서 그림이 바로 움직여야 합니다(to 로 움직이는 칸이 maxFirstMoveAt 초 안에 시작)
-    if (!cues.some((c) => c && c.to && isNum(c.at) && c.at <= LIMITS.maxFirstMoveAt + EPS)) err(`첫 ${LIMITS.maxFirstMoveAt}초 안에 그림이 움직이기 시작해야 합니다(첫 칸에 to 를 두세요. 소개만 하는 칸 금지)`);
+    if (opts.first !== false && !cues.some((c) => c && c.to && isNum(c.at) && c.at <= LIMITS.maxFirstMoveAt + EPS)) err(`첫 ${LIMITS.maxFirstMoveAt}초 안에 그림이 움직이기 시작해야 합니다(첫 칸에 to 를 두세요. 소개만 하는 칸 금지)`);
     if (says.length < LIMITS.minSay || says.length > LIMITS.maxSay) err(`자막 ${says.length}줄: ${LIMITS.minSay}~${LIMITS.maxSay}줄이어야 합니다`);
     if (cues[0] && !cues[0].say) err('첫 칸(at 0)에 자막이 있어야 합니다');
     for (let k = 0; k < says.length; k++) {
@@ -158,6 +184,146 @@
     const says = cues.filter((c) => c.say).map((c) => ({ at: c.at, text: c.say, cue: c.index }));
     says.forEach((s, k) => { s.end = k + 1 < says.length ? says[k + 1].at : L; });
     return { length: L, title: typeof script.title === 'string' && script.title.trim() ? script.title.trim() : null, start: script.start || {}, summary: script.summary, task: script.task, cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says };
+  }
+
+  /* ------------------------------ 해설(lesson): 여러 장을 이어 붙임 ------------------------------ */
+  /** 정답 비교용: 수식 기호·공백을 걷어 내고 π 표기를 통일합니다. */
+  function normAnswer(text) {
+    return String(text == null ? '' : text).replace(/\\pi(?![a-z])/g, 'π').replace(/\\(?:text|mathrm|left|right)/g, '').replace(/\\[,;!]/g, '').replace(/[$\\{}*\s]/g, '').toLowerCase();
+  }
+
+  /** 해설을 검사해 {errors, warnings}. 장마다 validate(opts.chapter)를 적용하고, 장 수·정답 조기 노출을 봅니다. 던지지 않습니다. */
+  function validateLesson(lesson) {
+    const errors = [];
+    const warnings = [];
+    const err = (m) => errors.push(m);
+    if (!lesson || typeof lesson !== 'object') return { errors: ['해설이 객체가 아닙니다'], warnings };
+    Object.keys(lesson).forEach((k) => { if (!LESSON_FIELDS.includes(k)) err(`알 수 없는 해설 필드: ${k}`); });
+    if (typeof lesson.title !== 'string' || !lesson.title.trim()) err('해설 title 이 비어 있습니다');
+    else if (lesson.title.trim().length > LIMITS.maxTitleChars) err(`해설 title 이 너무 깁니다(${lesson.title.trim().length}자 > ${LIMITS.maxTitleChars}자)`);
+    else if (/[<$]|\*\*/.test(lesson.title)) err('해설 title 은 글자만 씁니다(HTML 태그·수식·**굵게** 불가)');
+    if (lesson.tab != null && !LESSON_TABS.includes(lesson.tab)) err(`tab 은 ${LESSON_TABS.join('|')} 중 하나여야 합니다`);
+    if (lesson.answer != null && (typeof lesson.answer !== 'string' || !normAnswer(lesson.answer))) err('answer 는 비어 있지 않은 글이어야 합니다');
+    if (lesson.answerText != null && (typeof lesson.answerText !== 'string' || !normAnswer(lesson.answerText))) err('answerText 는 비어 있지 않은 글이어야 합니다');
+    else if (lesson.answerText != null && lesson.answer != null && !normAnswer(lesson.answerText).includes(normAnswer(lesson.answer))) err('answerText 에는 answer 가 들어 있어야 합니다(끝 카드에 보이는 글)');
+    if (lesson.label != null) {
+      if (typeof lesson.label !== 'string' || !lesson.label.trim()) err('label 이 비어 있습니다');
+      else if (lesson.label.trim().length > LESSON_LIMITS.maxLabelChars) err(`label 이 너무 깁니다(${lesson.label.trim().length}자 > ${LESSON_LIMITS.maxLabelChars}자)`);
+      else if (/[<$]|\*\*/.test(lesson.label)) err('label 은 글자만 씁니다(HTML 태그·수식·**굵게** 불가)');
+    }
+    [['summary', LIMITS.maxSummaryChars], ['task', LIMITS.maxTaskChars]].forEach(([n, max]) => {
+      const v = lesson[n];
+      if (typeof v !== 'string' || !v.trim()) err(`${n} 가 비어 있습니다`);
+      else if (plainLen(v) > max) err(`${n} 가 너무 깁니다(${plainLen(v)}자 > ${max}자)`);
+    });
+    const ch = lesson.chapters;
+    if (!Array.isArray(ch)) { err('chapters 가 배열이 아닙니다'); return { errors, warnings }; }
+    if (ch.length < LESSON_LIMITS.minChapters || ch.length > LESSON_LIMITS.maxChapters) err(`장 ${ch.length}개: ${LESSON_LIMITS.minChapters}~${LESSON_LIMITS.maxChapters}개여야 합니다(더 길면 해설을 둘로 나누세요)`);
+    ch.forEach((c, i) => {
+      const v = validate(c, { chapter: true, first: i === 0 });
+      v.errors.forEach((m) => err(`chapters[${i}]: ${m}`));
+      v.warnings.forEach((m) => warnings.push(`chapters[${i}]: ${m}`));
+    });
+    // set 으로 바꾸는 상태값은 모두 첫 장의 at:0 칸에서 시작값이 정해져 있어야 합니다: 그래야 재생(다시 보기 포함)마다 같은 값에서 시작하고,
+    // 앞선 재생이 남긴 값(예: 결론 라벨을 켜는 표시)이 다음 재생에 새어 들어가지 않습니다.
+    // to 로 움직이는 숫자 상태값도 모두 첫 장 start 에 시작값이 있어야 합니다(다시 보기가 앞선 재생이 남긴 값에서 시작하지 않게, 위 set 규칙의 숫자판).
+    const start0 = (ch[0] && ch[0].start && typeof ch[0].start === 'object') ? ch[0].start : {};
+    const toKeys = new Set();
+    ch.forEach((c) => ((c && c.cues) || []).forEach((q) => { if (q && q.to && typeof q.to === 'object' && !Array.isArray(q.to)) Object.keys(q.to).forEach((k) => toKeys.add(k)); }));
+    toKeys.forEach((k) => { if (!(k in start0)) errors.push(`to.${k}: 첫 장 start 에 시작값을 적어야 합니다(다시 보기 때도 같은 값에서 시작하게)`); });
+    const setKeys = new Set();
+    ch.forEach((c) => (c && c.cues ? c.cues : []).forEach((q) => { if (q && q.set && typeof q.set === 'object') Object.keys(q.set).forEach((k) => setKeys.add(k)); }));
+    const first0 = ch[0] && Array.isArray(ch[0].cues) ? ch[0].cues.find((q) => q && q.at === 0 && q.set && typeof q.set === 'object') : null;
+    setKeys.forEach((k) => { if (!first0 || !(k in first0.set)) err(`set.${k}: 첫 장 at:0 칸의 set 에 시작값을 적어야 합니다(다시 보기 때도 같은 값에서 시작하게)`); });
+    // 정답은 마지막 장에서만: 해설 제목, 마지막 장 이전의 장 제목·자막에 나오면 안 됩니다
+    const ans = lesson.answer != null ? normAnswer(lesson.answer) : '';
+    if (ans) {
+      if (normAnswer(lesson.title).includes(ans)) err('해설 title 에 정답이 들어 있습니다');
+      ch.forEach((c, i) => {
+        if (!c || i === ch.length - 1) return;
+        if (normAnswer(c.title).includes(ans)) err(`chapters[${i}].title 에 정답이 마지막 장보다 먼저 나옵니다`);
+        (c.cues || []).forEach((q, k) => { if (q && q.say && normAnswer(q.say).includes(ans)) err(`chapters[${i}].cues[${k}].say 에 정답이 마지막 장보다 먼저 나옵니다`); });
+      });
+    }
+    return { errors, warnings };
+  }
+
+  /** 한 장면에 붙은 해설(하나 또는 배열)을 배열로 돌려줍니다. */
+  function lessonList(x) { return Array.isArray(x) ? x : x ? [x] : []; }
+
+  /**
+   * 한 장면의 해설 묶음을 검사합니다(배열이면 1~3개). 둘 이상이면 모두 짧은 label(6자 이하)이 필수이고 장면 안에서 겹치면 안 됩니다.
+   * 또 둘 이상일 때는 한 해설이 set 으로 바꾸는 상태값을 나머지 해설도 모두 첫 장 at:0 칸에서 정해 두어야 합니다
+   * (겉넓이 → 부피 → 겉넓이처럼 오가도 앞 해설이 남긴 값이 다음 해설에 새지 않게). 각 해설은 validateLesson 으로도 검사합니다.
+   */
+  function validateLessonSet(x) {
+    const errors = [], warnings = [];
+    const list = lessonList(x);
+    if (!list.length) return { errors: ['해설이 없습니다'], warnings };
+    if (list.length > LESSON_LIMITS.maxPerScene) errors.push(`한 장면의 해설은 ${LESSON_LIMITS.maxPerScene}개까지입니다(${list.length}개)`);
+    list.forEach((l, i) => {
+      const v = validateLesson(l);
+      v.errors.forEach((m) => errors.push(list.length > 1 ? `lessons[${i}]: ${m}` : m));
+      v.warnings.forEach((m) => warnings.push(list.length > 1 ? `lessons[${i}]: ${m}` : m));
+    });
+    if (list.length > 1) {
+      const labels = list.map((l) => (l && typeof l.label === 'string' ? l.label.trim() : ''));
+      labels.forEach((t, i) => { if (!t) errors.push(`lessons[${i}]: 해설이 둘 이상이면 label 이 필수입니다(예: 겉넓이)`); });
+      labels.forEach((t, i) => { if (t && labels.indexOf(t) !== i) errors.push(`lessons[${i}]: label 「${t}」 이 같은 장면의 다른 해설과 겹칩니다`); });
+      const keysOf = (l) => {
+        const k = new Set();
+        ((l && l.chapters) || []).forEach((c) => ((c && c.cues) || []).forEach((q) => { if (q && q.set && typeof q.set === 'object') Object.keys(q.set).forEach((n) => k.add(n)); }));
+        return k;
+      };
+      const all = new Set();
+      list.forEach((l) => keysOf(l).forEach((n) => all.add(n)));
+      list.forEach((l, i) => {
+        const c0 = l && l.chapters && l.chapters[0] && Array.isArray(l.chapters[0].cues) ? l.chapters[0].cues.find((q) => q && q.at === 0 && q.set && typeof q.set === 'object') : null;
+        all.forEach((n) => { if (!c0 || !(n in c0.set)) errors.push(`lessons[${i}]: set.${n}: 같은 장면의 다른 해설이 바꾸는 값이므로 첫 장 at:0 칸의 set 에 이 해설의 시작값도 적어야 합니다`); });
+      });
+    }
+    return { errors, warnings };
+  }
+
+  /**
+   * 장들을 시간 순서로 이어 붙여 compile 결과와 같은 모양으로 돌려줍니다(+ chapters, answer, tab, kind).
+   * 둘째 장 이후의 start 는 그 장이 시작하는 시각의 즉시 설정(길이 0 구간)이 됩니다. 검증을 통과한 해설을 전제로 합니다.
+   */
+  function compileLesson(lesson) {
+    let off = 0;
+    const cues = [], tracks = {}, says = [], setKeys = new Set(), marks = [];
+    let usesStep = false, usesPart = false, start = {};
+    lesson.chapters.forEach((script, ci) => {
+      const c = compile(script);
+      if (ci === 0) start = c.start;
+      else for (const [k, v] of Object.entries(c.start)) (tracks[k] = tracks[k] || []).push({ t0: off, t1: off, to: v, ease: 'linear', snap: null });
+      const cueBase = cues.length;
+      c.cues.forEach((q) => cues.push({ ...q, at: q.at + off, index: cues.length, ch: ci }));
+      for (const [k, segs] of Object.entries(c.tracks)) {
+        tracks[k] = tracks[k] || [];
+        segs.forEach((g) => tracks[k].push({ ...g, t0: g.t0 + off, t1: g.t1 + off }));
+      }
+      c.says.forEach((q) => says.push({ at: q.at + off, text: q.text, cue: q.cue + cueBase, ch: ci }));
+      c.setKeys.forEach((k) => setKeys.add(k));
+      usesStep = usesStep || c.usesStep;
+      usesPart = usesPart || c.usesPart;
+      marks.push({ at: off, length: c.length, title: c.title || '' });
+      off += c.length;
+    });
+    says.forEach((q, k) => { q.end = k + 1 < says.length ? says[k + 1].at : off; });
+    return {
+      kind: 'lesson', length: off, title: typeof lesson.title === 'string' && lesson.title.trim() ? lesson.title.trim() : null, start,
+      summary: lesson.summary, task: lesson.task, answer: lesson.answer || null, answerText: lesson.answerText || lesson.answer || null, label: typeof lesson.label === 'string' && lesson.label.trim() ? lesson.label.trim() : null, tab: lesson.tab || null,
+      cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says, chapters: marks
+    };
+  }
+
+  /** 시각 t 가 속한 장의 번호. */
+  function chapterAt(cs, t) {
+    const ch = cs.chapters || [];
+    let k = 0;
+    ch.forEach((c, i) => { if (c.at <= t + EPS) k = i; });
+    return k;
   }
 
   /** 시각 t 에서 숫자 상태값 하나의 값. base 는 영상이 시작할 때의 값. */
@@ -217,5 +383,5 @@
     return cs.says[cur - 1].at;
   }
 
-  return { LIMITS, EASE, validate, compile, stateAt, trackValue, nextSayAt, prevSayAt, plainLen };
+  return { LIMITS, LESSON_LIMITS, EASE, validate, validateLesson, validateLessonSet, lessonList, compile, compileLesson, chapterAt, normAnswer, stateAt, trackValue, nextSayAt, prevSayAt, plainLen };
 });

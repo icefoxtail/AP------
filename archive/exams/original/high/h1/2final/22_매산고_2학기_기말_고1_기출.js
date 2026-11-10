@@ -66,7 +66,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 유리함수의 그래프가 파랑 곡선 두 가지로 그려져 있다. 세로 점근선 x=2와 가로 점근선 y=−2가 점선으로 있고, 왼쪽 가지는 원점 O를 지나 위로 뻗으며 x=2에 가까워지고, 오른쪽 가지는 y=−2 아래쪽에서 아래로 뻗으며 x=2에 가까워진다.",
+    "solutionImageCaption": "그림에서 수직 점근선은 x=2이다. 분모 x+c가 0이 되는 x의 값이 2이므로 c=−2이고, 수평 점근선이 y=−2이므로 a=−2이다. 그래프가 원점을 지나므로 x=0, y=0을 대입하면 b=0이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -97,11 +101,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 근호 안이 0 이상인 조건과 그래프 위의 점을 이용한다.\n조건 정리: $2x-a\\ge0$의 해가 $x\\ge3$이므로 $a=6$이다.\n풀이 방향: 점 $(5,1)$을 대입해 $b$를 구한 뒤 최댓값을 찾는다.\n정석 풀이: $1=-\\sqrt{10-6}+b=-2+b$에서 $b=3$이다. $-\\sqrt{2x-6}\\le0$이므로 함수의 최댓값은 3이고 아래로 제한이 없다. 따라서 치역은 $\\{y\\mid y\\le3\\}$이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q03-solution.svg",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q3-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수 y=−√(2x−6)+3의 그래프가 시작점 V(3,3)에서 오른쪽 아래로 내려가며 점 P(5,1)을 지나고, 정의역 x≥3과 치역 y≤3을 함께 표시한 그래프.",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 정의역이 x≥3인 무리함수 y=−√(2x−a)+b의 그래프(파랑)가 시작점 V에서 오른쪽 아래로 내려간다. x축의 눈금 3에서 V까지 점선이 이어지고, V를 지나는 가로 점선 y=b(주황)가 있으며, 곡선 위에 점 P(5,1)이 표시되어 있다.",
 
-    "solutionImageCaption": "끝점 (3,3), 정의역 x≥3, 치역 y≤3을 확인한다.",
+    "solutionImageCaption": "정의역이 x≥3이므로 2x−a≥0의 해가 x≥3이어서 a=6이다. 점 P(5,1)을 대입하면 b가 정해지고, −√(2x−6)≤0이므로 함수는 시작점 V에서 최댓값 b를 가지며 아래로는 제한이 없다. 치역은 {y|y≤3}이다. 정답은 ③이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -236,11 +240,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 교점의 $x$좌표를 이용하여 직선의 절편 $k$를 나타낸다.\n조건 정리: 제1사분면의 곡선 위에서는 $0\\lt x\\le4$이고, 교점에서 $k=2x+3-\\sqrt{4-x}$이다.\n풀이 방향: $0\\lt x\\le4$에서 이 식이 가질 수 있는 값을 살펴본다.\n정석 풀이: $0\\lt x\\le4$이면 $2x\\gt0$이고 $\\sqrt{4-x}\\lt2$이므로 $k=2x+3-\\sqrt{4-x}\\gt1$이다. 따라서 $k=1$은 불가능하다. 한편 $x$가 $0$에서 $4$까지 커질 때 $2x$는 커지고 $-\\sqrt{4-x}$도 커지므로 $k$의 값은 $1$보다 큰 값에서 $11$까지 차례로 증가한다. 따라서 보기의 $2,3,4,5$는 모두 가능하다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q07-solution.svg",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q7-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 직선의 제1사분면 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 좌표평면에 무리함수 y=3−√(4−x)의 그래프(파랑)가 점 (4,3)에서 시작해 왼쪽으로 내려가며, y축과 만나는 곳에 속이 빈 점이 있다. 제1사분면에 있는 부분은 보라색으로 굵게 표시되어 있다. 기울기가 −2인 직선 y=−2x+k(주황)가 곡선과 점 P에서 만나고, 점 (4,3)을 지나는 직선 y=−2x+11(초록)이 그려져 있다.",
 
-    "solutionImageCaption": "1<k≤11 범위에서 제1사분면 교점이 생김을 확인한다.",
+    "solutionImageCaption": "제1사분면에 있는 곡선 부분은 0<x≤4이고, 교점에서 k=2x+3−√(4−x)이다. 0<x≤4에서 x가 커질수록 이 값도 커져서 x=4일 때 11이 된다. x=0은 제1사분면에 속하지 않으므로 그 끝의 값은 포함되지 않는다. 그림의 직선 y=−2x+k는 k=5인 예시이다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
@@ -276,11 +280,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 점 $A$의 좌표를 $A=(t,\\dfrac2t)$로 놓고, 원문에서 정한 $B,C$의 위치를 그대로 사용한다.\n조건 정리: $x$축에 평행한 직선과 $y=\\dfrac{k}{x}$의 교점이 $B$이므로 $B=(\\dfrac{kt}{2},\\dfrac2t)$이고, $y$축에 평행한 직선과의 교점이 $C$이므로 $C=(t,\\dfrac{k}{t})$이다.\n풀이 방향: $AB$와 $AC$가 서로 수직이므로 두 변의 길이로 삼각형의 넓이를 구한다.\n정석 풀이: $AB=\\dfrac{t(k-2)}2$, $AC=\\dfrac{k-2}{t}$이다. 따라서 삼각형 $ABC$의 넓이는 $\\dfrac12\\cdot\\dfrac{t(k-2)}2\\cdot\\dfrac{k-2}{t}=\\dfrac{(k-2)^2}{4}$이다. 이것이 $4$이므로 $(k-2)^2=16$이고, $k\\gt2$이므로 $k=6$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q8-solution-v3.svg",
 
-    "solutionImageAlt": "해설 그림: y=2/x와 y=k/x의 그래프, y=2/x 위의 점 A에서 x축·y축에 평행한 선이 y=k/x와 만나는 점 B, C, 직각삼각형 ABC",
+    "solutionImageAlt": "해설 그림: 좌표평면의 제1사분면에 y=x분의 2의 그래프(파랑)와 y=x분의 k의 그래프(주황)가 그려져 있다. 파랑 곡선 위의 점 A에서 오른쪽으로 그은 수평선이 주황 곡선과 만나는 점이 B, 위로 그은 수직선이 주황 곡선과 만나는 점이 C이다. 삼각형 ABC는 A에서 직각이고, 세 점 옆에 좌표가 문자로 적혀 있다. 그림은 t=1, k=4인 예시이다.",
 
-    "solutionImageCaption": "예: t=1, k=4로 그린 모양이다. A(t,2/t)에서 x축에 평행한 직선과 y=k/x가 만나는 점은 B(kt/2,2/t), y축에 평행한 직선과 만나는 점은 C(t,k/t)이고 AB⊥AC이다. AB=t(k−2)/2, AC=(k−2)/t이므로 삼각형 ABC의 넓이는 (k−2)²/4이다. 이것이 4이므로 (k−2)²=16이고 k>2에서 k=6이다. 정답은 ①이다.",
+    "solutionImageCaption": "A(t, t분의 2)에서 x축에 평행한 직선이 y=x분의 k와 만나는 점은 B(2분의 kt, t분의 2), y축에 평행한 직선과 만나는 점은 C(t, t분의 k)이다. AB=2분의 t(k−2), AC=t분의 (k−2)이고 AB⊥AC이므로 삼각형 ABC의 넓이는 4분의 (k−2)²이다. 이것이 4이므로 (k−2)²=16이고 k>2에서 k=6이다. 그림은 t=1, k=4인 예시이다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -414,11 +418,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 함수와 역함수 위의 대응하는 점은 직선 $y=x$에 대하여 대칭이다.\n조건 정리: $A=(2,3)$이므로 $B=(3,2)$이고 $f(2)=3$이다.\n풀이 방향: 주어진 함숫값 차로 나머지 대칭점 $C,D$를 구한다.\n정석 풀이: $3-f^{-1}(2)=7$에서 $f^{-1}(2)=-4$이다. 따라서 역함수 위의 점 $C=(2,-4)$와 이에 대칭인 함수 위의 점 $D=(-4,2)$를 얻는다. $BD$는 수평이고 길이는 $3-(-4)=7$, 점 $A$에서 $BD$까지의 높이는 $3-2=1$이다. 그러므로 넓이는 $7\\times1/2=\\frac{7}{2}$이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수의 대응점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 좌표평면에 함수 y=f(x)의 그래프(파랑)와 그 역함수 y=f⁻¹(x)의 그래프(주황), 직선 y=x(초록 점선)가 그려져 있고 두 곡선은 y=x에 대하여 대칭이다. 점 A(2,3), B(3,2), C(2,−4), D(−4,2)가 표시되어 있고, 삼각형 ABD가 연하게 칠해져 있으며 선분 CD는 점선이다. 곡선의 모양은 한 가지 예시이다.",
 
-    "solutionImageCaption": "A↔B, C↔D의 좌표 교환과 y=x 대칭을 확인한다.",
+    "solutionImageCaption": "A(2,3)이므로 y=x에 대칭인 점은 B(3,2)이다. 3−f⁻¹(2)=7에서 f⁻¹(2)=−4이므로 역함수 위의 점 C(2,−4)와 이에 대칭인 함수 위의 점 D(−4,2)를 얻는다. BD는 수평이고 길이는 7, 점 A에서 BD까지의 높이는 1이므로 넓이는 2분의 7이다. 그림의 곡선은 예시이다. 정답은 ④이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
@@ -457,7 +461,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 유리식 y=(x−4)분의 (−3x+2)의 그래프로, 점근선 x=4와 y=−3이 점선이고 x>4인 부분이 주황색으로 굵게 표시되어 있다. 아래 그림은 x≤4에서 근호식 y=√(px+q)+r의 그래프(초록)가 점 (4,−3)에서 끝나고, x>4에서는 주황 유리식 부분이 y=−3 아래쪽에서 이어지는 함수 f의 그래프이다. 근호식의 모양은 한 가지 예시이다.",
+    "solutionImageCaption": "유리식은 y=−3−((x−4)분의 10)이고 x=4에서 정의되지 않는다. f의 치역이 모든 실수이고 역함수가 있으려면 유리식 조각이 x>4에서 y<−3을, 근호 조각이 x≤4에서 y≥−3을 나타내야 한다. 그러므로 px+q=0의 해가 x=4이고 p<0이어서 q=−4p이며, 근호 조각의 시작점이 (4,−3)이므로 r=−3이다. 따라서 p분의 qr=12이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -489,7 +497,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파랑 곡선 y=−√(k(x+3))+2가 점 (−3,2)에서 시작해 오른쪽 아래로 내려가고, 주황 곡선 y=√(k(3−x))−2가 점 (3,−2)에서 시작해 왼쪽 위로 올라간다. 두 곡선은 점 P(−5분의 12, 1)과 Q(5분의 12, −1)에서 만난다. 그림은 k=3분의 5인 예시이다.",
+    "solutionImageCaption": "A=√(k(x+3)), B=√(k(3−x))라 하면 교점에서 A+B=4이고 A²+B²=6k이다. (A+B)²=A²+B²+2AB에서 AB=8−3k이고 A, B≥0이므로 k≤3분의 8이다. 그림은 k=3분의 5인 예시이다. k=3분의 8일 때 (A, B)=(0, 4), (4, 0)이어서 서로 다른 두 교점이 실제로 생기므로 최댓값은 3분의 8이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -548,7 +560,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 함수 y=−√(b−3x)+2의 그래프(파랑)가 오른쪽 끝점 (−1,2)에서 시작해 왼쪽 아래로 내려간다. 구간 a≤x≤−1에 해당하는 부분은 주황색으로 굵게 표시되고, 양 끝점 (−1,2)와 (−4,−1)에서 x축과 y축으로 점선이 이어진다.",
+    "solutionImageCaption": "이 함수는 x가 커질수록 값이 커지므로 최댓값은 x=−1에서, 최솟값은 x=a에서 갖는다. x=−1에서 −√(b+3)+2=2이므로 b=−3이다. x=a에서 −√(b−3a)+2=−1이므로 b−3a=9이고, b=−3을 대입하면 a=−4이다. 그림은 이렇게 정해진 함수와 구간이다. 정답은 −7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -575,7 +591,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 x=−1부터 4까지 곡선 조각이 이어진 그래프가 그려져 있다. 0≤x≤1, 2≤x≤3에서 감소하는 조각은 파랑, −1≤x≤0, 1≤x≤2, 3≤x≤4에서 증가하는 조각은 주황이며 값은 0과 1 사이를 오르내려 점선 y=1에 닿는다. 원점에서 점 (4,1)까지 초록 점선 y=4분의 x가 있다. 직선은 기울기를 크게 한 모형이다.",
+    "solutionImageCaption": "f(x)=f(−x), f(x)=f(x+2)이므로 [2n, 2n+1]에서는 1에서 0으로 감소하고 [2n+1, 2n+2]에서는 0에서 1로 증가하는 곡선이 반복된다(점선 y=1은 최댓값의 높이). 직선 y=2022분의 x는 각 감소 구간과 증가 구간에서 한 번씩 만나고 x=2022에서는 f(2022)=1이어서 만난다. 그림의 직선은 기울기를 y=4분의 x로 크게 한 모형이고, x=4에서 만나는 것이 x=2022에서 만나는 것에 해당한다. x≥0에서 교점은 1012+1011−1=2022개이고 y축 대칭이므로 전체는 2×2022이다. 정답은 4044이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -601,7 +621,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 유리함수 y=(x+1)분의 (2x+1)의 그래프로 점근선 x=−1, y=2가 점선이고 x>0인 부분이 주황색으로 굵게 표시되며 x=0에 속이 빈 점이 있다. 아래 그림은 상수함수 y=2의 그래프로 x>0인 부분이 주황색으로 굵게 표시되고 x=0에 속이 빈 점이 있다.",
+    "solutionImageCaption": "f(x)=a+((x+c)분의 (b−ac))로 쓸 수 있다. x>0에서 서로 다른 x는 x+c도 서로 다르므로 b−ac≠0이면 f의 값이 모두 달라 일대일 함수이고, b=ac이면 f(x)=a인 상수함수라 일대일 함수가 아니다. 순서쌍은 모두 8³=512개이고 b=ac인 경우는 20개이므로 512−20=492개이다. 정답은 492이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -629,11 +653,11 @@ window.questionBank = [
     "answer": "$-5$",
     "solution": "[키포인트] 두 교점의 $x$좌표를 이차방정식의 두 근으로 놓는다.\n조건 정리: 교점의 $x$좌표 $x_1,x_2$는 $x^2+6x-k=0$의 두 근이므로 $x_1+x_2=-6$, $x_1x_2=-k$이다.\n풀이 방향: 세 점의 좌표로 삼각형 넓이를 근의 차와 연결한다.\n정석 풀이: $P=(x_1,x_1+6)$, $Q=(x_2,x_2+6)$이므로 삼각형 $OPQ$의 넓이는 $\\dfrac12|x_1(x_2+6)-x_2(x_1+6)|=3|x_1-x_2|$이다. 넓이가 12이므로 $|x_1-x_2|=4$이다. 따라서 $(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=36+4k=16$이고 $k=-5$이다.\n따라서 구하는 값은 $-5$이다.",
 
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q19-solution-v3.svg",
 
-    "solutionImageAlt": "해설 그림: 직선 y=x+6과 유리함수 y=k/x(k<0)의 그래프가 두 점 P, Q에서 만나고 원점 O와 함께 삼각형 OPQ를 이루는 그림(예: k=−8)",
+    "solutionImageAlt": "해설 그림: 좌표평면에 y=x분의 k(k<0)의 그래프(파랑, 두 가지)와 직선 y=x+6(주황)이 있다. 직선은 2사분면 쪽 파랑 곡선과 두 점 P, Q에서 만나고, 원점 O와 이은 삼각형 OPQ가 연하게 칠해져 있다. P와 Q에서 x축으로 점선이 내려와 x₁, x₂가 표시되어 있다. 그림은 k=−8인 예시이다.",
 
-    "solutionImageCaption": "예: k=−8로 그린 모양이다(실제 k는 아래에서 구한다). 교점 P, Q의 x좌표 x₁, x₂는 x²+6x−k=0의 두 근이므로 x₁+x₂=−6, x₁x₂=−k이다. 삼각형 OPQ의 넓이는 ½|x₁(x₂+6)−x₂(x₁+6)|=3|x₁−x₂|=12이므로 |x₁−x₂|=4이다. (x₁−x₂)²=(x₁+x₂)²−4x₁x₂=36+4k=16에서 k=−5이다. 구하는 값은 −5이다.",
+    "solutionImageCaption": "그림은 k=−8인 예시이다. 교점의 x좌표 x₁, x₂는 x²+6x−k=0의 두 근이므로 x₁+x₂=−6, x₁x₂=−k이다. 삼각형 OPQ의 넓이는 2분의 1×|x₁(x₂+6)−x₂(x₁+6)|=3|x₁−x₂|=12이므로 |x₁−x₂|=4이다. (x₁−x₂)²=(x₁+x₂)²−4x₁x₂=36+4k=16에서 k=−5이다. 정답은 −5이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",

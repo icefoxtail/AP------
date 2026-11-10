@@ -689,9 +689,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_제일고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "a=3/2일 때 2≤x≤4에서 꼭짓점이 최댓값 6",
-    "solutionImageCaption": "a=3/2일 때 2≤x≤4에서 꼭짓점이 최댓값 6",
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 2≤x≤4가 굵게 표시된 위로 볼록한 포물선 세 개의 예이다. 파란 곡선은 꼭짓점이 구간 왼쪽이라 x=2에서, 주황 곡선은 꼭짓점이 구간 안이라 꼭짓점에서, 초록 곡선은 꼭짓점이 구간 오른쪽이라 x=4에서 가장 높고, 각각 그 점이 찍혀 있다.",
+    "solutionImageCaption": "f(x)=−(x−2a)²+4a²+2a−6이므로 꼭짓점의 가로좌표는 2a이다. 그림은 꼭짓점이 구간 2≤x≤4의 왼쪽(파랑), 안쪽(주황), 오른쪽(초록)에 있는 예(a=3/4, 5/4, 9/4)이고, 곡선의 세로 위치는 비교하기 쉽게 임의로 잡았다. 각 경우의 최댓값을 6과 같게 놓고 a를 구해 범위를 확인하면 꼭짓점이 구간 안에 있는 경우만 가능하다. 정답은 2분의 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -734,7 +734,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)와 주황 포물선 g(x), y축 위의 점 P(0,6)을 지나는 초록 직선 y=2x+6과 분홍 직선 y=6x+6이 있다. 두 직선은 모두 f(x)에 접하는 점을 하나씩 가지며 접점으로 표시했다. 초록 직선은 g(x)와 두 점에서 만나고 분홍 직선은 g(x)와 만나지 않는다.",
+    "solutionImageCaption": "점 P(0,6)을 지나므로 b=6이고, f(x)와 접하는 조건 (a−4)²−4=0에서 a=2 또는 a=6이다. 그림에서 초록 직선 y=2x+6은 g(x)와 두 점에서 만나고 분홍 직선 y=6x+6은 g(x)와 만나지 않으므로, g(x)와 두 점에서 만나는 것은 a=2일 때이다. 따라서 a, b를 더하면 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -880,9 +884,9 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_제일고_1학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "위로 볼록한 포물선 y=-x^2+4x+5가 직선 y=-2x+14와 T(3, 8)에서 접한다.",
-    "solutionImageCaption": "위로 볼록한 포물선 y=-x^2+4x+5가 직선 y=-2x+14와 T(3, 8)에서 접한다.",
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 f(x)는 꼭짓점 (2,9)와 x축과 만나는 두 점 (−1,0), (5,0)을 지나고, 초록 직선 y=−2x+14와 점 (3,8)에서 접한다. 주황 점선 포물선 g(x)는 아래로 볼록한 또 다른 후보로, 같은 직선과 두 점에서 만나 접하지 않으므로 답에 쓰지 않는다. 그림에는 오른쪽 교점 하나만 보이고 다른 교점은 그림 밖 왼쪽 위에 있다.",
+    "solutionImageCaption": "축이 x=2이고 구간 −1≤x≤4에서 최댓값 9, 최솟값 0이므로 포물선은 두 가지 후보가 있다. 위로 볼록한 파란 f(x)=−x²+4x+5는 직선 y=−2x+14와 x=3에서 중근을 가져 접하고, 아래로 볼록한 주황 점선 g(x)=(x−2)²는 직선과 두 점에서 만나(그림에는 오른쪽 한 점만 보이고 다른 점은 왼쪽 위 그림 밖에 있다) 조건 (다)를 만족하지 않으므로 버리는 후보이다. f(x)가 x축과 만나는 두 점의 x좌표로 α−β를 구하면 정답은 6이다.",
     "solutionImageSize": "full"
   }
 ];

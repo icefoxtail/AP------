@@ -33,6 +33,7 @@ assert(
     portalHtml.includes("session = { student_id: teacherPreviewStudentId, teacher_preview: true };") &&
     portalHtml.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
     portalHtml.includes("isTeacherPreview || submitted ? '' :") &&
+    portalHtml.includes("if (isTeacherPreview) {") &&
     !portalHtml.includes('교사 미리보기 ·'),
   'student portal should use a bannerless, read-only teacher preview session'
 );

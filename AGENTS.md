@@ -21,6 +21,7 @@
 - **검사를 약하게 만들지 않는다:** 테스트·검사를 생략하거나 격리하지 않고, 분모를 줄이거나 기준을 완화해 통과시키지 않는다.
 - **병합과 배포는 따로 기록한다:** `main` 반영은 사용자 승인 범위와 해당 작업의 필수 검사·병합 조건을 지킨다. CI·Pages·학생 배포 결과는 사실대로 따로 남긴다. 보호 규칙 우회, 강제 push, 다른 사람 브랜치의 이력 재작성은 하지 않는다.
 - **Git에는 운영물만 둔다:** 운영 소스·자산·런타임·빌드/테스트 도구·현행 계약만 커밋한다. 원시 이력·캡처·로그·렌더 출력 같은 증거는 Drive에 둔다(허용된 cold root와 절차: `docs/agents/git-evidence.md`).
+- **워크트리 정리:** 내 PR이 `main`에 병합되면 그 작업 워크트리는 바로 지운다. 남의 것·미병합 커밋이 있는 것은 지우지 않고 보고한다(절차: `docs/agents/git-evidence.md`). 이유: 워크트리 하나가 약 7GB라 C 드라이브가 가득 차 작업이 멈춘 일이 있었다.
 - **공유 데이터 고정값:** 원본 시험지 JS·공유 크로스워크·생성문항 Meta를 바꾸면 `docs/agents/common.md` "공유 데이터 고정값" 절을 따르고, 병합 전에 PR CI가 전부 녹색인지 확인한다. 이유: 다른 세션의 정상 수정이 해시 고정값을 깨 main CI·배포가 막힌 일이 있었다.
 - **Archive 2.0 코드:** 화면·검색·출력·저장 코드를 바꾸면 먼저 `docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 읽는다. 병합 전에 `node tools/check-archive2-runtime.cjs`를 통과시키고, 흐름을 바꿨으면 실제 Chrome으로 확인한다. 원본 기출은 `engine.html?data=exams/<file>&mode=exam|sol|ans`로 바로 열리게 유지한다.
 

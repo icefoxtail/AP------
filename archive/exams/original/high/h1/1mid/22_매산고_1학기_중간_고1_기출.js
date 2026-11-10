@@ -292,9 +292,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "교점의 $x$좌표는 $x^2-4x+3=2x-m+1$, 즉 $x^2-6x+(m+2)=0$의 실근이다. 만나지 않으려면 판별식 $36-4(m+2)<0$이어야 하므로 $m>7$. 최소 자연수는 $8$이므로 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "m=7이면 직선이 점 B에서 접하고, m=8이면 만나지 않는다.",
-    "solutionImageCaption": "m=7이면 직선이 점 B에서 접하고, m=8이면 만나지 않는다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 포물선 y=x²−4x+3에 주황 직선 y=2x−6이 접점 (3,0)에서 접하고, 그 아래쪽에 평행한 초록 직선 y=2x−9가 포물선과 만나지 않고 지나간다.",
+    "solutionImageCaption": "교점의 x좌표는 x²−6x+(m+2)=0의 실근이다. 판별식이 0인 m=7이면 직선 y=2x−6이 접점 (3,0)에서 접하고(주황), m이 7보다 커지면 직선이 아래로 내려가 포물선과 만나지 않는다(예: m=10일 때 초록 직선 y=2x−9). 따라서 36−4(m+2)<0에서 m>7이고, 이를 만족하는 최소의 자연수가 구하는 값이다. 정답은 8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -462,9 +462,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$f(a)-f(b)=(a-b)(a+b+4)=2b-2a=-2(a-b)$.\n$ a\\ne b$이므로 $a+b=-6$이다.\n두 식을 더하면 $a^2+b^2+4(a+b)-8=2(a+b)$이므로 $a^2+b^2=20$이다.\n따라서 $ab=\\frac{(a+b)^2-(a^2+b^2)}2=8$이다.\n$a,b$는 $t^2+6t+8=(t+2)(t+4)=0$의 두 근 $-4,-2$이므로 조건을 만족하는 서로 다른 실수가 실제로 존재한다.\n구하는 함수는 $y=x^2+2(a+b)x+4ab=x^2-12x+32=(x-6)^2-4$이므로 최솟값은 $-4$, 정답은 ③이다.",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "y=x^2-12x+32의 꼭짓점에서 최솟값 -4",
-    "solutionImageCaption": "y=x^2-12x+32의 꼭짓점에서 최솟값 -4",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 포물선 y=x²−12x+32가 가로축과 두 점 (4,0), (8,0)에서 만나고, 두 점 사이 가운데를 지나는 세로 점선 x=6 위에 꼭짓점이 표시되어 있다.",
+    "solutionImageCaption": "f(a)=2b, f(b)=2a를 변끼리 빼면 a+b=−6이고 더하면 a²+b²=20이므로 ab=8이다. 따라서 a, b는 t²+6t+8=0의 두 근 −4, −2이고, 구하는 함수는 y=(x+2a)(x+2b)=x²−12x+32이다. 그림의 파란 포물선은 가로축과 두 점 (4,0), (8,0)에서 만나고 축 x=6 위의 꼭짓점이 가장 낮다. 정답은 −4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -510,9 +510,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$t=x^2-2x=(x-1)^2-1$로 놓으면 $-1\\le x\\le1$에서 $-1\\le t\\le3$이다. 함수값은 $-t^2-t+4=-(t+\\frac12)^2+\\frac{17}{4}$이므로 최댓값 $M=\\frac{17}{4}$이다. 아래로 열린 이차함수이므로 구간 끝에서 최솟값을 비교하면 $t=-1$에서 $4$, $t=3$에서 $-8$이어서 $m=-8$. 따라서 $M+m=\\frac{17}{4}-8=-\\frac{15}{4}$이고 정답은 ①이다.",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "t=x²-2x로 놓으면 -1≤t≤3에서 최댓값은 꼭짓점, 최솟값은 t=3일 때이다.",
-    "solutionImageCaption": "t=x²-2x로 놓으면 -1≤t≤3에서 최댓값은 꼭짓점, 최솟값은 t=3일 때이다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 t로 한 위로 볼록한 파란 포물선 y=−t²−t+4의 −1≤t≤3 부분이다. 왼쪽 끝 (−1,4), 꼭짓점 V, 오른쪽 끝 (3,−8)이 점으로 표시되어 있다.",
+    "solutionImageCaption": "t=x²−2x=(x−1)²−1로 놓으면 −1≤x≤1에서 −1≤t≤3이고, 함수는 y=−t²−t+4=−(t+2분의 1)²+4분의 17이다. 그림의 파란 곡선에서 꼭짓점 V의 높이가 최댓값 M=4분의 17이고, 구간의 두 끝 (−1,4), (3,−8) 중 낮은 오른쪽 끝에서 최솟값 m=−8이다. 정답은 −4분의 15이다.",
     "solutionImageSize": "full"
   },
   {
@@ -759,7 +759,11 @@ window.questionBank = [
     "choices": [],
     "answer": "\\frac{20}{3}",
     "solution": "그림의 두 선분은 $BC$와 평행하므로 $\\triangle AQR$와 $\\triangle APS$는 각각 $\\triangle ABC$와 닮음이다. $t=BP/BA$ ($0\\le t\\le1$)라 두면 $AP/AB=1-t$이고, $Q$가 $BP$의 중점이므로 $AQ/AB=1-\\frac{t}{2}$이다. 따라서 $\\triangle AQR$의 넓이는 $20(1-\\frac{t}{2})^2$, $\\triangle APS$의 넓이는 $20(1-t)^2$이다. 사각형 $PQRS$의 넓이는 두 넓이의 차 $20(1-\\frac{t}{2})^2-20(1-t)^2=20t-15t^2$이다. 이를 완전제곱식으로 쓰면 $-15(t-\\frac{2}{3})^2+\\frac{20}{3}$이므로 $t=\\frac{2}{3}$일 때 최댓값은 $\\frac{20}{3}$이다.",
-    "image": "assets/images/22_매산고_1학기_중간_고1_기출/q18.png"
+    "image": "assets/images/22_매산고_1학기_중간_고1_기출/q18.png",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 AB 위에 점 P, Q가 있고 Q는 BP의 중점이다. P, Q에서 변 BC에 평행한 선분 PS, QR이 변 AC까지 그어져 있고, 화살표 표시는 PS, QR, BC가 서로 평행함을 나타낸다. 꼭짓점 A 쪽 작은 삼각형 APS는 파랑, 가운데 사각형 PQRS는 주황으로 칠했고, 변 AB 곁에 BP=t, PA=1−t가 적혀 있다.",
+    "solutionImageCaption": "예: BP:BA=1:2인 경우로 그렸고(t=2분의 1은 예시 값이다), 화살표 표시는 PS, QR, BC가 서로 평행하다는 뜻이다. 파랑 삼각형과 주황 사각형을 합친 것이 삼각형 AQR이다. 그림의 t와 1−t는 BA를 1로 볼 때 BP와 PA의 길이이다. PS, QR이 BC에 평행하므로 삼각형 APS와 삼각형 AQR은 삼각형 ABC와 닮음이고 넓이비는 닮음비의 제곱이다. t=BP:BA로 두면 삼각형 AQR의 넓이는 20(1−2분의 t)², 삼각형 APS의 넓이는 20(1−t)²이고, 주황 사각형의 넓이는 두 넓이의 차 20t−15t²이다. 이를 완전제곱식으로 고쳐 최댓값을 구한다. 정답은 3분의 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -834,9 +838,9 @@ window.questionBank = [
     "choices": [],
     "answer": "51",
     "solution": "$F=f-2$, $G=g-2$라 두면 각 이차식의 근은 $\\alpha,\\beta$ 중에서만 나오고 두 값이 모두 나타난다. 또 $f(\\alpha)=g(\\alpha)$이므로 $F,G$는 모두 $(x-\\alpha)$를 인수로 갖는다. $F,G$의 근이 모두 $\\alpha,\\beta$를 포함해야 하므로 가능한 배치는 $F=2(x-\\alpha)(x-\\beta),G=(x-\\alpha)^2$, $F=2(x-\\alpha)^2,G=(x-\\alpha)(x-\\beta)$, 또는 둘 다 $\\alpha,\\beta$를 근으로 갖는 경우이다. 마지막 경우 $f-g$의 다른 근은 $\\beta$라서 조건과 맞지 않는다. 두 번째 배치의 다른 근은 $2\\alpha-\\beta<\\alpha$라서 $\\beta+3$일 수 없다. 따라서 $F=2(x-\\alpha)(x-\\beta)$, $G=(x-\\alpha)^2$이고 $f-g=(x-\\alpha)(x-2\\beta+\\alpha)$이다. 다른 근이 $\\beta+3$이므로 $\\beta-\\alpha=3$이다. $y=x-\\alpha$라 두면 $f=2y^2-6y+2$, $g=y^2+2$. 이제 $f=k$와 $g=k$의 공통근은 $f-g=y(y-6)=0$에서 $y=0$ 또는 $6$일 때만 가능하다. 서로 다른 세 근이 되려면 한 근만 겹쳐야 한다. $y=0$이면 $k=2$이고 합집합의 서로 다른 근은 2개뿐이다. $y=6$이면 $k=38$이고 $f=k$의 근은 $6,-3$, $g=k$의 근은 $6,-6$이어서 서로 다른 세 근의 합은 $3\\alpha-3=12$이다. 따라서 $\\alpha=5$, $\\beta=8$이고 $\\alpha+\\beta+k=5+8+38=51$이다.",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "α=5, β=8, k=38일 때 y=38은 f, g와 모두 점 B(11, 38)에서 만나고, f와는 x=2에서, g와는 x=-1에서 한 번씩 더 만나 서로 다른 세 실근 -1, 2, 11이 생긴다.",
-    "solutionImageCaption": "α=5, β=8, k=38일 때 y=38은 f, g와 모두 점 B(11, 38)에서 만나고, f와는 x=2에서, g와는 x=-1에서 한 번씩 더 만나 서로 다른 세 실근 -1, 2, 11이 생긴다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f(x)와 주황 곡선 g(x)가 점 A(5,2)에서 만나고, 초록 직선 y=38이 두 곡선과 모두 점 (11,38)에서 만나며 f와는 점 (2,38), g와는 점 (−1,38)에서 한 번씩 더 만난다. 곡선 이름은 지시선으로 달았다.",
+    "solutionImageCaption": "F=f−2, G=g−2로 두면 F=2(x−α)(x−β), G=(x−α)²이고 β−α=3이다. 그림은 α=5, β=8, k=38일 때의 f(x)(파랑), g(x)(주황)와 직선 y=38(초록)이다. 직선이 f, g와 모두 점 (11,38)에서 만나고 f와 점 (2,38), g와 점 (−1,38)에서 한 번씩 더 만나 서로 다른 세 실근 −1, 2, 11의 합이 12이다. 정답은 51이다.",
     "solutionImageSize": "full"
   }
 ];

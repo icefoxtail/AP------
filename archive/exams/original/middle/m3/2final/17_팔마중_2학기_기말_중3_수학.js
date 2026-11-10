@@ -14,7 +14,11 @@ window.examData = {
         "$\\sin A = \\tan B$"
       ],
       "answer": "④",
-      "solution": "직각삼각형이므로 $\\angle A+\\angle B=90^\\circ$이다.<br>$\\cos A=\\sin(90^\\circ-A)=\\sin B$이므로 항상 옳은 것은 ④이다."
+      "solution": "직각삼각형이므로 $\\angle A+\\angle B=90^\\circ$이다.<br>$\\cos A=\\sin(90^\\circ-A)=\\sin B$이므로 항상 옳은 것은 ④이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형의 직각 꼭짓점과 두 예각을 나타낸 그림이다. 한 예각은 파랑, 다른 예각은 주황으로 칠했다.",
+      "solutionImageCaption": "∠C=90°이므로 ∠A와 ∠B는 합이 90°인 여각이다. 따라서 cos A=sin(90°−A)=sin B가 항상 성립한다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
@@ -42,7 +46,11 @@ window.examData = {
         "$(\\sin 90^\\circ - \\sin 45^\\circ)(\\cos 0^\\circ + \\cos 45^\\circ) = \\dfrac{1}{2}$"
       ],
       "answer": "②",
-      "solution": "① $\\sin90^\\circ=1$, $\\cos0^\\circ=1$이다.<br>$\\sin90^\\circ\\times\\cos0^\\circ=1\\times1$이다.<br>$1\\times1=1$이므로 ①은 옳다.<br>② $\\tan45^\\circ=1$이다.<br>$(1-\\tan45^\\circ)(1+\\tan45^\\circ)=(1-1)(1+1)$이다.<br>$(1-1)(1+1)=0\\times2$이다.<br>$0\\times2=0$이므로 ②는 옳지 않다.<br>③ $\\sin0^\\circ=0$, $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이다.<br>$\\sin0^\\circ-\\tan30^\\circ+\\sin60^\\circ=0-\\dfrac{\\sqrt3}{3}+\\dfrac{\\sqrt3}{2}$이다.<br>$0-\\dfrac{\\sqrt3}{3}+\\dfrac{\\sqrt3}{2}=-\\dfrac{2\\sqrt3}{6}+\\dfrac{3\\sqrt3}{6}$이다. (분모를 6으로 통일했다.)<br>$-\\dfrac{2\\sqrt3}{6}+\\dfrac{3\\sqrt3}{6}=\\dfrac{\\sqrt3}{6}$이므로 ③은 옳다.<br>④ $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\sin0^\\circ=0$이다.<br>$\\tan30^\\circ\\times\\tan45^\\circ+\\sin0^\\circ=\\dfrac{\\sqrt3}{3}\\times1+0$이다.<br>$\\dfrac{\\sqrt3}{3}\\times1+0=\\dfrac{\\sqrt3}{3}$이므로 ④는 옳다.<br>⑤ $\\sin90^\\circ=1$, $\\sin45^\\circ=\\dfrac{\\sqrt2}{2}$, $\\cos0^\\circ=1$, $\\cos45^\\circ=\\dfrac{\\sqrt2}{2}$이다.<br>$(\\sin90^\\circ-\\sin45^\\circ)(\\cos0^\\circ+\\cos45^\\circ)=(1-\\dfrac{\\sqrt2}{2})(1+\\dfrac{\\sqrt2}{2})$이다.<br>합차 공식에 따라 $(1-\\dfrac{\\sqrt2}{2})(1+\\dfrac{\\sqrt2}{2})=1-(\\dfrac{\\sqrt2}{2})^2$이다.<br>$1-(\\dfrac{\\sqrt2}{2})^2=1-\\dfrac12$이다.<br>$1-\\dfrac12=\\dfrac12$이므로 ⑤는 옳다.<br>따라서 옳지 않은 것은 ②이다."
+      "solution": "① $\\sin90^\\circ=1$, $\\cos0^\\circ=1$이다.<br>$\\sin90^\\circ\\times\\cos0^\\circ=1\\times1$이다.<br>$1\\times1=1$이므로 ①은 옳다.<br>② $\\tan45^\\circ=1$이다.<br>$(1-\\tan45^\\circ)(1+\\tan45^\\circ)=(1-1)(1+1)$이다.<br>$(1-1)(1+1)=0\\times2$이다.<br>$0\\times2=0$이므로 ②는 옳지 않다.<br>③ $\\sin0^\\circ=0$, $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이다.<br>$\\sin0^\\circ-\\tan30^\\circ+\\sin60^\\circ=0-\\dfrac{\\sqrt3}{3}+\\dfrac{\\sqrt3}{2}$이다.<br>$0-\\dfrac{\\sqrt3}{3}+\\dfrac{\\sqrt3}{2}=-\\dfrac{2\\sqrt3}{6}+\\dfrac{3\\sqrt3}{6}$이다. (분모를 6으로 통일했다.)<br>$-\\dfrac{2\\sqrt3}{6}+\\dfrac{3\\sqrt3}{6}=\\dfrac{\\sqrt3}{6}$이므로 ③은 옳다.<br>④ $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\sin0^\\circ=0$이다.<br>$\\tan30^\\circ\\times\\tan45^\\circ+\\sin0^\\circ=\\dfrac{\\sqrt3}{3}\\times1+0$이다.<br>$\\dfrac{\\sqrt3}{3}\\times1+0=\\dfrac{\\sqrt3}{3}$이므로 ④는 옳다.<br>⑤ $\\sin90^\\circ=1$, $\\sin45^\\circ=\\dfrac{\\sqrt2}{2}$, $\\cos0^\\circ=1$, $\\cos45^\\circ=\\dfrac{\\sqrt2}{2}$이다.<br>$(\\sin90^\\circ-\\sin45^\\circ)(\\cos0^\\circ+\\cos45^\\circ)=(1-\\dfrac{\\sqrt2}{2})(1+\\dfrac{\\sqrt2}{2})$이다.<br>합차 공식에 따라 $(1-\\dfrac{\\sqrt2}{2})(1+\\dfrac{\\sqrt2}{2})=1-(\\dfrac{\\sqrt2}{2})^2$이다.<br>$1-(\\dfrac{\\sqrt2}{2})^2=1-\\dfrac12$이다.<br>$1-\\dfrac12=\\dfrac12$이므로 ⑤는 옳다.<br>따라서 옳지 않은 것은 ②이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 특수각의 삼각비 값을 읽기 위한 두 직각삼각형이다. 한쪽은 한 예각이 30°이고 나머지 예각이 60°이며 변의 길이가 1, √3, 2이다. 다른 쪽은 두 예각이 모두 45°이고 변의 길이가 1, 1, √2이다. 한 예각은 파랑, 다른 예각은 주황으로 칠했다.",
+      "solutionImageCaption": "30°, 60°, 90° 삼각형의 변의 길이의 비는 1:√3:2이고 45°, 45°, 90° 삼각형은 1:1:√2이다. 여기서 sin30°=1/2, tan30°=√3/3, sin60°=√3/2, tan45°=1, sin45°=cos45°=√2/2를 읽을 수 있다. 이 값을 보기에 대입하면 ②는 (1−1)(1+1)=0이 되어 1이 아니다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 4,
@@ -56,7 +64,11 @@ window.examData = {
         "$\\dfrac{3\\sqrt{5}-5}{5}\\text{ cm}$"
       ],
       "answer": "①",
-      "solution": "$\\angle A=30^\\circ$이고 $\\cos60^\\circ=BC/AB$이다.<br>$AB=BC/\\cos60^\\circ$이다. (코사인의 정의를 이용했다.)<br>$AB=3/(\\frac{1}{2})$이다. (주어진 길이와 삼각비를 대입했다.)<br>$AB=6$ cm이다.<br>$\\tan60^\\circ=AC/BC$이므로 $AC=BC\\tan60^\\circ$이다. (탄젠트의 정의를 이용했다.)<br>$AC=3\\sqrt3$ cm이다.<br>접선의 길이는 한 점에서 그은 두 접선에서 같고, 직각 꼭짓점 C에서 접점까지의 접선 길이는 반지름 $r$과 같다.<br>A, B에서 접점까지의 길이를 각각 $p,q$라 하면 $AB=p+q$, $AC=p+r$, $BC=q+r$이다.<br>$AC+BC-AB=(p+r)+(q+r)-(p+q)$이다. (접선 길이의 식을 대입했다.)<br>$AC+BC-AB=2r$이다. (같은 항을 정리했다.)<br>$2r=AC+BC-AB$이다.<br>$2r=3\\sqrt3+3-6$이다. (변의 길이를 대입했다.)<br>$2r=3\\sqrt3-3$이다. (정리했다.)<br>$r=\\dfrac{3\\sqrt3-3}{2}$ cm이므로 ①이다."
+      "solution": "$\\angle A=30^\\circ$이고 $\\cos60^\\circ=BC/AB$이다.<br>$AB=BC/\\cos60^\\circ$이다. (코사인의 정의를 이용했다.)<br>$AB=3/(\\frac{1}{2})$이다. (주어진 길이와 삼각비를 대입했다.)<br>$AB=6$ cm이다.<br>$\\tan60^\\circ=AC/BC$이므로 $AC=BC\\tan60^\\circ$이다. (탄젠트의 정의를 이용했다.)<br>$AC=3\\sqrt3$ cm이다.<br>접선의 길이는 한 점에서 그은 두 접선에서 같고, 직각 꼭짓점 C에서 접점까지의 접선 길이는 반지름 $r$과 같다.<br>A, B에서 접점까지의 길이를 각각 $p,q$라 하면 $AB=p+q$, $AC=p+r$, $BC=q+r$이다.<br>$AC+BC-AB=(p+r)+(q+r)-(p+q)$이다. (접선 길이의 식을 대입했다.)<br>$AC+BC-AB=2r$이다. (같은 항을 정리했다.)<br>$2r=AC+BC-AB$이다.<br>$2r=3\\sqrt3+3-6$이다. (변의 길이를 대입했다.)<br>$2r=3\\sqrt3-3$이다. (정리했다.)<br>$r=\\dfrac{3\\sqrt3-3}{2}$ cm이므로 ①이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형과 그 내접원이다. 변 BC의 길이 3 cm, 빗변과 다른 직각변의 길이, 60°와 직각 표시, 접점에서 중심으로 그은 두 반지름(파랑)이 있다.",
+      "solutionImageCaption": "AB=6 cm, AC=3√3 cm이다. 접선의 길이가 같으므로 AC+BC−AB=2r이고 2r=3√3+3−6이다. 정답은 ①(r=(3√3−3)/2 cm)이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,
@@ -70,7 +82,11 @@ window.examData = {
         "$15\\text{ (초)}$"
       ],
       "answer": "②",
-      "solution": "비탈길 $AC$와 수평면이 이루는 각이 $25^\\circ$이고 높이가 10 m이므로 $\\sin25^\\circ=\\dfrac{10}{AC}$이다.<br>$AC=\\dfrac{10}{0.4}=25$ m이다.<br>시간은 거리÷속력이므로 $25\\div2=12.5$초이다. 따라서 ②이다."
+      "solution": "비탈길 $AC$와 수평면이 이루는 각이 $25^\\circ$이고 높이가 10 m이므로 $\\sin25^\\circ=\\dfrac{10}{AC}$이다.<br>$AC=\\dfrac{10}{0.4}=25$ m이다.<br>시간은 거리÷속력이므로 $25\\div2=12.5$초이다. 따라서 ②이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 수평면과 25°를 이루는 비탈길과 높이 10 m를 나타낸 직각삼각형이다.",
+      "solutionImageCaption": "sin25°=10/AC이고 sin25°=0.4이므로 AC=25 m이다. 시간은 25÷2=12.5초이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 6,
@@ -84,7 +100,11 @@ window.examData = {
         "$36\\sqrt{2}\\text{ cm}^2$"
       ],
       "answer": "④",
-      "solution": "$AB=AC$인 이등변삼각형이므로 밑각은 같다.<br>$\\angle C=\\angle B=75^\\circ$이다.<br>삼각형의 내각의 합은 $180^\\circ$이다.<br>$\\angle A=180^\\circ-75^\\circ-75^\\circ$이다.<br>$180^\\circ-75^\\circ=105^\\circ$이다.<br>$\\angle A=105^\\circ-75^\\circ$이다.<br>$\\angle A=30^\\circ$이다.<br>삼각형의 넓이는 두 변과 그 끼인각을 이용하여 $[ABC]=\\dfrac12 AB\\cdot AC\\sin A$이다.<br>$[ABC]=\\dfrac12\\times12\\times12\\times\\sin30^\\circ$이다.<br>$[ABC]=\\dfrac12\\times12\\times12\\times\\dfrac12$이다. (삼각비의 값을 대입했다.)<br>$[ABC]=36$ cm$^2$이다. 따라서 ④이다."
+      "solution": "$AB=AC$인 이등변삼각형이므로 밑각은 같다.<br>$\\angle C=\\angle B=75^\\circ$이다.<br>삼각형의 내각의 합은 $180^\\circ$이다.<br>$\\angle A=180^\\circ-75^\\circ-75^\\circ$이다.<br>$180^\\circ-75^\\circ=105^\\circ$이다.<br>$\\angle A=105^\\circ-75^\\circ$이다.<br>$\\angle A=30^\\circ$이다.<br>삼각형의 넓이는 두 변과 그 끼인각을 이용하여 $[ABC]=\\dfrac12 AB\\cdot AC\\sin A$이다.<br>$[ABC]=\\dfrac12\\times12\\times12\\times\\sin30^\\circ$이다.<br>$[ABC]=\\dfrac12\\times12\\times12\\times\\dfrac12$이다. (삼각비의 값을 대입했다.)<br>$[ABC]=36$ cm$^2$이다. 따라서 ④이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: AB와 AC의 길이가 같은 이등변삼각형이다. 두 변은 12 cm로 파랑 표시와 눈금이 있고, 밑각 75°가 두 곳에, 꼭지각 30°가 표시되어 있다.",
+      "solutionImageCaption": "밑각이 75°이므로 ∠A=30°이다. 넓이는 1/2×12×12×sin30°=36 cm²이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 7,
@@ -98,7 +118,11 @@ window.examData = {
         "$6\\sqrt{2}\\text{ cm}^2$"
       ],
       "answer": "①",
-      "solution": "평행사변형의 이웃한 각의 합은 $180^\\circ$이다.<br>$\\angle B=180^\\circ-150^\\circ$이다.<br>$\\angle B=30^\\circ$이다.<br>A에서 직선 BC에 내린 수선의 발을 H라 하자.<br>$BH=AB\\cos30^\\circ$이다. (직각삼각형 ABH에서 코사인의 정의를 썼다.)<br>$BH=4\\times\\dfrac{\\sqrt3}{2}$이다.<br>$BH=2\\sqrt3$이다.<br>$BC=\\sqrt3<2\\sqrt3=BH$이므로 H는 C 너머 직선 BC의 연장선 위에 있다.<br>높이는 $AH=AB\\sin30^\\circ$이다. (직각삼각형 ABH에서 사인의 정의를 썼다.)<br>$AH=4\\times\\dfrac12$이다.<br>$AH=2$ cm이다.<br>평행사변형의 넓이는 밑변과 그에 대한 높이의 곱이다.<br>$[ABCD]=BC\\times AH$이다.<br>$[ABCD]=\\sqrt3\\times2$이다.<br>$[ABCD]=2\\sqrt3$ cm$^2$이므로 ①이다."
+      "solution": "평행사변형의 이웃한 각의 합은 $180^\\circ$이다.<br>$\\angle B=180^\\circ-150^\\circ$이다.<br>$\\angle B=30^\\circ$이다.<br>A에서 직선 BC에 내린 수선의 발을 H라 하자.<br>$BH=AB\\cos30^\\circ$이다. (직각삼각형 ABH에서 코사인의 정의를 썼다.)<br>$BH=4\\times\\dfrac{\\sqrt3}{2}$이다.<br>$BH=2\\sqrt3$이다.<br>$BC=\\sqrt3<2\\sqrt3=BH$이므로 H는 C 너머 직선 BC의 연장선 위에 있다.<br>높이는 $AH=AB\\sin30^\\circ$이다. (직각삼각형 ABH에서 사인의 정의를 썼다.)<br>$AH=4\\times\\dfrac12$이다.<br>$AH=2$ cm이다.<br>평행사변형의 넓이는 밑변과 그에 대한 높이의 곱이다.<br>$[ABCD]=BC\\times AH$이다.<br>$[ABCD]=\\sqrt3\\times2$이다.<br>$[ABCD]=2\\sqrt3$ cm$^2$이므로 ①이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형과 꼭짓점 A에서 직선 BC에 내린 수선(주황)이다. 수선의 발은 C 너머 연장선(점선) 위에 있고, AB=4 cm, BC=√3 cm, ∠A=150°, ∠B=30°가 표시되어 있다.",
+      "solutionImageCaption": "∠B=30°이므로 높이는 AH=4 sin30°=2 cm이다. 넓이는 BC×AH=√3×2=2√3 cm²이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -112,7 +136,11 @@ window.examData = {
         "$15\\sqrt{3}\\text{ (cm}^2\\text{)}$"
       ],
       "answer": "①",
-      "solution": "대각선 AC와 BD의 교점을 X라 하고, B와 D에서 직선 AC에 내린 수선의 발을 각각 M, N이라 하자.<br>삼각형 BXC에서 $\\angle XBC=\\angle CBD=40^\\circ$, $\\angle BCX=\\angle BCA=80^\\circ$이다.<br>$40^\\circ+80^\\circ=120^\\circ$이다.<br>$\\angle BXC=180^\\circ-120^\\circ$이다. (삼각형의 내각의 합을 이용했다.)<br>$\\angle BXC=60^\\circ$이다.<br>따라서 직선 BD와 AC가 이루는 예각은 $60^\\circ$이다.<br>직각삼각형 BXM에서 $BM=BX\\sin60^\\circ$이다. (BM은 AC에 수직인 높이이다.)<br>직각삼각형 DXN에서 $DN=DX\\sin60^\\circ$이다. (DN도 AC에 수직인 높이이다.)<br>사각형의 넓이는 대각선 AC가 나누는 두 삼각형 넓이의 합이다.<br>$[ABCD]=[ABC]+[ACD]$이다.<br>$[ABCD]=\\dfrac12 AC\\cdot BM+\\dfrac12 AC\\cdot DN$이다. (두 삼각형의 밑변은 AC이다.)<br>$[ABCD]=\\dfrac12 AC(BM+DN)$이다.<br>$[ABCD]=\\dfrac12 AC(BX\\sin60^\\circ+DX\\sin60^\\circ)$이다. (두 높이의 식을 대입했다.)<br>$[ABCD]=\\dfrac12 AC(BX+DX)\\sin60^\\circ$이다. (공통인 $\\sin60^\\circ$를 묶었다.)<br>$BX+DX=BD$이므로 $[ABCD]=\\dfrac12 AC\\cdot BD\\cdot\\sin60^\\circ$이다.<br>$[ABCD]=\\dfrac12\\times8\\times6\\times\\dfrac{\\sqrt3}{2}$이다. (대각선의 길이를 대입했다.)<br>$[ABCD]=24\\times\\dfrac{\\sqrt3}{2}$이다.<br>$[ABCD]=12\\sqrt3$ cm$^2$이므로 ①이다."
+      "solution": "대각선 AC와 BD의 교점을 X라 하고, B와 D에서 직선 AC에 내린 수선의 발을 각각 M, N이라 하자.<br>삼각형 BXC에서 $\\angle XBC=\\angle CBD=40^\\circ$, $\\angle BCX=\\angle BCA=80^\\circ$이다.<br>$40^\\circ+80^\\circ=120^\\circ$이다.<br>$\\angle BXC=180^\\circ-120^\\circ$이다. (삼각형의 내각의 합을 이용했다.)<br>$\\angle BXC=60^\\circ$이다.<br>따라서 직선 BD와 AC가 이루는 예각은 $60^\\circ$이다.<br>직각삼각형 BXM에서 $BM=BX\\sin60^\\circ$이다. (BM은 AC에 수직인 높이이다.)<br>직각삼각형 DXN에서 $DN=DX\\sin60^\\circ$이다. (DN도 AC에 수직인 높이이다.)<br>사각형의 넓이는 대각선 AC가 나누는 두 삼각형 넓이의 합이다.<br>$[ABCD]=[ABC]+[ACD]$이다.<br>$[ABCD]=\\dfrac12 AC\\cdot BM+\\dfrac12 AC\\cdot DN$이다. (두 삼각형의 밑변은 AC이다.)<br>$[ABCD]=\\dfrac12 AC(BM+DN)$이다.<br>$[ABCD]=\\dfrac12 AC(BX\\sin60^\\circ+DX\\sin60^\\circ)$이다. (두 높이의 식을 대입했다.)<br>$[ABCD]=\\dfrac12 AC(BX+DX)\\sin60^\\circ$이다. (공통인 $\\sin60^\\circ$를 묶었다.)<br>$BX+DX=BD$이므로 $[ABCD]=\\dfrac12 AC\\cdot BD\\cdot\\sin60^\\circ$이다.<br>$[ABCD]=\\dfrac12\\times8\\times6\\times\\dfrac{\\sqrt3}{2}$이다. (대각선의 길이를 대입했다.)<br>$[ABCD]=24\\times\\dfrac{\\sqrt3}{2}$이다.<br>$[ABCD]=12\\sqrt3$ cm$^2$이므로 ①이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 대각선이 점 X에서 만나는 사각형이다. 각 대각선을 따로 펼쳐 길이 8 cm(AC)와 6 cm(BD)를 나타냈고 ∠DBC=40°, ∠BCA=80°, 교각 60°가 있다.",
+      "solutionImageCaption": "삼각형 BXC의 내각의 합에서 교각은 60°이다. 넓이는 1/2×AC×BD×sin60°=1/2×8×6×√3/2이다. 정답은 ①(12√3 cm²)이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -126,7 +154,11 @@ window.examData = {
         "(ㄴ), (ㄹ), (ㅁ)"
       ],
       "answer": "⑤",
-      "solution": "중심에서 현에 내린 수선은 현을 이등분하므로 $AM=MB$, $DN=NC$이다.<br>$AM=DN$이므로 $AB=2AM=2DN=CD$이고, 같은 원에서 같은 현에 대한 작은 호의 크기도 같으므로 ㄱ과 ㄷ은 옳다.<br>$OA=OC$, $OB=OD$, $AB=CD$이므로 세 변의 길이가 각각 같으므로 $\\triangle OAB\\equiv\\triangle OCD$이다. 따라서 ㅂ도 옳다.<br>그러나 $OM=BM$은 주어진 조건에서 나오지 않는다. 또 두 현의 상대적 방향에 대한 조건이 없어 호 $AC$와 호 $BD$, 그리고 $\\angle AOC$와 $\\angle BOD$가 같다고 할 수 없다.<br>옳지 않은 것은 ㄴ, ㄹ, ㅁ이므로 ⑤이다."
+      "solution": "중심에서 현에 내린 수선은 현을 이등분하므로 $AM=MB$, $DN=NC$이다.<br>$AM=DN$이므로 $AB=2AM=2DN=CD$이고, 같은 원에서 같은 현에 대한 작은 호의 크기도 같으므로 ㄱ과 ㄷ은 옳다.<br>$OA=OC$, $OB=OD$, $AB=CD$이므로 세 변의 길이가 각각 같으므로 $\\triangle OAB\\equiv\\triangle OCD$이다. 따라서 ㅂ도 옳다.<br>그러나 $OM=BM$은 주어진 조건에서 나오지 않는다. 또 두 현의 상대적 방향에 대한 조건이 없어 호 $AC$와 호 $BD$, 그리고 $\\angle AOC$와 $\\angle BOD$가 같다고 할 수 없다.<br>옳지 않은 것은 ㄴ, ㄹ, ㅁ이므로 ⑤이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 예시 배치이다. 원 O 안의 두 현 AB와 CD, 중심에서 각 현에 내린 수선 OM, ON이 있다. AB와 CD는 파랑, 반지름은 분홍으로 표시했고 삼각형 OAB와 OCD를 같은 색으로 칠했다.",
+      "solutionImageCaption": "예: 중심에서 현에 내린 수선은 현을 이등분하므로 AM=DN에서 AB=CD이다. 반지름이 같아 삼각형 OAB와 OCD는 세 변이 같아 합동이다. 그러나 OM=BM이나 두 현의 상대 위치에 대한 호·각의 관계는 알 수 없다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -140,7 +172,11 @@ window.examData = {
         "$8\\sqrt{7}\\text{ cm}^2$"
       ],
       "answer": "③",
-      "solution": "원의 중심을 O라 하자. $AH=BH$이고 $HP\\perp AB$이므로 현 AB의 수직이등분선 위에 O, H, P가 있다.<br>P는 반지름이 8 cm인 원 위에 있으므로 $OP=8$ cm이다.<br>그림에서 H는 O와 P 사이에 있으므로 $OH=OP-HP$이다.<br>$OH=8-2$이다.<br>$OH=6$ cm이다.<br>직각삼각형 OHA에서 피타고라스 정리를 쓰면 $AH^2=OA^2-OH^2$이다.<br>$AH^2=8^2-6^2$이다.<br>$AH^2=28$이다.<br>$AH=\\sqrt{28}$이다.<br>$AH=2\\sqrt7$ cm이다.<br>$AH=BH$이므로 $AB=2AH$이다.<br>$AB=2\\times2\\sqrt7$이다.<br>$AB=4\\sqrt7$ cm이다.<br>삼각형의 넓이는 밑변 곱하기 높이를 2로 나눈 값이다.<br>$[APB]=\\dfrac12\\times AB\\times HP$이다.<br>$[APB]=\\dfrac12\\times4\\sqrt7\\times2$이다.<br>$[APB]=4\\sqrt7$ cm$^2$이므로 ③이다."
+      "solution": "원의 중심을 O라 하자. $AH=BH$이고 $HP\\perp AB$이므로 현 AB의 수직이등분선 위에 O, H, P가 있다.<br>P는 반지름이 8 cm인 원 위에 있으므로 $OP=8$ cm이다.<br>그림에서 H는 O와 P 사이에 있으므로 $OH=OP-HP$이다.<br>$OH=8-2$이다.<br>$OH=6$ cm이다.<br>직각삼각형 OHA에서 피타고라스 정리를 쓰면 $AH^2=OA^2-OH^2$이다.<br>$AH^2=8^2-6^2$이다.<br>$AH^2=28$이다.<br>$AH=\\sqrt{28}$이다.<br>$AH=2\\sqrt7$ cm이다.<br>$AH=BH$이므로 $AB=2AH$이다.<br>$AB=2\\times2\\sqrt7$이다.<br>$AB=4\\sqrt7$ cm이다.<br>삼각형의 넓이는 밑변 곱하기 높이를 2로 나눈 값이다.<br>$[APB]=\\dfrac12\\times AB\\times HP$이다.<br>$[APB]=\\dfrac12\\times4\\sqrt7\\times2$이다.<br>$[APB]=4\\sqrt7$ cm$^2$이므로 ③이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 원의 현 AB, 중점 H, 수선 HP와 삼각형 APB(주황)이다. 중심 O에서 P까지 반지름 8 cm, HP=2 cm, OH=6 cm를 따로 펼쳐 보였다.",
+      "solutionImageCaption": "OH=8−2=6 cm이다. 피타고라스 정리로 AH=2√7 cm, AB=4√7 cm이다. 넓이는 1/2×AB×HP이다. 정답은 ③(4√7 cm²)이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -154,7 +190,11 @@ window.examData = {
         "$14\\text{ cm}$"
       ],
       "answer": "②",
-      "solution": "내접원에서 꼭짓점 B에 그은 두 접선의 길이를 $t$라 하고, A와 C에서 접선의 길이를 각각 $p,q$라 하자.<br>접선 길이가 같으므로 $AB=p+t$, $BC=t+q$, $AC=p+q$이다.<br>$AB+BC-AC=(p+t)+(t+q)-(p+q)$이다. (각 변을 접선 길이로 나타냈다.)<br>$AB+BC-AC=2t$이다. (같은 항을 정리했다.)<br>$2t=AB+BC-AC$이다.<br>$2t=8+10-7$이다. (주어진 변의 길이를 대입했다.)<br>$2t=11$이다.<br>그림에서 D와 E는 각 변의 B 쪽 접점보다 B에 가깝고, DE의 접점은 D와 E 사이에 있다.<br>접선 길이가 같으므로 $DE=(t-BD)+(t-BE)$이다.<br>삼각형 BDE의 둘레는 $BD+DE+BE$이다.<br>$BD+DE+BE=BD+(t-BD)+(t-BE)+BE$이다.<br>$BD+DE+BE=2t$이다.<br>$BD+DE+BE=11$ cm이므로 ②이다."
+      "solution": "내접원에서 꼭짓점 B에 그은 두 접선의 길이를 $t$라 하고, A와 C에서 접선의 길이를 각각 $p,q$라 하자.<br>접선 길이가 같으므로 $AB=p+t$, $BC=t+q$, $AC=p+q$이다.<br>$AB+BC-AC=(p+t)+(t+q)-(p+q)$이다. (각 변을 접선 길이로 나타냈다.)<br>$AB+BC-AC=2t$이다. (같은 항을 정리했다.)<br>$2t=AB+BC-AC$이다.<br>$2t=8+10-7$이다. (주어진 변의 길이를 대입했다.)<br>$2t=11$이다.<br>그림에서 D와 E는 각 변의 B 쪽 접점보다 B에 가깝고, DE의 접점은 D와 E 사이에 있다.<br>접선 길이가 같으므로 $DE=(t-BD)+(t-BE)$이다.<br>삼각형 BDE의 둘레는 $BD+DE+BE$이다.<br>$BD+DE+BE=BD+(t-BD)+(t-BE)+BE$이다.<br>$BD+DE+BE=2t$이다.<br>$BD+DE+BE=11$ cm이므로 ②이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC와 내접원 O, 원에 접하는 선분 DE이다. AB=8 cm, BC=10 cm, CA=7 cm이고 삼각형 BDE를 주황으로 칠했다.",
+      "solutionImageCaption": "B에서 두 접선의 길이를 t라 하면 AB+BC−AC=2t=11이다. 삼각형 BDE의 둘레는 BD+DE+BE=2t이다. 정답은 ②(11 cm)이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -168,7 +208,11 @@ window.examData = {
         "$5\\sqrt{2}\\text{ cm}$"
       ],
       "answer": "③",
-      "solution": "접선의 길이는 한 점에서 그은 두 접선에서 같으므로 $PA=PB$이다. 또 $OA=OB=5$ cm이고 OP는 공통변이다.<br>세 변의 길이가 각각 같으므로 $\\triangle OPA\\cong\\triangle OPB$이고, OP는 $\\angle AOB$를 이등분한다.<br>$\\angle AOP=\\dfrac{120^\\circ}{2}=60^\\circ$이다.<br>접선과 반지름은 수직이므로 $\\angle OAP=90^\\circ$이다.<br>직각삼각형 OAP에서 $\\tan60^\\circ=\\dfrac{PA}{OA}$이므로 $PA=5\\sqrt3$ cm이다. 따라서 ③이다."
+      "solution": "접선의 길이는 한 점에서 그은 두 접선에서 같으므로 $PA=PB$이다. 또 $OA=OB=5$ cm이고 OP는 공통변이다.<br>세 변의 길이가 각각 같으므로 $\\triangle OPA\\cong\\triangle OPB$이고, OP는 $\\angle AOB$를 이등분한다.<br>$\\angle AOP=\\dfrac{120^\\circ}{2}=60^\\circ$이다.<br>접선과 반지름은 수직이므로 $\\angle OAP=90^\\circ$이다.<br>직각삼각형 OAP에서 $\\tan60^\\circ=\\dfrac{PA}{OA}$이므로 $PA=5\\sqrt3$ cm이다. 따라서 ③이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O와 접점 A, B에서 그은 두 접선 PA, PB이다. 반지름 5 cm, ∠AOB=120°, 반으로 나뉜 각 60°, 접점에서의 직각 표시가 있고 PA와 PB(주황)는 길이가 같다.",
+      "solutionImageCaption": "OP는 ∠AOB를 이등분하므로 ∠AOP=60°이다. 직각삼각형 OAP에서 PA=5 tan60°=5√3 cm이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -182,7 +226,11 @@ window.examData = {
         "$58^\\circ$"
       ],
       "answer": "④",
-      "solution": "$OB=OD$이므로 $\\triangle OBD$는 이등변삼각형이다.<br>$\\angle DOB=180^\\circ-65^\\circ-65^\\circ$이다.<br>$180^\\circ-65^\\circ=115^\\circ$이다.<br>$\\angle DOB=115^\\circ-65^\\circ$이다.<br>$\\angle DOB=50^\\circ$이다.<br>$x=\\angle APB=\\angle COD$라 하자.<br>호 CB에 대한 중심각은 $\\angle COD+\\angle DOB=x+50^\\circ$이다.<br>같은 호 CB에 대한 원주각은 중심각의 절반이므로 $\\angle CAB=\\dfrac{x+50^\\circ}{2}$이다.<br>P, A, C가 한 직선 위이고 P, D, B가 한 직선 위이므로 $\\angle PAB=\\angle CAB$, $\\angle PBA=\\angle DBO=65^\\circ$이다.<br>삼각형 PAB의 내각의 합에서 $x+\\dfrac{x+50^\\circ}{2}+65^\\circ=180^\\circ$이다.<br>양변에 2를 곱하면 $2x+x+50^\\circ+130^\\circ=360^\\circ$이다.<br>같은 항을 모으면 $3x+180^\\circ=360^\\circ$이다.<br>양변에서 $180^\\circ$를 빼면 $3x=180^\\circ$이다.<br>양변을 3으로 나누면 $x=60^\\circ$이다.<br>반원에서 중심각의 합은 $180^\\circ$이다.<br>$\\angle AOC=180^\\circ-60^\\circ-50^\\circ$이다.<br>$180^\\circ-60^\\circ=120^\\circ$이다.<br>$\\angle AOC=120^\\circ-50^\\circ$이다.<br>$\\angle AOC=70^\\circ$이다.<br>$OA=OC$이므로 $\\triangle AOC$는 이등변삼각형이다.<br>$\\angle ACO=(180^\\circ-70^\\circ)/2$이다.<br>$180^\\circ-70^\\circ=110^\\circ$이다.<br>$\\angle ACO=110^\\circ/2$이다.<br>$\\angle ACO=55^\\circ$이다. 따라서 ④이다."
+      "solution": "$OB=OD$이므로 $\\triangle OBD$는 이등변삼각형이다.<br>$\\angle DOB=180^\\circ-65^\\circ-65^\\circ$이다.<br>$180^\\circ-65^\\circ=115^\\circ$이다.<br>$\\angle DOB=115^\\circ-65^\\circ$이다.<br>$\\angle DOB=50^\\circ$이다.<br>$x=\\angle APB=\\angle COD$라 하자.<br>호 CB에 대한 중심각은 $\\angle COD+\\angle DOB=x+50^\\circ$이다.<br>같은 호 CB에 대한 원주각은 중심각의 절반이므로 $\\angle CAB=\\dfrac{x+50^\\circ}{2}$이다.<br>P, A, C가 한 직선 위이고 P, D, B가 한 직선 위이므로 $\\angle PAB=\\angle CAB$, $\\angle PBA=\\angle DBO=65^\\circ$이다.<br>삼각형 PAB의 내각의 합에서 $x+\\dfrac{x+50^\\circ}{2}+65^\\circ=180^\\circ$이다.<br>양변에 2를 곱하면 $2x+x+50^\\circ+130^\\circ=360^\\circ$이다.<br>같은 항을 모으면 $3x+180^\\circ=360^\\circ$이다.<br>양변에서 $180^\\circ$를 빼면 $3x=180^\\circ$이다.<br>양변을 3으로 나누면 $x=60^\\circ$이다.<br>반원에서 중심각의 합은 $180^\\circ$이다.<br>$\\angle AOC=180^\\circ-60^\\circ-50^\\circ$이다.<br>$180^\\circ-60^\\circ=120^\\circ$이다.<br>$\\angle AOC=120^\\circ-50^\\circ$이다.<br>$\\angle AOC=70^\\circ$이다.<br>$OA=OC$이므로 $\\triangle AOC$는 이등변삼각형이다.<br>$\\angle ACO=(180^\\circ-70^\\circ)/2$이다.<br>$180^\\circ-70^\\circ=110^\\circ$이다.<br>$\\angle ACO=110^\\circ/2$이다.<br>$\\angle ACO=55^\\circ$이다. 따라서 ④이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 지름 AB를 가진 원 O(원문은 반원이고 그림에는 나머지 반쪽도 함께 그렸다)와 점 P에서 만나는 두 직선이다. ∠DBO=65°, 중심각 50°, 60°, 70°와 같은 크기의 두 각 60°(파랑), 구하는 ∠ACO(주황)가 있다.",
+      "solutionImageCaption": "∠DOB=50°이고 ∠APB=∠COD=x라 하면 x+(x+50°)/2+65°=180°에서 x=60°이다. ∠AOC=70°이고 삼각형 AOC는 이등변삼각형이므로 ∠ACO=55°이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -196,7 +244,11 @@ window.examData = {
         "$2\\pi\\text{ cm}$"
       ],
       "answer": "④",
-      "solution": "원주각은 같은 호에 대한 중심각의 절반이다.<br>호 AB에 대한 중심각은 $2\\times55^\\circ=110^\\circ$이다.<br>호 CD에 대한 중심각은 $2\\times20^\\circ=40^\\circ$이다.<br>두 호의 길이 합은 원둘레의 $\\dfrac{110^\\circ+40^\\circ}{360^\\circ}$에 해당한다.<br>반지름이 2 cm이므로 원둘레는 $2\\pi\\times2=4\\pi$ cm이다.<br>따라서 두 호의 길이는 $\\dfrac{150}{360}\\times4\\pi=\\dfrac53\\pi$ cm이다. 따라서 ④이다."
+      "solution": "원주각은 같은 호에 대한 중심각의 절반이다.<br>호 AB에 대한 중심각은 $2\\times55^\\circ=110^\\circ$이다.<br>호 CD에 대한 중심각은 $2\\times20^\\circ=40^\\circ$이다.<br>두 호의 길이 합은 원둘레의 $\\dfrac{110^\\circ+40^\\circ}{360^\\circ}$에 해당한다.<br>반지름이 2 cm이므로 원둘레는 $2\\pi\\times2=4\\pi$ cm이다.<br>따라서 두 호의 길이는 $\\dfrac{150}{360}\\times4\\pi=\\dfrac53\\pi$ cm이다. 따라서 ④이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 예시 배치이다. 원 위의 점 P에서 본 세 원주각 55°, 30°, 20°를 따로 펼쳐 보였고, 호 AB와 그 중심각 110°는 파랑, 호 CD와 그 중심각 40°는 주황으로 칠했다.",
+      "solutionImageCaption": "예: 원주각은 중심각의 절반이므로 호 AB의 중심각은 55°의 2배인 110°, 호 CD의 중심각은 20°의 2배인 40°이다. 두 호의 합은 원둘레의 150/360이고 원둘레는 4π cm이다. 정답은 ④(5π/3 cm)이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -210,7 +262,11 @@ window.examData = {
         "$104^\\circ$"
       ],
       "answer": "⑤",
-      "solution": "$\\angle E=24^\\circ$이므로 호 AB에 대한 중심각은 $2\\times24^\\circ=48^\\circ$이다.<br>$\\angle D=28^\\circ$이므로 호 BC에 대한 중심각은 $2\\times28^\\circ=56^\\circ$이다.<br>$\\angle AOC$는 호 ABC에 대한 중심각이므로 $\\angle AOC=48^\\circ+56^\\circ=104^\\circ$이다. 따라서 ⑤이다."
+      "solution": "$\\angle E=24^\\circ$이므로 호 AB에 대한 중심각은 $2\\times24^\\circ=48^\\circ$이다.<br>$\\angle D=28^\\circ$이므로 호 BC에 대한 중심각은 $2\\times28^\\circ=56^\\circ$이다.<br>$\\angle AOC$는 호 ABC에 대한 중심각이므로 $\\angle AOC=48^\\circ+56^\\circ=104^\\circ$이다. 따라서 ⑤이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 예시 배치이다. 원 O에서 원주각 ∠E=24°, ∠D=28°와 호 AB, 호 BC이다. ∠E와 호 AB의 중심각 48°는 파랑, ∠D와 호 BC의 중심각 56°는 초록으로 칠했고 구하는 각 x는 주황이다.",
+      "solutionImageCaption": "예: 중심각은 원주각의 2배이므로 호 AB의 중심각은 48°, 호 BC의 중심각은 56°이다. ∠AOC=48°+56°=104°이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,
@@ -224,7 +280,11 @@ window.examData = {
         "$190$"
       ],
       "answer": "⑤",
-      "solution": "$\\angle ABD=30^\\circ$이므로 호 AD에 대한 중심각은 $60^\\circ$이다.<br>$\\angle BCA=20^\\circ$이므로 호 AB에 대한 중심각은 $40^\\circ$이다.<br>$\\angle DAC=40^\\circ$이므로 호 DC에 대한 중심각은 $80^\\circ$이다.<br>한 바퀴의 중심각은 $360^\\circ$이다.<br>호 BC에 대한 중심각은 $360^\\circ-60^\\circ-40^\\circ-80^\\circ$이다.<br>$360^\\circ-60^\\circ=300^\\circ$이다.<br>$300^\\circ-40^\\circ=260^\\circ$이다.<br>$260^\\circ-80^\\circ=180^\\circ$이다.<br>따라서 호 BC는 반원이고 $\\angle BAC=90^\\circ$이다. (원주각은 같은 호에 대한 중심각의 절반이다.)<br>원에 내접한 사각형의 외각은 마주 보는 내각과 같으므로 $x=\\angle DAB$이다.<br>$x=\\angle DAC+\\angle CAB$이다.<br>$x=40^\\circ+90^\\circ$이다.<br>$x=130^\\circ$이다.<br>삼각형 DPC에서 $\\angle PDC=\\angle BDC=90^\\circ$이다.<br>$\\angle DCP=\\angle DCA=30^\\circ$이다. (호 DA에 대한 중심각은 $60^\\circ$이므로 원주각은 $30^\\circ$이다.)<br>삼각형 DPC의 내각의 합에서 $y=\\angle DPC=180^\\circ-90^\\circ-30^\\circ$이다.<br>$180^\\circ-90^\\circ=90^\\circ$이다.<br>$90^\\circ-30^\\circ=60^\\circ$이므로 $y=60^\\circ$이다.<br>$x+y=130+60$이다.<br>$x+y=190$이다. 따라서 답은 ⑤이다."
+      "solution": "$\\angle ABD=30^\\circ$이므로 호 AD에 대한 중심각은 $60^\\circ$이다.<br>$\\angle BCA=20^\\circ$이므로 호 AB에 대한 중심각은 $40^\\circ$이다.<br>$\\angle DAC=40^\\circ$이므로 호 DC에 대한 중심각은 $80^\\circ$이다.<br>한 바퀴의 중심각은 $360^\\circ$이다.<br>호 BC에 대한 중심각은 $360^\\circ-60^\\circ-40^\\circ-80^\\circ$이다.<br>$360^\\circ-60^\\circ=300^\\circ$이다.<br>$300^\\circ-40^\\circ=260^\\circ$이다.<br>$260^\\circ-80^\\circ=180^\\circ$이다.<br>따라서 호 BC는 반원이고 $\\angle BAC=90^\\circ$이다. (원주각은 같은 호에 대한 중심각의 절반이다.)<br>원에 내접한 사각형의 외각은 마주 보는 내각과 같으므로 $x=\\angle DAB$이다.<br>$x=\\angle DAC+\\angle CAB$이다.<br>$x=40^\\circ+90^\\circ$이다.<br>$x=130^\\circ$이다.<br>삼각형 DPC에서 $\\angle PDC=\\angle BDC=90^\\circ$이다.<br>$\\angle DCP=\\angle DCA=30^\\circ$이다. (호 DA에 대한 중심각은 $60^\\circ$이므로 원주각은 $30^\\circ$이다.)<br>삼각형 DPC의 내각의 합에서 $y=\\angle DPC=180^\\circ-90^\\circ-30^\\circ$이다.<br>$180^\\circ-90^\\circ=90^\\circ$이다.<br>$90^\\circ-30^\\circ=60^\\circ$이므로 $y=60^\\circ$이다.<br>$x+y=130+60$이다.<br>$x+y=190$이다. 따라서 답은 ⑤이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 원에 내접하는 사각형과 두 대각선의 교점 P이다. ∠ABD=30°, ∠BCA=20°, A에서의 두 각 40°와 90°를 따로 펼쳐 보였고, 구하는 x(분홍)와 y(주황)가 표시되어 있다.",
+      "solutionImageCaption": "호 BC는 반원이므로 ∠BAC=90°이고 x=∠DAB=40°+90°=130°이다. 삼각형 DPC에서 y=60°이다. 따라서 x+y=190이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -238,7 +298,11 @@ window.examData = {
         "⑤"
       ],
       "answer": "①, ⑤",
-      "solution": "③, ④의 두 선분 교점을 X라 하자.<br>①에서 $\\angle BAC=\\angle BDC=48^\\circ$이고 두 각은 같은 현 BC를 바라보므로 네 점은 한 원 위에 있다.<br>②에서 $\\angle BDA=45^\\circ$, $\\angle BCA=47^\\circ$는 같은 현 BA를 바라보는데 크기가 달라 한 원 위에 있지 않다.<br>③에서 $\\angle BXC=80^\\circ$이므로 이웃한 각 $\\angle CXD=180^\\circ-80^\\circ=100^\\circ$이다.<br>삼각형 XCD에서 $\\angle XCD=40^\\circ$이므로 $\\angle XDC=180^\\circ-100^\\circ-40^\\circ=40^\\circ$이다.<br>따라서 $\\angle BDC=40^\\circ$이고, 같은 현 BC를 바라보는 $\\angle BAC=35^\\circ$와 달라 한 원 위에 있지 않다.<br>④에서 $\\angle AXB=100^\\circ$이므로 이웃한 각 $\\angle BXC=180^\\circ-100^\\circ=80^\\circ$이다.<br>삼각형 BXC에서 $\\angle BCX=50^\\circ$이므로 $\\angle XBC=180^\\circ-80^\\circ-50^\\circ=50^\\circ$이다.<br>따라서 $\\angle CBD=50^\\circ$이고, 같은 현 CD를 바라보는 $\\angle CAD=40^\\circ$와 달라 한 원 위에 있지 않다.<br>⑤에서 $P,A,D$는 한 직선 위이고 $P,B,C$도 한 직선 위이다.<br>삼각형 PAC에서 $\\angle APC=35^\\circ$, $\\angle PCA=15^\\circ$이므로 $\\angle PAC=180^\\circ-35^\\circ-15^\\circ=130^\\circ$이다.<br>따라서 $\\angle DAC=180^\\circ-130^\\circ=50^\\circ=\\angle DBC$이다.<br>두 각이 같은 현 DC를 바라보므로 네 점은 한 원 위에 있다. 해당하는 것은 ①, ⑤이다."
+      "solution": "③, ④의 두 선분 교점을 X라 하자.<br>①에서 $\\angle BAC=\\angle BDC=48^\\circ$이고 두 각은 같은 현 BC를 바라보므로 네 점은 한 원 위에 있다.<br>②에서 $\\angle BDA=45^\\circ$, $\\angle BCA=47^\\circ$는 같은 현 BA를 바라보는데 크기가 달라 한 원 위에 있지 않다.<br>③에서 $\\angle BXC=80^\\circ$이므로 이웃한 각 $\\angle CXD=180^\\circ-80^\\circ=100^\\circ$이다.<br>삼각형 XCD에서 $\\angle XCD=40^\\circ$이므로 $\\angle XDC=180^\\circ-100^\\circ-40^\\circ=40^\\circ$이다.<br>따라서 $\\angle BDC=40^\\circ$이고, 같은 현 BC를 바라보는 $\\angle BAC=35^\\circ$와 달라 한 원 위에 있지 않다.<br>④에서 $\\angle AXB=100^\\circ$이므로 이웃한 각 $\\angle BXC=180^\\circ-100^\\circ=80^\\circ$이다.<br>삼각형 BXC에서 $\\angle BCX=50^\\circ$이므로 $\\angle XBC=180^\\circ-80^\\circ-50^\\circ=50^\\circ$이다.<br>따라서 $\\angle CBD=50^\\circ$이고, 같은 현 CD를 바라보는 $\\angle CAD=40^\\circ$와 달라 한 원 위에 있지 않다.<br>⑤에서 $P,A,D$는 한 직선 위이고 $P,B,C$도 한 직선 위이다.<br>삼각형 PAC에서 $\\angle APC=35^\\circ$, $\\angle PCA=15^\\circ$이므로 $\\angle PAC=180^\\circ-35^\\circ-15^\\circ=130^\\circ$이다.<br>따라서 $\\angle DAC=180^\\circ-130^\\circ=50^\\circ=\\angle DBC$이다.<br>두 각이 같은 현 DC를 바라보므로 네 점은 한 원 위에 있다. 해당하는 것은 ①, ⑤이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 다섯 보기를 번호별로 나란히 보인 예시 배치이다. 각 그림에 주어진 각과 풀이에서 구한 각을 표시했고, 같은 현을 바라보는 두 각을 파랑과 주황으로 칠했다.",
+      "solutionImageCaption": "예: ①에서는 ∠BAC=∠BDC=48°이고 ⑤에서는 ∠DAC=∠DBC=50°로, 같은 현을 바라보는 두 각이 같다. ②(45°, 47°), ③(35°, 40°), ④(40°, 50°)는 두 각이 달라 한 원 위에 있지 않다. 정답은 ①, ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -252,7 +316,11 @@ window.examData = {
         "$\\sqrt{15}\\text{ cm}$"
       ],
       "answer": "②",
-      "solution": "반지름이 4 cm이므로 지름 $AB=2\\times4$ cm이다.<br>$AB=8$ cm이다. $OP=x$라 하자.<br>그림에서 P는 O의 오른쪽이다.<br>$AP=AO+OP$이다.<br>$AP=4+x$이다.<br>$PB=OB-OP$이다.<br>$PB=4-x$이다.<br>두 현이 교점 P에서 나뉜 선분의 길이끼리 곱하면 그 곱은 서로 같으므로 $AP\\times PB=CP\\times DP$이다.<br>$AP\\times PB=3\\times2$이다.<br>$AP\\times PB=6$이다.<br>따라서 $(4+x)(4-x)=6$이다.<br>곱셈공식에 따라 $16-x^2=6$이다.<br>양변에서 16을 빼면 $-x^2=-10$이다.<br>양변에 $-1$을 곱하면 $x^2=10$이다.<br>$x>0$이므로 $OP=\\sqrt{10}$ cm이다. 따라서 ②이다."
+      "solution": "반지름이 4 cm이므로 지름 $AB=2\\times4$ cm이다.<br>$AB=8$ cm이다. $OP=x$라 하자.<br>그림에서 P는 O의 오른쪽이다.<br>$AP=AO+OP$이다.<br>$AP=4+x$이다.<br>$PB=OB-OP$이다.<br>$PB=4-x$이다.<br>두 현이 교점 P에서 나뉜 선분의 길이끼리 곱하면 그 곱은 서로 같으므로 $AP\\times PB=CP\\times DP$이다.<br>$AP\\times PB=3\\times2$이다.<br>$AP\\times PB=6$이다.<br>따라서 $(4+x)(4-x)=6$이다.<br>곱셈공식에 따라 $16-x^2=6$이다.<br>양변에서 16을 빼면 $-x^2=-10$이다.<br>양변에 $-1$을 곱하면 $x^2=10$이다.<br>$x>0$이므로 $OP=\\sqrt{10}$ cm이다. 따라서 ②이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 현 CD가 점 P에서 만나는 그림이다. 지름과 현을 따로 펼쳐 AO=4 cm, OP=x, AP=4+x, CP=3 cm, PD=2 cm를 나타냈다.",
+      "solutionImageCaption": "두 현의 교점에서 AP×PB=CP×DP이다. AP=4+x, PB=4−x이므로 (4+x)(4−x)=6이고 x²=10이다. x>0이므로 x=√10이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -266,7 +334,11 @@ window.examData = {
         "$29\\pi$"
       ],
       "answer": "①",
-      "solution": "점 P에서 원에 그은 두 할선에 대해 $PA\\times PB=PC\\times PD$이다.<br>P, A, B 순서로 놓여 있으므로 $PB=PA+AB$이다.<br>$PB=3+5$이다.<br>$PB=8$이다.<br>P, C, D 순서로 놓여 있으므로 $PD=PC+CD$이다.<br>$PD=2+CD$이다.<br>$PA\\times PB=PC\\times PD$에 길이를 대입하면 $3\\times8=2(2+CD)$이다.<br>$24=4+2CD$이다. (양변의 곱을 계산했다.)<br>양변에서 4를 빼면 $20=2CD$이다.<br>양변을 2로 나누면 $CD=10$이다.<br>CD는 지름이므로 반지름은 $\\frac{10}{2}$이다.<br>반지름은 5이다.<br>원의 넓이는 $\\pi r^2$이다.<br>$\\pi\\times5^2=25\\pi$이므로 ①이다."
+      "solution": "점 P에서 원에 그은 두 할선에 대해 $PA\\times PB=PC\\times PD$이다.<br>P, A, B 순서로 놓여 있으므로 $PB=PA+AB$이다.<br>$PB=3+5$이다.<br>$PB=8$이다.<br>P, C, D 순서로 놓여 있으므로 $PD=PC+CD$이다.<br>$PD=2+CD$이다.<br>$PA\\times PB=PC\\times PD$에 길이를 대입하면 $3\\times8=2(2+CD)$이다.<br>$24=4+2CD$이다. (양변의 곱을 계산했다.)<br>양변에서 4를 빼면 $20=2CD$이다.<br>양변을 2로 나누면 $CD=10$이다.<br>CD는 지름이므로 반지름은 $\\frac{10}{2}$이다.<br>반지름은 5이다.<br>원의 넓이는 $\\pi r^2$이다.<br>$\\pi\\times5^2=25\\pi$이므로 ①이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 그은 두 직선이다. PA=3, AB=5, PC=2이고 지름 CD는 주황으로 표시했다.",
+      "solutionImageCaption": "PA×PB=PC×PD에서 3×8=2×PD이므로 PD=12이고 CD=10이다. 반지름은 5이므로 넓이는 25π이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -280,7 +352,11 @@ window.examData = {
         "$5\\sqrt{3}$"
       ],
       "answer": "③",
-      "solution": "접선과 현 AT가 이루는 각과 같은 현 AT를 바라보는 원주각은 같다.<br>따라서 $\\angle ATP=\\angle ABT$이다.<br>P, A, B가 한 직선 위이므로 $\\angle ABT=\\angle PBT$이다.<br>주어진 조건에서 $\\angle APT=\\angle PBT$이다.<br>따라서 $\\angle APT=\\angle ATP$이다.<br>삼각형 APT에서 같은 각의 맞은편 변은 같으므로 $AP=AT$이다.<br>$AP=6$이다.<br>A가 P와 B 사이에 있으므로 $PB=PA+AB$이다.<br>$PB=6+10$이다.<br>$PB=16$이다.<br>접선-할선 정리에 의해 $PT^2=PA\\times PB$이다.<br>$PT^2=6\\times16$이다.<br>$PT^2=96$이다.<br>길이는 양수이므로 $PT=\\sqrt{96}$이다.<br>$\\sqrt{96}=\\sqrt{16\\times6}$이다.<br>$\\sqrt{16\\times6}=4\\sqrt6$이다. 따라서 ③이다."
+      "solution": "접선과 현 AT가 이루는 각과 같은 현 AT를 바라보는 원주각은 같다.<br>따라서 $\\angle ATP=\\angle ABT$이다.<br>P, A, B가 한 직선 위이므로 $\\angle ABT=\\angle PBT$이다.<br>주어진 조건에서 $\\angle APT=\\angle PBT$이다.<br>따라서 $\\angle APT=\\angle ATP$이다.<br>삼각형 APT에서 같은 각의 맞은편 변은 같으므로 $AP=AT$이다.<br>$AP=6$이다.<br>A가 P와 B 사이에 있으므로 $PB=PA+AB$이다.<br>$PB=6+10$이다.<br>$PB=16$이다.<br>접선-할선 정리에 의해 $PT^2=PA\\times PB$이다.<br>$PT^2=6\\times16$이다.<br>$PT^2=96$이다.<br>길이는 양수이므로 $PT=\\sqrt{96}$이다.<br>$\\sqrt{96}=\\sqrt{16\\times6}$이다.<br>$\\sqrt{16\\times6}=4\\sqrt6$이다. 따라서 ③이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 원의 접선 PT와 할선 PAB이다. AB=10, AT=6이고 같은 크기의 세 각(주황)과 같은 길이의 변 PA, AT(파랑)가 표시되어 있다.",
+      "solutionImageCaption": "접선과 현이 이루는 각에서 ∠APT=∠ATP이므로 AP=AT=6이고 PB=16이다. PT²=PA×PB=96이므로 PT=4√6이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
@@ -288,7 +364,11 @@ window.examData = {
       "question": "[서술형 1] 오른쪽 그림과 같이 연못의 가장자리에 있는 두 지점 $\\mathrm{A}$, $\\mathrm{B}$와 지점 $\\mathrm{A}$에서 떨어진 지점 $\\mathrm{C}$에 대하여 $\\angle \\mathrm{BAC} = 75^\\circ$, $\\angle \\mathrm{ABC} = 45^\\circ$일 때, 다음을 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/s01.png\" /><br>(1) $\\angle \\mathrm{BAH}$의 크기를 구하시오.(1점)<br>(2) $\\angle \\mathrm{CAH}$의 크기를 구하시오.(1점)<br>(3) $\\overline{\\mathrm{AH}}$의 길이를 구하시오.(1점)<br>(4) $\\overline{\\mathrm{AB}}$의 길이를 구하시오.(2점)",
       "choices": [],
       "answer": "(1) $\\angle BAH=45^\\circ$; (2) $\\angle CAH=30^\\circ$; (3) $4\\sqrt3$ m; (4) $4\\sqrt6$ m",
-      "solution": "삼각형 $ABC$에서 내각의 합은 $180^\\circ$이다.<br>$\\angle ACB=180^\\circ-75^\\circ-45^\\circ$이다.<br>$180^\\circ-75^\\circ=105^\\circ$이다.<br>$\\angle ACB=105^\\circ-45^\\circ$이다.<br>$\\angle ACB=60^\\circ$이다.<br>(1) $AH\\perp BC$이므로 $\\angle AHB=90^\\circ$이다.<br>$H$가 $BC$ 위에 있으므로 $\\angle ABH=\\angle ABC=45^\\circ$이다.<br>삼각형 $ABH$에서 내각의 합은 $180^\\circ$이다.<br>$\\angle BAH=180^\\circ-90^\\circ-45^\\circ$이다.<br>$180^\\circ-90^\\circ=90^\\circ$이다.<br>$\\angle BAH=90^\\circ-45^\\circ$이다.<br>$\\angle BAH=45^\\circ$이다.<br>(2) $\\angle CAH=\\angle BAC-\\angle BAH$이다.<br>$\\angle CAH=75^\\circ-45^\\circ$이다.<br>$\\angle CAH=30^\\circ$이다.<br>(3) 직각삼각형 $ACH$에서 $\\cos30^\\circ=AH/AC$이다.<br>양변에 $AC$를 곱하면 $AH=AC\\cos30^\\circ$이다.<br>$AH=8\\times\\dfrac{\\sqrt3}{2}$이다.<br>$AH=4\\sqrt3$ m이다.<br>(4) 직각삼각형 $ABH$에서 $\\sin45^\\circ=AH/AB$이다.<br>양변에 $AB$를 곱하고 $\\sin45^\\circ$로 나누면 $AB=AH/\\sin45^\\circ$이다.<br>$AB=4\\sqrt3/(\\sqrt2/2)$이다.<br>$AB=8\\sqrt3/\\sqrt2$이다. (분수로 나누는 것은 그 역수를 곱하는 것과 같다.)<br>분자와 분모에 $\\sqrt2$를 곱하면 $AB=8\\sqrt6/2$이다.<br>$AB=4\\sqrt6$ m이다."
+      "solution": "삼각형 $ABC$에서 내각의 합은 $180^\\circ$이다.<br>$\\angle ACB=180^\\circ-75^\\circ-45^\\circ$이다.<br>$180^\\circ-75^\\circ=105^\\circ$이다.<br>$\\angle ACB=105^\\circ-45^\\circ$이다.<br>$\\angle ACB=60^\\circ$이다.<br>(1) $AH\\perp BC$이므로 $\\angle AHB=90^\\circ$이다.<br>$H$가 $BC$ 위에 있으므로 $\\angle ABH=\\angle ABC=45^\\circ$이다.<br>삼각형 $ABH$에서 내각의 합은 $180^\\circ$이다.<br>$\\angle BAH=180^\\circ-90^\\circ-45^\\circ$이다.<br>$180^\\circ-90^\\circ=90^\\circ$이다.<br>$\\angle BAH=90^\\circ-45^\\circ$이다.<br>$\\angle BAH=45^\\circ$이다.<br>(2) $\\angle CAH=\\angle BAC-\\angle BAH$이다.<br>$\\angle CAH=75^\\circ-45^\\circ$이다.<br>$\\angle CAH=30^\\circ$이다.<br>(3) 직각삼각형 $ACH$에서 $\\cos30^\\circ=AH/AC$이다.<br>양변에 $AC$를 곱하면 $AH=AC\\cos30^\\circ$이다.<br>$AH=8\\times\\dfrac{\\sqrt3}{2}$이다.<br>$AH=4\\sqrt3$ m이다.<br>(4) 직각삼각형 $ABH$에서 $\\sin45^\\circ=AH/AB$이다.<br>양변에 $AB$를 곱하고 $\\sin45^\\circ$로 나누면 $AB=AH/\\sin45^\\circ$이다.<br>$AB=4\\sqrt3/(\\sqrt2/2)$이다.<br>$AB=8\\sqrt3/\\sqrt2$이다. (분수로 나누는 것은 그 역수를 곱하는 것과 같다.)<br>분자와 분모에 $\\sqrt2$를 곱하면 $AB=8\\sqrt6/2$이다.<br>$AB=4\\sqrt6$ m이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 연못 가장자리 A, B와 점 C, A에서 BC에 내린 수선의 발 H이다. ∠BAC=75°, ∠ABC=45°, AC=8 m, 구한 ∠ACB=60°가 있고 ∠BAH(파랑)와 ∠CAH(주황)는 구하는 각이다.",
+      "solutionImageCaption": "∠ACB=60°이다. (1) ∠BAH=45°, (2) ∠CAH=30°이다. (3) AH=8cos30°=4√3 m, (4) AB=AH/sin45°=4√6 m이다. 정답은 (1) 45°, (2) 30°, (3) 4√3 m, (4) 4√6 m이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
@@ -312,7 +392,11 @@ window.examData = {
       "question": "[서술형 4] 오른쪽 그림에서 직선 $\\mathrm{PT}$는 원 $\\mathrm{O}$의 접선이고 $\\overline{\\mathrm{PB}}$는 원 $\\mathrm{O}$의 중심을 지난다. $\\angle \\mathrm{P} = 30^\\circ$일 때, $\\angle \\mathrm{BTC}$의 크기를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/s04.png\" />",
       "choices": [],
       "answer": "$\\angle BTC=60^\\circ$",
-      "solution": "반지름과 접선은 수직이므로 $\\angle OTP=90^\\circ$이다.<br>삼각형 POT의 내각의 합은 $180^\\circ$이다.<br>$\\angle POT=180^\\circ-90^\\circ-30^\\circ$이다.<br>$180^\\circ-90^\\circ=90^\\circ$이다.<br>$\\angle POT=90^\\circ-30^\\circ$이다.<br>$\\angle POT=60^\\circ$이다.<br>P, O, B가 한 직선 위이므로 $\\angle BOT=180^\\circ-\\angle POT$이다.<br>$\\angle BOT=180^\\circ-60^\\circ$이다.<br>$\\angle BOT=120^\\circ$이다.<br>$OB=OT$이므로 $\\triangle OBT$는 이등변삼각형이다.<br>$\\angle OTB=(180^\\circ-120^\\circ)/2$이다.<br>$\\angle OTB=60^\\circ/2$이다.<br>$\\angle OTB=30^\\circ$이다.<br>$OT\\perp TC$이므로 $\\angle OTC=90^\\circ$이다.<br>그림에서 TB는 TO와 TC 사이에 있으므로 $\\angle BTC=\\angle OTC-\\angle OTB$이다.<br>$\\angle BTC=90^\\circ-30^\\circ$이다.<br>$\\angle BTC=60^\\circ$이다."
+      "solution": "반지름과 접선은 수직이므로 $\\angle OTP=90^\\circ$이다.<br>삼각형 POT의 내각의 합은 $180^\\circ$이다.<br>$\\angle POT=180^\\circ-90^\\circ-30^\\circ$이다.<br>$180^\\circ-90^\\circ=90^\\circ$이다.<br>$\\angle POT=90^\\circ-30^\\circ$이다.<br>$\\angle POT=60^\\circ$이다.<br>P, O, B가 한 직선 위이므로 $\\angle BOT=180^\\circ-\\angle POT$이다.<br>$\\angle BOT=180^\\circ-60^\\circ$이다.<br>$\\angle BOT=120^\\circ$이다.<br>$OB=OT$이므로 $\\triangle OBT$는 이등변삼각형이다.<br>$\\angle OTB=(180^\\circ-120^\\circ)/2$이다.<br>$\\angle OTB=60^\\circ/2$이다.<br>$\\angle OTB=30^\\circ$이다.<br>$OT\\perp TC$이므로 $\\angle OTC=90^\\circ$이다.<br>그림에서 TB는 TO와 TC 사이에 있으므로 $\\angle BTC=\\angle OTC-\\angle OTB$이다.<br>$\\angle BTC=90^\\circ-30^\\circ$이다.<br>$\\angle BTC=60^\\circ$이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O, 접선 PT, 중심을 지나는 직선 PB와 접선 위의 점 C이다. ∠P=30°, 중심각 120°, 접선과 반지름의 직각 표시가 있고 ∠OTB(파랑)와 구하는 ∠BTC(주황)가 표시되어 있다.",
+      "solutionImageCaption": "OT⊥PT이므로 ∠POT=60°, ∠BOT=120°이다. 삼각형 OBT는 이등변삼각형이어서 ∠OTB=30°이다. ∠BTC=90°−30°=60°이다. 정답은 ∠BTC=60°이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

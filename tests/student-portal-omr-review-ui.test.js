@@ -5,9 +5,20 @@ const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const studentPortal = fs.readFileSync(path.join(root, 'apmath/student/index.html'), 'utf8');
+const studentStyles = fs.readFileSync(path.join(root, 'apmath/student/student-portal.css'), 'utf8');
 const mixedEngine = fs.readFileSync(path.join(root, 'archive/mixed_engine.html'), 'utf8');
 const studentManifest = fs.readFileSync(path.join(root, 'apmath/student/manifest.json'), 'utf8');
 const studentServiceWorker = fs.readFileSync(path.join(root, 'apmath/student/sw.js'), 'utf8');
+
+function styleRule(selector) {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = studentStyles.match(new RegExp(`(?:^|\\n)${escaped}\\s*\\{([^}]+)\\}`));
+  assert(match, `${selector} should have a shared student portal style rule`);
+  return match[1];
+}
+const portalTokens = Object.fromEntries(
+  Array.from(styleRule(':root').matchAll(/--([\w-]+):\s*([^;]+);/g), match => [match[1], match[2].trim()])
+);
 
 assert(
   studentPortal.includes('<body class="student-portal-theme">') &&
@@ -17,19 +28,24 @@ assert(
 );
 
 assert(
-    studentPortal.includes('--primary:#111827') &&
-    studentPortal.includes('--primary-rgb:17,24,39') &&
-    studentManifest.includes('"theme_color": "#F3F4F6"') &&
+    /<link rel="stylesheet" href="\.\/student-portal\.css\?v=[^"]+">/.test(studentPortal) &&
+    portalTokens.bg === '#faf9f7' &&
+    portalTokens.surface === '#ffffff' &&
+    portalTokens['action-primary'] === '#1c1917' &&
+    portalTokens.primary === '#2563eb' &&
+    JSON.parse(studentManifest).theme_color === portalTokens.bg &&
+    JSON.parse(studentManifest).background_color === portalTokens.bg &&
     /STUDENT_SW_VERSION\s*=\s*'2026\.\d{2}\.\d{2}\.\d+'/.test(studentServiceWorker) &&
-    !/#4F46E5|#1A5CFF|#7C3AED|rgba\(26,92,255|rgba\(124,58,237/.test(studentPortal),
-  'student portal should use a neutral charcoal theme and avoid blue/purple UI tokens'
+    !/#4f46e5|#1a5cff|#7c3aed|rgba\(26,92,255|rgba\(124,58,237/i.test(studentStyles),
+  'student portal and install shell should use APMS warm surfaces, charcoal actions, and the blue focus/selection token'
 );
 
 assert(
-  studentPortal.includes('.back-btn') &&
-    studentPortal.includes('background:#F3F4F6') &&
-    studentPortal.includes('color:#374151'),
-  'student portal back/home button should use a visible neutral color on light OMR screens'
+  /class="btn back-btn" onclick="renderHome\(\)"/.test(studentPortal) &&
+    /min-height:\s*44px/.test(styleRule('.back-btn')) &&
+    /color:\s*var\(--secondary\)/.test(styleRule('.back-btn')) &&
+    /outline:\s*2px solid var\(--primary\)/.test(studentStyles),
+  'student portal back/home controls should retain a 44px target and a visible keyboard focus ring'
 );
 
 assert(
@@ -139,26 +155,47 @@ assert.strictEqual(
 );
 
 assert(
-  studentPortal.includes('const showActionArea = showReview || showPdf || isTeacherPreview || !submitted') &&
-    studentPortal.includes('<div class="omr-actions ${showReview ?') &&
+  studentPortal.includes('const showActionArea = showReview || showPdf || isTeacherPreview || submitted || canInput') &&
+    /<div class="omr-actions [^\n]*\$\{showReview \?/.test(studentPortal) &&
     studentPortal.includes("${showPdf ? renderOmrPdfAction(exam) : ''}") &&
     studentPortal.includes("${showReview ? renderOmrReviewActions(exam) : ''}") &&
     studentPortal.includes("(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''") &&
-    studentPortal.includes('OMR 작성') &&
+    studentPortal.includes('틀린 번호 체크') &&
     studentPortal.includes('완료'),
   'OMR cards should render review actions and input status before and after submission'
 );
 
 assert(
-  studentPortal.includes('.btn-primary { background:#111827') &&
-    studentPortal.includes('.omr-status.pending { background:#F3F4F6; color:#4B5563; }') &&
-    studentPortal.includes('.omr-actions {') &&
-    studentPortal.includes('.omr-actions.review-hidden') &&
-    studentPortal.includes('grid-template-columns:repeat(4,minmax(0,1fr))') &&
-    studentPortal.includes('grid-template-columns:repeat(2,minmax(0,1fr))') &&
-    studentPortal.includes('height:46px'),
-  'OMR action colors and layout should avoid bright blue emphasis and keep four actions responsive'
+  /background:\s*var\(--action-primary\)/.test(styleRule('.btn-primary')) &&
+    /min-height:\s*44px/.test(styleRule('.btn')) &&
+    /background:\s*var\(--warning-soft\);\s*color:\s*var\(--warning\)/.test(studentStyles) &&
+    /grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/.test(styleRule('.omr-actions')) &&
+    /order:\s*-2/.test(styleRule('.omr-actions .exam-open')) &&
+    /order:\s*-1/.test(styleRule('.omr-actions .omr-start')) &&
+    /min-height:\s*48px/.test(styleRule('.omr-actions .omr-start')) &&
+    /\.omr-actions\.review-hidden \.omr-start\s*\{\s*grid-column:\s*1\s*\/\s*-1/.test(studentStyles) &&
+    /\.portal-omr-home-list, \.omr-list\s*\{\s*grid-template-columns:\s*1fr/.test(studentStyles),
+  'shared exam cards should prioritize opening the exam and checking wrong numbers, retain 44px controls, and collapse the list on phones'
 );
+
+const cardRenderer = studentPortal.match(/function renderOmrExamCard\(exam\) \{[\s\S]*?\n    \}/);
+const submissionStatus = studentPortal.match(/function getStudentPortalRecordedSubmission\(exam\) \{[\s\S]*?\n    \}/);
+assert(cardRenderer && submissionStatus, 'exam card and recorded submission helpers should exist');
+Object.assign(actionContext, { window: {}, isTeacherPreview: false, isLegacyMixedOmrReview: () => false });
+vm.runInContext(submissionStatus[0] + '\n' + cardRenderer[0], actionContext);
+for (const isSubmitted of [0, 1]) {
+  const card = actionContext.renderOmrExamCard({ assignment_id: 'issued-exam', is_submitted: isSubmitted, pdf_ready: true });
+  for (const label of ['시험지 보기', '정답 보기', '해설 보기', 'PDF 다운로드']) {
+    assert(card.includes(label), `issued exams should retain ${label} with submitted=${isSubmitted}`);
+  }
+  assert.strictEqual(card.includes('onclick="renderOmrInput('), isSubmitted === 0, 'only an unsubmitted exam should offer OMR entry');
+}
+for (const guard of [{ is_submitted: undefined }, { is_submitted: 0, is_review_only: true }, { is_submitted: 0, is_cancelled: true }, { is_submitted: 0, is_replaced: true }]) {
+  const card = actionContext.renderOmrExamCard({ assignment_id: 'guarded-exam', ...guard });
+  assert(!card.includes('onclick="renderOmrInput('), 'unknown, review-only, cancelled, and replaced exams must not expose submission entry');
+}
+actionContext.isTeacherPreview = true;
+assert(!actionContext.renderOmrExamCard({ assignment_id: 'preview', is_submitted: 0 }).includes('onclick="renderOmrInput('), 'teacher preview must remain read-only');
 
 assert(
   mixedEngine.includes('function loadAssessmentPackFallback') &&
