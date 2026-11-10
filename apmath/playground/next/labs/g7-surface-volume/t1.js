@@ -700,6 +700,8 @@
           plates.forEach((p) => { if (p.loc >= 1 && (p.k + 1) % step === 0) D.tag(v3(lp[0], y0 + (p.k + 0.5) * sc, lp[1]), String(p.k + 1), { size: 13, dx: -11, color: 'muted' }); });
         }
       }
+      // 정리 탭 3단계: 결과를 위쪽 한 줄로(해설 재생 중에는 해설이 svShowV 를 켤 때까지 아낌). 탐구·문제 탭·썸네일은 그대로.
+      if (C.review && !b.thumb && st >= 3 && !D.lessonHide) G.sumRows(D, [[{ t: `부피 = ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)} cm³`, c: 'green' }]], 1);
     };
     return {
       id: 'sv1-4', title: '기둥의 부피', short: '기둥의 부피',

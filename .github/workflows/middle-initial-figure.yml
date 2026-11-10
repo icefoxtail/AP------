@@ -16,6 +16,7 @@ on:
       - 'apmath/playground/next/tools/middle-initial-*'
       - 'apmath/playground/next/tools/scene-smoke*'
       - 'apmath/playground/next/tools/video.test.mjs'
+      - 'apmath/playground/next/tools/lessons.*.test.mjs'
       - 'apmath/playground/next/tools/lesson-browser-audit.mjs'
       - 'apmath/playground/next/tools/apl-stage-insets.test.mjs'
       - '.github/workflows/middle-initial-figure.yml'
@@ -118,6 +119,8 @@ jobs:
         run: node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/scene-smoke-orchestration.test.mjs apmath/playground/next/tools/local-axis-origin-visibility.test.mjs
       - name: Video script and lesson (chapters) format, state and caption-number regressions
         run: node --test apmath/playground/next/tools/video.test.mjs
+      - name: Per-lab lesson (chapters) format, state and caption-number regressions
+        run: node --test apmath/playground/next/tools/lessons.*.test.mjs
       - name: Middle mathematical and scene-state regressions
         run: node --test apmath/playground/next/tools/g7-*.test.mjs apmath/playground/next/tools/g8-*.test.mjs apmath/playground/next/tools/g9-*.test.mjs
   browser:

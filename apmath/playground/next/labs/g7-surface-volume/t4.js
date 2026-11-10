@@ -54,8 +54,10 @@
     const draw = (b, s, M, C) => {
       const st = C.step, rvw = C.review, surf = M.mode === 'surf';
       // 뒤쪽 절반(원뿔이 만들어진 뒤): 겉넓이 = 전개도(부채꼴 + 원), 부피 = 원뿔 겨냥도(밑넓이·높이)
-      if (!C.problem && (rvw || C.t >= 0.5 || b.thumb)) {
-        const t2 = b.thumb ? 1 : rvw ? 1 : clamp((C.t - 0.5) * 2, 0, 1);
+      // 해설 재생 중(s.lessonOn)에는 정리 탭도 탐구처럼 앞 절반(삼각형 돌리기)을 거쳐 뒤 절반(펼치기)로 갑니다(C.t = s41T). 정리 탭·탐구 탭·썸네일은 그대로입니다.
+      const lessonRun = rvw && s.lessonOn;
+      if (!C.problem && ((rvw && !(lessonRun && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) {
+        const t2 = b.thumb ? 1 : rvw && !lessonRun ? 1 : clamp((C.t - 0.5) * 2, 0, 1);
         const hl = !rvw ? {} : st <= 1 ? {} : surf ? (st === 2 ? { ring: 2, bot: 2 } : { ring: 3, bot: 2 }) : (st === 2 ? { bot: 2 } : { ring: 3, bot: 2 });
         const res = G.coneNet(b, s, C, { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: surf ? t2 : 0, problem: !surf, review: rvw, hl, simpleNet: surf && C.tab === 'explore', fitL: surf && C.tab === 'explore' ? 24 : undefined, fitR: surf && C.tab === 'explore' ? (window.innerWidth>=700 && b.W>=560 ? 245 : 24) : undefined, fitT: surf && C.tab === 'explore' ? 24 : surf ? undefined : 84, fitB: surf && C.tab === 'explore' ? 24 : undefined, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } });
         if (!surf && !b.thumb && !(C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560)) {

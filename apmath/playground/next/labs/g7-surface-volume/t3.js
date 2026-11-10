@@ -99,7 +99,9 @@
           b.circle({ x, y: ry }, cc.r, { fill: hl === 2 ? 'amber' : 'sky', fillAlpha: hl === 2 ? 0.10 : al * (hl === 3 ? 1.25 : 1), color: ec, width: hl === 2 ? 2.8 : 2.4, alpha: 0.5 + 0.5 * e });
           if (e > 0.55) aLab(D, { x, y: ry }, '', plainVal(M.one), { fig: true, maxW: cc.r * b.k * 1.5, size: 14 });
         }
-        if (e > 0.9 && !narrow) b.text({ x: 0, y: rowTop - 0.35 }, `넓이 비교: ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' });
+        if (e > 0.9 && !narrow && !D.lessonHide) b.text({ x: 0, y: rowTop - 0.35 }, `넓이 비교: ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' });
+        // 폰(좁은 그림) 정리 탭 3단계: 결과를 위쪽 한 줄로. 해설 재생 중에는 해설이 svShowV 를 켤 때까지 아낍니다(넓은 그림의 「넓이 비교」 줄도 같음).
+        if (C.review && narrow && !b.thumb && st >= 3 && !D.lessonHide) G.sumRows(D, [[{ t: `구의 겉넓이 = 4 × ${plainVal(M.one)} = ${plainVal(M.tot)} cm²`, c: 'green' }]], 1);
       }
     };
     return {
