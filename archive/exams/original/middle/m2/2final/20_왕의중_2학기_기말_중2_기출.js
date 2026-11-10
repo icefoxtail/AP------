@@ -759,8 +759,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "layoutTag": "grid",
     "wide": false,
-    "answer": "④",
-    "solution": "작은 정사각형의 한 변을 GF=x cm라 하자.\n그림에서 A와 E의 가로 방향 거리는 AD+GF=12+x이고, 세로 방향 거리는 AB=12 cm이다.\nAE=20 cm이므로 직각삼각형에서\n(12+x)²+12²=20²\n(12+x)²=256\n12+x=16\nx=4\n따라서 GF=4 cm이고 정답은 ④이다.",
+    "answer": "②",
+    "solution": "작은 정사각형의 한 변을 GF=x cm라 하자.\n그림에서 A와 E의 가로 방향 거리는 AD+GF=12+x이고, 세로 방향 거리는 AB=12 cm이다.\nAE=20 cm이므로 직각삼각형에서\n(12+x)²+12²=20²\n(12+x)²=256\n12+x=16\nx=4\n따라서 GF=4 cm이고 정답은 ②이다.",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN",
       "CC_RIGHT_TRIANGLE"
