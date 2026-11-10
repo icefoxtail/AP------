@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 평행사변형에서 변 BA의 연장선과 변 AD 사이의 각 x가 주황색으로, 각 C가 분홍색으로 표시되어 있다. 오른쪽 위에는 이웃한 내각 DAB와 ADC가 5k와 4k로 적혀 있고, 아래에는 각 DAB가 100도이고 각 x가 각 DAB와 한 직선을 이루는 그림이 있다.",
+    "solutionImageCaption": "평행사변형의 이웃한 내각의 합은 180도이므로 각 DAB를 5k, 각 ADC를 4k라 하면 9k=180이고 k=20이다. 그래서 각 DAB는 100도이다. x는 각 DAB와 한 직선을 이루므로 x=180도에서 100도를 뺀 값이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -82,7 +86,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형, 직사각형, 마름모, 정사각형 네 사각형이 있고 모두 두 대각선이 점 O에서 만난다. 각 사각형에서 AO와 OC에는 파란색 같은 길이 표시가, BO와 OD에는 주황색 같은 길이 표시가 있다.",
+    "solutionImageCaption": "평행사변형의 두 대각선은 서로를 이등분한다. 정사각형, 마름모, 직사각형은 모두 평행사변형이므로 이 성질을 만족한다. 사다리꼴의 두 대각선은 서로를 이등분하지 않는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -124,7 +132,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_CRITERIA"
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 그림은 두 대각선이 점 O에서 만나는 사각형이다. 둘째는 두 쌍의 대변에 파란색과 주황색 같은 길이 표시가 있고, 셋째는 한 쌍의 대변에 평행 표시와 같은 길이 표시가 있다. 넷째는 두 대각선이 서로를 이등분하는 표시가 있고, 다섯째는 대각선 AC가 17, BD가 25로 길이가 다른 평행사변형이다.",
+    "solutionImageCaption": "두 쌍의 대변이 각각 같거나 평행하거나, 한 쌍의 대변이 평행하고 길이가 같거나, 두 대각선이 서로를 이등분하면 평행사변형이 된다. 그러나 평행사변형의 두 대각선은 길이가 같을 필요가 없다. 예를 들어 AC=17, BD=25인 평행사변형이 있다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -166,7 +178,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 평행사변형과 두 대각선의 교점 O가 있다. 오른쪽 위에는 직사각형에서 각 OAB와 각 OBA가 분홍색으로 표시되고 OA, OB, OC, OD에 파란색 같은 길이 표시가 있다. 아래에는 직사각형 안에 파란색으로 칠한 직각삼각형 BCD가 있고 각 BDC는 초록색, 각 DBC는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "각 OAB와 각 OBA가 같으므로 삼각형 AOB는 OA=OB인 이등변삼각형이다. 평행사변형의 대각선은 서로를 이등분하므로 OA=OC, OB=OD이고, 따라서 OA=OB=OC=OD이다. 두 대각선의 길이가 같은 평행사변형은 직사각형이므로 OB=OC이고, 직각삼각형 BCD에서 각 BDC와 각 DBC의 합은 90도이다. 정답은 ②, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -208,7 +224,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 마름모의 두 대각선이 점 O에서 직각으로 만나고 AO와 OC, BO와 OD에 같은 길이 표시가 있다. 오른쪽 위에는 대각선이 각을 이등분하는 것을 분홍색과 초록색 같은 크기의 각으로 나타냈다. 아래에는 두 대각선의 길이가 같아 네 반쪽 대각선에 같은 길이 표시가 있고 각 A가 직각인 마름모가 있다.",
+    "solutionImageCaption": "마름모의 두 대각선은 서로를 수직이등분하고 꼭짓점의 각을 이등분한다. 마주 보는 각도 크기가 같다. 그러나 두 대각선의 길이는 서로 같지 않은 것이 보통이다. 두 대각선의 길이가 같은 마름모는 정사각형뿐이다. 따라서 옳지 않은 것은 두 대각선의 길이가 같다는 보기이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -249,7 +269,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_CRITERIA"
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 모양의 사각형에서 각 A만 직각으로 표시한 그림, 각 A와 각 B가 직각으로 표시된 그림, 네 각이 모두 직각으로 표시된 그림이 차례로 있다.",
+    "solutionImageCaption": "평행사변형은 이웃한 두 각의 합이 180도이다. 한 내각이 직각이면 이웃한 내각도 180도에서 90도를 뺀 직각이고, 마주 보는 각도 각각 같다. 따라서 네 각이 모두 직각이 되어 직사각형이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -293,7 +317,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 변 AB 위의 점 D와 변 BC 위의 점 E가 있고 AD는 4 cm, DB는 6 cm, BE는 4 cm, EC는 x cm이며 각 C와 각 BDE가 같게 표시되어 있다. 오른쪽 위에는 삼각형 ABC, 아래에는 같은 방향으로 놓은 삼각형 EBD가 있고 대응하는 변은 같은 색이다. AB는 10, BC는 15, EB는 4, BD는 6이다.",
+    "solutionImageCaption": "각 B가 공통이고 각 C와 각 BDE가 같으므로 삼각형 ABC와 삼각형 EBD는 닮음이다. 대응은 A와 E, B와 B, C와 D이다. AB는 AD와 DB의 합 10이므로 10 대 4는 BC 대 6이고 BC는 15 cm이다. EC는 BC에서 BE를 뺀 값이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -335,7 +363,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
-    "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 용지 A4가 A5, A6, A7, A8, A9로 차례로 나뉜 그림이 있다. 오른쪽 위에는 같은 그림에서 A5는 넓이 16, A6은 8, A7은 4, A8은 2, A9는 1로 색을 나누어 나타냈다. 아래에는 닮은 두 직사각형이 있고 큰 직사각형은 가로가 a의 k배, 세로가 b의 k배로 넓이 16, 작은 직사각형은 가로 a, 세로 b로 넓이 1이다.",
+    "solutionImageCaption": "A5에서 A9까지는 네 번 접으므로 넓이의 비는 2의 4제곱 대 1, 곧 16 대 1이다. 두 용지는 닮은 도형이고 닮음비를 k 대 1이라 하면 넓이의 비는 k의 제곱 대 1이므로 k의 제곱은 16이고 k는 4이다. 따라서 A5 용지와 A9 용지의 닮음비는 4 대 1이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -379,7 +411,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 각 ACB가 직각인 삼각형 ABC와 점 C에서 변 AB에 내린 수선의 발 D가 있다. 나머지 세 그림은 삼각형 ABC, 삼각형 ACD, 삼각형 CBD를 같은 방향의 직각삼각형으로 놓은 것이고 대응하는 변은 같은 색, 같은 각은 분홍색과 보라색이다.",
+    "solutionImageCaption": "삼각형 ABC, 삼각형 ACD, 삼각형 CBD는 모두 닮음이다. 삼각형 ABC와 삼각형 ACD에서 AC 대 AB는 AD 대 AC이므로 AC의 제곱은 AD 곱하기 AB이다. 삼각형 ABC와 삼각형 CBD에서 BC의 제곱은 BD 곱하기 BA이다. 따라서 BC의 제곱이 BD 곱하기 AD라고 한 ③은 성립하지 않는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -423,7 +459,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE"
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 평행사변형의 변 AB의 연장선 위의 점 E와 선분 ED, 변 BC와 ED의 교점 F가 있고 AB는 4, AD는 9, BE는 3이며 BF는 x이다. 오른쪽 위에는 삼각형 EBF, 아래에는 삼각형 EAD가 같은 방향으로 있고 EB와 EA는 파란색, BF와 AD는 주황색, EF와 ED는 초록색이며 EB는 3, BF는 x, EA는 7, AD는 9이다.",
+    "solutionImageCaption": "BF와 AD가 평행하므로 삼각형 EBF와 삼각형 EAD는 닮음이다. EA는 EB와 BA의 합 7이므로 EB 대 EA는 3 대 7이고 BF 대 AD와 같다. 3 대 7은 BF 대 9이므로 BF는 7분의 27이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -465,7 +505,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 서로 평행한 세 직선 l, m, n과 이 세 직선을 지나는 두 직선이 있다. 왼쪽 직선에서 l과 m 사이는 4 cm, m과 n 사이는 12 cm이고 오른쪽 직선에서 l과 m 사이는 6 cm, m과 n 사이는 x cm이다. 오른쪽 그림은 같은 그림에서 l과 m 사이의 두 선분을 파란색, m과 n 사이의 두 선분을 주황색으로 나타냈다.",
+    "solutionImageCaption": "평행한 세 직선이 두 직선과 만날 때 대응하는 선분의 길이의 비는 같다. 4 대 12는 6 대 x이므로 4x는 72이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -509,7 +553,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC의 변 AB 위의 점 D, 변 BC 위의 점 E, 변 AC 위의 점 F와 선분 DE, EF, DF가 있고 AD는 9, DB는 12, BE는 9, EC는 10, AF는 6, FC는 8이다. 오른쪽에는 AD와 AF가 파란색, DB와 FC가 주황색이고 DF와 BC에 평행 표시가 있으며 각 ADF와 각 ABC가 같은 분홍색으로 표시되어 있다.",
+    "solutionImageCaption": "AB는 9와 12의 합 21이고 AC는 6과 8의 합 14이다. AD 대 AB는 9 대 21이고 AF 대 AC는 6 대 14로 모두 3 대 7이다. 삼각형 ABC에서 두 변 AB, AC를 같은 비로 나누는 점 D, F를 이은 DF는 BC와 평행하다. 그러면 각 ADF와 각 ABC는 동위각으로 같다. 따라서 옳은 것은 각 ADF와 각 ABC가 같다는 보기이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -553,7 +601,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 AD와 BC가 평행한 사다리꼴과 두 옆변의 중점 M, N, 대각선 AC와 선분 MN의 교점 P가 있다. AD는 x, BC는 16, MP는 y, PN은 5이다. 오른쪽 위에는 삼각형 ABC에서 M, P가 두 변의 중점이고 MP가 y, BC가 16이며, 아래에는 삼각형 ACD에서 P, N이 두 변의 중점이고 PN이 5, AD가 x이다.",
+    "solutionImageCaption": "사다리꼴에서 두 옆변의 중점을 이은 선분 MN은 밑변과 평행하고 대각선 AC의 중점 P를 지난다. 삼각형 ABC에서 MP는 BC의 절반이므로 y는 8이다. 삼각형 ACD에서 PN은 AD의 절반이므로 x의 절반이 5이고 x는 10이다. 따라서 x에서 y를 뺀 값은 10에서 8을 뺀 값이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -597,7 +649,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 평행사변형과 변 BC, CD의 중점 M, N, 두 대각선의 교점 O, 선분 AM, AN이 대각선 BD와 만나는 점 P, Q가 있고, 그 아래에 BD를 따로 펴 그린 선분에 24 cm가 적혀 있다. 오른쪽 위는 삼각형 ABC에서 중선 AM, BO가 점 P에서 만나는 그림, 아래 왼쪽은 삼각형 ACD에서 중선 AN, DO가 점 Q에서 만나는 그림이다. 아래 오른쪽은 선분 BD가 같은 길이 세 부분으로 나뉜 그림이다.",
+    "solutionImageCaption": "O는 AC의 중점이므로 AM과 BO는 삼각형 ABC의 두 중선이고 P는 무게중심이다. 그래서 BP는 BO의 3분의 2, 곧 BD의 3분의 1이다. 같은 방법으로 Q는 삼각형 ACD의 무게중심이므로 DQ도 BD의 3분의 1이다. 따라서 BP, PQ, QD가 모두 같고 PQ는 BD의 3분의 1이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -642,7 +698,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
-    "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC"
+    "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 무게중심 G, 중점 M, BG의 중점 N이 있고 BN과 NG에 같은 길이 표시가 있으며 삼각형 GNM이 주황색으로 칠해져 넓이 4 cm²가 적혀 있다. 나머지 세 그림은 삼각형 ABM을 파란색으로 칠한 그림, 삼각형 BGM을 주황색으로 칠한 그림, 삼각형 BNM과 삼각형 GNM을 넓이 4 cm²씩 주황색으로 칠한 그림이다.",
+    "solutionImageCaption": "삼각형 ABC의 넓이를 S라 하자. M이 BC의 중점이므로 삼각형 ABM은 S의 2분의 1이다. G는 중선 AM을 2대 1로 나누므로 삼각형 BGM은 삼각형 ABM의 3분의 1, 곧 S의 6분의 1이다. N이 BG의 중점이므로 삼각형 GNM은 삼각형 BGM의 2분의 1, 곧 S의 12분의 1이다. 삼각형 GNM이 4이므로 S는 4의 12배이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -727,7 +787,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 정사각형의 네 변 위에 점 E, F, G, H가 있고 AE, BF, CG, DH는 파란색 같은 길이 표시, AH, BE, CF, DG는 주황색 같은 길이 표시가 있으며 AE는 4 cm, AH는 3 cm이다. 오른쪽에는 한 변이 7 cm인 정사각형 안에 넓이 6 cm²인 파란색 직각삼각형 네 개와 가운데 주황색 사각형이 있다.",
+    "solutionImageCaption": "정사각형의 한 변은 AE와 AH의 합 7 cm이므로 넓이는 7의 제곱 49 cm²이다. 바깥의 네 직각삼각형은 두 직각변이 3 cm와 4 cm로 합동이고 각각의 넓이는 2분의 1 곱하기 3 곱하기 4, 곧 6 cm²이다. 사각형의 넓이는 큰 정사각형의 넓이에서 네 삼각형의 넓이 합 24 cm²를 뺀 값이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -772,7 +836,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 한 변이 12 cm인 큰 정사각형과 그 오른쪽 아래 꼭짓점 C에 붙은 작은 정사각형이 있고 점 A와 E를 잇는 선분 AE는 20 cm이며 작은 정사각형의 한 변 GF는 x cm이다. 오른쪽에는 직각이 B인 직각삼각형 ABE가 있고 AB는 12 cm, 가로 변은 12와 x로 나뉘며 AE는 20 cm이다.",
+    "solutionImageCaption": "작은 정사각형의 한 변을 x cm라 하면 직각삼각형 ABE에서 가로 변 BE는 12+x cm, 세로 변 AB는 12 cm, 빗변 AE는 20 cm이다. 피타고라스 정리에서 12+x의 제곱 더하기 12의 제곱은 20의 제곱이고, 12+x는 16이다. 따라서 x는 16에서 12를 뺀 값이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -818,7 +886,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 직각삼각형 ABC의 변 AB, AC 위의 반원과 BC를 지름으로 하는 큰 반원이 있고 두 초승달이 주황색으로 칠해져 있으며 AB는 12 cm, BC는 13 cm이다. 오른쪽에는 직각삼각형 ABC가 파란색으로 칠해져 있고 AB 12, AC 5, BC 13이다.",
+    "solutionImageCaption": "AC의 제곱은 13의 제곱에서 12의 제곱을 뺀 25이므로 AC는 5 cm이다. 지름이 d인 반원의 넓이는 8분의 파이 곱하기 d의 제곱이므로 AB, AC 위의 두 반원의 넓이 합은 BC 위의 반원의 넓이와 같다. 따라서 색칠한 두 초승달의 넓이 합은 직각삼각형 ABC의 넓이와 같고, 그 값은 2분의 1 곱하기 12 곱하기 5이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -863,7 +935,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 가로 8 cm, 세로 6 cm인 직사각형과 대각선 BD, 꼭짓점 A와 C에서 BD에 내린 수선의 발 P, Q가 있다. 오른쪽 위에는 삼각형 ABD가 파란색으로 칠해져 밑변 BD는 10 cm, 높이 AP가 초록색이고, 아래에는 삼각형 CBD가 분홍색으로 칠해져 밑변 BD는 10 cm, 높이 CQ가 초록색이다.",
+    "solutionImageCaption": "직사각형의 넓이는 6 곱하기 8, 곧 48이고 대각선 BD는 직사각형을 넓이가 같은 두 삼각형으로 나누므로 삼각형 ABD와 삼각형 CBD의 넓이는 각각 24이다. BD는 10 cm이므로 두 삼각형의 넓이의 합은 BD 곱하기 AP 더하기 BD 곱하기 CQ를 2로 나눈 값, 곧 10 곱하기 AP와 CQ의 합을 2로 나눈 값이 48이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -898,7 +974,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
-    "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 칸에 서로 닮음이 아닌 예가 있다. 첫째는 가로 4, 세로 2인 직사각형과 가로 4, 세로 3인 직사각형, 둘째는 한 각이 53도인 마름모와 37도인 마름모, 셋째는 한 예각이 30도인 직각삼각형과 45도인 직각삼각형, 넷째는 꼭지각이 37도인 이등변삼각형과 90도인 이등변삼각형이다.",
+    "solutionImageCaption": "닮은 도형은 대응하는 각의 크기가 각각 같고 대응하는 변의 길이의 비가 모두 같다. 직사각형은 가로와 세로의 비, 마름모는 각의 크기, 직각삼각형과 이등변삼각형은 예각이나 꼭지각이 달라질 수 있어 항상 닮음은 아니다. 평행사변형과 사다리꼴도 마찬가지이다. 두 정사각형, 두 원, 두 정삼각형은 모양이 항상 같아 닮음이다. 정답은 두 정사각형, 두 원, 두 정삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -936,7 +1016,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
-    "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 닮은 두 사면체 중 작은 사면체가 있고 AB가 x, BC가 6 cm, CD가 4 cm이다. 오른쪽 위에는 큰 사면체가 있고 EF가 14 cm, FG가 12 cm, GH가 y이다. 아래 세 그림은 두 사면체를 나란히 놓고 대응하는 면 BCD와 FGH를 칠하고 BC 6 cm와 FG 12 cm를 적은 그림, 대응하는 모서리 AB와 EF를 강조하고 x와 14 cm를 적은 그림, 대응하는 모서리 CD와 GH를 강조하고 4 cm와 y를 적은 그림이다.",
+    "solutionImageCaption": "삼각형 BCD와 삼각형 FGH가 대응하므로 BC와 FG가 대응한다. 6 cm와 12 cm이므로 닮음비는 큰 사면체 대 작은 사면체가 2 대 1이다. AB와 EF가 대응하므로 14 대 x가 2 대 1이어서 x는 7이다. CD와 GH가 대응하므로 y 대 4가 2 대 1이어서 y는 8이다. 따라서 x와 y의 곱을 구하면 된다. 구하는 값은 56이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -975,7 +1059,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
-    "templateKey": "TPL_TRIANGLE_INCENTER"
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 제목에 각 A가 90도라고 적힌, 각 A가 직각인 삼각형 ABC와 변 BC 위의 점 D, E, 선분 AD 위의 무게중심 G, 선분 AE 위의 내심 I가 있고 AB는 8 cm, AC는 6 cm이다. 오른쪽 위에는 각 A가 이등분되어 BE와 AB가 파란색, EC와 AC가 주황색인 그림이 있다. 아래 왼쪽에는 BC를 BD 7, DE 1, EC 6의 비로 나눈 그림, 아래 오른쪽에는 삼각형 ADE를 주황색으로 칠한 삼각형 ABC와 높이 AH가 있다.",
+    "solutionImageCaption": "AE는 각 A의 이등분선이므로 BE 대 EC는 AB 대 AC, 곧 4 대 3이다. AD는 중선이므로 BD 대 DC는 1 대 1이다. BE를 4k, EC를 3k라 하면 BC는 7k, BD는 2분의 7k이고 DE는 2분의 k이므로 BD 대 DE 대 EC는 7 대 1 대 6이다. 삼각형 ADE와 삼각형 ABC는 높이가 같으므로 넓이의 비는 DE 대 BC, 곧 1 대 14이다. 삼각형 ABC의 넓이는 2분의 1 곱하기 6 곱하기 8이다. 정답은 ① 4 대 3, ② 1 대 1, ③ 7 대 1 대 6, ④ 14분의 1 곱하기 (2분의 1 곱하기 6 곱하기 8), ⑤ 7분의 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1013,6 +1101,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
-    "templateKey": null
+    "templateKey": null,
+    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 직각을 낀 두 변이 5와 x이고 빗변이 7인 직각삼각형이 있고, 오른쪽에는 직각을 낀 두 변이 5와 7이고 빗변이 x인 직각삼각형이 있다. 길이 5는 파란색, 7은 분홍색, x는 초록색으로 같은 길이를 같은 색으로 나타냈다.",
+    "solutionImageCaption": "빗변이 7이면 5의 제곱 더하기 x의 제곱이 7의 제곱이므로 x의 제곱은 24이고, 5와 2√6의 합이 7보다 커서 삼각형이 된다. 빗변이 x이면 x의 제곱은 5의 제곱 더하기 7의 제곱이므로 74이고, √74가 5와 7의 합 12보다 작아 삼각형이 된다. 5가 빗변인 경우는 7보다 짧아 불가능하다. 정답은 24, 74이다.",
+    "solutionImageSize": "full"
   }
 ];
