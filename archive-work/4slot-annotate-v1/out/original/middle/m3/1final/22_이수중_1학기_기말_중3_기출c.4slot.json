@@ -12,97 +12,98 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(2x+3y)(4x-5y)",
+            "quote": "$(2x+3y)(4x-5y)$를 전개하였을 때,",
             "term": "다항식"
+          },
+          {
+            "src": "stem",
+            "quote": "$x^2$의 계수와 $y^2$의 계수의 합은?",
+            "term": "계수"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "합은?",
+            "quote": "$x^2$의 계수와 $y^2$의 계수의 합은?",
             "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "8 + (-15) = -7",
-            "term": "값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "다항식의 전개를 통해",
+            "quote": "다항식의 전개를 통해 각 항의 계수를 구한다.",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "각 항의 계수를 구한다.",
-            "term": "계수",
-            "evidenceType": "NAMED"
+            "quote": "주어진 식을 전개하면",
+            "term": "분배법칙",
+            "evidenceType": "IMPLIED",
+            "justification": "다항식의 전개 과정에서 분배법칙을 적용"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "8x^2 + 2xy - 15y^2",
-            "term": "이차식"
+            "quote": "따라서 두 계수의 합은 $8 + (-15) = -7$이다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "다항식을 전개하여 각 항의 계수를 구하고 합을 계산함"
+        "method": "다항식을 전개하여 동류항을 정리한 후 이차항들의 계수를 찾아 합을 구함"
       },
       "steps": [],
       "scenarioNote": ""
     },
     {
       "sourceOrdinal": 2,
-      "format": "옳은 것 고르기",
+      "format": "단일 정답",
       "slots": {
         "given": [
+          {
+            "src": "choices",
+            "quote": "$(x-2)(x+3) = x^2 + x - 6$",
+            "term": "등식"
+          },
+          {
+            "src": "solution",
+            "quote": "곱셈 공식을 이용하여 다항식을 올바르게 전개할 수 있다.",
+            "term": "다항식"
+          }
+        ],
+        "goal": [
           {
             "src": "stem",
             "quote": "다음 중 옳은 것은?",
             "term": "판정"
           }
         ],
-        "goal": [
-          {
-            "src": "solution",
-            "quote": "따라서 바르게 전개된 것은 ④이다.",
-            "term": "결정"
-          }
-        ],
         "method": [
           {
             "src": "solution",
-            "quote": "곱셈 공식을 이용하여",
+            "quote": "곱셈 공식을 이용하여 다항식을 올바르게 전개할 수 있다.",
             "term": "곱셈공식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "다항식을 올바르게 전개할 수 있다.",
+            "quote": "각 보기의 식을 곱셈 공식을 이용하여 전개한 후 우변과 비교한다.",
             "term": "전개",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "(x-2)(x+3) = x^2 + x - 6",
-            "term": "일차식"
-          },
-          {
             "src": "solution",
-            "quote": "x^2 + 3x - 2x - 6 = x^2 + x - 6",
-            "term": "동류항"
+            "quote": "따라서 바르게 전개된 것은 ④이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "곱셈공식을 이용하여 각 보기를 전개하고 올바른 결과를 판정함"
+        "method": "각 보기의 좌변을 곱셈 공식으로 전개하여 우변과 일치하는 참인 등식을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -114,47 +115,47 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(x+y)^2 - (x-y)^2",
+            "quote": "$(x+y)^2 - (x-y)^2$을 바르게 계산한 것은?",
             "term": "다항식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "바르게 계산한 것은?",
-            "term": "결정"
+            "quote": "$(x+y)^2 - (x-y)^2$을 바르게 계산한 것은?",
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "합차 공식",
-            "term": "합차공식",
-            "evidenceType": "NAMED"
-          },
-          {
-            "src": "solution",
-            "quote": "완전제곱식의 전개를 이용하여",
+            "quote": "합차 공식 또는 완전제곱식의 전개를 이용하여 식을 간단히 한다.",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "전개를 이용하여 식을 간단히 한다.",
+            "quote": "주어진 식을 전개하여 계산하면",
             "term": "전개",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "빠른 풀이 포인트: $A^2 - B^2 = (A+B)(A-B)$의 합차 공식을 이용하면",
+            "term": "곱셈공식",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "4xy",
-            "term": "곱"
+            "quote": "= (2x)(2y) = 4xy",
+            "term": "단항식"
           }
         ]
       },
       "reasons": {
-        "method": "완전제곱식 또는 합차공식을 적용하여 식을 전개하고 정리함"
+        "method": "완전제곱식의 전개 또는 합차 공식을 적용하여 식을 동류항 정리로 간단히 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -166,41 +167,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "ma - mb - na + nb",
+            "quote": "$ma - mb - na + nb$를 바르게 인수분해한 것은?",
             "term": "다항식"
+          },
+          {
+            "src": "solution",
+            "quote": "항이 4개인 식은 두 항씩 짝을 지어 공통인수를 찾아 묶어낸다.",
+            "term": "항"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "바르게 인수분해한 것은?",
+            "quote": "$ma - mb - na + nb$를 바르게 인수분해한 것은?",
             "term": "인수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "공통인수로 묶어내는",
+            "quote": "공통인수로 묶어내는 방법으로 다항식을 인수분해한다.",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "공통인수로 묶어내는 방법으로 다항식을 인수분해한다.",
             "term": "공통인수",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "다항식을 인수분해한다.",
-            "term": "인수분해",
-            "evidenceType": "NAMED"
+            "quote": "주어진 식의 앞의 두 항과 뒤의 두 항을 각각 묶으면",
+            "term": "분배법칙",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수를 묶어내는 과정은 분배법칙의 역과정임"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "(a - b)(m - n)",
-            "term": "곱"
+            "quote": "따라서 정답은 ⑤이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "항들을 짝지어 공통인수를 찾아 묶어내어 인수분해함"
+        "method": "항을 두 개씩 묶어 각각의 공통인수를 묶어낸 뒤 공통인수로 다시 묶어 인수분해함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -212,7 +225,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "4x^2 + 12xy + \\square y^2",
+            "quote": "$4x^2 + 12xy + \\square y^2$이 완전제곱식이 되도록 하는",
+            "term": "완전제곱식"
+          },
+          {
+            "src": "stem",
+            "quote": "$4x^2 + 12xy + \\square y^2$이",
             "term": "이차식"
           }
         ],
@@ -220,38 +238,34 @@
           {
             "src": "stem",
             "quote": "$\\square$ 안에 알맞은 수는?",
-            "term": "값"
+            "term": "상수"
           }
         ],
         "method": [
           {
-            "src": "stem",
-            "quote": "완전제곱식이 되도록 하는",
-            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$xy$ 의 계수를 비교하면",
+            "term": "계수비교",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "계수를 비교하면",
-            "term": "계수비교",
-            "evidenceType": "NAMED"
+            "quote": "$A^2 + 2AB + B^2 = (A+B)^2$ 의 완전제곱식 형태를 이해한다.",
+            "term": "곱셈공식",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 공식 적용"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "4k = 12",
-            "term": "계수"
-          },
-          {
-            "src": "solution",
-            "quote": "k^2 = 3^2 = 9",
-            "term": "거듭제곱"
+            "quote": "따라서 상수항 부분인 $\\square = k^2 = 3^2 = 9$가 된다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "완전제곱식 전개 구조와 계수를 비교하여 상수항의 값을 구함"
+        "method": "주어진 다항식을 완전제곱식 기본형과 비교하여 미지 상수의 값을 결정함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -263,27 +277,27 @@
         "given": [
           {
             "src": "stem",
-            "quote": "x^2 - 5x - 6",
+            "quote": "다음 중 $x^2 - 5x - 6$을 인수분해한 것으로 옳은 것은?",
             "term": "이차식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "인수분해한 것으로 옳은 것은?",
+            "quote": "다음 중 $x^2 - 5x - 6$을 인수분해한 것으로 옳은 것은?",
             "term": "인수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "의 꼴로 인수분해한다.",
+            "quote": "따라서 주어진 식은 다음과 같이 인수분해된다.",
             "term": "인수분해",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "더해서 $-5$가 되는 두 정수를 찾는다.",
+            "quote": "곱이 $-6$인 두 정수 중 합이 $-5$인 경우는 $1$과 $-6$이다.",
             "term": "정수",
             "evidenceType": "NAMED"
           }
@@ -291,70 +305,65 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "곱해서 $-6$이 되고",
-            "term": "곱"
-          },
-          {
-            "src": "solution",
-            "quote": "(x + 1)(x - 6)",
-            "term": "일차식"
+            "quote": "곱해서 $-6$이 되고, 더해서 $-5$가 되는 두 정수를 찾는다.",
+            "term": "합"
           }
         ]
       },
       "reasons": {
-        "method": "곱과 합이 일치하는 두 정수를 찾아 두 일차식의 곱으로 인수분해함"
+        "method": "곱이 상수항이고 합이 일차항의 계수인 두 정수를 찾아 일차식의 곱으로 인수분해함"
       },
       "steps": [],
       "scenarioNote": ""
     },
     {
       "sourceOrdinal": 7,
-      "format": "옳지 않은 것 고르기",
+      "format": "단일 정답",
       "slots": {
         "given": [
           {
-            "src": "stem",
-            "quote": "다음 중 이차방정식이 아닌 것은?",
-            "term": "이차방정식"
+            "src": "choices",
+            "quote": "$2x^2 + 5x = (2x+1)(x-3)$",
+            "term": "등식"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "따라서 이차방정식이 아닌 것은 ⑤이다.",
+            "src": "stem",
+            "quote": "다음 중 이차방정식이 아닌 것은?",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "모든 항을 좌변으로 이항하여 정리했을 때",
+            "quote": "이차방정식은 등식의 모든 항을 좌변으로 이항하여 정리했을 때",
             "term": "이항",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "x^2$ 항이 소거되어",
-            "term": "최고차항",
-            "evidenceType": "IMPLIED",
-            "justification": "좌변 정리 시 이차항이 소거되어 최고차수가 일차식이 됨을 확인"
+            "quote": "우변을 전개하면 $(2x+1)(x-3) = 2x^2 - 6x + x - 3 = 2x^2 - 5x - 3$이다.",
+            "term": "전개",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이차방정식은 등식의 모든 항을 좌변으로 이항하여 정리했을 때 $ax^2 + bx + c = 0$ ($a \\ne 0$)의 꼴이 되는 방정식이다.",
+            "term": "이차방정식",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "일차방정식이 된다.",
+            "quote": "$10x + 3 = 0$ 이 되므로 $x^2$ 항이 소거되어 일차방정식이 된다.",
             "term": "일차방정식"
-          },
-          {
-            "src": "solution",
-            "quote": "(2x+1)(x-3)",
-            "term": "전개"
           }
         ]
       },
       "reasons": {
-        "method": "식을 좌변으로 이항 및 정리하여 최고차항이 이차인지 여부를 판정함"
+        "method": "등식의 모든 항을 한 변으로 이항하여 정리한 후 최고차항이 이차인지 여부를 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -366,46 +375,41 @@
         "given": [
           {
             "src": "stem",
-            "quote": "8x^2 - 10x + 3 = 0",
+            "quote": "이차방정식 $8x^2 - 10x + 3 = 0$을 풀면?",
             "term": "이차방정식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "풀면?",
+            "quote": "이차방정식 $8x^2 - 10x + 3 = 0$을 풀면?",
             "term": "해"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "좌변을 인수분해하여",
+            "quote": "이차방정식의 좌변을 인수분해하여 해를 구한다.",
             "term": "인수분해",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "합이 $-10$이 되는 두 쌍의 수를 찾는다.",
-            "term": "합",
+            "quote": "$-4x + (-6x) = -10x$ 이므로 올바르게 인수분해되었다.",
+            "term": "계수",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "(2x - 1)(4x - 3) = 0",
-            "term": "곱"
-          },
-          {
-            "src": "solution",
-            "quote": "x = \\dfrac{1}{2}",
+            "quote": "따라서 해는 $x = \\dfrac{1}{2}$ 또는 $x = \\dfrac{3}{4}$이다.",
             "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "이차방정식의 좌변을 대각선 인수분해하여 유리수 해를 구함"
+        "method": "이차방정식의 좌변을 크로스 곱셈법으로 인수분해하여 일차식들이 0이 되는 해를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -417,12 +421,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "2x^2 - 4x + 1 = 0",
+            "quote": "이차방정식 $2x^2 - 4x + 1 = 0$의 해는",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "단, $a$는 유리수",
+            "quote": "(단, $a$는 유리수)",
             "term": "유리수"
           }
         ],
@@ -430,39 +434,33 @@
           {
             "src": "stem",
             "quote": "$a$의 값은?",
-            "term": "값"
+            "term": "상수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "짝수 근의 공식을 이용하여",
+            "quote": "짝수 근의 공식을 이용하여 이차방정식의 해를 구한다.",
             "term": "근의공식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "근호 안의 수를 비교하면",
+            "quote": "이 해가 $x = \\dfrac{2 \\pm \\sqrt{a}}{2}$와 같으므로 근호 안의 수를 비교하면",
             "term": "계수비교",
-            "evidenceType": "IMPLIED",
-            "justification": "구한 해의 근호 안의 수를 문제의 식과 비교함"
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "solution",
-            "quote": "\\sqrt{2}",
-            "term": "무리수"
-          },
-          {
-            "src": "solution",
-            "quote": "a = 2",
-            "term": "정수"
+            "src": "stem",
+            "quote": "(단, $a$는 유리수)",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "짝수 근의 공식을 적용하여 해를 구하고 근호 안의 수를 비교하여 a를 결정함"
+        "method": "짝수 근의 공식을 적용하여 해를 구한 후 주어진 형태와 근호 안의 값을 비교하여 a를 결정함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -474,26 +472,26 @@
         "given": [
           {
             "src": "stem",
-            "quote": "45x - 5x^2",
+            "quote": "물체의 $x$초 후의 높이는 $(45x - 5x^2)$m라고 한다.",
             "term": "이차식"
           },
           {
             "src": "stem",
-            "quote": "높이가 90m가 되는 것은",
-            "term": "값"
+            "quote": "이 물체의 높이가 90m가 되는 것은",
+            "term": "자연수"
           }
         ],
         "goal": [
           {
-            "src": "choices",
-            "quote": "3초 또는 6초",
+            "src": "stem",
+            "quote": "던져 올린 지 몇 초 후인가?",
             "term": "해"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "이차방정식을 세우고",
+            "quote": "주어진 관계식에 값을 대입하여 이차방정식을 세우고 해를 구한다.",
             "term": "이차방정식",
             "evidenceType": "NAMED"
           },
@@ -507,13 +505,13 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "(x - 3)(x - 6) = 0",
-            "term": "곱"
+            "quote": "따라서 둘 다 조건을 만족한다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "높이 관계식을 이용해 이차방정식을 세우고 인수분해하여 해를 구함"
+        "method": "높이 공식에 90을 대입하여 이차방정식을 세우고 인수분해하여 도달하는 시간들을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -524,48 +522,42 @@
       "slots": {
         "given": [
           {
-            "src": "stem",
-            "quote": "다음 중에서 이차함수인 것은?",
-            "term": "이차함수"
+            "src": "choices",
+            "quote": "$y = x(1-x)$",
+            "term": "함수"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "따라서 이차함수인 것은 ③이다.",
+            "src": "stem",
+            "quote": "다음 중에서 이차함수인 것은?",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "우변을 전개하여",
+            "quote": "각 보기의 우변을 전개하여 $x^2$항이 존재하는지 확인한다.",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "x^2$항이 존재하는지 확인한다.",
-            "term": "최고차항",
-            "evidenceType": "IMPLIED",
-            "justification": "전개식에 이차항이 남아 최고차수가 2인지 확인함"
+            "quote": "이차함수는 $y = ax^2 + bx + c$ ($a \\ne 0$)의 꼴로 나타낼 수 있는 함수이다.",
+            "term": "이차함수",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "일차함수",
-            "term": "일차함수"
-          },
-          {
-            "src": "solution",
-            "quote": "y = -x^2 + x",
-            "term": "포물선"
+            "quote": "따라서 이차함수인 것은 ③이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "우변을 전개하여 정리한 후 이차항의 유무를 확인해 이차함수 여부를 판정함"
+        "method": "각 식의 우변을 전개 정리하여 이차항 계수가 0이 아닌 이차식 꼴인지 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -577,28 +569,32 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차함수의 식이 될 수 있는 것은?",
+            "quote": "다음 중 그림에서 그래프 ㉠을 나타내는 이차함수의 식이 될 수 있는 것은?",
             "term": "이차함수"
+          },
+          {
+            "src": "solution",
+            "quote": "그래프 ㉠은 위로 볼록하므로 $x^2$의 계수 $a$는 음수이다.",
+            "term": "음수"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "따라서 조건을 만족하는 식은 ⑤이다.",
-            "term": "결정"
+            "src": "stem",
+            "quote": "이차함수의 식이 될 수 있는 것은?",
+            "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "위로 볼록하므로",
-            "term": "포물선",
-            "evidenceType": "IMPLIED",
-            "justification": "위로 볼록한 포물선 형태를 판별함"
+            "quote": "이차함수 $y=ax^2$의 그래프에서 $a$의 부호와 절댓값에 따른 모양과 폭의 변화를 이해한다.",
+            "term": "그래프",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "a$의 절댓값이 $1$보다 작은 것을 찾는다.",
+            "quote": "$x^2$의 계수의 절댓값이 $|-1| = 1$보다 작아야 한다.",
             "term": "절댓값",
             "evidenceType": "NAMED"
           }
@@ -606,74 +602,70 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "이차항의 계수는 음수이어야 한다.",
-            "term": "부호"
-          },
-          {
-            "src": "solution",
-            "quote": "y=-x^2$의 그래프보다 폭이 넓다.",
-            "term": "계수"
+            "quote": "따라서 조건을 만족하는 식은 ⑤이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "볼록한 방향으로 계수 부호를 확인하고 그래프 폭 비교로 계수의 범위를 결정함"
+        "method": "포물선의 볼록 방향으로 최고차항 계수의 부호를 정하고 그래프의 폭을 비교하여 절댓값 범위를 판단함"
       },
       "steps": [],
       "scenarioNote": ""
     },
     {
       "sourceOrdinal": 13,
-      "format": "옳은 것 고르기",
+      "format": "단일 정답",
       "slots": {
         "given": [
           {
             "src": "stem",
-            "quote": "이차함수 $y = -2x^2$의",
+            "quote": "이차함수 $y = -2x^2$의 그래프에 대한",
             "term": "이차함수"
+          },
+          {
+            "src": "stem",
+            "quote": "이차함수 $y = -2x^2$의 그래프에 대한 다음 설명 중 옳은 것은?",
+            "term": "그래프"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "따라서 옳은 설명은 ⑤이다.",
+            "src": "stem",
+            "quote": "다음 설명 중 옳은 것은?",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "축의 방정식은 $x = 0$",
+            "quote": "이차함수 $y=ax^2$의 그래프의 성질(꼭짓점, 축, 볼록한 방향, 지나는 사분면, 폭)을 안다.",
+            "term": "꼭짓점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$y$축에 대하여 대칭이므로 축의 방정식은 $x = 0$ ($y$축)이다.",
             "term": "축",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "제3사분면과 제4사분면을 지난다.",
-            "term": "사분면",
+            "quote": "이차함수의 그래프의 폭은 $|a|$의 값이 클수록 좁아진다.",
+            "term": "절댓값",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "꼭짓점의 좌표는 $(0, 0)$이다.",
-            "term": "꼭짓점"
-          },
-          {
-            "src": "solution",
-            "quote": "위로 볼록한 포물선이다.",
-            "term": "포물선"
-          },
-          {
-            "src": "solution",
-            "quote": "y = x^2$의 그래프보다 폭이 좁다.",
-            "term": "절댓값"
+            "quote": "따라서 옳은 설명은 ⑤이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "이차함수 그래프의 꼭짓점, 축, 지나는 사분면, 폭을 분석하여 옳은 설명을 판정함"
+        "method": "이차함수 그래프의 기본 성질인 꼭짓점, 축, 폭, 볼록 방향을 표준형 분석을 통해 검증함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -685,46 +677,46 @@
         "given": [
           {
             "src": "stem",
-            "quote": "f(x) = -3x^2 + 2x + 10",
-            "term": "이차함수"
+            "quote": "이차함수 $f(x) = -3x^2 + 2x + 10$에 대하여",
+            "term": "이차식"
+          },
+          {
+            "src": "solution",
+            "quote": "함수의 식에 $x$의 값을 각각 대입하여 함숫값을 구한다.",
+            "term": "함수"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "f(-1) + f(0) - f(1)$의 값은?",
-            "term": "값"
+            "quote": "$f(-1) + f(0) - f(1)$의 값은?",
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "x$의 값을 각각 대입하여",
+            "quote": "함수의 식에 $x$의 값을 각각 대입하여 함숫값을 구한다.",
             "term": "대입",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "함숫값을 구한다.",
-            "term": "함수",
+            "quote": "함수의 식에 $x$의 값을 각각 대입하여 함숫값을 구한다.",
+            "term": "함숫값",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "f(0) = -3(0)^2 + 2(0) + 10 = 10",
+            "quote": "따라서 $f(-1) + f(0) - f(1) = 5 + 10 - 9 = 6$이다.",
             "term": "정수"
-          },
-          {
-            "src": "solution",
-            "quote": "5 + 10 - 9 = 6",
-            "term": "합"
           }
         ]
       },
       "reasons": {
-        "method": "이차함수에 각 x값을 대입하여 구한 함숫값들의 덧셈과 뺄셈을 계산함"
+        "method": "주어진 x값들을 이차함수 식에 각각 대입하여 함숫값들을 구하고 사칙연산으로 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -736,13 +728,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "y = ax^2",
+            "quote": "이차함수 $y = ax^2$의 그래프가",
             "term": "이차함수"
           },
           {
             "src": "stem",
-            "quote": "단, $a$는 상수",
-            "term": "상수"
+            "quote": "두 점 $(2, -4)$, $(-1, b)$를 지날 때,",
+            "term": "좌표"
           }
         ],
         "goal": [
@@ -755,32 +747,27 @@
         "method": [
           {
             "src": "solution",
-            "quote": "함수의 식에 대입하여",
+            "quote": "그래프가 지나는 점의 좌표를 함수의 식에 대입하여 미지수를 구한다.",
             "term": "대입",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "그래프가 지나는 점의 좌표를",
-            "term": "좌표",
+            "quote": "$ab = (-1) \\times (-1) = 1$이다.",
+            "term": "곱셈",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "solution",
-            "quote": "a = -1",
-            "term": "계수"
-          },
-          {
-            "src": "solution",
-            "quote": "ab = (-1) \\times (-1) = 1",
-            "term": "값"
+            "src": "stem",
+            "quote": "(단, $a$는 상수)",
+            "term": "상수"
           }
         ]
       },
       "reasons": {
-        "method": "지나는 두 점의 좌표를 이차함수 식에 차례로 대입하여 a와 b를 구하고 곱을 계산함"
+        "method": "주어진 점의 좌표를 이차함수 식에 대입하여 미지수 a와 b를 구하고 그 곱을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -792,7 +779,7 @@
         "given": [
           {
             "src": "stem",
-            "quote": "y = -\\dfrac{1}{2}x^2",
+            "quote": "이차함수 $y = -\\dfrac{1}{2}x^2$의 그래프를",
             "term": "이차함수"
           },
           {
@@ -804,20 +791,20 @@
         "goal": [
           {
             "src": "stem",
-            "quote": "$q$의 값은?",
-            "term": "값"
+            "quote": "이때 $q$의 값은?",
+            "term": "상수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "y$축의 방향으로 $q$만큼 평행이동한",
+            "quote": "이차함수의 그래프를 $y$축의 방향으로 평행이동한 식을 구하고,",
             "term": "평행이동",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "지나므로 대입하면",
+            "quote": "이 그래프가 점 $(-6, 5)$를 지나므로 대입하면",
             "term": "대입",
             "evidenceType": "NAMED"
           }
@@ -825,18 +812,13 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "y = -\\dfrac{1}{2}x^2 + q",
-            "term": "표준형"
-          },
-          {
-            "src": "solution",
-            "quote": "q = 23",
-            "term": "정수"
+            "quote": "$q = 23$",
+            "term": "자연수"
           }
         ]
       },
       "reasons": {
-        "method": "y축 평행이동한 식에 점의 좌표를 대입하여 상수 q의 값을 구함"
+        "method": "y축 평행이동 식을 작성하고 지나는 점의 좌표를 대입하여 이동량 q를 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -848,46 +830,47 @@
         "given": [
           {
             "src": "stem",
-            "quote": "y = -(x-3)^2",
+            "quote": "다음 중 이차함수 $y = -(x-3)^2$의 그래프인 것은?",
             "term": "이차함수"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "위로 볼록하고 꼭짓점이 $x$축 위의 $(3, 0)$인 그래프는 ①이다.",
-            "term": "결정"
+            "src": "stem",
+            "quote": "다음 중 이차함수 $y = -(x-3)^2$의 그래프인 것은?",
+            "term": "그래프"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "꼭짓점의 좌표는 $(3, 0)$이고",
+            "quote": "이차함수 $y = a(x-p)^2 + q$의 그래프는 꼭짓점과 볼록한 방향으로 판단한다.",
             "term": "꼭짓점",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "축의 방정식은 $x=3$이다.",
+            "quote": "또한 식의 형태에서 꼭짓점의 좌표는 $(3, 0)$이고, 축의 방정식은 $x=3$이다.",
             "term": "축",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이차함수 $y = -(x-3)^2$의 그래프는 $x^2$의 계수가 음수이므로 위로 볼록한 포물선이다.",
+            "term": "포물선",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "위로 볼록한 포물선이다.",
-            "term": "포물선"
-          },
-          {
-            "src": "solution",
-            "quote": "x^2$의 계수가 음수이므로",
-            "term": "계수"
+            "quote": "따라서 위로 볼록하고 꼭짓점이 $x$축 위의 $(3, 0)$인 그래프는 ①이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "포물선의 꼭짓점과 축, 위로 볼록한 모양을 바탕으로 올바른 그래프를 판별함"
+        "method": "표준형 식으로부터 꼭짓점의 좌표와 축의 방정식 및 볼록 방향을 읽어내어 알맞은 그래프를 선택함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -898,48 +881,53 @@
       "slots": {
         "given": [
           {
+            "src": "solution",
+            "quote": "꼭짓점의 좌표가 $(2, -1)$이며, $y$축과 만나는 점의 $y$좌표가 $3$이다.",
+            "term": "좌표"
+          },
+          {
             "src": "stem",
-            "quote": "이차함수의 식은?",
-            "term": "이차함수"
+            "quote": "이차함수의 그래프가 아래 그림과 같을 때,",
+            "term": "그래프"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "y = (x-2)^2 - 1 = x^2 - 4x + 3",
-            "term": "결정"
+            "src": "stem",
+            "quote": "다음 중 그래프를 나타내는 이차함수의 식은?",
+            "term": "이차함수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "꼭짓점의 좌표가 $(2, -1)$이므로",
+            "quote": "꼭짓점의 좌표와 $y$절편을 이용하여 이차함수의 식을 구한다.",
             "term": "꼭짓점",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "y$절편을 이용하여",
-            "term": "절편",
+            "quote": "이 그래프가 점 $(0, 3)$을 지나므로 식에 대입하면",
+            "term": "대입",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "점 $(0, 3)$을 지나므로 식에 대입하면",
-            "term": "대입",
+            "quote": "따라서 이차함수의 식은 $y = (x-2)^2 - 1 = x^2 - 4x + 3$이다.",
+            "term": "전개",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "y = a(x-2)^2 - 1",
-            "term": "표준형"
+            "quote": "따라서 정답은 ②이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "꼭짓점과 y절편을 이용하여 표준형 식을 세우고 전개하여 이차함수의 일반형 식을 구함"
+        "method": "꼭짓점을 이용하여 표준형 식을 세우고 y절편 좌표를 대입하여 최고차항 계수를 구한 후 전개함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -951,12 +939,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "y = x^2 + 2x - a",
+            "quote": "이차함수 $y = x^2 + 2x - a$의 그래프가",
             "term": "이차함수"
           },
           {
             "src": "stem",
-            "quote": "두 점 $(1, 0)$, $(-1, b)$를 지날 때",
+            "quote": "두 점 $(1, 0)$, $(-1, b)$를 지날 때,",
             "term": "좌표"
           }
         ],
@@ -964,39 +952,33 @@
           {
             "src": "stem",
             "quote": "$a - b$의 값은?",
-            "term": "값"
+            "term": "차"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "좌표를 차례로 대입하여",
+            "quote": "그래프가 지나는 두 점의 좌표를 차례로 대입하여 미지수를 구한다.",
             "term": "대입",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "0 = 3 - a \\implies a = 3",
-            "term": "일차방정식",
-            "evidenceType": "IMPLIED",
-            "justification": "대입하여 얻은 일차방정식을 풀어 a의 값을 구함"
+            "quote": "그래프가 지나는 두 점의 좌표를 차례로 대입하여 미지수를 구한다.",
+            "term": "미지수",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$a = 3$, $b = -4$이므로",
-            "term": "상수"
-          },
-          {
-            "src": "solution",
-            "quote": "a - b = 3 - (-4) = 7",
-            "term": "합"
+            "quote": "$a - b = 3 - (-4) = 7$이다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "지나는 두 점의 좌표를 대입하여 미지수 a, b를 구하고 차를 계산함"
+        "method": "지나는 두 점의 좌표를 순서대로 대입하여 미지수 a와 b를 결정하고 그 차를 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1008,54 +990,52 @@
         "given": [
           {
             "src": "stem",
-            "quote": "케이블은 포물선 모양일 때",
+            "quote": "주탑과 주탑을 잇는 케이블은 포물선 모양일 때,",
             "term": "포물선"
           },
           {
             "src": "stem",
-            "quote": "케이블 $\\overline{AB}$의 길이를 구하여라.",
-            "term": "선분"
+            "quote": "주탑과 주탑 사이의 길이는 500m이고, 다리 위에서 주탑 꼭대기까지의 높이는 50m이다.",
+            "term": "길이"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "케이블 $\\overline{AB}$의 길이는 $8\\text{m}$이다.",
-            "term": "길이"
+            "src": "stem",
+            "quote": "케이블 $\\overline{AB}$의 길이를 구하여라.",
+            "term": "거리"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "포물선의 꼭짓점을 원점 $(0, 0)$으로 하는 좌표평면을 잡으면",
-            "term": "좌표",
-            "evidenceType": "IMPLIED",
-            "justification": "꼭짓점을 원점으로 두어 좌표평면에 모델링함"
+            "quote": "포물선을 좌표평면 위에 나타내어 이차함수의 식을 구한다.",
+            "term": "좌표평면",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "포물선의 식은 $y = ax^2$이다.",
+            "quote": "포물선의 꼭짓점을 원점 $(0, 0)$으로 하는 좌표평면을 잡으면 포물선의 식은 $y = ax^2$이다.",
             "term": "이차함수",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "점 $(250, 50)$을 지난다.",
+            "quote": "식에 대입하면 $50 = a(250)^2$, $50 = 62500a$",
             "term": "대입",
-            "evidenceType": "IMPLIED",
-            "justification": "지나는 점의 좌표를 포물선 식에 대입함"
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "a = \\dfrac{50}{62500} = \\dfrac{1}{1250}",
-            "term": "상수"
+            "quote": "따라서 케이블 $\\overline{AB}$의 길이는 $8\\text{m}$이다.",
+            "term": "자연수"
           }
         ]
       },
       "reasons": {
-        "method": "현수교의 포물선을 좌표평면에 이차함수로 모델링하여 특정 지점의 케이블 길이를 구함"
+        "method": "포물선을 좌표평면에 원점 대칭 형태로 모델링하여 이차함수 식을 구하고 특정 위치의 함숫값을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1067,12 +1047,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(5x+2)(4x-3) = Ax^2 + Bx + C",
-            "term": "이차식"
+            "quote": "$(5x+2)(4x-3) = Ax^2 + Bx + C$일 때,",
+            "term": "등식"
           },
           {
             "src": "stem",
-            "quote": "단, $A$, $B$, $C$는 상수",
+            "quote": "(단, $A$, $B$, $C$는 상수)",
             "term": "상수"
           }
         ],
@@ -1080,39 +1060,39 @@
           {
             "src": "stem",
             "quote": "$A - B - C$의 값을 구하여라.",
-            "term": "값"
+            "term": "식의값"
           }
         ],
         "method": [
           {
-            "src": "stem",
-            "quote": "분배법칙을 이용하여",
+            "src": "solution",
+            "quote": "다항식의 곱셈을 분배법칙을 이용하여 차례로 전개한다.",
             "term": "분배법칙",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "계수를 비교하면",
-            "term": "계수비교",
+            "quote": "다항식의 곱셈을 분배법칙을 이용하여 차례로 전개한다.",
+            "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "차례로 전개한다.",
-            "term": "전개",
+            "quote": "주어진 식 $Ax^2 + Bx + C$와 계수를 비교하면",
+            "term": "계수비교",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "solution",
-            "quote": "20x^2 - 7x - 6",
-            "term": "다항식"
+            "src": "stem",
+            "quote": "※ 반드시 전개 과정을 자세히 적으시오. 분배법칙을 이용하여 제시하시오.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "분배법칙을 적용하여 두 일차식을 전개한 뒤 계수를 비교하여 상수의 연산값을 구함"
+        "method": "분배법칙으로 다항식을 전개하여 계수를 비교해 A, B, C를 구하고 대입하여 식의 값을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1124,46 +1104,47 @@
         "given": [
           {
             "src": "stem",
-            "quote": "\\sqrt{65^2 - 35^2}",
-            "term": "무리식"
+            "quote": "$$\\sqrt{65^2 - 35^2}$$",
+            "term": "근호"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "구하는 값은 $10\\sqrt{30}$이다.",
-            "term": "값"
+            "src": "stem",
+            "quote": "다음을 인수분해를 이용하여 계산하여라.",
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "합차 공식 $a^2 - b^2 = (a+b)(a-b)$를 이용하여",
+            "quote": "합차 공식 $a^2 - b^2 = (a+b)(a-b)$를 이용하여 근호 안의 식을 인수분해한다.",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "합차 공식 $a^2 - b^2 = (a+b)(a-b)$를 이용하여 근호 안의 식을 인수분해한다.",
             "term": "합차공식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "근호 안의 식을 인수분해한다.",
-            "term": "인수분해",
+            "quote": "= \\sqrt{100 \\times 30} = 10\\sqrt{30}",
+            "term": "제곱근",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "solution",
-            "quote": "\\sqrt{(65+35)(65-35)}",
-            "term": "곱"
-          },
-          {
-            "src": "solution",
-            "quote": "10\\sqrt{30}",
-            "term": "무리수"
+            "src": "stem",
+            "quote": "※ 인수분해를 이용한 풀이과정을 적어야 함. 다른 영역의 풀이는 감점 처리함.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "근호 내부의 제곱의 차에 합차공식을 적용하여 효율적으로 식의 값을 계산함"
+        "method": "근호 안의 두 제곱의 차에 합차 공식을 적용해 인수분해한 후 근호 밖으로 수를 꺼내어 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1175,25 +1156,20 @@
         "given": [
           {
             "src": "stem",
-            "quote": "직사각형 모양의 땅에",
+            "quote": "가로, 세로의 길이가 각각 20m, 15m인 직사각형 모양의 땅에",
             "term": "직사각형"
           },
           {
             "src": "stem",
-            "quote": "넓이가 $234\\mathrm{m}^2$일 때",
+            "quote": "길을 제외한 땅의 넓이가 $234\\mathrm{m}^2$일 때,",
             "term": "넓이"
-          },
-          {
-            "src": "stem",
-            "quote": "길의 폭을 구하여라.",
-            "term": "길이"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "구하는 길의 폭은 $2\\mathrm{m}$이므로",
-            "term": "값"
+            "src": "stem",
+            "quote": "길의 폭을 구하여라.",
+            "term": "길이"
           }
         ],
         "method": [
@@ -1208,23 +1184,24 @@
             "quote": "인수분해하면 $(x-2)(x-33) = 0$",
             "term": "인수분해",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "stem",
+            "quote": "※ 이차방정식을 활용하여 풀이과정을 적어야 함. 다른 영역의 풀이는 감점 처리함.",
+            "term": "이차방정식",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "x^2 - 35x + 66 = 0",
-            "term": "이차방정식"
-          },
-          {
-            "src": "solution",
-            "quote": "0 \\lt x \\lt 15",
+            "quote": "이때 $0 \\lt x \\lt 15$이어야 하므로 $x = 2$이다.",
             "term": "부등식"
           }
         ]
       },
       "reasons": {
-        "method": "길을 제외한 땅의 넓이로 이차방정식을 수립하고 전개 및 인수분해하여 길의 폭을 결정함"
+        "method": "길을 한쪽으로 모아 땅의 넓이에 대한 이차방정식을 세우고 인수분해하여 범위에 맞는 길의 폭을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1236,38 +1213,38 @@
         "given": [
           {
             "src": "stem",
-            "quote": "y = -3x^2",
+            "quote": "이차함수 $y = -3x^2$의 그래프를",
             "term": "이차함수"
           },
           {
             "src": "stem",
-            "quote": "단, $a$, $b$, $c$는 상수이다.",
+            "quote": "(단, $a$, $b$, $c$는 상수이다.)",
             "term": "상수"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "$a + b + c$의 값을 구하여라.",
+            "quote": "이때, $a + b + c$의 값을 구하여라.",
             "term": "합"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "평행이동한 식을 구하고 전개한다.",
+            "quote": "이차함수 $y=ax^2$의 그래프를 평행이동한 식을 구하고 전개한다.",
             "term": "평행이동",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "이 식을 전개하면",
+            "quote": "이차함수 $y=ax^2$의 그래프를 평행이동한 식을 구하고 전개한다.",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "계수를 비교하면",
+            "quote": "이 식이 $y = ax^2 + bx + c$와 일치하므로 계수를 비교하면",
             "term": "계수비교",
             "evidenceType": "NAMED"
           }
@@ -1275,18 +1252,13 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "y = -3(x-5)^2 + 1",
-            "term": "표준형"
-          },
-          {
-            "src": "solution",
-            "quote": "a + b + c = -3 + 30 + (-74) = 27 - 74 = -47",
-            "term": "값"
+            "quote": "따라서 $a + b + c = -3 + 30 + (-74) = 27 - 74 = -47$이다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "이차함수를 평행이동한 표준형 식을 전개하여 일반형과 계수를 비교해 상수들의 합을 구함"
+        "method": "이차함수를 평행이동한 식을 표준형으로 세운 뒤 전개하여 계수들을 구하고 합을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1294,9 +1266,10 @@
   ],
   "candidates": [],
   "selfCheck": {
-    "coverageAllItems": true,
-    "slotCompleteness": true,
-    "allQuotesVerified": true,
-    "noOrphanConcepts": true
+    "items": 24,
+    "quotesChecked": 148,
+    "quotesNotFound": 0,
+    "warningsRechecked": [],
+    "notes": ""
   }
 }
