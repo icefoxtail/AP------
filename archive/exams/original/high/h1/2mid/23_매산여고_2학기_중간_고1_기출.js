@@ -128,9 +128,9 @@ window.questionBank = [
     "wide": false,
     "content": "다음 벤다이어그램 중 $(A\\cup B)-(A-C)$를 바르게 색칠한 부분을 나타낸 것을 고르면? [3.7점]",
     "image": "assets/images/23_매산여고_2학기_중간_고1_기출/q04.svg",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "세 집합 연산식에서 남는 영역을 표시한 Venn diagram",
-    "solutionImageCaption": "A−C로 지우는 영역을 제외하면 (A∪B)∩(Aᶜ∪C)",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 원 A, B, C가 서로 겹쳐 있는 벤다이어그램이다. B만의 영역, B와 C의 공통 영역, A·B·C의 공통 영역, A와 C의 공통 영역이 회색으로 칠해져 있고, A만의 영역, C만의 영역, A와 B만의 공통 영역은 칠해져 있지 않다.",
+    "solutionImageCaption": "A−C=A∩Cᶜ이므로 (A∪B)−(A−C)=(A∪B)∩(Aᶜ∪C)이다. 이는 A∪B에서 A에만 속하고 C에는 속하지 않는 부분을 뺀 영역이고, 그림의 회색 부분이다. 정답은 ⑤이다.",
     "solutionImageSize": "full",
     "imageSize": "tall",
     "choices": [],
@@ -170,9 +170,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "먼저 $A\\cap B$의 원소 수를 구한 뒤 합집합의 원소 수를 이용한다.\n\n$n(A\\cap B)=n(A)-n(A\\cap B^C)=69-38=31$이다.\n\n따라서\n$n(A\\cup B)=69+43-31=81$이다.\n\n$A^C\\cap B^C=(A\\cup B)^C$이므로\n$n(A^C\\cap B^C)=100-81=19$이다.\n\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "A만 영역 38과 A의 전체 69를 표시한 수치 Venn diagram",
-    "solutionImageCaption": "A의 전체를 A만 영역과 겹친 영역으로 분해해 이후 합집합을 계산",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 안에 두 원 A, B가 겹쳐 있는 벤다이어그램이다. U의 원소 수 100, A의 원소 수 69, B의 원소 수 43이 적혀 있고, A만의 영역에는 38, 공통 영역(회색)에는 x, B만의 영역에는 43−x, 두 원 밖에는 y가 적혀 있다.",
+    "solutionImageCaption": "A만의 영역이 38이므로 n(A∩B)=69−38=31이고, n(A∪B)=69+43−31=81이다. Aᶜ∩Bᶜ=(A∪B)ᶜ이므로 두 원 밖의 영역 y는 100−81이다. 정답은 ②이다.",
     "solutionImageSize": "full",
   },
   {
@@ -300,7 +300,11 @@ window.questionBank = [
       "$q$는 $\\sim p$이기 위한 필요조건"
     ],
     "answer": "③",
-    "solution": "진리집합의 포함 관계를 필요조건과 충분조건으로 해석한다.\n\n$Q\\cap R=R$이므로 $R\\subset Q$이다.\n따라서 조건 $r$이 참이면 조건 $q$도 항상 참이다.\n\n즉, $r\\Rightarrow q$이므로 $r$은 $q$이기 위한 충분조건이다.\n\n따라서 정답은 ③이다."
+    "solution": "진리집합의 포함 관계를 필요조건과 충분조건으로 해석한다.\n\n$Q\\cap R=R$이므로 $R\\subset Q$이다.\n따라서 조건 $r$이 참이면 조건 $q$도 항상 참이다.\n\n즉, $r\\Rightarrow q$이므로 $r$은 $q$이기 위한 충분조건이다.\n\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형으로 나타낸 전체집합 U 안에 큰 원 Q가 있고, 그 안에 주황으로 칠한 작은 원 R이 완전히 들어 있다. Q 바깥 오른쪽에는 파랑으로 칠한 원 P가 Q와 겹치지 않게 놓여 있다.",
+    "solutionImageCaption": "Q∩R=R이므로 R⊂Q이다. ~q가 p이기 위한 필요조건이므로 P⊂Qᶜ이어서 P와 Q는 겹치지 않고, 그림에는 이 관계를 R(주황)과 P(파랑)로 나타냈다. R⊂Q이므로 r이 참이면 q도 항상 참이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -362,13 +366,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "평행이동 $(5,-3)$은 $x$좌표에 $5$, $y$좌표에 $-3$을 각각 더하는 변환이다.\n\n따라서\n$(-3,4)\\mapsto(-3+5,4-3)=(2,1)$이다.\n\n그러므로 정답은 ②이다.\n이동량이 음수이면 해당 좌표를 그만큼 빼는 것이므로 $y$좌표에서는 $4+(-3)=1$이 된다. 따라서 두 좌표를 각각 계산해야 한다.",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "점 P(−3,4)를 이동벡터 (5,−3)만큼 옮긴 점 P′(2,1)을 표시한 좌표평면이다. x좌표에 5를 더하고 y좌표에서 3을 빼는 평행이동을 보여 준다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(−3,4)가 있고, 오른쪽 아래의 점 P′로 향하는 화살표가 그려져 있다. P에서 오른쪽으로 가는 파랑 선분(길이 5)과 그 끝에서 아래로 내려가는 주황 선분(길이 3)이 P′에서 만난다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-TRANSLATION",
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "평행이동은 x좌표에 5를 더하고 y좌표에 −3을 더하는 변환이다. 그림에서 점 P는 오른쪽으로 5(파랑), 아래쪽으로 3(주황)만큼 옮겨져 점 P′가 되고, P′의 좌표는 (−3+5, 4−3)이다. 정답은 ②이다."
   },
   {
     "id": 12,
@@ -399,13 +404,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "두 그래프가 만나려면 연립하여 얻은 이차방정식의 판별식이 $0$ 이상이어야 한다.\n\n직선 $y=2x+2$를 $x$축의 방향으로 $a$만큼 평행이동하면\n$l_1:y=2(x-a)+2=2x-2a+2$이다.\n\n포물선과 연립하면\n$x^2+x+1=2x-2a+2$,\n즉 $x^2-x+2a-1=0$이다.\n\n판별식이 $0$ 이상이므로\n$1-4(2a-1)=5-8a\\ge0$에서\n$a\\le\\dfrac58$이다.\n따라서 $m=\\dfrac58$이다.\n\n직선을 $y$축의 방향으로 $a$만큼 평행이동하면\n$l_2:y=2x+2+a$이다.\n포물선과 연립하면\n$x^2-x-a-1=0$이다.\n\n판별식이 $0$ 이상이므로\n$1+4(a+1)=4a+5\\ge0$에서\n$a\\ge-\\dfrac54$이다.\n따라서 $n=-\\dfrac54$이다.\n\n그러므로\n$m+n=\\dfrac58-\\dfrac54=-\\dfrac58$이다.\n\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "포물선 y=x²+x+1과 기울기 2인 직선 y=2x+3/4가 점 T(1/2,7/4)에서 접하는 모습을 그린 좌표평면이다. l₁, l₂의 이동 경계가 모두 이 직선이 됨을 보여 준다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 검은 포물선과 주황 점선으로 그린 직선 y=2x+2, 이 직선과 기울기가 같으면서 포물선에 접하는 초록 직선 t가 있다. 직선 t와 포물선이 접하는 곳에 점 T가 찍혀 있고, 그림 위에 포물선의 식이 꼭짓점꼴로 적혀 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-TRANSLATION",
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "직선을 평행이동해도 기울기 2는 그대로이므로 포물선과 만나는 범위의 경계는 포물선에 접하는 직선 t(초록)이고, 연립한 이차방정식의 판별식이 0일 때이다. l₁: y=2x−2a+2에서 판별식 5−8a≥0이므로 m=8분의 5이고, l₂: y=2x+2+a에서 판별식 4a+5≥0이므로 n=−4분의 5이다. 따라서 m+n=−8분의 5이다. 정답은 ①이다."
   },
   {
     "id": 13,
@@ -496,13 +502,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "각 보기의 좌표 치환이 원래 도형의 꼭짓점을 어디로 옮기는지 확인한다.\n\n$f(x,y)=0$의 삼각형의 꼭짓점은\n$(0,0)$, $(1,1)$, $(2,0)$이다.\n\n⑤의 식 $g(x,y)=f(y+3,-x-1)$에서\n$u=y+3$, $v=-x-1$이라 두면\n$(x,y)=(-v-1,u-3)$이다.\n\n따라서 원래 세 꼭짓점은 각각\n$(0,0)\\to(-1,-3)$,\n$(1,1)\\to(-2,-2)$,\n$(2,0)\\to(-1,-1)$로 옮겨진다.\n\n이는 그림의 $g(x,y)=0$이 나타내는 삼각형과 일치한다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "삼각형 f의 꼭짓점 (0,0), (1,1), (2,0)과, 이를 (u,v)→(−v−1,u−3)으로 옮긴 삼각형 g의 꼭짓점 (−1,−3), (−2,−2), (−1,−1)을 함께 그린 그림이다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파랑 삼각형과 주황 삼각형이 있다. 파랑 삼각형은 꼭짓점 A는 원점, B(1,1), C(2,0)이고, 주황 삼각형은 꼭짓점 A′(−1,−3), B′(−2,−2), C′(−1,−1)이다. 점선 화살표가 A에서 A′로, C에서 C′로 향하고, B에서 B′로의 대응은 화살표 없이 점 이름으로 나타낸다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "f(x,y)=0의 삼각형 꼭짓점은 (0,0), (1,1), (2,0)이고 g(x,y)=0의 삼각형 꼭짓점은 (−1,−3), (−2,−2), (−1,−1)이다. 보기의 g(x,y)=f(y+3,−x−1)에서 u=y+3, v=−x−1로 두면 (x,y)=(−v−1,u−3)이므로 (0,0)→(−1,−3), (1,1)→(−2,−2), (2,0)→(−1,−1)로 옮겨져 g의 삼각형과 일치한다. 정답은 ⑤이다."
   },
   {
     "id": 16,
@@ -534,13 +541,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "꺾인 선의 길이의 합은 점을 직선 $y=x$에 대칭이동하여 직선거리로 바꾼다.\n\n점 $A(0,2)$를 직선 $y=x$에 대칭이동한 점은 $A'(2,0)$이다.\n$AP+PB$가 최소가 되려면 $A'$, $P$, $B$가 한 직선 위에 있어야 한다.\n\n직선 $A'B$의 방정식은 $y=-2x+4$이고, $y=x$와의 교점은\n$x=-2x+4$에서\n$P\\left(\\dfrac43,\\dfrac43\\right)$이다.\n\n점 $C(0,8)$를 대칭이동한 점은 $C'(8,0)$이다.\n$BQ+QC$가 최소가 되려면 $B$, $Q$, $C'$가 한 직선 위에 있어야 한다.\n\n직선 $BC'$의 방정식은 $y=-\\dfrac12x+4$이고, $y=x$와의 교점은\n$Q\\left(\\dfrac83,\\dfrac83\\right)$이다.\n\n따라서\n$PQ=\\sqrt{\\left(\\dfrac43\\right)^2+\\left(\\dfrac43\\right)^2} =\\dfrac{4\\sqrt2}{3}$이다.\n\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "직선 y=x 위의 P(4/3,4/3), Q(8/3,8/3)와 A(0,2), B(0,4), C(0,8), 대칭점 A′(2,0), C′(8,0)을 표시한 좌표평면이다. 선분 PQ의 길이가 4√2/3임을 보여 준다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 y축 위의 세 점 A(0,2), B(0,4), C(0,8)과 직선 y=x가 있다. x축 위에는 y=x에 대하여 A, C와 대칭인 점 A′(2,0), C′(8,0)이 있다. 파랑 선분 A′B와 주황 선분 BC′가 직선 y=x와 만나는 점이 각각 P, Q이고, 두 점 사이의 초록 선분 PQ가 직선 위에 있다. A에서 P, Q에서 C로 가는 점선이 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "A를 직선 y=x에 대하여 대칭이동한 A′(2,0)에서 AP+PB≥A′B이고, 선분 A′B와 y=x의 교점이 P이다. 같은 방법으로 C′(8,0)에서 BQ+QC≥BC′이고, 선분 BC′와 y=x의 교점이 Q이다. 직선 A′B는 y=−2x+4이므로 P(3분의 4, 3분의 4), 직선 BC′는 y=−(2분의 1)x+4이므로 Q(3분의 8, 3분의 8)이다. 정답은 ②이다."
   },
   {
     "id": 17,
@@ -683,13 +691,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$2$",
     "solution": "원의 중심을 차례로 이동시킨 뒤 원을 이등분하는 직선은 중심을 지나야 함을 이용한다.\n\n원래 원의 중심은 $(4,-3)$이고 반지름은 $2$이다.\n이를 $x$축의 방향으로 $-2$, $y$축의 방향으로 $3$만큼 평행이동하면 중심은 $(2,0)$이다.\n\n다시 직선 $y=x$에 대하여 대칭이동하면 중심은 $(0,2)$가 된다.\n\n직선이 원의 넓이를 이등분하려면 원의 중심을 지나야 한다.\n따라서 중심 $(0,2)$를 $y=2x+k$에 대입하면\n$2=k$이다.\n\n따라서 구하는 값은 $k=2$이다.",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "중심 (4,−3)인 원을 평행이동한 중심 (2,0)의 원, 다시 y=x에 대칭한 중심 (0,2)의 원과 직선 y=x, y=2x+2를 함께 그린 그림이다. y=2x+2가 최종 원을 이등분해 k=2임을 보여 준다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 반지름이 같은 세 원이 있다. 파랑 원의 중심은 P(4,−3), 주황 원의 중심은 Q(2,0), 초록 원의 중심은 R이다. P에서 Q로, Q에서 R로 가는 점선 화살표가 있고, 직선 y=x와 직선 y=2x+k가 그려져 있으며 직선 y=2x+k는 초록 원의 중심 R을 지난다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "중심이 (4,−3)인 원을 x축의 방향으로 −2만큼, y축의 방향으로 3만큼 평행이동하면 중심이 (2,0)인 원(주황)이 되고, 직선 y=x에 대하여 대칭이동하면 중심이 (0,2)인 원(초록)이 되며 반지름은 모두 2이다. 직선이 원의 넓이를 이등분하려면 중심을 지나야 하므로 (0,2)를 y=2x+k에 대입한다. 정답은 2이다."
   },
   {
     "id": 22,
@@ -716,7 +725,11 @@ window.questionBank = [
     "content": "[서술형 2] 명제 '어떤 실수 $x$에 대하여 $x^2-6x+a<0$이다.'의 부정이 참일 때, (1) 주어진 명제의 부정을 쓰고, (2) 상수 $a$의 범위를 구하시오. [7점]",
     "choices": [],
     "answer": "(1) 모든 실수 $x$에 대하여 $x^2-6x+a\\ge0$이다. (2) $a\\ge9$",
-    "solution": "존재명제의 부정은 전칭명제가 되며 부등호도 함께 부정한다.\n\n(1) 주어진 명제의 부정은\n'모든 실수 $x$에 대하여 $x^2-6x+a\\ge0$이다.'이다.\n\n(2)\n$x^2-6x+a=(x-3)^2+a-9$이다.\n이 식이 모든 실수 $x$에서 $0$ 이상이려면 최솟값 $a-9$가 $0$ 이상이어야 한다.\n\n따라서 $a-9\\ge0$이고\n$a\\ge9$이다."
+    "solution": "존재명제의 부정은 전칭명제가 되며 부등호도 함께 부정한다.\n\n(1) 주어진 명제의 부정은\n'모든 실수 $x$에 대하여 $x^2-6x+a\\ge0$이다.'이다.\n\n(2)\n$x^2-6x+a=(x-3)^2+a-9$이다.\n이 식이 모든 실수 $x$에서 $0$ 이상이려면 최솟값 $a-9$가 $0$ 이상이어야 한다.\n\n따라서 $a-9\\ge0$이고\n$a\\ge9$이다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 x축 위쪽에 놓여 있고, x축 위에 꼭짓점의 x좌표 3이 표시되어 있으며, 그림 위에 식 y=(x−3)²+2가 적혀 있다.",
+    "solutionImageCaption": "예: a=11일 때 y=x²−6x+11=(x−3)²+2의 그래프이다. 명제의 부정 \"모든 실수 x에 대하여 x²−6x+a≥0이다\"가 참이려면 포물선 y=x²−6x+a가 x축 아래로 내려가면 안 된다. y=(x−3)²+a−9의 최솟값 a−9가 0 이상이어야 하므로 a≥9이다. 정답은 (1) 모든 실수 x에 대하여 x²−6x+a≥0이다. (2) a≥9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

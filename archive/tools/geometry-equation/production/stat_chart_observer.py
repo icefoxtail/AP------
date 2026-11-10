@@ -1781,6 +1781,7 @@ def audit_dot(chart, doc):
 # tone 1 / 2 is #111 at 0.16 / 0.34 opacity. The scale of the x axis is the window of the plan against the two ends of each polyline (never anything the producer states about its own scale).
 NORM_PEAK, NORM_TICK, NORM_STEP_MAX = 140.0, 5.0, 2.05
 NORM_OPACITY = {1: 0.16, 2: 0.34}
+NORM_SHADE_COLORS = {'BLUE': ('#7fa6e8', 0.32), 'WARM': ('#f2a65a', 0.42), 'GREEN': ('#6fcf97', 0.42), 'ROSE': ('#e98aa8', 0.42), 'VIOLET': ('#a78bdb', 0.42)}   # this observer's own copy of the C1 palette tints (a shade may take one instead of a grey tone, G20)
 NORM_SYMBOL = re.compile('^[A-Za-zμσ]$')
 NORM_TEXT = re.compile('^[A-Za-z0-9μσ+\\-=.()^]{1,10}$')
 NORM_NAME = re.compile('^(?:[A-Za-z0-9μσ+\\-=.()^, ]{1,14}|[가-힣][가-힣A-Za-z0-9 ()]{0,9})$')
@@ -1920,18 +1921,19 @@ def normal_plan(chart):
     raw_shades = chart.get('shades', [])
     if not isinstance(raw_shades, list) or len(raw_shades) > 6: fail('STAT_NORMAL_SHADE_INVALID')
     for raw in raw_shades:
-        if not isinstance(raw, dict) or set(raw) - {'curve', 'from', 'to', 'tone'}: fail('STAT_NORMAL_SHADE_INVALID')
+        if not isinstance(raw, dict) or set(raw) - {'curve', 'from', 'to', 'tone', 'color'}: fail('STAT_NORMAL_SHADE_INVALID')
         c = by_id.get(raw['curve']) if 'curve' in raw else curves[0]
         if c is None: fail('STAT_NORMAL_SHADE_INVALID')
         a_ref, b_ref = raw.get('from'), raw.get('to')
         if a_ref is None and b_ref is None: fail('STAT_NORMAL_SHADE_INVALID')
         if raw.get('tone', 1) not in (1, 2) or isinstance(raw.get('tone'), bool): fail('STAT_NORMAL_SHADE_INVALID')
+        if 'color' in raw and (not isinstance(raw['color'], str) or raw['color'] not in NORM_SHADE_COLORS or 'tone' in raw): fail('STAT_NORMAL_SHADE_COLOR_INVALID')
         a = None if a_ref is None else ref(a_ref)
         b = None if b_ref is None else ref(b_ref)
         if a and b and a['u'] >= b['u']: fail('STAT_NORMAL_SHADE_RANGE')
         za = None if a is None else float(z_of(c, a['u']))
         zb = None if b is None else float(z_of(c, b['u']))
-        shades.append({'curve': c['id'], 'from': None if a is None else a['u'], 'to': None if b is None else b['u'], 'tone': raw.get('tone', 1), 'za': za, 'zb': zb, 'area': normal_area(za, zb), 'label': None})
+        shades.append({'curve': c['id'], 'from': None if a is None else a['u'], 'to': None if b is None else b['u'], 'tone': raw.get('tone', 1), 'color': raw.get('color'), 'za': za, 'zb': zb, 'area': normal_area(za, zb), 'label': None})
     raw_labels = chart.get('areaLabels', [])
     if not isinstance(raw_labels, list) or len(raw_labels) > len(shades): fail('STAT_NORMAL_AREA_LABEL_INVALID')
     for raw in raw_labels:
@@ -2136,7 +2138,8 @@ def audit_normal(chart, doc):
         inner = pts[1:-1]
         if abs(inner[0][0] - xa) > 0.05 or abs(inner[-1][0] - xb) > 0.05: doc.err('SC_NORMAL_SHADE_EDGE:%d' % j)
         if any(abs(y - ycurve(c, x)) > 0.05 for x, y in inner) or any(not xa - 0.05 <= x <= xb + 0.05 for x, _ in inner) or any(b[0] < a[0] - 1e-9 for a, b in zip(inner, inner[1:])): doc.err('SC_NORMAL_SHADE_CURVE:%d' % j)
-        if e.get('fill') != '#111' or abs(float(e.get('fill-opacity') or 0) - NORM_OPACITY[s['tone']]) > 1e-9 or e.get('data-curve') != c['id']: doc.err('SC_NORMAL_SHADE_STYLE:%d' % j)
+        want_fill, want_opacity = NORM_SHADE_COLORS[s['color']] if s['color'] else ('#111', NORM_OPACITY[s['tone']])
+        if (e.get('fill') or '').lower() != want_fill or abs(float(e.get('fill-opacity') or 0) - want_opacity) > 1e-9 or e.get('data-curve') != c['id']: doc.err('SC_NORMAL_SHADE_STYLE:%d' % j)
         for side, u in (('from', s['from']), ('to', s['to'])):
             edge = doc.by_id.get('edge-%d-%s' % (j, side))
             if u is None:

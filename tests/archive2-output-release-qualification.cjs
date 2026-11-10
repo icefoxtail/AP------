@@ -12,17 +12,17 @@ const BASELINE = '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a';
 const ORIGINAL_BASELINE = 'f446e62a29f90d6d30a76b295e5c226f5ead72d2';
 const sourceFiles = [
   ['archive/exams/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js', '68547f3cf08c82ef4f3261e51ec9aa01b7aba7768bfbb92d7f30370407fc7a44'],
-  ['archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js', '0a603d6978f855493906a614d8b1bdf61c6077e54eb3fdf500cef862eb830b9f'],
+  ['archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js', 'f35d15d932be75d29e9ee713ff15fb0173f55668056d275e1131c4a2fa5e03e8'],
   ['archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js', 'cd1c72c86ab16ebf0a4d3a3fd74411cfaae9db5410f9893444a217935825f2f1'],
-  ['archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js', '3a009d27f550a6bf8f4c7e754f2d653b2cbc9db502ecd2f3f86e0281fccd003f'],
+  ['archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js', 'dd796d74b890de0cbc45cf0be3111ec28b0772acfbf1cfe572aa2d0a157bdfad'],
   ['archive/exams/test-fixtures/render-authority-golden.js', '5fff5db0ea5864e6101965ea7b61fde0756412a5da1213d0f337684bde80a0b7']
 ].map(([file, sha256]) => ({ file, sha256 }));
-const fullInputHash = 'ab20a2251a37e64ac08275139184b00d0c75d758dea84c1b17dc348537afaec8';
+const fullInputHash = 'a4c280aeb8370bd08f8b2650a8107e044bc829d63373ab14aa6def1222282b8f';
 const fixtureSpecs = [
   ['envelope50', 'envelope', 4, 50, fullInputHash, [0, 1, 2]],
   ['envelope50-qpp1', 'envelope', 1, 50, fullInputHash, [0, 1, 2]],
-  ['images24', 'original', 4, 24, 'f5e7491395c6d11f0bc0a2d09e601c5dd1500ec249fbff86bbd5ffbbee70c953', [1]],
-  ['long23', 'original', 4, 23, '270a97cd8851f4d9f246606e949e53ec21b67111573205c2cd25297b5fd4291f', [3]],
+  ['images24', 'original', 4, 24, '4df278a050d2c2b93413ce70bdb7f64ece34df0331dba98c9c4a35958f3023b0', [1]],
+  ['long23', 'original', 4, 23, 'c0e5ca18f3602ea8eede79385fa0c03739287f03397569f3f46d43336813d7ab', [3]],
   ['ordinary', 'original', 4, 24, '99ba5a48bdf7e37c7cebb037d300e4567828b812ee060c4ae07bb73c00a3cc1b', [0]],
   ['envelope8', 'envelope', 4, 8, '341cfc41c17992ce0e23f259113c32aa86185886e463ce65ae13f95c6881ce4f', [0]],
   ['legacy50', 'legacy', 4, 50, fullInputHash, [0, 1, 2]],

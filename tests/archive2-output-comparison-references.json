@@ -1,13 +1,23 @@
 {
   "schema": "ARCHIVE_OUTPUT_CORRECTNESS_REFERENCES_V1",
   "performanceBase": "8a6a71af2317060dacd877a7a7af86d347dc06e6",
-  "performanceReference": "4a262850e4574f9e006ba0bd69a5f2aa31b84019",
+  "performanceReference": "d8b04e0e3597209c8862755b6e969d809b94fb9d",
   "originalBase": "f446e62a29f90d6d30a76b295e5c226f5ead72d2",
   "originalReference": "6f30f21e0b4e20ae40e0bde9a3acadb534bd52e7",
   "corrections": [
     "Shared reminder-image width constraint moved unchanged from original engine",
-    "Existing 15s solution-image budget also used for cold exam-image preparation"
+    "Existing 15s solution-image budget also used for cold exam-image preparation",
+    "Inline-width source diagrams constrained in solution reminders (15a6dd95fd)",
+    "AP Table Engine v1 table normalisation (4a0be8de31, 9628eff584, 7fffacdb01, 99cdecf175)",
+    "<p> rendered as a line block without default margins (ed48384c2d)"
   ],
   "sourceDataChanged": false,
-  "historicalUncorrectedEvidenceRun": "42161431317"
+  "historicalUncorrectedEvidenceRun": "42161431317",
+  "previousPerformanceReferences": [
+    {
+      "sha": "4a262850e4574f9e006ba0bd69a5f2aa31b84019",
+      "replaced": "2026-11-10",
+      "reason": "Correctness changes merged after 2026-11-06 changed table block geometry (continuation-golden: 214px -> 211px), so every engine PR failed output parity."
+    }
+  ]
 }
