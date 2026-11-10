@@ -148,6 +148,12 @@
         .sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }
         .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
         .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
+        /* 2026-11-11 사용자 결정: 해설 SVG는 크기 등급(small/medium/large)과 무관하게 라벨이 읽히는 크기로 보인다.
+           표시 폭 = 자연 폭 x 0.6(solution-render-executor.js가 쪽 나누기 전에 img 폭으로 지정), 칸 폭이 상한, 높이는 auto.
+           아래 규칙은 그 스크립트가 못 돌아도 SVG가 105/145/180px 높이 상한에 눌리지 않게 하는 대비책이다(칸 폭까지, 높이 제한 없음).
+           래스터(png/jpg)는 위의 기존 상한을 그대로 쓴다. layout-fullwidth(자체 640px 상한)는 건드리지 않는다.
+           그림 엔진의 표시 크기 측정(data: SVG 포함)도 이 실제 CSS를 읽는다. */
+        .sol-image-wrap:is(.image-small, .image-medium, .image-large):not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]) { max-width: 100%; max-height: none; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
@@ -178,7 +184,7 @@
     <script src="../archive/equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="../archive/equal-slot-engine.css?v=20260915.1">
     <script src="../archive/exam-render-executor.js?v=20261029-sections-1"></script>
-    <script src="../archive/solution-render-executor.js?v=20261029-sections-1"></script>
+    <script src="../archive/solution-render-executor.js?v=20261111-svg-k-2"></script>
     <script src="../archive/answer-render-executor.js?v=20261029-sections-1"></script>
     <script src="js/clinic-solution-checkpoint.js?v=20260928.1"></script>
 </head>
