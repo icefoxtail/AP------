@@ -29,6 +29,27 @@
     // bounded load+decode budget, then keep the final print readiness gate.
     const SOLUTION_IMAGE_TIMEOUT_MS = 15000;
 
+    // 2026-11-11 user decision: a solution figure that is an SVG is shown at its natural width x k, capped at the
+    // column (CSS max-width:100%), height auto, whatever its stored size class says. The figure engine draws labels
+    // so that they are about 12 CSS px at this scale (base font 20 x 0.6); the size-class caps (105/145/180px)
+    // made published medium figures unreadable (6-7px). Raster images keep the size-class caps.
+    const SOLUTION_SVG_DISPLAY_K = 0.6;
+    const SVG_SOURCE_PATTERN = /(?:\.svg(?:[?#]|$)|^data:image\/svg\+xml)/i;
+    function applySolutionSvgDisplayWidth(scope) {
+        if (!scope?.querySelectorAll) return 0;
+        const images = Array.from(scope.querySelectorAll('.sol-image-wrap:not(.layout-fullwidth) img'));
+        if (scope.matches?.('.sol-image-wrap:not(.layout-fullwidth)')) images.push(...Array.from(scope.querySelectorAll('img')));
+        let applied = 0;
+        new Set(images).forEach(img => {
+            if (!SVG_SOURCE_PATTERN.test(img.getAttribute('src') || '')) return;
+            const natural = Number(img.naturalWidth) || 0;
+            if (natural <= 0) return;
+            img.style.width = `${Math.round(natural * SOLUTION_SVG_DISPLAY_K * 100) / 100}px`;
+            applied += 1;
+        });
+        return applied;
+    }
+
     async function measureSolutionBatch(boxes, staging, deps, document) {
         const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
         boxes.forEach(box => box.classList.add('fit-tight'));
@@ -322,6 +343,8 @@
             await deps.waitForQuestionImage(img, SOLUTION_IMAGE_TIMEOUT_MS);
             deps.onSolutionProgress?.({ phase: 'images', completed: ++readyImages, total: solutionImages.length });
         }));
+        // Images are loaded here (natural size known) before any measuring or pagination; no second fetch.
+        applySolutionSvgDisplayWidth(staging);
         if (deps.rendererMode() === 'batch') {
             // MathJax owns a single document. Keep calls serial and give input,
             // cancellation and the progress display a turn between small batches.
@@ -601,6 +624,13 @@ async function renderComposed({ area, items, deps }) {
             targetCol.appendChild(box);
             if (!preparedBoxes.has(box)) {
                 await applyAutoImageSizeClasses(box);
+                // Natural size must be known before this box is measured; a failed image keeps the CSS fallback.
+                await Promise.all(Array.from(box.querySelectorAll('.sol-image-wrap img')).map(img => (
+                    (img.complete && img.naturalWidth > 0) || typeof deps.waitForQuestionImage !== 'function'
+                        ? null
+                        : deps.waitForQuestionImage(img, SOLUTION_IMAGE_TIMEOUT_MS).catch(() => null)
+                )));
+                applySolutionSvgDisplayWidth(box);
                 await deps.typesetMath('composition-solution-box', [box]);
                 preparedBoxes.add(box);
             }
@@ -682,5 +712,5 @@ async function renderComposed({ area, items, deps }) {
     }
 }
 
-    return Object.freeze({ render, renderComposed });
+    return Object.freeze({ render, renderComposed, applySolutionSvgDisplayWidth, SOLUTION_SVG_DISPLAY_K });
 });

@@ -130,7 +130,10 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
                 const wrapper=document.createElement('span');wrapper.className='sol-image-wrap image-'+sizeClass;
                 const image=document.createElement('img');image.src=dataUrl;wrapper.appendChild(image);host.appendChild(wrapper);document.body.appendChild(host);
                 try{
-                  await image.decode();const imageRect=rect(image.getBoundingClientRect()),wrapperRect=rect(wrapper.getBoundingClientRect()),computedStyle=styleRecord(image);
+                  await image.decode();
+                  // 2026-11-11: the page sizes an SVG solution figure by its natural width (x k), whatever the size class; the probe applies the page's own helper so the measured profile equals the real display.
+                  if(window.APSolutionRenderExecutor?.applySolutionSvgDisplayWidth)window.APSolutionRenderExecutor.applySolutionSvgDisplayWidth(wrapper);
+                  const imageRect=rect(image.getBoundingClientRect()),wrapperRect=rect(wrapper.getBoundingClientRect()),computedStyle=styleRecord(image);
                   const chain=[image,wrapper,meta,box].map(node=>getComputedStyle(node).transform);
                   profiles.push({status:image.naturalWidth===target.intrinsicSvg.width&&image.naturalHeight===target.intrinsicSvg.height?'PASS':'FAIL',sizeClass,imageRect,wrapperRect,naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,computedStyle,transformChain:chain});
                 }catch(error){profiles.push({status:'FAIL',sizeClass,error:String(error)});}
