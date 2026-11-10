@@ -319,7 +319,11 @@ window.questionBank = [
     "originalCategory": "음수의 제곱근",
     "layoutTag": "grid",
     "wide": false,
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:NEGATIVE_RADICAL_DOMAIN_ABSOLUTE_VALUE"
+    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:NEGATIVE_RADICAL_DOMAIN_ABSOLUTE_VALUE",
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 x≤−3과 예시 x=−7에서 −3, 6까지의 거리 −x−3, 6−x를 나타냈다.",
+    "solutionImageCaption": "등식이 성립하는 실수는 x≤−3이다. 예: x=−7일 때 x에서 −3까지의 거리는 −x−3, x에서 6까지의 거리는 6−x이다. 따라서 이 범위에서 |x−6|+|x+3|=(6−x)+(−x−3)=3−2x이고 a=−2, b=3이다. 정답은 b−a=5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -367,7 +371,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수 최대최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 −1≤x≤4에서 f(x)=2x²−4x의 그래프가 있다. 아래로 볼록한 곡선의 꼭짓점 V(1,−2), 왼쪽 끝 A(−1,6), 오른쪽 끝 B(4,16)가 각 점 곁에 표시되어 있고 세로축은 f(x)이다.",
+    "solutionImageCaption": "2x−y=4에서 y=2x−4이므로 xy=x(2x−4)=2(x−1)²−2이다. 이 값을 f(x)라 하고 −1≤x≤4에서 그래프를 보면 꼭짓점 x=1에서 최솟값 n=−2, 오른쪽 끝 x=4에서 최댓값 M=16이다. 정답은 M−n=18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -462,9 +470,10 @@ window.questionBank = [
     "originalCategory": "이차함수 그래프",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q10-solution-graph.svg",
-    "solutionImageAlt": "문항 10 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선과 점선으로 된 대칭축 x=2가 있다. 꼭짓점 P(2,4)가 대칭축 위에 표시되어 있고, 포물선은 y축과 한 점에서 만난다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=x²+a(x−2)로 묶으면 a의 값과 관계없이 x=2일 때 y=4이므로 그래프는 항상 P(2,4)를 지난다. P가 꼭짓점이므로 대칭축 x=−(2분의 a)가 2이고 a=−4이다. 그림은 이때의 포물선 f(x)=(x−2)²+4와 대칭축 x=2이다. 이 그래프가 y축과 만나는 점의 y좌표는 x=0을 대입하면 되므로 정답은 8이다."
   },
   {
     "id": 11,
@@ -511,9 +520,9 @@ window.questionBank = [
     "originalCategory": "이차함수 활용",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q11-solution-fig.svg",
-    "solutionImageAlt": "둘레 P(m)에 대해 가능한 넓이 S(m²)는 S≤(P/4)² 이하이다. P=60이면 S는 최대 225이므로 넓이 300m²는 만들 수 없다.",
-    "solutionImageCaption": "둘레 P(m)에 대해 가능한 넓이 S(m²)는 S≤(P/4)² 이하이다. P=60이면 S는 최대 225이므로 넓이 300m²는 만들 수 없다.",
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축은 둘레 P, 세로축은 넓이 S이다. 포물선 모양의 곡선 위에 세 점 A(60,225), B(100,625), C(120,900)가 있고, 가로로 점선 S=300이 곡선을 한 번 가로지른다. 점 A는 그 점선 아래쪽에 있다.",
+    "solutionImageCaption": "둘레가 P인 직사각형의 넓이 S는 S≤(4분의 P)²이어야 만들 수 있고, 곡선은 S=(4분의 P)²이다. 곡선 위의 점과 그 아래쪽의 (P,S)만 가능하다. 점 A(60,225), B(100,625), C(120,900)는 곡선 위의 점이고, 점선 S=300은 P=60일 때 곡선의 높이 225보다 위에 있다. P≤60이면 S≤225이므로 S=300은 만들 수 없다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -609,9 +618,10 @@ window.questionBank = [
     "originalCategory": "이차함수 최대최소",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q13-solution-graph.svg",
-    "solutionImageAlt": "치환 변수 t에 대한 이차함수 y=(t-2)^2-3의 그래프와 두 끝점",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 y인 좌표평면에서 −4≤t≤0 구간의 곡선이 왼쪽 위의 점 M(−4,33)에서 오른쪽 아래의 점 N(0,1)까지 내려온다. 두 점의 좌표가 각 점 곁에 표시되어 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "t=x²−4x=(x−2)²−4이고 0≤x≤3이면 −4≤t≤0이다. 이때 y=t²−4t+1=(t−2)²−3이고, 이 구간에서 y는 t가 커질수록 감소한다. 따라서 t=−4일 때 최댓값 M=33, t=0일 때 최솟값 m=1이다. 정답은 M+m=34이다."
   },
   {
     "id": 14,
@@ -748,7 +758,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수와 직선",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²+8x−7과 점선 y=2x가 있고, 점선 위의 점 P(−2,−4)가 포물선 안쪽에 있다. P에서 포물선 위의 두 점으로 이어지는 주황색 선분 두 개가 그려져 있다.",
+    "solutionImageCaption": "직선 y=m(x−t)+2t는 m과 관계없이 점 P(t,2t)를 지나므로 P는 점선 y=2x 위를 움직인다. 예: t=−2일 때 P(−2,−4)는 포물선 안쪽에 있어 P를 지나는 어떤 직선(주황색 선분은 그 중 둘)도 포물선과 만난다. 모든 기울기에서 교점이 생기려면 판별식이 항상 0 이상이어야 하고 그 조건은 t²+6t−7≤0이다. 정답은 −7≤t≤1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1002,9 +1016,9 @@ window.questionBank = [
     "originalCategory": "서술형4",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q22-solution-fig.svg",
-    "solutionImageAlt": "a=√2이면 0≤x≤2에서 최댓값 M=2+2√2는 꼭짓점 V에서, 최솟값 m=2√2는 x=0일 때이고 M-m=2이다. a=2-√2일 때는 최솟값이 x=2에서 생긴다.",
-    "solutionImageCaption": "a=√2이면 0≤x≤2에서 최댓값 M=2+2√2는 꼭짓점 V에서, 최솟값 m=2√2는 x=0일 때이고 M-m=2이다. a=2-√2일 때는 최솟값이 x=2에서 생긴다.",
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0≤x≤2에서 a=0.5, a=1.5일 때 M과 m의 위치를 보인 두 그래프",
+    "solutionImageCaption": "f(x)=−x²+2ax+2a는 위로 볼록하고 축이 x=a이다. 구간 0≤x≤2에서 최댓값 M은 꼭짓점에서 생기고, 최솟값 m은 두 끝점 중 축에서 더 먼 쪽에서 생긴다. 예: a=0.5이면 m이 오른쪽 끝(x=2)에서, a=1.5이면 왼쪽 끝(x=0)에서 생긴다. a≤0이면 f가 구간에서 감소하고 a≥2이면 증가하므로 M과 m이 모두 끝점에서 생기는데, 이때 M−m=2를 만족하는 a는 없다. 0<a<2인 경우를 M−m=2에 대입해 구한 a는 2−√2와 √2이고 정답은 두 값의 합 2이다.",
     "solutionImageSize": "full"
   },
   {

@@ -452,7 +452,11 @@ window.questionBank = [
     "category": "평면좌표",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 점 A(−3, 2), B(1, −4)와 선분 AB를 그리고, 가로 차 4와 세로 차 6을 직각을 낀 두 변으로 하는 점선 직각삼각형을 나타낸 그림.",
+    "solutionImageCaption": "두 점의 x좌표의 차는 4, y좌표의 차는 6이다. 이 두 차를 직각을 낀 두 변으로 하는 직각삼각형을 만들면 선분 AB가 빗변이 되어 피타고라스 정리로 길이를 구할 수 있다. 정답은 2√13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -497,9 +501,10 @@ window.questionBank = [
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q11-solution-graph.svg",
-    "solutionImageAlt": "문항 11 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 점 A(3, 5)와 B(−5, −1)를 잇는 선분 위에 세 점 C, D, E가 있어 선분을 네 등분하고, B에 가까운 한 조각이 굵게 표시된 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "선분 AB를 4등분하는 세 점을 A쪽부터 C, D, E라 하면 E가 B에 가장 가깝다. E는 A에서 B까지 4분의 3 지점이므로 선분 AB를 3:1로 내분하는 점이다. 내분점 공식으로 좌표를 구한다. 정답은 ③이다."
   },
   {
     "id": 12,
@@ -547,7 +552,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "image": "assets/images/24_제일고_1학기_중간_고1_기출/q12.png",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB를 6등분하는 점 C, D, E, F, G가 수직선 위에 같은 간격으로 놓인 모습",
+    "solutionImageCaption": "선분 AB를 6등분하면 각 등분점의 위치를 0부터 6까지의 수로 나타낼 수 있다. 각 보기의 내분비와 외분비를 등분점의 위치와 비교한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -596,9 +605,9 @@ window.questionBank = [
     "wide": false,
     "problemTypeNullReason": "EXACT_TAXONOMY_UNBOUND_FOR_H22-C2-01:PT_COORD_DISTANCE_OPTIMIZATION",
     "templateNullReason": "EXACT_TAXONOMY_UNBOUND_FOR_H22-C2-01:TPL_DISTANCE_SUM_MIN",
-    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "점 P가 선분 AB 위에 있을 때 PA+PB가 최소이고 그 값은 AB이다",
-    "solutionImageCaption": "점 P가 선분 AB 위에 있을 때 PA+PB가 최소이고 그 값은 AB이다",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 점 A(−2, −5), B(4, 1)을 잇는 굵은 선분 AB와, 선분 밖의 점 P에서 A와 B로 이은 두 점선 PA, PB가 있는 그림.",
+    "solutionImageCaption": "그림의 P는 선분 AB 밖에 놓은 한 예이다. 이때 PA+PB는 삼각형의 두 변의 길이의 합이라 AB보다 크고, P가 선분 AB 위에 있으면 PA+PB가 AB와 같아 가장 작다. 따라서 최솟값은 AB의 길이이다. 정답은 6√2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -649,9 +658,10 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q14-solution-graph.svg",
-    "solutionImageAlt": "문항 14 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 직선 y=1, x+2y−3=0, 2x+y−3=0이 한 점 P에서 만나는 그림. x축에 눈금 1이 표시되어 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "k=−1일 때 직선은 y=1, k=0일 때 x+2y−3=0, k=1일 때 2x+y−3=0이다. 세 직선은 모두 점 P(1, 1)을 지난다. 이를 바탕으로 각 보기를 하나씩 확인한다. 정답은 ④이다."
   },
   {
     "id": 15,
@@ -748,9 +758,10 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "두 직선 3x+4y−1=0과 2x+y−4=0의 교점 A(3,−2), 점 P(2,1), 선분 AP를 표시하고, AP의 기울기 −3을 이용해 P까지의 거리가 최대인 직선을 찾는 해설 그림이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 3x+4y−1=0, 2x+y−4=0이 점 A(3, −2)에서 만나고, 점 P(2, 1)과 A를 잇는 점선 AP가 있는 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 직선의 교점 A(3, −2)와 점 P(2, 1)을 잇는 선분 AP를 그렸다. A를 지나는 직선 중 P에서 가장 먼 것은 AP에 수직인 직선이다. AP의 기울기가 −3이므로 구하는 직선의 기울기는 3분의 1이다. 정답은 ①이다."
   },
   {
     "id": 17,
@@ -794,7 +805,11 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 점 A(2, 5), B(4, 1)을 잇는 선분 AB와, 이 선분을 가로지르는 직선 y=x+1이 있고 두 선이 만나는 점이 표시된 그림.",
+    "solutionImageCaption": "예를 들어 m=0일 때 직선은 y=x+1이고 선분 AB와 만난다. 직선의 식의 좌변을 F라 하면 직선이 선분 AB와 만날 조건은 두 끝점 A, B에서 F의 값의 곱이 0 이하인 것이다. 이를 풀어 m의 범위를 구하고 두 끝값을 더한다. 정답은 −7분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -842,7 +857,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "image": "assets/images/24_제일고_1학기_중간_고1_기출/q18.png",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 A가 원점인 직각삼각형 ABC가 있고 AB의 길이는 9, AC의 길이는 6이다. 삼각형 내부의 점 P에서 세 꼭짓점 A, B, C로 이은 점선이 있는 그림.",
+    "solutionImageCaption": "A를 원점에 두면 B(9, 0), C(0, 6)이다. 내부의 임의의 점 P(x, y)에 대해 AP², BP², CP²을 좌표로 나타내 더한 뒤 완전제곱식으로 정리하면 최솟값을 구할 수 있다. 그림의 P는 임의의 위치의 한 예이다. 정답은 78이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -925,9 +944,9 @@ window.questionBank = [
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "삼각형 AOB와 넓이를 이등분하는 직선 y=-2x+2√21, 교점 R,S를 실제 좌표로 표시한 그림",
-    "solutionImageCaption": "[AOB]=12, [ORS]=6이 되는 R=(√21,0), S=(5√21/7,4√21/7)을 확인한다.",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 O, A(5, 4), B(6, 0)을 꼭짓점으로 하는 삼각형 AOB를 직선 y=−2x+k가 변 OB 위의 점 R과 변 OA 위의 점 S에서 지나, 파란 삼각형 ORS와 주황 사각형 ASRB로 나눈 그림. 두 부분에 넓이 6이 각각 적혀 있다.",
+    "solutionImageCaption": "삼각형 AOB의 넓이는 12이므로 직선이 나누는 두 부분의 넓이는 각각 6이어야 한다. 직선과 OB, OA의 교점을 R, S라 하면 삼각형 ORS의 넓이를 k로 나타내 6과 같다고 놓는다. 정답은 2√21이다.",
     "solutionImageSize": "full"
   },
   {
