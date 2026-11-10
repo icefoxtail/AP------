@@ -680,6 +680,13 @@
       segs.forEach((g) => { b.stext(x, y, g.t, { color: g.c || 'ink', size: sz, weight: 800, align: 'left', baseline: 'middle', alpha: a }); x += g.w * k; });
     });
   }
+  // 정리 탭(풀이 단계)에서 지금 단계의 식 한 줄을 그림 아래(또는 위)에 씁니다 — 해설이 말하는 값이 그림에 보이게 하는 공용 도구.
+  // segs: [{t, c}] 한 줄. o.gated: 결과가 든 줄이면 true(해설 재생 중에는 svShowV 가 켜질 때까지 안 그림). o.top: 위쪽에 씀. 탐구·문제 탭·썸네일은 그리지 않습니다.
+  function stepRow(D, C, segs, o) {
+    o = o || {};
+    if (!segs || !C.review || D.b.thumb || (o.gated && D.lessonHide)) return;
+    sumRows(D, Array.isArray(segs[0]) ? segs : [segs], 1, !o.top);
+  }
   /* ------------------------------------------------------------ 원뿔·원뿔대 전개도 장면 (겉넓이를 전개도로 설명)
      o: { r2 밑면 반지름, r1 윗면 반지름(0이면 원뿔), hf 높이, R2 큰 원뿔의 모선, R1 작은 원뿔의 모선(원뿔이면 0),
           t 펼침(0~1), problem, review, vals:{ring,top,bot,arcBig,arcSmall,tot,big,small}(π 꼴 글자), hl:{ring,bot,top,big,small}(0 흐림·1 보통·2 강조·3 굵게) }
@@ -840,6 +847,7 @@
     }
     D.fit([pb(thL, r2, y0), pb(thR, r2, y0), apexBig, add3(pb(thR, r1, yc), sh), add3(pb(thL, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), v3(0, y0, r2), v3(0, y0, -r2)], reference ? reference.mesh.faces.flatMap(f => f.pts.map(reference.R.P)) : [], { l: o.minimal && b.W < 560 ? 18 : 52, r: o.fitR == null ? (o.minimal && b.W < 560 ? 18 : 52) : o.fitR, t: thumb ? 5 : (o.problem && b.W < 560 ? 12 : (o.minimal && b.W < 560 ? 24 : (o.problem ? 40 : 84))), b: thumb ? 5 : (o.problem && b.W < 560 ? 12 : (o.minimal && b.W < 560 ? 38 : (o.problem ? 52 : 76))) });
     const rv = o.review, big = rv && st <= 1, sm = rv && st === 2, fr = rv && st >= 3;
+    const lessonShow = !!(s.lessonOn && rv); // 해설 재생 중 정리 탭: 값 이름표와 합 식을 그림(탐구·정리·문제 탭은 그대로). 결과(원뿔대 이름표·합 식 둘째 줄)는 svShowV 까지 숨김
     if (t < 0.98 || o.simpleLabels) {
       D.line(pb(thL, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: o.simpleLabels ? 0.6 : 0.7 * (1 - ease(t)) });
       D.line(pb(thR, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: o.simpleLabels ? 0.6 : 0.7 * (1 - ease(t)) });
@@ -855,15 +863,15 @@
     // 길이: 반지름은 오른쪽 앞으로, 높이는 점선 + 직각 표시
     const rf = D.rightFront(35), aBig = 1 - ease(lin01(t, 0, 0.35)), aSm = ease(lin01(t, 0.25, 0.6));
     D.radius(cb, add3(cb, mul3(rf, r2)), reference && b.W < 560 ? '' : `반지름 ${o.r2}`, { dash: true, end: !o.minimal });
-    D.radius(add3(ct, sh), add3(add3(ct, sh), mul3(rf, r1)), (reference || (o.minimal && b.W < 560)) ? '' : `반지름 ${o.r1}`, { dash: slide < 1e-3, end: !o.minimal, alpha: o.review && o.minimal ? aSm : 1 });
+    D.radius(add3(ct, sh), add3(add3(ct, sh), mul3(rf, r1)), (reference || (o.minimal && b.W < 560 && !lessonShow)) ? '' : (lessonShow && o.minimal ? `${o.r1}` : `반지름 ${o.r1}`), { dash: slide < 1e-3, end: !o.minimal, alpha: o.review && o.minimal ? aSm : 1 });
     D.height(cb, apexBig, `높이 ${show(o.h2)}`, { alpha: aBig, color: o.minimal ? 'ink' : 'amber', side: { x: 1, y: 0 } });
-    D.height(add3(ct, sh), add3(v3(0, yc + h1, 0), sh), (reference || (o.minimal && b.W < 560)) ? '' : `높이 ${show(o.h1)}`, { alpha: aSm, color: o.minimal ? 'ink' : 'violet', side: { x: 1, y: 0 } });
+    D.height(add3(ct, sh), add3(v3(0, yc + h1, 0), sh), (reference || (o.minimal && b.W < 560 && !lessonShow)) ? '' : `높이 ${show(o.h1)}`, { alpha: aSm, color: o.minimal ? 'ink' : 'violet', side: lessonShow ? { x: -1, y: 0 } : { x: 1, y: 0 } }); // 재생 중: 높이 글자는 왼쪽에(반지름 글자와 겹치지 않게)
     if (!o.problem) {
       const k = b.k || 40, ey = (D.P(v3(0, y0, r2)).y - D.P(cb).y) * k, ey1 = (D.P(v3(0, yc, r1)).y - D.P(ct).y) * k, a3 = ease(lin01(t, 0.55, 0.95));
-      D.areaLab(cb, '큰 원뿔', o.minimal ? '' : V0.v2, { dy: ey + 24, alpha: aBig });
-      D.areaLab(add3(ct, sh), '작은 원뿔', o.minimal ? '' : V0.v1, { dy: ey1 + 24, alpha: aSm, color: o.minimal ? 'ink' : 'violet' });
-      D.areaLab(v3(0, y0 + hf * 0.4, 0), '원뿔대', o.minimal ? '' : V0.vol, { alpha: a3, maxW: r2 * k * 1.2, color: o.minimal ? 'ink' : 'green' });
-      if (!(o.minimal && (o.review || b.W < 560))) sumRows(D, [[{ t: '원뿔대의 부피 = ' }, { t: '큰 원뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 원뿔', c: 'violet' }], [{ t: '= ' }, { t: V0.v2, c: 'sky' }, { t: ' − ' }, { t: V0.v1, c: 'violet' }, { t: ` = ${V0.vol}` }]], 1);
+      D.areaLab(cb, '큰 원뿔', o.minimal && !lessonShow ? '' : V0.v2, { dy: ey + 24, alpha: aBig });
+      D.areaLab(add3(ct, sh), '작은 원뿔', o.minimal && !lessonShow ? '' : V0.v1, { dy: ey1 + 24, alpha: aSm, color: o.minimal ? 'ink' : 'violet' });
+      if (!(lessonShow && D.lessonHide)) D.areaLab(v3(0, y0 + hf * 0.4, 0), '원뿔대', o.minimal && !lessonShow ? '' : V0.vol, { alpha: a3, maxW: r2 * k * 1.2, color: o.minimal ? 'ink' : 'green' });
+      if (lessonShow || !(o.minimal && (o.review || b.W < 560))) sumRows(D, [[{ t: '원뿔대의 부피 = ' }, { t: '큰 원뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 원뿔', c: 'violet' }], [{ t: '= ' }, { t: V0.v2, c: 'sky' }, { t: ' − ' }, { t: V0.v1, c: 'violet' }, { t: ` = ${V0.vol}` }]], 1);
     }
     return D;
   }
@@ -872,6 +880,6 @@
   Object.assign(G, {
     boxMinusBoxes, meshArea, flipMesh, cube8, PI, DEG, TAU, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, centroid, rotM, mulM, rotAbout, rotYAt, shiftT, compose, applyT, Tid,
     camOf, proj, textW, polyMesh, prismMesh, boxMesh, loftMesh, revolveMesh, sphereProfile, xfMesh, mergeMeshes, silLines, netBuild, netPose, netAt, netDraw, solidNet, circleBase, sectorBase,
-    fitBox, bboxOf, fillPolys, scene3, newellN, coneNet, sumRows, frustumVol
+    fitBox, bboxOf, fillPolys, scene3, newellN, coneNet, sumRows, stepRow, frustumVol
   });
 })();

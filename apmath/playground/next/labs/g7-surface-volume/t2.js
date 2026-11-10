@@ -87,6 +87,11 @@
         bodies.forEach((bd) => D.dot(G.applyT(bd.T, V0), 'ink', 3));
         if (t < 0.02) D.label(V0, '꼭짓점', { dir: { x: 1, y: -0.4 }, color: 'ink', size: 14, gap: 6 });
         D.dim(add3(origin, v3(-hf, -hf, hf)), add3(origin, v3(hf, -hf, hf)), `모서리 ${M.a}`, { side: { x: 0, y: 1 }, off: 22, color: 'ink' });
+        // 정리 탭: 지금 단계의 식 한 줄(결과 줄은 해설 재생 중 svShowV 까지 숨김)
+        G.stepRow(D, C, [null,
+          [{ t: `정육면체의 부피 = ${M.a}×${M.a}×${M.a} = ${plainVal(M.cubeV)}`, c: 'ink' }],
+          [{ t: '합동인 사각뿔 3개 → 사각뿔 하나는 정육면체의 ⅓', c: 'green' }],
+          [{ t: `사각뿔 하나 = ⅓ × ${plainVal(M.cubeV)} = ${plainVal(M.pyr)}`, c: 'green' }]][Math.min(Math.max(C.step || 0, 0), 3)], { gated: (C.step || 0) >= 3 });
         return;
       }
       // 원뿔 3번 붓기
@@ -523,7 +528,7 @@
           R.dim(A[1], A[2], pyr ? `밑변 ${M.a2}` : `아랫변 ${M.a2}`, { from: center, off: 12, color: 'ink' });
           if (!pyr) R.dim(B[0], B[1], `윗변 ${M.a1}`, { from: center, off: 12, color: 'ink' });
         },
-        fitOpt: { l: b.W < 900 ? 18 : 54, r: (C.tab === 'explore' && b.W >= 560 && window.innerWidth >= 700) ? 245 : (b.W < 900 ? 18 : 54), t: C.problem ? 40 : (b.W < 900 ? 24 : 40 + 56 * e), b: C.problem ? 40 : (b.W < 900 ? 24 : 40 + 40 * e) },
+        fitOpt: { l: b.W < 900 ? 18 : 54, r: (C.tab === 'explore' && b.W >= 560 && window.innerWidth >= 700) ? 245 : (b.W < 900 ? 18 : 54), t: C.problem ? 40 : (b.W < 900 ? (C.review && b.W < 450 ? 62 : 24) : 40 + 56 * e), b: C.problem ? 40 : (b.W < 900 ? 24 : 40 + 40 * e) }, // 폰 정리 탭: 위의 합 식 두 줄이 전개도 꼭짓점에 닿지 않게 위 여백
         style: (pc) => {
           const tag = pc.tag, lv = tag === 'lat' ? lvL : lvB, stl = roleStyle(tag === 'lat' ? 'lat' : 'base', lv);
           if (lv !== 2) { if (tag === 'bot') stl.fill = BIG; else if (tag === 'top') stl.fill = SMALL; }
@@ -546,15 +551,15 @@
           // 옆면의 높이: 점선 + 직각 표시
           const bm = mid3(at(fr, A[0]), at(fr, A[1])), tm = pyr ? at(fr, B[0]) : mid3(at(fr, B[0]), at(fr, B[1]));
           const hpxEarly = Math.hypot(px(bm).x - px(tm).x, px(bm).y - px(tm).y);
-          D.height(bm, tm, hpxEarly < 50 ? '' : `옆면의 높이 ${plainVal(V(M.lf))}`, { a: unit3(sub3(at(fr, A[1]), at(fr, A[0]))), side: { x: 1, y: 0 }, size: 14, alongFrac: -0.35, color: 'ink' });
+          D.height(bm, tm, hpxEarly < 50 ? '' : (C.review && b.W < 450 ? `높이 ${plainVal(V(M.lf))}` : `옆면의 높이 ${plainVal(V(M.lf))}`), { a: unit3(sub3(at(fr, A[1]), at(fr, A[0]))), side: { x: 1, y: 0 }, size: 14, alongFrac: -0.35, color: 'ink' });
           if (C.problem || C.tab === 'explore') return;
           // 면마다 넓이 이름표
           const hpx = Math.hypot(px(bm).x - px(tm).x, px(bm).y - px(tm).y), thinF = hpx < 50;
           sn.lat.forEach((idx, k) => {
             if (dot3(tp[idx].n, vw) < 0.35) return;
-            const bmid = mid3(A[k], A[(k + 1) % 4]), tmid = pyr ? B[0] : mid3(B[k], B[(k + 1) % 4]), f = pyr ? 0.34 : 0.5;
+            const bmid = mid3(A[k], A[(k + 1) % 4]), tmid = pyr ? B[0] : mid3(B[k], B[(k + 1) % 4]), f = pyr ? 0.34 : (C.review && b.W < 450 && idx === f1 ? 0.3 : 0.5); // 폰 정리 탭: 왼쪽 옆면의 이름표는 윗변 치수선(3)을 피해 아래로
             const pl = px(at(idx, lerp3(A[k], pyr ? B[0] : B[k], f))), pr = px(at(idx, lerp3(A[(k + 1) % 4], pyr ? B[0] : B[(k + 1) % 4], f))), wpx = Math.hypot(pl.x - pr.x, pl.y - pr.y);
-            D.areaLab(at(idx, lerp3(bmid, tmid, f)), thinF ? '' : '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? -0.22 * wpx : 0, size: thinF ? 13 : 15, color: thinF ? 'green' : 'ink' });
+            D.areaLab(at(idx, lerp3(bmid, tmid, f)), thinF ? '' : '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? (C.review && b.W < 450 ? -0.36 : -0.22) * wpx : 0, size: thinF ? 13 : 15, color: thinF ? 'green' : 'ink' });
           });
           [sn.bot, sn.top].forEach((k) => {
             if (k < 0 || !tp[k].front) return;
@@ -608,7 +613,7 @@
       const a3 = ease(lin01(t, 0.55, 0.95));
       D.areaLab(v3(0, y0, 0), '큰 각뿔', plainVal(M.v2), { dx: -0.38 * w2 * k, dy: -4, maxW: w2 * k * 0.8, alpha: 1 - ease(lin01(t, 0.1, 0.45)) });
       D.areaLab(add3(v3(0, yc + h1, 0), sh), '작은 각뿔', plainVal(M.v1), { alpha: aSm, color: 'violet', dy: -18 });
-      D.areaLab(v3(0, y0 + hf * 0.4, 0), '각뿔대', plainVal(M.vol), { alpha: a3, color: 'green', maxW: w2 * k * 1.2 });
+      if (!D.lessonHide) D.areaLab(v3(0, y0 + hf * 0.4, 0), '각뿔대', plainVal(M.vol), { alpha: a3, color: 'green', maxW: w2 * k * 1.2 }); // 답(각뿔대의 부피)은 해설 재생 중 svShowV 까지 숨김
       G.sumRows(D, [[{ t: '각뿔대의 부피 = ' }, { t: '큰 각뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 각뿔', c: 'violet' }], [{ t: '= ' }, { t: plainVal(M.v2), c: 'sky' }, { t: ' − ' }, { t: plainVal(M.v1), c: 'violet' }, { t: ` = ${plainVal(M.vol)}` }]], 1);
     };
     const draw = (b, s, M, C) => (M.mode === 'vol' ? drawVol(b, s, M, C) : drawSurf(b, s, M, C));
