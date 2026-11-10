@@ -3939,3 +3939,693 @@ body[data-archive-view="compose"] .compose-step-number {
 .find-empty-other p {
   margin: 0;
 }
+
+/* ---- 문제지 만들기 한 화면 (2026-11-10) ---------------------------------------------------------------------
+   왼쪽 = 조건, 오른쪽 = 결과와 마무리. 1100px 미만(태블릿·휴대폰)은 조건이 위, 결과가 아래 한 줄이고 하단 고정 띠(.cz-bar)가
+   문제지 만들기 / 출력 / 더보기를 맡는다(단원별 기출의 .ug-bar와 같은 구성). 색·글꼴은 토큰만 쓴다. */
+body[data-archive-view="compose"] .cz {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.cz-conditions,
+.cz-result {
+  min-width: 0;
+}
+.cz-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cz-conditions .callout {
+  margin: 0;
+}
+.cz-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cz-who {
+  gap: 8px;
+}
+.cz-grades {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+.cz-grades .find-grade {
+  min-width: 0;
+  padding: 0 2px;
+  font-weight: 700;
+}
+.cz-seg {
+  display: flex;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.cz-seg button {
+  flex: 1 1 0;
+  min-width: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0 8px;
+}
+.cz-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cz-chips button {
+  padding: 0 14px;
+  font-size: 14px;
+}
+.cz-conditions .compose-subject-note {
+  margin: 0;
+  padding: 6px 0;
+  font-weight: 700;
+}
+/* 범위: 제목은 보이고, 단원 목록만 높이를 제한해 안에서 스크롤한다(버튼까지 화면 밖으로 밀리지 않게). */
+body[data-archive-view="compose"] .cz-scope > .resultbar {
+  margin: 0;
+}
+body[data-archive-view="compose"] .cz-scope > .resultbar h2 {
+  display: block;
+  margin: 0;
+  font-size: 17px;
+}
+.cz-scope > p.muted,
+.cz-scope .callout {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.cz-scope .range-more > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.cz-scope .range-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cz-scope .range-more > summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin: 0 4px 3px auto;
+  border: solid var(--ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.cz-scope .range-more[open] > summary::after {
+  margin-bottom: -3px;
+  transform: rotate(-135deg);
+}
+.cz-scope .scope-list {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  max-height: 176px;
+  margin-top: 0;
+  padding-right: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.cz-scope .range-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  align-items: end;
+}
+.cz-scope .range-controls button {
+  grid-column: 1 / -1;
+}
+.cz-amount {
+  gap: 14px;
+}
+.cz-amount-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.cz-label {
+  font-weight: 700;
+  font-size: 17px;
+}
+.cz-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.cz-stepper .cz-step-btn {
+  position: relative;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+.cz-stepper .cz-step-btn::before,
+.cz-stepper .cz-step-btn.is-plus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: var(--ink);
+  transform: translate(-50%, -50%);
+}
+.cz-stepper .cz-step-btn::before {
+  width: 14px;
+  height: 2px;
+}
+.cz-stepper .cz-step-btn.is-plus::after {
+  width: 2px;
+  height: 14px;
+}
+.cz-stepper input {
+  width: 64px;
+  max-width: none;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.cz-stepper input::-webkit-inner-spin-button,
+.cz-stepper input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.cz-amount-note {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.cz-levels {
+  margin: 0;
+}
+.cz-levels .bucket-set {
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+.cz-levels .bucket-set button {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 6px;
+}
+.cz-levels > strong {
+  font-size: 17px;
+}
+.cz-detail {
+  border-top: 1px solid var(--line);
+  margin: 0 !important;
+  padding: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+}
+.cz-detail > summary,
+.cz-output > summary,
+.cz-more > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.cz-detail > summary::-webkit-details-marker,
+.cz-output > summary::-webkit-details-marker,
+.cz-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cz-detail > summary::after,
+.cz-output > summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px 3px auto;
+  border: solid var(--ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.cz-detail[open] > summary::after,
+.cz-output[open] > summary::after {
+  margin-bottom: -3px;
+  transform: rotate(-135deg);
+}
+.cz-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 8px;
+}
+.cz-detail-body .composition {
+  margin: 0;
+}
+.cz-detail-body .compose-detail-fields {
+  margin-top: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.cz-detail-body .muted {
+  margin: 0;
+}
+.cz-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cz-live {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0 0;
+  border-top: 2px solid var(--ink);
+  background: var(--surface);
+}
+.cz-feasible {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.cz-feasible-n {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+}
+.cz-feasible-note {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: var(--radius-field);
+  background: var(--brand-soft);
+  color: var(--brand-soft-ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.cz-feasible.danger-text {
+  color: var(--danger);
+  font-weight: 700;
+}
+.cz-live .cz-generate {
+  min-height: 52px;
+  border-radius: 26px;
+  font-size: 16px;
+}
+.cz-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+body[data-archive-view="compose"] .cz.has-result .cz-result {
+  padding: 22px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-panel);
+}
+body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--chip);
+}
+.cz-result .compose-saved-continuity {
+  margin: 0;
+}
+/* 이 화면의 주 버튼은 "저장하고 반에 출제" 하나다. 저장 뒤의 "이 저장본 출제"는 보조 버튼으로 보인다. */
+.cz-result .compose-saved-continuity button.primary {
+  background: var(--surface);
+  color: var(--ink);
+}
+.cz-result .compose-saved-continuity button.primary:hover {
+  background: var(--chip);
+}
+.cz-result-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.cz-result-title {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+.cz-count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+}
+.cz-big {
+  font-family: var(--font-display);
+  font-size: 30px;
+  line-height: 1.15;
+}
+.cz-parts {
+  font-weight: 700;
+}
+.cz-mix {
+  margin: 4px 0 0;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.cz-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  margin-top: 8px;
+}
+.cz-facts .summary-line {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.cz-summary .callout,
+.cz-result > .callout {
+  margin: 12px 0 0;
+}
+.cz-shortage,
+.cz-stale {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  color: var(--brand-soft-ink);
+}
+.cz-shortage ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.cz-paper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 0;
+}
+.cz-paper .part-select {
+  margin: 0;
+}
+.cz-paper .part-select select {
+  width: auto;
+  min-width: 120px;
+}
+.cz-paper .question-manager {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.cz-preview-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.cz-preview-bar .mode-switch {
+  display: inline-flex;
+  gap: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.cz-preview-bar .mode-switch button {
+  border: 0;
+  border-radius: 0;
+}
+.cz-preview-toggle {
+  margin-left: auto;
+}
+.cz-output {
+  border-top: 1px solid var(--line);
+}
+.cz-output[open] {
+  padding-bottom: 8px;
+}
+.cz-finish {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 2px solid var(--ink);
+  background: var(--surface);
+}
+.cz-finish .callout {
+  margin: 0;
+}
+.cz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cz-actions .cz-secondary {
+  flex: 1 1 120px;
+  min-height: 52px;
+  border-radius: 26px;
+  font-size: 16px;
+}
+.cz-actions .cz-primary {
+  flex: 2 1 220px;
+  min-height: 52px;
+  border-radius: 26px;
+  font-size: 16px;
+}
+.cz-finish-more {
+  position: relative;
+}
+.cz-finish-more > summary {
+  min-height: 52px;
+  padding: 0 18px;
+  border: 1.5px solid var(--ink);
+  border-radius: 26px;
+  justify-content: center;
+}
+.cz-finish-more .cz-more-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 230px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: 0 8px 22px #17171c33;
+}
+.cz-finish-more .cz-more-menu button {
+  width: 100%;
+  min-height: 48px;
+}
+.cz-empty {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 220px;
+  justify-content: center;
+}
+.cz-empty h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+}
+.cz-empty p {
+  margin: 0;
+  color: var(--ink-2);
+}
+.cz-entry {
+  font-size: 14px;
+}
+.cz-link {
+  min-height: 44px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  color: var(--brand-ink);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.cz-link:hover {
+  background: none;
+  color: var(--brand-hover);
+}
+.cz-dir-narrow {
+  display: inline;
+}
+.cz-dir-wide {
+  display: none;
+}
+.cz-bar {
+  display: none;
+}
+/* 넓은 화면(PC): 두 칸. 문제지 만들기와 마무리 버튼은 각 칸 아래에 붙어 따라다닌다. */
+@media (min-width: 1100px) {
+  body[data-archive-view="compose"] .cz {
+    grid-template-columns: minmax(340px, 400px) minmax(0, 1fr);
+    gap: 32px;
+  }
+  .cz-dir-wide {
+    display: inline;
+  }
+  .cz-dir-narrow {
+    display: none;
+  }
+  .cz-live,
+  .cz-finish {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+  }
+  .cz-finish {
+    margin: 0 -22px;
+    padding: 14px 22px;
+  }
+}
+/* 1100px 미만: 조건이 위, 결과가 아래. 주 버튼은 하단 고정 띠 하나다. */
+@media (max-width: 1099px) {
+  body[data-archive-view="compose"] #content {
+    padding-bottom: calc(110px + var(--archive2-mobile-bottom-nav-offset, 0px));
+  }
+  .cz-live .cz-generate,
+  .cz-finish .cz-actions {
+    display: none;
+  }
+  .cz-live {
+    border-top-width: 1px;
+  }
+  .cz-finish {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .cz-finish:empty,
+  .cz-finish:not(:has(.callout)) {
+    display: none;
+  }
+  .cz-bar {
+    position: fixed;
+    z-index: 40;
+    left: 0;
+    right: 0;
+    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--ink);
+    color: var(--surface);
+  }
+  .cz-bar-text {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .cz-bar-count {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .cz-bar-note {
+    color: var(--line);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .cz-bar .cz-bar-main {
+    min-height: 48px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 24px;
+    background: var(--surface);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .cz-bar .cz-bar-main:disabled {
+    background: var(--chip);
+    color: var(--muted);
+  }
+  .cz-bar .cz-bar-sub,
+  .cz-bar .cz-more > summary {
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1.5px solid var(--surface);
+    border-radius: 24px;
+    background: transparent;
+    color: var(--surface);
+    font-weight: 700;
+    white-space: nowrap;
+    justify-content: center;
+  }
+  .cz-bar .cz-bar-sub:hover {
+    background: transparent;
+  }
+  .cz-bar :focus-visible {
+    outline: 3px solid var(--surface);
+    outline-offset: 2px;
+  }
+  .cz-bar-more {
+    position: relative;
+  }
+  .cz-bar-more .cz-more-menu {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 12px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 230px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    box-shadow: 0 8px 22px #17171c33;
+  }
+  .cz-bar-more .cz-more-menu button {
+    width: 100%;
+    min-height: 48px;
+    flex: none;
+  }
+  .cz-bar-more .cz-more-menu :focus-visible {
+    outline-color: var(--ink);
+  }
+  body[data-archive-view="compose"] .cz.has-result .cz-result {
+    padding: 16px;
+  }
+}
+@media (min-width: 961px) and (max-width: 1099px) {
+  .cz-bar {
+    left: var(--archive2-sidebar-width, 232px);
+    padding-inline: 48px;
+  }
+}
+@media (max-width: 600px) {
+  .cz-grades .find-grade {
+    min-height: 48px;
+  }
+  .cz-scope .scope-list {
+    max-height: 260px;
+  }
+  .cz-detail-body .compose-detail-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cz-count .cz-big {
+    font-size: 26px;
+  }
+  .cz-preview-toggle {
+    margin-left: 0;
+  }
+}

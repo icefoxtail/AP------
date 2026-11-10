@@ -23,8 +23,9 @@ test("Compose and mixed-engine desktop page-count selectors meet the 36px review
 });
 
 test("Compose compact controls keep 44px hit areas", () => {
-  for (const selector of [".mobile-actions button", ".mode-switch button", ".inspector .tabs button", ".part-select select"]) {
-    assert.ok(ruleBlocks(workspaceCss, selector).some(block => /min-height:\s*44px/.test(block)), `${selector} must have a 44px compact target`);
+  // 하단 고정 띠(.cz-bar)의 주 버튼·출력·더보기와 단계·문항 수 조절 버튼도 44px 이상이다.
+  for (const selector of [".cz-bar .cz-bar-main", ".cz-bar .cz-more > summary", ".cz-stepper .cz-step-btn", ".mode-switch button", ".part-select select"]) {
+    assert.ok(ruleBlocks(workspaceCss, selector).some(block => /min-height:\s*(?:4[4-9]|[5-9]\d)px/.test(block)), `${selector} must have a 44px compact target`);
   }
 });
 
