@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 호 AB를 보는 두 원주각과 중심각",
+    "solutionImageCaption": "같은 호의 원주각은 서로 같고 중심각은 그 두 배이다. 정답은 ③ (20°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -65,7 +69,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 길이의 두 호와 이를 보는 원주각",
+    "solutionImageCaption": "두 같은 호의 크기와 원주각의 관계를 이용한다. 정답은 ④ (60°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -98,7 +106,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 접선과 현의 각에 대응하는 원주각이 있는 삼각형 ABC",
+    "solutionImageCaption": "접선과 현의 각을 같은 원주각으로 바꾸어 삼각형의 내각 합을 이용한다. 정답은 ① (61°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -131,7 +143,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 길이의 두 호와 원주각, 한 직선 위의 외각 관계",
+    "solutionImageCaption": "원주각으로 호를 구하고 같은 호 관계와 직선 위의 각을 연결한다. 정답은 ③ (87°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -164,7 +180,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접한 사각형 ABCD와 점 A에서의 접선 AT를 나타낸 그림. 접선과 현 AD가 이루는 각 55°를 확대해 보이고, 구하는 각 x와 y, 같은 길이의 현 AD와 BD를 표시한다.",
+    "solutionImageCaption": "접선과 현의 각으로 x를 구하고, AD=BD인 이등변삼각형과 내접사각형의 맞은각으로 y를 구한다. 정답은 ④ (70°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -197,7 +217,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접한 사각형 ABCD와 점 A에서의 접선, 변 CD의 연장선 위의 점 P를 나타낸 그림. 각 83°, 47°, 50°와 구하는 ∠CAD를 x로 표시한다.",
+    "solutionImageCaption": "내접사각형의 맞은각으로 ∠ADC를 구하고, 삼각형 APD에서 ∠PAD를 구한 뒤 접선과 현의 각으로 ∠ACD를 구한다. 정답은 ③ (33°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -230,7 +254,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O와 원 밖의 점 P에서 그은 두 할선을 나타낸 그림. 호 AB는 파랑, 호 CD는 주황으로 구분하고 P에서의 각을 x로 표시한다.",
+    "solutionImageCaption": "원 밖의 두 할선이 이루는 각은 두 호의 크기 차의 절반이다. 정답은 ⑤ (54°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -263,7 +291,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 접선의 각과 비로 나눈 큰 호, 원주각의 관계",
+    "solutionImageCaption": "예: 두 접선으로 큰 호를 구하고 호의 비와 원주각을 연결한다. 정답은 ② (32°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -296,7 +328,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 두 할선각과 네 호를 나타낸 내접사각형",
+    "solutionImageCaption": "예: 호 네 개를 변수로 두고 두 외부각과 원 전체의 호 합을 연결한다. 정답은 ② (51°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -329,7 +365,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각으로 정한 원의 지름과 교차하는 두 현, 중심각",
+    "solutionImageCaption": "두 직각으로 지름을 확인하고 교차하는 현의 각으로 중심각을 구한다. 정답은 ① (58°)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -417,7 +457,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자료의 점도표와 중앙값 위치",
+    "solutionImageCaption": "점도표에서 중앙값과 두 최빈값을 확인해 차를 구한다. 정답은 ① (−11)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -448,7 +492,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: A역과 B역 기다린 시간의 점도표와 평균, 중앙값, 최빈값 표시",
+    "solutionImageCaption": "두 역의 중심값과 반복값을 점도표로 비교한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -477,7 +525,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 자료의 점도표에서 중앙값 위치를 확인한다.",
+    "solutionImageCaption": "두 중앙값 조건으로 a,b를 좁힌 뒤 자료의 가운데를 확인한다. 정답은 ② (77)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -626,7 +678,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 1회와 2회 제기차기 횟수를 나타낸 산점도. 1회 5 이상인 점 14개 중 2회 7 미만인 점 7개를 주황으로 구분한다.",
+    "solutionImageCaption": "1회가 5 이상인 점 14개 가운데 2회가 7 미만인 점은 7개이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -655,7 +711,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 음의 상관은 내려가고 양의 상관은 올라가는 예시 산점도",
+    "solutionImageCaption": "예: 점의 방향으로 상관관계를 구분한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -684,7 +744,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q22-solution.svg"
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 그은 두 접선과 접점 A, B, 원 위의 점 C를 나타낸 그림. 각 ACB 126°, 중심각 108°, 큰 호 252°를 표시하고 구하는 각 P를 x로 표시한다.",
+    "solutionImageCaption": "큰 호와 작은 중심각의 관계로 두 접선이 이루는 각을 구한다. 정답은 72°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -713,7 +776,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q23-solution.svg"
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형 ABC와 점 A에서의 접선, 점 D 및 선분 AB 위의 점 E를 나타낸 그림. ∠BAC는 64°이고 구하는 ∠AED를 x로 표시한다.",
+    "solutionImageCaption": "접선과 현의 각으로 각을 연결하고 DE가 ∠ADB의 이등분선임을 이용하면 β가 소거된다. 정답은 58°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -738,7 +804,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 14를 나타내는 가로선과 여섯 자료를 나타낸 산점도",
+    "solutionImageCaption": "평균선 14에서 각 자료까지의 거리가 편차이다. 정답은 (1) 4, −5, 2, 4, −4, −1, (2) 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

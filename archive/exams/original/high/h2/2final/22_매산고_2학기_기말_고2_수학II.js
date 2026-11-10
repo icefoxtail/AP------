@@ -43,7 +43,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 포물선이 x축과 x=−1,1에서 만나며 x=−1에서 양수에서 음수로 바뀐다.",
+    "solutionImageCaption": "도함수 y=f′(x)=3x²−3은 x=−1에서 양수에서 음수로 바뀌어 f가 극대가 된다. f(−1)=7이므로 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -139,7 +143,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: y=f′(x)=x²−2x가 x=0,2에서 x축을 만나고 꼭짓점 (1,−1)을 지나며, 두 구간의 부호 넓이를 색으로 나눈다.",
+    "solutionImageCaption": "y=f′(x)=x²−2x에서 0과 2 사이의 음의 넓이와 2와 3 사이의 양의 넓이가 상쇄된다. 따라서 f(3)=f(0)=1이고 정답은 1.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -327,7 +335,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 예시 함수 f(x)=5x/4−5에서 0≤x≤8의 두 부호 영역과 12≤x≤16의 넓이를 색으로 구분한다.",
+    "solutionImageCaption": "예: 조건을 만족하는 f(x)=5x/4−5에서는 [0,8]의 부호 넓이가 상쇄되고 [12,16]의 넓이는 50이다. 정답은 50이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -374,7 +386,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간에 따른 속도 곡선이 0부터 2까지 x축 아래, 2부터 3까지 x축 위를 지나며 두 부호 영역을 색으로 나눈다.",
+    "solutionImageCaption": "속도는 0부터 2까지 음수이고 2부터 3까지 양수이다. 두 구간의 이동거리는 각각 8과 16이므로 합은 24이고 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -421,7 +437,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 연속 조각으로 이어진 함수 f의 그래프에 극솟점 두 개와 극댓점을 표시한다.",
+    "solutionImageCaption": "연속인 f의 곡선에서 극솟점은 (−2,−1),(2,3)이며 극솟값의 곱은 −3이다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -515,7 +535,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 0≤t≤1에서 y=t³−t/2가 한 번 x축을 만나고, 축 아래와 위의 두 영역을 각각 표시한다.",
+    "solutionImageCaption": "A=∫₀¹|t³−t/2|dt이고 곡선이 만드는 두 넓이는 각각 1/16이므로 A=1/8이다. 따라서 f(3)=51/2이고 정답은 51/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -615,7 +639,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 경계 사례의 h 그래프가 y=8/3 수평선과 x=2에서 만난다.",
+    "solutionImageCaption": "경계 사례에서 h=max(f,g)의 최솟값은 8/3이다. 정답은 a=−2/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -662,7 +690,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: f의 그래프와 y=8 사이에서 [−1,0]의 두 넓이를 파랑과 주황으로 구분한다.",
+    "solutionImageCaption": "f와 y=8 사이 넓이 5/2와 남은 넓이 11/2를 보인다. ㄴ은 거짓이고 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -711,7 +743,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 패널에 각각 u와 v의 사차함수 그래프를 그리고, 0부터 1까지 각 곡선 아래의 영역을 색칠한다.",
+    "solutionImageCaption": "후보 v의 0≤x≤1 넓이가 더 커 최댓값은 161/60이다. 정답은 101이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -751,9 +787,9 @@ window.questionBank = [
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼차함수 곡선이 x축과 (0,0), (1,0), (2,0)에서 만나며, 0과 1 사이의 축 위 영역과 1과 2 사이의 축 아래 영역이 옅게 칠해져 있다.",
-    "solutionImageCaption": "0과 1 사이에서는 곡선이 x축 위, 1과 2 사이에서는 아래에 있어 두 영역을 각각 양수의 넓이로 더한다. 정답은 1/2이다.",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f와 x축 사이에서 위아래로 나뉜 두 영역을 색으로 구분한다.",
+    "solutionImageCaption": "x축 위·아래 두 넓이를 양수로 더한다. 정답은 1/2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -883,7 +919,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 9cm, 윗면 반지름 12cm인 원뿔 그릇에 높이 3cm, 수면 반지름 4cm의 물을 담은 예.",
+    "solutionImageCaption": "예: t=3초인 물 단면의 닮음비 r/h=4/3을 보인다. 정답은 (1) h=t, r=4t/3; (2) V=16πt³/27, V′(t)=16πt²/9; (3) 16πcm³/s이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -927,6 +967,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 2≤x≤3에서 도함수 곡선이 양수인 양 끝점과 음수인 안쪽 점을 표시한다.",
+    "solutionImageCaption": "2≤x≤3에서 f′는 양수, 음수, 양수 순으로 변한다. 정답은 14이다.",
+    "solutionImageSize": "full"
   }
 ];
