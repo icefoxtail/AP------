@@ -89,7 +89,7 @@ window.examData = {
     {
       "id": 7,
       "score": 4.0,
-      "question": "다음 그림은 건물에 설치된 플랜카드의 위끝과 아래끝을 올려다 본 각도를 나타낸 것이다. $\\angle \\mathrm{ACB} = 90^\\circ$, $\\angle \\mathrm{ADB} = 15^\\circ$, $\\angle \\mathrm{DBC} = 30^\\circ$, $\\overline{\\mathrm{DC}} = 3\\text{ m}$일 때, $\\overline{\\mathrm{AD}}$의 길이는?(4점)<br><img src=\"assets/images/16_왕의중_2학기_기말_중3_수학/q07.png\" />",
+      "question": "다음 그림은 건물에 설치된 플랜카드의 위끝과 아래끝을 올려다 본 각도를 나타낸 것이다. $\\angle \\mathrm{ACB} = 90^\\circ$, $\\angle \\mathrm{ABD} = 15^\\circ$, $\\angle \\mathrm{DBC} = 30^\\circ$, $\\overline{\\mathrm{DC}} = 3\\text{ m}$일 때, $\\overline{\\mathrm{AD}}$의 길이는?(4점)<br><img src=\"assets/images/16_왕의중_2학기_기말_중3_수학/q07.png\" />",
       "choices": [
         "$3(\\sqrt{2}-1)\\text{ m}$",
         "$3(\\sqrt{3}-1)\\text{ m}$",
@@ -97,8 +97,8 @@ window.examData = {
         "$6(\\sqrt{2}-1)\\text{ m}$",
         "$6(\\sqrt{3}-1)\\text{ m}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "그림에서 $\\angle ABD=15^\\circ$, $\\angle DBC=30^\\circ$이다. 직각삼각형 $BCD$에서 $DC=3$ m이므로 $BC=\\dfrac{DC}{\\tan30^\\circ}=3\\div\\dfrac{\\sqrt3}{3}=3\\sqrt3$ m이다.<br>$\\angle ABC=\\angle ABD+\\angle DBC=15^\\circ+30^\\circ=45^\\circ$이므로 직각삼각형 $ABC$는 $\\angle A=45^\\circ$인 직각이등변삼각형이다. 따라서 $AC=BC=3\\sqrt3$ m이다.<br>$AD=AC-DC=3\\sqrt3-3=3(\\sqrt3-1)$ m이므로 ②이다."
     },
     {
       "id": 8,
@@ -139,8 +139,8 @@ window.examData = {
         "$(\\dfrac{\\pi}{4} + \\sqrt{3})\\text{ cm}^2$",
         "$(\\dfrac{\\pi}{2} + 2\\sqrt{3})\\text{ cm}^2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "선분 $AB$는 반원 $O$의 지름이고 $\\angle ABC=30^\\circ$이므로 호 $AC$에 대한 중심각은 $\\angle AOC=2\\times30^\\circ=60^\\circ$이다.<br>색칠한 부분은 부채꼴 $AOC$와 삼각형 $OBC$를 합친 것이다. 부채꼴 $AOC$의 넓이는 $\\pi\\times(\\sqrt3)^2\\times\\dfrac{60}{360}=\\dfrac{\\pi}{2}$ cm$^2$이다.<br>$C$에서 $AB$에 내린 수선의 발을 $H$라 하면 $\\angle COH=60^\\circ$이므로 $CH=OC\\sin60^\\circ=\\sqrt3\\times\\dfrac{\\sqrt3}{2}=\\dfrac32$ cm이다. 삼각형 $OBC$의 넓이는 $\\dfrac12\\times OB\\times CH=\\dfrac12\\times\\sqrt3\\times\\dfrac32=\\dfrac{3\\sqrt3}{4}$ cm$^2$이다.<br>따라서 색칠한 부분의 넓이는 $\\left(\\dfrac{\\pi}{2}+\\dfrac{3\\sqrt3}{4}\\right)$ cm$^2$이므로 ③이다."
     },
     {
       "id": 11,
@@ -279,8 +279,8 @@ window.examData = {
         "$\\dfrac{18}{7}\\text{ cm}$",
         "$\\dfrac{120}{13}\\text{ cm}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "직각삼각형 $ABC$에서 $AB=12$ cm, $BC=5$ cm이므로 $AC=\\sqrt{12^2+5^2}=13$ cm이다.<br>$AB$는 원 $O$의 지름이므로 $\\angle ADB=90^\\circ$이다. 따라서 $\\triangle ABD$와 $\\triangle ACB$는 $\\angle A$가 공통이고 $\\angle ADB=\\angle ABC=90^\\circ$이므로 닮음이다.<br>대응변의 비 $AD:AB=AB:AC$에서 $AD=\\dfrac{AB^2}{AC}=\\dfrac{144}{13}$ cm이므로 ②이다."
     },
     {
       "id": 21,
@@ -312,7 +312,7 @@ window.examData = {
       "question": "[서술형 4] 다음 그림에서 $\\overline{\\mathrm{PT}}$는 원 $\\mathrm{O}$의 접선이고 $\\overline{\\mathrm{PT}} = 8\\text{ cm}$이다. 원 $\\mathrm{O}$의 내부의 한 점 $\\mathrm{B}$에 대하여 $\\overline{\\mathrm{PB}}$가 원 $\\mathrm{O}$와 만나는 점을 $\\mathrm{A}$라 하고 $\\overline{\\mathrm{PA}} = 4\\text{ cm}$, $\\overline{\\mathrm{AB}} = 8\\text{ cm}$, $\\overline{\\mathrm{BO}} = 7\\text{ cm}$일 때, 원 $\\mathrm{O}$의 반지름의 길이를 구하여라. [5점]<br><img src=\"assets/images/16_왕의중_2학기_기말_중3_수학/s04.png\" />",
       "choices": [],
       "answer": "$9\\text{ cm}$",
-      "solution": "반직선 $PB$가 원과 다시 만나는 점을 $X$라 하자. 점들은 $P,A,B,X$의 순서로 한 직선 위에 있다. 접선과 현 $AT$가 이루는 각의 성질에 따라 $\\angle PTA=\\angle PXT$이고 $\\angle TPA=\\angle XPT$이므로 $\\triangle PTA\\sim\\triangle PXT$이다. 대응변의 비 $\\dfrac{PT}{PX}=\\dfrac{PA}{PT}$에서 $PT^2=PA\\cdot PX$이다. 따라서 $8^2=4\\cdot PX$이고 $PX=16$ cm이다.<br>$PA=4$, $AB=8$이므로 $PB=12$ cm이다. 현 $AX$의 중점을 $M$이라 하면 $AX=PX-PA=16-4=12$ cm이므로 $AM=6$ cm이다. 따라서 $BM=AB-AM=8-6=2$ cm이다.<br>중심과 현의 중점을 잇는 선분은 현에 수직이므로 $OM\\perp AX$이다. 반지름을 $r$이라 하면 직각삼각형 $OMA$에서 $r^2=OM^2+6^2$, 직각삼각형 $OMB$에서 $BO^2=OM^2+2^2$이다. 두 식을 빼면 $r^2-BO^2=36-4=32$이다.<br>$BO=7$이므로 $r^2=49+32=81$이다. 따라서 반지름은 $r=9$ cm이다."
+      "solution": "반직선 $PB$가 원과 다시 만나는 점을 $X$라 하자. 점들은 $P,A,B,X$의 순서로 한 직선 위에 있다. 접선과 현 $AT$가 이루는 각의 성질에 따라 $\\angle PTA=\\angle PXT$이고 $\\angle TPA=\\angle XPT$이므로 $\\triangle PTA\\sim\\triangle PXT$이다.<br>대응변의 비 $\\dfrac{PT}{PX}=\\dfrac{PA}{PT}$에서 $PT^2=PA\\cdot PX$이다. 따라서 $8^2=4\\cdot PX$이고 $PX=16$ cm이다.<br>$PA=4$, $AB=8$이므로 $PB=12$ cm이다. 현 $AX$의 중점을 $M$이라 하면 $AX=PX-PA=16-4=12$ cm이므로 $AM=6$ cm이다. 따라서 $BM=AB-AM=8-6=2$ cm이다.<br>중심과 현의 중점을 잇는 선분은 현에 수직이므로 $OM\\perp AX$이다. 반지름을 $r$이라 하면 직각삼각형 $OMA$에서 $r^2=OM^2+6^2$, 직각삼각형 $OMB$에서 $BO^2=OM^2+2^2$이다. 두 식을 빼면 $r^2-BO^2=36-4=32$이다.<br>$BO=7$이므로 $r^2=49+32=81$이다. 따라서 반지름은 $r=9$ cm이다."
     }
   ]
 };

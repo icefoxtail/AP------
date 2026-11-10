@@ -29,6 +29,7 @@ const files = [
   'tests/render-authority-question.test.js',
   'tests/archive2-key-resolver.test.js',
   'tests/archive2-quick-pools.test.js',
+  'tests/archive2-boot-order.test.js',
 ];
 
 console.log('Archive2 Runtime Guard — ARCHIVE2_RUNTIME_CONTRACT_V1_20261006');
