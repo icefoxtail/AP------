@@ -1,0 +1,186 @@
+name: Middle tablet screenshot review
+
+# Read existing immutable captures only. This workflow is never a quality verdict.
+on:
+  push:
+    branches: ['audit/pr1568-capture-061b9d72']
+    paths: ['.github/workflows/middle-tablet-screenshot-review.yml']
+  workflow_dispatch:
+    inputs:
+      source_run:
+        description: 'Exact existing Middle initial figure run ID'
+        required: true
+        default: '42764744424'
+        type: string
+      source_sha:
+        description: 'Exact 40-character source HEAD of that run'
+        required: true
+        default: '74a014005504f6757430b46f2b04288a9b6f38fe'
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: middle-tablet-screenshot-review-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  captures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - {unit: g7-polygons, scene: p3-given, theme: board}
+          - {unit: g7-polygons, scene: p3-given, theme: paper}
+          - {unit: g7-polygons, scene: p3-mixed, theme: board}
+          - {unit: g7-polygons, scene: p3-mixed, theme: paper}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: ${{ inputs.source_run || '42764744424' }}
+      SOURCE_SHA: ${{ inputs.source_sha || '74a014005504f6757430b46f2b04288a9b6f38fe' }}
+      UNIT: ${{ matrix.unit }}
+      SCENE: ${{ matrix.scene }}
+      THEME: ${{ matrix.theme }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_sha || '74a014005504f6757430b46f2b04288a9b6f38fe' }}
+          sparse-checkout: apmath/playground
+          persist-credentials: false
+      - name: Bind artifact and PNG bytes to the exact tested source
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, os, re, subprocess, tempfile, zipfile
+          from pathlib import Path
+          
+          REPO = "icefoxtail/AP------"
+          RUN = os.environ["SOURCE_RUN"]
+          SOURCE = os.environ["SOURCE_SHA"]
+          UNIT = os.environ["UNIT"]
+          SCENE = os.environ["SCENE"]
+          THEME = os.environ["THEME"]
+          VIEWS = ["pc", "tablet-portrait", "tablet-landscape", "mobile", "small-mobile"]
+          TARGETS = {"p3-given": "g7-polygons", "p3-mixed": "g7-polygons", "rhombusSquare": "g9-trig-ratio"}
+          NEIGHBORS = {"p3-given": ["p3-ext360"], "p3-mixed": ["p4-diag"], "rhombusSquare": ["paraArea", "quadDiagHalf"]}
+          assert os.environ["GITHUB_REPOSITORY"] == REPO
+          assert re.fullmatch(r"[1-9][0-9]{0,19}", RUN)
+          assert re.fullmatch(r"[0-9a-f]{40}", SOURCE)
+          assert TARGETS.get(SCENE) == UNIT and THEME in ["board", "paper"]
+          
+          def gh(path, destination=None):
+              args = ["gh", "api", "--method", "GET", path]
+              if destination is None:
+                  result = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                  if result.returncode:
+                      raise RuntimeError("GitHub evidence request failed; private response withheld")
+                  return json.loads(result.stdout)
+              with destination.open("wb") as output:
+                  result = subprocess.run(args, stdout=output, stderr=subprocess.PIPE)
+              if result.returncode:
+                  raise RuntimeError("Artifact download failed; private response withheld")
+          
+          def pages(path, key):
+              result = []
+              for page in range(1, 11):
+                  separator = "&" if "?" in path else "?"
+                  response = gh(path + separator + "per_page=100&page=" + str(page))
+                  result.extend(response[key])
+                  if len(response[key]) < 100:
+                      return result
+              raise RuntimeError("Evidence pagination exceeded its bound")
+          
+          actual = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          assert actual == SOURCE, "Checkout does not match the explicitly bound source"
+          run = gh(f"repos/{REPO}/actions/runs/{RUN}")
+          assert run["head_sha"] == SOURCE
+          assert run["repository"]["full_name"] == REPO
+          assert run["path"] == ".github/workflows/middle-initial-figure.yml"
+          assert run["event"] == "pull_request"
+          jobs = pages(f"repos/{REPO}/actions/runs/{RUN}/jobs?filter=latest", "jobs")
+          jobs = [j for j in jobs if j["name"] == f"browser ({UNIT})"]
+          assert len(jobs) == 1
+          assert jobs[0]["status"] == "completed" and jobs[0]["conclusion"] == "success"
+          artifacts = pages(f"repos/{REPO}/actions/runs/{RUN}/artifacts", "artifacts")
+          name = f"middle-initial-{RUN}-{UNIT}-after-{THEME}"
+          matches = [a for a in artifacts if a["name"] == name]
+          assert len(matches) == 1, "Exactly one named artifact is required"
+          artifact = matches[0]
+          assert not artifact["expired"]
+          assert artifact["workflow_run"]["id"] == int(RUN)
+          assert artifact["workflow_run"]["head_sha"] == SOURCE
+          assert re.fullmatch(r"sha256:[0-9a-f]{64}", artifact["digest"])
+          assert 0 < artifact["size_in_bytes"] <= 512 * 1024 * 1024
+          with tempfile.TemporaryDirectory(prefix="apmath-review-") as folder:
+              archive = Path(folder) / "evidence.zip"
+              gh(f"repos/{REPO}/actions/artifacts/{artifact['id']}/zip", archive)
+              digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+              assert "sha256:" + digest == artifact["digest"], "Artifact digest mismatch"
+              with zipfile.ZipFile(archive) as package:
+                  names = package.namelist()
+                  assert len(names) == len(set(names)), "Duplicate ZIP members"
+                  assert names.count("after/report.json") == 1
+                  report_bytes = package.read("after/report.json")
+                  report = json.loads(report_bytes)
+                  assert report["automaticStatus"] == "PASS" and report["failures"] == []
+                  unit = report["units"][UNIT]
+                  checkout = Path.cwd().resolve()
+                  source_files = unit["source"]["files"]
+                  assert source_files and all(set(f) == {"path", "sha256"} for f in source_files)
+                  paths = [f["path"] for f in source_files]
+                  assert paths == sorted(paths) and len(paths) == len(set(paths))
+                  assert all(re.fullmatch(r"[0-9a-f]{64}", f["sha256"]) for f in source_files)
+                  compact = [{"path": f["path"], "sha256": f["sha256"]} for f in source_files]
+                  source_json = json.dumps(compact, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+                  assert hashlib.sha256(source_json).hexdigest() == unit["source"]["digest"]
+                  for item in source_files:
+                      relative = item["path"]
+                      assert relative.startswith("apmath/playground/next/") and ".." not in Path(relative).parts
+                      path = (checkout / relative).resolve()
+                      assert path.is_relative_to(checkout) and path.is_file()
+                      assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"], "Source file mismatch"
+                  source_digest = unit["source"]["digest"]
+                  requests = [(SCENE, view) for view in VIEWS]
+                  requests += [(neighbor, "tablet-portrait") for neighbor in NEIGHBORS[SCENE]]
+                  frames = []
+                  for scene, view in requests:
+                      expected = f"{UNIT}--{scene}--{view}-{THEME}--problem-initial.png"
+                      captures = [c for c in unit["captures"] if c["id"] == scene and c["view"] == view and c["theme"] == THEME and c["state"] == "problem-initial"]
+                      assert len(captures) == 1, "Capture selection must be unambiguous"
+                      capture = captures[0]
+                      assert capture["file"] == expected and capture["sourceDigest"] == source_digest
+                      member = "after/" + expected
+                      assert names.count(member) == 1
+                      assert package.getinfo(member).file_size <= 1024 * 1024
+                      png = package.read(member)
+                      assert png.startswith(b"\x89PNG\r\n\x1a\n")
+                      png_sha = hashlib.sha256(png).hexdigest()
+                      assert png_sha == capture["sha256"], "Capture/report SHA mismatch"
+                      encoded = base64.b64encode(png).decode("ascii")
+                      chunks = [encoded[i:i+3072] for i in range(0, len(encoded), 3072)]
+                      frames.append((expected, png_sha, len(png), chunks))
+                  assert sum(sum(len(c) for c in f[3]) for f in frames) < 8 * 1024 * 1024
+                  print("APMATH_REVIEW_SOURCE " + json.dumps({
+                      "sourceRun": int(RUN), "sourceSHA": SOURCE, "reportCommit": report.get("commit"),
+                      "unit": UNIT, "scene": SCENE, "theme": THEME,
+                      "targetJob": jobs[0]["id"], "targetJobConclusion": jobs[0]["conclusion"],
+                      "sourceRunStatus": run["status"], "sourceRunConclusion": run["conclusion"],
+                      "artifactId": artifact["id"], "artifactName": name, "artifactSHA256": digest,
+                      "reportSHA256": hashlib.sha256(report_bytes).hexdigest(),
+                      "sourceDigest": source_digest, "sourceFilesMatched": len(unit["source"]["files"]),
+                      "automaticStatus": report["automaticStatus"], "failures": len(report["failures"]),
+                      "frameCount": len(frames), "independentVisualStatus": "REQUIRES_ACTUAL_IMAGE_REVIEW"
+                  }, sort_keys=True))
+                  for filename, png_sha, byte_length, chunks in frames:
+                      meta = {"file": filename, "sha256": png_sha, "byteLength": byte_length, "chunkCount": len(chunks)}
+                      print("APMATH_PNG_BEGIN " + json.dumps(meta, sort_keys=True))
+                      for index, chunk in enumerate(chunks):
+                          print(f"APMATH_PNG_CHUNK {filename} {index}/{len(chunks)} {chunk}")
+                      print("APMATH_PNG_END " + json.dumps(meta, sort_keys=True))
+                  print("APMATH_REVIEW_COMPLETE " + json.dumps({"frameCount": len(frames), "transportStatus": "PASS", "visualStatus": "NOT_DETERMINED_BY_TRANSPORT"}, sort_keys=True))
+          PY
