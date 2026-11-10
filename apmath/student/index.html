@@ -9,28 +9,28 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.10.1">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.10.1">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.10.1">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.10.1">
+  <link rel="manifest" href="./manifest.json?v=2026.11.11.2">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.11.2">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.11.2">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.11.2">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.10.1"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.10.1"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.11.2"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.11.2"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.10.1">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.11.2">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.10.1" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.11.2" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -53,7 +53,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.10.1';
+    const STUDENT_APP_VERSION = '2026.11.11.2';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1317,14 +1317,20 @@
     }
     function renderOmrHomeSection() {
       const visible = getStudentPortalAssignments();
-      const recent = visible.slice(0, 3);
+      const priority = exam => {
+        const status = getStudentPortalRecordedSubmission(exam);
+        if (status === 'pending' && !exam.is_cancelled && !exam.is_replaced && !exam.is_review_only) return 0;
+        return status === 'submitted' ? 1 : 2;
+      };
+      const recent = visible.slice().sort((a, b) => priority(a) - priority(b) ||
+        String(b.exam_date || b.created_at || '').localeCompare(String(a.exam_date || a.created_at || ''))).slice(0, 3);
       return `
         <section id="student-portal-omr-home-section" class="card portal-assignments-card home-exams">
           <div class="portal-assignments-head">
             <div>
               <p class="eyebrow">나의 학습</p>
               <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : '내 시험지'}</h2>
-              <p class="card-desc">최근 출제된 시험지입니다. 직접 채점한 뒤 틀린 번호를 체크하세요.</p>
+              <p class="card-desc">${isTeacherPreview ? '출제된 시험지와 제출 상태를 읽기 전용으로 확인합니다.' : '진행 중인 시험지부터 보여 드려요. 직접 채점한 뒤 틀린 번호를 체크하세요.'}</p>
             </div>
             <button type="button" class="btn btn-quiet" onclick="renderOmrExams()">전체 ${visible.length}개 보기 <span aria-hidden="true">→</span></button>
           </div>
@@ -1394,6 +1400,7 @@
       if (clinicLearningController) return clinicLearningController;
       if (!window.ClinicLearningView || typeof window.ClinicLearningView.create !== 'function') return null;
       clinicLearningController = window.ClinicLearningView.create({
+        showTitle: false,
         fetchPage: clinicLearningFetchPage,
         onOpenSource: clinicLearningOpenSource
       });
@@ -1864,6 +1871,7 @@
           </div>
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
           ${!showReview && !isLegacyMixedReview ? '<p class="omr-review-unavailable">연결된 시험지 파일이 없습니다. 종이 시험지를 확인하거나 선생님께 문의하세요.</p>' : ''}
+          ${submissionUnknown ? '<p class="omr-review-unavailable">제출 상태를 확인할 수 없습니다. 중복 제출을 피하려면 선생님께 확인하세요.</p>' : ''}
           ${showActionArea && hasActionContent ? `
             <div class="omr-actions ${submitted ? 'is-submitted' : ''} ${canInput && !isTeacherPreview ? '' : 'no-input'} ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
               ${showPdf ? renderOmrPdfAction(exam) : ''}

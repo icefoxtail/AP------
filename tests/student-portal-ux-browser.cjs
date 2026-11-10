@@ -130,9 +130,12 @@ async function instrument(context, options = {}) {
 
 async function capture(page, name) {
   await page.evaluate(() => document.fonts.ready);
+  // Keep the actual viewport as evidence too: full-page stitching can place
+  // fixed navigation and offscreen skip links in the middle of tall captures.
+  await page.screenshot({ path:path.join(output, name + '-viewport.png'), fullPage:false, animations:'disabled' });
   await page.screenshot({ path:path.join(output, name + '.png'), fullPage:true, animations:'disabled' });
-  const layout = await page.evaluate(() => ({ viewport:innerWidth, document:document.documentElement.scrollWidth, title:document.querySelector('h1')?.textContent || '', background:getComputedStyle(document.body).backgroundColor, buttons: [...document.querySelectorAll('button,a,input,select,summary')].filter(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden' && getComputedStyle(el).opacity!=='0' && !el.matches('input[type="file"],.skip-link')).map(el => { const r=el.getBoundingClientRect(); return { text:(el.getAttribute('aria-label') || el.textContent || el.getAttribute('placeholder') || '').trim().slice(0,60), width:Math.round(r.width), height:Math.round(r.height), disabled:!!el.disabled }; }) }));
-  report.screenshots.push({ name, file:name + '.png', layout });
+  const layout = await page.evaluate(() => ({ viewport:innerWidth, viewportHeight:innerHeight, scrollY, document:document.documentElement.scrollWidth, title:document.querySelector('h1')?.textContent || '', background:getComputedStyle(document.body).backgroundColor, buttons: [...document.querySelectorAll('button,a,input,select,summary')].filter(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden' && getComputedStyle(el).opacity!=='0' && !el.matches('input[type="file"],.skip-link')).map(el => { const r=el.getBoundingClientRect(); return { text:(el.getAttribute('aria-label') || el.textContent || el.getAttribute('placeholder') || '').trim().slice(0,60), width:Math.round(r.width), height:Math.round(r.height), disabled:!!el.disabled }; }) }));
+  report.screenshots.push({ name, file:name + '.png', viewportFile:name + '-viewport.png', layout });
   return layout;
 }
 
@@ -179,13 +182,15 @@ async function behaviorSuite(browser, base, check) {
   await check('every assigned exam remains discoverable and filters are keyboard operable', () => withStudent({name:'exam-filters'}, async (page,state) => {
     assert.equal(await page.locator('#student-portal-omr-home-section [data-assignment-id]').count(),3);
     assert.match(await page.locator('#student-portal-omr-home-section').innerText(),new RegExp('전체 '+state.data.exams.length+'개 보기'));
-    assert.equal(await page.locator('.summary-value').nth(0).innerText(),String(state.data.exams.filter(x=>x.is_submitted===0).length));
+    assert.equal(await page.locator('.summary-value').nth(0).innerText(),'4');
     assert.equal(await page.locator('.summary-value').nth(1).innerText(),String(state.data.exams.filter(x=>x.is_submitted===1).length));
     await openExams(page);
     assert.equal(await page.locator('#omr-panel-all [data-assignment-id]').count(),state.data.exams.length);
     await page.locator('#omr-tab-all').focus();
     await page.keyboard.press('ArrowRight');
     assert.equal(await page.locator('#omr-tab-pending').getAttribute('aria-selected'),'true');
+    assert.equal(await page.locator('#omr-panel-pending [data-assignment-id]').count(),4);
+    assert.equal(await page.locator('#omr-panel-pending [data-assignment-id="qa-readonly"]').count(),0);
     await page.keyboard.press('End');
     assert.equal(await page.locator('#omr-tab-unknown').getAttribute('aria-selected'),'true');
     assert.equal(await page.locator('#omr-panel-unknown [data-assignment-id]').count(),1);
@@ -379,9 +384,22 @@ async function behaviorSuite(browser, base, check) {
     await page.locator('.clv-row').first().waitFor();
     assert.equal(await periods.nth(1).getAttribute('aria-pressed'),'true');
     for(const [width,height] of viewports){ await page.setViewportSize({width,height});await capture(page,'review-records-'+width); }
-    await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
-    const highlight=await page.locator('[data-assignment-id="qa-complete"]').evaluate(el=>el.style.boxShadow);
-    assert.ok(highlight);
+    const sourceCard=page.locator('[data-assignment-id="qa-complete"]');
+    if(await sourceCard.count()){
+      await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
+      assert.ok(await sourceCard.evaluate(el=>el.style.boxShadow),'a visible source exam is highlighted');
+    }else{
+      // Pending-first home previews may omit this completed source. The
+      // existing lineage fallback must still open its authorized exam viewer.
+      const popupPromise=page.waitForEvent('popup');
+      await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
+      const popup=await popupPromise;
+      await popup.waitForURL(url=>url.pathname.endsWith('/archive/engine.html'));
+      const url=new URL(popup.url());
+      assert.equal(url.searchParams.get('mode'),'exam');
+      assert.equal(url.searchParams.get('data'),'qa-only.js');
+      await popup.close();
+    }
   }));
   await check('material wrong entry validates ranges and remains a separate submission', () => withStudent({name:'material'}, async (page,state) => {
     await clickCall(page,'openStudentReview');
@@ -557,8 +575,19 @@ async function behaviorSuite(browser, base, check) {
     await clickCall(page,'openExamDateEditor');
     await page.keyboard.press('Escape');
     await page.locator('#exam-date-input').waitFor({state:'detached'});
-    for(const [width,height]of viewports){await page.setViewportSize({width,height});await capture(page,'planner-'+width);}
-    await page.setViewportSize({width:390,height:844});
+    const resizePlanner=async(width,height)=>{
+      await page.setViewportSize({width,height});
+      // The real planner switches its DOM after a debounced resize. Wait for
+      // the requested layout, not just the viewport CSS, before judging it.
+      await page.waitForFunction(()=>{
+        const mobile=innerWidth<768;
+        const add=document.querySelector('#mobile-add-btn');
+        return !!document.querySelector(mobile?'.mobile-calendar':'.dashboard') &&
+          !!add && (getComputedStyle(add).display!=='none')===mobile;
+      });
+    };
+    for(const [width,height]of viewports){await resizePlanner(width,height);await capture(page,'planner-'+width);}
+    await resizePlanner(390,844);
     await page.getByRole('button',{name:'집중 시작',exact:true}).first().click();
     await page.locator('#timer-reset').focus();
     await page.waitForTimeout(1300);

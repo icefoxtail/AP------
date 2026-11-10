@@ -87,7 +87,7 @@ const homeContext = {
   renderOmrExamCard: exam => { renderedAssignments.push(exam.assignment_id); return `<article data-assignment-id="${exam.assignment_id}"></article>`; }
 };
 vm.createContext(homeContext);
-vm.runInContext(['getStudentPortalAssignments', 'getOmrExams', 'getVisibleOmrExams', 'findOmrExam', 'renderOmrHomeSection'].map(helper).join('\n'), homeContext);
+vm.runInContext(['getStudentPortalRecordedSubmission', 'getStudentPortalAssignments', 'getOmrExams', 'getVisibleOmrExams', 'findOmrExam', 'renderOmrHomeSection'].map(helper).join('\n'), homeContext);
 const homeMarkup = homeContext.renderOmrHomeSection();
 assert.deepStrictEqual(renderedAssignments, ['issued-1', 'issued-2', 'issued-3'], 'home should keep the three most recent canonical exams in server order');
 assert(homeMarkup.includes('전체 7개 보기') && homeMarkup.includes('이전 시험지까지 모두 보기 (7)'), 'home should disclose the full available count, including exams beyond the three-card preview');

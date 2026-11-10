@@ -161,7 +161,8 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
 .omr-actions .score-open { grid-column: 1 / -1; order: -1; color: var(--text); }
 .omr-actions .review-btn:not(.exam-open) { border-color: var(--border); background: transparent; color: var(--secondary); }
 .omr-actions .review-btn:not(.exam-open):hover:not(:disabled) { background: var(--surface-2); color: var(--text); }
-.omr-actions.is-submitted .solution:not(:disabled) { border-color: var(--control-border); color: var(--text); }
+.omr-actions.is-submitted .solution:not(:disabled) { border-color: var(--action-primary); background: var(--action-primary); color: #fff; }
+.omr-actions.is-submitted .solution:hover:not(:disabled) { background: var(--text-soft); color: #fff; }
 .omr-actions .review-btn[onclick^="downloadExamPdf"] { grid-column: 1 / -1; order: 3; border: 0; min-height: 44px; }
 .button-meta { font-size: 12px; font-weight: 400; opacity: .8; }
 .omr-review-unavailable { margin: 0 0 14px; font-size: 13px; color: var(--secondary); line-height: 1.7; }

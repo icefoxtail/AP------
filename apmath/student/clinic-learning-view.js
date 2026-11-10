@@ -401,7 +401,7 @@
 
         function renderSummary(summary) {
             var wrap = el('section', 'clv-summary-section');
-            wrap.appendChild(el('h4', 'clv-section-title', labels.summaryTitle));
+            wrap.appendChild(el(opts.showTitle === false ? 'h3' : 'h4', 'clv-section-title', labels.summaryTitle));
             wrap.appendChild(el('p', 'clv-scope', labels.summaryScope));
             var box = el('div', 'clv-summary');
             var attempts = (summary && summary.attempts) || {};
@@ -433,7 +433,7 @@
 
         function renderTypes(types) {
             var section = el('section', 'clv-types-section');
-            section.appendChild(el('h4', 'clv-section-title', labels.typesTitle));
+            section.appendChild(el(opts.showTitle === false ? 'h3' : 'h4', 'clv-section-title', labels.typesTitle));
             var list = el('ul', 'clv-types');
             types.forEach(function (type) {
                 var item = el('li', 'clv-type');
@@ -557,7 +557,7 @@
             var frag = document.createDocumentFragment();
 
             var head = el('div', 'clv-head');
-            head.appendChild(el('h3', 'clv-title', labels.title));
+            if (opts.showTitle !== false) head.appendChild(el('h3', 'clv-title', labels.title));
             var controls = el('div', 'clv-controls');
             controls.appendChild(renderTabs(PERIOD_ORDER, state.period, labels.period, function (value) {
                 if (value === state.period) return;
@@ -617,7 +617,7 @@
 
             if (state.rows.length) {
                 var rowsSection = el('section', 'clv-rows-section');
-                rowsSection.appendChild(el('h4', 'clv-section-title',
+                rowsSection.appendChild(el(opts.showTitle === false ? 'h3' : 'h4', 'clv-section-title',
                     labels.rowsTitle + ' (' + labels.rowsCount + ' ' + state.rows.length + '건)'));
                 var list = el('ul', 'clv-rows');
                 state.rows.forEach(function (row) { list.appendChild(renderRow(row)); });
