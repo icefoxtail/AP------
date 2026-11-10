@@ -69,9 +69,10 @@ test('a failure inside an attempt logs the attempt and the final line; figure-re
   assert.deepEqual([attempt.attemptIndex,attempt.variant,attempt.stage,attempt.ok,attempt.code,attempt.capability],[1,'initial','spec',false,'COORDINATE_CANVAS_BOUNDS_INVALID','construction-spike-v1']);
   assert.deepEqual([final.attempts,final.stage,final.ok,final.code,final.invocation],[1,'spec',false,'COORDINATE_CANVAS_BOUNDS_INVALID',attempt.invocation]);
   assert.equal(attempt.planSha256,sha(Buffer.from(JSON.stringify(plan))));
-  // semantics of figure-result.json are unchanged: the original key set, no log fields
+  // semantics of figure-result.json are unchanged: the original keys keep their values; a failure only adds code, detailFull, hint and fix (roadmap 1-1), never log fields
   const result=JSON.parse(fs.readFileSync(path.join(out,'c-result.json'),'utf8'));
-  assert.deepEqual(Object.keys(result).sort(),['capability','detail','identity','stage','status']);
+  assert.deepEqual(Object.keys(result).sort(),['capability','code','detail','detailFull','fix','hint','identity','stage','status']);
+  assert.equal(result.detail,'COORDINATE_CANVAS_BOUNDS_INVALID');assert.equal(result.detailFull,result.detail);
 });
 
 test('a real render logs its attempt and final line, and lines accumulate across invocations',async()=>{
@@ -85,6 +86,10 @@ test('a real render logs its attempt and final line, and lines accumulate across
   assert.deepEqual([attempt.attemptIndex,attempt.variant,attempt.stage,attempt.ok,attempt.code,attempt.capability,attempt.family],[1,'initial','compose',true,null,'polynomial-spike-v1','polynomial']);
   assert.ok(['spec','measure','compose'].every(k=>typeof attempt.stageMs[k]==='number'));
   assert.deepEqual([final.ok,final.status,final.attempts,final.code],[true,'ARCHIVE_BOUND',1,null]);
+  // a successful render's result file and log line carry nothing of the failure guidance
+  const result=JSON.parse(fs.readFileSync(path.join(out,'g-result.json'),'utf8'));
+  for(const key of ['code','detailFull','errors','hint','fix'])assert.equal(Object.hasOwn(result,key),false,key);
+  assert.deepEqual([final.hint,final.fix],[null,null]);
   assert.equal(final.planSha256,sha(fs.readFileSync(golden('item14'))));
   assert.ok(final.durationMs>=attempt.durationMs);
   // second invocation on the same out folder appends and does not overwrite
