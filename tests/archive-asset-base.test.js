@@ -129,10 +129,27 @@ test('QA override is read from the query, remembered, and ignored for students',
     vm.runInNewContext(source, sandbox);
     return { api: sandbox.module.exports, store };
   }
-  const QA = 'https://qa.example.test/p';
+  // Own / local hosts are remembered; any other https host applies to that page only and is never stored.
+  const QA = 'https://img.wangjiedu.com/qa';
   const teacher = load('?assetBase=' + QA, '/AP------/archive/engine.html');
   assert.equal(teacher.api.describe().base, QA);
-  assert.equal(teacher.store.get('ap.examImageBase.qa'), QA);
+  assert.equal(teacher.store.get('ap.examImageBase.qa'), QA, 'an own-host override is remembered');
+  const local = load('?assetBase=http://localhost:8080/p', '/AP------/archive/engine.html');
+  assert.equal(local.api.describe().base, 'http://localhost:8080/p');
+  assert.equal(local.store.get('ap.examImageBase.qa'), 'http://localhost:8080/p', 'localhost is remembered');
+  const foreign = load('?assetBase=https://qa.example.test/p', '/AP------/archive/engine.html');
+  assert.equal(foreign.api.describe().base, 'https://qa.example.test/p', 'a foreign host still applies to this page');
+  assert.equal(foreign.api.describe().source, 'override');
+  assert.equal(foreign.store.has('ap.examImageBase.qa'), false, 'a foreign host is never stored');
+  const afterForeign = load('', '/AP------/archive/mixed_engine.html', foreign.store);
+  assert.equal(afterForeign.api.describe().base, 'https://img.wangjiedu.com', 'the next page does not inherit a foreign host');
+  const keep = new Map([['ap.examImageBase.qa', QA]]);
+  load('?assetBase=https://qa.example.test/p', '/AP------/archive/engine.html', keep).api.describe();
+  assert.equal(keep.get('ap.examImageBase.qa'), QA, 'a foreign query does not overwrite a remembered own-host value');
+  const legacy = new Map([['ap.examImageBase.qa', 'https://evil.example.test/img']]);
+  const legacyPage = load('', '/AP------/archive/engine.html', legacy);
+  assert.equal(legacyPage.api.describe().base, 'https://img.wangjiedu.com', 'a stored foreign value left by an old version is ignored');
+  assert.equal(legacy.has('ap.examImageBase.qa'), false, 'and removed');
   const inherited = load('', '/AP------/archive/mixed_engine.html', teacher.store);
   assert.equal(inherited.api.describe().base, QA);
   // students never honour the override: they get the default (R2)
@@ -191,7 +208,7 @@ test('every exam-image consumer is wired to the shared module and the module shi
   const read = file => fs.readFileSync(path.join(root, file), 'utf8');
   for (const file of ['archive/engine.html', 'archive/mixed_engine.html', 'archive/mixer.html', 'archive/problem-bank-search.html', 'archive/generated-bank.html',
     'archive/workspace.html', 'archive/unit-past-exams.html', 'archive/index.html', 'apmath/index.html', 'apmath/wrong_print_engine.html']) {
-    assert.match(read(file), /archive-asset-base\.js\?v=20261030-s21-1/, file);
+    assert.match(read(file), /archive-asset-base\.js\?v=20261110-teacher-copy-1/, file);
   }
   for (const file of ['archive/engine.html', 'archive/mixed_engine.html', 'apmath/js/archive-render.js', 'apmath/wrong_print_engine.html', 'apmath/js/report-center.js', 'archive/mixer.html', 'archive/problem-bank-search.html', 'archive/generated-bank.html']) {
     assert.match(read(file), /resolveExamImageUrl/, file);

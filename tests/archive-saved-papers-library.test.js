@@ -970,7 +970,7 @@ test("Saved mutation success with a failed refresh keeps cache invalidation and 
     installLibraryTestGlobals(route => {
       if (route === `/archive-saved-papers/${id}`) {
         detailReads++;
-        if (detailReads > 1) throw new Error("Saved detail refresh failed");
+        if (detailReads > 1) throw new Error("저장한 시험지 상세를 다시 읽지 못했습니다");
         return Promise.resolve({ paper: saved });
       }
       if (route === `/archive-saved-papers/${id}/library`)
@@ -988,7 +988,7 @@ test("Saved mutation success with a failed refresh keeps cache invalidation and 
     const renameButton = { dataset: { libraryAction: "rename", paperId: id } };
     await host.onclick({ target: { closest: () => renameButton }, preventDefault() {}, stopPropagation() {} });
     assert.equal(detailReads, 2);
-    assert.match(host.innerHTML, /Saved detail refresh failed/);
+    assert.match(host.innerHTML, /저장한 시험지 상세를 다시 읽지 못했습니다/);
     assert.equal(JSON.parse(session.getItem("archive2.saved-paper-list-invalidated.v1")).kind, "reload");
   } finally {
     if (previous.window === undefined) delete global.window; else global.window = previous.window;

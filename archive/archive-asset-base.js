@@ -20,9 +20,11 @@
  * response without that header and make every later CORS read of it fail. Pages that do not run on http(s)
  * (file://) skip the attribute; a CORS failure (origin not allowed by the bucket) takes the same-origin fallback.
  *
- * Teacher QA override (never honoured on student pages): "?assetBase=<https url>" is remembered in localStorage
- * (key ap.examImageBase.qa) so that preview iframes / print windows opened afterwards use it too;
- * "?assetBase=off" forces same-origin images (also remembered); "?assetBase=default" forgets the override.
+ * Teacher QA override (never honoured on student pages): "?assetBase=<https url>" applies to that page. Only our own
+ * hosts (OWN_HOSTS, the default image host) and localhost / 127.0.0.1 are REMEMBERED in localStorage (key
+ * ap.examImageBase.qa) so that preview iframes / print windows opened afterwards use it too; any other host is used on
+ * that page only and never stored, so one shared link cannot swap the images of a browser for good (2026-11-10).
+ * "?assetBase=off" forces same-origin images (remembered); "?assetBase=default" forgets the override.
  * Only exam images under assets/images are mapped (assets/generated-lite, textbook images next to their source JS
  * and other files are never remapped).
  */
@@ -49,6 +51,8 @@
     const OVERRIDE_OFF = 'off';          // ?assetBase=off  -> same-origin images (stored under the same key)
     const OVERRIDE_RESET = 'default';    // ?assetBase=default (or empty) -> forget the override
     const OWN_HOSTS = new Set(['icefoxtail.github.io', 'wangjiedu.com', 'www.wangjiedu.com']);
+    // Hosts whose override may be remembered across pages: our own hosts, the default image host, local development.
+    const PERSIST_HOSTS = new Set([...OWN_HOSTS, 'img.wangjiedu.com', 'localhost', '127.0.0.1']);
     const FALLBACK_FLAG = 'apImgFallback';
     // [optional absolute origin][optional ./ ../ archive/ AP------/ prefixes]assets/images/<key>
     const IMAGE_PATH = /^(?:(?:https?:)?\/\/([^/?#]+))?\/?(?:(?:\.{1,2}|archive|AP------)\/)*assets\/images\/([^?#]+)([?#].*)?$/i;
@@ -86,6 +90,12 @@
         return normalizeBase(text) || null;
     }
 
+    // True when a normalized override value may be written to / read back from localStorage.
+    function isPersistable(value) {
+        if (value === OVERRIDE_OFF) return true;
+        try { return PERSIST_HOSTS.has(new URL(value).hostname.toLowerCase()); } catch (error) { return false; }
+    }
+
     // null = no override (the default base applies). Never honoured on student pages.
     function readOverride() {
         if (!root || isStudentPage()) return null;
@@ -100,14 +110,23 @@
             if (reset || value) {
                 try {
                     if (root.localStorage) {
-                        if (value) root.localStorage.setItem(OVERRIDE_STORAGE_KEY, value);
-                        else root.localStorage.removeItem(OVERRIDE_STORAGE_KEY);
+                        // A host outside the allow-list is applied to this page only; an earlier remembered value stays.
+                        if (value && isPersistable(value)) root.localStorage.setItem(OVERRIDE_STORAGE_KEY, value);
+                        else if (!value) root.localStorage.removeItem(OVERRIDE_STORAGE_KEY);
                     }
                 } catch (error) { /* storage unavailable: this page still honours the query value */ }
                 return value;
             }
         }
-        try { return normalizeOverride(root.localStorage && root.localStorage.getItem(OVERRIDE_STORAGE_KEY)); } catch (error) { return null; }
+        try {
+            const stored = normalizeOverride(root.localStorage && root.localStorage.getItem(OVERRIDE_STORAGE_KEY));
+            if (stored && !isPersistable(stored)) {
+                // A value left by an older version of this file: ignore and forget it.
+                try { root.localStorage.removeItem(OVERRIDE_STORAGE_KEY); } catch (error) { /* ignore */ }
+                return null;
+            }
+            return stored;
+        } catch (error) { return null; }
     }
 
     let configured = null;

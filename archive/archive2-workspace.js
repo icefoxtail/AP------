@@ -630,6 +630,7 @@
       }
     } else ({ response, data } = await perform());
     if (!response.ok || data.success === false) {
+      // error.message keeps the server text for diagnosis; screens show it through teacherErrorMessage()/status().
       const error = new Error(data.error || `요청 실패 (${response.status})`);
       error.status = response.status;
       error.data = data;
@@ -638,9 +639,65 @@
     return data;
   }
   window.Archive2Api = { request: api };
+  const HANGUL = /[가-힣]/;
+  // Text for teachers: Korean messages are already written for them; anything else (a code, English) is replaced by
+  // `fallback`. The original error keeps its `code`/`message` for diagnosis.
+  const GENERIC_ERROR = "작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
+  function teacherErrorMessage(error, fallback = GENERIC_ERROR) {
+    const text = String(typeof error === "string" ? error : error?.message || "");
+    return HANGUL.test(text) && !/^[A-Z][A-Z0-9_]{3,}:/.test(text) ? text : fallback;
+  }
+  // Errors also get a fixed, dismissible alert so a failure below the fold (or behind a dialog) is not missed.
+  let errorToastEl = null;
+  let errorToastCloseHooked = false;
+  function hideErrorToast() {
+    try { errorToastEl?.parentNode?.removeChild(errorToastEl); } catch {}
+  }
+  function showErrorToast(message) {
+    try {
+      if (typeof document.createElement !== "function" || !document.body) return;
+      if (!errorToastEl) {
+        const box = document.createElement("div");
+        box.className = "error-toast";
+        box.setAttribute("role", "alert");
+        const text = document.createElement("p");
+        text.className = "error-toast-text";
+        const close = document.createElement("button");
+        close.type = "button";
+        close.className = "error-toast-close";
+        close.setAttribute("aria-label", "오류 알림 닫기");
+        close.textContent = "닫기";
+        close.addEventListener("click", hideErrorToast);
+        box.append(text, close);
+        errorToastEl = box;
+      }
+      errorToastEl.firstChild.textContent = message;
+      // A modal <dialog> makes everything outside it inert, so the alert lives inside the open dialog when there is one.
+      const host = document.querySelector("dialog[open]") || document.body;
+      hideErrorToast();
+      host.appendChild(errorToastEl);
+      if (!errorToastCloseHooked) {
+        errorToastCloseHooked = true;
+        // When that dialog closes, keep the alert on screen (until the teacher dismisses it).
+        document.addEventListener("close", (event) => {
+          if (errorToastEl && errorToastEl.parentNode === event.target) document.body.appendChild(errorToastEl);
+        }, true);
+      }
+    } catch (e) { console.warn("[archive2] error alert unavailable:", e); }
+  }
   function status(message, error = false) {
+    if (error) {
+      // Last line of defence: a leading CODE: or a non-Korean (English) message never reaches the teacher as-is.
+      const raw = String(message ?? "");
+      const stripped = raw.replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
+      message = HANGUL.test(stripped) ? stripped
+        : "작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
+      if (message !== raw) console.warn("[archive2] error text replaced for display:", raw);
+    }
     $("status").textContent = message;
     $("status").classList.toggle("error", error);
+    if (error) showErrorToast(message);
+    else hideErrorToast();
   }
   function draft() {
     const keys = [
@@ -845,7 +902,7 @@
         (r) => !C.UID.test(r.questionUid) || !state.byUid.has(r.questionUid),
       )
     )
-      throw new Error("현재 아카이브에 등록되지 않은 UID가 있습니다.");
+      throw new Error("현재 아카이브에 없는 문항이 포함되어 있습니다.");
     if (
       data.selected.some(
         (r) =>
@@ -874,7 +931,7 @@
           round.questionUids.some((uid) => !C.UID.test(uid)),
       )
     )
-      throw new Error("시리즈 이력 UID가 잘못되었습니다.");
+      throw new Error("시리즈 이력 정보가 잘못되었습니다.");
     const unifiedDraft = Boolean(unifiedIndex());
     const restoredFilters = unifiedDraft
       ? reconcileUnifiedFilters({ ...data.filters })
@@ -1038,12 +1095,12 @@
     if (!paper?.id || !/^[0-9a-f]{64}$/i.test(String(paper.snapshot_hash || "")) ||
         !Array.isArray(snapshot?.questions) || !snapshot.questions.length || snapshot.questions.length > 50 ||
         !snapshot.meta || !snapshot.selectionFilters)
-      throw new Error("저장한 시험지 snapshot을 수정용 Draft로 열 수 없습니다.");
+      throw new Error("저장한 시험지를 수정용으로 열 수 없습니다. 새로고침한 뒤 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
     const questionUids = snapshot.meta.questionUids || snapshot.questions.map(question => question.questionUid);
     if (!Array.isArray(questionUids) || questionUids.length !== snapshot.questions.length ||
         questionUids.some((uid, index) => uid !== snapshot.questions[index]?.questionUid) ||
         new Set(questionUids).size !== questionUids.length)
-      throw new Error("저장한 시험지 문항 순서와 identity를 확인할 수 없습니다.");
+      throw new Error("저장한 시험지의 문항 순서를 확인할 수 없습니다. 새로고침한 뒤 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
     const records = snapshot.questions.map((question) => {
       const record = state.byUid.get(question.questionUid);
       const sourceFile = String(question.sourceArchiveFile || question.sourceFile || question._sourceFile || "");
@@ -1051,7 +1108,7 @@
           String(question.sourceFingerprint) !== String(record.sourceFingerprint) ||
           sourceFile !== String(record.sourceFile || "") ||
           Number(question.sourceOrdinal) !== Number(record.sourceOrdinal))
-        throw new Error("원본 문항이 변경되었습니다. 변경된 원본을 최신 catalog에서 묵시적으로 다시 조립하지 않습니다.");
+        throw new Error("원본 문항이 바뀌어, 저장 당시 내용 그대로는 수정본을 열 수 없습니다. 저장한 시험지는 그대로 출력할 수 있습니다.");
       return { ...record, rowId: "saved-paper-revision" };
     });
     const selectionFilters = snapshot.selectionFilters;
@@ -1074,7 +1131,7 @@
       // Papers saved before the unified list recorded raw path keys; unified papers record the
       // general-mode keys of their fallback taxonomy. Either must be accepted.
       if (!C.rowMatches(record, row) && !C.rowMatches(record, row, workspaceMatchOptions()))
-        throw new Error("저장 당시 범위와 현재 canonical namespace가 달라 수정본을 안전하게 열 수 없습니다.");
+        throw new Error("저장 당시의 범위가 지금의 단원·분류 기준과 달라 수정본을 안전하게 열 수 없습니다. 저장한 시험지는 그대로 출력할 수 있습니다.");
     const filters = { ...selectionFilters };
     delete filters.sourceFiles;
     delete filters.primaryPaths;
@@ -1142,7 +1199,7 @@
     state.inspector = "summary";
     save();
     render();
-    status("저장 시험지에서 새 Draft를 만들었습니다. 원본은 그대로 유지되며 수정본 저장 시 계보를 기록합니다.");
+    status("저장한 시험지로 새 문제지를 만들었습니다. 원래 시험지는 그대로 유지되고, 수정본을 저장하면 원본과의 관계가 기록됩니다.");
   }
   async function openSavedPaperRevision(id) {
     const data = await api("/archive-saved-papers/" + encodeURIComponent(id));
@@ -1158,9 +1215,9 @@
       const paper = data.paper;
       if (paper?.id !== state.derivationSource.parentId ||
           String(paper.snapshot_hash || "").toLowerCase() !== state.derivationSource.parentSnapshotHash)
-        throw new Error("파생 Draft의 원본 snapshot identity가 일치하지 않습니다.");
+        throw new Error("수정본의 원본 시험지 정보가 맞지 않습니다. 새로고침한 뒤 다시 시도해 주세요.");
       if (!Array.isArray(paper.snapshot?.questions) || !paper.snapshot.questions.length)
-        throw new Error("파생 Draft의 원본 시험지 snapshot을 확인할 수 없습니다.");
+        throw new Error("수정본의 원본 시험지 내용을 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
       return structuredClone(paper.snapshot.questions);
     })();
     try {
@@ -1958,15 +2015,15 @@
     }
     const pdfPending = receipts.some((receipt) => receipt.pdfStatus !== "ready");
     host.innerHTML = `<div class="callout original-receipts-callout">
-      <strong>${receipts.length}개 반에 Assignment 저장 완료</strong>
-      <p>학생별 문제지는 각 receipt Assignment ID의 immutable snapshot을 사용합니다.${pdfPending ? " PDF 준비가 필요한 반은 해당 Assignment의 PDF만 다시 준비할 수 있습니다." : ""}</p>
+      <strong>${receipts.length}개 반에 출제했습니다</strong>
+      <p>학생에게는 출제할 때 저장한 내용 그대로 나갑니다.${pdfPending ? " PDF 준비가 필요한 반은 그 반의 PDF만 다시 준비할 수 있습니다." : ""}</p>
       <div class="original-receipt-list">${receipts.map((receipt) => {
         const ready = receipt.pdfStatus === "ready";
         return `<article class="original-receipt-row" data-assignment-id="${esc(receipt.id)}">
-          <div><strong>${esc(receipt.className || "선택한 반")}</strong><div class="muted">Assignment ID · <code>${esc(receipt.id)}</code></div>
-            <div class="muted">${ready ? "PDF 준비 완료" : "Assignment 저장 완료 · PDF 확인 필요"}${receipt.pdfError ? ` · ${esc(receipt.pdfError)}` : ""}</div></div>
-          <div class="actions" role="group" aria-label="${esc(receipt.className || "선택한 반")} Assignment ${esc(receipt.id)} action">
-            ${[ ["exam", "시험"], ["sol", "해설"], ["ans", "정답"] ].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(receipt.id)}" data-mode="${mode}" class="small"`)).join("")}
+          <div><strong>${esc(receipt.className || "선택한 반")}</strong><div class="muted">출제 번호 · <code>${esc(receipt.id)}</code></div>
+            <div class="muted">${ready ? "PDF 준비 완료" : "출제 완료 · PDF 확인 필요"}${receipt.pdfError ? ` · ${esc(receipt.pdfError)}` : ""}</div></div>
+          <div class="actions" role="group" aria-label="${esc(receipt.className || "선택한 반")} 출제 ${esc(receipt.id)} 시험지·해설·정답·학생별 확인">
+            ${[ ["exam", "시험지"], ["sol", "해설"], ["ans", "정답"] ].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(receipt.id)}" data-mode="${mode}" class="small"`)).join("")}
             ${ready ? "" : button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(receipt.id)}" class="small"`)}
             ${button("assignment-status", "학생별 확인", `data-assignment="${esc(receipt.id)}" class="small"`)}
           </div>
@@ -1995,7 +2052,7 @@
   }
   function openSavedPaperIssue(id) {
     const paperId = String(id || "").trim();
-    if (!paperId) throw new Error("출제할 Saved Paper ID를 확인할 수 없습니다.");
+    if (!paperId) throw new Error("출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
     state.originalReceipts = [];
     state.originalPreviewEnvelope = null;
     state.originalPreviewToken = (state.originalPreviewToken || 0) + 1;
@@ -2004,7 +2061,7 @@
     url.searchParams.set("archive2Embedded", "1");
     showDialog(
       "저장한 시험지 출제",
-      `<div class="original-issue-toolbar"><span>Saved Paper ${esc(paperId)} · immutable snapshot</span><div class="actions">${button("original-review", "시험지 확인", 'disabled aria-pressed="false"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="true"')}</div></div><div id="original-receipts"></div><section id="original-review" hidden><div class="resultbar"><p class="muted">각 반 Assignment의 frozen snapshot을 표시합니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="저장된 Assignment 시험지"></iframe></section><iframe id="saved-paper-issue-frame" title="저장한 시험지 반·학생 출제" src="${esc(url.href)}"></iframe>`,
+      `<div class="original-issue-toolbar"><span>저장한 시험지 · 저장 당시 내용 그대로</span><div class="actions">${button("original-review", "시험지 확인", 'disabled aria-pressed="false"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="true"')}</div></div><div id="original-receipts"></div><section id="original-review" hidden><div class="resultbar"><p class="muted">각 반에 출제한 내용(저장 당시 내용 그대로)을 보여 줍니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="출제한 시험지"></iframe></section><iframe id="saved-paper-issue-frame" title="저장한 시험지 반·학생 출제" src="${esc(url.href)}"></iframe>`,
     );
     $("modal").classList.add("saved-paper-issue-dialog");
     setOriginalStep("targets");
@@ -2070,7 +2127,7 @@
     const result = await api(`/class-exam-assignments/${encodeURIComponent(saved.id)}/status`);
     const payload = JSON.parse(result.assignment?.mixed_payload_json || "null");
     if (!Array.isArray(payload?.questions) || !payload.meta)
-      throw new Error("저장된 출제 snapshot을 확인할 수 없습니다. 최근 출제에서 다시 열어 주세요.");
+      throw new Error("출제 당시 내용을 확인할 수 없습니다. 출제 내역에서 다시 열어 주세요.");
     questions = payload.questions;
     meta = payload.meta;
     const envelope = await O.publishOutputEnvelope({
@@ -2112,7 +2169,7 @@
       frame.src = output.url.href;
       if (previousEnvelope)
         await O.createOutputStore().cleanup(previousEnvelope.ownerId, previousEnvelope.outputRequestId);
-    } catch (error) { status.textContent = "시험지를 표시하지 못했습니다: " + error.message; }
+    } catch (error) { status.textContent = "시험지를 표시하지 못했습니다. " + teacherErrorMessage(error, "새로고침한 뒤 다시 시도해 주세요."); }
   }
   async function originalPrint() {
     const popup = window.open("about:blank", "_blank");
@@ -2329,7 +2386,7 @@
         .slice(0, count));
     const selected = pick();
     if (new Set(selected.map(record => record.questionUid)).size !== product.count) {
-      status("문항 UID가 중복되어 시험지를 열 수 없습니다.", true);
+      status("같은 문항이 중복되어 시험지를 열 수 없습니다.", true);
       return;
     }
     // The pools are cached per catalog load; every chosen question is checked against the
@@ -2415,7 +2472,7 @@
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions finder-card-actions" role="group" aria-label="${esc(O.displayTitle(e))} 시험·해설·정답·출제·더보기">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></details></div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions finder-card-actions" role="group" aria-label="${esc(O.displayTitle(e))} 시험·해설·정답·출제·더보기">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></details></div></article>`;
         })
         .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
@@ -2529,7 +2586,7 @@
       : record.L4);
   function renderDerivedComposition() {
     const sourceTitle = state.derivationSource?.parentDisplayName || "저장한 시험지";
-    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>원본 저장 시험지의 고정된 범위</h2></div><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 Draft를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 Saved Paper로 저장할 수 있습니다.</p><p class="muted">변경하지 않은 문항은 기존 immutable snapshot의 내용을 그대로 사용합니다. 원본 Saved Paper는 수정되지 않습니다.</p></section>`;
+    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>원본 저장 시험지의 고정된 범위</h2></div><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">바꾸지 않은 문항은 저장 당시 내용 그대로 사용합니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
   }
   function renderComposition() {
     if (state.derivationSource) return renderDerivedComposition();
@@ -2641,9 +2698,9 @@
     const savedResult = state.saveResultState === "RESULT_UNKNOWN"
       ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 작업 중인 문제지의 편집은 잠겨 있습니다. 본문 위의 ‘저장 결과 확인’을 눌러 주세요. 출력과 작업 백업은 사용할 수 있습니다.</div>'
       : state.saveError && saveResultCurrent
-      ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(state.saveError)}</div>`
+      ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}</div>`
       : state.saveMessage && saveResultCurrent
-        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>출제와 시험·해설·정답 action은 본문 위의 Saved Paper 저장본을 사용합니다.</p></div>`
+        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>출제와 시험지·해설·정답 출력은 본문 위의 저장본을 사용합니다.</p></div>`
           : "";
     const saveStaleNotice = state.indexVersion !== state.catalog.indexVersion
       ? '<div class="callout">문항 목록 버전이 달라 서버가 저장 시 각 문항 내용과 출제 범위를 다시 확인합니다.</div>'
@@ -2677,7 +2734,7 @@
     if (state.saveResultState !== "RESULT_UNKNOWN") return "";
     return `<section class="callout danger compose-save-recovery" role="status" aria-live="polite">
       <strong>저장 결과를 확인할 수 없습니다.</strong>
-      <p>같은 요청 ID의 결과를 조회하거나 안전하게 재시도합니다. 확인될 때까지 작업 중인 문제지는 수정할 수 없지만, 출력과 작업 백업은 지금도 할 수 있습니다.</p>
+      <p>이미 저장되었는지 확인하거나, 중복 없이 다시 저장합니다. 확인될 때까지 작업 중인 문제지는 수정할 수 없지만, 출력과 작업 백업은 지금도 할 수 있습니다.</p>
       <div class="actions">${button("save-paper", "저장 결과 확인", 'class="primary"')}${recoveryOutputMarkup()}</div>
     </section>`;
   }
@@ -2687,21 +2744,21 @@
     const currentSaved = state.saveResultState === "SAVED" &&
       Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
     const statusCopy = currentSaved
-      ? state.saveMessage || "현재 편집본을 Saved Paper로 저장했습니다."
+      ? state.saveMessage || "현재 편집본을 시험지로 저장했습니다."
       : state.saveResultState === "RESULT_UNKNOWN"
-        ? "현재 저장 요청의 결과가 아직 미확정입니다. 아래 action은 직전 확인된 Saved Paper를 엽니다."
+        ? "지금 저장한 결과를 아직 확인하지 못했습니다. 아래 버튼은 직전에 확인된 저장본을 엽니다."
         : state.saveResultState === "SAVING"
-          ? "현재 저장 요청을 처리하고 있습니다. 직전 Saved Paper는 그대로 사용할 수 있습니다."
-          : "현재 편집본은 저장되지 않았습니다. 아래 action은 마지막으로 저장된 immutable snapshot을 사용합니다.";
+          ? "지금 저장하는 중입니다. 직전 저장본은 그대로 사용할 수 있습니다."
+          : "현재 편집본은 저장되지 않았습니다. 아래 버튼은 마지막으로 저장한 내용 그대로 사용합니다.";
     return `<section class="panel compose-saved-continuity" aria-labelledby="compose-saved-continuity-title">
       <div class="compose-saved-continuity-head"><h2 id="compose-saved-continuity-title">마지막 저장본</h2><p class="muted">${esc(statusCopy)}</p></div>
       <div class="compose-saved-continuity-list">${ids.map((id, index) => {
         const part = ids.length > 1 ? `${index + 1}권` : "저장본";
         return `<article class="compose-saved-continuity-paper" data-saved-paper-id="${esc(id)}">
           <strong>${part}</strong>
-          <div class="actions" role="group" aria-label="${part} action">
+          <div class="actions" role="group" aria-label="${part} 출제·출력">
             ${button("saved-paper-issue", ids.length > 1 ? `${index + 1}권 출제` : "이 저장본 출제", `data-paper-id="${esc(id)}" class="primary"`)}
-            ${button("saved-output", "시험", `data-paper-id="${esc(id)}" data-mode="exam" class="small"`)}
+            ${button("saved-output", "시험지", `data-paper-id="${esc(id)}" data-mode="exam" class="small"`)}
             ${button("saved-output", "해설", `data-paper-id="${esc(id)}" data-mode="sol" class="small"`)}
             ${button("saved-output", "정답", `data-paper-id="${esc(id)}" data-mode="ans" class="small"`)}
             <details class="compose-saved-continuity-more"><summary>더보기</summary><div>${button("saved-paper-view", "저장본 보기", `data-paper-id="${esc(id)}"`)}</div></details>
@@ -2781,7 +2838,7 @@
     return `<div class="mobile-actions">${button("mobile-inspector", "출력 설정")}${button("print", "출력", `class="small" ${blocked ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "원본 Saved Paper에서 복사한 새 Draft입니다. 원본은 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
     <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${state.uidRoute ? "" : filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
@@ -2796,7 +2853,7 @@
   }
   function renderRecent() {
     const list = drafts(), f = state.recentFilters;
-    return `<div class="history-surface"><div class="intro history-intro"><div><h1>최근 출제 · 작업</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
+    return `<div class="history-surface"><div class="intro history-intro"><div><h1>출제 내역</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
       <section class="panel history-panel" aria-labelledby="history-heading"><div class="history-heading"><h2 id="history-heading">최근 출제</h2></div>
       <div class="history-filters">
         <label class="history-period-filter">기간<span class="history-period"><input type="date" data-recent-filter="from" aria-label="시작일" value="${esc(f.from)}"><span aria-hidden="true">~</span><input type="date" data-recent-filter="to" aria-label="끝일" value="${esc(f.to)}"></span></label>
@@ -2809,7 +2866,7 @@
   }
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
-    if (state.recentError) return `<p class="error history-result-state">${esc(state.recentError)}</p>`;
+    if (state.recentError) return `<p class="error history-result-state">${esc(teacherErrorMessage(state.recentError))}</p>`;
     const rows = History.filterAssignments(state.recentRows, {
       ...state.recentFilters, classId: state.recentClassId,
     });
@@ -2818,7 +2875,7 @@
         const paperMeta = [a.contentGrade, a.subjectLabel].filter(Boolean).join(" · ");
         const metadata = [a.targetGrade ? `대상 ${a.targetGrade}` : "",
           paperMeta ? `시험지 ${paperMeta}` : "", a.className,
-          `Assignment ID · ${a.id}`,
+          `출제 번호 · ${a.id}`,
           a.questionCount === null ? "" : `${a.questionCount}문항`,
           a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
           a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`].filter(Boolean);
@@ -2834,7 +2891,7 @@
       const pdfRetry = !a.pdfReady && a.pdfStatus !== "generating"
         ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}" class="small"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`)
         : "";
-      return `<article class="history-card" data-assignment-id="${esc(a.id)}"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="history-card-footer"><div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답·학생별 확인">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
+      return `<article class="history-card" data-assignment-id="${esc(a.id)}"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}<div class="history-card-footer"><div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div><div class="actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
       }).join("")}</div></section>`
     ).join("") || '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
   }
@@ -3056,7 +3113,7 @@
     const pdfRetryPending = recentPdfRetryIds.has(assignmentId);
     showDialog(
       a.exam_title,
-      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
+      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
     );
   }
   function pdfRetryAuthority(assignmentId) {
@@ -3147,7 +3204,7 @@
     try {
       const data = await api(`/class-exam-assignments/${encodeURIComponent(assignmentId)}/output?mode=${encodeURIComponent(mode)}`);
       const envelope = data.envelope;
-      if (!envelope) throw new Error("Worker가 immutable snapshot 출력 envelope를 반환하지 않았습니다.");
+      if (!envelope) throw new Error("출제 당시 내용을 불러오지 못했습니다. 새로고침한 뒤 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
       await O.storeOutputEnvelope(envelope);
       const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, {
         studio: true,
@@ -3250,7 +3307,7 @@
               `<tr><th>${label ? `${esc(label)} <span class="muted">(${esc(code)})</span>` : esc(code)}</th><td>${fmt(count)}${total ? ` <span class="muted">· ${((count / total) * 100).toFixed(1)}%</span>` : ""}</td></tr>`,
           )
           .join("")
-      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다(엄격한 승인 지표이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
+      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다(엄격한 승인 지표이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>문항 목록 버전 ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
   }
   function applyFiveMinuteViewGuard() {
     if (!isAssessmentRecipeMode()) return;
@@ -3328,7 +3385,7 @@
       )
         .then((result) => { if (result !== false) status("저장한 시험지를 불러왔습니다."); })
         .catch((error) => {
-          $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(error.message || "시험지를 불러오지 못했습니다.")}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
+          $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "시험지를 불러오지 못했습니다. 새로고침한 뒤 다시 시도해 주세요."))}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
           status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);
         });
       return;
@@ -3404,7 +3461,7 @@
             JSON.stringify(records.slice(i, i + 50).map((r) => r.questionUid))
           )
             throw new Error(
-              "이미 출제한 문제지의 문항이 변경되었습니다. 최근 출제에서 원본을 확인해 주세요.",
+              "이미 출제한 문제지의 문항이 바뀌었습니다. 출제 내역에서 원본을 확인해 주세요.",
             );
           frozenPaperCache.set(saved.key, {
             key: saved.key,
@@ -3425,7 +3482,7 @@
               const sourceFile = String(frozen.sourceArchiveFile || frozen.sourceFile || frozen._sourceFile || "");
               if (!frozen.sourceFingerprint || String(frozen.sourceFingerprint) !== String(record.sourceFingerprint) ||
                   sourceFile !== String(record.sourceFile || "") || Number(frozen.sourceOrdinal) !== Number(record.sourceOrdinal))
-                throw new Error("원본 문항이 변경되었습니다. 현재 catalog의 문항으로 묵시적으로 교체하지 않습니다.");
+                throw new Error("원본 문항이 바뀌어, 저장 당시 문항을 현재 문항으로 바꾸지 않았습니다. 저장한 시험지는 그대로 출력할 수 있습니다.");
               return structuredClone(frozen);
             }
             return (await Source.restore([record], state.catalog))[0];
@@ -3494,7 +3551,7 @@
         throw new Error("저장 결과의 시험지 수를 확인하지 못했습니다.");
       state.savedPaperIds = rows.map((paper) => paper.id);
       if (state.savedPaperIds.some((id) => !SAVED_PAPER_UUID.test(String(id || ""))))
-        throw new Error("저장 결과의 Saved Paper ID를 확인하지 못했습니다.");
+        throw new Error("저장된 시험지를 확인하지 못했습니다. 저장한 시험지 목록을 새로고침해 확인해 주세요.");
       state.lastSavedPaperIds = state.savedPaperIds.slice();
       state.saveMessage = state.savedPaperIds.length > 1
         ? "시험지 " + state.savedPaperIds.length + "권을 저장했습니다."
@@ -3503,7 +3560,7 @@
       state.saveResultState = "SAVED";
       state.saveResultSignature = workSignature || state.saveResultSignature;
       save();
-      status(state.saveMessage + " 학생 배포는 아직 완료되지 않았습니다.");
+      status(state.saveMessage + " 아직 학생에게 출제되지는 않았습니다.");
     };
     const resolveBatch = async (batchId = state.saveBatchId) => {
       if (!batchId) return { found: false, saved: false, papers: [] };
@@ -3551,7 +3608,7 @@
         papers: papers.map((paper) => ({ part_index: paper.index, questions: paper.questions, meta: paper.meta })),
       });
       if (recoveringUnknown && state.saveSignature !== signature)
-        throw new Error("저장 결과가 미확정인 요청 내용이 바뀌었습니다. 기존 요청 ID를 유지하며 다시 확인하세요.");
+        throw new Error("저장 결과를 확인하는 중에 작업 내용이 바뀌었습니다. 원래 내용으로 되돌린 뒤 '저장 결과 확인'을 다시 눌러 주세요.");
       if (!recoveringUnknown && (state.saveSignature !== signature || !state.saveBatchId)) {
         state.saveSignature = signature;
         state.saveBatchId = crypto.randomUUID();
@@ -3617,7 +3674,7 @@
         save();
         status(
           keepUnknown
-            ? "저장 결과를 확인하지 못했습니다. 같은 요청 ID를 유지합니다. 저장 결과 확인을 다시 눌러 주세요."
+            ? "저장 결과를 확인하지 못했습니다. 중복 저장을 막기 위해 같은 저장 요청을 유지합니다. '저장 결과 확인'을 다시 눌러 주세요."
             : "시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.",
           true,
         );
@@ -3714,7 +3771,7 @@
     } catch (e) {
       if (host === $("preview-host") && token === state.previewToken) {
         host.setAttribute("aria-busy", "false");
-        host.textContent = e.message;
+        host.textContent = teacherErrorMessage(e);
         status(e.message, true);
       }
     }
@@ -3916,7 +3973,7 @@
     } catch (e) {
       showDialog(
         "교사 로그인",
-        `<p>${esc(e.message)}</p><a href="index.html" target="_blank">기존 아카이브에서 로그인</a><p class="muted">로그인 후 이 창으로 돌아와 학생 선택을 다시 누르세요.</p>`,
+        `<p>${esc(teacherErrorMessage(e))}</p><a href="index.html" target="_blank">기존 아카이브에서 로그인</a><p class="muted">로그인 후 이 창으로 돌아와 학생 선택을 다시 누르세요.</p>`,
       );
     }
   }
@@ -4343,7 +4400,7 @@
               receipt.pdfStatus = "pending";
               receipt.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
               if (state.view === retryAuthority.view && $("modal")?.open)
-                status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+                status("출제는 완료되어 있습니다. PDF만 다시 준비해 주세요.", true);
             }
             return;
           }
@@ -4359,7 +4416,7 @@
               applyRecentPdfMutationResult(assignmentId, {
                 assignment: { pdf_status: "failed", pdf_error: error.message || "PDF를 다시 준비하지 못했습니다." },
               }, retryAuthority);
-              status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+              status("출제는 완료되어 있습니다. PDF만 다시 준비해 주세요.", true);
             }
             return;
           }
@@ -5470,10 +5527,10 @@
     }
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
-        throw new Error("CANONICAL_AUTHORITY_UNAVAILABLE: 현재 분류 기준을 확인할 수 없습니다.");
+        throw Object.assign(new Error("단원·분류 기준을 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "CANONICAL_AUTHORITY_UNAVAILABLE" });
       state.catalog = await window.applyArchiveMetaFoundationCatalog();
       state.useMode = "general";
-      if (!ProblemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
+      if (!ProblemBankMeta) throw Object.assign(new Error("문항 분류 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "PROBLEM_BANK_META_UNAVAILABLE" });
       state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
       state.metaIndexSource = state.catalog.records;
       composeMetaQueryCache.clear();
@@ -5502,9 +5559,8 @@
       syncUidRoute();
       if (state.uidRoute?.error) status(state.uidRoute.error, true);
       if (!(savedOnBoot && state.view === "saved")) render();
-      if (!state.uidRoute?.error) status(state.view === "saved"
-        ? "저장한 시험지를 불러왔습니다."
-        : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 자동출제 승인 ${state.catalog.health.automatic.toLocaleString()} · 문제지 만들기 범위에 포함 ${state.healthComposeScope.toLocaleString()}`);
+      // The catalog totals live on the "자료 점검" screen; the status line only reports progress and problems.
+      if (!state.uidRoute?.error) status(state.view === "saved" ? "저장한 시험지를 불러왔습니다." : "");
       const previous = drafts();
       if (state.view === "recent") {
         const selectedAssignmentId = state.recentSelectedAssignmentId;
@@ -5518,7 +5574,7 @@
       restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {
         const sourceId = state.editSavedPaperId;
-        status("원본 Saved Paper snapshot을 확인해 새 Draft를 준비하고 있습니다.");
+        status("저장한 시험지를 확인해 수정할 새 문제지를 준비하고 있습니다.");
         await openSavedPaperRevision(sourceId);
       } else if (previous.length && state.view === "compose" && !state.uidRoute)
         showDialog(
@@ -5531,9 +5587,11 @@
         status("문항 목록을 사용할 수 없어도 저장한 시험지는 서버에서 열 수 있습니다.");
         return;
       }
+      console.error("[archive2] startup failed:", e?.code || "", e);
+      const startupMessage = teacherErrorMessage(e, "아카이브 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
       $("content").innerHTML =
-        `<div class="empty">${esc(e.message)}<p><a href="index.html?legacy=1">기존 아카이브 열기</a></p></div>`;
-      status(e.message, true);
+        `<div class="empty">${esc(startupMessage)}<p><a href="index.html?legacy=1">기존 아카이브 열기</a></p></div>`;
+      status(startupMessage, true);
     }
   })();
 })();
