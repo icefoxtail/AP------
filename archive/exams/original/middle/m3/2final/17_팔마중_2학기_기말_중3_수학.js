@@ -376,7 +376,11 @@ window.examData = {
       "question": "[서술형 2] 오른쪽 그림과 같이 원 $\\mathrm{O}$에 외접하는 $\\square \\mathrm{ABCD}$에서 $\\overline{\\mathrm{BC}}$와 원 $\\mathrm{O}$의 접점을 $\\mathrm{E}$라고 하자. $\\angle \\mathrm{B} = 90^\\circ$이고 $\\overline{\\mathrm{AB}} = 6\\text{ cm}$, $\\overline{\\mathrm{AD}} = 8\\text{ cm}$, $\\overline{\\mathrm{CD}} = 10\\text{ cm}$, $\\overline{\\mathrm{CE}} = 4\\text{ cm}$일 때, 원 $\\mathrm{O}$의 넓이를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/s02.png\" /><br>(1) $\\overline{\\mathrm{BE}}$의 길이를 구하시오.(3점)<br>(2) 원 $\\mathrm{O}$의 넓이를 구하시오.(2점)",
       "choices": [],
       "answer": "(1) $4\\text{ cm}$; (2) $16\\pi\\text{ cm}^2$",
-      "solution": "원에 외접하는 사각형에서 두 쌍의 대변의 길이의 합은 같다.<br>$AB+CD=AD+BC$이다.<br>$6+10=8+BC$이다.<br>$BC=8$ cm이다.<br>(1) $BE=BC-CE$이다.<br>$BE=8-4=4$ cm이다.<br>(2) 원 $O$가 변 $AB$와 접하는 점을 $F$라 하자.<br>$OE\\perp BC$, $OF\\perp AB$이고 $\\angle B=90^\\circ$이므로 사각형 $BEOF$는 직사각형이다.<br>$OE=OF$(반지름)이므로 사각형 $BEOF$는 정사각형이다.<br>따라서 반지름의 길이는 $OE=BE=4$ cm이다.<br>원 $O$의 넓이는 $\\pi\\times4^2=16\\pi$ cm$^2$이다."
+      "solution": "원에 외접하는 사각형에서 두 쌍의 대변의 길이의 합은 같다.<br>$AB+CD=AD+BC$이다.<br>$6+10=8+BC$이다.<br>$BC=8$ cm이다.<br>(1) $BE=BC-CE$이다.<br>$BE=8-4=4$ cm이다.<br>(2) 원 $O$가 변 $AB$와 접하는 점을 $F$라 하자.<br>$OE\\perp BC$, $OF\\perp AB$이고 $\\angle B=90^\\circ$이므로 사각형 $BEOF$는 직사각형이다.<br>$OE=OF$(반지름)이므로 사각형 $BEOF$는 정사각형이다.<br>따라서 반지름의 길이는 $OE=BE=4$ cm이다.<br>원 $O$의 넓이는 $\\pi\\times4^2=16\\pi$ cm$^2$이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형(꼭짓점 A, B, C, D)이다. B는 직각이고 AB=6 cm, AD=8 cm, CD=10 cm, BC=8 cm, CE=4 cm가 표시되어 있다. BC와 AB 위의 접점 E, F에서 중심 O로 반지름을 그어 만든 사각형(초록)에 직각 표시가 있다. 길이는 비례하지 않는 설명용 그림이다.",
+      "solutionImageCaption": "외접사각형은 두 쌍의 대변의 길이의 합이 같으므로 6+10=8+BC에서 BC=8 cm이다. (1) BE=BC−CE=8−4이다. (2) 초록 사각형은 네 각이 직각이고 OE=OF이므로 정사각형이다. 따라서 반지름은 BE와 같고 넓이는 πr²이다. 정답은 (1) 4 cm, (2) 16π cm²이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 23,
@@ -384,7 +388,11 @@ window.examData = {
       "question": "[서술형 3] 오른쪽 그림과 같이 $\\square \\mathrm{ABCD}$가 원에 내접할 때, $\\angle x + \\angle y$의 크기를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/s03.png\" /><br>(1) $\\angle x$의 크기를 구하시오.(2점)<br>(2) $\\angle y$의 크기를 구하시오.(2점)<br>(3) $\\angle x + \\angle y$의 크기를 구하시오.(1점)",
       "choices": [],
       "answer": "(1) $\\angle x=45^\\circ$; (2) $\\angle y=90^\\circ$; (3) $135^\\circ$",
-      "solution": "(1) 사각형 $ABCD$가 원에 내접하므로 대각의 크기의 합은 $180^\\circ$이다.<br>$\\angle BAD+\\angle BCD=180^\\circ$이다.<br>$\\angle BAD=180^\\circ-95^\\circ=85^\\circ$이다.<br>$\\angle BAD=\\angle BAC+\\angle CAD=40^\\circ+\\angle x$이므로 $40^\\circ+\\angle x=85^\\circ$이다.<br>$\\angle x=45^\\circ$이다.<br>(2) 호 $BC$에 대한 원주각의 크기는 같으므로 $\\angle BDC=\\angle BAC=40^\\circ$이다.<br>$\\angle ADC=\\angle ADB+\\angle BDC=50^\\circ+40^\\circ=90^\\circ$이다.<br>원에 내접하는 사각형의 한 외각의 크기는 그 내대각의 크기와 같으므로 $\\angle y=\\angle ADC$이다.<br>$\\angle y=90^\\circ$이다.<br>(3) $\\angle x+\\angle y=45^\\circ+90^\\circ=135^\\circ$이다."
+      "solution": "(1) 사각형 $ABCD$가 원에 내접하므로 대각의 크기의 합은 $180^\\circ$이다.<br>$\\angle BAD+\\angle BCD=180^\\circ$이다.<br>$\\angle BAD=180^\\circ-95^\\circ=85^\\circ$이다.<br>$\\angle BAD=\\angle BAC+\\angle CAD=40^\\circ+\\angle x$이므로 $40^\\circ+\\angle x=85^\\circ$이다.<br>$\\angle x=45^\\circ$이다.<br>(2) 호 $BC$에 대한 원주각의 크기는 같으므로 $\\angle BDC=\\angle BAC=40^\\circ$이다.<br>$\\angle ADC=\\angle ADB+\\angle BDC=50^\\circ+40^\\circ=90^\\circ$이다.<br>원에 내접하는 사각형의 한 외각의 크기는 그 내대각의 크기와 같으므로 $\\angle y=\\angle ADC$이다.<br>$\\angle y=90^\\circ$이다.<br>(3) $\\angle x+\\angle y=45^\\circ+90^\\circ=135^\\circ$이다.",
+      "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 원에 내접하는 사각형(꼭짓점 A, B, C, D)과 두 대각선을 두 그림으로 나타냈다. 두 그림에 ∠BAC=40°, ∠ADB=50°가 있고 첫 그림에는 ∠BCD=95°와 구하는 x(주황)가, 둘째 그림에는 ∠BDC=40°(∠BAC와 같은 파랑)와 CB의 연장선에 구하는 외각 y(분홍)가 있다.",
+      "solutionImageCaption": "(1) 내접사각형의 대각의 합은 180°이므로 ∠BAD=180°−95°=85°이다. ∠BAD=40°+x이므로 x=45°이다. (2) 호 BC의 원주각이므로 ∠BDC=∠BAC=40°이고 ∠ADC=50°+40°이다. 외각 y는 마주 보는 내각 ∠ADC와 같다. 정답은 (1) 45°, (2) 90°, (3) 135°이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,

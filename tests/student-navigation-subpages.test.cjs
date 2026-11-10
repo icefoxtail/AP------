@@ -78,6 +78,29 @@ test('public labs receive a persistent preview return route without a PIN or tok
   assert.equal(h.nav.withContext('https://elsewhere.test/'), 'https://elsewhere.test/');
 });
 
+test('the lab shell loads common navigation only for explicit portal or preview visits', () => {
+  const source = fs.readFileSync(path.join(root, 'apmath/playground/next/kit/apl-shell.js'), 'utf8');
+  const loader = source.slice(0, source.indexOf('  const APLab =')) + '\nwindow.attachStudentNavigation = attachStudentNavigation;})();';
+  const noDocument = { window: {} };
+  vm.runInNewContext(loader, noDocument);
+  assert.doesNotThrow(() => noDocument.window.attachStudentNavigation());
+  for (const [search, count] of [['', 0], ['?theme=paper', 0], ['?portal=1', 2], ['?teacher_preview=1&student_id=student-A', 2]]) {
+    const added = [];
+    const context = {
+      URL, URLSearchParams,
+      window: { location: { search } },
+      document: {
+        currentScript: { src: 'https://school.test/AP------/apmath/playground/next/kit/apl-shell.js' },
+        getElementById: () => null, createElement: () => ({ dataset: {} }),
+        head: { appendChild: node => added.push(node) }
+      }
+    };
+    vm.runInNewContext(loader, context); context.window.attachStudentNavigation();
+    assert.equal(added.length, count, search || 'standalone visit');
+    if (count) assert.equal(added[1].src, 'https://school.test/AP------/apmath/js/student-navigation.js?v=2026.11.11.3');
+  }
+});
+
 test('readers accept only the exact same-project portal return target', () => {
   const h = harness('/AP------/archive/engine.html?studentReview=1&studentReturnTo=' + encodeURIComponent('/AP------/apmath/student/?teacher_preview=1&student_id=student-B&view=exams'));
   assert.equal(new URL(h.nav.portalHref('home')).searchParams.get('student_id'), 'student-B');

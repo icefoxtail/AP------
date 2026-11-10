@@ -127,10 +127,10 @@ async function instrument(context, worker, options = {}) {
     const request = route.request(); const url = new URL(request.url());
     if (url.hostname === 'ap-math-os-v2612.js-pdf.workers.dev') {
       const headers = { ...request.headers() }; delete headers.host; delete headers['content-length'];
-      const options = { method: request.method(), headers };
-      if (!['GET', 'HEAD'].includes(request.method())) options.body = request.postDataBuffer();
-      const response = await worker.mf.dispatchFetch('http://local-worker.test' + url.pathname + url.search, options);
-      const observation = { endpoint: url.pathname.replace(/^\/api\//, ''), method: request.method(), status: response.status, teacherAuthorization: !!headers.authorization, studentAuthorization: !!headers['x-student-token'] || url.searchParams.has('token') };
+      const requestOptions = { method: request.method(), headers };
+      if (!['GET', 'HEAD'].includes(request.method())) requestOptions.body = request.postDataBuffer();
+      const response = await worker.mf.dispatchFetch('http://local-worker.test' + url.pathname + url.search, requestOptions);
+      const observation = { scenario: options.name || null, endpoint: url.pathname.replace(/^\/api\//, ''), method: request.method(), status: response.status, teacherAuthorization: !!headers.authorization, studentAuthorization: !!headers['x-student-token'] || url.searchParams.has('token') };
       requests.push(observation); report.api.push(observation);
       return route.fulfill({ status: response.status, headers: { ...Object.fromEntries(response.headers), 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-allow-methods': '*' }, body: Buffer.from(await response.arrayBuffer()) });
     }
@@ -185,6 +185,10 @@ async function run() {
         if (!options.preview) {
           await page.locator('#student-name').fill(worker.identity.name);
           await page.locator('#student-pin').fill(worker.identity.pin);
+          // Fast typing must remain in the intended fields. In particular,
+          // delayed desktop autofocus must never steal focus from the PIN field.
+          assert.equal(await page.locator('#student-name').inputValue(), worker.identity.name, 'name stays intact while entering the PIN');
+          assert.equal(await page.locator('#student-pin').inputValue(), worker.identity.pin, 'PIN entry stays in the PIN field');
           await page.locator('#login-btn').click();
         }
         await page.locator(selectors.feature('exams')).waitFor();

@@ -37,9 +37,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            apmath/playground
-            .github/workflows
+            /apmath/playground/
+            /apmath/css/student-navigation.css
+            /apmath/js/student-navigation.js
+            /.github/workflows/
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -119,7 +122,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: apmath/playground
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /apmath/playground/
+            /apmath/css/student-navigation.css
+            /apmath/js/student-navigation.js
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -136,7 +143,7 @@ jobs:
           trap 'kill "$G89_FLOW_HTTP_PID" 2>/dev/null || true' EXIT
           node --input-type=module <<'JS'
           for (let n = 0; ; n++) {
-            try { const r = await fetch('http://127.0.0.1:4173/apmath/playground/next/kit/apl-catalog.js'); if (r.ok) break; } catch {}
+            try { const r = await fetch('http://127.0.0.1:4173/apmath/playground/next/kit/apl-catalog.js', { method: 'HEAD' }); if (r.ok) break; } catch {}
             if (n >= 30) throw Error('Local CI HTTP server did not become ready');
             await new Promise(resolve => setTimeout(resolve, 200));
           }

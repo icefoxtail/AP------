@@ -12,9 +12,13 @@
    ========================================================================== */
 (function () {
   'use strict';
-  const shellScriptUrl = document.currentScript?.src;
+  const shellScriptUrl = typeof document === 'undefined' ? null : document.currentScript?.src;
   function attachStudentNavigation() {
     if (!shellScriptUrl || document.getElementById('apl-student-navigation-script')) return;
+    // Standalone labs keep their existing asset boundary. Portal links carry
+    // explicit metadata; only those visits load the shared student navigation.
+    const params = new URLSearchParams(window.location?.search || '');
+    if (params.get('portal') !== '1' && params.get('teacher_preview') !== '1') return;
     const css = document.createElement('link');
     css.rel = 'stylesheet';
     css.href = new URL('../../../css/student-navigation.css?v=2026.11.11.3', shellScriptUrl).href;

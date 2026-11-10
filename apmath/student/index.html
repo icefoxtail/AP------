@@ -590,7 +590,7 @@
           </div>
         </section>
       `;
-      if (window.matchMedia('(min-width: 768px)').matches) setTimeout(() => $('student-name')?.focus(), 80);
+      if (window.matchMedia('(min-width: 768px)').matches) $('student-name')?.focus({ preventScroll: true });
     }
     async function loginStudent() {
       if (isLoading) return;
