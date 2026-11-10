@@ -70,18 +70,18 @@
           homeY:home.getBoundingClientRect().top+scrollY,
           labY:lab.getBoundingClientRect().top+scrollY,
           horizontalOverflow:document.documentElement.scrollWidth-innerWidth,
-          exams:home.querySelectorAll('article.omr-card').length,
+          exams:home.querySelectorAll('.portal-recent-item').length,
           labHref:lab.getAttribute('href'),
           version:document.querySelector('.student-app-version')?.textContent||''
         };
       });
-      assert(ui.homeY<ui.labY,'exam-first home places exam before lab');
-      assert.equal(ui.exams,3,'home shows only three previews');
+      assert(ui.labY<ui.homeY,'all four learning entrances precede the one recent learning item');
+      assert.equal(ui.exams,1,'home shows one compact recent learning item');
       assert(ui.labHref.endsWith('#g7'),'middle-one grade links to matching lab');
       assert(ui.horizontalOverflow<=2,`${device.name} home has no horizontal overflow: ${ui.horizontalOverflow}`);
       assert.equal(ui.background,'rgb(250, 249, 247)','APMS stone theme is rendered');
       await page.screenshot({path:path.join(out,`${device.name}-home.png`),fullPage:true});
-      await page.locator('#student-portal-omr-home-section').getByRole('button',{name:/전체.*5개 보기/}).click();
+      await page.locator('[data-portal-feature="exams"]').click();
       await page.locator('#omr-panel-all').waitFor();
       assert.equal(await page.locator('.omr-list .omr-card').count(),5,'all five issued exams in full list');
       await page.screenshot({path:path.join(out,`${device.name}-list.png`),fullPage:true});
@@ -104,14 +104,14 @@
         assert.deepEqual(sent[0].wrong_ids,[1,2],'wrong_ids remains a number array');
         assert.match(await page.locator('.recorded-score').innerText(),/73점/,'recorded score comes from server');
         assert.equal(await page.locator('#omr-submit-btn').count(),0,'recorded result cannot be resubmitted');
-        await page.locator('#student-nav [onclick="renderOmrExams()"]').click();
+        await page.locator('#student-nav [data-student-destination="exams"]').click();
         await page.locator('#omr-panel-all').waitFor();
         assert(await page.locator('#student-assignment-ux-a1').innerText().then(t=>t.includes('73점')),'full list keeps the same server score');
         exams.splice(0,exams.length,...Array.from({length:150},(_,i)=>({assignment_id:'ux-volume-'+(i+1),exam_title:'합성 전체 시험 '+(i+1),exam_date:'2026-11-10',class_name:'합성 학급',question_count:5,is_submitted:i%2,score:i%2?81:null,wrong_ids:[],archive_file:'original/middle/mock.js'})));
         await page.goto(origin,{waitUntil:'domcontentloaded'});
         await page.locator('#student-portal-omr-home-section').waitFor();
-        assert.equal(await page.locator('#student-portal-omr-home-section article.omr-card').count(),3,'150 assignments keep a bounded home');
-        await page.locator('#student-portal-omr-home-section').getByRole('button',{name:/전체.*150개 보기/}).click();
+        assert.equal(await page.locator('#student-portal-omr-home-section .portal-recent-item').count(),1,'150 assignments keep a bounded home with one recent item');
+        await page.locator('[data-portal-feature="exams"]').click();
         await page.locator('#omr-panel-all').waitFor();
         assert.equal(await page.locator('#omr-panel-all article.omr-card').count(),150,'all 150 issued assignments remain accessible');
         const last=page.locator('#student-assignment-ux-volume-150');

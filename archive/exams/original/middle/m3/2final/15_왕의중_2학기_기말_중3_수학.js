@@ -121,7 +121,7 @@ window.examData = {
       "choices": [
         "$\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이면 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}$이다.",
         "$\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$이면 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다.",
-        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{P}$가 접점이면 $\\angle\\mathrm{APB} = \\frac{1}{2}\\angle\\mathrm{AOB}$",
+        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{P}$가 원 위의 점이면 $\\angle\\mathrm{APB} = \\frac{1}{2}\\angle\\mathrm{AOB}$",
         "$\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$, $\\mathrm{S}$가 접점이면 $\\angle\\mathrm{A}+\\angle\\mathrm{C}=180^\\circ$이다.",
         "$\\mathrm{A}$, $\\mathrm{B}$가 접점이면 $\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PB}}$이다."
       ],
@@ -135,9 +135,9 @@ window.examData = {
       "choices": [
         "$\\overline{\\mathrm{AB}}$가 지름이면 $\\angle\\mathrm{P}=90^\\circ$이다.",
         "$\\overparen{\\mathrm{AB}}=\\overparen{\\mathrm{CD}}$이면 $\\angle\\mathrm{P}=\\angle\\mathrm{Q}$이다.",
-        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 접점이면 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{CD}}=\\overline{\\mathrm{AD}}+\\overline{\\mathrm{BC}}$이다.",
-        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$가 접점이면 이면 $\\angle\\mathrm{BAT}=\\angle\\mathrm{C}$",
-        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 접점이면 $\\angle\\mathrm{A}=\\angle\\mathrm{DCE}$이다."
+        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 원 위의 점이면 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{CD}}=\\overline{\\mathrm{AD}}+\\overline{\\mathrm{BC}}$이다.",
+        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$가 원 위의 점이면 $\\angle\\mathrm{BAT}=\\angle\\mathrm{C}$",
+        "$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 원 위의 점이면 $\\angle\\mathrm{A}=\\angle\\mathrm{DCE}$이다."
       ],
       "answer": "③",
       "solution": "원 위의 점 A, B, C, D를 꼭짓점으로 하는 가로 1 cm, 세로 2 cm의 직사각형을 생각한다.\n직사각형은 원에 내접할 수 있고, AB=CD=1 cm, AD=BC=2 cm이다.\nAB+CD=1+1=2 cm\nAD+BC=2+2=4 cm\n두 합이 다르므로 항상 같다는 ③은 옳지 않다."
@@ -159,7 +159,7 @@ window.examData = {
     {
       "id": 12,
       "score": 4,
-      "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$가 원의 접점이고 $\\angle\\mathrm{BOC}=160^\\circ$일 때, $\\angle\\mathrm{A}=x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q12.png\"></p>",
+      "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$가 원 위의 점이고 $\\angle\\mathrm{BOC}=160^\\circ$일 때, $\\angle\\mathrm{A}=x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q12.png\"></p>",
       "choices": [
         "$80^\\circ$",
         "$90^\\circ$",
@@ -187,7 +187,7 @@ window.examData = {
     {
       "id": 14,
       "score": 4,
-      "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$가 원의 접점이고 $\\overline{\\mathrm{AT}}$는 원의 접선, $\\overline{\\mathrm{CD}}$는 원의 지름이다. $\\angle\\mathrm{ABC}=120^\\circ$일 때, $\\angle\\mathrm{ACD}=x$의 크기는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q14.png\"></p>",
+      "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$가 원 위의 점이고 $\\overline{\\mathrm{AT}}$는 원의 접선, $\\overline{\\mathrm{CD}}$는 원의 지름이다. $\\angle\\mathrm{ABC}=120^\\circ$일 때, $\\angle\\mathrm{ACD}=x$의 크기는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q14.png\"></p>",
       "choices": [
         "$20^\\circ$",
         "$25^\\circ$",
@@ -229,7 +229,7 @@ window.examData = {
     {
       "id": 17,
       "score": 4,
-      "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$가 원의 접점이고 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$의 연장선의 교점은 $\\mathrm{P}$, $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 연장선의 교점은 $\\mathrm{Q}$이다. $\\angle\\mathrm{P}=23^\\circ$, $\\angle\\mathrm{Q}=41^\\circ$일 때, $\\angle\\mathrm{C}=x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q17.png\"></p>",
+      "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$가 원 위의 점이고 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$의 연장선의 교점은 $\\mathrm{P}$, $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 연장선의 교점은 $\\mathrm{Q}$이다. $\\angle\\mathrm{P}=23^\\circ$, $\\angle\\mathrm{Q}=41^\\circ$일 때, $\\angle\\mathrm{C}=x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q17.png\"></p>",
       "choices": [
         "$50^\\circ$",
         "$53^\\circ$",
@@ -238,7 +238,7 @@ window.examData = {
         "$64^\\circ$"
       ],
       "answer": "④ 58°",
-      "solution": "사각형 ABCD는 원에 내접하므로 ∠A+∠C=180°, ∠B+∠D=180°이다.\n△PAD에서 PA는 AB의 연장선이고 PD는 CD의 연장선이므로\n∠PAD=180°−∠A, ∠PDA=180°−∠D이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠D)+23°=180°\n∠A+∠D=203°이다.\n△QAB에서 QA는 AD의 연장선이고 QB는 BC의 연장선이므로\n∠QAB=180°−∠A, ∠QBA=180°−∠B이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠B)+41°=180°\n∠A+∠B=221°이다.\n∠B+∠D=180°이므로 두 식을 빼면 ∠A−∠B=23°이다.\n∠A+∠B=221°와 ∠A−∠B=23°에서 ∠A=122°이다.\n∠A+∠C=180°이므로 x=∠C=58°."
+      "solution": "사각형 ABCD는 원에 내접하므로 ∠A+∠C=180°, ∠B+∠D=180°이다.\n△PAD에서 PA는 AB의 연장선이고 PD는 CD의 연장선이므로\n∠PAD=180°−∠A, ∠PDA=180°−∠D이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠D)+23°=180°\n∠A+∠D=203°이다.\n△QAB에서 QA는 AD의 연장선이고 QB는 BC의 연장선이므로\n∠QAB=180°−∠A, ∠QBA=180°−∠B이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠B)+41°=180°\n∠A+∠B=221°이다.\n∠D=180°−∠B이므로 ∠A+∠D=203°에 대입하면 ∠A−∠B=23°이다.\n∠A+∠B=221°와 ∠A−∠B=23°에서 ∠A=122°이다.\n∠A+∠C=180°이므로 x=∠C=58°."
     },
     {
       "id": 18,

@@ -7,7 +7,7 @@
 (function (root) {
   'use strict';
 
-  const VERSION = '2026.11.11.3';
+  const VERSION = '2026.11.11.4';
   const STYLE_ID = 'student-clinic-lineage-style';
   const ASSIGNMENT_ID = /^[A-Za-z0-9_:.\-]{1,80}$/;
 

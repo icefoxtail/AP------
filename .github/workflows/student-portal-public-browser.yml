@@ -1,0 +1,130 @@
+name: Student portal public browser
+
+# Verify what is actually public, including a successful content-NO_OP release.
+# Production accounts and production API mutations are outside this workflow.
+on:
+  workflow_run:
+    workflows: ['Archive Pages Release']
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: student-portal-public-browser
+  cancel-in-progress: false
+
+jobs:
+  public-browser:
+    if: >-
+      github.repository == 'icefoxtail/AP------' &&
+      ((github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_branch == 'main' &&
+        github.event.workflow_run.head_repository.full_name == github.repository))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Initialize public verification evidence
+        run: mkdir -p "$RUNNER_TEMP/student-portal-public"
+      - name: Check out the trusted main verifier independently of the published snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: verification
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/student-portal-public-browser.yml
+            /.github/workflows/student-portal-ux-browser.yml
+            /tools/ci/student-portal-public-release.mjs
+            /tools/ci/archive-pages-release-identity.mjs
+            /tests/student-portal-public-release.test.mjs
+            /tests/student-portal-accessibility-browser.cjs
+            /tests/student-portal-accessibility-worker.cjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test the read-only release identity and byte checks
+        run: node --test verification/tests/student-portal-public-release.test.mjs
+      - name: Resolve the successful public receipt and prove its main ancestry
+        id: published
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node verification/tools/ci/student-portal-public-release.mjs resolve \
+            --verifier-root="$GITHUB_WORKSPACE/verification" \
+            --output="$RUNNER_TEMP/student-portal-public/identity.json"
+      - name: Check out the exact commit named by the live receipt
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.published.outputs.published_sha }}
+          path: source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /apmath/student/
+            /apmath/homework/
+            /apmath/planner/
+            /apmath/css/
+            /apmath/playground/
+            /apmath/js/student.js
+            /apmath/js/student-navigation.js
+            /apmath/wrong_print_engine.html
+            /apmath/worker-backup/worker/
+            /archive/*.js
+            /archive/*.css
+            /archive/css/
+            /archive/js/
+            /archive/vendor/
+            /archive/data/svg-accessibility-index.js
+            /archive/engine.html
+            /archive/mixed_engine.html
+            /tests/student-portal-accessibility-worker.cjs
+      - name: Compare the actual public entry points and assets to exact published Git bytes
+        run: |
+          node verification/tools/ci/student-portal-public-release.mjs verify \
+            --source-root="$GITHUB_WORKSPACE/source" \
+            --identity="$RUNNER_TEMP/student-portal-public/identity.json" \
+            --output="$RUNNER_TEMP/student-portal-public/assets.json"
+      - name: Install the same isolated browser runtime as the student UX workflow
+        run: |
+          npm install --prefix "$RUNNER_TEMP/student-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1 esbuild@0.28.1 miniflare@4.20260708.1 @cloudflare/puppeteer@1.4.0
+          "$RUNNER_TEMP/student-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install --no-install-recommends -y fonts-noto-cjk
+      - name: Verify public Pages UI with synthetic authentication in isolated D1
+        env:
+          NODE_PATH: ${{ runner.temp }}/student-browser/node_modules
+          PUBLISHED_SHA: ${{ steps.published.outputs.published_sha }}
+        run: |
+          node verification/tests/student-portal-accessibility-browser.cjs \
+            --source-root="$GITHUB_WORKSPACE/source" \
+            --base-url=https://icefoxtail.github.io/AP------ \
+            --revision="$PUBLISHED_SHA" \
+            --output="$RUNNER_TEMP/student-portal-public/browser"
+      - name: Reject a release change during the browser checks
+        if: ${{ !cancelled() && steps.published.outcome == 'success' }}
+        run: |
+          node verification/tools/ci/student-portal-public-release.mjs finish \
+            --identity="$RUNNER_TEMP/student-portal-public/identity.json" \
+            --output="$RUNNER_TEMP/student-portal-public/final-receipt.json"
+      - name: State the exact verification scope
+        if: always()
+        run: |
+          printf '%s\n' \
+            '### Public student portal verification' \
+            'Public UI assets are compared with the commit in the live release receipt.' \
+            'Authentication uses that published Worker code with synthetic identities in ephemeral local D1.' \
+            'Production student/teacher account login: NOT_RUN. Production API writes: NONE.' \
+            'See identity.json, assets.json, browser/report.json, and final-receipt.json for exact revisions and outcomes.' \
+            'final-receipt.json checks receipt stability only; asset and browser checks retain their independent job outcomes.' \
+            >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload public asset hashes, screenshots and authentication evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: student-portal-public-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/student-portal-public/
+          if-no-files-found: error
+          retention-days: 14
