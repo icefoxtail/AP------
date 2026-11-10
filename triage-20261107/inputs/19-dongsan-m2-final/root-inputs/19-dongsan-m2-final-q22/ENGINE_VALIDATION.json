@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "engine": "solid-figure-v1",
+  "modelVersion": "SOLID_FIGURE_MODEL_v2",
+  "solids": [
+    {
+      "id": "a",
+      "kind": "CONE",
+      "radius": 3,
+      "r0": 3,
+      "r1": 0,
+      "height": 5.196152422706632
+    },
+    {
+      "id": "b",
+      "kind": "CONE_FRUSTUM",
+      "radius": 5,
+      "r0": 5,
+      "r1": 3,
+      "height": 3.4641016151377544
+    }
+  ],
+  "dims": [
+    {
+      "id": "dim-1",
+      "type": "SLANT",
+      "solid": "a",
+      "tex": "6",
+      "text": "6",
+      "numeric": true,
+      "value": 6
+    },
+    {
+      "id": "dim-2",
+      "type": "RADIUS",
+      "solid": "a",
+      "which": "bottom",
+      "z": 0,
+      "r": 3,
+      "tex": "3",
+      "text": "3",
+      "numeric": true,
+      "value": 3
+    },
+    {
+      "id": "dim-3",
+      "type": "SLANT",
+      "solid": "b",
+      "tex": "4",
+      "text": "4",
+      "numeric": true,
+      "value": 4
+    },
+    {
+      "id": "dim-4",
+      "type": "RADIUS",
+      "solid": "b",
+      "which": "bottom",
+      "z": 0,
+      "r": 5,
+      "tex": "5",
+      "text": "5",
+      "numeric": true,
+      "value": 5
+    },
+    {
+      "id": "dim-5",
+      "type": "RADIUS",
+      "solid": "b",
+      "which": "top",
+      "z": 3.4641016151377544,
+      "r": 3,
+      "tex": "3",
+      "text": "3",
+      "numeric": true,
+      "value": 3
+    }
+  ]
+}

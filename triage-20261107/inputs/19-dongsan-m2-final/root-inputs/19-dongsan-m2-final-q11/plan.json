@@ -1,0 +1,366 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "centroidAG",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "G",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "smallArea",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "F",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "FE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "CG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "caption": "[△FGE]=1/12[△ABC]=2 cm²이므로 [△ABC]=24 cm²이다. 무게중심에서 높이는 전체의 1/3이므로 [△CBG]=8 cm²이다. 정답은 ⑤이다.",
+  "accessibilityDescription": "[△FGE]=1/12[△ABC]=2 cm²이므로 [△ABC]=24 cm²이다. 무게중심에서 높이는 전체의 1/3이므로 [△CBG]=8 cm²이다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "F,E는 AB,AC의 중점이고 G는 무게중심이다. △FGE 넓이는 2 cm²이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.regions"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "△CBG는 △ABC 넓이의 1/3이다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 작은 삼각형과 구하는 큰 삼각형을 서로 겹치지 않도록 명암을 달리해 표시하고 각 영역의 수치를 내부 여백에 둔다."
+  ],
+  "sourceQuote": "오른쪽 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. $\\triangle FGE$의 넓이가 $2\\text{ cm}^2$일 때, $\\triangle CBG$의 넓이를 구하면? (4점)",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "mAB",
+        "count": 1,
+        "segments": [
+          "AF",
+          "FB"
+        ]
+      },
+      {
+        "id": "mBC",
+        "count": 2,
+        "segments": [
+          "BD",
+          "DC"
+        ]
+      },
+      {
+        "id": "mCA",
+        "count": 3,
+        "segments": [
+          "CE",
+          "EA"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "smallArea",
+        "fill": "LIGHT",
+        "label": "2\\text{ cm}^2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "F",
+              "G",
+              "E"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "largeArea",
+        "fill": "MEDIUM",
+        "label": "8\\text{ cm}^2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "B",
+              "G"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  }
+}

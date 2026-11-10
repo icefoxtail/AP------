@@ -1,0 +1,55 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "small",
+      "kind": "CONE",
+      "radius": 6,
+      "height": 10.392304845413264
+    },
+    {
+      "id": "large",
+      "kind": "CONE",
+      "radius": 9,
+      "height": 15.588457268119896
+    }
+  ],
+  "dims": [
+    {
+      "solid": "small",
+      "slant": true,
+      "label": "12"
+    },
+    {
+      "solid": "large",
+      "slant": true,
+      "label": "18"
+    }
+  ],
+  "solidCaption": {
+    "text": "작은 원뿔과 큰 원뿔의 비례도"
+  },
+  "caption": "모선의 비 12:18=2:3에서 부피비는 8:27이다. 큰 원뿔의 부피는 작은 원뿔의 27/8배이므로 적어도 4번 부어야 한다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "작은 원뿔과 큰 원뿔의 모선은 각각 12 cm, 18 cm이고 서로 닮았다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "도형의 부피비는 닮음비의 세제곱이다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름과 높이는 원문에 없으므로 숫자를 표기하지 않은 참고 비례도이며, 치수선은 주어진 모선 길이만 나타낸다."
+  ],
+  "sourceQuote": "아래 그림의 두 원뿔이 서로 닮은 도형일 때, 작은 원뿔에 물을 가득 담아 큰 원뿔에 부어 큰 원뿔을 가득 채우려고 할 때, 물을 적어도 몇 번 부어야 하는지 구하면? (4점)"
+}

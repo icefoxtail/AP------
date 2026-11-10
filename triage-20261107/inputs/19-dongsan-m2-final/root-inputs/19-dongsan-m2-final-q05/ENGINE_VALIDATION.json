@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "engine": "solid-figure-v1",
+  "modelVersion": "SOLID_FIGURE_MODEL_v2",
+  "solids": [
+    {
+      "id": "small",
+      "kind": "CONE",
+      "radius": 6,
+      "r0": 6,
+      "r1": 0,
+      "height": 10.392304845413264
+    },
+    {
+      "id": "large",
+      "kind": "CONE",
+      "radius": 9,
+      "r0": 9,
+      "r1": 0,
+      "height": 15.588457268119896
+    }
+  ],
+  "dims": [
+    {
+      "id": "dim-1",
+      "type": "SLANT",
+      "solid": "small",
+      "tex": "12",
+      "text": "12",
+      "numeric": true,
+      "value": 12
+    },
+    {
+      "id": "dim-2",
+      "type": "SLANT",
+      "solid": "large",
+      "tex": "18",
+      "text": "18",
+      "numeric": true,
+      "value": 18
+    }
+  ]
+}

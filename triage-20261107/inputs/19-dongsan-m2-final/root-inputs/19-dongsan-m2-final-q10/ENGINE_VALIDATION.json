@@ -1,0 +1,385 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "96905c653df5ae6a2b1631e4d29b951aa085dbde5c4f2f341e7337a4607ba627",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "MIDPOINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "E",
+      "op": "MIDPOINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "F",
+      "op": "MIDPOINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "G",
+      "op": "CENTROID",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    }
+  ],
+  "validation": {
+    "nodeCount": 7,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "conditionAuditCount": 3
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "9"
+          }
+        ],
+        "approximation": [
+          2.0,
+          9.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "12"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          12.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "6"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          6.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "E": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "7"
+          },
+          {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          }
+        ],
+        "approximation": [
+          7.0,
+          4.5
+        ],
+        "precisionDigits": 17
+      },
+      "F": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          }
+        ],
+        "approximation": [
+          1.0,
+          4.5
+        ],
+        "precisionDigits": 17
+      },
+      "G": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "14",
+            "denominator": "3"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ],
+        "approximation": [
+          4.666666666666667,
+          3.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {},
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "centroidAG",
+        "sourceConditionId": "c1",
+        "kind": "MIDPOINT_RATIO",
+        "status": "PASS",
+        "checks": [
+          "COLLINEAR",
+          "BETWEEN_ENDPOINTS",
+          "DISTANCE_RATIO"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "2"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "centroidBG",
+        "sourceConditionId": "c1",
+        "kind": "MIDPOINT_RATIO",
+        "status": "PASS",
+        "checks": [
+          "COLLINEAR",
+          "BETWEEN_ENDPOINTS",
+          "DISTANCE_RATIO"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "2"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "centroidCG",
+        "sourceConditionId": "c1",
+        "kind": "MIDPOINT_RATIO",
+        "status": "PASS",
+        "checks": [
+          "COLLINEAR",
+          "BETWEEN_ENDPOINTS",
+          "DISTANCE_RATIO"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "2"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "D",
+        "op": "MIDPOINT",
+        "dependencies": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "nodeId": "E",
+        "op": "MIDPOINT",
+        "dependencies": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "nodeId": "F",
+        "op": "MIDPOINT",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "G",
+        "op": "CENTROID",
+        "dependencies": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "centroidAG",
+      "sourceConditionId": "c1",
+      "kind": "MIDPOINT_RATIO",
+      "status": "PASS",
+      "checks": [
+        "COLLINEAR",
+        "BETWEEN_ENDPOINTS",
+        "DISTANCE_RATIO"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "2"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "2"
+      }
+    },
+    {
+      "id": "centroidBG",
+      "sourceConditionId": "c1",
+      "kind": "MIDPOINT_RATIO",
+      "status": "PASS",
+      "checks": [
+        "COLLINEAR",
+        "BETWEEN_ENDPOINTS",
+        "DISTANCE_RATIO"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "2"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "2"
+      }
+    },
+    {
+      "id": "centroidCG",
+      "sourceConditionId": "c1",
+      "kind": "MIDPOINT_RATIO",
+      "status": "PASS",
+      "checks": [
+        "COLLINEAR",
+        "BETWEEN_ENDPOINTS",
+        "DISTANCE_RATIO"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "2"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "2"
+      }
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "a",
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 6
+    },
+    {
+      "id": "b",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 9
+    }
+  ],
+  "dims": [
+    {
+      "solid": "a",
+      "radius": "bottom",
+      "label": "2"
+    },
+    {
+      "solid": "a",
+      "height": true,
+      "label": "6",
+      "side": "LEFT"
+    },
+    {
+      "solid": "b",
+      "radius": "bottom",
+      "label": "3"
+    },
+    {
+      "solid": "b",
+      "height": true,
+      "label": "9",
+      "side": "RIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "원기둥 A와 B"
+  },
+  "caption": "두 원기둥의 높이비는 6:9=2:3이므로 반지름비도 2:3이다. 큰 원기둥의 반지름은 3 cm, 밑넓이는 9π cm²이므로 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥 A와 B는 닮고 높이는 각각 6 cm, 9 cm이며 A의 반지름은 2 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "높이비와 반지름비가 같으므로 B의 반지름은 3 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원기둥의 높이와 반지름을 각각 치수선으로 분리해 표시하여 원기둥 B의 밑면 반지름을 읽을 수 있다."
+  ],
+  "sourceQuote": "아래 두 원기둥은 서로 닮음이다. 이때 원기둥 B의 밑넓이를 구하면? (4점)"
+}

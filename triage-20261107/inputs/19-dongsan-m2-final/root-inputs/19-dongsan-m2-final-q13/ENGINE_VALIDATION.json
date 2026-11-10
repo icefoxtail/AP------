@@ -1,0 +1,414 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "ab8e71bbd68ca9dd9b1c8309fb8804ff64a866daeebd4c09ad9a4a8cc9427744",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "C",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "OAB",
+      "op": "MIDPOINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "OAC",
+      "op": "MIDPOINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "OBC",
+      "op": "MIDPOINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    }
+  ],
+  "validation": {
+    "nodeCount": 11,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "C",
+      "OAB",
+      "OAC",
+      "OBC",
+      "lAB",
+      "lAC",
+      "cAB",
+      "cAC",
+      "cBC"
+    ],
+    "conditionAuditCount": 1
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "12"
+          }
+        ],
+        "approximation": [
+          0.0,
+          12.0
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "9"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          9.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "OAB": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "6"
+          }
+        ],
+        "approximation": [
+          0.0,
+          6.0
+        ],
+        "precisionDigits": 17
+      },
+      "OAC": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          4.5,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "OBC": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "6"
+          }
+        ],
+        "approximation": [
+          4.5,
+          6.0
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "lAB": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "lAC": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "1"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      }
+    },
+    "circles": {
+      "cAB": {
+        "centerExact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "6"
+          }
+        ],
+        "radiusExact": {
+          "kind": "integer",
+          "value": "6"
+        },
+        "approximation": [
+          0.0,
+          6.0,
+          6.0
+        ]
+      },
+      "cAC": {
+        "centerExact": [
+          {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "radiusExact": {
+          "kind": "rational",
+          "numerator": "9",
+          "denominator": "2"
+        },
+        "approximation": [
+          4.5,
+          0.0,
+          4.5
+        ]
+      },
+      "cBC": {
+        "centerExact": [
+          {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "6"
+          }
+        ],
+        "radiusExact": {
+          "kind": "rational",
+          "numerator": "15",
+          "denominator": "2"
+        },
+        "approximation": [
+          4.5,
+          6.0,
+          7.5
+        ]
+      }
+    },
+    "pointSets": {},
+    "conditionAudits": [
+      {
+        "id": "rightA",
+        "sourceConditionId": "c1",
+        "kind": "PERPENDICULAR",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PERPENDICULAR"
+        ],
+        "observed": true
+      }
+    ],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "OAB",
+        "op": "MIDPOINT",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "OAC",
+        "op": "MIDPOINT",
+        "dependencies": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "nodeId": "OBC",
+        "op": "MIDPOINT",
+        "dependencies": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "nodeId": "lAB",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "lAC",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "nodeId": "cAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "dependencies": [
+          "OAB"
+        ]
+      },
+      {
+        "nodeId": "cAC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "dependencies": [
+          "OAC"
+        ]
+      },
+      {
+        "nodeId": "cBC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "dependencies": [
+          "OBC"
+        ]
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "C",
+      "OAB",
+      "OAC",
+      "OBC",
+      "lAB",
+      "lAC",
+      "cAB",
+      "cAC",
+      "cBC"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [
+    {
+      "id": "rightA",
+      "sourceConditionId": "c1",
+      "kind": "PERPENDICULAR",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PERPENDICULAR"
+      ],
+      "observed": true
+    }
+  ],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

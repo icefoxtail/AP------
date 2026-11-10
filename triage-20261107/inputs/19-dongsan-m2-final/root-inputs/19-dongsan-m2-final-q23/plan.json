@@ -1,0 +1,414 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEM",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "M"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "midD",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "midE",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "midM",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "M",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "centroid",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "G",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "midsegment",
+        "kind": "PARALLEL",
+        "refs": [
+          "lEM",
+          "lAD"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "G",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "EM",
+      "refs": [
+        "E",
+        "M"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "BM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "AG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "GD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "MD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "caption": "D는 BC의 중점, E는 AB의 중점이고 M은 BD의 중점이다. 따라서 △ABD∼△EBM (닮음비 2:1)이다. AG:GD=2:1, AG=10이므로 AD=15이고 EM=7.5 cm이다.",
+  "accessibilityDescription": "D는 BC의 중점, E는 AB의 중점이고 M은 BD의 중점이다. 따라서 △ABD∼△EBM (닮음비 2:1)이다. AG:GD=2:1, AG=10이므로 AD=15이고 EM=7.5 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "G는 △ABC의 무게중심, D는 BC 중점, E는 AB 중점, M은 BD 중점이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.equalLengths",
+        "planeMarks.parallels"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AG=10 cm이다.",
+      "mappedTo": [
+        "planeMarks.dimensions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "E와 M을 연결한 중점선 EM이 AD와 평행하고, 점 G가 AD 위에 놓이는 정확한 배치를 사용한다."
+  ],
+  "sourceQuote": "2. 오른쪽 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $M$은 $BD$의 중점이다. $AG=10\\text{ cm}$일 때, 다음 물음에 답하시오.\n(1) $\\triangle ABD$와 닮은 삼각형을 찾고 그 이유를 쓰시오. (3점)\n(2) $EM$의 길이를 풀이과정과 함께 구하시오. (2점)",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAG",
+        "from": "A",
+        "to": "G",
+        "label": "10",
+        "side": "LEFT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dGD",
+        "from": "G",
+        "to": "D",
+        "label": "5",
+        "side": "LEFT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "cm"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "15",
+        "side": "RIGHT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "cm"
+      },
+      {
+        "id": "dEM",
+        "from": "E",
+        "to": "M",
+        "label": "7.5",
+        "side": "LEFT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "midD",
+        "count": 1,
+        "segments": [
+          "BD",
+          "DC"
+        ]
+      },
+      {
+        "id": "midE",
+        "count": 2,
+        "segments": [
+          "AE",
+          "EB"
+        ]
+      },
+      {
+        "id": "midM",
+        "count": 3,
+        "segments": [
+          "BM",
+          "MD"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pEM",
+        "count": 1,
+        "segments": [
+          "EM",
+          "AD"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 440
+  }
+}

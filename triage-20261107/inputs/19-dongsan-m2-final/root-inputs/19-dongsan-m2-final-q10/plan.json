@@ -1,0 +1,413 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "centroidAG",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "G",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "centroidBG",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "G",
+          "E"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      },
+      {
+        "id": "centroidCG",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "C",
+          "G",
+          "F"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "2"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "DG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "caption": "세 중선은 삼각형을 넓이가 같은 여섯 부분으로 나눈다. 무게중심은 각 중선을 꼭짓점 쪽에서 2:1로 나누지만 FG, EG, DG의 길이가 같을 필요는 없다. 옳지 않은 것은 ③이다.",
+  "accessibilityDescription": "세 중선은 삼각형을 넓이가 같은 여섯 부분으로 나눈다. 무게중심은 각 중선을 꼭짓점 쪽에서 2:1로 나누지만 FG, EG, DG의 길이가 같을 필요는 없다. 옳지 않은 것은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "G는 삼각형 ABC의 무게중심이고 D,E,F는 각 변의 중점이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.equalLengths",
+        "planeMarks.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 변 길이를 갖는 삼각형을 사용해 세 중선의 길이가 같다는 인상을 주지 않고, 여섯 작은 삼각형만 같은 넓이 영역으로 표시한다."
+  ],
+  "sourceQuote": "오른쪽 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. 다음 중 옳지 않은 것을 고르면? (4점)",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "mAB",
+        "count": 1,
+        "segments": [
+          "AF",
+          "FB"
+        ]
+      },
+      {
+        "id": "mBC",
+        "count": 2,
+        "segments": [
+          "BD",
+          "DC"
+        ]
+      },
+      {
+        "id": "mCA",
+        "count": 3,
+        "segments": [
+          "CE",
+          "EA"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "MEDIUM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "G",
+              "E"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r4",
+        "fill": "MEDIUM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "G",
+              "D"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r5",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "D",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r6",
+        "fill": "MEDIUM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "G",
+              "E"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  }
+}

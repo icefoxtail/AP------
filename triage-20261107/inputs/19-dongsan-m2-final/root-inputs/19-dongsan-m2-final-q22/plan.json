@@ -1,0 +1,79 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "a",
+      "kind": "CONE",
+      "radius": 3,
+      "height": 5.196152422706632
+    },
+    {
+      "id": "b",
+      "kind": "CONE_FRUSTUM",
+      "radius": 5,
+      "topRadius": 3,
+      "height": 3.4641016151377544
+    }
+  ],
+  "dims": [
+    {
+      "solid": "a",
+      "slant": true,
+      "label": "6"
+    },
+    {
+      "solid": "a",
+      "radius": "bottom",
+      "label": "3"
+    },
+    {
+      "solid": "b",
+      "slant": true,
+      "label": "4"
+    },
+    {
+      "solid": "b",
+      "radius": "bottom",
+      "label": "5"
+    },
+    {
+      "solid": "b",
+      "radius": "top",
+      "label": "3"
+    }
+  ],
+  "solidCaption": {
+    "text": "원뿔 A와 원뿔대 B"
+  },
+  "caption": "자른 면은 작은 원뿔 A의 밑면이자 원뿔대 B의 윗면이다. 모선비 6:(6+4)=3:5이므로 밑면 넓이비는 9:25이다. 원뿔대 부피 49π가 전체의 98/125이므로 전체는 125π/2, 작은 원뿔 A는 27π/2 cm³이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "큰 원뿔의 모선은 10, 작은 원뿔 A의 모선은 6, 원뿔대 B의 모선은 4이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A의 밑면은 B의 윗면과 같은 원이다.",
+      "mappedTo": [
+        "solids",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원뿔대 B의 부피는 49π cm³이다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "작은 원뿔 A와 원뿔대 B를 나란히 둬 공통 단면 원의 역할과 두 부분의 모선을 구분한다. 반지름은 모선과 비례하는 비례도 값이며 주어진 수치로 단정하지 않는다."
+  ],
+  "sourceQuote": "1. 오른쪽 그림과 같이 원뿔을 밑면에 평행한 평면으로 잘라 원뿔 $A$와 원뿔대 $B$를 만들었다. 다음 물음에 답하시오.\n(1) 원뿔 $A$와 원뿔대 $B$의 밑면의 넓이의 비를 풀이과정과 함께 구하시오. (2점)\n(2) 원뿔대 $B$의 부피가 $49\\pi\\text{ cm}^3$일 때, 원뿔 $A$의 부피를 풀이과정과 함께 구하시오. (3점)"
+}

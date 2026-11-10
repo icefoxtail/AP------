@@ -1,0 +1,592 @@
+{
+  "status": "PASS",
+  "contractSource": {
+    "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+    "bytes": 27356,
+    "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+    "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+  },
+  "mathPlanSha256": "ee11a1e4f77517922bdb9b51012b31c88d7d9a03f213415666982aac68fef25d",
+  "stages": {
+    "construction.validate": "PASS",
+    "construction.execute": "PASS"
+  },
+  "pointProvenance": [
+    {
+      "nodeId": "A",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "B",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "D",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "F",
+      "op": "SOURCE_POINT",
+      "factRole": "GIVEN",
+      "classification": "SOURCE_POINT_LITERAL"
+    },
+    {
+      "nodeId": "pA",
+      "op": "POLAR_POINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "pB",
+      "op": "POLAR_POINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "C",
+      "op": "LINE_INTERSECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "pD",
+      "op": "POLAR_POINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "pF",
+      "op": "POLAR_POINT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    },
+    {
+      "nodeId": "E",
+      "op": "LINE_INTERSECTION",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "classification": "DERIVED_POINT"
+    }
+  ],
+  "validation": {
+    "nodeCount": 14,
+    "dependencyOrder": [
+      "A",
+      "B",
+      "D",
+      "F",
+      "pA",
+      "pB",
+      "pD",
+      "pF",
+      "lineA",
+      "lineB",
+      "lineD",
+      "lineF",
+      "C",
+      "E"
+    ],
+    "conditionAuditCount": 0
+  },
+  "model": {
+    "engine": "SymPy",
+    "version": "1.14.0",
+    "points": {
+      "A": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          0.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "B": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "9"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          9.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "D": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "20"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          20.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "F": {
+        "exact": [
+          {
+            "kind": "integer",
+            "value": "35"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          35.0,
+          0.0
+        ],
+        "precisionDigits": 17
+      },
+      "pA": {
+        "exact": [
+          {
+            "kind": "decimal",
+            "value": "0.1736481776669303488517000000000000"
+          },
+          {
+            "kind": "decimal",
+            "value": "0.9848077530122080593667000000000000"
+          }
+        ],
+        "approximation": [
+          0.17364817766693036,
+          0.984807753012208
+        ],
+        "precisionDigits": 17
+      },
+      "pB": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "17",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          8.5,
+          0.8660254037844386
+        ],
+        "precisionDigits": 17
+      },
+      "pD": {
+        "exact": [
+          {
+            "kind": "decimal",
+            "value": "20.17364817766693034885170000000000"
+          },
+          {
+            "kind": "decimal",
+            "value": "0.9848077530122080593667000000000000"
+          }
+        ],
+        "approximation": [
+          20.17364817766693,
+          0.984807753012208
+        ],
+        "precisionDigits": 17
+      },
+      "pF": {
+        "exact": [
+          {
+            "kind": "rational",
+            "numerator": "69",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          34.5,
+          0.8660254037844386
+        ],
+        "precisionDigits": 17
+      },
+      "C": {
+        "exact": [
+          {
+            "kind": "decimal",
+            "value": "2.105600011929197683178382170781511"
+          },
+          {
+            "kind": "decimal",
+            "value": "11.94145106704089113169772920106116"
+          }
+        ],
+        "approximation": [
+          2.1056000119291975,
+          11.94145106704089
+        ],
+        "precisionDigits": 17
+      },
+      "E": {
+        "exact": [
+          {
+            "kind": "decimal",
+            "value": "23.50933335321532947196397028463585"
+          },
+          {
+            "kind": "decimal",
+            "value": "19.90241844506815188616288200176860"
+          }
+        ],
+        "approximation": [
+          23.50933335321533,
+          19.90241844506815
+        ],
+        "precisionDigits": 17
+      }
+    },
+    "scalars": {},
+    "lines": {
+      "lineA": {
+        "exact": [
+          {
+            "kind": "decimal",
+            "value": "-0.9848077530122080593667000000000000"
+          },
+          {
+            "kind": "decimal",
+            "value": "0.1736481776669303488517000000000000"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ],
+        "approximation": [
+          -0.984807753012208,
+          0.17364817766693036,
+          0.0
+        ]
+      },
+      "lineB": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "9",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          -0.8660254037844386,
+          -0.5,
+          7.794228634059948
+        ]
+      },
+      "lineD": {
+        "exact": [
+          {
+            "kind": "decimal",
+            "value": "-0.9848077530122080593667000000000000"
+          },
+          {
+            "kind": "decimal",
+            "value": "0.1736481776669303488517000000000000"
+          },
+          {
+            "kind": "decimal",
+            "value": "19.69615506024416118733400000000000"
+          }
+        ],
+        "approximation": [
+          -0.984807753012208,
+          0.17364817766693036,
+          19.696155060244163
+        ]
+      },
+      "lineF": {
+        "exact": [
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "35",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "approximation": [
+          -0.8660254037844386,
+          -0.5,
+          30.31088913245535
+        ]
+      }
+    },
+    "circles": {},
+    "pointSets": {},
+    "conditionAudits": [],
+    "transcript": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "F",
+        "op": "SOURCE_POINT",
+        "dependencies": []
+      },
+      {
+        "nodeId": "pA",
+        "op": "POLAR_POINT",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "pB",
+        "op": "POLAR_POINT",
+        "dependencies": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "nodeId": "pD",
+        "op": "POLAR_POINT",
+        "dependencies": [
+          "D",
+          "F"
+        ]
+      },
+      {
+        "nodeId": "pF",
+        "op": "POLAR_POINT",
+        "dependencies": [
+          "D",
+          "F"
+        ]
+      },
+      {
+        "nodeId": "lineA",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "A",
+          "pA"
+        ]
+      },
+      {
+        "nodeId": "lineB",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "B",
+          "pB"
+        ]
+      },
+      {
+        "nodeId": "lineD",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "D",
+          "pD"
+        ]
+      },
+      {
+        "nodeId": "lineF",
+        "op": "LINE_THROUGH",
+        "dependencies": [
+          "F",
+          "pF"
+        ]
+      },
+      {
+        "nodeId": "C",
+        "op": "LINE_INTERSECTION",
+        "dependencies": [
+          "lineA",
+          "lineB"
+        ]
+      },
+      {
+        "nodeId": "E",
+        "op": "LINE_INTERSECTION",
+        "dependencies": [
+          "lineD",
+          "lineF"
+        ]
+      }
+    ],
+    "order": [
+      "A",
+      "B",
+      "D",
+      "F",
+      "pA",
+      "pB",
+      "pD",
+      "pF",
+      "lineA",
+      "lineB",
+      "lineD",
+      "lineF",
+      "C",
+      "E"
+    ],
+    "coordinateMode": "CONSTRUCTED_REALIZATION"
+  },
+  "conditionAudits": [],
+  "provenanceAudit": {
+    "status": "PASS",
+    "issues": []
+  }
+}

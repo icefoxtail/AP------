@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "caption": "높이 AH를 그으면 세 직각삼각형은 닮음이고, AB·AC=BC·AH이다. 일반적으로 AB:AC와 BH:HC는 같지 않으므로 옳지 않은 것은 ⑤이다.",
+  "accessibilityDescription": "높이 AH를 그으면 세 직각삼각형은 닮음이고, AB·AC=BC·AH이다. 일반적으로 AB:AC와 BH:HC는 같지 않으므로 옳지 않은 것은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=90°, AH⊥BC이며 H는 BC 위에 있다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "좌표는 일반적인 예시 배치일 뿐이며, 수치 길이 조건으로 제시하지 않는다.",
+      "mappedTo": [
+        "newVisualInformation",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그림의 좌표는 설명용 예시 배치이며 길이 수치를 라벨로 쓰지 않는다. 직각 표시를 A와 H에 두고 H를 빗변 위에 둔다."
+  ],
+  "sourceQuote": "아래 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AH\\perp BC$일 때, 다음 중 옳지 않은 것을 고르면? (4점)",
+  "rightAngles": [
+    {
+      "id": "rA",
+      "at": "A",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "at": "H",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  }
+}
