@@ -1,0 +1,59 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "가"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 2,
+            "height": 4,
+            "orientation": "APEX_UP",
+            "axis": true
+          }
+        ],
+        "dims": []
+      }
+    },
+    {
+      "caption": {
+        "text": "나"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 3,
+            "height": 6,
+            "orientation": "APEX_UP",
+            "axis": true
+          }
+        ],
+        "dims": []
+      }
+    }
+  ],
+  "caption": "닮음비가 2:3이므로 부피비는 8:27, (나)의 부피는 40×27/8=135이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 원뿔은 닮았고 밑면 둘레 비 2:3, (가)의 부피는 40.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "길이비 2:3인 원뿔은 이해를 돕는 예시이며 실제 반지름·높이 수치는 문제의 조건이 아니다."
+  ]
+}
