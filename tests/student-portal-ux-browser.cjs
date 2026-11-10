@@ -546,6 +546,26 @@ async function behaviorSuite(browser, base, check) {
       const context=await browser.newContext({viewport:{width,height},serviceWorkers:'block'});
       const state=await instrument(context,{loggedIn:false});
       const page=await context.newPage();
+      // Keep a bounded, synthetic-only DOM trace so a failed quick add records
+      // whether the typed draft, click, request or resulting row was lost.
+      await page.addInitScript(()=>{
+        window.__plannerEntryTrace=[];
+        const record=event=>{
+          if(window.__plannerEntryTrace.length>=60)return;
+          window.__plannerEntryTrace.push({event,at:Math.round(performance.now()),width:innerWidth,height:innerHeight,
+            title:document.querySelector('#quick-title')?.value??null,
+            subject:document.querySelector('#quick-subject')?.value??null,
+            date:document.querySelector('.plan-date')?.textContent??null,
+            toast:document.querySelector('#toast')?.textContent??null});
+        };
+        window.addEventListener('resize',()=>record('resize'));
+        document.addEventListener('input',event=>{if(event.target.matches('#quick-title,#quick-subject'))record('input:'+event.target.id);},true);
+        document.addEventListener('click',event=>{if(event.target.closest('.quick-form button'))record('quick-add-click');},true);
+        document.addEventListener('DOMContentLoaded',()=>{
+          const app=document.querySelector('#app');
+          if(app)new MutationObserver(()=>record('app-render')).observe(app,{childList:true});
+        });
+      });
       page.setDefaultTimeout(10000);
       page.on('pageerror',error=>report.pageErrors.push({scenario:'planner-entry-'+width,message:error.message}));
       try {
@@ -571,11 +591,29 @@ async function behaviorSuite(browser, base, check) {
         assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,0);
         if(width>=768) {
           await page.locator('#quick-title').fill('합성 PC 빠른 추가');
+          assert.equal(await page.locator('#quick-title').inputValue(),'합성 PC 빠른 추가');
           await page.locator('.quick-form button').click();
           await page.getByText('합성 PC 빠른 추가',{exact:true}).waitFor();
-          assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,1);
+          const writes=state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST');
+          assert.equal(writes.length,1);
+          assert.equal(writes[0].body.title,'합성 PC 빠른 추가');
+          assert.equal(writes[0].body.plan_date,await page.locator('.plan-date').innerText());
+          await capture(page,'planner-pc-quick-add-'+width);
         }
-      } finally { await context.close(); }
+      } catch(error) {
+        await capture(page,'planner-entry-failure-'+width);
+        throw error;
+      } finally {
+        report.observations.push({scenario:'planner-entry-'+width,
+          plannerRequests:state.requests.filter(r=>r.endpoint.startsWith('planner')).map(r=>({endpoint:r.endpoint,method:r.method,
+            body:r.body?{title:r.body.title,subject:r.body.subject,plan_date:r.body.plan_date,student_id:r.body.student_id}:null})),
+          dom:await page.evaluate(()=>({trace:window.__plannerEntryTrace||[],
+            title:document.querySelector('#quick-title')?.value??null,
+            date:document.querySelector('.plan-date')?.textContent??null,
+            toast:document.querySelector('#toast')?.textContent??null,
+            rows:[...document.querySelectorAll('.plan-item-title')].map(el=>el.textContent)}))});
+        await context.close();
+      }
     }
   });
   await check('planner calendar, draft recovery, settings and timer preserve accessible controls',()=>withStudent({name:'planner'},async(page,state)=>{
