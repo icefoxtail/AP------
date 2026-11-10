@@ -84,10 +84,10 @@
       ang(b, A1, B1, H1, { color: 'rose', r: 38, label: '30°', size: 16, rings: 2 }); ang(b, A2, H2, C2, { color: 'rose', r: 38, label: '30°', size: 16, rings: 2 });
       const cen1 = G.centroid([A1, B1, H1]), cen2 = G.centroid([A2, H2, C2]);
       sideTag(b, A1, B1, cen1, st >= 1 || st === 99 ? `${r3(M.l)}` : 'L', { color: 'green', size: 17 });
-      sideTag(b, B1, H1, cen1, r3(M.bh), { color: 'sky', size: 17, flip: true, gap: 14 });
+      sideTag(b, B1, H1, cen1, r3(M.bh), { color: 'sky', size: 17, flip: !compact, gap: compact ? 16 : 14 });
       const heightAt = compact ? lerp(A1, H1, .62) : mid(A1, H1);
       T(b, heightAt, r3(M.ah), { dx: -26, size: 16, color: 'rose', ...(compact ? { leaderAnchor: heightAt, leader: true } : {}) });
-      sideTag(b, A2, C2, cen2, r3(M.l), { color: 'green', size: 17 }); sideTag(b, H2, C2, cen2, r3(M.bh), { color: 'sky', size: 17, flip: true, gap: 14 });
+      sideTag(b, A2, C2, cen2, r3(M.l), { color: 'green', size: 17 }); sideTag(b, H2, C2, cen2, r3(M.bh), { color: 'sky', size: 17, flip: !compact, gap: compact ? 16 : 14 });
       tick(b, A1, B1, 1, 'green'); tick(b, A2, C2, 1, 'green'); tick(b, B1, H1, 2, 'sky'); tick(b, H2, C2, 2, 'sky');
       [[A1, 'A', cen1], [B1, 'B', cen1], [H1, 'H', cen1], [A2, 'A', cen2], [H2, 'H', cen2], [C2, 'C', cen2]].forEach(([p0, n, c]) => { b.point(p0, { color: 'ink', r: 4 }); if (t > 0.5 ? true : (n !== 'A' || p0 === A1) && (n !== 'H' || p0 === H1)) tagOut(b, p0, c, n, { size: 17, gap: 10 }); });
       if (st >= 3 || st === 99) T(b, pt(0, 0), 'BH : AH : AB = 1 : √3 : 2', { dy: 62, size: 17, color: 'amber' });
@@ -306,7 +306,7 @@
     const mv = (g, d, e) => ({ A: pt(g.A.x + d, g.A.y + e), B: pt(g.B.x + d, g.B.y + e), C: pt(g.C.x + d, g.C.y + e), cen: pt(g.cen.x + d, g.cen.y + e) });
     const t1 = g1, t2 = mv(g2, dx, dy);
     fit(b, bboxOf([t1.A, t1.B, t1.C, t2.A, t2.B, t2.C]), compact ? { t: 28, b: 40, l: 32, r: 32, problemTop: 28 } : { t: 46, b: o.pb || 130, l: 56, r: 56 });
-    const angle = compact ? { r: 18, d: 32 } : {};
+    const angle = compact ? { r: 18, d: 32 } : narrow ? { r: 18, d: 30, size: 14 } : {};
     const mk = (g, ratio, th) => drawRT(b, g, { fill: 'sky', fa: 0.08, side: { a: { t: vcan(ratio[0]), c: 'rose' }, b: { t: vcan(ratio[1]), c: 'sky' }, c: { t: vcan(ratio[2]), c: 'green' } }, angA: { ...angle, t: `${th}°`, c: hl && hl.includes(th) ? 'amber' : 'sky' }, angB: th === 30 ? { ...angle, t: '60°', c: hl && hl.includes(60) ? 'amber' : 'sky', rings: 2 } : { ...angle, t: '45°', c: hl && hl.includes(45) ? 'amber' : 'sky', rings: 2 } });
     mk(t1, RATIO[30], 30); mk(t2, RATIO[45], 45);
     return { yb: 0, cx: (t1.A.x + t2.C.x) / 2 };

@@ -47,7 +47,8 @@
       const { A, B, C, D, Dp, E } = M, st = cx.step;
       const t = cx.problem ? 1 : cx.review ? (st >= 2 ? 1 : 0) : cx.t, done = t >= 0.999;
       const yb = 0.31 * M.w + 0.3;
-      fit(b, { x0: -0.4, x1: M.w + 0.4, y0: -M.w * tanD(40) - 0.3, y1: yb }, { t: 30, b: 76, l: 40, r: 40 });
+      const compactProblem = cx.problem && b.W < 560;
+      fit(b, compactProblem ? bboxOf([A, B, C, D, Dp]) : { x0: -0.4, x1: M.w + 0.4, y0: -M.w * tanD(40) - 0.3, y1: yb }, compactProblem ? { t: 28, b: 32, l: 36, r: 36 } : { t: 30, b: 76, l: 40, r: 40 });
       const Dt = foldP(D, A, C, t);
       fillPoly(b, [A, B, C], 'sky', 0.1); poly(b, [A, B, C], 'ink', 3.4);
       if (t > 0.001) { poly(b, [A, C, D], 'muted', 2, { dash: [6, 6], alpha: 0.7 }); }
@@ -214,7 +215,7 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E, S } = M, st = cx.step, sq = [A, B, C, D], O = pt(S / 2, -S / 2);
-      fit(b, bboxOf(sq), { t: 50, b: 94, l: 50, r: 50 });
+      fit(b, bboxOf(sq), cx.problem && b.W < 560 ? { t: 28, b: 32, l: 36, r: 36 } : { t: 50, b: 94, l: 50, r: 50 });
       fillPoly(b, sq, 'sky', 0.08); poly(b, sq, 'ink', 3.4);
       fillPoly(b, [E, B, C], 'green', 0.18); poly(b, [E, B, C], 'green', 3.4);
       line(b, A, E, 'ink', 3); line(b, D, E, 'ink', 3);

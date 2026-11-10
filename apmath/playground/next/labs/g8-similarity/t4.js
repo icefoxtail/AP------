@@ -308,7 +308,8 @@
     model: (s) => ({ ...fourGeo(clamp(Math.round(s.smFu), 1, 3)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? fourGeo(pk.t) : M;
-      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 96, l: 90, r: 90 });
+      const compactProblem = prob && b.W < 560;
+      fit(b, bboxOf([g.A, g.B, g.C]), compactProblem ? { t: 26, b: 62, l: 64, r: 64 } : { t: 44, b: 96, l: 90, r: 90 });
       const cen = centroid([g.A, g.B, g.C]);
       const cols = ['sky', 'green', 'amber', 'rose'];
       const T4 = [[g.A, g.D, g.F], [g.D, g.B, g.E], [g.F, g.E, g.C], [g.D, g.E, g.F]];
@@ -318,8 +319,8 @@
       tick(b, g.A, g.D, 1, 'amber'); tick(b, g.D, g.B, 1, 'amber'); tick(b, g.B, g.E, 2, 'amber'); tick(b, g.E, g.C, 2, 'amber'); tick(b, g.C, g.F, 3, 'amber'); tick(b, g.F, g.A, 3, 'amber');
       const sz = 16, dm = (p, q, c, v) => dim(b, p, q, c, String(v), { color: 'sky', off: 38, size: sz }), lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
-        if (pk.kind === 0) { dm(g.A, g.B, cen, g.AB); dm(g.A, g.C, cen, g.AC); dm(g.B, g.C, cen, g.BC); T(b, centroid([g.D, g.E, g.F]), 'x', { size: 17, color: 'amber' }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 둘레', { dy: 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
-        else { T(b, centroid([g.A, g.D, g.F]), '', {}); T(b, cen, `△ABC의 넓이 ${g.S}`, { size: phone(b) ? 12 : 14, color: 'sky', dx: g.B.x * 0 }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 넓이 x', { dy: 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
+        if (pk.kind === 0) { dm(g.A, g.B, cen, g.AB); dm(g.A, g.C, cen, g.AC); dm(g.B, g.C, cen, g.BC); T(b, centroid([g.D, g.E, g.F]), 'x', { size: 17, color: 'amber' }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 둘레', { dy: compactProblem ? 60 : 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
+        else { T(b, centroid([g.A, g.D, g.F]), '', {}); T(b, cen, `△ABC의 넓이 ${g.S}`, { size: phone(b) ? 12 : 14, color: 'sky', dx: g.B.x * 0 }); T(b, pt(g.B.x / 2, g.A.y), '△DEF의 넓이 x', { dy: compactProblem ? 60 : 84, size: phone(b) ? 12 : 14, color: 'amber' }); }
       } else {
         dm(g.A, g.B, cen, g.AB); dm(g.A, g.C, cen, g.AC); dm(g.B, g.C, cen, g.BC);
         if (!C.review || st >= 2) T4.forEach((Tr, i) => T(b, centroid(Tr), String(g.s4), { size: 15, color: cols[i] }));

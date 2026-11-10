@@ -238,7 +238,8 @@
     model: (s) => { const c = clamp(Math.round(s.smGc), 1, 3); return { c, S: 18 * c, S3: 6 * c, S9: 2 * c, S18: c }; },
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = chGeo(s, prob, prob ? pk.c : M.c);
-      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 84, l: 54, r: 54 });
+      const compactProblem = prob && b.W < 560;
+      fit(b, bboxOf([g.A, g.B, g.C]), compactProblem ? { t: 26, b: 64, l: 38, r: 38 } : { t: 44, b: 84, l: 54, r: 54 });
       const cen = centroid([g.A, g.B, g.C]);
       const show3 = prob || !C.review || st >= 1, show9 = !prob && (!C.review || st >= 2), show18 = prob || !C.review || st >= 3;
       fillPoly(b, [g.G, g.B, g.C], 'sky', show3 && !prob ? 0.2 : 0.1); if (show9) fillPoly(b, [g.Gq, g.B, g.C], 'green', 0.22);
@@ -247,8 +248,10 @@
       tick(b, g.B, g.D, 1, 'amber'); tick(b, g.D, g.C, 1, 'amber');
       const sz = 15;
       if (prob) {
-        if (pk.kind === 0) { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${18 * pk.c}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: 54 }); T(b, centroid([g.Gq, g.B, g.D]), 'x', { size: 17, color: 'amber', dy: 3 }); }
-        else { T(b, centroid([g.Gq, g.B, g.D]), String(pk.c), { size: 16, color: 'amber', dy: 3 }); T(b, pt((g.B.x + g.C.x) / 2, 0), '△ABC의 넓이 x', { size: phone(b) ? 13 : 15, color: 'amber', dy: 54 }); }
+        const target = centroid([g.Gq, g.B, g.D]);
+        const targetLabel = compactProblem ? { dx: -10, dy: 34, leaderAnchor: target, leader: true } : { dy: 3 };
+        if (pk.kind === 0) { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${18 * pk.c}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: compactProblem ? 60 : 54 }); T(b, target, 'x', { size: 17, color: 'amber', ...targetLabel }); }
+        else { T(b, target, String(pk.c), { size: 16, color: 'amber', ...targetLabel }); T(b, pt((g.B.x + g.C.x) / 2, 0), '△ABC의 넓이 x', { size: phone(b) ? 13 : 15, color: 'amber', dy: compactProblem ? 60 : 54 }); }
       } else {
         const sd = (p, t, col, size, dy, dir) => T(b, p, t, { size, color: col, dx: dir * (textW(t, size) / 2 + 12), dy });
         const fz = phone(b) ? 12 : 14;
@@ -259,7 +262,7 @@
       }
       [[g.A, 'A'], [g.B, 'B'], [g.C, 'C']].forEach(([p, nm]) => vtx(b, p, cen, nm, { size: 17, gap: 12 }));
       b.point(g.D, { color: 'ink', r: 4.2 }); T(b, g.D, 'D', { dy: 17, size: 17 });
-      b.point(g.G, { color: 'sky', r: 5 }); T(b, g.G, 'G', { dx: 14, dy: 10, size: 16, color: 'sky' }); b.point(g.Gq, { color: 'green', r: 5 }); T(b, g.Gq, 'G′', { dx: -16, dy: 12, size: 16, color: 'green' });
+      b.point(g.G, { color: 'sky', r: 5 }); T(b, g.G, 'G', { dx: 14, dy: compactProblem ? 0 : 10, size: 16, color: 'sky' }); b.point(g.Gq, { color: 'green', r: 5 }); T(b, g.Gq, 'G′', { dx: compactProblem ? 18 : -16, dy: compactProblem ? 0 : 12, size: 16, color: 'green' });
       dragA(b, s, g, C);
       if (C.txt && !prob) {
         const msg = st >= 3 ? `△G′BD = △G′BC ÷ 2 = ${M.S9} ÷ 2 = ${M.S18}  (△ABC의 18분의 1)` : st >= 2 ? `△G′BC = △GBC ÷ 3 = ${M.S3} ÷ 3 = ${M.S9}` : st >= 1 ? `△GBC = △ABC ÷ 3 = ${M.S3}` : '△ABC → G → △GBC → G′';

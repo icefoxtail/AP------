@@ -53,7 +53,8 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E } = M, st = cx.step, quad = [A, B, C, D], cen = pt(L2(M) / 2, 0);
-      fit(b, { x0: -0.5, x1: M.L + 3.4, y0: -4.4, y1: 5.4 }, { t: 30, b: cx.problem ? 88 : 72, l: 40, r: 40 });
+      const compactProblem = cx.problem && b.W < 560;
+      fit(b, compactProblem ? bboxOf([A, B, C, D, E]) : { x0: -0.5, x1: M.L + 3.4, y0: -4.4, y1: 5.4 }, compactProblem ? { t: 26, b: 54, l: 36, r: 36 } : { t: 30, b: cx.problem ? 88 : 72, l: 40, r: 40 });
       fillPoly(b, quad, 'sky', 0.1); poly(b, quad, 'ink', 3.4);
       line(b, A, C, 'green', 3, { dash: [8, 5] });
       const showE = cx.problem || cx.review ? st >= 2 || cx.problem : true;
@@ -62,7 +63,7 @@
       if (cx.problem || st >= 4 || (!cx.review)) poly(b, abe, 'amber', 3, { dash: [10, 6], alpha: 0.9 });
       if (cx.problem) {
         const k = M.K;
-        const cap = (str, col) => T(b, pt(M.L / 2 + 1, M.h1), str, { dy: 58, size: b.W < 560 ? 15 : 17, color: col, weight: 800 });
+        const cap = (str, col) => T(b, pt(M.L / 2 + 1, M.h1), str, { dy: compactProblem ? 40 : 58, size: b.W < 560 ? 15 : 17, color: col, weight: 800 });
         if (k === 0) { aTag(b, [A, B, C], M.S1, 'sky'); T(b, acdAt(M), `${M.S2}`, { size: 16, color: 'sky', weight: 800 }); cap('△ABE의 넓이 = x', 'rose'); }
         else if (k === 1) { T(b, acdAt(M), `${M.S2}`, { size: 16, color: 'sky', weight: 800 }); cap('△ACE의 넓이 = x', 'rose'); }
         else { aTag(b, [A, B, C], M.S1, 'sky'); T(b, acdAt(M), 'x', { size: 20, color: 'rose', weight: 800 }); cap(`△ABE의 넓이 = ${M.tot}`, 'amber'); }
