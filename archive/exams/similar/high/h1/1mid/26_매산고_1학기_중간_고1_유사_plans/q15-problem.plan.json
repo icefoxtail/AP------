@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "교점의 $x$좌표는 $1, 6$이다",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      0.4,
+      7.6
+    ],
+    "viewport": [
+      -1,
+      9,
+      -3,
+      13
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "1",
+              "1"
+            ]
+          }
+        ],
+        "intersectionX": [
+          "1",
+          "6"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 11
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        1,
+        6
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "6",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "GA",
+          "from": "A",
+          "axis": "x"
+        },
+        {
+          "id": "GB",
+          "from": "B",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "hiddenPointNames": [
+    "V"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "이차함수 y=f(x)의 그래프와 직선 y=g(x)가 x좌표가 1, 6인 두 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "q15-S1",
+      "condition": "이차함수 y=f(x)의 그래프와 직선 y=g(x)가 x좌표 1, 6인 두 점에서 만난다",
+      "mappedTo": "graphPlan.pieces, graphPlan.referenceCurves"
+    }
+  ],
+  "newVisualInformation": [
+    "f와 g의 그래프 모양과 두 교점의 x좌표 1, 6의 위치를 보여 준다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고1_유사/q15.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q15-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q15-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q15-problem.svg"
+  }
+}

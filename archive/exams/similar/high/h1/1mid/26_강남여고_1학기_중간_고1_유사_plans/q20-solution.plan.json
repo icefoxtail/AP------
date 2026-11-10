@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "11000",
+      "1200",
+      "-200"
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      0,
+      14000
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        6
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 12800
+      }
+    ],
+    "applicationAxes": true,
+    "axisVariable": "x",
+    "axisTickValues": {
+      "x": [
+        2,
+        4
+      ],
+      "y": [
+        2000,
+        4000,
+        6000,
+        8000
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "x는 판매가격을 4500원에서 100원씩 올린 횟수이고 y는 하루 이익(원)이다. x=3일 때 이익이 12800원으로 최대이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "I(x)=-200(x-3)^2+12800이고 x=3일 때 최대이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "올린 횟수에 따른 하루 이익이 x=3에서 최대 12800원임을 보여 준다."
+  ],
+  "sourceQuote": "$x=3$일 때 이익이 $12800$원으로 최대이다",
+  "assetPath": "assets/images/26_강남여고_1학기_중간_고1_유사/q20-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q20-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q20-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q20-solution.svg"
+  }
+}

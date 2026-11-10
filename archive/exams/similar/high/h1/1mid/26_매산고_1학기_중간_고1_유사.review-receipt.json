@@ -1,0 +1,284 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_매산고_1학기_중간_고1_유사",
+  "candidateJsPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사.meta-q01-q20.json",
+  "candidateGitBlobSha1": "20df8eacc4a591d919f4e649a165a2d0c7733b5e",
+  "reviewTimestamp": "2026-11-10T20:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 20,
+    "answerMatches": 19,
+    "answerMismatches": 1,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rv/blind_frozen.json (세션 scratchpad, 미커밋)",
+    "method": "학생에게 보이는 필드(content, choices, Q15 문제 그림)만 덤프해 sympy/python으로 20문항을 풀고 동결한 뒤 저장된 answer/solution/meta/원본을 열어 대조.",
+    "disclosure": "불일치 1건(Q18)은 검수자 첫 풀이 실수: 두 포물선의 교점 C(-1,3)·D(2,6) 중 t=3(점 C)에서 교점이 3개가 되는 것을 놓치고 t=6만 제외했다. 저장 답을 본 뒤 numpy 열거로 t=3, t=6, t=7에서 교점 3개, 2<t<7의 나머지에서 4개임을 확인해 저장 답(2<t<3 또는 3<t<6 또는 6<t<7)이 맞음을 확정했다. 후보 문항 결함이 아니므로 수정 없음. 따라서 하네스가 blindFirstPass 불일치 1건을 오류로 표시할 수 있으나 정직한 기록을 유지한다.",
+    "frozenAnswers": {
+      "1": "④",
+      "2": "③",
+      "3": "①",
+      "4": "⑤",
+      "5": "②",
+      "6": "④",
+      "7": "①",
+      "8": "③",
+      "9": "②",
+      "10": "⑤",
+      "11": "①",
+      "12": "③",
+      "13": "②",
+      "14": "⑤",
+      "15": "④",
+      "16": "36",
+      "17": "15",
+      "18": "2<t<6 또는 6<t<7",
+      "19": "-21",
+      "20": "-2/3"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "A-B=-x^3+3x^2-7x+10, x의 계수 -7 (sympy 확인) -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "우변 전개 2x^2+5x+2, a+b+c=9 (x=1 대입 일치) -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "27x^3-64y^3=(3x)^3-(4y)^3=(3x-4y)(9x^2+12xy+16y^2), 보기 ①만 일치 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "(x-2)^2+1, [0,3]에서 최소 f(2)=1, 최대 f(0)=5, 합 6 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "p(3)=54=R, p(2)=22=-2Q(2)+54 -> Q(2)=16, 합 70 (sympy div 확인) -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "x=2024로 치환, 2021=x-3, (x+5)(x^2-4)에 x=3 대입 8*5=40 (정수 계산 40) -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "p(4)=0에서 a=-1, p=(x-4)(x^2+3x+5) (D=-11<0, 실수 범위 환원 불가), f=x-4,g=x^2+3x+5, f(1)+g(1)=-3+9=6 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "ㄱ |z1+2|^2 실수 참, ㄴ z1=1+i,z2=3+i 반례 거짓, ㄷ w=z1*conj(z2)=conj(w)이므로 실수 참 -> ㄱ,ㄷ ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "sqrt(a)sqrt(b)=-sqrt(ab)이면 a<0,b<0; ㄱ D=a^2-4b>0, ㄴ D=4-4ab와 ㄷ D=1-4ab는 ab가 크면 음수(a=b=-2, a=b=-1 반례), ㄹ D=25+4ab>0 -> ㄱ,ㄹ ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "D=(2m-5)^2-4(m^2-3m+3)=13-8m>=0 -> m<=13/8, 최댓값 13/8 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "2x^2+(k-1)x+4=0 중근 (k-1)^2=32, k=1±4sqrt2, 곱 1-32=-31 (sympy 확인) -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "z=(3x^2+x-2)+(x^2-3x)i, z^2 순허수: a^2=b^2, ab!=0; a=b이면 x^2+2x-1=0(합 -2), a=-b이면 2x^2-x-1=0(x=1,-1/2), 합 -3/2 (sympy 해 4개 확인) -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "p^2=9q^2, pq=-6, p<0 -> p=-3sqrt2,q=sqrt2, a=2sqrt2,b=-6, a^3-b^3=16sqrt2+216 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "D/4=14a^2-40>0 -> a>=2, alpha^2+beta^2=46a^2-80, a=2에서 104 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "f-g=-(x-1)(x-6), 꼭짓점 (7/2,25/4), 4*7/2+8*25/4=64 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 16,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "36",
+      "blindMatch": true,
+      "blindDerivation": "x^3-1/x^3=(x-1/x)^3+3(x-1/x)=27+9=36 (두 근 대입 sympy 확인)"
+    },
+    {
+      "qid": 17,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "15",
+      "blindMatch": true,
+      "blindDerivation": "z=(1+i)/sqrt2, p=z^n(z^2+1)=sqrt2 z^(n+1), z^k 실수이면 4|k, n=3,7,...,59 -> 15 (n=1..60 수치 열거 15개)"
+    },
+    {
+      "qid": 18,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "2<t<6 또는 6<t<7",
+      "blindMatch": false,
+      "blindDerivation": "1차 풀이는 2<t<6 또는 6<t<7 (t=3에서 두 곡선이 점 (-1,3)을 공유하는 것을 놓침, 검수자 실수). 대조 후 수치 열거로 t=3에서 교점 3개 확인, 저장 답 2<t<3 또는 3<t<6 또는 6<t<7이 맞음"
+    },
+    {
+      "qid": 19,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "-21",
+      "blindMatch": true,
+      "blindDerivation": "f=a(x^3-x)+2x-1+r, ω^3=1로 f(ω)=(a+r-1)+(2-a)ω, 허수부 비교 a=3, 실수부 r=2, f=3x^3-x+1, f(-2)=-21 -> -21"
+    },
+    {
+      "qid": 20,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "-2/3",
+      "blindMatch": true,
+      "blindDerivation": "f=(x-h)^2+k, 근 3개는 k<0이고 -2f(t)=k일 때만, t=h±sqrt(-3k/2)=0,10 -> h=5,k=-50/3, f(9)=16-50/3=-2/3 (t 스캔으로 t=0,10만 3개 확인)"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "20 vs 20",
+    "pointsSum": "100 vs 100 (원본 파일에 배점 필드가 없어 합만 확인; Q7 [4.3점]만 원본 표기와 일치, 나머지 배점은 생성자 분할)",
+    "questionTypes": "MC 1-15, 단답형 16-18, 서술형 19-20 모두 원본과 같은 구성",
+    "notes": [
+      "Q8: 원본 ㄴ·ㄷ(거짓)에서 유사는 ㄱ·ㄷ 참/ㄴ 거짓 구성으로 켤레복소수 성질 판정형 유지.",
+      "Q9: 원본 sqrt(b)/sqrt(a)=-sqrt(b/a)(a>0,b<0)에서 유사는 sqrt(a)sqrt(b)=-sqrt(ab)(a<0,b<0)로 부호 판정형 유지, 풀이 구조 동일.",
+      "Q10: 원본 최솟값에서 유사는 최댓값(m<=13/8)으로 방향만 달라졌으나 판별식 구조 동일.",
+      "Q17: 원본 12주기(30도)에서 8주기(45도)로 바뀌어 난이도 유사.",
+      "Q18·Q20: 구조(교점 일치 제외, 중근 조건) 동일, 수치·형태 변경. Q20은 원본 f(t)/2 계수가 2f(t)로 바뀌어 같은 경우분석.",
+      "모든 문항 정답 값이 원본 정답과 다르다(암기 불가)."
+    ]
+  },
+  "answerDistribution": {
+    "①": 3,
+    "②": 3,
+    "③": 3,
+    "④": 3,
+    "⑤": 3,
+    "note": "MC 1-15, max-min=0"
+  },
+  "mathReview": "20문항 전수 블라인드 풀이 후 저장 해설을 끝까지 읽고 논리·중간계산·교육과정(2022 개정 공통수학1) 확인. 객관식 15/15 일치, 단답 Q16·Q17 일치, 서술형 Q19·Q20 일치, Q18은 검수자 첫 풀이 실수 후 수치 열거로 저장 답 확정. 보기 5지 유일 정답. Q7은 f,g가 실계수·차수 1 이상이라 f=x-4,g=x^2+3x+5로 유일. Q12 네 근 모두 ab!=0 확인. Q20은 해설에 '공통근이 있으면 두 방정식이 같아져 근 2개 이하' 단계가 빠져 있어 추가.",
+  "reviewerEdits": [
+    {
+      "qid": 18,
+      "kind": "해설",
+      "change": "해설에 f(x)=x^2+2, g(x)=-x^2+2x+6과 꼭짓점 P(0,2)를 정의하는 줄 추가(그림의 f(x), g(x), P 라벨이 해설 글에서 정의되지 않았음)."
+    },
+    {
+      "qid": 20,
+      "kind": "해설",
+      "change": "경우 분석의 빠진 단계(두 방정식이 공통근을 가지면 f(t)=0이고 두 방정식이 같아져 조건 불성립)를 추가."
+    },
+    {
+      "qid": 15,
+      "kind": "해설 가로폭",
+      "change": "긴 $...$ 한 줄을 두 줄로 분리."
+    },
+    {
+      "qid": 16,
+      "kind": "해설 가로폭",
+      "change": "긴 $...$ 한 줄을 두 줄로 분리."
+    },
+    {
+      "qid": 19,
+      "kind": "메타",
+      "change": "crossConceptKeys의 CC_COMPLEX_CONJUGATE_ROOT를 CC_CUBIC_OMEGA_PROPERTIES로 교체(최종 풀이는 켤레근이 아니라 ω^3=1, ω^2+ω+1=0을 사용). JS와 meta 양쪽 및 metaRationale 반영."
+    },
+    {
+      "all": "JS blob 변경에 따라 meta expectedSourceBlobSha1을 새 blob으로 갱신."
+    }
+  ],
+  "metaReview": {
+    "jsMetaConsistency": "20문항 JS의 단원·소단원·개념군·PT·TPL·크로스개념·조건·통합패턴·level·difficultyBucket·sourceQid·variationType·RPM 레코드가 meta와 일치(불일치 0; Q19 수정 후 재확인). expectedSourceBlobSha1=JS blob.",
+    "keyExistence": "PT/TPL/CC/COND 키 전수를 canonical packs/concepts/condition_registry와 대조: canonical 키 68종 실재, 누락 0. RPM 레코드는 crosswalks/rpm-primary-v1.0/high1.json의 rpmPath·단원·소단원과 20/20 일치. Q6·Q7·Q19는 크로스워크 행에 PT/TPL 바인딩이 없어(RPM_ONLY/FAMILY) 생성자가 구조에 맞는 canonical PT/TPL을 선택 — 실재 확인.",
+    "coverage": "standardCourse/curriculum/courseKey/단원/소단원/개념군/RPM L1-L4/recordId/PT/TPL/CC/COND(빈 배열 포함)/통합패턴/level/difficultyBucket/sourceQid/variationType/provenance 각 20/20. EVIDENCE_DEBT 0, aliasProposals 0.",
+    "newExtensionKeys": "EXT-TPL-FACTOR-THEOREM-COEFFICIENT-THEN-FACTOR-DECOMPOSITION 1개(Q7). parent PT_H1_FACTOR_THEOREM이 h1-foundation taxonomy에 실재하며 이 PT 아래 canonical TPL이 0개임을 확인. 기존 extensions/similar-high 전체 및 canonical에 의미 중복 없음. 필수 필드 전부 있고 registry sha256이 meta registryChanges와 일치. 재사용 확장 키 0개. 하네스는 이 EXT-TPL을 'unregistered templateKey'로 표시하나 지시상 도구 한계로 결함 아님.",
+    "levelBucket": "원본과 level 20/20 동일, difficultyBucket은 독립 판정(1~4)."
+  },
+  "visualReview": {
+    "problemFigures": "Q15만 문제 그림(piecewise-polynomial-spike-v1, 엔진 산출 바이트=연결 자산 일치). PNG 확인: 순백 배경, 교점 x좌표 1, 6 점선, 정답 값 노출 없음. 다만 곡선 이름 라벨 g(x)가 포물선 안쪽 허공에, f(x)가 x축 눈금 1 아래에 놓여 어느 곡선 이름인지 모호(문제 풀이는 발문 식으로 가능). 해당 capability는 nameLabel을 지원하지 않아 재렌더로 개선 불가(PIECEWISE_POLY_REFERENCE_CURVES_INVALID).",
+    "solutionFigures": "Q4, Q10, Q11, Q14, Q15, Q18, Q20 7개를 PNG로 확인: 좌표·라벨이 해설 값과 일치, 겹침·잘림 없음, 플랜 sourceQuote 길이 19~39자, caption·engineEvidence 파일·바이트 일치. SVG 전부 role=img, title/desc 있음, raw LaTeX 없음. Q18 그림의 f(x)·P 라벨은 해설 글에 정의를 추가해 보완.",
+    "planAudit": "40개 plan 모두 유효 JSON, 문제 plan 19개 EXEMPT+사유, 활성 plan 8개(Q4·10·11·14·15·18·20 해설, Q15 문제)."
+  },
+  "harness": {
+    "draftPhase": "NOT_RUN (strict만 실행)",
+    "strict": "node tools/harness/verify_similar_exam.mjs 26_매산고_1학기_중간_고1_유사: GATE_FAIL 4건 — (1) Q7 EXT-TPL 미등록(도구 한계, registry에 parent PT_H1_FACTOR_THEOREM과 정상 등록), (2~4) blindFirstPass 불일치 1건/answerMatches 19/Q18 blindMatch false(검수자 첫 풀이 실수를 정직하게 기록한 결과; 저장 답은 맞음). 그 외 오류 0, WARN RECEIPT_QUALIFIED_PASS 1건."
+  },
+  "NOT_RUN": [
+    "engine.html 실제 화면 렌더(PC·모바일): 헤드리스 Chrome이 '그림 준비 중 7/7'에서 끝나지 않아 캡처 실패(샌드박스 외부 접속 차단 추정)",
+    "KaTeX 로컬 파싱은 실행: 696개 수식 오류 0",
+    "main_merge_master.py 운영병합(지시상 push 금지)"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 15,
+      "qid_ref": "26_매산고_1학기_중간_고1_유사#15",
+      "kind": "visual-problem-figure",
+      "reason": "문제 그림의 곡선 이름 라벨 g(x)·f(x) 위치가 모호함(g(x)가 포물선 안쪽, f(x)가 눈금 1 아래). 발문이 f=-x^2+ax+b(위로 볼록), g=mx+n(직선)으로 정의하고 교점 x좌표를 글로 주므로 풀이에는 지장 없음. 엔진 capability가 곡선 이름 지시선을 지원하지 않아 재렌더 불가.",
+      "severity": "low",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 19/20 일치(불일치 1건은 검수자 실수, 수치 열거로 저장 답 확정), 해설 보강 2건·가로폭 분리 2건·메타 키 1건 수정, 새 확장 키 1개 정상, 문제 그림 라벨 모호성 low 부채 1건."
+}
