@@ -41,7 +41,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 원주각 ADC는 파란색 42도, 중심각 BOC는 주황색 48도이고 호 BC도 주황색 48도, 각 AEB는 초록색 x이고 그것이 보는 호 AB는 초록색 36도로 표시되어 있다.",
+    "solutionImageCaption": "파란색 원주각 ADC=42°가 보는 호 AC는 그 두 배인 84°이고, 주황색 중심각 BOC=48°가 보는 호 BC는 48°이므로 호 AB=84°−48°=36°이다. 초록색 각 AEB(x)는 호 AB를 보는 원주각이다. 정답은 18°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -54,7 +58,7 @@ window.questionBank = [
       "$\\dfrac92\\rm\\,cm$"
     ],
     "answer": "④",
-    "solution": "중심 $O$에서 현 $BC$에 수선 $OM$을 내리면 현의 수직이등분선 성질로\n$BM=\\dfrac{BC}{2}=\\dfrac52$이다.\n\n그림처럼 $\\angle BOM=\\angle A$이므로 직각삼각형 $OBM$에서\n$\\sin A=\\dfrac{BM}{OB}=\\dfrac{\\frac{5}{2}}{R}$이다.\n\n주어진 $\\sin A=\\dfrac58$을 대입하면\n$\\dfrac58=\\dfrac{5}{2R}$,\n$10R=40$,\n$R=4$이다.\n\n따라서 원 $O$의 반지름은 $4\\rm\\,cm$이다.\n정답은 ④이다.\n<div class=\"sol-visual\"><svg viewBox=\"0 0 320 200\" width=\"320\" height=\"200\" role=\"img\" aria-label=\"원 O에서 현 BC에 내린 수선 OM과 직각삼각형 OBM\"><circle cx=\"160\" cy=\"92\" r=\"65\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"119.4\" y1=\"142.8\" x2=\"200.6\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"119.4\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"200.6\" y2=\"142.8\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"160\" y1=\"92\" x2=\"160\" y2=\"142.8\" stroke=\"#167d9a\" stroke-width=\"2.5\"/><polyline points=\"160,134.8 152,134.8 152,142.8\" fill=\"none\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"151\" y=\"82\" font-size=\"14\">O</text><text x=\"109\" y=\"155\" font-size=\"14\">B</text><text x=\"203\" y=\"155\" font-size=\"14\">C</text><text x=\"164\" y=\"157\" font-size=\"14\" fill=\"#167d9a\">M</text><text x=\"171\" y=\"119\" font-size=\"13\" fill=\"#167d9a\">OM</text><text x=\"124\" y=\"121\" font-size=\"13\">R</text><text x=\"122\" y=\"176\" font-size=\"13\">BM=5/2</text></svg></div>",
+    "solution": "중심 $O$에서 현 $BC$에 수선 $OM$을 내리면 현의 수직이등분선 성질로\n$BM=\\dfrac{BC}{2}=\\dfrac52$이다.\n\n그림처럼 $\\angle BOM=\\angle A$이므로 직각삼각형 $OBM$에서\n$\\sin A=\\dfrac{BM}{OB}=\\dfrac{\\frac{5}{2}}{R}$이다.\n\n주어진 $\\sin A=\\dfrac58$을 대입하면\n$\\dfrac58=\\dfrac{5}{2R}$,\n$10R=40$,\n$R=4$이다.\n\n따라서 원 $O$의 반지름은 $4\\rm\\,cm$이다.\n정답은 ④이다.",
     "tags": [
       "도형",
       "원의 성질"
@@ -84,7 +88,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 삼각형 ABC가 내접해 있고 중심 O에서 현 BC에 수선 OM을 내린 그림. 각 BAC와 각 BOM은 같은 크기의 파란색 각 A이고, BM과 MC는 각각 2분의 5cm, 반지름 OB는 R로 표시되어 있다.",
+    "solutionImageCaption": "중심 O에서 현 BC에 수선 OM을 내리면 BM은 BC의 절반인 2분의 5cm이고, 중심각의 성질로 ∠BOM=∠A이다. 직각삼각형 OBM에서 sin A=(2분의 5)/R=8분의 5이므로 R=4이다. 정답은 4cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -127,7 +135,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에서 두 현 AC와 BD가 점 E에서 만나는 그림. 호 AB는 파란색 60도, 호 CD는 주황색 90도로 표시되어 있고, 각 DEC는 초록색 x이다.",
+    "solutionImageCaption": "호 AB는 원주의 6분의 1이므로 60°(파랑), 호 CD는 원주의 4분의 1이므로 90°(주황)이다. 원 안에서 두 현이 이루는 각 x는 마주 보는 두 호의 합의 절반이다. 정답은 75°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -170,7 +182,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 두 현 AB와 CD가 점 P에서 만나는 그림. 각 APD는 초록색 60도이고 호 AD는 파란색 3파이, 호 BC는 주황색 5파이로 표시되어 있다.",
+    "solutionImageCaption": "교차하는 두 현의 각 ∠APD=60°는 두 호 AD와 BC에 대응하는 중심각의 합의 절반이므로 두 중심각의 합은 120°이다. 따라서 두 호의 길이의 합 8π는 원주의 3분의 1이므로 8π=3분의 1×2πr에서 r=12이다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -213,7 +229,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 꼭짓점이 A, B, C, D, E인 오각형이 내접한 그림. 각 BAE는 파란색 80도, 각 EDC는 주황색 140도이고, 호 CE는 주황색 80도, 호 BC와 중심각 BOC는 초록색으로 표시되어 있다.",
+    "solutionImageCaption": "파란색 원주각 ∠BAE=80°가 보는 B에서 C, D를 지나 E까지의 호는 160°이다. 주황색 ∠EDC=140°가 보는 E에서 A, B를 지나 C까지의 큰 호는 280°이므로 호 CE는 360°−280°=80°이다. 따라서 호 BC=160°−80°=80°(초록)이고 중심각 ∠BOC는 호 BC와 같다. 정답은 80°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -226,7 +246,7 @@ window.questionBank = [
       "$4\\pi a$"
     ],
     "answer": "③",
-    "solution": "한 변을 이루는 두 꼭짓점을 $U,V$라 하자.\n$\\angle UPV=90^\\circ$이므로 탈레스 정리에 따라 $P$는 지름 $UV$인 원 위에 있다.\n\n그중 정사각형 바깥에 놓이는 자취는 각 변마다 반원 하나이다.\n반원 하나의 반지름은\n$r=\\dfrac a2$,\n길이는\n$\\pi r=\\dfrac{\\pi a}{2}$이다.\n\n네 변에서 생기는 반원의 길이를 모두 더하면\n$4\\cdot\\dfrac{\\pi a}{2}=2\\pi a$이다.\n\n따라서 점 $P$가 움직인 거리는 $2\\pi a$이고,\n정답은 ③이다.\n<div class=\"sol-visual\"><svg viewBox=\"0 0 250 230\" width=\"250\" height=\"230\" role=\"img\" aria-label=\"정사각형 네 변을 지름으로 하는 바깥쪽 반원 네 개\"><path d=\"M75 70 L155 70 L155 150 L75 150 Z\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M75 70 A40 40 0 0 1 155 70\" fill=\"none\" stroke=\"#167d9a\" stroke-width=\"2\"/><path d=\"M155 70 A40 40 0 0 1 155 150\" fill=\"none\" stroke=\"#167d9a\" stroke-width=\"2\"/><path d=\"M75 150 A40 40 0 0 0 155 150\" fill=\"none\" stroke=\"#167d9a\" stroke-width=\"2\"/><path d=\"M75 70 A40 40 0 0 0 75 150\" fill=\"none\" stroke=\"#167d9a\" stroke-width=\"2\"/><text x=\"66\" y=\"66\" font-size=\"13\">A</text><text x=\"62\" y=\"160\" font-size=\"13\">B</text><text x=\"158\" y=\"160\" font-size=\"13\">C</text><text x=\"158\" y=\"66\" font-size=\"13\">D</text><text x=\"82\" y=\"216\" font-size=\"13\">r = a/2</text></svg></div>",
+    "solution": "한 변을 이루는 두 꼭짓점을 $U,V$라 하자.\n$\\angle UPV=90^\\circ$이므로 탈레스 정리에 따라 $P$는 지름 $UV$인 원 위에 있다.\n\n그중 정사각형 바깥에 놓이는 자취는 각 변마다 반원 하나이다.\n반원 하나의 반지름은\n$r=\\dfrac a2$,\n길이는\n$\\pi r=\\dfrac{\\pi a}{2}$이다.\n\n네 변에서 생기는 반원의 길이를 모두 더하면\n$4\\cdot\\dfrac{\\pi a}{2}=2\\pi a$이다.\n\n따라서 점 $P$가 움직인 거리는 $2\\pi a$이고,\n정답은 ③이다.",
     "tags": [
       "도형",
       "도형의 이동"
@@ -256,7 +276,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 A, B, C, D인 정사각형의 각 변을 지름으로 하는 바깥쪽 반원 네 개가 파란색으로 그려져 있다. 아래쪽 반원 위의 한 점 P와 변 BC의 두 끝점 B, C를 이은 선분이 직각을 이루고, 한 변의 길이는 a이다.",
+    "solutionImageCaption": "이웃한 두 꼭짓점을 U, V라 하면 ∠UPV=90°이므로 P는 UV를 지름으로 하는 원 위에 있고, 정사각형 바깥에서는 변마다 반원 하나이다(파랑). 반지름이 2분의 a이므로 반원 하나의 길이는 2분의 πa이고 네 개를 더한다. 정답은 2πa이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -299,7 +323,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 꼭짓점이 A, B, C, D인 사각형이 내접하고 두 쌍의 변의 연장선이 점 E와 점 F에서 만나는 그림. 각 E는 파란색 36도, 각 F는 주황색 46도이고 각 ABC는 초록색 x이다. 호 ADC는 초록색 98도로 표시되어 있다.",
+    "solutionImageCaption": "점 E에서 호 AB−호 CD=2×36°=72°(파랑), 점 F에서 호 BC−호 AD=2×46°=92°(주황)이다. 두 식을 더하면 (호 AB+호 BC)−(호 CD+호 AD)=164°이고 네 호의 합이 360°이므로 호 ADC=98°이다. x는 호 ADC를 보는 원주각이므로 정답은 49°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -342,7 +370,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 접선 PQ가 점 T에서 접하는 그림. 현 TA와 AB는 길이가 같다는 눈금이 있고, 각 BTA는 파란색 25도, 삼각형 TAB의 각 A와 접선과 현이 이루는 각 PTB는 같은 크기의 주황색 각, 각 BPT는 초록색 40도, 각 PBT는 분홍색 x로 표시되어 있다.",
+    "solutionImageCaption": "TA=AB이므로 ∠TBA=∠BTA=25°이고 ∠TAB=180°−25°−25°=130°이다. 접선과 현이 이루는 각 ∠PTB는 호 TB를 보는 원주각 ∠TAB와 같은 130°이다. 삼각형 PBT에서 ∠PBT=180°−40°−130°이므로 정답은 10°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -385,7 +417,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 두 접선 PA, PB가 접점 A, B에서 반지름과 수직을 이루는 그림. 각 P는 파란색 64도, 중심각 AOB는 주황색, C가 보는 큰 호 AB는 초록색 244도이고, 각 PAC와 각 PBC는 분홍색과 보라색으로 표시되어 있다.",
+    "solutionImageCaption": "∠P=64°이고 접점에서 반지름과 접선이 수직이므로 ∠AOB=180°−64°=116°(주황)이다. 점 C가 보는 큰 호 AB는 360°−116°=244°(초록)이므로 ∠ACB=122°이다. 접선과 현이 이루는 각의 성질로 ∠PAC(분홍)+∠PBC(보라)는 ∠ABC+∠BAC와 같고, 삼각형 ABC의 내각으로 180°−122°이다. 정답은 58°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -428,7 +464,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 AC는 지름이고 직선 ET는 점 B에서 원에 접하며 현 AD는 접선 ET와 평행한 그림. 각 ABC는 직각, 각 CBT는 파란색 20도, 각 BAD와 각 DBT는 같은 초록색 70도, 각 EBD는 분홍색 x로 표시되어 있다.",
+    "solutionImageCaption": "AC가 지름이므로 ∠ABC=90°이고 ∠ABT=90°+20°=110°이다. AD∥ET이므로 ∠BAD=180°−110°=70°이고 접선과 현이 이루는 각의 성질로 ∠DBT=∠BAD=70°이다. E, B, T는 한 직선 위에 있으므로 ∠EBD=180°−70°이다. 정답은 110°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -470,7 +510,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 변량 1, 2, 2, 3, 4, 4, 5, 32를 수직선 위에 점으로 쌓은 점도표. 점 32만 주황색이고 중앙값 세로선은 점들이 모인 곳 한가운데에, 평균 세로선은 점들이 모인 곳보다 오른쪽 바깥에 있다.",
+    "solutionImageCaption": "자료 1, 2, 2, 3, 4, 4, 5, 32에서 큰 값 32가 평균을 6.625로 끌어올려 평균이 점들이 모인 곳에서 멀어지지만 중앙값은 3.5로 가운데에 남는다. 따라서 중앙값이 자료의 중심적인 경향을 더 잘 나타내는 자료는 큰 값 32가 들어 있는 이 자료이므로 정답은 이 자료이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -803,7 +847,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 학생 15명의 사회 점수와 과학 점수 산점도에 점선 y=x가 그려져 있다. 점선 아래쪽의 점은 주황색, 위쪽의 점은 파란색, 선 위의 점은 검정색으로 표시되어 있다.",
+    "solutionImageCaption": "사회 점수가 과학 점수보다 높은 학생은 점선 y=x의 아래쪽에 있는 주황색 점 6개이다. 전체 학생은 15명이므로 비율은 15분의 6이다. 정답은 5분의 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -846,7 +894,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 학생 15명의 사회 점수와 과학 점수 산점도에 사회 85점 이상 영역과 과학 90점 이상 경계가 표시되어 있다. 사회 85점 이상인 점 중 과학 90점 이상인 점은 주황색, 90점 미만인 점은 파란색이다.",
+    "solutionImageCaption": "사회 점수가 85점 이상인 학생은 8명이고, 그중 과학 점수가 90점 이상인 학생은 주황색 점 5명이다. 정답은 8분의 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -883,7 +935,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 꼭짓점이 A, B, C, D, E인 정오각형과 두 대각선 AC, BE가 점 F에서 만나는 그림. 호 BC와 호 AE는 같은 크기의 파란색 72도이고, 각 BFC는 초록색 x로 표시되어 있다.",
+    "solutionImageCaption": "정오각형에서 이웃한 두 꼭짓점이 보는 중심각은 360°÷5=72°이므로 호 BC와 호 AE는 각각 72°(파랑)이다. ∠BFC를 x라 하면 원 안에서 두 현이 만날 때 x는 마주 보는 두 호의 합의 절반이다. 정답은 72°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -920,7 +976,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 원 O와 점 C에서의 접선, 점 A에서 접선에 내린 수선의 발 H를 그린 문제 배치, 그리고 직각 꼭짓점을 왼쪽 아래에 두고 같은 방향으로 펼친 닮은 두 직각삼각형 ABC와 ACH. 빗변은 파란색, 짧은 변은 주황색, 긴 변은 초록색이며 AB는 12cm, AH는 9cm로 표시되어 있다.",
+    "solutionImageCaption": "AB가 지름이므로 ∠ACB=90°이고 AH⊥CT이므로 ∠AHC=90°이다. 삼각형 ABC와 삼각형 ACH는 닮음이고 대응변은 AB↔AC, BC↔CH, AC↔AH이다. AB:AC=AC:AH에서 AC²=12×9=108이고 직각삼각형 ACH에서 CH²=108−81=27이다. 정답은 (1) 삼각형 ABC와 삼각형 ACH, (2) 3√3cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

@@ -125,9 +125,9 @@ test('Recent DOM refetch preserves query focus, cursor, IME composition, errors,
 
   const failed = h.workspace.loadRecent();
   assert.equal(pending.length, 6);
-  pending[5].resolve({ ok: false, status: 502, json: async () => ({ error: 'Recent unavailable' }) });
-  await assert.rejects(failed, /Recent unavailable/);
-  assert.match(h.node('recent-assignments').innerHTML, /Recent unavailable/);
+  pending[5].resolve({ ok: false, status: 502, json: async () => ({ error: '출제 내역을 불러오지 못했습니다' }) });
+  await assert.rejects(failed, /출제 내역을 불러오지 못했습니다/);
+  assert.match(h.node('recent-assignments').innerHTML, /출제 내역을 불러오지 못했습니다/);
   assert.equal(h.workspace.getRenderCount(), 0);
   assert.equal(h.queryInput(), input);
   assert.equal(input.isConnected, true);
@@ -290,10 +290,10 @@ test('Current Recent assignment status failure is visible and preserves the last
     preventDefault() {}, stopPropagation() {},
   });
   assert.equal(h.workspace.state.recentSelectedAssignmentId, 'assignment-current-error');
-  pending.reject(new Error('current status unavailable'));
+  pending.reject(new Error('현재 출제 상태를 확인하지 못했습니다'));
   await click;
   assert.equal(h.workspace.state.openAssignment, sentinel);
-  assert.match(h.node('status').textContent, /current status unavailable/);
+  assert.match(h.node('status').textContent, /현재 출제 상태를 확인하지 못했습니다/);
   assert.equal(new URLSearchParams(h.ctx.location.search).get('assignment_id'), 'assignment-current-error');
 });
 
