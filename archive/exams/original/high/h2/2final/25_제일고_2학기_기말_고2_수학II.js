@@ -97,16 +97,16 @@ window.questionBank=[
       "$10$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q3-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: f(x)=x³−6x²+9x+4의 그래프. x=1에서 극댓값 M=f(1)=8, x=3에서 극솟값 m=f(3)=4를 점과 점선으로 표시했다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q3-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 그래프에서 (1,8)은 극대점, (3,4)는 극소점이다.",
+    "solutionImageSize": "full",
     "solution": "극댓값과 극솟값을 구하려면 도함수의 부호 변화를 살핀다.\n$f'(x)=3x^2-12x+9$\n$=3(x-1)(x-3)$\n\n$x<1$에서 $f'(x)>0$,\n$1<x<3$에서 $f'(x)<0$,\n$x>3$에서 $f'(x)>0$이다.\n따라서 $x=1$에서 극대, $x=3$에서 극소이다.\n\n$M=f(1)=1-6+9+4=8$\n$m=f(3)=27-54+27+4=4$\n$M-m=8-4=4$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
-    "solutionImageCaption": "M=8, m=4이므로 M−m=4, 정답은 ②이다."
+    "solutionImageCaption": "극댓값은 8, 극솟값은 4이므로 차는 4이다. 정답은 ②이다."
   },
   {
     "id": 4,
@@ -323,11 +323,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_수학II/q09.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q9-solution-v2.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q9-solution-v3.svg",
     "imageKind": "diagram",
-    "solutionImageAlt": "해설 그림: 최고차항 계수가 양수인 삼차함수 f의 그래프. x=1에서 x축을 지나고 x=10에서 x축에 접하며, x=4에서 극대이다. x가 4보다 작거나 10보다 클 때 증가, 4와 10 사이에서 감소한다. (예시 모양)",
-    "solutionImageCaption": "예: c=1/9인 모양. f(n)f′(n)≤0을 만족하는 자연수 n은 1, 4, 5, 6, 7, 8, 9, 10의 8개이다. 정답 ④",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "해설 그림: 예: c=1/9인 삼차함수의 그래프가 x=1에서 x축을 지나고 x=10에서 접한다. x=4에서 극대이며 증가·감소 구간이 보인다.",
+    "solutionImageCaption": "예: c=1/9인 모양에서 조건을 만족하는 자연수는 8개이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -390,16 +390,16 @@ window.questionBank=[
       "$12$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q11-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: t>0에서 k=-3(t-1)²+6의 그래프와 수평선 y=k. 꼭짓점은 (1,6)이고 t=0의 값 3은 제외되며, 3<k<6이면 수평선이 두 점에서 만난다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q11-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 예: 포물선 y=−3(t−1)²+6과 수평선 y=k(k=4). 꼭짓점은 (1,6)이고 t=0 경계의 높이는 3이며 그 시각은 제외된다.",
+    "solutionImageSize": "full",
     "solution": "두 점의 가속도가 같아지는 때를 찾으려면 위치를 각각 두 번 미분한다.\n$P$의 위치를 $p(t)$, $Q$의 위치를 $q(t)$라 하면\n$p''(t)=-6t^2+12t+6$\n$q''(t)=2k$이다.\n\n$p''(t)=q''(t)$에서\n$-6t^2+12t+6=2k$\n$k=-3t^2+6t+3$\n$=-3(t-1)^2+6$이다.\n\n$t>0$에서 포물선 $y=-3(t-1)^2+6$과 수평선 $y=k$가 서로 다른 두 점에서 만나야 한다.\n꼭짓점은 $(1,6)$이고, 제외되는 끝점 $t=0$의 함수값은 $3$이다.\n따라서 두 양의 교점이 생기는 조건은\n$3<k<6$이다.\n$k=3$에서는 한 교점이 $t=0$이므로 제외되고, $k=6$에서는 교점이 하나뿐이다.\n\n가능한 정수는 $k=4,5$이므로\n$4+5=9$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
-    "solutionImageCaption": "예: 3<k<6인 k의 수평선은 그래프와 t>0에서 두 점에서 만난다. 이때 정수 k는 4, 5이므로 합은 9이다. 정답 ②"
+    "solutionImageCaption": "예: k=4에서 두 양의 해가 보인다. 모든 양의 교점이 두 개가 되는 범위는 3<k<6이며, 가능한 정수의 합은 9이다. 정답 ②."
   },
   {
     "id": 12,
@@ -505,8 +505,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_수학II/q14.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q14-solution.png",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q14-solution-v2.svg",
+    "imageKind": "diagram",
+    "solutionImageAlt": "해설 그림: 예: 포물선 y=9−x², y축, 직선 x=3과 수평선 y=k(예 k=5)가 보인다. S₁은 파랑, S₂는 주황으로 구분했다.",
+    "solutionImageCaption": "예: k=5인 그림이다. S₁=S₂이면 k/S₂=√3이므로 정답은 √3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -677,16 +680,16 @@ window.questionBank=[
       "$34$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q19-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원점 대칭인 f의 그래프(실선)와 구간 [t,t+1]에서의 최댓값 g(t)의 그래프(점선). x=−3/2부터 0까지 두 곡선 사이를 x=−1에서 나눠 S₁, S₂로 색칠했다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q19-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 원점 대칭인 f(x)의 그래프와 최댓값 함수 g(x)의 그래프. x=−3/2부터 0까지 두 곡선 사이를 x=−1에서 나눈 파란 S₁과 주황 S₂가 표시되어 있다.",
+    "solutionImageSize": "full",
     "solution": "원점 대칭인 함수는 $f(-x)=-f(x)$이다.\n$x\\ge0$에서 $f(x)=-x^2+2x=1-(x-1)^2$이므로\n$x<0$에서는\n$f(x)=-f(-x)=x^2+2x=(x+1)^2-1$이다.\n\n즉 $x=-1$에서 최솟값 $-1$, $x=1$에서 최댓값 $1$을 갖는다.\n구간 $[t,t+1]$의 위치에 따라 양 끝값 또는 $1$을 비교하여 최댓값함수 $g(t)$를 구한다.\n\n① $t\\le-\\dfrac32$: 왼쪽 끝의 값이 크므로\n$g(t)=f(t)=t^2+2t$이다.\n\n② $-\\dfrac32\\le t\\le-1$: 오른쪽 끝의 값이 크므로\n$g(t)=f(t+1)=(t+1)^2+2(t+1)$\n$=t^2+4t+3$이다.\n실제로 $f(t+1)-f(t)=2t+3\\ge0$이다.\n\n③ $-1\\le t\\le0$: 오른쪽 끝점이 $0$ 이상 $1$ 이하이므로\n$g(t)=f(t+1)=-(t+1)^2+2(t+1)$\n$=1-t^2$이다.\n\n④ $0\\le t\\le1$: 구간에 $x=1$이 포함되므로 $g(t)=1$이다.\n\n⑤ $t\\ge1$: $f$가 감소하므로 왼쪽 끝에서 최대,\n$g(t)=f(t)=-t^2+2t$이다.\n\n구하는 구간 $-\\dfrac32\\le x\\le0$에서 항상 $g(x)\\ge f(x)$이다.\n$x=-1$을 기준으로 나누어 넓이를 구한다.\n\n$S_1=\\displaystyle\\int_{-3/2}^{-1}\\{(x^2+4x+3)-(x^2+2x)\\}\\,dx$\n$=\\displaystyle\\int_{-3/2}^{-1}(2x+3)\\,dx$\n$=\\left[x^2+3x\\right]_{-3/2}^{-1}$\n$=-2-\\left(-\\dfrac94\\right)=\\dfrac14$이다.\n\n$S_2=\\displaystyle\\int_{-1}^{0}\\{(1-x^2)-(x^2+2x)\\}\\,dx$\n$=\\displaystyle\\int_{-1}^{0}(1-2x^2-2x)\\,dx$\n$=\\left[x-\\dfrac23x^3-x^2\\right]_{-1}^{0}$\n$=0-\\left(-1+\\dfrac23-1\\right)=\\dfrac43$이다.\n\n전체 넓이는\n$S=S_1+S_2=\\dfrac14+\\dfrac43=\\dfrac{19}{12}$이다.\n서로소인 자연수 $p=12$, $q=19$이므로\n$p+q=31$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
-    "solutionImageCaption": "파란 S₁=1/4, 주황 S₂=4/3이므로 넓이는 19/12이고 p=12, q=19이다. p+q=31이다. 정답 ②"
+    "solutionImageCaption": "파란 S₁=1/4, 주황 S₂=4/3이므로 전체 넓이는 19/12이고 p+q=31이다. 정답 ②."
   },
   {
     "id": 20,
@@ -712,7 +715,11 @@ window.questionBank=[
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: n=2일 때 h(x)=x³−3x의 그래프. x=1 경계의 y=−2에 닿은 뒤 x>1에서 증가하며, x=1은 제외된다.",
+    "solutionImageCaption": "예: n=2이면 h(x)>−2이고 목표값도 −2여서 경계 등호가 허용된다. 가능한 자연수 n은 2부터 7까지 6개이므로 정답은 6개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
