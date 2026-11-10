@@ -31,10 +31,13 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q1-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": ["CC_PYTHAGOREAN"]
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "solutionImageAlt": "해설 그림: 원의 중심 O에서 현 AB의 중점 M까지 수선을 그은 그림. 현의 절반 AM은 4cm, 반지름 OA는 6cm, 구하는 거리 OM은 d로 표시한 직각삼각형 OAM이 파란색으로 칠해져 있다.",
+    "solutionImageCaption": "막대 AB의 중점을 M, 접시의 중심을 O라 하면 OM은 AB에 수직이다. 직각삼각형 OAM에서 AM=4cm, OA=6cm이므로 피타고라스 정리로 OM을 구한다. 정답은 2√5cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -63,7 +66,7 @@ window.questionBank = [
     "answer": "③, ④",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.\n① AM=AB/2이므로 옳다.\n② CN=CD/2이므로 옳다.\n③ AB=CD에서 먼저 얻는 것은 AM=CN이다. 결론인 OM=ON을 먼저 쓸 수 없으므로 옳지 않다.\n④ OA와 같은 길이는 같은 원의 반지름 OC이므로 OA=CN은 옳지 않다.\n⑤ AM=CN, OA=OC이고 두 삼각형은 직각삼각형이므로 RHS 합동으로 설명할 수 있어 옳다.\n따라서 정답은 ③, ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q2.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q2-solution-v2.svg",
     "imageSize": "tall",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -71,7 +74,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": []
+    "crossConceptKeys": [],
+    "solutionImageAlt": "해설 그림: 왼쪽에는 문제 배치 그대로 원 O의 두 현 AB, CD와 수선 OM, ON이 있다. 오른쪽에는 합동인 두 직각삼각형 OAM과 OCN을 떼어 같은 방향으로 나란히 놓았다. 현의 절반 AM, CN에는 같은 초록 눈금, 빗변 OA, OC에는 같은 주황 눈금이 있고 M, N에는 직각 표시가 있으며 두 삼각형은 같은 파란색으로 칠해져 있다.",
+    "solutionImageCaption": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 AB=CD에서 AM=CN이다. OA, OC는 같은 원의 반지름이고 두 삼각형 OAM, OCN은 직각삼각형이므로 RHS 합동이다. 결론인 OM=ON은 먼저 쓸 수 없으므로 ③은 옳지 않고, OA와 같은 길이는 OC이므로 ④도 옳지 않다. 정답은 ③, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -99,14 +105,17 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 원의 중심에서 같은 거리에 있는 두 현의 길이는 같다.\n두 현 $\\overline{AB}$와 $\\overline{AC}$에 이르는 거리가 같으므로 $\\overline{AB}=\\overline{AC}$이다.\n따라서 $\\triangle ABC$는 이등변삼각형이고 $\\angle B=\\angle C$이다.\n$\\angle B=\\angle C=\\dfrac{180^\\circ-52^\\circ}{2}=64^\\circ$이므로 $x=64^\\circ$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q3.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q3-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": []
+    "crossConceptKeys": [],
+    "solutionImageAlt": "해설 그림: 원 O에 삼각형 ABC가 내접한 그림. 중심 O에서 두 변 AB, AC에 내린 수선 OM, ON에 초록색 같은 길이 눈금이 있고, 두 변 AB, AC에는 주황색 같은 길이 눈금이 있다. 꼭짓점 A의 각은 52도이고 밑각 B, C는 같은 파란색으로 표시되어 있으며 B에는 x가 쓰여 있다.",
+    "solutionImageCaption": "중심 O에서 두 현 AB, AC까지의 거리가 같으므로 두 현의 길이가 같아 AB=AC이다. 삼각형 ABC는 이등변삼각형이므로 ∠B=∠C이고 ∠B=(180°−52°)÷2로 구한다. 정답은 64°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -138,10 +147,13 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q4-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": ["CC_PYTHAGOREAN"]
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "solutionImageAlt": "해설 그림: 원 O의 위쪽 현 AB와 오른쪽 현 CD가 있는 그림. 중심 O에서 AB에 내린 수선 OM은 8cm, 반지름 OD는 10cm, AM은 6cm로 표시되어 있다. 두 현에는 같은 주황색 눈금, 반지름 OA, OD에는 같은 초록색 눈금, 중심에서 두 현에 내린 수선 OM, ON에는 같은 파란색 눈금이 있고 삼각형 OCD가 분홍색으로 칠해져 있다.",
+    "solutionImageCaption": "직각삼각형 OAM에서 OA=10cm, OM=8cm이므로 AM=6cm이고 AB=12cm이다. AB=CD이므로 CD=12cm이고 중심에서 CD까지의 거리도 8cm이다. 삼각형 OCD의 밑변 CD=12cm, 높이 8cm로 넓이를 구한다. 정답은 48cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -169,14 +181,17 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n그림에서 $AP=AR=9\\rm\\,cm$, $BQ=BP=7\\rm\\,cm$, $CR=CQ=12\\rm\\,cm$이다.\n따라서 $AB=9+7=16$, $BC=7+12=19$, $CA=12+9=21$이다.\n둘레는 $16+19+21=56\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q5.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q5-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
-    "crossConceptKeys": []
+    "crossConceptKeys": [],
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 P, Q, R을 나타낸 그림. 꼭짓점 A에서 접점까지의 두 선분은 9cm로 파란색 눈금, 꼭짓점 B에서 접점까지의 두 선분은 7cm로 주황색 눈금, 꼭짓점 C에서 접점까지의 두 선분은 12cm로 초록색 눈금이 있다.",
+    "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 AP=AR=9cm, BP=BQ=7cm, CQ=CR=12cm이다. 삼각형의 세 변은 AB=16cm, BC=19cm, CA=21cm이므로 둘레는 세 변의 합이다. 정답은 56cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -208,9 +223,12 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q6-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB와 접점 A, B를 나타낸 그림. PA는 6cm이고 각 APB는 60도이며 점선 PO가 이를 두 개의 30도로 나눈다. 반지름 OA는 2√3cm이고 접점에서 반지름과 접선이 직각을 이룬다. 각 AOB는 120도이고 부채꼴 OAB가 분홍색으로 칠해져 있다.",
+    "solutionImageCaption": "접점에서 반지름과 접선은 수직이고 PA=PB=6cm이다. OP가 ∠APB를 이등분하므로 ∠APO=30°이고, 직각삼각형 AOP에서 OA=6tan30°=2√3cm이다. 사각형의 네 각의 합이 360°이므로 ∠AOB=120°이고 부채꼴의 넓이를 구한다. 정답은 4πcm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -242,10 +260,13 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q7-solution-v2.svg",
     "problemTypeKey": "PT_TWO_CIRCLES",
     "templateKey": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
-    "crossConceptKeys": []
+    "crossConceptKeys": [],
+    "solutionImageAlt": "해설 그림: 왼쪽에는 정사각형 안에 반지름 1cm인 큰 원 4개와 가운데 작은 원 1개가 있고, 왼쪽 아래 큰 원의 중심에서 가운데 점까지의 선분이 파란색과 주황색으로 나뉘어 있다. 오른쪽에는 그 선분을 곧게 펴서 큰 원의 반지름 1cm는 파란색, 작은 원의 반지름 r은 주황색, 전체 길이는 √2cm로 나타내었다.",
+    "solutionImageCaption": "큰 원 4개의 중심을 이으면 한 변이 2cm인 정사각형이고, 큰 원의 중심에서 가운데 점까지의 거리는 그 대각선의 절반 √2cm이다. 큰 원과 작은 원이 접하므로 같은 거리는 1+r이어서 1+r=√2이다. 정답은 (√2−1)cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -273,13 +294,16 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 지름에 대한 원주각은 $90^\\circ$이고, 원주각의 크기는 대응하는 호의 절반이다.\n$\\angle ACD=50^\\circ$이므로 호 $AD$의 크기는 $100^\\circ$이다.\n$AC$가 지름이므로 호 $ADC$의 크기는 $180^\\circ$이고, 따라서 호 $DC$의 크기는 $180^\\circ-100^\\circ=80^\\circ$이다.\n$\\angle x=\\angle DBC$는 호 $DC$에 대한 원주각이므로 $x=40^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q8.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q8-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImageAlt": "해설 그림: 원 O에서 지름 AC와 현 AB, BC, BD, CD를 그은 그림. 각 ACD는 50도로 파란색이며 그것이 보는 호 AD는 파란색으로 100도라고 표시되어 있다. 각 DBC는 x로 주황색이며 그것이 보는 호 DC는 주황색으로 80도라고 표시되어 있다.",
+    "solutionImageCaption": "AC가 지름이므로 호 ADC는 180°이다. ∠ACD=50°는 호 AD에 대한 원주각이므로 호 AD=100°이고, 호 DC=180°−100°=80°이다. ∠x는 호 DC에 대한 원주각이므로 호의 절반이다. 정답은 40°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -314,7 +338,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q9-solution.svg"
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 의자 O를 중심으로 보검 B와 서준 S를 지나는 원 그림. 중심각 BOS는 80도이다. 원 위의 지수 J에서 B와 S를 본 각은 40도이고, 원 안의 지민 M에서는 42도, 원 밖의 하영 H에서는 38도로 각각 다른 색으로 표시되어 있다.",
+    "solutionImageCaption": "의자 O, 보검 B, 서준 S, 지수 J, 지민 M, 하영 H이다. 중심각 ∠BOS=80°이므로 호 BS에 대한 원주각은 40°이다. 지수의 각이 40°이므로 원 위에 있고, 지민의 각 42°는 40°보다 커서 원 안쪽, 하영의 각 38°는 40°보다 작아 원 바깥쪽에 있다. 정답은 ①, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -346,9 +373,12 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q10-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 P에서 원에 두 할선 PAB, PCD를 긋고, 두 현 AD, BC가 원 안의 점 Q에서 만나는 그림. 각 P는 40도, 각 BQD는 80도이다. 호 BD는 파란색으로 120도, 호 AC는 주황색으로 40도라고 표시되어 있고 각 x는 호 AC에 대한 원주각으로 주황색이다.",
+    "solutionImageCaption": "호 BD를 u, 호 AC를 v라 하면 원 밖의 각에서 u−v=80°, 원 안의 두 현의 각에서 u+v=160°이다. 두 식을 풀면 u=120°, v=40°이다. ∠x는 호 AC에 대한 원주각이므로 호의 절반이다. 정답은 20°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -376,13 +406,16 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 원주각은 대응하는 호의 절반이므로 주어진 두 각에서 호의 크기를 차례로 구한다.\n그림에서 $\\angle ADB=30^\\circ$이므로 호 $AB$의 크기는 $60^\\circ$이다. $\\wideparen{AB}=\\wideparen{BC}$이므로 호 $BC$도 $60^\\circ$이다.\n또 $\\angle DAC=67^\\circ$이므로 호 $DC$의 크기는 $134^\\circ$이다.\n따라서 나머지 호 $AD$의 크기는 $360^\\circ-(60^\\circ+60^\\circ+134^\\circ)=106^\\circ$이다.\n$\\angle ABD$는 호 $AD$에 대한 원주각이므로 $53^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q11.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q11-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 현 AD, AB, AC, BD를 그은 그림. 호 AB와 호 BC는 파란색으로 각각 60도이고 각 ADB는 30도로 파란색이다. 호 CD는 주황색으로 134도이고 각 DAC는 67도로 주황색이다. 호 AD는 초록색으로 106도이고 각 ABD는 x로 초록색이다.",
+    "solutionImageCaption": "∠ADB=30°이므로 호 AB=60°이고, 호 AB=호 BC이므로 호 BC도 60°이다. ∠DAC=67°이므로 호 DC=134°이다. 원 전체 360°에서 나머지 호 AD=106°이고 ∠ABD는 그 호에 대한 원주각이다. 정답은 53°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -410,11 +443,14 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 맞은각의 합이 180도이면 한 원에 내접한다. 높이의 발에서 생기는 직각을 이용한다.\n① AFHE: 두 맞은각이 각각 90도이므로 내접한다.\n② FBCE: 두 맞은각이 각각 90도이므로 내접한다.\n③ EHDC: 두 맞은각이 각각 90도이므로 내접한다.\n④ FDCE: 한 쌍의 맞은 직각이 만들어지지 않아 내접 조건이 성립하지 않는다.\n⑤ EABD: 두 맞은각이 각각 90도이므로 내접한다.\n따라서 정답은 ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q12.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q12-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q12-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 각 꼭짓점에서 대변에 내린 세 높이가 한 점 H에서 만나는 그림. 높이의 발 D, E, F에는 직각 표시가 있고, 삼각형이 세 개의 사각형으로 나뉘어 있다. 꼭짓점이 A, F, H, E인 사각형은 파란색, B, D, H, F인 사각형은 주황색, C, E, H, D인 사각형은 초록색이다.",
+    "solutionImageCaption": "높이의 발 D, E, F에서는 직각이 생기므로 꼭짓점이 A, F, H, E인 사각형과 E, H, D, C인 사각형은 마주 보는 두 각이 각각 90°로 합이 180°여서 원에 내접한다. F, B, C, E와 E, A, B, D도 두 점에서 같은 변을 직각으로 보므로 원에 내접하지만, F, D, C, E는 이런 직각 관계가 없어 내접하지 않는다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -442,13 +478,16 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 원에 내접하는 사각형의 맞은각의 합과 접선과 현이 이루는 각의 성질을 이용한다.\n사각형 $ABCD$가 원에 내접하므로 $\\angle DCB=180^\\circ-105^\\circ=75^\\circ$이다.\n$\\triangle DBC$에서 $\\angle DBC=40^\\circ$이므로 $\\angle BDC=180^\\circ-75^\\circ-40^\\circ=65^\\circ$이다.\n접선과 현 $BC$가 이루는 각 $\\angle CBE$는 현 $BC$에 대한 원주각 $\\angle BDC$와 같으므로 $65^\\circ$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q13.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q13-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D를 꼭짓점으로 하는 사각형과 대각선 BD, 점 B에서 원에 접하는 직선 BE를 나타낸 그림. 각 DAB는 105도 파란색, 맞은편 각 DCB는 75도 초록색, 각 DBC는 40도 분홍색이다. 각 BDC와 접선과 현이 이루는 각 CBE는 같은 크기로 주황색이며 각 CBE에는 x가 쓰여 있다.",
+    "solutionImageCaption": "원에 내접하는 사각형의 맞은각의 합은 180°이므로 ∠DCB=180°−105°=75°이다. 삼각형 DBC에서 ∠BDC=180°−75°−40°=65°이다. 접선과 현이 이루는 각 ∠CBE는 그 현에 대한 원주각 ∠BDC와 같다. 정답은 65°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -476,13 +515,16 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 원주각이 보는 호를 각각 나타낸 뒤 합하면 원 전체의 호에 호 $BC$가 한 번 더해진다.\n$\\angle BOC=60^\\circ$이므로 호 $BC$의 크기는 $60^\\circ$이다.\n$2x$는 점 $A$를 포함하지 않는 호 $BE$, 즉 호 $BC+CD+DE$의 크기이고, $2y$는 점 $D$를 포함하지 않는 호 $CE$, 즉 호 $CB+BA+AE$의 크기이다.\n따라서 $2(x+y)=360^\\circ+60^\\circ=420^\\circ$이다.\n그러므로 $x+y=210^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q14.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q14-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImageAlt": "해설 그림: 원 O에 꼭짓점이 A, B, C, D, E인 오각형이 내접하고 반지름 OB, OC를 그은 그림. 중심각 BOC는 60도이고 호 BC와 함께 초록색이다. 꼭짓점 A의 각 x는 파란색, 꼭짓점 D의 각 y는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "∠BOC=60°이므로 호 BC는 60°이다. ∠x는 호 BE에 대한 원주각이어서 2x는 호 BC, CD, DE의 합이고, ∠y는 호 CE에 대한 원주각이어서 2y는 호 CB, BA, AE의 합이다. 두 식을 더하면 원 전체 360°에 호 BC 60°가 한 번 더해져 2(x+y)=420°이다. 정답은 210°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -514,9 +556,12 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q15-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q15-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "solutionImageAlt": "해설 그림: 원 O와 점 T에서 접하는 직선, 접선 위의 점 A에서 중심 O를 지나 원 위의 점 B까지 그은 직선과 현 TB, TC를 나타낸 그림. 점 C는 직선 AB가 원과 만나는 가까운 점이고 각 CTB는 직각이다. 접선의 오른쪽 방향과 TB가 이루는 각은 70도 파란색이다. 각 ATC와 각 CBT는 같은 크기 20도로 주황색이고 각 BAT는 x로 초록색이다. 오른쪽에는 점 T에서 각 ATB가 110도임을 크게 따로 그려 두었다.",
+    "solutionImageCaption": "CB가 지름이므로 ∠CTB=90°이다. 접선 AT와 TB의 반대쪽 접선이 이루는 각이 70°이므로 ∠ATB=110°이고 ∠ATC=110°−90°=20°이다. 접선과 현의 성질로 ∠CBT=∠ATC=20°이고, 삼각형 ABT에서 ∠x=180°−110°−20°이다. 정답은 50°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -544,10 +589,13 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q16-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q16-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-    "crossConceptKeys": []
+    "crossConceptKeys": [],
+    "solutionImageAlt": "해설 그림: 왼쪽에는 원 O에 현 AB, 수선 OM, 반지름 OA, OB를 그은 작도 그림이 있다. 오른쪽에는 합동인 두 직각삼각형 OAM과 OBM을 떼어 같은 방향으로 나란히 놓았다. 빗변 OA, OB에는 같은 주황 눈금, 공통인 OM은 같은 초록색이고 M에는 직각 표시가 있으며 두 삼각형은 같은 파란색으로 칠해져 있다.",
+    "solutionImageCaption": "지시대로 현 AB, 수선 OM, 반지름 OA와 OB를 그린다. 두 직각삼각형 OAM과 OBM에서 ∠OMA=∠OMB=90°이고 OA와 OB는 같은 원의 반지름으로 길이가 같으며 OM은 공통이므로 RHS 합동이다. 따라서 AM=BM이다. 정답은 차례로 OB, OM, BM이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -574,10 +622,13 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q17-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-    "crossConceptKeys": []
+    "crossConceptKeys": [],
+    "solutionImageAlt": "해설 그림: 원 위에 두 현 AB, CD를 그리고 각 현의 중점 M, N에서 수직으로 그은 두 점선이 한 점 O에서 만나는 그림. 현 AB의 두 조각에는 파란색 같은 길이 눈금, 현 CD의 두 조각에는 주황색 같은 길이 눈금이 있고 M, N에는 직각 표시가 있다.",
+    "solutionImageCaption": "원 위에 서로 다른 두 현 AB, CD를 그린다. 각 현의 수직이등분선은 원의 중심을 지나므로 두 수직이등분선을 그으면 그 교점이 원의 중심이 된다. 정답은 두 현의 수직이등분선의 교점을 원의 중심으로 정한다는 것이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -600,14 +651,17 @@ window.questionBank = [
     "answer": "$5\\rm\\,cm$",
     "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.\n반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다.\n현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다.\n정리하면 $x^2=x^2-4x+4+16$이므로 $4x=20$, 따라서 $x=5$이다.\n따라서 구하는 값은 $5\\rm\\,cm$이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q18.png",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q18-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": ["CC_PYTHAGOREAN"]
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB에 중심 O에서 내린 수선의 발이 M이고, 수선의 연장이 원과 만나는 점이 T인 그림. 반지름 OA는 x cm, OM은 (x-2) cm, AM은 4 cm, MT는 2 cm로 표시되어 있다. 반지름 OA와 OT에는 같은 파란색 눈금이 있고 직각삼각형 OAM이 주황색으로 칠해져 있다.",
+    "solutionImageCaption": "반지름을 x cm라 하면 MT=2cm이므로 OM=(x-2)cm이다. 현의 절반 AM=4cm이므로 직각삼각형 OAM에서 x²=(x-2)²+4²이다. 이를 정리하여 x를 구한다. 구하는 값은 5cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -635,7 +689,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래 변을 오른쪽으로 연장한 사각형 그림. 왼쪽 위 꼭짓점의 내각은 110도 파란색이다. 오른쪽 아래 꼭짓점에서는 내각 60도가 주황색, 연장선과 이루는 바깥쪽 각 120도가 분홍색으로 표시되어 있다.",
+    "solutionImageCaption": "오른쪽 아래의 120°는 바깥쪽 각이므로 그 내각은 180°−120°=60°이다. 맞은편 내각 110°와의 합은 170°로 180°가 아니므로 이 사각형은 원에 내접하지 않는다. 정답은 원에 내접하지 않는다는 것이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -663,9 +721,12 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q20-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "solutionImageAlt": "해설 그림: 원 O에서 점 A를 지나는 접선과 지름 AD, 현 AB, CA, CB, CD를 그린 그림. A와 C에서 각 DAT와 각 DCA는 직각이다. 각 BAD와 각 BCD는 같은 크기로 주황색이고, 둔각 BAT와 각 BCA는 같은 크기로 파란색 큰 호로 표시되어 있다.",
+    "solutionImageCaption": "AD는 지름이므로 ∠DCA=90°이고, 접선 AT는 반지름 OA와 수직이므로 ∠DAT=90°이다. 따라서 ∠BAT=90°+∠BAD, ∠BCA=90°+∠BCD이다. ∠BAD와 ∠BCD는 같은 호 BD에 대한 원주각이므로 같아 ∠BAT=∠BCA이다. 정답은 차례로 90, 90, 90, BCD이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -692,7 +753,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 제기차기 횟수 10개를 값별로 점으로 쌓은 점도표이다. 5회에서 11회 사이에 9개가 모여 있고 78회 하나가 멀리 떨어져 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "자료를 크기순으로 나열하면 5, 5, 7, 7, 8, 8, 10, 11, 11, 78이다. 78회 하나가 매우 크므로 평균은 합 150을 10으로 나눈 값으로 중앙값보다 훨씬 오른쪽에 있고, 가운데 두 값 8, 8의 평균인 중앙값은 극단값의 영향을 거의 받지 않는다. 최빈값은 5, 7, 8, 11로 네 개이다. 정답은 평균 15, 중앙값 8, 최빈값 5, 7, 8, 11이고 대표값으로 가장 적절한 것은 중앙값이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -718,6 +783,10 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 배차 간격 6, 8, 7, 10, 4분을 값별로 점으로 나타낸 점도표이다. 평균 7분 자리에 점선이 있고 각 점 위에 평균과의 차가 -3, -1, 0, +1, +3으로 쓰여 있다. 평균보다 작은 값 4, 6은 파란색, 큰 값 8, 10은 주황색이다.",
+    "solutionImageCaption": "평균은 (6+8+7+10+4)÷5=7분이고 편차는 -1, 1, 0, 3, -3이다. 편차의 제곱은 1, 1, 0, 9, 9이므로 그 평균이 분산이고 분산의 양의 제곱근이 표준편차이다. 정답은 분산 4, 표준편차 2분이다.",
+    "solutionImageSize": "full"
   }
 ];
