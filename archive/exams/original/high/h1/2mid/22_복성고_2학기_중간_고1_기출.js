@@ -200,7 +200,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 네 곡선이 그려져 있다. 파란 직선 y=3분의 x와 초록 위로 볼록한 포물선 y=1−2분의 x²은 y축을 가로질러 끊김 없이 이어진다. 주황 곡선 y=1−(x분의 1)과 분홍 곡선 y=(2x분의 (x+1))은 각각 y축 양쪽의 두 가지로 갈라져 있다. 점선 y=1에는 주황 곡선이, 점선 y=2분의 1에는 분홍 곡선이 가까워진다. 파랑, 주황, 초록, 분홍은 차례로 ㄱ, ㄴ, ㄷ, ㄹ의 그래프이다.",
+    "solutionImageCaption": "다항함수는 정리한 뒤에도 분모에 x가 남지 않는다. 파랑 y=3분의 x(ㄱ)와 초록 y=1−2분의 x²(ㄷ)은 x가 어떤 실수여도 정의되는 다항함수이다. 주황 y=1−(x분의 1)(ㄴ)과 분홍 y=(2x분의 (x+1))(ㄹ)은 분모에 x가 남아 x=0에서 정의되지 않고, y축에서 끊겨 두 가지로 나뉜다. 두 점선은 점근선으로, 주황 곡선은 점선 y=1에, 분홍 곡선은 점선 y=2분의 1에 가까워진다. 정답은 ㄴ, ㄹ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -234,7 +238,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 y=−(4x분의 1)의 그래프가 있다. 두 좌표축이 점근선이고, 곡선은 제2사분면과 제4사분면에 각각 한 가지씩 놓인다. 곡선 위의 점 Q(−4분의 1, 1)과 P(4분의 1, −1)가 점선으로 원점 O를 지나 이어져 있다.",
+    "solutionImageCaption": "y=−(4x분의 1)의 그래프는 x축과 y축을 점근선으로 하고 제2, 제4사분면에 놓인다. 점 P(4분의 1, −1)이 곡선 위에 있고, 원점에 대하여 P와 대칭인 점 Q(−4분의 1, 1)도 곡선 위에 있어 그래프는 원점에 대하여 대칭이다. 그래프는 x=0에서 끊겨 있으므로 정의역은 0을 제외한 실수 전체이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -301,9 +309,9 @@ window.questionBank = [
     "answer": "①",
     "solution": "색칠된 부분에 동시에 적용되는 포함·제외 조건을 읽는다.\n색칠된 영역은 $B\\cap C\\cap A^c$이다.\n①은 $C-(B-A)^c=C\\cap(B\\cap A^c)=B\\cap C\\cap A^c$이므로 그림과 일치한다.\n따라서 정답은 ①이다.",
     "image": "assets/images/22_복성고_2학기_중간_고1_기출/q09.png",
-    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "B와 C에 속하고 A에는 속하지 않는 영역을 표시한 Venn diagram",
-    "solutionImageCaption": "색칠 영역 = B∩C∩Aᶜ",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 둘 다 전체집합 U 안에 원 A, B, C가 겹쳐 있고, 왼쪽은 B와 C의 공통부분이, 오른쪽은 그중 A에 속하지 않는 부분만 색칠되어 있다.",
+    "solutionImageCaption": "색칠된 부분은 B와 C에 모두 속하고 A에는 속하지 않는 영역, 곧 B∩C∩Aᶜ이다. 각 보기를 이 영역과 비교한다. ①의 C−(B−A)ᶜ은 B−A의 여집합을 C에서 빼므로 C∩(B−A)=C∩B∩Aᶜ이어서 같은 영역이다. 정답은 ①이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -372,9 +380,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "전칭명제는 반례가 하나라도 있으면 거짓이다.\nㄱ은 수직선, ㄴ은 $A=\\varnothing$, ㄷ은 합성 순서에 따라 값이 달라지는 함수가 반례이므로 거짓이다. ㄹ의 두 교점은 원점에 대하여 대칭이므로 참이다.\n따라서 $a=1,b=3$이고 $a-b=-2$이다.\n따라서 정답은 ②이다.\n[시각자료 읽기] ㄱ: 거짓 — 수직선 반례 ㄴ: 거짓 — 공집합 반례 ㄷ: 거짓 — 합성 순서 반례 ㄹ: 참 — 원점 대칭 a=1, b=3, a−b=−2",
-    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "참·거짓 명제 판정",
-    "solutionImageCaption": "ㄱ: 거짓 — 수직선 반례 ㄴ: 거짓 — 공집합 반례 ㄷ: 거짓 — 합성 순서 반례 ㄹ: 참 — 원점 대칭 a=1, b=3, a−b=−2",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=x분의 1의 두 가지와 원점을 지나는 주황 직선 y=kx가 있다. 직선이 곡선과 만나는 두 점 A, B가 원점 O의 양쪽에 놓여 있다.",
+    "solutionImageCaption": "예: k=4분의 1인 직선으로 ㄹ을 그렸다(식 이름 옆의 작은 점은 이름표가 가리키는 자리일 뿐 교점이 아니다). ㄱ은 y축에 평행한 직선이 y=mx+n 꼴이 아니므로, ㄴ은 A=∅이면 부분집합이 ∅ 하나뿐이므로, ㄷ은 합성 순서에 따라 값이 달라지는 함수가 있으므로 거짓이다. ㄹ은 y=x분의 1과 y=kx의 두 교점이 원점에 대하여 대칭이어서 원점이 선분 AB의 중점이므로 참이다. a=1, b=3이므로 a−b=−2이다. 정답은 −2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
@@ -415,7 +423,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 그래프이다. 원점에서 시작하는 파란 곡선 y=g(x)는 위로 볼록하고 주황 곡선 y=f(x)는 아래로 볼록하며, 초록 점선 y=x가 둘 사이에 있다. x축의 점 c에서 곡선 g까지 점선이 올라가 가로로 이어져 점선 y=x를 지나 곡선 f에 닿는다. y=x와 만난 곳에서 x축의 점 d로, 곡선 f와 만난 곳에서 x축의 구하는 값 점으로 점선이 내려온다.",
+    "solutionImageCaption": "예: 문제 그림과 모양이 다른 예시 그래프이다. (g∘(f∘g)⁻¹∘g)(c)=(g∘g⁻¹∘f⁻¹∘g)(c)=f⁻¹(g(c))이다. g(c)=d이고, 직선 y=x로 d를 x축으로 옮긴 뒤 f(x)=d가 되는 x를 곡선 f에서 찾으면 그 값이 구하는 값이다. 정답은 e이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -450,7 +462,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=f(x), 주황 곡선 y=f⁻¹(x), 초록 점선 y=x가 있다. 두 곡선은 점선에 대하여 대칭이고, 점선 위의 두 점 A(−1, −1)과 B(−3분의 2, −3분의 2)에서 만난다.",
+    "solutionImageCaption": "f(x)=3x²+6x+2 (x≥−1)는 증가함수이므로 f와 역함수 f⁻¹의 그래프의 교점은 직선 y=x 위에 있다. 3x²+6x+2=x에서 3x²+5x+2=(x+1)(3x+2)=0이므로 A(−1, −1), B(−3분의 2, −3분의 2)이다. 두 점의 x좌표의 차와 y좌표의 차가 모두 3분의 1이므로 AB는 두 값의 제곱의 합의 제곱근이다. 정답은 3분의 √2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -485,7 +501,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램에 세 원 A6, A9, A4가 겹쳐 있다. 1은 세 원이 모두 겹친 곳, 2는 A6과 A4가 겹친 곳, 3은 A6과 A9가 겹친 곳, 6은 A6만, 9는 A9만, 4는 A4만 속한 곳에 쓰여 있고, A6과 A9의 합집합과 A4의 공통부분이 색칠되어 있다.",
+    "solutionImageCaption": "그림의 A6, A9, A4는 A₆, A₉, A₄이다. A₆={1,2,3,6}, A₉={1,3,9}이므로 A₆∪A₉={1,2,3,6,9}이고, A₄={1,2,4}와의 공통부분(색칠된 부분)은 {1,2}이다. 이것이 A_k와 같은 집합이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -517,9 +537,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "대칭차집합은 두 집합 중 한쪽에만 속하는 원소의 집합이다.\n$2$는 $B$의 원소이지만 대칭차집합 $\\{0,1\\}$의 원소가 아니므로 $2\\in A$이어야 한다.\n따라서 $a-2=2$ 또는 $a^2-7=2$이므로 $a=4,3,-3$이다. $a=4$이면 대칭차집합은 $\\{1,9\\}$이고, $a=-3$이면 $\\{-6,-5\\}$이므로 조건을 만족하지 않는다. $a=3$이면 $A=\\{1,2,3\\}$, $B=\\{0,2,3\\}$이고 대칭차집합은 $\\{0,1\\}$이므로 유일하게 조건을 만족한다.\n이때 $b=0+2+3=5$이므로 $a+b=8$이다.\n[시각자료 읽기] 세 후보 중 가운데 행만 A△B={0,1}과 일치한다. 그 행의 B 원소 합이 b=5이므로 a+b=8이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "a=4,3,−3의 실제 A△B를 비교해 a=3, B={0,2,3}, b=5를 고르는 후보표",
-    "solutionImageCaption": "대칭차집합이 {0,1}이 되는 유일한 후보 a=3과 a+b=8을 표시한 계산표",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 세 개가 a=4, a=3, a=−3의 순서로 놓여 있다. 각각 집합 A, B의 원소가 쓰여 있고 두 집합 중 한쪽에만 속하는 원소 부분이 색칠되어 있다. 색칠된 부분의 원소는 a=4에서 9와 1, a=3에서 1과 0, a=−3에서 −5와 −6이고, 2와 3은 세 그림 모두 공통부분에 있다.",
+    "solutionImageCaption": "대칭차집합 {0,1}에 2가 없으므로 2는 A에도 속해야 한다. a−2=2 또는 a²−7=2에서 a=4, 3, −3이다. 세 후보를 벤다이어그램으로 비교하면 색칠된 원소가 0, 1로 일치하는 것은 a=3뿐이다. 이때 B={0,2,3}이므로 b=5이다. 정답은 8이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -562,9 +582,9 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "A와 B의 여집합을 겹쳐 나타낸 수직선",
-    "solutionImageCaption": "A=[−3,5], Bᶜ=[a,b]=[−3,2]이므로 b−a=5",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이 있다. 첫째 줄 A는 −3부터 5까지, 둘째 줄 B의 여집합은 −3부터 2까지, 셋째 줄 A−B는 −3부터 2까지의 구간이 양 끝이 찬 점으로 표시되어 있다.",
+    "solutionImageCaption": "A는 x²−2x−15≤0에서 −3≤x≤5이고, B의 여집합은 a≤x≤b이다. A∪B=U이면 B의 여집합이 A 안에 들어가므로 a≥−3이다. A−B=A∩(B의 여집합)=[−3, 2]이므로 b=2이고 a≤−3이다. 따라서 a=−3, b=2이다. 정답은 5이다.",
     "solutionImageSize": "full",
     "level": "상",
     "category": "집합의 조건",
@@ -628,9 +648,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$p\\to q$가 참이면 $p$의 진리집합이 $q$의 진리집합에 포함된다.\n$[a+1,a+2]\\subset(0,4)$이려면 $a+1\\gt0$이고 $a+2\\lt4$이어야 한다.\n따라서 $a\\gt-1$, $a\\lt2$이다.\n따라서 정답은 ①이다.\n[시각자료 읽기] P=[a+1,a+2] Q=(0,4) p→q ⇔ P⊆Q −1<a<2",
-    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "명제의 진리집합 포함",
-    "solutionImageCaption": "P=[a+1,a+2] Q=(0,4) p→q ⇔ P⊆Q −1<a<2",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄이 있다. 첫째 줄 q는 0과 4가 빈 점인 열린 구간이고, 둘째 줄 p는 a+1과 a+2가 찬 점인 닫힌 구간이다. a=2분의 1일 때의 모양으로 p는 q 안에 들어 있다.",
+    "solutionImageCaption": "예: a=2분의 1로 그린 그림이다. q의 진리집합은 x²−4x<0에서 (0, 4)이고, p의 진리집합은 (x−a−1)(x−a−2)≤0에서 [a+1, a+2]이다. p→q가 참이려면 [a+1, a+2]가 (0, 4)에 들어가야 하므로 a+1>0, a+2<4이다. 정답은 −1<a<2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
@@ -670,7 +690,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 꺾은선 y=f(x)와 점선 y=x가 있고, 점 A(1, 4), B(4, 3), C(3, 1)이 꺾은선 위에 있다. 주황 선이 A에서 y=x 위의 점으로 가로로 갔다가 B로 내려오고, B에서 y=x 위의 점으로 갔다가 C로 내려오고, C에서 y=x 위의 점으로 갔다가 A로 올라가며 닫힌 경로를 이룬다.",
+    "solutionImageCaption": "f(1)=4, f(4)=3, f(3)=1이므로 1→4→3→1이 세 번마다 되풀이된다(점 A, B, C). 50=3×16+2이므로 f⁵⁰(1)=f²(1)=3이고, 100=3×33+1이므로 f¹⁰⁰(1)=f(1)=4이다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -763,6 +787,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 y=x분의 k와 주황 직선 y=−x+8이 있고, 두 도형이 만나는 점 P, Q와 원점 O를 꼭짓점으로 하는 삼각형 OPQ가 옅게 칠해져 있다. 점 P는 오른쪽 아래, 점 Q는 왼쪽 위에 있다.",
+    "solutionImageCaption": "교점 P(r, 8−r), Q(s, 8−s)의 x좌표 r, s는 x분의 k=−x+8, 즉 x²−8x+k=0의 두 근이므로 r+s=8, rs=k이다. 삼각형 OPQ의 넓이는 2분의 1·|r(8−s)−s(8−r)|=4|r−s|이고 이것이 26이므로 |r−s|=2분의 13이다. (r−s)²=(r+s)²−4rs에 대입하면 4분의 169=64−4k이다. 정답은 16분의 87이다.",
+    "solutionImageSize": "full"
   }
 ];
