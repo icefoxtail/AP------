@@ -209,7 +209,7 @@ window.examData = {
       "content": "<p>6. 다음 그림에서 $\\overline{\\mathrm{DE}}$의 길이는? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q06.png\" alt=\"삼각형 ABC에서 변 AB 위의 점 D, 변 BC 위의 점 E가 선분 DE로 연결되고 AD=5cm, DB=4cm, BE=3cm, EC=9cm, AC=6cm가 표시된 그림\" /></p>",
       "question": "<p>6. 다음 그림에서 $\\overline{\\mathrm{DE}}$의 길이는? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q06.png\" alt=\"삼각형 ABC에서 변 AB 위의 점 D, 변 BC 위의 점 E가 선분 DE로 연결되고 AD=5cm, DB=4cm, BE=3cm, EC=9cm, AC=6cm가 표시된 그림\" /></p>",
       "choices": [
-        "$2$",
+        "$2\\text{ cm}$",
         "$2.5\\text{ cm}$",
         "$3\\text{ cm}$",
         "$3.5\\text{ cm}$",
@@ -330,7 +330,7 @@ window.examData = {
         "assets/images/20_이수중_2학기_기말_중2_수학/q09.png"
       ],
       "answer": "②",
-      "solution": "[원문 조건 및 구할 대상]\n$\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{DC}}$이고 $\\overline{\\mathrm{AB}}=12\\text{ cm}, \\overline{\\mathrm{DC}}=24\\text{ cm}$일 때, 선분 $\\overline{\\mathrm{EF}}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n평행선 사이의 선분의 길이 비와 닮음의 성질:\n방법 1 (삼각형의 닮음 원리):\n1. $\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{DC}}$이므로 $\\triangle\\mathrm{EAB} \\sim \\triangle\\mathrm{ECD}$ (AA 닮음)이다.\n   대응변의 비: $\\overline{\\mathrm{BE}} : \\overline{\\mathrm{ED}} = \\overline{\\mathrm{AB}} : \\overline{\\mathrm{CD}} = 12 : 24 = 1 : 2$.\n2. $\\overline{\\mathrm{BD}}$ 전체에서 $\\overline{\\mathrm{BE}} : \\overline{\\mathrm{BD}} = 1 : (1 + 2) = 1 : 3$이다.\n3. $\\triangle\\mathrm{BCD}$에서 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{DC}}$이므로 $\\triangle\\mathrm{BEF} \\sim \\triangle\\mathrm{BDC}$이다.\n   따라서 $\\overline{\\mathrm{EF}} : \\overline{\\mathrm{DC}} = \\overline{\\mathrm{BE}} : \\overline{\\mathrm{BD}} = 1 : 3$이다.\n\n방법 2 (평행선 교차 공식):\n$\\dfrac{1}{\\overline{\\mathrm{EF}}} = \\dfrac{1}{\\overline{\\mathrm{AB}}} + \\dfrac{1}{\\overline{\\mathrm{DC}}}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 적용에 의한 계산 (방법 1)\n$\\overline{\\mathrm{EF}} : 24 = 1 : 3$\n$3\\overline{\\mathrm{EF}} = 24 \\implies \\overline{\\mathrm{EF}} = 8\\text{ cm}$\n\n2단계: 역수 합 공식에 의한 교차 검토 (방법 2)\n$\\dfrac{1}{\\overline{\\mathrm{EF}}} = \\dfrac{1}{12} + \\dfrac{1}{24} = \\dfrac{2}{24} + \\dfrac{1}{24} = \\dfrac{3}{24} = \\dfrac{1}{8}$\n$\\therefore \\overline{\\mathrm{EF}} = 8\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $7\\text{ cm}$: 오답\n② $8\\text{ cm}$: 계산 결과와 일치함 (정답)\n③ $9\\text{ cm}$: 오답\n④ $10\\text{ cm}$: 오답\n⑤ $11\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{EF}}$의 길이는 ② $8\\text{ cm}$이다."
+      "solution": "[원문 조건 및 구할 대상]\n$\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{DC}}$이고 $\\overline{\\mathrm{AB}}=12\\text{ cm}, \\overline{\\mathrm{DC}}=24\\text{ cm}$일 때, 선분 $\\overline{\\mathrm{EF}}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n평행선이 만드는 두 쌍의 닮은 삼각형을 차례로 이용한다.\n1. $\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{DC}}$이므로 $\\triangle\\mathrm{EAB} \\sim \\triangle\\mathrm{ECD}$ (AA 닮음)이다.\n   대응변의 비: $\\overline{\\mathrm{BE}} : \\overline{\\mathrm{ED}} = \\overline{\\mathrm{AB}} : \\overline{\\mathrm{CD}} = 12 : 24 = 1 : 2$.\n2. $\\overline{\\mathrm{BD}}$ 전체에서 $\\overline{\\mathrm{BE}} : \\overline{\\mathrm{BD}} = 1 : (1 + 2) = 1 : 3$이다.\n3. $\\triangle\\mathrm{BCD}$에서 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{DC}}$이므로 $\\triangle\\mathrm{BEF} \\sim \\triangle\\mathrm{BDC}$이다.\n   따라서 $\\overline{\\mathrm{EF}} : \\overline{\\mathrm{DC}} = \\overline{\\mathrm{BE}} : \\overline{\\mathrm{BD}} = 1 : 3$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 적용\n$\\overline{\\mathrm{EF}} : 24 = 1 : 3$\n$3\\overline{\\mathrm{EF}} = 24 \\implies \\overline{\\mathrm{EF}} = 8\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $7\\text{ cm}$: 오답\n② $8\\text{ cm}$: 계산 결과와 일치함 (정답)\n③ $9\\text{ cm}$: 오답\n④ $10\\text{ cm}$: 오답\n⑤ $11\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{EF}}$의 길이는 ② $8\\text{ cm}$이다."
     },
     {
       "id": 10,
@@ -613,8 +613,8 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>17. 오른쪽 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q17.png\" alt=\"직각삼각형에서 두 변이 8cm, 15cm이고 빗변이 x cm로 표시된 직각삼각형 그림\" /></p>",
-      "question": "<p>17. 오른쪽 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q17.png\" alt=\"직각삼각형에서 두 변이 8cm, 15cm이고 빗변이 x cm로 표시된 직각삼각형 그림\" /></p>",
+      "content": "<p>17. 오른쪽 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q17.png\" alt=\"직각사다리꼴 ABCD에서 각 A와 각 B가 직각이고 AD=8cm, AB=15cm, BC=16cm, 비스듬한 변 CD=x cm로 표시된 그림\" /></p>",
+      "question": "<p>17. 오른쪽 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q17.png\" alt=\"직각사다리꼴 ABCD에서 각 A와 각 B가 직각이고 AD=8cm, AB=15cm, BC=16cm, 비스듬한 변 CD=x cm로 표시된 그림\" /></p>",
       "choices": [
         "$15\\text{ cm}$",
         "$16\\text{ cm}$",
@@ -626,7 +626,7 @@ window.examData = {
         "assets/images/20_이수중_2학기_기말_중2_수학/q17.png"
       ],
       "answer": "③",
-      "solution": "[원문 조건 및 구할 대상]\n두 직각변의 길이가 각각 $8\\text{ cm}, 15\\text{ cm}$인 직각삼각형에서 빗변 $x$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n피타고라스 정리:\n$x^2 = a^2 + b^2$\n\n[연속 등식 및 충분한 중간 계산]\n$x^2 = 8^2 + 15^2$\n$x^2 = 64 + 225 = 289$\n$289 = 17^2$이므로 $x > 0$에서:\n$x = 17\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $15\\text{ cm}$: 오답\n② $16\\text{ cm}$: 오답\n③ $17\\text{ cm}$: 계산 결과와 일치함 (정답)\n④ $18\\text{ cm}$: 오답\n⑤ $19\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $x$의 값은 ③ $17\\text{ cm}$이다."
+      "solution": "[원문 조건 및 구할 대상]\n$\\angle\\mathrm{A}=\\angle\\mathrm{B}=90^\\circ$인 직각사다리꼴 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=8\\text{ cm}$, $\\overline{\\mathrm{AB}}=15\\text{ cm}$, $\\overline{\\mathrm{BC}}=16\\text{ cm}$일 때, $\\overline{\\mathrm{CD}}=x$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n점 $\\mathrm{D}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 하면 사각형 $\\mathrm{ABHD}$는 직사각형이다. 직각삼각형 $\\mathrm{DHC}$에서 피타고라스 정리를 쓴다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 직각삼각형 $\\mathrm{DHC}$의 두 변\n$\\overline{\\mathrm{DH}} = \\overline{\\mathrm{AB}} = 15\\text{ cm}$, $\\overline{\\mathrm{BH}} = \\overline{\\mathrm{AD}} = 8\\text{ cm}$이므로 $\\overline{\\mathrm{HC}} = 16 - 8 = 8\\text{ cm}$\n\n2단계: 피타고라스 정리\n$x^2 = \\overline{\\mathrm{DH}}^2 + \\overline{\\mathrm{HC}}^2 = 15^2 + 8^2 = 225 + 64 = 289$\n$289 = 17^2$이고 $x > 0$이므로 $x = 17\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $15\\text{ cm}$: 오답\n② $16\\text{ cm}$: $\\overline{\\mathrm{BC}}$의 길이로 오답\n③ $17\\text{ cm}$: 계산 결과와 일치함 (정답)\n④ $18\\text{ cm}$: 오답\n⑤ $19\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $x$의 값은 ③ $17\\text{ cm}$이다."
     },
     {
       "id": 18,
