@@ -414,7 +414,7 @@ function periScene(type) {
     },
     draw: (b, s, v, lab) => {
       const lessonEntry = !!s.lessonEntry && !!lab && lab.tab === 'explore'; // 해설 진입 화면: 처음 상태(둘레 = ?, 점 P 0)
-      const cp = lessonEntry ? 0 : cp;
+      const cp = lessonEntry ? 0 : s.csP;
       const sh = shapeOf(type, s), r = s.csR, segs = boundary(sh, r), tp = tracePlan(segs, cp / 100), a0 = sh.a0, a1 = sh.a1, am = (a0 + a1) / 2;
       const problem = lab && lab.tab === 'problem', review = lab && lab.tab === 'review';
       const revealed = problem || lessonEntry ? 0 : review ? Math.max(0, (s.step || 1) - 1) : segs.length;
