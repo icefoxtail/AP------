@@ -152,7 +152,7 @@
       : `<button type="button" data-library-action="library-status" data-status="ARCHIVED">보관</button>`;
     return `<section class="panel saved-paper-detail">
       <div class="intro"><div><p class="muted"><button type="button" class="saved-library-back" data-library-action="list">보관함</button> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div>
-        <div class="actions saved-paper-more-wrap"><button type="button" class="primary" data-library-action="distribute" data-paper-id="${esc(paper.id)}">출제</button><details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu"><a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a><button type="button" data-library-action="copy">정확히 복사</button><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></details></div></div>
+        <div class="actions saved-paper-more-wrap"><button type="button" class="primary" data-library-action="distribute" data-paper-id="${esc(paper.id)}">출제</button><details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu">${batchAction(paper, esc(paper.id))}<a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a><button type="button" data-library-action="copy">정확히 복사</button><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></details></div></div>
       <div class="actions saved-paper-modes" role="group" aria-label="출력 미리보기">
         ${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
         <button type="button" data-library-action="print" data-mode="${esc(mode)}" class="small">새 창에서 출력</button>
@@ -203,6 +203,7 @@
       if (!byPaper.has(paperId)) byPaper.set(paperId, []);
       byPaper.get(paperId).push({
         id,
+        classId: String(row.class_id ?? "").trim(),
         className: String(row.class_name ?? "").trim(),
         date: String(row.exam_date ?? "").slice(0, 10),
         recipients: countOrNull(row.recipient_count),
@@ -249,6 +250,13 @@
       : `출제 이력은 최근 ${HISTORY_DAYS}일까지 보입니다.`;
   }
 
+  // 여러 권으로 저장된 묶음이면 더보기에 "이 묶음 n권 모두 출제"를 둔다(같은 반에 권마다 차례로 낸다).
+  function batchAction(paper, id) {
+    const parts = Number(paper.part_count);
+    if (!(parts > 1) || !paper.save_batch_id) return "";
+    return `<button type="button" data-library-action="distribute-batch" data-paper-id="${id}">이 묶음 ${parts}권 모두 출제</button>`;
+  }
+
   function paperRowMarkup(paper, history) {
     const status = paper.library_status || "ACTIVE";
     const title = paper.library_display_name || paper.title || "저장한 시험지";
@@ -273,6 +281,7 @@
           <button type="button" class="primary" data-library-action="distribute" data-paper-id="${id}">반에 출제</button>
           <details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu">
             <button type="button" data-library-action="detail" data-paper-id="${id}">상세 보기</button>
+            ${batchAction(paper, id)}
             <a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a>
             <button type="button" data-library-action="rename" data-paper-id="${id}">이름 변경</button>
             ${statusAction}
@@ -361,6 +370,11 @@
     loadHistory(host, viewState).catch(() => {});
   }
   // The workspace calls this when an issue dialog closes so a new issue shows up without a reload.
+  // 지금 목록의 출제 이력(준비된 것만). 출제 패널이 "이미 냈습니다" 표시에 쓴다.
+  function currentHistory() {
+    const history = activeListState?.history;
+    return history?.state === "ready" ? history : null;
+  }
   function refreshHistory() {
     if (!activeListHost || !activeListState || activeListVersion !== libraryViewVersion) return false;
     loadHistory(activeListHost, activeListState).catch(() => {});
@@ -578,7 +592,25 @@
         } else if (action === "distribute") {
           if (typeof window.Archive2WorkspaceSavedPaperIssue !== "function")
             throw new Error("저장한 시험지 출제 화면을 열 수 없습니다. 목록에서 다시 시도해 주세요.");
-          await window.Archive2WorkspaceSavedPaperIssue(id);
+          // 보관함이 이미 가진 문제지 정보와 출제 이력을 넘겨 패널이 서버를 다시 부르지 않게 한다.
+          const row = viewState.paper || viewState.papers.find((item) => item.id === id);
+          await window.Archive2WorkspaceSavedPaperIssue(id, { papers: row ? [row] : [], history: currentHistory() });
+        } else if (action === "distribute-batch") {
+          if (typeof window.Archive2WorkspaceSavedPaperIssue !== "function")
+            throw new Error("저장한 시험지 출제 화면을 열 수 없습니다. 목록에서 다시 시도해 주세요.");
+          const row = viewState.paper || viewState.papers.find((item) => item.id === id);
+          if (!row?.save_batch_id) throw new Error("이 묶음의 문제지를 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
+          button.disabled = true;
+          button.closest?.("details")?.removeAttribute?.("open");
+          try {
+            const data = await apiClient().request("/archive-saved-papers/save-batches/" + encodeURIComponent(row.save_batch_id));
+            // 휴지통에 있는 권은 서버가 출제를 거절하므로 뺀다.
+            const parts = (Array.isArray(data?.papers) ? data.papers : []).filter((item) => (item.library_status || "ACTIVE") !== "TRASHED");
+            if (!parts.length) throw new Error("이 묶음에서 출제할 수 있는 문제지가 없습니다.");
+            await window.Archive2WorkspaceSavedPaperIssue(parts[0].id, { papers: parts, history: currentHistory() });
+          } finally {
+            button.disabled = false;
+          }
         } else if (action === "output") {
           await openOutput(id, button.dataset.mode || "exam");
         } else if (action === "detail") {
@@ -705,7 +737,7 @@
   }
 
   return {
-    render, preparePreview, outputUrl, openOutput, saveContext, invalidatePendingRequests, refreshHistory,
+    render, preparePreview, outputUrl, openOutput, saveContext, invalidatePendingRequests, refreshHistory, currentHistory,
     // exposed for tests and for the workspace: pure helpers of the issue history
     groupIssuesByPaper, dayLabel,
   };
