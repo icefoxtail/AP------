@@ -129,9 +129,16 @@
       ]
     },
     {
-      "id": "BC",
+      "id": "BM",
       "refs": [
         "B",
+        "M"
+      ]
+    },
+    {
+      "id": "MC",
+      "refs": [
+        "M",
         "C"
       ]
     },
@@ -143,16 +150,30 @@
       ]
     },
     {
-      "id": "AM",
+      "id": "AG",
       "refs": [
         "A",
+        "G"
+      ]
+    },
+    {
+      "id": "GM",
+      "refs": [
+        "G",
         "M"
       ]
     },
     {
-      "id": "BG",
+      "id": "BN",
       "refs": [
         "B",
+        "N"
+      ]
+    },
+    {
+      "id": "NG",
+      "refs": [
+        "N",
         "G"
       ]
     },
@@ -172,6 +193,7 @@
       "mappedTo": [
         "mathPlan.nodes",
         "displaySegments",
+        "planeMarks",
         "caption"
       ]
     }
@@ -179,5 +201,24 @@
   "newVisualInformation": [
     "이 그림은 주어진 넓이와 무게중심 조건을 만족하는 예시다. M은 BC의 중점이다. 점과 라벨은 여유 있게 배치한다."
   ],
-  "sourceQuote": "$\\overline{BN}=\\overline{GN}$"
+  "sourceQuote": "$\\overline{BN}=\\overline{GN}$",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rGNM",
+        "fill": "LIGHT",
+        "label": "4",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "G",
+              "N",
+              "M"
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
