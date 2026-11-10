@@ -504,7 +504,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 이차정사각행렬 $A,B$에 대하여 $A-B=E$, $A^3-B^3=\\begin{pmatrix}7&9\\\\12&1\\end{pmatrix}$일 때, 행렬 $AB$의 모든 성분의 합은? (단, $E$는 단위행렬이다.) [4.2점]",
+    "content": "두 이차정사각행렬 $A,B$에 대하여 $A-B=E$, $A^3-B^3=\\begin{pmatrix}7&3\\\\12&7\\end{pmatrix}$일 때, 행렬 $AB$의 모든 성분의 합은? (단, $E$는 단위행렬이다.) [4.2점]",
     "choices": [
       "$9$",
       "$10$",
@@ -513,7 +513,7 @@ window.questionBank = [
       "$13$"
     ],
     "answer": "①",
-    "solution": "먼저 $A-B=E$에서\n$A=B+E$\n를 얻는다.\n$AB=(B+E)B$\n$=B^2+EB$\n$=B^2+B$\n이다. 여기서 $EB=B$인 단위행렬 성질을 썼다.\n또한\n$BA=B(B+E)$\n$=B^2+BE$\n$=B^2+B$\n이다. $BE=B$도 단위행렬 성질이다.\n따라서 $AB=BA$이고, 교환하는 행렬의 세제곱 차 공식에 따라\n$A^3-B^3=(A-B)(A^2+AB+B^2)$\n$=E(A^2+AB+B^2)$\n$=A^2+AB+B^2$\n이다.\n여기에 $A=B+E$를 대입하면\n$A^2+AB+B^2$\n$=(B+E)^2+(B+E)B+B^2$\n$=(B^2+2B+E)+(B^2+B)+B^2$\n$=3B^2+3B+E$\n$=3(B^2+B)+E$\n$=3AB+E$\n이다.\n주어진 행렬을 $N$이라 두면\n$3AB+E=N$\n$3AB=N-E$\n이다.\n그러므로\n$AB=\\dfrac13\\left(\\begin{pmatrix}7&9\\\\12&1\\end{pmatrix}-\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\right)$\n$=\\dfrac13\\begin{pmatrix}6&9\\\\12&0\\end{pmatrix}$\n$=\\begin{pmatrix}2&3\\\\4&0\\end{pmatrix}$\n이다.\n모든 성분의 합은\n$2+3+4+0=9$\n이므로 정답은 ①이다.",
+    "solution": "먼저 $A-B=E$에서\n$A=B+E$\n를 얻는다.\n$AB=(B+E)B$\n$=B^2+EB$\n$=B^2+B$\n이다. 여기서 $EB=B$인 단위행렬 성질을 썼다.\n또한\n$BA=B(B+E)$\n$=B^2+BE$\n$=B^2+B$\n이다. $BE=B$도 단위행렬 성질이다.\n따라서 $AB=BA$이고, 교환하는 행렬의 세제곱 차 공식에 따라\n$A^3-B^3=(A-B)(A^2+AB+B^2)$\n$=E(A^2+AB+B^2)$\n$=A^2+AB+B^2$\n이다.\n여기에 $A=B+E$를 대입하면\n$A^2+AB+B^2$\n$=(B+E)^2+(B+E)B+B^2$\n$=(B^2+2B+E)+(B^2+B)+B^2$\n$=3B^2+3B+E$\n$=3(B^2+B)+E$\n$=3AB+E$\n이다.\n주어진 행렬을 $N$이라 두면\n$3AB+E=N$\n$3AB=N-E$\n이다.\n그러므로\n$AB=\\dfrac13\\left(\\begin{pmatrix}7&3\\\\12&7\\end{pmatrix}-\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\right)$\n$=\\dfrac13\\begin{pmatrix}6&3\\\\12&6\\end{pmatrix}$\n$=\\begin{pmatrix}2&1\\\\4&2\\end{pmatrix}$\n이다.\n모든 성분의 합은\n$2+1+4+2=9$\n이므로 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬의 연산",
     "subUnitConfidence": "rule_inferred",
@@ -721,7 +721,7 @@ window.questionBank = [
     "content": "<strong>서술형 3. [5점]</strong><br>$2$보다 큰 짝수인 자연수 $n$에 대하여 <br>$A_n=\\begin{pmatrix}1&n\\\\0&(-1)^n\\end{pmatrix}$, <br>$B_n=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}$이라고 정의하자. <br>$X=\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$에 대하여 $A_nB_nX=\\begin{pmatrix}1\\\\1\\end{pmatrix}$이 성립할 때, $x$가 자연수가 되는 $n$의 값 중 최솟값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$10$",
-    "solution": "$n$이 짝수이므로 $(-1)^n=1$이다.\n먼저 $B_nX$를 계산한다.\n$B_nX=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$\n$=\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$\n이다.\n여기에 $A_n$을 곱하면\n$A_nB_nX=\\begin{pmatrix}1&n\\\\0&1\\end{pmatrix}\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$\n$=\\begin{pmatrix}-x^2+n(n-1)!y\\\\(n-1)!y\\end{pmatrix}$\n이다.\n이 벡터가 $\\begin{pmatrix}1\\\\1\\end{pmatrix}$과 같으므로 성분별로\n$(n-1)!y=1$\n$-x^2+n(n-1)!y=1$\n이다.\n첫 식을 둘째 식에 대입하면\n$-x^2+n=1$\n$x^2=n-1$\n이다.\n$n$은 $2$보다 큰 짝수이므로 $n-1$은 $1$보다 큰 홀수이다.\n$x$가 자연수이려면 $n-1=x^2$이어야 하고, 가장 작은 홀수 제곱은\n$3^2=9$\n이다.\n따라서\n$n-1=9$\n$n=10$\n이다.\n$x^2=n-1=9$이고 $x$가 자연수이므로\n$x=3$\n이다.\n$y=\\frac{1}{9}!$로 놓으면 둘째 성분은\n$9!\\cdot\\dfrac1{9!}$\n$=1$\n이다.\n첫째 성분은\n$-3^2+10\\cdot1$\n$=-9+10$\n$=1$\n이다.\n따라서 실제로 $x=3$인 해가 존재하고 정답은 $10$이다.",
+    "solution": "$n$이 짝수이므로 $(-1)^n=1$이다.\n먼저 $B_nX$를 계산한다.\n$B_nX=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$\n$=\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$\n이다.\n여기에 $A_n$을 곱하면\n$A_nB_nX=\\begin{pmatrix}1&n\\\\0&1\\end{pmatrix}\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$\n$=\\begin{pmatrix}-x^2+n(n-1)!y\\\\(n-1)!y\\end{pmatrix}$\n이다.\n이 벡터가 $\\begin{pmatrix}1\\\\1\\end{pmatrix}$과 같으므로 성분별로\n$(n-1)!y=1$\n$-x^2+n(n-1)!y=1$\n이다.\n첫 식을 둘째 식에 대입하면\n$-x^2+n=1$\n$x^2=n-1$\n이다.\n$n$은 $2$보다 큰 짝수이므로 $n-1$은 $1$보다 큰 홀수이다.\n$x$가 자연수이려면 $n-1=x^2$이어야 하고, 가장 작은 홀수 제곱은\n$3^2=9$\n이다.\n따라서\n$n-1=9$\n$n=10$\n이다.\n$x^2=n-1=9$이고 $x$가 자연수이므로\n$x=3$\n이다.\n$y=\\dfrac{1}{9!}$로 놓으면 둘째 성분은\n$9!\\cdot\\dfrac1{9!}$\n$=1$\n이다.\n첫째 성분은\n$-3^2+10\\cdot1$\n$=-9+10$\n$=1$\n이다.\n따라서 실제로 $x=3$인 해가 존재하고 정답은 $10$이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
