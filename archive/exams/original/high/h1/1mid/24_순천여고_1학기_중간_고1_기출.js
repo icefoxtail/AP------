@@ -79,7 +79,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: k=1일 때 아래로 볼록한 포물선 y=x²−4x+k의 그래프이다. 꼭짓점 곁에 (2, k−4)가 적혀 있고 꼭짓점에서 x축의 눈금 2까지 점선이 이어진다. 오른쪽 곡선 위 점에서 지시선으로 곡선의 식이 적혀 있다.",
+    "solutionImageCaption": "예: k=1일 때의 그래프이다. y=x²−4x+k=(x−2)²+k−4이므로 꼭짓점은 (2, k−4)이고 최솟값은 k−4이다. 이 값이 −8이 되도록 k를 정한다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -121,9 +125,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "직선 y=x+7이 이차함수 그래프에 점 T(2, 9)에서 접한다.",
-    "solutionImageCaption": "직선 y=x+7이 이차함수 그래프에 점 T(2, 9)에서 접한다.",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=−x²+5x+3과 주황 직선 y=x+k가 한 점 T에서 접하는 그림이다. 직선은 오른쪽 위로 올라가며 포물선의 위쪽 부분의 접점 T에서 닿고, 포물선 오른쪽 끝에는 식이 적혀 있다.",
+    "solutionImageCaption": "포물선과 직선을 연립하면 x²−4x+(k−3)=0이고, 접하려면 이 방정식이 중근을 가져야 하므로 판별식이 0이다. 판별식을 정리하면 28−4k=0이다. 정답은 7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -330,9 +334,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "꼭짓점 A와 x축과의 교점 B, C로 삼각형 ABC를 이룬다.",
-    "solutionImageCaption": "꼭짓점 A와 x축과의 교점 B, C로 삼각형 ABC를 이룬다.",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 y=2x²−8x−10과 삼각형 ABC를 그린 그림이다. 꼭짓점 A(2, −18)와 x축과 만나는 두 점 B(−1, 0), C(5, 0)를 주황색 선분으로 이었고, A에서 x축으로 점선을 내렸다.",
+    "solutionImageCaption": "y=2(x−2)²−18이므로 꼭짓점은 A(2, −18)이고 x절편은 B(−1, 0), C(5, 0)이다. 밑변 BC=6, 높이 18이므로 삼각형 ABC의 넓이는 2분의 1×6×18=54이다. 정답은 ㄱ, ㄷ이다.",
     "solutionImageSize": "full"
   },
   {
@@ -498,7 +502,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 k인 아래로 볼록한 포물선이다. 꼭짓점이 점으로 찍혀 있고 점선이 k축의 눈금 2분의 1까지 이어지며, 오른쪽 곡선 위 점 곁에 f(k)가 적혀 있다.",
+    "solutionImageCaption": "x에 대한 최댓값을 구하면 f(k)=3k²−3k−1이다. 그림에서 세로 방향은 f(k)의 값이다. 완전제곱식으로 고치면 3(k−2분의 1)²−4분의 7이므로 그래프의 꼭짓점이 k=2분의 1이고 f(k)는 그때 최소이다. 정답은 −4분의 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -624,7 +632,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 t인 아래로 볼록한 포물선 y=(t−4)²−4를 −4≤t≤12 구간에서 그린 그림이다. 꼭짓점에서 t축의 눈금 4까지 점선이 있고, 양 끝점이 같은 높이임을 점선으로 이었으며 t축에 −4, 4, 12가 적혀 있다.",
+    "solutionImageCaption": "t=x²−4x=(x−2)²−4이므로 −2≤x≤5에서 t의 범위는 −4≤t≤12이다. y=(t−4)²−4는 t=4에서 최소이고 두 끝점 t=−4, t=12에서 같은 값을 가지므로 최댓값은 끝점에서 생긴다. 정답은 60이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -666,7 +678,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/24_순천여고_1학기_중간_고1_기출/q16.png"
+    "image": "assets/images/24_순천여고_1학기_중간_고1_기출/q16.png",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변의 길이가 10인 정삼각형 ABC에 내접한 직사각형 PQRS를 나타낸 그림이다. 삼각형의 높이 h는 점선, 직사각형의 높이 y와 가로 x는 각각 변 곁에 표시하였다.",
+    "solutionImageCaption": "정삼각형의 높이 h는 5√3이고, 닮음에 의해 직사각형의 가로 x와 높이 y는 x:10=(h−y):h를 만족한다. 넓이 xy를 y에 대한 이차식으로 나타내면 y=h의 절반에서 최대가 된다. 정답은 2분의 25√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -751,9 +767,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "k=10일 때 직선 y=3x+10이 y=|x^2-4x-12|의 그래프와 서로 다른 네 점에서 만난다.",
-    "solutionImageCaption": "k=10일 때 직선 y=3x+10이 y=|x^2-4x-12|의 그래프와 서로 다른 네 점에서 만난다.",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: k=10일 때의 그림이다. 파란 곡선 f(x)=|x²−4x−12|와 주황 직선 y=3x+10이 서로 다른 네 점에서 만나고 네 교점에 점이 찍혀 있다. x축에는 곡선이 꺾이는 두 점의 눈금 −2와 6이 적혀 있다.",
+    "solutionImageCaption": "예: k=10일 때 직선 y=3x+10과 y=f(x)의 그래프가 네 점에서 만난다. 절댓값 안의 식이 0이 되는 x=−2, 6을 경계로 나누어 가운데 구간과 바깥 구간의 교점을 센다. 이 조건을 만족시키는 정수 k의 개수를 구한다. 정답은 6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -797,7 +813,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=1일 때 위로 볼록한 포물선 y=−(x−1)²+7을 그린 그림이다. 꼭짓점 (1, 7)이 표시되어 있고 구간 2≤x≤3에 해당하는 곡선 부분은 주황색으로 굵게 그렸다. 점 (2, 6)에서 두 축으로 점선이 내려오고 x축에 눈금 2, 3이 있다.",
+    "solutionImageCaption": "예: a=1일 때 꼭짓점이 구간 2≤x≤3의 왼쪽에 있으므로 구간의 왼쪽 끝 x=2에서 최대이고 b=6+(2−a)²이다. a+b를 정리하면 a=2분의 3에서 최소이고, 다른 경우의 값과 비교해도 그 값이 가장 작다. 정답은 4분의 31이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -907,7 +927,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 f(x)=x²−kx−1이 x축과 두 점에서 만나는 그림이다. 두 점에 α, β가 붙어 있고 두 점을 잇는 굵은 선분 위에 길이 4가 적혀 있다. 오른쪽 곡선 위 점 곁에 f(x)가 적혀 있다.",
+    "solutionImageCaption": "두 근을 α, β라 하면 α+β=k, αβ=−1이다. (α−β)²=(α+β)²−4αβ=k²+4이고 두 점 사이의 거리가 4이므로 이 값이 16이다. 정답은 k=±2√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -941,6 +965,10 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=−1일 때 아래로 열린 포물선 f(x)를 그린 그림이다. 꼭짓점에서 x축의 눈금 2까지 점선이 이어지고, x축과 만나는 두 점에 −1과 5가 적혀 있으며, 곡선 위 점 곁에 (3, k)가 적혀 있다.",
+    "solutionImageCaption": "예: a=−1일 때의 그래프이다. f(x)≤f(2)이므로 축이 x=2이고 아래로 열리며, f(5)=0이므로 대칭에 의해 f(−1)=0이다. f(x)=a{(x−2)²−9}이고 k=f(3)=−8a이다. f(x)=kx+1의 두 근의 곱이 −2분의 9라는 조건으로 k를 구한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   }
 ];
