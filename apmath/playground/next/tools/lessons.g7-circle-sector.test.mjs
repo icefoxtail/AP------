@@ -72,15 +72,23 @@ const SCENE_STATE = {
   // f01.js 빼기 장면(넓이 mode 0)
   'f1-ring': { f1_ring_R: [4, 12], f1_ring_r: [1, 11], f1_ring_th: [30, 360], f1_ring_t: [0, 1], f1_ring_mode: [0, 1], f1_ring_show: null },
   'f1-lens': { f1_lens_a: [4, 12], f1_lens_t: [0, 1], f1_lens_mode: [0, 1], f1_lens_show: null },
-  'f1-ex22': { f1_ex22_a: [4, 12], f1_ex22_t: [0, 1], f1_ex22_mode: [0, 1], f1_ex22_show: null }
+  'f1-ex22': { f1_ex22_a: [4, 12], f1_ex22_t: [0, 1], f1_ex22_mode: [0, 1], f1_ex22_show: null },
+  // 값이 움직이지 않는 step 해설(교재 수치 그대로): 상태값 없음
+  '1103': {},
+  '1106': {},
+  '1807': {},
+  '1104': {},
+  '1105': {},
+  '1719': {},
+  '1809': {}
 };
 
 // 정리 탭(tab:'review')은 정리 탭이 같은 문제를 그리고 구하는 값을 단계별로만 보여 주는 것을 확인한 장면에만 켭니다.
-const REVIEW_OK = new Set(['1209', '1102', '1609', 'z2-sector', 'z2-semi', 'z2-quarter', 'z2-segment', '1610', '1808', 'f1-ss2#둘레', 'f1-star#둘레']);
+const REVIEW_OK = new Set(['1209', '1102', '1609', 'z2-sector', 'z2-semi', 'z2-quarter', 'z2-segment', '1610', '1808', 'f1-ss2#둘레', 'f1-star#둘레', '1103', '1106', '1807', '1104', '1105', '1719', '1809']);
 
 // 첫 장이 step 으로 시작하는 해설(움직이는 값(to)이 없는 둘레 모드). kit 의 「해설 첫 장은 to 또는 step/part 칸이 첫 1초 안에 있으면 통과」 규칙(sv 브랜치)이 병합되기 전의 kit 은
 // 「첫 1초 안에 그림이 움직이기 시작해야 합니다」 오류를 내므로, 이 해설들에 한해 그 한 가지 오류만 걸러내고 대신 step 칸이 at ≤ 1 에 있는지 직접 확인합니다.
-const NEEDS_KIT_STEP_RULE = new Set(['f1-ss2#둘레', 'f1-star#둘레']);
+const NEEDS_KIT_STEP_RULE = new Set(['f1-ss2#둘레', 'f1-star#둘레', '1103#undefined', '1106#undefined', '1807#undefined', '1104#undefined', '1105#undefined', '1719#undefined', '1809#undefined']);
 const FIRST_MOVE_ERR = /첫 1초 안에 그림이 움직이기 시작해야 합니다/;
 const keyOf = (id, lesson) => id + '#' + lesson.label;
 const errsOf = (id, lesson, errors) => (NEEDS_KIT_STEP_RULE.has(keyOf(id, lesson)) ? errors.filter((e) => !FIRST_MOVE_ERR.test(e)) : errors);
@@ -168,6 +176,13 @@ const FACTS = {
     assert.deepEqual([sq, quarter, half, white], [16, 4, 2, 2]);
     return { allowed: [a, a / 2, sq, quarter, half], note: 'a=4 · 정사각형 16 · 사분원 4π − 반원 2π = 2π · 16−2π' };
   },
+  '1103': () => { const [a, b, c] = [3, 5, 7], tot = a + b + c, u = 360 / tot; assert.equal(u * a, 72); return { allowed: [a, b, c, tot, 360, u, u * a], note: '3:5:7 · 15칸 · 한 칸 24° · 72°' }; },
+  '1106': () => { const S = 24, al = 120, be = 40, x = (S * be) / al; assert.equal(x, 8); return { allowed: [al, S, be, 1, 3, x], note: '24π:x=120:40 · x=8π' }; },
+  '1807': () => { const cof = 105, n = 3; assert.equal(cof / n, 35); return { allowed: [cof, n, cof / n], note: '∠COF=105° · 3등분 · 35°' }; },
+  '1104': () => { const al = 40, arc = 4, cod = 180 - 2 * al, x = (arc * cod) / al; assert.deepEqual([cod, x], [100, 10]); return { allowed: [al, arc, 180, 2, cod, x], note: '40° · 4π · 180−2×40=100° · 4π:CD=40:100 → 10π' }; },
+  '1105': () => { const be = 42, arc = 7, aoc = 180 - 2 * be, x = (arc * aoc) / be; assert.deepEqual([aoc, x], [96, 16]); return { allowed: [be, arc, 180, 2, aoc, x], note: '42° · 7π · 180−2×42=96° · 7π:AC=42:96 → 16π' }; },
+  '1719': () => { const aoc = (180 * 4) / 5, boc = 180 - aoc, x = (180 - aoc) / 2; assert.deepEqual([boc, aoc, x], [36, 144, 18]); return { allowed: [4, 1, 180, boc, aoc, 2, x], note: '4:1 · 36° · 144° · (180−144)÷2=18°' }; },
+  '1809': () => { const n = 5, th = (180 * (n - 2)) / n, S = (10 * 10 * th) / 360; assert.deepEqual([th, S], [108, 30]); return { allowed: [180, n, 2, 10, th, 360, S], note: '정오각형 108° · π×10²×108/360=30π' }; },
   'z3-circleProof': () => {
     const r = 6, N = 16, circ = 2 * r, half = r, S = r * r; // π 의 계수
     assert.deepEqual([circ, half, S], [12, 6, 36]);
@@ -423,7 +438,14 @@ const EXPECT = {
   'f4-ringmv': () => PI((6 * 6 * 60) / 360),
   'f1-ring': () => { const big = (6 * 6 * 90) / 360; return PI(big) + '-\\frac{' + PI(big) + '}{4}=\\frac{' + PI(big * 3) + '}{4}'; },
   'f1-lens': () => (2 * 8 * 8) + '-' + PI(2 * ((8 * 8) / 4)), // 64 − (32π − 64) = 128 − 32π
-  'f1-ex22': () => (4 * 4) + '-' + PI(2)
+  'f1-ex22': () => (4 * 4) + '-' + PI(2),
+  '1103': () => (360 * 3) / 15 + '°',
+  '1106': () => PI((24 * 40) / 120),
+  '1807': () => 105 / 3 + '°',
+  '1104': () => PI((4 * (180 - 2 * 40)) / 40),
+  '1105': () => PI((7 * (180 - 2 * 42)) / 42),
+  '1719': () => (180 - (180 * 4) / 5) / 2 + '°',
+  '1809': () => PI((10 * 10 * ((180 * 3) / 5)) / 360)
 };
 test('해설마다 answer 가 장면 값으로 계산한 정답과 같다', () => {
   for (const { id, lesson, list } of entries) {
