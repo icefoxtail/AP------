@@ -5,7 +5,15 @@ import {fileURLToPath} from 'node:url';
 import {repoRoot,assertOutput} from './visual-browser-runtime.mjs';
 import {sha256} from './verify-visual-engine-static.mjs';
 
-export function loadBank(code){const context={window:{}};vm.runInNewContext(code,context,{timeout:5000});return context.window.questionBank;}
+// An exam file normally ends with window.questionBank=[...]. Some middle-school files define only window.examData={...questions:[...]} and no
+// questionBank alias. questionBank wins whenever it is defined (even if examData differs); examData.questions is read only when it is absent.
+// With neither, the result is what it always was (undefined) and every caller's own check refuses it.
+function bankOfWindow(w){const bank=w.questionBank;if(bank!==undefined&&bank!==null)return bank;const alt=w.examData?.questions;return Array.isArray(alt)?alt:bank;}
+export function loadBank(code){const context={window:{}};vm.runInNewContext(code,context,{timeout:5000});return bankOfWindow(context.window);}
+// The Archive engine reads window.questionBank only. Candidate exam JS that is served to it (or patched through window.questionBank) therefore needs
+// this alias when the source has none. bankAliasSuffix returns '' for a source that defines questionBank, so those candidate bytes are unchanged.
+const BANK_ALIAS_JS='\n;if(window.questionBank==null&&window.examData&&Array.isArray(window.examData.questions))window.questionBank=window.examData.questions;\n';
+export function bankAliasSuffix(code){const context={window:{}};vm.runInNewContext(code,context,{timeout:5000});const w=context.window;return (w.questionBank===undefined||w.questionBank===null)&&Array.isArray(w.examData?.questions)?BANK_ALIAS_JS:'';}
 export function buildMatrix({run,bindings,modes=['sol']}) {
   run=assertOutput(run);const fixtures=JSON.parse(fs.readFileSync(path.join(run,'fixtures/manifest.json'),'utf8'));
   const grouped=new Map();
@@ -24,7 +32,7 @@ export function buildMatrix({run,bindings,modes=['sol']}) {
       if(!original.some(q=>String(q.id)===String(item.questionId)))throw Error('SOURCE_QUESTION_MISSING');
       const fixture=fixtures.find(v=>v.id===item.fixtureId);return{id:item.questionId,fields:{solutionImage:'/'+fixture.svg.replace(/^\/+/,''),solutionImageAlt:item.alt,solutionImageCaption:item.caption,solutionImageSize:'full'}};
     });
-    const candidate=source+'\n;for(const patch of '+JSON.stringify(patches)+'){const q=window.questionBank.find(q=>String(q.id)===String(patch.id));Object.assign(q,patch.fields);}\n';
+    const candidate=source+bankAliasSuffix(source)+'\n;for(const patch of '+JSON.stringify(patches)+'){const q=window.questionBank.find(q=>String(q.id)===String(patch.id));Object.assign(q,patch.fields);}\n';
     const bank=loadBank(candidate);if(bank.length!==original.length)throw Error('SOURCE_QCOUNT_MUTATION');
     const protectedParity=original.every((q,n)=>{
       const before=JSON.parse(JSON.stringify(q)),after=JSON.parse(JSON.stringify(bank[n]));
