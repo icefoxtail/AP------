@@ -1,0 +1,542 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleA20",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "20"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crossE",
+        "op": "INTERSECTION",
+        "inputs": [
+          "lineBC",
+          "circleA20"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "crossE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "A"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "lineCE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleCE",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "E",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "perpEF",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "E",
+          "lineCE"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crossF",
+        "op": "INTERSECTION",
+        "inputs": [
+          "perpEF",
+          "circleCE"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "crossF"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "C",
+            "E"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "G",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "E",
+          "C",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAD",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenAE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenGF",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "G",
+          "F"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AD12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "AB12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "BC12",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "bigRight",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "lineAB",
+          "lineBC"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "AE20",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "E"
+        ],
+        "sourceConditionId": "c3",
+        "expected": {
+          "kind": "integer",
+          "value": "20"
+        }
+      },
+      {
+        "id": "smallSide",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "C",
+          "E",
+          "E",
+          "F"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "smallRight",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "lineCE",
+          "perpEF"
+        ],
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "smallOpposite",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "C",
+          "E",
+          "F",
+          "G"
+        ],
+        "sourceConditionId": "c2"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointNames": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rCsmall",
+      "refs": [
+        "G",
+        "C",
+        "E"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "C",
+        "E",
+        "F"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenAD",
+      "ownerSegment": "AD",
+      "prefix": "AD",
+      "unit": "cm",
+      "factRole": "GIVEN"
+    },
+    {
+      "nodeId": "lenAE",
+      "ownerSegment": "AE",
+      "prefix": "AE",
+      "unit": "cm",
+      "factRole": "GIVEN"
+    },
+    {
+      "nodeId": "lenGF",
+      "ownerSegment": "FG",
+      "prefix": "GF",
+      "unit": "cm",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "planeMarks": {
+    "arcs": [],
+    "regions": []
+  },
+  "caption": "정사각형 ABCD의 한 변은 12cm이다. AE=20cm이므로 (12+GF)²+12²=20², GF=4cm이며 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 정사각형이고 AD=12cm이다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "lineAB",
+        "lineBC",
+        "equalABBC",
+        "rightABBC",
+        "givenAD12"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "CEFG는 정사각형이다.",
+      "mappedTo": [
+        "C",
+        "E",
+        "F",
+        "G",
+        "lineCE",
+        "perpE",
+        "circleEC",
+        "equalCEEF",
+        "rightCEEF"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AE=20cm이다.",
+      "mappedTo": [
+        "A",
+        "E",
+        "circleAE",
+        "givenAE20"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "좌표차 A–E의 가로 성분은 AD+CE=12+GF이고 세로 성분은 AB=12이다. 작은 정사각형이므로 CE=GF.",
+    "피타고라스 정리로 GF=4cm이며 이는 원문 선택지 ②이다."
+  ],
+  "sourceQuote": "오른쪽 그림에서 $\\square ABCD$와 $\\square CEFG$가 정사각형이고 $\\overline{AD}=12\\text{ cm}$, $\\overline{AE}=20\\text{ cm}$일 때, $\\overline{GF}$의 길이는? [4점]",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  }
+}

@@ -1,0 +1,768 @@
+{
+  "questions": [
+    {
+      "question": "Wangui Q18",
+      "validationHarness": "preparation-20-maesan-h1-1final/checker/recheck-input-only/run_construction_contract.py",
+      "result": {
+        "status": "PASS",
+        "contractSource": {
+          "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+          "bytes": 27356,
+          "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+          "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+        },
+        "mathPlanSha256": "540223426dca43856c3bf2779eda4298129b392cc55de8dbe3922020d6bc24f6",
+        "stages": {
+          "construction.validate": "PASS",
+          "construction.execute": "PASS"
+        },
+        "pointProvenance": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "factRole": "GIVEN",
+            "classification": "SOURCE_POINT_LITERAL"
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "factRole": "GIVEN",
+            "classification": "SOURCE_POINT_LITERAL"
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "factRole": "GIVEN",
+            "classification": "SOURCE_POINT_LITERAL"
+          },
+          {
+            "nodeId": "D",
+            "op": "VECTOR_SUM_POINT",
+            "factRole": "DERIVED_INTERMEDIATE",
+            "classification": "DERIVED_POINT"
+          },
+          {
+            "nodeId": "E",
+            "op": "SELECT_POINT",
+            "factRole": "DERIVED_INTERMEDIATE",
+            "classification": "DERIVED_POINT"
+          },
+          {
+            "nodeId": "F",
+            "op": "SELECT_POINT",
+            "factRole": "DERIVED_INTERMEDIATE",
+            "classification": "DERIVED_POINT"
+          },
+          {
+            "nodeId": "G",
+            "op": "VECTOR_SUM_POINT",
+            "factRole": "DERIVED_INTERMEDIATE",
+            "classification": "DERIVED_POINT"
+          }
+        ],
+        "validation": {
+          "nodeCount": 18,
+          "dependencyOrder": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "circleAE",
+            "lineAB",
+            "lineBC",
+            "hitsE",
+            "lenAD",
+            "E",
+            "circleEC",
+            "lenAE",
+            "lineCE",
+            "perpE",
+            "hitsF",
+            "F",
+            "G",
+            "lenGF"
+          ],
+          "conditionAuditCount": 6
+        },
+        "model": {
+          "engine": "SymPy",
+          "version": "1.14.0",
+          "points": {
+            "A": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              ],
+              "approximation": [
+                0.0,
+                12.0
+              ],
+              "precisionDigits": 17
+            },
+            "B": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ],
+              "approximation": [
+                0.0,
+                0.0
+              ],
+              "precisionDigits": 17
+            },
+            "C": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ],
+              "approximation": [
+                12.0,
+                0.0
+              ],
+              "precisionDigits": 17
+            },
+            "D": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              ],
+              "approximation": [
+                12.0,
+                12.0
+              ],
+              "precisionDigits": 17
+            },
+            "E": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "16"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ],
+              "approximation": [
+                16.0,
+                0.0
+              ],
+              "precisionDigits": 17
+            },
+            "F": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "16"
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ],
+              "approximation": [
+                16.0,
+                4.0
+              ],
+              "precisionDigits": 17
+            },
+            "G": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ],
+              "approximation": [
+                12.0,
+                4.0
+              ],
+              "precisionDigits": 17
+            }
+          },
+          "scalars": {
+            "lenAD": {
+              "exact": {
+                "kind": "integer",
+                "value": "12"
+              },
+              "approximation": 12.0
+            },
+            "lenAE": {
+              "exact": {
+                "kind": "integer",
+                "value": "20"
+              },
+              "approximation": 20.0
+            },
+            "lenGF": {
+              "exact": {
+                "kind": "integer",
+                "value": "4"
+              },
+              "approximation": 4.0
+            }
+          },
+          "lines": {
+            "lineAB": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ],
+              "approximation": [
+                1.0,
+                0.0,
+                0.0
+              ]
+            },
+            "lineBC": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ],
+              "approximation": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            },
+            "lineCE": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ],
+              "approximation": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            },
+            "perpE": {
+              "exact": [
+                {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "-16"
+                }
+              ],
+              "approximation": [
+                1.0,
+                0.0,
+                -16.0
+              ]
+            }
+          },
+          "circles": {
+            "circleAE": {
+              "centerExact": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              ],
+              "radiusExact": {
+                "kind": "integer",
+                "value": "20"
+              },
+              "approximation": [
+                0.0,
+                12.0,
+                20.0
+              ]
+            },
+            "circleEC": {
+              "centerExact": [
+                {
+                  "kind": "integer",
+                  "value": "16"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ],
+              "radiusExact": {
+                "kind": "integer",
+                "value": "4"
+              },
+              "approximation": [
+                16.0,
+                0.0,
+                4.0
+              ]
+            }
+          },
+          "pointSets": {
+            "hitsE": [
+              {
+                "exact": [
+                  {
+                    "kind": "integer",
+                    "value": "-16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ],
+                "approximation": [
+                  -16.0,
+                  0.0
+                ]
+              },
+              {
+                "exact": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ],
+                "approximation": [
+                  16.0,
+                  0.0
+                ]
+              }
+            ],
+            "hitsF": [
+              {
+                "exact": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ],
+                "approximation": [
+                  16.0,
+                  -4.0
+                ]
+              },
+              {
+                "exact": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ],
+                "approximation": [
+                  16.0,
+                  4.0
+                ]
+              }
+            ]
+          },
+          "conditionAudits": [
+            {
+              "id": "equalABBC",
+              "sourceConditionId": "c1",
+              "kind": "EQUAL_DISTANCE",
+              "status": "PASS",
+              "checks": [
+                "DISTANCES_EQUAL"
+              ],
+              "observed": {
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "id": "rightABBC",
+              "sourceConditionId": "c1",
+              "kind": "PERPENDICULAR",
+              "status": "PASS",
+              "checks": [
+                "DIRECTION_VECTORS_PERPENDICULAR"
+              ],
+              "observed": true
+            },
+            {
+              "id": "equalCEEF",
+              "sourceConditionId": "c2",
+              "kind": "EQUAL_DISTANCE",
+              "status": "PASS",
+              "checks": [
+                "DISTANCES_EQUAL"
+              ],
+              "observed": {
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "id": "rightCEEF",
+              "sourceConditionId": "c2",
+              "kind": "PERPENDICULAR",
+              "status": "PASS",
+              "checks": [
+                "DIRECTION_VECTORS_PERPENDICULAR"
+              ],
+              "observed": true
+            },
+            {
+              "id": "givenAD12",
+              "sourceConditionId": "c1",
+              "kind": "DISTANCE_EQUALS",
+              "status": "PASS",
+              "checks": [
+                "EXACT_POINT_DISTANCE"
+              ],
+              "observed": {
+                "kind": "integer",
+                "value": "12"
+              },
+              "expected": {
+                "kind": "integer",
+                "value": "12"
+              }
+            },
+            {
+              "id": "givenAE20",
+              "sourceConditionId": "c3",
+              "kind": "DISTANCE_EQUALS",
+              "status": "PASS",
+              "checks": [
+                "EXACT_POINT_DISTANCE"
+              ],
+              "observed": {
+                "kind": "integer",
+                "value": "20"
+              },
+              "expected": {
+                "kind": "integer",
+                "value": "20"
+              }
+            }
+          ],
+          "transcript": [
+            {
+              "nodeId": "A",
+              "op": "SOURCE_POINT",
+              "dependencies": []
+            },
+            {
+              "nodeId": "B",
+              "op": "SOURCE_POINT",
+              "dependencies": []
+            },
+            {
+              "nodeId": "C",
+              "op": "SOURCE_POINT",
+              "dependencies": []
+            },
+            {
+              "nodeId": "D",
+              "op": "VECTOR_SUM_POINT",
+              "dependencies": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "nodeId": "circleAE",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "dependencies": [
+                "A"
+              ]
+            },
+            {
+              "nodeId": "lineAB",
+              "op": "LINE_THROUGH",
+              "dependencies": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "nodeId": "lineBC",
+              "op": "LINE_THROUGH",
+              "dependencies": [
+                "B",
+                "C"
+              ]
+            },
+            {
+              "nodeId": "hitsE",
+              "op": "INTERSECTION",
+              "dependencies": [
+                "circleAE",
+                "lineBC"
+              ]
+            },
+            {
+              "nodeId": "lenAD",
+              "op": "SEGMENT_LENGTH",
+              "dependencies": [
+                "A",
+                "D"
+              ]
+            },
+            {
+              "nodeId": "E",
+              "op": "SELECT_POINT",
+              "dependencies": [
+                "A",
+                "B",
+                "hitsE"
+              ]
+            },
+            {
+              "nodeId": "circleEC",
+              "op": "CIRCLE_THROUGH_POINT",
+              "dependencies": [
+                "C",
+                "E"
+              ]
+            },
+            {
+              "nodeId": "lenAE",
+              "op": "SEGMENT_LENGTH",
+              "dependencies": [
+                "A",
+                "E"
+              ]
+            },
+            {
+              "nodeId": "lineCE",
+              "op": "LINE_THROUGH",
+              "dependencies": [
+                "C",
+                "E"
+              ]
+            },
+            {
+              "nodeId": "perpE",
+              "op": "PERPENDICULAR_THROUGH",
+              "dependencies": [
+                "E",
+                "lineCE"
+              ]
+            },
+            {
+              "nodeId": "hitsF",
+              "op": "INTERSECTION",
+              "dependencies": [
+                "circleEC",
+                "perpE"
+              ]
+            },
+            {
+              "nodeId": "F",
+              "op": "SELECT_POINT",
+              "dependencies": [
+                "C",
+                "E",
+                "hitsF"
+              ]
+            },
+            {
+              "nodeId": "G",
+              "op": "VECTOR_SUM_POINT",
+              "dependencies": [
+                "C",
+                "E",
+                "F"
+              ]
+            },
+            {
+              "nodeId": "lenGF",
+              "op": "SEGMENT_LENGTH",
+              "dependencies": [
+                "F",
+                "G"
+              ]
+            }
+          ],
+          "order": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "circleAE",
+            "lineAB",
+            "lineBC",
+            "hitsE",
+            "lenAD",
+            "E",
+            "circleEC",
+            "lenAE",
+            "lineCE",
+            "perpE",
+            "hitsF",
+            "F",
+            "G",
+            "lenGF"
+          ],
+          "coordinateMode": "CONSTRUCTED_REALIZATION"
+        },
+        "conditionAudits": [
+          {
+            "id": "equalABBC",
+            "sourceConditionId": "c1",
+            "kind": "EQUAL_DISTANCE",
+            "status": "PASS",
+            "checks": [
+              "DISTANCES_EQUAL"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "rightABBC",
+            "sourceConditionId": "c1",
+            "kind": "PERPENDICULAR",
+            "status": "PASS",
+            "checks": [
+              "DIRECTION_VECTORS_PERPENDICULAR"
+            ],
+            "observed": true
+          },
+          {
+            "id": "equalCEEF",
+            "sourceConditionId": "c2",
+            "kind": "EQUAL_DISTANCE",
+            "status": "PASS",
+            "checks": [
+              "DISTANCES_EQUAL"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "rightCEEF",
+            "sourceConditionId": "c2",
+            "kind": "PERPENDICULAR",
+            "status": "PASS",
+            "checks": [
+              "DIRECTION_VECTORS_PERPENDICULAR"
+            ],
+            "observed": true
+          },
+          {
+            "id": "givenAD12",
+            "sourceConditionId": "c1",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "12"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "12"
+            }
+          },
+          {
+            "id": "givenAE20",
+            "sourceConditionId": "c3",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "20"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "20"
+            }
+          }
+        ],
+        "provenanceAudit": {
+          "status": "PASS",
+          "issues": []
+        }
+      },
+      "formal_render": "NOT_RUN"
+    }
+  ]
+}
