@@ -1,0 +1,44 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 6,
+      "height": 8,
+      "orientation": "APEX_UP",
+      "axis": true
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cone",
+      "radius": "bottom",
+      "label": "6"
+    },
+    {
+      "solid": "cone",
+      "height": true,
+      "label": "8"
+    }
+  ],
+  "solidCaption": {
+    "text": "x축 둘레로 회전해 생기는 원뿔"
+  },
+  "caption": "y=0에서 x=8, x=0에서 y=6이므로 회전한 원뿔의 높이는 8, 밑면 반지름은 6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-3/4 x+6의 그래프와 x축, y축으로 둘러싸인 유한한 직각삼각형 영역을 x축 둘레로 1회전한다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건의 두 절편과 원점이 이루는 삼각형을 회전한 원뿔을 표시한다."
+  ],
+  "sourceQuote": "일차함수 y=-3/4x+6의 그래프와 x축, y축으로 둘러싸인 유한한 직각삼각형 영역을 x축을 회전축으로 하여 1회전 시킬 때"
+}
