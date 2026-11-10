@@ -57,6 +57,23 @@ test('quick assessment views keep 빠른 평가 (PC) and 만들기 (phone) curre
   }
 });
 
+test('a body title equal to the phone top bar title is marked so it can be hidden', () => {
+  const heading = text => {
+    const h = { textContent: text, marks: null, classList: { toggle(name, on) { h.marks = [name, on]; } } };
+    return h;
+  };
+  const run = (barText, headings) => navigation.markDuplicateTitles({
+    querySelector: () => ({ textContent: barText }),
+    querySelectorAll: () => headings,
+  });
+  const same = heading(' 학교별 기출 '), other = heading('시험 대비 문제지'), home = heading('JS 아카이브 홈');
+  run('학교별 기출', [same, other]);
+  assert.deepEqual(same.marks, ['title-in-topbar', true]);
+  assert.deepEqual(other.marks, ['title-in-topbar', false]);
+  run('', [home]);
+  assert.deepEqual(home.marks, ['title-in-topbar', false], 'no bar title (home) hides nothing');
+});
+
 test('login state follows the shared AP Math OS session and ignores bad data', () => {
   assert.equal(navigation.loginState(null).loggedIn, false);
   assert.equal(navigation.loginState({}).loggedIn, false);

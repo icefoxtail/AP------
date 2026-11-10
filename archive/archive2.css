@@ -3132,11 +3132,6 @@ body[data-archive-view="compose"] .compose-step-number {
 .home-quick-item:hover {
   background: var(--chip);
 }
-.home-quick-count {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 18px;
-}
 .home-tools {
   display: none;
 }
@@ -3292,4 +3287,65 @@ body[data-archive-view="compose"] .compose-step-number {
   :is(input, select, textarea):not([type="checkbox"]):not([type="radio"]):not([type="range"]) {
     font-size: 16px !important;
   }
+}
+
+/* Display face (Black Han Sans) only for titles of 20px and up and numbers of 18px and up.
+   Units, labels and Korean text below 20px use the body face (Noto Sans KR 700). */
+.badge,
+h1 .badge {
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+.summary-number small,
+.finder-surface .exam-count > strong small {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 4px;
+}
+body[data-archive-view="compose"] .compose-step-number {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+}
+.home-quick-count {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.home-quick-num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+}
+.home-quick-open {
+  color: var(--brand);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+}
+.home-quick-item:hover .home-quick-open {
+  color: var(--brand-hover);
+}
+
+/* Grade choice buttons in 빠른 평가: grade-colored 2px outline, filled with the grade color when chosen. */
+.quick-chip[data-action="quick-grade"] {
+  min-width: 64px;
+  border: 2px solid var(--grade);
+  border-radius: var(--radius-field);
+  background: var(--surface);
+  color: var(--grade);
+  font-weight: 700;
+}
+.quick-chip[data-action="quick-grade"]:hover {
+  background: var(--chip);
+}
+.quick-chip[data-action="quick-grade"][aria-pressed="true"],
+.quick-chip[data-action="quick-grade"][aria-pressed="true"]:hover {
+  border-color: var(--grade);
+  background: var(--grade);
+  color: #fff;
 }

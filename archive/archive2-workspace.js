@@ -2517,6 +2517,10 @@
   function homeExamRowMarkup({ index, exam, at }) {
     const year = String(exam.year || "").slice(-2);
     const title = O.displayTitle(exam);
+    // The spine already shows year and grade, so the row title is school + term only; any missing field keeps the full title.
+    const period = exam.examType === "mid" ? "중간고사" : exam.examType === "final" ? "기말고사" : "";
+    const shortTitle = exam.school && period && exam.semester && O.materialKind?.(exam) === "exam"
+      ? `${exam.school} ${exam.semester}학기 ${period}` : title;
     const meta = [
       exam.primaryStandardCourse || exam.subject,
       exam.qCount ? `${exam.qCount}문항` : "",
@@ -2526,7 +2530,7 @@
       button("source-output-direct", label, `type="button" data-exam="${index}" data-mode="${mode}"`);
     return `<article class="home-exam ${gradeClass(exam.grade)}">
       <div class="home-spine"><span class="home-spine-year">${esc(year)}</span><span class="home-spine-grade">${esc(exam.grade || "")}</span></div>
-      <div class="home-exam-main">${button("source-output-direct", esc(title), `type="button" class="home-exam-title" data-exam="${index}" data-mode="exam"`)}<div class="home-exam-meta">${esc(meta)}</div></div>
+      <div class="home-exam-main">${button("source-output-direct", esc(shortTitle), `type="button" class="home-exam-title" title="${esc(title)}" aria-label="${esc(title)} 시험지 열기" data-exam="${index}" data-mode="exam"`)}<div class="home-exam-meta">${esc(meta)}</div></div>
       <div class="home-exam-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "반에 출제", `type="button" class="primary" data-exam="${index}"`)}</div>
     </article>`;
   }
@@ -2544,7 +2548,7 @@
       ]?.count;
       return button(
         "home-product",
-        `<span>${esc(product.label)}</span><span class="home-quick-count">${count ? `${count}문항` : "열기"}</span>`,
+        `<span>${esc(product.label)}</span>${count ? `<span class="home-quick-count"><span class="home-quick-num">${count}</span>문항</span>` : '<span class="home-quick-open">열기</span>'}`,
         `type="button" class="home-quick-item" data-product-key="${esc(product.productKey)}" data-route-owner="${esc(product.routeOwner || "")}" data-availability="${String(product.availability)}"`,
       );
     };

@@ -22,6 +22,7 @@
     host.hidden = false;
     api.bind(host);
     api.watchLogin(host);
+    api.watchTitles(host);
   }
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   // Text only: no icons (design rule). `view` is the workspace route a button opens.
@@ -179,6 +180,30 @@
 
   function bind() {}
 
+  // On a phone the top bar already names the screen. A body <h1> with exactly the same text gets the
+  // class `title-in-topbar` (CSS hides it visually on narrow screens; screen readers keep it).
+  function markDuplicateTitles(root) {
+    const scope = root || (typeof document === "undefined" ? null : document);
+    const title = scope?.querySelector?.(".archive-mobile-title")?.textContent?.trim() || "";
+    scope?.querySelectorAll?.("main h1").forEach((heading) =>
+      heading.classList.toggle("title-in-topbar", Boolean(title) && heading.textContent.trim() === title));
+  }
+
+  function watchTitles() {
+    if (typeof document === "undefined" || typeof MutationObserver === "undefined" || !document.body) return;
+    let queued = false;
+    const run = () => {
+      queued = false;
+      markDuplicateTitles(document);
+    };
+    new MutationObserver(() => {
+      if (queued) return;
+      queued = true;
+      (typeof requestAnimationFrame === "function" ? requestAnimationFrame : setTimeout)(run);
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    run();
+  }
+
   // A login made in another tab shows up when the teacher comes back.
   function watchLogin(host) {
     if (typeof window === "undefined" || !window.addEventListener || !document?.addEventListener) return;
@@ -198,7 +223,7 @@
   }
 
   return {
-    markup, bind, currentKey, currentView, matches, sync, libraryTabs,
+    markup, bind, currentKey, currentView, matches, sync, libraryTabs, markDuplicateTitles, watchTitles,
     readSession, loginState, loginMarkup, watchLogin, titleFor,
     ITEMS: { SIDEBAR, TABS },
   };

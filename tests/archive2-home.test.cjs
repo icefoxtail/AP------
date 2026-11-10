@@ -136,6 +136,18 @@ test('recently opened exams come first with the existing exam actions; missing f
   assert.match(markup, /반에 출제/);
 });
 
+test('home rows drop year and grade from the title (the spine shows them) and keep the full title for readers', () => {
+  const { home } = loadHome();
+  home.state.catalog = { exams: [
+    exam('a.js', '가나고'),
+    exam('b.js', '', { school: '' }),
+  ], records: [], taxonomy: [] };
+  const markup = home.renderHome();
+  assert.match(markup, /class="home-exam-title" title="2025 가나고 고1" aria-label="2025 가나고 고1 시험지 열기"[^>]*>가나고 1학기 중간고사</);
+  assert.doesNotMatch(markup, />2025 가나고 고1 1학기/, 'no year/grade in the visible title');
+  assert.match(markup, /<span class="home-quick-num">\d+<\/span>문항|<span class="home-quick-open">열기<\/span>/);
+});
+
 test('relative day labels', () => {
   const { home } = loadHome();
   const now = new Date(2026, 10, 10, 15, 0).getTime();
