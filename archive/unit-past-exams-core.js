@@ -1875,6 +1875,7 @@
     SELECTION_ORDERS,
     countGrid,
     buildSelectionSections,
+    selectionStepLabel,
     buildSelectionPapers,
     getSubUnitKey,
     getSubUnitParentKey,

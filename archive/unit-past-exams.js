@@ -225,7 +225,7 @@
   function getProfile() { return core.getProfile(state.profileId); }
   function readyShelf() { return new URLSearchParams(window.location.search).get('ready') === '1'; }
   function getUnit(unitKey) {
-    if (unitKey === GRID_UNIT_KEY) return gridPseudoUnit();
+    if (unitKey === GRID_UNIT_KEY || (G.result && unitKey === G.result.snapshotUnitKey && String(unitKey).startsWith('multi-'))) return gridPseudoUnit();
     const resolved = core.resolveUnitKeyAlias(state.profileId || 'h1', unitKey);
     return state.catalog?.units.find(unit => unit.key === resolved);
   }
@@ -275,6 +275,12 @@
   }
   function getReplacementSourcePool(unit, paper) {
     let records = unit.records;
+    // 단원 x 단계 표에서 만든 권: 바꿀 문항이 속한 단원의 문항 중에서 찾는다(여러 단원이 섞인 권도 같은 규칙).
+    if (paper.selectionGrouped) {
+      const current = paper.records[state.selectedQuestionIndex];
+      const owner = current && (state.catalog?.units || []).find(item => item.key === current.mappedUnitKey);
+      records = owner ? owner.records : unit.records;
+    }
     if (state.sourceMode === 'school' && state.collectionState) {
       const collection = core.buildCollectionPapers(getCollectionRecords(), getProfile(), {
         ...state.collectionState,
@@ -345,7 +351,9 @@
     const snapshotUnitKey = state.sourceMode === 'school'
       ? `collection-${paper.schoolKey || 'combined'}`
       : unit.key;
-    paper.snapshotKey = core.buildSnapshotKey(snapshotUnitKey, paper.records, state.catalog.scope, paper.selection);
+    paper.snapshotKey = core.buildSnapshotKey(snapshotUnitKey, paper.records, state.catalog.scope, paper.selectionGrouped
+      ? { mode: 'grid', difficultySteps: paper.difficultySteps, paperKey: `${paper.gridId || paper.index}-edited` }
+      : paper.selection);
   }
   function getDefaultPaperPrintHeaderOptions(unit, paper) {
     const profile = getProfile();
@@ -896,6 +904,7 @@
   }
 
   function goToStep(step) {
+    if (readyShelf()) { gridLeaveEdit(); return; }
     const next = Math.min(4, Math.max(1, Number(step || 1)));
     if (next > 1 && !getUnit(state.selectedUnitKey)) return;
     if (next === 4 && !state.generatedPapers.length) return;
@@ -1753,7 +1762,7 @@
     const difficultyText = readyShelf() ? describeStepComposition(core.summarizeSteps(paper.records)) || '난이도 정보 없음' : LEVELS.filter(level => levels[level]).map(level => `${level} ${levels[level]}문항`).join(' · ') || '난이도 정보 없음';
     const bars = readyShelf() ? '' : LEVELS.map(level => `<span style="width:${(Number(levels[level] || 0) / total * 100).toFixed(2)}%"></span>`).join('');
     const pager = state.generatedPapers.length > 1 ? `<div class="unit-preview-pager"><button class="unit-btn" type="button" aria-label="이전 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition - 1})"${state.previewPaperPosition <= 0 ? ' disabled' : ''}><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><span>${state.previewPaperPosition + 1} / ${state.generatedPapers.length}</span><button class="unit-btn" type="button" aria-label="다음 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition + 1})"${state.previewPaperPosition >= state.generatedPapers.length - 1 ? ' disabled' : ''}><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></div>` : '';
-    root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: readyShelf() ? '바로 쓰는 문제지' : state.sourceMode === 'school' ? paper.school || '학교별 문제지' : QUICK_PRESETS[state.filterState?.preset]?.label, count: paper.count })}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> 실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}<div class="unit-difficulty-bar" aria-hidden="true">${bars}</div></dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">${readyShelf() ? "수록 문항" : "조건에 맞는 문항"}<strong>${available.toLocaleString()}문항</strong></div><section class="unit-print-header-editor" aria-labelledby="unit-print-header-title"><h3 id="unit-print-header-title">시험지 헤더</h3><div class="unit-print-header-fields"><label>제목<input id="unit-print-header-title-input" type="text" maxlength="80" value="${escapeHtml(printHeaderOptions.title)}" oninput="UnitPastExams.updatePrintHeaderOption('title', this.value)"></label><label>우측 문구<input type="text" maxlength="60" value="${escapeHtml(printHeaderOptions.metaRight)}" oninput="UnitPastExams.updatePrintHeaderOption('metaRight', this.value)"></label><label>보조 문구<input type="text" maxlength="120" value="${escapeHtml(printHeaderOptions.subtitle)}" oninput="UnitPastExams.updatePrintHeaderOption('subtitle', this.value)"></label></div><div class="unit-print-header-checks"><label><input type="checkbox"${printHeaderOptions.showNameLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showNameLine', this.checked)"> 이름칸</label><label><input type="checkbox"${printHeaderOptions.showScoreLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showScoreLine', this.checked)"> 점수칸</label></div></section><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(3)">${readyShelf() ? "문제지 목록" : "구성 수정"}</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>학생에게 출제</button></div></aside></div></section>`;
+    root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: readyShelf() ? '바로 쓰는 문제지' : state.sourceMode === 'school' ? paper.school || '학교별 문제지' : QUICK_PRESETS[state.filterState?.preset]?.label, count: paper.count })}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> 실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}<div class="unit-difficulty-bar" aria-hidden="true">${bars}</div></dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">${readyShelf() ? "수록 문항" : "조건에 맞는 문항"}<strong>${available.toLocaleString()}문항</strong></div><section class="unit-print-header-editor" aria-labelledby="unit-print-header-title"><h3 id="unit-print-header-title">시험지 헤더</h3><div class="unit-print-header-fields"><label>제목<input id="unit-print-header-title-input" type="text" maxlength="80" value="${escapeHtml(printHeaderOptions.title)}" oninput="UnitPastExams.updatePrintHeaderOption('title', this.value)"></label><label>우측 문구<input type="text" maxlength="60" value="${escapeHtml(printHeaderOptions.metaRight)}" oninput="UnitPastExams.updatePrintHeaderOption('metaRight', this.value)"></label><label>보조 문구<input type="text" maxlength="120" value="${escapeHtml(printHeaderOptions.subtitle)}" oninput="UnitPastExams.updatePrintHeaderOption('subtitle', this.value)"></label></div><div class="unit-print-header-checks"><label><input type="checkbox"${printHeaderOptions.showNameLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showNameLine', this.checked)"> 이름칸</label><label><input type="checkbox"${printHeaderOptions.showScoreLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showScoreLine', this.checked)"> 점수칸</label></div></section><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(3)">${readyShelf() ? "권 목록으로" : "구성 수정"}</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>학생에게 출제</button></div></aside></div></section>`;
     const headerEditor = root.querySelector('.unit-print-header-editor');
     headerEditor?.insertAdjacentHTML('afterend', `${renderQuestionEditToggle()}${renderQuestionReplacementPanel(unit, paper)}`);
     loadPreviewPaper(state.previewPaperPosition);
@@ -2083,7 +2092,7 @@
   const GRID_PER_CELL_MAX = 50;
   const G = {
     profileId: '', course: '', cells: new Set(), checked: new Set(), amount: 'all', perCell: 10, order: 'recent',
-    view: 'grid', counts: {}, showNone: false, result: null, catalogs: new Map(), saved: new Map(), papersPushed: false
+    view: 'grid', counts: {}, showNone: false, result: null, catalogs: new Map(), saved: new Map(), papersPushed: false, editing: '', editPushed: false
   };
 
   function gridKey(unitKey, token) { return `${unitKey}|${token}`; }
@@ -2156,7 +2165,8 @@
     ['unit', 'step', 'steps', 'semanticSubject'].forEach(key => url.searchParams.delete(key));
     if (G.profileId) url.searchParams.set('grade', G.profileId); else url.searchParams.delete('grade');
     if (G.profileId && gridCourses().length > 1 && G.course) url.searchParams.set('course', G.course); else url.searchParams.delete('course');
-    if (G.view === 'papers') url.searchParams.set('view', 'papers'); else url.searchParams.delete('view');
+    if (G.view === 'papers' || G.view === 'edit') url.searchParams.set('view', G.view); else url.searchParams.delete('view');
+    if (G.view === 'edit' && G.editing) url.searchParams.set('paper', G.editing.replace(/^grid-/, '')); else url.searchParams.delete('paper');
     if (mode === 'push') history.pushState(null, '', url.toString());
     else if (mode === 'replace') history.replaceState(null, '', url.toString());
   }
@@ -2232,10 +2242,16 @@
     const params = new URLSearchParams(window.location.search);
     const grade = params.get('grade');
     if (!core.PROFILES[grade]) { gridClearGrade({ fromPopstate: true }); return; }
-    const view = params.get('view') === 'papers' ? 'papers' : 'grid';
+    const requestedView = params.get('view');
+    const view = requestedView === 'papers' || requestedView === 'edit' ? 'papers' : 'grid';
+    if (G.editing && requestedView !== 'edit') gridCloseEdit();
     if (grade !== G.profileId) { gridSelectGrade(grade, { fromPopstate: true, course: params.get('course') || '', view }); return; }
     if (gridCourses().includes(params.get('course'))) G.course = params.get('course');
     G.view = view === 'papers' && gridHasPapers() ? 'papers' : 'grid';
+    if (requestedView === 'edit' && gridHasPapers() && (G.result.papers.some(paper => paper.gridId === `grid-${params.get('paper')}`))) {
+      gridOpenEdit(`grid-${params.get('paper')}`, { fromPopstate: true });
+      return;
+    }
     renderGrid();
   }
   // 예전 주소(?unit=...)나 단원 카드로 들어오면 그 단원을 체크한 표를 보여 준다.
@@ -2377,6 +2393,11 @@
   function renderGrid() {
     const root = document.getElementById('unit-content');
     if (!root) return;
+    if (G.view === 'edit') {
+      if (G.editing && state.generatedPapers.length && getUnit(state.selectedUnitKey)) { renderWorkflow(); return; }
+      G.editing = '';
+      G.view = gridHasPapers() ? 'papers' : 'grid';
+    }
     if (G.view === 'papers' && gridHasPapers()) { renderGridPapers(root); return; }
     const picker = `<div class="ug-pick">${gridGradeButtons()}${gridCourseButtons()}</div>`;
     if (!G.profileId) {
@@ -2404,9 +2425,13 @@
     const orderLabel = (GRID_ORDERS.find(([id]) => id === result.order) || GRID_ORDERS[0])[1];
     const cards = result.papers.map(paper => {
       const composition = describeStepComposition(paper.stepSummary);
-      const units = result.unitKeys.length > 1 ? `<p class="ug-paper-units">${escapeHtml(paper.unitNames.join(' · '))}</p>` : '';
+      const label = gridPaperLabel(paper, result.order);
+      const facts = [`${paper.count}문항`, `원본 시험지 ${paper.sourceCount}개`];
+      if (result.order !== 'recent') facts.push(gridYearText(paper));
+      const units = result.unitKeys.length > 1 && result.order !== 'unit' ? `<p class="ug-paper-units">${escapeHtml(paper.unitNames.join(' · '))}</p>` : '';
+      const edited = paper.edited ? '<p class="ug-paper-edited">문항을 바꾼 권입니다. 출력·출제에 바꾼 문항이 쓰입니다.</p>' : '';
       const args = `'${GRID_UNIT_KEY}', '${paper.gridId}', this`;
-      return `<li class="ug-paper" data-profile="${G.profileId}"><div class="ug-paper-no"><span class="ug-big">${paper.index}</span><small>권</small></div><div class="ug-paper-info"><h3>${escapeHtml(paper.title)}</h3><p>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개 · ${gridYearText(paper)}</p>${composition ? `<p class="ug-paper-steps">${escapeHtml(composition)}</p>` : ''}${units}</div><div class="ug-paper-actions"><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'exam')" aria-label="${escapeHtml(paper.title)} 시험지">시험지</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'sol')" aria-label="${escapeHtml(paper.title)} 해설">해설</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'ans')" aria-label="${escapeHtml(paper.title)} 정답">정답</button><button type="button" class="ug-primary ug-assign" onclick="UnitPastExams.assignPaper(${args})" aria-label="${escapeHtml(paper.title)} 반에 출제">반에 출제</button></div></li>`;
+      return `<li class="ug-paper" data-profile="${G.profileId}"><div class="ug-paper-no"><span class="ug-big">${paper.index}</span><small>권</small></div><div class="ug-paper-info"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(facts.join(' · '))}</p>${composition ? `<p class="ug-paper-steps">${escapeHtml(composition)}</p>` : ''}${units}${edited}</div><div class="ug-paper-actions"><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'exam')" aria-label="${escapeHtml(paper.title)} 시험지">시험지</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'sol')" aria-label="${escapeHtml(paper.title)} 해설">해설</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'ans')" aria-label="${escapeHtml(paper.title)} 정답">정답</button><button type="button" class="ug-btn ug-fix" title="미리 보고, 시험지 헤더와 문항을 고칩니다" onclick="UnitPastExams.gridOpenEdit('${paper.gridId}')" aria-label="${escapeHtml(paper.title)} 미리 보고 고치기">고치기</button><button type="button" class="ug-primary ug-assign" onclick="UnitPastExams.assignPaper(${args})" aria-label="${escapeHtml(paper.title)} 반에 출제">반에 출제</button></div></li>`;
     }).join('');
     root.innerHTML = `<section class="ug ug-papers"><div class="ug-papers-head"><button type="button" class="ug-btn" onclick="UnitPastExams.gridBack()">표로 돌아가기</button><div><h2>${escapeHtml([result.unitLabel, result.stepLabel].filter(Boolean).join(' · '))}</h2><p class="ug-papers-count"><span class="ug-big">${result.total.toLocaleString()}문항</span><strong>문제지 ${result.papers.length}권</strong><span class="ug-papers-order">${escapeHtml(orderLabel)}</span></p></div></div>${note}<p class="ug-help">한 권은 약 50문항(최대 80문항)으로 나눕니다. 출력이 오래 걸리지 않게 하고, 같은 시험의 문항은 되도록 한 권에 모았습니다.</p><ol class="ug-paper-list" aria-label="문제지 목록">${cards}</ol></section>`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2492,7 +2517,70 @@
     renderGrid();
   }
 
+  // 권 목록의 줄 제목: 위 머리줄과 같은 말을 되풀이하지 않고, 정리 순서에 맞춰 그 권을 구별해 주는 것을 쓴다.
+  // (출력·출제에 넘기는 권 제목 paper.title은 바꾸지 않는다.)
+  function gridPaperLabel(paper, order) {
+    if (order === 'unit') return paper.unitNames.join(' · ') || paper.title;
+    if (order === 'step') return core.selectionStepLabel([...new Set(paper.records.map(record => core.getStepToken(record)))]) || paper.title;
+    return gridYearText(paper);
+  }
+
+  // ---- 권 고치기: 옛 "시험지 확인" 화면(미리보기·헤더 편집·문항 교체)으로 그 권을 연다 ----
+  function gridOpenEdit(gridId, options = {}) {
+    const paper = (G.result?.papers || []).find(item => item.gridId === gridId);
+    if (!paper) return;
+    G.editing = gridId;
+    G.view = 'edit';
+    state.selectedUnitKey = G.result.snapshotUnitKey;
+    state.sourceMode = 'archive';
+    resetQuestionReplacementState({ disableEditMode: true });
+    // 고치는 동안은 복사본을 쓰고, 권 목록으로 돌아갈 때 바뀐 내용을 그 권에 되돌려 쓴다.
+    state.generatedPapers = [{
+      ...paper, unitKey: state.selectedUnitKey, index: `generated-${gridId}`, baseSnapshotKey: paper.baseSnapshotKey || paper.snapshotKey,
+      records: paper.records.map(record => ({ ...record })), outputEnvelopeCache: undefined,
+      printHeaderOptions: paper.printHeaderOptions ? { ...paper.printHeaderOptions } : undefined
+    }];
+    state.previewPaperPosition = 0;
+    state.previewLoadToken += 1;
+    state.workflowStep = 4;
+    if (!options.fromPopstate) { G.editPushed = true; gridSyncUrl('push'); }
+    renderWorkflow();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function gridCommitEdit() {
+    const edited = state.generatedPapers[0];
+    const target = (G.result?.papers || []).find(paper => paper.gridId === G.editing);
+    if (!edited || !target) return;
+    const records = edited.records;
+    const years = records.map(core.getExamYear).filter(year => Number.isInteger(year) && year >= 1900 && year <= 2200);
+    Object.assign(target, {
+      records, count: records.length, sourceCount: new Set(records.map(record => record.sourceFile)).size,
+      snapshotKey: edited.snapshotKey, baseSnapshotKey: edited.baseSnapshotKey, edited: edited.snapshotKey !== edited.baseSnapshotKey,
+      stepSummary: core.summarizeSteps(records), yearMin: years.length ? Math.min(...years) : 0, yearMax: years.length ? Math.max(...years) : 0,
+      unitNames: (state.catalog?.units || []).filter(unit => records.some(record => record.mappedUnitKey === unit.key)).map(unit => unit.name),
+      sections: core.buildSelectionSections(records, target.sectionOptions),
+      printHeaderOptions: edited.printHeaderOptions, outputEnvelopeCache: undefined, snapshotGeneratedAt: undefined
+    });
+  }
+  function gridCloseEdit() {
+    gridCommitEdit();
+    G.editing = '';
+    state.generatedPapers = [];
+    state.selectedUnitKey = '';
+    state.workflowStep = 1;
+    state.previewLoadToken += 1;
+    resetQuestionReplacementState({ disableEditMode: true });
+    G.view = gridHasPapers() ? 'papers' : 'grid';
+  }
+  function gridLeaveEdit() {
+    if (!G.editing) return;
+    gridCloseEdit();
+    if (G.editPushed) { G.editPushed = false; history.back(); return; }
+    gridSyncUrl('replace');
+    renderGrid();
+  }
+
   window.addEventListener('popstate', restoreFromUrl);
-  window.UnitPastExams = { gridSelectGrade, gridClearGrade, gridSetCourse, gridToggleCell, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, renderGrid, init, selectProfile, clearProfileSelection, selectSemanticSubject, clearSemanticSubject, openFineBuilder, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, updateStepSelection, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, previewExistingPaper, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
+  window.UnitPastExams = { gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridToggleCell, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, renderGrid, init, selectProfile, clearProfileSelection, selectSemanticSubject, clearSemanticSubject, openFineBuilder, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, updateStepSelection, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, previewExistingPaper, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

@@ -102,6 +102,9 @@ test('Archive 2.0 ready 화면은 단원 x 단계 표 한 화면이고 칸을 �
   assert.match(runtime.getElement('ug-table').innerHTML, /is-short/);
   runtime.window.UnitPastExams.gridShowPapers();
   assert.match(runtime.getElement('unit-content').innerHTML, /반에 출제/);
+  // 줄 제목은 그 권을 구별해 주는 것(최신순이면 연도)이고, 고치기 버튼이 있다. 출력에 쓰는 title은 그대로 둔다.
+  assert.match(runtime.getElement('unit-content').innerHTML, /<h3>2025년<\/h3>/);
+  assert.match(runtime.getElement('unit-content').innerHTML, /gridOpenEdit\('grid-1'\)[^>]*>고치기</);
   assert.match(runtime.url, /view=papers/);
 });
 
