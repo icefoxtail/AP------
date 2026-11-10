@@ -5,17 +5,21 @@ const { test } = require("node:test");
 const workspace = fs.readFileSync("archive/archive2-workspace.js", "utf8");
 
 test("Archive2 Finder exposes one-click exam, solution, and answer outputs beside separate issue/select actions", () => {
-  const start = workspace.indexOf("function renderFind()");
-  const end = workspace.indexOf("function renderScopes()", start);
+  // Finder and home rows are drawn by one function (examRowMarkup); renderFind only passes rows to it.
+  const start = workspace.indexOf("function examRowMarkup(");
+  const end = workspace.indexOf("function openSimilarList(", start);
   const finder = workspace.slice(start, end);
   assert.notEqual(start, -1);
+  assert.match(workspace.slice(workspace.indexOf("function renderFind()"), workspace.indexOf("function renderScopes()")), /examRowMarkup\(e, examIndexOf\(e\), \{[\s\S]*?more: true/);
   assert.match(finder, /\[\["exam", "시험지"\], \["sol", "해설"\], \["ans", "정답"\]\]/);
   assert.match(finder, /button\("source-output-direct", label,[\s\S]*?data-mode="\$\{mode\}"/);
-  assert.match(finder, /button\("source-issue", "출제"/);
+  assert.match(finder, /button\("source-issue", "반에 출제"/);
   assert.match(finder, /button\("source-toggle"/);
-  const directActionsIndex = finder.indexOf('button("source-output-direct", label,');
-  const issueIndex = finder.indexOf('button("source-issue", "출제"');
-  const selectionIndex = finder.indexOf('button("source-toggle"');
+  // Order of the rendered row: the template, not the helper constants above it.
+  const row = finder.slice(finder.indexOf("<article class=\"exam-row"));
+  const directActionsIndex = row.indexOf(".map(direct)");
+  const issueIndex = row.indexOf('button("source-issue", "반에 출제"');
+  const selectionIndex = row.indexOf("${more}");
   assert.ok(directActionsIndex >= 0 && directActionsIndex < issueIndex && issueIndex < selectionIndex,
     "Finder actions should render exam, solution, answer, issue, then question selection");
   assert.doesNotMatch(finder, /source-preview/, "Finder output actions must not retain the modal preview route");
