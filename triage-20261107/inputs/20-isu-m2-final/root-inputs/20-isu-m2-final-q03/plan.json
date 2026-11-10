@@ -1,0 +1,321 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "△ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "6",
+              "unit": "cm",
+              "side": "LEFT"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rABC",
+              "fill": "LIGHT",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                }
+              ],
+              "label": "27 cm²",
+              "labelKind": "TEXT"
+            }
+          ]
+        },
+        "caption": "작은 삼각형 넓이 27cm²",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "대응하는 변 길이가 각각 6cm와 8cm인 닮은 삼각형.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "주어진 조건에 맞는 예시 모양이다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "△DEF"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "FD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dDE",
+              "from": "D",
+              "to": "E",
+              "label": "8",
+              "unit": "cm",
+              "side": "LEFT"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rDEF",
+              "fill": "LIGHT",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "D",
+                    "E",
+                    "F"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "닮음비를 적용한 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "대응하는 변 길이가 각각 6cm와 8cm인 닮은 삼각형.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "주어진 조건에 맞는 예시 모양이다."
+        ]
+      }
+    }
+  ],
+  "caption": "닮음비가 3:4이므로 넓이비는 9:16이다. 따라서 [DEF]=27×16/9=48cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=6cm, DE=8cm, [ABC]=27cm²이고 두 삼각형은 닮았다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 삼각형은 원문의 대응 순서를 따른 예시다."
+  ],
+  "sourceQuote": "$\\overline{\\mathrm{AB}}=6\\text{ cm}$, $\\overline{\\mathrm{DE}}=8\\text{ cm}$"
+}

@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "P",
+    "H",
+    "S"
+  ],
+  "pointNames": {
+    "O": "O",
+    "T": "T",
+    "P": "P",
+    "H": "H",
+    "S": "S"
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "TO",
+      "refs": [
+        "T",
+        "O"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "PS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "TH",
+      "refs": [
+        "T",
+        "H"
+      ]
+    },
+    {
+      "id": "HS",
+      "refs": [
+        "H",
+        "S"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "T",
+        "O",
+        "S"
+      ]
+    },
+    {
+      "id": "rP",
+      "refs": [
+        "H",
+        "P",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dOP",
+        "from": "O",
+        "to": "P",
+        "label": "8.4",
+        "unit": "m",
+        "side": "BELOW"
+      },
+      {
+        "id": "dPS",
+        "from": "P",
+        "to": "S",
+        "label": "2.1",
+        "unit": "m",
+        "side": "BELOW"
+      },
+      {
+        "id": "dPH",
+        "from": "P",
+        "to": "H",
+        "label": "1.5",
+        "unit": "m",
+        "side": "LEFT"
+      }
+    ]
+  },
+  "caption": "그림에서 사람과 나무의 그림자 끝이 같으므로 나무 그림자는 8.4+2.1=10.5m, 나무의 높이는 1.5×10.5/2.1=7.5m이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "키 1.5m인 사람과 나무가 8.4m 떨어져 있고 사람의 그림자가 2.1m이며 나무 그림자 끝과 일치한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 재민·지우 이름이 혼용되나 그림은 한 사람이다. 이 그림은 이름을 쓰지 않고 한 사람의 그림자 관계를 표시한다."
+  ],
+  "sourceQuote": "$8.4\\text{ m}$ 떨어진 곳에 있으며"
+}
