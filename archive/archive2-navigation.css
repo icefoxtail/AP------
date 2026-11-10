@@ -126,6 +126,14 @@
   .archive-sidebar-foot .archive-login.is-in {
     justify-content: flex-start;
   }
+  /* "선생님 계정으로 로그인해 주세요" is a sentence: it wraps instead of overflowing the 232px menu. */
+  .archive-sidebar-foot .archive-login[data-login="teacher"] {
+    padding: 8px 14px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    word-break: keep-all;
+  }
   .archive-navigation-tools {
     display: flex;
     flex-wrap: wrap;

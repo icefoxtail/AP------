@@ -324,6 +324,14 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-recent-friction-ui.test.cjs']
   },
   {
+    label: 'tests/archive2-school-history.test.cjs',
+    args: ['--test', 'tests/archive2-school-history.test.cjs']
+  },
+  {
+    label: 'tests/archive2-touch-targets.test.cjs',
+    args: ['--test', 'tests/archive2-touch-targets.test.cjs']
+  },
+  {
     label: 'tests/archive2-core.test.cjs',
     args: ['--test', 'tests/archive2-core.test.cjs']
   },

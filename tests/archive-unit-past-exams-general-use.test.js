@@ -43,6 +43,7 @@ async function runPage() {
   });
   const window = {
     UnitPastExamsCore: core, Archive2Core: archive2Core, questionIndex: index,
+    Archive2Session: require(path.join(archiveRoot, 'archive2-session.js')),
     ARCHIVE2_FINAL_CATALOG: { records: [catalogRecord(1, '24_a'), catalogRecord(2, '24_b'), catalogRecord(4, '24_d')] },
     ARCHIVE_META_FOUNDATION_RUNTIME: { status: 'ACTIVE', ownedScopes: [], taxonomyRows: [] },
     ARCHIVE_QUESTION_METADATA: { records: [

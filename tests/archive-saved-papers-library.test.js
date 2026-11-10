@@ -683,7 +683,7 @@ test("Saved Library outstanding render is invalidated when workspace leaves the 
     installLibraryTestGlobals(() => pending.promise);
     const host = { innerHTML: "", prepend() {}, querySelectorAll() { return []; } };
     const render = currentLibrary.render(host, "", "ACTIVE");
-    assert.match(host.innerHTML, /저장한 시험지를 불러오고 있습니다/);
+    assert.match(host.innerHTML, /저장한 문제지를 불러오고 있습니다/);
     currentLibrary.invalidatePendingRequests();
     host.innerHTML = "Finder screen";
     pending.resolve({ papers: [{ ...paper("late-saved", "Late Saved response"), library_status: "ACTIVE" }], next_cursor: null });
@@ -692,7 +692,8 @@ test("Saved Library outstanding render is invalidated when workspace leaves the 
     assert.equal(global.history.state?.archive2SavedLibrary, undefined);
     const workspaceSource = fs.readFileSync(path.join(__dirname, "..", "archive", "archive2-workspace.js"), "utf8");
     assert.match(workspaceSource, /state\.view !== "saved"\) window\.Archive2Library\?\.invalidatePendingRequests\?\.\(\);/);
-    assert.match(workspaceSource, /\.then\(\(result\) => \{ if \(result !== false\) status\("저장한 시험지를 불러왔습니다\."\); \}\)/);
+    // A successful load is not announced on screen (2026-11-10); only failures are.
+    assert.doesNotMatch(workspaceSource, /status\("저장한 시험지를 불러왔습니다\."\)/);
   } finally {
     if (previous.window === undefined) delete global.window; else global.window = previous.window;
     if (previous.location === undefined) delete global.location; else global.location = previous.location;
@@ -1175,7 +1176,7 @@ test("Saved Library supports rename then delete through fresh list authority", a
     assert.match(host.innerHTML, /Sequence B/);
     await click({ libraryAction: "delete", paperId: id });
     assert.deepEqual(mutations, ["rename", "delete"]);
-    assert.match(host.innerHTML, /저장한 시험지가 없습니다/);
+    assert.match(host.innerHTML, /저장한 문제지가 없습니다/);
   } finally {
     if (previous.window === undefined) delete global.window; else global.window = previous.window;
     if (previous.location === undefined) delete global.location; else global.location = previous.location;

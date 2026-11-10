@@ -101,6 +101,7 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
     globalThis.workspaceRenderCount = 0;
     globalThis.workspaceTest = {
       state, recentClassOptions, recentSubjectOptions, updateRecentResults, loadRecent,
+      recentAssignmentMarkup, openRecentAssignmentStatus, renderContent,
       assignmentStatus, getRenderCount: () => globalThis.workspaceRenderCount,
       setView: view => { state.view = view; noteRenderedViewTransition(); },
       setClasses: rows => { classRows = rows; },

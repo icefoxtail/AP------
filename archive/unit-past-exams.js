@@ -35,13 +35,9 @@
     } catch (e) { return null; }
   }
   function compact(value) { return String(value || '').replace(/\s+/g, '').toLowerCase(); }
+  // The teacher rule is shared with the left menu (archive2-session.js) so both always agree.
   function isTeacherSession() {
-    const session = getSession();
-    if (!session) return false;
-    const role = compact(session.role || session.user?.role || session.auth?.role);
-    const id = compact(session.id || session.user?.id || session.auth?.id);
-    const loginId = compact(session.login_id || session.loginId || session.user?.login_id || session.user?.loginId);
-    return ['teacher', 'admin', 'owner'].includes(role) || id === 't_admin' || loginId === 'admin';
+    return Boolean(window.Archive2Session?.isTeacher(getSession()));
   }
   function setStatus(message, isError = false) {
     const el = document.getElementById('unit-status');

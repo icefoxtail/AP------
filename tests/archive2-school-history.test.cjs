@@ -57,6 +57,8 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
     status: (_count, receipts) => ({ complete: receipts.length > 0 }),
   };
   const ctx = vm.createContext(context);
+  // Compose reads window.ProblemBankMeta at start-up (facet matching), so the harness loads it like production.
+  vm.runInContext(read('problem-bank-meta.js'), ctx);
   vm.runInContext(read('archive2-canonical.js'), ctx);
   vm.runInContext(read('archive2-core.js'), ctx);
   vm.runInContext(read('archive2-history.js'), ctx);
@@ -68,7 +70,7 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
     globalThis.workspaceRenderCount = 0;
     globalThis.workspaceTest = {
       state, filterMarkup, finderSchoolValues, reconcileFinderSchool, scopeOptions, pool,
-      recentAssignmentMarkup, renderRecent, loadRecent, changeRecentFilter, applyDraft, draft, replace,
+      recentAssignmentMarkup, renderRecent, loadRecent, changeRecentFilter, applyDraft, draft, replace, review,
       getCandidates: () => candidateRecords,
       setClasses: rows => { classRows = rows; },
       getClasses: () => classRows,
@@ -90,6 +92,12 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
     },
     timerDelays: () => [...timers.values()].map(timer => timer.delay),
   };
+}
+// loadRecent and the filter handlers act only while the workspace is on the 출제 내역 view, as in production.
+function recentHarness(fetcher) {
+  const h = harness(fetcher);
+  h.w.state.view = 'recent';
+  return h;
 }
 function catalogFixture(h) {
   const records = [], exams = [];
@@ -274,7 +282,10 @@ test('Compose pool/scopes still consume the record-level projection authority', 
   }
   const source = read('archive2-workspace.js');
   assert.equal((source.match(/subject: C\.subjectProjectionLabel\(state\.filters\)/g) || []).length, 2);
-  assert.match(source, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters, state\)/);
+  // The replacement-candidate filter goes through workspaceMatches, which applies the shared C.matches
+  // with the unified-only keys stripped (the projection authority itself is unchanged).
+  assert.match(source, /candidateRecords = pool\(\)\.filter\([\s\S]*?workspaceMatches\(r, selectionFilters\)/);
+  assert.match(source, /return C\.matches\(record, stripUnifiedFilters\(filters\), options\)/);
 });
 test('Finder-to-Compose clears stale school without losing the selected subject', async () => {
   const h = harness(); catalogFixture(h);
@@ -310,12 +321,14 @@ test('saved Compose L3/L4 labels migrate only with a current approved advanced a
   const h = harness();
   installCatalog(h, { ...approvedTestCatalog, records: [meta] });
   const path = h.c.pathKey(meta, 4);
-  h.w.state.filters = { grade: meta.sourceGrade };
+  // 고2·고3 list no scope until a subject is chosen (computeTaxonomyRowsForFilters), so the fixture chooses it.
+  const semanticSubject = h.c.subjectProjectionForRecord(meta, meta.sourceGrade, projectionPolicy);
+  h.w.state.filters = { grade: meta.sourceGrade, semanticSubject };
   const scope = h.w.scopeOptions().find(row => row.paths.includes(path));
   assert.ok(scope);
   h.w.state.scopes = [scope.key];
-  h.w.state.filters = { grade: meta.sourceGrade, L3: meta.L3, L4: meta.L4 };
-  h.w.state.rows = [{ id: 'saved', paths: [path], depth: 4, count: 1, difficultyBuckets: [2] }];
+  h.w.state.filters = { grade: meta.sourceGrade, semanticSubject, L3: meta.L3, L4: meta.L4 };
+  h.w.state.rows = [{ id: 'saved', paths: [path], depth: 4, count: 1, difficultyBuckets: [meta.difficultyBucket] }];
   h.w.state.selected = [{ ...meta, rowId: 'saved' }];
   const saved = plain(h.w.draft());
   saved.scopeSourcePaths = [path];
@@ -324,9 +337,11 @@ test('saved Compose L3/L4 labels migrate only with a current approved advanced a
   assert.equal(h.w.state.filters.L3, h.c.advancedFilterValue(meta, 3));
   assert.equal(h.w.state.filters.L4, h.c.advancedFilterValue(meta, 4));
   assert.equal(h.c.matches(h.w.state.selected[0], { ...h.w.state.filters, primaryPaths: [path] }, h.w.state), true);
-  const request = { canonicalAuthority: h.w.state.catalog.canonicalAuthority,
-    filters: { ...h.w.state.filters, primaryPaths: [path] }, rows: h.w.state.rows };
-  assert.notEqual(h.c.review(h.w.state.selected, request).status, 'HARD_BLOCK');
+  // Review through the workspace's own request builder: it strips the unified-only subject key and supplies the
+  // student-history context that C.review now needs.
+  h.w.state.useMode = 'general'; // production switches Compose to general use once the catalog has loaded
+  const review = h.w.review();
+  assert.notEqual(review.status, 'HARD_BLOCK', JSON.stringify(review.hardFailures));
 });
 
 test('unissued draft restores legacy advanced labels only when its exact approved scope remains', () => {
@@ -336,11 +351,12 @@ test('unissued draft restores legacy advanced labels only when its exact approve
   const h = harness();
   installCatalog(h, { ...approvedTestCatalog, records: [meta] });
   const path = h.c.pathKey(meta, 4);
-  h.w.state.filters = { grade: meta.sourceGrade };
+  const semanticSubject = h.c.subjectProjectionForRecord(meta, meta.sourceGrade, projectionPolicy);
+  h.w.state.filters = { grade: meta.sourceGrade, semanticSubject };
   const scope = h.w.scopeOptions().find(row => row.paths.includes(path));
   assert.ok(scope);
   h.w.state.scopes = [scope.key];
-  h.w.state.filters = { grade: meta.sourceGrade, L3: meta.L3, L4: meta.L4 };
+  h.w.state.filters = { grade: meta.sourceGrade, semanticSubject, L3: meta.L3, L4: meta.L4 };
   const saved = plain(h.w.draft());
   saved.scopeSourcePaths = [path];
   assert.equal(saved.rows.length, 0);
@@ -483,7 +499,9 @@ test('compact history markup separates drafts, preserves the detail action and e
   let markup = h.w.renderRecent();
   for (const filter of ['from', 'to', 'grade', 'subject', 'query']) assert.ok(markup.includes(`data-recent-filter="${filter}"`));
   assert.match(markup, /id="recent-class"/); assert.match(markup, /전체 반/);
-  assert.match(markup, /대상 중3/); assert.match(markup, /시험지 고1 · 공통수학1/);
+  // Calm one-line facts: the paper's grade is named only when it differs from the class's grade (중3 class, 고1 paper).
+  assert.match(markup, /시험지는 고1/); assert.match(markup, /<span>공통수학1<\/span>/);
+  assert.doesNotMatch(markup, /대상 중3|출제 번호 ·|PDF 준비 완료/);
   assert.match(markup, /<aside class="history-drafts"/);
   assert.match(markup, /학생별 확인/);
   assert.match(markup, /data-mode="exam" class="small"[^>]*>시험/);
@@ -492,25 +510,29 @@ test('compact history markup separates drafts, preserves the detail action and e
   assert.match(markup, /PDF 다시 준비/);
   assert.match(markup, /data-action="assignment-status"/);
   assert.doesNotMatch(markup, /assignment-students|\/status|<iframe/);
-  assert.match(markup, /대상 0명/); assert.match(markup, /제출 0명/);
+  assert.match(markup, /제출 0\/0/, 'known counts show as 제출 n/m (here 0 of 0)');
   const malicious = { ...f.rows[0], id: 'a" onclick="alert(1)', title: '<script>alert(1)</script>' };
   h.w.state.recentRows = [malicious]; markup = h.w.recentAssignmentMarkup();
   assert.doesNotMatch(markup, /<script>|data-assignment="a" onclick/);
   assert.match(markup, /&lt;script&gt;/);
-  assert.doesNotMatch(markup, /대상 0명|제출 0명/);
+  assert.doesNotMatch(markup, /대상 0명|제출 0명|제출 0\/0/, 'unknown counts are never shown as zero');
 });
-test('CSS stays history-scoped, with compact 2-column desktop and 1-column mobile contract', () => {
+test('CSS stays history-scoped: rows are one list in the shared exam-row component, not a 2-column card grid', () => {
   const css = read('archive2-history.css');
-  assert.match(css, /\.history-grid\s*\{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
-  assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.history-grid\s*\{[^}]*grid-template-columns: minmax\(0, 1fr\)/);
+  assert.doesNotMatch(css, /\.history-grid|\.history-date-group/, 'the old 2-column date-group grid is gone');
+  assert.match(css, /\.history-surface \.history-rows\s*\{/);
   assert.doesNotMatch(css, /\.mobile-nav|bottom-nav|data-archive-navigation|position:\s*fixed/);
+  const workspaceCss = read('archive2.css');
+  assert.match(workspaceCss, /\.exam-row\s*\{[^}]*display: grid/, 'rows reuse the exam-row component');
+  const markup = (() => { const h = harness(); const f = historyFixture(h); h.w.setClasses(f.classes); h.w.state.recentRows = f.rows; h.w.state.recentClassId = ''; return h.w.recentAssignmentMarkup(); })();
+  assert.match(markup, /<div class="exam-rows history-rows"><article class="history-card exam-row no-sim /);
   const html = read('workspace.html');
   assert.ok(html.indexOf('archive2-history.js') < html.indexOf('archive2-workspace.js'));
   assert.match(html, /archive2-navigation\.js\?v=[\w-]+/);
 });
 test('history sends server filters after a debounce and never calls per-card status', async () => {
   const calls = []; let h;
-  h = harness(async url => {
+  h = recentHarness(async url => {
     calls.push(String(url));
     const data = String(url).endsWith('/qr-classes') ? { classes: [
       { id: 'c1', name: '중3 A', grade: '중3' }, { id: 'c2', name: '고2 B', grade: '고2' },
@@ -536,7 +558,7 @@ test('history sends server filters after a debounce and never calls per-card sta
   assert.ok(calls.every(url => !url.endsWith('/status')));
 });
 test('class filter is server-backed and blank means all classes rather than zero results', async () => {
-  const calls = []; const h = harness(async url => {
+  const calls = []; const h = recentHarness(async url => {
     calls.push(String(url));
     if (String(url).endsWith('/qr-classes')) return { ok: true, json: async () => ({ classes: [
       { id: 'c1', name: '중3 A', grade: '중3' }, { id: 'c2', name: '고2 B', grade: '고2' },
@@ -590,7 +612,7 @@ test('recent and student detail expose cancellation, replacement, review-only, a
   assert.match(markup, /PDF 준비 실패/);
   assert.match(markup, /PDF 다시 준비/);
   const workspace = read('archive2-workspace.js');
-  assert.match(workspace, /url\.searchParams\.set\("assignment_id", String\(a\.id \|\| id\)\)/);
+  assert.match(workspace, /url\.searchParams\.set\("assignment_id", String\(a\.id \|\| assignmentId\)\)/);
   assert.match(workspace, /url\.searchParams\.set\("student_id", String\(studentId \|\| ""\)\)/);
   assert.match(workspace, /url\.searchParams\.set\("omr", "1"\)/);
 });
@@ -606,18 +628,31 @@ test('additive recent summary is bounded and leaves compatible history API intac
   assert.match(summary, /exam_title/);
   assert.match(summary, /replacement_assignment_id/);
   assert.match(summary, /review_only_count/);
-  assert.doesNotMatch(summary, /mixed_payload_json/);
+  // The heavy payload is read only inside the subject filter (json_extract of meta.subject); it is never selected.
+  const projection = summary.slice(summary.indexOf('const projection = ['), summary.indexOf('];', summary.indexOf('const projection = [')));
+  assert.ok(projection.length > 40);
+  assert.doesNotMatch(projection, /mixed_payload_json/);
+  assert.doesNotMatch(summary, /SELECT[^;]*a\.mixed_payload_json/);
   assert.ok(worker.slice(end).includes("url.searchParams.get('history') === '1'"));
 });
 test('history load failures do not display old-class cards as new results', async () => {
-  const h = harness(async () => { throw new Error('test list unavailable'); });
+  let failure = new Error('출제 내역 서버가 응답하지 않습니다');
+  const h = recentHarness(async () => { throw failure; });
   h.w.setClasses([{ id: 'c1', name: '1반' }]); h.w.state.recentRows = [{ id: 'old' }];
-  await assert.rejects(h.w.loadRecent(), /test list unavailable/);
+  await assert.rejects(h.w.loadRecent(), /출제 내역 서버가 응답하지 않습니다/);
   assert.equal(h.w.state.recentRows.length, 0); assert.equal(h.w.state.recentLoading, false);
-  assert.match(h.w.recentAssignmentMarkup(), /test list unavailable/);
+  assert.match(h.w.recentAssignmentMarkup(), /출제 내역 서버가 응답하지 않습니다/, 'a Korean reason is shown as written');
+  // An English/coded error never reaches the teacher; the generic Korean text is shown (teacherErrorMessage).
+  failure = new Error('test list unavailable');
+  h.w.state.recentRows = [{ id: 'old' }];
+  await assert.rejects(h.w.loadRecent(), /test list unavailable/);
+  assert.equal(h.w.state.recentRows.length, 0);
+  assert.doesNotMatch(h.w.recentAssignmentMarkup(), /test list unavailable/);
+  assert.match(h.w.recentAssignmentMarkup(), /history-result-state" role="alert">작업을 처리하지 못했습니다/);
+  assert.match(h.w.recentAssignmentMarkup(), /data-action="recent-retry"[^>]*>다시 시도/);
 });
 test('Korean IME title search applies at compositionend and leaves unrelated filters untouched', async () => {
-  const h = harness(); const f = historyFixture(h); h.w.state.recentRows = f.rows; h.w.state.recentClassId = '';
+  const h = recentHarness(); const f = historyFixture(h); h.w.state.recentRows = f.rows; h.w.state.recentClassId = '';
   const before = plain(h.w.state.filters), el = { dataset: { recentFilter: 'query' }, value: '중간고사' };
   await h.event('input', el, { isComposing: true }); assert.equal(h.w.state.recentFilters.query, '');
   await h.event('compositionend', el); assert.equal(h.w.state.recentFilters.query, '중간고사');

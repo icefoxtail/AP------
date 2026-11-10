@@ -52,6 +52,18 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 원본 시험지 JS는 `window.questionBank`(+`examTitle`) 형식과 `window.examData = {title, questions}`만 있는 형식이 있다. 엔진(`screen-runtime-adapter.js`의 원본 로더, `engine.html` 레거시 `init()`)은 **questionBank가 있으면 그것만 쓰고, 없을 때만** `examData.questions`·`examData.title`을 읽는다. 시험지 파일에 별칭 두 줄을 일일이 붙이지 않는다. 이유: 별칭을 붙이면 원본 해시 고정값이 깨지고, 별칭이 없는 36개는 학생 화면에서 `EMPTY_SOURCE_DATA`로 비어 보였다. 회귀 테스트: `tests/archive-examdata-source-fallback.test.js`.
 - 어댑터는 시험지를 불러오기 전에 `questionBank`·`examData`·`examTitle`·`examDisplayTitle`을 지우고 불러온 뒤 원래대로 되돌린다. 연속으로 시험지를 열어도 앞 시험지의 문항이 남지 않게 하는 장치이니 이름 목록에서 빼지 않는다.
 
+## 보관함·출제 내역 통합 (2026-11-10)
+
+- 메뉴는 "보관함 · 출제 내역" 하나인데 화면은 두 개(`view=saved`, `view=recent`)를 오가야 해서, 교사가 "이 문제지를 어느 반에 언제 냈고 몇 명이 풀었나"를 보려면 제목으로 맞춰 봐야 했다. 이제 **보관함의 문제지 줄 안에 그 문제지의 출제 이력이 붙는다**(`archive2-library.js`의 `paperRowMarkup`, `issuesMarkup`). 줄 모양은 시험 줄과 같은 `.exam-row` 구성요소(`saved-row` 변형)이고 디자인은 `archive/DESIGN.md`의 "보관함 줄" 단락이다.
+- **이력은 `GET /class-exam-assignments/recent-summary`를 목록당 한 번만 받아 `saved_paper_id`로 묶는다.** 목록을 먼저 그리고(이력 칸은 "출제 이력 확인 중…") 응답이 오면 칸만 제자리에서 채운다. 카드마다 서버를 부르지 않고, 더 불러오기는 이미 받은 이력을 쓴다(상태 필터를 바꾸면 새 목록이므로 한 번 다시 받고, 휴지통은 이력 요청을 하지 않는다). 최근 90일만 알 수 있으므로 이력이 없는 카드는 "아직 출제하지 않았습니다"가 아니라 "최근 90일 안에 출제한 기록이 없습니다"라고 쓰고, 응답이 1000건 상한에 걸리면 그 문구도 숨긴다. 실패해도 목록·버튼은 그대로 쓸 수 있고 칸에 `다시 시도`가 나온다. 늦게 온 응답은 `libraryViewVersion`·현재 목록 상태·요청 번호로 걸러 다른 화면을 덮지 않는다. 출제 대화상자가 닫히면 워크스페이스가 `Archive2Library.refreshHistory()`를 불러 새 출제를 반영한다.
+- **최근 90일 한계:** 서버에 저장본별 필터가 없고(`recent-summary`는 날짜·학년·반·과목·제목만 받는다) 한 번에 최대 1000건이다. 그래서 `from`을 90일 전으로 주고, 화면에 "출제 이력은 최근 90일까지 보입니다"를 밝힌다(1000건이 꽉 차면 "일부는 보이지 않을 수 있습니다"를 덧붙인다). 정확한 전체 이력이 필요하면 서버에 `saved_paper_id` 필터가 있어야 한다.
+- **Worker가 다시 배포되지 않게 `archive2-history.js`·`archive2-core.js`·`archive2-output*.js`를 건드리지 않았다.** 이 파일들이 main에 들어가면 `.github/workflows/apms-worker-deploy.yml`이 Worker를 자동 배포한다. `saved_paper_id`·`archive_file`은 `History.normalizeAssignments`가 버리므로 출제 내역 화면은 `state.recentAssignments`(원자료)에서 `recentSourceOf`로 읽는다. 이 필드를 정규화에 넣고 싶으면 Worker 재배포를 감수하는 별도 결정이 필요하다.
+- **출제 내역 줄(`view=recent`)**: 같은 `.exam-row` 구성요소, 날짜순, 책등에 출제 월·일과 대상 학년. 출처 표시는 `saved_paper_id`가 있으면 "보관함 문제지"(눌러 보관함의 그 문제지로), 없고 `archive_file`이 `MIXED:`로 시작하면 "단원별 기출", 그 밖의 파일이면 "학교 기출"이다. 기간·학년·반·과목·검색 필터와 포커스·늦은 응답 무시 규칙은 그대로다.
+- **학생별 확인**(`assignmentStatus`)은 출제 내역뿐 아니라 보관함 줄에서도 열린다(`isStatusView`). 보관함에서 열 때 `recentSelectedAssignmentId`를 비우는 이유: 이전 출제 내역 선택이 남아 있으면 응답이 현재 요청으로 인정되지 않았다.
+- **로그인 판정은 `archive/archive2-session.js` 한 곳**(교사·관리자·owner 역할, id `t_admin`, 로그인 id `admin`)이고 왼쪽 메뉴와 단원별 기출이 같이 쓴다. 교사가 아닌 계정이 로그인돼 있으면 메뉴에 "선생님 계정으로 로그인해 주세요"가 나온다. 서버가 `owner`를 거부하는 곳이 있어도 판정을 좁히지 않는다(기존 동작 유지). 단원별 기출 페이지는 시작할 때 인라인으로 `init()`을 부르므로 이 스크립트를 `defer` 없이 먼저 불러야 한다.
+- **로그인이 없을 때 화면(2026-11-10 조정)**: 교사 세션이 아니면(`teacherSessionOk`, 판정은 `archive2-session.js`) `view=saved`·`view=recent`는 API를 한 번도 부르지 않고 `data-login-notice` 안내 하나만 그린다(오류 아님, 알림·토스트 없음). 서버가 401/403을 줘도 같은 안내다. 그 밖의 오류는 본문에 한 번만 보이게 `error.archive2ShownInline`을 달아 `status()` 토스트가 같은 문장을 되풀이하지 않게 했다. 출제 이력 불러오기 실패·확인 중 문구는 카드마다가 아니라 목록 위 `data-history-note` 한 줄에만 둔다.
+- 새 파일을 만들면 `tools/archive-pages-release-manifest.json`의 `archiveRootFiles`에 올려야 학생·교사 사이트에 배포된다.
+
 ## 단원별 기출 선택 규칙 (2026-11-10 사용자 결정)
 
 - 단원별 기출(`unit-past-exams.html?ready=1`)은 단원 × 난이도 1~5단계 표에서 **여러 단원 × 여러 단계를 한 번에** 고른다. 코드는 `UnitPastExamsCore.buildSelectionPapers(selection, { units, perCell, order })`와 `countGrid(units)`다. 이유: 교사가 학교별만큼 단원별로, 난이도별로 주는 일이 많은데 예전 3단계 진행은 단원 하나씩만 골랐고 칸별 문항 수도 고르기 전에는 안 보였다.
