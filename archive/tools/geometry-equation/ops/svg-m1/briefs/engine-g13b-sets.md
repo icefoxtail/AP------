@@ -24,7 +24,7 @@
   - `MAX_PANELS=3` 은 다른 패널 종류에는 그대로 두고 set 패널 격자만 4까지(상수 따로).
 - 계산: `render-plan.mjs` 패널 분기에 Venn 추가 → 각 패널을 `set-diagram-v1`로 그려 격자에 배치(평면 격자 `isPlanePanel` 경로를 참고). 패널 제목은 기존 패널 제목 규칙(한글 허용).
 - 관측기: 패널마다 set-diagram 관측기를 그 패널 영역에 적용(색칠 영역 = 각 패널의 shade 식으로 독립 계산), 패널 제목 존재.
-- 거절: `COMPOSITE_SET_PANEL_MIXED_<i>`(다른 종류와 섞음), `COMPOSITE_SET_PANEL_COUNT`(1개 또는 5개 이상), 패널 내부 오류는 `PANEL_<i>:<원래 코드>`.
+- 거절: `COMPOSITE_SET_PANEL_MIXED_<i>`(다른 종류와 섞음), `COMPOSITE_SET_PANEL_COUNT`(1개 또는 7개 이상), 패널 내부 오류는 `PANEL_<i>:<원래 코드>`.
 
 ## 기존 규칙과 부딪히는 곳
 - 집합 이름 8자 한도·`SET_LABEL_NO_ROOM`: 개수 라벨은 이름과 별도 필드이므로 8자 한도는 그대로 두고, 배치 폭만 이름+개수로 계산한다.
