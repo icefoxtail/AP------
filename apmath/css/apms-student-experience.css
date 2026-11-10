@@ -214,7 +214,8 @@ body.student-portal-theme .student-app-version { color:#78716c; }
   body.student-portal-theme .student-profile-card { padding:19px 16px; }
 }
 @media (max-width:520px) {
-  body.student-portal-theme .portal-quick-actions { flex-direction:column; }
+  body.student-portal-theme .portal-quick-actions { flex-direction:row; }
+  body.student-portal-theme .portal-quick-actions > .btn { flex:1 1 180px; min-height:44px; }
   body.student-portal-theme .omr-list .omr-card { padding:16px 14px; }
   body.student-portal-theme .omr-status { max-width:54%; }
   body.student-portal-theme .omr-sheet { grid-template-columns:repeat(5,minmax(0,1fr)); gap:7px; }
