@@ -30,18 +30,18 @@ function fixtureRecord(overrides = {}) {
   };
 }
 
-test('전체 단원 기출과 바로 쓰는 문제지는 연도를 학기보다 우선해 완결된 최근 연도부터, 올해는 그다음 순서로 준비한다', () => {
+test('전체 단원 기출과 바로 쓰는 문제지는 연도를 학기보다 우선해 항상 최신 연도(2026 → 2025 → 2021)부터 준비한다', () => {
   const records = [2021, 2025, 2026, 2025].map((year, i) => fixtureRecord({
     sourceFile: `original/high/h2/${i === 2 ? '2final' : '1mid'}/${year}_school.js`,
     examYear: year, id: i + 1, sourceOrdinal: i + 1, question_uid: `year-${i}`,
     subUnitKey: 'A', subUnit: '개념', difficultyBucket: '중'
   }));
   const catalog = core.buildCatalog(records, { profileId: 'h2' });
-  assert.deepEqual(catalog.units.find(unit => unit.count).papers.flatMap(paper => paper.records.map(core.getExamYear)), [2025, 2025, 2021, 2026]);
+  assert.deepEqual(catalog.units.find(unit => unit.count).papers.flatMap(paper => paper.records.map(core.getExamYear)), [2026, 2025, 2025, 2021]);
   for (const seed of ['first', 'second']) {
     const result = core.selectRecords(records, { count: 2, seed });
-    assert.deepEqual(result.selected.map(core.getExamYear), [2025, 2025]);
-    assert.deepEqual(core.selectRecords(records, { count: 4, seed }).selected.map(core.getExamYear), [2025, 2025, 2021, 2026]);
+    assert.deepEqual(result.selected.map(core.getExamYear), [2026, 2025]);
+    assert.deepEqual(core.selectRecords(records, { count: 4, seed }).selected.map(core.getExamYear), [2026, 2025, 2025, 2021]);
   }
   const unknown = fixtureRecord({sourceFile:'original/high/h2/1mid/unknown.js'});
   assert.ok(core.compareRecords(unknown, records[0]) > 0);
@@ -215,7 +215,7 @@ test('ready paper split은 기술 확인에 실패한 record만 제외하고 승
   assert.deepEqual(unit.papers.flatMap(paper => paper.records.map(item => item.questionUid)).sort(), ['ready-ok', 'ready-pending']);
 });
 
-test('선택 순서는 완결된 최근 연도, 올해, 연도 미상 순이고 같은 연도 안에서는 승인 메타 먼저, 그다음 seed로 섞는다', () => {
+test('선택 순서는 최신 연도부터 연도 미상 순이고 같은 연도 안에서는 승인 메타 먼저, 그다음 seed로 섞는다', () => {
   const mk = (uid, year, extra = {}) => fixtureRecord({
     sourceFile: `original/high/h2/1mid/${year || 'x'}_${uid}.js`, examYear: year || undefined, id: 1, sourceOrdinal: 1,
     question_uid: uid, subUnitKey: 'A', subUnit: '개념', difficultyBucket: '중', ...extra
@@ -226,16 +226,16 @@ test('선택 순서는 완결된 최근 연도, 올해, 연도 미상 순이고 
   ];
   const years = result => result.selected.map(core.getExamYear);
   const all = core.selectRecords(records, { count: 7, seed: 's1' });
-  // 2025 approved first, then the unapproved 2025 item, before any older year.
-  assert.deepEqual(years(all), [2025, 2025, 2025, 2024, 2023, 2026, 9999]);
-  assert.equal(core.getQuestionUid(all.selected[2]), 'old-unapproved-2025');
+  // 2026 first, then 2025 (approved before the unapproved item), before any older year; unknown last.
+  assert.deepEqual(years(all), [2026, 2025, 2025, 2025, 2024, 2023, 9999]);
+  assert.equal(core.getQuestionUid(all.selected[3]), 'old-unapproved-2025');
   const same = core.selectRecords(records, { count: 2, seed: 's1' });
   assert.deepEqual(same.selected.map(core.getQuestionUid), core.selectRecords(records, { count: 2, seed: 's1' }).selected.map(core.getQuestionUid));
   const seeds = new Set();
   for (let i = 0; i < 12; i += 1) seeds.add(core.selectRecords(records, { count: 1, seed: `seed-${i}` }).selected[0].question_uid);
-  assert.deepEqual([...seeds].sort(), ['y2025a', 'y2025b']);
-  assert.equal(core.recencyRankOf(mk('c', 2025)) < core.recencyRankOf(mk('c', 2026)), true);
-  assert.equal(core.recencyRankOf(mk('c', 2026)) < core.recencyRankOf(mk('c', 0)), true);
+  assert.deepEqual([...seeds], ['y2026']);
+  assert.equal(core.recencyRankOf(mk('c', 2026)) < core.recencyRankOf(mk('c', 2025)), true);
+  assert.equal(core.recencyRankOf(mk('c', 2025)) < core.recencyRankOf(mk('c', 0)), true);
 });
 
 test('catalog 정규화는 원본 식별자와 문제지 80문항 상한을 유지한다', () => {

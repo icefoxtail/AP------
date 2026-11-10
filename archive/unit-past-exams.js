@@ -1354,7 +1354,7 @@
     const papers = getShelfPapers(unit);
     const total = papers.reduce((sum, paper) => sum + paper.count, 0);
     const label = tokens.length ? core.stepSelectionLabel(tokens) : '전체 단계';
-    return `${label} · ${total.toLocaleString()}문항 · 문제지 ${papers.length}개 (쉬운 단계부터 정리)`;
+    return `${label} · ${total.toLocaleString()}문항 · 문제지 ${papers.length}개 (최신 연도부터, 문제지 안에서는 쉬운 단계부터)`;
   }
   function renderStepSelector(unit) {
     const summary = unit.stepSummary || core.summarizeSteps(unit.selectableRecords || []);
@@ -1369,7 +1369,7 @@
     const legacyNote = none
       ? `<p class="unit-help unit-step-legacy">단계 미지정 ${none.toLocaleString()}문항은 기존 분류(참고용) ${legacy} 순으로 묶어 표시합니다. 숫자 단계로 바꾸지 않으며 제외하지 않습니다.</p>`
       : '';
-    return `<section class="unit-step-selector" aria-labelledby="unit-step-selector-title"><div class="unit-step-selector-head"><h3 id="unit-step-selector-title">난이도 단계</h3><span class="unit-help">여러 단계를 함께 고를 수 있습니다. 문제지는 1단계부터 쉬운 순서로 정리하고 단계마다 제목을 붙입니다.</span></div><div class="unit-chip-list" id="unit-steps" role="group" aria-label="난이도 단계 선택">${chips}</div>${legacyNote}<div class="unit-step-summary unit-help" id="unit-step-summary" aria-live="polite">${escapeHtml(renderStepSummaryText(unit))}</div></section>`;
+    return `<section class="unit-step-selector" aria-labelledby="unit-step-selector-title"><div class="unit-step-selector-head"><h3 id="unit-step-selector-title">난이도 단계</h3><span class="unit-help">여러 단계를 함께 고를 수 있습니다. 문제지 1이 가장 최신 연도이고, 각 문제지 안에서는 1단계부터 쉬운 순서로 정리해 단계마다 제목을 붙입니다.</span></div><div class="unit-chip-list" id="unit-steps" role="group" aria-label="난이도 단계 선택">${chips}</div>${legacyNote}<div class="unit-step-summary unit-help" id="unit-step-summary" aria-live="polite">${escapeHtml(renderStepSummaryText(unit))}</div></section>`;
   }
   function updateStepSelection() {
     const unit = getUnit(state.selectedUnitKey);
@@ -1897,7 +1897,7 @@
     const approvedText = ` (승인 메타 ${catalog.approvedCount.toLocaleString()}문항)`;
     const metadataText = state.metadataError ? ' · Meta Foundation 연결 실패로 승인 메타 정보 없이 일반 출제합니다' : '';
     setStatus(
-      `원본 ${catalog.scannedCount.toLocaleString()}문항 중 분류 ${catalog.classifiedCount.toLocaleString()}문항 · 출제 가능 ${catalog.selectableCount.toLocaleString()}문항${approvedText}${reviewText}${excludedText}${metadataText}. 완결된 최근 연도(2025년, 2024년 순)부터 선택하고 같은 연도에서는 승인 메타 문항을 먼저 씁니다.`,
+      `원본 ${catalog.scannedCount.toLocaleString()}문항 중 분류 ${catalog.classifiedCount.toLocaleString()}문항 · 출제 가능 ${catalog.selectableCount.toLocaleString()}문항${approvedText}${reviewText}${excludedText}${metadataText}. 최신 연도(2026년, 2025년 순)부터 선택하고 같은 연도에서는 승인 메타 문항을 먼저 씁니다.`,
       state.metadataError
     );
   }

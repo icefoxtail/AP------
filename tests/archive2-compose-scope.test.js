@@ -575,7 +575,7 @@ test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const [file, version] of [
     ['archive2-canonical.js', '20261104-source-meta-approval-1'],
-    ['archive2-core.js', '20261031-recorded-use-1'],
+    ['archive2-core.js', '20261110-recency-1'],
     ['meta-foundation-runtime.js', '20261029-health-reasons-1'],
     ['archive2-history.js', '20261004-class-grade-fallback-1'],
     ['archive2-workspace.js', '20261110-review-a-1'],

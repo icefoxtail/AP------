@@ -7,7 +7,7 @@ const core = require("../archive/archive2-core.js");
 const root = path.resolve(__dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
-// Recency policy (user decision 2026-10-29): one definition of the current year, used by
+// Recency policy (user decision 2026-11-10, replaces 2026-10-29): newest year always first; one definition of the current year, used by
 // 문제지 만들기, 단원별 기출 and the quick assessments.
 test("the current exam year is defined once, in archive2-core", () => {
   assert.equal(Object.isFrozen(core.RECENCY_POLICY), true);
@@ -35,6 +35,6 @@ test("unit-past-exams core shares the recency rank with archive2-core", () => {
   const record = (year) => ({ sourceFile: `original/high/h1/1mid/${year}_x.js`, examYear: year });
   const years = [2026, 2023, 2025, 2024, 2021];
   const sorted = years.map(record).sort(unit.compareRecords).map(unit.getExamYear);
-  assert.deepEqual(sorted, [2025, 2024, 2023, 2021, 2026]);
+  assert.deepEqual(sorted, [2026, 2025, 2024, 2023, 2021]);
   for (const year of years) assert.equal(unit.recencyRankOf(record(year)), core.recencyRank(year));
 });

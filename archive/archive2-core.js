@@ -482,26 +482,26 @@
     return Number.isInteger(year) && year >= 1900 && year <= 2100 ? year : 0;
   };
   const compareNewest = (a, b) => sourceYear(b) - sourceYear(a);
-  // Recency policy (user decision 2026-10-29): exam preparation prefers the most recent COMPLETE
-  // school year first (2025, 2024, 2023, ... descending), then the current year (its exams can
-  // still be incomplete), then years newer than the configured current year (only possible when
-  // this constant is stale), and unknown years last. This is the single definition used by
-  // 문제지 만들기, 단원별 기출 and the quick assessments; bump currentExamYear once per school year.
+  // Recency policy (user decision 2026-11-10, replaces the 2026-10-29 "complete years first" rule):
+  // the newest exam year always comes first (2026, 2025, 2024, ... descending) and unknown years
+  // come last. New exam years keep piling up and recent papers show the current trends, so students
+  // should meet the newest papers first. This is the single definition used by 문제지 만들기,
+  // 단원별 기출 and the quick assessments. currentExamYear only anchors the rank to small numbers
+  // (the newest known year ranks 0; the quick-assessment tier reads it); it does not split years
+  // into bands, and a year newer than it simply gets a negative rank, so a stale constant never
+  // hides newer data.
   const RECENCY_POLICY = Object.freeze({
     currentExamYear: 2026,
-    order: "완결된 최근 연도(2025, 2024, 2023 순)를 먼저, 올해 자료는 그다음, 연도를 알 수 없는 자료는 마지막",
+    order: "항상 최신 연도가 먼저(2026, 2025, 2024 순), 연도를 알 수 없는 자료는 마지막",
   });
-  const RECENCY_CURRENT_BAND = 1000;
   const RECENCY_UNKNOWN = 1000000;
   function recencyRank(year, currentExamYear = RECENCY_POLICY.currentExamYear) {
     const value = Number(year);
     if (!Number.isInteger(value) || value < 1900 || value > 2100) return RECENCY_UNKNOWN;
-    return value < currentExamYear
-      ? currentExamYear - 1 - value
-      : RECENCY_CURRENT_BAND + (value - currentExamYear);
+    return currentExamYear - value;
   }
   const compareRecency = (a, b) => recencyRank(sourceYear(a)) - recencyRank(sourceYear(b));
-  // Years ordered by recencyRank, e.g. [2026, 2024, 2025, 0] -> [2025, 2024, 2026, 0].
+  // Years ordered by recencyRank, e.g. [2024, 2026, 2025, 0] -> [2026, 2025, 2024, 0].
   const sortYearsByRecency = (years) => [...years].sort((a, b) => recencyRank(a) - recencyRank(b));
   function taxonomyPaths(master) {
     const paths = [];
@@ -1081,8 +1081,8 @@
           conceptCounts.set(group.concept, (conceptCounts.get(group.concept) || 0) + 1);
         }
       }
-      // Recency is a priority after hard scope/quality/history gates (RECENCY_POLICY: complete
-      // years newest first, then the current year, unknown years last). The existing seeded
+      // Recency is a priority after hard scope/quality/history gates (RECENCY_POLICY: newest
+      // year first, unknown years last). The existing seeded
       // selection is preserved within each year.
       for (const year of sortYearsByRecency(new Set(pool.map(sourceYear)))) {
         const remaining = row.count - result.selected;

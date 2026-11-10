@@ -56,7 +56,7 @@ test('분류된 문항은 숫자 단계와 기존 분류를 따로 보존한다'
   assert.deepEqual(unit.records.filter(r => core.getStepToken(r) === 'none').map(r => r.legacyDifficultyLabel).sort(), ['없음', '중']);
 });
 
-test('기본 문제지는 1단계부터 단계 미지정까지 쉬운 순서로, 단계 안에서는 최근 연도 순서로 정리한다', () => {
+test('한 문제지 안은 1단계부터 단계 미지정까지 쉬운 순서로, 단계 안에서는 최신 연도 순서로 정리한다', () => {
   const input = [
     rec({ difficultyBucket: 5, examYear: 2025 }),
     rec({ difficultyBucket: '', level: '', examYear: 2025 }),
@@ -77,16 +77,48 @@ test('기본 문제지는 1단계부터 단계 미지정까지 쉬운 순서로,
   assert.deepEqual(tokens(ordered), ['1', '2', '2', '2', '3', '5', 'none', 'none', 'none', 'none', 'none']);
   assert.deepEqual(ordered.slice(6).map(r => r.legacyDifficultyLabel), ['하', '중', '중', '상', '없음']);
   assert.deepEqual(ordered.slice(1, 4).map(core.getExamYear), [2025, 2024, 2023]);
+  assert.equal(core.getExamYear(ordered[0]), 2026);
 });
 
-test('2026년(올해)은 같은 단계의 완결 연도 다음, 연도 미상은 마지막이다', () => {
+test('2026년이 같은 단계에서 2025년보다 먼저이고, 연도 미상은 마지막이다', () => {
   const unit = unitOf([
     rec({ difficultyBucket: 3, examYear: 2026 }),
     rec({ difficultyBucket: 3, examYear: 2024 }),
     rec({ difficultyBucket: 3, examYear: 2025 }),
-    rec({ difficultyBucket: 3, examYear: 2022 })
+    rec({ difficultyBucket: 3, examYear: 2022 }),
+    rec({ difficultyBucket: 3, examYear: 0, sourceFile: 'original/high/h2/1mid/unknown_school.js' })
   ]);
-  assert.deepEqual(unit.papers[0].records.map(core.getExamYear), [2025, 2024, 2022, 2026]);
+  const years = unit.papers[0].records.map(core.getExamYear);
+  assert.deepEqual(years.slice(0, 4), [2026, 2025, 2024, 2022]);
+  assert.equal(core.recencyRankOf(unit.papers[0].records[4]) > core.recencyRankOf(unit.papers[0].records[3]), true, 'unknown year is last');
+});
+
+test('여러 단계를 골라도 문제지 1에는 가장 최신 연도 문항이 들어가고, 한 문제지 안은 단계 오름차순이다', () => {
+  const input = [];
+  // Old exams hold the EASY step, the newest exam holds the HARD step: the old step-first order
+  // would have put the 2020 step-1 exams in paper 1 and pushed the 2026 step-5 exam to the end.
+  for (const [year, step] of [[2020, 1], [2021, 1], [2022, 2], [2023, 2], [2024, 3], [2025, 4], [2026, 5]])
+    for (let n = 0; n < 30; n += 1)
+      input.push(rec({ difficultyBucket: step, examYear: year, school: `y${year}`, sourceFile: `original/high/h2/1mid/${year}_y.js`, id: n + 1, sourceOrdinal: n + 1 }));
+  const unit = unitOf(input);
+  const papers = core.buildUnitPapers(unit, { difficultySteps: ['1', '2', '3', '4', '5'] });
+  assert.ok(papers.length >= 3);
+  assert.equal(papers.reduce((sum, p) => sum + p.count, 0), input.length);
+  assert.equal(Math.max(...papers[0].records.map(core.getExamYear)), 2026, 'paper 1 holds the newest year');
+  assert.equal(papers[0].records.some(r => core.getExamYear(r) === 2020), false, 'the oldest exams are not in paper 1');
+  // Papers run from newer to older exams (the newest year of paper N+1 is not newer than paper N's oldest).
+  for (let i = 1; i < papers.length; i += 1) {
+    const prevOldest = Math.min(...papers[i - 1].records.map(core.getExamYear));
+    const newest = Math.max(...papers[i].records.map(core.getExamYear));
+    assert.ok(newest <= prevOldest, `paper ${i + 1} is not newer than paper ${i}`);
+  }
+  // Inside every paper the steps ascend and the headings follow the steps of that paper.
+  for (const paper of papers) {
+    const order = tokens(paper.records).map(Number);
+    assert.deepEqual(order, [...order].sort((a, b) => a - b));
+    const headings = paper.sections.filter(section => section.level === 1).map(section => section.title);
+    assert.equal(new Set(headings).size, headings.length, 'one heading per step');
+  }
 });
 
 test('단계 선택은 선택한 단계만으로 문제지를 다시 만들고 제목에 단계를 표시한다', () => {
@@ -122,9 +154,11 @@ test('문제지 크기 규칙은 유지된다(목표 50문항, 최대 80문항, 
     assert.ok(paper.count <= 80);
     assert.equal(paper.count, paper.records.length);
   }
-  // Steps never go backwards across the whole shelf.
-  const flat = papers.flatMap(p => tokens(p.records)).map(Number);
-  assert.deepEqual(flat, [...flat].sort((a, b) => a - b));
+  // Steps never go backwards inside one paper.
+  for (const paper of papers) {
+    const flat = tokens(paper.records).map(Number);
+    assert.deepEqual(flat, [...flat].sort((a, b) => a - b));
+  }
   // One exam stays together inside a paper whenever it fits.
   for (const paper of papers) {
     const files = new Map();
@@ -245,8 +279,12 @@ test('실제 아카이브: 고1 공통수학2 함수의 단계별 개수와 기�
   assert.equal(summary.total, unit.selectableCount);
   assert.equal(Object.values(summary.legacy).reduce((a, b) => a + b, 0), summary.steps.none);
   assert.equal(unit.papers.reduce((sum, p) => sum + p.count, 0), unit.selectableCount);
-  const order = unit.papers.flatMap(p => tokens(p.records)).map(t => (t === 'none' ? 6 : Number(t)));
-  assert.deepEqual(order, [...order].sort((a, b) => a - b));
+  for (const paper of unit.papers) {
+    const order = tokens(paper.records).map(t => (t === 'none' ? 6 : Number(t)));
+    assert.deepEqual(order, [...order].sort((a, b) => a - b));
+  }
+  const firstYears = unit.papers.map(p => Math.max(...p.records.map(r => core.recencyRankOf(r) * -1)));
+  assert.deepEqual(firstYears, [...firstYears].sort((a, b) => b - a), '문제지는 최신 연도부터 이어진다');
   const low = core.buildUnitPapers(unit, { difficultySteps: ['1', '2'] });
   assert.equal(low.reduce((sum, p) => sum + p.count, 0), summary.steps[1] + summary.steps[2]);
   assert.ok(low.every(p => tokens(p.records).every(t => t === '1' || t === '2')));

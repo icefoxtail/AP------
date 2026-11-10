@@ -569,11 +569,11 @@ test('문제지 만들기: facets are counted for the whole list while no unit i
 
 test('the workspace and the unit page load the new scripts with a new cache version and the changed shared modules stay loadable in APMS', () => {
   const version = '20261029-s14-1';
-  const coreVersion = '20261031-recorded-use-1';
+  const coreVersion = '20261110-recency-1';
   const workspace = read('workspace.html');
   assert.match(workspace, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  for (const file of ['unit-past-exams-core.js', 'problem-bank-meta.js'])
-    assert.match(workspace, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
+  assert.match(workspace, new RegExp('unit-past-exams-core\\.js\\?v=' + coreVersion));
+  assert.match(workspace, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
   assert.match(workspace, /archive2-unified-units\.js\?v=20261030-s11-1/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
@@ -581,8 +581,8 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /archive2-workspace\.js\?v=20261110-review-a-1/);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(unitPage, /unit-past-exams-core\.js\?v=20261029-s14-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261110-b1/);
+  assert.match(unitPage, /unit-past-exams-core\.js\?v=20261110-recency-1/);
+  assert.match(unitPage, /unit-past-exams\.js\?v=20261110-recency-1/);
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');
