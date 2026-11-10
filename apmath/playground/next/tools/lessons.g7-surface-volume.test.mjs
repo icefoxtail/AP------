@@ -37,7 +37,9 @@ const SCENE_STATE = {
   'sv3-1': { s6R: [1, 15], s6T: [0, 1] },
   'sv2-2': { s2r: [2, 15], s2G: [3, 17], s2U: [0, 1] },
   'sv4-1': { s41K: [1, 3], s41T: [0, 1], svTri: null, svAxis: null, svMode: null },
-  'sv2-5': { s5A: [4, 24], s5B: [1, 23], s5T: [0, 1], svKind5: null, svMode: null }
+  'sv2-5': { s5A: [4, 24], s5B: [1, 23], s5T: [0, 1], svKind5: null, svMode: null },
+  'sv2-3': { s3K: [1, 5], s3U: [0, 1], svTri: null, svMode: null, sv23Started: null },
+  'sv2-4': { s4K: [2, 5], s4J: [1, 4], s4T: [0, 1], svTri4: null, svMode: null }
 };
 // 장면 소스에서 확인할 상태값 정의(파일, 정규식) — 이름이 장면에 실제로 있는지
 const SOURCE_KEYS = {
@@ -45,10 +47,12 @@ const SOURCE_KEYS = {
   'sv3-1': ['t3.js', ['s6R:', 's6T:']],
   'sv2-2': ['t2.js', ['s2r:', 's2G:', 's2U:']],
   'sv4-1': ['t4.js', ['s41K:', 's41T:', "s.svTri = 'A'", "s.svAxis = 'long'"]],
-  'sv2-5': ['t2.js', ['s5A:', 's5B:', 's5T:', "s.svKind5 = 'frus'"]]
+  'sv2-5': ['t2.js', ['s5A:', 's5B:', 's5T:', "s.svKind5 = 'frus'"]],
+  'sv2-3': ['t2.js', ['s3K:', 's3U:', "s.svTri = 'A'; s.s3K = 1; s.svMode = 'surf'; s.sv23Started = false"]],
+  'sv2-4': ['t2.js', ['s4K:', 's4J:', 's4T:', "s.svTri4 = 'A'; s.s4K = 2; s.s4J = 1"]]
 };
 // 정리 탭 풀이 단계 수(장면의 steps 길이): 해설의 step 은 1~이 값
-const STEP_COUNT = { 'sv1-4': 3, 'sv3-1': 3, 'sv2-2': 3, 'sv4-1:겉넓이': 3, 'sv4-1:부피': 3, 'sv2-5:겉넓이': 3 };
+const STEP_COUNT = { 'sv1-4': 3, 'sv3-1': 3, 'sv2-2': 3, 'sv4-1:겉넓이': 3, 'sv4-1:부피': 3, 'sv2-5:겉넓이': 3, 'sv2-3:겉넓이': 3, 'sv2-3:부피': 3, 'sv2-4:겉넓이': 4 };
 
 const plainText = (say) => String(say).replace(/\\frac(\d)(\d)/g, '$1/$2').replace(/\*\*/g, '');
 const numbersOf = (say) => (plainText(say).match(/\d+(?:\.\d+)?/g) || []).map(Number);
@@ -198,4 +202,41 @@ test('해설 sv2-5 겉넓이: 정사각뿔대(윗면 3, 아랫면 9, 옆면의 �
   assert.ok(say[2][1].includes(`\\frac12\\times(${b}+${a})\\times${hs}=${side}`));
   assert.ok(say[3].join('').includes(`${side}\\times4+${b * b}+${a * a}=${tot}`), '결론 자막: 30×4 + 9 + 81 = 210 (그림의 결과 줄 「= 120 + 9 + 81 = 210」과 같은 식)');
   okNums(l, [a, b, hs, base, side, four, tot, 1, 2, 4, b * b, a * a]);
+});
+
+test('해설 sv2-3: 원뿔 r=3·h=4·모선 5 — 겉넓이에는 모선(옆넓이 15π, 밑넓이 9π, 24π), 부피에는 높이(⅓×9π×4 = 12π)', () => {
+  const surf = find('sv2-3', '겉넓이'), vol = find('sv2-3', '부피'), r = 3, h = 4, R = 5, S = r * r, arc = 2 * r, lat = (R * arc) / 2, tot = S + lat, v = (S * h) / 3;
+  assert.deepEqual([S, arc, lat, tot, v], [9, 6, 15, 24, 12]);
+  assert.equal(R * R, r * r + h * h);
+  assert.equal(surf.chapters[0].cues[0].set.svMode, 'surf'); assert.equal(vol.chapters[0].cues[0].set.svMode, 'vol');
+  for (const l of [surf, vol]) { assert.equal(l.chapters[0].cues[0].set.svTri, 'A'); assert.equal(l.chapters[0].start.s3K, 1); assert.ok(sayList(l)[0][0].includes(`반지름 ${r}, 높이 ${h}, 모선 ${R}`)); }
+  assert.ok(sayList(surf)[0][1].includes(`모선 ${R}`) && sayList(surf)[0][1].includes(`높이 ${h}는 안 써요`), '겉넓이: 모선을 쓰고 높이는 안 쓴다');
+  assert.ok(sayList(vol)[0][1].includes(`높이 ${h}를 쓰고 모선 ${R}는 안 써요`), '부피: 높이를 쓰고 모선은 안 쓴다');
+  const s = sayList(surf);
+  assert.ok(s[1][0].includes(`모선 ${R}`) && s[1][1].includes(`2\\pi\\times${r}=${arc}\\pi`));
+  assert.ok(s[2][0].includes(`\\frac12\\times${R}\\times${arc}\\pi=${lat}\\pi`) && s[2][1].includes(`\\pi\\times${r}^2=${S}\\pi`) && s[2][2].includes(`${lat}\\pi+${S}\\pi=${tot}\\pi`));
+  okNums(surf, [r, h, R, S, arc, lat, tot, 1, 2]);
+  const w = sayList(vol);
+  assert.ok(w[1][1].includes(`\\pi\\times${r}^2=${S}\\pi`) && w[2][1].includes(`\\frac13\\times${S}\\pi\\times${h}=${v}\\pi`));
+  okNums(vol, [r, h, R, S, v, 1, 2, 3]);
+  const t2 = src('t2.js');
+  assert.match(t2, /t: !surf \? 0 : C\.problem \? 0 : rv && !s\.lessonOn \? 1 : C\.t,/, '해설 재생 중 정리 탭도 펼침을 따른다');
+  assert.match(t2, /if \(!surf && rv && s\.lessonOn && !b\.thumb\) \{/, '재생 중 부피: 밑넓이 + 합 식');
+  assert.match(src('solid3d.js'), /const lbl = \(!\(o\.textbookReview && C\.review\) && !o\.cleanFrustum\) \|\| !!\(s\.lessonOn && C\.review\);/);
+});
+
+test('해설 sv2-4 겉넓이: 원뿔대(반지름 6·3, 모선 10·5) — 60π − 15π = 45π, 9π + 36π, 겉넓이 90π', () => {
+  const l = find('sv2-4', '겉넓이'), st = l.chapters[0].start, r2 = 3 * st.s4K, r1 = 3 * st.s4J, R2 = 10, R1 = 5, big = r2 * R2, small = r1 * R1, ring = big - small, top = r1 * r1, bot = r2 * r2, tot = ring + top + bot;
+  assert.deepEqual([r2, r1, big, small, ring, top, bot, tot], [6, 3, 60, 15, 45, 9, 36, 90]);
+  assert.equal(R2 / R1, r2 / r1, '큰 원뿔과 작은 원뿔은 닮은꼴(모선 비 = 반지름 비)');
+  assert.equal(l.chapters[0].cues[0].set.svTri4, 'A'); assert.equal(l.chapters[0].cues[0].set.svMode, 'surf');
+  const say = sayList(l);
+  assert.ok(say[1][0].includes(`반지름 ${R2}`) && say[1][0].includes(`${2 * r2}\\pi`) && say[1][1].includes(`\\pi\\times${r2}\\times${R2}=${big}\\pi`));
+  assert.ok(say[1][2].includes(`\\pi\\times${r1}\\times${R1}=${small}\\pi`));
+  assert.ok(say[2][1].includes(`${big}\\pi-${small}\\pi=${ring}\\pi`) && say[2][2].includes(`${ring}\\pi+${top}\\pi+${bot}\\pi=${tot}\\pi`));
+  okNums(l, [r2, r1, R2, R1, big, small, ring, top, bot, tot, 2 * r2, 2]); // 2 는 「원 2개」
+  const t2 = src('t2.js'), s3 = src('solid3d.js');
+  assert.match(t2, /t: C\.problem \? 0 : rv && !s\.lessonOn \? 1 : C\.t, problem: C\.problem, review: rv, hl,/);
+  assert.match(s3, /const ringRow = o\.cleanFrustum && s\.lessonOn && hl\.ring === 2 \?/);
+  assert.match(s3, /옆넓이 = 큰 부채꼴 − 작은 부채꼴 = \$\{V0\.big\} − \$\{V0\.small\} = \$\{V0\.ring\}/);
 });

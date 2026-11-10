@@ -274,5 +274,130 @@ Object.assign(window.APL_LESSONS['g7-surface-volume'], {
         ]
       }
     ]
+  },
+
+  /* ---------- 원뿔 종합 (t2.js sv2-3) · 문제 고정: svTri A(반지름 3 · 높이 4 · 모선 5) · s3K 1 ----------
+     이 유형의 핵심은 「주어진 길이 셋 중 겉넓이에는 모선, 부피에는 높이를 쓴다」 입니다. 첫 장에서 입체에 세 길이가 다 보일 때 그 말을 합니다.
+     겉넓이: 밑넓이 π×3² = 9π, 호 = 밑면의 둘레 2π×3 = 6π, 옆넓이 ½×5×6π = 15π, 겉넓이 24π. 부피: ⅓×9π×4 = 12π (⅓ 은 장면 규칙 그대로, 증명 아님).
+     s3U(펼침 0~1): 해설 재생 중에는 정리 탭도 s3U 를 따라 펼쳐집니다(t2.js sv23 draw 의 rv && !s.lessonOn). 재생 중 정리 탭은 이름표(밑넓이 9π · 옆넓이 15π)와 합 식도 그립니다(solid3d.js coneNet 의 lbl),
+     부피는 밑넓이 이름표 + 「부피 = ⅓ × 밑넓이 × 높이 / = … = 12π」(둘째 줄은 svShowV 까지 숨김). */
+  'sv2-3': [
+    {
+      title: '원뿔의 겉넓이',
+      label: '겉넓이',
+      tab: 'review',
+      answer: '$24\\pi$',
+      answerText: '$24\\pi$ cm²',
+      summary: '겉넓이에는 모선을 써요',
+      task: '반지름·높이·모선이 다른 원뿔로 바꿔 어떤 길이를 쓰는지 해 보세요',
+      chapters: [
+        {
+          length: 11,
+          title: '어떤 길이를 쓸까',
+          start: { s3K: 1, s3U: 0, svYaw: 28, svPitch: 20 },
+          cues: [
+            { at: 0, say: '반지름 3, 높이 4, 모선 5인 원뿔이에요.', set: { svTri: 'A', svMode: 'surf', sv23Started: true, svShowV: false }, to: { s3U: 0.04 }, dur: 3, ease: 'linear' },
+            { at: 3.5, say: '겉넓이에는 모선 5를 쓰고 높이 4는 안 써요.', to: { s3U: 1 }, dur: 5.5, ease: 'smooth' }
+          ]
+        },
+        {
+          length: 10,
+          title: '옆면은 부채꼴',
+          cues: [
+            { at: 0, say: '펼치면 반지름이 모선 5인 부채꼴이에요.', step: 2 },
+            { at: 4.5, say: '호의 길이는 밑면의 둘레 $2\\pi\\times3=6\\pi$.' }
+          ]
+        },
+        {
+          length: 12,
+          title: '겉넓이는?',
+          cues: [
+            { at: 0, say: '옆넓이는 $\\frac12\\times5\\times6\\pi=15\\pi$예요.', step: 3 },
+            { at: 4, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.' },
+            { at: 8, say: '겉넓이 $=15\\pi+9\\pi=24\\pi$ cm²', set: { svShowV: true } }
+          ]
+        }
+      ]
+    },
+    {
+      title: '원뿔의 부피',
+      label: '부피',
+      tab: 'review',
+      answer: '$12\\pi$',
+      answerText: '$12\\pi$ cm³',
+      summary: '부피에는 높이를 써요',
+      task: '반지름·높이·모선이 다른 원뿔로 바꿔 어떤 길이를 쓰는지 해 보세요',
+      chapters: [
+        {
+          length: 9,
+          title: '어떤 길이를 쓸까',
+          start: { s3K: 1, s3U: 0, svYaw: 28, svPitch: 20 },
+          cues: [
+            { at: 0, say: '반지름 3, 높이 4, 모선 5인 원뿔이에요.', set: { svTri: 'A', svMode: 'vol', sv23Started: true, svShowV: false }, to: { s3U: 0.04 }, dur: 3, ease: 'linear' },
+            { at: 3.5, say: '부피에는 높이 4를 쓰고 모선 5는 안 써요.' }
+          ]
+        },
+        {
+          length: 9,
+          title: '밑넓이',
+          cues: [
+            { at: 0, say: '밑면은 반지름 3인 원이에요.', step: 1 },
+            { at: 4.5, say: '밑넓이는 $\\pi\\times3^2=9\\pi$예요.', step: 2 }
+          ]
+        },
+        {
+          length: 11,
+          title: '부피는?',
+          cues: [
+            { at: 0, say: '(부피) $=\\frac13\\times$ (밑넓이) $\\times$ (높이)', step: 3 },
+            { at: 4.5, say: '부피 $=\\frac13\\times9\\pi\\times4=12\\pi$ cm³', set: { svShowV: true } }
+          ]
+        }
+      ]
+    }
+  ],
+
+  /* ---------- 원뿔대의 겉넓이 (t2.js sv2-4, svMode surf) · 문제 고정: svTri4 A · s4K 2 · s4J 1 (아랫면 반지름 6 · 윗면 반지름 3 · 큰 원뿔의 모선 10 · 작은 원뿔의 모선 5 · 높이 4) ----------
+     풀이의 핵심 동작은 「큰 부채꼴 − 작은 부채꼴」입니다. 큰 부채꼴 π×6×10 = 60π, 작은 부채꼴 π×3×5 = 15π, 옆넓이 60π−15π = 45π, 윗면 π×3² = 9π, 아랫면 π×6² = 36π, 겉넓이 45π+9π+36π = 90π.
+     s4T(펼침 0~1): 해설 재생 중에는 정리 탭도 s4T 를 따라 펼쳐지고(t2.js drawSurf 의 rv && !s.lessonOn), 아래 줄은 단계마다 한 줄만(1 큰 부채꼴 · 2 작은 부채꼴 · 3 옆넓이 = 60π − 15π = 45π · 4 비움) — solid3d.js coneNet 의 ringRow.
+     면의 넓이 이름표(윗면 9π · 아랫면 36π · 45π)는 재생 중에만 정리 탭에 그리고(lbl), 합 식 둘째 줄 「= 45π + 9π + 36π = 90π」는 svShowV 까지 숨깁니다.
+     원뿔대의 부피(sv2-4 부피)는 정리 탭 그림에 높이·부피 값이 없어 아직 해설을 만들지 않았습니다. */
+  'sv2-4': {
+    title: '원뿔대의 겉넓이',
+    label: '겉넓이',
+    tab: 'review',
+    answer: '$90\\pi$',
+    answerText: '$90\\pi$ cm²',
+    summary: '옆넓이 = 큰 부채꼴 − 작은 부채꼴',
+    task: '원뿔대의 크기를 바꿔 큰 부채꼴과 작은 부채꼴이 어떻게 달라지는지 해 보세요',
+    chapters: [
+      {
+        length: 11,
+        title: '원뿔대 펼치기',
+        start: { s4K: 2, s4J: 1, s4T: 0, svYaw: 28, svPitch: 22 },
+        cues: [
+          { at: 0, say: '원뿔대의 겉면을 펼쳐 봐요.', set: { svTri4: 'A', svMode: 'surf', svShowV: false }, to: { s4T: 1 }, dur: 5.5, ease: 'smooth' },
+          { at: 6, say: '옆면은 부채꼴 고리, 밑면은 원 2개예요.' }
+        ]
+      },
+      {
+        length: 12,
+        title: '큰 부채꼴, 작은 부채꼴',
+        cues: [
+          { at: 0, say: '큰 부채꼴은 반지름 10, 호는 $12\\pi$예요.', step: 1 },
+          { at: 3, say: '넓이는 $\\pi\\times6\\times10=60\\pi$예요.' },
+          { at: 6.5, say: '작은 부채꼴은 $\\pi\\times3\\times5=15\\pi$.', step: 2 }
+        ]
+      },
+      {
+        length: 12,
+        title: '겉넓이는?',
+        cues: [
+          { at: 0, say: '옆넓이는 큰 부채꼴 − 작은 부채꼴이에요.', step: 3 },
+          { at: 3.5, say: '$60\\pi-15\\pi=45\\pi$예요.' },
+          { at: 7, say: '겉넓이 $=45\\pi+9\\pi+36\\pi=90\\pi$ cm²', step: 4, set: { svShowV: true } }
+        ]
+      }
+    ]
   }
 });

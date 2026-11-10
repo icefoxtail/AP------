@@ -779,24 +779,28 @@
       if (!o.problem) {
         // 호의 길이 = 밑면의 둘레(같은 색)
         const kq = 27;
+        // 해설 재생 중(s.lessonOn)에는 정리 탭에서도 면의 넓이 이름표와 합 식을 그립니다(탐구·정리·문제 탭·썸네일은 그대로). 결과 줄은 sumRows 가 svShowV 까지 아낍니다.
+        const lbl = (!(o.textbookReview && C.review) && !o.cleanFrustum) || !!(s.lessonOn && C.review);
         if (reference) b.text(D.P(apexF), `큰 호의 길이 ${V0.arcBig}`, { dy: b.W < 560 ? -16 : -45, size: D.fs(13), color: 'ink', weight: 700, alpha: flatA });
         else D.edgeLab(at(kq, A[kq]), at(kq, A[(kq + 1) % N]), `${cone ? '호의 길이' : (D.narrow ? '큰 호' : '큰 호의 길이')} ${V0.arcBig}`, { from: apexF, color: BIG, alpha: flatA });
-        if (!(o.textbookReview && C.review) && !o.cleanFrustum) D.areaLab(c0, cone ? '밑넓이' : '아랫면', V0.bot, { dx: -0.4 * rB, dy: -0.04 * rB, maxW: rB * 1.05, alpha: flatA });
+        if (lbl) D.areaLab(c0, cone ? '밑넓이' : '아랫면', V0.bot, { dx: -0.4 * rB, dy: -0.04 * rB, maxW: rB * 1.05, alpha: flatA });
         const bandAt = (kk) => { const qa = px(at(kk, mid3(A[kk], A[(kk + 1) % N]))), qb = px(at(kk, mid3(B[kk], B[(kk + 1) % N]))); return Math.hypot(qa.x - qb.x, qa.y - qb.y); };
         const thin = !cone && bandAt(18) < 50, kr = thin ? 27 : 18, bandPx = bandAt(kr);
-        if (!(o.textbookReview && C.review) && !o.cleanFrustum) D.areaLab(cone ? lerp3(at(18, B[0]), mid3(at(18, A[18]), at(18, A[19])), 0.3) : mid3(at(kr, mid3(A[kr], A[(kr + 1) % N])), at(kr, mid3(B[kr], B[(kr + 1) % N]))), thin ? '' : '옆넓이', V0.ring, { alpha: flatA, size: thin ? 13 : 15 });
+        if (lbl) D.areaLab(cone ? lerp3(at(18, B[0]), mid3(at(18, A[18]), at(18, A[19])), 0.3) : mid3(at(kr, mid3(A[kr], A[(kr + 1) % N])), at(kr, mid3(B[kr], B[(kr + 1) % N]))), thin ? '' : '옆넓이', V0.ring, { alpha: flatA, size: thin ? 13 : 15 });
         if (!cone) {
           const c1p = px(c1), r1p = circR(kt, B, c1);
-          D.areaLab(c1, '윗면', o.cleanFrustum ? '' : V0.top, o.cleanFrustum ? { dy: -r1p - 15, alpha: flatA } : { dx: (smallTop ? 0.3 : -0.4) * r1p, dy: -0.04 * r1p, maxW: r1p * 1.05, alpha: flatA });
+          D.areaLab(c1, '윗면', o.cleanFrustum && !lbl ? '' : V0.top, o.cleanFrustum && !lbl ? { dy: -r1p - 15, alpha: flatA } : { dx: (smallTop ? 0.3 : -0.4) * r1p, dy: -0.04 * r1p, maxW: r1p * 1.05, alpha: flatA });
         }
         // 합: 겉넓이 = 옆넓이 + 밑넓이
-        if (V0.tot && !(o.textbookReview && C.review) && !o.cleanFrustum) {
+        if (V0.tot && lbl) {
           const parts = cone ? [['옆넓이', V0.ring, 'green'], ['밑넓이', V0.bot, BIG]] : [['옆넓이', V0.ring, 'green'], ['윗면', V0.top, SMALL], ['아랫면', V0.bot, BIG]];
           const r1s = [{ t: '겉넓이 = ' }]; parts.forEach((p, i) => { if (i) r1s.push({ t: ' + ' }); r1s.push({ t: p[0], c: p[2] }); });
           const r2s = [{ t: '= ' }]; parts.forEach((p, i) => { if (i) r2s.push({ t: ' + ' }); r2s.push({ t: p[1], c: p[2] }); }); r2s.push({ t: ` = ${V0.tot}` });
           sumRows(D, [r1s, r2s], flatA);
           const secRow = hl.big ? [[{ t: `${cone ? '부채꼴' : '큰 부채꼴'}의 넓이 = π × ${r2} × ${show(R2)} = ${V0.big}`, c: 'amber' }]] : hl.small ? [[{ t: `작은 부채꼴의 넓이 = π × ${r1} × ${show(R1)} = ${V0.small}`, c: SMALL }]] : null;
-          sumRows(D, secRow || (cone ? [[{ t: `호의 길이 = 밑면의 둘레 ${V0.arcBig}`, c: BIG }]] : [[{ t: `큰 모선 ${show(R2)} − 작은 모선 `, c: 'ink' }, { t: `${show(R1)}`, c: SMALL }, { t: ` = 원뿔대의 모선 `, c: 'ink' }, { t: `${show(Rf)}`, c: 'green' }], [{ t: `큰 호의 길이 = 아랫면의 둘레 ${V0.arcBig}`, c: BIG }], [{ t: `작은 호의 길이 = 윗면의 둘레 ${V0.arcSmall}`, c: SMALL }]]), flatA, true);
+          // 해설 재생 중 원뿔대: 3단계는 「옆넓이 = 큰 부채꼴 − 작은 부채꼴」 한 줄, 그 밖의 단계는 아래 줄을 비워 그림이 복잡해지지 않게
+          const ringRow = o.cleanFrustum && s.lessonOn && hl.ring === 2 ? [[{ t: `옆넓이 = 큰 부채꼴 − 작은 부채꼴 = ${V0.big} − ${V0.small} = ${V0.ring}`, c: 'green' }]] : null;
+          if (!(o.cleanFrustum && s.lessonOn && !secRow && !ringRow)) sumRows(D, secRow || ringRow || (cone ? [[{ t: `호의 길이 = 밑면의 둘레 ${V0.arcBig}`, c: BIG }]] : [[{ t: `큰 모선 ${show(R2)} − 작은 모선 `, c: 'ink' }, { t: `${show(R1)}`, c: SMALL }, { t: ` = 원뿔대의 모선 `, c: 'ink' }, { t: `${show(Rf)}`, c: 'green' }], [{ t: `큰 호의 길이 = 아랫면의 둘레 ${V0.arcBig}`, c: BIG }], [{ t: `작은 호의 길이 = 윗면의 둘레 ${V0.arcSmall}`, c: SMALL }]]), flatA, true);
         }
       }
       // 점선: 잘라 낸 작은 부채꼴(원뿔대) / 강조 단계의 부채꼴

@@ -196,7 +196,8 @@
         sn.net.pieces.forEach((pc,k)=>pc.pts.forEach(p=>pts.push(G.proj(cam,G.applyT(pose[k],p)))));
         const box=G.bboxOf(pts);return {pose,box,cx:(box.x0+box.x1)/2,cy:(box.y0+box.y1)/2};
       };
-      const frames=Array.from({length:9},(_,i)=>frame(i/8));
+      const entryFit=s.lessonEntry&&(C.t||0)<0.02; // 해설 우선 진입 화면: 닫힌 원뿔만 보이므로 펼친 전개도 크기가 아니라 원뿔에 맞춰 크게(탐구·수업 모드는 그대로)
+      const frames=Array.from({length:entryFit?1:9},(_,i)=>frame(i/8));
       const maxW=Math.max(...frames.map(f=>f.box.x1-f.box.x0)), maxH=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
       const O=src.hx(-maxW/2-M.r-2), body=revolveMesh([[0,0],[M.r,0],[0,M.h]],{O,N:48,tags:['bot','side']});
       const bb=G.bboxOf(body.faces.flatMap(f=>f.pts.map(src.P))), sy=-(bb.y0+bb.y1)/2, pair=b.W>=600;
@@ -359,9 +360,14 @@
       if(surf && M.started && C.tab==='explore' && !b.thumb){drawConeComparison(b,s,M,C);return;}
       if(!surf && M.started && C.tab==='explore' && !b.thumb){drawVolumeComparison(b,s,M,C);return;}
       const hl = !rv ? {} : surf ? (st <= 1 ? { bot: 2 } : st === 2 ? { ring: 2 } : { ring: 3, bot: 2 }) : (st <= 1 ? { bot: 2 } : st === 2 ? {} : { ring: 3, bot: 2 });
-      const o = { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, hSide: { x: 1, y: 0 }, hColor: 'ink', hAlongFrac: 0.2, problemAlpha: 0.02, reviewAlpha: 0.08, textbookReview: true, fitL: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? 18 : undefined), fitR: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? 18 : undefined), fitT: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? 18 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? 18 : undefined), t: !surf ? 0 : C.problem ? 0 : rv ? 1 : C.t, problem: C.problem || !surf, review: rv, hl, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } };
+      const o = { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, hSide: { x: 1, y: 0 }, hColor: 'ink', hAlongFrac: 0.2, problemAlpha: 0.02, reviewAlpha: 0.08, textbookReview: true, fitL: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? (s.lessonOn && rv ? 74 : 18) : undefined), fitR: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? 18 : undefined), fitT: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? (s.lessonOn && rv ? 66 : 18) : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? 18 : undefined), t: !surf ? 0 : C.problem ? 0 : rv && !s.lessonOn ? 1 : C.t, problem: C.problem || !surf, review: rv, hl, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } };
       if (!surf && C.review) { o.fitL = 80; o.fitR = 80; o.fitT = 80; o.fitB = 80; }
       const res = G.coneNet(b, s, C, o);
+      // 해설 재생 중 부피: 밑넓이 이름표와 합 식 (결과 줄은 sumRows 가 svShowV 까지 아낌). 정리·탐구·문제 탭·썸네일은 그대로.
+      if (!surf && rv && s.lessonOn && !b.thumb) {
+        res.D.areaLab(G.centroid(res.sn.A), '밑넓이', plainVal(M.S), { dx: -0.1, dy: 34 });
+        G.sumRows(res.D, [[{ t: '부피 = ' }, { t: '⅓', c: 'amber' }, { t: ' × ' }, { t: '밑넓이', c: 'violet' }, { t: ' × ' }, { t: '높이', c: 'amber' }], [{ t: `= ⅓ × ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)}` }]], 1);
+      }
     };
     return {
       id: 'sv2-3', title: '원뿔 종합', short: '원뿔 종합',
@@ -430,7 +436,7 @@
       const hl = !rv ? {} : st <= 1 ? { big: true } : st === 2 ? { small: true } : st === 3 ? { ring: 2 } : { ring: 3, bot: 2, top: 2 };
       G.coneNet(b, s, C, {
         // 입체뿐 아니라 펼치는 도중의 옆면과 완성된 윗원도 목차 손잡이 밖에 남깁니다.
-        r2: M.r2, r1: M.r1, hf: M.hf, R2: M.R2, R1: M.R1, hColor: 'ink', cleanFrustum: true, showOriginal: true, problemAlpha: 0.02, fitL: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 82 : undefined), fitR: C.problem ? (b.W < 450 ? 40 : 95) : (b.W < 600 ? 40 : undefined), fitT: C.problem ? (b.W < 450 ? 18 : 85) : (b.W < 600 ? 35 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 85) : (b.W < 600 ? 12 : undefined), t: C.problem ? 0 : rv ? 1 : C.t, problem: C.problem, review: rv, hl,
+        r2: M.r2, r1: M.r1, hf: M.hf, R2: M.R2, R1: M.R1, hColor: 'ink', cleanFrustum: true, showOriginal: true, problemAlpha: 0.02, fitL: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 82 : undefined), fitR: C.problem ? (b.W < 450 ? 40 : 95) : (b.W < 600 ? 40 : undefined), fitT: C.problem ? (b.W < 450 ? 18 : 85) : (b.W < 600 ? 35 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 85) : (b.W < 600 ? 12 : undefined), t: C.problem ? 0 : rv && !s.lessonOn ? 1 : C.t, problem: C.problem, review: rv, hl,
         vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) }
       });
     };
