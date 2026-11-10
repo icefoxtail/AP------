@@ -28,6 +28,14 @@
 - 변의 길이 scalarLabels의 side를 고를 수 없음 (23 금당 1final Q08, 2026-11-10)
 - 축 글자가 x/y로 고정되어 k로 바꿀 수 없음 (23 여수여 1mid Q18, 2026-11-10)
 - 손으로 정한 선분 끝점이 방정식과 맞는지 검증하지 않음 (23 복성 1final Q14, 2026-11-10)
+- 조각 불연속 점선 보조선에 g(x) 이름이 자동으로 붙고 끌 수 없음 (23 제일 1final Q03, 2026-11-10)
+- multi-curve는 원을 2개까지만 받아 포물선+원 4개는 그릴 수 없음 (23 제일 1final Q18, 2026-11-10)
+- COORDINATE_PANEL_TOO_TALL이 키 큰 그림의 좌표 라벨을 거부함 (23 제일 1final Q15·Q21·Q22, 2026-11-10)
+- 값 없는 수직선 점은 같은 선에 값 있는 기준점이 필요하고, RESULT 선은 SET 선에서만 계산됨 (23 매산 1final Q17, 2026-11-10)
+- 원×직선 INTERSECTION 미지원 (23 매산 1final Q18, 2026-11-10)
+- 벤 다이어그램에 색 옵션이 없고 바깥 영역 음영이 개수 라벨과 겹침 (23 강남여 2mid Q02·Q04·Q15, 2026-11-10)
+- 수직선 끝점 매개변수는 일차식만 받음 (23 강남여 2mid Q12, 2026-11-10)
+- 조각 다항식 referenceCurves에는 nameLabel 지시선을 쓸 수 없음 (23 강남여 2mid Q20, 2026-11-10)
 - 반비례 그래프의 "곡선과 두 좌표축 사이 영역" 색칠 불가 (26 왕운중 2학기 중간 중1 Q14 문제 그림): rational-spike-v1은 graphPlan.regions를 못 받고(GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL), multi-curve-figure-v1의 regions(under)는 곡선이 창 위로 나가는 구간의 표본점을 버려서 y축 옆이 쐐기 모양으로 비는 채로 그려지며, halfPlane은 그림 틀(여백 포함) 끝까지 번진다. 필요: 곡선이 창 위로 나가면 영역 다각형을 창 위 경계에서 잘라 닫기(코너점 추가), 또는 rational-spike-v1에 regions 지원(under, from 생략 시 y축까지). 지금은 곡선·축·O·식 y=a/x만 그리고 영역 색칠은 뺐다(게시).
 - 격자점 점 모양·색 지정 불가 (26 왕운중 2학기 중간 중1 Q14 해설 그림): overlays.latticePoints 점은 검정 r=2.4 고정이고 overlays.points(curveX) 점도 검정 채운 점뿐이라, "세는 점(파랑)"과 "그래프 위의 점(속 빈 장밋빛, 제외)"을 점 모양·색으로 구분할 수 없다. callouts "제외"(TEXT)를 그래프 위 점 4개에 달아 우회(게시). 필요: overlays.points[].marker(OPEN/CLOSED)·color, latticePoints.color. 그래프 아래 영역의 연한 초록 음영도 위와 같은 이유로 뺐다.
 - 일반 데이터 표(행·열에 임의 문자·숫자, 빈칸·기호 칸 허용) 그림 없음 (26 왕운중 2학기 중간 중1 Q06 x·y 대응표와 빈칸 a, Q18 읽은 책 수·학생 수 도수 표, Q19 계급·도수 표의 빈칸 A·B): stat은 DICE_TABLE·MEMBERSHIP_TABLE만 있다. 문제 그림 UNSUPPORTED로 옛 그림 유지(Q19는 줄기와 잎만 신형으로 바꾸면 표가 사라져 문제가 깨지므로 해설 그림만 신형 STEM_LEAF로 게시). 필요: 표 capability(칸에 문자 허용) 또는 AP Table Engine 표와의 연결.
