@@ -56,10 +56,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|1",
     "decisiveStep": "두 그림에서 현-원주각 대응을 적용해 x, y를 구하고 합산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q01.png",
-    "solutionImageAlt": "서로 다른 두 원 그림에 표시된 같은 현의 길이와 각, 중심각을 보여 주는 원본 그림.",
-    "solutionImageCaption": "두 그림의 표시된 현과 각을 풀이 순서에 따라 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: (1)은 파란 호가 같은 길이라 파란 두 원주각이 같고, (2)는 원주각에서 중심각을 구하는 두 개의 원 그림이다. 주황색 두 호는 길이가 같다(7cm).",
+    "solutionImageCaption": "(1)에서 주황색 두 호는 길이가 같으므로 파란 두 원주각이 같아 x₁=32°이다. (2)에서 114°가 보는 큰 호는 228°이므로 나머지 중심각 x₂=360°−228°=132°이다. 두 x의 합은 164°이다. 정답은 164°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -117,10 +117,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|2",
     "decisiveStep": "중심각과 원주각, 큰 호/작은 호의 구별로 두 각을 각각 구한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q02.png",
-    "solutionImageAlt": "원 O 위의 A, B, C, D와 중심 O를 나타낸 원본 원 그림.",
-    "solutionImageCaption": "원주각과 중심각이 보는 호를 그림에서 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 점 A, B, C, D와 중심 O가 있고 원주각 40°, 중심각 80°, 원주각 140°가 색으로 구분된 그림",
+    "solutionImageCaption": "∠BAD=40°가 보는 호 BD는 80°이므로 중심각은 80°이다. C는 작은 호 BD 위에 있어 ∠BCD는 큰 호 280°를 보므로 140°이다. 두 각의 합을 구하면 정답은 220°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -178,10 +178,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|3",
     "decisiveStep": "지름의 반원과 원주각으로 호 BC를 구한 뒤 x를 계산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q03.png",
-    "solutionImageAlt": "지름 AB, 원주각 ADC와 BEC의 위치를 나타낸 원본 원 그림.",
-    "solutionImageCaption": "지름 AB와 같은 호를 보는 원주각의 위치를 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB를 가진 원에서 파란 원주각 65°와 분홍색 구하는 각 x가 있는 그림",
+    "solutionImageCaption": "AB가 지름이므로 반원의 호는 180°이다. ∠ADC=65°가 보는 호 AC는 130°이므로 호 CB=50°이다. x는 호 CB를 보는 원주각이므로 정답은 25°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -239,10 +239,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|4",
     "decisiveStep": "교차하는 두 현의 각 관계와 외부 할선각에서 호를 구해 x,y로 변환한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q04-r1.png",
-    "solutionImageAlt": "원 위의 네 점과 교점 E, 외부점 P의 할선을 나타낸 원본 그림.",
-    "solutionImageCaption": "원 안의 두 현과 바깥 점 P에서 나온 할선을 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 P에서 두 할선이 그려지고 현 AD, BC가 점 E에서 만나며 24°, 68°와 구하는 각 x, y가 색으로 구분된 그림",
+    "solutionImageCaption": "두 현의 교차각에서 호 BD+호 AC=136°이고, 점 P의 바깥각에서 호 BD−호 AC=48°이다. 따라서 호 BD=92°, 호 AC=44°이다. 정답은 x=22°, y=46°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -300,10 +300,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|5",
     "decisiveStep": "두 원주각으로 호의 각도를 구하고 같은 원의 호 길이 비례로 길이를 계산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q05-hires-r1.png",
-    "solutionImageAlt": "원 위의 점 A, B, C, D, E, P, Q와 표시된 각·길이를 나타낸 원본 그림.",
-    "solutionImageCaption": "각과 같은 호에 대응하는 현의 길이 관계를 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 두 점 P, Q에서 보는 원주각 45°와 15°, 같은 길이의 주황 호 CD, DE와 초록 호 AB가 있는 그림",
+    "solutionImageCaption": "∠APB=45°가 보는 호 AB는 90°, ∠CQD=15°가 보는 호 CD는 30°이다. 같은 원에서 호의 길이는 각도에 비례하므로 호 AB는 호 CD의 3배이다. 정답은 9cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -361,10 +361,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|6",
     "decisiveStep": "접선-현 각으로 호 BC를 구하고 나머지 호 관계에서 x를 계산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q06-r2.png",
-    "solutionImageAlt": "원 O, 접선이 만나는 점 P와 C, 점 A·B·D 및 표시된 각을 나타낸 정리된 원본 도형.",
-    "solutionImageCaption": "접선 PC와 원 위의 호 ADC를 그림에서 따라가세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원의 접선 CP와 현 BC가 이루는 63°, 구하는 각 x가 파랑·분홍으로 구분된 그림",
+    "solutionImageCaption": "접선과 현이 이루는 각 63°에서 호 BC는 126°이다. 호 AB=u라 하면 호 ADC=360°−126°−u=2u이므로 u=78°이다. x는 호 ADC를 보는 원주각이다. 정답은 78°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -422,10 +422,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|7",
     "decisiveStep": "원주각에서 작은 호 BC를 구한 뒤 두 접선의 각을 계산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q07-r3.png",
-    "solutionImageAlt": "원 O와 외부점 A에서의 두 접선, 접점 B·C 및 원주각 BDC를 나타낸 정리된 원본 도형.",
-    "solutionImageCaption": "두 접선과 원주각 BDC가 가리키는 호를 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 A에서 접점 B, C로 두 접선이 그려지고 원주각 126°와 구하는 각이 색으로 구분된 그림",
+    "solutionImageCaption": "원주각 126°가 보는 큰 호 BC는 252°이므로 작은 호 BC는 108°이다. 두 접선이 이루는 각은 180°에서 108°를 뺀 값이다. 정답은 72°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -483,10 +483,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|8",
     "decisiveStep": "반원과 호의 중점 조건으로 호 DC, 원주각 x를 계산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q08.png",
-    "solutionImageAlt": "지름 AB와 반원 위의 C·D, 표시된 20도 각을 나타낸 원본 원 그림.",
-    "solutionImageCaption": "반원 AB와 호의 중점 D를 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB를 가진 원에서 20°, 구하는 각 x가 있고 호 AD와 호 DC가 같은 색인 그림",
+    "solutionImageCaption": "지름 AB의 반원은 180°이고 ∠CAB=20°가 보는 호 CB는 40°이다. 호 AC=140°를 D가 이등분하므로 호 DC=70°이다. x는 호 DC의 원주각이므로 정답은 35°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -544,10 +544,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|9",
     "decisiveStep": "내접사각형 각과 접선-현 각을 사용해 x,y를 계산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q09-r2.png",
-    "solutionImageAlt": "원에 내접한 사각형 ABCD, 접선 AT와 표시된 x·y 각을 나타낸 정리된 원본 도형.",
-    "solutionImageCaption": "접선 AT와 원주각의 위치를 함께 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 점 A에서의 접선이 있고 100°, 45°, 구하는 각 x, y가 색으로 구분된 그림",
+    "solutionImageCaption": "내접사각형에서 ∠DAB=80°이다. 접선과 현의 각 x는 ∠ABD와 같은 45°이다. ∠ADB=180°−80°−45°=55°이고 y는 이와 같다. 정답은 x=45°, y=55°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -657,7 +657,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|11",
-    "decisiveStep": "자료별 도수에서 가장 큰 도수를 갖는 값을 찾는다."
+    "decisiveStep": "자료별 도수에서 가장 큰 도수를 갖는 값을 찾는다.",
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료 14개를 값별로 점으로 쌓은 점도표. 값마다 점의 개수가 나온 횟수를 나타낸다.",
+    "solutionImageCaption": "점의 개수가 나온 횟수이다. 5는 5회, 11은 4회, 13은 2회, 7, 8, 9는 각각 1회이므로 가장 많이 나온 값은 5이다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -712,7 +716,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|12",
-    "decisiveStep": "두 자료의 정렬 중앙값 조건을 동시에 부등식으로 좁힌다."
+    "decisiveStep": "두 자료의 정렬 중앙값 조건을 동시에 부등식으로 좁힌다.",
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 조건 (가)의 a 범위, 조건 (나)의 a 범위, 두 범위의 공통 부분이 차례로 표시된 그림",
+    "solutionImageCaption": "(가)에서 a는 10 이상, (나)에서 a는 15 이하이므로 공통 범위는 10 이상 15 이하이다. 이 범위에 들지 않는 값은 16이므로 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -939,7 +947,11 @@ window.questionBank = [
     "reviewStatus": "CREATE_DONE",
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|16",
-    "decisiveStep": "산점도 및 상관관계에 대한 다섯 설명을 정의와 대조한다."
+    "decisiveStep": "산점도 및 상관관계에 대한 다섯 설명을 정의와 대조한다.",
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 양의 상관관계, 음의 상관관계, 상관관계 없음, 수평에 가까운 직선 모양의 산점도 네 가지 예시 그림",
+    "solutionImageCaption": "예: 점들이 오른쪽 위로 향하며 한 직선에 가까이 모이면 양의 상관관계, 오른쪽 아래로 향하면 음의 상관관계이다. 점이 흩어져 있거나 수평에 가까운 직선 모양이면 상관관계가 없다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -997,10 +1009,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|17",
     "decisiveStep": "산점도의 음의 상관관계와 각 상황의 변화 방향을 비교한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q17.png",
-    "solutionImageAlt": "점들이 왼쪽 위에서 오른쪽 아래 방향으로 모여 있는 산점도.",
-    "solutionImageCaption": "점들이 오른쪽으로 갈수록 아래쪽에 놓이는 방향을 그림에서 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점들이 왼쪽 위에서 오른쪽 아래로 퍼진 산점도와 아래로 향하는 화살표",
+    "solutionImageCaption": "예: 원문 산점도의 모양을 예시 자료로 다시 그린 것이다. 점들이 오른쪽 아래로 향하므로 한 변량이 커질수록 다른 변량은 작아지는 음의 상관관계이다. 낮의 길이와 밤의 길이, 이동 거리와 남은 연료가 이에 해당한다. 정답은 ①, ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1012,8 +1024,8 @@ window.questionBank = [
       "$\\dfrac{7}{15}$",
       "$\\dfrac{8}{15}$"
     ],
-    "answer": "⑤",
-    "solution": "세로축은 오른쪽 눈, 가로축은 왼쪽 눈의 시력이다.\n오른쪽 눈의 시력이 더 좋은 경우는 점의 세로좌표가 가로좌표보다 큰 경우다.\n\n그림에서 $y>x$인 점을 세면 8개이다.\n전체 학생은 15명이므로 비율은\n$\\dfrac8{15}$이다.\n정답은 ⑤이다.",
+    "answer": "②",
+    "solution": "세로축은 오른쪽 눈, 가로축은 왼쪽 눈의 시력이다.\n오른쪽 눈의 시력이 더 좋은 경우는 점의 세로좌표가 가로좌표보다 큰 경우, 즉 대각선 $y=x$보다 위에 있는 점이다.\n\n그림에서 이런 점은 $(0.8,\\,0.9)$, $(0.9,\\,1.0)$, $(1.0,\\,1.2)$, $(1.2,\\,1.5)$의 4개이다.\n두 눈의 시력이 같은 점(대각선 위의 점)은 세지 않는다.\n전체 학생은 15명이므로 비율은\n$\\dfrac4{15}$이다.\n정답은 ②이다.",
     "tags": [
       "통계",
       "산점도"
@@ -1113,10 +1125,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|19",
     "decisiveStep": "원주각과 외부 할선각에서 호의 관계를 얻어 Q의 각을 계산한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q19-r1.png",
-    "solutionImageAlt": "원 O의 두 외부점 P·Q, 원 위의 A·B·C·D와 표시된 각을 나타낸 원본 그림.",
-    "solutionImageCaption": "바깥 점 P와 Q에서 그은 두 할선의 교점을 확인하세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 P, Q에서 할선이 그려지고 36°, 52°와 구하는 각 x가 색으로 구분된 그림",
+    "solutionImageCaption": "∠ADC=52°이므로 호 AB+호 BC=104°이다. 점 P에서 호 CD−호 AB=72°이다. 전체 호의 합에서 호 DA−호 BC=80°를 얻는다. 점 Q의 각은 그 절반이므로 정답은 40°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1168,10 +1180,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|20",
     "decisiveStep": "정오각형의 중심각/내각으로 같은 호와 원주각을 두 방식으로 구한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q20-r3.png",
-    "solutionImageAlt": "원에 내접한 정오각형과 대각선 별 모양의 원본 도형.",
-    "solutionImageCaption": "정오각형의 꼭짓점과 표시된 호의 점을 따라가세요.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 정오각형과 대각선, 중심각 72°, 내각 108°, 구하는 원주각 x가 색으로 구분된 그림",
+    "solutionImageCaption": "(1) 중심각 ∠COD=72°이므로 같은 호의 원주각은 절반이다. (2) 내각 ∠BAE=108°는 같은 세 원주각의 합이므로 3으로 나눈다. 정답은 (1) 36°, (2) 36°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1223,9 +1235,9 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|21",
     "decisiveStep": "두 학생 평균, 제곱편차합, 분산, 표준편차를 순서대로 구해 비교한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q21-r1.png",
-    "solutionImageAlt": "연이와 향이의 다섯 차례 수학 점수 표. 연이 5, 7, 3, 6, 4점, 향이 9, 1, 5, 2, 8점.",
-    "solutionImageCaption": "두 학생의 다섯 점수를 각 행에서 읽고 표준편차를 비교하세요.",
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 연이와 향이의 점수를 점도표로 나타내고 평균 5점과 각 점수의 편차를 표시한 두 그림",
+    "solutionImageCaption": "두 학생 모두 평균은 5점이다. 연이의 편차는 0, 2, −2, 1, −1이고 향이의 편차는 4, −4, 0, −3, 3이다. 편차 제곱의 합은 연이 10, 향이 50이므로 분산은 각각 2, 10이다. 정답은 (1) 연이 √2점, 향이 √10점, (2) 연이이다.",
     "solutionImageSize": "full"
   }
 ];
