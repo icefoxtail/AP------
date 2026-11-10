@@ -12,46 +12,52 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(2x-y)(3x+5y)=6x^2+axy+by^2",
+            "quote": "$(2x-y)(3x+5y)=6x^2+axy+by^2$일 때,",
             "term": "다항식"
+          },
+          {
+            "src": "solution",
+            "quote": "좌변을 전개하여 우변과 동류항끼리 계수를 비교해야 합니다.",
+            "term": "동류항"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$a+b$의 값은?",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "a+b = 7 + (-5) = 2",
-            "term": "값"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "다항식의 전개식을 이용하여",
+            "quote": "다항식의 전개식을 이용하여 각 항의 계수를 비교합니다.",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "각 항의 계수를 비교합니다.",
+            "quote": "다항식의 전개식을 이용하여 각 항의 계수를 비교합니다.",
             "term": "계수비교",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$a+b = 7 + (-5) = 2$입니다.",
+            "term": "합",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "동류항끼리",
-            "term": "동류항"
+            "quote": "$a = 7$, $b = -5$임을 알 수 있습니다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "좌변을 전개하여 우변과 동류항의 계수를 비교하여 미지수를 구함"
+        "method": "좌변의 두 일차식을 전개하여 동류항을 정리한 후 우변과 계수를 비교하여 a+b를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -64,14 +70,14 @@
           {
             "src": "stem",
             "quote": "다음 중 옳은 것은?",
-            "term": "판정"
+            "term": "다항식"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "이므로 옳습니다.",
-            "term": "결정"
+            "src": "stem",
+            "quote": "옳은 것은?",
+            "term": "판정"
           }
         ],
         "method": [
@@ -83,27 +89,28 @@
           },
           {
             "src": "solution",
-            "quote": "(a-b)^2 = a^2-2ab+b^2",
+            "quote": "$(a-b)^2 = a^2-2ab+b^2$을 정확히 적용합니다.",
             "term": "완전제곱식",
             "evidenceType": "IMPLIED",
-            "justification": "일차식의 차의 제곱에 대한 곱셈공식을 전개에 적용함"
+            "justification": "완전제곱식 전개 공식 적용"
+          },
+          {
+            "src": "solution",
+            "quote": "④ $(-2a+5)^2 = (-2a)^2 + 2(-2a)(5) + 5^2 = 4a^2 - 20a + 25$이므로 옳습니다.",
+            "term": "전개",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "(-2a+5)^2=4a^2-20a+25",
-            "term": "거듭제곱"
-          },
-          {
             "src": "solution",
-            "quote": "(-2a)^2 + 2(-2a)(5) + 5^2",
-            "term": "전개"
+            "quote": "따라서 정답은 ④이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "완전제곱식 전개 공식을 적용하여 각 식의 전개 결과의 참/거짓을 판정함"
+        "method": "완전제곱식 곱셈 공식을 각 보기에 적용하여 바르게 전개된 식을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -115,46 +122,48 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(x+7)(x-1)-3(x+2)(x-2)",
+            "quote": "$(x+7)(x-1)-3(x+2)(x-2)$를 계산하면?",
             "term": "다항식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "계산하면?",
-            "term": "결정"
+            "quote": "$(x+7)(x-1)-3(x+2)(x-2)$를 계산하면?",
+            "term": "이차식"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "곱셈 공식을 이용해",
-            "term": "곱셈공식",
+            "quote": "2) $-3(x+2)(x-2) = -3(x^2 - 4) = -3x^2 + 12$",
+            "term": "합차공식",
+            "evidenceType": "IMPLIED",
+            "justification": "합차 공식을 이용한 전개"
+          },
+          {
+            "src": "solution",
+            "quote": "곱셈 공식을 이용해 각 다항식을 전개한 후",
+            "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "각 다항식을 전개한 후",
-            "term": "전개",
+            "quote": "동류항끼리 결합하여 정리합니다.",
+            "term": "동류항",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "동류항끼리 결합하여 정리합니다.",
-            "term": "동류항"
-          },
-          {
-            "src": "solution",
-            "quote": "-2x^2 + 6x + 5",
-            "term": "이차식"
+            "quote": "$= -2x^2 + 6x + 5$",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "곱셈공식으로 각 부분을 전개한 후 동류항을 결합하여 정리함"
+        "method": "곱셈 공식과 합차 공식을 이용해 각 부분을 전개한 후 동류항끼리 결합하여 식을 정리함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -166,52 +175,52 @@
         "given": [
           {
             "src": "stem",
-            "quote": "x=\\dfrac{1}{\\sqrt{10}+3}",
+            "quote": "$x=\\dfrac{1}{\\sqrt{10}+3}$, $y=\\dfrac{1}{\\sqrt{10}-3}$일 때,",
             "term": "무리수"
           },
           {
             "src": "stem",
-            "quote": "x^2-2xy+y^2",
-            "term": "이차식"
+            "quote": "$x^2-2xy+y^2$의 값은?",
+            "term": "다항식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "값은?",
-            "term": "값"
+            "quote": "$x^2-2xy+y^2$의 값은?",
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "분모를 유리화한 뒤",
+            "quote": "먼저 $x$와 $y$의 분모를 유리화합니다.",
             "term": "유리화",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "완전제곱식으로 인수분해하여 대입합니다.",
+            "quote": "$x^2 - 2xy + y^2 = (x-y)^2$",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "인수분해하여 대입합니다.",
-            "term": "인수분해",
+            "quote": "여기에 유리화한 $x, y$의 값을 대입하여 $x-y$를 구합니다.",
+            "term": "대입",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "x^2 - 2xy + y^2 = (x-y)^2",
-            "term": "곱셈공식"
+            "quote": "$(x-y)^2 = (-6)^2 = 36$",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "분모를 유리화한 후 목표 식을 완전제곱식으로 인수분해하여 대입 계산함"
+        "method": "무리수 분모를 유리화한 후 다항식을 완전제곱식으로 인수분해하여 대입해 값을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -223,13 +232,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "자연수 $a, b, c$에 대하여",
-            "term": "자연수"
+            "quote": "다음은 $(x+1)(x-1)(x^2+1)(x^4+1)(x^8+1)$을 전개하는 과정이다.",
+            "term": "다항식"
           },
           {
             "src": "stem",
-            "quote": "(x+1)(x-1)(x^2+1)(x^4+1)(x^8+1)",
-            "term": "다항식"
+            "quote": "자연수 $a, b, c$에 대하여",
+            "term": "자연수"
           }
         ],
         "goal": [
@@ -242,32 +251,34 @@
         "method": [
           {
             "src": "solution",
-            "quote": "합차 공식 $(A+B)(A-B) = A^2-B^2$을",
+            "quote": "합차 공식 $(A+B)(A-B) = A^2-B^2$을 연속적으로 적용하여 전개합니다.",
             "term": "합차공식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "연속적으로 적용하여 전개합니다.",
+            "quote": "합차 공식 $(A+B)(A-B) = A^2-B^2$을 연속적으로 적용하여 전개합니다.",
             "term": "전개",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "두 번째 단계에서 $(x^2-1)(x^2+1) = (x^2)^2-1 = x^4-1$이므로 $b=4$입니다.",
+            "term": "지수",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱의 곱셈으로 지수 결정"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "a+b+c = 2 + 4 + 8 = 14",
-            "term": "값"
-          },
-          {
-            "src": "solution",
-            "quote": "x^{16}-1",
-            "term": "거듭제곱"
+            "quote": "$a+b+c = 2 + 4 + 8 = 14$",
+            "term": "자연수"
           }
         ]
       },
       "reasons": {
-        "method": "합차공식을 연속으로 적용하여 지수를 거듭제곱하며 전개함"
+        "method": "합차 공식을 연속적으로 적용하여 지수가 2배씩 늘어나는 전개 규칙으로 a, b, c를 구하고 합을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -280,46 +291,52 @@
           {
             "src": "stem",
             "quote": "다음 중 인수분해가 바르지 않은 것은?",
+            "term": "다항식"
+          },
+          {
+            "src": "stem",
+            "quote": "인수분해가 바르지 않은 것은?",
             "term": "인수분해"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "바르지 않은 인수분해입니다.",
+            "src": "stem",
+            "quote": "바르지 않은 것은?",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "모든 항에 포함된 공통인수를",
+            "quote": "다항식의 모든 항에 포함된 공통인수를 완벽하게 묶어내어",
             "term": "공통인수",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "완벽하게 묶어내어",
+            "quote": "공통인수 중 수인 $3$을 묶어내지 않고 문자 $a$만 묶었으므로",
             "term": "인수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "올바르게 인수분해하면 $3a(a-2+3b)$가 되어야 합니다.",
+            "term": "곱",
             "evidenceType": "IMPLIED",
-            "justification": "다항식의 모든 항에서 최대 공통인수를 묶어내어 인수분해 여부를 확인함"
+            "justification": "공통인수를 묶어 곱의 형태로 표현"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "다항식의 모든 항에",
-            "term": "항"
-          },
-          {
-            "src": "solution",
-            "quote": "수인 $3$을 묶어내지",
-            "term": "상수"
+            "quote": "따라서 정답은 ⑤이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "공통인수를 완전히 묶어내었는지 확인하여 올바른 인수분해 여부를 판정함"
+        "method": "다항식의 모든 항에서 최대 공통인수를 올바르게 묶어내었는지 검토하여 잘못된 인수분해를 판정함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -331,12 +348,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "다항식 $x^2+ax-8$을",
-            "term": "이차식"
+            "quote": "다항식 $x^2+ax-8$을 인수분해하였더니",
+            "term": "다항식"
           },
           {
             "src": "stem",
-            "quote": "인수가 $x+4$, $x+b$일 때",
+            "quote": "인수가 $x+4$, $x+b$일 때,",
             "term": "인수"
           }
         ],
@@ -344,44 +361,39 @@
           {
             "src": "stem",
             "quote": "$a+b$의 값은?",
-            "term": "합"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "두 일차식의 곱을 전개하여",
+            "quote": "두 일차식의 곱을 전개하여 본래 이차식의 계수 및 상수항과 대조합니다.",
             "term": "전개",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "계수 및 상수항과 대조합니다.",
-            "term": "계수비교",
+            "quote": "1) 상수항 비교: $4b = -8 \\implies b = -2$",
+            "term": "상수항",
             "evidenceType": "NAMED"
           },
           {
-            "src": "stem",
-            "quote": "인수분해하였더니",
-            "term": "인수분해",
+            "src": "solution",
+            "quote": "2) $x$의 계수 비교: $a = 4+b$",
+            "term": "계수비교",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "4b = -8 \\implies b = -2",
-            "term": "상수"
-          },
-          {
-            "src": "solution",
-            "quote": "a = 4+b",
-            "term": "일차방정식"
+            "quote": "$a+b = 2 + (-2) = 0$",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "인수의 곱을 전개하여 계수와 상수항을 비교해 미지수를 구함"
+        "method": "두 일차식의 곱을 전개하여 상수항과 일차항 계수를 비교해 a, b를 구하고 합을 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -399,46 +411,41 @@
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "올바릅니다.",
+            "src": "stem",
+            "quote": "바르게 인수분해한 것은?",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "합차 공식",
+            "quote": "이차식의 인수분해 공식(대각선 분해법, 합차 공식, 완전제곱식)을 올바르게 적용했는지",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "⑤ $9x^2-25 = (3x)^2 - 5^2 = (3x+5)(3x-5)$이므로 올바릅니다.",
             "term": "합차공식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "완전제곱식",
+            "quote": "② $x^2-6x+9 = (x-3)^2$이므로 옳지 않습니다.",
             "term": "완전제곱식",
-            "evidenceType": "NAMED"
-          },
-          {
-            "src": "stem",
-            "quote": "바르게 인수분해한 것은?",
-            "term": "인수분해",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "9x^2-25=(3x+5)(3x-5)",
-            "term": "거듭제곱"
-          },
-          {
             "src": "solution",
-            "quote": "(2x+1)(x+2)",
-            "term": "일차식"
+            "quote": "따라서 정답은 ④, ⑤이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "합차공식과 완전제곱식 및 대각선 분해법을 각각 적용하여 올바른 인수분해를 고름"
+        "method": "합차 공식과 완전제곱식 및 대각선 분해법을 각각 적용하여 바른 인수분해 식을 판정함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -450,103 +457,110 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식의 해가",
+            "quote": "이차방정식의 해가 $x=1$ 또는 $x=-\\dfrac{1}{2}$인 것은?",
             "term": "이차방정식"
+          },
+          {
+            "src": "stem",
+            "quote": "해가 $x=1$ 또는 $x=-\\dfrac{1}{2}$인 것은?",
+            "term": "해"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "번 식에서",
-            "term": "결정"
+            "src": "stem",
+            "quote": "이차방정식의 해가 $x=1$ 또는 $x=-\\dfrac{1}{2}$인 것은?",
+            "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "인수분해 형태인",
+            "quote": "두 근 $\\alpha, \\beta$를 가지는 이차방정식의 인수분해 형태인",
             "term": "인수분해",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "구조를 역으로 유도합니다.",
-            "term": "전개",
-            "evidenceType": "IMPLIED",
-            "justification": "두 근을 갖는 일차식의 곱으로 방정식을 구성함"
+            "quote": "각각을 영으로 만드는 일차식 인수를 찾습니다.",
+            "term": "일차식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "따라서 이 두 인수의 곱으로 이루어진 이차방정식은 다음과 같습니다.",
+            "term": "곱",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "해가 $x=1$ 또는 $x=-\\dfrac{1}{2}$이므로",
-            "term": "해"
-          },
-          {
-            "src": "solution",
-            "quote": "두 인수의 곱으로 이루어진",
-            "term": "곱"
+            "quote": "$2x+1=0 \\implies x=-\\dfrac{1}{2}$ 또는 $x-1=0 \\implies x=1$",
+            "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "주어진 두 해를 인수로 갖는 일차식들의 곱으로 이차방정식을 작성함"
+        "method": "주어진 두 근으로부터 각각 0이 되는 일차식 인수를 구성하고 곱의 형태로 이차방정식을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
     },
     {
       "sourceOrdinal": 10,
-      "format": "단일 정답",
+      "format": "옳은 것 고르기",
       "slots": {
         "given": [
           {
             "src": "stem",
-            "quote": "다음 이차방정식 중",
+            "quote": "다음 이차방정식 중 두 근의 합이 5인 것을 모두 고르면?",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "두 근의 합이 5인 것을",
-            "term": "합"
+            "quote": "두 근의 합이 5인 것을 모두 고르면?",
+            "term": "해"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "모두 고르면?",
-            "term": "결정"
+            "quote": "두 근의 합이 5인 것을 모두 고르면?",
+            "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "두 근의 합은 $-p$가 된다는 성질을 이용하거나",
+            "quote": "이차방정식 $x^2+px+q=0$에서 두 근의 합은 $-p$가 된다는 성질을 이용하거나",
             "term": "근과계수의관계",
+            "evidenceType": "IMPLIED",
+            "justification": "근과 계수의 관계 성질 적용"
+          },
+          {
+            "src": "solution",
+            "quote": "즉, $x$의 계수가 $-5$인 식을 찾으면 됩니다.",
+            "term": "계수",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "직접 인수분해하여 확인합니다.",
-            "term": "인수분해",
+            "quote": "두 근은 $2, 3$이고 합은 $2+3=5$입니다.",
+            "term": "합",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$x$의 계수가 $-5$인",
-            "term": "계수"
-          },
-          {
-            "src": "solution",
-            "quote": "두 근은 $2, 3$이고",
-            "term": "해"
+            "quote": "따라서 조건에 맞는 이차방정식은 ②번과 ④번입니다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "근과 계수의 관계 또는 인수분해를 통해 두 근의 합이 5가 되는 이차방정식을 판별함"
+        "method": "근과 계수의 관계에 의해 x의 계수가 -5인 방정식을 찾거나 직접 인수분해하여 두 근의 합이 5임을 확인함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -558,23 +572,29 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(4x-1)(x+3)=2x^2+12x",
+            "quote": "이차방정식 $(4x-1)(x+3)=2x^2+12x$의 두 근이",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "a>b",
-            "term": "부등식"
+            "quote": "두 근이 $x=a$ 또는 $x=b$일 때,",
+            "term": "해"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$a-b$의 값은?",
-            "term": "값"
+            "term": "식의값"
           }
         ],
         "method": [
+          {
+            "src": "solution",
+            "quote": "먼저 좌변을 전개합니다.",
+            "term": "전개",
+            "evidenceType": "NAMED"
+          },
           {
             "src": "solution",
             "quote": "모든 항을 좌변으로 이항하여 정리하면",
@@ -586,24 +606,18 @@
             "quote": "이차식을 인수분해하면",
             "term": "인수분해",
             "evidenceType": "NAMED"
-          },
-          {
-            "src": "solution",
-            "quote": "먼저 좌변을 전개합니다.",
-            "term": "전개",
-            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "x = \\dfrac{3}{2}",
-            "term": "해"
+            "quote": "조건에서 $a>b$라고 하였으므로 $a = \\dfrac{3}{2}$, $b = -1$이 됩니다.",
+            "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "전개 후 이항하여 정리한 뒤 인수분해하여 두 근을 구함"
+        "method": "좌변을 전개하고 우변 항을 이항하여 정리한 뒤 인수분해하여 두 근을 구하고 차 a-b를 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -615,51 +629,52 @@
         "given": [
           {
             "src": "stem",
-            "quote": "x^2-(k+2)x+4=0",
+            "quote": "$x$에 대한 이차방정식 $x^2-(k+2)x+4=0$이 중근을 가질 때의",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "중근을 가질 때의",
+            "quote": "중근을 가질 때의 수 $k$의 값이",
             "term": "중근"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "$a-b$의 값은?",
-            "term": "값"
+            "quote": "이때, $a-b$의 값은?",
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "판별식 $D=0$",
+            "quote": "이차방정식이 중근을 가질 조건(판별식 $D=0$ 또는 완전제곱식 조건)을 이용해 $k$를 구하고,",
             "term": "판별식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "근과 계수의 관계를 써서 $a, b$를 유도합니다.",
+            "quote": "근과 계수의 관계에 의해",
             "term": "근과계수의관계",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$a-b = 4 - (-12) = 4 + 12 = 16$입니다.",
+            "term": "차",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "k = 2",
-            "term": "해"
-          },
-          {
-            "src": "solution",
-            "quote": "a = 4",
-            "term": "계수"
+            "quote": "$k = 2$ 또는 $k = -6$입니다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "중근 조건으로 판별식을 풀어 k를 구하고 근과 계수의 관계로 새 방정식의 계수를 도출함"
+        "method": "첫 번째 방정식의 판별식이 0인 조건으로 k를 구하고, 두 값을 근으로 하는 새 방정식에서 근과 계수의 관계로 a-b를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -671,52 +686,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "완전제곱식을 이용하여",
-            "term": "완전제곱식"
-          },
-          {
-            "src": "stem",
-            "quote": "x^2-6x-1=0",
+            "quote": "다음은 완전제곱식을 이용하여 이차방정식 $x^2-6x-1=0$의 해를 구하는 과정이다.",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "유리수 $A, B, C$에 대하여",
-            "term": "유리수"
+            "quote": "완전제곱식을 이용하여 이차방정식 $x^2-6x-1=0$의 해를 구하는 과정이다.",
+            "term": "완전제곱식"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$A+B+C$의 값을 구하면?",
-            "term": "합"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "절반의 제곱을 양변에 더해줍니다.",
-            "term": "등식의성질",
+            "quote": "좌변을 완전제곱식으로 만들기 위해 $x$ 계수의 절반의 제곱을 양변에 더해줍니다.",
+            "term": "제곱근",
             "evidenceType": "IMPLIED",
-            "justification": "완전제곱식을 만들기 위해 등식의 양변에 일차항 계수의 반의 제곱을 더함"
+            "justification": "완전제곱식과 제곱근을 이용한 해법"
           },
           {
             "src": "solution",
-            "quote": "좌변을 완전제곱식으로 인수분해하고",
-            "term": "인수분해",
+            "quote": "양변에 $9$를 더한 식은 다음과 같습니다.",
+            "term": "등식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$A+B+C = 9 + 3 + 10 = 22$입니다.",
+            "term": "합",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "A = 9",
-            "term": "상수"
+            "quote": "$B = 3$, $C = 10$임을 알 수 있습니다.",
+            "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "완전제곱식을 만들기 위해 양변에 상수를 더하고 좌변을 인수분해함"
+        "method": "완전제곱식 변형 과정에 맞추어 상수항을 양변에 더하고 인수분해하여 A, B, C의 값을 구하고 합함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -728,46 +744,47 @@
         "given": [
           {
             "src": "stem",
-            "quote": "2x^2-5x-1=0",
+            "quote": "이차방정식 $2x^2-5x-1=0$을 풀면?",
             "term": "이차방정식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "풀면?",
+            "quote": "이차방정식 $2x^2-5x-1=0$을 풀면?",
             "term": "해"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "근의 공식",
+            "quote": "근의 공식 $x = \\dfrac{-b \\pm \\sqrt{b^2-4ac}}{2a}$에 계수를 대입하여 해를 구합니다.",
             "term": "근의공식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "계수를 대입하여 해를 구합니다.",
-            "term": "대입",
+            "quote": "각 계수는 $a=2, b=-5, c=-1$입니다.",
+            "term": "계수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$= \\dfrac{5 \\pm \\sqrt{33}}{4}$",
+            "term": "제곱근",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "a=2, b=-5, c=-1",
-            "term": "계수"
-          },
-          {
-            "src": "solution",
-            "quote": "\\sqrt{33}",
+            "quote": "$= \\dfrac{5 \\pm \\sqrt{33}}{4}$",
             "term": "무리수"
           }
         ]
       },
       "reasons": {
-        "method": "근의 공식에 이차방정식의 계수를 대입하여 해를 계산함"
+        "method": "근의 공식에 이차방정식 계수를 대입하여 무리수 근을 도출함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -779,12 +796,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "x^2-3x+a-1=0",
+            "quote": "이차방정식 $x^2-3x+a-1=0$의 해가 모두 유리수가 되도록 하는",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "해가 모두 유리수가 되도록 하는",
+            "quote": "해가 모두 유리수가 되도록 하는 유리수 $a$의 값은?",
             "term": "유리수"
           }
         ],
@@ -792,38 +809,39 @@
           {
             "src": "stem",
             "quote": "유리수 $a$의 값은?",
-            "term": "값"
+            "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "판별식 $D = b^2-4ac$를 세운 뒤",
+            "quote": "근의 공식에서 근호 안의 식(판별식)의 값이 $0$ 또는 어떤 유리수의 제곱수가 되어야 합니다.",
             "term": "판별식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "각 보기의 $a$ 값을 대입하여",
-            "term": "대입",
+            "quote": "근의 공식에서 근호 안의 식(판별식)의 값이 $0$ 또는 어떤 유리수의 제곱수가 되어야 합니다.",
+            "term": "제곱근",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$13-4a$가 $0$ 또는 완전제곱수(유리수의 제곱) 형태를 만족해야 합니다.",
+            "term": "완전제곱식",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "완전제곱수",
-            "term": "완전제곱식"
-          },
-          {
-            "src": "solution",
-            "quote": "13 - 4a",
-            "term": "일차식"
+            "quote": "따라서 조건에 부합하는 유리수 $a$의 값은 ④번과 ⑤번입니다.",
+            "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "판별식이 완전제곱수가 되는 조건을 찾아 근이 유리수가 되도록 하는 미지수를 판정함"
+        "method": "판별식 D의 값이 0 또는 유리수의 제곱이 되어 근호가 벗겨지는 조건을 조사하여 a를 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -835,52 +853,52 @@
         "given": [
           {
             "src": "stem",
-            "quote": "\\dfrac{1}{2}x^2+\\dfrac{1}{4}x-1=0",
+            "quote": "이차방정식 $\\dfrac{1}{2}x^2+\\dfrac{1}{4}x-1=0$의 근이",
             "term": "이차방정식"
           },
           {
-            "src": "stem",
-            "quote": "유리수 $a, b$에 대하여",
-            "term": "유리수"
+            "src": "solution",
+            "quote": "계수가 분수인 이차방정식을 정수 계수로 변환한 뒤",
+            "term": "분수"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$b-a$의 값을 구하면?",
-            "term": "값"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "최소공배수인 $4$를 곱하여",
-            "term": "등식의성질",
-            "evidenceType": "IMPLIED",
-            "justification": "등식의 양변에 최소공배수를 곱하여 계수를 정수화함"
+            "quote": "양변에 분모의 최소공배수인 $4$를 곱하여 정수 계수로 고칩니다.",
+            "term": "등식",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "근의 공식을 적용합니다.",
+            "quote": "이제 이 방정식에 근의 공식을 적용합니다.",
             "term": "근의공식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$b-a = 33 - (-1) = 33 + 1 = 34$입니다.",
+            "term": "차",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "2x^2 + x - 4 = 0",
-            "term": "정수"
-          },
-          {
-            "src": "solution",
-            "quote": "\\sqrt{33}",
-            "term": "무리수"
+            "quote": "$a = -1$, $b = 33$",
+            "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "양변에 분모의 공배수를 곱해 정수 계수로 만든 후 근의 공식을 적용함"
+        "method": "분수 계수 이차방정식에 최소공배수를 곱해 정수로 만든 후 근의 공식을 써서 a, b를 비교하고 b-a를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -892,29 +910,27 @@
         "given": [
           {
             "src": "stem",
-            "quote": "0.4x^2=0.5x-0.1",
+            "quote": "이차방정식 $0.4x^2=0.5x-0.1$의 두 근의 차는?",
             "term": "이차방정식"
+          },
+          {
+            "src": "solution",
+            "quote": "계수가 소수인 방정식을 정수 계수로 고쳐 해를 구한 다음,",
+            "term": "소수"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "두 근의 차는?",
-            "term": "값"
+            "term": "차"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "양변에 $10$을 곱하여",
-            "term": "등식의성질",
-            "evidenceType": "IMPLIED",
-            "justification": "등식의 양변에 10을 곱하여 소수 계수를 정수로 변환함"
-          },
-          {
-            "src": "solution",
-            "quote": "이차식을 인수분해하면",
-            "term": "인수분해",
+            "quote": "방정식 $0.4x^2 = 0.5x - 0.1$의 양변에 $10$을 곱하여 정수 형태로 만듭니다.",
+            "term": "등식",
             "evidenceType": "NAMED"
           },
           {
@@ -922,23 +938,24 @@
             "quote": "모든 항을 좌변으로 이항하면",
             "term": "이항",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이차식을 인수분해하면",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "4x^2 - 5x + 1 = 0",
-            "term": "정수"
-          },
-          {
-            "src": "solution",
             "quote": "큰 근에서 작은 근을 뺍니다.",
-            "term": "부등식"
+            "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "계수를 정수로 고치고 이항 후 인수분해하여 두 근의 차를 계산함"
+        "method": "소수 계수를 정수로 변환하고 이항하여 인수분해한 후 두 근을 구해 차를 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -950,17 +967,17 @@
         "given": [
           {
             "src": "stem",
-            "quote": "직사각형 모양의",
+            "quote": "직사각형 모양의 색칠한 부분의 넓이가 $400\\text{ cm}^2$이었다.",
             "term": "직사각형"
           },
           {
             "src": "stem",
-            "quote": "넓이가 $400\\text{ cm}^2$이었다.",
+            "quote": "직사각형 모양의 색칠한 부분의 넓이가 $400\\text{ cm}^2$이었다.",
             "term": "넓이"
           },
           {
             "src": "stem",
-            "quote": "한쪽 길이를 $x\\text{ cm}$라 할 때",
+            "quote": "접어올린 부분의 한쪽 길이를 $x\\text{ cm}$라 할 때,",
             "term": "길이"
           }
         ],
@@ -974,15 +991,21 @@
         "method": [
           {
             "src": "solution",
-            "quote": "60x-2x^2 = 400",
+            "quote": "넓이가 $400\\text{ cm}^2$이므로 식을 세우면 $60x-2x^2 = 400$입니다.",
             "term": "이차방정식",
             "evidenceType": "IMPLIED",
-            "justification": "가로와 세로의 곱을 넓이로 두어 이차방정식을 수립함"
+            "justification": "넓이 조건으로부터 이차방정식 수립"
           },
           {
             "src": "solution",
-            "quote": "인수분해하면 $(x-10)(x-20) = 0$이 되어",
+            "quote": "인수분해하면 $(x-10)(x-20) = 0$이 되어 $x=10$ 또는 $x=20$이 됩니다.",
             "term": "인수분해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "색칠한 직사각형의 둘레의 길이는",
+            "term": "둘레",
             "evidenceType": "NAMED"
           }
         ],
@@ -990,17 +1013,12 @@
           {
             "src": "solution",
             "quote": "$x=10$ 또는 $x=20$이 됩니다.",
-            "term": "해"
-          },
-          {
-            "src": "solution",
-            "quote": "색칠한 직사각형의 둘레의 길이는",
-            "term": "둘레"
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "직사각형 단면의 가로, 세로 길이를 모델링하여 이차방정식을 세우고 인수분해하여 해를 구함"
+        "method": "직사각형 단면의 가로, 세로, 넓이, 둘레를 x로 표현하고 이차방정식을 풀어 보기를 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1012,57 +1030,59 @@
         "given": [
           {
             "src": "stem",
-            "quote": "직사각형 모양의",
+            "quote": "직사각형 모양의 야생화 꽃밭을 설치하려고 한다.",
             "term": "직사각형"
           },
           {
             "src": "stem",
-            "quote": "가로의 길이는 $x\\text{ m}$",
-            "term": "길이"
+            "quote": "꽃밭의 둘레의 길이는 $8\\text{ m}$일 때,",
+            "term": "둘레"
           },
           {
             "src": "stem",
-            "quote": "꽃밭의 둘레의 길이는 $8\\text{ m}$일 때",
-            "term": "둘레"
+            "quote": "꽃밭의 넓이는 $y\\text{ m}^2$이고,",
+            "term": "넓이"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$y$를 $x$에 대한 식으로 나타내면?",
-            "term": "결정"
+            "term": "이차함수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "둘레 공식을 활용하여",
-            "term": "함수식",
+            "quote": "가로의 길이가 $x\\text{ m}$이므로 세로의 길이는 $(4-x)\\text{ m}$로 표현할 수 있습니다.",
+            "term": "일차식",
             "evidenceType": "IMPLIED",
-            "justification": "둘레 조건을 이용하여 세로와 가로 사이의 함수식을 도출함"
+            "justification": "둘레로부터 세로를 일차식으로 도출"
           },
           {
             "src": "solution",
-            "quote": "대입하면 다음과 같습니다.",
-            "term": "대입",
+            "quote": "$y = \\text{가로의 길이} \\times \\text{세로의 길이}$",
+            "term": "곱",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$y = -x^2 + 4x$",
+            "term": "전개",
+            "evidenceType": "IMPLIED",
+            "justification": "곱셈을 전개하여 이차함수 완성"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "y = -x^2 + 4x",
-            "term": "이차식"
-          },
-          {
-            "src": "solution",
-            "quote": "꽃밭의 넓이를 $y\\text{ m}^2$라고",
-            "term": "넓이"
+            "quote": "꽃밭의 둘레의 길이가 $8\\text{ m}$이므로",
+            "term": "자연수"
           }
         ]
       },
       "reasons": {
-        "method": "직사각형의 둘레 관계식을 이용하여 세로를 표현하고 가로와의 곱으로 넓이 함수식을 작성함"
+        "method": "직사각형 둘레 조건으로부터 세로를 x의 일차식으로 나타내고 넓이 곱을 전개하여 이차함수 관계식을 도출함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1074,12 +1094,12 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차함수 $y=x^2-6x$의",
+            "quote": "이차함수 $y=x^2-6x$의 $x$절편을 이용하면",
             "term": "이차함수"
           },
           {
             "src": "stem",
-            "quote": "$x$절편을 이용하면",
+            "quote": "$x$절편을 이용하면 꼭짓점을 알 수 있다.",
             "term": "절편"
           }
         ],
@@ -1087,45 +1107,39 @@
           {
             "src": "stem",
             "quote": "꼭짓점의 좌표를 구하면?",
-            "term": "좌표"
+            "term": "꼭짓점"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "축의 방정식을 구하고",
+            "quote": "이차함수의 두 $x$절편의 대칭성을 이용해 축의 방정식을 구하고",
+            "term": "대칭",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "꼭짓점의 $x$좌표(축의 방정식)는 두 절편의 한가운데인 평균값이 됩니다.",
             "term": "축",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "함수식에 $x=3$을 대입합니다.",
+            "quote": "꼭짓점의 $y$좌표를 구하기 위해 함수식에 $x=3$을 대입합니다.",
             "term": "대입",
             "evidenceType": "NAMED"
-          },
-          {
-            "src": "solution",
-            "quote": "x(x-6) = 0",
-            "term": "인수분해",
-            "evidenceType": "IMPLIED",
-            "justification": "x절편을 구하기 위해 이차식을 인수분해함"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "꼭짓점의 좌표는 $(3, -9)$입니다.",
-            "term": "순서쌍"
-          },
-          {
-            "src": "solution",
-            "quote": "그래프는",
-            "term": "그래프"
+            "quote": "따라서 꼭짓점의 좌표는 $(3, -9)$입니다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "x절편을 찾아 축의 방정식을 구하고 함수식에 대입하여 꼭짓점의 좌표를 결정함"
+        "method": "두 x절편의 평균값으로부터 대칭축을 구하고 축의 x값을 식에 대입하여 꼭짓점의 좌표를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1136,52 +1150,59 @@
       "slots": {
         "given": [
           {
-            "src": "solution",
-            "quote": "타일들의 넓이의 총합을",
-            "term": "넓이"
+            "src": "stem",
+            "quote": "[서술형1] 대수막대로 인수분해 (5점)",
+            "term": "인수분해"
           },
           {
-            "src": "solution",
-            "quote": "하나의 직사각형을 만들면",
+            "src": "stem",
+            "quote": "넓이가 $x^2, x, 1$인 직사각형 타일들을",
             "term": "직사각형"
+          },
+          {
+            "src": "stem",
+            "quote": "넓이가 $x^2, x, 1$인 직사각형 타일들을",
+            "term": "넓이"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "가로 $x+3$, 세로 $x+1$이고",
-            "term": "일차식"
+            "src": "stem",
+            "quote": "다항식의 인수분해 결과를 식으로 나타내시오.",
+            "term": "다항식"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "이차식을 인수분해하면",
+            "quote": "넓이가 $x^2+4x+3$인 이차식을 인수분해하면 $(x+1)(x+3)$이 되므로,",
+            "term": "일차식",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이 이차식을 두 일차식의 곱으로 분해"
+          },
+          {
+            "src": "solution",
+            "quote": "$x^2+4x+3 = (x+1)(x+3)$",
             "term": "인수분해",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "(가로의 길이) $\\times$ (세로의 길이)",
+            "quote": "큰 직사각형의 넓이는 (가로의 길이) $\\times$ (세로의 길이)의 구조를 지니므로,",
             "term": "곱",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "solution",
-            "quote": "x^2+4x+3 = (x+1)(x+3)",
-            "term": "이차식"
-          },
-          {
-            "src": "solution",
-            "quote": "가로와 세로의 길이는",
-            "term": "길이"
+            "src": "stem",
+            "quote": "타일이 $x^2$이 1개, $x$가 4개, $1$이 3개 주어졌을 때",
+            "term": "자연수"
           }
         ]
       },
       "reasons": {
-        "method": "대수막대 타일들의 넓이의 합으로 이루어진 이차식을 인수분해하여 직사각형의 변의 길이를 구함"
+        "method": "대수막대 타일 넓이의 총합을 다항식으로 나타내고 이를 두 일차식의 곱으로 인수분해하여 가로, 세로 길이를 도출함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1193,53 +1214,52 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(x-1)(x-5)=-3",
+            "quote": "이차방정식 $(x-1)(x-5)=-3$에 대한 슬규의 풀이이다.",
             "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "이차방정식의 해를 구하기 위한 인수분해의 전제조건은",
-            "term": "조건"
+            "src": "stem",
+            "quote": "해는 $x=1$ 또는 $x=5$가 될 거야.",
+            "term": "해"
           }
         ],
         "goal": [
           {
-            "src": "stem",
-            "quote": "이 풀이가 옳지 않음을 설명하시오.",
-            "term": "판정"
+            "src": "solution",
+            "quote": "따라서 올바른 해는 $x=2$ 또는 $x=4$가 됩니다.",
+            "term": "정수"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "우변을 $0$으로 만든 후",
+            "quote": "주어진 방정식의 좌변을 전개합니다.",
+            "term": "전개",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "우변의 $-3$을 좌변으로 이항하여 정리합니다.",
             "term": "이항",
-            "evidenceType": "IMPLIED",
-            "justification": "우변의 상수를 좌변으로 이항하여 우변을 0으로 만듦"
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
             "quote": "이차식을 새로이 인수분해합니다.",
             "term": "인수분해",
             "evidenceType": "NAMED"
-          },
-          {
-            "src": "solution",
-            "quote": "좌변을 전개합니다.",
-            "term": "전개",
-            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "$x=2$ 또는 $x=4$",
-            "term": "해"
+            "quote": "따라서 올바른 해는 $x=2$ 또는 $x=4$가 됩니다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "우변이 0이어야 함을 보이고 전개 후 이항하여 새로이 인수분해함으로써 오류를 바로잡음"
+        "method": "우변이 0이 아닌 상태에서 인수분해 성질을 쓴 오류를 지적하고 식을 전개, 이항하여 새로 인수분해해 바른 해를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1251,57 +1271,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차함수 $y=-x^2+2x+3$",
+            "quote": "2. 이차함수 $y=-x^2+2x+3$",
             "term": "이차함수"
+          },
+          {
+            "src": "stem",
+            "quote": "③ $x$절편 :",
+            "term": "절편"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "꼭짓점의 좌표는 $(1, 4)$입니다.",
-            "term": "좌표"
+            "src": "stem",
+            "quote": "① 꼭짓점의 좌표 :",
+            "term": "꼭짓점"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "완전제곱식으로 고쳐",
+            "quote": "주어진 이차함수 $y = -x^2+2x+3$을 표준형으로 바꾸어 줍니다.",
             "term": "완전제곱식",
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 표준형으로 변형"
           },
           {
             "src": "solution",
-            "quote": "축의 방정식은 $x=1$입니다.",
+            "quote": "대칭축은 꼭짓점의 $x$좌표에 고정되므로 축의 방정식은 $x=1$입니다.",
             "term": "축",
             "evidenceType": "NAMED"
           },
           {
-            "src": "stem",
-            "quote": "그래프를 그리고",
-            "term": "그래프",
+            "src": "solution",
+            "quote": "매끄러운 곡선 포물선으로 이어줍니다.",
+            "term": "포물선",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "y = -(x-1)^2 + 4",
-            "term": "표준형"
-          },
-          {
-            "src": "solution",
-            "quote": "$x=-1$ 또는 $x=3$입니다.",
-            "term": "절편"
-          },
-          {
-            "src": "solution",
-            "quote": "포물선으로 이어줍니다.",
-            "term": "포물선"
+            "quote": "꼭짓점의 좌표는 $(1, 4)$입니다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "이차함수를 완전제곱식을 이용해 표준형으로 변형하여 꼭짓점, 축, 절편을 종합 분석함"
+        "method": "일반형 이차함수를 완전제곱식 표준형으로 변형하여 꼭짓점, 대칭축, 절편을 구하고 포물선 그래프를 작도함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1309,9 +1325,10 @@
   ],
   "candidates": [],
   "selfCheck": {
-    "coverageAllItems": true,
-    "slotCompleteness": true,
-    "allQuotesVerified": true,
-    "noOrphanConcepts": true
+    "items": 23,
+    "quotesChecked": 160,
+    "quotesNotFound": 0,
+    "warningsRechecked": [],
+    "notes": ""
   }
 }
