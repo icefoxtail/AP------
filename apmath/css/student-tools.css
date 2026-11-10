@@ -210,7 +210,8 @@ body.student-tool-page.dark {
 .planner-page .mobile-calendar > summary .muted { margin-left: auto; font-size: 12px; }
 .planner-page .mobile-calendar-content { padding-top: 12px; border-top: 1px solid var(--border); }
 .planner-page .mobile-calendar .calendar-hint { margin-bottom: 16px; }
-.planner-page .mobile-add { min-height: 52px; border-radius: 8px; box-shadow: 0 0 0 8px var(--bg); }
+/* Only renderPlanner enables this action after a valid planner has loaded. */
+.planner-page .mobile-add { display: none; min-height: 52px; border-radius: 8px; box-shadow: 0 0 0 8px var(--bg); }
 .planner-page .modal-overlay { background: rgba(0,0,0,.42); padding: 24px; align-items: center; }
 .planner-page .modal { max-width: 460px; max-height: calc(100dvh - 48px); overflow: auto; border-radius: 16px; padding: 24px; box-shadow: 0 16px 48px rgba(0,0,0,.14); }
 .planner-page .modal-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }

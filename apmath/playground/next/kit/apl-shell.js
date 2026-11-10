@@ -21,11 +21,11 @@
     if (params.get('portal') !== '1' && params.get('teacher_preview') !== '1') return;
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = new URL('../../../css/student-navigation.css?v=2026.11.11.3', shellScriptUrl).href;
+    css.href = new URL('../../../css/student-navigation.css?v=2026.11.11.4', shellScriptUrl).href;
     document.head.appendChild(css);
     const script = document.createElement('script');
     script.id = 'apl-student-navigation-script';
-    script.src = new URL('../../../js/student-navigation.js?v=2026.11.11.3', shellScriptUrl).href;
+    script.src = new URL('../../../js/student-navigation.js?v=2026.11.11.4', shellScriptUrl).href;
     script.dataset.studentNavActive = 'labs';
     script.dataset.studentNavContextOnly = 'true';
     script.onload = () => {

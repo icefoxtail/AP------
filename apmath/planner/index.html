@@ -764,9 +764,9 @@
       select, textarea { font-size:16px !important; }
     }
   </style>
-  <link rel="stylesheet" href="../css/student-tools.css?v=2026.11.11.2">
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.11.3">
-  <script defer src="../js/student-navigation.js?v=2026.11.11.3" data-student-nav-active="planner"></script>
+  <link rel="stylesheet" href="../css/student-tools.css?v=2026.11.11.4">
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.11.4">
+  <script defer src="../js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="planner"></script>
 </head>
 <body class="student-tool-page planner-page">
   <script>
@@ -1306,6 +1306,7 @@
 
     function renderError(message) {
       $('student-chip').textContent = '';
+      $('mobile-add-btn').style.display = 'none';
       $('app').innerHTML = `
         <div class="pin-wrap">
           <div class="pin-card">
@@ -1718,6 +1719,8 @@
         closeModal();
         if ($('modal-overlay').classList.contains('show')) event.preventDefault();
       }
+      if (!event.defaultPrevented && String($('quick-title')?.value || '').trim() &&
+          !confirm('작성 중인 할 일을 저장하지 않고 이동할까요?')) event.preventDefault();
       if (!event.defaultPrevented && plannerTimerActive && !confirm('집중 타이머를 종료하고 이동할까요?')) event.preventDefault();
     });
 
@@ -1742,7 +1745,26 @@
     window.addEventListener('resize', () => {
       clearTimeout(window.__resizeTimer);
       window.__resizeTimer = setTimeout(() => {
-        if (student) renderPlanner();
+        if (!student) return;
+        const app = $('app');
+        const mobileLayout = !!app?.querySelector('.mobile-calendar');
+        const desktopLayout = !!app?.querySelector('.dashboard');
+        // CSS handles resizing within one layout, including keyboard height
+        // changes. Replacing the form here would erase an unfinished plan.
+        if ((!mobileLayout && !desktopLayout) || mobileLayout === isMobile()) return;
+        const title = $('quick-title')?.value ?? '';
+        const subject = $('quick-subject')?.value ?? '';
+        const active = document.activeElement;
+        const focusedId = /^quick-(title|subject)$/.test(active?.id || '') ? active.id : null;
+        const selection = focusedId ? [active.selectionStart, active.selectionEnd, active.selectionDirection] : null;
+        renderPlanner();
+        if ($('quick-title')) $('quick-title').value = title;
+        if ($('quick-subject')) $('quick-subject').value = subject;
+        const restored = focusedId && $(focusedId);
+        if (restored?.getClientRects().length) {
+          restored.focus({ preventScroll: true });
+          restored.setSelectionRange(...selection);
+        }
       }, 150);
     });
 

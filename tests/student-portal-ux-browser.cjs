@@ -540,6 +540,113 @@ async function behaviorSuite(browser, base, check) {
     await page.getByRole('heading',{name:'과제를 열 수 없어요',exact:true}).waitFor();
     await capture(page,'homework-invalid-link-390');
   }));
+  await check('planner entry states gate editing and PC drafts survive resizing and cancelled navigation',async()=>{
+    for(const [width,height] of [[390,844],[1440,900]]) {
+      const context=await browser.newContext({viewport:{width,height},serviceWorkers:'block'});
+      const state=await instrument(context,{loggedIn:false});
+      const page=await context.newPage();
+      // Keep a bounded, synthetic-only DOM trace so a failed quick add records
+      // whether the typed draft, click, request or resulting row was lost.
+      await page.addInitScript(()=>{
+        window.__plannerEntryTrace=[];
+        const record=event=>{
+          if(window.__plannerEntryTrace.length>=60)return;
+          window.__plannerEntryTrace.push({event,at:Math.round(performance.now()),width:innerWidth,height:innerHeight,
+            title:document.querySelector('#quick-title')?.value??null,
+            subject:document.querySelector('#quick-subject')?.value??null,
+            date:document.querySelector('.plan-date')?.textContent??null,
+            toast:document.querySelector('#toast')?.textContent??null});
+        };
+        window.addEventListener('resize',()=>record('resize'));
+        document.addEventListener('input',event=>{if(event.target.matches('#quick-title,#quick-subject'))record('input:'+event.target.id);},true);
+        document.addEventListener('click',event=>{if(event.target.closest('.quick-form button'))record('quick-add-click');},true);
+        document.addEventListener('DOMContentLoaded',()=>{
+          const app=document.querySelector('#app');
+          if(app)new MutationObserver(()=>record('app-render')).observe(app,{childList:true});
+        });
+      });
+      page.setDefaultTimeout(10000);
+      page.on('pageerror',error=>report.pageErrors.push({scenario:'planner-entry-'+width,message:error.message}));
+      try {
+        await page.goto(base+'/apmath/planner/');
+        await page.getByRole('heading',{name:'플래너를 열 수 없어요',exact:true}).waitFor();
+        assert.equal(await page.locator('#mobile-add-btn').isVisible(),false);
+        assert.equal(await page.getByRole('dialog').isVisible(),false);
+        assert.equal(state.requests.filter(r=>r.endpoint.startsWith('planner')).length,0);
+        await capture(page,'planner-invalid-link-'+width);
+        await page.getByRole('link',{name:'학생 포털로 돌아가기',exact:true}).click();
+        await page.locator('#student-name').waitFor();
+
+        await page.goto(base+'/apmath/planner/?student_id=qa-student');
+        await page.locator('#pin-input').waitFor();
+        assert.equal(await page.locator('#mobile-add-btn').isVisible(),false);
+        assert.equal(await page.getByRole('dialog').isVisible(),false);
+        assert.equal(state.requests.filter(r=>r.endpoint.startsWith('planner')).length,0);
+        await capture(page,'planner-pin-'+width);
+        await page.locator('#pin-input').fill('0000');
+        await page.getByRole('button',{name:'플래너 열기',exact:true}).click();
+        await page.locator('.plan-item-title').filter({hasText:'삼각형 오답 다시 풀기'}).waitFor();
+        assert.equal(await page.locator('#mobile-add-btn').isVisible(),width<768);
+        assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,0);
+        if(width>=768) {
+          await page.locator('#quick-title').fill('합성 PC 빠른 추가');
+          await page.locator('#quick-subject').fill('기하');
+          assert.equal(await page.locator('#quick-title').inputValue(),'합성 PC 빠른 추가');
+          await page.locator('#quick-title').focus();
+          await page.locator('#quick-title').evaluate(el=>el.setSelectionRange(2,6,'backward'));
+          for(const [nextWidth,nextHeight] of [[1440,720],[1280,800],[390,844],[1440,900]]) {
+            await page.setViewportSize({width:nextWidth,height:nextHeight});
+            await page.waitForFunction(()=>!!document.querySelector(innerWidth<768?'.mobile-calendar':'.dashboard'));
+            // Observe past the real 150ms resize debounce, so an assertion
+            // cannot pass just before a delayed renderer erases the draft.
+            await page.waitForTimeout(200);
+            assert.equal(await page.locator('#quick-title').inputValue(),'합성 PC 빠른 추가');
+            assert.equal(await page.locator('#quick-subject').inputValue(),'기하');
+            if(nextWidth===1280 || nextHeight===720) {
+              assert.equal(await page.evaluate(()=>document.activeElement?.id),'quick-title');
+              assert.deepEqual(await page.locator('#quick-title').evaluate(el=>[el.selectionStart,el.selectionEnd,el.selectionDirection]),[2,6,'backward']);
+            }
+            if(nextWidth<768) assert.notEqual(await page.evaluate(()=>document.activeElement?.id),'quick-title');
+            assert.equal(await page.locator('#mobile-add-btn').isVisible(),nextWidth<768);
+            assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,0);
+          }
+          const plannerUrl=page.url();
+          page.once('dialog',async dialog=>{
+            state.cancelledPlannerNavigationPrompt=dialog.message();
+            await dialog.dismiss();
+          });
+          await page.locator('[data-student-destination="home"]').click();
+          assert.equal(state.cancelledPlannerNavigationPrompt,'작성 중인 할 일을 저장하지 않고 이동할까요?');
+          assert.equal(page.url(),plannerUrl);
+          assert.equal(await page.locator('#quick-title').inputValue(),'합성 PC 빠른 추가');
+          assert.equal(await page.locator('#quick-subject').inputValue(),'기하');
+          assert.equal(state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST').length,0);
+          await page.locator('.quick-form button').click();
+          await page.getByText('합성 PC 빠른 추가',{exact:true}).waitFor();
+          const writes=state.requests.filter(r=>r.endpoint==='planner'&&r.method==='POST');
+          assert.equal(writes.length,1);
+          assert.equal(writes[0].body.title,'합성 PC 빠른 추가');
+          assert.equal(writes[0].body.subject,'기하');
+          assert.equal(writes[0].body.plan_date,await page.locator('.plan-date').innerText());
+          await capture(page,'planner-pc-quick-add-'+width);
+        }
+      } catch(error) {
+        await capture(page,'planner-entry-failure-'+width);
+        throw error;
+      } finally {
+        report.observations.push({scenario:'planner-entry-'+width,
+          cancelledNavigationPrompt:state.cancelledPlannerNavigationPrompt||null,
+          plannerRequests:state.requests.filter(r=>r.endpoint.startsWith('planner')).map(r=>({endpoint:r.endpoint,method:r.method,
+            body:r.body?{title:r.body.title,subject:r.body.subject,plan_date:r.body.plan_date,student_id:r.body.student_id}:null})),
+          dom:await page.evaluate(()=>({trace:window.__plannerEntryTrace||[],
+            title:document.querySelector('#quick-title')?.value??null,
+            date:document.querySelector('.plan-date')?.textContent??null,
+            toast:document.querySelector('#toast')?.textContent??null,
+            rows:[...document.querySelectorAll('.plan-item-title')].map(el=>el.textContent)}))});
+        await context.close();
+      }
+    }
+  });
   await check('planner calendar, draft recovery, settings and timer preserve accessible controls',()=>withStudent({name:'planner'},async(page,state)=>{
     await page.goto(base+'/apmath/planner/?student_id=qa-student&pin=0000');
     await page.locator('.plan-item-title').filter({hasText:'삼각형 오답 다시 풀기'}).waitFor();

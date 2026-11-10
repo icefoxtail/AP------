@@ -1,7 +1,7 @@
 # AP Math 학생포털 UX — 현행 계약과 디자인 인계
 
 대상: `apmath/student/`, 학생이 사용하는 과제·플래너, 실험실 진입·복귀.
-관련 변경: [PR #1661](https://github.com/icefoxtail/AP------/pull/1661), [이슈 #1653](https://github.com/icefoxtail/AP------/issues/1653).
+관련 변경: [PR #1661](https://github.com/icefoxtail/AP------/pull/1661), [공통 이동 #1667](https://github.com/icefoxtail/AP------/pull/1667), [플래너 보호 #1693](https://github.com/icefoxtail/AP------/pull/1693), [이슈 #1653](https://github.com/icefoxtail/AP------/issues/1653).
 기준: `apmath/DESIGN.md`, `apmath/playground/DESIGN.md`, 최신 사용자 지시.
 
 ## 정보 구조와 이동 계약
@@ -18,7 +18,7 @@
 
 내비게이션 문맥은 배포 경로별 sessionStorage의 `{preview, studentId}` 메타데이터만 사용한다. 권한을 부여하지 않으며 PIN·토큰을 저장·전달하지 않는다. `studentReturnTo`는 현재 배포 프로젝트의 정확한 학생포털 경로만 허용한다. 따라서 GitHub Pages `/AP------/`에서도 미리보기 복귀가 유지되고 외부 주소·다른 프로젝트로 우회하지 않는다.
 
-PWA 버전은 `2026.11.11.3`이며 HTML, manifest, version JSON, service worker와 정적 리소스 query를 함께 올린다.
+PWA 버전은 `2026.11.11.4`이며 HTML, manifest, version JSON, service worker와 정적 리소스 query를 함께 올린다.
 
 ## 화면 및 코드 소유
 
@@ -57,6 +57,9 @@ PWA 버전은 `2026.11.11.3`이며 HTML, manifest, version JSON, service worker�
 - async 요청은 인증 세대·resource sequence·화면 세대·draft identity를 확인한다. 이전 학생이나 이전 자료의 응답이 현재 화면/선택을 덮지 않아야 한다.
 - 같은 입력 항목으로 되돌아가면 메모리의 선택을 보존한다. 로그아웃·학생 전환은 데이터를 지운다. 앱 재시작 후 초안 복원은 제공하지 않는다.
 - PWA 자동 업데이트는 입력·미저장 선택·전송 중 상태를 보호한다. 앱 버전, manifest, `student-version.json`, service worker 및 정적 리소스 query를 함께 올린다.
+- 플래너의 잘못된 링크·PIN 확인 화면에서는 편집 동작을 노출하지 않는다. 모바일 추가 버튼은 정상 플래너가 열린 뒤에만 표시하며, 공통 버튼 스타일이 이 기본 숨김 상태를 덮지 않아야 한다.
+- 플래너는 같은 모바일/PC 레이아웃 안의 크기 변화에서 입력 DOM을 유지한다. 768px 경계를 넘나들 때에도 작성 중인 빠른 추가 제목·과목을 보존한다. 높이 변화, PC 폭 변경, 모바일 왕복 뒤 정확한 제목·과목·날짜로 한 번만 저장되는지 실제 브라우저에서 확인한다.
+- 플래너의 공통 메뉴로 이동할 때 작성 중인 빠른 추가 제목이 있으면 저장하지 않고 이동할지 확인한다. 취소하면 기존 제목·과목과 현재 화면을 유지한다. 이 보호는 공통 메뉴 이동에 적용하며 브라우저 종료 뒤 초안 복원을 뜻하지 않는다.
 - Archive 원본/MIXED 복습·PDF·snapshot 복원 계약은 기존 엔진을 그대로 사용한다. 원문이 없는 시험은 파일이 없는 이유를 안내하고 임의 내용을 만들지 않는다.
 
 ## 검증 방법
@@ -82,10 +85,14 @@ NODE_PATH=/path/to/playwright/node_modules node tests/student-portal-ux-browser.
 
 인증이 필요한 합성 동작 검증과 실제 운영 계정 검증을 혼동하지 않는다. 운영에서는 배포 SHA, 리소스 버전/내용, 공개 로그인·하위 공개 화면을 실제 브라우저로 확인한다. 학생 데이터에 테스트 제출을 만들지 않는다.
 
-## Impeccable 시각 검수
+## Claude Code / Impeccable 최종 미감 검수
 
 최신 main에서 저장소의 Impeccable 스킬을 읽고 시작한다. 이번 화면의 기준은 **네 핵심 기능이 첫 화면에 보이는 짧은 흐름, APMS 웜 체계, 모바일에서 한눈에 읽히는 상태와 행동**이다.
 
 검토할 부분은 360/390px의 정보 밀도·줄바꿈, 800px 카드/관계 정보 배치, 1280/1440px 여백·카드 균형, 제출 전후 버튼 위계, 클리닉/기록의 긴 목록, 플래너 다크 모드, Universe 복귀 헤더다. 스타일을 다듬더라도 위 보호 계약과 실제 검증 분모를 유지한다. 변경 후 관련 브라우저 흐름을 다시 실행하고 자신의 PR·배포 근거를 남긴다.
 
 사용 흐름을 먼저 검증한 뒤 간격·글자 크기·터치 영역을 정리한다. 실제 완료 SHA·CI·배포 결과는 PR 및 최종 보고에서 확인하며, 이 문서는 실행하지 않은 검사에 PASS를 부여하지 않는다.
+
+운영 허브를 브라우저 확대 상태의 340 CSS px 폭으로 확인했을 때, `AP Math 실험실` 이름의 끝 글자가 다음 줄로 내려갔다. 이 좁은 폭의 헤더 줄바꿈을 다듬고, 실험실 수업 모드·테마 아이콘은 실제 터치 환경에서 확장된 터치 영역까지 확인한다. 기존 board/paper 테마와 수학 무대의 의미색은 유지한다.
+
+GPT의 구현·검수·운영 반영을 완료한 뒤 Claude Code가 독립적으로 최종 미감을 검수한다. 후속 미감 검토를 기다리며 기능 수정이나 운영 검증을 미루지 않는다.

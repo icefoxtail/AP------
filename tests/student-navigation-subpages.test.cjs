@@ -97,7 +97,7 @@ test('the lab shell loads common navigation only for explicit portal or preview 
     };
     vm.runInNewContext(loader, context); context.window.attachStudentNavigation();
     assert.equal(added.length, count, search || 'standalone visit');
-    if (count) assert.equal(added[1].src, 'https://school.test/AP------/apmath/js/student-navigation.js?v=2026.11.11.3');
+    if (count) assert.equal(added[1].src, 'https://school.test/AP------/apmath/js/student-navigation.js?v=2026.11.11.4');
   }
 });
 
