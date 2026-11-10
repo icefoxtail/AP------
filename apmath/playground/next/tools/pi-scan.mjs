@@ -71,7 +71,7 @@ await page.addInitScript(() => {
   };
   const t = setInterval(() => { if (hook()) clearInterval(t); }, 1);
 });
-await page.goto(base.replace(/\/?$/, '/') + lab + '.html', { waitUntil: 'networkidle' });
+await page.goto(base.replace(/\/?$/, '/') + lab + '.html?manual=1', { waitUntil: 'networkidle' });
 await page.waitForFunction(() => window.lab && window.lab.board && window.__piTexts);
 
 // 현재 화면의 글자(캔버스 + DOM)를 모읍니다.

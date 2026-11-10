@@ -119,7 +119,7 @@ try {
       await page.addInitScript(() => { let seed = 1701; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
       page.on('pageerror', e => errors.push(e.message));
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
-      await page.goto(`${base}${unit}.html?theme=${run.theme}`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}${unit}.html?theme=${run.theme}&manual=1`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
       await page.evaluate(() => document.fonts.ready);
       // Pin the loaded target document, not about:blank's event properties.
