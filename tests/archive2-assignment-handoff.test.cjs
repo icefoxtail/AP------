@@ -334,7 +334,7 @@ test('one-class completion changes the same modal to its saved frozen preview wi
   assert.equal(h.state.originalReceipts[0].id, 'assignment-1');
   const receiptHtml = h.elements.get('original-receipts').innerHTML;
   assert.match(receiptHtml, /class-1/);
-  assert.match(receiptHtml, /Assignment ID[^<]*<code>assignment-1<\/code>/);
+  assert.match(receiptHtml, /출제 번호[^<]*<code>assignment-1<\/code>/);
   assert.match(receiptHtml, /data-assignment="assignment-1" data-mode="exam"/);
   assert.equal(h.elements.get('original-review').hidden, false);
   assert.equal(h.elements.get('original-issue-frame').hidden, true);
@@ -378,7 +378,7 @@ test('three successful classes open one preview from the first receipt frozen sn
   assert.equal(h.previewLoadCount, 1, 'one shared exam preview serves the multi-class assignment');
   const receiptHtml = h.elements.get('original-receipts').innerHTML;
   for (const id of ['class-1', 'class-2', 'class-3']) assert.match(receiptHtml, new RegExp(id));
-  for (const id of ['assignment-1', 'assignment-2', 'assignment-3']) assert.match(receiptHtml, new RegExp(`Assignment ID[^<]*<code>${id}</code>`));
+  for (const id of ['assignment-1', 'assignment-2', 'assignment-3']) assert.match(receiptHtml, new RegExp(`출제 번호[^<]*<code>${id}</code>`));
   assert.deepEqual(h.statusReads, ['/class-exam-assignments/assignment-1/status']);
   assert.equal(h.previewEnvelopes.length, 1);
   assert.equal(h.previewEnvelopes[0].assignmentId, h.state.originalReceipts[0].id);
@@ -581,7 +581,7 @@ test('Original Assignment completes on saved=true while PDF stays pending and re
     'completion means Assignment saved even when its PDF still needs preparation');
   const receiptHtml = h.elements.get('original-receipts').innerHTML;
   assert.match(receiptHtml, /고1 A반/);
-  assert.match(receiptHtml, /Assignment ID[^<]*<code>assignment-pdf-1<\/code>/);
+  assert.match(receiptHtml, /출제 번호[^<]*<code>assignment-pdf-1<\/code>/);
   assert.match(receiptHtml, /PDF 다시 준비/);
   assert.match(receiptHtml, /data-assignment="assignment-pdf-1" data-mode="sol"/);
   assert.match(receiptHtml, /Browser Rendering unavailable/);
@@ -620,7 +620,7 @@ async function runSharedTargetPicker(classes, preferredGrade) {
 
 test('Saved Paper shared target picker exposes high3-only, mixed and fallback grades after teacher filtering', async () => {
   const index = read('index.html');
-  assert.ok(index.indexOf('<script src="archive2-history.js?v=20261004-class-grade-fallback-1"') <
+  assert.ok(index.indexOf('<script src="archive2-history.js?v=20261110-teacher-copy-1"') <
     index.indexOf('<script src="archive2-entry.js?'), 'shared grade resolver loads before Saved Paper entry');
   const high3Only = await runSharedTargetPicker([
     { id: 'high3-explicit', name: '고3 대상반', grade: '고3', teacher_id: 'teacher-a' },

@@ -73,7 +73,7 @@ test('단원별 기출은 승인 메타와 무관하게 기술 확인된 문항�
   assert.match(status, /분류 4문항 · 출제 가능 3문항/);
   assert.match(status, /\(승인 메타 1문항\)/);
   assert.match(status, /원본 확인 실패로 제외 1문항/);
-  assert.match(status, /완결된 최근 연도\(2025년, 2024년 순\)부터 선택하고 같은 연도에서는 승인 메타 문항을 먼저 씁니다/);
+  assert.match(status, /최신 연도\(2026년, 2025년 순\)부터 선택하고 같은 연도에서는 승인 메타 문항을 먼저 씁니다/);
   assert.match(summary, /^3문항/);
 });
 

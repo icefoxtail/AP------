@@ -99,7 +99,7 @@
 
   async function openOutput(paperId, mode = "exam", knownPaper = null) {
     const id = String(paperId || "");
-    if (!id) throw new Error("출력할 Saved Paper ID를 확인할 수 없습니다.");
+    if (!id) throw new Error("출력할 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
     const popup = window.open("about:blank", "_blank");
     if (!popup) throw new Error("팝업을 허용한 뒤 다시 출력하세요.");
     try {
@@ -108,7 +108,7 @@
         : await apiClient().request("/archive-saved-papers/" + encodeURIComponent(id));
       const paper = data.paper;
       if (paper?.id !== id || !paper.snapshot)
-        throw new Error("저장한 시험지 snapshot을 확인할 수 없습니다.");
+        throw new Error("저장한 시험지 내용을 확인할 수 없습니다. 새로고침한 뒤 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
       const envelope = await preparePreview(paper, mode);
       popup.location.href = outputUrl(paper, envelope, envelope.mode, false);
       return { paperId: id, outputRequestId: envelope.outputRequestId };
@@ -121,7 +121,7 @@
   async function preparePreview(paper, mode = "exam") {
     const snapshot = paper?.snapshot;
     if (!snapshot || !Array.isArray(snapshot.questions) || !snapshot.questions.length)
-      throw new Error("저장한 시험지 snapshot을 확인할 수 없습니다.");
+      throw new Error("저장한 시험지 내용을 확인할 수 없습니다. 새로고침한 뒤 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
     const questionUids = snapshot.meta?.questionUids || snapshot.questions.map((question) =>
       question.questionUid || question.source_question_uid || question._sourceQuestionUid || null,
     );
@@ -154,7 +154,7 @@
       <div class="intro"><div><p class="muted"><button type="button" class="saved-library-back" data-library-action="list">저장한 시험지</button> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div>
         <div class="actions saved-paper-more-wrap"><button type="button" class="primary" data-library-action="distribute" data-paper-id="${esc(paper.id)}">출제</button><details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu"><a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a><button type="button" data-library-action="copy">정확히 복사</button><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></details></div></div>
       <div class="actions saved-paper-modes" role="group" aria-label="출력 미리보기">
-        ${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
+        ${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
         <button type="button" data-library-action="print" data-mode="${esc(mode)}" class="small">새 창에서 출력</button>
       </div>
       <iframe class="saved-paper-preview" title="저장한 시험지 미리보기" src="${esc(outputUrl(paper, envelope, mode))}"></iframe>
@@ -173,9 +173,9 @@
             ? '<span class="muted">기존 삭제 항목은 복원할 수 없습니다.</span>'
             : `<button type="button" data-library-action="library-status" data-paper-id="${esc(paper.id)}" data-status="ACTIVE">복원</button>`;
       const useActions = status === "TRASHED"
-        ? `<div class="saved-paper-primary-actions" role="group" aria-label="${esc(title)} 휴지통 action">${statusAction}</div>`
+        ? `<div class="saved-paper-primary-actions" role="group" aria-label="${esc(title)} 휴지통 메뉴">${statusAction}</div>`
         : `<div class="saved-paper-primary-actions" role="group" aria-label="${esc(title)} 시험·해설·정답·출제">
-            ${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => `<button type="button" data-library-action="output" data-paper-id="${esc(paper.id)}" data-mode="${mode}">${label}</button>`).join("")}
+            ${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => `<button type="button" data-library-action="output" data-paper-id="${esc(paper.id)}" data-mode="${mode}">${label}</button>`).join("")}
             <button type="button" class="primary" data-library-action="distribute" data-paper-id="${esc(paper.id)}">출제</button>
           </div>
           <details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu">
@@ -195,7 +195,7 @@
     const emptyCopy = statusFilter === "ACTIVE"
       ? "저장한 시험지가 없습니다. 문제지 만들기에서 시험지를 저장해 주세요."
       : statusFilter === "ARCHIVED" ? "보관한 시험지가 없습니다." : "휴지통이 비어 있습니다.";
-    return `<div class="saved-library"><div class="intro"><div><h1>저장한 시험지</h1><p class="muted">저장한 완성본을 다시 열고 출력하거나, 기존 아카이브에서 학생을 선택해 배포합니다.</p></div><a class="button-like primary" href="workspace.html?view=compose">문제지 만들기</a></div>
+    return `<div class="saved-library"><div class="intro"><div><h1>저장한 시험지</h1><p class="muted">저장한 완성본을 다시 열고 출력하거나, 반과 학생을 골라 출제합니다.</p></div><a class="button-like primary" href="workspace.html?view=compose">문제지 만들기</a></div>
       ${message ? `<p class="callout" role="status" aria-live="polite">${esc(message)}</p>` : ""}
       <div class="actions" role="tablist" aria-label="보관함 상태">${tabs.map(([value, label]) => `<button type="button" data-library-action="status" data-status="${value}" class="${statusFilter === value ? "active" : ""}">${label}</button>`).join("")}</div>
       <section class="panel saved-paper-list" aria-label="저장한 시험지 목록">${cards || `<div class="empty">${emptyCopy}</div>`}</section>
@@ -432,7 +432,7 @@
         } else if (action === "copy") {
           const paper = viewState.paper;
           if (!paper?.id || !/^[0-9a-f]{64}$/i.test(String(paper.snapshot_hash || "")))
-            throw new Error("복사할 immutable snapshot identity를 확인할 수 없습니다.");
+            throw new Error("복사할 시험지의 저장 내용을 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
           let pending = {};
           try {
             const parsed = JSON.parse(localStorage.getItem(COPY_PENDING_KEY) || "{}");
@@ -481,7 +481,7 @@
           if (viewState.paperId) await renderAfterMutation(host, viewState.paperId, currentView, { forceRefresh: true });
           else await renderAfterMutation(host, "", currentView, { forceRefresh: true });
         } else if (action === "delete") {
-          if (!confirm("이 시험지를 휴지통으로 이동할까요? 학생에게 이미 배포한 시험지와 오답 기록은 그대로 유지됩니다.")) return;
+          if (!confirm("이 시험지를 휴지통으로 이동할까요? 학생에게 이미 출제한 시험지와 오답 기록은 그대로 유지됩니다.")) return;
           await apiClient().request("/archive-saved-papers/" + encodeURIComponent(id), undefined, "DELETE");
           invalidateSavedLibraryListContext({ kind: "remove", paperId: id });
           if (authorityVersion !== libraryViewVersion) return;
@@ -505,7 +505,11 @@
         const message = document.createElement("p");
         message.className = "callout danger";
         message.setAttribute("role", "alert");
-        message.textContent = error.message || "요청을 처리하지 못했습니다.";
+        // Codes and English never reach the teacher; the original stays in the console for diagnosis.
+        const raw = String(error?.message || "");
+        const teacherText = /[가-힣]/.test(raw) && !/^[A-Z][A-Z0-9_]{3,}:/.test(raw) ? raw : "요청을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
+        if (raw && teacherText !== raw) console.warn("[archive2] library request failed:", raw);
+        message.textContent = teacherText;
         host.prepend(message);
       } finally {
         if (mutationAction) {

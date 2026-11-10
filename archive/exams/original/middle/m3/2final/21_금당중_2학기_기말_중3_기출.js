@@ -41,7 +41,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A, B, P가 있다. 파란 호 AB에 대한 중심각 AOB는 150도이고, 같은 호를 보는 원주각 APB를 x로 표시했다.",
+    "solutionImageCaption": "같은 호 AB를 보는 원주각은 중심각의 절반이다. 중심각이 150°이므로 x는 150°를 2로 나눈 값이다. 정답은 75°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -83,7 +87,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A, B, P가 있다. 중심각 AOB는 134도이고 파란 작은 호 AB가 표시되어 있다. 점 P는 이 작은 호 위에 있고, 원주각 APB를 x로 표시했다. 주황 큰 호 AB는 226도이다.",
+    "solutionImageCaption": "점 P에서 본 각 x는 반대쪽 큰 호 AB를 본다. 작은 호가 134°이므로 큰 호는 360°에서 134°를 뺀 226°이다. 원주각은 호의 절반이므로 x는 226°의 절반이다. 정답은 113°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -125,7 +133,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 AC는 지름이고, 점 B, D가 원 위에 있다. 각 ACD는 50도이다. 파란 작은 호 AD는 100도, 점 B를 지나는 주황 큰 호 ABD는 260도이다. 점 P에서 호 ABD를 보는 원주각을 x로 표시했다.",
+    "solutionImageCaption": "각 ACD가 50°이므로 이 각이 보는 작은 호 AD는 그 2배인 100°이다. 호 ABD는 나머지 큰 호이므로 360°에서 100°를 뺀 260°이다. 점 P에서 호 ABD를 보는 원주각을 x라 하면 x는 260°의 절반이다. 정답은 130°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -167,7 +179,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 PB는 지름이다. 반지름 OA와 OP의 길이가 같다는 표시가 있고, 삼각형 OAP의 두 밑각 APO와 OAP가 같은 색 a로, 외각 AOB가 다른 색 2a로 표시되어 있다.",
+    "solutionImageCaption": "OA와 OP는 같은 원의 반지름이므로 삼각형 OAP는 이등변삼각형이고, 두 밑각 ∠OAP와 ∠APO를 같은 값 a라 하면 같은 색으로 표시된다. PB가 지름이므로 ∠AOB는 삼각형 OAP의 외각이고 두 내각의 합인 2a와 같다. 따라서 ∠APB=∠APO는 ∠AOB의 2분의 1이다. 빈칸에 알맞지 않은 것은 삼각형 OAP의 변이 아닌 OB를 넣은 ㄱ, 즉 ①이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -209,7 +225,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 원 O 위의 점 A, B, C, D와 A에서 그은 접선 AT가 있다. 접선과 현 AD가 이루는 각 70도와 같은 색으로 각 ABD가 표시되고, 각 ADB는 42도, 구하는 각 DAB는 y이다. 오른쪽에는 삼각형 BCD가 따로 그려져 있고 각 D는 29도, 각 C는 112도, 구하는 각 CBD는 x이다.",
+    "solutionImageCaption": "접선과 현 AD가 이루는 각이 70°이므로 같은 호를 보는 ∠ABD도 70°이다. 삼각형 ABD에서 y는 180°에서 70°와 42°를 뺀 값이다. 내접사각형 ABCD에서 마주 보는 ∠BCD는 180°에서 y를 뺀 112°이고, 삼각형 BCD에서 x는 180°에서 29°와 112°를 뺀 값이다. 정답은 x+y=107°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -251,7 +271,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 점 A, B, C, P가 있고 C와 P는 직선 AB의 같은 쪽에 있다. 현 AB를 보는 각 ACB와 각 APB는 같은 색 a로 표시되어 있다. 사각형 ACPB에서 마주 보는 각 CAB는 b, 각 BPC는 c로 표시되어 있다.",
+    "solutionImageCaption": "네 점이 한 원 위에 있으면 같은 현 AB를 보는 원주각은 같으므로, C와 P가 직선 AB의 같은 쪽에 있을 때 ∠ACB=∠APB이다. 또 원에 내접하는 사각형 ACPB에서 마주 보는 ∠CAB=b와 ∠BPC=c의 합은 180°이다. 정답은 ③, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -293,7 +317,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC와 내접원, 접점 D, E, F가 있고 각 A 46도, 각 B 80도가 표시되어 있다. 오른쪽에는 삼각형 DEF의 각 DFE 50도, 각 DEF 67도, 각 FDE 63도가 따로 그려져 있다.",
+    "solutionImageCaption": "∠DFE=50°이므로 같은 호 DE의 중심각 ∠DOE=100°이다. OD⊥AB, OE⊥BC이므로 ∠B=180°−100°=80°이다. 같은 방법으로 ∠DOF=180°−46°=134°이므로 ∠DEF는 134°의 절반인 67°이다. 삼각형 DEF에서 ∠FDE=63°이고 접선과 현의 각에 의해 ∠CEF=63°이다. ∠DEF가 67°이므로 ③이 옳지 않다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -335,7 +363,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A를 지나는 접선 DT와 이에 평행한 현 BC가 있다. 각 BAT, 각 CBA, 각 CAD가 같은 색으로 같은 크기 a로 표시되어 있고, 접선과 현 BC는 같은 보라색 평행 표시가 있다.",
+    "solutionImageCaption": "접선 DT와 현 BC가 평행하므로 엇각에 의해 ∠BAT=∠CBA이다. 접선과 현 AC가 이루는 ∠CAD는 접선과 현의 각 정리에 의해 ∠CBA와 같다. 따라서 ∠BAT=∠CAD이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -377,7 +409,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A를 지나는 접선 DT가 있고 삼각형 ABC가 원에 내접한다. 파란 호 CA를 보는 각 CAD와 각 CBA가 같은 색 a로 표시되어 있다.",
+    "solutionImageCaption": "접선 AD와 현 AC가 이루는 ∠CAD는 파란 호 CA를 보는 원주각 ∠CBA와 같다. 따라서 옳은 것은 ∠CAD=∠CBA이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -543,7 +579,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점수 1, 2, 3, 4를 준 고객 수 4명, 3명, 2명, 1명을 점도표로 나타낸 그림이다. 평균 위치에 세로 점선이 있고 각 점수 위에 편차 −1, 0, +1, +2가 적혀 있다.",
+    "solutionImageCaption": "점수가 1점 4명, 2점 3명, 3점 2명, 4점 1명이므로 평균은 2점이고 편차는 −1, 0, +1, +2이다. 편차의 제곱의 합은 4×1+3×0+2×1+1×4=10이므로 분산은 10÷10=1이다. 분산이 2라는 설명이 옳지 않다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -911,7 +951,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 국어 점수와 영어 점수의 산점도 10개 점, 실선 y=x와 점선 y=x+20, y=x−20, 그리고 두 점수의 차가 20점 이상인 주황 점",
+    "solutionImageCaption": "두 점수의 차가 20점 이상이면 점이 직선 y=x+20 위쪽이거나 직선 y=x−20 아래쪽에 있다. 주황 점 (40, 60), (50, 80), (70, 90)이 이에 해당하고 y=x−20 아래쪽에는 점이 없다. 전체 10명 중 3명이므로 비율은 10분의 3, 곧 30%이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -947,7 +991,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 꼭짓점이 A, B, C, D, E인 정오각형이 내접해 있다. 꼭짓점 A에서 대각선 AC, AD를 그었고, 세 각 BAC, CAD, DAE는 같은 색 x로 표시되어 있다. 반지름 OC, OD가 이루는 중심각 COD는 72도이다.",
+    "solutionImageCaption": "첫 번째 방법은 중심각 ∠COD=360°÷5=72°이고, ∠CAD는 같은 호 CD를 보는 원주각이므로 72°의 절반이다. 두 번째 방법은 정오각형의 내각 ∠BAE=108°를 같은 크기의 세 원주각 ∠BAC, ∠CAD, ∠DAE가 나누므로 ∠CAD는 108°를 3으로 나눈 값이다. 정답은 두 방법 모두 ∠CAD=36°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -982,7 +1030,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_2학기_기말_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료 5, 6, 6, 8, 8, 9를 점도표로 나타낸 그림이다. 평균 7 위치에 세로 점선이 있고 각 점 위에 편차 −2, −1, +1, +2가 적혀 있다.",
+    "solutionImageCaption": "작은 순서로 5, 6, 6, 8, 8, 9이므로 중앙값은 가운데 두 수 6, 8의 평균 7이고, 6과 8이 두 번씩 나타나 최빈값은 6과 8이다. 평균이 7이므로 편차는 −2, −1, −1, +1, +1, +2이고 편차 제곱의 합은 12이므로 분산은 12÷6=2, 표준편차는 √2이다. 정답은 중앙값 7, 최빈값 6과 8, 분산 2, 표준편차 √2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

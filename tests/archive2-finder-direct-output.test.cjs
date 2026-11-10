@@ -9,7 +9,7 @@ test("Archive2 Finder exposes one-click exam, solution, and answer outputs besid
   const end = workspace.indexOf("function renderScopes()", start);
   const finder = workspace.slice(start, end);
   assert.notEqual(start, -1);
-  assert.match(finder, /\[\["exam", "시험"\], \["sol", "해설"\], \["ans", "정답"\]\]/);
+  assert.match(finder, /\[\["exam", "시험지"\], \["sol", "해설"\], \["ans", "정답"\]\]/);
   assert.match(finder, /button\("source-output-direct", label,[\s\S]*?data-mode="\$\{mode\}"/);
   assert.match(finder, /button\("source-issue", "출제"/);
   assert.match(finder, /button\("source-toggle"/);

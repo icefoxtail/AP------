@@ -7,7 +7,7 @@ const core = require("../archive/archive2-core.js");
 const root = path.resolve(__dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
-// Recency policy (user decision 2026-10-29): one definition of the current year, used by
+// Recency policy (user decision 2026-11-10, replaces 2026-10-29): newest year always first; one definition of the current year, used by
 // 문제지 만들기, 단원별 기출 and the quick assessments.
 test("the current exam year is defined once, in archive2-core", () => {
   assert.equal(Object.isFrozen(core.RECENCY_POLICY), true);
@@ -25,8 +25,10 @@ test("workspace quick assessments and compose text follow the recency order", ()
   // Every quick-assessment pool shuffle goes through the recency-aware shuffle.
   assert.equal((workspace.match(/fiveMinuteShuffle\(/g) || []).length, 2, "only the definition and recencyShuffle use the raw shuffle");
   assert.match(workspace, /quickRecencyTier\(record\) \* 10/);
-  assert.doesNotMatch(workspace, /최신 연도 문항부터/);
-  assert.match(workspace, /완결된 최근 연도부터\(2025년, 2024년, 2023년 순\) 선택하고, 올해 시험은 그다음/);
+  assert.match(workspace, /최신 연도부터\(2026년, 2025년, 2024년 순\) 선택하고, 연도를 알 수 없는 자료는 마지막/);
+  assert.match(workspace, /최신 연도\(2026년, 2025년 순\)부터 고릅니다/);
+  // The 2026-10-29 "complete years first" wording must not come back (user decision 2026-11-10).
+  assert.doesNotMatch(workspace, /완결된 최근 연도|올해 시험은 그다음/);
   assert.match(workspace, /data-year-distribution/);
 });
 
@@ -35,6 +37,6 @@ test("unit-past-exams core shares the recency rank with archive2-core", () => {
   const record = (year) => ({ sourceFile: `original/high/h1/1mid/${year}_x.js`, examYear: year });
   const years = [2026, 2023, 2025, 2024, 2021];
   const sorted = years.map(record).sort(unit.compareRecords).map(unit.getExamYear);
-  assert.deepEqual(sorted, [2025, 2024, 2023, 2021, 2026]);
+  assert.deepEqual(sorted, [2026, 2025, 2024, 2023, 2021]);
   for (const year of years) assert.equal(unit.recencyRankOf(record(year)), core.recencyRank(year));
 });
