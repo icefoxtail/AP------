@@ -55,3 +55,6 @@
 - 합성 패널(수직선·표 등) 출력은 렌더만으로는 SVG title이 없을 수 있다 → `bash .tmp/work/a11y.sh <qNN 폴더>`로 넣는다.
 - DeepSeek 초안의 alt는 임시본이다. PNG를 보고 실제 보이는 것으로 다시 쓴다.
 - 끝나면 <REV>/IMPL_DONE 빈 파일을 만든다(메인이 다음 단계 시작 신호로 쓴다).
+- 좌표 직선·원은 색 옵션이 없다 → planeMarks의 색 선분·강조 호(segmentColors 등)로 덧그려 구분한다. DeepSeek이 이런 표시를 planeMarks 밖에 써서 무시되는 일이 있다(SUMMARY 과장 주의, PNG만 믿는다).
+- 점 이름 라벨은 위치를 직접 못 정한다. 이름이 선 건너편·먼 곳에 놓이면 coordinateCanvas 크기·비율을 바꿔 다시 렌더한다(25 팔마고 2학기 중간 Q18에서 해결). 엉뚱한 곳을 가리키는 라벨은 두지 않는다.
+- alt·caption의 분수는 "3분의 20"처럼 쓴다(20/3 금지).
