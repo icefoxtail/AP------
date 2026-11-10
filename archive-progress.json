@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-10T03:13:53.272Z",
+  "updatedAt": "2026-11-10T03:17:15.338Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
@@ -39288,7 +39288,6 @@
       "key": "release:42622445147:1:c5e0c8e06e40d4f5b1382c15387a1153a567529f",
       "status": "unverified",
       "attempts": 3,
-      "reason": "배포 결과 단계 미검증",
       "run": {
         "id": 42622445147,
         "attempt": 1,
@@ -39299,13 +39298,13 @@
         "event": "workflow_dispatch",
         "branch": "main"
       },
+      "reason": "배포 결과 단계 미검증",
       "nextRetryAt": "2026-11-10T03:33:50.846Z"
     },
     "release:42585835410:1:fc26ccc38370cbb01a2204fea4bb9e66b3d84e1f": {
       "key": "release:42585835410:1:fc26ccc38370cbb01a2204fea4bb9e66b3d84e1f",
       "status": "unverified",
       "attempts": 2,
-      "reason": "배포 결과 단계 미검증",
       "run": {
         "id": 42585835410,
         "attempt": 1,
@@ -39316,13 +39315,30 @@
         "event": "workflow_dispatch",
         "branch": "main"
       },
+      "reason": "배포 결과 단계 미검증",
       "nextRetryAt": "2026-11-10T03:23:52.539Z"
+    },
+    "release:42599656595:1:ffe2395120fdaa3ebd60dfe085704ba37b79d729": {
+      "key": "release:42599656595:1:ffe2395120fdaa3ebd60dfe085704ba37b79d729",
+      "status": "unverified",
+      "attempts": 1,
+      "reason": "배포 결과 단계 미검증",
+      "run": {
+        "id": 42599656595,
+        "attempt": 1,
+        "sha": "ffe2395120fdaa3ebd60dfe085704ba37b79d729",
+        "at": "2026-11-09T10:18:52Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/42599656595",
+        "conclusion": "success",
+        "event": "workflow_dispatch",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-11-10T03:22:13.329Z"
     },
     "release:42615279003:1:88ec74ef6078d6cd3c15dc6571dcf5be55606d2f": {
       "key": "release:42615279003:1:88ec74ef6078d6cd3c15dc6571dcf5be55606d2f",
       "status": "unverified",
       "attempts": 1,
-      "reason": "배포 결과 단계 미검증",
       "run": {
         "id": 42615279003,
         "attempt": 1,
@@ -39333,24 +39349,8 @@
         "event": "workflow_dispatch",
         "branch": "main"
       },
-      "nextRetryAt": "2026-11-10T03:18:51.703Z"
-    },
-    "release:42597109836:1:0178e5c1765e61ce559ff992fe19d3a17ac136e7": {
-      "key": "release:42597109836:1:0178e5c1765e61ce559ff992fe19d3a17ac136e7",
-      "status": "unverified",
-      "attempts": 3,
-      "run": {
-        "id": 42597109836,
-        "attempt": 1,
-        "sha": "0178e5c1765e61ce559ff992fe19d3a17ac136e7",
-        "at": "2026-11-09T09:58:24Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/42597109836",
-        "conclusion": "success",
-        "event": "workflow_dispatch",
-        "branch": "main"
-      },
       "reason": "배포 결과 단계 미검증",
-      "nextRetryAt": "2026-11-10T03:16:17.646Z"
+      "nextRetryAt": "2026-11-10T03:18:51.703Z"
     },
     "release:42654915721:1:ac060e48fffba15b18eb3b038cce62dc1b73e50b": {
       "key": "release:42654915721:1:ac060e48fffba15b18eb3b038cce62dc1b73e50b",
@@ -213837,6 +213837,23 @@
       "reason": "Pages ZIP 다운로드 실패",
       "retryExhausted": true
     },
+    "release:42597109836:1:0178e5c1765e61ce559ff992fe19d3a17ac136e7": {
+      "key": "release:42597109836:1:0178e5c1765e61ce559ff992fe19d3a17ac136e7",
+      "status": "unverified",
+      "attempts": 4,
+      "reason": "배포 결과 단계 미검증",
+      "run": {
+        "id": 42597109836,
+        "attempt": 1,
+        "sha": "0178e5c1765e61ce559ff992fe19d3a17ac136e7",
+        "at": "2026-11-09T09:58:24Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/42597109836",
+        "conclusion": "success",
+        "event": "workflow_dispatch",
+        "branch": "main"
+      },
+      "retryExhausted": true
+    },
     "release:42620728280:1:4c4873a376545d809fbbfa3c516c3383a958de95": {
       "key": "release:42620728280:1:4c4873a376545d809fbbfa3c516c3383a958de95",
       "status": "unverified",
@@ -213900,23 +213917,6 @@
         "url": "https://github.com/icefoxtail/AP------/actions/runs/42686464082",
         "conclusion": "success",
         "event": "unknown",
-        "branch": "main"
-      },
-      "reason": "배포 결과 단계 미검증",
-      "retryExhausted": true
-    },
-    "release:42646155327:1:a7f30958943c24b43bf375ad543adba39a07ede9": {
-      "key": "release:42646155327:1:a7f30958943c24b43bf375ad543adba39a07ede9",
-      "status": "unverified",
-      "attempts": 4,
-      "run": {
-        "id": 42646155327,
-        "attempt": 1,
-        "sha": "a7f30958943c24b43bf375ad543adba39a07ede9",
-        "at": "2026-11-09T15:58:19Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/42646155327",
-        "conclusion": "success",
-        "event": "workflow_dispatch",
         "branch": "main"
       },
       "reason": "배포 결과 단계 미검증",
