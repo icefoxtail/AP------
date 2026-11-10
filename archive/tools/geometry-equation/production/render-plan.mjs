@@ -28,10 +28,28 @@ import * as cfv from './container-fill-v1.mjs';
 import * as lpf from './lattice-path-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
+import {failureGuidance} from './error-guidance.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
 const clip=v=>JSON.stringify(v??null).slice(0,600);
+// result.detail stays the 600 character clip above; result.detailFull and result.errors keep the whole thing (still capped so one huge detail cannot flood the file).
+const FULL_MAX=200000;
+const fullText=v=>{let t;try{t=typeof v==='string'?v:JSON.stringify(v??null);}catch{t=String(v);}return String(t??'').slice(0,FULL_MAX);};
+const errorsOf=detail=>{
+  const found=[];const walk=(node,depth)=>{if(found.length||depth>6||node===null||typeof node!=='object')return;if(Array.isArray(node.errors)&&node.errors.length){found.push(node.errors);return;}for(const child of Array.isArray(node)?node:Object.values(node))walk(child,depth+1);};
+  walk(detail,0);
+  try{return found.length?JSON.parse(JSON.stringify(found[0].slice(0,200))):undefined;}catch{return undefined;}
+};
+// A Python refusal may carry repair data beside its code (result.hintData). It goes to the thrown failure's hintData and is taken out of detail, so detail is what it always was.
+const splitHint=result=>{
+  if(result&&typeof result==='object'&&!Array.isArray(result)&&Object.hasOwn(result,'hintData')){const {hintData,...rest}=result;return {result:rest,hintData};}
+  return {result,hintData:undefined};
+};
+// A refusal raised while one panel of a composite is specified names that panel in its repair data, so the fix path points into panels[i].
+const tagPanel=(run,index)=>{try{return run();}catch(error){if(error&&typeof error.hintData==='object'&&error.hintData!==null&&error.hintData.panel===undefined)Object.defineProperty(error,'hintData',{value:{...error.hintData,panel:index},enumerable:false,configurable:true});throw error;}};
+// What stdout shows: the result without the long fields (they are in <name>-result.json), each hint cut short.
+const stdoutView=r=>{const {detailFull,errors,hint,...rest}=r;return {...rest,...(hint?{hint:hint.map(h=>h.length>160?h.slice(0,160)+'...':h)}:{}),...(detailFull!==undefined?{detailFile:true}:{})};};
 
 // plan: a parsed plan object, or a path to plan.json. Returns the result record (also written as <name>-result.json).
 export async function renderPlan({item,plan:planInput,outDir,packetDir}){
@@ -41,14 +59,17 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
   const tag=crypto.randomUUID().slice(0,8);
   const row={item:name,status:undefined};
   let stage='read-plan';
+  // The plan as the author wrote it and as it stood when the render failed: failureGuidance names fields in the author's plan.
+  const where={authored:null,plan:null};
   // Attempt log (<outDir>/attempts.jsonl, append only): one line per attempt below and one "final" line per render. Instrumentation only.
   const startedAt=Date.now(),log=createAttemptLog({outDir,item:name,invocation:tag,planSha256:planDigest(planInput)});
   const attemptVariant=suffix=>suffix?String(suffix).replace(/^-/,''):(row.fallback?.length?row.fallback[row.fallback.length-1].to:'initial');
   const write=(file,text)=>fs.writeFileSync(path.join(outDir,file),text);
   const finish=()=>{
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,identity:row.identity};
+    // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
-    log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt});
+    log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
   };
   try{
@@ -63,12 +84,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       authored=JSON.parse(fs.readFileSync(authored,'utf8'));
     }
     if(!authored||typeof authored!=='object')throw new Error('plan missing or not an object');
+    where.authored=where.plan=authored;
     if(authored.status==='EXEMPT'||authored.status==='UNSUPPORTED'){row.status=authored.status;row.detail=authored.reason;return finish();}
     // Two discontinuous functions (graphPlan.referenceCurves, layout STACKED) are the two-panel composite they stand for.
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
-    row.capability=authored.capability;log.setPlan(authored,meta.fam);
+    row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
       stage='packet';
@@ -181,6 +203,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
       for(let attempt=0;attempt<3;attempt++){
       const watch=stopwatch();
+      where.plan=current;
       checked=comp.compositePanels(current);framedPanels=[];panelModels=[];const panelSizes=[];
       for(const panel of checked){
         if(comp.isPlanePanel(panel.plan)){
@@ -190,7 +213,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
           const m=await pythonWorker({action:'construction',graph:panel.plan.mathPlan},{timeoutMs:90000});
           if(m.status!=='OK')throw {stage:'model',detail:{panel:panel.index,result:m.result}};
           const panelPlan={...panel.plan,caption:panel.plan.caption??comp.captionText(panel.caption)};
-          const spec=specFor(panelPlan,m.result,identity.assetId);
+          const spec=tagPanel(()=>specFor(panelPlan,m.result,identity.assetId),panel.index);
           framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
           panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});continue;
         }
@@ -212,16 +235,16 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
           const solved=chain.solveNumberLine(panel.plan.numberLine);
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(chain.numberLinePanelSize(solved));continue;
         }
-        const f=await pythonWorker({action:'frame_graph',graphPlan:panel.plan.graphPlan});if(f.status!=='OK')throw {stage:'frame',detail:{panel:panel.index,result:f.result}};
+        const f=await pythonWorker({action:'frame_graph',graphPlan:panel.plan.graphPlan});if(f.status!=='OK'){const s=splitHint(f.result);throw {stage:'frame',detail:{panel:panel.index,result:s.result},...(s.hintData?{hintData:{...s.hintData,panel:panel.index}}:{})};}
         // A panel plan names its own figure: its caption defaults to the panel caption text (spec title).
         const panelPlan={...panel.plan,caption:panel.plan.caption??comp.captionText(panel.caption),graphPlan:f.result.graphPlan};
         const m=await pythonWorker({action:'graph',graphPlan:panelPlan.graphPlan});if(m.status!=='OK')throw {stage:'model',detail:{panel:panel.index,result:m.result}};
-        const spec=specFor(panelPlan,m.result,identity.assetId);
+        const spec=tagPanel(()=>specFor(panelPlan,m.result,identity.assetId),panel.index);
         framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
         panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});
       }
       watch.lap('panels');
-      plan={...current,panels:framedPanels};const stackLayout=comp.compositePanelLayout(checked);
+      plan={...current,panels:framedPanels};where.plan=plan;const stackLayout=comp.compositePanelLayout(checked);
       // The caption rows are as tall as the captions need at the measured font (E7): a figure whose captions fit keeps the standard row, so its measured size is the
       // first one; when the composed figure came out taller (or shorter) than measured, the policy is measured again for the size it really has and composed again.
       let captionRow=comp.COMPOSITE_CAPTION_ROW;
@@ -277,7 +300,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     }
     let plan=authored;
     stage='frame';
-    if(authored.graphPlan){const f=await pythonWorker({action:'frame_graph',graphPlan:authored.graphPlan});if(f.status!=='OK')throw {stage,detail:f.result};plan={...authored,graphPlan:f.result.graphPlan};}
+    if(authored.graphPlan){const f=await pythonWorker({action:'frame_graph',graphPlan:authored.graphPlan});if(f.status!=='OK'){const s=splitHint(f.result);throw {stage,detail:s.result,...(s.hintData?{hintData:s.hintData}:{})};}plan={...authored,graphPlan:f.result.graphPlan};where.plan=plan;}
     stage='model';
     // A plane figure with non-special angles carries 22 digit rationals through its intersections: the exact model may need longer than the 10 s default.
     const m=await pythonWorker(plan.graphPlan?{action:'graph',graphPlan:plan.graphPlan}:{action:'construction',graph:plan.mathPlan},plan.graphPlan?undefined:{timeoutMs:90000});if(m.status!=='OK')throw {stage,detail:m.result};
@@ -285,6 +308,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     // spec -> Archive policy -> L1, once; a construction plan whose labels found no room is retried once with coordinatePlacement PANEL.
     const attempt=async(candidatePlan,suffix)=>{
       const watch=stopwatch();
+      where.plan=candidatePlan;
       try{
       stage='spec';
       const spec=specFor(candidatePlan,model,identity.assetId);watch.lap('spec');// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
@@ -377,11 +401,19 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     return finish();
   }catch(error){
     row.status='FAILED';row.stage=error?.stage??stage;row.code=errorCode(error?.stage?error.detail:error?.message)??(error instanceof SyntaxError?'PLAN_JSON_INVALID':undefined);row.detail=error?.stage?clip(error.detail):String(error?.message||error).slice(0,600);
+    // Extra fields for the author (roadmap 1-1): the whole detail, the errors list, the engine's hint and fix steps. They never replace or change row.detail above.
+    try{
+      const thrown=error?.stage?error.detail:String(error?.message||error);
+      row.detailFull=fullText(thrown);row.errors=errorsOf(thrown);
+      const guide=failureGuidance({code:row.code??null,detail:thrown,authored:where.authored,plan:where.plan,hintData:error?.hintData,fallback:(row.fallback??[]).map(f=>f.to)});
+      if(guide.hint.length)row.hint=guide.hint;
+      if(guide.fix.length)row.fix=guide.fix;
+    }catch{/* the failure result itself must always be written */}
     return finish();
   }
 }
 
-const line=(r,name)=>JSON.stringify({item:name,status:r.status,stage:r.stage,detail:typeof r.detail==='string'?r.detail.slice(0,160):r.detail,fallback:Array.isArray(r.fallback)?r.fallback.map(f=>f.to).join('>'):undefined});
+const line=(r,name)=>JSON.stringify({item:name,status:r.status,stage:r.stage,detail:typeof r.detail==='string'?r.detail.slice(0,160):r.detail,fallback:Array.isArray(r.fallback)?r.fallback.map(f=>f.to).join('>'):undefined,code:r.code,hint:r.hint?.[0]?r.hint[0].slice(0,160):undefined,fix:r.fix?.length?true:undefined});
 
 async function main(argv){
   const args={};
@@ -404,7 +436,7 @@ async function main(argv){
   }
   const item=JSON.parse(fs.readFileSync(args.item,'utf8'));
   const r=await renderPlan({item,plan:args.plan,outDir:args.out,packetDir:args['packet-dir']});
-  console.log(JSON.stringify(r));
+  console.log(JSON.stringify(stdoutView(r)));
   return r.status==='FAILED'?1:0;
 }
 
