@@ -33,7 +33,7 @@ const SCENE_STATE = {
   // 지시서 B (video-b.js): 묶인 동물의 영역(swept.js 'gt-kennel', gtQ 개집 한 변 1~6 · gtL 끈 1~16 · gtT 0~1) · 잎 모양(f03.js 'f3-leaf-len', f3a 한 변 2~12 · f3t 0~1)
   'gt-kennel': { gtT: [0, 1], gtQ: [1, 6], gtL: [1, 16] },
   'f3-leaf-len': { f3a: [2, 12], f3t: [0, 1] },
-  'sv1-1': { sR: [1, 15], sH: [2, 20], sT: [0, 1], svYaw: [-180, 180], svPitch: [-30, 85], svShape: null, sv11Mode: null, sv11Started: null },
+  'sv1-1': { sR: [1, 15], sH: [2, 20], sT: [0, 1], svYaw: [-180, 180], svPitch: [-30, 85], svShape: null, sv11Mode: null, sv11Started: null, svShowV: null },
   // 해설(lesson) 장면: g7-circle-sector.html proofScene('sector')의 params csR 2~12 · csS 30~180(15 단위) · csT 0~100, 해설이 켜는 csShowS(결론 라벨을 아끼는 장면 표시)
   'z3-sectorProof': { csR: [2, 12], csS: [30, 180], csT: [0, 100], csShowS: null }
 };
@@ -64,7 +64,9 @@ const surfaceLessons = loadLessons('g7-surface-volume');
 const allLessons = { ...sectorLessons, ...surfaceLessons };
 
 test('해설 파일이 있고 장면 id가 다른 실험실과 충돌하지 않으며, 깨진 옛 원기둥 영상 대본은 남아 있지 않다', () => {
-  assert.ok(surfaceLessons['sv1-1'], 'sv1-1 해설');
+  assert.equal(core.lessonList(surfaceLessons['sv1-1']).length, 2, 'sv1-1 은 겉넓이·부피 해설 둘');
+  assert.deepEqual(Array.from(core.lessonList(surfaceLessons['sv1-1']).map((l) => l.label)), ['겉넓이', '부피']);
+  assert.deepEqual(core.validateLessonSet(surfaceLessons['sv1-1']).errors, [], '해설 묶음 검사');
   assert.ok(sectorLessons['z3-sectorProof'], 'z3-sectorProof 해설');
   assert.ok(!fs.existsSync(path.join(surfaceDir, 'video.js')), 'sv1-1 옛 영상 대본(sv11Started 를 켜지 않아 펼쳐지지 않던 것)은 해설로 대체되어 지워졌습니다');
   for (const id of Object.keys(allLessons)) {
@@ -337,7 +339,7 @@ for (const [id, lesson] of Object.entries(allLessons).flatMap(([k, v]) => core.l
       assert.ok(seen.some(([, k, v]) => k === 'svShape' && v === 'circ'), '원기둥');
       assert.ok(seen.some(([, k, v]) => k === 'sv11Started' && v === true), '전개도를 시작해야 펼쳐집니다(옛 영상 대본이 빠뜨렸던 값)');
       const steps = chapterCues(lesson).filter((c) => c.step !== undefined).map((c) => c.step);
-      assert.deepEqual(Array.from(steps), [2, 3], '정리 탭 단계는 2 → 3 (1단계는 장면에 들어갈 때의 값)');
+      assert.deepEqual(Array.from(steps), lesson.label === '부피' ? [1, 2, 3] : [2, 3], '정리 탭 단계: 겉넓이는 2 → 3(장면에 들어갈 때 그림이 이미 전개도), 부피는 1 → 2 → 3(1단계에서 밑면·밑넓이·반지름을 그림)');
     } else assert.equal(lesson.tab, undefined, `${id}: tab 은 정리 탭이 같은 문제를 그리는 것을 확인한 장면에만 켭니다`);
   });
 
@@ -592,6 +594,32 @@ test('해설 sv1-1: 자막의 모든 숫자가 원기둥 공식(r=3, h=5)으로 
   assert.match(t1, /밑넓이', plainVal\(M\.S\)/, '정리 탭 그림의 「밑넓이」 라벨');
   assert.match(t1, /if\(!s\.sv11Started\)\{/, '전개도는 sv11Started 가 켜져야 그려진다');
   assert.match(t1, /stepT:\s*\(\)\s*=>\s*1/, '정리 탭 tick 이 sT 를 1 로 끌어당기므로 재생 중에는 dragging 으로 막는다');
+});
+
+test('해설 sv1-1 부피: 자막의 모든 숫자가 원기둥 부피 공식(r=3, h=5)으로 다시 계산한 값이고, 그림이 그 값을 단계마다 그린다', () => {
+  const lesson = core.lessonList(surfaceLessons['sv1-1']).find((l) => l.label === '부피'), start = lesson.chapters[0].start;
+  const r = start.sR, h = start.sH, base = r * r, vol = base * h; // 밑넓이 πr² 의 π 계수, 부피 = 밑넓이 × 높이
+  assert.deepEqual([r, h, base, vol], [3, 5, 9, 45]);
+  assert.equal(vol, r * r * h, '부피 = πr²h');
+  const say = sayList(lesson);
+  assert.ok(say[0][0].includes(`반지름 ${r}`), '1장: 반지름');
+  assert.ok(say[0][1].includes(`\\pi\\times${r}^2=${base}\\pi`), '1장: 밑넓이 π×3² = 9π(장면 풀이 1단계)');
+  assert.ok(say[1][1].includes(`$${h}$`) && say[1][1].includes(`$${base}\\pi$`), '2장: 높이 5, 밑넓이 9π');
+  assert.ok(say[2][1].includes(`${base}\\pi\\times${h}=${vol}\\pi`), '3장: 9π × 5 = 45π(장면 풀이 3단계)');
+  const allowed = new Set([r, h, base, vol, 2]);
+  for (const s of say.flat()) numbersOf(s).forEach((n) => assert.ok(allowed.has(n), `자막 「${s}」 의 숫자 ${n} 은 장면 공식으로 나오는 값이 아닙니다`));
+  assert.equal(lesson.chapters[0].cues[0].set.sv11Mode, 'vol', '부피 모드는 해설이 스스로 정한다');
+  assert.equal(core.lessonList(surfaceLessons['sv1-1'])[0].chapters[0].cues[0].set.sv11Mode, 'surf', '겉넓이 해설은 겉넓이 모드');
+  // 장면 소스: 장면의 부피 풀이와 같은 식, 단계별 그림(밑면 강조·밑넓이·반지름 → 높이 → 결과), 결과는 해설이 svShowV 를 켤 때까지 아낌
+  const t1 = fs.readFileSync(path.join(surfaceDir, 't1.js'), 'utf8');
+  assert.ok(t1.includes('(부피) $=${tx(M.S)}') && t1.includes('=${tx(M.vol)}'), '장면의 부피 풀이 3단계(9π × 5 = 45π)');
+  assert.match(t1, /const volLabels = \(b,s,M,C,D,g\) =>/, '부피 그림 라벨');
+  assert.match(t1, /if \(st >= 3 && \(!s\.lessonOn \|\| s\.svShowV\)\)/, '결과 라벨 조건(해설 재생 중에는 svShowV)');
+  assert.match(t1, /if\(lab\) volLabels\(/, '정리 탭에서만 그림');
+  const final = chapterCues(lesson).filter((c) => c.set && c.set.svShowV === true);
+  assert.equal(final.length, 1, 'svShowV 는 한 번만 켠다');
+  assert.ok(final[0].say.includes(`${vol}\\pi`), '결과 라벨은 결론 자막과 함께 켜진다');
+  assert.ok(lesson.chapters.slice(0, 2).every((ch) => ch.cues.every((c) => !(c.set && c.set.svShowV === true))), '앞 두 장은 결과를 켜지 않는다');
 });
 
 test('player·shell: 해설 재생기는 해설을 영상보다 먼저 찾고, 재생 중 dragging 을 쥐었다 반드시 되돌린다(소스 확인)', () => {

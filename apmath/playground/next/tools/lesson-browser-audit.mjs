@@ -11,7 +11,6 @@
 //   콘솔 오류 0
 // 한 장면에 해설이 여럿이면(배열) 해설마다 위 검사를 따로 하고, 진입 화면의 단추가 해설 수만큼 나란히 있는지(각 56px 이상, 360px 폭에서도 글자가 잘리지 않음),
 // 단추 하나가 자기 해설을 바로 끝까지 재생하는지, 끝 카드의 「다음 ▶ 라벨」이 같은 장면의 다음 해설로 가는지, 해설을 오가도(겉넓이 → 부피 → 겉넓이) 처음 재생과 같은지 검사합니다.
-//   --multi-fixture : 실제 해설이 하나뿐인 g7-surface-volume sv1-1 에 시험용 둘째 해설(부피, 이 파일 안의 FIXTURE_SECOND)을 불러올 때 끼워 넣어 위 여러 해설 검사를 돌립니다(학생에게 나가는 내용이 아님).
 // 844×390(휴대폰 가로)에서는 진입 ▶·자막·조작·끝 카드가 화면 안에 있는지 봅니다. play=1 은 재생을 시작하고 manual=1 은 진입 화면을 달지 않는지 봅니다.
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
@@ -44,35 +43,9 @@ const VIEWS = [
 const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { channel: 'chromium', headless: true });
 const results = [];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const multiFixture = args.includes('--multi-fixture');
-
-/** 시험용 둘째 해설(원기둥 부피). 실제 장면 sv1-1 의 부피 모드를 쓰지만, 정리 탭 그림에 수치 라벨이 없어 학생용으로는 내보내지 않습니다. 오직 여러 해설 장치(단추·다음·오가기)를 검사하려는 것입니다. */
-const FIXTURE_SECOND = {
-  title: '원기둥의 부피(시험용)', label: '부피', tab: 'review', answer: '$45\\pi$', answerText: '$45\\pi$ cm³', summary: '부피 = 밑넓이 × 높이', task: '높이를 바꿔 보세요',
-  chapters: [
-    { length: 9, title: '조각으로 나누기', start: { sR: 3, sH: 5, sT: 0, svYaw: 28, svPitch: 22 }, cues: [{ at: 0, say: '원기둥을 높이 방향으로 나눠요.', set: { svShape: 'circ', sv11Mode: 'vol', sv11Started: true }, to: { sT: 1 }, dur: 5 }, { at: 5.5, say: '조각마다 밑면이 같아요.' }] },
-    { length: 9, title: '쌓인 양', cues: [{ at: 0, say: '같은 밑면이 높이만큼 쌓여 있어요.', to: { sT: 0.5 }, dur: 5 }, { at: 6, say: '밑넓이는 $9\\pi$예요.' }] },
-    { length: 9, title: '부피는?', cues: [{ at: 0, say: '부피 = 밑넓이 × 높이', to: { sT: 1 }, dur: 4 }, { at: 4.5, say: '부피 $=9\\pi\\times5=45\\pi$ cm³' }] }
-  ]
-};
-const FIXTURE_INJECT = `(function(){var L=window.APL_LESSONS['g7-surface-volume'];L['sv1-1'].label='겉넓이';L['sv1-1']=[L['sv1-1'],${JSON.stringify(FIXTURE_SECOND)}];})();`;
-/** 새 화면 문맥(--multi-fixture 이면 sv1-1 해설 파일에 시험용 둘째 해설을 덧붙여 받게 함). */
+/** 새 화면 문맥. */
 async function newCtx(opts) {
-  const c = await browser.newContext(opts);
-  if (multiFixture) {
-    await c.route('**/g7-surface-volume/lesson.js', async (route) => {
-      // 정적 서버가 순간적으로 연결을 끊을 수 있어 몇 번 다시 시도합니다(끝내 안 되면 페이지가 해설을 못 읽어 검사가 실패로 드러남)
-      for (let attempt = 0; attempt < 5; attempt++) {
-        try {
-          const resp = await route.fetch();
-          await route.fulfill({ response: resp, body: (await resp.text()) + '\n' + FIXTURE_INJECT });
-          return;
-        } catch (e) { await sleep(300); }
-      }
-      await route.abort();
-    });
-  }
-  return c;
+  return browser.newContext(opts);
 }
 
 /** 해설 JSON 의 최종 값(숫자·set)을 시간 순서대로 접어 구합니다. */
@@ -224,7 +197,17 @@ for (const labId of targets) {
           for (const v of sampleTimes(sc.lesson)) {
             await pg.locator('.apl-vrange').fill(String(v));
             await sleep(60);
-            rows.push(await pg.evaluate((fv) => ({ t: +lab.video.t.toFixed(3), nums: Object.fromEntries(Object.keys(fv.nums).map((k) => [k, lab.s[k]])), sets: Object.fromEntries(Object.keys(fv.sets).map((k) => [k, lab.s[k]])), step: lab.s.step }), finalValues(sc.lesson)));
+            // 그 순간 그림에 실제로 그려진 글자(캔버스 글자 + 라벨 DOM): 정답이 마지막 자막 전에 그려지는지 보려고 모읍니다
+            await pg.evaluate(() => {
+              if (!window.__lessonTxt) {
+                window.__lessonTxt = new Set();
+                const bd = lab.board, orig = bd._text;
+                bd._text = function (x, y, str) { if (str != null && str !== '' && !this._bbox && !this.thumb) window.__lessonTxt.add(String(str)); return orig.apply(this, arguments); };
+              }
+              window.__lessonTxt.clear();
+              lab.render();
+            });
+            rows.push(await pg.evaluate((fv) => ({ texts: [...window.__lessonTxt, ...[...document.querySelectorAll('.apl-mlabel')].filter((e) => e.checkVisibility()).map((e) => e.innerText)], t: +lab.video.t.toFixed(3), nums: Object.fromEntries(Object.keys(fv.nums).map((k) => [k, lab.s[k]])), sets: Object.fromEntries(Object.keys(fv.sets).map((k) => [k, lab.s[k]])), step: lab.s.step }), finalValues(sc.lesson)));
           }
           return rows;
         };
@@ -323,6 +306,11 @@ for (const labId of targets) {
           const diff = timelineA.map((a, i) => ({ a, b: timelineB[i] })).filter(({ a, b }) => !b || Math.abs(a.t - b.t) > 1e-6 || Object.keys(a.nums).some((k) => Math.abs(a.nums[k] - b.nums[k]) > 1e-6) || JSON.stringify(a.sets) !== JSON.stringify(b.sets) || a.step !== b.step);
           check('replay: state timeline equals the first play at every sample time (not only at the end)', !diff.length && timelineA.length === timelineB.length, JSON.stringify(diff.slice(0, 2)));
           const early = [...timelineA.map((r) => ['first', r]), ...timelineB.map((r) => ['replay', r])].filter(([, r]) => Object.entries(expectedSets(sc.lesson, r.t)).some(([k, v]) => JSON.stringify(r.sets[k]) !== JSON.stringify(v)));
+          // 정답이 마지막 자막 전에 그림에 그려지지 않는다(첫 재생·다시 보기 모두): 정답 글자(예: 45π)가 어떤 그림 글자에도 없어야 함
+          const lastSayAt = globalCues(sc.lesson).cues.filter((c) => c.say).at(-1).at;
+          const ansPlain = sc.lesson.answer ? sc.lesson.answer.replace(/[$\s]/g, '').replace(/\\pi/g, 'π') : '';
+          const drawn = ansPlain ? [...timelineA.map((r) => ['first', r]), ...timelineB.map((r) => ['replay', r])].filter(([, r]) => r.t < lastSayAt - 0.05 && r.texts.some((x) => x.replace(/\s/g, '').includes(ansPlain))) : [];
+          check('first play & replay: the answer text is never drawn on the figure before the final caption', !drawn.length, JSON.stringify(drawn.slice(0, 2)));
           check('first play & replay: every set value (reveal state) equals what the lesson has set up to that time (nothing is revealed before its cue)', !early.length, JSON.stringify(early.slice(0, 2)));
           await page.evaluate(() => { lab.video.rate = 6; });
           await page.locator('.apl-vctl .primary').click();
