@@ -24,6 +24,8 @@
   const GRADES = ["중1", "중2", "중3", "고1", "고2", "고3"];
   const GRADE_CLASS = { 중1: "grade-m1", 중2: "grade-m2", 중3: "grade-m3", 고1: "grade-h1", 고2: "grade-h2", 고3: "grade-h3" };
   const HANGUL = /[가-힣]/;
+  const UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  const ID_ERROR_MESSAGE = "이 브라우저에서는 출제 번호를 만들 수 없습니다. 브라우저를 최신으로 바꾸거나 관리자에게 알려 주세요.";
 
   const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -64,11 +66,18 @@
   // 성공하면 지운다. localStorage가 막혀 있으면 메모리로만 보관해 출제는 그대로 된다.
   function createBatchStore({ storage = null, uuid = null, now = Date.now } = {}) {
     const memory = new Map();
+    // 서버는 UUID v4 형식만 받는다(SAVED_PAPER_BATCH_ID). 만들 수 없거나 형식이 틀리면 임의 값을 만들어 보내지 않고 던진다.
     const makeId = () => {
-      if (typeof uuid === "function") return String(uuid());
-      const c = typeof globalThis !== "undefined" ? globalThis.crypto : null;
-      if (c && typeof c.randomUUID === "function") return c.randomUUID();
-      throw new Error("출제 번호를 만들 수 없습니다. 브라우저를 새로고침한 뒤 다시 시도해 주세요.");
+      let id = "";
+      try {
+        if (typeof uuid === "function") id = String(uuid());
+        else {
+          const c = typeof globalThis !== "undefined" ? globalThis.crypto : null;
+          if (c && typeof c.randomUUID === "function") id = c.randomUUID();
+        }
+      } catch { id = ""; }
+      if (!UUID_V4.test(id)) throw new Error(ID_ERROR_MESSAGE);
+      return id;
     };
     const keyOf = (paperId, classId, date) => `${paperId}|${classId}|${date}`;
     function read() {
@@ -141,6 +150,37 @@
     };
   }
 
+  // ---- 이번 접속에서 이 패널로 성공한 (문제지, 반, 날짜) ------------------------------------------------
+  // 문제지 만들기 화면에서 연 패널은 보관함 이력이 없다. 방금 낸 조합을 메모리 + sessionStorage에 기억해 같은 경고를 낸다.
+  const DONE_KEY = "archive2.assign.done.v1";
+  function createDoneStore({ storage = null } = {}) {
+    const memory = new Map();
+    const read = () => {
+      try {
+        const parsed = JSON.parse(storage?.getItem(DONE_KEY) || "null");
+        return Array.isArray(parsed) ? parsed.filter((k) => typeof k === "string") : [];
+      } catch { return []; }
+    };
+    return {
+      add(paperId, classId, date) {
+        const key = `${paperId}|${classId}|${date}`;
+        memory.set(key, true);
+        try { storage?.setItem(DONE_KEY, JSON.stringify([...new Set([...read(), key])].slice(-200))); } catch { /* 메모리로 계속한다 */ }
+      },
+      // 같은 문제지·같은 반에서 이번 접속에 성공한 날짜들(새 것부터).
+      datesFor(paperId, classId) {
+        const prefix = `${paperId}|${classId}|`;
+        const keys = new Set([...memory.keys(), ...read()]);
+        return [...keys].filter((k) => k.startsWith(prefix)).map((k) => k.slice(prefix.length)).sort().reverse();
+      },
+    };
+  }
+  let sharedDone = null;
+  function sharedDoneStore(storage) {
+    if (!sharedDone) sharedDone = createDoneStore({ storage });
+    return sharedDone;
+  }
+
   // ---- 서버 오류를 교사 말로 -------------------------------------------------------------------------
   // 서버 문장은 화면에 내지 않는다(영문·코드형은 물론 한글이어도 "roster"·"Assignment" 같은 내부 용어가 섞인다).
   // 알려진 문구만 교사가 할 일을 알려 주는 말로 바꾸고, 그 밖에는 일반 안내를 낸다. 원문은 콘솔에만 남긴다.
@@ -203,6 +243,8 @@
       out.push({
         id,
         title: text(row.library_display_name || row.title) || "저장한 시험지",
+        // 서버는 원래 제목(archive_saved_papers.title = 출제의 exam_title)으로 응시 여부를 가른다. 보관함에서 바꾼 이름과 따로 둔다.
+        originalTitle: text(row.title),
         grade: text(row.grade),
         subject: text(row.subject),
         count: Number.isFinite(count) && count >= 0 ? count : 0,
@@ -222,6 +264,7 @@
     const papers = normalizePapers(options.papers);
     const history = options.history || null;
     const onDone = options.onDone || (() => {});
+    const issuedHere = options.doneStore || createDoneStore({ storage: options.sessionStorage || null });
     const listeners = new Set();
     const state = {
       phase: "loading", // loading | login | error | empty | select | running | done
@@ -249,9 +292,12 @@
 
     // 같은 문제지·같은 반의 이전 출제(취소 제외). 반은 class_id로, id가 없는 이력은 반 이름으로 맞춘다.
     function priorIssues(paperId, cls) {
-      const rows = history?.byPaper?.get?.(String(paperId)) || [];
-      return rows.filter((row) => !row.cancelled &&
+      const rows = (history?.byPaper?.get?.(String(paperId)) || []).filter((row) => !row.cancelled &&
         (row.classId ? row.classId === cls.id : Boolean(row.className) && row.className === cls.name));
+      // 이력에 아직 없는, 이번 접속에서 이 패널로 성공한 건을 합친다.
+      for (const date of issuedHere.datesFor(paperId, cls.id))
+        if (!rows.some((row) => row.date === date)) rows.push({ id: "", classId: cls.id, className: cls.name, date, cancelled: false, fromSession: true });
+      return rows.sort((a, b) => String(b.date).localeCompare(String(a.date)));
     }
     function dupInfo(paperId, cls) {
       const rows = priorIssues(paperId, cls);
@@ -309,7 +355,7 @@
       const token = ++cls.token;
       cls.rosterState = "loading";
       emit();
-      const query = `class_id=${encodeURIComponent(cls.id)}&exam_title=${encodeURIComponent(papers[0]?.title || "")}&exam_date=${encodeURIComponent(state.date)}`;
+      const query = `class_id=${encodeURIComponent(cls.id)}&exam_title=${encodeURIComponent(papers[0]?.originalTitle || "")}&exam_date=${encodeURIComponent(state.date)}`;
       let data;
       try {
         data = await request(`/class-exam-assignments/roster?${query}`, { method: "GET", timeoutMs: READ_TIMEOUT_MS });
@@ -366,12 +412,14 @@
     }
     // '아직 안 본 학생만': 이 시험을 이미 제출한 학생(roster의 already_submitted, 옛 모달의 '이 시험 미응시자만'과 같은 필드)을 뺀다.
     // 결석생에게 며칠 뒤 따로 낼 때 쓴다. 모두 제출했으면 아무것도 바꾸지 않는다.
+    // 원래 제목을 알 수 없으면(또는 여러 권이면) 응시 여부를 믿을 수 없으니 빠른 선택과 "응시함" 표시를 숨긴다.
+    const canCompareSubmitted = () => papers.length === 1 && Boolean(papers[0].originalTitle);
     function unsubmittedCount(cls) {
       return cls?.roster ? cls.roster.filter((student) => !student.submitted).length : 0;
     }
     function selectUnsubmitted(classId) {
       const cls = classById(classId);
-      if (!cls || state.phase !== "select" || cls.rosterState !== "ready") return false;
+      if (!cls || state.phase !== "select" || cls.rosterState !== "ready" || !canCompareSubmitted()) return false;
       const ids = cls.roster.filter((student) => !student.submitted).map((student) => student.id);
       if (!ids.length) return false;
       cls.studentIds = ids.length === cls.roster.length ? null : new Set(ids);
@@ -488,6 +536,7 @@
         job.pdfError = PDF_DELAY_MESSAGE;
       } else job.status = "ok";
       store.clear(job.paperId, job.classId, job.date);
+      issuedHere.add(job.paperId, job.classId, job.date);
       state.dirty = true;
     }
     function applyFailure(job, error) {
@@ -500,6 +549,7 @@
         job.pdfError = info.message;
         job.message = "";
         store.clear(job.paperId, job.classId, job.date);
+        issuedHere.add(job.paperId, job.classId, job.date);
         state.dirty = true;
         return;
       }
@@ -511,7 +561,14 @@
       if (job.rebuild) {
         // 교사가 '새로 출제'를 직접 눌렀을 때만: 취소된 건의 번호를 버리고 새 번호를 만든다.
         store.clear(job.paperId, job.classId, job.date);
-        job.batchId = store.ensure(job.paperId, job.classId, job.date).id;
+        try {
+          job.batchId = store.ensure(job.paperId, job.classId, job.date).id;
+        } catch {
+          job.status = "cancelled";
+          job.message = ID_ERROR_MESSAGE;
+          emit();
+          return;
+        }
         job.body = bodyFor(job);
         job.rebuild = false;
       }
@@ -569,7 +626,18 @@
       if (current.loading || !current.combos.length) return Promise.resolve(false);
       state.starting = true;
       state.working = true;
-      state.jobs = buildJobs(current);
+      state.startError = "";
+      try {
+        state.jobs = buildJobs(current);
+      } catch (error) {
+        // 출제 번호를 만들 수 없으면 아무것도 보내지 않고 잠금을 풀어 교사가 안내를 읽게 한다.
+        state.starting = false;
+        state.working = false;
+        state.jobs = [];
+        state.startError = ID_ERROR_MESSAGE;
+        emit();
+        return Promise.resolve(false);
+      }
       state.phase = "running";
       emit();
       return drive(state.jobs).then(() => true);
@@ -647,7 +715,7 @@
     return {
       state, load, loadRoster, toggleClass, toggleStudent, selectAllStudents, toggleStudentList, toggleCombo, setDate,
       plan, canSubmit, start, retryFailed, confirmUnknown, retryPdf, isBusy, requestClose, results,
-      dupInfo, pendingNotes, store, selectUnsubmitted, unsubmittedCount, reissue,
+      dupInfo, pendingNotes, store, canCompareSubmitted, selectUnsubmitted, unsubmittedCount, reissue,
       retryRoster: loadRoster,
       subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     };
@@ -709,12 +777,12 @@
       const unsubmitted = model.unsubmittedCount(cls);
       const onlyUnsubmitted = Boolean(cls.studentIds) && cls.studentIds.size === unsubmitted && cls.roster.every((student) => cls.studentIds.has(student.id) !== Boolean(student.submitted));
       // 빠른 선택은 문제지가 한 권일 때만 뜻이 분명하다(제출 여부는 그 시험 기준).
-      const quick = model.state.papers.length === 1
+      const quick = model.canCompareSubmitted()
         ? `<div class="assign-quick" role="group" aria-label="빠른 선택"><button type="button" class="small" data-assign-action="students-all" data-class-id="${id}" data-focus="all-${id}" aria-pressed="${cls.studentIds ? "false" : "true"}">전체</button><button type="button" class="small" data-assign-action="students-unsubmitted" data-class-id="${id}" data-focus="unsub-${id}" aria-pressed="${onlyUnsubmitted ? "true" : "false"}"${unsubmitted ? "" : " disabled"}>아직 안 본 학생만</button>${unsubmitted ? "" : '<span class="assign-muted">모두 응시했습니다</span>'}</div>` : "";
       const grid = cls.expanded
         ? `${quick}<ul class="assign-student-grid">${cls.roster.map((student) => {
           const on = !cls.studentIds || cls.studentIds.has(student.id);
-          return `<li><label><input type="checkbox" data-assign-action="student" data-class-id="${id}" data-student-id="${esc(student.id)}" data-focus="student-${id}-${esc(student.id)}"${on ? " checked" : ""}><span>${esc(student.name)}${student.submitted && model.state.papers.length === 1 ? ' <small class="assign-muted">응시함</small>' : ""}</span></label></li>`;
+          return `<li><label><input type="checkbox" data-assign-action="student" data-class-id="${id}" data-student-id="${esc(student.id)}" data-focus="student-${id}-${esc(student.id)}"${on ? " checked" : ""}><span>${esc(student.name)}${student.submitted && model.canCompareSubmitted() ? ' <small class="assign-muted">응시함</small>' : ""}</span></label></li>`;
         }).join("")}</ul>`
         : "";
       studentsBlock = `<div class="assign-students"><p><span>${summary}</span> <button type="button" class="assign-link" data-assign-action="students-toggle" data-class-id="${id}" data-focus="students-${id}" aria-expanded="${cls.expanded ? "true" : "false"}">${cls.expanded ? "학생 목록 접기" : "학생 고르기"}</button></p>${grid}</div>`;
@@ -829,7 +897,8 @@
     if (phase === "select") {
       const plan = model.plan();
       const ready = model.canSubmit();
-      return `${summaryMarkup(model, plan)}<button type="button" class="primary assign-submit" data-assign-action="submit" data-focus="submit"${ready ? "" : " disabled"}>출제하기</button><p class="assign-fine">출제하면 학생에게 바로 과제가 갑니다.</p>`;
+      const startError = model.state.startError ? `<p class="assign-auth" role="alert">${esc(model.state.startError)}</p>` : "";
+      return `${startError}${summaryMarkup(model, plan)}<button type="button" class="primary assign-submit" data-assign-action="submit" data-focus="submit"${ready ? "" : " disabled"}>출제하기</button><p class="assign-fine">출제하면 학생에게 바로 과제가 갑니다.</p>`;
     }
     if (phase === "running") {
       const r = model.results();
@@ -884,7 +953,7 @@
     if (!storage) { try { storage = win?.localStorage || null; } catch { storage = null; } }
     const model = createModel({
       request: options.request, papers: options.papers, history: options.history, storage,
-      uuid: options.uuid, now: options.now, classGrade: options.classGrade || win?.Archive2History?.classGrade,
+      uuid: options.uuid, now: options.now, doneStore: sharedDoneStore((() => { try { return win?.sessionStorage || null; } catch { return null; } })()), classGrade: options.classGrade || win?.Archive2History?.classGrade,
       onDone: options.onDone,
     });
     if (!model.state.papers.length) throw new Error("출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
@@ -1031,7 +1100,7 @@
 
   return {
     CONTRACT, STORAGE_KEY, READ_TIMEOUT_MS, WRITE_TIMEOUT_MS, BATCH_TTL_MS,
-    createModel, createBatchStore, classifyError, friendlyMessage, normalizePapers, kstToday, dayLabel,
+    createModel, createBatchStore, createDoneStore, classifyError, friendlyMessage, normalizePapers, kstToday, dayLabel,
     render, renderHead, renderBody, renderFoot, open, useLegacy, handlePopState, isOpen, isBusy,
   };
 });

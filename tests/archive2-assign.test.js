@@ -543,6 +543,94 @@ test("서버가 준 문자열은 이스케이프해서 그린다", async () => {
   assert.match(done.body, /출제하지 못했습니다/);
 });
 
+test("H1: 이름을 바꾼 문제지는 화면에 바꾼 이름, 명단 요청(exam_title)에는 원래 제목을 쓴다", async () => {
+  const renamed = paper(P1, { title: "원래 제목 문제지", library_display_name: "내가 바꾼 이름" });
+  const { model, api } = await build({ papers: [renamed], api: makeApi({ submitted: new Set(["s1"]) }) });
+  assert.equal(model.state.papers[0].title, "내가 바꾼 이름");
+  assert.equal(model.state.papers[0].originalTitle, "원래 제목 문제지");
+  assert.match(Assign.renderHead(model), /내가 바꾼 이름/);
+  assert.doesNotMatch(Assign.renderHead(model), /원래 제목 문제지/);
+  await pick(model, "c1");
+  const rosterCall = api.calls.find((c) => c.route.startsWith("/class-exam-assignments/roster?"));
+  assert.equal(new URLSearchParams(rosterCall.route.split("?")[1]).get("exam_title"), "원래 제목 문제지");
+  model.toggleStudentList("c1");
+  assert.match(Assign.renderBody(model), /아직 안 본 학생만/);
+  // 날짜를 바꿔 다시 받을 때도 원래 제목
+  await model.setDate("2026-11-09");
+  const last = api.calls.filter((c) => c.route.startsWith("/class-exam-assignments/roster?")).at(-1);
+  assert.equal(new URLSearchParams(last.route.split("?")[1]).get("exam_title"), "원래 제목 문제지");
+});
+
+test("H1: 원래 제목을 알 수 없으면 빠른 선택과 '응시함' 표시를 숨긴다", async () => {
+  const { model } = await build({ papers: [{ id: P1, library_display_name: "이름만 있음", question_count: 10, grade: "고1" }], api: makeApi({ submitted: new Set(["s1"]) }) });
+  assert.equal(model.state.papers[0].originalTitle, "");
+  assert.equal(model.canCompareSubmitted(), false);
+  await pick(model, "c1");
+  model.toggleStudentList("c1");
+  const html = Assign.renderBody(model);
+  assert.doesNotMatch(html, /students-unsubmitted|응시함|아직 안 본/);
+  assert.equal(model.selectUnsubmitted("c1"), false);
+});
+
+test("H1: 목록·묶음·상세 응답의 문제지 행은 모두 title(원래 제목)을 가진다", () => {
+  const route = read("apmath", "worker-backup", "worker", "routes", "archive-saved-papers.js");
+  // listRow가 list·save-batches·detail 세 경로의 공통 모양이다.
+  const listRow = route.slice(route.indexOf("function listRow(row)"), route.indexOf("async function loadSavedPapersByBatch"));
+  assert.match(listRow, /title: row\.title,/);
+  assert.match(listRow, /library_display_name: row\.library_display_name \|\| row\.title/);
+  assert.match(route, /\.\.\.listRow\(row\),\s*snapshot_hash/, "상세도 listRow를 펼친다");
+  assert.match(route, /papers: rows\.map\(listRow\)/, "묶음도 listRow");
+  assert.match(route, /papers: prior\.map\(listRow\)/);
+});
+
+test("H2: 출제 번호를 만들 수 없으면 아무것도 보내지 않고 잠금을 풀고 안내한다", async () => {
+  for (const bad of [() => { throw new Error("no crypto"); }, () => "not-a-uuid", () => ""]) {
+    const api = makeApi();
+    const model = Assign.createModel({ papers: [paper(P1)], request: api.request, storage: memoryStorage(), uuid: bad, now: () => NOW });
+    await model.load();
+    await model.toggleClass("c1", true);
+    assert.equal(await model.start(), false);
+    assert.equal(api.posts().length, 0, "POST 0회");
+    assert.equal(model.state.starting, false);
+    assert.equal(model.state.working, false);
+    assert.equal(model.state.phase, "select");
+    assert.equal(model.isBusy(), false);
+    assert.equal(model.requestClose().allowed, true);
+    assert.match(Assign.renderFoot(model), /이 브라우저에서는 출제 번호를 만들 수 없습니다\. 브라우저를 최신으로 바꾸거나 관리자에게 알려 주세요\./);
+    assert.equal(model.canSubmit(), true, "다시 누를 수 있다");
+  }
+});
+
+test("H3: 이력이 비어 있어도 이번 접속에서 이 패널로 성공한 조합은 같은 날 이미 냈다고 경고한다", async () => {
+  const sessionStore = memoryStorage();
+  const doneStore = Assign.createDoneStore({ storage: sessionStore });
+  const first = await build({ api: makeApi(), history: null });
+  const m1 = Assign.createModel({ papers: [paper(P1)], request: first.api.request, storage: memoryStorage(), uuid, now: () => NOW, doneStore });
+  await m1.load();
+  await m1.toggleClass("c1", true);
+  await m1.start();
+  assert.equal(m1.state.jobs[0].status, "ok");
+  assert.ok(sessionStore.getItem("archive2.assign.done.v1"), "sessionStorage에도 남긴다");
+  // 패널을 다시 열면(메모리 기억) 이력이 없어도 경고
+  const m2 = Assign.createModel({ papers: [paper(P1)], request: makeApi().request, storage: memoryStorage(), uuid, now: () => NOW, doneStore });
+  await m2.load();
+  assert.match(Assign.renderBody(m2), /11월 10일에 이미 냈습니다/);
+  assert.ok(m2.dupInfo(P1, m2.state.classes.find((c) => c.id === "c1")).sameDate);
+  // 새로고침(메모리 없음): sessionStorage만으로도
+  const m3 = Assign.createModel({ papers: [paper(P1), paper(P2)], request: makeApi().request, storage: memoryStorage(), uuid, now: () => NOW, doneStore: Assign.createDoneStore({ storage: sessionStore }) });
+  await m3.load();
+  await m3.toggleClass("c1", true);
+  assert.deepEqual(m3.plan().combos.map((c) => c.key), [`${P2}|c1`], "여러 권이면 방금 낸 (문제지, 반)은 기본으로 빠진다");
+  // 다른 날짜는 '낸 적이 있다'만
+  await m3.setDate("2026-11-11");
+  assert.equal(m3.dupInfo(P1, m3.state.classes.find((c) => c.id === "c1")).sameDate, null);
+  // sessionStorage가 막혀도 동작
+  const broken = { getItem() { throw new Error("x"); }, setItem() { throw new Error("x"); } };
+  const store = Assign.createDoneStore({ storage: broken });
+  store.add(P1, "c1", "2026-11-10");
+  assert.deepEqual(store.datesFor(P1, "c1"), ["2026-11-10"]);
+});
+
 test("옛 경로로 되돌리는 주소 스위치", () => {
   assert.equal(Assign.useLegacy("?view=saved&assign=legacy"), true);
   assert.equal(Assign.useLegacy("?view=saved"), false);
