@@ -46,8 +46,9 @@ export const COMPOSITE_MAX_PLANE_PANELS=5;
 // the caption row of every row included) decides whether a tall set still fits: three rows of 400 + 44 + the top margin and gaps are 1380 units, about 520 px at the display scale of the
 // 776-unit grid, so six solid panels fit; a grid that is too tall is refused with COMPOSITE_TOO_TALL.
 export const COMPOSITE_MAX_SOLID_GRID_PANELS=6;
-// A grid of Venn panels is 2 to 4 panels (2x2): each is narrowed to a compact panel so two of them and the gap stay inside the 848-unit width the solution column allows.
-export const COMPOSITE_MIN_SET_PANELS=2,COMPOSITE_MAX_SET_PANELS=4;
+// A grid of Venn panels is 2 to 6 panels (two columns, up to three rows; an odd last panel sits in the left cell): each is narrowed to a compact panel so two of them and the gap stay inside
+// the 848-unit width the solution column allows. More rows make the canvas taller, never the panels smaller; COMPOSITE_MAX_DISPLAY_HEIGHT_PX still decides whether a tall grid fits.
+export const COMPOSITE_MIN_SET_PANELS=2,COMPOSITE_MAX_SET_PANELS=6;
 // A grid of statistics panels is 2 to 4 compact dot plots (420 units wide each, the same 848-unit width as the Venn grid).
 export const COMPOSITE_MIN_STAT_PANELS=2,COMPOSITE_MAX_STAT_PANELS=4;
 // A stack of normal-curve panels is 2 or 3 panels (one column): each is a full bell curve with its tick row, so a taller stack would not fit one Archive page.
@@ -74,7 +75,7 @@ const digest=(value,reason)=>{try{return objectSha(value);}catch{throw new Stop(
 export function compositePanels(plan){
   const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
   if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels))bad('PANELS');
-  // Venn panels (set-diagram-figure-v1) form their own grid: all of them, 2 to 4, and nothing else. Codes carry the full name so a failed render shows them.
+  // Venn panels (set-diagram-figure-v1) form their own grid: all of them, 2 to 6, and nothing else. Codes carry the full name so a failed render shows them.
   const linearStack=plan.linearStack===true;
   if(plan.linearStack!==undefined&&plan.linearStack!==true)bad('LINEAR_STACK_INVALID');
   if(linearStack&&(plan.chain!==undefined||plan.panels.length!==3||!plan.panels.every(p=>{
