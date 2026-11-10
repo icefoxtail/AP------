@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_강남여고_1학기_중간_고1_유사",
+  "candidateJsPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사.meta-q01-q24.json",
+  "candidateGitBlobSha1": "52509c154df8ec5b8814c423045b900570835e1b",
+  "reviewTimestamp": "2026-11-10T19:30:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS",
+  "blindFirstPass": {
+    "totalSolved": 24,
+    "answerMatches": 24,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rvw/frozen_blind.json (sha1 503b413a86eecce9ddc590a14766264bd30d5af5, 저장 정답·해설 열람 전에 동결)",
+    "method": "학생에게 보이는 content/choices만으로 Python/sympy 풀이(발문 그림 없음, 전 문항 problem plan EXEMPT). Q16은 a 범위를 경우 분리로 풀고 유리수 격자 전수로 a=2 유일 확인, Q15는 부등식 해, Q11은 42항 직접 합산, Q23은 조립제법 계수 직접 계산. 동결 후 저장 정답·해설과 대조",
+    "frozenAnswers": {
+      "1": "②",
+      "2": "①",
+      "3": "③",
+      "4": "⑤",
+      "5": "②",
+      "6": "④",
+      "7": "①",
+      "8": "④",
+      "9": "③",
+      "10": "①",
+      "11": "⑤",
+      "12": "②",
+      "13": "⑤",
+      "14": "③",
+      "15": "④",
+      "16": "⑤",
+      "17": "④",
+      "18": "②",
+      "19": "①",
+      "20": "③",
+      "21": "22",
+      "22": "a=-1, b=-2",
+      "23": "-85",
+      "24": "15"
+    }
+  },
+  "originalComparison": {
+    "questionCount": "24 vs 24",
+    "pointsSum": "100 vs 100 (3.8x5 + 4x10 + 4.2x5 + 4+5+5+6)",
+    "perQuestionPoints": "all equal (점수 표기 24/24 동일)",
+    "questionTypes": "all equal (객관식 1-20, 서술형 21-24)",
+    "levels": "all equal (원본 승인 level/difficultyBucket과 동일하게 재판정 일치)",
+    "answerValueCollisionWithOriginal": "none (수치·조건 모두 변경, 원본 답 암기로 맞힐 수 없음)",
+    "notes": [
+      "Q7: 원본 그림 문항을 식·조건만으로 완결(a+b, 근 1-√7). 직선식이 곧 답이라 문제 그림 EXEMPT는 타당",
+      "Q12: 원본은 나누는 식을 2/3배(k=3/2), 유사본은 3/2배(k=2/3)로 방향을 바꿈. 같은 풀이 구조",
+      "Q21: 원본 α^2+β^2, 유사 α^3+β^3 (같은 근과 계수 단원, 한 단계 더 쓰지만 허용 범위)",
+      "Q24: 원본 (나)는 양변 전개 후 a^2=b^2+c^2, 유사 (나)는 (a+b)^2-c^2=2ab로 한 단계 덜 어렵지만 직각삼각형 판정 구조는 동일하고 배점 6점 구성 유지, 결함 아님"
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 4,
+    "note": "MC 1-20, 슬롯당 4개(max-min=0)"
+  },
+  "mathReview": "전 24문항 해설을 최종 풀이와 대조: 논리·중간 계산·경우 분리 모두 정합. Q16 (i)(ii) 경우, Q22 판별식 항등식, Q23 대입 논리, Q24 직각삼각형 판정 확인. 교육과정은 2022 개정 공통수학1 범위(다항식·나머지정리·복소수·이차방정식/함수) 이내이며 범위 밖 방법 없음. $…$ 최장 64자(Q13 분수 합 한 줄)로 해설지 가로 넘침 없음. engine.html(Chrome headless, CDP) 시험지·해설지 PC 1000px/모바일 390px 렌더: 가로 넘침 0, MathJax 오류 0.",
+  "reviewerEdits": [
+    {
+      "qid": [
+        5,
+        7,
+        15,
+        16,
+        17,
+        20,
+        22
+      ],
+      "file": "js",
+      "change": "solutionImageSize medium → full. 엔진 산출물(*-result.json)의 sizeClass가 모두 full이고 SVG 글꼴(11px 이상)은 full 표시 기준으로 맞춰졌는데 medium(최대 높이 145px)로 두면 세로로 긴 그림(5/7개가 가로:세로≈0.6)이 약 1/3 크기로 줄어 라벨이 읽히지 않는다. full로 바꿔 실제 렌더에서 점 라벨과 좌표가 읽히는 것 확인"
+    },
+    {
+      "qid": "all",
+      "file": "meta",
+      "change": "expectedSourceBlobSha1를 수정된 JS blob으로 갱신, 생성자가 남긴 openDefects 3건(EVIDENCE_DEBT Q4 PT/TPL 직접 선택, Q12 TPL, 소단원 불일치 Q2/9/10/12/14/16/17/21)은 검수에서 정당성을 확인해 해소(아래 metaReview.resolvedGeneratorQuestions)하고 openDefects는 빈 배열로 둠"
+    }
+  ],
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindAnswer": "②",
+      "storedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "a=1,b=8,c=-3 (X=2A+3B=x^2+8xy-3y^2) 이므로 a-b-c=1-8+3=-4 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "①",
+      "storedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "(2-i)(3+i)=7-i, 실수부 x+7=0 → x=-7, 허수부 3x-1=-22≠0 확인 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "③",
+      "storedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "t=x^2+x 치환 t^2-8t+12=(t-2)(t-6) → (x+2)(x-1)(x+3)(x-2), sympy factor 일치, 인수 아닌 것 x+1 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "⑤",
+      "storedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "f(-2)=-a^2+4a=a-10 → a^2-3a-10=0 → a=5 또는 -2, 자연수 5 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "②",
+      "storedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "y=-(x-k)^2+3k-10 의 최댓값 3k-10<0 → k<10/3, 정수 최댓값 3 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "④",
+      "storedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(1+2i)(3-i)=5+5i, 5i/(2-i)=-1+2i, 합 4+7i → a-b=-3 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "①",
+      "storedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "다른 근 1+√7 (유리계수 켤레), 합 a=2, 곱 -b=-6 → b=6, a+b=8 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "④",
+      "storedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(x+y)^2(x-y), x+y=2√6, x-y=2√2 → 24·2√2=48√2, sympy 일치 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "③",
+      "storedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "(3-i)/(1+i)=1-2i, 켤레근 1+2i, 합 2→a=-2, 곱 5=b → ab=-10 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "①",
+      "storedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "(α-β)^2=4(k-1)^2-4(k^2-6)=28-8k=16 → k=3/2, D/4=4>0 확인 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "⑤",
+      "storedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "4항씩 묶음 합 -2-2i 를 10번(-20-20i) + 41+42i = 21+22i → x+y=43, 직접 합산 일치 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "②",
+      "storedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "2x-3=(2/3)(3x-9/2) 이므로 f=(3x-9/2)(2/3)Q+R → k=2/3 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "⑤",
+      "storedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "z/(z-1)=(2-3i)/(1-3i)=(11+3i)/10, 켤레와의 합 22/10=11/5, sympy 일치 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "③",
+      "storedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "근의 합 2+b=9/4→b=1/4, 곱 2b=a/4→a=2, 근 4와 1 → f=x^2-5x+4, f(2)=-2 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "④",
+      "storedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "f(1)=9-m>0, f(3)=17-5m<0 → 17/5<m<9, 정수 최대 8 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "⑤",
+      "storedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "f=(x-2a)^2+a^2, 0<2a<3이면 a^2=5→a=√5>3/2 불가, 2a≥3이면 f(3)=5 → a=2, 최댓값 f(0)=20; a 범위 전수(유리수 격자) 검산해 a=2 유일 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "④",
+      "storedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "h=-3(x+1)(x-3)=-3(x-1)^2+12, a=1,b=12 → 13 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "②",
+      "storedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "P(x)-(2x+1) 이 x=1,2,3 근, 최고차 1/3 → P(4)=2+9=11, P(1..3)=3,5,7 검산 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "①",
+      "storedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "f(4)=23→ f=(x-1)(x-3)A+3x+2에서 A(4)=3, (x+2)f 의 몫 Q=(x+2)A+3 (3x^2+8x+4=3(x-1)(x-3)+20x-5) → Q(4)=18+3=21 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "③",
+      "storedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "이익=(500+100x)(22-2x) 최대 x=3 → 4800원, 12800원 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "22",
+      "storedAnswer": "22",
+      "blindMatch": true,
+      "blindDerivation": "α+β=-2, αβ=5, α^3+β^3=-8+30=22 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "a=-1, b=-2",
+      "storedAnswer": "a=-1, b=-2",
+      "blindMatch": true,
+      "blindDerivation": "D/4=(4b+8)k+b^2-a-5≡0 → b=-2, a=-1; 판별식 항등식 전개 sympy 일치 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "-85",
+      "storedAnswer": "-85",
+      "blindMatch": true,
+      "blindDerivation": "나머지 -251, Q(1)=-255, Q(-1)=-85 → a1+a3+a5+a7=-85; synthetic division 계수 직접 계산(-128..-1) 합 일치 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    },
+    {
+      "qid": 24,
+      "blindAnswer": "15",
+      "storedAnswer": "15",
+      "blindMatch": true,
+      "blindDerivation": "(a+b)^2-c^2=2ab → a^2+b^2=c^2 직각삼각형, a-b=7/2,c=17/2 → a=15/2,b=4, 넓이 15 (발문·보기만으로 독립 풀이, Python/sympy 검산)"
+    }
+  ],
+  "metaReview": {
+    "coverage": {
+      "items": 24,
+      "requiredFieldsFilled": "24/24 문항 x 20개 최상위 필드(standardCourse, curriculum, curriculumKey, courseKey, standardUnitKey, standardUnit, subUnitKey, subUnit, conceptClusterKey, rpmPrimary, problemTypeKey, templateKey, crossConceptKeys, conditionKeys, integrationPattern, level, difficultyBucket, sourceQid, variationType, provenance) 전부 채워짐(480/480), JS 필드와 meta 값 불일치 0",
+      "canonicalRpmL4Items": 23,
+      "extensionL4Items": 1,
+      "newExtensionKeys": 1,
+      "distinctKeys": {
+        "problemType": 12,
+        "template": 17,
+        "crossConcept": 23,
+        "condition": 6,
+        "rpmRecord": 19
+      },
+      "newExtensionKeysDetail": [
+        {
+          "key": "EXT-L4-DIVISOR-SCALING-QUOTIENT-RELATION",
+          "qid": 12,
+          "parent": "H1-RPM-139(몫과 나머지)",
+          "parentExistsInCanonical": true,
+          "duplicate": false,
+          "necessary": "canonical L4 몫과 나머지의 TPL은 조립제법 표 실행형이라 나누는 식을 상수배해 몫이 반비례로 변함을 읽는 이 유형과 다르다. 기존 canonical/확장 전체에서 의미가 같은 키 없음(유사 라벨 4건은 모두 다른 유형). parent PT/TPL/L4 실재 확인, status GENERATED_ACTIVE, canonicalRpmPromotion false, aliases []"
+        }
+      ]
+    },
+    "keyExistence": "PT 12종·TPL 17종·CC 23종·COND 6종·RPM record 19종 모두 canonical packs/concepts/condition_registry/crosswalk(high1.json)에서 스크립트로 직접 조회해 실재 확인(MISSING 0). 확장 키 1개는 레지스트리에 parent와 함께 정상 등록, registrySha256 일치",
+    "aliasProposals": 0,
+    "resolvedGeneratorQuestions": {
+      "Q4_PT_TPL": "crosswalk H1-RPM-142가 RPM_ONLY라 PT/TPL이 비어 있지만 canonical taxonomy에 PT_H1_REMAINDER_THEOREM / TPL_H1_REMAINDER_DIRECT_SUBSTITUTION(정의: 일차식으로 나눈 나머지 조건에서 근을 대입해 미정계수 결정)이 실재하고 TPL의 parentProblemTypeKey가 PT와 일치하며 풀이(f(-2)=a-10)와 의미 일치. 직접 선택 타당, 결함 아님",
+      "subunit_mismatch": "Q2/9/10/12/14/16/17/21의 소단원은 원본의 approved_source 분류(question_metadata.json)와 같고 이미 병합된 고1 유사시험지도 원본 소단원을 따른다. crosswalk 기록은 RPM 의미 경로 기준이라 달라도 문항 소단원(학생 필터)은 원본과 맞춰야 일관됨. 키는 모두 canonical 실재. 결함 아님",
+      "Q12_ext": "위 확장 키 검토 참조. TPL은 crosswalk 값(TPL_H1_POLY_DIVISION_EXECUTION)을 상속하고 L4 확장으로 세부 유형 구분, 적절한 canonical TPL이 없어 허용",
+      "Q16_a_exhaustive": "전수 검증 확인: 경우 (i) a=√5 부적합, (ii) a=2 또는 2/5 중 a≥3/2인 2만 가능 → a=2 유일. 유리수 격자 탐색에서도 a=2 하나",
+      "Q20_Q7_figure": "Q20 해설 그림은 이익 포물선과 V(3,12800) 표기(y축 눈금 일부 생략이나 축척 정확), Q7 문제 그림 EXEMPT(직선식 노출 방지)·해설 그림은 P,Q와 식 표기. 학생이 이해 가능"
+    }
+  },
+  "visualReview": {
+    "plans": "48 plan 파일(24 problem + 24 solution) 유효 JSON. problem 24개 모두 EXEMPT(사유 기재). solution 활성 7(q5,q7,q15,q16,q17,q20,q22) + EXEMPT 17. 활성 plan은 capability·sourceQuote·caption·assetPath·engineEvidence 보유, ARCHIVE_BOUND",
+    "svg": "7개 SVG를 PNG로 직접 확인: 순백 배경, title/desc, role=img, raw LaTeX 없음, 점 라벨(A,B,P,Q,V,C,D,T)과 본문 좌표 일치, 겹침·잘림 없음. 해설 그림이라 정답 노출 문제 없음. 폰트 11px 이상은 sizeClass full 표시 기준(위 reviewerEdits)",
+    "unsupported": "none"
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs 26_강남여고_1학기_중간_고1_유사",
+    "result": "GATE_PASS exit 0: 24 questions, 100 pts, MC ①~⑤ 각 4개, blob 52509c154df8ec5b8814c423045b900570835e1b (strict authoring, release phase, 영수증 결속·엔진 증거·소형 메타 정합 포함). EXT-TPL unregistered 오류 해당 없음(확장은 L4 1개)"
+  },
+  "structural": {
+    "nodeCheck": "PASS (JS eval 성공)",
+    "questionCount": 24,
+    "pointsSum": 100,
+    "choicesPerMC": 5,
+    "duplicateChoices": 0
+  },
+  "NOT_RUN": [
+    "실제 Chrome 인쇄 미리보기/PDF(@media print)",
+    "실제 휴대폰 단말 확인(Chrome headless 390px 에뮬레이션으로 대체)",
+    "전체 테스트 tools/run-tests.js 및 node tools/check-archive2-runtime.cjs(병합 직전 오케스트레이터 1회)"
+  ],
+  "unresolvedDefects": [],
+  "defects": []
+}

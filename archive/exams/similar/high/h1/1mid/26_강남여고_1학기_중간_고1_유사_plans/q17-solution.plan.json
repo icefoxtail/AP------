@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "6",
+          "-3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": 12
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=h(x)=-3(x+1)(x-3)의 그래프는 x축과 x=-1, x=3에서 만나고 꼭짓점 V(1, 12)에서 최댓값 12를 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "h(x)=-3(x+1)(x-3)이고 근은 -1, 3이며 꼭짓점은 V(1,12)이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근의 한가운데 x=1에서 최댓값 12를 갖는다는 것을 그래프로 보여 준다."
+  ],
+  "sourceQuote": "꼭짓점 $V(1,12)$가 최고점이다",
+  "assetPath": "assets/images/26_강남여고_1학기_중간_고1_유사/q17-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q17-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q17-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사_plans/engine_evidence/q17-solution.svg"
+  }
+}
