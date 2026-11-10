@@ -89,7 +89,7 @@ try {
       page.on('requestfailed', r => { if (r.url().startsWith(base)) errors.push(r.url() + ' ' + r.failure()?.errorText); else externalFailures.push({ url: r.url(), error: r.failure()?.errorText }); });
       try {
         await page.addInitScript(() => { let seed = 424; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
-        await page.goto(base + item.next + '?theme=' + run.theme, { waitUntil: 'networkidle', timeout: 30000 });
+        await page.goto(base + item.next + '?theme=' + run.theme + '&manual=1', { waitUntil: 'networkidle', timeout: 30000 });
         await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
         // Event support is document-specific: compare captures with the loaded
         // lab, not with the transient about:blank document before navigation.

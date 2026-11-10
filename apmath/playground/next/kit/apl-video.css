@@ -1,37 +1,39 @@
 /* ==========================================================================
-   AP Math Lab Kit · 영상 재생기와 목차 패널 스타일 (apl-video.css)
-   apl-player.js(자막 막대·끝 카드)와 apl-toc.js(목차 패널)가 씁니다. apl.css 의 토큰만 사용합니다.
+   AP Math Lab Kit · 영상·해설 재생기와 목차 패널 스타일 (apl-video.css)
+   apl-player.js(자막 막대·끝 카드·해설 우선 진입 화면)와 apl-toc.js(목차 패널)가 씁니다. apl.css 의 토큰만 사용합니다.
    ========================================================================== */
 
-/* ---------- 1. 영상 화면: 오른쪽 패널을 접고 그림을 크게 ---------- */
+/* ---------- 1. 영상 화면: 패널과 장면 띠를 접고 그림을 화면 가득 ----------
+   앱을 화면 높이(100svh)에 고정한 세로 줄 = 앱 막대 · 제목 줄 · 그림(남는 높이 전부) · 자막 막대(맨 아래, 홈 막대 여백 반영).
+   머리글 높이를 숫자로 가정하지 않으므로(장면 띠 줄 수가 실험실마다 다름) 자막 막대가 화면 밖으로 밀리지 않습니다. */
+body.apl-vid { overflow: hidden; }
 body.apl-vid .apl-panel { display: none !important; }
 /* 재생 중에는 대본 조작부만 보이며, 탐구 막대는 끝난 상태로 돌아올 때 복구됩니다. */
 body.apl-vid .apl-dock { display: none !important; }
-body.apl-vid .apl-main { grid-template-columns: minmax(0, 1fr) !important; }
 body.apl-vid .apl-float.br,
 body.apl-vid .apl-presenter,
-body.apl-vid .apl-pen-tools { display: none !important; }
+body.apl-vid .apl-pen-tools,
+body.apl-vid .apl-stage-top,
+body.apl-vid .apl-orient-hint { display: none !important; }
 body.apl-vid .apl-toc-handle,
 body.apl-vid .apl-toc-edge { display: none !important; }
-@media (max-width: 859px) {
-  /* 휴대폰: 패널이 없으니 그림 무대가 화면 아래까지 */
-  body.apl-vid .apl-stage { height: calc(100svh - var(--bar-h) - var(--rail-h)); min-height: 360px; }
-}
-
-/* 선택 띠·조작부·자막이 함께 있어도 치수 라벨을 읽을 그림 높이를 남깁니다.
-   짧은 가로 화면에서는 전체 페이지를 세로로 스크롤할 수 있습니다. */
+body.apl-vid.apl-many .apl-railwrap { display: none; }
+@media (max-width: 1279px) { body.apl-vid .apl-railwrap { display: none; } } /* 1280px 이상은 장면 띠가 앱 막대와 한 줄이라 높이를 먹지 않음 */
+body.apl-vid .apl-app { height: 100svh; min-height: 0; }
+body.apl-vid .apl-main { min-height: 0; overflow: hidden; grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: minmax(0, 1fr); }
 body.apl-vid .apl-stage {
-  position: relative; top: auto; height: auto;
-  min-height: calc(100svh - var(--bar-h) - var(--rail-h)); overflow: visible;
+  position: relative !important; top: auto !important; height: auto !important; min-height: 0 !important;
+  align-self: stretch; overflow: hidden; border: 0; box-shadow: none;
 }
-body.apl-vid .apl-canvas-wrap { min-height: 360px; }
+body.apl-vid .apl-canvas-wrap { flex: 1 1 0; min-height: 0; }
 
 /* ---------- 2. 자막 막대 ---------- */
 .apl-vbar {
-  flex: none; display: grid; gap: 4px; padding: 10px 16px 12px; border-top: 1px solid var(--line);
+  flex: none; display: grid; gap: 4px; padding: 10px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line);
   background: color-mix(in srgb, var(--panel) 90%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
 .apl-vbar[hidden] { display: none; }
+@media (min-width: 860px) { .apl-vbar > * { width: 100%; max-width: 920px; margin-inline: auto; box-sizing: border-box; } }
 .apl-vcap {
   min-height: calc(2 * 1.5em); display: flex; align-items: center; font-size: 19px; font-weight: 700; line-height: 1.5;
   letter-spacing: -.015em; color: var(--text); overflow-wrap: anywhere;
@@ -43,26 +45,60 @@ body.apl-vid .apl-canvas-wrap { min-height: 360px; }
 .apl-vcap.pop { animation: apl-vcap .18s var(--ease); }
 @keyframes apl-vcap { from { opacity: .15; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .apl-vprog { display: flex; align-items: center; gap: 10px; }
-.apl-vrange { flex: 1; min-width: 0; height: 24px; }
+.apl-vrw { position: relative; flex: 1; min-width: 0; display: flex; align-items: center; }
+.apl-vrange { flex: 1; width: 100%; min-width: 0; height: 24px; }
+/* 해설의 장 경계 눈금: 막대 위에 얇게 겹쳐 「여기서 다음 장」을 알려 줍니다(누를 수는 없음) */
+.apl-vticks { position: absolute; left: 0; right: 0; top: 50%; height: 14px; transform: translateY(-50%); pointer-events: none; }
+.apl-vticks i { position: absolute; top: 0; bottom: 0; width: 3px; margin-left: -1.5px; border-radius: 2px; background: var(--text-3); opacity: .85; }
+.apl-vticks i.done { background: var(--m-sky); }
 .apl-vtime { flex: none; font-size: var(--fs-2xs); font-weight: 700; color: var(--text-3); font-variant-numeric: tabular-nums; }
-.apl-vctl { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; }
+/* 재생 중에는 자막 + 진행 막대 + 작은 멈춤 단추만 보이고, 멈추면 전체 조작 줄이 나타납니다(화면을 한 번 눌러도 멈춤) */
+.apl-vmini { display: none; flex: none; width: 44px; height: 44px; min-height: 0; padding: 0; border-radius: 50%; }
+.apl-vmini .apl-ico { width: 18px; height: 18px; }
+body.apl-vplaying .apl-vmini { display: inline-flex; }
+body.apl-vplaying .apl-vbar .apl-vctl { display: none; }
+.apl-vctl { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .apl-vctl .sp { flex: 1; }
 .apl-vbtn { min-height: 44px; padding: 0 12px; font-size: var(--fs-sm); flex: none; }
 .apl-vbtn .apl-ico { width: 18px; height: 18px; }
 .apl-vbtn.primary { min-width: 92px; }
+@media (pointer: coarse) {
+  .apl-vbtn { min-height: 48px; min-width: 48px; }
+  .apl-vmini { width: 48px; height: 48px; }
+  .apl-vendx { width: 44px !important; height: 44px !important; }
+}
 @media (max-width: 859px) {
-  .apl-vbar { padding: 8px 12px 10px; gap: 2px; }
+  .apl-vbar { padding: 8px 12px calc(10px + env(safe-area-inset-bottom)); gap: 2px; }
   .apl-vcap { font-size: 16.5px; min-height: calc(2 * 1.45em); line-height: 1.45; }
-  .apl-vctl { gap: 5px; }
-  .apl-vbtn { padding: 0 10px; min-height: 42px; }
+  .apl-vctl { gap: 4px; }
+  .apl-vbtn { padding: 0 10px; }
+  .apl-vbtn.primary { min-width: 76px; }
+}
+/* 글자 이름은 768px 이상에서 보입니다(태블릿 세로 포함). 더 좁으면 아이콘만 */
+@media (max-width: 767px) {
   .apl-vbtn .lbl { display: none; }
-  .apl-vbtn.primary { min-width: 84px; }
-  .apl-vbtn.primary .lbl { display: inline; }
 }
 .apl-vbar[data-step="1"] .apl-vrange { opacity: .55; }
 .apl-vbar[data-step="1"] .apl-vtime::after { content: " · 한 칸씩"; }
 
-/* ---------- 2-1. 영상 제목: 별도 머리글 줄에서 크게 → 2초 뒤 작게 ---------- */
+/* 휴대폰 가로(높이 480px 미만): 그림은 왼쪽, 자막·진행·조작은 오른쪽 열 — 세로로 쌓으면 그림이 150px 남짓만 보이던 문제 */
+@media (max-height: 479px) {
+  body.apl-vid .apl-stage {
+    display: grid !important; grid-template-columns: minmax(0, 1fr) clamp(280px, 42vw, 380px); grid-template-rows: auto minmax(0, 1fr);
+  }
+  body.apl-vid .apl-vtbar { grid-column: 2; grid-row: 1; border-left: 1px solid var(--line); } /* 제목 줄은 오른쪽 열 맨 위로: 그림이 세로 전체를 씀(낮은 화면에서 그림 높이가 가장 모자람) */
+  body.apl-vid .apl-canvas-wrap { grid-column: 1; grid-row: 1 / span 2; }
+  body.apl-vid .apl-tape { display: none !important; }
+  body.apl-vid .apl-vbar {
+    grid-column: 2; grid-row: 2; border-top: 0; border-left: 1px solid var(--line); overflow-y: auto; align-content: center; gap: 6px;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  }
+  .apl-vbar > * { max-width: none; }
+  .apl-vbtn .lbl { display: none; }
+  .apl-vcap { min-height: 0; font-size: 16px; }
+}
+
+/* ---------- 2-1. 영상 제목: 별도 머리글 줄에서 크게 → 2초 뒤 작게(해설은 장이 바뀔 때마다 「2/3 · 장 제목」) ---------- */
 .apl-vtbar, .apl-vtbig { display: none; }
 body.apl-vid .apl-vtbar {
   display: flex; flex: none; align-items: center; min-height: 30px; padding: 0 14px; border-bottom: 1px solid var(--line);
@@ -87,10 +123,10 @@ body.apl-vid .apl-vtbar[data-phase="small"] .apl-vtbig { display: none; }
   .apl-vtbar .tt, .apl-vtbar::before { transition: none; }
 }
 
-/* ---------- 3. 끝 카드: 한 줄 정리 + 「이제 직접 해 보세요」 ---------- */
+/* ---------- 3. 끝 카드: 한 줄 정리 + 「다음 ▶」 + 다시 보기·직접 해 보기 ---------- */
 .apl-vbar[data-mode="end"] .apl-vcap,
 .apl-vbar[data-mode="end"] .apl-vprog,
-.apl-vbar[data-mode="end"] .apl-vctl { display: none; }
+.apl-vbar[data-mode="end"] .apl-vctl { display: none !important; }
 .apl-vbar:not([data-mode="end"]) .apl-vend { display: none; }
 .apl-vend { display: grid; gap: 8px; animation: apl-vcap .18s var(--ease); }
 .apl-vend[hidden] { display: none; }
@@ -106,19 +142,68 @@ body.apl-vid .apl-vtbar[data-phase="small"] .apl-vtbig { display: none; }
 .apl-vsum .katex { font-size: 1.15em; }
 .apl-vtaskline { display: grid; gap: 2px; padding: 0 2px; font-size: var(--fs-md); line-height: 1.55; color: var(--text); }
 .apl-vtaskline b { color: var(--m-amber); font-weight: 800; font-size: var(--fs-sm); }
-.apl-vend-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+/* 주 버튼은 하나: 「다음 ▶」(마지막이면 「목차로」). 보조 두 개는 한 줄에 나란히 */
+.apl-vnext { width: 100%; min-height: 56px; font-size: var(--fs-md); font-weight: 800; justify-content: center; gap: 8px; }
+.apl-vnext .apl-ico { width: 20px; height: 20px; }
+.apl-vend-btns { display: flex; gap: 8px; }
+.apl-vend-btns .apl-vbtn { flex: 1 1 0; justify-content: center; }
 .apl-panel .apl-vbar[data-mode="end"] { border: 1px solid var(--line); border-radius: var(--r-md); margin-bottom: 12px; }
 @media (max-width: 859px) {
-  /* 끝 카드는 무대 아래 탐구 패널에 이어집니다. */
-  .apl-vbar[data-mode="end"] { padding: 6px 12px 10px; }
+  /* 해설의 끝 카드는 그림 아래 자막 막대 자리에 놓입니다(쇼츠는 무대 아래 탐구 패널에 이어짐). */
+  .apl-vbar[data-mode="end"] { padding: 6px 12px calc(10px + env(safe-area-inset-bottom)); }
   .apl-vsum { font-size: 17px; padding: 6px 10px; }
   .apl-vtaskline { font-size: var(--fs-sm); line-height: 1.45; }
-  .apl-vend { gap: 5px; }
+  .apl-vend { gap: 6px; }
   .apl-vend-h .ttl { font-size: var(--fs-2xs); }
   .apl-vendx { width: 30px; height: 30px; }
-  .apl-vend-btns .apl-vbtn { min-height: 40px; }
+  .apl-vend-btns .apl-vbtn { min-height: 44px; }
 }
 .apl-vtask[data-tone="key"] { --c: var(--m-amber); }
+
+/* ---------- 3-1. 해설 우선 진입 화면 ----------
+   해설(또는 영상)이 있는 장면의 진입 ▶. 휴대폰·태블릿 세로(859px 이하)에서는 그림 · 문제 전문 · 화면 아래 고정 ▶ 만 보이고,
+   탭·슬라이더·프리셋·값은 DOM 에 그대로 두고 CSS 로만 접습니다(「직접 해 보기」를 누르면 펼침). 넓은 화면은 패널 맨 위 주 버튼. */
+.apl-lentry[hidden] { display: none; }
+.apl-lentry { display: grid; gap: 2px; justify-items: stretch; }
+.apl-lgo { width: 100%; min-height: 52px; font-size: var(--fs-md); font-weight: 800; justify-content: center; gap: 8px; }
+.apl-lgo .apl-ico { width: 20px; height: 20px; }
+.apl-lmanual {
+  min-height: 44px; padding: 0 12px; border: 0; background: transparent; color: var(--text-2);
+  font: 650 var(--fs-sm) var(--font-ui); text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+}
+.apl-lmanual:hover { color: var(--text); }
+.apl-lentry[data-mode="inline"] .apl-lmanual { display: none; }
+.apl-lentry[data-mode="inline"] .apl-lgo { min-height: 48px; }
+@media (pointer: coarse) { .apl-lgo { min-height: 56px; } }
+.apl-lentry[data-mode="first"] {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; justify-items: center;
+  padding: 10px 14px calc(6px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 94%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.apl-lentry[data-mode="first"] .apl-lgo { max-width: 560px; min-height: 56px; }
+body.apl-vid .apl-lentry { display: none !important; }
+@media (max-width: 859px) {
+  body.apl-lessonfirst:not(.apl-vid) .apl-tabs,
+  body.apl-lessonfirst:not(.apl-vid) .apl-tabpanel { display: none !important; }
+  /* 탐구 질문 전문(말줄임 없이) */
+  body.apl-lessonfirst:not(.apl-vid) .apl-question { display: block; min-height: 0; padding: 10px 14px; line-height: 1.6; cursor: default; }
+  body.apl-lessonfirst:not(.apl-vid) .apl-question small { display: block; margin-bottom: 2px; }
+  body.apl-lessonfirst:not(.apl-vid) .apl-question .q { overflow: visible; white-space: normal; }
+  body.apl-lessonfirst:not(.apl-vid) .apl-question::after { display: none; }
+  /* 슬라이더 수에 따라 무대를 줄이는 규칙(44svh)을 쓰지 않고 기본 크기(54svh) 그대로 */
+  html body.apl-lessonfirst:not(.apl-vid):has(.apl-main) .apl-stage { height: clamp(300px, 54svh, 560px); }
+  body.apl-lessonfirst:not(.apl-vid) .apl-panel-inner { padding-bottom: calc(120px + env(safe-area-inset-bottom)); }
+}
+/* 휴대폰 가로: 장면 띠를 접고 그림(왼쪽)과 문제·▶(오른쪽 열)을 한 화면에 */
+@media (max-width: 859px) and (max-height: 479px) {
+  body.apl-lessonfirst:not(.apl-vid) .apl-railwrap { display: none; }
+  body.apl-lessonfirst:not(.apl-vid) .apl-app { height: 100svh; min-height: 0; }
+  body.apl-lessonfirst:not(.apl-vid) .apl-main { grid-template-columns: minmax(0, 1fr) clamp(280px, 42vw, 380px); grid-template-rows: minmax(0, 1fr); min-height: 0; overflow: hidden; }
+  html body.apl-lessonfirst:not(.apl-vid):has(.apl-main) .apl-stage { position: relative; top: auto; height: auto; align-self: stretch; }
+  body.apl-lessonfirst:not(.apl-vid) .apl-panel { overflow-y: auto; min-height: 0; border-left: 1px solid var(--line); }
+  body.apl-lessonfirst:not(.apl-vid) .apl-lentry[data-mode="first"] { left: auto; width: clamp(280px, 42vw, 380px); }
+  body.apl-lessonfirst:not(.apl-vid) .apl-panel-inner { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+}
 
 /* ---------- 4. 목차 패널 ---------- */
 .apl-toc-btn { gap: 6px; }

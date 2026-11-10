@@ -154,7 +154,9 @@
       });
       // 영상 없는 장면만 있는 묶음은 「영상만」 보기에서 머리글도 숨깁니다
       list.querySelectorAll('.apl-toc-group').forEach((g) => { g.classList.toggle('no-video', !g.querySelector('.has-video')); });
-      this.ui.sub.textContent = nVideo ? `${lab.def.title} · 영상 ${nVideo}개` : lab.def.title;
+      // 해설(장 여러 개)과 쇼츠를 함께 세고, 모두 보면 얼마나 걸리는지 합계 시간을 보여 줍니다
+      const total = Math.round(lab.list.reduce((n, _, i) => n + (p && p.has(i) ? p.lengthOf(i) : 0), 0));
+      this.ui.sub.textContent = nVideo ? `${lab.def.title} · 영상·해설 ${nVideo}개 · 합계 ${Math.floor(total / 60)}분 ${String(total % 60).padStart(2, '0')}초` : lab.def.title;
       this.ui.filter.hidden = !nVideo;
       if (!nVideo) this.setOnlyVideo(false);
     }

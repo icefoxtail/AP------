@@ -1,5 +1,5 @@
 // 영상 목차 대본 검사 (node --test, 브라우저 불필요)
-// 원과 부채꼴 및 겉넓이·부피 대본을 kit/apl-video-core.js 로 검사하고,
+// 원과 부채꼴 영상 대본·해설(lesson, 장 여러 개를 이어 정답까지)을 kit/apl-video-core.js 로 검사하고,
 // 대본이 참조하는 상태값 이름이 장면이 lab.s 에 실제로 등록하는 이름인지 확인합니다.
 // 실행: node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/video.test.mjs
 import test from 'node:test';
@@ -33,7 +33,9 @@ const SCENE_STATE = {
   // 지시서 B (video-b.js): 묶인 동물의 영역(swept.js 'gt-kennel', gtQ 개집 한 변 1~6 · gtL 끈 1~16 · gtT 0~1) · 잎 모양(f03.js 'f3-leaf-len', f3a 한 변 2~12 · f3t 0~1)
   'gt-kennel': { gtT: [0, 1], gtQ: [1, 6], gtL: [1, 16] },
   'f3-leaf-len': { f3a: [2, 12], f3t: [0, 1] },
-  'sv1-1': { sR: [1, 15], sH: [2, 20], sT: [0, 1], svYaw: [-180, 180], svPitch: [-30, 85], svShape: null }
+  'sv1-1': { sR: [1, 15], sH: [2, 20], sT: [0, 1], svYaw: [-180, 180], svPitch: [-30, 85], svShape: null, sv11Mode: null, sv11Started: null },
+  // 해설(lesson) 장면: g7-circle-sector.html proofScene('sector')의 params csR 2~12 · csS 30~180(15 단위) · csT 0~100, 해설이 켜는 csShowS(결론 라벨을 아끼는 장면 표시)
+  'z3-sectorProof': { csR: [2, 12], csS: [30, 180], csT: [0, 100], csShowS: null }
 };
 const SCENE_STATE_KEYS = Object.fromEntries(Object.entries(SCENE_STATE).map(([k, v]) => [k, new Set(Object.keys(v))]));
 
@@ -48,16 +50,25 @@ function loadVideos() {
 
 const videos = loadVideos();
 const surfaceDir = path.join(labsDir, 'g7-surface-volume');
-const surfaceSandbox = { window: {} };
-vm.createContext(surfaceSandbox);
-vm.runInContext(fs.readFileSync(path.join(surfaceDir, 'video.js'), 'utf8'), surfaceSandbox, { filename: 'g7-surface-volume/video.js' });
-const surfaceVideos = (surfaceSandbox.window.APL_VIDEOS || {})['g7-surface-volume'] || {};
-const allVideos = { ...videos, ...surfaceVideos };
+const allVideos = { ...videos };
 
-test('원기둥 대본이 있고 장면 id가 다른 실험실과 충돌하지 않는다', () => {
-  assert.ok(surfaceVideos['sv1-1'], 'sv1-1 대본');
-  for (const id of Object.keys(surfaceVideos)) {
-    assert.ok(!Object.hasOwn(videos, id), `${id}: 실험실 간 장면 id 충돌`);
+// 해설(lesson) 파일: 실험실마다 labs/<id>/lesson.js (window.APL_LESSONS[실험실 id] = { 장면 id: 해설 })
+function loadLessons(lab) {
+  const sandbox = { window: {} };
+  vm.createContext(sandbox);
+  vm.runInContext(fs.readFileSync(path.join(labsDir, lab, 'lesson.js'), 'utf8'), sandbox, { filename: `${lab}/lesson.js` });
+  return (sandbox.window.APL_LESSONS || {})[lab] || {};
+}
+const sectorLessons = loadLessons('g7-circle-sector');
+const surfaceLessons = loadLessons('g7-surface-volume');
+const allLessons = { ...sectorLessons, ...surfaceLessons };
+
+test('해설 파일이 있고 장면 id가 다른 실험실과 충돌하지 않으며, 깨진 옛 원기둥 영상 대본은 남아 있지 않다', () => {
+  assert.ok(surfaceLessons['sv1-1'], 'sv1-1 해설');
+  assert.ok(sectorLessons['z3-sectorProof'], 'z3-sectorProof 해설');
+  assert.ok(!fs.existsSync(path.join(surfaceDir, 'video.js')), 'sv1-1 옛 영상 대본(sv11Started 를 켜지 않아 펼쳐지지 않던 것)은 해설로 대체되어 지워졌습니다');
+  for (const id of Object.keys(allLessons)) {
+    assert.ok(!Object.hasOwn(videos, id), `${id}: 해설 id 가 영상 대본 id 와 충돌`);
     assert.ok(SCENE_STATE[id], `${id}: 상태값 표가 없습니다`);
   }
 });
@@ -109,10 +120,13 @@ test('실험실 HTML이 영상 대본을 videos 로 연결한다', () => {
   });
 });
 
-test('겉넓이·부피 HTML이 원기둥 영상 대본을 연결한다', () => {
-  const html = fs.readFileSync(surfaceDir + '.html', 'utf8');
-  assert.match(html, /videos:\s*\(window\.APL_VIDEOS\s*\|\|\s*\{\}\)\['g7-surface-volume'\]/);
-  assert.match(html, /MODULES\s*=\s*\[[^\]]*'video'/);
+test('실험실 HTML이 해설을 lessons 로 연결하고 lesson 모듈을 불러온다', () => {
+  for (const lab of ['g7-circle-sector', 'g7-surface-volume']) {
+    const html = fs.readFileSync(path.join(labsDir, lab + '.html'), 'utf8');
+    assert.ok(html.includes(`lessons: (window.APL_LESSONS || {})['${lab}']`), `${lab}: createLab 의 lessons 연결`);
+    assert.match(html, /MODULES\s*=\s*\[[^\]]*'lesson'/, `${lab}: MODULES 에 lesson 포함`);
+    assert.ok(fs.existsSync(path.join(labsDir, lab, 'lesson.js')), `${lab}/lesson.js`);
+  }
 });
 
 test('원기둥 상태값 표가 실제 장면과 시점 소스에 일치한다', () => {
@@ -171,7 +185,6 @@ for (const [id, script] of Object.entries(allVideos)) {
     const check = (where, name, v) => {
       const r = ranges[name];
       if (r) assert.ok(typeof v === 'number' && Number.isFinite(v) && v >= r[0] && v <= r[1], `${where}.${name}=${v} 이 장면 범위 ${r[0]}~${r[1]} 밖입니다`);
-      if (id === 'sv1-1' && name === 'svShape') assert.equal(v, 'circ', `${where}.svShape 는 원기둥이어야 합니다`);
     };
     Object.entries(script.start || {}).forEach(([k, v]) => check('start', k, v));
     script.cues.forEach((c, i) => Object.entries(c.to || {}).forEach(([k, v]) => check(`cues[${i}].to`, k, v)));
@@ -218,24 +231,6 @@ test('1209 중심각과 색칠한 넓이의 절반이 공식과 같다', () => {
   const cs = core.compile(script);
   const st = core.stateAt(cs, script.cues.find((c) => /넓이도 절반/.test(c.say || '')).at, { nums: {}, sets: {}, step: 0, part: null });
   assert.equal(st.nums.b1209_th, th1, '절반 자막에서 그림이 180°');
-});
-
-test('sv1-1 원기둥의 전개도 자막과 겉넓이 계산이 실제 상태에 맞다', () => {
-  const script = surfaceVideos['sv1-1'];
-  const cs = core.compile(script);
-  const say = script.cues.find((c) => /가로는 밑면 둘레/.test(c.say || ''));
-  assert.ok(say, '전개도 치수 자막');
-  const st = core.stateAt(cs, say.at, { nums: {}, sets: { svShape: 'rect' }, step: 0, part: null });
-  assert.equal(st.sets.svShape, 'circ');
-  assert.equal(st.nums.sT, 1, '치수 자막에서 완전히 펼쳐짐');
-  assert.equal(st.nums.sR, 3);
-  assert.equal(st.nums.sH, 5);
-  const r = st.nums.sR, h = st.nums.sH;
-  assert.ok(say.say.includes(`${2 * r}\\pi`), '가로 = 밑면 둘레 6π');
-  assert.ok(say.say.includes(`$${h}$`), '세로 = 높이 5');
-  assert.equal(2 * r * r + 2 * r * h, 48, '겉넓이 π의 계수 48');
-  assert.match(script.summary, /밑넓이\s*×\s*2\s*\+\s*밑면 둘레\s*×\s*높이/);
-  assert.match(script.cues.at(-1).say, /밑넓이\s*2개\s*\+\s*옆넓이/);
 });
 
 // 영상 제목(title): 대본마다 있고(견본 8개), 20자 이하이며, 검증이 긴 제목·빈 제목·태그를 막는다.
@@ -287,4 +282,245 @@ test('1209·1210 snap: 지나가는 모든 중심각에서 호·넓이의 π 계
       assert.ok(Math.abs(arc - Math.round(arc)) < 1e-9 && Math.abs(area - Math.round(area)) < 1e-9, `${id} t=${t.toFixed(2)} θ=${th}: 호 ${arc}π, 넓이 ${area}π 가 정수가 아님`);
     }
   }
+});
+
+/* ==========================================================================
+   해설(lesson): 장 여러 개를 이어 정답까지 (validateLesson · compileLesson)
+   ========================================================================== */
+const baseOf = (lesson) => ({ nums: { ...(lesson.chapters[0].start || {}) }, sets: {}, step: 1, part: null });
+const chapterCues = (lesson) => lesson.chapters.flatMap((ch) => ch.cues);
+const sayList = (lesson) => lesson.chapters.map((ch) => ch.cues.filter((c) => c.say).map((c) => c.say));
+const plainText = (say) => String(say).replace(/\\frac(\d)(\d)/g, '$1/$2').replace(/\*\*/g, '');
+const numbersOf = (say) => (plainText(say).match(/\d+(?:\.\d+)?/g) || []).map(Number);
+const mk = (len, title, cues, extra = {}) => ({ length: len, title, cues, ...extra });
+const goodLesson = () => ({
+  title: '시험 해설', answer: '$42$', summary: '요약', task: '해 볼 일',
+  chapters: [
+    mk(9, '조건', [{ at: 0, say: '값을 키워요.', to: { x: 10 }, dur: 4 }, { at: 4.5, say: '그림이 변해요.' }], { start: { x: 0 } }),
+    mk(9, '과정', [{ at: 0, say: '다시 키워요.', to: { x: 20 }, dur: 4 }, { at: 4.5, say: '또 변해요.' }]),
+    mk(9, '결론', [{ at: 0, say: '더 키워요.', to: { x: 30 }, dur: 4 }, { at: 4.5, say: '정답은 $42$.' }])
+  ]
+});
+
+for (const [id, lesson] of Object.entries(allLessons)) {
+  test(`해설 ${id}: 형식 검사(장 수·장별 쇼츠 규칙·경고 없음)`, () => {
+    const v = core.validateLesson(lesson);
+    assert.deepEqual(v.errors, [], `해설 오류:\n${v.errors.join('\n')}`);
+    assert.deepEqual(v.warnings, [], `경고(같은 칸의 to+step 등):\n${v.warnings.join('\n')}`);
+    assert.ok(lesson.chapters.length >= 2 && lesson.chapters.length <= 6, '장 2~6개');
+    lesson.chapters.forEach((ch, i) => {
+      assert.ok(ch.length >= 8 && ch.length <= 15, `chapters[${i}] ${ch.length}초`);
+      assert.ok(typeof ch.title === 'string' && ch.title.trim().length > 0 && ch.title.length <= core.LIMITS.maxTitleChars, `chapters[${i}] title`);
+    });
+    assert.ok(lesson.answer, '문항형 해설은 answer 를 적어 조기 노출 검사를 받습니다');
+  });
+
+  test(`해설 ${id}: 상태값 이름·값 범위가 장면과 같고 정리 탭(tab) 사용은 정리 탭이 그림을 바꾸는 장면에 한정`, () => {
+    const ranges = SCENE_STATE[id], known = SCENE_STATE_KEYS[id];
+    assert.ok(known, `${id}: SCENE_STATE 표`);
+    const seen = [];
+    lesson.chapters.forEach((ch, i) => {
+      Object.entries(ch.start || {}).forEach(([k, v]) => seen.push([`chapters[${i}].start`, k, v]));
+      ch.cues.forEach((c, j) => {
+        Object.entries(c.to || {}).forEach(([k, v]) => seen.push([`chapters[${i}].cues[${j}].to`, k, v]));
+        Object.entries(c.set || {}).forEach(([k, v]) => seen.push([`chapters[${i}].cues[${j}].set`, k, v]));
+      });
+    });
+    for (const [where, k, v] of seen) {
+      assert.ok(known.has(k), `${where}.${k} 은 장면 ${id} 의 상태값이 아닙니다`);
+      const r = ranges[k];
+      if (r) assert.ok(typeof v === 'number' && Number.isFinite(v) && v >= r[0] && v <= r[1], `${where}.${k}=${v} 이 장면 범위 ${r[0]}~${r[1]} 밖입니다`);
+    }
+    if (id === 'sv1-1') {
+      assert.equal(lesson.tab, 'review', '원기둥 해설은 길이 표시가 있는 정리 탭 그림을 씁니다');
+      assert.ok(seen.some(([, k, v]) => k === 'svShape' && v === 'circ'), '원기둥');
+      assert.ok(seen.some(([, k, v]) => k === 'sv11Started' && v === true), '전개도를 시작해야 펼쳐집니다(옛 영상 대본이 빠뜨렸던 값)');
+      const steps = chapterCues(lesson).filter((c) => c.step !== undefined).map((c) => c.step);
+      assert.deepEqual(Array.from(steps), [2, 3], '정리 탭 단계는 2 → 3 (1단계는 장면에 들어갈 때의 값)');
+    } else assert.equal(lesson.tab, undefined, `${id}: tab 은 정리 탭이 같은 문제를 그리는 것을 확인한 장면에만 켭니다`);
+  });
+
+  test(`해설 ${id}: 이어 붙인 시간 계산(길이·장 경계·시각이 거꾸로 가지 않음·경계에서 값이 이어짐)`, () => {
+    const cs = core.compileLesson(lesson), base = baseOf(lesson);
+    assert.equal(cs.kind, 'lesson');
+    assert.equal(cs.length, lesson.chapters.reduce((a, ch) => a + ch.length, 0));
+    assert.equal(cs.chapters.length, lesson.chapters.length);
+    let at = 0;
+    cs.chapters.forEach((c, i) => { assert.equal(c.at, at, `chapters[${i}].at`); assert.equal(c.title, lesson.chapters[i].title); at += c.length; });
+    for (let i = 1; i < cs.cues.length; i++) assert.ok(cs.cues[i].at > cs.cues[i - 1].at, `cues[${i}] 시각 증가`);
+    for (let i = 1; i < cs.says.length; i++) assert.ok(cs.says[i].at > cs.says[i - 1].at && cs.says[i - 1].end === cs.says[i].at, `says[${i}] 이어짐`);
+    assert.equal(cs.says.at(-1).end, cs.length);
+    for (const [k, segs] of Object.entries(cs.tracks)) segs.forEach((g, i) => { assert.ok(g.t1 >= g.t0, `${k}[${i}] 구간`); if (i) assert.ok(g.t0 >= segs[i - 1].t1 - 1e-9, `${k}[${i}] 앞 구간과 겹치지 않음`); });
+    let prevSay = -1;
+    for (let t = 0; t <= cs.length + 1e-9; t += 0.1) {
+      const st = core.stateAt(cs, Math.min(t, cs.length), base);
+      Object.entries(st.nums).forEach(([k, v]) => assert.ok(Number.isFinite(v), `t=${t.toFixed(1)} ${k}`));
+      assert.ok(st.say >= prevSay, `t=${t.toFixed(1)} 자막이 거꾸로 감`);
+      prevSay = st.say;
+    }
+    // 장 경계 연속성: 경계 직전·직후 값이 같다(다음 장의 start 가 즉시 바꾸지 않는 값)
+    cs.chapters.slice(1).forEach((c, i) => {
+      const before = core.stateAt(cs, c.at - 1e-6, base), after = core.stateAt(cs, c.at + 1e-6, base);
+      const restarted = new Set(Object.keys(lesson.chapters[i + 1].start || {}));
+      for (const k of Object.keys(before.nums)) if (!restarted.has(k)) assert.ok(Math.abs(before.nums[k] - after.nums[k]) < 1e-3, `장 ${i + 1}→${i + 2} 경계에서 ${k} 가 ${before.nums[k]} → ${after.nums[k]} 로 튐`);
+    });
+    // 끝 값 = 각 상태값의 마지막 목표값/설정값
+    const end = core.stateAt(cs, cs.length, base), want = { nums: {}, sets: {} };
+    lesson.chapters.forEach((ch) => { Object.assign(want.nums, ch.start || {}); ch.cues.forEach((c) => { Object.assign(want.nums, c.to || {}); Object.assign(want.sets, c.set || {}); }); });
+    Object.entries(want.nums).forEach(([k, v]) => assert.ok(Math.abs(end.nums[k] - v) < 1e-9, `${k}: 끝 값 ${end.nums[k]} ≠ ${v}`));
+    Object.entries(want.sets).forEach(([k, v]) => assert.deepEqual(end.sets[k], v, `${k} 끝 설정`));
+  });
+
+  test(`해설 ${id}: 정답은 마지막 장에서만 나온다`, () => {
+    const ans = core.normAnswer(lesson.answer);
+    assert.ok(ans.length > 0);
+    assert.ok(!core.normAnswer(lesson.title).includes(ans), '해설 제목에 정답');
+    lesson.chapters.forEach((ch, i) => {
+      const early = i < lesson.chapters.length - 1;
+      if (early) assert.ok(!core.normAnswer(ch.title).includes(ans), `chapters[${i}] 제목에 정답`);
+      sayList(lesson)[i].forEach((s) => { if (early) assert.ok(!core.normAnswer(s).includes(ans), `chapters[${i}] 자막에 정답: ${s}`); });
+    });
+    assert.ok(sayList(lesson).at(-1).some((s) => core.normAnswer(s).includes(ans)), '마지막 장에는 정답이 있어야 합니다');
+    // 정답은 마지막 장의 마지막 자막(결론)에서 나온다
+    assert.ok(core.normAnswer(sayList(lesson).at(-1).at(-1)).includes(ans), '마지막 자막이 결론');
+  });
+}
+
+test('validateLesson: 장 수 2~6 · 장마다 title · 장 규칙 · 알 수 없는 필드 · tab · 첫 장만 「첫 1초 안에 움직임」', () => {
+  assert.deepEqual(core.validateLesson(goodLesson()).errors, []);
+  const L = goodLesson();
+  assert.ok(core.validateLesson({ ...L, chapters: [L.chapters[0]] }).errors.some((e) => e.includes('장 1개')), '장 1개');
+  assert.ok(core.validateLesson({ ...L, chapters: Array.from({ length: 7 }, () => L.chapters[1]) }).errors.some((e) => e.includes('장 7개')), '장 7개');
+  assert.ok(core.validateLesson({ ...L, chapters: [L.chapters[0], { ...L.chapters[1], title: undefined }, L.chapters[2]] }).errors.some((e) => e.includes('title')), '장 title 없음');
+  assert.ok(core.validateLesson({ ...L, chapters: [L.chapters[0], { ...L.chapters[1], length: 20 }, L.chapters[2]] }).errors.some((e) => e.includes('8~15')), '장 길이');
+  assert.ok(core.validateLesson({ ...L, extra: 1 }).errors.some((e) => e.includes('extra')), '알 수 없는 필드');
+  assert.ok(core.validateLesson({ ...L, tab: 'problem' }).errors.some((e) => e.includes('tab')), 'tab');
+  assert.deepEqual(core.validateLesson({ ...L, tab: 'review' }).errors, []);
+  assert.ok(core.validateLesson({ ...L, summary: '' }).errors.some((e) => e.includes('summary')), 'summary');
+  // 첫 장은 첫 1초 안에 움직여야 하고, 둘째 장 이후는 조건을 짚고 단계만 바꾸는 장도 가능
+  const still = mk(9, '정지', [{ at: 0, say: '단계만 바꿔요.', step: 2 }, { at: 4.5, say: '그림을 봐요.' }]);
+  assert.ok(core.validateLesson({ ...L, chapters: [still, L.chapters[1], L.chapters[2]] }).errors.some((e) => e.includes('첫 1초')), '첫 장은 움직여야 함');
+  assert.deepEqual(core.validateLesson({ ...L, chapters: [L.chapters[0], still, L.chapters[2]] }).errors, [], '둘째 장 이후는 움직임 없이 가능');
+  // 같은 칸에 to 와 step 을 함께 쓰면 경고(값이 바뀌며 장면이 step 을 되돌릴 수 있음)
+  const both = mk(9, '둘 다', [{ at: 0, say: '같이 써요.', to: { x: 5 }, step: 2, dur: 4 }, { at: 4.5, say: '경고가 떠요.' }]);
+  assert.ok(core.validateLesson({ ...L, chapters: [L.chapters[0], both, L.chapters[2]] }).warnings.some((w) => w.includes('to 와 step')), 'to+step 경고');
+  assert.ok(core.validate(both, { chapter: true, first: false }).warnings.some((w) => w.includes('to 와 step')), '단일 대본에서도 경고');
+  // 단일 영상 대본은 예전과 같이 검사됩니다(summary·task 필수, 첫 1초 규칙)
+  assert.ok(core.validate({ length: 9, title: '제목', cues: both.cues }).errors.some((e) => e.includes('summary')), '영상 대본은 summary 필수');
+});
+
+test('validateLesson: 정답이 마지막 장보다 먼저(자막·장 제목·해설 제목) 나오면 실패, 마지막 장은 허용', () => {
+  const L = goodLesson();
+  const at = (i, patch) => ({ ...L, chapters: L.chapters.map((c, k) => (k === i ? { ...c, ...patch(c) } : c)) });
+  assert.deepEqual(core.validateLesson(L).errors, []);
+  assert.ok(core.validateLesson(at(0, (c) => ({ cues: [c.cues[0], { ...c.cues[1], say: '정답은 $42$일까요?' }] }))).errors.some((e) => e.includes('정답')), '첫 장 자막');
+  assert.ok(core.validateLesson(at(1, (c) => ({ title: '답은 42' }))).errors.some((e) => e.includes('정답')), '가운데 장 제목');
+  assert.ok(core.validateLesson({ ...L, title: '답 42 구하기' }).errors.some((e) => e.includes('정답')), '해설 제목');
+  assert.ok(core.validateLesson(at(2, (c) => ({ title: '정답 42' }))).errors.length === 0, '마지막 장 제목은 허용');
+  // 표기가 달라도(공백·$·\\pi·π) 같은 정답으로 봄
+  assert.equal(core.normAnswer('$12\\pi$ cm²'), core.normAnswer('12 π cm²'));
+  const P = { ...L, answer: '$12\\pi$' };
+  assert.ok(core.validateLesson({ ...P, chapters: [{ ...P.chapters[0], cues: [P.chapters[0].cues[0], { ...P.chapters[0].cues[1], say: '넓이는 12π예요.' }] }, P.chapters[1], P.chapters[2]] }).errors.some((e) => e.includes('정답')), 'π 표기 차이');
+});
+
+test('compileLesson: 둘째 장 이후의 start 는 장이 시작하는 순간의 즉시 설정이고, 장 사이 값은 이어진다', () => {
+  const L = goodLesson();
+  L.chapters[1] = { ...L.chapters[1], start: { x: 5, y: 7 } };
+  assert.deepEqual(core.validateLesson(L).errors, []);
+  const cs = core.compileLesson(L), base = { nums: { x: 0, y: 0 }, sets: {}, step: 0, part: null };
+  assert.equal(core.stateAt(cs, 8.99, base).nums.x, 10, '1장 끝 값');
+  assert.equal(core.stateAt(cs, 9.0, base).nums.x, 5, '2장 시작에서 즉시 5');
+  assert.equal(core.stateAt(cs, 8.99, base).nums.y, 0, 'y 는 아직 그대로');
+  assert.equal(core.stateAt(cs, 9.0, base).nums.y, 7);
+  assert.equal(core.stateAt(cs, 18.0, base).nums.x, 20, '2장 끝 값에서 3장이 이어짐');
+  const mid = core.stateAt(cs, 20, base).nums.x;
+  assert.ok(mid > 20 && mid < 30, '3장 도중 값');
+  assert.deepEqual(cs.chapters.map((c) => c.at), [0, 9, 18]);
+  assert.equal(core.chapterAt(cs, 8.99), 0);
+  assert.equal(core.chapterAt(cs, 9), 1);
+  assert.equal(core.chapterAt(cs, 27), 2);
+});
+
+test('compileLesson: step·set 은 장을 넘어 시간 순서대로 이어지고, 단일 영상 대본(compile)은 그대로다', () => {
+  const L = goodLesson();
+  L.chapters[0].cues.push({ at: 6, set: { flag: 'a' } });
+  L.chapters[1].cues.push({ at: 6, step: 2 });
+  L.chapters[2].cues.push({ at: 6, step: 3, set: { flag: 'b' } });
+  const cs = core.compileLesson(L), base = { nums: { x: 0 }, sets: { flag: 'z' }, step: 1, part: null };
+  assert.equal(core.stateAt(cs, 1, base).sets.flag, 'z');
+  assert.equal(core.stateAt(cs, 7, base).sets.flag, 'a');
+  assert.equal(core.stateAt(cs, 20, base).step, 1 + 1, '2장에서 step 2');
+  assert.equal(core.stateAt(cs, 26, base).step, 3);
+  assert.equal(core.stateAt(cs, 26, base).sets.flag, 'b');
+  assert.equal(cs.usesStep, true);
+  // 단일 영상 대본은 compile 결과가 이전과 같은 모양(해설 전용 필드 없음)
+  const v = core.compile(videos['1209']);
+  assert.equal(v.kind, undefined);
+  assert.equal(v.chapters, undefined);
+  assert.equal(v.length, 12);
+});
+
+// 자막이 말하는 모든 숫자를 장면 공식으로 다시 계산해 대조합니다(새 수학 주장 금지: 장면의 question·steps·rule 에 있는 계산만).
+test('해설 z3-sectorProof: 자막의 모든 숫자가 부채꼴 공식(r=6, 120°)으로 다시 계산한 값이다', () => {
+  const lesson = sectorLessons['z3-sectorProof'], start = lesson.chapters[0].start;
+  const r = start.csR, th = start.csS;
+  const pieces = Math.max(2, 2 * Math.ceil(th / 20)); // 장면의 Kof
+  const l = (r * th) / 180, half = (r * th) / 360, S = (r * r * th) / 360; // 호 = 2πr·θ/360 = (rθ/180)π, 가로 = l÷2, 넓이 = πr²·θ/360 = ½·r·l
+  assert.deepEqual([r, th, pieces, l, half, S], [6, 120, 12, 4, 2, 12]);
+  assert.equal((r * l) / 2, S, 'S = ½rl 과 πr²θ/360 이 같다');
+  const html = fs.readFileSync(SCENE_DIR + '.html', 'utf8');
+  assert.match(html, /Kof\s*=\s*\(s\)\s*=>\s*Math\.max\(2,\s*2\s*\*\s*Math\.ceil\(s\.csS\s*\/\s*20\)\)/, '조각 수 공식이 장면 소스와 같다');
+  const says = sayList(lesson);
+  assert.ok(says[0][0].includes(`${r} cm`) && says[0][0].includes(`${th}°`), '1장 첫 자막: 반지름·중심각');
+  assert.ok(says[0][1].includes(`l=${l}\\pi`) && says[0][1].includes(`${pieces}조각`), '1장 둘째 자막: 호 길이와 조각 수');
+  assert.ok(says[1].join(' ').includes('가까운'), '직사각형에 가까운 모양(직사각형이라고 단정하지 않음)');
+  assert.ok(says[2][1].includes(`l=${l}\\pi`) && says[2][1].includes(`$${half}\\pi$`) && says[2][1].includes(`${r} cm`), '3장 둘째 자막: 가로 l÷2, 세로 r');
+  assert.ok(says[2][2].includes(`\\frac12\\times${r}\\times${l}\\pi=${S}\\pi`), '3장 마지막 자막: ½·r·l = 12π');
+  const allowed = new Set([r, th, pieces, l, half, S, 1, 2]);
+  for (const s of says.flat()) numbersOf(s).forEach((n) => assert.ok(allowed.has(n), `자막 「${s}」 의 숫자 ${n} 은 장면 공식으로 나오는 값이 아닙니다`));
+  // 단계: 1장은 나눔(csT 0→20), 2장은 맞물림(→54, 라벨이 그려지기 전), 3장에서 라벨(55 이상)과 정답
+  const ends = lesson.chapters.map((ch) => ch.cues.flatMap((c) => (c.to && c.to.csT != null ? [c.to.csT] : [])).at(-1));
+  assert.deepEqual(Array.from(ends), [20, 54, 100]);
+  assert.ok(ends[1] < 55, '맞물림 장은 가로·세로·넓이 라벨(csT ≥ 55)이 그려지기 전에 끝난다');
+  assert.ok(/csT\s*>=\s*55/.test(html), '라벨이 csT 55 부터 그려진다는 전제가 장면 소스와 같다');
+  // 결론 라벨은 해설이 csShowS 를 켤 때까지 아낀다(탐구 화면은 그대로)
+  assert.match(html, /if \(!\(st\.lessonOn && !st\.csShowS\)\) T\(b, \{ x: xc, y: Yb \}/, 'S 라벨 표시 조건');
+  assert.ok(chapterCues(lesson).some((c) => c.set && c.set.csShowS === true && c.say && c.say.includes(`${S}\\pi`)), '결론 자막과 함께 csShowS');
+  assert.ok(lesson.chapters.slice(0, 2).every((ch) => ch.cues.every((c) => !(c.set && 'csShowS' in c.set))), '앞 두 장은 csShowS 를 켜지 않는다');
+});
+
+test('해설 sv1-1: 자막의 모든 숫자가 원기둥 공식(r=3, h=5)으로 다시 계산한 값이다', () => {
+  const lesson = surfaceLessons['sv1-1'], start = lesson.chapters[0].start;
+  const r = start.sR, h = start.sH;
+  const base = r * r, two = 2 * base, per = 2 * r, lat = per * h, total = two + lat; // 밑넓이 πr², 밑면 2개, 둘레 2πr, 옆넓이 둘레×높이 (모두 π 의 계수)
+  assert.deepEqual([r, h, base, two, per, lat, total], [3, 5, 9, 18, 6, 30, 48]);
+  assert.equal(total, 2 * r * (r + h), '겉넓이 = 2πr(r+h) 와 같다');
+  const say = sayList(lesson);
+  assert.ok(say[1][0].includes('둘레'), '옆면의 가로는 밑면의 둘레(한 변이 아님)');
+  assert.ok(say[1][1].includes(`2\\pi\\times${r}=${per}\\pi`) && say[1][1].includes(`$${h}$`), '2장: 둘레 6π, 세로 높이 5');
+  assert.ok(say[2][1].includes(`${base}\\pi\\times2=${two}\\pi`) && say[2][1].includes(`${per}\\pi\\times${h}=${lat}\\pi`), '3장: 밑면 2개 18π, 옆넓이 30π');
+  assert.ok(say[2][2].includes(`${two}\\pi+${lat}\\pi=${total}\\pi`), '3장 마지막: 18π + 30π = 48π');
+  const allowed = new Set([r, h, base, two, per, lat, total, 1, 2]);
+  for (const s of say.flat()) numbersOf(s).forEach((n) => assert.ok(allowed.has(n), `자막 「${s}」 의 숫자 ${n} 은 장면 공식으로 나오는 값이 아닙니다`));
+  assert.match(lesson.summary, /밑넓이\s*×\s*2\s*\+\s*옆넓이/);
+  // 장면 소스: 정리 탭 단계 3개와 길이 표시, 해설이 켜야 하는 전개도 시작 값
+  const t1 = fs.readFileSync(path.join(surfaceDir, 't1.js'), 'utf8');
+  assert.match(t1, /밑면의 둘레 = \$\{sum\} = \$\{plainVal\(M\.P\)\}/, '정리 탭 그림의 「밑면의 둘레」 라벨');
+  assert.match(t1, /높이 \$\{M\.h\}/, '정리 탭 그림의 「높이」 라벨');
+  assert.match(t1, /밑넓이', plainVal\(M\.S\)/, '정리 탭 그림의 「밑넓이」 라벨');
+  assert.match(t1, /if\(!s\.sv11Started\)\{/, '전개도는 sv11Started 가 켜져야 그려진다');
+  assert.match(t1, /stepT:\s*\(\)\s*=>\s*1/, '정리 탭 tick 이 sT 를 1 로 끌어당기므로 재생 중에는 dragging 으로 막는다');
+});
+
+test('player·shell: 해설 재생기는 해설을 영상보다 먼저 찾고, 재생 중 dragging 을 쥐었다 반드시 되돌린다(소스 확인)', () => {
+  const player = fs.readFileSync(path.resolve(DIR, '../kit/apl-player.js'), 'utf8');
+  assert.match(player, /scriptOf\(i\)\s*\{\s*return this\.lessonOf\(i\)\s*\|\|\s*this\.videoOf\(i\);/, '해설 우선 조회');
+  const release = player.slice(player.indexOf('_release() {'), player.indexOf('/** 중간에 나갈 때'));
+  assert.match(release, /s\.dragging = false/, '_release 가 dragging 을 되돌림');
+  for (const where of ['finish() {', '_leave(rebuild) {']) {
+    const body = player.slice(player.indexOf(where), player.indexOf(where) + 2500);
+    assert.match(body, /this\._release\(\)/, `${where} 가 _release 를 부른다`);
+  }
+  assert.match(player, /urlParam\('play'\) === '1'/, 'play=1 만 자동 재생');
+  assert.match(player, /urlParam\('manual'\) === '1'/, 'manual=1');
 });
