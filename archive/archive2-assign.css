@@ -1,0 +1,509 @@
+/* 화면 안 "반에 출제" 패널 (archive2-assign.js). 색·글꼴·모양은 archive2-tokens.css 토큰만 쓴다(archive/DESIGN.md "출제 패널").
+   PC(960px 이상)는 오른쪽에서 나오는 약 440px 패널이라 보관함 목록이 옆에 보이고, 그보다 좁으면 전체 화면 시트다.
+   native dialog(showModal)라 뒤 화면은 눌리지 않고 Tab도 패널 안에서만 돈다. */
+dialog.assign-panel {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  padding: 0;
+  width: min(440px, 100vw);
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-right: 0;
+  border-radius: var(--radius-panel) 0 0 var(--radius-panel);
+  animation: assign-slide-in 0.18s ease-out;
+}
+dialog.assign-panel::backdrop {
+  background: rgb(23 23 28 / 0.32);
+}
+@keyframes assign-slide-in {
+  from { transform: translateX(28px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+/* 태블릿(600~959px)은 조금 더 넓은 오른쪽 패널, 휴대폰(600px 미만)은 전체 화면 시트. */
+@media (max-width: 959px) {
+  dialog.assign-panel { width: min(480px, 100vw); }
+}
+@media (max-width: 599px) {
+  dialog.assign-panel {
+    inset: 0;
+    width: 100vw;
+    border: 0;
+    border-radius: 0;
+    animation-name: assign-slide-up;
+  }
+}
+@keyframes assign-slide-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.assign-panel { animation: none; }
+}
+
+.assign-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+.assign-head {
+  flex: 0 0 auto;
+  padding: 20px 22px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.assign-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.assign-head h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+/* 제목은 화면 낭독기용으로만 포커스를 받는다(단계가 바뀔 때). 눈에 보이는 테두리는 두지 않는다. */
+.assign-head h2:focus,
+.assign-head h2:focus-visible {
+  outline: none;
+}
+.assign-sub {
+  margin: 4px 0 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.assign-paper-list {
+  margin-top: 6px;
+  font-size: 14px;
+}
+.assign-paper-list summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--brand-ink);
+  font-weight: 700;
+}
+.assign-paper-list ol {
+  margin: 0 0 8px;
+  padding-left: 22px;
+  color: var(--ink-2);
+}
+.assign-paper-list li span {
+  color: var(--muted);
+}
+
+.assign-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px 22px 18px;
+}
+.assign-foot {
+  flex: 0 0 auto;
+  padding: 12px 22px calc(14px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+.assign-state,
+.assign-muted {
+  color: var(--ink-2);
+}
+.assign-notice {
+  display: grid;
+  gap: 4px;
+  padding: 20px 0;
+}
+.assign-notice p {
+  margin: 4px 0;
+}
+
+/* 반 고르기 */
+.assign-classes {
+  margin: 0;
+  padding: 10px 0 0;
+  border: 0;
+  min-width: 0;
+}
+.assign-classes legend {
+  padding: 0;
+  font-weight: 700;
+}
+.assign-hint {
+  margin: 2px 0 8px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.assign-group {
+  margin: 0 0 6px;
+}
+.assign-group-title,
+.assign-group > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.assign-group > summary {
+  cursor: pointer;
+  min-height: 44px;
+  margin: 4px 0 0;
+  list-style: none;
+}
+.assign-group > summary::-webkit-details-marker {
+  display: none;
+}
+.assign-group > summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin: 0 4px 3px auto;
+  border-right: 2px solid var(--ink-2);
+  border-bottom: 2px solid var(--ink-2);
+  transform: rotate(45deg);
+}
+.assign-group[open] > summary::after {
+  margin-bottom: -3px;
+  transform: rotate(225deg);
+}
+.assign-grade-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: var(--radius-field);
+  background: var(--grade);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.assign-class-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.assign-class {
+  border-bottom: 1px solid var(--line-soft);
+}
+.assign-class.is-checked {
+  background: var(--selected);
+  margin-inline: -22px;
+  padding-inline: 22px;
+}
+.assign-class-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  cursor: pointer;
+}
+.assign-class-main input,
+.assign-student-grid input,
+.assign-combos input {
+  width: 22px;
+  height: 22px;
+  min-height: 0;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--ink);
+}
+.assign-class-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.assign-class-name small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+.assign-class-count {
+  flex: 0 0 auto;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.assign-class-notes {
+  margin: 0 0 6px 32px;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.assign-class-notes li.is-warn,
+.assign-warn {
+  color: var(--warn);
+}
+.assign-warn {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+}
+.assign-students {
+  margin: 0 0 8px 32px;
+  font-size: 14px;
+}
+.assign-students p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+}
+.assign-roster-error {
+  margin: 0 0 8px 32px;
+  color: var(--danger);
+  font-size: 14px;
+}
+.assign-link {
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--radius-field);
+  background: none;
+  color: var(--brand-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.assign-link:hover {
+  background: none;
+  color: var(--brand-hover);
+}
+.assign-student-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.assign-student-grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.assign-student-grid span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* 출제일 */
+.assign-date {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.assign-date label {
+  font-weight: 700;
+}
+.assign-date input {
+  width: auto;
+  min-width: 160px;
+}
+.assign-date span {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+/* 문제지 여러 권: 출제 건 확인 */
+.assign-combos {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.assign-combos h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+.assign-combos ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.assign-combos > ul > li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.assign-combos > ul > li > ul {
+  margin: 2px 0 0 4px;
+}
+.assign-combos label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.assign-combos .assign-warn {
+  margin: -6px 0 6px 30px;
+}
+
+/* 요약과 출제하기 (아래 고정) */
+.assign-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.assign-summary.is-empty {
+  color: var(--ink-2);
+  font-weight: 400;
+}
+.assign-summary-count {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+.assign-summary .assign-warn {
+  flex: 1 1 100%;
+  font-weight: 400;
+}
+.assign-submit {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 26px;
+  font-size: 16px;
+}
+/* 결과 단계: 주 버튼 하나는 한 줄 전체, 나머지는 그 아래 나란히(휴대폰에서 아래가 너무 커지지 않게). */
+.assign-foot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.assign-foot-actions > button {
+  flex: 1 1 0;
+  min-height: 44px;
+  font-size: 15px;
+}
+.assign-foot-actions > button.primary {
+  flex: 1 1 100%;
+  min-height: 52px;
+  font-size: 16px;
+}
+.assign-foot:empty {
+  display: none;
+}
+.assign-fine {
+  margin: 8px 0 0;
+  color: var(--ink-2);
+  font-size: 13px;
+  text-align: center;
+}
+.assign-fine.is-flash {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* 결과표 */
+.assign-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.assign-auth {
+  margin: 12px 0 4px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--danger);
+  border-radius: var(--radius-card);
+  background: var(--danger-bg);
+  color: var(--danger-ink);
+  font-size: 14px;
+}
+.assign-auth a {
+  color: inherit;
+  font-weight: 700;
+}
+/* 결과는 글자로 말한다(상태 글자 + 색). 왼쪽 색 띠는 DESIGN.md 금지 항목이라 쓰지 않는다. 확인이 필요한 건만 옅은 바탕으로 눈에 띄게 한다. */
+.assign-result {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.assign-result.is-unknown {
+  margin-inline: -22px;
+  padding-inline: 22px;
+  background: var(--warn-bg);
+}
+.assign-result-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+.assign-result-paper {
+  color: var(--ink-2);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.assign-result-count {
+  margin-left: auto;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.assign-result-state {
+  margin: 2px 0 0;
+  font-weight: 700;
+}
+.assign-result.is-ok .assign-result-state { color: var(--good); }
+.assign-result.is-failed .assign-result-state { color: var(--danger); }
+.assign-result.is-ok-pdf .assign-result-state,
+.assign-result.is-unknown .assign-result-state { color: var(--warn); }
+.assign-result-detail {
+  margin: 2px 0 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.assign-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.assign-result-outputs {
+  display: inline-flex;
+  gap: 6px;
+}
+.assign-result-actions button {
+  min-height: 44px;
+}
+.assign-panel button:focus-visible,
+.assign-panel input:focus-visible,
+.assign-panel a:focus-visible,
+.assign-panel summary:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+@media (max-width: 599px) {
+  .assign-head { padding: 16px 16px 10px; }
+  .assign-body { padding-inline: 16px; }
+  .assign-foot { padding-inline: 16px; }
+  .assign-class.is-checked,
+  .assign-result.is-unknown { margin-inline: -16px; padding-inline: 16px; }
+  .assign-panel input[type="date"] { font-size: 16px; }
+}
