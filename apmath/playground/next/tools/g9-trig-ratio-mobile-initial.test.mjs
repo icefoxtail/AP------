@@ -41,9 +41,9 @@ function load(baseline) {
     case(id, predicate) { const s = this.state(id); for (let n = 0; n < 1000; n++) { if (predicate(s.q)) return s; s.q = this.scene(id).tg.gen(); } throw Error('unreached question fixture: ' + id); } };
 }
 const rt = load(arg('--baseline'));
-function draw(rt, id, s, W, H, tab = 'problem', thumb = false) {
+function draw(rt, id, s, W, H, tab = 'problem', thumb = false, insets = {}) {
   const proto = rt.context.window.APLab.Board.prototype, b = Object.create(proto);
-  Object.assign(b, { W, H, pad: .02, kind: 'figure', aspect: '1:1', insets: { left: 0, right: 0, top: 0, bottom: 58 }, zoom: 1, panX: 0, panY: 0, fs: 1,
+  Object.assign(b, { W, H, pad: .02, kind: 'figure', aspect: '1:1', insets: { left: 0, right: 0, top: 0, bottom: 58, ...insets }, zoom: 1, panX: 0, panY: 0, fs: 1,
     thumb, panes: null, paneId: null, focus: { x: [-6, 6], y: [-6, 6] }, paths: [], arcs: [], texts: [], marks: [], leaders: [], angles: [] });
   b.annotationSize = (text, options = {}) => ({ width: rt.G.textW2(text, options.size || 14) + 6, height: (options.size || 14) + 6 });
   b.path = (points, options = {}) => { b.paths.push({ points: points.map(p => b.toS(p)), world: points, options }); return b; };
@@ -55,7 +55,7 @@ function draw(rt, id, s, W, H, tab = 'problem', thumb = false) {
     const x = at.x + (options.dx || 0) + (align === 'left' ? width / 2 : align === 'right' ? -width / 2 : 0), y = at.y + (options.dy || 0);
     b.texts.push({ text: String(text), x, y, p, size, width, options }); return b;
   };
-  b.leader = (a, z, options) => { const result = proto.leader.call(b, a, z, options); b.leaders.push({ a, z, options, result }); return result; };
+  b.leader = (a, z, options) => { const start = b.paths.length, result = proto.leader.call(b, a, z, options); b.paths.slice(start).forEach(p => { p.leader = true; }); b.leaders.push({ a, z, options, result }); return result; };
   for (const name of ['right', 'ticks', 'point', 'handle']) b[name] = (...args) => { b.marks.push({ method: name, args }); return b; };
   const scene = rt.scene(id); scene.draw(b, s, {}, { tab, scene, s }); return b;
 }
@@ -140,6 +140,20 @@ for (const [W, EH, PH] of [[390, 411, 309], [360, 387, 291]]) {
     t.diagnostic(`triangle ${Number(z.x1 - z.x0).toFixed(2)}×${Number(z.y1 - z.y0).toFixed(2)}px`);
   });
 }
+for (const [W, H, bottom, right] of [[1039, 741, 56, 16], [820, 397, 60, 0], [683, 613, 56, 16], [390, 309, 60, 0], [360, 291, 60, 0]]) {
+  test(`rhombusSquare native ${W}: the 150-degree given stays clear of C and belongs to A`, () => {
+    const s = fixture(rt, 'rhombusSquare'), before = JSON.stringify(s.q), b = draw(rt, 'rhombusSquare', s, W, H, 'problem', false, { bottom, right });
+    const quad = b.paths.find(p => p.options.fill && p.points.length === 4), A = quad.points[0], C = quad.points[2];
+    const value = b.texts.find(t => t.text === '150°');
+    assert.ok(value, 'the given angle is visible before answering');
+    assert.ok(Math.abs(value.x - C.x) > value.width / 2 + 10 || Math.abs(value.y - C.y) > value.size / 2 + 10, 'opposite vertex C cannot cover the angle glyph');
+    assert.ok(distance(value, A) < distance(value, C) || b.leaders.some(l => distance(l.z, value) < 4 && l.result.drawn), 'the angle value belongs to A, directly or by a connector');
+    for (const name of ['A', 'C']) assert.ok(!overlapping(value, b.texts.find(t => t.text === name), 4), 'angle and vertex names are distinct');
+    assert.ok(value.x - value.width / 2 >= 0 && value.x + value.width / 2 <= W && value.y - value.size / 2 >= 0 && value.y + value.size / 2 <= H - bottom);
+    assert.ok(b.texts.some(t => t.text === '□ABCD의 넓이 = x'), 'the requested area remains hidden');
+    assert.equal(JSON.stringify(s.q), before, 'rendering preserves the question and answer');
+  });
+}
 test('cut animation, tower dragging and generated problem/solution conditions remain intact', () => {
   const cut = rt.scene('cut3060'), s = rt.state('cut3060');
   for (const L of [2, 6, 12]) for (const progress of [0, .5, 1]) {
@@ -163,12 +177,22 @@ test('cut animation, tower dragging and generated problem/solution conditions re
     }
   }
 });
-if (arg('--compare-scope')) test('the opt-in layout leaves other scenes and normal-size frames unchanged', () => {
-  const old = load(arg('--compare-scope')), picture = b => plain({ paths: b.paths, arcs: b.arcs, texts: b.texts, marks: b.marks, leaders: b.leaders }); let count = 0;
+if (arg('--compare-scope')) test('only the confirmed angle callout changes in narrow rhombus questions; other frames remain identical', t => {
+  const old = load(arg('--compare-scope')), picture = b => plain({ paths: b.paths, arcs: b.arcs, texts: b.texts, marks: b.marks, leaders: b.leaders }); let count = 0, angleFrames = 0;
   for (const sc of rt.scenes) for (const [W, H] of [[1039, 672], [820, 461], [683, 548], [390, 309], [360, 291]]) for (const tab of ['explore', 'problem', 'review']) {
     if (W < 560 && ((exploreIds.includes(sc.id) && tab === 'explore') || (problemIds.includes(sc.id) && tab !== 'explore'))) continue;
-    const s = rt.state(sc.id), p = old.state(sc.id); s.step = p.step = 1;
-    assert.deepEqual(picture(draw(rt, sc.id, s, W, H, tab)), picture(draw(old, sc.id, p, W, H, tab)), `${sc.id}/${W}/${tab}`); count++;
+    const s = sc.id === 'rhombusSquare' ? fixture(rt, sc.id) : rt.state(sc.id), p = sc.id === 'rhombusSquare' ? fixture(old, sc.id) : old.state(sc.id); s.step = p.step = 1;
+    const a = draw(rt, sc.id, s, W, H, tab), z = draw(old, sc.id, p, W, H, tab);
+    if (sc.id === 'rhombusSquare' && [820, 683].includes(W) && tab !== 'explore') {
+      const quad = a.paths.find(p => p.options.fill && p.points.length === 4), A = quad.points[0], C = quad.points[2], value = a.texts.find(t => t.text === '150°');
+      const unchanged = b => plain({ paths: b.paths.filter(p => !p.leader), arcs: b.arcs.filter(r => !near(r.at, A)), texts: b.texts.filter(t => t.text !== '150°'), marks: b.marks });
+      assert.deepEqual(unchanged(a), unchanged(z), 'rhombus geometry and every other annotation are preserved');
+      assert.ok(value && Math.abs(value.x - C.x) > value.width / 2 + 10, 'the corrected angle cannot occupy C');
+      const angle = a.angles.find(v => near(v.V, A)), arc = angle.arcs.find(r => r.options.sector);
+      assert.ok(linked(a, { x: A.x + arc.r, y: A.y }, value), 'the changed callout identifies the actual angle at A');
+      assert.deepEqual(plain(s.q), plain(p.q)); angleFrames++;
+    } else assert.deepEqual(picture(a), picture(z), `${sc.id}/${W}/${tab}`);
+    count++;
   }
   for (const id of [...exploreIds, ...problemIds]) {
     const s = rt.state(id), p = old.state(id);
@@ -176,4 +200,10 @@ if (arg('--compare-scope')) test('the opt-in layout leaves other scenes and norm
     assert.deepEqual(plain(rt.scene(id).tg.model(s)), plain(old.scene(id).tg.model(p))); assert.deepEqual(plain(s.q), plain(p.q));
   }
   assert.equal(count, 739);
+  assert.equal(angleFrames, 4);
+  for (const [W, H, bottom, right] of [[1039, 741, 56, 16], [683, 613, 56, 16]]) {
+    const s = fixture(rt, 'rhombusSquare'), p = fixture(old, 'rhombusSquare');
+    assert.deepEqual(picture(draw(rt, 'rhombusSquare', s, W, H, 'problem', false, { bottom, right })), picture(draw(old, 'rhombusSquare', p, W, H, 'problem', false, { bottom, right })), 'native PC and landscape tablet frames remain identical');
+  }
+  t.diagnostic(`${count - angleFrames + 2} complete frames identical; ${angleFrames} narrow rhombus frames preserve geometry and all non-angle annotations`);
 });

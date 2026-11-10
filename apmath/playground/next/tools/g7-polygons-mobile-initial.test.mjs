@@ -11,24 +11,29 @@ import { fileURLToPath } from 'node:url';
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
 const unit = 'apmath/playground/next/labs/g7-polygons';
 const arg = process.argv.indexOf('--baseline'), before = arg < 0 ? null : process.argv[arg + 1];
-const context = vm.createContext({ window: {}, document: { documentElement: { dataset: {} }, getElementById() {},
-  createElement() { return {}; }, head: { append() {} }, addEventListener() {} } });
-for (const name of ['core', 't1', 't2', 't3', 't4']) {
-  const file = `${unit}/${name}.js`;
-  const source = before ? execFileSync('git', ['show', `${before}:${file}`], { cwd: repo, encoding: 'utf8' }) : fs.readFileSync(path.join(repo, file), 'utf8');
-  vm.runInContext(source, context, { filename: file });
+function load(ref) {
+  const context = vm.createContext({ window: {}, document: { documentElement: { dataset: {} }, getElementById() {},
+    createElement() { return {}; }, head: { append() {} }, addEventListener() {} } });
+  for (const name of ['core', 't1', 't2', 't3', 't4']) {
+    const file = `${unit}/${name}.js`;
+    const source = ref ? execFileSync('git', ['show', `${ref}:${file}`], { cwd: repo, encoding: 'utf8' }) : fs.readFileSync(path.join(repo, file), 'utf8');
+    vm.runInContext(source, context, { filename: file });
+  }
+  context.window.APLab = { clamp: (v, lo, hi) => Math.max(lo, Math.min(hi, v)) };
+  vm.runInContext(fs.readFileSync(path.join(repo, 'apmath/playground/next/kit/apl-board.js'), 'utf8'), context);
+  const G = context.window.APL_PG, scenes = context.window.APL_PG_GROUPS.flatMap(g => g.scenes);
+  const scene = id => scenes.find(s => s.id === id);
+  const fresh = id => { const s = { step: 1, revealed: false }; scene(id).enter(s); return s; };
+  return { context, G, scenes, scene, fresh };
 }
-context.window.APLab = { clamp: (v, lo, hi) => Math.max(lo, Math.min(hi, v)) };
-vm.runInContext(fs.readFileSync(path.join(repo, 'apmath/playground/next/kit/apl-board.js'), 'utf8'), context);
-const G = context.window.APL_PG, scenes = context.window.APL_PG_GROUPS.flatMap(g => g.scenes);
-const scene = id => scenes.find(s => s.id === id);
-const fresh = id => { const s = { step: 1 }; scene(id).enter(s); return s; };
+const runtime = load(before), { scene, fresh } = runtime;
 const overlap = (a, b) => Math.min(a.r, b.r) - Math.max(a.l, b.l) > 1 && Math.min(a.b, b.b) - Math.max(a.t, b.t) > 1;
-function draw(id, W, tab, state = fresh(id), viewport = {}) {
+function draw(id, W, tab, state = fresh(id), viewport = {}, rt = runtime) {
+  const { context, G } = rt;
   const H = viewport.height ?? (tab === 'explore' ? (W === 360 ? 307 : 326) : (W === 360 ? 291 : 309));
   const b = Object.create(context.window.APLab.Board.prototype);
-  Object.assign(b, { W, H, pad: .02, kind: 'figure', aspect: '1:1', insets: { top: 0, bottom: viewport.bottom ?? 58, left: 0, right: 0 },
-    zoom: 1, panX: 0, panY: 0, fs: 1, thumb: false, panes: null, paneId: null, focus: { x: [-2, 2], y: [-2, 2] }, texts: [], paths: [], arcs: [], leaders: [] });
+  Object.assign(b, { W, H, pad: .02, kind: 'figure', aspect: '1:1', insets: { top: 0, bottom: viewport.bottom ?? 58, left: 0, right: viewport.right ?? 0 },
+    zoom: 1, panX: 0, panY: 0, fs: 1, thumb: !!viewport.thumb, panes: null, paneId: null, focus: { x: [-2, 2], y: [-2, 2] }, texts: [], paths: [], arcs: [], leaders: [], marks: [] });
   b.path = (points, options = {}) => { b.paths.push({ points: points.map(p => b.toS(p)), world: points, options }); return b; };
   b.arc = (p, r, a, z, options = {}) => { b.arcs.push({ at: b.toS(p), r: r * b.k, a, z, options }); return b; };
   b.text = (p, value, o = {}) => {
@@ -38,12 +43,12 @@ function draw(id, W, tab, state = fresh(id), viewport = {}) {
   };
   b.annotationSize = (value, o = {}) => ({ width: G.textW(value, o.size || 16) + 6, height: (o.size || 16) + 6 });
   b.leader = (at, label, options) => { b.leaders.push({ at, label, options }); return b; };
-  for (const name of ['point', 'handle', 'right', 'ticks']) b[name] = () => b;
-  const sc = scene(id); sc.draw(b, state, {}, { s: state, tab, scene: sc });
+  for (const name of ['point', 'handle', 'right', 'ticks', 'circle']) b[name] = (...args) => { b.marks.push({ name, args }); return b; };
+  const sc = rt.scene(id); sc.draw(b, state, {}, { s: state, tab, scene: sc });
   return b;
 }
 function visibleLabels(b, id) {
-  for (const label of b.texts) assert.ok(label.l >= 0 && label.r <= b.W && label.t >= 0 && label.b <= b.H - 58,
+  for (const label of b.texts) assert.ok(label.l >= 0 && label.r <= b.W - b.insets.right && label.t >= 0 && label.b <= b.H - b.insets.bottom,
     `${id}: clipped label ${label.text} at ${JSON.stringify(label)}`);
 }
 function separated(b, id) {
@@ -128,5 +133,97 @@ test('dragging the narrow bisector triangle keeps its target value clear of the 
     const row=b.texts.find(t=>t.text.startsWith('● ='));
     if(row)assert.ok(!overlap(label,row),'target value does not cover the explanation row');
     assert.equal(JSON.stringify(scene('p2-bis').pg.model(s)),beforeModel);
+  }
+});
+
+// Run 42669558624 records these native canvas sizes and toolbar insets for
+// p3-given/p3-mixed. The 820px problem canvas is only 397px high, not the
+// viewport's 1180px; a width-only mobile breakpoint missed its crowded angles.
+const nativeViews = [
+  { name: 'pc', width: 1039, explore: 663, problem: 787, bottom: 56, right: 16 },
+  { name: 'tablet-portrait', width: 820, explore: 420, problem: 397, bottom: 60, right: 0 },
+  { name: 'tablet-landscape', width: 683, explore: 493, problem: 613, bottom: 56, right: 16 },
+  { name: 'mobile', width: 390, explore: 326, problem: 309, bottom: 60, right: 0 },
+  { name: 'small-mobile', width: 360, explore: 307, problem: 291, bottom: 60, right: 0 }
+];
+const samePoint = (a, b) => Math.hypot(a.x - b.x, a.y - b.y) < 1e-8;
+const plain = value => JSON.parse(JSON.stringify(value));
+const interior = (V, i) => {
+  const p = V[i], a = V[(i + 4) % 5], z = V[(i + 1) % 5];
+  const u = { x: a.x - p.x, y: a.y - p.y }, v = { x: z.x - p.x, y: z.y - p.y };
+  return Math.acos(Math.max(-1, Math.min(1, (u.x * v.x + u.y * v.y) / Math.hypot(u.x, u.y) / Math.hypot(v.x, v.y)))) * 180 / Math.PI;
+};
+function pentagonStates(id) {
+  const keys = id === 'p3-given' ? ['pgGa', 'pgGb', 'pgGc', 'pgGd'] : ['pgMa', 'pgMb', 'pgMc', 'pgMd'];
+  const states = [fresh(id)];
+  for (let mask = 0; mask < 16; mask++) {
+    const s = fresh(id);
+    keys.forEach((key, i) => { s[key] = id === 'p3-mixed' && i >= 2 ? (mask & (1 << i) ? 80 : 65) : (mask & (1 << i) ? 115 : 100); });
+    states.push(s);
+  }
+  return states;
+}
+for (const id of ['p3-given', 'p3-mixed']) {
+  test(`${id}: native tablet problem separates adjacent given angles`, t => {
+    const view = nativeViews.find(v => v.name === 'tablet-portrait');
+    for (const [index, s] of pentagonStates(id).entries()) {
+      const b = draw(id, view.width, 'problem', s, { ...view, height: view.problem });
+      const m = scene(id).pg.model(s);
+      const at = i => b.texts.find(t => samePoint(t.world, m.V[i]) && t.text === `${m.ints[i]}°`);
+      const gap = at(1).l - at(0).r;
+      if (index === 0) t.diagnostic(`native 820x397, bottom inset 60: given-angle gap ${gap.toFixed(2)}px, polygon height ${coreHeight(b).toFixed(2)}px`);
+      assert.ok(gap >= 12, `${id}: the A/B given values need visible separation; gap=${gap}px`);
+      visibleLabels(b, id); separated(b, id);
+      assert.equal(b.texts.filter(t => samePoint(t.world, m.V[4]) && t.text === 'x').length, 1, 'the requested angle stays unknown');
+      assert.ok(!b.texts.some(t => samePoint(t.world, m.V[4]) && t.text.includes(`${m.x}°`)), 'the problem must not disclose its answer');
+      m.V.forEach((_, i) => assert.ok(Math.abs(interior(m.V, i) - m.ints[i]) < 1e-8, `${id}: rendered vertex ${i} preserves its actual angle`));
+      assert.ok(Math.abs(m.V.reduce((sum, _, i) => sum + interior(m.V, i), 0) - 540) < 1e-8);
+    }
+  });
+  test(`${id}: the tablet correction preserves problem, solution stages, controls and reentry`, () => {
+    const sc = scene(id);
+    for (const s of pentagonStates(id)) {
+      const model = plain(sc.pg.model(s)), problem = plain(sc.pg.prob(sc.pg.model(s))), steps = plain(sc.steps(s));
+      draw(id, 820, 'problem', s, { height: 397, bottom: 60 });
+      for (const step of [0, 1, 2, 3]) {
+        s.step = step;
+        const b = draw(id, 820, 'review', s, { height: 397, bottom: 60 });
+        const target = b.texts.find(t => samePoint(t.world, model.V[4]) && t.options.color === 'amber');
+        assert.equal(target.text, step < 3 ? 'x' : `x=${model.x}°`, 'the original solution reveal order is unchanged');
+      }
+      assert.deepEqual(plain(sc.pg.model(s)), model);
+      assert.deepEqual(plain(sc.pg.prob(sc.pg.model(s))), problem);
+      assert.deepEqual(plain(sc.steps(s)), steps);
+      assert.equal(s.revealed, false); assert.equal(s.playing, false);
+      assert.equal(sc.actions, undefined, 'these slider-only scenes retain their original control set');
+      sc.enter(s);
+      assert.deepEqual(plain(sc.pg.model(s)), plain(sc.pg.model(fresh(id))), 'reentry restores the original givens');
+    }
+  });
+}
+
+const compareIndex = process.argv.indexOf('--compare-scope');
+if (compareIndex >= 0) test('tablet pentagon correction leaves all other drawing states and mathematical content unchanged', () => {
+  const old = load(process.argv[compareIndex + 1]);
+  const picture = b => plain({ paths: b.paths, arcs: b.arcs, texts: b.texts, leaders: b.leaders, marks: b.marks });
+  for (const sc of runtime.scenes) {
+    const s = fresh(sc.id), z = old.fresh(sc.id), previous = old.scene(sc.id);
+    assert.deepEqual(plain(sc.pg.model(s)), plain(previous.pg.model(z)), `${sc.id} model`);
+    assert.deepEqual(plain(sc.pg.prob(sc.pg.model(s))), plain(previous.pg.prob(previous.pg.model(z))), `${sc.id} question and choices`);
+    assert.deepEqual(plain(sc.steps(s)), plain(previous.steps(z)), `${sc.id} solution`);
+    for (const view of nativeViews) for (const tab of ['explore', 'problem', 'review']) {
+      const options = { ...view, height: tab === 'explore' ? view.explore : view.problem };
+      const current = draw(sc.id, view.width, tab, s, options), prior = draw(sc.id, view.width, tab, z, options, old);
+      const targeted = ['p3-given', 'p3-mixed'].includes(sc.id) && view.name === 'tablet-portrait' && tab === 'problem';
+      if (!targeted) assert.deepEqual(picture(current), picture(prior), `${sc.id}/${view.name}/${tab}`);
+      else {
+        assert.deepEqual(plain(current.paths.map(p => p.world)), plain(prior.paths.map(p => p.world)), 'original polygon and exterior extension geometry is unchanged');
+        assert.deepEqual(plain(current.texts.map(t => t.text)), plain(prior.texts.map(t => t.text)), 'all condition, vertex and unknown labels are retained');
+        assert.deepEqual(plain(current.marks), plain(prior.marks), 'the original vertices and handles are retained');
+        assert.ok(coreHeight(current) > coreHeight(prior), 'the same pentagon gets more usable space');
+      }
+    }
+    const thumb = { height: 180, bottom: 0, right: 0, thumb: true };
+    assert.deepEqual(picture(draw(sc.id, 240, 'explore', s, thumb)), picture(draw(sc.id, 240, 'explore', z, thumb, old)), `${sc.id} thumbnail`);
   }
 });

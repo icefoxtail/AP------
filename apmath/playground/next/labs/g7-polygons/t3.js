@@ -306,7 +306,10 @@
     const { V, eps, ints } = M;
     const th = [0]; for (let i = 1; i < 5; i++) th[i] = th[i - 1] + eps[i];
     const compact = !C.thumb && b.W < 560;
-    fit(b, compact ? bboxOf(V) : { x0: -1.05, x1: 1.05, y0: -1.05, y1: 1.05 }, compact ? { t: 48, b: 48, l: 54, r: 54 } : { t: 40, b: 124, l: 52, r: 52 });
+    // 세로 태블릿의 문제 캔버스는 툴바를 빼면 높이가 337px뿐입니다.
+    // 실제 오각형에 맞추고 한 줄 발문 여백만 남겨 A·B의 각 조건을 분리합니다.
+    const shortProblem = !C.thumb && C.problem && b.W >= 560 && b.W < 900 && b.H - b.insets.top - b.insets.bottom < 360;
+    fit(b, compact || shortProblem ? bboxOf(V) : { x0: -1.05, x1: 1.05, y0: -1.05, y1: 1.05 }, compact ? { t: 48, b: 48, l: 54, r: 54 } : shortProblem ? { t: 40, b: 96, l: 72, r: 72 } : { t: 40, b: 124, l: 52, r: 52 });
     const cen = pt(0, 0), st = C.step;
     fillPoly(b, V, 'sky', 0.1);
     poly(b, V, 'ink', 3.4);
