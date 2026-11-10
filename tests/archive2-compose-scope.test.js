@@ -56,7 +56,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool, routeUrl, urlState, replaceUrlState, readUrl};
+    globalThis.workspaceTest = {setRender: fn => { render = fn; }, state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool, routeUrl, urlState, replaceUrlState, readUrl};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -64,7 +64,7 @@ function harness(data = structuredClone(catalog)) {
   w.state.finderIndex = core.buildFinderIndex(data);
   w.state.indexVersion = data.indexVersion;
   return {
-    w, ctx,
+    w, ctx, events,
     async click(dataset) {
       for (const callback of events.get('click') || [])
         await callback({ target: { closest: () => ({ dataset }) } });
@@ -578,14 +578,15 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261031-recorded-use-1'],
     ['meta-foundation-runtime.js', '20261029-health-reasons-1'],
     ['archive2-history.js', '20261004-class-grade-fallback-1'],
-    ['archive2-workspace.js', '20261031-recorded-use-1'],
+    ['archive2-workspace.js', '20261110-review-a-1'],
     ['archive2-unified-units.js', '20261030-s11-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261029-source-meta-conflict-1/);
   assert.match(html, /archive2-library\.js\?v=20261003-navigation-s5-3/);
-  assert.match(html, /archive2\.css\?v=20261030-s8-1/);
+  assert.match(html, /archive2\.css\?v=20261110-review-a-1/);
+  assert.match(html, /archive2-papers\.js\?v=20261110-review-a-1/);
   assert.match(html, /archive2-navigation\.js\?v=20261030-s8-1/);
 });
 
@@ -1287,4 +1288,111 @@ test('Saved Paper revision Draft preserves the immutable source snapshot and lin
   const restoredPrepared = await w.prepare();
   assert.equal(restoredPrepared[0].questions[0].content, frozenQuestion.content,
     "Draft reopen reads the immutable parent snapshot instead of rebuilding from current source files");
+});
+
+test('multi-word Finder search matches every word in any order against visible exam values', () => {
+  const { w } = harness();
+  const exam = catalog.exams.find(row => row.school && row.grade && row.year && row.semester && row.examType);
+  assert.ok(exam, 'fixture needs an exam with school, grade, year and period');
+  const period = exam.examType === 'mid' ? '중간' : '기말';
+  const run = query => { w.state.find = { query }; return w.findExams().map(row => row.file); };
+  const single = run(exam.school);
+  assert.ok(single.includes(exam.file), 'one-word search keeps matching');
+  for (const query of [
+    `${exam.school} ${exam.grade}`,
+    `${exam.grade} ${exam.school} ${period}`,
+    `${period} ${exam.semester}학기 ${exam.school} ${exam.grade}`,
+  ])
+    assert.ok(run(query).includes(exam.file), `"${query}" must find the exam`);
+  assert.ok(run(`${exam.school} ${exam.grade}`).every(file => single.includes(file)),
+    'extra words only narrow the one-word result');
+  assert.equal(run(`${exam.school} zzzz-no-such-word`).length, 0, 'every word must match');
+  assert.equal(run('semester').includes(exam.file), false, 'JSON key names are not searchable text');
+});
+
+test('a tampered backup is refused before anything reaches state or the page', () => {
+  const { w } = harness();
+  const good = plain(w.draft());
+  const before = JSON.stringify(plain(w.state.count)) + JSON.stringify(plain(w.state.round));
+  for (const [key, value] of [
+    ['count', '1"><img src=x onerror=alert(1)>'],
+    ['count', null],
+    ['count', NaN],
+    ['round', '<script>alert(1)</script>'],
+    ['buckets', ['<img src=x>']],
+    ['distribution', 'drop'],
+    ['qpp', '4'],
+    ['header', { title: { x: 1 } }],
+    ['filters', { grade: { nested: true } }],
+    ['studentIds', [1, 2]],
+    ['saveResultState', '<b>'],
+    ['rows', [{ id: 'a', count: '9' }]],
+    ['custom', { a: { count: '5' } }],
+  ]) {
+    assert.throws(() => w.applyDraft({ ...good, [key]: value }), /형식이 올바르지 않아 불러올 수 없습니다/, `${key} must be rejected`);
+  }
+  assert.throws(() => w.applyDraft(null), /형식이 올바르지 않아/);
+  assert.equal(JSON.stringify(plain(w.state.count)) + JSON.stringify(plain(w.state.round)), before, 'a rejected file changes nothing');
+  assert.doesNotThrow(() => w.applyDraft(good), 'an untouched backup still restores');
+});
+
+test('counts a teacher can type (10.5, -3, 1200) are restored clamped instead of being refused', () => {
+  const { w } = harness();
+  const good = plain(w.draft());
+  for (const [typed, expected] of [[10.5, 11], [-3, 1], [1200, 400], [0, 1]]) {
+    w.applyDraft({ ...good, count: typed, custom: { k: { count: typed } }, rows: [{ id: 'k', count: typed }] });
+    assert.equal(w.state.count, expected, `count ${typed}`);
+    assert.equal(w.state.custom.k.count, expected, `custom count ${typed}`);
+    assert.equal(w.state.rows[0].count, typed === 1200 ? 1200 : Math.max(0, Math.round(typed)), `row count ${typed}`);
+  }
+});
+
+test('the unknown-result warning checkbox survives the input then change event order', async () => {
+  const { w, events } = harness();
+  const record = catalog.records.find(row => core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.saveBatchId = '00000000-0000-4000-8000-000000000198';
+  w.state.saveSignature = 'sig';
+  w.state.saveResultSignature = w.saveWorkSignature();
+  w.state.saveResultState = 'RESULT_UNKNOWN';
+  w.state.ackWarnings = false;
+  let renders = 0;
+  w.setRender(() => { renders++; });
+  const target = { id: 'ack-warnings-recovery', checked: true, dataset: {} };
+  // Dispatch in the browser's order: input first, then change on the same element.
+  for (const callback of events.get('input') || []) await callback({ target });
+  assert.equal(renders, 0, 'input must not re-render (it would replace the checkbox before change fires)');
+  for (const callback of events.get('change') || []) await callback({ target });
+  assert.equal(w.state.ackWarnings, true, 'the acknowledgement is recorded');
+});
+
+test('while a save result is unknown, output and backup stay reachable and only edits are locked', async () => {
+  const { w, ctx, click } = harness();
+  const record = catalog.records.find(row => core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.saveBatchId = '00000000-0000-4000-8000-000000000199';
+  w.state.saveSignature = 'sig';
+  w.state.saveResultSignature = w.saveWorkSignature();
+  w.state.saveResultState = 'RESULT_UNKNOWN';
+  const compose = w.renderCompose();
+  const recovery = compose.slice(0, compose.indexOf('<div class="workspace"'));
+  assert.match(recovery, /data-action="print"/, 'output is offered outside the inert editor');
+  assert.match(recovery, /data-action="backup"/, 'backup is offered outside the inert editor');
+  assert.doesNotMatch(recovery, /Draft/, 'teacher-facing text avoids the word Draft');
+  assert.match(w.renderMobileActions(), /data-action="print"/);
+  const statusNode = ctx.document.getElementById('status');
+  statusNode.textContent = '';
+  await click({ action: 'pin', index: '0' });
+  assert.match(statusNode.textContent, /편집을 잠급니다/, 'an editing action stays locked');
+  statusNode.textContent = '';
+  await click({ action: 'close-dialog' });
+  assert.doesNotMatch(statusNode.textContent, /잠급니다/, 'closing a dialog is not locked');
 });
