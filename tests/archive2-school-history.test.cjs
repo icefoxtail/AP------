@@ -40,7 +40,9 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
     document: {
       getElementById: node, querySelectorAll: () => [],
       createElement: () => ({
-        content: { firstElementChild: { querySelector: () => ({}) } },
+        // querySelector: the count input patches only the live summary from a parsed <template>
+        // (2026-11-10 one-screen compose); this fake document has nothing to patch.
+        content: { firstElementChild: { querySelector: () => ({}) }, querySelector: () => null },
       }),
       querySelector: selector => selector === '[data-recent-filter="subject"]' ? node('recent-subject') : null,
       body: { dataset: {} },
