@@ -743,6 +743,7 @@
     if (!data || typeof data !== "object" || Array.isArray(data)) fail("파일 전체");
     const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
     const isInt = (v, min, max) => Number.isInteger(v) && v >= min && v <= max;
+    const isFiniteNumber = (v) => typeof v === "number" && Number.isFinite(v);
     const isStr = (v, max = 4000) => typeof v === "string" && v.length <= max;
     const isStrArr = (v, max = 60000) => Array.isArray(v) && v.length <= max && v.every((x) => isStr(x, 2000));
     const isBuckets = (v) => Array.isArray(v) && v.length <= 5 && v.every((x) => isInt(x, 1, 5));
@@ -756,18 +757,20 @@
       scopeSourcePaths: (v) => isStrArr(v),
       scopeQuestionUids: (v) => isStrArr(v),
       distribution: (v) => ["equal", "pool", "custom", "all"].includes(v),
-      count: (v) => isInt(v, 0, 1000),
+      // The count inputs do not stop typing 10.5, -3 or 1200, and autosave stores that; such a draft
+      // must still open. Any finite number passes here and normalizeDraftNumbers() clamps it.
+      count: isFiniteNumber,
       buckets: isBuckets,
       difficultyFilterVersion: (v) => isStr(v, 100),
       includeExtended: (v) => typeof v === "boolean",
       custom: (v) => isObj(v) && Object.values(v).every((x) => isObj(x) &&
-        (x.count === undefined || isInt(x.count, 0, 100000)) &&
+        (x.count === undefined || isFiniteNumber(x.count)) &&
         (x.buckets === undefined || isBuckets(x.buckets))),
       seed: (v) => isStr(v, 200),
       rows: (v) => Array.isArray(v) && v.length <= 5000 && v.every((row) => isObj(row) &&
         isStr(row.id, 2000) &&
         (row.label === undefined || isStr(row.label)) &&
-        (row.count === undefined || isInt(row.count, 0, 100000)) &&
+        (row.count === undefined || isFiniteNumber(row.count)) &&
         (row.difficultyBuckets === undefined || isBuckets(row.difficultyBuckets)) &&
         (row.paths === undefined || isStrArr(row.paths)) &&
         (row.scopeQuestionUids === undefined || isStrArr(row.scopeQuestionUids))),
@@ -812,8 +815,21 @@
       if (!ok(data[key])) fail(key);
     }
   }
+  // Brings the counts a teacher could type (10.5, -3, 1200) back into the range the screen allows.
+  function normalizeDraftNumbers(data) {
+    const clamp = (v, min, max) => Math.min(max, Math.max(min, Math.round(v)));
+    const out = { ...data };
+    if (out.count !== undefined) out.count = clamp(out.count, 1, 400);
+    if (out.custom)
+      out.custom = Object.fromEntries(Object.entries(out.custom).map(([key, value]) =>
+        [key, value.count === undefined ? value : { ...value, count: clamp(value.count, 1, 400) }]));
+    if (out.rows)
+      out.rows = out.rows.map((row) => row.count === undefined ? row : { ...row, count: clamp(row.count, 0, 100000) });
+    return out;
+  }
   function applyDraft(data) {
     validateDraftTypes(data);
+    data = normalizeDraftNumbers(data);
     if (
       data.schemaVersion !== C.VERSION ||
       data.taxonomyVersion !== C.TAXONOMY_VERSION ||
@@ -4999,7 +5015,13 @@
     if (mix) mix.textContent = Quick.presetMix(quickProduct(), preset);
   });
   document.addEventListener("input", (event) => {
-    if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
+    if (state.saveResultState === "RESULT_UNKNOWN") {
+      // The warning checkbox of the recovery area fires input before change. Re-rendering here
+      // would replace it, so its change event would never reach the handler.
+      if (event.target.id === "ack-warnings-recovery") return;
+      render();
+      return;
+    }
     if (event.target.dataset.recentFilter === "query") {
       if (state.view !== "recent") return;
       if (event.isComposing) {
