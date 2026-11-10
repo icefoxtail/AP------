@@ -77,7 +77,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "③",
-    "solution": "일차함수 식에 $x=a$를 대입한다.\n$f(a)=2a+3=1$\n$2a=-2$이므로 $a=-1$이다.\n따라서 정답은 ③이다."
+    "solution": "일차함수 식에 $x=a$를 대입한다.\n$f(a)=2a+3=1$\n$2a=-2$이므로 $a=-1$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 y=2x+3과 초록 점선 y=1이 점 (a,1)에서 만나고, 그 점에서 x축으로 내린 점선의 끝에 a가 쓰여 있다.",
+    "solutionImageCaption": "f(x)=2x+3의 그래프(파랑)에서 f(a)=1이라는 것은 높이가 1인 점 (a,1)의 x좌표가 a라는 뜻이다. 그래서 y=1(초록 점선)과 만나는 점에서 x축으로 내려 a를 읽는다. 풀이에서는 f(a)=2a+3=1을 푼다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -117,7 +121,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "⑤",
-    "solution": "그래프를 $y$축 방향으로 $-2$만큼 옮기면 모든 $y$값에서 2를 뺀다.\n$y=3x-2$\n이 직선은 원래 직선과 평행하다.\n따라서 정답은 ⑤이다."
+    "solution": "그래프를 $y$축 방향으로 $-2$만큼 옮기면 모든 $y$값에서 2를 뺀다.\n$y=3x-2$\n이 직선은 원래 직선과 평행하다.\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: y=3x의 그래프는 파란 실선이고, 이를 y축 방향으로 옮긴 직선 l은 주황 점선이다. 원점에서 점 (0,-2)까지 y축을 따라 아래로 선분이 그려져 있다.",
+    "solutionImageCaption": "파랑은 y=3x의 그래프이고 주황 점선 l은 이를 y축의 방향으로 -2만큼, 곧 아래로 2만큼 옮긴 직선이다. y축 위의 선분은 원점이 (0,-2)로 옮겨진 거리를 보인다. 모든 점이 같은 만큼 내려가므로 기울기는 같고 두 직선은 평행하다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -157,7 +165,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "③",
-    "solution": "$y$축과 만나는 점은 $(0,2)$이다.\n$x$축과 만나는 점은 $0=\\frac25x+2$에서 $x=-5$이므로 $(-5,0)$이다.\n둘러싸인 직각삼각형의 두 변의 길이는 5와 2이다.\n넓이는 $\\frac12\\times5\\times2=5$이다.\n따라서 정답은 ③이다."
+    "solution": "$y$축과 만나는 점은 $(0,2)$이다.\n$x$축과 만나는 점은 $0=\\frac25x+2$에서 $x=-5$이므로 $(-5,0)$이다.\n둘러싸인 직각삼각형의 두 변의 길이는 5와 2이다.\n넓이는 $\\frac12\\times5\\times2=5$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차함수 f의 직선이 x축과 (-5,0), y축과 (0,2)에서 만나고, 이 두 점과 원점으로 이루어진 직각삼각형이 연한 회색으로 칠해져 있다.",
+    "solutionImageCaption": "f(x)는 문제의 일차함수 y=5분의 2 x+2이다. 직선이 y축과 만나는 점은 (0,2)이고, x축과 만나는 점은 0=5분의 2 x+2에서 x=-5이므로 (-5,0)이다. 둘러싸인 도형은 두 변의 길이가 5와 2인 직각삼각형이므로 넓이는 2분의 1 곱하기 5 곱하기 2이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -197,7 +209,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "①",
-    "solution": "주어진 직선의 $x$절편은 $0=-\\frac23x+1$에서 $x=\\frac32$이다.\n따라서 “$x$절편은 $-\\frac23$”이라는 ①은 틀렸다.\n$(3,-1)$을 대입하면 $-\\frac23\\times3+1=-1$이므로 ②는 맞다.\n기울기 $-\\frac23$은 음수이므로 오른쪽 아래로 향하고, $x$가 증가하면 $y$는 감소한다.\n기울기가 같은 직선과는 평행하므로 ③, ④, ⑤는 맞다.\n따라서 정답은 ①이다."
+    "solution": "주어진 직선의 $x$절편은 $0=-\\frac23x+1$에서 $x=\\frac32$이다.\n따라서 “$x$절편은 $-\\frac23$”이라는 ①은 틀렸다.\n$(3,-1)$을 대입하면 $-\\frac23\\times3+1=-1$이므로 ②는 맞다.\n기울기 $-\\frac23$은 음수이므로 오른쪽 아래로 향하고, $x$가 증가하면 $y$는 감소한다.\n기울기가 같은 직선과는 평행하므로 ③, ④, ⑤는 맞다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 f가 y축과 (0,1), x축과 (2분의 3, 0)에서 만나고 점 (3,-1)을 지나며 오른쪽 아래로 향한다.",
+    "solutionImageCaption": "f(x)는 문제의 일차함수 y=-3분의 2 x+1이다. y절편은 1이고, 0=-3분의 2 x+1에서 x절편은 2분의 3이다. x=3을 대입하면 y=-1이므로 점 (3,-1)을 지난다. 기울기가 음수이므로 x가 증가하면 y는 감소한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -238,7 +254,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "①",
-    "solution": "그래프 $y=ax-b$는 오른쪽 위로 향하므로 $a>0$이다.\n그래프의 $y$절편은 양수이므로 $-b>0$, 즉 $b<0$이다.\n$y=-ax+b$는 기울기가 음수이고 $y$절편이 음수이다.\n$x$절편은 $x=\\frac ba<0$이다.\n따라서 이 직선은 제2, 3, 4사분면을 지나고 제1사분면은 지나지 않는다.\n따라서 정답은 ①이다."
+    "solution": "그래프 $y=ax-b$는 오른쪽 위로 향하므로 $a>0$이다.\n그래프의 $y$절편은 양수이므로 $-b>0$, 즉 $b<0$이다.\n$y=-ax+b$는 기울기가 음수이고 $y$절편이 음수이다.\n$x$절편은 $x=\\frac ba<0$이다.\n따라서 이 직선은 제2, 3, 4사분면을 지나고 제1사분면은 지나지 않는다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 오른쪽 위로 향하는 파란 직선 y=ax-b와 오른쪽 아래로 향하는 주황 직선 y=-ax+b가 x축 위의 한 점에서 만나고, 네 사분면의 이름이 쓰여 있다.",
+    "solutionImageCaption": "예로 a=1, b=-2로 그렸다. 파랑은 y=ax-b로 기울기가 양수이고 y절편이 양수이므로 a>0, b<0이다. 주황은 y=-ax+b로 기울기가 음수이고 y절편이 음수이며 x절편은 b÷a가 음수이다. 주황 직선이 지나는 사분면과 지나지 않는 사분면을 그림에서 확인한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -318,7 +338,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "②",
-    "solution": "주어진 직선의 $x$절편은 $y=0$을 대입하여 구한다.\n$2x+4=0$이므로 교점은 $(-2,0)$이다.\n이 점을 지나고 $y=2x$와 평행한 직선의 기울기는 2이다.\n$y=2(x+2)=2x+4$\n따라서 방정식은 $2x-y+4=0$이고, 정답은 ②이다."
+    "solution": "주어진 직선의 $x$절편은 $y=0$을 대입하여 구한다.\n$2x+4=0$이므로 교점은 $(-2,0)$이다.\n이 점을 지나고 $y=2x$와 평행한 직선의 기울기는 2이다.\n$y=2(x+2)=2x+4$\n따라서 방정식은 $2x-y+4=0$이고, 정답은 ②이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 2x-3y+4=0이 x축과 (-2,0)에서 만나고, 이 점을 지나는 주황 직선 m이 초록 점선 y=2x와 평행하게 그려져 있다.",
+    "solutionImageCaption": "파랑은 2x-3y+4=0의 그래프이다. y=0을 대입하면 x축과 만나는 점은 (-2,0)이다. 주황 직선 m은 이 점을 지나고 초록 점선 y=2x와 평행하므로 기울기가 2이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -359,7 +383,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "①",
-    "solution": "그림의 직선은 $x=-2$인 수직선이다.\n$2x-1=k$에 $x=-2$를 대입한다.\n$k=2(-2)-1=-5$이므로 정답은 ①이다."
+    "solution": "그림의 직선은 $x=-2$인 수직선이다.\n$2x-1=k$에 $x=-2$를 대입한다.\n$k=2(-2)-1=-5$이므로 정답은 ①이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 x=-2(주황)와 y=2x-1(파랑)이 만나는 점 (-2,k)에서 초록 점선 y=k가 가로로 그려져 있다.",
+    "solutionImageCaption": "일차방정식 2x-1=k의 그래프는 문제의 그림과 같이 직선 x=-2(주황)이다. 이 직선 위의 점에서 2x-1의 값이 k이므로, y=2x-1(파랑)이 x=-2일 때의 높이를 y=k(초록 점선)로 나타냈다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -400,7 +428,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "①",
-    "solution": "두 그래프의 교점은 $(2,1)$이다.\n첫째 식 $ax+2y=4$에 대입하면 $2a+2=4$이다.\n$a=1$이다.\n둘째 식 $x+by=-2$에 대입하면 $2+b=-2$이다.\n$b=-4$이다.\n$a+b=1+(-4)=-3$\n따라서 정답은 ①이다."
+    "solution": "두 그래프의 교점은 $(2,1)$이다.\n첫째 식 $ax+2y=4$에 대입하면 $2a+2=4$이다.\n$a=1$이다.\n둘째 식 $x+by=-2$에 대입하면 $2+b=-2$이다.\n$b=-4$이다.\n$a+b=1+(-4)=-3$\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 파란 직선 ax+2y=4와 주황 직선 x+by=-2가 점 (2,1)에서 만나고, 이 점에서 두 축으로 점선이 내려와 있다.",
+    "solutionImageCaption": "두 그래프의 교점 (2,1)이 연립방정식의 해이다. ax+2y=4에 대입하면 2a+2=4이므로 a=1이다. x+by=-2에 대입하면 2+b=-2이므로 b=-4이다. 두 값을 더해 구한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -439,7 +471,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "④",
-    "solution": "3의 배수는 $3,6,9,12$이다.\n4의 배수는 $4,8,12$이다.\n두 목록에 함께 있는 12는 한 번만 센다.\n해당 숫자는 $3,4,6,8,9,12$로 6개이다.\n따라서 정답은 ④이다."
+    "solution": "3의 배수는 $3,6,9,12$이다.\n4의 배수는 $4,8,12$이다.\n두 목록에 함께 있는 12는 한 번만 센다.\n해당 숫자는 $3,4,6,8,9,12$로 6개이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 안에 두 원 A와 B가 겹쳐 있고 겹친 부분이 칠해져 있으며 그 안에 12가 쓰여 있다. A에는 4개, B에는 3개라고 적혀 있다.",
+    "solutionImageCaption": "A는 3의 배수 3, 6, 9, 12로 4개이고 B는 4의 배수 4, 8, 12로 3개이다. 12는 두 집합에 모두 속하므로 겹친 부분에 있고, 더할 때 한 번만 세어야 한다. 따라서 4+3-1로 센다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -481,7 +517,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 3칸, 세로 3칸의 도로망이다. 왼쪽 아래 A에서 오른쪽 위 B로 가며, 위에서 두 번째 가로줄의 가운데 구간이 점선으로 끊겨 있고 교차점마다 그곳까지 가는 방법의 수가 적혀 있다.",
+    "solutionImageCaption": "끊긴 구간을 점선으로 두고 교차점마다 오른쪽과 위쪽으로만 와서 만나는 방법의 수를 더해 간다. 끊긴 구간의 오른쪽 교차점은 왼쪽에서 올 수 없어 아래쪽의 수 3만 받는다. B 바로 앞 두 교차점의 수 7과 7을 더하면 B까지 가는 방법의 수이고, 이는 끊기지 않았을 때의 20가지에서 끊긴 구간을 지나는 3×2=6가지를 뺀 값과 같다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -520,7 +560,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "②",
-    "solution": "악수 한 번은 서로 다른 두 사람의 한 쌍이다.\n각 사람은 나머지 12명과 악수하므로\n$13\\times12=156$\n으로 세어진다.\n하지만 한 악수는 두 사람의 계산에 각각 한 번씩 포함된다.\n따라서\n$156\\div2=78$\n이다.\n따라서 정답은 ②이다."
+    "solution": "악수 한 번은 서로 다른 두 사람의 한 쌍이다.\n각 사람은 나머지 12명과 악수하므로\n$13\\times12=156$\n으로 세어진다.\n하지만 한 악수는 두 사람의 계산에 각각 한 번씩 포함된다.\n따라서\n$156\\div2=78$\n이다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 13개 점이 13명을 나타낸다. 점 A에서 나머지 12개 점으로 가는 선분 12개(파랑과 초록)와 점 B에서 나머지 12개 점으로 가는 선분 12개(주황과 초록)가 그려져 있고, A와 B를 잇는 초록 선분은 두 사람이 함께 센다.",
+    "solutionImageCaption": "원 위의 13개 점은 13명이다. 파랑은 A가 하는 악수, 주황은 B가 하는 악수이고, 초록은 A와 B의 악수로 두 사람이 모두 센다. 각 사람이 12명과 악수하므로 13×12로 세면 악수 하나를 두 번 세게 되어 2로 나눈다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -559,7 +603,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "④",
-    "solution": "서로 다른 동전 4개의 앞·뒤 결과는 $2\\times2\\times2\\times2=16$가지이다.\n앞면이 3개인 경우는 THHH, HTHH, HHTH, HHHT로 4가지이다.\n확률은 $\\frac4{16}=\\frac14$이다.\n따라서 정답은 ④이다."
+    "solution": "서로 다른 동전 4개의 앞·뒤 결과는 $2\\times2\\times2\\times2=16$가지이다.\n앞면이 3개인 경우는 THHH, HTHH, HHTH, HHHT로 4가지이다.\n확률은 $\\frac4{16}=\\frac14$이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 동전의 앞뒤를 앞의 두 동전과 뒤의 두 동전으로 나누어 나타낸 수형도이고, 끝 가지 16개에 앞뒤의 결과가 쓰여 있다.",
+    "solutionImageCaption": "앞의 두 동전의 결과가 4가지이고 각각에 대해 뒤의 두 동전의 결과가 4가지이므로 전체 경우는 4×4=16가지이다. 끝 가지 하나가 네 동전의 결과 하나이고, 이 중 앞면이 3개인 결과를 찾아 센다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -598,7 +646,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "③",
-    "solution": "대표 두 명을 뽑는 전체 방법은 $7\\times6\\div2=21$가지이다.\n남학생 4명 중 2명을 뽑는 방법은 $4\\times3\\div2=6$가지이다.\n여학생 3명 중 2명을 뽑는 방법은 $3\\times2\\div2=3$가지이다.\n유리한 방법은 $6+3=9$가지이다.\n확률은 $\\frac9{21}=\\frac37$이다.\n따라서 정답은 ③이다."
+    "solution": "대표 두 명을 뽑는 전체 방법은 $7\\times6\\div2=21$가지이다.\n남학생 4명 중 2명을 뽑는 방법은 $4\\times3\\div2=6$가지이다.\n여학생 3명 중 2명을 뽑는 방법은 $3\\times2\\div2=3$가지이다.\n유리한 방법은 $6+3=9$가지이다.\n확률은 $\\frac9{21}=\\frac37$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 남학생 4명을 네 점으로 하고 두 점을 잇는 선분 6개를 파랑으로, 여학생 3명을 세 점으로 하고 선분 3개를 주황으로 그린 그림이다.",
+    "solutionImageCaption": "대표 두 명을 뽑는 한 가지를 두 점을 잇는 선분 하나로 나타냈다. 두 명이 모두 남학생인 경우는 파랑 선분이고 모두 여학생인 경우는 주황 선분이다. 전체 경우의 수는 풀이에서 세어 확률을 구한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -637,7 +689,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "⑤",
-    "solution": "두 자연수의 홀짝 선택은 독립으로 해석한다.\n합이 홀수이려면 한 수만 짝수여야 한다.\na가 짝수이고 b가 홀수일 확률은 $\\frac12\\times(1-\\frac23)=\\frac16$이다.\na가 홀수이고 b가 짝수일 확률은 $(1-\\frac12)\\times\\frac23=\\frac13$이다.\n두 경우는 함께 일어나지 않으므로 확률을 더한다.\n$\\frac16+\\frac13=\\frac12$\n따라서 정답은 ⑤이다."
+    "solution": "두 자연수의 홀짝 선택은 독립으로 해석한다.\n합이 홀수이려면 한 수만 짝수여야 한다.\na가 짝수이고 b가 홀수일 확률은 $\\frac12\\times(1-\\frac23)=\\frac16$이다.\na가 홀수이고 b가 짝수일 확률은 $(1-\\frac12)\\times\\frac23=\\frac13$이다.\n두 경우는 함께 일어나지 않으므로 확률을 더한다.\n$\\frac16+\\frac13=\\frac12$\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 가지는 a가 짝수인지 홀수인지, 둘째 가지는 b가 짝수인지 홀수인지를 나타내는 수형도이다. 파랑과 주황 경로가 칠해져 있고 끝마다 확률의 곱이 쓰여 있다.",
+    "solutionImageCaption": "a가 짝수일 확률은 2분의 1이고 b가 홀수일 확률은 1-3분의 2=3분의 1이다. 합이 홀수인 경우는 (a짝수, b홀수)인 파랑 경로와 (a홀수, b짝수)인 주황 경로이다. 각 확률은 2분의 1 곱하기 3분의 1, 2분의 1 곱하기 3분의 2이고 두 경우는 동시에 일어나지 않으므로 더한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -676,7 +732,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "④",
-    "solution": "두 주사위의 눈이 같은 경우는 $(1,1)$부터 $(6,6)$까지 6가지이다.\n전체 경우는 $6\\times6=36$가지이다.\n승부가 결정되는 경우는 $36-6=30$가지이다.\n확률은 $\\frac{30}{36}=\\frac56$이므로 정답은 ④이다."
+    "solution": "두 주사위의 눈이 같은 경우는 $(1,1)$부터 $(6,6)$까지 6가지이다.\n전체 경우는 $6\\times6=36$가지이다.\n승부가 결정되는 경우는 $36-6=30$가지이다.\n확률은 $\\frac{30}{36}=\\frac56$이므로 정답은 ④이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 x는 A의 눈, 세로 y는 B의 눈인 6×6 표에 순서쌍 36개가 쓰여 있고, 두 눈이 같은 대각선 6칸이 회색으로 칠해져 있다.",
+    "solutionImageCaption": "가로 x를 A의 눈, 세로 y를 B의 눈이라 하면 전체 경우는 6×6=36가지이다. 두 눈이 같으면 승부가 결정되지 않으므로 회색 6칸을 뺀다. 승부가 결정되는 경우는 36-6=30가지이고 확률은 36분의 30이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -715,7 +775,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "⑤",
-    "solution": "모두 뒷면일 확률은 $a=\\frac18$이다.\n적어도 하나가 앞면일 확률은 여사건을 이용한다.\n$b=1-\\frac18=\\frac78$\n$a+b=\\frac18+\\frac78=1$\n따라서 정답은 ⑤이다."
+    "solution": "모두 뒷면일 확률은 $a=\\frac18$이다.\n적어도 하나가 앞면일 확률은 여사건을 이용한다.\n$b=1-\\frac18=\\frac78$\n$a+b=\\frac18+\\frac78=1$\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 동전의 앞뒤를 차례로 나타낸 수형도이다. 끝이 8개이며 모두 뒷면인 경로 하나는 파랑, 나머지 일곱 경로는 주황으로 칠해져 있다.",
+    "solutionImageCaption": "세 동전의 앞뒤 경우는 8가지이고 각 경우의 확률은 같다. 모두 뒷면인 경우는 1가지(파랑)이므로 a는 8분의 1이다. 적어도 하나가 앞면인 경우는 나머지 7가지(주황)이므로 b=1-8분의 1=8분의 7이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -754,7 +818,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "②",
-    "solution": "한 문제를 틀릴 확률은 $\\frac23$이다.\n세 문제를 모두 틀릴 확률은 $\\frac23\\times\\frac23\\times\\frac23=\\frac8{27}$이다.\n적어도 한 문제를 맞힐 확률은 여사건을 이용한다.\n$1-\\frac8{27}=\\frac{19}{27}$\n따라서 정답은 ②이다."
+    "solution": "한 문제를 틀릴 확률은 $\\frac23$이다.\n세 문제를 모두 틀릴 확률은 $\\frac23\\times\\frac23\\times\\frac23=\\frac8{27}$이다.\n적어도 한 문제를 맞힐 확률은 여사건을 이용한다.\n$1-\\frac8{27}=\\frac{19}{27}$\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 문제를 맞힘과 틀림으로 나눈 수형도이다. 맞힘의 가지 확률은 3분의 1, 틀림은 3분의 2이고, 세 문제 모두 틀리는 경로는 파랑, 나머지 일곱 경로는 주황이며 끝마다 확률의 곱이 쓰여 있다.",
+    "solutionImageCaption": "한 문제를 찍어 맞힐 확률은 3분의 1, 틀릴 확률은 3분의 2이다. 세 문제를 모두 틀릴 확률은 3분의 2를 세 번 곱한 27분의 8이다(파랑). 적어도 한 문제를 맞히는 경우는 나머지 일곱 경로(주황)이고, 여사건을 이용해 1에서 27분의 8을 뺀다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -793,7 +861,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "①",
-    "solution": "첫 번째 제비가 당첨일 확률은 $\\frac4{10}$이다.\n당첨 제비를 다시 넣지 않았으므로 두 번째 추첨에는 당첨 제비 3개, 전체 제비 9개가 남는다.\n두 번째도 당첨일 확률은 $\\frac39$이다.\n두 번 모두 당첨일 확률은 $\\frac4{10}\\times\\frac39=\\frac2{15}$이므로 정답은 ①이다."
+    "solution": "첫 번째 제비가 당첨일 확률은 $\\frac4{10}$이다.\n당첨 제비를 다시 넣지 않았으므로 두 번째 추첨에는 당첨 제비 3개, 전체 제비 9개가 남는다.\n두 번째도 당첨일 확률은 $\\frac39$이다.\n두 번 모두 당첨일 확률은 $\\frac4{10}\\times\\frac39=\\frac2{15}$이므로 정답은 ①이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째와 둘째 추첨 결과를 나타낸 수형도이다. 첫째 가지 확률은 당첨 5분의 2, 꽝 5분의 3이고 둘째 가지 확률은 당첨이면 3분의 1과 3분의 2, 꽝이면 9분의 4와 9분의 5이며, 두 번 모두 당첨인 경로가 파랑으로 칠해져 있다.",
+    "solutionImageCaption": "첫째 추첨에서 당첨일 확률은 10분의 4이고 그림에는 약분한 5분의 2로 쓰였다. 꺼낸 제비를 다시 넣지 않으므로 둘째 추첨에는 당첨 3개, 전체 9개가 남아 당첨일 확률이 9분의 3(그림에는 3분의 1)이다. 두 번 모두 당첨인 경로(파랑)의 확률은 두 가지 확률의 곱이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -830,7 +902,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "(1) 8 cm, (2) y=8x+4, (3) 68 cm",
-    "solution": "정육각형 한 개의 둘레는 $6\\times2=12$ cm이다.\n새 정육각형은 한 변을 붙이므로 둘레에는 새 변 6개 중 공유하는 2개 변이 드러나지 않는다.\n둘레는 $6-2=4$변만큼 늘어난다.\n한 변이 2 cm이므로 매번 $4\\times2=8$ cm씩 늘어난다.\n(1) 처음 정육각형에 하나씩 더 붙일 때 둘레는 8 cm씩 늘어난다.\n(2) 처음 둘레 12 cm에서 $x-1$번 8 cm씩 늘어난다.\n$y=12+8(x-1)=8x+4$\n(3) $x=8$을 대입하면 $y=8\\times8+4=68$이다.\n따라서 세 답은 8 cm, $y=8x+4$, 68 cm이다."
+    "solution": "정육각형 한 개의 둘레는 $6\\times2=12$ cm이다.\n새 정육각형은 한 변을 붙이므로 둘레에는 새 변 6개 중 공유하는 2개 변이 드러나지 않는다.\n둘레는 $6-2=4$변만큼 늘어난다.\n한 변이 2 cm이므로 매번 $4\\times2=8$ cm씩 늘어난다.\n(1) 처음 정육각형에 하나씩 더 붙일 때 둘레는 8 cm씩 늘어난다.\n(2) 처음 둘레 12 cm에서 $x-1$번 8 cm씩 늘어난다.\n$y=12+8(x-1)=8x+4$\n(3) $x=8$을 대입하면 $y=8\\times8+4=68$이다.\n따라서 세 답은 8 cm, $y=8x+4$, 68 cm이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육각형 1개, 2개, 3개를 한 변이 겹치게 이어 붙인 도형 세 줄이다. 둘레를 이루는 변은 파랑, 붙은 변은 점선이고 새로 붙인 정육각형은 주황이며 둘레의 변의 수 6, 10, 14가 쓰여 있다.",
+    "solutionImageCaption": "정육각형 한 개의 둘레는 변 6개이다. 정육각형을 하나 붙이면 새 변 6개 중 붙는 한 변은 도형 안쪽이 되고, 원래 도형의 한 변도 안쪽이 되므로 둘레의 변은 4개씩 늘어난다. 한 변이 2 cm이므로 둘레는 8 cm씩 늘어나고, x개일 때 처음 12 cm에서 (x-1)번 늘어난다. 정답은 (1) 8 cm, (2) y=8x+4, (3) 68 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -864,7 +940,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "2",
-    "solution": "두 직선의 교점이 무수히 많으려면 두 직선이 같은 직선이어야 한다.\n둘째 식 $2x-y=1$의 양변에 2를 곱한다.\n$4x-2y=2$\n첫째 식 $ax-2y=b$와 계수를 비교하면 $a=4$, $b=2$이다.\n$a-b=4-2=2$이다."
+    "solution": "두 직선의 교점이 무수히 많으려면 두 직선이 같은 직선이어야 한다.\n둘째 식 $2x-y=1$의 양변에 2를 곱한다.\n$4x-2y=2$\n첫째 식 $ax-2y=b$와 계수를 비교하면 $a=4$, $b=2$이다.\n$a-b=4-2=2$이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 실선 2x-y=1의 그래프 위에 주황 점선 ax-2y=b의 그래프가 겹쳐 그려져 있고, 두 직선이 같은 두 점 (0,-1), (1,1)을 지난다.",
+    "solutionImageCaption": "교점이 무수히 많으면 두 직선이 완전히 겹친다. 파랑 실선은 2x-y=1의 그래프이고 주황 점선은 ax-2y=b의 그래프이며, 두 직선이 같은 두 점 (0,-1), (1,1)을 지난다. 2x-y=1의 양변에 2를 곱한 4x-2y=2와 계수를 비교해 a, b를 구한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -901,6 +981,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "$\\frac{2}{9}$",
-    "solution": "시계 방향으로 12칸 이동하면 처음 위치로 돌아온다.\n(1) 숫자 6에 도착하려면 곱한 수가 6, 18, 30이어야 한다.\n(2) 곱이 6인 순서쌍은 $(1,6),(2,3),(3,2),(6,1)$이다.\n곱이 18인 순서쌍은 $(3,6),(6,3)$이다.\n곱이 30인 순서쌍은 $(5,6),(6,5)$이다.\n(3) 유리한 경우는 $4+2+2=8$가지이다.\n두 주사위의 전체 경우는 $6\\times6=36$가지이다.\n확률은 $\\frac8{36}=\\frac29$이다."
+    "solution": "시계 방향으로 12칸 이동하면 처음 위치로 돌아온다.\n(1) 숫자 6에 도착하려면 곱한 수가 6, 18, 30이어야 한다.\n(2) 곱이 6인 순서쌍은 $(1,6),(2,3),(3,2),(6,1)$이다.\n곱이 18인 순서쌍은 $(3,6),(6,3)$이다.\n곱이 30인 순서쌍은 $(5,6),(6,5)$이다.\n(3) 유리한 경우는 $4+2+2=8$가지이다.\n두 주사위의 전체 경우는 $6\\times6=36$가지이다.\n확률은 $\\frac8{36}=\\frac29$이다.",
+    "solutionImage": "assets/images/19_풍덕중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위의 눈 1부터 6까지의 곱을 가로 첫째 눈, 세로 둘째 눈으로 36칸에 적은 표이다.",
+    "solutionImageCaption": "깃발은 시계 방향으로 12칸 움직이면 제자리로 돌아오므로, 숫자 6에 꽂히려면 눈의 곱을 12로 나눈 나머지가 6이어야 한다. 표에서 곱이 6, 18, 30인 칸을 찾아 순서쌍을 센다. 전체 경우는 6×6=36가지이다. 정답은 (1) 6, 18, 30, (2) 곱이 6인 (1,6), (2,3), (3,2), (6,1), 곱이 18인 (3,6), (6,3), 곱이 30인 (5,6), (6,5), (3) 9분의 2이다.",
+    "solutionImageSize": "full"
   }
 ];
