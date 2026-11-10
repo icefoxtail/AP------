@@ -35,10 +35,8 @@ jobs:
       max-parallel: 2
       matrix:
         include:
-          - {unit: g7-polygons, scene: p3-given, theme: board}
-          - {unit: g7-polygons, scene: p3-given, theme: paper}
-          - {unit: g7-polygons, scene: p3-mixed, theme: board}
-          - {unit: g7-polygons, scene: p3-mixed, theme: paper}
+          - {unit: g9-trig-ratio, scene: rhombusSquare, theme: board}
+          - {unit: g9-trig-ratio, scene: rhombusSquare, theme: paper}
     env:
       GH_TOKEN: ${{ github.token }}
       SOURCE_RUN: ${{ inputs.source_run || '42764744424' }}
