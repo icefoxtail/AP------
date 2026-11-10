@@ -76,7 +76,7 @@ strong { font-weight: 600; }
 .empty strong { display: block; color: var(--text-soft); font-weight: 500; }
 .empty p { margin-top: 4px; }
 .empty .btn { margin-top: 16px; }
-.preview-notice { border-left: 3px solid var(--primary); background: var(--primary-soft); }
+.preview-notice { background: var(--primary-soft); }
 
 /* A short, useful introduction; the login remains visible on a phone. */
 body[data-student-view="login"] .app, body[data-student-view="boot"] .app { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; min-height: calc(100dvh - 76px); padding-block: 48px; max-width: 1080px; }
@@ -102,10 +102,10 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
 .portal-feature { min-width: 0; min-height: 156px; display: flex; flex-direction: column; align-items: stretch; padding: 24px 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); color: var(--text); text-decoration: none; text-align: left; }
 .portal-feature:hover { border-color: var(--control-border); background: var(--surface-2); }
 .feature-heading { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; }
-.feature-heading strong { font-size: 18px; line-height: 1.45; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.feature-heading strong { font-size: 18px; line-height: 1.45; letter-spacing: -.025em; word-break: keep-all; overflow-wrap: anywhere; }
 .feature-heading > span { font-size: 18px; color: var(--secondary); flex: none; }
 .feature-description { margin-top: 10px; color: var(--text-soft); font-size: 14px; line-height: 1.5; }
-.feature-status { display: block; margin-top: auto; padding-top: 12px; font-size: 12px; line-height: 1.5; color: var(--secondary); }
+.feature-status { word-break: keep-all; overflow-wrap: anywhere; display: block; margin-top: auto; padding-top: 12px; font-size: 12px; line-height: 1.5; color: var(--secondary); }
 .portal-recent { padding-top: 4px; }
 .portal-recent-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
 .portal-recent-head .section-title { font-size: 16px; }
@@ -125,7 +125,7 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
 .portal-menu-item:last-child { border-bottom: 0; }
 .portal-menu-item:hover { background: var(--surface-2); }
 .portal-menu-item strong { display: block; font-size: 17px; font-weight: 600; }
-.portal-menu-item small { display: block; color: var(--secondary); font-size: 13px; line-height: 1.6; margin-top: 6px; }
+.portal-menu-item small { word-break: keep-all; overflow-wrap: anywhere; display: block; color: var(--secondary); font-size: 13px; line-height: 1.6; margin-top: 6px; }
 .menu-availability { display: flex; gap: 10px; align-items: center; color: var(--secondary); font-size: 12px; white-space: nowrap; }
 .portal-unavailable .feature-status { padding-top: 0; margin-bottom: 10px; color: var(--warning); }
 .portal-unavailable .btn { margin-top: 24px; }
@@ -344,7 +344,6 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
   .student-portal-theme .student-global-nav { top: auto; }
   body[data-student-view="home"] .app { padding-top: 18px; }
   .portal-home { gap: 18px; }
-  .portal-home-heading .eyebrow { margin-bottom: 4px; }
   .portal-home-heading .profile-name { font-size: 23px; }
   .portal-home-heading .profile-sub { margin-top: 4px; font-size: 13px; }
   .portal-feature-grid { gap: 10px; }

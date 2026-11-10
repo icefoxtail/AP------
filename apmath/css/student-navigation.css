@@ -43,6 +43,8 @@
   -webkit-tap-highlight-color: transparent;
 }
 .student-global-link svg { flex: none; width: 21px; height: 21px; }
+.student-global-nav .student-global-link { color: var(--nav-muted); }
+.student-global-nav .student-global-link.active, .student-global-nav .student-global-link:hover { color: var(--nav-ink); }
 .student-global-link.active { color: var(--nav-ink); background: var(--surface-2, var(--card-2, #f5f3f0)); font-weight: 700; }
 .student-global-link:hover { color: var(--nav-ink); }
 .student-global-link:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }

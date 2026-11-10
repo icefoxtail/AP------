@@ -1477,6 +1477,7 @@
           ${renderStudentAppVersion()}
         </div>
       `;
+      if (options.preserveView !== true) window.scrollTo(0, 0);
     }
     function renderPreviewNotice() {
       return isTeacherPreview ? '<div class="notice preview-notice" role="status"><strong>선생님 미리보기 · 읽기 전용</strong><span>기능별 이용 범위를 표시합니다. 학생 기록은 변경되지 않습니다.</span></div>' : '';

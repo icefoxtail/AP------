@@ -2,7 +2,8 @@
 // 실행: node --test apmath/playground/next/tools/hub-no-legacy.test.mjs
 // 규칙(사용자 결정 2026-11-02): "2.0에 없는 건 연결하지 마." / "2.0에 이전 잔재가 있으면 안 돼."
 //  1) 허브가 그린 화면에 '2.0'·'기존'·'미리보기'·'이전 실험실' 문구가 없다(허브 머리말·버튼·배지 기준).
-//  2) 첫 화면은 늘 Universe: 허브를 바로 열면 Universe(학년 해시 유지) → 「입장」하면 허브(해시 유지), 실험실 뒤로 가기는 허브.
+//  2) 일반 첫 방문은 Universe: 허브를 바로 열면 Universe(학년 해시 유지) → 「입장」하면 허브(해시 유지), 실험실 뒤로 가기는 허브.
+//     학생포털의 승인된 portal=1 진입은 학년별 허브를 바로 연다(학생포털 접근성 브라우저 검사가 검증).
 //  3) 옛 labs/·teacher-hub·compare로 연결하지 않는다. 현재 승인된 학생포털 복귀와 Universe만 next/ 밖 목적지다.
 // 정적 검사는 항상 돌고, 실제 화면 검사는 Playwright(Chromium)가 있을 때만 돈다(없으면 skip 사유를 출력).
 import assert from 'node:assert/strict';
@@ -19,15 +20,30 @@ const read = (p) => fs.readFileSync(path.join(PLAYGROUND, p), 'utf8');
 const BAN = ['2.0', '기존', '미리보기', '이전 실험실', '체험'];
 const BAD_LINK = /teacher-hub|compare\.html|\/labs\/|nets-folding/;
 
+// Stylesheets and other assets use href too. Only actual navigation anchors
+// and literal location assignments are destinations covered by this rule.
+function universeNavigationTargets(source) {
+  return [
+    ...[...source.matchAll(/<a\b[^>]*\bhref\s*=\s*(["'])([^"']+)\1/g)].map(match => match[2]),
+    ...[...source.matchAll(/(?:window\.)?location\.href\s*=\s*(["'])([^"']+)\1/g)].map(match => match[2])
+  ];
+}
+function allowedUniverseTarget(target) {
+  return target === '../student/' || target === '${hubHref}' || /^\.\/(next\/index\.html|index\.html|universe\/.*)$/.test(target);
+}
+
 test('허브·Universe·셸 소스에 옛 화면으로 가는 경로가 없다', () => {
   for (const f of ['next/kit/apl-hub.js', 'next/kit/apl-shell.js', 'next/kit/apl-core.js', 'next/index.html']) {
     const src = read(f).split('\n').filter((l) => !/^\s*(\/\/|\/\*|\*)/.test(l)).join('\n');
     assert.ok(!/teacher-hub|compare\.html|\.legacy\b/.test(src), `${f}: 옛 화면 경로`);
   }
   const uni = read('index.html');
-  const targets = [...uni.matchAll(/(?:href="|location\.href\s*=\s*')(\.[^"']*)/g)].map((m) => m[1]);
+  const targets = universeNavigationTargets(uni);
   assert.ok(targets.length > 0);
-  for (const t of targets) assert.ok(t === '../student/' || /^\.\/(next\/index\.html|index\.html|universe\/.*)$/.test(t), `Universe 링크: ${t}`);
+  for (const target of targets) assert.ok(allowedUniverseTarget(target), `Universe 링크: ${target}`);
+  const fixture = '<link rel="stylesheet" href="../css/student-navigation.css?v=test"><a href="../labs/old.html">이전</a><script>location.href="/labs/old.html"</script>';
+  assert.deepEqual(universeNavigationTargets(fixture), ['../labs/old.html', '/labs/old.html'], '공통 CSS만 제외하고 실제 옛 화면 링크와 이동문은 계속 검사한다');
+  for (const target of universeNavigationTargets(fixture)) assert.equal(allowedUniverseTarget(target), false, '옛 화면 이동 금지는 완화하지 않는다');
   assert.ok(fs.existsSync(path.join(PLAYGROUND, '../student/index.html')), '학생포털 복귀는 실제 운영 진입점이어야 한다');
   assert.ok(!/<title>[^<]*(2\.0|미리보기)/.test(read('next/index.html')), 'next/index.html title');
 });

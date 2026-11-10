@@ -407,7 +407,9 @@ async function behaviorSuite(browser, base, check) {
     await clickCall(page,'applyMaterialQuickInput');
     await capture(page,'material-wrongs-390');
     await page.locator('#material-submit-btn').click();
-    await page.locator('#student-portal-omr-home-section').waitFor();
+    await page.getByRole('heading',{name:'더보기',exact:true}).waitFor();
+    assert.equal(await page.locator('#student-nav [aria-current="page"]').getAttribute('data-student-destination'),'more');
+    assert.match(await page.locator('#toast').innerText(),/수업자료 오답이 제출되었습니다/);
     const write=state.requests.find(r=>r.endpoint==='material-omr/submit'&&r.method==='POST');
     assert.deepEqual(write.body.wrong_numbers,[3,7,8,9]);
     assert.equal(state.requests.filter(r=>r.endpoint==='student-portal/omr-submit').length,0);

@@ -22,7 +22,7 @@ const report = {
   source: arg('base-url') || root, revision: arg('revision') || null,
   auth: 'Unmodified full Worker, name/PIN and teacher login endpoints, ephemeral D1 synthetic identities. Production account: NOT_RUN.',
   readerData: 'Two synthetic arithmetic questions and an empty synthetic metadata sidecar; actual original/mixed rendering, mode controls and shared navigation are unchanged.',
-  startedAt: new Date().toISOString(), checks: [], failures: [], screenshots: [], pageErrors: [], api: [], completed: false
+  startedAt: new Date().toISOString(), checks: [], failures: [], screenshots: [], pageErrors: [], api: [], blockedRequests: [], completed: false
 };
 const labels = ['홈', '시험지', '실험실', '플래너', '더보기'];
 const selectors = {
@@ -88,6 +88,11 @@ async function assertNav(page, active) {
 async function assertHome(page) {
   await page.locator(selectors.feature('exams')).waitFor({ state: 'visible' });
   await assertNav(page, 'home');
+  const heading = await page.locator('.profile-name').evaluate(el => ({
+    top: el.getBoundingClientRect().top,
+    headerBottom: document.querySelector('body > header')?.getBoundingClientRect().bottom || 0
+  }));
+  assert.ok(heading.top >= heading.headerBottom - 1, 'login or return must not leave the home heading clipped behind the fixed header');
   const controls = page.locator('[data-portal-feature]');
   assert.equal(await controls.count(), 4, 'exactly four first-level learning destinations');
   const texts = await controls.allTextContents();
@@ -105,17 +110,21 @@ async function assertHome(page) {
 }
 
 async function instrument(context, worker, options = {}) {
-  if (options.preview) await context.addInitScript(session => {
-    localStorage.setItem('APMATH_SESSION', JSON.stringify(session));
-    localStorage.removeItem('APMATH_STUDENT_PORTAL_SESSION');
-  }, worker.teacherSession);
-  await context.addInitScript(() => localStorage.setItem('APMATH_STUDENT_INSTALL_DISMISSED_AT', String(Date.now())));
+  const applicationOrigin = new URL(options.origin);
+  await context.addInitScript(({ origin, preview, session }) => {
+    // Playwright also runs init scripts in the new page's opaque about:blank
+    // document. Seed only the actual application origin; an application-origin
+    // storage error must still surface through the ordinary pageerror listener.
+    if (location.origin !== origin) return;
+    localStorage.setItem('APMATH_STUDENT_INSTALL_DISMISSED_AT', String(Date.now()));
+    if (preview) {
+      localStorage.setItem('APMATH_SESSION', JSON.stringify(session));
+      localStorage.removeItem('APMATH_STUDENT_PORTAL_SESSION');
+    }
+  }, { origin: options.origin, preview: !!options.preview, session: worker.teacherSession });
   const requests = [];
   await context.route('**/*', async route => {
     const request = route.request(); const url = new URL(request.url());
-    if (url.pathname.endsWith('/archive/data/question_metadata.json')) {
-      return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ records: [] }) });
-    }
     if (url.hostname === 'ap-math-os-v2612.js-pdf.workers.dev') {
       const headers = { ...request.headers() }; delete headers.host; delete headers['content-length'];
       const options = { method: request.method(), headers };
@@ -125,7 +134,27 @@ async function instrument(context, worker, options = {}) {
       requests.push(observation); report.api.push(observation);
       return route.fulfill({ status: response.status, headers: { ...Object.fromEntries(response.headers), 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-allow-methods': '*' }, body: Buffer.from(await response.arrayBuffer()) });
     }
-    if (['127.0.0.1', 'localhost'].includes(url.hostname) || url.hostname === 'icefoxtail.github.io') return route.continue();
+    if (options.published && url.hostname === applicationOrigin.hostname) {
+      const allowed = url.origin === applicationOrigin.origin && ['GET', 'HEAD'].includes(request.method()) && url.pathname.startsWith(prefix + '/');
+      if (!allowed) {
+        // Retain the attempted path/method, never a query carrying a PIN or
+        // token. Do not fulfill a fake success or suppress resulting errors.
+        const blocked = { method: request.method(), origin: url.origin, pathname: url.pathname, reason: 'published assets require GET/HEAD within the exact project prefix' };
+        report.blockedRequests.push(blocked);
+        report.failures.push({ name: 'published asset network boundary', message: blocked.method + ' ' + blocked.origin + blocked.pathname + ': ' + blocked.reason });
+        return route.abort('blockedbyclient');
+      }
+      if (url.pathname === prefix + '/archive/data/question_metadata.json') {
+        return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ records: [] }) });
+      }
+      return route.continue();
+    }
+    if (!options.published && url.origin === applicationOrigin.origin) {
+      if (url.pathname === prefix + '/archive/data/question_metadata.json') {
+        return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ records: [] }) });
+      }
+      return route.continue();
+    }
     // Isolate fonts/analytics/3D CDN. No live API or student data leaves the test.
     return route.fulfill({ status: 200, contentType: 'text/plain', body: '' });
   });
@@ -148,7 +177,7 @@ async function run() {
     const withPage = async (options, callback) => {
       const viewport = options.viewport || { width: 390, height: 844 };
       const context = await browser.newContext({ viewport, isMobile: viewport.width < 768, hasTouch: viewport.width < 768, serviceWorkers: 'block' });
-      const requests = await instrument(context, worker, options);
+      const requests = await instrument(context, worker, { ...options, origin: new URL(portal).origin, published: !!arg('base-url') });
       context.on('page', observedPage => observedPage.on('pageerror', error => report.pageErrors.push({ scenario: options.name, message: error.message })));
       const page = await context.newPage(); page.setDefaultTimeout(10000);
       try {
@@ -233,9 +262,7 @@ async function run() {
       await page.setViewportSize({ width: 800, height: 1280 });
       await capture(page, 'student-lab-hub-800'); await assertNav(page, 'labs');
       await page.setViewportSize({ width: 390, height: 844 });
-      const list = page.getByRole('button', { name: '목록으로 보기', exact: true });
-      if (await list.isVisible()) await list.click();
-      await page.locator('.hub-card a[href*="g8-triangles.html"]').first().click();
+      await page.getByRole('link', { name: /^시작하기 · 삼각형의 성질$/ }).click();
       await page.waitForURL(/g8-triangles\.html/); await assertNav(page, 'labs');
       await capture(page, 'student-lab-scene-390');
       await page.setViewportSize({ width: 800, height: 1280 });
@@ -360,7 +387,7 @@ async function run() {
     report.finishedAt = new Date().toISOString();
     fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   }
-  console.log(JSON.stringify({ output, checks: report.checks.length, failures: report.failures, pageErrors: report.pageErrors, screenshots: report.screenshots.length }));
+  console.log(JSON.stringify({ output, checks: report.checks.length, failures: report.failures, pageErrors: report.pageErrors, blockedRequests: report.blockedRequests, screenshots: report.screenshots.length }));
   if (report.failures.length || report.pageErrors.length) process.exitCode = 1;
 }
 

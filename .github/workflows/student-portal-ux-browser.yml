@@ -145,7 +145,8 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/student-browser/node_modules
         run: |
           node source/tests/student-portal-accessibility-browser.cjs \
-            --output="$RUNNER_TEMP/student-portal-ux/accessibility"
+            --output="$RUNNER_TEMP/student-portal-ux/accessibility" \
+            --revision="$(git -C source rev-parse HEAD)"
       - name: Upload screenshots and machine readable evidence
         uses: actions/upload-artifact@v4
         if: always()
