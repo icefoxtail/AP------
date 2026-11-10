@@ -51,7 +51,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 정의역의 다섯 값 −2, −1, 0, 1, 2에 대응하는 점이 포물선 y=x²−2 위에 찍혀 있고, 높이가 2인 점과 −1인 점에서 y축까지 점선이 그어져 있다.",
+    "solutionImageCaption": "정의역의 각 값에서 함숫값을 구하면 f(−2)=2, f(−1)=−1, f(0)=−2, f(1)=−1, f(2)=2이다. 이 함수의 그래프는 다섯 점뿐이고 그림의 포물선은 점의 위치를 보이는 참고선이다. 치역은 함숫값을 중복 없이 모은 집합이다. 정답은 {−2, −1, 2}이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -211,7 +215,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 y=−(2분의 3)x+2분의 1과, 이 직선을 y=x에 대하여 대칭이동한 주황 직선, 점선으로 그린 대칭축 y=x가 있다. 주황 직선에는 y=f⁻¹(x)라는 이름이 지시선으로 붙어 있다.",
+    "solutionImageCaption": "역함수는 주어진 식에서 x와 y를 바꾸어 구한다. 원래 함수를 f라 하면 x=−(2분의 3)y+2분의 1을 y에 대하여 풀어 y=−(3분의 2)x+3분의 1을 얻고, 그 그래프는 원래 직선을 y=x에 대하여 대칭이동한 것이다. 정답은 y=−(3분의 2)x+3분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -264,7 +272,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 5x+2y−2=0과, 이 직선을 x축 방향으로 2만큼, y축 방향으로 −3만큼 평행이동한 주황 직선 m이 그려져 있다. 파란 직선 위의 한 점에서 오른쪽으로 2, 아래로 3 이동한 점이 주황 직선 위에 있음을 점선으로 보인다.",
+    "solutionImageCaption": "평행이동한 뒤의 점을 (x,y)라 하면 원래 점은 (x−2,y+3)이다. 이를 원래 직선의 식에 대입하면 5(x−2)+2(y+3)−2=0, 즉 5x+2y−6=0이다. 그림의 m이 평행이동한 직선이다. 정답은 5x+2y−6=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -424,7 +436,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X의 원소 1, 2, 3, 4, 5를 세 열로 늘어놓고 함수 f를 한 번, 두 번 적용한 결과를 화살표로 이은 대응도. 3에서 4, 1로 가는 파란 경로와 4에서 1, 2로 가는 주황 경로가 굵게 표시되어 있다.",
+    "solutionImageCaption": "그림의 화살표는 f(1)=2, f(2)=3, f(3)=4, f(4)=1, f(5)=5이다. 파란 경로는 3→4→1이므로 (f∘f)(3)=1이고 (f∘f∘f)(3)=f(1)=2이다. 주황 경로는 4→1→2이므로 (f∘f)(4)=2, 즉 (f∘f)⁻¹(2)=4이다. 두 값을 더하면 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -478,7 +494,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 A(2,3)과 B(6,1), A를 x축에 대하여 대칭이동한 점 A′(2,−3)을 나타내고, 선분 A′B가 x축과 만나는 점 P를 표시한 그림. A와 A′를 잇는 점선, A와 P를 잇는 점선, x축 위의 직각 표시와 같은 길이 표시가 있다.",
+    "solutionImageCaption": "A를 x축에 대하여 대칭이동하면 A′(2,−3)이고 AP=A′P이다. 따라서 AP+BP=A′P+PB≥A′B이고, A′, P, B가 한 직선 위에 있을 때 최솟값을 갖는다. 그림의 P는 직선 A′B가 x축과 만나는 점이다. 정답은 4√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -584,7 +604,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 집합 A, B, C가 겹친 벤다이어그램. 원소 2와 4는 세 집합의 공통 부분, 8은 A와 B, 6은 A와 C, 1은 B와 C에 놓여 있고, 10은 A에만, 16은 B에만, 3과 5는 C에만 놓여 있다.",
+    "solutionImageCaption": "16의 양의 약수는 1, 2, 4, 8, 16이고 3x−5<16을 만족하는 자연수는 1부터 6까지이다. (A∪B)∩(B∪C)=B∪(A∩C)이고 A∩C={2,4,6}이므로 구하는 집합은 {1,2,4,6,8,16}이다. 정답은 {1,2,4,6,8,16}이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -743,7 +767,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 집합 A, B, C의 벤다이어그램. 집합 A 안에서 1, 2, 6은 B와 C의 밖에, 4는 B에만, 3은 C에만, 5는 B와 C의 공통 부분에 놓여 있다.",
+    "solutionImageCaption": "A∩Bᶜ={1,2,3,6}이므로 A의 원소 중 B에 속하는 것은 4, 5이고, A∩Cᶜ={1,2,4,6}이므로 C에 속하는 것은 3, 5이다. 그림은 A의 원소가 B, C에 속하는지를 영역으로 보인 것이고, A 밖의 원소는 알 수 없어 그리지 않았다. B에 속하지 않고 C에 속하는 A의 원소는 3뿐이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -850,7 +878,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 점 (a,b)를 y축, 원점, 직선 y=x에 대하여 차례로 대칭이동한 점 (−a,b), (a,−b), (−b,a)를 화살표와 순서 번호 1, 2, 3으로 이은 그림. 예시 위치는 (a,b)=(1,2)이고, 직선 y=x가 함께 그려져 있다.",
+    "solutionImageCaption": "그림의 1은 y축 대칭, 2는 원점 대칭, 3은 직선 y=x 대칭이다. 한 번의 연산은 (a,b)를 (−b,a)로 옮긴다. 예로 (1,2)→(−2,1)→(−1,−2)→(2,−1)→(1,2)처럼 네 번 만에 처음 점으로 돌아오고, 30=4×7+2이므로 30회 결과는 2회 결과와 같다. 정답은 (−1,−2)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -957,7 +989,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 f(x)=x²−2x−8의 그래프. x축과 만나는 두 점의 좌표가 표시되어 있고, 두 점 사이에서 그래프가 x축 아래에 있는 부분이 연하게 색칠되어 있다.",
+    "solutionImageCaption": "f(x)=(x−4)(x+2)이므로 f(x)≥0인 범위는 x≤−2 또는 x≥4이다. f(x)<0인 구간 −2<x<4를 g(x)의 값이 지나지 않으려면 g(x)의 최솟값 5−(4분의 a²)이 4 이상이어야 하므로 a²≤4이다. 정답은 −2≤a≤2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1065,7 +1101,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 함수 f의 그래프의 예. x<1에서는 기울기 1인 직선, x≥1에서는 아래로 볼록한 포물선이고, 두 부분이 점 (1,0)에서 이어진다. 직선 부분은 x축 아래에, 포물선 부분은 x축 위에 있다.",
+    "solutionImageCaption": "예: a=0, b=−1일 때의 그래프이다. 역함수가 존재하려면 f가 일대일대응이어야 한다. x<1에서 치역이 (−∞,0)이므로 x≥1 부분의 치역이 [0,∞)가 되어야 하고, 꼭짓점의 x좌표 2분의 a가 1 이하이며 f(1)=1−a+b=0이어야 한다. 따라서 점 (a,b)는 직선 b=a−1에서 a≤2인 부분이고, 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1114,9 +1154,9 @@ window.questionBank = [
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
     "solutionStatus": "created_unreviewed",
-    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q21-solution.svg",
-    "solutionImageAlt": "원 (x-1)^2+(y+2)^2=9의 중심 A(1,-2)가 평행이동으로 중심 B(-2,1)로 옮겨지고 반지름 3은 그대로이다.",
-    "solutionImageCaption": "원 (x-1)^2+(y+2)^2=9의 중심 A(1,-2)가 평행이동으로 중심 B(-2,1)로 옮겨지고 반지름 3은 그대로이다.",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 반지름이 같은 두 원이 그려져 있다. 한 원의 중심 A(1,−2)와 다른 원의 중심 B(−2,1)이 선분으로 이어져 있다.",
+    "solutionImageCaption": "평행이동해도 원의 반지름은 변하지 않으므로 두 원의 중심과 반지름을 비교한다. 원 (x−1)²+(y+2)²=9의 중심 A(1,−2)가 옮겨진 중심 B(−2,1)이 두 번째 원의 중심이고 반지름은 3으로 같다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1211,7 +1251,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X={2,3,4,5,6}의 각 원소가 함수 f에 의해 대응하는 대응도. 2는 6으로, 3은 2로, 4는 3으로, 5는 4로, 6은 5로 화살표가 이어진다.",
+    "solutionImageCaption": "f(2)=6이고 3 이상의 x에서 f(x)=x−1이므로 f(3)=2, f(4)=3, f(5)=4, f(6)=5이다. 조건 f(g(x))=g(f(x))에 x=2, 3, 4, 5를 차례로 넣고 그림의 화살표를 거꾸로 따라가면 g(6)=4, g(3)=6, g(4)=2, g(5)=3이다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
