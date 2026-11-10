@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "QC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "QP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "caption": "접힘에서 BP=BC=AD=x이다. AP=x−3이고 직각삼각형 ABP에서 x²=9²+(x−3)²이므로 x=15이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직사각형 ABCD에서 AB=9cm, C를 AD 위의 P에 오도록 접었고 PD=3cm, DQ=4cm이며 접는 선이 BQ이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형 ABCD, AD 위의 P, CD 위의 Q, 접는 선 BQ와 원문에 표시된 길이를 나타낸다."
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AB9",
+        "from": "A",
+        "to": "B",
+        "label": "9",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "PD3",
+        "from": "P",
+        "to": "D",
+        "label": "3",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "DQ4",
+        "from": "D",
+        "to": "Q",
+        "label": "4",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rightA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "accessibilityDescription": "직사각형 ABCD 안에 BQ 접는 선과 AD 위의 P, CD 위의 Q가 표시되어 있다."
+}

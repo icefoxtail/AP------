@@ -1,0 +1,100 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "작은 삼각기둥 ABCDEF"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PRISM",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [0, 0],
+                [4, 0],
+                [3.6, 4.8]
+              ]
+            },
+            "height": 8,
+            "names": {
+              "base": "ABC",
+              "top": "DEF"
+            }
+          }
+        ],
+        "dims": [
+          {
+            "edge": "AB",
+            "label": "4"
+          },
+          {
+            "edge": "AC",
+            "label": "6"
+          },
+          {
+            "edge": "AD",
+            "label": "x"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "큰 삼각기둥 GHIJKL (A′B′C′D′E′F′에 대응)"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "kind": "PRISM",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [0, 0],
+                [6, 0],
+                [5.4, 7.2]
+              ]
+            },
+            "height": 12,
+            "names": {
+              "base": "GHI",
+              "top": "JKL"
+            }
+          }
+        ],
+        "dims": [
+          {
+            "edge": "GI",
+            "label": "9"
+          },
+          {
+            "edge": "GJ",
+            "label": "12"
+          },
+          {
+            "edge": "GH",
+            "label": "y"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "원문의 대응 순서대로 AB와 A′B′, AC와 A′C′, AD와 A′D′가 대응한다. AC:A′C′=6:9=2:3이므로 A′B′=y=6cm이고 AD=x=8cm이다. 따라서 x+y=14이며 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 삼각기둥은 서로 닮았고, AB=4cm, AC=6cm, A′C′=9cm, A′D′=12cm이다. AB와 A′B′가 대응한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 밑면의 좌표는 원문에 수치로 주어지지 않은 모양을 나타내는 도식 좌표이며, 이 좌표로부터 각도나 추가 변 길이를 추론하지 않는다. 큰 기둥의 엔진 라벨 G,H,I,J,K,L은 원문의 A′,B′,C′,D′,E′,F′에 각각 대응한다. 그림에는 알려진 변과 x,y만 표시한다."
+  ],
+  "sourceQuote": "두 삼각기둥은 서로 닮은 도형이다. AB에 대응하는 변이 A′B′일 때, x+y의 값은?"
+}

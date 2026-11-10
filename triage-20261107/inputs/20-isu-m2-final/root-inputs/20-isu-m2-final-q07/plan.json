@@ -1,0 +1,187 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "caption": "직각삼각형의 빗변에 내린 높이에서 AH²=BH·CH이므로 8²=4·CH, CH=16cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직각삼각형 ABC에서 ∠A=90°, AH⊥BC, AH=8cm, BH=4cm이며 CH=x cm이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문과 같은 직각삼각형 ABC, 빗변 BC 위의 H, 수선 AH 및 주어진 AH와 BH 길이를 나타낸다."
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AH8",
+        "from": "A",
+        "to": "H",
+        "label": "8",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "BH4",
+        "from": "B",
+        "to": "H",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angleA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightH",
+        "refs": [
+          "A",
+          "H",
+          "B"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "accessibilityDescription": "직각삼각형 ABC에서 H는 빗변 BC 위에 있고, AH는 BC에 수직이다."
+}

@@ -1,0 +1,353 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "27"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rayBC",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "rayBC"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleA8",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crossBC",
+        "op": "INTERSECTION",
+        "inputs": [
+          "lineBC",
+          "circleA8"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "crossBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "rayEF",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineEF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "rayEF"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleD12",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crossEF",
+        "op": "INTERSECTION",
+        "inputs": [
+          "lineEF",
+          "circleD12"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "crossEF"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "D",
+            "E"
+          ],
+          "sign": 1
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AB6",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "DE9",
+        "from": "D",
+        "to": "E",
+        "label": "9",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "DF12",
+        "from": "D",
+        "to": "F",
+        "label": "12",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angleB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 110,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "닮음비는 AB:DE=6:9=2:3이다. 따라서 AC:DF=2:3이고 DF=12cm이므로 AC=8cm이다. 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "△ABC∼△DEF이며 A↔D, B↔E, C↔F이다. AB=6cm, ∠B=110°, DE=9cm, DF=12cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "보조 광선과 원은 삼각형 꼭짓점 C와 F를 정확히 정하기 위한 숨은 작도이며 그림에는 표시하지 않는다. 큰 삼각형은 같은 대응각과 주어진 비율로 구성한다."
+  ],
+  "accessibilityDescription": "닮은 삼각형 ABC와 DEF에서 AB와 DE, AC와 DF가 대응하고, B의 각은 110도이다."
+}

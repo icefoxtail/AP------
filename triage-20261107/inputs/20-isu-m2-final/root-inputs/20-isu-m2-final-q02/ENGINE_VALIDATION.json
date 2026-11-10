@@ -1,0 +1,514 @@
+{
+  "question": "Isu 2020 M2 Q02",
+  "result": {
+    "status": "PASS",
+    "contractSource": {
+      "path": "preparation-20-maesan-h1-1final/contracts/construction.py",
+      "bytes": 27356,
+      "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+      "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+    },
+    "mathPlanSha256": "48b47070aa16c0c7123e3e9b3d191902757480df92cca7587a0f1bcfde412d9a",
+    "stages": {
+      "construction.validate": "PASS",
+      "construction.execute": "PASS"
+    },
+    "pointProvenance": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "E",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "rayBC",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "C",
+        "op": "SELECT_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "rayEF",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "F",
+        "op": "SELECT_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      }
+    ],
+    "validation": {
+      "nodeCount": 14,
+      "dependencyOrder": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "circleA8",
+        "circleD12",
+        "rayBC",
+        "rayEF",
+        "lineBC",
+        "lineEF",
+        "crossBC",
+        "crossEF",
+        "C",
+        "F"
+      ],
+      "conditionAuditCount": 0
+    },
+    "model": {
+      "engine": "SymPy",
+      "version": "1.14.0",
+      "points": {
+        "A": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "B": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            6.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "D": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            18.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "E": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "27"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            27.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "rayBC": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "6.342020143325668733044100000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.9396926207859083840541000000000000"
+            }
+          ],
+          "approximation": [
+            6.342020143325668,
+            0.9396926207859084
+          ],
+          "precisionDigits": 17
+        },
+        "rayEF": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "27.34202014332566873304410000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.9396926207859083840541000000000000"
+            }
+          ],
+          "approximation": [
+            27.34202014332567,
+            0.9396926207859084
+          ],
+          "precisionDigits": 17
+        },
+        "C": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "7.239265632857622706559665619507245"
+            },
+            {
+              "kind": "decimal",
+              "value": "3.404854342982460594295055151059544"
+            }
+          ],
+          "approximation": [
+            7.239265632857623,
+            3.4048543429824605
+          ],
+          "precisionDigits": 17
+        },
+        "F": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "28.85889844928643405983949842926087"
+            },
+            {
+              "kind": "decimal",
+              "value": "5.107281514473690891442582726589317"
+            }
+          ],
+          "approximation": [
+            28.858898449286436,
+            5.107281514473691
+          ],
+          "precisionDigits": 17
+        }
+      },
+      "scalars": {},
+      "lines": {
+        "lineBC": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-0.9396926207859083840541000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.3420201433256687330441000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "5.638155724715450304324600000000000"
+            }
+          ],
+          "approximation": [
+            -0.9396926207859084,
+            0.3420201433256687,
+            5.638155724715451
+          ]
+        },
+        "lineEF": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-0.9396926207859083840541000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.3420201433256687330441000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "25.37170076121952636946070000000000"
+            }
+          ],
+          "approximation": [
+            -0.9396926207859084,
+            0.3420201433256687,
+            25.371700761219525
+          ]
+        }
+      },
+      "circles": {
+        "circleA8": {
+          "centerExact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "radiusExact": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "approximation": [
+            0.0,
+            0.0,
+            8.0
+          ]
+        },
+        "circleD12": {
+          "centerExact": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "radiusExact": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "approximation": [
+            18.0,
+            0.0,
+            12.0
+          ]
+        }
+      },
+      "pointSets": {
+        "crossBC": [
+          {
+            "exact": [
+              {
+                "kind": "decimal",
+                "value": "3.357001025856245504654663015909622"
+              },
+              {
+                "kind": "decimal",
+                "value": "-7.261580001101696552230948107139544"
+              }
+            ],
+            "approximation": [
+              3.3570010258562455,
+              -7.261580001101697
+            ]
+          },
+          {
+            "exact": [
+              {
+                "kind": "decimal",
+                "value": "7.239265632857622706559665619507245"
+              },
+              {
+                "kind": "decimal",
+                "value": "3.404854342982460594295055151059544"
+              }
+            ],
+            "approximation": [
+              7.239265632857623,
+              3.4048543429824605
+            ]
+          }
+        ],
+        "crossEF": [
+          {
+            "exact": [
+              {
+                "kind": "decimal",
+                "value": "23.03550153878436825698199452386443"
+              },
+              {
+                "kind": "decimal",
+                "value": "-10.89237000165254482834642216070932"
+              }
+            ],
+            "approximation": [
+              23.03550153878437,
+              -10.892370001652544
+            ]
+          },
+          {
+            "exact": [
+              {
+                "kind": "decimal",
+                "value": "28.85889844928643405983949842926087"
+              },
+              {
+                "kind": "decimal",
+                "value": "5.107281514473690891442582726589317"
+              }
+            ],
+            "approximation": [
+              28.858898449286436,
+              5.107281514473691
+            ]
+          }
+        ]
+      },
+      "conditionAudits": [],
+      "transcript": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "E",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "circleA8",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "dependencies": [
+            "A"
+          ]
+        },
+        {
+          "nodeId": "circleD12",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "dependencies": [
+            "D"
+          ]
+        },
+        {
+          "nodeId": "rayBC",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "nodeId": "rayEF",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "D",
+            "E"
+          ]
+        },
+        {
+          "nodeId": "lineBC",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "rayBC"
+          ]
+        },
+        {
+          "nodeId": "lineEF",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "E",
+            "rayEF"
+          ]
+        },
+        {
+          "nodeId": "crossBC",
+          "op": "INTERSECTION",
+          "dependencies": [
+            "circleA8",
+            "lineBC"
+          ]
+        },
+        {
+          "nodeId": "crossEF",
+          "op": "INTERSECTION",
+          "dependencies": [
+            "circleD12",
+            "lineEF"
+          ]
+        },
+        {
+          "nodeId": "C",
+          "op": "SELECT_POINT",
+          "dependencies": [
+            "A",
+            "B",
+            "crossBC"
+          ]
+        },
+        {
+          "nodeId": "F",
+          "op": "SELECT_POINT",
+          "dependencies": [
+            "D",
+            "E",
+            "crossEF"
+          ]
+        }
+      ],
+      "order": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "circleA8",
+        "circleD12",
+        "rayBC",
+        "rayEF",
+        "lineBC",
+        "lineEF",
+        "crossBC",
+        "crossEF",
+        "C",
+        "F"
+      ],
+      "coordinateMode": "CONSTRUCTED_REALIZATION"
+    },
+    "conditionAudits": [],
+    "provenanceAudit": {
+      "status": "PASS",
+      "issues": []
+    }
+  },
+  "formal_render": "NOT_RUN"
+}
