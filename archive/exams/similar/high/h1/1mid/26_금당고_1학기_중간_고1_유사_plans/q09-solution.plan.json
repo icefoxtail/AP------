@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "그래프는 꼭짓점 $\\left(-\\dfrac34,\\ 0\\right)$",
+  "caption": "이차함수 y=2x²+3x+9/8의 그래프는 꼭짓점 (-3/4, 0)에서 x축에 접한다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "9/8",
+      "3",
+      "2"
+    ],
+    "domain": [
+      -2.2,
+      0.7
+    ],
+    "viewport": [
+      -2.5,
+      1.5,
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -0.75,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "-3/4",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "k=9/8이면 y=2(x+3/4)²이므로 x축과 한 점에서 만난다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=9/8일 때 포물선의 꼭짓점이 x축 위에 있어 한 점에서 만남을 보여 준다."
+  ],
+  "assetPath": "assets/images/26_금당고_1학기_중간_고1_유사/q09-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q09-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q09-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q09-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "ordinal": 9,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}
