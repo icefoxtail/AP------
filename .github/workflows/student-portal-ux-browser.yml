@@ -31,6 +31,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Targeted student UX and snapshot regression
+        run: |
+          node tests/student-portal-experience.test.js
+          node tests/student-portal-geometry-lab-entry.test.js
+          node tests/student-portal-mixed-review-payload.test.js
+          node tests/student-portal-omr-review-ui.test.js
+          node tests/student-portal-wrong-clinic-hotfix.test.js
+          node tests/apmath-student-teacher-preview.test.js
+          node tests/student-portal-omr-history-routes.test.js
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
