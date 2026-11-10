@@ -42,7 +42,11 @@ window.questionBank = [
     "category": "최대·최소",
     "originalCategory": "최대·최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 기본 삼차곡선과 닫힌구간의 양 끝점 및 내부 정지점을 표시한다.",
+    "solutionImageCaption": "기본 곡선의 세로 이동을 이용해 최솟값 조건을 세운다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
     "category": "속도와 가속도",
     "originalCategory": "속도와 가속도",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 시각 t로 읽는 포물선과 두 영점을 표시한다.",
+    "solutionImageCaption": "두 후보 시각 가운데 t≥0인 값을 고른다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +142,11 @@ window.questionBank = [
     "category": "속도와 가속도",
     "originalCategory": "속도와 가속도",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간 순서선에서 a와 e는 접촉, b와 c와 d는 교차임을 표시한다.",
+    "solutionImageCaption": "a와 e의 접촉에서는 부호가 유지되고 b,c,d 세 교차에서 방향을 바꾼다. 정답은 3회다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -304,7 +316,11 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "방정식과 부등식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차곡선에서 A는 전역 극솟점, B는 도함수 부호가 바뀌지 않는 정지변곡점이다.",
+    "solutionImageCaption": "다항함수의 전역 최솟값을 모든 실수에서 가능한 a의 최댓값과 연결한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -348,7 +364,11 @@ window.questionBank = [
     "category": "증가·감소와 극값",
     "originalCategory": "증가·감소와 극값",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선의 극댓점 (0,2), 극솟점 (2,−2)와 x=−2부터 x=2까지의 부호 영역을 표시한다.",
+    "solutionImageCaption": "극값 2, −2의 곱이 −4임을 보이고 대칭구간의 정적분을 계산한다. 정답은 −6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -392,7 +412,11 @@ window.questionBank = [
     "category": "도함수",
     "originalCategory": "도함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 A가 x=−1에서 x축 위쪽에 있는 위로 열린 이차함수 그래프를 표시한다.",
+    "solutionImageCaption": "적분을 미분하면 f가 되므로 완전제곱식의 최솟값을 구한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -436,7 +460,11 @@ window.questionBank = [
     "category": "정적분의 뜻",
     "originalCategory": "정적분의 뜻",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 함수의 꺾이는 지점과 대칭 구간의 그래프를 표시한다.",
+    "solutionImageCaption": "절댓값의 기준점에서 구간을 나누고 짝함수 대칭으로 적분한다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -483,9 +511,9 @@ window.questionBank = [
     "originalCategory": "도형 활용",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q11_solution.svg",
-    "solutionImageAlt": "정확한 포물선과 직선 사이 영역을 x축 위아래로 구분한 그림",
-    "solutionImageCaption": "파란 영역의 넓이 4/3이 전체 면적의 절반이다.",
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−2x와 직선 y=kx가 둘러싼 영역을 x축 위쪽(주황)과 아래쪽(파랑)으로 나눈 예시 개형 그래프. 아래쪽 영역에 4/3이 적혀 있다.",
+    "solutionImageCaption": "예: L=5/2로 그린 개형이다. x축 아래 넓이 4/3이 전체 넓이 L³/6의 절반이므로 L³=16이고, 정답은 16이다.",
     "solutionImageSize": "full"
   },
   {
@@ -533,7 +561,11 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "방정식과 부등식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 삼차함수의 그래프. 극대 (−2,16)과 극소 (2,−16) 사이에 놓인 수평선 y=n이 곡선과 서로 다른 세 점에서 만난다.",
+    "solutionImageCaption": "예: 수평선 y=n이 두 극값 −16과 16 사이에 있을 때 곡선과 세 점에서 만난다. 이를 만족하는 자연수 n은 1부터 15까지이며, 정답은 15개다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -575,7 +607,11 @@ window.questionBank = [
     "category": "접선",
     "originalCategory": "접선",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 접점의 x좌표 t로 읽는 삼차곡선이다. 세로값 y는 K(t)이고 극솟점 (−1,2)와 극댓점 (0,3)을 표시한다.",
+    "solutionImageCaption": "k가 극솟값 2와 극댓값 3 사이에 있으면 K(t)=k의 근, 곧 접점이 세 개다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -617,7 +653,11 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "방정식과 부등식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선의 두 극점과 x축 위 세 교점을 표시한다.",
+    "solutionImageCaption": "세 근의 합이 0임을 이용해 절댓값의 합이 최소가 되는 경우를 찾는다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -663,7 +703,11 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "방정식과 부등식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 반례 함수 h(x)=f(|x|)와 높이 2의 두 점 A,B, 원점 K를 표시한다.",
+    "solutionImageCaption": "반례 함수 h(x)=f(|x|)는 높이 2에서 두 점과 만난다. 옳은 진술은 ㄱ과 ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -711,9 +755,9 @@ window.questionBank = [
     "originalCategory": "정적분의 뜻",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q16_solution.svg",
-    "solutionImageAlt": "주기 4인 원시함수의 극솟값과 F(x)=-2 교점을 표시한 그래프",
-    "solutionImageCaption": "각 주기에서 F=-2의 교점은 두 개, 극솟값은 -4이다.",
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: F(x)의 두 주기 그래프. 극솟값 −4와 직선 y=−2가 만나는 네 점이 반복해서 나타난다.",
+    "solutionImageCaption": "F는 주기 4로 반복되고 극솟값은 −4이며, F(x)=−2의 해는 1, 3, 5, 7, …로 이어진다. 정답은 ㄱ, ㄴ, ㄷ이다.",
     "solutionImageSize": "full"
   },
   {
@@ -760,7 +804,11 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "방정식과 부등식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 예시 그래프. 그래프가 α에서 x축에 접하며 극대가 되고, s에서 x축과 만나며, β와 γ에서 함숫값이 음수인 점이 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=(x+1)²(5x−4)이면 f+xf′의 세 근은 α=−1, β=−2/5, γ=1/2이고 s=4/5이다. f는 α에서 극대, β·γ에서 음수이며 실근은 두 개다. 정답은 ㄱ, ㄴ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -806,7 +854,11 @@ window.questionBank = [
     "category": "정적분과 함수",
     "originalCategory": "정적분과 함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 개형: 두 극솟값이 같은 사차 원시함수의 W 꼴 그래프와 두 극솟점을 지나는 주황색 수평선이 곡선과 두 점에서만 만난다.",
+    "solutionImageCaption": "예: 그림의 계수는 모양을 보이기 위한 예시이다. 극솟값이 같은 두 극솟점 x=0, x=1에서 g(b)=2이고 그 근처에서는 교점이 4개이다. 정답은 ㄴ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -853,7 +905,11 @@ window.questionBank = [
     "category": "증가·감소와 극값",
     "originalCategory": "증가·감소와 극값",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: b=1,2,3에는 각각 네 점, b=4,5,6에는 각각 세 점을 쌓아 나타낸다.",
+    "solutionImageCaption": "가능한 정수 순서쌍의 개수를 b별로 더하고 f(0)이 최소인 경우를 찾는다. 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -931,7 +987,11 @@ window.questionBank = [
     "category": "증가·감소와 극값",
     "originalCategory": "증가·감소와 극값",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: h(x)=g(x)−f(x)의 사차곡선과 두 접점, 가운데 극댓점을 표시한다.",
+    "solutionImageCaption": "두 접점에서 h가 이중근을 갖는 사차식으로 정리해 가운데 극댓값을 구한다. 정답은 81/16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -970,9 +1030,9 @@ window.questionBank = [
     "originalCategory": "넓이",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q22_solution.svg",
-    "solutionImageAlt": "삼차곡선, 기울기 2인 평행접선 두 개와 교점 네 개를 표시한 도형",
-    "solutionImageCaption": "네 교점으로 이루는 평행사변형의 넓이는 12이다.",
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_수학II/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선과 기울기 2인 평행한 두 접선(주황 y=2x+3, 파랑 y=2x+7), 네 교점을 꼭짓점으로 하는 평행사변형, 곡선과 각 접선 사이의 두 색 영역을 표시한다.",
+    "solutionImageCaption": "곡선과 각 접선 사이의 넓이는 모두 27/4이고, 네 교점을 꼭짓점으로 하는 평행사변형의 넓이는 12이다. 정답은 15이다.",
     "solutionImageSize": "full"
   }
 ];

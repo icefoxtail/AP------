@@ -42,7 +42,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 두 점 A, B와 중심 O를 이은 중심각 140도, 큰 호 AB를 보는 점 P의 원주각 x",
+    "solutionImageCaption": "중심각이 140°이므로 점 P가 보는 반대쪽 큰 호는 360°−140°=220°이다. 원주각은 같은 호의 중심각의 절반이므로 x는 220°의 절반이다. 정답은 ⑤ 110°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에서 호 AB 5cm가 보는 원주각 20도와 호 AB와 호 BC를 합친 호 AC가 보는 원주각 x",
+    "solutionImageCaption": "20°인 원주각이 보는 호 AB는 5cm이고 호 BC는 10cm이므로 x가 보는 호 AC는 15cm이다. 같은 원에서 원주각의 크기는 호의 길이에 비례하므로 20°의 3배가 x이다. 정답은 ③ 60°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -128,7 +136,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AC와 직각 표시 ∠ADC, 30도인 ∠DAC, 같은 호 AD를 보는 두 원주각 ∠ACD와 x",
+    "solutionImageCaption": "AC는 지름이므로 ∠ADC=90°이다. 삼각형 ACD에서 ∠ACD=180°−90°−30°=60°이다. ∠ACD와 x는 같은 호 AD를 보는 원주각이므로 크기가 같다. 정답은 ② 60°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -171,7 +183,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 두 현 AC, BD의 교점 P, 호 AB 68도(파랑), 호 CD 136도(주황), ∠ADB 34도와 각 x=∠DPC",
+    "solutionImageCaption": "∠ADB=34°이므로 호 AB는 2×34°=68°이고, 호 CD는 호 AB의 2배인 136°이다. ∠x는 호 CD를 마주 보고 그 맞꼭지각은 호 AB를 마주 보므로 x는 두 호의 합 68°+136°의 절반이다. 정답은 ④ 102°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -214,7 +230,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 접선 AT 위의 접점 A와 원 위의 점 B, C로 이루어진 삼각형, 호 AC 128도와 같은 길이의 호 AB, BC",
+    "solutionImageCaption": "∠ABC=64°이므로 호 AC는 128°이고, 나머지 두 호의 합은 232°이다. AB=BC이므로 호 AB와 호 BC는 각각 116°이다. 원주각 ∠ACB는 호 AB의 절반이고, 접선과 현이 이루는 각 ∠BAT는 그 호에 대한 원주각과 같다. 정답은 ③ 58°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -257,7 +277,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 원 위의 점 E, 같은 호 AE를 보는 두 원주각 35도와 y, 바깥각 x",
+    "solutionImageCaption": "∠ABE와 ∠ADE는 같은 호 AE를 보는 원주각이므로 y=35°이다. 원에 내접하는 사각형 ABCD에서 ∠ABC=180°−70°=110°이고, x는 그 바깥각이므로 x=70°이다. 따라서 x+y=105°이다. 정답은 ② 105°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -300,7 +324,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선과 접점 A, B, 원 위의 점 Q, 큰 호 230도와 중심각 130도",
+    "solutionImageCaption": "∠AQB=115°가 보는 호는 점 Q를 포함하지 않는 큰 호이므로 230°이다. 작은 호 AB는 360°−230°=130°이고 중심각 ∠AOB도 130°이다. 사각형 PAOB에서 ∠PAO=∠PBO=90°이므로 x=180°−130°이다. 정답은 ① 50°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -343,7 +371,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB와 접점 T에서의 접선, 직각삼각형 ABT의 직각과 30도, 60도 각, 변 AB와 BT의 길이",
+    "solutionImageCaption": "AB는 지름이므로 ∠ATB=90°이다. 접선과 현이 이루는 각 ∠ATP=30°는 ∠ABT와 같으므로 ∠BAT=60°이다. 직각삼각형 ABT에서 AT=4√3, BT=12이므로 직각을 낀 두 변의 곱의 절반이 넓이이다. 정답은 ⑤ 24√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -386,7 +418,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 두 바깥점 P, Q, 색으로 구분한 네 호 AB, BC, CD, DA 및 주어진 각 55도, 37도",
+    "solutionImageCaption": "그림에서 호 AB(파랑), BC(초록), CD(주황), DA(분홍)의 크기를 각각 a, b, c, d라 한다. ∠B=55°에서 c+d=110°이고, ∠Q=37°에서 a−c=74°이다. 네 호의 합이 360°이므로 b−d=66°이다. 점 P에서의 각 x는 호 BC와 호 DA의 차의 절반이다. 정답은 ② 33°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -953,7 +989,11 @@ window.questionBank = [
     ],
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 1학기 성적과 2학기 성적의 산점도 20개 점, 대각선 y=x와 그 위쪽의 파란 점 8개",
+    "solutionImageCaption": "대각선 y=x보다 위쪽에 있는 점은 2학기 성적이 1학기보다 오른 학생이다. 파란 점 8개가 그 점이므로 전체 20명 중 8명이다. 비율은 20분의 8, 곧 5분의 2이다. 정답은 ④ 5분의 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -990,7 +1030,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 정오각형 ABCDE에서 호 CD에 대한 중심각 72도와 세 원주각 CAD, CBD, CED",
+    "solutionImageCaption": "정오각형의 꼭짓점은 원을 5등분하므로 호 CD의 중심각은 360°÷5=72°이다. 호 CD에 대한 원주각은 C, D가 아닌 꼭짓점 A, B, E에서 만든 ∠CAD, ∠CBD, ∠CED이다. 이 세 원주각은 같은 호를 보므로 크기가 같고 중심각의 절반이다. 정답은 (1) ∠CAD, ∠CBD, ∠CED (2) 36°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1027,7 +1071,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+    "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 BC의 연장선과 접선 PA가 만나는 점 P, 접선과 현 AB가 이루는 각 68도, 직각 BAC와 각 x",
+    "solutionImageCaption": "BC는 지름이므로 ∠BAC=90°이다. 접선과 현 AB가 이루는 각 68°는 같은 호의 원주각 ∠ACB와 같다. 삼각형 ABC에서 ∠ABC=180°−90°−68°=22°이고, ∠PAB=180°−68°=112°이다. 삼각형 PAB의 내각의 합에서 x를 구한다. 정답은 46°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1070,7 +1118,11 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "decisiveStep": "A=14, B=16, C=15+20=35이므로 A+B-C=14+16-35=-5이다.",
     "visualDisposition": "NATIVE_SOURCE_CHART_ONLY_CROP_NO_SOLUTION_SVG_REQUIRED",
-    "visualEvidence": "Chart-only crop compared against native PDF page 5; title, key, stem row and all twelve leaves are preserved exactly, with duplicate prompt text and repeated subquestion removed from the image."
+    "visualEvidence": "Chart-only crop compared against native PDF page 5; title, key, stem row and all twelve leaves are preserved exactly, with duplicate prompt text and repeated subquestion removed from the image.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗몸일으키기 횟수 12개를 나타낸 줄기와 잎 그림, 가운데 두 값 강조",
+    "solutionImageCaption": "자료를 작은 순서로 쓰면 1, 2, 3, 11, 15, 15, 17, 18, 20, 20, 21, 25이다. 자료가 12개이므로 가운데 두 값인 6번째와 7번째 값(동그라미)의 평균이 중앙값이다. 평균은 합 168을 12로 나눈 값이고, 최빈값은 두 번씩 나타나는 15와 20이다. 정답은 -5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
