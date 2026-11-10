@@ -1,0 +1,391 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ACline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ADline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AD8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "BD8",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "rightAC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "ACline",
+          "BCline"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [
+    "BCline",
+    "ACline"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ABD225",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 22.5,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADC45",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 45,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cright",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [],
+    "textLabels": [
+      {
+        "id": "Apt",
+        "at": "A",
+        "text": "A",
+        "labelKind": "TEXT",
+        "anchor": "NE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bpt",
+        "at": "B",
+        "text": "B",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Dpt",
+        "at": "D",
+        "text": "D",
+        "labelKind": "TEXT",
+        "anchor": "S",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cpt",
+        "at": "C",
+        "text": "C",
+        "labelKind": "TEXT",
+        "anchor": "SE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AD8",
+        "at": "A",
+        "text": "AD=8",
+        "labelKind": "TEXT",
+        "anchor": "NW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BD8",
+        "at": "B",
+        "text": "BD=8",
+        "labelKind": "TEXT",
+        "anchor": "N",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x",
+        "at": "D",
+        "text": "x",
+        "labelKind": "TEXT",
+        "anchor": "S",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "at": "C",
+        "text": "y",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "AD=BD=8이고 △ADC는 45°-45°-90°이므로 x=DC=y=AC=4√2 cm. 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B–D–C가 일직선, AD=BD=8, ∠ABD=22.5°, AC⊥BC.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "22.5°는 45°를 이등분한 정확한 각 관계와 좌표로 표현한다. 예시 배치는 주어진 8 cm 길이 및 직각 관계를 유지하며 x,y 표시는 변 라벨과 겹치지 않게 둔다."
+  ]
+}

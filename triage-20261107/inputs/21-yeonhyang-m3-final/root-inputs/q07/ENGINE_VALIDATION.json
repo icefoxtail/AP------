@@ -1,0 +1,732 @@
+{
+  "question": "q07",
+  "result": {
+    "status": "PASS",
+    "contractSource": {
+      "path": "preparation-20-maesangirls-h1-1final/contracts/construction.py",
+      "bytes": 27356,
+      "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+      "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+    },
+    "mathPlanSha256": "0f41fc8cfefcfedebd5add12cceb7a30ebe697a4aebfa745cc5a2b59311d3900",
+    "stages": {
+      "construction.validate": "PASS",
+      "construction.execute": "PASS"
+    },
+    "pointProvenance": [
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "B",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "A",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      }
+    ],
+    "validation": {
+      "nodeCount": 9,
+      "dependencyOrder": [
+        "C",
+        "D",
+        "B",
+        "A",
+        "BCline",
+        "BDline",
+        "ACline",
+        "E",
+        "CEline"
+      ],
+      "conditionAuditCount": 3
+    },
+    "model": {
+      "engine": "SymPy",
+      "version": "1.14.0",
+      "points": {
+        "C": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "D": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "390"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            675.4998149518622,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "B": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "142.7499074759310722378520365936451"
+            },
+            {
+              "kind": "decimal",
+              "value": "532.7499074759310722378520365936451"
+            }
+          ],
+          "approximation": [
+            142.74990747593108,
+            532.7499074759311
+          ],
+          "precisionDigits": 17
+        },
+        "A": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-307.5833024919770240792840121978817"
+            },
+            {
+              "kind": "decimal",
+              "value": "82.41669750802297592071598780211830"
+            }
+          ],
+          "approximation": [
+            -307.583302491977,
+            82.41669750802298
+          ],
+          "precisionDigits": 17
+        },
+        "E": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "approximation": [
+            337.7499074759311,
+            337.7499074759311
+          ],
+          "precisionDigits": 17
+        }
+      },
+      "scalars": {},
+      "lines": {
+        "BCline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "195"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-195"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            532.7499074759311,
+            -142.74990747593108,
+            0.0
+          ]
+        },
+        "BDline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "195"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "195"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-228150"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-76050"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "approximation": [
+            532.7499074759311,
+            532.7499074759311,
+            -359872.46391561313
+          ]
+        },
+        "ACline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-65"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "65"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            82.41669750802298,
+            307.583302491977,
+            0.0
+          ]
+        },
+        "CEline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "195"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            -337.7499074759311,
+            337.7499074759311,
+            0.0
+          ]
+        }
+      },
+      "circles": {},
+      "pointSets": {},
+      "conditionAudits": [
+        {
+          "id": "CD390",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "390"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "expected": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "390"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "towerGround",
+          "sourceConditionId": "c1",
+          "kind": "PERPENDICULAR",
+          "status": "PASS",
+          "checks": [
+            "DIRECTION_VECTORS_PERPENDICULAR"
+          ],
+          "observed": true
+        },
+        {
+          "id": "CEperpBD",
+          "sourceConditionId": "c1",
+          "kind": "PERPENDICULAR",
+          "status": "PASS",
+          "checks": [
+            "DIRECTION_VECTORS_PERPENDICULAR"
+          ],
+          "observed": true
+        }
+      ],
+      "transcript": [
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "B",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "A",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "BCline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "BDline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "ACline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "E",
+          "op": "PERPENDICULAR_FOOT",
+          "dependencies": [
+            "BDline",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "CEline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "C",
+            "E"
+          ]
+        }
+      ],
+      "order": [
+        "C",
+        "D",
+        "B",
+        "A",
+        "BCline",
+        "BDline",
+        "ACline",
+        "E",
+        "CEline"
+      ],
+      "coordinateMode": "CONSTRUCTED_REALIZATION"
+    },
+    "conditionAudits": [
+      {
+        "id": "CD390",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "390"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "expected": {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "390"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "towerGround",
+        "sourceConditionId": "c1",
+        "kind": "PERPENDICULAR",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PERPENDICULAR"
+        ],
+        "observed": true
+      },
+      {
+        "id": "CEperpBD",
+        "sourceConditionId": "c1",
+        "kind": "PERPENDICULAR",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PERPENDICULAR"
+        ],
+        "observed": true
+      }
+    ],
+    "provenanceAudit": {
+      "status": "PASS",
+      "issues": []
+    }
+  }
+}

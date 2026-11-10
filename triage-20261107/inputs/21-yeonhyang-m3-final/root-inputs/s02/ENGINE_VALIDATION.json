@@ -1,0 +1,325 @@
+{
+  "question": "s02",
+  "result": {
+    "status": "PASS",
+    "contractSource": {
+      "path": "preparation-20-maesangirls-h1-1final/contracts/construction.py",
+      "bytes": 27356,
+      "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+      "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+    },
+    "mathPlanSha256": "ec4a08dda3931b176fca2725c5cbcc7b13c2e4025aa7395fe934aac161575006",
+    "stages": {
+      "construction.validate": "PASS",
+      "construction.execute": "PASS"
+    },
+    "pointProvenance": [
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "B",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "C",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      }
+    ],
+    "validation": {
+      "nodeCount": 7,
+      "dependencyOrder": [
+        "A",
+        "D",
+        "O",
+        "ADline",
+        "B",
+        "C",
+        "circle"
+      ],
+      "conditionAuditCount": 0
+    },
+    "model": {
+      "engine": "SymPy",
+      "version": "1.14.0",
+      "points": {
+        "A": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-45"
+                },
+                {
+                  "kind": "expression",
+                  "op": "pow",
+                  "args": [
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "-1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            -14.32394487827058,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "D": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                {
+                  "kind": "expression",
+                  "op": "pow",
+                  "args": [
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "-1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            14.32394487827058,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "O": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "B": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-4.899077680255082419963502633207406"
+            },
+            {
+              "kind": "decimal",
+              "value": "13.46010530265497096766142265983594"
+            }
+          ],
+          "approximation": [
+            -4.899077680255083,
+            13.460105302654972
+          ],
+          "precisionDigits": 17
+        },
+        "C": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "13.46010530265497096766142265983594"
+            },
+            {
+              "kind": "decimal",
+              "value": "4.899077680255082419963502633207406"
+            }
+          ],
+          "approximation": [
+            13.460105302654972,
+            4.899077680255083
+          ],
+          "precisionDigits": 17
+        }
+      },
+      "scalars": {},
+      "lines": {
+        "ADline": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      },
+      "circles": {
+        "circle": {
+          "centerExact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "radiusExact": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "45"
+              },
+              {
+                "kind": "expression",
+                "op": "pow",
+                "args": [
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              }
+            ]
+          },
+          "approximation": [
+            0.0,
+            0.0,
+            14.32394487827058
+          ]
+        }
+      },
+      "pointSets": {},
+      "conditionAudits": [],
+      "transcript": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "O",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "ADline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "B",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "D",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "C",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "D",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "circle",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "dependencies": [
+            "O"
+          ]
+        }
+      ],
+      "order": [
+        "A",
+        "D",
+        "O",
+        "ADline",
+        "B",
+        "C",
+        "circle"
+      ],
+      "coordinateMode": "CONSTRUCTED_REALIZATION"
+    },
+    "conditionAudits": [],
+    "provenanceAudit": {
+      "status": "PASS",
+      "issues": []
+    }
+  }
+}

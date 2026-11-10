@@ -1,0 +1,392 @@
+{
+  "question": "q14",
+  "result": {
+    "status": "PASS",
+    "contractSource": {
+      "path": "preparation-20-maesangirls-h1-1final/contracts/construction.py",
+      "bytes": 27356,
+      "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+      "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+    },
+    "mathPlanSha256": "1aa69649b51b65ad878bf289b09ae19622b637b3a7ae32b7dd3a112346ae3045",
+    "stages": {
+      "construction.validate": "PASS",
+      "construction.execute": "PASS"
+    },
+    "pointProvenance": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "O",
+        "op": "MIDPOINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "B",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "D",
+        "op": "POINT_REFLECTION",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      }
+    ],
+    "validation": {
+      "nodeCount": 11,
+      "dependencyOrder": [
+        "A",
+        "C",
+        "ACline",
+        "O",
+        "B",
+        "circle",
+        "ABline",
+        "BCline",
+        "D",
+        "BDline",
+        "CDline"
+      ],
+      "conditionAuditCount": 0
+    },
+    "model": {
+      "engine": "SymPy",
+      "version": "1.14.0",
+      "points": {
+        "A": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            1.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "C": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            -1.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "O": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "B": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "0.1045284632676534713998341548024981"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.9945218953682733369226919449805704"
+            }
+          ],
+          "approximation": [
+            0.10452846326765347,
+            0.9945218953682733
+          ],
+          "precisionDigits": 17
+        },
+        "D": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-0.1045284632676534713998341548024981"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.9945218953682733369226919449805704"
+            }
+          ],
+          "approximation": [
+            -0.10452846326765347,
+            -0.9945218953682733
+          ],
+          "precisionDigits": 17
+        }
+      },
+      "scalars": {},
+      "lines": {
+        "ACline": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "ABline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-0.9945218953682733369226919449805704"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.8954715367323465286001658451975019"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.9945218953682733369226919449805704"
+            }
+          ],
+          "approximation": [
+            -0.9945218953682733,
+            -0.8954715367323465,
+            0.9945218953682733
+          ]
+        },
+        "BCline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "0.9945218953682733369226919449805704"
+            },
+            {
+              "kind": "decimal",
+              "value": "-1.104528463267653471399834154802498"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.9945218953682733369226919449805704"
+            }
+          ],
+          "approximation": [
+            0.9945218953682733,
+            -1.1045284632676535,
+            0.9945218953682733
+          ]
+        },
+        "BDline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "1.989043790736546673845383889961141"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.2090569265353069427996683096049962"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            1.9890437907365466,
+            -0.20905692653530694,
+            0.0
+          ]
+        },
+        "CDline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "0.9945218953682733369226919449805704"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.8954715367323465286001658451975019"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.9945218953682733369226919449805704"
+            }
+          ],
+          "approximation": [
+            0.9945218953682733,
+            0.8954715367323465,
+            0.9945218953682733
+          ]
+        }
+      },
+      "circles": {
+        "circle": {
+          "centerExact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "radiusExact": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "approximation": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "pointSets": {},
+      "conditionAudits": [],
+      "transcript": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "ACline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "O",
+          "op": "MIDPOINT",
+          "dependencies": [
+            "A",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "B",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "A",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "circle",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "dependencies": [
+            "O"
+          ]
+        },
+        {
+          "nodeId": "ABline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "nodeId": "BCline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "D",
+          "op": "POINT_REFLECTION",
+          "dependencies": [
+            "B",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "BDline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "CDline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "order": [
+        "A",
+        "C",
+        "ACline",
+        "O",
+        "B",
+        "circle",
+        "ABline",
+        "BCline",
+        "D",
+        "BDline",
+        "CDline"
+      ],
+      "coordinateMode": "CONSTRUCTED_REALIZATION"
+    },
+    "conditionAudits": [],
+    "provenanceAudit": {
+      "status": "PASS",
+      "issues": []
+    }
+  }
+}

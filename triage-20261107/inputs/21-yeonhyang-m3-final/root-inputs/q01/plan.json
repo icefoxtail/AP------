@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "baseBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "wallCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [
+    "baseBC",
+    "wallCA"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [],
+    "textLabels": [
+      {
+        "id": "sideA",
+        "at": "A",
+        "text": "A",
+        "labelKind": "TEXT",
+        "anchor": "NE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sideB",
+        "at": "B",
+        "text": "B",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sideC",
+        "at": "C",
+        "text": "C",
+        "labelKind": "TEXT",
+        "anchor": "SE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sidea",
+        "at": [
+          1.8,
+          -0.5
+        ],
+        "text": "a",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sidec",
+        "at": [
+          1.5,
+          2.05
+        ],
+        "text": "c",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "targetAC",
+        "at": [
+          4.55,
+          1.5
+        ],
+        "text": "AC=?",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "∠C=90°이며 AB=c, BC=a이다. ∠B의 맞은편 변 AC에 대하여 tan B=AC/a이므로 AC=a tan B(⑤)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직각삼각형 ABC에서 C가 직각이고 AB=c, BC=a이며 AC를 묻는다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "(4,3) 등은 도형 배치용 예시 좌표이며, 문제에서 주어진 수치가 아니다. 점 A,B,C와 a,c, AC 표시는 서로 겹치지 않게 외측에 둔다."
+  ]
+}

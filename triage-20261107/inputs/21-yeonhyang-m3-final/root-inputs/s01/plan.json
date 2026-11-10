@@ -1,0 +1,383 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AMline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "M"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BDline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ACline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "AMline",
+          "BDline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ACline",
+          "BDline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "BP_PD",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "P",
+          "D"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "rational",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "P",
+    "O"
+  ],
+  "displayLines": [
+    "AMline",
+    "BDline",
+    "ACline"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "PO",
+      "refs": [
+        "P",
+        "O"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ADC60",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [],
+    "textLabels": [
+      {
+        "id": "A",
+        "at": "A",
+        "text": "A",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "at": "B",
+        "text": "B",
+        "labelKind": "TEXT",
+        "anchor": "NE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "at": "C",
+        "text": "C",
+        "labelKind": "TEXT",
+        "anchor": "NE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "at": "D",
+        "text": "D",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "at": "M",
+        "text": "M",
+        "labelKind": "TEXT",
+        "anchor": "SE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "at": "P",
+        "text": "P",
+        "labelKind": "TEXT",
+        "anchor": "W",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "at": "O",
+        "text": "O",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AD9",
+        "at": "A",
+        "text": "9 cm",
+        "labelKind": "TEXT",
+        "anchor": "S",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CD6",
+        "at": "D",
+        "text": "6 cm",
+        "labelKind": "TEXT",
+        "anchor": "W",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "M은 BC의 중점이다. 교차비 BP:PD=1:2, O는 BD의 중점이므로 PO=BD/6. △ABD의 넓이는 27√3/2 cm²이고 △APO는 9√3/4 cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행사변형 ABCD에서 AD=9 cm, CD=6 cm, ∠ADC=60°, M은 BC의 중점, P=AM∩BD, O=AC∩BD.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형은 AD=BC=9, AB=CD=6이 되는 정확한 예시 좌표로 구성한다. P와 O는 같은 대각선 위에서 서로 다른 점이며 AM, AC, BD 교차 관계를 명확히 한다. P/O 라벨은 짧은 지시선 또는 서로 반대쪽 바깥 위치에 둔다."
+  ]
+}

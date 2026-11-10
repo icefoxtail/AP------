@@ -1,0 +1,385 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "25"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "3"
+                                }
+                              ]
+                            },
+                            {
+                              "kind": "integer",
+                              "value": "1"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "50"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "25"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "25"
+                },
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ground",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tower",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "AB50",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "sourceConditionId": "c1",
+        "expected": {
+          "kind": "integer",
+          "value": "50"
+        }
+      },
+      {
+        "id": "groundwall",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "ground",
+          "tower"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [
+    "ground",
+    "tower"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "A30",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B45",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cright",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [],
+    "textLabels": [
+      {
+        "id": "Apt",
+        "at": "A",
+        "text": "A",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bpt",
+        "at": "B",
+        "text": "B",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cpt",
+        "at": "C",
+        "text": "C",
+        "labelKind": "TEXT",
+        "anchor": "SE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Dpt",
+        "at": "D",
+        "text": "D",
+        "labelKind": "TEXT",
+        "anchor": "NE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB50",
+        "at": "A",
+        "text": "50 m",
+        "labelKind": "TEXT",
+        "anchor": "S",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "height",
+        "at": "D",
+        "text": "h",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "B에서 건물까지의 거리는 h이고 A에서는 h+50이다. tan45°=1, tan30°=1/√3에서 건물 높이 h=25(√3+1)m이므로 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A,B,C는 일직선 위이고 AB=50 m, ∠DAB=30°, ∠ABC=45°, CD⊥AC.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "h=25(√3+1)은 출제 각과 AB=50에서 유도한 정확한 높이다. 좌표는 해당 조건을 만족하는 예시 위치이며 A,B,C,D 라벨과 관측선이 겹치지 않게 둔다."
+  ]
+}

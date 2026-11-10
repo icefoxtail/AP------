@@ -1,0 +1,569 @@
+{
+  "question": "q12",
+  "result": {
+    "status": "PASS",
+    "contractSource": {
+      "path": "preparation-20-maesangirls-h1-1final/contracts/construction.py",
+      "bytes": 27356,
+      "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+      "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+    },
+    "mathPlanSha256": "2519d3e319631f7c9495329cabf1e5b43d87de4c1ff84ebc0a8b400bba720667",
+    "stages": {
+      "construction.validate": "PASS",
+      "construction.execute": "PASS"
+    },
+    "pointProvenance": [
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "B",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "C",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "D",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      },
+      {
+        "nodeId": "P",
+        "op": "LINE_INTERSECTION",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      }
+    ],
+    "validation": {
+      "nodeCount": 11,
+      "dependencyOrder": [
+        "A",
+        "O",
+        "B",
+        "C",
+        "D",
+        "circle",
+        "ACline",
+        "ADline",
+        "BCline",
+        "BDline",
+        "P"
+      ],
+      "conditionAuditCount": 2
+    },
+    "model": {
+      "engine": "SymPy",
+      "version": "1.14.0",
+      "points": {
+        "A": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            1.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "O": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "B": {
+          "exact": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "approximation": [
+            0.5,
+            0.8660254037844386
+          ],
+          "precisionDigits": 17
+        },
+        "C": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ],
+          "approximation": [
+            -0.8660254037844386,
+            0.5
+          ],
+          "precisionDigits": 17
+        },
+        "D": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-0.1736481776669303488517000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.9848077530122080593667000000000000"
+            }
+          ],
+          "approximation": [
+            -0.17364817766693036,
+            -0.984807753012208
+          ],
+          "precisionDigits": 17
+        },
+        "P": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "2.750852196131186094569211611891861"
+            },
+            {
+              "kind": "decimal",
+              "value": "1.469139432019608977470947130327962"
+            }
+          ],
+          "approximation": [
+            2.750852196131186,
+            1.469139432019609
+          ],
+          "precisionDigits": 17
+        }
+      },
+      "scalars": {},
+      "lines": {
+        "ACline": {
+          "exact": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "-1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ],
+          "approximation": [
+            -0.5,
+            -1.8660254037844386,
+            0.5
+          ]
+        },
+        "ADline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "0.9848077530122080593667000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "-1.173648177666930348851700000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.9848077530122080593667000000000000"
+            }
+          ],
+          "approximation": [
+            0.984807753012208,
+            -1.1736481776669303,
+            -0.984807753012208
+          ]
+        },
+        "BCline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "-1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ],
+          "approximation": [
+            0.36602540378443865,
+            -1.3660254037844386,
+            1.0
+          ]
+        },
+        "BDline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "1.850833156796646706130423170752936"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.6736481776669303488517000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.3420201433256687330440925015921076"
+            }
+          ],
+          "approximation": [
+            1.8508331567966467,
+            -0.6736481776669303,
+            -0.3420201433256687
+          ]
+        }
+      },
+      "circles": {
+        "circle": {
+          "centerExact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "radiusExact": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "approximation": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "pointSets": {},
+      "conditionAudits": [
+        {
+          "id": "P_on_AD",
+          "sourceConditionId": "c1",
+          "kind": "INCIDENCE_POINT_ON_LINE",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_LINE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        {
+          "id": "P_on_BC",
+          "sourceConditionId": "c1",
+          "kind": "INCIDENCE_POINT_ON_LINE",
+          "status": "PASS",
+          "checks": [
+            "POINT_ON_LINE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "0"
+          }
+        }
+      ],
+      "transcript": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "O",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "B",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "A",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "C",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "A",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "D",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "A",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "circle",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "dependencies": [
+            "O"
+          ]
+        },
+        {
+          "nodeId": "ACline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "ADline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "BCline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "BDline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "P",
+          "op": "LINE_INTERSECTION",
+          "dependencies": [
+            "ADline",
+            "BCline"
+          ]
+        }
+      ],
+      "order": [
+        "A",
+        "O",
+        "B",
+        "C",
+        "D",
+        "circle",
+        "ACline",
+        "ADline",
+        "BCline",
+        "BDline",
+        "P"
+      ],
+      "coordinateMode": "CONSTRUCTED_REALIZATION"
+    },
+    "conditionAudits": [
+      {
+        "id": "P_on_AD",
+        "sourceConditionId": "c1",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_LINE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      },
+      {
+        "id": "P_on_BC",
+        "sourceConditionId": "c1",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "status": "PASS",
+        "checks": [
+          "POINT_ON_LINE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "0"
+        }
+      }
+    ],
+    "provenanceAudit": {
+      "status": "PASS",
+      "issues": []
+    }
+  }
+}

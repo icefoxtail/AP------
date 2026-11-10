@@ -1,0 +1,394 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "24"
+                },
+                {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "inscribed15",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 15,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "central60",
+        "refs": [
+          "B",
+          "O",
+          "D"
+        ],
+        "value": 60,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inscribed30",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 30,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc4",
+        "circle": "circle",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arc8",
+        "circle": "circle",
+        "center": "O",
+        "from": "B",
+        "to": "D",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "O",
+        "at": "O",
+        "text": "O",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "at": "A",
+        "text": "A",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "at": "B",
+        "text": "B",
+        "labelKind": "TEXT",
+        "anchor": "NE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "at": "C",
+        "text": "C",
+        "labelKind": "TEXT",
+        "anchor": "S",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "at": "D",
+        "text": "D",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arc4label",
+        "at": "A",
+        "text": "호 4 cm",
+        "labelKind": "TEXT",
+        "anchor": "NW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arc8label",
+        "at": "D",
+        "text": "호 8 cm",
+        "labelKind": "TEXT",
+        "anchor": "NE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "호 길이는 중심각에 비례한다. 호 4 cm의 원주각이 15°이므로 중심각은 30°이고, 호 8 cm의 중심각 y=60°, 같은 호를 보는 원주각 x=30°이다. x+y=90°(②).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "길이 4 cm인 호를 보는 원주각은 15°이고, 같은 원의 다른 호 길이는 8 cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "4 cm와 8 cm는 호 길이 표기이며 현의 길이가 아니다. 원의 반지름 24/π는 주어진 호 길이와 중심각에서만 유도한 예시 구성값이다. 호 점 순서와 중심 O를 분명히 한다."
+  ]
+}

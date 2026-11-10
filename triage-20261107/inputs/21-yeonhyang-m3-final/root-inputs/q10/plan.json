@@ -1,0 +1,458 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ADline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BCline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ABline",
+          "DCline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ADline",
+          "BCline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "P_on_AB",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "ABline"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "P_on_DC",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "P",
+          "DCline"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "Q_on_AD",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "Q",
+          "ADline"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "Q_on_BC",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "Q",
+          "BCline"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C",
+    "P",
+    "Q"
+  ],
+  "displayLines": [
+    "ABline",
+    "DCline",
+    "ADline",
+    "BCline"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "CQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BAQ25",
+        "refs": [
+          "B",
+          "A",
+          "Q"
+        ],
+        "value": 25,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AQC70",
+        "refs": [
+          "A",
+          "Q",
+          "C"
+        ],
+        "value": 70,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P20",
+        "refs": [
+          "B",
+          "P",
+          "D"
+        ],
+        "value": 20,
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circle",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcBD",
+        "circle": "circle",
+        "center": "O",
+        "from": "B",
+        "to": "D",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcDC",
+        "circle": "circle",
+        "center": "O",
+        "from": "D",
+        "to": "C",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCA",
+        "circle": "circle",
+        "center": "O",
+        "from": "C",
+        "to": "A",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "O",
+        "at": "O",
+        "text": "O",
+        "labelKind": "TEXT",
+        "anchor": "SW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "at": "A",
+        "text": "A",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "at": "B",
+        "text": "B",
+        "labelKind": "TEXT",
+        "anchor": "N",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "at": "D",
+        "text": "D",
+        "labelKind": "TEXT",
+        "anchor": "NW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "at": "C",
+        "text": "C",
+        "labelKind": "TEXT",
+        "anchor": "S",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "at": "P",
+        "text": "P",
+        "labelKind": "TEXT",
+        "anchor": "W",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "at": "Q",
+        "text": "Q",
+        "labelKind": "TEXT",
+        "anchor": "E",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "Q∈AD∩BC이므로 ∠BAD=25°, ∠AQB=110°, ∠ABQ=45°. 같은 현 BD를 보는 ∠BCD=25°이므로 외각삼각형 PBC에서 ∠P=20°(①).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 위 A,B,D,C 순서, P–B–A 및 P–D–C 공선, Q=AD∩BC, ∠BAQ=25°, ∠AQC=70°.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displayLines",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 순서 A–B–D–C, 두 외부 할선 P–B–A와 P–D–C, 내부 교점 Q를 모두 유지한다. 25°·70° 값을 보존하고 비특수 각 좌표에는 엔진의 고정밀 POLAR_POINT 근사를 사용한다. P와 Q 및 원주 점 라벨을 분리한다."
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "question": "q09",
+  "result": {
+    "status": "PASS",
+    "contractSource": {
+      "path": "preparation-20-maesangirls-h1-1final/contracts/construction.py",
+      "bytes": 27356,
+      "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+      "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+    },
+    "mathPlanSha256": "ebe758c4bf3593057d70fb619e41a72d88ae77b43ec2a5836c5bb500aa057af0",
+    "stages": {
+      "construction.validate": "PASS",
+      "construction.execute": "PASS"
+    },
+    "pointProvenance": [
+      {
+        "nodeId": "O",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "C",
+        "op": "POLAR_POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      }
+    ],
+    "validation": {
+      "nodeCount": 8,
+      "dependencyOrder": [
+        "A",
+        "B",
+        "O",
+        "ABline",
+        "C",
+        "circle",
+        "ACline",
+        "BCline"
+      ],
+      "conditionAuditCount": 0
+    },
+    "model": {
+      "engine": "SymPy",
+      "version": "1.14.0",
+      "points": {
+        "A": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            -1.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "B": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            1.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "O": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "C": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "0.7193398003386511393561000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.6946583704589972866564000000000000"
+            }
+          ],
+          "approximation": [
+            0.7193398003386512,
+            0.6946583704589973
+          ],
+          "precisionDigits": 17
+        }
+      },
+      "scalars": {},
+      "lines": {
+        "ABline": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "ACline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-0.6946583704589972866564000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "1.719339800338651139356100000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.6946583704589972866564000000000000"
+            }
+          ],
+          "approximation": [
+            -0.6946583704589973,
+            1.719339800338651,
+            -0.6946583704589973
+          ]
+        },
+        "BCline": {
+          "exact": [
+            {
+              "kind": "decimal",
+              "value": "-0.6946583704589972866564000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "-0.2806601996613488606439000000000000"
+            },
+            {
+              "kind": "decimal",
+              "value": "0.6946583704589972866564000000000000"
+            }
+          ],
+          "approximation": [
+            -0.6946583704589973,
+            -0.28066019966134886,
+            0.6946583704589973
+          ]
+        }
+      },
+      "circles": {
+        "circle": {
+          "centerExact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "radiusExact": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "approximation": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "pointSets": {},
+      "conditionAudits": [],
+      "transcript": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "O",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "ABline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "nodeId": "C",
+          "op": "POLAR_POINT",
+          "dependencies": [
+            "A",
+            "O"
+          ]
+        },
+        {
+          "nodeId": "circle",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "dependencies": [
+            "O"
+          ]
+        },
+        {
+          "nodeId": "ACline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "BCline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "C"
+          ]
+        }
+      ],
+      "order": [
+        "A",
+        "B",
+        "O",
+        "ABline",
+        "C",
+        "circle",
+        "ACline",
+        "BCline"
+      ],
+      "coordinateMode": "CONSTRUCTED_REALIZATION"
+    },
+    "conditionAudits": [],
+    "provenanceAudit": {
+      "status": "PASS",
+      "issues": []
+    }
+  }
+}

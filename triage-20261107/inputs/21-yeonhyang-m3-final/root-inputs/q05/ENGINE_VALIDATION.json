@@ -1,0 +1,675 @@
+{
+  "question": "q05",
+  "result": {
+    "status": "PASS",
+    "contractSource": {
+      "path": "preparation-20-maesangirls-h1-1final/contracts/construction.py",
+      "bytes": 27356,
+      "sha256": "923a67f0ac4c19df2060a0f3b5b285cd325fd7ff065c91e9204bb8b44b83b56a",
+      "gitBlobSha1": "1544db76302491f0325dfff4292f9b712ae71f50"
+    },
+    "mathPlanSha256": "823423cd7a934199c4ef9f0d6120a33b2ef38061bfbd848d869289f5fb519687",
+    "stages": {
+      "construction.validate": "PASS",
+      "construction.execute": "PASS"
+    },
+    "pointProvenance": [
+      {
+        "nodeId": "A",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "D",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "C",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "B",
+        "op": "SOURCE_POINT",
+        "factRole": "GIVEN",
+        "classification": "SOURCE_POINT_LITERAL"
+      },
+      {
+        "nodeId": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "classification": "DERIVED_POINT"
+      }
+    ],
+    "validation": {
+      "nodeCount": 10,
+      "dependencyOrder": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "ABline",
+        "ADline",
+        "BCline",
+        "CDline",
+        "H",
+        "CHline"
+      ],
+      "conditionAuditCount": 5
+    },
+    "model": {
+      "engine": "SymPy",
+      "version": "1.14.0",
+      "points": {
+        "A": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "B": {
+          "exact": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "13"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "45",
+                  "denominator": "13"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "approximation": [
+            0.23076923076923078,
+            5.995560487738421
+          ],
+          "precisionDigits": 17
+        },
+        "C": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ],
+          "approximation": [
+            7.0,
+            1.7320508075688772
+          ],
+          "precisionDigits": 17
+        },
+        "D": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            4.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        },
+        "H": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            7.0,
+            0.0
+          ],
+          "precisionDigits": 17
+        }
+      },
+      "scalars": {},
+      "lines": {
+        "ABline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-45",
+                  "denominator": "13"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            -5.995560487738421,
+            0.23076923076923078,
+            0.0
+          ]
+        },
+        "ADline": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ],
+          "approximation": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "BCline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "32",
+                  "denominator": "13"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "88",
+              "denominator": "13"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-24"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "approximation": [
+            4.263509680169544,
+            6.769230769230769,
+            -41.569219381653056
+          ]
+        },
+        "CDline": {
+          "exact": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "approximation": [
+            1.7320508075688772,
+            -3.0,
+            -6.928203230275509
+          ]
+        },
+        "CHline": {
+          "exact": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-7"
+            }
+          ],
+          "approximation": [
+            1.0,
+            0.0,
+            -7.0
+          ]
+        }
+      },
+      "circles": {},
+      "pointSets": {},
+      "conditionAudits": [
+        {
+          "id": "AB6",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        {
+          "id": "BC8",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        {
+          "id": "CD2r3",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "expected": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "AD4",
+          "sourceConditionId": "c1",
+          "kind": "DISTANCE_EQUALS",
+          "status": "PASS",
+          "checks": [
+            "EXACT_POINT_DISTANCE"
+          ],
+          "observed": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "expected": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        {
+          "id": "perpCH",
+          "sourceConditionId": "c1",
+          "kind": "PERPENDICULAR",
+          "status": "PASS",
+          "checks": [
+            "DIRECTION_VECTORS_PERPENDICULAR"
+          ],
+          "observed": true
+        }
+      ],
+      "transcript": [
+        {
+          "nodeId": "A",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "B",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "C",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "D",
+          "op": "SOURCE_POINT",
+          "dependencies": []
+        },
+        {
+          "nodeId": "ABline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "nodeId": "ADline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "A",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "BCline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "CDline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "nodeId": "H",
+          "op": "PERPENDICULAR_FOOT",
+          "dependencies": [
+            "ADline",
+            "C"
+          ]
+        },
+        {
+          "nodeId": "CHline",
+          "op": "LINE_THROUGH",
+          "dependencies": [
+            "C",
+            "H"
+          ]
+        }
+      ],
+      "order": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "ABline",
+        "ADline",
+        "BCline",
+        "CDline",
+        "H",
+        "CHline"
+      ],
+      "coordinateMode": "CONSTRUCTED_REALIZATION"
+    },
+    "conditionAudits": [
+      {
+        "id": "AB6",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "6"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "BC8",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "8"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "CD2r3",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "expected": {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "AD4",
+        "sourceConditionId": "c1",
+        "kind": "DISTANCE_EQUALS",
+        "status": "PASS",
+        "checks": [
+          "EXACT_POINT_DISTANCE"
+        ],
+        "observed": {
+          "kind": "integer",
+          "value": "4"
+        },
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      },
+      {
+        "id": "perpCH",
+        "sourceConditionId": "c1",
+        "kind": "PERPENDICULAR",
+        "status": "PASS",
+        "checks": [
+          "DIRECTION_VECTORS_PERPENDICULAR"
+        ],
+        "observed": true
+      }
+    ],
+    "provenanceAudit": {
+      "status": "PASS",
+      "issues": []
+    }
+  }
+}
