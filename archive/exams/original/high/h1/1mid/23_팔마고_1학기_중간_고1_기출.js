@@ -202,7 +202,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a, 세로축 S인 위로 볼록한 포물선의 일부이다. 0<a<2 구간만 그렸고 꼭짓점에 꼭짓점이라는 이름표가 지시선으로 붙어 있으며 꼭짓점을 지나는 세로 점선에 a=1이라고 적혀 있다.",
+    "solutionImageCaption": "사각형 PQOR은 가로가 a, 세로가 −2a+4인 직사각형이므로 S=a(−2a+4)=−2a²+4a=−2(a−1)²+2이다. 그래프는 위로 볼록하므로 0<a<2에서 꼭짓점인 a=1일 때 S가 최대이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -282,7 +286,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 x축과 서로 다른 두 점에서 만나는 그림이다. 두 교점에 각각 교점이라는 이름표가 지시선으로 붙어 있고 꼭짓점은 x축 아래에 있다.",
+    "solutionImageCaption": "예: k=−3일 때의 y=5x²−2x−3의 그래프이다. 그래프가 x축과 서로 다른 두 점에서 만나려면 5x²−2x+k=0의 판별식이 양수여야 하므로 D=4−20k>0에서 k<5분의 1이다. 보기 중 이 조건을 만족하는 값은 0뿐이므로 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -699,9 +707,9 @@ window.questionBank = [
     "level": "상",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/23_팔마고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "꼭짓점에 대칭인 구간 [1,3]의 양 끝점의 함숫값",
-    "solutionImageCaption": "꼭짓점에 대칭인 구간 [1,3]의 양 끝점의 함숫값",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 이차함수 f(x)의 그래프이다. 원점의 좌표 (0,0)과, x좌표가 1과 3인 두 점의 좌표가 적혀 있고 두 점은 점선 y=−2분의 3 위에 있다. 꼭짓점에는 V라는 이름만 있고 좌표는 없다. 오른쪽 곡선 위의 점에 f(x)라는 이름표가 지시선으로 붙어 있다.",
+    "solutionImageCaption": "(나)에서 f(x)는 x=2에서 최소이므로 f(x)=A(x−2)²+c (A>0)이다. (가)에서 f(0)=0이므로 c=−4A이다. 길이가 2인 구간의 최댓값 g(p)가 가장 작은 경우는 꼭짓점에 대칭인 구간 [1,3]이고 이때 최댓값은 f(1)=f(3)=−3A=−2분의 3이므로 A=2분의 1이다. 정답은 −2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -814,7 +822,10 @@ window.questionBank = [
     "level": "중",
     "layoutTag": "subjective-2up",
     "wide": false,
-    "solutionImage": "assets/images/23_팔마고_1학기_중간_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선이다. 꼭대기에 꼭짓점, x축과 만나는 두 점에 각각 x절편, y축과 만나는 점에 y절편이라는 이름표가 지시선으로 붙어 있고, 오른쪽 x절편을 지나는 세로 점선에 x=3이라고 적혀 있다. 점의 좌표는 쓰여 있지 않다.",
+    "solutionImageCaption": "y=−x²+2x+3=−(x−1)²+4이므로 꼭짓점은 (1,4)이다. y=0에서 x²−2x−3=(x−3)(x+1)=0이므로 x절편은 (−1,0), (3,0)이고, x=0에서 y절편은 (0,3)이다. 0≤x≤3에서 꼭짓점이 포함되므로 최댓값은 4이고, 끝점의 값 f(0)=3, f(3)=0 중 작은 값이 최솟값이다. 정답은 꼭짓점 (1,4), x절편 (−1,0), (3,0), y절편 (0,3), 최댓값 4, 최솟값 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

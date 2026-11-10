@@ -105,7 +105,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
     "subUnit": "이차방정식의 풀이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 이차함수 y=2x²−4x+1의 그래프의 일부이다. 꼭짓점 V에서 최소가 되며, V를 지나는 세로 점선 x=a와 가로 점선 y=b가 있다.",
+    "solutionImageCaption": "y=2x²−4x+1을 완전제곱식으로 고치면 y=2(x−1)²−1이다. 이차항의 계수가 양수라 그래프는 아래로 볼록하고, 꼭짓점 V에서 최솟값을 갖는다. 따라서 a는 꼭짓점의 x좌표 1, b는 최솟값 −1이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -396,7 +400,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
     "subUnit": "절댓값 부등식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 0과 8을 빈 원으로 표시해 두 끝을 제외하고, 그 사이 구간 0<x<8과 구간 안의 정수 1, 2, 3, 4, 5, 6, 7을 점으로 나타낸 그림이다.",
+    "solutionImageCaption": "|x−4|<4는 −4<x−4<4이므로 각 변에 4를 더하면 0<x<8이다. 두 끝 0과 8은 포함하지 않으므로 이 범위의 정수는 1부터 7까지이다. 이 정수를 모두 더해 M을 구한다. 정답은 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -535,7 +543,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: a=−1, 2분의 1, 2일 때 구간 0≤x≤1에서 y=−x²+2ax의 그래프를 파랑, 초록, 주황으로 그렸다. 대칭축이 구간 왼쪽이면 왼쪽 끝에서, 구간 안이면 꼭짓점에서, 구간 오른쪽이면 오른쪽 끝에서 최대가 되며 각각 최대라고 표시했다.",
+    "solutionImageCaption": "y=−(x−a)²+a²이므로 대칭축 x=a가 구간 0≤x≤1의 왼쪽, 안, 오른쪽에 있는 세 경우로 나눈다. 예: a=−1, 2분의 1, 2의 그래프에서 최대가 되는 위치는 각각 왼쪽 끝, 꼭짓점, 오른쪽 끝이다. 최댓값이 5가 되려면 a>1이고 x=1에서 −1+2a=5이므로 a=3이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -596,7 +608,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-DISCRIMINANT",
     "subUnit": "판별식과 근의 조건",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예: k=3과 k=1일 때 y=x²+2x+k의 그래프를 파랑과 주황으로 그렸다. k=3인 그래프는 x축 위에 떠 있어 x축과 만나지 않고, k=1인 그래프는 x축에 접한다.",
+    "solutionImageCaption": "x²+2x+k=0이 실근을 갖지 않으려면 그래프 y=x²+2x+k가 x축과 만나지 않아야 하므로 판별식 D에 대해 4분의 D=1−k<0이다. 예: k=3이면 그래프가 x축 위에 있어 실근이 없고, k=1이면 x축에 접해 실근이 하나 있다. 따라서 k>1이고, 이를 만족하는 최소의 정수 k를 찾는다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -722,6 +738,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
     "subUnit": "연립부등식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 줄의 수직선이다. 첫째 줄은 6을 빈 원으로 하는 x>6, 둘째 줄은 8을 채운 원으로 하는 x≤8이고, 셋째 줄은 둘이 겹친 공통 범위 6<x≤8이다.",
+    "solutionImageCaption": "첫째 부등식은 x>−3a, 둘째 부등식은 x≤(a+2b)÷2로 풀린다. 두 해의 공통 범위가 6<x≤8이므로 열린 끝에서 −3a=6, 닫힌 끝에서 (a+2b)÷2=8이다. 따라서 a=−2이고 a+2b=16에서 b=9이다. 정답은 −18이다.",
+    "solutionImageSize": "full"
   }
 ];
