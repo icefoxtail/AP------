@@ -3748,6 +3748,7 @@
       invalidateRecentRequests();
   }
   function render() {
+    dropStaleDeferredClick();
     // Reuse scope counts only within this render. Every interaction rechecks
     // the current filters, catalog quality gates and previous-round exclusions.
     scopeRenderCache = null;
@@ -4791,11 +4792,19 @@
     "recent-retry", "recent-open-saved", "saved-output", "saved-paper-issue", "saved-paper-view",
   ]);
   let deferredClick = null;
+  const DEFERRED_NOTICE = "자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.";
   // A button that needs the catalog was pressed before it is ready: say so and press it again when it is.
   function deferUntilCatalog(b) {
     if (state.bootError) { status(state.bootError, true); return; }
     deferredClick = { dataset: { ...b.dataset }, view: state.view };
-    status("자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.");
+    status(DEFERRED_NOTICE);
+  }
+  // Leaving the screen cancels the pending press: it must not fire later when the teacher comes back to
+  // that screen, and its notice must not stay on the screen they moved to.
+  function dropStaleDeferredClick() {
+    if (!deferredClick || deferredClick.view === state.view) return;
+    deferredClick = null;
+    if ($("status")?.textContent === DEFERRED_NOTICE) status("");
   }
   function replayDeferredClick() {
     const pending = deferredClick;

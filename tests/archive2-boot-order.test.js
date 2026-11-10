@@ -320,6 +320,19 @@ test('a button that needs the catalog is held, says so, and is pressed again whe
   assert.ok(h.pushed.length > before, 'the held press ran after the catalog arrived');
 });
 
+test('a held press is dropped when the teacher leaves the screen, even if they come back to it', async () => {
+  const h = boot('');
+  await tick();
+  await h.click({ action: 'finder-reset' });
+  assert.match(h.statusNode().textContent, /자료를 준비하는 중/);
+  await h.click({ view: 'find' });
+  assert.doesNotMatch(h.statusNode().textContent, /자료를 준비하는 중/, 'the notice does not follow the teacher to another screen');
+  await h.click({ view: 'home' });
+  const before = h.pushed.length;
+  await h.ready();
+  assert.equal(h.pushed.length, before, 'the old press did not run after coming back');
+});
+
 test('보관함 is drawn before the catalog answers and is not drawn again when it arrives', async () => {
   const h = boot('?view=saved', { session: true });
   await tick();
