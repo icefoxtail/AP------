@@ -25,8 +25,10 @@ test("workspace quick assessments and compose text follow the recency order", ()
   // Every quick-assessment pool shuffle goes through the recency-aware shuffle.
   assert.equal((workspace.match(/fiveMinuteShuffle\(/g) || []).length, 2, "only the definition and recencyShuffle use the raw shuffle");
   assert.match(workspace, /quickRecencyTier\(record\) \* 10/);
-  assert.doesNotMatch(workspace, /최신 연도 문항부터/);
-  assert.match(workspace, /완결된 최근 연도부터\(2025년, 2024년, 2023년 순\) 선택하고, 올해 시험은 그다음/);
+  assert.match(workspace, /최신 연도부터\(2026년, 2025년, 2024년 순\) 선택하고, 연도를 알 수 없는 자료는 마지막/);
+  assert.match(workspace, /최신 연도\(2026년, 2025년 순\)부터 고릅니다/);
+  // The 2026-10-29 "complete years first" wording must not come back (user decision 2026-11-10).
+  assert.doesNotMatch(workspace, /완결된 최근 연도|올해 시험은 그다음/);
   assert.match(workspace, /data-year-distribution/);
 });
 
