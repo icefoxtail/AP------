@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 세 중선 AE, BF, CD가 무게중심 G에서 만나고 D, E, F는 각 변의 중점이다. 첫째 그림(왼쪽 위)은 중선 AE를 꼭짓점 쪽 파란색 AG와 주황색 GE로 나눈 모양이고, 둘째 그림(오른쪽 위)은 세 중선이 나눈 넓이가 같은 6개의 파란 삼각형이며, 셋째 그림(왼쪽 아래)은 그중 2개로 이루어진 삼각형 AGC를 주황색으로 칠한 모양이다.",
+    "solutionImageCaption": "무게중심 G는 중선을 꼭짓점 쪽에서 2:1로 나누므로 AG:GE=2:1, CG:CD=2:3이다. 세 중선은 삼각형을 넓이가 같은 6개의 삼각형으로 나누므로 삼각형 BEG와 CEG의 넓이가 같고 삼각형 AGC는 ABC의 3분의 1이다. AG와 BG의 길이는 같다고 할 수 없다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 무게중심 G와 삼각형 GBC의 무게중심 G′이 중선 AD 위에 있고 D는 BC의 중점이며 삼각형 ABC의 넓이는 72이다. 둘째 그림(오른쪽 위)은 G가 삼각형 ABC를 넓이가 같은 세 삼각형으로 나누고 각각 24임을 나타낸다. 셋째 그림(왼쪽 아래)은 삼각형 GBC를 따로 그려 세 중선으로 나눈 넓이가 같은 6개의 삼각형이며 그중 삼각형 G′BD가 주황색이다.",
+    "solutionImageCaption": "삼각형 GBC의 넓이는 삼각형 ABC의 3분의 1인 24 cm²이다. G′은 삼각형 GBC의 무게중심이므로 세 중선이 삼각형 GBC를 넓이가 같은 6개의 삼각형으로 나누고, 삼각형 G′BD는 그중 하나이므로 24의 6분의 1이다. 정답은 ③ 4 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -122,7 +130,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위의 중점 M과 BC의 길이 12 cm가 표시되어 있고, 삼각형 ABM과 AMC의 무게중심 G, G′을 파란색 선분으로 이었다. 오른쪽 그림은 BM, MC의 중점 N, P를 잡아 삼각형 ANP를 그린 것으로, G, G′이 AN, AP를 2:1로 나누는 점이고 파란색 GG′이 NP와 평행하며 NP는 6 cm이다.",
+    "solutionImageCaption": "BM, MC의 중점 N, P에 대해 NP는 BM과 MC의 절반의 합이므로 6 cm이다. G, G′은 AN, AP를 2:1로 나누므로 GG′은 NP와 평행하고 NP의 3분의 2이다. 정답은 ① 4 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -164,7 +176,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 C가 직각인 직각삼각형 ABC의 세 변 위에 정사각형이 있다. 빗변 AB 위의 주황색 정사각형은 넓이가 100 cm², BC 위의 파란색 정사각형은 넓이가 64 cm²이고 AC 위의 초록색 정사각형은 넓이가 쓰여 있지 않다. 오른쪽 그림은 이 삼각형을 파란색으로 칠하고 세 변의 길이 10 cm, 8 cm, 6 cm를 나타낸다.",
+    "solutionImageCaption": "정사각형의 한 변은 넓이의 제곱근이므로 AB=10 cm, BC=8 cm이다. 피타고라스 정리 AC²+8²=10²에서 AC²=36이므로 AC=6 cm이다. 삼각형의 넓이는 직각을 낀 두 변을 곱해 2로 나누면 된다. 정답은 ① 24 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -205,7 +221,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 B가 직각인 삼각형 ABC에서 변 BC 위의 점 D가 BD는 6, DC는 9이고 AC는 17이며 AB를 x, AD를 y라 했다. 둘째 그림(오른쪽 위)은 파란색 삼각형 ABC로 BC는 15, AC는 17이고, 셋째 그림(왼쪽 아래)은 주황색 삼각형 ABD로 AB는 8, BD는 6이다.",
+    "solutionImageCaption": "BC=6+9=15이고 삼각형 ABC에서 x²=17²−15²=64이므로 x=8이다. 삼각형 ABD에서 y²=8²+6²=100이므로 y=10이다. 따라서 x+y=8+10이다. 정답은 ④ 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -247,7 +267,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 12 cm인 큰 정사각형 오른쪽 아래 꼭짓점 C에서 작은 정사각형이 이어지고 선분 AE의 길이는 20 cm이며 CE의 길이를 x라 했다. 오른쪽 그림은 직각이 B인 파란색 직각삼각형 ABE로 AB는 12 cm, BE는 12+x cm, AE는 20 cm이다.",
+    "solutionImageCaption": "삼각형 ABE는 B가 직각이므로 12²+(12+x)²=20²이다. (12+x)²=256에서 12+x=16이므로 x를 구한다. 정답은 ② 4 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -286,7 +310,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 가장 긴 변 c를 주황색, 나머지 두 변 a, b를 파란색으로 나타낸 세 삼각형이다. 왼쪽 위, 오른쪽 위, 왼쪽 아래 순서로 각 C가 예각인 삼각형, 직각인 삼각형, 둔각인 삼각형이다.",
+    "solutionImageCaption": "가장 긴 변을 c라 할 때 c²=a²+b²이면 직각삼각형이다. ①은 2²+3²=13이고 4²=16이므로 아니다. ②는 3²+4²=25=5²이므로 직각삼각형이다. ③은 3²+7²=58이고 9²=81, ④는 7²+14²=245이고 15²=225이므로 아니다. ⑤는 8²+15²=289=17²이므로 직각삼각형이다. 정답은 ②, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -328,7 +356,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 12 cm, 세로 16 cm인 직사각형의 네 변을 지름으로 하는 반원 네 개와 네 꼭짓점을 지나는 원이 있고 반원과 원 사이의 네 초승달이 칠해져 있다. 오른쪽 그림은 대각선 BD를 그어 위쪽과 왼쪽 초승달 둘과 삼각형 ABD를 파란색으로, 오른쪽과 아래쪽 초승달 둘과 삼각형 BCD를 주황색으로 칠하고 BD에 20 cm라고 쓰여 있다.",
+    "solutionImageCaption": "대각선은 12²+16²=400에서 20 cm이고 외접원의 지름이다. 직각삼각형 ABD에서 두 초승달의 넓이의 합이 삼각형 ABD의 넓이와 같고, 삼각형 BCD에서도 마찬가지이다. 따라서 색칠한 네 부분의 넓이의 합은 직사각형의 넓이 12×16과 같다. 정답은 ④ 192 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -370,7 +402,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체의 출발점에서 도착점까지 최단 경로를 고르는 세 단계이다. 첫째 그림은 출발점에서 오른쪽, 뒤, 위로 갈 수 있는 세 모서리를 빨간색으로, 둘째 그림은 오른쪽으로 간 뒤 다음에 고를 수 있는 두 모서리를 빨간색으로 나타낸다. 셋째 그림은 오른쪽, 뒤로 간 뒤 남은 위쪽 한 모서리를 빨간색으로 나타낸다.",
+    "solutionImageCaption": "출발점에서 도착점까지 최단으로 가려면 오른쪽, 뒤, 위 세 방향의 모서리를 한 번씩 지난다. 첫 모서리는 세 방향 중 하나를 고르는 3가지이고, 그다음은 남은 두 방향 중 하나를 고르는 2가지이며, 마지막은 남은 한 방향으로 정해지는 1가지이다. 곱의 법칙으로 3×2×1로 센다. 정답은 ③ 6가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -450,7 +486,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에는 음료 콜라와 사이다가 파란색 칸으로, 가운데에는 연향버거, 불고기버거, 치킨버거가 주황색 칸으로, 아래쪽에는 감자튀김, 아이스크림, 애플파이, 콜파이가 초록색 칸으로 놓여 있다.",
+    "solutionImageCaption": "음료를 하나 고르는 방법은 2가지이다. 그 각각에 대해 나머지 메뉴에서 하나를 고르는 방법은 햄버거 3가지와 사이드 메뉴 4가지를 더한 7가지이다. 두 일이 이어서 일어나므로 곱의 법칙으로 2×7을 구한다. 정답은 ④ 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -490,7 +530,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 x, 세로 y의 6×6 표이다. x+3y가 21 이하인 칸은 옅은 회색이고 21보다 큰 칸은 진한 회색이며, y가 6인 줄에서만 x가 4, 5, 6인 세 칸이 진한 회색이다.",
+    "solutionImageCaption": "전체 36가지 중 x+3y>21인 경우를 센다. y=1부터 5까지는 x가 어떤 값이어도 x+3y≤21이고 y=6일 때 x+18≤21에서 x=1, 2, 3만 가능하므로 진한 회색 칸은 x=4, 5, 6의 3칸이다. 옅은 회색 칸을 세면 36−3가지이다. 정답은 ⑤ 33이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -571,7 +615,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 l과 m이 있고 l 위에 점 A, B, C, D가, m 위에 점 E, F, G가 있다. 둘째 그림(오른쪽 위)은 l 위의 두 점 A, C와 m 위의 점 F로 만든 파란색 삼각형이고, 셋째 그림(왼쪽 아래)은 l 위의 점 B와 m 위의 두 점 E, G로 만든 주황색 삼각형이다.",
+    "solutionImageCaption": "삼각형은 한 직선 위의 세 점으로는 만들 수 없다. l의 4점 중 2점과 m의 3점 중 1점을 고르는 경우는 6×3=18가지이고, l의 1점과 m의 3점 중 2점을 고르는 경우는 4×3=12가지이다. 합의 법칙으로 18+12를 구한다. 정답은 ① 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -610,7 +658,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 12까지의 수가 적힌 카드 12장이 두 줄로 놓여 있다. 3, 6, 9, 12가 적힌 네 장은 파란색이고 5, 10이 적힌 두 장은 주황색이며 나머지는 칠하지 않았다.",
+    "solutionImageCaption": "전체 카드는 12장이다. 3의 배수는 3, 6, 9, 12의 4장(파란색), 5의 배수는 5, 10의 2장(주황색)이고 둘 다에 속하는 카드는 없으므로 합의 법칙으로 4+2=6장이다. 확률은 12분의 6이다. 정답은 ① 2분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -649,7 +701,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 9까지의 수가 적힌 카드 9장이 두 줄로 있다. 위쪽 줄에서는 짝수 2, 4, 6, 8이 파란색이고 아래쪽 줄에서는 6의 약수 1, 2, 3, 6이 주황색이다.",
+    "solutionImageCaption": "카드를 다시 넣으므로 두 번의 선택은 서로 영향을 주지 않는다. 처음에 짝수가 나올 확률은 9장 중 4장이므로 9분의 4이고, 두 번째에 6의 약수가 나올 확률도 9장 중 4장이므로 9분의 4이다. 두 확률을 곱한다. 정답은 ④ 81분의 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -691,7 +747,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 영역 A, B, C, D로 나뉜 도형이다. 둘째 그림(오른쪽 위)은 B 4가지, A 3가지, C 2가지, D 2가지로 칠할 수 있음을 나타내고, 셋째 그림(왼쪽 아래)은 B를 빨간색으로 정한 경우를 주황색으로 나타내며 A 3가지, C 2가지, D 2가지가 남는다.",
+    "solutionImageCaption": "B를 먼저 칠하면 4가지, A는 B와 다른 3가지, C는 B, A와 다른 2가지, D는 B, C와 다른 2가지이므로 전체 색칠하는 방법은 4×3×2×2가지이다. B가 빨간색으로 정해진 경우는 3×2×2가지이다. 두 수의 비가 구하는 확률이다. 정답은 ① 4분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -770,7 +830,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 줄은 한울, 두울, 세울, 네울, 다울 다섯 사람을 칸으로 나타낸 것으로 한울은 파란색, 다울은 주황색이다. 아래쪽 줄은 한울과 다울을 붙여 한 묶음으로 만들고 두울, 세울, 네울과 함께 네 개를 한 줄로 놓은 모양이다.",
+    "solutionImageCaption": "다섯 사람을 한 줄로 세우는 경우는 5!=120가지이다. 한울이와 다울이가 이웃하는 경우는 묶음과 세 사람 4개를 세우는 4!가지에 묶음 안의 순서 2가지를 곱한 48가지이다. 이웃하지 않는 경우는 120−48=72가지이고 확률은 120분의 72이다. 정답은 ⑤ 5분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -809,7 +873,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 4칸, 세로 6칸의 표이다. 가로 세 칸은 A를 맞히는 경우이고 세로 한 칸은 B를 맞히는 경우이다. A만 맞히는 15칸은 파란색, B만 맞히는 1칸은 주황색, 둘 다 맞히는 3칸은 옅은 색이며 둘 다 못 맞히는 5칸은 칠하지 않았다.",
+    "solutionImageCaption": "전체를 24칸으로 나누면 A를 맞히는 확률 4분의 3은 가로 3칸, B를 맞히는 확률 6분의 1은 세로 1칸이다. 두 신호 중 하나만 맞히는 경우는 A만 맞히는 15칸과 B만 맞히는 1칸이고 두 경우는 겹치지 않는다. 확률은 24분의 (15+1)이다. 정답은 ⑤ 3분의 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -845,7 +913,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 BC의 중점이고 무게중심 G, 삼각형 BCG의 무게중심 G′이 중선 AD 위에 있으며 AG는 12 cm이다. 오른쪽 그림은 중선 AD를 세로로 펴서 위에서부터 A에서 G까지 파란색 12 cm, G에서 G′까지 주황색 4 cm, G′에서 D까지 초록색 2 cm로 나타내고, G에서 D까지는 6 cm이다.",
+    "solutionImageCaption": "G는 AD를 2:1로 나누므로 GD=6 cm이다. G′은 삼각형 BCG의 무게중심이고 GD가 그 중선이므로 GG′:G′D=2:1에서 GG′=4 cm이다. 점 A, G, G′이 이 순서로 한 직선 위에 있으므로 AG′=AG+GG′이다. 정답은 16 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -879,7 +951,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A가 직각인 두 직각삼각형이다. 왼쪽 삼각형은 빗변이 6이고 직각을 낀 두 변이 4와 a이며, 오른쪽 삼각형은 빗변이 a이고 직각을 낀 두 변이 6과 4이다. 빗변은 주황색으로 나타냈다.",
+    "solutionImageCaption": "가장 긴 변이 빗변이므로 빗변이 4인 경우는 불가능하다. 빗변이 6이면 a²+4²=6²이고, 빗변이 a이면 a²=4²+6²이다. 두 식에서 a²을 각각 구한다. 정답은 20, 52이다.",
+    "solutionImageSize": "full"
   },
 {
     "id": 23,
@@ -913,7 +989,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 자리 정수의 백의 자리, 십의 자리, 일의 자리에 쓸 수 있는 숫자를 칸으로 나타낸 세 줄의 그림이다. 모든 줄에서 백의 자리는 1, 2, 3, 십의 자리는 0, 1, 2, 3이다. 첫째 줄은 일의 자리가 1, 3인 홀수, 둘째 줄은 일의 자리가 0인 짝수, 셋째 줄은 일의 자리가 2인 짝수이다.",
+    "solutionImageCaption": "(1) 일의 자리가 1 또는 3인 홀수는 백의 자리 3가지, 십의 자리 4가지, 일의 자리 2가지이므로 3×4×2이다. (2) 일의 자리가 0이면 3×4×1, 2이면 3×4×1이고 두 경우를 더한다. 정답은 (1) 24가지, (2) 24가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -947,7 +1027,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 1부터 6까지의 숫자를 꼭짓점으로 하는 육각형과 모든 선분 15개이고 그중 하나가 파란색 당첨 조합이다. 오른쪽 그림은 1부터 13까지의 숫자 칸 13개이고 그중 하나가 파란색 당첨 숫자이다.",
+    "solutionImageCaption": "금도끼는 6개 숫자 중 2개를 고르는 조합 6×5÷2=15가지 중 1가지가 당첨이므로 당첨 확률은 15분의 1이다. 은도끼는 13개 숫자 중 1개를 맞히므로 당첨 확률은 13분의 1이다. 13분의 1이 15분의 1보다 크다. 정답은 은도끼 복권이다.",
+    "solutionImageSize": "full"
   }
 ];
 
