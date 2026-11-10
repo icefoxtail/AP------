@@ -120,8 +120,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 9,
           title: '원주 구하기',
           cues: [
-            { at: 0, say: '원 한 바퀴의 길이를 **원주**라 해요.', set: { b1209_ref: 1 } },
-            { at: 4.5, say: '원주 $=2\\pi\\times12=24\\pi$ cm' }
+            { at: 0, say: '원 한 바퀴의 길이를 **원주**라 해요.' },
+            { at: 4.5, say: '원주 $=2\\pi\\times12=24\\pi$ cm', set: { b1209_ref: 1 } }
           ]
         },
         {
@@ -158,8 +158,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 9,
           title: '원의 넓이 구하기',
           cues: [
-            { at: 0, say: '먼저 원 전체의 넓이를 구해요.', set: { b1209_ref: 2 } },
-            { at: 4.5, say: '원의 넓이 $=\\pi\\times12^2=144\\pi$ cm²' }
+            { at: 0, say: '먼저 원 전체의 넓이를 구해요.' },
+            { at: 4.5, say: '원의 넓이 $=\\pi\\times12^2=144\\pi$ cm²', set: { b1209_ref: 2 } }
           ]
         },
         {
@@ -220,7 +220,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
      a=6(정사각형의 한 변 = 부채꼴의 반지름, 장면 기본값). 부채꼴 π·6²·90/360 = 9π, 파낸 반원(지름 6 → 반지름 3) π·3²·1/2 = 9π/2, 색칠한 부분 = 9π − 9π/2 = 9π/2 (장면 steps).
      t(f1_ss2_t) 구간: 0~0.12 처음 모양(「전체 (부채꼴) 9π」 캡션) · 0.12~0.30 파낼 반원(주황) 표시 · 0.38~0.74 반원을 옆으로 꺼냄(0.6 부터 「파낸 부분 (반원) 9π/2」 캡션) · 0.80~0.96 결과(캡션·칩).
      색칠한 부분의 넓이(정답)는 파낸 반원의 넓이와 같아서(9π/2) 정답을 식 전체로 둡니다(answer: 9π − 9π/2 = 9π/2). 결과 캡션·칩은 해설이 f1_ss2_show 를 켤 때까지 아낍니다(f01.js lessonHold).
-     장면은 넓이(mode 0)와 둘레(mode 1)를 함께 묻지만, 둘레는 정리 탭 단계(step)로만 경계가 한 줄씩 나오고 움직임(to)이 없어 첫 장의 「첫 1초 안에 움직임」을 정직하게 채울 수 없어 이번에는 넓이만 합니다(survey.md). */
+     장면은 넓이(mode 0)와 둘레(mode 1)를 함께 묻지만, 둘레는 아래 배열의 두 번째 해설(label 「둘레」, 정리 탭 step 으로 시작하는 첫 장 — kit 의 첫 장 step/part 규칙이 필요)로 따로 있습니다. */
   'f1-ss2': [
     {
       title: '부채꼴 − 반원의 넓이',
@@ -276,14 +276,14 @@ window.APL_LESSONS['g7-circle-sector'] = {
           start: { f1_ss2_a: 6 },
           cues: [
             { at: 0, say: '둘레를 이루는 선을 하나씩 따라가 봐요.', set: { f1_ss2_mode: 1, f1_ss2_show: false }, step: 1 },
-            { at: 4.5, say: '반원의 호는 $2\\pi\\times3\\times\\frac12=3\\pi$.' }
+            { at: 4.5, say: '반원의 지름은 6 cm, 반지름은 3. 호는 $2\\pi\\times3\\times\\frac12=3\\pi$.' }
           ]
         },
         {
           length: 10,
           title: '부채꼴의 호',
           cues: [
-            { at: 0, say: '다음은 부채꼴의 호예요.', step: 2 },
+            { at: 0, say: '다음은 부채꼴의 호. 반지름은 한 변 6 cm.', step: 2 },
             { at: 5, say: '직각이니 원의 $\\frac14$, $2\\pi\\times6\\times\\frac14=3\\pi$.' }
           ]
         },
@@ -364,16 +364,16 @@ window.APL_LESSONS['g7-circle-sector'] = {
         length: 10,
         title: '곡선 부분 모으기',
         cues: [
-          { at: 0, say: '곡선 부분은 반지름 3, 중심각 90°인 호 4개.', to: { f5T: 0.97 }, dur: 6.5, ease: 'smooth' },
-          { at: 6.5, say: '중심각의 합 $90°\\times4=360°$, 원 하나가 돼요.' }
+          { at: 0, say: '곡선 부분은 반지름 3, 중심각 90°인 호 4개.', to: { f5T: 0.9 }, dur: 6.5, ease: 'smooth' },
+          { at: 6.5, say: '호 4개를 한곳으로 모아 볼게요.' }
         ]
       },
       {
         length: 12,
         title: '끈의 길이',
         cues: [
-          { at: 0, say: '곡선 부분은 원 하나의 둘레 $2\\pi\\times3=6\\pi$ cm.', to: { f5T: 1 }, dur: 1.5, ease: 'smooth' },
-          { at: 4.5, say: '끈 = 직선 부분 + 곡선 부분' },
+          { at: 0, say: '중심각의 합 $90°\\times4=360°$, 원 하나가 돼요.', to: { f5T: 1 }, dur: 2.5, ease: 'smooth' },
+          { at: 4, say: '곡선 부분은 원 하나의 둘레 $2\\pi\\times3=6\\pi$ cm.' },
           { at: 8, say: '끈의 길이 $=24+6\\pi$ cm' }
         ]
       }
@@ -399,7 +399,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '중심각이 커지면 호도',
         start: { b1102_u: 1, b1102_t1: 30, b1102_t2: 45, b1102_y: 75 },
         cues: [
-          { at: 0, say: '오른쪽 중심각을 키우면 호도 길어져요.', to: { b1102_t2: 60 }, dur: 2.5, ease: 'linear', snap: 5 },
+          { at: 0, say: '오른쪽 중심각을 키우면 호도 길어져요.', set: { b1102_show: false }, to: { b1102_t2: 60 }, dur: 2.5, ease: 'linear', snap: 5 },
           { at: 3, to: { b1102_t2: 45 }, dur: 2.5, ease: 'linear', snap: 5 },
           { at: 5.5, say: '한 원에서 호의 길이는 중심각에 **정비례**해요.', step: 0 }
         ]
@@ -408,8 +408,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         length: 10,
         title: 'x 구하기',
         cues: [
-          { at: 0, say: '왼쪽 부채꼴은 중심각 30°, 호 6 cm예요.' },
-          { at: 3.5, say: '호 : 호 = 중심각 : 중심각, $6:x=30:45$', step: 1 },
+          { at: 0, say: '왼쪽은 30°, 호 6 cm. 오른쪽 호의 길이를 $x$라 해요.' },
+          { at: 3.5, say: '호 : 호 = 중심각 : 중심각, $6:x=30:45$', step: 1, set: { b1102_show: true } },
           { at: 7, say: '그래서 $x=9$ cm예요.' }
         ]
       },
@@ -450,8 +450,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         length: 9,
         title: '원의 넓이와 비교',
         cues: [
-          { at: 0, say: '먼저 원 전체의 넓이를 구해요.', set: { b1609_ref: 2 } },
-          { at: 4.5, say: '원의 넓이 $=\\pi\\times9^2=81\\pi$ cm²' }
+          { at: 0, say: '먼저 원 전체의 넓이를 구해요.' },
+          { at: 4.5, say: '원의 넓이 $=\\pi\\times9^2=81\\pi$ cm²', set: { b1609_ref: 2 } }
         ]
       },
       {
@@ -522,7 +522,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '모서리를 돌면 끈이 꺾여요',
         start: { gtQ: 2, gtL: 4, gtT: 0.03 },
         cues: [
-          { at: 0, say: '개집 한 변은 2 m. 강아지가 끈을 당기며 돌아요.', set: { gtShow: false }, to: { gtT: 0.17 }, dur: 4, ease: 'smooth' },
+          { at: 0, say: '개집 한 변은 2 m, 끈은 4 m예요. 강아지가 돌아요.', set: { gtShow: false }, to: { gtT: 0.15 }, dur: 4, ease: 'smooth' },
           { at: 4.5, say: '모서리 D에서 끈이 꺾이고, 남은 끈으로 작은 부채꼴이 생겨요.' }
         ]
       },
@@ -593,7 +593,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
   /* ---------- 정사각형에서 사분원 4개 파내기 · 넓이 (f01.js f1-star, 탐구 탭, mode 0) · 3장 31초 ----------
      a=10(정사각형의 한 변), 사분원 반지름 r=a/2=5. 정사각형 10×10 = 100, 파낸 사분원 4개 = 원 1개 π·5² = 25π, 색칠한 부분 = 100 − 25π (장면 steps ① 정사각형 ② 사분원 4개 = 원 1개 ③ 파낸 부분 25π ④ 정사각형 − 원).
      t(f1_star_t) 구간: 0~0.12 처음(「전체 (정사각형) 100 cm²」·「r=5」) · 0.12~0.30 파낼 사분원 표시 · 0.38~0.74 옆으로 꺼냄(「사분원 4개 = 원 1개」, 0.6 부터 「파낸 부분 (원 1개) 25π cm²」) · 0.80~0.96 결과(캡션·칩은 f1_star_show 를 켤 때까지 아낌, f01.js lessonHold).
-     장면은 넓이(mode 0)와 둘레(mode 1)를 묻지만 둘레는 정리 탭 step 으로만 경계가 나와 움직임이 없어 넓이만 합니다(f1-ss2 와 같은 이유). */
+     장면은 넓이(mode 0)와 둘레(mode 1)를 묻고, 둘레는 배열의 두 번째 해설(label 「둘레」, step 으로 시작 — kit 규칙 필요)입니다. */
   'f1-star': [
     {
       title: '정사각형 − 사분원 4개',
@@ -801,7 +801,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '먼저 호',
         start: { csR: 6, csS: 60, csP: 0 },
         cues: [
-          { at: 0, say: '중심각이 60°인 활꼴의 둘레를 구해요.', step: 2 },
+          { at: 0, say: '반지름 6 cm, 중심각 60°인 활꼴의 둘레를 구해요.', step: 2 },
           { at: 0.5, to: { csP: 51.15273563044784 }, dur: 4, ease: 'smooth' },
           { at: 5, say: '먼저 호 AB는 $2\\pi$ cm.' }
         ]
@@ -1028,8 +1028,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '옮길 조각 찾기',
         start: { f4_ringmv_R: 6, f4_ringmv_r: 3, f4_ringmv_th: 60, f4_ringmv_t: 0 },
         cues: [
-          { at: 0, say: '큰 부채꼴 $R$은 6, 작은 부채꼴 $r$은 3, 중심각은 60°.', set: { f4_ringmv_show: false }, to: { f4_ringmv_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '작은 부채꼴 ①을 고리의 빈 곳에 끼울 거예요.' }
+          { at: 0, say: '고리 조각의 바깥 반지름 $R$은 6, 작은 부채꼴은 $r$=3.', set: { f4_ringmv_show: false }, to: { f4_ringmv_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '두 중심각은 같은 60°. 작은 부채꼴 ①을 옮길 거예요.' }
         ]
       },
       {
@@ -1054,7 +1054,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
 
   /* ---------- 고리 모양: 큰 부채꼴 − 작은 부채꼴 · 넓이 (f01.js f1-ring, 탐구 탭, mode 0) · 3장 31초 ----------
      R=6, r=3, 중심각 90°(장면 기본값). 큰 부채꼴 π·6²·90/360 = 9π, 작은 부채꼴 π·3²·90/360 = 9π/4, 색칠한 부분 = 9π − 9π/4 = 27π/4. 라벨 「90°」「R=6」「r=3」, 캡션 「전체 (큰 부채꼴) 9π」「파낸 부분 (작은 부채꼴) 9π/4」.
-     결과(27π/4)는 f1_ring_show 로 아끼고, 정답은 식 전체로 둡니다(파낸 부분 9π/4 를 먼저 말하므로). 넓이만 합니다(둘레는 step 만 있는 모드: f1-ss2 와 같은 이유). */
+     결과(27π/4)는 f1_ring_show 로 아끼고, 정답은 식 전체로 둡니다(파낸 부분 9π/4 를 먼저 말하므로). 넓이만 합니다(둘레 모드는 step 만 있어 첫 장 규칙이 필요: f1-ss2·f1-star 의 둘레 해설과 같은 이유로 아직 만들지 않음). */
   'f1-ring': {
     title: '큰 부채꼴 − 작은 부채꼴',
     answer: '$9\\pi-\\frac{9\\pi}{4}=\\frac{27\\pi}{4}$',
@@ -1068,7 +1068,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         start: { f1_ring_R: 6, f1_ring_r: 3, f1_ring_th: 90, f1_ring_t: 0 },
         cues: [
           { at: 0, say: '큰 부채꼴에서 작은 부채꼴을 파냈어요.', set: { f1_ring_mode: 0, f1_ring_show: false }, to: { f1_ring_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '$R$은 6, $r$은 3, 중심각은 모두 90°예요.' }
+          { at: 4.5, say: '큰 쪽 반지름 $R$은 6, 작은 쪽 반지름 $r$은 3.' }
         ]
       },
       {

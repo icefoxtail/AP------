@@ -7,7 +7,7 @@
    - 쇼츠 규칙: 8~15초·자막 2~3줄·한 줄 40자 이하·소개 줄 없이 첫 프레임부터 그림이 움직임·공식/결론은 마지막 한 줄. 자세한 규칙과 견본은 docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md.
    - 자막은 장면의 기존 탐구 질문·정리 단계 글(steps)·규칙(rule)에서 출발하고, 새로운 수학 주장을 만들지 않습니다.
        1210     ← question · rule(S = ½ r l) · relation(넓이 ÷ 호의 길이 = r ÷ 2)
-   - 1209·f4-swirl·f1-ss2 는 해설(lesson.js)로 대체했습니다(해설이 영상의 상위 형태라 이 파일에서 지웠습니다).
+   - 1209·f4-swirl·f1-ss2·f3-leaf-len·f5-sq4·rl-rect·gt-kennel 쇼츠 7개는 해설(lesson.js)로 대체했습니다(해설이 영상의 상위 형태라 이 파일에서 지웠습니다).
    ========================================================================== */
 window.APL_VIDEOS = window.APL_VIDEOS || {};
 

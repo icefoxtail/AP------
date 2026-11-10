@@ -51,7 +51,7 @@ const SCENE_STATE = {
   // swept.js: gtQ 개집 한 변 1~6 · gtL 끈 1~16 · gtT 0~1, 해설이 켜는 gtShow
   'gt-kennel': { gtQ: [1, 6], gtL: [1, 16], gtT: [0, 1], gtShow: null },
   // basic.js build() 의 1102(u 0.5~2.5 · t1 10~60 · t2 10~80 · y 20~120)와 1609(sectorSpec)
-  '1102': { b1102_u: [0.5, 2.5], b1102_t1: [10, 60], b1102_t2: [10, 80], b1102_y: [20, 120] },
+  '1102': { b1102_u: [0.5, 2.5], b1102_t1: [10, 60], b1102_t2: [10, 80], b1102_y: [20, 120], b1102_show: [0, 1] },
   '1609': { b1609_r: [3, 12], b1609_th: [10, 350], b1609_div: [0, 1], b1609_ref: [0, 2] },
   // f01.js f1-star: a 6~16 · t 0~1 · mode · show / f04.js f4-slide: W 6~14 · r 2~5 · t 0~1 · show
   'f1-star': { f1_star_a: [6, 16], f1_star_t: [0, 1], f1_star_mode: [0, 1], f1_star_show: null },
@@ -119,7 +119,7 @@ const FACTS = {
     return { allowed: [r, 2, S, circle, 1, 3, 360, 120], note: 'r=9 · 27π÷81π=1/3 · 360°×1/3=120°' };
   },
   'f1-star': (lesson) => {
-    if (lesson.label === '둘레') { const r = 5; assert.equal(4 * ((2 * r) / 4), 10); return { allowed: [10, r, 2, 1, 4], note: 'a=10 r=5 · 호 하나 5π/2 · 4×5π/2=10π' }; }
+    if (lesson.label === '둘레') { const a = 10, r = a / 2, n = 4, arc = (2 * r) / n; assert.equal(n * arc, a); return { allowed: [a, r, 2, 1, n], note: 'a=10 r=5 · 호 하나 5π/2 · 4×5π/2=10π' }; }
     const a = 10, r = a / 2, whole = a * a, part = r * r; // 사분원 4개 = 원 1개(π 의 계수 r²)
     assert.deepEqual([r, whole, part], [5, 100, 25]);
     return { allowed: [a, r, 1, 2, 4, whole, part], note: 'a=10 · r=5 · 사분원 4개 = 원 1개 · 정사각형 100 · 원 25π · 100−25π' };
@@ -155,7 +155,8 @@ const FACTS = {
   'f1-ring': () => {
     const R = 6, r = 3, th = 90, big = (R * R * th) / 360, small = (r * r * th) / 360, res = big - small; // π 의 계수
     assert.deepEqual([big, small, res], [9, 2.25, 6.75]);
-    return { allowed: [R, r, th, 360, 2, big, 4, 27, 7], note: 'R=6 r=3 90° · 큰 9π · 작은 9π/4 · 27π/4' };
+    const den = 360 / th, num = (big - small) * den; // 작은 부채꼴 = 9π/4, 색칠 = 27π/4
+    return { allowed: [R, r, th, 360, 2, big, den, num], note: 'R=6 r=3 90° · 큰 9π · 작은 9π/4 · 27π/4' };
   },
   'f1-lens': () => {
     const a = 8, sq = a * a; // 잎 = 2·(π·64/4) − 64 = 32π − 64, 색칠 = 64 − (32π − 64) = 128 − 32π
@@ -186,14 +187,14 @@ const FACTS = {
     return { allowed: [R, r, 180, 1, 2, S], note: 'R=6 r=3 180° ½×π×6²=18π' };
   },
   'f1-ss2': (lesson) => {
-    if (lesson.label === '둘레') { assert.deepEqual([2 * 3 * 0.5, 2 * 6 * 0.25], [3, 3]); return { allowed: [2, 3, 6, 1, 4], note: '반원의 호 3π · 부채꼴의 호 2π×6×1/4=3π · 한 변 6 · 6π+6' }; }
+    if (lesson.label === '둘레') { const a = 6, h = a / 2, semi = 2 * h * 0.5, quarter = 2 * a * 0.25; assert.deepEqual([semi, quarter], [3, 3]); return { allowed: [2, h, a, 1, 4], note: '반원의 호 3π · 부채꼴의 호 2π×6×1/4=3π · 한 변 6 · 6π+6' }; }
     const a = 6, whole = (a * a * 90) / 360, rr = a / 2, part = (rr * rr) / 2, res = whole - part; // π 의 계수
     assert.deepEqual([whole, rr, part, res], [9, 3, 4.5, 4.5]);
     return { allowed: [a, 90, 360, whole, rr, 1, 2], note: 'a=6 부채꼴 9π · 반원 반지름 3 · 넓이 9π/2(분자 9, 분모 2)' };
   }
 };
 
-const plainText = (say) => String(say).replace(/\\frac\{?(\d+)\}?\{?(\d+)\}?/g, '$1/$2').replace(/\*\*/g, '');
+const plainText = (say) => String(say).replace(/\\frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '$1/$2').replace(/\\frac(\d)(\d)/g, '$1/$2').replace(/\*\*/g, '');
 const numbersOf = (say) => (plainText(say).match(/\d+(?:\.\d+)?/g) || []).map(Number);
 const sayList = (lesson) => lesson.chapters.map((ch) => ch.cues.filter((c) => c.say).map((c) => c.say));
 
@@ -389,4 +390,46 @@ test('basic.js sectorSpec: thMax<350 장면(1610·1808)도 재생·진입 화면
   const basic = read('basic.js');
   assert.match(basic, /if \(\(q\.lessonOn \|\| q\.lessonEntry\) && thMax < 350\) g\.reserve/);
   assert.match(basic, /if \(thMax < 350\) g\.arc\(O, R, thMax, 360,/);
+});
+
+// 정답(answer)이 장면 값으로 계산한 결과와 같다 — 숫자는 장면 공식에서 계산하고 TeX 로 적어 normAnswer 로 비교
+const PI = (k) => (k === 1 ? '\\pi' : k + '\\pi');
+const EXPECT = {
+  'z3-sectorProof': () => PI((6 * 6 * 120) / 360),
+  'z3-circleProof': () => PI(6 * 6),
+  '1209#호의 길이': () => PI((2 * 12 * 120) / 360),
+  '1209#넓이': () => PI((12 * 12 * 120) / 360),
+  '1102': () => String((6 * 45) / 30 + (30 * 15) / 6),
+  '1609': () => (360 * (27 / 81)) + '°',
+  '1610': () => { const r = (4 * 360) / (2 * 80); return PI((r * r * 80) / 360); },
+  '1808': () => String((3 * 360) / 45 / 2),
+  'z2-sector': () => PI((6 * 90) / 180) + '+' + (2 * 6),
+  'z2-semi': () => PI(6) + '+' + (2 * 6),
+  'z2-quarter': () => PI((6 * 90) / 180) + '+' + (2 * 6),
+  'z2-segment': () => PI((6 * 60) / 180) + '+' + 6,
+  'f4-swirl': () => PI((6 * 6) / 2),
+  'f1-ss2#넓이': () => { const w = (6 * 6 * 90) / 360, p = (3 * 3) / 2; return PI(w) + '-\\frac{' + PI(2 * p) + '}{2}=\\frac{' + PI(2 * (w - p)) + '}{2}'; },
+  'f1-ss2#둘레': () => PI(2 * 3 * 0.5 + 2 * 6 * 0.25) + '+' + 6,
+  'f1-star#넓이': () => (10 * 10) + '-' + PI((10 / 2) ** 2),
+  'f1-star#둘레': () => PI(4 * ((2 * 5) / 4)),
+  'f4-slide': () => String(10 * (2 * 3)),
+  'f3-leaf-len': () => PI(2 * ((6 * 90) / 180)),
+  'f5-sq4': () => 4 * (2 * 3) + '+' + PI(2 * 3),
+  'rl-rect': () => PI(3 / 2 + 5 / 2 + 2),
+  'gt-kennel': () => PI((4 * 4 * 270) / 360 + 2 * ((2 * 2 * 90) / 360)),
+  'f4-sq12': () => String((12 * 12) / 2),
+  'f4-slideq': () => String(10 * 6),
+  'f4-inscr': () => String(4 * (2 * 4)),
+  'f4-ringmv': () => PI((6 * 6 * 60) / 360),
+  'f1-ring': () => { const big = (6 * 6 * 90) / 360; return PI(big) + '-\\frac{' + PI(big) + '}{4}=\\frac{' + PI(big * 3) + '}{4}'; },
+  'f1-lens': () => (2 * 8 * 8) + '-' + PI(2 * ((8 * 8) / 4)), // 64 − (32π − 64) = 128 − 32π
+  'f1-ex22': () => (4 * 4) + '-' + PI(2)
+};
+test('해설마다 answer 가 장면 값으로 계산한 정답과 같다', () => {
+  for (const { id, lesson, list } of entries) {
+    const key = list.length > 1 ? id + '#' + lesson.label : id;
+    assert.ok(EXPECT[key], key + ': EXPECT 표');
+    const want = EXPECT[key]();
+    assert.equal(core.normAnswer(lesson.answer), core.normAnswer(want), key + ' answer');
+  }
 });

@@ -413,10 +413,12 @@ function periScene(type) {
       return { readouts: rd, formula: RICH(esc2(complete ? f : '둘레는 경계를 이루는 선의 길이를 하나씩 더해서 구합니다.'), M('호의 길이 $l=2\\pi r\\times\\dfrac{\\theta}{360}$')), alert: type === 'segment' && !known ? { tone: 'info', text: '이 조건에서 현의 길이를 계산하는 방법은 중1 과정에서 배우지 않습니다. 중심각을 60° 또는 180°로 맞추면 둘레를 구할 수 있습니다.' } : null };
     },
     draw: (b, s, v, lab) => {
-      const sh = shapeOf(type, s), r = s.csR, segs = boundary(sh, r), tp = tracePlan(segs, s.csP / 100), a0 = sh.a0, a1 = sh.a1, am = (a0 + a1) / 2;
+      const lessonEntry = !!s.lessonEntry && !!lab && lab.tab === 'explore'; // 해설 진입 화면: 처음 상태(둘레 = ?, 점 P 0)
+      const cp = lessonEntry ? 0 : cp;
+      const sh = shapeOf(type, s), r = s.csR, segs = boundary(sh, r), tp = tracePlan(segs, cp / 100), a0 = sh.a0, a1 = sh.a1, am = (a0 + a1) / 2;
       const problem = lab && lab.tab === 'problem', review = lab && lab.tab === 'review';
-      const revealed = problem ? 0 : review ? Math.max(0, (s.step || 1) - 1) : segs.length;
-      const traceReady = !review || s.csP <= 100 * cumTarget(segs, revealed) + 1e-6;
+      const revealed = problem || lessonEntry ? 0 : review ? Math.max(0, (s.step || 1) - 1) : segs.length;
+      const traceReady = !review || cp <= 100 * cumTarget(segs, revealed) + 1e-6;
       segs.forEach((g) => { if (g.kind === 'arc') b.path(arcPts(0, 0, 1, g.a0, g.a1, 12), { color: null }); });
       if (type === 'sector' || type === 'segment') { bbox(b, -1, -1, 1, 1); ghost(b); }
       if (type === 'segment') fillSegment(b, a0, a1); else fillWedge(b, a0, a1);
@@ -425,10 +427,11 @@ function periScene(type) {
       segs.forEach((g) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a1, { color: 'sky', width: 2.8 }); else b.seg(g.P, g.Q, { color: 'rose', width: 2.8 }); });
       if (type === 'quarter' || type === 'sector') { b.ticks(O0, pt(0, 0, 1, a0), { color: 'amber' }); b.ticks(O0, pt(0, 0, 1, a1), { color: 'amber' }); }
       // 자취
-      if (!problem && s.csP > 0) tp.done.forEach(({ g, f }) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a0 + f * (g.a1 - g.a0), { color: 'amber', width: 8, alpha: 0.95 }); else b.seg(g.P, g.at(f), { color: 'amber', width: 8, alpha: 0.95 }); });
+      if (!problem && cp > 0) tp.done.forEach(({ g, f }) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a0 + f * (g.a1 - g.a0), { color: 'amber', width: 8, alpha: 0.95 }); else b.seg(g.P, g.at(f), { color: 'amber', width: 8, alpha: 0.95 }); });
       angleMark(b, a0, a1, `${sh.deg}°`, { r: type === 'segment' ? 22 : 30, outside: problem && b.W < 560 });
       if (var_) angleHandle(b, s, key, a0, 30, type === 'sector' ? 300 : 180);
       dot(b, O0, 'ink', 5);
+      if (type === 'segment' && !problem && (s.lessonOn || lessonEntry)) T(b, pt(0, 0, 0.5, a0), `r = ${r} cm`, { dx: -8, size: 15, color: 'muted', align: 'right' }); // 해설에서 말하는 반지름을 그림에도 보이게
       const bis = { x: Math.cos(am), y: Math.sin(am) };
       // 번호 · 이름 · 길이 라벨
       const cen = (() => { let x = 0, y = 0, n = 0; segs.forEach((g) => { for (let i = 0; i <= 4; i++) { const p = g.at(i / 4); x += p.x; y += p.y; n++; } }); return { x: x / n, y: y / n }; })();
@@ -475,15 +478,15 @@ function periScene(type) {
       });
       dot(b, { x: xl + Wt, y: yt }, 'ink', 4);
       T(b, { x: xl + Wt, y: yt }, totalLabel, { dy: -26, color: 'amber', size: 15, align: 'right' });
-      if (s.csP > 0) b.seg({ x: xl, y: yt }, { x: xl + Wt * s.csP / 100, y: yt }, { color: 'amber', width: 8, alpha: 0.95 });
-      const px = xl + Wt * s.csP / 100;
+      if (cp > 0) b.seg({ x: xl, y: yt }, { x: xl + Wt * cp / 100, y: yt }, { color: 'amber', width: 8, alpha: 0.95 });
+      const px = xl + Wt * cp / 100;
       b.handle('P', { x: px, y: yt }, { color: 'amber', ariaLabel: '점 P (끌어서 이동)', drag: (w) => { s.playing = false; s.csP = clamp(Math.round((w.x - xl) / Wt * 100), 0, 100); } });
-      if (s.csP > 0 && traceReady && !(s.lessonOn && !tp.ex)) { // 해설 재생 중에는 경계의 끝(정확한 값)에서만 점 P 의 거리 라벨을 그림(움직이는 동안의 근삿값 「≈ 7.56 cm」 방지)
+      if (cp > 0 && traceReady && !(s.lessonOn && !tp.ex)) { // 해설 재생 중에는 경계의 끝(정확한 값)에서만 점 P 의 거리 라벨을 그림(움직이는 동안의 근삿값 「≈ 7.56 cm」 방지)
         const distanceLabel = motionCm(tp.ex, tp.distance), half = (textW(distanceLabel, 16) / 2 + 8) / (b.k || 100);
         const labelX = half * 2 < Wt ? clamp(px, xl + half, xl + Wt - half) : xl + Wt / 2;
         T(b, { x: labelX, y: yt }, distanceLabel, { dy: -52, color: 'amber', size: 16 });
       }
-      if (s.csP > 0) b.point(tp.P, { color: 'amber', r: 7 });
+      if (cp > 0) b.point(tp.P, { color: 'amber', r: 7 });
     }
   };
 }

@@ -1009,6 +1009,7 @@
       y: { value: 75, min: 20, max: 120, step: 5, color: 'rose', label: '아래쪽 중심각 y', format: (v) => v + '°' }
     },
     controls: ['t1', 't2', 'y', 'u'],
+    state: { show: 0 }, // 해설 재생 전용: 1 이 되기 전에는 x 값(라벨·칩)을 그리지 않음
     steps: (q) => {
       const k = q.u / 5, l1 = k * q.t1, x = k * q.t2, l3 = k * q.y;
       return [`① ${numF(l1)} : x = ${q.t1} : ${q.t2} → x = ${numF(x)}`, `② ${numF(l1)} : ${numF(l3)} = ${q.t1} : y → y = ${q.y}`, `③ x + y = ${numF(x)} + ${q.y} = ${numF(x + q.y)}`];
@@ -1023,6 +1024,7 @@
     },
     chips: (q, mode, step) => {
       const k = q.u / 5, l1 = k * q.t1, x = k * q.t2;
+      if (mode === 'review' && q.lessonOn && !q.show) return [];
       if (mode === 'review' && step === 1) return [{ k: '비례식', tex: `${numF(l1, true)}:x=${q.t1}:${q.t2}\\ \\Rightarrow\\ x=${numF(x, true)}`, color: 'rose' }];
       if (mode === 'review' && step === 2) return [{ k: '비례식', tex: `${numF(l1, true)}:${numF(k * q.y, true)}=${q.t1}:y\\ \\Rightarrow\\ y=${q.y}`, color: 'rose' }];
       if (mode === 'review') return [{ k: '합', tex: `x+y=${numF(x, true)}+${q.y}=${numF(x + q.y, true)}`, color: 'rose' }];
@@ -1058,7 +1060,7 @@
       g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
       g.seg([-R, 0], [R, 0], { color: 'ink', width: 2.4 });
       [a1, a2, b0, b1].forEach((a) => g.seg(O, g.pol(O, R, a), { color: 'ink', width: 2.4 }));
-      const showX = mode === 'explore' || (mode === 'review' && step >= 1);
+      const showX = mode === 'explore' || (mode === 'review' && step >= 1 && !(q.lessonOn && !q.show));
       const showY = mode === 'explore' || (mode === 'review' && step >= 2);
       g.arc(O, R, a1, 180, { color: 'amber', width: 3 });
       g.arc(O, R, 0, a2, { color: 'rose', width: 3 });
