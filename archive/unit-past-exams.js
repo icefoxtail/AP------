@@ -49,7 +49,7 @@
     el.textContent = message || '';
     el.classList.toggle('is-loading', false);
     el.classList.toggle('is-error', isError);
-    el.style.color = isError ? '#a33b49' : '';
+    el.style.color = isError ? 'var(--danger)' : '';
   }
   function loadScript(src) {
     return new Promise((resolve, reject) => {

@@ -822,8 +822,18 @@ async function real50ReminderFit(session, initial) {
   });
   requireThat(fit.found && fit.loaded && fit.stylePresent && fit.inside && fit.naturalWidth === 420 && fit.naturalHeight === 300 &&
     fit.width > 0 && Math.abs(fit.width / fit.height - 420 / 300) < .01, 'REMINDER_IMAGE_FIT_OR_ASPECT_FAILED', fit);
+  await remember(session.page, 'sol');
+  const printed = await printCheck(session, solution, true, 'real50-qpp4-repaired-print');
+  const answer = await operation(session, 'real50-qpp4-repaired-answer', 'ans'); assertReady(answer,50,true);
+  const returned = await operation(session, 'real50-qpp4-repaired-exam', 'exam'); assertReady(returned,50,true);
+  await assertHit(session,initial,returned);
+  const warm = await operation(session, 'real50-qpp4-repaired-solution-hit', 'sol'); assertReady(warm,50,true);
+  await assertHit(session,solution,warm);
   // A source <img style="max-width:480px"> must not overrule the narrow solution column.
-  // Use the already loaded real image, then restore its exact DOM style before print/snapshot checks.
+  // This probe edits the live image's inline style. Chrome leaves an empty style="" attribute behind even after
+  // the style is removed again, so the active snapshot's DOM no longer equals its frozen HTML and the next print
+  // correctly rebuilds it (PRINT_STALE_REBUILD). Run the probe last, after every print/snapshot-reuse check
+  // (CI run 42791557407 recorded the 9-character difference).
   const inlineFit = await session.page.evaluate(() => {
     const box = [...document.querySelectorAll('#print-area .sol-box')]
       .find(node => node.dataset.sourceRef?.endsWith(':17'));
@@ -846,13 +856,6 @@ async function real50ReminderFit(session, initial) {
   });
   requireThat(inlineFit.found && inlineFit.inlineMaxWidth === '480px' && inlineFit.inside,
     'REMINDER_INLINE_SOURCE_IMAGE_CLIPPED', inlineFit);
-  await remember(session.page, 'sol');
-  const printed = await printCheck(session, solution, true, 'real50-qpp4-repaired-print');
-  const answer = await operation(session, 'real50-qpp4-repaired-answer', 'ans'); assertReady(answer,50,true);
-  const returned = await operation(session, 'real50-qpp4-repaired-exam', 'exam'); assertReady(returned,50,true);
-  await assertHit(session,initial,returned);
-  const warm = await operation(session, 'real50-qpp4-repaired-solution-hit', 'sol'); assertReady(warm,50,true);
-  await assertHit(session,solution,warm);
   report.repairedIssue={id:'REAL50_QPP4_REMINDER_IMAGE_CLIPPING',status:'FIXED',qualityPass:true,questionCount:50,qpp:4,
     inputHash:solution.inputHash,sourceBytesUnchanged:true,fit,printed,solutionPages:solution.pageCount,warmCacheStatus:warm.cacheStatus};
   return {repairedIssue:report.repairedIssue};

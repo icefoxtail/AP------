@@ -1,0 +1,79 @@
+/* Archive 2.0 design tokens: the one place colors, fonts and shapes are defined.
+   Shared by workspace.html and unit-past-exams.html. See archive/DESIGN.md.
+   The screen is light only (color-scheme: light); there is no dark mode on purpose. */
+:root {
+  color-scheme: light;
+
+  /* ink and surfaces */
+  --surface: #ffffff;
+  --bg: #ffffff;
+  --ink: #17171c;
+  --ink-hover: #33333b; /* hover of ink-filled buttons */
+  --ink-2: #5a5a63; /* secondary text */
+  --muted: #6b6b74; /* faint text, 4.5:1 or better on white and on --chip */
+  --line: #e6dad5; /* card and divider lines */
+  --line-soft: #f0e8e5; /* lighter divider */
+  --control-line: #8a8a93; /* input and select borders */
+  --chip: #f6f1ef; /* neutral chip / hover / quiet panel */
+  --selected: #f1eeff; /* selected row */
+
+  /* brand: left menu, links, similar-problem marks */
+  --brand: #cf3518;
+  --brand-ink: #a82a10;
+  --brand-hover: #8f1f0a;
+  --brand-soft: #fff1eb;
+  --brand-soft-ink: #7a1e0a;
+
+  /* grade colors: grade buttons, grade marks and exam spines only (white text on them) */
+  --grade-m1: #2f7d32;
+  --grade-m2: #0b7a8f;
+  --grade-m3: #2a6fdb;
+  --grade-h1: #6b4fd8;
+  --grade-h2: #a8268f;
+  --grade-h3: #1f2937;
+
+  /* difficulty steps 1-4 (bars): light to dark */
+  --step-1: #f6c8ba;
+  --step-2: #e58a70;
+  --step-3: #cf3518;
+  --step-4: #17171c;
+
+  /* states */
+  --danger: #b42318;
+  --danger-bg: #fff1f2;
+  --danger-ink: #6f1522;
+  --good: #1e6b3f;
+  --good-bg: #edf7f1;
+  --warn: #7a5200;
+  --warn-bg: #fff6dd;
+
+  /* type */
+  --font-body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --font-display: "Black Han Sans", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+
+  /* shapes */
+  --radius-pill: 22px;
+  --radius-field: 10px;
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --radius: 12px;
+
+  /* older names kept so every screen reads the same tokens */
+  --navy: var(--ink);
+  --accent: var(--brand);
+  --panel: var(--surface);
+  --text-sub: var(--ink-2);
+  --archive2-focus: var(--ink);
+  --finder-focus: var(--ink);
+
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  :root {
+    font-size: 16px;
+  }
+}
