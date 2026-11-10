@@ -7,88 +7,77 @@
   "items": [
     {
       "sourceOrdinal": 1,
-      "format": "단일 정답",
+      "format": "옳은 것 고르기",
       "slots": {
         "given": [
           {
             "src": "stem",
             "quote": "문자 $x$에 대한 이차방정식을 고르시오.",
             "term": "이차방정식"
-          },
-          {
-            "src": "solution",
-            "quote": "항을 정리하면 0=0인 항등식이다.",
-            "term": "항등식"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "이차방정식이 된다.",
+            "src": "stem",
+            "quote": "이차방정식을 고르시오.",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "x³가 양변에서 소거되어",
-            "term": "이항",
+            "quote": "③은 x³가 양변에서 소거되어 −x²+2x−5=0인 이차방정식이 된다.",
+            "term": "일차방정식",
             "evidenceType": "IMPLIED",
-            "justification": "양변의 최고차항을 소거하여 차수를 낮춤"
+            "justification": "최고차항 소거 후 방정식의 차수 확인"
           },
           {
             "src": "solution",
-            "quote": "−x²+2x−5=0인 이차방정식이 된다.",
-            "term": "동류항",
-            "evidenceType": "IMPLIED",
-            "justification": "항을 정리하여 동류항을 결합함"
+            "quote": "②는 항을 정리하면 0=0인 항등식이다.",
+            "term": "항등식",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "분모에 x가 있는 분수방정식",
-            "term": "분수방정식",
+            "quote": "①은 항을 소거하면 4=2가 되어 이차방정식이 아니다.",
+            "term": "등식",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "x^3-x^2=x^3-2x+5",
-            "term": "등식"
+            "src": "solution",
+            "quote": "③은 x³가 양변에서 소거되어 −x²+2x−5=0인 이차방정식이 된다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "삼차항이 양변에서 소거되고 최고차항이 2차인 식을 정리하여 이차방정식을 판별함"
+        "method": "주어진 각 식을 정리하여 소거 및 차수를 검토한 후 이차방정식이 되는 식을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
     },
     {
       "sourceOrdinal": 2,
-      "format": "단일 정답",
+      "format": "옳은 것 고르기",
       "slots": {
         "given": [
           {
             "src": "stem",
             "quote": "$x=1$을 해로 갖는 이차방정식을 고르시오.",
-            "term": "이차방정식"
+            "term": "해"
           },
           {
-            "src": "solution",
-            "quote": "양변을 정리하면 x²+2x−3=0으로",
-            "term": "이차식"
+            "src": "stem",
+            "quote": "해로 갖는 이차방정식을 고르시오.",
+            "term": "이차방정식"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "$x=1$을 해로 갖는",
-            "term": "해"
-          },
-          {
-            "src": "solution",
-            "quote": "(1−2)(1+4)=−5가 성립하며",
+            "quote": "이차방정식을 고르시오.",
             "term": "판정"
           }
         ],
@@ -101,22 +90,28 @@
           },
           {
             "src": "solution",
-            "quote": "양변을 정리하면 x²+2x−3=0으로",
+            "quote": "양변을 정리하면 x²+2x−3=0으로 이차방정식이다.",
             "term": "전개",
             "evidenceType": "IMPLIED",
-            "justification": "보기를 전개하여 다항방정식 여부를 확인함"
+            "justification": "식을 전개하여 이차방정식 형태 확인"
+          },
+          {
+            "src": "solution",
+            "quote": "② (1−2)(1+4)=−5가 성립하며",
+            "term": "등식",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "(x-2)(x+4)=-5",
-            "term": "음수"
+            "src": "solution",
+            "quote": "② (1−2)(1+4)=−5가 성립하며",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "x=1을 대입하여 등식이 성립하고 다항식 형태인 이차방정식을 선별함"
+        "method": "x=1을 보기 식들에 대입하여 등식이 성립하고 정리했을 때 이차방정식이 되는 대상을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -128,52 +123,48 @@
         "given": [
           {
             "src": "stem",
-            "quote": "이차방정식 $x^2-5x=0$을",
+            "quote": "이차방정식 $x^2-5x=0$을 바르게 푼 것을 고르시오.",
             "term": "이차방정식"
-          },
-          {
-            "src": "solution",
-            "quote": "x²−5x=x(x−5)=0이다.",
-            "term": "이차식"
           }
         ],
         "goal": [
           {
-            "src": "stem",
-            "quote": "바르게 푼 것을 고르시오.",
-            "term": "해"
-          },
-          {
             "src": "solution",
-            "quote": "x=0 또는 x=5이다.",
-            "term": "결정"
+            "quote": "곱이 0이므로 x=0 또는 x=5이다.",
+            "term": "해"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "x(x−5)=0",
-            "term": "공통인수",
-            "evidenceType": "IMPLIED",
-            "justification": "공통인수 x를 묶어 인수분해함"
+            "quote": "x²−5x=x(x−5)=0이다.",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "곱이 0이므로",
+            "quote": "곱이 0이므로 x=0 또는 x=5이다.",
             "term": "곱",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "x²−5x=x(x−5)=0이다.",
+            "term": "공통인수",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수 x로 묶어 인수분해"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$x=0$ 또는 $x=5$",
-            "term": "자연수"
+            "src": "solution",
+            "quote": "곱이 0이므로 x=0 또는 x=5이다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "공통인수를 묶어 인수분해한 후 곱이 0이 되는 원리로 두 근을 구함"
+        "method": "이차방정식 좌변에서 공통인수를 묶어 인수분해하고 곱이 0이 되는 성질로 해를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -185,19 +176,19 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$y=ax^2 \\; (a \\neq 0)$의 그래프에 대한",
+            "quote": "$y=ax^2 \\; (a \\neq 0)$의 그래프에 대한 설명으로 바르지 않은 것을 고르시오.",
             "term": "이차함수"
           },
           {
             "src": "choices",
-            "quote": "$y=-ax^2$과 $y$축 대칭이다.",
-            "term": "포물선"
+            "quote": "$a$값에 관계없이 그래프는 원점을 지난다.",
+            "term": "원점"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "설명으로 바르지 않은 것을 고르시오.",
+            "quote": "바르지 않은 것을 고르시오.",
             "term": "판정"
           }
         ],
@@ -205,7 +196,13 @@
           {
             "src": "solution",
             "quote": "y=ax²와 y=−ax²는 x축에 대해 서로 대칭이다.",
-            "term": "대칭",
+            "term": "대칭이동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "각 그래프가 y축 대칭인 사실과 두 그래프가 서로 y축 대칭이라는 진술은 다르다.",
+            "term": "축",
             "evidenceType": "NAMED"
           },
           {
@@ -217,19 +214,14 @@
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$a>0$이면 그래프는 아래로 볼록이다.",
-            "term": "아래로볼록"
-          },
-          {
             "src": "solution",
-            "quote": "원점을 지나는 성질",
-            "term": "원점"
+            "quote": "y=ax²와 y=−ax²는 x축에 대해 서로 대칭이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "기본형 포물선의 대칭축, 대칭이동 관계, 원점 통과, 아래로 볼록 조건을 대조하여 오류를 판정함"
+        "method": "이차함수 기본형의 대칭축, x축 대칭 이동 성질, 폭의 변화를 검토하여 옳지 않은 설명을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -241,13 +233,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$y=f(x)$, $f(x)=2(x+1)^2+4$에 대한 설명이다.",
+            "quote": "$y=f(x)$, $f(x)=2(x+1)^2+4$에 대한 설명이다. 틀린 것을 골라라.",
             "term": "이차함수"
           },
           {
-            "src": "solution",
-            "quote": "f(x)=2(x+1)^2+4에서",
-            "term": "표준형"
+            "src": "choices",
+            "quote": "꼭짓점의 좌표는 $(1, 4)$이다.",
+            "term": "꼭짓점"
           }
         ],
         "goal": [
@@ -260,33 +252,33 @@
         "method": [
           {
             "src": "solution",
-            "quote": "꼭짓점은 (-1,4)",
-            "term": "꼭짓점",
-            "evidenceType": "NAMED"
-          },
-          {
-            "src": "solution",
-            "quote": "대칭축은 x=-1이다.",
-            "term": "축",
-            "evidenceType": "NAMED"
-          },
-          {
-            "src": "solution",
             "quote": "y=2x^2의 그래프를 왼쪽으로 1, 위로 4만큼 평행이동한 것이다.",
             "term": "평행이동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "x=0을 대입하면 f(0)=2(1)^2+4=6이므로 y절편은 6이다.",
+            "term": "절편",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "꼭짓점은 (-1,4), 대칭축은 x=-1이다.",
+            "term": "축",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "f(0)=2(1)^2+4=6이므로 y절편은 6이다.",
-            "term": "y절편"
+            "quote": "꼭짓점을 (1,4)라 한 ②만 거짓이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "표준형 식으로부터 꼭짓점의 x좌표와 y좌표, 대칭축, 평행이동량, y절편을 분석하여 참거짓을 판정함"
+        "method": "표준형 이차함수의 꼭짓점, 대칭축, y절편, 평행이동 관계를 분석하여 거짓인 보기를 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -302,9 +294,9 @@
             "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "x²+2x−4=0은",
-            "term": "이차식"
+            "src": "stem",
+            "quote": "이차방정식의 풀이가 잘못된 것을 고르시오.",
+            "term": "해"
           }
         ],
         "goal": [
@@ -317,28 +309,34 @@
         "method": [
           {
             "src": "solution",
-            "quote": "(x+1)²=5이므로",
+            "quote": "④ x²+2x−4=0은 (x+1)²=5이므로 x=−1±√5이다.",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "x=−1±√5이다.",
+            "quote": "④ x²+2x−4=0은 (x+1)²=5이므로 x=−1±√5이다.",
             "term": "제곱근",
             "evidenceType": "IMPLIED",
-            "justification": "완전제곱식에 제곱근을 취하여 근을 도출함"
+            "justification": "완전제곱식에 제곱근을 취해 근 도출"
+          },
+          {
+            "src": "solution",
+            "quote": "보기의 1±√5는 부호가 잘못됐다.",
+            "term": "부호",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$x^2+2x-4=0, \\; x=1 \\pm \\sqrt{5}$",
-            "term": "무리수"
+            "src": "solution",
+            "quote": "나머지 ①②③⑤는 대입·인수분해로 검산하면 맞다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "완전제곱식을 이용한 이차방정식 풀이 과정에서 부호 일치 여부를 대조하여 오답을 판별함"
+        "method": "각 이차방정식을 완전제곱식 변형 및 인수분해로 직접 풀어 해와 부호의 일치 여부를 검증함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -350,52 +348,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "ax^2+bx+c=0 \\; (a \\neq 0)$의 근의공식",
+            "quote": "$ax^2+bx+c=0 \\; (a \\neq 0)$의 근의공식",
             "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "b²−4ac",
-            "term": "이차식"
+            "src": "stem",
+            "quote": "근의공식 $\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$에서",
+            "term": "근의공식"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "변형식을 고르시오.",
-            "term": "결정"
-          },
-          {
-            "src": "solution",
-            "quote": "√((b/2)²−ac)이다.",
-            "term": "근호"
+            "term": "등식"
           }
         ],
         "method": [
           {
-            "src": "stem",
-            "quote": "근의공식",
-            "term": "근의공식",
+            "src": "solution",
+            "quote": "분모·분자에 1/2를 곱하면 (−b/2±(1/2)√(b²−4ac))/a이며",
+            "term": "분수",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "분모·분자에 1/2를 곱하면",
-            "term": "등식의성질",
+            "quote": "(1/2)√(b²−4ac)=√((b/2)²−ac)이다.",
+            "term": "제곱근",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "근의 공식 (−b±√(b²−4ac))/(2a)에서",
+            "term": "계수",
             "evidenceType": "IMPLIED",
-            "justification": "분수식의 분모와 분자에 동일한 수를 곱하여 짝수 근의 공식을 유도함"
+            "justification": "이차방정식 계수에 대한 근의 공식 변형"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "\\left(\\frac{b}{2}\\right)^2-ac",
-            "term": "거듭제곱"
+            "src": "solution",
+            "quote": "(1/2)√(b²−4ac)=√((b/2)²−ac)이다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "근의 공식의 분모와 분자에 1/2을 곱하고 근호 안으로 1/4을 넣어 짝수 공식을 유도함"
+        "method": "근의 공식의 분모와 분자에 1/2을 곱하고 제곱근 안으로 상수를 넣어 짝수 근의 공식을 유도함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -407,13 +406,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "0.\\dot{4}x^2+0.\\dot{8}x+0.\\dot{3}=0$의",
-            "term": "이차방정식"
+            "quote": "$0.\\dot{4}x^2+0.\\dot{8}x+0.\\dot{3}=0$의 해를 모두 구한 것을 고르시오.",
+            "term": "순환소수"
           },
           {
-            "src": "solution",
-            "quote": "순환소수 0.4̇=4/9, 0.8̇=8/9, 0.3̇=3/9이다.",
-            "term": "유리수"
+            "src": "stem",
+            "quote": "$0.\\dot{4}x^2+0.\\dot{8}x+0.\\dot{3}=0$의 해를",
+            "term": "이차방정식"
           }
         ],
         "goal": [
@@ -421,38 +420,40 @@
             "src": "stem",
             "quote": "해를 모두 구한 것을 고르시오.",
             "term": "해"
-          },
-          {
-            "src": "solution",
-            "quote": "따라서 x=−1/2 또는 −3/2.",
-            "term": "결정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "9를 곱하면",
-            "term": "등식의성질",
+            "quote": "순환소수 0.4̇=4/9, 0.8̇=8/9, 0.3̇=3/9이다.",
+            "term": "유리수",
             "evidenceType": "IMPLIED",
-            "justification": "양변에 분모의 최소공배수인 9를 곱하여 계수를 정수화함"
+            "justification": "순환소수를 분수 형태 유리수로 변환"
           },
           {
             "src": "solution",
-            "quote": "4x²+8x+3=0=(2x+1)(2x+3)",
+            "quote": "9를 곱하면 4x²+8x+3=0=(2x+1)(2x+3).",
             "term": "인수분해",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "따라서 x=−1/2 또는 −3/2.",
+            "term": "일차방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "각 일차식을 0으로 놓아 해 도출"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "x=−1/2 또는 −3/2.",
-            "term": "음수"
+            "quote": "따라서 x=−1/2 또는 −3/2.",
+            "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "순환소수 계수를 분수로 고치고 양변에 9를 곱해 정수 계수로 변환한 뒤 인수분해하여 해를 구함"
+        "method": "순환소수 계수를 분수로 변환하고 정수 계수 이차방정식으로 정리한 뒤 인수분해하여 해를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -464,37 +465,33 @@
         "given": [
           {
             "src": "stem",
-            "quote": "(x^2-3x)^2-2(x^2-3x)-8=0$의",
-            "term": "방정식"
+            "quote": "$(x^2-3x)^2-2(x^2-3x)-8=0$의 해가 <u>아닌</u> 것을 고르시오.",
+            "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "t=x²−3x라 두면",
-            "term": "이차식"
+            "src": "stem",
+            "quote": "해가 <u>아닌</u> 것을 고르시오.",
+            "term": "해"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "해가 <u>아닌</u> 것을 고르시오.",
-            "term": "해"
-          },
-          {
-            "src": "solution",
-            "quote": "−4는 해가 아니다.",
+            "quote": "<u>아닌</u> 것을 고르시오.",
             "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "t=x²−3x라 두면",
+            "quote": "t=x²−3x라 두면 (t−4)(t+2)=0, t=4 또는 −2이다.",
             "term": "치환",
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "반복되는 공통식을 t로 치환"
           },
           {
             "src": "solution",
-            "quote": "(t−4)(t+2)=0",
+            "quote": "t=x²−3x라 두면 (t−4)(t+2)=0, t=4 또는 −2이다.",
             "term": "인수분해",
             "evidenceType": "NAMED"
           },
@@ -503,19 +500,19 @@
             "quote": "t=4 ⇒ x=4 또는 −1, t=−2 ⇒ x=1 또는 2.",
             "term": "이차방정식",
             "evidenceType": "IMPLIED",
-            "justification": "치환된 각 t값에 대한 이차방정식을 풀어 4개의 실근을 도출함"
+            "justification": "환원된 각 이차방정식을 풀어 최종 해를 구함"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$x=-4$",
-            "term": "음수"
+            "src": "solution",
+            "quote": "−4는 해가 아니다.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "공통부분을 t로 치환하여 t에 대한 이차방정식을 풀고 다시 x에 대한 이차방정식을 풀어 참인 근을 판별함"
+        "method": "공통부분을 t로 치환하여 t에 대한 이차방정식을 푼 후 다시 x에 대한 이차방정식을 풀어 해를 판정함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -531,47 +528,50 @@
             "term": "이차함수"
           },
           {
-            "src": "solution",
-            "quote": "위로 4만큼 이동하면 y=−2(x+3)²+4.",
-            "term": "표준형"
+            "src": "stem",
+            "quote": "$y=2x^2$과 $x$축 대칭인 이차함수 그래프를",
+            "term": "대칭이동"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "이차함수식을 고르시오.",
-            "term": "결정"
+            "quote": "평행이동한 이차함수식을 고르시오.",
+            "term": "등식"
           }
         ],
         "method": [
           {
             "src": "solution",
             "quote": "원래 y=2x²를 x축 대칭하면 y=−2x².",
-            "term": "대칭이동",
+            "term": "부호",
+            "evidenceType": "IMPLIED",
+            "justification": "x축 대칭으로 y좌표 부호 반전"
+          },
+          {
+            "src": "solution",
+            "quote": "왼쪽으로 3만큼 이동하면 y=−2(x+3)², 위로 4만큼 이동하면 y=−2(x+3)²+4.",
+            "term": "평행이동",
             "evidenceType": "NAMED"
           },
           {
-            "src": "stem",
-            "quote": "평행이동한",
-            "term": "평행이동",
-            "evidenceType": "NAMED"
+            "src": "solution",
+            "quote": "위로 4만큼 이동하면 y=−2(x+3)²+4.",
+            "term": "포물선",
+            "evidenceType": "IMPLIED",
+            "justification": "평행이동된 포물선 식 완성"
           }
         ],
         "condition": [
           {
-            "src": "stem",
-            "quote": "$x$축으로 -3만큼, $y$축으로 4만큼",
-            "term": "음수"
-          },
-          {
-            "src": "stem",
-            "quote": "$x$축 대칭인",
-            "term": "대칭"
+            "src": "solution",
+            "quote": "왼쪽으로 3만큼 이동하면 y=−2(x+3)², 위로 4만큼 이동하면 y=−2(x+3)²+4.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "이차함수에 x축 대칭이동을 적용하여 최고차항 계수 부호를 바꾼 뒤 평행이동 규칙을 적용하여 식을 작성함"
+        "method": "x축 대칭이동으로 식의 최고차항 부호를 바꾸고 x축, y축 평행이동을 적용하여 표준형 식을 도출함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -583,13 +583,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$y=-x^2+2x+3$에 대한 설명으로",
+            "quote": "$y=-x^2+2x+3$에 대한 설명으로 틀린 것을 고르시오.",
             "term": "이차함수"
           },
           {
-            "src": "solution",
-            "quote": "y=−x²+2x+3=−(x−1)²+4이다.",
-            "term": "표준형"
+            "src": "choices",
+            "quote": "$y$절편은 3이다.",
+            "term": "절편"
           }
         ],
         "goal": [
@@ -602,8 +602,8 @@
         "method": [
           {
             "src": "solution",
-            "quote": "x절편은 (x−3)(x+1)=0에서 x=3,−1이므로",
-            "term": "x절편",
+            "quote": "y=−x²+2x+3=−(x−1)²+4이다.",
+            "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
@@ -614,21 +614,21 @@
           },
           {
             "src": "solution",
-            "quote": "축 x=1",
-            "term": "축",
+            "quote": "x절편은 (x−3)(x+1)=0에서 x=3,−1이므로",
+            "term": "인수분해",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$y$절편은 3이다.",
-            "term": "y절편"
+            "src": "solution",
+            "quote": "③의 3,1은 틀리다.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "이차함수를 표준형과 인수분해형으로 각각 변형하여 꼭짓점, 축, y절편, x절편의 참거짓을 판별함"
+        "method": "일반형 이차함수를 완전제곱식과 인수분해 형태로 각각 변형하여 꼭짓점, 축, x절편, y절편의 참/거짓을 검증함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -640,52 +640,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$y=(x-2)(x-6)$의",
+            "quote": "$y=(x-2)(x-6)$의 축의 방정식과 꼭짓점을 바르게 짝지은 것을 고르시오.",
             "term": "이차함수"
           },
           {
             "src": "solution",
-            "quote": "x절편 2와6의",
-            "term": "x절편"
+            "quote": "x절편 2와6의 중점 x=4가 축이고",
+            "term": "절편"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "축의 방정식과 꼭짓점을 바르게 짝지은 것을 고르시오.",
+            "quote": "꼭짓점을 바르게 짝지은 것을 고르시오.",
             "term": "꼭짓점"
-          },
-          {
-            "src": "solution",
-            "quote": "중점 x=4가 축이고",
-            "term": "축"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "중점 x=4가 축이고",
-            "term": "대칭축",
-            "evidenceType": "IMPLIED",
-            "justification": "두 x절편의 중점이 포물선의 대칭축이 됨을 이용함"
+            "quote": "x절편 2와6의 중점 x=4가 축이고",
+            "term": "축",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
             "quote": "y(4)=(2)(−2)=−4, 꼭짓점 (4,−4).",
             "term": "대입",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "y(4)=(2)(−2)=−4, 꼭짓점 (4,−4).",
+            "term": "순서쌍",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점의 좌표를 순서쌍으로 도출"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$x=4, \\; (4, -4)$",
-            "term": "음수"
+            "src": "solution",
+            "quote": "꼭짓점 (4,−4). ⑤.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "두 x절편의 평균으로 대칭축의 방정식을 구하고 함수식에 대입하여 꼭짓점의 좌표를 결정함"
+        "method": "두 x절편의 중점으로부터 대칭축의 방정식을 구하고 축의 x값을 대입해 꼭짓점 좌표를 결정함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -701,13 +702,8 @@
             "term": "이차함수"
           },
           {
-            "src": "solution",
-            "quote": "y절편 (0,−1)을 읽는다.",
-            "term": "y절편"
-          },
-          {
-            "src": "solution",
-            "quote": "꼭짓점 (−1,−3)과",
+            "src": "stem",
+            "quote": "꼭짓점이 $(-1, -3)$인 이차함수그래프를 보고",
             "term": "꼭짓점"
           }
         ],
@@ -715,34 +711,40 @@
           {
             "src": "stem",
             "quote": "적절한 함수식을 찾아라.",
-            "term": "결정"
+            "term": "등식"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "y=a(x+1)²−3에",
-            "term": "표준형",
-            "evidenceType": "IMPLIED",
-            "justification": "꼭짓점 좌표를 바탕으로 표준형 이차함수 식을 설정함"
+            "quote": "원본 그래프에서 꼭짓점 (−1,−3)과 y절편 (0,−1)을 읽는다.",
+            "term": "절편",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "(0,−1)을 대입하면 a=2.",
+            "quote": "y=a(x+1)²−3에 (0,−1)을 대입하면 a=2.",
             "term": "대입",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "y=2(x+1)²−3.",
+            "term": "평행이동",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점과 계수로 완성된 표준형 함수식"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "$y=2(x+1)^2-3$",
-            "term": "음수"
+            "src": "solution",
+            "quote": "y=a(x+1)²−3에 (0,−1)을 대입하면 a=2.",
+            "term": "상수"
           }
         ]
       },
       "reasons": {
-        "method": "그래프에서 꼭짓점과 y절편 좌표를 읽어 표준형 식에 대입하여 계수 a를 구하고 함수식을 결정함"
+        "method": "그래프에서 꼭짓점과 y절편을 읽고 표준형 식에 대입하여 최고차항 계수 a를 구해 함수식을 완성함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -759,13 +761,8 @@
           },
           {
             "src": "solution",
-            "quote": "원본 그래프 x절편은 −2와 1이고",
-            "term": "x절편"
-          },
-          {
-            "src": "solution",
-            "quote": "y절편은 4이다.",
-            "term": "y절편"
+            "quote": "원본 그래프 x절편은 −2와 1이고 y절편은 4이다.",
+            "term": "절편"
           }
         ],
         "goal": [
@@ -773,44 +770,39 @@
             "src": "stem",
             "quote": "꼭짓점을 찾아라.",
             "term": "꼭짓점"
-          },
-          {
-            "src": "solution",
-            "quote": "꼭짓점 y=−2(3/2)(−3/2)=9/2.",
-            "term": "좌표"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "y=a(x+2)(x−1)에서",
-            "term": "인수분해",
-            "evidenceType": "IMPLIED",
-            "justification": "두 x절편을 이용하여 인수분해형 이차함수 식을 세움"
-          },
-          {
-            "src": "solution",
-            "quote": "축 x=(−2+1)/2=−1/2",
+            "quote": "축 x=(−2+1)/2=−1/2, 꼭짓점 y=−2(3/2)(−3/2)=9/2.",
             "term": "축",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "x=0 ⇒ −2a=4 ⇒ a=−2.",
+            "quote": "y=a(x+2)(x−1)에서 x=0 ⇒ −2a=4 ⇒ a=−2.",
             "term": "대입",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "축 x=(−2+1)/2=−1/2, 꼭짓점 y=−2(3/2)(−3/2)=9/2.",
+            "term": "순서쌍",
+            "evidenceType": "IMPLIED",
+            "justification": "축의 위치와 꼭짓점 y좌표를 결합한 순서쌍 좌표"
           }
         ],
         "condition": [
           {
-            "src": "choices",
-            "quote": "(-\\frac{1}{2}, \\frac{9}{2})",
+            "src": "solution",
+            "quote": "축 x=(−2+1)/2=−1/2, 꼭짓점 y=−2(3/2)(−3/2)=9/2.",
             "term": "유리수"
           }
         ]
       },
       "reasons": {
-        "method": "x절편과 y절편으로 이차함수 식을 완성한 뒤 절편의 중점으로 축을 구하고 꼭짓점 좌표를 계산함"
+        "method": "두 x절편과 y절편으로부터 인수분해형 이차함수 식을 세워 계수를 구하고 축과 꼭짓점 좌표를 도출함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -822,13 +814,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "y=2x^2$을 평행이동한 세 이차함수",
+            "quote": "다음 그래프는 $y=2x^2$을 평행이동한 세 이차함수",
             "term": "이차함수"
           },
           {
-            "src": "solution",
-            "quote": "위/아래 포물선 사이 수직 높이는",
-            "term": "포물선"
+            "src": "stem",
+            "quote": "$y=2x^2$을 평행이동한 세 이차함수",
+            "term": "평행이동"
           }
         ],
         "goal": [
@@ -836,44 +828,38 @@
             "src": "stem",
             "quote": "색칠된 부분의 넓이를 구해라.",
             "term": "넓이"
-          },
-          {
-            "src": "solution",
-            "quote": "전체32, 보기 ④.",
-            "term": "결정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "좌우 대칭이므로",
-            "term": "대칭",
+            "quote": "오른쪽 반의 위/아래 포물선 사이 수직 높이는",
+            "term": "포물선",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "각 같은 폭의 세로 단면을 갖는 삼각형과 넓이가 같아",
+            "quote": "각 같은 폭의 세로 단면을 갖는 삼각형과 넓이가 같아 오른쪽 부분 1/2×2×16=16.",
             "term": "삼각형",
-            "evidenceType": "IMPLIED",
-            "justification": "포물선 사이의 수직 단면을 카발리에리 원리/삼각형 등적변형으로 넓이를 구함"
+            "evidenceType": "NAMED"
           },
           {
-            "src": "stem",
-            "quote": "평행이동한",
-            "term": "평행이동",
+            "src": "solution",
+            "quote": "좌우 대칭이므로 전체32, 보기 ④.",
+            "term": "대칭",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "(0≤x≤2)로 16에서 0까지",
-            "term": "구간"
+            "quote": "좌우 대칭이므로 전체32, 보기 ④.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "평행이동된 포물선들의 대칭성을 파악하고 세로 단면 높이의 선형 변화를 삼각형 넓이로 환산하여 전체 넓이를 계산함"
+        "method": "평행이동된 포물선 사이의 수직 단면 높이 변화를 분석하여 삼각형 넓이와 같음을 보이고 좌우 대칭성을 이용해 전체 넓이를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -889,52 +875,48 @@
             "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "두 근은 −1±√3.",
-            "term": "실근"
+            "src": "stem",
+            "quote": "$|\\alpha-\\beta|$으로 적절한 것은?",
+            "term": "절댓값"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$|\\alpha-\\beta|$으로 적절한 것은?",
-            "term": "차"
-          },
-          {
-            "src": "solution",
-            "quote": "차의 절댓값은 |2√3|=2√3.",
-            "term": "결정"
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "(x+1)²=3",
+            "quote": "x²+2x−2=0 ⇒ (x+1)²=3, 두 근은 −1±√3.",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "차의 절댓값은",
-            "term": "절댓값",
+            "quote": "두 근은 −1±√3. 차의 절댓값은 |2√3|=2√3.",
+            "term": "무리수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "차의 절댓값은 |2√3|=2√3. ⑤.",
+            "term": "차",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
-            "src": "stem",
-            "quote": "\\sqrt{(\\alpha-\\beta)^2}=|\\alpha-\\beta|",
-            "term": "근호"
-          },
-          {
-            "src": "choices",
-            "quote": "$2\\sqrt{3}$",
-            "term": "무리수"
+            "src": "solution",
+            "quote": "두 근은 −1±√3. 차의 절댓값은 |2√3|=2√3.",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "완전제곱식을 이용하여 이차방정식의 두 실근을 구하고 두 근의 차에 절댓값을 취함"
+        "method": "이차방정식을 완전제곱식으로 변형하여 두 무리수 근을 구한 뒤 두 근의 차에 절댓값을 취함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -957,46 +939,41 @@
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "둘 다 만족시키면 a≤3, a≠0.",
-            "term": "판정"
-          },
-          {
             "src": "stem",
             "quote": "$a$값의 범위로 적절 한 것은?",
-            "term": "조건"
+            "term": "부등식"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "실근이 존재하려면 판별식",
+            "quote": "실근이 존재하려면 판별식 D=6²−4·a·3=36−12a≥0 ⇒ a≤3.",
             "term": "판별식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "36−12a≥0 ⇒ a≤3.",
-            "term": "부등식의성질",
-            "evidenceType": "IMPLIED",
-            "justification": "일차부등식을 풀어 a의 범위를 구함"
+            "quote": "실근이 존재하려면 판별식 D=6²−4·a·3=36−12a≥0 ⇒ a≤3.",
+            "term": "실근",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "둘 다 만족시키면 a≤3, a≠0. ④.",
+            "term": "조건",
+            "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "실근이 존재하려면",
-            "term": "실근"
-          },
-          {
-            "src": "choices",
-            "quote": "a \\le 3, \\; a \\neq 0",
+            "quote": "둘 다 만족시키면 a≤3, a≠0. ④.",
             "term": "부등식"
           }
         ]
       },
       "reasons": {
-        "method": "최고차항 계수가 0이 아니라는 조건과 판별식이 0 이상이라는 실근 존재 조건을 연립하여 범위를 판정함"
+        "method": "이차방정식이 정의되기 위한 최고차항 계수 조건과 실근이 존재하기 위한 판별식 0 이상 조건을 연립하여 범위를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1008,64 +985,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "주어진 정오각형의 대각선 $AC$와 $BE$의",
-            "term": "다각형"
+            "quote": "주어진 정오각형의 대각선 $AC$와 $BE$의 교점 $P$에 대하여",
+            "term": "정다각형"
           },
           {
             "src": "stem",
-            "quote": "대각선 $AC$와 $BE$의 교점 $P$에 대하여",
-            "term": "교점"
-          },
-          {
-            "src": "stem",
-            "quote": "선분 $AP$와 $CP$의 길이를 각각 $1, x$라고 할 때",
-            "term": "길이"
+            "quote": "$\\triangle ABC \\sim \\triangle APB$ (AA 닮음)",
+            "term": "닮음"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "$x$ 값으로 적절한 것은?",
-            "term": "결정"
-          },
-          {
-            "src": "solution",
-            "quote": "x=(1+√5)/2.",
-            "term": "무리수"
+            "term": "길이"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "대응변 비로 s²=1+x.",
-            "term": "닮음",
+            "quote": "△ABC∼△APB이고 AB=BC=s, AC=1+x이므로 대응변 비로 s²=1+x.",
+            "term": "비례식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "x²=x+1 ⇒ x=(1+√5)/2.",
-            "term": "근의공식",
-            "evidenceType": "IMPLIED",
-            "justification": "황금비 이차방정식을 근의 공식으로 풀어 양수 해를 구함"
+            "quote": "x²=x+1 ⇒ x=(1+√5)/2. ②.",
+            "term": "이차방정식",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "각 B,P=72°, C=36°이므로 CP=BC=s",
-            "term": "이등변삼각형",
+            "quote": "x²=x+1 ⇒ x=(1+√5)/2. ②.",
+            "term": "근의공식",
             "evidenceType": "IMPLIED",
-            "justification": "삼각형의 밑각이 같아 두 변의 길이가 같음을 이용"
+            "justification": "이차방정식에 근의 공식을 적용하여 양수 해 도출"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "x=s>0",
-            "term": "양수"
+            "quote": "즉 x=s>0. x²=x+1 ⇒ x=(1+√5)/2.",
+            "term": "무리수"
           }
         ]
       },
       "reasons": {
-        "method": "정오각형의 대각선 교점에서 형성되는 닮음 삼각형의 비와 이등변삼각형 성질로 이차방정식을 세워 황금비를 구함"
+        "method": "정오각형 내부 삼각형들의 닮음비와 이등변삼각형 성질을 이용하여 이차방정식을 세우고 양수 근을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1077,7 +1043,7 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$y=b, \\; y=ax+c$의 그래프가 다음과 같을 때",
+            "quote": "$y=b, \\; y=ax+c$의 그래프가 다음과 같을 때,",
             "term": "직선"
           },
           {
@@ -1088,45 +1054,42 @@
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "선택지 원본 PNG 전수 대조 결과 ①.",
+            "src": "stem",
+            "quote": "그래프의 개형으로 적절한 것은?",
             "term": "판정"
-          },
-          {
-            "src": "solution",
-            "quote": "b>0.",
-            "term": "부호"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "꼭짓점 x=−b/(2a)<0",
-            "term": "꼭짓점",
+            "quote": "원본 직선 y=b가 x축 위쪽이므로 b>0. 직선 y=ax+c는 우상향해 a>0, y절편이 x축 아래라 c<0.",
+            "term": "절편",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "y절편 음수이며",
-            "term": "y절편",
+            "quote": "꼭짓점 x=−b/(2a)<0, y절편 음수이며 x축과 두 번 만난다.",
+            "term": "축",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 위치를 계수 부호로 판정"
+          },
+          {
+            "src": "solution",
+            "quote": "따라서 y=ax²+bx+c는 위로 볼록, 꼭짓점 x=−b/(2a)<0",
+            "term": "부호",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "위로 볼록",
-            "term": "위로볼록"
-          },
-          {
-            "src": "solution",
-            "quote": "y절편이 x축 아래라 c<0.",
-            "term": "음수"
+            "quote": "b>0. 직선 y=ax+c는 우상향해 a>0, y절편이 x축 아래라 c<0.",
+            "term": "부등식"
           }
         ]
       },
       "reasons": {
-        "method": "주어진 두 직선의 위치로부터 a, b, c의 부호를 판정하고 이에 대응하는 포물선의 볼록 방향, 축, y절편 개형을 결정함"
+        "method": "주어진 일차함수와 상수함수 그래프로부터 계수 a, b, c의 부호를 파악하고 볼록 방향, 축, 절편을 종합해 이차함수 개형을 판별함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1138,18 +1101,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "두 이차함수 $y=2(x+1)(x-1)$, $y=-2(x-3)(x-5)$의",
+            "quote": "두 이차함수 $y=2(x+1)(x-1)$, $y=-2(x-3)(x-5)$의 꼭짓점을",
             "term": "이차함수"
           },
           {
             "src": "stem",
-            "quote": "꼭짓점을 각각 $A$, $B$라고 하고",
-            "term": "꼭짓점"
-          },
-          {
-            "src": "stem",
-            "quote": "직선 $y=2$와 $y$축의 교점을 $C$라 하자.",
-            "term": "교점"
+            "quote": "삼각형 $ABC$의 넓이로 옳은 것을 고르시오.",
+            "term": "삼각형"
           }
         ],
         "goal": [
@@ -1157,38 +1115,38 @@
             "src": "stem",
             "quote": "삼각형 $ABC$의 넓이로 옳은 것을 고르시오.",
             "term": "넓이"
-          },
-          {
-            "src": "solution",
-            "quote": "삼각형 ABC의 넓이는 (1/2)×4×4=8이다.",
-            "term": "결정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "AC⊥BC이므로 삼각형 ABC의 넓이는",
-            "term": "직각삼각형",
-            "evidenceType": "IMPLIED",
-            "justification": "두 선분이 수직임을 이용해 밑변과 높이를 곱해 직각삼각형 넓이를 계산함"
+            "quote": "첫 번째 이차함수는 y=2x²−2이므로 꼭짓점 A=(0,−2)이다.",
+            "term": "꼭짓점",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "꼭짓점 A=(0,−2)이다.",
-            "term": "좌표",
+            "quote": "직선 y=2와 y축의 교점은 C=(0,2)이다.",
+            "term": "절편",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "AC⊥BC이므로 삼각형 ABC의 넓이는 (1/2)×4×4=8이다.",
+            "term": "수선",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "길이 2−(−2)=4이고",
-            "term": "길이"
+            "quote": "삼각형 ABC의 넓이는 (1/2)×4×4=8이다. 정답 ③.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "두 포물선의 꼭짓점과 직선 교점의 좌표를 구하고 축에 평행한 두 선분의 수직 관계를 이용해 삼각형 넓이를 계산함"
+        "method": "두 이차함수의 꼭짓점과 y절편 교점의 좌표를 각각 구하고 수직인 두 변의 길이를 찾아 직각삼각형의 넓이를 계산함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1200,56 +1158,53 @@
         "given": [
           {
             "src": "stem",
-            "quote": "ax^2+bx+c=0 \\; (a \\neq 0)$에 대하여",
+            "quote": "[서술형 1] $ax^2+bx+c=0 \\; (a \\neq 0)$에 대하여,",
             "term": "이차방정식"
           },
           {
             "src": "stem",
-            "quote": "실근의 개수를 판별하는 방법에 대하여 서술하고",
+            "quote": "실근의 개수를 판별하는 방법에 대하여 서술하고,",
             "term": "실근"
           }
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "서로 다른 실근 2개/중근 1개/실근 0개다.",
-            "term": "판정"
-          },
-          {
             "src": "stem",
-            "quote": "실근의 개수를 구해라.",
-            "term": "개수"
+            "quote": "실근의 개수를 판별하는 방법에 대하여 서술하고,",
+            "term": "판정"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "D=b²−4ac가 양수/0/음수이면",
+            "quote": "이차방정식 ax²+bx+c=0의 D=b²−4ac가 양수/0/음수이면",
             "term": "판별식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "D=1−1=0이므로 1개",
+            "quote": "서로 다른 실근 2개/중근 1개/실근 0개다.",
             "term": "중근",
             "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "x²+x+1=0의 D=1−4=−3이므로 0개.",
+            "term": "부호",
+            "evidenceType": "IMPLIED",
+            "justification": "판별식의 부호에 따른 실근 개수 판정"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "D=b²−4ac",
-            "term": "계수"
-          },
-          {
-            "src": "solution",
-            "quote": "양수/0/음수이면",
-            "term": "부호"
+            "quote": "D=b²−4ac가 양수/0/음수이면 서로 다른 실근 2개/중근 1개/실근 0개다.",
+            "term": "부등식"
           }
         ]
       },
       "reasons": {
-        "method": "판별식 D의 부호에 따른 실근의 개수 판별 원리를 서술하고 주어진 두 방정식의 판별식 값을 계산하여 개수를 판정함"
+        "method": "판별식 D의 부호에 따른 실근 개수 판별법을 서술하고 주어진 두 이차방정식의 판별식을 계산해 실근 개수를 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1261,13 +1216,13 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$y$절편이 3이고",
-            "term": "y절편"
+            "quote": "[서술형 2] $y$절편이 3이고,",
+            "term": "절편"
           },
           {
             "src": "stem",
-            "quote": "두 점 $(1, 4), (-1, 6)$을 지나는",
-            "term": "좌표"
+            "quote": "두 점 $(1, 4), (-1, 6)$을 지나는 이차함수식을",
+            "term": "점"
           },
           {
             "src": "stem",
@@ -1277,42 +1232,43 @@
         ],
         "goal": [
           {
-            "src": "solution",
-            "quote": "따라서 y=2x²−x+3.",
-            "term": "결정"
+            "src": "stem",
+            "quote": "이차함수식을 구하는 과정을 서술하여라.",
+            "term": "등식"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "y=ax²+bx+3로 놓는다.",
-            "term": "미정계수",
-            "evidenceType": "IMPLIED",
-            "justification": "y절편을 이용해 미정계수 식을 세움"
+            "quote": "(1,4) 대입 ⇒ a+b=1. (−1,6) 대입 ⇒ a−b=3.",
+            "term": "대입",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
             "quote": "두 식을 더하면 2a=4 ⇒ a=2, b=−1.",
-            "term": "연립일차방정식",
-            "evidenceType": "NAMED"
+            "term": "연립방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "미지수 a, b에 대한 연립일차방정식 풀이"
           },
           {
             "src": "solution",
-            "quote": "(1,4) 대입",
-            "term": "대입",
-            "evidenceType": "NAMED"
+            "quote": "따라서 y=2x²−x+3.",
+            "term": "계수",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 계수를 이차함수 일반형에 대입"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "a+b=1",
-            "term": "등식"
+            "quote": "두 식을 더하면 2a=4 ⇒ a=2, b=−1.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "y절편으로 상수항을 정하고 두 점을 대입해 얻은 연립일차방정식을 풀어 이차함수 식을 완성함"
+        "method": "y절편으로 상수항을 정하고 지난 두 점을 대입해 계수 a, b에 대한 연립방정식을 풀어 이차함수식을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1324,52 +1280,54 @@
         "given": [
           {
             "src": "stem",
-            "quote": "일반적인 이차함수 $y=ax^2+bx+c \\; (a \\neq 0)$의",
+            "quote": "[서술형 3] 일반적인 이차함수 $y=ax^2+bx+c \\; (a \\neq 0)$의",
             "term": "이차함수"
           },
           {
-            "src": "solution",
-            "quote": "ax²+bx+c=a[x²+(b/a)x]+c",
-            "term": "이차식"
+            "src": "stem",
+            "quote": "축과 꼭짓점을 구하는 과정을 서술하여라.",
+            "term": "꼭짓점"
           }
         ],
         "goal": [
           {
             "src": "stem",
             "quote": "축과 꼭짓점을 구하는 과정을 서술하여라.",
-            "term": "꼭짓점"
-          },
-          {
-            "src": "solution",
-            "quote": "대칭축 x=−b/(2a)",
             "term": "축"
           }
         ],
         "method": [
           {
-            "src": "stem",
-            "quote": "완전제곱식 + 상수",
+            "src": "solution",
+            "quote": "ax²+bx+c=a[x²+(b/a)x]+c=a[(x+b/(2a))²−(b/(2a))²]+c=a(x+b/(2a))²+c−b²/(4a).",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "a(x+b/(2a))²+c−b²/(4a).",
-            "term": "표준형",
+            "quote": "따라서 대칭축 x=−b/(2a), 꼭짓점 (−b/(2a),c−b²/(4a)).",
+            "term": "순서쌍",
             "evidenceType": "IMPLIED",
-            "justification": "일반형을 완전제곱식으로 묶어 표준형으로 유도함"
+            "justification": "완전제곱식으로부터 꼭짓점의 좌표 유도"
+          },
+          {
+            "src": "solution",
+            "quote": "ax²+bx+c=a[x²+(b/a)x]+c",
+            "term": "상수",
+            "evidenceType": "IMPLIED",
+            "justification": "최고차항 계수로 묶고 상수항 정리"
           }
         ],
         "condition": [
           {
             "src": "solution",
-            "quote": "꼭짓점 (−b/(2a),c−b²/(4a)).",
-            "term": "좌표"
+            "quote": "따라서 대칭축 x=−b/(2a), 꼭짓점 (−b/(2a),c−b²/(4a)).",
+            "term": "조건"
           }
         ]
       },
       "reasons": {
-        "method": "일반형 이차함수를 최고차항 계수로 묶고 완전제곱식을 만들어 표준형으로 변형한 후 축과 꼭짓점을 유도함"
+        "method": "일반형 이차함수를 a로 묶고 완전제곱식을 만들어 표준형으로 변형한 후 대칭축과 꼭짓점의 좌표를 유도함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1381,49 +1339,38 @@
         "given": [
           {
             "src": "stem",
-            "quote": "$x^2+2x-1=0$의 두 근 $\\alpha, \\beta$에 대하여",
+            "quote": "[서술형 4] $x^2+2x-1=0$의 두 근 $\\alpha, \\beta$에 대하여",
             "term": "이차방정식"
           },
           {
-            "src": "solution",
-            "quote": "두 근은 −1±√2.",
-            "term": "무리수"
+            "src": "stem",
+            "quote": "이 두 값을 근으로 하는 방정식 $2x^2+ax+b=0$에서",
+            "term": "해"
           }
         ],
         "goal": [
           {
             "src": "stem",
-            "quote": "$\\alpha+\\beta, \\alpha\\beta$의 값을 구하는",
-            "term": "합"
-          },
-          {
-            "src": "solution",
-            "quote": "αβ=−1.",
-            "term": "곱"
-          },
-          {
-            "src": "solution",
-            "quote": "따라서 a+b=10.",
-            "term": "결정"
+            "quote": "$a+b$값을 구하는 과정을 서술하여라.",
+            "term": "식의값"
           }
         ],
         "method": [
           {
             "src": "solution",
-            "quote": "(x+1)²=2",
+            "quote": "x²+2x−1=0 ⇒ (x+1)²=2 ⇒ 두 근은 −1±√2.",
             "term": "완전제곱식",
             "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "이 두 값을 새로운 두 근으로 하는 이차방정식은",
-            "term": "계수비교",
-            "evidenceType": "IMPLIED",
-            "justification": "새로운 두 근으로 전개한 이차방정식을 계수비교하여 a, b를 구함"
+            "quote": "직접 더하고 곱하면 α+β=−2, αβ=−1.",
+            "term": "합",
+            "evidenceType": "NAMED"
           },
           {
             "src": "solution",
-            "quote": "2(x+2)(x+1)=2x²+6x+4=0",
+            "quote": "이 두 값을 새로운 두 근으로 하는 이차방정식은 2(x+2)(x+1)=2x²+6x+4=0, 따라서 a+b=10.",
             "term": "전개",
             "evidenceType": "NAMED"
           }
@@ -1431,13 +1378,13 @@
         "condition": [
           {
             "src": "solution",
-            "quote": "α+β=−2",
-            "term": "음수"
+            "quote": "직접 더하고 곱하면 α+β=−2, αβ=−1.",
+            "term": "정수"
           }
         ]
       },
       "reasons": {
-        "method": "완전제곱식으로 근을 직접 구한 뒤 두 근의 합과 곱을 계산하고 이를 근으로 하는 새 이차방정식을 작성하여 계수의 합을 구함"
+        "method": "이차방정식을 완전제곱식으로 풀어 두 근을 구하고 두 근의 합과 곱을 직접 계산하여 새 이차방정식을 세워 계수 합을 구함"
       },
       "steps": [],
       "scenarioNote": ""
@@ -1446,7 +1393,7 @@
   "candidates": [],
   "selfCheck": {
     "items": 24,
-    "quotesChecked": 181,
+    "quotesChecked": 167,
     "quotesNotFound": 0,
     "warningsRechecked": [],
     "notes": ""
