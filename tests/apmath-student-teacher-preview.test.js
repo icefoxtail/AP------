@@ -31,8 +31,9 @@ assert(
     portalHtml.includes('headers.Authorization = `Bearer ${teacherToken}`;') &&
     portalHtml.includes("if (isTeacherPreview) throw new Error('학생 화면 확인에서는 저장할 수 없습니다.');") &&
     portalHtml.includes("session = { student_id: teacherPreviewStudentId, teacher_preview: true };") &&
-    portalHtml.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
-    portalHtml.includes("isTeacherPreview || submitted ? '' :") &&
+    portalHtml.includes("isTeacherPreview?'':renderWrongClinicPackets()") &&
+    portalHtml.includes("const canSubmit=!isTeacherPreview&&!submitted&&!unknown") &&
+    portalHtml.includes("if (isTeacherPreview) {") &&
     !portalHtml.includes('교사 미리보기 ·'),
   'student portal should use a bannerless, read-only teacher preview session'
 );
