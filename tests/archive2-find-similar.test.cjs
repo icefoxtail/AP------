@@ -44,7 +44,10 @@ function load(search = "?view=find&material=exam") {
         events.get(name).push(callback);
       },
     },
-    addEventListener() {},
+    addEventListener: (name, callback) => {
+      if (!events.has(name)) events.set(name, []);
+      events.get(name).push(callback);
+    },
     fetch: async () => { throw new Error("unexpected network"); },
     Archive2Core: core,
     Archive2Canonical: core.Canonical,
@@ -71,7 +74,7 @@ function load(search = "?view=find&material=exam") {
   w.state.view = "find";
   w.state.find = { material: "exam" };
   return {
-    w, ctx, opened, nodes: nodes, node,
+    w, ctx, opened, nodes: nodes, node, events,
     async click(dataset) {
       for (const callback of events.get("click") || [])
         await callback({ target: { closest: () => ({ dataset }) } });
@@ -307,4 +310,47 @@ test("the 자료 점검 screen lists the unlinked similar sets at the bottom", (
     for (const { exam } of pairs.unlinked.slice(0, 3))
       assert.ok(markup.includes(exam.file.split("/").pop().replace(/\.js$/, "")), exam.file);
   }
+});
+
+test("every way into the finder lists 학교 기출 when no material is named: menu, address, back button", async () => {
+  // Menu: the 학교별 기출 button while the finder state is empty.
+  const menu = load("?view=home");
+  menu.w.state.view = "home";
+  menu.w.state.find = {};
+  await menu.click({ view: "find" });
+  assert.equal(menu.w.state.view, "find");
+  assert.equal(menu.w.state.find.material, "exam");
+  assert.equal(menu.w.findExams().length, catalog.exams.filter((exam) => exam.contentType === "기출").length);
+  // Address typed or reloaded.
+  const address = load("?view=find");
+  address.w.readUrl();
+  assert.equal(address.w.state.find.material, "exam");
+  // Back button: the popstate handler reads the address again.
+  const back = load("?view=find");
+  back.w.state.find = {};
+  for (const callback of back.events.get("popstate") || []) await callback();
+  assert.equal(back.w.state.find.material, "exam");
+  assert.equal(back.w.findExams().length, address.w.findExams().length);
+});
+
+test("an empty 학교 기출 result points to other material that matches the same words", () => {
+  const t = load();
+  t.w.state.find = { material: "exam", query: "백발백중" };
+  assert.equal(t.w.findExams().length, 0);
+  const other = t.w.findExams({ ...t.w.state.find, material: "nonexam" }).length;
+  assert.ok(other > 0, "the catalog has non-exam material for this word");
+  const markup = t.w.renderFind();
+  assert.ok(markup.includes(`학교 기출에는 없습니다. 기출 외 시험지에 ${other}개가 있습니다.`));
+  assert.match(markup, /data-action="material"[^>]*data-material="nonexam"[^>]*>기출 외 시험지 보기</);
+  t.w.state.find = { material: "exam", query: "없는말없는말없는말" };
+  assert.doesNotMatch(t.w.renderFind(), /find-empty-other/);
+  assert.match(t.w.renderFind(), /현재 조건에 맞는 자료가 없습니다/);
+});
+
+test("the heading without a condition uses the name of the view", () => {
+  const { w } = load();
+  assert.equal(w.findSummaryText({ material: "exam" }, 872), "학교 기출 872개");
+  assert.equal(w.findSummaryText({ material: "nonexam" }, 321), "기출 외 시험지 321개");
+  assert.equal(w.findSummaryText({ material: "" }, 1193), "전체 시험지 1,193개");
+  assert.equal(w.findSummaryText({ material: "exam", query: "순천고 고1" }, 14), "순천고 고1 기출 14개");
 });

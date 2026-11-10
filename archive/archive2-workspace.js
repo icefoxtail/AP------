@@ -1997,8 +1997,12 @@
     }
     return text;
   }
-  function findExams() {
-    const f = state.find;
+  // One rule for every way into the finder (menu, address, back button): without a material it lists
+  // 학교 기출; a link to one exam file keeps listing every kind so the file is found.
+  function applyDefaultFinderMaterial() {
+    if (state.find.material === undefined && !state.find.file) state.find.material = "exam";
+  }
+  function findExams(f = state.find) {
     // Words are separated by spaces and may come in any order; "1학기 기말" stays one word.
     const terms = String(f.query || "")
       .replace(/(\d)\s*학기\s*(기말|중간)/g, "$1학기$2")
@@ -2714,7 +2718,20 @@
     if (filters.yearFrom || filters.yearTo) parts.push(`${filters.yearFrom || "…"}~${filters.yearTo || "…"}년`);
     const material = filters.material;
     const kind = material === "exam" ? "기출" : material === "textbook" ? "교과서" : material ? "기출 외 시험지" : "시험지";
-    return `${parts.length ? parts.join(" ") : "전체"} ${kind} ${count.toLocaleString()}개`;
+    // With no condition the heading uses the name of the view the teacher chose.
+    const viewName = material === "exam" ? "학교 기출" : material === "textbook" ? "교과서" : material ? "기출 외 시험지" : "전체 시험지";
+    return `${parts.length ? `${parts.join(" ")} ${kind}` : viewName} ${count.toLocaleString()}개`;
+  }
+  // Nothing in 학교 기출: say so, and tell the teacher when the same conditions do match other material
+  // (counted only now, never during a normal render).
+  function emptyFindMarkup() {
+    const f = state.find;
+    if (f.material === "exam" && !f.similarOnly) {
+      const other = findExams({ ...f, material: "nonexam" }).length;
+      if (other)
+        return `<div class="empty find-empty-other"><p>학교 기출에는 없습니다. 기출 외 시험지에 ${other.toLocaleString()}개가 있습니다.</p>${button("material", "기출 외 시험지 보기", 'data-material="nonexam" class="primary"')}</div>`;
+    }
+    return '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>';
   }
   function renderFind() {
     reconcileFinderSchool(state.find);
@@ -2739,7 +2756,7 @@
       ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기</span></a>' : ""}
       <div class="find-resultbar"><h2>${esc(findSummaryText(state.find, exams.length))}</h2>${showSimilarFilter && withSimilar ? `<span class="find-sim-count">유사문제 있는 시험 ${withSimilar.toLocaleString()}개</span>` : ""}</div>
       <div class="exam-rows find-rows">${showSimilarFilter && exams.length ? '<div class="exam-rows-head" aria-hidden="true"><span>기출</span><span>이 시험의 유사문제</span></div>' : ""}${rows}</div>
-      ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
+      ${!exams.length ? emptyFindMarkup() : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
       ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기", 'data-use-sources="true"')}</div></div>` : ""}</div>`;
   }
@@ -4630,6 +4647,7 @@
           clearUidRoute({ url: false });
         }
         state.view = b.dataset.view;
+        if (state.view === "find") applyDefaultFinderMaterial();
         if (state.view === "saved") state.savedPaperId = "";
         urlState();
         render();
@@ -5606,8 +5624,7 @@
       if (!quickRoute && p.has(k)) state.find[k] = p.get(k);
     if (!quickRoute && state.view === "find") {
       if (state.find.material === "all") state.find.material = "";
-      // The finder lists 학교 기출 unless the link names a material or one exam file.
-      else if (!p.has("material") && !p.has("file")) state.find.material = "exam";
+      else applyDefaultFinderMaterial();
     }
     const requestedPage = Number.parseInt(p.get("page") || "0", 10);
     state.page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 0;
