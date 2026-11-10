@@ -3,13 +3,13 @@ window.examTitle = "21_팔마중_2학기_기말_중3_기출";
 window.questionBank = [
   {
     "id": 1,
-    "content": "다음 그림의 원 $O$에서 $\\\\angle x$의 크기는? (3점)",
+    "content": "다음 그림의 원 $O$에서 $\\angle x$의 크기는? (3점)",
     "choices": [
-      "$70^\\\\circ$",
-      "$80^\\\\circ$",
-      "$90^\\\\circ$",
-      "$100^\\\\circ$",
-      "$110^\\\\circ$"
+      "$70^\\circ$",
+      "$80^\\circ$",
+      "$90^\\circ$",
+      "$100^\\circ$",
+      "$110^\\circ$"
     ],
     "answer": "⑤",
     "solution": "주어진 중심각은 $140^\\circ$이고, $x$가 보는 호는 그 반대쪽 큰 호이다.\n큰 호의 중심각은\n$360^\\circ-140^\\circ=220^\\circ$이다.\n원주각은 같은 호에 대한 중심각의 절반이므로\n$x=220^\\circ\\div2=110^\\circ$이다.\n따라서 정답은 ⑤이다.",
@@ -46,13 +46,13 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "content": "다음 그림의 원 $O$에서 $\\\\angle x$의 크기는? (3점)",
+    "content": "다음 그림의 원 $O$에서 $\\angle x$의 크기는? (3점)",
     "choices": [
-      "$40^\\\\circ$",
-      "$50^\\\\circ$",
-      "$60^\\\\circ$",
-      "$70^\\\\circ$",
-      "$80^\\\\circ$"
+      "$40^\\circ$",
+      "$50^\\circ$",
+      "$60^\\circ$",
+      "$70^\\circ$",
+      "$80^\\circ$"
     ],
     "answer": "③",
     "solution": "$20^\\circ$인 원주각이 보는 호의 길이는 $5\\rm\\,cm$이다.\n$x$가 보는 호의 길이는\n$5+10=15\\rm\\,cm$이다.\n같은 원에서 호의 길이와 그 호에 대한 원주각의 크기는 비례한다.\n따라서\n$x:20^\\circ=15:5$\n$x=20^\\circ\\times3=60^\\circ$이다.\n따라서 정답은 ③이다.",
@@ -89,13 +89,13 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "content": "다음 그림의 원 $O$에서 $\\\\angle x$의 크기는? (4점)",
+    "content": "다음 그림의 원 $O$에서 $\\angle x$의 크기는? (4점)",
     "choices": [
-      "$50^\\\\circ$",
-      "$60^\\\\circ$",
-      "$70^\\\\circ$",
-      "$80^\\\\circ$",
-      "$90^\\\\circ$"
+      "$50^\\circ$",
+      "$60^\\circ$",
+      "$70^\\circ$",
+      "$80^\\circ$",
+      "$90^\\circ$"
     ],
     "answer": "②",
     "solution": "$AC$는 중심 $O$를 지나므로 지름이다.\n지름에 대한 원주각은 $90^\\circ$이므로\n$\\angle ADC=90^\\circ$이다.\n삼각형 $ACD$에서\n$\\angle ACD=180^\\circ-90^\\circ-30^\\circ=60^\\circ$이다.\n$\\angle ACD$와 $x=\\angle ABD$는 같은 호 $AD$를 본다.\n따라서\n$x=60^\\circ$이다.\n그러므로 정답은 ②이다.",
@@ -132,13 +132,13 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "content": "그림에서 호 $CD=2$호 $AB$, $\\\\angle ADB=34^\\\\circ$일 때, $\\\\angle x$의 크기는? (4점)",
+    "content": "그림에서 호 $CD=2$호 $AB$, $\\angle ADB=34^\\circ$일 때, $\\angle x$의 크기는? (4점)",
     "choices": [
-      "$78^\\\\circ$",
-      "$82^\\\\circ$",
-      "$98^\\\\circ$",
-      "$102^\\\\circ$",
-      "$108^\\\\circ$"
+      "$78^\\circ$",
+      "$82^\\circ$",
+      "$98^\\circ$",
+      "$102^\\circ$",
+      "$108^\\circ$"
     ],
     "answer": "①",
     "solution": "$\\angle ADB=34^\\circ$이므로 호 $AB$의 크기는\n$2\\times34^\\circ=68^\\circ$이다.\n호 $CD$는 호 $AB$의 2배이므로\n$\\overset{\\frown}{CD}=2\\times68^\\circ=136^\\circ$이다.\n원 안에서 만나는 두 현이 만드는 각 $x$는 마주 보는 두 호의 합의 절반이다.\n두 나머지 호의 합은\n$360^\\circ-68^\\circ-136^\\circ=156^\\circ$이다.\n따라서\n$x=156^\\circ\\div2=78^\\circ$이다.\n그러므로 정답은 ①이다.",
@@ -175,13 +175,13 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "content": "그림에서 직선 $AT$가 원 $O$의 접선이고 점 $A$가 접점이다. $\\\\overline{AB}=\\\\overline{BC}$이고 $\\\\angle ABC=64^\\\\circ$일 때, $\\\\angle BAT$의 크기는? (4점)",
+    "content": "그림에서 직선 $AT$가 원 $O$의 접선이고 점 $A$가 접점이다. $\\overline{AB}=\\overline{BC}$이고 $\\angle ABC=64^\\circ$일 때, $\\angle BAT$의 크기는? (4점)",
     "choices": [
-      "$50^\\\\circ$",
-      "$54^\\\\circ$",
-      "$58^\\\\circ$",
-      "$64^\\\\circ$",
-      "$70^\\\\circ$"
+      "$50^\\circ$",
+      "$54^\\circ$",
+      "$58^\\circ$",
+      "$64^\\circ$",
+      "$70^\\circ$"
     ],
     "answer": "③",
     "solution": "$\\angle ABC=64^\\circ$이므로 호 $AC$의 크기는\n$2\\times64^\\circ=128^\\circ$이다.\n따라서 나머지 두 호 $AB$, $BC$의 합은\n$360^\\circ-128^\\circ=232^\\circ$이다.\n$\\overline{AB}=\\overline{BC}$이므로 두 호의 크기도 같다.\n$\\overset{\\frown}{AB}=232^\\circ\\div2=116^\\circ$이다.\n$\\angle ACB$는 호 $AB$에 대한 원주각이므로\n$\\angle ACB=116^\\circ\\div2=58^\\circ$이다.\n접선과 현 $AB$가 이루는 각은 반대쪽 원주각과 같으므로\n$\\angle BAT=58^\\circ$이다.\n따라서 정답은 ③이다.",
@@ -218,13 +218,13 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "content": "그림에서 $\\\\angle ABE=35^\\\\circ$, $\\\\angle ADC=70^\\\\circ$일 때, $\\\\angle x+\\\\angle y$의 값은? (4점)",
+    "content": "그림에서 $\\angle ABE=35^\\circ$, $\\angle ADC=70^\\circ$일 때, $\\angle x+\\angle y$의 값은? (4점)",
     "choices": [
-      "$100^\\\\circ$",
-      "$105^\\\\circ$",
-      "$110^\\\\circ$",
-      "$115^\\\\circ$",
-      "$120^\\\\circ$"
+      "$100^\\circ$",
+      "$105^\\circ$",
+      "$110^\\circ$",
+      "$115^\\circ$",
+      "$120^\\circ$"
     ],
     "answer": "②",
     "solution": "$\\angle ABE=35^\\circ$와 $\\angle ADE$는 같은 호 $AE$를 보는 원주각이다.\n따라서\n$y=\\angle ADE=35^\\circ$이다.\n네 점 $A,B,C,D$가 한 원 위에 있으므로 사각형 $ABCD$의 마주 보는 각의 합은 $180^\\circ$이다.\n$\\angle ABC=180^\\circ-\\angle ADC=180^\\circ-70^\\circ=110^\\circ$이다.\n$x$는 $\\angle ABC$와 이웃한 바깥각이므로\n$x=180^\\circ-110^\\circ=70^\\circ$이다.\n따라서\n$x+y=70^\\circ+35^\\circ=105^\\circ$이다.\n그러므로 정답은 ②이다.",
@@ -261,13 +261,13 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "content": "다음 그림과 같이 점 $P$에서 원 $O$에 그은 두 접선의 접점을 각각 $A$, $B$라 하고, 호 $AB$ 위의 한 점 $Q$에 대하여 $\\\\angle AQB=115^\\\\circ$일 때, $\\\\angle APB$의 크기는? (4점)",
+    "content": "다음 그림과 같이 점 $P$에서 원 $O$에 그은 두 접선의 접점을 각각 $A$, $B$라 하고, 호 $AB$ 위의 한 점 $Q$에 대하여 $\\angle AQB=115^\\circ$일 때, $\\angle APB$의 크기는? (4점)",
     "choices": [
-      "$50^\\\\circ$",
-      "$52.5^\\\\circ$",
-      "$55^\\\\circ$",
-      "$57.5^\\\\circ$",
-      "$60^\\\\circ$"
+      "$50^\\circ$",
+      "$52.5^\\circ$",
+      "$55^\\circ$",
+      "$57.5^\\circ$",
+      "$60^\\circ$"
     ],
     "answer": "①",
     "solution": "$\\angle AQB=115^\\circ$가 보는 호 $AB$는 $Q$를 포함하지 않는 큰 호이다.\n그 호의 크기는\n$2\\times115^\\circ=230^\\circ$이다.\n두 접점 $A,B$ 사이의 작은 호의 크기는\n$360^\\circ-230^\\circ=130^\\circ$이다.\n두 접선이 이루는 각은 $180^\\circ$에서 작은 호의 크기를 뺀 값이다.\n따라서\n$\\angle APB=180^\\circ-130^\\circ=50^\\circ$이다.\n그러므로 정답은 ①이다.",
@@ -304,13 +304,13 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "content": "그림에서 $\\\\overline{AB}$는 원 $O$의 지름이고, $\\\\overline{AB}$의 연장선과 점 $T$에서의 접선의 교점을 $P$라 하자. $\\\\angle ATP=30^\\\\circ$이고 $\\\\overline{AB}=8\\\\sqrt3$일 때, $\\\\triangle ABT$의 넓이는? (4점)",
+    "content": "그림에서 $\\overline{AB}$는 원 $O$의 지름이고, $\\overline{AB}$의 연장선과 점 $T$에서의 접선의 교점을 $P$라 하자. $\\angle ATP=30^\\circ$이고 $\\overline{AB}=8\\sqrt3$일 때, $\\triangle ABT$의 넓이는? (4점)",
     "choices": [
       "$16$",
-      "$16\\\\sqrt3$",
-      "$16\\\\sqrt6$",
+      "$16\\sqrt3$",
+      "$16\\sqrt6$",
       "$24$",
-      "$24\\\\sqrt3$"
+      "$24\\sqrt3$"
     ],
     "answer": "⑤",
     "solution": "$AB$가 지름이므로\n$\\angle ATB=90^\\circ$이다.\n접선과 현 $AT$가 이루는 각 $\\angle ATP=30^\\circ$는 반대쪽 원주각 $\\angle ABT$와 같다.\n따라서 $\\angle ABT=30^\\circ$이고\n$\\angle BAT=60^\\circ$이다.\n직각삼각형 $ABT$에서\n$AT=AB\\sin30^\\circ=8\\sqrt3\\times\\dfrac12=4\\sqrt3$,\n$BT=AB\\sin60^\\circ=8\\sqrt3\\times\\dfrac{\\sqrt3}{2}=12$이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\times4\\sqrt3\\times12=24\\sqrt3$이다.\n그러므로 정답은 ⑤이다.",
@@ -347,13 +347,13 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "content": "네 점 $A,B,C,D$는 한 원 위에 있고, $\\\\overleftrightarrow{BA}$와 $\\\\overleftrightarrow{CD}$의 교점을 $P$, $\\\\overleftrightarrow{AD}$와 $\\\\overleftrightarrow{BC}$의 교점을 $Q$라 하자. $\\\\angle B=55^\\\\circ$, $\\\\angle Q=37^\\\\circ$일 때, $\\\\angle x$의 크기는? (4점)",
+    "content": "네 점 $A,B,C,D$는 한 원 위에 있고, $\\overleftrightarrow{BA}$와 $\\overleftrightarrow{CD}$의 교점을 $P$, $\\overleftrightarrow{AD}$와 $\\overleftrightarrow{BC}$의 교점을 $Q$라 하자. $\\angle B=55^\\circ$, $\\angle Q=37^\\circ$일 때, $\\angle x$의 크기는? (4점)",
     "choices": [
-      "$31^\\\\circ$",
-      "$33^\\\\circ$",
-      "$35^\\\\circ$",
-      "$37^\\\\circ$",
-      "$39^\\\\circ$"
+      "$31^\\circ$",
+      "$33^\\circ$",
+      "$35^\\circ$",
+      "$37^\\circ$",
+      "$39^\\circ$"
     ],
     "answer": "②",
     "solution": "호 $AB,BC,CD,DA$의 크기를 각각 $a,b,c,d$라 하자.\n$\\angle B=55^\\circ$이므로\n$c+d=2\\times55^\\circ=110^\\circ$이다.\n점 $Q$에서 만나는 두 할선의 바깥각은 두 호의 차의 절반이다.\n따라서\n$a-c=2\\times37^\\circ=74^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$a+c+2d=(a-c)+2(c+d)=74^\\circ+220^\\circ=294^\\circ$이다.\n따라서\n$b-d=(a+b+c+d)-(a+c+2d)=360^\\circ-294^\\circ=66^\\circ$이다.\n점 $P$에서 만나는 두 할선의 바깥각은 호 $BC$와 호 $AD$의 차의 절반이다.\n따라서\n$x=\\dfrac{b-d}{2}=33^\\circ$이다.\n그러므로 정답은 ②이다.",
@@ -390,7 +390,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "content": "다음은 지민이의 7회에 걸친 턱걸이 횟수를 조사하여 나타낸 것이다. 턱걸이 횟수의 평균과 최빈값이 같을 때, $x$의 값은? (3점)\\\\n$7,x,8,10,7,6,7$",
+    "content": "다음은 지민이의 7회에 걸친 턱걸이 횟수를 조사하여 나타낸 것이다. 턱걸이 횟수의 평균과 최빈값이 같을 때, $x$의 값은? (3점)\n$7,x,8,10,7,6,7$",
     "choices": [
       "4",
       "5",
@@ -437,7 +437,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "content": "다음 자료 $A$와 $B$의 중앙값을 구하여 더한 값은? (4점)\\\\n$A: 23,11,15,7,21,9,2$\\\\n$B: 6,4,0,-3,-2,2,-1,5$",
+    "content": "다음 자료 $A$와 $B$의 중앙값을 구하여 더한 값은? (4점)\n$A: 23,11,15,7,21,9,2$\n$B: 6,4,0,-3,-2,2,-1,5$",
     "choices": [
       "8",
       "10",
@@ -531,7 +531,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "content": "다음 자료의 최빈값이 $4$, 평균은 $7$, 중앙값을 $c$라고 할 때, $a+b-c$의 값은? (4점)\\\\n$3,4,a,9,b,4,9,8,5,8$",
+    "content": "다음 자료의 최빈값이 $4$, 평균은 $7$, 중앙값을 $c$라고 할 때, $a+b-c$의 값은? (4점)\n$3,4,a,9,b,4,9,8,5,8$",
     "choices": [
       "13.5",
       "14",
@@ -674,11 +674,11 @@ window.questionBank = [
     "id": 16,
     "content": "자료 $14,22,8,26,10$의 표준편차는? (4점)",
     "choices": [
-      "$4\\\\sqrt2$",
-      "$2\\\\sqrt{10}$",
-      "$4\\\\sqrt3$",
-      "$2\\\\sqrt{13}$",
-      "$2\\\\sqrt{14}$"
+      "$4\\sqrt2$",
+      "$2\\sqrt{10}$",
+      "$4\\sqrt3$",
+      "$2\\sqrt{13}$",
+      "$2\\sqrt{14}$"
     ],
     "answer": "③",
     "solution": "자료의 평균은\n$\\dfrac{14+22+8+26+10}{5}=16$이다.\n평균과 각 자료의 차는\n$-2,6,-8,10,-6$이다.\n분산은\n$\\dfrac{(-2)^2+6^2+(-8)^2+10^2+(-6)^2}{5}$\n$=\\dfrac{4+36+64+100+36}{5}=48$이다.\n따라서 표준편차는\n$\\sqrt{48}=4\\sqrt3$이다.\n그러므로 정답은 ③이다.",
@@ -719,7 +719,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "content": "자료 $a,b,c$의 평균이 $6$, 표준편차가 $\\\\sqrt{10}$일 때, 자료 $3,a,b,c,9$의 분산은? (4점)",
+    "content": "자료 $a,b,c$의 평균이 $6$, 표준편차가 $\\sqrt{10}$일 때, 자료 $3,a,b,c,9$의 분산은? (4점)",
     "choices": [
       "9.2",
       "9.3",
@@ -768,11 +768,11 @@ window.questionBank = [
     "id": 18,
     "content": "$A$, $B$ 두 반의 턱걸이 기록을 조사하였더니 각 반의 학생 수, 평균과 표준편차가 다음 표와 같았다. 두 반 전체 30명의 표준편차는? (4점)",
     "choices": [
-      "$\\\\dfrac{\\\\sqrt3}3$",
-      "$\\\\dfrac{\\\\sqrt6}3$",
-      "$\\\\dfrac{2\\\\sqrt3}3$",
-      "$\\\\dfrac{2\\\\sqrt6}3$",
-      "$2\\\\sqrt6$"
+      "$\\dfrac{\\sqrt3}3$",
+      "$\\dfrac{\\sqrt6}3$",
+      "$\\dfrac{2\\sqrt3}3$",
+      "$\\dfrac{2\\sqrt6}3$",
+      "$2\\sqrt6$"
     ],
     "answer": "④",
     "solution": "두 반의 평균이 모두 $7$이므로 전체 평균도 $7$이다.\nA반의 편차 제곱의 합은\n$10\\times(\\sqrt2)^2=20$이다.\nB반의 편차 제곱의 합은\n$20\\times(\\sqrt3)^2=60$이다.\n전체 편차 제곱의 합은\n$20+60=80$이다.\n따라서 전체 분산은\n$\\dfrac{80}{30}=\\dfrac83$이고, 표준편차는\n$\\sqrt{\\dfrac83}=\\dfrac{2\\sqrt6}{3}$이다.\n그러므로 정답은 ④이다.",
@@ -861,7 +861,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "content": "다음 보기 중에서 두 변량 사이의 산점도가 대체로 오른쪽 그림과 같은 모양이 되는 것을 모두 고른 것은? (4점)\\\\nㄱ. 위도와 평균 기온\\\\nㄴ. 물 사용량과 수도 요금\\\\nㄷ. 통학 거리와 소요 시간\\\\nㄹ. 자동차의 이동거리와 남은 기름의 양",
+    "content": "다음 보기 중에서 두 변량 사이의 산점도가 대체로 오른쪽 그림과 같은 모양이 되는 것을 모두 고른 것은? (4점)\nㄱ. 위도와 평균 기온\nㄴ. 물 사용량과 수도 요금\nㄷ. 통학 거리와 소요 시간\nㄹ. 자동차의 이동거리와 남은 기름의 양",
     "choices": [
       "ㄱ, ㄹ",
       "ㄴ, ㄷ",
@@ -911,11 +911,11 @@ window.questionBank = [
     "id": 21,
     "content": "다음 산점도는 어느 반 학생 20명의 1학기 성적과 2학기 성적을 조사하여 나타낸 것이다. 1학기보다 2학기에 성적이 향상된 학생의 비율은? (4점)",
     "choices": [
-      "$\\\\dfrac15$",
-      "$\\\\dfrac14$",
-      "$\\\\dfrac3{10}$",
-      "$\\\\dfrac25$",
-      "$\\\\dfrac7{20}$"
+      "$\\dfrac15$",
+      "$\\dfrac14$",
+      "$\\dfrac3{10}$",
+      "$\\dfrac25$",
+      "$\\dfrac7{20}$"
     ],
     "answer": "④",
     "solution": "좌표평면에서 2학기 성적이 1학기 성적보다 높은 점은 대각선 $y=x$보다 위에 있다.\n그림에서 대각선 위에 있는 점은\n$(65,80),(70,90),(75,80),(75,85)$\n$(80,85),(80,95),(85,95),(90,100)$\n의 8개이다.\n전체 학생은 20명이므로\n$\\dfrac{8}{20}=\\dfrac25$이다.\n따라서 향상된 학생의 비율은 $\\dfrac25$이다.\n그러므로 정답은 ④이다.",
@@ -957,7 +957,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "서술형 1. 다음과 같은 원 $O$에 내접하는 정오각형 $ABCDE$가 있다. 호 $CD$의 원주각을 구하고, 그 크기를 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\\\\n(1) 호 $CD$에 대한 원주각을 3개 구하시오. (3점)\\\\n(2) 호 $CD$에 대한 중심각의 크기를 이용하여 원주각의 크기를 풀이과정을 쓰고 구하시오. (2점)",
+    "content": "서술형 1. 다음과 같은 원 $O$에 내접하는 정오각형 $ABCDE$가 있다. 호 $CD$의 원주각을 구하고, 그 크기를 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\n(1) 호 $CD$에 대한 원주각을 3개 구하시오. (3점)\n(2) 호 $CD$에 대한 중심각의 크기를 이용하여 원주각의 크기를 풀이과정을 쓰고 구하시오. (2점)",
     "choices": [],
     "answer": "(1) ∠CAD=∠CBD=∠CED=36° (2) 36°",
     "solution": "정오각형의 꼭짓점은 원을 5등분한다.\n따라서 호 $CD$의 중심각은\n$360^\\circ\\div5=72^\\circ$이다.\n호 $CD$에 대한 원주각은 호 $CD$의 양 끝점이 아닌 원 위의 꼭짓점에서 만든다.\n따라서 세 각은\n$\\angle CAD,\\;\\angle CBD,\\;\\angle CED$이다.\n원주각은 같은 호에 대한 중심각의 절반이므로\n$\\angle CAD=\\angle CBD=\\angle CED=72^\\circ\\div2=36^\\circ$이다.",
@@ -994,7 +994,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "서술형 2. 아래 그림과 같이 원 $O$의 지름 $BC$의 연장선과 접선 $PA$가 만날 때, $\\\\angle x$의 크기를 풀이과정을 쓰고 구하시오. (5점)",
+    "content": "서술형 2. 아래 그림과 같이 원 $O$의 지름 $BC$의 연장선과 접선 $PA$가 만날 때, $\\angle x$의 크기를 풀이과정을 쓰고 구하시오. (5점)",
     "choices": [],
     "answer": "46°",
     "solution": "$BC$가 지름이므로\n$\\angle BAC=90^\\circ$이다.\n접선과 현 $AB$가 이루는 각이 $68^\\circ$이므로 접선-현각 정리에 따라\n$\\angle ACB=68^\\circ$이다.\n삼각형 $ABC$에서\n$\\angle ABC=180^\\circ-90^\\circ-68^\\circ=22^\\circ$이다.\n$PA$와 접선의 오른쪽 방향은 일직선의 반대쪽이므로\n$\\angle PAB=180^\\circ-68^\\circ=112^\\circ$이다.\n삼각형 $PAB$에서\n$x=180^\\circ-112^\\circ-22^\\circ=46^\\circ$이다.",
@@ -1074,7 +1074,7 @@ window.questionBank = [
   },
   {
     "id": 25,
-    "content": "서술형 4. 자료 $a-1,a+2,a+3,a+4$의 분산을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\\\\n(1) 자료의 평균을 구하시오. (2점)\\\\n(2) 각 변량에 대한 편차를 구하시오. (1점)\\\\n(3) 분산을 구하시오. (2점)",
+    "content": "서술형 4. 자료 $a-1,a+2,a+3,a+4$의 분산을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. (5점)\n(1) 자료의 평균을 구하시오. (2점)\n(2) 각 변량에 대한 편차를 구하시오. (1점)\n(3) 분산을 구하시오. (2점)",
     "choices": [],
     "answer": "(1) a+2 (2) -3, 0, 1, 2 (3) 7/2",
     "solution": "자료의 평균은\n$\\dfrac{(a-1)+(a+2)+(a+3)+(a+4)}{4}$\n$=\\dfrac{4a+8}{4}=a+2$이다.\n각 자료에서 평균을 뺀 편차는\n$(a-1)-(a+2)=-3$,\n$(a+2)-(a+2)=0$,\n$(a+3)-(a+2)=1$,\n$(a+4)-(a+2)=2$이다.\n따라서 분산은\n$\\dfrac{(-3)^2+0^2+1^2+2^2}{4}$\n$=\\dfrac{9+0+1+4}{4}=\\dfrac72$이다.",
