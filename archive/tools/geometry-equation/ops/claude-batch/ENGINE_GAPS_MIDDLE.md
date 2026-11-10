@@ -18,3 +18,6 @@
 - 포함 관계 벤다이어그램에서 안쪽 집합 이름이 바깥 원 테두리와 겹침 → 평면 작도(원+textLabels)로 우회 (24 금당고 2학기 중간 Q03·Q10·Q11)
 - 단일 이차곡선 식 머리줄을 끌 수 없어 꼭짓점꼴이 정답을 드러냄 → multi-curve 두 조각으로 우회 (23 충무고 1학기 중간 Q13 등)
 - multi-curve·piecewise에 axisVariable 없음(가로·세로축 이름을 x·y 외로 못 바꿈) (23 충무고 Q21, 23 강남여고 Q13)
+- 반원 그리기 불가 → 전체 원으로 대체 (23 순천고 1학기 중간 Q19)
+- 좌표 직선(overlay)에 한글·그리스 문자 라벨 불가(OVERLAY_LABEL_INVALID) → 색 구분·callout 우회 (23 순천고 Q13, 23 매산여고)
+- multi-curve는 곡선 1개를 받지 않음(MULTI_CURVE_COUNT_INVALID) → 같은 곡선을 둘로 나눠 그림 (23 매산고 Q12)

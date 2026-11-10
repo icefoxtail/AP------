@@ -77,7 +77,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 곡선 위에 극대점과 극소점이 좌표와 함께 표시되어 있다.",
+    "solutionImageCaption": "극소점의 위치와 함숫값 조건으로 미지 계수를 정한 뒤 극소 여부를 확인한다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -114,7 +118,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위에 x가 4인 점 P가 표시되어 있다.",
+    "solutionImageCaption": "적분식의 도함수로 포물선을 정리하고 x=4에서의 순간변화율을 구한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -151,7 +159,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간 t에 따른 위치 x의 곡선. t가 2일 때 위치가 0인 점과 t가 1일 때 가장 낮은 점이 표시되어 있다.",
+    "solutionImageCaption": "위치 x=3t²−6t를 시간으로 미분한 값이 속도이다. t=2에서 위치 곡선의 순간변화율을 구한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -266,7 +278,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 [−1, 4]에서 삼차함수의 두 끝점과 내부 극점이 표시되어 있다.",
+    "solutionImageCaption": "닫힌 구간 [−1, 4]에서 내부 극점과 양 끝점의 함숫값을 비교한다. 정답은 −26이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -340,7 +356,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 삼차함수 곡선과 극대·극소 높이를 지나는 주황, 초록 수평선. 각 수평선과 곡선의 교점이 표시되어 있다.",
+    "solutionImageCaption": "두 곡선의 교점 조건을 삼차함수와 수평선의 교점으로 바꾼다. 극값 높이에서 두 교점이 되는 경계를 구한다. 정답은 음의 이십칠분의 삼십칠이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -359,7 +379,7 @@ window.questionBank = [
       "$9$"
     ],
     "image": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q10-solution-v2.svg",
     "answer": "④",
     "solution": "그림에서 포물선의 같은 높이에 있는 두 점의 $x$좌표의 합은 $4$이다. 오른쪽 아래 꼭짓점 $B$의 $x$좌표를 $x$라 두면 왼쪽 아래 꼭짓점은 $4-x$이고 $2<x<4$이다.\n직사각형의 높이는 $-x^2+4x$, 너비는 $x-(4-x)=2x-4$이다.\n$A(x)=(2x-4)(-x^2+4x)$\n$A'(x)=-6x^2+24x-16$\n최댓값 후보는\n$-6x^2+24x-16=0$\n$3x^2-12x+8=0$\n$x=2\\pm\\dfrac{2\\sqrt3}{3}$\n범위 $2<x<4$에 맞는 값은 $x=2+\\dfrac{2\\sqrt3}{3}=\\dfrac{6+2\\sqrt3}{3}$이다.\n이 구간에서 $A(x)>0$이고 양 끝에서 $A(2)=A(4)=0$이며 내부 임계점은 이 값 하나뿐이므로, 이때 넓이가 최대이다.\n따라서 $a+b=6+2=8$이고 정답은 ④이다.",
     "level": "상",
@@ -382,7 +402,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: 포물선과 그 안에 그린 주황색 직사각형의 네 꼭짓점, 대칭인 두 세로 변.",
+    "solutionImageCaption": "예: 포물선의 같은 높이에 놓인 두 점으로 직사각형을 만든다. 두 세로 변은 포물선의 축에 대하여 대칭이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -400,7 +423,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "image": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q11-solution-v2.svg",
     "answer": "③",
     "solution": "도함수 그래프의 $x$절편과 부호를 정리한다.\n$x:\\quad(-\\infty,-3),\\ (-3,-1),\\ (-1,1),\\ (1,3),\\ (3,\\infty)$\n$f'(x):\\quad- ,\\quad+ ,\\quad- ,\\quad+ ,\\quad-$\n$f'$의 부호가 바뀌는 점에서 $f$는 극값을 갖는다.\n$x=-3,1$에서는 부호가 $-$에서 $+$로 바뀌므로 극소이고,\n$x=-1,3$에서는 부호가 $+$에서 $-$로 바뀌므로 극대이다.\n따라서 $f$의 극값은 $4$개이므로 ㄱ은 참이다.\n$(0,1)$에서 $f'(x)<0$이므로 $f$는 감소한다. 따라서 $(0,2)$ 전체에서 증가한다는 ㄴ은 거짓이다.\n$f'$가 우함수이므로\n$\\int_{-3}^{0}f'(x)\\,dx=\\int_0^3f'(x)\\,dx$\n따라서\n$\\int_{-3}^{3}f'(x)\\,dx=2\\int_0^3f'(x)\\,dx$\n이므로 ㄷ은 참이다.\n따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ③이다.",
     "level": "중",
@@ -423,7 +446,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImageAlt": "해설 그림: y축에 대칭인 도함수 그래프. x절편 −3, −1, 1, 3 사이에서 양수 구간은 주황, 음수 구간은 파랑으로 칠했다.",
+    "solutionImageCaption": "예: 영점이 −3, −1, 1, 3인 우함수 도함수의 그래프이다(눈금은 임의). 주황은 f′(x)가 양수, 파랑은 음수인 구간이다. 부호가 바뀌는 네 점에서 극값이 생기고, 대칭인 구간의 정적분은 같다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -460,7 +486,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 매개변수 a의 닫힌 구간과 그 안의 정수 눈금.",
+    "solutionImageCaption": "극값이 없을 조건을 도함수의 판별식으로 바꾸어 매개변수 구간을 정한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -497,7 +527,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에서 a, c, b 순서로 놓인 세 점.",
+    "solutionImageCaption": "수직선은 점 a, c, b의 순서만 나타낸다. 점 사이 간격은 수치 비율을 뜻하지 않는다. 두 끝에서 함수값이 같으므로 롤의 정리를 적용한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -534,7 +568,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수의 포물선과 조건에 주어진 점 Q.",
+    "solutionImageCaption": "적분 조건에서 도함수 관계를 얻어 이차함수의 꼴을 정한다. 주어진 함수값 조건으로 적분 상수를 결정한다. 정답은 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -571,7 +609,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에서 a, c, b 순서로 놓인 세 기호점.",
+    "solutionImageCaption": "그림에서 a=x+1, c=cₓ, b=x+3의 순서만 나타낸다. 점 사이 간격은 수치 비율을 뜻하지 않는다. 평균값정리로 두 끝의 함수값 차는 2f′(cₓ)이고 x가 커지면 f′(cₓ)는 10에 가까워진다. 정답은 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -602,7 +644,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 조각으로 이루어진 함수 그래프와 두 경계점.",
+    "solutionImageCaption": "원문의 세 조각을 이어 함수의 국소적인 변화를 살핀다. 평평한 구간의 점은 비엄격한 정의에서 극댓값과 극솟값이 될 수 있다. 정답은 0, 1, 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -633,7 +679,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축의 1, 3, 5에서 극값을 갖는 사차함수 그래프. 1과 5에서 극대점, 3에서 극소점이 표시되어 있다.",
+    "solutionImageCaption": "대칭축을 기준으로 양쪽 극대점의 높이가 같다. 가운데 극소점과 극댓값의 차, 주어진 함수값으로 계수를 정한다. 정답은 f(x)=−⅜(x−3)⁴+3(x−3)²−2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -664,7 +714,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 패널에 삼차함수 그래프가 각각 그려져 있다. 위쪽은 세 근 1, 2, 3을 갖고 아래쪽은 1이 단순근이고 3에서 가로축에 접한다.",
+    "solutionImageCaption": "조건을 만족하는 두 삼차함수의 정적분값을 비교한다. 3이 중근인 경우의 값이 더 크다. 정답은 삼분의 사이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -697,7 +751,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: p(x)=x³−3x의 삼차함수 그래프, 두 극점과 세 근.",
+    "solutionImageCaption": "p(x)=x³−3x로 놓고 수평선 높이와 극값을 비교해 세 실근이 가능한 매개변수 범위를 찾는다. 대칭성을 이용해 절댓값의 합의 최댓값과 최솟값을 비교한다. 정답은 4+2√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -730,6 +788,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 합성함수 g의 꺾인 그래프와 정수점 다섯 개.",
+    "solutionImageCaption": "합성함수 g는 네 개의 직선 조각으로 이어진다. 정수점 사이 평균변화율 조건을 이용해 별도 다항함수 h의 도함숫값을 구한다. 정답은 삼분의 육십사이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -337,7 +337,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "templateNullReason": "매개변수와 무관한 공통점 항등식형과 정확히 일치하는 ACTIVE L4가 현재 H1_FOUNDATION에 없어 null 유지"
+    "templateNullReason": "매개변수와 무관한 공통점 항등식형과 정확히 일치하는 ACTIVE L4가 현재 H1_FOUNDATION에 없어 null 유지",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: k의 값에 따라 달라지는 직선 세 개가 서로 다른 색으로 그려져 있고, 세 직선 모두 점 P를 지난다. 직선 곁에 각각 y=2x−2, y=−4x−8, y=x−3이라고 적혀 있다. 점 P의 좌표는 쓰여 있지 않다.",
+    "solutionImageCaption": "예: k=0, k=−2, k=−3분의 1일 때의 직선 y=2x−2, y=−4x−8, y=x−3이다. y=(3k+2)x+3k−2를 k에 대해 정리하면 y=3k(x+1)+2x−2이므로 x+1=0, 즉 x=−1이면 k의 값에 관계없이 y=2(−1)−2=−4이다. 따라서 P(−1,−4)이고 a+b=−5이다. 정답은 −5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -463,7 +467,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: y=|x−2|의 V자 그래프이다. 꼭짓점의 좌표 (2,0)과 두 가지 y=2−x, y=x−2가 곁에 적혀 있고, 점 (−2,−1)을 지나는 직선 y=m(x+2)−1의 한 예가 다른 색으로 그려져 V자 그래프와 서로 다른 두 점에서 만난다.",
+    "solutionImageCaption": "예: m=2분의 1일 때의 직선이다. 직선 y=m(x+2)−1은 m의 값에 관계없이 점 (−2,−1)을 지나므로, y=|x−2|의 그래프와 서로 다른 두 점에서 만나는 기울기 m의 범위를 구하면 된다. x≥2와 x<2로 나누어 각각 해가 하나씩 존재할 조건을 구해 교집합을 취하면 4분의 1<m<1이다. 정답은 4분의 1<m<1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -505,7 +513,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선이 x축과 서로 다른 두 점에서 만난다. 두 교점에 각각 α, β라고 적혀 있고, 두 교점에서 내린 점선 아래에 두 점 사이의 거리를 나타내는 주황색 선분이 있다.",
+    "solutionImageCaption": "예: y=−x²+2x+3과 같이 위로 볼록한 이차함수의 그래프이다. x축과 만나는 두 점의 x좌표가 α, β이므로 두 점 사이의 거리는 |α−β|(주황색 선분)이다. 근의 공식에서 α, β는 2a분의 −b±√D이므로 |α−β|=|a|분의 √D이고, 위로 볼록하면 a<0이므로 |a|=−a이다. 정답은 −a분의 √D이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -548,9 +560,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "점 (2,3)에서 포물선에 그은 두 접선",
-    "solutionImageCaption": "점 (2,3)에서 포물선에 그은 두 접선",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 y=x²+3x+1과 점 (2,3)이 있다. 점 (2,3)에서 두 접점까지 선분이 이어지며, 접점 S로 가는 선분은 파란색, 접점 T로 가는 선분은 주황색이다. 두 접점에 S, T라고 적혀 있다.",
+    "solutionImageCaption": "점 (2,3)을 지나는 직선을 y=m(x−2)+3으로 놓고 포물선 식에 대입하면 x²+(3−m)x+2m−2=0이다. 접하려면 중근을 가져야 하므로 판별식 (3−m)²−4(2m−2)=0, 즉 m²−14m+17=0이다. 그림의 두 선분은 접점 S, T로 가는 두 접선의 일부(파란색은 S로, 주황색은 T로 가는 선분)이고, 두 기울기는 이 이차방정식의 두 근이므로 근과 계수의 관계로 곱은 17이다. 정답은 17이다.",
     "solutionImageSize": "full"
   },
   {
@@ -812,7 +824,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/23_순천고_1학기_중간_고1_기출/q19.png",
-    "sourceMode": "SAME_STAGE_MINIMAL_REPAIR"
+    "sourceMode": "SAME_STAGE_MINIMAL_REPAIR",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 선분 AB를 지름으로 하는 원 위에 점 C가 있고, C에서 AB에 내린 수선의 발이 D이다. 삼각형 ACB는 C에서 직각이고 CD는 점선으로 그려져 있다. AB의 길이는 a, CD의 길이는 b로 적혀 있다.",
+    "solutionImageCaption": "예: 그림은 a, b가 특정한 값일 때의 모양이다. AB가 지름이므로 원주각 ACB는 90도이고, CD는 직각삼각형 ACB의 빗변 AB에 내린 높이이다. 높이 정리에서 AD·BD=CD²=b²이고 AD+BD=AB=a이므로 두 근의 합이 a, 곱이 b²인 이차방정식은 x²−ax+b²=0이다. 정답은 x²−ax+b²=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -856,7 +872,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/23_순천고_1학기_중간_고1_기출/q20.png"
+    "image": "assets/images/23_순천고_1학기_중간_고1_기출/q20.png",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 S인 위로 볼록한 포물선이다. x가 0부터 30까지인 부분만 그렸고 꼭짓점에 꼭짓점이라는 이름표가 지시선으로 붙어 있으며 꼭짓점을 지나는 세로 점선에 x=15라고 적혀 있다. 가로축 끝에 30이 적혀 있다.",
+    "solutionImageCaption": "B를 원점으로 하여 점 E의 x좌표를 x라 하면 E(x,10−3분의 x)이고, 직사각형 BGEF의 넓이는 x(10−3분의 x), 직사각형 EHDI의 넓이는 (30−x)·3분의 x이다. 합은 S=20x−3분의 2x²=−3분의 2(x−15)²+150이고, 0≤x≤30에서 위로 볼록하므로 꼭짓점인 x=15일 때 S가 최대이다. 정답은 150이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -967,9 +987,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "순이익 P(x)의 그래프: x=200일 때 최대",
-    "solutionImageCaption": "순이익 P(x)의 그래프: x=200일 때 최대",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x(톤), 세로축 P(x)인 위로 볼록한 포물선이다. 꼭대기에 꼭짓점이라는 이름표가 지시선으로 붙어 있고 눈금이나 좌표는 쓰여 있지 않다.",
+    "solutionImageCaption": "금액을 천 원 단위로 통일하면 운송비를 뺀 이익은 x(50−10분의 x)이고 운송비는 100+10x이므로 순이익은 P(x)=−10분의 1x²+40x−100=−10분의 1(x−200)²+3900이다. 위로 볼록한 포물선이므로 꼭짓점인 x=200에서 순이익이 최대이다. 정답은 200톤이다.",
     "solutionImageSize": "full"
   }
 ];

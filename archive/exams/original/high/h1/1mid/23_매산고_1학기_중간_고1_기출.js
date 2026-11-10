@@ -422,7 +422,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/23_매산고_1학기_중간_고1_기출/q10-question-figure.png"
+    "image": "assets/images/23_매산고_1학기_중간_고1_기출/q10-question-figure.png",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 정원을 칸막이 하나로 나눈 그림. 오른쪽은 한 변이 x인 정사각형, 왼쪽 영역의 가로는 y−x, 전체 가로는 y, 세로는 x로 표시되어 있다.",
+    "solutionImageCaption": "정사각형의 한 변을 x, 바깥 직사각형의 가로를 y라 하면 필요한 끈의 길이는 3x+2y=240이다. 두 영역의 넓이의 합 xy를 x만의 이차식으로 나타내 완전제곱꼴로 고치면 최대가 되는 x를 찾을 수 있고, 이때 왼쪽 영역의 가로 y−x도 양수이다. 정답은 40m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -509,7 +513,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 u, 세로축이 y인 좌표평면에서 u가 −1부터 8까지인 아래로 볼록한 포물선 y=u²−8u+15를 그린 그림. 왼쪽 끝 P, 꼭짓점 V(u=4), 오른쪽 끝 Q가 표시되어 있고 P가 Q보다 높다.",
+    "solutionImageCaption": "u=x²−2x로 놓으면 −2 이상 2 이하의 x에서 u의 범위는 −1 이상 8 이하이고, y는 u의 이차함수가 된다. 점 P, V, Q는 각각 u가 −1, 4, 8인 점이다. 최솟값은 꼭짓점 V에서, 최댓값은 꼭짓점에서 더 먼 끝점 P에서 생긴다. 정답은 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -671,7 +679,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 파란 포물선 y=−x²+x−20과 주황 직선 y=4x+a−1을 그린 그림. 포물선이 직선보다 전체적으로 아래쪽에 있다.",
+    "solutionImageCaption": "예: a=−10인 직선과 포물선을 그린 그림이다. 포물선이 직선보다 항상 아래쪽에 있으려면 −x²+x−20<4x+a−1, 즉 x²+3x+a+19>0이 모든 실수 x에서 성립해야 하고, 이는 판별식이 음수일 때이다. 이를 만족하는 정수 a 중 가장 작은 값을 찾는다. 정답은 −16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -823,9 +835,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q20-solution-g1-complete.svg",
-    "solutionImageAlt": "포물선 y=-x^2+6x와 접선 ℓ이 C(3/2, 27/4)에서 접하고, 수선의 발 D(3/2, 0)와 접선의 절편 A(-3/4, 0), B(0, 9/4)를 나타낸다.",
-    "solutionImageCaption": "접점 C의 수선의 발 D와 접선 ℓ의 x절편 A, y절편 B의 위치 관계를 보여 준다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 파란 포물선 y=−x²+6x와 주황 직선 y=ax+b가 점 C에서 접하는 그림. C에서 x축에 내린 수선의 발 D, 직선의 x절편 A와 y절편 B, 원점 O가 표시되고 보라색 삼각형 ABO와 초록색 삼각형 ACD가 색칠되어 있다.",
+    "solutionImageCaption": "접점 C의 x좌표를 t라 하면 접하는 조건에서 a=6−2t, b=t²이다. 삼각형 ABO(보라)와 삼각형 ACD(초록)의 넓이를 t로 나타내면 큰 삼각형 ACD의 넓이가 작은 삼각형 ABO의 9배이므로 6−t가 t의 3배이다. 정답은 4분의 9이다.",
+    "solutionImageSize": "full"
   }
 ];

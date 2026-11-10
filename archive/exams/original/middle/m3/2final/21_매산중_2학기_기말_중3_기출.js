@@ -55,7 +55,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "같은 호를 보는 중심각은 원주각의 두 배",
-    "sourceIdentityKey": "sha256:d3ba802eab781b4c2395276f915f9136845fa65a8e71fa9bdbdebdddabcf253b|1"
+    "sourceIdentityKey": "sha256:d3ba802eab781b4c2395276f915f9136845fa65a8e71fa9bdbdebdddabcf253b|1",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 세 점 P, A, B와 중심 O가 있고, 호 AB를 보는 원주각 ∠APB=40°와 반지름 OA, OB가 그려져 있다.",
+    "solutionImageCaption": "같은 호 AB를 보는 중심각은 원주각의 2배이다. 원주각이 40°이므로 중심각 ∠AOB는 2×40°이다. 정답은 80°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -112,7 +116,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "호의 길이는 중심각의 크기에 비례",
-    "sourceIdentityKey": "sha256:f7ba520d5d5dd884c4df77206fe088ca36b5aedc8888d3a75772fa1146308f5f|2"
+    "sourceIdentityKey": "sha256:f7ba520d5d5dd884c4df77206fe088ca36b5aedc8888d3a75772fa1146308f5f|2",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에서 호 x는 파란색, 길이 8인 호는 주황색으로 구분되어 있고, 점 P에서 30°, 점 Q에서 60°의 원주각이 표시되어 있다.",
+    "solutionImageCaption": "호 x를 보는 원주각이 30°이므로 중심각은 60°이고, 길이 8인 호를 보는 원주각이 60°이므로 중심각은 120°이다. 호의 길이는 중심각에 비례하므로 x:8=60:120이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -169,7 +177,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "내접사각형의 대각과 삼각형 내각 합",
-    "sourceIdentityKey": "sha256:4124cb87982cd1db1b6af355450a5d5bebf4398aa4772d13f46e5c5783168c49|3"
+    "sourceIdentityKey": "sha256:4124cb87982cd1db1b6af355450a5d5bebf4398aa4772d13f46e5c5783168c49|3",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 대각선 AC가 그려져 있고, ∠D=80°, ∠ACB=40°와 대응하는 ∠B, ∠BAC가 표시되어 있다.",
+    "solutionImageCaption": "내접사각형에서 마주 보는 두 각의 합은 180°이므로 ∠B=100°이다. 삼각형 ABC의 내각의 합이 180°이므로 ∠BAC=180°−100°−40°이다. 정답은 40°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -226,7 +238,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "교차하는 두 현의 교각은 마주 보는 두 호의 합의 절반",
-    "sourceIdentityKey": "sha256:0911bc56073556b45b6aa4749558db29dff64555810d829f7d6ac3a7256719c1|4"
+    "sourceIdentityKey": "sha256:0911bc56073556b45b6aa4749558db29dff64555810d829f7d6ac3a7256719c1|4",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에서 두 현 AC, BD가 점 P에서 만나고, 현 BC가 그려져 있으며, 같은 크기의 호 AB와 호 CD가 파란색으로 표시되어 있고 ∠ACB=20°가 표시되어 있다.",
+    "solutionImageCaption": "∠ACB=20°는 호 AB를 보는 원주각이므로 호 AB는 40°이고, 호 AB=호 CD이므로 호 CD도 40°이다. 교각 ∠APB는 두 호의 합의 절반인 (40°+40°)÷2이다. 정답은 40°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -283,7 +299,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "호의 비를 360도 분할과 원주각으로 연결",
-    "sourceIdentityKey": "sha256:cf172fc7dddd0d22009b0a95f1dda51714ac093edbe3fca457c246369a5f68fc|5"
+    "sourceIdentityKey": "sha256:cf172fc7dddd0d22009b0a95f1dda51714ac093edbe3fca457c246369a5f68fc|5",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC가 있고, 호 AB는 파란색, 호 BC는 주황색, 호 CA는 초록색으로 구분되어 각각 3, 4, 2가 표시되어 있으며 ∠A가 표시되어 있다.",
+    "solutionImageCaption": "호의 비가 3:4:2이므로 전체 360°를 9등분하면 한 부분이 40°이고 호 BC는 4×40°=160°이다. ∠A는 호 BC를 보는 원주각이므로 160°의 절반이다. 정답은 80°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -340,7 +360,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "그림에서 x=∠ADB, y=∠BAT를 읽고, 원주각의 합과 접선-현 각으로 두 값을 각각 45°로 정해 차를 0°로 구한다.",
-    "sourceIdentityKey": "sha256:1f68649906301b9f0a6c07b2a062c175510bc0b566ea56614b231a9de3b0b5b8|6"
+    "sourceIdentityKey": "sha256:1f68649906301b9f0a6c07b2a062c175510bc0b566ea56614b231a9de3b0b5b8|6",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 접선 AT가 있고, ∠C=80°, ∠DBA=35°, ∠DAB=100°와 ∠ADB가 표시되어 있으며 접선과 현이 이루는 각 ∠BAT와 ∠ADB는 같은 파란색 호로 구분되어 있다.",
+    "solutionImageCaption": "내접사각형에서 ∠DAB=180°−80°=100°이므로 삼각형 DAB에서 x=∠ADB=180°−100°−35°=45°이다. 접선과 현이 이루는 각 ∠BAT는 호 AB를 보는 원주각 ∠ADB와 같으므로 y=45°이다. 정답은 y−x=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -397,7 +421,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "두 접선 각에서 중심각을 구한 뒤 원주각으로 전환",
-    "sourceIdentityKey": "sha256:d9adf33b70fe46aaa9be3a67e5bc24df8238d3ffcdd656d03c3e3c5bc22dd5c7|7"
+    "sourceIdentityKey": "sha256:d9adf33b70fe46aaa9be3a67e5bc24df8238d3ffcdd656d03c3e3c5bc22dd5c7|7",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 점 T에서 접점 A, B로 접선이 그려져 있고 ∠ATB=50°, 접점에서 반지름과 접선이 이루는 직각, 중심각 ∠AOB, 원 위의 점 C에서의 원주각 ∠ACB가 표시되어 있다.",
+    "solutionImageCaption": "반지름은 접선에 수직이므로 사각형 TAOB에서 ∠AOB=180°−50°=130°이다. ∠ACB는 호 AB를 보는 원주각이므로 중심각의 절반이다. 정답은 65°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -454,7 +482,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "접선 길이와 현 길이의 등식 및 tangent-chord 관계",
-    "sourceIdentityKey": "sha256:8b9f225eb87df166cd028bc32d54c01acb6c4929d16c92d20dde7985f7c6bb39|8"
+    "sourceIdentityKey": "sha256:8b9f225eb87df166cd028bc32d54c01acb6c4929d16c92d20dde7985f7c6bb39|8",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB의 연장선 위의 점 P와 접선 PT, 접점 C가 있고, ∠P=30°, ∠ACB=90°, 접현각 ∠BCT가 표시되어 있다.",
+    "solutionImageCaption": "AB가 지름이므로 ∠ACB=90°이다. PC=BC이므로 ∠P=∠PBC이고, 접선과 현이 이루는 각 ∠BCT=∠BAC이다. 삼각형 ABC의 내각에서 ∠ABC=30°, ∠BAC=60°이다. 정답은 60°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -511,7 +543,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "내접원의 접점 반지름과 세 각의 관계",
-    "sourceIdentityKey": "sha256:132ad38c01ac57671dc9feb1b5eeb4d14878d9bce3c8dce29734ab09ada4d073|9"
+    "sourceIdentityKey": "sha256:132ad38c01ac57671dc9feb1b5eeb4d14878d9bce3c8dce29734ab09ada4d073|9",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC의 내접원 O와 접점 D, E, F가 있고 ∠B=30°, ∠C=70°, ∠A가 표시되어 있다. 오른쪽에는 원 O 위의 점 D, E, F와 호 DE를 보는 중심각 110°, 원주각 55°가 표시되어 있다.",
+    "solutionImageCaption": "원주각 ∠EFD=55°이므로 중심각 ∠EOD=110°이다. 반지름은 접선에 수직이므로 ∠EOD=180°−∠C이고 ∠C=70°이다. 삼각형 ABC에서 ∠CAB=180°−30°−70°이다. 정답은 80°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -568,7 +604,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "두 할선의 외각과 전체 원호의 합",
-    "sourceIdentityKey": "sha256:e42889b973af37e27bf26833579d3a112e51fed61c60d9ca0d092791cac619b2|10"
+    "sourceIdentityKey": "sha256:e42889b973af37e27bf26833579d3a112e51fed61c60d9ca0d092791cac619b2|10",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 원 위의 점 A, B, C, D와 원 밖의 점 P에서 만나는 두 할선, ∠BPC=30°, ∠BDC=x가 표시되어 있다. 오른쪽에는 같은 크기 t의 세 호는 파란색, 호 BC는 주황색 u로 구분되어 있다.",
+    "solutionImageCaption": "원 밖의 점 P에서 두 할선이 만나므로 ∠BPC=(호 AD−호 BC)÷2이다. 호 AD−호 BC=60°와 3t+u=360을 연립하면 t=105, u=45이다. ∠BDC는 호 BC의 원주각이므로 x=22.5°이다. 정답은 2x=45°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -625,7 +665,11 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "decisiveStep": "호의 길이비에서 중심각을 구한 뒤 교차현 각으로 연결",
-    "sourceIdentityKey": "sha256:14a4893747e97121141b3dca5c15b2a33cd45729d35a0ff92dc06232df27b707|11"
+    "sourceIdentityKey": "sha256:14a4893747e97121141b3dca5c15b2a33cd45729d35a0ff92dc06232df27b707|11",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에서 두 현 AB, CD가 점 P에서 만나고, 호 AB는 파란색 72°, 호 CD는 주황색 96°로 구분되어 있으며 교각 ∠APB가 x로 표시되어 있다.",
+    "solutionImageCaption": "호 AB는 원둘레의 5분의 1이므로 72°이다. 호 AB:호 CD=3:4이므로 호 CD=96°이다. 원 안에서 두 현이 만나는 교각은 마주 보는 두 호의 합의 절반이므로 (72°+96°)÷2이다. 정답은 84°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -753,8 +797,8 @@ window.questionBank = [
       "학생 B와 학생 C의 최빈값은 같다.",
       "학생 A의 중앙값과 최빈값은 같다."
     ],
-    "answer": "②",
-    "solution": "그래프에서 각 학생의 도수를 점수 순서로 읽고 11개 값의 여섯째 값을 찾는다.\n학생 A의 중앙값과 최빈값은 모두 $7$점이다.\n학생 B는 중앙값과 최빈값이 모두 $8$점이다.\n학생 C의 최빈값은 $8$점이고 중앙값은 $7$점이다.\n따라서 A의 중앙값은 $7$점이라는 ①, B의 중앙값과 최빈값이 같다는 ③, B와 C의 최빈값이 같다는 ④, A의 중앙값과 최빈값이 같다는 ⑤는 옳다.\nC의 중앙값은 가장 크지 않으므로 옳지 않은 것은 ②이다.",
+    "answer": "③",
+    "solution": "그래프에서 각 학생의 도수를 점수 순서로 읽고 11개 값의 여섯째 값을 찾는다.\n학생 A는 5점 1회, 6점 3회, 7점 4회, 8점 2회, 9점 1회이므로 중앙값과 최빈값이 모두 $7$점이다.\n학생 B는 5점 3회, 6점 2회, 7점 1회, 8점 5회이므로 중앙값은 $7$점, 최빈값은 $8$점이다.\n학생 C는 6점 1회, 7점 3회, 8점 4회, 9점 3회이므로 중앙값과 최빈값이 모두 $8$점이다.\n따라서 ①, ⑤는 옳고, C의 중앙값 $8$점이 가장 크므로 ②도 옳으며, B와 C의 최빈값이 모두 $8$점이므로 ④도 옳다.\nB의 중앙값 $7$점과 최빈값 $8$점은 같지 않으므로 옳지 않은 것은 ③이다.",
     "tags": [
       "통계",
       "대표값"
@@ -1192,9 +1236,12 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q21-solution-v2.svg",
     "decisiveStep": "반원에서 지름에 대한 원주각과 큰·작은 반원 넓이 차",
-    "sourceIdentityKey": "sha256:47904367a8e1efe84382e603e4a2a02199efa92f0a3263030c690287e0bcb841|21"
+    "sourceIdentityKey": "sha256:47904367a8e1efe84382e603e4a2a02199efa92f0a3263030c690287e0bcb841|21",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이 있다. (1)은 지름 AB와 원 위의 점 C로 이루어진 삼각형에서 ∠A=45°, ∠C가 직각이고 ∠B=x이다. (2)는 큰 반원에서 두 작은 반원을 뺀 영역이 파란색으로 칠해져 있고 선분 CG가 지름 AB에 수직이며 AC=m, CB=n이다. 마지막 그림은 지름이 CG인 원이 파란색으로 칠해져 있다.",
+    "solutionImageCaption": "(1) AB가 지름이므로 ∠ACB=90°이고 x=180°−90°−45°이다. (2) 지름 AB에 대한 원주각 ∠AGB=90°이므로 CG²=AC×CB, 즉 mn=4r²이다. 색칠한 넓이는 큰 반원에서 두 작은 반원을 뺀 값 8분의 π에 (m+n)²−m²−n²을 곱한 것, 곧 4분의 π에 mn을 곱한 것이고 CG를 지름으로 하는 원의 넓이와 같다. m=4, n=6은 예시 값이다. 정답은 (1) 45°, (2) πr²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1244,9 +1291,12 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q22-solution-v2.svg",
     "decisiveStep": "직각삼각형과 고도선으로 평행사변형, 중점연결정리로 길이비",
-    "sourceIdentityKey": "sha256:7e5bcbdd03096394d7e6d737f3cc04d7b613d888ffa261d1b7747ab10b7f3a7c|22"
+    "sourceIdentityKey": "sha256:7e5bcbdd03096394d7e6d737f3cc04d7b613d888ffa261d1b7747ab10b7f3a7c|22",
+    "solutionImageAlt": "해설 그림: 원 O 위의 삼각형 ABC와 외심 O에서 BC에 내린 수선의 발 D, 점 A와 C에서 내린 수선의 발 E, F, 수심 G, 지름 BH가 있고 OD의 길이 2와 평행사변형 AGCH가 초록색으로 칠해져 있으며 BH와 AC는 점선이다.",
+    "solutionImageCaption": "BH가 지름이므로 AH∥CG, AG∥CH이어서 AGCH는 평행사변형이다. 삼각형 BHC에서 O, D는 중점이므로 OD=HC÷2이고 OD=2cm이므로 HC=4cm, OD:HC=1:2이다. 평행사변형의 마주 보는 변이 같으므로 AG=HC이다. 정답은 (1) 평행사변형, (2) 1:2, (3) 4cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
