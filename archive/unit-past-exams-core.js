@@ -505,8 +505,8 @@
     const fileDiff = compareText(normalizePath(a.sourceFile), normalizePath(b.sourceFile));
     return fileDiff || getQuestionNo(a) - getQuestionNo(b);
   }
-  // Recency order shared with 문제지 만들기 (Archive2Core.RECENCY_POLICY): the most recent complete
-  // school year first (2025, 2024, ...), then the current year, unknown years last.
+  // Recency order shared with 문제지 만들기 (Archive2Core.RECENCY_POLICY): the newest school year
+  // first (2026, 2025, ...), unknown years last.
   function recencyRankOf(record) {
     const year = getYear(record);
     return isValidExamYear(year) ? archive2Core.recencyRank(year) : archive2Core.recencyRank(0);
@@ -643,8 +643,9 @@
   }
 
   // Sort keys are computed once per record: step 1..5 then 단계 미지정; inside 단계 미지정 the legacy
-  // label 하 -> 중 -> 상 -> 없음; then the existing recency order (2025 -> 2024 -> ... -> current year
-  // -> unknown), exam period, source file and question number.
+  // label 하 -> 중 -> 상 -> 없음; then the recency order (newest year first, unknown last), exam period,
+  // source file and question number. This order applies INSIDE one paper; papers themselves are cut in
+  // compareRecords order (newest year first) so paper 1 holds the newest exams (buildStepPapers).
   const stepSortKeys = new WeakMap();
   function getStepSortKey(record) {
     let key = record && typeof record === 'object' ? stepSortKeys.get(record) : null;
@@ -1272,8 +1273,8 @@
     return fnv1a(`${String(seed || 'unitpast-default')}|${getRecordIdentity(record)}`);
   }
 
-  // Selection order: the most recent complete school year first (RECENCY_POLICY: 2025, 2024, ...,
-  // then the current year, unknown years last); inside a year approved-metadata items first; then a
+  // Selection order: the newest school year first (RECENCY_POLICY: 2026, 2025, ...,
+  // unknown years last); inside a year approved-metadata items first; then a
   // seed-stable random order. The sort keys are computed once per record, not once per comparison.
   function sortForSelection(records, seed) {
     const rows = records.map(record => ({
@@ -1505,17 +1506,19 @@
     return papers;
   }
 
-  // Papers of one unit for a difficulty-step selection (default: every step). The selected records are
-  // ordered step 1 -> 5 -> 단계 미지정 (legacy 하 -> 중 -> 상 -> 없음 inside it), recency order inside every
-  // step, then split by the same paper size rule (target / hard max, one exam kept together) as before.
+  // Papers of one unit for a difficulty-step selection (default: every step). User decision 2026-11-10:
+  // the newest year always comes first, so the selected records are first cut into papers in recency
+  // order (compareRecords: newest year, then exam period; target / hard max, one exam kept together),
+  // which makes paper 1 the newest exams. Only then is each paper ordered step 1 -> 5 -> 단계 미지정
+  // (legacy 하 -> 중 -> 상 -> 없음 inside it) so the step headings (sections) stay per paper.
   function buildStepPapers(unit, records, scope, options = {}) {
     const tokens = normalizeStepSelection(options.difficultySteps);
     const selected = tokens.length ? records.filter(record => tokens.includes(getStepToken(record))) : records;
     const split = splitIntoPapers(selected, {
       target: options.target || scope.targetQuestionsPerPaper,
       max: options.max || scope.hardMaxQuestionsPerPaper,
-      compare: compareStepRecords
-    });
+      compare: compareRecords
+    }).map(paperRecords => [...paperRecords].sort(compareStepRecords));
     const label = stepSelectionLabel(tokens);
     const base = label ? `${unit.name} · ${label}` : unit.name;
     return split.map((paperRecords, index) => ({

@@ -62,7 +62,7 @@ test("Worker output endpoint enforces class access and builds from its assignmen
 
 test("recent assignments expose direct exam, solution, and answer actions", () => {
   assertMatch(workspace, /assignment-output-direct/, "recent assignment cards must expose direct modes");
-  assertMatch(workspace, /\[\["exam", "문제"\], \["sol", "해설"\], \["ans", "정답"\]\]/, "recent card must include exam, solution, and answer");
+  assertMatch(workspace, /\[\["exam", "시험지"\], \["sol", "해설"\], \["ans", "정답"\]\]/, "recent card must include exam, solution, and answer");
   assertMatch(workspace, /openAssignmentOutput\(b\.dataset\.assignment, b\.dataset\.mode/, "recent modes must bypass assignment details");
 });
 

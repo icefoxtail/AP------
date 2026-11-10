@@ -2768,3 +2768,44 @@ button.quick-unit:not(:disabled):hover { border-color: #a9b9cc; background: #f4f
 .quick-short[open] > summary::before { content: "\25BE"; }
 .quick-chip:disabled { color: #98a2b3; background: #f8f9fb; }
 .quick-short > summary { cursor: pointer; font-weight: 700; color: #475467; min-height: 44px; display: flex; align-items: center; }
+
+/* Error alert: a failure is also shown here (fixed, dismissible) so it is not missed below the fold or behind a dialog.
+   Placed at the top so it never covers the bottom action bar or the phone bottom menu. */
+.error-toast {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: min(640px, calc(100vw - 32px));
+  max-height: 40vh;
+  overflow: auto;
+  padding: 8px 8px 8px 16px;
+  border: 2px solid var(--danger);
+  border-radius: 10px;
+  background: #fff1f2;
+  color: #6f1522;
+  box-shadow: 0 8px 24px #17203333;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.error-toast-text {
+  flex: 1;
+  margin: 0;
+  padding: 10px 0;
+  overflow-wrap: anywhere;
+}
+.error-toast-close {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--danger);
+  background: #fff;
+  color: #6f1522;
+  font-size: 15px;
+  font-weight: 700;
+}
