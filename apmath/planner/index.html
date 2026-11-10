@@ -765,6 +765,8 @@
     }
   </style>
   <link rel="stylesheet" href="../css/student-tools.css?v=2026.11.11.2">
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.11.3">
+  <script defer src="../js/student-navigation.js?v=2026.11.11.3" data-student-nav-active="planner"></script>
 </head>
 <body class="student-tool-page planner-page">
   <script>
@@ -813,6 +815,7 @@
     let examDate = null; // 서버에서 학생별로 받아옴. null이면 D-DAY 미표시
 
     const params = new URLSearchParams(location.search);
+    const isTeacherPreview = params.get('teacher_preview') === '1';
     const studentId = String(
       params.get('student_id') ||
       localStorage.getItem('PLANNER_SID') ||
@@ -916,6 +919,10 @@
     }
 
     function goPlannerBack() {
+      if (window.StudentPortalNavigation) {
+        location.href = window.StudentPortalNavigation.portalHref('home');
+        return;
+      }
       const sameOriginReferrer = document.referrer && document.referrer.indexOf(location.origin) === 0;
       if (sameOriginReferrer && history.length > 1) {
         history.back();
@@ -1256,6 +1263,7 @@
       return data;
     }
     async function apiSend(path, method, body) {
+      if (isTeacherPreview) throw new Error('선생님 미리보기에서는 저장할 수 없습니다.');
       const r = await fetch(`${API_BASE}/${path}`, {
         method,
         headers: { 'Content-Type': 'application/json' },
@@ -1267,6 +1275,11 @@
     }
 
     async function initPlanner() {
+      if (isTeacherPreview) {
+        $('mobile-add-btn').style.display = 'none';
+        renderError('학습 플래너는 학생 본인의 PIN이 필요한 기능입니다. 선생님 미리보기에서는 열람·저장할 수 없습니다.');
+        return;
+      }
       if (!studentId) {
         renderError('학생 링크가 올바르지 않습니다.');
         return;
@@ -1352,6 +1365,7 @@
         }
 
         student = data.student;
+        window.StudentPortalNavigation?.setContext({ preview: false, studentId });
         authStore().setItem(authKey(), 'true');
         authStore().setItem(pinKey(), pin);
         $('student-chip').textContent = student.name || '';
@@ -1698,6 +1712,14 @@
       closePlannerTimer();
       renderPinGate();
     }
+
+    document.addEventListener('studentportal:before-navigate', event => {
+      if ($('modal-overlay')?.classList.contains('show')) {
+        closeModal();
+        if ($('modal-overlay').classList.contains('show')) event.preventDefault();
+      }
+      if (!event.defaultPrevented && plannerTimerActive && !confirm('집중 타이머를 종료하고 이동할까요?')) event.preventDefault();
+    });
 
     document.addEventListener('keydown', event => {
       if (event.isComposing || event.keyCode === 229) return;

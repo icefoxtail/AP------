@@ -29,7 +29,8 @@
       if (returnTarget) {
         try {
           const target = new URL(returnTarget, location.href);
-          if (target.origin === location.origin && target.pathname.startsWith("/apmath/student/"))
+          const portalPath = new URL("../apmath/student/", location.href).pathname;
+          if (target.origin === location.origin && [portalPath, portalPath + "index.html"].includes(target.pathname))
             return target.href;
         } catch {}
       }

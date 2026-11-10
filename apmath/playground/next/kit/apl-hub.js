@@ -27,7 +27,7 @@
     let u = rel(lab.next);
     if (state.teach) u += '?teach=1';
     if (sceneNo) u += '#n=' + sceneNo;
-    return u;
+    return window.StudentPortalNavigation?.withContext(u) || u;
   }
   function remember(lab) {
     APLab.pushRecent({ id: lab.id, title: lab.title, course: COURSE[lab.course].name, href: lab.next });

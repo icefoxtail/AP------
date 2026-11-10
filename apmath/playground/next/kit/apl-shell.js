@@ -12,6 +12,24 @@
    ========================================================================== */
 (function () {
   'use strict';
+  const shellScriptUrl = document.currentScript?.src;
+  function attachStudentNavigation() {
+    if (!shellScriptUrl || document.getElementById('apl-student-navigation-script')) return;
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = new URL('../../../css/student-navigation.css?v=2026.11.11.3', shellScriptUrl).href;
+    document.head.appendChild(css);
+    const script = document.createElement('script');
+    script.id = 'apl-student-navigation-script';
+    script.src = new URL('../../../js/student-navigation.js?v=2026.11.11.3', shellScriptUrl).href;
+    script.dataset.studentNavActive = 'labs';
+    script.dataset.studentNavContextOnly = 'true';
+    script.onload = () => {
+      const back = document.querySelector('.apl-back');
+      if (back) back.href = window.StudentPortalNavigation.withContext(back.href);
+    };
+    document.head.appendChild(script);
+  }
   const APLab = window.APLab;
   const { h, icon, clamp } = APLab;
 
@@ -143,6 +161,7 @@
       ui.panel = h('aside', { class: 'apl-panel', 'aria-label': '탐구 안내' }, ui.panelInner);
       ui.main = h('main', { class: 'apl-main' }, ui.stage, ui.panel);
       document.body.append(h('div', { class: 'apl-app' }, bar, ui.main));
+      attachStudentNavigation();
 
       // 보드
       const bd = d.board || {};

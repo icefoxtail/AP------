@@ -167,6 +167,8 @@ async function behaviorSuite(browser, base, check) {
   };
   const openExams = async page => { await clickCall(page,'renderOmrExams'); await page.waitForFunction(()=>document.querySelector('.omr-browser') && !document.querySelector('.omr-browser').textContent.includes('불러오는 중')); };
   const openOmr = async page => { await openExams(page); await page.locator('[data-assignment-id="qa-pending"] [onclick*="renderOmrInput"]').click(); await page.locator('#omr-submit-btn').waitFor(); };
+  const openMore = async page => { await page.locator('#student-nav [data-student-destination="more"]').click(); await page.getByRole('heading',{name:'더보기',exact:true}).waitFor(); };
+  const openRetainedFeature = async (page, render) => { await openMore(page); await clickCall(page,render); };
 
   await check('login and logout preserve student authentication flow', () => withStudent({loggedIn:false,name:'login'}, async (page,state) => {
     await page.locator('#student-name').fill('테스트 학생');
@@ -180,10 +182,9 @@ async function behaviorSuite(browser, base, check) {
     assert.equal(await page.evaluate(()=>localStorage.getItem('PLANNER_PIN')),null);
   }));
   await check('every assigned exam remains discoverable and filters are keyboard operable', () => withStudent({name:'exam-filters'}, async (page,state) => {
-    assert.equal(await page.locator('#student-portal-omr-home-section [data-assignment-id]').count(),3);
-    assert.match(await page.locator('#student-portal-omr-home-section').innerText(),new RegExp('전체 '+state.data.exams.length+'개 보기'));
-    assert.equal(await page.locator('.summary-value').nth(0).innerText(),'4');
-    assert.equal(await page.locator('.summary-value').nth(1).innerText(),String(state.data.exams.filter(x=>x.is_submitted===1).length));
+    assert.equal(await page.locator('#student-portal-omr-home-section .portal-recent-item').count(),1);
+    assert.equal(await page.locator('[data-portal-feature]').count(),4);
+    assert.equal(await page.locator('#student-portal-omr-home-section [data-assignment-id]').count(),0,'home does not stack complete exam cards');
     await openExams(page);
     assert.equal(await page.locator('#omr-panel-all [data-assignment-id]').count(),state.data.exams.length);
     await page.locator('#omr-tab-all').focus();
@@ -215,7 +216,7 @@ async function behaviorSuite(browser, base, check) {
     await openOmr(page);
     await page.locator('.omr-no').nth(3).click();
     assert.equal(await page.locator('#student-nav [aria-current="page"]').innerText(),'시험지');
-    await page.locator('#student-nav [onclick="renderHome()"]').click();
+    await page.locator('#student-nav [data-student-destination="home"]').click();
     assert.ok(await page.locator('#student-portal-omr-home-section').isVisible());
     await page.goBack();
     await page.locator('#omr-submit-btn').waitFor();
@@ -226,9 +227,9 @@ async function behaviorSuite(browser, base, check) {
     await page.goForward();
     await page.locator('#omr-submit-btn').waitFor();
     assert.equal(await page.locator('[data-omr-no="4"]').getAttribute('aria-pressed'),'true');
-    await page.locator('#student-nav [onclick="openStudentReview()"]').click();
-    assert.notEqual(await page.locator('#student-review-section').getAttribute('open'),null);
-    assert.equal(await page.evaluate(()=>document.activeElement?.tagName),'SUMMARY');
+    await openMore(page);
+    assert.equal(await page.locator('#student-nav [aria-current="page"]').innerText(),'더보기');
+    for(const label of ['학습 기록','오답 클리닉','수업자료 오답','과제']) assert.match(await page.locator('#app').innerText(),new RegExp(label));
   }));
   await check('wrong-number toggles preserve focus and submitted score uses server record', () => withStudent({name:'omr-success'}, async (page,state) => {
     await openOmr(page);
@@ -305,6 +306,7 @@ async function behaviorSuite(browser, base, check) {
   }));
   await check('late material load after logout cannot revive student data',()=>withStudent({name:'late-material'},async(page,state)=>{
     state.delayMaterial=500;
+    await openRetainedFeature(page,'renderMaterialList');
     await clickCall(page,'openMaterialWrongOmr');
     await page.locator('#logout-btn').click();
     await page.waitForTimeout(750);
@@ -322,7 +324,9 @@ async function behaviorSuite(browser, base, check) {
   }));
   await check('teacher preview displays data and rejects every mutation', () => withStudent({preview:true,name:'teacher-preview'}, async (page,state) => {
     assert.equal(await page.locator('#logout-btn').isVisible(),false);
-    assert.equal(await page.locator('[onclick*="openHomeOmrInput"],[onclick*="renderOmrInput"],[onclick*="openPlanner"]').count(),0);
+    assert.equal(await page.locator('[onclick*="openHomeOmrInput"],[onclick*="renderOmrInput"]').count(),0);
+    assert.equal(await page.locator('[data-portal-feature]').count(),4,'preview keeps all core learning destinations visible');
+    assert.equal(await page.locator('[data-portal-feature="planner"]').count(),1);
     await openExams(page);
     assert.equal(await page.locator('[onclick*="renderOmrInput"]').count(),0);
     const denial=await page.evaluate(async()=>{try { await apiPost('student-portal/omr-submit',{});return ''; } catch(error) { return error.message; }});
@@ -349,6 +353,7 @@ async function behaviorSuite(browser, base, check) {
     assert.equal(await page.locator('#omr-panel-all [data-assignment-id]').count(),state.data.exams.length);
   }));
   await check('clinic wrong check is separate from immutable exam submission', () => withStudent({name:'clinic'}, async (page,state) => {
+    await openRetainedFeature(page,'renderClinicList');
     await clickCall(page,'renderWrongClinicReview');
     await page.locator('#wrong-clinic-review-save-btn').waitFor();
     await page.locator('.omr-no').nth(4).click();
@@ -362,7 +367,7 @@ async function behaviorSuite(browser, base, check) {
     assert.deepEqual(review.body.wrong_ids,[3,5]);
   }));
   await check('unknown clinic status remains blocked from saving',()=>withStudent({name:'clinic-unknown'},async(page,state)=>{
-    await clickCall(page,'openStudentReview');
+    await openRetainedFeature(page,'renderClinicList');
     await page.locator('[onclick="renderWrongClinicReview(\'qa-clinic-unknown\')"]').waitFor();
     await page.locator('[onclick="renderWrongClinicReview(\'qa-clinic-unknown\')"]').click();
     await page.locator('#wrong-clinic-review-save-btn').click();
@@ -370,7 +375,7 @@ async function behaviorSuite(browser, base, check) {
     assert.equal(state.requests.filter(r=>r.method==='POST').length,0);
   }));
   await check('learning records preserve partial, unknown and legacy meaning and source links',()=>withStudent({name:'learning'},async page=>{
-    await clickCall(page,'openStudentReview');
+    await openRetainedFeature(page,'renderLearningHistory');
     await page.locator('.clv-row').first().waitFor();
     assert.equal(await page.locator('.clv-row').count(),3);
     assert.match(await page.locator('.clv-row.is-partial,.clv-row').nth(1).innerText(),/일부|미확인/);
@@ -389,8 +394,8 @@ async function behaviorSuite(browser, base, check) {
       await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
       assert.ok(await sourceCard.evaluate(el=>el.style.boxShadow),'a visible source exam is highlighted');
     }else{
-      // Pending-first home previews may omit this completed source. The
-      // existing lineage fallback must still open its authorized exam viewer.
+      // Dedicated learning history uses the existing lineage fallback to
+      // open the authorized source exam when its card is not mounted.
       const popupPromise=page.waitForEvent('popup');
       await page.getByRole('button',{name:'해당 시험 보기',exact:true}).first().click();
       const popup=await popupPromise;
@@ -402,7 +407,7 @@ async function behaviorSuite(browser, base, check) {
     }
   }));
   await check('material wrong entry validates ranges and remains a separate submission', () => withStudent({name:'material'}, async (page,state) => {
-    await clickCall(page,'openStudentReview');
+    await openRetainedFeature(page,'renderMaterialList');
     await page.locator('[onclick*="openMaterialWrongOmr"]').first().waitFor();
     assert.equal(await page.locator('[onclick*="openMaterialWrongOmr"]').count(),2);
     await clickCall(page,'toggleMaterialAssignmentList');
@@ -421,7 +426,7 @@ async function behaviorSuite(browser, base, check) {
   await check('middle and high school lab entry preserves existing grade routing', async () => {
     for(const grade of ['중2','고2']) await withStudent({grade,name:'lab-'+grade}, async page => {
       const href=await page.locator('#portal-geometry-lab-entry').getAttribute('href');
-      assert.equal(href,'../playground/index.html'+(grade==='중2'?'#g8':''));
+      assert.equal(href,'../playground/next/?portal=1'+(grade==='중2'?'#g8':''));
     });
   });
   await check('legacy, original and mixed review links retain their authorized source and viewing mode',()=>withStudent({name:'review-links'},async(page,state,context)=>{
@@ -454,9 +459,35 @@ async function behaviorSuite(browser, base, check) {
     }
     assert.equal(state.requests.filter(r=>r.method==='POST').length,0);
   }));
-  await check('student lab journey retains grade through Universe, hub, experiment and back',()=>withStudent({name:'lab-journey'},async page=>{
-    await page.locator('#student-nav a').click();
-    await page.waitForURL(/\/playground\/index\.html#g8$/);
+  await check('student lab opens the actual grade hub in one tap and keeps experiment and legacy Universe routes',()=>withStudent({name:'lab-journey'},async page=>{
+    await page.locator('#student-nav [data-student-destination="labs"]').click();
+    await page.waitForURL(url=>/\/playground\/next\/(?:index\.html)?$/.test(url.pathname)&&url.hash==='#g8');
+    assert.equal(new URL(page.url()).searchParams.get('portal'),'1');
+    await page.locator('.hub-course[aria-pressed="true"]').waitFor();
+    assert.match(await page.locator('.hub-course[aria-pressed="true"]').innerText(),/중2/);
+    await page.getByRole('button',{name:'목록으로 보기',exact:true}).click();
+    assert.equal(await page.locator('.hub-trail a').count(),2);
+    assert.equal(new URL(await page.locator('.hub-portal-link').getAttribute('href'),page.url()).pathname,'/apmath/student/');
+    assert.equal(await page.locator('.student-global-nav [aria-current="page"]').getAttribute('data-student-destination'),'labs');
+    await capture(page,'lab-hub-g8-390');
+    await page.getByRole('button',{name:'테마 바꾸기',exact:true}).click();
+    await page.waitForFunction(()=>document.documentElement.dataset.theme==='board');
+    await capture(page,'lab-hub-board-390');
+    await page.getByRole('button',{name:'테마 바꾸기',exact:true}).click();
+    await page.locator('.hub-card a[href*="g8-triangles.html"]').first().click();
+    await page.waitForURL(/g8-triangles\.html/);
+    await page.waitForFunction(()=>document.querySelectorAll('svg').length>0 && document.querySelector('button'));
+    assert.match(await page.locator('body').innerText(),/삼각형/);
+    assert.equal(await page.locator('.student-global-nav [aria-current="page"]').getAttribute('data-student-destination'),'labs');
+    await capture(page,'lab-triangles-390');
+    await page.goBack();
+    await page.waitForURL(url=>/\/playground\/next\/(?:index\.html)?$/.test(url.pathname)&&url.hash==='#g8');
+    await page.locator('.hub-portal-link').click();
+    await page.locator('#student-portal-omr-home-section').waitFor();
+    await page.locator('#student-nav [data-student-destination="labs"]').click();
+    await page.waitForURL(url=>/\/playground\/next\/(?:index\.html)?$/.test(url.pathname));
+    await page.locator('.hub-trail a').filter({hasText:'AP Math Universe'}).click();
+    await page.waitForURL(url=>url.pathname.endsWith('/playground/index.html'));
     await page.locator('#btnEnterLab').waitFor();
     await page.waitForFunction(()=>sessionStorage.getItem('apl:viaUniverse')==='1');
     const fallback=page.locator('.webgl-fallback .cta-entrance');
@@ -474,29 +505,6 @@ async function behaviorSuite(browser, base, check) {
       await capture(page,'lab-universe-'+width);
     }
     await page.setViewportSize({width:390,height:844});
-    if(fallbackVisible)await fallback.click();else await page.locator('#btnEnterLab').click();
-    await page.waitForURL(/\/playground\/next\/index\.html#g8$/,{timeout:20000});
-    await page.locator('.hub-course[aria-pressed="true"]').waitFor();
-    assert.match(await page.locator('.hub-course[aria-pressed="true"]').innerText(),/중2/);
-    await page.getByRole('button',{name:'목록으로 보기',exact:true}).click();
-    assert.equal(await page.locator('.hub-trail a').count(),2);
-    assert.equal(await page.locator('.hub-portal-link').getAttribute('href'),'../../student/');
-    await capture(page,'lab-hub-g8-390');
-    await page.getByRole('button',{name:'테마 바꾸기',exact:true}).click();
-    await page.waitForFunction(()=>document.documentElement.dataset.theme==='board');
-    await capture(page,'lab-hub-board-390');
-    await page.getByRole('button',{name:'테마 바꾸기',exact:true}).click();
-    await page.locator('.hub-card a[href*="g8-triangles.html"]').first().click();
-    await page.waitForURL(/g8-triangles\.html/);
-    await page.waitForFunction(()=>document.querySelectorAll('svg').length>0 && document.querySelector('button'));
-    assert.match(await page.locator('body').innerText(),/삼각형/);
-    await capture(page,'lab-triangles-390');
-    await page.goBack();
-    await page.waitForURL(/\/playground\/next\/index\.html#g8$/);
-    await page.locator('.hub-portal-link').click();
-    await page.locator('#student-portal-omr-home-section').waitFor();
-    await page.locator('#student-nav a').click();
-    await page.waitForURL(/\/playground\/index\.html#g8$/);
     await page.locator('.top-nav .universe-portal-link').click();
     await page.locator('#student-portal-omr-home-section').waitFor();
   }));
@@ -626,7 +634,7 @@ async function run() {
       await page.locator('#omr-submit-btn').waitFor();
       await capture(page, `omr-${width}`);
       if(!screensOnly)await check(`primary controls are at least 44px at ${width}`,async()=>{
-        const small=await page.locator('.omr-no,#omr-submit-btn,#student-nav .nav-item').evaluateAll(nodes=>nodes.filter(node=>node.getClientRects().length).map(node=>{const rect=node.getBoundingClientRect();return {label:node.getAttribute('aria-label')||node.textContent,width:rect.width,height:rect.height};}).filter(rect=>rect.width<43.9||rect.height<43.9));
+        const small=await page.locator('.omr-no,#omr-submit-btn,#student-nav .student-global-link').evaluateAll(nodes=>nodes.filter(node=>node.getClientRects().length).map(node=>{const rect=node.getBoundingClientRect();return {label:node.getAttribute('aria-label')||node.textContent,width:rect.width,height:rect.height};}).filter(rect=>rect.width<43.9||rect.height<43.9));
         assert.deepEqual(small,[]);
       });
       await context.close();

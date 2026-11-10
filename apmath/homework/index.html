@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
   <link rel="stylesheet" href="../css/student-tools.css?v=2026.11.11.2">
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.11.3">
+  <script defer src="../js/student-navigation.js?v=2026.11.11.3" data-student-nav-active="more"></script>
 </head>
 <body class="student-tool-page homework-page">
   <a class="skip-link" href="#app">본문으로 이동</a>
@@ -27,6 +29,7 @@
   <script>
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const params = new URLSearchParams(location.search);
+    const isTeacherPreview = params.get('teacher_preview') === '1';
     const assignmentId = String(params.get('assignment_id') || '').trim();
     const studentId = String(params.get('student_id') || '').trim();
 
@@ -85,6 +88,7 @@
       return data;
     }
     async function apiUpload(path, formData) {
+      if (isTeacherPreview) throw new Error('선생님 미리보기에서는 제출할 수 없습니다.');
       const r = await fetch(`${API_BASE}/${path}`, { method:'POST', body: formData });
       const data = await r.json().catch(() => ({}));
       if (!r.ok || data.success === false) throw new Error(data.message || data.error || '업로드 실패');
@@ -303,6 +307,10 @@
       updateFileList();
     }
     async function loadAssignment() {
+      if (isTeacherPreview) {
+        renderError('선생님 미리보기에서는 과제 사진을 제출할 수 없습니다. 과제 내용과 제출 상태는 학생 포털의 과제 목록에서 확인해 주세요.');
+        return;
+      }
       if (!assignmentId || !studentId) {
         renderError('숙제 링크가 올바르지 않습니다.');
         return;
@@ -335,6 +343,7 @@
       }
       try {
         await apiPost('homework-photo/auth', { assignment_id: assignmentId, student_id: studentId, pin });
+        window.StudentPortalNavigation?.setContext({ preview: false, studentId });
         localStorage.setItem(authKey(), pin);
         renderSubmit();
       } catch (e) {
@@ -374,6 +383,10 @@
         isSubmitting = false;
       }
     }
+    document.addEventListener('studentportal:before-navigate', event => {
+      if (isSubmitting) { event.preventDefault(); toast('사진을 제출하고 있습니다. 완료될 때까지 기다려 주세요.'); }
+      else if (selectedFiles.length && !confirm('선택한 사진을 제출하지 않고 이동할까요?')) event.preventDefault();
+    });
     loadAssignment();
   </script>
 </body>

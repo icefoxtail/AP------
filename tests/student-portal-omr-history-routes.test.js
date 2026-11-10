@@ -65,11 +65,11 @@ assert(
 
 assert(
   studentPortal.includes('const visible = getStudentPortalAssignments();') &&
-    studentPortal.includes('recent.map(renderOmrExamCard)') &&
-    studentPortal.includes('전체 ${visible.length}개 보기') &&
-    studentPortal.includes('이전 시험지까지 모두 보기') &&
+    studentPortal.includes('class="portal-recent-item"') &&
+    studentPortal.includes('onclick="renderOmrExams()"') &&
+    studentPortal.includes('function openRecentLearning(assignmentId)') &&
     studentPortal.includes("|| getStudentPortalAssignments().find(exam => String(exam.assignment_id) === key)"),
-  'home should show recent canonical exam cards and a counted route to the full historical list'
+  'home should show one recent canonical exam and an operable route to the full historical list'
 );
 
 function helper(name) {
@@ -78,24 +78,23 @@ function helper(name) {
   return match[0];
 }
 const allExams = Array.from({ length: 7 }, (_, index) => ({ assignment_id: `issued-${index + 1}` }));
-const renderedAssignments = [];
 const homeContext = {
   omrData: { exams: allExams },
   exactOmrAssignmentId: '',
   isTeacherPreview: false,
   getStudentPortalHomeIndex: () => { throw new Error('canonical server list must take precedence over home fallback'); },
-  renderOmrExamCard: exam => { renderedAssignments.push(exam.assignment_id); return `<article data-assignment-id="${exam.assignment_id}"></article>`; }
+  escapeHtml: value => String(value ?? '')
 };
 vm.createContext(homeContext);
 vm.runInContext(['getStudentPortalRecordedSubmission', 'getStudentPortalAssignments', 'getOmrExams', 'getVisibleOmrExams', 'findOmrExam', 'renderOmrHomeSection'].map(helper).join('\n'), homeContext);
 const homeMarkup = homeContext.renderOmrHomeSection();
-assert.deepStrictEqual(renderedAssignments, ['issued-1', 'issued-2', 'issued-3'], 'home should keep the three most recent canonical exams in server order');
-assert(homeMarkup.includes('전체 7개 보기') && homeMarkup.includes('이전 시험지까지 모두 보기 (7)'), 'home should disclose the full available count, including exams beyond the three-card preview');
-assert.match(homeMarkup, /<button[^>]+onclick="renderOmrExams\(\)"[^>]*>전체 7개 보기/, 'the full-list count must be an operable navigation control');
+assert.strictEqual((homeMarkup.match(/class="portal-recent-item"/g) || []).length, 1, 'home should keep one compact recent item');
+assert(homeMarkup.includes("openRecentLearning('issued-1')"), 'the recent item resolves the first canonical assignment for tied dates');
+assert.match(homeMarkup, /<button[^>]+onclick="renderOmrExams\(\)"[^>]*>전체 보기/, 'the full-list route must be an operable navigation control');
 assert.strictEqual(homeContext.getVisibleOmrExams().length, 7, 'the full exam page must retain every server-filtered canonical exam');
 assert.strictEqual(homeContext.findOmrExam('issued-7').assignment_id, 'issued-7', 'an assignment outside the home preview must remain resolvable for review/input');
 assert.strictEqual(allExams.length, 7, 'rendering a compact preview must not truncate the cached canonical list');
 homeContext.omrData.exams = [];
-assert(homeContext.renderOmrHomeSection().includes('아직 출제된 시험지가 없어요'), 'an empty canonical list should show an honest empty state');
+assert(homeContext.renderOmrHomeSection().includes('시험지를 배정하면'), 'an empty canonical list should show an honest empty state');
 
 console.log('student portal OMR history route checks passed');
