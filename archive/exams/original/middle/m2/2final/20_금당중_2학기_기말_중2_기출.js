@@ -40,7 +40,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 사각형 A, B, C, D와 사각형 E, F, G, H가 나란히 있고 AB는 6 cm, BC는 9 cm, FG는 12 cm이며 각 A는 100도, 각 C는 80도, 각 F는 85도이다. 오른쪽에는 같은 두 사각형의 대응변과 대응각을 같은 색으로 나타내고 EF는 8 cm, 각 B와 각 D는 85도와 95도로 적었다.",
+    "solutionImageCaption": "닮은 도형에서 BC 대 FG는 9 대 12, 곧 3 대 4이므로 닮음비는 3 대 4이다. 그래서 EF는 6 곱하기 3분의 4인 8 cm이고 CD 대 GH도 3 대 4이다. 대응각은 같으므로 각 B는 각 F인 85도이고 각 D는 360도에서 100도, 80도, 85도를 뺀 95도이다. 각 H는 각 D와 같은 95도이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC에서 변 AC 위의 점 D와 변 BC 위의 점 E를 이은 그림이 있고 AD는 3 cm, DC는 9 cm, EC는 6 cm이며 각 A와 각 DEC가 같은 색으로 표시되어 있다. 나머지 두 칸에는 삼각형 ABC와 삼각형 EDC를 같은 방향으로 따로 그렸고 대응하는 변은 같은 색이다.",
+    "solutionImageCaption": "AC는 AD와 DC의 합인 12 cm이다. 각 A와 각 DEC가 같고 각 C는 공통이므로 삼각형 ABC와 삼각형 EDC는 AA 닮음이다. 대응변의 비 AC 대 EC는 12 대 6, 곧 2 대 1이므로 BC는 DC의 2배인 18 cm이다. BE는 BC에서 EC를 뺀 12 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -122,7 +130,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC와 변 AB 위의 점 D, 변 AC 위의 점 F, 변 BC 위의 점 E가 있고 AD 9, DB 12, AF 6, FC 8, BE 9, EC 10이 적혀 있다. 나머지 두 칸에는 삼각형 ABC와 삼각형 ADF를 따로 그렸고 AB와 AD, AC와 AF가 같은 색이며 공통인 각 A는 분홍색이다.",
+    "solutionImageCaption": "AB는 9와 12의 합인 21이고 AC는 6과 8의 합인 14이다. AB 대 AD는 21 대 9, 곧 7 대 3이고 AC 대 AF는 14 대 6, 곧 7 대 3으로 같다. 각 A는 공통이므로 두 변의 비가 같고 끼인각이 같아 삼각형 ABC와 삼각형 ADF는 SAS 닮음이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -163,7 +175,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 직각삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선의 발 D가 있고 BD는 6 cm, AD는 9 cm이며 삼각형 ABD는 파란색, 삼각형 ACD는 주황색으로 칠해져 있다. 나머지 두 칸에는 직각삼각형 BDA와 ADC를 같은 방향으로 따로 그렸고 대응변과 대응각이 같은 색이다. DC는 13.5 cm로 적혀 있다.",
+    "solutionImageCaption": "직각삼각형 ABC에서 AD가 높이이므로 삼각형 ABD와 삼각형 CAD는 닮음이다. 그래서 각 ABD와 각 CAD가 같고 삼각형 ABD와 CAD가 닮음이라는 설명은 옳다. AD의 제곱은 BD 곱하기 DC이므로 81은 6 곱하기 DC이고 DC는 13.5 cm이다. 두 삼각형은 높이 AD가 같으므로 넓이의 비는 밑변의 비 13.5 대 6, 곧 9 대 4이다. 삼각형 ACD가 삼각형 ABD의 2배라는 설명은 옳지 않다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -204,7 +220,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 세 변의 중점 D, E, F가 있고 AB 8, AC 10, BC 12가 적혀 있으며 같은 길이의 선분에 같은 표시가 있다. 오른쪽 위에는 중점을 이은 삼각형 DEF의 세 변 6, 5, 4가 평행한 큰 삼각형의 변과 같은 색으로 나타나 있다. 아래에는 삼각형 DBE의 세 변 4, 6, 5가 있다.",
+    "solutionImageCaption": "세 변의 중점을 이은 선분은 평행한 변의 절반이다. DF는 BC의 절반인 6 cm이고 DE는 AC와 평행, EF는 AB와 평행이다. 삼각형 ADF는 세 변이 4, 5, 6으로 삼각형 ABC의 세 변 8, 10, 12의 절반이므로 닮음이다. EF와 DB가 평행하므로 각 DEF와 각 EDB도 같다. 삼각형 DBE는 세 변이 DB 4, BE 6, DE 5이므로 둘레가 15 cm이다. 둘레가 20 cm라는 설명이 옳지 않다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -245,7 +265,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 평행한 세 직선 l, m, n이 두 직선과 만나는 그림이 있고 왼쪽 직선에서 l과 m 사이가 6 cm, l과 n 사이가 10 cm, 오른쪽 직선에서 l과 m 사이가 9 cm, m과 n 사이가 x cm이다. 오른쪽에는 같은 그림에서 l과 m 사이의 선분은 파란색, m과 n 사이의 선분은 주황색이고 오른쪽 직선에서 l과 n 사이는 9 더하기 x이다.",
+    "solutionImageCaption": "세 평행선이 두 직선을 자르므로 대응하는 선분의 길이의 비가 같다. 왼쪽 직선에서 l과 m 사이 대 l과 n 사이는 6 대 10이고 오른쪽 직선에서는 9 대 9 더하기 x이다. 따라서 6 곱하기 9 더하기 x는 10 곱하기 9인 90이고 54 더하기 6x가 90이므로 x는 6 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -286,7 +310,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 무게중심 G, 변 BC의 중점 M, BC에 평행한 선분 DE가 있고 BM은 6 cm, AE는 8 cm, GE는 x cm, EC는 y cm이다. 나머지 두 칸에는 삼각형 AGE와 삼각형 AMC를 같은 방향으로 따로 그렸고 AE는 8 cm, MC는 6 cm, AC는 12 cm이며 대응변이 같은 색이다.",
+    "solutionImageCaption": "M은 BC의 중점이므로 MC는 6 cm이다. DE와 BC가 평행하므로 삼각형 AGE와 삼각형 AMC는 닮음이고, 무게중심 G는 AM을 2 대 1로 나누므로 닮음비는 2 대 3이다. GE 대 MC가 2 대 3이므로 x는 4 cm이다. 또 AE 대 AC도 2 대 3이고 AE가 8이므로 AC는 12 cm이고 y는 12에서 8을 뺀 4 cm이다. 따라서 2x에서 y를 뺀 값은 8에서 4를 뺀 4이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -328,7 +356,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 무게중심 G, 삼각형 GBC의 무게중심 G′, 변 BC의 중점 D가 있고 삼각형 G′BD가 칠해져 있다. 오른쪽 위에는 넓이가 90인 삼각형 ABC에서 삼각형 GBC가 칠해져 있다. 왼쪽 아래에는 넓이가 30인 삼각형 GBC에서 삼각형 G′BC가 칠해져 있고, 오른쪽 아래에는 넓이가 10인 삼각형 G′BC에서 삼각형 G′BD가 칠해져 있으며 BD와 DC가 같다.",
+    "solutionImageCaption": "G는 삼각형 ABC의 무게중심이므로 삼각형 GBC의 넓이는 90의 3분의 1인 30 cm²이다. G′은 삼각형 GBC의 무게중심이므로 삼각형 G′BC의 넓이는 30의 3분의 1인 10 cm²이다. D는 BC의 중점이므로 삼각형 G′BD의 넓이는 삼각형 G′BC의 절반이고, 삼각형 ABC의 넓이의 18분의 1인 5 cm²이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -370,7 +402,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 평행사변형 A, B, C, D와 변 BC, CD의 중점 M, N, 대각선 BD와 AC의 교점 O, 선분 AM, AN이 대각선 BD와 만나는 점 E, F가 있고 BD는 12 cm이다. 오른쪽 위에는 삼각형 BEM과 DEA의 대응변이 같은 색이고 BM은 m, DA는 2m, BE는 x, ED는 2x이다. 왼쪽 아래에는 BD를 같은 길이 x 세 부분으로 나눈 그림, 오른쪽 아래에는 삼각형 BCD에서 중점을 이은 MN과 BD의 길이 12 cm가 있다.",
+    "solutionImageCaption": "삼각형 BEM과 DEA에서 BC와 AD가 평행하므로 AA 닮음이고 BM 대 DA가 1 대 2이므로 BE 대 ED도 1 대 2이다. 같은 방법으로 F도 BD를 2 대 1로 나누므로 BD는 세 등분되고 BE는 BD의 3분의 1인 4 cm이다. 삼각형 BCD에서 M, N이 각각 BC, CD의 중점이므로 MN은 BD의 절반인 6 cm이다. 따라서 BE와 MN의 길이의 합은 10 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -410,7 +446,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 변 PT를 공유하는 두 직각삼각형이 있고 빗변이 15 cm와 13 cm, 한 직각변이 5 cm, 변 PT가 x cm, 변 LP가 y cm이다. 오른쪽 위에는 직각변 5 cm와 x cm, 빗변 13 cm인 직각삼각형이 있고, 아래에는 직각변 12 cm와 y cm, 빗변 15 cm인 직각삼각형이 있다.",
+    "solutionImageCaption": "위쪽 직각삼각형에서 x의 제곱 더하기 5의 제곱은 13의 제곱이므로 x의 제곱은 144이고 x는 12 cm이다. 아래쪽 직각삼각형에서 12의 제곱 더하기 y의 제곱은 15의 제곱이므로 y의 제곱은 81이고 y는 9 cm이다. 따라서 x 더하기 y는 21이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -490,7 +530,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 윗변 AD 4 cm, 아랫변 BC 11 cm, 변 AB 25 cm이고 D와 C가 직각인 사다리꼴 A, B, C, D가 있다. 오른쪽 위에는 A에서 BC에 내린 수선의 발 H가 있고 직각삼각형 ABH는 주황색, 직사각형 A, H, C, D는 파란색이며 BH는 7 cm, 높이는 h이다. 아래에는 높이가 24 cm인 사다리꼴이 칠해져 있다.",
+    "solutionImageCaption": "A에서 BC에 수선을 내려 발을 H라 하면 BH는 11에서 4를 뺀 7 cm이다. 직각삼각형 ABH에서 h의 제곱 더하기 7의 제곱은 25의 제곱이므로 h의 제곱은 576이고 높이 h는 24 cm이다. 사다리꼴의 넓이는 윗변과 아랫변의 합 15에 높이 24를 곱해 2로 나눈 값이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -531,7 +575,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 BC 8 cm, DC 6 cm인 직사각형 A, B, C, D와 대각선 BD의 중점 O, O를 지나 BD에 수직인 선분 EF가 있고 E는 변 AD 위, F는 변 BC 위의 점이다. 나머지 두 칸에는 삼각형 DAB와 삼각형 DOE를 같은 방향으로 따로 그렸고 대응변이 같은 색이며 DA 8, AB 6, DB 10, DO 5, OE 3.75, DE 6.25이다.",
+    "solutionImageCaption": "대각선 BD는 8과 6으로 피타고라스 정리를 쓰면 10 cm이고 O가 중점이므로 DO는 5 cm이다. 각 DOE와 각 DAB가 직각이고 각 D가 공통이므로 삼각형 DOE와 삼각형 DAB는 닮음이며 닮음비는 5 대 8이다. 그래서 DE는 10 곱하기 8분의 5인 4분의 25 cm, EO는 6 곱하기 8분의 5인 4분의 15 cm이다. 삼각형 DEO의 둘레는 4분의 25 더하기 4분의 15 더하기 5이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -572,7 +620,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 칸 두 개가 곱하기 기호로 이어져 있다. 첫째 칸은 식빵으로 3, 둘째 칸은 소스로 4이다.",
+    "solutionImageCaption": "식빵을 고르는 방법은 3가지이고, 식빵을 하나 고를 때마다 소스를 고르는 방법이 4가지씩 있으므로 곱의 법칙을 쓴다. 3 곱하기 4는 12이므로 경우의 수는 12가지이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -611,7 +663,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 6 곱하기 6 표의 칸마다 두 주사위의 눈의 합이 적혀 있다. 합이 5인 칸은 진하게, 합이 7인 칸은 옅게 칠해져 있고 두 경우의 칸은 서로 겹치지 않는다.",
+    "solutionImageCaption": "합이 5인 경우는 (1,4), (2,3), (3,2), (4,1)의 4가지이고, 합이 7인 경우는 (1,6), (2,5), (3,4), (4,3), (5,2), (6,1)의 6가지이다. 두 경우는 겹치지 않으므로 합의 법칙으로 4 더하기 6은 10가지이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -650,7 +706,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 6 곱하기 6 표의 칸마다 마이너스 x 더하기 y의 값이 적혀 있고, 값이 1인 칸이 짙게 칠해져 있다.",
+    "solutionImageCaption": "마이너스 x 더하기 y가 1이면 y는 x 더하기 1이다. y가 6 이하이므로 x는 1부터 5까지이고 순서쌍은 (1,2), (2,3), (3,4), (4,5), (5,6)이다. 경우의 수는 5이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -730,7 +790,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합(15개) 안에 소수의 집합 A(6개)와 5의 배수의 집합 B(3개)가 겹쳐 있고 A와 B를 합한 부분이 칠해져 있다. A에만 속하는 수는 2, 3, 7, 11, 13이고 A와 B에 모두 속하는 수는 5, B에만 속하는 수는 10, 15이다.",
+    "solutionImageCaption": "1부터 15까지의 소수는 2, 3, 5, 7, 11, 13으로 6개이고 5의 배수는 5, 10, 15로 3개이다. 두 집합에 모두 속하는 수는 5 하나이므로 소수이거나 5의 배수인 수는 6 더하기 3에서 1을 뺀 8개이다. 공은 모두 15개이므로 구하는 확률은 15분의 8이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -769,7 +833,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 번의 사격 결과를 나타낸 수형도이다. 한 번마다 맞힘은 5분의 3, 못 맞힘은 5분의 2이고 끝 가지는 네 개이다. 두 번 모두 못 맞히는 경로는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "적어도 한 번 맞히는 사건의 여사건은 두 번 모두 맞히지 못하는 사건이다. 한 번 맞히지 못할 확률은 1에서 5분의 3을 뺀 5분의 2이므로 두 번 모두 맞히지 못할 확률은 5분의 2 곱하기 5분의 2인 25분의 4이다. 따라서 적어도 한 번 맞힐 확률은 1에서 25분의 4를 뺀 값이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -808,7 +876,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 칸 두 개가 곱하기 기호로 이어져 있다. 첫째 칸은 남학생으로 3, 둘째 칸은 여학생으로 4이다.",
+    "solutionImageCaption": "7명 중 2명을 뽑는 전체 경우의 수는 7 곱하기 6을 2로 나눈 21이다. 남학생 1명과 여학생 1명을 뽑는 경우의 수는 3 곱하기 4인 12이므로 구하는 확률은 21분의 12, 곧 7분의 4이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -844,7 +916,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 피라미드 높이 AC가 x m, 막대기 DE가 1 m, 막대기의 그림자 EF가 1.5 m, CF가 220.5 m인 두 직각삼각형 ACF와 DEF가 점 F를 공유하며 겹쳐 있다. 나머지 두 칸에는 큰 직각삼각형 ACF와 작은 직각삼각형 DEF를 같은 방향으로 따로 그렸고 대응변이 같은 색이며 공통인 각 F는 분홍색이다.",
+    "solutionImageCaption": "(1) 막대기와 피라미드는 지면에 수직이므로 각 C와 각 E가 직각이고 각 F가 공통이다. 두 삼각형은 AA 닮음이므로 삼각형 ACF와 삼각형 DEF는 닮음이다. (2) 피라미드의 높이를 x m라 하면 높이의 비와 밑변의 비가 같으므로 x 대 1은 220.5 대 1.5이고 x는 220.5를 1.5로 나눈 값이다. 정답은 (1) 삼각형 ACF와 삼각형 DEF의 닮음, (2) 147 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -881,7 +957,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 변 BC 위의 점 D와 BD, DC의 중점 E, F, 삼각형 ABD와 ADC의 무게중심 G, G′이 있고 BC는 30 cm이다. 오른쪽 위에는 변 BC를 D, E, F로 나눈 그림에서 EF가 15 cm이다. 아래에는 삼각형 AEF와 삼각형 AGG′을 같은 방향으로 따로 그렸고 대응변이 같은 색이다.",
+    "solutionImageCaption": "(1) E는 BD의 중점이고 F는 DC의 중점이므로 EF는 BC의 절반인 15 cm이다. (2) 무게중심은 중선을 2 대 1로 나누므로 AG 대 AE와 AG′ 대 AF는 모두 2 대 3이고 각 GAG′과 각 EAF는 공통이므로 삼각형 AGG′과 삼각형 AEF는 SAS 닮음이다. (3) 닮음비가 2 대 3이므로 GG′은 EF의 3분의 2이다. 정답은 (1) 15 cm, (2) 삼각형 AEF, (3) 10 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -915,6 +995,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 신호 A와 B에 대한 로봇의 결과를 나타낸 수형도이다. A를 맞힐 확률은 6분의 5, 못 맞힐 확률은 6분의 1이고 B를 맞힐 확률은 8분의 7, 못 맞힐 확률은 8분의 1이다. A만 맞히는 경로는 파란색, B만 맞히는 경로는 주황색이다.",
+    "solutionImageCaption": "A를 알아맞히지 못할 확률은 6분의 1이고 B를 알아맞히지 못할 확률은 8분의 1이다. A만 알아맞히는 확률은 6분의 5 곱하기 8분의 1인 48분의 5이고, B만 알아맞히는 확률은 6분의 1 곱하기 8분의 7인 48분의 7이다. 두 경우는 겹치지 않으므로 더하면 48분의 12, 곧 4분의 1이다. 정답은 (1) 6분의 1, (2) 8분의 1, (3) 48분의 5, (4) 48분의 7, (5) 4분의 1이다.",
+    "solutionImageSize": "full"
   }
 ];
