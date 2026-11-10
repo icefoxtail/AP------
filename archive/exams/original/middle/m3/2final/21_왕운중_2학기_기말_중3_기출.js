@@ -39,7 +39,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 세 점 A, B, C가 있고 반지름 OA, OB, OC가 그려져 있다. 파란색 각 AOB는 60°이고 파란색 현 AB는 반지름과 길이가 같으며, 주황색 각 BOC는 120°이고 주황색 현 BC가 그려져 있다.",
+    "solutionImageCaption": "중심각이 60°이면 삼각형 OAB는 정삼각형이라 현 AB는 반지름 길이와 같다(파란색). 중심각이 120°로 2배가 되어도 현 BC(주황색)는 현 AB의 2배가 되지 않는다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -163,7 +167,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 안의 두 현 AB, CD와 중심에서 두 현에 내린 수선의 발 M, N이 있다. 파란색은 현 AB와 수선 OM, 주황색은 현 CD와 수선 ON이고 OM은 4, ON은 3, CD는 10으로 적혀 있다. 분홍색 표시가 있는 반지름 OA, OC는 길이가 같다.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분한다. 주황색 현 CD의 반은 5cm이므로 반지름의 제곱은 3²+5²=34이다. 파란색 현 AB의 반은 √(34−4²)=3√2cm이므로 AB는 그 두 배이다. 정답은 6√2cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -205,7 +213,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 태도 점수를 가로, 실험 점수를 세로로 하는 산점도에 점 11개가 찍혀 있고, 가로 9점과 세로 9점의 경계선이 그어져 있다. 파란 점 5개는 두 점수가 같은 학생, 주황 점 2개는 태도 점수가 더 높은 학생이다.",
+    "solutionImageCaption": "산점도의 점은 모두 11개이다. 파란 점은 두 점수가 같은 학생 5명, 주황 점은 태도 점수가 실험 점수보다 높은 학생 2명이다. 어느 한 점수라도 9점 이상인 점은 경계선을 이용해 세면 7개이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -288,7 +300,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 지름 AB와 현 AD, BD, AC, CD가 그려져 있다. 각 A는 파란색 51°, 점 D의 각은 초록색 직각이고, 주황색 현 AD를 보는 각 ABD와 각 ACD는 같은 주황색 호로 표시되어 있다.",
+    "solutionImageCaption": "AB가 지름이므로 삼각형 ABD에서 각 D는 직각(초록)이다. 따라서 각 ABD의 크기를 구할 수 있고, 같은 현 AD(주황)를 보는 원주각 ABD와 ACD는 크기가 같다. 정답은 39°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -330,7 +346,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에서 두 현 AC, BD가 점 P에서 만나고 각 BPC는 초록색 81°이다. 호 AD는 주황색 108°, 호 BC는 파란색 54°이며, 주황색 각 ABD는 54°로 오른쪽에 확대해 표시되어 있다.",
+    "solutionImageCaption": "각 ABD(주황)가 보는 호 AD(주황)는 108°이다. 두 현이 만드는 각 BPC(초록)는 호 AD와 호 BC(파랑)의 합의 절반이므로 호 BC는 54°이다. 호의 길이는 중심각에 비례하므로 호 AD는 호 BC의 2배이다. 정답은 10cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -372,7 +392,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 안의 삼각형 ABC에서 중심 O에서 두 변 AB, BC에 내린 수선의 발 D, E를 분홍색 선분으로 이었다. 초록색 변 AB와 BC는 길이가 같고, 주황색 각 A와 각 C는 5k, 파란색 각 B는 2k로 적혀 있다.",
+    "solutionImageCaption": "중심 O에서 두 현 AB, BC까지의 거리(분홍)가 같으므로 AB=BC(초록)이고, 같은 현을 보는 원주각이라 각 A와 각 C(주황)는 크기가 같다. 각의 비 5:2:5를 5k, 2k, 5k로 놓고 합 12k=180°로 k를 구한다. 정답은 75°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -414,7 +438,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 오각형에서 각 B는 파란색 130°, 각 E는 초록색 100°로 표시되어 있고, 점 C에서 접선 CT가 그려져 있다. 분홍색 호 CD는 100°이고, 접선과 현 CD가 이루는 각이 분홍색 호로 강조되어 있다.",
+    "solutionImageCaption": "각 B와 각 E가 보는 호에서 호 AB와 BC의 합은 100°, 호 AB, BC, CD의 합은 200°이므로 호 CD(분홍)는 100°이다. 접선과 현이 이루는 각(분홍)은 그 현이 보는 원주각의 크기와 같다. 정답은 50°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -455,7 +483,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB는 10, 파란색 현 AC는 8, 주황색 현 BC는 6으로 적혀 있고, 점 C의 각은 90°, 점 A의 분홍색 각은 x로 표시되어 있다.",
+    "solutionImageCaption": "지름에 대한 원주각은 직각이므로 각 ACB는 90°이다. 피타고라스 정리로 BC=6이고, 각 x의 탄젠트는 파란 변 AC=8분의 주황 변 BC=6이다. 정답은 3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -539,7 +571,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심이 같은 두 원 사이의 고리 모양이 파란색으로 색칠되고 넓이 32π cm²가 적혀 있다. 큰 원의 현 AB가 작은 원에 점 H에서 접하며, 초록색 큰 반지름 OA는 R, 주황색 작은 반지름 OH는 r로 적혀 있다.",
+    "solutionImageCaption": "안쪽 원의 접선 AB와 접점 H에서 반지름 OH는 수직이다. 직각삼각형 OHA에서 현의 반은 R²−r²의 제곱근이고, 색칠한 넓이는 두 원의 넓이의 차이므로 R²−r²=32이다. 정답은 8√2cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -581,7 +617,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 반지름 OA, OB와 현 AB, AP가 그려져 있고, 큰 호 AB는 굵게 246°로 적혀 있다. 작은 호는 주황색 호 PA 76°와 파란색 호 PB 38°로 나뉘고, 분홍색 각 PAB가 표시되어 있다.",
+    "solutionImageCaption": "큰 호의 중심각이 246°이므로 작은 호 AB는 114°이다. 호 PA와 호 PB의 비가 2:1이므로 호 PA(주황)는 76°, 호 PB(파랑)는 38°이고, 각 PAB(분홍)는 호 PB를 보는 원주각이다. 정답은 19°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -623,7 +663,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 지름 AB, 현 AC, BC와 반지름 OC가 그려져 있고, 점 B에서의 접선 BD와 AC의 연장선이 점 D에서 만난다. 파란색 각 BOC는 60°, 같은 크기의 파란색 각 OBC가 있고 분홍색 각 CBD가 표시되어 있다.",
+    "solutionImageCaption": "호 BC는 반원의 3분의 1이므로 중심각 BOC(파랑)는 60°이고, 삼각형 OBC는 정삼각형이라 각 OBC(파랑)도 60°이다. 접선 BD는 반지름 OB와 수직이므로 각 CBD(분홍)는 90°에서 60°를 뺀 값이다. 정답은 30°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -706,7 +750,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 B, C, F가 한 직선 위에 있는 그림에서 파란색 각 BEC는 39°, 주황색 각 BFA는 27°, 분홍색 각 B는 x로 적혀 있고, 점 A, B, C를 지나는 원과 교점 D가 그려져 있다.",
+    "solutionImageCaption": "삼각형 BEC와 삼각형 BAF의 내각의 합으로 각 BAD는 153°에서 x를 뺀 값, 각 BCD는 141°에서 x를 뺀 값이다. 꼭짓점이 A, B, C, D인 사각형이 원에 내접하면 마주 보는 두 각의 합이 180°이므로 x를 구한다. 정답은 57°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -748,7 +796,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 접선 PT, 현 TB, 반지름 OT가 그려져 있다. 분홍색으로 표시한 PT와 TB는 길이가 같고, 초록색 각 P는 30°, 점 T의 각은 직각이다. 주황색 부채꼴 AOT와 파란색 삼각형 OTB가 색칠되어 있다.",
+    "solutionImageCaption": "접선 PT는 반지름 OT와 수직이고 PT=TB이므로 각 P는 30°이다. 직각삼각형 OPT에서 반지름은 6cm이다. 색칠한 부분은 주황색 부채꼴 AOT와 파란색 삼각형 OTB의 합이다. 정답은 6π+9√3cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -784,7 +836,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원을 5등분하는 점 A, B, C, D, E가 있고, 현 BD와 CE가 점 F에서 만난다. 파란색 각 BCE는 72°, 주황색 각 BFE는 108°, 초록색 각 CED는 36°로 적혀 있다.",
+    "solutionImageCaption": "다섯 점이 원을 5등분하므로 호 하나는 72°이다. 각 BCE(x, 파랑)는 호 2개를 보는 원주각이라 72°, 두 현이 만드는 각 BFE(y, 주황)는 호 3개의 합의 절반이라 108°, 각 CED(z, 초록)는 호 1개를 보는 원주각이라 36°이다. 정답은 0°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -820,7 +876,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에 내접원 O가 있고 각 A의 이등분선 AD가 중심 O를 지난다. 변 BC 위에서 파란색 BD는 10, 주황색 DC는 6으로 적혀 있고 점 C는 직각, 분홍색 선분 OH는 반지름 r이며, 초록색 두 각은 같다.",
+    "solutionImageCaption": "BC=16이고 각의 이등분선(초록)의 정리로 AB:AC=5:3이다. 직각삼각형 ABC에서 AC=12, AB=20을 얻고, 내접원의 반지름 r은 세 변의 길이로 구한다. 정답은 4cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -892,7 +952,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 안에 이등변삼각형 ABC가 있고, 파란색으로 표시한 AB와 AC는 길이가 같다. 점 M은 밑변 BC의 중점으로 BC는 12로 적혀 있으며 AM은 BC와 직각으로 만난다. 분홍색 선분 OB는 외접원의 반지름 R로 적혀 있다.",
+    "solutionImageCaption": "밑변 BC의 절반은 6cm, 높이 AM은 3cm이다. 외심 O는 높이 AM의 연장선 위에 있고 분홍색 OB가 외접원의 반지름 R이다. 직각삼각형 OMB에서 R²=6²+(R−3)²으로 R을 구할 수 있다. 정답은 15/2cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -928,6 +992,10 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB의 양 끝에서 그은 접선 위에 점 C, D가 있고 AC는 3, BD는 9로 적혀 있으며 CD는 원 위의 점 P에서 접한다. 파란색 CA와 CP는 길이가 같고 주황색 DP와 DB는 길이가 같다. 점 C에서 BD에 내린 수선이 점선으로 그려져 있다.",
+    "solutionImageCaption": "접선의 길이가 같아 CP=3(파란색), DP=9(주황색)이므로 CD=12cm이다. C에서 BD에 수선(점선)을 그으면 나머지 변이 9−3=6cm인 직각삼각형이 되어 AB²=12²−6²이다. 정답은 6√3cm이다.",
+    "solutionImageSize": "full"
   }
 ];

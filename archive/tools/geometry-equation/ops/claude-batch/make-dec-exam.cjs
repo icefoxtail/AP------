@@ -19,17 +19,22 @@ const tri={};
 for(const m of md.matchAll(/^\|\s*Q?(\d+)\s*\|\s*([A-Z_]+)/gm))tri[+m[1]]=m[2];
 global.window={};eval(fs.readFileSync(js,'utf8'));
 const bank=window.questionBank;const ids=bank.map(q=>q.id);const img=new Set(bank.filter(q=>q.solutionImage).map(q=>q.id));
+// 문항 id 가 숫자면 표의 번호 = id. 문자열 id(q01.., s01..)면 표/폴더의 번호 = 문제은행 순서(1부터): Q21..Q24 = s01..s04.
+// 결정 JSON 의 키와 build-pub 의 ord 는 문자열 id 그대로("q01"), 폴더 이름은 qNN(순번).
+const strIds=bank.some(q=>typeof q.id!=='number');
+const idOf=n=>strIds?(bank[n-1]&&bank[n-1].id):n;
+const seqOf=id=>strIds?bank.findIndex(q=>q.id===id)+1:id;
 const errs=[];
-for(const [o,d] of Object.entries(tri)){if(!ALLOWED.has(d))errs.push(`Q${o}: 알 수 없는 판정 ${d}`);if(!ids.includes(+o))errs.push(`Q${o}: 시험지 JS에 없는 문항`);}
-const missing=ids.filter(i=>!(i in tri));
+for(const [o,d] of Object.entries(tri)){if(!ALLOWED.has(d))errs.push(`Q${o}: 알 수 없는 판정 ${d}`);if(!ids.includes(idOf(+o)))errs.push(`Q${o}: 시험지 JS에 없는 문항`);}
+const missing=ids.filter(i=>!(seqOf(i) in tri));
 if(missing.length)errs.push(`표에 없는 문항: ${missing.join(',')}`);
 if(errs.length){console.error('ERROR: '+tp+'\n  '+errs.join('\n  '));process.exit(1);}
-const hasResult=n=>{const d=path.join(rev,`q${String(n).padStart(2,'0')}`);return fs.existsSync(path.join(d,'out/figure-solution.svg'))||fs.existsSync(path.join(d,'figure-solution.svg'));};
+const hasResult=id=>{const d=path.join(rev,`q${String(seqOf(id)).padStart(2,'0')}`);return fs.existsSync(path.join(d,'out/figure-solution.svg'))||fs.existsSync(path.join(d,'figure-solution.svg'));};
 const dec={};const notes=[];
 for(const n of ids){
-  const d=tri[n];
+  const d=tri[seqOf(n)];
   if(d==='FIGURE'||d==='REPLACE'){
-    if(!hasResult(n)){dec[n]='UNSUPPORTED';notes.push(`Q${n}: 표는 ${d}인데 ${rev}/q${String(n).padStart(2,'0')} 결과가 없어 UNSUPPORTED`);}
+    if(!hasResult(n)){dec[n]='UNSUPPORTED';notes.push(`Q${n}: 표는 ${d}인데 ${rev}/q${String(seqOf(n)).padStart(2,'0')} 결과가 없어 UNSUPPORTED`);}
     else{const want=img.has(n)?'REPLACE':'FIGURE';dec[n]=want;if(want!==d)notes.push(`Q${n}: 표 ${d} → ${want} (JS solutionImage ${img.has(n)?'있음':'없음'})`);}
   }else{
     dec[n]=d;

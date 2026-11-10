@@ -1,7 +1,7 @@
 # usage: publish-exam.py <exam> <srcRel> <review.json> <rows.json> [allow-tie-ords.json]
 import hashlib, json, sys, tempfile
 from pathlib import Path
-from portable_root import repo_root, run, require_hash, is_question_key, solution_name
+from portable_root import repo_root, run, require_hash, valid_ord, asset_name
 ROOT=repo_root()
 def read(p): return json.loads(Path(p).read_text(encoding='utf-8-sig'))
 def main():
@@ -16,7 +16,7 @@ def main():
         result={}
         for r in data:
             o=r.get('ord')
-            if not is_question_key(o) or o in result: raise ValueError('invalid or duplicate ord')
+            if not valid_ord(o) or o in result: raise ValueError('invalid or duplicate ord')
             result[o]=r
         return result
     rv=indexed(reviews); rr=indexed(rows)
@@ -57,7 +57,7 @@ def main():
         if not svg.is_file(): svg=d/'figure-solution.svg'
         digest=hashlib.sha256(svg.read_bytes()).hexdigest()
         if a.get('sha256','').lower().removeprefix('sha256:')!=digest: raise ValueError(f'q{o}: SVG sha256 mismatch')
-        staged=stage/solution_name(o)
+        staged=stage/asset_name(o)
         staged.write_bytes(svg.read_bytes())
         require_hash(staged,digest)
         publish_path=d/'publish.json'; publish_bytes=publish_path.read_bytes()
@@ -76,13 +76,9 @@ def main():
         obj={'src':src,'ord':o,'svg':str(staged),'sha256':digest,'reviewPng':str(png),'pngSha256':a['pngSha256'],'reviewPublish':str(publish_path),'publishSha256':publish_digest,'reviewReplacement':is_replace,'key':f'{fam.lower()}-{o}','fam':fam,'alt':alt if alt.startswith('해설 그림') else '해설 그림: '+alt,'caption':caption,'size':size}
         if is_replace:
             k=2
-            while (adir/solution_name(o,k)).exists(): k+=1
-            obj.update(replace=True,asset=solution_name(o,k))
-        elif bank[o]['has']: obj.update(replace=True,asset=solution_name(o))
-        elif (adir/solution_name(o)).exists():
-            k=2
-            while (adir/solution_name(o,k)).exists(): k+=1
-            obj.update(asset=solution_name(o,k))
+            while (adir/asset_name(o,f'-v{k}')).exists(): k+=1
+            obj.update(replace=True,asset=asset_name(o,f'-v{k}'))
+        elif bank[o]['has']: obj.update(replace=True,asset=asset_name(o))
         out.append(obj)
     dest.parent.mkdir(parents=True,exist_ok=True)
     dest.write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); print(dest)

@@ -13,12 +13,24 @@ if not SVG2PNG.exists():
     sys.exit(f"ERROR: {SVG2PNG} 이 없다. 복원(HANDOFF_SVG_ENGINE.md §3): cd {ROOT} && mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-equation/ops/svg-m1/. .tmp/svg-m1/")
 key, jsrel, srcdir, decf = sys.argv[1:5]
 exam = Path(jsrel).stem
-dec = {int(k): v for k, v in json.loads(Path(decf).read_text(encoding='utf-8')).items()}
+# 문항 id: 숫자면 TABLE 번호 = id. 문자열 id(q01.., s01..)면 TABLE/폴더 번호 = 문제은행 순서(1부터). ord 는 id 그대로.
+_script = "const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify(c.window.questionBank.map(q=>q.id)))"
+bank_ids = json.loads(subprocess.run(['node', '-e', _script, jsrel], cwd=ROOT, check=True, capture_output=True, text=True, encoding='utf-8').stdout)
+str_ids = any(not isinstance(i, int) for i in bank_ids)
+def id_of(n):  # TABLE 번호 -> ord
+    if not str_ids: return n
+    if not 1 <= n <= len(bank_ids): sys.exit(f'ERROR: TABLE Q{n} 에 대응하는 문항이 없다 ({jsrel})')
+    return bank_ids[n - 1]
+def seq_of(o):  # ord -> 폴더 번호(qNN)
+    return bank_ids.index(o) + 1 if str_ids else o
+def dkey(k): return int(k) if k.isdigit() else k
+dec = {dkey(k): v for k, v in json.loads(Path(decf).read_text(encoding='utf-8')).items()}
 md = (W / 'triage-20261107' / f'{key}.md').read_text(encoding='utf-8')
 tri = {}
 for m in re.finditer(r'^\|\s*Q?(\d+)\s*\|\s*([A-Z_]+)', md, re.M):
-    tri[int(m.group(1))] = m.group(2)
+    tri[id_of(int(m.group(1)))] = m.group(2)
 tri.update(dec)
+if str_ids and not set(tri) <= set(bank_ids): sys.exit(f'ERROR: 문제은행에 없는 ord: {sorted(set(tri) - set(bank_ids), key=str)}')
 out = W / 'pub' / key
 import os, stat
 if out.exists(): shutil.rmtree(out, onexc=lambda f,p,e: (os.chmod(p, stat.S_IWRITE), f(p)))
@@ -27,11 +39,12 @@ sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
 answers = re.compile(r'[①②③④⑤]')
 rows, reviews, bad = [], [], []
 now = datetime.datetime.now(datetime.timezone.utc).isoformat()
-for o, d in sorted(tri.items()):
+for o, d in sorted(tri.items(), key=lambda kv: seq_of(kv[0])):
     if d not in ('FIGURE', 'REPLACE'): continue
-    if not (Path(srcdir) / f"q{o:02d}").exists(): print(f"q{o:02d} {d} NOT_PRODUCED (stays open)"); continue
-    s = Path(srcdir) / f'q{o:02d}'
-    q = out / f'q{o:02d}'; (q / 'out').mkdir(parents=True)
+    nn = f'q{seq_of(o):02d}'
+    if not (Path(srcdir) / nn).exists(): print(f"{nn} {d} NOT_PRODUCED (stays open)"); continue
+    s = Path(srcdir) / nn
+    q = out / nn; (q / 'out').mkdir(parents=True)
     svg = s / 'out/figure-solution.svg'
     if not svg.exists(): svg = s / 'figure-solution.svg'
     res = s / 'out/figure-result.json'
@@ -67,8 +80,8 @@ for o, d in sorted(tri.items()):
     if d == 'REPLACE':
         row['replace'] = True; rv['B'] = {'verdict': 'FAIL'}; rv['better'] = 'A'
     rows.append(row); reviews.append(rv)
-    print(f"q{o:02d} {d} size={pj.get('size')} alt={pj['alt'][:60]} | cap_end={pj['caption'][-40:]}")
+    print(f"{nn} {d} size={pj.get('size')} alt={pj['alt'][:60]} | cap_end={pj['caption'][-40:]}")
 (out / 'rows.json').write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding='utf-8')
 (out / 'review.json').write_text(json.dumps(reviews, ensure_ascii=False, indent=1), encoding='utf-8')
-(out / 'triage.json').write_text(json.dumps([{'ord': o, 'decision': d} for o, d in sorted(tri.items())], ensure_ascii=False, indent=1), encoding='utf-8')
+(out / 'triage.json').write_text(json.dumps([{'ord': o, 'decision': d} for o, d in sorted(tri.items(), key=lambda kv: seq_of(kv[0]))], ensure_ascii=False, indent=1), encoding='utf-8')
 print('BAD:', bad if bad else 'none'); print('exam', exam, 'triage ords', len(tri))
