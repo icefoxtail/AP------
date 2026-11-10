@@ -347,6 +347,9 @@
       view: (s, lab) => {
         const q = sv(s);
         const mode = modeOf(lab);
+        // 해설 우선 진입 화면(s.lessonEntry)에서는 탐구 탭 그림이 구하는 값까지 보여 주므로 정리 탭 0단계(구하는 값은 「?」)로 그립니다. 탐구·정리·문제 화면은 그대로입니다.
+        const entry = !!s.lessonEntry && mode === 'explore';
+        const vmode = entry ? 'review' : mode, vstep = entry ? 0 : s.step | 0;
         const v = spec.view ? spec.view(q, mode, lab) || {} : {};
         // 풀이 단계 글이 값에 따라 달라지므로, 달라졌으면 정리 탭의 단계 목록을 다시 만듭니다.
         if (lab && s === lab.s && lab.refs && lab.refs.steps) {
@@ -359,16 +362,18 @@
         }
         if (spec.work) {
           const w = spec.work(q);
-          v.formula = '<div class="apl-rich">' + w.slice(0, Math.max(0, s.step | 0)).map((l) => `<p class="cs-w">${l}</p>`).join('') + '</div>';
+          v.formula = '<div class="apl-rich">' + w.slice(0, Math.max(0, vstep)).map((l) => `<p class="cs-w">${l}</p>`).join('') + '</div>';
         }
         if (spec.rule) v.rule = spec.rule(q);
-        if (spec.chips) v.chips = spec.chips(q, mode, s.step | 0);
+        if (spec.chips) v.chips = (q.lessonOn || entry) && vmode === 'review' && vstep < 1 ? [] : spec.chips(q, vmode, vstep); // 0단계(구하는 값을 아직 모르는 때)에는 정답 칩을 아낌
         return v;
       },
       draw: (b, s, v, lab) => {
         const q = sv(s);
-        const mode = b.thumb ? 'problem' : modeOf(lab);
-        const step = s.step | 0;
+        const mode0 = b.thumb ? 'problem' : modeOf(lab);
+        const entry = mode0 === 'explore' && !!s.lessonEntry; // 해설 우선 진입 화면: 정리 탭 0단계 그림(구하는 값은 「?」, 손잡이 없음)
+        const mode = entry ? 'review' : mode0;
+        const step = entry ? 0 : s.step | 0;
         if (mode === 'review' && spec.partOfStep) {
           const p = spec.partOfStep(step);
           b.emph = p ? { part: p, ref: p } : null;
@@ -772,11 +777,13 @@
         th: { value: o.def.th, min: thMin, max: thMax, step: 5, color: 'amber', label: '중심각 θ', format: (v) => v + '°' }
       },
       controls: ['r', 'th'],
+      // 해설(lesson) 재생 중에만 쓰는 값(탐구·정리·문제 화면에는 영향이 없음): div(0~1) 원을 같은 중심각의 부채꼴로 나눈 선이 나타나는 정도, ref 기준 라벨(1 원주 · 2 원의 넓이)
+      state: { div: 0, ref: 0 },
       presets: o.presets,
       steps: o.steps, work: o.work, rule: o.rule,
       chips: (q, mode, step) => {
         const v = sQ(q);
-        if (mode === 'review') return o.chipsF ? o.chipsF(q, v, step) : [];
+        if (mode === 'review') return o.chipsF && !(q.lessonOn && step < 1) ? o.chipsF(q, v, step) : []; // 해설 재생 중 step 0 에는 정답 칩을 아낌
         return [{ k: '호', tex: `l = 2\\pi r\\times\\frac{\\theta}{360} = ${piT(v.l)}`, color: 'amber' }, { k: '넓이', tex: `S = \\pi r^2\\times\\frac{\\theta}{360} = ${piT(v.S)}`, color: 'green' }].slice(0, mode === 'explore' ? 2 : 0);
       },
       view: (q, mode) => {
@@ -797,6 +804,16 @@
         // 원 전체(흐리게)와 부채꼴
         if (th < thMax) g.arc(O, R, th, thMax >= 350 ? 360 : thMax, { color: 'muted', alpha: 0.6, width: 1.8, dash: [5, 6] });
         g.arc(O, R, 0, th, { sector: true, fill: 'sky', fillAlpha: ['1210', '1609', '1610'].includes(o.id) ? 0.08 : 0.3, stroke: false });
+        // 해설 재생 중(q.lessonOn)에만: 원 전체를 이 부채꼴과 같은 중심각의 조각으로 나눈 선(div)과 기준값 라벨(ref). 나머지 화면은 그대로입니다.
+        if (q.lessonOn) {
+          const u = gcd(Math.round(th), 360), rest = (th + 360) / 2;
+          if (q.div > 0 && 360 / u <= 12) {
+            for (let a = u; a < 360 - 0.5; a += u) if (Math.abs(a - th) > 0.5) g.seg(O, g.pol(O, R, a), { color: 'violet', width: 1.8, dash: [6, 5], alpha: 0.85 * q.div });
+            for (let a = th; a < 360 - 0.5; a += u) g.arc(O, R, a, a + u, { sector: true, fill: 'violet', fillAlpha: 0.1 * q.div, stroke: false });
+          }
+          if (q.ref === 1) g.out(g.pol(O, R, rest), rest, `원주 ${piS(2 * r)} cm`, { color: 'sky', size: 16 }, 32);
+          else if (q.ref === 2) { const pa = th + u / 2, pp = g.pol(O, R * 0.58, pa); g.text(pp, '원의 넓이', { color: 'sky', size: 15, dy: -26 }); g.text(pp, `${piS(r * r)} cm²`, { color: 'sky', size: 15, dy: -7 }); }
+        }
         g.seg(O, [R, 0], { color: 'ink', width: 2.8 });
         g.seg(O, g.pol(O, R, th), { color: 'ink', width: 2.8 });
         g.tick(O, [R, 0], { color: 'ink' });

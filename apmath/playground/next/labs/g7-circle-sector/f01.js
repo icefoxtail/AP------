@@ -242,7 +242,8 @@
       // 앞서 끝까지 재생했어도 정리의 앞 단계에서는 결과를 먼저 그리지 않습니다.
       const limit = tab === 'review' ? timeline[clamp(step, 0, timeline.length - 1)] : 1;
       const t = Math.min(clamp(+s[kt] || 0, 0, 1), limit);
-      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step }, phaseOf(t), {
+      // lessonHold: 해설 재생 중(s.lessonOn)에는 해설이 K('show') 를 켤 때까지 결과(정답) 라벨·캡션·칩을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step, lessonHold: !!(s.lessonOn && !s[K('show')]) }, phaseOf(t), {
         set: (k, val, quiet) => {
           const v = sp.vars.find((x) => x.k === k);
           s[K(k)] = clamp(val, v.min, v.max);
@@ -488,7 +489,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     const tray = !c.problem && !c.mode;
     return { bb: { x0, y0, x1: tray ? x1 + (x1 - x0) * GAPK : x1, y1 }, marg: { l: 22, r: 22, t: 18, b: c.problem ? 40 : 94 } };
   }
-  const whenA = (c, w) => (w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? seg01(c.res, 0.2, 0.8) : 1);
+  const whenA = (c, w) => (w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? (c.lessonHold ? 0 : seg01(c.res, 0.2, 0.8)) : 1);
 
   function drawFig(b, c, givensOnly = false) {
     const fig = c.M.fig, outer = fig.find((it) => it.radiusLabel === 'outer'), inner = fig.find((it) => it.radiusLabel === 'inner');
@@ -558,8 +559,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     drawFig(b, c);
     M.part.forEach((it) => drawItem(b, it, ox, whenA(c, it.when)));
     const cp = M.cap;
-    caption(b, cx, y0, cp.whole.l, cp.whole.v, 'ink', 1 - seg01(res, 0, 0.5));
-    caption(b, cx, y0, cp.res.l, cp.res.v, 'sky', seg01(res, 0.5, 1));
+    caption(b, cx, y0, cp.whole.l, cp.whole.v, 'ink', c.lessonHold ? 1 : 1 - seg01(res, 0, 0.5));
+    caption(b, cx, y0, cp.res.l, cp.res.v, 'sky', c.lessonHold ? 0 : seg01(res, 0.5, 1));
     caption(b, cx + dx, y0, cp.part.l, cp.part.v, 'amber', seg01(mv, 0.6, 1));
     if (M.handles) M.handles.forEach((h) => b.handle(h.id, P(h.p[0], h.p[1]), { color: 'amber', ariaLabel: h.label, drag: (wp) => h.drag(wp, c) }));
   }
@@ -1022,7 +1023,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       }
       return [{ k: '둘레', tex: M.periEq, color: 'sky' }];
     }
-    if (c.res > 0.5) return [{ k: '색칠한 부분', tex: ct.eq, color: 'sky' }];
+    if (c.res > 0.5 && !c.lessonHold) return [{ k: '색칠한 부분', tex: ct.eq, color: 'sky' }];
     if (c.hi > 0.5) return [{ k: '전체', tex: ct.whole, color: 'ink' }, { k: '파낸 부분', tex: ct.part, color: 'amber' }];
     return [{ k: '전체', tex: ct.whole, color: 'ink' }];
   }

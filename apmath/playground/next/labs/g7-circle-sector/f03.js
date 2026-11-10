@@ -217,7 +217,8 @@
     const plain = !thumb && (tab === 'problem' || (tab === 'review' && !s.step));
     const review = !thumb && tab === 'review' && s.step > 0;
     const t = thumb ? 1 : plain ? 0 : clamp(+s.f3t || 0, 0, 1);
-    return { tab, plain, review, step: review ? s.step : 99, t, txt: !thumb, thumb: !!thumb, truth: tab !== 'explore' };
+    // hold: 해설 재생 중(s.lessonOn)에는 해설이 s.f3Show 를 켤 때까지 결과(정답) 글자를 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+    return { tab, plain, review, step: review ? s.step : 99, t, txt: !thumb, thumb: !!thumb, truth: tab !== 'explore', hold: !thumb && !!(s.lessonOn && !s.f3Show) };
   }
   const isStep = (C, n) => C.review && C.step === n;
 
@@ -282,7 +283,7 @@
           if (u > 0.01) {
             const m = pt(Cf.x - a / 2, Cf.y + a);
             tx(b, C, m, '90° + 90° = 180°', 'ink', { dy: 24, alpha: u });
-            tx(b, C, m, piP(M.arc) + ' + ' + piP(M.arc) + ' = ' + piP(M.tot) + ' cm', 'ink', { dy: 46, size: 16, alpha: u });
+            if (!C.hold) tx(b, C, m, piP(M.arc) + ' + ' + piP(M.arc) + ' = ' + piP(M.tot) + ' cm', 'ink', { dy: 46, size: 16, alpha: u });
           }
         }
       }
@@ -294,7 +295,7 @@
       `두 호를 이어 붙이면 중심각 90°+90°=180°인 호(반원의 호)예요. 둘레 = $${piT(M.arc)}+${piT(M.arc)}=${piT(M.tot)}$ (cm)`
     ],
     view(M, C, s) {
-      const half = C.t > 0.8;
+      const half = C.t > 0.8 && !C.hold;
       return {
         guide: C.t < 0.08 ? '색칠한 잎 모양의 <b>둘레</b>는 <b>호 2개</b>예요(분홍·노랑). ▶를 누르거나 막대를 오른쪽으로 끌어, 두 호를 떼어 이어 붙여 보세요.'
           : C.t < 0.5 ? '두 호가 만드는 부채꼴을 옆에 복사했어요. 각 부채꼴의 중심각은 <b>90°</b>예요. 노랑 부채꼴이 제자리에서 돌고 있어요.'

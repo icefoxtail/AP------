@@ -1150,6 +1150,8 @@
         syncQuestionStudy(spec, s, lab);
         const sc = scenario(spec, s, lab, false);
         const M = sc.M, N = M.N, T = M.names[M.T];
+        // hold: 해설 재생 중(s.lessonOn)에는 해설이 s.rlShow 를 켤 때까지 움직인 거리의 합(정답)을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+        const hold = !!(s.lessonOn && !s.rlShow);
         const arcFr = (rt) => sc.fracs[rt.i];
         const done = M.arcs.filter((rt) => arcFr(rt) >= 1 - 1e-9);
         const partial = M.arcs.some((rt) => arcFr(rt) > 1e-9 && arcFr(rt) < 1 - 1e-9); // 도는 중에는 깨끗한 π 꼴이 안 나오므로 「…」
@@ -1181,7 +1183,7 @@
           tape = sc.plain ? null : { title: `점 ${T}가 움직인 거리 = ${sumAll} cm`, segments: segsOf(() => 1) };
         } else {
           const allDone = done.length === M.arcs.length && finished;
-          tape = { title: allDone ? `점 ${T}가 움직인 거리 = ${sumAll} cm` : `점 ${T}가 움직인 거리 (한 줄로 이어 붙인 모양)`, segments: segsOf((a) => sc.fracs[a.i]) };
+          tape = { title: allDone && !hold ? `점 ${T}가 움직인 거리 = ${sumAll} cm` : `점 ${T}가 움직인 거리 (한 줄로 이어 붙인 모양)`, segments: segsOf((a) => sc.fracs[a.i]) };
         }
         const status = sc.tab === 'explore'
           ? { tone: 'info', text: sc.u <= 0 ? (spec.hdls ? '파란 점을 끌어 모양을 바꿔 보세요' : `점 ${T}는 처음 자리에 있어요`) : finished ? `${N}번 회전했어요` : roll ? `${sc.k + 1}번째 · 반원이 굴러가요` : `${sc.k + 1}번째 회전 · 점 ${P}가 회전의 중심` }
@@ -1190,7 +1192,7 @@
         return {
           guide: spec.guide(M),
           readouts: reads, parts,
-          summary: finished || sc.tab !== 'explore' ? `점 ${T}가 움직인 거리 = ${sumAll} cm` : null,
+          summary: (finished || sc.tab !== 'explore') && !hold ? `점 ${T}가 움직인 거리 = ${sumAll} cm` : null,
           chips: [{ k: '호의 길이', tex: 'l=2\\pi r\\times\\dfrac{x}{360}', color: 'sky' }],
           status, tape,
           formula: semi ? FORMULA_SEMI : FORMULA, rule: semi ? RULE_SEMI : RULE, notes: spec.notes

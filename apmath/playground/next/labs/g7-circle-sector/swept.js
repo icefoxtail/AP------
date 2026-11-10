@@ -1574,9 +1574,11 @@
       let cur = tl[0];
       for (const x of tl) if (t >= x.ts) cur = x;
       const done = t >= 0.8;
+      // hold: 해설 재생 중(s.lessonOn)에는 해설이 s.gtShow 를 켤 때까지 영역의 넓이(정답) 칩·요약을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+      const hold = !!(s.lessonOn && !s.gtShow);
       const status = t <= 0 ? { tone: 'info', text: `끈을 팽팽히 당긴 ${kd.animal}` }
         : !done ? { tone: 'info', text: cur.sec.chain === 'A' ? `큰 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` : `${cur.sec.id}를 돌아가는 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` }
-          : { tone: 'ok', text: `부채꼴 ${M.secs.length}개 · 넓이 ${ratPi(M.area)} m²` };
+          : hold ? { tone: 'info', text: `부채꼴 ${M.secs.length}개` } : { tone: 'ok', text: `부채꼴 ${M.secs.length}개 · 넓이 ${ratPi(M.area)} m²` };
       const note = M.maxExact && M.L >= M.maxL - 1e-9 ? `끈이 가장 길 수 있는 값(${num(M.maxL)} m)이에요. 이보다 길면 끈이 겹쳐 돌아가서 이 장면의 계산이 달라져요.` : '';
       const readouts = [{ label: '끈의 길이', value: `${num(M.L)} m`, color: 'rose', ref: 'rope', note: M.kind === 'rect' ? `AB ${num(M.side)} m, AD ${num(M.sideLast)} m` : `${kd.thing}의 한 변 ${num(M.side)} m` }];
       M.order.forEach((sec) => readouts.push({
@@ -1591,10 +1593,10 @@
         alert: note ? { tone: 'info', text: note } : null,
         readouts,
         parts: M.order.map((sec) => ({ id: sec.id, name: sec.chain === 'A' ? '큰 부채꼴' : `${sec.id}를 돌아가는 부채꼴`, desc: `반지름 ${num(sec.R)}, 중심각 ${sec.deg}°`, value: ratPi(sec.area), color: sec.col })),
-        chips: done ? [{ k: '영역의 넓이', html: `$${TEX_SUM(M.order)}=${ratPiTex(M.area)}$ m²`, color: 'rose' }] : [],
+        chips: done && !hold ? [{ k: '영역의 넓이', html: `$${TEX_SUM(M.order)}=${ratPiTex(M.area)}$ m²`, color: 'rose' }] : [],
         formula: o.formula(M),
         notes: o.notes,
-        summary: done ? `움직일 수 있는 영역의 넓이 = ${ratPi(M.area)} m²` : null
+        summary: done && !hold ? `움직일 수 있는 영역의 넓이 = ${ratPi(M.area)} m²` : null
       };
     };
     sc.problem = { tag: o.tag, text: (s) => problemHTML(sc, s), answer: (s) => mk(s).ansTex, note: '새 문제를 누르면 그림의 숫자가 바뀌어요. (끈의 굵기와 동물의 크기는 생각하지 않아요.)' };

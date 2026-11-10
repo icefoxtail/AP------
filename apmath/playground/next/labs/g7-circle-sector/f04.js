@@ -233,7 +233,8 @@
       const timeline = sp.stepT || STEP_T;
       const limit = tab === 'review' ? timeline[clamp(s.step || 0, 0, timeline.length - 1)] : 1;
       const t = Math.min(clamp(+s[kt] || 0, 0, 1), limit);
-      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step: s.step || 0 }, phaseOf(t), {
+      // lessonHold: 해설 재생 중(s.lessonOn)에는 해설이 K('show') 를 켤 때까지 결과(정답) 라벨·캡션·칩을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step: s.step || 0, lessonHold: !!(s.lessonOn && !s[K('show')]) }, phaseOf(t), {
         set: (k, val, quiet) => {
           const v = sp.vars.find((x) => x.k === k);
           s[K(k)] = clamp(val, v.min, v.max);
@@ -445,7 +446,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   }
   const tfPoly = (poly, pc, p) => (pc.tf.kind === 'rot' ? rotP(poly, pc.tf.c[0], pc.tf.c[1], pc.tf.ang * p) : shiftP(poly, pc.tf.dx * p));
   const tfPt = (a, pc, p) => { const q = tfPoly([P(a[0], a[1])], pc, p)[0]; return [q.x, q.y]; };
-  const whenA = (c, w) => (w === 'hm' ? seg01(c.hi, 0.4, 1) * (1 - seg01(c.mv, 0.6, 0.95)) : w === 'b' ? 1 - seg01(c.mv, 0, 0.3) : w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? seg01(c.res, 0.2, 0.8) : 1);
+  const whenA = (c, w) => (w === 'hm' ? seg01(c.hi, 0.4, 1) * (1 - seg01(c.mv, 0.6, 0.95)) : w === 'b' ? 1 - seg01(c.mv, 0, 0.3) : w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? (c.lessonHold ? 0 : seg01(c.res, 0.2, 0.8)) : 1);
 
   function renderMove(b, c) {
     const M = c.M, { hi, mv, res } = c, bb = M.bb, cx = (bb.x0 + bb.x1) / 2;
@@ -475,15 +476,16 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     pieces.forEach((pc) => pc.dst.forEach((q) => outline(b, q, 'amber', 2, { dash: [6, 4], alpha: 0.9 * hi * (1 - res) })));
     pieces.forEach((pc, i) => { const p = prog(i); pc.polys.forEach((q) => outline(b, tfPoly(q, pc, p), 'amber', 2.4, { alpha: hi * (1 - 0.85 * res) })); });
     M.target.forEach((q) => outline(b, q, 'green', 3.4, { alpha: res }));
-    M.fig.forEach((it) => drawItem(b, it, 0, whenA(c, it.when)));
+    // hideRes: 해설 재생 중에만, 결과가 나오기 시작하면 사라지는 글자(옮겨 끼운 뒤에는 필요 없는 조각 표시가 결과 라벨과 겹칠 때)
+    M.fig.forEach((it) => drawItem(b, it, 0, whenA(c, it.when) * (c.s && c.s.lessonOn && it.hideRes ? 1 - seg01(c.res, 0, 0.25) : 1)));
     pieces.forEach((pc, i) => { const p = prog(i); (pc.items || []).forEach((it) => drawItem(b, Object.assign({}, it, { p: tfPt(it.p, pc, p) }), 0, whenA(c, it.when))); });
     caption(b, cx, bb.y0, M.cap.start.l, M.cap.start.v, 'ink', 1 - seg01(res, 0, 0.5));
-    caption(b, cx, bb.y0, M.cap.res.l, M.cap.res.v, 'green', seg01(res, 0.5, 1));
+    caption(b, cx, bb.y0, M.cap.res.l, M.cap.res.v, 'green', c.lessonHold ? 0 : seg01(res, 0.5, 1));
     if (M.handles) M.handles.forEach((h) => b.handle(h.id, P(h.p[0], h.p[1]), { color: 'amber', ariaLabel: h.label, drag: (wp) => h.drag(wp, c) }));
   }
   function chipsMove(c) {
     const M = c.M;
-    if (c.res > 0.5) return [{ k: '색칠한 부분', tex: M.eqTex, color: 'green' }];
+    if (c.res > 0.5 && !c.lessonHold) return [{ k: '색칠한 부분', tex: M.eqTex, color: 'green' }];
     if (c.mv > 0.5) return [{ k: '옮기면', html: esc(M.shapeShort), color: 'amber' }];
     return [];
   }
@@ -752,7 +754,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
         fig: [
           { k: 'dot', p: [0, 0], when: 'g' },
           { k: 'seg', p: [0, 0], q: [0, R], color: 'ink', w: 1.8, dash: [5, 4], when: 'g' }, T([0, R * 0.7], `R=${fn(R)}`, { when: 'g', dx: 22, color: 'ink' }),
-          T([-h, h * 0.5], `r=${fn(h)}`, { when: 's', color: 'amber' }),
+          T([-h, h * 0.5], `r=${fn(h)}`, { when: 's', color: 'amber', hideRes: true }),
           T([0, R * 0.55], `원의 반 : ${xs(resX)}`, { when: 'r', color: 'sky', size: 14, dy: 22 })
         ],
         startStr: '큰 반원에서 왼쪽 작은 반원을 빼고 오른쪽 아래에 작은 반원을 붙인 모양', startShort: 'S자 곡선이 있는 모양', shapeStr: `반지름 ${fn(R)} cm`, shapeShort: '큰 반원',
