@@ -1889,10 +1889,15 @@
       button("finder-axis-quick", esc(label), `type="button" class="find-term" data-axis="${value}" aria-pressed="${filters.axis === value}"`)).join("");
     return `<div class="find-quick"><div class="find-grades" role="group" aria-label="학년">${grades}</div><span class="find-divider" aria-hidden="true"></span><div class="find-terms" role="group" aria-label="시험 시기">${terms}</div></div>`;
   }
+  // The one-exam filter (a link to a file) is shown by the exam's title, never by its file name.
+  function finderFileLabel(file) {
+    const exam = (state.catalog?.exams || []).find((item) => C.normalizeFile(item.file) === C.normalizeFile(file));
+    return exam ? O.displayTitle(exam) : "선택한 시험지";
+  }
   function finderActiveMarkup(filters) {
     const active = [
       ["학교", filters.school],
-      ["시험지", filters.file ? String(filters.file).split("/").pop() : ""],
+      ["시험지", filters.file ? finderFileLabel(filters.file) : ""],
       [
         "연도",
         filters.yearFrom || filters.yearTo
@@ -2629,10 +2634,10 @@
     const rows = sets.map((set) => {
       const setIndex = examIndexOf(set);
       const setTitle = O.displayTitle(set);
-      const name = String(set.file || "").split("/").pop().replace(/\.js$/i, "");
+      const detail = [set.primaryStandardCourse || set.subject, set.qCount ? `${set.qCount}문항` : ""].filter(Boolean).join(" · ");
       const direct = ([mode, label]) =>
         button("source-output-direct", label, `type="button" data-exam="${setIndex}" data-mode="${mode}"`);
-      return `<article class="similar-set"><div class="similar-set-main"><strong>${esc(setTitle)}</strong><div class="muted">${esc(name)}${set.qCount ? ` · ${esc(set.qCount)}문항` : ""}</div></div><div class="similar-set-actions" role="group" aria-label="${esc(setTitle)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}"`)}</div></article>`;
+      return `<article class="similar-set"><div class="similar-set-main"><strong>${esc(setTitle)}</strong><div class="muted">${esc(detail)}</div></div><div class="similar-set-actions" role="group" aria-label="${esc(setTitle)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}"`)}</div></article>`;
     }).join("");
     showDialog(`${O.displayTitle(exam)} · 유사문제`, `<p class="muted">이 기출의 유사문제 ${sets.length}세트입니다.</p><div class="similar-sets">${rows}</div>`);
   }

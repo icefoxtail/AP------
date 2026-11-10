@@ -131,6 +131,8 @@ test("a row with two or more sets shows the count and a 보기 button, and the d
   await t.click({ action: "similar-list", exam: String(indexOf(file)) });
   const body = t.node("modal-body").innerHTML;
   assert.equal((body.match(/class="similar-set"/g) || []).length, sets.length);
+  assert.doesNotMatch(body.replace(/aria-label="[^"]*"|title="[^"]*"/g, ""), /\d{2}_[가-힣]|\.js\b/, "no file name in the teacher dialog");
+  assert.match(body, /<div class="muted">[^<]*\d+문항<\/div>/);
   for (const set of sets) {
     const index = indexOf(set.file);
     for (const mode of ["exam", "sol", "ans"])
@@ -253,6 +255,15 @@ test("the three material views stay, the default is 학교 기출, and 전체 is
   const file = load("?view=find&file=" + encodeURIComponent(pairs.setsFor(originalWith(1))[0].file));
   file.w.readUrl();
   assert.notEqual(file.w.state.find.material, "exam", "a link to one file does not hide it behind 학교 기출");
+});
+
+test("a one-exam link shows the exam's title in the active filter, not its file name", () => {
+  const t = load();
+  const exam = catalog.exams[indexOf(originalWith(1))];
+  t.w.state.find = { material: "exam", file: exam.file };
+  const markup = t.w.renderFind();
+  const chip = /<span class="finder-chip">시험지 ([^<]*)<\/span>/.exec(markup)?.[1];
+  assert.ok(chip && !chip.includes("_") && !chip.includes(".js"), chip);
 });
 
 test("a similar set listed on its own says which exam it belongs to when it is linked", () => {
