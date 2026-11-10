@@ -4048,7 +4048,7 @@ body[data-archive-view="compose"] .cz-scope > .resultbar h2 {
 .cz-scope .scope-list {
   grid-template-columns: minmax(0, 1fr);
   gap: 10px;
-  max-height: 176px;
+  max-height: clamp(320px, 45vh, 520px);
   margin-top: 0;
   padding-right: 4px;
   overflow-y: auto;
@@ -4497,6 +4497,12 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
 }
 /* 1100px 미만: 조건이 위, 결과가 아래. 주 버튼은 하단 고정 띠 하나다. */
 @media (max-width: 1099px) {
+  /* 좁은 화면: 안쪽 스크롤 없이 목록 전체를 페이지 흐름에 펼친다(스크롤 안의 스크롤 금지). 길면 과목 묶음을 접는다. */
+  .cz-scope .scope-list {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
   body[data-archive-view="compose"] #content {
     padding-bottom: calc(110px + var(--archive2-mobile-bottom-nav-offset, 0px));
   }
@@ -4616,9 +4622,6 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   .cz-grades .find-grade {
     min-height: 48px;
   }
-  .cz-scope .scope-list {
-    max-height: 260px;
-  }
   .cz-detail-body .compose-detail-fields {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -4628,4 +4631,50 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   .cz-preview-toggle {
     margin-left: 0;
   }
+}
+
+/* 과목 묶음(접힘): 머리줄은 제목 + "모두" 버튼, 첫 단원 줄과 겹치지 않는다. */
+.cz-scope details.scope-group {
+  overflow: visible;
+}
+.cz-scope details.scope-group > summary.group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 56px;
+  padding: 6px 12px;
+  list-style: none;
+  cursor: pointer;
+}
+.cz-scope details.scope-group > summary.group-head::-webkit-details-marker {
+  display: none;
+}
+.cz-scope details.scope-group > summary.group-head h3 {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: 14px;
+}
+.cz-scope details.scope-group > summary.group-head::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin: 0 2px 3px 4px;
+  border: solid var(--ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.cz-scope details.scope-group[open] > summary.group-head::after {
+  margin-bottom: -3px;
+  transform: rotate(-135deg);
+}
+.cz-scope .scope-item {
+  min-height: 48px;
+}
+.cz-levels > p.muted {
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }

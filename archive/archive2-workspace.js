@@ -522,6 +522,8 @@
     composeStale: false,
     previewOpen: true,
     outputSettingsOpen: false,
+    scopeGroupOpen: {},
+    composeAnnounce: "",
     assignBusy: false,
   };
   let finderFilterRenderTimer = null;
@@ -2838,11 +2840,21 @@
     // the default end of a range.
     const rangeOptions = scopes.flatMap((s, i) => s.basicScope && !s.unclassified
       ? [{ value: i, label: s.fullLabel || `${s.L1} · ${s.label}` }] : []);
-    const groupMarkup = (rows, detail) => `<div class="scope-list">${unique(rows.map(s => s.L1)).map(g =>
-      `<div class="scope-group"><div class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</div>${rows.filter(s => s.L1 === g).map(s =>
-        `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`
-      ).join("")}</div>`
-    ).join("")}</div>`;
+    // 과목 묶음은 접을 수 있다. 직접 접고 펼친 것을 먼저 따르고, 아니면 넓은 화면(PC)은 모두 펼치며 좁은 화면은
+    // 고른 단원이 있는 묶음·현재 과목 묶음·첫 묶음만 펼친다(휴대폰에서 목록이 끝없이 길어지지 않게).
+    const wideScreen = Boolean(window.matchMedia?.("(min-width: 1100px)")?.matches);
+    const groupMarkup = (rows, detail) => {
+      const names = unique(rows.map(s => s.L1)), currentSubject = composeSubjectLabel();
+      return `<div class="scope-list">${names.map(g => {
+        const members = rows.filter(s => s.L1 === g);
+        const explicit = state.scopeGroupOpen[g];
+        const open = explicit !== undefined ? explicit
+          : wideScreen || names.length === 1 || g === names[0] || g === currentSubject || members.some(scopeIsSelected);
+        return `<details class="scope-group" data-scope-group="${esc(g)}"${open ? " open" : ""}><summary class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</summary>${members.map(s =>
+          `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`
+        ).join("")}</details>`;
+      }).join("")}</div>`;
+    };
     const unifiedNotice = unifiedIndex()
       ? `<p class="muted">출제할 단원을 고르세요. 2015·2022 개정 문항이 한 목록에 함께 들어 있고, 숫자는 지금 출제할 수 있는 문항 수입니다. ‘단원 미분류’는 단원 정보가 아직 없는 문항으로, 선택하면 함께 출제됩니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
       : "";
@@ -3018,10 +3030,10 @@
         ? `이 범위 ${facets.poolSize}문항 중 기록된 분류가 있는 문항에서 고를 수 있습니다. ‘검토 대기’는 아직 승인되지 않은 분류이며, 승인된 분류와 같은 방식으로 사용할 수 있습니다.`
         : "이 범위의 문항에는 기록된 개념·유형·풀이 분류가 아직 없습니다.";
     const amountNote = state.distribution === "pool"
-      ? "전체에서 뽑는 문항 수"
+      ? `전체 ${esc(state.count)}문항`
       : state.distribution === "all"
         ? "조건에 맞는 문항 전부"
-        : "단원마다 뽑는 문항 수";
+        : `단원마다 ${esc(state.count)}문항씩`;
     const countDisabled = state.distribution === "all" || state.sealed ? "disabled" : "";
     const stepper = `<span class="cz-stepper" role="group" aria-labelledby="compose-count-label">${button("count-step", "", `type="button" class="cz-step-btn is-minus" data-step="-1" aria-label="문항 한 개 줄이기" ${countDisabled}`)}<input id="count" type="number" inputmode="numeric" min="1" max="400" value="${esc(state.count)}" aria-labelledby="compose-count-label" ${countDisabled}>${button("count-step", "", `type="button" class="cz-step-btn is-plus" data-step="1" aria-label="문항 한 개 늘리기" ${countDisabled}`)}</span>`;
     const detail = `<details class="compose-detail cz-detail" ${state.composeDetailOpen ? "open" : ""}><summary>더 자세한 조건${detailCount ? ` <span class="badge" aria-label="적용 중인 세부 조건 ${detailCount}개">${detailCount}개 적용 중</span>` : ""}</summary><div class="cz-detail-body">
@@ -3039,8 +3051,8 @@
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : esc(row.difficultyBuckets.join(" · ")) || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${esc(row.count)}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : esc(row.count)}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       <p class="muted">조건에 맞는 문항을 최신 연도부터(2026년, 2025년, 2024년 순) 선택하고, 연도를 알 수 없는 자료는 마지막에 선택합니다. 같은 연도 안에서는 문항을 섞습니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p>
       ${composeFilesMarkup()}</div></details>`;
-    return `<div class="cz-block cz-amount"><div class="cz-amount-row"><span class="cz-label" id="compose-count-label">문항 수</span>${stepper}<span class="cz-amount-note">${amountNote}</span></div>
-      <div class="compose-difficulty cz-levels"><strong id="compose-difficulty-label">난이도 단계</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 전체에서 출제합니다. 난이도를 고르면 해당 난이도가 확인된 문항만 선택합니다.</p></div></div>
+    return `<div class="cz-block cz-amount"><div class="compose-difficulty cz-levels"><strong id="compose-difficulty-label">난이도 단계</strong>${bucketButtons(state.buckets)}<p class="muted">고르지 않으면 모든 단계에서 뽑습니다.</p></div>
+      <div class="cz-amount-row"><span class="cz-label" id="compose-count-label">문항 수</span>${stepper}<span class="cz-amount-note">${amountNote}</span></div></div>
       ${detail}${composeLiveMarkup({ rows, perRow, shortages })}`;
   }
   // Year spread of the generated paper, in the recency order the selection used.
@@ -3309,7 +3321,7 @@
   function renderCompose() {
     const unknown = state.saveResultState === "RESULT_UNKNOWN";
     const r = state.selected.length ? review() : null;
-    return `<div class="intro cz-intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : ""}</p></div><div class="actions"><button type="button" class="phone-quick-link" data-view="five-minute">빠른 평가</button>${button("new-draft", "새 작업")}</div></div>
+    return `<p class="visually-hidden" role="status" aria-live="polite" data-cz-announce>${esc(state.composeAnnounce)}</p><div class="intro cz-intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : ""}</p></div><div class="actions"><button type="button" class="phone-quick-link" data-view="five-minute">빠른 평가</button>${button("new-draft", "새 작업")}</div></div>
     <div class="cz${state.selected.length ? " has-result" : ""}"><section class="cz-conditions" aria-label="문제지 조건" data-cz-conditions ${unknown ? "inert" : ""}>${renderConditions()}</section><section class="cz-result" aria-label="만들어진 문제지" data-cz-result>${renderResult(r)}</section></div>${renderMobileActions(r)}`;
   }
   function recentClassOptions() {
@@ -4410,9 +4422,12 @@
     if (!rebuild) state.pins = [];
     save();
     render();
-    status(
-      `${result.selected.length}문항 선택 · 중복 없음 · ${result.diagnostics.elapsedMs}ms`,
-    );
+    // 화면 상태 줄에는 내지 않는다(오른쪽 결과 요약과 겹치고, 처리 시간은 교사에게 필요 없다). 화면 읽기 프로그램용
+    // 숨은 안내(composeAnnounce)에만 두고, 처리 시간은 콘솔과 ?perf=1에서만 보인다.
+    state.composeAnnounce = `${result.selected.length}문항을 선택했습니다.`;
+    status("");
+    if (new URLSearchParams(location.search).get("perf") === "1") status(`${result.selected.length}문항 선택 · 중복 없음 · ${result.diagnostics.elapsedMs}ms`);
+    else console.debug("[archive2] generate", result.selected.length, "questions", result.diagnostics.elapsedMs + "ms");
   }
   function showDialog(title, body) {
     $("modal").classList.remove("original-issue-dialog", "saved-paper-issue-dialog");
@@ -5791,6 +5806,7 @@
   document.addEventListener("toggle", (event) => {
     const target = event.target;
     if (target?.matches?.("[data-cz-output]")) state.outputSettingsOpen = Boolean(target.open);
+    else if (target?.matches?.("[data-scope-group]")) state.scopeGroupOpen[target.dataset.scopeGroup] = Boolean(target.open);
   }, true);
   function changeOutput(el) {
     if (state.busy) return;

@@ -674,7 +674,7 @@ test('fresh BASIC includes every difficulty and unclassified metadata without pr
     assert.doesNotMatch(w.renderScopes(), /자동 출제/);
     // 난이도 is a primary control: 전체 is pressed and the note says unselected means every difficulty.
     assert.match(w.renderComposition(), /data-action="bucket-all"[^>]*aria-pressed="true"/);
-    assert.match(w.renderComposition(), /고르지 않으면 전체에서 출제합니다/);
+    assert.match(w.renderComposition(), /고르지 않으면 모든 단계에서 뽑습니다/);
   }
 });
 

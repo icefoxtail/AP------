@@ -61,7 +61,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderComposition, renderCompose, renderResult, renderResultSummary,
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderCompose, renderResult, renderResultSummary,
       renderResultEmpty, renderMobileActions, renderResultFinish, renderPaper, planRows, request, pool, review, generate, invalidate,
       saveAndAssign, currentSavedPaperIds, applyFiveMinuteViewGuard, FIVE_MINUTE_GUARD, filterMarkup, newDraft, saveWorkSignature,
       setHooks: hooks => {
@@ -447,4 +447,46 @@ test('?recipe= 로 들어오면 문항 수는 평가 방식이 정하고 저장�
   // 배분은 pool로 고정된다(가드가 select를 잠그기 전에도 상태는 고정).
   assert.equal(w.state.distribution, 'pool');
   assert.match(html, /id="count"/);
+});
+
+test('조건 순서는 학년 → 과목 → 단원 → 난이도 단계 → 문항 수이고, 문항 수 옆 설명은 숫자와 한 문장이다', () => {
+  const { w } = harness();
+  const unit = pickUnit(w);
+  w.state.scopes = [unit.key];
+  const left = w.renderCompose();
+  const order = ['data-action="compose-grade"', 'data-action="compose-subject"', 'data-scope=', 'id="compose-difficulty-label"', 'id="count"']
+    .map(token => left.indexOf(token));
+  assert.ok(order.every((position, i) => position > 0 && (!i || position > order[i - 1])), 'order ' + order);
+  assert.match(left, /고르지 않으면 모든 단계에서 뽑습니다./);
+  assert.match(left, /<span class="cz-amount-note">단원마다 10문항씩<\/span>/);
+  w.state.distribution = 'pool';
+  w.state.count = 20;
+  assert.match(w.renderComposition(), /<span class="cz-amount-note">전체 20문항<\/span>/);
+});
+
+test('단원 목록: 과목 묶음은 접을 수 있고 첫 묶음·고른 단원이 있는 묶음이 펼쳐져 있으며 머리줄에 모두 버튼이 있다', () => {
+  const { w } = harness();
+  pickUnit(w);
+  const html = w.renderScopes();
+  const groups = [...html.matchAll(/<details class="scope-group" data-scope-group="([^"]*)"( open)?>/g)];
+  assert.ok(groups.length >= 1);
+  assert.ok(groups[0][2], 'the first group is open');
+  assert.match(html, /<summary class="group-head"><h3>[^<]+<\/h3><button data-action="scope-group"/);
+  assert.doesNotMatch(html, /class="scope-group"><div class="group-head"/);
+});
+
+test('뽑은 뒤 화면 상태 줄에는 개발용 처리 시간이나 결과 요약을 내지 않는다(숨은 안내에만)', () => {
+  const { w, ctx } = harness();
+  const unit = pickUnit(w);
+  w.state.scopes = [unit.key];
+  w.state.distribution = 'pool';
+  w.state.count = 3;
+  const statusNode = ctx.document.getElementById('status');
+  statusNode.textContent = '이전 안내';
+  w.generate();
+  assert.ok(w.state.selected.length > 0);
+  assert.equal(statusNode.textContent, '', 'the visible status line is cleared');
+  assert.doesNotMatch(statusNode.textContent, /ms|중복 없음/);
+  assert.match(w.state.composeAnnounce, /\d+문항을 선택했습니다/);
+  assert.match(w.renderCompose(), /class="visually-hidden" role="status" aria-live="polite" data-cz-announce>\d+문항을 선택했습니다/);
 });
