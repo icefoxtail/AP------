@@ -990,6 +990,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - 저장소 루트에서 `node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out out/` 한 번으로 그린다. `item.json`은 `{"sourcePath":"archive/exams/....js","ordinal":3}`.
 - 결과는 `out/figure-result.json`의 `status`: `ARCHIVE_BOUND`(그림 `figure-solution.svg` 완성), `EXEMPT`/`UNSUPPORTED`(작성자 판단 그대로), `FAILED`(`stage`와 엔진 오류 `detail`을 보고 6에 따라 고친다).
 - 독립 관측기 검사는 이 안에서 함께 돈다. 시험지 해설 페이지 열림 검증은 하지 않는다.
+- 렌더는 시도마다 `out/attempts.jsonl`에 한 줄씩 덧붙여 기록한다(내부 재시도마다 `kind:"attempt"`, 렌더 끝에 `kind:"final"`; 같은 out 폴더로 다시 돌리면 이어서 쌓인다). 단계·오류 코드·소요 시간·물러서기 단계가 들어 있고, 그림과 `figure-result.json`은 바꾸지 않는다. 게시 때 복사하지 않는다. `node archive/tools/geometry-equation/ops/tools/attempt-stats.mjs <runs 폴더>`로 문항당 렌더 수와 오류 코드 분포를 집계한다.
 
 ### 3-43. 두 집단 비교 통계 다각형: 도수·상대도수를 두 개의 꺾은선으로 (`FREQUENCY_POLYGON` 두 series)
 
@@ -1181,6 +1182,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - 저장소 루트에서 `node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out out/` 한 번으로 그린다. `item.json`은 `{"sourcePath":"archive/exams/....js","ordinal":3}`.
 - 결과는 `out/figure-result.json`의 `status`: `ARCHIVE_BOUND`(그림 `figure-solution.svg` 완성), `EXEMPT`/`UNSUPPORTED`(작성자 판단 그대로), `FAILED`(`stage`와 엔진 오류 `detail`을 보고 6에 따라 고친다).
 - 독립 관측기 검사는 이 안에서 함께 돈다. 시험지 해설 페이지 열림 검증은 하지 않는다.
+- 렌더는 시도마다 `out/attempts.jsonl`에 한 줄씩 덧붙여 기록한다(내부 재시도마다 `kind:"attempt"`, 렌더 끝에 `kind:"final"`; 같은 out 폴더로 다시 돌리면 이어서 쌓인다). 단계·오류 코드·소요 시간·물러서기 단계가 들어 있고, 그림과 `figure-result.json`은 바꾸지 않는다. 게시 때 복사하지 않는다. `node archive/tools/geometry-equation/ops/tools/attempt-stats.mjs <runs 폴더>`로 문항당 렌더 수와 오류 코드 분포를 집계한다.
 
 ### Codex: 일차 그래프 세 경우 / 큰 계수 나무
 - `composite-panels-v1`의 `linearStack:true`: 정확히 세 개의 `piecewise-polynomial-spike-v1` 패널을 별도 세로축으로 쌓는다. 각 패널은 단일 일차 piece(계수 두 개, 비영 기울기), breakpoint 없음이다. 각 plot 높이220 제한을 지키고 식은 각 패널에 남긴다. 기존 이차 compositeHeader를 사용하지 않으며 혼합/개수 오류는 `LINEAR_STACK_INVALID`. 패널별 그래프 관측 및 최종 stack의640 CSS px 높이·폰트·충돌 검사는 그대로다. 예: `item118codexlinear3`.
