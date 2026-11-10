@@ -56,7 +56,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool, routeUrl, urlState, replaceUrlState, readUrl};
+    globalThis.workspaceTest = {setRender: fn => { render = fn; }, state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool, routeUrl, urlState, replaceUrlState, readUrl};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -64,7 +64,7 @@ function harness(data = structuredClone(catalog)) {
   w.state.finderIndex = core.buildFinderIndex(data);
   w.state.indexVersion = data.indexVersion;
   return {
-    w, ctx,
+    w, ctx, events,
     async click(dataset) {
       for (const callback of events.get('click') || [])
         await callback({ target: { closest: () => ({ dataset }) } });
@@ -1316,8 +1316,8 @@ test('a tampered backup is refused before anything reaches state or the page', (
   const before = JSON.stringify(plain(w.state.count)) + JSON.stringify(plain(w.state.round));
   for (const [key, value] of [
     ['count', '1"><img src=x onerror=alert(1)>'],
-    ['count', 1.5],
-    ['count', 99999],
+    ['count', null],
+    ['count', NaN],
     ['round', '<script>alert(1)</script>'],
     ['buckets', ['<img src=x>']],
     ['distribution', 'drop'],
@@ -1327,12 +1327,47 @@ test('a tampered backup is refused before anything reaches state or the page', (
     ['studentIds', [1, 2]],
     ['saveResultState', '<b>'],
     ['rows', [{ id: 'a', count: '9' }]],
+    ['custom', { a: { count: '5' } }],
   ]) {
     assert.throws(() => w.applyDraft({ ...good, [key]: value }), /형식이 올바르지 않아 불러올 수 없습니다/, `${key} must be rejected`);
   }
   assert.throws(() => w.applyDraft(null), /형식이 올바르지 않아/);
   assert.equal(JSON.stringify(plain(w.state.count)) + JSON.stringify(plain(w.state.round)), before, 'a rejected file changes nothing');
   assert.doesNotThrow(() => w.applyDraft(good), 'an untouched backup still restores');
+});
+
+test('counts a teacher can type (10.5, -3, 1200) are restored clamped instead of being refused', () => {
+  const { w } = harness();
+  const good = plain(w.draft());
+  for (const [typed, expected] of [[10.5, 11], [-3, 1], [1200, 400], [0, 1]]) {
+    w.applyDraft({ ...good, count: typed, custom: { k: { count: typed } }, rows: [{ id: 'k', count: typed }] });
+    assert.equal(w.state.count, expected, `count ${typed}`);
+    assert.equal(w.state.custom.k.count, expected, `custom count ${typed}`);
+    assert.equal(w.state.rows[0].count, typed === 1200 ? 1200 : Math.max(0, Math.round(typed)), `row count ${typed}`);
+  }
+});
+
+test('the unknown-result warning checkbox survives the input then change event order', async () => {
+  const { w, events } = harness();
+  const record = catalog.records.find(row => core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.saveBatchId = '00000000-0000-4000-8000-000000000198';
+  w.state.saveSignature = 'sig';
+  w.state.saveResultSignature = w.saveWorkSignature();
+  w.state.saveResultState = 'RESULT_UNKNOWN';
+  w.state.ackWarnings = false;
+  let renders = 0;
+  w.setRender(() => { renders++; });
+  const target = { id: 'ack-warnings-recovery', checked: true, dataset: {} };
+  // Dispatch in the browser's order: input first, then change on the same element.
+  for (const callback of events.get('input') || []) await callback({ target });
+  assert.equal(renders, 0, 'input must not re-render (it would replace the checkbox before change fires)');
+  for (const callback of events.get('change') || []) await callback({ target });
+  assert.equal(w.state.ackWarnings, true, 'the acknowledgement is recorded');
 });
 
 test('while a save result is unknown, output and backup stay reachable and only edits are locked', async () => {
