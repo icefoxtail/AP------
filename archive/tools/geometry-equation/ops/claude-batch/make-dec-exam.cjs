@@ -18,7 +18,7 @@ const ALLOWED=new Set(['FIGURE','REPLACE','KEEP_EXISTING','EXEMPT','UNSUPPORTED'
 const tri={};
 for(const m of md.matchAll(/^\|\s*Q?(\d+)\s*\|\s*([A-Z_]+)/gm))tri[+m[1]]=m[2];
 global.window={};eval(fs.readFileSync(js,'utf8'));
-const bank=window.questionBank;const ids=bank.map(q=>q.id);const img=new Set(bank.filter(q=>q.solutionImage).map(q=>q.id));
+const bank=window.questionBank??window.examData?.questions;const ids=bank.map(q=>q.id);const img=new Set(bank.filter(q=>q.solutionImage).map(q=>q.id));
 // 문항 id 가 숫자면 표의 번호 = id. 문자열 id(q01.., s01..)면 표/폴더의 번호 = 문제은행 순서(1부터): Q21..Q24 = s01..s04.
 // 결정 JSON 의 키와 build-pub 의 ord 는 문자열 id 그대로("q01"), 폴더 이름은 qNN(순번).
 const strIds=bank.some(q=>typeof q.id!=='number');

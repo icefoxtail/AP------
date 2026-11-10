@@ -51,7 +51,7 @@ function insertFields(text,obj,fields){
   if(text[last]===',')return text.slice(0,last+1)+eol+add+','+text.slice(last+1);
   return text.slice(0,last+1)+','+eol+add+text.slice(last+1);
 }
-const bankOf=text=>{const w={};vm.runInNewContext(text.replace(/^﻿/,''),{window:w});return w.questionBank;};
+const bankOf=text=>{const w={};vm.runInNewContext(text.replace(/^﻿/,''),{window:w});return w.questionBank??(Array.isArray(w.examData?.questions)?w.examData.questions:w.questionBank);};
 
 // ---- plan the work per exam -------------------------------------------------------------------------------------------------
 const byExam=new Map();for(const r of rows){const rel=r.src.split(/archive[\\/]/).pop();(byExam.get(rel)||byExam.set(rel,[]).get(rel)).push(r);}

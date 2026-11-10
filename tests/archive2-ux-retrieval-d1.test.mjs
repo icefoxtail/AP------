@@ -790,6 +790,9 @@ test("Recent workspace request carries its filter state and debounces refetches"
     replaceUrlState() {},
     render() {},
     status() {},
+    // loadRecent asks for a teacher session before calling the API (2026-11-10); this test is about the request itself.
+    teacherSessionOk: () => true,
+    showLoginNotice() { throw new Error("a teacher session must not see the login notice"); },
     setTimeout(callback, delay) { const id = nextTimer++; timers.set(id, { callback, delay }); return id; },
     clearTimeout(id) { timers.delete(id); },
     async api(url) {

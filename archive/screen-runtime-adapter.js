@@ -414,7 +414,7 @@ function createArchiveScreenRuntime() {
         if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
         // Source scripts are canonical archive data scripts. Fetch first so a
         // timed-out script can never execute later and overwrite source globals.
-        const names = ['questionBank', 'examTitle', 'examDisplayTitle'];
+        const names = ['questionBank', 'examData', 'examTitle', 'examDisplayTitle'];
         const originals = names.map(name => [name, Object.getOwnPropertyDescriptor(window, name)]);
         let raw, title, displayTitle;
         const script = document.createElement('script');
@@ -429,10 +429,11 @@ function createArchiveScreenRuntime() {
             script.textContent = `(function () {\n${sourceCode}\n}).call(window);`;
             document.body.appendChild(script);
             if (scriptError) throw scriptError;
-            const bank = window.questionBank;
+            // questionBank가 있으면 그대로 쓴다. 없을 때만 window.examData(별칭 줄이 없는 원본 시험지 형식)로 읽는다.
+            const bank = window.questionBank || window.examData;
             raw = Array.isArray(bank) ? bank : bank?.questions || bank?.problems;
             if (!Array.isArray(raw) || !raw.length) throw new Error('EMPTY_SOURCE_DATA');
-            title = window.examTitle || input.title || '수학 시험지';
+            title = window.examTitle || (!window.questionBank && (window.examData?.title || window.examData?.examTitle)) || input.title || '수학 시험지';
             displayTitle = window.examDisplayTitle || title;
         } finally {
             window.removeEventListener('error', onError);

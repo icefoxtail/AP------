@@ -27,7 +27,7 @@ def main():
         if len(entries)!=1: raise ValueError('TIE requires existing ledger entry')
         open_ords={i['ord'] for i in entries[0]['items'] if i['state'] not in ('PUBLISHED','EXEMPT')}
         if not allowed <= open_ords: raise ValueError('TIE requires OPEN ledger item')
-    script="const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify(c.window.questionBank.map(q=>({id:q.id,has:Object.prototype.hasOwnProperty.call(q,'solutionImage'),image:q.solutionImage||''}))))"
+    script="const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify((c.window.questionBank??c.window.examData?.questions).map(q=>({id:q.id,has:Object.prototype.hasOwnProperty.call(q,'solutionImage'),image:q.solutionImage||''}))))"
     bank=json.loads(run(['node','-e',script,ROOT/src],cwd=ROOT).stdout)
     bank={q['id']:q for q in bank}
     adir=ROOT/'archive/assets/images'/Path(src).stem

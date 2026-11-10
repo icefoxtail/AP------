@@ -226,7 +226,9 @@
   function issuesMarkup(paperId, history) {
     if (!history || history.state !== "ready") return "";
     const rows = history.byPaper.get(String(paperId)) || [];
-    if (!rows.length) return '<p class="paper-issues-note">아직 출제하지 않았습니다.</p>';
+    // Only the last HISTORY_DAYS days are known, so do not claim "never issued"; when the summary hit the
+    // server cap even that is unknown, so say nothing.
+    if (!rows.length) return history.truncated ? "" : `<p class="paper-issues-note">최근 ${HISTORY_DAYS}일 안에 출제한 기록이 없습니다.</p>`;
     const active = rows.filter((row) => !row.cancelled).length;
     const cancelled = rows.length - active;
     const summary = active
