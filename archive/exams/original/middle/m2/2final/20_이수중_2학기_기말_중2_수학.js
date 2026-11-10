@@ -25,8 +25,8 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>1. 다음 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳은 것은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q01.png\" alt=\"두 닮은 사각형 ABCD와 EFGH에서 AD=4cm, CD=12cm, 각 C=75도, EH=6cm, FG=10cm가 표시된 그림\" /></p>",
-      "question": "<p>1. 다음 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳은 것은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q01.png\" alt=\"두 닮은 사각형 ABCD와 EFGH에서 AD=4cm, CD=12cm, 각 C=75도, EH=6cm, FG=10cm가 표시된 그림\" /></p>",
+      "content": "<p>1. 다음 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳은 것은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q01.png\" alt=\"두 닮은 사각형 ABCD와 EFGH에서 AB=12cm, BC=15cm, CD=6cm, 각 A=80도, 각 B=75도, 각 C=85도가 표시된 그림\" /></p>",
+      "question": "<p>1. 다음 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳은 것은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q01.png\" alt=\"두 닮은 사각형 ABCD와 EFGH에서 AB=12cm, BC=15cm, CD=6cm, 각 A=80도, 각 B=75도, 각 C=85도가 표시된 그림\" /></p>",
       "choices": [
         "$\\overline{\\mathrm{EF}}=7\\text{ cm}$",
         "$\\overline{\\mathrm{GH}}=8\\text{ cm}$",
@@ -37,8 +37,8 @@ window.examData = {
       "images": [
         "assets/images/20_이수중_2학기_기말_중2_수학/q01.png"
       ],
-      "answer": "③",
-      "solution": "[원문 조건 및 구할 대상]\n$\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때 선지 중 옳은 것을 고른다.\n조건: $\\overline{\\mathrm{AD}} = 4\\text{ cm}, \\overline{\\mathrm{CD}} = 12\\text{ cm}, \\angle\\mathrm{C} = 75^\\circ, \\overline{\\mathrm{EH}} = 6\\text{ cm}, \\overline{\\mathrm{FG}} = 10\\text{ cm}$.\n\n[핵심 발상/공식/보조선]\n닮은 두 다각형의 핵심 성질:\n1. 대응하는 변의 길이의 비는 모두 일정하며 이를 닮음비라 한다.\n2. 대응하는 각의 크기는 각각 서로 같다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n대응하는 두 변 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{EH}}$의 길이로부터:\n$\\text{닮음비} = \\overline{\\mathrm{AD}} : \\overline{\\mathrm{EH}} = 4 : 6 = 2 : 3$\n\n2단계: 각 선지별 수치 및 각도 판정\n- 대응각: 꼭짓점 $\\mathrm{C}$에 대응하는 꼭짓점은 $\\mathrm{G}$이므로, $\\angle\\mathrm{G} = \\angle\\mathrm{C} = 75^\\circ$이다. (선지 ③ 참)\n- 대응변 $\\overline{\\mathrm{GH}}$의 길이: $\\overline{\\mathrm{CD}}$에 대응하므로\n  $\\overline{\\mathrm{CD}} : \\overline{\\mathrm{GH}} = 2 : 3 \\implies 12 : \\overline{\\mathrm{GH}} = 2 : 3 \\implies 2\\overline{\\mathrm{GH}} = 36 \\implies \\overline{\\mathrm{GH}} = 18\\text{ cm}$ (선지 ② 거짓)\n- 대응변 $\\overline{\\mathrm{EF}}$: 대응변은 $\\overline{\\mathrm{AB}}$이지만 $\\overline{\\mathrm{AB}}$의 길이가 주어지지 않아 길이를 결정할 수 없다. (선지 ① 거짓)\n- $\\angle\\mathrm{H}$: 사각형의 다른 내각의 크기를 알 수 없으므로 $\\angle\\mathrm{H}$의 크기를 $120^\\circ$로 단정할 수 없다. (선지 ④ 거짓)\n- 비례식: $\\overline{\\mathrm{DC}}$의 대응변은 $\\overline{\\mathrm{HG}}$이므로 $\\overline{\\mathrm{DC}} : \\overline{\\mathrm{HG}} = 2 : 3$이다. 대응변이 아닌 $\\overline{\\mathrm{EF}}$와의 비가 $3 : 2$라는 것은 옳지 않다. (선지 ⑤ 거짓)\n\n[경우 나눔 및 5개 선지 검토]\n① $\\overline{\\mathrm{EF}}=7\\text{ cm}$: 대응변 $\\overline{\\mathrm{AB}}$의 길이를 알 수 없어 결정 불가 (거짓)\n② $\\overline{\\mathrm{GH}}=8\\text{ cm}$: 닮음비 $2:3$에 의해 $\\overline{\\mathrm{GH}}=18\\text{ cm}$이므로 거짓\n③ $\\angle\\mathrm{G}=75^\\circ$: $\\angle\\mathrm{C}$의 대응각으로 크기가 같으므로 참 (정답)\n④ $\\angle\\mathrm{H}=120^\\circ$: 각도의 근거가 없으므로 거짓\n⑤ $\\overline{\\mathrm{DC}} : \\overline{\\mathrm{EF}} = 3:2$: 대응변의 비가 아니므로 거짓\n\n[명확한 결론]\n따라서 옳은 것은 ③이다."
+      "answer": "④",
+      "solution": "[원문 조건 및 구할 대상]\n$\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$이고 그림에서 $\\overline{\\mathrm{AB}}=12\\text{ cm}$, $\\overline{\\mathrm{BC}}=15\\text{ cm}$, $\\overline{\\mathrm{CD}}=6\\text{ cm}$, $\\angle\\mathrm{A}=80^\\circ$, $\\angle\\mathrm{B}=75^\\circ$, $\\angle\\mathrm{C}=85^\\circ$, $\\overline{\\mathrm{FG}}=10\\text{ cm}$이다. 옳은 선지를 고른다.\n\n[핵심 발상/공식/보조선]\n닮음의 순서에 따라 $\\mathrm{A}\\leftrightarrow\\mathrm{E}$, $\\mathrm{B}\\leftrightarrow\\mathrm{F}$, $\\mathrm{C}\\leftrightarrow\\mathrm{G}$, $\\mathrm{D}\\leftrightarrow\\mathrm{H}$이다. 대응각은 같고, 대응변의 길이의 비는 일정하다. 사각형의 내각의 합은 $360^\\circ$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\angle\\mathrm{D}$와 $\\angle\\mathrm{H}$ 계산\n$\\angle\\mathrm{D}=360^\\circ-(80^\\circ+75^\\circ+85^\\circ)=120^\\circ$이고, 대응각이므로 $\\angle\\mathrm{H}=120^\\circ$이다.\n\n2단계: 닮음비와 선분 길이 확인\n$\\overline{\\mathrm{BC}} : \\overline{\\mathrm{FG}}=15:10=3:2$이다. 따라서 $\\overline{\\mathrm{EF}}=12\\times\\dfrac{2}{3}=8\\text{ cm}$이고, $\\overline{\\mathrm{GH}}=6\\times\\dfrac{2}{3}=4\\text{ cm}$이다. 또 $\\overline{\\mathrm{DC}} : \\overline{\\mathrm{EF}}=6:8=3:4$이다.\n\n[경우 나눔 및 5개 선지 검토]\n① $\\overline{\\mathrm{EF}}=7\\text{ cm}$: 실제로는 $8\\text{ cm}$이므로 거짓.\n② $\\overline{\\mathrm{GH}}=8\\text{ cm}$: 실제로는 $4\\text{ cm}$이므로 거짓.\n③ $\\angle\\mathrm{G}=75^\\circ$: $\\angle\\mathrm{G}=\\angle\\mathrm{C}=85^\\circ$이므로 거짓.\n④ $\\angle\\mathrm{H}=120^\\circ$: 계산 결과와 일치하므로 참.\n⑤ $\\overline{\\mathrm{DC}} : \\overline{\\mathrm{EF}}=3:2$: 실제 비는 $3:4$이므로 거짓.\n\n[명확한 결론]\n따라서 옳은 것은 ④이다."
     },
     {
       "id": 2,
@@ -62,8 +62,8 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>2. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q02.png\" alt=\"두 닮은 삼각형 ABC와 DEF에서 BC=12cm, DE=6cm, EF=9cm, DF=6cm가 표시된 그림\" /></p>",
-      "question": "<p>2. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q02.png\" alt=\"두 닮은 삼각형 ABC와 DEF에서 BC=12cm, DE=6cm, EF=9cm, DF=6cm가 표시된 그림\" /></p>",
+      "content": "<p>2. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q02.png\" alt=\"닮은 삼각형 ABC와 DEF에서 AB=6cm, 각 B=110도, FD=12cm, DE=9cm가 표시된 그림\" /></p>",
+      "question": "<p>2. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면? [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q02.png\" alt=\"닮은 삼각형 ABC와 DEF에서 AB=6cm, 각 B=110도, FD=12cm, DE=9cm가 표시된 그림\" /></p>",
       "choices": [
         "$7\\text{ cm}$",
         "$8\\text{ cm}$",
@@ -75,7 +75,7 @@ window.examData = {
         "assets/images/20_이수중_2학기_기말_중2_수학/q02.png"
       ],
       "answer": "②",
-      "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, 선분 $\\overline{\\mathrm{AC}}$의 길이를 구한다.\n조건: $\\overline{\\mathrm{BC}} = 12\\text{ cm}, \\overline{\\mathrm{DE}} = 6\\text{ cm}, \\overline{\\mathrm{EF}} = 9\\text{ cm}, \\overline{\\mathrm{DF}} = 6\\text{ cm}$.\n\n[핵심 발상/공식/보조선]\n대응변의 길이의 비는 일정하다:\n$\\overline{\\mathrm{BC}} : \\overline{\\mathrm{EF}} = \\overline{\\mathrm{AC}} : \\overline{\\mathrm{DF}}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n$\\overline{\\mathrm{BC}} : \\overline{\\mathrm{EF}} = 12 : 9 = 4 : 3$\n\n2단계: $\\overline{\\mathrm{AC}}$의 길이 계산\n$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{DF}} = 4 : 3$\n$\\overline{\\mathrm{AC}} : 6 = 4 : 3 \\implies 3\\overline{\\mathrm{AC}} = 24 \\implies \\overline{\\mathrm{AC}} = 8\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $7\\text{ cm}$: 오답\n② $8\\text{ cm}$: 계산 결과와 일치함 (정답)\n③ $9\\text{ cm}$: 오답\n④ $10\\text{ cm}$: 오답\n⑤ $11\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{AC}}$의 길이는 ② $8\\text{ cm}$이다."
+      "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$이고 그림에서 $\\overline{\\mathrm{AB}}=6\\text{ cm}$, $\\angle\\mathrm{B}=110^\\circ$, $\\overline{\\mathrm{DE}}=9\\text{ cm}$, $\\overline{\\mathrm{DF}}=12\\text{ cm}$이다. $\\overline{\\mathrm{AC}}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n닮음의 순서에 따라 $\\mathrm{A}\\leftrightarrow\\mathrm{D}$, $\\mathrm{B}\\leftrightarrow\\mathrm{E}$, $\\mathrm{C}\\leftrightarrow\\mathrm{F}$이므로 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{DE}}$, $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{DF}}$가 각각 대응한다.\n\n[연속 등식 및 충분한 중간 계산]\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{DE}}=6:9=2:3$이므로 $\\overline{\\mathrm{AC}} : \\overline{\\mathrm{DF}}=2:3$이다.\n$\\overline{\\mathrm{AC}} : 12=2:3 \\implies 3\\overline{\\mathrm{AC}}=24 \\implies \\overline{\\mathrm{AC}}=8\\text{ cm}$.\n\n[경우 나눔 및 5개 선지 검토]\n① $7\\text{ cm}$: 오답.\n② $8\\text{ cm}$: 계산 결과와 일치함 (정답).\n③ $9\\text{ cm}$: 오답.\n④ $10\\text{ cm}$: 오답.\n⑤ $11\\text{ cm}$: 오답.\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{AC}}$의 길이는 ② $8\\text{ cm}$이다."
     },
     {
       "id": 3,
@@ -136,8 +136,8 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>4. 다음 그림에서 두 삼각기둥은 서로 닮은 도형이다. $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q04.png\" alt=\"두 닮은 삼각기둥에서 첫 번째 기둥은 AB=6cm, AC=4cm, 높이=x이고, 두 번째 기둥은 A 프라임 B 프라임=9cm, A 프라임 C 프라임=y, 높이=12cm가 표시된 그림\" /></p>",
-      "question": "<p>4. 다음 그림에서 두 삼각기둥은 서로 닮은 도형이다. $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q04.png\" alt=\"두 닮은 삼각기둥에서 첫 번째 기둥은 AB=6cm, AC=4cm, 높이=x이고, 두 번째 기둥은 A 프라임 B 프라임=9cm, A 프라임 C 프라임=y, 높이=12cm가 표시된 그림\" /></p>",
+      "content": "<p>4. 다음 그림에서 두 삼각기둥은 서로 닮은 도형이다. $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q04.png\" alt=\"서로 닮은 삼각기둥에서 AB=4cm, AC=6cm, AD=x이고 A′B′=y, A′C′=9cm, A′D′=12cm이며 AB와 A′B′가 대응하는 그림\" /></p>",
+      "question": "<p>4. 다음 그림에서 두 삼각기둥은 서로 닮은 도형이다. $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q04.png\" alt=\"서로 닮은 삼각기둥에서 AB=4cm, AC=6cm, AD=x이고 A′B′=y, A′C′=9cm, A′D′=12cm이며 AB와 A′B′가 대응하는 그림\" /></p>",
       "choices": [
         "$14$",
         "$15$",
@@ -149,7 +149,7 @@ window.examData = {
         "assets/images/20_이수중_2학기_기말_중2_수학/q04.png"
       ],
       "answer": "①",
-      "solution": "[원문 조건 및 구할 대상]\n두 닮은 삼각기둥에서 대응변 $\\overline{\\mathrm{AB}}=6\\text{ cm}, \\overline{\\mathrm{A'B'}}=9\\text{ cm}$이고, 첫 번째 삼각기둥의 밑면 변이 $4\\text{ cm}$, 높이가 $x$이며, 두 번째 삼각기둥의 대응 밑면 변이 $y$, 높이가 $12\\text{ cm}$일 때, $x+y$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n닮은 두 입체도형에서 대응하는 모든 모서리의 길이의 비는 일정하다:\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{A'B'}} = \\text{닮음비}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n$\\text{닮음비} = \\overline{\\mathrm{AB}} : \\overline{\\mathrm{A'B'}} = 6 : 9 = 2 : 3$\n\n2단계: 높이로부터 $x$ 구하기\n$x : 12 = 2 : 3 \\implies 3x = 24 \\implies x = 8$\n\n3단계: 밑면 모서리로부터 $y$ 구하기\n$4 : y = 2 : 3 \\implies 2y = 12 \\implies y = 6$\n\n4단계: $x+y$의 값 계산\n$x + y = 8 + 6 = 14$\n\n[경우 나눔 및 5개 선지 검토]\n① $14$: 계산 결과와 일치함 (정답)\n② $15$: 오답\n③ $16$: 오답\n④ $17$: 오답\n⑤ $18$: 오답\n\n[명확한 결론]\n따라서 $x+y$의 값은 ① $14$이다."
+      "solution": "[원문 조건 및 구할 대상]\n두 삼각기둥은 닮았고 $\\overline{\\mathrm{AB}}$에 대응하는 변은 $\\overline{\\mathrm{A'B'}}$이다. 그림에서 $\\overline{\\mathrm{AB}}=4\\text{ cm}$, $\\overline{\\mathrm{AC}}=6\\text{ cm}$, $\\overline{\\mathrm{A'C'}}=9\\text{ cm}$, $\\overline{\\mathrm{AD}}=x$, $\\overline{\\mathrm{A'D'}}=12\\text{ cm}$, $\\overline{\\mathrm{A'B'}}=y$이다. $x+y$를 구한다.\n\n[핵심 발상/공식/보조선]\n닮은 입체도형의 대응하는 모든 모서리의 길이의 비는 같다. $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{A'C'}}$를 이용해 작은 삼각기둥과 큰 삼각기둥의 길이의 비를 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{A'C'}}=6:9=2:3$이므로 닮음비는 작은 도형 대 큰 도형 $2:3$이다.\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{A'B'}}=2:3$에서 $4:y=2:3$이므로 $y=6$이다.\n$\\overline{\\mathrm{AD}} : \\overline{\\mathrm{A'D'}}=2:3$에서 $x:12=2:3$이므로 $x=8$이다.\n따라서 $x+y=8+6=14$이다.\n\n[경우 나눔 및 5개 선지 검토]\n① $14$: 계산 결과와 일치함 (정답).\n② $15$: 오답.\n③ $16$: 오답.\n④ $17$: 오답.\n⑤ $18$: 오답.\n\n[명확한 결론]\n따라서 $x+y$의 값은 ① $14$이다."
     },
     {
       "id": 5,
@@ -243,8 +243,8 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>7. 다음 그림에서 $\\overline{\\mathrm{CH}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q07.png\" alt=\"직각삼각형 ABC에서 꼭짓점 A에서 빗변 BC에 내린 수선의 발이 H이고 AB=8cm, BH=4cm가 표시된 그림\" /></p>",
-      "question": "<p>7. 다음 그림에서 $\\overline{\\mathrm{CH}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q07.png\" alt=\"직각삼각형 ABC에서 꼭짓점 A에서 빗변 BC에 내린 수선의 발이 H이고 AB=8cm, BH=4cm가 표시된 그림\" /></p>",
+      "content": "<p>7. 다음 그림에서 $\\overline{\\mathrm{CH}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q07.png\" alt=\"직각삼각형 ABC에서 각 A=90도, AH는 BC에 수직이고 AH=8cm, BH=4cm, CH=xcm가 표시된 그림\" /></p>",
+      "question": "<p>7. 다음 그림에서 $\\overline{\\mathrm{CH}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q07.png\" alt=\"직각삼각형 ABC에서 각 A=90도, AH는 BC에 수직이고 AH=8cm, BH=4cm, CH=xcm가 표시된 그림\" /></p>",
       "choices": [
         "$12\\text{ cm}$",
         "$14\\text{ cm}$",
@@ -255,8 +255,8 @@ window.examData = {
       "images": [
         "assets/images/20_이수중_2학기_기말_중2_수학/q07.png"
       ],
-      "answer": "①",
-      "solution": "[원문 조건 및 구할 대상]\n$\\angle\\mathrm{A}=90^\\circ$이고 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$인 직각삼각형 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\text{ cm}, \\overline{\\mathrm{BH}}=4\\text{ cm}$일 때, 선분 $\\overline{\\mathrm{CH}}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n직각삼각형의 닮음 공식:\n$\\overline{\\mathrm{AB}}^2 = \\overline{\\mathrm{BH}} \\times \\overline{\\mathrm{BC}}$\n빗변 $\\overline{\\mathrm{BC}}$의 길이를 구한 후, $\\overline{\\mathrm{CH}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{BH}}$로 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\overline{\\mathrm{BC}}$의 길이 계산\n$\\overline{\\mathrm{AB}}^2 = \\overline{\\mathrm{BH}} \\times \\overline{\\mathrm{BC}}$\n$8^2 = 4 \\times \\overline{\\mathrm{BC}}$\n$64 = 4 \\times \\overline{\\mathrm{BC}} \\implies \\overline{\\mathrm{BC}} = \\dfrac{64}{4} = 16\\text{ cm}$\n\n2단계: $\\overline{\\mathrm{CH}}$의 길이 계산\n$\\overline{\\mathrm{BC}} = \\overline{\\mathrm{BH}} + \\overline{\\mathrm{CH}}$이므로:\n$\\overline{\\mathrm{CH}} = 16 - 4 = 12\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $12\\text{ cm}$: 계산 결과와 일치함 (정답)\n② $14\\text{ cm}$: 오답\n③ $16\\text{ cm}$: 빗변 $\\overline{\\mathrm{BC}}$의 길이\n④ $18\\text{ cm}$: 오답\n⑤ $20\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{CH}}$의 길이는 ① $12\\text{ cm}$이다."
+      "answer": "③",
+      "solution": "[원문 조건 및 구할 대상]\n$\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}}\\perp\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AH}}=8\\text{ cm}$, $\\overline{\\mathrm{BH}}=4\\text{ cm}$이다. $\\overline{\\mathrm{CH}}=x$를 구한다.\n\n[핵심 발상/공식/보조선]\n직각삼각형에서 빗변에 내린 높이의 제곱은 빗변을 나눈 두 선분의 곱과 같다: $\\overline{\\mathrm{AH}}^2=\\overline{\\mathrm{BH}}\\cdot\\overline{\\mathrm{CH}}$.\n\n[연속 등식 및 충분한 중간 계산]\n$8^2=4x \\implies 64=4x \\implies x=16$.\n\n[경우 나눔 및 5개 선지 검토]\n① $12\\text{ cm}$: 오답.\n② $14\\text{ cm}$: 오답.\n③ $16\\text{ cm}$: 계산 결과와 일치함 (정답).\n④ $18\\text{ cm}$: 오답.\n⑤ $20\\text{ cm}$: 오답.\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{CH}}=16\\text{ cm}$이다."
     },
     {
       "id": 8,
@@ -280,8 +280,8 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>8. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$를 꼭짓점 $\\mathrm{C}$가 변 $\\mathrm{AD}$ 위의 점 $\\mathrm{P}$에 오도록 접었을 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q08.png\" alt=\"직사각형 ABCD에서 점 C를 점 P로 접어 올렸을 때 AB=12cm, AP=9cm, BC=x가 표시된 그림\" /></p>",
-      "question": "<p>8. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$를 꼭짓점 $\\mathrm{C}$가 변 $\\mathrm{AD}$ 위의 점 $\\mathrm{P}$에 오도록 접었을 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q08.png\" alt=\"직사각형 ABCD에서 점 C를 점 P로 접어 올렸을 때 AB=12cm, AP=9cm, BC=x가 표시된 그림\" /></p>",
+      "content": "<p>8. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$를 꼭짓점 $\\mathrm{C}$가 변 $\\mathrm{AD}$ 위의 점 $\\mathrm{P}$에 오도록 접었을 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q08.png\" alt=\"직사각형 ABCD에서 AB=9cm, C를 AD 위의 P로 접었을 때 PD=3cm, DQ=4cm, BP=xcm이고 접는 선이 BQ인 그림\" /></p>",
+      "question": "<p>8. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$를 꼭짓점 $\\mathrm{C}$가 변 $\\mathrm{AD}$ 위의 점 $\\mathrm{P}$에 오도록 접었을 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q08.png\" alt=\"직사각형 ABCD에서 AB=9cm, C를 AD 위의 P로 접었을 때 PD=3cm, DQ=4cm, BP=xcm이고 접는 선이 BQ인 그림\" /></p>",
       "choices": [
         "$10$",
         "$12$",
@@ -293,7 +293,7 @@ window.examData = {
         "assets/images/20_이수중_2학기_기말_중2_수학/q08.png"
       ],
       "answer": "⑤",
-      "solution": "[원문 조건 및 구할 대상]\n직사각형 $\\mathrm{ABCD}$에서 변 $\\overline{\\mathrm{BC}}$가 접혀서 $\\overline{\\mathrm{BP}}$가 되었을 때, $x = \\overline{\\mathrm{BC}}$의 값을 구한다.\n조건: 직사각형의 세로 $\\overline{\\mathrm{AB}} = 12\\text{ cm}$, $\\overline{\\mathrm{AP}} = 9\\text{ cm}$.\n\n[핵심 발상/공식/보조선]\n1. 접은 도형의 성질에 의해 $\\overline{\\mathrm{BP}} = \\overline{\\mathrm{BC}} = x$이다.\n2. $\\triangle\\mathrm{ABP}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형이므로 피타고라스 정리를 적용할 수 있다:\n$\\overline{\\mathrm{BP}}^2 = \\overline{\\mathrm{AB}}^2 + \\overline{\\mathrm{AP}}^2$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 피타고라스 정리 적용\n$\\overline{\\mathrm{BP}}^2 = 12^2 + 9^2$\n$\\overline{\\mathrm{BP}}^2 = 144 + 81 = 225$\n\n2단계: $\\overline{\\mathrm{BP}}$ 및 $x$ 계산\n$\\overline{\\mathrm{BP}} = \\sqrt{225} = 15$\n접은 변의 길이가 같으므로 $x = \\overline{\\mathrm{BC}} = \\overline{\\mathrm{BP}} = 15$이다.\n\n[경우 나눔 및 5개 선지 검토]\n① $10$: 오답\n② $12$: $\\overline{\\mathrm{AB}}$의 길이\n③ $13$: 오답\n④ $14$: 오답\n⑤ $15$: 계산 결과와 일치함 (정답)\n\n[명확한 결론]\n따라서 $x$의 값은 ⑤ $15$이다."
+      "solution": "[원문 조건 및 구할 대상]\n직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=9\\text{ cm}$이고, 꼭짓점 $\\mathrm{C}$를 변 $\\overline{\\mathrm{AD}}$ 위의 점 $\\mathrm{P}$로 접었다. 그림에서 $\\overline{\\mathrm{PD}}=3\\text{ cm}$, $\\overline{\\mathrm{DQ}}=4\\text{ cm}$이며, 접는 선은 $\\overline{\\mathrm{BQ}}$이다. $\\overline{\\mathrm{BP}}=x$를 구한다.\n\n[핵심 발상/공식/보조선]\n접을 때 접는 선 위의 점 $\\mathrm{B}$는 움직이지 않으므로 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 직사각형에서 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}$이고, $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$ 위에 있으므로 $\\overline{\\mathrm{AP}}=\\overline{\\mathrm{AD}}-\\overline{\\mathrm{PD}}$이다.\n\n[연속 등식 및 충분한 중간 계산]\n$\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}=x$이므로 $\\overline{\\mathrm{AP}}=x-3$이다. 직각삼각형 $\\triangle\\mathrm{ABP}$에서 피타고라스 정리를 적용하면\n$x^2=9^2+(x-3)^2$,\n$x^2=81+x^2-6x+9$,\n$6x=90$, 따라서 $x=15$이다.\n접힘 조건과 그림의 수치도 일치한다: $\\overline{\\mathrm{QC}}=\\overline{\\mathrm{DC}}-\\overline{\\mathrm{DQ}}=9-4=5\\text{ cm}$이고, 접힘으로 $\\overline{\\mathrm{QP}}=\\overline{\\mathrm{QC}}=5\\text{ cm}$이다. $\\triangle\\mathrm{DPQ}$는 $3$-$4$-$5$ 직각삼각형이다.\n\n[경우 나눔 및 5개 선지 검토]\n① $10$: 오답.\n② $12$: 오답.\n③ $13$: 오답.\n④ $14$: 오답.\n⑤ $15$: 계산 결과와 일치함 (정답).\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{BP}}=15$이다."
     },
     {
       "id": 9,
