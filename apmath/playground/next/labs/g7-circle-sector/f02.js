@@ -94,7 +94,7 @@
   function semi(id, name, cx, cy, r, dir, sign) {
     const pts = halfArc(cx, cy, fnum(r), dir);
     return {
-      id, name, sign, pts,
+      id, name, sign, pts, center: [cx, cy], radius: r, radiusSide: dir >= 0 ? 1 : -1,
       area: V(fmul(sq(r), HALF)),
       aExpr: `π×${rt(r)}²×½`,
       aTex: `\\pi\\times ${rtex(r)}^2\\times\\frac12`,
@@ -104,7 +104,7 @@
   function disk(id, name, cx, cy, r, sign) {
     const pts = arcPts(cx, cy, fnum(r), 0, 2 * PI);
     return {
-      id, name, sign, pts,
+      id, name, sign, pts, center: [cx, cy], radius: r, radiusSide: 1,
       area: V(sq(r)),
       aExpr: `π×${rt(r)}²`,
       aTex: `\\pi\\times ${rtex(r)}^2`,
@@ -236,10 +236,13 @@
       G.path([A, B], { color: 'ink', width: 1.8, alpha: 0.8 * al });
       G.path([A, B2], { color: 'ink', width: 1.8, alpha: 0.8 * al });
       if (!quiet) measure(G, A, O, -17, `${r} cm`, al, { color: 'amber' });
-      const ra = Math.min(0.5 * r, 1.4);
-      G.path(arcPts(0, 0, ra, 0, T), { color: 'amber', width: 2.8, alpha: al });
-      const ta = T / 2, lr = ra + 24 * G.px;
-      if (th >= 25) G.text(lr * Math.cos(ta), lr * Math.sin(ta), `${th}°`, { color: 'amber', size: 16, alpha: al });
+      // 해설의 부채꼴 단계는 조각이 돌아오는 중에도 extra 에서 각을 유지합니다.
+      if (!(quiet && st.lesson)) {
+        const ra = Math.min(0.5 * r, 1.4);
+        G.path(arcPts(0, 0, ra, 0, T), { color: 'amber', width: 2.8, alpha: al });
+        const ta = T / 2, lr = ra + 24 * G.px;
+        if (th >= 25) G.text(lr * Math.cos(ta), lr * Math.sin(ta), `${th}°`, { color: 'amber', size: 16, alpha: al });
+      }
       if (!quiet) { dotAt(G, O, al, 3.6); dotAt(G, O2, al, 3.6); }
       dotAt(G, A, al); dotAt(G, B, al); dotAt(G, B2, al);
       G.text(A[0], A[1], 'A', { dx: -14, dy: 14, alpha: al });
@@ -256,6 +259,11 @@
         const inN = 19 * G.px, mx = 1.5 * r * Math.cos(T), my = 1.5 * r * Math.sin(T);
         G.text(1.5 * r, inN, `${2 * r} cm`, { color: 'ink', size: 17 });
         G.text(mx + inN * Math.sin(T), my - inN * Math.cos(T), `${2 * r} cm`, { color: 'ink', size: 17 });
+        if (st.lesson) {
+          const ra = Math.min(0.5 * r, 1.4), ta = T / 2, lr = ra + 24 * G.px;
+          G.path(arcPts(0, 0, ra, 0, T), { color: 'amber', width: 2.8 });
+          G.text(lr * Math.cos(ta), lr * Math.sin(ta), `${th}°`, { color: 'amber', size: 16 });
+        }
       }
       if (f.congruent) {
         G.path(S2, { close: true, fill: 'green', fillAlpha: 0.2, color: 'green', width: 3 });
@@ -485,7 +493,9 @@
       const steps = spec.steps(P, m);
       const k = clamp(s.step || 1, 1, steps.length);
       const v = (steps[k - 1] || {}).v || {};
-      return { tab, mode: v.mode || 'area', target: v.u == null ? 1 : v.u, lab: v.lab == null ? 3 : v.lab, flags: v.flags || {}, step: k };
+      const labelLevel = v.lab == null ? 3 : v.lab;
+      // lesson-only: 숫자의 뜻을 짚는 자막이 먼저 나오고, f02Read=true 인 계산 자막부터 수식·값을 엽니다.
+      return { tab, mode: v.mode || 'area', target: v.u == null ? 1 : v.u, lab: s.lessonOn && s.f02Read === false ? Math.min(labelLevel, 1) : labelLevel, flags: v.flags || {}, step: k, lesson: !!s.lessonOn };
     }
     return { tab: 'explore', mode: s.f02mode === 'arc' && m.hasArc ? 'arc' : 'area', target: s[gid(spec.id, 'u')] || 0, lab: 3, flags: {} };
   }
@@ -559,6 +569,18 @@
     if (m.extra && !b.thumb) m.extra(G, st, u);
     // 4) 처음 모양의 길이·이름
     if (homeA > 0.01 && m.home) m.home(G, homeA, st);
+
+    // 해설에서 조각이 갈라져도 자막이 말하는 각 반지름을 그림에서 확인할 수 있게 합니다.
+    // 탐구·문제와 수동 정리의 그리기 명령은 바꾸지 않습니다.
+    if (st.lesson && s.f02Dims && mode !== 'none' && st.lab <= 2 && u > 0.35 && !b.thumb) {
+      order.forEach((id) => {
+        const it = m.byId[id];
+        if (!it.center || !it.radius) return;
+        const r = fnum(it.radius), c = [it.center[0] + u * m.dx[id], it.center[1]];
+        dotAt(G, c, faded(id), 3.4);
+        measure(G, c, [c[0] + r, c[1]], 14 * it.radiusSide, `r = ${rt(it.radius)} cm`, faded(id), { size: 14, gap: 12 });
+      });
+    }
 
     // 5) 한 줄로 늘어놓은 조각의 이름·식·값
     const labA = clamp((u - 0.55) / 0.3, 0, 1);
@@ -806,9 +828,10 @@
     const arTexE = texJoin(its, (it) => it.aTex);
     const arTexV = texJoin(its, (it) => vtex(it.area));
     const arAreaWord = its[0].id === 'big' && its[0].aExpr.indexOf('½') < 0 ? '원의 넓이는 π × (반지름)² 이므로' : '반원의 넓이는 π × (반지름)² × ½ 이므로';
+    const arcWord = arcs.every((it) => it.arc.expr.indexOf('½') < 0) ? '원의 둘레는 2π × (반지름)이므로' : '호의 길이는 2π × (반지름) × ½ 이므로';
     return [
       { t: `❶ (1) 둘레: 색칠한 부분의 둘레는 ${arcs.map((it) => it.name).join(' · ')}의 호를 모두 더한 길이예요. 곧은 선(지름)은 둘레에 넣지 않아요.`, v: { mode: 'arc', u: 1, lab: 1 } },
-      { t: `호의 길이는 2π × (반지름) × ½ 이므로 $${aTexE}$`, v: { mode: 'arc', u: 1, lab: 2 }, chip: { k: '둘레', tex: aTexE, color: 'sky' } },
+      { t: `${arcWord} $${aTexE}$`, v: { mode: 'arc', u: 1, lab: 2 }, chip: { k: '둘레', tex: aTexE, color: 'sky' } },
       { t: `둘레 $=${aTexV}=${vtex(m.perim)}$ (cm)`, v: { mode: 'arc', u: 1, lab: 3 }, chip: { k: '둘레', tex: `${aTexV}=${vtex(m.perim)}`, color: 'sky' } },
       { t: `❷ (2) 넓이: 색칠한 부분 = ${namesJoin(its)}. 초록은 더하고 분홍은 빼요.`, v: { mode: 'area', u: 1, lab: 1 } },
       { t: `${arAreaWord} $${arTexE}$`, v: { mode: 'area', u: 1, lab: 2 }, chip: { k: '넓이', tex: arTexE, color: 'sky' } },
@@ -1176,6 +1199,7 @@
       }
       // 해설 진입 화면(s.lessonEntry): 탐구 탭의 결론 칩(넓이·둘레의 답)을 ▶ 를 누르기 전에는 보이지 않습니다. 탐구·정리·문제 화면과 해설 재생 중(정리 탭 step 칩)은 그대로입니다.
       if (s.lessonEntry) v.chips = [];
+      if (s.lessonOn && lab && lab.tab === 'review' && s.f02Read === false) { v.chips = []; v.formula = ''; }
       return v;
     };
     return scene;

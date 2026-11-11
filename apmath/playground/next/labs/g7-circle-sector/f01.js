@@ -242,8 +242,14 @@
       // 앞서 끝까지 재생했어도 정리의 앞 단계에서는 결과를 먼저 그리지 않습니다.
       const limit = tab === 'review' ? timeline[clamp(step, 0, timeline.length - 1)] : 1;
       const t = Math.min(clamp(+s[kt] || 0, 0, 1), limit);
-      // lessonHold: 해설 재생 중(s.lessonOn)에는 해설이 K('show') 를 켤 때까지 결과(정답) 라벨·캡션·칩을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
-      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step, lessonHold: !!(s.lessonOn && !s[K('show')]) }, phaseOf(t), {
+      // 해설은 계산을 설명한 뒤에만 그 값을 공개합니다. 진입 화면에서는
+      // 앞선 재생의 공개 상태가 남아 있어도 전부 닫고, 직접 해 보기에는 적용하지 않습니다.
+      const lesson = !problem && !!(s.lessonOn || s.lessonEntry), entry = !!s.lessonEntry;
+      const open = (key) => !lesson || (!entry && !!s[K(key)]);
+      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step,
+        lesson, lessonHold: !open('show'), wholeOpen: open('wholeShow'), partOpen: open('partShow'), givenOpen: open('givenShow'),
+        edgeOpen: !lesson ? Infinity : entry ? 0 : Math.max(0, Number(s[K('edgeShow')]) || 0)
+      }, phaseOf(t), {
         set: (k, val, quiet) => {
           const v = sp.vars.find((x) => x.k === k);
           s[K(k)] = clamp(val, v.min, v.max);
@@ -372,6 +378,15 @@
         v.formula = c.mode ? M.formulaP : M.formula;
         v.rule = c.mode ? M.ruleP : M.rule;
         v.notes = M.notes;
+        if (c.lesson) {
+          // 모바일에서 접힌 패널에도 아직 설명하지 않은 계산을 미리 넣지 않습니다.
+          v.guide = c.mode ? '색칠한 부분의 경계를 하나씩 확인해요.' : '전체 도형과 파낸 부분을 살펴보세요.';
+          v.readouts = c.mode ? [] : M.readouts.filter((_, i) => i === 0 ? c.wholeOpen : i === 1 ? c.partOpen : !c.lessonHold);
+          if (c.lessonHold) {
+            v.formula = (v.chips || []).map((chip) => `<p>$${chip.tex}$</p>`).join('');
+            v.notes = null;
+          }
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
@@ -504,7 +519,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       }
     }
     fig.forEach((it) => {
-      if (givensOnly && it.when !== 'g') return;
+      if (c.lesson && it.lessonDerived && !c.givenOpen) return;
+      if (givensOnly && it.when !== 'g' && !(c.lesson && c.givenOpen && it.lessonGiven)) return;
       const shift = offsets && offsets.get(it);
       let item = shift ? { ...it, dy: (it.dy || 0) + shift } : it;
       if (it.triangleSide && !c.problem && !c.mode && !b.thumb) {
@@ -559,9 +575,9 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     drawFig(b, c);
     M.part.forEach((it) => drawItem(b, it, ox, whenA(c, it.when)));
     const cp = M.cap;
-    caption(b, cx, y0, cp.whole.l, cp.whole.v, 'ink', c.lessonHold ? 1 : 1 - seg01(res, 0, 0.5));
+    caption(b, cx, y0, cp.whole.l, c.wholeOpen ? cp.whole.v : '', 'ink', c.lessonHold ? 1 : 1 - seg01(res, 0, 0.5));
     caption(b, cx, y0, cp.res.l, cp.res.v, 'sky', c.lessonHold ? 0 : seg01(res, 0.5, 1));
-    caption(b, cx + dx, y0, cp.part.l, cp.part.v, 'amber', seg01(mv, 0.6, 1));
+    caption(b, cx + dx, y0, cp.part.l, c.partOpen ? cp.part.v : '', 'amber', seg01(mv, 0.6, 1));
     if (M.handles) M.handles.forEach((h) => b.handle(h.id, P(h.p[0], h.p[1]), { color: 'amber', ariaLabel: h.label, drag: (wp) => h.drag(wp, c) }));
   }
   function renderPeri(b, c, outlineOnly = false) {
@@ -578,10 +594,10 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       if (e.step > n) return;
       const cur = c.review && e.step === n;
       b.path(e.pts, { color: e.color, width: cur ? 6.5 : 5, alpha: cur || !c.review ? 1 : 0.7, glow: cur });
-      if (e.lstep <= n) b.text(P(e.at[0], e.at[1]), e.text, { color: e.color, size: 15, weight: 800, baseline: 'middle', dx: e.dx || 0, dy: e.dy || 0, align: e.align || 'center' });
+      if (e.lstep <= n && e.lstep <= c.edgeOpen) b.text(P(e.at[0], e.at[1]), e.text, { color: e.color, size: 15, weight: 800, baseline: 'middle', dx: e.dx || 0, dy: e.dy || 0, align: e.align || 'center' });
     });
     drawFig(b, c, true);
-    const done = !c.review || n >= M.stepsP.length;
+    const done = (!c.review || n >= M.stepsP.length) && !c.lessonHold;
     caption(b, cx, y0, '색칠한 부분의 둘레', done ? M.periV + ' cm' : '…', 'sky', 1);
   }
 
@@ -604,7 +620,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
         T([a / 2, 0], `${fn(a)} cm`, { when: 'g', dy: 17 }),
         TICK([0, 0], [r, 0]), TICK([r, 0], [a, 0]), TICK([0, a], [r, a]), TICK([r, a], [a, a]),
         TICK([0, 0], [0, r]), TICK([0, r], [0, a]), TICK([a, 0], [a, r]), TICK([a, r], [a, a]),
-        T([r / 2, 0], `r=${fn(r)}`, { dy: -13, color: 'ink' })
+        T([r / 2, 0], `r=${fn(r)}`, { dy: -13, color: 'ink', lessonDerived: true, lessonGiven: true })
       ];
       const part = [T([a / 2, a / 2], '사분원 4개', { when: 'm', color: 'amber', size: 13.5, dy: -10 }), T([a / 2, a / 2], '= 원 1개', { when: 'm', color: 'amber', size: 13.5, dy: 10 })];
       const edges = [
@@ -662,10 +678,10 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       const fig = [
         T([a / 2, 0], `${fn(a)} cm`, { when: 'g', dy: 17 }),
         { k: 'dot', p: [a, h], when: 'g' },
-        { k: 'right', v: [a, a], p: [0, a], q: [a, 0], when: 's' },
-        T([a * 0.32, a], `${fn(a)}`, { dy: 15, color: 'ink' }),
-        { k: 'seg', p: [a, h], q: [h, h], color: 'amber', dash: [5, 4], w: 1.8, when: 's' },
-        T([a * 0.72, h], `${fn(h)}`, { dy: -12, color: 'amber' })
+        { k: 'right', v: [a, a], p: [0, a], q: [a, 0], when: 's', lessonGiven: true },
+        T([a * 0.32, a], `${fn(a)}`, { dy: 15, color: 'ink', lessonGiven: true }),
+        { k: 'seg', p: [a, h], q: [h, h], color: 'amber', dash: [5, 4], w: 1.8, when: 's', lessonGiven: true },
+        T([a * 0.72, h], `${fn(h)}`, { dy: -12, color: 'amber', lessonDerived: true, lessonGiven: true })
       ];
       const edges = [
         { pts: S, at: [h, h], ...away(-1, 0, 20), text: xs(arcQ), color: 'violet', step: 1, lstep: 1 },
@@ -770,7 +786,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
         { k: 'right', v: [a, 0], p: [a, a], q: [0, 0], when: 's' },
         T([a * 0.4, 0], `${fn(a)}`, { dy: -13, color: 'ink' }),
         { k: 'seg', p: [a, h], q: [h, h], color: 'amber', dash: [5, 4], w: 1.8, when: 's' },
-        T([a * 0.72, h], `${fn(h)}`, { dy: -12, color: 'amber' })
+        T([a * 0.72, h], `${fn(h)}`, { dy: -12, color: 'amber', lessonDerived: true, lessonGiven: true })
       ];
       return rem({
         outer, cuts: [{ polys: [Qd, S] }], fig, part: [], wholeX, partX, resX,
@@ -1016,6 +1032,18 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   SPECS.forEach((sp) => { sp.layout = layoutRem; sp.render = renderRem; sp.chips = chipsRem; });
   function chipsRem(c) {
     const M = c.M, ct = M.chipTex;
+    if (c.lesson) {
+      if (c.mode) {
+        if (!c.lessonHold) return [{ k: '둘레', tex: M.periEq, color: 'sky' }];
+        const current = c.step >= 1 && c.step < M.stepsP.length && c.step <= c.edgeOpen && M.stepsP[c.step - 1].match(/\$([^$]+)\$/);
+        return current ? [{ k: '현재 경계', tex: current[1], color: 'sky' }] : [];
+      }
+      if (c.res > 0.5 && !c.lessonHold) return [{ k: '색칠한 부분', tex: ct.eq, color: 'sky' }];
+      return [
+        ...(c.wholeOpen ? [{ k: '전체', tex: ct.whole, color: 'ink' }] : []),
+        ...(c.partOpen ? [{ k: '파낸 부분', tex: ct.part, color: 'amber' }] : [])
+      ];
+    }
     if (c.mode) {
       if (c.review && c.step < M.stepsP.length) {
         const current = c.step >= 1 && M.stepsP[c.step - 1].match(/\$([^$]+)\$/);

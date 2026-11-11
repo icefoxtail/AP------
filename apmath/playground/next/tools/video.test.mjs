@@ -26,7 +26,7 @@ const SCENE_STATE = {
   '1210': { b1210_r: [3, 12], b1210_th: [10, 350] },
   'sv1-1': { sR: [1, 15], sH: [2, 20], sT: [0, 1], svYaw: [-180, 180], svPitch: [-30, 85], svShape: null, sv11Mode: null, sv11Started: null, svShowV: null },
   // 해설(lesson) 장면: g7-circle-sector.html proofScene('sector')의 params csR 2~12 · csS 30~180(15 단위) · csT 0~100, 해설이 켜는 csShowS(결론 라벨을 아끼는 장면 표시)
-  'z3-sectorProof': { csR: [2, 12], csS: [30, 180], csT: [0, 100], csShowS: null }
+  'z3-sectorProof': { csR: [2, 12], csS: [30, 180], csT: [0, 100], csShowS: null, csShowArc: null, csShowWidth: null }
 };
 const SCENE_STATE_KEYS = Object.fromEntries(Object.entries(SCENE_STATE).map(([k, v]) => [k, new Set(Object.keys(v))]));
 
@@ -531,11 +531,12 @@ test('해설 z3-sectorProof: 자막의 모든 숫자가 부채꼴 공식(r=6, 12
   assert.match(html, /Kof\s*=\s*\(s\)\s*=>\s*Math\.max\(2,\s*2\s*\*\s*Math\.ceil\(s\.csS\s*\/\s*20\)\)/, '조각 수 공식이 장면 소스와 같다');
   const says = sayList(lesson);
   assert.ok(says[0][0].includes(`${r} cm`) && says[0][0].includes(`${th}°`), '1장 첫 자막: 반지름·중심각');
-  assert.ok(says[0][1].includes(`l=${l}\\pi`) && says[0][1].includes(`${pieces}조각`), '1장 둘째 자막: 호 길이와 조각 수');
+  assert.ok(says[0][1].includes(`2\\pi\\times${r}\\times\\frac{${th}}{360}=${l}\\pi`), '1장 둘째 자막: 주어진 반지름·중심각으로 호 길이를 계산');
   assert.ok(says[1].join(' ').includes('가까운'), '직사각형에 가까운 모양(직사각형이라고 단정하지 않음)');
-  assert.ok(says[2][1].includes(`l=${l}\\pi`) && says[2][1].includes(`$${half}\\pi$`) && says[2][1].includes(`${r} cm`), '3장 둘째 자막: 가로 l÷2, 세로 r');
+  assert.ok(says[2][0].includes('가로는 호 $l$의 절반') && says[2][0].includes('세로는 반지름 $r$'), '3장 첫 자막: 가로 l÷2, 세로 r');
+  assert.ok(says[2][1].includes(`l=${l}\\pi`) && says[2][1].includes(`$${half}\\pi$`) && says[2][1].includes('가까워져요'), '3장 둘째 자막: 유한 조각의 가로는 l÷2에 가까워진다');
   assert.ok(says[2][2].includes(`\\frac12\\times${r}\\times${l}\\pi=${S}\\pi`), '3장 마지막 자막: ½·r·l = 12π');
-  const allowed = new Set([r, th, pieces, l, half, S, 1, 2]);
+  const allowed = new Set([r, th, pieces, l, half, S, 1, 2, 360]);
   for (const s of says.flat()) numbersOf(s).forEach((n) => assert.ok(allowed.has(n), `자막 「${s}」 의 숫자 ${n} 은 장면 공식으로 나오는 값이 아닙니다`));
   // 단계: 1장은 나눔(csT 0→20), 2장은 맞물림(→54, 라벨이 그려지기 전), 3장에서 라벨(55 이상)과 정답
   const ends = lesson.chapters.map((ch) => ch.cues.flatMap((c) => (c.to && c.to.csT != null ? [c.to.csT] : [])).at(-1));
@@ -543,10 +544,17 @@ test('해설 z3-sectorProof: 자막의 모든 숫자가 부채꼴 공식(r=6, 12
   assert.ok(ends[1] < 55, '맞물림 장은 가로·세로·넓이 라벨(csT ≥ 55)이 그려지기 전에 끝난다');
   assert.ok(/csT\s*>=\s*55/.test(html), '라벨이 csT 55 부터 그려진다는 전제가 장면 소스와 같다');
   // 결론 라벨은 해설이 csShowS 를 켤 때까지 아낀다(탐구 화면은 그대로)
-  assert.match(html, /if \(!\(st\.lessonOn && !st\.csShowS\)\) T\(b, \{ x: xc, y: Yb \}/, 'S 라벨 표시 조건');
+  assert.match(html, /if \(!guided \|\| \(st\.lessonOn && st\.csShowS\)\) T\(b, \{ x: xc, y: Yb \}/, '진입 화면과 재생 중 S 라벨 표시 조건');
   assert.ok(chapterCues(lesson).some((c) => c.set && c.set.csShowS === true && c.say && c.say.includes(`${S}\\pi`)), '결론 자막과 함께 csShowS');
   assert.ok(lesson.chapters.slice(0, 2).every((ch) => ch.cues.every((c) => !(c.set && c.set.csShowS === true))), '앞 두 장은 csShowS 를 켜지 않는다(첫 장 at:0 의 false 제외)');
-  assert.deepEqual(JSON.parse(JSON.stringify(lesson.chapters[0].cues[0].set)), { csShowS: false }, '첫 장 at:0 에서 csShowS 는 false 로 시작(다시 보기에서 true 가 새지 않게)');
+  assert.deepEqual(JSON.parse(JSON.stringify(lesson.chapters[0].cues[0].set)), { csShowS: false, csShowArc: false, csShowWidth: false }, '다시 보기에서 호·가로·정답이 먼저 보이지 않도록 공개 상태를 초기화');
+  const compiled = core.compileLesson(lesson), base = baseOf(lesson);
+  assert.equal(core.stateAt(compiled, 4.49, base).sets.csShowArc, false);
+  assert.equal(core.stateAt(compiled, 4.5, base).sets.csShowArc, true);
+  assert.equal(core.stateAt(compiled, 23.49, base).sets.csShowWidth, false);
+  assert.equal(core.stateAt(compiled, 23.5, base).sets.csShowWidth, true);
+  assert.equal(core.stateAt(compiled, 26.99, base).sets.csShowS, false);
+  assert.equal(core.stateAt(compiled, 27, base).sets.csShowS, true);
 });
 
 test('해설 sv1-1: 자막의 모든 숫자가 원기둥 공식(r=3, h=5)으로 다시 계산한 값이다', () => {

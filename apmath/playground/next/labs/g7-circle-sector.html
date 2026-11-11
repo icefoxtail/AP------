@@ -438,7 +438,7 @@ function periScene(type) {
       segs.forEach((g, i) => {
         const nm = type === 'sector' && g.kind === 'arc' ? '호 AB' : g.name;
         const given = g.kind === 'line' && type !== 'segment';
-        const txt = `${NUMS[i]} ${nm}${g.exact && (given || i < revealed) ? ' ' + cmOf(g.exact) : ''}`;
+        const txt = `${NUMS[i]} ${nm}${g.exact && (given || i < revealed || (s.lessonOn && type === 'segment' && i === 1 && s.csShowChord)) ? ' ' + cmOf(g.exact) : ''}`;
         if (g.kind === 'arc') { if (type !== 'segment') { const m = g.at(0.5); const dx = m.x, dy = m.y, l = Math.hypot(dx, dy) || 1; tagN(b, m, dx / l, dy / l, txt, { color: 'sky', size: 16, gap: 10 }); } }
         else if (type === 'segment') tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, [{ t: `${NUMS[0]} ${segs[0].name}${revealed > 0 ? ' ' + cmOf(segs[0].exact) : ''}`, color: 'sky' }, { t: txt, color: 'rose' }], { size: 16, gap: 10, keepInView: true });
         else {
@@ -528,6 +528,7 @@ function proofScene(type) {
       // 현재 중심각의 시작/완성 상태만 함께 맞춰 재생 중 확대가 흔들리지 않게 합니다.
       const paint = (st) => {
         const r = st.csR, N = countOf(st), t = ease(st.csT / 100);
+        const guided = !!(st.lessonOn || st.lessonEntry);
         const th = circ ? TAU : rad(st.csS), a0 = -PI / 2, d = th / N;
         const chord = 2 * Math.sin(d / 2), W = N / 2 * chord, h = Math.cos(d / 2);
         const source = [O0, ...arcPts(0, 0, 1, a0, a0 + th, 72)];
@@ -554,7 +555,7 @@ function proofScene(type) {
           tagN(b, lerp(O0, Pr, 0.5), Math.sin(-PI / 6), -Math.cos(-PI / 6), `r = ${r} cm`, { color: 'amber', size: 16, gap: 6 });
         }
         dot(b, O0, 'ink', 4.5);
-        if (!problem) T(b, { x: sourceX, y: by0 }, circ ? `원주 = ${cmOf(ex(2 * r))}` : `호 l = ${cmOf(ex(r * st.csS, 180))}`, { dy: -24, color: 'sky', size: 17 });
+        if (!problem && (!guided || (st.lessonOn && st.csShowArc))) T(b, { x: sourceX, y: by0 }, circ ? `원주 = ${cmOf(ex(2 * r))}` : `호 l = ${cmOf(ex(r * st.csS, 180))}`, { dy: -24, color: 'sky', size: 17 });
         for (let i = 0; i < N; i++) {
           const down = i % 2 === 0, j = Math.floor(i / 2);
           const px = x0 + (j + (down ? 0.5 : 1)) * chord, X = xc + (px - xc) * spread;
@@ -568,11 +569,14 @@ function proofScene(type) {
           const al = clamp((st.csT - 55) / 35, 0, 1), xl = x0, xr = x0 + W;
           b.seg({ x: xl, y: Yt - 0.12 }, { x: xr, y: Yt - 0.12 }, { color: 'amber', width: 2.5, alpha: al });
           // 유한한 조각은 곡선 경계가 남습니다. 극한 길이를 등호로 단정하지 않습니다.
-          T(b, { x: xc, y: Yt - 0.12 }, circ ? `가로 → πr = ${cmOf(ex(r))}` : `가로 → l ÷ 2 = ${cmOf(ex(r * st.csS, 360))}`, { dy: -22, color: 'amber', size: 16 });
+          const widthLabel = !guided || (st.lessonOn && st.csShowWidth)
+            ? (circ ? '가로 → πr = ' + cmOf(ex(r)) : '가로 → l ÷ 2 = ' + cmOf(ex(r * st.csS, 360)))
+            : (circ ? '가로 → πr' : '가로 → l ÷ 2');
+          T(b, { x: xc, y: Yt - 0.12 }, widthLabel, { dy: -22, color: 'amber', size: 16 });
           b.seg({ x: xl - 0.12, y: Yt }, { x: xl - 0.12, y: Yb }, { color: 'rose', width: 2.5, alpha: al });
           tagN(b, { x: xl - 0.12, y: (Yt + Yb) / 2 }, -1, 0, compact ? '세로 → r' : `세로 → r = ${r} cm`, { color: 'rose', size: 16, gap: 8 });
           // 해설(lesson) 재생 중(st.lessonOn)에는 결론 라벨을 해설이 csShowS 를 켤 때까지 아껴 둡니다(유도 자막보다 정답이 먼저 보이지 않게). 탐구 화면은 그대로.
-          if (!(st.lessonOn && !st.csShowS)) T(b, { x: xc, y: Yb }, circ ? `S = πr² = ${cm2Of(ex(r * r))}` : `S = ½rl = ${cm2Of(ex(r * r * st.csS, 360))}`, { dy: 28, color: 'green', size: 17 });
+          if (!guided || (st.lessonOn && st.csShowS)) T(b, { x: xc, y: Yb }, circ ? `S = πr² = ${cm2Of(ex(r * r))}` : `S = ½rl = ${cm2Of(ex(r * r * st.csS, 360))}`, { dy: 28, color: 'green', size: 17 });
         }
         const yh = Yb + (compact ? 0.85 : 0.65), half = Math.max(0.7, Math.min(1.2, W * 0.6));
         const xa = xc - half, xb = xc + half;
@@ -591,8 +595,8 @@ function proofScene(type) {
           b.setFocus(CANON_VIEW, true);
           b.begin({ emph: b.emph });
           for (let pass = 0; pass < 2; pass++) {
-            const a = b.measure(() => paint({ ...s, csT: 0, lessonOn: false }));
-            const z = b.measure(() => paint({ ...s, csT: 100, lessonOn: false })); // 라벨을 아껴 두는 동안에도 맞춤 범위는 결론 라벨까지 포함
+            const a = b.measure(() => paint({ ...s, csT: 0, lessonOn: false, lessonEntry: false }));
+            const z = b.measure(() => paint({ ...s, csT: 100, lessonOn: false, lessonEntry: false })); // 라벨을 아껴 두는 동안에도 맞춤 범위는 결론 라벨까지 포함
             if (a && z) {
               const box = { x0: Math.min(a.x0, z.x0), y0: Math.min(a.y0, z.y0), x1: Math.max(a.x1, z.x1), y1: Math.max(a.y1, z.y1), texts: [...a.texts, ...z.texts] };
               b.setFocus(b.fitBox(box, { margin: 0.025, px: 14 }), true);
@@ -662,7 +666,7 @@ mineGroups.forEach((g) => g.scenes.forEach((sc) => {
   sc.autoFit = true;
 }));
 
-const MODULES = ['basic', 'f01', 'f02', 'f03', 'f04', 'f05', 'rolling', 'swept', 'video', 'lesson']; // lesson: 해설(window.APL_LESSONS, 장 여러 개를 이어 정답까지) · video: 영상 대본(window.APL_VIDEOS) — 그룹이 아니라 장면 id별 대본 데이터. 쇼츠 8개 중 7개는 해설로 대체되어 video.js 에 1210 만 남았습니다
+const MODULES = ['basic', 'f01', 'f02', 'f03', 'f04', 'f05', 'rolling', 'swept', 'video', 'lesson', 'lesson-f05', 'lesson-f03', 'lesson-rolling', 'lesson-f04', 'lesson-swept']; // lesson: 해설(window.APL_LESSONS, 장 여러 개를 이어 정답까지) · video: 영상 대본(window.APL_VIDEOS) — 그룹이 아니라 장면 id별 대본 데이터. 쇼츠 8개 중 7개는 해설로 대체되어 video.js 에 1210 만 남았습니다
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -781,10 +785,13 @@ function start() {
         const controls = typeof sc.controls === 'function' ? sc.controls(s) : sc.controls || [];
         const key = JSON.stringify(controls.filter((id) => !motionKey(id)).map((id) => [id, s[id]]));
         const previous = problemStates.get(s);
-        if (previous && previous.id === sc.id && previous.key !== key) { s.revealed = false; s.step = sc.startStep || 1; }
+        // 해설의 step은 타임라인이 정합니다. focus 측정의 임시 값으로 되돌리지 않습니다.
+        if (!(s.lessonOn || s.lessonEntry) && previous && previous.id === sc.id && previous.key !== key) { s.revealed = false; s.step = sc.startStep || 1; }
         problemStates.set(s, { id: sc.id, key });
       }
       const value = (typeof view === 'function' ? view(s, lab) : view) || {};
+      // 해설은 대본이 여는 그림·칩과 자막으로 진행합니다. 탐구용 계산표·풀이 전문은 직접 해 보기에서 엽니다.
+      if (s.lessonOn || s.lessonEntry) return { ...value, readouts: [], formula: '', guide: '', summary: null, rule: null, alert: null, notes: '', parts: [], status: null, chips: s.lessonEntry ? [] : value.chips };
       const steps = typeof sc.steps === 'function' ? sc.steps(s) : sc.steps;
       // 계산식에도 최종 답이 들어 있으므로 단계별 풀이와 같은 공개 시점을 지킵니다.
       if (!stagedFormula && lab && lab.tab === 'review' && !s.revealed && steps && s.step < steps.length) return { ...value, formula: '', summary: null };

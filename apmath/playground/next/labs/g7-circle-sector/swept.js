@@ -497,8 +497,11 @@
     const land = b.W >= b.H * 1.05;
     const L = sweepLayout(M, pathMode, land);
     if (tab === 'problem') return drawSweepProblem(b, w, M);
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const read = !lesson ? Infinity : s.lessonEntry ? 0 : Math.max(0, Number(s.swRead) || 0);
+    const measure = lesson && !s.lessonEntry ? Math.max(0, Number(s.swMeasure) || 0) : 0;
     const r = M.r, R = L.R;
-    const t = thumb ? 1 : clamp(s.swT, 0, 1);
+    const t = thumb ? 1 : lesson && s.lessonEntry ? 0 : clamp(s.swT, 0, 1);
     const step = tab === 'review' ? s.step : 0;
     // 처음에는 도형 가까이를 크게, 복사본이 나타날 때 화면이 함께 넓어집니다(카메라만 움직임)
     {
@@ -518,6 +521,20 @@
     w.poly(M.V, { fill: 'muted', fillAlpha: 0.2, color: 'ink', width: 2.8 });
     if (!thumb) drawEdgeMarks(w, M);
     drawEdgeLabels(w, M, 0.95);
+    // 새 해설의 치수 읽기: 지름을 계산하기 전에 같은 반지름 두 개를 보여 줍니다.
+    if (lesson && measure > 0 && !pathMode) {
+      const rc = M.rects[0], p = lerp2(rc.pts[0], rc.pts[1], 0.5);
+      const q = [p[0] + rc.dir[0] * 2 * r, p[1] + rc.dir[1] * 2 * r], cc = lerp2(p, q, 0.5);
+      w.circle(cc, r, { color: 'green', width: 1.8, dash: true });
+      w.seg(p, q, { color: 'green', width: 2.6, ref: 'circle' });
+      for (const f of [0.25, 0.75]) w.text(lerp2(p, q, f), num(r), { color: 'green', dx: 16, ref: 'circle' });
+      if (measure >= 2) w.text(q, `폭 ${num(2 * r)} cm`, { color: 'green', dy: 18, ref: 'rects' });
+    }
+    if (lesson && !s.lessonEntry && s.swInner && M.shape === 'tri') {
+      const p = M.V[0], a = w.toS(p), c = w.toS([M.V.reduce((sum, q) => sum + q[0], 0) / M.n, M.V.reduce((sum, q) => sum + q[1], 0) / M.n]);
+      const d = Math.hypot(c.x - a.x, c.y - a.y) || 1;
+      b.stext(a.x + (c.x - a.x) * 34 / d, a.y + (c.y - a.y) * 34 / d, '60°', { color: 'ink', size: 12.5, align: 'center', baseline: 'middle', weight: 800 });
+    }
     if (pathMode && sl > 0 && e < 1) w.path(M.ptsUpTo(sl), { color: 'violet', width: 3.6, ref: 'path', alpha: (1 - e) * emK(b, 'path') });
 
     /* 3) 조각 (제자리) */
@@ -526,7 +543,7 @@
         M.rects.forEach((rc) => {
           const k = dim('A') * e;
           w.poly(rc.pts, { fill: 'sky', fillAlpha: 0.3 * k, color: 'sky', width: 2.4, alpha: k, ref: 'rects' });
-          if (showA && !thumb) {
+          if (showA && !thumb && read >= 1) {
             const c = [(rc.pts[0][0] + rc.pts[2][0]) / 2, (rc.pts[0][1] + rc.pts[2][1]) / 2];
             w.text(c, [`${num(rc.len)} × ${num(rc.w)}`, `= ${num(rc.len * rc.w)}`], { color: 'ink', alpha: dim('A') * la, ref: 'rects' });
           }
@@ -539,13 +556,13 @@
           const p1 = [ap[0] + Math.cos(sc2.t0), ap[1] + Math.sin(sc2.t0)], p2 = [ap[0] + Math.cos(sc2.t1), ap[1] + Math.sin(sc2.t1)];
           if (sc2.deg === 90) w.right(ap, p1, p2, { size: 9, color: MARK });
           else w.angle(ap, p1, p2, { r: 16, color: MARK, rings: 1 });
-          const demo = tab === 'review' && step === 2 && si === 0 && e > 0.97 && cp < 0.05;
-          if (showB) {
+          const demo = (tab === 'review' && step === 2 || lesson && read === 3) && si === 0 && e > 0.97 && cp < 0.05;
+          if (showB && read >= 3) {
             const mid = (sc2.t0 + sc2.t1) / 2, ang = demo ? mid - (sc2.t1 - sc2.t0) * 0.3 : mid, f = demo ? 0.68 : 0.6;
             w.text([ap[0] + Math.cos(ang) * sc2.R * f, ap[1] + Math.sin(ang) * sc2.R * f], [`r = ${num(sc2.R)}`, `${sc2.deg}°`], { color: 'ink', alpha: dim('B') * la * (1 - 0.4 * cp), ref: 'sectors' });
           }
           // 정리 2단계: 부채꼴의 반지름이 2r 인 까닭 (꼭짓점 → 중심 r, 중심 → 원의 가장자리 r)
-          if (demo) {
+          if (demo && read >= 3) {
             const cc = [ap[0] + sc2.dir[0] * r, ap[1] + sc2.dir[1] * r];
             w.circle(cc, r, { color: 'green', width: 2, dash: true });
             w.seg(ap, [ap[0] + sc2.dir[0] * 2 * r, ap[1] + sc2.dir[1] * 2 * r], { color: 'green', width: 2.4 });
@@ -560,13 +577,13 @@
           w.seg(sg.p0, sg.p1, { color: 'violet', width: 4.2, alpha: k, ref: 'segs' });
           if (thumb) return;
           w.ticks(sg.p0, sg.p1, { color: MARK, count: M.shape === 'rect' ? (sg.i % 2 === 0 ? 1 : 2) : 1, size: 6 });
-          if (showA) w.text([(sg.p0[0] + sg.p1[0]) / 2 + sg.dir[0] * 0.6, (sg.p0[1] + sg.p1[1]) / 2 + sg.dir[1] * 0.6], num(sg.len), { color: 'violet', alpha: dim('A') * la, ref: 'segs' });
+          if (showA && read >= 1) w.text([(sg.p0[0] + sg.p1[0]) / 2 + sg.dir[0] * 0.6, (sg.p0[1] + sg.p1[1]) / 2 + sg.dir[1] * 0.6], num(sg.len), { color: 'violet', alpha: dim('A') * la, ref: 'segs' });
         });
         M.arcs.forEach((ar) => {
           const k = dim('B') * e * (1 - 0.5 * cp);
           w.arc(ar.c, ar.R, ar.t0, ar.t1, { color: 'amber', width: 4.2, alpha: k, ref: 'arcs' });
           if (thumb) return;
-          if (showB) w.text([ar.c[0] + ar.dir[0] * (ar.R + 0.75), ar.c[1] + ar.dir[1] * (ar.R + 0.75)], [`r = ${num(ar.R)}`, `${ar.deg}°`], { color: 'amber', alpha: dim('B') * la, ref: 'arcs' });
+          if (showB && read >= 3) w.text([ar.c[0] + ar.dir[0] * (ar.R + 0.75), ar.c[1] + ar.dir[1] * (ar.R + 0.75)], [`r = ${num(ar.R)}`, `${ar.deg}°`], { color: 'amber', alpha: dim('B') * la, ref: 'arcs' });
         });
       }
     }
@@ -579,7 +596,7 @@
         const ap = [L.G[0] + L.d * Math.cos(L.mids[i]) * (1 - g), L.G[1]];
         if (pathMode) w.arc(ap, R, pc.t0, pc.t1, { color: 'amber', width: 4.2, alpha: cp * k, ref: 'arcs' });
         else w.arc(ap, R, pc.t0, pc.t1, { sector: true, fill: 'amber', fillAlpha: 0.34 * cp * k, color: 'amber', width: 2.4, alpha: cp * k, ref: 'sectors' });
-        if (!thumb && g < 0.3) {
+        if (!thumb && g < 0.3 && read >= 3) {
           const mid = L.mids[i];
           w.text([ap[0] + Math.cos(mid) * R * 0.62, ap[1] + Math.sin(mid) * R * 0.62], `${pc.deg}°`, { color: 'ink', alpha: cp * k * (1 - g / 0.3), ref: pathMode ? 'arcs' : 'sectors', size: 12.5 });
         }
@@ -588,8 +605,8 @@
         const small = R * b.k < 110;
         if (!pathMode) w.circle(L.G, R, { color: 'amber', width: 1.6, dash: true, alpha: 0.7 * k, ref: 'sectors' });
         const lines = pathMode ? [`r = ${num(R)}`, small ? '합 360°' : degTxt(M.arcs.map((x) => x.deg))] : [`r = ${num(R)}`, small ? `${M.secs.length}개의 합 360°` : degTxt(M.secs.map((x) => x.deg))];
-        w.text(L.G, lines, { color: 'ink', alpha: k, ref: pathMode ? 'arcs' : 'sectors', gap: 17, dy: pathMode ? 0 : -18, size: small ? 12.5 : 13.5 });
-        w.text([L.G[0], L.G[1] - R - 0.7], pathMode ? `원의 둘레 2π × ${num(R)} = ${num(2 * R)}π` : `π × ${num(R)}² = ${num(R * R)}π`, { color: 'amber', alpha: k, size: 14, ref: pathMode ? 'arcs' : 'sectors' });
+        if (read >= 3) w.text(L.G, read >= 4 ? lines : lines.slice(0, 1), { color: 'ink', alpha: k, ref: pathMode ? 'arcs' : 'sectors', gap: 17, dy: pathMode ? 0 : -18, size: small ? 12.5 : 13.5 });
+        if (read >= 5) w.text([L.G[0], L.G[1] - R - 0.7], pathMode ? `원의 둘레 2π × ${num(R)} = ${num(2 * R)}π` : `π × ${num(R)}² = ${num(R * R)}π`, { color: 'amber', alpha: k, size: 14, ref: pathMode ? 'arcs' : 'sectors' });
       }
     }
 
@@ -660,6 +677,10 @@
   /** 정사각형 안쪽 장면 */
   function drawInside(b, w, s, tab) {
     const thumb = !!b.thumb;
+    const lesson = !thumb && tab !== 'problem' && !!(s.lessonOn || s.lessonEntry);
+    // 안쪽 장면: 가운데 변 → 바깥 넓이 → 가운데 넓이 → 띠 → 구석 → 모은 치수 → 구석 넓이.
+    const read = !lesson ? Infinity : s.lessonEntry ? 0 : Math.max(0, Number(s.swRead) || 0);
+    const measure = lesson && !s.lessonEntry ? Math.max(0, Number(s.swMeasure) || 0) : 0;
     const M = insideModel(s.swI, s.swR);
     const a = M.a, r = M.r;
     const land = b.W >= b.H * 1.05;
@@ -668,7 +689,7 @@
     let G, box;
     if (land) { G = [home.x1 + 0.7 + hw, a / 2]; box = { x0: home.x0, x1: G[0] + hw + 0.4, y0: Math.min(home.y0, G[1] - r - 1.3), y1: home.y1 }; }
     else { G = [a / 2, home.y0 - 0.5 - r - 1.4]; box = { x0: home.x0, x1: home.x1, y0: G[1] - r - 1.4, y1: home.y1 }; }
-    const t = thumb ? 1 : clamp(s.swT, 0, 1);
+    const t = thumb ? 1 : lesson && s.lessonEntry ? 0 : clamp(s.swT, 0, 1);
     const k0 = ease(seg01(t, 0.55, 0.72));
     if (tab === 'problem') b.setFocus(w.box(-1.3, a + 2.2 * r + 1.5, -1.3, a + 1), false);
     else b.setFocus(w.box(lerp(home.x0, box.x0, k0), lerp(home.x1, box.x1, k0), lerp(home.y0, box.y0, k0), lerp(home.y1, box.y1, k0)), false);
@@ -690,20 +711,28 @@
     if (e > 0) {
       const h0 = (a - M.hole) / 2;
       w.poly([[h0, h0], [h0 + M.hole, h0], [h0 + M.hole, h0 + M.hole], [h0, h0 + M.hole]], { fill: 'muted', fillAlpha: 0.25 * e, color: 'ink', width: 1.8, alpha: 0.7 * e });
-      if (!thumb && showA) w.text([a / 2, a / 2], [`${num(M.hole)} × ${num(M.hole)}`, '못 가는 곳'], { color: 'ink', alpha: la * dim('A') });
+      if (!thumb && showA && read >= 1) w.text([a / 2, a / 2], [`${num(M.hole)} × ${num(M.hole)}`, '못 가는 곳'], { color: 'ink', alpha: la * dim('A') });
     }
     if (!thumb) {
       M.V.forEach((v, i) => w.right(v, M.V[(i + 1) % 4], M.V[(i + 3) % 4], { size: 10, color: MARK }));
       [[[0, 0], [a, 0]], [[a, 0], [a, a]], [[a, a], [0, a]], [[0, a], [0, 0]]].forEach(([p, q]) => w.ticks(p, q, { color: MARK, count: 1, size: 6 }));
       w.text([a / 2, -0.62], tab === 'problem' ? `${num(a)} cm` : `${num(a)}`, { color: 'ink' });
     }
+    if (lesson && measure > 0 && read < 5) {
+      const p = [a / 2, 0], q = [a / 2, 2 * r], cc = [a / 2, r];
+      w.circle(cc, r, { color: 'green', width: 1.8, dash: true });
+      w.seg(p, q, { color: 'green', width: 2.6, ref: 'circle' });
+      for (const f of [0.25, 0.75]) w.text(lerp2(p, q, f), num(r), { color: 'green', dx: 16, ref: 'circle' });
+      if (measure >= 2) w.text([a / 2 - 0.55, r], `폭 ${num(2 * r)} cm`, { color: 'green', align: 'right', ref: 'band' });
+    }
     // 모서리에서 원이 못 가는 조각 4개 (제자리에서 색이 바뀜)
     if (e > 0) {
       M.corners.forEach((cn) => {
         drawRemnant(w, cn.x, cn.y, r, [cn.c[0] - cn.x, cn.c[1] - cn.y], e * dim('B') * (1 - 0.5 * cp), 'corners');
-        if (!thumb && la > 0 && (tab !== 'review' || step >= 2)) {
+        if (!thumb && la > 0 && (tab !== 'review' || step >= 2) && read >= 5) {
           const out = [cn.x + r / 2 + cn.dir[0] * 0.12, cn.y + r / 2 + cn.dir[1] * 0.12];
           w.text(out, `${num(r)}×${num(r)}`, { color: 'ink', alpha: la * dim('B') * (1 - 0.5 * cp), size: 12.5, ref: 'corners' });
+          if (lesson && cn.i === 0) w.text([cn.c[0], cn.c[1] + 0.25], ['90°', `r = ${num(r)}`], { color: 'amber', align: 'left', dx: 10, size: 12.5, ref: 'corners' });
         }
       });
     }
@@ -717,8 +746,8 @@
         drawRemnant(w, G[0] + ox + shift, G[1] + oy, r, [cn.c[0] - cn.x, cn.c[1] - cn.y], cp * kk, 'corners');
       });
       if (g > 0.98 && !thumb) {
-        w.text(G, [`${num(2 * r)} × ${num(2 * r)}`, `− π × ${num(r)}²`], { color: 'ink', alpha: kk, ref: 'corners', gap: 17 });
-        w.text([G[0], G[1] - r - 0.7], `${num(4 * r * r)} − ${cpi(r * r)}`, { color: 'amber', alpha: kk, size: 14, ref: 'corners' });
+        if (read >= 6) w.text(G, [`${num(2 * r)} × ${num(2 * r)}`, lesson && read < 7 ? `원 r = ${num(r)}` : `− π × ${num(r)}²`], { color: 'ink', alpha: kk, ref: 'corners', gap: 17 });
+        if (read >= 7) w.text([G[0], G[1] - r - 0.7], `${num(4 * r * r)} − ${cpi(r * r)}`, { color: 'amber', alpha: kk, size: 14, ref: 'corners' });
       }
     }
     // 원 · 중심
@@ -814,7 +843,9 @@
         { id: 'path', name: '원의 중심이 간 길', desc: `${num(M.per)} + ${num(2 * r)}π`, value: `${num(M.per)} + ${num(2 * r)}π`, color: 'violet' }
       ];
       // hold: 해설 재생 중(s.lessonOn)에는 해설이 s.swShow 를 켤 때까지 결과(넓이·거리) 칩과 요약을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
-      const done = t >= 0.96 && !(s.lessonOn && !s.swShow);
+      const lesson = (!lab || lab.tab !== 'problem') && !!(s.lessonOn || s.lessonEntry);
+      const read = lesson && !s.lessonEntry ? Math.max(0, Number(s.swRead) || 0) : 0;
+      const done = t >= 0.96 && (!lesson || (!s.lessonEntry && s.swShow));
       const chips = done ? (path
         ? [{ k: '중심이 움직인 거리', html: `$${num(M.per)}+${num(2 * r)}\\pi$ cm`, color: 'rose' }]
         : [{ k: '지나간 자리의 넓이', html: `$${num(M.rectArea)}+${num(4 * r * r)}\\pi$ cm²`, color: 'rose' }]) : [];
@@ -824,7 +855,15 @@
       const notes = path
         ? '<p>• 호의 반지름은 <b>원의 반지름 r</b>이에요.</p><p>• 직선 부분은 도형의 변과 <b>길이가 같아요</b>.</p><p>• 호를 모으면 원 하나의 <b>둘레(2πr)</b>예요. 넓이(πr²)와 헷갈리지 마세요.</p>'
         : '<p>• 모서리 부채꼴의 반지름은 r이 아니라 <b>지름 2r</b>이에요 (꼭짓점 → 중심 r, 중심 → 가장자리 r).</p><p>• 직사각형의 세로도 r이 아니라 <b>지름 2r</b>이에요.</p><p>• 부채꼴의 중심각 합이 360°이면 <b>원 하나</b>예요.</p>';
-      return { guide, status, readouts, parts, chips, formula, notes, summary: done ? (path ? `중심이 움직인 거리 = ${num(M.per)} + ${num(2 * r)}π cm` : `지나간 자리의 넓이 = ${num(M.rectArea)} + ${num(4 * r * r)}π cm²`) : null };
+      const out = { guide, status, readouts, parts, chips, formula, notes, summary: done ? (path ? `중심이 움직인 거리 = ${num(M.per)} + ${num(2 * r)}π cm` : `지나간 자리의 넓이 = ${num(M.rectArea)} + ${num(4 * r * r)}π cm²`) : null };
+      if (lesson) {
+        out.guide = path ? '원의 중심이 간 길을 직선과 호로 나누어 살펴보세요.' : '원이 지나간 자리를 직사각형과 부채꼴로 나누어 살펴보세요.';
+        out.status = { tone: 'info', text: path ? '중심이 움직인 거리 구하기' : '지나간 자리의 넓이 구하기' };
+        out.readouts = []; out.parts = []; out.formula = ''; out.notes = null;
+        if (!done && !path && read >= 2) out.chips = [{ k: `직사각형 ${M.n}개`, html: `$${M.rects.map((rc) => num(rc.len * rc.w)).join('+')}=${num(M.rectArea)}$ cm²`, color: 'sky' }];
+        if (!done && path && read >= 2) out.chips = [{ k: '직선 부분의 합', html: `$${M.segs.map((sg) => num(sg.len)).join('+')}=${num(M.per)}$ cm`, color: 'violet' }];
+      }
+      return out;
     };
   }
 
@@ -1044,7 +1083,7 @@
       const status = ph === 'travel' ? { tone: 'info', text: `중심이 지나온 길 ${distTxt(M, sl)} cm` }
         : ph === 'split' ? { tone: 'info', text: '바깥 − 가운데 − 모서리 4곳' }
           : ph === 'copy' || ph === 'slide' ? { tone: 'info', text: '모서리 조각을 복사해 가로로 모아요' } : { tone: 'ok', text: `모서리 조각 4개 = ${num(4 * r * r)} − π × ${num(r)}²` };
-      return {
+      const out = {
         guide: ph === 'travel' ? '노란 점(원의 중심)을 끌어 안쪽 벽을 따라 돌려 보세요. 구석에는 닿지 못해요.'
           : '지나간 자리 = 바깥 정사각형 − 가운데 정사각형 − 모서리 4곳.',
         status,
@@ -1063,6 +1102,20 @@
         formula: `<p><b>안쪽을 도는 경우</b></p><p>= (바깥 정사각형) − (가운데 정사각형) − (모서리에서 못 가는 곳)</p><p>= ${num(M.a)}² − ${num(M.hole)}² − (${num(4 * r * r)} − ${cpi(r * r)}) = ${num(M.outerRing - 4 * r * r)} + ${cpi(r * r)} (cm²)</p>`,
         notes: '<p>• 바깥쪽을 돌 때는 모서리에 부채꼴이 <b>더해지지만</b>, 안쪽을 돌 때는 모서리 조각이 <b>빠져요</b>.</p><p>• 못 가는 조각은 <b>한 변 r인 정사각형에서 사분원을 뺀</b> 모양이에요.</p>'
       };
+      const lesson = (!lab || lab.tab !== 'problem') && !!(s.lessonOn || s.lessonEntry);
+      if (lesson) {
+        const read = s.lessonEntry ? 0 : Math.max(0, Number(s.swRead) || 0), done = !s.lessonEntry && s.swShow && t >= 0.96;
+        out.guide = '전체에서 가운데와 모서리의 못 가는 곳을 차례로 빼 보세요.';
+        out.status = { tone: 'info', text: '안쪽에서 원이 지나간 자리 구하기' };
+        out.readouts = []; out.parts = []; out.formula = ''; out.notes = null;
+        if (!done) {
+          out.chips = read >= 7 ? [{ k: '모서리 빈곳 네 조각', html: `$${num(4 * r * r)}-${r * r === 1 ? '' : num(r * r)}\\pi$ cm²`, color: 'amber' }]
+            : read >= 4 ? [{ k: '바깥에서 가운데를 뺀 띠', html: `$${num(M.a * M.a)}-${num(M.hole * M.hole)}=${num(M.outerRing)}$ cm²`, color: 'sky' }]
+              : read >= 3 ? [{ k: '가운데 정사각형', html: `$${num(M.hole)}^2=${num(M.hole * M.hole)}$ cm²`, color: 'ink' }]
+                : read >= 2 ? [{ k: '바깥 정사각형', html: `$${num(M.a)}^2=${num(M.a * M.a)}$ cm²`, color: 'ink' }] : [];
+        }
+      }
+      return out;
     },
     csd: null
   };
@@ -1281,6 +1334,29 @@
     }
   }
 
+  /** 해설 전용 치수·계산 이름표. 각 이름표는 대상에 연결하고 서로 겹치지 않는 자리를 고릅니다. */
+  function lessonCallout(b, anchor, preferred, rows, color, ref, occupied) {
+    const style = { size: 12.5, weight: 800, align: 'center', baseline: 'middle', color, ref };
+    const sizes = rows.map((row) => b.annotationSize(row, style));
+    const width = Math.max(...sizes.map((size) => size.width)), gap = 16;
+    const height = Math.max(...sizes.map((size) => size.height)) + gap * (rows.length - 1);
+    const ins = b.insets || {}, left = (ins.left || 0) + 8, right = b.W - Math.max(32, ins.right || 0) - 8;
+    const top = (ins.top || 0) + 8, bottom = b.H - (ins.bottom || 0) - 8;
+    const point = (x, y) => ({ x: clamp(x, left + width / 2, right - width / 2), y: clamp(y, top + height / 2, bottom - height / 2) });
+    const box = (p) => ({ left: p.x - width / 2 - 4, right: p.x + width / 2 + 4, top: p.y - height / 2 - 4, bottom: p.y + height / 2 + 4 });
+    const overlap = (a, z) => Math.max(0, Math.min(a.right, z.right) - Math.max(a.left, z.left)) * Math.max(0, Math.min(a.bottom, z.bottom) - Math.max(a.top, z.top));
+    const candidates = [point(preferred.x, preferred.y)];
+    for (const dx of [0, -width - 10, width + 10]) for (const dy of [0, -height - 10, height + 10]) candidates.push(point(preferred.x + dx, preferred.y + dy));
+    for (let y = top + height / 2; y <= bottom - height / 2; y += height + 10) {
+      for (const x of [left + width / 2, (left + right) / 2, right - width / 2]) candidates.push(point(x, y));
+    }
+    const cost = (p) => occupied.reduce((sum, z) => sum + overlap(box(p), z) * 1e6, 0) + (p.x - preferred.x) ** 2 + (p.y - preferred.y) ** 2;
+    const at = candidates.reduce((best, p) => cost(p) < cost(best) ? p : best, candidates[0]);
+    b.leader(anchor, at, { px: true, width, height, color, lineWidth: 1.2, gap: 5, ref });
+    rows.forEach((row, i) => b.stext(at.x, at.y + (i - (rows.length - 1) / 2) * gap, row, style));
+    occupied.push(box(at));
+  }
+
   function drawGoat(b, s, v, lab, sc) {
     const w = W(b);
     const thumb = !!b.thumb;
@@ -1291,7 +1367,10 @@
     const kd = GOAT_KIND[sc.kind];
     const bx = goatBox(M);
     b.setFocus(w.box(bx.x0, bx.x1, bx.y0, bx.y1), false);
-    const sweepT = tab === 'explore' ? clamp(s.gtT, 0, 1) : 1;
+    const lesson = !thumb && tab !== 'problem' && !!(s.lessonOn || s.lessonEntry);
+    const read = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtRead) || 0) : 0;
+    const calc = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtCalc) || 0) : 0;
+    const sweepT = lesson && s.lessonEntry ? 0 : tab === 'explore' ? clamp(s.gtT, 0, 1) : 1;
     const step = tab === 'review' ? s.step : 0;
     const tl = goatTimeline(M);
     const labelsOn = tab === 'review' || tab === 'thumb' || (tab === 'explore' && sweepT >= 0.8);
@@ -1308,7 +1387,7 @@
         }
         if (u <= 0) return;
         let label = null;
-        if (labelsOn || tab === 'review') {
+        if (!lesson && (labelsOn || tab === 'review')) {
           label = [`r = ${num(sec.R)}`, `${sec.deg}°`];
           if (tab === 'review' && sec.chain !== 'A') label = [`r = ${num(M.L)}−${num(sec.used)} = ${num(sec.R)}`, `${sec.deg}°`];
         }
@@ -1320,9 +1399,19 @@
     }
     drawFence(w, M, thumb, true);
     w.point(M.V[0], { color: 'ink', r: 4.6, glow: false });
+    if (lesson && (sc.id !== 'gt-hex' || !s.lessonEntry && s.gtInner)) {
+      // 정육각형의 내각은 새 해설에서 그 성질을 말한 뒤에 공개합니다.
+      // 울타리의 안쪽 각과 바깥쪽 부채꼴의 각을 구별합니다.
+      const a = w.toS(M.V[0]), q = w.toS(M.V[1]), z = w.toS(M.V.at(-1));
+      const u = [(q.x - a.x) / Math.hypot(q.x - a.x, q.y - a.y) + (z.x - a.x) / Math.hypot(z.x - a.x, z.y - a.y),
+        (q.y - a.y) / Math.hypot(q.x - a.x, q.y - a.y) + (z.y - a.y) / Math.hypot(z.x - a.x, z.y - a.y)];
+      const length = Math.hypot(...u) || 1;
+      b.stext(a.x + u[0] / length * 34, a.y + u[1] / length * 34, `${M.interior}°`, { size: 12.5, weight: 800, baseline: 'middle', align: 'center', color: 'ink' });
+    }
 
     // 끈과 동물
     const rectLike = M.kind === 'rect' || M.kind === 'square';
+    let lessonRopeAnchor = null, lessonAnimal = null;
     if (tab === 'explore') {
       let cur = tl[0];
       for (const x of tl) if (sweepT >= x.ts) cur = x;
@@ -1333,6 +1422,7 @@
         if (uu > 0) w.arc(sec.c, sec.R, sec.t0, sec.t0 + (sec.t1 - sec.t0) * uu, { color: 'orange', width: 3.4, ref: 'bound' });
       });
       w.path([...cur.sec.path, P], { color: 'rose', width: 3.2, ref: 'rope' });
+      if (lesson) { lessonRopeAnchor = w.toS([(cur.sec.c[0] + P[0]) / 2, (cur.sec.c[1] + P[1]) / 2]); lessonAnimal = w.toS(P); }
       const samples = [];
       tl.forEach((x) => { for (let k = 0; k <= 40; k++) { const uu = k / 40; samples.push({ t: x.ts + (x.te - x.ts) * uu, p: goatPoint(x.sec, x.sec.t0 + (x.sec.t1 - x.sec.t0) * uu) }); } });
       w.handle('gp', P, {
@@ -1392,6 +1482,25 @@
         }
       }
     }
+    if (lesson) {
+      const fence = M.V.map((p) => w.toS(p));
+      const occupied = [{ left: Math.min(...fence.map((p) => p.x)) - 18, right: Math.max(...fence.map((p) => p.x)) + 18,
+        top: Math.min(...fence.map((p) => p.y)) - 18, bottom: Math.max(...fence.map((p) => p.y)) + 18 }];
+      if (lessonAnimal) occupied.push({ left: lessonAnimal.x - 70, right: lessonAnimal.x + 70, top: lessonAnimal.y - 26, bottom: lessonAnimal.y + 10 });
+      const ins = b.insets || {}, ropeAnchor = lessonRopeAnchor || w.toS(goatPoint(M.A, (M.A.t0 + M.A.t1) / 2));
+      lessonCallout(b, ropeAnchor, { x: (ins.left || 0) + 72, y: (ins.top || 0) + 22 }, [`끈 전체 ${num(M.L)} m`], 'rose', 'rope', occupied);
+      M.secs.forEach((sec, i) => {
+        if (i >= read) return;
+        const mid = (sec.t0 + sec.t1) / 2;
+        const anchor = w.toS(goatPoint(sec, mid));
+        const radius = sec.chain === 'A' ? sec.R * 0.58 : sec.R + 0.95;
+        const preferred = w.toS([sec.c[0] + Math.cos(mid) * radius, sec.c[1] + Math.sin(mid) * radius]);
+        const rows = i < calc
+          ? [`${sec.id} 중심 · r=${num(sec.R)} m · ${sec.deg}°`, `π×${num(sec.R)}²×${sec.deg}/360`, `= ${ratPi(sec.area)} m²`]
+          : [`${sec.id} 중심`, sec.chain === 'A' ? `r = ${num(sec.R)} m` : `r = ${num(M.L)}−${num(sec.used)} = ${num(sec.R)} m`, `${sec.deg}°`];
+        lessonCallout(b, anchor, preferred, rows, sec.col, sec.id, occupied);
+      });
+    }
   }
 
   function drawSpiral(b, s, v, lab, sc) {
@@ -1402,7 +1511,10 @@
     const M = spiralModel(s);
     const bx = boxOf(secPoints(M.secs, M.V), 1.2, 1.4);
     b.setFocus(w.box(bx.x0, bx.x1, bx.y0, bx.y1), false);
-    const sweepT = tab === 'explore' ? clamp(s.gtT, 0, 1) : 1;
+    const lesson = !thumb && tab !== 'problem' && !!(s.lessonOn || s.lessonEntry);
+    const read = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtRead) || 0) : 0;
+    const calc = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtCalc) || 0) : 0;
+    const sweepT = lesson && s.lessonEntry ? 0 : tab === 'explore' ? clamp(s.gtT, 0, 1) : 1;
     const step = tab === 'review' ? s.step : 0;
     const n = M.secs.length;
     const tl = M.secs.map((sec, i) => ({ sec, ts: (0.8 * i) / n, te: (0.8 * (i + 1)) / n }));
@@ -1424,7 +1536,7 @@
         if (thumb || u < 1) return;
         const p1 = [sec.c[0] + Math.cos(sec.t0), sec.c[1] + Math.sin(sec.t0)], p2 = [sec.c[0] + Math.cos(sec.t1), sec.c[1] + Math.sin(sec.t1)];
         w.angle(sec.c, p1, p2, { r: 17, color: MARK, rings: 1 });
-        if (labelsOn || tab === 'review') {
+        if (!lesson && (labelsOn || tab === 'review')) {
           const mid = (sec.t0 + sec.t1) / 2;
           w.text([sec.c[0] + Math.cos(mid) * sec.R * 0.64, sec.c[1] + Math.sin(mid) * sec.R * 0.64], [`r = ${num(sec.R)}`, '60°'], { color: 'ink', alpha: k, ref: 'S' + i });
         }
@@ -1471,7 +1583,20 @@
       const i = step - 1, sec = M.secs[i];
       if (sec) w.seg(sec.c, pt(sec, (sec.t0 + sec.t1) / 2), { color: 'rose', width: 2.6, ref: 'rope' });
     }
-    
+    if (lesson) {
+      const fence = M.V.map((p) => w.toS(p));
+      const occupied = [{ left: Math.min(...fence.map((p) => p.x)) - 18, right: Math.max(...fence.map((p) => p.x)) + 18,
+        top: Math.min(...fence.map((p) => p.y)) - 18, bottom: Math.max(...fence.map((p) => p.y)) + 18 }];
+      M.secs.forEach((sec, i) => {
+        if (i >= read) return;
+        const mid = (sec.t0 + sec.t1) / 2, anchor = w.toS(pt(sec, mid));
+        const preferred = w.toS([sec.c[0] + Math.cos(mid) * sec.R * 0.64, sec.c[1] + Math.sin(mid) * sec.R * 0.64]);
+        const rows = i < calc
+          ? [`${sec.id} 중심 · r=${num(sec.R)} cm · 60°`, `π×${num(sec.R)}²×60/360`, `= ${ratPi(sec.area)} cm²`]
+          : [`${sec.id} 중심`, i ? `r = ${num(i * M.p)}+${num(M.p)} = ${num(sec.R)} cm` : `r = ${num(sec.R)} cm`, '60°'];
+        lessonCallout(b, anchor, preferred, rows, sec.col, 'S' + i, occupied);
+      });
+    }
   }
 
   /* ========================================================================
@@ -1576,7 +1701,10 @@
       for (const x of tl) if (t >= x.ts) cur = x;
       const done = t >= 0.8;
       // hold: 해설 재생 중(s.lessonOn)에는 해설이 s.gtShow 를 켤 때까지 영역의 넓이(정답) 칩·요약을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
-      const hold = !!(s.lessonOn && !s.gtShow);
+      const lesson = (!lab || lab.tab !== 'problem') && !!(s.lessonOn || s.lessonEntry);
+      const read = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtRead) || 0) : 0;
+      const calc = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtCalc) || 0) : 0;
+      const hold = lesson && (s.lessonEntry || !s.gtShow);
       const status = t <= 0 ? { tone: 'info', text: `끈을 팽팽히 당긴 ${kd.animal}` }
         : !done ? { tone: 'info', text: cur.sec.chain === 'A' ? `큰 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` : `${cur.sec.id}를 돌아가는 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` }
           : hold ? { tone: 'info', text: `부채꼴 ${M.secs.length}개` } : { tone: 'ok', text: `부채꼴 ${M.secs.length}개 · 넓이 ${ratPi(M.area)} m²` };
@@ -1587,7 +1715,7 @@
         value: `${ratPi(sec.area)} m²`, color: sec.col, ref: sec.id, note: `r = ${num(sec.R)} m, 중심각 ${sec.deg}°`
       }));
       readouts.push({ label: '움직일 수 있는 영역의 넓이', value: `${ratPi(M.area)} m²`, color: 'rose', wide: true });
-      return {
+      const out = {
         guide: t <= 0 ? `노란 점(${kd.animal})을 끌거나 재생을 눌러 보세요. 끈이 닿는 곳이 칠해져요.`
           : !done ? `${kd.thing} 모서리를 만나면 끈이 꺾여요. 남은 끈이 작은 부채꼴의 반지름이에요.` : '영역 = 큰 부채꼴 + 모서리를 돌아가는 작은 부채꼴.',
         status,
@@ -1599,6 +1727,16 @@
         notes: o.notes,
         summary: done && !hold ? `움직일 수 있는 영역의 넓이 = ${ratPi(M.area)} m²` : null
       };
+      if (lesson) {
+        out.guide = '끈이 모서리를 돌아갈 때 남은 길이를 살펴보세요.';
+        out.status = { tone: 'info', text: '끈이 닿는 영역을 부채꼴로 나누기' };
+        out.alert = null; out.readouts = readouts.slice(0, 1); out.parts = []; out.formula = ''; out.notes = null;
+        if (hold && calc > 0 && read >= calc) {
+          const sec = M.secs[Math.min(calc, M.secs.length) - 1];
+          out.chips = [{ k: `${sec.id} 중심 부채꼴`, html: `$\\pi\\times${num(sec.R)}^2\\times\\frac{${sec.deg}}{360}=${ratPiTex(sec.area)}$ m²`, color: sec.col }];
+        }
+      }
+      return out;
     };
     sc.problem = { tag: o.tag, text: (s) => problemHTML(sc, s), answer: (s) => mk(s).ansTex, note: '새 문제를 누르면 그림의 숫자가 바뀌어요. (끈의 굵기와 동물의 크기는 생각하지 않아요.)' };
     GOAT[sc.id] = sc;
@@ -1734,9 +1872,13 @@
       syncReview(lab, spiralScene, s);
       const M = spiralModel(s);
       const t = s.gtT, n = M.secs.length, done = t >= 0.8;
+      const lesson = (!lab || lab.tab !== 'problem') && !!(s.lessonOn || s.lessonEntry);
+      const read = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtRead) || 0) : 0;
+      const calc = lesson && !s.lessonEntry ? Math.max(0, Number(s.gtCalc) || 0) : 0;
+      const hold = lesson && (s.lessonEntry || !s.gtShow);
       const idx = Math.min(n - 1, Math.floor((t / 0.8) * n));
       const status = t <= 0 ? { tone: 'info', text: '점이 호를 따라 움직여요' } : !done ? { tone: 'info', text: `꼭짓점 ${M.secs[idx].id} 중심 · r = ${num(M.secs[idx].R)} cm, 60°` } : { tone: 'ok', text: `부채꼴 ${n}개 · 넓이 ${ratPi(M.area)} cm²` };
-      return {
+      const out = {
         guide: t <= 0 ? '노란 점을 끌거나 재생을 눌러 보세요. 점은 꼭짓점을 중심으로 60°씩 호를 그려요.' : !done ? '꼭짓점이 바뀔 때마다 반지름이 변의 길이만큼 늘어나요.' : '색칠한 부분 = 중심각 60°인 부채꼴들의 합.',
         status,
         readouts: [
@@ -1750,6 +1892,19 @@
         notes: `<p>• 중심각은 정육각형의 <b>안쪽 각 120°</b>가 아니라 <b>바깥각 60°</b>예요.</p><p>• 반지름은 꼭짓점이 바뀔 때마다 <b>한 변의 길이만큼</b> 늘어나요 (${num(M.p)}, ${num(2 * M.p)}, ${num(3 * M.p)} …).</p>`,
         summary: done ? `색칠한 부분의 넓이 = ${ratPi(M.area)} cm²` : null
       };
+      if (lesson) {
+        out.guide = '중심이 바뀔 때마다 반지름이 한 변만큼 늘어나는지 살펴보세요.';
+        out.status = { tone: 'info', text: '이어지는 부채꼴의 넓이 구하기' };
+        out.readouts = out.readouts.slice(0, 1); out.parts = []; out.formula = ''; out.notes = null;
+        if (hold) {
+          out.summary = null; out.chips = [];
+          if (calc > 0 && read >= calc) {
+            const sec = M.secs[Math.min(calc, n) - 1];
+            out.chips = [{ k: `${sec.id} 중심 부채꼴`, html: `$\\pi\\times${num(sec.R)}^2\\times\\frac{60}{360}=${ratPiTex(sec.area)}$ cm²`, color: sec.col }];
+          }
+        }
+      }
+      return out;
     },
     csd: null
   };

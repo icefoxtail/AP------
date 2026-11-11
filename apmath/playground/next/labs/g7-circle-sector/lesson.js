@@ -5,7 +5,7 @@
    - 자막은 장면의 탐구 질문·정리 단계(steps)·규칙에서만 가져오고 새 수학 주장을 만들지 않습니다. 기호(r, l)는 쓰기 전에 뜻을 말합니다. 정답은 마지막 장에서만.
    - 이 파일의 해설은 tools/lessons.g7-circle-sector.test.mjs 가 검사합니다(상태값 표 SCENE_STATE · 자막 숫자 재계산 FACTS · 정답 조기 노출 · 장면 소스). 해설을 더하면 그 표에도 적습니다.
    - 장면 코드에는 재생 중(s.lessonOn)·진입 화면(s.lessonEntry)에서만 바뀌는 것만 더했습니다: 정답을 아끼는 hold(f01 f1_*_show · f03 f3Show · f04 f4_*_show · rolling rlShow(호가 하나뿐인 장면은 호 길이도) · swept gtShow·swShow · html csShowS), 정리 탭 0단계 진입 그림·칩 숨김(basic.js), sectorSpec 의 div·ref(원을 같은 조각으로 나눈 점선 · 원주/원의 넓이 라벨), z2 점 P 라벨 정확한 값만, f02 해설 진입 칩 숨김·재생 중 조각 갈라짐/그림 틀(f02.js), f05 「▶ 재생하면…」 안내 숨김.
-   - 정리 탭 step 으로 진행하는 해설(첫 장이 step 으로 시작 → kit 의 「첫 장은 to 또는 step/part 칸이 첫 1초 안」 규칙이 병합돼야 재생): 1103·1106·1807·1104·1105·1719·1809, f1-ss2·f1-star 둘레, f02 rot·y12·cc08·sj1·petal15, f5-ring·f5-sn. 이 해설들은 값(to)을 움직이지 않고 장면 기본값을 씁니다.
+   - 정리 탭 step 으로 진행하는 해설(첫 장이 step 으로 시작 → 현재 main의 「첫 장은 to 또는 step/part 칸이 첫 1초 안」 규칙으로 재생): 1103·1106·1807·1104·1105·1719·1809, f1-ss2·f1-star 둘레, f02 rot·y12·cc08·sj1·petal15, f5-ring·f5-sn. 이 해설들은 값(to)을 움직이지 않고 장면 기본값을 씁니다.
    - 해설로 대체한 쇼츠: 1209, f4-swirl, f1-ss2, f3-leaf-len, f5-sq4, rl-rect, gt-kennel (video.js 에는 1210 만 남음).
    ========================================================================== */
 window.APL_LESSONS = window.APL_LESSONS || {};
@@ -28,8 +28,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '조각으로 나누기',
         start: { csR: 6, csS: 120, csT: 0 },
         cues: [
-          { at: 0, say: '반지름 6 cm, 중심각 120°인 부채꼴이에요.', set: { csShowS: false }, to: { csT: 20 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '호 길이는 $l=4\\pi$ cm. 12조각을 위아래로 번갈아 놓아요.' }
+          { at: 0, say: '반지름 6 cm, 중심각 120°인 부채꼴이에요.', set: { csShowS: false, csShowArc: false, csShowWidth: false }, to: { csT: 20 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '호 $l=2\\pi\\times6\\times\\frac{120}{360}=4\\pi$ cm.', set: { csShowArc: true } }
         ]
       },
       {
@@ -45,7 +45,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '그래서 넓이는?',
         cues: [
           { at: 0, say: '가로는 호 $l$의 절반, 세로는 반지름 $r$.', to: { csT: 100 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '호 $l=4\\pi$ cm이므로 가로는 $2\\pi$, 세로는 6 cm.' },
+          { at: 5.5, say: '호 $l=4\\pi$ cm이므로 가로는 $2\\pi$에 가까워져요.', set: { csShowWidth: true } },
           { at: 9, say: '넓이 $=\\frac12\\times6\\times4\\pi=12\\pi$ cm²', set: { csShowS: true } }
         ]
       }
@@ -67,8 +67,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '조각으로 나누기',
         start: { csR: 6, csT: 0 },
         cues: [
-          { at: 0, say: '반지름 $r$이 6 cm인 원을 **16조각**으로 나눠요.', set: { csShowS: false, csN: 16 }, to: { csT: 20 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '원주는 $12\\pi$ cm. 조각을 위아래로 번갈아 놓아요.' }
+          { at: 0, say: '반지름 $r$이 6 cm인 원을 **16조각**으로 나눠요.', set: { csShowS: false, csShowArc: false, csShowWidth: false, csN: 16 }, to: { csT: 20 }, dur: 4, ease: 'smooth' },
+          { at: 4.5, say: '원주 $=2\\pi\\times6=12\\pi$ cm.', set: { csShowArc: true } }
         ]
       },
       {
@@ -84,7 +84,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '그래서 넓이는?',
         cues: [
           { at: 0, say: '가로는 원주의 절반, 세로는 반지름 $r$.', to: { csT: 100 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '가로는 $6\\pi$ cm, 세로는 6 cm.' },
+          { at: 5.5, say: '가로는 $6\\pi$ cm, 세로는 6 cm에 가까워져요.', set: { csShowWidth: true } },
           { at: 9, say: '넓이 $=6\\pi\\times6=36\\pi$ cm²', set: { csShowS: true } }
         ]
       }
@@ -220,7 +220,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
   /* ---------- 부채꼴에서 반원 파내기 · 넓이 (f01.js f1-ss2, 탐구 탭, mode 0) · 3장 31초 ----------
      a=6(정사각형의 한 변 = 부채꼴의 반지름, 장면 기본값). 부채꼴 π·6²·90/360 = 9π, 파낸 반원(지름 6 → 반지름 3) π·3²·1/2 = 9π/2, 색칠한 부분 = 9π − 9π/2 = 9π/2 (장면 steps).
      t(f1_ss2_t) 구간: 0~0.12 처음 모양(「전체 (부채꼴) 9π」 캡션) · 0.12~0.30 파낼 반원(주황) 표시 · 0.38~0.74 반원을 옆으로 꺼냄(0.6 부터 「파낸 부분 (반원) 9π/2」 캡션) · 0.80~0.96 결과(캡션·칩).
-     색칠한 부분의 넓이(정답)는 파낸 반원의 넓이와 같아서(9π/2) 정답을 식 전체로 둡니다(answer: 9π − 9π/2 = 9π/2). 결과 캡션·칩은 해설이 f1_ss2_show 를 켤 때까지 아낍니다(f01.js lessonHold).
+     색칠한 부분의 넓이(정답)는 파낸 반원의 넓이와 같으므로(9π/2) 반원의 계산값도 마지막 장까지 미룹니다. 정답은 식 전체로 표시합니다. 결과 캡션·칩은 해설이 f1_ss2_show 를 켤 때까지 아낍니다(f01.js lessonHold).
      장면은 넓이(mode 0)와 둘레(mode 1)를 함께 묻지만, 둘레는 아래 배열의 두 번째 해설(label 「둘레」, 정리 탭 step 으로 시작하는 첫 장 — kit 의 첫 장 step/part 규칙이 필요)로 따로 있습니다. */
   'f1-ss2': [
     {
@@ -232,20 +232,21 @@ window.APL_LESSONS['g7-circle-sector'] = {
       task: '한 변 a를 바꿔도 색칠한 부분이 (부채꼴 − 반원)으로 구해지는지 확인해 보세요',
       chapters: [
         {
-          length: 9,
+          length: 12,
           title: '파낼 반원 찾기',
           start: { f1_ss2_a: 6, f1_ss2_t: 0 },
           cues: [
-            { at: 0, say: '부채꼴에서 **반원**(주황)을 파냈어요.', set: { f1_ss2_mode: 0, f1_ss2_show: false }, to: { f1_ss2_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-            { at: 4.5, say: '반원의 지름은 부채꼴의 한 변, 6 cm예요.' }
+            { at: 0, say: '부채꼴에서 **반원**(주황)을 파냈어요.', set: { f1_ss2_mode: 0, f1_ss2_show: false, f1_ss2_wholeShow: false, f1_ss2_partShow: false, f1_ss2_givenShow: false, f1_ss2_edgeShow: 0 }, to: { f1_ss2_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+            { at: 4, say: '반원의 지름은 6 cm, 반지름은 $6\\div2=3$ cm.', set: { f1_ss2_givenShow: true } },
+            { at: 8, say: '부채꼴의 반지름은 6 cm, 중심각은 90°예요.' }
           ]
         },
         {
           length: 10,
-          title: '두 넓이 구하기',
+          title: '두 넓이를 구할 식',
           cues: [
-            { at: 0, say: '부채꼴의 넓이 $=\\pi\\times6^2\\times\\frac{90}{360}=9\\pi$', to: { f1_ss2_t: 0.74 }, dur: 4.5, ease: 'smooth' },
-            { at: 5, say: '반원(반지름 3)의 넓이 $=\\pi\\times3^2\\times\\frac12=\\frac{9\\pi}{2}$' }
+            { at: 0, say: '부채꼴의 넓이 $=\\pi\\times6^2\\times\\frac{90}{360}=9\\pi$', set: { f1_ss2_wholeShow: true }, to: { f1_ss2_t: 0.74 }, dur: 4.5, ease: 'smooth' },
+            { at: 5, say: '반원의 넓이는 반지름 3인 원의 반, $\\pi\\times3^2\\times\\frac12$.' }
           ]
         },
         {
@@ -253,13 +254,13 @@ window.APL_LESSONS['g7-circle-sector'] = {
           title: '빼서 구하기',
           cues: [
             { at: 0, say: '색칠한 부분 = 부채꼴 − 반원', to: { f1_ss2_t: 0.96 }, dur: 4, ease: 'smooth' },
-            { at: 4.5, say: '부채꼴 $9\\pi$에서 반원 $\\frac{9\\pi}{2}$를 빼요.' },
+            { at: 4.5, say: '반원은 $\\frac{9\\pi}{2}$. 부채꼴 $9\\pi$에서 빼요.', set: { f1_ss2_partShow: true } },
             { at: 8.5, say: '$9\\pi-\\frac{9\\pi}{2}=\\frac{9\\pi}{2}$ cm²', set: { f1_ss2_show: true } }
           ]
         }
       ]
     },
-    /* ---------- 부채꼴에서 반원 파내기 · 둘레 (f01.js f1-ss2, 정리 탭, mode 1) · 3장 30초 · kit 규칙 필요(첫 장이 step 으로 시작) ----------
+    /* ---------- 부채꼴에서 반원 파내기 · 둘레 (f01.js f1-ss2, 정리 탭, mode 1) · 3장 30초 · 첫 장은 step 으로 시작 ----------
        a=6. 둘레 = 반원의 호 2π·3·½ = 3π + 부채꼴의 호 2π·6·90/360 = 3π + 한 변 6 = 6π+6 (cm) (장면 stepsP). 정리 탭 step n 에서 n 번째 경계가 그려지고 라벨이 나옵니다(step 4 에서 합계).
        움직이는 값(to)이 없는 장면이라 첫 장은 step 칸(at:0)으로 시작합니다. */
     {
@@ -276,8 +277,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           title: '반원의 호',
           start: { f1_ss2_a: 6 },
           cues: [
-            { at: 0, say: '둘레를 이루는 선을 하나씩 따라가 봐요.', set: { f1_ss2_mode: 1, f1_ss2_show: false }, step: 1 },
-            { at: 4.5, say: '반원의 지름은 6 cm, 반지름은 3. 호는 $2\\pi\\times3\\times\\frac12=3\\pi$.' }
+            { at: 0, say: '둘레를 이루는 선을 하나씩 따라가 봐요.', set: { f1_ss2_mode: 1, f1_ss2_show: false, f1_ss2_wholeShow: false, f1_ss2_partShow: false, f1_ss2_givenShow: false, f1_ss2_edgeShow: 0 }, step: 1 },
+            { at: 4.5, say: '지름 6 cm라 반지름은 3. 호는 $2\\pi\\times3\\times\\frac12=3\\pi$.', set: { f1_ss2_givenShow: true, f1_ss2_edgeShow: 1 } }
           ]
         },
         {
@@ -285,16 +286,16 @@ window.APL_LESSONS['g7-circle-sector'] = {
           title: '부채꼴의 호',
           cues: [
             { at: 0, say: '다음은 부채꼴의 호. 반지름은 한 변 6 cm.', step: 2 },
-            { at: 5, say: '직각이니 원의 $\\frac14$, $2\\pi\\times6\\times\\frac14=3\\pi$.' }
+            { at: 5, say: '직각이니 원의 $\\frac14$, $2\\pi\\times6\\times\\frac14=3\\pi$.', set: { f1_ss2_edgeShow: 2 } }
           ]
         },
         {
           length: 11,
           title: '한 변을 더하면',
           cues: [
-            { at: 0, say: '정사각형의 한 변도 둘레예요.', step: 3 },
+            { at: 0, say: '정사각형의 한 변 6 cm도 둘레예요.', step: 3, set: { f1_ss2_edgeShow: 3 } },
             { at: 4, say: '둘레 = 호 + 호 + 한 변' },
-            { at: 7.5, say: '$3\\pi+3\\pi+6=6\\pi+6$ cm', step: 4 }
+            { at: 7.5, say: '$3\\pi+3\\pi+6=6\\pi+6$ cm', step: 4, set: { f1_ss2_show: true } }
           ]
         }
       ]
@@ -318,7 +319,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         start: { f3a: 6, f3t: 0 },
         cues: [
           { at: 0, say: '색칠한 잎 모양의 둘레는 **호 2개**예요.', set: { f3Show: false }, to: { f3t: 0.24 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '두 호는 모두 중심각이 **90°**인 부채꼴의 호예요.' }
+          { at: 4.5, say: '한 변 6 cm가 두 호의 반지름. 중심각은 각각 **90°**예요.' }
         ]
       },
       {
@@ -347,35 +348,39 @@ window.APL_LESSONS['g7-circle-sector'] = {
      깨끗한 값 f5T 0~0.74, 0.76~1(0.75 하나만 「90°」끼리 맞닿음 → 움직이며 지나감). 장면은 끈 전체 길이(24+6π)를 그림에 그리지 않으므로(정리 탭·패널에만) 숨길 것이 없습니다. */
   'f5-sq4': {
     title: '끈의 길이는?',
-    answer: '$24+6\\pi$',
-    answerText: '$24+6\\pi$ cm',
+    answer: '$24+6\\pi$', answerText: '$24+6\\pi$ cm',
     summary: '끈 = 직선 부분 + 원 하나의 둘레',
-    task: '반지름 r을 바꿔 직선 부분과 곡선 부분이 어떻게 변하는지 확인해 보세요',
+    task: '반지름을 바꿔 직선과 곡선의 길이를 확인해 보세요.',
     chapters: [
       {
-        length: 9,
-        title: '직선 부분',
+        length: 13, title: '직선 부분의 길이',
         start: { f5A: 3, f5T: 0 },
         cues: [
-          { at: 0, say: '끈은 **직선 부분**과 **곡선 부분**으로 나뉘어요.', to: { f5T: 0.34 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '직선 부분은 6 cm가 4개, $6\\times4=24$ cm.' }
+          { at: 0, say: '반지름 3 cm인 원기둥 네 개를 끈으로 묶었어요.', set: { f5BandRead: 0 }, to: { f5T: 0.16 }, dur: 2, ease: 'smooth' },
+          { at: 4.5, say: '직선은 중심 사이 거리와 같아 $3+3=6$ cm예요.', set: { f5BandRead: 1 }, to: { f5T: 0.38 }, dur: 4, ease: 'smooth' },
+          { at: 9, say: '직선 네 개를 더하면 $6\\times4=24$ cm예요.', set: { f5BandRead: 2 } }
         ]
       },
       {
-        length: 10,
-        title: '곡선 부분 모으기',
+        length: 10, title: '곡선 부분 모으기',
         cues: [
-          { at: 0, say: '곡선 부분은 반지름 3, 중심각 90°인 호 4개.', to: { f5T: 0.9 }, dur: 6.5, ease: 'smooth' },
-          { at: 6.5, say: '호 4개를 한곳으로 모아 볼게요.' }
+          { at: 0, say: '곡선은 반지름 3 cm, 중심각 90°인 호 네 개예요.', set: { f5BandRead: 3 }, to: { f5T: 0.9 }, dur: 6, ease: 'smooth' },
+          { at: 6.5, say: '같은 반지름의 호들을 한곳으로 모아요.' }
         ]
       },
       {
-        length: 12,
-        title: '끈의 길이',
+        length: 12, title: '원 하나의 둘레',
         cues: [
-          { at: 0, say: '중심각의 합 $90°\\times4=360°$, 원 하나가 돼요.', to: { f5T: 1 }, dur: 2.5, ease: 'smooth' },
-          { at: 4, say: '곡선 부분은 원 하나의 둘레 $2\\pi\\times3=6\\pi$ cm.' },
-          { at: 8, say: '끈의 길이 $=24+6\\pi$ cm' }
+          { at: 0, say: '남은 두 호도 마저 모아 볼게요.', to: { f5T: 1 }, dur: 2.5, ease: 'smooth' },
+          { at: 4, say: '중심각의 합이 $90°\\times4=360°$, 원 하나예요.', set: { f5BandRead: 4 } },
+          { at: 8, say: '곡선 길이는 원주 $2\\pi\\times3=6\\pi$ cm예요.', set: { f5BandRead: 5 } }
+        ]
+      },
+      {
+        length: 9, title: '끈의 길이',
+        cues: [
+          { at: 0, say: '직선 부분 24 cm와 곡선 부분 $6\\pi$ cm를 더해요.' },
+          { at: 4.5, say: '끈의 길이는 $(24+6\\pi)$ cm예요.', set: { f5BandRead: 6 } }
         ]
       }
     ]
@@ -410,8 +415,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: 'x 구하기',
         cues: [
           { at: 0, say: '왼쪽은 30°, 호 6 cm. 오른쪽 호의 길이를 $x$라 해요.' },
-          { at: 3.5, say: '호 : 호 = 중심각 : 중심각, $6:x=30:45$', step: 1, set: { b1102_show: true } },
-          { at: 7, say: '그래서 $x=9$ cm예요.' }
+          { at: 3.5, say: '호 : 호 = 중심각 : 중심각, $6:x=30:45$', step: 1 },
+          { at: 7, say: '그래서 $x=6\\times\\frac{45}{30}=9$ cm예요.', set: { b1102_show: true } }
         ]
       },
       {
@@ -481,26 +486,26 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 9,
         title: '굴리면 호가 생겨요',
-        start: { rlT: 0 },
+        start: { rlT: 0, rlW: 3, rlH: 4 },
         cues: [
-          { at: 0, say: '직사각형을 **굴리면** 점 A가 **호**를 그려요.', set: { rlShow: false }, to: { rlT: 0.3334 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '첫 번째는 점 B가 중심, 반지름 3 cm, 중심각 90°.' }
+          { at: 0, say: '직사각형을 **굴리면** 점 A가 **호**를 그려요.', set: { rlShow: false, rlRead: 0, rlFocus: 0, rlAngles: 0 }, to: { rlT: 0.3334 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '첫 번째는 점 B가 중심, 반지름 3 cm, 중심각 90°.', set: { rlAngles: 1 } }
         ]
       },
       {
         length: 10,
         title: '다음 회전',
         cues: [
-          { at: 0, say: '다음은 점 C가 중심, 반지름은 대각선 5 cm.', to: { rlT: 0.6667 }, dur: 5.5, ease: 'smooth' },
-          { at: 6, say: '이번에도 중심각은 90°예요.' }
+          { at: 0, say: '다음은 점 C가 중심, 반지름은 대각선 5 cm.', set: { rlFocus: 1 }, to: { rlT: 0.6667 }, dur: 5.5, ease: 'smooth' },
+          { at: 6, say: '이번에도 중심각은 90°예요.', set: { rlAngles: 2 } }
         ]
       },
       {
         length: 12,
         title: '세 호를 더하면',
         cues: [
-          { at: 0, say: '세 번째는 반지름 4 cm, 중심각 90°.', to: { rlT: 1 }, dur: 4.5, ease: 'smooth' },
-          { at: 5, say: '호는 $\\frac{3\\pi}{2}$, $\\frac{5\\pi}{2}$, $2\\pi$.' },
+          { at: 0, say: '세 번째는 반지름 4 cm, 중심각 90°.', set: { rlFocus: 2, rlAngles: 3 }, to: { rlT: 1 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '호는 $\\frac{3\\pi}{2}$, $\\frac{5\\pi}{2}$, $2\\pi$.', set: { rlFocus: -1, rlRead: 3 } },
           { at: 8.5, say: '거리 $=\\frac{3\\pi}{2}+\\frac{5\\pi}{2}+2\\pi=6\\pi$ cm', set: { rlShow: true } }
         ]
       }
@@ -513,35 +518,45 @@ window.APL_LESSONS['g7-circle-sector'] = {
      영역의 넓이(정답) 칩과 아래 칩의 「넓이 14π」는 해설이 gtShow 를 켤 때까지 아낍니다(swept.js hold). */
   'gt-kennel': {
     title: '강아지가 갈 수 있는 영역은?',
-    answer: '$14\\pi$',
-    answerText: '$14\\pi$ m²',
+    answer: '$14\\pi$', answerText: '$14\\pi$ m²',
     summary: '영역 = 큰 부채꼴 + 작은 부채꼴 둘',
-    task: '개집의 한 변이나 끈의 길이를 바꿔 부채꼴이 어떻게 달라지는지 확인해 보세요',
+    task: '울타리와 끈의 길이를 바꾸고 각 모서리에 남는 끈을 확인해 보세요.',
     chapters: [
       {
-        length: 9,
-        title: '모서리를 돌면 끈이 꺾여요',
+        length: 12, title: '모서리에서 꺾이는 끈',
         start: { gtQ: 2, gtL: 4, gtT: 0.03 },
         cues: [
-          { at: 0, say: '개집 한 변은 2 m, 끈은 4 m예요. 강아지가 돌아요.', set: { gtShow: false }, to: { gtT: 0.15 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '모서리 D에서 끈이 꺾이고, 남은 끈으로 작은 부채꼴이 생겨요.' }
+          { at: 0, say: '개집 한 변은 2 m, 끈은 4 m예요.', set: { gtShow: false, gtRead: 0, gtCalc: 0 }, to: { gtT: 0.15 }, dur: 4, ease: 'smooth' },
+          { at: 5, say: 'D에서 남은 끈 $4-2=2$ m, 각은 $180°-90°=90°$.', set: { gtRead: 1 } }
         ]
       },
       {
-        length: 10,
-        title: '큰 부채꼴',
+        length: 10, title: 'A를 중심으로 도는 영역',
         cues: [
-          { at: 0, say: '이번에는 A를 중심으로 크게 돌아요.', to: { gtT: 0.6 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '큰 부채꼴은 반지름 4 m, 중심각 270°.' }
+          { at: 0, say: 'A에서는 끈이 꺾이지 않아 전체 길이가 반지름이에요.', to: { gtT: 0.6 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '반지름은 4 m, 중심각은 $360°-90°=270°$.', set: { gtRead: 2 } }
         ]
       },
       {
-        length: 12,
-        title: '부채꼴을 모두 더하기',
+        length: 10, title: 'B를 돌아가는 영역',
         cues: [
-          { at: 0, say: '끝으로 B를 도는 작은 부채꼴, 반지름 2 m, 90°.', to: { gtT: 1 }, dur: 4.5, ease: 'smooth' },
-          { at: 5, say: '큰 부채꼴은 $12\\pi$, 작은 부채꼴은 각각 $\\pi$.' },
-          { at: 8.5, say: '영역 $=12\\pi+\\pi+\\pi=14\\pi$ m²', set: { gtShow: true } }
+          { at: 0, say: '다른 모서리 B에서도 끈이 꺾여요.', to: { gtT: 1 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '남은 끈 $4-2=2$ m, 중심각은 $180°-90°=90°$.', set: { gtRead: 3 } }
+        ]
+      },
+      {
+        length: 13, title: '부채꼴별 넓이',
+        cues: [
+          { at: 0, say: 'D의 작은 부채꼴은 $\\pi\\times2^2\\times\\frac{90}{360}=\\pi$ m².', set: { gtCalc: 1 } },
+          { at: 4.5, say: 'A의 큰 부채꼴은 $\\pi\\times4^2\\times\\frac{270}{360}=12\\pi$ m².', set: { gtCalc: 2 } },
+          { at: 9, say: 'B의 작은 부채꼴은 $\\pi\\times2^2\\times\\frac{90}{360}=\\pi$ m².', set: { gtCalc: 3 } }
+        ]
+      },
+      {
+        length: 10, title: '세 영역을 더하기',
+        cues: [
+          { at: 0, say: '겹치지 않는 세 부채꼴의 넓이를 모두 더해요.' },
+          { at: 5, say: '갈 수 있는 넓이는 $12\\pi+\\pi+\\pi=14\\pi$ m²예요.', set: { gtShow: true } }
         ]
       }
     ]
@@ -565,9 +580,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '먼저 호',
         start: { csR: 6, csA: 90, csP: 0 },
         cues: [
-          { at: 0, say: '반지름 6 cm, 중심각 90°인 부채꼴의 둘레를 구해요.', step: 2 },
+          { at: 0, say: '반지름 6 cm, 중심각 90°인 부채꼴의 둘레를 구해요.', step: 1 },
           { at: 0.5, to: { csP: 43.99008464884426 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '둘레는 경계선의 길이를 더해요. 먼저 호는 $3\\pi$ cm.' }
+          { at: 4.5, say: '호는 $2\\pi\\times6\\times\\frac{90}{360}=3\\pi$ cm.', step: 2 }
         ]
       },
       {
@@ -609,8 +624,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           title: '사분원 4개를 파냈어요',
           start: { f1_star_a: 10, f1_star_t: 0 },
           cues: [
-            { at: 0, say: '정사각형의 네 모서리에서 **사분원**을 파냈어요.', set: { f1_star_mode: 0, f1_star_show: false }, to: { f1_star_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-            { at: 4.5, say: '한 변은 10 cm, 사분원의 반지름은 5 cm예요.' }
+            { at: 0, say: '정사각형의 네 모서리에서 **사분원**을 파냈어요.', set: { f1_star_mode: 0, f1_star_show: false, f1_star_wholeShow: false, f1_star_partShow: false, f1_star_givenShow: false, f1_star_edgeShow: 0 }, to: { f1_star_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+            { at: 4.5, say: '한 변은 10 cm. 사분원의 반지름은 $10\\div2=5$ cm.', set: { f1_star_givenShow: true } }
           ]
         },
         {
@@ -618,7 +633,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
           title: '모으면 원 하나',
           cues: [
             { at: 0, say: '파낸 사분원 4개를 모아 보면?', to: { f1_star_t: 0.74 }, dur: 5, ease: 'smooth' },
-            { at: 5.5, say: '반지름 5 cm인 원 1개, 넓이 $\\pi\\times5^2=25\\pi$.' }
+            { at: 5.5, say: '반지름 5 cm인 원 1개, 넓이 $\\pi\\times5^2=25\\pi$.', set: { f1_star_partShow: true } }
           ]
         },
         {
@@ -626,13 +641,13 @@ window.APL_LESSONS['g7-circle-sector'] = {
           title: '빼서 구하기',
           cues: [
             { at: 0, say: '색칠한 부분 = 정사각형 − 원 1개', to: { f1_star_t: 0.96 }, dur: 4, ease: 'smooth' },
-            { at: 4.5, say: '정사각형 $10\\times10=100$, 원 $25\\pi$.' },
+            { at: 4.5, say: '정사각형 $10\\times10=100$, 원 $25\\pi$.', set: { f1_star_wholeShow: true } },
             { at: 8.5, say: '$100-25\\pi$ cm²', set: { f1_star_show: true } }
           ]
         }
       ]
     },
-    /* ---------- 정사각형에서 사분원 4개 파내기 · 둘레 (f01.js f1-star, 정리 탭, mode 1) · 3장 29초 · kit 규칙 필요(첫 장이 step 으로 시작) ----------
+    /* ---------- 정사각형에서 사분원 4개 파내기 · 둘레 (f01.js f1-star, 정리 탭, mode 1) · 3장 29초 · 첫 장은 step 으로 시작 ----------
        a=10, r=5. 둘레 = 사분원의 호 4개, 호 하나 2π·5·90/360 = 5π/2, 합 4×5π/2 = 10π (= 원 하나의 둘레 2π·5) (장면 stepsP). step 1 에서 호 4개, step 2 에서 호 길이 라벨, step 3 에서 합계. */
     {
       title: '별 모양의 둘레',
@@ -648,7 +663,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
           title: '둘레는 호 4개',
           start: { f1_star_a: 10 },
           cues: [
-            { at: 0, say: '색칠한 별 모양의 둘레는 사분원의 호 4개예요.', set: { f1_star_mode: 1, f1_star_show: false }, step: 1 },
+            { at: 0, say: '색칠한 별 모양의 둘레는 사분원의 호 4개예요.', set: { f1_star_mode: 1, f1_star_show: false, f1_star_wholeShow: false, f1_star_partShow: false, f1_star_givenShow: false, f1_star_edgeShow: 0 }, step: 1 },
             { at: 4.5, say: '호 하나는 원의 둘레의 $\\frac14$이에요.' }
           ]
         },
@@ -656,8 +671,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 10,
           title: '호 하나의 길이',
           cues: [
-            { at: 0, say: '한 변이 10 cm이니 호의 반지름은 5.', step: 2 },
-            { at: 5, say: '호 하나 $=2\\pi\\times5\\times\\frac14=\\frac{5\\pi}{2}$' }
+            { at: 0, say: '한 변 10 cm의 절반, 호의 반지름은 $10\\div2=5$ cm.', step: 2, set: { f1_star_givenShow: true } },
+            { at: 5, say: '호 하나 $=2\\pi\\times5\\times\\frac14=\\frac{5\\pi}{2}$', set: { f1_star_edgeShow: 2 } }
           ]
         },
         {
@@ -666,7 +681,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
           cues: [
             { at: 0, say: '네 호의 길이는 모두 같아요.' },
             { at: 3.5, say: '둘레 = 호 하나 × 4' },
-            { at: 7, say: '$4\\times\\frac{5\\pi}{2}=10\\pi$ cm', step: 3 }
+            { at: 7, say: '$4\\times\\frac{5\\pi}{2}=10\\pi$ cm', step: 3, set: { f1_star_show: true } }
           ]
         }
       ]
@@ -728,9 +743,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '먼저 호',
         start: { csR: 6, csP: 0 },
         cues: [
-          { at: 0, say: '지름이 12 cm인 반원의 둘레를 구해요.', step: 2 },
+          { at: 0, say: '지름이 12 cm인 반원의 둘레를 구해요.', step: 1 },
           { at: 0.5, to: { csP: 61.10154703516573 }, dur: 4, ease: 'smooth' },
-          { at: 5, say: '둘레는 경계선의 길이를 더해요. 먼저 호는 $6\\pi$ cm.' }
+          { at: 5, say: '반지름은 6 cm. 호는 $2\\pi\\times6\\times\\frac12=6\\pi$ cm.', step: 2 }
         ]
       },
       {
@@ -760,9 +775,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '먼저 호',
         start: { csR: 6, csP: 0 },
         cues: [
-          { at: 0, say: '반지름 6 cm인 사분원의 둘레를 구해요.', step: 2 },
+          { at: 0, say: '반지름 6 cm인 사분원의 둘레를 구해요.', step: 1 },
           { at: 0.5, to: { csP: 43.99008464884426 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '둘레는 경계선의 길이를 더해요. 먼저 호는 $3\\pi$ cm.' }
+          { at: 4.5, say: '호는 $2\\pi\\times6\\times\\frac{90}{360}=3\\pi$ cm.', step: 2 }
         ]
       },
       {
@@ -802,18 +817,18 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '먼저 호',
         start: { csR: 6, csS: 60, csP: 0 },
         cues: [
-          { at: 0, say: '반지름 6 cm, 중심각 60°인 활꼴의 둘레를 구해요.', step: 2 },
+          { at: 0, say: '반지름 6 cm, 중심각 60°인 활꼴의 둘레를 구해요.', step: 1, set: { csShowChord: false } },
           { at: 0.5, to: { csP: 51.15273563044784 }, dur: 4, ease: 'smooth' },
-          { at: 5, say: '먼저 호 AB는 $2\\pi$ cm.' }
+          { at: 5, say: '호 AB는 $2\\pi\\times6\\times\\frac{60}{360}=2\\pi$ cm.', step: 2 }
         ]
       },
       {
-        length: 10,
+        length: 13,
         title: '현까지 더하기',
         cues: [
-          { at: 0, say: '호의 두 끝을 곧게 이은 선분이 **현**이에요.', to: { csP: 100 }, dur: 3.5, ease: 'smooth' },
-          { at: 3.5, say: '활꼴의 둘레 = 호 + 현' },
-          { at: 7, say: '현은 6 cm, 둘레 $=2\\pi+6$ cm', step: 3 }
+          { at: 0, say: '두 반지름과 현이 만든 삼각형은 이등변삼각형이에요.', to: { csP: 100 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '꼭지각이 60°라 정삼각형이에요. 현도 반지름과 같은 6 cm예요.', set: { csShowChord: true } },
+          { at: 9, say: '활꼴의 둘레는 호 + 현, $2\\pi+6$ cm예요.', step: 3 }
         ]
       }
     ]
@@ -886,7 +901,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '원주는 호의 8배',
         cues: [
           { at: 0, say: '호는 원주의 $\\frac18$이므로 원주는 호의 8배.' },
-          { at: 4.5, say: '원주 $=3\\pi\\times8=24\\pi$ cm', step: 1 }
+          { at: 4.5, say: '원주 $=3\\pi\\times8=24\\pi$ cm', step: 1, set: { b1808_ref: 1 } }
         ]
       },
       {
@@ -1064,20 +1079,21 @@ window.APL_LESSONS['g7-circle-sector'] = {
     task: 'R, r, 중심각을 바꿔도 (큰 부채꼴 − 작은 부채꼴)로 구해지는지 확인해 보세요',
     chapters: [
       {
-        length: 9,
+        length: 12,
         title: '파낸 작은 부채꼴',
         start: { f1_ring_R: 6, f1_ring_r: 3, f1_ring_th: 90, f1_ring_t: 0 },
         cues: [
-          { at: 0, say: '큰 부채꼴에서 작은 부채꼴을 파냈어요.', set: { f1_ring_mode: 0, f1_ring_show: false }, to: { f1_ring_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '큰 쪽 반지름 $R$은 6, 작은 쪽 반지름 $r$은 3.' }
+          { at: 0, say: '큰 부채꼴에서 작은 부채꼴을 파냈어요.', set: { f1_ring_mode: 0, f1_ring_show: false, f1_ring_wholeShow: false, f1_ring_partShow: false, f1_ring_givenShow: false, f1_ring_edgeShow: 0 }, to: { f1_ring_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4, say: '큰 쪽 반지름 $R$은 6, 작은 쪽 반지름 $r$은 3.' },
+          { at: 8, say: '두 부채꼴의 중심각은 모두 90°예요.' }
         ]
       },
       {
         length: 10,
         title: '두 넓이 구하기',
         cues: [
-          { at: 0, say: '큰 부채꼴의 넓이 $=\\pi\\times6^2\\times\\frac{90}{360}=9\\pi$', to: { f1_ring_t: 0.74 }, dur: 4.5, ease: 'smooth' },
-          { at: 5, say: '작은 부채꼴은 $\\pi\\times3^2\\times\\frac{90}{360}=\\frac{9\\pi}{4}$' }
+          { at: 0, say: '큰 부채꼴의 넓이 $=\\pi\\times6^2\\times\\frac{90}{360}=9\\pi$', set: { f1_ring_wholeShow: true }, to: { f1_ring_t: 0.74 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '작은 부채꼴은 $\\pi\\times3^2\\times\\frac{90}{360}=\\frac{9\\pi}{4}$', set: { f1_ring_partShow: true } }
         ]
       },
       {
@@ -1106,7 +1122,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '파낼 잎 모양',
         start: { f1_lens_a: 8, f1_lens_t: 0 },
         cues: [
-          { at: 0, say: '마주 보는 두 꼭짓점의 사분원이 겹친 **잎 모양**을 파냈어요.', set: { f1_lens_mode: 0, f1_lens_show: false }, to: { f1_lens_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 0, say: '마주 보는 두 꼭짓점의 사분원이 겹친 **잎 모양**을 파냈어요.', set: { f1_lens_mode: 0, f1_lens_show: false, f1_lens_wholeShow: false, f1_lens_partShow: false, f1_lens_givenShow: false, f1_lens_edgeShow: 0 }, to: { f1_lens_t: 0.3 }, dur: 3.5, ease: 'smooth' },
           { at: 4.5, say: '정사각형의 한 변은 8 cm예요.' }
         ]
       },
@@ -1115,7 +1131,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '잎 모양의 넓이',
         cues: [
           { at: 0, say: '잎 모양 = 사분원 둘 − 정사각형', to: { f1_lens_t: 0.74 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '잎 모양의 넓이 $=32\\pi-64$' }
+          { at: 5.5, say: '잎 모양의 넓이 $=2\\times\\frac{\\pi\\times8^2}{4}-8^2=32\\pi-64$', set: { f1_lens_partShow: true, f1_lens_wholeShow: true } }
         ]
       },
       {
@@ -1144,8 +1160,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '파낸 부분 찾기',
         start: { f1_ex22_a: 4, f1_ex22_t: 0 },
         cues: [
-          { at: 0, say: '사분원과 반원 사이의 흰 부분을 파냈어요.', set: { f1_ex22_mode: 0, f1_ex22_show: false }, to: { f1_ex22_t: 0.3 }, dur: 3.5, ease: 'smooth' },
-          { at: 4.5, say: '정사각형의 한 변은 4 cm, 반원의 반지름은 2.' }
+          { at: 0, say: '사분원과 반원 사이의 흰 부분을 파냈어요.', set: { f1_ex22_mode: 0, f1_ex22_show: false, f1_ex22_wholeShow: false, f1_ex22_partShow: false, f1_ex22_givenShow: false, f1_ex22_edgeShow: 0 }, to: { f1_ex22_t: 0.3 }, dur: 3.5, ease: 'smooth' },
+          { at: 4.5, say: '한 변은 4 cm. 반원의 반지름은 $4\\div2=2$ cm.', set: { f1_ex22_givenShow: true } }
         ]
       },
       {
@@ -1153,7 +1169,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '파낸 부분의 넓이',
         cues: [
           { at: 0, say: '파낸 부분 = 사분원 − 반원', to: { f1_ex22_t: 0.74 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '파낸 부분의 넓이 $=4\\pi-2\\pi=2\\pi$' }
+          { at: 5.5, say: '파낸 부분의 넓이 $=\\frac{\\pi\\times4^2}{4}-\\frac{\\pi\\times2^2}{2}=2\\pi$', set: { f1_ex22_partShow: true } }
         ]
       },
       {
@@ -1161,14 +1177,14 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '빼서 구하기',
         cues: [
           { at: 0, say: '색칠한 부분 = 정사각형 − 파낸 부분', to: { f1_ex22_t: 0.96 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '정사각형 $4\\times4=16$에서 $2\\pi$를 빼요.' },
+          { at: 4.5, say: '정사각형 $4\\times4=16$에서 $2\\pi$를 빼요.', set: { f1_ex22_wholeShow: true } },
           { at: 8.5, say: '$16-2\\pi$ cm²', set: { f1_ex22_show: true } }
         ]
       }
     ]
   },
 
-  /* ===== 아래 7개(1103·1106·1807·1104·1105·1719·1809)는 첫 장이 step 으로 시작합니다: kit 의 「해설 첫 장은 to 또는 step/part 칸이 첫 1초 안」 규칙(sv 브랜치)이 병합돼야 재생됩니다(별도 커밋). 모두 정리 탭(tab:'review')이고 값은 움직이지 않습니다(교재 수치 그대로, 장면 기본값). 정답 칩은 step 0 에서 basic.js(build view)가 재생·진입 화면에 한해 숨깁니다. ===== */
+  /* ===== 아래 7개(1103·1106·1807·1104·1105·1719·1809)는 첫 장이 step 으로 시작합니다: kit 의 「해설 첫 장은 to 또는 step/part 칸이 첫 1초 안」 규칙이 현재 main에 병합되어 재생됩니다. 모두 정리 탭(tab:'review')이고 값은 움직이지 않습니다(교재 수치 그대로, 장면 기본값). 정답 칩은 step 0 에서 basic.js(build view)가 재생·진입 화면에 한해 숨깁니다. ===== */
 
   /* ---------- 호의 길이의 비로 중심각 구하기 (basic.js 1103) · 2장 19초 ----------
      호의 비 3:5:7 → 한 칸 360°÷15 = 24° → ∠AOB = 24°×3 = 72° (장면 steps). step 1 에서 「한 칸 24°」 눈금, step 2 에서 ∠AOB. */
@@ -1183,6 +1199,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 9,
         title: '원을 15칸으로',
+        start: { b1103_a: 3, b1103_b: 5, b1103_c: 7 },
         cues: [
           { at: 0, say: '호 AB : BC : CA = 3 : 5 : 7이에요.', step: 0 },
           { at: 4.5, say: '$3+5+7=15$칸, 한 칸은 $360°\\div15=24°$.', step: 1 }
@@ -1213,6 +1230,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 10,
         title: '넓이는 중심각에 정비례',
+        start: { b1106_al: 120, b1106_be: 40, b1106_S: 72 },
         cues: [
           { at: 0, say: '120°인 부채꼴의 넓이는 $24\\pi$. 40°인 쪽을 $x$라 해요.', step: 0 },
           { at: 5, say: '$24\\pi:x=120:40$', step: 1 }
@@ -1243,6 +1261,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 9,
         title: '같은 현, 같은 중심각',
+        start: { b1807_cof: 105 },
         cues: [
           { at: 0, say: '그림에서 표시한 현들은 길이가 모두 같아요.', step: 0 },
           { at: 4.5, say: '현의 길이가 같으면 중심각도 같아요.', step: 1 }
@@ -1273,9 +1292,10 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 10,
         title: '엇각과 이등변삼각형',
+        start: { b1104_al: 40, b1104_r: 18 },
         cues: [
-          { at: 0, say: '중심각 40°인 호가 $4\\pi$ cm. 호 CD를 구해요.', step: 0 },
-          { at: 5, say: 'AB∥CD라 엇각 ∠OCD=40°, OC=OD라 ∠ODC=40°.' }
+          { at: 0, say: '중심각 40°인 호가 $4\\pi$ cm. 호 CD를 구해요.', step: 0, set: { b1104_baseShow: false } },
+          { at: 5, say: 'AB∥CD라 엇각 ∠OCD=40°, OC=OD라 ∠ODC=40°.', set: { b1104_baseShow: true } }
         ]
       },
       {
@@ -1303,9 +1323,10 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 10,
         title: '동위각과 이등변삼각형',
+        start: { b1105_be: 42, b1105_r: 30 },
         cues: [
-          { at: 0, say: '중심각 42°인 호가 $7\\pi$ cm. 호 AC를 구해요.', step: 0 },
-          { at: 5, say: '동위각이라 ∠OAC=42°, OA=OC라 ∠OCA=42°.' }
+          { at: 0, say: '중심각 42°인 호가 $7\\pi$ cm. 호 AC를 구해요.', step: 0, set: { b1105_baseShow: false } },
+          { at: 5, say: '동위각이라 ∠OAC=42°, OA=OC라 ∠OCA=42°.', set: { b1105_baseShow: true } }
         ]
       },
       {
@@ -1333,6 +1354,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 9,
         title: '호의 비로 중심각',
+        start: { b1719_n: 4 },
         cues: [
           { at: 0, say: '지름 AB 위의 호 AC : 호 BC = 4 : 1이에요.', step: 0 },
           { at: 4.5, say: '두 호의 합은 반원 180°라 ∠BOC=36°, ∠AOC=144°.', step: 1 }
@@ -1363,6 +1385,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 9,
         title: '정오각형의 한 내각',
+        start: { b1809_i: 3, b1809_r: 10 },
         cues: [
           { at: 0, say: '정오각형의 한 꼭짓점이 중심, 한 변 10 cm가 반지름.', step: 0 },
           { at: 4.5, say: '한 내각 $=180°\\times(5-2)\\div5=108°$', step: 1 }
@@ -1380,7 +1403,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
     ]
   },
 
-  /* ===== f02 나누기·합치기(rot·y12·cc08·sj1·petal15): 정리 탭 step 으로 진행하는 해설 — 첫 장이 step 으로 시작하므로 kit 규칙 필요(별도 커밋). 값은 움직이지 않고 장면 기본값(교재 수치)을 씁니다. 장면 정리 탭 step 번호: 둘레 = step 1~3, 넓이 = step 4~6 (rot 은 1~5, petal15 는 1~5). 정답이 들어 있는 칩/라벨이 나오는 step 은 마지막 자막과 함께 켭니다. ===== */
+  /* ===== f02 나누기·합치기(rot·y12·cc08·sj1·petal15): 정리 탭 step 으로 진행하는 해설 — 현재 main에서 지원하는 첫 장 step 규칙을 사용. 값은 움직이지 않고 장면 기본값(교재 수치)을 씁니다. 장면 정리 탭 step 번호: 둘레 = step 1~3, 넓이 = step 4~6 (rot 은 1~5, petal15 는 1~5). 정답이 들어 있는 칩/라벨이 나오는 step 은 마지막 자막과 함께 켭니다. ===== */
 
   /* ---------- 반원을 60° 돌린 모양 · 넓이 (f02.js rot, 정리 탭) · 3장 33초 ----------
      r=3, 회전 60°: 회전한 반원 = 처음 반원 = ½π·3² = 9π/2 → 색칠 = (회전한 반원) + (부채꼴 ABB′) − (처음 반원) = 부채꼴 ABB′ (반지름 6, 중심각 60°) = π·6²·60/360 = 6π.
@@ -1394,18 +1417,20 @@ window.APL_LESSONS['g7-circle-sector'] = {
     task: '반지름이나 회전한 각을 바꿔도 부채꼴의 넓이와 같은지 확인해 보세요',
     chapters: [
       {
-        length: 10,
+        length: 13,
         title: '같은 두 반원',
+        start: { f02_rot_r: 3, f02_rot_th: 60, f02_rot_sw: 1, f02_rot_u: 0 },
         cues: [
-          { at: 0, say: '회전한 반원도 처음 반원과 모양·크기가 같아요.', step: 1 },
-          { at: 5, say: '그래서 넓이도 같아요. $\\frac12\\pi\\times3^2=\\frac{9\\pi}{2}$' }
+          { at: 0, say: '반지름 3 cm인 반원을 점 A 주위로 60° 돌렸어요.', step: 1, set: { f02Read: false, f02Dims: true } },
+          { at: 4.5, say: '회전한 반원도 처음 반원과 모양·크기가 같아요.' },
+          { at: 9, say: '그래서 넓이도 같아요. $\\frac12\\pi\\times3^2=\\frac{9\\pi}{2}$', set: { f02Read: true } }
         ]
       },
       {
         length: 10,
         title: '더하고 빼기',
         cues: [
-          { at: 0, say: '색칠한 부분 = 회전한 반원 + 부채꼴 − 처음 반원', step: 2 },
+          { at: 0, say: '색칠한 부분 = 회전한 반원 + 부채꼴 − 처음 반원', step: 2, set: { f02Read: false, f02Dims: true } },
           { at: 5.5, say: '같은 두 반원은 더하고 빼면 없어져요.' }
         ]
       },
@@ -1413,8 +1438,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
         length: 12,
         title: '부채꼴만 남아요',
         cues: [
-          { at: 0, say: '남는 것은 부채꼴 ABB′. 반지름 6 cm, 중심각 60°.', step: 4 },
-          { at: 5, say: '넓이 $=\\pi\\times6^2\\times\\frac{60}{360}$' },
+          { at: 0, say: '남는 것은 부채꼴 ABB′. 반지름 6 cm, 중심각 60°.', step: 4, set: { f02Read: false, f02Dims: true } },
+          { at: 5, say: '넓이 $=\\pi\\times6^2\\times\\frac{60}{360}$', set: { f02Read: true } },
           { at: 8.5, say: '넓이 $=6\\pi$ cm²', step: 5 }
         ]
       }
@@ -1436,8 +1461,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         {
           length: 9,
           title: '호만 더해요',
+          start: { f02_y12_p: 2, f02_y12_q: 3, f02_y12_u: 0 },
           cues: [
-            { at: 0, say: '둘레는 세 반원의 호를 모두 더한 길이예요.', step: 1 },
+            { at: 0, say: '둘레는 세 반원의 호를 모두 더한 길이예요.', step: 1, set: { f02Read: false, f02Dims: false } },
             { at: 4.5, say: '곧은 선(지름)은 둘레에 넣지 않아요.' }
           ]
         },
@@ -1445,8 +1471,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 10,
           title: '호의 길이',
           cues: [
-            { at: 0, say: '반원의 호 $=2\\pi\\times$(반지름)$\\times\\frac12$', step: 2 },
-            { at: 5, say: '반지름은 큰 반원 5, 작은 반원 2, 중간 반원 3.' }
+            { at: 0, say: '반지름은 큰 반원 5, 작은 반원 2, 중간 반원 3.', step: 2, set: { f02Dims: true } },
+            { at: 5, say: '반원의 호 $=2\\pi\\times$(반지름)$\\times\\frac12$', set: { f02Read: true } }
           ]
         },
         {
@@ -1471,8 +1497,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         {
           length: 9,
           title: '빼서 구해요',
+          start: { f02_y12_p: 2, f02_y12_q: 3, f02_y12_u: 0 },
           cues: [
-            { at: 0, say: '색칠한 부분은 큰 반원에서 두 반원을 뺀 모양.', step: 4 },
+            { at: 0, say: '색칠한 부분은 큰 반원에서 두 반원을 뺀 모양.', step: 4, set: { f02Read: false, f02Dims: false } },
             { at: 4.5, say: '큰 반원 − 가장 작은 반원 − 중간 반원' }
           ]
         },
@@ -1480,8 +1507,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 10,
           title: '반원의 넓이',
           cues: [
-            { at: 0, say: '반원의 넓이 $=\\pi\\times$(반지름)$^2\\times\\frac12$', step: 5 },
-            { at: 5, say: '반지름은 큰 반원 5, 작은 반원 2, 중간 반원 3.' }
+            { at: 0, say: '반지름은 큰 반원 5, 작은 반원 2, 중간 반원 3.', step: 5, set: { f02Dims: true } },
+            { at: 5, say: '반원의 넓이 $=\\pi\\times$(반지름)$^2\\times\\frac12$', set: { f02Read: true } }
           ]
         },
         {
@@ -1511,8 +1538,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         {
           length: 9,
           title: '세 원을 모두 더해요',
+          start: { f02_cc08_R: 10, f02_cc08_u: 0 },
           cues: [
-            { at: 0, say: '둘레는 큰 원과 작은 원 두 개의 둘레를 더한 길이.', step: 1 },
+            { at: 0, say: '둘레는 큰 원과 작은 원 두 개의 둘레를 더한 길이.', step: 1, set: { f02Read: false, f02Dims: false } },
             { at: 5, say: '원의 둘레 $=2\\pi\\times$(반지름)' }
           ]
         },
@@ -1520,8 +1548,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 10,
           title: '반지름 읽기',
           cues: [
-            { at: 0, say: '큰 원의 반지름은 10, 작은 원은 5와 5.', step: 2 },
-            { at: 5, say: '$2\\pi\\times10+2\\pi\\times5+2\\pi\\times5$' }
+            { at: 0, say: '큰 원의 반지름은 10, 작은 원은 5와 5.', step: 2, set: { f02Dims: true } },
+            { at: 5, say: '$2\\pi\\times10+2\\pi\\times5+2\\pi\\times5$', set: { f02Read: true } }
           ]
         },
         {
@@ -1546,8 +1574,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         {
           length: 9,
           title: '빼서 구해요',
+          start: { f02_cc08_R: 10, f02_cc08_u: 0 },
           cues: [
-            { at: 0, say: '색칠한 부분은 큰 원에서 작은 원 두 개를 뺀 모양.', step: 4 },
+            { at: 0, say: '색칠한 부분은 큰 원에서 작은 원 두 개를 뺀 모양.', step: 4, set: { f02Read: false, f02Dims: false } },
             { at: 5, say: '큰 원 − 작은 원 − 작은 원' }
           ]
         },
@@ -1555,8 +1584,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 10,
           title: '원의 넓이',
           cues: [
-            { at: 0, say: '원의 넓이 $=\\pi\\times$(반지름)$^2$', step: 5 },
-            { at: 5, say: '큰 원의 반지름은 10, 작은 원은 5와 5.' }
+            { at: 0, say: '큰 원의 반지름은 10, 작은 원은 5와 5.', step: 5, set: { f02Dims: true } },
+            { at: 5, say: '원의 넓이 $=\\pi\\times$(반지름)$^2$', set: { f02Read: true } }
           ]
         },
         {
@@ -1586,8 +1615,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         {
           length: 9,
           title: '호만 더해요',
+          start: { f02_sj1_a: 2, f02_sj1_b: 4, f02_sj1_u: 0 },
           cues: [
-            { at: 0, say: '둘레는 세 반원의 호를 모두 더한 길이예요.', step: 1 },
+            { at: 0, say: '둘레는 세 반원의 호를 모두 더한 길이예요.', step: 1, set: { f02Read: false, f02Dims: false } },
             { at: 4.5, say: '곧은 선(지름)은 둘레에 넣지 않아요.' }
           ]
         },
@@ -1595,8 +1625,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 10,
           title: '호의 길이',
           cues: [
-            { at: 0, say: '반원의 호 $=2\\pi\\times$(반지름)$\\times\\frac12$', step: 2 },
-            { at: 5, say: '반지름은 큰 반원 3, 작은 반원 1, 중간 반원 2.' }
+            { at: 0, say: '반지름은 큰 반원 3, 작은 반원 1, 중간 반원 2.', step: 2, set: { f02Dims: true } },
+            { at: 5, say: '반원의 호 $=2\\pi\\times$(반지름)$\\times\\frac12$', set: { f02Read: true } }
           ]
         },
         {
@@ -1621,8 +1651,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
         {
           length: 9,
           title: '더하고 빼기',
+          start: { f02_sj1_a: 2, f02_sj1_b: 4, f02_sj1_u: 0 },
           cues: [
-            { at: 0, say: '색칠한 부분 = 큰 반원 + 작은 반원 − 중간 반원', step: 4 },
+            { at: 0, say: '색칠한 부분 = 큰 반원 + 작은 반원 − 중간 반원', step: 4, set: { f02Read: false, f02Dims: false } },
             { at: 5, say: '초록은 더하고, 분홍은 빼요.' }
           ]
         },
@@ -1630,8 +1661,8 @@ window.APL_LESSONS['g7-circle-sector'] = {
           length: 10,
           title: '반원의 넓이',
           cues: [
-            { at: 0, say: '반원의 넓이 $=\\pi\\times$(반지름)$^2\\times\\frac12$', step: 5 },
-            { at: 5, say: '반지름은 큰 반원 3, 작은 반원 1, 중간 반원 2.' }
+            { at: 0, say: '반지름은 큰 반원 3, 작은 반원 1, 중간 반원 2.', step: 5, set: { f02Dims: true } },
+            { at: 5, say: '반원의 넓이 $=\\pi\\times$(반지름)$^2\\times\\frac12$', set: { f02Read: true } }
           ]
         },
         {
@@ -1659,8 +1690,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 10,
         title: '반원의 반지름',
+        start: { f02_petal15_a: 8, f02_petal15_u: 0 },
         cues: [
-          { at: 0, say: '한 변 8 cm가 반원의 지름, 반지름은 4 cm.', step: 1 },
+          { at: 0, say: '한 변 8 cm가 반원의 지름, 반지름은 4 cm.', step: 1, set: { f02Read: false, f02Dims: true } },
           { at: 5, say: '변의 중점이 반원의 중심이에요.' }
         ]
       },
@@ -1677,7 +1709,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         length: 11,
         title: '세 개를 더하기',
         cues: [
-          { at: 0, say: '꽃잎 하나 $=\\pi\\times4^2\\times\\frac{60}{360}=\\frac{8}{3}\\pi$', step: 4 },
+          { at: 0, say: '꽃잎 하나 $=\\pi\\times4^2\\times\\frac{60}{360}=\\frac{8}{3}\\pi$', step: 4, set: { f02Read: true } },
           { at: 5, say: '꽃잎은 모두 3개예요.' },
           { at: 8, say: '$3\\times\\frac{8\\pi}{3}=8\\pi$ cm²', step: 5 }
         ]
@@ -1686,79 +1718,87 @@ window.APL_LESSONS['g7-circle-sector'] = {
   },
 
 
-  /* ---------- 부채꼴 고리의 둘레 (f05.js f5-ring, 정리 탭) · 3장 32초 · kit 규칙 필요(첫 장이 step 으로 시작) ----------
+  /* ---------- 부채꼴 고리의 둘레 (f05.js f5-ring, 정리 탭) · 3장 32초 · 첫 장은 step 으로 시작 ----------
      A=15, B=10, C=72°: 둘레 = ① 바깥 호 2π·15·72/360 = 6π + ② 아랫변 15−10 = 5 + ③ 안쪽 호 2π·10·72/360 = 4π + ④ 옆변 5 = 10π+10 (장면 steps).
      step 0(주어진 값만) → 2(① 호, 라벨 6π) → 3(② 변 5) → 4(③ 호 4π) → 5(④ 변) → 6(합계). step 1 의 「▶ 재생하면…」 안내는 해설 재생 중에 어색해 건너뜁니다. */
   'f5-ring': {
-    title: '부채꼴 고리의 둘레',
-    tab: 'review',
-    answer: '$10\\pi+10$',
-    answerText: '$10\\pi+10$ cm',
+    title: '부채꼴 고리의 둘레', tab: 'review',
+    answer: '$10\\pi+10$', answerText: '$10\\pi+10$ cm',
     summary: '둘레 = 호 + 선분 + 호 + 선분',
-    task: '반지름이나 중심각을 바꿔도 같은 네 조각의 합으로 둘레가 구해지는지 확인해 보세요',
+    task: '반지름과 중심각을 바꿔 네 경계의 길이를 확인해 보세요.',
     chapters: [
       {
-        length: 12,
-        title: '바깥쪽 호와 아랫변',
+        length: 12, title: '조건과 경계 확인',
+        start: { f5A: 15, f5B: 10, f5C: 72, f5T: 0 },
         cues: [
-          { at: 0, say: '둘레는 경계선 전체예요. 호 2개, 선분 2개로 나눠요.', step: 0 },
-          { at: 4, say: '① 바깥쪽 호 $=2\\pi\\times15\\times\\frac{72}{360}$', step: 2 },
-          { at: 8, say: '② 아랫변은 두 반지름의 차 $15-10=5$ cm', step: 3 }
+          { at: 0, say: '두 반지름은 15 cm, 10 cm. 중심각은 72°예요.', step: 0, set: { f5Read: 0, f5Given: 0, f5Final: false } },
+          { at: 6, say: '둘레는 경계 전체. 호 둘과 선분 둘로 나누어요.' }
         ]
       },
       {
-        length: 11,
-        title: '안쪽 호와 옆변',
+        length: 13, title: '바깥쪽 호와 아랫변',
         cues: [
-          { at: 0, say: '③ 안쪽 호 $=2\\pi\\times10\\times\\frac{72}{360}$', step: 4 },
-          { at: 5.5, say: '④ 옆변도 $15-10=5$ cm', step: 5 }
+          { at: 0, say: '바깥 호의 반지름은 15 cm, 중심각은 72°예요.', step: 2 },
+          { at: 4.5, say: '호 길이는 $2\\pi\\times15\\times\\frac{72}{360}=6\\pi$ cm.', set: { f5Read: 1 } },
+          { at: 9, say: '아랫변은 두 반지름의 차, $15-10=5$ cm예요.', step: 3, set: { f5Read: 2 } }
         ]
       },
       {
-        length: 10,
-        title: '네 조각을 더하기',
+        length: 13, title: '안쪽 호와 옆변',
         cues: [
-          { at: 0, say: '네 조각의 길이를 모두 더해요.' },
-          { at: 4.5, say: '$6\\pi+5+4\\pi+5=10\\pi+10$ cm', step: 6 }
+          { at: 0, say: '안쪽 호의 반지름은 10 cm, 중심각은 72°예요.', step: 4 },
+          { at: 4.5, say: '호 길이는 $2\\pi\\times10\\times\\frac{72}{360}=4\\pi$ cm.', set: { f5Read: 3 } },
+          { at: 9, say: '옆변도 두 반지름의 차, 5 cm예요.', step: 5, set: { f5Read: 4 } }
+        ]
+      },
+      {
+        length: 10, title: '네 조각을 더하기',
+        cues: [
+          { at: 0, say: '안쪽 호도 색칠한 부분의 경계이므로 더해요.' },
+          { at: 5, say: '$6\\pi+5+4\\pi+5=10\\pi+10$ cm', step: 6, set: { f5Final: true } }
         ]
       }
     ]
   },
 
-  /* ---------- 지름을 삼등분한 S자의 둘레 (f05.js f5-sn, 정리 탭) · 3장 35초 · kit 규칙 필요(첫 장이 step 으로 시작) ----------
+  /* ---------- 지름을 삼등분한 S자의 둘레 (f05.js f5-sn, 정리 탭) · 3장 35초 · 첫 장은 step 으로 시작 ----------
      A=4: 지름 AD = 12 cm 를 셋으로 나눈 점 B, C. 둘레 = ① AC 호(반지름 4) 4π + ② CD 호(반지름 2) 2π + ③ BD 호(반지름 4) 4π + ④ AB 호(반지름 2) 2π = 12π (장면 steps). */
   'f5-sn': {
-    title: '삼등분한 S자의 둘레',
-    tab: 'review',
-    answer: '$12\\pi$',
-    answerText: '$12\\pi$ cm',
+    title: '삼등분한 S자의 둘레', tab: 'review',
+    answer: '$12\\pi$', answerText: '$12\\pi$ cm',
     summary: '둘레 = 반원의 호 네 개의 합',
-    task: '지름을 바꿔도 반원의 호 네 개의 합으로 둘레가 구해지는지 확인해 보세요',
+    task: '지름을 바꾸고 각 반원의 지름과 반지름을 구해 보세요.',
     chapters: [
       {
-        length: 10,
-        title: '반원의 호 네 개',
+        length: 13, title: '지름을 셋으로 나누기',
+        start: { f5A: 4, f5T: 0 },
         cues: [
-          { at: 0, say: '지름 AD 12 cm를 똑같이 셋으로 나눈 점이 B, C예요.', step: 0 },
-          { at: 5, say: '둘레는 반원의 호 네 개로 이루어져요.' }
+          { at: 0, say: 'AD는 12 cm이고 AB, BC, CD의 길이는 같아요.', step: 0, set: { f5Read: 0, f5Given: 0, f5Final: false } },
+          { at: 4.5, say: '세 선분은 각각 $12\\div3=4$ cm예요.', set: { f5Given: 1 } },
+          { at: 9, say: 'AC는 $4+4=8$ cm. 반원의 반지름은 4 cm예요.', step: 2 }
         ]
       },
       {
-        length: 13,
-        title: '호를 하나씩',
+        length: 13, title: '첫 번째와 두 번째 호',
         cues: [
-          { at: 0, say: '① AC를 지름으로 하는 반원의 호. 반지름 4 cm.', step: 2 },
-          { at: 4.5, say: '② CD의 호는 반지름 2 cm.', step: 3 },
-          { at: 9, say: '③ BD의 호는 반지름 4 cm.', step: 4 }
+          { at: 0, say: '반원의 호는 원주의 반, $2\\pi\\times4\\times\\frac12=4\\pi$ cm.', set: { f5Read: 1 } },
+          { at: 4.5, say: 'CD는 지름 4 cm이므로 반지름은 2 cm예요.', step: 3 },
+          { at: 9, say: 'CD를 지름으로 하는 호는 $2\\pi\\times2\\times\\frac12=2\\pi$ cm.', set: { f5Read: 2 } }
         ]
       },
       {
-        length: 12,
-        title: '더하기',
+        length: 13, title: '나머지 두 호',
         cues: [
-          { at: 0, say: '④ AB의 호는 반지름 2 cm. 모두 중심각 180°예요.', step: 5 },
-          { at: 4.5, say: '네 호의 길이를 모두 더해요.' },
-          { at: 8, say: '$4\\pi+2\\pi+4\\pi+2\\pi=12\\pi$ cm', step: 6 }
+          { at: 0, say: 'BD도 지름 8 cm, 반지름 4 cm인 반원이에요.', step: 4 },
+          { at: 4.5, say: '이 호의 길이도 $4\\pi$ cm예요.', set: { f5Read: 3 } },
+          { at: 9, say: 'AB는 지름 4 cm인 반원. 호는 $2\\pi$ cm예요.', step: 5, set: { f5Read: 4 } }
+        ]
+      },
+      {
+        length: 10, title: '네 호의 합',
+        cues: [
+          { at: 0, say: '곧은 지름은 경계가 아니므로 네 호만 더해요.' },
+          { at: 5, say: '$4\\pi+2\\pi+4\\pi+2\\pi=12\\pi$ cm', step: 6, set: { f5Final: true } }
         ]
       }
     ]
@@ -1778,25 +1818,25 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 10,
         title: '첫 번째 회전',
-        start: { rlT: 0 },
+        start: { rlT: 0, rlA: 3 },
         cues: [
-          { at: 0, say: '한 변이 3 cm인 정삼각형을 굴리면 점 A가 호를 그려요.', set: { rlShow: false }, to: { rlT: 0.5 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '점 B가 중심, 반지름 3 cm, 중심각 $180°-60°=120°$.' }
+          { at: 0, say: '한 변이 3 cm인 정삼각형을 굴리면 점 A가 호를 그려요.', set: { rlShow: false, rlRead: 0, rlFocus: 0, rlAngles: 0 }, to: { rlT: 0.5 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '점 B가 중심, 반지름 3 cm, 중심각 $180°-60°=120°$.', set: { rlAngles: 1 } }
         ]
       },
       {
         length: 10,
         title: '두 번째 회전',
         cues: [
-          { at: 0, say: '이번에는 점 C가 중심이에요. 반지름도 3 cm.', to: { rlT: 1 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '중심각은 이번에도 120°예요.' }
+          { at: 0, say: '이번에는 점 C가 중심이에요. 반지름도 3 cm.', set: { rlFocus: 1 }, to: { rlT: 1 }, dur: 5, ease: 'smooth' },
+          { at: 5.5, say: '중심각은 이번에도 120°예요.', set: { rlAngles: 2 } }
         ]
       },
       {
         length: 10,
         title: '두 호를 더하면',
         cues: [
-          { at: 0, say: '호 하나 $=2\\pi\\times3\\times\\frac{120}{360}=2\\pi$' },
+          { at: 0, say: '호 하나 $=2\\pi\\times3\\times\\frac{120}{360}=2\\pi$', set: { rlFocus: -1, rlRead: 2 } },
           { at: 4.5, say: '거리 $=2\\pi+2\\pi=4\\pi$ cm', set: { rlShow: true } }
         ]
       }
@@ -1810,35 +1850,45 @@ window.APL_LESSONS['g7-circle-sector'] = {
      영역의 넓이(정답) 칩은 해설이 gtShow 를 켤 때까지 아낍니다(swept.js hold). */
   'gt-warehouse': {
     title: '강아지가 갈 수 있는 영역은?',
-    answer: '$40\\pi$',
-    answerText: '$40\\pi$ m²',
-    summary: '영역 = 부채꼴 세 개의 합',
-    task: '창고의 가로·세로나 끈의 길이를 바꿔 부채꼴이 어떻게 달라지는지 확인해 보세요',
+    answer: '$40\\pi$', answerText: '$40\\pi$ m²',
+    summary: '영역 = 큰 부채꼴 + 작은 부채꼴 둘',
+    task: '울타리와 끈의 길이를 바꾸고 각 모서리에 남는 끈을 확인해 보세요.',
     chapters: [
       {
-        length: 10,
-        title: '모서리 D에서 꺾여요',
-        start: { gtT: 0.03 },
+        length: 12, title: '모서리에서 꺾이는 끈',
+        start: { gtA: 5, gtB: 4, gtL: 7, gtT: 0.03 },
         cues: [
-          { at: 0, say: '창고는 가로 5 m, 세로 4 m. 끈은 7 m예요.', set: { gtShow: false }, to: { gtT: 0.15 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '모서리 D에서 끈이 꺾여요. 남은 끈 $7-4=3$ m.' }
+          { at: 0, say: '창고는 가로 5 m, 세로 4 m. 끈은 7 m예요.', set: { gtShow: false, gtRead: 0, gtCalc: 0 }, to: { gtT: 0.15 }, dur: 4, ease: 'smooth' },
+          { at: 5, say: 'D에서 남은 끈 $7-4=3$ m, 각은 $180°-90°=90°$.', set: { gtRead: 1 } }
         ]
       },
       {
-        length: 10,
-        title: '큰 부채꼴',
+        length: 10, title: 'A를 중심으로 도는 영역',
         cues: [
-          { at: 0, say: '이번에는 A를 중심으로 크게 돌아요.', to: { gtT: 0.6 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '큰 부채꼴은 반지름 7 m, 중심각 270°.' }
+          { at: 0, say: 'A에서는 끈이 꺾이지 않아 전체 길이가 반지름이에요.', to: { gtT: 0.6 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '반지름은 7 m, 중심각은 $360°-90°=270°$.', set: { gtRead: 2 } }
         ]
       },
       {
-        length: 13,
-        title: '세 부채꼴을 더하기',
+        length: 10, title: 'B를 돌아가는 영역',
         cues: [
-          { at: 0, say: 'B를 도는 부채꼴. 남은 끈 $7-5=2$ m, 중심각 90°.', to: { gtT: 1 }, dur: 4.5, ease: 'smooth' },
-          { at: 5, say: '넓이는 $\\frac{147\\pi}{4}$, $\\frac{9\\pi}{4}$, $\\pi$.' },
-          { at: 8.5, say: '영역 $=\\frac{147\\pi}{4}+\\frac{9\\pi}{4}+\\pi=40\\pi$ m²', set: { gtShow: true } }
+          { at: 0, say: '다른 모서리 B에서도 끈이 꺾여요.', to: { gtT: 1 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '남은 끈 $7-5=2$ m, 중심각은 $180°-90°=90°$.', set: { gtRead: 3 } }
+        ]
+      },
+      {
+        length: 13, title: '부채꼴별 넓이',
+        cues: [
+          { at: 0, say: 'D의 작은 부채꼴은 $\\pi\\times3^2\\times\\frac{90}{360}=\\frac{9\\pi}{4}$ m².', set: { gtCalc: 1 } },
+          { at: 4.5, say: 'A의 큰 부채꼴은 $\\pi\\times7^2\\times\\frac{270}{360}=\\frac{147\\pi}{4}$ m².', set: { gtCalc: 2 } },
+          { at: 9, say: 'B의 작은 부채꼴은 $\\pi\\times2^2\\times\\frac{90}{360}=\\pi$ m².', set: { gtCalc: 3 } }
+        ]
+      },
+      {
+        length: 10, title: '세 영역을 더하기',
+        cues: [
+          { at: 0, say: '겹치지 않는 세 부채꼴의 넓이를 모두 더해요.' },
+          { at: 5, say: '갈 수 있는 넓이는 $\\frac{147\\pi}{4}+\\frac{9\\pi}{4}+\\pi=40\\pi$ m²예요.', set: { gtShow: true } }
         ]
       }
     ]
@@ -1861,7 +1911,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '원이 한 바퀴 돌아요',
         start: { swT: 0 },
         cues: [
-          { at: 0, say: '반지름 1 cm인 원이 한 변 3 cm인 정사각형을 돌아요.', set: { swShow: false }, to: { swT: 0.5 }, dur: 4.5, ease: 'smooth' },
+          { at: 0, say: '반지름 1 cm인 원이 한 변 3 cm인 정사각형을 돌아요.', set: { swShow: false, swRead: 0 }, to: { swT: 0.5 }, dur: 4.5, ease: 'smooth' },
           { at: 5, say: '원이 지나간 자리가 칠해져요. 그 넓이를 구해요.' }
         ]
       },
@@ -1870,23 +1920,23 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '직사각형 4개',
         cues: [
           { at: 0, say: '지나간 자리 = 직사각형 4개 + 모서리 부채꼴 4개', to: { swT: 0.6 }, dur: 3.5, ease: 'smooth' },
-          { at: 4, say: '직사각형은 가로 3 cm, 세로는 지름 2 cm. $3\\times2=6$' },
-          { at: 7.5, say: '직사각형 4개의 넓이는 $6\\times4=24$.' }
+          { at: 4, say: '직사각형은 가로 3 cm, 세로는 지름 2 cm. $3\\times2=6$', set: { swRead: 1 } },
+          { at: 7.5, say: '직사각형 4개의 넓이는 $6\\times4=24$.', set: { swRead: 2 } }
         ]
       },
       {
         length: 12,
         title: '모서리 부채꼴 4개',
         cues: [
-          { at: 0, say: '모서리 부채꼴은 반지름 2 cm, 중심각 90°. 가로로 모아요.', to: { swT: 0.97 }, dur: 5.5, ease: 'smooth' },
-          { at: 6.5, say: '중심각의 합 $90°\\times4=360°$, 원 1개가 돼요.' }
+          { at: 0, say: '모서리 부채꼴은 반지름 2 cm, 중심각 90°. 가로로 모아요.', set: { swRead: 3 }, to: { swT: 0.97 }, dur: 5.5, ease: 'smooth' },
+          { at: 6.5, say: '중심각의 합 $90°\\times4=360°$, 원 1개가 돼요.', set: { swRead: 4 } }
         ]
       },
       {
         length: 9,
         title: '더하기',
         cues: [
-          { at: 0, say: '그 원의 넓이는 $\\pi\\times2^2=4\\pi$.' },
+          { at: 0, say: '그 원의 넓이는 $\\pi\\times2^2=4\\pi$.', set: { swRead: 5 } },
           { at: 4.5, say: '넓이 $=24+4\\pi$ cm²', set: { swShow: true } }
         ]
       }
@@ -1907,9 +1957,9 @@ window.APL_LESSONS['g7-circle-sector'] = {
       {
         length: 10,
         title: '점 C를 중심으로 돌려요',
-        start: { rlT: 0 },
+        start: { rlT: 0, rlTd: 9, rlTc: 60 },
         cues: [
-          { at: 0, say: '점 C를 중심으로 삼각형을 돌려요. AC는 9 cm.', set: { rlShow: false }, to: { rlT: 0.6 }, dur: 5.5, ease: 'smooth' },
+          { at: 0, say: '점 C를 중심으로 삼각형을 돌려요. AC는 9 cm.', set: { rlShow: false, rlRead: 0, rlFocus: 0, rlAngles: 0 }, to: { rlT: 0.6 }, dur: 5.5, ease: 'smooth' },
           { at: 6, say: '점 A는 반지름 9 cm인 호를 그려요.' }
         ]
       },
@@ -1918,7 +1968,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '중심각 구하기',
         cues: [
           { at: 0, say: '점 A′이 직선 위에 올 때까지 돌려요.', to: { rlT: 1 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '∠ACB는 60°. 중심각 $=180°-60°=120°$' }
+          { at: 4.5, say: '∠ACB는 60°. 중심각 $=180°-60°=120°$', set: { rlAngles: 1 } }
         ]
       },
       {
@@ -1926,7 +1976,7 @@ window.APL_LESSONS['g7-circle-sector'] = {
         title: '호의 길이',
         cues: [
           { at: 0, say: '호의 길이 $=2\\pi\\times9\\times\\frac{120}{360}$' },
-          { at: 4.5, say: '거리 $=6\\pi$ cm', set: { rlShow: true } }
+          { at: 4.5, say: '거리 $=6\\pi$ cm', set: { rlShow: true, rlRead: 1 } }
         ]
       }
     ]
@@ -1938,36 +1988,45 @@ window.APL_LESSONS['g7-circle-sector'] = {
      gtT 구간: 0.04~0.19 C 를 도는 부채꼴(하단 칩 「r = 2 m, 120°」) · 0.2~0.63 큰 부채꼴(「r = 10 m, 300°」) · 0.64~0.79 B 를 도는 부채꼴 · 0.8~1 완성. 영역의 넓이 칩은 해설이 gtShow 를 켤 때까지 아낍니다(swept.js hold). */
   'gt-tri': {
     title: '염소가 갈 수 있는 영역은?',
-    answer: '$86\\pi$',
-    answerText: '$86\\pi$ m²',
+    answer: '$86\\pi$', answerText: '$86\\pi$ m²',
     summary: '영역 = 큰 부채꼴 + 작은 부채꼴 둘',
-    task: '울타리의 한 변이나 끈의 길이를 바꿔 부채꼴이 어떻게 달라지는지 확인해 보세요',
+    task: '울타리와 끈의 길이를 바꾸고 각 모서리에 남는 끈을 확인해 보세요.',
     chapters: [
       {
-        length: 10,
-        title: '모서리 C에서 꺾여요',
-        start: { gtT: 0.05 },
+        length: 12, title: '모서리에서 꺾이는 끈',
+        start: { gtS: 8, gtL: 10, gtT: 0.03 },
         cues: [
-          { at: 0, say: '한 변이 8 m인 정삼각형 울타리. 끈은 10 m예요.', set: { gtShow: false }, to: { gtT: 0.15 }, dur: 4, ease: 'smooth' },
-          { at: 4.5, say: '꼭짓점 C에서 끈이 꺾여요. 남은 끈 $10-8=2$ m.' }
+          { at: 0, say: '한 변 8 m인 정삼각형 울타리. 끈은 10 m예요.', set: { gtShow: false, gtRead: 0, gtCalc: 0 }, to: { gtT: 0.15 }, dur: 4, ease: 'smooth' },
+          { at: 5, say: 'C에서 남은 끈 $10-8=2$ m, 각은 $180°-60°=120°$.', set: { gtRead: 1 } }
         ]
       },
       {
-        length: 12,
-        title: '큰 부채꼴',
+        length: 10, title: 'A를 중심으로 도는 영역',
         cues: [
-          { at: 0, say: '이번에는 A를 중심으로 크게 돌아요.', to: { gtT: 0.6 }, dur: 5, ease: 'smooth' },
-          { at: 5.5, say: '큰 부채꼴은 반지름 10 m, 중심각 300°.' },
-          { at: 9, say: '정삼각형의 한 각이 60°라서 $360°-60°=300°$.' }
+          { at: 0, say: 'A에서는 끈이 꺾이지 않아 전체 길이가 반지름이에요.', to: { gtT: 0.6 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '반지름은 10 m, 중심각은 $360°-60°=300°$.', set: { gtRead: 2 } }
         ]
       },
       {
-        length: 12,
-        title: '세 부채꼴을 더하기',
+        length: 10, title: 'B를 돌아가는 영역',
         cues: [
-          { at: 0, say: 'B를 도는 부채꼴. 남은 끈 $10-8=2$ m, 중심각 120°.', to: { gtT: 1 }, dur: 4.5, ease: 'smooth' },
-          { at: 5, say: '넓이는 $\\frac{250\\pi}{3}$, $\\frac{4\\pi}{3}$, $\\frac{4\\pi}{3}$.' },
-          { at: 8.5, say: '영역 $=\\frac{250\\pi}{3}+\\frac{4\\pi}{3}+\\frac{4\\pi}{3}=86\\pi$ m²', set: { gtShow: true } }
+          { at: 0, say: '다른 모서리 B에서도 끈이 꺾여요.', to: { gtT: 1 }, dur: 4.5, ease: 'smooth' },
+          { at: 5, say: '남은 끈 $10-8=2$ m, 중심각은 $180°-60°=120°$.', set: { gtRead: 3 } }
+        ]
+      },
+      {
+        length: 13, title: '부채꼴별 넓이',
+        cues: [
+          { at: 0, say: 'C의 작은 부채꼴은 $\\pi\\times2^2\\times\\frac{120}{360}=\\frac{4\\pi}{3}$ m².', set: { gtCalc: 1 } },
+          { at: 4.5, say: 'A의 큰 부채꼴은 $\\pi\\times10^2\\times\\frac{300}{360}=\\frac{250\\pi}{3}$ m².', set: { gtCalc: 2 } },
+          { at: 9, say: 'B의 작은 부채꼴은 $\\pi\\times2^2\\times\\frac{120}{360}=\\frac{4\\pi}{3}$ m².', set: { gtCalc: 3 } }
+        ]
+      },
+      {
+        length: 10, title: '세 영역을 더하기',
+        cues: [
+          { at: 0, say: '겹치지 않는 세 부채꼴의 넓이를 모두 더해요.' },
+          { at: 5, say: '갈 수 있는 넓이는 $\\frac{250\\pi}{3}+\\frac{4\\pi}{3}+\\frac{4\\pi}{3}=86\\pi$ m²예요.', set: { gtShow: true } }
         ]
       }
     ]

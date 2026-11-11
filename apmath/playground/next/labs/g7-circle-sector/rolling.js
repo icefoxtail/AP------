@@ -400,6 +400,7 @@
     const thumb = !!b.thumb;
     const ctx = b.ctx;
     const kpx = b.k;
+    const angleKnown = (rt) => !(st.lessonOn || st.lessonEntry) || (!st.lessonEntry && (st.rlAngles == null || rt.i < st.rlAngles));
     const colOf = (rt) => ARC_COL[rt.arc % ARC_COL.length];
     const compact = kpx < 10; // 길이 아주 긴 그림을 작은 화면에 통째로 담을 때: 겹치는 보조 글자는 줄입니다
     // 진행 후의 길이·중심각만 실제 글자 크기로 배치합니다. 처음 그림, 문제,
@@ -489,6 +490,8 @@
       }
       sh.angles.forEach((a) => {
         if (o.onlyGiven && !a.given) return;
+        // 직각삼각형의 나머지 내각은 해설에서 삼각형의 각의 합을 설명한 뒤 공개합니다.
+        if ((st.lessonOn || st.lessonEntry) && ['rtri', 'turn'].includes(spec.shape) && !a.given && !(st.lessonOn && st.rlAngle)) return;
         const draw = () => b.angle(q(a.i), q(a.i + 1), q(a.i - 1), { r: 22, rings: a.rings, color: 'amber', label: a.label ? `${snapInt(Math.round(a.deg * 100) / 100)}°` : undefined, labelGap: 15, size: FS.ang });
         if (arrange && spec.id === 'rl-turn45' && a.given && a.label) {
           // B의 주어진 각은 자취 호보다 먼저 그리면 호·지난 점 이름에 가립니다.
@@ -614,7 +617,7 @@
         const c = colOf(rt), live = fr < 1 ? Math.round(rt.theta * fr) : rt.theta;
         if (rt.kind === 'roll') {
           const mid = { x: rt.C.x + (rt.len * fr) / 2, y: rt.C.y };
-          label(mid, `r=${rOf(rt)}  ${live}°`, { dy: 18, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) });
+          label(mid, `r=${rOf(rt)}` + (angleKnown(rt) ? `  ${live}°` : ''), { dy: 18, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) });
           return;
         }
         const m = rt.phi0 - (rt.theta * D2R) / 2;
@@ -628,7 +631,7 @@
         const radii = [at(rt.phi0, rt.r / 2), at(rt.phi0 - sweep, rt.r / 2)];
         const angle = at(rt.phi0 - sweep / 2, rt.r * kpx >= 44 ? 18 / kpx : rt.r);
         later(anchor, `r=${rOf(rt)}`, { dx: ox, dy: oy - 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) }, radii, 'radius');
-        later(anchor, `${live}°`, { dx: ox, dy: oy + 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) }, [angle], 'central-angle');
+        if (angleKnown(rt)) later(anchor, `${live}°`, { dx: ox, dy: oy + 9, color: c, size: FS.sec, part: rt.arc, past: pastArc(rt) }, [angle], 'central-angle');
         if (rt.r * kpx >= 44) { // 중심각 표시(중심 가까이에 작은 호)
           const S = b.toS(P(rt.C));
           ctx.save();
@@ -657,7 +660,13 @@
     const doneArcs = M.rots.filter((r, i) => r.arc >= 0 && i < sc.k).length;
     const cPos = cen(pos);
     const sfx = (i) => (spec.primeLast ? (i === M.rots[0].pivot ? '' : primes(Math.min(sc.k, 1))) : i === T ? primes(doneArcs) : '');
-    M.labelIdx.forEach((i) => { if (i === T && sc.f > 0) return; vlabel(pos[i], cPos, M.names[i] + sfx(i), i === T ? 'rose' : 'ink'); });
+    M.labelIdx.forEach((i) => { if (i === T && sc.f > 0 && !st.lessonOn) return; vlabel(pos[i], cPos, M.names[i] + sfx(i), i === T ? 'rose' : 'ink'); });
+    // 해설이 말하는 A와 도착점 A′를 회전 중에도 찾을 수 있게 합니다. 수동 화면은 그대로입니다.
+    if (st.lessonOn && spec.shape === 'turn' && sc.k < N) {
+      const last = M.states[N];
+      b.point(P(last[T]), { hollow: true, color: 'rose', r: 5, glow: false });
+      vlabel(last[T], cen(last), M.names[T] + '′', 'rose');
+    }
     for (let j = 0; j < sc.nGhost; j++) { // 지나간 자리에서 점이 있던 곳
       if (compact || !(j === 0 || M.rots[j - 1].arc >= 0)) continue;
       const g = M.states[j], cg = cen(g);
@@ -1156,7 +1165,7 @@
         const done = M.arcs.filter((rt) => arcFr(rt) >= 1 - 1e-9);
         // 호가 하나뿐인 장면(rl-turn60 …)은 호 하나의 길이가 곧 정답이라, 해설 재생 중(hold)에는 그 길이도 함께 아낍니다(「지금까지 움직인 거리」 · 띠의 「㉠ 6π」).
         const sole = hold && M.arcs.length === 1;
-        const partial = sole || M.arcs.some((rt) => arcFr(rt) > 1e-9 && arcFr(rt) < 1 - 1e-9); // 도는 중에는 깨끗한 π 꼴이 안 나오므로 「…」
+        const partial = sole || M.arcs.some((rt) => arcFr(rt) > 1e-9 && arcFr(rt) < 1 - 1e-9) || hold; // 도는 중과 최종 계산 전에는 합을 보류
         const i = Math.min(sc.k, N - 1), rt = M.rots[i], P = rt.pname;
         const finished = sc.k >= N;
         const live = finished ? rt.theta : Math.round(rt.theta * sc.f);
@@ -1175,7 +1184,7 @@
         }));
         // 띠(움직인 거리를 한 줄로 이어 붙인 모양)
         const segsOf = (fracOf) => M.arcs.filter((a) => fracOf(a) > 0).map((a) => ({
-          text: fracOf(a) >= 1 - 1e-9 && !sole ? `${JAMO[a.arc]} ${coefPlain(a.coef)}` : JAMO[a.arc], weight: Math.round(a.coef * fracOf(a) * 100) / 100, color: ARC_COL[a.arc % ARC_COL.length]
+          text: fracOf(a) >= 1 - 1e-9 && !sole && (!s.lessonOn || s.rlRead == null || a.arc < s.rlRead) ? `${JAMO[a.arc]} ${coefPlain(a.coef)}` : JAMO[a.arc], weight: Math.round(a.coef * fracOf(a) * 100) / 100, color: ARC_COL[a.arc % ARC_COL.length]
         }));
         const sumAll = sumPlain(M.arcs.map((a) => a.coef));
         let tape;
@@ -1212,7 +1221,12 @@
           const kFit = Math.min((area.w - 2 * pad) / (full.x[1] - full.x[0]), (area.h - 2 * pad) / Math.abs(full.y[1] - full.y[0]));
           if (kFit < NARROW_KFIT) {
             const N = sc.M.N;
-            if (sc.tab === 'explore' && sc.k < N) target = regionOf(sc.M, sc.k, sc.f);
+            // 해설은 끝난 회전의 각·반지름을 설명하는 동안 해당 그림을 유지합니다.
+            // -1은 합산을 위한 전체 자취, 0..N-1은 현재 설명 중인 회전입니다.
+            const lessonFocus = s.lessonOn && Number.isInteger(s.rlFocus) ? s.rlFocus : null;
+            if (lessonFocus >= 0 && lessonFocus !== null && lessonFocus < N) target = regionOf(sc.M, lessonFocus, clamp(sc.u - lessonFocus, 0, 1));
+            else if (lessonFocus === -1) target = full;
+            else if (sc.tab === 'explore' && sc.k < N) target = regionOf(sc.M, sc.k, sc.f);
             else if (sc.tab === 'review' && sc.item && sc.item.rot != null) target = regionOf(sc.M, sc.item.rot, 1);
           }
           // 모형 바깥의 치수와 아래 손잡이 글자는 픽셀 크기입니다. 세계 좌표 여백만 쓰면 작은 배율에서 잘립니다.

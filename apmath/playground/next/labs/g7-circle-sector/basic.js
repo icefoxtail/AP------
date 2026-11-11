@@ -822,7 +822,10 @@
         g.seg(O, g.pol(O, R, th), { color: 'ink', width: 2.8 });
         g.tick(O, [R, 0], { color: 'ink' });
         g.tick(O, g.pol(O, R, th), { color: 'ink' });
-        const stL = stateOf('l', mode, step);
+        // 넓이 해설에서 호 길이 계산까지 함께 공개하지 않습니다.
+        // 직접 해 보기와 다른 장면의 단계 공개는 원래대로 둡니다.
+        const stL = o.id === '1209' && q.lessonOn && q.ref === 2
+          ? { s: 'hide', c: 'sky' } : stateOf('l', mode, step);
         g.arc(O, R, 0, th, { color: stL.s === 'hide' ? 'sky' : stL.c === 'ink' ? 'sky' : stL.c, width: ['1210', '1609', '1610'].includes(o.id) ? 3 : 5 });
         const ar = Math.min(R * 0.34, ['1210', '1609', '1610'].includes(o.id) ? 14 : 30);
         const stT = stateOf('th', mode, step);
@@ -1423,6 +1426,7 @@
       al: { value: 40, min: 20, max: 70, step: 10, color: 'amber', label: '∠AOC', format: (v) => v + '°' }
     },
     controls: ['al', 'r'],
+    state: { baseShow: false }, // 해설: 밑각을 말한 뒤 중심각을 계산합니다.
     steps: (q) => {
       const cd = 180 - 2 * q.al, lAC = (q.r * q.al) / 180, lCD = (q.r * cd) / 180;
       return [`① AB ∥ CD → ∠OCD = ∠AOC = ${q.al}° (엇각), OC = OD → ∠ODC = ${q.al}° → ∠COD = 180° − 2×${q.al}° = ${cd}°`, `② 호의 길이는 중심각에 정비례 : ${piS(lAC)} : 호 CD = ${q.al} : ${cd} → 호 CD = ${piS(lCD)} cm`];
@@ -1474,7 +1478,7 @@
       g.arc(O, R, 180 + al, 360 - al, { color: 'rose', width: 5 });
       g.ang(O, 180, 180 + al, { r: 24, color: 'amber', label: al + '°', lr: 40, size: 16, mid: 180 + Math.min(al / 2, 20) });
       g.ang(O, 180 + al, 360 - al, { r: 22, color: 'rose', label: s1 ? cd + '°' : '?°', lr: 46, size: 16, mid: 270 });
-      if (s1) {
+      if (s1 || (q.lessonOn && q.baseShow)) {
         // C에서 ∠OCD (엇각), D에서 ∠ODC
         g.ang(C, 0, al, { r: 24, color: 'amber', label: al + '°', lr: 40, size: 15 });
         g.ang(D, 180 - al, 180, { r: 24, color: 'amber', label: al + '°', lr: 40, size: 15 });
@@ -1502,6 +1506,7 @@
       be: { value: 42, min: 18, max: 60, step: 6, color: 'amber', label: '∠BOD', format: (v) => v + '°' }
     },
     controls: ['be', 'r'],
+    state: { baseShow: false }, // 해설: 보조선·밑각과 중심각의 계산 시점을 분리합니다.
     steps: (q) => {
       const ac = 180 - 2 * q.be, lBD = (q.r * q.be) / 180, lAC = (q.r * ac) / 180;
       return [`① AC ∥ OD → ∠OAC = ∠BOD = ${q.be}° (동위각), OA = OC → ∠OCA = ${q.be}° → ∠AOC = 180° − 2×${q.be}° = ${ac}°`, `② ${piS(lBD)} : 호 AC = ${q.be} : ${ac} → 호 AC = ${piS(lAC)} cm`];
@@ -1541,22 +1546,23 @@
       const A = [-R, 0], B = [R, 0], D = g.pol(O, R, be), C = g.pol(O, R, 2 * be);
       const s1 = mode === 'explore' || (mode === 'review' && step >= 1);
       const s2 = mode === 'explore' || (mode === 'review' && step >= 2);
-      if (s1) g.poly([O, A, C], { color: null, fill: 'rose', fillAlpha: 0.12, stroke: false });
+      const showBase = s1 || (q.lessonOn && q.baseShow);
+      if (showBase) g.poly([O, A, C], { color: null, fill: 'rose', fillAlpha: 0.12, stroke: false });
       g.arc(O, R, 0, 180, { color: 'ink', alpha: 0.9, width: 2.4 });
       g.seg(A, B, { color: 'ink', width: 2.6 });
       g.seg(O, D, { color: 'ink', width: 2.6 });
       g.seg(A, C, { color: 'ink', width: 2.6 });
       parMark(g, A, C, 'sky'); parMark(g, O, D, 'sky');
-      if (s1) { g.seg(O, C, { color: 'rose', width: 2.6, dash: [6, 5] }); g.tick(O, A, { color: 'amber' }); g.tick(O, C, { color: 'amber' }); }
+      if (showBase) { g.seg(O, C, { color: 'rose', width: 2.6, dash: [6, 5] }); g.tick(O, A, { color: 'amber' }); g.tick(O, C, { color: 'amber' }); }
       g.arc(O, R, 0, be, { color: 'amber', width: 5 });
       g.arc(O, R, 2 * be, 180, { color: 'rose', width: 5 });
       g.ang(O, 0, be, { r: 28, color: 'amber', label: be + '°', lr: 56, size: 16, mid: Math.min(be / 2, 20) });
-      if (s1) {
+      if (showBase) {
         g.ang(A, 0, be, { r: 30, color: 'amber', label: be + '°', lr: 58, size: 15, mid: Math.min(be / 2, 16) });
         const dCO = Math.atan2(-C[1], -C[0]) / D2R;
         const dCA = Math.atan2(A[1] - C[1], A[0] - C[0]) / D2R;
         g.ang(C, Math.min(dCO, dCA), Math.max(dCO, dCA), { r: 26, color: 'amber', label: be + '°', lr: 56, size: 15, mid: 258 });
-        g.ang(O, 2 * be, 180, { r: 20, color: 'rose', label: ac + '°', lr: 42, size: 16, mid: (2 * be + 180) / 2 });
+        if (s1) g.ang(O, 2 * be, 180, { r: 20, color: 'rose', label: ac + '°', lr: 42, size: 16, mid: (2 * be + 180) / 2 });
       }
       const lBD = (q.r * be) / 180, lAC = (q.r * ac) / 180;
       // 좁은 화면에서도 주어진 호 길이가 목차 손잡이·점 D 이름과 겹치지 않게 합니다.
