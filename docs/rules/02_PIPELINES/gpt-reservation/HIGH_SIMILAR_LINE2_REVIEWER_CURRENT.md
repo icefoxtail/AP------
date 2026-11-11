@@ -31,7 +31,7 @@
 8. **그림·plan 점검**: 문항 수 × 2개의 plan이 유효한 JSON인지, EXEMPT 사유 또는 capability/`sourceQuote`(12~40자 정확 인용)/`caption`/`engineEvidence`가 맞는지, 렌더된 SVG를 실제로 열어 점 라벨·값·음영이 발문과 일치하고 정답을 누설하지 않는지.
 9. **영수증 발급**: 최종 JS blob에 `<stem>_유사.review-receipt.json`을 결속한다(고등 `questionsReview` 구조). 생성자가 쓴 영수증은 인정하지 않는다.
 10. **게이트**: `node tools/harness/verify_similar_exam.mjs <similarStem>` exit 0. 실패하면 수리 후 재실행하고, 끝내 통과하지 못하면 병합하지 않고 PR에 사유를 남긴다. `--no-verify`·검사 완화 금지.
-11. **병합**: 하네스 게이트 exit 0이면 PR을 ready로 바꾸어 병합한다. **PR CI는 기다리지 않는다**(사용자 지시 2026-11-11: CI 대기 생략, 하네스 통과는 유지). CI 결과는 병합 뒤 보고에 상태만 적는다. 병합 방식은 `docs/agents/exam-release.md`를 따른다(`python tools/main_merge_master.py --exam <stem> --apply`가 현행 계약이면 그 경로). 병합 뒤 `main`의 SHA와 파일을 재조회해 보고한다.
+11. **main 운영병합 (이것이 이 라인의 목적이다. main에 들어가지 않으면 의미가 없다)**: 하네스 게이트 exit 0이면 PR CI를 기다리지 않고(사용자 지시 2026-11-11: CI 대기 생략, 하네스 통과는 유지) **13번 루트 운영병합**을 실행한다: `python3 tools/main_merge_master.py --exam <similarStem> --apply`. 이 도구가 화이트리스트(JS·에셋·plans·영수증)와 등록 요청 `.archive-meta-register/inbox/<examUid>.json`을 만들어 main에 반영한다. 단순 PR 병합만으로는 메타 등록 요청이 빠질 수 있으므로 이 도구를 먼저 쓴다. 도구가 이 환경에서 막히면(예: main 직접 push 거부) 오류 문구를 PR에 남기고, 같은 도구가 만든 inbox 요청 파일을 PR 브랜치에 포함한 뒤 GitHub PR 병합(merge commit)으로 대신하며 그 사실을 보고한다. `--no-verify`·보호 규칙 우회·강제 push 금지. 병합 뒤 **원격 main의 SHA와 `<stem>_유사.js` blob을 재조회해 보고한다**(`MAIN_DONE`은 이 재조회까지 해야 선언한다). 병합 방식 세부는 `docs/agents/exam-release.md`, `docs/operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md`를 따른다.
 12. 병합하지 못한 경우 PR을 draft로 두고 `REVIEW_BLOCKED` + 첫 막힌 단계를 PR에 남긴다. 다음 회차가 이어받을 수 있게 한다.
 
 ---
@@ -42,6 +42,6 @@
 [HIGH_SIMILAR_REVIEWER_MERGER - 고등 유사시험지 2단계 독립검수·수리·출고 라인]
 저장소: icefoxtail/AP------ (세션에 없으면 add_repo로 추가).
 먼저 AGENTS.md와 docs/rules/02_PIPELINES/gpt-reservation/HIGH_SIMILAR_LINE2_REVIEWER_CURRENT.md 를 실제로 열어 끝까지 읽고 그대로 따른다.
-요약: (1) 제목 '[HIGH-유사 생성완료]'인 가장 오래된 draft PR 1개를 인수한다. 없으면 NO_INPUT. (2) 생성자의 answer/solution을 열기 전에 발문·보기·그림만 보고 전 문항을 독립 풀이해 동결한 뒤 비교한다. (3) 결함은 직접 수리하고 다시 블라인드로 푼다. (4) 원본과 1:1 대조(STRICT_VARIANT), 정답 분포, 해설, 메타, plan·SVG를 점검한다. (5) review-receipt.json을 직접 발급하고 'node tools/harness/verify_similar_exam.mjs <stem>'이 exit 0이면 PR CI를 기다리지 않고 병합한다(CI 대기 생략은 사용자 지시, 하네스 통과는 필수). 실패하면 병합하지 않고 PR에 REVIEW_BLOCKED와 사유를 남긴다. 검사 우회·완화 금지.
+요약: (1) 제목 '[HIGH-유사 생성완료]'인 가장 오래된 draft PR 1개를 인수한다. 없으면 NO_INPUT. (2) 생성자의 answer/solution을 열기 전에 발문·보기·그림만 보고 전 문항을 독립 풀이해 동결한 뒤 비교한다. (3) 결함은 직접 수리하고 다시 블라인드로 푼다. (4) 원본과 1:1 대조(STRICT_VARIANT), 정답 분포, 해설, 메타, plan·SVG를 점검한다. (5) review-receipt.json을 직접 발급하고 'node tools/harness/verify_similar_exam.mjs <stem>'이 exit 0이면 PR CI를 기다리지 않고 `python3 tools/main_merge_master.py --exam <stem> --apply`로 main에 운영병합한다(CI 대기 생략은 사용자 지시, 하네스 통과는 필수). 병합 뒤 원격 main SHA·blob을 재조회해 보고한다. 실패하면 병합하지 않고 PR에 REVIEW_BLOCKED와 사유를 남긴다. 검사 우회·완화 금지.
 마지막 보고: 시험지명, 결함 수정 건수, 하네스 결과, 병합 여부와 main SHA, 메타 점검 요약.
 ```
