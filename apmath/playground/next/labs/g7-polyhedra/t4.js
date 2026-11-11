@@ -173,7 +173,9 @@
         if (st === 1 && sec.count >= 3) lines.push({ t: `새 절단선 ${sec.faces.length}개 · 원래 모서리 ${sec.edgeCount}개`, c: AMB, size: 15 });
         if (st === 2 && sec.count >= 3) lines.push({ t: `단면의 변: ${sec.faces.length} + ${sec.edgeCount} = ${sec.count}개`, c: GRN, size: 15 });
         if (st === 3) lines.push({ t: '정육면체의 면은 6개 → 단면은 최대 육각형', c: GRN, size: 15 });
-        banner(b, lines, C);
+        if(C.lesson) banner(b,[{t:s.phShowAnswer?`단면: ${M.name}`:'붉은 부분은 평면이 정육면체와 만난 부분',c:RED,size:16},
+          (s.phBStage||0)>=1?{t:`단면의 변 ${sec.count}개 · 만난 면 ${sec.faces.length}개`,c:AMB,size:14}:null],C);
+        else banner(b, lines, C);
       }
       D.flush();
       if (C.tab === 'explore' && !C.thumb) {
@@ -223,7 +225,7 @@
     },
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C);
-      const k = C.problem ? M.Q.k : M.k, I = PLAT[k], r = C.problem ? 1 / 3 : C.review ? 1 / 3 : M.r, S = truncS(platS(k), r);
+      const k = C.problem ? M.Q.k : M.k, I = PLAT[k], r = C.problem ? 1 / 3 : C.lesson ? M.r : C.review ? 1 / 3 : M.r, S = truncS(platS(k), r);
       D.fitPts(platS(k).V, { t: C.problem ? 56 : 100, b: 36, l: 40, r: 40 });
       // 잘려 나간 부분(원래 입체의 윤곽)은 옅은 점선으로
       const O = platS(k);
@@ -237,6 +239,8 @@
       if (C.txt) {
         const c = cutCounts(I);
         if (C.problem) banner(b, [{ t: `${I.name}의 모든 꼭짓점을`, c: 'ink', size: 14 }, { t: '각 모서리의 3분의 1만큼 잘라 낸 입체', c: 'ink', size: 14 }], C); // 폰 폭에서 한 줄로는 잘려서 두 줄로
+        else if(C.lesson) banner(b,[{t:`${I.name}의 모든 꼭짓점을 잘라요`,c:'ink',size:16},
+          s.phShowAnswer?{t:s.phBAsk==='F'?`면 ${I.F}+${I.V} = ${c.F}개`:s.phBAsk==='V'?`꼭짓점 2×${I.E} = ${c.V}개`:`모서리 ${I.E}+${2*I.E} = ${c.E}개`,c:RED,size:16}:null],C);
         else banner(b, [{ t: `${I.name}의 꼭짓점 ${I.V}개를 잘라 내요`, c: 'ink', size: 16 }, st === 1 || st === 4 ? { t: `면 ${I.F}+${I.V} = ${c.F}개`, c: AMB, size: 15 } : null, st === 2 || st === 4 ? { t: `꼭짓점 2×${I.E} = ${c.V}개`, c: RED, size: 15 } : null, st === 3 || st === 4 ? { t: `모서리 3×${I.E} = ${c.E}개`, c: RED, size: 15 } : null], C);
       }
       D.flush();
@@ -368,7 +372,7 @@
       // 평면을 옆에서 보면 단면이 가는 선이 되므로, 단면이 충분히 보이는 시점으로 부드럽게 돌립니다(기본 시점이 괜찮으면 그대로).
       // 학생이 돌려 보기 막대·끌기로 직접 시점을 바꾼 뒤에는 이 장면에서 더는 자동으로 돌리지 않습니다.
       viewTick: (s, dt, lab) => {
-        if (s.phVman) return false;
+        if (s.lessonOn || s.lessonEntry || s.phVman) return false;
         if (s.phVa && (Math.abs(s.phYaw - s.phVa.yaw) > 0.02 || Math.abs(s.phPitch - s.phVa.pitch) > 0.02)) { s.phVman = true; return false; } // 우리가 둔 값과 달라졌다 = 학생이 돌렸다
         const M = T3.model(s), sec = lab.tab === 'problem' ? M.qsec : M.sec;
         const tg = sec ? CS.viewFor(sec) : CS.DEFAULT_VIEW, dy = tg.yaw - s.phYaw, dp = tg.pitch - s.phPitch;
@@ -384,7 +388,7 @@
         return { sel, sec: sel.length === 3 ? CS.sectionOf3(sel[0], sel[1], sel[2]) : null, Q, qsec: CS.sectionOf3(Q.tri[0], Q.tri[1], Q.tri[2]) };
       },
       draw(b, s, M, C) {
-        const st = C.review ? Math.max(1, C.step) : stepOf(C), asQ = C.problem || C.questionReview, sec = asQ ? M.qsec : M.sec, sel = asQ ? M.qsec.tri : M.sel;
+        const st = C.lesson ? C.step : C.review ? Math.max(1, C.step) : stepOf(C), asQ = C.problem || C.questionReview, sec = asQ ? M.qsec : M.sec, sel = asQ ? M.qsec.tri : M.sel;
         const D = scene3(b, s, C), S = solidOf(V8);
         const ext = C.thumb || C.problem ? 1 : C.review ? clamp(C.t, 0, 1) : clamp(s.phTe == null ? 1 : s.phTe, 0, 1); // 평면 넓히기(0 = 세 점 삼각형, 1 = 단면)
         const showPatch = !!sec && !C.problem && (!C.review || st >= 2);
@@ -402,6 +406,11 @@
           } else lines.push({ t: `단면: ${sec.label}`, c: RED, size: 17 });
         } else if (sec) lines = extLines(sec, ext);
         else lines.push({ t: `꼭짓점 ${sel.length}/3 — 세 점을 골라 주세요`, c: 'ink', size: 16 }, { t: '세 점을 고르면 단면이 보여요', c: 'ink', size: 14 });
+        if(C.lesson && sec) {
+          lines=[{t:s.phShowAnswer?`단면: ${sec.label}`:`세 점 ${sec.tri.join(', ')}를 지나는 평면`,c:s.phShowAnswer?RED:'ink',size:16}];
+          if((s.phBStage||0)>=2)lines.push({t:sec.fourth?`평면은 넷째 점 ${sec.fourth}까지 닿아요`:'다른 꼭짓점으로 이어지지 않아요',c:AMB,size:14});
+          else lines.push({t:st>=2?'삼각형에서 멈추지 않고 평면을 넓혀요':'두 점씩 이은 선분을 살펴봐요',c:SKY,size:14});
+        }
         const pc = showPatch ? planeCorners(sec, 1) : [];
         D.fitPts(V8.concat(pc), { t: topFor(lines.length, 16) + 14, b: 44, l: 46, r: 46 });
         const faceLet = (f) => f.i.map((i) => LET8[i]);
@@ -513,7 +522,7 @@
     reroll: (s) => { s.phQ = rollT4(s.phQ); },
     model: (s) => ({ k: s.phSel7 || 'cube', Q: s.phQ || { k: 'cube', ask: 'shape' } }),
     draw(b, s, M, C) {
-      const D = scene3(b, s, C), asQ = C.problem || C.review;
+      const D = scene3(b, s, C), asQ = !C.lesson && (C.problem || C.review);
       const k = asQ ? M.Q.k : M.k, X = dualOf(k), S = X.S, T = X.T, I = PLAT[k], dense = S.E.length > 20;
       const t = C.problem ? 0 : C.thumb ? 1 : clamp(C.t, 0, 1);
       const pd = ph01(t, DU.dot[0], DU.dot[1]), pe = ph01(t, DU.edge[0], DU.edge[1]), pf = ph01(t, DU.fill[0], DU.fill[1]);
@@ -530,6 +539,11 @@
         else if (st3 === 1) { l1 = { t: '각 면의 한가운데에 점을 찍어요', c: AMB, size: 16 }; l2 = { t: `점 ${nF}개 중 ${Math.min(nF, Math.round(pd * nF + 0.4))}개`, c: 'ink', size: 14 }; }
         else if (st3 === 2) { l1 = { t: '이웃한 면의 점끼리 이어요', c: AMB, size: 16 }; l2 = { t: `선분 ${nE}개 중 ${Math.min(nE, Math.round(pe * nE + 0.4))}개`, c: 'ink', size: 14 }; }
         else { l1 = { t: pf > 0.99 ? `새 입체: ${X.name}` : '새 입체를 칠해요', c: AMB, size: 17 }; l2 = { t: `꼭짓점 ${X.cnt.V} · 면 ${X.cnt.F} · 모서리 ${X.cnt.E}`, c: GRN, size: 14 }; }
+        if(C.lesson) {
+          l1={t:s.phShowAnswer&&s.phBAsk==='shape'?`새 입체: ${X.name}`:`${I.name}의 면 중심을 이어요`,c:AMB,size:16};
+          l2=s.phShowAnswer?{t:s.phBAsk==='shape'?`새 꼭짓점 ${X.cnt.V}개`:s.phBAsk==='F'?`새 면 ${X.cnt.F}개`:`새 모서리 ${X.cnt.E}개`,c:GRN,size:16}:
+            {t:st3<=1?'면 하나마다 중심을 하나씩 표시해요':st3===2?'이웃한 두 면의 중심을 연결해요':'원래 입체와 새 입체의 요소를 비교해요',c:'ink',size:14};
+        }
         banner(b, [l1, l2], C);
       }
       const V = S.V, vis = S.F.map((f) => D.facing(f.n));

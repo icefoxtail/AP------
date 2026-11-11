@@ -22,6 +22,7 @@
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet', ORG = 'orange';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
   const stepOf = (C) => (C.problem ? 0 : C.review ? C.step : 4);
+  const lessonHide = (s, C) => !!(C.lesson || s.lessonOn || s.lessonEntry) && (s.lessonEntry || !s.phShowAnswer);
   const FL = 'ABCDEF'; // 정육면체의 면 이름(전개도에서 위→아래, 왼쪽→오른쪽)
   const camFold = (s, t, kp = 30, ky = -26) => Object.assign({}, s, { phPitch: Math.max(-10, (s.phPitch == null ? 70 : s.phPitch) - kp * t), phYaw: (s.phYaw == null ? 0 : s.phYaw) + ky * t });
   /* 접은 입체의 겨냥도 시점: 전개도는 위에서(84°) 내려다보고, 접을수록 28°까지 낮춰 입체가 옆에서 보이게 합니다(교과서: 위에서 15~30°).
@@ -158,7 +159,7 @@
       const net = C.problem ? cubeNetOf('a1') : M.net;
       fitNow(b, s, net, C, { t: C.problem ? 40 : C.thumb ? 5 : 68, b: 18 }, camFoldK('cube'), t);
       const D = scene3(b, camFoldK('cube')(s, t), C);
-      const showBad = !C.problem && !M.valid && t > 0.85;
+      const showBad = !C.problem && !M.valid && t > 0.85 && !lessonHide(s, C);
       const { faces, vis } = drawFacesOp(D, net, t, (i) => (showBad && M.ovl[i] ? { c: RED, a: 0.5, ec: RED, ew: 3 } : { c: 'green', a: C.problem ? 0.16 : 0.14, ec: 'ink', ew: 2 }));
       if (showBad) faces.forEach((p, i) => { if (M.ovl[i]) D.panel(p, RED, 0.2, RED, 3, vis[i] ? {} : { dash: [7, 5] }); }); // 가려져도 겹치는 면이 보이게
       if (C.txt && !C.problem) {
@@ -175,7 +176,13 @@
       }
       if (C.txt && !C.problem) {
         const L = [{ t: M.spec.label.replace('✕ ', ''), c: 'ink', size: 16 }];
-        if (t > 0.9 && st !== 1) {
+        if (C.lesson && s.phLessonGoal === 'count' && s.phGroupReady) {
+          const group = CUBE_NETS[s.phNet | 0]?.g;
+          if (group) L.push({ t: `${group}: ${CUBE_NETS.filter((q) => q.g === group).length}가지`, c: SKY, size: 15 });
+        }
+        if (C.lesson && s.phLessonGoal === 'count' && !lessonHide(s, C)) {
+          L.push({ t: '6 + 3 + 1 + 1 = 11가지', c: GRN, size: 15 });
+        } else if (t > 0.9 && st !== 1 && !lessonHide(s, C)) {
           const ov = faces.map((_, i) => i).filter((i) => M.ovl[i]).map((i) => fLet(net, i)).sort();
           L.push(M.valid ? { t: '여섯 면이 겹치지 않아요 → 정육면체 ○', c: GRN, size: 15 } : { t: `빨간 면(${ov.join(', ')})이 겹쳐요 → 정육면체 ✕`, c: RED, size: 15 });
         }
@@ -293,7 +300,7 @@
   const segDist = (p, a, c) => { const dx = c.x - a.x, dy = c.y - a.y, l2 = dx * dx + dy * dy || 1, t = clamp(((p.x - a.x) * dx + (p.y - a.y) * dy) / l2, 0, 1); return Math.hypot(p.x - (a.x + dx * t), p.y - (a.y + dy * t)); };
 
   function foldDraw(o, b, s, M, C) {
-    const net = M.net, fi = M.fi, st = stepOf(C), letters = M.letters;
+    const net = M.net, fi = M.fi, st = lessonHide(s, C) ? Math.min(1, stepOf(C)) : stepOf(C), letters = M.letters;
     const t = C.review ? C.t : C.thumb ? 0.6 : s.phFold;
     const hasTxt = C.txt && !C.thumb;
     const cams = (tt) => camOf(camFoldK(net.kind)(s, tt)); // 접을수록 낮은 시점(28°)에서 보아 입체로 보이게
@@ -374,6 +381,11 @@
           const spread = Math.max(...q.pos.map((p) => Math.hypot(p.x - mx, p.y - my))) * (b.k || 60);
           const merged = q.pos.length > 1 && (spread < 14 || (small && fin)), on = q.cl.pts.filter((k) => hiPts.has(k)), dir = unitTo({ x: mx, y: my }, cen);
           if (merged) {
+            // 정답 전에는 모인 이름을 묶어 쓰지 않습니다. 질문의 기준점만 남깁니다.
+            if (lessonHide(s, C)) {
+              if (q.cl.pts.includes(M.k)) todo.push({ p: { x: mx, y: my }, text: ptName(net, M.k), color: AMB, size: 19, rank: 0, dir, gap: 12 });
+              return;
+            }
             if (small) todo.push({ p: { x: mx, y: my }, text: lettersOf(net, q.cl.pts).join('·'), color: on.length ? AMB : 'ink', size: on.length ? 19 : 18, alpha: q.vis ? (on.length ? 1 : 0.85) : 0.42, rank: on.length ? 0 : q.vis ? 1 : 2, dir, gap: q.vis ? 12 : 10 });
             else if (on.length) todo.push({ p: { x: mx, y: my }, text: lettersOf(net, on).join('·'), color: AMB, size: 19, rank: 0, dir, gap: 12 }); // 점이 많은 입체: 고른 묶음만
             return;
@@ -607,12 +619,12 @@
       return { net, f, fR, opp: net.opposite[fR], Q: q, qn, qf: q.f, qopp: qn.opposite[q.f] };
     },
     draw(b, s, M, C) {
-      const st = stepOf(C), t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
+      const st = lessonHide(s, C) ? Math.min(1, stepOf(C)) : stepOf(C), t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
       const net = C.problem ? landscapeNet(M.qn) : M.net, f = C.problem ? M.qf : C.review ? M.fR : M.f, opp = f == null ? -1 : net.opposite[f];
       fitNow(b, s, net, C, C.problem ? { t: 52, b: 26 } : { t: C.thumb ? 5 : 64, b: 18 }, camFoldK('cube'), t);
       const D = scene3(b, camFoldK('cube')(s, t), C);
       const role = faceRoles(C, st, f, C.problem ? -1 : opp, 6), any = role.some((r) => r);
-      const pc = C.problem ? [] : pairColors(net); // 마주 보는(평행한) 면 쌍은 같은 색(문제 탭은 정답이 드러나 칠하지 않음). 고른 면과 짝의 노랑 강조는 그 위에 그대로
+      const pc = C.problem || lessonHide(s, C) ? [] : pairColors(net); // 해설 결론 전에는 같은 색으로 정답 쌍을 미리 표시하지 않습니다.
       const { faces, vis } = drawFacesOp(D, net, t, (i) => ROLE[role[i]] || (pc[i] ? { c: pc[i], a: PAIR_ALPHA } : { c: 'green', a: 0.08 }), any ? 0.72 : 1);
       const fin = t >= 0.97;
       const ghosts = [];
@@ -768,7 +780,7 @@
         if (C.problem || st === 0) return { color: 'ink', width: 3 };
         if (r === 'meet' || r === 'ext') return st === 4 || st === 1 ? { color: RED, width: st === 1 ? 5 : 4 } : GRY;
         if (r === 'par') return st === 4 || st === 2 ? { color: SKY, width: st === 2 ? 5 : 4 } : st > 2 ? GRY : { color: 'ink', width: 3 };
-        if (r === 'skew') return st === 4 || st === 3 ? { color: GRN, width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
+        if (r === 'skew') return (st === 4 || st === 3) && !lessonHide(s, C) ? { color: GRN, width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
         return { color: 'ink', width: 3 };
       };
       // 모서리: 가려진 것(점선) → 앞쪽 모서리 아래 바탕색 띠(정사면체·정팔면체: 점선이 앞 모서리에 끊겨 보여 '만나지 않음'이 드러남) → 앞쪽 모서리
@@ -790,7 +802,7 @@
         if (C.txt) D.label(p, nmv, { color: isR ? AMB : 'ink', size: 17, dir: D.out(p, cc), gap: 9 });
       }));
       if (C.txt) {
-        const cap = C.review ? (st === 1 ? `만나는 모서리 ${c.nMeet + c.nExt}개 지우기 (빨강)` : st === 2 ? (c.nPar ? `평행한 모서리 ${c.nPar}개 지우기 (파랑)` : '평행한 모서리는 0개예요') : st === 3 ? `남은 ${c.nSkew}개 = 꼬인 위치 (초록)` : '') : '';
+        const cap = C.review ? (st === 1 ? `만나는 모서리 ${c.nMeet + c.nExt}개 지우기 (빨강)` : st === 2 ? (c.nPar ? `평행한 모서리 ${c.nPar}개 지우기 (파랑)` : '평행한 모서리는 0개예요') : st === 3 && !lessonHide(s, C) ? `남은 ${c.nSkew}개 = 꼬인 위치 (초록)` : '') : '';
         if (cap) b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, cap, { color: st === 1 ? 'red' : st === 2 ? 'sky' : 'green', size: 17, weight: 800, align: 'center', baseline: 'middle' });
         else if (C.problem) banner(b, [{ t: `${sdName}의 전개도 · 기준 모서리 ${ref.name}`, c: 'ink', size: 15 }], C);
         else banner(b, [{ t: `${sdName} · 기준 모서리 ${ref.name}`, c: AMB, size: 16 }], C);
@@ -863,13 +875,13 @@
         return { a, r, ep, len: len(r), minLen: len(0.5), mid: Math.abs(r - 0.5) < 1e-9, Q: s.phQ };
       },
       draw(b, s, M, C) {
-        if (C.questionReview) {
+        if (C.questionReview && !C.lesson) {
           const a = M.Q.a, length = a * Math.sqrt(5);
           M = { ...M, a, r: 0.5, ep: a / 2, len: length, minLen: length, mid: true };
           if (C.step < 2) C = { ...C, tab: 'problem', problem: true, review: false };
         }
-        const st = stepOf(C), t = C.problem ? 1 : C.review ? 0 : (C.thumb ? 0 : s.phFold), phi = (PI / 2) * t;
-        const r = C.problem || (C.review && st >= 2) ? 0.5 : M.r;
+        const st = stepOf(C), t = C.lesson ? C.t : C.problem ? 1 : C.review ? 0 : (C.thumb ? 0 : s.phFold), phi = (PI / 2) * t;
+        const r = !C.lesson && (C.problem || (C.review && st >= 2)) ? 0.5 : M.r;
         const D0 = scene3(b, Object.assign({}, s, { phYaw: s.phYaw, phPitch: s.phPitch }), C);
         const D = D0;
         const A = fr(0, 0), Bp = fr(L, 0), E = fr(0, L), F = fr(L, L), Pp = fr(r * L, L), G = topPt(L, L, phi), H = topPt(0, L, phi);
@@ -908,15 +920,17 @@
           D.label(Pp, 'P', { color: AMB, size: 18, at: [[0, 20], [0, -20]] });
           const ep = r * M.a, pf = M.a - ep;
           D.obstacle(Pp, 12);
-          if (!C.questionReview || st >= 4) {
+          if ((!C.questionReview || st >= 4) && !lessonHide(s, C)) {
             D.label(mid3(E, Pp), fmt2(ep), { color: 'rose', size: 15, at: [[0, -20], [0, -38], [-18, -24], [0, 26]] });
             D.label(mid3(Pp, F), fmt2(pf), { color: 'rose', size: 15, at: [[0, -20], [0, 26], [18, -24], [0, -38]] });
           }
           const L1 = [{ t: `한 모서리 a = ${M.a}`, c: 'ink', size: 15 }];
-          if (st === 2 || st === 3) L1.push({ t: 'A와 G를 직선으로 이으면 EF의 가운데를 지나요', c: VIO, size: 14 });
+          if (C.lesson) {
+            L1.push({ t: lessonHide(s, C) ? (st >= 2 ? '펼친 두 면에서 A와 G를 직선으로 이어요' : 'P는 경로가 모서리 EF를 지나는 점') : s.phLessonGoal === 'distance' ? `EP = ${M.a} ÷ 2 = ${M.a / 2}` : 'P는 EF의 중점이에요', c: lessonHide(s, C) ? AMB : GRN, size: 15 });
+          } else if (st === 2 || st === 3) L1.push({ t: 'A와 G를 직선으로 이으면 EF의 가운데를 지나요', c: VIO, size: 14 });
           else if (M.mid && t < 0.05) L1.push({ t: 'AP와 PG가 한 직선이에요 → 가장 짧아요!', c: GRN, size: 15 });
           else L1.push({ t: `경로 A→P→G 의 길이 ≈ ${fmt1(M.len)}`, c: AMB, size: 15 });
-          if (C.questionReview ? st >= 4 : st === 3) L1.push({ t: `EP = ${M.a} ÷ 2 = ${M.a / 2}`, c: GRN, size: 16 });
+          if (!C.lesson && (C.questionReview ? st >= 4 : st === 3)) L1.push({ t: `EP = ${M.a} ÷ 2 = ${M.a / 2}`, c: GRN, size: 16 });
           banner(b, L1, C);
         } else if (C.problem && C.txt) banner(b, [{ t: `정육면체의 한 모서리의 길이 a = ${M.Q.a}`, c: 'ink', size: 16 }], C);
         D.flush();
@@ -986,6 +1000,11 @@
       const ghosts = [];
       faces.forEach((p, i) => {
         if (C.problem && i === M.hid) { faceTxt(D, C, cen3(p), '?', { color: AMB, size: 26, at: [[0, 0]] }); return; }
+        if (lessonHide(s, C) && i === opp) {
+          if (fin && !vis[i]) { if (role[i]) ghosts.push([p, '?']); }
+          else faceTxt(D, C, cen3(p), '?', { color: AMB, size: 26, at: [[0, 0]] });
+          return;
+        }
         const hi = role[i] ? AMB : null;
         if (fin && !vis[i]) { if (hi) ghosts.push([p, String(vals[i])]); return; } // 가려진 면은 눈을 그리지 않습니다: 고른 면과 마주 보는 면만 점선 테두리와 숫자 배지
         drawPips(D, b, p, vals[i], hi || 'ink', 6.5);
@@ -997,7 +1016,7 @@
         else {
           const L = [{ t: '주사위의 전개도', c: 'ink', size: 15 }];
           if (f == null) L.push({ t: '면을 눌러 보세요', c: 'muted', size: 15 });
-          else if (C.review && st <= 1) L.push({ t: `눈 ${vals[f]}인 면을 골랐어요`, c: AMB, size: 15 });
+          else if (C.review && (st <= 1 || lessonHide(s, C))) L.push({ t: `눈 ${vals[f]}인 면을 골랐어요`, c: AMB, size: 15 });
           else L.push({ t: `눈 ${vals[f]}의 맞은편은 눈 ${vals[opp]}  (${vals[f]} + ${vals[opp]} = 7)`, c: AMB, size: 15 });
           banner(b, L, C);
         }
