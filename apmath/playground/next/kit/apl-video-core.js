@@ -153,7 +153,9 @@
       }
     });
     // 소개 줄 금지: 첫 칸 근처에서 그림이 바로 움직여야 합니다(to 로 움직이는 칸이 maxFirstMoveAt 초 안에 시작)
-    if (opts.first !== false && !cues.some((c) => c && c.to && isNum(c.at) && c.at <= LIMITS.maxFirstMoveAt + EPS)) err(`첫 ${LIMITS.maxFirstMoveAt}초 안에 그림이 움직이기 시작해야 합니다(첫 칸에 to 를 두세요. 소개만 하는 칸 금지)`);
+    // 해설(opts.lesson)의 첫 장은 정지한 정리 탭 그림에서 단계(step)·강조(part)를 바꾸는 것도 첫 움직임으로 칩니다(쇼츠는 그대로 to 만).
+    const moves = (c) => !!c && ((c.to && true) || (opts.lesson && (c.step != null || (c.part !== undefined && 'part' in c)))) && isNum(c.at) && c.at <= LIMITS.maxFirstMoveAt + EPS;
+    if (opts.first !== false && !cues.some(moves)) err(`첫 ${LIMITS.maxFirstMoveAt}초 안에 그림이 움직이기 시작해야 합니다(첫 칸에 to 를 두세요${opts.lesson ? ', 해설은 step·part 도 됩니다' : ''}. 소개만 하는 칸 금지)`);
     if (says.length < LIMITS.minSay || says.length > LIMITS.maxSay) err(`자막 ${says.length}줄: ${LIMITS.minSay}~${LIMITS.maxSay}줄이어야 합니다`);
     if (cues[0] && !cues[0].say) err('첫 칸(at 0)에 자막이 있어야 합니다');
     for (let k = 0; k < says.length; k++) {
@@ -220,7 +222,7 @@
     if (!Array.isArray(ch)) { err('chapters 가 배열이 아닙니다'); return { errors, warnings }; }
     if (ch.length < LESSON_LIMITS.minChapters || ch.length > LESSON_LIMITS.maxChapters) err(`장 ${ch.length}개: ${LESSON_LIMITS.minChapters}~${LESSON_LIMITS.maxChapters}개여야 합니다(더 길면 해설을 둘로 나누세요)`);
     ch.forEach((c, i) => {
-      const v = validate(c, { chapter: true, first: i === 0 });
+      const v = validate(c, { chapter: true, first: i === 0, lesson: true });
       v.errors.forEach((m) => err(`chapters[${i}]: ${m}`));
       v.warnings.forEach((m) => warnings.push(`chapters[${i}]: ${m}`));
     });

@@ -16,6 +16,7 @@ on:
       - 'apmath/playground/next/tools/middle-initial-*'
       - 'apmath/playground/next/tools/scene-smoke*'
       - 'apmath/playground/next/tools/video.test.mjs'
+      - 'apmath/playground/next/tools/lessons.*.test.mjs'
       - 'apmath/playground/next/tools/lesson-browser-audit.mjs'
       - 'apmath/playground/next/tools/apl-stage-insets.test.mjs'
       - '.github/workflows/middle-initial-figure.yml'
@@ -69,44 +70,8 @@ jobs:
             ${{ runner.temp }}/scene-smoke*.log
             ${{ runner.temp }}/scene-smoke-report.json
           retention-days: 14
-  lesson-audit:
-    # 해설(lesson): 해설이 있는 모든 장면을 휴대폰·태블릿 화면에서 ▶ 한 번으로 끝까지 재생하고, 장마다 나가 보며 탐구 화면이 깨끗한지 검사합니다(tools/lesson-browser-audit.mjs).
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            apmath/playground
-            apmath/css
-            apmath/js
-            apmath/student
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Install real Chromium
-        run: |
-          npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
-          "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: One-tap lesson playback, leave-at-every-chapter and layout audit
-        shell: bash
-        env:
-          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
-        run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/lesson-audit-server.log" 2>&1 &
-          for attempt in {1..20}; do
-            if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
-            sleep 1
-          done
-          node apmath/playground/next/tools/lesson-browser-audit.mjs http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/lesson-audit" 2>&1 | tee "$RUNNER_TEMP/lesson-audit.log"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: middle-initial-${{ github.run_id }}-lesson-audit
-          path: |
-            ${{ runner.temp }}/lesson-audit.log
-            ${{ runner.temp }}/lesson-audit/
-          retention-days: 14
+  # 해설 브라우저 감사(tools/lesson-browser-audit.mjs)는 CI에서 돌리지 않습니다(사용자 결정 2026-11-12).
+  # 이유: 해설 하나에 3~4분이 걸려 PR마다 수십 분을 쓰고, 해설은 제작자가 화면을 직접 보고 올리기 때문입니다. 도구는 남겨 두었으니 필요할 때 손으로 돌립니다.
   inventory:
     runs-on: ubuntu-24.04
     outputs:
@@ -130,6 +95,8 @@ jobs:
         run: node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/scene-smoke-orchestration.test.mjs apmath/playground/next/tools/local-axis-origin-visibility.test.mjs
       - name: Video script and lesson (chapters) format, state and caption-number regressions
         run: node --test apmath/playground/next/tools/video.test.mjs
+      - name: Per-lab lesson (chapters) format, state and caption-number regressions
+        run: node --test apmath/playground/next/tools/lessons.*.test.mjs
       - name: Middle mathematical and scene-state regressions
         run: node --test apmath/playground/next/tools/g7-*.test.mjs apmath/playground/next/tools/g8-*.test.mjs apmath/playground/next/tools/g9-*.test.mjs
   browser:

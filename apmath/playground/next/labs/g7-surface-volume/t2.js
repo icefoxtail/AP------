@@ -87,6 +87,11 @@
         bodies.forEach((bd) => D.dot(G.applyT(bd.T, V0), 'ink', 3));
         if (t < 0.02) D.label(V0, '꼭짓점', { dir: { x: 1, y: -0.4 }, color: 'ink', size: 14, gap: 6 });
         D.dim(add3(origin, v3(-hf, -hf, hf)), add3(origin, v3(hf, -hf, hf)), `모서리 ${M.a}`, { side: { x: 0, y: 1 }, off: 22, color: 'ink' });
+        // 정리 탭: 지금 단계의 식 한 줄(결과 줄은 해설 재생 중 svShowV 까지 숨김)
+        G.stepRow(D, C, [null,
+          [{ t: `정육면체의 부피 = ${M.a}×${M.a}×${M.a} = ${plainVal(M.cubeV)}`, c: 'ink' }],
+          [{ t: '합동인 사각뿔 3개 → 사각뿔 하나는 정육면체의 ⅓', c: 'green' }],
+          [{ t: `사각뿔 하나 = ⅓ × ${plainVal(M.cubeV)} = ${plainVal(M.pyr)}`, c: 'green' }]][Math.min(Math.max(C.step || 0, 0), 3)], { gated: (C.step || 0) >= 3 });
         return;
       }
       // 원뿔 3번 붓기
@@ -196,7 +201,8 @@
         sn.net.pieces.forEach((pc,k)=>pc.pts.forEach(p=>pts.push(G.proj(cam,G.applyT(pose[k],p)))));
         const box=G.bboxOf(pts);return {pose,box,cx:(box.x0+box.x1)/2,cy:(box.y0+box.y1)/2};
       };
-      const frames=Array.from({length:9},(_,i)=>frame(i/8));
+      const entryFit=s.lessonEntry&&(C.t||0)<0.02; // 해설 우선 진입 화면: 닫힌 원뿔만 보이므로 펼친 전개도 크기가 아니라 원뿔에 맞춰 크게(탐구·수업 모드는 그대로)
+      const frames=Array.from({length:entryFit?1:9},(_,i)=>frame(i/8));
       const maxW=Math.max(...frames.map(f=>f.box.x1-f.box.x0)), maxH=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
       const O=src.hx(-maxW/2-M.r-2), body=revolveMesh([[0,0],[M.r,0],[0,M.h]],{O,N:48,tags:['bot','side']});
       const bb=G.bboxOf(body.faces.flatMap(f=>f.pts.map(src.P))), sy=-(bb.y0+bb.y1)/2, pair=b.W>=600;
@@ -271,11 +277,13 @@
               A.forEach((p, k) => { const q = D.px(at(kb, p)), l = Math.hypot(q.x - cp.x, q.y - cp.y) || 1, sc2 = ((q.x - cp.x) * dir.x + (q.y - cp.y) * dir.y) / l; if (sc2 > bs) { bs = sc2; k2 = k; } });
               D.edgeLab(at(kb, A[k2]), at(kb, A[(k2 + 1) % A.length]), `밑면의 둘레 ${plainVal(M.arc)}`, { from: c0, color: 'ink', alpha: flatA });
               const rr = Math.hypot(D.px(at(kb, A[0])).x - cp.x, D.px(at(kb, A[0])).y - cp.y);
-              if (!C.review) D.areaLab(c0, '밑넓이', plainVal(M.S), { dx: -0.4 * rr, dy: -0.04 * rr, maxW: rr * 1.05, alpha: flatA });
+              D.areaLab(c0, '밑넓이', plainVal(M.S), { dx: -0.4 * rr, dy: -0.04 * rr, maxW: rr * 1.05, alpha: flatA }); // 정리 탭에도: 해설이 「밑넓이 9π」를 짚습니다
               const ra = at(L[18], apex), rb = G.mid3(at(L[18], A[18]), at(L[18], A[19]));
               D.areaLab(G.lerp3(ra, rb, 0.3), '옆넓이', plainVal(M.lat), { alpha: flatA });
             }
           }
+          // 정리 탭 3단계: 결과를 위쪽 한 줄로(해설 재생 중에는 해설이 svShowV 를 켤 때까지 아낌)
+          if (C.review && !C.problem && st >= 3 && flatA > 0.95 && !D.lessonHide) G.sumRows(D, [[{ t: `겉넓이 = ${plainVal(M.S)} + ${plainVal(M.lat)} = ${plainVal(M.tot)} cm²`, c: 'green' }]], 1);
         }
       });
     };
@@ -357,9 +365,14 @@
       if(surf && M.started && C.tab==='explore' && !b.thumb){drawConeComparison(b,s,M,C);return;}
       if(!surf && M.started && C.tab==='explore' && !b.thumb){drawVolumeComparison(b,s,M,C);return;}
       const hl = !rv ? {} : surf ? (st <= 1 ? { bot: 2 } : st === 2 ? { ring: 2 } : { ring: 3, bot: 2 }) : (st <= 1 ? { bot: 2 } : st === 2 ? {} : { ring: 3, bot: 2 });
-      const o = { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, hSide: { x: 1, y: 0 }, hColor: 'ink', hAlongFrac: 0.2, problemAlpha: 0.02, reviewAlpha: 0.08, textbookReview: true, fitL: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? 18 : undefined), fitR: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? 18 : undefined), fitT: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? 18 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? 18 : undefined), t: !surf ? 0 : C.problem ? 0 : rv ? 1 : C.t, problem: C.problem || !surf, review: rv, hl, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } };
+      const o = { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, hSide: { x: 1, y: 0 }, hColor: 'ink', hAlongFrac: 0.2, problemAlpha: 0.02, reviewAlpha: 0.08, textbookReview: true, fitL: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? (s.lessonOn && rv ? 74 : 18) : undefined), fitR: C.problem ? (b.W < 450 ? 12 : 80) : (b.W < 450 ? 18 : undefined), fitT: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? (s.lessonOn && rv ? 66 : 18) : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 100) : (b.W < 450 ? 18 : undefined), t: !surf ? 0 : C.problem ? 0 : rv && !s.lessonOn ? 1 : C.t, problem: C.problem || !surf, review: rv, hl, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } };
       if (!surf && C.review) { o.fitL = 80; o.fitR = 80; o.fitT = 80; o.fitB = 80; }
       const res = G.coneNet(b, s, C, o);
+      // 해설 재생 중 부피: 밑넓이 이름표와 합 식 (결과 줄은 sumRows 가 svShowV 까지 아낌). 정리·탐구·문제 탭·썸네일은 그대로.
+      if (!surf && rv && s.lessonOn && !b.thumb) {
+        res.D.areaLab(G.centroid(res.sn.A), '밑넓이', plainVal(M.S), { dx: -0.1, dy: 34 });
+        G.sumRows(res.D, [[{ t: '부피 = ' }, { t: '⅓', c: 'amber' }, { t: ' × ' }, { t: '밑넓이', c: 'violet' }, { t: ' × ' }, { t: '높이', c: 'amber' }], [{ t: `= ⅓ × ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)}` }]], 1);
+      }
     };
     return {
       id: 'sv2-3', title: '원뿔 종합', short: '원뿔 종합',
@@ -428,7 +441,7 @@
       const hl = !rv ? {} : st <= 1 ? { big: true } : st === 2 ? { small: true } : st === 3 ? { ring: 2 } : { ring: 3, bot: 2, top: 2 };
       G.coneNet(b, s, C, {
         // 입체뿐 아니라 펼치는 도중의 옆면과 완성된 윗원도 목차 손잡이 밖에 남깁니다.
-        r2: M.r2, r1: M.r1, hf: M.hf, R2: M.R2, R1: M.R1, hColor: 'ink', cleanFrustum: true, showOriginal: true, problemAlpha: 0.02, fitL: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 82 : undefined), fitR: C.problem ? (b.W < 450 ? 40 : 95) : (b.W < 600 ? 40 : undefined), fitT: C.problem ? (b.W < 450 ? 18 : 85) : (b.W < 600 ? 35 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 85) : (b.W < 600 ? 12 : undefined), t: C.problem ? 0 : rv ? 1 : C.t, problem: C.problem, review: rv, hl,
+        r2: M.r2, r1: M.r1, hf: M.hf, R2: M.R2, R1: M.R1, hColor: 'ink', cleanFrustum: true, showOriginal: true, problemAlpha: 0.02, fitL: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 82 : undefined), fitR: C.problem ? (b.W < 450 ? 40 : 95) : (b.W < 600 ? 40 : undefined), fitT: C.problem ? (b.W < 450 ? 18 : 85) : (b.W < 600 ? 35 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 85) : (b.W < 600 ? 12 : undefined), t: C.problem ? 0 : rv && !s.lessonOn ? 1 : C.t, problem: C.problem, review: rv, hl,
         vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) }
       });
     };
@@ -515,7 +528,7 @@
           R.dim(A[1], A[2], pyr ? `밑변 ${M.a2}` : `아랫변 ${M.a2}`, { from: center, off: 12, color: 'ink' });
           if (!pyr) R.dim(B[0], B[1], `윗변 ${M.a1}`, { from: center, off: 12, color: 'ink' });
         },
-        fitOpt: { l: b.W < 900 ? 18 : 54, r: (C.tab === 'explore' && b.W >= 560 && window.innerWidth >= 700) ? 245 : (b.W < 900 ? 18 : 54), t: C.problem ? 40 : (b.W < 900 ? 24 : 40 + 56 * e), b: C.problem ? 40 : (b.W < 900 ? 24 : 40 + 40 * e) },
+        fitOpt: { l: b.W < 900 ? 18 : 54, r: (C.tab === 'explore' && b.W >= 560 && window.innerWidth >= 700) ? 245 : (b.W < 900 ? 18 : 54), t: C.problem ? 40 : (b.W < 900 ? (C.review && b.W < 450 ? 62 : 24) : 40 + 56 * e), b: C.problem ? 40 : (b.W < 900 ? 24 : 40 + 40 * e) }, // 폰 정리 탭: 위의 합 식 두 줄이 전개도 꼭짓점에 닿지 않게 위 여백
         style: (pc) => {
           const tag = pc.tag, lv = tag === 'lat' ? lvL : lvB, stl = roleStyle(tag === 'lat' ? 'lat' : 'base', lv);
           if (lv !== 2) { if (tag === 'bot') stl.fill = BIG; else if (tag === 'top') stl.fill = SMALL; }
@@ -538,15 +551,15 @@
           // 옆면의 높이: 점선 + 직각 표시
           const bm = mid3(at(fr, A[0]), at(fr, A[1])), tm = pyr ? at(fr, B[0]) : mid3(at(fr, B[0]), at(fr, B[1]));
           const hpxEarly = Math.hypot(px(bm).x - px(tm).x, px(bm).y - px(tm).y);
-          D.height(bm, tm, hpxEarly < 50 ? '' : `옆면의 높이 ${plainVal(V(M.lf))}`, { a: unit3(sub3(at(fr, A[1]), at(fr, A[0]))), side: { x: 1, y: 0 }, size: 14, alongFrac: -0.35, color: 'ink' });
+          D.height(bm, tm, hpxEarly < 50 ? '' : (C.review && b.W < 450 ? `높이 ${plainVal(V(M.lf))}` : `옆면의 높이 ${plainVal(V(M.lf))}`), { a: unit3(sub3(at(fr, A[1]), at(fr, A[0]))), side: { x: 1, y: 0 }, size: 14, alongFrac: -0.35, color: 'ink' });
           if (C.problem || C.tab === 'explore') return;
           // 면마다 넓이 이름표
           const hpx = Math.hypot(px(bm).x - px(tm).x, px(bm).y - px(tm).y), thinF = hpx < 50;
           sn.lat.forEach((idx, k) => {
             if (dot3(tp[idx].n, vw) < 0.35) return;
-            const bmid = mid3(A[k], A[(k + 1) % 4]), tmid = pyr ? B[0] : mid3(B[k], B[(k + 1) % 4]), f = pyr ? 0.34 : 0.5;
+            const bmid = mid3(A[k], A[(k + 1) % 4]), tmid = pyr ? B[0] : mid3(B[k], B[(k + 1) % 4]), f = pyr ? 0.34 : (C.review && b.W < 450 && idx === f1 ? 0.3 : 0.5); // 폰 정리 탭: 왼쪽 옆면의 이름표는 윗변 치수선(3)을 피해 아래로
             const pl = px(at(idx, lerp3(A[k], pyr ? B[0] : B[k], f))), pr = px(at(idx, lerp3(A[(k + 1) % 4], pyr ? B[0] : B[(k + 1) % 4], f))), wpx = Math.hypot(pl.x - pr.x, pl.y - pr.y);
-            D.areaLab(at(idx, lerp3(bmid, tmid, f)), thinF ? '' : '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? -0.22 * wpx : 0, size: thinF ? 13 : 15, color: thinF ? 'green' : 'ink' });
+            D.areaLab(at(idx, lerp3(bmid, tmid, f)), thinF ? '' : '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? (C.review && b.W < 450 ? -0.36 : -0.22) * wpx : 0, size: thinF ? 13 : 15, color: thinF ? 'green' : 'ink' });
           });
           [sn.bot, sn.top].forEach((k) => {
             if (k < 0 || !tp[k].front) return;
@@ -600,7 +613,7 @@
       const a3 = ease(lin01(t, 0.55, 0.95));
       D.areaLab(v3(0, y0, 0), '큰 각뿔', plainVal(M.v2), { dx: -0.38 * w2 * k, dy: -4, maxW: w2 * k * 0.8, alpha: 1 - ease(lin01(t, 0.1, 0.45)) });
       D.areaLab(add3(v3(0, yc + h1, 0), sh), '작은 각뿔', plainVal(M.v1), { alpha: aSm, color: 'violet', dy: -18 });
-      D.areaLab(v3(0, y0 + hf * 0.4, 0), '각뿔대', plainVal(M.vol), { alpha: a3, color: 'green', maxW: w2 * k * 1.2 });
+      if (!D.lessonHide) D.areaLab(v3(0, y0 + hf * 0.4, 0), '각뿔대', plainVal(M.vol), { alpha: a3, color: 'green', maxW: w2 * k * 1.2 }); // 답(각뿔대의 부피)은 해설 재생 중 svShowV 까지 숨김
       G.sumRows(D, [[{ t: '각뿔대의 부피 = ' }, { t: '큰 각뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 각뿔', c: 'violet' }], [{ t: '= ' }, { t: plainVal(M.v2), c: 'sky' }, { t: ' − ' }, { t: plainVal(M.v1), c: 'violet' }, { t: ` = ${plainVal(M.vol)}` }]], 1);
     };
     const draw = (b, s, M, C) => (M.mode === 'vol' ? drawVol(b, s, M, C) : drawSurf(b, s, M, C));

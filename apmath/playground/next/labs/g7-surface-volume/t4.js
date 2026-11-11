@@ -54,8 +54,10 @@
     const draw = (b, s, M, C) => {
       const st = C.step, rvw = C.review, surf = M.mode === 'surf';
       // 뒤쪽 절반(원뿔이 만들어진 뒤): 겉넓이 = 전개도(부채꼴 + 원), 부피 = 원뿔 겨냥도(밑넓이·높이)
-      if (!C.problem && (rvw || C.t >= 0.5 || b.thumb)) {
-        const t2 = b.thumb ? 1 : rvw ? 1 : clamp((C.t - 0.5) * 2, 0, 1);
+      // 해설 재생 중(s.lessonOn)에는 정리 탭도 탐구처럼 앞 절반(삼각형 돌리기)을 거쳐 뒤 절반(펼치기)로 갑니다(C.t = s41T). 정리 탭·탐구 탭·썸네일은 그대로입니다.
+      const lessonRun = rvw && s.lessonOn;
+      if (!C.problem && ((rvw && !(lessonRun && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) {
+        const t2 = b.thumb ? 1 : rvw && !lessonRun ? 1 : clamp((C.t - 0.5) * 2, 0, 1);
         const hl = !rvw ? {} : st <= 1 ? {} : surf ? (st === 2 ? { ring: 2, bot: 2 } : { ring: 3, bot: 2 }) : (st === 2 ? { bot: 2 } : { ring: 3, bot: 2 });
         const res = G.coneNet(b, s, C, { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: surf ? t2 : 0, problem: !surf, review: rvw, hl, simpleNet: surf && C.tab === 'explore', fitL: surf && C.tab === 'explore' ? 24 : undefined, fitR: surf && C.tab === 'explore' ? (window.innerWidth>=700 && b.W>=560 ? 245 : 24) : undefined, fitT: surf && C.tab === 'explore' ? 24 : surf ? undefined : 84, fitB: surf && C.tab === 'explore' ? 24 : undefined, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } });
         if (!surf && !b.thumb && !(C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560)) {
@@ -291,7 +293,7 @@
     };
     // 겉넓이 전개도: 두 원뿔의 옆면 = 부채꼴 2개(맞붙은 원은 겉에 없어 밑면은 없음). 호의 길이는 모두 맞붙은 원의 둘레
     const drawNet = (b, s, M, C) => {
-      const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = C.review || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u);
+      const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = (C.review && !s.lessonOn) || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u); // 해설 재생 중에는 정리 탭도 s43T 를 따라 돌고 펼쳐져요
       const sc = 4.4 / Math.max(M.R1, M.R2), cones = [{ nm: '아래 원뿔', R: M.R1, lat: M.lat1, col: 'sky' }, { nm: '위 원뿔', R: M.R2, lat: M.lat2, col: 'violet' }];
       const th = (c) => (360 * M.r) / c.R;
       const wd = (c) => 2 * c.R * sc * (th(c) >= 180 ? 1 : Math.sin((th(c) / 2) * DEG)), gap = 0.7;
@@ -310,7 +312,7 @@
       });
       void hot;
       if (thumb) return;
-      if (C.tab === 'explore' || C.review) { if (u > 0.8) cones.forEach(c => D.areaLab(v3(c.cx, -c.rho * 0.5, 0), c.nm + ' 옆면', '', {size: 13})); return; }
+      if (C.tab === 'explore' || (C.review && !s.lessonOn)) { if (u > 0.8) cones.forEach(c => D.areaLab(v3(c.cx, -c.rho * 0.5, 0), c.nm + ' 옆면', '', {size: 13})); return; }
       const flatA = lin01(u, 0.8, 1), VIO = 'violet';
       cones.forEach((c, i) => {
         const apex = v3(c.cx, 0, 0), full = arcPts(c, th(c)), endL = full[0], midBot = v3(c.cx, -c.rho, 0), narrow = D.narrow;
@@ -322,7 +324,7 @@
       G.sumRows(D, [[{ t: `두 호의 길이 = 맞붙은 원의 둘레 ${plainVal(V(0, 2 * M.r))}`, c: VIO }], [{ t: '맞붙은 원은 겉에 드러나지 않아 밑면은 더하지 않아요', c: 'red' }]], flatA, true);
     };
     const draw = (b, s, M, C) => {
-      if (M.mode === 'surf' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) return drawNet(b, s, M, C);
+      if (M.mode === 'surf' && !C.problem && ((C.review && !(s.lessonOn && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) return drawNet(b, s, M, C);
       const sc = 4.6 / Math.max(M.h1 + M.h2, 2.2 * M.r), r = M.r * sc, h1 = M.h1 * sc, h2 = M.h2 * sc, D = scene3(b, s, C), st = C.step;
       const t = C.problem ? 0 : C.t, rotT = clamp(t / 0.5, 0, 1), sep = ease(lin01(t, 0.5, 0.8)) * (r * 2.6), flip = ease(lin01(t, 0.8, 1));
       const yy0 = -(h1 + h2) / 2, yMid = yy0 + h1;
@@ -412,6 +414,7 @@
 
   /* ================================================================ 조각 줄 전개도(원뿔 옆면 부채꼴 + 원기둥 옆면 직사각형 + 원): sv4-2(긴 밑변이 축)·sv4-4 */
   function compNet(b, s, C, o) {
+    const simple = o.simple && !(s.lessonOn && C.review); // 해설 재생 중 정리 탭: 값(넓이·길이)이 든 전개도 — 탐구·정리·문제 탭·썸네일은 그대로
     const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = C.review || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u), nar = b.W < 560;
     const { r, R, H, nCirc } = o, th = (360 * r) / R, gap = Math.max(1.4, r * 0.6);
     const secPts = (a) => { const out = []; for (let i = 0; i <= 48; i++) { const f = -90 - a / 2 + (a * i) / 48; out.push(v3(R * Math.cos(f * DEG), R * Math.sin(f * DEG), 0)); } return out; };
@@ -425,18 +428,18 @@
     const rx0 = -rect.w / 2, rx1 = rect.w / 2, ry0 = yBot, ry1 = yBot - H;
     const cs = []; for (let i = 0; i < nCirc; i++) cs.push(v3(circL + r + i * (2 * r + cg), -r, 0));
     const all = arcAt(th).concat([apex, v3(rx0, ry0, 0), v3(rx1, ry1, 0)]); cs.forEach((c) => { all.push(v3(c.x - r, c.y - r, 0)); all.push(v3(c.x + r, c.y + r, 0)); });
-    D.fit(all, [], o.simple ? {l:25,r:(!nar && window.innerWidth>=700 ? 245 : 25),t:25,b:30} : { l: nar ? 40 : 50, r: nar ? 76 : 64, t: thumb ? 5 : (nar ? 92 : 96), b: thumb ? 5 : (nar ? 62 : 70) });
+    D.fit(all, [], simple ? {l:25,r:(!nar && window.innerWidth>=700 ? 245 : 25),t:25,b:30} : { l: nar ? 40 : 50, r: nar ? 76 : 64, t: thumb ? 5 : (nar ? 92 : 96), b: thumb ? 5 : (nar ? 62 : 70) });
     const hot = (k) => C.review && st === k;
-    D.panel([apex].concat(arcAt(th * e)), hot(o.hot.cone) ? 'amber' : 'violet', o.simple ? 0.06 : (hot(o.hot.cone) ? 0.4 : 0.26), 'ink', 2.4);
+    D.panel([apex].concat(arcAt(th * e)), hot(o.hot.cone) ? 'amber' : 'violet', simple ? 0.06 : (hot(o.hot.cone) ? 0.4 : 0.26), 'ink', 2.4);
     if (e > 0.02) {
       const w = rect.w * e;
-      D.panel([v3(-w / 2, ry0, 0), v3(w / 2, ry0, 0), v3(w / 2, ry1, 0), v3(-w / 2, ry1, 0)], hot(o.hot.cyl) ? 'amber' : 'green', o.simple ? 0.06 : (hot(o.hot.cyl) ? 0.4 : 0.26), 'ink', 2.4);
-      cs.forEach((c) => { if (o.hemi) { const top=[]; for(let i=0;i<=48;i++){const a=PI*i/48;top.push(v3(c.x+r*e*Math.cos(a),c.y+r*e*Math.sin(a),0));} D.panel(top,'sky',0.06,'ink',2); const ell=[]; for(let i=0;i<=48;i++){const a=TAU*i/48;ell.push(v3(c.x+r*e*Math.cos(a),c.y+0.18*r*e*Math.sin(a),0));} D.path(ell,'ink',1.5,{}); } else D.panel(D.circ(c, v3(1, 0, 0), v3(0, 1, 0), r * e, 0, TAU, 72), hot(o.hot.circ) ? 'amber' : 'sky', o.simple ? 0.06 : (hot(o.hot.circ) ? 0.4 : 0.26), 'ink', 2.4); });
-      if (u > 0.8 && !o.simple) D.path(arcAt(th), 'orange', 3.6, {});
-      if (u > 0.8 && !o.simple) D.line(v3(rx0, ry0, 0), v3(rx1, ry0, 0), 'orange', 3.6);
+      D.panel([v3(-w / 2, ry0, 0), v3(w / 2, ry0, 0), v3(w / 2, ry1, 0), v3(-w / 2, ry1, 0)], hot(o.hot.cyl) ? 'amber' : 'green', simple ? 0.06 : (hot(o.hot.cyl) ? 0.4 : 0.26), 'ink', 2.4);
+      cs.forEach((c) => { if (o.hemi) { const top=[]; for(let i=0;i<=48;i++){const a=PI*i/48;top.push(v3(c.x+r*e*Math.cos(a),c.y+r*e*Math.sin(a),0));} D.panel(top,'sky',0.06,'ink',2); const ell=[]; for(let i=0;i<=48;i++){const a=TAU*i/48;ell.push(v3(c.x+r*e*Math.cos(a),c.y+0.18*r*e*Math.sin(a),0));} D.path(ell,'ink',1.5,{}); } else D.panel(D.circ(c, v3(1, 0, 0), v3(0, 1, 0), r * e, 0, TAU, 72), hot(o.hot.circ) ? 'amber' : 'sky', simple ? 0.06 : (hot(o.hot.circ) ? 0.4 : 0.26), 'ink', 2.4); });
+      if (u > 0.8 && !simple) D.path(arcAt(th), 'orange', 3.6, {});
+      if (u > 0.8 && !simple) D.line(v3(rx0, ry0, 0), v3(rx1, ry0, 0), 'orange', 3.6);
     }
     if (thumb) return;
-    if (o.simple) { if (u > 0.8) { D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆면', '', { size: 13 }); D.areaLab(v3(0, (ry0 + ry1) / 2, 0), '원기둥 옆면', '', { size: 13 }); cs.forEach(c => D.areaLab(o.hemi ? v3(c.x,c.y+r*0.45,0) : c, o.hemi ? '반구' : '밑면', '', { size: 13 })); } return; }
+    if (simple) { if (u > 0.8) { D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆면', '', { size: 13 }); D.areaLab(v3(0, (ry0 + ry1) / 2, 0), '원기둥 옆면', '', { size: 13 }); cs.forEach(c => D.areaLab(o.hemi ? v3(c.x,c.y+r*0.45,0) : c, o.hemi ? '반구' : '밑면', '', { size: 13 })); } return; }
     const flatA = lin01(u, 0.8, 1), arcLen = plainVal(V(0, 2 * r)), kpx = b.k || 40, endL = arcAt(th)[0];
     D.dim(apex, endL, `모선 ${R}`, { from: v3(apex.x, apex.y - R, 0), off: 20, alpha: flatA });
     D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆넓이', plainVal(o.coneLat), { alpha: flatA, maxW: Math.max(70, R * kpx * 0.9) });
@@ -527,7 +530,7 @@
       }
     };
     const draw = (b, s, M, C) => {
-      if (M.mode === 'surf' && !C.problem && (C.review || C.t >= 1 || b.thumb)) return drawNet44(b, s, M, C);
+      if (M.mode === 'surf' && !C.problem && ((C.review && !s.lessonOn) || C.t >= 1 || b.thumb)) return drawNet44(b, s, M, C);
       if (M.mode === 'surf' && !C.problem && C.t > 0.5) return drawUnfold44(b, s, M, C);
       const sc = 5.4 / (M.r + M.H + M.hc), r = M.r * sc, H = M.H * sc, hc = M.hc * sc, D = scene3(b, s, C), st = C.step;
       const t = C.problem ? 0 : C.t, sep = ease(lin01(t, 0, 0.5)) * (r * 2.4), flipE = ease(lin01(t, 0.5, 1)), yB = -(r + H + hc) / 2;

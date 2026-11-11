@@ -401,7 +401,8 @@ test('validateLesson: 장 수 2~6 · 장마다 title · 장 규칙 · 알 수 �
   assert.deepEqual(core.validateLesson({ ...L, tab: 'review' }).errors, []);
   assert.ok(core.validateLesson({ ...L, summary: '' }).errors.some((e) => e.includes('summary')), 'summary');
   // 첫 장은 첫 1초 안에 움직여야 하고, 둘째 장 이후는 조건을 짚고 단계만 바꾸는 장도 가능
-  const still = mk(9, '정지', [{ at: 0, say: '단계만 바꿔요.', step: 2 }, { at: 4.5, say: '그림을 봐요.' }]);
+  // (2026-11-11) 해설의 첫 장은 to 뿐 아니라 step·part 바꿈도 첫 움직임으로 인정합니다(정리 탭 그림이 정지한 부피 장면 등). 움직임이 전혀 없는 장만 실패합니다. 세부 사례: tools/lessons.g7-surface-volume.test.mjs
+  const still = mk(9, '정지', [{ at: 0, say: '말만 해요.' }, { at: 4.5, say: '그림을 봐요.' }]);
   assert.ok(core.validateLesson({ ...L, chapters: [still, L.chapters[1], L.chapters[2]] }).errors.some((e) => e.includes('첫 1초')), '첫 장은 움직여야 함');
   assert.deepEqual(core.validateLesson({ ...L, chapters: [L.chapters[0], still, L.chapters[2]] }).errors, [], '둘째 장 이후는 움직임 없이 가능');
   // 같은 칸에 to 와 step 을 함께 쓰면 경고(값이 바뀌며 장면이 step 을 되돌릴 수 있음)
