@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 원본 해설 문자열에 남아 있는 Tailwind 클래스 이름만 최소한으로 되살립니다 */
 .font-bold{font-weight:800}.mb-1{margin-bottom:4px}.mt-1\.5{margin-top:6px}.my-1{margin:4px 0}
@@ -22,6 +23,12 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="alg-trig-geometry/lesson-core.js"></script>
+<script defer src="alg-trig-geometry/lesson-a.js"></script>
+<script defer src="alg-trig-geometry/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -40,6 +47,9 @@ window.addEventListener('DOMContentLoaded', function () {
        ========================================================================== */
 
     const PI=Math.PI, TAU=2*PI;
+    const ltgActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+    const ltgAllow = key => !ltgActive(SS) || (SS.ltgLabels || []).includes(key);
+    let ltgSourceOnly = false;
     const nearExact=(a,b)=>Math.abs(a-b)<=32*Number.EPSILON*Math.max(1,Math.abs(a),Math.abs(b));
     const tabOf=(lab)=>(lab||window.lab)?.tab||'explore';
     const canonical=(x,values)=>values.find(y=>nearExact(x,y))??x;
@@ -1229,21 +1239,24 @@ window.addEventListener('DOMContentLoaded', function () {
       c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(a.x + ux * aw + px * ah, a.y + uy * aw + py * ah); c.lineTo(a.x + ux * aw - px * ah, a.y + uy * aw - py * ah); c.closePath(); c.fill();
       c.beginPath(); c.moveTo(b2.x, b2.y); c.lineTo(b2.x - ux * aw + px * ah, b2.y - uy * aw + py * ah); c.lineTo(b2.x - ux * aw - px * ah, b2.y - uy * aw - py * ah); c.closePath(); c.fill();
       const ins = insets();
-      const fs = fitSize(label, 12 * BRD.fs, BRD.W - ins.left - ins.right);
-      c.font = `800 ${fs}px ${BRD.font}`;
-      const tw = c.measureText(label).width;
+      let size = 12 / (BRD.thumb ? .78 : BRD._ts());
+      let box = BRD.annotationSize(label, { size, weight: 800 });
+      const maxWidth = BRD.W - ins.left - ins.right - 26;
+      if (box.width > maxWidth) { size *= maxWidth / box.width; box = BRD.annotationSize(label, { size, weight: 800 }); }
+      const tw = box.width - 6, th = box.height - 6;
       const cx = Math.max(ins.left + tw / 2 + 12, Math.min(BRD.W - ins.right - tw / 2 - 12, (a.x + b2.x) / 2));
-      const cy = Math.max(ins.top + 16, Math.min(BRD.H - ins.bottom - 16, (a.y + b2.y) / 2));
+      const edgeY = Math.max(16, th / 2 + 7);
+      const cy = Math.max(ins.top + edgeY, Math.min(BRD.H - ins.bottom - edgeY, (a.y + b2.y) / 2));
       c.fillStyle = BRD.colors.halo;
       c.strokeStyle = BRD.color(col);
       c.lineWidth = 1.3;
       c.beginPath();
-      c.roundRect(cx - tw / 2 - 6, cy - fs / 2 - 4, tw + 12, fs + 8, 5);
+      c.roundRect(cx - tw / 2 - 6, cy - th / 2 - 4, tw + 12, th + 8, 5);
       c.fill(); c.stroke();
       c.fillStyle = BRD.color(col);
       c.textAlign = 'center';
       c.textBaseline = 'middle';
-      c.fillText(label, cx, cy);
+      BRD._text(cx, cy, label, { size, weight: 800, color: col, align: 'center', baseline: 'middle', halo: false }, true);
       c.restore();
     }
     function dCircle(center, rPx, col = C.cyan, w = 2.4, dash = [], fillCol = null) {
@@ -1577,14 +1590,15 @@ window.addEventListener('DOMContentLoaded', function () {
         drawRadianAxesWithTicks(rect, ox, oy, ux, uy, Math.PI / 2);
 
         const curT = model.h;
+        const comparing = ltgActive(SS) && SS.ltgMode === 'compare';
 
-        if (step >= 1) {
+        if (step >= 1 && !comparing) {
           dLine(toScr(0, 1, ox, oy, ux, uy), toScr(Math.PI * 2, 1, ox, oy, ux, uy), 'rgba(203,213,225,0.28)', 1.5, [4, 4]);
           dLine(toScr(0, 0.5, ox, oy, ux, uy), toScr(Math.PI * 2, 0.5, ox, oy, ux, uy), C.green, 2.2, [5, 4]);
           dLine(toScr(0, -1, ox, oy, ux, uy), toScr(Math.PI * 2, -1, ox, oy, ux, uy), C.pink, 2.2, [5, 4]);
         }
 
-        if (step >= 2) {
+        if (step >= 2 && !comparing) {
           dLine(toScr(Math.PI * 0.5, -1.2, ox, oy, ux, uy), toScr(Math.PI * 0.5, 1.25, ox, oy, ux, uy), C.green, 1.8, [4, 4]);
           const r1 = toScr(Math.PI / 6, 0.5, ox, oy, ux, uy);
           const r2 = toScr((5 * Math.PI) / 6, 0.5, ox, oy, ux, uy);
@@ -1599,6 +1613,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         dCurve((x) => Math.sin(x), 0, Math.PI * 2, ox, oy, ux, uy, C.cyan, 3.8);
+        if (comparing) model.roots.forEach(rx => dDot(toScr(rx, curT, ox, oy, ux, uy), '', C.gold, { x: 6, y: -8 }, false, true));
         dLine(toScr(-0.2, curT, ox, oy, ux, uy), toScr(Math.PI * 2 + 0.2, curT, ox, oy, ux, uy), C.gold, 2.6, [], true);
         dDot(toScr(Math.PI, curT, ox, oy, ux, uy), `y = t (${fmtSurd(curT)}) [드래그]`, C.gold, { x: 12, y: -10 }, true, true);
 
@@ -1833,7 +1848,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 1) {
           dLine(toScr(-1.35, -1.35, ox, oy, sc), toScr(1.35, 1.35, ox, oy, sc), C.gold, 2.2, [6, 4], true);
-          for (let n = 0; n < 6; n++) {
+          for (let n = 0; n < (ltgAllow('candidates') ? 6 : 0); n++) {
             const candRad = (n * Math.PI) / 3 + Math.PI / 12;
             const cPt = toScr(Math.cos(candRad), Math.sin(candRad), ox, oy, sc);
             const inUpper = candRad > Math.PI * 0.25 && candRad < Math.PI * 1.25;
@@ -1918,8 +1933,8 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(toScr(-0.2, -0.2, ox, oy, sc), toScr(1.15, 1.15, ox, oy, sc), C.pink, 2.2, [6, 4], true);
           drawRightAngle(M,O,nearExact(disc,0)?toScr(k*.5-.2,k*.5+.2,ox,oy,sc):P,11,C.pink);
           markTick(P, M, 2, C.pink); markTick(M, Q, 2, C.pink); // [표시 보강] M은 현 PQ의 중점: PM = MQ
-          drawDimension(O, M, -32, step >= 3 ? 'OM = k/√2' : `OM ≈ ${(k / Math.SQRT2).toFixed(2)}`, C.pink);
-          dDot(M, 'M(k/2, k/2)', C.pink, { x: 10, y: -8 }, false);
+          drawDimension(O, M, -32, step >= 3 ? 'OM = \\frac{k}{√2}' : `OM ≈ ${(k / Math.SQRT2).toFixed(2)}`, C.pink);
+          dDot(M, 'M(\\frac{k}{2}, \\frac{k}{2})', C.pink, { x: 10, y: -8 }, false);
         }
 
         dDot(O, 'O(0,0)', C.white, { x: -42, y: 16 }, false, true);
@@ -2266,7 +2281,11 @@ window.addEventListener('DOMContentLoaded', function () {
           drawDimension(B, Cpt, 24, 'BC = 6', C.white);
         }
 
-        if (step >= 2) {
+        if (step >= 2 && ltgActive(SS) && SS.ltgMode === 'cosine') {
+          drawAngleArc(D, B, A, 29, 'α', C.green);
+          drawAngleArc(D, A, Cpt, 39, 'π−α', C.cyan);
+        }
+        if (step >= 2 && !(ltgActive(SS) && SS.ltgMode === 'cosine')) {
           const H=toScr(mA.x,0,ox,oy,sc);
           dLine(A,H,C.pink,2,[4,4]);drawRightAngle(H,A,Cpt,10,C.pink);
           dDot(H,'H',C.pink,{x:-4,y:18});
@@ -2359,7 +2378,7 @@ window.addEventListener('DOMContentLoaded', function () {
       };
       let i = 0;
       const apply = () => { const b = get(i); p.statement = b.statement; p.answer = b.answer; p.snaps = b.snaps; p.steps = b.steps; p.alg = b.alg; };
-      TV[pid] = { cur: () => get(i), idx: () => i, next() { i = (i + 1 + Math.floor(Math.random() * (spec.pool.length - 1))) % spec.pool.length; apply(); return get(i); } };
+      TV[pid] = { cur: () => ltgSourceOnly || ltgActive(window.lab && window.lab.s) ? get(0) : get(i), first: () => get(0), idx: () => i, next() { i = (i + 1 + Math.floor(Math.random() * (spec.pool.length - 1))) % spec.pool.length; apply(); return get(i); } };
     });
     const TVG = (pid) => TV[pid].cur().g; // 그림이 따라가는 변형의 숫자
     const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-asq-new>새 문제 (숫자 바꾸기)</button></div>`;
@@ -2410,9 +2429,9 @@ window.addEventListener('DOMContentLoaded', function () {
       SS = s;
       if (!s.dragging) dragPrev = null;
       state.probIdx = idx;
-      state.auxStep = TABK==='problem'?0:Math.min(3, s.step || 0);
+      state.auxStep = ltgActive(s) ? s.ltgStage || 0 : TABK==='problem'?0:Math.min(3, s.step || 0);
       const p=PROBLEMS[idx],fixedT=p.id==='bas-1'&&state.auxStep<2?initialOf(p):p.defaultT;
-      state.sliderT = TABK==='explore'?s.t:fixedT;
+      state.sliderT = ltgActive(s) || TABK==='explore' ? s.t : fixedT;
       state.animT = 1;
       CURRECT = layoutRect(b);
       METRIC = '';
@@ -2545,6 +2564,28 @@ window.addEventListener('DOMContentLoaded', function () {
       { id: 'adv', title: '심화 8문항', short: '심화 8', scenes: PROBLEMS.filter(isAdv).map(sceneOf) }
     ];
 
+    const scenes = groups.flatMap(group => group.scenes);
+    const firstProblems = Object.fromEntries(PROBLEMS.map(p => [p.id, JSON.parse(JSON.stringify(p))]));
+    const source = window.APL_TRIG_GEOMETRY_SOURCE = {
+      scenes, variants: TVS,
+      first: id => firstProblems[id],
+      packet: id => TV[id] ? TV[id].first() : firstProblems[id],
+      initial: id => ({ cur: id, t: firstProblems[id].defaultT }),
+      question: id => mathSafe(firstProblems[id].statement),
+      answer: id => firstProblems[id].answer,
+      steps: id => firstProblems[id].steps.map(st => ({ ...st })),
+      inquiry: id => mathSafe(firstProblems[id].aha),
+      model(id, t) {
+        const previous = ltgSourceOnly; ltgSourceOnly = true;
+        try { return currentModel(id, t); } finally { ltgSourceOnly = previous; }
+      },
+      exploration(id, t) {
+        const previous = ltgSourceOnly; ltgSourceOnly = true;
+        try { return exploreSteps(firstProblems[id], { t }); } finally { ltgSourceOnly = previous; }
+      },
+      sineRoots, foldedRoots, partition
+    };
+    const lessons = window.APL_TRIG_GEOMETRY_LESSONS ? window.APL_TRIG_GEOMETRY_LESSONS.install(scenes, source) : {};
     APLab.createLab({
       id: 'alg-trig-geometry',
       stagedReveal: true,
@@ -2563,7 +2604,8 @@ window.addEventListener('DOMContentLoaded', function () {
           onInput: () => {}
         }
       },
-      groups
+      groups,
+      lessons
     });
 
 });
