@@ -12,6 +12,7 @@ import re
 import xml.etree.ElementTree as ET
 
 NS = '{http://www.w3.org/2000/svg}'
+DEFAULT_YAW_DEG = 28
 YAW = math.radians(28.0)
 PITCH = math.radians(20.0)
 POS_TOL = 0.9        # px
@@ -36,10 +37,20 @@ def vunit(a):
 
 
 # the viewer sits at yaw toward +x, in front (-y) and above by pitch: n points from the object to the viewer; the screen axes follow from n
-VIEW = (math.sin(YAW) * math.cos(PITCH), -math.cos(YAW) * math.cos(PITCH), math.sin(PITCH))
-SCREEN_X = (math.cos(YAW), math.sin(YAW), 0.0)
-DEPTH = (-math.sin(YAW), math.cos(YAW), 0.0)   # the horizontal direction into the picture, perpendicular to the screen's horizontal
-SCREEN_Y = vcross(VIEW, SCREEN_X)   # n x e_x = e_y (right-handed screen)
+VIEW = SCREEN_X = DEPTH = SCREEN_Y = None
+
+
+def set_view(yaw_deg):
+    """the projection of the figure being audited: plan.view.yawDeg (28 unless the plan turns the view); audit() calls it first, so one audit never sees another's yaw"""
+    global YAW, VIEW, SCREEN_X, DEPTH, SCREEN_Y
+    YAW = math.radians(float(yaw_deg))
+    VIEW = (math.sin(YAW) * math.cos(PITCH), -math.cos(YAW) * math.cos(PITCH), math.sin(PITCH))
+    SCREEN_X = (math.cos(YAW), math.sin(YAW), 0.0)
+    DEPTH = (-math.sin(YAW), math.cos(YAW), 0.0)   # the horizontal direction into the picture, perpendicular to the screen's horizontal
+    SCREEN_Y = vcross(VIEW, SCREEN_X)   # n x e_x = e_y (right-handed screen)
+
+
+set_view(DEFAULT_YAW_DEG)
 
 
 def project(p):
@@ -811,9 +822,20 @@ def normalize_diameter_dims(plan):
     return {**plan, 'dims': [({**{k: v for k, v in d.items() if k != 'diameter'}, 'radius': d['diameter'], 'diameterDim': True} if isinstance(d, dict) and d.get('diameter') is not None else d) for d in dims]}
 
 
+def plan_yaw(plan):
+    view = plan.get('view')
+    if view is None: return DEFAULT_YAW_DEG
+    yaw = view.get('yawDeg') if isinstance(view, dict) and set(view) == {'yawDeg'} else None
+    if isinstance(yaw, bool) or not isinstance(yaw, int) or abs(yaw) > 60: raise ValueError('SOLID_VIEW_INVALID')
+    return yaw
+
+
 def audit(plan, svg):
     plan = normalize_diameter_dims(plan)
     errors = []
+    try: yaw = plan_yaw(plan)
+    except ValueError as error: return {'status': 'FAIL', 'errors': [str(error)], 'finalSvgSha256': 'sha256:' + hashlib.sha256(svg.encode('utf-8')).hexdigest()}
+    set_view(yaw)
     final_sha = 'sha256:' + hashlib.sha256(svg.encode('utf-8')).hexdigest()
     try: root = ET.fromstring(svg)
     except ET.ParseError: return {'status': 'FAIL', 'errors': ['SOLID_SVG_UNPARSEABLE'], 'finalSvgSha256': final_sha}
@@ -838,6 +860,19 @@ def audit(plan, svg):
     return {'status': 'FAIL' if errors else 'PASS', 'errors': errors[:40], 'finalSvgSha256': final_sha}
 
 
+# the line colours of the five palette names (written here again from the grammar, not read from the producer; tests/test_palette_c1.py ties them to palette.mjs)
+SEGMENT_COLOURS = {'BLUE': '#1f5fa8', 'WARM': '#b85c00', 'GREEN': '#2e7d32', 'ROSE': '#b8325f', 'VIOLET': '#6b46b3'}
+
+
+def check_segment_colour(el, ident, color, errors):
+    """a segment with plan colour C is stroked in C's line colour and says so (data-color); one without keeps the role stroke and carries no data-color"""
+    if color is None:
+        if el.get('data-color') is not None: errors.append('SOLID_SEGMENT_COLOR_NOT_IN_PLAN:' + ident)
+        return
+    if color not in SEGMENT_COLOURS: raise ValueError('SOLID_SEGMENT_COLOR_INVALID')
+    if el.get('data-color') != color or (el.get('stroke') or '').lower() != SEGMENT_COLOURS[color]: errors.append('SOLID_SEGMENT_COLOR_MISMATCH:' + ident)
+
+
 def _stroke_ok(el, expect_dashed, errors, ident):
     if _dashed(el) != expect_dashed: errors.append('SOLID_EDGE_VISIBILITY_MISMATCH:' + ident)
     vis = el.get('data-vis')
@@ -860,7 +895,7 @@ def audit_solids(plan, ctx):
     specs_by_id = {s_['id']: s_ for s_ in solids_with_ids(plan)}
     counted = set()
     declared = float(root.get('data-scale') or 0)
-    if root.get('data-yaw') != '28' or root.get('data-pitch') != '20': errors.append('SOLID_PROJECTION_NOT_DECLARED_FIXED')
+    if root.get('data-yaw') != str(plan_yaw(plan)) or root.get('data-pitch') != '20': errors.append('SOLID_PROJECTION_NOT_DECLARED_FIXED')
     scale = None
     frames = {}   # solid id -> (Tx, Ty): svg = (Tx + S sx, Ty - S sy) with sx, sy of the solid's own local coordinates
     named = {}
@@ -931,6 +966,7 @@ def audit_solids(plan, ctx):
     # aux segments, highlights, section
     plan_segments = [(norm(s_['from']), norm(s_['to'])) for s_ in plan.get('segments') or []]
     declared_pairs = {join_keys(pair): pair for pair in plan_segments}
+    color_of = {join_keys((norm(s_['from']), norm(s_['to']))): s_.get('color') for s_ in plan.get('segments') or []}
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'segment':
             ident = el.get('data-edge') or ''
@@ -942,6 +978,7 @@ def audit_solids(plan, ctx):
                 if math.hypot(named[name][1][0] - x, named[name][1][1] - y) > POS_TOL: errors.append('SOLID_SEGMENT_ENDPOINT_OFF:' + ident)
             sid = named[a][0]
             style = el.get('data-style')
+            check_segment_colour(el, ident, color_of.get(ident), errors)
             if style == 'AUTO':
                 solid = next(s for s in solids if s['id'] == sid)
                 planes = {i: _plane_of(solid, f) for i, f in enumerate(solid['faces'])}
@@ -961,7 +998,7 @@ def audit_solids(plan, ctx):
         if entry.get('polygon') is None: continue
         key = join_keys([norm(n) for n in entry['polygon']])
         el = drawn.get(key)
-        if el is not None and (el.get('data-fill') or 'LIGHT') != (entry.get('fill') or 'LIGHT'): errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + key)
+        if el is not None and (el.get('data-fill') or 'LIGHT') != hl_fill(entry): errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + key)
     for h in highlights:
         el = drawn.get(join_keys(h))
         if el is None: continue
@@ -1974,6 +2011,12 @@ def face_names(solid):
     return (['bottom'] if solid['kind'] == 'PYRAMID' else ['bottom', 'top']) + ['side%d' % i for i in range(n)]
 
 
+def hl_fill(entry):
+    """the tint a solid highlight names: LIGHT unless written, BLUE being the palette name of LIGHT"""
+    fill = entry.get('fill') or 'LIGHT'
+    return 'LIGHT' if fill == 'BLUE' else fill
+
+
 def check_face_highlights(highlights, solids, frames, scale, root, errors):
     """a highlight written as {face: "side2"} shades exactly the drawn polygon of that face of that polyhedron, in the tint the plan names"""
     polys = [x for x in solids if x['cat'] == 'POLY']
@@ -1982,8 +2025,8 @@ def check_face_highlights(highlights, solids, frames, scale, root, errors):
         if h.get('face') is None: continue
         owner = next((x for x in polys if x['id'] == h.get('solid')), None) if h.get('solid') is not None else (polys[0] if len(polys) == 1 else None)
         if owner is None or owner.get('cut'): raise ValueError('SOLID_HIGHLIGHT_INVALID')
-        if (h.get('fill') or 'LIGHT') not in HIGHLIGHT_FILLS: raise ValueError('SOLID_HIGHLIGHT_FILL_INVALID')
-        want[(owner['id'], h['face'])] = h.get('fill') or 'LIGHT'
+        if hl_fill(h) not in HIGHLIGHT_FILLS: raise ValueError('SOLID_HIGHLIGHT_FILL_INVALID')
+        want[(owner['id'], h['face'])] = hl_fill(h)
     drawn = {}
     for el in root.iter(NS + 'polygon'):
         if el.get('data-role') == 'highlight-face' and el.get('data-face') is not None:

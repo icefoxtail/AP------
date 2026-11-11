@@ -6,6 +6,7 @@ import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {sphereCutModel,arcPoint,SPHERE_PLANES,AXES as CUT_AXES} from './sphere-parts.mjs';
+import {PALETTE,isPaletteName} from './palette.mjs';
 
 // A solid figure (solid-figure-v1): prisms, pyramids, pyramid frusta, cylinders, cones, cone frusta, spheres and hemispheres drawn in ONE fixed
 // orthographic projection (yaw 28 deg, pitch 20 deg: a textbook "dimetric" look; circles become axis-aligned ellipses), with hidden edges dashed by
@@ -27,22 +28,32 @@ const finite=x=>Number.isFinite(x);
 const pos=(x,code)=>{if(typeof x!=='number'||!finite(x)||!(x>0)||x>1000)bad(code);return x;};
 
 // --- projection -------------------------------------------------------------------------------------------------------------------------------
-export const YAW_DEG=28,PITCH_DEG=20;
-const YAW=YAW_DEG*Math.PI/180,PITCH=PITCH_DEG*Math.PI/180;
-const cY=Math.cos(YAW),sY=Math.sin(YAW),cP=Math.cos(PITCH),sP=Math.sin(PITCH);
+export const PITCH_DEG=20,DEFAULT_YAW_DEG=28;
+// The yaw (the view's azimuth) is 28 degrees unless a plan says plan.view:{yawDeg}: a polyhedron figure may be turned (0 puts a regular prism's front edge square to
+// the viewer, as in many textbooks). The projection constants below belong to the figure being solved or drawn: applyView() sets them from its yaw, solveSolidFigure()
+// calls it for the plan and every later stage (frame, spec, compose) for the model, so one figure never sees another's yaw.
+export let YAW_DEG=DEFAULT_YAW_DEG;
+const PITCH=PITCH_DEG*Math.PI/180;
+const cP=Math.cos(PITCH),sP=Math.sin(PITCH);
+let YAW,cY,sY,VIEW,EX,EY,DEPTH,CUT_FRAME;
+function applyView(deg){
+  YAW_DEG=deg;YAW=deg*Math.PI/180;cY=Math.cos(YAW);sY=Math.sin(YAW);
+  VIEW=[sY*cP,-cY*cP,sP];// unit vector from the object toward the viewer
+  EX=[cY,sY,0];// world direction of the screen's horizontal
+  EY=[-sP*sY,sP*cY,cP];// world direction of the screen's vertical
+  DEPTH=[-sY,cY,0];// the horizontal direction into the picture (away from the viewer), perpendicular to the screen's horizontal
+  CUT_FRAME={view:VIEW,ex:EX,ey:EY};
+}
+applyView(DEFAULT_YAW_DEG);
+const useModelView=model=>applyView(model?.yawDeg??DEFAULT_YAW_DEG);
 /** World (x right, y into the picture, z up) -> screen units (x right, y up). */
 export const project=p=>[p[0]*cY+p[1]*sY,-p[0]*sP*sY+p[1]*sP*cY+p[2]*cP];
-const VIEW=[sY*cP,-cY*cP,sP];// unit vector from the object toward the viewer
 const sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],add=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],mulv=(a,k)=>[a[0]*k,a[1]*k,a[2]*k];
 const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 const len=a=>Math.hypot(a[0],a[1],a[2]);
 const unit=a=>{const l=len(a);return l===0?a:mulv(a,1/l);};
 const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
-const EX=[cY,sY,0];// world direction of the screen's horizontal
-const EY=[-sP*sY,sP*cY,cP];// world direction of the screen's vertical
-const DEPTH=[-sY,cY,0];// the horizontal direction into the picture (away from the viewer), perpendicular to the screen's horizontal
-const CUT_FRAME={view:VIEW,ex:EX,ey:EY};
 
 // --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
 const NAME=/^[A-Z]′?$/u;
@@ -1183,9 +1194,24 @@ const SEGMENT_SIDES=['LEFT','RIGHT','TOP','BOTTOM'],SIDE_DIRECTION={LEFT:[-1,0],
 const HIGHLIGHT_FILLS={LIGHT:['#7fa6e8',0.32],MEDIUM:['#7fa6e8',0.55],WARM:['#f2a65a',0.42],GREEN:['#6fcf97',0.42],ROSE:['#e98aa8',0.42],VIOLET:['#a78bdb',0.42]};
 const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
 const UNIT=/^(cm|mm|m|km)$/;
+// plan.view:{yawDeg}: the azimuth of the view in whole degrees, -60..60 (28 is the default and may be written). A polyhedron figure (solids of PRISM, PYRAMID, FRUSTUM,
+// REGULAR_POLYHEDRON or BIPYRAMID, with dims, highlights, segments, marks, labels) may be turned; nets, round solids and a free space keep the fixed view.
+const VIEW_YAW_MAX=60;
+function planYaw(plan){
+  if(plan.view===undefined)return DEFAULT_YAW_DEG;
+  onlyKeys(plan.view,['yawDeg'],'SOLID_VIEW_INVALID');
+  const yaw=plan.view.yawDeg;
+  if(!Number.isInteger(yaw)||Math.abs(yaw)>VIEW_YAW_MAX)bad('SOLID_VIEW_INVALID');
+  if(plan.net!==undefined||plan.space!==undefined||!Array.isArray(plan.solids)||plan.solids.some(x=>!isPlain(x)||!POLY_KINDS.includes(x.kind)))bad('SOLID_VIEW_UNSUPPORTED');
+  return yaw;
+}
+// a turned view must not show a face edge-on: its edges would lie on top of each other and the depth test could not tell front from back
+function checkViewNotDegenerate(model){
+  for(const solid of model.solids)if(solid.category==='POLY')for(const face of solid.faces)if(Math.abs(dot(faceNormal(face.idx.map(i=>solid.vertices[i].p)),VIEW))<0.02)bad('SOLID_VIEW_DEGENERATE:'+solid.id+'/'+face.id);
+}
 export function solveSolidFigure(plan){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  onlyKeys(plan,['capability','unit','solids','net','space','dims','highlights','segments','section','marks','labels','solidCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','space','dims','highlights','segments','section','marks','labels','solidCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation','sourceQuote','panelWidth','view'],'SOLID_PLAN_INVALID');
   // a figure is a net, or solids and/or a space (free points, planes and lines, G4b)
   if(plan.net!==undefined?plan.solids!==undefined||plan.space!==undefined:plan.solids===undefined&&plan.space===undefined)bad('SOLID_PLAN_INVALID');
   if(plan.labels!==undefined&&plan.net!==undefined)bad('SOLID_LABELS_UNSUPPORTED:NET');
@@ -1193,7 +1219,9 @@ export function solveSolidFigure(plan){
   if(plan.sourceQuote!==undefined&&(typeof plan.sourceQuote!=='string'||!plan.sourceQuote.trim()||plan.sourceQuote.length>200))bad('SOLID_SOURCE_QUOTE_INVALID');
   if(plan.panelWidth!==undefined&&plan.panelWidth!==GRID_PANEL_WIDTH)bad('SOLID_PLAN_INVALID');
   if(plan.unit!==undefined&&(typeof plan.unit!=='string'||!UNIT.test(plan.unit)))bad('SOLID_UNIT_INVALID');
+  applyView(planYaw(plan));// the projection of this figure (28 degrees unless plan.view says otherwise); also resets whatever an earlier figure set
   const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
+  if(plan.view!==undefined)checkViewNotDegenerate(model);
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
   const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.aux?.length??0)+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)+spaceNames(model.space)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
@@ -1418,13 +1446,14 @@ function solveSolids(plan){
   if(plan.segments!==undefined){
     if(!Array.isArray(plan.segments)||plan.segments.length>MAX_SEGMENTS)bad('SOLID_SEGMENTS_INVALID');
     for(const s of plan.segments){
-      onlyKeys(s,['from','to','style','role'],'SOLID_SEGMENTS_INVALID');
+      onlyKeys(s,['from','to','style','role','color'],'SOLID_SEGMENTS_INVALID');
+      if(s.color!==undefined&&!isPaletteName(s.color))bad('SOLID_SEGMENT_COLOR_INVALID');
       const from=vref(s.from),to=vref(s.to);
       if(from===to)bad('SOLID_NAME_UNKNOWN');
       const style=s.style??'SOLID';
       if(!['SOLID','DASHED','AUTO'].includes(style))bad('SOLID_SEGMENTS_INVALID');
       if(s.role!==undefined&&!['ACCENT','REF'].includes(s.role))bad('SOLID_SEGMENTS_INVALID');
-      segments.push({from,to,style,role:s.role??'ACCENT'});
+      segments.push({from,to,style,role:s.role??'ACCENT',...(s.color!==undefined?{color:s.color}:{})});
     }
   }
   const drawnPair=(a,b)=>space?.drawn(a,b)||segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=vertexKeys(solid,i),y=vertexKeys(solid,j);return (x.includes(a)&&y.includes(b))||(x.includes(b)&&y.includes(a));}));
@@ -1444,7 +1473,7 @@ function solveSolids(plan){
     for(const h of plan.highlights){
       onlyKeys(h,['polygon','face','solid','fill'],'SOLID_HIGHLIGHT_INVALID');
       if((h.polygon===undefined)===(h.face===undefined))bad('SOLID_HIGHLIGHT_INVALID');
-      const fill=h.fill??'LIGHT';
+      const fill=h.fill==='BLUE'?'LIGHT':h.fill??'LIGHT';// BLUE is the palette name of the LIGHT tint
       if(typeof fill!=='string'||!Object.hasOwn(HIGHLIGHT_FILLS,fill))bad('SOLID_HIGHLIGHT_FILL_INVALID');
       const tint=fill==='LIGHT'?{}:{fill};
       if(h.face!==undefined){
@@ -2207,6 +2236,7 @@ function figureExtent(model){
 }
 /** Scale, origin and size of the panel; known from the model alone (the Archive policy is measured before anything is composed). */
 export function figureFrame(model){
+  useModelView(model);
   const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
   const grid=model.panelWidth!==undefined,W=grid?model.panelWidth:WIDTH,MX=grid?GRID_MARGIN_X:MARGIN_X;
   // an outside height dimension (dims[].side) takes room beside the solid for its line and its label
@@ -2351,7 +2381,7 @@ function spec3d(plan,model,ctx){
   }
   for(const [k,s] of model.segments.entries()){
     const a=pt(project(named.get(s.from))),b=pt(project(named.get(s.to)));
-    line(`segment-${joinKeys([s.from,s.to])}`,'segment',a,b,{edge:joinKeys([s.from,s.to]),vis:s.style==='AUTO'?(s.hidden?'hidden':'solid'):s.style==='DASHED'?'hidden':'solid',accent:s.role,style:s.style});
+    line(`segment-${joinKeys([s.from,s.to])}`,'segment',a,b,{edge:joinKeys([s.from,s.to]),vis:s.style==='AUTO'?(s.hidden?'hidden':'solid'):s.style==='DASHED'?'hidden':'solid',accent:s.role,style:s.style,...(s.color!==undefined?{color:s.color}:{})});
     void k;
   }
   // helper points of a polyhedron (solids[].points): a small dot on each, so a point inside a face or on an edge is seen
@@ -3310,7 +3340,7 @@ function renderPrims(spec,model){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
       const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)||(p.role==='space-segment'&&p.accent==='ACCENT')?2.4:p.role==='silhouette'?1.7:1.6;
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal'||p.role==='space-segment')&&p.accent?`data-accent="${p.accent}"`:'',p.lineId?`data-line="${p.lineId}"`:'',p.space?'data-space="1"':''].filter(Boolean).join(' ');
-      body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
+      body+=`<g data-layer="40"><line ${attrs}${p.color!==undefined?` data-color="${p.color}"`:''} stroke="${p.color!==undefined?PALETTE[p.color].line:p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){
       const A=[p.cx+p.rx*Math.cos(p.u0),p.cy-p.ry*Math.sin(p.u0)].map(r6),B=[p.cx+p.rx*Math.cos(p.u1),p.cy-p.ry*Math.sin(p.u1)].map(r6);

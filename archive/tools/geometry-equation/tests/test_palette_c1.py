@@ -51,6 +51,8 @@ class PaletteTests(unittest.TestCase):
         worker=(PRODUCTION/'plane-marks-observer-worker.py').read_text(encoding='utf-8')
         self.assertEqual(eval(re.search(r"^PALETTE_LINES=(\{.*\})",worker,re.M).group(1)),{name:row['line'] for name,row in PALETTE.items()})
         self.assertIn('COLORED_SEGMENT_WIDTH=%s'%COLORED_SEGMENT_WIDTH,worker)
+        import solid_figure_observer as solid_observer   # the solid figures' coloured segments (strokes) are the palette's line colours
+        self.assertEqual(solid_observer.SEGMENT_COLOURS,{name:row['line'] for name,row in PALETTE.items()})
         graph=(PRODUCTION/'graph_observer.py').read_text(encoding='utf-8')
         self.assertEqual(eval(re.search(r"^GRAPH_REGION_OPACITY=(\{.*\})",graph,re.M).group(1)),{name:row['opacity'] for name,row in PALETTE.items()})
         self.assertEqual({name:color for name,color in eval(re.search(r"^GRAPH_REGION_FILLS=(\{.*\})",graph,re.M).group(1)).items() if name in PALETTE},{name:row['fill'] for name,row in PALETTE.items()})
