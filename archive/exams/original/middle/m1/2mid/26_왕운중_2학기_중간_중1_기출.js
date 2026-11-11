@@ -881,7 +881,7 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v4.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v5.svg",
     "solutionImageAlt": "해설 그림: 두 장의 그림. 위쪽 그림은 평행한 두 직선 l, m 사이에서 엇각으로 같은 ∠CAO와 ∠DBO를 파란 호로, ∠ACO와 ∠BDO를 주황 호로 표시하고 삼각형 AOC와 BOD를 칠한 문제 그림이다. 아래쪽 그림은 삼각형 AOC와 BOD를 떼어 같은 방향으로 나란히 놓고 같은 색의 호로 같은 각을 표시한 그림이다.",
     "solutionImageCaption": "l∥m이므로 엇각이 같아 ∠CAO=∠DBO, ∠ACO=∠BDO이다. 여기에 두 각 사이의 변 AC=BD가 주어지면 한 변과 그 양 끝각이 각각 같으므로 △AOC≡△BOD(ASA)이다. 정답은 ④이다.",
     "solutionImageSize": "full"
@@ -1682,7 +1682,7 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v4.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v5.svg",
     "solutionImageAlt": "해설 그림: 두 패널. 위 패널은 정삼각형 ABC에서 BD=CE인 점 D, E와 선분 AD, BE의 교점 P를 그리고, 삼각형 ABD와 BCE를 회색으로 칠해 AB=BC, BD=CE, AD=BE를 눈금으로, 같은 각 60°와 α를 같은 색 호로, ∠APB=120°를 표시했다. 아래 패널은 삼각형 ABD와 BCE를 떼어 같은 방향으로 나란히 놓고 대응하는 변과 각을 같은 색과 표시로 보여 준다.",
     "solutionImageCaption": "AB=BC, ∠ABD=∠BCE=60°, BD=CE이므로 △ABD≡△BCE(SAS)이다. ∠BAD=∠CBE=α라 하면 ∠ABE=60°-α이므로 ∠APB=180°-α-(60°-α)=120°이다. B, P, E가 한 직선 위이므로 ∠APE=180°-120°=60°이다. 정답은 60°이다.",
     "solutionImageSize": "full"
