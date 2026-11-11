@@ -92,6 +92,7 @@
     id: 'b1-1', title: '교점·교선의 개수', short: '교점·교선 개수', kind: 'cartesian', orbit,
     box: [-2.0, -3.2, 2.0, 2.8],
     question: '다면체에서 교점은 어디이고, 교선은 어디일까요?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     init: { p1n: 5, p1k: 0, p1e: 0, plYaw: -35, plPit: 30 },
     controls: ['p1n', 'plYaw'],
     presets: (s) => kindChips('p1k', '입체', 'sky'),
@@ -193,6 +194,7 @@
     id: 'b1-2', title: '교선·교점이 생기는 때', short: '교선이 생기는 때', kind: 'cartesian', orbit,
     box: [-5.2, -3.9, 5.2, 4.0],
     question: '두 면이 만나면 무엇이 생기고, 언제 만나지 않을까요?',
+    lessonQuestion: (_M, s) => s.plLessonGoal === 'line-plane' ? '직선 m과 평면 P가 한 점에서 만날 때, 그 점을 무엇이라고 할까요?' : s.plLessonGoal === 'parallel' ? '서로 다른 두 평면 P, Q가 평행할 때 교선이 생길까요?' : '서로 다른 두 평면 P, Q가 만나서 생기는 선을 무엇이라고 할까요?',
     init: { p2t: 60, p2x: 0, p2par: 0, p2m: 0, plYaw: -30, plPit: 24 },
     controls: ['p2t', 'p2x', 'plYaw'],
     presets: () => [
@@ -238,7 +240,7 @@
           const a = pr({ x: M.xHit, y: 0, z: -2 }), c = pr({ x: M.xHit, y: 0, z: 2 });
           b.seg(a, c, { color: 'green', width: st === 2 ? 8 : 6, glow: true });
           const front = a.y < c.y ? a : c;
-          T(b, front, '교선', { dx: 0, dy: 22, color: 'green', size: 18 });
+          if (ready(s, C, 'plShowAnswer')) T(b, front, '교선', { dx: 0, dy: 22, color: 'green', size: 18 });
         }
       } else {
         const a = dqPt(-TMAX - 0.4, 0), c = dqPt(TMAX + 0.4, 0);
@@ -251,11 +253,11 @@
         if (M.has) {
           const q = pr({ x: M.xHit, y: 0, z: 0 });
           b.point(q, { color: 'green', r: st === 2 ? 9 : 7.5 });
-          T(b, q, '교점', { dy: 24, color: 'green', size: 18 });
+          if (ready(s, C, 'plShowAnswer')) T(b, q, '교점', { dy: 24, color: 'green', size: 18 });
         }
       }
       const y0 = -3.55;
-      if (!C.hide) {
+      if (!C.hide && ready(s, C, 'plShowAnswer')) {
         const msg = M.mode === 0 ? (M.has ? '면과 면이 만나서 생긴 선 = 교선' : '평행해서 만나지 않아요 → 교선 없음') : (M.has ? '선과 면이 만나서 생긴 점 = 교점' : '평행해서 만나지 않아요 → 교점 없음');
         T(b, { x: 0, y: y0 }, msg, { color: M.has ? 'green' : 'rose', size: 17 });
       }
@@ -269,6 +271,7 @@
     id: 'b1-3', title: '두 입체 비교', short: '두 입체 비교', kind: 'cartesian', orbit,
     box: (b) => (b.W < 640 ? [-3.4, -3.8, 5.0, 3.8] : [-6.6, -3.2, 6.6, 3.0]),
     question: '교점의 수가 같은 입체는 무엇이고, 교선의 수가 같은 입체는 무엇일까요?',
+    lessonQuestion: (_M, _s, Q) => Q.stem,
     init: { p3a: 4, p3b: 6, p3ka: 0, p3kb: 1, plYaw: -35, plPit: 30 },
     controls: ['p3a', 'p3b', 'plYaw'],
     presets: () => [...kindChips('p3ka', '왼쪽 입체', 'amber'), ...kindChips('p3kb', '오른쪽 입체', 'rose')],
@@ -288,13 +291,22 @@
     rule: () => '각기둥·각뿔대: 교점 2n, 교선 3n / 각뿔: 교점 n+1, 교선 2n',
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>각기둥과 각뿔대는 같은 n이면 교점·교선의 수가 같습니다.</li><li>n이 다른 각뿔과 각기둥도 교점(또는 교선) 수가 같을 수 있습니다. 직접 세어 확인하세요.</li></ul>',
     draw: (b, s, M, C) => {
-      const cam = camOf(s), st = C.step, tall = b.W < 640;
+      const cam = camOf(s), st = C.step, tall = b.W < 640, single = C.hide || (C.lesson && s.plLessonGoal === 'sum');
       const L = build(M.ka, M.na, 1.35, 2.0), R = build(M.kb, M.nb, 1.35, 2.0);
       // 넓은 화면: 입체 둘을 가로로 나란히 / 좁은 화면: 위아래로 놓고 값은 오른쪽에
-      const oa = C.hide ? (tall ? { x: -1.2, y: 0 } : { x: 0, y: 0.1 }) : tall ? { x: -1.6, y: 1.95 } : { x: -3.3, y: 0.1 };
+      const oa = single ? (tall ? { x: -1.2, y: 0 } : { x: 0, y: 0.1 }) : tall ? { x: -1.6, y: 1.95 } : { x: -3.3, y: 0.1 };
       const ob = tall ? { x: -1.6, y: -1.95 } : { x: 3.3, y: 0.1 };
       drawSolid(b, L, cam, { off: oa, verts: true, edgeW: 3.2, edgeColor: () => 'amber' });
       const label = (o, nm, A, col, show) => {
+        if (C.lesson) {
+          const x = tall ? o.x + 2 : o.x, align = tall ? 'left' : 'center';
+          T(b, { x, y: o.y + (tall ? 0.75 : 2.25) }, nm, { color: col, size: 18, align });
+          const sum = s.plLessonGoal === 'sum', vertices = sum || s.plLessonGoal === 'vertices';
+          const first = sum ? ready(s, C, 'plFirstReady') : show, second = sum ? ready(s, C, 'plSecondReady') : show;
+          if (vertices) T(b, { x, y: o.y - (tall ? 0 : 2.3) }, first ? `교점 ${A.a}개` : '교점 ?', { color: col, size: 17, align });
+          if (sum || !vertices) T(b, { x, y: o.y - (tall ? (sum ? 0.55 : 0) : (sum ? 2.85 : 2.3)) }, second ? `교선 ${A.b}개` : '교선 ?', { color: col, size: 17, align });
+          return;
+        }
         if (tall) {
           const x = o.x + 2.0;
           T(b, { x, y: o.y + 0.75 }, nm, { color: col, size: 18, align: 'left' });
@@ -304,6 +316,18 @@
           if (show) { T(b, { x: o.x, y: o.y - 2.3 }, `교점 ${A.a}개`, { color: col, size: 17 }); T(b, { x: o.x, y: o.y - 2.85 }, `교선 ${A.b}개`, { color: col, size: 17 }); }
         }
       };
+      if (C.lesson) {
+        label(oa, M.an, M.A, 'amber', ready(s, C, 'plFirstReady'));
+        if (!single) {
+          drawSolid(b, R, cam, { off: ob, verts: true, edgeW: 3.2, edgeColor: () => 'rose' });
+          label(ob, ready(s, C, 'plShowAnswer') ? M.bn : '비교할 입체', M.B, 'rose', ready(s, C, 'plSecondReady'));
+        }
+        if (ready(s, C, 'plShowAnswer')) {
+          const message = single ? `교점 + 교선 = ${M.A.a + M.A.b}개` : s.plLessonGoal === 'vertices' ? (M.sameA ? '교점 수 같다' : '교점 수 다르다') : (M.sameB ? '교선 수 같다' : '교선 수 다르다');
+          T(b, single ? { x: 0, y: -3.45 } : tall ? { x: 2.6, y: 0 } : { x: 0, y: -2.3 }, message, { color: 'green', size: 16 });
+        }
+        return;
+      }
       if (!C.hide) {
         drawSolid(b, R, cam, { off: ob, verts: true, edgeW: 3.2, edgeColor: () => 'rose' });
         label(oa, M.an, M.A, 'amber', st >= 1);
