@@ -124,6 +124,16 @@
     drawCondition(b, s, Q.sourceChoices[index]);
     lessonCaption(b, s.cnShowAnswer ? `정답은 ${G.NUM[Q.choices.findIndex(q => q.ok)]}` : `보기 ${G.NUM[index]}의 주어진 조건을 확인해요`, s.cnShowAnswer);
   }
+  function drawFixedPair(b, s, d) {
+    const Tr = d.kind === 'sas' ? triSAS(d.b, d.c, d.A) : triASA(d.c, d.A, d.B), X0 = bboxOf(Tr).x1 - bboxOf(Tr).x0 + 4, t = clamp(s.cnBT || 0, 0, 1);
+    const image = G.pair.imageAt(Tr, 'rot', t, X0), bb = G.pair.pairBox(Tr, 'rot', X0), sides = { c: { t: d.c } }, ticks = { c: 1 }, angs = { A: { t: dg(d.A), rings: 1, c: 'sky' } };
+    if (d.kind === 'sas') { sides.b = { t: d.b }; ticks.b = 2; }
+    else { angs.B = { t: dg(d.B), rings: 2, c: 'green' }; if (s.cnBAngle) angs.C = { t: dg(180 - d.A - d.B), rings: 3, c: 'rose' }; }
+    fit(b, bb, { t: 48, b: 72, l: 52, r: 52 });
+    drawTri(b, Tr, { fill: 'sky', fa: .08, names: ['A', 'B', 'C'], sides, ticks, angs });
+    drawTri(b, image, { fill: 'green', fa: .07, names: t >= .999 ? [] : ['D', 'E', 'F'], sides: t >= .999 ? {} : sides, ticks, angs: t >= .999 ? {} : angs, color: t >= .999 ? 'green' : 'ink', dash: t >= .999 ? [8, 5] : undefined });
+    lessonCaption(b, s.cnShowAnswer ? `${d.kind.toUpperCase()}: 삼각형이 하나로 정해져요` : d.kind === 'sas' ? '주어진 각은 두 변 사이의 끼인각이에요' : '주어진 두 각은 한 변의 양 끝에 있어요', s.cnShowAnswer);
+  }
 
   /* ====================================================================== 1. SSS */
   const sss = {
@@ -243,6 +253,7 @@
   const sas = {
     id: 'c3-2', title: '두 변과 한 각 (SAS)', short: '두 변과 각 (SAS)',
     question: '두 변의 길이와 한 각의 크기가 주어졌을 때, 삼각형은 언제 하나로 정해질까? 각의 위치가 중요할까?',
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? choiceQuestion(M, s, Q) : s.cnMmode === 'non' ? 'AB=7 cm, AC=5 cm, ∠B=40°이면 삼각형이 반드시 하나로 정해질까요?' : 'AB=7 cm, AC=6 cm와 끼인각 ∠A=50°이면 삼각형이 하나로 정해질까요?',
     ctl: (s) => (s.cnMmode === 'non' ? ['cnMb', 'cnMc', 'cnMA', 'cnMp'] : ['cnMb', 'cnMc', 'cnMA']),
     presets: () => [['inc', '끼인각 (두 변 사이의 각)'], ['non', '끼인각이 아닌 각']].map(([id, label], i) => ({ group: i === 0 ? '주어진 각의 위치' : '', label, apply: (s) => { s.cnMmode = id; s.cnMp = 0; s.cnMA = id === 'non' ? 40 : 50; s.cnMb = id === 'non' ? 5 : 6; s.cnMc = 7; }, on: (s) => (s.cnMmode || 'inc') === id })),
     init: (s) => { s.cnMb = 6; s.cnMc = 7; s.cnMA = 50; s.cnMp = 0; s.cnMmode = 'inc'; s.cnPk = { k: 0 }; },
@@ -250,6 +261,12 @@
     model: (s) => ({ b: s.cnMb, c: s.cnMc, A: s.cnMA, p: clamp(s.cnMp, 0, 1), mode: s.cnMmode || 'inc', pk: s.cnPk || { k: 0 } }),
     reviewModel: (M) => ({ ...M, ...uniqProb('sas', M.pk.k).solution, mode: 'inc', p: 0 }),
     draw(b, s, M, C) {
+      if (C.lesson) {
+        if (s.cnLessonProblem) drawChoiceLesson(b, s, uniqProb('sas', M.pk.k));
+        else if (M.mode === 'non') { drawCondition(b, s, { kind: 'ssa', adjacent: M.c, opposite: M.b, A: M.A, names: ['B', 'A', 'C'] }); lessonCaption(b, s.cnShowAnswer ? '두 후보: 하나로 정해지지 않아요' : 'AB, AC와 끼인각이 아닌 ∠B를 고정해요', s.cnShowAnswer); }
+        else drawFixedPair(b, s, { kind: 'sas', b: M.b, c: M.c, A: M.A });
+        return;
+      }
       if (C.problem) { drawGeneric(b); return; }
       const mode = C.review ? (C.step === 2 ? 'non' : 'inc') : M.mode;
       if (mode === 'inc') {
@@ -308,12 +325,19 @@
   const asa = {
     id: 'c3-3', title: '한 변과 양 끝각 (ASA)', short: '한 변과 양 끝각 (ASA)',
     question: '한 변의 길이와 그 양 끝에 있는 두 각이 주어지면 삼각형은 하나로 정해질까? 각만으로는 안 될까?',
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? choiceQuestion(M, s, Q) : s.cnBMode === 'aaa' ? '세 각이 55°, 65°, 60°인 삼각형은 모양과 크기가 하나로 정해질까요?' : 'AB=6 cm, ∠A=55°, ∠B=65°이면 삼각형이 하나로 정해질까요?',
     ctl: ['cnAA', 'cnAB', 'cnAc'],
     init: (s) => { s.cnAA = 55; s.cnAB = 65; s.cnAc = 6; s.cnPk = { k: 0 }; },
     reroll: newKey,
     model: (s) => { const A = s.cnAA, B = s.cnAB, c = s.cnAc, Tr = triASA(c, A, B), ref = triASA(6, A, B); return { A, B, c, Cc: 180 - A - B, Tr, ref, same: c === 6, pk: s.cnPk || { k: 0 } }; },
     reviewModel: (M) => { const q = uniqProb('asa', M.pk.k).solution, Tr = triASA(q.c, q.A, q.B); return { ...M, ...q, Tr, ref: Tr, Cc: 180 - q.A - q.B, same: true, reviewing: true }; },
     draw(b, s, M, C) {
+      if (C.lesson) {
+        if (s.cnLessonProblem) drawChoiceLesson(b, s, uniqProb('asa', M.pk.k));
+        else if (s.cnBMode === 'aaa') { drawCondition(b, s, { kind: 'aaa', A: M.A, B: M.B }); lessonCaption(b, s.cnShowAnswer ? '각만으로는 크기가 정해지지 않아요' : '세 각은 고정하고 크기가 다른 예를 비교해요', s.cnShowAnswer); }
+        else drawFixedPair(b, s, { kind: 'asa', c: M.c, A: M.A, B: M.B });
+        return;
+      }
       if (C.problem) { drawGeneric(b); return; }
       const { Tr, ref, A, B, c, Cc } = M, ghost = !C.review || C.step >= 3;
       const bb = unionBox(bboxOf(Tr, 0.2), ghost ? bboxOf(ref, 0.2) : bboxOf(Tr, 0.2));
@@ -356,6 +380,7 @@
   const never = {
     id: 'c3-4', title: '하나로 정해지지 않는 경우', short: '안 정해지는 경우',
     question: '삼각형이 하나로 정해지지 않는 경우에는 어떤 것이 있을까?',
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? choiceQuestion(M, s, Q) : ({ aaa: '세 각이 55°, 65°, 60°로 같으면 삼각형이 하나로 정해질까요?', ssa: 'AB=7 cm, AC=5 cm, ∠B=40°이면 삼각형은 하나로 정해질까요?', long: '길이 3 cm, 4 cm, 8 cm인 세 막대로 삼각형을 만들 수 있을까요?' }[M.mode]),
     ctl: (s) => ((s.cnKmode || 'aaa') === 'aaa' ? ['cnAA', 'cnAB', 'cnKp'] : s.cnKmode === 'ssa' ? ['cnMb', 'cnMc', 'cnMA', 'cnMp'] : ['cnLa', 'cnLb', 'cnLd', 'cnLt']),
     anim: undefined,
     presets: () => BADS.map(([id, label], i) => ({ group: i === 0 ? '경우' : '', label, apply: (s) => { s.cnKmode = id; if (id === 'ssa') { s.cnMb = 5; s.cnMc = 7; s.cnMA = 40; s.cnMp = 0; } if (id === 'aaa') s.cnKp = 1; if (id === 'long') { s.cnLt = 1; } }, on: (s) => (s.cnKmode || 'aaa') === id })),
@@ -364,6 +389,16 @@
     model: (s) => ({ mode: s.cnKmode || 'aaa', A: s.cnAA, B: s.cnAB, p: clamp(s.cnKp, 0, 1), sb: s.cnMb, sc: s.cnMc, sA: s.cnMA, sp: clamp(s.cnMp, 0, 1), la: s.cnLa, lb: s.cnLb, ld: s.cnLd, lt: clamp(s.cnLt, 0, 1), pk: s.cnPk || { k: 0, g: 'sss' } }),
     reviewModel: (M) => ({ ...M, solution: uniqProb(M.pk.g || 'sss', M.pk.k).solution }),
     draw(b, s, M, C) {
+      if (C.lesson) {
+        if (s.cnLessonProblem) drawChoiceLesson(b, s, uniqProb(M.pk.g || 'sss', M.pk.k));
+        else {
+          const d = M.mode === 'aaa' ? { kind: 'aaa', A: M.A, B: M.B } : M.mode === 'ssa' ? { kind: 'ssa', adjacent: M.sc, opposite: M.sb, A: M.sA, names: ['B', 'A', 'C'] } : { kind: 'sssx', a: M.la, b: M.lb, c: M.la + M.lb + M.ld };
+          drawCondition(b, s, d);
+          const result = { aaa: 'AAA는 합동 조건이 아니에요', ssa: 'SSA는 합동 조건이 아니에요', long: '삼각형을 만들 수 없어요' }[M.mode];
+          lessonCaption(b, s.cnShowAnswer ? result : M.mode === 'long' && s.cnBStage >= 1 ? `${M.la}+${M.lb}=${M.la + M.lb}<${M.la + M.lb + M.ld}` : '주어진 조건을 유지하며 비교해요', s.cnShowAnswer);
+        }
+        return;
+      }
       if (C.problem) { drawGeneric(b); return; }
       if (C.review && C.step >= 4) {
         const q = M.solution, def = q.kind === 'sss' ? sss : q.kind === 'sas' ? sas : asa, solved = def.reviewModel({ ...M, pk: M.pk });
@@ -434,9 +469,33 @@
     return '';
   }
   const addable = (g) => [0, 1, 2, 3, 4, 5].filter((i) => !GIVEN[g].includes(i));
+  function extraPair(M, s) {
+    const Tr = [pt(0, 0), pt(6, 0), pt(2.6, -(s.cnLessonProblem ? 3.7 : M.Cy))], base = Tr;
+    let candidate = Tr;
+    if (s.cnBPart === 1) {
+      const a = dist(Tr[1], Tr[2]), c = 6, A = angBetween(Tr[0], Tr[1], Tr[2]) * DEG, current = dist(Tr[0], Tr[2]), r = Math.sqrt(Math.max(0, a * a - c * c * Math.sin(A) ** 2));
+      const other = [c * Math.cos(A) - r, c * Math.cos(A) + r].find(x => x > 0 && Math.abs(x - current) > 1e-6);
+      candidate = [Tr[0], Tr[1], pt(other * Math.cos(A), -other * Math.sin(A))];
+    }
+    return { base, candidate, image: G.pair.imageAt(candidate, 'rot', s.cnBT || 0, 10) };
+  }
+  function drawExtraLesson(b, s, M) {
+    const { base, candidate, image } = extraPair(M, s), part = s.cnBPart, set = new Set([0, 3, ...(part >= 0 ? [part] : [])]), ticks = {}, angs = {}, keys = ['c', 'a', 'b'];
+    if (s.cnBAngle) set.add(4);
+    set.forEach(i => { if (i < 3) ticks[keys[i]] = { n: i + 1, color: i === part ? 'amber' : 'sky' }; else angs['ABC'[i - 3]] = { t: '', rings: i - 2, c: i === part ? 'amber' : 'sky' }; });
+    const bb = G.pair.pairBox(base, 'rot', 10), box = unionBox(bb, G.pair.pairBox(candidate, 'rot', 10)); fit(b, box, { t: 48, b: 72, l: 50, r: 50 });
+    drawTri(b, base, { fill: 'sky', fa: .08, names: ['A', 'B', 'C'], ticks, angs });
+    drawTri(b, image, { fill: 'green', fa: .07, names: s.cnBT >= .999 && part !== 1 ? [] : ['D', 'E', 'F'], ticks, angs, dash: s.cnBT >= .999 ? [8, 5] : undefined });
+    const result = s.cnLessonProblem ? '가능한 추가 조건은 3개예요' : 'CA=FD를 더하면 SAS 합동';
+    let text = part >= 0 ? `추가 조건: ${PART[part]}=${PART2[part]}` : 'AB=DE, ∠A=∠D가 주어졌어요';
+    if (s.cnBStage >= 1 && part >= 0) text = congKind(set) ? `${congKind(set)} 조건이 돼요` : '이 각은 두 변의 끼인각이 아니에요';
+    lessonCaption(b, s.cnShowAnswer ? result : text, s.cnShowAnswer);
+  }
   const extra = {
     id: 'c3-5', title: '합동이 되도록 조건 더하기', short: '추가 조건',
     question: '두 삼각형에서 이미 알려진 조건이 있을 때, 어떤 조건을 더하면 합동이 될까?',
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? Q.html : 'AB=DE, ∠A=∠D일 때 CA=FD를 더하면 두 삼각형은 합동일까요?',
+    lessonModel: (M, s) => ({ ...M, paired: extraPair(M, s) }),
     ctl: [],
     presets: (s) => {
       const g = s.cnGv || 0, add0 = addable(g);
@@ -460,6 +519,7 @@
       ];
     },
     draw(b, s, M, C) {
+      if (C.lesson) { drawExtraLesson(b, s, M); return; }
       if (C.problem || C.review) {
         const shift = b.W < 560 ? 9.8 : 7.6;
         fit(b, { x0: -0.3, x1: shift + 6.7, y0: -4.8, y1: 0.4 }, { t: 40, b: 50 });
@@ -525,5 +585,6 @@
   };
   // 문제 그림은 부분 이름이 둘레 순환(rot)을 따르므로 이름만 그림에 그립니다.
 
+  G.lessonCondition = drawCondition;
   G.register(30, 't3', '③ 삼각형의 결정 조건', '삼각형의 결정 조건', PARAMS, [sss, sas, asa, never, extra]);
 })();
