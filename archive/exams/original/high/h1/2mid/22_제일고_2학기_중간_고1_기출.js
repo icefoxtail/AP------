@@ -34,9 +34,10 @@ window.questionBank = [
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "원래 직선 3x+y−4=0과 점 S(−2,4)에 대하여 점대칭이동한 직선 3x+y+8=0을 나란히 그리고, S가 두 직선에서 같은 거리에 있음을 보여 준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 직선 3x+y−4=0과 같은 기울기의 주황 직선이 있다. 파란 직선 위의 점 P와 주황 직선 위의 점 P′가 점 S를 지나는 가로 점선으로 이어져 있고, 점 S는 선분 PP′의 가운데로 두 쪽에 같은 길이 표시가 있다. 그림 위쪽에 S(−2, 4)가 적혀 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "점 (x, y)를 점 S(−2, 4)에 대하여 대칭이동한 점은 (−4−x, 8−y)이다. 그림에서 직선 위의 점 P(0, 4)를 S에 대하여 대칭이동한 점 P′(−4, 4)가 이동한 직선(주황) 위에 놓이고 S는 PP′의 중점이며, 주황 직선은 파란 직선과 평행하다. 대칭 전의 좌표를 원래 직선의 식에 대입해 정리한다. 정답은 3x+y+8=0이다."
   },
   {
     "id": 2,
@@ -95,13 +96,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{57}{25}$",
     "solution": "원래 점과 대칭점의 연결선은 대칭축과 수직이고, 두 점의 중점은 대칭축 위에 있다.\n\n원래 점은 $(-3,1)$이고 대칭점을 $(a,b)$라 한다.\n\n연결선의 기울기 조건과 중점의 직선 조건을 연립한다.\n\n직선 $x-2y-1=0$의 기울기는 $\\dfrac12$이므로 원래 점과 대칭점을 잇는 직선의 기울기는 $-2$이다. 따라서 $\\dfrac{b-1}{a+3}=-2$에서 $b=-2a-5$이다. 두 점의 중점 $\\left(\\dfrac{a-3}{2},\\dfrac{b+1}{2}\\right)$이 대칭축 위에 있으므로 $\\dfrac{a-3}{2}-2\\cdot\\dfrac{b+1}{2}-1=0$, 즉 $a-2b-7=0$이다. 두 식을 연립하면 $a=-\\dfrac35$, $b=-\\dfrac{19}{5}$이므로 $ab=\\dfrac{57}{25}$이다.\n따라서 구하는 값은 $\\dfrac{57}{25}$이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "대칭축 x−2y−1=0과 점 P(−3,1), 그 대칭점 P′(−3/5,−19/5)를 표시하고, 선분 PP′가 대칭축과 직각으로 만나며 중점이 대칭축 위에 있음을 보여 준다.",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 x−2y−1=0이 있고, 위쪽 왼편의 점 P(−3, 1)과 직선 아래쪽의 점 P′이 점선으로 이어져 있다. 점선은 직선과 점 M에서 직각으로 만나며, M은 선분 PP′의 가운데로 두 쪽에 같은 길이 표시가 있다. 그림 위쪽에 P(−3, 1)이 적혀 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "대칭점을 P′(a, b)라 하면 선분 PP′은 대칭축과 수직이고 중점 M이 대칭축 위에 있다. 수직 조건에서 기울기가 −2이므로 b=−2a−5이고, 중점이 x−2y−1=0 위에 있다는 조건에서 a−2b−7=0이다. 두 식을 연립해 a, b를 구한 뒤 곱한다. 정답은 25분의 57이다."
   },
   {
     "id": 4,
@@ -166,13 +168,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "한 점을 직선에 대칭이동하면 꺾인선 길이의 최솟값을 두 점 사이의 직선거리로 바꿀 수 있다.\n\n점 $B(-7,-1)$을 직선 $y=x$에 대칭이동한 점은 $B'(-1,-7)$이다.\n\n$\\overline{BP}=\\overline{B'P}$를 이용해 $\\overline{AP}+\\overline{BP}$에 삼각부등식을 적용한다.\n\n$\\overline{AP}+\\overline{BP}=\\overline{AP}+\\overline{B'P}\\ge\\overline{AB'}$이다. 선분 $AB'$은 직선 $y=x$와 만나므로 등호가 실제로 성립한다. $\\overline{AB'}=\\sqrt{(4+1)^2+(5+7)^2}=\\sqrt{25+144}=13$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "직선 y=x에 점 B(−7,−1)을 대칭이동한 B′(−1,−7)을 잡고 A(4,5)와 B′을 잇는 선분을 그려, y=x 위의 교점 P(23/7,23/7)에서 AP+BP의 최솟값이 13임을 보여 준다.",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=x와 세 점 A, B, B′, 그리고 직선 위의 점 P가 있다. 점 B를 직선 y=x에 대하여 대칭이동한 점이 B′이며, 선분 BB′은 직선과 직각으로 만나고 두 쪽에 같은 길이 표시가 있다. 파란 선분 AB′이 직선과 만나는 점이 P이고, 점선 BP와 파란 선분 PB′에는 같은 길이 표시가 있다. 그림 위쪽에 A(4, 5), B(−7, −1), B′(−1, −7), P(7분의 23, 7분의 23)이 적혀 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "점 B를 직선 y=x에 대하여 대칭이동한 점 B′(−1, −7)을 잡으면 BP=B′P이므로 AP+BP=AP+B′P이다. 이 합은 A, P, B′이 한 직선 위에 있을 때 가장 작고, 이때 선분 AB′이 직선 y=x와 만나는 점이 P이다. 그러므로 최솟값은 두 점 A, B′ 사이의 거리와 같다. 정답은 13이다."
   },
   {
     "id": 6,
@@ -206,7 +209,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래로 좌표평면 두 개가 있다. 두 그림 모두 x≥0에서는 점 (0, 3)에서 시작하는 직선 조각, x<0에서는 더 가파른 직선 조각이 있고 굵은 가로선 y=5가 그려져 있다. 위쪽은 b=2일 때로 왼쪽 조각이 y축 위의 빈 점 2에서 끝나 점 (0, 3)과 사이에 틈이 있고 가로선과 한 점에서 만난다. 아래쪽은 b=7일 때로 왼쪽 조각이 y축 위의 빈 점 7에서 끝나 가로선과 두 점에서 만난다.",
+    "solutionImageCaption": "예: a=−3, b=2와 b=7로 그린 그림이다. x≥0인 조각의 치역은 [3, ∞)이다. 왼쪽 조각은 x가 작아질 때 −∞로 가야 하므로 1−a>0, 즉 a<1이고 치역은 (−∞, b)이다. b가 3보다 작으면 두 치역 사이에 빈틈이 생기므로 치역이 실수 전체가 되려면 b≥3이어야 하고, 일대일대응이 아니려면 두 치역이 겹쳐야 하므로 b>3이다. 정수 a의 최댓값과 정수 b의 최솟값의 차를 구한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -343,7 +350,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄이 있다. 첫째 줄 p는 −2와 3이 빈 점인 구간과 5가 빈 점이고 오른쪽으로 뻗는 구간이다. 둘째 줄 q는 −2보다 왼쪽에 있는 점 a에서 시작해 오른쪽으로 뻗는 찬 점 반직선이다. 셋째 줄 ~r(b=7로 둔 예)는 5보다 오른쪽의 점 7에서 시작해 오른쪽으로 뻗는 찬 점 반직선이다.",
+    "solutionImageCaption": "예: a=−3, b=7로 그린 그림이다. q가 p의 필요조건이므로 p의 진리집합이 [a, ∞)에 들어가야 하고, ~r가 p의 충분조건이므로 [b, ∞)가 p의 진리집합에 들어가야 한다. p의 진리집합의 가장 왼쪽 끝이 −2이므로 a는 −2 이하이어야 하고, 5는 p에 포함되지 않으므로 b는 5보다 커야 한다. 그 조건에서 정수 a의 최댓값과 정수 b의 최솟값을 정해 더한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -374,9 +385,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$A$의 두 원소가 각각 $B$의 어느 원소와 같을 수 있는지 후보를 모두 비교한다.\n\n$a\\in B$에서 가능한 값은 $a=2,3$이고, $a+2\\in B$에서 가능한 값은 $a=3,4,5$이다.\n\n두 후보 집합의 공통값을 찾고 진부분집합 조건을 확인한다.\n\n$a=3a-4$ 또는 $a=2a-2$에서 $a=2$, $a=2a-3$에서 $a=3$이므로 첫 원소의 후보는 $2,3$이다. 또한 $a+2=3a-4$, $a+2=2a-2$, $a+2=2a-3$에서 각각 $a=3,4,5$이다. 두 원소가 모두 $B$에 속하려면 공통 후보인 $a=3$이어야 한다. 이때 $A=\\{3,5\\}$, $B=\\{5,4,3\\}$이므로 실제로 $A\\subsetneq B$이다.\n그림에서 확인하면, 두 후보 집합의 공통값은 3 하나뿐이다. a=3이면 A={3,5}, B={3,4,5}로 진부분집합 조건도 확인된다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "a∈B의 후보 {2,3}과 a+2∈B의 후보 {3,4,5}의 공통 후보 a=3을 보여 주는 비교 도식",
-    "solutionImageCaption": "A={a,a+2}가 B={3a−4,2a−2,2a−3}의 진부분집합이 되는 후보 교집합",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램에 전체집합 U 안에 겹친 두 원 C, D가 있다. C는 a가 B에 속하도록 하는 a의 값의 집합, D는 a+2가 B에 속하도록 하는 a의 값의 집합이다. C에는 2가, D에는 4와 5가 들어 있고, 두 원이 겹친 부분(색칠)에는 아직 정해지지 않은 값을 뜻하는 물음표가 하나 있다.",
+    "solutionImageCaption": "A의 첫째 원소 a가 B에 속하도록 하는 a의 값의 집합을 C={2, 3}, 둘째 원소 a+2가 B에 속하도록 하는 a의 값의 집합을 D={3, 4, 5}라 하고 나타냈다. 두 조건을 모두 만족하는 값은 겹치는 부분의 하나뿐이며, 이 값에서 A={3, 5}, B={3, 4, 5}로 A가 B의 진부분집합이다. 정답은 3이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -415,7 +426,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원소 1, 2, 3, 4가 있는 집합 X가 세 개 나란히 있고, 두 칸 사이에 f가 적혀 있다. 파란 화살표가 1에서 2, 2에서 3, 3에서 4, 4에서 1로 이어지며, 첫째 X의 1에서 시작해 둘째 X의 2를 거쳐 셋째 X의 3으로 가는 경로는 초록색이다.",
+    "solutionImageCaption": "f는 1→2→3→4→1로 네 원소를 한 바퀴 돌리므로 주기가 4이다. 그림의 초록 화살표는 1에서 f를 두 번 적용하는 경로 1→2→3이다. 2022=4×505+2이므로 f²⁰²²(1)=f²(1)=3이고, 2023=4×505+3이므로 f²⁰²³(2)=f³(2)를 같은 방식으로 구한다. 두 값을 더한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -527,7 +542,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램에 전체집합 U 안에 겹친 두 원 A12, A15가 있고 두 원의 합집합이 모두 색칠되어 있다. A12 쪽에 (16개), A15 쪽에 (13개)가 적혀 있고, A12에만 속하는 부분에 13개, 겹친 부분에 3개, A15에만 속하는 부분에 10개가 적혀 있다.",
+    "solutionImageCaption": "분배법칙으로 A₃∩(A₄∪A₅)=(A₃∩A₄)∪(A₃∩A₅)=A₁₂∪A₁₅이다. 200 이하의 12의 배수는 16개, 15의 배수는 13개이고, 둘의 공통인 60의 배수는 3개이므로 겹친 부분을 한 번만 센다. 정답은 26이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -561,7 +580,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 타원 S 안에 35, 21, 7, 42, 28, 14, 49가 위에서 아래로 있고, 오른쪽 타원 Y 안에 0, 1, 2, 3, 4가 있다. 화살표가 35에서 0, 21에서 1, 7과 42에서 2, 28에서 3, 14와 49에서 4로 이어지며, 35, 21, 28의 화살표는 초록색이다.",
+    "solutionImageCaption": "S의 각 원소를 5로 나눈 나머지에 대응시켰다(초록 화살표는 그 나머지로 가는 원소가 하나뿐인 35, 21, 28, 검은 화살표는 둘씩인 7과 42, 14와 49). 일대일대응이 되려면 나머지 0, 1, 2, 3, 4가 한 번씩 나와야 한다. 나머지 0, 1, 3은 원소가 하나뿐이어서 X에 반드시 들어가고, 나머지 2와 4는 원소가 둘씩이므로 각각 하나를 고른다. 정답은 4개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -587,15 +610,16 @@ window.questionBank = [
     "choices": [],
     "answer": "②",
     "solution": "새 방정식의 두 입력 $y,x+1$을 원래 도형의 좌표로 놓고 좌표변환을 해석한다.\n\n원래 좌표를 $(u,v)$라 하면 $u=y$, $v=x+1$이다.\n\n$(x,y)=(v-1,u)$가 나타내는 축의 교환과 평행이동을 원래 도형에 적용한다.\n\n먼저 $(u,v)$의 두 좌표를 바꾸면 원래의 아래쪽 반원과 윗변은 왼쪽 반원과 오른쪽의 수직선분으로 바뀐다. 이어서 $x=v-1$이므로 이 도형을 왼쪽으로 $1$만큼 평행이동한다. 그 결과 중심이 원점이고 $x\\le0$인 왼쪽 반원과 $x=0$, $-1\\le y\\le1$인 수직선분이 된다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "중심이 원점인 왼쪽 반원(x≤0)과 x=0, −1≤y≤1인 수직선분을 그리고 y=x를 점선으로 표시해, 좌표 교환과 x방향 −1 평행이동의 결과를 보여 준다.",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=x와 점 A(−1, 1), B(1, 1), C(1, −1)이 있다. 파란 도형은 A에서 B까지의 윗변과 A, B를 잇는 아래쪽 반원이고, 주황 도형은 B에서 C까지의 세로 선분과 B, C를 잇는 왼쪽 반원이다. 두 도형은 직선 y=x에 대하여 서로 대칭이며 원점을 지난다. 그림 위쪽에 세 점의 좌표가 적혀 있다.",
     "solutionImageSize": "full",
     "image": "assets/images/22_제일고_2학기_중간_고1_기출/q17.png",
     "imageSize": "tall",
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "파랑 도형은 f(x, y)=0의 도형(아래쪽 반원과 윗변)이고, 주황 도형은 x와 y를 서로 바꾼 f(y, x)=0의 도형으로 직선 y=x에 대하여 대칭이다. f(y, x+1)=0은 여기서 x를 x+1로 바꾼 것이므로 주황 도형을 x축 방향으로 −1만큼 평행이동한 것이다. 정답은 중심이 원점이고 x≤0인 반원과 x=0, −1≤y≤1인 선분을 합친 도형이다."
   },
   {
     "id": 18,
@@ -656,9 +680,9 @@ window.questionBank = [
     "choices": [],
     "answer": "최댓값 $25$, 최솟값 $7$",
     "solution": "교집합의 원소 수는 작은 집합의 크기를 넘을 수 없고, 합집합은 전체 학생 수를 넘을 수 없다.\n\n$n(A)=25$, $n(B)=32$, 전체 학생 수는 $50$이고 $x=n(A\\cap B)$이다.\n\n교집합의 상한과 포함배제 원리에서 얻는 하한을 각각 구하고 실제 달성 가능성도 확인한다.\n\n$x\\le\\min(25,32)=25$이므로 최댓값은 $25$ 이하이다. 한편 $n(A\\cup B)=25+32-x\\le50$이므로 $x\\ge7$이다. $A\\subset B$로 두면 $x=25$가 가능하고, 합집합이 전체 $50$명이 되도록 두면 $x=7$이 가능하다.\n그림에서 확인하면, 최대 배치는 A가 B 안에 들어가 x=25이고, 최소 배치는 합집합 50명을 채워 x=7이 된다.\n따라서 최댓값은 $25$, 최솟값은 $7$이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "50명에서 A=25, B=32일 때 교집합 최대 25와 최소 7을 실제 Venn 배치로 비교",
-    "solutionImageCaption": "두 뮤지컬 관람 인원에서 x≤25와 25+32−x≤50을 확인하는 최대·최소 배치",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 A가 B 안에 들어간 모양으로 바깥 원 B(n(B)=32) 안에 안쪽 원 A(n(A)=25)가 있고 안쪽 원에 색칠된 x, 두 원 바깥 U 안에 18이 적혀 있다. 오른쪽은 두 원 A, B가 겹친 모양으로 A만의 부분에 25−x, 색칠된 겹친 부분에 x, B만의 부분에 32−x가 적혀 있다.",
+    "solutionImageCaption": "전체 학생 50명 중 A를 본 학생 25명, B를 본 학생 32명이고 둘 다 본 학생이 x명이다. A가 B 안에 들어갈 때 x가 가장 커서 x=n(A)이고, A∪B가 전체일 때 x가 가장 작아서 25+32−x=50이다. 정답은 최댓값 25, 최솟값 7이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
