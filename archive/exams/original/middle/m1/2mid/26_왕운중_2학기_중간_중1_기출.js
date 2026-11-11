@@ -388,7 +388,7 @@ window.questionBank = [
       "비례상수"
     ],
     "wide": false,
-    "content": "다음 표에서 $y$가 $x$에 정비례할 때, $a$의 값을 구하면? (3점)",
+    "content": "다음 표에서 $y$가 $x$에 정비례할 때, $a$의 값을 구하면? (3점)\n\n| $x$ | $1$ | $2$ | $3$ | $4$ | $\\cdots$ |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| $y$ | $5$ | $10$ | $a$ | $20$ | $\\cdots$ |",
     "choices": [
       "$15$",
       "$20$",
@@ -433,8 +433,7 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.svg"
+    "itemHoldReasons": []
   },
   {
     "id": 7,
@@ -1204,7 +1203,7 @@ window.questionBank = [
       "자료 정렬"
     ],
     "wide": false,
-    "content": "다음은 자연수인 변량들을 작은 값부터 크기순으로 나열한 것이다. 최빈값이 $x$로 유일할 때, 중앙값은? (단, $x\\ne y$이다.) (4점)",
+    "content": "다음은 자연수인 변량들을 작은 값부터 크기순으로 나열한 것이다. 최빈값이 $x$로 유일할 때, 중앙값은? (단, $x\\ne y$이다.) (4점)<div class='question-note-box' style='text-align:center'>$6\\quad 7\\quad 8\\quad 8\\quad 8\\quad x\\quad y\\quad 10\\quad 10\\quad 10$</div>",
     "choices": [
       "10",
       "9.5",
@@ -1249,8 +1248,7 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.svg"
+    "itemHoldReasons": []
   },
   {
     "id": 18,
@@ -1275,7 +1273,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "다음 표는 어느 중학교 32명의 학생들이 한 달 동안 읽은 책의 수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것을 고르면? (4점)",
+    "content": "다음 표는 어느 중학교 32명의 학생들이 한 달 동안 읽은 책의 수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것을 고르면? (4점)\n\n| 읽은 책의 수(권) | 학생 수(명) |\n| :---: | :---: |\n| $1$ | $8$ |\n| $2$ | $4$ |\n| $3$ | $8$ |\n| $4$ | $10$ |\n| $5$ | $2$ |",
     "choices": [
       "최빈값은 10명이다.",
       "중앙값은 3권이다.",
@@ -1320,8 +1318,7 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q018_visual.svg"
+    "itemHoldReasons": []
   },
   {
     "id": 19,
@@ -1346,7 +1343,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "[19.~20.] 다음은 어느 중학교 학생 20명의 일주일 동안의 스마트폰 사용 시간을 조사하여 줄기와 잎 그림과 도수분포표로 나타낸 것이다. 잎은 크기 순으로 나열되어 있고, 중앙값이 16시간일 때, 다음 물음에 답하시오.<br>a+b+A+B의 값은? (5점)",
+    "content": "[19.~20.] 다음은 어느 중학교 학생 20명의 일주일 동안의 스마트폰 사용 시간을 조사하여 줄기와 잎 그림과 도수분포표로 나타낸 것이다. 잎은 크기 순으로 나열되어 있고, 중앙값이 16시간일 때, 다음 물음에 답하시오.\n\n<table><thead><tr><th>사용 시간(시간)</th><th>학생 수(명)</th></tr></thead><tbody><tr><td>$0^{\\text{이상}} \\sim 5^{\\text{미만}}$</td><td></td></tr><tr><td>$5 \\sim 10$</td><td>$A$</td></tr><tr><td colspan=\"2\">(중략)</td></tr><tr><td>$20 \\sim 25$</td><td>$B$</td></tr><tr><td>$25 \\sim 30$</td><td></td></tr><tr><td>$30 \\sim 35$</td><td></td></tr><tr><td>합계</td><td>$20$</td></tr></tbody></table>\n\n$a+b+A+B$의 값은? (5점)",
     "choices": [
       "16",
       "24",
