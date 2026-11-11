@@ -10,7 +10,7 @@
    - #…&play=1 (s=장면id 와 함께): 장면을 연 뒤 바로 재생. 그 밖에는 절대 자동 재생하지 않습니다(CI 가 막음).
    - 재생 중에 그림을 만지면 멈춥니다. prefers-reduced-motion 이면 자동 재생 대신 자막을 한 칸씩 넘깁니다.
    [쓰는 법] 실험실 페이지에서 kit/apl-video-core.js · apl-player.js · apl-toc.js · apl-video.css 를 apl-shell.js 다음에 불러오고,
-   createLab({ ..., videos: { 장면id: 대본 }, lessons: { 장면id: 해설 또는 [해설, 해설(최대 3)] } }) 또는 장면에 video: 대본 / lesson: 해설 을 줍니다(해설이 영상보다 우선).
+   createLab({ ..., videos: { 장면id: 대본 }, lessons: { 장면id: 해설 또는 [해설, 해설(최대 4)] } }) 또는 장면에 video: 대본 / lesson: 해설 을 줍니다(해설이 영상보다 우선).
    한 장면에 해설이 여럿이면(예: 겉넓이 / 부피) 진입 화면에 해설마다 ▶ 단추가 나란히 있고 단추 하나가 그 해설을 바로 재생합니다. 끝 카드의 「다음 ▶」는 같은 장면의 다음 해설 → 다음 장면 순서입니다. 자세한 형식: docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md
    ========================================================================== */
 (function () {
@@ -22,6 +22,8 @@
   const REDUCED = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
   const NARROW = window.matchMedia ? window.matchMedia('(max-width: 859px)') : { matches: false };
   const TITLE_BIG_MS = 2000; // 제목이 크게 보이는 시간
+  const DEFAULT_PLAYBACK_RATE = 1.5; // 사용자 기본 재생 속도: 기존 대비 1.5배
+  const SLOW_PLAYBACK_RATE = 0.5; // 기존 '느리게' 동작 보존
   const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
 
   /** 주소의 ?이름=값 또는 #이름=값 */
@@ -47,7 +49,7 @@
       this.cs = null;
       this.base = null;
       this.t = 0;
-      this.rate = 1;
+      this.rate = DEFAULT_PLAYBACK_RATE;
       this.stepMode = false; // prefers-reduced-motion: 자동 재생 대신 자막 한 칸씩
       this._raf = 0;
       this._last = 0;
@@ -59,6 +61,7 @@
       this._ch = -1;
       this.lessonIndex = 0; // 지금 재생 중인(또는 마지막으로 재생한) 해설이 그 장면의 몇 번째인지
       this._entrySig = '';
+      this._pinsSig = '';
       this.manual = urlParam('manual') === '1';
       this.explored = this.manual || this._readExplored();
       this._build();
@@ -66,7 +69,7 @@
       this._bind();
       this._syncEntry(true);
       // #…&play=1 : 해설 링크로 열면 장면을 연 뒤 바로 재생(그 밖에는 자동 재생하지 않음)
-      // play=1 은 첫 해설, play=2·3 은 그 번째 해설, play=<label>(예: play=부피)은 그 이름의 해설
+      // play=1 은 첫 해설, play=2·3·4 는 그 번째 해설, play=<label>(예: play=부피)은 그 이름의 해설
       const pv = urlParam('play');
       if (pv && !lab.teach) {
         requestAnimationFrame(() => setTimeout(() => {
@@ -147,7 +150,7 @@
       if (!list.length) return -1;
       const byLabel = list.findIndex((c) => c.label && c.label === v);
       if (byLabel >= 0) return byLabel;
-      return /^[1-3]$/.test(v) && +v <= list.length ? +v - 1 : -1;
+      return /^[1-9]\d*$/.test(v) && +v <= list.length ? +v - 1 : -1;
     }
     /** i 다음으로 해설·영상이 있는 장면(없으면 -1). */
     nextIndex(i) {
@@ -236,6 +239,7 @@
     /* ------------------------------ 화면 ------------------------------ */
     _build() {
       const ui = (this.ui = {});
+      ui.pins = h('div', { class: 'apl-vpins', hidden: true, role: 'list', 'aria-label': '이어 보는 풀이 수식' });
       ui.cap = h('div', { class: 'apl-vcap', 'aria-live': 'polite' });
       ui.range = h('input', { type: 'range', class: 'apl-range apl-vrange', min: '0', max: '1', step: '0.01', value: '0', 'aria-label': '영상 진행 위치', style: { '--c': 'var(--m-sky)' } });
       ui.ticks = h('span', { class: 'apl-vticks', 'aria-hidden': 'true' });
@@ -246,7 +250,7 @@
       ui.prev = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '이전 자막', title: '이전 자막 (←)', html: icon('prev') + '<span class="lbl">이전</span>', onclick: () => this.skip(-1) });
       ui.next = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다음 자막', title: '다음 자막 (→)', html: '<span class="lbl">다음</span>' + icon('next'), onclick: () => this.skip(1) });
       ui.replay = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다시 보기', title: '처음부터 다시 보기 (R)', html: icon('reset') + '<span class="lbl">다시 보기</span>', onclick: () => this.replay() });
-      ui.slow = h('button', { class: 'apl-btn apl-vbtn', 'aria-pressed': 'false', title: '천천히 보기 (0.5배)', html: '<span>느리게</span>', onclick: () => this.setRate(this.rate === 1 ? 0.5 : 1) });
+      ui.slow = h('button', { class: 'apl-btn apl-vbtn', 'aria-pressed': 'false', title: '천천히 보기 (0.5배)', html: '<span>느리게</span>', onclick: () => this.setRate(this.rate === DEFAULT_PLAYBACK_RATE ? SLOW_PLAYBACK_RATE : DEFAULT_PLAYBACK_RATE) });
       ui.close = h('button', { class: 'apl-btn apl-vbtn ghost', 'aria-label': '영상 닫고 직접 해 보기', title: '닫기 (Esc)', html: icon('x') + '<span class="lbl">탐구로</span>', onclick: () => this.close() });
       ui.live = h('div', { class: 'apl-vctl' }, ui.play, ui.prev, ui.next, ui.replay, ui.slow, h('span', { class: 'sp' }), ui.close);
       ui.prog = h('div', { class: 'apl-vprog' }, ui.rangeWrap, ui.time, ui.mini);
@@ -266,7 +270,7 @@
       ui.tBig = h('div', { class: 'apl-vtbig', 'aria-hidden': 'true' });
       this.lab.ui.stage.insertBefore(ui.tbar, this.lab.ui.canvasWrap);
       ui.tbar.append(ui.tBig);
-      ui.bar = h('div', { class: 'apl-vbar', hidden: true, role: 'region', 'aria-label': '영상 해설' }, ui.cap, ui.prog, ui.live, ui.end);
+      ui.bar = h('div', { class: 'apl-vbar', hidden: true, role: 'region', 'aria-label': '영상 해설' }, ui.pins, ui.cap, ui.prog, ui.live, ui.end);
       this.lab.ui.stage.append(ui.bar);
       // 해설 우선 진입 ▶ (휴대폰: 화면 아래 고정 · 그 밖: 패널 맨 위)
       ui.entryBtns = h('div', { class: 'apl-lbtns' });
@@ -406,8 +410,18 @@
     _layout(on) {
       document.body.classList.toggle('apl-vid', !!on);
       if (on) { try { window.scrollTo(0, 0); } catch (e) { /* 무시 */ } }
+      this._resizeBoardSoon();
+    }
+    /** 수식 줄이나 배치가 바뀌면 남은 그림 높이와 펜 레이어도 다음 프레임에 함께 맞춥니다. */
+    _resizeBoardSoon() {
+      if (this._resizeRaf) return;
       const lab = this.lab;
-      requestAnimationFrame(() => { if (lab.board.resize()) lab.invalidate(true); lab._sizeInk && lab._sizeInk(); lab.invalidate(); });
+      this._resizeRaf = requestAnimationFrame(() => {
+        this._resizeRaf = 0;
+        if (lab.board.resize()) lab.invalidate(true);
+        if (lab._sizeInk) lab._sizeInk();
+        lab.invalidate();
+      });
     }
 
     /* ------------------------------ 재생 ------------------------------ */
@@ -521,9 +535,10 @@
     _stepEnd(k) { const s = this.cs.says[k]; return s ? Math.max(s.at, s.end - 0.001) : this.cs.length; }
     setRate(r) {
       this.rate = r;
-      this.ui.slow.setAttribute('aria-pressed', String(r !== 1));
-      this.ui.slow.classList.toggle('on', r !== 1);
-      this.ui.slow.innerHTML = r === 1 ? '<span>느리게</span>' : '<span>0.5배</span>';
+      const slowed = r !== DEFAULT_PLAYBACK_RATE;
+      this.ui.slow.setAttribute('aria-pressed', String(slowed));
+      this.ui.slow.classList.toggle('on', slowed);
+      this.ui.slow.innerHTML = slowed ? '<span>0.5배</span>' : '<span>느리게</span>';
     }
     replay() {
       if (this.index < 0) return;
@@ -545,6 +560,7 @@
     _syncUi(st) {
       const cs = this.cs, ui = this.ui;
       if (!cs) return;
+      this._syncPins();
       st = st || core.stateAt(cs, this.t, this.base);
       if (st.say !== this._capIndex) {
         this._capIndex = st.say;
@@ -568,6 +584,21 @@
         ui.play.innerHTML = icon(playing ? 'pause' : 'play') + `<span>${playing ? '멈춤' : '재생'}</span>`;
         ui.play.setAttribute('aria-label', playing ? '멈춤' : '재생');
       }
+    }
+    /** 현재 시각에서 다시 계산하므로 되감기·다른 해설에 미래 수식이 남지 않습니다. */
+    _syncPins() {
+      const pins = this.cs && (this.state === 'playing' || this.state === 'paused') && core.pinnedAt
+        ? core.pinnedAt(this.cs, this.t) : [];
+      const sig = pins.length ? JSON.stringify(pins.map(p => [p.at, p.tex])) : '';
+      if (sig === this._pinsSig) return;
+      this._pinsSig = sig;
+      this.ui.pins.replaceChildren(...pins.map((p, index) => h('div', {
+        class: 'apl-vpin' + (index === pins.length - 1 ? ' latest' : ''), role: 'listitem',
+        tabindex: '0', html: richHtml('$' + p.tex + '$')
+      })));
+      this.ui.pins.hidden = !pins.length;
+      this.ui.bar.classList.toggle('has-pins', !!pins.length);
+      this._resizeBoardSoon();
     }
     _announce() { /* 자막은 aria-live 영역에 이미 있음 */ }
 
@@ -614,6 +645,7 @@
       this.t = this.cs.length;
       this.apply();
       this.state = 'ended';
+      this._syncPins(); // 끝 카드는 기존 요약·정답 영역만 사용합니다.
       this._hideTitle(); // 끝 카드가 나오면 제목은 숨김(머리글 줄은 영상 화면이 풀리며 함께 사라짐)
       const lab = this.lab, cs = this.cs;
       // 해설은 휴대폰·태블릿 세로에서 영상 화면(그림 크게 + 아래 끝 카드)을 그대로 두고, 영상(쇼츠)과 넓은 화면은 예전처럼 탐구 패널 맨 위에 끝 카드를 둡니다.
@@ -655,6 +687,7 @@
       this._release();
       this.state = 'idle';
       this.cs = null;
+      this._syncPins();
       this._hideTitle();
       this.ui.bar.hidden = true;
       this.ui.end.hidden = true;

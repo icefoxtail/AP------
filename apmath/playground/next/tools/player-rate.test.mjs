@@ -1,0 +1,66 @@
+// 공통 원클릭 재생 속도 회귀 검사: 실제 재생기의 기본 속도·느리게 전환·프레임 시간
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+
+const playerSource = fs.readFileSync(new URL('../kit/apl-player.js', import.meta.url), 'utf8');
+
+function makePlayer() {
+  const sandbox = {
+    window: { APLab: { videoCore: {}, h: () => ({}), icon: () => '', labHooks: [] } },
+    location: { search: '', hash: '' },
+    URLSearchParams,
+    requestAnimationFrame: () => 1,
+    cancelAnimationFrame: () => {}
+  };
+  vm.runInNewContext(playerSource, sandbox, { filename: 'apl-player.js' });
+  const Player = sandbox.window.APLab.Player;
+  assert.equal(typeof Player, 'function', 'real player class is registered');
+  // Constructor를 실행하되 실제 DOM은 건드리지 않는 작은 하네스.
+  for (const method of ['_build', '_wrap', '_bind', '_syncEntry']) Player.prototype[method] = () => {};
+  Player.prototype._readExplored = () => false;
+  return new Player({ teach: true });
+}
+
+test('원클릭 영상/해설 기본 1.5배, 느리게 0.5배 후 다시 1.5배로 복귀', () => {
+  const player = makePlayer();
+  assert.equal(player.rate, 1.5, 'every new player defaults to 1.5x');
+  const attrs = {}, classes = {};
+  player.ui = { slow: {
+    setAttribute: (name, val) => { attrs[name] = val; },
+    classList: { toggle: (name, on) => { classes[name] = on; } },
+    innerHTML: ''
+  } };
+  player.setRate(0.5);
+  assert.equal(player.rate, 0.5);
+  assert.equal(attrs['aria-pressed'], 'true');
+  assert.equal(classes.on, true);
+  assert.match(player.ui.slow.innerHTML, /0\.5배/);
+  player.setRate(1.5);
+  assert.equal(player.rate, 1.5);
+  assert.equal(attrs['aria-pressed'], 'false');
+  assert.equal(classes.on, false);
+  assert.match(player.ui.slow.innerHTML, /느리게/);
+  assert.match(playerSource, /this\.setRate\(this\.rate === DEFAULT_PLAYBACK_RATE \? SLOW_PLAYBACK_RATE : DEFAULT_PLAYBACK_RATE\)/,
+    'slow toggle returns to the true 1.5x default');
+});
+
+test('시간 진행 0.1초 → 기본 0.15초, 느리게 0.05초; 화면 공개 타임라인 동기화', () => {
+  const player = makePlayer();
+  let applied = 0;
+  player.ui = { slow: {
+    setAttribute: () => {}, classList: { toggle: () => {} }, innerHTML: ''
+  } };
+  player.state = 'playing';
+  player.cs = { length: 12 };
+  player._last = 1000;
+  player._tick = () => {};
+  player.apply = () => { applied += 1; };
+  player._frame(1100);
+  assert.ok(Math.abs(player.t - 0.15) < 1e-9, `default timeline advance ${player.t}`);
+  player.setRate(0.5);
+  player._frame(1200);
+  assert.ok(Math.abs(player.t - 0.20) < 1e-9, `slow timeline advance ${player.t}`);
+  assert.equal(applied, 2, 'every timeline advance redraws current figure and caption');
+});

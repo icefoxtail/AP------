@@ -22,25 +22,17 @@ const SCENE_DIR = path.join(labsDir, 'g7-circle-sector');
 //   f4-swirl (f04.js)  makeScene() → 'f4_'+id+'_' + vars(R 4~10) + t(0~1)/mode/seed/pick
 // 새 장면의 대본을 추가할 때는 여기에 그 장면의 상태값(범위)도 함께 적어 주세요.
 const SCENE_STATE = {
-  '1209': { b1209_r: [3, 12], b1209_th: [10, 350] },
-  'f4-swirl': { f4_swirl_R: [4, 10], f4_swirl_t: [0, 1], f4_swirl_mode: null, f4_swirl_seed: null, f4_swirl_pick: null },
-  // 다음 대본(DeepSeek 시험) 대상: 1210(basic.js, 1209 와 같은 sectorSpec) · f1-ss2(f01.js 부채꼴에서 반원 파내기, 장면 id 는 'f1-ss2')
+  // 1210(basic.js sectorSpec). 1209·f4-swirl·f1-ss2 는 해설(lesson)로 대체되어 표에서 뺐습니다(해설은 tools/lessons.g7-circle-sector.test.mjs 가 검사)
   '1210': { b1210_r: [3, 12], b1210_th: [10, 350] },
-  'f1-ss2': { f1_ss2_a: [4, 12], f1_ss2_t: [0, 1], f1_ss2_mode: null, f1_ss2_seed: null, f1_ss2_pick: null },
-  // 지시서 A (video-a.js): 끈의 길이(f05.js 'f5-sq4', 이름 f5A 반지름 2~8 · f5T 0~1) · 굴리기(rolling.js 'rl-rect', rlT 0~1. 직사각형 크기는 s.cfg 라 대본으로 못 바꿈)
-  'f5-sq4': { f5A: [2, 8], f5T: [0, 1] },
-  'rl-rect': { rlT: [0, 1] },
-  // 지시서 B (video-b.js): 묶인 동물의 영역(swept.js 'gt-kennel', gtQ 개집 한 변 1~6 · gtL 끈 1~16 · gtT 0~1) · 잎 모양(f03.js 'f3-leaf-len', f3a 한 변 2~12 · f3t 0~1)
-  'gt-kennel': { gtT: [0, 1], gtQ: [1, 6], gtL: [1, 16] },
-  'f3-leaf-len': { f3a: [2, 12], f3t: [0, 1] },
   'sv1-1': { sR: [1, 15], sH: [2, 20], sT: [0, 1], svYaw: [-180, 180], svPitch: [-30, 85], svShape: null, sv11Mode: null, sv11Started: null, svShowV: null },
   // 해설(lesson) 장면: g7-circle-sector.html proofScene('sector')의 params csR 2~12 · csS 30~180(15 단위) · csT 0~100, 해설이 켜는 csShowS(결론 라벨을 아끼는 장면 표시)
-  'z3-sectorProof': { csR: [2, 12], csS: [30, 180], csT: [0, 100], csShowS: null }
+  'z3-sectorProof': { csR: [2, 12], csS: [30, 180], csT: [0, 100], csShowS: null, csShowArc: null, csShowWidth: null }
 };
 const SCENE_STATE_KEYS = Object.fromEntries(Object.entries(SCENE_STATE).map(([k, v]) => [k, new Set(Object.keys(v))]));
 
-// 대본 파일: video.js(견본·시험) + video-a.js, video-b.js(DeepSeek 두 작업이 따로 쓰는 파일). html 의 MODULES 순서와 같게 한 sandbox 에서 차례로 읽어 합칩니다.
-const VIDEO_FILES = ['video.js', 'video-a.js', 'video-b.js'];
+// 과거 쇼츠 1210의 형식 회귀 자료. 실제 학생 장면은 lesson-basic-more.js의 1210 해설을 불러옵니다.
+// 단일 영상 규칙을 검증하던 분모는 유지하되 학생 화면에 과거 쇼츠를 중복 등록하지 않습니다.
+const VIDEO_FILES = ['video.js'];
 function loadVideos() {
   const sandbox = { window: {} };
   vm.createContext(sandbox);
@@ -61,7 +53,23 @@ function loadLessons(lab) {
 }
 const sectorLessons = loadLessons('g7-circle-sector');
 const surfaceLessons = loadLessons('g7-surface-volume');
-const allLessons = { ...sectorLessons, ...surfaceLessons };
+// 새 원과 부채꼴 해설은 tools/lessons.g7-circle-sector.test.mjs 가 검사합니다(상태값 표·자막 숫자·정답 조기 노출). 이 파일의 일반 해설 검사는 기존 해설만 봅니다.
+const legacySectorLessons = { 'z3-sectorProof': sectorLessons['z3-sectorProof'] };
+const allLessons = { ...legacySectorLessons, ...surfaceLessons };
+
+// 쇼츠 규칙·snap 검사용 견본: 해설로 대체되어 video.js 에서 지운 1209 쇼츠 그대로(kit 의 title·snap 검사가 쓰는 입력)
+const FIXTURE_1209 = {
+  length: 12,
+  title: '부채꼴 넓이는 원의 얼마?',
+  start: { b1209_r: 12, b1209_th: 90 },
+  summary: '부채꼴 넓이 = 원의 넓이 × 중심각 ÷ 360',
+  task: '중심각을 바꾸며 색칠한 넓이가 원의 몇 분의 일인지 살펴보세요',
+  cues: [
+    { at: 0, say: '중심각을 **90°에서 180°**로 키워요.', to: { b1209_th: 180 }, dur: 4, ease: 'linear', snap: 15 },
+    { at: 4.5, say: '180°는 한 바퀴의 절반, 색칠한 넓이도 절반이에요.' },
+    { at: 8.5, say: '부채꼴 넓이 = 원의 넓이 × 중심각 ÷ 360' }
+  ]
+};
 
 test('해설 파일이 있고 장면 id가 다른 실험실과 충돌하지 않으며, 깨진 옛 원기둥 영상 대본은 남아 있지 않다', () => {
   assert.equal(core.lessonList(surfaceLessons['sv1-1']).length, 2, 'sv1-1 은 겉넓이·부피 해설 둘');
@@ -75,9 +83,9 @@ test('해설 파일이 있고 장면 id가 다른 실험실과 충돌하지 않�
   }
 });
 
-test('견본 두 장면(1209, f4-swirl)의 대본이 있고, 대본이 있는 장면은 모두 SCENE_STATE 표에 있다', () => {
+test('남은 영상 대본이 모두 SCENE_STATE 표에 있다(1209·f4-swirl·f1-ss2 는 해설로 대체됨)', () => {
   const ids = Object.keys(videos);
-  assert.ok(ids.includes('1209') && ids.includes('f4-swirl'), '견본 대본 1209, f4-swirl');
+  assert.ok(ids.includes('1210'), '견본 대본 1210');
   ids.forEach((id) => assert.ok(SCENE_STATE[id], `${id}: 이 테스트 파일 SCENE_STATE 표에 상태값이 없습니다`));
 });
 
@@ -111,15 +119,20 @@ for (const [id, script] of Object.entries(allVideos)) {
   });
 }
 
-test('실험실 HTML이 영상 대본을 videos 로 연결한다', () => {
+test('1210은 학생 HTML에서 해설로 연결하고 과거 쇼츠 형식 검사는 유지한다', async () => {
   const html = fs.readFileSync(path.join(SCENE_DIR + '.html'), 'utf8');
-  assert.ok(/videos:\s*\(window\.APL_VIDEOS\s*\|\|\s*\{\}\)\['g7-circle-sector'\]/.test(html), 'createLab 의 videos 연결');
-  assert.ok(/MODULES\s*=\s*\[[^\]]*'video'/.test(html), 'MODULES 에 video 포함');
+  assert.match(html, /MODULES\s*=\s*\[[^\]]*'lesson-basic-more'/, '1210 실제 해설 모듈 포함');
+  assert.doesNotMatch(html, /MODULES\s*=\s*\[[^\]]*'video'/, '과거 쇼츠 중복 로드 없음');
   VIDEO_FILES.forEach((f) => {
-    const m = f.replace(/\.js$/, '');
-    assert.ok(new RegExp(`MODULES\\s*=\\s*\\[[^\\]]*'${m}'`).test(html), `MODULES 에 ${m} 포함`);
-    assert.ok(fs.existsSync(path.join(SCENE_DIR, f)), `${f} 파일`);
+    assert.ok(fs.existsSync(path.join(SCENE_DIR, f)), `${f} 형식 회귀 자료 보존`);
   });
+  const { load } = await import('./helpers/circle-lesson-runtime.mjs');
+  const lab = await load();
+  assert.equal(lab.def.videos, undefined, '학생 런타임에 과거 쇼츠가 등록되지 않음');
+  const current = core.lessonList(lab.def.lessons['1210']);
+  assert.equal(current.length, 1, '1210 원클릭 해설 하나');
+  assert.deepEqual(core.validateLesson(current[0]).errors, []);
+  assert.equal(core.compileLesson(current[0]).kind, 'lesson');
 });
 
 test('실험실 HTML이 해설을 lessons 로 연결하고 lesson 모듈을 불러온다', () => {
@@ -150,35 +163,10 @@ test('원기둥 상태값 표가 실제 장면과 시점 소스에 일치한다'
 
 test('상태값 표가 장면 소스와 같다', () => {
   const basic = fs.readFileSync(path.join(SCENE_DIR, 'basic.js'), 'utf8');
-  const f04 = fs.readFileSync(path.join(SCENE_DIR, 'f04.js'), 'utf8');
-  // 1209: 장면 id, 상태값 접두어 'b', params r/th 와 범위
-  assert.ok(/id:\s*'1209'/.test(basic), "basic.js 에 id '1209' 장면");
-  assert.ok(/'b'\s*\+\s*[\w.]+\s*\+\s*'_'/.test(basic) || /`b\$\{[^}]+\}_/.test(basic) || /'b'\s*\+/.test(basic), "상태값 접두어 'b' 규칙");
-  assert.ok(/r:\s*\{\s*value:\s*o\.def\.r,\s*min:\s*3,\s*max:\s*12/.test(basic), '1209 r 범위 3~12');
-  assert.ok(/th:\s*\{\s*value:\s*o\.def\.th,\s*min:\s*thMin,\s*max:\s*thMax/.test(basic) && /thMin\s*=\s*o\.thMin\s*\|\|\s*10,\s*thMax\s*=\s*o\.thMax\s*\|\|\s*350/.test(basic), '1209 th 범위 10~350');
-  // 1210: 1209 와 같은 sectorSpec(r 3~12, th 10~350)이고 장면 id 가 있다
+  // 1210: sectorSpec(r 3~12, th 10~350)이고 장면 id 가 있다
+  assert.ok(/'b'\s*\+/.test(basic), "상태값 접두어 'b' 규칙");
+  assert.ok(/thMin\s*=\s*o\.thMin\s*\|\|\s*10,\s*thMax\s*=\s*o\.thMax\s*\|\|\s*350/.test(basic), 'sectorSpec th 범위 10~350');
   assert.ok(/id:\s*'1210'/.test(basic), "basic.js 에 id '1210' 장면");
-  // f1-ss2: f01.js 접두어 f1, id ss2, 변수 a(4~12), t 0~1
-  const f01 = fs.readFileSync(path.join(SCENE_DIR, 'f01.js'), 'utf8');
-  assert.ok(/const PFX\s*=\s*'f1'/.test(f01), "f01.js 접두어 'f1'");
-  const ss2 = f01.slice(f01.indexOf("id: 'ss2'"));
-  assert.ok(/vars:\s*\[\{\s*k:\s*'a'[^}]*min:\s*4,\s*max:\s*12/.test(ss2.slice(0, 600)), 'ss2 a 범위 4~12');
-  assert.ok(/PARAMS\[kt\]\s*=\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(f01), 'f01 t 범위 0~1');
-  // f4-swirl: 접두어 f4, id swirl, 변수 R(4~10), t 0~1
-  assert.ok(/const PFX\s*=\s*'f4'/.test(f04), "f04.js 접두어 'f4'");
-  const swirl = f04.slice(f04.indexOf("id: 'swirl'"));
-  assert.ok(/vars:\s*\[\{\s*k:\s*'R'[^}]*min:\s*4,\s*max:\s*10/.test(swirl.slice(0, 600)), 'swirl R 범위 4~10');
-  assert.ok(/PARAMS\[kt\]\s*=\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(f04), 't 범위 0~1');
-  // 지시서 A·B 장면: 장면 id 와 상태값 이름·범위가 소스에 있다
-  const f05 = fs.readFileSync(path.join(SCENE_DIR, 'f05.js'), 'utf8');
-  const rolling = fs.readFileSync(path.join(SCENE_DIR, 'rolling.js'), 'utf8');
-  const swept = fs.readFileSync(path.join(SCENE_DIR, 'swept.js'), 'utf8');
-  const f03 = fs.readFileSync(path.join(SCENE_DIR, 'f03.js'), 'utf8');
-  assert.ok(/id:\s*'f5-sq4'/.test(f05) && /f5A:\s*\{[^}]*value:\s*A\.r0|min:\s*2,\s*max:\s*8,\s*step:\s*1,\s*value:\s*A\.r0/.test(f05), "f05.js 'f5-sq4' 와 반지름 f5A 2~8");
-  assert.ok(/f5T:\s*DEF_T|const DEF_T/.test(f05), 'f05.js f5T');
-  assert.ok(/id:\s*'rl-rect'/.test(rolling) && /rlT:\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(rolling), "rolling.js 'rl-rect' 와 rlT 0~1");
-  assert.ok(/id:\s*'gt-kennel'/.test(swept) && /gtT:\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(swept) && /gtQ:\s*\{\s*value:\s*2,\s*min:\s*1,\s*max:\s*6/.test(swept) && /gtL:\s*\{\s*value:\s*5,\s*min:\s*1,\s*max:\s*16/.test(swept), "swept.js 'gt-kennel' 와 gtT·gtQ·gtL 범위");
-  assert.ok(/id:\s*'f3-leaf-len'/.test(f03) && /f3a:\s*\{\s*value:\s*6,\s*min:\s*2,\s*max:\s*12/.test(f03) && /f3t:\s*PARAM_T/.test(f03) && /PARAM_T\s*=\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(f03), "f03.js 'f3-leaf-len' 와 f3a 2~12 · f3t 0~1");
 });
 
 for (const [id, script] of Object.entries(allVideos)) {
@@ -215,26 +203,6 @@ for (const [id, script] of Object.entries(allVideos)) {
   });
 }
 
-// 1209의 중심각과 넓이 비율을 장면 정답식에서 다시 계산합니다.
-test('1209 중심각과 색칠한 넓이의 절반이 공식과 같다', () => {
-  const script = videos['1209'];
-  const S = (r, th) => (r * r * th) / 360;
-  const r = script.start.b1209_r, th0 = script.start.b1209_th;
-  const th1 = script.cues.find((c) => c.to && c.to.b1209_th).to.b1209_th;
-  assert.equal(r, 12);
-  assert.ok(th1 <= 200, '240° 근처는 라벨이 맞닿음(VIDEO_FINDINGS.md): 쇼츠 견본은 180°까지');
-  assert.equal(th1, 2 * th0);
-  const text = script.cues.map((c) => c.say || '').join(' ');
-  assert.equal(th1 / 360, 1 / 2);
-  assert.equal(S(r, th1), r * r / 2);
-  assert.equal(S(r, th0), r * r / 4);
-  assert.match(text, /180°.*절반.*넓이.*절반/);
-  assert.ok(text.includes(`${th0}°`) && text.includes(`${th1}°`), '중심각 시작·끝 값');
-  const cs = core.compile(script);
-  const st = core.stateAt(cs, script.cues.find((c) => /넓이도 절반/.test(c.say || '')).at, { nums: {}, sets: {}, step: 0, part: null });
-  assert.equal(st.nums.b1209_th, th1, '절반 자막에서 그림이 180°');
-});
-
 // 영상 제목(title): 대본마다 있고(견본 8개), 20자 이하이며, 검증이 긴 제목·빈 제목·태그를 막는다.
 test('모든 영상 대본에 짧은 제목(title, 20자 이하)이 있다', () => {
   for (const [id, script] of Object.entries(allVideos)) {
@@ -244,7 +212,7 @@ test('모든 영상 대본에 짧은 제목(title, 20자 이하)이 있다', () 
 });
 
 test('title 검증: 없어도 통과, 20자 초과·빈 글·태그·수식은 오류, compile 이 title 을 돌려준다', () => {
-  const base = videos['1209'];
+  const base = FIXTURE_1209;
   const withTitle = (t) => ({ ...base, title: t });
   assert.deepEqual(core.validate({ ...base, title: undefined }).errors, [], 'title 생략 가능');
   assert.deepEqual(core.validate(withTitle('중심각이 2배면 호는?')).errors, []);
@@ -258,7 +226,7 @@ test('title 검증: 없어도 통과, 20자 초과·빈 글·태그·수식은 �
 
 // snap: to 로 움직이는 동안 시작값 기준 snap 의 배수로만 지나가고(소수 방지), 끝 값은 정확히 to.
 test('snap 검증: 양수 숫자·to 와 함께만, compile·stateAt 이 계단식으로 넘긴다', () => {
-  const base = videos['1209'];
+  const base = FIXTURE_1209;
   const withSnap = (snap) => ({ ...base, cues: base.cues.map((c, i) => (i === 0 ? { ...c, snap } : c)) });
   assert.deepEqual(core.validate(withSnap(15)).errors, []);
   assert.ok(core.validate(withSnap(0)).errors.some((e) => e.includes('snap')), 'snap 0');
@@ -274,7 +242,7 @@ test('snap 검증: 양수 숫자·to 와 함께만, compile·stateAt 이 계단�
 // 움직이는 동안 소수가 보이지 않게 snap 을 쓴 영상은, 지나가는 모든 값에서 호·넓이(π 계수)가 정수여야 한다(1209·1210).
 test('1209·1210 snap: 지나가는 모든 중심각에서 호·넓이의 π 계수가 정수', () => {
   for (const [id, key, r] of [['1209', 'b1209_th', 12], ['1210', 'b1210_th', 9]]) {
-    const script = videos[id];
+    const script = id === '1209' ? FIXTURE_1209 : videos[id];
     assert.ok(script.cues.some((c) => c.snap > 0), `${id}: snap 이 있어야 합니다`);
     const cs = core.compile(script);
     const b = { nums: { ...script.start }, sets: {}, step: 0, part: null };
@@ -466,13 +434,17 @@ test('validateLesson: to 로 움직이는 숫자 상태값은 모두 첫 장 sta
   for (const l of [...core.lessonList(sectorLessons['z3-sectorProof']), ...core.lessonList(surfaceLessons['sv1-1'])]) assert.deepEqual(core.validateLesson(l).errors, [], l.title);
 });
 
-test('validateLessonSet: 해설 1~3개, 둘 이상이면 label 필수·6자 이하·겹침 금지, 한 해설의 set 키는 나머지도 at:0 에서 정해야 한다', () => {
+test('validateLessonSet: 해설 1~8개, 둘 이상이면 label 필수·6자 이하·겹침 금지, 한 해설의 set 키는 나머지도 at:0 에서 정해야 한다', () => {
   const A = withSets('겉넓이', { mode: 'a', open: false }), B = withSets('부피', { mode: 'b', open: false });
   assert.deepEqual(core.validateLessonSet(goodLesson()).errors, [], '해설 하나(객체)는 label 없이 통과');
   assert.deepEqual(core.validateLessonSet([goodLesson()]).errors, [], '배열 하나도 label 없이 통과');
   assert.deepEqual(core.validateLessonSet([A, B]).errors, [], '둘');
   assert.deepEqual(core.validateLessonSet([A, B, withSets('둘레', { mode: 'c', open: false })]).errors, [], '셋');
-  assert.ok(core.validateLessonSet([A, B, withSets('넓이', { mode: 'd', open: false }), withSets('모두', { mode: 'e', open: false })]).errors.some((e) => e.includes('3개까지')), '넷은 오류');
+  const four = [A, B, withSets('둘레', { mode: 'c', open: false }), withSets('넓이', { mode: 'd', open: false })];
+  assert.deepEqual(core.validateLessonSet(four).errors, [], '다른 개념 넷은 각각 재생 가능');
+  const eight = [...four, ...['다섯째', '여섯째', '일곱째', '여덟째'].map((label, i) => withSets(label, { mode: String(i + 4), open: false }))];
+  assert.deepEqual(core.validateLessonSet(eight).errors, [], '구별되는 여덟 개념까지 각각 재생 가능');
+  assert.ok(core.validateLessonSet([...eight, withSets('아홉째', { mode: 'i', open: false })]).errors.some((e) => e.includes('8개까지')), '아홉은 오류');
   assert.ok(core.validateLessonSet([]).errors.length, '빈 배열');
   assert.ok(core.validateLessonSet([A, withSets(null, { mode: 'b', open: false })]).errors.some((e) => e.includes('label 이 필수')), '둘 이상이면 label 필수');
   assert.ok(core.validateLessonSet([A, withSets('겉넓이', { mode: 'b', open: false })]).errors.some((e) => e.includes('겹칩니다')), 'label 겹침');
@@ -491,6 +463,69 @@ test('validateLessonSet: 해설 1~3개, 둘 이상이면 label 필수·6자 이�
   assert.deepEqual(core.lessonList(null), []);
   assert.equal(core.compileLesson(A).label, '겉넓이');
   assert.equal(core.compileLesson(goodLesson()).label, null);
+});
+
+test('네 번째 해설도 독립 버튼, 번호 주소, 이름 주소와 다음 재생으로 선택된다', () => {
+  const lessons = ['범위', '개수', '최댓값', '최솟값'].map((label, mode) => withSets(label, { mode, open: false }));
+  const APLab = {
+    videoCore: core, icon: () => '', esc: String,
+    h: (tag, props) => ({ tag, props, innerHTML: '' })
+  };
+  vm.runInNewContext(fs.readFileSync(path.resolve(DIR, '../kit/apl-player.js'), 'utf8'), { window: { APLab }, console });
+  const player = Object.create(APLab.Player.prototype);
+  player.lab = { id: 'fixture', list: [{ id: 'one', lesson: lessons }], def: {} };
+  player._cache = new WeakMap(); player.index = 0; player.lessonIndex = 2;
+  const buttons = [];
+  player.ui = { entryBtns: { childElementCount: 0, innerHTML: '', append: b => buttons.push(b) } };
+  let selected = -1; player._entryGo = k => { selected = k; };
+  const entries = player.entries(0);
+  assert.equal(entries.length, 4);
+  player._buildEntryButtons(entries);
+  assert.equal(buttons.length, 4, '네 개의 실제 player 버튼 생성');
+  buttons[3].props.onclick();
+  assert.equal(selected, 3, '네 번째 버튼이 네 번째 해설 선택');
+  assert.equal(player._playParam('4', 0), 3);
+  assert.equal(player._playParam('최솟값', 0), 3);
+  for (const invalid of ['0', '5', '04', '-1', '4.0']) assert.equal(player._playParam(invalid, 0), -1);
+  assert.equal(player.nextTarget().k, 3, '세 번째의 다음은 네 번째');
+  player.lessonIndex = 3;
+  assert.equal(player.nextTarget(), null, '마지막 해설 뒤에는 목차');
+  const bad = structuredClone(lessons);
+  delete bad[3].chapters[0].cues[0].set.open;
+  assert.ok(core.validateLessonSet(bad).errors.some(e => e.includes('lessons[3]') && e.includes('set.open')), '네 번째도 형제 상태 초기화 검사');
+  const early = structuredClone(lessons);
+  early[3].chapters[0].cues[1].say = '정답은 $42$일까요?';
+  assert.ok(core.validateLessonSet(early).errors.some(e => e.includes('lessons[3]') && e.includes('정답')), '네 번째도 조기 정답 검사');
+});
+
+test('여덟 번째 해설도 독립 버튼, 번호 주소, 이름 주소와 다음 재생으로 선택된다', () => {
+  const lessons = ['RHA', 'RHS', 'SAS', 'ASA', '두예각', '빗변만', '한예각', '한직각변'].map((label, mode) => withSets(label, { mode, open: false }));
+  const APLab = { videoCore: core, icon: () => '', esc: String, h: (tag, props) => ({ tag, props, innerHTML: '' }) };
+  vm.runInNewContext(fs.readFileSync(path.resolve(DIR, '../kit/apl-player.js'), 'utf8'), { window: { APLab }, console });
+  const player = Object.create(APLab.Player.prototype);
+  player.lab = { id: 'fixture', list: [{ id: 'one', lesson: lessons }], def: {} };
+  player._cache = new WeakMap(); player.index = 0; player.lessonIndex = 6;
+  const buttons = [];
+  player.ui = { entryBtns: { childElementCount: 0, innerHTML: '', append: button => buttons.push(button) } };
+  let selected = -1; player._entryGo = index => { selected = index; };
+  const entries = player.entries(0);
+  assert.equal(entries.length, 8);
+  player._buildEntryButtons(entries);
+  assert.equal(buttons.length, 8, '여덟 개의 실제 player 버튼 생성');
+  buttons[7].props.onclick();
+  assert.equal(selected, 7, '여덟 번째 버튼이 여덟 번째 해설 선택');
+  assert.equal(player._playParam('8', 0), 7);
+  assert.equal(player._playParam('한직각변', 0), 7);
+  for (const invalid of ['0', '9', '08', '-1', '8.0']) assert.equal(player._playParam(invalid, 0), -1);
+  assert.equal(player.nextTarget().k, 7, '일곱 번째의 다음은 여덟 번째');
+  player.lessonIndex = 7;
+  assert.equal(player.nextTarget(), null, '마지막 해설 뒤에는 목차');
+  const bad = structuredClone(lessons);
+  delete bad[7].chapters[0].cues[0].set.open;
+  assert.ok(core.validateLessonSet(bad).errors.some(e => e.includes('lessons[7]') && e.includes('set.open')), '여덟 번째도 형제 상태 초기화 검사');
+  const early = structuredClone(lessons);
+  early[7].chapters[0].cues[1].say = '정답은 $42$일까요?';
+  assert.ok(core.validateLessonSet(early).errors.some(e => e.includes('lessons[7]') && e.includes('정답')), '여덟 번째도 조기 정답 검사');
 });
 
 test('해설 여럿: 두 해설을 오가며 재생해도(겉넓이 → 부피 → 겉넓이) 장면에 남은 값과 상관없이 각 해설의 t=0·결론 직전이 같다', () => {
@@ -551,7 +586,7 @@ test('compileLesson: step·set 은 장을 넘어 시간 순서대로 이어지�
   assert.equal(core.stateAt(cs, 26, base).sets.flag, 'b');
   assert.equal(cs.usesStep, true);
   // 단일 영상 대본은 compile 결과가 이전과 같은 모양(해설 전용 필드 없음)
-  const v = core.compile(videos['1209']);
+  const v = core.compile(FIXTURE_1209);
   assert.equal(v.kind, undefined);
   assert.equal(v.chapters, undefined);
   assert.equal(v.length, 12);
@@ -569,11 +604,12 @@ test('해설 z3-sectorProof: 자막의 모든 숫자가 부채꼴 공식(r=6, 12
   assert.match(html, /Kof\s*=\s*\(s\)\s*=>\s*Math\.max\(2,\s*2\s*\*\s*Math\.ceil\(s\.csS\s*\/\s*20\)\)/, '조각 수 공식이 장면 소스와 같다');
   const says = sayList(lesson);
   assert.ok(says[0][0].includes(`${r} cm`) && says[0][0].includes(`${th}°`), '1장 첫 자막: 반지름·중심각');
-  assert.ok(says[0][1].includes(`l=${l}\\pi`) && says[0][1].includes(`${pieces}조각`), '1장 둘째 자막: 호 길이와 조각 수');
+  assert.ok(says[0][1].includes(`2\\pi\\times${r}\\times\\frac{${th}}{360}=${l}\\pi`), '1장 둘째 자막: 주어진 반지름·중심각으로 호 길이를 계산');
   assert.ok(says[1].join(' ').includes('가까운'), '직사각형에 가까운 모양(직사각형이라고 단정하지 않음)');
-  assert.ok(says[2][1].includes(`l=${l}\\pi`) && says[2][1].includes(`$${half}\\pi$`) && says[2][1].includes(`${r} cm`), '3장 둘째 자막: 가로 l÷2, 세로 r');
+  assert.ok(says[2][0].includes('가로는 호 $l$의 절반') && says[2][0].includes('세로는 반지름 $r$'), '3장 첫 자막: 가로 l÷2, 세로 r');
+  assert.ok(says[2][1].includes(`l=${l}\\pi`) && says[2][1].includes(`$${half}\\pi$`) && says[2][1].includes('가까워져요'), '3장 둘째 자막: 유한 조각의 가로는 l÷2에 가까워진다');
   assert.ok(says[2][2].includes(`\\frac12\\times${r}\\times${l}\\pi=${S}\\pi`), '3장 마지막 자막: ½·r·l = 12π');
-  const allowed = new Set([r, th, pieces, l, half, S, 1, 2]);
+  const allowed = new Set([r, th, pieces, l, half, S, 1, 2, 360]);
   for (const s of says.flat()) numbersOf(s).forEach((n) => assert.ok(allowed.has(n), `자막 「${s}」 의 숫자 ${n} 은 장면 공식으로 나오는 값이 아닙니다`));
   // 단계: 1장은 나눔(csT 0→20), 2장은 맞물림(→54, 라벨이 그려지기 전), 3장에서 라벨(55 이상)과 정답
   const ends = lesson.chapters.map((ch) => ch.cues.flatMap((c) => (c.to && c.to.csT != null ? [c.to.csT] : [])).at(-1));
@@ -581,10 +617,17 @@ test('해설 z3-sectorProof: 자막의 모든 숫자가 부채꼴 공식(r=6, 12
   assert.ok(ends[1] < 55, '맞물림 장은 가로·세로·넓이 라벨(csT ≥ 55)이 그려지기 전에 끝난다');
   assert.ok(/csT\s*>=\s*55/.test(html), '라벨이 csT 55 부터 그려진다는 전제가 장면 소스와 같다');
   // 결론 라벨은 해설이 csShowS 를 켤 때까지 아낀다(탐구 화면은 그대로)
-  assert.match(html, /if \(!\(st\.lessonOn && !st\.csShowS\)\) T\(b, \{ x: xc, y: Yb \}/, 'S 라벨 표시 조건');
+  assert.match(html, /if \(!guided \|\| \(st\.lessonOn && st\.csShowS\)\) T\(b, \{ x: xc, y: Yb \}/, '진입 화면과 재생 중 S 라벨 표시 조건');
   assert.ok(chapterCues(lesson).some((c) => c.set && c.set.csShowS === true && c.say && c.say.includes(`${S}\\pi`)), '결론 자막과 함께 csShowS');
   assert.ok(lesson.chapters.slice(0, 2).every((ch) => ch.cues.every((c) => !(c.set && c.set.csShowS === true))), '앞 두 장은 csShowS 를 켜지 않는다(첫 장 at:0 의 false 제외)');
-  assert.deepEqual(JSON.parse(JSON.stringify(lesson.chapters[0].cues[0].set)), { csShowS: false }, '첫 장 at:0 에서 csShowS 는 false 로 시작(다시 보기에서 true 가 새지 않게)');
+  assert.deepEqual(JSON.parse(JSON.stringify(lesson.chapters[0].cues[0].set)), { csShowS: false, csShowArc: false, csShowWidth: false }, '다시 보기에서 호·가로·정답이 먼저 보이지 않도록 공개 상태를 초기화');
+  const compiled = core.compileLesson(lesson), base = baseOf(lesson);
+  assert.equal(core.stateAt(compiled, 4.49, base).sets.csShowArc, false);
+  assert.equal(core.stateAt(compiled, 4.5, base).sets.csShowArc, true);
+  assert.equal(core.stateAt(compiled, 23.49, base).sets.csShowWidth, false);
+  assert.equal(core.stateAt(compiled, 23.5, base).sets.csShowWidth, true);
+  assert.equal(core.stateAt(compiled, 26.99, base).sets.csShowS, false);
+  assert.equal(core.stateAt(compiled, 27, base).sets.csShowS, true);
 });
 
 test('해설 sv1-1: 자막의 모든 숫자가 원기둥 공식(r=3, h=5)으로 다시 계산한 값이다', () => {

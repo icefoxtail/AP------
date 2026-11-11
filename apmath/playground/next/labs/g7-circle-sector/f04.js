@@ -225,15 +225,17 @@
     };
     const ctxOf = (s, lab) => {
       const tab = (lab && lab.tab) || 'explore';
-      const problem = tab === 'problem';
+      const lesson = (sp.id === 'circ2' || sp.id === 'turn') && !!(s.lessonOn || s.lessonEntry);
+      const problem = tab === 'problem' || (lesson && !!s.lessonEntry);
       const seed = s[kseed] || 0;
       const V = getV(s);
       const M = modelOf(V);
       const mode = M.edges ? (s[kmode] | 0) : 0;
       const timeline = sp.stepT || STEP_T;
       const limit = tab === 'review' ? timeline[clamp(s.step || 0, 0, timeline.length - 1)] : 1;
-      const t = Math.min(clamp(+s[kt] || 0, 0, 1), limit);
-      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step: s.step || 0 }, phaseOf(t), {
+      const t = lesson && s.lessonEntry ? 0 : Math.min(clamp(+s[kt] || 0, 0, 1), limit);
+      // lessonHold: 해설 재생 중(s.lessonOn)에는 해설이 K('show') 를 켤 때까지 결과(정답) 라벨·캡션·칩을 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step: s.step || 0, lesson, lessonId: sp.id, lessonRead: lesson && s.lessonOn && !s.lessonEntry ? (+s[K('read')] || 0) : 0, lessonHold: lesson ? !!(s.lessonEntry || !s[K('show')]) : !!(s.lessonOn && !s[K('show')]) }, phaseOf(t), {
         set: (k, val, quiet) => {
           const v = sp.vars.find((x) => x.k === k);
           s[K(k)] = clamp(val, v.min, v.max);
@@ -321,6 +323,7 @@
       },
       view: (s, lab) => {
         const c = ctxOf(s, lab), M = c.M;
+        if (c.lesson) return lessonView(c);
         const v = {};
         const gd = c.mode ? M.guideP : M.guide;
         const pick = c.review ? clamp(c.step - 1, 0, 3) : c.t < TL.hi[0] ? 0 : c.t < TL.hi[1] + 0.04 ? 1 : c.t < TL.mv[1] ? 2 : 3;
@@ -445,7 +448,57 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   }
   const tfPoly = (poly, pc, p) => (pc.tf.kind === 'rot' ? rotP(poly, pc.tf.c[0], pc.tf.c[1], pc.tf.ang * p) : shiftP(poly, pc.tf.dx * p));
   const tfPt = (a, pc, p) => { const q = tfPoly([P(a[0], a[1])], pc, p)[0]; return [q.x, q.y]; };
-  const whenA = (c, w) => (w === 'hm' ? seg01(c.hi, 0.4, 1) * (1 - seg01(c.mv, 0.6, 0.95)) : w === 'b' ? 1 - seg01(c.mv, 0, 0.3) : w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? seg01(c.res, 0.2, 0.8) : 1);
+  const whenA = (c, w) => (w === 'hm' ? seg01(c.hi, 0.4, 1) * (1 - seg01(c.mv, 0.6, 0.95)) : w === 'b' ? 1 - seg01(c.mv, 0, 0.3) : w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? (c.lessonHold ? 0 : seg01(c.res, 0.2, 0.8)) : 1);
+
+  // 두 신규 해설에서만 r(반원의 반지름)과 2r(지름/부채꼴 반지름)을 구별해요.
+  // K('read') 공개 순서와 K('show') 마지막 정답은 lesson-f04.js의 자막이 제어합니다.
+  function lessonItem(c, it) {
+    if (!c.lesson) return true;
+    if (c.lessonId === 'circ2') return it.k !== 'text' && it.when !== 'r';
+    if (it.k === 'text' && it.text === fn(c.V.r) + ' cm') return false;
+    if (it.k === 'text' && it.text === 'O' && c.lessonRead >= 2) return false;
+    return true;
+  }
+  function lessonFigure(b, c) {
+    const r = c.V.r, read = c.lessonRead;
+    if (c.lessonId === 'circ2') {
+      b.text(P(1.5 * r, r), read >= 1 ? '중심 거리 = ' + fn(r) + ' cm' : '반지름 r = ' + fn(r) + ' cm', { color: 'ink', size: 14, weight: 800, dy: -15, baseline: 'middle' });
+      if (read >= 2) {
+        b.seg(P(2 * r, 0), P(2 * r, 2 * r), { color: 'rose', width: 2.2, dash: [5, 4] });
+        b.text(P(2 * r, r), '지름 = ' + fn(2 * r) + ' cm', { color: 'rose', size: 14, weight: 800, dx: 12, align: 'left', baseline: 'middle' });
+        b.text(P(1.5 * r, 0), '가로 ' + fn(r) + ' cm', { color: 'sky', size: 14, weight: 800, dy: 19, baseline: 'middle' });
+      }
+      return;
+    }
+    if (read < 2) {
+      b.seg(P(0, 0), P(r, 0), { color: 'rose', width: 3 });
+      b.text(P(r / 2, 0), '반원 r = ' + fn(r) + ' cm', { color: 'rose', size: 13, weight: 800, dy: 18, baseline: 'middle' });
+    }
+    if (read >= 1) {
+      b.seg(P(0, 0), P(2 * r, 0), { color: 'sky', width: 2.6 });
+      b.text(P(r, 0), (read >= 2 ? '부채꼴 반지름 AB = ' : '지름 AB = ') + fn(2 * r) + ' cm', { color: 'sky', size: 14, weight: 800, dy: read >= 2 ? 19 : 43, baseline: 'middle' });
+    }
+    if (read >= 3 && c.lessonHold) {
+      const fraction = Q(c.V.th, 360);
+      caption(b, (c.M.bb.x0 + c.M.bb.x1) / 2, c.M.bb.y0, '중심각 ' + fn(c.V.th) + '°', '원의 ' + fraction[0] + '/' + fraction[1], 'amber', 1, 47);
+    }
+  }
+  function lessonView(c) {
+    const r = c.V.r, read = c.lessonRead, final = !c.lessonHold;
+    const rows = [{ label: c.lessonId === 'turn' ? '반원의 반지름' : '원의 반지름', value: fn(r) + ' cm', color: 'ink' }];
+    if (c.lessonId === 'turn') {
+      rows.push({ label: '돌린 각', value: fn(c.V.th) + '°', color: 'amber' });
+      if (read >= 1) rows.push({ label: read >= 2 ? '부채꼴 반지름 AB' : '반원의 지름 AB', value: fn(2 * r) + ' cm', color: 'sky' });
+      if (read >= 3) { const q = Q(c.V.th, 360); rows.push({ label: '원 전체에 대한 비율', value: q[0] + '/' + q[1], color: 'amber' }); }
+    } else {
+      if (read >= 1) rows.push({ label: '중심 사이 거리', value: fn(r) + ' cm', color: 'ink' });
+      if (read >= 2) rows.push({ label: '직사각형 세로 = 지름', value: fn(2 * r) + ' cm', color: 'rose' });
+    }
+    if (final) rows.push({ label: '색칠한 부분의 넓이', value: cm2(c.M.resX), color: 'green', wide: true });
+    return { guide: final ? '옮겨도 넓이가 같으므로 ' + cm2(c.M.resX) + '예요.' : '옮길 조각과 빈자리가 같은 모양인지 살펴봐요.', readouts: rows, chips: [],
+      status: { tone: final ? 'ok' : 'info', text: final ? '색칠한 넓이 = ' + cm2(c.M.resX) : '그림의 조건을 확인해요' },
+      formula: final ? c.M.formula : '', rule: '같은 조각을 옮겨도 넓이는 변하지 않아요.', notes: '' };
+  }
 
   function renderMove(b, c) {
     const M = c.M, { hi, mv, res } = c, bb = M.bb, cx = (bb.x0 + bb.x1) / 2;
@@ -454,7 +507,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     if (c.problem) {
       fillEO(b, M.shade0, 'green', 0.2);
       drawBase(1);
-      M.fig.forEach((it) => { if (it.when === 'g') drawItem(b, it, 0, 1); });
+      M.fig.forEach((it) => { if (it.when === 'g' && lessonItem(c, it)) drawItem(b, it, 0, 1); });
+      if (c.lesson) lessonFigure(b, c);
       return;
     }
     const prog = (i) => { const a = n > 1 ? (i * 0.4) / (n - 1) : 0, len = n > 1 ? 0.6 : 1; return ease(seg01(mv, a, a + len)); };
@@ -475,15 +529,17 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     pieces.forEach((pc) => pc.dst.forEach((q) => outline(b, q, 'amber', 2, { dash: [6, 4], alpha: 0.9 * hi * (1 - res) })));
     pieces.forEach((pc, i) => { const p = prog(i); pc.polys.forEach((q) => outline(b, tfPoly(q, pc, p), 'amber', 2.4, { alpha: hi * (1 - 0.85 * res) })); });
     M.target.forEach((q) => outline(b, q, 'green', 3.4, { alpha: res }));
-    M.fig.forEach((it) => drawItem(b, it, 0, whenA(c, it.when)));
+    // hideRes: 해설 재생 중에만, 결과가 나오기 시작하면 사라지는 글자(옮겨 끼운 뒤에는 필요 없는 조각 표시가 결과 라벨과 겹칠 때)
+    M.fig.filter((it) => lessonItem(c, it)).forEach((it) => drawItem(b, it, 0, whenA(c, it.when) * (c.s && c.s.lessonOn && it.hideRes ? 1 - seg01(c.res, 0, 0.25) : 1)));
     pieces.forEach((pc, i) => { const p = prog(i); (pc.items || []).forEach((it) => drawItem(b, Object.assign({}, it, { p: tfPt(it.p, pc, p) }), 0, whenA(c, it.when))); });
-    caption(b, cx, bb.y0, M.cap.start.l, M.cap.start.v, 'ink', 1 - seg01(res, 0, 0.5));
-    caption(b, cx, bb.y0, M.cap.res.l, M.cap.res.v, 'green', seg01(res, 0.5, 1));
-    if (M.handles) M.handles.forEach((h) => b.handle(h.id, P(h.p[0], h.p[1]), { color: 'amber', ariaLabel: h.label, drag: (wp) => h.drag(wp, c) }));
+    if (c.lesson) lessonFigure(b, c);
+    else caption(b, cx, bb.y0, M.cap.start.l, M.cap.start.v, 'ink', 1 - seg01(res, 0, 0.5));
+    caption(b, cx, bb.y0, M.cap.res.l, M.cap.res.v, 'green', c.lessonHold ? 0 : seg01(res, 0.5, 1));
+    if (M.handles && !c.lesson) M.handles.forEach((h) => b.handle(h.id, P(h.p[0], h.p[1]), { color: 'amber', ariaLabel: h.label, drag: (wp) => h.drag(wp, c) }));
   }
   function chipsMove(c) {
     const M = c.M;
-    if (c.res > 0.5) return [{ k: '색칠한 부분', tex: M.eqTex, color: 'green' }];
+    if (c.res > 0.5 && !c.lessonHold) return [{ k: '색칠한 부분', tex: M.eqTex, color: 'green' }];
     if (c.mv > 0.5) return [{ k: '옮기면', html: esc(M.shapeShort), color: 'amber' }];
     return [];
   }
@@ -581,7 +637,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     problem: {
       tag: '일부분을 옮기는 경우 (겹치는 두 원)', unit: 'cm²',
       stem: (V) => `그림과 같이 반지름의 길이가 ${V.r} cm인 두 원이 서로의 중심을 지날 때, 색칠한 부분의 넓이는?`,
-      choices: (V) => ({ vals: [X(10 * V.r), X(2 * V.r * V.r), X(13 * V.r), X(0, 4 * V.r), X(0, 5 * V.r)], ok: 1 }),
+      // r=5에서는 10r과 정답2r²가 같아져요. 그 경우만 지름을 반지름으로 잘못 쓴 오답 r²로 바꿔요.
+      choices: (V) => ({ vals: [X(10 * V.r === 2 * V.r * V.r ? V.r * V.r : 10 * V.r), X(2 * V.r * V.r), X(13 * V.r), X(0, 4 * V.r), X(0, 5 * V.r)], ok: 1 }),
       hint: () => '오른쪽 반원을 왼쪽으로 가로로 밀어 빈 곳에 끼워 보세요.',
       std: (V) => `<b>해결 전략</b> 오른쪽 원의 오른쪽 반원을 왼쪽으로 ${V.r} cm 옮겨 왼쪽 원의 오른쪽 반원 자리에 채운다.<br>색칠한 부분은 가로 ${V.r} cm, 세로 ${2 * V.r} cm인 직사각형이 된다.<br>(넓이) $=${V.r}\\times${2 * V.r}=${2 * V.r * V.r}$ (cm²)`,
       quick: (V) => `반원 옮기기 → $r\\times2r=${2 * V.r * V.r}$`
@@ -752,7 +809,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
         fig: [
           { k: 'dot', p: [0, 0], when: 'g' },
           { k: 'seg', p: [0, 0], q: [0, R], color: 'ink', w: 1.8, dash: [5, 4], when: 'g' }, T([0, R * 0.7], `R=${fn(R)}`, { when: 'g', dx: 22, color: 'ink' }),
-          T([-h, h * 0.5], `r=${fn(h)}`, { when: 's', color: 'amber' }),
+          T([-h, h * 0.5], `r=${fn(h)}`, { when: 's', color: 'amber', hideRes: true }),
           T([0, R * 0.55], `원의 반 : ${xs(resX)}`, { when: 'r', color: 'sky', size: 14, dy: 22 })
         ],
         startStr: '큰 반원에서 왼쪽 작은 반원을 빼고 오른쪽 아래에 작은 반원을 붙인 모양', startShort: 'S자 곡선이 있는 모양', shapeStr: `반지름 ${fn(R)} cm`, shapeShort: '큰 반원',

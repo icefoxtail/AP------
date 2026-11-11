@@ -601,20 +601,20 @@
     return { ok: reasons.length === 0, reasons: [...new Set(reasons)] };
   }
   const eligibility = basicEligibility;
-  // metaBinding "content": only the answer/solution bytes changed after the metadata was approved;
-  // the stem/choices/image the difficulty describes are byte-identical (see build-archive2-catalog).
-  // In general use mode that still counts as a recorded difficulty; strict mode and every other
-  // caller (APMS recommendations) keep requiring the exactly verified source.
+  // One lane for every caller (user decision 2026-11-11: a recorded value is usable; only real
+  // defects block). A recorded difficulty is usable when it is an integer 1..5 on a question whose
+  // identity and source reference are intact (generalUseEligibility). Text binding (metaBinding),
+  // sourceStatus, confidence, boundary flag, legacyLevelCompatibility, approval status and
+  // metadataConflicts (the registered value differs from the exam file's own inline value; the
+  // registered value is the one in the record) are display labels, never gates. A value of another
+  // question never reaches a record: a failed identity join leaves difficultyBucket "UNKNOWN".
+  // Words (하/중/상) are never converted to a number.
+  // `options` is accepted for caller compatibility and no longer changes the result.
   function difficultyEligible(record, options = {}) {
-    return (record.sourceStatus === "VERIFIED" ||
-      (options.useMode === "general" && record.metaBinding === "content")) &&
-      Number.isInteger(record.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5 &&
-      ["high", "medium", "low"].includes(record.difficultyConfidence) &&
-      ["NONE", "B12", "B23", "B34", "B45"].includes(record.difficultyBoundaryFlag) &&
-      ["NORMAL", "BORDERLINE_ACCEPTABLE", "STRONG_CONFLICT"].includes(record.legacyLevelCompatibility) &&
-      !(record.metadataConflicts || []).some(field => [
-        "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility",
-      ].includes(field));
+    if (!record || !generalUseEligibility(record).ok) return false;
+    const bucket = record.difficultyBucket;
+    if (!Number.isInteger(bucket) || bucket < 1 || bucket > 5) return false;
+    return true;
   }
   function advancedEligible(record, options = {}) {
     const authority = options.canonicalAuthority || options.catalog?.canonicalAuthority;
@@ -758,15 +758,10 @@
   function generalPathKey(record, depth = 4) {
     return pathKey(generalFilterRecord(record, { useMode: "general" }), depth);
   }
-  // The general-purpose Archive is a usage surface: recorded 1..5 difficulty is
-  // sufficient for a selected difficulty filter. Strict approval/difficultyEligible
-  // remains unchanged for certification and external consumers such as APMS.
+  // One difficulty gate for strict, general and external callers (see difficultyEligible).
   function difficultyFilterMatches(record, buckets, options = {}) {
     if (!Array.isArray(buckets) || !buckets.length) return true;
-    const bucket = record?.difficultyBucket;
-    if (!Number.isInteger(bucket) || bucket < 1 || bucket > 5 || !buckets.includes(bucket))
-      return false;
-    return options.useMode === "general" || difficultyEligible(record, options);
+    return buckets.includes(record?.difficultyBucket) && difficultyEligible(record, options);
   }
   function matches(record, filters = {}, options = {}) {
     const filterRecord = options.useMode === "general"

@@ -10,11 +10,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="calc1-tangent/lesson.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -29,6 +34,8 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
+  // 원클릭 해설은 첫 원문을 읽고, 수동 새 문제의 선택은 그대로 보존합니다.
+  const ctActive = (s) => !!(s && (s.lessonOn || s.lessonEntry));
 
   /* ---------- 1. 함수 (원본 evalF / evalFp / evalG_Mode5 / getMVTPoints) ---------- */
   const F = {
@@ -321,7 +328,12 @@ window.addEventListener('DOMContentLoaded', function () {
   const cxRint = (n) => Math.floor(Math.random() * n);
   const cxPick = (arr, not) => { let x; do x = arr[cxRint(arr.length)]; while (arr.length > 1 && x === not); return x; };
   let cxSerial = 0;
-  function cxVarier(gen) { let cur = gen(null); cur.sid = ++cxSerial; return { cur: () => cur, next: () => { cur = gen(cur); cur.sid = ++cxSerial; return cur; } }; }
+  function cxVarier(gen) {
+    let cur = gen(null); cur.sid = ++cxSerial;
+    const first = cur;
+    return { first: () => first, cur: () => ctActive(window.lab && window.lab.s) ? first : cur,
+      next: () => { cur = gen(cur); cur.sid = ++cxSerial; return cur; } };
+  }
   const cxProb = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cx-new>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-cx-new]');
@@ -494,7 +506,8 @@ window.addEventListener('DOMContentLoaded', function () {
       drag: (w) => { let v = clamp(R8(w.x), -0.8, 2.2); [0, 1, 2].forEach((z) => { if (Math.abs(v - z) < 0.06) v = z; }); s.tp = v; } });
   }
   function drawVar8(b, s, lab) {
-    const v = var8.cur(), st = cxStep(lab, s), f = v.f, ts = v.ts, m = v.fp(ts), gts = v.g(ts);
+    const v = var8.cur(), st = cxStep(lab, s), f = v.f;
+    const ts = ctActive(s) && Number.isFinite(s.ctT) ? clamp(s.ctT, 0, 1.6) : v.ts, m = v.fp(ts), gts = v.g(ts);
     cxFocus(b, 'c8v' + v.sid, v.win);
     if (s.grid) b.grid();
     b.axes();
@@ -1165,10 +1178,11 @@ window.addEventListener('DOMContentLoaded', function () {
   function ouVarier(gen) {
     let cur = gen(null);
     cur.first = true; cur.sid = ++ouSerial;
-    const firstKey = cur.key;
+    const first = cur, firstKey = cur.key;
     return {
       ou: true,
-      cur: () => cur,
+      first: () => first,
+      cur: () => ctActive(window.lab && window.lab.s) ? first : cur,
       next: () => {
         for (let i = 0; i < 600; i++) {
           const v = gen(cur);
@@ -1226,6 +1240,7 @@ window.addEventListener('DOMContentLoaded', function () {
     sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${body(V.cur())}</div>`;
     sc.problem = { tag: pr0.tag, time: pr0.time, text: () => ouProb(body(V.cur())), answer: () => (V.cur().first ? ex.answerBadge() : spec.ans(V.cur())) };
     sc.vary = V;
+    sc.ctSource = { first: V.first, question: () => body(V.first()), steps: () => stepsOf(V.first()) };
     const sol0 = sc.solution || {};
     sc.solution = {
       ...sol0,
@@ -1326,7 +1341,8 @@ window.addEventListener('DOMContentLoaded', function () {
         ouTag(b, [B[0], (A[1] + B[1]) / 2], `Δy=${v.fq(v.x2).sub(v.fq(v.x1)).txt}`, { color: 'sky', dx: 10, align: 'left', size: 12 });
       }
       if (st >= 2) {
-        const h = 0.12, xp = v.a0 + v.p * h, xq = v.a0 + v.q * h;
+        const h = ctActive(s) && Number.isFinite(s.ctH) ? clamp(s.ctH, 0.001, 0.12) : 0.12;
+        const xp = v.a0 + v.p * h, xq = v.a0 + v.q * h;
         const U = [xp, f(xp)], V = [xq, f(xq)];
         b.seg(U, V, { color: 'violet', width: 2.2, dash: true });
         b.seg([xp, P[1]], [xq, P[1]], { color: 'amber', width: 2.2 });
@@ -1339,7 +1355,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.point(A, { color: 'amber', r: 6, label: `A(x = ${v.x1})`, ...ouPlace(ouSlope(f, v.x1), ouPos(xs, v.x1)) });
       b.point(B, { color: 'sky', r: 6, label: `B(x = ${v.x2})`, ...ouPlace(ouSlope(f, v.x2), ouPos(xs, v.x2)) });
       b.point(P, { color: 'rose', r: 6, label: `P(x = ${v.a0})`, ...ouPlace(v.fpq.v, ouPos(xs, v.a0)) });
-      if (st >= 1) ouTag(b, [v.x1 + 0.3 * (v.x2 - v.x1), A[1] + 0.3 * (B[1] - A[1])], `평균변화율 ${v.avg.txt}`, { color: 'sky', dy: v.avg.v >= 0 ? 22 : -16, dx: 10, align: 'left' });
+      if (st >= 1 && (!ctActive(s) || s.ctTarget !== 'average' || s.ctShowAnswer)) ouTag(b, [v.x1 + 0.3 * (v.x2 - v.x1), A[1] + 0.3 * (B[1] - A[1])], `평균변화율 ${v.avg.txt}`, { color: 'sky', dy: v.avg.v >= 0 ? 22 : -16, dx: 10, align: 'left' });
       if (st >= 3) { const lp = ouPlace(v.fpq.v, 'R'); ouTag(b, P, `f′(${v.a0}) = ${v.fpq.txt}`, { color: 'rose', dx: -lp.dx * 1.4, dy: -lp.dy * 1.9, align: lp.align === 'left' ? 'right' : 'left' }); }
     }
   });
@@ -1427,7 +1443,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (st >= 2) b.line([c, v.gc.v], v.p.v, { extent: 2.2, color: 'rose', width: 2.2, dash: true });
       if (st >= 3) b.plot(v.line, sd < 0 ? { from: c, color: 'sky', width: 3.2, glow: true } : { to: c, color: 'sky', width: 3.2, glow: true });
       if (st >= 1) b.point([c, v.gc.v], { color: 'amber', r: 6.5, label: `(${c}, ${v.gc.txt})`, dx: sd < 0 ? 12 : -12, dy: 22, align: sd < 0 ? 'left' : 'right' });
-      if (st >= 2) ouTag(b, [c - sd * 1.8, v.line(c - sd * 1.8)], `기울기 ${v.p.txt}`, { color: 'rose', dy: v.p.v >= 0 ? 24 : -14 });
+      if (st >= 2) ouTag(b, [c - sd * 1.8, v.line(c - sd * 1.8)], `기울기 ${ctActive(s) && !s.ctExplore && !s.ctShowAnswer ? 'p' : v.p.txt}`, { color: 'rose', dy: v.p.v >= 0 ? 24 : -14 });
       if (st >= 3) ouTag(b, [c - sd * 1.9, vb.y1 - (vb.y1 - vb.y0) * 0.1], `p = ${v.p.txt}, q = ${v.q.txt}`, { color: 'green', size: 13 });
     }
   });
@@ -1463,7 +1479,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ouTag(b, [vb.x1 - 0.2, vb.y1 - (vb.y1 - vb.y0) * 0.1], `l : y = ${ouMinus(ouPoly([v.m, v.n]))}`, { color: 'sky', size: 12.5, align: 'right' });
       if (st >= 1) {
         b.line(v.T, v.m, { extent: 2.2, color: 'rose', width: 2.3, dash: true, glow: true });
-        b.point(v.T, { color: 'amber', r: 6.5, label: st >= 2 ? `T(${v.a.txt}, ${v.fa.txt})` : '평행하게 옮긴 접선의 접점 T', ...ouSide(v.m), dy: -16 });
+        b.point(v.T, { color: 'amber', r: 6.5, label: st >= 2 && (!ctActive(s) || s.ctTarget !== 'point' || s.ctShowAnswer) ? `T(${v.a.txt}, ${v.fa.txt})` : '평행하게 옮긴 접선의 접점 T', ...ouSide(v.m), dy: -16 });
       }
       if (st >= 2) {
         b.seg(v.T, v.H, { color: 'green', width: 2.8, glow: true });
@@ -1582,6 +1598,63 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   });
 
+  /* 원클릭 연결: 기존 탐구와 첫 원문 그림을 그대로 재사용합니다. */
+  scenes.find(sc => sc.id === 'tanint').ctSource = { first: var8.first, question: () => text8(var8.first()), steps: () => steps8(var8.first()) };
+  scenes.find(sc => sc.id === 'mvtband').ctSource = { first: var11.first, question: () => text11(var11.first()), steps: () => steps11(var11.first()) };
+  const ctById = Object.fromEntries(scenes.map(sc => [sc.id, sc]));
+  const ctSource = window.APL_TANGENT_SOURCE = {
+    scenes,
+    first: id => ctById[id].ctSource.first(),
+    question: id => ctById[id].ctSource.question(),
+    steps: id => ctById[id].ctSource.steps()
+  };
+  // 실제 표시 함수 위의 강조점입니다. 그림과 다른 별도 함수를 만들지 않습니다.
+  function ctTraceSource(b, s, sc) {
+    if (s.lessonEntry || !(s.ctTrace > 0)) return;
+    const v = sc.ctSource.first(), exploring = !!s.ctExplore;
+    const fs = exploring ? { secant: F[1], mvt: F[2], cusp: f3(s), normal: F[4], common: F[5], tanint: f8,
+      mvtband: x => A11.fa + s.lo * (x - A11.a) }
+      : { secant: v.F, mvt: v.F, cusp: v.g, normal: v.f, common: v.F, tanint: v.f,
+        mvtband: x => v.fa + v.L * (x - v.a) };
+    const f = fs[sc.id], box = b.viewBox(), points = [];
+    if (typeof f !== 'function') return;
+    for (let i = 0; i <= 96; i++) {
+      const x = box.x0 + (box.x1 - box.x0) * (0.08 + 0.84 * i / 96), y = f(x);
+      if (!exploring && sc.id === 'cusp' && (v.sd < 0 ? x > v.c : x < v.c)) continue;
+      if (!exploring && sc.id === 'mvtband' && s.step === 0) {
+        points.push([v.b, box.y0 + (box.y1 - box.y0) * (0.08 + 0.84 * i / 96)]);
+        continue;
+      }
+      if (Number.isFinite(y) && y > box.y0 + 0.05 * (box.y1 - box.y0) && y < box.y1 - 0.05 * (box.y1 - box.y0)) points.push([x, y]);
+    }
+    if (!points.length) return;
+    const k = Math.min(points.length - 1, Math.floor(clamp(s.ctTrace, 0, 1) * (points.length - 1)));
+    let trail = points.slice(Math.max(0, k - 5), k + 1);
+    if (exploring && sc.id === 'cusp') trail = trail.filter(p => (p[0] < 1) === (points[k][0] < 1));
+    if (trail.length > 1) b.path(trail, { color: 'violet', width: 4.6, alpha: 0.7 });
+    b.point(points[k], { color: 'violet', r: 4.5 });
+  }
+  scenes.forEach(sc => {
+    const original = { draw: sc.draw, view: sc.view, panes: sc.panes, question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, tick: sc.tick };
+    const call = (value, ...args) => typeof value === 'function' ? value(...args) : value;
+    sc.question = (s, lab) => ctActive(s) ? (s.ctQuestion || sc.ctSource.question()) : call(original.question, s, lab);
+    sc.reviewTop = (s, lab) => ctActive(s) ? '' : call(original.reviewTop, s, lab);
+    sc.steps = (s, lab) => ctActive(s) ? ['주어진 조건과 구할 것', '성질을 연결하고 식 세우기', '계산과 결론'] : call(original.steps, s, lab);
+    sc.view = (s, lab) => ctActive(s) ? {} : call(original.view, s, lab);
+    sc.panes = s => ctActive(s) ? null : call(original.panes, s);
+    if (original.tick) sc.tick = (s, dt, lab) => ctActive(s) ? false : original.tick(s, dt, lab);
+    sc.draw = (b, s, value, lab) => {
+      if (!ctActive(s) || b.thumb) return original.draw(b, s, value, lab);
+      const drawState = { ...s, dual: false, playing: false,
+        step: s.lessonEntry ? 0 : Math.min(s.step || 0, s.ctShowAnswer ? 3 : 2),
+        ctShowAnswer: !s.lessonEntry && !!s.ctShowAnswer };
+      const frameLab = { ...lab, s: drawState, tab: s.ctExplore ? 'explore' : 'review', _answerOpen: () => drawState.ctShowAnswer };
+      original.draw(b, drawState, {}, frameLab);
+      ctTraceSource(b, drawState, sc);
+    };
+  });
+  const lessons = window.APL_TANGENT_LESSONS ? window.APL_TANGENT_LESSONS.install(scenes, ctSource) : {};
+
   APLab.createLab({
     stagedReveal: true,
     id: 'calc1-tangent',
@@ -1603,6 +1676,7 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { dual: false, animDir: -1, ub: 'both', bx: 3.5, by: 3.5 },
     persist: ['dual'],
+    lessons,
     scenes
   });
 });

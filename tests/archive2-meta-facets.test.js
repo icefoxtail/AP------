@@ -231,19 +231,33 @@ test('facet options are faceted, labelled by the registry only, and report the s
   assert.deepEqual(core.metaFacetOptions(rows, approvedOnlyFilter, labelOf).pt.map(option => option.value), ['PT_A']);
 });
 
-test('general mode accepts the recorded difficulty of content-bound rows; strict mode and APMS callers do not', () => {
+test('one difficulty lane: an integer bucket is usable in every mode unless a real defect applies', () => {
   const base = {
     sourceStatus: 'HOLD', metaBinding: 'content', difficultyBucket: 3, difficultyConfidence: 'high',
     difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL', metadataConflicts: [],
   };
-  assert.equal(core.difficultyEligible(base), false);
-  assert.equal(core.difficultyEligible(base, { useMode: 'strict' }), false);
-  assert.equal(core.difficultyEligible(base, { useMode: 'general' }), true);
-  assert.equal(core.difficultyEligible({ ...base, metaBinding: '' }, { useMode: 'general' }), false, 'unbound rows stay out');
-  assert.equal(core.difficultyEligible({ ...base, difficultyConfidence: '' }, { useMode: 'general' }), false, 'no confidence is never invented');
-  assert.equal(core.difficultyEligible({ ...base, sourceStatus: 'VERIFIED', metaBinding: 'exact' }), true);
-  assert.equal(core.matches(record(base), { grade: '고1', difficultyBuckets: [3] }, { useMode: 'general' }), true);
-  assert.equal(core.matches(record(base), { grade: '고1', difficultyBuckets: [3] }, { useMode: 'strict' }), false);
+  const row = extra => record({ ...base, ...extra });
+  // content-bound values still describe the question: usable regardless of option or caller
+  for (const options of [undefined, { useMode: 'strict' }, { useMode: 'general' }])
+    assert.equal(core.difficultyEligible(row(), options), true);
+  // confidence/boundary/compatibility/approval/conflict markers are labels, never gates
+  assert.equal(core.difficultyEligible(row({ difficultyConfidence: '' })), true);
+  assert.equal(core.difficultyEligible(row({ difficultyBoundaryFlag: undefined, legacyLevelCompatibility: 'BORDERLINE_REVIEW' })), true);
+  assert.equal(core.difficultyEligible(row({ metadataConflicts: ['difficultyBucket'] })), true);
+  assert.equal(core.difficultyEligible(row({ sourceStatus: 'VERIFIED', metaBinding: 'exact' })), true);
+  // no binding is a label: an unbound integer bucket stays usable
+  for (const options of [undefined, { useMode: 'general' }])
+    assert.equal(core.difficultyEligible(row({ metaBinding: '', sourceStatus: 'HOLD' }), options), true);
+  // real defects: a word instead of an integer, broken identity/source reference
+  for (const options of [undefined, { useMode: 'general' }]) {
+    assert.equal(core.difficultyEligible(row({ identityStatus: 'UNRESOLVED' }), options), false);
+    assert.equal(core.difficultyEligible(row({ difficultyBucket: '중' }), options), false, 'no word-to-number conversion');
+    assert.equal(core.difficultyEligible(row({ sourceIntegrityStatus: 'MISMATCH' }), options), false);
+  }
+  for (const mode of ['general', 'strict'])
+    assert.equal(core.matches(row(), { grade: '고1', difficultyBuckets: [3] }, { useMode: mode }), true);
+  assert.equal(core.matches(row({ metaBinding: '' }), { grade: '고1', difficultyBuckets: [3] }, { useMode: 'general' }), true);
+  assert.equal(core.matches(row({ sourceIntegrityStatus: 'MISMATCH' }), { grade: '고1', difficultyBuckets: [3] }, { useMode: 'general' }), false);
 });
 
 // ---- type diversity ----------------------------------------------------------------------------
@@ -569,7 +583,7 @@ test('문제지 만들기: facets are counted for the whole list while no unit i
 
 test('the workspace and the unit page load the new scripts with a new cache version and the changed shared modules stay loadable in APMS', () => {
   const version = '20261029-s14-1';
-  const coreVersion = '20261110-recency-1';
+  const coreVersion = '20261111-one-lane-difficulty-1';
   const workspace = read('workspace.html');
   assert.match(workspace, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(workspace, /unit-past-exams-core\.js\?v=20261110-grid-1/);
@@ -578,7 +592,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /archive2-unified-units\.js\?v=20261030-s11-1/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261111-assign-3/);
+  assert.match(workspace, /archive2-workspace\.js\?v=20261111-remove-1/);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261110-grid-1/);

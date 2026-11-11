@@ -25,6 +25,15 @@
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
   const Q3 = { F: '면', E: '모서리', V: '꼭짓점' };
   const stepOf = (C) => (C.problem ? 0 : C.review ? C.step : 4);
+  const lessonOn = (s) => !!(s.lessonOn || s.lessonEntry);
+  const answerReady = (s) => !lessonOn(s) || (!s.lessonEntry && s.phShowAnswer === true);
+  // The given n and the counted groups may precede the answer; the requested total may not.
+  const countParts = (kind, n, target) => target === 'F' ? `밑면 ${kind === 'pyr' ? 1 : 2}개 + 옆면 ${n}개` : target === 'E' ? kind === 'pyr' ? `밑모서리 ${n}개 + 옆모서리 ${n}개` : `밑모서리 ${n}개씩 두 묶음 + 옆모서리 ${n}개` : kind === 'pyr' ? `밑면 꼭짓점 ${n}개 + 꼭대기 한 점` : `위쪽 꼭짓점 ${n}개 + 아래쪽 꼭짓점 ${n}개`;
+  function countLessonLines(s, kind, n, c) {
+    const target = ['F', 'E', 'V'].includes(s.phTarget) ? s.phTarget : 'F';
+    if (answerReady(s)) return [{ t: `${Q3[target]} = ${countParts(kind, n, target)} = ${c[target]}개`, c: GRN, size: 14 }];
+    return [{ t: `n = ${n}: 밑면 한 개의 변의 수`, c: 'ink', size: 15 }].concat(s.phSupportReady ? [{ t: countParts(kind, n, target), c: AMB, size: 14 }] : []);
+  }
   // 맨 위 줄글(banner)이 차지하는 높이(px): 그림 위 여백을 줄 수에 맞춰 잡습니다.
   const topFor = (lines, extra = 8) => 16 + lines.filter(Boolean).reduce((a, l) => a + (l.size || 15) + 9, 0) + extra;
 
@@ -132,6 +141,12 @@
         if (st === 4 || st === 2) lines.push({ t: poly ? '면이 모두 다각형이에요 → 다면체 ○' : '곡면이 있어요 → 다면체 ✕', c: poly ? GRN : 'orange', size: 16 });
         else if (st === 1) lines.push({ t: poly ? '모든 면이 다각형이에요' : '곡면이 하나 있어요', c: poly ? GRN : 'orange', size: 16 });
         else if (st === 3) lines.push({ t: poly ? `면이 ${M.F}개이니 ${M.F}면체` : '다면체가 아니라서 면의 수를 세지 않아요', c: poly ? AMB : 'orange', size: 16 });
+        if (lessonOn(s)) {
+          lines.length = 0;
+          lines.push({ t: M.name, c: 'ink', size: 17 });
+          if (answerReady(s)) lines.push({ t: s.phTarget === 'faces' ? `면이 ${M.F}개 → ${M.F}면체` : poly ? '모든 면이 다각형 → 다면체예요' : '곡면이 있으므로 다면체가 아니에요', c: GRN, size: 16 });
+          else if (s.phSupportReady) lines.push({ t: s.phTarget === 'faces' ? `밑면 2개 + 옆면 ${n}개` : poly ? '다각형인 면만 있어요' : '옆면에 곡면이 있어요', c: AMB, size: 15 });
+        }
         banner(b, lines, C);
       }
       D.flush();
@@ -180,7 +195,7 @@
         const D = scene3(b, s, C), st = stepOf(C);
         const n = C.problem ? M.Q.n : M.n, S = C.problem ? solid(n) : M.S, c = C.problem ? countsOf(kind, n) : M.c;
         const W = (isP ? 2.8 : 3.0) - (b.W < 560 ? 0.4 : 0);
-        const split = C.problem ? 0 : C.review ? (st === 1 ? 1 : 0) : s.phSplit;
+        const split = C.problem ? 0 : lessonOn(s) ? s.phSplit : C.review ? (st === 1 ? 1 : 0) : s.phSplit;
         const bi = baseIdx(S), si = sideIdx(S);
         const dTop = isP ? hxOf(s, -W * split) : v3(0, 0, 0), dBot = hxOf(s, W * split);
         // 줄글(위쪽 안내) — 줄 수만큼만 위 여백을 둡니다
@@ -190,6 +205,7 @@
           const lineE = { t: isP ? `모서리 = 밑 ${n}×2 + 옆 ${n} = ${c.E}개` : `모서리 = 밑 ${n} + 옆 ${n} = ${c.E}개`, c: SKY, size: 15 };
           const lineV = { t: isP ? `꼭짓점 = ${n}×2 = ${c.V}개` : `꼭짓점 = 밑 ${n} + 꼭대기 1 = ${c.V}개`, c: AMB, size: 15 };
           if (st === 4) L.push(lineF, lineE, lineV); else if (st === 1) L.push(lineF); else if (st === 2) L.push(lineE); else if (st === 3) L.push(lineV);
+          if (lessonOn(s)) { L.length = 0; L.push(...countLessonLines(s, kind, n, c)); }
         }
         // 화면 틀: 지금 그려지는 것(입체 + 떼어 낸 밑면)만 담습니다 — 입체가 작아지지 않게
         const ext = S.V.slice();
@@ -269,7 +285,7 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C), n = C.problem ? M.Q.n : M.n, k = C.problem ? 0.5 : M.k;
       const S = C.problem ? frustumS(n, k, 1.5, 2.4) : M.S, T = M.T, c = C.problem ? countsOf('fr', n) : M.c;
-      const sep = C.problem ? 0 : C.review ? (st === 1 ? 0.7 : st === 4 ? 0 : 0.7) : s.phSep;
+      const sep = C.problem ? 0 : lessonOn(s) ? s.phSep : C.review ? (st === 1 ? 0.7 : st === 4 ? 0 : 0.7) : s.phSep;
       const W = 2 * k * 1.5 + 0.9, off = hxOf(s, W * sep);
       const showTop = !C.problem && sep > 0.01;
       const compact = b.W < 560 && !C.problem && !C.thumb;
@@ -278,6 +294,7 @@
         if (st === 1 || st === 4) L.push({ t: '윗밑면 ∥ 아랫밑면 (서로 평행)', c: SKY, size: 15 });
         if (st === 2 || st === 4) L.push({ t: `옆면은 사다리꼴 ${n}개`, c: AMB, size: 15 });
         if (st === 3 || (st === 4 && !compact)) L.push({ t: `면 ${n}+2=${c.F} · 모서리 ${n}×3=${c.E} · 꼭짓점 ${n}×2=${c.V}`, c: st === 3 ? AMB : 'ink', size: 14 });
+        if (lessonOn(s)) { L.length = 0; L.push(...countLessonLines(s, 'fr', n, c)); }
       }
       // 화면 틀: 지금 그려지는 것(각뿔대 + 떼어 낸 윗 각뿔)만 담습니다 — 각뿔대가 작아지지 않게
       const offFit = sep < 0.7 ? hxOf(s, W * 0.7) : off; // 처음 상태(0.7)보다 덜 떼었을 때는 처음 틀을 그대로 써서 막대를 움직여도 각뿔대 크기가 출렁이지 않게
@@ -299,6 +316,7 @@
         face: (fi, vis) => (fi === topF ? { c: SKY, a: st === 1 || st === 4 ? 0.34 : 0.12 } : fi === botF ? (st === 1 ? { c: SKY, a: 0.3, hidden: true } : null) : vis ? sideCol : null),
         edge: (ei) => { const e = S.E[ei], za = S.V[e.a].z, zb = S.V[e.b].z; const isBase = Math.abs(za - zb) < 1e-6; return st === 3 ? (isBase ? { color: SKY, width: 5 } : { color: AMB, width: 5 }) : { color: 'ink', width: 3 }; }
       });
+      if (lessonOn(s) && s.phTarget === 'V') S.V.forEach((p) => D.dot(p, s.phSupportReady ? AMB : 'ink', s.phSupportReady ? 5.5 : 3.5));
       if (C.txt) {
         const tf = S.F[topF];
         D.label(faceMid(S.V, tf), '윗밑면', { color: SKY, size: 15, at: [[0, 0]] });
@@ -369,7 +387,7 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C);
       if (C.problem) { drawRow(D, s, M.Q.items, C); return; }
-      const { S, fi, kind } = M, out = C.review ? (st >= 1 ? 1 : 0) : s.phOut;
+      const { S, fi, kind } = M, out = lessonOn(s) ? s.phOut : C.review ? (st >= 1 ? 1 : 0) : s.phOut;
       const F = S.F[fi], pts3 = F.i.map((i) => S.V[i]), cc = faceMid(S.V, F);
       // 고른 옆면의 실제 모양(평면 도형): 위쪽이 입체의 위쪽이 되게 펴서 화면 가로로 꺼냅니다
       let wv = sub3(v3(0, 0, 1), mul3(F.n, F.n.z)); wv = unit3(wv);
@@ -400,11 +418,16 @@
         if (kind === 'fr' && flatPts.length === 4) {
           for (let a2 = 0; a2 < 2; a2++) { const A2 = flatPts[a2], B2 = flatPts[a2 + 1], C2 = flatPts[(a2 + 2) % 4], D2 = flatPts[(a2 + 3) % 4]; const d1 = dirOf(A2, B2), d2 = dirOf(D2, C2); if (Math.abs(d1.x * d2.y - d1.y * d2.x) < 1e-6) { const nn = { x: -d1.y, y: d1.x }; mk({ x: (A2.x + B2.x) / 2, y: (A2.y + B2.y) / 2 }, d1, nn); mk({ x: (C2.x + D2.x) / 2, y: (C2.y + D2.y) / 2 }, d1, nn); break; } }
         }
-        if (C.txt && out > 0.3) D.b.text({ x: mid.x, y: mid.y }, M.shape, { color: 'ink', size: 17, weight: 800, align: 'center', baseline: 'middle' });
+        if (C.txt && out > 0.3) D.b.text({ x: mid.x, y: mid.y }, answerReady(s) ? M.shape : '옆면', { color: 'ink', size: 17, weight: 800, align: 'center', baseline: 'middle' });
       }
       if (C.txt) {
         const L = [{ t: `${M.name}의 옆면은 모두 ${M.shape}`, c: AMB, size: 17 }];
         if (st === 2) L.push({ t: kind === 'prism' ? '직사각형: 마주 보는 변이 평행하고 네 각이 직각' : kind === 'pyr' ? '삼각형: 꼭대기 한 점에서 모여요' : '사다리꼴: 평행한 변이 한 쌍', c: 'ink', size: 14 });
+        if (lessonOn(s) && !answerReady(s)) {
+          L.length = 0;
+          L.push({ t: `${M.name}의 옆면 하나를 꺼내요`, c: AMB, size: 17 });
+          if (s.phSupportReady) L.push({ t: kind === 'prism' ? '네 각이 모두 직각이에요' : kind === 'pyr' ? '세 변으로 둘러싸여 있어요' : '평행한 두 변의 길이가 달라요', c: 'ink', size: 14 });
+        }
         banner(b, L, C);
       }
       D.flush();
@@ -465,16 +488,24 @@
         if (C.txt) {
           const c = countsOf(k, n), base = add3(ctr[i], v3(0, 0, -h / 2 - 0.3));
           const dim = (st === 1 && k !== 'prism') || (st === 2 && k !== 'pyr') || (st === 3 && k !== 'fr');
-          D.label(base, nameOf(k, n), { color: AMB, size: 16, at: [[0, 34]], alpha: dim ? 0.45 : 1 });
+          D.label(base, !lessonOn(s) || (answerReady(s) && k === s.phTarget) ? nameOf(k, n) : KNAME[k], { color: AMB, size: 16, at: [[0, 34]], alpha: dim ? 0.45 : 1 });
           D.label(base, `면 ${c.F}`, { color: 'ink', size: 14, at: [[0, 56]], alpha: dim ? 0.45 : 1 });
-          D.label(base, `모서리 ${c.E}`, { color: 'ink', size: 14, at: [[0, 74]], alpha: dim ? 0.45 : 1 });
-          D.label(base, `꼭짓점 ${c.V}`, { color: 'ink', size: 14, at: [[0, 92]], alpha: dim ? 0.45 : 1 });
+          if (!lessonOn(s)) {
+            D.label(base, `모서리 ${c.E}`, { color: 'ink', size: 14, at: [[0, 74]], alpha: dim ? 0.45 : 1 });
+            D.label(base, `꼭짓점 ${c.V}`, { color: 'ink', size: 14, at: [[0, 92]], alpha: dim ? 0.45 : 1 });
+          }
         }
       });
       const L = [{ t: `면이 ${M.F}개인 입체`, c: 'ink', size: 17 }];
       if (st === 1) L.push({ t: `각기둥: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.prism}`, c: AMB, size: 14 });
       if (st === 2) L.push({ t: `각뿔: 밑면 1 + 옆면 n = ${M.F} → n = ${M.nn.pyr}`, c: AMB, size: 14 });
       if (st === 3) L.push({ t: `각뿔대: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.fr}`, c: AMB, size: 14 });
+      if (lessonOn(s)) {
+        const target = ['prism', 'pyr', 'fr'].includes(s.phTarget) ? s.phTarget : 'prism', bases = target === 'pyr' ? 1 : 2;
+        L.length = 0; L.push({ t: `면이 ${M.F}개인 ${KNAME[target]}의 이름`, c: 'ink', size: 17 });
+        if (answerReady(s)) L.push({ t: `n = ${M.F} − ${bases} = ${M.nn[target]} → ${nameOf(target, M.nn[target])}`, c: GRN, size: 15 });
+        else if (s.phSupportReady) L.push({ t: `옆면 n개 = 면 ${M.F}개 − 밑면 ${bases}개`, c: AMB, size: 14 });
+      }
       D.fitPts(pts, { t: topFor(L, 4), b: 116, l: 12, r: 12 });
       if (C.txt) banner(b, L, C);
       D.flush();
@@ -535,7 +566,7 @@
       const n = C.problem ? M.qn : M.n, k = C.problem ? 0.55 : M.k, S = C.problem ? frustumS(M.qn, 0.55) : M.S;
       D.fitPts(S.V, { t: C.problem ? 40 : 96, b: 44, l: 40, r: 40 });
       const topF = S.F.findIndex((f) => f.n.z > 0.999), botF = S.F.findIndex((f) => f.n.z < -0.999);
-      const id = C.problem ? 0 : C.review ? (st === 1 ? 1 : st === 2 ? 3 : 2) : M.stm.id;
+      const id = C.problem ? 0 : lessonOn(s) ? M.stm.id : C.review ? (st === 1 ? 1 : st === 2 ? 3 : 2) : M.stm.id;
       const baseHL = id === 1 || id === 2, sideHL = id === 3 || id === 4 || id === 5;
       drawPoly(D, S, {
         face: (fi, vis) => (fi === topF ? { c: SKY, a: baseHL ? 0.4 : 0.1 } : fi === botF ? (baseHL ? { c: SKY, a: 0.1, hidden: true } : null) : vis ? { c: AMB, a: sideHL ? 0.36 : 0.08 } : null),
@@ -558,7 +589,12 @@
         }
         const stm = M.stm;
         const txt = id === 5 ? `옆면은 ${n}개 → ${stm.ok ? '맞아요 ○' : '틀려요 ✕'}` : `${stm.t(n)}  ${stm.ok ? '○ 맞아요' : '✕ 틀려요'}`;
-        banner(b, [{ t: txt, c: stm.ok ? GRN : RED, size: 16 }, { t: stm.why, c: 'ink', size: 13 }], C);
+        if (lessonOn(s)) {
+          const target = s.phTarget;
+          const question = target === 'bases' ? '두 밑면의 모양과 크기를 비교해요' : target === 'side' ? '옆면에서 평행한 두 변을 찾아요' : '밑면의 변마다 옆면 하나가 이어져요';
+          const result = target === 'bases' ? '두 밑면은 평행하지만 합동이 아니에요' : target === 'side' ? '각뿔대의 옆면은 사다리꼴' : `옆면 ${n}개: 밑면의 변마다 하나씩`;
+          banner(b, [{ t: answerReady(s) ? result : question, c: answerReady(s) ? GRN : AMB, size: 16 }], C);
+        } else banner(b, [{ t: txt, c: stm.ok ? GRN : RED, size: 16 }, { t: stm.why, c: 'ink', size: 13 }], C);
         void k;
       }
       D.flush();
@@ -615,14 +651,18 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C);
       const S = C.problem ? M.qS : M.S, e = C.problem ? M.qe : M;
-      const narrow = b.W < 560, hasBars = !C.problem && C.txt && st !== 1;
+      const narrow = b.W < 560, hasBars = !C.problem && C.txt && (lessonOn(s) ? !!s.phCountReady : st !== 1);
       const bottom = !hasBars ? 36 : narrow ? 104 : 150; // 아래 두 막대 자리(휴대폰은 막대를 납작하게 해서 입체에 높이를 더 줍니다)
       D.fitPts(S.V, { t: C.problem ? 70 : 74, b: bottom, l: 40, r: 40 });
       drawPoly(D, S, { face: (fi, vis) => (vis ? { c: st === 1 ? AMB : 'green', a: st === 1 ? 0.26 : 0.12 } : null), edge: () => ({ color: st === 1 ? SKY : 'ink', width: st === 1 ? 3.6 : 3 }) });
       S.V.forEach((p) => D.dot(p, st === 1 ? RED : 'ink', st === 1 ? 5.5 : 3.5));
       if (C.txt) {
         if (C.problem) banner(b, [{ t: `${M.qname}`, c: 'ink', size: 16 }, { t: '꼭짓점 V − 모서리 E + 면 F = 2', c: AMB, size: 15 }], C);
-        else banner(b, [{ t: M.name, c: 'ink', size: 17 }, { t: st === 1 ? `꼭짓점 ${e.V}개 · 모서리 ${e.E}개 · 면 ${e.F}개` : st === 3 ? `V − E + F = ${e.V} − ${e.E} + ${e.F} = ${e.V - e.E + e.F}` : `V − E + F = ${e.V - e.E + e.F}`, c: st === 3 ? GRN : 'ink', size: 16 }], C);
+        else if (lessonOn(s)) {
+          const value = s.phTarget === 'E' ? `V ${e.V}개 · E ${answerReady(s) ? e.E + '개' : '?'} · F ${e.F}개` : s.phSupportReady ? `V ${e.V}개 · E ${e.E}개 · F ${e.F}개` : 'V 꼭짓점 · E 모서리 · F 면';
+          const result = s.phTarget === 'E' ? `E = ${e.V} + ${e.F} − 2 = ${e.E}개` : `V − E + F = ${e.V} − ${e.E} + ${e.F} = 2`;
+          banner(b, [{ t: M.name, c: 'ink', size: 17 }, { t: answerReady(s) ? result : value, c: answerReady(s) ? GRN : 'ink', size: 15 }], C);
+        } else banner(b, [{ t: M.name, c: 'ink', size: 17 }, { t: st === 1 ? `꼭짓점 ${e.V}개 · 모서리 ${e.E}개 · 면 ${e.F}개` : st === 3 ? `V − E + F = ${e.V} − ${e.E} + ${e.F} = ${e.V - e.E + e.F}` : `V − E + F = ${e.V - e.E + e.F}`, c: st === 3 ? GRN : 'ink', size: 16 }], C);
       }
       // 아래 막대: V + F 와 E + 2
       if (hasBars) {
@@ -640,7 +680,8 @@
           b.stext(x0, y - lab, label, { color: 'ink', size: 13, weight: 800, align: 'left', baseline: 'middle' });
         };
         bar(yb - gap, [{ v: e.V, c: SKY, t: `V ${e.V}` }, { v: e.F, c: AMB, t: `F ${e.F}` }], `V + F = ${e.V + e.F}`);
-        bar(yb, [{ v: e.E, c: RED, t: `E ${e.E}` }, { v: 2, c: GRN, t: '2' }], `E + 2 = ${e.E + 2}`);
+        if (lessonOn(s) && s.phTarget !== 'E' && !answerReady(s)) bar(yb, [{ v: e.E, c: RED, t: `E ${e.E}` }], `E = ${e.E}`);
+        else bar(yb, [{ v: e.E, c: RED, t: lessonOn(s) && !answerReady(s) ? 'E ?' : `E ${e.E}` }, { v: 2, c: GRN, t: '2' }], `E + 2 = ${e.E + 2}`);
       }
       D.flush();
     },

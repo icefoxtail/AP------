@@ -293,10 +293,11 @@
 
   /* ------------------------------------------------------------------ 장면 상태 (탭·단계) */
   function baseCtx(s, lab, thumb) {
-    const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const tab = thumb ? 'explore' : s.lessonEntry ? 'review' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    return { tab, problem, review, lesson, step: s.lessonEntry ? 0 : review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
@@ -404,6 +405,8 @@
     const A = D.anim;
     const questionReview = new WeakSet();
     const syncReview = (s, lab) => {
+      // A fixed lesson must not inherit a previously randomized problem tab.
+      if (s.lessonOn || s.lessonEntry) { questionReview.delete(s); return false; }
       if (lab && lab.tab === 'problem') {
         if (!questionReview.has(s)) s.step = 0;
         questionReview.add(s);
@@ -479,7 +482,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
-        probOf(D, s); // 이전 문항의 공개 단계가 새 그림에 적용되기 전에 동기화합니다.
+        if (!s.lessonOn && !s.lessonEntry) probOf(D, s); // 수동 문항만 동기화합니다. 해설의 고정 단계는 재생기가 관리합니다.
         const fromQuestion = syncReview(s, lab);
         // 막대를 움직이면 정리 단계의 글(숫자)도 달라지므로, 글이 바뀌면 정리 칸을 다시 만듭니다.
         if (lab && lab.scene && lab.scene.ph === D) {
@@ -499,6 +502,12 @@
           v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
           if ((s.step || 0) < n) v.formula = null;
         }
+        if (C.lesson) {
+          v.card = null;
+          v.readouts = [];
+          v.formula = null;
+          v.status = null;
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
@@ -510,7 +519,7 @@
         }
         if (b.thumb) C.step = 99;
         const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
         D.draw(b, s, M, C);
       }
     };

@@ -464,7 +464,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림. 위는 y=(x+1)²−4의 그래프로, 꼭짓점 (−1,−4)가 x축 아래에 있고 x축과 (−3,0), (1,0)에서 만난다. 아래는 y=(x+1)²+2의 그래프로, 꼭짓점 (−1,2)가 x축 위에 있어 x축과 만나지 않는다.",
+    "solutionImageCaption": "이차함수 y=x²+2x+k=(x+1)²+k−1의 꼭짓점의 y좌표는 k−1이다. 예로 위 그림은 k=−3이라 꼭짓점이 x축 아래에서 x축과 두 점에서 만나고, 아래 그림은 k=3이라 꼭짓점이 x축 위에 있어 만나지 않는다. 그래프가 x축과 만나려면 이차방정식 x²+2x+k=0의 판별식 D=4−4k가 0 이상이어야 하고, 접하는 경우(D=0)도 포함한다. 정답은 k≤1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -546,9 +550,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_매산여고_1학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "a=-1, b=2, c=2일 때 포물선과 직선은 두 점 P, Q에서 만난다.",
-    "solutionImageCaption": "a=-1, b=2, c=2일 때 포물선과 직선은 두 점 P, Q에서 만난다.",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 그림은 이차함수 y=x²+ax의 파란 그래프와 직선 y=bx−c의 주황 직선이 두 점 P, Q에서 만나는 모습이다. 아래 그림은 주황 직선 y=bx−c가 점 (0,−2)와 점 (1,0)을 지나는 모습이다.",
+    "solutionImageCaption": "위 그림은 y=x²+ax(파랑)와 y=bx−c(주황)가 두 점 P, Q에서 만나는 모습이고(식 이름 옆의 작은 점은 이름이 가리키는 곡선 위의 표시), 아래 그림은 직선 y=bx−c(주황)가 두 점 (0,−2), (1,0)을 지나는 모습이다. 교점에서 x²+ax=bx−c이므로 x²+(a−b)x+c=0이고, 근과 계수의 관계로 두 교점의 x좌표의 합은 b−a이다. 직선이 (0,−2), (1,0)을 지나므로 대입하면 c=2, b=2이고, b−a=3에서 a=−1이다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -673,7 +677,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 예로 k=0일 때 구간 −1≤x≤4에서 그린 파란 포물선 f(x)=−x²+4x의 일부. 꼭짓점 V(2,4), 왼쪽 끝점 A(−1,−5), 오른쪽 끝점 B(4,0)가 표시되어 있다.",
+    "solutionImageCaption": "예: k=0일 때 f(x)=−x²+4x를 구간 −1≤x≤4에서 그린 그림이다(꼭짓점 V, 왼쪽 끝점 A, 오른쪽 끝점 B). 꼭짓점 x=2가 구간 안에 있어 최댓값은 꼭짓점에서, 최솟값은 양 끝점 중 낮은 쪽에서 나온다. 일반의 k에서는 최댓값 k+4, 최솟값 k−5이고 이 둘의 합 2k−1이 11이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -897,6 +905,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림. 위는 문제의 이차함수 그래프로, 점 A(−3,0)에서 C(0,6)까지의 부분이 주황, 나머지가 파랑이다. 아래는 −4x+y+3=2x²+4x+9의 그래프로, x=−3부터 x=0까지가 주황이고 x=−3, x=−1, x=0인 곳에 점이 찍혀 있다.",
+    "solutionImageCaption": "점 P가 A(−3,0)에서 C(0,6)까지 움직이므로 −3≤x≤0이다(위 그림의 주황). y=2x²+8x+6을 대입하면 −4x+y+3=2x²+4x+9=2(x+1)²+7이고, 아래 그림의 주황 구간에 꼭짓점 x=−1이 들어 있다. 최솟값은 꼭짓점에서 7이고, 최댓값은 양 끝 x=−3에서 15, x=0에서 9 중 큰 15이다. 정답은 22이다.",
+    "solutionImageSize": "full"
   }
 ];

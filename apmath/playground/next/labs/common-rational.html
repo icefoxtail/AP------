@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="common-rational/lesson-core.js"></script>
+<script defer src="common-rational/lesson-a.js"></script>
+<script defer src="common-rational/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -72,7 +79,11 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const axesOf = (b) => { b.grid({ step: 1 }); b.axes({ tickStep: b.k < 32 ? 2 : 1 }); };
   // 변형 생성기: gen(이전 변형|null) → 새 변형. 처음에는 기출 유형 그대로(gen(null)).
-  function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+  const lrActive = (s) => !!(s && (s.lessonOn || s.lessonEntry));
+  function varier(gen) {
+    let cur = gen(null); const first = cur;
+    return { cur: () => lrActive(window.lab && window.lab.s) ? first : cur, first: () => first, next: () => (cur = gen(cur)) };
+  }
   const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-new-prob>새 문제</button></div>`;
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-new-prob]');
@@ -692,7 +703,9 @@ window.addEventListener('DOMContentLoaded', function () {
         b.vline(p, { color: 'amber', dash: [6, 5], width: 1.4, alpha: 0.7 });
         drawRat(b, k, p, q, { color: 'sky', width: 3.4, glow: true });
         [a, bb].forEach((x) => b.seg([x, 0], [x, f(x)], { color: 'green', dash: [5, 4], width: 2 }));
-        cs.forEach((c) => {
+        const visibleColumns = lrActive(s) && s.lrLattice ? (s.lrShowAnswer ? cs.length : clamp(Math.floor(s.lrCols || 0), 0, cs.length)) : cs.length;
+        cs.forEach((c, i) => {
+          if (i >= visibleColumns) return;
           for (let y = 0; y <= c.fl; y++) b.point([c.x, y], { r: 3.6, color: 'green', glow: false });
           if (c.f <= vb.y1 - 1) b.text([c.x, c.f], `${c.n}`, { color: 'green', size: 12, dy: -11 });
         });
@@ -710,7 +723,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (Math.abs(k) < 1e-9) { b.seg([a, q], [bb, q], { color: 'amber', width: 3.6 }); if (inside) b.point([p, q], { r: 5.5, hollow: true, color: 'amber' }); }
       else if (inside) { if (a < p) b.plot(f, { color: 'amber', width: 3.8, from: a, to: p - 1e-3 }); if (bb > p) b.plot(f, { color: 'amber', width: 3.8, from: p + 1e-3, to: bb }); }
       else b.plot(f, { color: 'amber', width: 3.8, glow: true, from: a, to: bb });
-      if (k !== 0) {
+      if (k !== 0 && (!lrActive(s) || s.lrShowAnswer)) {
         [['max', '최대', 'rose'], ['min', '최소', 'green']].forEach(([key, label, color]) => {
           if (stats[key] == null) return;
           const x = stats[key + 'At'], y = stats[key];
@@ -824,6 +837,71 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ======================== 실험실 ======================== */
   const fm = (v) => mn(v);
+  const scenes = [sceneR1(), sceneR2(), sceneR3(), sceneR4()];
+  const texts = { r1: text1, r2: text2, r3: text3, r4: text4 };
+  const sourceInfo = Object.fromEntries(scenes.map((sc) => {
+    const initial = {}; sc.enter(initial);
+    return [sc.id, { first: sc.vary.first(), initial, question: texts[sc.id](sc.vary.first()), inquiry: sc.question, steps: sc.steps() }];
+  }));
+  const source = window.APL_RAT_SOURCE = {
+    scenes,
+    first: id => sourceInfo[id].first,
+    initial: id => ({ ...sourceInfo[id].initial }),
+    question: id => sourceInfo[id].question,
+    inquiry: id => sourceInfo[id].inquiry,
+    steps: id => sourceInfo[id].steps.slice()
+  };
+  const latticeFocus = { x: [-1, 9], y: [-2, 15] };
+  function lessonFocus(b, s) {
+    if (lrActive(s) && s.lrLattice) {
+      if (b.focus !== latticeFocus) b._ratLessonView = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY };
+      b.setFocus(latticeFocus, false);
+      b.zoom = 1; b.panX = 0; b.panY = 0;
+    } else if (b._ratLessonView) {
+      // A scene change may already have installed its own focus; preserve it.
+      if (b.focus === latticeFocus) Object.assign(b, b._ratLessonView);
+      delete b._ratLessonView;
+    }
+  }
+  function curveTrace(b, s, id) {
+    const progress = clamp(Number(s.lrTrace) || 0, 0, 1);
+    if (s.lessonEntry || !progress) return;
+    let g, from, to;
+    if (s.lrExplore) {
+      g = id === 'r1' ? geo1(s) : id === 'r2' ? geo2(s) : id === 'r3' ? CUR3 : { ...CUR4, k: s.s4mode === 1 ? s.s4kl : s.s4k };
+      from = g.p + 1.25; to = g.p + 3;
+      if (id === 'r4') {
+        const a = s.s4mode === 1 ? s.s4a : s.s4a0, z = s.s4mode === 1 ? s.s4b : s.s4b0;
+        if (z < g.p) { from = a; to = z; }
+        else { from = Math.max(a, g.p + 0.8); to = Math.max(from, z); }
+      }
+    } else {
+      const v = source.first(id);
+      g = { k: id === 'r4' ? v.K : v.k, p: v.p, q: v.q };
+      from = g.p - 3; to = g.p - 1.2;
+      if (id === 'r4') { from = v.s; to = v.t; }
+    }
+    const f = ratY(g.k, g.p, g.q), x = from + (to - from) * progress, y = f(x);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+    b.plot(f, { from, to: x, color: 'violet', width: 4.2, alpha: 0.85 });
+    b.point([x, y], { r: 4.5, color: 'violet', glow: false });
+  }
+  for (const sc of scenes) {
+    const original = { question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw };
+    sc.question = (s, lab) => lrActive(s) ? s.lrQuestion || source.question(sc.id) : typeof original.question === 'function' ? original.question(s, lab) : original.question;
+    sc.reviewTop = (s, lab) => lrActive(s) ? '' : original.reviewTop(s, lab);
+    sc.steps = (s, lab) => lrActive(s) ? ['조건을 확인해요.', '풀이에 필요한 관계를 찾아요.', '식을 세워 계산해요.', '구하는 값을 확인해요.'] : original.steps(s, lab);
+    sc.view = (s, lab) => lrActive(s) ? {} : original.view(s, lab);
+    sc.draw = (b, s, v, lab) => {
+      lessonFocus(b, s);
+      if (!lrActive(s)) return original.draw(b, s, v, lab);
+      const state = { ...s, playing: false, lrShowAnswer: !s.lessonEntry && !!s.lrShowAnswer, lrCols: s.lessonEntry ? 0 : s.lrCols, step: s.lessonEntry ? 0 : Math.min(s.step || 0, s.lrShowAnswer ? 4 : 3) };
+      const shownLab = Object.create(lab); shownLab.tab = s.lrExplore ? 'explore' : 'review';
+      original.draw(b, state, {}, shownLab);
+      curveTrace(b, state, sc.id);
+    };
+  }
+  const lessons = window.APL_RAT_LESSONS.install(scenes, source);
   APLab.createLab({
     id: 'common-rational',
     stagedReveal: true,
@@ -851,7 +929,8 @@ window.addEventListener('DOMContentLoaded', function () {
       s4kl: { value: 12, min: 4, max: 12, step: 2, color: 'sky', label: 'k (곡선의 높이)', format: fm },
       s2u: { value: 3, min: -7, max: 7, step: 0.1, color: 'green', label: '점 P의 위치 (x − p)', format: fm }
     },
-    scenes: [sceneR1(), sceneR2(), sceneR3(), sceneR4()]
+    scenes,
+    lessons
   });
 });
 </script>

@@ -14,6 +14,7 @@
   const pctF = (v) => Math.round(v * 100) + '%';
   const lenF = (v) => fmtN(v) + ' cm';
   const degF = G.degF;
+  const lessonCaption = (b, text, answer) => b.stext(b.W / 2, b.H - b.insets.bottom - 24, text, { color: answer ? 'green' : 'amber', size: b.W < 560 ? 14 : 16, weight: 800, align: 'center' });
 
   const PARAMS = {
     cnCt: P('포개기', 0, 1, 0.01, 0, { color: 'rose', hint: '조건 칩을 누르면 저절로 포개져요 · 막대를 끌어도 돼요', format: (v) => (v >= 0.999 ? '포개짐' : Math.round(v * 100) + '%') }),
@@ -38,21 +39,26 @@
   const cond = {
     id: 'c5-1', title: '합동 조건 체험 (SSS · SAS · ASA)', short: 'SSS·SAS·ASA',
     question: '두 삼각형이 합동임을 알려면 모든 변과 각을 재어 봐야 할까? 어떤 조건만 같아도 꼭 포개어질까?',
+    lessonQuestion: (M, s, Q) => s.cnLessonProblem ? `${Q.html} 현재 보기 ${G.NUM[s.cnBChoice || 0]}: ${Q.choices[s.cnBChoice || 0].h}` : ({ SSS: 'AB=DE, BC=EF, CA=FD이면 두 삼각형은 합동일까요?', SAS: 'AB=DE, AC=DF이고 끼인각 ∠A=∠D이면 두 삼각형은 합동일까요?', ASA: 'AB=DE이고 양 끝각 ∠A=∠D, ∠B=∠E이면 두 삼각형은 합동일까요?' }[M.cond]),
     ctl: ['cnCt'], anim: { key: 'cnCt', dur: 4.5, label: '포개어 보기', start: 0 },
     presets: () => CONDS.map(([id, label], i) => ({ group: i === 0 ? '같다고 알려진 조건' : '', label, color: 'amber', apply: (s) => { s.cnCond = id; s.cnCt = 0; s.playing = true; }, on: (s) => (s.cnCond || 'SSS') === id })),
     init: (s) => { s.cnCond = 'SSS'; s.cnCt = 0; s.cnCx = 2.6; s.cnCy = 3.6; s.cnPk = { k: 0 }; },
     reroll: (s) => { s.cnPk = { k: ((s.cnPk && s.cnPk.k) || 0) + 1 + rint(0, 5) }; },
     model: (s) => ({ cond: s.cnCond || 'SSS', Cx: s.cnCx, Cy: s.cnCy, pk: s.cnPk || { k: 0 } }),
     draw(b, s, M, C) {
+      if (C.lesson && s.cnLessonProblem && s.cnBChoice === 0) {
+        G.lessonCondition(b, s, { kind: 'ssa', adjacent: 7, opposite: 5, A: 40, names: ['B', 'A', 'C'] });
+        lessonCaption(b, s.cnShowAnswer ? '정답은 ①' : '끼인각이 아닌 각의 조건을 비교해요', s.cnShowAnswer); return;
+      }
       const Tr = [pt(0, 0), pt(6, 0), pt(M.Cx, -M.Cy)];
       if (C.problem) { const Gt = [pt(0, 0), pt(6, 0), pt(2.4, -3.6)], I = imageAt(Gt, 'rot', 0, 9.8), bb = unionBox(bboxOf(Gt, 0.4), bboxOf(I, 0.4)); fit(b, bb, { t: 40, b: 44 }); fillPoly(b, Gt, 'sky', 0.1); poly(b, Gt, 'ink', 3.4); fillPoly(b, I, 'sky', 0.1); poly(b, I, 'ink', 3.4); const c1 = centroid(Gt), c2 = centroid(I); Gt.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, c1, 'ABC'[i], { size: 17 }); }); I.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, c2, 'DEF'[i], { size: 17 }); }); return; }
       const w = bboxOf(Tr).x1 - bboxOf(Tr).x0, X0 = w + 3.4, cond0 = M.cond;
       let bb = bboxOf(Tr, 0.3); [0, 0.5, 1].forEach((t) => { bb = unionBox(bb, bboxOf(imageAt(Tr, 'rot', t, X0), 0.3)); });
-      const t = C.review ? (C.step >= 2 ? 1 : 0) : C.t, img = imageAt(Tr, 'rot', t, X0), done = t >= 0.999;
-      if (C.review && done) bb = bboxOf(Tr, 0.3);
+      const t = C.lesson ? s.cnCt || 0 : C.review ? (C.step >= 2 ? 1 : 0) : C.t, img = imageAt(Tr, 'rot', t, X0), done = t >= 0.999;
+      if (C.review && done && !C.lesson) bb = bboxOf(Tr, 0.3);
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.8 }, { t: 36, b: 56, l: C.review && done ? 54 : undefined, r: C.review && done ? 54 : undefined });
       const cs = cond0;
-      const mm = marksOf(cond0);
+      const mm = C.lesson && s.cnLessonProblem && s.cnBChoice === 2 ? { sides: [1], angs: s.cnBAngle ? [0, 1, 2] : [0, 1] } : marksOf(cond0);
       const tk2 = {}, an2 = {}; mm.sides.forEach((i, n) => { tk2[SK[i]] = { n: n + 1, color: 'amber' }; }); mm.angs.forEach((i, n) => { an2['ABC'[i]] = { c: VCOL[i], rings: n + 1, t: '', r: 24 }; });
       fillPoly(b, Tr, 'sky', 0.1); fillPoly(b, img, done ? 'green' : 'sky', 0.1);
       drawTri(b, Tr, { ticks: tk2, angs: an2 }); drawTri(b, img, { ticks: tk2, angs: an2, color: done ? 'green' : 'ink', dash: done ? [8, 5] : undefined });
@@ -67,7 +73,8 @@
         else { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i], { size: 17 })); img.forEach((p, i) => tagOut(b, p, cB, 'DEF'[i], { size: 17 })); }
         const nmc = C.review ? '' : { SSS: '세 변이 각각 같아요', SAS: '두 변과 그 끼인각이 같아요', ASA: '한 변과 그 양 끝각이 같아요' }[cs];
         const cap = C.review ? (C.step === 1 ? '같은 조건을 두 삼각형에 표시해요 (같은 눈금·같은 호)' : '꼭 포개어져요 → △ABC ≡ △DEF') : done ? `${cs}: ${nmc} → 꼭 포개어져요, 합동이에요` : t > 0 ? '가로로 밀어 포개요' : `${cs}: ${nmc}`;
-        T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), cap, { dy: 24, size: b.W < 560 ? 13 : 16, color: done ? 'green' : 'amber' });
+        if (C.lesson) lessonCaption(b, s.cnShowAnswer ? `${cond0}: △ABC ≡ △DEF` : '같은 표시의 변과 각을 대응시켜요', s.cnShowAnswer);
+        else T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), cap, { dy: 24, size: b.W < 560 ? 13 : 16, color: done ? 'green' : 'amber' });
       }
       if (!C.review && C.txt && t <= 0) b.handle('C', Tr[2], { color: 'amber', r: 8, ariaLabel: '꼭짓점 C 끌기(모양 바꾸기)', drag: (w2) => { s.cnCx = clamp(w2.x, 0.8, 5.2); s.cnCy = clamp(-w2.y, 2.6, 5.4); } });
     },
@@ -102,6 +109,7 @@
   const twoAng = {
     id: 'c5-2', title: '두 각이 같으면 셋째 각도 같다', short: '셋째 각 구하기',
     question: '두 삼각형에서 두 각이 각각 같으면 나머지 한 각은 어떻게 될까? 한 변까지 같으면 합동일까?',
+    lessonQuestion: (M, s, Q) => s.cnBMode === 'angle' ? Q.stem : '∠A=∠D=55°, ∠B=∠E=65°, BC=EF일 때 두 삼각형이 합동인 이유는 무엇일까요?',
     ctl: ['cnEA', 'cnEB', 'cnCt'], anim: { key: 'cnCt', dur: 4, label: '포개어 보기', start: 0 },
     init: (s) => { s.cnEA = 55; s.cnEB = 65; s.cnCt = 0; s.cnPk = { A: 55, B: 70, k: 0 }; },
     reroll: (s) => { s.cnPk = { A: 5 * rint(7, 15), B: 5 * rint(7, 15), k: ((s.cnPk && s.cnPk.k) || 0) + 1 }; if (s.cnPk.A + s.cnPk.B > 165) s.cnPk.B = 165 - s.cnPk.A; s.cnEA = s.cnPk.A; s.cnEB = s.cnPk.B; },
@@ -114,9 +122,9 @@
       const margins = C.problem ? { t: 26, b: 30, l: 46, r: 46 } : compactExplore ? { t: 52, b: 84, l: 28, r: 28 } : { t: 40, b: 56, l: 46, r: 46 };
       // 두 삼각형 사이의 주어진 각·꼭짓점 이름은 화면 크기와 무관하게 떨어뜨립니다.
       const labelGap = compactExplore ? 46 : 108, scale = Math.max(3, Math.min((aw - pp - margins.l - margins.r - labelGap) / (2 * w + 0.8), (ah - pp - margins.t - margins.b) / (h + 1.2)));
-      const X0 = w + Math.max(compactExplore ? 2.4 : 3, labelGap / scale), t = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
+      const X0 = w + Math.max(compactExplore ? 2.4 : 3, labelGap / scale), t = C.lesson ? s.cnCt || 0 : C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       const img = shiftPts(Tr, X0 * (1 - seg01(t, 0, 1))), done = t >= 0.999;
-      const bb = C.review && done ? bboxOf(Tr, 0.4) : unionBox(bboxOf(Tr, 0.4), bboxOf(shiftPts(Tr, X0), 0.4));
+      const bb = C.review && done && !C.lesson ? bboxOf(Tr, 0.4) : unionBox(bboxOf(Tr, 0.4), bboxOf(shiftPts(Tr, X0), 0.4));
       if (C.review && done && b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40) margins.b += 40;
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.4 }, margins);
       const bisC = unit(add(unit(sub(Tr[0], Tr[2])), unit(sub(Tr[1], Tr[2]))));
@@ -128,14 +136,14 @@
       // 아주 납작하거나 가파른 삼각형에서는 값 세 개가 안쪽에 들어가지
       // 않으므로 점 이름과 다른 줄에 둡니다. 각을 바꾸어도 서로 덮지 않아요.
       const innerAngles = compactExplore && angleBoxes.every((p, i) => p.y + 10 < -3 && angleBoxes.every((q, j) => i === j || Math.abs(p.x - q.x) > p.half + q.half || Math.abs(p.y - q.y) > 20));
-      const st = C.problem ? 0 : C.review ? C.step : 3;
+      const st = C.lesson ? (s.cnBAngle ? 2 : 0) : C.problem ? 0 : C.review ? C.step : 3;
       const mk = (T3, nms, tag) => {
         const labels = tag === 'l' || (X0 * (1 - seg01(t, 0, 1)) - w) * b.k >= (compactExplore ? 40 : 90);
         fillPoly(b, T3, tag === 'r' && done ? 'green' : 'sky', 0.1);
         drawTri(b, T3, {
           color: tag === 'r' && done ? 'green' : 'ink', dash: tag === 'r' && done ? [8, 5] : undefined,
           ticks: !C.problem ? { a: { n: 2, color: 'amber' } } : undefined,
-          angs: { A: { c: 'sky', rings: 1, t: '', r: compactExplore ? 20 : 28 }, B: { c: 'green', rings: 2, t: '', r: compactExplore ? 20 : 28 }, C: st >= 2 || C.problem ? { c: 'rose', rings: 3, t: C.problem ? (tag === 'r' ? 'x°' : '') : labels && (!compactExplore || innerAngles) ? dg(Cc) : '', r: compactExplore ? 20 : 24, d: compactExplore ? 36 : 44, size: compactExplore ? 13 : undefined } : undefined }
+          angs: { A: { c: 'sky', rings: 1, t: '', r: compactExplore ? 20 : 28 }, B: { c: 'green', rings: 2, t: '', r: compactExplore ? 20 : 28 }, C: st >= 2 || C.problem || (C.lesson && s.cnBMode === 'angle') ? { c: 'rose', rings: 3, t: C.problem || (C.lesson && !s.cnBAngle) ? (tag === 'r' ? 'x°' : '') : labels && (!compactExplore || innerAngles) ? dg(Cc) : '', r: compactExplore ? 20 : 24, d: compactExplore ? 36 : 44, size: compactExplore ? 13 : undefined } : undefined }
         });
         const cc = centroid(T3);
         if (labels) {
@@ -157,7 +165,8 @@
       if (C.txt && !C.problem) {
         const cx = (bb.x0 + bb.x1) / 2;
         const cap = st >= 3 ? (done ? '한 변까지 같아서 포개어져요 → ASA 합동' : `∠F = ∠C = ${Cc}°, BC = EF → ASA 합동`) : st >= 2 ? `셋째 각: ∠C = 180° − (${A}° + ${B}°) = ${Cc}°  ∠F도 ${Cc}°` : `두 각이 각각 같아요: ∠A=∠D=${A}°, ∠B=∠E=${B}°`;
-        T(b, pt(cx, bb.y1 + 0.2), cap, { dy: C.review && done ? 44 : compactExplore && !innerAngles ? 56 : 26, size: b.W < 560 ? 13 : 16, color: st >= 3 ? 'green' : 'amber' });
+        if (C.lesson) lessonCaption(b, s.cnShowAnswer ? (s.cnBMode === 'angle' ? `x = ${Cc}°` : 'ASA: △ABC ≡ △DEF') : s.cnBAngle ? `∠C = ∠F = ${Cc}°` : s.cnBStage >= 1 ? `${A}° + ${B}° = ${A + B}°` : '두 각과 대응변 BC, EF를 확인해요', s.cnShowAnswer);
+        else T(b, pt(cx, bb.y1 + 0.2), cap, { dy: C.review && done ? 44 : compactExplore && !innerAngles ? 56 : 26, size: b.W < 560 ? 13 : 16, color: st >= 3 ? 'green' : 'amber' });
       }
       if (!C.review && !C.problem && C.txt && t <= 0) b.handle('C', Tr[2], { color: 'amber', r: 8, ariaLabel: '꼭짓점 C 끌기(∠A, ∠B 바꾸기)', drag: (w2) => { s.cnEA = clamp(Math.round(-dirDeg(Tr[0], w2) / 5) * 5, 30, 80); s.cnEB = clamp(Math.round((180 + dirDeg(Tr[1], w2)) / 5) * 5, 30, 80); } });
     },
@@ -242,7 +251,7 @@
     const Wc = 8.4, Hc = 6.6;
     // 공통 배율: 모두 같은 크기로
     const rnd = set.rnd, pose = cells.map((c, i) => ({ rot: c.base ? 0 : [0, 70, 140, 200, 260, 320][Math.floor((((i * 7919 + (o.seed || 0)) % 6) + 6) % 6)], flip: !c.base && (i + (o.seed || 0)) % 2 === 1 }));
-    const tris = cells.map((c, i) => { const cc = centroid(c.dsc.pts); return c.dsc.pts.map((p) => { let q = sub(p, cc); if (pose[i].flip) q = pt(-q.x, q.y); q = rotP(q, pt(0, 0), pose[i].rot); return q; }); });
+    const tris = cells.map((c, i) => { const cc = centroid(c.dsc.pts); return c.dsc.pts.map((p) => { let q = sub(p, cc); if (pose[i].flip) q = pt(-q.x, q.y); q = rotP(q, pt(0, 0), pose[i].rot * (1 - .35 * (o.progress || 0))); return q; }); });
     fit(b, { x0: 0, x1: cols * Wc, y0: 0, y1: rows * Hc }, { t: 8, b: 8, l: 8, r: 8 });
     const small = b.W < 560;
     const bounds = tris.map((t) => bboxOf(t));
@@ -251,7 +260,7 @@
     cells.forEach((c, i) => {
       const col = i % cols, row = Math.floor(i / cols), x0 = col * Wc, y0 = row * Hc, cx = x0 + Wc / 2, cy = y0 + (head + Hc - foot) / 2;
       const verdict = o.verdict && !c.base;
-      const colr = verdict ? (c.ok ? 'green' : 'rose') : c.base ? 'amber' : 'muted';
+      const colr = verdict ? (c.ok ? 'green' : 'rose') : c.base || o.selected === i - 1 ? 'amber' : 'muted';
       b.path([pt(x0 + 0.15, y0 + 0.15), pt(x0 + Wc - 0.15, y0 + 0.15), pt(x0 + Wc - 0.15, y0 + Hc - 0.15), pt(x0 + 0.15, y0 + Hc - 0.15)], { close: true, fill: colr, fillAlpha: verdict || c.base ? 0.07 : 0.03, color: colr, width: verdict || c.base ? 1.8 : 1.2, alpha: 0.8 });
       const bb = bounds[i], T3 = tris[i].map((p) => pt(cx + (p.x - (bb.x0 + bb.x1) / 2) * S, cy + (p.y - (bb.y0 + bb.y1) / 2) * S)), cen = centroid(T3);
       fillPoly(b, T3, verdict ? colr : 'sky', 0.12); poly(b, T3, 'ink', 3);
@@ -265,9 +274,32 @@
     });
   }
   const TYPES = ['세 변이 주어진 경우', '두 변과 끼인각이 주어진 경우', '한 변과 양 끝각이 주어진 경우'];
+  function lessonPair(M, t) {
+    const base = M.set.base.pts, candidate = M.set.cands.find(c => c.ok).dsc.pts, permutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+    const order = permutations.find(p => [[0, 1], [1, 2], [2, 0]].every(([i, j]) => Math.abs(dist(base[i], base[j]) - dist(candidate[p[i]], candidate[p[j]])) < 1e-6));
+    const ca = centroid(base), cb = centroid(candidate), ordered = order.map(i => sub(candidate[i], cb));
+    const cross2 = (p, q, r) => G.cross(sub(q, p), sub(r, p));
+    const reflected = cross2(...base) * cross2(...ordered) < 0;
+    const local = ordered.map(p => pt(reflected ? -p.x : p.x, p.y));
+    const angle = dirDeg(base[0], base[1]) - dirDeg(local[0], local[1]), rot = angle + 150 * (1 - seg01(t, 0, .5));
+    const width = bboxOf(base).x1 - bboxOf(base).x0 + 4, off = width * (1 - seg01(t, .5, 1));
+    const image = local.map(p => { const q = rotP(p, pt(0, 0), rot); return pt(ca.x + q.x + off, ca.y + q.y); });
+    return { base, image, order, reflected };
+  }
+  function drawLessonPair(b, s, M) {
+    const pair0 = lessonPair(M, s.cnBT || 0), { base, image, order } = pair0;
+    let bb = bboxOf(base, .4); [0, .25, .5, .75, 1].forEach(t => { bb = unionBox(bb, bboxOf(lessonPair(M, t).image, .4)); });
+    fit(b, bb, { t: 48, b: 72, l: 50, r: 50 });
+    const ticks = { a: 1, b: 2, c: 3 }, done = s.cnBT >= .999;
+    drawTri(b, base, { fill: 'sky', fa: .08, names: ['A', 'B', 'C'], ticks });
+    drawTri(b, image, { fill: 'green', fa: .08, color: done ? 'green' : 'ink', names: done ? [] : order.map(i => 'DEF'[i]), ticks, dash: done ? [7, 5] : undefined });
+    lessonCaption(b, s.cnShowAnswer ? `정답은 ${KL[M.set.cands.findIndex(c => c.ok)]}` : '대응변을 맞추고 돌려서 포개어 봐요', s.cnShowAnswer);
+  }
   const pickSet = {
     id: 'c5-3', title: '합동인 삼각형 찾기', short: '합동 삼각형 찾기',
     question: '기준 삼각형 △ABC와 합동인 삼각형은 어느 것일까? 합동 조건(SSS, SAS, ASA)으로 판별해 보자.',
+    lessonQuestion: (M, s, Q) => Q.stem,
+    lessonModel: (M, s) => ({ ...M, paired: lessonPair(M, s.cnBT || 0) }),
     ctl: (s) => ((s.cnTy || 0) === 0 ? ['cnVa', 'cnVb', 'cnVc'] : (s.cnTy === 1 ? ['cnWs1', 'cnWs2', 'cnWth'] : ['cnUc', 'cnUa', 'cnUb'])),
     presets: () => TYPES.map((label, i) => ({ group: i === 0 ? '기준 삼각형에 주어진 것' : '', label, apply: (s) => { s.cnTy = i; }, on: (s) => (s.cnTy || 0) === i })),
     init: (s) => { s.cnTy = 0; s.cnVa = 6; s.cnVb = 7; s.cnVc = 8; s.cnWs1 = 6; s.cnWs2 = 7; s.cnWth = 50; s.cnUc = 6; s.cnUa = 50; s.cnUb = 60; s.cnPk = { k: 0, ty: 0, nums: [6, 7, 8] }; },
@@ -287,6 +319,11 @@
       return { ty, nums, set, pk, pset: set };
     },
     draw(b, s, M, C) {
+      if (C.lesson) {
+        if (s.cnBStage >= 2) drawLessonPair(b, s, M);
+        else { drawSet(b, M.set, { verdict: false, seed: M.pk.k, progress: s.cnBTrace || 0, selected: s.cnBChoice }); lessonCaption(b, '기준의 변과 각을 보기와 비교해요', false); }
+        return;
+      }
       if (C.problem) { drawSet(b, M.pset, { verdict: false, seed: M.pk.k }); return; }
       const st = C.review ? C.step : 3;
       drawSet(b, M.set, { verdict: st >= 3, seed: M.pk.k });

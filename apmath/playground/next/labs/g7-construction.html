@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 네 조합·여섯 후보를 한 화면에서 비교할 때만 모바일 도형 공간을 넓힙니다. */
 @media (max-width: 560px) {
@@ -22,6 +23,9 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -38,7 +42,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['core', 't1', 't2', 't3', 't4', 't5', 't6'];
+const MODULES = ['core', 't1', 't2', 't3', 't4', 't5', 't6', 'lesson-a', 'lesson-b', 'lesson-c'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -54,6 +58,7 @@ function start() {
   mods.forEach((g) => Object.assign(params, g.params || {}));
   APLab.createLab({
     id: 'g7-construction',
+    lessons: (window.APL_LESSONS || {})['g7-construction'],
     title: '작도와 합동',
     courseName: '중1',
     unit: '기본 도형 · 작도와 합동',

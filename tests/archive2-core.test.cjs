@@ -134,34 +134,63 @@ test("BASIC preserves explicit quality holds while optional difficulty remains a
     { sourceStatus: "HOLD", sourceIntegrityStatus: "VERIFIED" },
   ])
     assert.equal(core.eligibility({ ...eligibleBase, ...change }, { canonicalAuthority: authority }).ok, false);
-  for (const change of [
-    { difficultyBucket: "중" }, { difficultyBucket: "UNKNOWN" },
-    { legacyLevelCompatibility: "BORDERLINE_REVIEW" },
-  ]) {
+  // Difficulty words are never converted to a number: without an integer bucket the record
+  // stays selectable but cannot satisfy a difficulty filter (no estimation).
+  for (const change of [{ difficultyBucket: "중" }, { difficultyBucket: "UNKNOWN" }]) {
     const record = { ...eligibleBase, ...change };
     assert.equal(core.eligibility(record, { canonicalAuthority: authority }).ok, true);
+    assert.equal(core.difficultyEligible(record), false);
     assert.equal(core.matches(record, { difficultyBuckets: [1, 2, 3, 4, 5] }, { canonicalAuthority: authority }), false);
   }
+  // Auxiliary labels are not gates: an integer bucket with BORDERLINE_REVIEW (or missing labels)
+  // is usable in strict and general mode alike.
+  for (const change of [
+    { legacyLevelCompatibility: "BORDERLINE_REVIEW" },
+    { legacyLevelCompatibility: undefined, difficultyConfidence: undefined, difficultyBoundaryFlag: undefined },
+  ]) {
+    const record = { ...eligibleBase, difficultyBucket: 3, ...change };
+    assert.equal(core.difficultyEligible(record), true);
+    assert.equal(core.matches(record, { difficultyBuckets: [3] }, { canonicalAuthority: authority }), true);
+    assert.equal(core.matches(record, { difficultyBuckets: [3] }, { canonicalAuthority: authority, useMode: "general" }), true);
+  }
 });
-test("general Archive difficulty filtering accepts recorded buckets but strict approval and source integrity remain separate", () => {
+test("one difficulty lane: an integer bucket passes for every caller unless a real defect applies", () => {
   const baseline = record(base.sourceOrdinal);
-  const proofMissing = {
+  // No auxiliary labels, an unapproved source release, a missing text binding and a conflict
+  // marker (registered value differs from the exam file's inline value) are labels, not gates.
+  const labelsOnly = {
     ...baseline, difficultyBucket: 3, difficultyConfidence: undefined,
     difficultyBoundaryFlag: undefined, legacyLevelCompatibility: undefined,
-    sourceStatus: "HOLD", metaBinding: "", metadataConflicts: ["difficultyBucket"],
+    sourceStatus: "HOLD", metaBinding: "content", metadataConflicts: ["difficultyBucket"],
   };
   const opts = { useMode: "general" };
   const target = { difficultyBuckets: [3] };
-  assert.equal(core.generalUseEligibility(proofMissing).ok, true);
-  assert.equal(core.matches(proofMissing, target, opts), true);
-  assert.equal(core.rowMatches(proofMissing, { difficultyBuckets: [3] }, opts), true);
-  assert.equal(core.matches(proofMissing, target), false, "strict mode still requires complete difficulty approval");
-  assert.equal(core.rowMatches(proofMissing, { difficultyBuckets: [3] }), false);
-  assert.equal(core.matches(proofMissing, { difficultyBuckets: [2] }, opts), false);
-  for (const value of ["UNKNOWN", null, "3", 0, 6]) {
-    assert.equal(core.matches({ ...proofMissing, difficultyBucket: value }, target, opts), false);
+  assert.equal(core.generalUseEligibility(labelsOnly).ok, true);
+  assert.equal(core.difficultyEligible(labelsOnly), true);
+  assert.equal(core.difficultyEligible(labelsOnly, opts), true);
+  for (const options of [undefined, opts]) {
+    assert.equal(core.matches(labelsOnly, target, options), true);
+    assert.equal(core.rowMatches(labelsOnly, target, options), true);
+    assert.equal(core.matches(labelsOnly, { difficultyBuckets: [2] }, options), false);
   }
-  assert.equal(core.generalUseEligibility({ ...proofMissing, sourceIntegrityStatus: "MISMATCH" }).ok, false);
+  assert.equal(core.difficultyEligible({ ...labelsOnly, sourceStatus: "VERIFIED", metaBinding: "exact" }), true);
+  // A recorded integer without any text binding is still usable (binding is a label).
+  const unbound = { ...labelsOnly, metaBinding: "" };
+  for (const options of [undefined, opts]) {
+    assert.equal(core.difficultyEligible(unbound, options), true);
+    assert.equal(core.matches(unbound, target, options), true);
+    assert.equal(core.rowMatches(unbound, target, options), true);
+  }
+  // Real defects: a word or non-integer instead of a bucket (no conversion), a broken identity or
+  // source reference (generalUseEligibility).
+  for (const value of ["UNKNOWN", null, "3", "중", 0, 6, 2.5]) {
+    for (const options of [undefined, opts])
+      assert.equal(core.matches({ ...labelsOnly, difficultyBucket: value }, target, options), false);
+  }
+  assert.equal(core.generalUseEligibility({ ...labelsOnly, sourceIntegrityStatus: "MISMATCH" }).ok, false);
+  assert.equal(core.difficultyEligible({ ...labelsOnly, sourceIntegrityStatus: "MISMATCH" }), false);
+  assert.equal(core.difficultyEligible({ ...labelsOnly, identityStatus: "UNRESOLVED" }), false);
+  assert.equal(core.difficultyEligible({ ...labelsOnly, sourceFingerprint: "" }), false);
 });
 
 test("pin and rebuild retain pins and student/series exclusion; no silent shortage relaxation", () => {

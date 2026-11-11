@@ -55,6 +55,10 @@
         if (k === 0) { dim(b, g.A, g.D, pt(g.G.x - 30, g.G.y), String(g.AD), { color: 'sky', off: 30, size: 16 }); T(b, lerp(g.G, g.D, 0.5), 'x', { dx: 12, dy: 10, size: 18, color: 'amber' }); }
         else if (k === 1) { T(b, lerp(g.B, g.G, 0.5), String(g.BG), { dx: -14, dy: 8, size: 16, color: 'sky' }); T(b, lerp(g.G, g.E, 0.5), 'x', { dx: -12, dy: 10, size: 18, color: 'amber' }); }
         else { T(b, lerp(g.A, g.G, 0.5), String(g.AG), { dx: -14, dy: -4, size: 16, color: 'sky' }); T(b, lerp(g.G, g.D, 0.5), 'x', { dx: 12, dy: 10, size: 18, color: 'amber' }); }
+      } else if (C.lesson && !C.answer) {
+        // The lesson establishes the ratio before exposing its numeric examples.
+        T(b, lerp(g.A, g.G, 0.5), 'AG', { dx: -14, size: 16, color: 'green' }); T(b, lerp(g.G, g.D, 0.5), 'GD', { dx: 14, dy: 4, size: 16, color: 'sky' });
+        T(b, lerp(g.B, g.G, 0.5), 'BG', { dy: -15, size: 16, color: 'green' }); T(b, lerp(g.G, g.E, 0.5), 'GE', { dy: 16, size: 16, color: 'sky' });
       } else {
         T(b, lerp(g.A, g.G, 0.5), String(g.AG), { dx: -14, size: 16, color: 'green' }); T(b, lerp(g.G, g.D, 0.5), String(g.GD), { dx: 14, dy: 4, size: 16, color: 'sky' });
         T(b, lerp(g.B, g.G, 0.5), String(g.BG), { dy: -15, size: 16, color: 'green' }); T(b, lerp(g.G, g.E, 0.5), String(g.GE), { dy: 16, size: 16, color: 'sky' });

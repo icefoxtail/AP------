@@ -86,7 +86,7 @@
       sideTag(b, A1, B1, cen1, st >= 1 || st === 99 ? `${r3(M.l)}` : 'L', { color: 'green', size: 17 });
       sideTag(b, B1, H1, cen1, r3(M.bh), { color: 'sky', size: 17, flip: !compact, gap: compact ? 16 : 14 });
       const heightAt = compact ? lerp(A1, H1, .62) : mid(A1, H1);
-      T(b, heightAt, r3(M.ah), { dx: -26, size: 16, color: 'rose', ...(compact ? { leaderAnchor: heightAt, leader: true } : {}) });
+      T(b, heightAt, C.lesson && !C.calculation ? 'AH' : r3(M.ah), { dx: -26, size: 16, color: 'rose', ...(compact ? { leaderAnchor: heightAt, leader: true } : {}) });
       sideTag(b, A2, C2, cen2, r3(M.l), { color: 'green', size: 17 }); sideTag(b, H2, C2, cen2, r3(M.bh), { color: 'sky', size: 17, flip: !compact, gap: compact ? 16 : 14 });
       tick(b, A1, B1, 1, 'green'); tick(b, A2, C2, 1, 'green'); tick(b, B1, H1, 2, 'sky'); tick(b, H2, C2, 2, 'sky');
       [[A1, 'A', cen1], [B1, 'B', cen1], [H1, 'H', cen1], [A2, 'A', cen2], [H2, 'H', cen2], [C2, 'C', cen2]].forEach(([p0, n, c]) => { b.point(p0, { color: 'ink', r: 4 }); if (t > 0.5 ? true : (n !== 'A' || p0 === A1) && (n !== 'H' || p0 === H1)) tagOut(b, p0, c, n, { size: 17, gap: 10 }); });
@@ -128,12 +128,13 @@
       ang(b, Bq, D1, A, { color: 'amber', r: 34, label: '45°', size: 16 }); ang(b, D1, A, Bq, { color: 'amber', r: 34, label: '45°', size: 16, rings: 1 });
       ang(b, B2, D2, C2, { color: 'amber', r: 34, label: '45°', size: 16 }); ang(b, D2, B2, C2, { color: 'amber', r: 34, label: '45°', size: 16 });
       const c1 = G.centroid([A, Bq, D1]), c2 = G.centroid([B2, C2, D2]);
-      sideTag(b, A, Bq, c1, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, A, D1, c1, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, Bq, D1, c1, r3(M.d), { color: 'green', size: 17 });
-      sideTag(b, B2, C2, c2, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, C2, D2, c2, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, B2, D2, c2, r3(M.d), { color: 'green', size: 17 });
+      const diagonal = C.lesson && !C.calculation ? 'BD' : r3(M.d);
+      sideTag(b, A, Bq, c1, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, A, D1, c1, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, Bq, D1, c1, diagonal, { color: 'green', size: 17 });
+      sideTag(b, B2, C2, c2, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, C2, D2, c2, r3(M.l), { color: 'sky', size: 17 }); sideTag(b, B2, D2, c2, diagonal, { color: 'green', size: 17 });
       tick(b, A, Bq, 1, 'sky'); tick(b, A, D1, 1, 'sky'); tick(b, B2, C2, 1, 'sky'); tick(b, C2, D2, 1, 'sky');
       [[A, 'A', c1], [Bq, 'B', c1], [D1, 'D', c1]].forEach(([p0, n, c]) => { b.point(p0, { color: 'ink', r: 4 }); tagOut(b, p0, c, n, { size: 17, gap: 10 }); });
       [[B2, 'B', c2], [C2, 'C', c2], [D2, 'D', c2]].forEach(([p0, n, c]) => { b.point(p0, { color: 'ink', r: 4 }); tagOut(b, p0, c, n, { size: 17, gap: 10 }); });
-      T(b, pt(L / 2, 0), `한 변 : 한 변 : 대각선 = ${r3(M.l)} : ${r3(M.l)} : ${r3(M.d)} = 1 : 1 : √2`, { dy: 50, size: 16, color: 'amber' });
+      if (!C.lesson || C.answer) T(b, pt(L / 2, 0), `한 변 : 한 변 : 대각선 = ${r3(M.l)} : ${r3(M.l)} : ${r3(M.d)} = 1 : 1 : √2`, { dy: 50, size: 16, color: 'amber' });
     },
     steps: (M) => [
       `한 변이 $${M.L}$ 인 정사각형의 대각선 $BD$ 로 자르면 합동인 직각이등변삼각형 두 개가 생겨요. 두 예각은 모두 $45^{\\circ}$ 예요.`,

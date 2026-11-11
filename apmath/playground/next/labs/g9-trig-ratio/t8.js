@@ -409,7 +409,15 @@
         kind === 'ec' || kind === 'S' ? `$EC=BC-BE=${vtex(vmul(vsq(3), vi(w)))}-${vtex(BE)}=${vtex(EC)}$입니다.${kind === 'S' ? ` 넓이는 $[AEC]=\\frac{1}{2}\\times${vtex(EC)}\\times${w}$입니다.` : ''}` : `문제에서 구하는 것은 $${kind.toUpperCase()}$입니다. 접기 전후 대응변의 길이는 같다는 점을 확인해요.`
       ], { kind: 'fold', width: w, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q, C) => drawFold(b, foldGeo(q.fig.w, C.review && C.step === 1 ? 0 : 1), { step: C.review ? C.step : 0, t: C.review && C.step === 1 ? 0 : 1, angs: C.review && C.step >= 2 ? ['30°'] : null, L: { ...q.fig.L, ...(C.review && C.step >= 3 ? Object.fromEntries(['be', 'ae'].filter((k) => q.fig.kind !== k || C.last).map((k) => [k, q.fig.work[k]])) : {}), ...(C.last && q.fig.kind === 'ec' ? { ec: q.fig.work.ec, ecx: false } : {}) }, rows: C.last && q.fig.kind === 'S' ? [{ t: `△AEC의 넓이 = ${q.fig.work.S}`, c: 'amber' }] : q.fig.rows })
+    pdraw: (b, q, C, s = {}) => {
+      const t = C.lesson ? (C.entry ? 0 : clamp(s.t86k || 0, 0, 1)) : C.review && C.step === 1 ? 0 : 1;
+      drawFold(b, foldGeo(q.fig.w, t), { step: C.review ? C.step : 0, t,
+        angs: C.review && C.step >= 2 && (!C.lesson || s.tgLessonProblem || C.last) ? ['30°'] : null,
+        L: { ...q.fig.L,
+          ...(C.review && C.step >= 3 ? Object.fromEntries(['be', 'ae'].filter((k) => (q.fig.kind !== k || C.last) && (!C.lesson || q.fig.kind !== 'ec' || k !== 'ae' || C.last)).map((k) => [k, q.fig.work[k]])) : {}),
+          ...(C.last && q.fig.kind === 'ec' ? { ec: q.fig.work.ec, ecx: false } : {}) },
+        rows: C.last && q.fig.kind === 'S' ? [{ t: `△AEC의 넓이 = ${q.fig.work.S}`, c: 'amber' }] : q.fig.rows });
+    }
   };
 
   G.register(80, 't8', '⑧ 입체·결합도형', '입체·결합도형', PARAMS, [cube, box, cone, tet, r91, r92]);

@@ -399,12 +399,12 @@
       } else {
         const [p, q, r] = x;
         out.push({ k: 'given', f: 'given', t: `점 I는 △ABC의 내심이고 D는 I에서 변 BC에 내린 수선의 발이에요. $\\overline{AB}=${p + q}$ cm, $\\overline{BC}=${q + r}$ cm, $\\overline{CA}=${r + p}$ cm일 때 $\\overline{BD}$의 길이 $x$를 구해요.`, cap: `AB=${p + q}, BC=${q + r}, CA=${r + p} (cm), BD=x` });
-        out.push({ k: 'idea', f: 'idea', t: '내심의 수선의 발 D는 변의 중점이 아니라 내접원의 접점이에요(중점이 되는 건 외심일 때뿐). 그러니 BC의 반으로 구하면 안 되고, 한 점에서 그은 두 접선의 길이가 같다는 성질로 구해요.', cap: '내심의 D는 접점 → 접선의 길이로 구해요' });
+        out.push({ k: 'idea', f: 'idea', t: '내심의 수선의 발 D는 내접원의 접점이에요. 항상 변의 중점인 것은 아니므로 BC의 반이라고 단정하지 않고, 한 점에서 그은 두 접선의 길이가 같다는 성질로 구해요.', cap: '내심의 D는 접점 → 접선의 길이로 구해요' });
         out.push({ k: 'fig', f: 'tan', lb: '접선의 길이', t: '$\\overline{AF}=\\overline{AE}=p$, $\\overline{BF}=\\overline{BD}=q$, $\\overline{CD}=\\overline{CE}=r$로 놓아요. 구하는 것은 $x=\\overline{BD}=q$.', cap: 'AF=AE=p, BF=BD=q, CD=CE=r' });
         out.push({ k: 'fig', f: 'sides', lb: '변을 합으로', t: `세 변은 $\\overline{AB}=p+q=${p + q}$, $\\overline{BC}=q+r=${q + r}$, $\\overline{CA}=r+p=${r + p}$예요.`, cap: `p+q=${p + q}, q+r=${q + r}, r+p=${r + p}` });
         out.push({ k: 'eq', f: 'eq', t: `$(p+q)+(q+r)-(r+p)=2q$이므로 $x=q=\\frac{\\overline{AB}+\\overline{BC}-\\overline{CA}}{2}=\\frac{${p + q}+${q + r}-${r + p}}{2}=${q}$ (cm)`, cap: `x=q=\\frac{${p + q}+${q + r}−${r + p}}{2}=${q} cm` });
         out.push({ k: 'ans', f: 'ans', t: `$x=${q}\\text{ cm}$`, cap: `x = ${q} cm` });
-        out.push({ k: 'trap', f: 'trap', t: `D를 BC의 중점으로 보고 $\\overline{BD}=\\frac{1}{2}\\overline{BC}=\\frac{${q + r}}{2}$로 구하면 틀려요. BC의 중점은 외심에서 내린 수선의 발이에요. 내심의 D는 BD=${q}, CD=${r}로 서로 달라요.`, cap: `중점이면 \\frac{${q + r}}{2}=${(q + r) / 2} (오답) · 실제 BD=${q} cm` });
+        out.push({ k: 'trap', f: 'trap', t: q === r ? `이 경우에는 AB=AC이므로 내심에서 내린 수선의 발 D도 BC의 중점이에요. BD=CD=${q} cm예요. 다만 일반적인 삼각형에서도 항상 중점이라고 단정하면 안 돼요.` : `D를 BC의 중점으로 보고 $\\overline{BD}=\\frac{1}{2}\\overline{BC}=\\frac{${q + r}}{2}$로 구하면 틀려요. 외심에서 내린 수선의 발은 늘 중점이지만, 이 삼각형의 내심의 D는 BD=${q}, CD=${r}로 서로 달라요.`, cap: q === r ? `AB=AC인 경우: BD=CD=${q} cm` : `중점이면 \\frac{${q + r}}{2}=${(q + r) / 2} (오답) · 실제 BD=${q} cm` });
       }
       return out;
     },
@@ -599,7 +599,7 @@
 
   /* ====================================================================== 4. 정삼각형의 O와 I */
   const m4 = {
-    id: 't7-4', title: '정삼각형에서는 O와 I가 같은 점', short: '정삼각형의 O와 I', solve: m4Solve,
+    id: 't7-4', title: '정삼각형의 외심과 내심', short: '정삼각형의 O와 I', solve: m4Solve,
     question: '정삼각형의 외심과 내심은 어떤 관계이고, 외접원과 내접원의 반지름의 비는?',
     ctl: ['trMr'],
     init: (s) => { s.trMr = 3; s.trV = 0; },
@@ -658,7 +658,7 @@
 
   /* ====================================================================== 5. 중점 D, E, F 와 수선의 발 D, E, F */
   const m5 = {
-    id: 't7-5', title: '외심의 D·E·F와 내심의 D·E·F는 달라요', short: '중점과 수선의 발', solve: m5Solve,
+    id: 't7-5', title: '외심과 내심에서 내린 수선의 발', short: '중점과 수선의 발', solve: m5Solve,
     question: '외심에서 변에 내린 점 D와 내심에서 변에 내린 점 D는 같은 위치일까? BD와 CD의 길이는?',
     ctl: ['trMs', 'trMt'],
     init: (s) => { s.trMs = 60; s.trMt = 70; s.trV = 0; s.trM = 6; s.trX = [4, 3, 5]; },
@@ -715,12 +715,12 @@
     },
     steps: (M) => [
       `외심 O는 세 변의 <b>수직이등분선</b>의 교점이에요. 변 BC와 만나는 점 D는 BC의 <b>중점</b>이므로 $\\overline{BD}=\\overline{CD}$예요.`.replace(/<\/?b>/g, ''),
-      `내심 I에서 변 BC에 내린 <b>수선의 발</b> D는 BC의 중점이 아니에요. 이 삼각형에서는 BD와 CD의 길이가 달라요 (접선의 길이 BD=BF, CD=CE).`.replace(/<\/?b>/g, ''),
+      (Math.abs(dist(M.B, M.DI) - dist(M.C, M.DI)) < 1e-6 ? `이 삼각형은 AB=AC이므로 내심 I에서 BC에 내린 수선의 발 D도 중점이에요. 그러나 내심의 수선의 발이 항상 중점인 것은 아니에요.` : `내심 I에서 변 BC에 내린 수선의 발 D는 항상 중점인 것은 아니에요. 이 삼각형에서는 BD와 CD의 길이가 달라요 (접선의 길이 BD=BF, CD=CE).`),
       `외심 ↔ 꼭짓점까지 같은 거리, D는 변의 중점. 내심 ↔ 변까지 같은 거리, D는 수선의 발. 같은 이름 D라도 위치와 뜻이 달라요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>∠A, ∠B</b>를 바꿔 보세요. 왼쪽은 <b>외심</b>의 D(변의 중점), 오른쪽은 <b>내심</b>의 D(수선의 발)예요. 두 점 D는 대부분 다른 위치이고, <b>BD=CD</b>는 외심의 D에서만 늘 성립해요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
-      readouts: [rd('∠A · ∠B · ∠C', `${M.a}° · ${M.b}° · ${M.c}°`, 'sky'), rd('외심의 D', 'BD = CD (중점)', 'rose'), rd('내심의 D', '수선의 발 (BD ≠ CD)', 'green', '접선의 길이 BD=BF', null, true)],
+      readouts: [rd('∠A · ∠B · ∠C', `${M.a}° · ${M.b}° · ${M.c}°`, 'sky'), rd('외심의 D', 'BD = CD (중점)', 'rose'), rd('내심의 D', Math.abs(dist(M.B, M.DI) - dist(M.C, M.DI)) < 1e-6 ? '수선의 발 (BD = CD)' : '수선의 발 (BD ≠ CD)', 'green', '접선의 길이 BD=BF', null, true)],
       formula: `<p>외심: $\\overline{BD}=\\overline{CD}$ (D는 변의 중점)</p><p>내심: $\\overline{BD}=\\overline{BF}$ (접선의 길이), 일반적으로 $\\overline{BD}\\ne\\overline{CD}$</p>`,
       rule: '외심의 D·E·F는 변의 중점(수직이등분선과 변의 교점), 내심의 D·E·F는 변에 내린 수선의 발(접점)이다.',
       notes: notes('외심의 D: 변을 <b>둘로 똑같이</b> 나눠요. 내심의 D: 변에 <b>수직</b>으로 내린 발이에요.', '문제에서 어느 점의 D인지 먼저 확인하세요(외심인지 내심인지).')

@@ -38,7 +38,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q01.png"
       ],
-      "accessibility": "삼각형 ABC에서 선분 BC와 선분 DE가 평행한 두 개의 도형"
+      "accessibility": "삼각형 ABC에서 선분 BC와 선분 DE가 평행한 두 개의 도형",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫째 그림은 삼각형 ABC에서 DE가 BC와 평행하고 AD는 x, DB는 3, AC는 10, EC는 5인 모습이다. 둘째 그림은 두 직선이 A에서 만나고 ED가 BC와 평행하며 ED는 3, EA는 2, AB는 5, AC는 y, BC는 6인 모습이다. 셋째 그림은 AD와 AE를 파랑, DB와 EC를 초록으로 칠하고 AE는 5이다. 넷째 그림은 삼각형 ACB로 AC는 y, CB는 6, BA는 5이다. 다섯째 그림은 같은 방향으로 놓은 삼각형 AED로 AE는 2, ED는 3이다.",
+      "solutionImageCaption": "그림 1에서 AE는 AC에서 EC를 뺀 5이므로 AD 대 DB가 5 대 5여서 x는 3이다. 그림 2에서 삼각형 AED와 ACB는 닮음이므로 ED 대 CB와 EA 대 CA가 같고 y는 4이다. 따라서 x와 y를 더한다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
@@ -74,7 +78,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q02.png"
       ],
-      "accessibility": "삼각형 ABC의 세 변의 중점 D, E, F를 연결하여 만든 삼각형 DEF"
+      "accessibility": "삼각형 ABC의 세 변의 중점 D, E, F를 연결하여 만든 삼각형 DEF",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 그림은 삼각형 ABC와 세 변의 중점 D, E, F를 이은 삼각형이다. BC는 15, AC는 17, EF는 6이다. 오른쪽 그림은 같은 삼각형에서 마주 보는 변을 같은 색으로 나타내며 AB는 12, DF는 7.5, DE는 8.5이다.",
+      "solutionImageCaption": "중점연결정리에 의해 선분 EF는 변 AB의 절반이므로 AB는 12이다. 선분 DE는 변 AC의 절반인 8.5, 선분 DF는 변 BC의 절반인 7.5이다. 삼각형 DEF의 둘레는 이 세 변의 길이의 합이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 3,
@@ -110,7 +118,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q03.png"
       ],
-      "accessibility": "네 평행선 k, l, m, n 사이를 가로지르는 두 직선과 선분 길이의 비"
+      "accessibility": "네 평행선 k, l, m, n 사이를 가로지르는 두 직선과 선분 길이의 비",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 그림은 평행한 네 직선 k, l, m, n과 l 위의 한 점에서 만나는 두 직선이다. 한 직선은 k와 l 사이가 12, l과 m 사이가 4이고 l에서 n까지가 y이다. 다른 직선은 k와 l 사이가 10, l과 m 사이가 x, m과 n 사이가 6이다. 오른쪽 그림은 같은 위치의 선분을 같은 색으로 나타내며 l에서 n까지는 y와 x+6이다.",
+      "solutionImageCaption": "평행선 사이에서 두 직선의 대응하는 선분의 길이의 비는 같다. k와 l 사이가 12 대 10이므로 4 대 x도 같은 비여서 x는 3분의 10이고, l에서 n까지의 y 대 x+6도 같은 비여서 5y는 56이다. 따라서 3x+5y를 구한다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 4,
@@ -146,7 +158,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q04.png"
       ],
-      "accessibility": "삼각형 ABC에서 꼭짓점 A의 내각의 이등분선 AD와 선분 길이 조건"
+      "accessibility": "삼각형 ABC에서 꼭짓점 A의 내각의 이등분선 AD와 선분 길이 조건",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 위 그림은 삼각형 ABC에서 각 A의 이등분선 AD를 그린 것으로 AB는 16, AC는 12, BC는 14, DC는 x이다. 오른쪽 위 그림은 AB와 BD를 파랑, AC와 DC를 주황으로 칠하고 BD는 8, DC는 6이다. 아래 그림은 삼각형 ABD를 파랑, 삼각형 ACD를 주황으로 칠하고 높이를 점선으로 나타낸 것이다.",
+      "solutionImageCaption": "각의 이등분선 정리에 의해 BD 대 DC는 AB 대 AC, 곧 4 대 3이다. 삼각형 ABD와 ACD는 높이가 같으므로 넓이의 비도 4 대 3이어서 y는 4, z는 3이다. DC는 BC 14를 7등분한 것의 3개이므로 x는 6이다. 따라서 x, y, z를 모두 더한다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,
@@ -182,7 +198,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q05.png"
       ],
-      "accessibility": "삼각형 ABC의 무게중심 G와 중선 위의 점 H 조건"
+      "accessibility": "삼각형 ABC의 무게중심 G와 중선 위의 점 H 조건",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 위 그림은 삼각형 ABC에서 중선 AD, BE, CF가 무게중심 G에서 만나고 FE가 AD와 만나는 점이 H인 모습이며 GH는 3이다. 오른쪽 위 그림은 F와 E가 AB와 AC의 중점이고 H가 AD의 중점임을 같은 표시로 나타낸 것이다. 아래 그림은 AD를 6k로 놓고 AH는 3k, HG는 k, GD는 2k로 나눈 것이며 각각 파랑, 분홍, 초록이다.",
+      "solutionImageCaption": "중점연결정리에서 H는 AD의 중점이다. 무게중심 G는 중선 AD를 2 대 1로 나누므로 AD를 6k라 하면 AH는 3k, AG는 4k이고 GH는 k이다. GH가 3이므로 k는 3이고 AH는 3k이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 6,
@@ -218,7 +238,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q06.png"
       ],
-      "accessibility": "삼각형 ABC의 무게중심 G와 평행선 DF"
+      "accessibility": "삼각형 ABC의 무게중심 G와 평행선 DF",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 위 그림은 삼각형 ABC에서 중선 AD와 BE가 무게중심 G에서 만나고 DF가 BE와 평행한 모습이며 BG는 12이다. 오른쪽 위 그림은 중선 BE를 BG와 GE로 나눈 것으로 BG는 파랑 12, GE는 초록 6이다. 아래 그림은 삼각형 CBE에서 D와 F가 BC와 CE의 중점이고 BE는 18인 모습이다.",
+      "solutionImageCaption": "무게중심 G는 중선 BE를 2 대 1로 나누므로 GE는 6이고 BE는 18이다. 삼각형 CBE에서 D는 BC의 중점이고 DF는 BE와 평행하므로 중점연결정리에 의해 DF는 BE의 2분의 1이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 7,
@@ -236,9 +260,9 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q07.png",
-      "question": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07.png\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
-      "content": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07.png\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
+      "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg",
+      "question": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
+      "content": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
       "choices": [
         "$20\\text{ cm}$",
         "$24\\text{ cm}$",
@@ -252,9 +276,13 @@ window.examData = {
       "questionNumber": 7,
       "hasVisual": true,
       "images": [
-        "assets/images/21_팔마중_2학기_기말_중2_수학/q07.png"
+        "assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg"
       ],
-      "accessibility": "넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD"
+      "accessibility": "넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 그림은 AD와 BC가 평행하고 각 C와 D가 직각인 사다리꼴로 AD는 9, BC는 16이다. 오른쪽 그림은 A에서 BC에 내린 수선의 발 H를 나타내며 AH는 24, BH는 7이고, 빗변 AB는 빨간색이다.",
+      "solutionImageCaption": "사다리꼴의 넓이는 (9+16)을 2로 나눈 값에 높이를 곱한 것과 같다. 이 값이 300이므로 높이는 24이다. A에서 BC에 내린 수선의 발을 H라 하면 HC는 9, BH는 7이고 AH는 24이다. 직각삼각형 ABH에서 피타고라스 정리를 쓰면 AB의 제곱은 7의 제곱과 24의 제곱의 합 625이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -290,7 +318,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q08.png"
       ],
-      "accessibility": "직각삼각형 ABC에서 두 직각변이 16과 12일 때 빗변 AC"
+      "accessibility": "직각삼각형 ABC에서 두 직각변이 16과 12일 때 빗변 AC",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 위 그림은 각 B가 직각인 삼각형 ABC에서 BC 위의 점 D를 잡은 것으로 AB는 15, AD는 17, DC는 12이고 AC는 x이다. 오른쪽 위 그림은 직각삼각형 ABD로 AB는 15, AD는 17, BD는 8이다. 아래 그림은 직각삼각형 ABC로 BD는 8, DC는 12이고 직각을 낀 두 변은 파랑, 빗변 AC는 주황이다.",
+      "solutionImageCaption": "직각삼각형 ABD에서 BD의 제곱은 17의 제곱에서 15의 제곱을 뺀 64이므로 BD는 8이다. 따라서 BC는 8과 12의 합 20이다. 직각삼각형 ABC에서 AC의 제곱은 15의 제곱과 20의 제곱의 합 625이므로 AC는 25이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -326,7 +358,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q09.png"
       ],
-      "accessibility": "정사각형 ABCD의 변 DC 위의 점 E와 연장선 교점 F로 이루어진 삼각형 DEF"
+      "accessibility": "정사각형 ABCD의 변 DC 위의 점 E와 연장선 교점 F로 이루어진 삼각형 DEF",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫째 그림은 한 변이 8인 정사각형과 BE의 연장선이 AD의 연장선과 만나는 점 F로 BE는 10이다. 둘째 그림은 직각삼각형 BCE에서 BC는 8, CE는 6, BE는 10이고 DE는 2이다. 셋째 그림은 삼각형 CEB로 변이 6, 8, 10이다. 넷째 그림은 같은 방향으로 놓은 삼각형 DEF로 DE가 2이고 대응하는 변은 같은 색이다.",
+      "solutionImageCaption": "직각삼각형 BCE에서 CE는 6이므로 DE는 2이다. 평행선의 엇각에 의해 삼각형 DEF와 CEB가 닮음이고 닮음비는 2 대 6, 곧 1 대 3이다. 삼각형 CEB의 둘레는 24이므로 삼각형 DEF의 둘레는 그 3분의 1이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -362,7 +398,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q10.png"
       ],
-      "accessibility": "직사각형 ABCD를 선분 AF를 접는 선으로 하여 꼭짓점 D를 선분 BC 위의 점 E로 접은 그림"
+      "accessibility": "직사각형 ABCD를 선분 AF를 접는 선으로 하여 꼭짓점 D를 선분 BC 위의 점 E로 접은 그림",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 위 그림은 직사각형을 점 D가 BC 위의 점 E에 오도록 접은 것으로 AB는 9, AD는 15이고 AD와 AE, DF와 EF가 같은 표시이다. 오른쪽 위 그림은 직각삼각형 ABE로 AB는 9, AE는 15, BE는 12이고 EC는 3이다. 아래 그림은 직각삼각형 EFC로 EC는 3, CF는 x, EF는 9에서 x를 뺀 값이다.",
+      "solutionImageCaption": "접으면 AE는 AD와 같은 15이므로 직각삼각형 ABE에서 BE는 12이고 EC는 3이다. FC를 x라 하면 EF와 DF는 같으므로 EF는 9에서 x를 뺀 값이다. 직각삼각형 EFC에서 EF의 제곱은 EC의 제곱과 FC의 제곱의 합이므로 일차방정식이 되어 x를 구한다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -394,7 +434,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 칸 두 개가 곱하기 기호로 이어져 있다. 첫째 칸은 올라갈 때로 5가지, 둘째 칸은 내려올 때로 4가지이다.",
+      "solutionImageCaption": "올라갈 때는 등산로 5가지 중 하나를 고른다. 내려올 때는 올라간 길을 뺀 4가지 중 하나를 고른다. 두 단계의 가짓수를 곱한다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -426,7 +470,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 칸 세 개가 더하기 기호로 이어져 있다. 십의 자리가 1일 때 5가지, 십의 자리가 2일 때 5가지, 십의 자리가 3일 때 1가지이다.",
+      "solutionImageCaption": "십의 자리에는 0이 올 수 없으므로 십의 자리 숫자로 경우를 나눈다. 십의 자리가 1이면 일의 자리는 1을 뺀 5가지, 2이면 2를 뺀 5가지이다. 십의 자리가 3이면 30 이하이어야 하므로 일의 자리는 0뿐인 1가지이다. 세 경우를 합의 법칙으로 더한다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -458,7 +506,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 전체집합 U는 20개이고 서로 겹치지 않는 두 원이 있다. 왼쪽 원 A는 4의 배수로 5개, 오른쪽 원 B는 소수로 8개이다.",
+      "solutionImageCaption": "1부터 20까지의 수 중 4의 배수는 4, 8, 12, 16, 20의 5개이다. 소수는 2, 3, 5, 7, 11, 13, 17, 19의 8개이다. 두 모임에 공통으로 들어 있는 수가 없으므로 합의 법칙으로 두 개수를 더한다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -490,7 +542,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 칸 세 개가 더하기 기호로 이어져 있다. x가 1일 때 5가지, x가 2일 때 3가지, x가 3일 때 1가지이다.",
+      "solutionImageCaption": "x의 값에 따라 경우를 나눈다. x가 1이면 y는 6보다 작은 5가지, x가 2이면 y는 4보다 작은 3가지, x가 3이면 y는 2보다 작은 1가지이다. x가 4 이상이면 만족하는 y가 없다. 세 경우를 합의 법칙으로 더한다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -522,7 +578,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 가로선의 왼쪽 끝은 0으로 절대로 일어날 수 없는 사건, 오른쪽 끝은 1로 반드시 일어나는 사건이다. 모든 확률은 이 선 위의 수이다.",
+      "solutionImageCaption": "모든 사건의 확률은 0 이상 1 이하이다. 확률이 0인 사건은 절대로 일어날 수 없고 확률이 1인 사건은 반드시 일어난다. 보기에서 합이 13이 되는 경우는 불가능하고, 홀수 또는 짝수가 나오는 경우는 반드시 일어난다. 나머지 보기의 확률은 0과 1 사이이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,
@@ -554,7 +614,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 수형도이다. A가 짝수일 확률은 3분의 2, 홀수일 확률은 3분의 1이다. 각각에서 B가 짝수일 확률은 5분의 2, 홀수일 확률은 5분의 3이다. 둘 다 짝수인 경로는 파랑, 둘 다 홀수인 경로는 주황으로 굵게 표시되어 있다.",
+      "solutionImageCaption": "합이 짝수인 경우는 둘 다 짝수이거나 둘 다 홀수일 때이다. 둘 다 짝수일 확률은 3분의 2 곱하기 5분의 2이고, 둘 다 홀수일 확률은 3분의 1 곱하기 5분의 3, 곧 15분의 3(약분하면 5분의 1)이다. 두 경우는 동시에 일어나지 않으므로 확률을 더한다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -586,7 +650,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 칸 세 개가 더하기 기호로 이어져 있다. b가 1일 때 a는 2가지, b가 2일 때 2가지, b가 3일 때 1가지이다.",
+      "solutionImageCaption": "방정식의 해는 4에서 b를 뺀 값을 a로 나눈 수이므로 b가 3 이하여야 하고 a는 4에서 b를 뺀 값의 약수여야 한다. b가 1이면 a는 3의 약수 1, 3의 2가지, b가 2이면 2의 약수 1, 2의 2가지, b가 3이면 1의 약수 1의 1가지이다. 이 경우의 수를 더하고 전체 경우의 수 36으로 나눈다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -618,7 +686,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 수형도이다. 첫째 단계는 현정이가 뽑는 공으로 흰 공 5분의 2, 검은 공 5분의 3이다. 둘째 단계는 종성이가 뽑는 공으로 흰 공을 뽑았을 때 흰 공 3분의 1, 검은 공 3분의 2이고, 검은 공을 뽑았을 때 흰 공 9분의 4, 검은 공 9분의 5이다. 종성이가 검은 공을 뽑는 두 경로가 파랑과 주황으로 굵게 표시되어 있다.",
+      "solutionImageCaption": "현정이가 흰 공을 뽑고 종성이가 검은 공을 뽑을 확률은 10분의 4 곱하기 9분의 6, 곧 15분의 4이다. 현정이가 검은 공을 뽑고 종성이가 검은 공을 뽑을 확률은 10분의 6 곱하기 9분의 5, 곧 3분의 1이다. 두 경우는 동시에 일어나지 않으므로 확률을 더한다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -654,7 +726,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/q19.png"
       ],
-      "accessibility": "정사각형 ABCD 위에서 점 A를 출발하여 반시계 방향으로 움직이는 말"
+      "accessibility": "정사각형 ABCD 위에서 점 A를 출발하여 반시계 방향으로 움직이는 말",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 그림은 한 변의 길이가 1인 정사각형에 시곗바늘 반대 방향 화살표가 그려진 모습이다. 오른쪽 그림은 0부터 12까지 이동한 칸 수를 눈금으로 나타낸 수직선 모양이며, 출발점 0에 A가 적혀 있고 C에 도착하는 2, 6, 10칸의 눈금이 파랑으로 표시되어 있다.",
+      "solutionImageCaption": "A에서 시곗바늘 반대 방향으로 가면 A, B, C, D 순서로 한 바퀴가 4칸이다. C에 도착하려면 두 눈의 합이 2, 6, 10 중 하나여야 한다. 합이 2인 경우는 1가지, 6인 경우는 5가지, 10인 경우는 3가지이다. 전체 경우의 수 36가지로 나눈다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -686,7 +762,11 @@ window.examData = {
       "hasVisual": false,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 그림은 노란 공 2개, 파란 공 6개, 빨간 공 물음표개가 가로로 이어진 막대이다. 오른쪽 그림은 같은 크기로 나눈 여섯 칸 중 첫 칸이 노란 공 2개이고 전체 길이가 12로 표시되어 있다.",
+      "solutionImageCaption": "노란 공 2개를 꺼낼 확률이 6분의 1이므로 전체 공의 개수는 2에 6을 곱한 12개이다. 노란 공 2개와 파란 공 6개를 뺀 나머지가 빨간 공이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
@@ -717,7 +797,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/s01.png"
       ],
-      "accessibility": "삼각형 ABC에서 선분 ED와 선분 BC가 평행한 도형"
+      "accessibility": "삼각형 ABC에서 선분 ED와 선분 BC가 평행한 도형",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫째 그림은 삼각형 ABC에서 변 AB 위의 점 E와 변 AC 위의 점 D를 이은 ED가 BC와 평행한 모습이며 AE는 8, EB는 4, BC는 12이다. 둘째 그림은 삼각형 ABC로 AB는 12, BC는 12이다. 셋째 그림은 같은 방향으로 놓은 삼각형 AED로 AE는 8이고, 대응하는 변은 같은 색이다.",
+      "solutionImageCaption": "(1) 삼각형 AED와 삼각형 ABC가 닮음이다. (2) 각 A가 공통이고 ED와 BC가 평행하여 동위각 AED와 ABC, ADE와 ACB가 같으므로 두 쌍의 대응각이 각각 같아 닮음이다. (3) AB는 AE와 EB의 합 12이고 AE 대 AB는 ED 대 BC와 같으므로 8 대 12와 ED 대 12가 같다. 정답은 ED가 8cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
@@ -748,7 +832,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/s02.png"
       ],
-      "accessibility": "평행사변형 ABCD의 대각선 교점 O와 중선 교점 P"
+      "accessibility": "평행사변형 ABCD의 대각선 교점 O와 중선 교점 P",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 그림은 평행사변형에 두 대각선 AC, BD가 점 O에서 만나고 BC의 중점 M과 A를 이은 선분이 BD와 점 P에서 만나는 모습이며 BD는 18이다. 오른쪽 그림은 삼각형 ABC에서 두 중선 AM, BO가 점 P에서 만나는 모습이며 BP와 AP는 파랑, PO와 PM은 주황이고 BO는 9이다.",
+      "solutionImageCaption": "(1) 평행사변형의 두 대각선은 서로 다른 것을 이등분하므로 점 O는 BD의 중점이고 BO는 BD의 절반인 9cm이다. (2) 삼각형 ABC에서 O는 AC의 중점이므로 BO는 중선이고, M은 BC의 중점이므로 AM도 중선이다. 두 중선의 교점 P는 삼각형 ABC의 무게중심이다. (3) 무게중심은 중선 BO를 2 대 1로 나누므로 PO는 BO의 3분의 1이다. 정답은 (3) 3cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 23,
@@ -779,7 +867,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/s03.png"
       ],
-      "accessibility": "길이가 13cm, 12cm, x cm인 세 빨대"
+      "accessibility": "길이가 13cm, 12cm, x cm인 세 빨대",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽 그림은 13이 빗변인 직각삼각형으로 직각을 낀 두 변은 12와 x이다. 오른쪽 그림은 x가 빗변인 직각삼각형으로 직각을 낀 두 변은 13과 12이다. 빗변은 주황, 직각을 낀 두 변은 파랑이다.",
+      "solutionImageCaption": "세 변 13, 12, x로 직각삼각형을 만들 때 빗변이 될 수 있는 변은 13 또는 x이다. 13이 빗변이면 x의 제곱 더하기 12의 제곱이 13의 제곱이므로 x의 제곱은 25이다. x가 빗변이면 x의 제곱은 12의 제곱 더하기 13의 제곱이므로 313이다. 정답은 x의 제곱이 25 또는 313이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,
@@ -810,7 +902,11 @@ window.examData = {
       "images": [
         "assets/images/21_팔마중_2학기_기말_중2_수학/s04.png"
       ],
-      "accessibility": "좌표평면 위의 x절편이 2이고 y절편이 -6인 직선의 그래프"
+      "accessibility": "좌표평면 위의 x절편이 2이고 y절편이 -6인 직선의 그래프",
+      "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=3x-6을 그리고, x좌표와 y좌표가 모두 1 이상 6 이하인 정사각형 영역을 회색으로 칠한 그림이다. 직선은 x축과 점 (2, 0)에서 만나고, 칠한 영역 안에서 점 (3, 3)과 영역의 윗변 위의 점 (4, 6)을 지난다.",
+      "solutionImageCaption": "(1) 직선이 x절편 (2, 0)과 y절편 (0, -6)을 지나므로 기울기는 2분의 6, 즉 3이고 식은 y=3x-6이다. (2) 점 (x, y)에서 x, y는 1 이상 6 이하의 자연수이므로 그림의 회색 정사각형 안(경계 포함)에서 직선 위의 점을 찾으면 (3, 3), (4, 6)이다. (3) 주사위를 두 번 던질 때 나오는 모든 경우의 수는 6 곱하기 6으로 36가지이고, 직선 위에 있는 경우는 이 두 점뿐이다. 정답은 (1) y=3x-6, (2) (3, 3), (4, 6), (3) 18분의 1이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

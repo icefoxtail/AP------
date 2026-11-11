@@ -52,6 +52,49 @@
   const pointsRow = (b, xs, names, y, colors) => xs.forEach((x, i) => { b.point({ x, y }, { color: 'ink', r: 5.5 }); PL.T(b, { x, y }, names[i], { dy: 21, size: 17, color: (colors && colors[i]) || 'ink' }); });
   const mainLine = (b, y) => b.seg({ x: XL, y }, { x: XR, y }, { color: 'muted', width: 1.8, alpha: 0.5 });
 
+  // 해설에서는 주어진 점을 움직이지 않고, 그 점을 지나는 선을 실제로 그린다.
+  // 직접 해 보기의 기존 도형·핸들·문제 생성은 아래 원래 경로를 그대로 사용한다.
+  const lessonReady = (s, key = 'plShowAnswer') => !s.lessonEntry && s[key] === true;
+  const lessonProgress = (s) => s.lessonEntry ? 0 : clamp(Number(s.plTrace) || 0, 0, 1);
+  const trace = (b, A, B, s, color, arrowHead = false, width = 4) => {
+    const p = lessonProgress(s);
+    if (p <= 0) return;
+    const end = { x: A.x + (B.x - A.x) * p, y: A.y + (B.y - A.y) * p };
+    if (arrowHead && Math.hypot(end.x - A.x, end.y - A.y) * b.k > 18) PL.arrow(b, A, end, { color, width, head: 10 });
+    else b.seg(A, end, { color, width });
+  };
+  const lessonLine = (b, s, y, color = 'sky') => {
+    straight(b, y, 'muted', .3, 2);
+    const A = { x: 6, y };
+    trace(b, A, { x: XL, y }, s, color, true);
+    trace(b, A, { x: XR, y }, s, color, true);
+  };
+  const lessonPairLine = (b, s, A, B, color) => {
+    const len = Math.hypot(B.x - A.x, B.y - A.y), dx = .35 * (B.x - A.x) / len, dy = .35 * (B.y - A.y) / len;
+    const mid = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 }, lo = { x: A.x - dx, y: A.y - dy }, hi = { x: B.x + dx, y: B.y + dy };
+    PL.arrow(b, mid, lo, { color: 'muted', width: 1.4, alpha: .2, head: 7 }); PL.arrow(b, mid, hi, { color: 'muted', width: 1.4, alpha: .2, head: 7 });
+    trace(b, mid, lo, s, color, true, 2); trace(b, mid, hi, s, color, true, 2);
+  };
+  const lessonRay = (b, s, y, x, dir, color) => {
+    const A = { x, y }, B = { x: dir > 0 ? XR : XL, y };
+    PL.arrow(b, A, B, { color: 'muted', width: 2, alpha: .3 });
+    trace(b, A, B, s, color, true);
+    b.point(A, { color, r: 6 });
+  };
+  const lessonLabel = (b, y, text, color = 'ink') => rowLabel(b, y, text, color, 99, true);
+  const lessonText = (b, y, text, color = 'green') => T(b, { x: (XL + XR) / 2, y }, text, { color, size: 16 });
+  const tracePath = (b, points, s, color, width = 3) => {
+    const p = lessonProgress(s), f = p * (points.length - 1), i = Math.floor(f);
+    if (p <= 0) return;
+    const out = points.slice(0, i + 1);
+    if (i < points.length - 1) out.push({ x: points[i].x + (points[i + 1].x - points[i].x) * (f - i), y: points[i].y + (points[i + 1].y - points[i].y) * (f - i) });
+    if (out.length >= 2) b.path(out, { color, width });
+  };
+  const pairArc = (a, c, y = 0, sign = -1) => Array.from({ length: 25 }, (_, k) => {
+    const t = k / 24, h = .45 + .1 * Math.abs(c - a);
+    return { x: a + (c - a) * t, y: y + sign * 4 * h * t * (1 - t) };
+  });
+
   /* ================================================================== 반직선 AB와 BA */
   const TRUE_R = [
     { t: '직선 AB와 직선 BA는 같다.' }, { t: '선분 AB와 선분 BA는 같다.' }, { t: '반직선 AB의 시작점은 점 A이다.' },
@@ -69,6 +112,7 @@
     id: 'l-ray', title: '반직선 AB와 BA', short: '반직선 AB·BA',
     box: [-1.2, -1.4, 13.2, 10.3],
     question: '두 점 A, B로 그을 수 있는 직선·반직선·선분은 각각 무엇이 같고 무엇이 다를까요?',
+    lessonQuestion: (M, s) => s.plLessonMode === 'rayCommon' ? `눈금 A는 ${M.A}, B는 ${M.B}입니다. 반직선 AB와 BA의 공통부분과 그 길이는? (단위: cm)` : s.plLessonMode === 'rayOrder' ? '반직선 AB와 반직선 BA는 같은 반직선일까요? 시작점과 방향을 비교해 보세요.' : 'AB의 이름 순서를 BA로 바꾸면 직선과 선분은 각각 같은 도형일까요?',
     init: { lrA: 3, lrB: 8 },
     controls: ['lrA', 'lrB'],
     model: (s) => ({ A: s.lrA, B: s.lrB, d: Math.abs(s.lrB - s.lrA), dir: s.lrB > s.lrA ? 1 : -1 }),
@@ -87,6 +131,25 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>반직선 AB의 \'A\'는 시작점, \'B\'는 가는 방향을 알려 주는 점입니다.</li><li>직선·반직선은 끝이 없어서 길이를 잴 수 없습니다.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, y = [0, 2.7, 4.8, 6.9, 9.3];
+      if (C.lesson) {
+        const mode = s.plLessonMode, done = lessonReady(s);
+        mainLine(b, 0);
+        pointsRow(b, [M.A, M.B], [`A(${M.A})`, `B(${M.B})`], 0);
+        guide(b, [M.A, M.B], 0, 8.9);
+        lessonLabel(b, y[1], done && mode === 'lineOrder' ? '직선 AB = 직선 BA' : '직선 AB, 직선 BA', 'sky');
+        lessonLine(b, s, y[1]);
+        lessonLabel(b, y[2], '반직선 AB · 시작점 A', 'violet');
+        lessonRay(b, s, y[2], M.A, M.dir, 'violet');
+        lessonLabel(b, y[3], '반직선 BA · 시작점 B', 'rose');
+        lessonRay(b, s, y[3], M.B, -M.dir, 'rose');
+        if (done && mode !== 'rayOrder') {
+          const A = { x: M.A, y: y[4] }, B = { x: M.B, y: y[4] };
+          b.seg(A, B, { color: 'green', width: 7 });
+          b.point(A, { color: 'green', r: 6 }); b.point(B, { color: 'green', r: 6 });
+          lessonLabel(b, y[4], mode === 'lineOrder' ? '선분 AB = 선분 BA' : `공통부분: 선분 AB · ${M.d} cm`, 'green');
+        } else lessonText(b, 8.8, done ? '반직선 AB ≠ 반직선 BA' : '이름과 방향을 비교해 보세요', done ? 'green' : 'muted');
+        return;
+      }
       guide(b, [M.A, M.B], y[0], y[4] - 0.35);
       mainLine(b, y[0]);
       b.point({ x: M.A, y: 0 }, { color: 'ink', r: 5.5 }); b.point({ x: M.B, y: 0 }, { color: 'ink', r: 5.5 });
@@ -127,6 +190,7 @@
     id: 'l-types', title: '직선·반직선·선분', short: '직선·반직선·선분',
     box: [-1.2, -1.4, 13.2, 9.0],
     question: '직선·반직선·선분 중 길이를 잴 수 있는 것은 무엇일까요?',
+    lessonQuestion: (M, s) => s.plLessonMode === 'typeLine' ? '직선 AB의 끝점은 몇 개이고, 길이를 잴 수 있을까요?' : s.plLessonMode === 'typeRay' ? '반직선 AB의 끝점은 몇 개이고, 길이를 잴 수 있을까요?' : `눈금 A는 ${M.A}, B는 ${M.B}입니다. 선분 AB의 끝점은 몇 개이고 길이는 얼마일까요? (단위: cm)`,
     init: { lrA: 3, ltL: 5 },
     controls: ['ltL'],
     model: (s) => { const L = s.ltL, A = Math.min(s.lrA, 12 - L); return { A, L, B: A + L }; },
@@ -145,6 +209,19 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>\'직선 AB의 길이는 반직선 AB의 길이의 2배이다\'는 <b>틀린 말</b>입니다. 둘 다 길이를 잴 수 없습니다.</li><li>서로 다른 두 점을 지나는 직선은 오직 1개입니다.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, y = [2.2, 4.6, 7.0];
+      if (C.lesson) {
+        const mode = s.plLessonMode, done = lessonReady(s);
+        mainLine(b, 0); pointsRow(b, [M.A, M.B], [`A(${M.A})`, `B(${M.B})`], 0);
+        guide(b, [M.A, M.B], 0, y[2]);
+        lessonLabel(b, y[0], '직선 AB', 'sky'); lessonLine(b, s, y[0]);
+        lessonLabel(b, y[1], '반직선 AB', 'violet'); lessonRay(b, s, y[1], M.A, 1, 'violet');
+        lessonLabel(b, y[2], '선분 AB', 'green');
+        b.seg({ x: M.A, y: y[2] }, { x: M.B, y: y[2] }, { color: 'muted', width: 2, alpha: .3 });
+        trace(b, { x: M.A, y: y[2] }, { x: M.B, y: y[2] }, s, 'green', false, 6);
+        [M.A, M.B].forEach(x => b.point({ x, y: y[2] }, { color: 'green', r: 6 }));
+        if (done) lessonText(b, 8.25, mode === 'typeLine' ? '직선: 끝점 0개 · 길이 측정 불가' : mode === 'typeRay' ? '반직선: 끝점 1개 · 길이 측정 불가' : `선분: 끝점 2개 · 길이 ${M.L} cm`);
+        return;
+      }
       rowLabel(b, y[0], '직선 AB  (끝점 없음)', 'sky', st, st === 1);
       straight(b, y[0], 'sky', al(st, st === 1));
       rowLabel(b, y[1], '반직선 AB  (끝점 A 하나)', 'violet', st, st === 2);
@@ -171,6 +248,7 @@
     id: 'l-same', title: '같은 반직선 찾기', short: '같은 반직선',
     box: [-1.2, -1.4, 13.2, 6.0],
     question: '이름이 다른 두 반직선이 같은 반직선일 때는 언제일까요?',
+    lessonQuestion: (M, s, Q) => s.plLessonMode === 'sameStart' ? 'A, B, C, D가 이 순서로 한 직선 위에 있습니다. 반직선 BC와 CD는 같은 반직선일까요?' : s.plLessonMode === 'sameDirection' ? 'A, B, C, D가 이 순서로 한 직선 위에 있습니다. 반직선 BC와 BA는 같은 반직선일까요?' : Q.stem,
     init: { lp0: 1, lp1: 4, lp2: 8, lp3: 11, lsS: 1 },
     controls: ['lp0', 'lp1', 'lp2', 'lp3'],
     presets: (s) => [0, 1, 2, 3].map((i) => ({ group: i === 0 ? '시작점' : '', label: `점 ${LET[i]}`, color: 'violet', apply: (st) => { st.lsS = i; }, on: (st) => st.lsS === i })),
@@ -189,6 +267,16 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>이름을 비교할 때는 <b>맨 앞 글자(시작점)</b>가 같은지 먼저 확인하세요.</li><li>시작점이 달라도 방향이 같으면 <b>다른</b> 반직선입니다.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, S = M.S, y = [0, 2.8, 5.0];
+      if (C.lesson) {
+        const mode = s.plLessonMode, other = mode === 'sameStart' ? 'CD' : mode === 'sameDirection' ? 'BA' : 'BD';
+        const start = other === 'CD' ? 2 : 1, dir = other === 'BA' ? -1 : 1;
+        mainLine(b, 0); pointsRow(b, M.xs, ['A', 'B', 'C', 'D'], 0);
+        guide(b, M.xs, 0, 4.6);
+        lessonLabel(b, 2.2, '반직선 BC', 'violet'); lessonRay(b, s, 2.2, M.xs[1], 1, 'violet');
+        lessonLabel(b, 4.4, `반직선 ${other}`, 'rose'); lessonRay(b, s, 4.4, M.xs[start], dir, 'rose');
+        if (lessonReady(s)) lessonText(b, 5.65, `반직선 BC ${other === 'BD' ? '=' : '≠'} 반직선 ${other}`);
+        return;
+      }
       mainLine(b, y[0]);
       if (C.hide) {
         pointsRow(b, M.xs, ['A', 'B', 'C', 'D'], y[0]);
@@ -252,6 +340,7 @@
     id: 'l-common', title: '두 반직선의 공통부분', short: '공통부분',
     box: [-1.2, -1.4, 13.2, 8.2],
     question: '두 반직선이 겹치는 부분(공통부분)은 어떤 도형일까요?',
+    lessonQuestion: (M, s, Q) => s.plLessonMode === 'commonEnds' ? 'A, B, C, D 순서입니다. CD와 BA처럼 서로 등진 경우, BA와 BD처럼 시작점이 같은 경우의 공통부분을 비교해 보세요.' : Q.stem,
     init: { lp0: 1, lp1: 4, lp2: 8, lp3: 11, lcs: 0 },
     controls: ['lp0', 'lp1', 'lp2', 'lp3'],
     presets: (s) => ['마주 봄', '같은 방향', '서로 등짐', '시작점이 같음'].map((nm, i) => ({ group: i === 0 ? '두 반직선' : '', label: `${nm} (${rname(CASES[i].r1).slice(4)}, ${rname(CASES[i].r2).slice(4)})`, color: 'violet', apply: (st) => { st.lcs = i; }, on: (st) => (st.lcs || 0) === i })),
@@ -267,6 +356,35 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>한 줄 위에 겹쳐 그리면 헷갈려요. 위·아래 두 줄로 나누어 놓고 <b>둘 다 칠해진 곳</b>만 찾으세요.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, y = [0, 2.8, 4.9, 7.2];
+      if (C.lesson) {
+        const done = lessonReady(s);
+        mainLine(b, 0); pointsRow(b, M.xs, ['A', 'B', 'C', 'D'], 0);
+        guide(b, M.xs, 0, 7.2);
+        if (s.plLessonMode === 'commonEnds') {
+          lessonLabel(b, 1.7, '서로 등짐: CD, BA', 'ink');
+          lessonRay(b, s, 1.7, M.xs[2], 1, 'violet');
+          lessonRay(b, s, 2.8, M.xs[1], -1, 'rose');
+          lessonLabel(b, 5.0, '같은 시작점: BA, BD', 'ink');
+          lessonRay(b, s, 5.0, M.xs[1], -1, 'violet');
+          lessonRay(b, s, 6.1, M.xs[1], 1, 'rose');
+          if (done) {
+            lessonText(b, 3.75, '공통부분 없음');
+            b.point({ x: M.xs[1], y: 7.2 }, { color: 'green', r: 7 });
+            T(b, { x: M.xs[1], y: 7.2 }, '공통부분: 점 B', { dy: 22, color: 'green', size: 16 });
+          }
+        } else {
+          lessonLabel(b, y[1], M.n1, 'violet'); lessonRay(b, s, y[1], M.xs[M.r1.s], M.r1.d, 'violet');
+          lessonLabel(b, y[2], M.n2, 'rose'); lessonRay(b, s, y[2], M.xs[M.r2.s], M.r2.d, 'rose');
+          if (done) {
+            lessonLabel(b, y[3], `공통부분: ${shapeText(M.sh)}`, 'green');
+            if (M.sh.kind === 'seg') {
+              const A = { x: M.xs[M.sh.a], y: y[3] }, B = { x: M.xs[M.sh.c], y: y[3] };
+              b.seg(A, B, { color: 'green', width: 7 }); b.point(A, { color: 'green', r: 6 }); b.point(B, { color: 'green', r: 6 });
+            } else if (M.sh.kind === 'ray') lessonRay(b, s, y[3], M.xs[M.sh.s], M.sh.d, 'green');
+          } else lessonLabel(b, y[3], '둘 다 칠해진 곳은?', 'green');
+        }
+        return;
+      }
       mainLine(b, y[0]);
       pointsRow(b, M.xs, ['A', 'B', 'C', 'D'], y[0]);
       guide(b, M.xs, y[0], y[3]);
@@ -307,6 +425,7 @@
     id: 'l-short', title: '두 점 사이의 거리', short: '두 점 사이의 거리',
     box: [-0.8, -3.6, 12.8, 7.6],
     question: '두 점 A, B를 잇는 길 중 가장 짧은 길은 무엇이고, 그 길이를 무엇이라 부를까요?',
+    lessonQuestion: (M, s, Q) => s.plLessonMode === 'shortDistance' ? Q.stem : '두 점 A, B를 잇는 길 중 가장 짧은 길은 무엇이고, 두 점 사이의 거리는 무엇의 길이일까요?',
     init: { lrA: 2, lrB: 9, lsH: 2 },
     controls: ['lrA', 'lrB', 'lsH'],
     model: (s) => ({ A: Math.min(s.lrA, s.lrB), B: Math.max(s.lrA, s.lrB), d: Math.abs(s.lrB - s.lrA), h: s.lsH }),
@@ -321,6 +440,19 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>\'두 점 A, B를 잇는 가장 짧은 선은 <b>직선</b> AB\'가 아니라 <b>선분</b> AB입니다.</li><li>거리는 눈금을 읽어서 <b>큰 값 − 작은 값</b>으로 구합니다.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, A = { x: M.A, y: 0 }, B = { x: M.B, y: 0 };
+      if (C.lesson) {
+        const curve = bez(A, B, M.h), zz = [A, { x: M.A + M.d * .3, y: M.h * .9 }, { x: M.A + M.d * .62, y: M.h * .35 }, B];
+        b.path(curve, { color: 'rose', width: 3, alpha: .7 }); b.path(zz, { color: 'rose', width: 3, alpha: .7 });
+        b.seg(A, B, { color: 'muted', width: 2 }); trace(b, A, B, s, 'green', false, 6);
+        PL.pt(b, A, 'A', { dx: -17, dy: 0 }); PL.pt(b, B, 'B', { dx: 17, dy: 0 });
+        T(b, curve[18], '돌아가는 길', { dy: -16, color: 'rose', size: 15 });
+        const ry = M.h + 1.9;
+        PL.ruler(b, 0, 12, ry, { every: 1 });
+        [M.A, M.B].forEach(x => b.seg({ x, y: 0 }, { x, y: ry }, { color: 'muted', width: 1, dash: [4, 5], alpha: .4 }));
+        T(b, { x: M.A, y: ry }, `A(${M.A})`, { dy: -18, color: 'amber' }); T(b, { x: M.B, y: ry }, `B(${M.B})`, { dy: -18, color: 'amber' });
+        if (lessonReady(s)) lessonText(b, 6.6, s.plLessonMode === 'shortPath' ? '두 점 사이의 거리 = 선분 AB의 길이' : `${M.B} − ${M.A} = ${M.d} cm`);
+        return;
+      }
       b.path(bez(A, B, M.h), { color: 'rose', width: 3.6, alpha: al(st, st === 1) });
       const zz = [A, { x: M.A + M.d * 0.3, y: M.h * 0.9 }, { x: M.A + M.d * 0.62, y: M.h * 0.35 }, B];
       b.path(zz, { color: 'rose', width: 3.6, alpha: al(st, st === 1) });
@@ -357,6 +489,7 @@
     id: 'l-col', title: '한 직선 위의 n개의 점', short: '한 직선 위 n점',
     box: [-1.2, -4.2, 13.2, 5.9],
     question: '한 직선 위에 점이 n개 있을 때, 직선·반직선·선분은 각각 몇 개일까요?',
+    lessonQuestion: (M, s, Q) => Q.stem,
     init: { lcn: 5, lcf: 0, lcx: null },
     controls: ['lcn', 'lcf'],
     model: (s) => {
@@ -380,6 +513,44 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li><b>한 직선 위</b>의 점은 반직선이 2(n−1)개입니다. 점이 직선 밖에도 있는 다음 장면과 규칙이 달라요.</li><li>반직선은 시작점과 방향이 같을 때만 같은 반직선입니다.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, xs = M.xs, nm = names(M.n), y0 = 0;
+      if (C.lesson) {
+        const mode = s.plLessonMode, support = lessonReady(s, 'plSupportReady'), other = lessonReady(s, 'plOtherReady'), done = lessonReady(s);
+        const rays = mode === 'colRay', sum = mode === 'colSum';
+        mainLine(b, 0);
+        for (let i = 0; i < M.n; i++) for (let j = i + 1; j < M.n; j++) {
+          const points = pairArc(xs[i], xs[j]);
+          b.path(points, { color: 'muted', width: 1.5, alpha: .2 });
+          if (!rays) tracePath(b, points, s, i === 0 || other || done ? 'green' : 'muted', i === 0 ? 3.4 : 1.6);
+        }
+        lessonText(b, -3.1, `한 직선 위의 ${M.n}개 점`, 'ink');
+        lessonText(b, -2.35, '위쪽 호는 선분의 끝점 쌍 표시', 'muted');
+        for (let i = 0; i < M.n; i++) {
+          if (i < M.n - 1) {
+            const A = { x: xs[i] + .1, y: 1.5 }, B = { x: xs[i] + 1.05, y: 1.5 };
+            PL.arrow(b, A, B, { color: 'muted', width: 2, alpha: .25, head: 8 });
+            if (rays || sum) trace(b, A, B, s, 'violet', true, 3);
+          }
+          if (i > 0) {
+            const A = { x: xs[i] - .1, y: 2.35 }, B = { x: xs[i] - 1.05, y: 2.35 };
+            PL.arrow(b, A, B, { color: 'muted', width: 2, alpha: .25, head: 8 });
+            if (rays || sum) trace(b, A, B, s, 'rose', true, 3);
+          }
+        }
+        pointsRow(b, xs, nm, 0);
+        if (rays) {
+          if (support) lessonText(b, 3.35, `양 끝점: 1개씩 · 안쪽 ${M.n - 2}점: 2개씩`, 'violet');
+          if (done) lessonText(b, 4.6, `반직선: 1 + ${M.n - 2}×2 + 1 = ${M.ray}개`);
+        } else if (sum) {
+          if (support) lessonText(b, 3.35, `선분: ${M.n}×${M.n - 1}÷2 = ${M.seg}개`, 'green');
+          if (other) lessonText(b, 4.1, `반직선: 2×(${M.n}−1) = ${M.ray}개`, 'violet');
+          if (done) lessonText(b, 5.1, `합: ${M.seg} + ${M.ray} = ${M.seg + M.ray}개`);
+        } else {
+          if (support) lessonText(b, 3.35, `한 점에서 다른 ${M.n - 1}개 점으로`, 'green');
+          if (other) lessonText(b, 4.1, `${M.n}×${M.n - 1} = ${M.n * (M.n - 1)}번 · 두 번씩 셈`, 'ink');
+          if (done) lessonText(b, 5.1, `선분: ${M.n * (M.n - 1)}÷2 = ${M.seg}개`);
+        }
+        return;
+      }
       const fill = (i) => (i === M.f ? 'green' : 'ink');
       // 선분(호): 기준 점에서 시작하는 것은 진하게, 나머지는 희미하게
       const arc = (i, j, col, alpha, w) => {
@@ -427,6 +598,7 @@
     id: 'l-gen', title: '어느 세 점도 한 직선 위에 없을 때', short: '세 점이 일직선이 아닐 때',
     box: [-5.2, -4.5, 5.2, 5.7],
     question: '어느 세 점도 한 직선 위에 있지 않은 n개의 점으로 직선·반직선·선분은 몇 개 만들 수 있을까요?',
+    lessonQuestion: (M, s, Q) => s.plLessonMode === 'genLine' ? `어느 세 점도 한 직선 위에 있지 않은 점 ${M.m}개가 있습니다. 서로 다른 직선과 선분은 각각 몇 개일까요?` : Q.stem,
     init: { lgn: 5, lgm: 5, lgr: 0.7 },
     controls: ['lgn', 'lgm'],
     model: (s) => { const n = s.lgn, m = Math.min(s.lgm, n); return { n, m, rot: s.lgr, pts: circPts(n, s.lgr), line: C2(m), seg: C2(m), ray: m * (m - 1), full: { line: C2(n), ray: n * (n - 1) } }; },
@@ -446,6 +618,26 @@
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>반직선은 방향이 있어서 <b>2로 나누지 않습니다</b>. 직선·선분은 나눕니다.</li><li>점이 한 직선 위에 모두 있을 때(앞 장면)는 반직선이 2(n−1)개로 규칙이 달라요.</li></ul>',
     draw: (b, s, M, C) => {
       const st = C.step, P = M.pts, nm = names(M.n), mm = M.m;
+      if (C.lesson) {
+        const mode = s.plLessonMode, support = lessonReady(s, 'plSupportReady'), other = lessonReady(s, 'plOtherReady'), done = lessonReady(s);
+        b.circle({ x: 0, y: 0 }, 3.4, { color: 'muted', width: 1.3, dash: [4, 6], alpha: .3 });
+        for (let i = 0; i < mm; i++) for (let j = i + 1; j < mm; j++) {
+          b.seg(P[i], P[j], { color: 'muted', width: 1.6, alpha: .3 });
+          if (mode === 'genLine') lessonPairLine(b, s, P[i], P[j], i === 0 ? 'green' : 'sky');
+          else if (mode !== 'genRay') trace(b, P[i], P[j], s, i === 0 ? 'green' : 'sky', false, i === 0 ? 3.4 : 2);
+          if (mode === 'genRay' || (mode === 'genSum' && other)) {
+            const at = (A, B) => ({ x: A.x + .38 * (B.x - A.x), y: A.y + .38 * (B.y - A.y) });
+            trace(b, P[i], at(P[i], P[j]), s, 'violet', true, 3);
+            trace(b, P[j], at(P[j], P[i]), s, 'rose', true, 3);
+          }
+        }
+        P.slice(0, mm).forEach((p, i) => PL.pt(b, p, nm[i], { dx: p.x / 3.4 * 20, dy: p.y / 3.4 * 20 }));
+        const label = (y, text, color = 'ink') => T(b, { x: 0, y }, text, { color, size: 15 });
+        if (support) label(4.0, mode === 'genSum' ? `선분: ${mm}×${mm - 1}÷2 = ${M.seg}개` : `각 점에서 다른 ${mm - 1}개 점으로`, 'green');
+        if (other) label(4.7, mode === 'genSum' ? `반직선: ${mm}×${mm - 1} = ${M.ray}개` : `${mm}×${mm - 1} = ${mm * (mm - 1)}번`, mode === 'genSum' ? 'violet' : 'ink');
+        if (done) label(5.45, mode === 'genLine' ? `직선 ${M.line}개 · 선분 ${M.seg}개` : mode === 'genRay' ? `반직선 ${M.ray}개` : `합: ${M.seg} + ${M.ray} = ${M.seg + M.ray}개`, 'green');
+        return;
+      }
       b.circle({ x: 0, y: 0 }, 3.4, { color: 'muted', width: 1.4, alpha: 0.35, dash: [4, 6] });
       for (let i = 0; i < mm; i++) for (let j = i + 1; j < mm; j++) {
         const fresh = !C.hide && j === mm - 1;
@@ -486,6 +678,7 @@
     id: 'l-mix', title: '일부 점이 한 직선 위에 있을 때', short: '일부 점이 한 직선 위',
     box: [-1.0, -6.4, 13.0, 4.5],
     question: '점 n개 중 k개가 한 직선 위에 있으면 직선은 몇 개가 될까요?',
+    lessonQuestion: (M, s, Q) => s.plLessonMode === 'mixSegment' ? `점 ${M.n}개 중 ${M.k}개가 한 직선 위에 있고, 나머지에는 세 점이 한 직선 위에 놓이는 경우가 없습니다. 두 점을 이어 만드는 서로 다른 선분은 몇 개일까요?` : Q.stem,
     init: { lkn: 6, lkk: 4, lkx: null },
     controls: ['lkn', 'lkk'],
     model: (s) => {
@@ -510,6 +703,47 @@
     draw: (b, s, M, C) => {
       const st = C.step, all = [...M.on.map((x) => ({ x, y: 0, on: true })), ...M.off.map((p) => ({ ...p, on: false }))];
       const nm = names(M.n);
+      if (C.lesson) {
+        const mode = s.plLessonMode, support = lessonReady(s, 'plSupportReady'), other = lessonReady(s, 'plOtherReady'), extra = lessonReady(s, 'plExtraReady'), done = lessonReady(s);
+        for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
+          if (all[i].on && all[j].on) {
+            if (mode === 'mixSegment') {
+              const points = pairArc(all[i].x, all[j].x, 0, 1);
+              b.path(points, { color: 'muted', width: 1.2, alpha: .25 }); tracePath(b, points, s, 'green', 2);
+            }
+            continue;
+          }
+          b.seg(all[i], all[j], { color: 'muted', width: 1.8, alpha: .3 });
+          if (mode === 'mixRay') {
+            const at = (A, B) => ({ x: A.x + .38 * (B.x - A.x), y: A.y + .38 * (B.y - A.y) });
+            trace(b, all[i], at(all[i], all[j]), s, 'violet', true, 2.5);
+            trace(b, all[j], at(all[j], all[i]), s, 'rose', true, 2.5);
+          } else trace(b, all[i], all[j], s, mode === 'mixSegment' ? 'green' : 'sky', false, 2.2);
+        }
+        if (mode === 'mixRay') {
+          mainLine(b, 0);
+          M.on.forEach((x, i) => {
+            if (i > 0) trace(b, { x, y: 0 }, { x: x - .35 * (x - M.on[i - 1]), y: 0 }, s, 'rose', true, 3);
+            if (i < M.k - 1) trace(b, { x, y: 0 }, { x: x + .35 * (M.on[i + 1] - x), y: 0 }, s, 'violet', true, 3);
+          });
+        } else lessonLine(b, s, 0, other ? 'rose' : 'sky');
+        all.forEach((p, i) => PL.pt(b, p, nm[i], { color: p.on ? 'amber' : 'ink', dy: p.on ? 22 : -17 }));
+        if (mode === 'mixSegment') {
+          if (support) lessonText(b, 2.5, `${M.n}×${M.n - 1} = ${M.n * (M.n - 1)}번 · 두 번씩 셈`, 'ink');
+          if (done) lessonText(b, 3.6, `선분 ${M.seg}개 · 일직선 위라도 끝점 쌍은 다름`);
+        } else if (mode === 'mixRay') {
+          if (support) lessonText(b, 1.5, `전체 방향 있는 쌍: ${M.n}×${M.n - 1} = ${M.n * (M.n - 1)}`, 'ink');
+          if (other) lessonText(b, 2.3, `일직선 위의 쌍: ${M.k}×${M.k - 1} = ${M.k * (M.k - 1)}`, 'rose');
+          if (extra) lessonText(b, 3.1, `실제 반직선: 2×(${M.k}−1) = ${2 * (M.k - 1)}`, 'violet');
+          if (done) lessonText(b, 4.0, `반직선: ${M.n * (M.n - 1)}−${M.k * (M.k - 1)}+${2 * (M.k - 1)} = ${M.ray}개`);
+        } else {
+          if (support) lessonText(b, 1.5, `전체 두 점의 쌍: ${M.n}×${M.n - 1}÷2 = ${C2(M.n)}`, 'ink');
+          if (other) lessonText(b, 2.3, `한 직선 위의 쌍: ${M.k}×${M.k - 1}÷2 = ${C2(M.k)}`, 'rose');
+          if (extra) lessonText(b, 3.1, '겹친 직선은 1개만 다시 더해요', 'sky');
+          if (done) lessonText(b, 4.0, `직선: ${C2(M.n)}−${C2(M.k)}+1 = ${M.line}개`);
+        }
+        return;
+      }
       for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
         if (all[i].on && all[j].on) continue;
         b.seg(all[i], all[j], { color: 'sky', width: 1.8, alpha: st === 1 || st >= 99 ? 0.65 : 0.3 });

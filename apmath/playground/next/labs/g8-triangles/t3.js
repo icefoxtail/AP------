@@ -273,7 +273,7 @@
   const trapGeom = (p, q) => ({ A: pt(0, 0), B: pt(q, 0), C: pt(q + p, 0), E: pt(0, -p), D: pt(q + p, -q) });
   const vv4 = (M, s) => (((s.trV || 0) % 3 === 1 && (M.p + M.q) % 2) ? 0 : (s.trV || 0) % 3);
   const r4 = {
-    id: 't3-4', title: '사다리꼴 속 직각삼각형 (●+×=90°)', short: '사다리꼴 속 직각삼각형',
+    id: 't3-4', title: '사다리꼴 속 직각삼각형', short: '사다리꼴 속 직각삼각형',
     question: '직선 위의 점 B에서 BE⊥BD, BE=BD이면 두 직각삼각형 EAB, BCD는 어떤 관계일까?',
     ctl: ['trQa', 'trQb'],
     init: (s) => { s.trQa = 5; s.trQb = 3; s.trV = 0; },
@@ -839,6 +839,65 @@
     };
   };
   r6.solve = mkSolve(r6Plan);
+
+  // 해설은 원본 solve를 쓰되, 같은 조건을 유지한 두 삼각형을 떼어 비교한다.
+  // 개념 버튼에는 원문 수치문제의 x와 계산값을 넣지 않는다.
+  const withoutLengths = plan => (M, s, b) => {
+    const p = plan(M, s, b);
+    return { ...p, items: p.items.filter(it => !['len', 'dim', 'txt'].includes(it.ty)) };
+  };
+  const pair = (first, second, left, right, kind = 'RHA') => ({ triangles: [first, second], names: [left, right], kind });
+  G.trLessonA.attach(r1, r1Plan, M => { const g = rtri(1, M.a); return [g.A, g.B]; }, M => {
+    const p = rtri(1, M.a), q = rtri(1, M.a, cos(M.a) + .55);
+    return pair([p.A, p.B, p.C], [q.A, q.B, q.C], ['A', 'B', 'C'], ['D', 'E', 'F']);
+  }, withoutLengths(r1Plan));
+  G.trLessonA.attach(r2, r2Plan, M => [pt(0, -sin(M.bt)), pt(0, 0)], M => {
+    const A = pt(0, -sin(M.bt)), B = pt(-cos(M.bt), 0), Cc = pt(cos(M.bt), 0), D = pt(0, 0);
+    return pair([A, B, D], [A, Cc, D], ['A', 'B', 'D'], ['A', 'C', 'D'], 'RHS');
+  }, withoutLengths(r2Plan));
+  r3.lessonQuestion = (M, s, Q) => Q.stem;
+  G.trLessonA.attach(r3, r3Plan, (M, s) => {
+    const c = r3Pick(s), p = rt3(4, 3, 0);
+    return c.m.hyp ? [p.A, p.B] : c.m.legB ? [p.B, p.C] : [p.A, p.C];
+  }, (M, s) => {
+    const c = r3Pick(s), p = rt3(4, 3, 0), q = rt3(...(c.T2 || [4, 3]), 5.9);
+    if (c.cong) {
+      if (c.id === 'sas') return pair([p.C, p.A, p.B], [q.C, q.A, q.B], ['C', 'A', 'B'], ['F', 'D', 'E'], 'SAS');
+      if (c.id === 'asa' || c.id === 'rha2') return pair([p.B, p.A, p.C], [q.B, q.A, q.C], ['B', 'A', 'C'], ['E', 'D', 'F'], c.id === 'asa' ? 'ASA' : 'RHA');
+      return pair([p.A, p.B, p.C], [q.A, q.B, q.C], ['A', 'B', 'C'], ['D', 'E', 'F'], c.id === 'rhs' ? 'RHS' : 'RHA');
+    }
+    // 반례에는 실제로 같은 것으로 주어진 변·각만 표시한다.
+    if (c.id === 'legA') return { ...pair([p.A, p.C, p.B], [q.A, q.C, q.B], ['A', 'C', 'B'], ['D', 'F', 'E']), counterexample: true, marks: { edges: [[0, 1, 2]], angles: [[1, 0, 2]] } };
+    if (c.id === 'legB') return { ...pair([p.B, p.C, p.A], [q.B, q.C, q.A], ['B', 'C', 'A'], ['E', 'F', 'D']), counterexample: true, marks: { edges: [[0, 1, 3]], angles: [[1, 0, 2]] } };
+    const angles = [[2, 0, 1]];
+    if (c.m.ang && c.m.ang.includes('A')) angles.push([0, 1, 2, 2]);
+    if (c.m.ang && c.m.ang.includes('B')) angles.push([1, 0, 2, 3]);
+    return { ...pair([p.A, p.B, p.C], [q.A, q.B, q.C], ['A', 'B', 'C'], ['D', 'E', 'F']), counterexample: true, marks: { edges: c.m.hyp ? [[0, 1, 1]] : [], angles } };
+  });
+  const trapLessonGeom = (M, s) => vv4(M, s) === 2 ? trapGeom(tan(M.al), 1) : M.g;
+  G.trLessonA.attach(r4, r4Plan, (M, s) => { const g = trapLessonGeom(M, s); return [g.E, g.B]; }, (M, s) => {
+    const g = trapLessonGeom(M, s);
+    return pair([g.B, g.E, g.A], [g.D, g.B, g.C], ['B', 'E', 'A'], ['D', 'B', 'C']);
+  }, withoutLengths(r4Plan));
+  const linePair = M => {
+    const g = M.g;
+    return pair([g.B, g.A, g.D], [g.A, g.C, g.E], ['B', 'A', 'D'], ['A', 'C', 'E']);
+  };
+  G.trLessonA.attach(r5, r5Plan, M => [M.g.B, M.g.D], linePair, withoutLengths(r5Plan));
+  G.trLessonA.attach(r6, r6Plan, () => [pt(0, 0), pt(1, 0)], M => {
+    const A = pt(0, 0), Cc = pt(1, 0), B = pt(cos(M.a) ** 2, -cos(M.a) * sin(M.a)), D = pt(B.x, -B.y);
+    return pair([A, Cc, B], [A, Cc, D], ['A', 'C', 'B'], ['A', 'C', 'D'], 'RHS');
+  }, (M, s, b) => {
+    const p = withoutLengths(r6Plan)(M, s, b);
+    const Cc = pt(1, 0), B = pt(cos(M.a) ** 2, -cos(M.a) * sin(M.a)), D = pt(B.x, -B.y);
+    return { ...p, items: p.items.map(it => it.ty === 'ang' ? { ...it, label: '', labels: undefined, gl: false } : it).concat(SK.tick(B, Cc, 2, { at: 'ans', col: 'rose' }), SK.tick(D, Cc, 2, { at: 'ans', col: 'rose' })) };
+  });
+  r7.lessonDraw = (b, s, M, C, SV, ST, idx) => {
+    if (!C.entry && s.trCompare) { G.trLessonA.pair(b, s, linePair(M)); return; }
+    SV.draw(b, s, M, C, ST.map(st => ({ ...st, cap: '' })), idx);
+    if (!C.entry && s.trTrace > 0) line(b, M.g.B, G.lerp(M.g.B, M.g.D, clamp(s.trTrace, 0, 1)), 'rose', 4.4);
+    if (!C.entry && s.trLine) rowT(b, pt((M.g.D.x + M.g.E.x) / 2, 0), s.trLine, { dy: 84, size: fs(b, 16), color: C.answer ? 'amber' : 'green' });
+  };
 
   /* @@SOLVE-END */
 

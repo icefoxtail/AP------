@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "driveFileId": "diff5-luna-review-20261111-163e20943eaae403",
+  "driveSha256": "42676cbd31286907e0ef823823a9f5fcd856169495c1b271981e534426d7d605",
+  "driveChecksumSource": "local_bytes",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "diff5-luna-review-20261111-163e20943eaae403",
+    "createdAt": "2026-11-11",
+    "sourceArchiveFile": "original/middle/m3/1mid/16_부산만덕중_1학기_중간_중3_수학.js",
+    "latestBlobSha": "22d9aece7106ac2e2f647a7bb90de5b49cc015ad",
+    "items": [
+      {
+        "ordinal": 26,
+        "questionUid": "qid_v1_b4677912a799e695d446cfdea78804260afe5514ae5ecf69cbcf27f820f2a81f",
+        "before": {
+          "level": "상"
+        },
+        "after": {
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "2026-11-11 user-authorized per-item review and registration",
+    "evidencePath": ".archive-meta-register/evidence/diff5-luna-review-20261111-163e20943eaae403.json",
+    "evidenceSha256": "42676cbd31286907e0ef823823a9f5fcd856169495c1b271981e534426d7d605",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m3/1mid/16_부산만덕중_1학기_중간_중3_수학.js",
+        "ordinal": 26,
+        "questionUid": "qid_v1_b4677912a799e695d446cfdea78804260afe5514ae5ecf69cbcf27f820f2a81f",
+        "sourceFingerprint": "a2979fbd425868000a060a22219e74f8b7a05e6b9d14fbdc22c1e31396cd8f53",
+        "contentFingerprint": "053edab8968a90877644aa4620aaf59f92e0d71370361821bda609d7f2b4341e",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "before": {
+          "level": "상",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "a2979fbd425868000a060a22219e74f8b7a05e6b9d14fbdc22c1e31396cd8f53",
+          "contentFingerprint": "053edab8968a90877644aa4620aaf59f92e0d71370361821bda609d7f2b4341e"
+        },
+        "after": {
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "decision": "CORRECT",
+        "reason": "실제 접기 그림을 따라 세 번의 선분 길이 변화를 순서대로 복원하고, 조건 3b<2a로 길이의 양수 범위를 확인한 다음 제곱 차를 인수분해한다. 그림 추적과 연쇄 구조화가 중심인 비정형 변별형이다."
+      }
+    ]
+  }
+}

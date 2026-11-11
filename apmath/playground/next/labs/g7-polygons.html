@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 오목한 꼭짓점과 이웃 각을 함께 읽을 수 있도록 이 장면만 공간을 확보합니다. */
 @media (max-width: 560px) {
@@ -21,6 +22,9 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -37,7 +41,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['core', 't1', 't2', 't3', 't4'];
+const MODULES = ['core', 't1', 't2', 't3', 't4', 'lesson-a', 'lesson-b', 'lesson-c'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -63,6 +67,7 @@ function start() {
     board: { kind: 'figure', pad: 0.02, minZoom: 0.5, maxZoom: 6 },
     // 장면에 들어올 때마다 화면 범위를 처음 상태로 되돌립니다(앞 장면의 확대·위치가 남지 않게). 그림 맞춤은 장면 그리기에서 매번 합니다.
     enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { lab.board.fit(); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },
+    lessons: (window.APL_LESSONS || {})['g7-polygons'],
     params,
     groups
   });

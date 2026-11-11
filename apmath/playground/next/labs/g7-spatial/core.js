@@ -492,10 +492,11 @@
 
   /* ------------------------------------------------------------------ 장면 상태 (탭·단계) */
   function baseCtx(s, lab, thumb) {
-    const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
+    const lesson = !thumb && !!(s.lessonOn || s.lessonEntry);
+    const tab = thumb ? 'explore' : lesson && s.lessonEntry ? 'review' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    return { tab, problem, review, step: lesson && s.lessonEntry ? 0 : review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: !lesson && (tab === 'explore' || thumb), lesson };
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
@@ -505,6 +506,7 @@
   const questionKey = (D, s, Q) => D.id + '|' + Q.key + '|' + (s.spSeed || 0);
   function syncQuestion(D, s, Q) {
     const key = questionKey(D, s, Q);
+    if (s.lessonOn || s.lessonEntry) return key;
     if (questionKeys.has(s) && questionKeys.get(s) !== key) resetQuestion(s);
     questionKeys.set(s, key);
     return key;
@@ -594,6 +596,7 @@
     // 문제를 본 뒤의 정리는 그 문항을 풉니다. 탐구를 다시 열면 원래 원리 정리로 돌아갑니다.
     const questionReview = new WeakSet();
     const syncReview = (s, lab) => {
+      if (s.lessonOn || s.lessonEntry) return false;
       if (lab && lab.tab === 'problem') {
         if (!questionReview.has(s)) s.step = 0;
         questionReview.add(s);
@@ -606,7 +609,7 @@
     const stepsOf = (s) => {
       if (curLab && curLab.scene && curLab.scene.sp === D) syncReview(s, curLab);
       const M = D.model(s);
-      return questionReview.has(s) && D.problemSteps ? D.problemSteps(M, D.prob(M, s), s) : D.steps(M);
+      return !(s.lessonOn || s.lessonEntry) && questionReview.has(s) && D.problemSteps ? D.problemSteps(M, D.prob(M, s), s) : D.steps(M);
     };
     const pitchKey = D.pitchKey || 'spPitch', pitchRange = D.pitchRange || [PITCH_MIN, PITCH_MAX], yawOff = D.yawOff || 0;
     // 이 장면에서 시점 검사에 쓸 입체: 객체 → 그 입체로 · undefined → 좌표축 기준 · false → 검사 안 함
@@ -638,12 +641,13 @@
     };
     return {
       id: D.id, title: D.title, short: D.short || D.title, sp: D,
-      question: D.question,
+      question: (s) => (s.lessonOn || s.lessonEntry) && D.lessonQuestion ? D.lessonQuestion(D.model(s), s, D.prob(D.model(s), s)) : typeof D.question === 'function' ? D.question(s) : D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
       steps: stepsOf,
       reviewTop: (s) => {
+        if (s.lessonOn || s.lessonEntry) return '';
         if (!questionReview.has(s)) return '';
         const Q = D.prob(D.model(s), s);
         const choices = Q.wide ? `<details><summary>보기 다시 확인하기</summary><div class="sp-choices wide">${Q.choices.map((o, i) => `<div class="sp-ch"><span class="n">${NUM[i]}</span><span class="v">${o.h}</span></div>`).join('')}</div></details>` : '';
@@ -667,6 +671,7 @@
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
+        if (s.lessonOn || s.lessonEntry) return false;
         let again = false;
         if (s.spSpin && lab && lab.tab === 'explore' && !s.dragging) { s.spYaw += 26 * dt; if (s.spYaw > 180) s.spYaw -= 360; s.spYawLast = s.spYaw; again = true; }
         if (A && s.playing) {
@@ -686,6 +691,7 @@
         syncQuestion(D, s, D.prob(M, s));
         const C = baseCtx(s, lab, false);
         const fromQuestion = syncReview(s, lab);
+        if (C.lesson) return { guide: '문제의 조건을 확인하고 ▶ 해설을 시작해 보세요.', card: null, readouts: [], formula: null, rule: null, status: null, alert: null, notes: null, chips: [] };
         normView(s, M, !!s.spSpin && C.tab === 'explore');
         const v = C.review && fromQuestion && D.problemSteps ? {
           guide: '문제의 그림과 조건을 그대로 두고, 다음 단계에서 풀이를 차례로 확인해요.',
@@ -705,17 +711,17 @@
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
-        if (C.review && syncReview(s, lab) && D.problemSteps) { C.tab = 'problem'; C.problem = true; C.review = false; C.step = 99; }
+        if (!C.lesson && C.review && syncReview(s, lab) && D.problemSteps) { C.tab = 'problem'; C.problem = true; C.review = false; C.step = 99; }
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         // 그림 한 장 한 장도 시점 검사를 거칩니다(작은 미리보기·저장된 시점 포함). 상태 자체는 건드리지 않고 그리는 동안만 바꿉니다.
         const y0 = s.spYaw, p0 = s[pitchKey];
-        if (!(s.spSpin && C.tab === 'explore')) {
+        if (!C.lesson && !(s.spSpin && C.tab === 'explore')) {
           const sol = solOf(s, M);
           if (p0 != null) s[pitchKey] = clamp(p0, pitchRange[0], pitchRange[1]);
           if (sol !== false) s.spYaw = wrap180(safeYaw(sol, (y0 == null ? -30 : y0) + yawOff, pitchKey === 'spPitch' ? (s.spPitch == null ? 24 : s.spPitch) : 30, 0) - yawOff);
         }
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
+        C.t = A ? (C.lesson || C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
         try { D.draw(b, s, M, C); } finally { s.spYaw = y0; s[pitchKey] = p0; }
       }
     };

@@ -184,7 +184,7 @@ window.questionBank = [
     "primaryMethod": "피타고라스 정리로 AD를 구한 뒤 SSS 닮음 판정",
     "decisiveStep": "따라서 $\\triangle ADC\\sim\\triangle BAC$이고 닮음비는 $3:4$이다. 정답은 ①이다.",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q3-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC와 변 BC 위의 점 D가 있고 AB는 8 cm, AC는 12 cm, BD는 7 cm, DC는 9 cm이다. 다른 두 칸에는 삼각형 BAC와 삼각형 ADC를 대응하는 순서로 따로 그렸고 대응변은 같은 색이며 공통인 각 C는 분홍색이다.",
     "solutionImageCaption": "BC는 16이다. A에서 BC에 수선을 내려 피타고라스 정리를 두 번 쓰면 AD는 6이다. 그러면 AD 대 BA는 6 대 8, DC 대 AC는 9 대 12, CA 대 CB는 12 대 16으로 모두 3 대 4이다. 세 변의 비가 같으므로 삼각형 ADC와 삼각형 BAC는 닮음이고 닮음비는 3 대 4이다. 정답은 ①이다.",
     "solutionImageSize": "full"
@@ -373,7 +373,7 @@ window.questionBank = [
     "primaryMethod": "직각삼각형의 닮음과 넓이 관계 확인",
     "decisiveStep": " 따라서 옳지 않은 것은 ⑤이다.",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q6-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 직각삼각형 ABC에서 직각 꼭짓점 A에서 빗변 BC에 내린 수선의 발 H가 있고 AB 15, AC 20, BH 9, HC 16이 적혀 있다. 나머지 세 칸에는 삼각형 ABC, HBA, HAC를 같은 방향으로 놓고 대응하는 변을 같은 색으로 나타냈다.",
     "solutionImageCaption": "직각삼각형에서 높이 AH를 그으면 삼각형 ABC, HBA, HAC는 모두 닮음이다. 예를 들어 AB=15, AC=20이면 BC=25, BH=9, HC=16, AH=12이다. 닮음에서 AB 대 CA는 BH 대 AH와 같고 AB 곱하기 AC는 BC 곱하기 AH와 같다. 그러나 AB 대 AC는 15 대 20, 곧 3 대 4이고 BH 대 HC는 9 대 16이라 같지 않다. 따라서 옳지 않은 것은 ⑤이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
@@ -435,7 +435,11 @@ window.questionBank = [
     "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
     "primaryMethod": "평행선의 선분비로 미지 길이 계산",
     "decisiveStep": "$a+b=8+6=14$이다. 정답은 ①이다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 장의 그림이다. 첫째는 평행한 세 직선과 두 직선으로 한 직선에서 맨 위부터 맨 아래까지 9 cm, 가운데부터 맨 아래까지 3 cm이고 다른 직선에서 맨 위부터 가운데까지 a cm, 가운데부터 맨 아래까지 4 cm이다. 둘째는 점 A에서 만나는 두 직선과 평행한 BC와 DE로 AB 6 cm, AD 12 cm, AE b cm이고 CE는 따로 펴서 9 cm로 나타냈다. 셋째는 첫째 그림의 구간을 색으로 나누어 위쪽 구간을 6 cm로 나타냈다. 넷째는 B와 C를 점 A에 대하여 옮겨 삼각형 ADE 안에 DE와 평행한 선분 B′C′를 그린 그림이며 B′는 AD를 같은 길이 둘로 나누고 AD는 12 cm, AE는 b cm이다.",
+    "solutionImageCaption": "첫째 그림에서 맨 위부터 가운데까지는 9에서 3을 뺀 6 cm이다. 평행선 사이의 대응하는 구간의 비가 같으므로 a 대 4가 6 대 3이고 a는 8이다. 둘째 그림에서 BC와 ED가 평행하므로 삼각형 ABC와 삼각형 ADE는 닮음이고 닮음비는 6 대 12, 곧 1 대 2이다. 그래서 AC 대 AE가 1 대 2이고 CE가 9이므로 AE는 9의 3분의 2, 곧 b이다. 정답은 ① 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -1435,7 +1439,7 @@ window.questionBank = [
     "primaryMethod": "무게중심의 2:1과 중점연결정리",
     "decisiveStep": "$\\triangle ABD\\sim\\triangle EBM$의 닮음비가 $2:1$이므로 $EM=\\dfrac12 AD=\\dfrac{15}{2}=7.5\\text{ cm}$이다.",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q23-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 중선 AD와 CE가 무게중심 G에서 만나고 M은 BD의 중점이며 AG는 10 cm이다. 오른쪽 위에는 삼각형 ABD에서 AG 10 cm, GD 5 cm이고, 아래에는 삼각형 EBM에서 EM이 x이며 대응변이 같은 색이다.",
     "solutionImageCaption": "(1) D는 BC의 중점이고 E는 AB의 중점이며 M은 BD의 중점이다. 삼각형 ABD에서 AB와 BD의 중점을 이은 EM은 AD와 평행하므로 삼각형 ABD와 삼각형 EBM은 닮음이고 닮음비는 2 대 1이다. (2) 무게중심은 중선 AD를 2 대 1로 나누므로 AG가 10이면 GD는 5이고 AD는 15 cm이다. 닮음비가 2 대 1이므로 EM은 AD의 2분의 1인 7.5 cm이다. 정답은 (1) 삼각형 EBM, (2) 7.5 cm이다.",
     "solutionImageSize": "full"

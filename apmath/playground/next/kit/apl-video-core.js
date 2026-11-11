@@ -23,6 +23,7 @@
      snap  to 로 움직이는 동안 값을 (그 움직임의 시작값 기준) snap 의 배수로 반올림해 계단식으로 넘깁니다. 예: snap 15 → 90, 105, 120 … 180.
            움직이는 동안 호·넓이·각이 소수(94.91°, 6.33π)로 보이는 장면에서 깨끗한 값만 지나가게 할 때 씁니다. 끝 값은 정확히 to 입니다
      say   자막. **굵게**, $수식$ 가능
+     pin   true이면 같은 칸 say의 $수식$을 각각 고정 줄로 남김. 최근 3줄만 표시하며 false/생략은 기존 자막만
      step  정리 탭 단계 번호(s.step)를 바꿈. 탐구 화면에서 단계를 읽는 장면에서만 의미가 있음
      part  그림에서 강조할 부분 이름(s.part). 장면의 view().parts[].id 와 같은 값. null 이면 강조 해제
 
@@ -50,7 +51,7 @@
 
   // 쇼츠 규칙(선생님 지적 2026-11-03: 24초·22초 샘플이 늘어진다): 8~15초, 자막 2~3줄, 한 줄 40자(휴대폰 화면 2줄 이내), 첫 1초 안에 그림이 움직이기 시작
   const LIMITS = { minLen: 8, maxLen: 15, minSay: 2, maxSay: 3, maxSayChars: 40, minSayGap: 2.5, maxSummaryChars: 40, maxTaskChars: 90, maxTitleChars: 20, maxFirstMoveAt: 1 };
-  const LESSON_LIMITS = { minChapters: 2, maxChapters: 6, maxPerScene: 3, maxLabelChars: 6 };
+  const LESSON_LIMITS = { minChapters: 2, maxChapters: 6, maxPerScene: 8, maxLabelChars: 6 };
   const LESSON_FIELDS = ['title', 'tab', 'answer', 'answerText', 'label', 'summary', 'task', 'chapters'];
   const LESSON_TABS = ['review'];
   const EASE = {
@@ -59,7 +60,7 @@
     in: (x) => x * x,
     out: (x) => 1 - (1 - x) * (1 - x)
   };
-  const CUE_FIELDS = ['at', 'dur', 'to', 'set', 'ease', 'snap', 'say', 'step', 'part'];
+  const CUE_FIELDS = ['at', 'dur', 'to', 'set', 'ease', 'snap', 'say', 'pin', 'step', 'part'];
   const SCRIPT_FIELDS = ['length', 'title', 'start', 'summary', 'task', 'cues'];
   const EPS = 1e-9;
   const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -67,6 +68,12 @@
   /** 자막의 화면 글자 수(수식 하나는 4자로 셈) */
   function plainLen(say) {
     return String(say == null ? '' : say).replace(/\*\*/g, '').replace(/\$[^$]*\$/g, 'xxxx').trim().length;
+  }
+
+  // 재생기의 richHtml과 같은 단일 $...$ 경계만 읽습니다. 수식 밖의 자막/HTML은 고정하지 않습니다.
+  function pinnedTex(say) {
+    if (typeof say !== 'string') return [];
+    return Array.from(say.matchAll(/\$([^$]*)\$/g), (m) => m[1]).filter((tex) => tex.trim());
   }
 
   /**
@@ -143,6 +150,8 @@
       if (c.set != null && (typeof c.set !== 'object' || Array.isArray(c.set))) err(`${w}.set 은 객체여야 합니다`);
       if (c.step != null && !(Number.isInteger(c.step) && c.step >= 0)) err(`${w}.step 은 0 이상의 정수여야 합니다`);
       if (c.part != null && typeof c.part !== 'string') err(`${w}.part 는 문자열(또는 null)이어야 합니다`);
+      if (c.pin !== undefined && typeof c.pin !== 'boolean') err(`${w}.pin 은 true 또는 false여야 합니다`);
+      if (c.pin === true && !pinnedTex(c.say).length) err(`${w}.pin 은 같은 칸 say에 비어 있지 않은 $수식$이 있어야 합니다`);
       if (c.say != null) {
         if (typeof c.say !== 'string' || !c.say.trim()) err(`${w}.say 가 비어 있습니다`);
         else {
@@ -184,8 +193,12 @@
     // start 에만 있고 to 로 움직이지 않는 숫자 상태값도 영상이 시작할 때 그 값으로 맞춥니다(자막이 말하는 값과 그림을 같게)
     Object.keys(script.start || {}).forEach((k) => { if (!tracks[k]) tracks[k] = []; });
     const says = cues.filter((c) => c.say).map((c) => ({ at: c.at, text: c.say, cue: c.index }));
+    const pins = [];
+    script.cues.forEach((c, i) => {
+      if (c.pin === true) pinnedTex(c.say).forEach((tex) => pins.push({ at: c.at, tex, cue: i }));
+    });
     says.forEach((s, k) => { s.end = k + 1 < says.length ? says[k + 1].at : L; });
-    return { length: L, title: typeof script.title === 'string' && script.title.trim() ? script.title.trim() : null, start: script.start || {}, summary: script.summary, task: script.task, cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says };
+    return { length: L, title: typeof script.title === 'string' && script.title.trim() ? script.title.trim() : null, start: script.start || {}, summary: script.summary, task: script.task, cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says, ...(pins.length ? { pins } : {}) };
   }
 
   /* ------------------------------ 해설(lesson): 여러 장을 이어 붙임 ------------------------------ */
@@ -293,7 +306,7 @@
    */
   function compileLesson(lesson) {
     let off = 0;
-    const cues = [], tracks = {}, says = [], setKeys = new Set(), marks = [];
+    const cues = [], tracks = {}, says = [], pins = [], setKeys = new Set(), marks = [];
     let usesStep = false, usesPart = false, start = {};
     lesson.chapters.forEach((script, ci) => {
       const c = compile(script);
@@ -306,6 +319,7 @@
         segs.forEach((g) => tracks[k].push({ ...g, t0: g.t0 + off, t1: g.t1 + off }));
       }
       c.says.forEach((q) => says.push({ at: q.at + off, text: q.text, cue: q.cue + cueBase, ch: ci }));
+      (c.pins || []).forEach((q) => pins.push({ at: q.at + off, tex: q.tex, cue: q.cue + cueBase }));
       c.setKeys.forEach((k) => setKeys.add(k));
       usesStep = usesStep || c.usesStep;
       usesPart = usesPart || c.usesPart;
@@ -316,7 +330,7 @@
     return {
       kind: 'lesson', length: off, title: typeof lesson.title === 'string' && lesson.title.trim() ? lesson.title.trim() : null, start,
       summary: lesson.summary, task: lesson.task, answer: lesson.answer || null, answerText: lesson.answerText || lesson.answer || null, label: typeof lesson.label === 'string' && lesson.label.trim() ? lesson.label.trim() : null, tab: lesson.tab || null,
-      cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says, chapters: marks
+      cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says, chapters: marks, ...(pins.length ? { pins } : {})
     };
   }
 
@@ -326,6 +340,11 @@
     let k = 0;
     ch.forEach((c, i) => { if (c.at <= t + EPS) k = i; });
     return k;
+  }
+
+  /** 시각 t까지 공개된 고정 수식 중 최근 3줄. 누적 상태가 없어 되감기·다시 보기 때 미래 식이 남지 않습니다. */
+  function pinnedAt(cs, t) {
+    return (cs.pins || []).filter((p) => p.at <= t + EPS).slice(-3);
   }
 
   /** 시각 t 에서 숫자 상태값 하나의 값. base 는 영상이 시작할 때의 값. */
@@ -385,5 +404,5 @@
     return cs.says[cur - 1].at;
   }
 
-  return { LIMITS, LESSON_LIMITS, EASE, validate, validateLesson, validateLessonSet, lessonList, compile, compileLesson, chapterAt, normAnswer, stateAt, trackValue, nextSayAt, prevSayAt, plainLen };
+  return { LIMITS, LESSON_LIMITS, EASE, validate, validateLesson, validateLessonSet, lessonList, compile, compileLesson, chapterAt, pinnedAt, normAnswer, stateAt, trackValue, nextSayAt, prevSayAt, plainLen };
 });

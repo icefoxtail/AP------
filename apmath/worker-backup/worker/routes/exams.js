@@ -1975,8 +1975,9 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!assignment) return jsonResponse({ success: false, error: 'assignment not found' }, 404);
       if (!(await canAccessClass(currentTeacher, assignment.class_id, env)))
         return jsonResponse({ error: 'Forbidden' }, 403);
-      if (!assignment.saved_paper_id)
-        return jsonResponse({ success: false, error: 'Paper Lifecycle cancellation applies to Saved Paper Assignments only.' }, 409);
+      // 2026-11-11: 취소는 보관함 저장본 출제뿐 아니라 모든 출제(학교 기출 원본, 단원별·즉석 문제지)에 쓴다.
+      // Archive 2.0 확정 배부는 삭제할 수 없어(아래 by-exam DELETE가 409) 잘못 낸 건을 멈출 길이 취소뿐이기 때문이다.
+      // 취소는 행을 지우지 않고 cancelled_at만 남긴다: 제출 기록과 snapshot은 그대로다.
       if (!(await getTableColumnSet(env, 'class_exam_assignments')).has('cancelled_at') ||
           !(await hasAssignmentLifecycleEvents(env)))
         return jsonResponse({ success: false, error: 'Assignment lifecycle migration is required' }, 503);

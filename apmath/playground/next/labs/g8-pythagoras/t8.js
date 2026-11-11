@@ -60,7 +60,12 @@
       [[A, 'A'], [B, 'B'], [Cc, 'C'], [D, 'D']].forEach(([q, nm]) => { b.point(q, { color: 'ink', r: 4.5 }); tagOut(b, q, pt(0, 0), nm, { size: 17, gap: 10 }); });
       b.point(O, { color: 'rose', r: 4 }); T(b, O, 'O', { dx: 12, dy: 12, size: 15, color: 'rose' });
       const sides = [[A, B, 'AB', AB2, 'sky'], [B, Cc, 'BC', BC2, 'green'], [Cc, D, 'CD', CD2, 'sky'], [D, A, 'DA', DA2, 'green']];
-      if (C.full) {
+      if (C.lesson && !s.pyLessonProblem) {
+        sides.forEach(([p, q, nm, v2, col]) => sideTag(b, p, q, O, nm, { color: col, size: 15, gap: 11 }));
+        if (st(1)) [[A, 'a'], [B, 'b'], [Cc, 'c'], [D, 'd']].forEach(([p, name]) => T(b, mid(O, p), name, { dx: 10, dy: -10, color: 'rose', size: 16 }));
+        if (C.step === 2) { fillPoly(b, [A, O, B], 'sky', 0.16); fillPoly(b, [Cc, O, D], 'sky', 0.16); }
+        if (C.step >= 3) { fillPoly(b, [A, O, D], 'green', 0.16); fillPoly(b, [Cc, O, B], 'green', 0.16); }
+      } else if (C.full) {
         sides.forEach(([p, q, nm, v2, col]) => sideTag(b, p, q, O, L2(nm, v2), { color: col, size: 15, gap: 11 }));
         if (st(2)) { T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${AB2}+${CD2}=${AB2 + CD2}`, { dy: separateFooter ? 48 : 26, size: 16, color: 'sky' }); T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${DA2}+${BC2}=${DA2 + BC2}`, { dy: separateFooter ? 72 : 50, size: 16, color: 'green' }); }
       } else {
@@ -128,7 +133,12 @@
       if (C.givens) { b.point(Pp, { color: 'amber', r: 5.5 }); T(b, Pp, 'P', { dx: 10, dy: -12, size: 17, color: 'amber' }); }
       else b.handle('P', Pp, { color: 'amber', r: 8, ariaLabel: '점 P 끌기', drag: (w) => { s.pyPx = clamp(Math.round(w.x), 1, W - 1); s.pyPy = clamp(Math.round(w.y), 1, H - 1); } });
       if (C.full) T(b, Pp, 'P', { dx: 14, dy: -14, size: 17, color: 'amber' });
-      if (C.full) {
+      if (C.lesson && !s.pyLessonProblem) {
+        segs.forEach(([q, nm, v2, col]) => T(b, lerp(Pp, q, 0.55), nm, { dy: -12, size: 14, color: col }));
+        if (st(2)) {
+          [[mid(Pp, pt(0, y)), 'a'], [mid(Pp, pt(W, y)), 'b'], [mid(Pp, pt(x, 0)), 'c'], [mid(Pp, pt(x, H)), 'd']].forEach(([p, name]) => T(b, p, name, { dx: 8, dy: -10, size: 15, color: 'rose' }));
+        }
+      } else if (C.full) {
         segs.forEach(([q, nm, v2, col]) => T(b, lerp(Pp, q, 0.55), L2(nm, v2), { dx: 0, dy: -12, size: 14, color: col }));
         if (st(2)) T(b, pt(W / 2, H), `${PA}+${PC}=${PA + PC}  ·  ${PB}+${PD}=${PB + PD}`, { dy: 30, size: 15, color: 'ink' });
       } else {
@@ -184,7 +194,14 @@
       line(b, B, E, 'sky', 3.4); line(b, Cc, D, 'green', 3.4); line(b, D, E, 'rose', 3);
       ang(b, A, B, Cc, { color: 'amber', r: 18 });
       [[A, 'A', -1, 1], [B, 'B', 1, 1], [Cc, 'C', -1, -1], [D, 'D', 0, 1], [E, 'E', -1, 0]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: nm === 'D' || nm === 'E' ? 'rose' : 'ink', r: 4.5 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
-      if (C.full) {
+      if (C.lesson && !s.pyLessonProblem) {
+        T(b, lerp(B, E, 0.35), 'BE', { dx: 16, dy: -12, size: 14, color: 'sky' });
+        T(b, lerp(Cc, D, 0.3), 'CD', { dx: -17, size: 14, color: 'green' });
+        T(b, mid(D, E), 'DE', { dx: -20, dy: 2, size: 14, color: 'rose' });
+        sideTag(b, B, Cc, A, 'BC', { color: 'amber', size: 14, gap: 12 });
+        T(b, mid(A, D), `${m}`, { dy: 32, size: 15, color: 'amber' });
+        T(b, mid(A, E), `${n}`, { dx: -16, size: 15, color: 'rose' });
+      } else if (C.full) {
         T(b, lerp(B, E, 0.35), L2('BE', BE2), { dx: 16, dy: -12, size: 14, color: 'sky' }); T(b, lerp(Cc, D, (q - n) / q < 0.45 ? 0.5 : 0.3), L2('CD', CD2), { dx: (q - n) / q < 0.45 ? 28 : -17, dy: 0, size: 14, color: 'green' });
         T(b, mid(A, B), `${p}`, { dy: 36, size: 15, color: 'sky' }); (n > q / 2 ? sideTag(b, A, lerp(A, Cc, 0.4), B, `${q}`, { color: 'green', size: 15, gap: 12 }) : sideTag(b, lerp(A, Cc, 0.6), Cc, B, `${q}`, { color: 'green', size: 15, gap: 12 }));
         T(b, mid(D, E), L2('DE', DE2), { dx: -28, dy: 2, size: 14, color: 'rose' });

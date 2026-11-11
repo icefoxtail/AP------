@@ -26,14 +26,26 @@ function draw(b,s,M,Ctx){
  const d=scene3(b,s,Ctx,{yaw:yaw*(1-e),pitch:pitch*(1-e)}),dp=d.P;d.P=q=>{const k=dp(q);return{x:k.x-cx,y:k.y-cy}};
  if(!M.vol){
   G.netDraw(d,net,pose,(f)=>({fill:'sky',alpha:Ctx.review?((Ctx.step<=1?f.tag==='base':Ctx.step===2?f.tag==='side':true)?.16:.025):.07,edge:'ink',ew:2}));
-  if(e>.99){net.pieces.forEach((f,k)=>{const p=d.P(applyT(pose[k],centroid(f.pts)));b.text(p,(b.W<1000?['24','27','51','36']:['밑면 24','옆면 27','옆면 51','옆면 36'])[k],{size:d.fs(12),color:'ink',weight:700});});const aa=applyT(pose[0],A),bb=applyT(pose[0],B),cc=applyT(pose[0],C);d.right(aa,sub3(bb,aa),sub3(cc,aa),.5,'ink');}
+  if(e>.99){net.pieces.forEach((f,k)=>{const p=d.P(applyT(pose[k],centroid(f.pts))),ready=!(s.lessonOn||s.lessonEntry)||(k===0?s.svBaseReady:s.svSideReady),name=k===0?'밑면':'옆면',value=['24','27','51','36'][k];b.text(p,ready?(b.W<1000?value:name+' '+value):name,{size:d.fs(12),color:'ink',weight:700});});const aa=applyT(pose[0],A),bb=applyT(pose[0],B),cc=applyT(pose[0],C);d.right(aa,sub3(bb,aa),sub3(cc,aa),.5,'ink');}
+  if(s.lessonOn||s.lessonEntry){
+    const aa=applyT(pose[0],A),bb=applyT(pose[0],B),cc=applyT(pose[0],C),out=applyT(pose[0],centroid(pts[0]));
+    d.edgeLab(aa,bb,'6',{from:out,color:'ink'});d.edgeLab(aa,cc,'8',{from:out,color:'ink'});
+    if(s.svShowV)G.sumRows(d,[[{t:'겉넓이 = 24 + 114 = 138 cm²',c:'green'}]],1);
+    else if(s.svOtherReady)G.sumRows(d,[[{t:'옆넓이 = 27 + 36 + 51 = 114 cm²',c:'green'}]],1);
+  }
  }else{
   // 같은 밑면과 높이를 가진 삼각기둥과 그 안의 뿔을 비교합니다.
   const pr=prismMesh([[0,0],[6,0],[0,8]],0,9,{simple:true});
   d.body({mesh:pr,fill:'sky',alpha:.025,edge:'muted',edgeW:1.5});
-  d.body({mesh,fill:'green',alpha:.10,edge:'ink',edgeW:2});
+  d.body({mesh,fill:'green',alpha:.10,edge:'ink',edgeW:2,faceStyle:f=>(s.lessonOn||s.lessonEntry)&&Ctx.step===1&&f.tag==='base'?{fill:'amber',alpha:.35}:{}});
   const p=d.P(A),q=d.P(D);b.path([p,q],{color:'ink',width:1.5,dash:[4,4]});
   b.text({x:(p.x+q.x)/2,y:(p.y+q.y)/2},'높이 9',{dx:10,size:d.fs(13),color:'ink',weight:700});
+  if(s.lessonOn||s.lessonEntry){
+    d.edgeLab(A,B,'6',{from:centroid(pts[0]),color:'ink'});d.edgeLab(A,C,'8',{from:centroid(pts[0]),color:'ink'});d.right(A,sub3(B,A),sub3(C,A),.5,'ink');
+    if(s.svBaseReady)d.areaLab(centroid(pts[0]),'밑넓이','24',{color:'sky'});
+    if(s.svShowV)G.sumRows(d,[[{t:'삼각뿔의 부피 = 216 ÷ 3 = 72 cm³',c:'green'}]],1);
+    else if(s.svOtherReady)G.sumRows(d,[[{t:'같은 밑면·높이의 기둥: 24 × 9 = 216 cm³',c:'sky'}]],1);
+  }
  }
  if(pair)src.arrow({x:sourceBox.x1+.15,y:Math.min(-H/2,sourceBox.y0+sy)-.3},{x:-W/2-.15,y:Math.min(-H/2,sourceBox.y0+sy)-.3},'muted',1.5);
 }

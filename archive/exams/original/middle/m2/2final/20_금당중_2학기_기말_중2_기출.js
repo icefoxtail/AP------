@@ -86,7 +86,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q2-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC에서 변 AC 위의 점 D와 변 BC 위의 점 E를 이은 그림이 있고 AD는 3 cm, DC는 9 cm, EC는 6 cm이며 각 A와 각 DEC가 같은 색으로 표시되어 있다. 나머지 두 칸에는 삼각형 ABC와 삼각형 EDC를 같은 방향으로 따로 그렸고 대응하는 변은 같은 색이다.",
     "solutionImageCaption": "AC는 AD와 DC의 합인 12 cm이다. 각 A와 각 DEC가 같고 각 C는 공통이므로 삼각형 ABC와 삼각형 EDC는 AA 닮음이다. 대응변의 비 AC 대 EC는 12 대 6, 곧 2 대 1이므로 BC는 DC의 2배인 18 cm이다. BE는 BC에서 EC를 뺀 12 cm이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
@@ -131,7 +131,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q3-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC와 변 AB 위의 점 D, 변 AC 위의 점 F, 변 BC 위의 점 E가 있고 AD 9, DB 12, AF 6, FC 8, BE 9, EC 10이 적혀 있다. 나머지 두 칸에는 삼각형 ABC와 삼각형 ADF를 따로 그렸고 AB와 AD, AC와 AF가 같은 색이며 공통인 각 A는 분홍색이다.",
     "solutionImageCaption": "AB는 9와 12의 합인 21이고 AC는 6과 8의 합인 14이다. AB 대 AD는 21 대 9, 곧 7 대 3이고 AC 대 AF는 14 대 6, 곧 7 대 3으로 같다. 각 A는 공통이므로 두 변의 비가 같고 끼인각이 같아 삼각형 ABC와 삼각형 ADF는 SAS 닮음이다. 정답은 ①이다.",
     "solutionImageSize": "full"
@@ -176,7 +176,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q4-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 직각삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선의 발 D가 있고 BD는 6 cm, AD는 9 cm이며 삼각형 ABD는 파란색, 삼각형 ACD는 주황색으로 칠해져 있다. 나머지 두 칸에는 직각삼각형 BDA와 ADC를 같은 방향으로 따로 그렸고 대응변과 대응각이 같은 색이다. DC는 13.5 cm로 적혀 있다.",
     "solutionImageCaption": "직각삼각형 ABC에서 AD가 높이이므로 삼각형 ABD와 삼각형 CAD는 닮음이다. 그래서 각 ABD와 각 CAD가 같고 삼각형 ABD와 CAD가 닮음이라는 설명은 옳다. AD의 제곱은 BD 곱하기 DC이므로 81은 6 곱하기 DC이고 DC는 13.5 cm이다. 두 삼각형은 높이 AD가 같으므로 넓이의 비는 밑변의 비 13.5 대 6, 곧 9 대 4이다. 삼각형 ACD가 삼각형 ABD의 2배라는 설명은 옳지 않다. 정답은 ④이다.",
     "solutionImageSize": "full"
@@ -221,7 +221,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q5-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 세 변의 중점 D, E, F가 있고 AB 8, AC 10, BC 12가 적혀 있으며 같은 길이의 선분에 같은 표시가 있다. 오른쪽 위에는 중점을 이은 삼각형 DEF의 세 변 6, 5, 4가 평행한 큰 삼각형의 변과 같은 색으로 나타나 있다. 아래에는 삼각형 DBE의 세 변 4, 6, 5가 있다.",
     "solutionImageCaption": "세 변의 중점을 이은 선분은 평행한 변의 절반이다. DF는 BC의 절반인 6 cm이고 DE는 AC와 평행, EF는 AB와 평행이다. 삼각형 ADF는 세 변이 4, 5, 6으로 삼각형 ABC의 세 변 8, 10, 12의 절반이므로 닮음이다. EF와 DB가 평행하므로 각 DEF와 각 EDB도 같다. 삼각형 DBE는 세 변이 DB 4, BE 6, DE 5이므로 둘레가 15 cm이다. 둘레가 20 cm라는 설명이 옳지 않다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
@@ -311,7 +311,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 무게중심 G, 변 BC의 중점 M, BC에 평행한 선분 DE가 있고 BM은 6 cm, AE는 8 cm, GE는 x cm, EC는 y cm이다. 나머지 두 칸에는 삼각형 AGE와 삼각형 AMC를 같은 방향으로 따로 그렸고 AE는 8 cm, MC는 6 cm, AC는 12 cm이며 대응변이 같은 색이다.",
     "solutionImageCaption": "M은 BC의 중점이므로 MC는 6 cm이다. DE와 BC가 평행하므로 삼각형 AGE와 삼각형 AMC는 닮음이고, 무게중심 G는 AM을 2 대 1로 나누므로 닮음비는 2 대 3이다. GE 대 MC가 2 대 3이므로 x는 4 cm이다. 또 AE 대 AC도 2 대 3이고 AE가 8이므로 AC는 12 cm이고 y는 12에서 8을 뺀 4 cm이다. 따라서 2x에서 y를 뺀 값은 8에서 4를 뺀 4이다. 정답은 ①이다.",
     "solutionImageSize": "full"
@@ -576,7 +576,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q13-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 BC 8 cm, DC 6 cm인 직사각형 A, B, C, D와 대각선 BD의 중점 O, O를 지나 BD에 수직인 선분 EF가 있고 E는 변 AD 위, F는 변 BC 위의 점이다. 나머지 두 칸에는 삼각형 DAB와 삼각형 DOE를 같은 방향으로 따로 그렸고 대응변이 같은 색이며 DA 8, AB 6, DB 10, DO 5, OE 3.75, DE 6.25이다.",
     "solutionImageCaption": "대각선 BD는 8과 6으로 피타고라스 정리를 쓰면 10 cm이고 O가 중점이므로 DO는 5 cm이다. 각 DOE와 각 DAB가 직각이고 각 D가 공통이므로 삼각형 DOE와 삼각형 DAB는 닮음이며 닮음비는 5 대 8이다. 그래서 DE는 10 곱하기 8분의 5인 4분의 25 cm, EO는 6 곱하기 8분의 5인 4분의 15 cm이다. 삼각형 DEO의 둘레는 4분의 25 더하기 4분의 15 더하기 5이다. 정답은 ④이다.",
     "solutionImageSize": "full"
@@ -917,9 +917,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽 위에는 피라미드 높이 AC가 x m, 막대기 DE가 1 m, 막대기의 그림자 EF가 1.5 m, CF가 220.5 m인 두 직각삼각형 ACF와 DEF가 점 F를 공유하며 겹쳐 있다. 나머지 두 칸에는 큰 직각삼각형 ACF와 작은 직각삼각형 DEF를 같은 방향으로 따로 그렸고 대응변이 같은 색이며 공통인 각 F는 분홍색이다.",
-    "solutionImageCaption": "(1) 막대기와 피라미드는 지면에 수직이므로 각 C와 각 E가 직각이고 각 F가 공통이다. 두 삼각형은 AA 닮음이므로 삼각형 ACF와 삼각형 DEF는 닮음이다. (2) 피라미드의 높이를 x m라 하면 높이의 비와 밑변의 비가 같으므로 x 대 1은 220.5 대 1.5이고 x는 220.5를 1.5로 나눈 값이다. 정답은 (1) 삼각형 ACF와 삼각형 DEF의 닮음, (2) 147 m이다.",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에는 피라미드 높이 AC가 x m, 막대기 DE가 1 m, 막대기의 그림자 EF가 1.5 m, CF가 220.5 m인 두 직각삼각형 ACF와 DEF가 점 F를 공유하며 겹쳐 있다. 나머지 두 칸에는 큰 직각삼각형 ACF와 작은 직각삼각형 DEF를 같은 방향으로 따로 그렸고 대응변이 같은 색이며 공통인 각 F는 분홍색이다. 그림은 비례가 아니며 실제로는 작은 삼각형이 훨씬 더 작다.",
+    "solutionImageCaption": "(1) 막대기와 피라미드는 지면에 수직이므로 각 C와 각 E가 직각이고 각 F가 공통이다. 두 삼각형은 AA 닮음이므로 삼각형 ACF와 삼각형 DEF는 닮음이다. (2) 피라미드의 높이를 x m라 하면 높이의 비와 밑변의 비가 같으므로 x 대 1은 220.5 대 1.5이고 x는 220.5를 1.5로 나눈 값이다. 그림은 비례가 아니며 실제로는 막대기 삼각형이 피라미드 삼각형보다 훨씬 작다. 정답은 (1) 삼각형 ACF와 삼각형 DEF의 닮음, (2) 147 m이다.",
     "solutionImageSize": "full"
   },
   {
@@ -958,7 +958,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImage": "assets/images/20_금당중_2학기_기말_중2_기출/q22-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 변 BC 위의 점 D와 BD, DC의 중점 E, F, 삼각형 ABD와 ADC의 무게중심 G, G′이 있고 BC는 30 cm이다. 오른쪽 위에는 변 BC를 D, E, F로 나눈 그림에서 EF가 15 cm이다. 아래에는 삼각형 AEF와 삼각형 AGG′을 같은 방향으로 따로 그렸고 대응변이 같은 색이다.",
     "solutionImageCaption": "(1) E는 BD의 중점이고 F는 DC의 중점이므로 EF는 BC의 절반인 15 cm이다. (2) 무게중심은 중선을 2 대 1로 나누므로 AG 대 AE와 AG′ 대 AF는 모두 2 대 3이고 각 GAG′과 각 EAF는 공통이므로 삼각형 AGG′과 삼각형 AEF는 SAS 닮음이다. (3) 닮음비가 2 대 3이므로 GG′은 EF의 3분의 2이다. 정답은 (1) 15 cm, (2) 삼각형 AEF, (3) 10 cm이다.",
     "solutionImageSize": "full"

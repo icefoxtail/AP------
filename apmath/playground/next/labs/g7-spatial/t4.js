@@ -10,6 +10,7 @@
   const G = window.APL_SP;
   if (!G) return;
   const { jo, DEG, PI, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, scene3, classify, ov, caption, P, VIEW, mkChoices, mkText, rd, notes, LET, NUM } = G;
+  const ready = (s, C, key) => !C.lesson || (!s.lessonEntry && !!s[key]);
 
   const PARAMS = {
     spFold: P('접기', 0, 1, 0.005, 0, { color: 'amber', hint: '막대를 끌거나 ▶를 눌러 전개도를 접어 보세요', format: (v) => (v < 0.01 ? '펼친 전개도' : v > 0.99 ? '다 접음' : Math.round(v * 100) + '%') }),
@@ -178,6 +179,8 @@
     // 모서리: 기준 모서리와의 관계로 색칠
     const sty = (e) => {
       const r = e.rel;
+      if (o.lateral) return e.u === 'V' || e.v === 'V' ? { color: o.result ? 'green' : 'ink', width: o.result ? 5.6 : 3 } : { color: 'ink', width: 2.4, alpha: 0.5 };
+      if (o.noRef && r === 'ref') return { color: 'ink', width: 3 };
       if (r === 'ref') return { color: 'amber', width: 6.4, glow: true };
       if (st === 0) return { color: 'ink', width: 3 };
       if (r === 'meet') return st === 4 || st === 1 ? { color: 'rose', width: st === 1 ? 5 : 4 } : { color: 'rose', width: 2, alpha: 0.42 };
@@ -211,6 +214,7 @@
   function edgeScene(o) {
     const D = {
       id: o.id, title: o.title, short: o.short, question: o.question,
+      lessonQuestion: (M, s, Q) => s.spLessonGoal === 'apex' ? '정사각뿔 전개도의 네 삼각형에 표시된 꼭짓점 V들은 접으면 어디로 모일까요?' : s.spLessonGoal === 'lateral' ? '정사각뿔을 접었을 때 옆모서리끼리는 꼬인 위치가 될 수 있을까요?' : s.spLessonGoal === 'base-parallel' ? '삼각기둥을 접었을 때 두 삼각형 밑면은 어떤 위치 관계일까요?' : s.spLessonGoal === 'base-perp' ? '삼각기둥을 접었을 때 한 밑면과 세 옆면은 어떤 위치 관계일까요?' : s.spLessonGoal === 'count' ? `전개도를 접었을 때 기준 모서리 ${M.ref.name}과 꼬인 위치에 있는 모서리는 모두 몇 개일까요?` : `${Q.stem} 보기: ${Q.choices.map(c => c.p).join(' · ')}`,
       cam0: { yaw: -12, pitch: 62 }, pitchKey: NET_CAM.pitchKey, pitchRange: NET_CAM.pitchRange, yawOff: NET_CAM.yawOff, safeSol: NET_CAM.safeSol,
       ctl: () => ['spFold'].concat(VIEW_N),
       anim: { key: 'spFold', dur: 5, label: '접어 보기', start: 0 },
@@ -224,13 +228,18 @@
       },
       model: (s) => netModel(s, o.kind),
       draw(b, s, M, C) {
-        const st = C.problem ? 0 : C.review ? C.step : 4;
+        const goal = s.spLessonGoal, concept = C.lesson && ['apex', 'lateral', 'base-parallel', 'base-perp'].includes(goal);
+        const st = C.lesson ? concept ? 0 : ready(s, C, 'spShowAnswer') ? 3 : ready(s, C, 'spParReady') ? 2 : ready(s, C, 'spMeetReady') ? 1 : 0 : C.problem ? 0 : C.review ? C.step : 4;
         const t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.spFold);
         const Dr = scene3(b, camFold(s, t), C); // 접을수록 시점이 낮아져(위에서 → 비스듬히) 입체가 잘 보여요
-        const { faces } = drawNet(Dr, M, C, st, t, { noRef: false });
+        const faceColor = C.lesson && (goal === 'base-parallel' || goal === 'base-perp') ? i => i === 3 ? { c: 'amber', a: 0.3 } : ready(s, C, 'spShowAnswer') && (goal === 'base-parallel' ? i === 4 : i < 3) ? { c: 'green', a: 0.25 } : null : null;
+        const { faces } = drawNet(Dr, M, C, st, t, { noRef: concept, faceColor, lateral: C.lesson && goal === 'lateral', result: C.lesson && ready(s, C, 'spShowAnswer') });
         if (C.txt && !C.problem) {
           const nm = M.c.g.skew.map((e) => e.name);
-          const cap = C.review ? (st === 1 ? `접으면 만나는 모서리 ${M.c.nMeet}개 지우기` : st === 2 ? `평행한 모서리 ${M.c.nPar}개 지우기` : st === 3 ? (nm.length <= 5 ? `꼬인 위치: ${nm.join(', ')} → ${M.c.nSkew}개` : `남은 ${M.c.nSkew}개 = 꼬인 위치`) : '') : '';
+          let cap = C.review ? (st === 1 ? `접으면 만나는 모서리 ${M.c.nMeet}개 지우기` : st === 2 ? `평행한 모서리 ${M.c.nPar}개 지우기` : st === 3 ? (nm.length <= 5 ? `꼬인 위치: ${nm.join(', ')} → ${M.c.nSkew}개` : `남은 ${M.c.nSkew}개 = 꼬인 위치`) : '') : '';
+          if (C.lesson) {
+            cap = ready(s, C, 'spShowAnswer') ? goal === 'apex' ? '네 꼭짓점은 V라는 한 점으로 모여요' : goal === 'lateral' ? '옆모서리들은 V에서 만나므로 꼬인 위치가 아니에요' : goal === 'base-parallel' ? '두 삼각형 밑면은 서로 평행해요' : goal === 'base-perp' ? '세 옆면은 밑면과 수직이에요' : goal === 'count' ? `꼬인 모서리 ${M.c.nSkew}개` : `보기의 정답: ${o.prob(M).choices.find(c => c.ok).p}` : concept ? '' : ready(s, C, 'spParReady') ? `만나는 모서리 ${M.c.nMeet + M.c.nExt}개, 평행한 모서리 ${M.c.nPar}개` : ready(s, C, 'spMeetReady') ? `만나는 모서리 ${M.c.nMeet + M.c.nExt}개` : '';
+          }
           if (cap) caption(b, cap, { color: st === 1 ? 'rose' : st === 2 ? 'sky' : 'green' });
         }
         Dr.flush();
@@ -313,6 +322,7 @@
   const faceScene = {
     id: 's4-2', title: '정육면체 전개도에서 평행한 면과 수직인 면', short: '평행한 면·수직인 면',
     question: '정육면체의 전개도에서 한 면과 평행한 면은 몇 개이고 수직인 면은 몇 개일까? 전개도에서 어느 면이 평행한 면이 될까?',
+    lessonQuestion: (M, s, Q) => s.spLessonGoal === 'perpendicular' ? `정육면체를 접었을 때 면 ${M.bname}과 수직인 면은 어느 면이며 모두 몇 개일까요?` : Q.stem,
     cam0: { yaw: -12, pitch: 62 }, pitchKey: NET_CAM.pitchKey, pitchRange: NET_CAM.pitchRange, yawOff: NET_CAM.yawOff, safeSol: NET_CAM.safeSol,
     ctl: () => ['spFold'].concat(VIEW_N),
     anim: { key: 'spFold', dur: 5, label: '접어 보기', start: 0 },
@@ -335,6 +345,11 @@
       // 색: 한 단계에 한 쌍만(탐구는 고른 면과 마주 보는 면). 고르지 않았으면 모두 회색.
       const role = faces.map((_, i) => {
         if (C.problem) return rel[i] === 'base' ? 'a' : 0;
+        if (C.lesson) {
+          if (rel[i] === 'base') return 'a';
+          if (rel[i] === 'par' && (s.spLessonGoal === 'parallel' ? ready(s, C, 'spShowAnswer') : ready(s, C, 'spFaceReady'))) return 'a';
+          return rel[i] === 'perp' && s.spLessonGoal === 'perpendicular' && ready(s, C, 'spShowAnswer') ? 'p' : 0;
+        }
         if (C.review) { if (rel[i] === 'base') return 'a'; if (st === 2 && rel[i] === 'par') return 'a'; if (st >= 3 && rel[i] === 'perp') return 'p'; return 0; }
         if (M.none || C.thumb) return 0;
         return rel[i] === 'base' || rel[i] === 'par' ? 'a' : 0;
@@ -357,7 +372,12 @@
         else {
           line(y0, `정육면체의 전개도 (${M.label})`, 'ink');
           const nb = M.bname, np = net.faceName[M.par];
-          if (C.review && st <= 1) line(y0 + 24, `면 ${nb}${jo(nb, 'eul')} 골랐어요`, 'amber');
+          if (C.lesson) {
+            const show = ready(s, C, 'spShowAnswer');
+            const message = show ? s.spLessonGoal === 'perpendicular' ? `수직인 면: ${M.perp.map(i => net.faceName[i]).join(', ')} (${M.perp.length}개)` : `평행한 면: ${np} (1개)` : s.spLessonGoal === 'perpendicular' && ready(s, C, 'spFaceReady') ? `마주 보는 면 ${nb}, ${np}은 평행해요` : `기준 면 ${nb}`;
+            line(y0 + 24, message, show && s.spLessonGoal === 'perpendicular' ? 'sky' : 'amber');
+          }
+          else if (C.review && st <= 1) line(y0 + 24, `면 ${nb}${jo(nb, 'eul')} 골랐어요`, 'amber');
           else if (C.review && st >= 3) line(y0 + 24, `나머지 네 면은 면 ${nb}${jo(nb, 'wa')} 수직이에요`, 'sky');
           else if (M.none && !C.review) line(y0 + 24, '면을 눌러 보세요', 'muted');
           else line(y0 + 24, `면 ${nb}${jo(nb, 'wa')} 마주 보는 면 ${np}${jo(np, 'eun')} 평행해요`, 'amber');

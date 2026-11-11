@@ -60,7 +60,7 @@
     },
     draw(b, s, M, cx) {
       if (cx.problem) { drawRectProb(b, M); return; }
-      const rv = cx.review, st = cx.step, p = rv ? M.rec : M.p, { A, B, C, D, O } = p, pts = p.pts, rect = rv || M.eq;
+      const rv = cx.review && !cx.lesson, st = cx.step, p = rv ? M.rec : M.p, { A, B, C, D, O } = p, pts = p.pts, rect = rv || M.eq;
       fit(b, paraBox(M.w, M.s), { t: 40, b: 70, l: 46, r: 46 });
       fillPoly(b, pts, rect ? 'green' : 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
@@ -73,9 +73,9 @@
       if (!rv && !rect) { ang(b, B, C, A, { color: 'amber', rings: 1, r: 28, label: dg(M.beta), size: 16, labelDist: 56 }); }
       dotO(b, O);
       dotsABCD(b, p);
-      if (!rv) handleA(b, s, 'qcB', p, 50, 130);
+      if (!rv && !cx.lesson) handleA(b, s, 'qcB', p, 50, 130);
       const cap = rv ? ['AC=BD인 평행사변형을 생각해요', 'AB=DC, BC 공통, AC=DB → △ABC ≡ △DCB (SSS)', '∠B=∠C, ∠B+∠C=180° → ∠B=∠C=90° → 직사각형'][clamp(st, 1, 3) - 1] : rect ? 'AC=BD, ∠B=90° → 직사각형이에요' : `∠B=${M.beta}° 이고 AC ${M.cmp === '<' ? '<' : '>'} BD → 직사각형이 아니에요`;
-      capLine(b, pt((paraBox(M.w, M.s).x0 + paraBox(M.w, M.s).x1) / 2, 0), cap, rect ? 'green' : 'amber', { dy: 44 });
+      if (!cx.lesson || cx.answer) capLine(b, pt((paraBox(M.w, M.s).x0 + paraBox(M.w, M.s).x1) / 2, 0), cap, rect ? 'green' : 'amber', { dy: 44 });
     },
     stepT: () => 0,
     steps: (M) => [
@@ -121,7 +121,7 @@
     },
     draw(b, s, M, cx) {
       if (cx.problem) { drawRhProb(b, M); return; }
-      const rv = cx.review, st = cx.step, w = rv ? M.s : M.w, p = rv ? para(M.s, M.s, M.beta) : M.p, { A, B, C, D, O } = p, pts = p.pts, rh = rv || M.rh;
+      const rv = cx.review && !cx.lesson, st = cx.step, w = rv ? M.s : M.w, p = rv ? para(M.s, M.s, M.beta) : M.p, { A, B, C, D, O } = p, pts = p.pts, rh = rv || M.rh;
       fit(b, paraBox(Math.max(M.w, M.s, 6), Math.max(M.s, 6)), { t: 40, b: 70, l: 46, r: 46 });
       fillPoly(b, pts, rh ? 'green' : 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D }, rh ? 0.25 : 0.5);
@@ -131,10 +131,10 @@
       if (rv && st === 2) { fillPoly(b, [A, B, O], 'amber', 0.16); fillPoly(b, [C, B, O], 'amber', 0.16); }
       if (!rv) { sd(b, A, B, O, `${M.s}`, 'amber'); sd(b, B, C, O, `${M.w}`, 'sky'); if (!rh) ang(b, B, C, A, { color: 'amber', rings: 1, r: 28, label: dg(M.beta), size: 15, labelDist: 54 }); }
       dotO(b, O); dotsABCD(b, p);
-      if (!rv) handleA(b, s, 'qcB', p, 50, 130);
+      if (!rv && !cx.lesson) handleA(b, s, 'qcB', p, 50, 130);
       void w;
       const cap = rv ? ['AB=BC인 평행사변형을 생각해요', 'AB=DC, BC=AD → 네 변의 길이가 같다 → 마름모', '△ABO ≡ △CBO (SSS) → ∠AOB=∠COB=90° → AC⊥BD'][clamp(st, 1, 3) - 1] : rh ? `AB=BC=${M.s} → 마름모예요. 대각선이 수직으로 만나요` : `AB=${M.s} ≠ BC=${M.w} → 마름모가 아니에요 (대각선이 수직이 아니에요)`;
-      capLine(b, pt(3, 0), cap, rh ? 'green' : 'amber', { dy: 44 });
+      if (!cx.lesson || cx.answer) capLine(b, pt(3, 0), cap, rh ? 'green' : 'amber', { dy: 44 });
     },
     stepT: () => 0,
     steps: (M) => [
@@ -192,7 +192,7 @@
     { h: '$\\angle A=\\angle C$', hint: '직사각형은 원래 대각의 크기가 같아요.' }
   ];
   const evoSq = {
-    id: 'q3-3', title: '정사각형 = 직사각형 + 마름모', short: '정사각형',
+    id: 'q3-3', title: '정사각형이 되는 조건', short: '정사각형',
     question: '직사각형의 성질(네 각이 직각)과 마름모의 성질(네 변이 같다)을 모두 켜면 어떤 사각형이 될까?',
     ctl: (s) => (s.qcR && s.qcM ? ['qcSs'] : s.qcR ? ['qcSs', 'qcDw'] : s.qcM ? ['qcSs', 'qcSb'] : ['qcSs', 'qcDw', 'qcSb']),
     presets: () => [['qcR', '직사각형의 성질 켜기 (네 각이 직각)'], ['qcM', '마름모의 성질 켜기 (네 변의 길이가 같다)']].map(([k, label], i) => ({ group: i === 0 ? '성질을 켜 보세요' : '', label, color: 'amber', apply: (s) => { s[k] = !s[k]; }, on: (s) => !!s[k] })),
@@ -205,7 +205,7 @@
     },
     draw(b, s, M, cx) {
       if (cx.problem) { drawSqProb(b, M); return; }
-      const rv = cx.review, st = cx.step, r = rv ? st >= 1 : M.r, m = rv ? st >= 2 : M.m, ss = M.ss, w = m ? ss : ss + (rv ? 3 : ci(s.qcDw, 1, 4)), beta = r ? 90 : (rv ? 66 : M.beta);
+      const rv = cx.review && !cx.lesson, st = cx.step, r = rv ? st >= 1 : M.r, m = rv ? st >= 2 : M.m, ss = M.ss, w = m ? ss : ss + (rv ? 3 : ci(s.qcDw, 1, 4)), beta = r ? 90 : (rv ? 66 : M.beta);
       const p = para(w, ss, beta), { A, B, C, D, O } = p, pts = p.pts;
       fit(b, paraBox(ss + 4, ss), { t: 40, b: 70, l: 46, r: 46 });
       fillPoly(b, pts, r && m ? 'green' : r ? 'sky' : m ? 'amber' : 'rose', 0.14); poly(b, pts, 'ink', 3.4);
@@ -220,7 +220,7 @@
       dotsABCD(b, p);
       const nm = r && m ? '정사각형' : r ? '직사각형' : m ? '마름모' : '평행사변형';
       const cap = rv ? ['직사각형의 성질: 네 내각이 직각, 두 대각선의 길이가 같다', '마름모의 성질: 네 변의 길이가 같다, 두 대각선이 수직이등분', '두 성질을 모두 가지면 정사각형'][clamp(st, 1, 3) - 1] : `지금은 ${nm}이에요${r && m ? ' (직사각형이면서 마름모)' : ''}`;
-      capLine(b, pt((ss + 4) / 2, 0), cap, r && m ? 'green' : 'amber', { dy: 44 });
+      if (!cx.lesson || cx.answer) capLine(b, pt((ss + 4) / 2, 0), cap, r && m ? 'green' : 'amber', { dy: 44 });
     },
     stepT: () => 0,
     steps: (M) => [
@@ -283,7 +283,7 @@
     },
     draw(b, s, M, cx) {
       if (cx.problem) { drawDiagProb(b, M); return; }
-      const rv = cx.review, st = cx.step;
+      const rv = cx.review && !cx.lesson, st = cx.step;
       const bi = rv ? true : M.bi, le = rv ? st >= 1 : M.le, pe = rv ? st >= 2 : M.pe;
       const q0 = bi ? (le ? M.p : M.p === 3 ? 4 : M.p - 1) : 0;
       const th = pe ? 90 : (rv ? 70 : M.th);
@@ -299,7 +299,7 @@
       dotO(b, O); dotsABCD(b, g);
       const nm = NAME_OF(bi, le, pe);
       const cap = rv ? ['두 대각선이 서로 이등분 → 평행사변형', '+ 두 대각선의 길이가 같다 → 직사각형', '+ 두 대각선이 수직 → 정사각형'][clamp(st, 1, 3) - 1] : `${nm}`;
-      capLine(b, pt(0, 5.2), cap, bi ? 'green' : 'rose', { dy: 40 });
+      if (!cx.lesson || cx.answer) capLine(b, pt(0, 5.2), cap, bi ? 'green' : 'rose', { dy: 40 });
     },
     stepT: () => 0,
     steps: (M) => [
@@ -379,18 +379,20 @@
     draw(b, s, M, cx) {
       const narrow = b.W < 560;
       if (cx.problem) { fit(b, { x0: 0, x1: 12, y0: 0, y1: 7 }, { t: 24, b: 24, l: 24, r: 24 }); drawVenn(b, null, 0); return; }
-      const rv = cx.review, st = cx.step, k = rv ? ['para', 'rect', 'sq'][clamp(st, 1, 3) - 1] : M.k, pts = rv ? figOf(k, M.z) : M.pts;
+      const rv = cx.review && !cx.lesson, st = cx.step, k = rv ? ['para', 'rect', 'sq'][clamp(st, 1, 3) - 1] : M.k, pts = rv ? figOf(k, M.z) : M.pts;
       const bb = bboxOf(pts), shW = bb.x1 - bb.x0, shH = bb.y1 - bb.y0;
       if (narrow) {
         const gap = 1.5, sh = pts.map((q) => pt(q.x - bb.x0 + (12 - shW) / 2, q.y - bb.y0));
         fit(b, { x0: 0, x1: 12, y0: -0.2, y1: shH + gap + 7.1 }, { t: 14, b: 44, l: 12, r: 12 });
-        drawFig(b, sh, k); drawVenn(b, IN[k], shH + gap);
-        capLine(b, pt(6, shH + gap + 7), memCap(k), 'green', { dy: 16 });
+        drawFig(b, sh, k); drawVenn(b, cx.lesson && !cx.answer ? [] : IN[k], shH + gap);
+        if (cx.lesson) traceEdges(b, sh, cx.entry ? 0 : s.qdBT);
+        if (!cx.lesson || cx.answer) capLine(b, pt(6, shH + gap + 7), memCap(k), 'green', { dy: 16 });
       } else {
         const ox = 14, sh = pts.map((q) => pt(q.x - bb.x0 + ox, q.y - bb.y0 + (7 - shH) / 2));
         fit(b, { x0: -0.3, x1: ox + shW + 0.6, y0: -0.3, y1: 7.3 }, { t: 24, b: 56, l: 24, r: 24 });
-        drawVenn(b, IN[k], 0); drawFig(b, sh, k);
-        capLine(b, pt((ox + shW) / 2, 7.3), memCap(k), 'green', { dy: 20 });
+        drawVenn(b, cx.lesson && !cx.answer ? [] : IN[k], 0); drawFig(b, sh, k);
+        if (cx.lesson) traceEdges(b, sh, cx.entry ? 0 : s.qdBT);
+        if (!cx.lesson || cx.answer) capLine(b, pt((ox + shW) / 2, 7.3), memCap(k), 'green', { dy: 20 });
       }
     },
     stepT: () => 0,
@@ -427,6 +429,54 @@
     ['A', 'B', 'C', 'D'].forEach((nm, i) => { b.point(pts[i], { color: 'ink', r: 4 }); tagOut(b, pts[i], pts.reduce((a, q) => add(a, mul(q, 0.25)), pt(0, 0)), nm, { size: 15, gap: 9 }); });
   }
 
+  function traceEdges(b, points, progress) {
+    points.forEach((p, i) => { const t = clamp((Number(progress) || 0) * points.length - i, 0, 1); if (t > 0) line(b, p, G.lerp(p, points[(i + 1) % points.length], t), 'green', 4.8); });
+  }
+  function traceDiagonals(b, g, progress) {
+    [[g.A, g.C], [g.B, g.D]].forEach(([p, q], i) => { const t = clamp((Number(progress) || 0) * 2 - i, 0, 1); if (t > 0) line(b, p, G.lerp(p, q, t), 'green', 4.8); });
+  }
+  const conceptQuestions = {
+    'rect-angle': '평행사변형의 한 내각을 바꾸면 언제 직사각형이 될까요?',
+    'rect-diagonal': '평행사변형의 두 대각선 길이가 같으면 왜 직사각형일까요?',
+    'rhomb-side': '평행사변형의 이웃한 두 변이 같으면 어떤 사각형이 될까요?',
+    'rhomb-diagonal': '평행사변형의 두 대각선이 수직이면 왜 마름모일까요?',
+    square: '네 각이 직각이고 네 변이 같은 사각형은 무엇일까요?',
+    bisect: '두 대각선이 서로 이등분하는 사각형은 어떤 성질을 가질까요?',
+    'no-bisect': '대각선의 길이가 같고 수직이어도 서로 이등분하지 않으면 정사각형일까요?'
+  };
   const gl = [evoRect, evoRhomb, evoSq, diagSyn, incl];
+  gl.forEach((D, index) => {
+    D.lessonQuestion = (M, s, Q) => {
+      if (s.qdLessonProblem === false) return conceptQuestions[s.qdBMode] || (index === 4 ? `${shapeName(M.k)}은 어떤 사각형의 성질을 모두 가질까요?` : D.question);
+      return (Q.html || Q.stem || '') + '<br>' + Q.choices.map((c, i) => G.NUM[i] + ' ' + (c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p)).join('<br>');
+    };
+    D.lessonDraw = (b, s, M, C, solution) => {
+      let figure;
+      if (index < 2) {
+        if (s.qdLessonProblem) {
+          const n = C.entry ? 0 : C.answer ? solution.steps.length : Math.min(s.step || 1, solution.steps.length - 1);
+          D.solveDraw(b, { ...s, step: n }, M, C, solution);
+          figure = index === 0 ? (M.K === 0 ? M.rr : para(8, 5, 90)) : M.K === 0 ? M.rp : M.rq;
+        } else { D.draw(b, s, M, { ...C, problem: false, review: false }); figure = M.p; }
+      } else if (index === 2) {
+        if (s.qdLessonProblem && !C.answer) { drawSqProb(b, M); figure = M.K === 0 ? para(7, 4, 66) : para(7, 4, 90); }
+        else {
+          const next = s.qdLessonProblem ? { ...s, qcR: true, qcM: true } : s, m = D.model(next);
+          D.draw(b, next, m, { ...C, problem: false, review: false }); figure = m.p;
+        }
+      } else if (index === 3) {
+        if (s.qdLessonProblem && !C.answer) { drawDiagProb(b, M); figure = para(7, 4, 66); }
+        else {
+          const next = s.qdLessonProblem ? { ...s, qcI: true, qcL: M.K === 0, qcV: M.K === 1 } : s, m = D.model(next);
+          D.draw(b, next, m, { ...C, problem: false, review: false }); figure = m.g;
+        }
+      } else {
+        const m = D.model({ ...s, qcSh: s.qdBShape || s.qcSh });
+        D.draw(b, s, m, { ...C, problem: false, review: false });
+        return;
+      }
+      if (!C.entry) traceDiagonals(b, figure, s.qdBT);
+    };
+  });
   G.register(30, 'qd3', '③ 직사각형·마름모·정사각형', '직사각형·마름모·정사각형', PARAMS, gl);
 })();

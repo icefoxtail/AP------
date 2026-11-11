@@ -212,16 +212,56 @@
   }
 
   /* ------------------------------------------------------------------ 그림 상태 (탭·단계·진행) */
-  function baseCtx(s, lab, thumb) {
+  const LESSON_SCENES = new Set(['f3-rect-sector', 'f3-two-arcs', 'f3-crescent', 'f3-four-leaf', 'f3-two-circles', 'f3-half-sector', 'f3-leaf-area', 'f3-two-rects']);
+  function baseCtx(s, lab, thumb, D) {
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
-    const plain = !thumb && (tab === 'problem' || (tab === 'review' && !s.step));
-    const review = !thumb && tab === 'review' && s.step > 0;
+    const lesson = !thumb && !!D && LESSON_SCENES.has(D.id) && !!(s.lessonOn || s.lessonEntry);
+    const plain = !thumb && (tab === 'problem' || (tab === 'review' && !s.step) || (lesson && s.lessonEntry));
+    const review = !plain && !thumb && tab === 'review' && s.step > 0;
     const t = thumb ? 1 : plain ? 0 : clamp(+s.f3t || 0, 0, 1);
-    return { tab, plain, review, step: review ? s.step : 99, t, txt: !thumb, thumb: !!thumb, truth: tab !== 'explore' };
+    // hold: 해설 재생 중(s.lessonOn)에는 해설이 s.f3Show 를 켤 때까지 결과(정답) 글자를 아낍니다. 탐구·정리·문제 화면은 그대로입니다.
+    return { tab, plain, review, step: review ? s.step : 99, t, txt: !thumb, thumb: !!thumb, truth: lesson || tab !== 'explore', hold: !thumb && !!((s.lessonOn || (lesson && s.lessonEntry)) && !s.f3Show), lesson, read: lesson && s.lessonOn && !s.lessonEntry ? (+s.f3Read || 0) : 0, final: lesson && s.lessonOn && !s.lessonEntry && !!s.f3Show };
   }
   const isStep = (C, n) => C.review && C.step === n;
 
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
+
+  // 신규 8장면의 f3Read는 해설에서 설명한 계산 단계, f3Show는 마지막 정답이에요.
+  // 기존 잎 둘레 해설과 직접 해 보기에는 적용하지 않아요.
+  function lessonRows(D, M) {
+    const row = (at, label, value, color = 'ink') => ({ at, label, value, color });
+    switch (D.id) {
+      case 'f3-rect-sector': return [row(2, '부채꼴', piP(M.secK) + ' cm²', CB), row(3, '같은 넓이', M.r + ' × AD = ' + piP(M.secK)), row(99, 'AD', piP(M.adK) + ' cm', CS)];
+      case 'f3-two-arcs': return [row(3, '부채꼴 하나', piP(M.one) + ' cm²', CB), row(4, '부채꼴 둘', piP(M.two) + ' cm²', CA), row(5, '정사각형', M.a * M.a + ' cm²'), row(99, '색칠한 넓이', lin(q(-M.a * M.a, 6), [M.a * M.a, 1], false).p + ' cm²', CS)];
+      case 'f3-crescent': return [row(1, '큰 사분원', piP(M.Q) + ' cm²'), row(2, '작은 반지름', fmtN(M.h) + ' cm', CA), row(3, '반원 하나', piP(M.D) + ' cm²', CA), row(4, '반원 둘의 넓이 합', piP(qm(M.D, [2, 1])) + ' cm²', CB), row(5, '정사각형 한 칸', fmtN(M.sq) + ' cm²', CO), row(6, '작은 사분원 둘', piP(qm(M.qd, [2, 1])) + ' cm²', CA), row(99, '초승달', M.L.p + ' cm²', CS)];
+      case 'f3-four-leaf': return [row(1, '한 칸의 변·반지름', fmtN(M.h) + ' cm'), row(2, '사분원 하나', piP(M.qd) + ' cm²', CA), row(3, '사분원 둘', piP(M.two) + ' cm²', CB), row(4, '정사각형 한 칸', fmtN(qv(M.sq)) + ' cm²', CO), row(5, '잎 하나', M.leaf.p + ' cm²', CS), row(99, '네 잎의 넓이', M.all.p + ' cm²', CS)];
+      case 'f3-two-circles': return [row(1, '직사각형의 세로', fmtN(2 * M.r) + ' cm'), row(99, '색칠한 넓이', M.areaP + ' cm²', CS)];
+      case 'f3-half-sector': return [row(1, '반원의 반지름', fmtN(M.r) + ' cm', CA), row(2, '반원', piP(M.hdK) + ' cm²', CA), row(3, '같은 넓이', piP(M.hdK) + ' = ' + M.dia * M.dia + 'π × x/360'), row(4, '원의 넓이와 비교', 'x/360 = 1/8'), row(99, '중심각 x', fmtN(360 * M.hd / (PI * M.dia * M.dia)) + '°', CS)];
+      case 'f3-leaf-area': return [row(1, '사분원 하나', piP(M.qd) + ' cm²', CA), row(2, '사분원 둘', piP(M.two) + ' cm²', CB), row(3, '정사각형', M.A + ' cm²'), row(99, '잎의 넓이', M.leaf.p + ' cm²', CS)];
+      case 'f3-two-rects': return [row(1, '직사각형 A', fmtN(M.A) + ' cm²', CA), row(2, '직사각형 B', fmtN(M.B) + ' cm²', CB), row(3, '겹친 가로', M.oP + ' cm', CO), row(4, '겹친 넓이', M.OP + ' cm²', CO), row(99, '합친 넓이', M.UP + ' cm²', CS)];
+      default: return [];
+    }
+  }
+  function lessonView(D, M, C) {
+    const rows = lessonRows(D, M).filter((r) => r.at === 99 ? C.final : r.at <= C.read);
+    const last = rows[rows.length - 1];
+    return {
+      guide: C.final && last ? last.label + ' = ' + last.value : '그림의 조건과 겹친 부분을 차례로 살펴봐요.',
+      readouts: rows.map(({ at, ...r }) => r), parts: [],
+      status: { tone: C.final ? 'ok' : 'info', text: C.final && last ? last.label + ' = ' + last.value : '그림에서 조건을 확인해요' },
+      formula: C.final && last ? '<p>' + esc(last.label + ' = ' + last.value) + '</p>' : '',
+      rule: '같은 부분을 더하거나, 두 번 센 부분을 한 번 빼는 관계를 이용해요.', notes: ''
+    };
+  }
+  function lessonFooter(b, D, M, C) {
+    const rows = lessonRows(D, M).filter((r) => r.at === 99 ? C.final : r.at <= C.read);
+    const last = rows[rows.length - 1];
+    if (!last) return;
+    const x = b.insets.left + (b.W - b.insets.left - b.insets.right) / 2;
+    const y = b.H - b.insets.bottom - 16;
+    b.stext(x, y - 21, last.label, { color: last.color, size: 14, weight: 800 });
+    b.stext(x, y, last.value, { color: last.color, size: 15, weight: 800 });
+  }
 
   /* ================================================================== 장면 정의 */
   const SCENES = [];
@@ -282,7 +322,7 @@
           if (u > 0.01) {
             const m = pt(Cf.x - a / 2, Cf.y + a);
             tx(b, C, m, '90° + 90° = 180°', 'ink', { dy: 24, alpha: u });
-            tx(b, C, m, piP(M.arc) + ' + ' + piP(M.arc) + ' = ' + piP(M.tot) + ' cm', 'ink', { dy: 46, size: 16, alpha: u });
+            if (!C.hold) tx(b, C, m, piP(M.arc) + ' + ' + piP(M.arc) + ' = ' + piP(M.tot) + ' cm', 'ink', { dy: 46, size: 16, alpha: u });
           }
         }
       }
@@ -294,7 +334,7 @@
       `두 호를 이어 붙이면 중심각 90°+90°=180°인 호(반원의 호)예요. 둘레 = $${piT(M.arc)}+${piT(M.arc)}=${piT(M.tot)}$ (cm)`
     ],
     view(M, C, s) {
-      const half = C.t > 0.8;
+      const half = C.t > 0.8 && !C.hold;
       return {
         guide: C.t < 0.08 ? '색칠한 잎 모양의 <b>둘레</b>는 <b>호 2개</b>예요(분홍·노랑). ▶를 누르거나 막대를 오른쪽으로 끌어, 두 호를 떼어 이어 붙여 보세요.'
           : C.t < 0.5 ? '두 호가 만드는 부채꼴을 옆에 복사했어요. 각 부채꼴의 중심각은 <b>90°</b>예요. 노랑 부채꼴이 제자리에서 돌고 있어요.'
@@ -369,7 +409,7 @@
       const r = M.r, w = M.w, t = C.t;
       const sepOn = !C.plain && !C.review;
       const g = 0.28 * r, dxMax = w + g;
-      const LY = layout2(b, { x0: 0, y0: -r, x1: sepOn ? dxMax + r : Math.max(w, r), y1: 0 }, null, { padB: 8, padL: 48 });
+      const LY = layout2(b, { x0: 0, y0: -r, x1: sepOn ? dxMax + r : Math.max(w, r), y1: 0 }, null, { padB: 8 + (C.lesson ? 56 : 0), padL: 48 });
       const sl = sepOn ? seg(t, 0.16, 0.6) : 1;
       const dx = dxMax * (1 - sl);
       const A = pt(0, -r), B = pt(0, 0), Cc = pt(w, 0), D = pt(w, -r), E = pt(r, 0);
@@ -413,7 +453,7 @@
           tx(b, C, pt(0, -r / 2), cmF(r), 'ink', { dx: -13, align: 'right' });
         }
         if (!C.plain && sepOn) tx(b, C, pt(w / 2, -r), M.adP + ' cm', CA, { dy: -17 });
-        if (!C.plain && !sepOn && C.step >= 4) tx(b, C, pt(w / 2, -r), 'AD = ?', CA, { dy: -17 });
+        if (!C.plain && !sepOn && C.step >= 4) tx(b, C, pt(w / 2, -r), C.lesson && C.final ? 'AD = ' + M.adP + ' cm' : 'AD = ?', CA, { dy: -17 });
         // 따로 있을 때: 이름과 넓이
         const nm = 1 - sl;
         if (nm > 0.05 && !C.plain && sepOn) {
@@ -422,19 +462,20 @@
           tx(b, C, polar(Bs, 0.52 * r, -42), '부채꼴', CB, { alpha: nm, dy: -9 });
           tx(b, C, polar(Bs, 0.52 * r, -42), piP(M.secK) + ' cm²', CB, { alpha: nm, dy: 12, size: 14 });
         }
-        if (ov > 0.05 && sepOn || (C.review && C.step >= 2)) {
-          const a = C.review ? 1 : ov;
+        if (ov > 0.05 && sepOn || (C.review && C.step >= 2) || (C.lesson && (C.plain || C.step === 1))) {
+          const a = C.lesson || C.review ? 1 : ov;
           const s1 = spot(P1);
           tx(b, C, s1, '(가)', CA, { alpha: a, ref: 'p1' });
           if (P2) tx(b, C, spot(P2), '(나)', CB, { alpha: a, ref: 'p2' });
           const sk = spot(Kp);
-          tx(b, C, sk, '공통', CO, { alpha: a, ref: 'k' });
-          if (!C.review || C.step >= 4) {
+          if (!C.lesson || (!C.plain && C.step >= 2)) tx(b, C, sk, '공통', CO, { alpha: a, ref: 'k' });
+          if ((!C.review || C.step >= 4) && (!C.lesson || C.read >= 2)) {
             tx(b, C, pt(w / 2, 0), '직사각형 ' + M.rectP, CA, { dy: 38, size: 14, alpha: a });
             tx(b, C, pt(Math.max(w, r) * 0.78, 0), '부채꼴 ' + piP(M.secK), CB, { dy: 38, size: 14, alpha: a, dx: Math.max(0, (w < r ? 14 : 0)) });
           }
         }
       }
+      if (C.lesson && C.read >= 1) angMark(b, C, B, -90, 0, CB, '90°', 24);
       // 끌 수 있는 점 D (가로로만)
       if (sepOn && C.txt) {
         b.handle('ad', D, { color: 'amber', r: 7, ariaLabel: 'AD의 길이', drag: (p) => { s.f3w = clamp(Math.round(p.x * 2) / 2, 0.5, 9); } });
@@ -502,7 +543,7 @@
     stepT: (n) => (n >= 4 ? 1 : 0),
     draw(b, s, M, C) {
       const a = M.a, t = C.t;
-      layout2(b, { x0: 0, y0: 0, x1: 1.5 * a, y1: a }, null, { padB: 4, small: { x0: 0, y0: 0, x1: a, y1: a }, mix: C.plain ? 0 : seg(t, 0.02, 0.2) });
+      layout2(b, { x0: 0, y0: 0, x1: 1.5 * a, y1: a }, null, { padB: 4 + (C.lesson ? 56 : 0), small: { x0: 0, y0: 0, x1: a, y1: a }, mix: C.plain ? 0 : seg(t, 0.02, 0.2) });
       const A = pt(0, 0), D = pt(a, 0), B = pt(0, a), Cc = pt(a, a), E = pt(a / 2, a - (a * Math.sqrt(3)) / 2);
       const arcB = arcPts(B, a, -90, 0), arcC = arcPts(Cc, a, 270, 180);
       const shaded = cat([A, D], arcPts(Cc, a, 270, 240), [Cc, B], arcPts(B, a, -60, -90));
@@ -533,7 +574,7 @@
           if (mid) tx(b, C, polar(Cc, 0.62 * a, -105), '30°', CA, { ref: 'h2' });
           if (sl > 0.97) {
             tx(b, C, polar(Cc, 0.5 * a, -75), '60°', 'ink', { size: 17 });
-            tx(b, C, polar(Cc, 0.5 * a, -75), '원의 1/6', 'ink', { size: 14, dy: 20 });
+            tx(b, C, polar(Cc, 0.5 * a, -75), C.lesson && C.read < 4 ? '' : '원의 1/6', 'ink', { size: 14, dy: 20 });
           }
         }
       }
@@ -546,9 +587,10 @@
         if (!C.plain && (!C.review || C.step >= 1)) {
           b.ticks(B, Cc, { color: 'ink', count: 3 }); b.ticks(B, E, { color: 'ink', count: 3 }); b.ticks(Cc, E, { color: 'ink', count: 3 });
           const rr = rpxOf(b, a, 24, 40, 0.2);
-          angMark(b, C, B, -60, 0, CS, '60°', rr, { labelGap: 17 });
-          angMark(b, C, Cc, 240, 180, CS, '60°', rr, { labelGap: 17 });
-          if (!C.review || C.step >= 2) {
+          if (!C.lesson || C.read >= 1) angMark(b, C, B, -60, 0, CS, '60°', rr, { labelGap: 17 });
+          if (!C.lesson || C.read >= 1) angMark(b, C, Cc, 240, 180, CS, '60°', rr, { labelGap: 17 });
+          if (C.lesson && C.read >= 1) { b.right(B, A, Cc, { color: 'ink', size: 8 }); b.right(Cc, D, B, { color: 'ink', size: 8 }); }
+          if ((!C.review || C.step >= 2) && (!C.lesson || C.read >= 2)) {
             angMark(b, C, B, -90, -60, CB, '30°', rr * 1.5, { labelGap: 18 });
             angMark(b, C, Cc, 270, 240, CA, '30°', rr * 1.5, { labelGap: 18 });
           }
@@ -620,7 +662,7 @@
     stepT: (n) => (n >= 4 ? 1 : n === 3 ? 0.55 : n === 2 ? 0.1 : 0),
     draw(b, s, M, C) {
       const a = M.a, h = M.h, t = C.t;
-      layout2(b, { x0: 0, y0: 0, x1: a, y1: a }, null, { padB: 4, padR: 46 });
+      layout2(b, { x0: 0, y0: 0, x1: a, y1: a }, null, { padB: 4 + (C.lesson ? 56 : 0), padR: 46 });
       const TL = pt(0, 0), TR = pt(a, 0), BL = pt(0, a), BR = pt(a, a), M1 = pt(0, h), M2 = pt(h, a);
       const cres = cat(arcPts(BL, a, -90, 0), arcPts(M2, h, 360, 270), arcPts(M1, h, 0, -90));
       const lens = cat(arcPts(M1, h, 0, 90), arcPts(M2, h, 180, 270));
@@ -643,13 +685,13 @@
       if (C.txt) {
         tx(b, C, pt(a, a / 2), cmF(a), 'ink', { dx: 16, align: 'left' });
         if (st === 2 && C.review) {
-          tx(b, C, polar(BL, 0.62 * a, -42), '큰 사분원 ' + piP(M.Q) + ' cm²', 'ink', { size: 15 });
+          if (!C.lesson || C.read >= 1) tx(b, C, polar(BL, 0.62 * a, -42), '큰 사분원 ' + piP(M.Q) + ' cm²', 'ink', { size: 15 });
           tx(b, C, polar(BL, 0.62 * a, -42), 'r = ' + fmtN(a) + ', 90°', 'ink', { dy: 21, size: 14 });
         }
         if (C.review && st === 3) {
-          tx(b, C, pt(0.2 * a, 0.28 * a), '반원 ' + piP(M.D), CA, { size: 15, ref: 'd1' });
+          if (!C.lesson || C.read >= 3) tx(b, C, pt(0.2 * a, 0.28 * a), '반원 ' + piP(M.D), CA, { size: 15, ref: 'd1' });
           tx(b, C, pt(0.2 * a, 0.28 * a), 'r = ' + fmtN(h), CA, { dy: 20, size: 14, ref: 'd1' });
-          tx(b, C, pt(0.74 * a, 0.9 * a), '반원 ' + piP(M.D), CB, { size: 15, ref: 'd2' });
+          if (!C.lesson || C.read >= 3) tx(b, C, pt(0.74 * a, 0.9 * a), '반원 ' + piP(M.D), CB, { size: 15, ref: 'd2' });
         }
         if (aL > 0.3) tx(b, C, spot(lens), '겹친 부분', CO, { alpha: aL, ref: 'lens', size: 14 });
         if (!C.plain) {
@@ -659,6 +701,7 @@
       // 겹친 부분 = 사분원 둘 − 정사각형 (마지막 단계)
       if (C.review && st >= 5) {
         const sub = [pt(0, h), pt(h, h), pt(h, a), pt(0, a)];
+        if (C.lesson) { sector(b, M1, h, 0, 90, CA, { fa: 0.14 }); sector(b, M2, h, 180, 270, CB, { fa: 0.14 }); }
         b.poly(sub, { color: CO, width: 2.4, dash: [6, 4] });
         tx(b, C, pt(h / 2, h), fmtN(h) + ' cm', CO, { dy: -14, size: 14 });
       }
@@ -742,7 +785,7 @@
     stepT: (n) => (n >= 3 ? 1 : n === 2 ? 0.7 : 0),
     draw(b, s, M, C) {
       const a = M.a, t = C.t;
-      layout2(b, { x0: 0, y0: 0, x1: a, y1: a }, null, { padB: 4 });
+      layout2(b, { x0: 0, y0: 0, x1: a, y1: a }, null, { padB: 4 + (C.lesson ? 56 : 0) });
       const G = leafCells(a), h = G.h, st = C.review ? C.step : 99;
       const cellOnly = C.review && (st === 2 || st === 3) ? 0 : -1;
       const showCell = (i) => !C.plain && (C.review ? (st === 2 || st === 3 ? i === 0 : st >= 4) : true);
@@ -842,7 +885,7 @@
     stepT: (n) => (n >= 4 ? 1 : n === 3 ? 0.2 : 0),
     draw(b, s, M, C) {
       const r = M.r, d = M.d, t = C.t;
-      layout2(b, { x0: -r, y0: -r, x1: d + r, y1: r }, null, { padB: 18 });
+      layout2(b, { x0: -r, y0: -r, x1: d + r, y1: r }, null, { padB: 18 + (C.lesson ? 56 : 0) });
       const O1 = pt(0, 0), O2 = pt(d, 0);
       const hull = cat([pt(0, -r), pt(d, -r)], arcPts(O2, r, -90, 90), [pt(d, r), pt(0, r)], arcPts(O1, r, 90, 270));
       const circ1 = arcPts(O1, r, 0, 360);
@@ -889,7 +932,7 @@
           if (mg > 0.3) {
             tx(b, C, pt(d / 2, 0), '직사각형', 'ink', { alpha: mg, dy: -2, size: 15, ref: 'sh' });
             tx(b, C, pt(d / 2, r), M.dP + ' cm', 'sky', { alpha: mg, dy: 20 });
-            tx(b, C, pt(d, -r / 2), fmtN(2 * r) + ' cm', 'sky', { alpha: mg, dx: 10, align: 'left' });
+            if (!C.lesson || C.read >= 1) tx(b, C, pt(d, -r / 2), fmtN(2 * r) + ' cm', 'sky', { alpha: mg, dx: 10, align: 'left' });
           }
         }
       }
@@ -973,7 +1016,7 @@
       const dia = M.dia, r = M.r, x = M.x, t = C.t;
       const sepOn = !C.plain && !C.review;
       const g = 0.4 * r, dxMax = dia + g;
-      layout2(b, { x0: 0, y0: -Math.max(r, dia * Math.sin(x * DEG)), x1: sepOn ? dxMax + dia : dia, y1: 0 }, null, { padB: 28, padL: 34 });
+      layout2(b, { x0: 0, y0: -Math.max(r, dia * Math.sin(x * DEG)), x1: sepOn ? dxMax + dia : dia, y1: 0 }, null, { padB: 28 + (C.lesson ? 56 : 0), padL: 34 });
       const sl = sepOn ? seg(t, 0.16, 0.6) : 1, dx = dxMax * (1 - sl);
       const A = pt(0, 0), B = pt(dia, 0), Mm = pt(r, 0), Ac = pt(dx, 0);
       const T = polar(Ac, dia, -x), Gx = polar(Mm, r, -2 * x);
@@ -1000,22 +1043,26 @@
       if (C.txt) {
         tx(b, C, A, 'A', 'ink', { dx: -12, dy: 4, align: 'right' });
         tx(b, C, pt(r, 0), cmF(dia), 'ink', { dy: 22 });
-        angMark(b, C, Ac, 0, -x, 'amber', (C.plain || (C.review && C.step < 5)) ? 'x°' : M.xP, clamp(dia * b.k * 0.14, 24, 44), { labelGap: 16 });
+        angMark(b, C, Ac, 0, -x, 'amber', (C.plain || (C.lesson && !C.final) || (C.review && C.step < 5)) ? 'x°' : M.xP, clamp(dia * b.k * 0.14, 24, 44), { labelGap: 16 });
         if (!C.plain && sepOn && sl < 0.97) {
           const nm = 1 - sl;
           tx(b, C, pt(r, 0), '반원 ' + piP(M.hdK) + ' cm²', CA, { alpha: nm, dy: 46, size: 14 });
           tx(b, C, pt(Ac.x + dia / 2, 0), '부채꼴 ' + M.secP + ' cm²', CB, { alpha: nm, dy: 24, size: 14 });
         }
-        if ((sepOn && ov > 0.05) || (C.review && C.step >= 2)) {
-          const a = C.review ? 1 : ov;
+        if ((sepOn && ov > 0.05) || (C.review && C.step >= 2) || (C.lesson && (C.plain || C.step === 1))) {
+          const a = C.lesson || C.review ? 1 : ov;
           tx(b, C, spot(P1), '(가)', CA, { alpha: a, ref: 'p1' });
           tx(b, C, spot(P2), '(나)', CB, { alpha: a, ref: 'p2' });
-          tx(b, C, spot(Kp), '공통', CO, { alpha: a, ref: 'k' });
-          if (!C.review || C.step >= 4) {
+          if (!C.lesson || (!C.plain && C.step >= 2)) tx(b, C, spot(Kp), '공통', CO, { alpha: a, ref: 'k' });
+          if ((!C.review || C.step >= 4) && (!C.lesson || C.read >= 2)) {
             tx(b, C, pt(r, 0), '반원 ' + piP(M.hdK), CA, { dy: 44, size: 14, alpha: a });
             tx(b, C, pt(r, 0), '부채꼴 ' + M.secP, CB, { dy: 64, size: 14, alpha: a });
           }
         }
+      }
+      if (C.lesson && C.read >= 1) {
+        b.seg(Mm, pt(r, -r), { color: CA, width: 1.8, dash: [5, 4] });
+        tx(b, C, pt(r, -r / 2), fmtN(r) + ' cm', CA, { dx: 8, align: 'left', size: 14 });
       }
       if (sepOn && C.txt) {
         b.handle('x', T, { color: 'amber', r: 7, ariaLabel: '중심각 x', drag: (p) => { const ang = Math.atan2(-(p.y - 0), p.x - Ac.x) / DEG; s.f3x = clamp(Math.round(ang), 5, 90); } });
@@ -1077,7 +1124,7 @@
     stepT: (n) => (n >= 4 ? 1 : n === 3 ? 0.75 : n === 2 ? 0.35 : 0),
     draw(b, s, M, C) {
       const a = M.a, t = C.t, st = C.review ? C.step : 99;
-      layout2(b, { x0: 0, y0: 0, x1: a, y1: a }, null, { padB: 6 });
+      layout2(b, { x0: 0, y0: 0, x1: a, y1: a }, null, { padB: 6 + (C.lesson ? 56 : 0) });
       const TL = pt(0, 0), TR = pt(a, 0), BL = pt(0, a), BR = pt(a, a);
       const arcA = arcPts(TL, a, 90, 0), arcB = arcPts(BR, a, 180, 270);
       const leaf = cat(arcA, arcB.slice().reverse());
@@ -1091,8 +1138,9 @@
       b.path(arcB, { color: C.plain ? 'ink' : CB, width: C.plain ? 2.6 : 4, alpha: C.plain ? 1 : Math.max(0.35, a2), ref: 'q2' });
       if (C.txt) {
         tx(b, C, pt(a / 2, a), cmF(a), 'ink', { dy: 21 });
-        if (a1 > 0.5) tx(b, C, polar(TL, 0.78 * a, 25), '사분원 ' + piP(M.qd), CA, { size: 14, alpha: a1, ref: 'q1', dy: 0 });
-        if (a2 > 0.5) tx(b, C, polar(BR, 0.78 * a, 205), '사분원 ' + piP(M.qd), CB, { size: 14, alpha: a2, ref: 'q2' });
+        if (a1 > 0.5 && (!C.lesson || C.read >= 1)) tx(b, C, polar(TL, 0.78 * a, 25), '사분원 ' + piP(M.qd), CA, { size: 14, alpha: a1, ref: 'q1', dy: 0 });
+        if (a2 > 0.5 && (!C.lesson || C.read >= 1)) tx(b, C, polar(BR, 0.78 * a, 205), '사분원 ' + piP(M.qd), CB, { size: 14, alpha: a2, ref: 'q2' });
+        if (C.lesson && !C.plain && C.step >= 2) { b.right(TL, TR, BL, { color: CA, size: 10 }); b.seg(TL, TR, { color: CA, width: 3 }); tx(b, C, pt(a / 2, 0), 'r = ' + a, CA, { dy: 16, size: 14 }); }
         if (!C.plain) tx(b, C, spot(leaf), '잎', 'sky', { size: 15, ref: 'leaf' });
         if (!C.plain && (C.review ? st >= 4 : t > 0.82)) tx(b, C, pt(a / 2, 0), '두 사분원 = 정사각형 + 잎', 'ink', { dy: -17, size: 14, alpha: C.review ? 1 : seg(t, 0.82, 0.95) });
       }
@@ -1157,8 +1205,8 @@
     tick: (s, dt, lab) => { if (s.playing) { s.f3dir = s.f3dir || 1; s.f3o += s.f3dir * dt * 1.1; if (s.f3o > 4) { s.f3o = 4; s.f3dir = -1; } if (s.f3o < 0) { s.f3o = 0; s.f3dir = 1; } return true; } return false; },
     draw(b, s, M, C) {
       const h = M.h, wA = M.wA, wB = M.wB;
-      const o = C.review && C.step <= 1 ? 0 : M.o;   // 1단계: 따로 놓은 모양, 2단계부터 가로로 밀어 겹침
-      layout2(b, { x0: 0, y0: -h, x1: wA + wB, y1: 0 }, null, { padB: 40, padL: 44, padT: C.review ? 14 : 0 });
+      const o = C.review && C.step <= 1 ? 0 : C.lesson && C.review ? M.o * seg(C.t, 0, 1) : M.o;   // 1단계: 따로 놓은 모양, 2단계부터 가로로 밀어 겹침
+      layout2(b, { x0: 0, y0: -h, x1: wA + wB, y1: 0 }, null, { padB: 40 + (C.lesson ? 56 : 0), padL: 44, padT: C.review ? 14 : 0 });
       const xB = wA - o;
       const ra = [pt(0, -h), pt(wA, -h), pt(wA, 0), pt(0, 0)], rb = [pt(xB, -h), pt(xB + wB, -h), pt(xB + wB, 0), pt(xB, 0)];
       const ov = [pt(xB, -h), pt(wA, -h), pt(wA, 0), pt(xB, 0)];
@@ -1175,9 +1223,10 @@
         tx(b, C, pt(xB + wB / 2, 0), fmtN(M.wB) + ' cm', CB, { dy: 36, size: 14 });
         tx(b, C, pt(0, -h / 2), fmtN(h) + ' cm', 'ink', { dx: -10, align: 'right' });
         if (C.review) {
-          tx(b, C, pt(aX, -h), 'A ' + fmtN(M.A) + ' cm²', CA, { dy: -16, size: 14 });
-          tx(b, C, pt(bX, -h), 'B ' + fmtN(M.B) + ' cm²', CB, { dy: -16, size: 14 });
-          if (o > 0.3 && C.step >= 3) tx(b, C, pt((xB + wA) / 2, 0), '겹침 ' + M.OP + ' cm²', CO, { dy: 56, size: 14 });
+          if (!C.lesson || C.read >= 1) tx(b, C, pt(aX, -h), 'A ' + fmtN(M.A) + ' cm²', CA, { dy: -16, size: 14 });
+          if (!C.lesson || C.read >= 2) tx(b, C, pt(bX, -h), 'B ' + fmtN(M.B) + ' cm²', CB, { dy: -16, size: 14 });
+          if (o > 0.3 && C.step >= 3 && (!C.lesson || C.read >= 4)) tx(b, C, pt((xB + wA) / 2, 0), '겹침 ' + M.OP + ' cm²', CO, { dy: 56, size: 14 });
+          if (C.lesson && C.read >= 3 && o > 0.3) tx(b, C, pt((xB + wA) / 2, -h), M.oP + ' cm', CO, { dy: 14, size: 14 });
         } else if (o > 0.3) tx(b, C, pt((xB + wA) / 2, -h), (C.review ? M.oP : qOr(cl(o, 2))) + ' cm', CO, { dy: -16, size: 14 });
         if (!C.plain && !C.review && !C.thumb) b.handle('ob', pt(xB, -h), { color: 'rose', r: 7, ariaLabel: '겹친 부분의 가로', drag: (p) => { s.f3o = clamp(Math.round((wA - p.x) * 2) / 2, 0, 4); } });
       }
@@ -1305,7 +1354,8 @@
       }),
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false);
+        const C = baseCtx(s, lab, false, D);
+        if (C.lesson) return lessonView(D, D.model(s, true), C);
         const v = D.view(D.model(s, C.truth), C, s);
         // 문제·정리 탭에서는 무대 위 띠가 답을 미리 알려 주지 않도록 바꿉니다.
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
@@ -1313,9 +1363,11 @@
         return v;
       },
       draw: (b, s, v, lab) => {
-        const C = baseCtx(s, lab, !!b.thumb);
+        const C = baseCtx(s, lab, !!b.thumb, D);
         if (b.thumb) { C.step = 99; }
-        D.draw(b, s, D.model(s, C.truth), C);
+        const M = D.model(s, C.truth);
+        D.draw(b, s, M, C);
+        if (C.lesson) lessonFooter(b, D, M, C);
       }
     };
   }

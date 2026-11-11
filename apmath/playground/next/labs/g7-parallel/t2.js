@@ -19,6 +19,18 @@
     parLine(b, { x: 0, y: ym }, 0, { e0: -XR, e1: XR, arrows: [-2.6, 2.3], name: 'm', nameAt: XR - 0.3 });
   };
   const dashLine = (b, p, d, color = 'muted') => b.line(p, { x: p.x + Math.cos(d * DEG), y: p.y - Math.sin(d * DEG) }, { color, width: 2.2, dash: [7, 6], alpha: 0.9 });
+  const ready = (s, key = 'paShowAnswer') => !s.lessonEntry && s[key] === true;
+  const progress = s => s.lessonEntry ? 0 : clamp(s.paTrace || 0, 0, 1);
+  function traceAux(b, p, d, f, color = 'muted') {
+    if (f <= 0) return;
+    const left = { x: -XR, y: p.y - (-XR - p.x) * Math.tan(d * DEG) }, right = { x: XR, y: p.y - (XR - p.x) * Math.tan(d * DEG) };
+    b.path([K.lerp(p, left, f), K.lerp(p, right, f)], { color, width: 2.2, dash: [7, 6], alpha: .9 });
+  }
+  function lessonRow(b, s, text) {
+    if (!ready(s)) return;
+    const size = Math.min(18, (b.W - b.insets.left - b.insets.right - 26) / Math.max(1, K.textW(text, 18)) * 18);
+    b.stext((b.W + b.insets.left - b.insets.right) / 2, b.insets.top + 17, text, { color: 'green', size, weight: 800, align: 'center', baseline: 'middle' });
+  }
 
   /* ======================================================================
      ㄱ자 꺾인 선 (p2-1, p2-3 공용): A(l 위) – P(가운데) – B(m 위), P 는 A·B 의 오른쪽(sx=+1) 또는 왼쪽(sx=-1)
@@ -40,7 +52,7 @@
     const aT = st.givenName ? 'a=' + mi(G.a) + '°' : mi(G.a) + '°', bT = st.givenName ? 'b=' + mi(G.b) + '°' : mi(G.b) + '°';
     wedge(b, A, ray, G.toA + 180, { color: 'amber', rings: 1, text: aT, r: 26, size: 17, flip: true });
     wedge(b, B, ray, G.toB + 180, { color: 'violet', rings: 2, text: bT, r: 26, size: 17, flip: true });
-    if (st.aux >= 1) dashLine(b, P, 0);
+    if (st.aux >= 1) { if (st.auxT != null) traceAux(b, P, 0, st.auxT); else dashLine(b, P, 0); }
     if (st.aux >= 2) {
       wedge(b, P, G.auxDir, G.toA, { color: 'amber', rings: 1, text: mi(G.a) + '°', r: 24, size: 16 });
       wedge(b, P, G.auxDir, G.toB, { color: 'violet', rings: 2, text: mi(G.b) + '°', r: 24, size: 16 });
@@ -69,6 +81,13 @@
     model: (s) => Object.assign(bendGeom(s.bA, s.bB, s.bP, 1), { aux: s.bAux || 0 }),
     draw(b, s, M, C) {
       const G = M;
+      if (C.lesson) {
+        const numeric = s.paLessonMode === 'bendSolve';
+        drawBend(b, G, { aux: ready(s, 'paSupportReady') ? 2 : 1, auxT: progress(s), x: true, xText: ready(s) && numeric ? mi(G.xf) + '°' : 'x', givenName: true, noCap: true });
+        T(b, { x: 0, y: 2.55 }, ready(s) ? numeric ? `x=${mi(G.a)}°+${mi(G.b)}°=${mi(G.xf)}°` : 'x = a + b' : ready(s, 'paSupportReady') ? '옮겨 온 두 엇각이 이웃해요' : 'P를 지나는 평행 보조선을 그어요', { color: 'green', size: 17 });
+        lessonRow(b, s, numeric ? `x=${mi(G.xf)}°` : 'x=a+b');
+        return;
+      }
       let st = { aux: M.aux, x: true, givenName: true };
       if (C.mode === 'problem') st = { aux: 0, x: true, xText: 'x', givenName: false, xFar: 20 };
       else if (C.mode === 'review') st = { aux: C.step === 1 ? 1 : 2, x: C.step >= 3, givenName: true };
@@ -131,6 +150,20 @@
     model: (s) => Object.assign(bendGeom(s.cA, s.cB, s.cP, s.cDir || 1), { psi: s.cPsi, ok: s.cPsi === 0 }),
     draw(b, s, M, C) {
       const G = M;
+      if (C.lesson) {
+        const condition = s.paLessonMode === 'auxCondition';
+        drawBend(b, G, { aux: condition ? 0 : ready(s, 'paSupportReady') ? 2 : 1, auxT: progress(s), x: true, xText: !condition && ready(s) ? mi(G.xf) + '°' : 'x', givenName: true, noCap: true });
+        if (condition) {
+          traceAux(b, G.P, M.psi, s.lessonEntry ? 1 : clamp(s.paTrace || 0, 0, 1), ready(s) && M.ok ? 'green' : 'muted');
+          if (!M.ok) wedge(b, G.P, 0, M.psi, { color: 'rose', rings: 1, r: 34, fa: .2, text: mi(Math.abs(M.psi)) + '°', size: 16, noRight: true });
+          T(b, { x: 0, y: 2.55 }, ready(s) ? '보조선이 l, m과 평행해요' : '보조선은 꺾인 점 P를 지나야 해요', { color: 'green', size: 17 });
+          lessonRow(b, s, '보조선 ∥ l');
+        } else {
+          T(b, { x: 0, y: 2.55 }, ready(s) ? `x=${mi(G.a)}°+${mi(G.b)}°=${mi(G.xf)}°` : ready(s, 'paSupportReady') ? '두 엇각을 합한 각이 x예요' : 'P를 지나는 평행 보조선을 그어요', { color: 'green', size: 17 });
+          lessonRow(b, s, `x=${mi(G.xf)}°`);
+        }
+        return;
+      }
       if (C.mode === 'problem') { drawBend(b, G, { aux: 0, x: true, xText: 'x', givenName: false, xFar: 20 }); return; }
       const st = C.mode === 'review' ? C.step : 99;
       lines(b, YL, YM);
@@ -246,6 +279,34 @@
     },
     draw(b, s, M, C) {
       const G = M, k = G.k, mode = C.mode, st = mode === 'review' ? C.step : 99;
+      if (C.lesson) {
+        lines(b, ZY0, ZY1);
+        b.path(G.V, { color: 'rose', width: 3.6 });
+        G.V.forEach((p, i) => {
+          dot(b, p, i === 0 || i === k + 1 ? 'rose' : 'ink', 5);
+          const nm = ZNAME[i === k + 1 ? 4 : i];
+          T(b, p, nm, { dy: i === 0 ? -17 : i === k + 1 ? 18 : 0, dx: i === 0 || i === k + 1 ? 0 : i % 2 === 1 ? 17 : -17, size: 16 });
+        });
+        for (let i = 1; i <= k; i++) traceAux(b, G.V[i], 0, clamp(progress(s) * k - i + 1, 0, 1));
+        if (ready(s, 'paSupportReady')) for (let j = 0; j < k; j++) {
+          const Vj = G.V[j + 1], ray = j % 2 === 0 ? 180 : 0;
+          wedge(b, Vj, ray, angOf(Vj, G.V[j]), { color: 'muted', rings: 1, text: '', r: 19, fa: .12 });
+        }
+        G.W.forEach(w => {
+          const target = w.i === G.tar;
+          wedge(b, w.V, w.d1, w.d2, { color: target ? 'green' : w.side === 'R' ? 'amber' : 'violet', rings: target ? 3 : w.side === 'R' ? 1 : 2, text: target && !ready(s) ? 'x' : mi(w.val) + '°', r: 25, size: target ? 19 : 16, flip: w.hv });
+        });
+        if (ready(s, 'paSupportReady')) {
+          const text = arr => {
+            const hasTarget = arr.some(w => w.i === G.tar), terms = arr.map(w => w.i === G.tar && !ready(s) ? 'x' : mi(w.val) + '°').join(' + ');
+            return terms + ((!hasTarget && k > 1 || ready(s)) ? ' = ' + mi(arr.reduce((sum, w) => sum + w.val, 0)) + '°' : '');
+          };
+          T(b, { x: 0, y: 3.05 }, '오른쪽: ' + text(G.R), { color: 'amber', size: 16 });
+          T(b, { x: 0, y: 3.6 }, '왼쪽: ' + text(G.L), { color: 'violet', size: 16 });
+        }
+        lessonRow(b, s, `x=${mi(G.W[G.tar].val)}°`);
+        return;
+      }
       lines(b, ZY0, ZY1);
       b.path(G.V, { color: 'rose', width: 3.6 });
       G.V.forEach((p, i) => { dot(b, p, i === 0 || i === k + 1 ? 'rose' : 'ink', 5); });

@@ -575,10 +575,10 @@ test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const [file, version] of [
     ['archive2-canonical.js', '20261104-source-meta-approval-1'],
-    ['archive2-core.js', '20261110-recency-1'],
+    ['archive2-core.js', '20261111-one-lane-difficulty-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261111-assign-3'],
+    ['archive2-workspace.js', '20261111-remove-1'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261030-s11-1'],
   ])
@@ -586,7 +586,7 @@ test('all changed browser scripts use new cache versions', () => {
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261029-source-meta-conflict-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(html, /archive2\.css\?v=20261110-compose-1/);
+  assert.match(html, /archive2\.css\?v=20261111-remove-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
   assert.match(html, /archive2-navigation\.js\?v=20261110-library-2/);
@@ -724,30 +724,41 @@ test('difficulty filters apply only after an explicit choice and can return to a
   assert.deepEqual(plain(w.state.buckets), []);
 });
 
-test('problem paper maker does not require difficulty evidence or source-bound meta for recorded difficulty', async () => {
+test('problem paper maker uses a recorded difficulty without approval labels or text binding', async () => {
   const r2 = basicRecord('중3', {
     difficultyBucket: 2, difficultyConfidence: undefined, difficultyBoundaryFlag: undefined,
-    legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: '',
+    legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: 'content',
     metadataConflicts: ['difficultyBucket'],
   });
   const r3 = basicRecord('중3', {
     questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-r3').digest('hex'),
-    difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: '',
+    difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: 'content',
   });
-  const { w, click } = harness({ ...catalog, records: [r2, r3], taxonomy: [] });
+  // same bucket 2, no text binding recorded: still usable (binding is a label); a broken source
+  // reference (generalUseEligibility) is the real defect and stays out
+  const unbound = basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-unbound').digest('hex'),
+    difficultyBucket: 2, sourceStatus: 'HOLD', metaBinding: '',
+  });
+  const brokenSource = basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-broken-source').digest('hex'),
+    difficultyBucket: 2, sourceIntegrityStatus: 'MISMATCH',
+  });
+  const { w, click } = harness({ ...catalog, records: [r2, r3, unbound, brokenSource], taxonomy: [] });
   w.state.useMode = 'general';
   w.state.filters = { grade: '중3' };
   await click({ action: 'bucket', bucket: '2' });
   w.state.scopes = w.scopeOptions().map(scope => scope.key);
   w.state.distribution = 'all';
   const req = w.request();
-  assert.equal(req.rows[0].count, 1, 'the recorded bucket survives missing auxiliary metadata');
-  const selected = core.selectBlueprint([r2, r3], req);
+  assert.equal(req.rows[0].count, 2, 'the recorded bucket survives missing auxiliary metadata and a missing binding');
+  const selected = core.selectBlueprint([r2, r3, unbound, brokenSource], req);
   assert.equal(selected.ok, true);
-  assert.deepEqual(selected.selected.map(row => row.questionUid), [r2.questionUid]);
+  assert.deepEqual(selected.selected.map(row => row.questionUid).sort(), [r2.questionUid, unbound.questionUid].sort(),
+    'the broken-source row is excluded by the usage gate, the unbound row is not');
   assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK');
   await click({ action: 'bucket-all' });
-  assert.equal(w.request().rows[0].count, 2);
+  assert.equal(w.request().rows[0].count, 3, 'with no difficulty filter every usable row counts');
 });
 
 test('new entry, grade changes and new drafts restore BASIC all-difficulty defaults', async () => {

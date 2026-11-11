@@ -27,7 +27,7 @@
   /* ====================================================================== 1. 직각삼각형의 빗변에 내린 높이 (옛 triAlt) */
   const rt = {
     id: 'b1-rt', title: '직각삼각형에서 빗변에 내린 높이', short: '빗변의 높이',
-    question: '직각삼각형의 넓이를 두 가지 방법으로 나타내면, 빗변에 내린 높이 h를 구할 수 있을까?',
+    question: (s) => s.lessonOn || s.lessonEntry ? rt.prob(rt.model(s)).stem : '직각삼각형의 넓이를 두 가지 방법으로 나타내면, 빗변에 내린 높이 h를 구할 수 있을까?',
     ctl: ['b1K', 'b1T'], anim: { key: 'b1T', dur: 6, label: '180° 돌려 직사각형 만들기', start: 0 },
     init: (s) => { s.b1K = 1; s.b1T = 0; },
     reroll: (s) => { s.b1K = rpick([1, 2, 3], Math.round(s.b1K)); s.b1T = 0; },
@@ -44,7 +44,7 @@
       }
       const hot1 = C.review && C.step === 1, hot2 = C.review && C.step >= 2;
       b.right(Av, Bv, Cv, { size: 16, color: 'sky' });
-      hgtTo(b, Av, Bv, Cv, { label: C.problem || (C.review && C.step < 3) ? 'h = ?' : `h = ${num(h)}`, side: Av.x > c / 2 ? -1 : 1 });
+      hgtTo(b, Av, Bv, Cv, { label: C.problem || (C.lesson ? !s.arShowAnswer : C.review && C.step < 3) ? 'h = ?' : `h = ${num(h)}`, side: Av.x > c / 2 ? -1 : 1 });
       dim(b, Bv, Av, `${a}`, { ref: Cv, color: 'sky', width: 3 });
       dim(b, Av, Cv, `${bb}`, { ref: Bv, color: 'sky' });
       dim(b, Bv, Cv, `${c}`, { ref: Av, color: 'green' });
@@ -52,6 +52,12 @@
       if (hot1) { line(b, Bv, Av, 'sky', 6, { alpha: 0.6 }); line(b, Av, Cv, 'sky', 6, { alpha: 0.6 }); }
       if (hot2) line(b, Bv, Cv, 'green', 6, { alpha: 0.6 });
       if (C.problem) { foot(b, Mh, '빗변에 내린 수선의 길이 h = ?', 'amber', 58); return; }
+      if (C.lesson) {
+        const stage = s.arBStage || 0;
+        const caption = s.arShowAnswer ? `h = ${num(h)} cm` : stage >= 3 ? `${a}×${bb} = ${c}×h` : stage >= 2 ? `넓이 = ${HALF}×${c}×h` : stage >= 1 ? `넓이 = ${HALF}×${a}×${bb} = ${S} cm²` : 'AH = h, 빗변에 수직인 높이';
+        foot(b, Mh, caption, s.arShowAnswer ? 'green' : 'amber', 58);
+        return;
+      }
       if (C.review) foot(b, Mh, C.step < 1 ? '같은 넓이를 두 방법으로 나타내요' : C.step === 1 ? `넓이 = ${HALF}×${a}×${bb} = ${S}` : C.step === 2 ? `넓이 = ${HALF}×${c}×h` : `${a}×${bb} = ${c}×h → h = ${num(h)}`, C.step >= 3 ? 'green' : 'amber', 58);
       else foot(b, Mh, t > 0.999 ? `직사각형 ${a}×${bb}=${a * bb}의 절반 = ${S}` : `넓이 = ${HALF}×${a}×${bb} = ${S}`, 'green', 58);
     },
@@ -82,7 +88,7 @@
   /* ====================================================================== 2. 평행사변형의 두 가지 높이 (옛 paraMove) */
   const para2 = {
     id: 'b2-para', title: '평행사변형의 두 가지 높이', short: '두 가지 높이',
-    question: '평행사변형은 어느 변을 밑변으로 잡아도 넓이가 같을까? 밑변이 달라지면 높이는 어떻게 될까?',
+    question: (s) => (s.lessonOn || s.lessonEntry) && s.arBAsk === 'height' ? para2.prob(para2.model(s)).stem : '평행사변형은 어느 변을 밑변으로 잡아도 넓이가 같을까? 밑변이 달라지면 높이는 어떻게 될까?',
     ctl: ['b2A'],
     presets: () => [
       ...[['밑변 BC', 0], ['밑변 CD', 1], ['둘 다', 2]].map(([l, i], k) => ({ group: k === 0 ? '밑변 고르기' : '', label: l, apply: (s) => { s.b2Mode = i; }, on: (s) => s.b2Mode === i })),
@@ -94,7 +100,7 @@
     geo: (M) => { const B = pt(0, 0), Cc = pt(M.a, 0), D = pt(M.a + M.S, -M.h1), A = pt(M.S, -M.h1); return { pg: [B, Cc, D, A] }; },
     draw(b, s, M, C) {
       const { a, S, h1, c, h2, A: ar } = M, [Bp, Cp, Dp, Ap] = para2.geo(M).pg;
-      const mode = C.review ? (C.step <= 1 ? 0 : C.step === 2 ? 1 : 2) : C.problem ? 2 : s.b2Mode;
+      const mode = C.lesson ? s.b2Mode : C.review ? (C.step <= 1 ? 0 : C.step === 2 ? 1 : 2) : C.problem ? 2 : s.b2Mode;
       const u = mul(sub(Dp, Cp), 1 / c), tt = (sub(Ap, Cp).x * u.x + sub(Ap, Cp).y * u.y), Fp = add(Cp, mul(u, tt));
       const bb = bboxOf([Bp, Cp, Dp, Ap, Fp, pt(S, 0)]);
       FIT(b, bb, { b: 92, r: 54 });
@@ -104,8 +110,14 @@
       const show1 = mode === 0 || mode === 2, show2 = mode === 1 || mode === 2;
       if (show1) line(b, Bp, Cp, 'sky', 6, { alpha: 0.65 });
       if (show2) line(b, Cp, Dp, 'green', 6, { alpha: 0.65 });
-      if (show1) hgtTo(b, Ap, Bp, Cp, { color: 'amber', label: `h₁ = ${h1}`, side: 1, at: show2 ? 0 : 0.5, dy: show2 ? -26 : 0 });
-      if (show2) hgtTo(b, Ap, Cp, Dp, { color: 'rose', label: C.problem || (C.review && C.step < 3) ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
+      // 해설의 수선은 기존 발까지 자라게 하며, 완성 뒤 기존 높이 표시를 써요.
+      const height = (P0, Q0, F0, o) => {
+        if (C.lesson && s.arBLine < 0.999) {
+          if (s.arBLine > 0) line(b, Ap, lerp(Ap, F0, clamp(s.arBLine, 0, 1)), o.color, 3.4, { dash: [7, 5] });
+        } else hgtTo(b, Ap, P0, Q0, o);
+      };
+      if (show1) height(Bp, Cp, pt(S, 0), { color: 'amber', label: `h₁ = ${h1}`, side: 1, at: show2 ? 0 : 0.5, dy: show2 ? -26 : 0 });
+      if (show2) height(Cp, Dp, Fp, { color: 'rose', label: C.problem || (C.lesson ? !s.arShowAnswer : C.review && C.step < 3) ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
       dim(b, Bp, Cp, `BC = ${a}`, { ref: c0, color: 'sky' });
       dim(b, Cp, Dp, `CD = ${c}`, { ref: c0, color: 'green', off: 26 });
       [[Ap, 'A'], [Bp, 'B'], [Cp, 'C'], [Dp, 'D']].forEach(([p, n]) => {
@@ -114,6 +126,11 @@
       });
       const fx = (a + S) / 2;
       if (C.problem) { foot(b, pt(fx, 0), '평행사변형의 넓이를 두 가지로 나타내 보세요', 'amber', 58); return; }
+      if (C.lesson) {
+        const caption = s.arShowAnswer ? s.arBAsk === 'compare' ? `넓이는 같아요: ${a}×${h1} = ${c}×${num(h2)}` : `h₂ = ${ar}÷${c} = ${num(h2)} cm` : s.arBStage >= 2 ? `넓이 = ${c}×h₂ = ${ar}` : s.arBStage >= 1 ? `넓이 = ${a}×${h1} = ${ar}` : '고른 밑변에 수직인 높이를 찾아요';
+        foot(b, pt(fx, 0), caption, s.arShowAnswer ? 'green' : 'amber', 58);
+        return;
+      }
       if (C.review && C.step < 1) { foot(b, pt(fx, 0), '같은 넓이를 두 방법으로 나타내요', 'amber', 58); return; }
       if (mode === 0) foot(b, pt(fx, 0), `넓이 = ${a} × ${h1} = ${ar}`, 'sky', 58);
       else if (mode === 1) foot(b, pt(fx, 0), `넓이 = ${c} × ${C.review && C.step < 3 ? 'h₂' : num(h2)} = ${ar}`, 'green', 58);
@@ -146,33 +163,46 @@
   const xOf = (B, t) => -4 + (B + 8) * t;
   const rail = {
     id: 'b3-rail', title: '평행선 사이의 삼각형', short: '평행선 사이',
-    question: '밑변 BC가 같고 꼭짓점 A가 평행선 위에 있을 때, A를 옮기면 넓이는 어떻게 될까? 둘레는?',
+    question: (s) => (s.lessonOn || s.lessonEntry) && s.arBAsk === 'transfer' ? rail.prob(rail.model(s)).stem : (s.lessonOn || s.lessonEntry) && s.arBAsk === 'perimeter' ? '밑변 BC가 같고 꼭짓점 A가 평행선 위에서 움직일 때, 삼각형의 둘레도 같을까?' : '밑변 BC가 같고 꼭짓점 A가 평행선 위에 있을 때, A를 옮기면 넓이는 어떻게 될까? 둘레는?',
     ctl: ['b3B', 'b3H', 'b3T'], anim: { key: 'b3T', dur: 8, label: '꼭짓점 A를 가로로 옮기기', start: 0.35 },
     init: (s) => { s.b3B = 8; s.b3H = 5; s.b3T = 0.35; s.b3U = 0.8; },
     reroll: (s) => { s.b3B = rpick([4, 6, 8, 10, 12], s.b3B); s.b3H = rpick([2, 3, 4, 5, 6, 7, 8].filter((h) => (h * s.b3B) % 2 === 0 && h !== s.b3H), s.b3H) || 4; s.b3T = rpick([0.1, 0.25, 0.4, 0.55], s.b3T); s.b3U = rpick([0.7, 0.85, 0.95], s.b3U); },
     model: (s) => { const B = clamp(Math.round(s.b3B), 4, 12), H = clamp(Math.round(s.b3H), 2, 8), x = xOf(B, clamp(s.b3T, 0, 1)), x2 = xOf(B, clamp(s.b3U, 0, 1)); return { B, H, x, x2, A: (B * H) / 2, per: B + Math.hypot(x, H) + Math.hypot(B - x, H) }; },
     geo: (M) => ({ tri: [pt(M.x, -M.H), pt(0, 0), pt(M.B, 0)], tri2: [pt(M.x2, -M.H), pt(0, 0), pt(M.B, 0)] }),
     draw(b, s, M, C) {
-      const { B, H, x, A, per } = M, g = rail.geo(M);
+      const { B, H, x, A, per } = M, g = rail.geo(M), transfer = C.lesson && s.arBAsk === 'transfer';
       FIT(b, { x0: -5, x1: B + 5, y0: -H, y1: 0 }, { b: 110 });
       const xa = -5.6, xb = B + 5.6;
       line(b, pt(xa, -H), pt(xb, -H), 'green', 2.4); line(b, pt(xa, 0), pt(xb, 0), 'green', 2.4);
       par(b, pt(xa, -H), pt(xb, -H), 2, 'green', 0.07); par(b, pt(xa, 0), pt(xb, 0), 2, 'green', 0.07);
       T(b, pt(xb, -H), 'l', { dx: -2, dy: -16, size: 17, color: 'green' }); T(b, pt(xb, 0), 'm', { dx: -2, dy: -16, size: 17, color: 'green' });
       const [Av, Bv, Cv] = g.tri;
-      if (C.problem) {
+      if (C.problem || transfer) {
         const [A2] = g.tri2;
         fillPoly(b, g.tri2, 'rose', 0.1); poly(b, g.tri2, 'rose', 3, { dash: [7, 6] });
         b.point(A2, { color: 'rose', r: 5 }); T(b, A2, 'A′', { dy: -18, size: 17, color: 'rose' });
+        if (transfer && s.arBLine > 0) line(b, A2, lerp(A2, g.tri2[1], clamp(s.arBLine, 0, 1)), 'green', 4.8);
       }
       fillPoly(b, g.tri, 'sky', 0.24); poly(b, g.tri, 'ink', 3.6);
       T(b, Av, 'A', { dy: -18, size: 17 }); T(b, Bv, 'B', { dx: -14, dy: 14, size: 17 }); T(b, Cv, 'C', { dx: 14, dy: 14, size: 17 });
       dim(b, Bv, Cv, `BC = ${B}`, { ref: pt(B / 2, -H), color: 'sky' });
       if (C.problem) { foot(b, pt(B / 2, 0), `△ABC = ${A} cm² → △A′BC = ?`, 'amber', 58); return; }
+      if (transfer) {
+        foot(b, pt(B / 2, 0), `△ABC = ${A} cm²`, 'sky', 58);
+        foot(b, pt(B / 2, 0), transfer && s.arShowAnswer ? `△A′BC = ${A} cm²` : '△A′BC = ?', 'amber', 84);
+        return;
+      }
       hgtTo(b, Av, Bv, Cv, { label: `높이 ${H}`, side: x <= 0 ? -1 : x >= B ? 1 : (x < B / 2 ? 1 : -1) });
       const showP = !C.review || C.step >= 3;
-      foot(b, pt(B / 2, 0), `넓이 = ${HALF}×${B}×${H} = ${num(A)} (그대로)`, 'green', 58);
-      if (showP) foot(b, pt(B / 2, 0), `둘레 ≈ ${fmtN(per)} (변해요)`, 'rose', 84);
+      if (C.lesson) {
+        const perimeter = s.arBAsk === 'perimeter';
+        const caption = s.arShowAnswer ? perimeter ? '둘레가 달라질 수 있어요' : `넓이는 일정: ${B}×${H}÷2 = ${num(A)} cm²` : perimeter ? '밑변 이외의 두 변의 길이를 비교해요' : '밑변과 두 평행선 사이의 거리를 확인해요';
+        foot(b, pt(B / 2, 0), caption, perimeter ? 'rose' : 'green', 58);
+        if (perimeter && s.arShowAnswer) foot(b, pt(B / 2, 0), `현재 둘레 ≈ ${fmtN(per)} cm`, 'rose', 84);
+      } else {
+        foot(b, pt(B / 2, 0), `넓이 = ${HALF}×${B}×${H} = ${num(A)} (그대로)`, 'green', 58);
+        if (showP) foot(b, pt(B / 2, 0), `둘레 ≈ ${fmtN(per)} (변해요)`, 'rose', 84);
+      }
       handle(b, C, 'a', Av, '꼭짓점 A를 가로로 끌기', (w) => { s.b3T = clamp((w.x + 4) / (B + 8), 0, 1); });
     },
     steps: (M) => [
@@ -206,7 +236,7 @@
   /* ====================================================================== 4. 사다리꼴의 대각선과 양옆 삼각형 (옛 railWing 뒷부분) */
   const wing = {
     id: 'b4-wing', title: '사다리꼴의 대각선과 양옆 삼각형', short: '양옆 삼각형',
-    question: '사다리꼴에서 두 대각선이 만나는 점 O의 양옆 삼각형 ABO와 DCO의 넓이는 어떤 관계일까?',
+    question: (s) => (s.lessonOn || s.lessonEntry) && s.arBAsk === 'wingArea' ? wing.prob(wing.model(s)).stem : '사다리꼴에서 두 대각선이 만나는 점 O의 양옆 삼각형 ABO와 DCO의 넓이는 어떤 관계일까?',
     ctl: ['b4B', 'b4D', 'b4H', 'b4T'], anim: { key: 'b4T', dur: 6, label: '넓이 비교하기', start: 0 },
     init: (s) => { s.b4B = 10; s.b4D = 5; s.b4H = 6; s.b4P = 2; s.b4T = 0; },
     reroll: (s) => {
@@ -222,7 +252,7 @@
       // actual label space instead of the three-line animated proof below it.
       if (C.problem) FIT(b, bboxOf([Av, Bv, Cv, Dv]), { t: 28, b: 84, l: 32, r: 32 });
       else FIT(b, { x0: 0, x1: Math.max(B, 4 + 8), y0: -H, y1: 0 }, { b: 138, l: 52, r: 52 });
-      const t = C.problem ? 0 : C.review ? (C.step < 1 ? 0 : C.step === 1 ? 0.4 : C.step === 2 ? 0.8 : 1) : C.t;
+      const t = C.problem ? 0 : C.lesson ? C.t : C.review ? (C.step < 1 ? 0 : C.step === 1 ? 0.4 : C.step === 2 ? 0.8 : 1) : C.t;
       const c0 = centroid([Av, Bv, Cv, Dv]);
       if (C.problem) { fillPoly(b, [Bv, Cv, O], 'green', 0.3); fillPoly(b, [Av, Bv, O], 'amber', 0.3); }
       else {
@@ -242,8 +272,21 @@
         foot(b, pt(B / 2, 0), `△ABC = ${X} cm²`, 'sky', 36); foot(b, pt(B / 2, 0), `△OBC = ${G.exactTex(Y)} cm²`, 'green', 62);
         return;
       }
-      if (t > 0.8) { T(b, cen([Av, Bv, O]), 'S₁', { size: 22, color: 'amber' }); T(b, cen([Dv, Cv, O]), 'S₂', { size: 22, color: 'amber' }); }
+      if (t > 0.8 || C.lesson) { T(b, cen([Av, Bv, O]), C.lesson && s.arBAsk === 'wingArea' && !s.arShowAnswer ? 'S₁=?' : 'S₁', { size: 22, color: 'amber' }); T(b, cen([Dv, Cv, O]), 'S₂', { size: 22, color: 'amber' }); }
       dim(b, Bv, Cv, C.review ? 'BC' : `${B}`, { ref: c0, color: 'sky' });
+      if (C.lesson) {
+        const isArea = s.arBAsk === 'wingArea';
+        if (isArea) {
+          foot(b, pt(B / 2, 0), `△ABC = ${G.exactN(X)} cm²`, 'sky', 58);
+          foot(b, pt(B / 2, 0), `△OBC = ${G.exactN(Y)} cm²`, 'green', 84);
+          if (s.arShowAnswer) foot(b, pt(B / 2, 0), `△ABO = ${G.exactN(X)} − ${G.exactN(Y)} = ${G.exactN(w)} cm²`, 'amber', 110);
+        } else {
+          if (s.arBStage >= 1) foot(b, pt(B / 2, 0), '△ABC와 △DBC의 넓이가 같아요', 'sky', 58);
+          if (s.arBStage >= 2) foot(b, pt(B / 2, 0), '공통 부분 △OBC를 빼요', 'green', 84);
+          if (s.arShowAnswer) foot(b, pt(B / 2, 0), 'S₁ = S₂', 'amber', 110);
+        }
+        return;
+      }
       let r = 0;
       if (t > 0.25) foot(b, pt(B / 2, 0), `△ABC = △DBC = ${G.exactTex(X)}`, 'sky', 58 + 26 * r++);
       if (t > 0.55) foot(b, pt(B / 2, 0), `공통 △OBC = ${G.exactTex(Y)}`, 'green', 58 + 26 * r++);
@@ -277,36 +320,47 @@
   /* ====================================================================== 5. 높이가 같은 두 삼각형 (옛 baseRatio) */
   const ratio = {
     id: 'b5-ratio', title: '밑변의 비 = 넓이의 비', short: '밑변의 비',
-    question: '높이가 같은 두 삼각형의 밑변의 길이의 비가 m : n이면, 넓이의 비는 어떻게 될까?',
+    question: (s) => (s.lessonOn || s.lessonEntry) && s.arBAsk === 'part' ? ratio.prob(ratio.model(s)).stem : '높이가 같은 두 삼각형의 밑변의 길이의 비가 m : n이면, 넓이의 비는 어떻게 될까?',
     ctl: ['b5M', 'b5N', 'b5H', 'b5T'], anim: { key: 'b5T', dur: 4, label: '두 삼각형 떼어 놓기', start: 0 },
     init: (s) => { s.b5M = 3; s.b5N = 2; s.b5H = 8; s.b5T = 0; s.b5Q = 0; },
     reroll: (s) => { const pairs = []; for (const m of range(1, 6)) for (const n of range(1, 6)) if (m !== n) pairs.push([m, n]); const q = rpick(pairs, pairs.find((x) => x[0] === s.b5M && x[1] === s.b5N)); s.b5M = q[0]; s.b5N = q[1]; s.b5H = rpick([4, 6, 8], s.b5H); s.b5Q = rpick([0, 1], s.b5Q); s.b5T = 0; },
     model: (s) => { const m = clamp(Math.round(s.b5M), 1, 6), n = clamp(Math.round(s.b5N), 1, 6), h = clamp(Math.round(s.b5H / 2) * 2, 2, 8), q = s.b5Q ? 1 : 0; return { m, n, h, q, S1: (m * h) / 2, S2: (n * h) / 2, S: ((m + n) * h) / 2 }; },
     geo: (M, gap = 0) => { const xA = (M.m + M.n) * 0.4, Bv = pt(0, 0), D = pt(M.m, 0), Cv = pt(M.m + M.n, 0), Av = pt(xA, -M.h); return { Bv, D, Cv, Av, left: [Av, Bv, D], right: [Av, D, Cv].map((p) => pt(p.x + gap, p.y)) }; },
     draw(b, s, M, C) {
-      const { m, n, h, S1, S2, S } = M, t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.7 : 0.7) : C.t, gap = 1.6 * ease(t), g = ratio.geo(M, gap), { Bv, D, Cv, Av } = g;
+      const { m, n, h, S1, S2, S } = M, part = C.lesson && s.arBAsk === 'part', t = C.problem ? 0 : C.lesson ? C.t : C.review ? 0.7 : C.t, gap = 1.6 * ease(t), g = ratio.geo(M, gap), { Bv, D, Cv, Av } = g;
       // The narrow desktop stage has floating tools at its bottom right.
       // Keep the given area/ratio caption above that row without shrinking mobile or PC views.
       const questionBottom = b.W >= 560 && b.W < 800 && b.insets.bottom < 40 ? 134 : 100;
       // 휴대폰에서는 기존 값·풀이 패널이 계산을 맡고, 무대는 두 삼각형과 조건에 씁니다.
-      const compactInquiry = !C.problem && !b.thumb && b.W < 560;
+      const compactInquiry = !C.problem && !C.lesson && !b.thumb && b.W < 560;
       FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { t: compactInquiry ? 30 : 40, b: C.problem ? questionBottom : compactInquiry ? 62 : 130 });
       fillPoly(b, g.left, 'sky', 0.24); poly(b, g.left, 'ink', 3.6);
       fillPoly(b, g.right, 'rose', 0.24); poly(b, g.right, 'ink', 3.6);
       [[Av, 'A'], [Bv, 'B'], [pt(D.x, 0), 'D'], [pt(Cv.x + gap, 0), 'C']].forEach(([q, nm], i) => T(b, q, nm, { dy: i === 0 ? -18 : 18, dx: i === 1 || (i === 2 && !b.thumb) ? -12 : i === 3 ? 12 : 0, size: 17 }));
-      if (!C.problem && (!C.review || C.step >= 1)) {
-        hgtTo(b, Av, Bv, D, { label: `h = ${h}`, side: -1, gap: 8 });
-        if (gap > 0.05) hgtTo(b, g.right[0], g.right[1], g.right[2], { label: `h = ${h}`, side: 1, gap: 8 });
+      if (!C.problem && (C.lesson || !C.review || C.step >= 1)) {
+        hgtTo(b, Av, Bv, D, { label: part ? 'h' : `h = ${h}`, side: -1, gap: 8 });
+        if (gap > 0.05) hgtTo(b, g.right[0], g.right[1], g.right[2], { label: part ? 'h' : `h = ${h}`, side: 1, gap: 8 });
       }
       const cc = centroid(g.left.concat(g.right));
-      dim(b, Bv, D, C.problem ? `${m}k` : `${m}`, { ref: cc, color: 'sky', off: C.problem ? 42 : 38 });
-      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), C.problem ? `${n}k` : `${n}`, { ref: cc, color: 'rose', off: C.problem ? 42 : 38 });
+      dim(b, Bv, D, C.problem || part ? `${m}k` : `${m}`, { ref: cc, color: 'sky', off: C.problem ? 42 : 38 });
+      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), C.problem || part ? `${n}k` : `${n}`, { ref: cc, color: 'rose', off: C.problem ? 42 : 38 });
       if (C.problem) {
         T(b, M.q ? pt((Av.x + D.x + Cv.x) / 3, -h / 3) : pt((Av.x + Bv.x + D.x) / 3, -h / 3), '?', { size: 20, color: 'amber' });
         foot(b, pt((m + n) / 2, 0), `△ABC = ${S} cm²   BD : DC = ${m} : ${n}`, 'amber', 82); return;
       }
       T(b, pt((Av.x + Bv.x + D.x) / 3, -h / 3), 'S₁', { size: 16, color: 'sky' }); T(b, pt((Av.x + D.x + Cv.x) / 3 + gap, -h / 3), 'S₂', { size: 16, color: 'rose' });
       const x0 = (m + n) / 2;
+      if (C.lesson) {
+        if (part) {
+          foot(b, pt(x0, 0), `전체 넓이 = ${S} cm²`, 'sky', 62);
+          if (s.arBStage >= 1) foot(b, pt(x0, 0), s.arBStage >= 2 ? `한 몫 = ${S}÷(${m}+${n}) = ${G.exactN(S / (m + n))}` : `S₁ : S₂ = ${m} : ${n}`, 'green', 88);
+          if (s.arShowAnswer) foot(b, pt(x0, 0), `△${M.q ? 'ADC' : 'ABD'} = ${G.exactN(M.q ? S2 : S1)} cm²`, 'amber', 114);
+        } else {
+          if (s.arBStage >= 1) { foot(b, pt(x0, 0), `S₁ = ${m}×${h}÷2 = ${S1}`, 'sky', 62); foot(b, pt(x0, 0), `S₂ = ${n}×${h}÷2 = ${S2}`, 'rose', 88); }
+          if (s.arShowAnswer) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 114);
+        }
+        return;
+      }
       if (!compactInquiry) {
         if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 62); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 88); }
         if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 114);

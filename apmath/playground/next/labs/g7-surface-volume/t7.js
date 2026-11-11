@@ -29,7 +29,7 @@ const draw=(b,s,M,C)=>{
  if(!M.oct){
   const m=G.xfMesh(revolveMesh(sphereProfile(R,-90,90,48),{N:64,a0:start,a1:end}),G.shiftT(right));
   cutFaces=m.faces.filter(f=>f.cut);
-  D.body({mesh:m,fill:'sky',alpha:.04*e,edge:'ink',edgeW:2.2,edgeFn:edge=>({alpha:e,color:m.faces[edge.f1]?.cut||m.faces[edge.f2]?.cut?'red':'ink'}),faceStyle:f=>f.cut?{fill:'red',alpha:.1*e}:{}});
+  D.body({mesh:m,fill:'sky',alpha:.04*e,edge:'ink',edgeW:2.2,edgeFn:edge=>({alpha:e,color:m.faces[edge.f1]?.cut||m.faces[edge.f2]?.cut?'red':'ink'}),faceStyle:f=>f.cut?{fill:'red',alpha:(C.lesson&&!M.vol&&C.step===2?.28:.1)*e}:C.lesson&&(C.step===1||M.vol&&C.step===2)?{fill:'sky',alpha:.15*e}:{}});
  }else{
   const lower=G.xfMesh(revolveMesh(sphereProfile(R,-90,0,32),{N:64}),G.shiftT(right));
   const upper=G.xfMesh(revolveMesh([[0,0],...sphereProfile(R,0,90,32)],{N:64,a0:start,a1:end,tags:['cap']}),G.shiftT(right));
@@ -46,6 +46,16 @@ const draw=(b,s,M,C)=>{
  if(e>.95) D.radius(center,rim,String(M.r),{color:'rose',gap:5});
  const frontCut=cutFaces.filter(f=>D.facing(f.n)).sort((a,b)=>D.depth(b.c)-D.depth(a.c))[0];
  if(C.txt&&!C.problem&&e>.95&&frontCut) D.label(frontCut.c,'새 단면',{color:'red',at:[[0,0],[0,20],[0,-20]],size:14});
+ if(C.lesson) {
+  const stage=s.svBStage||0, rows=M.vol?[null,
+   [{t:`구 전체의 부피 = 4/3×π×${M.r}³ = ${plainVal(V(0,4*M.r**3/3))}`,c:'ink'}],
+   [{t:`남은 비율 = ${M.fraction}`,c:'sky'}],
+   [{t:`남은 부피 = ${plainVal(V(0,4*M.r**3/3))} × ${M.fraction} = ${plainVal(M.volume)}`,c:'green'}]
+  ]:[null,[{t:`남은 곡면 = 4×π×${M.r}² × ${M.fraction} = ${plainVal(M.curve)}`,c:'sky'}],
+   [{t:`새 단면: ${M.oct?'사분원 3개':'반원 2개'} = ${plainVal(M.flat)}`,c:'red'}],
+   [{t:`겉넓이 = ${plainVal(M.curve)} + ${plainVal(M.flat)} = ${plainVal(M.area)}`,c:'green'}]];
+  G.stepRow(D,C,rows[Math.min(stage,3)],{gated:stage>=3});
+ }
 };
 G.register(31,'t7','남은 구','남은 구',PARAMS,[{
  id:'sv3-7',title:'잘라 내고 남은 구',short:'3/4·7/8 남은 구',

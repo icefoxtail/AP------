@@ -45,20 +45,19 @@
   });
   const VIEWS = Object.freeze(Object.keys(PRODUCTS));
   const BUCKETS = Object.freeze([1, 2, 3, 4]);
-  const GENERAL = Object.freeze({ useMode: "general" });
   const text = (value) => String(value ?? "").trim();
   const hasHangul = (value) => /[가-힣]/.test(value);
 
-  // Quick assessment selection uses any recorded 1~4 difficultyBucket after the technical
-  // source/identity gate. Confidence, boundary, compatibility, metadata approval/binding and
-  // review annotations are not extra usage gates. No legacy 하/중/상 inference is allowed.
-  // The optional "eligible" mode remains for strict before/after auditing only; the UI uses
-  // "recorded" by default. 5단계 has no quick-assessment preset and remains out of scope.
+  // Quick assessment selection uses the one shared difficulty gate (Core.difficultyEligible:
+  // integer bucket, intact identity/source) and then
+  // takes the 1~4 buckets. Confidence, boundary, compatibility, approval status and review
+  // annotations are labels, not gates. No legacy 하/중/상 inference is allowed. The
+  // `difficultyMode` argument/option is kept for caller compatibility; every value gives the
+  // same result. 5단계 has no quick-assessment preset and remains out of scope.
   function usableBucket(record, difficultyMode = "recorded") {
-    if (!Core.generalUseEligibility(record).ok) return 0;
+    if (!Core.difficultyEligible(record)) return 0;
     const bucket = record.difficultyBucket;
-    if (!Number.isInteger(bucket) || bucket < 1 || bucket > 4) return 0;
-    return difficultyMode === "eligible" && !Core.difficultyEligible(record, GENERAL) ? 0 : bucket;
+    return bucket >= 1 && bucket <= 4 ? bucket : 0;
   }
 
   const emptyBuckets = () => ({ 1: [], 2: [], 3: [], 4: [] });
