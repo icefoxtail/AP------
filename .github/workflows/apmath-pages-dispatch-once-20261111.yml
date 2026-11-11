@@ -1,0 +1,27 @@
+name: AP Math one-shot Pages release dispatch 2026-11-11
+# One-time GitHub API dispatch of the EXISTING verified Pages workflow.
+# No archive registration bypass, site package changes, Git writes, or direct Pages deployment.
+# Triggered only when THIS new workflow file lands on main; rerun this job to retry safely.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apmath-pages-dispatch-once-20261111.yml'
+permissions:
+  contents: read
+  actions: write
+jobs:
+  dispatch:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Dispatch existing exact-main Pages release with all safeguards intact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          printf 'Dispatching original Archive Pages Release on current main, preserving registration, build, package and deploy gates.\n'
+          gh workflow run archive-pages-release.yml --repo "$GH_REPO" --ref main
+          printf 'Dispatch accepted; Pages success must be verified separately from the run status.\n'
