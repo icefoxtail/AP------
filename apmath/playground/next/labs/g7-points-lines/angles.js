@@ -598,7 +598,7 @@
       alert: { tone: 'key', text: '∠a + ∠b = 180°이고 ∠c + ∠b = 180°이므로 ∠a = ∠c. 맞꼭지각은 크기가 같아요.' }
     }; },
     draw: (g, q, mode, step) => {
-      const th = q.th, n = nEffV(q, mode), O = [0, 0], L = 1.55, rev = mode === 'review', r = wedgeR(g), kind = q.seed % 2;
+      const th = q.th, n = nEffV(q, mode), O = [0, 0], L = 1.55, rev = mode === 'review', r = wedgeR(g), kind = q.seed % 2, lesson = inLesson(q), stage = q.plBStage || 0;
       g.box(-1.7, -1.7, 1.7, 1.7);
       lineDirs(th, n).forEach((a, i) => g.seg(g.pol(O, L, a), g.pol(O, L, a + 180), { color: i < 2 ? 'sky' : 'muted', width: i < 2 ? 4.5 : 3, alpha: i < 2 ? 1 : 0.8, ref: ['ab', 'cb', 'v', 'n'] }));
       const W = [
@@ -609,9 +609,12 @@
       ];
       W.forEach((w) => {
         const col = mode === 'problem' ? (kind === 0 && w.k === 'a' ? 'amber' : 'sky') : w.col;
-        g.ang(O, w.d0, w.d1, { r, color: col, rings: mode === 'problem' ? 1 : w.ring, ref: w.ref });
+        g.ang(O, w.d0, lesson && w.k === 'a' ? w.d0 + (w.d1 - w.d0) * lessonMove(q) : w.d1, { r, color: col, rings: mode === 'problem' ? 1 : w.ring, ref: w.ref });
         let txt = '';
-        if (mode === 'explore') txt = `∠${w.k}=${w.val}°`;
+        if (lesson) {
+          const known = q.plBAsk !== 'count' && (w.k === 'a' || q.plShowAnswer || q.plBAsk === 'c' && w.k === 'b' && stage >= 1);
+          txt = known ? `∠${w.k}=${w.val}°` : `∠${w.k}`;
+        } else if (mode === 'explore') txt = `∠${w.k}=${w.val}°`;
         else if (rev) txt = step >= w.on ? `∠${w.k}=${w.val}°` : `∠${w.k}`;
         else if (kind === 0) txt = w.k === 'a' ? `∠a=${th}°` : `∠${w.k}`;
         if (txt) g.angText(O, w.d0, w.d1, txt, { r, color: col, ref: w.ref });
@@ -622,8 +625,21 @@
         h('t1', th); h('t2', th + 180);
       }
       const L1 = [];
-      if (mode === 'explore') L1.push([`∠a = ∠c = ${th}°  (맞꼭지각)`, 'amber'], [`∠b = ∠d = ${180 - th}°  (맞꼭지각)`, 'rose'], [`직선 ${n}개 → ${n}×${n - 1} = ${n * (n - 1)}쌍`, 'green']);
-      if (rev) {
+      if (lesson) {
+        if (q.plBAsk === 'count') {
+          if (stage >= 1) L1.push([`직선 2개 고르기: ${n}×${n - 1}÷2 = ${n * (n - 1) / 2}가지`, 'ink']);
+          if (stage >= 2) L1.push(['직선 2개마다 맞꼭지각 2쌍', 'amber']);
+          if (q.plShowAnswer) L1.push([`맞꼭지각 = ${n * (n - 1)}쌍`, 'green']);
+        } else if (q.plBAsk === 'c') {
+          if (stage >= 1) L1.push([`∠b = 180° − ${th}° = ${180 - th}°`, 'rose']);
+          if (stage >= 2) L1.push(['∠c + ∠b = 180°', 'ink']);
+          if (q.plShowAnswer) L1.push([`∠c = ${th}°`, 'green']);
+        } else {
+          if (stage >= 1) L1.push(['∠a + ∠d = 180°', 'ink']);
+          if (q.plShowAnswer) L1.push([`∠d = ${180 - th}°`, 'green']);
+        }
+      } else if (mode === 'explore') L1.push([`∠a = ∠c = ${th}°  (맞꼭지각)`, 'amber'], [`∠b = ∠d = ${180 - th}°  (맞꼭지각)`, 'rose'], [`직선 ${n}개 → ${n}×${n - 1} = ${n * (n - 1)}쌍`, 'green']);
+      if (rev && !lesson) {
         if (step >= 1) L1.push([`∠a + ∠b = ${th}° + ${180 - th}° = 180°`, 'ink', ['ab']]);
         if (step >= 2) L1.push([`∠c + ∠b = 180° → ∠a = ∠c = ${th}°`, 'ink', ['cb']]);
         if (step >= 3) L1.push([`∠b = ∠d = ${180 - th}°`, 'rose', ['v']]);
@@ -701,14 +717,14 @@
       };
     },
     draw: (g, q, mode, step) => {
-      const rev = mode === 'review', prob = mode === 'problem', x = mode === 'explore' ? q.x : solOf(q).x, A1 = q.a1 * x + q.b1, A2 = q.a2 * x + q.b2, O = [0, 0], L = 1.55, r = wedgeR(g), eq = A1 === A2;
+      const rev = mode === 'review', prob = mode === 'problem', x = mode === 'explore' ? q.x : solOf(q).x, A1 = q.a1 * x + q.b1, A2 = q.a2 * x + q.b2, O = [0, 0], L = 1.55, r = wedgeR(g), eq = A1 === A2, lesson = inLesson(q), stage = q.plBStage || 0;
       g.box(-1.7, -1.7, 1.7, 1.7);
       const c1 = prob ? 'sky' : eq ? 'green' : 'amber', c2 = prob ? 'sky' : eq ? 'green' : 'rose';
       g.seg(g.pol(O, L, 0), g.pol(O, L, 180), { color: 'sky', width: 4.5 });
       if (!eq) g.seg(O, g.pol(O, L, A1 + 180), { color: 'muted', width: 3, dash: [6, 6], alpha: 0.9 });
       g.seg(O, g.pol(O, L, A1), { color: 'sky', width: 4.5 });
       g.seg(O, g.pol(O, L, 180 + A2), { color: 'sky', width: 4.5 });
-      g.ang(O, 0, A1, { r, color: c1, rings: eq ? 2 : 1, ref: ['a', 'eq', 'x', 'val'] });
+      g.ang(O, 0, lesson ? A1 * lessonMove(q) : A1, { r, color: c1, rings: eq ? 2 : 1, ref: ['a', 'eq', 'x', 'val'] });
       g.ang(O, 180, 180 + A2, { r, color: c2, rings: eq ? 2 : 1, ref: ['b', 'eq', 'x', 'val'] });
       g.dot(O, { color: 'ink', r: 5 });
       const lab1 = `(${ex1(q.a1, q.b1)})°`, lab2 = `(${ex1(q.a2, q.b2)})°`;
@@ -732,15 +748,20 @@
         g.handle('u2', g.pol(O, L, 180 + A2), { color: 'rose', ariaLabel: '아래쪽 반직선 끝', drag: (w) => { const a = mod(Math.atan2(w.y, w.x) / D2R - 180, 360); q.x = clamp(Math.round((a - q.b2) / q.a2), PARAMS.ve_x.min, PARAMS.ve_x.max); } });
       }
       const so = solOf(q), lines = [];
-      if (mode === 'explore') {
+      if (mode === 'explore' && !lesson) {
         lines.push([`x = ${q.x}  →  (${ex1(q.a1, q.b1)})° = ${A1}°`, c1], [`(${ex1(q.a2, q.b2)})° = ${A2}°`, c2], [eq ? '두 각이 같아요!' : `${A1}° ≠ ${A2}°  달라요`, eq ? 'green' : 'ink']);
       }
-      if (rev) {
+      if (lesson) {
+        if (stage >= 1) lines.push([`${ex1(q.a1, q.b1)} = ${ex1(q.a2, q.b2)}`, 'ink']);
+        if (stage >= 2) lines.push([`${Math.abs(q.a1 - q.a2)}x = ${Math.abs(q.b1 - q.b2)}`, 'ink']);
+        if (q.plBAsk === 'angle' && stage >= 3 || q.plShowAnswer && q.plBAsk === 'x') lines.push([`x = ${so.x}`, 'green']);
+        if (q.plShowAnswer && q.plBAsk === 'angle') lines.push([`맞꼭지각 = ${so.V}°`, 'green']);
+      } else if (rev) {
         if (step >= 1) lines.push([`(${ex1(q.a1, q.b1)})° = (${ex1(q.a2, q.b2)})°`, 'ink', ['eq']]);
         if (step >= 2) lines.push([`x = ${so.x}`, 'green', ['x']]);
         if (step >= 3) lines.push([`${A1}° = ${A2}°`, 'green', ['val']]);
       }
-      lines.forEach((l, i) => lineAnchor(g, i, l[0], l[1], l[2] ? { ref: l[2] } : {}));
+      lines.slice(-3).forEach((l, i) => lineAnchor(g, i, l[0], l[1], l[2] ? { ref: l[2] } : {}));
     },
     problem: (q) => {
       const so = solOf(q), askX = q.seed % 2 === 0, e1 = ex1(q.a1, q.b1), e2 = ex1(q.a2, q.b2);
@@ -824,7 +845,7 @@
       };
     },
     draw: (g, q, mode, step) => {
-      const A = q.a, B = q.bb, C = 180 - A - B, O = [0, 0], L = 1.55, r = wedgeR(g), rev = mode === 'review', cfg = thrCfg(q);
+      const A = q.a, B = q.bb, C = 180 - A - B, O = [0, 0], L = 1.55, r = wedgeR(g), rev = mode === 'review', cfg = thrCfg(q), lesson = inLesson(q), stage = q.plBStage || 0;
       g.box(-1.7, -1.7, 1.7, 1.7);
       [0, A, A + B].forEach((a) => g.seg(g.pol(O, L, a), g.pol(O, L, a + 180), { color: 'sky', width: 4.5, ref: ['flat', 'vert', 'x'] }));
       const S = A + B;
@@ -836,6 +857,11 @@
         { k: 'b2', d0: 180 + A, d1: 180 + S, col: 'rose', ring: 2, ref: ['b2'], txt: mode === 'explore' ? `${B}°` : '' },
         { k: 'c2', d0: 180 + S, d1: 360, col: 'violet', ring: 3, ref: ['c2', 'vert', 'x'], txt: mode === 'explore' ? `${C}°` : `(${cfg.e3})°` }
       ];
+      if (lesson) {
+        if (q.plBAsk === 'sum') W.forEach((w) => { w.txt = w.k === 'a' ? `∠a=${A}°` : w.k === 'b' ? `∠b=${B}°` : w.k === 'c' ? '∠c' : ''; });
+        else W[2].txt = stage >= 1 ? `(${cfg.e3})°` : '∠c';
+        if (lessonMove(q) > 0) g.arc(O, (r + 24) / (g.b.k || 100), 0, 180 * lessonMove(q), { color: 'green', width: 3 });
+      }
       W.forEach((w) => {
         g.ang(O, w.d0, w.d1, { r, color: w.col, rings: w.ring, ref: w.ref });
         if (w.txt) g.angText(O, w.d0, w.d1, w.txt, { r: r + 16, color: w.col, ref: w.ref });
@@ -848,8 +874,18 @@
         g.handle('r3b', g.pol(O, L, S + 180), { color: 'rose', ariaLabel: '셋째 직선 반대쪽 끝', drag: (w) => { q.bb = clamp(rr5(dirOf180(w)) - q.a, 15, 165 - q.a); } });
       }
       const k = 1 + cfg.r, cst = cfg.p + B + cfg.s, lines = [];
-      if (mode === 'explore') lines.push(['∠a + ∠b + ∠c', 'ink'], [`= ${A}° + ${B}° + ${C}° = 180°`, 'green']);
-      if (rev) {
+      if (lesson) {
+        if (q.plBAsk === 'sum') {
+          if (stage >= 1) lines.push(['∠a, ∠b, ∠c는 한 직선 위의 세 각', 'ink']);
+          if (q.plShowAnswer) lines.push(['∠a + ∠b + ∠c = 180°', 'green']);
+        } else {
+          if (stage >= 1) lines.push([`∠c = (${cfg.e3})°`, 'violet']);
+          if (stage >= 2) lines.push([`(${cfg.e1}) + ${B} + (${cfg.e3}) = 180`, 'ink']);
+          if (stage >= 3) lines.push([`${k}x = ${180 - cst}`, 'ink']);
+          if (q.plShowAnswer) lines.push([`x = ${cfg.xs}`, 'green']);
+        }
+      } else if (mode === 'explore') lines.push(['∠a + ∠b + ∠c', 'ink'], [`= ${A}° + ${B}° + ${C}° = 180°`, 'green']);
+      if (rev && !lesson) {
         if (step >= 1) lines.push(['∠a + ∠b + ∠c = 180°', 'ink', ['flat']]);
         if (step >= 2) lines.push([`(${cfg.e1}) + ${B} + (${cfg.e3}) = 180`, 'ink', ['vert']]);
         if (step >= 3) lines.push([`${k}x ${cst < 0 ? '−' : '+'} ${Math.abs(cst)} = 180  →  x = ${cfg.xs}`, 'green', ['x']]);
@@ -941,33 +977,38 @@
       };
     },
     draw: (g, q, mode, step) => {
-      const d = q.d, qq = q.q, px = q.px, P = [px, d], H = [px, 0], Q = [px + qq, 0], hyp = Math.hypot(d, qq), same = Math.abs(qq) < 0.01;
+      const d = q.d, qq = q.q, px = q.px, P = [px, d], H = [px, 0], Q = [px + qq, 0], hyp = Math.hypot(d, qq), same = Math.abs(qq) < 0.01, lesson = inLesson(q), stage = q.plBStage || 0;
       const left = Math.min(-5.2, Q[0] - 0.6), right = Math.max(5.2, Q[0] + 0.6);
       g.box(left - 0.2, -2.9, right + 0.2, d + 0.9);
       g.seg([left, 0], [right, 0], { color: 'sky', width: 4.5 });
       g.text([right - 0.2, 0], 'ℓ', { dy: -20, size: 20, color: 'sky' });
       if (!same) g.seg(P, Q, { color: 'violet', width: 3.5, ref: ['pq', 'bar'] });
-      g.seg(P, H, { color: 'rose', width: 5.5, ref: ['ph', 'bar'] });
+      if (lesson) {
+        g.seg(P, H, { color: 'muted', width: 2 });
+        g.seg(P, [px, d * (1 - lessonMove(q))], { color: 'rose', width: 5.5, ref: ['ph', 'bar'] });
+      } else g.seg(P, H, { color: 'rose', width: 5.5, ref: ['ph', 'bar'] });
       g.right(H, P, [px + 1, 0], { size: 15, color: 'amber', ref: ['ph', 'h'] });
       g.text(H, 'ℓ ⊥ PH', { dx: 52, dy: -26, size: 16, color: 'amber', ref: ['ph'] });
       const w = textW(`PH = ${d} cm`, 17);
       g.text([px, d / 2], `PH = ${d} cm`, { dx: -(w / 2 + 12), size: 17, color: 'rose', ref: ['ph', 'bar'] });
       if (!same) g.text([px + qq / 2, d / 2], 'PQ', { dx: (qq > 0 ? 1 : -1) * 20, size: 17, color: 'violet', ref: ['pq', 'bar'] });
       g.dot(H, { color: 'ink', r: 5.5, ref: ['h'] });
-      g.text(H, same ? 'H = Q' : (mode === 'review' && step >= 2 ? '수선의 발 H' : 'H'), { dy: 26, size: 17, color: 'ink', ref: ['h'] });
+      const footShown = lesson ? (q.plBAsk === 'foot' ? q.plShowAnswer : stage >= 1) : mode === 'review' && step >= 2;
+      g.text(H, same ? 'H = Q' : (footShown ? '수선의 발 H' : 'H'), { dy: 26, size: 17, color: 'ink', ref: ['h'] });
       if (!same) { g.dot(Q, { color: 'violet', r: 5.5 }); g.text(Q, 'Q', { dy: Math.abs(qq) < 1.5 ? 50 : 26, size: 17, color: 'violet' }); }
       g.dot(P, { color: 'rose', r: 6 });
       g.text(P, 'P', { dy: -24, size: 19, color: 'rose' });
       g.handle('P', P, { color: 'amber', ariaLabel: '점 P (가로로 끌기)', drag: (w2) => { q.px = clamp(Math.round(w2.x * 4) / 4, -2, 2); } });
       if (!same) g.handle('Q', Q, { color: 'violet', ariaLabel: '점 Q (가로로 끌기)', drag: (w2) => { q.q = clamp(Math.round((w2.x - q.px) * 2) / 2, -4, 4); } });
       else g.handle('Q', Q, { color: 'violet', ariaLabel: '점 Q (가로로 끌기)', r: 7, drag: (w2) => { q.q = clamp(Math.round((w2.x - q.px) * 2) / 2, -4, 4); } });
+      if (lesson && q.plShowAnswer) g.text([0, -0.9], q.plBAsk === 'foot' ? '수선의 발은 H' : q.plBAsk === 'shortest' ? '가장 짧은 선분은 PH' : `거리 = ${d} cm`, { color: 'green', size: 18 });
       // 길이 비교 막대(그림과 같은 눈금): PH와 PQ
-      if (mode === 'problem' || (mode === 'review' && step < 3)) return;
+      if (lesson ? stage < 2 : mode === 'problem' || (mode === 'review' && step < 3)) return;
       const x0 = -5, y1 = -1.8, y2 = -2.4;
       g.seg([x0, y1], [x0 + d, y1], { color: 'rose', width: 10, cap: 'butt', ref: ['ph', 'bar'] });
       g.text([x0 + d, y1], `PH = ${d} cm`, { dx: 10, align: 'left', size: 16, color: 'rose', ref: ['ph', 'bar'] });
       g.seg([x0, y2], [x0 + hyp, y2], { color: 'violet', width: 10, cap: 'butt', ref: ['pq', 'bar'] });
-      g.text([x0 + hyp, y2], same ? 'PQ = PH' : 'PQ > PH', { dx: 10, align: 'left', size: 16, color: 'violet', ref: ['pq', 'bar'] });
+      g.text([x0 + hyp, y2], lesson && !q.plShowAnswer ? 'PQ' : same ? 'PQ = PH' : 'PQ > PH', { dx: 10, align: 'left', size: 16, color: 'violet', ref: ['pq', 'bar'] });
     },
     problem: (q) => {
       const ch = stmtChoices(pdBank(q), q.seed);
@@ -1017,22 +1058,23 @@
       alert: { tone: 'key', text: 'OC를 어디로 옮겨도 ● + ×는 변하지 않아요. ∠MON은 ∠AOB의 절반이에요.' }
     }),
     draw: (g, q, mode, step) => {
-      const O = [0, 0], L = 1.6, T = q.T, gg = q.g, a = bisAng(q), r = clamp(g.k(0.3), 28, 70), rev = mode === 'review';
+      const O = [0, 0], L = 1.6, T = q.T, gg = q.g, a = bisAng(q), r = clamp(g.k(0.3), 28, 70), rev = mode === 'review', lesson = inLesson(q), stage = q.plBStage || 0;
       g.box(-1.75, -0.05, 1.75, 1.75);
       g.seg(O, g.pol(O, L, a.aA), { color: 'sky', width: 4.5 }); g.seg(O, g.pol(O, L, a.aB), { color: 'sky', width: 4.5 });
       g.seg(O, g.pol(O, L, a.aC), { color: 'ink', width: 4 });
-      g.seg(O, g.pol(O, L, a.aM), { color: 'green', width: 3.5, ref: ['am', 'all', 'mon'] }); g.seg(O, g.pol(O, L, a.aN), { color: 'green', width: 3.5, ref: ['nb', 'all', 'mon'] });
+      const bisectorLength = L * (lesson ? lessonMove(q) : 1);
+      g.seg(O, g.pol(O, bisectorLength, a.aM), { color: 'green', width: 3.5, ref: ['am', 'all', 'mon'] }); g.seg(O, g.pol(O, bisectorLength, a.aN), { color: 'green', width: 3.5, ref: ['nb', 'all', 'mon'] });
       const h1 = gg / 2, h2 = (T - gg) / 2;
       const Wd = [
         { d0: a.aM, d1: a.aA, col: 'amber', ring: 1, v: h1, ref: ['am', 'all'] }, { d0: a.aC, d1: a.aM, col: 'amber', ring: 1, v: h1, ref: ['am', 'all'] },
         { d0: a.aN, d1: a.aC, col: 'rose', ring: 2, v: h2, ref: ['nb', 'all'] }, { d0: a.aB, d1: a.aN, col: 'rose', ring: 2, v: h2, ref: ['nb', 'all'] }
       ];
       Wd.forEach((w) => {
-        const symbol = w.col === 'amber' ? '●' : '×', shown = mode === 'explore' || (rev && step >= (w.col === 'amber' ? 1 : 2));
+        const symbol = w.col === 'amber' ? '●' : '×', shown = lesson ? stage >= (w.col === 'amber' ? 1 : 2) : mode === 'explore' || (rev && step >= (w.col === 'amber' ? 1 : 2));
         g.ang(O, w.d0, w.d1, { r, color: w.col, rings: w.ring, ref: w.ref });
         g.angText(O, w.d0, w.d1, shown ? `${symbol} ${n1(w.v)}°` : symbol, { r: r + 14, color: w.col, ref: w.ref });
       });
-      if (mode === 'explore' || (rev && step >= 4)) {
+      if (lesson ? q.plShowAnswer : mode === 'explore' || (rev && step >= 4)) {
         if (T === 180) g.right(O, g.pol(O, 1, a.aM), g.pol(O, 1, a.aN), { size: 14, color: 'green' });
         else g.ang(O, a.aN, a.aM, { r: r * 0.55, color: 'green', rings: 1, ref: ['mon'] });
       }
@@ -1043,10 +1085,18 @@
       g.handle('C', g.pol(O, L, a.aC), { color: 'amber', ariaLabel: '반직선 OC 끝', drag: (w) => { q.g = clamp(rr5(180 - rel(w)), 15, q.T - 15); } });
       g.handle('B', g.pol(O, L, a.aB), { color: 'sky', ariaLabel: '반직선 OB 끝', drag: (w) => { q.T = clamp(Math.round((180 - rel(w)) / 10) * 10, 60, 180); q.g = Math.min(q.g, q.T - 15); } });
       const lines = [];
-      if (mode === 'explore' || (rev && step >= 1)) lines.push([`∠AOC = ${gg}° → ● = ${n1(h1)}°`, 'amber', ['am']]);
-      if (mode === 'explore' || (rev && step >= 2)) lines.push([`∠COB = ${T - gg}° → × = ${n1(h2)}°`, 'rose', ['nb']]);
-      if (rev && step === 3) lines.push([`2● + 2× = ${T}° → ● + × = ${n1(T / 2)}°`, 'ink', ['all']]);
-      if (mode === 'explore' || (rev && step >= 4)) lines.push([`∠MON = ● + × = ${n1(T / 2)}°`, 'green', ['mon']]);
+      if (lesson) {
+        lines.push([`∠AOB = ${T}°, ∠AOC = ${gg}°`, 'ink']);
+        if (stage >= 1) lines.push([`● = ${gg}°÷2 = ${n1(h1)}°`, 'amber']);
+        if (stage >= 2) lines.push([`× = (${T}°−${gg}°)÷2 = ${n1(h2)}°`, 'rose']);
+        if (stage >= 3 && !q.plShowAnswer) lines.push([`2● + 2× = ${T}°`, 'ink']);
+        if (q.plShowAnswer) lines.push([`∠MON = ${n1(T / 2)}°`, 'green']);
+      } else {
+        if (mode === 'explore' || (rev && step >= 1)) lines.push([`∠AOC = ${gg}° → ● = ${n1(h1)}°`, 'amber', ['am']]);
+        if (mode === 'explore' || (rev && step >= 2)) lines.push([`∠COB = ${T - gg}° → × = ${n1(h2)}°`, 'rose', ['nb']]);
+        if (rev && step === 3) lines.push([`2● + 2× = ${T}° → ● + × = ${n1(T / 2)}°`, 'ink', ['all']]);
+        if (mode === 'explore' || (rev && step >= 4)) lines.push([`∠MON = ● + × = ${n1(T / 2)}°`, 'green', ['mon']]);
+      }
       lines.slice(-3).forEach((l, i) => g.text([0, -0.02], l[0], { dy: 42 + i * 27, size: 17, color: l[1], ref: l[2] }));
     },
     problem: (q) => {
@@ -1109,13 +1159,14 @@
       };
     },
     draw: (g, q, mode, step) => {
-      const rev = mode === 'review', prob = mode === 'problem';
-      if (rev || prob) {
+      const rev = mode === 'review', prob = mode === 'problem', lesson = inLesson(q), stage = q.plBStage || 0;
+      if ((rev || prob) && !(lesson && q.plBAsk === 'height')) {
         const [pb, ph, pab] = TRIPLES[q.ti], B = [0, 0], C = [pb, 0], A = [pb, ph];
         g.box(-0.8, -1.8, 8.8, 8.6);
         g.poly([B, C, A], { color: 'sky', width: 4.5, fill: 'sky', fillAlpha: 0.1, ref: ['ac', 'dist', 'ab'] });
-        if (rev && step >= 1) g.seg(C, A, { color: 'rose', width: 6, ref: ['ac', 'dist'] });
-        if (rev && step >= 3) g.seg(B, A, { color: 'violet', width: 5, dash: [8, 6], ref: ['ab'] });
+        if (lesson) g.seg(C, [pb, ph * lessonMove(q)], { color: 'rose', width: 6, ref: ['ac', 'dist'] });
+        else if (rev && step >= 1) g.seg(C, A, { color: 'rose', width: 6, ref: ['ac', 'dist'] });
+        if (lesson ? stage >= 1 : rev && step >= 3) g.seg(B, A, { color: 'violet', width: 5, dash: [8, 6], ref: ['ab'] });
         g.right(C, B, A, { size: 15, color: 'amber', ref: ['ac'] });
         g.dot(A, { color: 'ink', r: 5.5 }); g.dot(B, { color: 'ink', r: 5.5 }); g.dot(C, { color: 'ink', r: 5.5 });
         g.text(A, 'A', { dy: -22, size: 20 }); g.text(B, 'B', { dx: -16, dy: 18, size: 20 }); g.text(C, 'C', { dx: 18, dy: 18, size: 20 });
@@ -1129,14 +1180,17 @@
         }
         g.text([pb / 2, ph / 2], `AB = ${pab} cm`, { dx: abDx, dy: abDy, size: 17, color: rev && step >= 3 ? 'violet' : 'sky', align: 'center', ref: ['ab'] });
         if (rev && step >= 1) g.text(C, '∠C = 90°', { dx: -62, dy: -22, size: 16, color: 'amber', ref: ['ac'] });
-        if (rev && step >= 2) g.text([pb, 0], `거리 = AC = ${ph} cm`, { dy: 54, size: 17, color: 'green', ref: ['dist'] });
+        if (lesson ? q.plShowAnswer : rev && step >= 2) g.text([pb, 0], lesson ? `거리 = ${ph} cm` : `거리 = AC = ${ph} cm`, { dy: 54, size: 17, color: 'green', ref: ['dist'] });
         return;
       }
       const b = q.b, h = q.h, s = clamp(q.sa, -2, b + 2), B = [0, 0], C = [b, 0], A = [s, h], H = [s, 0], inside = s >= 0 && s <= b;
       g.box(-2.6, -1.8, b + 2.6, h + 0.9);
       g.poly([B, C, A], { color: 'sky', width: 4.5, fill: 'sky', fillAlpha: 0.1 });
       if (!inside) g.seg(s < 0 ? H : C, s < 0 ? B : H, { color: 'sky', width: 3, dash: [8, 6], alpha: 0.85 });
-      g.seg(A, H, { color: 'rose', width: 5.5, ref: ['ah'] });
+      if (lesson) {
+        g.seg(A, H, { color: 'muted', width: 2 });
+        g.seg(A, [s, h * (1 - lessonMove(q))], { color: 'rose', width: 5.5, ref: ['ah'] });
+      } else g.seg(A, H, { color: 'rose', width: 5.5, ref: ['ah'] });
       g.right(H, A, [s + 1, 0], { size: 15, color: 'amber', ref: ['ah', 'h'] });
       const wl = textW(`AH = ${h} cm`, 17);
       const onRight = s < 0 ? false : s > b ? true : (b - s) >= s; // 도형 안에서는 자리가 넓은 쪽, 변 밖이면 도형의 반대쪽에 글자를 둡니다
@@ -1148,6 +1202,7 @@
       if (!(s === 0 || s === b)) g.text(H, 'H', { dy: near ? 44 : 24, size: 18, color: 'amber', ref: ['h'] });
       else g.text(H, s === 0 ? 'H = B' : 'H = C', { dy: 40, size: 16, color: 'amber', ref: ['h'] });
       g.text([b / 2, 0], `BC = ${b} cm`, { dy: 62, size: 17, color: 'sky', ref: ['bc'] });
+      if (lesson && q.plShowAnswer) g.text([b / 2, -1], '거리는 AH의 길이', { dy: 24, size: 18, color: 'green' });
       g.handle('A', A, { color: 'amber', ariaLabel: '점 A (가로로 끌기)', drag: (w) => { q.sa = clamp(Math.round(w.x * 2) / 2, -2, q.b + 2); } });
     },
     problem: (q) => {

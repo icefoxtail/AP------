@@ -134,7 +134,7 @@
     };
     const scene = {
       id: spec.id, title: spec.title, short: spec.short || spec.title, _pl: spec, _plKey: keyOf, boardKind: kind,
-      question: spec.question,
+      question: (s) => (s.lessonOn || s.lessonEntry) && spec.lessonQuestion ? spec.lessonQuestion(model(s), s, quizOf(s)) : typeof spec.question === 'function' ? spec.question(s) : spec.question,
       guide: (s) => spec.guide(model(s), s),
       controls: () => (typeof spec.controls === 'function' ? spec.controls() : spec.controls) || [],
       presets: (s) => (spec.presets ? spec.presets(s) : []),

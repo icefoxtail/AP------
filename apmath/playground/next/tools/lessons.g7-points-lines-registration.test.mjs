@@ -53,7 +53,7 @@ test('each explanation loads and draws at entry, first cue and conclusion withou
     const length = core.compileLesson(lesson).length;
     for (const [time, entry] of [[0, true], [0, false], [length, false]]) {
       const result = frame(lab, id, lesson, time, entry);
-      assert.ok(result.paths.length, `${id}/${lesson.label || lesson.title}: core points and lines figure is drawn`);
+      assert.ok(result.paths.some(p => p.options.color !== null && (p.options.alpha ?? 1) > 0 || p.options.fill && (p.options.fillAlpha ?? 1) > 0), `${id}/${lesson.label || lesson.title}: visible core points and lines figure is drawn`);
       assert.equal(result.value.card, null, id + ': exploration card hidden');
       assert.deepEqual(Array.from(result.value.readouts), [], id + ': exploration readouts hidden');
       assert.equal(result.value.formula, null, id + ': explanation owns formula timing');
