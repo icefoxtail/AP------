@@ -1,0 +1,29 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "7",
+        "title": "갈 때"
+      },
+      {
+        "count": "6",
+        "title": "올 때"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "약수터에 갈 때 고르는 길의 수와 돌아올 때 고르는 길의 수를 칸에 적고 곱의 법칙으로 이은 그림이다. 돌아올 때는 갈 때 택한 길을 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "집에서 약수터까지 가는 길이 7가지이고 돌아올 때는 갈 때와 다른 길을 택한다",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": "갈 때 7가지, 올 때 갈 때의 길을 뺀 가짓수를 두 단계로 나누어 보인다."
+}

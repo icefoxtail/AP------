@@ -1,0 +1,66 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "vessel",
+      "kind": "CONE",
+      "radius": 12,
+      "height": 9,
+      "orientation": "APEX_DOWN",
+      "axis": true
+    }
+  ],
+  "section": {
+    "solid": "vessel",
+    "kind": "LEVEL",
+    "at": "1/3"
+  },
+  "dims": [
+    {
+      "solid": "vessel",
+      "height": true,
+      "label": "9",
+      "side": "RIGHT"
+    },
+    {
+      "solid": "vessel",
+      "radius": "top",
+      "label": "12"
+    },
+    {
+      "solid": "vessel",
+      "level": true,
+      "label": "3",
+      "side": "LEFT"
+    },
+    {
+      "solid": "vessel",
+      "radius": "level",
+      "label": "4"
+    }
+  ],
+  "solidCaption": {
+    "text": "예: 수면 높이 3cm, 반지름 4cm"
+  },
+  "caption": "예: t=3초인 물 단면의 닮음비 r/h=4/3을 보인다. 정답은 (1) h=t, r=4t/3; (2) V=16πt³/27, V′(t)=16πt²/9; (3) 16πcm³/s이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그릇 높이 9cm, 윗면 반지름 12cm, 수면의 일반 변수 h와 r.",
+      "mappedTo": [
+        "solids",
+        "section",
+        "dims"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "h=t와 r/h=4/3을 이용해 V와 V′를 세운다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "물 단면은 그릇과 닮은 작은 원뿔이고, 높이 h와 수면 반지름 r을 일반 변수로 나타냈다."
+  ]
+}

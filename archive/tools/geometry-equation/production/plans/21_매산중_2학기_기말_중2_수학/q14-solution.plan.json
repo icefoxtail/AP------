@@ -1,0 +1,29 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "8",
+        "title": "차 2"
+      },
+      {
+        "count": "6",
+        "title": "차 3"
+      }
+    ],
+    "join": "PLUS"
+  },
+  "caption": "두 주사위 눈의 차가 2인 경우와 3인 경우를 따로 세어 더하는 합의 법칙을 칸으로 나타낸 그림이다. 두 경우는 동시에 일어나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 두 주사위의 눈의 수의 차가 2 또는 3인 경우의 수",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": "눈의 차가 2인 경우와 3인 경우로 나누어 가짓수를 더하는 단계를 보인다."
+}

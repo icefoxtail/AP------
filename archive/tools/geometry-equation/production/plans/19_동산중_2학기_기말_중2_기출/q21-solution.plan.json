@@ -1,0 +1,44 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "SUM",
+    "colVar": "a",
+    "rowVar": "b",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "a+b",
+          "in": [
+            2,
+            3
+          ]
+        },
+        "tone": 2
+      },
+      {
+        "highlight": {
+          "expr": "a+b",
+          "cmp": ">=",
+          "value": 4
+        },
+        "tone": 1
+      }
+    ]
+  },
+  "caption": "가로는 주사위 A의 눈 a, 세로는 주사위 B의 눈 b이고 칸 안의 수는 두 눈의 합이다. 짙은 칸은 합이 3 이하인 경우, 옅은 칸은 합이 4 이상인 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 주사위를 던져 나오는 눈의 합이 4 이상이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "36칸 중 합이 3 이하인 칸과 4 이상인 칸을 색의 진하기로 구분한다."
+  ]
+}

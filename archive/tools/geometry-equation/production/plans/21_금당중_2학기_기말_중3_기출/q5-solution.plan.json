@@ -1,0 +1,455 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "접선과 현의 각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "270"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "354"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "52"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "130"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "T"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "AT",
+            "refs": [
+              "A",
+              "T"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "DA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "BD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "DAT70",
+              "refs": [
+                "D",
+                "A",
+                "T"
+              ],
+              "value": 70,
+              "factRole": "GIVEN",
+              "emphasisGroup": 2
+            },
+            {
+              "id": "ABD70",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 70,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "emphasisGroup": 2
+            },
+            {
+              "id": "ADB42",
+              "refs": [
+                "A",
+                "D",
+                "B"
+              ],
+              "value": 42,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "DAB",
+              "refs": [
+                "D",
+                "A",
+                "B"
+              ],
+              "value": 68,
+              "label": "y",
+              "factRole": "CONCLUSION",
+              "emphasisGroup": 3
+            }
+          ]
+        },
+        "caption": "접선과 현이 이루는 각과 삼각형 ABD",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "접선과 현이 이루는 각과 삼각형 ABD",
+            "mappedTo": [
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "접현각과 내접사각형의 각을 분리해 표시하고 겹치는 점·각에 지시선을 쓴다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 BCD (∠C=180°−y)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "D"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6293"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "D"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4848"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "112"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "BD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "BCD112",
+              "refs": [
+                "B",
+                "C",
+                "D"
+              ],
+              "value": 112,
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "CDB29",
+              "refs": [
+                "C",
+                "D",
+                "B"
+              ],
+              "value": 29,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "CBD",
+              "refs": [
+                "C",
+                "B",
+                "D"
+              ],
+              "value": 39,
+              "label": "x",
+              "factRole": "CONCLUSION",
+              "emphasisGroup": 1
+            }
+          ]
+        },
+        "caption": "내접사각형의 마주 보는 각과 삼각형 BCD",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "내접사각형의 마주 보는 각과 삼각형 BCD",
+            "mappedTo": [
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "접현각과 내접사각형의 각을 분리해 표시하고 겹치는 점·각에 지시선을 쓴다."
+        ]
+      }
+    }
+  ],
+  "caption": "원 O의 접선 AT와 원에 내접하는 사각형 ABCD, 대각선 BD가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AT는 접선, ∠DAT=70°, ∠ADB=42°, ∠CDB=29°이다. ∠DAB=y, ∠CBD=x이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접현각과 내접사각형의 각을 분리해 표시하고 겹치는 점·각에 지시선을 쓴다."
+  ]
+}

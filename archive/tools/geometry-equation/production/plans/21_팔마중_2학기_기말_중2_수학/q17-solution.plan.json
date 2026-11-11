@@ -1,0 +1,35 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "join": "PLUS",
+    "slots": [
+      {
+        "count": "2",
+        "title": "b=1"
+      },
+      {
+        "count": "2",
+        "title": "b=2"
+      },
+      {
+        "count": "1",
+        "title": "b=3"
+      }
+    ]
+  },
+  "caption": "방정식 ax+b=4의 해가 자연수이려면 b가 1, 2, 3인 경우로 나누어 4에서 b를 뺀 값의 약수 a의 가짓수를 합의 법칙으로 센다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "방정식 ax+b=4의 해가 자연수이려면 b가 1, 2, 3인 경우로 나누어 4에서 b를 뺀 값의 약수 a의 가짓수를 합의 법칙으로 센다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이의 단계와 경우를 그림으로 나누어 보인다."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "흰 8개",
+      "children": [
+        {
+          "label": "양면 6개"
+        },
+        {
+          "label": "혼합 2개"
+        }
+      ]
+    },
+    "labelWeight": "MATH"
+  },
+  "caption": "윗면이 흰 경우의 두 카드 유형을 세어 조건부확률을 구한다. 정답은 사분의 삼이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "양면 흰 3장, 흰·붉은 2장, 양면 붉은 1장을 같은 확률로 뽑는다.",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "c2",
+      "condition": "흰·붉은 카드에서는 두 면 중 어느 쪽이 위로 놓일 확률도 각각 1/2이다.",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "c3",
+      "condition": "조건은 윗면이 흰 경우이며 그중 다른 면도 흰 경우를 찾는다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "윗면이 흰 경우 가능한 면 8개를 양면 흰 카드와 혼합 카드의 흰 면으로 나눈다."
+  ]
+}

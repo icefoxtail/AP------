@@ -1,0 +1,97 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "labelWeight": "MATH",
+    "root": {
+      "children": [
+        {
+          "label": "A",
+          "children": [
+            {
+              "label": "B"
+            },
+            {
+              "label": "C"
+            },
+            {
+              "label": "D"
+            }
+          ]
+        },
+        {
+          "label": "B",
+          "children": [
+            {
+              "label": "A"
+            },
+            {
+              "label": "C"
+            },
+            {
+              "label": "D"
+            }
+          ]
+        },
+        {
+          "label": "C",
+          "children": [
+            {
+              "label": "A"
+            },
+            {
+              "label": "B"
+            },
+            {
+              "label": "D"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "A",
+          "B"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "B",
+          "A"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "A",
+          "C"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "C",
+          "A"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "대표 2명을 첫째, 둘째 순서로 나열한 나뭇가지 그림의 일부이다. 첫째가 A, B, C인 경우만 그렸고 같은 색으로 표시한 두 경로는 같은 짝이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "4명의 후보 중에서 대표 2명을 뽑는다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "순서를 구별해 나열하면 같은 짝이 두 번씩 나오는 것을 보인다."
+  ]
+}

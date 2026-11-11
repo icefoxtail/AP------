@@ -1,0 +1,62 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "채송화 O",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "봉선화 O",
+              "p": "4/5"
+            },
+            {
+              "label": "봉선화 X",
+              "p": "1/5"
+            }
+          ]
+        },
+        {
+          "label": "채송화 X",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "봉선화 O",
+              "p": "4/5"
+            },
+            {
+              "label": "봉선화 X",
+              "p": "1/5"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "채송화 X",
+          "봉선화 X"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "O는 싹이 남, X는 싹이 나지 않음이다. 첫째 가지는 채송화(발아율 50퍼센트), 둘째 가지는 봉선화(발아율 80퍼센트)의 결과이다. 주황색 경로는 두 꽃씨 모두 싹이 나지 않는 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "채송화 꽃씨의 발아율이 50퍼센트, 봉선화 꽃씨의 발아율이 80퍼센트이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 꽃씨 모두 싹이 나지 않는 경로를 주황색으로 구분해 보인다."
+  ]
+}

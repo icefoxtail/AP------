@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "극대",
+        "points": [
+          {
+            "id": "A",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "극소",
+        "points": [
+          {
+            "id": "C",
+            "value": "-7",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "7",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "math": "-,+,-,+,-,+",
+    "text": "구간별 도함수 부호"
+  },
+  "caption": "도함수의 부호가 바뀌는 곳을 극대와 극소로 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "구간 (-8,8)의 도함수 영점은 -7, -3, -2, 2, 7이며 부호는 음수, 양수, 음수, 양수, 음수, 양수 순이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "S2",
+      "condition": "부호가 양에서 음으로 바뀌는 -3, 2에서 극대, 음에서 양으로 바뀌는 -7, -2, 7에서 극소이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "극대인 x값 두 개와 극소인 x값 세 개를 두 줄로 나누어 같은 눈금 위에 보이고 구간별 부호 순서를 함께 적는다."
+  ]
+}

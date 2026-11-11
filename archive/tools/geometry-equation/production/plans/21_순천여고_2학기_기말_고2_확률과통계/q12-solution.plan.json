@@ -1,0 +1,30 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "한 문항",
+      "children": [
+        {
+          "label": "정답+5점",
+          "p": "1/5"
+        },
+        {
+          "label": "오답−d점",
+          "p": "4/5"
+        }
+      ]
+    }
+  },
+  "caption": "정답과 오답의 점수 및 확률을 한 문항의 두 결과로 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정답 확률은 1/5이고 점수는 5점, 오답 확률은 4/5이고 점수는 −d점이다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "정답과 오답의 확률 및 점수를 한 문항의 두 결과로 나누어 기대값 식을 세우게 한다."
+  ]
+}

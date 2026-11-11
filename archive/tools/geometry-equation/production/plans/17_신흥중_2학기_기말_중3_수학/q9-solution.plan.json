@@ -1,0 +1,286 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "4",
+       "denominator": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "2",
+       "denominator": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "H"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCH",
+   "refs": [
+    "C",
+    "H"
+   ]
+  },
+  {
+   "id": "sAH",
+   "refs": [
+    "A",
+    "H"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aACH",
+    "refs": [
+     "A",
+     "C",
+     "H"
+    ],
+    "value": 45,
+    "label": "45",
+    "color": "GREEN",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aBAC",
+    "refs": [
+     "B",
+     "A",
+     "C"
+    ],
+    "value": 18.43494882292201,
+    "label": "x",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lBC",
+    "ownerSegment": "sBC",
+    "text": "t"
+   },
+   {
+    "id": "lAH",
+    "ownerSegment": "sAH",
+    "text": "t",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lCD",
+    "ownerSegment": "sCD",
+    "text": "t/sqrt(5)",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBD",
+    "ownerSegment": "sBD",
+    "text": "2t/sqrt(5)",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sBC",
+     "sCH"
+    ]
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sDA"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sCD"
+    ],
+    "color": "WARM"
+   }
+  ]
+ },
+ "caption": "BC=CH=t이고 각 ACH=45°이므로 AH=t이다. 점 C에서 AB에 내린 수선 CD를 그어 직각삼각형 ACD에서 x의 이웃한 변 파란색 AD와 맞은편 변 주황색 CD를 비교한다. AD는 AB에서 BD를 뺀 길이이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "∠BAC=x, ∠ACH=45°, BC=CH, AH⊥BH.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "H",
+    "C"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "C",
+    "D",
+    "A"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 360
+ }
+}

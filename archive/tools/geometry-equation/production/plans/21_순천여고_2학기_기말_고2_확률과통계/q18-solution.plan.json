@@ -1,0 +1,31 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "길이 L",
+      "children": [
+        {
+          "label": "신뢰도↑L↑"
+        },
+        {
+          "label": "n↑L↓"
+        },
+        {
+          "label": "둘 다↑미정"
+        }
+      ]
+    }
+  },
+  "caption": "신뢰도는 구간을 늘리고 표본 수는 줄인다. 두 변화가 함께면 길이를 단정할 수 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "신뢰구간 길이는 임계값에 비례하고 표본크기의 제곱근에 반비례하므로 두 변화가 함께 있으면 방향이 정해지지 않는다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "신뢰도 증가와 표본크기 증가가 신뢰구간 길이에 미치는 반대 효과를 대비한다."
+  ]
+}

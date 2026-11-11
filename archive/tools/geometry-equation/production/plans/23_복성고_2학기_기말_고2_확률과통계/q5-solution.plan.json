@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "1번째 실패"
+        },
+        {
+          "label": "2번째 실패"
+        },
+        {
+          "label": "3번째 실패"
+        },
+        {
+          "label": "4번째 실패"
+        },
+        {
+          "label": "5번째 실패"
+        }
+      ]
+    }
+  },
+  "caption": "A팀의 실패 위치를 다섯 경우로 나누며 나머지 A팀 선수와 B팀 선수는 모두 성공한다.",
+  "sourceConditions": [
+    {
+      "id": "a-miss",
+      "condition": "A팀 5명 중 정확히 1명 실패",
+      "mappedTo": "five leaves"
+    },
+    {
+      "id": "b-success",
+      "condition": "B팀 5명 모두 성공",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "A팀 실패자의 순서 다섯 경우"
+  ]
+}

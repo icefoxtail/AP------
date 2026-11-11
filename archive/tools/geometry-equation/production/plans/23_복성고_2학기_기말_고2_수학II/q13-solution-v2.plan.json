@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "k",
+        "y": "2",
+        "intersectionX": [
+          "1"
+        ]
+      },
+      {
+        "id": "d",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "k",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "domain": [
+      -0.4,
+      1.3
+    ],
+    "viewport": [
+      -0.4,
+      1.4,
+      -0.4,
+      2.4
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=f(x) 아래 넓이 S1과 역함수 g 아래 넓이 S2는 직선 y=x 대칭으로 합쳐 직사각형이 된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x^3+x는 f(0)=0, f(1)=2이고 0≤x≤1에서 증가한다.",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "역함수 g의 0≤x≤2 아래 넓이는 직사각형 [0,1]×[0,2]에서 f 아래 넓이를 뺀 부분과 같다.",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "f 아래 영역 S1과 직사각형의 나머지 영역 S2를 나누어 칠해 두 넓이의 합이 가로 1 세로 2의 직사각형임을 보인다."
+  ]
+}

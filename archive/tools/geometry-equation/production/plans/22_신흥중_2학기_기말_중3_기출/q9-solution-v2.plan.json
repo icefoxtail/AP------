@@ -1,0 +1,431 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "230"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "310"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "165"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Mb",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "S"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ms",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "S",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "98"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lMb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "Mb"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lMs",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "S",
+          "Ms"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lMb",
+          "lMs"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hb",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "S"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hs",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "S",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lHb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "Hb"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lHs",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "S",
+          "Hs"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lHb",
+          "lHs"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "S",
+    "J",
+    "M",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OS",
+      "refs": [
+        "O",
+        "S"
+      ]
+    },
+    {
+      "id": "JB",
+      "refs": [
+        "J",
+        "B"
+      ]
+    },
+    {
+      "id": "JS",
+      "refs": [
+        "J",
+        "S"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "MS",
+      "refs": [
+        "M",
+        "S"
+      ]
+    },
+    {
+      "id": "HB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "HS",
+      "refs": [
+        "H",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "S"
+        ],
+        "value": 80,
+        "label": "80",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aJ",
+        "refs": [
+          "B",
+          "J",
+          "S"
+        ],
+        "value": 40,
+        "label": "40",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aM",
+        "refs": [
+          "B",
+          "M",
+          "S"
+        ],
+        "value": 42,
+        "label": "42",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aH",
+        "refs": [
+          "B",
+          "H",
+          "S"
+        ],
+        "value": 38,
+        "label": "38",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eR",
+        "count": 1,
+        "segments": [
+          "OB",
+          "OS"
+        ]
+      }
+    ]
+  },
+  "caption": "같은 호를 보는 각의 크기로 원 위·안·밖을 판단한다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "의자 O를 중심으로 보검 B와 서준 S를 지나는 원을 생각한다. ∠BOS=80°이므로 원 위에서 호 BS를 보는 원주각은 40°이다. 지수 J는 40°이므로 원 위, 지민 M은 42°이므로 원 안, 하영 H는 38°이므로 원 밖이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 사람이 두 점 B, S를 보는 각을 색으로 나누어 원 위·안·밖을 비교한다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 600
+  }
+}

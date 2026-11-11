@@ -1,0 +1,388 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "E",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BCA20",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 20,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DCE130",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 130,
+        "factRole": "CONCLUSION",
+        "label": "x",
+        "color": "ROSE"
+      },
+      {
+        "id": "DPC60",
+        "refs": [
+          "D",
+          "P",
+          "C"
+        ],
+        "value": 60,
+        "factRole": "CONCLUSION",
+        "noLabel": true,
+        "color": "WARM"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kA",
+        "kind": "ANGLE",
+        "vertex": "A",
+        "rays": [
+          "B",
+          "C",
+          "D"
+        ],
+        "at": "RIGHT",
+        "angles": [
+          {
+            "id": "cBAC",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ],
+            "value": 90,
+            "label": "90"
+          },
+          {
+            "id": "cCAD",
+            "refs": [
+              "C",
+              "A",
+              "D"
+            ],
+            "value": 40,
+            "label": "40"
+          }
+        ]
+      },
+      {
+        "id": "kP",
+        "kind": "ANGLE",
+        "vertex": "P",
+        "rays": [
+          "D",
+          "C"
+        ],
+        "at": "BELOW",
+        "angles": [
+          {
+            "id": "cDPC",
+            "refs": [
+              "D",
+              "P",
+              "C"
+            ],
+            "value": 60,
+            "label": "y",
+            "color": "WARM"
+          }
+        ]
+      },
+      {
+        "id": "kB",
+        "kind": "ANGLE",
+        "vertex": "B",
+        "rays": [
+          "A",
+          "D"
+        ],
+        "at": "ABOVE",
+        "angles": [
+          {
+            "id": "cABD",
+            "refs": [
+              "A",
+              "B",
+              "D"
+            ],
+            "value": 30,
+            "label": "30"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "네 점 A, B, C, D가 한 원 위에 있는 그림이다. ∠ABD=30°, ∠BCA=20°, ∠DAC=40°이고 구하는 두 각 x(분홍), y(주황)를 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A, B, C, D는 한 원 위에 있고 ∠ABD=30°, ∠BCA=20°, ∠DAC=40°.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P는 AC와 BD의 교점, E는 BC의 연장선에 추가한 점이다. 외각과 교각 라벨은 지시선을 써서 분리한다."
+  ],
+  "hiddenPointNames": [
+    "E",
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  }
+}

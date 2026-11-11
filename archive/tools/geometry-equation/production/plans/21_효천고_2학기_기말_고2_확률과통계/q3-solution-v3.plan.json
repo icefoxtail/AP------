@@ -1,0 +1,69 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "f",
+        "mean": "-0.5",
+        "sd": "0.4",
+        "label": "f(x)"
+      },
+      {
+        "id": "g",
+        "mean": "1.9",
+        "sd": "1.2",
+        "label": "g(x)"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-0.5",
+        "text": "a"
+      },
+      {
+        "x": "0.33",
+        "text": "g(b)"
+      },
+      {
+        "x": "1",
+        "text": "f(a)"
+      },
+      {
+        "x": "1.9",
+        "text": "b"
+      }
+    ],
+    "shades": [
+      {
+        "curve": "f",
+        "from": null,
+        "to": "f(a)",
+        "color": "BLUE"
+      },
+      {
+        "curve": "g",
+        "from": null,
+        "to": "g(b)",
+        "color": "WARM"
+      }
+    ],
+    "span": 3
+  },
+  "caption": "예: 평균 a, b와 f(a), g(b)의 위치를 표시하고 두 누적확률까지의 영역을 칠한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a<f(a)이므로 f(a)는 첫 곡선 평균의 오른쪽이다.",
+      "mappedTo": "chart.ticks and chart.shades[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "g(b)<b이므로 g(b)는 둘째 곡선 평균의 왼쪽이다.",
+      "mappedTo": "chart.ticks and chart.shades[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 누적확률의 경계와 각 평균 사이의 방향을 곡선 아래 넓이로 나타낸다."
+  ]
+}

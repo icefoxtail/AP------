@@ -1,0 +1,37 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "E",
+        "name": "E"
+      },
+      {
+        "id": "F",
+        "name": "F"
+      }
+    ],
+    "subset": [
+      "F",
+      "E"
+    ],
+    "shade": "F"
+  },
+  "caption": "조건 사건 E 안에 목표 사건 F가 포함된다. 조건부확률은 E 영역 가운데 F가 차지하는 비율이다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "E는 숫자 1 공 세 개가 파란 공보다 먼저 나오는 사건",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "F는 E가 성립하고 뽑힌 숫자 합이 5인 사건이므로 F⊂E",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "조건부 사건 E 내부에 포함되는 사건 F"
+  ]
+}

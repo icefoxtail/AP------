@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "허용범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "hideSetLabel": false
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정수포함범위"
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수의 도함수는 f′(x)=3x²+2ax−a²+2a이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "원 해설은 D=8a(2a−3)≤0에서 0≤a≤3/2를 얻는다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "허용 구간에 포함된 정수는 0,1 두 개이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 일반적인 매개변수 a의 허용 구간 [0,3/2]와 그 구간에 든 정수 0,1을 표시한다.",
+    "경계 0과 3/2는 해설에서 도출된 정확한 구간 끝이며, 임의의 고정 예시를 일반 조건처럼 제시하지 않는다."
+  ],
+  "caption": "판별식 조건이 허용하는 매개변수 구간을 나타낸다."
+}

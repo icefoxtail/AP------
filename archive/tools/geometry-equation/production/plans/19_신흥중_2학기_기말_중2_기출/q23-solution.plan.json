@@ -1,0 +1,187 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tA",
+        "at": [
+          0.78,
+          3.55
+        ],
+        "text": "합 4, 8, 12"
+      },
+      {
+        "id": "tB",
+        "at": [
+          0.62,
+          0.45
+        ],
+        "text": "합 5, 9"
+      },
+      {
+        "id": "tC",
+        "at": [
+          3.25,
+          0.45
+        ],
+        "text": "합 2, 6, 10"
+      },
+      {
+        "id": "tD",
+        "at": [
+          3.25,
+          3.55
+        ],
+        "text": "합 3, 7, 11"
+      }
+    ]
+  },
+  "caption": "말은 A에서 B, C, D, A 순서로 이동하므로 두 번 던져 나온 눈의 합을 4로 나눈 나머지에 따라 도착하는 꼭짓점이 정해진다. 합이 4, 8, 12이면 A로 돌아온다.",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변의 길이가 1인 정사각형, 꼭짓점 A에서 시계 반대 방향으로 주사위 눈의 수만큼 이동",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "눈의 합에 따라 말이 도착하는 꼭짓점"
+  ]
+}

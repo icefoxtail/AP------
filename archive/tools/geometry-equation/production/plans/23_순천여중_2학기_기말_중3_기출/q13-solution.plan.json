@@ -1,0 +1,51 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      90,
+      90,
+      95,
+      95,
+      95,
+      95,
+      95,
+      100,
+      100,
+      105
+    ],
+    "step": 5,
+    "xTitle": "치수(호)",
+    "marks": {
+      "meanLine": {
+        "value": "96",
+        "label": "평균 96"
+      },
+      "medianLine": {
+        "value": "95",
+        "label": "중앙값 95"
+      },
+      "highlight": [
+        {
+          "value": 95,
+          "color": "WARM"
+        }
+      ]
+    }
+  },
+  "caption": "티셔츠 치수 자료를 값별로 쌓아 가장 많은 값과 가운데 값을 한눈에 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 표의 10개 치수 90, 90, 95(다섯 개), 100, 100, 105를 점도표로 옮겼다.",
+      "mappedTo": [
+        "chart.values",
+        "chart.marks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가장 높게 쌓인 95호의 최빈값과 평균선·중앙값선의 위치를 함께 보여 준다."
+  ]
+}

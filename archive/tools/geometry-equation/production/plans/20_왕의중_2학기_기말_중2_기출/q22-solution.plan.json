@@ -1,0 +1,396 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "작은 사면체"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  6.8,
+                  -2.4
+                ],
+                [
+                  3.6,
+                  -4.8
+                ]
+              ]
+            },
+            "height": 6,
+            "apex": [
+              2,
+              -3
+            ],
+            "names": "BDCA"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "edge": "AB",
+            "label": "x"
+          },
+          {
+            "solid": "s1",
+            "edge": "BC"
+          },
+          {
+            "solid": "s1",
+            "edge": "CD"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "큰 사면체"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s2",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  13.6,
+                  -4.8
+                ],
+                [
+                  7.2,
+                  -9.6
+                ]
+              ]
+            },
+            "height": 12,
+            "apex": [
+              4,
+              -6
+            ],
+            "names": "FHGE"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s2",
+            "edge": "EF"
+          },
+          {
+            "solid": "s2",
+            "edge": "FG"
+          },
+          {
+            "solid": "s2",
+            "edge": "GH",
+            "label": "y"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "대응하는 면 BCD, FGH"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s2",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  16,
+                  -2.4
+                ],
+                [
+                  9.6,
+                  -7.2
+                ]
+              ]
+            },
+            "height": 12,
+            "apex": [
+              4,
+              -6
+            ],
+            "names": "FHGE"
+          },
+          {
+            "id": "s1",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  8,
+                  -1.2
+                ],
+                [
+                  4.8,
+                  -3.6
+                ]
+              ]
+            },
+            "height": 6,
+            "apex": [
+              2,
+              -3
+            ],
+            "names": "BDCA"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "edge": "BC"
+          },
+          {
+            "solid": "s2",
+            "edge": "FG"
+          }
+        ],
+        "highlights": [
+          {
+            "polygon": [
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          {
+            "polygon": [
+              "F",
+              "G",
+              "H"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "대응하는 모서리 AB, EF"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s2",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  16,
+                  -2.4
+                ],
+                [
+                  9.6,
+                  -7.2
+                ]
+              ]
+            },
+            "height": 12,
+            "apex": [
+              4,
+              -6
+            ],
+            "names": "FHGE"
+          },
+          {
+            "id": "s1",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  8,
+                  -1.2
+                ],
+                [
+                  4.8,
+                  -3.6
+                ]
+              ]
+            },
+            "height": 6,
+            "apex": [
+              2,
+              -3
+            ],
+            "names": "BDCA"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "edge": "AB",
+            "label": "x"
+          },
+          {
+            "solid": "s2",
+            "edge": "EF"
+          }
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "대응하는 모서리 CD, GH"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s2",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  16,
+                  -2.4
+                ],
+                [
+                  9.6,
+                  -7.2
+                ]
+              ]
+            },
+            "height": 12,
+            "apex": [
+              4,
+              -6
+            ],
+            "names": "FHGE"
+          },
+          {
+            "id": "s1",
+            "kind": "PYRAMID",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  8,
+                  -1.2
+                ],
+                [
+                  4.8,
+                  -3.6
+                ]
+              ]
+            },
+            "height": 6,
+            "apex": [
+              2,
+              -3
+            ],
+            "names": "BDCA"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "edge": "CD"
+          },
+          {
+            "solid": "s2",
+            "edge": "GH",
+            "label": "y"
+          }
+        ],
+        "segments": [
+          {
+            "from": "C",
+            "to": "D",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "G",
+            "to": "H",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "두 사면체는 닮음이고 면 BCD와 FGH가 대응하므로 B는 F, C는 G, D는 H에 대응한다. 그래서 BC와 FG, AB와 EF, CD와 GH가 대응하는 모서리이다. 대응하는 모서리의 길이의 비는 모두 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 사면체는 닮음이고 면 BCD와 FGH가 대응하므로 B는 F, C는 G, D는 H에 대응한다. 그래서 BC와 FG, AB와 EF, CD와 GH가 대응하는 모서리이다. 대응하는 모서리의 길이의 비는 모두 같다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

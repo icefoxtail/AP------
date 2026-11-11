@@ -1,0 +1,455 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "삼각비의 값"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "BLUE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "sqrt(3)"
+      },
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "1"
+      },
+      {
+       "id": "lCA",
+       "ownerSegment": "sCA",
+       "text": "2"
+      }
+     ]
+    },
+    "caption": "각 A가 30도인 직각삼각형으로, 세 변의 길이의 비는 1, 루트 3, 2이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "B",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "각이 커질 때"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "D"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "30"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "Q",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "A",
+        "D"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "60"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lAD",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "D"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "R",
+       "op": "PERPENDICULAR_FOOT",
+       "inputs": [
+        "P",
+        "lAD"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "S",
+       "op": "PERPENDICULAR_FOOT",
+       "inputs": [
+        "Q",
+        "lAD"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "T",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "A"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "0"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "A"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "D",
+     "P",
+     "Q",
+     "R",
+     "S",
+     "T"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAR",
+      "refs": [
+       "A",
+       "R"
+      ]
+     },
+     {
+      "id": "sRS",
+      "refs": [
+       "R",
+       "S"
+      ]
+     },
+     {
+      "id": "sSD",
+      "refs": [
+       "S",
+       "D"
+      ]
+     },
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "sAQ",
+      "refs": [
+       "A",
+       "Q"
+      ]
+     },
+     {
+      "id": "sPR",
+      "refs": [
+       "P",
+       "R"
+      ]
+     },
+     {
+      "id": "sQS",
+      "refs": [
+       "Q",
+       "S"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "a1",
+       "refs": [
+        "R",
+        "A",
+        "P"
+       ],
+       "value": 30,
+       "color": "BLUE",
+       "label": "30",
+       "labelPlacement": "LEADER"
+      },
+      {
+       "id": "a2",
+       "refs": [
+        "S",
+        "A",
+        "Q"
+       ],
+       "value": 60,
+       "ring": 2,
+       "color": "WARM",
+       "label": "60",
+       "labelPlacement": "LEADER"
+      }
+     ],
+     "arcs": [
+      {
+       "id": "arcTD",
+       "circle": "k",
+       "center": "A",
+       "from": "T",
+       "to": "D",
+       "side": "MINOR"
+      }
+     ]
+    },
+    "caption": "반지름이 1인 사분원에서 각이 커질 때 세로 길이는 길어지고 가로 길이는 짧아지는 예이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "R",
+       "P"
+      ]
+     },
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "S",
+       "Q"
+      ]
+     }
+    ],
+    "hiddenPointNames": [
+     "T"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "각 A가 30도인 직각삼각형으로 코사인과 탄젠트 값을 비교하고, 사분원에서 각이 커질 때 사인과 코사인이 변하는 모양을 보이는 그림이다. 사분원의 각 30도와 60도는 예이다."
+}

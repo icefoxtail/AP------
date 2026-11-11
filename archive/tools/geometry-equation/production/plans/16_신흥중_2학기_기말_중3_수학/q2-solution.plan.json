@@ -1,0 +1,183 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aA",
+    "refs": [
+     "B",
+     "A",
+     "C"
+    ],
+    "value": 21.80140948635181,
+    "noLabel": true,
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "b"
+   },
+   {
+    "id": "lBC",
+    "ownerSegment": "sBC",
+    "text": "a"
+   },
+   {
+    "id": "lCA",
+    "ownerSegment": "sCA",
+    "text": "c"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAB"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sBC"
+    ],
+    "color": "WARM"
+   },
+   {
+    "segments": [
+     "sCA"
+    ],
+    "color": "GREEN"
+   }
+  ]
+ },
+ "caption": "직각삼각형 ABC에서 BC=a(주황), AB=b(파랑), AC=c(초록)로 둔다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "∠B=90°, tan A=2/5.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "B",
+    "C"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 340
+ }
+}

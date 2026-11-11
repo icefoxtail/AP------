@@ -1,0 +1,51 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "날씨",
+      "children": [
+        {
+          "label": "비",
+          "p": "0.7",
+          "children": [
+            {
+              "label": "목표 달성",
+              "p": "0.9"
+            },
+            {
+              "label": "목표 미달",
+              "p": "0.1"
+            }
+          ]
+        },
+        {
+          "label": "비 안 옴",
+          "p": "0.3",
+          "children": [
+            {
+              "label": "목표 달성",
+              "p": "0.2"
+            },
+            {
+              "label": "목표 미달",
+              "p": "0.8"
+            }
+          ]
+        }
+      ]
+    },
+    "labelWeight": "MATH"
+  },
+  "caption": "날씨에 따라 매출 목표 달성 가능성을 나누어 나타낸 수형도.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "비가 올 확률 0.7, 비가 오지 않을 확률 0.3이며 각 경우 목표 달성 조건부확률이 0.9와 0.2이다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "날씨별 조건부확률의 분기"
+  ]
+}

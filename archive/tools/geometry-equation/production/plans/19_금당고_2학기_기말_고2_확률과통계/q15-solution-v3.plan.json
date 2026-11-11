@@ -1,0 +1,90 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "원래",
+        "elements": [
+          "2",
+          "4",
+          "6",
+          "8"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "치환",
+        "elements": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "예: (2, 4, 6, 8)은 (2, 3, 4, 5)로 바뀌어 순서는 유지되고 최소 간격 조건은 사라진다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이웃한 원래 수의 차이는 최소 2이다.",
+      "mappedTo": "예시 원래 값의 간격 2"
+    },
+    {
+      "id": "c2",
+      "condition": "B=b−1, C=c−2, D=d−3으로 차례로 당긴다.",
+      "mappedTo": "예시 치환 값의 간격 1"
+    }
+  ],
+  "newVisualInformation": [
+    "예시에서 각 자리를 0, 1, 2, 3씩 당기면 순서가 유지되며 최소 간격만 1로 줄어듦"
+  ]
+}

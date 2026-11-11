@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -5,
+      4
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": "1/2"
+    },
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "4/3"
+        ],
+        "color": "BLUE",
+        "label": "y=3x"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "l"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "-2",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "mv",
+          "from": "O",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "y=3x의 그래프(파랑)를 y축의 방향으로 -2만큼, 곧 아래로 2만큼 옮긴 직선 l(주황 점선)이다. y축 위의 선분은 이동한 거리이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=3x의 그래프를 y축의 방향으로 -2만큼 평행이동한다.",
+      "mappedTo": [
+        "g1",
+        "g2",
+        "overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동하면 모든 점이 y축 방향으로 아래로 2만큼 내려가 기울기가 같은 평행한 직선이 됨을 보인다."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "labelWeight": "MATH",
+    "showPathProbability": true,
+    "root": {
+      "children": [
+        {
+          "label": "A짝",
+          "p": "2/3",
+          "children": [
+            {
+              "label": "B짝",
+              "p": "2/5"
+            },
+            {
+              "label": "B홀",
+              "p": "3/5"
+            }
+          ]
+        },
+        {
+          "label": "A홀",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "B짝",
+              "p": "2/5"
+            },
+            {
+              "label": "B홀",
+              "p": "3/5"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "A짝",
+          "B짝"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "A홀",
+          "B홀"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "두 수의 합이 짝수이려면 둘 다 짝수이거나 둘 다 홀수이어야 한다. 파랑은 둘 다 짝수인 경로, 주황은 둘 다 홀수인 경로이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 수의 합이 짝수이려면 둘 다 짝수이거나 둘 다 홀수이어야 한다. 파랑은 둘 다 짝수인 경로, 주황은 둘 다 홀수인 경로이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경우를 가지로 나누고 합이 되는 경로를 색으로 보인다."
+  ]
+}

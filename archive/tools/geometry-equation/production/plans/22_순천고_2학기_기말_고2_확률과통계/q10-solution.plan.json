@@ -1,0 +1,31 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "A와 B를 더하면 교집합을 두 번 세므로 덧셈정리에서 한 번 뺀다. 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(A), P(B)는 합집합에서 더해진다",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "공통인 A∩B는 한 번 빼 중복을 없앤다",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "두 사건의 교집합이 합집합 계산에서 중복되는 영역"
+  ]
+}
