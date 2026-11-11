@@ -696,7 +696,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "①",
-    "solution": "세 명제를 직접 판정한다.\n\nㄱ. $z\\ne0$에서\n$z^2+\\overline z^{-2}=0$이라 하면\n양변에 $\\overline z^2$을 곱해\n$|z|^4+1=0$을 얻는다.\n그런 복소수는 존재하지 않으므로 ㄱ은 거짓이다.\n\nㄴ. $z\\overline z=|z|^2\\ge0$이므로\n$z\\overline z=-1$을 만족하는 복소수는 없다.\n따라서 ㄴ은 참이다.\n\nㄷ. 이 식에는 실제 해가 존재한다.\n예를 들어\n$z=\\dfrac{\\sqrt3}{2}+\\dfrac12 i$로 두면\n$z-\\overline z=i$이고,\n$\\dfrac{z^2}{z-\\overline z}=\\overline z$가 성립한다.\n따라서 ㄷ은 거짓이다.\n\n결국 옳은 것은 ㄴ뿐이다.\n동결 source 선택지에는 'ㄴ' 단독 선택지가 없어 CREATE에서 선택지 ①을 'ㄴ'으로 최소 복구하였다.\n따라서 정답은 ①이다.",
+    "solution": "세 명제를 직접 판정한다.\n\nㄱ. $z\\ne0$에서\n$z^2+\\overline z^{-2}=0$이라 하면\n양변에 $\\overline z^2$을 곱해\n$|z|^4+1=0$을 얻는다.\n그런 복소수는 존재하지 않으므로 ㄱ은 거짓이다.\n\nㄴ. $z\\overline z=|z|^2\\ge0$이므로\n$z\\overline z=-1$을 만족하는 복소수는 없다.\n따라서 ㄴ은 참이다.\n\nㄷ. 이 식에는 실제 해가 존재한다.\n예를 들어\n$z=\\dfrac{\\sqrt3}{2}+\\dfrac12 i$로 두면\n$z-\\overline z=i$이고,\n$\\dfrac{z^2}{z-\\overline z}=\\overline z$가 성립한다.\n따라서 ㄷ은 거짓이다.\n\n결국 옳은 것은 ㄴ뿐이다.\n따라서 정답은 ①이다.",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
