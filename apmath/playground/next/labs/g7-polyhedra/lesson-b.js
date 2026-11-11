@@ -32,7 +32,7 @@ Object.assign(window.APL_LESSONS['g7-polyhedra'], {
               "to": {
                 "phQq": 4
               },
-              "dur": 2
+              "dur": 1.5
             },
             {
               "at": 5,
@@ -108,7 +108,7 @@ Object.assign(window.APL_LESSONS['g7-polyhedra'], {
               "to": {
                 "phQq": 3
               },
-              "dur": 2
+              "dur": 1.5
             },
             {
               "at": 5,

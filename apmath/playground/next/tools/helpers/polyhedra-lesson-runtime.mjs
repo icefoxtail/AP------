@@ -20,7 +20,7 @@ function canvas() {
     },
     set(target, key, value) { target[key] = value; return true; }
   });
-  return { width: 1000, height: 650, getContext: () => context };
+  return { width: 1000, height: 650, getContext: () => context, addEventListener() {}, getBoundingClientRect: () => ({ left: 0, top: 0, width: 1000, height: 650 }) };
 }
 
 export async function load() {
