@@ -301,9 +301,9 @@ window.questionBank = [
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "k=2일 때 직선 y=x+2가 포물선에 접한다. k>2이면 서로 다른 두 점에서 만난다.",
-    "solutionImageCaption": "k=2일 때 직선 y=x+2가 포물선에 접한다. k>2이면 서로 다른 두 점에서 만난다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 검은 포물선과 기울기가 1인 주황 직선의 두 교점.",
+    "solutionImageCaption": "예: k=3일 때 검은 포물선과 주황 직선이 두 점에서 만난다. 서로 다른 두 점에서 만나려면 판별식이 양수여야 한다. 정답은 k>2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -348,9 +348,12 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1mid",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q8-solution-v2.svg",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 구간 [1,a]에서 그린 파란 포물선과 검은 양 끝점, 꼭짓점 (1,−1).",
+    "solutionImageCaption": "파란 포물선은 구간 [1,a]에서 증가하고, 검은 점은 양 끝점이며 왼쪽 점 (1,−1)은 꼭짓점이다. 최솟값은 왼쪽에서, 최댓값은 오른쪽 끝에서 생긴다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -524,7 +527,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 검은 포물선과 기울기가 −1인 주황 직선이 두 점에서 만나는 그림.",
+    "solutionImageCaption": "예: k=2일 때 검은 포물선과 주황 직선이 두 점에서 만난다. 한 쌍의 해는 접점에서 생기며, 그때 판별식은 0이다. 정답은 k=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -697,9 +704,12 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1mid",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q16-solution-v2.svg",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 검은 위로 열린 포물선과 x축의 두 교점.",
+    "solutionImageCaption": "검은 위로 열린 포물선의 꼭짓점이 x축 아래에 있는 예로 두 교점을 확인한다. 꼭짓점의 높이 조건으로 정수 a의 범위를 찾는다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -829,9 +839,12 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1mid",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q19-solution-v2.svg",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 검은 포물선과 주황 대칭축, 초록 왼쪽 끝점, 분홍 오른쪽 끝점.",
+    "solutionImageCaption": "검은 포물선과 주황 점선(대칭축), 초록 점선(왼쪽 끝점), 분홍 점선(오른쪽 끝점)을 나타낸다. 축까지 거리는 왼쪽 5/3, 오른쪽 4/3이다. b>1이면 꼭짓점의 높이로 양수임을 확인한다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
