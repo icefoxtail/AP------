@@ -260,9 +260,9 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q07.png",
-      "question": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07.png\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
-      "content": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07.png\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
+      "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg",
+      "question": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
+      "content": "<p>7. 오른쪽 사다리꼴 $\\mathrm{ABCD}$의 넓이가 $300\\text{ cm}^2$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg\" alt=\"넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD\" /></p>",
       "choices": [
         "$20\\text{ cm}$",
         "$24\\text{ cm}$",
@@ -276,7 +276,7 @@ window.examData = {
       "questionNumber": 7,
       "hasVisual": true,
       "images": [
-        "assets/images/21_팔마중_2학기_기말_중2_수학/q07.png"
+        "assets/images/21_팔마중_2학기_기말_중2_수학/q07_question-v2.svg"
       ],
       "accessibility": "넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD",
       "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q7-solution.svg",
