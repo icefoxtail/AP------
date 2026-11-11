@@ -30,10 +30,12 @@ function convertNativePending({root,spec,metadata,identities,input,prod,drive}) 
   const sop=a.manifestType==='META_AUDIT_ATOMIC_PACKAGE'&&a.sopVersion==='SOP_v1.2';
   const flat=a.schemaVersion==='ALIVE_META_AUDIT_ATOMIC_PACKAGE_v3';
   const alias=spec.auditedExamAlias&&a.schemaVersion==='ALIVE_META_AUDIT_ATOMIC_v3';
+  const sourceOnlyAlias=flat&&spec.sourceOnlyExamAlias;
   if(!sop&&!flat&&!alias)return null;
   if(!c)fail('CLASSIFICATION_REQUIRED');
   const source=spec.sourceArchiveFile,title=path.basename(source,'.js'),id=x=>x.sourceFileDriveId||x.sourceDriveId||x.sourceFileId;
-  if(alias){if(title!==spec.auditedExamAlias+'c'||[a,m,c].some(x=>x.examTitle!==spec.auditedExamAlias))fail('EXAM_IDENTITY_MISMATCH');}
+  if(sourceOnlyAlias){if([a,m,c].some(x=>x.examTitle!==spec.sourceOnlyExamAlias))fail('EXAM_IDENTITY_MISMATCH');}
+  else if(alias){if(title!==spec.auditedExamAlias+'c'||[a,m,c].some(x=>x.examTitle!==spec.auditedExamAlias))fail('EXAM_IDENTITY_MISMATCH');}
   else if(sop ? [a,m,c].some(x=>x.examSlug!==title)||a.examTitle!==m.examTitle||a.examTitle!==c.examTitle : [a,m,c].some(x=>x.examTitle!==title))fail('EXAM_IDENTITY_MISMATCH');
   const sourceSha=sha(drive), declared=x=>x.sourceSha256||x.sourceFileSha256;
   if([a,m,c].some(x=>declared(x)!==sourceSha))fail('AUDIT_DRIVE_SHA_MISMATCH');
@@ -65,10 +67,15 @@ function convertNativePending({root,spec,metadata,identities,input,prod,drive}) 
     if(meta.length!==1||identity.length!==1||!meta[0].questionUid||meta[0].questionUid!==identity[0].questionUid||seen.has(meta[0].questionUid))fail('UID_MISMATCH: '+(i+1));
     const uid=meta[0].questionUid;seen.add(uid);const payload=q=>stable(Object.fromEntries(studentFields.map(f=>[f,Object.hasOwn(q,f)?q[f]:null]))),changed=studentFields.filter(f=>stable(p[i][f]??null)!==stable(d[i][f]??null));
     if(alias&&changed.some(f=>!['solution','solutionImage','solutionFigureSvg'].includes(f)))fail('ALIAS_STUDENT_PAYLOAD_MISMATCH: '+(i+1));
+    if(sourceOnlyAlias){
+      const norm=x=>typeof x==='string'?x.replace(/\\\\/g,'\\').replace(/\s+/g,' ').trim():x;
+      const prompt=q=>norm(q.content??q.question??q.stem??'');
+      if(!prompt(d[i])||prompt(d[i])!==prompt(p[i])||stable((d[i].choices||[]).map(norm))!==stable((p[i].choices||[]).map(norm))||(d[i].answer??'')!==''||['image','images','figureSvg'].some(f=>stable(d[i][f]??null)!==stable(p[i][f]??null)))fail('SOURCE_ONLY_ALIAS_PAYLOAD_MISMATCH: '+(i+1));
+    }
     parity.push({sourceOrdinal:i+1,questionId:i+1,questionUid:uid,driveStudentPayloadSha256:sha(payload(d[i])),productionStudentPayloadSha256:sha(payload(p[i])),studentPayloadEqual:changed.length===0,changedFields:changed});
     items.push({questionUid:uid,sourceOrdinal:i+1,before:{},after:{},evidenceRefs:[],reason:'Access-only provisional submission; original metadata audit requires registrar-compatible evidence.'});
   }
-  const parityRef=evidence('source-parity',Buffer.from(json({schemaVersion:'archive-meta-pipeline-source-parity-v1',sourceFileDriveId:id(a),sourceArchiveFile:source,...(alias?{auditedExamAlias:spec.auditedExamAlias,aliasBasis:'EXACT_NON_SOLUTION_FIELDS_AND_UID_ORDINAL_PARITY'}:{}),auditSourceSha256:sourceSha,driveSourceSha256:sourceSha,productionSourceSha256:sha(prod),productionSourceBlobSha1:sourceBlobSha1,parityBasis:'PER_UID_STUDENT_FIELDS',status:parity.every(x=>x.studentPayloadEqual)?'EXACT_STUDENT_VISIBLE_PARITY':'CURRENT_SOURCE_PRESERVED_WITH_SUPPLEMENTS',studentFields,questionCount:n,records:parity})));
+  const parityRef=evidence('source-parity',Buffer.from(json({schemaVersion:'archive-meta-pipeline-source-parity-v1',sourceFileDriveId:id(a),sourceArchiveFile:source,...(alias?{auditedExamAlias:spec.auditedExamAlias,aliasBasis:'EXACT_NON_SOLUTION_FIELDS_AND_UID_ORDINAL_PARITY'}:{}),...(sourceOnlyAlias?{auditedExamAlias:spec.sourceOnlyExamAlias,aliasBasis:'NORMALIZED_PROMPT_CHOICES_EXACT_IMAGES_EMPTY_AUDIT_ANSWERS_UID_ORDINAL'}:{}),auditSourceSha256:sourceSha,driveSourceSha256:sourceSha,productionSourceSha256:sha(prod),productionSourceBlobSha1:sourceBlobSha1,parityBasis:'PER_UID_STUDENT_FIELDS',status:parity.every(x=>x.studentPayloadEqual)?'EXACT_STUDENT_VISIBLE_PARITY':'CURRENT_SOURCE_PRESERVED_WITH_SUPPLEMENTS',studentFields,questionCount:n,records:parity})));
   const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId:spec.requestId,examUid:title,sourceArchiveFile:source,expectedSourceBlobSha1:sourceBlobSha1,expectedQuestionCount:n,approval:{type:'META_PIPELINE_AUDIT',metadataReviewed:false,approvedBy:'SOURCE_ONLY_PROVISIONAL_INPUT_NOT_A_METADATA_REVIEW',evidenceRefs:refs,metaPipelineAudit:{schemaVersion:'source-only-provisional-not-registrar-proof-v1',authorityStatus:'EVIDENCE_DEBT',sourceFileDriveId:id(a),auditPackageRef:auditRef,manifestRef,classificationRef,sourceParityRef:parityRef}},registryChanges:[],items,supplements:[{reason:'REGISTRAR_COMPATIBLE_METADATA_PROOF_REQUIRED',status:'NOT_VERIFIED'},...parity.filter(x=>!x.studentPayloadEqual).map(x=>({questionUid:x.questionUid,sourceOrdinal:x.sourceOrdinal,reason:'SOURCE_VERSION_CHANGED',fields:x.changedFields,policy:'PRESERVE_CURRENT_PRODUCTION'}))],provisionalApproval:{policy:'STUDENT_ACCESS_FIRST',verificationStatus:'NOT_VERIFIED',metadataApprovalStatus:'USER_APPROVED_PENDING_SUPPLEMENT'}};
   if(alias)for(let i=1;i<=n;i++)if(maps[0].get(i).auditVerdict===undefined)request.supplements.push({questionUid:parity[i-1].questionUid,sourceOrdinal:i,reason:'ROW_AUDIT_VERDICT_NOT_PROVIDED',status:'NOT_VERIFIED'});
   outputs.set('.archive-meta-register/inbox/'+spec.requestId+'.json',Buffer.from(json(request)));return {request,outputs};

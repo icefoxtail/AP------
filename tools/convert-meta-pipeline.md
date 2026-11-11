@@ -27,4 +27,6 @@ batch.json 예시(입력 파일은 절대 경로 사용):
 
 감사 제목에 없는 `c` 접미사가 production 파일명에만 붙은 경우 `auditedExamAlias`를 명시할 수 있다. 세 입력의 감사 제목이 이 별칭과 정확히 같고, source SHA·UID·순번과 해설 이외의 학생 필드가 모두 일치할 때만 access-only 요청을 만든다. 해설 필드의 차이는 parity와 후보완에 남긴다.
 
+원문이 `question` 필드를 쓰고 정답이 비어 있는 source-only 인계는 `sourceOnlyExamAlias`를 지정할 수 있다. 세 입력 제목과 SHA·UID·순번을 확인하고, 문항별 발문·보기는 필드명과 LaTeX 이스케이프·공백만 정규화해 비교하며 문제 그림은 정확히 같아야 한다. 감사본 정답은 전부 빈 값이어야 하고 현재 정답은 검증했다고 주장하지 않는다. 원본별 필드 차이와 metadata `NOT_VERIFIED`는 그대로 기록한다.
+
 검증 명령: `node --test tests/convert-meta-pipeline.test.mjs`.

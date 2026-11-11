@@ -68,6 +68,15 @@ test('batch conversion preserves source bytes, isolates SHA failures, and writes
  assert.match(runBatch({root,out,batch:{packages:[{...aliasSpec,requestId:'bad-alias'}]}})[0].reason,/ALIAS_STUDENT_PAYLOAD_MISMATCH/);
  put('archive/data/question_metadata.json',{records:[{questionUid:'uid1',sourceOrdinal:1,sourceArchiveFile:'original/exam.js',standardCourse:'수학',curriculum:'2015',L1:'단원',L2:'소단원'}]});
  put('archive/data/question_identity_map.json',{records:[{questionUid:'uid1',sourceOrdinal:1,sourceArchiveFile:'original/exam.js'}]});
+ const blankSource='window.questionBank=[{id:1,question:"x?",answer:"",solution:""}];',blankPath=put('blank.js',blankSource),blankSha=crypto.createHash('sha256').update(blankSource).digest('hex');
+ put('blank-audit.json',{schemaVersion:'ALIVE_META_AUDIT_ATOMIC_PACKAGE_v3',examTitle:'older-name',sourceDriveId:'drive',sourceSha256:blankSha,totalQuestions:1,totalApproved:1,totalHold:0,auditStatus:'PASSED_CANONICAL_AUDIT',records:[{...flatRow,auditVerdict:'APPROVED_CANONICAL'}]});
+ put('blank-manifest.json',{examTitle:'older-name',sourceDriveId:'drive',sourceSha256:blankSha,totalQuestions:1,totalHoldCount:0,status:'READY_FOR_COURIER_REGISTRATION',recordsToBind:[flatRow]});
+ put('blank-class.json',{examTitle:'older-name',sourceDriveId:'drive',sourceSha256:blankSha,records:[flatRow]});
+ const blankSpec={...spec,requestId:'blank-alias',sourceOnlyExamAlias:'older-name',driveSource:blankPath,audit:path.join(root,'blank-audit.json'),manifest:path.join(root,'blank-manifest.json'),classification:path.join(root,'blank-class.json')};
+ assert.equal(runBatch({root,out,batch:{packages:[blankSpec]}})[0].status,'DRY_RUN');
+ put('archive/exams/original/exam.js','window.questionBank=[{id:1,content:"not the same",answer:"1",solution:"x=1"}];');
+ assert.match(runBatch({root,out,batch:{packages:[{...blankSpec,requestId:'bad-blank-alias'}]}})[0].reason,/SOURCE_ONLY_ALIAS_PAYLOAD_MISMATCH/);
+ put('archive/exams/original/exam.js',source);
  put('archive/data/question_identity_map.json',{records:[{questionUid:'wrong',sourceOrdinal:1,sourceArchiveFile:'original/exam.js'}]});
  assert.match(runBatch({root,out,batch:{packages:[spec]}})[0].reason,/UID_MISMATCH/);
  put('archive/data/question_identity_map.json',{records:[{questionUid:'uid1',sourceOrdinal:1,sourceArchiveFile:'original/exam.js'}]});
