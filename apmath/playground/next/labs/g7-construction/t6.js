@@ -56,7 +56,7 @@
       const pk = M.pk, g = C.problem ? (pk.kind === 0 ? geo1(5, Math.max(1.5, 5 * (S3 / Math.tan(pk.y * DEG) - 1) / 2)) : geo1(5, 4)) : M;
       const { A, B, C: Cp, D, E } = g, Pp = g.P || inter(B, D, A, E), st = C.review ? C.step : 4;
       fit(b, { x0: -0.6, x1: g.a + g.b + 0.6, y0: -Math.max(g.a, g.b) * S3 / 2 - 0.5, y1: 0.4 }, { t: 40, b: 52 });
-      const t = C.problem ? 0 : C.review ? (st === 3 ? 1 : st >= 4 ? 1 : 0) : C.t;
+      const t = C.lesson ? C.t : C.problem ? 0 : C.review ? (st === 3 ? 1 : st >= 4 ? 1 : 0) : C.t;
       const prob = C.problem, cen = centroid([A, B, E]);
       fillPoly(b, [A, B, Cp], 'sky', 0.1); fillPoly(b, [Cp, D, E], 'green', 0.1);
       poly(b, [A, B, Cp], 'ink', 3.4); poly(b, [Cp, D, E], 'ink', 3.4); line(b, B, E, 'ink', 3.4);
@@ -81,13 +81,13 @@
         ang(b, Pp, A, B, { color: 'rose', rings: 1, label: sm(b) ? '' : dg(M.apb), r: sm(b) ? 16 : 22, labelDist: 40, size: 14 });
         if (sm(b)) T(b, Pp, dg(M.apb), { dx: -22, dy: -26, size: 14, color: 'rose' });
       }
-      if (prob || C.review) {
-        if (pk.kind === 0) { ang(b, D, B, Cp, { color: 'sky', rings: 1, label: `${pk.y}°`, r: 26, labelDist: 52, size: 14 }); ang(b, E, D, A, { color: 'rose', rings: 1, label: C.review && st >= 4 ? `${60 - pk.y}°` : '?', r: 30, labelDist: 52, size: 15 }); }
-        else if (prob || st >= 4) { const o = [[A, B], [B, g.E], [g.E, D], [D, A]][pk.q]; ang(b, Pp, o[0], o[1], { color: 'rose', rings: 1, label: C.review ? `${pk.q % 2 ? 120 : 60}°` : '?', r: 24, labelDist: 44, size: 15 }); }
+      if (prob || (C.review && (!C.lesson || s.cnLessonProblem))) {
+        if (pk.kind === 0) { ang(b, D, B, Cp, { color: 'sky', rings: 1, label: `${pk.y}°`, r: 26, labelDist: 52, size: 14 }); ang(b, E, D, A, { color: 'rose', rings: 1, label: C.review && st >= 4 && (!C.lesson || s.cnShowAnswer) ? `${60 - pk.y}°` : '?', r: 30, labelDist: 52, size: 15 }); }
+        else if (prob || st >= 4) { const o = [[A, B], [B, g.E], [g.E, D], [D, A]][pk.q]; ang(b, Pp, o[0], o[1], { color: 'rose', rings: 1, label: C.review && (!C.lesson || s.cnShowAnswer) ? `${pk.q % 2 ? 120 : 60}°` : '?', r: 24, labelDist: 44, size: 15 }); }
       }
       [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D'], [E, 'E']].forEach(([p, n]) => { b.point(p, { color: 'ink', r: 4.6 }); const o = n === 'C' ? pt(0, 1) : p; if (n === 'C') T(b, p, 'C', { dy: 18, size: 17 }); else tagOut(b, p, cen, n, { size: 17, gap: n === 'B' || n === 'E' ? 12 : 11 }); });
       if ((prob ? pk.kind !== 0 : C.review ? pk.kind !== 0 && st >= 4 : st >= 4) || C.tab === 'explore') { if (Pp) { b.point(Pp, { color: 'rose', r: 4.2 }); if (C.txt) T(b, Pp, 'P', { dx: 12, dy: !prob && sm(b) ? -28 : 16, size: 16, color: 'rose' }); } }
-      if (C.txt && !prob) {
+      if (C.txt && !prob && !C.lesson) {
         const msgs = ['같은 길이: AB=BC=CA, CD=DE=EC', '두 각 ∠BCD, ∠ACE는 모두 120°', t >= 0.999 ? '△BCD가 △ACE에 겹쳐요 → 합동 (SAS)' : '△BCD를 점 C 둘레로 60° 돌려요', C.review ? (pk.kind === 0 ? `∠DEA = 60° − ${pk.y}° = ${60 - pk.y}°` : `∠${['APB', 'BPE', 'EPD', 'DPA'][pk.q]} = ${pk.q % 2 ? 120 : 60}°`) : `합동이라서 BD = AE, 두 선분이 이루는 각 ∠APB = ${dg(M.apb)}`];
         const m = C.review ? msgs[Math.min(3, Math.max(0, st - 1))] : t >= 0.999 ? msgs[2] : t > 0 ? msgs[2] : '▶를 눌러 △BCD를 돌려 보세요';
         cap(b, (g.a + g.b) / 2, 0, m, t >= 0.999 ? 'green' : 'amber', 46);
@@ -137,7 +137,7 @@
       const pk = M.pk, L = C.problem ? pk.L : M.L, d = C.problem ? (pk.kind === 1 ? pk.c : pk.L - pk.c) : M.d, g = geo2(L, d), { A, B, C: Cp, D, E } = g, st = C.review ? C.step : 4, prob = C.problem;
       const bb = bboxOf([A, B, Cp, D, E], 0.5);
       fit(b, { x0: bb.x0 - 0.2, x1: Math.max(bb.x1, L + 1), y0: bb.y0, y1: 0.8 }, { t: 40, b: 52 });
-      const t = prob ? 0 : C.review ? (st >= 3 ? 1 : 0) : C.t, cen = centroid([A, B, Cp]);
+      const t = C.lesson ? C.t : prob ? 0 : C.review ? (st >= 3 ? 1 : 0) : C.t, cen = centroid([A, B, Cp]);
       fillPoly(b, [A, B, Cp], 'sky', 0.1); fillPoly(b, [A, D, E], 'rose', 0.1);
       poly(b, [A, B, Cp], 'ink', 3.4); poly(b, [A, D, E], 'ink', 3.4); line(b, B, Cp, 'ink', 3.4);
       if (!prob && t > 0.001) { const R = [A, B, D].map((p) => rot0(p, A, -60 * t)); fillPoly(b, R, 'amber', 0.22); poly(b, R, 'amber', 3.2, { alpha: 0.9 }); }
@@ -145,7 +145,7 @@
       if (prob || st >= 1) { [[A, B], [B, Cp], [Cp, A]].forEach(([p, q]) => tick(b, p, q, 1, 'amber')); [[A, D], [D, E], [E, A]].forEach(([p, q]) => tick(b, p, q, 2, 'amber')); }
       if (prob && pk.kind === 2) ang(b, Cp, D, E, { color: 'rose', rings: 1, label: '?', r: 26, labelDist: 52, size: 15 });
       if (!prob && st >= 2) { ang(b, A, B, D, { color: 'sky', rings: 1, label: '', r: 30, size: 13 }); ang(b, A, Cp, E, { color: 'sky', rings: 1, label: '', r: 36, size: 13 }); }
-      if (!prob && st >= 3) { tick(b, B, D, 3, 'rose'); tick(b, Cp, E, 3, 'rose'); ang(b, Cp, D, E, { color: 'rose', rings: 2, label: C.review && pk.kind === 2 && st < 4 ? '?' : '120°', r: 26, labelDist: 52, size: 14 }); }
+      if (!prob && st >= 3) { tick(b, B, D, 3, 'rose'); tick(b, Cp, E, 3, 'rose'); if (!C.lesson || (s.cnShowAnswer && s.cnLessonGoal === 'dce')) ang(b, Cp, D, E, { color: 'rose', rings: 2, label: C.review && pk.kind === 2 && st < 4 ? '?' : '120°', r: 26, labelDist: 52, size: 14 }); }
       if (C.txt) {
         const sd = (p, q, v, col, off) => sideTag(b, p, q, cen, v, { size: sm(b) ? 14 : 16, color: col, gap: off });
         if (prob) {
@@ -158,10 +158,11 @@
             else sd(D, Cp, `CD=${pk.c}`, 'rose', 14);
           } }
           else sd(Cp, E, `CE=${pk.c}`, 'rose', 12);
-        } else if (C.review) {
-          if (pk.kind === 0) { sd(D, Cp, `CD=${L - d}`, 'sky', 14); if (st >= 4) sd(B, D, `BD=${d}`, 'amber', 14); }
-          else if (pk.kind === 1) { sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 }); if (st >= 4) sd(D, Cp, `CD=${L - d}`, 'sky', 14); }
-          if (pk.kind === 0 && st >= 4) sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 });
+        } else if (C.review && (!C.lesson || s.cnLessonProblem)) {
+          if (C.lesson) T(b, mid(B, Cp), `BC = ${pk.L} cm`, { dy: 48, size: 14, color: 'sky' });
+          if (pk.kind === 0) { sd(D, Cp, `CD=${L - d}`, 'sky', 14); if (st >= 4 && (!C.lesson || s.cnShowAnswer)) sd(B, D, `BD=${d}`, 'amber', 14); }
+          else if (pk.kind === 1) { sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 }); if (st >= 4 && (!C.lesson || s.cnShowAnswer)) sd(D, Cp, `CD=${L - d}`, 'sky', 14); }
+          if (pk.kind === 0 && st >= 4 && (!C.lesson || s.cnShowAnswer)) sideTag(b, Cp, E, centroid([Cp, E, A]), `CE=${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 });
         } else {
           sd(B, D, `${d}`, 'amber', 14); sd(D, Cp, `${L - d}`, 'sky', 14);
           if (st >= 3) sideTag(b, Cp, E, centroid([Cp, E, A]), `${d}`, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 });
@@ -169,7 +170,7 @@
       }
       [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D'], [E, 'E']].forEach(([p, n]) => { b.point(p, { color: n === 'D' && !prob ? 'amber' : 'ink', r: 4.6 }); if (n === 'B' || n === 'C') T(b, p, n, { dy: 18, size: 17 }); else if (n === 'D') T(b, p, 'D', { dy: 18, size: 17 }); else tagOut(b, p, cen, n, { size: 17, gap: 11 }); });
       if (!prob && !C.review && C.txt && t <= 0.001) b.handle('D', D, { color: 'amber', r: 8, ariaLabel: '점 D 끌기(가로)', drag: (w) => { s.cnHd = clamp(Math.round(w.x), 1, M.L - 1); } });
-      if (C.txt && !prob) {
+      if (C.txt && !prob && !C.lesson) {
         const msgs = ['같은 길이: AB=BC=CA, AD=DE=EA', `∠BAD = ∠CAE (60° − ∠DAC) 이고 ∠ABD = ∠ACE = 60°`, t >= 0.999 ? '△ABD가 △ACE에 겹쳐요 → 합동 (SAS) → BD = CE' : '△ABD를 점 A 둘레로 60° 돌려요', C.review ? pk.kind === 2 ? '∠DCE = 60° + 60° = 120°' : `${pk.kind === 0 ? 'CE' : 'CD'} = ${L} − ${pk.c} = ${L - pk.c}` : `BD = CE = ${d}, CD + CE = ${L - d} + ${d} = ${L} = BC, ∠DCE = 120°`];
         const m = C.review ? msgs[Math.min(3, Math.max(0, st - 1))] : t >= 0.999 ? msgs[2] : '▶를 눌러 △ABD를 돌려 보세요';
         cap(b, (bb.x0 + bb.x1) / 2, 0, m, t >= 0.999 ? 'green' : 'amber', 62);
@@ -218,20 +219,20 @@
       const prob = C.problem, pk = M.pk, g = prob ? geo3(6, 3.2, pk.th || 40) : M.g, { A, B, C: Cp, D, E, F, G: Gp } = g, st = C.review ? C.step : 4;
       const bb = bboxOf([A, B, Cp, D, E, F, Gp], 0.5);
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.2 }, { t: 40, b: 56 });
-      const t = prob ? 0 : C.review ? (st >= 3 ? 1 : 0) : C.t, cen = pt(0, 0);
+      const t = C.lesson ? C.t : prob ? 0 : C.review ? (st >= 3 ? 1 : 0) : C.t, cen = pt(0, 0);
       fillPoly(b, [A, B, Cp, D], 'sky', 0.1); fillPoly(b, [A, E, F, Gp], 'rose', 0.1);
       poly(b, [A, B, Cp, D], 'ink', 3.4); poly(b, [A, E, F, Gp], 'ink', 3.4);
       line(b, B, E, 'green', 3.2); line(b, D, Gp, 'green', 3.2);
       if (!prob && t > 0.001) { const R = [A, B, E].map((p) => rot0(p, A, -90 * t)); fillPoly(b, R, 'amber', 0.22); poly(b, R, 'amber', 3.2, { alpha: 0.9 }); }
       if (!prob && t >= 0.999) poly(b, [A, D, Gp], 'amber', 3, { dash: [8, 5] });
       if (!prob && st >= 1) { tick(b, A, B, 1, 'amber'); tick(b, A, D, 1, 'amber'); tick(b, A, E, 2, 'amber'); tick(b, A, Gp, 2, 'amber'); }
-      if (!prob && !C.review && st >= 2) {
+      if (!prob && (!C.review || (C.lesson && !s.cnLessonProblem)) && st >= 2) {
         ang(b, A, B, E, { color: 'sky', rings: 1, label: dg(g.th), r: 26, labelDist: 40, size: 13 });
         ang(b, A, D, Gp, { color: 'sky', rings: 1, label: dg(g.th), r: 26, labelDist: 40, size: 13 });
         ang(b, A, E, D, { color: 'rose', rings: 2, label: dg(90 - g.th), r: 22, labelDist: 40, size: 13 });
       }
       if (!prob && st >= 3) { tick(b, B, E, 3, 'green'); tick(b, D, Gp, 3, 'green'); }
-      if (prob || C.review) {
+      if (prob || (C.review && (!C.lesson || s.cnLessonProblem))) {
         [[A, B], [B, Cp], [Cp, D], [D, A]].forEach(([p, q]) => tick(b, p, q, 1, 'amber')); [[A, E], [E, F], [F, Gp], [Gp, A]].forEach(([p, q]) => tick(b, p, q, 2, 'amber'));
         [[A, B, D], [B, Cp, A], [Cp, D, B], [D, A, Cp], [E, F, A], [F, Gp, E], [Gp, A, F]].forEach(([v, p1, q1]) => ang(b, v, p1, q1, { color: 'sky', r: 14 }));
         if (pk.kind === 0) { const ex = `${pk.k}x${pk.m > 0 ? '+' : '−'}${Math.abs(pk.m)}`; sideTag(b, B, E, pt((B.x + E.x + A.x) / 3, (B.y + E.y + A.y) / 3), ex, { size: sm(b) ? 14 : 16, color: 'rose', gap: 12 }); sideTag(b, D, Gp, pt((D.x + Gp.x + A.x) / 3, (D.y + Gp.y + A.y) / 3), `${pk.n}`, { size: sm(b) ? 14 : 16, color: 'sky', gap: 12 }); }
@@ -245,7 +246,7 @@
         }
         else tagOut(b, p, pt(g.a / 2, -g.a / 2), n, { size: 17, gap: 11 }); });
       if (!prob && !C.review && C.txt && t <= 0.001) b.handle('E', E, { color: 'amber', r: 8, ariaLabel: '점 E 끌기(∠BAE 조절)', drag: (w) => { s.cnKth = clamp(Math.round(-dirDeg(A, w) / 5) * 5, 15, 75); } });
-      if (C.txt && !prob) {
+      if (C.txt && !prob && !C.lesson) {
         const msgs = ['같은 길이: AB=AD, AE=AG', `∠BAE = 90° − ∠EAD = ∠DAG = ${g.th}° (공통인 ∠EAD를 빼면 같아요)`, t >= 0.999 ? '△ABE가 △ADG에 겹쳐요 → 합동 (SAS)' : '△ABE를 점 A 둘레로 90° 돌려요', C.review ? `대응하는 값이 같으므로 x = ${pk.x}` : 'BE = DG, 그리고 BE와 DG는 서로 수직이에요'];
         const m = C.review ? msgs[Math.min(3, Math.max(0, st - 1))] : t >= 0.999 ? msgs[2] : '▶를 눌러 △ABE를 돌려 보세요';
         if (C.review && st === 2 && sm(b)) {
@@ -297,7 +298,7 @@
       const prob = C.problem, pk = M.pk, inside = prob ? pk.m === 'in' : M.inside, a = prob ? 6 : M.a, g = geo4(a, inside), { A, B, C: Cp, D, E } = g, st = C.review ? C.step : 4;
       const bb = bboxOf([A, B, Cp, D, E], 0.5);
       fit(b, { x0: bb.x0 - 0.3, x1: bb.x1 + 0.3, y0: bb.y0, y1: bb.y1 + 0.2 }, { t: 40, b: 56 });
-      const t = prob ? 0 : C.review ? (st >= 3 ? 1 : 0) : C.t, axis = -a / 2;
+      const t = C.lesson ? C.t : prob ? 0 : C.review ? (st >= 3 ? 1 : 0) : C.t, axis = -a / 2;
       fillPoly(b, [A, B, Cp, D], 'sky', 0.1); fillPoly(b, [B, Cp, E], 'rose', 0.12);
       poly(b, [A, B, Cp, D], 'ink', 3.4); poly(b, [B, Cp, E], 'ink', 3.4); line(b, A, E, 'green', 3.2); line(b, D, E, 'green', 3.2);
       if (!prob && t > 0.001) { const sy = Math.cos(Math.PI * t); const R = [A, B, E].map((p) => pt(p.x, axis + (p.y - axis) * sy)); fillPoly(b, R, 'amber', 0.22); poly(b, R, 'amber', 3.2, { alpha: 0.9 }); }
@@ -312,14 +313,14 @@
         ang(b, Cp, D, E, { color: 'rose', rings: 1, label: dg(inside ? 30 : 150), r: 30, labelDist: 50, size: 13 });
       }
       if (!prob && st >= 3) { tick(b, A, E, 3, 'green'); tick(b, D, E, 3, 'green'); }
-      if (!prob && st >= 4) {
+      if (!prob && st >= 4 && (!C.lesson || s.cnShowAnswer)) {
         const target = C.review ? [[A, B, E, M.bae], [E, A, D, M.aed], [A, E, D, Math.abs(90 - M.bae)], [E, A, B, M.bae]][pk.q] : [E, A, D, M.aed];
         ang(b, target[0], target[1], target[2], { color: 'green', rings: 2, label: dg(target[3]), r: 24, labelDist: 46, size: 14 });
       }
       const cen = pt(a / 2, -a / 2);
       [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D']].forEach(([p, n]) => { b.point(p, { color: 'ink', r: 4.6 }); tagOut(b, p, cen, n, { size: 17, gap: 11 }); });
       b.point(E, { color: 'ink', r: 4.6 }); tagOut(b, E, inside ? pt(a, -a / 2) : cen, 'E', { size: 17, gap: 11 });
-      if (C.txt && !prob) {
+      if (C.txt && !prob && !C.lesson) {
         const msgs = ['같은 길이: AB=DC (정사각형), BE=CE (정삼각형)', `∠ABE = ∠DCE = 90° ${inside ? '−' : '+'} 60° = ${inside ? 30 : 150}°`, t >= 0.999 ? '△ABE가 △DCE에 겹쳐요 → 합동 (SAS) → AE = DE' : '△ABE를 제자리에서 뒤집어요', `△ABE는 AB=BE인 이등변삼각형 → ∠BAE = ${fmtN(M.bae)}°, ∠EAD = ${fmtN(90 - (inside ? M.bae : M.bae) * (inside ? 1 : 1))}°`];
         const target = ['∠BAE', '∠AED', '∠EAD', '∠AEB'][pk.q], value = [M.bae, M.aed, Math.abs(90 - M.bae), M.bae][pk.q];
         const m = C.review ? (st >= 4 ? `이등변삼각형의 밑각을 이용하면 ${target} = ${fmtN(value)}°` : msgs[Math.max(0, Math.min(2, st - 1))]) : t >= 0.999 ? msgs[2] : '▶를 눌러 △ABE를 뒤집어 보세요';

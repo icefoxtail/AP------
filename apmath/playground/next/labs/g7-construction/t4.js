@@ -70,7 +70,7 @@
       const mode = M.mode, w = bboxOf(Tr).x1 - bboxOf(Tr).x0, X0 = w + 3.2;
       const bb = pairBox(Tr, mode, X0);
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.8 }, { t: 36, b: 46 });
-      const t = C.review ? (C.step === 1 ? 1 : 0) : C.t;
+      const t = C.lesson ? C.t : C.review ? (C.step === 1 ? 1 : 0) : C.t;
       const img = imageAt(Tr, mode, t, X0), done = t >= 0.999, st = C.review ? C.step : 3;
       const col = (cs) => (st >= 2 ? cs : 'ink');
       const mk = (T3, nm, nm2) => {
@@ -95,7 +95,7 @@
         const cap = done ? `꼭 포개어져요 → 합동 (△ABC ≡ △${imageNames})`
           : C.review ? (st >= 3 ? '같은 표시의 변·각이 서로 대응해요.' : st >= 2 ? '같은 색의 점은 서로 대응해요.' : '어떤 점·변·각이 대응할지 살펴보세요.')
             : t <= 0 ? '▶를 눌러 오른쪽 삼각형을 가로로 밀어 포개 보세요' : mode === 'slide' ? '가로로 밀어 포개요' : t < 0.5 ? (mode === 'rot' ? '제자리에서 돌려요' : '제자리에서 뒤집어요') : '가로로 밀어 포개요';
-        T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), cap, { dy: 22, size: b.W < 560 ? 14 : 17, color: done ? 'green' : 'amber' });
+        if (!C.lesson) T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), cap, { dy: 22, size: b.W < 560 ? 14 : 17, color: done ? 'green' : 'amber' });
       }
       if (!C.review && C.txt && t <= 0) b.handle('C', Tr[2], { color: 'amber', r: 8, ariaLabel: '꼭짓점 C 끌기(모양 바꾸기)', drag: (w2) => { s.cnCx = clamp(w2.x, 0.8, 5.2); s.cnCy = clamp(-w2.y, 2.6, 5.4); } });
     },
@@ -182,8 +182,8 @@
       return ['이 문제에서는 A↔D, B↔E, C↔F예요. 합동 기호의 순서대로 대응점을 확인해요.', '합동이면 대응변의 길이와 대응각의 크기가 각각 같고, 모양·크기·넓이도 같아요.', `옳지 않은 설명은 ${wrong.h}입니다. ${why[f]}`];
     },
     draw(b, s, M, C) {
-      if (C.problem || C.review) { drawOrderProblem(b, M, C.review ? C.step : 0); return; }
-      const mode = C.review ? (C.step >= 3 ? 'area' : 'order') : M.mode;
+      if ((C.problem || C.review) && (!C.lesson || s.cnLessonProblem)) { drawOrderProblem(b, M, C.review ? C.step : 0); return; }
+      const mode = C.lesson ? M.mode : C.review ? (C.step >= 3 ? 'area' : 'order') : M.mode;
       if (mode === 'area') {
         const w1 = M.Rw, h1 = M.Rh, area = w1 * h1, w2 = M.Rw2, h2 = area / w2, same = w2 === w1 || w2 === h1;
         const X = w1 + 2.4, hmax = Math.max(h1, h2, 4);
@@ -193,14 +193,14 @@
         T(b, pt(w1 / 2, -h1 / 2), `넓이 ${area}`, { size: 17, color: 'sky' }); T(b, pt(X + w2 / 2, -h2 / 2), `넓이 ${fmtN(area)}`, { size: 17, color: same ? 'green' : 'rose' });
         T(b, pt(w1 / 2, 0), `${w1}`, { dy: 18, size: 16, color: 'sky' }); T(b, pt(0, -h1 / 2), `${h1}`, { dx: -14, size: 16, color: 'sky' });
         T(b, pt(X + w2 / 2, 0), `${w2}`, { dy: 18, size: 16, color: same ? 'green' : 'rose' }); T(b, pt(X + w2, -h2 / 2), ratioText(area, w2), { dx: 16, size: 16, color: same ? 'green' : 'rose' });
-        if (C.txt) T(b, pt((X + w2 + 0) / 2, 0), same ? '넓이도 같고 모양·크기도 같아서 합동이에요 ✓' : '넓이는 같지만 합동이 아니에요 ✗ (모양이 달라요)', { dy: 46, size: b.W < 560 ? 14 : 17, color: same ? 'green' : 'rose' });
+        if (C.txt && !C.lesson) T(b, pt((X + w2 + 0) / 2, 0), same ? '넓이도 같고 모양·크기도 같아서 합동이에요 ✓' : '넓이는 같지만 합동이 아니에요 ✗ (모양이 달라요)', { dy: 46, size: b.W < 560 ? 14 : 17, color: same ? 'green' : 'rose' });
         return;
       }
       const g = M.g, pk = M.pick == null ? null : PERMS[M.pick];
       const bb = unionBox(bboxOf(g.Tr, 0.5), bboxOf(g.img, 0.5));
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 1.6 }, { t: 34, b: 60 });
       const cA = centroid(g.Tr), cB = centroid(g.img);
-      const chosen = C.review ? PERMS.findIndex((p) => orderOK(g, p)) : M.pick, pkk = chosen == null || chosen < 0 ? null : PERMS[chosen], ok = pkk ? orderOK(g, pkk) : false;
+      const chosen = C.review && !C.lesson ? PERMS.findIndex((p) => orderOK(g, p)) : M.pick, pkk = chosen == null || chosen < 0 ? null : PERMS[chosen], ok = pkk ? orderOK(g, pkk) : false;
       const L = (i, j) => dist(g.Tr[i], g.Tr[j]);
       fillPoly(b, g.Tr, 'sky', 0.1); poly(b, g.Tr, 'ink', 3.4); fillPoly(b, g.img, 'sky', 0.1); poly(b, g.img, 'ink', 3.4);
       // 변 길이 (그림 안, 정수)
@@ -212,7 +212,7 @@
       if (pkk) {
         pkk.forEach((nameIdx, i) => { const q = g.posOf[nameIdx]; line(b, g.Tr[i], q, VCOL[i], 1.6, { dash: [4, 6], alpha: 0.7 }); });
       }
-      if (C.txt) {
+      if (C.txt && !C.lesson) {
         const cx = (bb.x0 + bb.x1) / 2;
         if (!pkk) T(b, pt(cx, bb.y1 + 0.6), `점 A, B, C와 대응하는 점을 순서대로 골라 보세요`, { dy: 30, size: b.W < 560 ? 14 : 16, color: 'amber' });
         else {
@@ -288,14 +288,14 @@
       ];
     },
     draw(b, s, M, C) {
-      const solving = C.problem || C.review, mode = C.review ? (M.pk.kind ? 'ang' : 'side') : M.mode;
+      const solving = (C.problem || C.review) && (!C.lesson || s.cnLessonProblem), mode = solving ? (M.pk.kind ? 'ang' : 'side') : M.mode;
       let Tr;
       if (solving) {
         const pk = M.pk;
         Tr = (pk.kind || 0) === 0 ? triSSS(pk.n, pk.b || 6, pk.c || 7) : triASA(6, pk.A || 60, pk.r || 60);
       } else Tr = mode === 'side' ? triSSS(M.a, M.b, M.c) : triASA(6, M.A, M.B);
       if (!Tr) Tr = triSSS(6, 7, 8);
-      const X0 = bboxOf(Tr).x1 - bboxOf(Tr).x0 + 3.2, t = C.problem ? 0 : (C.review ? 0 : C.t);
+      const X0 = bboxOf(Tr).x1 - bboxOf(Tr).x0 + 3.2, t = C.lesson ? C.t : C.problem ? 0 : (C.review ? 0 : C.t);
       const bb = unionBox(bboxOf(Tr, 0.3), (() => { let u = bboxOf(Tr, 0.3); [0, 1].forEach((tt) => { u = unionBox(u, bboxOf(imageAt(Tr, 'rot', tt, X0), 0.3)); }); return u; })());
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.6 }, { t: 40, b: 58 });
       const img = imageAt(Tr, 'rot', t, X0), done = t >= 0.999, cA = centroid(Tr), cB = centroid(img), st = C.review ? C.step : 3;
@@ -319,7 +319,7 @@
       if (solving) drawProblemLabels(b, M, Tr, img, cA, cB);
       Tr.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cA, 'ABC'[i], { size: 17 }); });
       img.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (!done) tagOut(b, p, cB, 'DEF'[i], { size: 17 }); });
-      if (C.txt && !C.problem) T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), C.review && st >= 3 ? `대응하는 값이 같으므로 x = ${M.pk.x}` : done ? '포개어져요 → 대응하는 값이 모두 같아요' : mode === 'side' ? '대응변: AB=DE, BC=EF, CA=FD (길이가 같아요)' : '대응각: ∠A=∠D, ∠B=∠E, ∠C=∠F (크기가 같아요)', { dy: 24, size: b.W < 560 ? 13 : 16, color: 'amber' });
+      if (C.txt && !C.problem && !C.lesson) T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), C.review && st >= 3 ? `대응하는 값이 같으므로 x = ${M.pk.x}` : done ? '포개어져요 → 대응하는 값이 모두 같아요' : mode === 'side' ? '대응변: AB=DE, BC=EF, CA=FD (길이가 같아요)' : '대응각: ∠A=∠D, ∠B=∠E, ∠C=∠F (크기가 같아요)', { dy: 24, size: b.W < 560 ? 13 : 16, color: 'amber' });
     },
     stepT: () => 0,
     steps: (M) => [
