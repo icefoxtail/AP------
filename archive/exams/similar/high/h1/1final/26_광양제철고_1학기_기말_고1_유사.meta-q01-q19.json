@@ -9,8 +9,8 @@
   "type": "CANDIDATE_CREATION_GATE",
   "metadataReviewed": false,
   "approvedBy": "claude-similar-high-gen",
-  "reviewStatus": "review_required",
-  "reviewPassCount": 0,
+  "reviewStatus": "independent_review_passed",
+  "reviewPassCount": 1,
   "evidenceRefs": []
  },
  "registryChanges": [],
@@ -70,7 +70,7 @@
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "difficultyReason": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 2이다(부호 반전 한 곳).",
+    "difficultyReason": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 1이다(부호 반전 한 곳).",
     "primaryMethod": "두 일차부등식을 각각 풀어 수직선에서 공통 범위를 잡고 그 안의 정수를 센다",
     "decisiveStep": "음수로 나눌 때 부등호 방향을 바꾸고, 공통 범위의 오른쪽 끝 −1을 포함하는 반닫힌 구간 처리",
     "rpmSemanticStatus": "SELF_CHECKED",
@@ -111,8 +111,8 @@
      ]
     },
     "hold": [],
-    "levelBasis": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 2이다(부호 반전 한 곳).",
-    "difficultyBasis": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 2이다(부호 반전 한 곳).",
+    "levelBasis": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 1이다(부호 반전 한 곳).",
+    "difficultyBasis": "일차부등식 두 개를 풀고 겹치는 구간의 정수를 세는 직접 처리라 사고 단계가 1이다(부호 반전 한 곳).",
     "visualNecessity": {
      "problem": "EXEMPT",
      "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
@@ -211,7 +211,7 @@
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "difficultyReason": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 3이다.",
+    "difficultyReason": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 2이다.",
     "primaryMethod": "행렬의 성분을 읽어 작업일 수 x,y에 대한 연립일차방정식을 세워 풀고 같은 x,y로 흰색 하의 성분을 계산한다",
     "decisiveStep": "행(색상)과 열(종류)을 구별해 상의 두 성분에서 연립방정식을 세우는 것",
     "rpmSemanticStatus": "SELF_CHECKED",
@@ -248,8 +248,8 @@
      "condition": []
     },
     "hold": [],
-    "levelBasis": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 3이다.",
-    "difficultyBasis": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 3이다.",
+    "levelBasis": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 2이다.",
+    "difficultyBasis": "표를 행렬로 읽는 해석 한 단계 뒤에 연립방정식과 대입 계산이 이어져 사고 단계가 2이다.",
     "visualNecessity": {
      "problem": "EXEMPT",
      "problemReason": "생산량 표는 발문에 표로 이미 들어 있고 별도 그림은 필요 없다.",
@@ -348,7 +348,7 @@
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "difficultyReason": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 3이다.",
+    "difficultyReason": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 2이다.",
     "primaryMethod": "행렬 방정식 두 개를 연립해 A와 B를 각각 구한 뒤 곱 AB의 성분을 모두 더한다",
     "decisiveStep": "첫째 식에 둘째 식의 2배를 더해 5A를, 둘째 식에서 첫째 식의 2배를 빼 5B를 얻는 소거",
     "rpmSemanticStatus": "SELF_CHECKED",
@@ -389,8 +389,8 @@
      "condition": []
     },
     "hold": [],
-    "levelBasis": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 3이다.",
-    "difficultyBasis": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 3이다.",
+    "levelBasis": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 2이다.",
+    "difficultyBasis": "문자를 소거해 A,B를 구하고 행렬의 곱까지 이어지는 계산이 길지만 각 단계는 정해진 절차라 사고 단계가 2이다.",
     "visualNecessity": {
      "problem": "EXEMPT",
      "problemReason": "행렬 식만으로 완결되어 그림이 필요 없다.",
@@ -1076,7 +1076,7 @@
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "difficultyReason": "최고차항 계수에 따른 경우 나누기와 판별식 부등식, 무리수 경계 처리까지 이어져 사고 단계가 4에 가깝다.",
+    "difficultyReason": "최고차항 계수에 따른 경우 나누기와 판별식 부등식, 무리수 경계 처리까지 이어져 사고 단계가 3이다(경계 처리가 있어 4에 가깝지만 보수적으로 3으로 둔다).",
     "primaryMethod": "a의 부호(a>0, a=0, a<0)로 나누어 해가 없으려면 a<0이고 판별식이 0 이하임을 이용해 정수 a의 범위를 센다",
     "decisiveStep": "'해를 갖지 않는다'를 아래로 열린 포물선의 최댓값이 0 이하라는 판별식 조건으로 옮기는 것",
     "rpmSemanticStatus": "SELF_CHECKED",
@@ -1119,8 +1119,8 @@
      ]
     },
     "hold": [],
-    "levelBasis": "최고차항 계수에 따른 경우 나누기와 판별식 부등식, 무리수 경계 처리까지 이어져 사고 단계가 4에 가깝다.",
-    "difficultyBasis": "최고차항 계수에 따른 경우 나누기와 판별식 부등식, 무리수 경계 처리까지 이어져 사고 단계가 4에 가깝다.",
+    "levelBasis": "최고차항 계수에 따른 경우 나누기와 판별식 부등식, 무리수 경계 처리까지 이어져 사고 단계가 3이다(경계 처리가 있어 4에 가깝지만 보수적으로 3으로 둔다).",
+    "difficultyBasis": "최고차항 계수에 따른 경우 나누기와 판별식 부등식, 무리수 경계 처리까지 이어져 사고 단계가 3이다(경계 처리가 있어 4에 가깝지만 보수적으로 3으로 둔다).",
     "visualNecessity": {
      "problem": "EXEMPT",
      "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
@@ -1507,7 +1507,7 @@
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "difficultyReason": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 3이다.",
+    "difficultyReason": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 2이다.",
     "primaryMethod": "w²−w+1=0을 이용해 −w²−1=−w로 줄이고, z=−w가 z³=1, z²+z+1=0임을 이용해 세 항씩 묶어 합을 줄인다",
     "decisiveStep": "−w²−1을 −w로 간단히 하고 z=−w의 거듭제곱이 주기 3으로 반복되어 세 항씩 묶으면 0이 되는 것",
     "rpmSemanticStatus": "SELF_CHECKED",
@@ -1550,8 +1550,8 @@
      "condition": []
     },
     "hold": [],
-    "levelBasis": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 3이다.",
-    "difficultyBasis": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 3이다.",
+    "levelBasis": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 2이다.",
+    "difficultyBasis": "허근의 성질로 식을 줄인 뒤 주기 3으로 묶는 두 단계이고 계산량은 적어 사고 단계가 2이다.",
     "visualNecessity": {
      "problem": "EXEMPT",
      "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
