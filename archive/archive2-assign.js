@@ -11,7 +11,14 @@
    index.html registerIndexClassExamAssignment 원본 분기)이 보내는 것과 키 하나까지 같다(originalBodyFor 참고).
    서버 원본 분기에는 batch id가 없다: 쓰기 키 = sha256([반, 출제일, "exams/<파일>"])(routes/archive2.js 쓰기 키 계산).
    같은 키로 본문이 같으면 기존 건을 돌려주고(멱등), 학생 구성·제목·쪽당 문항이 다르면 409, 취소된 건이면 409다.
-   그래서 '확인하기'는 저장본과 같이 얼려 둔 같은 본문을 다시 보낸다. */
+   그래서 '확인하기'는 저장본과 같이 얼려 둔 같은 본문을 다시 보낸다.
+
+   단원별 기출 출제(2026-11-11): items[]의 항목이 {kind:"unit", snapshotKey, title, identityTitle, count, …}이면 단원별 문제지(권)를
+   같은 패널로 낸다. 서버는 문항별 승인 대조를 통과할 필드가 없어 계약 헤더 경로로는 단원별 문제지를 받지 못한다. 그래서 옛 모달
+   (index.html registerIndexClassExamAssignment)과 같은 본문(MIXED:<snapshotKey> + mixed_payload_json)을 헤더 없이 보낸다(unitBodyFor).
+   이 경로는 받는 사람을 항상 반 전체로 기록하므로, 학생을 일부만 고른 반은 POST 성공 뒤 exclude-students로 고르지 않은 학생을 뺀다.
+   제외가 실패하면 성공으로 표시하지 않는다(그동안 반 전체에게 보인다). 같은 (반, 출제일, MIXED:키)는 서버가 기존 건을 갱신하므로
+   재전송해도 새 건이 생기지 않는다. 문항은 open({unit:{load}})이 준다. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
@@ -229,13 +236,23 @@
     [/payload exceeds/i, "시험지가 너무 커서 이 방법으로는 낼 수 없습니다. 관리자에게 알려 주세요."],
     [/원본 문항이 필요|원본 경로가 올바르지/, "시험지 원본을 확인할 수 없습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요."],
   ];
+  // 단원별 기출 출제(헤더 없는 옛 본문). 서버 400 'mixed_payload_json with questions is required'는 본문이 비었거나 900000자를 넘을 때다.
+  const UNIT_TOO_BIG_MESSAGE = "문제지가 너무 커서 낼 수 없습니다. 문항 수를 줄여 다시 만들어 주세요.";
+  const UNIT_MESSAGES = [
+    [/mixed_payload_json/i, UNIT_TOO_BIG_MESSAGE],
+    [/확정 배부는 원본을 변경할 수 없/, "이 반에 같은 날 같은 이름으로 이미 낸 출제가 있어 바꿀 수 없습니다. 출제 내역에서 확인해 주세요."],
+    [/payload exceeds/i, UNIT_TOO_BIG_MESSAGE],
+  ];
+  const UNIT_LOAD_MESSAGE = "문제지 문항을 준비하지 못했습니다. 잠시 뒤 다시 시도해 주세요.";
+  const UNIT_EMPTY_MESSAGE = "문제지에 문항이 없어 출제할 수 없습니다. 단원별 기출 화면에서 다시 만들어 주세요.";
   const SOURCE_LOAD_MESSAGE = "시험지 원본을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.";
   const SOURCE_COUNT_MESSAGE = "시험지 원본의 문항 수가 목록과 달라 출제하지 않았습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.";
   function friendlyMessage(error, status, ctx = {}) {
     const raw = text(error?.data?.error || error?.message).replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
     if (ctx.original) for (const [pattern, message] of ORIGINAL_MESSAGES) if (pattern.test(raw)) return message;
+    if (ctx.unit) for (const [pattern, message] of UNIT_MESSAGES) if (pattern.test(raw)) return message;
     for (const [pattern, message] of KNOWN_MESSAGES) if (pattern.test(raw)) return message;
-    if (status === 413) return "시험지가 너무 커서 이 방법으로는 낼 수 없습니다. 관리자에게 알려 주세요.";
+    if (status === 413) return ctx.unit ? UNIT_TOO_BIG_MESSAGE : "시험지가 너무 커서 이 방법으로는 낼 수 없습니다. 관리자에게 알려 주세요.";
     if (status === 403) return "이 반에 출제할 권한이 없습니다.";
     if (status === 404) return "문제지나 반을 찾을 수 없습니다.";
     if (status === 503) return "서버가 준비 중입니다. 잠시 뒤 다시 시도해 주세요.";
@@ -261,7 +278,7 @@
       return { kind: "unknown", message: "서버에서 응답을 받지 못했습니다. 출제가 되었는지 확인이 필요합니다." };
     }
     if (/취소된 Assignment/.test(text(error?.data?.error || error?.message)))
-      return { kind: "cancelled", message: ctx.original ? ORIGINAL_CANCELLED_MESSAGE : CANCELLED_MESSAGE };
+      return { kind: "cancelled", message: ctx.original || ctx.unit ? ORIGINAL_CANCELLED_MESSAGE : CANCELLED_MESSAGE };
     return { kind: "failed", message: friendlyMessage(error, status, ctx) };
   }
 
@@ -300,14 +317,39 @@
       partCount: 1,
     };
   }
-  // 최근 출제 목록(recent-summary)에서 원본 시험(saved_paper_id 없음, archive_file = exams/<파일>)만 파일별로 묶는다.
+  // 단원별 기출 문제지 항목. 패널 안 id와 서버의 archive_file은 MIXED:<snapshotKey>다(옛 모달과 같다).
+  // 서버가 응시 여부를 가르는 제목(exam_title)은 옛 경로가 보내던 값 identityTitle||title이다.
+  const SNAPSHOT_KEY = /^[a-zA-Z0-9_-]+$/;
+  function normalizeUnit(row) {
+    const snapshotKey = text(row.snapshotKey);
+    const count = Number(row.count ?? row.qCount);
+    if (!SNAPSHOT_KEY.test(snapshotKey) || !Number.isInteger(count) || count < 1) return null;
+    const title = text(row.title) || text(row.identityTitle) || "단원별 기출";
+    const partCount = Number(row.partCount) > 1 ? Number(row.partCount) : 1;
+    return {
+      kind: "unit",
+      id: `MIXED:${snapshotKey}`,
+      snapshotKey,
+      title,
+      originalTitle: text(row.identityTitle) || title,
+      identityTitle: text(row.identityTitle) || title,
+      ref: row.ref ?? null, // 호출한 화면이 문항을 찾을 때 쓰는 값(패널은 읽지 않는다)
+      grade: text(row.grade),
+      subject: text(row.subject),
+      count,
+      partIndex: Number.isInteger(Number(row.partIndex)) ? Number(row.partIndex) : 0,
+      partCount,
+    };
+  }
+  // 최근 출제 목록(recent-summary)에서 원본 시험(saved_paper_id 없음, archive_file = exams/<파일>)과
+  // 단원별 기출(archive_file = MIXED:<키>, saved_paper_id 없음)만 파일별로 묶는다.
   // 모양은 보관함 이력(archive2-library groupIssuesByPaper)과 같아 저장본과 같은 판정 코드를 쓴다. 취소된 건도 담는다.
   function groupIssuesByFile(assignments) {
     const byFile = new Map();
     for (const row of Array.isArray(assignments) ? assignments : []) {
       const file = fileKey(row?.archive_file);
       const id = text(row?.id);
-      if (!id || !file.startsWith("exams/") || text(row?.saved_paper_id)) continue;
+      if (!id || !(file.startsWith("exams/") || file.startsWith("MIXED:")) || text(row?.saved_paper_id)) continue;
       if (!byFile.has(file)) byFile.set(file, []);
       byFile.get(file).push({
         id, classId: text(row.class_id), className: text(row.class_name),
@@ -347,6 +389,11 @@
         if (item && !seen.has(item.id)) { seen.add(item.id); out.push(item); }
         continue;
       }
+      if (row?.kind === "unit") {
+        const item = normalizeUnit(row);
+        if (item && !seen.has(item.id)) { seen.add(item.id); out.push(item); }
+        continue;
+      }
       const id = text(row?.id);
       if (!id || seen.has(id)) continue;
       seen.add(id);
@@ -377,8 +424,25 @@
     const onDone = options.onDone || (() => {});
     const issuedHere = options.doneStore || createDoneStore({ storage: options.sessionStorage || null });
     const originalCtx = options.original || {};
+    const unitCtx = options.unit || {};
     const recentCache = options.recentCache || sharedRecent;
     const hasOriginal = papers.some((paper) => paper.kind === "original");
+    const hasUnit = papers.some((paper) => paper.kind === "unit");
+    // 저장본이 아닌 항목(원본·단원별)은 보관함 이력이 없어 최근 출제 목록을 따로 받고, 한 쪽 문항 수를 정한다.
+    const unsaved = (paper) => paper.kind === "original" || paper.kind === "unit";
+    const usesRecent = hasOriginal || hasUnit;
+    const makeUuid = () => {
+      let id = "";
+      try {
+        if (typeof options.uuid === "function") id = String(options.uuid());
+        else {
+          const c = typeof globalThis !== "undefined" ? globalThis.crypto : null;
+          if (c && typeof c.randomUUID === "function") id = c.randomUUID();
+        }
+      } catch { id = ""; }
+      if (!UUID_V4.test(id)) throw new Error(ID_ERROR_MESSAGE);
+      return id;
+    };
     const listeners = new Set();
     const state = {
       phase: "loading", // loading | login | error | empty | select | running | done
@@ -387,7 +451,7 @@
       classes: [],
       date: kstToday(now()),
       // 원본 출제 전용: 최근 출제 목록(같은 파일·반·날 확인)과 쪽당 문항 수.
-      historyState: hasOriginal ? "loading" : "idle", // idle | loading | ready | error
+      historyState: usesRecent ? "loading" : "idle", // idle | loading | ready | error
       historyTruncated: false,
       qpp: 4, // 원본 패널은 항상 4문항으로 시작한다(`바꾸기`로만 6·8)
       qppOpen: false,
@@ -398,6 +462,8 @@
       dirty: false,
       authLost: false,
       busyNote: false,
+      closeWarn: false, // 고르지 않은 학생을 빼지 못한 채 닫으려 했을 때 한 번 알린다
+      prepareNote: "",
       openGroups: new Set(),
     };
     let loadSeq = 0;
@@ -423,7 +489,7 @@
     function dupInfo(paperId, cls) {
       const rows = priorIssues(paperId, cls);
       // 원본 시험은 (반, 날짜, 파일)이 서버의 쓰기 키라 취소된 건이 있으면 같은 날짜로는 다시 낼 수 없다.
-      const cancelledSameDate = papers.find((paper) => paper.id === paperId)?.kind === "original"
+      const cancelledSameDate = unsaved(papers.find((paper) => paper.id === paperId) || {})
         ? recordedRows(paperId).find((row) => row.cancelled && row.date === state.date && sameClass(row, cls)) || null : null;
       return { sameDate: rows.find((row) => row.date === state.date) || null, latest: rows[0] || null, count: rows.length, cancelledSameDate };
     }
@@ -434,7 +500,7 @@
     // 원본 시험지의 이전 출제 기록. 실패해도 출제는 할 수 있다(기록 확인만 못 한다). 서버가 같은 건은 같은 건으로 받으므로
     // 늦게 도착해도 중복 출제가 생기지 않는다: 도착하면 이미 체크한 반의 같은 날 건만 기본에서 뺀다.
     async function loadOriginalHistory() {
-      if (!hasOriginal) return;
+      if (!usesRecent) return;
       state.historyState = "loading";
       let data;
       try {
@@ -452,6 +518,20 @@
         for (const cls of state.classes)
           if (cls.checked) for (const paper of papers) if (dupInfo(paper.id, cls).sameDate) state.excluded.add(comboKey(paper.id, cls.id));
       emit();
+    }
+    // 단원별 문제지: 호출한 화면이 문항을 복원해 {questions, meta}를 준다. 본문 문자열은 보내기 직전(prepareUnits)에 만든다.
+    function loadUnitPayload(paper) {
+      if (!paper.loading) {
+        paper.loading = Promise.resolve()
+          .then(() => unitCtx.load(paper))
+          .then((loaded) => {
+            const questions = loaded?.questions;
+            if (!Array.isArray(questions) || !questions.length) throw Object.assign(new Error("unit empty"), { unitEmpty: true });
+            return { questions, meta: loaded.meta && typeof loaded.meta === "object" ? loaded.meta : {} };
+          })
+          .catch((error) => { paper.loading = null; throw error; });
+      }
+      return paper.loading;
     }
     // 원본 문항은 패널을 열 때 미리 받아 두고(실패하면 출제 직전에 다시 시도), 출제 직전에 확인한다.
     function loadOriginalQuestions(paper) {
@@ -472,9 +552,13 @@
       state.phase = "loading";
       state.error = "";
       emit();
-      if (hasOriginal) {
+      if (usesRecent) {
         loadOriginalHistory().catch(() => {});
         for (const paper of papers) if (paper.kind === "original" && typeof originalCtx.loadQuestions === "function") loadOriginalQuestions(paper).catch(() => {});
+        // 단원별 문항은 권마다 원본 파일을 읽으므로 한 권씩 차례로 미리 받아 둔다(실패하면 출제 직전에 다시 시도).
+        if (hasUnit && typeof unitCtx.load === "function") {
+          (async () => { for (const paper of papers) if (paper.kind === "unit") { try { await loadUnitPayload(paper); } catch { /* 출제 직전에 다시 */ } } })();
+        }
       }
       let data;
       try {
@@ -618,13 +702,13 @@
     // 원본 출제의 '한 쪽 문항 수'. 패널은 늘 4문항으로 시작하고(옛 모달의 기억값은 읽지도 쓰지도 않는다)
     // `바꾸기`로 고른 값은 이번 출제에만 쓴다.
     function toggleQpp() {
-      if (!hasOriginal || state.phase !== "select" || state.starting) return;
+      if (!usesRecent || state.phase !== "select" || state.starting) return;
       state.qppOpen = !state.qppOpen;
       emit();
     }
     function setQpp(value) {
       const qpp = Number(value);
-      if (!hasOriginal || state.phase !== "select" || state.starting || !QPP_VALUES.includes(qpp) || qpp === state.qpp) return false;
+      if (!usesRecent || state.phase !== "select" || state.starting || !QPP_VALUES.includes(qpp) || qpp === state.qpp) return false;
       state.qpp = qpp;
       emit();
       return true;
@@ -706,6 +790,34 @@
         },
       });
     }
+    // 단원별 기출 본문: 옛 모달(index.html registerIndexClassExamAssignment 비-저장본 분기)이 보내는 것과 키·순서·값이 같다.
+    // contract_version·student_ids가 없다(서버는 받는 사람을 반 전체로 기록한다 → 일부 학생은 exclude-students로 뺀다).
+    // 다른 점은 둘뿐이다: exam_date와 pdf_qpp는 패널에서 고른 값이고, 패널이 쪽당 문항을 바꿨으면 meta.qpp도 같은 값이다.
+    // 문항 수는 옛 경로처럼 실제 문항 배열 길이다.
+    function unitBodyFor(job, paper, cls, scope, stamp) {
+      const fileTag = String(paper.snapshotKey).replace(/[^a-zA-Z0-9_-]+/g, "_");
+      const gradeTag = String(cls.grade || paper.grade || "class").replace(/[^a-zA-Z0-9가-힣_-]+/g, "_");
+      return Object.freeze({
+        class_id: job.classId,
+        exam_title: paper.identityTitle || paper.title,
+        exam_date: job.date,
+        question_count: paper.payloadCount,
+        archive_file: `MIXED:${paper.snapshotKey}`,
+        source_type: "mixed",
+        mixed_payload_json: paper.payloadJson,
+        pdf_qpp: state.qpp,
+        subject: text(paper.payloadMeta?.subject) || paper.subject || "",
+        grade_label: cls.grade || paper.grade || "",
+        assignment_batch_id: `batch_archive_${fileTag}_${gradeTag}_${stamp}`,
+        target_scope: scope,
+      });
+    }
+    // 고르지 않은 학생 = 명단 − 선택. 반 전체를 골랐으면 비어 있고 제외 요청은 나가지 않는다.
+    function excludedIdsOf(combo) {
+      if (!combo.cls.studentIds) return [];
+      const picked = new Set(combo.studentIds);
+      return (combo.cls.roster || []).filter((student) => !picked.has(student.id)).map((student) => student.id);
+    }
     function buildJobs(current) {
       // 문제지 순서대로(한 권을 모든 반에 낸 뒤 다음 권), 같은 권 안에서는 반 순서대로 보낸다.
       const order = (combo) => papers.findIndex((p) => p.id === combo.paper.id) * 100000 + state.classes.findIndex((c) => c.id === combo.cls.id);
@@ -713,15 +825,24 @@
       const stamp = now();
       return current.combos.slice().sort((a, b) => order(a) - order(b)).map((combo) => {
         const original = combo.paper.kind === "original";
-        const batch = original ? null : store.ensure(combo.paper.id, combo.cls.id, state.date);
-        if (original) store.touch(combo.paper.id, combo.cls.id, state.date);
+        const unit = combo.paper.kind === "unit";
+        const batch = original || unit ? null : store.ensure(combo.paper.id, combo.cls.id, state.date);
+        if (original || unit) store.touch(combo.paper.id, combo.cls.id, state.date);
         const job = {
-          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title, kind: original ? "original" : "saved",
+          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title, kind: original ? "original" : unit ? "unit" : "saved",
           classId: combo.cls.id, className: combo.cls.name, studentIds: combo.studentIds.slice(),
           date: state.date, batchId: batch ? batch.id : "", status: "queued", attempts: 0,
           assignmentId: "", message: "", pdfError: "", pdfBusy: false, already: false, auth: false, rebuild: false,
         };
-        job.body = original ? originalBodyFor(job, combo.paper, combo.cls, combo.paper.questions, scope, stamp) : bodyFor(job);
+        if (unit) {
+          job.excludeIds = excludedIdsOf(combo);
+          job.excludeTotal = job.excludeIds.length;
+          job.operationId = job.excludeIds.length ? makeUuid() : "";
+          job.examTitle = combo.paper.identityTitle || combo.paper.title;
+          job.archiveFile = `MIXED:${combo.paper.snapshotKey}`;
+        }
+        job.body = original ? originalBodyFor(job, combo.paper, combo.cls, combo.paper.questions, scope, stamp)
+          : unit ? unitBodyFor(job, combo.paper, combo.cls, scope, stamp) : bodyFor(job);
         return job;
       });
     }
@@ -730,11 +851,22 @@
       if (!raw) return NaN;
       return Date.parse(/[zZ]|[+-]\d{2}:?\d{2}$/.test(raw) ? raw : `${raw.replace(" ", "T")}Z`);
     };
+    const isCancelledAssignment = (assignment) => Boolean(text(assignment?.cancelled_at)) || Number(assignment?.is_cancelled) === 1;
     function applySuccess(job, response, startedAt) {
       const assignment = response?.assignment;
       if (!assignment?.id) {
         job.status = "unknown";
         job.message = "서버에서 응답을 받았지만 출제 번호가 없습니다. 출제가 되었는지 확인이 필요합니다.";
+        return;
+      }
+      // 단원별 출제는 헤더 없는 옛 경로라 서버가 같은 (반, 출제일, 문제지)의 기존 건을 그대로 갱신해 돌려준다.
+      // 그 건이 취소된 상태면 학생에게 보이지 않으므로 성공으로 세지 않는다.
+      if (job.kind === "unit" && isCancelledAssignment(assignment)) {
+        job.assignmentId = text(assignment.id);
+        job.status = "cancelled";
+        job.message = ORIGINAL_CANCELLED_MESSAGE;
+        job.noReissue = true;
+        store.mark(job.paperId, job.classId, job.date, "failed");
         return;
       }
       job.assignmentId = text(assignment.id);
@@ -751,14 +883,21 @@
       } else job.status = "ok";
       store.clear(job.paperId, job.classId, job.date);
       issuedHere.add(job.paperId, job.classId, job.date);
-      if (job.kind === "original") recentCache.reset(); // 다음에 열 때 방금 낸 건이 이력에 보이게 한다
+      if (job.kind !== "saved") recentCache.reset(); // 다음에 열 때 방금 낸 건이 이력에 보이게 한다
       state.dirty = true;
     }
     function applyFailure(job, error) {
-      const info = classifyError(error, { original: job.kind === "original" });
+      const info = classifyError(error, { original: job.kind === "original", unit: job.kind === "unit" });
       job.auth = Boolean(info.auth);
-      // 원본 출제는 batch id가 없어 취소된 건과 같은 키를 피할 길이 날짜뿐이다: '새로 출제'를 주지 않는다.
-      job.noReissue = job.kind === "original";
+      // 원본·단원별 출제는 batch id가 없어 취소된 건과 같은 키를 피할 길이 날짜뿐이다: '새로 출제'를 주지 않는다.
+      job.noReissue = job.kind !== "saved";
+      if (info.kind === "ok-pdf" && job.kind === "unit" && isCancelledAssignment(error?.data?.assignment)) {
+        job.assignmentId = text(error.data.assignment.id);
+        job.status = "cancelled";
+        job.message = ORIGINAL_CANCELLED_MESSAGE;
+        store.mark(job.paperId, job.classId, job.date, "failed");
+        return;
+      }
       if (info.kind === "ok-pdf") {
         job.status = "ok-pdf";
         job.assignmentId = info.assignmentId;
@@ -767,7 +906,7 @@
         job.message = "";
         store.clear(job.paperId, job.classId, job.date);
         issuedHere.add(job.paperId, job.classId, job.date);
-        if (job.kind === "original") recentCache.reset();
+        if (job.kind !== "saved") recentCache.reset();
         state.dirty = true;
         return;
       }
@@ -799,9 +938,10 @@
       emit();
       let response;
       try {
-        response = await request("/class-exam-assignments", {
-          method: "POST", headers: { "X-Archive2-Contract": CONTRACT }, body: job.body, timeoutMs: WRITE_TIMEOUT_MS,
-        });
+        // 단원별 출제는 계약 헤더 없이 보낸다(서버의 헤더 경로는 단원별 문제지를 받지 못한다).
+        response = await request("/class-exam-assignments", job.kind === "unit"
+          ? { method: "POST", body: job.body, timeoutMs: WRITE_TIMEOUT_MS }
+          : { method: "POST", headers: { "X-Archive2-Contract": CONTRACT }, body: job.body, timeoutMs: WRITE_TIMEOUT_MS });
       } catch (error) {
         applyFailure(job, error);
         emit();
@@ -809,18 +949,73 @@
       }
       applySuccess(job, response, startedAt);
       emit();
+      if (job.kind === "unit" && (job.status === "ok" || job.status === "ok-pdf") && job.excludeIds.length) await excludeStep(job);
+    }
+    // 단원별 출제: POST 성공 뒤 같은 작업 안에서 고르지 않은 학생을 뺀다. 서버는 학생·건마다 operation_identity로 멱등이라
+    // 같은 번호로 다시 보내도 안전하다. 한 번에 최대 200명이라 나눠 보내고, 성공이 확인된 학생은 남은 목록에서 지운다.
+    // 하나라도 못 빼면 성공으로 표시하지 않는다: 그동안 그 건은 반 전체에게 보인다.
+    const EXCLUDE_CHUNK = 200;
+    const excludeFailMessage = (job) => `출제는 됐지만 고르지 않은 학생 ${job.excludeIds.length}명을 빼지 못했습니다. 지금은 반 전체에게 보입니다.`;
+    async function excludeStep(job) {
+      const before = job.status;
+      job.excludeFrom = job.excludeFrom || (before === "exclude-failed" ? "ok" : before); // 제외가 끝나면 돌아갈 상태(ok | ok-pdf)
+      job.status = "running";
+      job.message = "";
+      emit();
+      let failure = null;
+      while (job.excludeIds.length) {
+        const chunk = job.excludeIds.slice(0, EXCLUDE_CHUNK);
+        let response;
+        try {
+          response = await request("/class-exam-assignments/exclude-students", {
+            method: "POST", timeoutMs: WRITE_TIMEOUT_MS,
+            body: {
+              ...(job.assignmentId ? { assignment_id: job.assignmentId } : {}),
+              class_id: job.classId, student_ids: chunk, operation_identity: job.operationId,
+              exam_title: job.examTitle, exam_date: job.date, archive_file: job.archiveFile,
+            },
+          });
+          if (response?.success === false) throw Object.assign(new Error("exclude failed"), { data: response });
+        } catch (error) {
+          failure = error;
+          // 일부 학생만 성공한 응답이면 성공한 학생은 남은 목록에서 뺀다.
+          const done = new Set((Array.isArray(error?.data?.results) ? error.data.results : []).filter((row) => row?.success).map((row) => text(row.student_id)));
+          job.excludeIds = job.excludeIds.filter((id) => !done.has(id));
+          break;
+        }
+        const ok = response?.results ? new Set(response.results.filter((row) => row?.success).map((row) => text(row.student_id))) : null;
+        job.excludeIds = job.excludeIds.filter((id) => (ok ? !ok.has(id) : !chunk.includes(id)));
+        if (ok && chunk.some((id) => !ok.has(id))) { failure = new Error("exclude partial"); break; }
+      }
+      if (!failure) {
+        job.status = job.excludeFrom === "ok-pdf" || job.pdfError ? "ok-pdf" : "ok";
+        job.excludeFrom = "";
+        job.message = "";
+        return;
+      }
+      job.status = "exclude-failed";
+      job.message = excludeFailMessage(job);
+      if (Number(failure?.status) === 401) {
+        job.auth = true;
+        job.message = `${excludeFailMessage(job)} 로그인이 끝났습니다. 다시 로그인한 뒤 다시 빼 주세요.`;
+      } else warnRaw(text(failure?.data?.error || failure?.message));
     }
     // 조합을 하나씩 차례로 보낸다(동시에 둘 이상 보내지 않는다). 401이면 남은 건을 보내지 않고 멈춘다.
-    async function drive(jobs) {
+    async function drive(jobs, step = sendJob) {
       state.authLost = false;
       try {
         for (const job of jobs) {
           try {
-            await sendJob(job);
+            await step(job);
           } catch (error) {
             // 예상 밖 오류도 그 건을 '결과 확인 필요'로 두고 다음 건으로 간다(요청이 이미 나갔을 수 있다).
-            job.status = "unknown";
-            job.message = "처리 중 오류가 있었습니다. 출제가 되었는지 확인이 필요합니다.";
+            if (step === sendJob) {
+              job.status = "unknown";
+              job.message = "처리 중 오류가 있었습니다. 출제가 되었는지 확인이 필요합니다.";
+            } else {
+              job.status = "exclude-failed";
+              job.message = excludeFailMessage(job);
+            }
           }
           if (job.auth) { state.authLost = true; break; }
         }
@@ -845,8 +1040,43 @@
       state.starting = true;
       state.working = true;
       state.startError = "";
-      if (current.combos.some((combo) => combo.paper.kind === "original")) return prepareOriginals(current).then((ok) => (ok ? run() : false));
-      return Promise.resolve(run());
+      const wantsUnit = current.combos.some((combo) => combo.paper.kind === "unit");
+      const wantsOriginal = current.combos.some((combo) => combo.paper.kind === "original");
+      if (!wantsUnit && !wantsOriginal) return Promise.resolve(run());
+      return (async () => {
+        if (wantsUnit && !(await prepareUnits(current))) return false;
+        if (wantsOriginal && !(await prepareOriginals(current))) return false;
+        return run();
+      })();
+    }
+    // 단원별 문제지: 이번에 낼 모든 권의 본문을 먼저 만들고, 하나라도 못 만들거나 서버 한도(900000자)를 넘으면 아무것도 보내지 않는다.
+    // 어느 권이 왜 안 되는지 알려 주고 잠금을 풀어 교사가 고쳐 다시 누르게 한다.
+    const MIXED_PAYLOAD_LIMIT = 900000;
+    async function prepareUnits(current) {
+      const targets = papers.filter((paper) => paper.kind === "unit" && current.combos.some((combo) => combo.paper.id === paper.id));
+      let message = "";
+      for (const paper of targets) {
+        try {
+          if (typeof unitCtx.load !== "function") throw new Error("unit loader missing");
+          const loaded = await loadUnitPayload(paper);
+          const meta = { ...loaded.meta, qpp: state.qpp };
+          const json = JSON.stringify({ questions: loaded.questions, meta });
+          if (json.length > MIXED_PAYLOAD_LIMIT) { message = `「${paper.title}」 ${UNIT_TOO_BIG_MESSAGE}`; break; }
+          paper.payloadJson = json;
+          paper.payloadMeta = meta;
+          paper.payloadCount = loaded.questions.length;
+        } catch (error) {
+          warnRaw(text(error?.message));
+          message = `「${paper.title}」 ${error?.unitEmpty ? UNIT_EMPTY_MESSAGE : UNIT_LOAD_MESSAGE}`;
+          break;
+        }
+      }
+      if (!message) return true;
+      state.starting = false;
+      state.working = false;
+      state.startError = message;
+      emit();
+      return false;
     }
     // 원본 문항을 아직 못 받았으면 지금 받아(미리 받기에 실패했을 수 있다) 모든 건의 본문을 만들 수 있을 때만 시작한다.
     // 하나라도 못 받으면 아무것도 보내지 않고 잠금을 풀어 교사가 안내를 읽고 다시 누르게 한다.
@@ -899,14 +1129,15 @@
     function pendingJobs(statuses) {
       return state.jobs.filter((job) => statuses.includes(job.status));
     }
-    function resume(statuses, only = null) {
+    function resume(statuses, only = null, step = sendJob) {
       if (state.working || state.phase !== "done") return Promise.resolve(false);
       const jobs = pendingJobs(statuses).filter((job) => !only || job.key === only);
       if (!jobs.length) return Promise.resolve(false);
       state.working = true;
       state.phase = "running";
+      state.closeWarn = false;
       emit();
-      return drive(jobs).then(() => true);
+      return drive(jobs, step).then(() => true);
     }
     // 실패한 건과 보내지 못한 건을 같은 본문·같은 batch id로 다시 보낸다.
     const retryFailed = () => resume(["failed", "queued"]);
@@ -919,6 +1150,9 @@
     }
     // 응답을 못 받은 건을 같은 본문·같은 batch id로 다시 보낸다: 서버에 이미 있으면 그 건이 돌아온다.
     const confirmUnknown = (key = null) => resume(["unknown"], key);
+    // 출제는 됐지만 고르지 않은 학생을 빼지 못한 건: 제외 요청만 같은 번호로 다시 보낸다(출제를 다시 보내지 않는다).
+    const retryExclusion = (key = null) => resume(["exclude-failed"], key, (job) => { job.auth = false; return excludeStep(job); });
+    const hasUnresolvedExclusion = () => state.jobs.some((job) => job.status === "exclude-failed");
 
     async function retryPdf(key) {
       const job = state.jobs.find((row) => row.key === key);
@@ -955,6 +1189,12 @@
         emit();
         return { allowed: false, message: "출제 중입니다. 잠시만요." };
       }
+      // 고르지 않은 학생을 빼지 못한 건이 있으면 한 번 알리고, 두 번째 닫기부터 허용한다.
+      if (hasUnresolvedExclusion() && !state.closeWarn) {
+        state.closeWarn = true;
+        emit();
+        return { allowed: false, warn: true, message: "학생을 빼지 못한 건이 있습니다. 지금은 반 전체에게 보입니다." };
+      }
       notifyDone();
       return { allowed: true, message: "" };
     }
@@ -962,13 +1202,13 @@
       const count = (status) => state.jobs.filter((job) => job.status === status).length;
       return {
         total: state.jobs.length, ok: count("ok"), okPdf: count("ok-pdf"), failed: count("failed"), cancelled: count("cancelled"),
-        unknown: count("unknown"), queued: count("queued"), running: count("running"),
+        unknown: count("unknown"), queued: count("queued"), running: count("running"), excludeFailed: count("exclude-failed"),
       };
     }
 
     return {
       state, load, loadRoster, toggleClass, toggleStudent, selectAllStudents, toggleStudentList, toggleCombo, setDate,
-      plan, canSubmit, start, retryFailed, confirmUnknown, retryPdf, isBusy, requestClose, results,
+      plan, canSubmit, start, retryFailed, confirmUnknown, retryPdf, isBusy, requestClose, results, retryExclusion, hasUnresolvedExclusion,
       dupInfo, pendingNotes, store, canCompareSubmitted, selectUnsubmitted, unsubmittedCount, reissue,
       setQpp, toggleQpp, loadOriginalHistory,
       retryRoster: loadRoster,
@@ -1074,9 +1314,10 @@
     const groups = classGroups(model);
     const paperGrades = [...new Set(model.state.papers.map((paper) => paper.grade).filter(Boolean))];
     const original = model.state.papers.some((paper) => paper.kind === "original");
+    const unsaved = model.state.papers.some((paper) => paper.kind === "original" || paper.kind === "unit");
     const hint = paperGrades.length ? `${esc(paperGrades.join("·"))} ${original ? "시험지" : "문제지"}입니다. 같은 학년 반을 먼저 보여 줍니다.` : "출제할 반을 고르세요.";
-    // 원본 시험지는 이전 출제 기록을 따로 받아 온다. 못 받아도 출제는 할 수 있고, 같은 건은 서버가 같은 건으로 받는다.
-    const historyNote = !original ? ""
+    // 원본 시험지·단원별 문제지는 이전 출제 기록을 따로 받아 온다. 못 받아도 출제는 할 수 있고, 같은 건은 서버가 같은 건으로 받는다.
+    const historyNote = !unsaved ? ""
       : model.state.historyState === "loading" ? '<p class="assign-hint" role="status">이전 출제 기록을 확인하는 중…</p>'
       : model.state.historyState === "error" ? '<p class="assign-hint is-warn" role="status">이전 출제 기록을 확인하지 못했습니다. 출제는 할 수 있습니다.</p>'
       : model.state.historyTruncated ? '<p class="assign-hint" role="status">출제 기록이 많아 일부는 확인하지 못할 수 있습니다.</p>' : "";
@@ -1094,7 +1335,7 @@
     const { date, qpp, qppOpen } = model.state;
     const today = kstToday();
     // 원본 시험지는 한 쪽 문항 수가 PDF·학생 시험지에 그대로 쓰인다(서버가 같은 날 같은 시험지의 쪽당 문항이 다르면 거절한다).
-    const original = model.state.papers.some((paper) => paper.kind === "original");
+    const original = model.state.papers.some((paper) => paper.kind === "original" || paper.kind === "unit");
     const qppField = original
       ? `<section class="assign-date assign-qpp"><span class="assign-qpp-line${qpp === 4 ? "" : " is-changed"}">한 쪽 ${qpp}문항</span><button type="button" class="assign-link" data-assign-action="qpp-toggle" data-focus="qpp-toggle" aria-expanded="${qppOpen ? "true" : "false"}">${qppOpen ? "접기" : "바꾸기"}</button>${qppOpen ? `<div id="assign-qpp-choices" class="assign-quick" role="group" aria-label="한 쪽 문항 수">${QPP_VALUES.map((n) => `<button type="button" class="small" data-assign-action="qpp-set" data-qpp="${n}" data-focus="qpp-${n}" aria-pressed="${n === qpp ? "true" : "false"}">${n}문항</button>`).join("")}</div>` : ""}</section>`
       : "";
@@ -1123,7 +1364,7 @@
   }
   const STATUS_LABEL = {
     queued: "대기 중", running: "출제 중…", ok: "출제됨", "ok-pdf": "출제됨 · PDF만 준비 실패",
-    failed: "실패", cancelled: "취소된 출제", unknown: "결과 확인 필요",
+    "exclude-failed": "출제됨 · 학생 제외 실패", failed: "실패", cancelled: "취소된 출제", unknown: "결과 확인 필요",
   };
   function jobMarkup(model, job) {
     const multi = model.state.papers.length > 1;
@@ -1131,9 +1372,10 @@
     const label = authStopped ? "보내지 않음" : job.status === "ok" && job.already ? "이미 출제됨 (같은 건)"
       : job.status === "ok" && job.attempts > 1 ? "출제됨 (다시 확인해 같은 건으로 처리)" : STATUS_LABEL[job.status];
     const id = esc(job.assignmentId);
-    const detail = job.status === "ok-pdf" ? job.pdfError : ["failed", "unknown", "cancelled"].includes(job.status) ? job.message : "";
+    const detail = job.status === "ok-pdf" ? job.pdfError : ["failed", "unknown", "cancelled", "exclude-failed"].includes(job.status) ? job.message : "";
     const actions = [];
     if (job.status === "unknown") actions.push(`<button type="button" class="small" data-assign-action="confirm" data-key="${esc(job.key)}" data-focus="confirm-${esc(job.key)}">확인하기</button>`);
+    if (job.status === "exclude-failed") actions.push(`<button type="button" class="small" data-assign-action="exclude-retry" data-key="${esc(job.key)}" data-focus="exclude-${esc(job.key)}">다시 빼기</button>`);
     if (job.status === "cancelled" && !job.noReissue) actions.push(`<button type="button" class="small" data-assign-action="reissue" data-key="${esc(job.key)}" data-focus="reissue-${esc(job.key)}">새로 출제</button>`);
     if (job.status === "ok-pdf") actions.push(`<button type="button" class="small" data-assign-action="pdf" data-key="${esc(job.key)}" data-focus="pdf-${esc(job.key)}"${job.pdfBusy ? " disabled" : ""}>${job.pdfBusy ? "PDF 준비 중…" : "PDF 다시 준비"}</button>`);
     const outputs = (job.status === "ok" || job.status === "ok-pdf") && job.assignmentId && model.state.outputLinks !== false
@@ -1168,7 +1410,8 @@
       const plan = model.plan();
       const ready = model.canSubmit();
       const startError = model.state.startError ? `<p class="assign-auth" role="alert">${esc(model.state.startError)}</p>` : "";
-      const summary = model.state.starting ? '<p class="assign-summary" role="status">시험지 원본을 확인하는 중…</p>' : summaryMarkup(model, plan);
+      const waiting = model.state.papers.some((paper) => paper.kind === "unit") ? "문제지를 준비하는 중…" : "시험지 원본을 확인하는 중…";
+      const summary = model.state.starting ? `<p class="assign-summary" role="status">${waiting}</p>` : summaryMarkup(model, plan);
       return `${startError}${summary}<button type="button" class="primary assign-submit" data-assign-action="submit" data-focus="submit"${ready ? "" : " disabled"}>출제하기</button><p class="assign-fine">출제하면 학생에게 바로 과제가 갑니다.</p>`;
     }
     if (phase === "running") {
@@ -1179,17 +1422,21 @@
     if (phase === "done") {
       const r = model.results();
       const bits = [];
-      if (r.ok + r.okPdf) bits.push(`출제됨 ${r.ok + r.okPdf}건${r.okPdf ? ` (PDF만 실패 ${r.okPdf}건)` : ""}`);
+      if (r.ok + r.okPdf + r.excludeFailed) bits.push(`출제됨 ${r.ok + r.okPdf + r.excludeFailed}건${r.okPdf ? ` (PDF만 실패 ${r.okPdf}건)` : ""}`);
       if (r.unknown) bits.push(`확인 필요 ${r.unknown}건`);
+      if (r.excludeFailed) bits.push(`학생 제외 실패 ${r.excludeFailed}건 (반 전체에게 보임)`);
       if (r.failed) bits.push(`실패 ${r.failed}건`);
       if (r.cancelled) bits.push(`취소된 출제 ${r.cancelled}건`);
       if (r.queued) bits.push(`보내지 않음 ${r.queued}건`);
       const needRetry = r.failed + r.queued > 0;
       const buttons = [];
+      if (r.excludeFailed) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="exclude-retry-all" data-focus="exclude-all">다시 빼기</button>`);
       if (needRetry) buttons.push(`<button type="button" class="primary assign-submit" data-assign-action="retry" data-focus="retry">${r.queued && !r.failed ? "남은 건 이어서 출제" : "실패한 건 다시 시도"}</button>`);
       if (r.unknown) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="confirm-all" data-focus="confirm-all">${r.unknown > 1 ? "모두 확인하기" : "확인하기"}</button>`);
       buttons.push(`<button type="button" class="${buttons.length ? "" : "primary "}assign-submit" data-assign-action="close" data-focus="done-close">닫기</button>`);
-      return `<p class="assign-summary" role="status">${esc(bits.join(" · ") || "출제 결과가 없습니다.")}</p><div class="assign-foot-actions">${buttons.join("")}</div>`;
+      const closeWarn = model.state.closeWarn && r.excludeFailed
+        ? '<p class="assign-auth" role="alert">고르지 않은 학생을 아직 빼지 못했습니다. 지금은 반 전체에게 보입니다. 다시 빼거나, 그대로 닫으려면 닫기를 한 번 더 누르세요.</p>' : "";
+      return `${closeWarn}<p class="assign-summary" role="status">${esc(bits.join(" · ") || "출제 결과가 없습니다.")}</p><div class="assign-foot-actions">${buttons.join("")}</div>`;
     }
     return "";
   }
@@ -1223,7 +1470,7 @@
     let storage = options.storage || null;
     if (!storage) { try { storage = win?.localStorage || null; } catch { storage = null; } }
     const model = createModel({
-      request: options.request, papers: options.papers, items: options.items, original: options.original, recentCache: options.recentCache,
+      request: options.request, papers: options.papers, items: options.items, original: options.original, unit: options.unit, recentCache: options.recentCache,
       history: options.history, storage,
       uuid: options.uuid, now: options.now, doneStore: sharedDoneStore((() => { try { return win?.sessionStorage || null; } catch { return null; } })()), classGrade: options.classGrade || win?.Archive2History?.classGrade,
       onDone: options.onDone,
@@ -1276,6 +1523,8 @@
     }
     function attemptClose() {
       const result = model.requestClose();
+      // 학생 제외 실패 경고는 '출제 중' 알림이 아니다: 요약 줄 위에 경고만 그리고 패널은 그대로 둔다.
+      if (!result.allowed && result.warn) { render_(); return false; }
       if (!result.allowed) { flashBusy(); return false; }
       teardown(true);
       return true;
@@ -1287,13 +1536,23 @@
         flashBusy();
         return;
       }
+      if (model.hasUnresolvedExclusion() && !model.state.closeWarn) {
+        // 고르지 않은 학생을 아직 빼지 못했다: 한 번 알리고, 한 번 더 뒤로 가면 닫는다.
+        try { win.history.pushState({ ...(win.history.state || {}), archive2AssignPanel: true }, "", win.location.href); } catch { /* 알림만 한다 */ }
+        model.state.closeWarn = true;
+        render_();
+        return;
+      }
       sentinel = false; // 이미 뒤로 갔으므로 되돌릴 항목이 없다
       teardown(false);
     }
     function beforeUnload(event) {
-      if (!model.isBusy()) return undefined;
+      const excluding = model.hasUnresolvedExclusion();
+      if (!model.isBusy() && !excluding) return undefined;
       event.preventDefault();
-      event.returnValue = "출제 중입니다. 페이지를 떠나면 결과를 확인하지 못할 수 있습니다.";
+      event.returnValue = excluding && !model.isBusy()
+        ? "고르지 않은 학생을 아직 빼지 못했습니다. 페이지를 떠나면 그 출제는 반 전체에게 보입니다."
+        : "출제 중입니다. 페이지를 떠나면 결과를 확인하지 못할 수 있습니다.";
       return event.returnValue;
     }
     function teardown(popSentinel) {
@@ -1332,6 +1591,8 @@
       else if (action === "retry") { el.disabled = true; model.retryFailed().catch(() => {}); }
       else if (action === "confirm") model.confirmUnknown(el.dataset.key).catch(() => {});
       else if (action === "confirm-all") { el.disabled = true; model.confirmUnknown().catch(() => {}); }
+      else if (action === "exclude-retry") model.retryExclusion(el.dataset.key).catch(() => {});
+      else if (action === "exclude-retry-all") { el.disabled = true; model.retryExclusion().catch(() => {}); }
       else if (action === "pdf") model.retryPdf(el.dataset.key).catch(() => {});
       else if (action === "qpp-toggle") model.toggleQpp();
       else if (action === "qpp-set") model.setQpp(el.dataset.qpp);

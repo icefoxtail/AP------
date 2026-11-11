@@ -579,7 +579,104 @@
     }
     catch (error) { popup.close(); console.error(error); setStatus(error.message || '문제지 준비에 실패했습니다.', true); alert(error.message || '문제지 준비에 실패했습니다.'); }
   }
+  // ---- 화면 안 출제 패널(archive2-assign.js) ----
+  // 단원별 기출의 `출제`는 보관함·학교 기출과 같은 패널로 낸다. 패널 스크립트가 없거나 주소에 assign=legacy가 있으면
+  // 아래 assignPaper의 옛 경로(index.html iframe)로 간다. 요청 본문은 옛 모달과 같고(archive2-assign.js unitBodyFor) 서버는 그대로다.
+  function assignPanelAvailable() {
+    const panel = window.Archive2Assign;
+    return Boolean(panel && typeof panel.open === 'function' && !(typeof panel.useLegacy === 'function' && panel.useLegacy(window.location.search)));
+  }
+  // 로그인 인증 머리글은 이 브라우저에 이미 있는 교사 세션에서만 읽는다(archive2-workspace.js headers()와 같은 규칙).
+  function assignAuthHeader() {
+    const session = getSession();
+    if (session && session.session_token) return { Authorization: 'Bearer ' + session.session_token };
+    const memory = window.__APMATH_AUTH_MEMORY || {};
+    const login = memory.login_id || (session && (session.login_id || session.loginId));
+    const secret = memory.raw_password || (session && session.raw_password);
+    if (login && secret) return { Authorization: 'Basic ' + btoa(unescape(encodeURIComponent(login + ':' + secret))) };
+    return null;
+  }
+  // 패널에 꽂는 request(route, {method, headers, body, timeoutMs}). archive2-workspace.js api()와 같은 방식이다:
+  // 같은 서버 주소, 같은 세션 인증, 로그인이 없으면 요청 없이 status=401, 제한 시간이 지나면 timeout=true,
+  // 오류 응답은 error.status/error.data를 달아 던진다. 읽기 30초·쓰기 150초는 패널이 timeoutMs로 정한다.
+  function assignRequest(route, opt = {}) {
+    const rule = window.Archive2Session;
+    const memory = window.__APMATH_AUTH_MEMORY || {};
+    const loggedIn = !rule || !rule.state || (memory.login_id && memory.raw_password) || rule.state(getSession()).loggedIn;
+    const auth = loggedIn ? assignAuthHeader() : null;
+    if (!auth) return Promise.reject(Object.assign(new Error('교사 로그인이 필요합니다.'), { status: 401 }));
+    const method = opt.method || (opt.body ? 'POST' : 'GET');
+    const base = (window.APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/$/, '');
+    const timeoutMs = Number.isFinite(opt.timeoutMs) && opt.timeoutMs > 0 ? opt.timeoutMs : (method === 'GET' ? 30000 : 0);
+    const controller = timeoutMs && typeof AbortController === 'function' ? new AbortController() : null;
+    const perform = async () => {
+      const response = await fetch(base + route, {
+        method,
+        headers: { ...auth, ...(opt.body ? { 'Content-Type': 'application/json' } : {}), ...(opt.headers || {}) },
+        ...(opt.body ? { body: JSON.stringify(opt.body) } : {}),
+        ...(controller ? { signal: controller.signal } : {})
+      });
+      return { response, data: await response.json().catch(() => ({})) };
+    };
+    return (async () => {
+      let result, timer;
+      if (timeoutMs) {
+        const pending = perform();
+        pending.catch(() => {});
+        try {
+          result = await Promise.race([pending, new Promise((_, reject) => {
+            timer = setTimeout(() => {
+              if (controller) controller.abort();
+              reject(Object.assign(new Error('응답이 늦습니다. 잠시 뒤 다시 시도해 주세요.'), { timeout: true }));
+            }, timeoutMs);
+          })]);
+        } finally { clearTimeout(timer); }
+      } else result = await perform();
+      const { response, data } = result;
+      if (!response.ok || data.success === false) {
+        const error = new Error(data.error || `요청 실패 (${response.status})`);
+        error.status = response.status;
+        error.data = data;
+        throw error;
+      }
+      return data;
+    })();
+  }
+  // 패널 항목 하나(권). 서버가 응시 여부를 가르는 제목은 옛 경로와 같은 paper.title이다.
+  function unitAssignItem(unitKey, paperIndex, position, total) {
+    const unit = getUnit(unitKey);
+    const paper = getPaper(unitKey, paperIndex);
+    if (!unit || !paper) throw new Error('문제지를 찾지 못했습니다. 권 목록으로 돌아가 다시 시도해 주세요.');
+    return {
+      kind: 'unit', snapshotKey: paper.snapshotKey, title: paper.title, identityTitle: paper.title,
+      grade: getProfile().grade, subject: (paper.selection && paper.selection.collection && paper.selection.collection.course) || unit.course,
+      count: paper.count, partIndex: position, partCount: total, ref: { unitKey, paperIndex }
+    };
+  }
+  // 문항 복원 + 옛 출력과 같은 meta. 출력 포장(Envelope)은 만들지 않는다: 패널은 본문에 문항을 직접 싣는다.
+  async function loadUnitAssignPayload(item) {
+    const unit = getUnit(item.ref.unitKey);
+    const paper = getPaper(item.ref.unitKey, item.ref.paperIndex);
+    if (!unit || !paper) throw new Error('문제지를 찾지 못했습니다.');
+    const questions = await restorePaperQuestions(paper);
+    const meta = storeMixedPayload(unit, paper, questions);
+    return { questions, meta };
+  }
+  function openAssignPanel(refs, opener) {
+    const panel = window.Archive2Assign;
+    if (panel.isOpen && panel.isOpen()) return;
+    try {
+      const items = refs.map((ref, index) => unitAssignItem(ref.unitKey, ref.paperIndex, index, refs.length));
+      panel.open({ items, unit: { load: loadUnitAssignPayload }, request: assignRequest, opener, outputLinks: false });
+    } catch (error) { console.error(error); setStatus(error.message || '출제 준비에 실패했습니다.', true); alert(error.message || '출제 준비에 실패했습니다.'); }
+  }
+  function assignAllPapers(button) {
+    const papers = (G.result && G.result.papers) || [];
+    if (papers.length < 2 || !(readyShelf() && assignPanelAvailable())) return;
+    openAssignPanel(papers.map(paper => ({ unitKey: GRID_UNIT_KEY, paperIndex: paper.gridId })), button);
+  }
   async function assignPaper(unitKey, paperIndex, button) {
+    if (readyShelf() && assignPanelAvailable()) { openAssignPanel([{ unitKey, paperIndex }], button); return; }
     try {
       const { unit, paper, outputEnvelope } = await preparePaper(unitKey, paperIndex, button); const profile = getProfile();
       const pending = {
@@ -2427,9 +2524,12 @@
       const units = result.unitKeys.length > 1 && result.order !== 'unit' ? `<p class="ug-paper-units">${escapeHtml(paper.unitNames.join(' · '))}</p>` : '';
       const edited = paper.edited ? '<p class="ug-paper-edited">문항을 바꾼 권입니다. 출력·출제에 바꾼 문항이 쓰입니다. 표로 돌아가 선택을 바꾸면 바꾼 내용은 사라집니다.</p>' : '';
       const args = `'${GRID_UNIT_KEY}', '${paper.gridId}', this`;
-      return `<li class="ug-paper" data-profile="${G.profileId}"><div class="ug-paper-no"><span class="ug-big">${paper.index}</span><small>권</small></div><div class="ug-paper-info"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(facts.join(' · '))}</p>${composition ? `<p class="ug-paper-steps">${escapeHtml(composition)}</p>` : ''}${units}${edited}</div><div class="ug-paper-actions"><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'exam')" aria-label="${escapeHtml(paper.title)} 시험지">시험지</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'sol')" aria-label="${escapeHtml(paper.title)} 해설">해설</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'ans')" aria-label="${escapeHtml(paper.title)} 정답">정답</button><button type="button" class="ug-btn ug-fix" title="미리 보고, 시험지 헤더와 문항을 고칩니다" onclick="UnitPastExams.gridOpenEdit('${paper.gridId}')" aria-label="${escapeHtml(paper.title)} 미리 보고 고치기">고치기</button><button type="button" class="ug-primary ug-assign" onclick="UnitPastExams.assignPaper(${args})" aria-label="${escapeHtml(paper.title)} 반에 출제">반에 출제</button></div></li>`;
+      return `<li class="ug-paper" data-profile="${G.profileId}"><div class="ug-paper-no"><span class="ug-big">${paper.index}</span><small>권</small></div><div class="ug-paper-info"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(facts.join(' · '))}</p>${composition ? `<p class="ug-paper-steps">${escapeHtml(composition)}</p>` : ''}${units}${edited}</div><div class="ug-paper-actions"><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'exam')" aria-label="${escapeHtml(paper.title)} 시험지">시험지</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'sol')" aria-label="${escapeHtml(paper.title)} 해설">해설</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'ans')" aria-label="${escapeHtml(paper.title)} 정답">정답</button><button type="button" class="ug-btn ug-fix" title="미리 보고, 시험지 헤더와 문항을 고칩니다" onclick="UnitPastExams.gridOpenEdit('${paper.gridId}')" aria-label="${escapeHtml(paper.title)} 미리 보고 고치기">고치기</button><button type="button" class="ug-primary ug-assign" onclick="UnitPastExams.assignPaper(${args})" aria-label="${escapeHtml(paper.title)} 출제">출제</button></div></li>`;
     }).join('');
-    root.innerHTML = `<section class="ug ug-papers"><div class="ug-papers-head"><button type="button" class="ug-btn" onclick="UnitPastExams.gridBack()">표로 돌아가기</button><div><h2>${escapeHtml([result.unitLabel, result.stepLabel].filter(Boolean).join(' · '))}</h2><p class="ug-papers-count"><span class="ug-big">${result.total.toLocaleString()}문항</span><strong>문제지 ${result.papers.length}권</strong><span class="ug-papers-order">${escapeHtml(orderLabel)}</span></p></div></div>${note}<p class="ug-help">한 권은 약 50문항(최대 80문항)으로 나눕니다. 출력이 오래 걸리지 않게 하고, 같은 시험의 문항은 되도록 한 권에 모았습니다.</p><ol class="ug-paper-list" aria-label="문제지 목록">${cards}</ol></section>`;
+    // 2권 이상이면 한 번에 모두 출제하는 버튼을 더한다(화면 안 출제 패널일 때만: 옛 iframe 방식은 한 번에 한 권뿐이다).
+    const assignAll = result.papers.length > 1 && assignPanelAvailable()
+      ? `<button type="button" class="ug-primary ug-assign-all" onclick="UnitPastExams.assignAllPapers(this)">전체 출제 (${result.papers.length}권)</button>` : '';
+    root.innerHTML = `<section class="ug ug-papers"><div class="ug-papers-head"><button type="button" class="ug-btn" onclick="UnitPastExams.gridBack()">표로 돌아가기</button><div><h2>${escapeHtml([result.unitLabel, result.stepLabel].filter(Boolean).join(' · '))}</h2><p class="ug-papers-count"><span class="ug-big">${result.total.toLocaleString()}문항</span><strong>문제지 ${result.papers.length}권</strong><span class="ug-papers-order">${escapeHtml(orderLabel)}</span></p></div>${assignAll}</div>${note}<p class="ug-help">한 권은 약 50문항(최대 80문항)으로 나눕니다. 출력이 오래 걸리지 않게 하고, 같은 시험의 문항은 되도록 한 권에 모았습니다.</p><ol class="ug-paper-list" aria-label="문제지 목록">${cards}</ol></section>`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -2576,7 +2676,11 @@
     renderGrid();
   }
 
-  window.addEventListener('popstate', restoreFromUrl);
-  window.UnitPastExams = { gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridToggleCell, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, renderGrid, init, selectProfile, clearProfileSelection, selectSemanticSubject, clearSemanticSubject, openFineBuilder, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, updateStepSelection, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, previewExistingPaper, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
+  // 화면 안 출제 패널이 열려 있으면 뒤로 가기는 패널이 먼저 처리한다(진행 중이면 막고, 아니면 패널만 닫는다).
+  window.addEventListener('popstate', () => {
+    if (window.Archive2Assign && typeof window.Archive2Assign.handlePopState === 'function' && window.Archive2Assign.handlePopState()) return;
+    restoreFromUrl();
+  });
+  window.UnitPastExams = { gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridToggleCell, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, renderGrid, init, selectProfile, clearProfileSelection, selectSemanticSubject, clearSemanticSubject, openFineBuilder, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, updateStepSelection, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, previewExistingPaper, printPaper, assignPaper, assignAllPapers, restoreFromUrl, renderSafeFallback };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

@@ -743,6 +743,7 @@
 .ug-papers-head h2 { margin: 0; font-size: 22px; letter-spacing: -.02em; }
 .ug-papers-count { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 6px 0 0; }
 .ug-papers-order { color: var(--ink-2); font-size: 14px; }
+.ug-papers-head .ug-assign-all { min-height: 48px; margin-left: auto; padding: 0 22px; white-space: nowrap; }
 .ug-paper-list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
 .ug-paper { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; align-items: center; gap: 12px 18px; padding: 14px 18px 14px 14px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .ug-paper-no { display: flex; align-items: center; justify-content: center; gap: 2px; align-self: stretch; min-height: 64px; border-radius: var(--radius-field); background: var(--grade, var(--ink)); color: var(--surface); }
@@ -808,5 +809,6 @@
   .ug-paper-actions { grid-column: 1 / -1; justify-content: stretch; }
   .ug-paper-actions .ug-btn { flex: 1 1 0; padding: 0 6px; }
   .ug-paper-actions .ug-assign { flex: 1 1 100%; }
+  .ug-papers-head .ug-assign-all { flex: 1 1 100%; margin-left: 0; }
   .ug-bar { padding-inline: 16px; }
 }

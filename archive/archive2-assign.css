@@ -472,7 +472,8 @@ dialog.assign-panel::backdrop {
   padding: 12px 0;
   border-bottom: 1px solid var(--line-soft);
 }
-.assign-result.is-unknown {
+.assign-result.is-unknown,
+.assign-result.is-exclude-failed {
   margin-inline: -22px;
   padding-inline: 22px;
   background: var(--warn-bg);
@@ -500,7 +501,8 @@ dialog.assign-panel::backdrop {
 .assign-result.is-ok .assign-result-state { color: var(--good); }
 .assign-result.is-failed .assign-result-state { color: var(--danger); }
 .assign-result.is-ok-pdf .assign-result-state,
-.assign-result.is-unknown .assign-result-state { color: var(--warn); }
+.assign-result.is-unknown .assign-result-state,
+.assign-result.is-exclude-failed .assign-result-state { color: var(--warn); }
 .assign-result-detail {
   margin: 2px 0 0;
   color: var(--ink-2);
@@ -532,6 +534,7 @@ dialog.assign-panel::backdrop {
   .assign-body { padding-inline: 16px; }
   .assign-foot { padding-inline: 16px; }
   .assign-class.is-checked,
-  .assign-result.is-unknown { margin-inline: -16px; padding-inline: 16px; }
+  .assign-result.is-unknown,
+  .assign-result.is-exclude-failed { margin-inline: -16px; padding-inline: 16px; }
   .assign-panel input[type="date"] { font-size: 16px; }
 }
