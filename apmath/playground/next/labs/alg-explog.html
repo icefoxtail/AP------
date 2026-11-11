@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="alg-explog/lesson-core.js"></script>
+<script defer src="alg-explog/lesson-a.js"></script>
+<script defer src="alg-explog/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -31,6 +38,8 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { clamp } = APLab;
+  const lexActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  const lexOriginal = () => lexActive(window.lab && window.lab.s);
   let B = null, ctx = null, S = null, HID = 0; // 지금 그리는 무대·ctx·상태·손잡이 번호
   const col = (c) => B.color(c);
 
@@ -1476,7 +1485,7 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
   OV.f2 = (v, d = 2) => { const r = Math.round(v * Math.pow(10, d)) / Math.pow(10, d); return String(Object.is(r, -0) ? 0 : r); };
   OV.sqrtOf = (n) => { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; };
   OV.rt = (a, r) => { const [o, i] = OV.sqrtOf(r); a *= o; return i === 1 ? String(a) : (a === 1 ? '' : String(a)) + `\\sqrt{${i}}`; }; // a√r 를 간단히
-  OV.varier = (list) => { let cur = list[0]; return { all: list, set: (i) => { cur = list[i]; }, cur: () => cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } }; };
+  OV.varier = (list) => { let cur = list[0]; return { all: list, set: (i) => { cur = list[i]; }, first: () => list[0], cur: () => lexOriginal() ? list[0] : cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } }; };
   OV.newBtn = '<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ov-new>새 문제 (숫자 바꾸기)</button></div>';
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-ov-new]');
@@ -2167,7 +2176,7 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
   // 새 문제 고르기: 이전과 다른 것을 무작위로 (첫 문제는 목록의 첫 항목)
   PL.varier = (list) => {
     let cur = list[0];
-    return { all: list, set: (x) => { cur = x; }, cur: () => cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } };
+    return { all: list, set: (x) => { cur = x; }, first: () => list[0], cur: () => lexOriginal() ? list[0] : cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } };
   };
   document.addEventListener('click', (ev) => {
     const hit = ev.target && ev.target.closest && ev.target.closest('[data-pl-new]');
@@ -2952,6 +2961,77 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
     sc.steps=(s,lab)=>{const active=lab||window.lab;return active?.tab==='explore'&&active.scene?.id===sc.id?write(s).map(stepText):fixed(s,lab);};
   });
 
+
+  // One-click lessons keep the first source packet without changing manual variants.
+  const lessonScenes = groups.flatMap(group => group.scenes);
+  const sourceInfo = Object.fromEntries(lessonScenes.map(sc => {
+    const initial = Object.fromEntries(Object.entries(params).map(([key, p]) => [key, p.value]));
+    Object.assign(initial, { mut_diag:false, mut_abs:false, mut_dots:false, twinText:null, twinSnap:null, p11_ref:false });
+    sc.enter?.(initial);
+    return [sc.id, { initial, first:sc.vary.first(), question:sc.problem.text().replace(/<div[^>]*>\s*<button[^>]*data-(?:ov|pl)-new[\s\S]*$/, ''), steps:sc.steps() }];
+  }));
+  const lessonSource = window.APL_EX_SOURCE = {
+    scenes:lessonScenes,
+    first:id=>sourceInfo[id].first,
+    initial:id=>({...sourceInfo[id].initial}),
+    question:id=>sourceInfo[id].question,
+    steps:id=>sourceInfo[id].steps.slice()
+  };
+  function lexMathKey(value) {
+    return String(value||'').normalize('NFKC').replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+      .replace(/\\(?:dfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'($1)/($2)')
+      .replace(/\\sqrt\{([^{}]*)\}/g,'√($1)').replace(/\\sqrt\s*(\w)/g,'√($1)')
+      .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1')
+      .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+      .replace(/\\cdot|\\times/g,'×').replace(/−|–/g,'-').replace(/[\s{}$^_()]/g,'');
+  }
+  function lexLabel(value,s) {
+    const text=String(value||''), key=lexMathKey(text), known=(s.lexKnownMath||[]).map(lexMathKey);
+    if (key && known.some(math=>math.includes(key))) return text;
+    if (/^(?:[A-Z][′']*|[xy]|[αβ]|[xy][₁₂]|[PQRS]|f|g|y = x)$/.test(text)) return text;
+    const named=text.match(/^([A-Z][′']*)(?=[\s(=:]|$)/);
+    if (named) return named[1];
+    return /^(?:점근선|대칭축|산술평균|기하평균|직각|넓이|교점)/.exec(text)?.[0]||'';
+  }
+  for (const sc of lessonScenes) {
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw};
+    sc.question=(s,lab)=>lexActive(s)?s.lexQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
+    sc.reviewTop=(s,lab)=>lexActive(s)?'':original.reviewTop(s,lab);
+    sc.steps=(s,lab)=>lexActive(s)?['조건 확인','핵심 관계','식 세우기','계산과 결론']:original.steps(s,lab);
+    sc.view=(s,lab)=>lexActive(s)?{}:original.view(s,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if (!lexActive(s)) {
+        if (b._exLessonView) {
+          if (b.focus===b._exLessonView.appliedFocus) Object.assign(b,b._exLessonView.before);
+          delete b._exLessonView;
+          b.__ovKey=null;b.__plKey=null;
+        }
+        return original.draw(b,s,v,lab);
+      }
+      if (!b._exLessonView) b._exLessonView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY}};
+      const shown={...s,playing:false,lexKnownMath:s.lessonEntry?[]:s.lexKnownMath,step:s.lessonEntry?0:Math.max(0,Math.min(s.step||0,s.lexShowAnswer?4:2))};
+      const shownLab=Object.create(lab);shownLab.tab=s.lexExplore?'explore':'review';shownLab.s=shown;
+      const key=sc.id+'|'+!!s.lexExplore;
+      if (b._exLessonView.key!==key) { b.__ovKey=null;b.__plKey=null;b._exLessonView.key=key;b.zoom=1;b.panX=0;b.panY=0; }
+      const plot=b.plot,text=b._text,curves=[];
+      b.plot=function(fn,options={}) {
+        if (!this._bbox && (options.width||2.6)>=2.4 && !options.dash) curves.push({fn,options});
+        return plot.call(this,fn,options);
+      };
+      b._text=function(x,y,label,options,screen) {return text.call(this,x,y,this._bbox?label:lexLabel(label,shown),options,screen);};
+      try {original.draw(b,shown,{},shownLab);} finally {b.plot=plot;b._text=text;}
+      b._exLessonView.appliedFocus=b.focus;
+      // Trace a point on the native plotted function, within the actual viewport.
+      const u=clamp(Number(s.lexTrace)||0,0,1);
+      if (!s.lessonEntry && u && !b._bbox) for (const {fn,options} of curves) {
+        const box=b.viewBox(),lo=Math.max(box.x0,options.from??-Infinity),hi=Math.min(box.x1,options.to??Infinity),xs=[];
+        for (let i=0;i<=120;i++) {const x=lo+(hi-lo)*i/120,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)xs.push(x);}
+        if(xs.length>1){const x=xs[0]+(xs.at(-1)-xs[0])*u,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)b.point([x,y],{color:'violet',r:5,glow:false});break;}
+      }
+    };
+  }
+  const lessons=window.APL_EX_LESSONS?window.APL_EX_LESSONS.install(lessonScenes,lessonSource):{};
+
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'alg-explog',
@@ -2966,6 +3046,7 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
     params,
     state: { mut_diag: false, mut_abs: false, mut_dots: false, twinText: null, twinSnap: null, p11_ref: false },
     persist: ['mut_diag', 'mut_abs', 'mut_dots'],
+    lessons,
     groups
   });
 });
