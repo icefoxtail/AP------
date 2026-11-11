@@ -386,7 +386,8 @@ test('장면 소스: 해설 전용 그림·정답 아끼기는 재생 중(lesson
   assert.match(read('swept.js'), /const hold = lesson && \(s\.lessonEntry \|\| !s\.gtShow\)/, 'swept hold');
   assert.match(read('swept.js'), /done && !hold/, 'swept 칩·요약');
   // basic.js: 해설 진입 화면(lessonEntry)은 정리 탭 0단계 그림으로(구하는 값 「?」), 일반 화면은 그대로
-  assert.match(basic, /const entry = mode0 === 'explore' && !!s\.lessonEntry;/, 'basic 진입 화면');
+  assert.match(basic, /const entry = !!s\.lessonEntry && \(mode0 === 'explore' \|\| moreLesson\);/, 'basic: 기존 탐구 및 추가 해설의 진입 그림에서만 결과 보류');
+  assert.match(basic, /const mode = entry \? 'review' : mode0;\s*const step = entry \? 0 : s\.step \| 0;/, 'basic: 진입에서는 정리 0단계, 일반 화면은 원래 탭·단계');
   assert.match(f04, /hideRes: true/, 'f4-swirl: 결과가 나오면 r=3 라벨을 지우는 표시(재생 중에만)');
   assert.match(f04, /c\.s && c\.s\.lessonOn && it\.hideRes/, 'hideRes 는 재생 중에만');
   // 해설이 이 표시를 쓰는 규칙: show 는 첫 장 at:0 에서 false, 결론 자막에서 true

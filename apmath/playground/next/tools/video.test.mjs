@@ -30,7 +30,8 @@ const SCENE_STATE = {
 };
 const SCENE_STATE_KEYS = Object.fromEntries(Object.entries(SCENE_STATE).map(([k, v]) => [k, new Set(Object.keys(v))]));
 
-// 대본 파일: video.js(남은 쇼츠 1210). 쇼츠 8개 중 7개는 해설(lesson.js)로 대체되어 video-a.js·video-b.js 는 지웠습니다.
+// 과거 쇼츠 1210의 형식 회귀 자료. 실제 학생 장면은 lesson-basic-more.js의 1210 해설을 불러옵니다.
+// 단일 영상 규칙을 검증하던 분모는 유지하되 학생 화면에 과거 쇼츠를 중복 등록하지 않습니다.
 const VIDEO_FILES = ['video.js'];
 function loadVideos() {
   const sandbox = { window: {} };
@@ -118,15 +119,20 @@ for (const [id, script] of Object.entries(allVideos)) {
   });
 }
 
-test('실험실 HTML이 영상 대본을 videos 로 연결한다', () => {
+test('1210은 학생 HTML에서 해설로 연결하고 과거 쇼츠 형식 검사는 유지한다', async () => {
   const html = fs.readFileSync(path.join(SCENE_DIR + '.html'), 'utf8');
-  assert.ok(/videos:\s*\(window\.APL_VIDEOS\s*\|\|\s*\{\}\)\['g7-circle-sector'\]/.test(html), 'createLab 의 videos 연결');
-  assert.ok(/MODULES\s*=\s*\[[^\]]*'video'/.test(html), 'MODULES 에 video 포함');
+  assert.match(html, /MODULES\s*=\s*\[[^\]]*'lesson-basic-more'/, '1210 실제 해설 모듈 포함');
+  assert.doesNotMatch(html, /MODULES\s*=\s*\[[^\]]*'video'/, '과거 쇼츠 중복 로드 없음');
   VIDEO_FILES.forEach((f) => {
-    const m = f.replace(/\.js$/, '');
-    assert.ok(new RegExp(`MODULES\\s*=\\s*\\[[^\\]]*'${m}'`).test(html), `MODULES 에 ${m} 포함`);
-    assert.ok(fs.existsSync(path.join(SCENE_DIR, f)), `${f} 파일`);
+    assert.ok(fs.existsSync(path.join(SCENE_DIR, f)), `${f} 형식 회귀 자료 보존`);
   });
+  const { load } = await import('./helpers/circle-lesson-runtime.mjs');
+  const lab = await load();
+  assert.equal(lab.def.videos, undefined, '학생 런타임에 과거 쇼츠가 등록되지 않음');
+  const current = core.lessonList(lab.def.lessons['1210']);
+  assert.equal(current.length, 1, '1210 원클릭 해설 하나');
+  assert.deepEqual(core.validateLesson(current[0]).errors, []);
+  assert.equal(core.compileLesson(current[0]).kind, 'lesson');
 });
 
 test('실험실 HTML이 해설을 lessons 로 연결하고 lesson 모듈을 불러온다', () => {

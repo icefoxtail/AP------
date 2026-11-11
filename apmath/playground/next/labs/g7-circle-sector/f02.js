@@ -94,7 +94,7 @@
   function semi(id, name, cx, cy, r, dir, sign) {
     const pts = halfArc(cx, cy, fnum(r), dir);
     return {
-      id, name, sign, pts, center: [cx, cy], radius: r, radiusSide: dir >= 0 ? 1 : -1,
+      id, name, sign, pts, center: [cx, cy], radius: r, radiusSide: dir >= 0 ? 1 : -1, radiusDirection: dir,
       area: V(fmul(sq(r), HALF)),
       aExpr: `π×${rt(r)}²×½`,
       aTex: `\\pi\\times ${rtex(r)}^2\\times\\frac12`,
@@ -353,6 +353,7 @@
     const tri = { id: 'tri', name: '△ABC', sign: 1, pts: [B, C, A], area: V(ZERO, fr(p * q, 2)), aExpr: `½×${p}×${q}`, aTex: `\\frac12\\times ${p}\\times ${q}` };
     const sBC = {
       id: 'bc', name: '반원 BC', sign: -1, pts: halfArc(c / 2, 0, c / 2, PI / 2), area: V(fr(c2, 8)),
+      center: [c / 2, 0], radius: fr(c, 2), radiusSide: 1, radiusDirection: PI / 2,
       aExpr: cInt ? `π×${rt(fr(c, 2))}²×½` : 'π×($\\frac{BC}{2}$)²×½',
       aTex: cInt ? `\\pi\\times ${rtex(fr(c, 2))}^2\\times\\frac12` : '\\pi\\times\\left(\\frac{\\overline{BC}}{2}\\right)^2\\times\\frac12'
     };
@@ -485,17 +486,20 @@
 
   /* ======================= 보기 상태(탐구/정리/문제)와 그리기 ======================= */
   const gid = (sid, k) => `f02_${sid}_${k}`;
+  const sequencedLesson = (spec, s, tab) => ['lune13', 'nc', 'ns'].includes(spec.id) && tab !== 'problem' && !!(s.lessonOn || s.lessonEntry);
 
   function stateFor(spec, s, lab, P, m) {
     const tab = lab ? lab.tab : 'explore';
     if (tab === 'problem') return { tab, mode: 'none', target: 0, lab: 0, flags: {} };
+    const sequence = sequencedLesson(spec, s, tab);
+    if (sequence && s.lessonEntry) return { tab, mode: 'none', target: 0, lab: 0, flags: {}, entry: true, sequence: true };
     if (tab === 'review') {
       const steps = spec.steps(P, m);
       const k = clamp(s.step || 1, 1, steps.length);
       const v = (steps[k - 1] || {}).v || {};
       const labelLevel = v.lab == null ? 3 : v.lab;
       // lesson-only: 숫자의 뜻을 짚는 자막이 먼저 나오고, f02Read=true 인 계산 자막부터 수식·값을 엽니다.
-      return { tab, mode: v.mode || 'area', target: v.u == null ? 1 : v.u, lab: s.lessonOn && s.f02Read === false ? Math.min(labelLevel, 1) : labelLevel, flags: v.flags || {}, step: k, lesson: !!s.lessonOn };
+      return { tab, mode: v.mode || 'area', target: sequence && s.f02Split === false ? 0 : v.u == null ? 1 : v.u, lab: s.lessonOn && s.f02Read === false ? Math.min(labelLevel, 1) : labelLevel, flags: v.flags || {}, step: k, lesson: !!s.lessonOn, sequence };
     }
     return { tab: 'explore', mode: s.f02mode === 'arc' && m.hasArc ? 'arc' : 'area', target: s[gid(spec.id, 'u')] || 0, lab: 3, flags: {} };
   }
@@ -570,15 +574,25 @@
     // 4) 처음 모양의 길이·이름
     if (homeA > 0.01 && m.home) m.home(G, homeA, st);
 
+    // 초승달 해설에서 떼어 놓은 세 반원의 지름은 원래 주어진 4·3·5입니다.
+    // 반지름을 계산하기 전에도 어떤 변을 지름으로 한 반원인지 확인할 수 있게 합니다.
+    if (st.sequence && m.kind === 'LUNE' && mode !== 'none' && u > 0.35 && !b.thumb) {
+      for (const [id, diameter] of [['ab', m.P.p], ['ac', m.P.q], ['bc', m.c]]) {
+        const it = m.byId[id], points = shiftPts([it.pts[0], it.pts.at(-1)], u * m.dx[id]);
+        measure(G, points[0], points[1], -13, `지름 ${diameter} cm`, faded(id), { size: 13, gap: 12 });
+      }
+    }
+
     // 해설에서 조각이 갈라져도 자막이 말하는 각 반지름을 그림에서 확인할 수 있게 합니다.
     // 탐구·문제와 수동 정리의 그리기 명령은 바꾸지 않습니다.
-    if (st.lesson && s.f02Dims && mode !== 'none' && st.lab <= 2 && u > 0.35 && !b.thumb) {
+    if (st.lesson && s.f02Dims && mode !== 'none' && (st.lab <= 2 || st.sequence) && u > 0.35 && !b.thumb) {
       order.forEach((id) => {
         const it = m.byId[id];
         if (!it.center || !it.radius) return;
         const r = fnum(it.radius), c = [it.center[0] + u * m.dx[id], it.center[1]];
         dotAt(G, c, faded(id), 3.4);
-        measure(G, c, [c[0] + r, c[1]], 14 * it.radiusSide, `r = ${rt(it.radius)} cm`, faded(id), { size: 14, gap: 12 });
+        const direction = st.sequence && m.kind === 'LUNE' ? it.radiusDirection : 0;
+        measure(G, c, [c[0] + r * Math.cos(direction), c[1] + r * Math.sin(direction)], 14 * it.radiusSide, `r = ${rt(it.radius)} cm`, faded(id), { size: 14, gap: 12 });
       });
     }
 
@@ -601,20 +615,29 @@
       });
       boxes.forEach((bx) => {
         const it = bx.it, availPx = bx.availPx;
+        // lune13의 삼각형 넓이는 곧 최종 정답입니다. 새 세 장면은 계산한 조각만 공개합니다.
+        let labelLevel = st.lab;
+        if (st.sequence) {
+          const count = Math.max(0, Number(s.f02Calc) || 0);
+          const known = m.kind === 'LUNE'
+            ? it.id === 'tri' ? !!s.f02Final : ['ab', 'ac', 'bc'].indexOf(it.id) < count
+            : count >= (it.id === 'big' ? 1 : 2);
+          labelLevel = s.f02Read !== false && known ? 3 : 1;
+        }
         const fa = labA * (hot != null && !bx.ids.includes(hot) ? 0.3 : 1) * (fadeSet.has(bx.ids[0]) ? 0.45 : 1);
         const sgn = mode === 'arc' ? 1 : it.sign;
         const col = mode === 'arc' ? 'sky' : sgn > 0 ? PIECE.plus : PIECE.minus;
         const valV = mode === 'arc' ? it.arc.len : it.area;
         const lines = [];
-        if (st.lab >= 1) {
+        if (labelLevel >= 1) {
           const parts = bx.name.split(' ');
           if (textW(b, bx.name, 12) > availPx && parts.length >= 2) { // 좁으면 두 줄로
             const h = Math.ceil(parts.length / 2);
             lines.push({ t: parts.slice(0, h).join(' '), size: 14, color: 'muted', min: 12, always: true }, { t: parts.slice(h).join(' '), size: 14, color: 'muted', min: 12, always: true });
-          } else lines.push({ t: bx.name, size: 14, color: 'muted', min: 12, always: st.lab === 1 });
+          } else lines.push({ t: bx.name, size: 14, color: 'muted', min: 12, always: labelLevel === 1 });
         }
-        if (st.lab >= 2) lines.push({ t: mode === 'arc' ? it.arc.expr : String(it.aExpr).replace(/\$/g, ''), size: 14, color: 'ink', min: 12 });
-        if (st.lab >= 3) {
+        if (labelLevel >= 2) lines.push({ t: mode === 'arc' ? it.arc.expr : String(it.aExpr).replace(/\$/g, ''), size: 14, color: 'ink', min: 12 });
+        if (labelLevel >= 3) {
           lines.push({ t: (mode === 'arc' ? '' : sgn > 0 ? '+ ' : '− ') + vplain(valV), size: 19, color: col, min: 14, always: true });
           if (bx.each) lines.push({ t: '(각각)', size: 14, color: 'muted', min: 12, always: true });
         }
@@ -655,7 +678,10 @@
       const cur = s.f02uShow == null ? 0 : s.f02uShow, diff = st.target - cur;
       if (Math.abs(diff) > 0.01) { s.f02uShow = cur + diff * 0.2; if (lab && lab.invalidate) lab.invalidate(); } else s.f02uShow = st.target;
     }
-    const u = b.thumb || st.tab === 'problem' ? 0 : st.tab === 'review' ? (s.f02uShow == null ? 0 : s.f02uShow) : (s[gid(spec.id, 'u')] || 0);
+    // 초승달 마지막 장은 남은 삼각형을 계산합니다. 첫 프레임/탐색에서도
+    // 그 장의 4 cm·3 cm 조건이 보이도록 분리 보간의 이전 값을 쓰지 않습니다.
+    const triangleHome = st.sequence && spec.id === 'lune13' && st.mode === 'none';
+    const u = b.thumb || st.tab === 'problem' || st.entry || triangleHome ? 0 : st.tab === 'review' ? (s.f02uShow == null ? 0 : s.f02uShow) : (s[gid(spec.id, 'u')] || 0);
     if (s.dragging && !s.lessonOn && b.__f02Focus && !b.thumb) b.setFocus(b.__f02Focus, false); // 손잡이를 끄는 동안에는 크기를 고정(해설 재생 중에는 재생기가 dragging 을 쥐므로 제외: 조각이 갈라지면 그림 틀이 따라가야 함)
     else { fitView(b, G, m, st, u); b.__f02Focus = b.focus; }
     renderModel(b, G, m, st, s, u);
@@ -709,7 +735,14 @@
     spec.reroll = reroll;
 
     return {
-      id: spec.id, title: spec.title, short: spec.short, question: spec.question,
+      id: spec.id, title: spec.title, short: spec.short,
+      question: ['nc', 'ns'].includes(spec.id) ? (s) => {
+        if (!(s.lessonOn || s.lessonEntry)) return spec.question;
+        // 두 해설은 원본 problem의 같은 수치 문제를 둘레/넓이로 나누어 풉니다.
+        // n을 자유롭게 바꾸는 기존 탐구 질문은 직접 해 보기에서 유지합니다.
+        const P = spec.read(s, false);
+        return spec.problem(P, spec.build(P)).text.replace(/<[^>]*>/g, '');
+      } : spec.question,
       enter: (s, lab) => {
         const live = !!lab && s === lab.s;
         s.f02sid = spec.id;
@@ -1175,7 +1208,7 @@
       }),
       solution: {
         standard: (P, m) => ({ steps: solHTML(solLinesArcArea(m), 6) }),
-        quick: (P, m) => ({ steps: `작은 ${isC ? '원' : '반원'} ${P.n}개의 둘레의 합 = 큰 ${isC ? '원' : '반원'} 하나의 ${isC ? '둘레' : '호'}. 그래서 n과 관계없이 둘레는 ${isC ? '큰 원 둘레의 2배' : '큰 호의 2배'}, 곧 ${vplain(m.perim)} cm예요.`, highlight: 'n을 바꿔도 둘레는 변하지 않고 넓이만 변해요.' })
+        quick: (P, m) => ({ steps: `작은 ${isC ? '원' : '반원'} ${P.n}개의 ${isC ? '둘레' : '호의 길이'}의 합 = 큰 ${isC ? '원' : '반원'} 하나의 ${isC ? '둘레' : '호의 길이'}. 그래서 n과 관계없이 둘레는 ${isC ? '큰 원 둘레의 2배' : '큰 호의 2배'}, 곧 ${vplain(m.perim)} cm예요.`, highlight: 'n을 바꿔도 둘레는 변하지 않고 넓이만 변해요.' })
       }
     };
   }
@@ -1200,6 +1233,30 @@
       // 해설 진입 화면(s.lessonEntry): 탐구 탭의 결론 칩(넓이·둘레의 답)을 ▶ 를 누르기 전에는 보이지 않습니다. 탐구·정리·문제 화면과 해설 재생 중(정리 탭 step 칩)은 그대로입니다.
       if (s.lessonEntry) v.chips = [];
       if (s.lessonOn && lab && lab.tab === 'review' && s.f02Read === false) { v.chips = []; v.formula = ''; }
+      if (sequencedLesson(spec, s, lab && lab.tab || 'explore')) {
+        // 정리의 기존 수식 줄에는 다음 조각의 값과 삼각형의 정답까지 들어 있습니다.
+        // 새 해설에서는 현재 계산한 조각만 칩으로 보여 주고 마지막 합·차는 별도로 엽니다.
+        v.guide = spec.question;
+        v.readouts = []; v.parts = []; v.formula = ''; v.notes = null; v.chips = [];
+        if (!s.lessonEntry && s.lessonOn) {
+          const st = stateFor(spec, s, lab, P, m), arc = st.mode === 'arc';
+          const count = Math.max(0, Number(s.f02Calc) || 0);
+          if (s.f02Final) v.chips = [{ k: arc ? '둘레' : '넓이', tex: vtex(arc ? m.perim : m.area), color: 'sky' }];
+          else if (m.kind === 'LUNE') {
+            if (step === 3 && count >= 3) v.chips = [{ k: '반원 AB + 반원 AC', tex: `${vtex(m.byId.ab.area)}+${vtex(m.byId.ac.area)}=${vtex(m.byId.bc.area)}`, color: 'green' }];
+            else if (count > 0 && step < 4) {
+              const it = m.byId[['ab', 'ac', 'bc'][Math.min(count, 3) - 1]];
+              v.chips = [{ k: it.name, tex: `${it.aTex}=${vtex(it.area)}`, color: it.sign > 0 ? 'green' : 'rose' }];
+            }
+          } else if (count > 0) {
+            const it = count === 1 ? m.byId.big : m.byId.s0;
+            const value = arc ? it.arc.len : it.area, expression = arc ? it.arc.tex : it.aTex;
+            v.chips = count >= 3
+              ? [{ k: it.groupName, tex: `${m.n}\\times ${vtex(value)}=${vtex(V(fmul(value.a, fr(m.n)), fmul(value.c, fr(m.n))))}`, color: 'green' }]
+              : [{ k: it.name, tex: `${expression}=${vtex(value)}`, color: 'green' }];
+          }
+        }
+      }
       return v;
     };
     return scene;
