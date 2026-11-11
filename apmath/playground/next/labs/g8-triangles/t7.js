@@ -399,7 +399,7 @@
       } else {
         const [p, q, r] = x;
         out.push({ k: 'given', f: 'given', t: `점 I는 △ABC의 내심이고 D는 I에서 변 BC에 내린 수선의 발이에요. $\\overline{AB}=${p + q}$ cm, $\\overline{BC}=${q + r}$ cm, $\\overline{CA}=${r + p}$ cm일 때 $\\overline{BD}$의 길이 $x$를 구해요.`, cap: `AB=${p + q}, BC=${q + r}, CA=${r + p} (cm), BD=x` });
-        out.push({ k: 'idea', f: 'idea', t: '내심의 수선의 발 D는 변의 중점이 아니라 내접원의 접점이에요(중점이 되는 건 외심일 때뿐). 그러니 BC의 반으로 구하면 안 되고, 한 점에서 그은 두 접선의 길이가 같다는 성질로 구해요.', cap: '내심의 D는 접점 → 접선의 길이로 구해요' });
+        out.push({ k: 'idea', f: 'idea', t: '내심의 수선의 발 D는 내접원의 접점이에요. 항상 변의 중점인 것은 아니므로 BC의 반이라고 단정하지 않고, 한 점에서 그은 두 접선의 길이가 같다는 성질로 구해요.', cap: '내심의 D는 접점 → 접선의 길이로 구해요' });
         out.push({ k: 'fig', f: 'tan', lb: '접선의 길이', t: '$\\overline{AF}=\\overline{AE}=p$, $\\overline{BF}=\\overline{BD}=q$, $\\overline{CD}=\\overline{CE}=r$로 놓아요. 구하는 것은 $x=\\overline{BD}=q$.', cap: 'AF=AE=p, BF=BD=q, CD=CE=r' });
         out.push({ k: 'fig', f: 'sides', lb: '변을 합으로', t: `세 변은 $\\overline{AB}=p+q=${p + q}$, $\\overline{BC}=q+r=${q + r}$, $\\overline{CA}=r+p=${r + p}$예요.`, cap: `p+q=${p + q}, q+r=${q + r}, r+p=${r + p}` });
         out.push({ k: 'eq', f: 'eq', t: `$(p+q)+(q+r)-(r+p)=2q$이므로 $x=q=\\frac{\\overline{AB}+\\overline{BC}-\\overline{CA}}{2}=\\frac{${p + q}+${q + r}-${r + p}}{2}=${q}$ (cm)`, cap: `x=q=\\frac{${p + q}+${q + r}−${r + p}}{2}=${q} cm` });
@@ -599,7 +599,7 @@
 
   /* ====================================================================== 4. 정삼각형의 O와 I */
   const m4 = {
-    id: 't7-4', title: '정삼각형에서는 O와 I가 같은 점', short: '정삼각형의 O와 I', solve: m4Solve,
+    id: 't7-4', title: '정삼각형의 외심과 내심', short: '정삼각형의 O와 I', solve: m4Solve,
     question: '정삼각형의 외심과 내심은 어떤 관계이고, 외접원과 내접원의 반지름의 비는?',
     ctl: ['trMr'],
     init: (s) => { s.trMr = 3; s.trV = 0; },
@@ -658,7 +658,7 @@
 
   /* ====================================================================== 5. 중점 D, E, F 와 수선의 발 D, E, F */
   const m5 = {
-    id: 't7-5', title: '외심의 D·E·F와 내심의 D·E·F는 달라요', short: '중점과 수선의 발', solve: m5Solve,
+    id: 't7-5', title: '외심과 내심에서 내린 수선의 발', short: '중점과 수선의 발', solve: m5Solve,
     question: '외심에서 변에 내린 점 D와 내심에서 변에 내린 점 D는 같은 위치일까? BD와 CD의 길이는?',
     ctl: ['trMs', 'trMt'],
     init: (s) => { s.trMs = 60; s.trMt = 70; s.trV = 0; s.trM = 6; s.trX = [4, 3, 5]; },
