@@ -60,3 +60,39 @@ test('new manual questions cannot replace a fixed lesson, erase a choice or adva
     assert.ok(frame.paths.length > 0, id + ': source figure stays present');
   }
 });
+
+test('final similar-family highlight follows the actual mobile and desktop choice columns', () => {
+  let rightColumn = false;
+  for (const width of [360, 1000]) for (const lesson of video.lessonList(lab.def.lessons['sm1-always'])) {
+    if (!lesson.chapters[0].cues[0].set.smLessonProblem) continue;
+    Object.assign(lab.s, { lessonOn: false, lessonEntry: false });
+    const scene = lab.go('sm1-always');
+    lab.board.resize(width, 650);
+    const compiled = video.compileLesson(lesson);
+    const state = video.stateAt(compiled, compiled.length, { nums: { ...lab.s }, sets: { ...lab.s }, step: 0, part: null });
+    Object.assign(lab.s, state.nums, state.sets, { lessonOn: true, lessonEntry: false, step: state.step });
+    const index = scene.sm.questionOf(lab.s).choices.findIndex(choice => choice.ok);
+    const narrow = lab.api.phone(lab.board), cols = narrow ? 2 : 5;
+    const marks = [], figures = [], original = lab.board.circle;
+    lab.board.circle = function (at, radius, options = {}) {
+      if (radius === 1.55 && options.color === 'amber' && options.dash) marks.push({ x: at.x, y: at.y });
+      if (options.fill === 'sky') figures.push({ x: at.x, y: at.y });
+      return original.call(this, at, radius, options);
+    };
+    let frame;
+    try { frame = lab.draw(); } finally { lab.board.circle = original; }
+    for (const path of frame.paths.filter(item => item.options.fill === 'sky')) {
+      const xs = path.points.map(p => p.x), ys = path.points.map(p => p.y);
+      figures.push({ x: (Math.min(...xs) + Math.max(...xs)) / 2, y: (Math.min(...ys) + Math.max(...ys)) / 2 });
+    }
+    const number = frame.textItems.find(item => item.text === lab.api.NUM[index]);
+    assert.ok(number && figures.length >= 5, 'real choice numbers and source shapes are drawn');
+    const anchor = lab.board.toW(number.x, number.y);
+    const closest = figures.sort((a, b) => Math.hypot(a.x - anchor.x, a.y - anchor.y) - Math.hypot(b.x - anchor.x, b.y - anchor.y))[0];
+    assert.equal(marks.length, 1);
+    assert.ok(Math.hypot(marks[0].x - closest.x, marks[0].y - closest.y) < .6, 'answer marker is centered on the shape beside the correct source number');
+    if (narrow && index % cols === 1) rightColumn = true;
+  }
+  assert.ok(rightColumn, 'a real authored answer exercises the previously misplaced mobile column');
+  lab.board.resize(1000, 650);
+});

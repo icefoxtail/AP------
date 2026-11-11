@@ -12,15 +12,18 @@
   const base = id => { const s = {}; defs[id].init(s); return s; };
   const cue = (at, say, step, set) => ({ at, ...(say ? { say } : {}), ...(step == null ? {} : { step }), ...(set ? { set } : {}) });
   const chapter = (title, cues) => ({ title, length: 12, cues });
+  const traceConcepts = ['sm1-len', 'sm2-solid', 'sm3-par', 'sm3-flip', 'sm3-sas', 'sm3-multi', 'sm3-ssa', 'sm3-trap'];
   function add(id, label, title, answer, captions, options = {}) {
     const D = defs[id], initial = { ...base(id), ...(options.initial || {}) };
     const nums = Object.fromEntries(Object.entries(initial).filter(([, v]) => typeof v === 'number'));
     const sets = Object.fromEntries(Object.entries(initial).filter(([, v]) => typeof v !== 'number'));
     const pk = Object.freeze({ ...D.gen(options.seed || 1) });
-    const start = { ...nums, ...(options.motion ? { [options.motion]: 0 } : {}) };
+    const start = { ...nums, smATrace: 0, ...(options.motion ? { [options.motion]: 0 } : {}) };
     const first = { ...sets, smSeed: 0, smPk: pk, smLessonProblem: !!options.problem,
       smShowAnswer: false, smCalculationReady: false, smALine: '', smAMode: options.mode || label };
-    const transition = options.motion ? { at: .5, to: { [options.motion]: 1 }, dur: 4 } : cue(.5, null, 2);
+    const trace = id === 'sm1-always' || (!options.problem && traceConcepts.includes(id));
+    const transition = options.motion ? { at: .5, to: { [options.motion]: 1 }, dur: 4 }
+      : trace ? { at: .5, to: { smATrace: 1 }, dur: 4 } : cue(.5, null, 2);
     const line = options.lines || ['', '', ''];
     const chapters = [
       { ...chapter('조건과 대응 찾기', [cue(0, captions[0], 0, first), transition, cue(6, captions[1], 2, { smALine: line[0] })]), start },
@@ -52,6 +55,27 @@
   // Source geometry, with the original exploration summaries hidden during a
   // concept lesson. Only the lesson's current short calculation is added back.
   // In particular, cone/trapezoid area numbers do not appear before the last card.
+  function drawWithTrace(b, s, C, draw, all = false) {
+    const progress = C.entry || C.step !== 0 ? 0 : G.clamp(s.smATrace || 0, 0, 1);
+    if (!progress) { draw(); return; }
+    const path = b.path, circle = b.circle, edges = [], circles = [], seen = new Set();
+    b.path = function (points, options = {}) {
+      if (points.length > 1 && (options.fill || options.width >= 2.5) && (all || edges.length < 2)) {
+        const a = points[0], z = points[1], key = `${a.x},${a.y}:${z.x},${z.y}`;
+        if (!seen.has(key)) { seen.add(key); edges.push([a, z]); }
+      }
+      return path.call(this, points, options);
+    };
+    b.circle = function (at, radius, options = {}) {
+      if (options.fill) circles.push([at, radius]);
+      return circle.call(this, at, radius, options);
+    };
+    try { draw(); } finally { b.path = path; b.circle = circle; }
+    // Trace source edges themselves; in the five-option problem every shape
+    // receives identical treatment, without selecting the correct option.
+    for (const [a, z] of edges) G.line(b, a, G.lerp(a, z, progress), 'violet', 4.8, { alpha: .8 });
+    for (const [at, radius] of circles) b.arc(at, radius, 0, 2 * Math.PI * progress, { color: 'violet', width: 4.8, alpha: .8 });
+  }
   const ids = ['sm1-corr', 'sm1-solid', 'sm1-len', 'sm1-always', 'sm2-tile', 'sm2-cube', 'sm2-solid', 'sm2-cone',
     'sm3-par', 'sm3-flip', 'sm3-rot', 'sm3-sas', 'sm3-multi', 'sm3-ssa', 'sm3-foldrect', 'sm3-foldequi', 'sm3-trap'];
   for (const id of ids) {
@@ -65,12 +89,17 @@
           G.drawSolution(b, D, s, M, { ...C, step: Math.min(C.step, 2) }, solution);
           return;
         }
+        if (id === 'sm1-always') {
+          const stage = C.answer ? solution.steps.length : Math.max(1, Math.min(C.step, solution.steps.length - 1));
+          drawWithTrace(b, s, C, () => G.drawSolution(b, D, s, M, { ...C, step: stage }, solution), true);
+          return;
+        }
         return false;
       }
       const cap = !C.answer && (id === 'sm2-cone' || id === 'sm3-trap');
       const moving = !!D.anim;
-      D.draw(b, s, M, { ...C, problem: false, review: !moving, full: false, txt: false,
-        step: cap ? Math.min(C.step, 1) : C.step, t: moving ? s[D.anim.key] : C.t });
+      drawWithTrace(b, s, C, () => D.draw(b, s, M, { ...C, problem: false, review: !moving, full: false, txt: false,
+        step: cap ? Math.min(C.step, 1) : C.step, t: moving ? s[D.anim.key] : C.t }));
       // Follow the source's actual cone sections rather than drawing an unrelated
       // illustration. The cumulative cone is the object used by the explanation.
       if (id === 'sm2-cone' && C.step >= 2) {
