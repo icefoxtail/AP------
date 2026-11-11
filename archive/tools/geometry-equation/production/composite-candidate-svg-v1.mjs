@@ -128,6 +128,11 @@ export function compositePanels(plan){
     if(!solidChain&&solidPanels.some(Boolean))bad('PANEL_SOLID_MIXED_'+solidPanels.indexOf(true));
     if(plan.panels.length<(plan.chain==='number-line-figure-v1'||plan.chain===SOLID_CAPABILITY?1:2)||plan.panels.length>MAX_PANELS)bad('PANELS');
   }
+  // columns (opt-in): 1 stacks plane or Venn panels in one column (each at its own width, the way graph panels stack); 2 is the default grid. Only a plane-figure or Venn composite takes it.
+  if(plan.columns!==undefined){
+    if(plan.columns!==1&&plan.columns!==2)bad('COLUMNS_INVALID');
+    if(!(setGrid||(grid&&!withSolid)))bad('COLUMNS_UNSUPPORTED');
+  }
   // Three panels with their own formula headers cannot fit the 640 CSS px stack: each formula moves to its caption row and a line every
   // panel draws identically (same id, slope and intercept) is written once above the stack (phase2 compositeHeader / COMPOSITE_PANEL_CANVAS).
   const three=!grid&&!setGrid&&!statGrid&&plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
@@ -204,8 +209,8 @@ export function compositePanels(plan){
     return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three&&!linearStack?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
   });
 }
-/** The stack or grid layout of the checked panels: graph/number-line stacks (and the one solid panel) and normal-curve panels (G19) stay one column; plane, solid, Venn, dot and scatter panels become a grid. */
-export const compositePanelLayout=checked=>checked.length>1&&checked.every(item=>isGridPanel(item.plan))&&!checked.every(item=>isStatNormalPanel(item.plan))
+/** The stack or grid layout of the checked panels: graph/number-line stacks (and the one solid panel) and normal-curve panels (G19) stay one column; plane, solid, Venn, dot and scatter panels become a grid, unless the plan says columns:1 (plane or Venn panels stacked in one column). */
+export const compositePanelLayout=(checked,plan)=>checked.length>1&&checked.every(item=>isGridPanel(item.plan))&&!checked.every(item=>isStatNormalPanel(item.plan))&&plan?.columns!==1
   ?{kind:'GRID',columns:compositeGridColumns(checked.length),rows:Math.ceil(checked.length/compositeGridColumns(checked.length))}
   :{kind:'STACK',columns:1,rows:checked.length};
 /** The stacked/gridded size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */
@@ -270,7 +275,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
   const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
   try{
     const checked=compositePanels(plan);
-    const panelLayout=compositePanelLayout(checked);
+    const panelLayout=compositePanelLayout(checked,plan);
     state.layout={kind:panelLayout.kind,columns:panelLayout.columns,rows:panelLayout.rows};
     if(!Array.isArray(panels)||panels.length!==checked.length||panels.some(panel=>!panel||typeof panel!=='object'||!panel.plan||!panel.model))throw new Stop('COMPOSITE_PANEL_MODELS_MISSING');
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('COMPOSITE_TYPOGRAPHY_POLICY_INVALID');

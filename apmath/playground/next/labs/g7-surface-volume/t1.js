@@ -355,6 +355,8 @@
   }
 
   /* ================================================================ sv1-2 부채꼴기둥 */
+  const lessonReady = (s, key) => !(s.lessonOn || s.lessonEntry) || s[key] === true;
+
   function sv12() {
     const model = (s) => {
       const th = clamp(Math.round(s.sTh / 30) * 30, 60, 300), r = clamp(Math.round(s.sR2), 2, 15), h = clamp(Math.round(s.sH2), 2, 20);
@@ -426,7 +428,7 @@
               if (th <= 180) curveDim(at(k, pts[0]), at(k, pts[n - 1]), String(r), outside(at(k, pts[0]), at(k, pts[n - 1]), c3));
               else { D.tick(at(k, pts[0]), at(k, pts[1]), 1, 'ink'); D.tick(at(k, pts[0]), at(k, pts[n - 1]), 1, 'ink'); }
             }
-            if (!C.problem && C.t > 0.78) aLab(D, lerp3(O3, M3, th > 180 ? 0.66 : 0.68), '밑넓이', plainVal(M.S), { maxW: Math.max(40, 1.1 * Rpx * Math.sin((Math.min(th, 180) * DEG) / 2)), size: 14 });
+            if (!C.problem && C.t > 0.78 && lessonReady(s, 'svBaseReady')) aLab(D, lerp3(O3, M3, th > 180 ? 0.66 : 0.68), '밑넓이', plainVal(M.S), { maxW: Math.max(40, 1.1 * Rpx * Math.sin((Math.min(th, 180) * DEG) / 2)), size: 14 });
             // 중심각 글자: 좁거나(90° 이하) 180°가 넘는 부채꼴은 꼭짓점 바깥(호의 반대쪽)에 둬요
             angleJobs.push(() => {
               if (th > 180 || th <= 90) { const o2 = D.px(O3), m2 = D.px(M3), dl = Math.hypot(o2.x - m2.x, o2.y - m2.y) || 1; D.label(O3, `${th}°`, { dir: { x: (o2.x - m2.x) / dl, y: (o2.y - m2.y) / dl }, gap: 4, size: 14, color: 'amber' }); }
@@ -444,9 +446,9 @@
               return { gi, lo, hi, x0: lo.x, x1: hi.x, color: G.pairColor(gi), len: gi === 1 ? plainVal(M.arc) : String(r), dim: gi === 1 ? `호의 길이 ${plainVal(M.arc)}` : String(r), area: gi === 1 ? plainVal(vmul(M.arc, h)) : String(r * h), c3: at(L[km], G.centroid(sn.net.pieces[L[km]].pts)) };
             }).sort((p, q) => p.x0 - q.x0);
             const rowY = Math.max(...ctx.all.map((p) => D.px(p).y)) + 16, xl = info[0].x0, xr = info[2].x1;
-            info.forEach((g) => D.dim(g.lo.p3, g.hi.p3, dimTxt(D, g), { side: { x: 0, y: 1 }, off: rowY - g.lo.y, color: g.color, alpha: flatA }));
-            D.brace({ x: xl, y: rowY }, { x: xr, y: rowY }, `밑면의 둘레 = ${info.map((g) => g.len).join('+')} = ${plainVal(M.P)}`, { px: true, side: { x: 0, y: 1 }, off: 14, color: 'amber', alpha: flatA });
-            info.forEach((g) => aLab(D, g.c3, areaName(D, g, '옆넓이'), g.area, { maxW: (g.x1 - g.x0) * 0.9, size: 14, alpha: flatA }));
+            info.forEach((g) => D.dim(g.lo.p3, g.hi.p3, (lessonReady(s, 'svOtherReady') || g.gi !== 1) ? dimTxt(D, g) : '호의 길이', { side: { x: 0, y: 1 }, off: rowY - g.lo.y, color: g.color, alpha: flatA }));
+            if (lessonReady(s, 'svOtherReady')) D.brace({ x: xl, y: rowY }, { x: xr, y: rowY }, `밑면의 둘레 = ${info.map((g) => g.len).join('+')} = ${plainVal(M.P)}`, { px: true, side: { x: 0, y: 1 }, off: 14, color: 'amber', alpha: flatA });
+            if (lessonReady(s, 'svSideReady')) info.forEach((g) => aLab(D, g.c3, areaName(D, g, '옆넓이'), g.area, { maxW: (g.x1 - g.x0) * 0.9, size: 14, alpha: flatA }));
             if (!D.lessonHide) fitLine(D, (xl + xr) / 2, rowY + 76, `겉넓이 = ${plainVal(M.S)}×2 + (${info.map((g) => g.area).join('+')}) = ${plainVal(M.tot)}`, { alpha: flatA });
           }
           angleJobs.forEach((f) => f());
@@ -536,7 +538,11 @@
       const fullW = 2 * PI * ru + 2 * ru, rowW = isN ? lerpN(Math.min(fullW, wvN * 0.9), fullW) : fullW;
       // 전개도 조각: 밑면(원) · 옆면(직사각형) · 밑면(원). 이름·넓이는 아래에서 직접 씁니다
       const gapT = Math.max(0.5, 0.35 * r);
-      const row = null; // 전개도 조각과 계산의 중복은 덜고 굴러가는 모형에 집중합니다.
+      const row = (s.lessonOn && s.svRollMode === 'surf' && s.svBaseReady) ? layoutTiles([
+        { w: 2 * r, h: 2 * r, shape: 'circle', fill: 'sky' },
+        { w: 2 * PI * r, h, shape: 'rect', fill: 'green' },
+        { w: 2 * r, h: 2 * r, shape: 'circle', fill: 'sky' }
+      ], rowW, Math.max(ru * 2, hu), gapT) : null; // 해설에서만 면별 계산을 순서대로 짚습니다.
 
       const xe = C.problem ? 0 : -xs, xb = C.problem ? 0 : xs;
       const bb = isN ? LB : G.bboxOf([v3(xb - ru, -ru, -hu / 2), v3(xe + ru, -ru, -hu / 2), v3(xb - ru, ru, hu / 2), v3(xe + ru, ru, hu / 2)].map(D.P));
@@ -566,17 +572,17 @@
         // 굴러 간 길이 = 원의 둘레 (옆면의 가로): 바닥의 치수선
         // 굴러 가는 동안 화면이 원기둥을 따라가므로 진행률은 닿는 자리 아래에 쓰고, 한 바퀴를 다 굴러 화면이 물러난 뒤에 전체 길이 치수선을 그려요
         if (t > 0.02 && t <= 0.8) D.tag(v3(xc, -ru, hu / 2), `한 바퀴의 ${Math.round(t * 100)}%`, { dy: 22, size: 15, color: 'orange', alpha: rollA });
-        if (t > 0.8) D.dim(v3(xs, -ru, hu / 2), v3(xc, -ru, hu / 2), done ? `원의 둘레 = 지름 × π = ${plainVal(M.per)}` : `한 바퀴의 ${Math.round(t * 100)}%`, { side: { x: 0, y: 1 }, off: 14, color: 'ink', alpha: lin01(t, 0.8, 0.9) });
+        if (t > 0.8) D.dim(v3(xs, -ru, hu / 2), v3(xc, -ru, hu / 2), done ? (lessonReady(s, 'svOtherReady') ? `원의 둘레 = 지름 × π = ${plainVal(M.per)}` : '한 바퀴 굴러간 거리') : `한 바퀴의 ${Math.round(t * 100)}%`, { side: { x: 0, y: 1 }, off: 14, color: 'ink', alpha: lin01(t, 0.8, 0.9) });
         if (row) {
           drawTiles(D, row, ccx, bb.y1 + rowGap);
           const base = bb.y1 + rowGap + row.height, kpx = b.k;
           row.tiles.forEach((tl, i) => {
             const cx2 = ccx + tl.x + tl.sw / 2, cy2 = base - tl.sh / 2, mw = tl.sw * kpx * 0.92;
-            if (i === 1) aLab(D, { x: cx2, y: cy2 }, '옆넓이', `${plainVal(M.per)}×${h} = ${plainVal(M.L)}`, { fig: true, maxW: mw, size: 14 });
-            else aLab(D, { x: cx2, y: cy2 }, '밑넓이', plainVal(M.S), { fig: true, maxW: mw, size: 14 });
+            if (i === 1 && lessonReady(s, 'svSideReady')) aLab(D, { x: cx2, y: cy2 }, '옆넓이', `${plainVal(M.per)}×${h} = ${plainVal(M.L)}`, { fig: true, maxW: mw, size: 14 });
+            else if (i !== 1 && lessonReady(s, 'svBaseReady')) aLab(D, { x: cx2, y: cy2 }, '밑넓이', plainVal(M.S), { fig: true, maxW: mw, size: 14 });
           });
           const sp = D.b.toS({ x: ccx, y: base });
-          fitLine(D, sp.x, sp.y + 30, `겉넓이 = ${plainVal(M.S)} + ${plainVal(M.L)} + ${plainVal(M.S)} = ${plainVal(M.tot)}`);
+          if (lessonReady(s, 'svShowV')) fitLine(D, sp.x, sp.y + 30, `겉넓이 = ${plainVal(M.S)} + ${plainVal(M.L)} + ${plainVal(M.S)} = ${plainVal(M.tot)}`);
         }
       }
     };
@@ -780,7 +786,7 @@
       const { poly, sm } = polyOf(w * sc, r * sc);
       const n = poly.length, st = C.step;
       const lvB = !C.review ? 1 : st <= 1 ? 2 : 1, lvL = !C.review ? 1 : st === 2 ? 2 : 1;
-      const t = C.problem || !surf ? 0 : C.review || b.thumb ? 1 : clamp(s.sT5 || 0, 0, 1);
+      const t = C.problem || !surf ? 0 : (C.review && !s.lessonOn && !s.lessonEntry) || b.thumb ? 1 : clamp(s.sT5 || 0, 0, 1);
       const arcR = V(0, r), terms = ['w', 'arc', 'w', 'two'];
       if (surf) {
         const sn = solidNet(poly, hu, 1, sm, 8), A = sn.A, B = sn.B, eNow = ease(t), glue = eNow > 0.3 && !C.problem && !b.thumb;
@@ -822,7 +828,7 @@
               if (k < 0 || !tp[k].front) return;
               const pts = k === sn.top ? B : A, rc = G.centroid([pts[0], pts[1], pts[15], pts[16]]), c3 = at(k, rc);
               const xs = pts.map((p3) => D.px(at(k, p3)).x), faceW = Math.max(...xs) - Math.min(...xs);
-              if (!C.problem && C.review) aLab(D, at(k, lerp3(rc, G.centroid([pts[0], pts[16]]), 0.2)), '밑넓이', plainVal(M.S), { maxW: faceW * 0.5, size: 14, small: faceW * 0.5 });
+              if (!C.problem && C.review && lessonReady(s, 'svBaseReady')) aLab(D, at(k, lerp3(rc, G.centroid([pts[0], pts[16]]), 0.2)), '밑넓이', plainVal(M.S), { maxW: faceW * 0.5, size: 14, small: faceW * 0.5 });
               if (!first) return;
               first = false;
               const ctr = at(k, mid3(pts[1], pts[15]));
@@ -839,9 +845,9 @@
                 return { gi, lo, hi, x0: lo.x, x1: hi.x, color: G.pairColor(gi), len, dim: gi === 1 ? `호의 길이 ${len}` : len, area: gi === 1 ? plainVal(vmul(arcR, h)) : String((gi === 3 ? 2 * r : w) * h), c3: at(L[km], G.centroid(sn.net.pieces[L[km]].pts)) };
               }).sort((p0, q0) => p0.x0 - q0.x0);
               const rowY = Math.max(...ctx.all.map((p) => D.px(p).y)) + 16, xl = info[0].x0, xr = info[3].x1;
-              info.forEach((g) => D.dim(g.lo.p3, g.hi.p3, dimTxt(D, g), { side: { x: 0, y: 1 }, off: rowY - g.lo.y, color: g.color, alpha: flatA }));
-              D.brace({ x: xl, y: rowY }, { x: xr, y: rowY }, `밑면의 둘레 = ${info.map((g) => g.len).join('+')} = ${plainVal(M.P)}`, { px: true, side: { x: 0, y: 1 }, off: 14, color: 'amber', alpha: flatA });
-              info.forEach((g) => aLab(D, g.c3, areaName(D, g, '옆넓이'), g.area, { maxW: (g.x1 - g.x0) * 0.9, size: 14, alpha: flatA }));
+              info.forEach((g) => D.dim(g.lo.p3, g.hi.p3, (lessonReady(s, 'svOtherReady') || g.gi !== 1) ? dimTxt(D, g) : '호의 길이', { side: { x: 0, y: 1 }, off: rowY - g.lo.y, color: g.color, alpha: flatA }));
+              if (lessonReady(s, 'svOtherReady')) D.brace({ x: xl, y: rowY }, { x: xr, y: rowY }, `밑면의 둘레 = ${info.map((g) => g.len).join('+')} = ${plainVal(M.P)}`, { px: true, side: { x: 0, y: 1 }, off: 14, color: 'amber', alpha: flatA });
+              if (lessonReady(s, 'svSideReady')) info.forEach((g) => aLab(D, g.c3, areaName(D, g, '옆넓이'), g.area, { maxW: (g.x1 - g.x0) * 0.9, size: 14, alpha: flatA }));
               if (!D.lessonHide) fitLine(D, (xl + xr) / 2, rowY + 76, `겉넓이 = (${plainVal(M.S)})×2 + (${info.map((g) => g.area).join('+')}) = ${plainVal(M.tot)}`, { alpha: flatA });
             }
           }
@@ -882,9 +888,9 @@
       const ctr2 = mid3(topP[1], topP[15]);
       D.radius(ctr2, D.rimPick(ctr2, topP.slice(2, 15)), `반지름 ${r}`, { end: true });
       if (!C.problem) {
-        aLab(D, lerp3(rc, G.centroid([topP[0], topP[16]]), 0.2), '밑넓이', plainVal(M.S), { maxW: faceW * 0.5, size: 14, small: faceW * 0.5 });
+        if (lessonReady(s, 'svBaseReady')) aLab(D, lerp3(rc, G.centroid([topP[0], topP[16]]), 0.2), '밑넓이', plainVal(M.S), { maxW: faceW * 0.5, size: 14, small: faceW * 0.5 });
         const low = Math.max(...pts.map((p3) => D.px(p3).y)), cx2 = (Math.min(...pts.map((p3) => D.px(p3).x)) + Math.max(...pts.map((p3) => D.px(p3).x))) / 2;
-        fitLine(D, cx2, low + 40, `부피 = 밑넓이 × 높이 = (${plainVal(M.S)})×${h} = ${plainVal(M.vol)}`);
+        if (lessonReady(s, 'svShowV')) fitLine(D, cx2, low + 40, `부피 = 밑넓이 × 높이 = (${plainVal(M.S)})×${h} = ${plainVal(M.vol)}`);
       }
     };
     return {
