@@ -47,9 +47,9 @@ window.questionBank = [
     "sourceOrdinal": 1,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q1-solution.svg",
-    "solutionImageAlt": "직선 x-2y+4=0 위의 점 A(0,2), B(-4,0)을 x축 방향으로 -1, y축 방향으로 3만큼 옮기면 A′(-1,5), B′(-5,3)이고, 이동한 직선은 x-2y+11=0이다.",
-    "solutionImageCaption": "직선 x-2y+4=0 위의 점 A(0,2), B(-4,0)을 x축 방향으로 -1, y축 방향으로 3만큼 옮기면 A′(-1,5), B′(-5,3)이고, 이동한 직선은 x-2y+11=0이다.",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q1-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 검은색 원래 직선 위의 A, B와 빨간색 이동 직선 위의 A′, B′, 두 대응점을 잇는 점선.",
+    "solutionImageCaption": "검은색 원래 직선 위의 A, B를 (−1,3)만큼 옮기면 빨간색 직선 위의 A′, B′가 된다. 점선은 대응점 이동, 같은 눈금은 두 이동 길이가 같음을 나타낸다. 좌표와 이동한 직선의 식은 표시하지 않는다. 정답은 x−2y+11=0이다.",
     "solutionImageSize": "full"
   
   },
@@ -394,9 +394,9 @@ window.questionBank = [
     "sourceOrdinal": 8,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
     "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "a=-1일 때 세 점 A, B, C가 한 직선 위에 있다.",
-    "solutionImageCaption": "a=-1일 때 세 점 A, B, C가 한 직선 위에 있다.",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q8-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 좌표 숫자 없이 A, B, C 세 점이 같은 직선 위에 놓인 모식도.",
+    "solutionImageCaption": "평행이동한 두 점의 좌표를 a로 나타낸 후, 세 점이 한 직선 위에 있다는 조건으로 기울기를 같게 둔다. 그림은 공선 조건만 나타내고 실제 좌표는 표시하지 않는다. 정답은 −1이다.",
     "solutionImageSize": "full"
   
   },
@@ -441,13 +441,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "먼저 이차부등식의 해구간을 구하고, 필요조건의 뜻에 맞게 열린 구간의 포함 관계를 세워 양 끝 조건을 각각 얻는다.",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q9-solution-v4.svg",
     "originalCategory": "필요조건과 구간의 포함",
     "questionUid": "qid_v1_37a572b1c1edb0e2bbd5133f505732b98a0086a5b83330e69d0bbfbd2f142e5f",
     "sourceQid": 9,
     "sourceOrdinal": 9,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImageAlt": "해설 그림: 고정된 열린 구간과 a=1인 예시의 이동 열린 구간을 겹쳐 나타낸 수직선.",
+    "solutionImageCaption": "이차부등식의 해 구간 (−1,3)을 이동하는 구간 안에 포함시킨다. 그림의 이동 구간은 a=1인 한 예시로 조건의 경계는 표시하지 않는다. 정답은 2이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -541,13 +544,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "직선과 원에 각각 대칭이동을 적용해 최종 식과 중심을 정한 뒤 원·직선의 접선 조건을 사용한다.",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q11-solution-v4.svg",
     "originalCategory": "대칭이동과 원·직선의 접선 조건",
     "questionUid": "qid_v1_b912765a4eb48f9f68dda19506c979727bcacf7976cfa061bd3577bb6a19bd28",
     "sourceQid": 11,
     "sourceOrdinal": 11,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImageAlt": "해설 그림: 원, 접선에 닿는 점 T, 중심 M에서 T까지 그은 반지름과 직각 표시.",
+    "solutionImageCaption": "대칭 뒤 직선 ℓ은 2x+y+1=0이고 대칭된 원의 중심은 M=(−2,−k), 반지름은 √5이다. 접선이면 중심에서 ℓ까지의 거리가 반지름과 같다. 정답은 −6이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -891,14 +897,17 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "필요조건을 진리집합의 포함으로 해석한 뒤 삼각형 안의 최대 원을 거리 조건으로 결정한다.",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q18-solution-v4.svg",
     "originalCategory": "필요조건과 삼각형 안의 원",
     "image": "assets/images/20_금당고_2학기_중간_고1_기출/q18-problem.svg",
     "questionUid": "qid_v1_7f3bb5181f16cd47489ba32a5f1a5abac53cba7f3bb02a51e2ca16002aa02cf3",
     "sourceQid": 18,
     "sourceOrdinal": 18,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImageAlt": "해설 그림: 삼각형 안의 작은 원과 중심 M에서 세 변까지 내린 점선 수선.",
+    "solutionImageCaption": "P는 꼭짓점 (−2,1), (2,1), (0,−1)의 삼각형이고 원판 Q의 중심은 M=(0,a)이다. 위쪽 변까지의 거리는 1−a, 두 사선까지는 각각 √2분의 (a+1)이며, b는 세 거리 중 가장 작은 값보다 클 수 없다. 원의 크기와 중심 위치는 설명용 모식도이다. 정답은 1이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -944,13 +953,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "평행이동 후 공통부분을 t≤1과 t>1의 두 경우로 나누어 사각형에서 잘린 삼각형 넓이를 빼고 이차식의 최댓값을 구한다.",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q19-solution-v4.svg",
     "originalCategory": "평행이동한 삼각형의 겹치는 넓이",
     "questionUid": "qid_v1_8a8e7e7acc296df4589e0748cf827366c67f607608df518f327cc319d1a6552c",
     "sourceQid": 19,
     "sourceOrdinal": 19,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImageAlt": "해설 그림: 위는 t=½, 아래는 t=1½의 겹침 예이다. 점선은 원래 삼각형, 실선은 이동한 삼각형이며 연한 회색은 공통부분이다.",
+    "solutionImageCaption": "위 그림은 t=½, 아래 그림은 t=1½인 예이다. 점선은 원래 삼각형, 실선은 이동한 삼각형이고 연한 회색은 공통부분이다. 공통 넓이 S(t)는 t≤1에서 t², t>1에서 t²−(2t−2)²로 계산한다. 최댓값이 되는 t는 표시하지 않는다. 정답은 1이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -995,13 +1007,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 바깥 구간의 치역을 확인해 가운데 절댓값 일차함수가 [1,4]를 단조로 채워야 함을 구하고 각 진술을 대입 검토한다.",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q20-solution-v4.svg",
     "originalCategory": "조각별 함수의 전사성과 일대일성",
     "questionUid": "qid_v1_155e26adb01746e8ae1f9a876ac7a80a47d4e8d1dc59f7e31deb121978d062ef",
     "sourceQid": 20,
     "sourceOrdinal": 20,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImageAlt": "해설 그림: 위에는 왼쪽 바깥 포물선, 아래에는 오른쪽 바깥 포물선이 있고 각 안쪽 경계는 열린 점이다.",
+    "solutionImageCaption": "위는 x<0의 왼쪽 바깥 조각, 아래는 x>2의 오른쪽 바깥 조각이다. 파란색은 g의 두 바깥 곡선이고 열린 점은 경계값이 포함되지 않음을 나타낸다. 가운데 그래프와 기울기는 그리지 않았다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -1040,13 +1055,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "y=x에 대한 반사로 꺾인 경로를 직선으로 펴고, 반사된 두 원의 최소 간격과 반사축 교차를 확인한다.",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q21-solution-v4.svg",
     "originalCategory": "대칭이동과 원 사이의 최단거리",
     "questionUid": "qid_v1_5c357b0bcc7888c0280a4773d39fc5abbd25968718564498ead0911d3c6d8482",
     "sourceQid": 21,
     "sourceOrdinal": 21,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImageAlt": "해설 그림: 초록 원 C₁, 파란 대칭 원, 주황 원 C₂와 y=x 및 두 중심을 잇는 점선.",
+    "solutionImageCaption": "초록 원 C₁의 중심은 (−4,2), 반지름 2이다. 파란 원은 y=x에 대칭한 C₁이고 중심 M=(2,−4), 반지름 2이다. 주황 원 C₂의 중심은 (1,3), 반지름 1이다. 점선은 중심 연결선이며 y=x를 지난다. 최단점과 최종 m²는 표시하지 않는다. 정답은 50이다.",
+    "solutionImageSize": "full"
   
   },
   {
