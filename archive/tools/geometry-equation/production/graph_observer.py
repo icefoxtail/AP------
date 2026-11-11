@@ -3080,11 +3080,15 @@ def _ov_expected(plan):
         fill=entry.get('fill','NONE')
         if fill not in ('NONE','LIGHT','MEDIUM'):raise ValueError('OVERLAY_CIRCLE_FILL_INVALID')
         if fill!='NONE':circle_fills[entry['id']]=fill
-    points={};coordinates={};unnamed=set()
+    points={};coordinates={};unnamed=set();point_looks={}
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
         ident=entry.get('id')
         if not isinstance(ident,str) or ident in points:raise ValueError('OVERLAY_POINT_INVALID')
+        # (marker / color) the dot's own look, read from the raw field: OPEN is a hollow circle, a colour is a palette group's line colour
+        if entry.get('marker','FILLED') not in ('FILLED','OPEN'):raise ValueError('OVERLAY_POINT_MARKER_INVALID')
+        if 'color' in entry and entry['color'] not in GRAPH_COLOR_LINES:raise ValueError('OVERLAY_COLOR_INVALID')
+        point_looks[ident]={'open':entry.get('marker')=='OPEN','color':entry.get('color')}
         if 'curveX' in entry:
             pair_family=plan.get('family')=='piecewise-discontinuous'
             x=_ov_reader(entry.get('curveX'));lo,hi=[None,None] if pair_family else plan.get('domain',[None,None])
@@ -3211,7 +3215,7 @@ def _ov_expected(plan):
         if not isinstance(entry,dict) or set(entry)-{'id','circle','from','to','side','fill'} or entry.get('circle') not in circles or entry.get('from') not in points or entry.get('to') not in points or entry.get('from')==entry.get('to'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         if entry.get('side') not in ('ABOVE','BELOW','LEFT','RIGHT') or entry.get('fill','LIGHT') not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         circle_regions.append({'id':entry['id'],'circle':entry['circle'],'from':entry['from'],'to':entry['to'],'side':entry['side'],'fill':entry.get('fill','LIGHT')})
-    return {'angleMarks':_ov_angle_marks(plan,raw,points,by_line),'callouts':callouts,'circleFills':circle_fills,'circleRegions':circle_regions,'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    return {'angleMarks':_ov_angle_marks(plan,raw,points,by_line),'callouts':callouts,'circleFills':circle_fills,'circleRegions':circle_regions,'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints')),'pointLooks':point_looks}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -3279,7 +3283,8 @@ def _ov_lattice(plan,entry):
         else:
             ys=[y for y in range(int(S.floor(y_curve)),bound+1) if (y>y_curve if strict else y>=y_curve)]
         if ys:columns[x]=(len(ys),max(ys));points.extend((x,y) for y in ys)
-    return {'points':points,'columns':columns,'counts':entry.get('counts',False) is True}
+    if 'color' in entry and entry['color'] not in GRAPH_COLOR_LINES:raise ValueError('OVERLAY_COLOR_INVALID')
+    return {'points':points,'columns':columns,'counts':entry.get('counts',False) is True,'color':entry.get('color')}
 
 def _ov_final_window(viewport,plan=None):
     """The window a graph figure is drawn in. The figure shows its axes, so the origin and the unit points (1,0) and (0,1) must lie strictly inside it; when one does not (a
@@ -3367,6 +3372,20 @@ def _ov_color_errors(node,color,code):
     except ValueError:return [code]
     return [] if stroke==GRAPH_COLOR_LINES[color] and abs(width-GRAPH_COLOR_LINE_WIDTH)<1e-6 else [code]
 
+OV_OPEN_DOT_MIN_STROKE=1.4   # a hollow overlay dot's ring is at least this wide (px), so it reads as a circle and not as a speck
+def _ov_dot_look_errors(node,open_dot,color,code):
+    """(marker / color) One drawn overlay dot against the plan's look: a coloured dot is filled and ringed in the palette's line colour; an OPEN one has the figure's white inside and a ring in
+    that colour (black without one) at least OV_OPEN_DOT_MIN_STROKE wide; a plain one wears no palette colour and is not white. A look the plan did not declare is as wrong as a missing one."""
+    fill=(node.get('fill') or '').lower();stroke=(node.get('stroke') or '').lower();line=GRAPH_COLOR_LINES[color] if color else None
+    white=fill in ('#fff','#ffffff','white')
+    if open_dot:
+        try:width=float(node.get('stroke-width') or 0)
+        except ValueError:return [code]
+        ring_ok=stroke==line if line else stroke in ('#111','#000','black')
+        return [] if white and ring_ok and width>=OV_OPEN_DOT_MIN_STROKE and node.get('data-state')=='OPEN' else [code]
+    if line:return [] if fill==line and stroke==line else [code]
+    return [] if not white and fill not in GRAPH_COLOR_LINES.values() and stroke not in GRAPH_COLOR_LINES.values() and node.get('data-state')!='OPEN' else [code]
+
 def overlays_audit(plan,svg,transform):
     raw=plan.get('overlays')
     if raw is None:return None
@@ -3418,6 +3437,8 @@ def overlays_audit(plan,svg,transform):
             claimed.add(ident);got=read_circle(ident)
             if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
             elif not near(got,(float(S.N(x,30)),float(S.N(y,30)))):errors.append('OVERLAY_POINT_MISMATCH:'+ident)
+            else:
+                look=expected['pointLooks'][ident];errors+=_ov_dot_look_errors(circles[ident],look['open'],look['color'],'OVERLAY_POINT_LOOK_MISMATCH:'+ident)
         # circles (G6): centre, radius and a single scale for both axes (a circle drawn as an ellipse is refused), all recomputed from the raw field
         for ident,(cx,cy,r2) in expected['circles'].items():
             oid='overlay-circle-'+str(ident);claimed.add(oid);node=circles.get(oid)
@@ -3567,6 +3588,7 @@ def overlays_audit(plan,svg,transform):
                 try:radius=float(node.get('r'))
                 except (TypeError,ValueError):radius=0.0
                 if not 0<radius<=3.0:errors.append('OVERLAY_LATTICE_DOT_SIZE:'+match)
+                errors+=_ov_dot_look_errors(node,False,lattice['color'],'OVERLAY_LATTICE_DOT_LOOK_MISMATCH:'+match)
             for ident in unmatched:errors.append('OVERLAY_LATTICE_POINT_UNEXPECTED:'+ident)
         # Labels: in the composed figure every overlay line has its equation label, owned by that line. (The model SVG has no labels.)
         if 'data-label-kind' in svg:

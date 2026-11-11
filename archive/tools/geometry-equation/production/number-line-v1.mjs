@@ -920,8 +920,8 @@ function caption(value,fallback){
  */
 export function expandNumberLineFigure(plan){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.numberLine))bad('NUMBER_LINE_FIGURE_PLAN_INVALID');
-  onlyKeys(plan,['capability','numberLine','pointNames','numberLineCaption','caption','sourceConditions','newVisualInformation'],'NUMBER_LINE_FIGURE_PLAN_INVALID');
+  onlyKeys(plan,['capability','numberLine','pointNames','numberLineCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation'],'NUMBER_LINE_FIGURE_PLAN_INVALID');
   figurePointNames(plan,solveNumberLineFigure(plan.numberLine));
   return {capability:'composite-panels-v1',chain:FIGURE_CAPABILITY,panels:[{caption:caption(plan.numberLineCaption,{text:'수직선 위의 범위'}),plan:{capability:NUMBER_LINE_CAPABILITY,numberLine:plan.numberLine,...(plan.pointNames!==undefined?{pointNames:plan.pointNames}:{})}}],
-    caption:plan.caption,sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
+    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
 }
