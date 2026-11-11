@@ -4,6 +4,14 @@
   {
    "subject": "ALGEBRA",
    "unitKey": "H22-A-01",
+   "sections": [
+    "지수",
+    "로그"
+   ],
+   "sectionOf": {
+    "H15-M1-01-EXPONENT": "지수",
+    "H15-M1-02-LOGARITHM": "로그"
+   },
    "groups": [
     {
      "kind": "moved",
@@ -109,8 +117,8 @@
    ],
    "labelOverrides": {
     "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH": {
-     "label": "지수함수의 그래프",
-     "reason": "2022 키 H22-A-02-FUNCTION_BASIC(발문 3개가 지수함수 그래프)을 묶었고, 그 마스터 이름 '함수의 뜻과 그래프'가 단원 내용과 맞지 않아 지수함수의 그래프로 쓴다."
+     "label": "지수함수의 뜻과 그래프",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 지수함수의 그래프와 평행이동이다(H22-A-02-FUNCTION_BASIC을 묶음)."
     }
    }
   },
@@ -159,14 +167,23 @@
    ],
    "labelOverrides": {
     "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH": {
-     "label": "로그함수의 그래프",
-     "reason": "H22-A-03-FUNCTION_BASIC(발문이 로그함수 그래프)을 묶었고 그 마스터 이름이 단원 내용과 맞지 않아 로그함수의 그래프로 쓴다."
+     "label": "로그함수의 뜻과 그래프",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 로그함수의 그래프이다(H22-A-03-FUNCTION_BASIC을 묶음)."
     }
    }
   },
   {
    "subject": "ALGEBRA",
    "unitKey": "H22-A-04",
+   "sections": [
+    "삼각함수",
+    "삼각함수의 그래프"
+   ],
+   "sectionOf": {
+    "H15-M1-05-TRIGONOMETRIC_DEFINITION": "삼각함수",
+    "H22-A-04-TRIGONOMETRIC_GRAPH": "삼각함수의 그래프",
+    "H22-A-04-TRIGONOMETRIC_EQUATION": "삼각함수의 그래프"
+   },
    "groups": [
     {
      "kind": "subunit",
@@ -257,6 +274,22 @@
      ]
     },
     {
+     "kind": "subunit",
+     "anchor": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+     "keys": [
+      {
+       "key": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "key": "H15-M1-05-TRIGONOMETRIC_RELATION",
+       "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
+    {
      "kind": "unit_general",
      "keys": [
       {
@@ -283,10 +316,18 @@
     }
    ],
    "standalone": [
-    "H15-M1-05-TRIGONOMETRIC_DEFINITION",
-    "H15-M1-05-TRIGONOMETRIC_RELATION",
     "H22-A-04-EXPONENTIAL_FUNCTION"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-M1-05-TRIGONOMETRIC_DEFINITION": {
+     "label": "삼각함수",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 삼각함수의 뜻과 값, 삼각함수 사이의 관계 묶음의 발문이 모두 삼각함수의 정의와 값이라 한 묶음으로 합쳤다."
+    },
+    "H22-A-04-TRIGONOMETRIC_EQUATION": {
+     "label": "삼각함수가 포함된 방정식과 부등식",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 삼각방정식과 삼각부등식을 하나로 합친 묶음이며 차례도 한 소단원이다."
+    }
+   }
   },
   {
    "subject": "ALGEBRA",
@@ -513,6 +554,32 @@
        "key": "H22-M1-01",
        "basis": "content_checked",
        "reviewed": true
+      },
+      {
+       "key": "H22-M1-01-LIMIT_VALUE_CALC",
+       "basis": "content_checked",
+       "reviewed": true
+      },
+      {
+       "key": "H22-M1-01-LIMIT_INFINITY",
+       "basis": "content_checked",
+       "reviewed": true
+      }
+     ]
+    },
+    {
+     "kind": "subunit",
+     "anchor": "H22-M1-01-LIMIT_PARAMETER",
+     "keys": [
+      {
+       "key": "H22-M1-01-LIMIT_PARAMETER",
+       "basis": "anchor",
+       "reviewed": true
+      },
+      {
+       "key": "H22-M1-01-LIMIT_GEOMETRY",
+       "basis": "content_checked",
+       "reviewed": true
       }
      ]
     },
@@ -527,12 +594,22 @@
     }
    ],
    "standalone": [
-    "H22-M1-01-LIMIT_GEOMETRY",
-    "H22-M1-01-LIMIT_INFINITY",
-    "H22-M1-01-LIMIT_PARAMETER",
-    "H22-M1-01-LIMIT_PROPERTIES",
-    "H22-M1-01-LIMIT_VALUE_CALC"
-   ]
+    "H22-M1-01-LIMIT_PROPERTIES"
+   ],
+   "labelOverrides": {
+    "H15-M2-01-LIMIT": {
+     "label": "함수의 극한",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 극한값 계산과 무한대에서의 극한 문항을 합친 묶음이며 이름은 차례의 함수의 극한이다."
+    },
+    "H22-M1-01-LIMIT_PROPERTIES": {
+     "label": "함수의 극한에 대한 성질",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 극한의 성질(보기 판별, 극한값 조건)이다."
+    },
+    "H22-M1-01-LIMIT_PARAMETER": {
+     "label": "함수의 극한의 응용",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 극한 조건으로 함수나 미정계수를 정하는 문항과 도형 속 극한 문항을 한 묶음으로 합쳤다."
+    }
+   }
   },
   {
    "subject": "CALCULUS",
@@ -551,15 +628,33 @@
        "key": "H22-M1-02",
        "basis": "content_checked",
        "reviewed": true
+      },
+      {
+       "key": "H22-M1-02-CONTINUITY_CONDITION",
+       "basis": "content_checked",
+       "reviewed": true
+      },
+      {
+       "key": "H22-M1-02-CONTINUITY_GRAPH",
+       "basis": "content_checked",
+       "reviewed": true
       }
      ]
     }
    ],
    "standalone": [
-    "H22-M1-02-CONTINUITY_CONDITION",
-    "H22-M1-02-CONTINUITY_GRAPH",
     "H22-M1-02-INTERMEDIATE_VALUE"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-M2-02-CONTINUITY": {
+     "label": "함수의 연속",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 연속 조건과 그래프로 보는 연속 문항을 합친 묶음이며 이름은 차례의 함수의 연속이다."
+    },
+    "H22-M1-02-INTERMEDIATE_VALUE": {
+     "label": "연속함수의 성질",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 사잇값 정리와 실근의 존재 구간이다."
+    }
+   }
   },
   {
    "subject": "CALCULUS",
@@ -599,7 +694,17 @@
    "standalone": [
     "H15-M2-03-DERIVATIVE",
     "H22-M1-03-DIFFERENTIABILITY_CONDITION"
-   ]
+   ],
+   "labelOverrides": {
+    "H22-M1-03-DERIVATIVE_DEFINITION": {
+     "label": "미분계수",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 미분계수의 정의와 계산이다."
+    },
+    "H22-M1-03-DIFFERENTIABILITY_CONDITION": {
+     "label": "미분가능성과 연속성",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 미분가능 여부와 조건이다."
+    }
+   }
   },
   {
    "subject": "CALCULUS",
@@ -618,6 +723,11 @@
        "key": "H22-M1-04",
        "basis": "content_checked",
        "reviewed": true
+      },
+      {
+       "key": "H22-M1-04-DERIVATIVE_CALCULATION",
+       "basis": "content_checked",
+       "reviewed": true
       }
      ]
     },
@@ -632,9 +742,14 @@
     }
    ],
    "standalone": [
-    "H22-M1-04-DERIVATIVE_CALCULATION",
     "H22-M1-04-DERIVATIVE_FUNCTION_DETERMINATION"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-M2-04-DERIVATIVE": {
+     "label": "도함수",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 도함수 계산 문항을 합친 묶음이며 이름은 차례의 도함수다."
+    }
+   }
   },
   {
    "subject": "CALCULUS",
@@ -689,7 +804,13 @@
     "H22-M1-05-INCREASE_DECREASE",
     "H22-M1-05-ROLLE_MEAN_VALUE",
     "H22-M1-05-ROOT_COUNT"
-   ]
+   ],
+   "labelOverrides": {
+    "H22-M1-05-ROLLE_MEAN_VALUE": {
+     "label": "평균값 정리",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 롤의 정리와 평균값 정리다."
+    }
+   }
   },
   {
    "subject": "CALCULUS",
@@ -6268,6 +6389,11 @@
        "key": "H15-PS-02-BINOMIAL_THEOREM",
        "basis": "same_master_label",
        "reviewed": true
+      },
+      {
+       "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+       "basis": "content_checked",
+       "reviewed": true
       }
      ]
     },
@@ -6283,8 +6409,7 @@
     }
    ],
    "standalone": [
-    "H15-PS-02-BINOMIAL_APPLICATION",
-    "H15-PS-02-BINOMIAL_COEFFICIENT"
+    "H15-PS-02-BINOMIAL_APPLICATION"
    ]
   },
   {
@@ -6397,7 +6522,13 @@
    "standalone": [
     "H15-PS-04-INDEPENDENCE",
     "H15-PS-04-TOTAL_BAYES"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-PS-04-INDEPENDENCE": {
+     "label": "사건의 독립과 종속",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 두 사건의 독립 판별과 독립일 때의 확률이다."
+    }
+   }
   },
   {
    "subject": "PROB_STATS",
@@ -6445,7 +6576,17 @@
     "H15-PS-06-CONFIDENCE_INTERVAL",
     "H15-PS-06-ESTIMATION_APPLICATION",
     "H15-PS-06-RANDOM_VARIABLE"
-   ]
+   ],
+   "labelOverrides": {
+    "H15-PS-06-CONFIDENCE_INTERVAL": {
+     "label": "모평균의 추정",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 신뢰도와 신뢰구간으로 모평균을 추정한다."
+    },
+    "H15-PS-06-ESTIMATION_BASIC": {
+     "label": "모평균과 표본평균",
+     "reason": "2022 교재 차례의 소단원 이름과 같다. 발문이 정규분포 모집단에서 표본평균의 분포와 확률이다."
+    }
+   }
   }
  ]
 }

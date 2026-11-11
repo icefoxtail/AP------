@@ -276,6 +276,11 @@ test("구역(section) is an optional heading from the unit's own list; only subu
   assert.deepEqual(sectionsOf("COMMON_MATH_1", "H22-C-08"), ["경우의 수와 순열", "조합"]);
   assert.deepEqual(sectionsOf("COMMON_MATH_2", "H22-C2-05"), ["집합의 뜻과 포함 관계", "집합의 연산"]);
   assert.equal(sectionsOf("COMMON_MATH_1", "H22-C-01"), undefined, "a unit equal to one textbook section has no sections");
+  assert.deepEqual(sectionsOf("ALGEBRA", "H22-A-01"), ["지수", "로그"]);
+  assert.deepEqual(sectionsOf("ALGEBRA", "H22-A-04"), ["삼각함수", "삼각함수의 그래프"]);
+  assert.equal(sectionsOf("PROB_STATS", "H22-PS-04"), undefined);
+  const trig = table.scopes.find((candidate) => candidate.subject === "ALGEBRA" && candidate.unitKey === "H22-A-04");
+  assert.ok(trig.groups.some((group) => group.label === "삼각함수가 포함된 방정식과 부등식"), "삼각방정식과 삼각부등식 are one 소단원");
 });
 
 test("a name that replaces the master name because of the 2022 textbook contents carries that reason", () => {
