@@ -267,6 +267,14 @@ export function compositePanelBytes(svg){
  * captureArchiveCandidate can decode and re-hash them. Each panel keeps its own L1 static and rendered audits; this module adds the stack
  * and a rendered layout check of the stack (captions, panel boxes).
  */
+// The composite's accessible name, the same source and defaults a single figure uses (spec title = plan caption; description = plan.accessibilityDescription, else the fixed sentence).
+const xmlText=value=>String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+export function compositeAccessibleNames(plan){
+  const text=value=>typeof value==='string'&&value.trim()&&value.length<=500&&!/[\r\n]/.test(value)?value:null;
+  if(plan?.accessibilityDescription!==undefined&&!text(plan.accessibilityDescription))throw new Stop('SPEC_ERROR',{code:'INVALID_ACCESSIBILITY_DESCRIPTION'});
+  const title=text(plan?.caption)??'해설 도형',description=plan?.accessibilityDescription??'점과 도형의 관계를 확인한다.';
+  return `<title id="visual-title">${xmlText(title)}</title><desc id="visual-desc">${xmlText(description)}</desc>`;
+}
 export async function composeCompositeCandidate({plan,panels,identity,typographyPolicy,repairContext=null,browser}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,panelSpecSha256s:[],panelSvgSha256s:[],captionFragmentSha256s:[],sharedRowFragmentSha256s:[],svgSha256:null,renderedLayoutSha256:null};
   const state={svg:null,panels:[],renderedLayout:{status:'NOT_RUN'},layout:null};
@@ -391,7 +399,8 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       });
       if(y!==stackHeight)throw new Stop('COMPOSITE_STACK_SIZE_MISMATCH',{expected:stackHeight,actual:y});
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y}" viewBox="0 0 ${width} ${y}" data-composite="${COMPOSITE_CAPABILITY}">${body}</svg>`;
+    // Same accessible name as a single figure: <title> from the plan caption, <desc> from accessibilityDescription (else the same fixed sentence), bound by aria-labelledby.
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y}" viewBox="0 0 ${width} ${y}" role="img" aria-labelledby="visual-title visual-desc" data-composite="${COMPOSITE_CAPABILITY}">${compositeAccessibleNames(plan)}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     const display={width:width*typographyPolicy.displayScale,height:y*typographyPolicy.displayScale};
     const page=await (await chrome()).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});

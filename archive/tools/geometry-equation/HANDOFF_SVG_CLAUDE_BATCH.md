@@ -74,7 +74,7 @@
 - `make-dec-open.cjs <key> <JS> [srcSub]` — 결정 파일 `dec-<key>-open.json` 생성. 기준: **원장 현재 상태**(2026-11-09 고침) → 이미지 있는 게시 문항 KEEP_EXISTING, srcSub(기본 rev-open)에 있는 문항 REPLACE/FIGURE, 나머지 OPEN은 UNSUPPORTED, OPEN_CONTENT는 CONTENT. 메인이 특정 문항을 바꿔야 하면 dec JSON을 직접 고친다(예: 기존 그림 유지 → KEEP_EXISTING).
 - `make-dec.cjs <key> <JS>` — 처음 게시하는 시험지(rev 기준).
 - `build-pub.py <key> <JS> <srcdir> <dec.json>` — pub/<key> 생성, 기계 점검(`BAD:`): ARCHIVE_BOUND, questionUid, size=sizeClass, alt/caption, alt의 ①~⑤, SVG title/desc 깨짐, 루트 role=img, ±1 직선·원의 equalUnits.
-- `a11y.sh <qdir>` — BAD에 "SVG root role=img/title missing"이 나오면 실행 후 build-pub 재실행(composite·number-line·stat 출력).
+- `a11y.sh <qdir>` — 더는 필요 없다(엔진이 composite·number-line·solid 출력에 루트 role=img·title·desc를 직접 쓴다, plan caption·accessibilityDescription). 이 엔진 이전에 렌더한 SVG에만 쓰며, 이미 있으면 METADATA_ALREADY_PRESENT로 무해하게 끝난다.
 - 게시: `PYTHONIOENCODING=utf-8 python .tmp/svg-m1/pubflow.py --batch .tmp/work/pub/manifest-batchNN.json` (형식은 pub/manifest-batch13b.json 참고, 경로는 manifest 기준 상대).
 - 점검: `git -c core.quotepath=off status --porcelain | grep '^ M.*\.js$' | cut -c4- | while read f; do node .tmp/work/jscheck.cjs "$f"; done` (nonImageChanged []이어야 함) → `node tools/check-archive2-runtime.cjs`(180 pass) → `git checkout -- archive/data`.
 - 커밋: `git add archive/exams/original/high archive/tools/geometry-equation/production/exam-figure-ledger.json` + 해당 시험지 새 SVG(`archive/assets/images/<시험지>/…`)만. 커밋 끝에 Co-Authored-By 줄, PR 본문 끝에 Claude Code 줄.
@@ -202,7 +202,7 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
   - 고1·고2 2학기 기말 밖(중학교·백발백중 유사 등)에도 참조만 있고 파일이 없는 경로가 많다(스캔 시 2,303개, 대부분 git에 없는 로컬 코퍼스로 보임). 미확인 — 중학교 작업 시작 전에 원본(git 추적) 시험지만 다시 스캔할 것.
 
 ## 9. 함정 모음 (겪은 것)
-- composite-panels·number-line·stat 출력은 루트 role=img·title이 없다 → a11y.sh. 빠뜨리면 CI "Archive2 runtime contract" 실패.
+- composite-panels·number-line·solid 출력은 이제 엔진이 루트 role=img·title·desc를 쓴다(a11y.sh 불필요). 엔진 이전에 렌더한 그림은 다시 렌더하거나 a11y.sh로 보완한다. 빠뜨리면 CI "Archive2 runtime contract" 실패.
 - y=x·기울기 ±1 직선·원이 있는 단일 rational/sqrt-affine 그래프는 `equalUnits:true`.
 - 좌표 라벨은 점의 `coordinates:true`. callout 글자에 쉼표가 있으면 얇은 TEXT 글꼴.
 - 라벨 혼잡은 지시선·라벨 위치 옵션이 먼저. 라벨을 지우지 않는다.
