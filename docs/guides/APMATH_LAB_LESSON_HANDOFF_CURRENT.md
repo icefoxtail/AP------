@@ -70,8 +70,9 @@
 | `common-irrational` 무리함수 | 3 | 3 / 12 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1821](https://github.com/icefoxtail/AP------/pull/1821), merge `12b86394ed837ba74c8ff4f0a1e654e12636268b`. 개념9·첫 원문3. 최소검사59/59·source-only1/1·328개 실제 Board 상태·validator 오류/경고0 |
 | `common-counting` 경우의 수 | 7 | 7 / 23 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1822](https://github.com/icefoxtail/AP------/pull/1822), merge `2372c8059cc4d8515a1ba3f1dde620caf786f52a`. 개념14·첫 원문 목표9. 최소검사55개 통과 증거(수학8·runtime6·공통video41), 395개 실제 Board 상태, validator 오류/경고0 |
 | `alg-explog` 지수·로그함수 | 21 | 21 / 38 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1823](https://github.com/icefoxtail/AP------/pull/1823), merge `07be56608a47bc5570c0d7e0aeb613ef59f705a2`. 개념9·첫 원문 목표29. 최소검사66/66·494개 실제 Board/canvas 상태·validator 오류/경고0 |
-| `alg-exp-deep` 지수함수 심화 | 16 | 16 / 29 | **IMPLEMENTED / QA_PENDING** · 원문 목표21·개념8. 최소64개 검사 통과 증거(수학16·runtime7·공통video41), 471개 실제 Board 상태, validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 24개 | — | — | `alg-log` 4장면 → `alg-log-deep` 16장면 → `alg-unit-circle` 8장면. 실험실별 브랜치로 분리하고 이 순서로 병합 |
+| `alg-exp-deep` 지수함수 심화 | 16 | 16 / 29 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1824](https://github.com/icefoxtail/AP------/pull/1824), merge `b368e0a7839d94eb0d7260f97400ab5de5b5466e`. 원문 목표21·개념8. 최소64개 검사 통과 증거(수학16·runtime7·공통video41), 471개 실제 Board 상태, validator 오류/경고0 |
+| `alg-log` 로그함수 | 4 | 4 / 15 | **IMPLEMENTED / QA_PENDING** · 원문 목표6·탐구개념9. 최소68/68(수학7·runtime6·공통video/pins55),224개 실제 Board 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 23개 | — | — | `alg-log-deep` 16장면 → `alg-unit-circle` 8장면 → `alg-trig-geometry` 16장면. 실험실별 브랜치로 분리하고 이 순서로 병합 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -261,6 +262,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **로그함수 전체 구현.** `feat/lessons-alg-log`, log1~log4 **4장면/15해설**(원문 목표6·실제 탐구개념9), 누락0. 원문 넓이·두 근의 곱/중점·이동 대칭축/중점·격자점 목표를 분리했다. 기존 공통 Player 기본1.5배속, 첫 원문 고정·수동 variant 및 탐구 기능 유지. 최소 **68/68 PASS**(독립수학7·native6·공통video/pins55), **224개** 실제 Board cue/이동 상태·validator 오류/경고0·KaTeX·구문·diff 통과. 형제/replay/최종→entry·focus/zoom/pan과ALV cache·개별근/중점/축/행 개수의 자막별 공개·source-only 로딩 확인. 최신 main 반영 후 검사 입력20개와 실제로그의 SHA256 모두 일치. 공유 ALV·공통kit 변경 없음. 실제브라우저·모바일전수·독립시각 **NOT_RUN / QA_PENDING**.
+
+- 2026-11-12 · **지수함수 심화 main 병합.** [PR #1824](https://github.com/icefoxtail/AP------/pull/1824), feature `dda8aed1a886fa20b67b05f5f03d3f1759ec68a9`, merge/main readback `b368e0a7839d94eb0d7260f97400ab5de5b5466e`, tested tree `f3c576e8539eec27a6ef0437838584d1c1d2d56d`. 누적 **30실험실/747장면/2,151해설**. AWCR r54 remote raw SHA256 `919840af0864ed34545034da6ac5e709eecd9ff08a569d5b718c06a52c89fe80` 확인. 로그심화16/36은 별도 원격 WIP `5ca3ed3c6c0a5150ef0d9a33adf25eaccb0cff88`에 보존하며 순서대로 통합한다. Pages **PAGES_NOT_VERIFIED**; 지수심화 병합을 운영 배포 성공으로 표시하지 않는다.
 
 - 2026-11-12 · **지수함수 심화 전체 구현.** `feat/lessons-alg-exp-deep`, t1a~t8b **16장면/29해설**(첫 원문 목표21·개념8), 누락0. 거듭제곱근의 홀짝·부호, 분수지수 자연수 조건, 소수부분, 가로 간격과 넓이, 서로 다른 밑, 등차·등비, 대칭식 치환, 절댓값 교점을 구분했다. 공통 Player 기본1.5배·5장/60초. 최초 최소검사 **63/63**(수학16·native6·공통video41) 후 원본 확대·이동 복원의 cache 처리를 보강하고 native **7/7** 회귀를 실행하여 최소 **64개 통과 증거**. 471개 production Board/canvas 상태·validator 오류/경고0, KaTeX 및6JS/MJS·2inline 구문·diff 통과. 고정첫문항·수동새문제·형제해설/재진입·격자행·소수부분 비교점 P/Q·source-only 로딩 확인. 원본 탐구의 공차1.5에서 반올림값을 등호로 표시하던 두 곳은 근삿값 기호로 수정했다. 공통kit 변경 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**.
 
