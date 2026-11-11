@@ -1629,11 +1629,6 @@
        "reviewed": true
       },
       {
-       "subUnitKey": "M2-03-INTEGER_COUNT",
-       "basis": "content_checked",
-       "reviewed": true
-      },
-      {
        "subUnitKey": "M2-03-LINEAR_EQUATION_SYSTEM",
        "basis": "content_checked",
        "reviewed": true
@@ -1902,6 +1897,11 @@
      "kind": "unit_other",
      "label": "기타",
      "keys": [
+      {
+       "subUnitKey": "M2-03-INTEGER_COUNT",
+       "basis": "adhoc_to_other",
+       "reviewed": false
+      },
       {
        "subUnitKey": "M2-03-SYSTEM_INEQ_SOL",
        "basis": "adhoc_to_other",
@@ -4188,7 +4188,7 @@
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-04:H15-SA-04-EQUATION_BASIC",
      "kind": "subunit",
-     "label": "삼차·사차방정식의 허근",
+     "label": "방정식의 허근",
      "labelReason": "마스터 이름 '방정식의 풀이'이나 발문 3개가 x^3=1, x^4+x^2+1=0의 허근을 다룬다.",
      "keys": [
       {
@@ -4445,8 +4445,8 @@
     {
      "groupKey": "SG:COMMON_MATH_1:H22-C-05:H22-C-05-FUNCTION_BASIC",
      "kind": "subunit",
-     "label": "이차함수 그래프의 최대·최소와 교점",
-     "labelReason": "마스터 이름 '함수의 뜻과 그래프'이나 발문 3개가 이차함수의 최대·최소와 직선과의 교점 문항이다.",
+     "label": "이차함수의 그래프와 직선의 교점",
+     "labelReason": "마스터 이름 '함수의 뜻과 그래프'이나 발문 26개 중 12개가 이차함수 그래프와 직선의 교점·접점이고 최대·최소는 7개뿐이라 기존 '이차함수의 최대·최소' 묶음과 따로 둔다.",
      "keys": [
       {
        "subUnitKey": "H22-C-05-FUNCTION_BASIC",
@@ -5153,7 +5153,7 @@
     {
      "groupKey": "SG:COMMON_MATH_2:H22-C2-02:H15-SA-10-EQUATION_BASIC",
      "kind": "subunit",
-     "label": "직선과 방정식의 풀이",
+     "label": "직선과 연립방정식",
      "labelReason": "마스터 이름 '방정식의 풀이'이나 발문이 직선·곡선의 교점과 연립방정식이다.",
      "keys": [
       {
@@ -5196,7 +5196,7 @@
     {
      "groupKey": "SG:COMMON_MATH_2:H22-C2-02:H22-C2-02-INEQUALITY_BASIC",
      "kind": "subunit",
-     "label": "직선과 부등식",
+     "label": "직선의 위치와 계수의 범위",
      "labelReason": "마스터 이름 '부등식의 풀이'이나 발문 3개가 직선이 지나는 사분면 조건에서 미정계수의 범위를 구한다.",
      "keys": [
       {
@@ -5349,7 +5349,7 @@
     {
      "groupKey": "SG:COMMON_MATH_2:H22-C2-03:H15-SA-11-EQUATION_APPLICATION",
      "kind": "subunit",
-     "label": "원의 방정식의 활용",
+     "label": "원의 대칭이동",
      "labelReason": "마스터 이름 '방정식과 부등식의 활용'이나 발문이 두 원의 대칭 직선을 구하는 문항이다.",
      "keys": [
       {
@@ -6892,24 +6892,6 @@
      ]
     },
     {
-     "groupKey": "SG:ALGEBRA:H22-A-04:H15-M1-07-TRIGONOMETRIC_INEQUALITY",
-     "kind": "subunit",
-     "label": "삼각부등식",
-     "labelReason": "H22-C-11-INEQUALITY_BASIC의 마스터 이름은 '부등식의 풀이'이나 발문 3개 모두 삼각부등식이다.",
-     "keys": [
-      {
-       "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
-       "basis": "anchor",
-       "reviewed": true
-      },
-      {
-       "subUnitKey": "H22-C-11-INEQUALITY_BASIC",
-       "basis": "content_checked",
-       "reviewed": true
-      }
-     ]
-    },
-    {
      "groupKey": "SG:ALGEBRA:H22-A-04:H22-A-04-EXPONENTIAL_FUNCTION",
      "kind": "subunit",
      "label": "지수함수",
@@ -6970,6 +6952,16 @@
       },
       {
        "subUnitKey": "H22-C-11-EQUATION_BASIC",
+       "basis": "content_checked",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+       "basis": "content_checked",
+       "reviewed": true
+      },
+      {
+       "subUnitKey": "H22-C-11-INEQUALITY_BASIC",
        "basis": "content_checked",
        "reviewed": true
       }

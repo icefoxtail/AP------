@@ -165,22 +165,6 @@
    "groups": [
     {
      "kind": "subunit",
-     "anchor": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
-     "keys": [
-      {
-       "key": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
-       "basis": "anchor",
-       "reviewed": true
-      },
-      {
-       "key": "H22-C-11-INEQUALITY_BASIC",
-       "basis": "content_checked",
-       "reviewed": true
-      }
-     ]
-    },
-    {
-     "kind": "subunit",
      "anchor": "H22-A-04-TRIGONOMETRIC_GRAPH",
      "keys": [
       {
@@ -254,6 +238,16 @@
        "key": "H22-C-11-EQUATION_BASIC",
        "basis": "content_checked",
        "reviewed": true
+      },
+      {
+       "key": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+       "basis": "content_checked",
+       "reviewed": true
+      },
+      {
+       "key": "H22-C-11-INEQUALITY_BASIC",
+       "basis": "content_checked",
+       "reviewed": true
       }
      ]
     },
@@ -278,13 +272,7 @@
     "H15-M1-05-TRIGONOMETRIC_RELATION",
     "H22-A-04-EXPONENTIAL_FUNCTION",
     "H22-C2-02-LINE_EQUATION"
-   ],
-   "labelOverrides": {
-    "H15-M1-07-TRIGONOMETRIC_INEQUALITY": {
-     "label": "삼각부등식",
-     "reason": "H22-C-11-INEQUALITY_BASIC의 마스터 이름은 '부등식의 풀이'이나 발문 3개 모두 삼각부등식이다."
-    }
-   }
+   ]
   },
   {
    "subject": "ALGEBRA",
@@ -1003,7 +991,7 @@
    ],
    "labelOverrides": {
     "H15-SA-04-EQUATION_BASIC": {
-     "label": "삼차·사차방정식의 허근",
+     "label": "방정식의 허근",
      "reason": "마스터 이름 '방정식의 풀이'이나 발문 3개가 x^3=1, x^4+x^2+1=0의 허근을 다룬다."
     }
    }
@@ -1146,8 +1134,8 @@
    ],
    "labelOverrides": {
     "H22-C-05-FUNCTION_BASIC": {
-     "label": "이차함수 그래프의 최대·최소와 교점",
-     "reason": "마스터 이름 '함수의 뜻과 그래프'이나 발문 3개가 이차함수의 최대·최소와 직선과의 교점 문항이다."
+     "label": "이차함수의 그래프와 직선의 교점",
+     "reason": "마스터 이름 '함수의 뜻과 그래프'이나 발문 26개 중 12개가 이차함수 그래프와 직선의 교점·접점이고 최대·최소는 7개뿐이라 기존 '이차함수의 최대·최소' 묶음과 따로 둔다."
     }
    }
   },
@@ -1680,11 +1668,11 @@
      "reason": "마스터 이름 '방정식과 부등식의 활용'이나 발문 3개 모두 직선(삼각형 넓이 이등분, 절편)의 활용이다."
     },
     "H15-SA-10-EQUATION_BASIC": {
-     "label": "직선과 방정식의 풀이",
+     "label": "직선과 연립방정식",
      "reason": "마스터 이름 '방정식의 풀이'이나 발문이 직선·곡선의 교점과 연립방정식이다."
     },
     "H22-C2-02-INEQUALITY_BASIC": {
-     "label": "직선과 부등식",
+     "label": "직선의 위치와 계수의 범위",
      "reason": "마스터 이름 '부등식의 풀이'이나 발문 3개가 직선이 지나는 사분면 조건에서 미정계수의 범위를 구한다."
     }
    }
@@ -1770,7 +1758,7 @@
    ],
    "labelOverrides": {
     "H15-SA-11-EQUATION_APPLICATION": {
-     "label": "원의 방정식의 활용",
+     "label": "원의 대칭이동",
      "reason": "마스터 이름 '방정식과 부등식의 활용'이나 발문이 두 원의 대칭 직선을 구하는 문항이다."
     }
    }
@@ -3391,11 +3379,6 @@
        "reviewed": true
       },
       {
-       "key": "M2-03-INTEGER_COUNT",
-       "basis": "content_checked",
-       "reviewed": true
-      },
-      {
        "key": "M2-03-LINEAR_EQUATION_SYSTEM",
        "basis": "content_checked",
        "reviewed": true
@@ -3661,6 +3644,10 @@
     {
      "kind": "unit_other",
      "keys": [
+      {
+       "key": "M2-03-INTEGER_COUNT",
+       "basis": "adhoc_to_other"
+      },
       {
        "key": "M2-03-SYSTEM_INEQ_SOL",
        "basis": "adhoc_to_other"

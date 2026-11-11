@@ -36,7 +36,7 @@ const hasHangul = (value) => /[가-힣]/.test(String(value || ""));
 const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 
 // A broad key covers a whole unit (…-CORE, or a master name that ends in 핵심 개념). It is never one 소단원 of a unit.
-export const isBroadKey = (key, masterLabels) => /-CORE$/.test(String(key || "")) || /핵심s*개념$/.test(masterLabels?.get(key) || "");
+export const isBroadKey = (key, masterLabels) => /-CORE$/.test(String(key || "")) || /핵심\s*개념$/.test(masterLabels?.get(key) || "");
 export const isProblemNumberKey = (key) => /-P\d+-Q\d+$|-Q\d+$/.test(String(key || ""));
 
 function readJson(root, relative) {

@@ -121,6 +121,9 @@ test("a broad key (…-CORE or a master name ending in 핵심 개념) is never p
     if (group.kind === "unit_other") assert.equal(entry.basis, "foreign_broad_key");
   }
   assert.ok(master.get("H22-C-02-CORE").endsWith("핵심 개념"));
+  // The name test must catch a label with a space (or none) before 개념, even when the key does not end in -CORE.
+  const named = new Map([["X-1", "다면체 핵심 개념"], ["X-2", "다면체 핵심개념"], ["X-3", "다면체의 개념"]]);
+  assert.deepEqual(["X-1", "X-2", "X-3"].map((key) => isBroadKey(key, named)), [true, true, false]);
   const place = (subject, unit) => table.scopes.find((scope) => scope.subject === subject && scope.unitKey === unit).groups.find((group) => group.keys.some((entry) => entry.subUnitKey === "H22-C-02-CORE"));
   assert.equal(place("COMMON_MATH_1", "H22-C-02").kind, "unit_general");
   assert.equal(place("COMMON_MATH_1", "H22-C-01").kind, "unit_other");
