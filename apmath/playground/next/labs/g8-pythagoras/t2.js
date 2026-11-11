@@ -25,6 +25,8 @@
   const fr = (v) => texRat(v); // 분수는 \frac{ }{ } (그림 글자는 키트가 쌓아서 그림)
   const nextTri = (prev) => { let i; do { i = rint(0, TRIS.length - 1); } while (prev && i === prev.pyP); return i; };
   const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : '$' + c.t + '$'}`).join(' · ');
+  const lessonReady = (s, C, key) => !C.lesson || (!s.lessonEntry && !!s[key]);
+  const trace = (b, s, C, A, B) => { if (C.lesson && s.pyTrace > 0) line(b, A, lerp(A, B, clamp(s.pyTrace, 0, 1)), 'rose', 4.4); };
 
   /* ====================================================================== 1. 유클리드의 증명 (빗변 AB 가로 · 아래 정사각형) */
   const eu = {
@@ -53,7 +55,11 @@
       if (stp(2) || C.givens) {
         fillPoly(b, rectL, 'green', hiL ? 0.3 : 0.1); poly(b, rectL, 'green', 2.8);
         fillPoly(b, rectR, 'sky', hiR ? 0.3 : 0.1); poly(b, rectR, 'sky', 2.8);
-        if (C.txt && !prob) { T(b, cenOf(rectL), C.answer ? `${M.b2}` : 'x', { size: 18, color: 'green' }); T(b, cenOf(rectR), C.calculation ? `${M.a2}` : 'a²', { size: 18, color: 'sky' }); }
+        if (C.txt && !prob) {
+          const concept = C.lesson && !s.pyLessonProblem;
+          T(b, cenOf(rectL), C.answer ? `${M.b2}` : concept ? 'c×AH' : 'x', { size: 18, color: 'green' });
+          T(b, cenOf(rectR), C.calculation ? `${M.a2}` : concept ? 'c×HB' : 'a²', { size: 18, color: 'sky' });
+        }
         line(b, Cc, pt(p, c), 'rose', 2.6, { dash: [7, 6] });
       } else { fillPoly(b, [A, B, pt(c, c), pt(0, c)], 'amber', 0.1); poly(b, [A, B, pt(c, c), pt(0, c)], 'amber', 2.8); }
       T(b, pt(c / 2, c), prob ? '' : C.calculation ? `c²=${M.c2}` : 'c²', { dy: -14, size: 16, color: 'amber', alpha: stp(2) ? 0.9 : 1 });
@@ -65,10 +71,15 @@
         ang(b, A, B, Cc, { color: 'green', rings: 1, r: 28 });
         T(b, mid(A, H), 'AH', { dy: 42, size: 15, color: 'green' });
       }
+      if (C.lesson && !s.lessonEntry && s.pyOtherReady) {
+        ang(b, B, A, Cc, { color: 'sky', rings: 2, r: 28 });
+        T(b, mid(H, B), 'HB', { dy: 42, size: 15, color: 'sky' });
+      }
       [[A, 'A', -1, -1], [B, 'B', 1, -1], [Cc, 'C', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 15, size: 17 }); });
       T(b, mid(A, B), prob ? `${c}` : `c=${c}`, { dy: 16, size: 15, color: 'amber' });
       // BC의 길이는 변 가까이에, a²의 넓이는 정사각형 중심에 구분해 둡니다.
       if (C.givens) T(b, mid(Cc, B), `${a}`, { color: 'sky', size: 16, dx: -17, dy: -10 });
+      else if (C.lesson) { T(b, mid(Cc, B), `a=${a}`, { color: 'sky', size: 15, dx: -17, dy: -10 }); T(b, mid(A, Cc), `b=${bb}`, { color: 'green', size: 15, dx: 16, dy: -10 }); }
     },
     steps: (M) => [
       `직각삼각형에서 빗변 $AB=${M.c}$, 직각변 $BC=${M.a}$예요. A 쪽 초록 직사각형의 넓이를 구해요.`,
@@ -103,6 +114,7 @@
     init: (s) => { s.pyBa = 3; s.pyBb = 4; s.pyArrange = 0; },
     gen: (s, prev) => { let a, b; do { a = rint(2, 6); b = rint(a + 1, 9); } while (prev && a === prev.pyBa && b === prev.pyBb); return { pyBa: a, pyBb: b }; },
     model: (s) => { const m = abOf(s); return { ...m, sd: m.a + m.b, big: (m.a + m.b) ** 2, tri4: 2 * m.a * m.b }; },
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : '똑같은 삼각형 4개를 두 가지로 놓고, 남는 정사각형의 넓이를 비교하면 어떤 관계가 성립할까?',
     draw(b, s, M, C) {
       const { a, b: bb, sd, c2, ci } = M, prob = C.problem;
       const gap = Math.max(1.6, sd * 0.28);
@@ -122,6 +134,8 @@
       T(b, pt(a / 2, 0), `${a}`, { dy: 13, size: 15, color: 'sky' }); T(b, pt(a + bb / 2, 0), `${bb}`, { dy: 13, size: 15, color: 'green' });
       T(b, pt(0, bb / 2), `${bb}`, { dx: 13, size: 15, color: 'green' }); T(b, pt(0, bb + a / 2), `${a}`, { dx: 13, size: 15, color: 'sky' });
       T(b, pt(sd / 2, sd), `${a}+${bb}=${sd}`, { dy: 22, size: 15, color: 'ink' });
+      trace(b, s, C, pt(0, 0), pt(a, 0));
+      if (C.lesson && lessonReady(s, C, 'pySupportReady')) T(b, pt(sd / 2, sd), C.answer ? `${M.big}−${M.tri4}=${c2}` : lessonReady(s, C, 'pyOtherReady') ? `큰 넓이 ${M.big} − 삼각형 넷 ${M.tri4}` : `큰 정사각형 ${sd}²=${M.big}`, { dy: 50, size: 16, color: 'amber' });
       }
       if (prob || !compare && !arranged) return;
       // 오른쪽: 같은 삼각형 4개를 옮겨 놓으면 a²와 b²가 남음
@@ -133,8 +147,8 @@
       t2.forEach((t) => { fillPoly(b, t, 'ink', 0.1); poly(b, t, 'ink', 2.4); });
       b.right(X(pt(sd, a)), X(pt(a, a)), X(pt(sd, 0)), { size: 9, color: 'amber' }); b.right(X(pt(a, sd)), X(pt(a, a)), X(pt(0, sd)), { size: 9, color: 'amber' });
       if (st(3)) {
-        fillPoly(b, sqa, 'sky', 0.3); poly(b, sqa, 'sky', 3); T(b, cenOf(sqa), `a²=${a * a}`, { size: 16, color: 'sky' });
-        fillPoly(b, sqb, 'green', 0.3); poly(b, sqb, 'green', 3); T(b, cenOf(sqb), `b²=${bb * bb}`, { size: 16, color: 'green' });
+        fillPoly(b, sqa, 'sky', 0.3); poly(b, sqa, 'sky', 3); T(b, cenOf(sqa), lessonReady(s, C, 'pySquareAReady') ? `a²=${a * a}` : 'a²', { size: 16, color: 'sky' });
+        fillPoly(b, sqb, 'green', 0.3); poly(b, sqb, 'green', 3); T(b, cenOf(sqb), lessonReady(s, C, 'pySquareBReady') ? `b²=${bb * bb}` : 'b²', { size: 16, color: 'green' });
       }
       T(b, pt(sd / 2 + ox, sd), `${a}+${bb}=${sd}`, { dy: 22, size: 15, color: 'ink' });
       if (C.txt) T(b, pt(compare ? sd + gap / 2 : sd / 2, sd), C.answer ? `${c2} = ${a * a} + ${bb * bb}` : '같은 삼각형 4개를 옮긴 배치', { dy: 50, size: 16, color: 'amber' });
@@ -172,27 +186,35 @@
     init: (s) => { s.pyBa = 3; s.pyBb = 4; },
     gen: (s, prev) => { let a, b; do { a = rint(2, 6); b = rint(a + 1, 9); } while (prev && a === prev.pyBa && b === prev.pyBb); return { pyBa: a, pyBb: b }; },
     model: (s) => { const m = abOf(s); const d = Math.abs(m.b - m.a); return { ...m, d, d2: d * d, tri4: 2 * m.a * m.b }; },
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : s.pyLessonMode === 'bhas-proof' ? `직각변이 ${M.a}, ${M.b}인 삼각형 4개와 가운데 정사각형의 넓이를 더해, 바깥 정사각형의 넓이 관계를 설명해 보자.` : `직각변이 ${M.a}, ${M.b}인 합동인 삼각형 4개로 둘러싼 가운데 정사각형의 한 변은 얼마일까?`,
     draw(b, s, M, C) {
       const { a, b: bb, c2, d, d2 } = M, prob = C.problem, sd = a + bb;
       const Pq = [pt(a, 0), pt(sd, a), pt(bb, sd), pt(0, bb)]; // 바깥: 한 변이 c 인 기울어진 정사각형
       const Wp = [refl(pt(0, 0), Pq[0], Pq[3]), refl(pt(sd, 0), Pq[1], Pq[0]), refl(pt(sd, sd), Pq[2], Pq[1]), refl(pt(0, sd), Pq[3], Pq[2])];
-      fit(b, bboxOf(Pq), { t: 42, b: 54, l: 40, r: 40 });
+      fit(b, bboxOf(Pq), { t: 42, b: C.lesson ? 88 : 54, l: 40, r: 40 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, Pq, 'amber', st(1) ? 0.12 : 0.06); poly(b, Pq, 'amber', 3.2);
       // 삼각형: 빗변이 바깥 변, 직각 꼭짓점이 안쪽(Wp)
       const sides = [[Pq[0], Pq[3], Wp[0]], [Pq[1], Pq[0], Wp[1]], [Pq[2], Pq[1], Wp[2]], [Pq[3], Pq[2], Wp[3]]];
       sides.forEach(([p, q, w]) => { fillPoly(b, [p, q, w], 'sky', 0.22); poly(b, [p, q, w], 'ink', 2.4); b.right(w, p, q, { size: 9, color: 'amber' }); });
-      if (st(2) || C.givens) { fillPoly(b, Wp, 'rose', 0.22); poly(b, Wp, 'rose', 2.8); T(b, cenOf(Wp), C.answer ? `${d2}` : '?', { size: 17, color: 'rose' }); }
+      const sideLesson = C.lesson && s.pyLessonMode === 'inner-side', proofLesson = C.lesson && s.pyLessonMode === 'bhas-proof';
+      if (st(2) || C.givens) {
+        fillPoly(b, Wp, 'rose', 0.22); poly(b, Wp, 'rose', 2.8);
+        const label = sideLesson ? C.answer ? `한 변 ${d}` : '?' : proofLesson ? lessonReady(s, C, 'pyOtherReady') ? `넓이 ${d2}` : '?' : C.answer ? `${d2}` : '?';
+        T(b, cenOf(Wp), label, { size: 17, color: 'rose' });
+      }
       // 직각삼각형 하나의 변 길이(한 변이 어디서나 a, b 로 읽히도록)
       const [p0, q0, w0] = sides[0];
       sideTag(b, p0, w0, cenOf(Pq), `${a}`, { color: 'sky', size: 16, gap: -26 });
       sideTag(b, q0, w0, cenOf(Pq), `${bb}`, { color: 'green', size: 16, gap: -26 });
+      trace(b, s, C, p0, w0);
       const [p1, q1, w1] = sides[2];
       sideTag(b, p1, w1, cenOf(Pq), `${a}`, { color: 'sky', size: 16, gap: -26 });
       sideTag(b, q1, w1, cenOf(Pq), `${bb}`, { color: 'green', size: 16, gap: -26 });
       if (!prob) sideTag(b, Pq[0], Pq[1], cenOf(Pq), M.ci ? `c=${M.ci}` : 'c', { color: 'amber', size: 16, gap: 13 });
       Pq.forEach((p, i) => { b.point(p, { color: 'ink', r: 4 }); });
-      if (C.calculation && C.txt) T(b, pt(sd / 2, sd), C.answer ? `가운데 넓이 ${d}²=${d2}` : `가운데 한 변 ${Math.max(a, bb)}−${Math.min(a, bb)}=${d}`, { dy: 40, size: 17, color: 'rose' });
+      if (C.calculation && C.txt) T(b, pt(sd / 2, sd), sideLesson || proofLesson || !C.answer ? `가운데 한 변 ${Math.max(a, bb)}−${Math.min(a, bb)}=${d}` : `가운데 넓이 ${d}²=${d2}`, { dy: 40, size: 17, color: 'rose' });
+      if (proofLesson && lessonReady(s, C, 'pySquareAReady')) T(b, pt(sd / 2, sd), C.answer ? 'c² = 2ab+(b−a)² = a²+b²' : lessonReady(s, C, 'pySquareCReady') ? `c²=${M.tri4}+${d2}=${c2}` : `삼각형 넷: 4×${a}×${bb}÷2=${M.tri4}`, { dy: 68, size: 15, color: 'amber' });
     },
     steps: (M) => [
       `직각변이 $a=${M.a}$, $b=${M.b}$인 합동인 삼각형 4개예요. 가운데 분홍 정사각형의 넓이를 구해요.`,
@@ -225,10 +247,11 @@
     init: (s) => { s.pyBa = 3; s.pyBb = 4; },
     gen: (s, prev) => { let a, b; do { a = rint(2, 7); b = rint(2, 9); } while ((prev && a === prev.pyBa && b === prev.pyBb) || a === b); return { pyBa: a, pyBb: b }; },
     model: (s) => { const m = abOf(s); const sd = m.a + m.b; return { ...m, sd, trap: (sd * sd) / 2, t1: (m.a * m.b) / 2, mid: m.c2 / 2 }; },
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : '사다리꼴 전체와 세 삼각형의 넓이를 각각 나타내어 피타고라스 정리를 설명해 보자.',
     draw(b, s, M, C) {
       const { a, b: bb, sd, c2, ci } = M, prob = C.problem;
       const Pp = pt(0, 0), X = pt(bb, 0), Q = pt(sd, 0), L = pt(0, -a), Rr = pt(sd, -bb);
-      fit(b, { x0: 0, x1: sd, y0: -Math.max(a, bb), y1: 0 }, { t: 40, b: 56, l: 40, r: 40 });
+      fit(b, { x0: 0, x1: sd, y0: -Math.max(a, bb), y1: 0 }, { t: 40, b: C.lesson ? 88 : 56, l: 40, r: 40 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [Pp, Q, Rr, L], 'ink', 0.05); poly(b, [Pp, Q, Rr, L], 'ink', 3.2);
       if (st(2) || prob) {
@@ -239,13 +262,16 @@
         if (C.txt && !prob && st(3)) {
           T(b, pt(bb * 0.3, -a * 0.28), `\\frac{${a}×${bb}}{2}`, { size: 15, color: 'sky' });
           T(b, pt(bb + a * 0.7, -bb * 0.28), `\\frac{${a}×${bb}}{2}`, { size: 15, color: 'sky' });
-          T(b, pt((bb + sd) / 2 - bb * 0.0, -Math.max(a, bb) * 0.6), `\\frac{${c2}}{2}`, { size: 16, color: 'amber' });
+          T(b, pt((bb + sd) / 2 - bb * 0.0, -Math.max(a, bb) * 0.6), C.lesson ? '\\frac{c²}{2}' : `\\frac{${c2}}{2}`, { size: 16, color: 'amber' });
         }
       }
       [[Pp, 'P', -1, 1], [X, 'X', 0, 1], [Q, 'Q', 1, 1], [L, 'L', -1, -1], [Rr, 'R', 1, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 15, size: 17 }); });
       T(b, lerp(Pp, X, 0.5), `${bb}`, { dy: 16, size: 16, color: 'green' }); T(b, lerp(X, Q, 0.5), `${a}`, { dy: 16, size: 16, color: 'sky' });
       T(b, lerp(Pp, L, 0.5), `${a}`, { dx: -14, size: 16, color: 'sky' }); T(b, lerp(Q, Rr, 0.5), `${bb}`, { dx: 14, size: 16, color: 'green' });
-      if (!prob) T(b, lerp(L, X, 0.5), 'c', { dx: -14, dy: -2, size: 15, color: 'amber' });
+      if (!prob && (!C.lesson || st(2))) T(b, lerp(L, X, 0.5), 'c', { dx: -14, dy: -2, size: 15, color: 'amber' });
+      trace(b, s, C, Pp, L);
+      if (C.lesson && lessonReady(s, C, 'pySupportReady')) T(b, pt(sd / 2, 0), `높이 PQ=${bb}+${a}=${sd}`, { dy: 44, size: 15, color: 'rose' });
+      if (C.lesson && C.calculation) T(b, pt(sd / 2, 0), C.answer ? s.pyLessonProblem ? `사다리꼴 넓이 (${a}+${bb})×${sd}÷2=${fr(M.trap)}` : 'a²+b² = c²' : s.pyLessonProblem ? `넓이=(${a}+${bb})×${sd}÷2` : lessonReady(s, C, 'pyOtherReady') ? '(a+b)² = 2ab+c²' : '전체 넓이 = (a+b)²÷2', { dy: 70, size: 15, color: 'amber' });
     },
     steps: (M) => [
       `두 직각삼각형의 직각변은 $a=${M.a}$, $b=${M.b}$예요. 사다리꼴 PQRL 전체의 넓이를 구해요.`,
@@ -278,12 +304,14 @@
     init: (s) => { s.pyP = 0; },
     gen: (s, prev) => ({ pyP: nextTri(prev) }),
     model: (s) => { const t = triP(s), { a, b, c } = t; const p = (b * b) / c, q = (a * a) / c; return { ...t, p, q, h: (a * b) / c, b2: b * b, a2: a * a, c2: c * c }; },
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : '수선 CH로 나눈 두 닮은 삼각형에서 얻는 식을 더해 세 변의 제곱 관계를 설명해 보자.',
     draw(b, s, M, C) {
       const { a, b: bb, c, p, h } = M, prob = C.problem;
       const A = pt(0, 0), B = pt(c, 0), Cc = pt(p, -h), H = pt(p, 0);
-      fit(b, bboxOf([A, B, Cc]), { t: 44, b: 54, l: 40, r: 40 });
+      fit(b, bboxOf([A, B, Cc]), { t: 44, b: C.lesson ? 88 : 54, l: 40, r: 40 });
       const st = (n) => !C.review || C.step >= n;
-      if (st(1)) { fillPoly(b, [A, H, Cc], 'green', st(2) ? 0.28 : 0.18); fillPoly(b, [H, B, Cc], 'sky', st(3) ? 0.28 : 0.18); line(b, Cc, H, 'rose', 2.8, { dash: [7, 6] }); }
+      if (st(1)) { fillPoly(b, [A, H, Cc], 'green', st(2) ? 0.28 : 0.18); fillPoly(b, [H, B, Cc], 'sky', st(3) ? 0.28 : 0.18); if (!C.lesson) line(b, Cc, H, 'rose', 2.8, { dash: [7, 6] }); }
+      if (C.lesson && s.pyTrace > 0) line(b, Cc, lerp(Cc, H, clamp(s.pyTrace, 0, 1)), 'rose', 2.8, { dash: [7, 6] });
       poly(b, [A, B, Cc], 'ink', 3.4);
       ang(b, Cc, A, B, { color: 'amber', r: 20 });
       if (st(1)) {
@@ -300,10 +328,11 @@
       sideTag(b, Cc, B, A, C.givens ? '' : `${a}`, { color: 'sky', size: 16, gap: 12 });
       if (C.givens) { T(b, mid(A, B), `${c}`, { dy: 44, size: 16, color: 'amber' }); T(b, mid(A, H), C.answer ? `x=${fr(p)}` : 'x', { dy: 20, size: 17, color: 'rose' }); }
       else {
-        T(b, mid(A, H), `${fr(p)}`, { dy: 22, size: 16, color: 'green' }); T(b, mid(H, B), `${fr(M.q)}`, { dy: 22, size: 16, color: 'sky' });
-        T(b, lerp(Cc, H, 0.5), `${fr(h)}`, { dx: 16, size: 14, color: 'rose' });
+        T(b, mid(A, H), C.lesson ? 'AH' : `${fr(p)}`, { dy: 22, size: 16, color: 'green' }); T(b, mid(H, B), C.lesson ? 'HB' : `${fr(M.q)}`, { dy: 22, size: 16, color: 'sky' });
+        if (!C.lesson) T(b, lerp(Cc, H, 0.5), `${fr(h)}`, { dx: 16, size: 14, color: 'rose' });
         T(b, mid(A, B), `c=${c}`, { dy: 46, size: 16, color: 'amber' });
       }
+      if (C.lesson && lessonReady(s, C, 'pySupportReady')) T(b, mid(A, B), C.answer ? s.pyLessonProblem ? `AH=${fr(p)}` : 'a²+b² = c×(AH+HB) = c²' : s.pyLessonProblem ? C.calculation ? `${c}x=${bb}²=${M.b2}` : 'AB:AC = AC:AH' : lessonReady(s, C, 'pyOtherReady') ? 'b²=c×AH, a²=c×HB' : 'b²=c×AH', { dy: 72, size: 15, color: 'amber' });
     },
     steps: (M) => [
       `$AB=${M.c}$, $AC=${M.b}$이고 $CH\\perp AB$예요. 구하는 선분은 $AH=x$예요.`,

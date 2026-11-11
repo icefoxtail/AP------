@@ -93,7 +93,7 @@
     init: (s) => { s.pyA = 3; s.pyB = 4; s.pyGrid = false; },
     gen: (s, prev) => { let t; do { t = pick(BASE_HYP, prev ? [prev.pyA, prev.pyB] : null); } while (prev && t[0] === prev.pyA && t[1] === prev.pyB); return { pyA: t[0], pyB: t[1] }; },
     model: (s) => triOf(s),
-    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : `직각을 낀 두 변 a=${M.a}, b=${M.b}와 빗변 c 위에 세 정사각형을 그린다. 세 넓이 사이에는 어떤 관계가 있을까?`,
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : s.pyLessonMode === 'square-value' ? `직각을 낀 두 변이 ${M.a}, ${M.b}일 때 빗변 c의 제곱은 얼마일까? 길이가 정수가 아니면 제곱한 값으로 나타내 보자.` : `직각을 낀 두 변 a=${M.a}, b=${M.b}와 빗변 c 위에 세 정사각형을 그린다. 세 넓이 사이에는 어떤 관계가 있을까?`,
     draw(b, s, M, C) {
       const { a, b: bb, a2, b2, c2, ci } = M;
       const R = figRt(b, a, bb, C, {
@@ -200,13 +200,14 @@
     init: (s) => { s.pyWa = 3; s.pyWb = 4; s.pyRot = 35; s.pyK = 0; },
     gen: (s, prev) => { let t; do { t = pick(ROT_TRI); } while (prev && t[0] === prev.pyWa && t[1] === prev.pyWb); return { pyWa: t[0], pyWb: t[1], pyRot: pick([20, 55, 100, 145, 200, 245, 290, 330]), pyK: rint(0, 1) }; },
     model: (s) => rotOf(s),
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : '삼각형 ABC를 돌려도 직각 C는 그대로이다. 어느 변이 빗변인지 꼭짓점 이름으로 말해 보자.',
     draw(b, s, M, C) {
       const { a, b: bb, c2, ci, rot: r, kind } = M;
       // 문제에서 kind=1 이면 한 직각변을 구하는 문제: 빗변 값을 주고 직각변 x 를 구합니다.
       const pending = !C.answer, hypGiven = C.givens && kind === 1;
       figRt(b, a, bb, C, {
-        rot: r, names: ['A', 'B', 'C'], hi: C.review && C.step >= 2 ? 'c' : null, t: 26, bt: 26,
-        lab: { a: pending && kind === 1 ? 'x' : `${a}`, b: `${bb}`, c: hypGiven ? (ci || 'c') : pending ? 'x' : ci ? `${ci}` : 'c' },
+        rot: r, names: ['A', 'B', 'C'], hi: C.lesson ? lessonReady(s, C, s.pyLessonProblem ? 'pySupportReady' : 'pyShowAnswer') ? 'c' : null : C.review && C.step >= 2 ? 'c' : null, t: 26, bt: 26,
+        lab: { a: pending && kind === 1 ? 'x' : `${a}`, b: `${bb}`, c: C.lesson && !s.pyLessonProblem ? C.answer ? '빗변 c' : '?' : hypGiven ? (ci || 'c') : pending ? 'x' : ci ? `${ci}` : 'c' },
         labOut: true
       });
       if (!C.problem && C.txt) T(b, pt(0, 0), '', {});
@@ -252,6 +253,7 @@
     init: (s) => { s.pyU = 2; s.pyV = 3; },
     gen: (s, prev) => { let u, v; do { u = rint(1, 5); v = rint(u + 1, 6); } while (prev && (u === prev.pyU && v === prev.pyV || u === prev.pyV && v === prev.pyU)); return Math.random() < 0.5 ? { pyU: u, pyV: v } : { pyU: v, pyV: u }; },
     model: (s) => gridOf(s),
+    lessonQuestion: (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : `모눈의 가로 이동 u=${M.u}, 세로 이동 v=${M.v}로 생기는 정사각형의 넓이 S를 u와 v로 나타내면 어떤 식이 될까?`,
     draw(b, s, M, C) {
       const { u, v, n, big, S } = M;
       fit(b, { x0: 0, x1: n, y0: 0, y1: n }, { t: 36, b: C.problem ? 36 : 72, l: 36, r: 36 });
@@ -264,6 +266,7 @@
       if (showTri && !C.problem) tris.forEach((t) => fillPoly(b, t, 'sky', 0.22));
       fillPoly(b, Pq, 'amber', C.problem ? 0.3 : 0.26);
       poly(b, Pq, 'amber', 3.6);
+      if (C.lesson && s.pyTrace > 0) line(b, Pq[3], lerp(Pq[3], Pq[0], clamp(s.pyTrace, 0, 1)), 'rose', 4.4);
       ['P', 'Q', 'R', 'S'].forEach((nm, i) => { b.point(Pq[i], { color: 'amber', r: 5 }); tagOut(b, Pq[i], pt(n / 2, n / 2), nm, { size: 17, gap: 11, color: 'amber' }); });
       // 모눈 위 가로·세로 길이(그림 안)
       T(b, pt(u / 2, 0), `${u}`, { dy: 14, size: 16, color: 'sky' });
@@ -274,6 +277,7 @@
         if (showTri) tris.forEach((t) => b.right(t[0], t[1], t[2], { size: 11, color: 'sky' }));
         if (C.txt) T(b, pt(n / 2, n / 2), C.answer ? `S=${S}` : 'S=?', { size: 20, color: 'amber' });
         if (C.txt && C.step >= 2) T(b, pt(n / 2, n), `큰 정사각형 ${n}×${n}=${big}`, { dy: 50, size: 15, color: 'ink' });
+        if (C.lesson && lessonReady(s, C, 'pyOtherReady')) T(b, pt(n / 2, n), `삼각형 4개: 4×(${u}×${v}÷2)=${2 * u * v}`, { dy: 26, size: 15, color: 'sky' });
       }
     },
     steps: (M) => [
@@ -320,15 +324,17 @@
     init: (s) => { s.pyX = 8; s.pyM = 6; s.pyN = 9; },
     gen: (s, prev) => { let t; do { t = pick(CHAINS); } while (prev && t.pyX === prev.pyX && t.pyM === prev.pyM && t.pyN === prev.pyN); return { ...t }; },
     model: (s) => chainOf(s),
+    lessonQuestion: (M, s, Q) => lessonProblem(Q),
     draw(b, s, M, C) {
       const { x, m, n, y2, z2, yi, zi } = M, y = Math.sqrt(y2);
       const Bp = pt(0, 0), Ap = pt(0, -x), Dp = pt(m, 0), Cp = pt(m + n, 0);
-      fit(b, { x0: 0, x1: m + n, y0: -x, y1: 0 }, { t: 40, b: 60, l: 50, r: 40 });
-      const showX = C.full || C.review && C.step >= 3, showY = C.full || C.review && C.step >= 4;
+      fit(b, { x0: 0, x1: m + n, y0: -x, y1: 0 }, { t: 40, b: C.lesson ? 88 : 60, l: 50, r: 40 });
+      const showX = C.lesson ? lessonReady(s, C, 'pySupportReady') : C.full || C.review && C.step >= 3, showY = C.lesson ? lessonReady(s, C, 'pyOtherReady') : C.full || C.review && C.step >= 4;
       fillPoly(b, [Ap, Bp, Cp], 'green', C.review && C.step === 2 ? 0.16 : 0.04);
       if (C.full || C.review && C.step >= 4) fillPoly(b, [Ap, Bp, Dp], 'sky', 0.16);
       poly(b, [Ap, Bp, Cp], 'ink', 3.4);
       line(b, Ap, Dp, 'amber', 3.4);
+      if (C.lesson && s.pyTrace > 0) line(b, Ap, lerp(Ap, Bp, clamp(s.pyTrace, 0, 1)), 'rose', 4.4);
       ang(b, Bp, Cp, Ap, { color: 'amber', r: 20 });
       [['A', Ap, 0, -1], ['B', Bp, -1, 0.5], ['D', Dp, 0, 1], ['C', Cp, 1, 0.5]].forEach(([nm, p, dx, dy]) => { b.point(p, { color: 'ink', r: 4.5 }); T(b, p, nm, { dx: dx * 15, dy: dy * 16, size: 17 }); });
       const cen = pt((m + n) / 2, -x / 2);
@@ -337,7 +343,9 @@
       T(b, lerp(Bp, Dp, 0.5), `${m}`, { dy: 18, size: 16, color: 'sky' });
       T(b, lerp(Dp, Cp, 0.5), `${n}`, { dy: 18, size: 16, color: 'green' });
       sideTag(b, Ap, Cp, pt(0, 0), zi ? `${zi}` : `z²=${z2}`, { color: 'green', size: 16, gap: 12 });
-      sideTag(b, Ap, Dp, Bp, showY ? (yi ? `y=${yi}` : `y²=${y2}`) : 'y', { color: 'amber', size: 16, gap: 12 });
+      sideTag(b, Ap, Dp, Bp, showY ? (yi ? `y=${yi}` : `y²=${y2}`) : C.lesson && C.calculation ? `y²=${y2}` : 'y', { color: 'amber', size: 16, gap: 12 });
+      if (C.lesson && lessonReady(s, C, 'pySquareCReady')) T(b, mid(Bp, Cp), `BC=${m}+${n}=${m + n}`, { dy: 44, size: 16, color: 'green' });
+      if (C.lesson && C.answer) T(b, mid(Bp, Cp), `x+y=${x}+${yi}=${M.sum}`, { dy: 68, size: 17, color: 'amber' });
     },
     steps: (M) => [
       `$BD=${M.m}$, $DC=${M.n}$, $AC=${M.zi}$예요. $AB=x$, $AD=y$일 때 $x+y$를 구해요.`,
@@ -375,10 +383,11 @@
     init: (s) => { s.pyWa = 6; s.pyWb = 8; s.pyK = 0; },
     gen: (s, prev) => { let t; do { t = pick(PERIM); } while (prev && t[0] === prev.pyWa && t[1] === prev.pyWb); return { pyWa: t[0], pyWb: t[1], pyK: rint(0, 1) }; },
     model: (s) => perimOf(s),
+    lessonQuestion: (M, s, Q) => lessonProblem(Q),
     draw(b, s, M, C) {
       const { a, b: bb, c2, ci, area, kind } = M;
-      const pending = C.problem || C.review && C.step < 3, ask = C.givens && kind === 1;
-      figRt(b, a, bb, C, { sq: false, bt: C.full ? 100 : C.answer ? 76 : 40, lab: { a: `${a}`, b: pending && ask ? 'b' : `${bb}`, c: pending && !ask ? 'c' : ci ? `${ci}` : 'c' }, labOut: true, hi: C.review && C.step === 2 ? 'c' : null });
+      const pending = C.lesson ? !lessonReady(s, C, 'pySupportReady') : C.problem || C.review && C.step < 3, ask = C.givens && kind === 1;
+      figRt(b, a, bb, C, { sq: false, bt: C.full ? 100 : C.answer ? 76 : 40, lab: { a: `${a}`, b: pending && ask ? 'b' : `${bb}`, c: pending && !ask ? 'c' : ci ? `${ci}` : 'c' }, labOut: true, hi: C.review && C.step === 2 ? 'c' : null, traceSide: C.lesson ? kind === 1 ? 'c' : 'a' : null, trace: s.pyTrace || 0 });
       if (C.answer && C.txt) {
         if (C.full || kind === 0) T(b, pt(a / 2, 0), M.per != null ? `둘레 ${a}+${bb}+${ci}=${M.per}` : `둘레: c²=${c2}`, { dy: 48, size: 17, color: 'amber' });
         if (C.full || kind === 1) T(b, pt(a / 2, 0), `넓이 \\frac{${a}×${bb}}{2}=${fmtN(area)}`, { dy: C.full ? 80 : 48, size: 17, color: 'sky' });

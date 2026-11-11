@@ -60,6 +60,13 @@ test('each explanation loads and draws at entry, first cue and conclusion withou
       assert.equal(result.value.rule, null, id + ': concept conclusion follows the explanation timing');
       assert.equal(result.value.status, null, id + ': manual progress does not reveal a result');
       assert.equal(typeof lab.s.pyLessonProblem, 'boolean', id + ': explicit concept or source-problem model');
+      const question = lab.scene.question(lab.s);
+      assert.equal(typeof question, 'string', id + ': visible question text');
+      assert.doesNotMatch(question, /undefined|NaN|Infinity/, id + ': no missing numeric option text');
+      if (lab.s.pyLessonProblem) {
+        const source = lab.scene.py, fixed = lab.api.qState(lab.s), quiz = source.prob(source.model(fixed), fixed);
+        for (const choice of quiz.choices) assert.ok([choice.h, choice.t, choice.p].filter(x => x != null).some(x => question.includes(String(x))), id + ': every original option is visible');
+      }
       assert.equal(lab.s.pySeed, 0, id + ': source question seed fixed');
       assert.ok(lab.s.pyQ && typeof lab.s.pyQ === 'object', id + ': source conditions are an object');
       if (entry) { assert.equal(lab.s.pyShowAnswer, false, id + ': prior conclusion reset'); assert.equal(lab.s.pyCalculationReady, false, id + ': prior calculation reset'); }
