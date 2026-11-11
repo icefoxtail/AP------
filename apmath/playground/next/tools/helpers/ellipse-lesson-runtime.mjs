@@ -66,10 +66,10 @@ export async function load({ allowMissingLessons = false, sourceOnly = false } =
   context.APLab.createLab = def => {
     definition = def;
     def.scenes = def.scenes || def.groups.flatMap(group => group.scenes);
-    // Preserve the shell identity used by the first-packet selector and the
-    // existing new-problem click handler when the native Board is attached.
+    // The production shell creates scene copies (apl-shell.js constructor).
+    // Keep that identity boundary while retaining the same lab object.
     context.lab = {
-      def, list: def.scenes,
+      def, list: (def.groups || [{scenes:def.scenes}]).flatMap((group,gi)=>group.scenes.map(sc=>({...((def.stackFractions!==false)?context.APLab.stackScene(sc):sc),gi,group}))),
       index: 0, tab: 'explore', s: { ...def.state }, params: { ...def.params }, refs: {}, ui: { head: { querySelector() { return null; } }, chips: { firstElementChild: null } },
       invalidate() {}, _buildReview() {}, _buildProblem() {},
       goScene(i) { this.index = i; }, setTab(tab) { this.tab = tab; }, setStep(n) { this.s.step = n; },

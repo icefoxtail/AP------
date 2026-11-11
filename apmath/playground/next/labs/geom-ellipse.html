@@ -2793,7 +2793,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const initial = { a: 5, b: 3, theta: Math.PI / 3, fold: 1, ...KICE.state, tangentQOffset: 2.5, laser: 0, chordOverlay: false };
     sc.enter?.(initial, {}); ellipseInitial[sc.id] = initial;
     const cur = sc.vary.cur, idx = sc.vary.idx;
-    const usingLesson = () => window.lab?.scene === sc && (window.lab.s.lessonOn || window.lab.s.lessonEntry);
+    const usingLesson = () => window.lab?.scene?.id === sc.id && (window.lab.s.lessonOn || window.lab.s.lessonEntry);
     sc.vary.first = () => ellipseFirst[sc.id];
     sc.vary.cur = () => usingLesson() ? ellipseFirst[sc.id] : cur();
     sc.vary.idx = () => usingLesson() ? 0 : idx();

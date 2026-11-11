@@ -276,7 +276,7 @@
 
 ## 9. 알려진 함정과 기록
 
-- 2026-11-12 · **타원 전체 구현.** `feat/lessons-geom-ellipse`, catalog/HTML 1-A~4-B와 q5/q6 **12장면/35해설**(원문 목표15·탐구개념20), 누락0. 원본 접기·세로 축소·초점 이동·광선 반사와 원문 다중 목표를 분리했다. 첫 packet/질문 고정·수동 새문제·원래 탐구·형제/entry snapshot·카메라 보존. 원본 2-C의 x1=0일 때 설명만 있던 수평 접선 두 개를 기존 renderer로 보강했다. 해설 화면에 공통 절편과 반사점 범위를 포함하고 전체 측정/가시 라벨 공개 순서를 구분했다. 최소 **75/75 PASS**(독립수학12·native8·공통video/pins55), **544개 실제 cue/mid 상태**, validator 오류/경고0·구문8단위·diff 통과. 최신 main 통합 후 실제 입력46파일 SHA256 동일. 공통 kit 수정 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+- 2026-11-12 · **타원 전체 구현.** `feat/lessons-geom-ellipse`, catalog/HTML 1-A~4-B와 q5/q6 **12장면/35해설**(원문 목표15·탐구개념20), 누락0. 원본 접기·세로 축소·초점 이동·광선 반사와 원문 다중 목표를 분리했다. 첫 packet/질문 고정·수동 새문제·원래 탐구·형제/entry snapshot·카메라 보존. 원본 2-C의 x1=0일 때 설명만 있던 수평 접선 두 개를 기존 renderer로 보강했다. 실제 셸의 장면 복제 조건에서 first packet 선택 오류를 재현한 뒤 객체 동일성 대신 scene.id를 비교하도록 수정했다. helper도 실제 stackScene/복제 경계를 반영했고 최종75개를 다시 통과했다. 해설 화면에 공통 절편과 반사점 범위를 포함하고 전체 측정/가시 라벨 공개 순서를 구분했다. 최소 **75/75 PASS**(독립수학12·native8·공통video/pins55), **544개 실제 cue/mid 상태**, validator 오류/경고0·구문8단위·diff 통과. 최신 main 통합 후 실제 입력46파일 SHA256 동일. 공통 kit 수정 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
 - 2026-11-12 · **포물선 main 병합.** [PR #1841](https://github.com/icefoxtail/AP------/pull/1841), feature `2db8d28ec08332344c74dc076bef0c82f0c3db7f`, merge/main readback `fb69e8c06f00067dd0125b01745f6a07ad5b175c`, tested tree `6ebf504a3ee7ac95ef9313dfba1b5dca77e88fe9`. 누적 **43실험실/872장면/2,514해설**. AWCR r69 raw SHA256 `16ad63bd77c6bc3f6a40e1fa6b2165fd2aa88550eda5424c86074f602bf2f172` 확인. Pages writer43060888403은 runner 배정 뒤 실행 중이며 성공 영수증 미확인, **PAGES_NOT_VERIFIED**. 다음 타원→쌍곡선→공간도형 순서로 병합한다.
 
