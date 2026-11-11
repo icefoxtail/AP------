@@ -41,9 +41,10 @@
 
 | 실험실 | 장면 | 해설 있는 장면 / 해설 수 | 상태 |
 | --- | --- | --- | --- |
-| `g7-surface-volume` 겉넓이·부피 | 30 | 30 / 54 | **IMPLEMENTED / QA_PENDING** · `feat/lessons-g7-surface-volume-remainder`. 실제 기존 등록 18장면/23해설에서 잔여 12장면/27해설 + 기존 4장면의 부피 4해설 추가. 최소 검사 182/182. PR·main·Pages 확인 후 갱신 (§5-2) |
+| `g7-surface-volume` 겉넓이·부피 | 30 | 30 / 54 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1746](https://github.com/icefoxtail/AP------/pull/1746), merge `4ab7f327068a09ecbe583f1141487e299965e28b`. 실제 기존 18/23 + 잔여 12/27 + 기존 장면 부피 4해설. 최소 검사 182/182. Pages 등록 작업 대기 (§5-2) |
 | `g7-circle-sector` 원과 부채꼴 | 86 | 86 / 98 | **RELEASED_QA_PENDING** · [PR #1736](https://github.com/icefoxtail/AP------/pull/1736), merge `480018bea30d86225b8e41c79eda5cd76ce03ebc`. [Pages run 42958902234](https://github.com/icefoxtail/AP------/actions/runs/42958902234) 성공, 실제 HTML 및 17개 모듈의 배포 소스 일치 확인. 전체 모바일 품질검수 NOT_RUN |
-| 중1 나머지 8개 | 166 | 0 | 미착수 (§5-3) |
+| `g7-polyhedra` 다면체 | 26 | 제작 중 | main `4ab7f327068a09ecbe583f1141487e299965e28b`에서 `feat/lessons-g7-polyhedra` 신규 시작. 기존 브랜치·PR 없음 확인. 최소 검사·운영 병합 예정 |
+| 중1 나머지 7개 | 140 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -193,6 +194,9 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 겉넓이·부피 [PR #1746](https://github.com/icefoxtail/AP------/pull/1746) **main 운영 병합 완료**. head `af38f57a0a23354508d3a90555c14244ad6da39e`, merge `4ab7f327068a09ecbe583f1141487e299965e28b`. 원격 main과 대상 파일 일치 재확인. 30장면/54해설, 최소 Node 182/182. [등록 run 42961588518](https://github.com/icefoxtail/AP------/actions/runs/42961588518) pending, 학생 HTML은 이전 버전이어서 **Pages NOT_VERIFIED / 배포 대기**다. 신규 파일의 배포 전 404는 기존 사이트의 확정 P0가 아니다. 전체 시각검수 NOT_RUN. 다음 다면체 구현에 착수했다.
+- 2026-11-11 · AWCR task `df4ac906-152a-4010-ae2b-f5cf740a5179` [r6](https://drive.google.com/file/d/14Ij7YV3dY5utUjPQC-fES1ZOX5zKphA2/view) 원격 저장·raw 재조회 완료. SHA-256 `c91ee7bc580f9fd502769b7c70540d98fd1b10d37755c911a067ee7cd9cfa56c`, surface MAIN_MERGED·Pages NOT_VERIFIED, circle RELEASED_QA_PENDING, quality UNKNOWN. 다음 revision은 충돌 재확인 후 r7이다.
 
 - 2026-11-11 · `g7-surface-volume` 잔여 구현 완료: 실제 30장면/54해설, 신규 31해설(잔여 12장면/27 + 기존 4장면/4), 미등록 장면 0. 위 최소 검사 182/182 및 구문 검사 통과. **IMPLEMENTED / QA_PENDING**, main·Pages는 병합 후 별도 확인. 다음 구현은 §5-3의 `g7-polyhedra`다.
 - 2026-11-11 · 원과 부채꼴 Pages 확인 완료: [run 42958902234](https://github.com/icefoxtail/AP------/actions/runs/42958902234), source `3fd795aa10ab9bd5652262b443797bc562f6dd53`에 PR #1736 merge 포함. 학생 HTML HTTP 200 및 17/17 모듈이 배포 소스와 바이트 단위 일치. 실제 브라우저에서 중심·반지름 해설의 버튼·진입·재생 시작 확인. **RELEASED_QA_PENDING**이며 전체 98해설/모바일 품질검수는 NOT_RUN이다. 아래 과거 Pages NOT_VERIFIED 기록을 이 확인 결과로 갱신한다.
