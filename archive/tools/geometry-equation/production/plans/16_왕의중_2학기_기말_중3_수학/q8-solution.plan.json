@@ -1,0 +1,667 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "2"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "add",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "2"
+           },
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "2"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "A",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 75,
+       "label": "75",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 45,
+       "label": "45",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "4"
+      }
+     ]
+    },
+    "caption": "각 A가 75도, 각 C가 45도이고 AB가 4인 삼각형이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "E와 F를 잡은 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "2"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "add",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "2"
+           },
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "2"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "3"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "A",
+     "F",
+     "E",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBF",
+      "refs": [
+       "B",
+       "F"
+      ]
+     },
+     {
+      "id": "sFE",
+      "refs": [
+       "F",
+       "E"
+      ]
+     },
+     {
+      "id": "sEC",
+      "refs": [
+       "E",
+       "C"
+      ]
+     },
+     {
+      "id": "sAE",
+      "refs": [
+       "A",
+       "E"
+      ]
+     },
+     {
+      "id": "sAF",
+      "refs": [
+       "A",
+       "F"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "E"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE"
+      },
+      {
+       "id": "aE",
+       "refs": [
+        "A",
+        "E",
+        "F"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sAB",
+        "sAE"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "4"
+      },
+      {
+       "id": "lFE",
+       "ownerSegment": "sFE",
+       "text": "2",
+       "ownership": "NEAREST"
+      }
+     ]
+    },
+    "caption": "AB와 같은 길이로 BC 위에 점 E를 잡고, A에서 BC에 내린 수선의 발 F를 잡은 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "F",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 AFC"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "2"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "2"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "F",
+     "C",
+     "A"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sFC",
+      "refs": [
+       "F",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sAF",
+      "refs": [
+       "A",
+       "F"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aC",
+       "refs": [
+        "A",
+        "C",
+        "F"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "GREEN"
+      },
+      {
+       "id": "aA",
+       "refs": [
+        "F",
+        "A",
+        "C"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "GREEN"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sAF",
+        "sFC"
+       ]
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sCA"
+       ],
+       "color": "BLUE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAF",
+       "ownerSegment": "sAF",
+       "text": "2sqrt(3)"
+      },
+      {
+       "id": "lFC",
+       "ownerSegment": "sFC",
+       "text": "2sqrt(3)"
+      }
+     ]
+    },
+    "caption": "직각이등변삼각형 AFC이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "F",
+       "C"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "삼각형 ABE는 한 변이 4인 정삼각형이고 삼각형 AFC는 직각이등변삼각형이다. 주황색 AB와 AE는 같은 길이이고 파란색 빗변 AC가 구하려는 선분이다."
+}

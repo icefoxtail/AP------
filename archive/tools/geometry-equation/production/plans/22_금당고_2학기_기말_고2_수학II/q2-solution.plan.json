@@ -1,0 +1,76 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "9",
+     "-12",
+     "3"
+    ]
+   }
+  ],
+  "requiredPoints": [
+   {
+    "id": "S",
+    "x": 0,
+    "y": 9
+   },
+   {
+    "id": "V",
+    "x": 2,
+    "y": -3
+   }
+  ],
+  "axisTickValues": {
+   "x": [
+    "2"
+   ],
+   "y": []
+  },
+  "coordinateBand": {
+   "hide": [
+    "V"
+   ]
+  },
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "0",
+    "4"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "axisTitles": {
+   "x": "시각 t",
+   "y": "속도 v(t)"
+  }
+ },
+ "caption": "시간 t에 따른 속도 함수와 시작점, 내부 최솟점의 위치 관계를 나타낸다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "속도 v(t)는 위치 함수의 도함수이며 v(t)=3t²−12t+9이다.",
+   "mappedTo": [
+    "graphPlan.pieces",
+    "graphPlan.axisTitles"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "t=0에서 v=9이고 t=2에서 내부 최솟값을 갖는다. 최솟점의 좌표 라벨은 정답 노출을 막기 위해 쓰지 않는다.",
+   "mappedTo": [
+    "graphPlan.requiredPoints",
+    "graphPlan.coordinateBand",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "속도 함수의 시작 시각과 내부 최솟점의 위치를 나타낸다."
+ ]
+}

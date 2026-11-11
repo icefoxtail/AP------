@@ -1,0 +1,276 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "expression",
+       "op": "add",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        },
+        {
+         "kind": "expression",
+         "op": "mul",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          },
+          {
+           "kind": "expression",
+           "op": "sqrt",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "6"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "H"
+ ],
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBH",
+   "refs": [
+    "B",
+    "H"
+   ]
+  },
+  {
+   "id": "sHC",
+   "refs": [
+    "H",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  },
+  {
+   "id": "sAH",
+   "refs": [
+    "A",
+    "H"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aBAH",
+    "refs": [
+     "B",
+     "A",
+     "H"
+    ],
+    "value": 30,
+    "label": "30",
+    "color": "GREEN",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aHAC",
+    "refs": [
+     "H",
+     "A",
+     "C"
+    ],
+    "value": 54.735610317245346,
+    "label": "x",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "6",
+    "unit": "cm"
+   },
+   {
+    "id": "lCA",
+    "ownerSegment": "sCA",
+    "text": "9",
+    "unit": "cm"
+   },
+   {
+    "id": "lAH",
+    "ownerSegment": "sAH",
+    "text": "3sqrt(3)",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lHC",
+    "ownerSegment": "sHC",
+    "text": "3sqrt(6)",
+    "unit": "cm",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "segmentColors": [
+   {
+    "segments": [
+     "sAH"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "segments": [
+     "sHC"
+    ],
+    "color": "WARM"
+   }
+  ]
+ },
+ "caption": "직각삼각형 ABH에서 높이 AH를 구하고, 직각삼각형 AHC에서 HC를 구한다. 각 x의 이웃한 변은 파란색 AH, 맞은편 변은 주황색 HC이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB=6cm, AC=9cm, AH⊥BC, ∠BAH=30°, x=∠HAC.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "H",
+    "C"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 380
+ }
+}

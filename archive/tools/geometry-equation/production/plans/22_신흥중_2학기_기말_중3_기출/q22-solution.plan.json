@@ -1,0 +1,53 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      6,
+      8,
+      7,
+      10,
+      4
+    ],
+    "xTitle": "배차 간격(분)",
+    "marks": {
+      "meanLine": {
+        "value": "7",
+        "label": "평균 7"
+      },
+      "deviations": true,
+      "highlight": [
+        {
+          "value": 4,
+          "color": "BLUE"
+        },
+        {
+          "value": 6,
+          "color": "BLUE"
+        },
+        {
+          "value": 8,
+          "color": "WARM"
+        },
+        {
+          "value": 10,
+          "color": "WARM"
+        }
+      ]
+    }
+  },
+  "caption": "배차 간격 5개를 점도표로 나타내고 평균선과 각 값의 편차를 표시한 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다섯 노선의 배차 간격은 6, 8, 7, 10, 4분이고 평균은 7분이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 자료의 평균과의 차(편차)를 점 위에 보여 분산을 구하는 계산을 따라가게 한다."
+  ]
+}

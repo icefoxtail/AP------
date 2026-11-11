@@ -1,0 +1,556 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "① 작도한 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-6"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "M"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "M"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "c",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "M"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "c"
+        ],
+        "displaySegments": [
+          {
+            "id": "AM",
+            "refs": [
+              "A",
+              "M"
+            ]
+          },
+          {
+            "id": "MB",
+            "refs": [
+              "M",
+              "B"
+            ]
+          },
+          {
+            "id": "OM",
+            "refs": [
+              "O",
+              "M"
+            ]
+          },
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "eR",
+              "count": 1,
+              "segments": [
+                "OA",
+                "OB"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "regions": [
+            {
+              "id": "t1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "A",
+                    "M"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "t2",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "B",
+                    "M"
+                  ]
+                }
+              ]
+            }
+          ],
+          "equalAreas": [
+            [
+              "t1",
+              "t2"
+            ]
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "OM"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "두 직각삼각형 OAM과 OBM의 합동",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "원 O에서 지름이 아닌 현 AB에 중심 O에서 내린 수선의 발이 M이고, 두 반지름 OA, OB를 그었다. 두 직각삼각형 OAM, OBM은 빗변이 반지름으로 같고 OM이 공통이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "두 반지름에 같은 눈금을 붙이고 직각삼각형 OAM, OBM을 같은 색으로 칠해 합동임을 보인다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "O",
+              "M",
+              "A"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "O",
+              "M",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 416,
+          "height": 400
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "② 합동인 두 직각삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "M1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "M1"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "M1"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "M2"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "M2"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O1",
+          "A1",
+          "M1",
+          "O2",
+          "B2",
+          "M2"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "OA1",
+            "refs": [
+              "O1",
+              "A1"
+            ]
+          },
+          {
+            "id": "AM1",
+            "refs": [
+              "A1",
+              "M1"
+            ]
+          },
+          {
+            "id": "OM1",
+            "refs": [
+              "O1",
+              "M1"
+            ]
+          },
+          {
+            "id": "OA2",
+            "refs": [
+              "O2",
+              "B2"
+            ]
+          },
+          {
+            "id": "AM2",
+            "refs": [
+              "B2",
+              "M2"
+            ]
+          },
+          {
+            "id": "OM2",
+            "refs": [
+              "O2",
+              "M2"
+            ]
+          }
+        ],
+        "pointNames": {
+          "O1": "O",
+          "A1": "A",
+          "M1": "M",
+          "O2": "O′",
+          "B2": "B",
+          "M2": "M′"
+        },
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "t1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O1",
+                    "A1",
+                    "M1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "t2",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O2",
+                    "B2",
+                    "M2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "equalAreas": [
+            [
+              "t1",
+              "t2"
+            ]
+          ],
+          "equalLengths": [
+            {
+              "id": "eR",
+              "count": 1,
+              "segments": [
+                "OA1",
+                "OA2"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "OM1",
+                "OM2"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "떼어 놓은 합동인 두 직각삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각삼각형 OAM, OBM에서 빗변 OA=OB(반지름), OM은 공통, 직각이 같다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "합동인 두 직각삼각형을 같은 방향으로 나란히 떼어 놓고 대응하는 변과 직각을 같은 색·표시로 맞춘다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "O1",
+              "M1",
+              "A1"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "O2",
+              "M2",
+              "B2"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "두 직각삼각형 OAM과 OBM이 RHS 합동임을 문제 배치와 떼어 놓은 그림으로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 O의 현 AB에 내린 수선의 발이 M이다. 두 직각삼각형 OAM, OBM은 빗변 OA=OB(반지름)이고 OM이 공통이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 배치와, 합동인 두 직각삼각형을 떼어 같은 방향으로 나란히 놓은 그림을 함께 보인다."
+  ]
+}

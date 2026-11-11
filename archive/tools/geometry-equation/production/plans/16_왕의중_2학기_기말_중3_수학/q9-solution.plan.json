@@ -1,0 +1,635 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "정팔각형을 나눈 모양"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "V0",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "V1",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "V0"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "6"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "45"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "V2",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "V0"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "6"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "90"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "V3",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "V0"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "6"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "135"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "V4",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "V0"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "6"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "180"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "V5",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "V0"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "6"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "225"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "V6",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "V0"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "6"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "270"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "V7",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "V0"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "6"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "315"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "V0",
+     "V1",
+     "V2",
+     "V3",
+     "V4",
+     "V5",
+     "V6",
+     "V7"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sV0V1",
+      "refs": [
+       "V0",
+       "V1"
+      ]
+     },
+     {
+      "id": "sV1V2",
+      "refs": [
+       "V1",
+       "V2"
+      ]
+     },
+     {
+      "id": "sV2V3",
+      "refs": [
+       "V2",
+       "V3"
+      ]
+     },
+     {
+      "id": "sV3V4",
+      "refs": [
+       "V3",
+       "V4"
+      ]
+     },
+     {
+      "id": "sV4V5",
+      "refs": [
+       "V4",
+       "V5"
+      ]
+     },
+     {
+      "id": "sV5V6",
+      "refs": [
+       "V5",
+       "V6"
+      ]
+     },
+     {
+      "id": "sV6V7",
+      "refs": [
+       "V6",
+       "V7"
+      ]
+     },
+     {
+      "id": "sV7V0",
+      "refs": [
+       "V7",
+       "V0"
+      ]
+     },
+     {
+      "id": "sOV0",
+      "refs": [
+       "O",
+       "V0"
+      ]
+     },
+     {
+      "id": "sOV1",
+      "refs": [
+       "O",
+       "V1"
+      ]
+     },
+     {
+      "id": "sOV2",
+      "refs": [
+       "O",
+       "V2"
+      ]
+     },
+     {
+      "id": "sOV3",
+      "refs": [
+       "O",
+       "V3"
+      ]
+     },
+     {
+      "id": "sOV4",
+      "refs": [
+       "O",
+       "V4"
+      ]
+     },
+     {
+      "id": "sOV5",
+      "refs": [
+       "O",
+       "V5"
+      ]
+     },
+     {
+      "id": "sOV6",
+      "refs": [
+       "O",
+       "V6"
+      ]
+     },
+     {
+      "id": "sOV7",
+      "refs": [
+       "O",
+       "V7"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "regions": [
+      {
+       "id": "r1",
+       "fill": "BLUE",
+       "shapes": [
+        {
+         "polygon": [
+          "O",
+          "V0",
+          "V1"
+         ]
+        }
+       ]
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "eR",
+       "count": 1,
+       "segments": [
+        "sOV0",
+        "sOV1",
+        "sOV2",
+        "sOV3",
+        "sOV4",
+        "sOV5",
+        "sOV6",
+        "sOV7"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "원의 중심에서 정팔각형의 각 꼭짓점에 선분을 그어 합동인 이등변삼각형 8개로 나눈 그림이다.",
+    "hiddenPointNames": [
+     "V0",
+     "V1",
+     "V2",
+     "V3",
+     "V4",
+     "V5",
+     "V6",
+     "V7"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 하나"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "2"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "2"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "2"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "P",
+     "Q",
+     "H"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sOP",
+      "refs": [
+       "O",
+       "P"
+      ]
+     },
+     {
+      "id": "sPQ",
+      "refs": [
+       "P",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQO",
+      "refs": [
+       "Q",
+       "O"
+      ]
+     },
+     {
+      "id": "sQH",
+      "refs": [
+       "Q",
+       "H"
+      ],
+      "dashed": true
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "a0",
+       "refs": [
+        "P",
+        "O",
+        "Q"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "BLUE"
+      }
+     ],
+     "regions": [
+      {
+       "id": "r1",
+       "fill": "BLUE",
+       "shapes": [
+        {
+         "polygon": [
+          "O",
+          "P",
+          "Q"
+         ]
+        }
+       ]
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sOP",
+        "sQO"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lOP",
+       "ownerSegment": "sOP",
+       "text": "6",
+       "unit": "cm"
+      },
+      {
+       "id": "lQH",
+       "ownerSegment": "sQH",
+       "text": "3sqrt(2)",
+       "ownership": "NEAREST"
+      }
+     ]
+    },
+    "caption": "변의 길이가 6인 이등변삼각형 하나와 그 높이이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "O",
+       "H",
+       "Q"
+      ]
+     }
+    ],
+    "hiddenPointNames": [
+     "P",
+     "Q",
+     "H"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "지름이 12인 원에 내접하는 정팔각형을 중심에서 8개의 합동인 이등변삼각형으로 나눈 그림이다. 주황색 선분은 모두 반지름 6이고 파란 부분이 삼각형 하나이다."
+}

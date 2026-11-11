@@ -1,0 +1,333 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "285"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ra",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ta",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "ra"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tb",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "rb"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ta",
+          "tb"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r1",
+        "refs": [
+          "O",
+          "A",
+          "P"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "noLabel": true
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 30,
+        "factRole": "GIVEN",
+        "color": "WARM",
+        "label": "30"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 15,
+        "factRole": "GIVEN",
+        "color": "BLUE",
+        "label": "x",
+        "labelPlacement": "LEADER",
+        "ring": 2
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 15,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "BLUE",
+        "noLabel": true,
+        "ring": 2
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 150,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "ROSE",
+        "label": "150"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "a2",
+          "a3"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "PA",
+          "PB"
+        ],
+        "color": "ROSE"
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "OA",
+          "OB"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "caption": "PA=PB이고 OA=OB, OP는 공통이므로 두 직각삼각형은 합동이고 OP는 각 APB를 이등분한다. 각 AOB는 150°이다. 삼각형 AOB는 이등변삼각형이므로 파란 두 밑각이 같고, 그중 하나가 x이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PA,PB는 접선이고 ∠APB=30°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그림을 보존하며 수선·현·접선과 각의 관계를 구별한다. 라벨에는 여유를 두고 지시선을 사용한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  }
+}

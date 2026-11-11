@@ -1,0 +1,248 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-17101007",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "46984631",
+       "denominator": "10000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-4330127",
+       "denominator": "1000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-5",
+       "denominator": "2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "19151111",
+       "denominator": "5000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-1606969",
+       "denominator": "500000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "17101007",
+       "denominator": "10000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "46984631",
+       "denominator": "10000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aB",
+    "refs": [
+     "A",
+     "B",
+     "C"
+    ],
+    "value": 75,
+    "label": "75",
+    "color": "BLUE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aD",
+    "refs": [
+     "C",
+     "D",
+     "A"
+    ],
+    "value": 105,
+    "label": "x",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aC",
+    "refs": [
+     "B",
+     "C",
+     "D"
+    ],
+    "value": 70,
+    "label": "70",
+    "color": "WARM",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aA",
+    "refs": [
+     "D",
+     "A",
+     "B"
+    ],
+    "value": 110,
+    "label": "y",
+    "color": "GREEN",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "caption": "원에 내접하는 사각형에서 마주 보는 두 각의 합은 180°이다. 각 B와 마주 보는 각은 D, 각 C와 마주 보는 각은 A이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "□ABCD가 원에 내접, ∠ABC=75°, ∠BCD=70°, x=∠D, y=∠A.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 520,
+  "height": 520
+ },
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
+}

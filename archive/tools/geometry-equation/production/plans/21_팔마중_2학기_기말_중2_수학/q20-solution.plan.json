@@ -1,0 +1,935 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "노랑, 파랑, 빨강 공의 수"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "t0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "t0",
+          "b0",
+          "t1",
+          "b1",
+          "t2",
+          "b2",
+          "t3",
+          "b3"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "st0b0",
+            "refs": [
+              "t0",
+              "b0"
+            ]
+          },
+          {
+            "id": "st1b1",
+            "refs": [
+              "t1",
+              "b1"
+            ]
+          },
+          {
+            "id": "st2b2",
+            "refs": [
+              "t2",
+              "b2"
+            ]
+          },
+          {
+            "id": "st3b3",
+            "refs": [
+              "t3",
+              "b3"
+            ]
+          },
+          {
+            "id": "st0t1",
+            "refs": [
+              "t0",
+              "t1"
+            ]
+          },
+          {
+            "id": "sb0b1",
+            "refs": [
+              "b0",
+              "b1"
+            ]
+          },
+          {
+            "id": "st1t2",
+            "refs": [
+              "t1",
+              "t2"
+            ]
+          },
+          {
+            "id": "sb1b2",
+            "refs": [
+              "b1",
+              "b2"
+            ]
+          },
+          {
+            "id": "st2t3",
+            "refs": [
+              "t2",
+              "t3"
+            ]
+          },
+          {
+            "id": "sb2b3",
+            "refs": [
+              "b2",
+              "b3"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b0",
+                    "b1",
+                    "t1",
+                    "t0"
+                  ]
+                }
+              ],
+              "label": "노랑 2",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b1",
+                    "b2",
+                    "t2",
+                    "t1"
+                  ]
+                }
+              ],
+              "label": "파랑 6",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg2",
+              "fill": "ROSE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b2",
+                    "b3",
+                    "t3",
+                    "t2"
+                  ]
+                }
+              ],
+              "label": "빨강 ?",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "노랑, 파랑, 빨강 공의 수",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "노란 공 2개, 파란 공 6개, 빨간 공이 들어 있다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "t0",
+          "b0",
+          "t1",
+          "b1",
+          "t2",
+          "b2",
+          "t3",
+          "b3"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "노란 공 2개가 전체의 6분의 1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "t0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t5",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b5",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t6",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b6",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "t0",
+          "b0",
+          "t1",
+          "b1",
+          "t2",
+          "b2",
+          "t3",
+          "b3",
+          "t4",
+          "b4",
+          "t5",
+          "b5",
+          "t6",
+          "b6"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "st0b0",
+            "refs": [
+              "t0",
+              "b0"
+            ]
+          },
+          {
+            "id": "st1b1",
+            "refs": [
+              "t1",
+              "b1"
+            ]
+          },
+          {
+            "id": "st2b2",
+            "refs": [
+              "t2",
+              "b2"
+            ]
+          },
+          {
+            "id": "st3b3",
+            "refs": [
+              "t3",
+              "b3"
+            ]
+          },
+          {
+            "id": "st4b4",
+            "refs": [
+              "t4",
+              "b4"
+            ]
+          },
+          {
+            "id": "st5b5",
+            "refs": [
+              "t5",
+              "b5"
+            ]
+          },
+          {
+            "id": "st6b6",
+            "refs": [
+              "t6",
+              "b6"
+            ]
+          },
+          {
+            "id": "st0t1",
+            "refs": [
+              "t0",
+              "t1"
+            ]
+          },
+          {
+            "id": "sb0b1",
+            "refs": [
+              "b0",
+              "b1"
+            ]
+          },
+          {
+            "id": "st1t2",
+            "refs": [
+              "t1",
+              "t2"
+            ]
+          },
+          {
+            "id": "sb1b2",
+            "refs": [
+              "b1",
+              "b2"
+            ]
+          },
+          {
+            "id": "st2t3",
+            "refs": [
+              "t2",
+              "t3"
+            ]
+          },
+          {
+            "id": "sb2b3",
+            "refs": [
+              "b2",
+              "b3"
+            ]
+          },
+          {
+            "id": "st3t4",
+            "refs": [
+              "t3",
+              "t4"
+            ]
+          },
+          {
+            "id": "sb3b4",
+            "refs": [
+              "b3",
+              "b4"
+            ]
+          },
+          {
+            "id": "st4t5",
+            "refs": [
+              "t4",
+              "t5"
+            ]
+          },
+          {
+            "id": "sb4b5",
+            "refs": [
+              "b4",
+              "b5"
+            ]
+          },
+          {
+            "id": "st5t6",
+            "refs": [
+              "t5",
+              "t6"
+            ]
+          },
+          {
+            "id": "sb5b6",
+            "refs": [
+              "b5",
+              "b6"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "d0",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "from": "t0",
+              "to": "t6",
+              "label": "12",
+              "side": "ABOVE"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b0",
+                    "b1",
+                    "t1",
+                    "t0"
+                  ]
+                }
+              ],
+              "label": "노랑 2",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b1",
+                    "b2",
+                    "t2",
+                    "t1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg2",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b2",
+                    "b3",
+                    "t3",
+                    "t2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg3",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b3",
+                    "b4",
+                    "t4",
+                    "t3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg4",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b4",
+                    "b5",
+                    "t5",
+                    "t4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg5",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b5",
+                    "b6",
+                    "t6",
+                    "t5"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "노란 공 2개가 전체의 6분의 1",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "노란 공 2개가 전체의 6분의 1이므로 전체 공의 개수는 12이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "t0",
+          "b0",
+          "t1",
+          "b1",
+          "t2",
+          "b2",
+          "t3",
+          "b3",
+          "t4",
+          "b4",
+          "t5",
+          "b5",
+          "t6",
+          "b6"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "노란 공 2개를 꺼낼 확률이 6분의 1이므로 전체 공은 2의 6배인 12개이다. 전체 공은 노란 공, 파란 공, 빨간 공을 모두 합한 것이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "노란 공 2개를 꺼낼 확률이 6분의 1이므로 전체 공은 2의 6배인 12개이다. 전체 공은 노란 공, 파란 공, 빨간 공을 모두 합한 것이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

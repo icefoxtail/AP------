@@ -1,0 +1,188 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "후보 v의 0≤x≤1 넓이가 더 커 최댓값은 161/60이다. 정답은 101이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 가능한 도함수에 따라 u와 v 두 후보가 생기고, 각 후보의 적분값을 비교한다.",
+      "mappedTo": [
+        "panels[0]",
+        "panels[1]",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 패널에 각각 u, v의 그래프를 그리고 0≤x≤1에서 곡선과 x축 사이 영역을 칠해 적분 대상 구간을 보여 준다."
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "후보 u"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "0",
+                "7/2",
+                "-14/3",
+                "7/4"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "0",
+              "1"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "functionName": "u",
+          "formula": "7*(x^4/4-2*x^3/3+x^2/2)",
+          "domain": [
+            0,
+            1
+          ],
+          "viewport": [
+            -0.2,
+            1.2,
+            -0.2,
+            1
+          ],
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "E",
+              "x": 1,
+              "y": "7/12"
+            }
+          ],
+          "exactCoordinates": {
+            "O": [
+              "0",
+              "0"
+            ],
+            "E": [
+              "1",
+              "7/12"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "regions": [
+            {
+              "id": "integral",
+              "upper": "f",
+              "lower": "axis",
+              "from": "0",
+              "to": "1",
+              "fill": "BLUE",
+              "label": "7/20"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "후보 v"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "0",
+                "7/2",
+                "14/3",
+                "7/4"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "0",
+              "1"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "functionName": "v",
+          "formula": "7*(x^4/4+2*x^3/3+x^2/2)",
+          "domain": [
+            0,
+            1
+          ],
+          "viewport": [
+            -0.2,
+            1.2,
+            -0.2,
+            11
+          ],
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "E",
+              "x": 1,
+              "y": "119/12"
+            }
+          ],
+          "exactCoordinates": {
+            "O": [
+              "0",
+              "0"
+            ],
+            "E": [
+              "1",
+              "119/12"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "regions": [
+            {
+              "id": "integral",
+              "upper": "f",
+              "lower": "axis",
+              "from": "0",
+              "to": "1",
+              "fill": "WARM",
+              "label": "161/60"
+            }
+          ],
+          "axisScale": {
+            "x": 1,
+            "y": "1/32"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,741 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "8"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "-5"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "95"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "24"
+           }
+          ]
+         },
+         {
+          "kind": "rational",
+          "numerator": "107",
+          "denominator": "24"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "95"
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "2"
+           }
+          ]
+         },
+         {
+          "kind": "rational",
+          "numerator": "-1",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "28"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "95"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "95"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "expression",
+         "op": "div",
+         "args": [
+          {
+           "kind": "expression",
+           "op": "mul",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "48"
+            },
+            {
+             "kind": "expression",
+             "op": "sqrt",
+             "args": [
+              {
+               "kind": "integer",
+               "value": "95"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "kind": "integer",
+           "value": "95"
+          }
+         ]
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "M",
+     "P",
+     "Q",
+     "A",
+     "B",
+     "O"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sQP",
+      "refs": [
+       "Q",
+       "P"
+      ]
+     },
+     {
+      "id": "sPM",
+      "refs": [
+       "P",
+       "M"
+      ]
+     },
+     {
+      "id": "sMB",
+      "refs": [
+       "M",
+       "B"
+      ]
+     },
+     {
+      "id": "sMA",
+      "refs": [
+       "M",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "arcs": [
+      {
+       "id": "arcAMz0",
+       "circle": "k",
+       "center": "O",
+       "from": "A",
+       "to": "M",
+       "side": "MINOR",
+       "color": "VIOLET"
+      },
+      {
+       "id": "arcMBz0",
+       "circle": "k",
+       "center": "O",
+       "from": "M",
+       "to": "B",
+       "side": "MINOR",
+       "color": "VIOLET"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAPz0",
+       "ownerSegment": "sAP",
+       "text": "a"
+      },
+      {
+       "id": "lPBz0",
+       "ownerSegment": "sPB",
+       "text": "b"
+      },
+      {
+       "id": "lPMz0",
+       "ownerSegment": "sPM",
+       "text": "3"
+      },
+      {
+       "id": "lQPz0",
+       "ownerSegment": "sQP",
+       "text": "5"
+      }
+     ]
+    },
+    "caption": "원의 두 현 AB, MQ가 점 P에서 만나고 호 AM과 호 BM이 같은 그림이다. PA, PB의 길이는 PA×PB=15를 만족하는 한 예이다.",
+    "hiddenPointNames": [
+     "O"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 APQ"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "35",
+          "denominator": "24"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "5"
+             },
+             {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+               {
+                "kind": "integer",
+                "value": "95"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "24"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Zh1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "rational",
+          "numerator": "243670",
+          "denominator": "100000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "Q",
+     "A",
+     "Zh1"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sPQ",
+      "refs": [
+       "P",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQA",
+      "refs": [
+       "Q",
+       "A"
+      ]
+     },
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aPz1",
+       "refs": [
+        "Q",
+        "P",
+        "A"
+       ],
+       "value": 54.31,
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aQz1",
+       "refs": [
+        "P",
+        "Q",
+        "A"
+       ],
+       "value": 29.83,
+       "noLabel": true,
+       "color": "GREEN"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAP"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sPQ"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAPz1",
+       "ownerSegment": "sAP",
+       "text": "a"
+      },
+      {
+       "id": "lPQz1",
+       "ownerSegment": "sPQ",
+       "text": "5",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "삼각형 APQ이다.",
+    "hiddenPointNames": [
+     "Zh1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 MPB"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "7",
+          "denominator": "4"
+         },
+         {
+          "kind": "expression",
+          "op": "div",
+          "args": [
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "95"
+             }
+            ]
+           },
+           {
+            "kind": "integer",
+            "value": "4"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "B",
+     "M"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sBM",
+      "refs": [
+       "B",
+       "M"
+      ]
+     },
+     {
+      "id": "sMP",
+      "refs": [
+       "M",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aPz2",
+       "refs": [
+        "B",
+        "P",
+        "M"
+       ],
+       "value": 54.31,
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aBz2",
+       "refs": [
+        "P",
+        "B",
+        "M"
+       ],
+       "value": 29.83,
+       "noLabel": true,
+       "color": "GREEN"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sMP"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sPB"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lMPz2",
+       "ownerSegment": "sMP",
+       "text": "3",
+       "unit": "cm"
+      },
+      {
+       "id": "lPBz2",
+       "ownerSegment": "sPB",
+       "text": "b"
+      }
+     ]
+    },
+    "caption": "삼각형 MPB이다."
+   }
+  }
+ ],
+ "caption": "삼각형 APQ와 삼각형 MPB는 맞꼭지각(분홍색)과 같은 호 AM에 대한 원주각(초록색)이 각각 같은 닮음이다. 파란색 AP와 MP, 주황색 PQ와 PB가 대응한다. 그림의 PA, PB는 PA×PB=15가 되는 한 예이다."
+}

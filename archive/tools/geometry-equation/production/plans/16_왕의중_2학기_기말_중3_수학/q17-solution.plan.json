@@ -1,0 +1,899 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "(ㄱ)"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "uA1",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "75"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "uA2",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "C",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "65"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lA1",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "uA1"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lA2",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "C",
+        "uA2"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "lA1",
+        "lA2"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "uD1",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "45"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "uD2",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "C",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "85"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lD1",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "uD1"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lD2",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "C",
+        "uD2"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "lD1",
+        "lD2"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 40,
+       "label": "40",
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "B",
+        "D",
+        "C"
+       ],
+       "value": 50,
+       "label": "50",
+       "color": "WARM",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "caption": "사각형 ABCD의 두 대각선과 변 BC를 보는 두 각을 나타낸 그림이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "(ㄴ)"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "3"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "70"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "C",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "3"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "70"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "D",
+        "A",
+        "B"
+       ],
+       "value": 110,
+       "label": "110",
+       "color": "BLUE"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "D"
+       ],
+       "value": 70,
+       "label": "70",
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "사각형 ABCD의 맞은편 두 각 A, C를 나타낸 그림이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "(ㄷ)"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "3"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "80"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "A"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "4"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "D",
+        "A",
+        "B"
+       ],
+       "value": 100,
+       "label": "100",
+       "color": "GREEN"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "D"
+       ],
+       "value": 100,
+       "label": "100",
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "사각형 ABCD의 맞은편 두 각 A, C를 나타낸 그림이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "(ㄹ)"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "uA1",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "80"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "uA2",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "C",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "44"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lA1",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "uA1"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lA2",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "C",
+        "uA2"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "lA1",
+        "lA2"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lBC",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "M",
+       "op": "DIVISION_POINT",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {
+        "m": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "n": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "mode": "INTERNAL"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "perp",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "M",
+        "lBC"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "LINE_REFLECTION",
+       "inputs": [
+        "A",
+        "perp"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 56,
+       "label": "56",
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 44,
+       "label": "44",
+       "color": "WARM",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 80,
+       "label": "80",
+       "color": "VIOLET"
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "A",
+        "D",
+        "C"
+       ],
+       "value": 100,
+       "label": "100",
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "caption": "사각형 ABCD와 대각선 AC, 그리고 각 B와 각 D를 나타낸 그림이다."
+   }
+  }
+ ],
+ "caption": "네 사각형에서 원에 내접하려면 맞은편 각의 합이 180도이거나 같은 변을 보는 두 각이 같아야 한다. 각 그림에 그 판단에 쓰는 각의 크기를 색으로 구분해 나타냈다."
+}

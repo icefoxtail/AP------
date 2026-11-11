@@ -1,0 +1,61 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "당첨",
+          "p": "4/10",
+          "children": [
+            {
+              "label": "당첨",
+              "p": "3/9"
+            },
+            {
+              "label": "꽝",
+              "p": "6/9"
+            }
+          ]
+        },
+        {
+          "label": "꽝",
+          "p": "6/10",
+          "children": [
+            {
+              "label": "당첨",
+              "p": "4/9"
+            },
+            {
+              "label": "꽝",
+              "p": "5/9"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "당첨",
+          "당첨"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "첫째 추첨의 결과에 따라 둘째 추첨의 확률이 달라지는 수형도이다. 두 번 모두 당첨인 경로를 파랑으로 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "당첨 제비 4개를 포함한 10개에서 꺼낸 것은 다시 넣지 않고 두 번 뽑는다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 결과가 둘째 확률을 바꾸는 것을 가지 확률로 보인다."
+  ]
+}

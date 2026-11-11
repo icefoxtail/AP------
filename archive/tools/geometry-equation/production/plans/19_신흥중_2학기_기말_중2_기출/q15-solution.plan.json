@@ -1,0 +1,864 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "영역의 이웃 관계"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "r1",
+          "b1",
+          "b2",
+          "r2",
+          "a4",
+          "r3",
+          "r4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "displaySegments": [
+          {
+            "id": "sr1b1",
+            "refs": [
+              "r1",
+              "b1"
+            ]
+          },
+          {
+            "id": "sb1b2",
+            "refs": [
+              "b1",
+              "b2"
+            ]
+          },
+          {
+            "id": "sb2r2",
+            "refs": [
+              "b2",
+              "r2"
+            ]
+          },
+          {
+            "id": "sr2a4",
+            "refs": [
+              "r2",
+              "a4"
+            ]
+          },
+          {
+            "id": "sa4r3",
+            "refs": [
+              "a4",
+              "r3"
+            ]
+          },
+          {
+            "id": "sr3r4",
+            "refs": [
+              "r3",
+              "r4"
+            ]
+          },
+          {
+            "id": "sr4a1",
+            "refs": [
+              "r4",
+              "a1"
+            ]
+          },
+          {
+            "id": "sa1r1",
+            "refs": [
+              "a1",
+              "r1"
+            ]
+          },
+          {
+            "id": "sa1a2",
+            "refs": [
+              "a1",
+              "a2"
+            ]
+          },
+          {
+            "id": "sa2a3",
+            "refs": [
+              "a2",
+              "a3"
+            ]
+          },
+          {
+            "id": "sa3a4",
+            "refs": [
+              "a3",
+              "a4"
+            ]
+          },
+          {
+            "id": "sa2b1",
+            "refs": [
+              "a2",
+              "b1"
+            ]
+          },
+          {
+            "id": "sa3b2",
+            "refs": [
+              "a3",
+              "b2"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rA",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "a1",
+                    "a2",
+                    "a3",
+                    "a4",
+                    "r3",
+                    "r4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rB",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r1",
+                    "b1",
+                    "a2",
+                    "a1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rC",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b1",
+                    "b2",
+                    "a3",
+                    "a2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rD",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b2",
+                    "r2",
+                    "a4",
+                    "a3"
+                  ]
+                }
+              ]
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "tA",
+              "at": [
+                4.5,
+                4.5
+              ],
+              "text": "A"
+            },
+            {
+              "id": "tB",
+              "at": [
+                1.5,
+                1.5
+              ],
+              "text": "B"
+            },
+            {
+              "id": "tC",
+              "at": [
+                4.5,
+                1.5
+              ],
+              "text": "C"
+            },
+            {
+              "id": "tD",
+              "at": [
+                7.5,
+                1.5
+              ],
+              "text": "D"
+            }
+          ]
+        },
+        "caption": "네 영역 A, B, C, D",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "hiddenPointNames": [
+          "r1",
+          "b1",
+          "b2",
+          "r2",
+          "a4",
+          "r3",
+          "r4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "A, B, C, D 순서로 색 고르기"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "r1",
+          "b1",
+          "b2",
+          "r2",
+          "a4",
+          "r3",
+          "r4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "displaySegments": [
+          {
+            "id": "sr1b1",
+            "refs": [
+              "r1",
+              "b1"
+            ]
+          },
+          {
+            "id": "sb1b2",
+            "refs": [
+              "b1",
+              "b2"
+            ]
+          },
+          {
+            "id": "sb2r2",
+            "refs": [
+              "b2",
+              "r2"
+            ]
+          },
+          {
+            "id": "sr2a4",
+            "refs": [
+              "r2",
+              "a4"
+            ]
+          },
+          {
+            "id": "sa4r3",
+            "refs": [
+              "a4",
+              "r3"
+            ]
+          },
+          {
+            "id": "sr3r4",
+            "refs": [
+              "r3",
+              "r4"
+            ]
+          },
+          {
+            "id": "sr4a1",
+            "refs": [
+              "r4",
+              "a1"
+            ]
+          },
+          {
+            "id": "sa1r1",
+            "refs": [
+              "a1",
+              "r1"
+            ]
+          },
+          {
+            "id": "sa1a2",
+            "refs": [
+              "a1",
+              "a2"
+            ]
+          },
+          {
+            "id": "sa2a3",
+            "refs": [
+              "a2",
+              "a3"
+            ]
+          },
+          {
+            "id": "sa3a4",
+            "refs": [
+              "a3",
+              "a4"
+            ]
+          },
+          {
+            "id": "sa2b1",
+            "refs": [
+              "a2",
+              "b1"
+            ]
+          },
+          {
+            "id": "sa3b2",
+            "refs": [
+              "a3",
+              "b2"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rA",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "a1",
+                    "a2",
+                    "a3",
+                    "a4",
+                    "r3",
+                    "r4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rB",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r1",
+                    "b1",
+                    "a2",
+                    "a1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rC",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b1",
+                    "b2",
+                    "a3",
+                    "a2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rD",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b2",
+                    "r2",
+                    "a4",
+                    "a3"
+                  ]
+                }
+              ]
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "tA",
+              "at": [
+                4.5,
+                4.5
+              ],
+              "text": "4가지"
+            },
+            {
+              "id": "tB",
+              "at": [
+                1.5,
+                1.5
+              ],
+              "text": "3가지"
+            },
+            {
+              "id": "tC",
+              "at": [
+                4.5,
+                1.5
+              ],
+              "text": "2가지"
+            },
+            {
+              "id": "tD",
+              "at": [
+                7.5,
+                1.5
+              ],
+              "text": "2가지"
+            }
+          ]
+        },
+        "caption": "칠할 수 있는 색의 가짓수",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "hiddenPointNames": [
+          "r1",
+          "b1",
+          "b2",
+          "r2",
+          "a4",
+          "r3",
+          "r4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "A는 B, C, D 모두와 이웃하고 B와 D는 이웃하지 않는다. A, B, C, D 순서로 이웃한 영역에 이미 쓴 색을 빼고 칠할 수 있는 색의 가짓수를 센다."
+}

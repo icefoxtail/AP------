@@ -1,0 +1,35 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Y",
+        "mean": "900",
+        "sd": "15"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "870",
+        "hideZ": true
+      },
+      "900"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "from": null,
+        "to": "870"
+      }
+    ]
+  },
+  "caption": "이항분포를 정규근사할 때 평균 왼쪽의 누적 구간과 표준화 위치를 나타낸 그림.",
+  "sourceConditions": [
+    "사건 A의 발생 횟수 Y는 평균 900, 표준편차 15이다.",
+    "기준 870을 표준화해 왼쪽 누적 구간으로 표시한다."
+  ],
+  "newVisualInformation": [
+    "이항분포의 평균과 기준값을 정규곡선의 누적 구간으로 옮긴다."
+  ]
+}

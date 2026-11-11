@@ -1,0 +1,699 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "일의 자리가 0인 경우"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r0k0b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k0t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sr0k0br0k0t",
+            "refs": [
+              "r0k0b",
+              "r0k0t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k1t",
+            "refs": [
+              "r0k1b",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k2t",
+            "refs": [
+              "r0k2b",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k3br0k3t",
+            "refs": [
+              "r0k3b",
+              "r0k3t"
+            ]
+          },
+          {
+            "id": "sr0k0br0k1b",
+            "refs": [
+              "r0k0b",
+              "r0k1b"
+            ]
+          },
+          {
+            "id": "sr0k0tr0k1t",
+            "refs": [
+              "r0k0t",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k2b",
+            "refs": [
+              "r0k1b",
+              "r0k2b"
+            ]
+          },
+          {
+            "id": "sr0k1tr0k2t",
+            "refs": [
+              "r0k1t",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k3b",
+            "refs": [
+              "r0k2b",
+              "r0k3b"
+            ]
+          },
+          {
+            "id": "sr0k2tr0k3t",
+            "refs": [
+              "r0k2t",
+              "r0k3t"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k0b",
+                    "r0k1b",
+                    "r0k1t",
+                    "r0k0t"
+                  ]
+                }
+              ],
+              "label": "백 5가지",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k1b",
+                    "r0k2b",
+                    "r0k2t",
+                    "r0k1t"
+                  ]
+                }
+              ],
+              "label": "십 4가지",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg2",
+              "fill": "GREEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k2b",
+                    "r0k3b",
+                    "r0k3t",
+                    "r0k2t"
+                  ]
+                }
+              ],
+              "label": "일 0",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "일의 자리가 0인 경우",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "일의 자리가 0이면 백의 자리는 1부터 5 중 5가지, 십의 자리는 남은 숫자 4가지이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "일의 자리가 2 또는 4인 경우"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r0k0b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k0t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sr0k0br0k0t",
+            "refs": [
+              "r0k0b",
+              "r0k0t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k1t",
+            "refs": [
+              "r0k1b",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k2t",
+            "refs": [
+              "r0k2b",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k3br0k3t",
+            "refs": [
+              "r0k3b",
+              "r0k3t"
+            ]
+          },
+          {
+            "id": "sr0k0br0k1b",
+            "refs": [
+              "r0k0b",
+              "r0k1b"
+            ]
+          },
+          {
+            "id": "sr0k0tr0k1t",
+            "refs": [
+              "r0k0t",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k2b",
+            "refs": [
+              "r0k1b",
+              "r0k2b"
+            ]
+          },
+          {
+            "id": "sr0k1tr0k2t",
+            "refs": [
+              "r0k1t",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k3b",
+            "refs": [
+              "r0k2b",
+              "r0k3b"
+            ]
+          },
+          {
+            "id": "sr0k2tr0k3t",
+            "refs": [
+              "r0k2t",
+              "r0k3t"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k0b",
+                    "r0k1b",
+                    "r0k1t",
+                    "r0k0t"
+                  ]
+                }
+              ],
+              "label": "백 4가지",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k1b",
+                    "r0k2b",
+                    "r0k2t",
+                    "r0k1t"
+                  ]
+                }
+              ],
+              "label": "십 4가지",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg2",
+              "fill": "GREEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k2b",
+                    "r0k3b",
+                    "r0k3t",
+                    "r0k2t"
+                  ]
+                }
+              ],
+              "label": "일 2가지",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "일의 자리가 2 또는 4인 경우",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "일의 자리가 2 또는 4이면 일의 자리는 2가지, 백의 자리는 0이 아닌 남은 숫자 4가지, 십의 자리는 남은 숫자 4가지이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "짝수이므로 일의 자리부터 정한다. 일의 자리가 0인 경우와 2 또는 4인 경우로 나누어 각 자리의 가짓수를 곱하고 두 경우를 더한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "짝수이므로 일의 자리부터 정한다. 일의 자리가 0인 경우와 2 또는 4인 경우로 나누어 각 자리의 가짓수를 곱하고 두 경우를 더한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

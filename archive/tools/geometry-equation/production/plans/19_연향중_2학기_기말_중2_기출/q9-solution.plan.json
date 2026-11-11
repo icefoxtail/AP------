@@ -1,0 +1,170 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "처음 선택: 3가지"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 4,
+              "depth": 4
+            },
+            "height": 4,
+            "names": "........"
+          }
+        ],
+        "segments": [
+          {
+            "from": "#b0",
+            "to": "#b1",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b0",
+            "to": "#b3",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b0",
+            "to": "#t0",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ],
+        "labels": [
+          {
+            "text": "출발",
+            "at": "#b0"
+          },
+          {
+            "text": "도착",
+            "at": "#t2"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "오른쪽으로 갔다면: 2가지"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 4,
+              "depth": 4
+            },
+            "height": 4,
+            "names": "........"
+          }
+        ],
+        "segments": [
+          {
+            "from": "#b0",
+            "to": "#b1",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "#b1",
+            "to": "#b2",
+            "style": "AUTO",
+            "role": "ACCENT"
+          },
+          {
+            "from": "#b1",
+            "to": "#t1",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ],
+        "labels": [
+          {
+            "text": "출발",
+            "at": "#b0"
+          },
+          {
+            "text": "도착",
+            "at": "#t2"
+          },
+          {
+            "text": "지금",
+            "at": "#b1"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "오른쪽, 뒤로 갔다면: 1가지"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 4,
+              "depth": 4
+            },
+            "height": 4,
+            "names": "........"
+          }
+        ],
+        "segments": [
+          {
+            "from": "#b0",
+            "to": "#b1",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "#b1",
+            "to": "#b2",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "#b2",
+            "to": "#t2",
+            "style": "AUTO",
+            "role": "ACCENT"
+          }
+        ],
+        "labels": [
+          {
+            "text": "출발",
+            "at": "#b0"
+          },
+          {
+            "text": "도착",
+            "at": "#t2"
+          },
+          {
+            "text": "지금",
+            "at": "#b2"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "출발점에서 도착점까지 최단으로 가려면 오른쪽, 뒤, 위 세 방향의 모서리를 한 번씩 지난다. 첫 모서리는 세 방향 중 하나를 고르고, 첫 방향을 정하면 다음은 남은 두 방향 중 하나이며, 마지막은 남은 한 방향으로 정해진다. 굵은 검은 선은 이미 지난 모서리이고 빨간 선은 그다음에 고를 수 있는 모서리이다."
+}

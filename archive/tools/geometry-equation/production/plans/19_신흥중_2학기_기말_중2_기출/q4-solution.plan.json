@@ -1,0 +1,972 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "N",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "rational",
+          "numerator": "8",
+          "denominator": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "M",
+     "N",
+     "P",
+     "Q"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBM",
+      "refs": [
+       "B",
+       "M"
+      ]
+     },
+     {
+      "id": "sMC",
+      "refs": [
+       "M",
+       "C"
+      ]
+     },
+     {
+      "id": "sCN",
+      "refs": [
+       "C",
+       "N"
+      ]
+     },
+     {
+      "id": "sND",
+      "refs": [
+       "N",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "sAN",
+      "refs": [
+       "A",
+       "N"
+      ]
+     },
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "regions": [
+      {
+       "id": "rg0",
+       "fill": "BLUE",
+       "shapes": [
+        {
+         "polygon": [
+          "P",
+          "Q",
+          "N",
+          "C",
+          "M"
+         ]
+        }
+       ]
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sBM",
+        "sMC"
+       ]
+      },
+      {
+       "id": "e2",
+       "count": 2,
+       "segments": [
+        "sCN",
+        "sND"
+       ]
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "4 cm"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dAD",
+       "from": "A",
+       "to": "D",
+       "label": "6",
+       "unit": "cm",
+       "side": "ABOVE",
+       "style": "ARROW",
+       "offset": "AUTO",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 PAD와 PMB는 닮음"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displayPoints": [
+     "A",
+     "D",
+     "B",
+     "M",
+     "P"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sBM",
+      "refs": [
+       "B",
+       "M"
+      ]
+     },
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "sPM",
+      "refs": [
+       "P",
+       "M"
+      ]
+     },
+     {
+      "id": "sDP",
+      "refs": [
+       "D",
+       "P"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sAD",
+        "sBM"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAP",
+        "sPM"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sDP",
+        "sPB"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dAD",
+       "from": "A",
+       "to": "D",
+       "label": "6",
+       "unit": "cm",
+       "side": "ABOVE",
+       "style": "ARROW",
+       "offset": "AUTO",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "dBM",
+       "from": "B",
+       "to": "M",
+       "label": "3",
+       "unit": "cm",
+       "side": "BELOW",
+       "style": "ARROW",
+       "offset": "AUTO",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "caption": "삼각형 PAD와 PMB는 닮음",
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 QAB와 QND는 닮음"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "N",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "rational",
+          "numerator": "8",
+          "denominator": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displayPoints": [
+     "A",
+     "B",
+     "D",
+     "N",
+     "Q"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sDN",
+      "refs": [
+       "D",
+       "N"
+      ]
+     },
+     {
+      "id": "sAQ",
+      "refs": [
+       "A",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQN",
+      "refs": [
+       "Q",
+       "N"
+      ]
+     },
+     {
+      "id": "sBQ",
+      "refs": [
+       "B",
+       "Q"
+      ]
+     },
+     {
+      "id": "sQD",
+      "refs": [
+       "Q",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sAB",
+        "sDN"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAQ",
+        "sQN"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sBQ",
+        "sQD"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "4"
+      },
+      {
+       "id": "lDN",
+       "ownerSegment": "sDN",
+       "text": "2"
+      }
+     ]
+    },
+    "caption": "삼각형 QAB와 QND는 닮음",
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 AMN=9, APN=6, APQ=4"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "N",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "2"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "rational",
+          "numerator": "8",
+          "denominator": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displayPoints": [
+     "A",
+     "M",
+     "C",
+     "N",
+     "P",
+     "Q"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "sMC",
+      "refs": [
+       "M",
+       "C"
+      ]
+     },
+     {
+      "id": "sCN",
+      "refs": [
+       "C",
+       "N"
+      ]
+     },
+     {
+      "id": "sNA",
+      "refs": [
+       "N",
+       "A"
+      ]
+     },
+     {
+      "id": "sMN",
+      "refs": [
+       "M",
+       "N"
+      ]
+     },
+     {
+      "id": "sPQ",
+      "refs": [
+       "P",
+       "Q"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "regions": [
+      {
+       "id": "rg0",
+       "fill": "BLUE",
+       "shapes": [
+        {
+         "polygon": [
+          "P",
+          "Q",
+          "N",
+          "C",
+          "M"
+         ]
+        }
+       ]
+      },
+      {
+       "id": "rg1",
+       "fill": "ROSE",
+       "shapes": [
+        {
+         "polygon": [
+          "A",
+          "P",
+          "Q"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "caption": "삼각형 AMN=9, APN=6, APQ=4",
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  }
+ ],
+ "caption": "닮음비 2:1로 AP:PM과 AQ:QN을 구한다. 사각형 A-M-C-N은 12, 삼각형 AMN은 9, 삼각형 APN은 6, 삼각형 APQ는 4이다. 파란색 오각형 P-Q-N-C-M은 사각형 A-M-C-N에서 분홍색 삼각형 APQ를 뺀 부분이다."
+}

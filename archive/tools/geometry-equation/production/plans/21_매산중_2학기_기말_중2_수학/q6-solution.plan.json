@@ -1,0 +1,572 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제 그림 (단위 cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "a",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "c",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "d",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "displaySegments": [
+          {
+            "id": "sab",
+            "refs": [
+              "a",
+              "b"
+            ]
+          },
+          {
+            "id": "sbc",
+            "refs": [
+              "b",
+              "c"
+            ]
+          },
+          {
+            "id": "scd",
+            "refs": [
+              "c",
+              "d"
+            ]
+          },
+          {
+            "id": "sda",
+            "refs": [
+              "d",
+              "a"
+            ]
+          },
+          {
+            "id": "sac",
+            "refs": [
+              "a",
+              "c"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "d1",
+              "from": "a",
+              "to": "b",
+              "label": "80",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": "AUTO"
+            },
+            {
+              "id": "d2",
+              "from": "b",
+              "to": "c",
+              "label": "60",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "offset": "AUTO"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sab"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sbc"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sac"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "문제 그림 (단위 cm)",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "a",
+              "b",
+              "c"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "변 위의 정사각형 (넓이 cm²)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "a",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "c",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "e",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "f",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "g",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "h",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "k",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "j",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "a",
+          "b",
+          "c",
+          "e",
+          "f",
+          "g",
+          "h",
+          "k",
+          "j"
+        ],
+        "displaySegments": [
+          {
+            "id": "sab",
+            "refs": [
+              "a",
+              "b"
+            ]
+          },
+          {
+            "id": "sbc",
+            "refs": [
+              "b",
+              "c"
+            ]
+          },
+          {
+            "id": "sca",
+            "refs": [
+              "c",
+              "a"
+            ]
+          },
+          {
+            "id": "sbf",
+            "refs": [
+              "b",
+              "f"
+            ]
+          },
+          {
+            "id": "sfe",
+            "refs": [
+              "f",
+              "e"
+            ]
+          },
+          {
+            "id": "sea",
+            "refs": [
+              "e",
+              "a"
+            ]
+          },
+          {
+            "id": "sch",
+            "refs": [
+              "c",
+              "h"
+            ]
+          },
+          {
+            "id": "shg",
+            "refs": [
+              "h",
+              "g"
+            ]
+          },
+          {
+            "id": "sgb",
+            "refs": [
+              "g",
+              "b"
+            ]
+          },
+          {
+            "id": "sck",
+            "refs": [
+              "c",
+              "k"
+            ]
+          },
+          {
+            "id": "skj",
+            "refs": [
+              "k",
+              "j"
+            ]
+          },
+          {
+            "id": "sja",
+            "refs": [
+              "j",
+              "a"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "r1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "a",
+                    "b",
+                    "f",
+                    "e"
+                  ]
+                }
+              ],
+              "label": "6400"
+            },
+            {
+              "id": "r2",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "b",
+                    "c",
+                    "h",
+                    "g"
+                  ]
+                }
+              ],
+              "label": "3600"
+            },
+            {
+              "id": "r3",
+              "fill": "GREEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "a",
+                    "c",
+                    "k",
+                    "j"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "변 위의 정사각형 (넓이 cm²)",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 420
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "a",
+              "b",
+              "c"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "a",
+          "b",
+          "c",
+          "e",
+          "f",
+          "g",
+          "h",
+          "k",
+          "j"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "모니터 화면의 대각선은 가로 80 cm, 세로 60 cm인 직각삼각형의 빗변이다. 피타고라스 정리에 따라 빗변 위 초록색 정사각형의 넓이는 두 변 위의 파란색 정사각형 6400 cm²와 주황색 정사각형 3600 cm²를 더한 값과 같다."
+}

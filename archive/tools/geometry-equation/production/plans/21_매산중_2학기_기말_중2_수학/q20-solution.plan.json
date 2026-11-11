@@ -1,0 +1,33 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "5",
+        "title": "백"
+      },
+      {
+        "count": "5",
+        "title": "십"
+      },
+      {
+        "count": "4",
+        "title": "일"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "세 자리 자연수의 백의 자리, 십의 자리, 일의 자리를 차례로 정하는 가짓수를 칸에 적은 그림이다. 백의 자리에는 0이 올 수 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0, 1, 2, 3, 4, 5가 적힌 카드 6장 중 3장을 차례로 뽑아 세 자리 자연수를 만드는 경우",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": "전체 세 자리 자연수의 개수를 자리별 가짓수의 곱으로 보인다."
+}

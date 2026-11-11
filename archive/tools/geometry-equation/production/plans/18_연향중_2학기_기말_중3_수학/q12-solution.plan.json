@@ -1,0 +1,402 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "2628515",
+            "denominator": "1000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "190000000",
+            "denominator": "1000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "2628515",
+            "denominator": "1000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "264533990",
+            "denominator": "1000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "2628515",
+            "denominator": "1000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "17913858",
+            "denominator": "1000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "2628515",
+            "denominator": "1000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "115466010",
+            "denominator": "1000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r0",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t0",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T1",
+          "r0"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t1",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T2",
+          "r1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T3"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t2",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T3",
+          "r2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r3",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T4"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t3",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T4",
+          "r3"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t3",
+          "t0"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t0",
+          "t1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t1",
+          "t2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t2",
+          "t3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2628515",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "x+4"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "3x+1"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "sDA",
+        "text": "5"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB",
+          "sCD"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sBC",
+          "sDA"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 원에 외접하는 사각형에서 마주 보는 두 변의 길이의 합이 같다. 파란색 AB, CD의 합과 주황색 BC, DA의 합이 같으므로 4+(3x+1)=5+(x+4)이다. 이 방정식에서 x를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각형이 원 O에 외접하고 AB=4, BC=x+4, CD=3x+1, DA=5이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+  ],
+  "hiddenPointNames": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  }
+}

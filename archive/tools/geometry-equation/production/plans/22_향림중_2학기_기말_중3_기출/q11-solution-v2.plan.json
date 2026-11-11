@@ -1,0 +1,656 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "3"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "rational",
+         "numerator": "-9",
+         "denominator": "5"
+        },
+        "dy": {
+         "kind": "rational",
+         "numerator": "12",
+         "denominator": "5"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "B",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "rational",
+         "numerator": "-9",
+         "denominator": "5"
+        },
+        "dy": {
+         "kind": "rational",
+         "numerator": "-12",
+         "denominator": "5"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "P",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "-5"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "M",
+       "op": "MIDPOINT",
+       "inputs": [
+        "A",
+        "B"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "P",
+     "M"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "PA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "PB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "OA",
+      "refs": [
+       "O",
+       "A"
+      ]
+     },
+     {
+      "id": "AM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "MB",
+      "refs": [
+       "M",
+       "B"
+      ]
+     },
+     {
+      "id": "OP",
+      "refs": [
+       "O",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "AM",
+        "MB"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lPA",
+       "ownerSegment": "PA",
+       "text": "4",
+       "unit": "cm"
+      },
+      {
+       "id": "lOA",
+       "ownerSegment": "OA",
+       "text": "3",
+       "unit": "cm"
+      }
+     ],
+     "dimensions": []
+    },
+    "caption": "직각삼각형 OAP에서 OP=5cm이다. OP는 AB를 수직이등분하므로 직각삼각형 OMA와 OAP는 닮음이고, AM=4×(3÷5)=5분의 12cm이다. AB=2AM이므로 정답은 5분의 24cm이다.",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "PA,PB는 접선이고 OA=3cm, PA=4cm이다. M은 AB와 OP의 교점이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displayCircles",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "두 접선, 반지름, 현의 중점과 닮은 직각삼각형을 표시한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "rA",
+      "refs": [
+       "O",
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "rM",
+      "refs": [
+       "A",
+       "M",
+       "O"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 OMA"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "M",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "rational",
+         "numerator": "9",
+         "denominator": "5"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "rational",
+         "numerator": "9",
+         "denominator": "5"
+        },
+        "dy": {
+         "kind": "rational",
+         "numerator": "12",
+         "denominator": "5"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "Zh1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "M",
+     "A",
+     "Zh1"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "OM",
+      "refs": [
+       "O",
+       "M"
+      ]
+     },
+     {
+      "id": "MA",
+      "refs": [
+       "M",
+       "A"
+      ]
+     },
+     {
+      "id": "OA",
+      "refs": [
+       "O",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "OA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "OM"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "MA"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "l1",
+       "ownerSegment": "OA",
+       "text": "3",
+       "unit": "cm"
+      }
+     ],
+     "angles": [
+      {
+       "id": "aO",
+       "refs": [
+        "M",
+        "O",
+        "A"
+       ],
+       "value": 53.13010235415598,
+       "color": "VIOLET",
+       "noLabel": true,
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "rightAngles": [
+     {
+      "id": "rr",
+      "refs": [
+       "O",
+       "M",
+       "A"
+      ]
+     }
+    ],
+    "caption": "닮은 삼각형 한 개를 따로 그린 그림.",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "직각삼각형의 변 길이는 3, 4, 5 또는 닮음비에 따른 값이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "닮은 두 직각삼각형의 대응변과 대응각을 같은 색으로 보인다."
+    ],
+    "coordinateCanvas": {
+     "width": 384,
+     "height": 320
+    },
+    "hiddenPointNames": [
+     "Zh1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 OAP"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "3"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "P",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "dx": {
+         "kind": "integer",
+         "value": "3"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "4"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "OA",
+      "refs": [
+       "O",
+       "A"
+      ]
+     },
+     {
+      "id": "AP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     },
+     {
+      "id": "OP",
+      "refs": [
+       "O",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "OP"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "OA"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "AP"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "l1",
+       "ownerSegment": "OA",
+       "text": "3",
+       "unit": "cm"
+      },
+      {
+       "id": "l2",
+       "ownerSegment": "AP",
+       "text": "4",
+       "unit": "cm"
+      },
+      {
+       "id": "l3",
+       "ownerSegment": "OP",
+       "text": "5",
+       "unit": "cm"
+      }
+     ],
+     "angles": [
+      {
+       "id": "aO",
+       "refs": [
+        "A",
+        "O",
+        "P"
+       ],
+       "value": 53.13010235415598,
+       "color": "VIOLET",
+       "noLabel": true,
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "rightAngles": [
+     {
+      "id": "rr",
+      "refs": [
+       "O",
+       "A",
+       "P"
+      ]
+     }
+    ],
+    "caption": "닮은 삼각형 한 개를 따로 그린 그림.",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "직각삼각형의 변 길이는 3, 4, 5 또는 닮음비에 따른 값이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "닮은 두 직각삼각형의 대응변과 대응각을 같은 색으로 보인다."
+    ],
+    "coordinateCanvas": {
+     "width": 384,
+     "height": 320
+    }
+   }
+  }
+ ],
+ "caption": "직각삼각형 OAP에서 OP=5cm이다. OP는 AB를 수직이등분하므로 직각삼각형 OMA와 OAP는 닮음(대응변은 같은 색)이고, AM=4×(3÷5)=5분의 12cm이다. AB=2AM이므로 정답은 5분의 24cm이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "PA=4cm, OA=3cm이고 OA⊥PA이다. M은 AB와 OP의 교점이다.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "닮은 두 직각삼각형을 같은 방향으로 따로 펼쳐 대응변·대응각을 같은 색으로 보인다."
+ ]
+}

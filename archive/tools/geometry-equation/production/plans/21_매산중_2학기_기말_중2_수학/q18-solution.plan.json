@@ -1,0 +1,63 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "비 옴",
+          "p": "3/7",
+          "children": [
+            {
+              "label": "비 옴",
+              "p": "3/5"
+            },
+            {
+              "label": "비 안 옴",
+              "p": "2/5"
+            }
+          ]
+        },
+        {
+          "label": "비 안 옴",
+          "p": "4/7",
+          "children": [
+            {
+              "label": "비 옴",
+              "p": "3/5"
+            },
+            {
+              "label": "비 안 옴",
+              "p": "2/5"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": false,
+    "labelWeight": "MATH",
+    "highlightPaths": [
+      {
+        "path": [
+          "비 안 옴",
+          "비 안 옴"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "목요일과 금요일에 비가 오는지를 수형도로 나타낸다. 두 날 모두 비가 오지 않는 경로를 파란색으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "목요일에 비가 올 확률은 7분의 3, 금요일에 비가 올 확률은 5분의 3이고 적어도 하루는 비가 오는 경우",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 날 모두 비가 오지 않는 경로를 여사건으로 따로 표시한다."
+  ]
+}

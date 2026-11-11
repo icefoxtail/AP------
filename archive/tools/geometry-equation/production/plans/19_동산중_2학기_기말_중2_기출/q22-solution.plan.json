@@ -1,0 +1,338 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "색칠한 부분이 원뿔 A"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "CONE",
+            "radius": 6,
+            "height": 8
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "slant": "top",
+            "label": "6"
+          },
+          {
+            "solid": "s1",
+            "slant": "bottom",
+            "label": "4"
+          }
+        ],
+        "section": {
+          "kind": "LEVEL",
+          "at": "2/5",
+          "fill": "TOP"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "닮은 두 원뿔"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "CONE",
+            "radius": 3.6,
+            "height": 4.8
+          },
+          {
+            "id": "s2",
+            "kind": "CONE",
+            "radius": 6,
+            "height": 8
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "slant": true,
+            "label": "6"
+          },
+          {
+            "solid": "s2",
+            "slant": true,
+            "label": "10"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "축을 지나는 단면"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "24",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B1",
+          "C1",
+          "A1",
+          "B2",
+          "C2",
+          "A2"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sB1C1",
+            "refs": [
+              "B1",
+              "C1"
+            ]
+          },
+          {
+            "id": "sC1A1",
+            "refs": [
+              "C1",
+              "A1"
+            ]
+          },
+          {
+            "id": "sA1B1",
+            "refs": [
+              "A1",
+              "B1"
+            ]
+          },
+          {
+            "id": "sB2C2",
+            "refs": [
+              "B2",
+              "C2"
+            ]
+          },
+          {
+            "id": "sC2A2",
+            "refs": [
+              "C2",
+              "A2"
+            ]
+          },
+          {
+            "id": "sA2B2",
+            "refs": [
+              "A2",
+              "B2"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lA1B1",
+              "ownerSegment": "sA1B1",
+              "text": "6"
+            },
+            {
+              "id": "lA2B2",
+              "ownerSegment": "sA2B2",
+              "text": "10"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sB1C1",
+                "sB2C2"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sC1A1",
+                "sA1B1",
+                "sC2A2",
+                "sA2B2"
+              ],
+              "color": "BLUE"
+            }
+          ]
+        },
+        "caption": "축을 지나는 단면",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "두 원뿔의 축을 지나는 단면은 닮은 이등변삼각형이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "B1",
+          "C1",
+          "A1",
+          "B2",
+          "C2",
+          "A2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "원뿔 A와 처음 원뿔은 닮았다. 모선의 길이가 6과 10이므로 닮음비는 3 대 5이고, 단면의 같은 색 변이 대응한다. 첫 그림의 색칠한 부분이 원뿔 A이고 그 아래가 원뿔대 B이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔 A와 처음 원뿔은 닮았다. 모선의 길이가 6과 10이므로 닮음비는 3 대 5이고, 단면의 같은 색 변이 대응한다. 첫 그림의 색칠한 부분이 원뿔 A이고 그 아래가 원뿔대 B이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

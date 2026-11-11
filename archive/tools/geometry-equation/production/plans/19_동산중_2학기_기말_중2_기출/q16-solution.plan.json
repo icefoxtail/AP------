@@ -1,0 +1,235 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "CONE",
+            "radius": 6,
+            "height": 8
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "slant": true,
+            "label": "10"
+          },
+          {
+            "solid": "s1",
+            "height": true,
+            "label": "h"
+          },
+          {
+            "solid": "s1",
+            "radius": "bottom",
+            "label": "6"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "높이, 반지름, 모선"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "O",
+          "B"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAO",
+              "ownerSegment": "sAO",
+              "text": "h"
+            },
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "10",
+              "unit": "cm"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAO"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sOB"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dOB",
+              "from": "O",
+              "to": "B",
+              "label": "6",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "축을 지나는 단면의 직각삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "높이 h, 반지름 6cm, 모선 10cm는 직각삼각형을 이룬다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "원뿔의 높이, 밑면의 반지름, 모선은 직각삼각형을 이룬다. 파란색이 높이 h, 주황색이 반지름, 초록색이 모선이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔의 높이, 밑면의 반지름, 모선은 직각삼각형을 이룬다. 파란색이 높이 h, 주황색이 반지름, 초록색이 모선이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

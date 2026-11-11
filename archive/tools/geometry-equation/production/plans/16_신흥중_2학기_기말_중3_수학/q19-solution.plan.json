@@ -1,0 +1,720 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "K",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "K"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "3"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "0",
+          "denominator": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-28190779",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-2565151",
+          "denominator": "2500000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "28190779",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-2565151",
+          "denominator": "2500000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29544233",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "1041889",
+          "denominator": "2000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "lBA",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "A"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lCD",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "C",
+        "D"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lBC",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lAD",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "D"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "E",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "lBA",
+        "lCD"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "F",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "lBC",
+        "lAD"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "F",
+     "K"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sBA",
+      "refs": [
+       "B",
+       "A"
+      ]
+     },
+     {
+      "id": "sAE",
+      "refs": [
+       "A",
+       "E"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCF",
+      "refs": [
+       "C",
+       "F"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDE",
+      "refs": [
+       "D",
+       "E"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sDF",
+      "refs": [
+       "D",
+       "F"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aE",
+       "refs": [
+        "A",
+        "E",
+        "D"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aF",
+       "refs": [
+        "C",
+        "F",
+        "D"
+       ],
+       "value": 40,
+       "label": "40",
+       "color": "WARM",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aA",
+       "refs": [
+        "D",
+        "A",
+        "B"
+       ],
+       "value": 85,
+       "label": "a",
+       "color": "GREEN",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "B",
+        "C",
+        "D"
+       ],
+       "value": 95,
+       "label": "c",
+       "color": "VIOLET",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "A",
+        "D",
+        "C"
+       ],
+       "value": 125,
+       "label": "d",
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "원에 내접하는 사각형 ABCD, ∠E=30°, ∠F=40°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 540
+    },
+    "hiddenPointNames": [
+     "K"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 EAD"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "0",
+          "denominator": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29544233",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "1041889",
+          "denominator": "2000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "18120683",
+          "denominator": "5000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "16351607",
+          "denominator": "2000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "D",
+     "E"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sEA",
+      "refs": [
+       "E",
+       "A"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sDE",
+      "refs": [
+       "D",
+       "E"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aE",
+       "refs": [
+        "A",
+        "E",
+        "D"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aA",
+       "refs": [
+        "E",
+        "A",
+        "D"
+       ],
+       "value": 95,
+       "label": "180-a",
+       "color": "GREEN",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "E",
+        "D",
+        "A"
+       ],
+       "value": 55,
+       "label": "180-d",
+       "color": "ROSE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "caption": "삼각형 EAD",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "삼각형 EAD의 세 내각의 합은 180°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 DCF"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "28190779",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-2565151",
+          "denominator": "2500000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29544233",
+          "denominator": "10000000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "1041889",
+          "denominator": "2000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "599759",
+          "denominator": "125000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-2565151",
+          "denominator": "2500000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "C",
+     "D",
+     "F"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sCF",
+      "refs": [
+       "C",
+       "F"
+      ]
+     },
+     {
+      "id": "sFD",
+      "refs": [
+       "F",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aF",
+       "refs": [
+        "C",
+        "F",
+        "D"
+       ],
+       "value": 40,
+       "label": "40",
+       "color": "WARM",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aC",
+       "refs": [
+        "D",
+        "C",
+        "F"
+       ],
+       "value": 85,
+       "label": "180-c",
+       "color": "VIOLET",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "C",
+        "D",
+        "F"
+       ],
+       "value": 55,
+       "label": "180-d",
+       "color": "ROSE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "caption": "삼각형 DCF",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "삼각형 DCF의 세 내각의 합은 180°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    }
+   }
+  }
+ ],
+ "caption": "두 삼각형의 세 내각의 합이 180°임을 이용해 a, c, d 사이의 관계식을 세운다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원에 내접하는 사각형 ABCD, ∠E=30°, ∠F=40°.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이 단계마다 그림을 나누어 보인다."
+ ]
+}
