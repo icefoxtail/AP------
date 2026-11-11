@@ -1030,10 +1030,11 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_question-v2.svg",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 제1사분면에 반비례 y=a/x의 그래프가 있고, x축과 y축에 눈금이 1부터 8까지 표시되어 있다. 그래프 아래쪽에는 자연수 좌표의 점이 x=1, 2, …, 7인 열마다 7개, 3개, 2개, 1개, 1개, 1개, 1개 찍혀 있고, x축 아래 줄에 \"열별 개수\"라는 이름과 함께 각 열의 개수가 적혀 있다. 그래프 위에 놓인 격자점 네 개에는 \"제외\"라고 표시되어 있다.",
-    "solutionImageCaption": "그래프 아래쪽의 자연수 좌표 점은 xy<a를 만족한다(그래프 위의 점은 제외). a=8일 때 x=1, 2, …, 7인 열마다 세면 7+3+2+1+1+1+1=16개이다. 정답은 ④이다.",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_question_v3.svg",
+    "imageAlt": "좌표평면의 제1사분면에 y=a/x 곡선이 있고, 곡선 아래쪽 영역이 회색으로 음영 처리되어 있다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v5.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면의 반비례 y=a/x 그래프와 자연수 격자점이 있다. 그래프 아래의 점은 파란색으로 표시하고, 그래프 위의 네 점은 속이 빈 장미색 점으로 나타내어 세지 않음을 구별한다. x=1부터 7까지 열별 개수가 아래에 표시되어 있다.",
+    "solutionImageCaption": "그래프 아래의 자연수 좌표 점은 xy<a를 만족하고 그래프 위의 점은 세지 않는다. x=1부터 7까지 열마다 세면 7+3+2+1+1+1+1=16개이다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
