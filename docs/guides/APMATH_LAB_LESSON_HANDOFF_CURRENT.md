@@ -55,8 +55,8 @@
 | `g8-triangles` 삼각형의 성질 | 43 | 43 / 165 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1768](https://github.com/icefoxtail/AP------/pull/1768), merge `c554314dab47bb18adf8f71d8cf50f0e87e45b3e`. 최소 검사 171/171, 구문 16파일, 누락 0. 실제 학생 HTML은 이전 버전 (§6) |
 | `g8-quadrilaterals` 사각형의 성질 | 32 | 32 / 133 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1775](https://github.com/icefoxtail/AP------/pull/1775), merge `1adb00ecf9d275d8b83df5e1089e27e9dfe77466`. 기존 23/106 보존 + 잔여 9/27 추가, 누락 0. 최소 검사 109/109·구문 17파일 통과. 공통 Pages 등록 대기 (§6) |
 | `g8-similarity` 도형의 닮음 | 39 | 39 / 144 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1777](https://github.com/icefoxtail/AP------/pull/1777), merge `80e3ecc5119c200b722c6e7563835e8fd772b2ea`. 기본 닮음·넓이/부피·삼각형 17/65, 평행선 11/44, 직각삼각형·활용·무게중심 11/35. 누락 0. 최소 검사 108/108·구문 18파일 통과. 실제 학생 HTML은 이전 버전 (§6) |
-| `g9-trig-ratio` 삼각비 | 51 | 51 / 245 | **IMPLEMENTED / QA_PENDING** · [PR #1779](https://github.com/icefoxtail/AP------/pull/1779). 뜻·특수각·표 19/111, 길이·높이 15/69, 넓이·입체 17/65. 개념 74, 원문 예제 171, 누락 0. 최소 검사 136/136·구문 22파일 통과. PR·main·Pages 확인 예정 (§6) |
-| `g9-circle` 원의 성질 | 45 | 0 | 미착수 (§6) |
+| `g9-trig-ratio` 삼각비 | 51 | 51 / 245 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1779](https://github.com/icefoxtail/AP------/pull/1779), merge `3400e9240abae41b881648817390963adaf65c1c`. 뜻·특수각·표 19/111, 길이·높이 15/69, 넓이·입체 17/65. 개념 74, 원문 예제 171, 누락 0. 최소 검사 136/136·구문 22파일 통과. 실제 학생 HTML은 이전 버전 (§6) |
+| `g9-circle` 원의 성질 | 45 | 6 / 29 | **IN_PROGRESS / QA_PENDING** · `feat/lessons-g9-circle`에서 내접사각형 t5 6장면을 먼저 보존. 원문 40검사 및 첫 묶음 validator 통과. 나머지 39장면 제작 중 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
@@ -265,6 +265,8 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 삼각비 [PR #1779](https://github.com/icefoxtail/AP------/pull/1779) **main 병합 완료**. head `8f829eb0609dfcb48610fbf4eb4bef5830e3205b`, merge/API·Git main `3400e9240abae41b881648817390963adaf65c1c`; ancestor 및 대상 파일 차이 0 확인. 중등 main 누계 **15개 실험실·484장면/1,317해설**. 실제 학생 HTML은 HTTP 200·4,781 bytes의 이전 파일이며 해설 연결이 없고, lesson-b/c.js는 HTTP 404이므로 **PAGES_NOT_VERIFIED / QA_PENDING**. 병합 시 CI 11개는 queued였으며 PASS로 간주하지 않았다. [AWCR r24](https://drive.google.com/file/d/17YWJMcOxyKXPYGi2DLjG3rVztbg-Z2sh/view) raw SHA-256 `1eeff9993ca363ab44898d9169718d365ebdd8663635a589ddfe5fb32db731c8`·6,854 bytes를 다시 읽어 검증했다. 다음 원의 성질은 같은 main에서 `feat/lessons-g9-circle`로 시작했다. 동일 해설 브랜치·PR은 없었고 기존 도형 개선 PR #1459는 이미 병합되어 재구현하지 않는다.
 
 - 2026-11-11 · 닮음 [PR #1777](https://github.com/icefoxtail/AP------/pull/1777) **main 병합 완료**. head `e11cbd7735fea5aa804cd922fa91f0912e83d438`, merge/API·Git main `80e3ecc5119c200b722c6e7563835e8fd772b2ea`; ancestor 및 대상 파일 일치 확인. 중등 main 누계 14개 실험실·433장면/1,072해설. 실제 학생 HTML은 4,736 bytes의 이전 파일이고 lesson-a.js는 HTTP 404이므로 **PAGES_NOT_VERIFIED / QA_PENDING**. [AWCR r21](https://drive.google.com/file/d/130muBUMYspeiE5lc5jtrUsjCwMY751Mk/view) raw SHA-256 `cca70035bc07e816fca0316963d2807aec48a471eaf98deb96bfbdea1cd35869`·5,863 bytes를 다시 읽어 검증했다. 다음 삼각비 51장면은 최신 main에서 별도 브랜치로 시작했다. 동일 해설 브랜치/PR은 없었고, 기존 도형 개선 브랜치는 이미 병합된 PR #1461이므로 재작업하지 않는다.
 
