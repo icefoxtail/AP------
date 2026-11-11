@@ -672,7 +672,7 @@
     if (D.lessonHide && !bottom) rows = rows.slice(0, 1); // 해설 재생 중에는 결론 전까지 첫 줄(식의 이름)만 — 결과가 든 둘째 줄부터는 svShowV 가 켜질 때까지 아낌(dims.js)
     const b = D.b, size = D.fs(15), eff = size * b.fs * b._ts(), avail = b.W - b.insets.left - b.insets.right - 16, c = b.ctx;
     rows.forEach((segs, i) => {
-      let w = 0; c.save(); c.font = `800 ${eff}px ${b.font}`; segs.forEach((g) => { g.w = c.measureText(g.t).width; w += g.w; }); c.restore();
+      let w = 0; c.save(); c.font = `800 ${eff}px ${b.font}`; segs.forEach((g) => { const m = c.measureText ? c.measureText(g.t) : null; g.w = m && m.width > 0 ? m.width : textW(g.t, eff); w += g.w; }); c.restore(); // 글자 폭을 잴 수 없는 캔버스(단위 테스트의 가짜 캔버스)에서는 치수 상자와 같은 어림 폭을 씁니다
       let sz = size, k = 1;
       if (w > avail) { k = avail / w; sz = size * k; }
       const y = bottom ? b.H - b.insets.bottom - (D.narrow ? 14 : 18) - (rows.length - 1 - i) * eff * 1.55 : b.insets.top + (D.narrow ? 16 : 20) + i * eff * 1.55;
