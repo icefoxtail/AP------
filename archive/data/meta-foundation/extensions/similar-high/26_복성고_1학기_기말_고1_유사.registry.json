@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_복성고_1학기_기말_고1_유사",
+  "sourceExam": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [],
+  "generatedCrossConcepts": [],
+  "generatedConditions": [
+    {
+      "key": "EXT-COND-REAL-COEFFICIENTS",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "방정식의 계수가 모두 실수라는 조건",
+      "definition": "방정식(다항식)의 모든 계수가 실수라는 제한. 허근이 근이면 켤레복소수도 근이 된다는 판단과, 그 근들로 실수 계수 이차인수를 만드는 근거가 된다.",
+      "parentKey": "COND_RANGE",
+      "parentLabelKo": "범위 조건",
+      "standardUnitKey": "H22-C-05",
+      "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "기존 COND 키 중 계수가 실수여야 한다는 제한을 나타내는 키가 없다(COND_RATIONAL_COEFFICIENTS는 유리수 계수 조건이다).",
+      "firstUsed": {
+        "stem": "26_복성고_1학기_기말_고1_유사",
+        "qid": 8
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-11",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ]
+}

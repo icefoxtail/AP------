@@ -1,0 +1,1352 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1final/26_복성고_1학기_기말_고1_유사.js",
+  "sourceGitBlobSha": "9a6d91b367d6cf8bd390497981d5d1d47c4e6159",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "claude-similar-high-gen",
+    "at": "2026-11-11"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "작성자 자체 점검(quote 원문 포함·사전 용어 검사 스크립트). 독립 검토 전(UNREVIEWED)."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "팩토리얼",
+            "src": "stem",
+            "quote": "4!+{}_8C_3"
+          },
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "{}_8C_3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "4!=4\\times3\\times2\\times1",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "{}_8C_3=\\dfrac{8\\times7\\times6}{3\\times2\\times1}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "팩토리얼 값과 조합 값을 각각 정의대로 구해 더하는 것이 전부다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "일렬로 설 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "묶음",
+            "src": "solution",
+            "quote": "한 묶음으로 생각한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "일렬로 세우는 방법은 $5!=120$가지",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이웃",
+            "src": "stem",
+            "quote": "이웃하게 서는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이웃 조건이 묶음 만들기를 결정하고 묶음 안의 순서를 곱해야 한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "두 행렬"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "A=kB"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "같은 위치의 성분이 각각 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "$(2,1)$성분에서 $k$를 먼저 구한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$12=\\dfrac32b$",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 $k$를 $(1,1)$성분 식에 넣어 $b$를 구하는 단계는 대입과 같은 원리"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "같은 행렬의 성분 비교로 미지수를 하나씩 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "서로 다른 항의 개수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "서로 다른 항의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙으로 선택 방법의 수를 곱한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "전개한 한 항은 각 괄호에서 한 항씩 선택하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "solution",
+            "quote": "모든 문자가 서로 달라"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "전개의 한 항을 괄호별 선택으로 보면 곱의 법칙이 된다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "이차부등식 $4x^2-8x-21\\le0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$4x^2-8x-21=(2x+3)(2x-7)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "해집합",
+            "src": "solution",
+            "quote": "$-\\dfrac32\\le x\\le\\dfrac72$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$-1,0,1,2,3$의 5개",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수해",
+            "src": "stem",
+            "quote": "정수 $x$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "인수분해로 해 범위를 구한 뒤 그 안의 정수를 세는 것이 결정 단계다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "두 행렬"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "$(1,1)$성분을 $a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "실수배",
+            "src": "solution",
+            "quote": "$a=3+2\\times2=7$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "해당 성분을 직접 구한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "전체 행렬 대신 필요한 성분의 실수배·합·차만 계산한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "부등식 $x-4\\le5x+4\\le3x+7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+2b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립부등식",
+            "src": "solution",
+            "quote": "두 부등식으로 나눈다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "해집합",
+            "src": "solution",
+            "quote": "$-2\\le x\\le\\dfrac32$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$-8\\le4x$",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 같은 양수로 나누어 부등호 방향을 유지하는 단계는 부등식의 성질과 같은 원리"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "연쇄부등식을 두 부등식으로 나눠 공통부분을 구하는 것이 결정 단계다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3+ax^2+9x+b=0$"
+          },
+          {
+            "term": "허수",
+            "src": "stem",
+            "quote": "한 근이 $1+2i$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식구하기",
+            "src": "stem",
+            "quote": "실수 $a,b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "켤레복소수 $1-2i$도 근이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수",
+            "src": "solution",
+            "quote": "$=x^2-2x+5$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$2r+5=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "전개한 식과 주어진 식의 $x$의 계수를 같게 놓는 단계는 계수 비교와 같은 원리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a,b$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "실수 계수라는 조건이 켤레근을 보장하고 이차인수 구성으로 이어진다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자연수의 합이 홀수"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "소수가 적힌 공 2개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수를 $a$"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$a={}_4C_2\\times{}_4C_1=6\\times4=24$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "홀수를 1개 또는 3개 골라야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "b={}_4C_1\\times{}_4C_2+{}_4C_3=4\\times6+4=28",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 선택을 곱하고 경우끼리 더하는 단계는 곱의 법칙과 합의 법칙과 같은 원리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "합이 홀수인 경우의 수를 $b$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "합이 홀수라는 조건이 홀수 개수로 경우를 나누게 한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "$A=\\begin{pmatrix}2\\\\3\\end{pmatrix}$"
+          },
+          {
+            "term": "영행렬",
+            "src": "stem",
+            "quote": "$O$는 영행렬이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "행",
+            "src": "solution",
+            "quote": "$A$는 $2\\times1$ 행렬",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "$(2,1)$성분은 $2$이므로 참이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "곱 $AB$가 정의되려면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "행렬의 크기와 곱의 정의 조건을 보기마다 판정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값부등식",
+            "src": "stem",
+            "quote": "$|x-2|+|2x+1|\\le9$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$x=-\\dfrac12$, $x=2$에서 구간을 나눈다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$-(x-2)-(2x+1)\\le9$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "음수로 나누어 부등호 방향이 바뀌었다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "해집합",
+            "src": "solution",
+            "quote": "세 구간의 해를 합하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "구간 조건과 합치면"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "절댓값 안의 부호가 바뀌는 점마다 구간을 나누고 해를 합쳐야 한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "코미디 영화 5편, SF 영화 3편, 스릴러 영화 4편"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_5C_2\\times{}_3C_1\\times{}_4C_2=10\\times3\\times6=180$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "시청 순서는 $5!=120$가지",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$180\\times120=21600$",
+            "evidenceType": "IMPLIED",
+            "justification": "선택 방법의 수와 배열의 수를 곱하는 단계는 곱의 법칙과 같은 원리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "solution",
+            "quote": "선택된 영화들은 서로 다른 작품이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "종류별 조합 선택 후 선택 대상 전체를 배열하는 두 단계 구조"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근을 $w$"
+          },
+          {
+            "term": "켤레복소수",
+            "src": "stem",
+            "quote": "$\\overline{w}$는 $w$의 켤레복소수이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$w^3-1=(w-1)(w^2+w+1)=0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "앞의 두 항을 통분하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$w^{12}=(w^3)^4=1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$w^2+w+1=0$과 켤레근 관계로 식의 값을 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "이차부등식 $x^2+2(2-k)x+12\\le0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 보기에서 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "$\\dfrac D4=(2-k)^2-12$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(x-2)(x-6)\\le0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정수해",
+            "src": "solution",
+            "quote": "이 범위의 정수는 $-1,0,1,2,3,4,5$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "경계조건",
+            "src": "solution",
+            "quote": "등호일 때도 중근 하나가 부등식의 해이므로 경계값을 포함한다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "판별식으로 해의 존재 조건을 세우고 경계값 포함 여부와 정수 합을 보기마다 판정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "주사위",
+            "src": "stem",
+            "quote": "한 개의 주사위를 네 번 던져"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "4의 배수인 것의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "4의 배수 여부는 마지막 두 자리로 결정된다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$12,16,24,32,36,44,52,56,64$의 9개",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$9\\times6\\times6=324$",
+            "evidenceType": "IMPLIED",
+            "justification": "끝 두 자리 경우의 수와 앞 두 자리 각 6가지를 곱하는 단계는 곱의 법칙과 같은 원리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "네 자리 자연수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "4의 배수 판정이 끝 두 자리에만 달려 있다는 점이 경우를 줄인다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사차방정식",
+            "src": "stem",
+            "quote": "사차방정식 $16x^4-8(n^2+9)x^2+(n^2-9)^2=0$"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "자연수 $n$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$x^2$에 대한 이차식으로 보고 인수분해한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$=[4x^2-(n+3)^2][4x^2-(n-3)^2]$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "홀짝",
+            "src": "solution",
+            "quote": "$n$이 홀수여야 하고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수해",
+            "src": "stem",
+            "quote": "서로 다른 네 개의 정수해"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$x^2$에 대한 이차식 인수분해로 근을 구하고 정수·서로 다름 조건으로 $n$을 거른다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "이차정사각행렬 $A$"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "$(i,j)$성분이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 성분의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "$A^2=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "규칙",
+            "src": "solution",
+            "quote": "$A^m=\\begin{pmatrix}1&0\\\\2m&1\\end{pmatrix}$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "몇 개를 직접 곱해 규칙을 찾아 일반 $m$으로 확장하는 단계는 규칙 찾기와 같은 원리"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "$1+2+\\cdots+8=(1+8)+(2+7)+(3+6)+(4+5)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "거듭제곱의 규칙을 찾은 뒤 성분별로 합한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "원기둥 모양의 입체도형"
+          },
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "겉넓이가 $90\\pi+32$"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "두 유리수 $a,b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "겉넓이",
+            "src": "solution",
+            "quote": "겉넓이는 바깥 옆면, 구멍을 뺀 위아래 면, 구멍 안쪽 네 면의 넓이를 더한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$2a(a+b)=90$, $2b^2=32$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수 조건으로 $\\pi$의 계수와 상수를 따로 같게 놓는 단계는 계수 비교와 같은 원리"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(a-5)(a+9)=0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "두 유리수 $a,b$"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "반지름도 양수이므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "유리수 조건이 $\\pi$의 계수와 상수를 따로 비교하게 만든다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "영역",
+            "src": "stem",
+            "quote": "$A,B,C,D$ 4개의 영역"
+          },
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "인접한 영역은 서로 다른 색"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙에 따라",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$k=7$을 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$B,D$끼리는 경계선을 공유하지 않으므로 같은 색을 써도 된다",
+            "evidenceType": "IMPLIED",
+            "justification": "B·D가 서로 제한하지 않는다는 판정으로 독립 선택을 나누는 단계는 경우 구조 파악과 같은 원리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "경계선을 공유하는 경우만 인접한 영역"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 $k$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "인접 관계가 영역별 선택 가능한 색의 수를 정한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "세 이차정사각행렬"
+          },
+          {
+            "term": "성분",
+            "src": "stem",
+            "quote": "모든 성분의 합이 $-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 성분의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "행렬을 더할 때는 같은 위치의 성분끼리 더한다",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬의 덧셈을 같은 위치 성분끼리 정의대로 더하는 단계는 사칙연산(덧셈)과 같은 원리"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "$B+C$의 모든 성분의 합은 $B$의 성분합과 $C$의 성분합을 더한 값이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "$-1+s=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "양변에 같은 수를 더해 $s$를 구하는 단계는 등식의 성질과 같은 원리"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "조건 1)과 3)은 쓰지 않고 성분합의 덧셈 성질만으로 풀리는 구조"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 $n$($n\\ge9$)까지의 자연수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_6C_2=\\dfrac{6\\cdot5}{2\\cdot1}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$15{}_{n-7}C_2$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 쪽 선택 수와 큰 쪽 선택 수를 곱하는 단계는 곱의 법칙과 같은 원리"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$m=n-7$이라 놓으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "${}_8C_2=\\dfrac{8\\cdot7}{2}=28<30$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$n\\ge9$"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "작은 것부터 크기 순서대로 나열했을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "세 번째 수가 정해지면 작은 쪽과 큰 쪽의 선택 수가 정해지고 개수 조건이 $n$에 대한 부등식이 된다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식 $\\begin{cases}|x-k|\\lt3\\\\x^2-3x-10\\le0\\end{cases}$"
+          },
+          {
+            "term": "정수해",
+            "src": "stem",
+            "quote": "정수 $x$가 존재할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "정수 $k$값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(x-5)(x+2)\\le0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값부등식",
+            "src": "solution",
+            "quote": "$-3<x-k<3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "합이 5인 $k$는 1과 7이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "이 정수들을 모두 조사한다",
+            "evidenceType": "IMPLIED",
+            "justification": "$k$를 하나씩 바꿔 정수해 합을 표로 조사하는 단계는 경우 분류와 같은 원리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수해",
+            "src": "stem",
+            "quote": "정수 $k$"
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "$-4\\le k\\le7$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "매개변수 $k$를 옮겨 가며 두 정수 범위의 공통부분 합을 표로 조사하는 것이 결정 단계다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "행렬을 $A$라 할 때"
+          },
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "관광 코스"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 경우의 수의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "이 계산이 행렬 곱의 성분 계산과 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "행은 출발 지점, 열은 도착 지점을 나타낸다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "첫 코스의 수와 둘째 코스의 수를 곱하고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "같은 코스를 여러 번 관광할 수도 있다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "표를 행렬로 모델링하고 행렬곱이 코스를 이어 붙인 경우의 수가 됨을 해석한다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}
