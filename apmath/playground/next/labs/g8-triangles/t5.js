@@ -1039,7 +1039,9 @@
     D.lessonDraw = (b, s, M, C, SV, ST, idx) => {
       // 기존 수동 풀이의 캡션은 보존하고, 재생 중에는 플레이어 자막만 사용해요.
       const stages = ST.map(st => ({ ...st, cap: '' }));
-      SV.draw(b, s, M, { ...C, lessonNoLegend: s.trLessonProblem === false }, stages, idx);
+      // 보기 판별의 마지막 자막에서도 마지막에 확인한 반례 그림을 유지해요.
+      const drawIndex = i === 0 && (s.trV || 0) % 3 === 2 && C.answer && stages[idx]?.k === 'ans' ? 3 : idx;
+      SV.draw(b, s, M, { ...C, lessonNoLegend: s.trLessonProblem === false }, stages, drawIndex);
     };
     D.lessonAfterDraw = (b, s, M, C) => {
       const t = C.entry ? 0 : clamp(Number(s.trBT) || 0, 0, 1), g = i === 6 ? o7geom(M) : M.g;

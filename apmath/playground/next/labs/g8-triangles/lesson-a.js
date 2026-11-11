@@ -221,4 +221,79 @@
     return make(['꼭지각부터', '밑각부터', '합친각'][v], '연장선과 두 이등변삼각형', last ? 'x = 93°' : 'x = 29°', chapters);
   }
   lessons['t2-3'] = [extended(0), extended(1), extended(2)];
+
+  function rha(v, concept = false) {
+    const answer = concept ? '△ABC ≡ △DEF (RHA)' : v ? 'x = 50°' : 'x = 7 cm';
+    return make(concept ? 'RHA성질' : v ? '대응각' : '대응변', '직각·빗변·한 예각 비교', answer, [
+      ch('빗변과 구하는 것을 확인', [
+        { at: 0, say: 'C와 F가 직각이에요. 직각의 맞은편 AB와 DE가 빗변이에요.', set: begin(!concept), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, concept ? '빗변과 한 예각이 각각 같을 때 모양과 크기를 비교해요.' : v ? 'A와 D는 40°예요. E의 각 x는 어느 각과 대응할까요?' : 'BC=7 cm예요. 구하는 EF의 길이 x는 어느 변과 대응할까요?', 2)
+      ], fixed({ trRc: 8, trRa: 40, trRt: 0, trM: 7, trV: v })),
+      ch('직각과 빗변을 표시해요', [
+        cue(0, 'C와 F의 직각 표시가 R이에요. 두 각은 90°로 같아요.', 3, { trLine: 'R: ∠C=∠F=90°' }),
+        cue(5.5, 'AB와 DE의 같은 눈금이 H예요. 빗변의 길이가 같아요.', 4, { trLine: 'H: AB=DE' })
+      ]),
+      ch('한 예각과 대응점을 맞춰요', [
+        cue(0, 'A와 D의 같은 예각이 A예요. 두 삼각형을 같은 방향으로 놓아요.', 5, { trCompare: true, trLine: 'A↔D, B↔E, C↔F' }),
+        { at: 5.5, say: '대응점을 따라 옮겨 겹쳐 보아요. 길이와 각은 바꾸지 않아요.', to: { trMatch: 1 }, dur: 4 }
+      ]),
+      ch('합동과 대응을 이용해요', [
+        cue(0, concept ? '직각·빗변·한 예각이 각각 같아 완전히 포개어져요.' : v ? 'RHA 합동이에요. B는 90°−40°=50°이고 E와 대응해요.' : 'RHA 합동이에요. EF에 대응하는 변은 BC예요.', concept ? 6 : 7, { trCompare: false, trCalculationReady: !concept, trLine: concept ? '직각·빗변·한 예각이 각각 같다' : v ? '∠B=90°−40°=50°' : 'EF=BC' }),
+        cue(5.5, concept ? '따라서 △ABC≡△DEF예요. 이 조건을 RHA 합동이라 해요.' : v ? '대응각은 같으므로 x=50°예요.' : '대응변은 같으므로 x=7 cm예요.', 8, { trShowAnswer: true, trLine: answer })
+      ])
+    ]);
+  }
+  lessons['t3-1'] = [rha(0, true), rha(0), rha(1)];
+
+  function rhs(v, concept = false) {
+    const answer = concept ? '△ABC는 이등변삼각형' : ['x = 8 cm', 'x = 40°', 'x = 50°'][v];
+    return make(concept ? 'RHS성질' : ['밑변길이', '밑각', '반쪽각'][v], '공통인 변을 가진 직각삼각형', answer, [
+      ch('공통인 AD를 따라가요', [
+        { at: 0, say: 'AB=AC이고 AD는 BC에 수직이에요. AD는 두 삼각형에 공통이에요.', set: begin(!concept), to: { trTrace: 1 }, dur: 4 },
+        cue(5.5, concept ? 'ABD와 ACD를 비교해 두 삼각형이 만든 전체 모양을 알아보아요.' : v === 0 ? 'BD=4 cm예요. BC를 구하려면 나머지 CD가 필요해요.' : v === 1 ? 'A의 전체 각은 100°예요. B의 각 x를 구해요.' : 'B의 각은 40°예요. 반쪽 각 CAD의 x를 구해요.', 2)
+      ], fixed({ trKm: 8, trKa: 40, trM: 4, trV: v })),
+      ch('R과 H를 확인해요', [
+        cue(0, 'D에서 두 삼각형의 각은 모두 직각이에요. 이것이 R이에요.', 3, { trLine: 'R: ∠ADB=∠ADC=90°' }),
+        cue(5.5, '직각의 맞은편 AB와 AC가 같은 빗변이에요. 이것이 H예요.', 4, { trLine: 'H: AB=AC' })
+      ]),
+      ch('공통인 한 변 S로 비교', [
+        cue(0, '다른 한 변 AD는 공통이에요. 같은 길이 표시를 보며 떼어 놓아요.', 5, { trCompare: true, trLine: 'S: AD 공통, B↔C' }),
+        { at: 5.5, say: 'A와 D를 기준으로 옮겨 겹쳐 보아요. B와 C가 대응해요.', to: { trMatch: 1 }, dur: 4 }
+      ]),
+      ch('RHS 합동의 결과를 써요', [
+        cue(0, concept ? '직각·빗변·다른 한 변이 같아 RHS 합동이에요.' : v === 0 ? 'RHS 합동이라 CD=BD=4 cm예요. BC는 두 부분의 합이에요.' : v === 1 ? 'RHS 합동이라 BAD와 CAD는 100°의 반인 50°예요.' : 'RHS 합동이라 CAD는 BAD와 같아요. BAD=90°−40°예요.', concept ? 6 : 7, { trCompare: false, trCalculationReady: !concept, trLine: concept ? '△ABD≡△ACD (RHS)' : v === 0 ? 'CD=BD=4 cm' : v === 1 ? '∠BAD=∠CAD=50°' : '∠CAD=∠BAD=90°−40°' }),
+        cue(5.5, concept ? '붙인 전체 ABC는 AB=AC인 이등변삼각형이에요. 두 밑각도 같아요.' : v === 0 ? 'x=BD+CD=4+4=8 cm예요.' : v === 1 ? '직각삼각형 ABD에서 x=90°−50°=40°예요.' : 'x=50°예요. 전체 꼭지각과 반쪽 각을 구별해요.', 8, { trShowAnswer: true, trLine: answer })
+      ])
+    ]);
+  }
+  lessons['t3-2'] = [rhs(0, true), rhs(0), rhs(1), rhs(2)];
+
+  const conditions = [
+    { label: 'RHA', qi: 0, same: 'AB=DE, ∠A=∠D', read: '빗변 AB와 DE, 한 예각 A와 D가 같아요.', move: '같은 빗변과 예각을 기준으로 두 삼각형을 겹쳐 보아요.', end: '직각·빗변·한 예각이 각각 같으므로 RHA 합동이에요.', answer: 'RHA 합동' },
+    { label: 'RHS', qi: 4, same: 'AB=DE, AC=DF', read: '빗변 AB와 DE, 다른 한 변 AC와 DF가 같아요.', move: '빗변과 다른 한 변을 기준으로 두 삼각형을 겹쳐 보아요.', end: '직각·빗변·다른 한 변이 각각 같으므로 RHS 합동이에요.', answer: 'RHS 합동' },
+    { label: 'SAS', qi: 6, same: 'AC=DF, BC=EF', read: 'AC와 DF, BC와 EF가 같아요. 둘 다 직각을 낀 변이에요.', move: '같은 두 변이 만나는 직각을 맞추어 두 삼각형을 겹쳐 보아요.', end: '두 변과 그 끼인각이 각각 같으므로 SAS 합동이에요.', answer: 'SAS 합동' },
+    { label: 'ASA', qi: 20, same: 'BC=EF, ∠B=∠E', read: 'BC와 EF, B와 E가 같아요. C와 F도 직각으로 같아요.', move: '같은 변과 그 양 끝 각을 맞추어 두 삼각형을 겹쳐 보아요.', end: '한 변과 그 양 끝 각이 각각 같으므로 ASA 합동이에요.', answer: 'ASA 합동' },
+    { label: '두예각', qi: 23, same: '∠A=∠D, ∠B=∠E', read: '두 예각은 각각 같지만, 같다고 주어진 변은 없어요.', move: '예각을 그대로 두고 크기가 다른 예를 옮겨 비교해요.', end: '같은 각이어도 크기가 달라질 수 있어 합동을 보장할 수 없어요.', answer: '합동을 보장할 수 없음', counter: '각은 같은데 대응변 길이가 달라요.' },
+    { label: '빗변만', qi: 5, same: 'AB=DE', read: '빗변만 같아요. 한 예각이나 다른 변이 같은지는 몰라요.', move: '빗변 길이는 그대로 두고 모양이 다른 예를 옮겨 비교해요.', end: '같은 빗변이어도 직각변이 달라질 수 있어 합동을 보장할 수 없어요.', answer: '합동을 보장할 수 없음', counter: '빗변은 겹쳐도 직각 꼭짓점이 달라요.' },
+    { label: '한예각', qi: 21, same: '∠A=∠D', read: '한 예각만 같아요. 직각과 그 예각은 크기를 정하지 못해요.', move: '같은 예각을 가진 더 큰 삼각형을 옮겨 비교해요.', end: '한 예각을 유지하며 크기를 바꿀 수 있어 합동을 보장할 수 없어요.', answer: '합동을 보장할 수 없음', counter: '예각은 같은데 대응변 길이가 달라요.' },
+    { label: '한직각변', qi: 15, same: 'AC=DF', read: '직각변 AC와 DF만 같아요. 다른 직각변의 길이는 몰라요.', move: 'AC와 DF의 길이는 유지하고 다른 직각변을 바꾼 예를 겹쳐요.', end: '다른 직각변이 달라질 수 있으므로 합동을 보장할 수 없어요.', answer: '합동을 보장할 수 없음', counter: 'AC와 DF는 겹쳐도 B와 E는 겹치지 않아요.' }
+  ];
+  lessons['t3-3'] = conditions.map(c => make(c.label, '주어진 합동 조건을 판별하기', c.answer, [
+    ch('실제로 주어진 조건', [
+      { at: 0, say: '두 삼각형의 C와 F는 직각이에요. 같은 표시의 뜻부터 확인해요.', set: begin(), to: { trTrace: 1 }, dur: 4 },
+      cue(5.5, c.read, 2)
+    ], fixed({ trCase: 0, trSb: 40, trSc: 6, trSa: 56, trQi: c.qi, trV: 0 })),
+    ch('직각 이외의 조건을 세어요', [
+      cue(0, 'C와 F는 둘 다 90°예요. 그림이 비슷해 보이는지만 보지 않아요.', 3, { trLine: '∠C=∠F=90°' }),
+      cue(5.5, c.read, 4, { trLine: c.same })
+    ]),
+    ch('조건을 유지하며 비교해요', [
+      cue(0, c.counter ? '주어진 조건을 그대로 만족하는 다른 삼각형도 살펴보아요.' : '표시된 변과 각이 대응하도록 같은 방향으로 떼어 놓았어요.', 4, { trCompare: true, trLine: c.same }),
+      { at: 5.5, say: c.move, to: { trMatch: 1 }, dur: 4 }
+    ]),
+    ch('반드시 합동인지 결론', [
+      cue(0, c.counter || '표시된 조건을 맞추니 세 꼭짓점이 모두 겹쳐요.', undefined, { trLine: c.counter || '대응하는 세 꼭짓점이 겹친다' }),
+      cue(5.5, c.end, 6, { trShowAnswer: true, trLine: c.answer })
+    ])
+  ]));
 })();

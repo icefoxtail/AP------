@@ -902,6 +902,11 @@
     fit(b, { x0: box.x0 - .12 * w, x1: box.x1 + gap + .12 * w, y0: box.y0 - .15 * w, y1: box.y1 + .1 * w }, { t: 48, b: 90, l: 40, r: 40 });
     const marks = (points, color) => {
       const [A, B, Cc] = points;
+      if (config.marks) {
+        (config.marks.edges || []).forEach(([a, z, count]) => tick(b, points[a], points[z], count, color));
+        (config.marks.angles || []).forEach(([v, a, z, rings = 1]) => ang(b, points[v], points[a], points[z], { color, rings, r: rings === 1 ? 18 : 25 }));
+        return;
+      }
       if (kind === 'SAS' || kind === 'SSS' || kind === 'RHA' || kind === 'RHS') tick(b, A, B, 1, color);
       if (kind === 'SAS' || kind === 'ASA' || kind === 'SSS' || kind === 'RHS') tick(b, A, Cc, 2, color);
       if (kind === 'SSS') tick(b, B, Cc, 3, color);
@@ -909,7 +914,12 @@
       if (kind === 'ASA' || kind === 'RHA' || kind === 'RHS') ang(b, Cc, A, B, { color, r: 18 });
     };
     [[Pp, 'sky'], [Qq, 'green']].forEach(([points, color]) => { fillPoly(b, points, color, .12); poly(b, points, color, 3.2); marks(points, color); });
-    if (t < .98) [Pp, Qq].forEach((points, j) => G.dots(b, points, names[j], G.centroid(points), { size: 16 }));
+    if (config.counterexample && t >= .98) {
+      Pp.forEach((p0, i) => {
+        if (dist(p0, Qq[i]) < 1e-7) G.dots(b, [p0], [names[0][i] + '↔' + names[1][i]], G.centroid(Pp), { size: 16 });
+        else { G.dots(b, [p0], [names[0][i]], G.centroid(Pp), { size: 16 }); G.dots(b, [Qq[i]], [names[1][i]], G.centroid(Qq), { size: 16 }); }
+      });
+    } else if (t < .98) [Pp, Qq].forEach((points, j) => G.dots(b, points, names[j], G.centroid(points), { size: 16 }));
     else G.dots(b, Pp, names[0].map((name, i) => name === names[1][i] ? name : name + '↔' + names[1][i]), G.centroid(Pp), { size: 16 });
     if (s.trLine) rowT(b, pt((box.x0 + box.x1 + gap) / 2, box.y1), s.trLine, { dy: 56, size: fs(b, 16), color: 'amber' });
   }
