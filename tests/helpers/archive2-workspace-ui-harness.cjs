@@ -102,6 +102,7 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
     globalThis.workspaceTest = {
       state, recentClassOptions, recentSubjectOptions, updateRecentResults, loadRecent,
       recentAssignmentMarkup, openRecentAssignmentStatus, renderContent,
+      askCancelAssignment, cancelRecentAssignment, pdfErrorText, askDeleteDraft, deleteDraft, drafts, storageKey,
       assignmentStatus, getRenderCount: () => globalThis.workspaceRenderCount,
       setView: view => { state.view = view; noteRenderedViewTransition(); },
       setClasses: rows => { classRows = rows; },

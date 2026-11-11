@@ -31,9 +31,9 @@ body[data-archive-view="recent"] .history-surface { max-width: 1160px; margin-in
 .history-surface .history-draft h3 { margin: 0 0 4px; font-size: .85rem; overflow-wrap: anywhere; }
 .history-surface .history-draft p { margin: 0; font-size: .82rem; }
 .history-surface .history-draft .actions { flex-shrink: 0; gap: 6px; }
-.history-surface .history-draft-actions details { position: relative; }
-.history-surface .history-draft-actions summary { min-height: 44px; padding: 0 10px; display: flex; align-items: center; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
-.history-surface .history-draft-actions details > button { position: absolute; z-index: 4; top: calc(100% + 4px); right: 0; min-height: 44px; box-shadow: 0 8px 22px #17171c24; }
+.history-surface .history-cancelled-toggle { margin: 12px 0 0; }
+/* 좁은 화면에서 다음 줄로 넘어가도 출제 취소가 줄 전체를 차지하지 않게 한다(지우는 버튼이 가장 크게 보이지 않도록). */
+.history-surface .history-card .exam-row-actions > button[data-action="assignment-cancel"] { flex: 0 0 auto; }
 .history-surface .history-draft button { padding: 6px 9px; font-size: .82rem; }
 @media (max-width: 1100px) {
   .history-surface .history-filters { grid-template-columns: minmax(250px, 1.6fr) repeat(2, minmax(100px, 1fr)); }
