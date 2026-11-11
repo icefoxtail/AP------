@@ -179,12 +179,26 @@
     b.text(L.pt, P.labelText || P.text, { color, size, baseline: 'middle', weight: 800, align: al, dx: d.x * (ctr ? 8 : 14), dy: d.y * (Math.abs(d.y) > 0.35 ? (ctr ? 14 : 18) : 6), ref });
   }
 
+  // 해설에서 사용하는 공개 순서. 직접 해 보기에는 적용하지 않아요.
+  // f5Read: 계산을 설명한 조각 묶음 수, f5Given: 그림에서 확인한 보조 길이/각,
+  // f5Final: 마지막 합계. 진입·다시 보기에서는 앞 재생의 값과 무관하게 모두 숨깁니다.
+  const LESSON_PIECES = new Set(['f5-ring', 'f5-sn', 'f5-ring240', 'f5-star', 'f5-lens', 'f5-cut', 'f5-track']);
+  const pieceLesson = (D, s) => LESSON_PIECES.has(D.id) && !!(s.lessonEntry || s.lessonOn);
+  const lessonValue = (s, key) => s.lessonOn && !s.lessonEntry ? (+s[key] || 0) : 0;
+  const pieceState = (D, M, s, tab, thumb) => pieceLesson(D, s) && s.lessonEntry && !thumb
+    ? stateOf(M, { step: 0 }, 'review', false) : stateOf(M, s, tab, thumb);
+  const pieceCap = (D, M, gi) => D.id === 'f5-star'
+    ? piP(M.P[0].len.n, M.P[0].len.d) + ' × 4 = ' + piP(2 * M.rc, 1) + ' cm'
+    : M.groups[gi].cap;
+
   // 둘레 조각 장면의 그림 전체
   function drawPieces(D, b, s, lab) {
     const thumb = !!b.thumb;
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const M = D.model(s);
-    const st = stateOf(M, s, tab, thumb);
+    const st = pieceState(D, M, s, tab, thumb);
+    const lesson = !thumb && pieceLesson(D, s), known = lessonValue(s, 'f5Read');
+    const final = !lesson || !!lessonValue(s, 'f5Final');
     // 넓은 화면의 우하단 도구는 쉘의 bottom inset에 포함되지 않아요.
     // 합계가 긴 경우에도 도구에 덮이지 않도록 설명 두 줄과 도형을 함께 올립니다.
     const toolsHeight = lab && lab.ui && lab.ui.tools && lab.ui.tools.offsetHeight;
@@ -215,14 +229,18 @@
       M.P.forEach((P, i) => {
         const gi = groupOf[i], ref = 'p' + i;
         if (st.plain) { if (P.plainLabel) drawPieceLabel(b, P, 'ink', 15, ref); return; }
+        if (lesson && gi >= known) { if (P.plainLabel) drawPieceLabel(b, P, 'ink', 15, ref); return; }
+        // 네 잎은 같은 호의 값을 하나만 적어 중앙의 작은 꽃잎을 가리지 않아요.
+        if (lesson && D.id === 'f5-star' && G[gi].idx[0] !== i) return;
         if (gi === st.cur) { if (st.fr > 0.5 || tab === 'review') drawPieceLabel(b, P, P.color, 16, ref); }
         else if (gi < st.upto) drawPieceLabel(b, P, P.color, 15, ref);
       });
       // 4) 아래 설명
       if (!st.plain) {
-        if (st.sum) caption(b, '둘레 = 조각의 길이의 합', M.sumText, 'ink', 'amber', captionBottom);
-        else if (st.cur >= 0) caption(b, NUM[st.cur] + ' ' + G[st.cur].name, G[st.cur].cap, M.P[G[st.cur].idx[0]].color, 'ink', captionBottom);
-        else caption(b, '경계를 호와 선분으로 나누어요', '▶ 재생하면 조각마다 길이를 구해요', 'ink', 'muted', captionBottom);
+        if (st.sum) caption(b, '둘레 = 조각의 길이의 합', final ? (lesson ? cmText(M.total) : M.sumText) : '', 'ink', 'amber', captionBottom);
+        else if (st.cur >= 0) caption(b, NUM[st.cur] + ' ' + G[st.cur].name, !lesson ? G[st.cur].cap : st.cur < known ? pieceCap(D, M, st.cur) : '', M.P[G[st.cur].idx[0]].color, 'ink', captionBottom);
+        // 해설 진입 화면(s.lessonEntry)·재생 중(s.lessonOn)에는 「▶ 재생하면…」 안내를 뺍니다: 같은 화면의 해설 ▶ 와 헷갈리기 때문입니다(탐구·정리 화면은 그대로).
+        else caption(b, '경계를 호와 선분으로 나누어요', s.lessonEntry || s.lessonOn ? '' : '▶ 재생하면 조각마다 길이를 구해요', 'ink', 'muted', captionBottom);
       }
       if (tab === 'explore' && D.handles) D.handles(b, s, M, st, lab);
     }
@@ -334,8 +352,22 @@
   function viewPieces(D, s, lab) {
     const M = D.model(s);
     const tab = (lab && lab.tab) || 'explore';
-    const st = stateOf(M, s, tab, false);
+    const st = pieceState(D, M, s, tab, false);
     const G = M.groups;
+    if (pieceLesson(D, s)) {
+      const known = lessonValue(s, 'f5Read'), final = !!lessonValue(s, 'f5Final');
+      const readouts = G.flatMap((g, gi) => gi < known ? g.idx.map((i) => ({
+        label: M.P[i].name, value: M.P[i].text, color: M.P[i].color, ref: 'p' + i
+      })) : []);
+      if (final) readouts.push({ label: '둘레', value: cmText(M.total), color: 'amber', wide: true });
+      return {
+        guide: final ? '둘레 = ' + esc(M.sumText) : '색칠한 부분의 경계를 호와 선분으로 나누어 살펴봐요.',
+        readouts,
+        status: { tone: final ? 'ok' : 'info', text: final ? '둘레 = ' + cmText(M.total) : st.cur >= 0 ? G[st.cur].name : '경계 = 호 + 선분' },
+        formula: '<p>둘레 = 호의 길이의 합 + 선분의 길이의 합</p>' + (final ? '<p>' + esc(M.sumText) + '</p>' : ''),
+        rule: '(호의 길이) = 2π × 반지름 × (중심각/360)', notes: ''
+      };
+    }
     const groupOf = {};
     G.forEach((g, gi) => g.idx.forEach((i) => { groupOf[i] = gi; }));
     const v = {};
@@ -481,6 +513,9 @@
       b.seg(pt(-1.5, y - 0.07), pt(-1.5, y + 0.07), { color: 'ink', width: 1.6, alpha: 0.85 });
       b.seg(pt(1.5, y - 0.07), pt(1.5, y + 0.07), { color: 'ink', width: 1.6, alpha: 0.85 });
       if (!thumb) b.text(pt(0, y), M.AD + ' cm', { dy: -13, color: 'ink', size: 16, baseline: 'middle' });
+      if (!thumb && pieceLesson(SN, s) && lessonValue(s, 'f5Given') >= 1) {
+        [-1, 0, 1].forEach((x) => b.text(pt(x, 0), M.a + ' cm', { dy: -26, color: 'amber', size: 14, baseline: 'middle' }));
+      }
     },
     stem: (s, M) => '그림과 같이 지름 $\\overline{AD}$의 길이가 ' + M.AD + ' cm인 원에서 $\\overline{AB}=\\overline{BC}=\\overline{CD}$일 때, 색칠한 부분의 둘레의 길이는?',
     cands: (M) => [[1, 2], [3, 4], [5, 4], [3, 2], [2, 1], [1, 4]].map((q) => scaleL(M.total, q[0], q[1], 1, 1)),
@@ -599,6 +634,15 @@
       b.seg(O, q, dashed);
       b.text(midP(O, q), r + ' cm', { dx: -8, dy: 14, color: 'ink', size: 15, baseline: 'middle', align: 'right' });
       b.text(O, 'O', { dx: -4, dy: -15, color: 'ink', size: 15, baseline: 'middle' });
+      if (pieceLesson(RING240, s) && lessonValue(s, 'f5Given') >= 1 && st.cur !== 0) {
+        const end = pt(0, -R);
+        b.seg(O, end, { color: 'green', width: 2, dash: [5, 4] });
+        b.text(midP(O, end), R + ' cm', { dx: -12, color: 'green', size: 15, align: 'right', baseline: 'middle' });
+      }
+      if (pieceLesson(RING240, s) && lessonValue(s, 'f5Given') >= 2 && st.cur !== 0 && st.cur !== 2) {
+        b.arc(O, R * 0.35, M.P[0].a0, M.P[0].a1, { color: 'green', width: 2 });
+        b.text(pt(-R * 0.48, -R * 0.12), M.g.rem + '°', { color: 'green', size: 15, baseline: 'middle' });
+      }
     },
     handles(b, s, M) {
       const { R, cs, sn } = M.g;
@@ -673,7 +717,7 @@
       b.seg(pt(-1, y - 0.05), pt(-1, y + 0.05), { color: 'ink', width: 1.6, alpha: 0.85 });
       b.seg(pt(1, y - 0.05), pt(1, y + 0.05), { color: 'ink', width: 1.6, alpha: 0.85 });
       b.text(pt(0, y), M.sd + ' cm', { dy: 16, color: 'ink', size: 16, baseline: 'middle' });
-      if (!st.plain) {
+      if (!st.plain && (!pieceLesson(STAR, s) || lessonValue(s, 'f5Given') >= 1)) {
         b.seg(O, pt(1, 0), dashed);
         b.text(pt(0.74, 0), M.rc + ' cm', { dy: -13, color: 'ink', size: 15, baseline: 'middle' });
       }
@@ -721,6 +765,14 @@
       pointLab(b, O1, 'O', -12, -14, 'right', thumb); pointLab(b, O2, 'O′', 12, -14, 'left', thumb);
       pointLab(b, A, 'A', 0, -16, 'center', thumb); pointLab(b, B, 'B', 0, 17, 'center', thumb);
       if (!thumb) b.text(pt(0, 0), R + ' cm', { dy: -19, color: 'ink', size: 16, baseline: 'middle' });
+      if (!thumb && pieceLesson(LENS, s) && !st.plain && st.cur < 0) {
+        b.ticks(O1, B, { color: 'ink' }); b.ticks(O2, B, { color: 'ink' });
+        const given = lessonValue(s, 'f5Given');
+        if (given === 1) {
+          b.angle(O1, A, O2, { r: 25, label: '60°', color: 'green', size: 13 });
+          b.angle(O1, O2, B, { r: 25, label: '60°', color: 'green', size: 13 });
+        } else if (given >= 2) drawSectorOverlay(b, M.P[0], true, false, 'p0');
+      }
     },
     stem: (s, M) => '그림과 같이 반지름의 길이가 ' + M.R + ' cm인 두 원 O, O′이 서로의 중심을 지나고 두 점 A, B에서 만날 때, 색칠한 부분의 둘레의 길이는?',
     cands(M) { const R = M.R; return [mkL(R * 5, 6, 0), mkL(R, 1, 0), mkL(R * 7, 6, 0), mkL(R * 3, 2, 0), mkL(R, 2, 0), mkL(R * 2, 1, 0)]; },
@@ -764,6 +816,10 @@
       cap(-r, -r + 2 * q); cap(0, r);
       b.text(pt(-r + q, by), '지름 ' + 2 * q + ' cm', { dy: 17, color: 'ink', size: 15, baseline: 'middle' });
       b.text(pt(r / 2, by), '반지름 ' + r + ' cm', { dy: 17, color: 'ink', size: 15, baseline: 'middle' });
+      if (pieceLesson(CUT, s) && lessonValue(s, 'f5Given') >= 1 && !st.plain && st.cur !== 2) {
+        b.seg(M.Cq, pt(M.Cq.x, -q), { color: 'violet', width: 1.6, dash: [5, 4] });
+        b.text(pt(M.Cq.x, -q * 0.5), q + ' cm', { dx: -10, color: 'violet', size: 14, align: 'right', baseline: 'middle' });
+      }
     },
     handles(b, s, M) {
       const { r, q } = M;
@@ -993,11 +1049,15 @@
 
   const at = (p, d, k) => ({ x: p.x + d.x * k, y: p.y + d.y * k });
 
+  const LESSON_BANDS = new Set(['sq4', 'rect', 'tri3', 'line']);
+  const bandLesson = (key, s) => LESSON_BANDS.has(key) && !!(s.lessonEntry || s.lessonOn);
+  // f5BandRead는 직선·중심각·곡선·합계를 설명한 순서대로 공개해요. 직접 해 보기에는 적용하지 않아요.
   function drawBand(b, s, lab, key) {
     const A = BAND[key], r = s.f5A, np = npOf(key, s), M = bandModel(key, r, np), G = M.G;
     const thumb = !!b.thumb;
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
-    const plain = !thumb && (tab === 'problem' || (tab === 'review' && s.step === 0));   // 교과서 그림 그대로
+    const lesson = !thumb && bandLesson(key, s), read = lessonValue(s, 'f5BandRead');
+    const plain = !thumb && (tab === 'problem' || (tab === 'review' && s.step === 0) || (lesson && s.lessonEntry));   // 교과서 그림 그대로
     const review = !thumb && tab === 'review' && s.step > 0;
     const step = review ? s.step : 99;
     const t = plain || thumb ? 0 : clamp(+s.f5T || 0, 0, 1);
@@ -1047,7 +1107,7 @@
 
     // 4) 부채꼴(색칠) — 그림 위의 호와 그 부채꼴
     M.arcs.forEach((a) => {
-      if (!arcShown(a)) return;
+      if (!arcShown(a) || (lesson && read < 3)) return;
       const ref = ['curve', 'a' + a.k], c = G.V[a.v], cur = review && step === 3 + a.k;
       b.arc(c, 1, a.a0, a.a1, { sector: true, fill: a.color, fillAlpha: cur ? 0.42 : 0.24, color: null, ref });
       b.seg(c, at(c, pt(Math.cos(a.a0), Math.sin(a.a0)), 1), { color: a.color, width: 1.6, alpha: 0.8, ref });
@@ -1060,9 +1120,9 @@
       const col = plain ? 'rose' : colors ? SEGC : 'ink';
       b.seg(pa, pb, { color: col, width: plain ? 3.4 : 5.5, alpha: dimStraight ? 0.5 : 1, glow: !plain && u > 0.98 && !dimStraight, ref: ['straight', 'e' + ed.i] });
       if (marks) b.ticks(pa, pb, { color: SEGC });
-      if (txt && marks && u > 0.5) b.text(midP(pa, pb), String(M.each), { color: SEGC, size: 14, dx: ed.n.x * 17, dy: ed.n.y * 17 + 1, baseline: 'middle', alpha: u, halo: u > 0.98, ref: ['straight', 'e' + ed.i] });
+      if (txt && marks && (lesson ? read >= 1 : u > 0.5)) b.text(midP(pa, pb), String(M.each), { color: SEGC, size: 14, dx: ed.n.x * 17, dy: ed.n.y * 17 + 1, baseline: 'middle', alpha: u, halo: u > 0.98, ref: ['straight', 'e' + ed.i] });
     });
-    if (txt && marks && u > 0.98) {
+    if (txt && marks && u > 0.98 && (!lesson || (read >= 2 && (key !== 'tri3' || read !== 3)))) {
       const cx = G.uniq.reduce((x, p) => x + p.x, 0) / G.uniq.length, cy = G.uniq.reduce((x, p) => x + p.y, 0) / G.uniq.length;
       const off = 0;
       b.text(pt(cx, cy), '직선 부분', { color: SEGC, size: 13, dy: off - 10, ref: 'straight' });
@@ -1080,7 +1140,7 @@
     }
 
     // 7) 부채꼴 안의 표시: 중심각 · 반지름 · (정리 탭) 호의 길이
-    if (txt && !plain) {
+    if (txt && !plain && (!lesson || read >= 3)) {
       const small = k < 48;
       M.arcs.forEach((a) => {
         if (!arcShown(a)) return;
@@ -1092,8 +1152,12 @@
           const d0 = pt(Math.cos(a.a0), Math.sin(a.a0));
           b.text(at(c, d0, 1), 'r=' + r, { color: 'ink', size: 13, baseline: 'middle', align: d0.x > 0.35 ? 'left' : d0.x < -0.35 ? 'right' : 'center', dx: d0.x * 12, dy: d0.y * (Math.abs(d0.y) > 0.35 ? 14 : 4), ref });
         }
-        if (review && step >= 3 + a.k) b.text(at(c, pt(Math.cos(mid), Math.sin(mid)), 1.5), NUM[a.k] + ' ' + piP(a.len[0], a.len[1]), { color: a.color, size: 15, baseline: 'middle', ref });
+        if (review && step >= 3 + a.k && !lesson) b.text(at(c, pt(Math.cos(mid), Math.sin(mid)), 1.5), NUM[a.k] + ' ' + piP(a.len[0], a.len[1]), { color: a.color, size: 15, baseline: 'middle', ref });
       });
+    }
+
+    if (txt && lesson && key === 'tri3' && read === 3) {
+      b.text(pt(1, 0.5), '60°', { color: 'ink', size: 14, baseline: 'middle' });
     }
 
     // 8) 복사한 부채꼴: 한 줄에 나타났다가 가로로만 밀려 한 점으로 모임(제자리 회전·세로 이동 없음)
@@ -1117,7 +1181,7 @@
     }
 
     // 9) 모은 원 아래의 설명
-    if (txt && !plain && gg > 0.02) {
+    if (txt && !plain && gg > 0.02 && (!lesson || read >= 4)) {
       const arrived = arrivedOf(M, gg);
       if (arrived.length) {
         const eq = M.arcs.every((a) => a.deg === M.arcs[0].deg);
@@ -1125,11 +1189,11 @@
         const l1 = eq ? M.arcs[0].deg + '°×' + arrived.length : arrived.map((a) => a.deg + '°').join('+');
         b.text(D, '중심각의 합 ' + l1 + ' = ' + sum + '°', { color: 'violet', size: 14, dy: k + 18 });
       }
-      if (gg >= 0.999) b.text(D, '원 하나의 둘레 2π×' + r + ' = ' + (2 * r) + 'π cm', { color: 'sky', size: 15, dy: k + 40 });
+      if (gg >= 0.999 && (!lesson || read >= 5)) b.text(D, '원 하나의 둘레 2π×' + r + ' = ' + (2 * r) + 'π cm', { color: 'sky', size: 15, dy: k + 40 });
     }
 
     // 10) 교과서 그림의 반지름 표시
-    if (txt && plain) {
+    if (txt && (plain || (lesson && read < 3))) {
       const c = G.V[A.rad.v], an = A.rad.ang * PI / 180, d = pt(Math.cos(an), Math.sin(an));
       b.seg(c, at(c, d, 1), { color: 'ink', width: 1.6, alpha: 0.9 });
       b.point(c, { r: 3.4, color: 'ink', glow: false });
@@ -1159,6 +1223,21 @@
     const sumNow = arrivedOf(M, ph.g).reduce((x, a) => x + a.deg, 0);
     const totalStr = '(' + 2 * r + 'π+' + M.straight + ') cm';
     const v = {};
+    if (bandLesson(key, s)) {
+      const read = lessonValue(s, 'f5BandRead');
+      v.guide = read >= 6 ? '끈의 길이 = ' + totalStr : '끈을 직선 부분과 곡선 부분으로 나누어 살펴봐요.';
+      v.readouts = [{ label: '반지름', value: bdCm(r), color: 'ink' }];
+      if (read >= 2) v.readouts.push({ label: '직선 부분', value: M.straight + ' cm', color: SEGC });
+      if (read >= 4) v.readouts.push({ label: '중심각의 합', value: M.degSum + '°', color: 'violet' });
+      if (read >= 5) v.readouts.push({ label: '곡선 부분', value: 2 * r + 'π cm', color: 'sky' });
+      if (read >= 6) v.readouts.push({ label: '끈의 길이', value: totalStr, color: 'amber', wide: true });
+      v.parts = [];
+      v.status = { tone: read >= 6 ? 'ok' : 'info', text: read >= 6 ? totalStr : '끈 = 직선 부분 + 곡선 부분' };
+      v.formula = '<p>끈의 길이 = 직선 부분 + 곡선 부분</p>' + (read >= 6 ? '<p>' + totalStr + '</p>' : '');
+      v.rule = '직선 부분은 중심 사이 거리와 같은 길이예요.';
+      v.notes = '';
+      return v;
+    }
     v.guide = bandGuide(A, M, ph);
     v.readouts = [
       { label: '반지름 r', value: bdCm(r), color: 'ink', note: '원기둥 밑면의 반지름' },

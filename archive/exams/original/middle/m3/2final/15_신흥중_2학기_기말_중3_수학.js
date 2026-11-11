@@ -136,7 +136,11 @@ window.examData = {
         "$100\\sqrt{2}\\,\\mathrm{cm}^2$"
       ],
       "answer": "③",
-      "solution": "마름모는 네 변의 길이가 같으므로 $AB=AD=10\\text{ cm}$이다. $\\angle A=135^\\circ$이므로 $\\angle B=180^\\circ-135^\\circ=45^\\circ$이다. 마름모는 평행사변형이므로 이웃한 두 변의 길이와 그 끼인각을 이용하여 넓이를 구하면 $10\\times10\\times\\sin45^\\circ=100\\times\\dfrac{\\sqrt2}{2}=50\\sqrt2\\text{ cm}^2$이다. 따라서 ③이다."
+      "solution": "마름모는 네 변의 길이가 같으므로 $AB=AD=10\\text{ cm}$이다. $\\angle A=135^\\circ$이므로 $\\angle B=180^\\circ-135^\\circ=45^\\circ$이다. 마름모는 평행사변형이므로 이웃한 두 변의 길이와 그 끼인각을 이용하여 넓이를 구하면 $10\\times10\\times\\sin45^\\circ=100\\times\\dfrac{\\sqrt2}{2}=50\\sqrt2\\text{ cm}^2$이다. 따라서 ③이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 마름모이다. 네 변에는 같은 길이를 뜻하는 표시가 있고 변 AB는 10 cm이다. 각 A는 135도, 각 B는 45도로 나타냈다.",
+      "solutionImageCaption": "마름모는 네 변의 길이가 같으므로 이웃한 두 변 AB와 AD는 모두 10 cm이다. 각 B는 180도에서 135도를 뺀 45도이다. 이웃한 두 변의 길이와 그 끼인각을 알면 넓이는 10 곱하기 10 곱하기 사인 45도이고, 사인 45도는 2분의 루트 2이다. 정답은 ③ 50루트2 cm제곱이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -150,7 +154,11 @@ window.examData = {
         "$\\left(\\dfrac{32}{3}\\pi - 16\\sqrt{3}\\right)\\,\\mathrm{cm}^2$"
       ],
       "answer": "⑤",
-      "solution": "색칠한 부분은 현 $BC$와 호 $BC$로 둘러싸인 활꼴이다. 원주각 $\\angle CAB=30^\\circ$이므로 중심각 $\\angle BOC=2\\times30^\\circ=60^\\circ$이다. 반지름의 길이는 $8\\text{ cm}$이다.<br>부채꼴 $OBC$의 넓이는 $\\pi\\times8^2\\times\\dfrac{60}{360}=\\dfrac{32}{3}\\pi\\text{ cm}^2$이다. $\\triangle OBC$는 $OB=OC=8\\text{ cm}$이고 $\\angle BOC=60^\\circ$이므로 넓이는 $\\dfrac12\\times8\\times8\\times\\sin60^\\circ=16\\sqrt3\\text{ cm}^2$이다.<br>따라서 색칠한 부분의 넓이는 $\\left(\\dfrac{32}{3}\\pi-16\\sqrt3\\right)\\text{ cm}^2$이므로 ⑤이다."
+      "solution": "색칠한 부분은 현 $BC$와 호 $BC$로 둘러싸인 활꼴이다. 원주각 $\\angle CAB=30^\\circ$이므로 중심각 $\\angle BOC=2\\times30^\\circ=60^\\circ$이다. 반지름의 길이는 $8\\text{ cm}$이다.<br>부채꼴 $OBC$의 넓이는 $\\pi\\times8^2\\times\\dfrac{60}{360}=\\dfrac{32}{3}\\pi\\text{ cm}^2$이다. $\\triangle OBC$는 $OB=OC=8\\text{ cm}$이고 $\\angle BOC=60^\\circ$이므로 넓이는 $\\dfrac12\\times8\\times8\\times\\sin60^\\circ=16\\sqrt3\\text{ cm}^2$이다.<br>따라서 색칠한 부분의 넓이는 $\\left(\\dfrac{32}{3}\\pi-16\\sqrt3\\right)\\text{ cm}^2$이므로 ⑤이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 장의 그림이다. 첫째는 지름 AB가 16 cm인 원 O에서 각 CAB가 30도이고 현 BC와 호 BC 사이가 색칠되어 있다. 둘째는 중심각 BOC가 60도인 부채꼴 OBC를 파란색으로 칠했다. 셋째는 OB와 OC가 8 cm이고 각 BOC가 60도인 삼각형 OBC를 주황색으로 칠했다.",
+      "solutionImageCaption": "호 BC에 대한 원주각 CAB가 30도이므로 중심각 BOC는 60도이다. 반지름은 8 cm이므로 부채꼴 OBC의 넓이는 64파이 곱하기 360분의 60, 곧 3분의 32파이이다. 삼각형 OBC는 8 곱하기 8 곱하기 사인 60도의 절반인 16루트3이다. 색칠한 활꼴은 부채꼴에서 삼각형을 뺀 부분이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -260,7 +268,11 @@ window.examData = {
         "$55^\\circ$"
       ],
       "answer": "⑤",
-      "solution": "세 점 $P,A,B$는 한 직선 위에 있으므로 $\\angle BAT$는 $\\triangle PAT$의 한 외각이다. 따라서 $\\angle BAT=\\angle APT+\\angle ATP$에서 $80^\\circ=35^\\circ+\\angle ATP$이므로 $\\angle ATP=45^\\circ$이다.<br>$PT$가 원의 접선이므로 접선과 현이 이루는 각의 성질에 의하여 $\\angle ABT=\\angle ATP=45^\\circ$이다.<br>$\\triangle ABT$에서 $\\angle x=180^\\circ-\\angle BAT-\\angle ABT=180^\\circ-80^\\circ-45^\\circ=55^\\circ$이므로 ⑤이다."
+      "solution": "세 점 $P,A,B$는 한 직선 위에 있으므로 $\\angle BAT$는 $\\triangle PAT$의 한 외각이다. 따라서 $\\angle BAT=\\angle APT+\\angle ATP$에서 $80^\\circ=35^\\circ+\\angle ATP$이므로 $\\angle ATP=45^\\circ$이다.<br>$PT$가 원의 접선이므로 접선과 현이 이루는 각의 성질에 의하여 $\\angle ABT=\\angle ATP=45^\\circ$이다.<br>$\\triangle ABT$에서 $\\angle x=180^\\circ-\\angle BAT-\\angle ABT=180^\\circ-80^\\circ-45^\\circ=55^\\circ$이므로 ⑤이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 장의 그림이다. 첫째는 접선 PT와 원, 원 위의 점 A, B, T로 각 APT가 35도, 각 BAT가 80도이고 구하는 각 ATB는 x로 나타냈다. 둘째는 삼각형 PAT에서 외각 BAT 80도와 각 P 35도를 보이고 각 ATP를 초록색으로 45도로 나타냈다. 셋째는 원에서 접선과 현 AT가 이루는 각 ATP는 45도이고 호 AT의 원주각 ABT는 같은 초록색으로 나타내어 크기가 같음을 보였다. 넷째는 삼각형 ABT로 각 BAT가 80도, 각 ABT가 45도이고 각 ATB가 x이다.",
+      "solutionImageCaption": "각 BAT는 삼각형 PAT의 외각이므로 80도는 35도와 각 ATP의 합이고 각 ATP는 45도이다. 접선과 현이 이루는 각의 성질에 의해 각 ABT도 45도이다. 삼각형 ABT의 세 각의 합이 180도이므로 x는 180도에서 80도와 45도를 뺀 값이다. 정답은 ⑤ 55도이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -292,7 +304,11 @@ window.examData = {
         "$35^\\circ$"
       ],
       "answer": "②",
-      "solution": "$\\angle AED=180^\\circ-\\angle AEB=180^\\circ-60^\\circ=120^\\circ$이다. $\\triangle AED$에서 $\\angle DAE=180^\\circ-\\angle ADE-\\angle AED=180^\\circ-40^\\circ-120^\\circ=20^\\circ$이다.<br>$\\angle DAC$와 $\\angle DBC$는 모두 호 $DC$에 대한 원주각이므로 $\\angle DBC=\\angle DAC=20^\\circ$이다. 따라서 ②이다."
+      "solution": "$\\angle AED=180^\\circ-\\angle AEB=180^\\circ-60^\\circ=120^\\circ$이다. $\\triangle AED$에서 $\\angle DAE=180^\\circ-\\angle ADE-\\angle AED=180^\\circ-40^\\circ-120^\\circ=20^\\circ$이다.<br>$\\angle DAC$와 $\\angle DBC$는 모두 호 $DC$에 대한 원주각이므로 $\\angle DBC=\\angle DAC=20^\\circ$이다. 따라서 ②이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 장의 그림이다. 첫째는 삼각형 AED로 각 AEB가 60도, 각 AED가 120도, 각 ADE가 40도이고 각 DAE가 보라색이다. 둘째는 원 위에서 호 DC에 대한 두 원주각 DAC와 DBC를 같은 보라색으로 나타냈다.",
+      "solutionImageCaption": "각 AEB가 60도이므로 각 AED는 180도에서 60도를 뺀 120도이다. 삼각형 AED에서 각 DAE는 180도에서 40도와 120도를 뺀 값이다. 각 DAC와 각 DBC는 모두 호 DC에 대한 원주각이므로 크기가 같다. 따라서 각 DBC는 각 DAE와 같다. 정답은 ② 20도이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -306,7 +322,11 @@ window.examData = {
         "$8$"
       ],
       "answer": "③",
-      "solution": "원 $P$는 반원 $O$의 지름 위의 점 $O$에서 접하고 호에도 접하므로 원 $P$의 지름은 반원의 반지름 $24$와 같다. 따라서 원 $P$의 반지름은 $12$이다.<br>원 $Q$의 반지름을 $r$, 원 $Q$의 중심에서 $OP$에 내린 수선의 발을 $M$, $QM=x$라 하자. $OM=r$이므로 $PM=12-r$이다.<br>원 $P$와 원 $Q$는 외접하므로 $PQ=12+r$이고, 직각삼각형 $PMQ$에서 $(12-r)^2+x^2=(12+r)^2$이므로 $x^2=48r$이다.<br>원 $Q$는 반원 $O$에 내접하므로 $OQ=24-r$이고, 직각삼각형 $OMQ$에서 $r^2+x^2=(24-r)^2$이므로 $x^2=576-48r$이다.<br>$48r=576-48r$에서 $r=6$이다. 따라서 ③이다."
+      "solution": "원 $P$는 반원 $O$의 지름 위의 점 $O$에서 접하고 호에도 접하므로 원 $P$의 지름은 반원의 반지름 $24$와 같다. 따라서 원 $P$의 반지름은 $12$이다.<br>원 $Q$의 반지름을 $r$, 원 $Q$의 중심에서 $OP$에 내린 수선의 발을 $M$, $QM=x$라 하자. $OM=r$이므로 $PM=12-r$이다.<br>원 $P$와 원 $Q$는 외접하므로 $PQ=12+r$이고, 직각삼각형 $PMQ$에서 $(12-r)^2+x^2=(12+r)^2$이므로 $x^2=48r$이다.<br>원 $Q$는 반원 $O$에 내접하므로 $OQ=24-r$이고, 직각삼각형 $OMQ$에서 $r^2+x^2=(24-r)^2$이므로 $x^2=576-48r$이다.<br>$48r=576-48r$에서 $r=6$이다. 따라서 ③이다.",
+      "solutionImage": "assets/images/15_신흥중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 장의 그림이다. 첫째는 반지름이 24인 반원 O의 지름 위쪽 점 O에서 접하는 원 P와 그 옆에서 원 P, 반원, 지름에 접하는 작은 원 Q이다. 둘째는 직각삼각형 PMQ로 PM이 12 빼기 r, MQ가 x, PQ가 12 더하기 r이다. 셋째는 직각삼각형 OMQ로 OM이 r, MQ가 x, OQ가 24 빼기 r이다.",
+      "solutionImageCaption": "원 P의 지름은 반원의 반지름 24와 같으므로 원 P의 반지름은 12이다. 직각삼각형 PMQ에서 12 빼기 r의 제곱 더하기 x의 제곱이 12 더하기 r의 제곱이므로 x의 제곱은 48r이다. 직각삼각형 OMQ에서 r의 제곱 더하기 x의 제곱이 24 빼기 r의 제곱이므로 x의 제곱은 576 빼기 48r이다. 두 식에서 48r은 576 빼기 48r이므로 r은 6이다. 정답은 ③ 6이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,

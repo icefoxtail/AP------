@@ -127,6 +127,22 @@
         node.innerHTML = '<div class="sol-meta"><div class="sol-exp"></div></div>';
         return node;
     }
+    // Moves the loaded solution figure from the head of a solution box into a final solution chunk (once).
+    // The figure node itself is moved, so its decoded size and the width set by applySolutionSvgDisplayWidth stay.
+    // The head shell (a clone of the box) and continuation shells then no longer carry the figure, and the figure
+    // appears exactly once, in the last chunk. Returns false when there is nothing to move.
+    function moveSolutionImageToTail(record, document) {
+        if (record.solutionImageMoved || !record.chunks) return false;
+        const wrap = record.box.querySelector('.sol-meta > .sol-image-wrap');
+        if (!wrap) return false;
+        const chunk = document.createElement('span');
+        chunk.className = 'sol-chunk';
+        chunk.dataset.solutionImageTail = '1';
+        chunk.appendChild(wrap);
+        record.chunks.push(chunk);
+        record.solutionImageMoved = true;
+        return true;
+    }
     async function solution({ area, boxes, blocks, measurementsBySource, deferChunkMeasurements = false, deps }) {
         const document = area.ownerDocument;
         boxes.forEach(box => assertQuestionImagesReady(box, deps));
@@ -255,6 +271,21 @@
                     if (Math.round(heights.at(-1)) > capacity + 2) break;
                 }
                 exp.replaceChildren(); shell.remove();
+                // Only when the head (number, problem, [answer], solution figure) plus the first chunk cannot
+                // share one column (the planner would fail with MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE): move the
+                // solution figure out of the head to the end of the solution text so the normal split places it.
+                // A box that fits today never reaches this branch, so its layout is unchanged.
+                if (query.primary && Math.round(heights[0]) > capacity + 2 && moveSolutionImageToTail(record, document)) {
+                    record.input.chunkCount = record.chunks.length;
+                    record.input.primaryHeights = undefined;
+                    record.input.continuationHeights = {};
+                    record.block.actualChunkCount = record.input.chunkCount;
+                    record.block.solutionImageMovedToTail = true;
+                    maximumQueries += 1;
+                    await deps.raf();
+                    queryCount += 1;
+                    continue;
+                }
                 if (query.primary) record.input.primaryHeights = heights;
                 else record.input.continuationHeights[query.start] = heights;
                 record.measuredRangeCount += heights.length;

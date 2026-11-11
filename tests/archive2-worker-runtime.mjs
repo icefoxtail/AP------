@@ -767,6 +767,35 @@ try {
     "SELECT COUNT(*) AS n FROM class_exam_assignment_lifecycle_events WHERE assignment_id=?",
   ).bind(addedAssignmentId).first()).n), 2,
   "append-only Assignment lifecycle events survive legacy Assignment cleanup");
+  // 취소는 보관함 저장본 출제만의 것이 아니다: saved_paper_id가 없는 출제(학교 기출 원본·단원별 문제지)도 취소된다.
+  const plainCancelClassId = (await db.prepare("SELECT class_id FROM class_exam_assignments WHERE id=?")
+    .bind(parentAssignmentId).first()).class_id;
+  await db.prepare(
+    "INSERT INTO class_exam_assignments (id,class_id,exam_title,exam_date,question_count,created_at) VALUES (?,?,?,?,?,?)",
+  ).bind("plain-cancel-target", plainCancelClassId, "Plain cancel target", "2026-07-02", 3, "2026-07-02").run();
+  const cancelPlain = () => mf.dispatchFetch(
+    "http://local/api/class-exam-assignments/plain-cancel-target/cancel",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+      body: JSON.stringify({ operation_identity: "88888888-8888-4888-8888-888888888870" }),
+    },
+  );
+  const plainCancelResponse = await cancelPlain();
+  const plainCancelResult = await plainCancelResponse.json();
+  assert.equal(plainCancelResponse.status, 200, JSON.stringify(plainCancelResult));
+  assert.equal(plainCancelResult.cancelled, true);
+  assert.ok(plainCancelResult.assignment.cancelled_at, "an Assignment without a Saved Paper is cancelled too");
+  assert.equal(plainCancelResult.assignment.saved_paper_id ?? null, null);
+  const plainCancelRetry = await (await cancelPlain()).json();
+  assert.equal(plainCancelRetry.idempotent, true, "cancelling the same Assignment again changes nothing");
+  assert.equal(plainCancelRetry.assignment.cancelled_at, plainCancelResult.assignment.cancelled_at);
+  const plainCancelEvents = (await db.prepare(
+    "SELECT saved_paper_id FROM class_exam_assignment_lifecycle_events WHERE operation='CANCEL' AND assignment_id=?",
+  ).bind("plain-cancel-target").all()).results;
+  assert.equal(plainCancelEvents.length, 1);
+  assert.equal(plainCancelEvents[0].saved_paper_id, null);
+  await db.prepare("DELETE FROM class_exam_assignments WHERE id=?").bind("plain-cancel-target").run();
   await db.batch([
     db.prepare("DELETE FROM class_exam_assignment_exclusions WHERE assignment_id=?").bind(repeatSamePaper.body.assignment.id),
     db.prepare("DELETE FROM class_exam_assignment_recipients WHERE assignment_id=?").bind(repeatSamePaper.body.assignment.id),

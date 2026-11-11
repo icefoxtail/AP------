@@ -607,6 +607,11 @@ test('recent and student detail expose cancellation, replacement, review-only, a
     replacementAssignmentId: 'replacement-assignment', isReviewOnly: true, reviewOnlyCount: 1,
   };
   h.w.setClasses(classes); h.w.state.recentRows = [stateRow]; h.w.state.recentClassId = '';
+  // 2026-11-11: 취소한 출제는 기본으로 숨기고 "취소한 출제 N건 보기"로 다시 본다(잘못 낸 건을 취소하면 목록에서 사라지게).
+  const hidden = h.w.recentAssignmentMarkup();
+  assert.doesNotMatch(hidden, /data-assignment-id="parent-assignment"/);
+  assert.match(hidden, /취소한 출제 1건 보기/);
+  h.w.state.recentShowCancelled = true;
   const markup = h.w.recentAssignmentMarkup();
   assert.match(markup, /취소됨/);
   assert.match(markup, /대체됨 · replacement-assignment/);

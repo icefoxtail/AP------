@@ -263,6 +263,10 @@
   const SCENES = [];
 
   function build(spec) {
+    // 이 다섯 장면의 추가 lesson만 별도 공개 상태를 씁니다. 일반 세 탭은 원래 spec 그대로입니다.
+    const moreLesson = ['1101', '1207', '1607', '1210', 'x01'].includes(spec.id);
+    if (moreLesson) spec.state = { ...(spec.state || {}), read: 0, show: false,
+      ...(spec.id === '1210' ? { link: 0 } : {}), ...(spec.id === 'x01' ? { kind: 0 } : {}) };
     const pre = 'b' + spec.id + '_';
     const own = new Set(Object.keys(spec.params).concat(Object.keys(spec.state || {})));
     const defs = {};
@@ -271,7 +275,10 @@
     // 아직 들어가 보지 않은 장면의 값은 기본값으로 읽습니다(모든 장면 보기가 단계 수를 셀 때 필요)
     const sv = (s) => new Proxy(s, {
       get: (t, k) => {
-        if (typeof k === 'string' && own.has(k)) { const v = t[pre + k]; return v === undefined ? defs[k] : v; }
+        if (typeof k === 'string' && own.has(k)) {
+          if (moreLesson && t.lessonEntry) return defs[k]; // 마지막 장에서 재진입해도 계산·보기 판정을 남기지 않습니다.
+          const v = t[pre + k]; return v === undefined ? defs[k] : v;
+        }
         return t[k];
       },
       set: (t, k, v) => { t[typeof k === 'string' && own.has(k) ? pre + k : k] = v; return true; }
@@ -346,7 +353,11 @@
       },
       view: (s, lab) => {
         const q = sv(s);
+        if (moreLesson && (s.lessonOn || s.lessonEntry)) return moreLessonView(spec.id, q);
         const mode = modeOf(lab);
+        // 해설 우선 진입 화면(s.lessonEntry)에서는 탐구 탭 그림이 구하는 값까지 보여 주므로 정리 탭 0단계(구하는 값은 「?」)로 그립니다. 탐구·정리·문제 화면은 그대로입니다.
+        const entry = !!s.lessonEntry && mode === 'explore';
+        const vmode = entry ? 'review' : mode, vstep = entry ? 0 : s.step | 0;
         const v = spec.view ? spec.view(q, mode, lab) || {} : {};
         // 풀이 단계 글이 값에 따라 달라지므로, 달라졌으면 정리 탭의 단계 목록을 다시 만듭니다.
         if (lab && s === lab.s && lab.refs && lab.refs.steps) {
@@ -359,16 +370,18 @@
         }
         if (spec.work) {
           const w = spec.work(q);
-          v.formula = '<div class="apl-rich">' + w.slice(0, Math.max(0, s.step | 0)).map((l) => `<p class="cs-w">${l}</p>`).join('') + '</div>';
+          v.formula = '<div class="apl-rich">' + w.slice(0, Math.max(0, vstep)).map((l) => `<p class="cs-w">${l}</p>`).join('') + '</div>';
         }
         if (spec.rule) v.rule = spec.rule(q);
-        if (spec.chips) v.chips = spec.chips(q, mode, s.step | 0);
+        if (spec.chips) v.chips = (q.lessonOn || entry) && vmode === 'review' && vstep < 1 ? [] : spec.chips(q, vmode, vstep); // 0단계(구하는 값을 아직 모르는 때)에는 정답 칩을 아낌
         return v;
       },
       draw: (b, s, v, lab) => {
         const q = sv(s);
-        const mode = b.thumb ? 'problem' : modeOf(lab);
-        const step = s.step | 0;
+        const mode0 = b.thumb ? 'problem' : modeOf(lab);
+        const entry = !!s.lessonEntry && (mode0 === 'explore' || moreLesson); // 해설 우선 진입 화면: 정리 탭 0단계 그림(구하는 값은 「?」, 손잡이 없음)
+        const mode = entry ? 'review' : mode0;
+        const step = entry ? 0 : s.step | 0;
         if (mode === 'review' && spec.partOfStep) {
           const p = spec.partOfStep(step);
           b.emph = p ? { part: p, ref: p } : null;
@@ -376,6 +389,9 @@
         spec.draw(G(b), q, mode, step, lab);
       }
     };
+    // 모바일 진입에서는 tabpanel의 선택지가 숨겨지므로, 원본 보기만 질문에 올립니다. 정답 판정은 없습니다.
+    if (['1101', '1207', '1607'].includes(spec.id)) sc.question = (s) => s.lessonEntry
+      ? spec.problem(sv(s)).text : spec.question;
     if (spec.tick) sc.tick = (s, dt, lab) => spec.tick(sv(s), dt, lab);
     SCENES.push(sc);
     return sc;
@@ -383,6 +399,53 @@
 
   const stat = (tone, text) => ({ tone, text });
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
+
+  // question·work·rule의 관계만 차례로 보여 줍니다. 원본 선택형의 verdictParts와
+  // sectorSpec의 모든 수치 readout은 lesson에서 바로 복사하지 않습니다.
+  function moreLessonView(id, q) {
+    const read = q.lessonEntry ? 0 : q.read | 0, show = !q.lessonEntry && !!q.show;
+    const v = { status: null, parts: [], readouts: [], chips: [], formula: '', rule: null };
+    if (id === '1101') {
+      if (read >= 1) v.readouts.push(rd('지름', '중심을 지나는 가장 긴 현', 'rose'));
+      if (read >= 3) v.readouts.push(rd('부채꼴', '두 반지름과 호로 둘러싼 도형', 'amber'));
+      if (read >= 5) v.readouts.push(rd('활꼴', '현과 호로 둘러싼 도형', 'green'));
+      if (read >= 7) v.readouts.push(rd('반원', '부채꼴이면서 활꼴', 'sky'));
+      if (show) v.status = stat('ok', '정답 ② — 두 점을 이은 선분은 현입니다.');
+    } else if (id === '1207') {
+      if (read >= 3 && read <= 4) v.readouts.push(rd('호의 길이의 비', '100 : 50 = 2 : 1', 'amber'));
+      if (read === 4) v.readouts.push(rd('부채꼴 넓이의 비', '2 : 1', 'green'));
+      if (read >= 7 && read <= 8) v.readouts.push(rd('같은 중심각', '현의 길이도 같고 부채꼴 넓이도 같음', 'sky'));
+      if (read >= 10) v.readouts.push(rd('중심각의 비', '180 : 60 = 3 : 1', 'amber'));
+      if (read >= 12) v.readouts.push(rd('60°의 현', q.r + ' cm', 'sky'));
+      if (read >= 13) v.readouts.push(rd('180°의 현', 2 * q.r + ' cm', 'rose', '지름 = 반지름 × 2'));
+      if (read >= 14) v.readouts.push(rd('현의 길이의 비', '12 : 6 = 2 : 1', 'sky'));
+      if (show) v.status = stat('ok', '정답 ③ — 현의 길이는 중심각에 정비례하지 않습니다.');
+    } else if (id === '1607') {
+      if (read >= 2) v.readouts.push(rd('같은 중심각의 현', 'AB = BC', 'amber'));
+      if (read >= 3) v.readouts.push(rd('같은 중심각의 호', '호 AB = 호 BC', 'amber'));
+      if (read >= 4) v.readouts.push(rd('큰 중심각', '40° + 40° = 80°', 'sky'));
+      if (read >= 5) v.readouts.push(rd('큰 호', '호 AC = 2 × 호 BC', 'rose'));
+      if (read >= 6) v.readouts.push(rd('넓이', '부채꼴 AOC = 2 × 부채꼴 BOC', 'sky'));
+      if (read >= 9) v.readouts.push(rd('삼각형의 두 변', 'AB + BC > AC', 'rose'));
+      if (read >= 10) v.readouts.push(rd('같은 두 변의 합', 'AB + BC = 2 × BC', 'amber'));
+      if (read >= 11) v.readouts.push(rd('현의 비교', 'AC < 2 × BC', 'rose'));
+      if (show) v.status = stat('ok', '정답 ③ — 현 AC는 현 BC의 2배보다 짧습니다.');
+    } else if (id === '1210') {
+      const S = q.r * q.r * q.th / 360, l = q.r * q.th / 180;
+      v.readouts = [rd('반지름 r', q.r + ' cm', 'sky'), rd('부채꼴 넓이 S', piS(S) + ' cm²', 'green')];
+      if (read >= 6) v.chips.push({ k: '관계', tex: 'S=\\frac{1}{2}rl', color: 'amber' });
+      if (read >= 7) v.chips.push({ k: '대입', tex: `${piT(S)}=\\frac{1}{2}\\times${q.r}\\times l`, color: 'sky' });
+      if (show) { v.readouts.push(rd('호의 길이 l', piS(l) + ' cm', 'rose')); v.status = stat('ok', '호의 길이 ' + piS(l) + ' cm'); }
+    } else if (id === 'x01') {
+      v.readouts.push(rd('같은 부채꼴', q.n + '개', 'amber'), rd('반지름', q.r + ' cm', 'sky'));
+      if (q.kind === 0 && read >= 1) v.readouts.push(rd('한 조각의 중심각', num(360 / q.n) + '°', 'amber'));
+      if (show) {
+        const value = q.kind === 0 ? '360°' : q.kind === 1 ? piS(2 * q.r) + ' cm' : piS(q.r * q.r) + ' cm²';
+        v.status = stat('ok', (q.kind === 0 ? '중심각의 합 ' : q.kind === 1 ? '호의 길이의 합 ' : '넓이의 합 ') + value);
+      }
+    }
+    return v;
+  }
 
   /* ======================================================================
      ① 원 알아보기 — 개념 5지선다 (그림 위에서 문장을 하나씩 확인)
@@ -457,6 +520,7 @@
     }),
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100, th = q.th, pa = q.pa, qa = pa + th, m = pa + th / 2;
+      const lesson = !!(q.lessonOn || q.lessonEntry), read = q.lessonEntry ? 0 : q.read | 0;
       g.reserve([-R - 8, -R - 8], [R + 8, R + 8]);
       const sel = mode === 'explore' ? q.part | 0 : mode === 'review' ? step : 0;
       const P = g.pol(O, R, pa), Q = g.pol(O, R, qa), half = Math.abs(th - 180) < 0.5;
@@ -468,14 +532,16 @@
       g.seg(O, Q, { color: 'amber', width: 2.6, ref: [3, 5] });
       g.seg(P, Q, { color: 'sky', width: 2.8, ref: [1, 2, 3, 4] });
       g.arc(O, R, pa, qa, { color: 'rose', width: 3, ref: [2, 3, 4, 5] });
-      if (q.th === 90) { g.right(O, P, Q, { size: 13, color: 'amber', ref: [3, 5] }); g.text(g.pol(O, 30, m), '90°', { color: 'amber', size: 15, ref: [3, 5] }); }
-      else g.ang(O, pa, qa, { r: 14, color: 'amber', label: q.th + '°', lr: 30, ref: [3, 5] });
-      if (sel === 0 || sel === 2 || sel === 5) g.out(g.pol(O, R, m), m, '호 PQ', { color: 'rose', ref: [2, 4, 5] }, 28);
+      if (!lesson || read >= 6 && read <= 7) {
+        if (q.th === 90) { g.right(O, P, Q, { size: 13, color: 'amber', ref: [3, 5] }); g.text(g.pol(O, 30, m), '90°', { color: 'amber', size: 15, ref: [3, 5] }); }
+        else g.ang(O, pa, qa, { r: 14, color: 'amber', label: q.th + '°', lr: 30, ref: [3, 5] });
+      }
+      if ((sel === 0 || sel === 2 || sel === 5) && (!lesson || read >= 3)) g.out(g.pol(O, R, m), m, lesson && read < 9 ? '곡선 PQ' : '호 PQ', { color: 'rose', ref: [2, 4, 5] }, 28);
       const M = [(P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2];
-      if (sel <= 2) g.text(M, '현 PQ', { color: 'sky', ref: [1, 2, 3, 4], dx: Math.cos(m * D2R) * 30, dy: -Math.sin(m * D2R) * 30 });
-      if (sel === 3 || sel === 5) g.text(g.pol(O, R * 0.62, m), '부채꼴', { color: 'amber', ref: [3, 5], size: 17 });
-      if (sel === 3 || sel === 4) g.text(g.pol(O, R * 0.5 * (1 + Math.cos((th * D2R) / 2)) + 8, m), '활꼴', { color: 'green', ref: [3, 4], size: 17, dy: th < 150 ? 0 : 0 });
-      if (sel === 1) g.text(g.pol(O, 0, 0), '지름', { color: 'rose', ref: 1, dx: 0, dy: -16 });
+      if (sel <= 2 && (!lesson || read >= 1)) g.text(M, lesson && read < 9 ? '선분 PQ' : '현 PQ', { color: 'sky', ref: [1, 2, 3, 4], dx: Math.cos(m * D2R) * 30, dy: -Math.sin(m * D2R) * 30 });
+      if ((sel === 3 || sel === 5) && (!lesson || read >= 3)) g.text(g.pol(O, R * 0.62, m), lesson && half && read >= 7 ? '부채꼴 = 활꼴' : '부채꼴', { color: 'amber', ref: [3, 5], size: 17 });
+      if ((sel === 3 || sel === 4) && (!lesson || read >= 5 && !half)) g.text(g.pol(O, R * 0.5 * (1 + Math.cos((th * D2R) / 2)) + 8, m), '활꼴', { color: 'green', ref: [3, 4], size: 17, dy: th < 150 ? 0 : 0 });
+      if (sel === 1 && (!lesson || read >= 1)) g.text(g.pol(O, 0, 0), '지름', { color: 'rose', ref: 1, dx: 0, dy: -16 });
       const upd = (np, nq) => {
         let t = mod(nq - np, 360);
         if (t < 20) t = 20;
@@ -556,6 +622,7 @@
     }),
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100;
+      const lesson = !!(q.lessonOn || q.lessonEntry), read = q.lessonEntry ? 0 : q.read | 0;
       g.reserve([-R - 8, -R - 8], [R + 8, R + 8]);
       const sel = mode === 'explore' ? q.part | 0 : mode === 'review' ? step : 0;
       const a0 = 20, b0 = 200, a1 = a0 + q.al, b1 = b0 + q.be;
@@ -573,7 +640,7 @@
       g.seg(PB[0], PB[1], { color: 'sky', width: 2.8, ref: [1, 3, 4] });
       g.arc(O, R, a0, a1, { color: 'amber', width: 3, ref: 2 });
       g.arc(O, R, b0, b1, { color: 'rose', width: 3, ref: 2 });
-      if (q.al === q.be) { g.tick(PA[0], PA[1], { color: 'amber' }); g.tick(PB[0], PB[1], { color: 'amber' }); }
+      if (q.al === q.be && (!lesson || read >= 6)) { g.tick(PA[0], PA[1], { color: 'amber' }); g.tick(PB[0], PB[1], { color: 'amber' }); }
       const markAngle = (start, end, value, color) => {
         if (value === 90) { g.right(O, g.pol(O, R, start), g.pol(O, R, end), { size: 13, color }); g.text(g.pol(O, 30, (start + end) / 2), '90°', { color, size: 15 }); }
         else g.ang(O, start, end, { r: 14, color, label: value + '°', lr: 30 });
@@ -582,18 +649,27 @@
       markAngle(b0, b1, q.be, 'rose');
       const mA = (a0 + a1) / 2, mB = (b0 + b1) / 2;
       if (sel === 0 || sel === 2) {
-        g.out(g.pol(O, R, mA), mA, '호 ' + piS((q.r * q.al) / 180), { color: 'amber', ref: 2 }, 36);
-        g.out(g.pol(O, R, mB), mB, '호 ' + piS((q.r * q.be) / 180), { color: 'rose', ref: 2 }, 36);
+        g.out(g.pol(O, R, mA), mA, lesson ? '노랑 호' : '호 ' + piS((q.r * q.al) / 180), { color: 'amber', ref: 2 }, 36);
+        g.out(g.pol(O, R, mB), mB, lesson ? '분홍 호' : '호 ' + piS((q.r * q.be) / 180), { color: 'rose', ref: 2 }, 36);
       }
       if (sel === 0 || sel === 1 || sel === 3 || sel === 4) {
         const mx = (P) => [(P[0][0] + P[1][0]) / 2, (P[0][1] + P[1][1]) / 2];
         const sg = (th) => (th < 90 ? -16 : 26);
-        g.text(mx(PA), '현', { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mA * D2R) * sg(q.al), dy: -Math.sin(mA * D2R) * sg(q.al) });
-        g.text(mx(PB), '현', { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mB * D2R) * sg(q.be), dy: -Math.sin(mB * D2R) * sg(q.be) });
+        g.text(mx(PA), lesson && read >= 12 ? '현 ' + q.r + ' cm' : '현', { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mA * D2R) * sg(q.al), dy: -Math.sin(mA * D2R) * sg(q.al) });
+        g.text(mx(PB), lesson && read >= 13 ? '지름 ' + 2 * q.r + ' cm' : '현', { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mB * D2R) * sg(q.be), dy: -Math.sin(mB * D2R) * sg(q.be) });
       }
       if (sel === 5) {
-        g.text(g.pol(O, R * 0.66, mA), '넓이 ' + piS((q.r * q.r * q.al) / 360), { color: 'amber', ref: 5, size: 14 });
-        g.text(g.pol(O, R * 0.66, mB), '넓이 ' + piS((q.r * q.r * q.be) / 360), { color: 'rose', ref: 5, size: 14 });
+        g.text(g.pol(O, R * 0.66, mA), lesson ? '노랑 부채꼴' : '넓이 ' + piS((q.r * q.r * q.al) / 360), { color: 'amber', ref: 5, size: 14 });
+        g.text(g.pol(O, R * 0.66, mB), lesson ? '분홍 부채꼴' : '넓이 ' + piS((q.r * q.r * q.be) / 360), { color: 'rose', ref: 5, size: 14 });
+      }
+      if (lesson) {
+        g.text(g.pol(O, R * .53, a0), 'r = ' + q.r + ' cm', { color: 'amber', size: 14, dy: 18 });
+        if (read >= 11 && q.al === 60) {
+          g.tick(O, PA[0], { color: 'amber' }); g.tick(O, PA[1], { color: 'amber' }); g.tick(PA[0], PA[1], { color: 'amber' });
+          g.ang(PA[0], a0 + 120, a0 + 180, { r: 9, color: 'amber', label: '60°', lr: 22, size: 13 });
+          g.ang(PA[1], a1 + 180, a1 + 240, { r: 9, color: 'amber', label: '60°', lr: 22, size: 13 });
+        }
+        if (read >= 14) g.text([0, -119], '각 3배 · 현 2배', { color: 'rose', size: 16 });
       }
       if (mode === 'explore') {
         const alphaLabel = { label: 'α', toward: O };
@@ -690,6 +766,7 @@
     }),
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100, a0 = 110, ph = q.ph;
+      const lesson = !!(q.lessonOn || q.lessonEntry), read = q.lessonEntry ? 0 : q.read | 0;
       // 좁은 화면에서 왼쪽 호 라벨의 공간만 확보하며 원의 크기는 유지합니다.
       if (g.b.W <= 560) g.shiftRight(32);
       g.reserve([-R - 18, -R - 18], [R + 18, R + 18]);
@@ -703,7 +780,7 @@
       g.seg(A, B, { color: 'amber', width: 2.2, ref: [1, 3] });
       g.seg(B, C, { color: 'amber', width: 2.2, ref: [1, 3] });
       g.seg(A, C, { color: 'rose', width: 2.2, ref: 3 });
-      g.tick(A, B, { color: 'amber' }); g.tick(B, C, { color: 'amber' });
+      if (!lesson || read >= 2) { g.tick(A, B, { color: 'amber' }); g.tick(B, C, { color: 'amber' }); }
       g.arc(O, R, a0, a0 + ph, { color: 'amber', width: 2.6, ref: [2, 4] });
       g.arc(O, R, a0 + ph, a0 + 2 * ph, { color: 'amber', width: 2.6, ref: [2, 4] });
       g.arc(O, R + 9, a0, a0 + 2 * ph, { color: 'rose', width: 2, ref: 2 });
@@ -717,12 +794,23 @@
       if (sel === 3) g.text(mid(A, C), 'AC', { color: 'rose', ref: 3, dx: 28, dy: -4 });
       if (sel === 2) {
         const arcClearance = { center: O, radius: R + 9, names: [[A, 'A'], [B, 'B'], [C, 'C']] };
-        g.out(g.pol(O, R + 9, a0 + ph), a0 + ph, '호 AC ' + piS((q.r * 2 * ph) / 180), { color: 'rose', ref: 2, leaderAnchor: B, arcClearance }, 34);
-        g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 2, arcClearance }, 62);
+        g.out(g.pol(O, R + 9, a0 + ph), a0 + ph, lesson ? '호 AC' : '호 AC ' + piS((q.r * 2 * ph) / 180), { color: 'rose', ref: 2, leaderAnchor: B, arcClearance }, 34);
+        g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, lesson ? '호 BC' : '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 2, arcClearance }, 62);
       }
       if (sel === 4) {
-        g.out(g.pol(O, R, a0 + 0.5 * ph), a0 + 0.5 * ph, '호 AB ' + piS((q.r * ph) / 180), { color: 'amber', ref: 4 }, 34);
-        g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 4 }, 34);
+        g.out(g.pol(O, R, a0 + 0.5 * ph), a0 + 0.5 * ph, lesson ? '호 AB' : '호 AB ' + piS((q.r * ph) / 180), { color: 'amber', ref: 4 }, 34);
+        g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, lesson ? '호 BC' : '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 4 }, 34);
+      }
+      if (lesson) {
+        g.reserve([-128, -150], [128, 122]);
+        if (read >= 4 && read <= 6) g.ang(O, a0, a0 + 2 * ph, { r: 60, color: 'sky', label: 2 * ph + '°', lr: 77 });
+        if (read >= 6 && sel === 5) {
+          g.text(g.pol(O, R * .7, a0 + .5 * ph), 'AOC', { color: 'sky', size: 15 });
+          g.text(g.pol(O, R * .7, a0 + 1.5 * ph), 'BOC', { color: 'rose', size: 15 });
+        }
+        const relation = read >= 11 ? 'AC < 2 × BC' : read >= 10 ? 'AB + BC = 2 × BC' : read >= 9 ? 'AB + BC > AC'
+          : read >= 6 && sel === 5 ? '넓이 AOC = 2 × 넓이 BOC' : read >= 5 && sel === 2 ? '호 AC = 2 × 호 BC' : '';
+        if (relation) g.text([0, -133], relation, { color: 'rose', size: 16 });
       }
       if (mode === 'explore') g.handle('C', C, { label: 'C', toward: O, drag: (w) => { q.ph = clamp(snap(mod(dirOf(O, w) - a0, 360) / 2, 5), 10, 85); } });
       else g.dot(C, { color: 'ink', label: 'C', toward: O });
@@ -752,6 +840,31 @@
   const SCOL = { r: 'sky', th: 'amber', l: 'amber', S: 'amber' };
 
   const sp = (list) => list.map(([r, th]) => ({ label: `r=${r} cm · ${th}°`, apply: (q) => { q.r = r; q.th = th; }, on: (q) => q.r === r && q.th === th }));
+  // 1210 해설 전용: sQ의 두 식에 들어가는 같은 비율을 나눠 S=½rl을 얻습니다.
+  // 잘게 자른 조각을 정확한 삼각형이라고 부르는 시각적 근사를 쓰지 않습니다.
+  function drawAreaArcLesson(g, q) {
+    const read = q.lessonEntry ? 0 : q.read | 0, show = !q.lessonEntry && !!q.show;
+    const O = [0, 29], R = 75, th = q.th, m = th / 2, v = sQ(q), light = q.lessonEntry ? 0 : clamp(q.link, 0, 1);
+    g.reserve([-115, -146], [115, 125]);
+    if (read >= 2) g.arc(O, R, th, 360, { color: 'muted', width: 1.7, dash: [5, 6] });
+    g.arc(O, R, 0, th, { sector: true, fill: 'green', fillAlpha: .14 + .12 * light, stroke: false });
+    g.seg(O, g.pol(O, R, 0), { color: 'sky', width: 2.5 + 2 * light });
+    g.seg(O, g.pol(O, R, th), { color: 'sky', width: 2.5 });
+    g.tick(O, g.pol(O, R, 0), { color: 'sky' }); g.tick(O, g.pol(O, R, th), { color: 'sky' });
+    g.arc(O, R, 0, th, { color: 'rose', width: read >= 1 ? 5 : 3 });
+    g.text(g.pol(O, R * .52, 0), `r = ${q.r} cm`, { color: 'sky', size: 16, dy: 20 });
+    g.text(g.pol(O, R * .58, m), 'S = ' + piS(v.S) + ' cm²', { color: 'green', size: 16 });
+    g.out(g.pol(O, R, m), m, show ? '호 l = ' + piS(v.l) + ' cm' : '호 l = ? cm', { color: 'rose', size: 16 }, 30);
+    g.dot(O, { color: 'ink', r: 4, label: 'O', dx: -12, dy: 14, align: 'center' });
+    const line = (y, text, color = 'ink') => g.text([0, y], text, { color, size: 15 });
+    if (read === 2) line(-80, '호와 넓이: 원의 같은 비율 k', 'amber');
+    if (read === 3) { line(-78, 'S = πr² × k', 'green'); line(-105, 'l = 2πr × k', 'rose'); }
+    if (read === 4) { line(-78, 'S/l = (πr² × k)/(2πr × k)', 'amber'); line(-105, '분자와 분모의 같은 k를 약분'); }
+    if (read === 5) { line(-78, 'S/l = r/2', 'amber'); line(-105, '넓이 ÷ 호 = 반지름 ÷ 2'); }
+    if (read === 6) { line(-78, 'S = ½ × r × l', 'amber'); line(-105, '반지름 × 호의 길이의 절반'); }
+    if (read >= 7) line(-78, piS(v.S) + ' = ½ × ' + q.r + ' × l', 'amber');
+    if (read >= 8) line(-105, 'l = ' + piS(v.S) + ' × 2 ÷ ' + q.r + (show ? ' = ' + piS(v.l) + ' cm' : ''), 'rose');
+  }
   function sectorSpec(o) {
     const thMin = o.thMin || 10, thMax = o.thMax || 350;
     const box = sectorBox(thMax);
@@ -772,11 +885,13 @@
         th: { value: o.def.th, min: thMin, max: thMax, step: 5, color: 'amber', label: '중심각 θ', format: (v) => v + '°' }
       },
       controls: ['r', 'th'],
+      // 해설(lesson) 재생 중에만 쓰는 값(탐구·정리·문제 화면에는 영향이 없음): div(0~1) 원을 같은 중심각의 부채꼴로 나눈 선이 나타나는 정도, ref 기준 라벨(1 원주 · 2 원의 넓이)
+      state: { div: 0, ref: 0 },
       presets: o.presets,
       steps: o.steps, work: o.work, rule: o.rule,
       chips: (q, mode, step) => {
         const v = sQ(q);
-        if (mode === 'review') return o.chipsF ? o.chipsF(q, v, step) : [];
+        if (mode === 'review') return o.chipsF && !(q.lessonOn && step < 1) ? o.chipsF(q, v, step) : []; // 해설 재생 중 step 0 에는 정답 칩을 아낌
         return [{ k: '호', tex: `l = 2\\pi r\\times\\frac{\\theta}{360} = ${piT(v.l)}`, color: 'amber' }, { k: '넓이', tex: `S = \\pi r^2\\times\\frac{\\theta}{360} = ${piT(v.S)}`, color: 'green' }].slice(0, mode === 'explore' ? 2 : 0);
       },
       view: (q, mode) => {
@@ -792,16 +907,34 @@
       },
       problem: o.problem,
       draw(g, q, mode, step) {
+        if (o.id === '1210' && (q.lessonOn || q.lessonEntry)) { drawAreaArcLesson(g, q); return; }
         const O = [0, 0], r = q.r, R = r * SU, th = q.th, m = th / 2, v = sQ(q);
         g.reserve(box[0], box[1]);
+        // 해설(재생·진입 화면)에서 반원 이하(thMax<350)만 그리는 장면(1610·1808)도 원 전체를 보여 주므로 틀에 원 전체를 넣습니다. 다른 화면은 그대로.
+        if ((q.lessonOn || q.lessonEntry) && thMax < 350) g.reserve([-R - 6, -R - 6], [R + 6, R + 6]);
         // 원 전체(흐리게)와 부채꼴
         if (th < thMax) g.arc(O, R, th, thMax >= 350 ? 360 : thMax, { color: 'muted', alpha: 0.6, width: 1.8, dash: [5, 6] });
         g.arc(O, R, 0, th, { sector: true, fill: 'sky', fillAlpha: ['1210', '1609', '1610'].includes(o.id) ? 0.08 : 0.3, stroke: false });
+        // 해설 재생 중(q.lessonOn)에만: 원 전체를 이 부채꼴과 같은 중심각의 조각으로 나눈 선(div)과 기준값 라벨(ref). 나머지 화면은 그대로입니다.
+        if (q.lessonOn) {
+          const u = gcd(Math.round(th), 360), rest = (th + 360) / 2;
+          if (thMax < 350) g.arc(O, R, thMax, 360, { color: 'muted', alpha: 0.6, width: 1.8, dash: [5, 6] });
+          if (q.div > 0 && 360 / u <= 12) {
+            for (let a = u; a < 360 - 0.5; a += u) if (Math.abs(a - th) > 0.5) g.seg(O, g.pol(O, R, a), { color: 'violet', width: 1.8, dash: [6, 5], alpha: 0.85 * q.div });
+            for (let a = th; a < 360 - 0.5; a += u) g.arc(O, R, a, a + u, { sector: true, fill: 'violet', fillAlpha: 0.1 * q.div, stroke: false });
+          }
+          if (q.ref === 1) g.out(g.pol(O, R, rest), rest, `원주 ${piS(2 * r)} cm`, { color: 'sky', size: 16 }, 32);
+          else if (q.ref === 2 && u < 90) g.out(g.pol(O, R, rest), rest, `원의 넓이 ${piS(r * r)} cm²`, { color: 'sky', size: 15 }, 32); // 조각이 좁으면 원 바깥에 지시선으로
+          else if (q.ref === 2) { const pa = th + u / 2, pp = g.pol(O, R * 0.58, pa); g.text(pp, '원의 넓이', { color: 'sky', size: 15, dy: -26 }); g.text(pp, `${piS(r * r)} cm²`, { color: 'sky', size: 15, dy: -7 }); }
+        }
         g.seg(O, [R, 0], { color: 'ink', width: 2.8 });
         g.seg(O, g.pol(O, R, th), { color: 'ink', width: 2.8 });
         g.tick(O, [R, 0], { color: 'ink' });
         g.tick(O, g.pol(O, R, th), { color: 'ink' });
-        const stL = stateOf('l', mode, step);
+        // 넓이 해설에서 호 길이 계산까지 함께 공개하지 않습니다.
+        // 직접 해 보기와 다른 장면의 단계 공개는 원래대로 둡니다.
+        const stL = o.id === '1209' && q.lessonOn && q.ref === 2
+          ? { s: 'hide', c: 'sky' } : stateOf('l', mode, step);
         g.arc(O, R, 0, th, { color: stL.s === 'hide' ? 'sky' : stL.c === 'ink' ? 'sky' : stL.c, width: ['1210', '1609', '1610'].includes(o.id) ? 3 : 5 });
         const ar = Math.min(R * 0.34, ['1210', '1609', '1610'].includes(o.id) ? 14 : 30);
         const stT = stateOf('th', mode, step);
@@ -988,6 +1121,7 @@
       y: { value: 75, min: 20, max: 120, step: 5, color: 'rose', label: '아래쪽 중심각 y', format: (v) => v + '°' }
     },
     controls: ['t1', 't2', 'y', 'u'],
+    state: { show: 0 }, // 해설 재생 전용: 1 이 되기 전에는 x 값(라벨·칩)을 그리지 않음
     steps: (q) => {
       const k = q.u / 5, l1 = k * q.t1, x = k * q.t2, l3 = k * q.y;
       return [`① ${numF(l1)} : x = ${q.t1} : ${q.t2} → x = ${numF(x)}`, `② ${numF(l1)} : ${numF(l3)} = ${q.t1} : y → y = ${q.y}`, `③ x + y = ${numF(x)} + ${q.y} = ${numF(x + q.y)}`];
@@ -1002,6 +1136,7 @@
     },
     chips: (q, mode, step) => {
       const k = q.u / 5, l1 = k * q.t1, x = k * q.t2;
+      if (mode === 'review' && q.lessonOn && !q.show) return [];
       if (mode === 'review' && step === 1) return [{ k: '비례식', tex: `${numF(l1, true)}:x=${q.t1}:${q.t2}\\ \\Rightarrow\\ x=${numF(x, true)}`, color: 'rose' }];
       if (mode === 'review' && step === 2) return [{ k: '비례식', tex: `${numF(l1, true)}:${numF(k * q.y, true)}=${q.t1}:y\\ \\Rightarrow\\ y=${q.y}`, color: 'rose' }];
       if (mode === 'review') return [{ k: '합', tex: `x+y=${numF(x, true)}+${q.y}=${numF(x + q.y, true)}`, color: 'rose' }];
@@ -1037,7 +1172,7 @@
       g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
       g.seg([-R, 0], [R, 0], { color: 'ink', width: 2.4 });
       [a1, a2, b0, b1].forEach((a) => g.seg(O, g.pol(O, R, a), { color: 'ink', width: 2.4 }));
-      const showX = mode === 'explore' || (mode === 'review' && step >= 1);
+      const showX = mode === 'explore' || (mode === 'review' && step >= 1 && !(q.lessonOn && !q.show));
       const showY = mode === 'explore' || (mode === 'review' && step >= 2);
       g.arc(O, R, a1, 180, { color: 'amber', width: 3 });
       g.arc(O, R, 0, a2, { color: 'rose', width: 3 });
@@ -1400,6 +1535,7 @@
       al: { value: 40, min: 20, max: 70, step: 10, color: 'amber', label: '∠AOC', format: (v) => v + '°' }
     },
     controls: ['al', 'r'],
+    state: { baseShow: false }, // 해설: 밑각을 말한 뒤 중심각을 계산합니다.
     steps: (q) => {
       const cd = 180 - 2 * q.al, lAC = (q.r * q.al) / 180, lCD = (q.r * cd) / 180;
       return [`① AB ∥ CD → ∠OCD = ∠AOC = ${q.al}° (엇각), OC = OD → ∠ODC = ${q.al}° → ∠COD = 180° − 2×${q.al}° = ${cd}°`, `② 호의 길이는 중심각에 정비례 : ${piS(lAC)} : 호 CD = ${q.al} : ${cd} → 호 CD = ${piS(lCD)} cm`];
@@ -1451,7 +1587,7 @@
       g.arc(O, R, 180 + al, 360 - al, { color: 'rose', width: 5 });
       g.ang(O, 180, 180 + al, { r: 24, color: 'amber', label: al + '°', lr: 40, size: 16, mid: 180 + Math.min(al / 2, 20) });
       g.ang(O, 180 + al, 360 - al, { r: 22, color: 'rose', label: s1 ? cd + '°' : '?°', lr: 46, size: 16, mid: 270 });
-      if (s1) {
+      if (s1 || (q.lessonOn && q.baseShow)) {
         // C에서 ∠OCD (엇각), D에서 ∠ODC
         g.ang(C, 0, al, { r: 24, color: 'amber', label: al + '°', lr: 40, size: 15 });
         g.ang(D, 180 - al, 180, { r: 24, color: 'amber', label: al + '°', lr: 40, size: 15 });
@@ -1479,6 +1615,7 @@
       be: { value: 42, min: 18, max: 60, step: 6, color: 'amber', label: '∠BOD', format: (v) => v + '°' }
     },
     controls: ['be', 'r'],
+    state: { baseShow: false }, // 해설: 보조선·밑각과 중심각의 계산 시점을 분리합니다.
     steps: (q) => {
       const ac = 180 - 2 * q.be, lBD = (q.r * q.be) / 180, lAC = (q.r * ac) / 180;
       return [`① AC ∥ OD → ∠OAC = ∠BOD = ${q.be}° (동위각), OA = OC → ∠OCA = ${q.be}° → ∠AOC = 180° − 2×${q.be}° = ${ac}°`, `② ${piS(lBD)} : 호 AC = ${q.be} : ${ac} → 호 AC = ${piS(lAC)} cm`];
@@ -1518,22 +1655,23 @@
       const A = [-R, 0], B = [R, 0], D = g.pol(O, R, be), C = g.pol(O, R, 2 * be);
       const s1 = mode === 'explore' || (mode === 'review' && step >= 1);
       const s2 = mode === 'explore' || (mode === 'review' && step >= 2);
-      if (s1) g.poly([O, A, C], { color: null, fill: 'rose', fillAlpha: 0.12, stroke: false });
+      const showBase = s1 || (q.lessonOn && q.baseShow);
+      if (showBase) g.poly([O, A, C], { color: null, fill: 'rose', fillAlpha: 0.12, stroke: false });
       g.arc(O, R, 0, 180, { color: 'ink', alpha: 0.9, width: 2.4 });
       g.seg(A, B, { color: 'ink', width: 2.6 });
       g.seg(O, D, { color: 'ink', width: 2.6 });
       g.seg(A, C, { color: 'ink', width: 2.6 });
       parMark(g, A, C, 'sky'); parMark(g, O, D, 'sky');
-      if (s1) { g.seg(O, C, { color: 'rose', width: 2.6, dash: [6, 5] }); g.tick(O, A, { color: 'amber' }); g.tick(O, C, { color: 'amber' }); }
+      if (showBase) { g.seg(O, C, { color: 'rose', width: 2.6, dash: [6, 5] }); g.tick(O, A, { color: 'amber' }); g.tick(O, C, { color: 'amber' }); }
       g.arc(O, R, 0, be, { color: 'amber', width: 5 });
       g.arc(O, R, 2 * be, 180, { color: 'rose', width: 5 });
       g.ang(O, 0, be, { r: 28, color: 'amber', label: be + '°', lr: 56, size: 16, mid: Math.min(be / 2, 20) });
-      if (s1) {
+      if (showBase) {
         g.ang(A, 0, be, { r: 30, color: 'amber', label: be + '°', lr: 58, size: 15, mid: Math.min(be / 2, 16) });
         const dCO = Math.atan2(-C[1], -C[0]) / D2R;
         const dCA = Math.atan2(A[1] - C[1], A[0] - C[0]) / D2R;
         g.ang(C, Math.min(dCO, dCA), Math.max(dCO, dCA), { r: 26, color: 'amber', label: be + '°', lr: 56, size: 15, mid: 258 });
-        g.ang(O, 2 * be, 180, { r: 20, color: 'rose', label: ac + '°', lr: 42, size: 16, mid: (2 * be + 180) / 2 });
+        if (s1) g.ang(O, 2 * be, 180, { r: 20, color: 'rose', label: ac + '°', lr: 42, size: 16, mid: (2 * be + 180) / 2 });
       }
       const lBD = (q.r * be) / 180, lAC = (q.r * ac) / 180;
       // 좁은 화면에서도 주어진 호 길이가 목차 손잡이·점 D 이름과 겹치지 않게 합니다.
@@ -1641,6 +1779,7 @@
     controls: ['n', 'r', 't'],
     actions: [{ id: 'play', play: true, primary: true, icon: (q) => (q.playing ? 'pause' : 'play'), label: (q) => (q.playing ? '멈춤' : '모으기 재생'), on: (q) => q.playing, run: (q) => { if (!q.playing && q.t >= 0.999) q.t = 0; q.playing = !q.playing; } }],
     tick: (q, dt, lab) => {
+      if (q.lessonOn || q.lessonEntry) return false; // lesson의 t 트랙과 정리 탭 자동 모으기가 서로 덮어쓰지 않습니다.
       if (lab && lab.tab === 'review') {
         const goal = q.step >= 2 ? 1 : 0, d = goal - q.t;
         if (Math.abs(d) < 0.004) { q.t = goal; return false; }
@@ -1677,6 +1816,7 @@
     },
     draw(g, q, mode, step, lab) {
       const n = q.n, th = 360 / n, Rw = 62, t = clamp(q.t, 0, 1);
+      const lesson = !!(q.lessonOn || q.lessonEntry), read = q.lessonEntry ? 0 : q.read | 0, show = !q.lessonEntry && !!q.show;
       g.reserve([-126, -Rw - 28], [126, Rw + 28]);
       const c = 2 * Rw * Math.sin((Math.min(th, 180) * D2R) / 2), W = c / 2 + Rw * 0.08;
       for (let i = 0; i < n; i++) {
@@ -1688,14 +1828,19 @@
         g.seg(A, g.pol(A, Rw, a0), { color: 'ink', width: 2.2 });
         g.seg(A, g.pol(A, Rw, a1), { color: 'ink', width: 2.2 });
         g.arc(A, Rw, a0, a1, { color: 'rose', width: 4.6 });
-        if (i === 0) {
+        if (i === 0 && (!lesson || q.kind === 0 && read >= 1)) {
           const ar = Math.min(Rw * 0.3, 24);
           g.ang(A, a0, a1, { r: ar, color: 'amber', label: num(th) + '°', lr: ar + 16, size: 15, mid: phi });
         }
+        if (i === 0 && lesson) g.text(g.pol(A, Rw * .55, a0), 'r = ' + q.r + ' cm', { color: 'sky', size: 14, dy: 18 });
         g.dot(A, { color: 'ink', r: 3.2, glow: false });
       }
       if (t > 0.97) g.text([0, 0], '원 하나', { color: 'ink', size: 17, dy: 0 });
-      if (t < 0.03) g.text([0, -Rw - 16], `${n}개의 부채꼴 · 각각 ${num(th)}° · 가로로 밀어서 모읍니다`, { color: 'ink', size: 15, dy: 0 });
+      if (t < 0.03) g.text([0, -Rw - 16], lesson ? `${n}개의 같은 부채꼴` : `${n}개의 부채꼴 · 각각 ${num(th)}° · 가로로 밀어서 모읍니다`, { color: 'ink', size: 15, dy: 0 });
+      if (lesson && show) {
+        const value = q.kind === 0 ? '중심각의 합 360°' : q.kind === 1 ? '호의 합 ' + piS(2 * q.r) + ' cm' : '넓이의 합 ' + piS(q.r * q.r) + ' cm²';
+        g.text([0, -Rw - 16], value, { color: q.kind === 2 ? 'green' : 'rose', size: 16 });
+      }
     }
   });
 

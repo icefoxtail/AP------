@@ -15,7 +15,11 @@ window.examData = {
         "$4.5$"
       ],
       answer: "④",
-      solution: "$\\overline{BC}//\\overline{DE}$이므로 삼각형 $ADE$에서\n$\\overline{AB}:\\overline{BD}=\\overline{AC}:\\overline{CE}$이다.\n$x:8=6:12$\n$12x=48$\n$x=4$이다.\n정답은 ④이다."
+      solution: "$\\overline{BC}//\\overline{DE}$이므로 삼각형 $ADE$에서\n$\\overline{AB}:\\overline{BD}=\\overline{AC}:\\overline{CE}$이다.\n$x:8=6:12$\n$12x=48$\n$x=4$이다.\n정답은 ④이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 삼각형 ADE에서 변 AD 위의 점 B와 변 AE 위의 점 C를 잇는 BC가 DE와 평행한 문제 그림으로, AB는 x, BD는 8, AC는 6, CE는 12이다. 둘째는 같은 도형에서 AB와 AC를 파란색, BD와 CE를 주황색으로 칠해 대응하는 선분을 보인다. 길이의 단위는 cm이다.",
+      "solutionImageCaption": "BC와 DE가 평행하므로 삼각형 ADE에서 AB와 BD의 비는 AC와 CE의 비와 같다. x와 8의 비가 6과 12의 비이므로 12x=48이다. 정답은 x=4이다. 따라서 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 2,
@@ -29,7 +33,11 @@ window.examData = {
         "$16\\text{ cm}$"
       ],
       answer: "②",
-      solution: "점 $D$를 지나고 $\\overline{AB}$에 평행한 선분을 그어 $\\overline{EF}$, $\\overline{BC}$와 만나는 점을 각각 $G$, $H$라 하자.\n사각형 $ABHD$와 사각형 $AEGD$는 두 쌍의 대변이 평행하므로 평행사변형이다.\n따라서 $\\overline{BH}=\\overline{AD}=8\\text{ cm}$, $\\overline{EG}=\\overline{AD}=8\\text{ cm}$, $\\overline{DG}=\\overline{AE}=4\\text{ cm}$, $\\overline{DH}=\\overline{AB}=4+6=10\\text{ cm}$이다.\n$\\overline{GF}=\\overline{EF}-\\overline{EG}=10-8=2\\text{ cm}$이다.\n\n삼각형 $DHC$에서 $\\overline{GF}//\\overline{HC}$이므로\n$\\overline{DG}:\\overline{DH}=\\overline{GF}:\\overline{HC}$\n$4:10=2:\\overline{HC}$\n$\\overline{HC}=5\\text{ cm}$이다.\n\n따라서 $\\overline{BC}=\\overline{BH}+\\overline{HC}=8+5=13\\text{ cm}$이다.\n정답은 ②이다."
+      solution: "점 $D$를 지나고 $\\overline{AB}$에 평행한 선분을 그어 $\\overline{EF}$, $\\overline{BC}$와 만나는 점을 각각 $G$, $H$라 하자.\n사각형 $ABHD$와 사각형 $AEGD$는 두 쌍의 대변이 평행하므로 평행사변형이다.\n따라서 $\\overline{BH}=\\overline{AD}=8\\text{ cm}$, $\\overline{EG}=\\overline{AD}=8\\text{ cm}$, $\\overline{DG}=\\overline{AE}=4\\text{ cm}$, $\\overline{DH}=\\overline{AB}=4+6=10\\text{ cm}$이다.\n$\\overline{GF}=\\overline{EF}-\\overline{EG}=10-8=2\\text{ cm}$이다.\n\n삼각형 $DHC$에서 $\\overline{GF}//\\overline{HC}$이므로\n$\\overline{DG}:\\overline{DH}=\\overline{GF}:\\overline{HC}$\n$4:10=2:\\overline{HC}$\n$\\overline{HC}=5\\text{ cm}$이다.\n\n따라서 $\\overline{BC}=\\overline{BH}+\\overline{HC}=8+5=13\\text{ cm}$이다.\n정답은 ②이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 사다리꼴에서 AD, EF, BC가 평행하고 AE는 4, EB는 6, AD는 8, EF는 10인 문제 그림이다. 둘째는 D를 지나 AB에 평행한 DH를 그어 EF와 만나는 점을 G, BC와 만나는 점을 H라 하고 평행사변형 두 개를 파란색과 주황색으로 칠한 그림이다. 셋째는 삼각형 DHC에서 GF가 HC와 평행하고 DG는 4, DH는 10, GF는 2, HC는 5인 그림이다. 길이의 단위는 cm이다.",
+      "solutionImageCaption": "D를 지나 AB에 평행한 DH를 그으면 두 사각형이 모두 평행사변형이다. 따라서 BH와 EG는 AD와 같은 8 cm이고 DG는 AE와 같은 4 cm, DH는 AB와 같은 10 cm이며 GF는 10에서 8을 뺀 2 cm이다. 삼각형 DHC에서 GF와 HC가 평행하므로 4:10=2:HC이어서 HC는 5 cm이고 BC는 BH와 HC를 더한 길이이다. 정답은 13 cm이다. 따라서 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 3,
@@ -43,7 +51,11 @@ window.examData = {
         "삼각형 ABC의 둘레는 삼각형 DEF의 $2$배이다."
       ],
       answer: "④",
-      solution: "세 점 $D, E, F$는 각 변의 중점이므로 삼각형의 중점연결정리에 의해\n$\\overline{DF}//\\overline{BC}$, $\\overline{EF}//\\overline{AB}$, $\\overline{DE}//\\overline{AC}$이고\n$\\overline{DF}=\\dfrac12\\overline{BC}$, $\\overline{EF}=\\dfrac12\\overline{AB}$, $\\overline{DE}=\\dfrac12\\overline{AC}$이다.\n\n① $\\overline{DF}//\\overline{BC}$이므로 옳다.\n② $\\overline{EF}=\\dfrac12\\overline{AB}=\\overline{BD}$이므로 옳다.\n③ $\\overline{DF}//\\overline{BC}$이므로 동위각이 같아 $\\angle AFD=\\angle ACB$이다. 옳다.\n④ 삼각형 $ADF$, $DBE$, $FEC$, $DEF$는 세 변의 길이가 각각 같으므로 서로 합동이다. 따라서 삼각형 $ABC$의 넓이는 삼각형 $DEF$의 $4$배인 $4\\times12=48\\text{ cm}^2$이다. $36\\text{ cm}^2$가 아니므로 옳지 않다.\n⑤ 삼각형 $DEF$의 세 변은 삼각형 $ABC$의 각 변의 $\\dfrac12$이므로 삼각형 $ABC$의 둘레는 삼각형 $DEF$의 2배이다. 옳다.\n따라서 옳지 않은 것은 ④이다.\n정답은 ④이다."
+      solution: "세 점 $D, E, F$는 각 변의 중점이므로 삼각형의 중점연결정리에 의해\n$\\overline{DF}//\\overline{BC}$, $\\overline{EF}//\\overline{AB}$, $\\overline{DE}//\\overline{AC}$이고\n$\\overline{DF}=\\dfrac12\\overline{BC}$, $\\overline{EF}=\\dfrac12\\overline{AB}$, $\\overline{DE}=\\dfrac12\\overline{AC}$이다.\n\n① $\\overline{DF}//\\overline{BC}$이므로 옳다.\n② $\\overline{EF}=\\dfrac12\\overline{AB}=\\overline{BD}$이므로 옳다.\n③ $\\overline{DF}//\\overline{BC}$이므로 동위각이 같아 $\\angle AFD=\\angle ACB$이다. 옳다.\n④ 삼각형 $ADF$, $DBE$, $FEC$, $DEF$는 세 변의 길이가 각각 같으므로 서로 합동이다. 따라서 삼각형 $ABC$의 넓이는 삼각형 $DEF$의 $4$배인 $4\\times12=48\\text{ cm}^2$이다. $36\\text{ cm}^2$가 아니므로 옳지 않다.\n⑤ 삼각형 $DEF$의 세 변은 삼각형 $ABC$의 각 변의 $\\dfrac12$이므로 삼각형 $ABC$의 둘레는 삼각형 $DEF$의 2배이다. 옳다.\n따라서 옳지 않은 것은 ④이다.\n정답은 ④이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 삼각형 ABC에서 세 변 AB, BC, AC의 중점 D, E, F를 이은 삼각형 DEF의 넓이가 12 cm²인 문제 그림이다. 둘째는 중점을 이은 선으로 나뉜 네 삼각형 ADF, DBE, FEC, DEF를 같은 파란색으로 칠하고 각각 넓이 12를 적은 그림이다. 평행한 변에는 같은 수의 표식이 있다.",
+      "solutionImageCaption": "D, E, F가 각 변의 중점이므로 중점연결정리에 따라 삼각형 ABC는 합동인 네 삼각형 ADF, DBE, FEC, DEF로 나뉜다. 따라서 삼각형 ABC의 넓이는 삼각형 DEF의 4배인 48 cm²이어서 36 cm²라는 ④가 옳지 않고, 나머지 보기는 중점연결정리와 닮음으로 모두 옳다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 4,
@@ -57,7 +69,11 @@ window.examData = {
         "$20\\text{ cm}$"
       ],
       answer: "③",
-      solution: "대각선 $AC$와 $BD$의 교점이 $O$이고 평행사변형의 두 대각선은 서로를 이등분하므로 $O$는 $\\overline{AC}$, $\\overline{BD}$의 중점이다.\n삼각형 $ABC$에서 $\\overline{AE}$와 $\\overline{BO}$는 각각 $\\overline{BC}$, $\\overline{AC}$의 중점을 지나는 중선이므로 점 $P$는 삼각형 $ABC$의 무게중심이다.\n따라서 $\\overline{BP}:\\overline{PO}=2:1$이고 $\\overline{BP}=12\\text{ cm}$이므로 $\\overline{BO}=\\dfrac32\\times12=18\\text{ cm}$이다.\n$\\overline{BD}=2\\overline{BO}=36\\text{ cm}$이다.\n\n삼각형 $CBD$에서 $E$, $F$가 각각 $\\overline{BC}$, $\\overline{CD}$의 중점이므로 중점연결정리에 의해\n$\\overline{EF}=\\dfrac12\\overline{BD}=18\\text{ cm}$이다.\n정답은 ③이다."
+      solution: "대각선 $AC$와 $BD$의 교점이 $O$이고 평행사변형의 두 대각선은 서로를 이등분하므로 $O$는 $\\overline{AC}$, $\\overline{BD}$의 중점이다.\n삼각형 $ABC$에서 $\\overline{AE}$와 $\\overline{BO}$는 각각 $\\overline{BC}$, $\\overline{AC}$의 중점을 지나는 중선이므로 점 $P$는 삼각형 $ABC$의 무게중심이다.\n따라서 $\\overline{BP}:\\overline{PO}=2:1$이고 $\\overline{BP}=12\\text{ cm}$이므로 $\\overline{BO}=\\dfrac32\\times12=18\\text{ cm}$이다.\n$\\overline{BD}=2\\overline{BO}=36\\text{ cm}$이다.\n\n삼각형 $CBD$에서 $E$, $F$가 각각 $\\overline{BC}$, $\\overline{CD}$의 중점이므로 중점연결정리에 의해\n$\\overline{EF}=\\dfrac12\\overline{BD}=18\\text{ cm}$이다.\n정답은 ③이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 평행사변형에서 BC, CD의 중점을 E, F라 하고 대각선 BD가 AE, AC, AF와 만나는 점을 P, O, Q로 나타낸 문제 그림이며 BP는 12이다. 둘째는 삼각형 ABC에서 중선 AE와 BO가 만나는 무게중심 P를 보이며 BP는 파란색 12, PO는 주황색 6이다. 셋째는 삼각형 CBD에서 BC, CD의 중점 E, F를 이은 EF가 BD와 평행하고 BD는 36인 그림이다. 길이의 단위는 cm이다.",
+      "solutionImageCaption": "P는 삼각형 ABC의 무게중심이므로 BP:PO=2:1이고 BP가 12 cm이므로 PO는 6 cm, BO는 18 cm이다. O가 BD의 중점이므로 BD는 36 cm이다. 삼각형 CBD에서 E, F가 중점이므로 EF는 BD의 절반이다. 정답은 18 cm이다. 따라서 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 5,
@@ -71,7 +87,11 @@ window.examData = {
         "$56\\text{ cm}^3$"
       ],
       answer: "③",
-      solution: "닮음비가 $3:4$이므로 부피의 비는 닮음비의 세제곱인 $3^3:4^3=27:64$이다.\n축구공의 부피를 $V$라 하면\n$V:128=27:64$\n$64V=128\\times27$\n$V=54\\text{ cm}^3$이다.\n정답은 ③이다."
+      solution: "닮음비가 $3:4$이므로 부피의 비는 닮음비의 세제곱인 $3^3:4^3=27:64$이다.\n축구공의 부피를 $V$라 하면\n$V:128=27:64$\n$64V=128\\times27$\n$V=54\\text{ cm}^3$이다.\n정답은 ③이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 크기가 다른 두 구의 그림이다. 왼쪽 작은 구의 반지름은 3r, 오른쪽 큰 구의 반지름은 4r이다.",
+      "solutionImageCaption": "두 구는 닮음비가 3:4이므로 반지름의 비가 3:4이고 부피의 비는 닮음비의 세제곱인 3의 세제곱 대 4의 세제곱, 즉 27:64이다. 축구공의 부피를 V라 하면 V:128=27:64이므로 64V=128 곱하기 27이다. 정답은 54 cm³이다. 따라서 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 6,
@@ -85,7 +105,11 @@ window.examData = {
         "$115\\text{ cm}$"
       ],
       answer: "②",
-      solution: "대각선은 가로가 $80\\text{ cm}$, 세로가 $60\\text{ cm}$인 직각삼각형의 빗변이다.\n피타고라스 정리에 의해\n$(\\text{대각선})^2=80^2+60^2=6400+3600=10000=100^2$\n이므로 대각선의 길이는 $100\\text{ cm}$이다.\n정답은 ②이다."
+      solution: "대각선은 가로가 $80\\text{ cm}$, 세로가 $60\\text{ cm}$인 직각삼각형의 빗변이다.\n피타고라스 정리에 의해\n$(\\text{대각선})^2=80^2+60^2=6400+3600=10000=100^2$\n이므로 대각선의 길이는 $100\\text{ cm}$이다.\n정답은 ②이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 가로 80 cm, 세로 60 cm인 직사각형 모양의 모니터 화면과 그 대각선이며 가로는 파란색, 세로는 주황색, 대각선은 초록색이다. 둘째는 가로 80, 세로 60인 직각삼각형의 두 변 위에 넓이 6400인 파란색 정사각형과 넓이 3600인 주황색 정사각형을 그리고 빗변 위에 초록색 정사각형을 그린 그림이다.",
+      "solutionImageCaption": "대각선은 가로 80 cm, 세로 60 cm인 직각삼각형의 빗변이다. 피타고라스 정리에 따라 빗변의 제곱은 80의 제곱과 60의 제곱을 더한 6400+3600=10000이고 10000=100×100이다. 정답은 100 cm이다. 따라서 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 7,
@@ -99,7 +123,11 @@ window.examData = {
         "$18$"
       ],
       answer: "②",
-      solution: "$x<20$이므로 가장 긴 변은 $25$이고, $25$가 빗변이다.\n피타고라스 정리에 의해\n$x^2+20^2=25^2$\n$x^2=625-400=225=15^2$\n따라서 $x=15$이다.\n정답은 ②이다."
+      solution: "$x<20$이므로 가장 긴 변은 $25$이고, $25$가 빗변이다.\n피타고라스 정리에 의해\n$x^2+20^2=25^2$\n$x^2=625-400=225=15^2$\n따라서 $x=15$이다.\n정답은 ②이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 직각을 낀 두 변이 20과 x이고 빗변이 25인 직각삼각형으로 20인 변은 파란색, x인 변은 주황색, 빗변은 초록색이다. 둘째는 세 변 위에 정사각형을 그린 그림으로 길이 20인 변 위는 넓이 400인 파란색, 길이 x인 변 위는 넓이 x의 제곱인 주황색, 빗변 위는 넓이 625인 초록색 정사각형이다.",
+      "solutionImageCaption": "x가 20보다 작으므로 가장 긴 변 25가 빗변이다. 피타고라스 정리에 따라 x의 제곱 더하기 20의 제곱이 25의 제곱이므로 x의 제곱은 625에서 400을 뺀 225이고 225=15×15이다. 정답은 x=15이다. 따라서 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 8,
@@ -127,7 +155,11 @@ window.examData = {
         "$400\\text{ cm}^2$"
       ],
       answer: "③",
-      solution: "$\\triangle ABE\\equiv\\triangle ECD$이므로 $\\overline{AE}=\\overline{ED}$, $\\overline{BE}=\\overline{CD}=16\\text{ cm}$이고 $\\angle AEB=\\angle EDC$이다.\n직각삼각형 $ECD$에서 $\\angle EDC+\\angle DEC=90^\\circ$이므로\n$\\angle AEB+\\angle DEC=\\angle EDC+\\angle DEC=90^\\circ$이다.\n따라서 $\\angle AED=180^\\circ-90^\\circ=90^\\circ$이다.\n\n직각삼각형 $ABE$에서 $\\overline{AE}^2=12^2+16^2=400=20^2$이므로 $\\overline{AE}=20\\text{ cm}$이고 $\\overline{ED}=20\\text{ cm}$이다.\n삼각형 $AED$는 $\\angle AED=90^\\circ$인 직각이등변삼각형이므로\n넓이는 $\\dfrac12\\times20\\times20=200\\text{ cm}^2$이다.\n정답은 ③이다."
+      solution: "$\\triangle ABE\\equiv\\triangle ECD$이므로 $\\overline{AE}=\\overline{ED}$, $\\overline{BE}=\\overline{CD}=16\\text{ cm}$이고 $\\angle AEB=\\angle EDC$이다.\n직각삼각형 $ECD$에서 $\\angle EDC+\\angle DEC=90^\\circ$이므로\n$\\angle AEB+\\angle DEC=\\angle EDC+\\angle DEC=90^\\circ$이다.\n따라서 $\\angle AED=180^\\circ-90^\\circ=90^\\circ$이다.\n\n직각삼각형 $ABE$에서 $\\overline{AE}^2=12^2+16^2=400=20^2$이므로 $\\overline{AE}=20\\text{ cm}$이고 $\\overline{ED}=20\\text{ cm}$이다.\n삼각형 $AED$는 $\\angle AED=90^\\circ$인 직각이등변삼각형이므로\n넓이는 $\\dfrac12\\times20\\times20=200\\text{ cm}^2$이다.\n정답은 ③이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 개의 그림이다. 첫째는 B, E, C가 한 직선 위에 있고 B와 C가 직각이며 AB는 12, CD는 16인 문제 그림이다. 둘째는 직각삼각형 ABE로 AB는 파란색 12, BE는 주황색 16, 빗변 AE는 초록색이다. 셋째는 같은 방향으로 나타낸 합동인 직각삼각형 ECD로 EC는 파란색 12, CD는 주황색 16, 빗변 DE는 초록색이다. 넷째는 E에서 직각이고 AE와 ED가 같은 길이 20인 삼각형 AED이다.",
+      "solutionImageCaption": "합동이므로 AE와 ED, EC와 AB(12 cm), BE와 CD(16 cm)가 각각 같다. 직각삼각형 ABE에서 AE의 제곱은 12의 제곱과 16의 제곱의 합 400이므로 AE=ED=20 cm이고, 각 AEB와 각 EDC가 같아 각 AED는 90°이다. 삼각형 AED는 직각을 낀 두 변이 20 cm인 직각삼각형이므로 넓이는 2분의 1 곱하기 20 곱하기 20이다. 정답은 200 cm²이다. 따라서 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 10,
@@ -141,7 +173,11 @@ window.examData = {
         "$26\\text{ cm}$"
       ],
       answer: "①",
-      solution: "꼭짓점 $A$에서 $\\overline{BC}$에 내린 수선의 발을 $H$라 하면 사각형 $AHCD$는 직사각형이다.\n$\\overline{AH}=\\overline{DC}=4\\text{ cm}$, $\\overline{HC}=\\overline{AD}=5\\text{ cm}$이므로\n$\\overline{BH}=8-5=3\\text{ cm}$이다.\n직각삼각형 $ABH$에서 $\\overline{AB}^2=3^2+4^2=25=5^2$이므로 $\\overline{AB}=5\\text{ cm}$이다.\n따라서 둘레의 길이는 $5+8+4+5=22\\text{ cm}$이다.\n정답은 ①이다."
+      solution: "꼭짓점 $A$에서 $\\overline{BC}$에 내린 수선의 발을 $H$라 하면 사각형 $AHCD$는 직사각형이다.\n$\\overline{AH}=\\overline{DC}=4\\text{ cm}$, $\\overline{HC}=\\overline{AD}=5\\text{ cm}$이므로\n$\\overline{BH}=8-5=3\\text{ cm}$이다.\n직각삼각형 $ABH$에서 $\\overline{AB}^2=3^2+4^2=25=5^2$이므로 $\\overline{AB}=5\\text{ cm}$이다.\n따라서 둘레의 길이는 $5+8+4+5=22\\text{ cm}$이다.\n정답은 ①이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 C와 D가 직각인 사다리꼴로 AD는 5, BC는 8, CD는 4인 문제 그림이다. 둘째는 A에서 BC에 내린 수선의 발을 H라 하고 직사각형을 파란색, 직각삼각형 ABH를 주황색으로 칠한 그림으로 BH는 3, HC는 5, CD는 4이다. 셋째는 직각을 낀 두 변이 BH 3, AH 4이고 빗변 AB가 5인 직각삼각형 ABH이다.",
+      "solutionImageCaption": "수선의 발 H를 잡으면 AH=DC=4 cm, HC=AD=5 cm이므로 BH=8-5=3 cm이다. 직각삼각형 ABH에서 AB의 제곱은 3의 제곱 더하기 4의 제곱인 25이므로 AB=5 cm이다. 둘레는 AB+BC+CD+DA를 더한 길이이다. 정답은 22 cm이다. 따라서 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 11,
@@ -155,7 +191,11 @@ window.examData = {
         "$81\\pi\\text{ cm}^2$"
       ],
       answer: "⑤",
-      solution: "$\\overline{AB}=a$, $\\overline{AC}=b$라 하면 직각삼각형 $ABC$에서 $a^2+b^2=\\overline{BC}^2=18^2=324$이다.\n세 반원의 넓이는 각각\n$P=\\dfrac12\\pi\\left(\\dfrac a2\\right)^2=\\dfrac{\\pi a^2}{8}$, $Q=\\dfrac{\\pi b^2}{8}$, $R=\\dfrac12\\pi\\times9^2=\\dfrac{\\pi\\times18^2}{8}$이다.\n따라서 $P+Q+R=\\dfrac{\\pi}{8}(a^2+b^2+18^2)=\\dfrac{\\pi}{8}(324+324)=81\\pi\\text{ cm}^2$이다.\n정답은 ⑤이다."
+      solution: "$\\overline{AB}=a$, $\\overline{AC}=b$라 하면 직각삼각형 $ABC$에서 $a^2+b^2=\\overline{BC}^2=18^2=324$이다.\n세 반원의 넓이는 각각\n$P=\\dfrac12\\pi\\left(\\dfrac a2\\right)^2=\\dfrac{\\pi a^2}{8}$, $Q=\\dfrac{\\pi b^2}{8}$, $R=\\dfrac12\\pi\\times9^2=\\dfrac{\\pi\\times18^2}{8}$이다.\n따라서 $P+Q+R=\\dfrac{\\pi}{8}(a^2+b^2+18^2)=\\dfrac{\\pi}{8}(324+324)=81\\pi\\text{ cm}^2$이다.\n정답은 ⑤이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 각 A가 직각이고 BC가 18인 직각삼각형 ABC의 세 변을 지름으로 하는 반원 P(파란색, AB 위), Q(초록색, AC 위), R(주황색, BC 아래)을 그린 문제 그림이다. 둘째는 AB를 a, AC를 b, BC를 18로 나타낸 직각삼각형 ABC이다.",
+      "solutionImageCaption": "반원의 넓이는 지름의 제곱에 8분의 파이를 곱한 값이므로 P=8분의 파이 a의 제곱, Q=8분의 파이 b의 제곱, R=8분의 파이 곱하기 18의 제곱이다. 세 넓이의 합은 8분의 파이 곱하기 (a의 제곱 더하기 b의 제곱 더하기 18의 제곱)이고, a의 제곱 더하기 b의 제곱이 324이므로 8분의 파이 곱하기 648이다. 정답은 81π cm²이다. 따라서 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 12,
@@ -169,7 +209,11 @@ window.examData = {
         "$\\dfrac{338}{3}\\text{ cm}^2$"
       ],
       answer: "①",
-      solution: "종이를 접으면 $\\overline{AP}=\\overline{AD}=13\\text{ cm}$이고 $\\overline{AB}=12\\text{ cm}$이다.\n직각삼각형 $ABP$에서 $\\overline{BP}^2=13^2-12^2=25$이므로 $\\overline{BP}=5\\text{ cm}$이고\n$\\overline{PC}=13-5=8\\text{ cm}$이다.\n\n$\\overline{CQ}=y\\text{ cm}$라 하면 $\\overline{PQ}=\\overline{DQ}=12-y$이다.\n직각삼각형 $PCQ$에서 $8^2+y^2=(12-y)^2$\n$64+y^2=144-24y+y^2$\n$24y=80$, $y=\\dfrac{10}{3}$이다.\n따라서 $\\overline{PQ}=12-\\dfrac{10}{3}=\\dfrac{26}{3}\\text{ cm}$이다.\n\n접은 도형이므로 $\\angle APQ=\\angle ADQ=90^\\circ$이다. 삼각형 $APQ$의 넓이는\n$\\dfrac12\\times\\overline{AP}\\times\\overline{PQ}=\\dfrac12\\times13\\times\\dfrac{26}{3}=\\dfrac{169}{3}\\text{ cm}^2$이다.\n정답은 ①이다."
+      solution: "종이를 접으면 $\\overline{AP}=\\overline{AD}=13\\text{ cm}$이고 $\\overline{AB}=12\\text{ cm}$이다.\n직각삼각형 $ABP$에서 $\\overline{BP}^2=13^2-12^2=25$이므로 $\\overline{BP}=5\\text{ cm}$이고\n$\\overline{PC}=13-5=8\\text{ cm}$이다.\n\n$\\overline{CQ}=y\\text{ cm}$라 하면 $\\overline{PQ}=\\overline{DQ}=12-y$이다.\n직각삼각형 $PCQ$에서 $8^2+y^2=(12-y)^2$\n$64+y^2=144-24y+y^2$\n$24y=80$, $y=\\dfrac{10}{3}$이다.\n따라서 $\\overline{PQ}=12-\\dfrac{10}{3}=\\dfrac{26}{3}\\text{ cm}$이다.\n\n접은 도형이므로 $\\angle APQ=\\angle ADQ=90^\\circ$이다. 삼각형 $APQ$의 넓이는\n$\\dfrac12\\times\\overline{AP}\\times\\overline{PQ}=\\dfrac12\\times13\\times\\dfrac{26}{3}=\\dfrac{169}{3}\\text{ cm}^2$이다.\n정답은 ①이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 개의 그림이다. 첫째는 가로 13 cm, 세로 12 cm인 직사각형을 접어 D가 BC 위의 점 P에 놓이고 접은 선이 CD와 만나는 점을 Q라 한 문제 그림이다. 둘째는 AP가 AD와 같고 직각삼각형 ABP의 변이 12, 5이며 PC가 8인 그림이다. 셋째는 직각삼각형 PCQ에서 PC가 8, CQ가 y, PQ가 12-y인 그림이다. 넷째는 P에서 직각이고 AP가 13, PQ가 3분의 26인 삼각형 APQ이다.",
+      "solutionImageCaption": "접으면 AP=AD=13 cm이므로 직각삼각형 ABP에서 BP=5 cm, PC=8 cm이다. CQ=y라 하면 PQ=DQ=12-y이고 직각삼각형 PCQ에서 8의 제곱 더하기 y의 제곱이 12-y의 제곱이므로 y는 3분의 10, PQ는 3분의 26이다. 각 APQ가 직각이므로 삼각형 APQ의 넓이는 2분의 1 곱하기 13 곱하기 3분의 26이다. 정답은 3분의 169 cm²이다. 따라서 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 13,
@@ -197,7 +241,11 @@ window.examData = {
         "$16$"
       ],
       answer: "④",
-      solution: "두 주사위의 눈을 순서쌍 $(a,b)$로 나타낸다.\n눈의 수의 차가 $2$인 경우: $(1,3),(2,4),(3,5),(4,6),(3,1),(4,2),(5,3),(6,4)$의 8가지\n눈의 수의 차가 $3$인 경우: $(1,4),(2,5),(3,6),(4,1),(5,2),(6,3)$의 6가지\n두 경우는 동시에 일어나지 않으므로 $8+6=14$가지이다.\n정답은 ④이다."
+      solution: "두 주사위의 눈을 순서쌍 $(a,b)$로 나타낸다.\n눈의 수의 차가 $2$인 경우: $(1,3),(2,4),(3,5),(4,6),(3,1),(4,2),(5,3),(6,4)$의 8가지\n눈의 수의 차가 $3$인 경우: $(1,4),(2,5),(3,6),(4,1),(5,2),(6,3)$의 6가지\n두 경우는 동시에 일어나지 않으므로 $8+6=14$가지이다.\n정답은 ④이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 칸을 더하기 기호로 이은 그림이다. 왼쪽 칸에는 눈의 차가 2인 경우의 가짓수 8, 오른쪽 칸에는 눈의 차가 3인 경우의 가짓수 6이 적혀 있다.",
+      "solutionImageCaption": "눈의 수의 차가 2인 경우는 (1,3), (2,4), (3,5), (4,6)과 두 눈을 바꾼 경우를 합해 8가지이고, 차가 3인 경우는 (1,4), (2,5), (3,6)과 두 눈을 바꾼 경우를 합해 6가지이다. 두 경우는 동시에 일어나지 않으므로 합의 법칙으로 더한다. 정답은 14이다. 따라서 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 15,
@@ -211,7 +259,11 @@ window.examData = {
         "$42$가지"
       ],
       answer: "⑤",
-      solution: "갈 때 길을 택하는 방법은 $7$가지이다.\n돌아올 때는 갈 때와 다른 길을 택하므로 $7-1=6$가지이다.\n따라서 구하는 방법은 $7\\times6=42$가지이다.\n정답은 ⑤이다."
+      solution: "갈 때 길을 택하는 방법은 $7$가지이다.\n돌아올 때는 갈 때와 다른 길을 택하므로 $7-1=6$가지이다.\n따라서 구하는 방법은 $7\\times6=42$가지이다.\n정답은 ⑤이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 칸을 곱하기 기호로 이은 그림이다. 왼쪽 칸 갈 때에는 길의 가짓수 7, 오른쪽 칸 올 때에는 가짓수 6이 적혀 있다.",
+      "solutionImageCaption": "갈 때는 7가지 길 중 하나를 고르고, 올 때는 갈 때 택한 길을 뺀 7-1=6가지 중 하나를 고른다. 두 단계를 차례로 거치므로 곱의 법칙으로 7 곱하기 6을 계산한다. 정답은 42가지이다. 따라서 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 16,
@@ -225,7 +277,11 @@ window.examData = {
         "$13$"
       ],
       answer: "②",
-      solution: "5명 중에서 순서를 생각하지 않고 2명을 뽑는 경우의 수이다.\n$\\dfrac{5\\times4}{2}=10$\n따라서 $10$이다.\n정답은 ②이다."
+      solution: "5명 중에서 순서를 생각하지 않고 2명을 뽑는 경우의 수이다.\n$\\dfrac{5\\times4}{2}=10$\n따라서 $10$이다.\n정답은 ②이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 칸을 곱하기 기호로 이은 그림이다. 왼쪽 칸 첫째에는 5, 오른쪽 칸 둘째에는 4가 적혀 있다.",
+      "solutionImageCaption": "순서를 생각해 첫째로 5명 중 한 명, 둘째로 남은 4명 중 한 명을 고르면 5 곱하기 4가지이다. 그런데 같은 두 사람이 순서만 바뀌어 두 번씩 세어지므로 2로 나눈다. 정답은 10이다. 따라서 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 17,
@@ -253,7 +309,11 @@ window.examData = {
         "$\\dfrac{31}{35}$"
       ],
       answer: "①",
-      solution: "(적어도 하루는 비가 올 확률) $=1-$(두 날 모두 비가 오지 않을 확률)이다.\n목요일에 비가 오지 않을 확률은 $1-\\dfrac37=\\dfrac47$이고, 금요일에 비가 오지 않을 확률은 $1-\\dfrac35=\\dfrac25$이다.\n두 날 모두 비가 오지 않을 확률은 $\\dfrac47\\times\\dfrac25=\\dfrac8{35}$이다.\n따라서 구하는 확률은 $1-\\dfrac8{35}=\\dfrac{27}{35}$이다.\n정답은 ①이다."
+      solution: "(적어도 하루는 비가 올 확률) $=1-$(두 날 모두 비가 오지 않을 확률)이다.\n목요일에 비가 오지 않을 확률은 $1-\\dfrac37=\\dfrac47$이고, 금요일에 비가 오지 않을 확률은 $1-\\dfrac35=\\dfrac25$이다.\n두 날 모두 비가 오지 않을 확률은 $\\dfrac47\\times\\dfrac25=\\dfrac8{35}$이다.\n따라서 구하는 확률은 $1-\\dfrac8{35}=\\dfrac{27}{35}$이다.\n정답은 ①이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 단계 수형도이다. 첫째 단계는 목요일로 비 옴 7분의 3, 비 안 옴 7분의 4이고, 각각에서 이어지는 둘째 단계는 금요일로 비 옴 5분의 3, 비 안 옴 5분의 2이다. 두 날 모두 비가 오지 않는 경로가 파란색이다.",
+      "solutionImageCaption": "적어도 하루는 비가 올 확률은 1에서 두 날 모두 비가 오지 않을 확률을 뺀 값이다. 목요일에 비가 오지 않을 확률은 7분의 4, 금요일에 비가 오지 않을 확률은 5분의 2이므로 두 날 모두 비가 오지 않을 확률은 7분의 4 곱하기 5분의 2인 35분의 8이다. 정답은 35분의 27이다. 따라서 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 19,
@@ -267,7 +327,11 @@ window.examData = {
         "$\\dfrac{8}{9}$"
       ],
       answer: "③",
-      solution: "$ax-b=0$에서 $ax=b$이므로 해는 $x=\\dfrac ba$이다.\n전체 경우의 수는 $6\\times6=36$가지이다.\n$x=1$이려면 $b=a$이므로 $(1,1),(2,2),(3,3),(4,4),(5,5),(6,6)$의 6가지이다.\n$x=3$이려면 $b=3a$이므로 $(1,3),(2,6)$의 2가지이다.\n두 경우는 동시에 일어나지 않으므로 $6+2=8$가지이다.\n따라서 확률은 $\\dfrac8{36}=\\dfrac29$이다.\n정답은 ③이다."
+      solution: "$ax-b=0$에서 $ax=b$이므로 해는 $x=\\dfrac ba$이다.\n전체 경우의 수는 $6\\times6=36$가지이다.\n$x=1$이려면 $b=a$이므로 $(1,1),(2,2),(3,3),(4,4),(5,5),(6,6)$의 6가지이다.\n$x=3$이려면 $b=3a$이므로 $(1,3),(2,6)$의 2가지이다.\n두 경우는 동시에 일어나지 않으므로 $6+2=8$가지이다.\n따라서 확률은 $\\dfrac8{36}=\\dfrac29$이다.\n정답은 ③이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 칸을 더하기 기호로 이은 그림이다. 왼쪽 칸 x=1에는 가짓수 6, 오른쪽 칸 x=3에는 가짓수 2가 적혀 있다.",
+      "solutionImageCaption": "ax-b=0의 해는 x가 a분의 b이다. 해가 1이면 b=a인 (1,1)부터 (6,6)까지 6가지이고, 해가 3이면 b=3a인 (1,3), (2,6)의 2가지이다. 두 경우는 동시에 일어나지 않으므로 합은 8가지이고 전체 경우의 수 36가지로 나눈다. 정답은 9분의 2이다. 따라서 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 20,
@@ -281,7 +345,11 @@ window.examData = {
         "$\\dfrac{9}{25}$"
       ],
       answer: "⑤",
-      solution: "백의 자리에는 $0$이 올 수 없으므로 세 자리 자연수의 개수는 $5\\times5\\times4=100$이다.\n$5$의 배수는 일의 자리가 $0$ 또는 $5$이다.\n일의 자리가 $0$인 경우: 백의 자리 $5$가지, 십의 자리 $4$가지이므로 $5\\times4=20$가지\n일의 자리가 $5$인 경우: 백의 자리는 $0$과 $5$를 제외한 $4$가지, 십의 자리는 남은 $4$가지이므로 $4\\times4=16$가지\n$5$의 배수는 모두 $20+16=36$개이다.\n따라서 확률은 $\\dfrac{36}{100}=\\dfrac9{25}$이다.\n정답은 ⑤이다."
+      solution: "백의 자리에는 $0$이 올 수 없으므로 세 자리 자연수의 개수는 $5\\times5\\times4=100$이다.\n$5$의 배수는 일의 자리가 $0$ 또는 $5$이다.\n일의 자리가 $0$인 경우: 백의 자리 $5$가지, 십의 자리 $4$가지이므로 $5\\times4=20$가지\n일의 자리가 $5$인 경우: 백의 자리는 $0$과 $5$를 제외한 $4$가지, 십의 자리는 남은 $4$가지이므로 $4\\times4=16$가지\n$5$의 배수는 모두 $20+16=36$개이다.\n따라서 확률은 $\\dfrac{36}{100}=\\dfrac9{25}$이다.\n정답은 ⑤이다.",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 칸을 곱하기 기호로 이은 그림이다. 백의 자리 칸에는 5, 십의 자리 칸에는 5, 일의 자리 칸에는 4가 적혀 있다.",
+      "solutionImageCaption": "백의 자리에는 0을 뺀 5가지, 십의 자리에는 남은 5장 중 5가지, 일의 자리에는 남은 4장 중 4가지가 올 수 있어 세 자리 자연수는 모두 5 곱하기 5 곱하기 4개이다. 5의 배수는 일의 자리가 0인 경우 5 곱하기 4개와 일의 자리가 5인 경우 4 곱하기 4개를 합한 개수이다. 정답은 25분의 9이다. 따라서 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 21,
@@ -305,7 +373,11 @@ window.examData = {
       question: "<p>【서답형 3】【서술형】</p><p>【수준별 3-①】 현지는 500원짜리 동전 5개, 100원짜리 동전 10개가 있다. 이 동전으로 2500원짜리 공책 한 권을 사려고 할 때, 공책값을 지불하는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p>【수준별 3-②】 좌표평면 위를 움직이는 점 P가 있다. 주사위를 던져서 나오는 눈의 수 $a$가 홀수이면 $x$축의 양의 방향으로 $a$만큼 나아가고, $a$가 짝수이면 $y$축의 양의 방향으로 $a$만큼 나아간다고 한다. 이러한 시행을 몇 번 반복하여 원점에서 출발한 점 P가 점 $(3, 2)$에 도달하게 되는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s03_2.png\" alt=\"도형\"></p>",
       choices: [],
       answer: "수준별 3-① $3$가지, 3-② $6$가지",
-      solution: "[수준별 3-①]\n$500$원짜리 $a$개, $100$원짜리 $b$개로 $2500$원을 내면 $500a+100b=2500$, 즉 $5a+b=25$이다. 단 $0\\le a\\le5$, $0\\le b\\le10$이다.\n$a=5$이면 $b=0$, $a=4$이면 $b=5$, $a=3$이면 $b=10$이다.\n$a=2$이면 $b=15$로 $10$개를 넘으므로 불가능하다.\n따라서 $(a,b)=(5,0),(4,5),(3,10)$의 $3$가지이다.\n답: $3$가지\n\n[수준별 3-②]\n점 $(3,2)$에 도달하려면 $x$축 방향으로 합이 $3$, $y$축 방향으로 합이 $2$가 되어야 한다.\n$y$축 방향은 짝수의 눈만 쓰고 합이 $2$이므로 $2$가 한 번 나온다.\n$x$축 방향은 홀수의 눈만 쓰고 합이 $3$이므로 $3$이 한 번 나오거나 $1$이 세 번 나온다.\n(i) $3$과 $2$가 나오는 경우: 순서가 $(3,2)$, $(2,3)$의 $2$가지\n(ii) $1,1,1,2$가 나오는 경우: $2$가 나오는 차례를 정하는 $4$가지 $(1,1,1,2),(1,1,2,1),(1,2,1,1),(2,1,1,1)$\n따라서 $2+4=6$가지이다.\n답: $6$가지"
+      solution: "[수준별 3-①]\n$500$원짜리 $a$개, $100$원짜리 $b$개로 $2500$원을 내면 $500a+100b=2500$, 즉 $5a+b=25$이다. 단 $0\\le a\\le5$, $0\\le b\\le10$이다.\n$a=5$이면 $b=0$, $a=4$이면 $b=5$, $a=3$이면 $b=10$이다.\n$a=2$이면 $b=15$로 $10$개를 넘으므로 불가능하다.\n따라서 $(a,b)=(5,0),(4,5),(3,10)$의 $3$가지이다.\n답: $3$가지\n\n[수준별 3-②]\n점 $(3,2)$에 도달하려면 $x$축 방향으로 합이 $3$, $y$축 방향으로 합이 $2$가 되어야 한다.\n$y$축 방향은 짝수의 눈만 쓰고 합이 $2$이므로 $2$가 한 번 나온다.\n$x$축 방향은 홀수의 눈만 쓰고 합이 $3$이므로 $3$이 한 번 나오거나 $1$이 세 번 나온다.\n(i) $3$과 $2$가 나오는 경우: 순서가 $(3,2)$, $(2,3)$의 $2$가지\n(ii) $1,1,1,2$가 나오는 경우: $2$가 나오는 차례를 정하는 $4$가지 $(1,1,1,2),(1,1,2,1),(1,2,1,1),(2,1,1,1)$\n따라서 $2+4=6$가지이다.\n답: $6$가지",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 칸을 더하기 기호로 이은 그림이다. 왼쪽 칸 경우1에는 가짓수 2, 오른쪽 칸 경우2에는 가짓수 4가 적혀 있다.",
+      "solutionImageCaption": "y축 방향은 짝수의 눈만 쓰고 합이 2이므로 2가 한 번 나오고, x축 방향은 홀수의 눈만 쓰고 합이 3이므로 3이 한 번 나오거나 1이 세 번 나온다. 눈 3과 2가 나오는 경우(경우1)는 순서가 2가지, 눈 1, 1, 1, 2가 나오는 경우(경우2)는 2가 나오는 차례를 정하는 4가지이다. 두 경우를 합의 법칙으로 더한다. 정답은 3-①이 3가지, 3-②가 6가지이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 24,
@@ -313,7 +385,11 @@ window.examData = {
       question: "<p>【서답형 4】【서술형】</p><p>【수준별 4-①】 태양계 행성과 그 표면 온도가 하나씩 적힌 8장의 카드가 있다. 이 중에서 임의로 한 장의 카드를 뽑을 때, 표면온도가 영상인 행성의 카드가 뽑힐 확률을 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s04_1.png\" alt=\"도형\"></p><p>【수준별 4-②】 아래 그림과 같이 한 변의 길이가 1인 정육각형의 꼭짓점 A에 점 P가 있다. 점 P는 주사위를 던질 때 나오는 눈의 수만큼의 길이를 정육각형의 변을 따라 시곗바늘이 도는 반대 방향으로 움직인다. 한 개의 주사위를 두 번 던질 때, 점 P가 꼭짓점 D에 놓일 확률을 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s04_2.png\" alt=\"도형\"></p>",
       choices: [],
       answer: "수준별 4-① $\\dfrac38$, 4-② $\\dfrac16$",
-      solution: "[수준별 4-①]\n카드는 모두 $8$장이다. 표면온도가 영상($0^\\circ\\text{C}$보다 높음)인 행성은 수성($+179^\\circ\\text{C}$), 금성($+467^\\circ\\text{C}$), 지구($+17^\\circ\\text{C}$)의 $3$장이다.\n따라서 확률은 $\\dfrac38$이다.\n답: $\\dfrac38$\n\n[수준별 4-②]\n정육각형의 둘레는 $6$이고, 꼭짓점 $A$에서 $D$까지는 $3$만큼 움직여야 한다.\n두 번 던져 나온 눈의 합이 $3$ 또는 $9$이면 $D$에 놓인다. (합이 $15$ 이상은 불가능하다.)\n합이 $3$인 경우: $(1,2),(2,1)$의 $2$가지\n합이 $9$인 경우: $(3,6),(4,5),(5,4),(6,3)$의 $4$가지\n전체 경우의 수는 $6\\times6=36$가지이므로 확률은 $\\dfrac{2+4}{36}=\\dfrac16$이다.\n답: $\\dfrac16$"
+      solution: "[수준별 4-①]\n카드는 모두 $8$장이다. 표면온도가 영상($0^\\circ\\text{C}$보다 높음)인 행성은 수성($+179^\\circ\\text{C}$), 금성($+467^\\circ\\text{C}$), 지구($+17^\\circ\\text{C}$)의 $3$장이다.\n따라서 확률은 $\\dfrac38$이다.\n답: $\\dfrac38$\n\n[수준별 4-②]\n정육각형의 둘레는 $6$이고, 꼭짓점 $A$에서 $D$까지는 $3$만큼 움직여야 한다.\n두 번 던져 나온 눈의 합이 $3$ 또는 $9$이면 $D$에 놓인다. (합이 $15$ 이상은 불가능하다.)\n합이 $3$인 경우: $(1,2),(2,1)$의 $2$가지\n합이 $9$인 경우: $(3,6),(4,5),(5,4),(6,3)$의 $4$가지\n전체 경우의 수는 $6\\times6=36$가지이므로 확률은 $\\dfrac{2+4}{36}=\\dfrac16$이다.\n답: $\\dfrac16$",
+      "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 한 변의 길이가 1인 정육각형이고 점 P가 꼭짓점 A에서 시곗바늘 반대 방향인 B 쪽으로 움직이는 문제 그림이다. 둘째는 A에서 B, C, D까지 세 변을 파란색, 나머지 세 변을 주황색으로 칠해 A에서 D까지가 3칸, 한 바퀴가 6칸임을 나타낸 그림이다.",
+      "solutionImageCaption": "4-② 정육각형의 둘레는 6이고 A에서 D까지는 3만큼 움직여야 한다. 두 번 던져 나온 눈의 합이 3 또는 6+3=9이면 P가 D에 놓인다(합이 15 이상은 불가능하다). 합이 3인 경우는 (1,2), (2,1)의 2가지, 합이 9인 경우는 (3,6), (4,5), (5,4), (6,3)의 4가지이고 전체 36가지이므로 확률은 36분의 6이다. 정답은 4-①이 8분의 3, 4-②가 6분의 1이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

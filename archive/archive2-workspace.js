@@ -313,7 +313,7 @@
     }),
     Object.freeze({
       productKey: "generated-bank",
-      label: "생성문제",
+      label: "모의고사",
       availability: true,
       routeOwner: "generated-consumer",
       routeResolver: () => new URL("generated-bank.html", location.href).href,
@@ -439,6 +439,7 @@
     recentRows: [],
     recentClassId: "",
     recentFilters: { from: "", to: "", grade: "", subject: "", query: "" },
+    recentShowCancelled: false, // 취소한 출제는 기본으로 숨긴다(아래 줄의 버튼으로 다시 본다)
     recentSelectedAssignmentId: "",
     recentLoadVersion: 0,
     assignmentStatusLoadVersion: 0,
@@ -2802,7 +2803,7 @@
   }
   function renderHome() {
     const recent = drafts().slice(0, 3);
-    // 학교 기출 is the search above; the four quick assessments come first, 생성문제 last.
+    // 학교 기출 is the search above; the four quick assessments come first, 모의고사(생성문제) last.
     const products = HOME_PRODUCT_REGISTRY
       .filter((product) => product.productKey !== "school-exams")
       .sort((a, b) => (a.productKey === "generated-bank") - (b.productKey === "generated-bank"));
@@ -2843,7 +2844,7 @@
         <section class="home-drafts" aria-labelledby="home-drafts-title">
           <h2 id="home-drafts-title">만들던 문제지</h2>
           ${recent.length
-            ? recent.map((d, i) => `<div class="home-draft"><div class="home-draft-main"><div class="home-draft-title">${esc(d.header?.title || d.title || "문제지")}</div><div class="home-draft-meta">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</div></div>${button("restore", "이어하기", `type="button" data-draft="${i}"`)}</div>`).join("")
+            ? recent.map((d, i) => `<div class="home-draft"><div class="home-draft-main"><div class="home-draft-title">${esc(d.header?.title || d.title || "문제지")}</div><div class="home-draft-meta">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</div></div><div class="home-draft-actions">${button("restore", "이어하기", `type="button" data-draft="${i}"`)}${button("delete-draft", "삭제", `type="button" data-draft-id="${esc(d.draftId)}" class="danger" aria-label="${esc(d.header?.title || d.title || "문제지")} 삭제"`)}</div></div>`).join("")
             : '<p class="muted home-empty">저장된 작업이 없습니다.</p>'}
         </section>
         <section class="home-quick" aria-labelledby="home-quick-title">
@@ -3449,7 +3450,7 @@
         <label class="history-subject-filter">과목<select data-recent-filter="subject">${options(recentSubjectOptions(), f.subject, "전체 과목")}</select></label>
         <label class="history-title-filter">제목 검색<input type="search" data-recent-filter="query" value="${esc(f.query)}"></label>
       </div><div id="recent-assignments" aria-live="polite" aria-busy="${state.recentLoading}">${recentAssignmentMarkup()}</div></section>
-      <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions history-draft-actions">${button("restore", "이어하기", `data-draft="${i}"`)}<details><summary>더보기</summary>${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</details></div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
+      <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions history-draft-actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft-id="${esc(d.draftId)}" class="danger" aria-label="${esc(d.header?.title || d.title || "문제지")} 삭제"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
   }
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
@@ -3460,8 +3461,15 @@
     // One row per assignment, newest date first. The raw list keeps saved_paper_id / archive_file, which the
     // normalized rows drop (archive2-history.js stays untouched so the Worker is not redeployed).
     const rawById = new Map((state.recentAssignments || []).map((raw) => [String(raw?.id ?? "").trim(), raw]));
-    const ordered = History.groupByDate(rows).flatMap((group) => group.rows);
-    if (!ordered.length) return '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
+    // 취소한 출제는 학생에게 보이지 않는 건이라 목록에서 기본으로 뺀다. 잘못 낸 건을 취소하면 눈앞에서 사라지고,
+    // 필요하면 아래 버튼으로 다시 본다(기록 자체는 서버에 남는다).
+    const all = History.groupByDate(rows).flatMap((group) => group.rows);
+    const cancelledCount = all.filter((a) => a.isCancelled).length;
+    const ordered = state.recentShowCancelled ? all : all.filter((a) => !a.isCancelled);
+    const cancelledToggle = !cancelledCount ? "" : `<p class="history-cancelled-toggle">${button("recent-toggle-cancelled",
+      state.recentShowCancelled ? "취소한 출제 숨기기" : `취소한 출제 ${cancelledCount}건 보기`,
+      `class="small" aria-pressed="${state.recentShowCancelled}"`)}</p>`;
+    if (!ordered.length) return `<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>${cancelledToggle}`;
     return `<div class="exam-rows history-rows">${ordered.map((a) => {
         const source = recentSourceOf(rawById.get(a.id));
         const progress = a.submittedCount !== null && a.recipientCount !== null
@@ -3491,8 +3499,54 @@
         : `<span class="history-source">${esc(source.label)}</span>`;
       const day = /^\d{4}-(\d{2})-(\d{2})$/.exec(a.date);
       const spineDate = day ? [`${Number(day[1])}월`, String(Number(day[2]))] : ["", "–"];
-      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}" title="출제 번호 ${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(a.title)}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `${index ? '<span aria-hidden="true">·</span>' : ""}<span${index === 0 && value === a.className ? ' class="history-class"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}${pdfLabel ? `<div class="history-pdf-actions"><span class="history-pdf">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div>` : ""}</div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></article>`;
-      }).join("")}</div>`;
+      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}" title="출제 번호 ${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(a.title)}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `${index ? '<span aria-hidden="true">·</span>' : ""}<span${index === 0 && value === a.className ? ' class="history-class"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}${pdfLabel ? `<div class="history-pdf-actions"><span class="history-pdf">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(pdfErrorText(a.pdfError))}</span>` : ""}${pdfRetry}</div>` : ""}</div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}${a.isCancelled ? "" : button("assignment-cancel", "출제 취소", `data-assignment="${esc(a.id)}" class="small danger" aria-label="${esc(a.title)} ${esc(a.className || "")} 출제 취소"`)}</div></article>`;
+      }).join("")}</div>${cancelledToggle}`;
+  }
+  // 서버가 남긴 PDF 오류는 영어 원문일 수 있다. 교사에게는 무엇을 하면 되는지만 알린다.
+  function pdfErrorText(raw) {
+    const text = String(raw || "");
+    if (/429|rate limit/i.test(text)) return "PDF를 만드는 서버가 잠시 바쁩니다. 조금 뒤 'PDF 다시 준비'를 눌러 주세요.";
+    return HANGUL.test(text) ? text : "PDF를 준비하지 못했습니다. 'PDF 다시 준비'를 눌러 주세요.";
+  }
+  // 출제 취소: 서버가 그 출제에 취소 시각을 남긴다. 아직 풀지 않은 학생에게는 더 이상 보이지 않고, 이미 제출한 학생의
+  // 기록은 지워지지 않는다(열람 전용). 되돌리는 길이 없으므로 한 번 확인받는다.
+  function askCancelAssignment(assignmentId) {
+    const row = state.recentRows.find((a) => String(a.id) === String(assignmentId));
+    if (!row || row.isCancelled) return;
+    const submitted = Number(row.submittedCount) > 0
+      ? `<p>이미 제출한 학생 ${Number(row.submittedCount)}명의 기록은 지워지지 않습니다.</p>` : "";
+    showDialog("출제 취소", `<p><strong>${esc(row.title)}</strong>${row.className ? ` · ${esc(row.className)}` : ""}${row.date ? ` · ${esc(row.date)}` : ""}</p>
+      <p>취소하면 아직 풀지 않은 학생에게 더 이상 보이지 않고, 출제 내역에서도 숨겨집니다. 되돌릴 수 없습니다.</p>${submitted}
+      <p id="assignment-cancel-error" class="error" role="alert" hidden></p>
+      <div class="actions">${button("assignment-cancel-confirm", "출제 취소", `data-assignment="${esc(row.id)}" class="primary"`)}</div>`);
+  }
+  let assignmentCancelBusy = false;
+  async function cancelRecentAssignment(assignmentId) {
+    const id = String(assignmentId || "");
+    if (!id || assignmentCancelBusy) return false;
+    assignmentCancelBusy = true;
+    try {
+      // 같은 출제를 다시 취소해도 서버는 같은 결과를 돌려준다(이미 취소된 건이면 그대로 성공).
+      await api("/class-exam-assignments/" + encodeURIComponent(id) + "/cancel", { operation_identity: crypto.randomUUID() });
+      const row = state.recentRows.find((a) => String(a.id) === id);
+      if (row) row.isCancelled = true;
+      const raw = (state.recentAssignments || []).find((a) => String(a?.id ?? "").trim() === id);
+      if (raw && !raw.cancelled_at) raw.cancelled_at = new Date().toISOString();
+      if ($("modal")?.open) $("modal").close();
+      updateRecentResults();
+      status("출제를 취소했습니다. 학생에게 더 이상 보이지 않습니다.");
+      return true;
+    } catch (error) {
+      const message = Number(error?.status) === 409 && /Saved Paper Assignments only/i.test(String(error?.message || ""))
+        ? "이 출제는 아직 여기서 취소할 수 없습니다. 잠시 뒤 다시 시도해 주세요."
+        : teacherErrorMessage(error, "출제를 취소하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+      const slot = $("assignment-cancel-error");
+      if (slot && $("modal")?.open) { slot.textContent = message; slot.hidden = false; }
+      else status(message, true);
+      return false;
+    } finally {
+      assignmentCancelBusy = false;
+    }
   }
   // Where an assignment came from: a saved paper (link back to 보관함), a school exam, or 단원별 기출.
   function recentSourceOf(raw) {
@@ -5062,6 +5116,14 @@
       return;
     }
     if (state.selected.length) save();
+    const hadUidRoute = resetWorkingDraft();
+    state.view = "compose";
+    if (hadUidRoute) replaceUrlState();
+    render();
+    scheduleSave();
+  }
+  // 작업 중인 문제지를 빈 새 작업으로 되돌린다(화면 이동·저장은 부르는 쪽이 한다).
+  function resetWorkingDraft() {
     const hadUidRoute = Boolean(state.uidRoute || state.urlUids.length);
     clearUidRoute({ url: false });
     delete state.filters.L3;
@@ -5096,7 +5158,7 @@
       historyError: "",
       ackWarnings: false,
       previewIndex: 0,
-      indexVersion: state.catalog.indexVersion,
+      indexVersion: state.catalog?.indexVersion ?? state.indexVersion,
       saveBatchId: "",
       saveSignature: "",
       savedPaperIds: [],
@@ -5107,12 +5169,40 @@
       saveResultState: "",
       derivationSource: null,
       derivedBaseQuestions: null,
-      view: "compose",
     });
     derivedBaseLoad = null;
-    if (hadUidRoute) replaceUrlState();
+    return hadUidRoute;
+  }
+  // 만들던 문제지 삭제: 이 기기(브라우저)에 저장된 작업만 지운다. 보관함 문제지와 이미 낸 출제는 건드리지 않는다.
+  function askDeleteDraft(draftId) {
+    const record = drafts().find((d) => d.draftId === draftId);
+    if (!record) { render(); return; }
+    showDialog("만들던 문제지 삭제", `<p><strong>${esc(record.header?.title || record.title || "문제지")}</strong> · ${record.selected?.length || 0}문항</p>
+      <p>이 기기에 저장된 작업을 지웁니다. 되돌릴 수 없습니다. 보관함에 저장한 문제지와 이미 낸 출제는 그대로 남습니다.</p>
+      <div class="actions">${button("delete-draft-confirm", "삭제", `data-draft-id="${esc(record.draftId)}" class="primary"`)}</div>`);
+  }
+  function deleteDraft(draftId) {
+    const id = String(draftId || "");
+    if (!id) return false;
+    if (id === state.draftId) {
+      if (state.saveResultState === "RESULT_UNKNOWN") {
+        status("현재 저장 결과를 먼저 확인한 뒤 삭제하세요.", true);
+        return false;
+      }
+      // 지금 작업 중인 문제지를 지웠다: 메모리에 남은 선택이 자동 저장으로 되살아나지 않게 빈 작업으로 되돌린다.
+      clearTimeout(autosaveTimer);
+      resetWorkingDraft();
+    }
+    try {
+      localStorage.setItem(storageKey(), JSON.stringify(drafts().filter((d) => d.draftId !== id)));
+    } catch {
+      status("만들던 문제지를 삭제하지 못했습니다. 다시 시도해 주세요.", true);
+      return false;
+    }
+    if ($("modal")?.open) $("modal").close();
     render();
-    scheduleSave();
+    status("만들던 문제지를 삭제했습니다.");
+    return true;
   }
   // 문항 수가 바뀔 때(입력·− / +): 전체를 다시 그리지 않고(입력 중인 칸과 포커스를 지키려고) 지금 조건의 요약·버튼과
   // 오른쪽 안내, 하단 띠만 새로 그린다. 이미 뽑은 결과는 지금 동작대로 비우고 "조건이 바뀌었습니다"를 보인다.
@@ -5223,7 +5313,8 @@
   }
   // Actions that never read the catalog; everything else waits for it (see deferUntilCatalog).
   const CATALOG_FREE_ACTIONS = new Set([
-    "boot-retry", "home-product", "home-school", "home-all-schools", "home-search", "delete-draft", "close-dialog",
+    "boot-retry", "home-product", "home-school", "home-all-schools", "home-search", "delete-draft", "delete-draft-confirm", "close-dialog",
+    "recent-toggle-cancelled", "assignment-cancel", "assignment-cancel-confirm",
     "assignment-status", "assignment-output-direct", "assignment-output", "assignment-pdf", "library-reload",
     "recent-retry", "recent-open-saved", "saved-output", "saved-paper-issue", "saved-paper-view",
   ]);
@@ -5319,6 +5410,21 @@
       }
       if (a === "recent-retry") {
         await loadRecent().catch(() => false);
+        return;
+      }
+      if (a === "recent-toggle-cancelled") {
+        state.recentShowCancelled = !state.recentShowCancelled;
+        updateRecentResults();
+        return;
+      }
+      if (a === "assignment-cancel") {
+        askCancelAssignment(b.dataset.assignment);
+        return;
+      }
+      if (a === "assignment-cancel-confirm") {
+        b.disabled = true;
+        const done = await cancelRecentAssignment(b.dataset.assignment);
+        if (!done) b.disabled = false;
         return;
       }
       if (a === "recent-open-saved") {
@@ -5806,12 +5912,9 @@
       else if (a === "restore") {
         $("modal").close();
         applyDraft(drafts()[Number(b.dataset.draft)]);
-      } else if (a === "delete-draft") {
-        const list = drafts();
-        list.splice(Number(b.dataset.draft), 1);
-        localStorage.setItem(storageKey(), JSON.stringify(list));
-        render();
-      } else if (a === "new-draft") newDraft();
+      } else if (a === "delete-draft") askDeleteDraft(b.dataset.draftId);
+      else if (a === "delete-draft-confirm") deleteDraft(b.dataset.draftId);
+      else if (a === "new-draft") newDraft();
       else if (a === "health-export")
         download(
           {
