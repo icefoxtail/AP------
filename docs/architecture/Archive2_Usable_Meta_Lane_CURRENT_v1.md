@@ -33,7 +33,7 @@ A record without `metaBinding` stays fully usable (`generalUseEligibility` is un
   candidate of a new type when one exists. Year order, counts and untyped questions are unchanged.
 * Preview rows, replacement candidates and the inspector show `개념 / 유형 / 풀이` (tagged `검토 대기` when not approved) and the type spread.
 * Unified units: `originalCurriculum` evidence order is canonical key, **recorded approved curriculum**, roll-out year rule, subject name, key prefix.
-* `difficultyEligible(record, {useMode: "general"})` accepts `metaBinding: content` rows; strict mode and APMS callers still require the exact source.
+* `difficultyEligible(record)` is one lane for every caller (user decision 2026-11-11: a recorded value is usable, only real defects block): integer `difficultyBucket` 1..5, intact identity/source (`generalUseEligibility`), and values still bound to the question text (`sourceStatus` VERIFIED or `metaBinding` exact/content). Confidence, boundary flag, `legacyLevelCompatibility` (including `BORDERLINE_REVIEW`), approval status and `metadataConflicts` are display labels, not gates; words (하/중/상) are never converted to a number. Reason: the values were already decided; the strict-only gate left about 17,000 recorded difficulties unusable in APMS recommendations. The `useMode` option and the quick pools' `difficultyMode` option are kept for caller compatibility and no longer change the result.
 
 ## Display projection (`ProblemBankMeta.createSourceBoundDisplayProjection`)
 

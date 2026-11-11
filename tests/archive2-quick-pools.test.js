@@ -53,10 +53,11 @@ test('the four products keep their sizes and difficulty mixes', () => {
   assert.equal(Quick.PRODUCTS['five-minute'].combine, undefined);
 });
 
-test('quick pools include every recorded bucket 1–4 after technical usage checks, with strict audit optional', () => {
+test('quick pools use the one difficulty lane: any integer bucket 1–4 with intact identity/source and text-bound values', () => {
   const verified = record(2);
   const noConfidence = record(2, { difficultyConfidence: undefined, difficultyBoundaryFlag: undefined, legacyLevelCompatibility: undefined });
   const holdUnbound = record(2, { sourceStatus: 'HOLD' });
+  const borderlineReview = record(2, { legacyLevelCompatibility: 'BORDERLINE_REVIEW' });
   const holdContentBound = record(2, { sourceStatus: 'HOLD', metaBinding: 'content' });
   const conflict = record(2, { metadataConflicts: ['difficultyBucket'] });
   const labelOnly = record(null, { difficultyBucket: null, legacyLevel: '중' });
@@ -68,12 +69,14 @@ test('quick pools include every recorded bucket 1–4 after technical usage chec
   const usable = (rec, mode) => Quick.usableBucket(rec, mode);
   assert.equal(usable(verified), 2);
   assert.equal(usable(noConfidence), 2, 'confidence/boundary/compatibility are not quick selection gates');
-  assert.equal(usable(noConfidence, 'eligible'), 0, 'strict audit remains available separately');
-  assert.equal(usable(holdUnbound), 2, 'source-release review status does not block general use');
+  assert.equal(usable(noConfidence, 'eligible'), 2, 'there is no separate strict lane: every mode gives the same result');
+  assert.equal(usable(borderlineReview), 2, 'BORDERLINE_REVIEW is a label, not a gate');
+  assert.equal(usable(holdUnbound), 0, 'values recorded against different question text are not usable');
   assert.equal(usable(holdUnbound, 'eligible'), 0);
   assert.equal(usable(holdContentBound), 2, 'content-bound metadata remains usable');
-  assert.equal(usable(conflict), 2, 'difficulty metadata conflicts do not block recorded quick selection');
-  assert.equal(usable(conflict, 'eligible'), 0);
+  assert.equal(usable(holdContentBound, 'eligible'), 2);
+  assert.equal(usable(conflict), 2, 'difficulty metadata conflicts do not block quick selection');
+  assert.equal(usable(conflict, 'eligible'), 2);
   assert.equal(usable(labelOnly), 0, 'the legacy 하/중/상 label is never turned into a number');
   assert.equal(usable(labelOnly, 'recorded'), 0);
   assert.equal(usable(stringBucket), 0);
@@ -82,12 +85,12 @@ test('quick pools include every recorded bucket 1–4 after technical usage chec
   assert.equal(usable(brokenSource), 0);
   assert.equal(usable(noFingerprint), 0);
   const pools = Quick.buildPools(indexOf([verified, noConfidence, holdUnbound, holdContentBound, annotated, bucket5].map(r => entry(r))));
-  assert.equal(pools.stats.usable, 5);
+  assert.equal(pools.stats.usable, 4);
   assert.equal(pools.stats.bucket5, 1);
-  const strict = Quick.buildPools(indexOf([verified, noConfidence, holdUnbound].map(r => entry(r))), { difficultyMode: 'eligible' });
-  assert.equal(strict.stats.usable, 1);
-  assert.equal(Quick.buildPools(indexOf([noConfidence].map(r => entry(r))), { difficultyMode: 'unknown' }).stats.usable, 1,
-    'all UI modes default to the recorded bucket policy');
+  assert.equal(pools.stats.difficultyUnusable, 1, 'the text-changed row is counted as not usable');
+  const same = Quick.buildPools(indexOf([verified, noConfidence, holdUnbound, holdContentBound, annotated, bucket5].map(r => entry(r))), { difficultyMode: 'eligible' });
+  assert.equal(same.stats.usable, pools.stats.usable, 'the option no longer changes the result');
+  assert.equal(Quick.buildPools(indexOf([noConfidence].map(r => entry(r))), { difficultyMode: 'unknown' }).stats.usable, 1);
 });
 
 test('2015 and 2022 questions share one unit; original curriculum and keys stay untouched', () => {
@@ -196,7 +199,7 @@ test('real catalog: pools are built once, fast, from recorded difficulty and wit
   }
   assert.ok(checked > 5000, `checked ${checked}`);
   const strict = Quick.buildPools(index, { metaByUid, difficultyMode: 'eligible' });
-  assert.ok(pools.stats.usable >= strict.stats.usable, 'the default recorded pool must include every strict-eligible question');
+  assert.equal(pools.stats.usable, strict.stats.usable, 'the difficultyMode option does not change the pool');
   const subjects = Quick.subjectsFor(pools, '고1');
   assert.deepEqual(subjects.map(subject => subject.label), ['공통수학1', '공통수학2']);
 });

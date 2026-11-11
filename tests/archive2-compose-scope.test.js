@@ -575,7 +575,7 @@ test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const [file, version] of [
     ['archive2-canonical.js', '20261104-source-meta-approval-1'],
-    ['archive2-core.js', '20261110-recency-1'],
+    ['archive2-core.js', '20261111-one-lane-difficulty-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
     ['archive2-workspace.js', '20261111-remove-1'],
@@ -724,17 +724,22 @@ test('difficulty filters apply only after an explicit choice and can return to a
   assert.deepEqual(plain(w.state.buckets), []);
 });
 
-test('problem paper maker does not require difficulty evidence or source-bound meta for recorded difficulty', async () => {
+test('problem paper maker uses a recorded difficulty without approval labels, but not one recorded against different question text', async () => {
   const r2 = basicRecord('중3', {
     difficultyBucket: 2, difficultyConfidence: undefined, difficultyBoundaryFlag: undefined,
-    legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: '',
+    legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: 'content',
     metadataConflicts: ['difficultyBucket'],
   });
   const r3 = basicRecord('중3', {
     questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-r3').digest('hex'),
-    difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: '',
+    difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: 'content',
   });
-  const { w, click } = harness({ ...catalog, records: [r2, r3], taxonomy: [] });
+  // same bucket 2 as r2, but the stem/choices/image changed after the value was recorded: not usable
+  const textChanged = basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-text-changed').digest('hex'),
+    difficultyBucket: 2, sourceStatus: 'HOLD', metaBinding: '',
+  });
+  const { w, click } = harness({ ...catalog, records: [r2, r3, textChanged], taxonomy: [] });
   w.state.useMode = 'general';
   w.state.filters = { grade: '중3' };
   await click({ action: 'bucket', bucket: '2' });
@@ -742,12 +747,12 @@ test('problem paper maker does not require difficulty evidence or source-bound m
   w.state.distribution = 'all';
   const req = w.request();
   assert.equal(req.rows[0].count, 1, 'the recorded bucket survives missing auxiliary metadata');
-  const selected = core.selectBlueprint([r2, r3], req);
+  const selected = core.selectBlueprint([r2, r3, textChanged], req);
   assert.equal(selected.ok, true);
   assert.deepEqual(selected.selected.map(row => row.questionUid), [r2.questionUid]);
   assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK');
   await click({ action: 'bucket-all' });
-  assert.equal(w.request().rows[0].count, 2);
+  assert.equal(w.request().rows[0].count, 3, 'with no difficulty filter the text-changed row is still a normal question');
 });
 
 test('new entry, grade changes and new drafts restore BASIC all-difficulty defaults', async () => {
