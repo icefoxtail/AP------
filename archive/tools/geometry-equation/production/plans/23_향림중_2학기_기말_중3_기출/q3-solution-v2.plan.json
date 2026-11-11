@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "MC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eM",
+        "count": 1,
+        "segments": [
+          "AM",
+          "MB"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAM",
+        "ownerSegment": "AM",
+        "text": "3",
+        "ownership": "NEAREST",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lMC",
+        "ownerSegment": "MC",
+        "text": "1",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOM",
+        "ownerSegment": "OM",
+        "text": "r-1",
+        "ownership": "NEAREST",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "r",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "현 AB의 수직이등분선 위에 중심 O가 있으므로 직각삼각형 OAM에서 반지름 r를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=6, CM=1이고 CM이 현 AB를 수직이등분하는 호 ACB와 이 호를 지나는 원의 그림.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "호만 주어진 그림에서 원을 완성해 중심 O와 직각삼각형 OAM을 보이고 OM=r-1, OA=r를 표시한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  }
+}

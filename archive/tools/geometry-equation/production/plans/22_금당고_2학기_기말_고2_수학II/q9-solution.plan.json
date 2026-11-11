@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x) = x^3 + 3x^2 + k - 5$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -13,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-8",
+        "-6",
+        "-4",
+        "-2",
+        "2",
+        "4",
+        "6",
+        "8"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-8"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-12"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "8"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "B"
+      ]
+    },
+    "overlays": {
+      "callouts": [
+        {
+          "id": "cl",
+          "point": "A",
+          "text": "f(x)",
+          "direction": "N",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "닫힌구간 양 끝점과 내부 극점을 비교해 최솟값을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닫힌구간 양 끝점과 내부 극점을 비교해 최솟값을 구분한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌구간 양 끝점과 내부 극점을 비교해 최솟값을 구분한다."
+  ],
+  "coordinateLeader": [
+    "A",
+    "C"
+  ]
+}

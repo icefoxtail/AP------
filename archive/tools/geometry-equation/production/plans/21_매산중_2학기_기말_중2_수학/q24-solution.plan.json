@@ -1,0 +1,449 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제 그림: P는 A에서 출발"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFA",
+            "refs": [
+              "F",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sAB",
+                "sBC",
+                "sCD",
+                "sDE",
+                "sEF",
+                "sFA"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAB",
+              "text": "1",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "문제 그림: P는 A에서 출발",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "3칸(파란색), 한 바퀴 6칸"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "13775",
+                    "denominator": "15906"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFA",
+            "refs": [
+              "F",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB",
+                "sBC",
+                "sCD"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sDE",
+                "sEF",
+                "sFA"
+              ],
+              "color": "WARM"
+            }
+          ]
+        },
+        "caption": "3칸(파란색), 한 바퀴 6칸",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "점 P는 한 변이 1인 정육각형의 변을 따라 시곗바늘 반대 방향으로 움직인다. A에서 D까지는 3칸(파란색)이고 나머지 3칸(주황색)까지 합해 한 바퀴는 6칸이므로, 두 번 던진 눈의 합이 3이거나 6+3=9이면 P가 D에 놓인다."
+}

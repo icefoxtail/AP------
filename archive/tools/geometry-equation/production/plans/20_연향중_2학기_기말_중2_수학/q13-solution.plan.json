@@ -1,0 +1,949 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (l에서 n까지 12cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Lr",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Mr",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Nr",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Z1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-9",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Z3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-21",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Ll",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Ml",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Nl",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P2",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "P3",
+                "P1"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q2",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "Q1",
+                "Q3"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "P1",
+          "P2",
+          "P3",
+          "Q1",
+          "Q2",
+          "Q3",
+          "Lr",
+          "Mr",
+          "Nr",
+          "Ll",
+          "Ml",
+          "Nl",
+          "Z1",
+          "Z3"
+        ],
+        "displaySegments": [
+          {
+            "id": "l",
+            "refs": [
+              "Ll",
+              "Lr"
+            ]
+          },
+          {
+            "id": "m",
+            "refs": [
+              "Ml",
+              "Mr"
+            ]
+          },
+          {
+            "id": "n",
+            "refs": [
+              "Nl",
+              "Nr"
+            ]
+          },
+          {
+            "id": "a1",
+            "refs": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "a2",
+            "refs": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "id": "b1",
+            "refs": [
+              "Q1",
+              "Q2"
+            ]
+          },
+          {
+            "id": "b2",
+            "refs": [
+              "Q2",
+              "Q3"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "p1",
+              "count": 1,
+              "segments": [
+                "l",
+                "m",
+                "n"
+              ],
+              "color": "VIOLET"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "a1",
+                "b1"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "a2",
+                "b2"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "ll",
+              "ownerSegment": "l",
+              "text": "l"
+            },
+            {
+              "id": "lm",
+              "ownerSegment": "m",
+              "text": "m"
+            },
+            {
+              "id": "ln",
+              "ownerSegment": "n",
+              "text": "n"
+            },
+            {
+              "id": "t1",
+              "ownerSegment": "a1",
+              "text": "4",
+              "unit": "cm"
+            },
+            {
+              "id": "t2",
+              "ownerSegment": "b1",
+              "text": "6",
+              "unit": "cm"
+            },
+            {
+              "id": "t3",
+              "ownerSegment": "b2",
+              "text": "x",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "세 평행선 l, m, n",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 380
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "세 평행선 l, m, n",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "hiddenPointNames": [
+          "P1",
+          "P2",
+          "P3",
+          "Q1",
+          "Q2",
+          "Q3",
+          "Ll",
+          "Ml",
+          "Nl",
+          "Lr",
+          "Mr",
+          "Nr",
+          "Z1",
+          "Z3"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "4 : 8 = 6 : x"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Lr",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Mr",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Nr",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Z1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-9",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Z3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-21",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Ll",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Ml",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Nl",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P2",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "P3",
+                "P1"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q2",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "Q1",
+                "Q3"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "P1",
+          "P2",
+          "P3",
+          "Q1",
+          "Q2",
+          "Q3",
+          "Lr",
+          "Mr",
+          "Nr",
+          "Ll",
+          "Ml",
+          "Nl",
+          "Z1",
+          "Z3"
+        ],
+        "displaySegments": [
+          {
+            "id": "l",
+            "refs": [
+              "Ll",
+              "Lr"
+            ]
+          },
+          {
+            "id": "m",
+            "refs": [
+              "Ml",
+              "Mr"
+            ]
+          },
+          {
+            "id": "n",
+            "refs": [
+              "Nl",
+              "Nr"
+            ]
+          },
+          {
+            "id": "a1",
+            "refs": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "a2",
+            "refs": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "id": "b1",
+            "refs": [
+              "Q1",
+              "Q2"
+            ]
+          },
+          {
+            "id": "b2",
+            "refs": [
+              "Q2",
+              "Q3"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "p1",
+              "count": 1,
+              "segments": [
+                "l",
+                "m",
+                "n"
+              ],
+              "color": "VIOLET"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "a1",
+                "b1"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "a2",
+                "b2"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "ll",
+              "ownerSegment": "l",
+              "text": "l"
+            },
+            {
+              "id": "lm",
+              "ownerSegment": "m",
+              "text": "m"
+            },
+            {
+              "id": "ln",
+              "ownerSegment": "n",
+              "text": "n"
+            },
+            {
+              "id": "t1",
+              "ownerSegment": "a1",
+              "text": "4",
+              "unit": "cm"
+            },
+            {
+              "id": "t4",
+              "ownerSegment": "a2",
+              "text": "8",
+              "unit": "cm"
+            },
+            {
+              "id": "t2",
+              "ownerSegment": "b1",
+              "text": "6",
+              "unit": "cm"
+            },
+            {
+              "id": "t3",
+              "ownerSegment": "b2",
+              "text": "x",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "같은 색 구간끼리 비가 같다",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 380
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "같은 색 구간끼리 비가 같다",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "hiddenPointNames": [
+          "P1",
+          "P2",
+          "P3",
+          "Q1",
+          "Q2",
+          "Q3",
+          "Ll",
+          "Ml",
+          "Nl",
+          "Lr",
+          "Mr",
+          "Nr",
+          "Z1",
+          "Z3"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "평행선 사이에서 두 직선이 잘린 선분의 길이의 비는 같다. l과 m 사이(파랑)와 m과 n 사이(주황)의 비가 두 직선에서 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행선 사이에서 두 직선이 잘린 선분의 길이의 비는 같다. l과 m 사이(파랑)와 m과 n 사이(주황)의 비가 두 직선에서 같다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

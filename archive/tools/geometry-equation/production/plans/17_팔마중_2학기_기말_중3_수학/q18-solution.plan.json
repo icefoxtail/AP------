@@ -1,0 +1,356 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "17",
+                  "denominator": "20"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "20"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "390"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "11",
+                  "denominator": "10"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "10"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "390"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "callouts": [
+      {
+        "id": "kAB",
+        "kind": "SEGMENT",
+        "path": [
+          "A",
+          "O",
+          "P",
+          "B"
+        ],
+        "at": "BELOW",
+        "link": "NONE",
+        "scale": 1,
+        "gap": 3.2,
+        "dimensions": [
+          {
+            "id": "dAO",
+            "from": "A",
+            "to": "O",
+            "label": "4",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          },
+          {
+            "id": "dOP",
+            "from": "O",
+            "to": "P",
+            "label": "x",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          },
+          {
+            "id": "dAP",
+            "from": "A",
+            "to": "P",
+            "label": "4+x",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      },
+      {
+        "id": "kCD",
+        "kind": "SEGMENT",
+        "path": [
+          "C",
+          "P",
+          "D"
+        ],
+        "at": "RIGHT",
+        "link": "NONE",
+        "scale": 1.4,
+        "gap": 2.4,
+        "dimensions": [
+          {
+            "id": "dCP",
+            "from": "C",
+            "to": "P",
+            "label": "3",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          },
+          {
+            "id": "dPD",
+            "from": "P",
+            "to": "D",
+            "label": "2",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원 O의 반지름은 4 cm이고 지름 AB와 현 CD가 점 P에서 만난다. CP=3 cm, DP=2 cm이며 OP=x로 놓고, 지름과 현을 따로 펼쳐 길이를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 4 cm, AB는 지름, AB와 CD의 교점 P에서 CP=3 cm, DP=2 cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "OC와 OD는 원의 반지름을 나타내는 보조선이며 점과 길이 라벨을 지시선으로 분리한다.",
+    "현의 기울기는 주어진 길이를 만족하는 예시이며 새로운 조건이 아니다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  }
+}

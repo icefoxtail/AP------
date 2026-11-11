@@ -1,0 +1,139 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-2*x",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "low",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "BLUE",
+        "label": "4/3"
+      },
+      {
+        "id": "up1",
+        "upper": "g",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "WARM"
+      },
+      {
+        "id": "up2",
+        "upper": "g",
+        "lower": "f",
+        "from": "2",
+        "to": "5/2",
+        "fill": "WARM"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "m1",
+          "slope": "1/2",
+          "intercept": "0",
+          "color": "WARM",
+          "label": "y=kx",
+          "labelValues": {
+            "k": "1/2"
+          },
+          "labelAt": "END"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cL",
+          "point": "P",
+          "text": "x=L",
+          "direction": "SE",
+          "labelKind": "MATH"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "5/2",
+          "unnamed": true
+        }
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1/2",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "5/2"
+        ],
+        "hideLabel": true
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "O",
+    "V",
+    "A"
+  ],
+  "caption": "예시 개형(L=5/2)이다. 포물선, 직선 y=kx, x축 아래 영역의 넓이 4/3을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x^2-2x와 y=kx는 x=0, L=k+2에서 만나고 L>2이다.",
+      "mappedTo": [
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x축 아래 부분의 넓이는 4/3이고 전체 넓이 L^3/6의 절반이므로 L^3=16이다. 그림은 L=5/2인 예시 개형이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선과 직선이 둘러싼 영역을 x축 위·아래로 나누어 색으로 구분하고, x축 아래 영역의 넓이 4/3이 전체의 절반임을 보인다.",
+    "실제 L=세제곱근 16은 정확히 담을 수 없어 L=5/2인 예시 개형으로 그렸다."
+  ]
+}

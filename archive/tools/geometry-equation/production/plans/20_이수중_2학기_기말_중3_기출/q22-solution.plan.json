@@ -1,0 +1,691 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "변 AB를 지름으로 하는 원"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "7"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "9"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bc",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ac",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ab",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "B",
+                "ac"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "C",
+                "ab"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ad",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "be",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "E"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "ad",
+                "be"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circle1",
+              "op": "CIRCLE_THROUGH_3",
+              "inputs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "P"
+        ],
+        "displayCircles": [
+          "circle1"
+        ],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "AD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "BE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "CF",
+            "refs": [
+              "C",
+              "F"
+            ]
+          },
+          {
+            "id": "BD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "AE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          }
+        ],
+        "caption": "변 AB를 지름으로 보면 D와 E에서 직각이 생긴다. 원 위의 네 점으로 사각형 하나가 정해진다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "D,E,F는 각각 A,B,C에서 대변에 내린 수선의 발이며 P는 세 높이의 교점이다. 각의 구체적 크기는 예시다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "두 원의 목적을 구별하며 교점·라벨이 겹치면 여유를 두고 지시선을 사용한다."
+        ],
+        "planeMarks": {
+          "angles": [],
+          "segmentColors": [
+            {
+              "segments": [
+                "AB"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "D",
+                    "E"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 440
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "A",
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "ra1",
+            "refs": [
+              "A",
+              "E",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "선분 AP를 지름으로 하는 원"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "7"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "9"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bc",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ac",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ab",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "B",
+                "ac"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "C",
+                "ab"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ad",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "be",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "E"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "ad",
+                "be"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circle1",
+              "op": "CIRCLE_THROUGH_3",
+              "inputs": [
+                "A",
+                "P",
+                "E"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "P"
+        ],
+        "displayCircles": [
+          "circle1"
+        ],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "AD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "BE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "CF",
+            "refs": [
+              "C",
+              "F"
+            ]
+          },
+          {
+            "id": "AP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "AF",
+            "refs": [
+              "A",
+              "F"
+            ]
+          },
+          {
+            "id": "FP",
+            "refs": [
+              "F",
+              "P"
+            ]
+          },
+          {
+            "id": "PE",
+            "refs": [
+              "P",
+              "E"
+            ]
+          },
+          {
+            "id": "AE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          }
+        ],
+        "caption": "선분 AP를 지름으로 보면 E와 F에서 직각이 생긴다. 원 위의 네 점으로 사각형 하나가 정해진다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "D,E,F는 각각 A,B,C에서 대변에 내린 수선의 발이며 P는 세 높이의 교점이다. 각의 구체적 크기는 예시다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "두 원의 목적을 구별하며 교점·라벨이 겹치면 여유를 두고 지시선을 사용한다."
+        ],
+        "planeMarks": {
+          "angles": [],
+          "segmentColors": [
+            {
+              "segments": [
+                "AP"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "F",
+                    "P",
+                    "E"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 440
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "A",
+              "E",
+              "P"
+            ]
+          },
+          {
+            "id": "ra1",
+            "refs": [
+              "A",
+              "F",
+              "P"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "삼각형 ABC의 세 높이와 수선의 발 D, E, F, 높이의 교점 P를 나타낸 그림이다. 왼쪽은 변 AB를, 오른쪽은 선분 AP를 지름으로 하는 원과 두 직각 표시, 원 위의 네 점으로 만든 사각형(연한 색)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 수선의 발과 높이의 교점을 이용하여 여섯 내접사각형을 세 그룹으로 나눈다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그림을 보존하고 여섯 사각형을 두 개씩 세 패널로 구분한다."
+  ]
+}

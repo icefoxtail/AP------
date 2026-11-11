@@ -1,0 +1,498 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "삼각형 ABC의 각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "154"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "254"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "radD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tanD",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "D",
+                "radD"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "radE",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "E"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tanE",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "E",
+                "radE"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "radF",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "F"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tanF",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "F",
+                "radF"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "tanD",
+                "tanF"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "tanD",
+                "tanE"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "tanE",
+                "tanF"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "DF",
+            "refs": [
+              "D",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "A46",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 46,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B80",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 80,
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "삼각형 ABC의 각 A와 각 B",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "호 DE의 원주각과 중심각, 삼각형의 각 B",
+            "mappedTo": [
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "접점과 각을 구별하며 점·각 라벨이 밀집하지 않도록 여유를 둔다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 DEF의 세 각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "F"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-920"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "F",
+                "D"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "891"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "DF",
+            "refs": [
+              "D",
+              "F"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "F50",
+              "refs": [
+                "D",
+                "F",
+                "E"
+              ],
+              "value": 50,
+              "factRole": "GIVEN",
+              "emphasisGroup": 1
+            },
+            {
+              "id": "E67",
+              "refs": [
+                "D",
+                "E",
+                "F"
+              ],
+              "value": 67,
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D63",
+              "refs": [
+                "F",
+                "D",
+                "E"
+              ],
+              "value": 63,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "emphasisGroup": 3
+            }
+          ]
+        },
+        "caption": "호 DE의 원주각과 중심각, 삼각형의 각 B",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "호 DE의 원주각과 중심각, 삼각형의 각 B",
+            "mappedTo": [
+              "planeMarks"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "접점과 각을 구별하며 점·각 라벨이 밀집하지 않도록 여유를 둔다."
+        ]
+      }
+    }
+  ],
+  "caption": "삼각형 ABC의 내접원 O와 접점 D, E, F를 이은 삼각형 DEF가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 O는 삼각형 ABC의 내접원이며 D,E,F는 접점이다. ∠A=46°, ∠DFE=50°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점과 각을 구별하며 점·각 라벨이 밀집하지 않도록 여유를 둔다."
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "235"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "295"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "355"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "129"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aA",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 67,
+        "label": "67",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 53,
+        "label": "x",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "c",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "60",
+        "labelPlacement": "LEADER",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arcBC",
+        "circle": "c",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "label": "60",
+        "labelPlacement": "LEADER",
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arcCD",
+        "circle": "c",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "134",
+        "labelPlacement": "LEADER",
+        "color": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arcDA",
+        "circle": "c",
+        "center": "O",
+        "from": "D",
+        "to": "A",
+        "side": "MINOR",
+        "label": "106",
+        "labelPlacement": "LEADER",
+        "color": "GREEN",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원주각으로 호의 크기를 차례로 구한다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "호 AB=호 BC이고 ∠ADB=30°, ∠DAC=67°이다. 호 AB=호 BC=60°, 호 DC=134°이고 나머지 호 AD=360°−(60°+60°+134°)=106°이다. ∠ABD는 호 AD에 대한 원주각이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원을 네 호로 나누어 같은 호는 같은 색, 각 원주각은 그 각이 보는 호와 같은 색으로 표시한다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 600
+  }
+}

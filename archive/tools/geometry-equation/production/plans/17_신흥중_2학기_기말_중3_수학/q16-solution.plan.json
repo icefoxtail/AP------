@@ -1,0 +1,375 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X0",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "160"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "B",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "198"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "55"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "D",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X0"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "325"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lAC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBD",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lAD",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "P",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lAC",
+     "lBD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lAD",
+     "lBC"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "P"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPA",
+   "refs": [
+    "P",
+    "A"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sPB",
+   "refs": [
+    "P",
+    "B"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sED",
+   "refs": [
+    "E",
+    "D"
+   ]
+  },
+  {
+   "id": "sBE",
+   "refs": [
+    "B",
+    "E"
+   ]
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aP",
+    "refs": [
+     "A",
+     "P",
+     "B"
+    ],
+    "value": 26,
+    "label": "26",
+    "color": "BLUE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aE",
+    "refs": [
+     "C",
+     "E",
+     "D"
+    ],
+    "value": 64,
+    "label": "64",
+    "color": "WARM",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aC",
+    "refs": [
+     "B",
+     "C",
+     "A"
+    ],
+    "value": 19,
+    "label": "x",
+    "color": "ROSE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aD",
+    "refs": [
+     "B",
+     "D",
+     "A"
+    ],
+    "value": 19,
+    "noLabel": true,
+    "color": "ROSE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "arcAB",
+    "circle": "circ",
+    "center": "O",
+    "from": "A",
+    "to": "B",
+    "side": "MINOR",
+    "color": "GREEN",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "caption": "호 AB에 대한 원주각 BCA와 BDA는 같은 분홍색 각 x이다. 삼각형과 외각의 관계로 두 식을 세워 x를 구한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AD와 BC의 교점 E, CA의 연장선과 DB의 연장선의 교점 P, ∠CED=64°, ∠CPD=26°, x=∠BCA.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 400
+ },
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
+}

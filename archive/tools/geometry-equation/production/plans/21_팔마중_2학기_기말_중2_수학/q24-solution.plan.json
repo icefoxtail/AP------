@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*x-6",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "6"
+      ],
+      "y": [
+        "1",
+        "6"
+      ]
+    },
+    "viewport": [
+      -1,
+      7,
+      -1,
+      7
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "K1",
+          "x": "1",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "K2",
+          "x": "6",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "K3",
+          "x": "6",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "K4",
+          "x": "1",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "3",
+          "y": "3",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "SE"
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "6",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "NW"
+        },
+        {
+          "id": "X",
+          "axis": "x",
+          "value": "2",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "SE"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "K1",
+            "K2",
+            "K3",
+            "K4"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "색칠한 정사각형은 x좌표와 y좌표가 모두 1 이상 6 이하인 점들의 범위이고, 직선이 그 안을 지나는 점에 좌표를 적었다."
+}

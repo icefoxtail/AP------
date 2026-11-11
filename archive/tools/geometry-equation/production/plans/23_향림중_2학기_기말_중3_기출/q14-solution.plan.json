@@ -1,0 +1,143 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "양의 상관관계(예)"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 2
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 3,
+              "y": 3
+            },
+            {
+              "x": 4,
+              "y": 5
+            },
+            {
+              "x": 5,
+              "y": 6
+            },
+            {
+              "x": 6,
+              "y": 6
+            },
+            {
+              "x": 7,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 9
+            }
+          ],
+          "xRange": [
+            "0",
+            "10"
+          ],
+          "yRange": [
+            "0",
+            "10"
+          ],
+          "xStep": "2",
+          "yStep": "2",
+          "xTitle": "x",
+          "yTitle": "y",
+          "grid": true,
+          "equalUnits": true,
+          "trendArrow": {
+            "direction": "UP"
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "음의 상관관계(예)"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 9
+            },
+            {
+              "x": 2,
+              "y": 7
+            },
+            {
+              "x": 3,
+              "y": 8
+            },
+            {
+              "x": 4,
+              "y": 6
+            },
+            {
+              "x": 5,
+              "y": 5
+            },
+            {
+              "x": 6,
+              "y": 4
+            },
+            {
+              "x": 7,
+              "y": 3
+            },
+            {
+              "x": 8,
+              "y": 1
+            }
+          ],
+          "xRange": [
+            "0",
+            "10"
+          ],
+          "yRange": [
+            "0",
+            "10"
+          ],
+          "xStep": "2",
+          "yStep": "2",
+          "xTitle": "x",
+          "yTitle": "y",
+          "grid": true,
+          "equalUnits": true,
+          "trendArrow": {
+            "direction": "DOWN"
+          }
+        }
+      }
+    }
+  ],
+  "caption": "산점도의 점들이 오른쪽 위로 향하면 양의 상관관계, 오른쪽 아래로 향하면 음의 상관관계이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "문제의 산점도는 두 변량이 함께 커지는 양의 상관관계이다. 아래 점들은 두 상관관계의 모양을 비교하기 위한 예시이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양의 상관관계와 음의 상관관계의 산점도 모양을 나란히 보이고 추세 화살표로 방향을 구분한다."
+  ]
+}

@@ -1,0 +1,673 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "4"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "6"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "5176381",
+          "denominator": "2500000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "38637033",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "lBC",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "H",
+       "op": "PERPENDICULAR_FOOT",
+       "inputs": [
+        "A",
+        "lBC"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "H"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sCH",
+      "refs": [
+       "C",
+       "H"
+      ]
+     },
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "C"
+       ],
+       "value": 75,
+       "label": "75",
+       "color": "GREEN",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "WARM",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAC",
+       "ownerSegment": "sAC",
+       "text": "8",
+       "unit": "m"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "∠BAC=75°, ∠ABC=45°, AC=8m, AH⊥BC.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "H",
+       "C"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ACH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "4"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "6"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "5176381",
+          "denominator": "2500000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "38637033",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "lBC",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "H",
+       "op": "PERPENDICULAR_FOOT",
+       "inputs": [
+        "A",
+        "lBC"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "H"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sCH",
+      "refs": [
+       "C",
+       "H"
+      ]
+     },
+     {
+      "id": "sHA",
+      "refs": [
+       "H",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aC",
+       "refs": [
+        "A",
+        "C",
+        "H"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "VIOLET",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "aCAH",
+       "refs": [
+        "C",
+        "A",
+        "H"
+       ],
+       "value": 30,
+       "noLabel": true,
+       "color": "ROSE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAC",
+       "ownerSegment": "sAC",
+       "text": "8",
+       "unit": "m"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sHA"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "삼각형 ACH",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "∠ACH=60°, AC=8m, ∠AHC=90°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "H",
+       "C"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    },
+    "hiddenPointNames": [
+     "B"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "4"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "6"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "5176381",
+          "denominator": "2500000"
+         },
+         {
+          "kind": "rational",
+          "numerator": "38637033",
+          "denominator": "5000000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "lBC",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "H",
+       "op": "PERPENDICULAR_FOOT",
+       "inputs": [
+        "A",
+        "lBC"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "H"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBH",
+      "refs": [
+       "B",
+       "H"
+      ]
+     },
+     {
+      "id": "sHA",
+      "refs": [
+       "H",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "H"
+       ],
+       "value": 45,
+       "label": "45",
+       "color": "WARM",
+       "factRole": "GIVEN"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sHA"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "삼각형 ABH",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "∠ABH=45°, ∠AHB=90°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "H",
+       "B"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    },
+    "hiddenPointNames": [
+     "C"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "두 삼각형에서 파란색 선분 AH가 공통이다. 삼각형 ACH에서 각 C는 60°이고 AC=8m이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "∠BAC=75°, ∠ABC=45°, AC=8m, AH⊥BC.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이 단계마다 그림을 나누어 보인다."
+ ]
+}

@@ -40,6 +40,7 @@ import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { loadResolvedConsumerCatalog } from "./reviewed-exam-registration-v2.mjs";
+import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -343,7 +344,10 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
     if (!consumer) continue;
     let sourceBound = true;
     try {
-      const blob = gitBlobSha1(root, `archive/exams/${normalizeFile(unit.sourceFile)}`);
+      const sourcePath = `archive/exams/${normalizeFile(unit.sourceFile)}`;
+      const blob = unit.kind === "difficulty5-ratings"
+        ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), unit.expectedBlob).sha
+        : gitBlobSha1(root, sourcePath);
       if (unit.expectedBlob !== blob) {
         sourceBound = false;
         result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `request ${unit.expectedBlob ?? null} != worktree ${blob}` });

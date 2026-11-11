@@ -7,7 +7,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { execFileSync, spawnSync } from "node:child_process";
-import { registerDifficulty5, computeLegacyCompat, wrapGeminiFile, normalizeGeminiPayload, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { registerDifficulty5, computeLegacyCompat, wrapGeminiFile, normalizeGeminiPayload, bindDifficulty5Source, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const FIXTURE = path.join(repo, "tests/fixtures/diff5/req_diff5_17.json");
@@ -16,6 +16,17 @@ const SOURCE = gemini.sourceArchiveFile;
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const sha256 = b => crypto.createHash("sha256").update(b).digest("hex");
+
+test('difficulty source binding allows only exact bytes or the established CRLF-to-LF normalization', () => {
+  const lf = Buffer.from('window.questions = [{ content: "원문", answer: 2 }];\n');
+  const crlf = Buffer.from(lf.toString('utf8').replace(/\n/g, '\r\n'));
+  const blob = b => crypto.createHash('sha1').update(`blob ${b.length}\0`).update(b).digest('hex');
+  assert.deepEqual(bindDifficulty5Source(crlf, blob(crlf)), { bytes: crlf, sha: blob(crlf) });
+  assert.deepEqual(bindDifficulty5Source(crlf, blob(lf)), { bytes: lf, sha: blob(lf) });
+  const changed = Buffer.from(crlf.toString('utf8').replace('answer: 2', 'answer: 3'));
+  assert.notEqual(bindDifficulty5Source(changed, blob(lf)).sha, blob(lf), 'a real source edit still fails the binding');
+  assert.notEqual(bindDifficulty5Source(lf, '0'.repeat(40)).sha, '0'.repeat(40));
+});
 
 // Read the real sidecars once, keep only this exam's rows. Tests then run on temp copies, never on the real files.
 let realMeta = JSON.parse(fs.readFileSync(path.join(repo, META), "utf8"));

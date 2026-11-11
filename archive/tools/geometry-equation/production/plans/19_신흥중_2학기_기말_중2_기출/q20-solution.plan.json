@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sP0P1",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP0P2",
+      "refs": [
+        "P0",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP0P3",
+      "refs": [
+        "P0",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP0P4",
+      "refs": [
+        "P0",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP1P3",
+      "refs": [
+        "P1",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP1P4",
+      "refs": [
+        "P1",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP2P4",
+      "refs": [
+        "P2",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP3P4",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "sP0P3",
+          "sP1P2",
+          "sP2P4"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t0",
+        "at": "P0",
+        "anchor": "N",
+        "text": "0"
+      },
+      {
+        "id": "t1",
+        "at": "P1",
+        "anchor": "SE",
+        "text": "1"
+      },
+      {
+        "id": "t2",
+        "at": "P2",
+        "anchor": "SW",
+        "text": "2"
+      },
+      {
+        "id": "t3",
+        "at": "P3",
+        "anchor": "E",
+        "text": "3"
+      },
+      {
+        "id": "t4",
+        "at": "P4",
+        "anchor": "W",
+        "text": "4"
+      }
+    ]
+  },
+  "caption": "0, 1, 2, 3, 4가 적힌 카드 중 두 장을 고르는 모든 경우를 선분으로 이었고, 만든 두 자리 수가 3의 배수인 경우를 파란색으로 표시했다.",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "hiddenPointStyle": "DOT",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "숫자 0, 1, 2, 3, 4가 적힌 카드 5장 중 두 장을 뽑아 두 자리 수를 만든다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "5장의 카드를 점으로, 뽑은 두 장을 선분으로 나타낸 그림"
+  ]
+}

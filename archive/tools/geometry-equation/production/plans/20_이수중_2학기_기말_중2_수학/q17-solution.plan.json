@@ -1,0 +1,499 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "D",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dAD",
+              "from": "A",
+              "to": "D",
+              "label": "8",
+              "side": "ABOVE",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            },
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "16",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lCD",
+              "ownerSegment": "sCD",
+              "text": "x",
+              "unit": "cm"
+            },
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "15",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각사다리꼴 ABCD에서 각 A와 각 B가 직각이고 AD=8cm, AB=15cm, BC=16cm, CD=x.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "B",
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "수선 DH로 나누기"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "D",
+          "B",
+          "C",
+          "H"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sDH",
+            "refs": [
+              "D",
+              "H"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dBH",
+              "from": "B",
+              "to": "H",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            },
+            {
+              "id": "dHC",
+              "from": "H",
+              "to": "C",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lDH",
+              "ownerSegment": "sDH",
+              "text": "15",
+              "unit": "cm"
+            },
+            {
+              "id": "lCD2",
+              "ownerSegment": "sCD",
+              "text": "x",
+              "unit": "cm"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "H",
+                    "D"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "D",
+                    "H",
+                    "C"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "수선 DH로 나누기",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "점 D에서 BC에 내린 수선의 발 H에서 사각형 ABHD는 직사각형(파랑)이고 삼각형 DHC는 직각삼각형(주황)이다. DH=15cm, BH=8cm, HC=8cm.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "B",
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "B",
+              "H"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "D",
+              "H",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    }
+  ],
+  "caption": "점 D에서 BC에 수선 DH를 그으면 직사각형 ABHD와 직각삼각형 DHC로 나뉜다. 파란색이 직사각형, 주황색이 직각삼각형이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 D에서 BC에 수선 DH를 그으면 직사각형 ABHD와 직각삼각형 DHC로 나뉜다. 파란색이 직사각형, 주황색이 직각삼각형이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

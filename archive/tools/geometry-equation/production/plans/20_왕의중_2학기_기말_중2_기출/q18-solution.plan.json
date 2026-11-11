@@ -1,0 +1,527 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFG",
+            "refs": [
+              "F",
+              "G"
+            ]
+          },
+          {
+            "id": "sGC",
+            "refs": [
+              "G",
+              "C"
+            ]
+          },
+          {
+            "id": "sGD",
+            "refs": [
+              "G",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAE",
+              "ownerSegment": "sAE",
+              "text": "20",
+              "unit": "cm"
+            },
+            {
+              "id": "lFG",
+              "ownerSegment": "sFG",
+              "text": "x",
+              "unit": "cm"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAD",
+              "from": "A",
+              "to": "D",
+              "label": "12",
+              "side": "ABOVE",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "두 정사각형에서 AD=12cm, AE=20cm이고 GF=x이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "직각삼각형 ABE"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sEA",
+            "refs": [
+              "E",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "12",
+              "unit": "cm"
+            },
+            {
+              "id": "lEA",
+              "ownerSegment": "sEA",
+              "text": "20",
+              "unit": "cm"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sBC"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sCE"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "12",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "offset": "AUTO"
+            },
+            {
+              "id": "dCE",
+              "from": "C",
+              "to": "E",
+              "label": "x",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "offset": "AUTO"
+            },
+            {
+              "id": "dBE",
+              "from": "B",
+              "to": "E",
+              "label": "12+x",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "offset": "AUTO"
+            }
+          ]
+        },
+        "caption": "직각삼각형 ABE",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각삼각형 ABE에서 AB=12cm, BE=12+x, AE=20cm.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "B",
+              "E"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "점 B, C, E는 한 직선 위에 있으므로 BE는 BC와 CE의 합 12+x이다. 직각삼각형 ABE에서 파란색 AB는 12, 가로 변 BE는 12+x, 빗변 AE는 20이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 B, C, E는 한 직선 위에 있으므로 BE는 BC와 CE의 합 12+x이다. 직각삼각형 ABE에서 파란색 AB는 12, 가로 변 BE는 12+x, 빗변 AE는 20이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

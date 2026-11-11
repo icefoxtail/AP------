@@ -1,0 +1,102 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 1,
+        "y": 18
+      },
+      {
+        "x": 2,
+        "y": 9
+      },
+      {
+        "x": 3,
+        "y": 16
+      },
+      {
+        "x": 4,
+        "y": 18
+      },
+      {
+        "x": 5,
+        "y": 10
+      },
+      {
+        "x": 6,
+        "y": 13
+      }
+    ],
+    "xRange": [
+      "0",
+      "7"
+    ],
+    "yRange": [
+      "0",
+      "20"
+    ],
+    "xStep": "1",
+    "yStep": "2",
+    "xTitle": "회차",
+    "yTitle": "횟수(회)",
+    "grid": true,
+    "refLines": [
+      {
+        "type": "y=k",
+        "value": "14"
+      }
+    ],
+    "pointGroups": [
+      {
+        "points": [
+          [
+            1,
+            18
+          ],
+          [
+            3,
+            16
+          ],
+          [
+            4,
+            18
+          ]
+        ],
+        "color": "WARM",
+        "label": "평균 위"
+      },
+      {
+        "points": [
+          [
+            2,
+            9
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            6,
+            13
+          ]
+        ],
+        "color": "BLUE",
+        "label": "평균 아래"
+      }
+    ]
+  },
+  "caption": "평균 14를 기준으로 각 자료가 위아래로 얼마나 떨어져 있는지 보고 편차를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원자료는 18,9,16,18,10,13회이고 평균은 14회이다. 가로선은 평균 14를 나타낸다.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평균선에서 각 자료까지의 위아래 거리가 편차임을 보여 준다."
+  ]
+}

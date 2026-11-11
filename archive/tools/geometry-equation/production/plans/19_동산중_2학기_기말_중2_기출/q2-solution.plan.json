@@ -1,0 +1,634 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4500",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "7794",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "13789",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "30000",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "15000",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "10098",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11491",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "30000",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0BAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 80.0021628916805,
+              "label": "80",
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1ACB",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 39.99856488914688,
+              "label": "40",
+              "color": "GREEN",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a2EDF",
+              "refs": [
+                "E",
+                "D",
+                "F"
+              ],
+              "value": 80.00072474360908,
+              "label": "80",
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a3DFE",
+              "refs": [
+                "D",
+                "F",
+                "E"
+              ],
+              "value": 59.99875861577916,
+              "label": "60",
+              "color": "VIOLET",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "9",
+              "unit": "cm"
+            },
+            {
+              "id": "lFD",
+              "ownerSegment": "sFD",
+              "text": "15",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB=9cm, DF=15cm, 각 A=80°, 각 C=40°, 각 D=80°, 각 F=60°.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "대응 순서대로 펼치기"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4500",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "7794",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "13789",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "7500",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "23990",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "22981",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11000",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11000",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sDF",
+            "refs": [
+              "D",
+              "F"
+            ]
+          },
+          {
+            "id": "sFE",
+            "refs": [
+              "F",
+              "E"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0BAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 80.0021628916805,
+              "label": "80",
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1CBA",
+              "refs": [
+                "C",
+                "B",
+                "A"
+              ],
+              "value": 59.99927221917264,
+              "label": "60",
+              "color": "VIOLET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "a2ACB",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 39.99856488914688,
+              "label": "40",
+              "color": "GREEN",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a3FDE",
+              "refs": [
+                "F",
+                "D",
+                "E"
+              ],
+              "value": 80.0009479868399,
+              "label": "80",
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a4DFE",
+              "refs": [
+                "D",
+                "F",
+                "E"
+              ],
+              "value": 59.99927221917263,
+              "label": "60",
+              "color": "VIOLET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "a5FED",
+              "refs": [
+                "F",
+                "E",
+                "D"
+              ],
+              "value": 39.999779793987486,
+              "label": "40",
+              "color": "GREEN",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "9",
+              "unit": "cm"
+            },
+            {
+              "id": "lDF",
+              "ownerSegment": "sDF",
+              "text": "15",
+              "unit": "cm"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB",
+                "sDF"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sBC",
+                "sFE"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sCA",
+                "sED"
+              ],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "같은 방향으로 펼친 두 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "A에 D, B에 F, C에 E가 대응한다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    }
+  ],
+  "caption": "두 각이 각각 같은 삼각형은 닮음이다. 같은 색의 각과 같은 색의 변이 서로 대응한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 각이 각각 같은 삼각형은 닮음이다. 같은 색의 각과 같은 색의 변이 서로 대응한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "금 비",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "토 비",
+              "p": "1/3"
+            },
+            {
+              "label": "토 안 옴",
+              "p": "2/3"
+            }
+          ]
+        },
+        {
+          "label": "금 안 옴",
+          "p": "2/3",
+          "children": [
+            {
+              "label": "토 비",
+              "p": "5/6"
+            },
+            {
+              "label": "토 안 옴",
+              "p": "1/6"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "금 비",
+          "토 비"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "금 안 옴",
+          "토 비"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "목요일에 비가 왔을 때 첫째 가지는 금요일, 둘째 가지는 토요일의 날씨이다. 파란색 경로는 토요일에 비가 오는 두 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "비가 온 날의 다음 날 비가 올 확률은 3분의 1, 비가 오지 않은 날의 다음 날 비가 오지 않을 확률은 6분의 1이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "금요일의 날씨에 따라 토요일에 비가 오는 두 경로를 파란색으로 보인다."
+  ]
+}

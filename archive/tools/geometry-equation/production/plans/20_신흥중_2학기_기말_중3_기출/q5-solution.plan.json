@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "lnAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a45",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a45b",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 18.43,
+        "label": "x",
+        "color": "GREEN",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "k",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "AC",
+        "text": "sqrt(2)k",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "BD",
+        "text": "k/sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "BC",
+          "CH",
+          "AH"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "BD",
+          "CD"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "수선 BD로 만든 두 직각삼각형",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC=CH, ∠ACH=45°이고 AH⊥BH이다. ∠BAC=x이고 B에서 직선 AC에 내린 수선의 발을 D로 둔다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AH=CH=BC=k(주황 눈금)와 AC=√2k, B에서 직선 AC에 내린 수선 BD에서 ∠BCD=45°(주황)로 BD=CD=k÷√2(파랑 눈금)를 보이고 x는 직각삼각형 ABD의 한 각임을 보인다."
+  ]
+}

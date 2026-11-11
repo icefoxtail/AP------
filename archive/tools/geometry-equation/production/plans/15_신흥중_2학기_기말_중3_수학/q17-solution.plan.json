@@ -1,0 +1,718 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "164"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "196"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "24"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "306"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lAC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lAC",
+                "lBD"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "P",
+          "R0"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "hiddenPointNames": [
+          "R0"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "sPC",
+            "refs": [
+              "P",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sPD",
+            "refs": [
+              "P",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sOA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "sOD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "callouts": [
+            {
+              "id": "k1",
+              "kind": "ANGLE",
+              "vertex": "O",
+              "rays": [
+                "A",
+                "B",
+                "D",
+                "C"
+              ],
+              "at": "BELOW",
+              "angles": [
+                {
+                  "id": "k1a",
+                  "refs": [
+                    "A",
+                    "O",
+                    "B"
+                  ],
+                  "value": 32,
+                  "label": "32",
+                  "color": "WARM",
+                  "style": "ARC"
+                },
+                {
+                  "id": "k1b",
+                  "refs": [
+                    "D",
+                    "O",
+                    "C"
+                  ],
+                  "value": 78,
+                  "label": "78",
+                  "color": "BLUE",
+                  "style": "ARC"
+                }
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "A",
+                "O",
+                "B"
+              ],
+              "value": 32,
+              "noLabel": true,
+              "color": "WARM",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "C",
+                "O",
+                "D"
+              ],
+              "value": 78,
+              "noLabel": true,
+              "color": "BLUE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a2",
+              "refs": [
+                "A",
+                "P",
+                "B"
+              ],
+              "value": 23,
+              "noLabel": true,
+              "color": "VIOLET",
+              "factRole": "CONCLUSION"
+            }
+          ]
+        },
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "두 현 CA, DB의 연장선의 교점이 P이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "보조선 AD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "164"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "196"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "24"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "306"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lAC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lAC",
+                "lBD"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "P",
+          "R0"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "hiddenPointNames": [
+          "R0"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "sPA",
+            "refs": [
+              "P",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sPD",
+            "refs": [
+              "P",
+              "D"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "callouts": [
+            {
+              "id": "k2",
+              "kind": "ANGLE",
+              "vertex": "A",
+              "rays": [
+                "C",
+                "D"
+              ],
+              "at": "BELOW",
+              "angles": [
+                {
+                  "id": "k2a",
+                  "refs": [
+                    "C",
+                    "A",
+                    "D"
+                  ],
+                  "value": 39,
+                  "label": "39",
+                  "color": "BLUE",
+                  "style": "ARC"
+                }
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "b0",
+              "refs": [
+                "A",
+                "D",
+                "B"
+              ],
+              "value": 16,
+              "label": "16",
+              "color": "WARM",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "b1",
+              "refs": [
+                "C",
+                "A",
+                "D"
+              ],
+              "value": 39,
+              "noLabel": true,
+              "color": "BLUE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "b2",
+              "refs": [
+                "A",
+                "P",
+                "D"
+              ],
+              "value": 23,
+              "noLabel": true,
+              "color": "VIOLET",
+              "factRole": "CONCLUSION"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg1",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P",
+                    "A",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "보조선 AD를 그은 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "보조선 AD를 긋는다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "주황색은 호 AB에 대한 각, 파란색은 호 CD에 대한 각이다. 보라색은 구하는 각 P이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주황색은 호 AB에 대한 각, 파란색은 호 CD에 대한 각이다. 보라색은 구하는 각 P이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "앞",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "앞",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            },
+            {
+              "label": "뒤",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "뒤",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "앞",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            },
+            {
+              "label": "뒤",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "뒤",
+          "뒤",
+          "뒤"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "앞",
+          "앞",
+          "앞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "앞",
+          "앞",
+          "뒤"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "앞",
+          "뒤",
+          "앞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "앞",
+          "뒤",
+          "뒤"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "뒤",
+          "앞",
+          "앞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "뒤",
+          "앞",
+          "뒤"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "뒤",
+          "뒤",
+          "앞"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "세 동전의 앞뒤 8가지 경로이다. 모두 뒷면인 경로는 파랑, 적어도 하나가 앞면인 나머지 7가지는 주황으로 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 동전을 던질 때 각 동전의 앞뒤 확률은 각각 2분의 1이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모두 뒷면인 경우와 그 여사건을 색으로 나누어 보인다."
+  ]
+}

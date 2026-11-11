@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "400",
+      "countUnit": "명"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "name": "2학년",
+        "count": "160",
+        "countUnit": "명"
+      },
+      {
+        "id": "B",
+        "name": "축구",
+        "count": "280",
+        "countUnit": "명"
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "축구 학생 집합 B 안에서 2학년 집합 A와 겹치는 부분이 조건부확률의 분자에 해당한다. 전체 축구 학생을 조건부 표본공간으로 삼아 그 안의 2학년 비율을 계산한다. 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전체 학생 400명, 2학년 160명, 축구 선택 280명",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "구하는 사건은 축구 학생 중 2학년인 경우",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "축구 학생이라는 조건부 표본공간과 그 안의 2학년 교집합"
+  ]
+}

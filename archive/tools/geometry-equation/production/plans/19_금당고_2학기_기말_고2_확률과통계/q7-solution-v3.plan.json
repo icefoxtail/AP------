@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "제품",
+      "children": [
+        {
+          "label": "해외",
+          "p": "4/5",
+          "children": [
+            {
+              "label": "불량",
+              "p": "1/25"
+            },
+            {
+              "label": "정상",
+              "p": "24/25"
+            }
+          ]
+        },
+        {
+          "label": "국내",
+          "p": "1/5",
+          "children": [
+            {
+              "label": "불량",
+              "p": "1/100"
+            },
+            {
+              "label": "정상",
+              "p": "99/100"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "해외와 국내 생산 뒤 불량 여부를 두 단계로 나누어 조건부 비율을 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "해외 생산 비율 4/5, 국내 생산 비율 1/5",
+      "mappedTo": "첫 단계의 두 가지 생산 경로"
+    },
+    {
+      "id": "c2",
+      "condition": "해외 불량률 1/25, 국내 불량률 1/100",
+      "mappedTo": "각 생산 경로 뒤의 불량·정상 가지"
+    }
+  ],
+  "newVisualInformation": [
+    "불량이라는 조건에서 가능한 두 생산 경로와 각 경로의 조건부 불량률"
+  ]
+}

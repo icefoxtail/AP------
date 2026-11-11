@@ -1,0 +1,514 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "삼각형 ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0BAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 60.00000000000001,
+              "label": "60",
+              "color": "VIOLET",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1ACB",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 30.000000000000004,
+              "label": "30",
+              "color": "GREEN",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "1",
+              "unit": "cm"
+            },
+            {
+              "id": "lBC",
+              "ownerSegment": "sBC",
+              "text": "sqrt(3)"
+            },
+            {
+              "id": "lAC",
+              "ownerSegment": "sAC",
+              "text": "2"
+            },
+            {
+              "id": "lCD",
+              "ownerSegment": "sCD",
+              "text": "2"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "e0",
+              "count": 1,
+              "segments": [
+                "sAC",
+                "sCD"
+              ],
+              "color": "ROSE"
+            }
+          ]
+        },
+        "caption": "문제의 그림과 삼각형 ABC",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "∠B=90°, ∠CAB=60°, AB=1cm, AC=CD, 삼각형 ABC는 30°, 60°, 90° 삼각형.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 420
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "이등변삼각형 ACD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0BAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 60.00000000000001,
+              "label": "60",
+              "color": "VIOLET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "a1CAD",
+              "refs": [
+                "C",
+                "A",
+                "D"
+              ],
+              "value": 14.999999999999996,
+              "label": "15",
+              "color": "GREEN",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "a2ACD",
+              "refs": [
+                "A",
+                "C",
+                "D"
+              ],
+              "value": 150.00000000000003,
+              "label": "150",
+              "color": "WARM",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "e0",
+              "count": 1,
+              "segments": [
+                "sAC",
+                "sCD"
+              ],
+              "color": "ROSE"
+            }
+          ]
+        },
+        "caption": "이등변삼각형 ACD",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AC=CD=2, ∠ACD=150°, ∠CAD=15°.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 420
+        }
+      }
+    }
+  ],
+  "caption": "30°, 60°, 90° 삼각형에서 AC=2이고, AC=CD이므로 CD도 2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "30°, 60°, 90° 삼각형에서 AC=2이고, AC=CD이므로 CD도 2이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

@@ -1,0 +1,551 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "삼각형 AED(각 AEB는 60도)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-868",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4924",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3830",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-3214",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lac",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lbd",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lac",
+                "lbd"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "D",
+          "E",
+          "O",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0AEB",
+              "refs": [
+                "A",
+                "E",
+                "B"
+              ],
+              "value": 60,
+              "label": "60",
+              "color": "GREEN",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1AED",
+              "refs": [
+                "A",
+                "E",
+                "D"
+              ],
+              "value": 120,
+              "label": "120",
+              "color": "WARM",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "a2EDA",
+              "refs": [
+                "E",
+                "D",
+                "A"
+              ],
+              "value": 40,
+              "label": "40",
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a3DAE",
+              "refs": [
+                "D",
+                "A",
+                "E"
+              ],
+              "value": 20,
+              "noLabel": true,
+              "color": "VIOLET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "삼각형 AED",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "각 AEB=60도, 각 ADB=40도이다. 각 AED=180-60=120도이므로 각 DAE는 나머지 각이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "O",
+          "C"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "호 DC에 대한 원주각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-868",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4924",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3830",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-3214",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "c",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lac",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lbd",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lac",
+                "lbd"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "c"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0DAC",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "value": 20,
+              "noLabel": true,
+              "color": "VIOLET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "a1DBC",
+              "refs": [
+                "D",
+                "B",
+                "C"
+              ],
+              "value": 20,
+              "noLabel": true,
+              "color": "VIOLET",
+              "factRole": "CONCLUSION"
+            }
+          ]
+        },
+        "caption": "호 DC에 대한 원주각",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "호 DC에 대한 원주각 DAC와 DBC는 서로 같다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "hiddenPointNames": [
+          "O"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "문제의 조건은 각 ADB 40도, 각 AEB 60도이다. 보라색 두 각은 같은 호 DC에 대한 원주각이라 서로 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "문제의 조건은 각 ADB 40도, 각 AEB 60도이다. 보라색 두 각은 같은 호 DC에 대한 원주각이라 서로 같다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

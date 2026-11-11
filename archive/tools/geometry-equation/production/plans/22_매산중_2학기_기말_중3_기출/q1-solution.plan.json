@@ -1,0 +1,150 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "right",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "hyp",
+        "ownerSegment": "ac",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "adj",
+        "ownerSegment": "ab",
+        "text": "c",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "opp",
+        "ownerSegment": "bc",
+        "text": "a",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC에서 각 B가 직각이고 변의 이름은 a, b, c이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "????? ABC?? B? ???? AC=b, AB=c, BC=a??.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "? A?? ??? ??? ?? ??? ??? ?? ????."
+  ]
+}

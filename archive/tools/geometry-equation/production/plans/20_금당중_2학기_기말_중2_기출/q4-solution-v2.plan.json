@@ -1,0 +1,707 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (넓이 비교)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "27",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAD",
+              "ownerSegment": "sAD",
+              "text": "9",
+              "unit": "cm"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "D"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "C",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBD",
+              "from": "B",
+              "to": "D",
+              "label": "6",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "각 A가 90도이고 AD는 BC에 수직이다. BD=6cm, AD=9cm.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "D",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 BDA"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-2040",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-3060",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "8040",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12060",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "D",
+          "A",
+          "Y1",
+          "Y2"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0DBA",
+              "refs": [
+                "D",
+                "B",
+                "A"
+              ],
+              "value": 56.30993247402022,
+              "noLabel": true,
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1BAD",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 33.6900675259798,
+              "noLabel": true,
+              "color": "VIOLET",
+              "factRole": "GIVEN"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sBD"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sDA"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBD",
+              "from": "B",
+              "to": "D",
+              "label": "6",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            },
+            {
+              "id": "dDA",
+              "from": "D",
+              "to": "A",
+              "label": "9",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "삼각형 BDA",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "BD=6cm, DA=9cm인 직각삼각형.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "B",
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "Y1",
+          "Y2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ADC (대응 순서)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "27",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "D",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0DAC",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "value": 56.309932474020215,
+              "noLabel": true,
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "a1ACD",
+              "refs": [
+                "A",
+                "C",
+                "D"
+              ],
+              "value": 33.6900675259798,
+              "noLabel": true,
+              "color": "VIOLET",
+              "factRole": "GIVEN"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAD"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sDC"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sCA"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAD",
+              "from": "A",
+              "to": "D",
+              "label": "9",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            },
+            {
+              "id": "dDC",
+              "from": "D",
+              "to": "C",
+              "label": "13.5",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "삼각형 ADC (대응 순서)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AD=9cm, DC=13.5cm.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "첫 그림의 파란색은 삼각형 ABD, 주황색은 삼각형 ACD이다. 삼각형 BDA와 ADC에서 파란색 변은 BD와 AD, 주황색 변은 DA와 DC, 초록색 변은 BA와 AC가 대응하고 같은 색의 각이 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 그림의 파란색은 삼각형 ABD, 주황색은 삼각형 ACD이다. 삼각형 BDA와 ADC에서 파란색 변은 BD와 AD, 주황색 변은 DA와 DC, 초록색 변은 BA와 AC가 대응하고 같은 색의 각이 같다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

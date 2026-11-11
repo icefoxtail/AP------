@@ -1,0 +1,736 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "O",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "sOD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sAO",
+                "sAB",
+                "sBC",
+                "sCD"
+              ]
+            }
+          ],
+          "regions": [
+            {
+              "id": "r1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "A",
+                    "B"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r2",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "B",
+                    "C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r3",
+              "fill": "GREEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "C",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "원문 그림",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "O",
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "ra1",
+            "refs": [
+              "O",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "ra2",
+            "refs": [
+              "O",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 OAB: OB²=a²+a²"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "O",
+          "B"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "r1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "A",
+                    "B"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAO",
+              "text": "a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sAB",
+              "text": "a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "l3",
+              "ownerSegment": "sOB",
+              "text": "sqrt(2)a",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "삼각형 OAB",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "O",
+              "A",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 OBC: OC²=OB²+a²"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "99",
+                    "denominator": "70"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "B",
+          "O",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sBO",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "r1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "B",
+                    "C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sBO",
+              "text": "sqrt(2)a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sBC",
+              "text": "a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "l3",
+              "ownerSegment": "sOC",
+              "text": "sqrt(3)a",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "삼각형 OBC",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "O",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 OCD: OD²=OC²+a²"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "97",
+                    "denominator": "56"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "C",
+          "O",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sCO",
+            "refs": [
+              "C",
+              "O"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sOD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "r1",
+              "fill": "GREEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "C",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sCO",
+              "text": "sqrt(3)a",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sCD",
+              "text": "a",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "caption": "삼각형 OCD",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "O",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "OA=AB=BC=CD=a라 하자. 파란색 직각삼각형 OAB에서 OB=√2a, 주황색 직각삼각형 OBC에서 OC=√3a이다. 초록색 직각삼각형 OCD에서 OD²=OC²+CD²을 쓴다."
+}

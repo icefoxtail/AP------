@@ -1,0 +1,44 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "6",
+      "0",
+      "1"
+    ],
+    "domain": [
+      0,
+      1
+    ],
+    "viewport": [
+      -0.2,
+      1.2,
+      -1,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: k=0일 때 도함수 y=x²+6은 0≤x≤1에서 양수다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "k=0으로 두면 f′(x)=x²+6이며 0≤x≤1에서 양수이다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "S2",
+      "condition": "함수가 구간에서 증가하려면 그 구간에서 도함수가 음이 아니어야 한다.",
+      "mappedTo": "graphPlan.viewport"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 매개변수에서 도함수 그래프가 x축 위에 놓이는 모습을 보여 준다."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      6,
+      7,
+      7,
+      7,
+      9,
+      9,
+      10
+    ],
+    "xTitle": "변량",
+    "marks": {
+      "medianLine": {
+        "value": "7",
+        "label": "중앙값 7"
+      },
+      "highlight": [
+        {
+          "value": 7,
+          "color": "WARM"
+        }
+      ]
+    }
+  },
+  "caption": "조건에 맞는 자료의 점도표에서 중앙값과 가장 많이 나온 값을 보여 주는 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "3a+1이 7이 될 때 자료의 변량은 6, 7, 7, 7, 9, 9, 10이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가운데 값과 가장 높게 쌓인 값이 모두 7임을 같은 그림에서 확인한다."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "a=2일 때의 예시를 보면",
+  "caption": "예: a=2일 때 두 임계점이 문제의 위치 조건을 만족하는 모습을 본다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "a=2이면 극소점의 x좌표는 −2/3이고 극대점의 x좌표는 2이다.",
+      "mappedTo": "두 임계점과 구간 조건"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 a=2에서 극소점은 −1<x<1에, 극대점은 x>1에 놓여 해설의 두 위치 조건을 보여 준다."
+  ],
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "4",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1.5,
+      2.5
+    ],
+    "viewport": [
+      -1.5,
+      2.7,
+      -2,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -0.6666666666666666,
+        "y": 3.5185185185185186
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 13
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2/3",
+        "95/27"
+      ],
+      "B": [
+        "2",
+        "13"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinatePlacement": "PANEL"
+}

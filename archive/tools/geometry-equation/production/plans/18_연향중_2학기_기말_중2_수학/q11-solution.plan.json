@@ -1,0 +1,669 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 배치"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "96108",
+                    "denominator": "15625"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "2343857",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "117163",
+                    "denominator": "62500"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sBO",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "sCO",
+            "refs": [
+              "C",
+              "O"
+            ]
+          },
+          {
+            "id": "sBI",
+            "refs": [
+              "B",
+              "I"
+            ]
+          },
+          {
+            "id": "sCI",
+            "refs": [
+              "C",
+              "I"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 52,
+              "factRole": "GIVEN",
+              "label": "52",
+              "color": "ROSE"
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "O",
+                "B",
+                "I"
+              ],
+              "value": 6,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "VIOLET"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "e0",
+              "count": 1,
+              "segments": [
+                "sAB",
+                "sAC"
+              ],
+              "color": "BLUE"
+            }
+          ]
+        },
+        "caption": "문제의 배치",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "내심: 각의 이등분선"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "96108",
+                    "denominator": "15625"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "117163",
+                    "denominator": "62500"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sBI",
+            "refs": [
+              "B",
+              "I"
+            ]
+          },
+          {
+            "id": "sCI",
+            "refs": [
+              "C",
+              "I"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "A",
+                "B",
+                "I"
+              ],
+              "value": 32,
+              "factRole": "GIVEN",
+              "label": "32",
+              "color": "ROSE",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "I",
+                "B",
+                "C"
+              ],
+              "value": 32,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "ROSE",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a2",
+              "refs": [
+                "I",
+                "C",
+                "B"
+              ],
+              "value": 32,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "ROSE",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a3",
+              "refs": [
+                "I",
+                "C",
+                "A"
+              ],
+              "value": 32,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "ROSE",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a4",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 52,
+              "factRole": "GIVEN",
+              "label": "52",
+              "color": "BLUE"
+            }
+          ]
+        },
+        "caption": "내심: 각의 이등분선",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "외심: OA=OB=OC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "96108",
+                    "denominator": "15625"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "2343857",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "O"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "sBO",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "sCO",
+            "refs": [
+              "C",
+              "O"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "O",
+                "A",
+                "B"
+              ],
+              "value": 26,
+              "factRole": "GIVEN",
+              "label": "26",
+              "color": "GREEN",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "O",
+                "A",
+                "C"
+              ],
+              "value": 26,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "GREEN",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a2",
+              "refs": [
+                "O",
+                "B",
+                "A"
+              ],
+              "value": 26,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "GREEN",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a3",
+              "refs": [
+                "O",
+                "C",
+                "A"
+              ],
+              "value": 26,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "GREEN",
+              "equalGroup": 1,
+              "arcs": 1
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "e0",
+              "count": 1,
+              "segments": [
+                "sAO",
+                "sBO",
+                "sCO"
+              ],
+              "color": "BLUE"
+            }
+          ]
+        },
+        "caption": "외심: OA=OB=OC",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "삼각형 ABC는 AB=AC인 이등변삼각형이므로 두 밑각이 같다. 내심 I는 각의 이등분선의 교점이어서 각 ABI는 각 B의 절반이다. 외심 O는 세 꼭짓점까지의 거리가 같아 직선 AO가 각 A를 이등분하고 삼각형 OAB는 이등변삼각형이다. 각 OBI는 각 ABI와 각 OBA의 차이다."
+}

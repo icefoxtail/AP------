@@ -1,0 +1,82 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "첫째",
+      "children": [
+        {
+          "label": "−2",
+          "children": [
+            {
+              "label": "−2"
+            },
+            {
+              "label": "0"
+            },
+            {
+              "label": "2"
+            }
+          ]
+        },
+        {
+          "label": "0",
+          "children": [
+            {
+              "label": "−2"
+            },
+            {
+              "label": "0"
+            },
+            {
+              "label": "2"
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "children": [
+            {
+              "label": "−2"
+            },
+            {
+              "label": "0"
+            },
+            {
+              "label": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": false,
+    "highlightPaths": [
+      [
+        "−2",
+        "−2"
+      ],
+      [
+        "−2",
+        "0"
+      ],
+      [
+        "0",
+        "−2"
+      ]
+    ]
+  },
+  "caption": "두 번 추출한 값의 조합 중 표본평균이 음수인 경로를 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 값의 평균이 0보다 작은 경로는 (−2,−2), (−2,0), (0,−2)이다.",
+      "mappedTo": [
+        "chart.root",
+        "chart.highlightPaths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "표본평균이 음수가 되는 세 순서쌍을 나무 경로로 구분해 확률식의 항을 확인한다."
+  ]
+}

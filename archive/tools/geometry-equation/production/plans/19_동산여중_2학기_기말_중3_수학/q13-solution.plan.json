@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOM",
+        "ownerSegment": "sOM",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lON",
+        "ownerSegment": "sON",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lAM",
+        "ownerSegment": "sAM",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sOM",
+          "sON"
+        ],
+        "color": "GREEN"
+      },
+      {
+        "segments": [
+          "sOA"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "color": "WARM",
+        "segments": [
+          "sAM",
+          "sMB",
+          "sCN",
+          "sND"
+        ]
+      }
+    ]
+  },
+  "caption": "수선의 발 M은 현 AB의 중점이다(주황). 직각삼각형 OMA에서 OM(초록)과 OA(파랑)로 AM을 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름이 5cm인 원 O의 중심에서 두 현 AB, CD에 내린 수선의 길이가 3cm이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "C",
+        "N",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "200"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "248"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "304"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O",
+    "X0"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "AEB24",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "value": 24,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BDC28",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 28,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AOC104",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 104,
+        "factRole": "CONCLUSION",
+        "noLabel": true,
+        "ring": 2,
+        "color": "WARM"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kO",
+        "kind": "ANGLE",
+        "vertex": "O",
+        "rays": [
+          "A",
+          "B",
+          "C"
+        ],
+        "at": "RIGHT",
+        "angles": [
+          {
+            "id": "cAOB",
+            "refs": [
+              "A",
+              "O",
+              "B"
+            ],
+            "value": 48,
+            "label": "48"
+          },
+          {
+            "id": "cBOC",
+            "refs": [
+              "B",
+              "O",
+              "C"
+            ],
+            "value": 56,
+            "label": "56"
+          },
+          {
+            "id": "cAOC",
+            "refs": [
+              "A",
+              "O",
+              "C"
+            ],
+            "value": 104,
+            "label": "x",
+            "ring": 2,
+            "color": "WARM"
+          }
+        ]
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "color": "BLUE"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "color": "GREEN"
+      }
+    ]
+  },
+  "caption": "예: 원 O에서 호 AB(파랑)에 대한 원주각 ∠E=24°와 호 BC(초록)에 대한 원주각 ∠D=28°, 각 호의 중심각, 그리고 구하는 ∠AOC(주황)를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠AEB=24°, ∠BDC=28°, O는 원의 중심이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 호와 중심각을 구분하며 D·E의 정확한 위치는 조건을 만족하는 예시이다. 라벨에 여유를 둔다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "hiddenPointNames": [
+    "X0"
+  ],
+  "hiddenPointStyle": "NONE"
+}

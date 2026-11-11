@@ -1,0 +1,717 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 배치"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-3125849",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-7364039",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6118149",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-4368811",
+                    "denominator": "500000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3441459",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-153591",
+                    "denominator": "31250"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-714271",
+                    "denominator": "125000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-4368811",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2176617",
+                    "denominator": "250000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-4368811",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "Zpad1",
+          "Zpad2"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 46.55,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "ROSE",
+              "equalGroup": 1,
+              "arcs": 1
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 46.55,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "ROSE",
+              "equalGroup": 1,
+              "arcs": 1
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d0",
+              "from": "A",
+              "to": "B",
+              "label": "8\\,cm",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": 1
+            },
+            {
+              "id": "d1",
+              "from": "A",
+              "to": "D",
+              "label": "6\\,cm",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "offset": 1
+            },
+            {
+              "id": "d2",
+              "from": "D",
+              "to": "C",
+              "label": "x",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "offset": 1
+            }
+          ]
+        },
+        "caption": "문제의 배치",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "Zpad1",
+          "Zpad2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2119677",
+                    "denominator": "500000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1356877",
+                    "denominator": "200000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-13",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-13",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "47",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "54",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "D",
+          "Zpad1",
+          "Zpad2"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 46.55,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "ROSE"
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 58,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "VIOLET"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sDA"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sBD"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d0",
+              "from": "A",
+              "to": "B",
+              "label": "8",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": 1
+            },
+            {
+              "id": "d1",
+              "from": "A",
+              "to": "D",
+              "label": "6",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": 1
+            }
+          ]
+        },
+        "caption": "삼각형 ABD",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "Zpad1",
+          "Zpad2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ACB (ABD와 같은 방향)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "706559",
+                    "denominator": "125000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4522923",
+                    "denominator": "500000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-13",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-13",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Zpad2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "47",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "54",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "Zpad1",
+          "Zpad2"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sCB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "sBA",
+            "refs": [
+              "B",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 46.55,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "ROSE"
+            },
+            {
+              "id": "a1",
+              "refs": [
+                "C",
+                "A",
+                "B"
+              ],
+              "value": 58,
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "color": "VIOLET"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAC"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sBA"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sCB"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d0",
+              "from": "A",
+              "to": "B",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": 1
+            },
+            {
+              "id": "d1",
+              "from": "A",
+              "to": "C",
+              "label": "6+x",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": 1
+            }
+          ]
+        },
+        "caption": "삼각형 ACB (ABD와 같은 방향)",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "Zpad1",
+          "Zpad2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "삼각형 ABD와 ACB에서 각 A는 공통이고 각 ABD와 각 ACB가 같으므로 AA 닮음이다. 대응하는 변은 AB와 AC(파란색), AD와 AB(주황색), BD와 CB(초록색)이다. 대응하는 변의 길이의 비가 같으므로 AB 대 AC는 AD 대 AB와 같다."
+}

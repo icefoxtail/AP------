@@ -1,0 +1,1157 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "① 지름에 대한 원주각"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAO",
+      "refs": [
+       "A",
+       "O"
+      ]
+     },
+     {
+      "id": "sOB",
+      "refs": [
+       "O",
+       "B"
+      ]
+     },
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {},
+    "caption": "지름 AB와 원 위의 점 P를 이은 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "P",
+       "B"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "② 같은 크기의 호"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "P",
+     "C",
+     "D",
+     "Q"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sQC",
+      "refs": [
+       "Q",
+       "C"
+      ]
+     },
+     {
+      "id": "sQD",
+      "refs": [
+       "Q",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "arcs": [
+      {
+       "id": "arcABz1",
+       "circle": "k",
+       "center": "O",
+       "from": "A",
+       "to": "B",
+       "side": "MINOR",
+       "color": "BLUE"
+      },
+      {
+       "id": "arcCDz1",
+       "circle": "k",
+       "center": "O",
+       "from": "C",
+       "to": "D",
+       "side": "MINOR",
+       "color": "BLUE"
+      }
+     ],
+     "angles": [
+      {
+       "id": "aPz1",
+       "refs": [
+        "A",
+        "P",
+        "B"
+       ],
+       "value": 26.57,
+       "noLabel": true,
+       "color": "WARM"
+      },
+      {
+       "id": "aQz1",
+       "refs": [
+        "C",
+        "Q",
+        "D"
+       ],
+       "value": 26.57,
+       "noLabel": true,
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "호 AB와 호 CD의 크기가 같을 때 원주각 P, Q를 나타낸 그림이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "③ 원에 내접하는 직사각형"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "rational",
+          "numerator": "1",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-1",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "rational",
+          "numerator": "-1",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "rational",
+          "numerator": "1",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "expression",
+         "op": "div",
+         "args": [
+          {
+           "kind": "expression",
+           "op": "sqrt",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "5"
+            }
+           ]
+          },
+          {
+           "kind": "integer",
+           "value": "2"
+          }
+         ]
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1z2",
+       "count": 1,
+       "segments": [
+        "sAB",
+        "sCD"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "id": "e2z2",
+       "count": 2,
+       "segments": [
+        "sBC",
+        "sDA"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lABz2",
+       "ownerSegment": "sCD",
+       "text": "1",
+       "unit": "cm"
+      },
+      {
+       "id": "lDAz2",
+       "ownerSegment": "sDA",
+       "text": "2",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "원에 내접하는 두 변이 1cm, 2cm인 직사각형이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "④ 접선과 현이 이루는 각"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "-1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "4",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "U",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-3",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "-1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "T",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "-1"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "A",
+     "B",
+     "C",
+     "U",
+     "T"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sUA",
+      "refs": [
+       "U",
+       "A"
+      ]
+     },
+     {
+      "id": "sAT",
+      "refs": [
+       "A",
+       "T"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aTz3",
+       "refs": [
+        "B",
+        "A",
+        "T"
+       ],
+       "value": 45,
+       "noLabel": true,
+       "color": "BLUE"
+      },
+      {
+       "id": "aCz3",
+       "refs": [
+        "A",
+        "C",
+        "B"
+       ],
+       "value": 45,
+       "noLabel": true,
+       "color": "BLUE"
+      }
+     ],
+     "arcs": [
+      {
+       "id": "arcABz3",
+       "circle": "k",
+       "center": "O",
+       "from": "A",
+       "to": "B",
+       "side": "MINOR",
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "접선 AT와 현 AB가 이루는 각과 호 AB에 대한 원주각 C이다.",
+    "hiddenPointNames": [
+     "U"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "⑤ 내접 사각형의 외각"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "X",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "110"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "B",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "215"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "C",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "325"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "D",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "O",
+        "X"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "70"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "E",
+       "op": "TRANSLATE_POINT",
+       "inputs": [
+        "C"
+       ],
+       "args": {
+        "dx": {
+         "kind": "rational",
+         "numerator": "3",
+         "denominator": "5"
+        },
+        "dy": {
+         "kind": "integer",
+         "value": "0"
+        }
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "1"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "O",
+     "X",
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sCE",
+      "refs": [
+       "C",
+       "E"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aAz4",
+       "refs": [
+        "D",
+        "A",
+        "B"
+       ],
+       "value": 107.5,
+       "noLabel": true,
+       "color": "BLUE"
+      },
+      {
+       "id": "aCz4",
+       "refs": [
+        "D",
+        "C",
+        "E"
+       ],
+       "value": 107.5,
+       "noLabel": true,
+       "color": "BLUE"
+      }
+     ]
+    },
+    "caption": "원에 내접하는 사각형 A, B, C, D의 변 BC를 연장한 그림이다.",
+    "hiddenPointNames": [
+     "X"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "각 보기의 성질을 그림으로 확인한다. 같은 색은 크기나 길이가 같다는 뜻이다. 3번 그림은 두 변이 1cm, 2cm인 직사각형의 예로 마주 보는 변의 길이를 비교한다."
+}

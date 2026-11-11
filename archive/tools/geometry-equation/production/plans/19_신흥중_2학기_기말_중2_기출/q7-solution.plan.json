@@ -1,0 +1,589 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "27",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "119",
+                    "denominator": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "CENTROID",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "21",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "119",
+                    "denominator": "30"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D",
+          "E",
+          "G",
+          "I",
+          "M"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDB",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sEA",
+            "refs": [
+              "E",
+              "A"
+            ]
+          },
+          {
+            "id": "sDG",
+            "refs": [
+              "D",
+              "G"
+            ]
+          },
+          {
+            "id": "sGI",
+            "refs": [
+              "G",
+              "I"
+            ]
+          },
+          {
+            "id": "sIE",
+            "refs": [
+              "I",
+              "E"
+            ]
+          },
+          {
+            "id": "sAM",
+            "refs": [
+              "A",
+              "M"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sDG",
+                "sGI",
+                "sIE"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "18",
+              "side": "LEFT",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            },
+            {
+              "id": "dAC",
+              "from": "A",
+              "to": "C",
+              "label": "12",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ]
+        },
+        "caption": "무게중심 G와 내심 I가 DE 위에 있는 삼각형",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "hiddenPointNames": [
+          "M"
+        ],
+        "hiddenPointStyle": "DOT"
+      }
+    },
+    {
+      "caption": {
+        "text": "내접원의 반지름 r"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "27",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "119",
+                    "denominator": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "21",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "119",
+                    "denominator": "30"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bc",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "I",
+                "bc"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "I"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "119",
+                  "denominator": "30"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "k"
+        ],
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D",
+          "E",
+          "I",
+          "H",
+          "T"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sAH",
+            "refs": [
+              "A",
+              "H"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sIT",
+            "refs": [
+              "I",
+              "T"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sDE"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAH",
+              "ownerSegment": "sAH",
+              "text": "h",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "lIT",
+              "ownerSegment": "sIT",
+              "text": "r",
+              "ownership": "NEAREST"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "a",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "내접원의 반지름 r과 높이 h",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "hiddenPointNames": [
+          "D",
+          "E",
+          "H",
+          "T"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "G가 무게중심이므로 DE는 BC에서 높이의 3분의 1 지점을 지나고, 내심 I도 DE 위에 있으므로 내접원의 반지름 r은 높이 h의 3분의 1이다. DE와 BC는 평행하고 DE는 BC의 3분의 2이다(파란색)."
+}

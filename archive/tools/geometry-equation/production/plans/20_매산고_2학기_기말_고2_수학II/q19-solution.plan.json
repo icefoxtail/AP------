@@ -1,0 +1,107 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "-2"
+      },
+      {
+        "id": "C",
+        "x": "-sqrt(3)",
+        "y": "0"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "D",
+        "x": "sqrt(3)",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "p(x)"
+    },
+    "domain": [
+      -2.5,
+      2.5
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -4.5,
+      4.5
+    ],
+    "overlays": {
+      "points": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "C",
+        "O",
+        "D"
+      ]
+    }
+  },
+  "caption": "p(x)=x³−3x의 곡선에서 극점과 근의 위치를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2x^3-6x-a=0은 p(x)=x^3-3x=a/2와 같고 p의 전체 실수 그래프를 나타낸다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "p(-1)=2, p(1)=-2, 따라서 −4<=a<=4에서 세 실근을 중복도 포함해 갖고 경계에서는 중근이 있다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "a=0에서 근 −sqrt(3),0,sqrt(3)이고 절댓값 합 2sqrt(3); 경계에서 최대 4이므로 M+m=4+2sqrt(3).",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이 부분도에서는 수평선 y=a/2를 추가하지 않는다. 삼차곡선과 극값·근의 정확한 위치를 표시하고 수평선 교점 수, 중근 경계, M+m은 캡션으로 설명한다.",
+    "원문 p의 정의역은 실수 전체다. display window는 자동이며 정해진 수치 범위가 렌더된다고 주장하지 않는다."
+  ],
+  "sourceQuote": "$p(-1)=2$, $p(1)=-2$이므로 세 실근을 갖는 범위는 $-4\\le a\\le4$이다."
+}

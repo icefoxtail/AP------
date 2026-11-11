@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      10,
+      8,
+      11,
+      5,
+      11,
+      7,
+      5,
+      8,
+      7,
+      78
+    ],
+    "axisBreak": {
+      "from": 11,
+      "to": 78
+    },
+    "xTitle": "횟수(회)",
+    "marks": {
+      "highlight": [
+        {
+          "value": 78,
+          "color": "WARM"
+        }
+      ]
+    }
+  },
+  "caption": "제기차기 횟수 10개를 점도표로 나타내고 매우 큰 값 하나를 주황색으로 표시한 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "학생 10명의 제기차기 횟수는 10, 8, 11, 5, 11, 7, 5, 8, 7, 78회이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대부분의 자료가 5회에서 11회 사이에 모여 있고 78회 하나만 멀리 떨어져 있어, 평균이 그 값 쪽으로 끌려가는지 살펴볼 수 있다."
+  ]
+}

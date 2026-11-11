@@ -1,0 +1,117 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "예: 중심 구간 폭 2"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            "-1",
+            "0",
+            "1"
+          ],
+          "shades": [
+            {
+              "from": "-1",
+              "to": "1",
+              "color": "BLUE"
+            }
+          ],
+          "xLabel": "z"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "예: 중심 구간 폭 4"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            "-2",
+            "0",
+            "2"
+          ],
+          "shades": [
+            {
+              "from": "-2",
+              "to": "2",
+              "color": "BLUE"
+            }
+          ],
+          "xLabel": "z"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "예: 중심 구간 폭 6"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            "-3",
+            "0",
+            "3"
+          ],
+          "shades": [
+            {
+              "from": "-3",
+              "to": "3",
+              "color": "BLUE"
+            }
+          ],
+          "xLabel": "z"
+        }
+      }
+    }
+  ],
+  "caption": "예: 중심 구간이 넓을수록 표준정규분포에서 그 구간의 확률도 커진다. 표본평균을 표준화한 구간을 비교하면 ㄱ만 항상 참이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(|X̄−m|≤1)=P(|Z|≤√(n/σ))이다.",
+      "mappedTo": "표준정규곡선에서 표준화 구간의 중심 넓이"
+    },
+    {
+      "id": "c2",
+      "condition": "표준정규 중심 넓이는 구간 경계가 멀수록 커진다.",
+      "mappedTo": "폭이 서로 다른 세 예시 구간"
+    }
+  ],
+  "newVisualInformation": [
+    "중심 구간을 넓히면 표준정규곡선 아래의 확률 영역이 커지는 모습"
+  ]
+}

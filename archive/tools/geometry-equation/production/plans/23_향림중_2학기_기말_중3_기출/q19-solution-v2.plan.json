@@ -1,0 +1,98 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 50,
+        "y": 60
+      },
+      {
+        "x": 60,
+        "y": 80
+      },
+      {
+        "x": 60,
+        "y": 50
+      },
+      {
+        "x": 70,
+        "y": 70
+      },
+      {
+        "x": 70,
+        "y": 60
+      },
+      {
+        "x": 80,
+        "y": 80
+      },
+      {
+        "x": 80,
+        "y": 70
+      },
+      {
+        "x": 90,
+        "y": 80
+      },
+      {
+        "x": 90,
+        "y": 90
+      },
+      {
+        "x": 100,
+        "y": 100
+      }
+    ],
+    "xRange": [
+      "40",
+      "120"
+    ],
+    "yRange": [
+      "40",
+      "120"
+    ],
+    "xStep": "10",
+    "yStep": "10",
+    "xTitle": "수학",
+    "yTitle": "과학",
+    "grid": true,
+    "equalUnits": true,
+    "regions": [
+      {
+        "kind": "HALF_PLANE",
+        "a": "1",
+        "b": "1",
+        "c": "160",
+        "side": "GE",
+        "markPoints": true,
+        "tone": 1
+      }
+    ],
+    "refLines": [
+      {
+        "kind": "LINE",
+        "a": "1",
+        "b": "1",
+        "c": "160",
+        "label": "x+y=160",
+        "style": "SOLID"
+      }
+    ],
+    "labelEvery": 2
+  },
+  "caption": "두 과목의 평균이 80점 이상이라는 조건 x+y≥160의 경계선과 그 위쪽의 점을 센다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "산점도 10점은 원문 그림에서 직접 읽은 좌표다. 수학 x점과 과학 y점의 평균이 80점 이상인 조건은 x+y≥160이며 경계도 포함한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x+y=160 경계와 이상인 영역을 표시해 원문의 열 점 중 네 점을 식별한다. 축 및 라벨은 여유 있게 배치한다."
+  ]
+}

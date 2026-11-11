@@ -1,0 +1,556 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "지름 BC를 보는 두 직각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "180"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "135"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sBC"
+              ],
+              "color": "BLUE"
+            }
+          ]
+        },
+        "caption": "두 직각이 같은 선분 BC(파랑)를 지름으로 하는 원 위에 있다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "∠BAC=∠BDC=90°이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "B",
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "같은 현 AD를 보는 두 각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "D"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "210"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "D"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "D"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "270"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l1",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l2",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "l1",
+                "l2"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aABD",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 60,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "label": "60",
+              "color": "BLUE"
+            },
+            {
+              "id": "aACD",
+              "refs": [
+                "A",
+                "C",
+                "D"
+              ],
+              "value": 60,
+              "factRole": "GIVEN",
+              "label": "60",
+              "color": "BLUE"
+            },
+            {
+              "id": "aBAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 30,
+              "factRole": "GIVEN",
+              "label": "30",
+              "color": "GREEN"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": [
+                "sDA"
+              ],
+              "color": "WARM"
+            }
+          ]
+        },
+        "caption": "같은 현 AD(주황)를 보는 두 각 60°가 같다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "∠BAC=30°, ∠ACD=60°이고 두 대각선이 수직이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "P",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    }
+  ],
+  "caption": "두 직각이 같은 선분 BC를 지름으로 보면 네 점이 지름 BC인 한 원 위에 놓인다. 두 대각선이 직각으로 만나는 사각형에서 직각삼각형의 각으로 ∠ABD=60°를 얻고, 같은 현 AD를 보는 두 각(파랑)이 같으면 네 점이 한 원 위에 놓인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "네 점 A, B, C, D가 한 원 위에 있는 보기를 판정한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 선분이나 같은 현을 보는 각이 원 위의 네 점을 정한다는 것을 두 보기로 보인다."
+  ]
+}

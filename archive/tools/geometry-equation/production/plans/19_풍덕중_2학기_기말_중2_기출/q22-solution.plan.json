@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -4,
+      3
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": "3/4"
+    },
+    "curves": [
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "-1/2",
+          "2"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "ax-2y=b"
+      },
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "-3/2",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "2x-y=1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "-1",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "1",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "교점이 무수히 많으면 두 직선이 완전히 겹친다. 파랑 실선은 2x-y=1의 그래프이고 주황 점선은 ax-2y=b의 그래프이며, 두 직선이 같은 두 점을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선 ax-2y=b, 2x-y=1의 교점이 무수히 많다.",
+      "mappedTo": [
+        "g1",
+        "g2",
+        "overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선이 한 직선으로 겹쳐 같은 점들을 지남을 보인다."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -3
+      },
+      {
+        "id": "P",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "x"
+    }
+  },
+  "caption": "시간 t에 따른 위치 x=3t²−6t의 그래프이다. t=2일 때 위치가 0인 점 (2,0)이 곡선 위에 있다. 시각 t가 0 이상인 범위의 일부만 나타냈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위치 함수는 x=3t²−6t이고 실제 시간은 t≥0이다. 그림은 이 원문 시간영역의 유한한 부분 [0,3]만 표시한다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.axisTitles",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "t=2일 때 x(2)=0이고 v(2)=x′(2)=6이다. 점 P는 (2,0)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "시각 t와 위치 x를 변수 그대로 축에 쓰고 t=2에서 위치 0인 점 P를 곡선 위에 나타낸다."
+  ]
+}

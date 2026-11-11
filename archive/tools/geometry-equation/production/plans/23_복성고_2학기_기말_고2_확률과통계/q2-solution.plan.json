@@ -1,0 +1,76 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "0개 5"
+        },
+        {
+          "label": "1개 40"
+        },
+        {
+          "label": "2개 60"
+        },
+        {
+          "label": "3개 20"
+        },
+        {
+          "label": "4개 1"
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "2개 60"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "3개 20"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "4개 1"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "전체 126가지 가운데 흰 공이 2개 이상인 세 가지 경우를 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "k0",
+      "condition": "흰 공 0개, 경우의 수 5",
+      "mappedTo": "first leaf"
+    },
+    {
+      "id": "k1",
+      "condition": "흰 공 1개, 경우의 수 40",
+      "mappedTo": "second leaf"
+    },
+    {
+      "id": "k2",
+      "condition": "흰 공 2개, 경우의 수 60",
+      "mappedTo": "third leaf"
+    },
+    {
+      "id": "k3",
+      "condition": "흰 공 3개, 경우의 수 20",
+      "mappedTo": "fourth leaf"
+    },
+    {
+      "id": "k4",
+      "condition": "흰 공 4개, 경우의 수 1",
+      "mappedTo": "fifth leaf"
+    }
+  ],
+  "newVisualInformation": [
+    "흰 공 수별 조합 경우의 수와 2개 이상인 세 경우"
+  ]
+}

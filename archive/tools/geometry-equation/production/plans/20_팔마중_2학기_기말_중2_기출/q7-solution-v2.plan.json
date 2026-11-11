@@ -1,0 +1,872 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (단위 cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "20"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "20"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "sEC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "p1",
+              "count": 1,
+              "segments": [
+                "sAB",
+                "sEF",
+                "sDC"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAB",
+              "text": "10"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sDC",
+              "text": "15"
+            },
+            {
+              "id": "l3",
+              "ownerSegment": "sFD",
+              "text": "12"
+            }
+          ]
+        },
+        "caption": "문제의 그림 (단위 cm)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB와 EF와 CD는 평행하다. AB=10cm, CD=15cm, FD=12cm이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "E",
+              "F",
+              "D"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "F",
+              "D",
+              "C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "BF 대 FD는 AB 대 CD (2 대 3)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "20"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "F",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sBF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sBF"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sFD"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sBF",
+              "text": "8"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sFD",
+              "text": "12"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d1",
+              "from": "B",
+              "to": "D",
+              "label": "20",
+              "side": "ABOVE",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "BF 대 FD는 AB 대 CD (2 대 3)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "BF 대 FD는 AB 대 CD와 같은 2 대 3이고 FD=12cm이므로 BF=8cm, BD=20cm이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "20"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sBD"
+              ],
+              "color": "GREEN"
+            },
+            {
+              "segments": [
+                "sDA"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a1",
+              "refs": [
+                "A",
+                "D",
+                "B"
+              ],
+              "value": 26.56505117707799,
+              "color": "ROSE",
+              "noLabel": true
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAB",
+              "text": "10"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sBD",
+              "text": "20"
+            }
+          ]
+        },
+        "caption": "삼각형 ABD",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각삼각형 ABD에서 AB=10cm, BD=20cm이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "B",
+              "D"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 EFD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-4000",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-2000",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "16000",
+                    "denominator": "1000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8000",
+                    "denominator": "1000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "E",
+          "F",
+          "D",
+          "Y1",
+          "Y2"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sEF"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sFD"
+              ],
+              "color": "GREEN"
+            },
+            {
+              "segments": [
+                "sDE"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a1",
+              "refs": [
+                "E",
+                "D",
+                "F"
+              ],
+              "value": 26.56505117707799,
+              "color": "ROSE",
+              "noLabel": true
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sEF",
+              "text": "6"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sFD",
+              "text": "12"
+            }
+          ]
+        },
+        "caption": "삼각형 EFD",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각삼각형 EFD에서 FD=12cm이고 EF=6cm이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "E",
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "Y1",
+          "Y2"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "평행선 사이의 비로 BF 대 FD는 2 대 3이다. 삼각형 EFD와 ABD는 각 D가 공통이고 직각이 하나씩 있어 닮음이며 같은 색의 변이 대응한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행선 사이의 비로 BF 대 FD는 2 대 3이다. 삼각형 EFD와 ABD는 각 D가 공통이고 직각이 하나씩 있어 닮음이며 같은 색의 변이 대응한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

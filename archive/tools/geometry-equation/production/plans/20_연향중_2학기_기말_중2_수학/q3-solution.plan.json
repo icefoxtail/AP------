@@ -1,0 +1,705 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "212"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "328"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "92"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "X"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sOB",
+                "sOC"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "O",
+                "B",
+                "C"
+              ],
+              "value": 32,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "label": "32",
+              "color": "WARM"
+            },
+            {
+              "id": "b",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 58,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "ROSE"
+            }
+          ]
+        },
+        "caption": "외심 O가 있는 삼각형 ABC",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 360
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "외심 O가 있는 삼각형 ABC",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "hiddenPointNames": [
+          "X"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 OBC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "212"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "328"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "92"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "O",
+          "B",
+          "C",
+          "X"
+        ],
+        "displaySegments": [
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCO",
+            "refs": [
+              "C",
+              "O"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sOB",
+                "sCO"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "O",
+                "B",
+                "C"
+              ],
+              "value": 32,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "label": "32",
+              "color": "WARM",
+              "equalGroup": 1
+            },
+            {
+              "id": "c",
+              "refs": [
+                "B",
+                "C",
+                "O"
+              ],
+              "value": 32,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "label": "32",
+              "color": "WARM",
+              "equalGroup": 1
+            },
+            {
+              "id": "o",
+              "refs": [
+                "B",
+                "O",
+                "C"
+              ],
+              "value": 116,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "label": "116",
+              "color": "GREEN"
+            }
+          ]
+        },
+        "caption": "OB=OC인 삼각형 OBC",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 360
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "OB=OC인 삼각형 OBC",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "hiddenPointNames": [
+          "X"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "외심: 각 BOC는 각 A의 2배"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "212"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "328"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "92"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k",
+              "op": "CIRCLE_THROUGH_3",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "k"
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "X"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "o",
+              "refs": [
+                "B",
+                "O",
+                "C"
+              ],
+              "value": 116,
+              "arcs": 2,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "label": "116",
+              "color": "GREEN"
+            },
+            {
+              "id": "a",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 58,
+              "arcs": 1,
+              "factRole": "DERIVED_INTERMEDIATE",
+              "noLabel": true,
+              "color": "ROSE"
+            }
+          ]
+        },
+        "caption": "외접원과 외심 O",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 360
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "외접원과 외심 O",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "hiddenPointNames": [
+          "X"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "외심 O에서 세 꼭짓점까지의 거리가 같다. 각 BOC는 각 A의 두 배이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "외심 O에서 세 꼭짓점까지의 거리가 같다. 각 BOC는 각 A의 두 배이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

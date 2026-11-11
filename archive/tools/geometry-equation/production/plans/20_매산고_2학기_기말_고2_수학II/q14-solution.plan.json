@@ -1,0 +1,68 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "49"
+      ]
+    },
+    "coefficients": [
+      "1",
+      "0",
+      "3"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      6,
+      -5,
+      100
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "49"
+        }
+      ]
+    }
+  },
+  "caption": "적분 조건으로 정해지는 이차함수와 조건점을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "해설에서 I=∫₀¹f(t)dt를 두고 f(x)=3/2 Ix²+C, C=I/2를 유도한 뒤 f(4)=49로 I=2, C=1을 얻는다. 따라서 f(x)=3x²+1이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "결정된 함수에서 f(3)=28 및 원문 조건 f(4)=49이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 위의 점 P(3,28), Q(4,49)를 함께 표시해 두 함숫값의 관계를 읽는다."
+  ]
+}

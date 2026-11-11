@@ -1,0 +1,29 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "2",
+        "title": "경우1"
+      },
+      {
+        "count": "4",
+        "title": "경우2"
+      }
+    ],
+    "join": "PLUS"
+  },
+  "caption": "점 P가 (3,2)에 도달하는 두 가지 경우, 즉 눈 3과 2가 나오는 경우와 눈 1, 1, 1, 2가 나오는 경우의 순서의 수를 더하는 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주사위 눈 a가 홀수이면 x축 방향으로 a, 짝수이면 y축 방향으로 a만큼 움직여 원점에서 (3,2)에 도달하는 경우의 수",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": "두 경우의 순서의 수를 칸에 적고 합의 법칙으로 이은 그림이다."
+}

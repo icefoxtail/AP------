@@ -1,0 +1,782 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 그림 (단위 cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "72",
+                    "denominator": "25"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "54",
+                    "denominator": "25"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "128",
+                    "denominator": "25"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "96",
+                    "denominator": "25"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P",
+          "Q"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sBP",
+            "refs": [
+              "B",
+              "P"
+            ]
+          },
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQD",
+            "refs": [
+              "Q",
+              "D"
+            ]
+          },
+          {
+            "id": "sAP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "sCQ",
+            "refs": [
+              "C",
+              "Q"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "d1",
+              "from": "A",
+              "to": "B",
+              "label": "6",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "d2",
+              "from": "B",
+              "to": "C",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "문제의 그림 (단위 cm)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직사각형 A, B, C, D에서 AB=6cm, BC=8cm이고 AP, CQ는 대각선 BD에 수직이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "P",
+              "B"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "C",
+              "Q",
+              "B"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABD (단위 cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "72",
+                    "denominator": "25"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "54",
+                    "denominator": "25"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "D",
+          "P"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBP",
+            "refs": [
+              "B",
+              "P"
+            ]
+          },
+          {
+            "id": "sPD",
+            "refs": [
+              "P",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sBP"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAB",
+              "text": "6"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sDA",
+              "text": "8"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d1",
+              "from": "B",
+              "to": "D",
+              "label": "10",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "callouts": [
+            {
+              "id": "k1",
+              "kind": "SEGMENT",
+              "path": [
+                "B",
+                "P",
+                "D"
+              ],
+              "at": "BELOW",
+              "link": "ENDS",
+              "dimensions": [
+                {
+                  "id": "dBP",
+                  "from": "B",
+                  "to": "P",
+                  "label": "3.6",
+                  "side": "BELOW",
+                  "style": "ARROW",
+                  "offset": "AUTO"
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "삼각형 ABD (단위 cm)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각삼각형 ABD에서 AB=6, AD=8, BD=10이고 AP는 빗변에 내린 높이이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "B",
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "P",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 CBD (단위 cm)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "128",
+                    "denominator": "25"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "96",
+                    "denominator": "25"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "D",
+          "Q"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDQ",
+            "refs": [
+              "D",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQB",
+            "refs": [
+              "Q",
+              "B"
+            ]
+          },
+          {
+            "id": "sCQ",
+            "refs": [
+              "C",
+              "Q"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sBC"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sQB"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sBC",
+              "text": "8"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sCD",
+              "text": "6"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d1",
+              "from": "B",
+              "to": "D",
+              "label": "10",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "callouts": [
+            {
+              "id": "k1",
+              "kind": "SEGMENT",
+              "path": [
+                "B",
+                "Q",
+                "D"
+              ],
+              "at": "BELOW",
+              "link": "ENDS",
+              "dimensions": [
+                {
+                  "id": "dBQ",
+                  "from": "B",
+                  "to": "Q",
+                  "label": "6.4",
+                  "side": "BELOW",
+                  "style": "ARROW",
+                  "offset": "AUTO"
+                }
+              ]
+            }
+          ]
+        },
+        "caption": "삼각형 CBD (단위 cm)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각삼각형 CBD에서 BC=8, CD=6, BD=10이고 CQ는 빗변에 내린 높이이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "C",
+              "Q",
+              "B"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "빗변 BD에 내린 높이의 발 P와 Q를 각각의 직각삼각형에서 생각한다. BP는 AB의 제곱을 BD로 나눈 값, BQ는 BC의 제곱을 BD로 나눈 값이고 PQ는 BQ에서 BP를 뺀 길이이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "빗변 BD에 내린 높이의 발 P와 Q를 각각의 직각삼각형에서 생각한다. BP는 AB의 제곱을 BD로 나눈 값, BQ는 BC의 제곱을 BD로 나눈 값이고 PQ는 BQ에서 BP를 뺀 길이이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

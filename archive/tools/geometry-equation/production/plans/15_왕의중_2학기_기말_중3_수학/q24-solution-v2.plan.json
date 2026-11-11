@@ -1,0 +1,592 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "36",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "48",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "15"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "19",
+          "denominator": "2"
+         },
+         {
+          "kind": "rational",
+          "numerator": "7",
+          "denominator": "2"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "expression",
+         "op": "div",
+         "args": [
+          {
+           "kind": "expression",
+           "op": "sqrt",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "170"
+            }
+           ]
+          },
+          {
+           "kind": "integer",
+           "value": "2"
+          }
+         ]
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "A",
+     "B",
+     "C",
+     "D",
+     "O"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sPC",
+      "refs": [
+       "P",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lPAz0",
+       "ownerSegment": "sPA",
+       "text": "5",
+       "unit": "cm"
+      },
+      {
+       "id": "lABz0",
+       "ownerSegment": "sAB",
+       "text": "7",
+       "unit": "cm"
+      },
+      {
+       "id": "lPCz0",
+       "ownerSegment": "sPC",
+       "text": "4",
+       "unit": "cm"
+      },
+      {
+       "id": "lCDz0",
+       "ownerSegment": "sCD",
+       "text": "x",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "원 밖의 점 P에서 두 직선이 원과 만나는 점 A, B와 C, D를 나타낸 그림이다.",
+    "hiddenPointNames": [
+     "O"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 PAC"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Zh1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "C",
+     "A",
+     "Zh1"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sPC",
+      "refs": [
+       "P",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aPz1",
+       "refs": [
+        "C",
+        "P",
+        "A"
+       ],
+       "value": 53.13,
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aAz1",
+       "refs": [
+        "P",
+        "A",
+        "C"
+       ],
+       "value": 50.91,
+       "noLabel": true,
+       "color": "BLUE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAP"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sPC"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAPz1",
+       "ownerSegment": "sAP",
+       "text": "5",
+       "unit": "cm"
+      },
+      {
+       "id": "lPCz1",
+       "ownerSegment": "sPC",
+       "text": "4",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "삼각형 PAC이다.",
+    "hiddenPointNames": [
+     "Zh1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 PDB"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "B",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     },
+     {
+      "id": "sDP",
+      "refs": [
+       "D",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aPz2",
+       "refs": [
+        "B",
+        "P",
+        "D"
+       ],
+       "value": 53.13,
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aDz2",
+       "refs": [
+        "P",
+        "D",
+        "B"
+       ],
+       "value": 50.91,
+       "noLabel": true,
+       "color": "BLUE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sDP"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sPB"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lDPz2",
+       "ownerSegment": "sDP",
+       "text": "4+x",
+       "unit": "cm"
+      },
+      {
+       "id": "lPBz2",
+       "ownerSegment": "sPB",
+       "text": "12",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "삼각형 PDB이다."
+   }
+  }
+ ],
+ "caption": "삼각형 PAC와 삼각형 PDB는 각 P가 공통(분홍색)이고 각 PAC와 각 PDB가 같은(파란색) 닮음이다. 같은 색의 변이 대응한다(초록색 PA와 PD, 주황색 PC와 PB)."
+}

@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      3,
+      -8,
+      2
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": "3/4"
+    },
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=2x-1"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "3"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "y=k"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "v",
+          "x": "-2",
+          "color": "WARM",
+          "label": "x=-2"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "-5",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "ck",
+          "point": "P",
+          "text": "(-2,k)",
+          "direction": "SE",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "직선 x=-2(주황)와 y=2x-1(파랑)이 만나는 점의 y좌표가 k이다. 초록 점선은 y=k이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일차방정식 2x-1=k의 그래프가 x=-2인 수직선이다.",
+      "mappedTo": [
+        "overlays.lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x=-2를 2x-1에 대입한 값이 k임을 점 (-2,k)로 보인다."
+  ]
+}

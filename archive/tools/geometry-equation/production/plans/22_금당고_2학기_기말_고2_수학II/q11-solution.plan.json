@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dside",
+        "from": "D",
+        "to": "C",
+        "label": "9",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "예: 한 변이 9센티미터인 정사각형 둘레에서 A를 출발해 서로 반대 방향으로 움직이는 P와 Q를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그림은 한 변이 9cm인 정사각형에서 A를 출발해 P는 위쪽으로, Q는 왼쪽 변을 따라 아래쪽으로 움직이는 반대 방향 이동을 보인다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.dimensions"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P와 Q의 표시 위치는 이동 중인 한 예이며 좌표값을 주장하지 않는다. 두 점이 다시 만나는 조건은 이동거리의 합이 둘레의 정수배가 되는 것이다.",
+      "mappedTo": [
+        "displayPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형 둘레를 따라 A에서 서로 반대 방향으로 출발하는 두 이동 경로와 한 변 9cm를 보여 준다."
+  ],
+  "sourceQuote": "한 변의 길이가 9cm인 정사각형의 꼭짓점 A를 출발하여 그림의 화살표 방향으로 진행하는 두 점 P, Q가 있다."
+}

@@ -1,0 +1,143 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "앞",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "앞",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            },
+            {
+              "label": "뒤",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "뒤",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "앞",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            },
+            {
+              "label": "뒤",
+              "p": "1/2",
+              "children": [
+                {
+                  "label": "앞",
+                  "p": "1/2"
+                },
+                {
+                  "label": "뒤",
+                  "p": "1/2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "앞",
+          "뒤",
+          "뒤"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "뒤",
+          "앞",
+          "뒤"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "뒤",
+          "뒤",
+          "앞"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "뒤",
+          "앞",
+          "앞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "앞",
+          "뒤",
+          "앞"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "앞",
+          "앞",
+          "뒤"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "세 동전을 50원, 100원, 500원의 순서로 던진 수형도이다. 파란색 경로는 앞면이 한 번, 주황색 경로는 뒷면이 한 번 나오는 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "50원, 100원, 500원 동전을 한 개씩 던질 때 앞면이 1번 또는 뒷면이 1번 나온다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "여덟 가지 경우 중 두 가지 사건에 해당하는 경로를 색으로 구분한다."
+  ]
+}

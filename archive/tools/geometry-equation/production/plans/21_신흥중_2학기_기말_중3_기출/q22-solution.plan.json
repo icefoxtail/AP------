@@ -1,0 +1,713 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "문제의 배치"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-3"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-6"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-6"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-6"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "H",
+          "T"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "AH",
+            "refs": [
+              "A",
+              "H"
+            ]
+          },
+          {
+            "id": "TC",
+            "refs": [
+              "T",
+              "C"
+            ]
+          },
+          {
+            "id": "CH",
+            "refs": [
+              "C",
+              "H"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "A",
+              "H",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "AB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "BC",
+                "CH"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "AH"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "AB",
+              "text": "12",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "문제의 배치",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB는 원 O의 지름이고 CT는 점 C에서의 접선이며 AH⊥CT, AB=12cm, AH=9cm이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "지름 AB와 접선 CT, 수선 AH가 만드는 두 직각삼각형 ABC와 ACH를 보인다."
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 360
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "AB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "BC"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "AC"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "AB",
+              "text": "12",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "삼각형 ABC",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB가 지름이므로 삼각형 ABC는 C가 직각이다. 닮음 비교를 위해 따로 그렸다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "삼각형 ABC를 직각 꼭짓점을 왼쪽 아래에 두어 따로 보인다."
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 360
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ACH"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "H"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "H"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "9"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "C",
+          "H"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "AH",
+            "refs": [
+              "A",
+              "H"
+            ]
+          },
+          {
+            "id": "CH",
+            "refs": [
+              "C",
+              "H"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "H",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "AC"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "CH"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "AH"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAH",
+              "ownerSegment": "AH",
+              "text": "9",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "삼각형 ACH",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AH⊥CT이므로 삼각형 ACH는 H가 직각이다. 닮음 비교를 위해 따로 그렸다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayCircles",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "삼각형 ACH를 직각 꼭짓점을 왼쪽 아래에 두어 삼각형 ABC와 같은 방향으로 보인다."
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 360
+        }
+      }
+    }
+  ],
+  "caption": "닮은 두 직각삼각형 ABC와 ACH의 대응변을 같은 색으로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB는 원 O의 지름이고 CT는 점 C에서의 접선이며 AH⊥CT, AB=12cm, AH=9cm이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 배치와 닮은 두 삼각형을 같은 방향으로 펼쳐 대응변(빗변 AB↔AC, 짧은 변 BC↔CH, 긴 변 AC↔AH)을 같은 색으로 보인다."
+  ]
+}

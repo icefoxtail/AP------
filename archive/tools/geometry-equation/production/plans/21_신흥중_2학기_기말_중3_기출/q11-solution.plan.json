@@ -1,0 +1,47 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      1,
+      2,
+      2,
+      3,
+      4,
+      4,
+      5,
+      32
+    ],
+    "xTitle": "변량",
+    "marks": {
+      "meanLine": {
+        "value": "53/8",
+        "label": "평균"
+      },
+      "medianLine": {
+        "value": "7/2",
+        "label": "중앙값"
+      },
+      "highlight": [
+        {
+          "value": 32,
+          "color": "WARM"
+        }
+      ]
+    }
+  },
+  "caption": "큰 값 32가 평균을 오른쪽으로 끌어당긴 점도표",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "자료 1, 2, 2, 3, 4, 4, 5, 32의 중앙값과 평균을 비교한다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "큰 값 32 하나가 평균선을 점들의 무리에서 멀리 끌어내는 것과 중앙값선은 점들의 한가운데에 남는 것을 보인다."
+  ]
+}

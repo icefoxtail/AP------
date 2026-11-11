@@ -1,0 +1,176 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ground",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "ground"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "shadow",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "tree",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sight",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "elevation",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 40,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "shadowlen",
+        "ownerSegment": "shadow",
+        "text": "50",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "tree",
+        "text": "h",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "나무 높이 h와 50m 그림자를 나타낸 40도 각의 예시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그림자 길이는 50m이고 그림자 끝에서 나무 꼭대기를 보는 각은 40°이다. 삼각형의 비례는 도식만을 위한 예시이며, 문제의 tan 40°=0.8은 계산용 근삿값이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "50m 그림자와 40도 고도각으로 만든 직각삼각형에서 나무 높이를 h로 표시한다."
+  ]
+}

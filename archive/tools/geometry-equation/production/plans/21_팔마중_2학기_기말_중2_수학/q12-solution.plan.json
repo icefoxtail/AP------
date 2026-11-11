@@ -1,0 +1,35 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "join": "PLUS",
+    "slots": [
+      {
+        "count": "5",
+        "title": "십=1"
+      },
+      {
+        "count": "5",
+        "title": "십=2"
+      },
+      {
+        "count": "1",
+        "title": "십=3"
+      }
+    ]
+  },
+  "caption": "30 이하인 두 자리 정수를 십의 자리 숫자가 1, 2, 3인 경우로 나누어 각 경우에 올 수 있는 일의 자리의 가짓수를 합의 법칙으로 센다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "30 이하인 두 자리 정수를 십의 자리 숫자가 1, 2, 3인 경우로 나누어 각 경우에 올 수 있는 일의 자리의 가짓수를 합의 법칙으로 센다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이의 단계와 경우를 그림으로 나누어 보인다."
+  ]
+}

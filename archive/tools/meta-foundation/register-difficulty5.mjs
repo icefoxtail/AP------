@@ -28,6 +28,18 @@ const contentFingerprint = q => sha256(JSON.stringify({
   content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null
 }));
 
+// Difficulty requests historically bind either exact Git bytes or the same UTF-8
+// source with CRLF normalized to LF. Registration and the final consumer gate must
+// use this identical policy; it does not permit any other source edit.
+export function bindDifficulty5Source(sourceBytes, expectedSha) {
+  let bytes = sourceBytes, sha = blobSha(bytes);
+  if (sha !== expectedSha && bytes.includes(0x0d)) {
+    const lfBytes = Buffer.from(bytes.toString("utf8").replace(/\r\n/g, "\n"), "utf8");
+    if (blobSha(lfBytes) === expectedSha) { bytes = lfBytes; sha = expectedSha; }
+  }
+  return { bytes, sha };
+}
+
 // 1 = 하, 2·3 = 중, 4·5 = 상
 const bucketLevel = n => (n === 1 ? 0 : n <= 3 ? 1 : 2);
 
@@ -199,15 +211,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   if (!source.endsWith(".js") || source.includes("..") || path.isAbsolute(source)) fail("invalid sourceArchiveFile");
   const sourcePath = path.join(root, "archive/exams", source);
   if (!fs.existsSync(sourcePath)) fail("source exam file not found: " + source);
-  let sourceBytes = fs.readFileSync(sourcePath);
-  let sha = blobSha(sourceBytes);
-  if (sha !== g.latestBlobSha && sourceBytes.includes(0x0d)) {
-    const lfBytes = Buffer.from(sourceBytes.toString("utf8").replace(/\r\n/g, "\n"), "utf8");
-    if (blobSha(lfBytes) === g.latestBlobSha) {
-      sourceBytes = lfBytes;
-      sha = g.latestBlobSha;
-    }
-  }
+  const { bytes: sourceBytes, sha } = bindDifficulty5Source(fs.readFileSync(sourcePath), g.latestBlobSha);
   if (sha !== g.latestBlobSha) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
 
   const doc = read(root, META);

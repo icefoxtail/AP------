@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -4,
+      5
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "x-y+2=0"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1/2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "x-2y+2=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "quadrants": [
+        {
+          "id": "q1",
+          "quadrant": 1,
+          "label": "제1사분면"
+        },
+        {
+          "id": "q2",
+          "quadrant": 2,
+          "label": "제2사분면"
+        },
+        {
+          "id": "q3",
+          "quadrant": 3,
+          "label": "제3사분면"
+        },
+        {
+          "id": "q4",
+          "quadrant": 4,
+          "label": "제4사분면"
+        }
+      ]
+    }
+  },
+  "caption": "예시 값 a=1, b=1, c=-2일 때의 x-y+2=0(파랑)와 a=1, b=2, c=-2일 때의 x-2y+2=0(주황)의 그래프이다. 둘 다 기울기와 y절편이 양수이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>0, b>0, c<0일 때 ax-by-c=0은 y=(a/b)x-c/b이므로 기울기와 y절편이 모두 양수이다.",
+      "mappedTo": [
+        "g1",
+        "g2",
+        "overlays.quadrants"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기울기와 y절편이 모두 양수인 직선이 지나는 사분면을 예시로 보인다."
+  ]
+}
