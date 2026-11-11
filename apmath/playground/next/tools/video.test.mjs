@@ -434,13 +434,15 @@ test('validateLesson: to 로 움직이는 숫자 상태값은 모두 첫 장 sta
   for (const l of [...core.lessonList(sectorLessons['z3-sectorProof']), ...core.lessonList(surfaceLessons['sv1-1'])]) assert.deepEqual(core.validateLesson(l).errors, [], l.title);
 });
 
-test('validateLessonSet: 해설 1~3개, 둘 이상이면 label 필수·6자 이하·겹침 금지, 한 해설의 set 키는 나머지도 at:0 에서 정해야 한다', () => {
+test('validateLessonSet: 해설 1~4개, 둘 이상이면 label 필수·6자 이하·겹침 금지, 한 해설의 set 키는 나머지도 at:0 에서 정해야 한다', () => {
   const A = withSets('겉넓이', { mode: 'a', open: false }), B = withSets('부피', { mode: 'b', open: false });
   assert.deepEqual(core.validateLessonSet(goodLesson()).errors, [], '해설 하나(객체)는 label 없이 통과');
   assert.deepEqual(core.validateLessonSet([goodLesson()]).errors, [], '배열 하나도 label 없이 통과');
   assert.deepEqual(core.validateLessonSet([A, B]).errors, [], '둘');
   assert.deepEqual(core.validateLessonSet([A, B, withSets('둘레', { mode: 'c', open: false })]).errors, [], '셋');
-  assert.ok(core.validateLessonSet([A, B, withSets('넓이', { mode: 'd', open: false }), withSets('모두', { mode: 'e', open: false })]).errors.some((e) => e.includes('3개까지')), '넷은 오류');
+  const four = [A, B, withSets('둘레', { mode: 'c', open: false }), withSets('넓이', { mode: 'd', open: false })];
+  assert.deepEqual(core.validateLessonSet(four).errors, [], '다른 개념 넷은 각각 재생 가능');
+  assert.ok(core.validateLessonSet([...four, withSets('다섯째', { mode: 'e', open: false })]).errors.some((e) => e.includes('4개까지')), '다섯은 오류');
   assert.ok(core.validateLessonSet([]).errors.length, '빈 배열');
   assert.ok(core.validateLessonSet([A, withSets(null, { mode: 'b', open: false })]).errors.some((e) => e.includes('label 이 필수')), '둘 이상이면 label 필수');
   assert.ok(core.validateLessonSet([A, withSets('겉넓이', { mode: 'b', open: false })]).errors.some((e) => e.includes('겹칩니다')), 'label 겹침');
@@ -459,6 +461,39 @@ test('validateLessonSet: 해설 1~3개, 둘 이상이면 label 필수·6자 이�
   assert.deepEqual(core.lessonList(null), []);
   assert.equal(core.compileLesson(A).label, '겉넓이');
   assert.equal(core.compileLesson(goodLesson()).label, null);
+});
+
+test('네 번째 해설도 독립 버튼, 번호 주소, 이름 주소와 다음 재생으로 선택된다', () => {
+  const lessons = ['범위', '개수', '최댓값', '최솟값'].map((label, mode) => withSets(label, { mode, open: false }));
+  const APLab = {
+    videoCore: core, icon: () => '', esc: String,
+    h: (tag, props) => ({ tag, props, innerHTML: '' })
+  };
+  vm.runInNewContext(fs.readFileSync(path.resolve(DIR, '../kit/apl-player.js'), 'utf8'), { window: { APLab }, console });
+  const player = Object.create(APLab.Player.prototype);
+  player.lab = { id: 'fixture', list: [{ id: 'one', lesson: lessons }], def: {} };
+  player._cache = new WeakMap(); player.index = 0; player.lessonIndex = 2;
+  const buttons = [];
+  player.ui = { entryBtns: { childElementCount: 0, innerHTML: '', append: b => buttons.push(b) } };
+  let selected = -1; player._entryGo = k => { selected = k; };
+  const entries = player.entries(0);
+  assert.equal(entries.length, 4);
+  player._buildEntryButtons(entries);
+  assert.equal(buttons.length, 4, '네 개의 실제 player 버튼 생성');
+  buttons[3].props.onclick();
+  assert.equal(selected, 3, '네 번째 버튼이 네 번째 해설 선택');
+  assert.equal(player._playParam('4', 0), 3);
+  assert.equal(player._playParam('최솟값', 0), 3);
+  for (const invalid of ['0', '5', '04', '-1', '4.0']) assert.equal(player._playParam(invalid, 0), -1);
+  assert.equal(player.nextTarget().k, 3, '세 번째의 다음은 네 번째');
+  player.lessonIndex = 3;
+  assert.equal(player.nextTarget(), null, '마지막 해설 뒤에는 목차');
+  const bad = structuredClone(lessons);
+  delete bad[3].chapters[0].cues[0].set.open;
+  assert.ok(core.validateLessonSet(bad).errors.some(e => e.includes('lessons[3]') && e.includes('set.open')), '네 번째도 형제 상태 초기화 검사');
+  const early = structuredClone(lessons);
+  early[3].chapters[0].cues[1].say = '정답은 $42$일까요?';
+  assert.ok(core.validateLessonSet(early).errors.some(e => e.includes('lessons[3]') && e.includes('정답')), '네 번째도 조기 정답 검사');
 });
 
 test('해설 여럿: 두 해설을 오가며 재생해도(겉넓이 → 부피 → 겉넓이) 장면에 남은 값과 상관없이 각 해설의 t=0·결론 직전이 같다', () => {
