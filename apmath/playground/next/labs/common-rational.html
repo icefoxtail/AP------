@@ -901,7 +901,7 @@ window.addEventListener('DOMContentLoaded', function () {
       curveTrace(b, state, sc.id);
     };
   }
-  const lessons = window.APL_RAT_LESSONS.install(scenes, source);
+  const lessons = window.APL_RAT_LESSONS ? window.APL_RAT_LESSONS.install(scenes, source) : {};
   APLab.createLab({
     id: 'common-rational',
     stagedReveal: true,
