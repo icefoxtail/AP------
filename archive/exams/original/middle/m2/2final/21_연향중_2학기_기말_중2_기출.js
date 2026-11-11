@@ -123,7 +123,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 장의 그림이다. 첫째는 평행선 l, m, n과 두 직선으로, 왼쪽 직선에서 l과 m 사이가 3, l과 n 사이가 9이고 오른쪽 직선에서 l과 m 사이가 3.5, m과 n 사이가 x이다. 둘째는 같은 그림에서 l과 m 사이를 파란색, m과 n 사이를 주황색으로 나누어 왼쪽 직선의 m과 n 사이를 6으로 나타냈다. 셋째는 세로로 놓인 세 평행선과 두 직선으로, 한 직선에서 l과 m 사이가 6, m과 n 사이가 x이고 다른 직선에서 l과 m 사이가 5, m과 n 사이가 4이다.",
+    "solutionImageCaption": "(1) 왼쪽 직선에서 l과 m 사이는 3, 전체는 9이므로 m과 n 사이는 6이다. 대응하는 구간의 비가 같으므로 3 대 6이 3.5 대 x이고, 3x는 21이다. (2) 한 직선의 구간 6과 x가 다른 직선의 구간 5와 4에 대응하므로 6 대 x가 5 대 4이고, 5x는 24이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

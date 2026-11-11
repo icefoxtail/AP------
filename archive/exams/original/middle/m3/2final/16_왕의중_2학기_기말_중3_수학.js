@@ -14,7 +14,11 @@ window.examData = {
         "$\\tan B = \\sqrt{2}$"
       ],
       "answer": "⑤",
-      "solution": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=\\sqrt3$, $BC=1$이므로 피타고라스 정리에 의하여 $AC=\\sqrt{(\\sqrt3)^2-1^2}=\\sqrt2$이다.<br>① $\\sin A=\\dfrac{BC}{AB}=\\dfrac{1}{\\sqrt3}=\\dfrac{\\sqrt3}{3}$이다. ② $\\sin B=\\dfrac{AC}{AB}=\\dfrac{\\sqrt2}{\\sqrt3}=\\dfrac{\\sqrt6}{3}$이다. ③ $\\cos A=\\dfrac{AC}{AB}=\\dfrac{\\sqrt6}{3}$이다. ④ $\\tan A=\\dfrac{BC}{AC}=\\dfrac{1}{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다. ⑤ $\\tan B=\\dfrac{AC}{BC}=\\dfrac{\\sqrt2}{1}=\\sqrt2$이다.<br>따라서 옳은 것은 ⑤이다."
+      "solution": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=\\sqrt3$, $BC=1$이므로 피타고라스 정리에 의하여 $AC=\\sqrt{(\\sqrt3)^2-1^2}=\\sqrt2$이다.<br>① $\\sin A=\\dfrac{BC}{AB}=\\dfrac{1}{\\sqrt3}=\\dfrac{\\sqrt3}{3}$이다. ② $\\sin B=\\dfrac{AC}{AB}=\\dfrac{\\sqrt2}{\\sqrt3}=\\dfrac{\\sqrt6}{3}$이다. ③ $\\cos A=\\dfrac{AC}{AB}=\\dfrac{\\sqrt6}{3}$이다. ④ $\\tan A=\\dfrac{BC}{AC}=\\dfrac{1}{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다. ⑤ $\\tan B=\\dfrac{AC}{BC}=\\dfrac{\\sqrt2}{1}=\\sqrt2$이다.<br>따라서 옳은 것은 ⑤이다.",
+      "solutionImage": "assets/images/16_왕의중_2학기_기말_중3_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 각 C가 직각인 직각삼각형 ABC이다. 빗변 AB는 파란색으로 루트 3, 변 BC는 주황색으로 1, 변 CA는 초록색으로 루트 2이다. 각 A는 분홍색, 각 B는 보라색 호로 나타냈다.",
+      "solutionImageCaption": "각 C가 직각이고 AB는 루트 3, BC는 1이므로 피타고라스 정리에서 AC는 루트 2이다. 각 A에 대하여 sin A는 AB분의 BC이므로 루트 3분의 1, 곧 3분의 루트 3이다. 각 B에 대하여 tan B는 BC분의 AC이므로 루트 2이다. 이렇게 각 보기를 변의 비로 확인하면 옳은 것은 tan B가 루트 2인 보기이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
