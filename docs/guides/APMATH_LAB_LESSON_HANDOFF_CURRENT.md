@@ -44,7 +44,7 @@
 | `g7-surface-volume` 겉넓이·부피 | 30 | 30 / 54 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1746](https://github.com/icefoxtail/AP------/pull/1746), merge `4ab7f327068a09ecbe583f1141487e299965e28b`. 실제 기존 18/23 + 잔여 12/27 + 기존 장면 부피 4해설. 최소 검사 182/182. Pages 등록 작업 대기 (§5-2) |
 | `g7-circle-sector` 원과 부채꼴 | 86 | 86 / 98 | **RELEASED_QA_PENDING** · [PR #1736](https://github.com/icefoxtail/AP------/pull/1736), merge `480018bea30d86225b8e41c79eda5cd76ce03ebc`. [Pages run 42958902234](https://github.com/icefoxtail/AP------/actions/runs/42958902234) 성공, 실제 HTML 및 17개 모듈의 배포 소스 일치 확인. 전체 모바일 품질검수 NOT_RUN |
 | `g7-polyhedra` 다면체 | 26 | 26 / 58 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1747](https://github.com/icefoxtail/AP------/pull/1747), merge `1e4fe2ce808fff9887e798b7ec7cf4e4f0461bbe`. 최소 검사 131/131, 누락 0. Pages 등록 작업 대기 |
-| `g7-solids` 회전체 | 22 | 제작 중 | main `1e4fe2ce808fff9887e798b7ec7cf4e4f0461bbe`에서 `feat/lessons-g7-solids` 신규 시작. 기존 브랜치·PR 없음 확인 |
+| `g7-solids` 회전체 | 22 | 22 / 48 | **IMPLEMENTED / QA_PENDING** · `feat/lessons-g7-solids`, 누락 0. 최소 검사 108/108, 수정 JS/MJS 13파일 구문 통과. PR·main·Pages 확인 후 갱신 |
 | 중1 나머지 6개 | 118 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
@@ -100,7 +100,7 @@
 
 권장 순서(그림 움직임이 이미 있는 것부터): `g7-polyhedra` → `g7-solids` → `g7-polygons` → `g7-area` → `g7-parallel` → `g7-points-lines` → `g7-spatial` → `g7-construction`.
 
-- `g7-polyhedra`는 플레이어 연결과 26장면/58해설을 구현했다. 나머지 7개 실험실의 HTML에는 안내서 §2의 플레이어 연결을 추가한다.
+- `g7-polyhedra` 26장면/58해설, `g7-solids` 22장면/48해설을 구현했다. 나머지 6개 실험실의 HTML에는 안내서 §2의 플레이어 연결을 추가한다.
 - `g7-parallel`은 `anim`·`stepT`가 없어 보조선이 한 번에 나타난다. 단계(`step`) 구동이 중심이고, 필요하면 보조선이 그려지는 단계 그림을 추가한다.
 - 값이 바뀌면 단계를 0으로 되돌리는 `view()`가 있다(`g7-parallel/kit.js`, `g7-polygons/core.js`, `g7-construction/core.js`, `g7-points-lines/common.js`). 값 설정 → 단계 순으로 쓴다.
 
@@ -108,6 +108,12 @@
 
 - 최소 실행: `node --test --test-reporter=tap apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-polyhedra*.test.mjs apmath/playground/next/tools/g7-polyhedra-geometry.test.mjs apmath/playground/next/tools/g7-polyhedra-initial-geometry.test.mjs apmath/playground/next/tools/g7-polyhedra-selected-faces-initial.test.mjs apmath/playground/next/tools/polyhedra-dual.test.mjs apmath/playground/next/tools/polyhedra-names.test.mjs` → **131/131 통과, 실패·skip 0**. 무필터 validator, 실제 좌표·면 법선·중복 없는 모서리·삼중곱·단면·주사위 검산, 생산 Board 174개 진입/첫 cue/결론 상태와 기존 수동 기하 회귀 포함. 변경 JS/MJS 13파일 구문 및 diff 검사 통과.
 - 후속 품질: 390×844 화면 및 58해설 전체 재생·잘림·터치·동기화 **NOT_RUN / QA_PENDING**. 기존 p1-5는 첫 그림 뒤 화면 맞춤이 적용되는 구조여서 첫 paint와 다음 paint의 배율 변화 가능성을 후속 화면 검수에서 확인한다. 도형·라벨·계산 오류로 확인된 것은 아니다.
+
+**회전체 구현 기록:** 실제 HTML 모듈·카탈로그 22장면과 48해설이 일치한다(t1 7장면/19해설, t2 6/12, t3·t4 9/17). 생성 입체·반지름·높이, 단면 모양·크기 변화·넓이, 전개도·역산, 최단 경로를 질문별로 분리했다. 해설 상태는 이전 연습문제와 수동 정리 보간에 덮이지 않고, 계산 결과는 해당 마지막 장에서 공개된다. 직접 해 보기의 기존 동작과 공통 키트를 유지했다.
+
+- 원본문장 최소 수정: s1-6의 일반적인 두 원뿔 생성 단면을 무조건 직각삼각형이라고 하던 표현을 실제 기본 좌표에 맞게 삼각형으로 바로잡았다. 최단경로의 180° 사례는 꼭짓점 경유 허용 조건을 자막에 명시했다.
+- 최소 실행: `node --test --test-reporter=tap apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-solids*.test.mjs apmath/playground/next/tools/g7-solids-geometry.test.mjs apmath/playground/next/tools/g7-solids-status-badge-initial.test.mjs` → **108/108 통과, 실패·skip 0**. 무필터 validator, 원본 모델·별도 좌표 계산·단면 넓이·부채꼴/원뿔대 수학 검산, 생산 Board 144개 진입/첫 cue/결론 및 기존 수동 회귀 포함. 원뿔대 최단선이 잘린 부채꼴을 침범하지 않음은 허용 반지름 21쌍에서 확인했다. 변경 JS/MJS 13파일 구문 및 diff 검사 통과.
+- 48해설의 실제 모바일 전체 재생·버튼/터치·정밀 동기화·잘림은 **NOT_RUN / QA_PENDING**이다. 소스·Board 결과를 화면 품질 PASS로 대체하지 않는다.
 
 ### 5-4. 키트 보완 목록 (각각 별도 PR, 테스트 포함)
 
@@ -200,6 +206,8 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · `g7-solids` **22장면/48해설 신규 구현 완료**, 미등록 장면 0. 최신 main `1e4fe2ce808fff9887e798b7ec7cf4e4f0461bbe`에서 새 브랜치를 시작했고 정상 구현 묶음마다 원격에 보존했다. 최소 검사 108/108, 수정 JS/MJS 13파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 다음 실험실은 `g7-polygons`다.
 
 - 2026-11-11 · 다면체 [PR #1747](https://github.com/icefoxtail/AP------/pull/1747) **main 운영 병합 완료**. head `03dbe12eceae68153d43ba35c629b0d26247fddb`, merge `1e4fe2ce808fff9887e798b7ec7cf4e4f0461bbe`, 원격 main 및 대상 파일 일치 확인. 26장면/58해설, 최소 검사 131/131. 실제 학생 HTML은 이전 버전이고 신규 모듈은 배포 전 404여서 **Pages NOT_VERIFIED / QA_PENDING**. [최신 등록 writer 42962471997](https://github.com/icefoxtail/AP------/actions/runs/42962471997) pending. 이전 Surface pending writer 취소는 최신 main 작업으로 교체된 것이며 구현 실패가 아니다. 다음 회전체 제작에 착수했다.
 - 2026-11-11 · [AWCR r7](https://drive.google.com/file/d/1xJbjGpJNNEdAHfDdSabGkfvVS3zfhWCZ/view) 원격 저장·raw 재조회 완료. SHA-256 `6807b5f8d5a6d12d71a9389ff3ad70884d80d15ecfd6303dace0177f773dc21c`, parent r6와 결속 확인. 다음 revision r8은 충돌 재확인 후 저장한다.
