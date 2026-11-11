@@ -1391,7 +1391,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_stemleaf.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 스마트폰 사용 시간 20명의 줄기와 잎 그림에서 크기 순 10번째와 11번째 잎인 a, b를 동그라미로 표시하고, 줄기 0의 5시간 이상 10시간 미만 잎 7, 8, 9를 괄호로 묶어 도수 3으로, 줄기 2의 20시간 이상 25시간 미만 잎 3을 괄호로 묶어 도수 1로 나타낸 그림.",
