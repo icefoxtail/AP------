@@ -92,8 +92,10 @@
 | `geom-vector-ops` | 12장면·54해설(원문/등록유형28·개념26) | MAIN_MERGED / QA_PENDING · PR #1848 · `0739b7dad9d823fe858549d7c71d0d687c3cd0d9` · 최소64/64·native849상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
 | `geom-vector-dot` | 7장면·36해설(원문15·개념21) | MAIN_MERGED / QA_PENDING · PR #1849 · `dccd250ba102d997af5f4bd8796bdc1c36311fad` · 최소71/71·native566상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
 | `geom-vector-figure` 벡터와 도형 | 6 | 6 / 28 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1850](https://github.com/icefoxtail/AP------/pull/1850), merge `768069c3d3599641ec2616bb824070dbcba3ecb6`. 원문9·개념19. 최소74/74·native491상태·validator0/0·구문8단위 |
-| `prob-counting` 경우의 수 | 5 | 5 / 34 | **IMPLEMENTED / PAGES_NOT_VERIFIED / QA_PENDING** · `feat/lessons-prob-counting` · 원문 생성기19유형·개념15. 최소68/68(수학19·native8·공통41),native544상태·validator0/0·구문8단위 |
-| 고등 잔여 2개 | `prob-probability`(5), `prob-stats`(7) | 위 경우의 수 main 병합 후 순서대로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
+| `prob-counting` 경우의 수 | 5 | 5 / 34 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1852](https://github.com/icefoxtail/AP------/pull/1852), merge `4516ef3e469b514c12ff1ff6e74ea295b8f59106`. 원문19유형·개념15. 최소68/68·native544상태·validator0/0·구문8단위 |
+| `prob-probability` 확률 | 5 | 5 / 27 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1853](https://github.com/icefoxtail/AP------/pull/1853), merge `1ea507f04f756deb276f61af5f3e2958d63d4c4d`. 원문10목표·개념17. 최소95/95·native499상태·validator0/0·구문8단위 |
+| `prob-stats` 통계 | 7 | 7 / 37 | **IMPLEMENTED / PAGES_NOT_VERIFIED / QA_PENDING** · `feat/lessons-prob-stats` · 원문18유형·개념19. 최소77/77(수학28·native8·공통41),native612상태·validator0/0·구문8단위 |
+| 고등 잔여 0개 | 본 PR의 통계까지 카탈로그 고등38개·436장면 구현 완료 | 통계 main 병합 및 최신 운영 배포 영수증·학생 파일 확인을 마무리한다. 전수 모바일·독립 시각검수는 후속 QUALITY. |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -283,6 +285,18 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 마지막 고등 통계 `prob-stats` 실제7장면·37해설 구현(원문18유형+개념19, 장면별6/5/6/4/4/7/5). 원본 확률 막대·정규곡선·꺾은선 밀도 영역·표본평균 히스토그램·신뢰구간 선분을 사용. 문제 및 표본 stream별 seed를 분리하고 원래 생성식·범주분포·Box–Muller 공식을 보존했다. 시뮬레이션 빈도로 정답을 증명하지 않는다. lpsN_/lpsS_ snapshot으로 수동 표본/seed/조작/선택문항 및 실제 Player 중단·완료 보존 확인. 독립수학28+native8+공통video41=77/77, 실제 Board/canvas612개 상태, validator0/0, JS6+inline2 구문·diff·clean. 최신 main1ea507f 반영 뒤41입력 SHA와1부재 동일. 전수브라우저/모바일/독립시각 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 확률 PR #1853 main `1ea507f04f756deb276f61af5f3e2958d63d4c4d`, feature `8d56e7e4749a393955bdf087bc23d727853e509e` exact readback 완료. 누적53실험실/958장면/2,850해설. AWCR r80 raw SHA `4d013d4afd2f70ba1ec56d8ca2fea435285e240430a1d3f90e1b4a2393f57b40`, readback VERIFIED.
+
+- 2026-11-12 Pages43077681642는 Build queued·runner 미배정·step 없음, pending deployments 빈 목록으로 환경 승인 대기가 확인되지 않았다. repo에 다른 workflow 실행 및 다수 대기 작업이 있지만 Pages 지연의 직접 원인을 확정할 근거는 없다. 기존 등록 필수 게이트·워크플로 설정과 다른 작업자의 실행을 보존한다.
+
+- 2026-11-12 확률 `prob-probability` 실제5장면·27해설 구현(원문10목표+탐구17개념, 장면별7/7/5/4/4). 원래 격자·넓이 사각형·조건부확률·반복시행 상태도를 사용하며 모의실험을 답의 증명으로 사용하지 않음. 독립31+native9+공통video/pins55=95/95, actual Board/canvas499개 cue/중간 프레임, validator0/0, JS6+inline2 구문·diff·clean. actual shell 복제 및 Player start/apply/settle/release에서 수동값·tb배열·runs/sims 이력·변형·배율 보존. 최신main4516ef3 반영 후 선택입력46개 SHA 동일. 전체브라우저/전수모바일/독립시각 NOT_RUN; PAGES_NOT_VERIFIED.
+
+- 2026-11-12 경우의 수 PR #1852 main `4516ef3e469b514c12ff1ff6e74ea295b8f59106`, 원격 feature `6bf2b539c8f78f86005f7dc7b35ada01f7264c16` exact readback 완료. 누적52실험실/953장면/2,823해설. AWCR r78 raw SHA `843c77fafc23884d5d6c3c37d4abfdb750ef86662e4788b5e36092dd946ebd4a` VERIFIED.
+
+- 2026-11-12 통계 구현7장면37해설·최소77/77·native612상태를 원격 `feat/lessons-prob-stats` HEAD `c409a904d6d8be1922c2ae57bc3dca83048e83ba`에 중간 보존하고 exact tree readback 완료. 아직 main 병합 아님. AWCR r79 raw SHA `4b3336a7c2a9d85a2089163d1951b54e3c4379f9136224cc6c85ae0afdd53134` VERIFIED. 확률 다음 순서로 병합한다.
 
 - 2026-11-12 경우의 수 `prob-counting` 실제5장면·34해설 구현(원문 생성기19유형+개념15). 동일 공 배분·함수·같은 카드·경유/금지점 경로·이웃 금지·원순열의 원래 그림과 질문을 사용. 유형별 source packet은 원래 생성기를 전용 seed로 호출하여 고정하고 수동 새 문제 RNG/선택은 보존. 재생 전용 lpc 트랙으로 원래 조작값·배열·Set을 보존, 실제 셸 복제 및 Player 중단/완료/entry/replay 검사. 독립 열거 수학19+native8+공통video41=68/68, 실제 Board/canvas544개 cue 상태, validator 오류0/경고0, JS6+inline2 구문·diff 확인. 최신 main647b332 반영으로 들어온 다른 실험실 및 Archive 변경 보존, 관련 검사 입력 동일. 전체 브라우저/모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
 
