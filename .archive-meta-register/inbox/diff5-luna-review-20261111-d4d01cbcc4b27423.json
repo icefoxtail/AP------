@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "driveFileId": "diff5-luna-review-20261111-d4d01cbcc4b27423",
+  "driveSha256": "881b2a37d29ae0954838c521dc53e80e8de2c81906377e91c2ab13a4ca46119e",
+  "driveChecksumSource": "local_bytes",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "diff5-luna-review-20261111-d4d01cbcc4b27423",
+    "createdAt": "2026-11-11",
+    "sourceArchiveFile": "original/middle/m3/1mid/19_서울봉원중_1학기_중간_중3_수학.js",
+    "latestBlobSha": "433868f860d99b3bb548459572794f988d80453d",
+    "items": [
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_28ff6525ed310d95d54edd3e630f706d5693ce63e668c63540cc48ee6ec0cf47",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "2026-11-11 user-authorized per-item review and registration",
+    "evidencePath": ".archive-meta-register/evidence/diff5-luna-review-20261111-d4d01cbcc4b27423.json",
+    "evidenceSha256": "881b2a37d29ae0954838c521dc53e80e8de2c81906377e91c2ab13a4ca46119e",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m3/1mid/19_서울봉원중_1학기_중간_중3_수학.js",
+        "ordinal": 22,
+        "questionUid": "qid_v1_28ff6525ed310d95d54edd3e630f706d5693ce63e668c63540cc48ee6ec0cf47",
+        "sourceFingerprint": "0111c37ef50150ded94d9ea08f2e62780e0a10ce235d82717f9e22fdf97e6e1c",
+        "contentFingerprint": "7696dda9b1211b68159c67f32e29e13247d1a99f77c398bb00f06f375fa5553b",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "before": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "0111c37ef50150ded94d9ea08f2e62780e0a10ce235d82717f9e22fdf97e6e1c",
+          "contentFingerprint": "7696dda9b1211b68159c67f32e29e13247d1a99f77c398bb00f06f375fa5553b"
+        },
+        "after": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "decision": "CORRECT",
+        "reason": "분자·분모를 각각 전개하거나 먼저 비를 유리화한 뒤 결과를 제곱한다. 완성된 계산은 표준적이지만 유리화와 제곱을 연쇄 적용해야 하여 3이 현재 2보다 타당하다."
+      }
+    ]
+  }
+}
