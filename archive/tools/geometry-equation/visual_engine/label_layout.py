@@ -16,6 +16,7 @@ MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
 LEADER_ONLY_MIN_PX=14.0
 LEADER_MAY_CROSS_ASYMPTOTE=re.compile(r'asymptote-|rational-asymptote-')   # (EXT-20261109-e) a point callout's leader may cross a dashed asymptote like an axis, tick or guide (never a curve or a line)
 RING_LABEL_OWN_REACH_PX=60.0   # the independent observer refuses a leaderless overlay coordinate label farther than this from its own dot
+POINT_NAME_RING_NEAR_PX=18.0   # (CL) a point name set in the free ring without a leader stays this close to its own point (box to point); farther out it needs a leader to the point
 POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112,128,144,160,180,210,240,270,300)
 NEAR_RELOCATION_LEADER_MIN_GAP=20
 # A wedge narrower than twice the 15-degree leader/line tolerance keeps its bisector leaders hidden under a ray (visible_owner_leader rejects them).
@@ -131,7 +132,7 @@ def segment_segment_distance(a,b,c,d):
         if cross(ab,ac)*cross(ab,ad)<=1e-12 and cross(cd,ca)*cross(cd,cb)<=1e-12:return 0.0
     return min(point_segment_distance(a,c,d),point_segment_distance(b,c,d),point_segment_distance(c,a,b),point_segment_distance(d,a,b))
 
-def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,start_tolerance=1e-4,skip_ids=frozenset()):
+def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,start_tolerance=1e-4,skip_ids=frozenset(),away_from_circles=False):
     """near_start (E31): a leader that starts on its own line right beside a parallel neighbour (closer than `clearance`) may leave it when it only moves
     away from that neighbour: the closest approach to the neighbour is its start, which keeps at least LEADER_NEAR_START_MIN_PX from it, and it never crosses it."""
     def intersection_points(a,b,c,d):
@@ -158,6 +159,7 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,st
                     # A leader may leave its source circle at the exact owner
                     # point, but it may not exit through the circle again.
                     if end_radius>radius+clearance and distance<radius-clearance:return False
+                elif away_from_circles and start_radius>radius and end_radius>=start_radius-1e-6 and distance>=start_radius-1e-6:continue   # (CL) a point beside a circle (not on it): a leader that only moves away from it
                 elif ((start_radius-radius)*(end_radius-radius)<=0 or
                       (start_radius>radius and end_radius>radius and distance<radius+clearance)):
                     return False
@@ -442,10 +444,10 @@ def line_between(start,box,occupied,incident):
     return any(o.get('kind') in {'line','axis','auxiliary','curve'} and o.get('id') not in incident and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
                and any(segment_segment_distance(start,end,c,d)<=1.0 for c,d in zip(o['geometry'],o['geometry'][1:])) for o in occupied)
 
-def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tolerance=1e-4,skip_ids=frozenset()):
+def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tolerance=1e-4,skip_ids=frozenset(),away_from_circles=False):
     """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-    if not leader_clear(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance,skip_ids=skip_ids):return None
+    if not leader_clear(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance,skip_ids=skip_ids,away_from_circles=away_from_circles):return None
     # A leader running along a line through the point (within 15 degrees) hides under that line: not a visible leader.
     if any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
            and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
@@ -1381,7 +1383,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         angle=math.radians(step*7.5)
                         box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
                         if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
-                        if not leader_only and acceptable(box) and not (label.get('ringLeader') and box_point_distance(box,at)>RING_LABEL_OWN_REACH_PX):ring=box;ring_method='POINT_NAME_RING';break   # (G18c) beyond the observer's reach of its own point (60 px) a coordinate label needs a leader, not just a free box
+                        if not leader_only and acceptable(box) and not (label.get('ringLeader') and box_point_distance(box,at)>RING_LABEL_OWN_REACH_PX) and not (label['kind']=='POINT_NAME' and owner_marker is not None and box_point_distance(box,at)>POINT_NAME_RING_NEAR_PX):ring=box;ring_method='POINT_NAME_RING';break   # (G18c) beyond the observer's reach of its own point (60 px) a coordinate label needs a leader, not just a free box
                         if owner_marker is None or not acceptable(box,owner_check=False):continue
                         incident=incident or owner_incident_ids(at,owner_marker,occupied)
                         end=visible_owner_leader(at,box,occupied,incident,skip_ids=pass_skip)
@@ -1390,6 +1392,18 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
                     if ring is not None:break
                 if ring is not None:break
+            if ring is None and label['kind']=='POINT_NAME' and owner_marker is not None and not leader_only:
+                # (CL) The name is not allowed leaderless beyond POINT_NAME_RING_NEAR_PX, so a point lying beside a circle (inside its 6 px clearance) may leave it on a leader that only moves away
+                incident=incident or owner_incident_ids(at,owner_marker,occupied)
+                for radius in POINT_NAME_RING_RADII:
+                    for step in ring_steps:
+                        angle=math.radians(step*7.5)
+                        box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
+                        if not acceptable(box,owner_check=False):continue
+                        end=visible_owner_leader(at,box,occupied,incident,skip_ids=leader_skip,away_from_circles=True)
+                        if end is None:continue
+                        tie_to_owner(end);ring=box;ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
+                    if ring is not None:break
             if ring is None and label['kind'] in {'COORDINATE_LABEL','EQUATION_LABEL'} and label.get('ringLeader'):
                 # (G6c) Nothing outside the strokes is free for a wide coordinate label: the leader may then cross the point's own circle (never another stroke, label or point)
                 # to reach the nearest free box. The leader still starts on its own dot and ends on the label box, which the observer ties back to the owner.
