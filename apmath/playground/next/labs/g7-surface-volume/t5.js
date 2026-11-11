@@ -63,7 +63,7 @@
     D.b.text({ x: (x0 + x1) / 2, y: yy }, str, Object.assign({ dy: -18, size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' }, o));
   };
   function slideTiles(R, te) { R.rows.forEach((L) => { const st = -L.total / 2; L.tiles.forEach((tl) => { tl.x = st + (tl.x - st) * te; }); }); }
-  const totalText = (D, R, topY, text, dy = 50) => { const px = D.b.toS({ x: 0, y: topY + R.height }); D.b.stext(px.x, px.y + dy, text, { size: D.fs(15), weight: 800, color: 'green', align: 'center', baseline: 'middle' }); };
+  const totalText = (D, R, topY, text, dy = 50) => { if(D.lessonHide)return; const px = D.b.toS({ x: 0, y: topY + R.height }); D.b.stext(px.x, px.y + dy, text, { size: D.fs(15), weight: 800, color: 'green', align: 'center', baseline: 'middle' }); };
   // 조각 줄의 이름표·값이 옆 조각의 글자와 겹치지 않게 조각 사이 간격을 넓힙니다(조각 크기·축척은 그대로, 조각은 자기 칸 가운데).
   // 화면 배율은 직전 그림의 배율(b.k)을 쓰고, 줄 전체 폭은 Wt 의 1.12배로 막아 되먹임으로 줄이 끝없이 넓어지지 않게 합니다.
   function spaceRows(D, R, Wt, margin = 12) {
@@ -300,6 +300,14 @@
         drawRows(D, R, 0, rowTop);
         if (te > 0.95) totalText(D, R, rowTop, `겉넓이 = 면 넓이의 합 = ${plainVal(M.tot)}`, 64);
       }
+      if(C.lesson) {
+        const stage=s.svBStage||0;
+        G.stepRow(D,C,[null,
+          [{t:`원래 겉넓이 = 2×${M.a}² + 4×${M.a}×${M.h} = ${plainVal(M.S0)}`,c:'ink'}],
+          [{t:`없어진 입구 = ${plainVal(M.removed).replace('-','−')}`,c:'red'}],
+          [{t:`새 안쪽 면 = ${plainVal(M.added)}`,c:'amber'}],
+          [{t:`겉넓이 = ${plainVal(M.S0)} ${plainVal(M.removed).replace('-','− ')} + ${plainVal(M.added)} = ${plainVal(M.tot)}`,c:'green'}]][stage],{gated:stage===4});
+      }
     };
     return {
       id: 'sv5-2', title: '막힌 구멍·사각 구멍', short: '막힌·사각 구멍',
@@ -495,6 +503,14 @@
         lineAt(1, `생긴 겉면 ${expr(M.at)} = ${sumN(M.at)}`, 'amber', 56);
         lineAt(1, `겉넓이 = ${plainVal(M.S0)} − ${M.rem} + ${M.add} = ${plainVal(M.tot)}`, 'green', 82);
       }
+      if(C.lesson) {
+        const stage=s.svBStage||0;
+        G.stepRow(D,C,[null,
+          [{t:`원래 정육면체 = 6×${M.a}² = ${plainVal(M.S0)}`,c:'ink'}],
+          [{t:`없어진 겉면 = ${M.rem}`,c:'red'}],
+          [{t:`새로 생긴 면 = ${M.add}`,c:'amber'}],
+          [{t:`겉넓이 = ${plainVal(M.S0)} − ${M.rem} + ${M.add} = ${plainVal(M.tot)}`,c:'green'}]][stage],{gated:stage===4});
+      }
     };
     return {
       id: 'sv5-4', title: '모서리·가운데 홈 (확장)', short: '모서리·홈 (확장)',
@@ -602,9 +618,9 @@
       }
       if (showVol) {
         const px = b.toS({ x: 0, y: volTop }), line = (dy, str, col) => b.stext(px.x, px.y + dy, str, { size: D.fs(14), weight: 800, color: col, align: 'center', baseline: 'middle' });
-        line(14, `큰 원뿔의 부피 (1/3)×π×${M.r2}×${M.r2}×${M.h2} = ${plainVal(M.v2)}`, 'sky');
-        line(38, `파낸 원뿔의 부피 (1/3)×π×${M.r1}×${M.r1}×${M.h1} = ${plainVal(M.v1)}`, 'red');
-        line(64, `남은 부피 = ${plainVal(M.v2)} − ${plainVal(M.v1)} = ${plainVal(M.vol)}`, 'green');
+        if(!C.lesson||(s.svBStage||0)>=1) line(14, `큰 원뿔의 부피 (1/3)×π×${M.r2}×${M.r2}×${M.h2} = ${plainVal(M.v2)}`, 'sky');
+        if(!C.lesson||(s.svBStage||0)>=2) line(38, `파낸 원뿔의 부피 (1/3)×π×${M.r1}×${M.r1}×${M.h1} = ${plainVal(M.v1)}`, 'red');
+        if(!D.lessonHide) line(64, `남은 부피 = ${plainVal(M.v2)} − ${plainVal(M.v1)} = ${plainVal(M.vol)}`, 'green');
       }
       if (L && te > (narrow ? 0.15 : 0.02)) {
         const kw = L.kw, hlOf = { big: lvL, ring: lvA, small: lvI }, col = { big: 'sky', ring: 'amber', small: 'red' }, ctx = b.ctx;
@@ -612,6 +628,7 @@
         const tx0 = (x, y, str, o) => b.text({ x, y }, str, Object.assign({ size: D.fs(14), weight: 800, color: 'ink', align: 'center', baseline: 'middle' }, o));
         const a0 = te * 1; // 펼쳐지는 동안 점점 나타나요
         L.items.forEach((it) => {
+          const ready=!C.lesson||(s.svBStage||0)>={big:1,ring:2,small:3}[it.k];
           const hl = hlOf[it.k], c = col[it.k], rowBot = L.rows[it.row].bot, alpha = (C.tab === 'explore' ? 0.07 : (hl === 2 ? 0.55 : 0.3)) * a0, ew = hl === 2 ? 3.4 : 2.4;
           if (it.k === 'ring') {
             const sc0 = b.toS({ x: it.cx, y: it.cy }), Ro = it.R * b.k, Ri = it.r * b.k;
@@ -625,17 +642,17 @@
             if (C.tab !== 'explore') {
             const rEnd = { x: it.ax + it.R * Math.cos(-18 * DEG), y: it.ay + it.R * Math.sin(-18 * DEG) };
             D.edgeLab({ x: it.ax, y: it.ay }, rEnd, `모선 ${it.cm}`, { fig: true, side: { x: 0.3, y: -1 }, color: c, alpha: a0, gap: 3 });
-            if (it.k === 'big') tx0(it.ax, it.ay, '중심각 216°', { dy: 0.2 * it.R * b.k, size: D.fs(13), alpha: a0 });
-            D.areaLab({ x: it.ax, y: it.ay + 0.62 * it.R }, '넓이', plainVal(info[it.k].area), { fig: true, maxW: it.k === 'big' ? 110 : 70, alpha: a0, dy: it.k === 'big' ? 14 : 4 });
-            tx0(it.ax, it.ay + it.R, `호의 길이 ${plainVal(V(0, info[it.k].arc))}`, { dy: 16, color: c, alpha: a0 });
+            if (it.k === 'big' && !C.lesson) tx0(it.ax, it.ay, '중심각 216°', { dy: 0.2 * it.R * b.k, size: D.fs(13), alpha: a0 });
+            if(ready) D.areaLab({ x: it.ax, y: it.ay + 0.62 * it.R }, '넓이', plainVal(info[it.k].area), { fig: true, maxW: it.k === 'big' ? 110 : 70, alpha: a0, dy: it.k === 'big' ? 14 : 4 });
+            if(!C.lesson) tx0(it.ax, it.ay + it.R, `호의 길이 ${plainVal(V(0, info[it.k].arc))}`, { dy: 16, color: c, alpha: a0 });
             }
           }
           tx0(it.k === 'ring' ? it.cx : it.ax, rowBot, (narrow && C.tab === 'explore' ? ({big:'바깥 옆면',ring:'고리',small:'안쪽'}[it.k]) : info[it.k].nm), { dy: C.tab === 'explore' ? 15 : 40, color: C.tab === 'explore' ? 'ink' : c, alpha: a0 });
-          if (C.tab === 'explore') return;
+          if (C.tab === 'explore' || !ready) return;
           const exParts = narrow ? info[it.k].ex.split(' = ') : [info[it.k].ex];
           exParts.forEach((ln, li) => tx0(it.k === 'ring' ? it.cx : it.ax, rowBot, li ? `= ${ln}` : ln, { dy: 60 + li * 19, alpha: a0 }));
         });
-        if (te > 0.95 && C.tab !== 'explore') { const pxT = b.toS({ x: 0, y: L.bottom }); b.stext(pxT.x, pxT.y + (narrow ? 108 : 88), `겉넓이 = 면 넓이의 합 = ${plainVal(M.lat2)} + ${plainVal(M.ann)} + ${plainVal(M.lat1)} = ${plainVal(M.surf)}`, { size: D.fs(15), weight: 800, color: 'green', align: 'center', baseline: 'middle' }); }
+        if (te > 0.95 && C.tab !== 'explore' && !D.lessonHide) { const pxT = b.toS({ x: 0, y: L.bottom }); b.stext(pxT.x, pxT.y + (narrow ? 108 : 88), `겉넓이 = 면 넓이의 합 = ${plainVal(M.lat2)} + ${plainVal(M.ann)} + ${plainVal(M.lat1)} = ${plainVal(M.surf)}`, { size: D.fs(15), weight: 800, color: 'green', align: 'center', baseline: 'middle' }); }
       }
     };
     return {
@@ -737,10 +754,14 @@
         else if (M.top === 'hemi') row2 = [{ w: 2 * PI * M.r, h: M.r, shape: 'rect', fill: 'green', label: `2×π×${M.r}×${M.r} = ${plainVal(V(0, 2 * M.r * M.r))}`, cap: '반구의 곡면', hl: hlTop }];
         else row2 = [{ w: 2 * xh, h: M.R + topH, shape: 'fan', R: M.R, deg, top: topH, fill: 'green', lab: `π×${M.r}×${M.R} = ${plainVal(V(0, M.r * M.R))}`, capt: `원뿔의 옆면 (모선 ${M.R}, 중심각 ${deg}°)`, hl: hlTop }];
         row1.forEach((q) => { if (narrow && q.capN) q.cap = q.capN; });
+        if(C.lesson) {
+          row1.forEach((q,i)=>{if(!(i===0?s.svSideReady:s.svBaseReady)){q.label='';q.lab='';}});
+          if(!s.svOtherReady)row2.forEach(q=>{q.label='';q.lab='';});
+        }
         if (C.tab === 'explore') { [...row1,...row2].forEach(q => { q.label = ''; q.lab = ''; q.cap = ''; q.capt = ''; q.fill = 'sky'; q.edge = 'ink'; q.alpha = 0.06; q.size = 11; }); ['윗면','아랫면','옆면'].forEach((v,i)=>{row1[i].label=v;}); if(M.top === 'cyl') { row2[0].label='옆면'; row2[1].label='윗면'; } else row2[0].capt='원뿔 옆면'; }
         rows = spaceRows(D, G.layoutTileRows([row1, row2], narrow ? 4.6 : 6.4, narrow ? 1.9 : 1.7, 2.2, 2.2), narrow ? 4.6 : 6.4);
       }
-      const volParts = !C.problem && !surfMode && C.tab !== 'explore' ? [{ v: vnum(M.vBox), fill: 'sky', label: `상자 ${plainVal(M.vBox)}`, hl: !C.review ? 1 : st === 1 ? 2 : 1 }, { v: vnum(M.vTop), fill: 'green', label: `${TOP56[M.top]} ${plainVal(M.vTop)}`, hl: !C.review ? 1 : st === 2 ? 2 : 1 }] : null;
+      const volParts = !C.problem && !surfMode && C.tab !== 'explore' ? [{ v: vnum(M.vBox), fill: 'sky', label: C.lesson&&!s.svBigReady?'상자':`상자 ${plainVal(M.vBox)}`, hl: !C.review ? 1 : st === 1 ? 2 : 1 }, { v: vnum(M.vTop), fill: 'green', label: C.lesson&&!s.svSmallReady?TOP56[M.top]:`${TOP56[M.top]} ${plainVal(M.vTop)}`, hl: !C.review ? 1 : st === 2 ? 2 : 1 }] : null;
       const rowTop = bbx.y1 + 0.8, rowsReg = rows ? [{ x: -rows.total / 2, y: rowTop }, { x: rows.total / 2, y: rowTop + rows.height + (C.tab === 'explore' ? 0.5 : 3.0) }] : volParts ? [{ x: -3, y: rowTop }, { x: 3, y: rowTop + 2.4 }] : [];
       const blend = (narrow || C.tab === 'explore') && rows ? ease(lin01(te, 0, 0.15)) : 0, showSolid = !((narrow || C.tab === 'explore') && rows && te > 0.15);
       const showRows = rows && te > (narrow ? 0.15 : 0.01);
@@ -798,7 +819,7 @@
       }
       if (volParts) {
         G.drawBars(D, volParts, 0, rowTop, 5.6, 0, {});
-        b.text({ x: 0, y: rowTop + 0.62 }, `부피 = ${plainVal(M.vBox)} + ${plainVal(M.vTop)}${(plainVal(M.vBox) + '+' + plainVal(M.vTop)) === plainVal(M.vol) ? '' : ` = ${plainVal(M.vol)}`}`, { dy: 36, size: D.fs(15), weight: 800, color: 'green', baseline: 'middle' });
+        if(!D.lessonHide) b.text({ x: 0, y: rowTop + 0.62 }, `부피 = ${plainVal(M.vBox)} + ${plainVal(M.vTop)}${(plainVal(M.vBox) + '+' + plainVal(M.vTop)) === plainVal(M.vol) ? '' : ` = ${plainVal(M.vol)}`}`, { dy: 36, size: D.fs(15), weight: 800, color: 'green', baseline: 'middle' });
       }
       // 정리 탭: 지금 단계의 식 한 줄(해설이 말하는 값이 그림에 보이게). 결과 줄은 해설 재생 중 svShowV 까지 숨김. 탐구·문제 탭·썸네일은 그대로.
       if (M.mode === 'surf') {
@@ -808,6 +829,12 @@
           [{ t: `위 입체의 겉면(붙은 밑면 제외): +${plainVal(M.add)}`, c: 'green' }],
           [{ t: `겉넓이 = ${plainVal(M.box)} ${plainVal(M.cover).replace('-', '− ')} + ${plainVal(M.add)} = ${plainVal(M.surf)}`, c: 'green' }]][Math.min(Math.max(C.step || 0, 0), 4)];
         G.stepRow(D, C, rowSegs, { gated: (C.step || 0) >= 4 });
+      } else if(C.lesson) {
+        const stage=s.svShowV?3:s.svSmallReady?2:s.svBigReady?1:0;
+        G.stepRow(D,C,[null,
+          [{t:`상자 부피 = ${M.a}×${M.a}×${M.H} = ${plainVal(M.vBox)}`,c:'sky'}],
+          [{t:`위 ${TOP56[M.top]}의 부피 = ${plainVal(M.vTop)}`,c:'green'}],
+          [{t:`전체 부피 = ${plainVal(M.vBox)} + ${plainVal(M.vTop)} = ${plainVal(M.vol)}`,c:'green'}]][Math.min(stage,3)],{gated:stage>=3});
       }
     };
     return {

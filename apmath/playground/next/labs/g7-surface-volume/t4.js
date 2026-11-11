@@ -26,6 +26,8 @@
   };
   const oneOf = (v, list, d) => (list.includes(v) ? v : d);
   const A0 = -28 * DEG; // 평면도형이 처음 놓이는 방위(정면을 향함)
+  // 수치는 해당 자막에서만 공개합니다. 수동 탐구·정리의 라벨은 그대로 둡니다.
+  const lessonValue = (s, C, key, value) => !(C.lesson || s.lessonOn || s.lessonEntry) || (!s.lessonEntry && s[key]) ? value : '';
 
   // 평면도형(다각형, (r,y)) 하나를 방위 a 에 놓습니다
   const planePts = (poly, a, O = v3(0, 0, 0)) => poly.map(([r, y]) => add3(O, v3(r * Math.cos(a), y, r * Math.sin(a))));
@@ -56,12 +58,12 @@
       // 뒤쪽 절반(원뿔이 만들어진 뒤): 겉넓이 = 전개도(부채꼴 + 원), 부피 = 원뿔 겨냥도(밑넓이·높이)
       // 해설 재생 중(s.lessonOn)에는 정리 탭도 탐구처럼 앞 절반(삼각형 돌리기)을 거쳐 뒤 절반(펼치기)로 갑니다(C.t = s41T). 정리 탭·탐구 탭·썸네일은 그대로입니다.
       const lessonRun = rvw && s.lessonOn;
-      if (!C.problem && ((rvw && !(lessonRun && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) {
+      if (!C.problem && ((rvw && !((lessonRun || C.lesson) && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) {
         const t2 = b.thumb ? 1 : rvw && !lessonRun ? 1 : clamp((C.t - 0.5) * 2, 0, 1);
         const hl = !rvw ? {} : st <= 1 ? {} : surf ? (st === 2 ? { ring: 2, bot: 2 } : { ring: 3, bot: 2 }) : (st === 2 ? { bot: 2 } : { ring: 3, bot: 2 });
-        const res = G.coneNet(b, s, C, { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: surf ? t2 : 0, problem: !surf, review: rvw, hl, simpleNet: surf && C.tab === 'explore', fitL: surf && C.tab === 'explore' ? 24 : undefined, fitR: surf && C.tab === 'explore' ? (window.innerWidth>=700 && b.W>=560 ? 245 : 24) : undefined, fitT: surf && C.tab === 'explore' ? 24 : surf ? undefined : 84, fitB: surf && C.tab === 'explore' ? 24 : undefined, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } });
+        const res = G.coneNet(b, s, C, { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: surf ? t2 : 0, problem: !surf, review: rvw, hl, lessonReveal: { base: s.svBaseReady, side: s.svSideReady, other: s.svOtherReady }, simpleNet: surf && C.tab === 'explore', fitL: surf && C.tab === 'explore' ? 24 : undefined, fitR: surf && C.tab === 'explore' ? (window.innerWidth>=700 && b.W>=560 ? 245 : 24) : undefined, fitT: surf && C.tab === 'explore' ? 24 : surf ? undefined : 84, fitB: surf && C.tab === 'explore' ? 24 : undefined, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } });
         if (!surf && !b.thumb && !(C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560)) {
-          D4cone(res, M);
+          D4cone(res, M, s, C);
         }
         return;
       }
@@ -82,9 +84,9 @@
       D.label(add3(o, v3(0, 0, 0)), '축', { dir: { x: -1, y: 0.3 }, size: 13, color: 'muted', gap: 4 });
     };
     // 부피 쪽 원뿔 겨냥도의 이름표(밑넓이)와 식
-    const D4cone = (res, M) => {
+    const D4cone = (res, M, s, C) => {
       const { D, sn } = res;
-      D.areaLab(centroid(sn.A), '밑넓이', plainVal(M.S), { dx: -0.1, dy: 34 });
+      D.areaLab(centroid(sn.A), '밑넓이', lessonValue(s, C, 'svBaseReady', plainVal(M.S)), { dx: -0.1, dy: 34 });
       G.sumRows(D, [[{ t: '부피 = ' }, { t: '⅓', c: 'amber' }, { t: ' × ' }, { t: '밑넓이', c: 'violet' }, { t: ' × ' }, { t: '높이', c: 'amber' }], [{ t: `= ⅓ × ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)}` }]], 1);
     };
     const bg = (M) => `직각을 낀 두 변이 $${M.legA}\\,\\mathrm{cm}$, $${M.legB}\\,\\mathrm{cm}$이고 빗변이 $${M.hyp}\\,\\mathrm{cm}$인 직각삼각형`;
@@ -151,7 +153,7 @@
     const draw = (b, s, M, C) => {
       const st = C.step;
       // 높이가 되는 변을 축으로(원뿔대): 앞 절반은 사다리꼴 돌리기, 뒤 절반은 겉넓이 = 전개도(coneNet) · 부피 = 큰 원뿔 − 작은 원뿔 겨냥도(frustumVol)
-      if (M.axis === 'base' && M.mode === 'surf' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) {
+      if (M.axis === 'base' && M.mode === 'surf' && !C.problem && ((C.review && !C.lesson) || C.t >= 0.5 || b.thumb)) {
         compNet(b, s, C, { simple: true, r: M.hh, R: M.c, H: M.a, nCirc: 1, circNm: '밑면', coneLat: M.coneLat, cylLat: M.cylLat, circTot: M.base, tot: M.surf, hot: { cone: 3, cyl: 2, circ: 2 }, legend: [[{ t: `밑면은 1개만 더해요 (${plainVal(M.base)})`, c: 'sky' }], [{ t: '원뿔과 맞붙은 쪽은 겉에 드러나지 않아서 빼요', c: 'red' }]] });
         return;
       }
@@ -164,17 +166,33 @@
         [cylinder,cone].forEach(m=>D.body({mesh:m,fill:'sky',alpha:0.06,edge:'ink',edgeW:2}));
         return;
       }
-      if (M.axis === 'leg' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) {
+      if (M.axis === 'leg' && !C.problem && ((C.review && !C.lesson) || C.t >= 0.5 || b.thumb)) {
         const t2 = C.review || b.thumb ? (C.review ? clamp((C.t - 0.5) * 2, 0, 1) : 1) : clamp((C.t - 0.5) * 2, 0, 1);
         if (M.mode === 'vol') {
-          G.frustumVol(b, s, C, { exactFractions: true, minimal: true, simpleLabels: true, fitR: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), r2: M.r2, r1: M.r1, h2: M.h2, h1: M.h1, t: t2, review: C.review, step: st, vals: { v2: plainVal(M.v2), v1: plainVal(M.v1), vol: plainVal(M.vol) } });
+          const D = G.frustumVol(b, s, C, { exactFractions: true, minimal: true, simpleLabels: true, fitR: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), r2: M.r2, r1: M.r1, h2: M.h2, h1: M.h1, t: t2, review: C.review, step: st, vals: { v2: plainVal(M.v2), v1: plainVal(M.v1), vol: plainVal(M.vol) } });
+          if (C.lesson && !b.thumb) {
+            // 기존 겨냥도 위에 해설이 현재 읽는 치수·부피만 덧붙입니다.
+            const sc = 4.8 / Math.max(M.h2, 2.2 * M.r2), r2 = M.r2 * sc, r1 = M.r1 * sc, h2 = M.h2 * sc, h1 = M.h1 * sc;
+            const y0 = -h2 / 2, yc = y0 + h2 - h1, sh = D.hx(ease(t2) * (r1 * 2.4 + 0.5)), rf = D.rightFront(35);
+            const cb = v3(0, y0, 0), ct = add3(v3(0, yc, 0), sh), top = add3(v3(0, y0 + h2, 0), sh);
+            D.radius(cb, add3(cb, mul3(rf, r2)), `반지름 ${M.r2}`, { dash: true });
+            D.radius(ct, add3(ct, mul3(rf, r1)), `반지름 ${M.r1}`, { dash: true });
+            if (s.svOtherReady && !s.lessonEntry) {
+              D.height(cb, v3(0, y0 + h2, 0), `큰 높이 ${plainVal(V(M.h2))}`, { side: { x: 1, y: 0 } });
+              D.height(ct, top, `작은 높이 ${plainVal(V(M.h1))}`, { side: { x: -1, y: 0 } });
+            }
+            const row = s.svShowV && !s.lessonEntry ? `부피 = ${plainVal(M.v2)} − ${plainVal(M.v1)} = ${plainVal(M.vol)}`
+              : s.svSideReady && !s.lessonEntry ? `작은 원뿔: ⅓ × π × ${M.r1}² × ${plainVal(V(M.h1))} = ${plainVal(M.v1)}`
+                : s.svBaseReady && !s.lessonEntry ? `큰 원뿔: ⅓ × π × ${M.r2}² × ${plainVal(V(M.h2))} = ${plainVal(M.v2)}` : null;
+            if (row) G.stepRow(D, C, [{ t: row, c: s.svShowV ? 'green' : 'ink' }]);
+          }
         } else {
-          const rv = C.review, hl = !rv ? {} : st <= 1 ? { big: true } : st === 2 ? { small: true } : st === 3 ? { ring: 2 } : { ring: 3, bot: 2, top: 2 };
-          G.coneNet(b, s, C, { exactFractions: true, cleanFrustum: true, simpleNet: true, fitL: 20, fitR: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 20), fitT: 30, fitB: 30, r2: M.r2, r1: M.r1, hf: M.h, R2: M.R2, R1: M.R1, t: rv ? 1 : t2, review: rv, hl, vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) } });
+          const rv = C.review, hl = !rv ? {} : C.lesson && st === 0 ? {} : st <= 1 ? { big: true } : st === 2 ? { small: true } : st === 3 ? { ring: 2 } : { ring: 3, bot: 2, top: 2 };
+          G.coneNet(b, s, C, { exactFractions: true, cleanFrustum: true, simpleNet: !C.lesson || !s.sv42LengthReady || s.lessonEntry, lessonReveal: { base: s.svBaseReady, side: s.svSideReady, other: s.svOtherReady, big: s.sv42BigReady, small: s.sv42SmallReady }, fitL: C.lesson ? 36 : 20, fitR: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : C.lesson ? 36 : 20), fitT: C.lesson ? 84 : 30, fitB: C.lesson ? 76 : 30, r2: M.r2, r1: M.r1, hf: M.h, R2: M.R2, R1: M.R1, t: rv && !C.lesson ? 1 : t2, review: rv, hl, vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) } });
         }
         return;
       }
-      const D = scene3(b, s, C), th = C.problem ? 0.25 : C.review ? 1 : (M.axis === 'leg' || M.mode === 'surf') ? Math.min(1, C.t * 2) : C.t;
+      const D = scene3(b, s, C), th = C.problem ? 0.25 : C.review && !C.lesson ? 1 : (M.axis === 'leg' || M.mode === 'surf') ? Math.min(1, C.t * 2) : C.t;
       if (M.axis === 'leg') {
         const sc = 4.4 / Math.max(M.h2, 2 * M.r2), r1 = M.r1 * sc, r2 = M.r2 * sc, h = M.h * sc, h2 = M.h2 * sc, h1 = M.h1 * sc, y0 = -h2 / 2;
         const prof = [[0, y0], [r2, y0], [r1, y0 + h], [0, y0 + h]], poly = prof;
@@ -293,7 +311,7 @@
     };
     // 겉넓이 전개도: 두 원뿔의 옆면 = 부채꼴 2개(맞붙은 원은 겉에 없어 밑면은 없음). 호의 길이는 모두 맞붙은 원의 둘레
     const drawNet = (b, s, M, C) => {
-      const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = (C.review && !s.lessonOn) || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u); // 해설 재생 중에는 정리 탭도 s43T 를 따라 돌고 펼쳐져요
+      const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = (C.review && !C.lesson) || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u); // 해설 재생 중에는 정리 탭도 s43T 를 따라 돌고 펼쳐져요
       const sc = 4.4 / Math.max(M.R1, M.R2), cones = [{ nm: '아래 원뿔', R: M.R1, lat: M.lat1, col: 'sky' }, { nm: '위 원뿔', R: M.R2, lat: M.lat2, col: 'violet' }];
       const th = (c) => (360 * M.r) / c.R;
       const wd = (c) => 2 * c.R * sc * (th(c) >= 180 ? 1 : Math.sin((th(c) / 2) * DEG)), gap = 0.7;
@@ -312,19 +330,19 @@
       });
       void hot;
       if (thumb) return;
-      if (C.tab === 'explore' || (C.review && !s.lessonOn)) { if (u > 0.8) cones.forEach(c => D.areaLab(v3(c.cx, -c.rho * 0.5, 0), c.nm + ' 옆면', '', {size: 13})); return; }
+      if (C.tab === 'explore' || (C.review && !C.lesson)) { if (u > 0.8) cones.forEach(c => D.areaLab(v3(c.cx, -c.rho * 0.5, 0), c.nm + ' 옆면', '', {size: 13})); return; }
       const flatA = lin01(u, 0.8, 1), VIO = 'violet';
       cones.forEach((c, i) => {
         const apex = v3(c.cx, 0, 0), full = arcPts(c, th(c)), endL = full[0], midBot = v3(c.cx, -c.rho, 0), narrow = D.narrow;
         D.dim(apex, endL, narrow ? `${c.R}` : `모선 ${c.R}`, { from: midBot, off: 20, alpha: flatA });
-        D.areaLab(v3(c.cx, -c.rho * 0.5, 0), `${c.nm} 옆넓이`, plainVal(c.lat), { alpha: flatA, maxW: Math.max(60, c.rho * (D.b.k || 40) * 0.95) });
-        const kq = 30; D.edgeLab(full[kq], full[kq + 1], narrow ? `호 ${plainVal(V(0, 2 * M.r))}` : `호의 길이 ${plainVal(V(0, 2 * M.r))}`, { from: apex, color: VIO, alpha: flatA });
+        D.areaLab(v3(c.cx, -c.rho * 0.5, 0), `${c.nm} 옆넓이`, lessonValue(s, C, i === 0 ? 'svBaseReady' : 'svSideReady', plainVal(c.lat)), { alpha: flatA, maxW: Math.max(60, c.rho * (D.b.k || 40) * 0.95) });
+        const kq = 30, arc = lessonValue(s, C, 'svOtherReady', plainVal(V(0, 2 * M.r))); D.edgeLab(full[kq], full[kq + 1], narrow ? `호 ${arc}` : `호의 길이 ${arc}`, { from: apex, color: VIO, alpha: flatA });
       });
       G.sumRows(D, [[{ t: '겉넓이 = ' }, { t: '아래 원뿔의 옆넓이', c: 'sky' }, { t: ' + ' }, { t: '위 원뿔의 옆넓이', c: 'violet' }], [{ t: `= ${plainVal(M.lat1)} + ${plainVal(M.lat2)} = ${plainVal(M.surf)}` }]], flatA);
-      G.sumRows(D, [[{ t: `두 호의 길이 = 맞붙은 원의 둘레 ${plainVal(V(0, 2 * M.r))}`, c: VIO }], [{ t: '맞붙은 원은 겉에 드러나지 않아 밑면은 더하지 않아요', c: 'red' }]], flatA, true);
+      G.sumRows(D, [[{ t: `각 호의 길이 = 맞붙은 원의 둘레 ${lessonValue(s, C, 'svOtherReady', plainVal(V(0, 2 * M.r)))}`, c: VIO }], [{ t: '맞붙은 원은 겉에 드러나지 않아 밑면은 더하지 않아요', c: 'red' }]], flatA, true);
     };
     const draw = (b, s, M, C) => {
-      if (M.mode === 'surf' && !C.problem && ((C.review && !(s.lessonOn && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) return drawNet(b, s, M, C);
+      if (M.mode === 'surf' && !C.problem && ((C.review && !(C.lesson && C.t < 0.5)) || C.t >= 0.5 || b.thumb)) return drawNet(b, s, M, C);
       const sc = 4.6 / Math.max(M.h1 + M.h2, 2.2 * M.r), r = M.r * sc, h1 = M.h1 * sc, h2 = M.h2 * sc, D = scene3(b, s, C), st = C.step;
       const t = C.problem ? 0 : C.t, rotT = clamp(t / 0.5, 0, 1), sep = ease(lin01(t, 0.5, 0.8)) * (r * 2.6), flip = ease(lin01(t, 0.8, 1));
       const yy0 = -(h1 + h2) / 2, yMid = yy0 + h1;
@@ -354,8 +372,8 @@
         D.radius(lp(pa(0, yMid)), lp(pa(r, yMid)), `반지름 ${M.r}`, { end: true, color: 'amber' });
         D.radius(pa(0, yMid, ou), pa(r, yMid, ou), `반지름 ${M.r}`, { end: true, color: 'amber' });
                 if (!C.problem && M.mode === 'vol') {
-          D.areaLab(lp(v3(0, yy0 + h1 * 0.4, 0)), '아래 원뿔', plainVal(M.v1), { alpha: ease(lin01(t, 0.55, 0.9)), maxW: 0 });
-          D.areaLab(add3(v3(0, yMid + h2 * 0.4, 0), ou), '위 원뿔', plainVal(M.v2), { alpha: ease(lin01(t, 0.55, 0.9)), maxW: 0, color: 'violet' });
+          D.areaLab(lp(v3(0, yy0 + h1 * 0.4, 0)), '아래 원뿔', lessonValue(s, C, 'svBaseReady', plainVal(M.v1)), { alpha: ease(lin01(t, 0.55, 0.9)), maxW: 0 });
+          D.areaLab(add3(v3(0, yMid + h2 * 0.4, 0), ou), '위 원뿔', lessonValue(s, C, 'svSideReady', plainVal(M.v2)), { alpha: ease(lin01(t, 0.55, 0.9)), maxW: 0, color: 'violet' });
           G.sumRows(D, [[{ t: '부피 = ' }, { t: '아래 원뿔', c: 'sky' }, { t: ' + ' }, { t: '위 원뿔', c: 'violet' }], [{ t: `= ${plainVal(M.v1)} + ${plainVal(M.v2)} = ${plainVal(M.vol)}` }]], ease(lin01(t, 0.55, 0.9)));
         }
       } else {
@@ -414,7 +432,7 @@
 
   /* ================================================================ 조각 줄 전개도(원뿔 옆면 부채꼴 + 원기둥 옆면 직사각형 + 원): sv4-2(긴 밑변이 축)·sv4-4 */
   function compNet(b, s, C, o) {
-    const simple = o.simple && !(s.lessonOn && C.review); // 해설 재생 중 정리 탭: 값(넓이·길이)이 든 전개도 — 탐구·정리·문제 탭·썸네일은 그대로
+    const simple = o.simple && !(C.lesson && C.review); // 해설에서만 현재 자막에 맞춰 수치를 공개합니다.
     const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = C.review || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u), nar = b.W < 560;
     const { r, R, H, nCirc } = o, th = (360 * r) / R, gap = Math.max(1.4, r * 0.6);
     const secPts = (a) => { const out = []; for (let i = 0; i <= 48; i++) { const f = -90 - a / 2 + (a * i) / 48; out.push(v3(R * Math.cos(f * DEG), R * Math.sin(f * DEG), 0)); } return out; };
@@ -442,16 +460,17 @@
     if (simple) { if (u > 0.8) { D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆면', '', { size: 13 }); D.areaLab(v3(0, (ry0 + ry1) / 2, 0), '원기둥 옆면', '', { size: 13 }); cs.forEach(c => D.areaLab(o.hemi ? v3(c.x,c.y+r*0.45,0) : c, o.hemi ? '반구' : '밑면', '', { size: 13 })); } return; }
     const flatA = lin01(u, 0.8, 1), arcLen = plainVal(V(0, 2 * r)), kpx = b.k || 40, endL = arcAt(th)[0];
     D.dim(apex, endL, `모선 ${R}`, { from: v3(apex.x, apex.y - R, 0), off: 20, alpha: flatA });
-    D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆넓이', plainVal(o.coneLat), { alpha: flatA, maxW: Math.max(70, R * kpx * 0.9) });
+    D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆넓이', lessonValue(s, C, 'svSideReady', plainVal(o.coneLat)), { alpha: flatA, maxW: Math.max(70, R * kpx * 0.9) });
     const arcs = arcAt(th);
-    D.edgeLab(arcs[24], arcs[25], `호의 길이 ${arcLen}`, { from: apex, color: 'orange', alpha: flatA });
-    D.dim(v3(rx0, ry0, 0), v3(rx1, ry0, 0), `밑면의 둘레 ${arcLen}`, { side: { x: 0, y: -1 }, off: 18, color: 'orange', alpha: flatA });
+    D.edgeLab(arcs[24], arcs[25], `호의 길이 ${lessonValue(s, C, 'svOtherReady', arcLen)}`, { from: apex, color: 'orange', alpha: flatA });
+    D.dim(v3(rx0, ry0, 0), v3(rx1, ry0, 0), `밑면의 둘레 ${lessonValue(s, C, 'svOtherReady', arcLen)}`, { side: { x: 0, y: -1 }, off: 18, color: 'orange', alpha: flatA });
     D.dim(v3(rx1, ry0, 0), v3(rx1, ry1, 0), `높이 ${H}`, { side: { x: 1, y: 0 }, off: 18, color: 'amber', alpha: flatA });
-    D.areaLab(v3(0, (ry0 + ry1) / 2, 0), '원기둥 옆넓이', plainVal(o.cylLat), { alpha: flatA, maxW: Math.max(70, rect.w * kpx * 0.9) });
+    D.areaLab(v3(0, (ry0 + ry1) / 2, 0), '원기둥 옆넓이', lessonValue(s, C, 'svOtherReady', plainVal(o.cylLat)), { alpha: flatA, maxW: Math.max(70, rect.w * kpx * 0.9) });
     const each = plainVal(V(0, r * r));
-    cs.forEach((c) => D.areaLab(c, '원', each, { alpha: flatA }));
+    cs.forEach((c) => D.areaLab(o.hemi ? v3(c.x, c.y + r * 0.45, 0) : c, o.hemi ? '반구의 곡면' : '원', lessonValue(s, C, 'svBaseReady', o.hemi ? plainVal(o.circTot) : each), { alpha: flatA }));
     G.sumRows(D, [[{ t: '겉넓이 = ' }, { t: '원뿔 옆넓이', c: 'violet' }, { t: ' + ' }, { t: '원기둥 옆넓이', c: 'green' }, { t: ' + ' }, { t: o.circNm, c: 'sky' }], [{ t: `= ${plainVal(o.coneLat)} + ${plainVal(o.cylLat)} + ${plainVal(o.circTot)} = ${plainVal(o.tot)}` }]], flatA);
-    G.sumRows(D, o.legend, flatA, true);
+    const legend = C.lesson && (!s.svBaseReady || s.lessonEntry) ? o.legend.filter((_, i) => i !== 0) : o.legend;
+    G.sumRows(D, legend, flatA, true);
   }
 
   /* ================================================================ sv4-4 복합 (원뿔 + 원기둥 + 반구) */
@@ -530,7 +549,7 @@
       }
     };
     const draw = (b, s, M, C) => {
-      if (M.mode === 'surf' && !C.problem && ((C.review && !s.lessonOn) || C.t >= 1 || b.thumb)) return drawNet44(b, s, M, C);
+      if (M.mode === 'surf' && !C.problem && ((C.review && !C.lesson) || C.t >= 1 || b.thumb)) return drawNet44(b, s, M, C);
       if (M.mode === 'surf' && !C.problem && C.t > 0.5) return drawUnfold44(b, s, M, C);
       const sc = 5.4 / (M.r + M.H + M.hc), r = M.r * sc, H = M.H * sc, hc = M.hc * sc, D = scene3(b, s, C), st = C.step;
       const t = C.problem ? 0 : C.t, sep = ease(lin01(t, 0, 0.5)) * (r * 2.4), flipE = ease(lin01(t, 0.5, 1)), yB = -(r + H + hc) / 2;
@@ -568,9 +587,9 @@
       D.radius(lp(pa(0, yH, 0)), lp(pa(r, yH, 0)), `반지름 ${M.r}`, { end: true });
       if (!C.problem && dx > r * 0.5) {
         const sv = M.mode === 'vol', hy = flipE > 0.5 ? { dy: r * b.k * Math.abs(D.cam.sp) + 22 } : { dy: 22 }; // 뒤집힌 반구는 밑면 아래 바깥에
-        D.areaLab(flipE > 0.5 ? lp(pa(0, yH, 0)) : lp(pa(0, yB + r * 0.5, 0)), sv ? '반구' : '반구의 곡면', plainVal(sv ? M.vh : M.hemi), hy);
-        D.areaLab(pa(0, (yH + yC) / 2, dx), sv ? '원기둥' : '원기둥 옆넓이', plainVal(sv ? M.vc : M.cylLat), { maxW: sv ? 0 : r * b.k * 1.6 });
-        D.areaLab(pa(0, yC + hc * 0.12, 2 * dx), sv ? '원뿔' : '원뿔 옆넓이', plainVal(sv ? M.vk : M.coneLat), { dy: 12, maxW: sv ? 0 : r * b.k * 1.2 });
+        D.areaLab(flipE > 0.5 ? lp(pa(0, yH, 0)) : lp(pa(0, yB + r * 0.5, 0)), sv ? '반구' : '반구의 곡면', lessonValue(s, C, 'svBaseReady', plainVal(sv ? M.vh : M.hemi)), hy);
+        D.areaLab(pa(0, (yH + yC) / 2, dx), sv ? '원기둥' : '원기둥 옆넓이', lessonValue(s, C, 'svOtherReady', plainVal(sv ? M.vc : M.cylLat)), { maxW: sv ? 0 : r * b.k * 1.6 });
+        D.areaLab(pa(0, yC + hc * 0.12, 2 * dx), sv ? '원뿔' : '원뿔 옆넓이', lessonValue(s, C, 'svSideReady', plainVal(sv ? M.vk : M.coneLat)), { dy: 12, maxW: sv ? 0 : r * b.k * 1.2 });
         if (sv) G.sumRows(D, [[{ t: '부피 = ' }, { t: '반구', c: 'sky' }, { t: ' + ' }, { t: '원기둥', c: 'green' }, { t: ' + ' }, { t: '원뿔', c: 'violet' }], [{ t: `= ${plainVal(M.vh)} + ${plainVal(M.vc)} + ${plainVal(M.vk)} = ${plainVal(M.vol)}` }]], ease(lin01(dx / (r * 2.4), 0.3, 0.7)));
       }
     };

@@ -20,13 +20,29 @@ function draw(bd,s,M,Ctx){
  const sp=src.P;src.P=p=>{const q=sp(p);return{x:q.x,y:q.y+sy};};if(pair){src.body({mesh:xfMesh(mesh,shiftT(sourceOffset)),fill:'sky',alpha:.04,edge:'ink',edgeW:2});
  const cp=src.P(G.add3(A,sourceOffset));bd.text({x:cp.x,y:sourceBox.y1+sy+1.0},'원래 입체',{size:src.fs(13),color:'ink',weight:700});}
  const f=frame(e),D=scene3(bd,s,Ctx,{yaw:yaw*(1-e),pitch:pitch*(1-e)}),dp=D.P;D.P=p=>{const q=dp(p);return{x:q.x-f.cx,y:q.y-f.cy};};
- if(!M.vol){G.netDraw(D,net,f.T,pc=>({fill:pc.tag==='side'?'green':'sky',alpha:.07,edge:'ink',ew:2}));if(e>.99){net.pieces.forEach((piece,k)=>{if(bd.W<1000&&k>0&&k<4)return;const p=D.P(applyT(f.T[k],centroid(piece.pts)));bd.text(p,['아랫면','옆면','옆면','옆면','윗면'][k],{size:D.fs(12),color:'ink',weight:700});});const aa=applyT(f.T[0],A),bb=applyT(f.T[0],B),cc=applyT(f.T[0],C);D.right(aa,sub3(bb,aa),sub3(cc,aa),.5,'ink');}}
+ if(!M.vol){G.netDraw(D,net,f.T,pc=>({fill:pc.tag==='side'?'green':'sky',alpha:(s.lessonOn&&((Ctx.step===1&&pc.tag!=='side')||(Ctx.step===2&&pc.tag==='side')))?.18:.07,edge:'ink',ew:2}));if(e>.99){net.pieces.forEach((piece,k)=>{if(bd.W<1000&&k>0&&k<4)return;const p=D.P(applyT(f.T[k],centroid(piece.pts))),nm=['아랫면','옆면','옆면','옆면','윗면'][k],val=s.lessonOn&&s.svBaseReady?(k===0?' 24':k===4?' 6':''):'';bd.text(p,nm+val,{size:D.fs(12),color:'ink',weight:700});});const aa=applyT(f.T[0],A),bb=applyT(f.T[0],B),cc=applyT(f.T[0],C);D.right(aa,sub3(bb,aa),sub3(cc,aa),.5,'ink');}
+   if(s.lessonOn||s.lessonEntry){
+     const aa=applyT(f.T[0],A),bb=applyT(f.T[0],B),cc=applyT(f.T[0],C),out=applyT(f.T[0],centroid(faces[0]));
+     D.edgeLab(aa,bb,'6',{from:out,color:'ink'});D.edgeLab(aa,cc,'8',{from:out,color:'ink'});
+     if(s.svShowV)G.sumRows(D,[[{t:'겉넓이 = 24 + 6 + 85.5 = 115.5 cm²',c:'green'}]],1);
+     else if(s.svSideReady)G.sumRows(D,[[{t:'옆넓이 = 114 − 28.5 = 85.5 cm²',c:'green'}]],1);
+     else if(s.svOtherReady)G.sumRows(D,[[{t:'큰 뿔 옆넓이 114 − 작은 뿔 옆넓이 28.5',c:'green'}]],1);
+   }
+ }
  else {
    // 같은 모양의 큰 삼각뿔에서 닮음비 1:2인 작은 삼각뿔을 빼는 비교도입니다.
    const apex=v3(0,9,0),small=polyMesh([[a,c,b],[a,b,apex],[b,c,apex],[c,a,apex]].map(p=>({pts:p})),v3(.75,5.625,1));
    const shift=D.hx(7*ease(Ctx.problem?0:Ctx.t));
    D.body({mesh,fill:'green',alpha:.07,edge:'ink',edgeW:2});
    D.body({mesh:xfMesh(small,shiftT(shift)),fill:'sky',alpha:.06,edge:'ink',edgeW:1.8});
+   if(s.lessonOn||s.lessonEntry){
+     const move=p=>G.add3(p,shift);
+     if(Ctx.step<=1){D.height(A,apex,'높이 9',{side:{x:-1,y:0},color:'ink'});D.edgeLab(A,B,'6',{from:centre});D.edgeLab(A,C,'8',{from:centre});D.areaLab(centroid(faces[0]),'밑넓이','24',{color:'green'});}
+     if(s.svSideReady){D.height(move(a),move(apex),'높이 4.5',{side:{x:1,y:0},color:'ink'});D.areaLab(move(centroid([a,b,c])),'밑넓이','6',{color:'sky'});}
+     if(s.svShowV)G.sumRows(D,[[{t:'뿔대의 부피 = 72 − 9 = 63 cm³',c:'green'}]],1);
+     else if(s.svOtherReady)G.sumRows(D,[[{t:'작은 뿔의 부피 = 6 × 4.5 ÷ 3 = 9 cm³',c:'sky'}]],1);
+     else if(s.svBaseReady)G.sumRows(D,[[{t:'큰 뿔의 부피 = 24 × 9 ÷ 3 = 72 cm³',c:'green'}]],1);
+   }
  }
  const nx=-W/2;if(pair&&nx-sourceBox.x1>.3)src.arrow({x:sourceBox.x1+.1,y:-H/2-.35},{x:nx-.1,y:-H/2-.35},'muted',1.4);
 }
