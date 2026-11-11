@@ -1280,7 +1280,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 대표 2명을 첫째, 둘째 순서로 나열한 나뭇가지 그림의 일부이다. 첫째가 A이면 둘째는 B, C, D, E의 네 가지이고, 첫째가 B이면 둘째는 A, C, D, E의 네 가지이며, 첫째 A 둘째 B인 경로와 첫째 B 둘째 A인 경로는 같은 파란색으로 표시해 같은 짝임을 보인다.",
+    "solutionImageCaption": "회장과 부회장은 자리가 달라 순서를 구별하므로 회장 5명 중 1명, 부회장 남은 4명 중 1명을 뽑는 5곱하기 4로 a=20이다. 대표 2명은 순서를 구별하지 않으므로, 순서대로 나열하면 A, B와 B, A처럼 같은 짝이 두 번씩 나온다(그림의 파란색 두 경로). 그림은 첫째가 A, B인 경우만 보인 일부이다. 따라서 b는 5곱하기 4를 2로 나눈 10이다. 정답은 ② 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
