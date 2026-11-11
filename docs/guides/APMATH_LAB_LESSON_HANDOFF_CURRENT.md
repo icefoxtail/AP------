@@ -89,8 +89,9 @@
 | `geom-space` 공간도형 3D | 9 | 9 / 35 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1845](https://github.com/icefoxtail/AP------/pull/1845), merge `c1a4cd3645a03d99da1cf001866c3e1ae83adfb2`. 원문 목표13·탐구개념22. 최소73/73(수학24·runtime8·공통video41),606개 실제 3D/canvas cue 상태·validator 오류/경고0 |
 | `geom-projection` | 7장면·23해설(원문/등록 유형13·개념10) | MAIN_MERGED / QA_PENDING · PR #1846 · `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6` · 최소70/70·native362상태·validator0/0·구문8단위·47입력SHA 동일 · PAGES_NOT_VERIFIED |
 | `geom-space-coord` | 8장면·32해설(원문14·개념18) | MAIN_MERGED / QA_PENDING · PR #1847 · `11ae10ffd34aaec8f8bd7d5fab8f5439bcad0f36` · 최소74/74·native547상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
-| `geom-vector-ops` | 12장면·54해설(원문/등록유형28·개념26) | IMPLEMENTED / QA_PENDING · `feat/lessons-geom-vector-ops` · 최소64/64(수학15·native8·공통41)·native849상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
-| 고등 잔여 5개 | `geom-vector-dot`(7), `geom-vector-figure`(6), `prob-counting`(5), `prob-probability`(5), `prob-stats`(7) | 위 벡터 연산 main 병합 후 차례로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
+| `geom-vector-ops` | 12장면·54해설(원문/등록유형28·개념26) | MAIN_MERGED / QA_PENDING · PR #1848 · `0739b7dad9d823fe858549d7c71d0d687c3cd0d9` · 최소64/64·native849상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
+| `geom-vector-dot` | 7장면·36해설(원문15·개념21) | IMPLEMENTED / QA_PENDING · `feat/lessons-geom-vector-dot` · 최소71/71(수학8·native8·공통55)·native566상태·validator0/0·구문8단위·46입력SHA 동일 · PAGES_NOT_VERIFIED |
+| 고등 잔여 4개 | `geom-vector-figure`(6), `prob-counting`(5), `prob-probability`(5), `prob-stats`(7) | 위 벡터 내적 main 병합 후 차례로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -280,6 +281,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 벡터의 성분·내적 `geom-vector-dot` 실제7장면·36해설 구현(원문15+개념21, 장면별4/4/4/4/7/8/5). 성분 평행/수직/최소, 내적 자취, 원점 최대/최소, 부채꼴 두 극값의 합/차를 실제 등록 패킷으로 연결. 영벡터가 θ=90°로 표시되던 기존 m2 native 각 호·수치·하단띠를 각 미정으로 국소 수정. 해설 전용 prefix 및 native fit 초기화로 원래 조작·변형·배율과 반복 재생 보존. 최소71/71(독립수학8+native8+공통55), 566실제 Board/canvas 상태, validator0/0, JS6+inline2 구문, diff/clean 확인. 원문 변형6+5+6+5·성분17·자취48·부채꼴192 조합 검산. 최신main0739b7 반영 뒤46입력 SHA 동일. 전체 브라우저/모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 벡터 연산 PR #1848 main `0739b7dad9d823fe858549d7c71d0d687c3cd0d9`, 원격 feature `e9d4bec78aab91182e2aa3cdc7d68913e45084cc` exact readback 완료. 누적49실험실/935장면/2,725해설. AWCR r75 원격 raw SHA `cf98f3171e8572a31093080fffc1233b865fca1be98b2330981774122db754b2`, readback VERIFIED.
 
 - 2026-11-12 벡터의 덧셈과 뺄셈 `geom-vector-ops` 12장면·54해설 구현(실제 원문/등록유형28+개념26). 중점·외심/무게중심/수심·차벡터·자취·계수영역·두 원 극값·가중넓이·정육각형·이동하는 원의 원래 도형을 사용. 서로 다른 목표별 버튼, 정답 마지막 단계 공개, 기본1.5배속 공통 Player 유지. native state는 lvoN_/lvoS_ 트랙에서 그리기 snapshot으로만 적용하고 모듈 state/BD/VM 및 vary 객체를 복원. 최소64/64(수학15+native8+공통41), actual shell stackScene 복제/실제 Player 중단·완료·외부state·원래 드래그/변형 보존, 849개 cue/중간 native 상태, validator0/0, 구문8단위, diff 확인. 16개 선택 입력 SHA manifest 보존(전체 전이 입력 목록을 주장하지 않음). 브라우저/전수 모바일/독립 시각검수 NOT_RUN; PAGES_NOT_VERIFIED.
 
