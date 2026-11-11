@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          null,
+          "3"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "3",
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "functionName": "f",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "약분한 가지 y=x+3은 x=3에서 열린 끝이며, 원래 함수는 같은 자리 (3,6)에 채운 값을 갖는다. 연속 조건에서 a=-9, b=6이므로 |a+b|=3이다.",
+  "sourceQuote": "$x=3$에서 연속이 되도록 하는 상수 $a,b$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≠3에서 f(x)=x+3",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원래 함수값 f(3)=6",
+      "mappedTo": [
+        "graphPlan.jumpValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "약분된 식의 빠진 점과 원래 함수의 연속 보완값이 동일 좌표 (3,6)에 놓임."
+  ]
+}

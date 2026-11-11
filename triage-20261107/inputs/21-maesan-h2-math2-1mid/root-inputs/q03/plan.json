@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "3"
+      ]
+    },
+    "formula": "x^2+2*x+3",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 18
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "닫힌구간 [-1,3]에서 f(x)=(x+1)²+2의 최솟값은 2, 최댓값은 18이므로 정답은 20이다.",
+  "sourceQuote": "닫힌구간 $[-1,3]$에서 함수",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x²+2x+3 on [-1,3]",
+      "mappedTo": [
+        "graphPlan.pieces[0]",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(-1)=2 and f(3)=18",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌구간의 양 끝점과 최솟값·최댓값 관계."
+  ],
+  "coordinatePlacement": "PANEL"
+}

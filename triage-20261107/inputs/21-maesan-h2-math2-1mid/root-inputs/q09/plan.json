@@ -1,0 +1,64 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      8,
+      0,
+      12
+    ],
+    "curves": [
+      {
+        "id": "lower",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "1/10",
+          "8"
+        ],
+        "label": "y=x+1"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "1/10",
+          "8"
+        ],
+        "label": "y=x+3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "양수 x에서의 비교 경계 y=x+1과 y=x+3만 나타냈으며, 원문에서 정해지지 않은 f(x)는 그리지 않았다. 경계식을 비교해 구한 극한값은 1이다.",
+  "sourceQuote": "$x+1<f(x)<x+3$을 만족할 때",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "for every x>0, x+1<f(x)<x+3",
+      "mappedTo": [
+        "graphPlan.curves[0]",
+        "graphPlan.curves[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f itself is unspecified",
+      "mappedTo": []
+    }
+  ],
+  "newVisualInformation": [
+    "두 경계선 사이에 놓이는 범위만 나타내고 f의 구체적 그래프는 만들지 않음."
+  ]
+}

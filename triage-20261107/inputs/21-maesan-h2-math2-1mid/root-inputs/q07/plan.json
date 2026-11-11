@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "abs(x^2-1)",
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "left",
+        "slope": "-2",
+        "intercept": "2",
+        "intersectionX": [
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "id": "right",
+        "slope": "2",
+        "intercept": "-2",
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "id": "C",
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        1
+      ],
+      "y": [
+        0,
+        1
+      ]
+    }
+  },
+  "caption": "f(x)=|x²−1|의 x=1에서 좌우 접선 기울기는 각각 −2와 2로 달라 정답은 ②이다.",
+  "sourceQuote": "$f(x)=|x^2-1|$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=|x²−1|",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x=1의 좌우 기울기는 −2와 2",
+      "mappedTo": [
+        "graphPlan.referenceLines[0]",
+        "graphPlan.referenceLines[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 그래프의 꺾임점 x=1과 양쪽 접선 방향."
+  ],
+  "coordinatePlacement": "PANEL"
+}

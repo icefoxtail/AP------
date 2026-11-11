@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          null,
+          "-1"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "0"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "0"
+      }
+    ],
+    "limitArrows": [
+      {
+        "at": "-1",
+        "side": "LEFT",
+        "toY": "-1"
+      },
+      {
+        "at": "-1",
+        "side": "RIGHT",
+        "toY": "1"
+      }
+    ],
+    "functionName": "f",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "원문 그래프의 가지와 x=−1의 열린 점·채운 점을 보존했다. 좌우 극한은 −1과 1, 함수값은 0이므로 정답은 ③이다.",
+  "sourceQuote": "왼쪽 가지는 열린 점 $(-1,-1)$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "at x=−1, left approach (−1,−1), right approach (−1,1), filled value (−1,0)",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.jumpValues",
+        "graphPlan.limitArrows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "piece coefficients encode only the pictured trace; they are not formulas stated in the item",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x=−1에서의 양쪽 접근값과 실제 함수값의 차이."
+  ]
+}

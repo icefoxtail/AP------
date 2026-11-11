@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "sec",
+        "slope": "-3",
+        "intercept": "4",
+        "intersectionX": [
+          "-1",
+          "4"
+        ]
+      },
+      {
+        "id": "tan",
+        "slope": "-3",
+        "intercept": "-9/4",
+        "intersectionX": [
+          "3/2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 7
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": -8
+      },
+      {
+        "id": "T",
+        "x": 1.5,
+        "y": -6.75
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": -9
+      }
+    ],
+    "exactCoordinates": {
+      "T": [
+        "3/2",
+        "-27/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "할선의 기울기와 평행한 접선은 x=3/2에서 생기므로 a=3/2이다.",
+  "sourceQuote": "평균변화율과 $x=a$에서의 미분계수가 같을 때",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x²−6x and secant endpoints (−1,7),(4,−8)",
+      "mappedTo": [
+        "graphPlan.pieces[0]",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "secant slope −3 and tangent at x=3/2",
+      "mappedTo": [
+        "graphPlan.referenceLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝점을 잇는 할선과 기울기가 같은 접선의 접점."
+  ],
+  "coordinatePlacement": "PANEL"
+}

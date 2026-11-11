@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "5",
+        "intercept": "0",
+        "intersectionX": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 1,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "곡선 y=x³+2x+2와 점 (1,5)에서 기울기 5인 접선을 나타낸다.",
+  "sourceQuote": "점 $(1,5)$에서의 접선의 기울기를 구하면?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=x³+2x+2와 접점 (1,5)",
+      "mappedTo": [
+        "graphPlan.pieces[0]",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "접선의 기울기는 5",
+      "mappedTo": [
+        "graphPlan.referenceLines[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 y=5x가 (1,5)에서 곡선에 접한다."
+  ],
+  "coordinatePlacement": "PANEL"
+}

@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bO",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bP",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "O",
+          "P",
+          "Q"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bO",
+          "bP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sideOP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "sideOP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cI",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "I",
+          "T"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineT",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineDiag",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "I",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sQO",
+      "refs": [
+        "Q",
+        "O"
+      ]
+    },
+    {
+      "id": "sIT",
+      "refs": [
+        "I",
+        "T"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cI"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rad",
+        "ownerSegment": "sIT",
+        "text": "1"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "axisTickValues": {
+    "x": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "y": [
+      1,
+      2,
+      3
+    ]
+  },
+  "caption": "예: t=3일 때 O=(0,0), P=(0,3), Q=(4,3), 내심 I=(1,2), 내접원 반지름 1인 삼각형을 그렸다. 이 예시는 일반 t의 답을 대신하지 않으며, 일반 극한값은 1+√2이다.",
+  "sourceQuote": "직선 $y=t$와 $y=x-1$의 교점은",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "general O=(0,0), P=(0,t), Q=(t+1,t); only the explicitly labelled sample t=3 is drawn",
+      "mappedTo": [
+        "mathPlan.nodes.P",
+        "mathPlan.nodes.Q",
+        "mathPlan.nodes.lineT",
+        "mathPlan.nodes.lineDiag"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "incenter from two internal angle bisectors",
+      "mappedTo": [
+        "mathPlan.nodes.bO",
+        "mathPlan.nodes.bP",
+        "mathPlan.nodes.I"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "radius from perpendicular distance from I to OP",
+      "mappedTo": [
+        "mathPlan.nodes.T",
+        "mathPlan.nodes.cI"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "t=3 예시에서 원문의 두 직선, 삼각형, 내심, 반지름을 함께 나타내고 일반 매개변수 결과와 구별."
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [
+    "lineT",
+    "lineDiag"
+  ]
+}

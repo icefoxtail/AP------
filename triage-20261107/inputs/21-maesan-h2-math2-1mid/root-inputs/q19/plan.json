@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-12",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "12",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "C",
+        "x": 0,
+        "y": 6
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        0,
+        1
+      ],
+      "y": [
+        6
+      ]
+    },
+    "axisVariable": "t"
+  },
+  "caption": "해설에서 얻은 g(t)=t²+12|t|+6은 t=0에서 연속이지만 좌우 미분계수는 −12와 12이다. 이 조건을 h에 적용하면 a=0이므로 정답은 0이다.",
+  "sourceQuote": "t^2+12|t|+6$이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g(t)=t²−12t+6 for t<0 and t²+12t+6 for t≥0",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "one-sided slopes at t=0 are −12 and 12",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "t=0에서 공통 함수값과 서로 다른 좌우 기울기."
+  ]
+}

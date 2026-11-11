@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-24",
+          "20",
+          "-4"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-4*x^2+20*x-24",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": 1
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "5/2",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        2,
+        3
+      ],
+      "y": [
+        0,
+        1
+      ]
+    }
+  },
+  "caption": "f(x)=−4(x−2)(x−3)의 근은 2와 3이며, x=2에서 미분계수는 4이다. 구하는 극한값은 −8이다.",
+  "sourceQuote": "$f(x)=-4(x-2)(x-3)$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=−4(x−2)(x−3)",
+      "mappedTo": [
+        "graphPlan.pieces[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "zeros at x=2,3",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근과 꼭짓점 위치."
+  ],
+  "coordinatePlacement": "PANEL"
+}
