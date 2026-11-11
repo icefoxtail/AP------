@@ -226,7 +226,7 @@
   {
     const id = 'r8-1', qs = Object.fromEntries(['ag', 's', 'c', 't'].map(kind => [kind, fixed(id, q => q.fig.kind === kind)]));
     lessons[id] = [
-      concept(id, qs.ag, '두 번의 정리', '직육면체 대각선의 원리', '$AG=\\sqrt{a^2+b^2+c^2}$', [
+      concept(id, qs.ag, '대각선 원리', '직육면체 대각선의 원리', '$AG=\\sqrt{a^2+b^2+c^2}$', [
         ch('밑면과 높이 구별', '가로 AB=a, 세로 BC=b, 높이 CG=c라 해요.', '먼저 직사각형 밑면의 대각선 AC를 그어요.', 0, 1),
         ch('두 직각삼각형 연결', '$AC^2=a^2+b^2$이고 CG는 밑면에 수직이에요.', '$AG^2=AC^2+CG^2$에 앞의 식을 넣어요.'),
         ch('세 제곱의 합', '$AG^2=a^2+b^2+c^2$에서 길이는 양수예요.', '따라서 $AG=\\sqrt{a^2+b^2+c^2}$예요.', 4, 5)
@@ -276,6 +276,60 @@
         ch('무게중심까지의 거리', `$AO=\\frac23\\times\\frac{\\sqrt3}{2}\\times${f.a0}=${f.work.R}$예요.`, kind === 'cos' ? '모서리와 밑면의 각 x는 DAO이고 빗변은 DA예요.' : `$DO^2=${f.a0}^2-(${f.work.R})^2$예요.`, 2, 3),
         ch('구하는 값에 맞게 계산', kind === 'h' ? '수직 높이 DO는 앞에서 구한 제곱의 양의 제곱근이에요.' : kind === 'V' ? `$V=\\frac13\\times\\frac{\\sqrt3}{4}\\times${f.a0}^2\\times${f.work.h}$예요.` : `$\\cos x=\\frac{AO}{DA}=\\frac{${f.work.R}}{${f.a0}}$예요.`, ending(q, symbol), 4, 5)
       ]); })
+    ];
+  }
+
+  function squareValues(f) {
+    const S = G.vsub(G.vsub(G.vsub(G.vi(f.s0 * f.s0), G.vi(f.s0 * f.f, 2)), G.vi(f.s0 * f.u, 2)), G.vi((f.s0 - f.u) * (f.s0 - f.f), 2));
+    const BE = G.vsqrt(G.vi(f.s0 * f.s0 + f.u * f.u)), BF = G.vsqrt(G.vi(f.s0 * f.s0 + f.f * f.f));
+    const sn = G.vdiv(G.vmul(G.vi(2), S), G.vmul(BE, BF)), cs = G.vsqrt(G.vsub(G.vi(1), G.vpow2(sn)));
+    return { S, BE, BF, sn, cs };
+  }
+  {
+    const id = 'r9-1', qs = [true, false].flatMap(midpoint => ['s', 'c', 't'].map(fn => fixed(id, q => q.fig.mid2 === midpoint && q.solution.math.fn === fn && (midpoint || q.fig.u !== q.fig.s0 / 2 || q.fig.f !== q.fig.s0 / 2))));
+    lessons[id] = [
+      concept(id, qs[0], '넓이·sin', '넓이로 각의 사인 구하기', '$\\sin x=\\frac{2[BEF]}{BE\\cdot BF}$', [
+        ch('정사각형 속 삼각형', '정사각형 안에서 B, E, F를 이은 삼각형을 찾아요.', '구하려는 각 x는 BE와 BF 사이의 각이에요.', 0, 1),
+        ch('바깥 넓이를 빼기', '정사각형에서 ABF, BCE, DEF의 넓이를 빼요.', '남은 넓이가 삼각형 BEF의 넓이예요.'),
+        ch('넓이식에서 사인 찾기', '$[BEF]=\\frac12BE\\cdot BF\\sin x$로 같게 놓아요.', '따라서 $\\sin x=\\frac{2[BEF]}{BE\\cdot BF}$예요.', 4, 5)
+      ], '정사각형에서 세 직각삼각형을 뺀 넓이로 각 EBF의 사인을 설명해 보세요.'),
+      ...qs.map(q => {
+        const f = q.fig, fn = q.solution.math.fn, M = squareValues(f), symbol = { s: '\\sin x', c: '\\cos x', t: '\\tan x' }[fn];
+        const chapters = [
+          ch('두 점의 위치와 기준각', `정사각형의 한 변은 ${f.s0}이고 기준각은 EBF예요.`, f.mid2 ? `E, F가 중점이므로 CE=AF=${f.s0 / 2}예요.` : `주어진 길이는 CE=${f.u}, AF=${f.f}예요.`, 0, 1),
+          ch('세 직각삼각형을 빼기', `바깥 넓이는 ABF=${f.work.abf}, BCE=${f.work.bce}, DEF=${f.work.def}예요.`, `$[BEF]=${f.s0}^2-${f.work.abf}-${f.work.bce}-${f.work.def}=${G.vtex(M.S)}$예요.`, 2, 2),
+          ch('각 양쪽의 변 구하기', `$BE=\\sqrt{${f.s0}^2+${f.u}^2}=${G.vtex(M.BE)}$, $BF=${G.vtex(M.BF)}$예요.`, '$[BEF]=\\frac12BE\\cdot BF\\sin x$로 넓이와 연결해요.', 3, 3)
+        ];
+        if (fn !== 's') chapters.push(ch('사인에서 구하는 비로', `$\\sin x=\\frac{2[BEF]}{BE\\cdot BF}=${G.vtex(M.sn)}$예요.`, '각 x는 예각이므로 $\\cos x=\\sqrt{1-\\sin^2x}$예요.', 3, 4));
+        chapters.push(ch('구하는 삼각비 계산', fn === 's' ? `$\\sin x=\\frac{2\\times${G.vtex(M.S)}}{${G.vtex(M.BE)}\\times${G.vtex(M.BF)}}$를 계산해요.` : fn === 'c' ? `$\\cos x=\\sqrt{1-(${G.vtex(M.sn)})^2}$를 계산해요.` : `$\\cos x=${G.vtex(M.cs)}$이므로 $\\tan x=\\sin x/\\cos x$예요.`, ending(q, symbol), 4, 5));
+        return make(id, q, (f.mid2 ? '중점 ' : '일반 ') + { s: 'sin', c: 'cos', t: 'tan' }[fn], '정사각형 속 삼각비 계산', symbol, chapters);
+      })
+    ];
+  }
+  function foldMotion() {
+    const chapter = ch('접은 도형과 원래 도형', 'AE를 축으로 접어 B가 대각선 AC 위에 오게 해요.', '접기 전후 두 삼각형은 합동이고 대응각이 같아요.', 1, 2);
+    Object.assign(chapter.cues[0], { to: { t86k: 1 }, dur: 4 }); delete chapter.cues[0].step;
+    return chapter;
+  }
+  {
+    const id = 'r9-2', qs = Object.fromEntries(['be', 'ae', 'ec', 'S'].map(kind => [kind, fixed(id, q => q.fig.kind === kind)])), q = qs.be;
+    lessons[id] = [
+      concept(id, q, '접은 각', '접는 선이 각을 이등분', '$\\angle BAE=30^\\circ$', [
+        ch('직사각형의 두 변', `AB=${q.fig.w}, BC=$${q.fig.L.bc}$인 직사각형이에요.`, '$\\tan\\angle BAC=\\sqrt3$이므로 각 BAC는 60°예요.', 0, 1),
+        foldMotion(),
+        ch('이등분한 각의 크기', 'AE는 각 BAB′를 같은 두 각으로 나누어요.', '따라서 $\\angle BAE=60^\\circ/2=30^\\circ$예요.', 3, 5)
+      ], 'B가 대각선 AC 위에 오도록 AE를 접는 선으로 접을 때 각 BAE를 구해 보세요.'),
+      ...['be', 'ae', 'ec', 'S'].map(kind => {
+        const q = qs[kind], f = q.fig, symbol = kind === 'S' ? '[AEC]' : kind.toUpperCase();
+        const chapters = [
+          ch('길이와 접는 조건', `AB=${f.w}, BC=$${f.L.bc}$이고 B가 AC 위로 옮겨져요.`, '$\\tan\\angle BAC=\\sqrt3$이므로 각 BAC는 60°예요.', 0, 1),
+          foldMotion(),
+          ch('30° 직각삼각형 활용', '합동인 두 각은 30°씩이고 ABE에서 B가 직각이에요.', kind === 'ae' ? `$\\cos30^\\circ=AB/AE=${f.w}/AE$예요.` : `$BE=${f.w}\\tan30^\\circ$예요.`, 2, 3)
+        ];
+        if (kind === 'S') chapters.push(ch('밑변 EC 구하기', `$BE=${f.work.be}$이므로 $EC=BC-BE=${f.work.ec}$예요.`, 'AEC의 밑변은 EC이고 그 직선에 수직인 높이는 AB예요.', 3, 4));
+        chapters.push(ch('구하는 길이 또는 넓이', kind === 'be' ? `$BE=${f.w}\\times\\frac{\\sqrt3}{3}$를 계산해요.` : kind === 'ae' ? `$AE=${f.w}\\div\\frac{\\sqrt3}{2}$를 계산해요.` : kind === 'ec' ? `$EC=${f.L.bc}-${f.work.be}$를 계산해요.` : `$[AEC]=\\frac12\\times${f.work.ec}\\times${f.w}$를 계산해요.`, ending(q, symbol), 4, 5));
+        return make(id, q, { be: 'BE 계산', ae: 'AE 계산', ec: 'EC 계산', S: '넓이 계산' }[kind], '종이접기의 각과 길이 활용', symbol, chapters);
+      })
     ];
   }
 

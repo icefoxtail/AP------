@@ -193,5 +193,105 @@
   for (const kind of ['legs', 'hyp']) for (const fn of ['s', 'c', 't']) problem('r1-4', `${kind === 'legs' ? '두 변' : '빗변'}${fnName[fn]}`,
     q => q.key.split('|')[1] === kind && q.solution.math.fn === fn, ratioCaptions);
 
-  // GROUP_A_REMAINING
+  // ② 특수각 — 반 자르기, 모든 주어진 변/구할 변 유형과 식의 구조.
+  concept('cut3060', '반 자르기', '$1:\\sqrt3:2$', [
+    '한 변 6인 정삼각형을 높이 AH로 나누어요.', '밑변도 반으로 나뉘므로 BH는 3이에요.',
+    '직각삼각형 ABH의 빗변 AB는 6이에요.', '$AH=\\sqrt{6^2-3^2}=3\\sqrt3$예요.',
+    '세 길이 3, 3√3, 6을 모두 3으로 나누어요.', '짧은 변:긴 변:빗변은 $1:\\sqrt3:2$예요.'
+  ], { question: '정삼각형을 높이로 반으로 자르면 30°·60°·90° 삼각형의 세 변의 비는?', motion: { t2s: 1 } });
+  function specialCaptions(q, m) {
+    const r = G.RATIO[m.theta], order = ['a', 'b', 'c'], g = q.fig.side[m.givenSide].t;
+    const rg = tex(r[order.indexOf(m.givenSide)]), ra = tex(r[order.indexOf(m.askedSide)]);
+    return [`기준각은 ${m.theta}°이고 주어진 ${role[m.givenSide]}은 $${g}$예요.`, `구하는 x는 기준각의 ${role[m.askedSide]}이에요.`,
+      `대변:이웃변:빗변은 $${r.map(tex).join(':')}$예요.`, `$k=${frac(g, rg)}$로 공통 배율을 구해요.`,
+      `$x=${frac(g, rg)}\\times${ra}$를 계산해요.`];
+  }
+  const sidePairs = [['a', 'b'], ['a', 'c'], ['b', 'a'], ['b', 'c'], ['c', 'a'], ['c', 'b']];
+  sidePairs.forEach(([g, a], i) => problem('cut3060', `${g}→${a}`, q => { const m = q.solution.math; return m.givenSide === g && m.askedSide === a && m.theta === (i % 2 ? 60 : 30); }, specialCaptions));
+  concept('cut45', '대각선 절단', '$1:1:\\sqrt2$', [
+    '한 변 5인 정사각형을 대각선 BD로 잘라요.', '각 조각에는 길이 5인 두 변과 직각이 있어요.',
+    '두 예각이 같아서 각각 45°예요.', '$BD=\\sqrt{5^2+5^2}=5\\sqrt2$예요.',
+    '세 변 5, 5, 5√2를 모두 5로 나누어요.', '따라서 세 변의 비는 $1:1:\\sqrt2$예요.'
+  ], { question: '정사각형의 대각선이 만든 45° 직각삼각형의 세 변의 비를 구해 보세요.', motion: { t2s: 1 } });
+  for (const [g, a] of [['a', 'c'], ['b', 'c'], ['c', 'a'], ['c', 'b']]) problem('cut45', `${g}→${a}`,
+    q => q.solution.math.givenSide === g && q.solution.math.askedSide === a, specialCaptions);
+  concept('chainSpecial', '공통 높이', '$BC=4+4\\sqrt3$', [
+    '공통 높이는 AH=4, 밑각은 45°와 30°예요.', '두 직각삼각형을 높이 AH로 연결해요.',
+    '$BH=4/\\tan45^{\\circ}=4$예요.', '$CH=4/\\tan30^{\\circ}=4\\sqrt3$예요.',
+    'H가 B와 C 사이에 있으므로 두 밑변을 더해요.', '따라서 $BC=4+4\\sqrt3$예요.'
+  ], { question: 'AH=4, 각 B=45°, 각 C=30°일 때 두 밑변을 더해 BC를 구해 보세요.' });
+  for (const [g, a] of [['ab', 'ac'], ['ab', 'bc'], ['ac', 'ab'], ['ac', 'bc']]) problem('chainSpecial', `${g.toUpperCase()}→${a.toUpperCase()}`,
+    q => q.solution.math.givenSide === g && q.solution.math.askedSide === a, (q, m) => {
+      const M = q.fig.exact, angle = m.pair[g === 'ab' ? 0 : 1];
+      return [`$${g.toUpperCase()}=${tex(M[g])}$이고 밑각은 ${m.pair[0]}°, ${m.pair[1]}°예요.`, '공통 높이 AH부터 구해 다른 삼각형으로 넘어가요.',
+        `$AH=${tex(M[g])}\\sin${angle}^{\\circ}=${tex(M.h)}$예요.`,
+        a === 'bc' ? `$BH=${frac(tex(M.h), tex(G.tanD(m.pair[0])))}$, $CH=${frac(tex(M.h), tex(G.tanD(m.pair[1])))}$예요.` : '구할 빗변을 가진 쪽에서 높이÷sin을 써요.',
+        a === 'bc' ? `$BC=${tex(M.bh)}+${tex(M.ch)}$를 계산해요.` : `$${a.toUpperCase()}=${frac(tex(M.h), tex(G.sinD(m.pair[a === 'ab' ? 0 : 1])))}$예요.`];
+    });
+  for (const theta of [30, 45, 60]) {
+    const r = G.RATIO[theta], answer = `$\\sin${theta}^{\\circ}=${tex(G.sinD(theta))}$`;
+    concept('r2-1', `${theta}°표`, answer, [
+      `표의 ${theta}° 열을 완성해 보아요.`, `대변:이웃변:빗변은 $${r.map(tex).join(':')}$예요.`,
+      'sin은 대변÷빗변, cos은 이웃변÷빗변이에요.', 'tan은 대변÷이웃변으로 세 값을 구해요.',
+      `$\\cos${theta}^{\\circ}=${tex(G.cosD(theta))}$, $\\tan${theta}^{\\circ}=${tex(G.tanD(theta))}$예요.`,
+      `또한 ${answer}예요. 같은 열에 함께 적어요.`
+    ], { initial: { t2th: theta }, question: `${theta}° 직각삼각형의 변의 비로 sin, cos, tan 표의 한 열을 채워 보세요.` });
+  }
+  for (const [fn, theta] of [['s', 30], ['c', 60], ['t', 45]]) problem('r2-1', `${fnName[fn]}→각`, q => q.solution.math.fn === fn && q.solution.math.theta === theta, (q, m) => {
+    const side = q.fig.side, k = fn === 's' ? ['a', 'c'] : fn === 'c' ? ['b', 'c'] : ['a', 'b'];
+    return [`기준각 x의 두 변은 ${given(q)}예요.`, `이 두 변의 비는 ${fnName[fn]}으로 연결해요.`,
+      `$${G.FN[fn]}x=${frac(side[k[0]].t, side[k[1]].t)}$예요.`, '30°, 45°, 60° 표에서 같은 값을 찾아요.',
+      '대변과 이웃변의 위치까지 맞는 예각을 골라요.'];
+  });
+  concept('r2-2', '계산 순서', '식의 값은 0', [
+    '$\\sin30^{\\circ}+\\cos60^{\\circ}-\\tan45^{\\circ}$를 계산해요.', '각 항의 함수와 각을 따로 확인해요.',
+    '$\\sin30^{\\circ}=1/2$, $\\cos60^{\\circ}=1/2$예요.', '$\\tan45^{\\circ}=1$을 대입해요.',
+    '$1/2+1/2-1$에서 분수를 먼저 더해요.', '따라서 식의 값은 0이에요.'
+  ], { question: '특수각 표를 이용해 sin 30° + cos 60° − tan 45°의 값을 구해 보세요.' });
+  for (const form of ['f1', 'f2', 'f3', 'f4']) problem('r2-2', { f1: '합과 차', f2: '곱셈 먼저', f3: '곱과 나눔', f4: '제곱 계산' }[form], q => q.solution.math.form === form, (q, m) => {
+    const [a, b, c] = m.angles, fns = form === 'f3' ? ['t', 'c', 's'] : ['s', 'c', 't'], funcs = { s: G.sinD, c: G.cosD, t: G.tanD };
+    const v = m.angles.map((th, i) => tex(funcs[fns[i]](th)));
+    const substitution = { f1: `${v[0]}+${v[1]}-${v[2]}`, f2: `${v[0]}\\times${v[1]}+${v[2]}`, f3: `${v[0]}\\times${v[1]}\\div${v[2]}`, f4: `(${v[0]})^2+(${v[1]})^2+${v[2]}` }[form];
+    return [`세 각 ${a}°, ${b}°, ${c}°를 각각 확인해요.`, '그림의 특수각 삼각형에서 필요한 비를 읽어요.',
+      `$${G.FN[fns[0]]}${a}^{\\circ}=${v[0]}$, $${G.FN[fns[1]]}${b}^{\\circ}=${v[1]}$예요.`,
+      `$${G.FN[fns[2]]}${c}^{\\circ}=${v[2]}$도 준비해요.`,
+      `$${substitution}$에서 제곱·곱셈·나눗셈부터 해요.`];
+  });
+  for (const fn of ['s', 'c', 't']) concept('r2-3', `${fnName[fn]} 변화`, `${fnName[fn]}은 ${fn === 'c' ? '감소' : '증가'}한다`, [
+    '예각 θ를 30°에서 60°까지 키워 보아요.', `${fnName[fn]}에 해당하는 ${fn === 's' ? '분홍' : fn === 'c' ? '하늘색' : '초록'} 막대를 따라가요.`,
+    '각이 변할 때 같은 색 막대의 길이를 비교해요.', '45°에서는 sin과 cos가 같고 tan은 1이에요.',
+    fn === 't' ? '90°에 가까울수록 길어지며 tan 90°는 없어요.' : '0°와 90°에서 0과 1의 끝값도 확인해요.',
+    `예각이 커지면 ${fnName[fn]}은 ${fn === 'c' ? '감소' : '증가'}한다는 규칙이에요.`
+  ], { motion: { t23: 60 }, question: `0°<θ<90°에서 각 θ가 커질수록 ${fnName[fn]} θ는 어떻게 변할까요?` });
+  for (const right of [false, true]) problem('r2-3', right ? '옳은 비교' : '틀린 비교', q => q.solution.math.askRight === right, () => [
+    right ? '보기 중 옳은 부등식이나 등식을 골라요.' : '보기 중 옳지 않은 부등식이나 등식을 골라요.', 'sin과 tan은 커지고 cos은 작아져요.',
+    '45°에서 sin=cos이고 tan=1이에요.', '0°와 90°의 sin·cos 값도 따로 확인해요.',
+    '각의 크기와 함수 종류를 함께 보고 기호를 판단해요.'
+  ]);
+  // Source ABS_FORMS has seven expressions, but three regenerate because they
+  // cannot form four distinct distractors. These four are the returned families.
+  // Both source ranges are covered; the first two lessons teach the sign method.
+  const absForms = [
+    [S`\sqrt{(\sin x-\cos x)^2}+\sqrt{(\sin x-1)^2}`, 'sin두근'],
+    [S`\sqrt{(\tan x-1)^2}+\sqrt{(1-\tan x)^2}`, 'tan두근'],
+    [S`\sqrt{(1-\cos x)^2}+\sqrt{(\cos x-\sin x)^2}`, 'cos두근'],
+    [S`\sqrt{(\sin x-\cos x)^2}-\sqrt{(\cos x-1)^2}`, '근호 차']
+  ];
+  for (let f = 0; f < absForms.length; f++) for (const lo of [true, false]) {
+    const [expression, label] = absForms[f], q = fixed('absSignJudge', q => q.solution.math.expression === expression && (q.solution.math.range[0] === 0) === lo);
+    const opened = [
+      lo ? S`(\cos x-\sin x)+(1-\sin x)` : S`(\sin x-\cos x)+(1-\sin x)`,
+      lo ? S`(1-\tan x)+(1-\tan x)` : S`(\tan x-1)+(\tan x-1)`,
+      lo ? S`(1-\cos x)+(\cos x-\sin x)` : S`(1-\cos x)+(\sin x-\cos x)`,
+      lo ? S`(\cos x-\sin x)-(1-\cos x)` : S`(\sin x-\cos x)-(1-\cos x)`
+    ][f];
+    const captions = [lo ? '$0^{\\circ}\\lt x\\lt45^{\\circ}$인 범위를 먼저 읽어요.' : '$45^{\\circ}\\lt x\\lt90^{\\circ}$인 범위를 먼저 읽어요.',
+      '각 제곱근을 $\\sqrt{U^2}=|U|$로 바꾸어요.',
+      lo ? '$\\sin x<\\cos x$, $\\tan x<1$이에요.' : '$\\sin x>\\cos x$, $\\tan x>1$이에요.',
+      '예각에서는 sin과 cos가 0보다 크고 1보다 작아요.', `$${opened}$로 풀고 동류항을 모아요.`, `정리하면 ${choice(q)}예요.`];
+    add('absSignJudge', f === 0 ? (lo ? '음수 원리' : '양수 원리') : `${label}${lo ? '↓' : '↑'}`, captions,
+      { q, problem: f !== 0, useProblem: true, answer: choice(q), question: q.stem });
+  }
+
+  // GROUP_A_T3
 })();

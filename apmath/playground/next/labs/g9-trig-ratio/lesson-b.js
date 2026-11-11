@@ -9,7 +9,7 @@
   const defs = Object.fromEntries(ids.map(id => [id, scenes.find(sc => sc.id === id).tg]));
   window.APL_LESSONS = window.APL_LESSONS || {};
   const lessons = window.APL_LESSONS['g9-trig-ratio'] = window.APL_LESSONS['g9-trig-ratio'] || {};
-  const S = String.raw, tex = x => G.vtex(x), exact = q => q.choices.find(c => c.ok).t;
+  const tex = x => G.vtex(x), exact = q => q.choices.find(c => c.ok).t;
   const ctex = x => String(x).replace(/√(\d+)/g, '\\sqrt{$1}');
   const fixed = (id, accept) => G.fixedQuestion(id, 1, accept);
   function add(id, label, q, lines, options = {}) {
