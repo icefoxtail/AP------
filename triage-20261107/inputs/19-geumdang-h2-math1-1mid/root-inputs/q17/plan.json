@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "sourceQuote": "$\\boxed{\\dfrac16<a\\le\\dfrac12}$",
+  "numberLine": {
+    "axisVariable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1/2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정수해가 정확히 세 개가 되는 a의 범위"
+  },
+  "caption": "정수해가 정확히 세 개가 되는 범위는 1/6<a≤1/2이다. 왼쪽 끝은 제외되고 오른쪽 끝은 포함된다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t=3^x>0으로 두면 부등식은 2a≤t≤10",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "정수해가 정확히 x=0,1,2일 때 1/6<a≤1/2이며 a=1/6은 제외, a=1/2는 포함",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "매개변수 a의 해집합에서 제외되는 경계 1/6과 포함되는 최댓값 경계 1/2를 열린 점과 닫힌 점으로 구분한다."
+  ]
+}

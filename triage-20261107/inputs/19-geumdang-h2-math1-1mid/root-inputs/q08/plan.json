@@ -1,0 +1,83 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$y=(t-3)^2+4$",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "13",
+      "-6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      4
+    ],
+    "viewport": [
+      0,
+      5,
+      0,
+      10
+    ],
+    "axisVariable": "t",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 1,
+        "y": 8
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "id": "R",
+        "x": 4,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "치환 t=2^{-x}로 1≤t≤4에서 y=(t−3)^2+4를 그리면 꼭짓점은 (3,4), 양 끝점은 (1,8), (4,5)이다. 최댓값은 8이므로 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-2≤x≤0이고 t=2^{-x}이면 1≤t≤4",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.domain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "함수는 t²−6t+a이고 최소값 4에서 a=13이므로 y=(t−3)²+4",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "꼭짓점 (3,4), 구간 끝점 (1,8), (4,5)",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "치환한 변수의 닫힌 구간에서 꼭짓점과 두 끝점의 높이를 비교해 최댓값이 나오는 끝점을 보인다."
+  ]
+}
