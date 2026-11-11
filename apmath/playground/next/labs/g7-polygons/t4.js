@@ -17,6 +17,8 @@
   const dv = (d) => pt(cos(d), sin(d));
   const E = (n) => 360 / n; // 한 외각
   const eq = () => '='; // fmtN and tx retain exact reduced fractions.
+  const lessonOn = (s, C) => !!(C.lesson || s.lessonOn || s.lessonEntry);
+  const ready = (s, C, key) => !lessonOn(s, C) || (!s.lessonEntry && !!s[key]);
 
   const PARAMS = {
     pgRn: P('꼭짓점의 수 n', 3, 20, 1, 6, { color: 'amber', hint: '막대를 움직여 정다각형을 바꿔 보세요', format: (v) => `정${v}각형` }),
@@ -47,8 +49,10 @@
     model: (s) => { const n = clamp(Math.round(s.pgRn), 3, 20), e = E(n); return { n, e, I: 180 - e, sum: 180 * (n - 2) }; },
     draw(b, s, M, C) {
       const { n, e, I } = M, Pn = regUp(n, 1), O = pt(0, 0);
+      const lesson = lessonOn(s, C), external = s.pgLessonGoal === 'external';
+      const exteriorReady = ready(s, C, external ? 'pgShowAnswer' : 'pgAngleReady'), interiorReady = ready(s, C, 'pgShowAnswer') && (!lesson || !external);
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 86, l: 52, r: 52 });
-      const kf = C.problem ? 0 : C.review ? (C.step >= 2 ? n : 0) : C.t * n, k = Math.min(n, Math.floor(kf + 1e-6)), K = b.k || 60;
+      const kf = C.problem ? 0 : lesson ? C.t * n : C.review ? (C.step >= 2 ? n : 0) : C.t * n, k = Math.min(n, Math.floor(kf + 1e-6)), K = b.k || 60;
       const showAll = C.problem || C.review ? C.step >= 1 && !C.problem : C.full;
       fillPoly(b, Pn, 'sky', 0.09);
       poly(b, Pn, 'ink', 3.4);
@@ -56,27 +60,33 @@
       const rp = n > 12 ? 17 : 22;
       for (let i = 0; i < n; i++) {
         const p = Pn[i], u = Pn[(i + n - 1) % n], w = Pn[(i + 1) % n];
-        const show = (i < k && !C.problem) || (!C.problem && C.review && C.step >= 1 && i < Math.max(k, 1) + (C.step >= 1 ? n : 0));
+        const show = (i < k && !C.problem) || (lesson && i === 0) || (!lesson && !C.problem && C.review && C.step >= 1 && i < Math.max(k, 1) + (C.step >= 1 ? n : 0));
         if (!(C.full ? (i < k || C.t >= 0.999) : show)) continue;
         const ex = add(p, mul(unit(sub(p, u)), 0.34));
         b.path([p, ex], { color: 'rose', width: 2, dash: [5, 4] });
-        ang(b, p, ex, w, { color: 'rose', r: i === 0 ? 40 : rp, rings: 0, fa: i === 0 ? 0.16 : 0.12, label: i === 0 && C.txt ? `${fmtN(e)}°` : '', size: 17, labelDist: i === 0 ? 70 : 0 });
+        ang(b, p, ex, w, { color: 'rose', r: i === 0 ? 40 : rp, rings: 0, fa: i === 0 ? 0.16 : 0.12, label: i === 0 && C.txt ? exteriorReady ? `${fmtN(e)}°` : '외각' : '', size: 17, labelDist: i === 0 ? 70 : 0 });
       }
       void showAll;
       Pn.forEach((p, i) => { b.point(p, { color: 'ink', r: n > 12 ? 3.5 : 4.5 }); if (C.txt && (n <= 9 || i === 0)) tagOut(b, p, O, LET[i], { size: 17, gap: 10 }); });
       // 한 내각 (꼭짓점 A)
-      if (!C.problem && (C.full || C.step >= 2)) ang(b, Pn[0], Pn[n - 1], Pn[1], { color: 'sky', r: 34, label: `${fmtN(I)}°`, size: 17, fa: 0.22 });
+      if (!C.problem && (C.full || C.step >= 2 || (lesson && !external))) ang(b, Pn[0], Pn[n - 1], Pn[1], { color: 'sky', r: 34, label: interiorReady ? `${fmtN(I)}°` : lesson && !external ? 'x' : '', size: 17, fa: 0.22 });
       if (C.problem) ang(b, Pn[0], Pn[n - 1], Pn[1], { color: 'amber', r: 34, label: 'x', size: 18, fa: 0.26 });
       // 가운데: 외각을 모은 모양
       const cr = 0.3;
-      if (!C.problem && k > 0) {
+      if (!C.problem && (k > 0 || (lesson && kf > 0))) {
         for (let i = 0; i < k; i++) b.arc(O, cr, (i * e - 90) * DEG, ((i + 1) * e - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.14 : 0.22, color: 'rose', width: 1.4 });
-        if (C.txt && k >= n) T(b, O, '360°', { size: 20, color: 'amber' });
+        if (lesson && kf > k && k < n) b.arc(O, cr, (k * e - 90) * DEG, (kf * e - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: 0.22, color: 'rose', width: 1.4 });
+        if (C.txt && k >= n && ready(s, C, 'pgCountReady')) T(b, O, '360°', { size: 20, color: 'amber' });
       }
       if (!C.txt) return;
       const yb = Math.max(...Pn.map((p) => p.y));
       let r1, r2 = '', c1 = 'rose';
-      if (C.problem) r1 = `정${n}각형의 한 내각 x의 크기는?`;
+      if (lesson) {
+        r1 = `정${n}각형: 같은 크기의 외각 ${n}개`;
+        if (exteriorReady) r1 = `한 외각 = 360° ÷ ${n} = ${fmtN(e)}°`;
+        if (interiorReady) r2 = `한 내각 = 180° − ${fmtN(e)}° = ${fmtN(I)}°`;
+      }
+      else if (C.problem) r1 = `정${n}각형의 한 내각 x의 크기는?`;
       else if (C.review && C.step === 0) r1 = `정${n}각형의 내각과 외각을 확인해요`;
       else if (C.review && C.step === 1) r1 = `한 외각 = 360° ÷ ${n} = ${fmtN(e)}${eq(e) === '≈' ? '' : ''}°`;
       else if (C.review && C.step === 2) { r1 = `한 외각 ${fmtN(e)}°`; r2 = `한 내각 = 180° − ${fmtN(e)}° ${eq(I)} ${fmtN(I)}°`; }
@@ -125,6 +135,7 @@
     },
     draw(b, s, M, C) {
       const m = M, a = m.a, bb = m.bb, eps = m.eps, I = m.I, nn = m.nn, valid = M.valid;
+      const lesson = lessonOn(s, C), angleReady = ready(s, C, 'pgAngleReady'), answerReady = ready(s, C, 'pgShowAnswer');
       fit(b, { x0: -1.25, x1: 1.25, y0: -2.05, y1: 1.45 }, { t: 30, b: 82, l: 20, r: 20 });
       const st = C.step, K = b.k || 60;
       // 위: 180°를 내각 : 외각 으로 나눈 막대
@@ -133,6 +144,7 @@
       fillPoly(b, [pt(xm, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(xm, y + h)], 'rose', 0.18);
       poly(b, [pt(x0, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(x0, y + h)], 'ink', 2.6);
       line(b, pt(xm, y - 0.04), pt(xm, y + h + 0.04), 'ink', 3);
+      if (lesson && s.pgTrace > 0) line(b, pt(x0, y + h), pt(x0 + W * clamp(s.pgTrace, 0, 1), y + h), 'amber', 4);
       if (C.txt) {
         const showRatio = C.problem || (C.review && st === 0);
         const inside = pt((x0 + xm) / 2, y), outside = pt((xm + x0 + W) / 2, y);
@@ -149,8 +161,8 @@
             T(b, v.p, v.text, { dx: label.x - anchor.x, dy: label.y - anchor.y, color: v.color, size: 17 });
           });
         } else {
-          T(b, inside, showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
-          T(b, outside, showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
+          T(b, inside, lesson ? `내각 ${a}칸` : showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
+          T(b, outside, lesson ? angleReady ? `외각 ${fmtN(eps)}°` : `외각 ${bb}칸` : showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
         }
         T(b, pt(0, y), `${a} : ${bb}`, { dy: h * K + 18, color: 'ink', size: 17 });
         if (!C.problem) T(b, pt(0, y), '(내각 + 외각 = 180°)', { dy: h * K + 40, color: 'muted', size: 14 });
@@ -166,13 +178,19 @@
           b.arc(c, r, (cnt * eps - 90) * DEG, (270) * DEG, { sector: true, fill: 'amber', fillAlpha: 0.12, color: 'amber', width: 2.4 });
         }
         if (C.txt) {
-          if (valid) T(b, c, `n = ${Math.round(nn)}`, { size: 24, color: 'amber' });
+          if (!answerReady) T(b, c, 'n = ?', { size: 24, color: 'amber' });
+          else if (valid) T(b, c, `n = ${Math.round(nn)}`, { size: 24, color: 'amber' });
           else { T(b, c, `n = ${fmtN(nn)}`, { size: 22, color: 'amber', dy: -10 }); T(b, c, '자연수가 아니에요', { size: 15, color: 'amber', dy: 16 }); }
         }
       } else if (C.txt) T(b, c, C.problem ? '정n각형 → n = ?' : '', { size: 20, color: 'amber' });
       if (!C.txt) return;
       let r1, r2 = '', col = 'amber';
-      if (C.problem) { r1 = `한 내각 : 한 외각 = ${a} : ${bb}`; r2 = '이 비를 만족하는 정다각형이 있을까요?'; }
+      if (lesson) {
+        r1 = `한 내각 : 한 외각 = ${a} : ${bb}`;
+        if (angleReady) { r1 = `한 외각 = 180° × ${bb}/${a + bb} = ${fmtN(eps)}°`; col = 'rose'; }
+        if (answerReady) { r1 = `n = 360° ÷ ${fmtN(eps)}° = ${fmtN(nn)}`; r2 = valid ? `→ 정${m.n}각형` : '자연수가 아니라서 정다각형이 없어요'; }
+      }
+      else if (C.problem) { r1 = `한 내각 : 한 외각 = ${a} : ${bb}`; r2 = '이 비를 만족하는 정다각형이 있을까요?'; }
       else if (C.review && st === 0) r1 = '내각과 외각의 비를 확인해요';
       else if (C.review && st === 1) { r1 = `한 외각 = 180° × ${bb}/${a + bb} = ${fmtN(eps)}°`; col = 'rose'; }
       else if (valid) { r1 = `n = 360° ÷ ${fmtN(eps)}° = ${Math.round(nn)}`; r2 = `→ 정${Math.round(nn)}각형`; }
@@ -224,16 +242,20 @@
     },
     draw(b, s, M, C) {
       const { n, Pn, A, B, C: Cc, D, P: Pp, I, h, x } = M, O = pt(0, 0), st = C.step;
+      const lesson = lessonOn(s, C), angleReady = ready(s, C, 'pgAngleReady'), halfReady = ready(s, C, 'pgHalfReady'), gapReady = ready(s, C, 'pgGapReady'), answerReady = ready(s, C, 'pgShowAnswer');
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 88, l: 50, r: 50 });
       fillPoly(b, Pn, 'sky', 0.08);
       poly(b, Pn, 'ink', 3.4);
       const showD = true;
       if (showD) { line(b, A, Cc, 'green', 3.6); line(b, B, D, 'green', 3.6); }
+      if (lesson && s.pgTrace > 0) { const t = clamp(s.pgTrace, 0, 1); line(b, A, lerp(A, Cc, t), 'amber', 4.2); line(b, B, lerp(B, D, t), 'amber', 4.2); }
+      if (lesson && st >= 1) { tick(b, A, B, 1, 'sky'); tick(b, B, Cc, 1, 'sky'); }
+      if (lesson && st < 3) ang(b, Pp, A, B, { color: 'amber', r: 26, label: 'x', size: 18, fa: 0.28, labelDist: 52 });
       const nm = (p) => { const i = Pn.indexOf(p); return LET[(i - M.v + n) % n]; };
       if (!C.problem) {
         if (C.full || st >= 1) {
           const first = st === 1 && C.review;
-          const mark = { color: 'amber', r: 26, noMark: !first, fa: 0.12, label: first ? `${fmtN(I)}°` : '', size: 15, labelDist: 50 };
+          const mark = { color: 'amber', r: 26, noMark: !first, fa: 0.12, label: first && angleReady ? `${fmtN(I)}°` : '', size: 15, labelDist: 50 };
           let callout;
           if (first && !C.thumb && b.W < 560 && b.toS) {
             // 내각의 값이 대각선 AC 위에서 P의 각처럼 보이지 않게 합니다.
@@ -294,7 +316,7 @@
           }
         }
         if (C.full || st >= 2) {
-          ang(b, A, B, Cc, { color: 'sky', rings: 1, r: 28, label: n <= 9 ? `${fmtN(h)}°` : '', size: 15, labelDist: 56 });
+          ang(b, A, B, Cc, { color: 'sky', rings: 1, r: 28, label: n <= 9 && halfReady ? `${fmtN(h)}°` : '', size: 15, labelDist: 56 });
           ang(b, Cc, A, B, { color: 'sky', rings: 1, r: 28 });
           ang(b, B, Cc, D, { color: 'sky', rings: 1, r: 28 });
           ang(b, D, B, Cc, { color: 'sky', rings: 1, r: 28 });
@@ -302,8 +324,8 @@
         if (C.full || st >= 3) {
           // 작은 화면에서는 보조각 값을 변 바깥으로 옮기고 실제 호에 연결합니다.
           const compact = !C.thumb && b.W < 560;
-          ang(b, B, A, D, { color: 'green', rings: 2, r: 38, label: n <= 9 ? `${fmtN(M.ab)}°` : '', size: 14, labelDist: compact ? 48 : 36, labelRot: compact ? 90 : 22, leader: compact });
-          ang(b, Pp, A, B, { color: 'amber', r: 26, label: `${fmtN(x)}°`, size: 18, fa: 0.28, labelDist: 52 });
+          ang(b, B, A, D, { color: 'green', rings: 2, r: 38, label: n <= 9 && gapReady ? `${fmtN(M.ab)}°` : '', size: 14, labelDist: compact ? 48 : 36, labelRot: compact ? 90 : 22, leader: compact });
+          ang(b, Pp, A, B, { color: 'amber', r: 26, label: answerReady ? `${fmtN(x)}°` : 'x', size: 18, fa: 0.28, labelDist: 52 });
         }
       } else ang(b, Pp, A, B, { color: 'amber', r: 26, label: 'x', size: 18, fa: 0.28, labelDist: 46 });
       Pn.forEach((p) => b.point(p, { color: 'ink', r: 4.5 }));
@@ -314,7 +336,14 @@
         if (!C.problem && !C.thumb && !C.review) pickHandle(b, s, 'pgDv', Pn, '꼭짓점 A 고르기');
         const yb = Math.max(...Pn.map((p) => p.y));
         let r1, r2 = '', c1 = 'sky';
-        if (C.problem) r1 = `∠APB = x 의 크기는?`;
+        if (lesson) {
+          r1 = '대각선 AC와 BD의 교점 P에서 ∠APB = x';
+          if (angleReady) r1 = `한 내각 ∠ABC = 180°×(${n}−2)÷${n} = ${fmtN(I)}°`;
+          if (halfReady) r1 = `밑각 = (180° − ${fmtN(I)}°) ÷ 2 = ${fmtN(h)}°`;
+          if (gapReady) r1 = `∠ABD = ${fmtN(I)}° − ${fmtN(h)}° = ${fmtN(M.ab)}°`;
+          if (answerReady) r2 = `∠APB = 180° − ${fmtN(h)}° − ${fmtN(M.ab)}° = ${fmtN(x)}°`;
+        }
+        else if (C.problem) r1 = `∠APB = x 의 크기는?`;
         else if (C.review && st === 0) r1 = '두 대각선과 구할 각 x를 확인해요';
         else if (C.review && st === 1) r1 = `한 내각 = 180°×(${n}−2)÷${n} ${eq(I)} ${fmtN(I)}°`;
         else if (C.review && st === 2) r1 = `△ABC: 밑각 = (180° − ${fmtN(I)}°) ÷ 2 ${eq(h)} ${fmtN(h)}°`;
