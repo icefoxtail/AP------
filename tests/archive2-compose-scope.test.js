@@ -724,7 +724,7 @@ test('difficulty filters apply only after an explicit choice and can return to a
   assert.deepEqual(plain(w.state.buckets), []);
 });
 
-test('problem paper maker uses a recorded difficulty without approval labels, but not one recorded against different question text', async () => {
+test('problem paper maker uses a recorded difficulty without approval labels or text binding', async () => {
   const r2 = basicRecord('중3', {
     difficultyBucket: 2, difficultyConfidence: undefined, difficultyBoundaryFlag: undefined,
     legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: 'content',
@@ -734,25 +734,31 @@ test('problem paper maker uses a recorded difficulty without approval labels, bu
     questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-r3').digest('hex'),
     difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: 'content',
   });
-  // same bucket 2 as r2, but the stem/choices/image changed after the value was recorded: not usable
-  const textChanged = basicRecord('중3', {
-    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-text-changed').digest('hex'),
+  // same bucket 2, no text binding recorded: still usable (binding is a label); a broken source
+  // reference (generalUseEligibility) is the real defect and stays out
+  const unbound = basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-unbound').digest('hex'),
     difficultyBucket: 2, sourceStatus: 'HOLD', metaBinding: '',
   });
-  const { w, click } = harness({ ...catalog, records: [r2, r3, textChanged], taxonomy: [] });
+  const brokenSource = basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-broken-source').digest('hex'),
+    difficultyBucket: 2, sourceIntegrityStatus: 'MISMATCH',
+  });
+  const { w, click } = harness({ ...catalog, records: [r2, r3, unbound, brokenSource], taxonomy: [] });
   w.state.useMode = 'general';
   w.state.filters = { grade: '중3' };
   await click({ action: 'bucket', bucket: '2' });
   w.state.scopes = w.scopeOptions().map(scope => scope.key);
   w.state.distribution = 'all';
   const req = w.request();
-  assert.equal(req.rows[0].count, 1, 'the recorded bucket survives missing auxiliary metadata');
-  const selected = core.selectBlueprint([r2, r3, textChanged], req);
+  assert.equal(req.rows[0].count, 2, 'the recorded bucket survives missing auxiliary metadata and a missing binding');
+  const selected = core.selectBlueprint([r2, r3, unbound, brokenSource], req);
   assert.equal(selected.ok, true);
-  assert.deepEqual(selected.selected.map(row => row.questionUid), [r2.questionUid]);
+  assert.deepEqual(selected.selected.map(row => row.questionUid).sort(), [r2.questionUid, unbound.questionUid].sort(),
+    'the broken-source row is excluded by the usage gate, the unbound row is not');
   assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK');
   await click({ action: 'bucket-all' });
-  assert.equal(w.request().rows[0].count, 3, 'with no difficulty filter the text-changed row is still a normal question');
+  assert.equal(w.request().rows[0].count, 3, 'with no difficulty filter every usable row counts');
 });
 
 test('new entry, grade changes and new drafts restore BASIC all-difficulty defaults', async () => {

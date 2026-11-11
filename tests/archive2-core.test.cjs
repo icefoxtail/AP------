@@ -156,8 +156,7 @@ test("BASIC preserves explicit quality holds while optional difficulty remains a
 });
 test("one difficulty lane: an integer bucket passes for every caller unless a real defect applies", () => {
   const baseline = record(base.sourceOrdinal);
-  // Registered after the exam file changed only in its answer/solution (content binding): the values
-  // still describe the question. No auxiliary labels, an unapproved source release and a conflict
+  // No auxiliary labels, an unapproved source release, a missing text binding and a conflict
   // marker (registered value differs from the exam file's inline value) are labels, not gates.
   const labelsOnly = {
     ...baseline, difficultyBucket: 3, difficultyConfidence: undefined,
@@ -175,15 +174,15 @@ test("one difficulty lane: an integer bucket passes for every caller unless a re
     assert.equal(core.matches(labelsOnly, { difficultyBuckets: [2] }, options), false);
   }
   assert.equal(core.difficultyEligible({ ...labelsOnly, sourceStatus: "VERIFIED", metaBinding: "exact" }), true);
-  // Real defects: the recorded value no longer describes this question's text (no binding and not
-  // the verified source), a word or non-integer instead of a bucket (no conversion), a broken
-  // identity or source reference.
-  const textChanged = { ...labelsOnly, metaBinding: "" };
+  // A recorded integer without any text binding is still usable (binding is a label).
+  const unbound = { ...labelsOnly, metaBinding: "" };
   for (const options of [undefined, opts]) {
-    assert.equal(core.difficultyEligible(textChanged, options), false);
-    assert.equal(core.matches(textChanged, target, options), false);
-    assert.equal(core.rowMatches(textChanged, target, options), false);
+    assert.equal(core.difficultyEligible(unbound, options), true);
+    assert.equal(core.matches(unbound, target, options), true);
+    assert.equal(core.rowMatches(unbound, target, options), true);
   }
+  // Real defects: a word or non-integer instead of a bucket (no conversion), a broken identity or
+  // source reference (generalUseEligibility).
   for (const value of ["UNKNOWN", null, "3", "중", 0, 6, 2.5]) {
     for (const options of [undefined, opts])
       assert.equal(core.matches({ ...labelsOnly, difficultyBucket: value }, target, options), false);

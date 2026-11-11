@@ -53,7 +53,7 @@ test('the four products keep their sizes and difficulty mixes', () => {
   assert.equal(Quick.PRODUCTS['five-minute'].combine, undefined);
 });
 
-test('quick pools use the one difficulty lane: any integer bucket 1–4 with intact identity/source and text-bound values', () => {
+test('quick pools use the one difficulty lane: any integer bucket 1–4 with intact identity/source', () => {
   const verified = record(2);
   const noConfidence = record(2, { difficultyConfidence: undefined, difficultyBoundaryFlag: undefined, legacyLevelCompatibility: undefined });
   const holdUnbound = record(2, { sourceStatus: 'HOLD' });
@@ -71,8 +71,8 @@ test('quick pools use the one difficulty lane: any integer bucket 1–4 with int
   assert.equal(usable(noConfidence), 2, 'confidence/boundary/compatibility are not quick selection gates');
   assert.equal(usable(noConfidence, 'eligible'), 2, 'there is no separate strict lane: every mode gives the same result');
   assert.equal(usable(borderlineReview), 2, 'BORDERLINE_REVIEW is a label, not a gate');
-  assert.equal(usable(holdUnbound), 0, 'values recorded against different question text are not usable');
-  assert.equal(usable(holdUnbound, 'eligible'), 0);
+  assert.equal(usable(holdUnbound), 2, 'a missing text binding is a label, not a gate');
+  assert.equal(usable(holdUnbound, 'eligible'), 2);
   assert.equal(usable(holdContentBound), 2, 'content-bound metadata remains usable');
   assert.equal(usable(holdContentBound, 'eligible'), 2);
   assert.equal(usable(conflict), 2, 'difficulty metadata conflicts do not block quick selection');
@@ -85,9 +85,9 @@ test('quick pools use the one difficulty lane: any integer bucket 1–4 with int
   assert.equal(usable(brokenSource), 0);
   assert.equal(usable(noFingerprint), 0);
   const pools = Quick.buildPools(indexOf([verified, noConfidence, holdUnbound, holdContentBound, annotated, bucket5].map(r => entry(r))));
-  assert.equal(pools.stats.usable, 4);
+  assert.equal(pools.stats.usable, 5);
   assert.equal(pools.stats.bucket5, 1);
-  assert.equal(pools.stats.difficultyUnusable, 1, 'the text-changed row is counted as not usable');
+  assert.equal(pools.stats.difficultyUnusable, 0);
   const same = Quick.buildPools(indexOf([verified, noConfidence, holdUnbound, holdContentBound, annotated, bucket5].map(r => entry(r))), { difficultyMode: 'eligible' });
   assert.equal(same.stats.usable, pools.stats.usable, 'the option no longer changes the result');
   assert.equal(Quick.buildPools(indexOf([noConfidence].map(r => entry(r))), { difficultyMode: 'unknown' }).stats.usable, 1);

@@ -49,7 +49,7 @@
   const hasHangul = (value) => /[가-힣]/.test(value);
 
   // Quick assessment selection uses the one shared difficulty gate (Core.difficultyEligible:
-  // integer bucket, intact identity/source, values still bound to the question text) and then
+  // integer bucket, intact identity/source) and then
   // takes the 1~4 buckets. Confidence, boundary, compatibility, approval status and review
   // annotations are labels, not gates. No legacy 하/중/상 inference is allowed. The
   // `difficultyMode` argument/option is kept for caller compatibility; every value gives the

@@ -387,13 +387,12 @@
     }
 
     // One shared difficulty gate (Archive2Core.difficultyEligible): integer 1..5, intact identity and
-    // source, values still bound to the question text. Confidence, boundary, compatibility and
-    // conflict markers are labels, not gates. The fallback below mirrors that rule.
+    // source. Binding, confidence, boundary, compatibility and conflict markers are labels, not
+    // gates. The fallback below mirrors that rule.
     function difficultyUsable(record, archive2Core) {
         if (typeof archive2Core?.difficultyEligible === 'function') return archive2Core.difficultyEligible(record);
         return generalUseEligible(record, archive2Core) &&
-            Number.isInteger(record?.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5 &&
-            (record?.sourceStatus === 'VERIFIED' || record?.metaBinding === 'exact' || record?.metaBinding === 'content');
+            Number.isInteger(record?.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5;
     }
 
     function generalUseEligible(record, archive2Core) {

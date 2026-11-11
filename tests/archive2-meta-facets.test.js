@@ -245,15 +245,19 @@ test('one difficulty lane: an integer bucket is usable in every mode unless a re
   assert.equal(core.difficultyEligible(row({ difficultyBoundaryFlag: undefined, legacyLevelCompatibility: 'BORDERLINE_REVIEW' })), true);
   assert.equal(core.difficultyEligible(row({ metadataConflicts: ['difficultyBucket'] })), true);
   assert.equal(core.difficultyEligible(row({ sourceStatus: 'VERIFIED', metaBinding: 'exact' })), true);
-  // real defects: recorded against different text, a word instead of an integer, broken source reference
+  // no binding is a label: an unbound integer bucket stays usable
+  for (const options of [undefined, { useMode: 'general' }])
+    assert.equal(core.difficultyEligible(row({ metaBinding: '', sourceStatus: 'HOLD' }), options), true);
+  // real defects: a word instead of an integer, broken identity/source reference
   for (const options of [undefined, { useMode: 'general' }]) {
-    assert.equal(core.difficultyEligible(row({ metaBinding: '' }), options), false, 'text changed: unbound rows stay out');
+    assert.equal(core.difficultyEligible(row({ identityStatus: 'UNRESOLVED' }), options), false);
     assert.equal(core.difficultyEligible(row({ difficultyBucket: '중' }), options), false, 'no word-to-number conversion');
     assert.equal(core.difficultyEligible(row({ sourceIntegrityStatus: 'MISMATCH' }), options), false);
   }
   for (const mode of ['general', 'strict'])
     assert.equal(core.matches(row(), { grade: '고1', difficultyBuckets: [3] }, { useMode: mode }), true);
-  assert.equal(core.matches(row({ metaBinding: '' }), { grade: '고1', difficultyBuckets: [3] }, { useMode: 'general' }), false);
+  assert.equal(core.matches(row({ metaBinding: '' }), { grade: '고1', difficultyBuckets: [3] }, { useMode: 'general' }), true);
+  assert.equal(core.matches(row({ sourceIntegrityStatus: 'MISMATCH' }), { grade: '고1', difficultyBuckets: [3] }, { useMode: 'general' }), false);
 });
 
 // ---- type diversity ----------------------------------------------------------------------------

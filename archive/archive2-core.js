@@ -603,20 +603,18 @@
   const eligibility = basicEligibility;
   // One lane for every caller (user decision 2026-11-11: a recorded value is usable; only real
   // defects block). A recorded difficulty is usable when it is an integer 1..5 on a question whose
-  // identity and source reference are intact (generalUseEligibility) and whose recorded values still
-  // describe the question's current stem/choices/image: sourceStatus VERIFIED or metaBinding
-  // "exact"/"content" ("content" = only answer/solution bytes changed after approval). A row with
-  // no binding was recorded against different text and is not usable. Confidence, boundary flag,
-  // legacyLevelCompatibility, approval status and metadataConflicts (the registered value differs
-  // from the exam file's own inline value; the registered value is the one in the record) are
-  // display labels, never gates. Words (하/중/상) are never converted to a number.
+  // identity and source reference are intact (generalUseEligibility). Text binding (metaBinding),
+  // sourceStatus, confidence, boundary flag, legacyLevelCompatibility, approval status and
+  // metadataConflicts (the registered value differs from the exam file's own inline value; the
+  // registered value is the one in the record) are display labels, never gates. A value of another
+  // question never reaches a record: a failed identity join leaves difficultyBucket "UNKNOWN".
+  // Words (하/중/상) are never converted to a number.
   // `options` is accepted for caller compatibility and no longer changes the result.
   function difficultyEligible(record, options = {}) {
     if (!record || !generalUseEligibility(record).ok) return false;
     const bucket = record.difficultyBucket;
     if (!Number.isInteger(bucket) || bucket < 1 || bucket > 5) return false;
-    return record.sourceStatus === "VERIFIED" ||
-      record.metaBinding === "exact" || record.metaBinding === "content";
+    return true;
   }
   function advancedEligible(record, options = {}) {
     const authority = options.canonicalAuthority || options.catalog?.canonicalAuthority;
