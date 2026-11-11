@@ -1,0 +1,48 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "21",
+    "transverse": "Y"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    }
+  ],
+  "caption": "세로 주축 쌍곡선과 두 초점을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선의 표준형은 y²/4−x²/21=1이다.",
+      "mappedTo": [
+        "conic",
+        "points"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "초점은 세로 주축을 따라 중심에서 대칭으로 놓인다.",
+      "mappedTo": [
+        "conic",
+        "points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "쌍곡선의 두 가지와 초점의 대칭 배치를 함께 확인한다."
+  ],
+  "accessibilityDescription": "세로로 열린 쌍곡선과 주축 위의 두 초점을 보여 주는 그림."
+}

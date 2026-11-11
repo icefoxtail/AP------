@@ -1,0 +1,67 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "3",
+    "bSquared": "2",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "R1",
+      "kind": "LINE_CONIC",
+      "line": "l4",
+      "which": 1,
+      "label": false
+    },
+    {
+      "id": "R2",
+      "kind": "LINE_CONIC",
+      "line": "l4",
+      "which": 2,
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "l3",
+      "slope": "2",
+      "intercept": "3",
+      "dashed": true
+    },
+    {
+      "id": "l4",
+      "slope": "2",
+      "intercept": "4"
+    }
+  ],
+  "caption": "가로 주축 쌍곡선과 같은 기울기를 가진 두 직선의 교점 유무를 비교한 예시 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선은 2x²−3y²=6이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "비교하는 직선은 모두 y=2x+k 꼴이며, 그림은 경계 부근의 두 대표 경우를 나타낸다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 직선은 쌍곡선과 만나지 않고, 더 위로 평행 이동한 직선은 두 점에서 만나는 차이를 보여 준다."
+  ],
+  "accessibilityDescription": "쌍곡선과 평행한 두 직선의 위치 관계를 비교한 그림."
+}

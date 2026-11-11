@@ -1,0 +1,49 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "16",
+      "minor": "7"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    }
+  ],
+  "caption": "타원 x²/16+y²/7=1과 두 초점을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원은 원점을 중심으로 하고 긴 반축의 제곱은 16, 짧은 반축의 제곱은 7이다.",
+      "mappedTo": [
+        "ellipse",
+        "points"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 초점은 x축 위에서 중심을 기준으로 서로 대칭이다.",
+      "mappedTo": [
+        "ellipse",
+        "points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원의 긴 축과 초점쌍의 대칭 배치를 함께 확인한다."
+  ],
+  "accessibilityDescription": "가로로 긴 타원과 좌우에 대칭인 두 초점을 보여 주는 그림."
+}

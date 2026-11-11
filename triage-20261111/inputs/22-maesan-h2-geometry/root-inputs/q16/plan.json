@@ -1,0 +1,54 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "1",
+    "bSquared": "1/2",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "sign": "POS",
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "P"
+    }
+  ],
+  "caption": "점 P에서 쌍곡선에 그은 접선을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선은 x²−y²/2=1이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "주어진 점 (3,4)는 쌍곡선 위에 있다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 점에서 접선이 곡선과 한 점에서 만나고 접선 방향이 점에서의 국소 방향과 맞음을 보여 준다."
+  ],
+  "accessibilityDescription": "가로 주축 쌍곡선 위의 점 P와 그 점에서 그은 접선을 보여 주는 그림."
+}

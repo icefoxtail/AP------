@@ -1,0 +1,98 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "-1",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "-4",
+      "branch": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "I",
+      "kind": "POINT",
+      "x": "1",
+      "y": "0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPH",
+      "from": "P",
+      "to": "H"
+    },
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sHI",
+      "from": "H",
+      "to": "I"
+    }
+  ],
+  "caption": "P가 초점 F의 왼쪽에 놓인 포물선, 준선, 수선의 발 H와 점 I를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선은 y²=4px이고 p<0이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PH=5, HI=4이며 P는 초점 F보다 왼쪽에 놓인다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "표시된 정확한 대표 위치는 주어진 조건을 모두 만족한다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P가 F보다 왼쪽에 있다는 조건을 유지한 대표 배치에서 PH와 HI의 조건을 동시에 본다."
+  ],
+  "accessibilityDescription": "P가 F보다 왼쪽인 포물선 예시와 준선 위의 점 I, 수선의 발 H를 보여 주는 그림."
+}

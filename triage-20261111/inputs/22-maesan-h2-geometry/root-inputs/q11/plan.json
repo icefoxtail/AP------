@@ -1,0 +1,55 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "2",
+      "-1"
+    ],
+    "aSquared": "4",
+    "bSquared": "3",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "x": "2",
+      "y": "-1",
+      "label": false
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    }
+  ],
+  "caption": "중심이 (2,-1)인 쌍곡선과 두 초점을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선의 표준형은 (x−2)²/4−(y+1)²/3=1이다.",
+      "mappedTo": [
+        "conic",
+        "points"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "중심은 (2,-1)이고 초점은 가로 주축 위에서 서로 대칭이다.",
+      "mappedTo": [
+        "conic",
+        "points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동된 중심과 초점 쌍의 위치를 곡선 위에서 확인한다."
+  ],
+  "accessibilityDescription": "오른쪽으로 열린 쌍곡선과 중심, 가로 주축 위의 초점을 보여 주는 그림."
+}

@@ -1,0 +1,108 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "9",
+      "minor": "5"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "end": "MINOR_POS"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F"
+    },
+    {
+      "id": "sAFp",
+      "from": "A",
+      "to": "F'"
+    },
+    {
+      "id": "sFFp",
+      "from": "F",
+      "to": "F'"
+    },
+    {
+      "id": "sAO",
+      "from": "A",
+      "to": "O",
+      "label": "b"
+    },
+    {
+      "id": "sOF",
+      "from": "O",
+      "to": "F",
+      "label": "c"
+    },
+    {
+      "id": "sOFp",
+      "from": "O",
+      "to": "F'",
+      "label": "c"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tAFFp",
+      "points": [
+        "A",
+        "F",
+        "F'"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "타원과 두 초점, y축 위의 점 A로 이루어진 삼각형을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원의 중심은 원점이고 장축의 길이는 6이다.",
+      "mappedTo": [
+        "ellipse",
+        "points",
+        "segments",
+        "polygons"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "주어진 삼각형 AFF′의 넓이는 2√5이며 이를 만족하는 타원의 단축과 초점 위치를 사용한다.",
+      "mappedTo": [
+        "ellipse",
+        "points",
+        "segments",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 AFF′의 높이는 AO이고 밑변은 두 초점 사이이며, 타원의 중심·축 관계를 함께 보여 준다."
+  ],
+  "accessibilityDescription": "가로로 긴 타원, 초점 F와 F′, y축 위의 점 A, 중심 O가 이루는 삼각형을 보여 주는 그림."
+}

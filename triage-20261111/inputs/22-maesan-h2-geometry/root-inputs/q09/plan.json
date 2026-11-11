@@ -1,0 +1,223 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X3",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "k": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "X3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "a",
+        "from": "A",
+        "to": "B",
+        "label": "vec(a)"
+      },
+      {
+        "id": "b",
+        "from": "A",
+        "to": "D",
+        "label": "vec(b)"
+      },
+      {
+        "id": "v3a",
+        "from": "A",
+        "to": "X3",
+        "label": "3 vec(a)"
+      }
+    ],
+    "vectorOps": [
+      {
+        "id": "c",
+        "op": "SUM",
+        "of": [
+          "a",
+          "b"
+        ],
+        "point": "C",
+        "label": "vec(c)",
+        "guides": "PARALLELOGRAM"
+      },
+      {
+        "id": "r",
+        "op": "SUM",
+        "of": [
+          "v3a",
+          "b"
+        ],
+        "label": "3 vec(a)+vec(b)",
+        "guides": "PARALLELOGRAM"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "a",
+          "b"
+        ]
+      }
+    ]
+  },
+  "caption": "한 변이 2인 정사각형에서 변 벡터와 대각선 벡터를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 한 변의 길이가 2인 정사각형이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "a는 AB, b는 AD, c는 AC 방향의 벡터이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a와 b가 서로 수직인 변 방향이고 c가 두 벡터의 합 방향임을 보여 준다.",
+    "주어진 식은 벡터 성분으로 3a+b가 되어 길이 계산에서 직교 관계를 사용한다."
+  ],
+  "accessibilityDescription": "정사각형의 두 변을 나타내는 벡터와 대각선 방향, 그리고 성분 계산에 쓰이는 결과 벡터를 보여 주는 그림."
+}

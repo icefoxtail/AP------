@@ -1,0 +1,98 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "-1",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "-4",
+      "branch": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "I",
+      "kind": "POINT",
+      "x": "1",
+      "y": "0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPH",
+      "from": "P",
+      "to": "H"
+    },
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sHI",
+      "from": "H",
+      "to": "I"
+    }
+  ],
+  "caption": "p<0인 포물선의 한 예와 초점·준선, 점 P에서 준선에 내린 수선의 발 H를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선은 y²=4px이고 p<0이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "준선 x=-p가 I를 지나고 H는 P에서 준선에 내린 수선의 발이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "그림의 곡선은 조건을 만족하는 p<0의 한 예이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초점 F와 준선까지의 거리 관계를 수선의 발 H를 통해 확인한다."
+  ],
+  "accessibilityDescription": "p<0인 포물선의 한 예, 초점 F, 준선 l, 점 P와 수선의 발 H를 보여 주는 그림."
+}

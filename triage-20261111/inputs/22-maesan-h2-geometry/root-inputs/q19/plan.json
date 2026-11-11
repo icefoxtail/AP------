@@ -1,0 +1,89 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "36",
+      "minor": "20"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_ELLIPSE",
+      "x": "3",
+      "branch": "POS"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "M",
+      "kind": "VERTEX",
+      "end": "MAJOR_POS",
+      "label": false
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "sPO",
+      "from": "P",
+      "to": "O"
+    },
+    {
+      "id": "sOM",
+      "from": "O",
+      "to": "M"
+    }
+  ],
+  "caption": "타원 위의 한 예의 점 P, 두 초점, 중심 O와 장축 끝점을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원은 x²/36+y²/20=1이고 두 초점은 장축 위에서 중심을 기준으로 대칭이다.",
+      "mappedTo": [
+        "ellipse",
+        "points",
+        "segments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 타원 위의 한 대표점이며 장축 끝점은 중심에서 가장 먼 축 위의 위치를 나타낸다.",
+      "mappedTo": [
+        "ellipse",
+        "points",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초점쌍의 대칭과 중심에서 타원까지의 가장 긴 반지름 방향을 같은 그림에서 확인한다."
+  ],
+  "accessibilityDescription": "가로로 긴 타원, 중심 O, 초점 F와 F′, 대표점 P, 장축 끝점을 보여 주는 그림."
+}

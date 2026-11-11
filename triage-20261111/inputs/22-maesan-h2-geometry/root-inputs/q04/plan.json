@@ -1,0 +1,56 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "9",
+      "minor": "3"
+    },
+    "majorAxis": "Y"
+  },
+  "points": [
+    {
+      "id": "T",
+      "kind": "ON_ELLIPSE",
+      "x": "-1",
+      "branch": "POS",
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "sqrt(6)/2",
+      "intercept": "3*sqrt(6)/2",
+      "tangent": true
+    }
+  ],
+  "caption": "타원 위의 주어진 점에서 접선을 그린 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원은 x²/3+y²/9=1이다.",
+      "mappedTo": [
+        "ellipse",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "접점은 타원 위에서 x좌표가 -1이고 y좌표가 양수인 점이다.",
+      "mappedTo": [
+        "ellipse",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 타원과 접점에서의 접선 관계를 보여 준다."
+  ],
+  "accessibilityDescription": "세로로 긴 타원 위의 접점과 그 점에서 그은 접선을 보여 주는 그림."
+}

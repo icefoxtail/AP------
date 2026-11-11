@@ -1,0 +1,63 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "-4",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "3",
+      "y": "-4",
+      "label": false
+    },
+    {
+      "id": "T1",
+      "kind": "TANGENT_FROM",
+      "from": "Q",
+      "which": 1,
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "through": [
+        "Q",
+        "T1"
+      ],
+      "tangent": true
+    }
+  ],
+  "caption": "외부점에서 포물선에 그은 양의 기울기 접선을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선은 y²=−16x이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "외부점은 (3,−4)이며 그 점에서 그은 접선 중 양의 기울기를 가진 접선을 선택한다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "외부점에서 가능한 접점 가운데 왼쪽 접점과 그 점을 지나는 접선을 표시한다."
+  ],
+  "accessibilityDescription": "왼쪽으로 열린 포물선, 외부점, 해당 점에서 포물선에 접하는 직선을 보여 주는 그림."
+}

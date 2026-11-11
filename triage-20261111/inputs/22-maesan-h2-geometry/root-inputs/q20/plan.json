@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "Q",
+    "O",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "displayCircles": [
+    "cO"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vCD",
+        "from": "C",
+        "to": "D",
+        "label": "vec(CD)"
+      },
+      {
+        "id": "vBQ",
+        "from": "B",
+        "to": "Q",
+        "label": "vec(BQ)"
+      },
+      {
+        "id": "a",
+        "from": "Q",
+        "to": "A",
+        "label": "vec(a)"
+      },
+      {
+        "id": "b",
+        "from": "B",
+        "to": "D",
+        "label": "vec(b)"
+      },
+      {
+        "id": "bcopy",
+        "from": "Q",
+        "to": "R",
+        "dashed": true
+      }
+    ],
+    "vectorOps": [
+      {
+        "id": "sumab",
+        "op": "SUM",
+        "of": [
+          "a",
+          "bcopy"
+        ],
+        "label": "vec(a)+vec(b)",
+        "guides": "PARALLELOGRAM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenAD",
+        "ownerSegment": "sAD",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "직사각형, 선분 CD를 1:4로 내분하는 Q, 원의 중심 O와 P=D인 경우의 벡터를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 AD=6, AB=8인 직사각형이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displayPoints",
+        "displaySegments",
+        "planeMarks",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Q는 CD를 CQ:QD=1:4로 내분하고 O는 CD의 중점이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displayPoints",
+        "displaySegments",
+        "planeMarks",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "a=CD−BQ, b=BP이며 P가 D에 놓이는 경우를 그림에 나타낸다.",
+      "mappedTo": [
+        "mathPlan",
+        "displayPoints",
+        "displaySegments",
+        "planeMarks",
+        "displayCircles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "지름 CD인 원과 Q의 위치, P=D인 경우를 표시하여 벡터 조건의 대표 위치를 확인한다.",
+    "벡터 a와 b를 같은 시작점으로 옮겨 합벡터의 방향을 나타낸다."
+  ],
+  "accessibilityDescription": "직사각형의 변, 내분점 Q, 중심 O의 원과 벡터 a·b 및 그 합을 보여 주는 그림."
+}
