@@ -77,8 +77,9 @@
 | `alg-trig-geometry` 삼각함수 도형 | 16 | 16 / 40 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1830](https://github.com/icefoxtail/AP------/pull/1830), merge `98508f393f16aedb22b3cad20300503df54b20df`. 원문 목표22·탐구개념18. 최소79/79(수학16·runtime8·공통video/pins55),616개 실제 Board 상태·validator 오류/경고0 |
 | `alg-sequence` 수열 | 21 | 21 / 41 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1831](https://github.com/icefoxtail/AP------/pull/1831), merge `d197cfb9fb1c56deae4063b10502d91bec5d5095`. 원문 목표30·개념11. 최소84개 통과(수학21·runtime6·공통video/pins/rate57),533개 실제 Board 상태·validator 오류/경고0 |
 | `calc1-limits` 함수의 극한 | 9 | 9 / 25 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1832](https://github.com/icefoxtail/AP------/pull/1832), merge `c7e642eb71510a40ed56bbc0a23ee13d5c896642`. 원문 목표12·탐구개념13. 최소64/64(수학18·runtime5·공통video41),550개 실제 Board/canvas 상태·validator 오류/경고0 |
-| `calc1-derivative-shape` 도함수와 함수의 그래프 | 7 | 7 / 23 | **IMPLEMENTED / QA_PENDING** · 원문 목표12·탐구개념11. 최소69/69(수학7·runtime7·공통video/pins55),370개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 17개 | — | — | `calc1-cubic` 5장면 → `calc1-quartic` 5장면 → `calc1-composite` 7장면 → `calc1-integral` 8장면 → `calc1-motion` 5장면. 삼차5/25·사차5/22는 원격 보존, 합성7/20은 최소검사 후 인계, 실험실별 병합 |
+| `calc1-derivative-shape` 도함수와 함수의 그래프 | 7 | 7 / 23 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1834](https://github.com/icefoxtail/AP------/pull/1834), merge `16f120347a36f7c06290226089c133d24a3de40c`. 원문 목표12·탐구개념11. 최소69/69(수학7·runtime7·공통video/pins55),370개 실제 Board/canvas 상태·validator 오류/경고0 |
+| `calc1-cubic` 삼차함수 비율관계 | 5 | 5 / 25 | **IMPLEMENTED / QA_PENDING** · 원문 목표9·탐구개념16. 최소60/60(수학13·runtime6·공통video41),402개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 16개 | — | — | `calc1-quartic` 5장면 → `calc1-composite` 7장면 → `calc1-integral` 8장면 → `calc1-motion` 5장면 → `geom-parabola` 14장면. 사차5/22는 원격 보존, 합성7/20은 최소검사 후 인계, 실험실별 병합 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -268,6 +269,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **삼차함수 전체 구현.** `feat/lessons-calc1-cubic`, box/oblique/area/sync/external **5장면/25해설**(원문 목표9·탐구개념16), 누락0. 변곡점 중심대칭, 연속한 가로 간격, 극점 존재조건, 접점·교점 관계와 변곡접선 예외, 접선 넓이와 부호 있는 적분, 도함수 높이·원함수 변화량, 외부점에서의 접선 개수와 경계 예외를 구분했다. 원본 첫 문제·수동 새 문제·탐구 드래그/카메라·entry 초기상태 보존, 공유 Player 기본1.5배속. 최소 **60/60 PASS**(독립수학13·native6·공통video41), **402 실제 상태**, validator 오류/경고0·KaTeX·구문8단위·diff 통과. δ≤0의 극점 소멸, 변곡점에서 접점/교점 일치, 외부접선3/2/1과 위아래 도함수 대응을 실제 Board로 확인했다. 원격 WIP `4fbc5a2cf8a77036e07d6691d3f3cc848b924695` 계보를 보존하고 최신 main 반영 뒤 입력16개 SHA 동일 확인. 전체브라우저·모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+
+- 2026-11-12 · **도함수 그래프 main 병합.** [PR #1834](https://github.com/icefoxtail/AP------/pull/1834), feature `3343406c8371eff1baf1c9ab40bab1b6da60a2be`, merge/main readback `16f120347a36f7c06290226089c133d24a3de40c`, tested tree `a410930b1642e68d971f6a821e52f0b53f32269a`. 누적 **37실험실/828장면/2,362해설**. AWCR r63 remote raw SHA256 `0ce3637bb078e50edd3fdf169da4072c591ebb6c9233a1abf9033caf573ade53` 확인. Pages writer43060888403은 계속 queued, **PAGES_NOT_VERIFIED**. 다음 삼차→사차→합성 순서로 각 PR을 병합한다.
 
 - 2026-11-12 · **도함수와 함수의 그래프 전체 구현.** `feat/lessons-calc1-derivative-shape`, catalog/HTML **7장면/23해설**(원문 목표12·탐구개념11), 누락0. 부호·극값·상수 범위·수평선 교점·정수 조건을 목표별로 구분했다. 원문의 x³−3x²+C와 탐구의 (x−1)³−3(x−1)+C 사이 상수항 차이2를 독립 검산해 모델을 혼용하지 않는다. 첫 원문 고정·수동 새 문제·드래그·focus/zoom/pan과 상태/진입 panes 보존. 최소 **69/69 PASS**(독립수학7·native7·공통video/pins55), **370 실제 상태**, validator 오류/경고0·JS/MJS6+inline2 구문·diff 통과. 최신 main 통합 뒤 검사 입력46파일 SHA 동일. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
