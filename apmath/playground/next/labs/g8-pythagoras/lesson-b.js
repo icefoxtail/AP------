@@ -33,8 +33,64 @@
       ch('제곱값에서 길이 확인', [{ at: 0, say: `기본 수 (${family.join(', ')})의 두 알려진 변도 2배예요.` }, { at: 6, say: `양수 ${ans}를 제곱하면 ${ans * ans}이므로 x=${ans}이에요.`, set: { pyShowAnswer: true }, step: 5 }])
     ], { start: { pyF: index, pyK: k }, q: { pyF: index, pyK: k, pyAsk: ask }, set: { pyAsk: ask } });
   }
+  function trapLesson(kind) {
+    const q = { pyQ1: 3, pyQ2: 4, pyKind: kind };
+    if (kind === 0) return make('빗변을 정하지 않았을 때 두 경우', '두 경우', '가능한 x²의 값들의 합은 32', [
+      ch('주어진 두 변과 구할 값', [{ at: 0, say: '두 변은 3, 4이고 나머지는 x예요.' }, { at: 6, say: '가장 긴 변이 누구인지 정하지 않아 두 경우를 나눠요.', step: 1 }]),
+      ch('x가 빗변인 경우', [{ at: 0, say: 'x가 빗변이면 나머지 3, 4가 직각변이에요.', step: 2 }, { at: 6, say: 'x²=3²+4²=25를 첫 번째 값으로 기록해요.', set: { pyBFirstReady: true } }]),
+      ch('4가 빗변인 경우', [{ at: 0, say: '4가 빗변이면 x²+3²=4²로 놓아요.', step: 3 }, { at: 6, say: 'x²=16−9=7을 두 번째 값으로 기록해요.', set: { pyBSecondReady: true } }]),
+      ch('가능한 제곱값의 합', [{ at: 0, say: '3은 이미 4보다 짧아서 빗변이 될 수 없어요.' }, { at: 6, say: '두 경우를 모두 더하면 25+7=32가 정답이에요.', set: { pyShowAnswer: true }, step: 4 }])
+    ], { q });
+    const hyp = kind === 1 ? '4' : 'x', answer = kind === 1 ? 7 : 25;
+    return make(`${hyp}가 빗변일 때 x²`, kind === 1 ? '4가 빗변' : 'x가 빗변', `x²=${answer}`, [
+      ch('빗변 조건부터 읽기', [{ at: 0, say: `세 변은 3, 4, x이고 가장 긴 변은 ${hyp}예요.` }, { at: 6, say: '구할 것은 길이 x가 아니라 제곱한 값 x²예요.', step: 1 }]),
+      ch('직각을 기준으로 식 세우기', [{ at: 0, say: kind === 1 ? '빗변 4의 제곱은 두 직각변 제곱의 합이에요.' : '직각변 3, 4의 제곱을 더해 빗변의 제곱을 구해요.', step: 2 }, { at: 6, say: kind === 1 ? 'x²+3²=4²이므로 x²=16−9로 계산해요.' : 'x²=3²+4²이므로 9+16으로 계산해요.' }]),
+      ch('물어본 제곱값으로 답하기', [{ at: 0, say: `이 문항은 빗변이 ${hyp}라는 한 경우만 물었어요.` }, { at: 6, say: `계산한 x²=${answer}이 정답이에요.`, set: { pyShowAnswer: true }, step: 4 }])
+    ], { q });
+  }
+  function hingeConcept() {
+    return make('경첩 각도와 맞은편 변의 제곱', '경첩 원리', '∠C가 예각·직각·둔각이면 c²은 a²+b²보다 작음·같음·큼', [
+      ch('기호와 움직이는 각', [{ at: 0, say: 'a=BC=8, b=CA=6은 고정하고 ∠C만 움직여요.', to: { pyBT: 1, pyHang: 90 }, dur: 4 }, { at: 6, say: 'c=AB는 ∠C의 맞은편 변이에요.', step: 1 }]),
+      ch('비교할 두 막대', [{ at: 0, say: '위 막대는 a²+b², 아래 노란 막대는 c²예요.', set: { pyBBarReady: true } }, { at: 6, say: '고정한 두 변에서 a²+b²=64+36=100이에요.', set: { pyCalculationReady: true }, step: 2 }]),
+      ch('각만 바꾸며 비교하기', [{ at: 0, say: '경첩을 더 벌려 맞은편 변과 아래 막대를 살펴봐요.', to: { pyHang: 120 }, dur: 4 }, { at: 6, say: '다시 좁혀도 위 막대의 값은 그대로예요.', to: { pyHang: 60 }, dur: 4 }]),
+      ch('지정된 각과 제곱의 관계', [{ at: 0, say: 'c²이 a²+b²보다 작으면 ∠C가 예각이에요.', set: { pyShowAnswer: true } }, { at: 4, say: '두 값이 같을 때 ∠C가 직각이에요.' }, { at: 8, say: 'c²이 a²+b²보다 크면 ∠C가 둔각이에요.', step: 3 }])
+    ], { problem: false, start: { pyHang: 60 }, q: { pyHa: 8, pyHb: 6, pyKind: 0 } });
+  }
+  function hingeProblem(kind) {
+    const c2 = kind ? 148 : 25, th = Math.acos((100 - c2) / 96) * 180 / Math.PI, answer = kind ? '둔각' : '예각';
+    return make('세 변 정보로 지정된 ∠C 판단', kind ? '제곱값 조건' : '길이 조건', `∠C는 ${answer}`, [
+      ch('구할 각의 맞은편 확인', [{ at: 0, say: kind ? 'BC=8, CA=6, AB²=148이 주어졌어요.' : 'BC=8, CA=6, AB=5가 주어졌어요.' }, { at: 6, say: '판별할 ∠C의 맞은편은 AB예요.', step: 1 }]),
+      ch('맞은편 제곱과 두 변 제곱의 합', [{ at: 0, say: 'AB²을 BC²+CA²과 비교하는 전략을 써요.', set: { pyBBarReady: true } }, { at: 6, say: `BC²+CA²=100, AB²=${c2}이에요.`, set: { pyCalculationReady: true }, step: 2 }]),
+      ch('지정된 각에 결론 적용', [{ at: 0, say: kind ? '148>100이므로 맞은편 변의 제곱이 더 커요.' : '25<100이므로 맞은편 변의 제곱이 더 작아요.' }, { at: 6, say: `삼각형 전체가 아니라, 물어본 ∠C는 ${answer}이에요.`, set: { pyShowAnswer: true }, step: 3 }])
+    ], { q: { pyHa: 8, pyHb: 6, pyHang: th, pyKind: kind }, start: { pyHang: th }, set: { pyKind: kind } });
+  }
+  function judgeLesson(obtuse) {
+    const a = obtuse ? 4 : 5, b = obtuse ? 5 : 6, c = 7, sum = a * a + b * b, answer = obtuse ? '둔각삼각형' : '예각삼각형';
+    return make(`세 변 ${a}, ${b}, ${c}의 삼각형 판별`, '세 변 판별', answer, [
+      ch('삼각형과 가장 긴 변 확인', [{ at: 0, say: `세 변은 ${a}, ${b}, 7이고 가장 긴 변은 7이에요.` }, { at: 6, say: `${a}+${b}>7이라 삼각형은 만들 수 있어요.`, step: 1 }]),
+      ch('가장 큰 각을 제곱으로 판단', [{ at: 0, say: '가장 긴 변의 맞은편이 가장 큰 각이에요.' }, { at: 6, say: `7²=49와 ${a}²+${b}²=${sum}을 비교해요.`, set: { pyCalculationReady: true }, step: 2 }]),
+      ch('삼각형의 종류 결론', [{ at: 0, say: obtuse ? '49>41이므로 가장 큰 각이 직각보다 커요.' : '49<61이므로 가장 큰 각도 직각보다 작아요.' }, { at: 6, say: `따라서 이 삼각형은 ${answer}이에요.`, set: { pyShowAnswer: true }, step: 3 }])
+    ], { q: { pyJa: a, pyJb: b, pyJc: c }, start: { pyJa: a, pyJb: b, pyJc: c } });
+  }
+  function rangeLesson(acute, count) {
+    const p = acute ? 6 : 4, q = acute ? 8 : 5, answer = acute ? '6, 7, 8, 9' : '2, 7, 8', n = acute ? 4 : 3, type = acute ? '예각' : '둔각';
+    return make(`${type}삼각형이 되는 자연수 ${count ? '개수' : '값'}`, count ? '개수 구하기' : '값 찾기', count ? `${n}개` : `x=${answer}`, [
+      ch('주어진 변과 구할 자연수', [{ at: 0, say: `두 변은 ${p}, ${q}이고 나머지 변 x는 자연수예요.` }, { at: 6, say: '먼저 삼각형 조건을 구하고 가장 긴 변을 나눠 봐요.', step: 1 }]),
+      ch('삼각형이 되는 범위', [{ at: 0, say: `${q}−${p} < x < ${q}+${p}가 삼각형 조건이에요.` }, { at: 6, say: `가능한 자연수는 ${q - p + 1}부터 ${q + p - 1}까지예요.`, set: { pyBRangeReady: true } }]),
+      ch('x가 가장 긴 경우', [{ at: 0, say: `x>${q}일 때 x²${acute ? '<' : '>'}${p}²+${q}²이어야 ${type}이에요.`, step: 2 }, { at: 6, say: acute ? '즉 x²<100이며, 9²=81과 10²=100을 비교해요.' : '즉 x²>41이며, 6²=36과 7²=49를 비교해요.' }]),
+      ch(`${q}가 가장 긴 경우`, [{ at: 0, say: `x≤${q}일 때 ${q}²${acute ? '<' : '>'}${p}²+x²로 비교해요.`, step: 3 }, { at: 6, say: acute ? 'x²>28이므로 5²=25, 6²=36과 비교해요.' : 'x²<9이며, x=3은 등호라 직각삼각형이에요.' }]),
+      ch('두 경우를 합쳐 답하기', [{ at: 0, say: `범위 안에서 조건을 만족하는 x는 ${answer}예요.`, set: { pyShowAnswer: true } }, { at: 6, say: count ? `따라서 물어본 자연수 x의 개수는 ${n}개예요.` : `빠짐없이 찾은 값은 ${answer}, 모두 ${n}개예요.`, step: 4 }])
+    ], { problem: count, q: { pyRp: p, pyRq: q, pyRx: q, pyAsk: acute ? 'acute' : 'obtuse' }, start: { pyRp: p, pyRq: q, pyRx: q }, set: { pyAsk: acute ? 'acute' : 'obtuse' } });
+  }
   Object.assign(lessons, {
     'py3-345': [familyConcept([3, 4, 5]), familyProblem([3, 4, 5], 'c'), familyProblem([3, 4, 5], 'b')],
-    'py3-51213': [familyConcept([5, 12, 13]), familyProblem([5, 12, 13], 'c'), familyProblem([5, 12, 13], 'a')]
+    'py3-51213': [familyConcept([5, 12, 13]), familyProblem([5, 12, 13], 'c'), familyProblem([5, 12, 13], 'a')],
+    'py3-8157': [familyConcept([8, 15, 17]), familyConcept([7, 24, 25], 1), familyProblem([8, 15, 17], 'c'), familyProblem([7, 24, 25], 'b', 1)],
+    'py3-trap': [trapLesson(0), trapLesson(1), trapLesson(2)],
+    'py4-hinge': [hingeConcept(), hingeProblem(0), hingeProblem(1)],
+    'py4-acute': [judgeLesson(false)],
+    'py4-obtuse': [judgeLesson(true)],
+    'py4-orange': [rangeLesson(false, false), rangeLesson(false, true)],
+    'py4-arange': [rangeLesson(true, false), rangeLesson(true, true)]
   });
 })();
