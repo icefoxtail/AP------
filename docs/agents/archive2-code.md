@@ -149,3 +149,14 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **단원 페이지의 `request`**(`assignRequest`)는 `archive2-workspace.js api()`와 같은 방식이다(같은 서버 주소·세션 인증, 로그인이 없으면 요청 없이 `status=401`이라 패널이 로그인 안내를 그린다, 제한 시간이면 `timeout=true`). 비밀번호 입력·로그인 우회는 없다. 결과 줄의 출력 버튼(`assignment-output-direct`)은 단원 페이지에 처리기가 없어 `outputLinks:false`로 끈다. 뒤로 가기는 `popstate` 처리기가 먼저 `Archive2Assign.handlePopState()`를 부르고 아니면 기존 `restoreFromUrl`을 한다.
 - 서버·`archive/index.html`·`archive2-entry.js`는 바꾸지 않았다. `unit-past-exams.html`이 `archive2-assign.css/js`를 읽고(`workspace.html`과 같은 `?v=`) 테스트는 `tests/archive2-assign-unit.test.js`다.
 - **패널 버튼 모양은 패널이 스스로 갖는다**: 패널은 작업공간과 단원별 기출 두 화면에서 열리는데 단원 페이지는 `archive2.css`를 읽지 않아 버튼·입력이 브라우저 기본 회색으로 나왔다. `archive2-assign.css`가 `:where(dialog.assign-panel)` 범위로 작업공간의 최종 계산값과 같은 기본 모양(button·primary·small·aria-pressed·input·label·링크형 버튼)을 갖고, 단원 페이지의 `.unit-page button { font: inherit }`가 글자 크기·굵기를 덮지 않게 버튼 글자만 한 단계 높여 적는다. 두 화면에서 같은 패널의 버튼·입력 20곳의 계산 스타일(배경·글자색·테두리·둥근 정도·높이·글꼴)이 같음을 확인했다. `archive2.css` 전체를 단원 페이지에 더하지 않는다(단원 페이지 다른 모양이 바뀐다).
+
+## 출제 내역·만들던 문제지에서 바로 지우기 (2026-11-11 사용자 요청)
+
+- **출제 내역 줄의 `출제 취소`**: 잘못 낸 건·테스트 건을 APMS로 가지 않고 그 자리에서 멈춘다. 서버 `POST /class-exam-assignments/:id/cancel`을 부르고, 확인 대화상자를 거친다(되돌리는 경로가 없다).
+- **삭제가 아니라 취소인 이유**: 서버는 Archive 2.0 확정 배부를 지우지 못하게 막는다(`DELETE /exam-sessions/by-exam`이 409). 취소는 행을 지우지 않고 `cancelled_at`만 남겨, 아직 안 푼 학생에게는 안 보이고 이미 제출한 기록은 남는다. 한 번 잘못 눌러도 학생 기록이 사라지지 않는다.
+- **취소는 모든 출제에 열려 있다**: 전에는 보관함 저장본 출제만 취소할 수 있어 학교 기출·단원별 건은 지울 수도 멈출 수도 없었다. `routes/exams.js` 취소 경로의 저장본 전용 제한을 없앴다(기록 테이블의 `saved_paper_id`는 NULL 허용). 이 제한을 되살리지 말 것.
+- **취소한 출제는 목록에서 기본으로 숨긴다**(`state.recentShowCancelled`, `취소한 출제 N건 보기`). 교사에게는 지운 것과 같아 보이게 하려는 것이다. 보관함 줄의 출제 이력은 지금처럼 "취소됨"으로 보인다.
+- 취소한 뒤 같은 반·같은 날·같은 시험지로 다시 내면 서버가 취소된 건으로 답한다 → 출제 패널이 출제일을 바꾸라고 안내한다(기존 동작).
+- **만들던 문제지 `삭제`**: 홈과 출제 내역 모두 `이어하기` 옆에 바로 보인다(더보기 안에 숨기지 않는다). 이 기기(localStorage)의 작업만 지우며 확인을 거친다. 지금 작업 중인 초안을 지우면 `resetWorkingDraft()`로 작업 상태도 비운다 — 안 비우면 자동 저장이 되살린다.
+- PDF 준비 오류의 서버 원문(영어)은 `pdfErrorText()`로 교사용 문장으로 바꿔 보인다.
+- 홈의 `생성문제` 칸은 열리는 화면 제목(`generated-bank.html` "모의고사 만들기")에 맞춰 `모의고사`라고 부른다. `유사문제`는 학교 기출 옆 유사 세트를 가리키는 말이라 쓰지 않는다.
