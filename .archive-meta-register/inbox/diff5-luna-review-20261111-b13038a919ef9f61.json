@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "driveFileId": "diff5-luna-review-20261111-b13038a919ef9f61",
+  "driveSha256": "84677deedaa93e3749e77cdb4a96973f9ef04705b387d7ef24f77fbdc26ecfd8",
+  "driveChecksumSource": "local_bytes",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "diff5-luna-review-20261111-b13038a919ef9f61",
+    "createdAt": "2026-11-11",
+    "sourceArchiveFile": "original/middle/m3/1mid/18_동산중_1학기_중간_중3_수학.js",
+    "latestBlobSha": "dc5fba4ad5ba7fe69c8c1edd88c4aacb4b961e7e",
+    "items": [
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_b567b73d0626a6a0f852f4d4570996379daa15f517fad9c94a02a165edb3c00f",
+        "before": {
+          "level": 3
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "UNKNOWN"
+        }
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_90ea5a58d4ecb1dbaa1a0b18376ac5295176a7e62abfb1d7cf8392aece0e4a1f",
+        "before": {
+          "level": 3
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "2026-11-11 user-authorized per-item review and registration",
+    "evidencePath": ".archive-meta-register/evidence/diff5-luna-review-20261111-b13038a919ef9f61.json",
+    "evidenceSha256": "84677deedaa93e3749e77cdb4a96973f9ef04705b387d7ef24f77fbdc26ecfd8",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m3/1mid/18_동산중_1학기_중간_중3_수학.js",
+        "ordinal": 4,
+        "questionUid": "qid_v1_b567b73d0626a6a0f852f4d4570996379daa15f517fad9c94a02a165edb3c00f",
+        "sourceFingerprint": "662c00dabd1999c08762ef7d675b0e1bc89d748104bfbde2c7a806336c77f274",
+        "contentFingerprint": "e83e8c56996b06c7b47db9babdc598e4c28ac76f95c830b81831d75d186b6e08",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "before": {
+          "level": 3,
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "662c00dabd1999c08762ef7d675b0e1bc89d748104bfbde2c7a806336c77f274",
+          "contentFingerprint": "e83e8c56996b06c7b47db9babdc598e4c28ac76f95c830b81831d75d186b6e08"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "UNKNOWN"
+        },
+        "decision": "CORRECT",
+        "reason": "정사각형의 대각선 √2와 주어진 수직선 좌표를 이용해 C, B, Q를 차례로 구한다. 실제 그림을 확인했으며 거리 이동이 연쇄되지만 각 이동이 직접 정해져 있어 2가 더 적절하다."
+      },
+      {
+        "sourceArchiveFile": "original/middle/m3/1mid/18_동산중_1학기_중간_중3_수학.js",
+        "ordinal": 25,
+        "questionUid": "qid_v1_90ea5a58d4ecb1dbaa1a0b18376ac5295176a7e62abfb1d7cf8392aece0e4a1f",
+        "sourceFingerprint": "2d4693427f498802fc448dc12b24a8dfe152c105f1f6f4d6fd4d2efb3176a13f",
+        "contentFingerprint": "a806fe707f17aeadc32b39417bc7eab90f83d660b2358696c22d3680c4ab067d",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "before": {
+          "level": 3,
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "2d4693427f498802fc448dc12b24a8dfe152c105f1f6f4d6fd4d2efb3176a13f",
+          "contentFingerprint": "a806fe707f17aeadc32b39417bc7eab90f83d660b2358696c22d3680c4ab067d"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN"
+        },
+        "decision": "CORRECT",
+        "reason": "큰 정사각형에서 작은 정사각형의 넓이를 빼고 차의 제곱 공식으로 인수분해한다. 넓이 모델링은 직접적이며 핵심 공식이 즉시 적용된다."
+      }
+    ]
+  }
+}

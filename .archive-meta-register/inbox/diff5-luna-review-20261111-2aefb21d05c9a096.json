@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "driveFileId": "diff5-luna-review-20261111-2aefb21d05c9a096",
+  "driveSha256": "ceed82a9a39b9ed34f89ee4a01d9ee72350e6928742c3a1a0bc3c36fddfeb6ce",
+  "driveChecksumSource": "local_bytes",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "diff5-luna-review-20261111-2aefb21d05c9a096",
+    "createdAt": "2026-11-11",
+    "sourceArchiveFile": "original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js",
+    "latestBlobSha": "89d4bacd0ccb07cd4dc0627b07ac2b03d651aee6",
+    "items": [
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_5ede8d0da46844253b2fe3db2cf21b76913be69ef0868a34784816344f6c3dda",
+        "before": {
+          "level": "상"
+        },
+        "after": {
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B45",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "2026-11-11 user-authorized per-item review and registration",
+    "evidencePath": ".archive-meta-register/evidence/diff5-luna-review-20261111-2aefb21d05c9a096.json",
+    "evidenceSha256": "ceed82a9a39b9ed34f89ee4a01d9ee72350e6928742c3a1a0bc3c36fddfeb6ce",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js",
+        "ordinal": 25,
+        "questionUid": "qid_v1_5ede8d0da46844253b2fe3db2cf21b76913be69ef0868a34784816344f6c3dda",
+        "sourceFingerprint": "c110a62e2a0de95c9cabd1f7045e1da0ada9d226d99a92547fd13f91d866bbcd",
+        "contentFingerprint": "02009911619e0406042de92e34af91f7992eeeff3e307ce2a51d4665f9c7fa97",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "before": {
+          "level": "상",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "sourceFingerprint": "c110a62e2a0de95c9cabd1f7045e1da0ada9d226d99a92547fd13f91d866bbcd",
+          "contentFingerprint": "02009911619e0406042de92e34af91f7992eeeff3e307ce2a51d4665f9c7fa97"
+        },
+        "after": {
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B45",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "decision": "CORRECT",
+        "reason": "접힌 그림의 D,E가 접는 선과 두 변의 교점임을 확인했다. BC 수직이등분선과 무게중심 조건으로 A를 구하고 AG 수직이등분선을 세워 교점 및 넓이를 연쇄 계산한다."
+      }
+    ]
+  }
+}
