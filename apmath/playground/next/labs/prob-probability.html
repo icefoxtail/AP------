@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 휴대폰 문제 탭: 탐구 질문 카드는 접되(compact) 그림 무대는 탐구 탭과 같은 높이(54svh)로 유지합니다. */
 @media (max-width: 859px) {
@@ -21,6 +22,12 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="prob-probability/lesson-core.js"></script>
+<script defer src="prob-probability/lesson-a.js"></script>
+<script defer src="prob-probability/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -258,11 +265,12 @@ window.addEventListener('DOMContentLoaded', function () {
     if (V.kind === 'one') mode = st >= 2 ? 'A' : 'none';
     else if (V.kind === 'or') mode = st >= 3 ? 'U' : st === 2 ? 'A' : 'none';
     else mode = st >= 3 ? 'Ac' : st === 2 ? 'A' : 'none';
-    return { A: V.A, B: V.kind === 'or' ? V.B : null, mode, seen: 36, V, st };
+    return { A: V.A, B: V.kind === 'or' ? V.B : null, mode: s.lppDrawing && s.lppGridMode !== 'auto' ? s.lppGridMode : mode, seen: s.lppDrawing ? Math.round(clamp(s.lppSeen, 0, 36)) : 36, V, st };
   }
   function draw1(b, s, v, lab) {
     const c = cfg1(s, lab), L = lay1(b);
     const cells = gridCells(c.A, c.B), cnt = gridCounts(c.A, c.B), vk = valKind(c.A, c.B);
+    const countShown = name => !s.lppDrawing || s.lppCounts || s.lppKnown.includes(name);
     // 위 머리글(가로 a)과 왼쪽 머리글(세로 b)
     for (let i = 1; i <= 6; i++) {
       lbl(b, [i - 0.5, -0.5], String(i), { color: 'sky', size: 13 });
@@ -308,22 +316,23 @@ window.addEventListener('DOMContentLoaded', function () {
     const xs = [];
     for (const k of blocks) {
       const wk = w(k.n);
+      const counted = countShown(k.name);
       xs.push([x, x + wk]);
       if (wk > 0) {
         b.poly(rectPts(x, by, wk, bh, 0), k.col ? { fill: k.col, fillAlpha: k.hi ? 0.62 : 0.16, color: k.col, alpha: k.hi ? 0.9 : 0.35, width: 1.2, ref: k.ref } : { fill: 'ink', fillAlpha: 0.04, color: 'ink', alpha: 0.2, width: 1, ref: k.ref });
-        const txt = four ? `${k.name} ${k.n}` : c.mode === 'none' ? '전체 36칸' : `${k.name} ${k.n}`;
+        const txt = c.mode === 'none' ? '전체 36칸' : counted ? `${k.name} ${k.n}` : k.name;
         const pw = pxW(b, wk);
         if (pw > txt.length * 7.2 + 6) lbl(b, [x + wk / 2, by + bh / 2], txt, { size: 12.5, color: 'ink' });
-        else if (pw > 20 && c.mode !== 'none') lbl(b, [x + wk / 2, by + bh / 2], String(k.n), { size: 12.5, color: 'ink' });
+        else if (pw > 20 && c.mode !== 'none' && counted) lbl(b, [x + wk / 2, by + bh / 2], String(k.n), { size: 12.5, color: 'ink' });
       }
       x += wk;
     }
     b.poly(rectPts(bx, by, bw, bh, 0), { color: 'ink', alpha: 0.7, width: 2 });
     if (four) {
-      bracket(b, xs[0][0], xs[1][1], by - 0.3, true, `A ${cnt.nA}칸`, 'sky', 'A');
-      bracket(b, xs[1][0], xs[2][1], by + bh + 0.3, false, `B ${cnt.nB}칸`, 'amber', 'B');
-    } else if (c.mode === 'A') bracket(b, xs[0][0], xs[0][1], by - 0.3, true, `A ${cnt.nA}칸`, 'sky', 'A');
-    else if (c.mode === 'Ac') bracket(b, xs[1][0], xs[1][1], by - 0.3, true, `Aᶜ ${cnt.nAc}칸`, 'rose', 'Ac');
+      bracket(b, xs[0][0], xs[1][1], by - 0.3, true, countShown('A') ? `A ${cnt.nA}칸` : 'A', 'sky', 'A');
+      bracket(b, xs[1][0], xs[2][1], by + bh + 0.3, false, countShown('B') ? `B ${cnt.nB}칸` : 'B', 'amber', 'B');
+    } else if (c.mode === 'A') bracket(b, xs[0][0], xs[0][1], by - 0.3, true, countShown('A') ? `A ${cnt.nA}칸` : 'A', 'sky', 'A');
+    else if (c.mode === 'Ac') bracket(b, xs[1][0], xs[1][1], by - 0.3, true, countShown('Aᶜ') ? `Aᶜ ${cnt.nAc}칸` : 'Aᶜ', 'rose', 'Ac');
     else lbl(b, [bx + bw / 2, by - 0.35], '전체 = 36칸 = 확률 1', { color: 'muted' });
     if (L.side) lbl(b, [bx + bw / 2, by + bh + (four ? 1.1 : 0.55)], '사각형 전체 36칸 = 넓이 1', { color: 'muted', size: 12 });
   }
@@ -400,8 +409,8 @@ window.addEventListener('DOMContentLoaded', function () {
     return `${PRE1}${ph1(v.A)}인 사건을 $A$라 할 때, 사건 $A$가 일어나지 않을 확률 $P(A^c)$의 값은?`;
   }
   const colSums = (id) => { const cs = []; for (let a = 1; a <= 6; a++) { let k = 0; for (let b = 1; b <= 6; b++) if (CONDS[id].f(a, b)) k++; cs.push(k); } return cs; };
-  function steps1() {
-    const v = var1.cur(), c = v.c, f = v.f;
+  function steps1(v = var1.cur()) {
+    const c = v.c, f = v.f;
     const S36 = '두 눈이 나오는 경우는 $6\\times 6=36$가지이고 모두 같은 확률이므로, 가로 $a$·세로 $b$의 6×6 격자 36칸이 표본공간입니다.';
     if (v.kind === 'one') return [S36, `${ph1(v.A)}인 칸을 모두 색칠합니다. 색칠한 칸은 ${c.nA}칸입니다.`, `확률 = 칠한 칸 ÷ 전체 칸 = $\\dfrac{${c.nA}}{36}=${frTex(f)}$`];
     if (v.kind === 'or') return [S36, `${ph1(v.A)}인 칸(사건 $A$)을 칠합니다. $n(A)=${c.nA}$`, `${ph1(v.B)}인 칸(사건 $B$)도 칠하면 두 번 칠한 보라색 칸이 생깁니다. $n(B)=${c.nB}$, $n(A\\cap B)=${c.nI}$`, `덧셈정리: $n(A\\cup B)=${c.nA}+${c.nB}-${c.nI}=${c.nU}$이므로 $P(A\\cup B)=\\dfrac{${c.nU}}{36}=${frTex(f)}$`];
@@ -478,8 +487,8 @@ window.addEventListener('DOMContentLoaded', function () {
   function cfg2(s, lab) {
     if (lab.tab === 'explore') return { tb: s.tb, cond: s.cond, view: s.view2, tgt: s.cnd, names: s.names2 || NAMES0, V: null, st: 0, live: true };
     const V = var2.cur(), st = lab.tab === 'problem' ? 0 : s.step;
-    if (V.type === 'bayes') return { tb: V.tb, cond: st >= 3 ? 'A' : 'B', view: 'tree', tgt: st >= 3 ? 1 : 0, names: V.names, V, st, live: false };
-    return { tb: V.tb, cond: V.cond, view: 'table', tgt: st >= 2 ? 1 : 0, names: V.names, V, st, live: false };
+    if (V.type === 'bayes') return { tb: V.tb, cond: st >= 3 ? 'A' : 'B', view: 'tree', tgt: s.lppDrawing ? s.lppCondition : st >= 3 ? 1 : 0, names: V.names, V, st, live: false };
+    return { tb: V.tb, cond: V.cond, view: 'table', tgt: s.lppDrawing ? s.lppCondition : st >= 2 ? 1 : 0, names: V.names, V, st, live: false };
   }
   function drawBayesGiven(b, V, step) {
     setFocus(b, { x: [-0.5, 8.5], y: [-0.5, 6.5] });
@@ -737,8 +746,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     return `주머니 X에는 흰 공 ${v.X[0]}개와 검은 공 ${v.X[1]}개, 주머니 Y에는 흰 공 ${v.Y[0]}개와 검은 공 ${v.Y[1]}개가 들어 있다. 한 개의 주사위를 한 번 던져 나온 눈의 수가 ${v.k} 이상이면 주머니 X에서, ${v.k} 미만이면 주머니 Y에서 임의로 2개의 공을 동시에 꺼낸다. 꺼낸 2개의 공이 모두 흰 공일 때, 주사위의 눈의 수가 ${v.k} 이상일 확률은?`;
   }
-  function steps2() {
-    const v = var2.cur(), st = v.st;
+  function steps2(v = var2.cur()) {
+    const st = v.st;
     if (v.type === 'table') {
       const n = v.names, cB = v.cond === 'B', nm = cB ? n.B : n.A, ot = cB ? n.A : n.B;
       const nC = cB ? st.nB : st.nA, nI = st.n11;
@@ -1002,6 +1011,11 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sim.N) lbl(b, [(lx + rx) / 2 + 0.3, ty + (by - ty) * 0.3], '시뮬레이션을 눌러 보세요', { color: 'muted', size: 12.5 });
   }
   function cfg3(kind, s, lab) {
+    if (s.lppDrawing) {
+      const V = VAR3[kind].cur(), M = s.lppInquiryMachine ? getM(cfgOf(kind, s)) : V.M;
+      const path = s.lppFaces.length ? traceFaces(M, s.lppFaces).path.slice(0, Math.floor(s.lppTrace) + 1) : null;
+      return { M, explore: false, cols: clamp(Math.ceil(s.lppCols), 1, M.n + 1), fill: clamp(Math.floor(s.lppFill), 1, M.n + 1), mark: s.lppMark, path, V, st: s.step };
+    }
     if (lab.tab === 'explore') return { M: getM(cfgOf(kind, s)), explore: true, cols: null, mark: true };
     const V = VAR3[kind].cur(), st = lab.tab === 'problem' ? 0 : s.step;
     return { M: V.M, explore: false, cols: V.M.n + 1, fill: st >= 2 ? V.M.n + 1 : 1, mark: st >= 3, V, st }; // 1단계: 칸만 그려 두고 숫자는 처음 칸만 / 2단계: 경로 수를 채움
@@ -1009,7 +1023,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw3(kind) {
     return (b, s, v, lab) => {
       const c = cfg3(kind, s, lab), M = c.M, g = geo3(b, M, c.explore);
-      let path = null;
+      let path = c.path || null;
       if (c.explore) { const r = runOf(s, kind, M); path = r.path; }
       drawTrellis(b, M, g, { cols: c.cols, fill: c.fill, mark: c.mark, path, links: c.explore || c.st >= 1 });
       if (c.explore) { const sim = simOf(s, kind, M); drawHist(b, M, g, sim); drawConv(b, M, g, sim); }
@@ -1244,7 +1258,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- 5. 실험실 조립 ---------- */
-  APLab.createLab({
+  const probabilityDefinition = {
     id: 'prob-probability',
     stagedReveal: true,
     title: '확률 실험실',
@@ -1269,7 +1283,41 @@ window.addEventListener('DOMContentLoaded', function () {
       { id: 'g2', title: '조건부확률과 독립', short: '조건부확률', scenes: [scopedScene(scene2())] },
       { id: 'g3', title: '독립시행·반복 시행', short: '반복 시행', scenes: ['walk', 'ball', 'coin'].map((kind) => scopedScene(scene3(kind))) }
     ]
+  };
+  // Each explanation selects a real source type. The student's chosen packet,
+  // arrays, run history and simulation history remain in their native state.
+  function traceFaces(M, faces) {
+    const r = {}; resetRun(r, M);
+    for (const f of faces.slice(0, M.n)) {
+      if (!Number.isInteger(f) || f < 1 || f > M.K) throw new Error('Invalid probability trace face');
+      r.faces.push(f);
+      if (M.cfg.kind === 'coin') { r.mask ^= 1 << (f - 1); r.path.push(headCount(r.mask)); }
+      else r.path.push(M.next(r.path.at(-1), f));
+    }
+    return r;
+  }
+  const probabilityScenes = probabilityDefinition.groups.flatMap(g => g.scenes);
+  const initialProbability = { ...probabilityDefinition.state, ...Object.fromEntries(Object.entries(probabilityDefinition.params).map(([k,v]) => [k,v.value])) };
+  const probabilityPackets = Object.fromEntries(probabilityScenes.map(sc => { const first = sc.vary.cur(); sc.vary.first = () => first; return [sc.id,{first}]; }));
+  Object.assign(probabilityPackets.grid, {
+    union: mk1({kind:'or',A:'sum7le',B:'prod4'}), complement: mk1({kind:'not',A:'prodOdd'}),
+    symmetric: mk1({kind:'one',A:'sum7le'}), asymmetric: mk1({kind:'one',A:'aLtB'}), disjoint: mk1({kind:'or',A:'sum7',B:'same'})
   });
+  Object.assign(probabilityPackets.cond, { tableB: mkTable2(SCEN2[0],[6,4,5,7],'B'), tableA: mkTable2(SCEN2[0],[6,4,5,7],'A') });
+  probabilityPackets['rep-walk'].back = mkWalk({kind:'walk',move:MOVES.ge5.faces,other:'back',n:4,thr:2});
+  const probabilitySource = window.APL_PROBABILITY_SOURCE = {
+    initial: () => JSON.parse(JSON.stringify(initialProbability)),
+    inquiry: id => probabilityScenes.find(sc => sc.id === id).question,
+    first(id,key='first') { const v=probabilityPackets[id]?.[key]; if(!v) throw new Error('Unknown probability packet '+id+'/'+key); return v; },
+    question(id,key='first') { const v=this.first(id,key); return id==='grid'?text1(v):id==='cond'?text2(v):TEXT3[id.slice(4)](v); },
+    steps(id,key='first') { const v=this.first(id,key); return id==='grid'?steps1(v):id==='cond'?steps2(v):STEPS3[id.slice(4)](v); },
+    answer(id,key='first') { const v=this.first(id,key); return id==='grid'||id==='cond'?frTex(v.f):id==='rep-ball'?String(v.M.P.n+v.M.P.d):frTex(v.M.P); },
+    math: { fr, frTex, gridCells, gridCounts, colSums, tbStats, colsOf, tbOf, makeMachine, getM, traceFaces, simulate, newSim, mkGrid:mk1, mkTable:mkTable2, mkBayes:mkBayes2, mkWalk, mkBall, mkCoin },
+    variants: { conditions:COND_IDS, moves:MOVES, ball:BALL_VARS, coin:COIN_VARS, tableScenarios:SCEN2 },
+    generators: { grid:gen1, cond:gen2, walk:genWalk, ball:genBall, coin:genCoin }
+  };
+  probabilityDefinition.lessons = window.APL_PROBABILITY_LESSONS?.install(probabilityScenes, probabilitySource) || {};
+  APLab.createLab(probabilityDefinition);
 
 });
 </script>
