@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 단위원·그래프 두 그림 위의 수식 라벨(KaTeX)과 결과 카드 — 원본 스타일을 셸 테마 변수로 옮김 */
 .ucl-root { position: absolute; pointer-events: none; overflow: hidden; }
@@ -39,6 +40,12 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="alg-unit-circle/lesson-core.js"></script>
+<script defer src="alg-unit-circle/lesson-a.js"></script>
+<script defer src="alg-unit-circle/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -57,6 +64,7 @@
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
   const PI = Math.PI, TAU = 2 * PI, EPS = 1e-10;
+  const lucActive = s => !!(s && (s.lessonOn || s.lessonEntry));
   const level = (s) => Math.max(0, Math.min(3, Number(s.step) || 0));
   const tabOf = (l) => (l || window.lab)?.tab || 'explore';
   const nearExact = (a,b) => Math.abs(a-b) <= 32*Number.EPSILON*Math.max(1,Math.abs(a),Math.abs(b));
@@ -181,6 +189,10 @@ function formatAngleWithDeg(radLabel,radVal,isApprox=false){
 function overlayBegin(name){if(THUMB)return;overlays[name].used.clear();}
 function overlayLabel(name,key,label,x,y,cls='math-label',options={}){
   if(THUMB)return DUMMY;
+  if(lucActive(S)&&!/(?:math-axis|math-landmark|math-angle)/.test(cls)&&key!=='k-guide'){
+    label=lucLabel(label,S);
+    if(!label)return DUMMY;
+  }
   let o=overlays[name],el=o.nodes.get(key);
   if(!el){
     el=document.createElement('span');
@@ -839,7 +851,7 @@ function graphDraw(g,W,H){
   let N=Math.min(3600,Math.max(600,Math.floor(pw*1.8),Math.floor((S.x1-S.x0)/PI*140)));
   let lo=S.domain==='one'?0:S.x0,hi=S.domain==='one'?TAU:S.x1;
 
-  if(S.activity==='inequality'){
+  if(S.activity==='inequality'&&(!lucActive(S)||level(S)>=2)){
     for(let f of active()){
       g.save();
       g.beginPath();g.rect(p.l,p.t,pw,ph);g.clip();
@@ -1545,7 +1557,7 @@ function htmlApprox(){
     const frTxt = (a) => (a.d === 1 ? `${a.n < 0 ? MN : ''}${Math.abs(a.n)}` : `${a.n < 0 ? MN : ''}${Math.abs(a.n)}/${a.d}`);
     const frVal = (a) => a.n / a.d;
     // 변형 생성기: gen(이전 변형|null) → 새 변형. 처음에는 기출 유형 그대로(gen(null)).
-    function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+    function varier(gen) { const first=gen(null); let cur=first; return { first:()=>first, cur:()=>lucActive((lab||window.lab)?.s)?first:cur, next:()=>(cur=gen(cur)) }; }
     const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-uc-new>새 문제</button></div>`;
     document.addEventListener('click', (ev) => {
       const hit = ev.target && ev.target.closest && ev.target.closest('[data-uc-new]');
@@ -2546,17 +2558,7 @@ function htmlApprox(){
     };
   }
 
-  APLab.createLab({
-    id: 'alg-unit-circle',
-    stagedReveal: true,
-    title: '단위원과 삼각함수의 그래프',
-    courseName: '대수',
-    unit: 'Ⅱ. 삼각함수 · 단위원 연동',
-    courseColor: 'var(--m-sky)',
-    home: '../index.html#algebra',
-    legacy: '../../labs/대수/단위원과그래프.html',
-    board: { kind: 'cartesian', focus: { x: [-1, 1], y: [-1, 1] } },
-    params: {
+  const lessonParams = {
       theta: {
         value: PI / 4, min: -4 * PI, max: 6 * PI, step: .001, color: 'violet', label: '각도 이동 θ (점 P를 끌어도 됩니다)',
         format: (v) => fmtTheta(v),
@@ -2575,9 +2577,104 @@ function htmlApprox(){
       cvt: { value: PI / 3, min: 0, max: TAU - .001, step: 'any', color: 'amber', label: '각 $\\theta$ (점 P를 끌어도 됩니다)', format: (v) => 'θ: '+degText(v) },
       twk: { value: .5, min: .1, max: Math.SQRT1_2, step: 'any', color: 'rose', label: '평행선의 높이 $k$', hint: '슬라이더는 자유조작, 아래 특수값 버튼으로 정확한 위치 선택', format: (v) => 'k ' + (nearExact(v,.5) ? '= 1/2' : nearExact(v,Math.SQRT1_2) ? '= √2/2' : '≈ ' + v.toFixed(4)) },
       rst: { value: .5, min: -1.15, max: 1.15, step: 'any', color: 'amber', label: '수평선 높이 $y=t$', hint: '슬라이더·노란 점은 자유조작, 아래 특수값 버튼은 정확한 값', format: (v) => { const vals = [[0,'0'],[.5,'1/2'],[-.5,'−1/2'],[Math.SQRT1_2,'√2/2'],[-Math.SQRT1_2,'−√2/2'],[Math.sqrt(3)/2,'√3/2'],[-Math.sqrt(3)/2,'−√3/2'],[1,'1'],[-1,'−1']]; const hit = vals.find(([n]) => Math.abs(n - v) < 1e-9); return hit ? 't = ' + hit[1] : 't ≈ ' + v.toFixed(4).replace('-', '−'); } }
-    },
+    };
+
+  const lessonScenes=SCENES.map(sceneOf).concat(EXT_SCENES);
+  const cloneState=s=>({...s,fn:{...(s.fn||INIT.fn)}});
+  const sourceInfo=Object.fromEntries(lessonScenes.map(sc=>{
+    const initial=cloneState({...INIT,...Object.fromEntries(Object.entries(lessonParams).map(([k,p])=>[k,p.value]))});
+    sc.enter?.(initial);
+    return [sc.id,{initial,first:sc.vary?.first()||null,
+      question:sc.problem?sc.problem.text().replace(/<div[^>]*>\s*<button[^>]*data-uc-new[\s\S]*$/,''):sc.question,
+      inquiry:sc.question,steps:sc.steps(initial)}];
+  }));
+  const withState=(s,fn)=>{const keep=S;S=s;try{return fn();}finally{S=keep;}};
+  const lessonSource=window.APL_UC_SOURCE={
+    scenes:lessonScenes,first:id=>sourceInfo[id].first,initial:id=>cloneState(sourceInfo[id].initial),
+    question:id=>sourceInfo[id].question,inquiry:id=>sourceInfo[id].inquiry,steps:id=>sourceInfo[id].steps.slice(),
+    math:{exact,value:fval,roots:(s,f,k,a,b,right)=>withState(s,()=>roots(f,k,a,b,right)),
+      intervals:(s,f,a,b,right)=>withState(s,()=>numericIntervals(f,a,b,right)),
+      quadrant:quadrantInfo,unitPoint,allRoots:EXT.allRoots,extOn:EXT.extOn,twoPts:EXT.twoPts,transforms:EXT.CVM},
+    layout:(b,s)=>withState(s,()=>regions(b)),radius:circleRadius
+  };
+  function lucMathKey(value){
+    return String(value||'').normalize('NFKC').replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'')
+      .replace(/\\(?:dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'$1/$2')
+      .replace(/\\sqrt\{([^{}]*)\}/g,'√$1').replace(/\\sqrt\s*(\w)/g,'√$1')
+      .replace(/\\(?:text|mathrm|mathbf|overline)\{([^{}]*)\}/g,'$1')
+      .replace(/\\pi/g,'π').replace(/\\theta/g,'θ').replace(/\\(?:sin|cos|tan)/g,x=>x.slice(1))
+      .replace(/\\leq?/g,'≤').replace(/\\geq?/g,'≥').replace(/\\lt/g,'<').replace(/\\gt/g,'>')
+      .replace(/\\cdot|\\times/g,'×').replace(/−|–/g,'-').replace(/[\s{}$^_()]/g,'').replace(/^([A-Z])=/,'$1');
+  }
+  function lucLabel(value,s){
+    const text=String(value||'');
+    if(s.lucShowAnswer)return text;
+    const key=lucMathKey(text),known=(s.lucKnownMath||[]).map(lucMathKey);
+    if(text.startsWith('주기 ')){const label=text.split(' = ')[0],value=lucMathKey(label.slice(3));if(value&&known.some(math=>math.includes(value)))return label;}
+    if(key&&known.some(math=>math.includes(key)))return text;
+    if(/^(?:[A-Z][₁₂₃₄]?[′']*|[xyabcθt]|[ⅠⅡⅢⅣ]|(?:sin|cos|tan)\s?θ|y = x)$/.test(text))return text;
+    const named=text.match(/^([A-Z][′']*)(?=[\s(=:]|$)/);
+    return named?named[1]:'';
+  }
+  for(const sc of lessonScenes){
+    const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick};
+    sc.question=(s,l)=>lucActive(s)?s.lucQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,l):original.question;
+    sc.reviewTop=(s,l)=>lucActive(s)?'':typeof original.reviewTop==='function'?original.reviewTop(s,l):original.reviewTop;
+    sc.steps=(s,l)=>lucActive(s)?['조건 확인','좌표와 그래프','수학적 관계','계산과 결론']:original.steps(s,l);
+    sc.view=(s,l)=>lucActive(s)?{}:original.view(s,l);
+    if(original.tick)sc.tick=(s,dt,l)=>lucActive(s)?false:original.tick(s,dt,l);
+    sc.draw=(b,s,v,l)=>{
+      if(!lucActive(s)){
+        if(b._ucLessonView){
+          if(b.focus===b._ucLessonView.appliedFocus)Object.assign(b,b._ucLessonView.before);
+          delete b._ucLessonView;
+        }
+        return original.draw(b,s,v,l);
+      }
+      if(!b._ucLessonView)b._ucLessonView={before:{focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY}};
+      const shown=cloneState({...s,...(s.lessonEntry?s.lucInitial:{}),playing:false,drag:null,anim:null,
+        step:s.lessonEntry?(s.lucInitial?.lucStartStep||0):Math.max(0,Math.min(s.step||0,s.lucShowAnswer?4:3))});
+      if(s.lessonEntry){shown.lucTrace=0;shown.lucShowAnswer=false;}
+      const shownLab=Object.create(l);shownLab.s=shown;shownLab.tab=shown.lucExplore?'explore':'review';
+      const key=sc.id+'|'+!!shown.lucExplore;
+      if(b._ucLessonView.key!==key){b._ucLessonView.key=key;b.zoom=1;b.panX=0;b.panY=0;}
+      const text=b._text,plot=b.plot,curves=[];
+      b._text=function(x,y,label,options={},screen){
+        const keep=this._bbox||options.color==='muted';
+        return text.call(this,x,y,keep?label:lucLabel(label,shown),options,screen);
+      };
+      b.plot=function(fn,options={}){if(!this._bbox&&(options.width||2.6)>=2.4&&!options.dash)curves.push({fn,options});return plot.call(this,fn,options);};
+      try{original.draw(b,shown,{},shownLab);}finally{b._text=text;b.plot=plot;}
+      b._ucLessonView.appliedFocus=b.focus;
+      // The base circle scenes animate their original theta directly. Extended
+      // scenes receive a moving point on their existing plotted curve or circle.
+      if(!s.lessonEntry&&shown.lucTrace>0&&!b._bbox&&sc.vary){
+        if(sc.id==='conv'){
+          const a=TAU*shown.lucTrace;b.point([Math.cos(a),Math.sin(a)],{color:'violet',r:4.5,glow:false});
+        }else for(const {fn,options} of curves){
+          const box=b.viewBox(),lo=Math.max(box.x0,options.from??-Infinity),hi=Math.min(box.x1,options.to??Infinity),xs=[];
+          for(let i=0;i<=100;i++){const x=lo+(hi-lo)*i/100,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)xs.push(x);}
+          if(xs.length>1){const x=xs[0]+(xs.at(-1)-xs[0])*shown.lucTrace,y=fn(x);if(Number.isFinite(y)&&y>box.y0&&y<box.y1)b.point([x,y],{color:'violet',r:4.5,glow:false});break;}
+        }
+      }
+    };
+  }
+  const lessons=window.APL_UC_LESSONS?window.APL_UC_LESSONS.install(lessonScenes,lessonSource):{};
+
+  APLab.createLab({
+    id: 'alg-unit-circle',
+    stagedReveal: true,
+    title: '단위원과 삼각함수의 그래프',
+    courseName: '대수',
+    unit: 'Ⅱ. 삼각함수 · 단위원 연동',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#algebra',
+    legacy: '../../labs/대수/단위원과그래프.html',
+    board: { kind: 'cartesian', focus: { x: [-1, 1], y: [-1, 1] } },
+    params: lessonParams,
     state: INIT,
-    scenes: SCENES.map(sceneOf).concat(EXT_SCENES)
+    scenes: lessonScenes,
+    lessons
   });
 
   lab = window.lab;

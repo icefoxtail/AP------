@@ -72,8 +72,9 @@
 | `alg-explog` 지수·로그함수 | 21 | 21 / 38 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1823](https://github.com/icefoxtail/AP------/pull/1823), merge `07be56608a47bc5570c0d7e0aeb613ef59f705a2`. 개념9·첫 원문 목표29. 최소검사66/66·494개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `alg-exp-deep` 지수함수 심화 | 16 | 16 / 29 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1824](https://github.com/icefoxtail/AP------/pull/1824), merge `b368e0a7839d94eb0d7260f97400ab5de5b5466e`. 원문 목표21·개념8. 최소64개 검사 통과 증거(수학16·runtime7·공통video41), 471개 실제 Board 상태, validator 오류/경고0 |
 | `alg-log` 로그함수 | 4 | 4 / 15 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1825](https://github.com/icefoxtail/AP------/pull/1825), merge `3cc707b98bf28761ff449db9ec91567f93328848`. 원문 목표6·탐구개념9. 최소68/68(수학7·runtime6·공통video/pins55),224개 실제 Board 상태·validator 오류/경고0 |
-| `alg-log-deep` 로그함수 심화 | 16 | 16 / 36 | **IMPLEMENTED / QA_PENDING** · 원문 목표28·개념8. 최소63개 통과 증거(수학16·runtime6·공통video41),468개 실제 Board 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 22개 | — | — | `alg-unit-circle` 8장면 → `alg-trig-geometry` 16장면 → `alg-sequence` 21장면. 이미 완료한 사인·코사인법칙은 건너뛰고 실험실별 병합 |
+| `alg-log-deep` 로그함수 심화 | 16 | 16 / 36 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1826](https://github.com/icefoxtail/AP------/pull/1826), merge `75f813753bf2a12712696a4711721827b89869ce`. 원문 목표28·개념8. 최소63개 통과 증거(수학16·runtime6·공통video41),468개 실제 Board 상태·validator 오류/경고0 |
+| `alg-unit-circle` 단위원과 그래프 | 8 | 8 / 31 | **IMPLEMENTED / QA_PENDING** · 탐구개념27·첫 원문4. 최소63/63(수학17·runtime5·공통video41),570개 실제 Board/raw canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 21개 | — | — | `alg-trig-geometry` 16장면 → `alg-sequence` 21장면 → `calc1-limits` 9장면. 수열21/41은 별도 원격 브랜치에 보존. 완료한 사인·코사인법칙과 접선은 건너뛰고 실험실별 병합 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -263,6 +264,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **단위원과 그래프 전체 구현.** `feat/lessons-alg-unit-circle`, coords/wave/equation/inequality/sinus/conv/twocurve/rootsum **8장면/31해설**(실제 탐구개념27·첫 원문4), 누락0. 좌표·사분면·주기·방정식·부등식·각 변환·사다리꼴·근의 합을 분리했다. 앞 네 장면은 원본 탐구 전용이므로 존재하지 않는 원문 문제를 만들지 않았다. 공통 Player 기본1.5배, 60~72초. 실제 모듈 상태 S를 받는 기존 drawAll 경로를 사용하고 원 위 점 P·그래프·DOM 수식이 재생 상태를 따르도록 연결했다. 원본 새문제 보존, 고정 첫문항, 외부 상태 후 복원, 형제해설/entry, 정답·부등식 영역의 자막별 공개를 확인했다. 최소 **63/63**(독립수학17·runtime5·공통video41), 실제 **570개** Board/raw canvas 상태, validator 오류/경고0·구문6파일/2inline·diff 통과. 직접 stdout SHA256 `cd3e5b7e7b61702c69683ca3cf59687a881024f8c4603fee63fbd4e42e99863f`, 입력 manifest `4e49b9e6c1e314c1d2e6e05cec91d670a89efa8686028df5c5b46f6c196aa5e2`; 최신 main 반영 후 17입력의 동일 바이트를 확인했다. HTML CRLF→LF 정리는 공백 제외 diff로 실제 변경을 별도 검토했다. 공통kit 변경 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+
+- 2026-11-12 · **로그함수 심화 main 병합 및 수열 복구점 보존.** [PR #1826](https://github.com/icefoxtail/AP------/pull/1826), feature `a76eba69303355cf7df5b442e531d186a35ac357`, merge/main readback `75f813753bf2a12712696a4711721827b89869ce`. main 누적 **32실험실/767장면/2,202해설**. AWCR r56 raw SHA256 `144b6fbb4e912a03d6833d2c627b609a876aadc2c53a59d52f135e8543586fa8` 확인. 별도 수열 **21장면/41해설**은 `feat/lessons-alg-sequence` HEAD `afee4d66205da3aba108af1c5628f23d5409c1f3`에 원격 보존했고 최소84개 통과 증거·533native 상태 확인; 아직 PR/main 미병합이다. AWCR r57 raw SHA256 `47d8085b3ffc3b7c3e27f7ff80238b3ae96d7e6f74d97600124170b4b6c0483b` readback 완료. Pages writer43060888403은 runner 배정 대기이며 Deploy 성공으로 기록하지 않는다.
 
 - 2026-11-12 · **로그함수 심화 전체 구현.** `feat/lessons-alg-log-deep`, type1-0~type8-1 **16장면/36해설**(원문 목표28·원본 관계 개념8), 누락0. 길이/넓이, 근의 곱/교점, ㄱ·ㄴ·ㄷ 판정, 이동한 곱/합, 상수/넓이/중점/좌표합, 이동축, 사다리꼴, 원의 현, 격자점을 목표별로 나누었다. 공통 Player 기본1.5배·5장/60초. 첫 원문 패킷을 보존하여 native곡선·교점·영역을 사용하고, 격자행과 개수는 각각 해당 자막 시점에 공개한다. 최초 **62/62**(수학16·runtime5·video41) 이후 camera cache 복원 회귀와 KaTeX 검사를 포함한 runtime **6/6**을 실행하여 최소 **63개 통과 증거**. 실제 **468개** Board/canvas 상태·validator 오류/경고0·변경6JS/MJS/inline 구문·diff 통과. 수동 새문제·첫문항·형제/재진입·보유상태·focus/zoom/pan 유지, 로그 부등식의 개수 조기표시 차단을 확인했다. 공유 ALV·공통kit·원본 문제/답 변경 없음. 원격 WIP `5ca3ed3c6c0a5150ef0d9a33adf25eaccb0cff88` 계보 보존. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**.
 
