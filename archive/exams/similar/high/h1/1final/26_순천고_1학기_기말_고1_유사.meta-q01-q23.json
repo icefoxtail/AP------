@@ -1,0 +1,4172 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_순천고_1학기_기말_고1_유사-candidate-v1",
+  "examUid": "26_순천고_1학기_기말_고1_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사.js",
+  "expectedSourceBlobSha1": "f9814c19237fc1d7a6e8154219a7684b3dcff038",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [
+    {
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_순천고_1학기_기말_고1_유사.registry.json",
+      "registrySha256": "06447e0496f1816b8f9853c89ff56356634eda4e6d6f3f3278116533779c2b4d",
+      "keys": [
+        "EXT-L4-PERMUTATION-SYMBOL-UNKNOWN-N-EQUATION",
+        "EXT-L4-CUBIC-VIETA-SYMMETRIC-EXPRESSION-VALUE",
+        "EXT-L4-CUBE-ROOT-OF-UNITY-CONJUGATE-POWER-SUM",
+        "EXT-L4-SYSTEM-GEOMETRY-RATIO-PYTHAGOREAN-MODEL",
+        "EXT-CROSS-COMPLEMENT-COUNTING"
+      ],
+      "details": {
+        "generatedL4": [
+          {
+            "key": "EXT-L4-PERMUTATION-SYMBOL-UNKNOWN-N-EQUATION",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "순열 기호가 든 등식을 곱으로 풀어 쓴 방정식에서 n 구하기",
+            "definition": "${}_nP_r$ 꼴 순열 기호가 든 등식을 $n(n-1)\\cdots$ 곱으로 풀어 쓰고 공통인수로 묶어 $n$에 대한 식으로 정리한 뒤, 대입과 증가성으로 $n$을 정하는 유형.",
+            "parentRpmRecordId": "H1-RPM-188",
+            "parentRpmL1": "경우의 수",
+            "parentRpmL2": "경우의 수와 순열",
+            "parentRpmL3": "순열",
+            "parentRpmL4": "일렬 배열",
+            "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "parentTemplateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+            "standardUnitKey": "H22-C-08",
+            "subUnitKey": "H22-C-08-PERMUTATION",
+            "standardCourse": "공통수학1",
+            "curriculum": "2022",
+            "basis": "마스터 RPM 순열 L4에는 배열 유형(일렬·조건·같은 것·원형)만 있고 순열 기호의 정의로 방정식을 푸는 리프가 없다.",
+            "firstUsed": {
+              "stem": "26_순천고_1학기_기말_고1_유사",
+              "qid": 5
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-11",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-CUBIC-VIETA-SYMMETRIC-EXPRESSION-VALUE",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "삼차방정식의 근과 계수의 관계로 근의 합 꼴 곱·대칭식 값 구하기",
+            "definition": "삼차방정식의 세 근의 합·두 근끼리의 곱의 합·세 근의 곱을 구하고, $(\\alpha+\\beta)(\\beta+\\gamma)(\\gamma+\\alpha)$처럼 근의 대칭식을 $S_1,S_2,P$로 바꾸어 값을 구하는 유형.",
+            "parentRpmRecordId": "H1-RPM-297",
+            "parentRpmL1": "방정식과 부등식",
+            "parentRpmL2": "이차방정식",
+            "parentRpmL3": "근과 계수의 관계",
+            "parentRpmL4": "근의 합·곱",
+            "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+            "parentTemplateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+            "standardUnitKey": "H22-C-06",
+            "subUnitKey": "H22-C-06-EQUATION",
+            "standardCourse": "공통수학1",
+            "curriculum": "2022",
+            "basis": "리프 '근의 합·곱'은 이차방정식 근과 계수의 관계이고 삼차방정식 세 근의 대칭식을 다루는 리프가 마스터에 없다.",
+            "firstUsed": {
+              "stem": "26_순천고_1학기_기말_고1_유사",
+              "qid": 7
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-11",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-CUBE-ROOT-OF-UNITY-CONJUGATE-POWER-SUM",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "x³=1의 허근 ω의 켤레·거듭제곱·합 성질 판정",
+            "definition": "$x^3=1$의 한 허근 $\\omega$가 $\\omega^2+\\omega+1=0$, $\\omega^3=1$, $\\overline{\\omega}=\\omega^2$를 만족함을 이용해 식의 값이나 거듭제곱의 합(지수 3주기)을 계산·판정하는 유형.",
+            "parentRpmRecordId": "H1-RPM-298",
+            "parentRpmL1": "방정식과 부등식",
+            "parentRpmL2": "복소수",
+            "parentRpmL3": "i의 거듭제곱",
+            "parentRpmL4": "주기성",
+            "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+            "parentTemplateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+            "standardUnitKey": "H22-C-04",
+            "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+            "standardCourse": "공통수학1",
+            "curriculum": "2022",
+            "basis": "리프 '주기성'은 허수단위 $i$의 거듭제곱이며 $x^3=1$의 허근을 다루는 리프가 마스터에 없다.",
+            "firstUsed": {
+              "stem": "26_순천고_1학기_기말_고1_유사",
+              "qid": 8
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-11",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-SYSTEM-GEOMETRY-RATIO-PYTHAGOREAN-MODEL",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "도형의 길이 비와 피타고라스 관계를 이차 연립식으로 세워 풀기",
+            "definition": "도형의 변의 비와 대각선(지름) 조건을 비례 상수와 피타고라스 정리로 이차식을 포함한 방정식으로 세우고 풀어 길이와 넓이를 구하는 유형.",
+            "parentRpmRecordId": "H1-RPM-174",
+            "parentRpmL1": "방정식과 부등식",
+            "parentRpmL2": "여러 가지 방정식",
+            "parentRpmL3": "연립방정식",
+            "parentRpmL4": "이차식이 포함된 연립방정식",
+            "parentProblemTypeKey": "PT_H1_SYSTEM_EQUATION",
+            "parentTemplateKey": "TPL_H1_SYSTEM_DIRECT",
+            "standardUnitKey": "H22-C-06",
+            "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+            "standardCourse": "공통수학1",
+            "curriculum": "2022",
+            "basis": "리프 '이차식이 포함된 연립방정식'은 식이 주어진 연립이고, 도형 조건을 식으로 세우는 문장제 리프가 없다.",
+            "firstUsed": {
+              "stem": "26_순천고_1학기_기말_고1_유사",
+              "qid": 18
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-11",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedCrossConcepts": [
+          {
+            "key": "EXT-CROSS-COMPLEMENT-COUNTING",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "여사건을 이용한 경우의 수 세기",
+            "definition": "구하는 경우를 직접 세기 어려울 때 전체 경우의 수에서 조건에 반대되는 경우(여사건)의 수를 빼서 세는 개념. '적어도 하나', '이웃하지 않는' 같은 조건에서 쓴다.",
+            "parentKey": "CC_COMBINATORICS_COUNTING",
+            "parentLabelKo": "순열과 조합을 이용한 경우의 수",
+            "standardUnitKey": "H22-C-08",
+            "subUnitKey": "H22-C-08-PERMUTATION",
+            "standardCourse": "공통수학1",
+            "curriculum": "2022",
+            "basis": "기존 CrossConcept 중 전체에서 여사건을 빼서 경우의 수를 세는 개념을 따로 가리키는 키가 없다(확률 쪽 '여사건의 확률'은 확률 계산 개념이다).",
+            "firstUsed": {
+              "stem": "26_순천고_1학기_기말_고1_유사",
+              "qid": 3
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-11",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedConditions": []
+      }
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-07",
+        "standardUnit": "합의 법칙과 곱의 법칙",
+        "subUnitKey": "H22-C-07-CORE",
+        "subUnit": "경우의 수와 순열",
+        "conceptClusterKey": "07-CORE",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-187"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "합·곱의 법칙",
+          "l4": "단계별 선택",
+          "recordId": "H1-RPM-187",
+          "l3Label": "합·곱의 법칙",
+          "l4Label": "단계별 선택",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "합·곱의 법칙",
+        "rpmPrimaryL4": "단계별 선택",
+        "rpmPrimaryRecordId": "H1-RPM-187",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "합·곱의 법칙",
+        "L4": "단계별 선택",
+        "rpmL3": "합·곱의 법칙",
+        "rpmL4": "단계별 선택",
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "crossConceptKeys": [
+          "CC_PRODUCT_RULE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "소인수분해한 지수의 선택 가짓수를 곱의 법칙으로 센다.",
+        "difficultyBasis": "소인수분해와 곱의 법칙만 쓰는 기본 계산이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "소인수분해한 지수의 선택 가짓수를 곱의 법칙으로 센다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 곱의 법칙",
+          "condition": "별도 제한 조건 없음",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-187(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 1,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $4500=2^2\\cdot3^2\\cdot5^3$ → $3600=2^4\\cdot3^2\\cdot5^2$ (답 27 → 30), 오답은 5의 지수 0 포함(45)·5의 지수 고정(15)·0 제외 오류(36)·이중 계산(60)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "소인수분해한 지수의 선택 가짓수를 곱의 법칙으로 센다.",
+      "decisiveStep": "5의 지수를 $c\\ge1$로 제한해 $5\\times3\\times2$로 곱하기",
+      "variationNote": "원본 $4500=2^2\\cdot3^2\\cdot5^3$ → $3600=2^4\\cdot3^2\\cdot5^2$ (답 27 → 30), 오답은 5의 지수 0 포함(45)·5의 지수 고정(15)·0 제외 오류(36)·이중 계산(60)",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "소인수분해와 곱의 법칙만 쓰는 기본 계산이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "약수",
+              "src": "stem",
+              "quote": "약수"
+            },
+            {
+              "term": "소인수분해",
+              "src": "solution",
+              "quote": "3600=2^4"
+            }
+          ],
+          "goal": [
+            {
+              "term": "개수",
+              "src": "stem",
+              "quote": "개수"
+            }
+          ],
+          "method": [
+            {
+              "term": "소인수분해",
+              "src": "solution",
+              "quote": "3600=2^4\\cdot3^2\\cdot5^2",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "지수",
+              "src": "solution",
+              "quote": "5의 배수이려면 $c\\ge1$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "곱의법칙",
+              "src": "solution",
+              "quote": "곱의 법칙",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "배수",
+              "src": "stem",
+              "quote": "5의 배수"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "약수의 지수 선택을 곱의 법칙으로 센다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q1 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-187",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=합·곱의 법칙>단계별 선택; 크로스워크 H1-RPM-187에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "subUnitKey": "H22-C-09-CORE",
+        "subUnit": "행렬",
+        "conceptClusterKey": "09-CORE",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-289"
+        ],
+        "rpmPrimary": {
+          "l1": "행렬",
+          "l2": "행렬",
+          "l3": "행렬의 성질",
+          "l4": "조건을 만족하는 행렬",
+          "recordId": "H1-RPM-289",
+          "l3Label": "행렬의 성질",
+          "l4Label": "조건을 만족하는 행렬",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "행렬",
+        "rpmPrimaryL2": "행렬",
+        "rpmPrimaryL3": "행렬의 성질",
+        "rpmPrimaryL4": "조건을 만족하는 행렬",
+        "rpmPrimaryRecordId": "H1-RPM-289",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 성질",
+        "L4": "조건을 만족하는 행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "행렬 곱의 성분을 문자로 쓰고 열마다 연립일차방정식을 세워 $B$를 구한다.",
+        "difficultyBasis": "곱셈 규칙만 알면 열별 연립방정식 두 개로 풀리는 기본형이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "행렬 곱의 성분을 문자로 쓰고 열마다 연립일차방정식을 세워 $B$를 구한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 미지수가 2개인 연립일차방정식",
+          "condition": "별도 제한 조건 없음",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-289(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 2,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $A=\\begin{pmatrix}-1&1\\\\-1&3\\end{pmatrix}$ → $A=\\begin{pmatrix}2&1\\\\-1&1\\end{pmatrix}$ (성분 합 $-1$ → $2$), 오답은 $AB$ 성분의 합 0·부호 오류",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "행렬 곱의 성분을 문자로 쓰고 열마다 연립일차방정식을 세워 $B$를 구한다.",
+      "decisiveStep": "$AB$의 각 열을 비교해 두 식을 빼서 $a,c$와 $b,d$ 구하기",
+      "variationNote": "원본 $A=\\begin{pmatrix}-1&1\\\\-1&3\\end{pmatrix}$ → $A=\\begin{pmatrix}2&1\\\\-1&1\\end{pmatrix}$ (성분 합 $-1$ → $2$), 오답은 $AB$ 성분의 합 0·부호 오류",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "곱셈 규칙만 알면 열별 연립방정식 두 개로 풀리는 기본형이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "행렬",
+              "src": "stem",
+              "quote": "두 이차정사각행렬"
+            },
+            {
+              "term": "행렬곱",
+              "src": "stem",
+              "quote": "AB"
+            }
+          ],
+          "goal": [
+            {
+              "term": "성분",
+              "src": "stem",
+              "quote": "모든 성분의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "행렬곱",
+              "src": "solution",
+              "quote": "AB=\\begin{pmatrix}2a+c&2b+d",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "연립일차방정식",
+              "src": "solution",
+              "quote": "2a+c=0",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "성분",
+              "src": "solution",
+              "quote": "첫째 열을 비교",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "행렬곱의 성분 비교로 연립방정식을 세운다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q2 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-289",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=행렬의 성질>조건을 만족하는 행렬; 크로스워크 H1-RPM-289에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "subUnit": "경우의 수와 순열",
+        "conceptClusterKey": "08-PERMUTATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-189"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "특정 조건 배열",
+          "recordId": "H1-RPM-189",
+          "l3Label": "순열",
+          "l4Label": "특정 조건 배열",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "특정 조건 배열",
+        "rpmPrimaryRecordId": "H1-RPM-189",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "특정 조건 배열",
+        "rpmL3": "순열",
+        "rpmL4": "특정 조건 배열",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "EXT-CROSS-COMPLEMENT-COUNTING",
+          "CC_PRODUCT_RULE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "적어도 한 명 조건을 여사건(전체−모두 남학생)으로 바꿔 순열 개수를 센다.",
+        "difficultyBasis": "여사건 한 번과 곱의 법칙으로 끝나는 짧은 문제라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "적어도 한 명 조건을 여사건(전체−모두 남학생)으로 바꿔 순열 개수를 센다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: EXT:COMPLEMENT, 곱의 법칙",
+          "condition": "별도 제한 조건 없음",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-189(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 3,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 남 4·여 5 → 남 3·여 6 (답 60 → 66), 오답은 조합으로 착각해 3 빼기(69)·전체(72)·더하기 오류(75, 78)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "적어도 한 명 조건을 여사건(전체−모두 남학생)으로 바꿔 순열 개수를 센다.",
+      "decisiveStep": "전체 $9\\times8$에서 모두 남학생인 $3\\times2$를 빼기",
+      "variationNote": "원본 남 4·여 5 → 남 3·여 6 (답 60 → 66), 오답은 조합으로 착각해 3 빼기(69)·전체(72)·더하기 오류(75, 78)",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "여사건 한 번과 곱의 법칙으로 끝나는 짧은 문제라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "남학생",
+              "src": "stem",
+              "quote": "남학생 3명"
+            },
+            {
+              "term": "여학생",
+              "src": "stem",
+              "quote": "여학생 6명"
+            }
+          ],
+          "goal": [
+            {
+              "term": "경우의수",
+              "src": "stem",
+              "quote": "경우의 수"
+            }
+          ],
+          "method": [
+            {
+              "term": "여사건",
+              "src": "solution",
+              "quote": "여사건은 두 명 모두 남학생인 경우",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "순열",
+              "src": "solution",
+              "quote": "뽑는 순서가 구별된다",
+              "evidenceType": "IMPLIED",
+              "justification": "해설에서 이 개념을 명시하지 않고 절차로 사용한다"
+            },
+            {
+              "term": "곱의법칙",
+              "src": "solution",
+              "quote": "9\\times8=72",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "적어도",
+              "src": "stem",
+              "quote": "적어도 한 명"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "적어도 한 명 조건을 여사건으로 처리한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q3 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-189",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=순열>특정 조건 배열; 크로스워크 H1-RPM-189에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "subUnitKey": "H22-C-09-CORE",
+        "subUnit": "행렬",
+        "conceptClusterKey": "09-CORE",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-295"
+        ],
+        "rpmPrimary": {
+          "l1": "행렬",
+          "l2": "행렬",
+          "l3": "행렬의 뜻",
+          "l4": "행·열·성분",
+          "recordId": "H1-RPM-295",
+          "l3Label": "행렬의 뜻",
+          "l4Label": "행·열·성분",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "행렬",
+        "rpmPrimaryL2": "행렬",
+        "rpmPrimaryL3": "행렬의 뜻",
+        "rpmPrimaryL4": "행·열·성분",
+        "rpmPrimaryRecordId": "H1-RPM-295",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 뜻",
+        "L4": "행·열·성분",
+        "rpmL3": "행렬의 뜻",
+        "rpmL4": "행·열·성분",
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "$(i,j)$마다 조건 $i\\lt j$, $i\\ge j$를 판별해 알맞은 식에 대입한다.",
+        "difficultyBasis": "네 성분을 조건에 맞춰 대입하는 기본 계산이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "$(i,j)$마다 조건 $i\\lt j$, $i\\ge j$를 판별해 알맞은 식에 대입한다.",
+          "crossConcept": "보조 개념 없음",
+          "condition": "별도 제한 조건 없음",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-295(DIRECT_ACTIVE) 공식 Resolver 결과 (이 회차에 행 추가)"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 4,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $i(j+1)$, $(i+1)^j$ → $j(i+2)$, $i^{j+1}$ (성분 합 17 → 19), 오답은 조건 반대 적용·지수 오류",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "$(i,j)$마다 조건 $i\\lt j$, $i\\ge j$를 판별해 알맞은 식에 대입한다.",
+      "decisiveStep": "$(1,2)$만 $i\\lt j$ 식, 나머지 세 성분은 $i\\ge j$ 식 적용",
+      "variationNote": "원본 $i(j+1)$, $(i+1)^j$ → $j(i+2)$, $i^{j+1}$ (성분 합 17 → 19), 오답은 조건 반대 적용·지수 오류",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "네 성분을 조건에 맞춰 대입하는 기본 계산이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "행렬",
+              "src": "stem",
+              "quote": "이차정사각행렬"
+            },
+            {
+              "term": "성분",
+              "src": "stem",
+              "quote": "성분"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "모든 성분의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "$i\\lt j$인지 $i\\ge j$인지",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "$a_{12}=2(1+2)=6$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "지수",
+              "src": "solution",
+              "quote": "1^{2}=1",
+              "evidenceType": "IMPLIED",
+              "justification": "해설에서 이 개념을 명시하지 않고 절차로 사용한다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "범위",
+              "src": "stem",
+              "quote": "i\\lt j"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "성분 위치에 따라 식을 골라 대입한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q4 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-295",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=행렬의 뜻>행·열·성분; 크로스워크 H1-RPM-295에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "subUnit": "경우의 수와 순열",
+        "conceptClusterKey": "08-PERMUTATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-188"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "순열 기호가 든 등식을 곱으로 풀어 쓴 방정식에서 n 구하기",
+          "recordId": "H1-RPM-188",
+          "l3Label": "순열",
+          "l4Label": "순열 기호가 든 등식을 곱으로 풀어 쓴 방정식에서 n 구하기",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-PERMUTATION-SYMBOL-UNKNOWN-N-EQUATION",
+          "parentRpmL4": "일렬 배열",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H1-RPM-188"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "순열 기호가 든 등식을 곱으로 풀어 쓴 방정식에서 n 구하기",
+        "rpmPrimaryRecordId": "H1-RPM-188",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "순열 기호가 든 등식을 곱으로 풀어 쓴 방정식에서 n 구하기",
+        "rpmL3": "순열",
+        "rpmL4": "순열 기호가 든 등식을 곱으로 풀어 쓴 방정식에서 n 구하기",
+        "rpmGeneratedL4Key": "EXT-L4-PERMUTATION-SYMBOL-UNKNOWN-N-EQUATION",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_PERMUTATION_FORMULA"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "순열 기호를 곱으로 풀어 쓰고 공통인수로 묶어 $n$에 대한 식으로 만든 뒤 대입과 증가성으로 해를 정한다.",
+        "difficultyBasis": "순열 정의와 인수 정리, 대입 확인이 필요한 중간 단계라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "순열 기호를 곱으로 풀어 쓰고 공통인수로 묶어 $n$에 대한 식으로 만든 뒤 대입과 증가성으로 해를 정한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 순열의 계산 공식",
+          "condition": "제한 조건: COND_NATURAL_NUMBER",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-188(DIRECT_ACTIVE) 공식 Resolver 결과 + Generated L4 확장"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 5,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 ${}_{11}P_4$, 계수 4 → ${}_{8}P_4$ (답 12 → 9), 오답은 4T를 이항하지 않고 나눈 값·인접 정수",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "순열 기호를 곱으로 풀어 쓰고 공통인수로 묶어 $n$에 대한 식으로 만든 뒤 대입과 증가성으로 해를 정한다.",
+      "decisiveStep": "$nT=4T+1680$에서 $(n-4)T=1680$으로 정리",
+      "variationNote": "원본 ${}_{11}P_4$, 계수 4 → ${}_{8}P_4$ (답 12 → 9), 오답은 4T를 이항하지 않고 나눈 값·인접 정수",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "순열 정의와 인수 정리, 대입 확인이 필요한 중간 단계라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "순열",
+              "src": "stem",
+              "quote": "{}_{n}P_{4}"
+            },
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수 $n$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "값",
+              "src": "stem",
+              "quote": "$n$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "순열",
+              "src": "solution",
+              "quote": "${}_{n}P_4=nT$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "공통인수",
+              "src": "solution",
+              "quote": "(n-4)T=1680",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "$n=9$를 대입",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "증가",
+              "src": "solution",
+              "quote": "엄격히 증가",
+              "evidenceType": "NAMED"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "순열 기호를 풀어 쓴 식을 정리해 n을 정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q5 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-188",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=순열>일렬 배열; 크로스워크 H1-RPM-188에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "subUnitKey": "H22-C-09-CORE",
+        "subUnit": "행렬",
+        "conceptClusterKey": "09-CORE",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-296"
+        ],
+        "rpmPrimary": {
+          "l1": "행렬",
+          "l2": "행렬",
+          "l3": "행렬의 연산",
+          "l4": "행렬의 곱셈",
+          "recordId": "H1-RPM-296",
+          "l3Label": "행렬의 연산",
+          "l4Label": "행렬의 곱셈",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "행렬",
+        "rpmPrimaryL2": "행렬",
+        "rpmPrimaryL3": "행렬의 연산",
+        "rpmPrimaryL4": "행렬의 곱셈",
+        "rpmPrimaryRecordId": "H1-RPM-296",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 연산",
+        "L4": "행렬의 곱셈",
+        "rpmL3": "행렬의 연산",
+        "rpmL4": "행렬의 곱셈",
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_MODEL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "개수 행렬과 가격표 행렬의 곱에서 어느 성분이 어느 마트의 합계인지 해석한다.",
+        "difficultyBasis": "표를 행렬로 옮기고 성분 위치를 해석하는 기본형이라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "개수 행렬과 가격표 행렬의 곱에서 어느 성분이 어느 마트의 합계인지 해석한다.",
+          "crossConcept": "보조 개념 없음",
+          "condition": "별도 제한 조건 없음",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-296(DIRECT_ACTIVE) 공식 Resolver 결과 (이 회차에 행 추가)"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 6,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 돈가스·우동 B 식당(13/9, 12/8) → 사과·배 A 마트(8/6, 15/12), 답 $(1,2)$ → $(1,1)$ 성분, 오답은 곱 순서·성분 위치·표 배치 오류",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "familyTemplateSelection": {
+          "crosswalkRecordId": "H1-RPM-296",
+          "templateKey": "TPL_H1_MATRIX_PRODUCT_MODEL"
+        }
+      },
+      "primaryMethod": "개수 행렬과 가격표 행렬의 곱에서 어느 성분이 어느 마트의 합계인지 해석한다.",
+      "decisiveStep": "$(4\\ 3)$을 가격표 앞에 곱할 때 첫째 열이 A 마트 합계임을 확인",
+      "variationNote": "원본 돈가스·우동 B 식당(13/9, 12/8) → 사과·배 A 마트(8/6, 15/12), 답 $(1,2)$ → $(1,1)$ 성분, 오답은 곱 순서·성분 위치·표 배치 오류",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "표를 행렬로 옮기고 성분 위치를 해석하는 기본형이라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_MODEL"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "자료",
+              "src": "stem",
+              "quote": "아래의 표"
+            },
+            {
+              "term": "행렬",
+              "src": "solution",
+              "quote": "가격표는 행이 사과·배"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "가격의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "행렬곱",
+              "src": "solution",
+              "quote": "\\begin{pmatrix}4&3\\end{pmatrix}\\begin{pmatrix}8&6\\\\15&12\\end{pmatrix}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "성분",
+              "src": "solution",
+              "quote": "$(1,1)$ 성분",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "열",
+              "src": "solution",
+              "quote": "첫째 열",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "가격표와 개수 행렬의 곱에서 성분의 의미를 읽는다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q6 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-296",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=행렬의 연산>행렬의 곱셈; 크로스워크 H1-RPM-296에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-EQUATION",
+        "subUnit": "이차방정식",
+        "conceptClusterKey": "06-EQUATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-297"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "근과 계수의 관계",
+          "l4": "삼차방정식의 근과 계수의 관계로 근의 합 꼴 곱·대칭식 값 구하기",
+          "recordId": "H1-RPM-297",
+          "l3Label": "근과 계수의 관계",
+          "l4Label": "삼차방정식의 근과 계수의 관계로 근의 합 꼴 곱·대칭식 값 구하기",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-CUBIC-VIETA-SYMMETRIC-EXPRESSION-VALUE",
+          "parentRpmL4": "근의 합·곱",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H1-RPM-297"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "근과 계수의 관계",
+        "rpmPrimaryL4": "삼차방정식의 근과 계수의 관계로 근의 합 꼴 곱·대칭식 값 구하기",
+        "rpmPrimaryRecordId": "H1-RPM-297",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "L3": "근과 계수의 관계",
+        "L4": "삼차방정식의 근과 계수의 관계로 근의 합 꼴 곱·대칭식 값 구하기",
+        "rpmL3": "근과 계수의 관계",
+        "rpmL4": "삼차방정식의 근과 계수의 관계로 근의 합 꼴 곱·대칭식 값 구하기",
+        "rpmGeneratedL4Key": "EXT-L4-CUBIC-VIETA-SYMMETRIC-EXPRESSION-VALUE",
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+        "crossConceptKeys": [
+          "CC_VIETA_THIRD_DEGREE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "세 근의 합 $S_1$을 이용해 $(\\alpha+\\beta)$ 꼴을 $S_1-\\gamma$로 바꾸고 근과 계수의 관계로 대칭식 값을 구한다.",
+        "difficultyBasis": "삼차식 근과 계수의 관계와 곱의 변형이 필요한 중간 난도라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "세 근의 합 $S_1$을 이용해 $(\\alpha+\\beta)$ 꼴을 $S_1-\\gamma$로 바꾸고 근과 계수의 관계로 대칭식 값을 구한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 삼차방정식의 근과 계수의 관계",
+          "condition": "별도 제한 조건 없음",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-297(DIRECT_ACTIVE) 공식 Resolver 결과 (이 회차에 행 추가) + Generated L4 확장"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 7,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $x^3-2x^2-7x+2$ → $x^3-4x^2+x+6$ (답 $-12$ → 10), 오답은 $P$ 빼기 누락(4)·부호 오류($-2$)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "세 근의 합 $S_1$을 이용해 $(\\alpha+\\beta)$ 꼴을 $S_1-\\gamma$로 바꾸고 근과 계수의 관계로 대칭식 값을 구한다.",
+      "decisiveStep": "$(\\alpha+\\beta)(\\beta+\\gamma)(\\gamma+\\alpha)=S_1S_2-P$로 변형",
+      "variationNote": "원본 $x^3-2x^2-7x+2$ → $x^3-4x^2+x+6$ (답 $-12$ → 10), 오답은 $P$ 빼기 누락(4)·부호 오류($-2$)",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "삼차식 근과 계수의 관계와 곱의 변형이 필요한 중간 난도라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "삼차방정식",
+              "src": "stem",
+              "quote": "삼차방정식"
+            },
+            {
+              "term": "근",
+              "src": "stem",
+              "quote": "세 근"
+            }
+          ],
+          "goal": [
+            {
+              "term": "값",
+              "src": "stem",
+              "quote": "값"
+            }
+          ],
+          "method": [
+            {
+              "term": "근과계수의관계",
+              "src": "solution",
+              "quote": "근과 계수의 관계",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대칭식",
+              "src": "solution",
+              "quote": "S_1S_2-P",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "전개",
+              "src": "solution",
+              "quote": "전개하면",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "근의 합·곱으로 대칭식을 계산한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q7 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-297",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=근과 계수의 관계>근의 합·곱; 크로스워크 H1-RPM-297에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+        "subUnit": "복소수",
+        "conceptClusterKey": "04-COMPLEX_ROOT",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-298"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "복소수",
+          "l3": "i의 거듭제곱",
+          "l4": "x³=1의 허근 ω의 켤레·거듭제곱·합 성질 판정",
+          "recordId": "H1-RPM-298",
+          "l3Label": "i의 거듭제곱",
+          "l4Label": "x³=1의 허근 ω의 켤레·거듭제곱·합 성질 판정",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-CUBE-ROOT-OF-UNITY-CONJUGATE-POWER-SUM",
+          "parentRpmL4": "주기성",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H1-RPM-298"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "복소수",
+        "rpmPrimaryL3": "i의 거듭제곱",
+        "rpmPrimaryL4": "x³=1의 허근 ω의 켤레·거듭제곱·합 성질 판정",
+        "rpmPrimaryRecordId": "H1-RPM-298",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "L3": "i의 거듭제곱",
+        "L4": "x³=1의 허근 ω의 켤레·거듭제곱·합 성질 판정",
+        "rpmL3": "i의 거듭제곱",
+        "rpmL4": "x³=1의 허근 ω의 켤레·거듭제곱·합 성질 판정",
+        "rpmGeneratedL4Key": "EXT-L4-CUBE-ROOT-OF-UNITY-CONJUGATE-POWER-SUM",
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+        "crossConceptKeys": [
+          "CC_CUBIC_EQUATION_OMEGA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "$x^3=1$의 허근 $\\omega$가 $\\omega^2+\\omega+1=0$, $\\omega^3=1$, $\\overline{\\omega}=\\omega^2$를 만족함을 이용해 보기를 하나씩 판정한다.",
+        "difficultyBasis": "허근의 성질을 세 보기에 적용하고 마지막 합은 주기 계산까지 필요해 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "$x^3=1$의 허근 $\\omega$가 $\\omega^2+\\omega+1=0$, $\\omega^3=1$, $\\overline{\\omega}=\\omega^2$를 만족함을 이용해 보기를 하나씩 판정한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 삼차방정식의 허근 오메가의 성질",
+          "condition": "별도 제한 조건 없음",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-298(DIRECT_ACTIVE) 공식 Resolver 결과 (이 회차에 행 추가) + Generated L4 확장"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 8,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 ㄱ($\\frac1\\omega+\\frac1{\\overline\\omega}$), ㄴ, ㄷ($\\omega^{2024}$까지) → 새 보기 ㄱ·ㄴ·ㄷ (답 ㄱ,ㄷ → ㄱ), 오답은 ㄷ을 참으로 오인(2024개 묶음 나머지 누락)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "$x^3=1$의 허근 $\\omega$가 $\\omega^2+\\omega+1=0$, $\\omega^3=1$, $\\overline{\\omega}=\\omega^2$를 만족함을 이용해 보기를 하나씩 판정한다.",
+      "decisiveStep": "$\\overline{\\omega}=\\omega^2$와 지수 3주기로 ㄴ, ㄷ의 거짓을 가려내기",
+      "variationNote": "원본 ㄱ($\\frac1\\omega+\\frac1{\\overline\\omega}$), ㄴ, ㄷ($\\omega^{2024}$까지) → 새 보기 ㄱ·ㄴ·ㄷ (답 ㄱ,ㄷ → ㄱ), 오답은 ㄷ을 참으로 오인(2024개 묶음 나머지 누락)",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "허근의 성질을 세 보기에 적용하고 마지막 합은 주기 계산까지 필요해 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD"
+      },
+      "item4slot": {
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "slots": {
+          "given": [
+            {
+              "term": "삼차방정식",
+              "src": "stem",
+              "quote": "삼차방정식"
+            },
+            {
+              "term": "허근",
+              "src": "stem",
+              "quote": "한 허근"
+            }
+          ],
+          "goal": [
+            {
+              "term": "참거짓",
+              "src": "stem",
+              "quote": "옳은 것만을 있는 대로 고른 것"
+            }
+          ],
+          "method": [
+            {
+              "term": "켤레복소수",
+              "src": "solution",
+              "quote": "켤레인 허근",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "근과계수의관계",
+              "src": "solution",
+              "quote": "근과 계수의 관계",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "주기",
+              "src": "solution",
+              "quote": "지수가 3마다 반복",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "x^3=1의 허근의 성질과 주기로 보기를 판정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q8 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-298",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=i의 거듭제곱>주기성; 크로스워크 H1-RPM-298에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "06-HIGHER_INEQUALITY",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-286"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 부등식",
+          "l3": "연립일차부등식",
+          "l4": "해의 범위",
+          "recordId": "H1-RPM-286",
+          "l3Label": "연립일차부등식",
+          "l4Label": "해의 범위",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 부등식",
+        "rpmPrimaryL3": "연립일차부등식",
+        "rpmPrimaryL4": "해의 범위",
+        "rpmPrimaryRecordId": "H1-RPM-286",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "연립일차부등식",
+        "L4": "해의 범위",
+        "rpmL3": "연립일차부등식",
+        "rpmL4": "해의 범위",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+        "crossConceptKeys": [
+          "CC_COMPOUND_LINEAR_INEQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "문장의 두 조건을 $x$에 대한 일차부등식 두 개로 세우고 공통 범위에서 최솟값을 읽는다.",
+        "difficultyBasis": "식 세우기와 연립일차부등식 풀이만으로 풀리는 문장제라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "문장의 두 조건을 $x$에 대한 일차부등식 두 개로 세우고 공통 범위에서 최솟값을 읽는다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 연립일차부등식 풀이",
+          "condition": "제한 조건: COND_RANGE",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-286(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 9,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 300g, 열량 180 이하, 단백질 16 이상 → 400g, 380 이하, 20 이상 (답 20g → 50g), 오답은 최댓값 선택(75)·한 조건만 사용(25, 40, 45)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "문장의 두 조건을 $x$에 대한 일차부등식 두 개로 세우고 공통 범위에서 최솟값을 읽는다.",
+      "decisiveStep": "열량 $x\\le75$, 단백질 $x\\ge50$을 연립해 $50\\le x\\le75$ 얻기",
+      "variationNote": "원본 300g, 열량 180 이하, 단백질 16 이상 → 400g, 380 이하, 20 이상 (답 20g → 50g), 오답은 최댓값 선택(75)·한 조건만 사용(25, 40, 45)",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "식 세우기와 연립일차부등식 풀이만으로 풀리는 문장제라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "자료",
+              "src": "stem",
+              "quote": "아래의 표"
+            },
+            {
+              "term": "부등식",
+              "src": "solution",
+              "quote": "\\le380"
+            }
+          ],
+          "goal": [
+            {
+              "term": "최솟값",
+              "src": "stem",
+              "quote": "최소무게"
+            }
+          ],
+          "method": [
+            {
+              "term": "연립부등식",
+              "src": "solution",
+              "quote": "세 범위를 합치면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일차부등식",
+              "src": "solution",
+              "quote": "80x\\le6000",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "범위",
+              "src": "solution",
+              "quote": "50\\le x\\le75",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "범위",
+              "src": "stem",
+              "quote": "380cal 이하"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "두 조건을 연립일차부등식으로 세워 공통 범위를 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q9 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-286",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 H1-RPM-286에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "06-HIGHER_INEQUALITY",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-285"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 부등식",
+          "l3": "연립일차부등식",
+          "l4": "정수해",
+          "recordId": "H1-RPM-285",
+          "l3Label": "연립일차부등식",
+          "l4Label": "정수해",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 부등식",
+        "rpmPrimaryL3": "연립일차부등식",
+        "rpmPrimaryL4": "정수해",
+        "rpmPrimaryRecordId": "H1-RPM-285",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "연립일차부등식",
+        "L4": "정수해",
+        "rpmL3": "연립일차부등식",
+        "rpmL4": "정수해",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_INEQUALITIES"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 일차부등식을 풀어 정수해의 범위를 $L\\le x\\le3$으로 두고, 합 조건으로 $L$을 정한 뒤 경계 포함 여부로 $a$의 범위를 구한다.",
+        "difficultyBasis": "정수해의 합 조건과 경계 포함 판정이 겹쳐 3으로 본다(경계 판정 때문에 경계 플래그).",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "두 일차부등식을 풀어 정수해의 범위를 $L\\le x\\le3$으로 두고, 합 조건으로 $L$을 정한 뒤 경계 포함 여부로 $a$의 범위를 구한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 연립일차부등식의 해와 정수 개수",
+          "condition": "제한 조건: COND_INTEGER",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-285(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 10,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $5x+6>7x$, $x-2>-2x+a$, 합 $-7$ → $7x-2<4x+10$, $x+4>-3x+a$, 합 $-4$ (답 $-15$ → $-13$), 오답은 경계 포함 오류($-16$, $-14$)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "두 일차부등식을 풀어 정수해의 범위를 $L\\le x\\le3$으로 두고, 합 조건으로 $L$을 정한 뒤 경계 포함 여부로 $a$의 범위를 구한다.",
+      "decisiveStep": "합이 $-4$인 연속 정수해의 시작 $L=-4$를 정하고 $-5\\le(a-4)/4<-4$ 경계 판정",
+      "variationNote": "원본 $5x+6>7x$, $x-2>-2x+a$, 합 $-7$ → $7x-2<4x+10$, $x+4>-3x+a$, 합 $-4$ (답 $-15$ → $-13$), 오답은 경계 포함 오류($-16$, $-14$)",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": true,
+      "difficultyReason": "정수해의 합 조건과 경계 포함 판정이 겹쳐 3으로 본다(경계 판정 때문에 경계 플래그).",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "연립부등식",
+              "src": "stem",
+              "quote": "연립부등식"
+            },
+            {
+              "term": "정수",
+              "src": "stem",
+              "quote": "정수 $x$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "최댓값",
+              "src": "stem",
+              "quote": "정수 $a$의 최댓값"
+            }
+          ],
+          "method": [
+            {
+              "term": "일차부등식",
+              "src": "solution",
+              "quote": "3x<12",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "정수해",
+              "src": "solution",
+              "quote": "정수해를",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경계조건",
+              "src": "solution",
+              "quote": "$x>-5$라 $-4$가 포함",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "값의 합이 $-4$"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "정수해의 합 조건과 경계 포함 판정으로 a의 범위를 정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q10 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-285",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립일차부등식>정수해; 크로스워크 H1-RPM-285에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차방정식과 이차함수",
+        "conceptClusterKey": "05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-170"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "rpmL3": "최대·최소",
+        "rpmL4": "구간 최대·최소",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_EXTREMA_BOUNDED_INTERVAL",
+          "CC_QUADRATIC_LINE_INTERSECTION_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "교점 조건으로 $f$의 꼴을 세우고, 아래로 볼록한 이차함수의 닫힌 구간 최댓값은 양 끝점 비교로 구해 미정계수를 정한다.",
+        "difficultyBasis": "교점 조건으로 식 세우기와 구간 최댓값 비교가 연결된 3단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "교점 조건으로 $f$의 꼴을 세우고, 아래로 볼록한 이차함수의 닫힌 구간 최댓값은 양 끝점 비교로 구해 미정계수를 정한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 제한된 구간에서 이차함수 극값, 이차함수와 직선의 교점 방정식",
+          "condition": "제한 조건: COND_RANGE, COND_POSITIVE",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-170(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 11,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 직선 $y=ax-12$, 교점 0·3, $[-3,4]$ 최댓값 48, $f(6)$ → 직선 $y=ax-8$, 교점 0·4, $[-1,6]$ 최댓값 100, $f(5)$ (답 84 → 52), 오답은 최댓값 위치 오판·계산 오류",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "교점 조건으로 $f$의 꼴을 세우고, 아래로 볼록한 이차함수의 닫힌 구간 최댓값은 양 끝점 비교로 구해 미정계수를 정한다.",
+      "decisiveStep": "$f(6)-f(-1)=14a>0$으로 최댓값 위치를 정하고 $18a-8=100$ 풀기",
+      "variationNote": "원본 직선 $y=ax-12$, 교점 0·3, $[-3,4]$ 최댓값 48, $f(6)$ → 직선 $y=ax-8$, 교점 0·4, $[-1,6]$ 최댓값 100, $f(5)$ (답 84 → 52), 오답은 최댓값 위치 오판·계산 오류",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "교점 조건으로 식 세우기와 구간 최댓값 비교가 연결된 3단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "이차함수",
+              "src": "stem",
+              "quote": "이차함수 $f(x)$"
+            },
+            {
+              "term": "교점",
+              "src": "stem",
+              "quote": "만나는 두 점"
+            }
+          ],
+          "goal": [
+            {
+              "term": "함숫값",
+              "src": "stem",
+              "quote": "$f(5)$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "교점",
+              "src": "solution",
+              "quote": "교점의 $x$좌표가 0, 4",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "최댓값",
+              "src": "solution",
+              "quote": "최댓값은 $f(6)$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "구간",
+              "src": "solution",
+              "quote": "닫힌 구간에서 최댓값은 양 끝점",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "최댓값",
+              "src": "stem",
+              "quote": "최댓값은 100"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "교점 조건과 구간 최댓값 조건으로 미정계수를 정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q11 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=최대·최소>구간 최대·최소; 크로스워크 H1-RPM-170에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+        "subUnit": "조합",
+        "conceptClusterKey": "08-COUNTING_PRINCIPLE",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-194"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "조합",
+          "l3": "조합의 활용",
+          "l4": "선택 조건",
+          "recordId": "H1-RPM-194",
+          "l3Label": "조합의 활용",
+          "l4Label": "선택 조건",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "조합",
+        "rpmPrimaryL3": "조합의 활용",
+        "rpmPrimaryL4": "선택 조건",
+        "rpmPrimaryRecordId": "H1-RPM-194",
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "조합의 활용",
+        "L4": "선택 조건",
+        "rpmL3": "조합의 활용",
+        "rpmL4": "선택 조건",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "crossConceptKeys": [
+          "CC_COMBINATION_ORDER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "뽑은 세 수의 최대값이 일의 자리라는 구조로 짝수 조건을 '최대값이 짝수'로 바꾸고 최대값별로 경우를 나누어 조합으로 센다.",
+        "difficultyBasis": "수 배치 규칙을 해석해 조건을 바꾸고 경우를 나누는 2단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "뽑은 세 수의 최대값이 일의 자리라는 구조로 짝수 조건을 '최대값이 짝수'로 바꾸고 최대값별로 경우를 나누어 조합으로 센다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 조합 선택 후 순서 배정",
+          "condition": "별도 제한 조건 없음",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-194(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 12,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 1~9, 홀수 → 1~8, 짝수 (답 50 → 34), 오답은 홀수 개수(22)·전체 $\\binom83$(56)·최대값 누락",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "뽑은 세 수의 최대값이 일의 자리라는 구조로 짝수 조건을 '최대값이 짝수'로 바꾸고 최대값별로 경우를 나누어 조합으로 센다.",
+      "decisiveStep": "짝수 조건을 가장 큰 수가 $4,6,8$인 경우로 바꿔 $3+10+21$ 합산",
+      "variationNote": "원본 1~9, 홀수 → 1~8, 짝수 (답 50 → 34), 오답은 홀수 개수(22)·전체 $\\binom83$(56)·최대값 누락",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "수 배치 규칙을 해석해 조건을 바꾸고 경우를 나누는 2단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "공",
+              "src": "stem",
+              "quote": "8개의 공"
+            },
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수"
+            }
+          ],
+          "goal": [
+            {
+              "term": "개수",
+              "src": "stem",
+              "quote": "짝수의 개수"
+            }
+          ],
+          "method": [
+            {
+              "term": "조합",
+              "src": "solution",
+              "quote": "\\binom{5}{2}=10",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "가장 큰 수가 $4$일 때",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "짝수",
+              "src": "solution",
+              "quote": "일의 자리, 즉 뽑은 수 중 가장 큰 수가 짝수",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "자리",
+              "src": "stem",
+              "quote": "백의 자리"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "일의 자리가 최대값임을 이용해 최대값별 조합으로 센다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q12 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "조합",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-194",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=조합의 활용>선택 조건; 크로스워크 H1-RPM-194에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "06-HIGHER_INEQUALITY",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-181"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 부등식",
+          "l3": "이차부등식",
+          "l4": "근의 위치와 해",
+          "recordId": "H1-RPM-181",
+          "l3Label": "이차부등식",
+          "l4Label": "근의 위치와 해",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 부등식",
+        "rpmPrimaryL3": "이차부등식",
+        "rpmPrimaryL4": "근의 위치와 해",
+        "rpmPrimaryRecordId": "H1-RPM-181",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식",
+        "L4": "근의 위치와 해",
+        "rpmL3": "이차부등식",
+        "rpmL4": "근의 위치와 해",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_INEQUALITIES",
+          "CC_INTERVAL_INTERSECTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 이차부등식의 해를 $a$의 크기에 따라 구간으로 쓰고 교집합이 정확히 $(2,6)$이 되는 $a$의 범위를 구한다.",
+        "difficultyBasis": "매개변수 크기에 따른 구간 비교가 필요한 상위 문항이라 4로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "두 이차부등식의 해를 $a$의 크기에 따라 구간으로 쓰고 교집합이 정확히 $(2,6)$이 되는 $a$의 범위를 구한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 여러 부등식 조건의 연립, 해 구간의 교집합",
+          "condition": "별도 제한 조건 없음",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-181(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 13,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $(x+a)(x-5)<0$, $(x-a)(x-3)>0$, 해 $3<x<5$ → $(x+a)(x-6)<0$, $(x-a)(x-2)>0$, 해 $2<x<6$ (답 $-3$ → $-2$), 오답은 $a>0$ 추가 구간 간과(0)·경계 포함 오류",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "두 이차부등식의 해를 $a$의 크기에 따라 구간으로 쓰고 교집합이 정확히 $(2,6)$이 되는 $a$의 범위를 구한다.",
+      "decisiveStep": "$a>0$이면 $(-a,a)$가 추가로 생기므로 $-2\\le a\\le0$으로 한정",
+      "variationNote": "원본 $(x+a)(x-5)<0$, $(x-a)(x-3)>0$, 해 $3<x<5$ → $(x+a)(x-6)<0$, $(x-a)(x-2)>0$, 해 $2<x<6$ (답 $-3$ → $-2$), 오답은 $a>0$ 추가 구간 간과(0)·경계 포함 오류",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "매개변수 크기에 따른 구간 비교가 필요한 상위 문항이라 4로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "연립부등식",
+              "src": "stem",
+              "quote": "연립부등식"
+            },
+            {
+              "term": "이차부등식",
+              "src": "stem",
+              "quote": "(x+a)(x-6)"
+            }
+          ],
+          "goal": [
+            {
+              "term": "최댓값",
+              "src": "stem",
+              "quote": "최댓값을 $M$"
+            },
+            {
+              "term": "최솟값",
+              "src": "stem",
+              "quote": "최솟값을 $m$"
+            }
+          ],
+          "method": [
+            {
+              "term": "교집합",
+              "src": "solution",
+              "quote": "교집합",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "$a<2$이면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "범위",
+              "src": "solution",
+              "quote": "$-2\\le a\\le0$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "해",
+              "src": "stem",
+              "quote": "해가 $2\\lt x\\lt6$"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "매개변수 a의 크기에 따라 해 구간의 교집합을 판정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q13 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-181",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=이차부등식>근의 위치와 해; 크로스워크 H1-RPM-181에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "subUnit": "경우의 수와 순열",
+        "conceptClusterKey": "08-PERMUTATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-189"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "특정 조건 배열",
+          "recordId": "H1-RPM-189",
+          "l3Label": "순열",
+          "l4Label": "특정 조건 배열",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "특정 조건 배열",
+        "rpmPrimaryRecordId": "H1-RPM-189",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "특정 조건 배열",
+        "rpmL3": "순열",
+        "rpmL4": "특정 조건 배열",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "EXT-CROSS-COMPLEMENT-COUNTING",
+          "CC_NEIGHBORING_PERMUTATION"
+        ],
+        "conditionKeys": [
+          "COND_NO_ADJACENT_SELECTED_SYMBOLS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "나머지 팀을 조합으로 고른 뒤, 전체 배열에서 A, B를 묶음으로 본 이웃 배열을 빼서 이웃하지 않는 배열을 센다.",
+        "difficultyBasis": "선택, 전체 배열, 묶음 배열을 모두 쓰는 복합형이라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "나머지 팀을 조합으로 고른 뒤, 전체 배열에서 A, B를 묶음으로 본 이웃 배열을 빼서 이웃하지 않는 배열을 센다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: EXT:COMPLEMENT, 이웃하는 대상을 한 묶음으로 취급하는 순열",
+          "condition": "제한 조건: COND_NO_ADJACENT_SELECTED_SYMBOLS",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-189(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 14,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 8팀 중 6팀(A·B 포함) → 9팀 중 5팀 (답 7200 → 2520), 오답은 묶음 안 순서 $2!$ 누락(3360)·전체(4200)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "나머지 팀을 조합으로 고른 뒤, 전체 배열에서 A, B를 묶음으로 본 이웃 배열을 빼서 이웃하지 않는 배열을 센다.",
+      "decisiveStep": "전체 $35\\times5!$에서 이웃하는 경우 $35\\times4!\\times2!$ 빼기",
+      "variationNote": "원본 8팀 중 6팀(A·B 포함) → 9팀 중 5팀 (답 7200 → 2520), 오답은 묶음 안 순서 $2!$ 누락(3360)·전체(4200)",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "선택, 전체 배열, 묶음 배열을 모두 쓰는 복합형이라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "팀",
+              "src": "stem",
+              "quote": "서로 다른 9개의 공연 팀"
+            },
+            {
+              "term": "순서",
+              "src": "stem",
+              "quote": "공연 순서"
+            }
+          ],
+          "goal": [
+            {
+              "term": "경우의수",
+              "src": "stem",
+              "quote": "경우의 수"
+            }
+          ],
+          "method": [
+            {
+              "term": "조합",
+              "src": "solution",
+              "quote": "\\binom73=35",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "순열",
+              "src": "solution",
+              "quote": "$5!=120$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "여사건",
+              "src": "solution",
+              "quote": "$4200-1680=2520$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "묶음",
+              "src": "solution",
+              "quote": "한 묶음으로 보고",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "이웃",
+              "src": "stem",
+              "quote": "연달아 공연을 하지 않게"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "전체에서 이웃 배열을 빼서 이웃하지 않는 배열을 센다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q14 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-189",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=순열>특정 조건 배열; 크로스워크 H1-RPM-189에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "06-HIGHER_INEQUALITY",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-181"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 부등식",
+          "l3": "이차부등식",
+          "l4": "근의 위치와 해",
+          "recordId": "H1-RPM-181",
+          "l3Label": "이차부등식",
+          "l4Label": "근의 위치와 해",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 부등식",
+        "rpmPrimaryL3": "이차부등식",
+        "rpmPrimaryL4": "근의 위치와 해",
+        "rpmPrimaryRecordId": "H1-RPM-181",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식",
+        "L4": "근의 위치와 해",
+        "rpmL3": "이차부등식",
+        "rpmL4": "근의 위치와 해",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "crossConceptKeys": [
+          "CC_INEQUALITY_QUADRATIC",
+          "CC_INTEGER_PARAMETER_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "이차부등식을 $(x-4)(x-n)<0$으로 인수분해하고 $n$이 4보다 작은 경우와 큰 경우로 나누어 자연수 해의 개수를 센다.",
+        "difficultyBasis": "두 방향의 경우 분류와 경계값 점검이 필요한 상위 문항이라 4로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "이차부등식을 $(x-4)(x-n)<0$으로 인수분해하고 $n$이 4보다 작은 경우와 큰 경우로 나누어 자연수 해의 개수를 센다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 이차부등식, 정수 매개변수 분석",
+          "condition": "제한 조건: COND_NATURAL_NUMBER",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-181(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 15,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $-x^2+(n+3)x-3n>0$ → $-x^2+(n+4)x-4n>0$ (답 19 → 24), 오답은 $n<4$ 쪽 누락(21)·경계 처리 오류",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "이차부등식을 $(x-4)(x-n)<0$으로 인수분해하고 $n$이 4보다 작은 경우와 큰 경우로 나누어 자연수 해의 개수를 센다.",
+      "decisiveStep": "$n<4$와 $n>4$로 나눠 자연수 해의 개수가 1~3이 되는 $n=1,2,6,7,8$ 찾기",
+      "variationNote": "원본 $-x^2+(n+3)x-3n>0$ → $-x^2+(n+4)x-4n>0$ (답 19 → 24), 오답은 $n<4$ 쪽 누락(21)·경계 처리 오류",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": true,
+      "difficultyReason": "두 방향의 경우 분류와 경계값 점검이 필요한 상위 문항이라 4로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "이차부등식",
+              "src": "stem",
+              "quote": "이차부등식"
+            },
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수 $x$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "값의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "(x-4)(x-n)<0",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "$n<4$이면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "개수",
+              "src": "solution",
+              "quote": "$n-5$개",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "개수",
+              "src": "stem",
+              "quote": "최소 1개, 최대 3개"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "n의 크기에 따라 자연수 해의 개수를 세어 가능한 n을 모은다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q15 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-181",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=이차부등식>근의 위치와 해; 크로스워크 H1-RPM-181에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차방정식과 이차함수",
+        "conceptClusterKey": "05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-170"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H1-RPM-170",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "rpmL3": "최대·최소",
+        "rpmL4": "구간 최대·최소",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "꼭짓점과 구간 양 끝점의 위치에 따라 $a$의 범위를 나누고 각 범위에서 최댓값·최솟값의 합 조건을 푼다.",
+        "difficultyBasis": "세 범위로 나누고 각각 방정식을 풀어 걸러 내는 상위 문항이라 4로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "꼭짓점과 구간 양 끝점의 위치에 따라 $a$의 범위를 나누고 각 범위에서 최댓값·최솟값의 합 조건을 푼다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 대칭축과 구간의 위치별 극값",
+          "condition": "제한 조건: COND_POSITIVE",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-170(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 16,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $y=x^2-4x+3$ → $y=x^2-6x+5$ (답 $4-\\sqrt3+\\sqrt7$ → $4+\\sqrt{13}$), 오답은 범위 검증 누락($a=5$ 포함, 9+√13)·한 경우만",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "꼭짓점과 구간 양 끝점의 위치에 따라 $a$의 범위를 나누고 각 범위에서 최댓값·최솟값의 합 조건을 푼다.",
+      "decisiveStep": "$a<3$, $3\\le a\\le6$, $a>6$로 나누어 $a=1$, $a=3+\\sqrt{13}$ 얻기",
+      "variationNote": "원본 $y=x^2-4x+3$ → $y=x^2-6x+5$ (답 $4-\\sqrt3+\\sqrt7$ → $4+\\sqrt{13}$), 오답은 범위 검증 누락($a=5$ 포함, 9+√13)·한 경우만",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "세 범위로 나누고 각각 방정식을 풀어 걸러 내는 상위 문항이라 4로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "이차함수",
+              "src": "stem",
+              "quote": "이차함수"
+            },
+            {
+              "term": "구간",
+              "src": "stem",
+              "quote": "0\\le x\\le a"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "값의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "꼭짓점",
+              "src": "solution",
+              "quote": "꼭짓점은 $(3,-4)$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "(i) $0<a<3$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "최댓값",
+              "src": "solution",
+              "quote": "최댓값 $f(0)=5$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "양수",
+              "src": "stem",
+              "quote": "양수 $a$"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "꼭짓점과 구간의 위치에 따라 경우를 나누어 a를 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q16 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-170",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=최대·최소>구간 최대·최소; 크로스워크 H1-RPM-170에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "06-INEQUALITY",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-292"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 부등식",
+          "l3": "연립일차부등식",
+          "l4": "절댓값 둘의 일차결합 부등식을 영점 기준 구간으로 나누어 풀기",
+          "recordId": "H1-RPM-292",
+          "l3Label": "연립일차부등식",
+          "l4Label": "절댓값 둘의 일차결합 부등식을 영점 기준 구간으로 나누어 풀기",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-ABS-SUM-INEQUALITY-INTERVAL-SPLIT",
+          "parentRpmL4": "해의 범위",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H1-RPM-292"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 부등식",
+        "rpmPrimaryL3": "연립일차부등식",
+        "rpmPrimaryL4": "절댓값 둘의 일차결합 부등식을 영점 기준 구간으로 나누어 풀기",
+        "rpmPrimaryRecordId": "H1-RPM-292",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "연립일차부등식",
+        "L4": "절댓값 둘의 일차결합 부등식을 영점 기준 구간으로 나누어 풀기",
+        "rpmL3": "연립일차부등식",
+        "rpmL4": "절댓값 둘의 일차결합 부등식을 영점 기준 구간으로 나누어 풀기",
+        "rpmGeneratedL4Key": "EXT-L4-ABS-SUM-INEQUALITY-INTERVAL-SPLIT",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_INEQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "절댓값 안이 0이 되는 점을 기준으로 구간을 나누어 각 구간에서 부등식을 풀고 합쳐 정수 개수를 센다.",
+        "difficultyBasis": "영점 기준 구간 분할의 기본형으로 서답 단답이라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "절댓값 안이 0이 되는 점을 기준으로 구간을 나누어 각 구간에서 부등식을 풀고 합쳐 정수 개수를 센다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 절댓값을 포함한 부등식",
+          "condition": "제한 조건: COND_INTEGER",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-292(DIRECT_ACTIVE) 공식 Resolver 결과 + Generated L4 확장"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 17,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $|x+1|+|x-2|\\le9$ → $|x+2|+|x-3|\\le11$ (답 10 → 12), 오답은 양 끝 제외(10)·한 구간 누락",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "familyTemplateSelection": {
+          "crosswalkRecordId": "H1-RPM-292",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE"
+        }
+      },
+      "primaryMethod": "절댓값 안이 0이 되는 점을 기준으로 구간을 나누어 각 구간에서 부등식을 풀고 합쳐 정수 개수를 센다.",
+      "decisiveStep": "세 구간의 해를 합쳐 $-5\\le x\\le6$을 얻고 양 끝을 포함해 정수 세기",
+      "variationNote": "원본 $|x+1|+|x-2|\\le9$ → $|x+2|+|x-3|\\le11$ (답 10 → 12), 오답은 양 끝 제외(10)·한 구간 누락",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "영점 기준 구간 분할의 기본형으로 서답 단답이라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE"
+      },
+      "item4slot": {
+        "format": "단답",
+        "slots": {
+          "given": [
+            {
+              "term": "절댓값부등식",
+              "src": "stem",
+              "quote": "|x+2|+|x-3|\\le11"
+            },
+            {
+              "term": "정수",
+              "src": "stem",
+              "quote": "정수 $x$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "개수",
+              "src": "stem",
+              "quote": "개수"
+            }
+          ],
+          "method": [
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "세 구간으로 나눈다",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "절댓값",
+              "src": "solution",
+              "quote": "절댓값 안이 0이 되는",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "범위",
+              "src": "solution",
+              "quote": "-5\\le x\\le6",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "경계조건",
+              "src": "solution",
+              "quote": "-5\\le x<-2"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "영점으로 구간을 나눠 해를 합치고 정수 개수를 센다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q17 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-292",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 H1-RPM-292에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+        "subUnit": "여러 가지 방정식",
+        "conceptClusterKey": "06-SYSTEM_OF_EQUATIONS",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-174"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 방정식",
+          "l3": "연립방정식",
+          "l4": "도형의 길이 비와 피타고라스 관계를 이차 연립식으로 세워 풀기",
+          "recordId": "H1-RPM-174",
+          "l3Label": "연립방정식",
+          "l4Label": "도형의 길이 비와 피타고라스 관계를 이차 연립식으로 세워 풀기",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-SYSTEM-GEOMETRY-RATIO-PYTHAGOREAN-MODEL",
+          "parentRpmL4": "이차식이 포함된 연립방정식",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H1-RPM-174"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 방정식",
+        "rpmPrimaryL3": "연립방정식",
+        "rpmPrimaryL4": "도형의 길이 비와 피타고라스 관계를 이차 연립식으로 세워 풀기",
+        "rpmPrimaryRecordId": "H1-RPM-174",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식",
+        "L4": "도형의 길이 비와 피타고라스 관계를 이차 연립식으로 세워 풀기",
+        "rpmL3": "연립방정식",
+        "rpmL4": "도형의 길이 비와 피타고라스 관계를 이차 연립식으로 세워 풀기",
+        "rpmGeneratedL4Key": "EXT-L4-SYSTEM-GEOMETRY-RATIO-PYTHAGOREAN-MODEL",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "crossConceptKeys": [
+          "CC_ALGEBRAIC_MODELING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "대각선이 지름임을 이용하고 변을 비례 상수 $k$로 두어 피타고라스 정리로 $k$를 구한 뒤 넓이를 계산한다.",
+        "difficultyBasis": "식 하나로 $k$를 구하는 기본 활용 단답이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "대각선이 지름임을 이용하고 변을 비례 상수 $k$로 두어 피타고라스 정리로 $k$를 구한 뒤 넓이를 계산한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 문자식을 이용한 도형 관계 모델링",
+          "condition": "별도 제한 조건 없음",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-174(DIRECT_ACTIVE) 공식 Resolver 결과 + Generated L4 확장"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 18,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 지름 80, 비 4:3 (넓이 3072) → 지름 130, 비 12:5 (넓이 6000), 오답은 지름을 한 변으로 착각",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "대각선이 지름임을 이용하고 변을 비례 상수 $k$로 두어 피타고라스 정리로 $k$를 구한 뒤 넓이를 계산한다.",
+      "decisiveStep": "$(12k)^2+(5k)^2=130^2$에서 $k=10$ 구하기",
+      "variationNote": "원본 지름 80, 비 4:3 (넓이 3072) → 지름 130, 비 12:5 (넓이 6000), 오답은 지름을 한 변으로 착각",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "식 하나로 $k$를 구하는 기본 활용 단답이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "templateKey": "TPL_H1_SYSTEM_DIRECT"
+      },
+      "item4slot": {
+        "format": "단답",
+        "slots": {
+          "given": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "지름의 길이가 $130$인 원"
+            },
+            {
+              "term": "직사각형",
+              "src": "stem",
+              "quote": "직사각형"
+            }
+          ],
+          "goal": [
+            {
+              "term": "넓이",
+              "src": "stem",
+              "quote": "넓이"
+            }
+          ],
+          "method": [
+            {
+              "term": "피타고라스정리",
+              "src": "solution",
+              "quote": "피타고라스 정리",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "비",
+              "src": "solution",
+              "quote": "가로를 $12k$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대각선",
+              "src": "solution",
+              "quote": "대각선은 원의 지름",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "비",
+              "src": "stem",
+              "quote": "비가 $12:5$"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "대각선이 지름임을 이용해 비례 상수를 피타고라스 정리로 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q18 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-174",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립방정식>이차식이 포함된 연립방정식; 크로스워크 H1-RPM-174에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "06-HIGHER_INEQUALITY",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-180"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 부등식",
+          "l3": "이차부등식",
+          "l4": "그래프를 이용한 해",
+          "recordId": "H1-RPM-180",
+          "l3Label": "이차부등식",
+          "l4Label": "그래프를 이용한 해",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 부등식",
+        "rpmPrimaryL3": "이차부등식",
+        "rpmPrimaryL4": "그래프를 이용한 해",
+        "rpmPrimaryRecordId": "H1-RPM-180",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식",
+        "L4": "그래프를 이용한 해",
+        "rpmL3": "이차부등식",
+        "rpmL4": "그래프를 이용한 해",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "crossConceptKeys": [
+          "CC_INEQUALITY_QUADRATIC",
+          "CC_INTERVAL_INTERSECTION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "그래프에서 $f>0$ 범위와 $f<g$ 범위를 읽어 공통 구간의 정수를 찾는다.",
+        "difficultyBasis": "그래프 읽기와 구간 교집합, 경계 제외 판정이 필요해 3으로 본다.",
+        "visualNecessity": {
+          "problem": "ACTIVE:BOUND",
+          "problemReason": "주어진 그림(두 이차함수의 그래프)이 발문의 조건이므로 엔진이 그린 그래프로 제공한다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 그림에서 읽은 영점·교점의 x좌표와 부등식 구간 판정으로 완결되어 따로 해설 그림이 없어도 따라갈 수 있다.",
+          "problemAsset": "assets/images/26_순천고_1학기_기말_고1_유사/q19.svg"
+        },
+        "metaRationale": {
+          "problemType": "그래프에서 $f>0$ 범위와 $f<g$ 범위를 읽어 공통 구간의 정수를 찾는다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 이차부등식, 해 구간의 교집합",
+          "condition": "제한 조건: COND_INTEGER",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-180(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 19,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 영점·교점 읽기 → 영점 $-5,1$, 교점 $-7,0$ (답 $-4$ → $-6$), 오답은 경계 $-7$, $-5$ 포함·$f(x)>0$ 범위 오독",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "그래프에서 $f>0$ 범위와 $f<g$ 범위를 읽어 공통 구간의 정수를 찾는다.",
+      "decisiveStep": "$x<-5$ 또는 $x>1$과 $-7<x<0$의 교집합 $-7<x<-5$에서 정수 $-6$ 찾기",
+      "variationNote": "원본 영점·교점 읽기 → 영점 $-5,1$, 교점 $-7,0$ (답 $-4$ → $-6$), 오답은 경계 $-7$, $-5$ 포함·$f(x)>0$ 범위 오독",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "그래프 읽기와 구간 교집합, 경계 제외 판정이 필요해 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
+      },
+      "item4slot": {
+        "format": "단답",
+        "slots": {
+          "given": [
+            {
+              "term": "이차함수",
+              "src": "stem",
+              "quote": "두 이차함수"
+            },
+            {
+              "term": "그래프",
+              "src": "stem",
+              "quote": "그래프"
+            }
+          ],
+          "goal": [
+            {
+              "term": "정수",
+              "src": "stem",
+              "quote": "정수 $x$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "그래프",
+              "src": "solution",
+              "quote": "그림에서",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "교집합",
+              "src": "solution",
+              "quote": "두 범위의 공통 부분",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "이차부등식",
+              "src": "solution",
+              "quote": "$f(x)<g(x)$",
+              "evidenceType": "IMPLIED",
+              "justification": "해설에서 이 개념을 명시하지 않고 절차로 사용한다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "정수",
+              "src": "stem",
+              "quote": "정수"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "그래프에서 읽은 두 범위의 교집합에서 정수를 찾는다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q19 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-180",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=이차부등식>그래프를 이용한 해; 크로스워크 H1-RPM-180에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차방정식과 이차함수",
+        "conceptClusterKey": "05-QUADRATIC_FUNCTION_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-171"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식과 이차함수",
+          "l3": "최대·최소",
+          "l4": "조건식 활용",
+          "recordId": "H1-RPM-171",
+          "l3Label": "최대·최소",
+          "l4Label": "조건식 활용",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식과 이차함수",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "조건식 활용",
+        "rpmPrimaryRecordId": "H1-RPM-171",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "최대·최소",
+        "L4": "조건식 활용",
+        "rpmL3": "최대·최소",
+        "rpmL4": "조건식 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "crossConceptKeys": [
+          "CC_PROFIT_MAXIMIZATION_EXTREMA",
+          "CC_REAL_WORLD_QUADRATIC_MODEL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "가격 인상 횟수를 $x$로 두고 이익을 $x$의 이차식으로 세워 완전제곱 꼴로 최대가 되는 $x$를 찾는다.",
+        "difficultyBasis": "문장제를 이차함수로 세우고 최대를 찾는 표준형이라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "가격 인상 횟수를 $x$로 두고 이익을 $x$의 이차식으로 세워 완전제곱 꼴로 최대가 되는 $x$를 찾는다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 이차함수로 이익의 최댓값 구하기, 실생활 양을 이차함수로 모델링",
+          "condition": "별도 제한 조건 없음",
+          "integration": "SEQUENTIAL",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-171(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 20,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 원가 250·300원 500개·5원당 10개 → 원가 600·900원 400개·30원당 10개 (답 400원 → 1350원), 오답은 인상 횟수 $x$를 가격으로 답함(15)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "가격 인상 횟수를 $x$로 두고 이익을 $x$의 이차식으로 세워 완전제곱 꼴로 최대가 되는 $x$를 찾는다.",
+      "decisiveStep": "$y=-300(x-15)^2+\\cdots$로 정리해 $x=15$ 확인",
+      "variationNote": "원본 원가 250·300원 500개·5원당 10개 → 원가 600·900원 400개·30원당 10개 (답 400원 → 1350원), 오답은 인상 횟수 $x$를 가격으로 답함(15)",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "문장제를 이차함수로 세우고 최대를 찾는 표준형이라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL"
+      },
+      "item4slot": {
+        "format": "단답",
+        "slots": {
+          "given": [
+            {
+              "term": "원가",
+              "src": "stem",
+              "quote": "원가가 600원"
+            },
+            {
+              "term": "개수",
+              "src": "stem",
+              "quote": "하루에 400개가 팔리고"
+            }
+          ],
+          "goal": [
+            {
+              "term": "최대",
+              "src": "stem",
+              "quote": "이익이 최대"
+            }
+          ],
+          "method": [
+            {
+              "term": "이차함수",
+              "src": "solution",
+              "quote": "y=(300+30x)(400-10x)",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "완전제곱식",
+              "src": "solution",
+              "quote": "-300(x-15)^2",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "정의역",
+              "src": "solution",
+              "quote": "$0\\le x\\le40$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "범위",
+              "src": "solution",
+              "quote": "안에 있다",
+              "evidenceType": "IMPLIED",
+              "justification": "해설에서 이 개념을 명시하지 않고 절차로 사용한다"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "이익을 이차식으로 세워 완전제곱 꼴로 최대를 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q20 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-171",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=최대·최소>조건식 활용; 크로스워크 H1-RPM-171에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+        "subUnit": "여러 가지 방정식",
+        "conceptClusterKey": "06-SYSTEM_OF_EQUATIONS",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-174"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 방정식",
+          "l3": "연립방정식",
+          "l4": "이차식이 포함된 연립방정식",
+          "recordId": "H1-RPM-174",
+          "l3Label": "연립방정식",
+          "l4Label": "이차식이 포함된 연립방정식",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 방정식",
+        "rpmPrimaryL3": "연립방정식",
+        "rpmPrimaryL4": "이차식이 포함된 연립방정식",
+        "rpmPrimaryRecordId": "H1-RPM-174",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식",
+        "L4": "이차식이 포함된 연립방정식",
+        "rpmL3": "연립방정식",
+        "rpmL4": "이차식이 포함된 연립방정식",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "crossConceptKeys": [
+          "CC_SYSTEM_SYMMETRIC_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "한 식을 인수분해해 일차식 두 개로 가르고 각각 다른 식에 대입해 해를 구한 뒤 부호 조건으로 걸러 낸다.",
+        "difficultyBasis": "인수분해 후 두 경우 대입과 부호 판정이 필요한 서술형이라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "한 식을 인수분해해 일차식 두 개로 가르고 각각 다른 식에 대입해 해를 구한 뒤 부호 조건으로 걸러 낸다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 대칭형 연립이차방정식",
+          "condition": "제한 조건: COND_POSITIVE",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-174(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 21,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 $3x^2-2xy+y^2=24$ → $2x^2-xy+y^2=20$ (답 $4\\sqrt3$ → $2\\sqrt{10}$), 오답은 $y=-x$ 해를 포함",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "한 식을 인수분해해 일차식 두 개로 가르고 각각 다른 식에 대입해 해를 구한 뒤 부호 조건으로 걸러 낸다.",
+      "decisiveStep": "$(x-y)(x+y)=0$으로 $y=\\pm x$ 두 경우를 나누고 $a,b>0$인 해만 선택",
+      "variationNote": "원본 $3x^2-2xy+y^2=24$ → $2x^2-xy+y^2=20$ (답 $4\\sqrt3$ → $2\\sqrt{10}$), 오답은 $y=-x$ 해를 포함",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "인수분해 후 두 경우 대입과 부호 판정이 필요한 서술형이라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "templateKey": "TPL_H1_SYSTEM_DIRECT"
+      },
+      "item4slot": {
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "연립방정식",
+              "src": "stem",
+              "quote": "해 중"
+            },
+            {
+              "term": "양수",
+              "src": "stem",
+              "quote": "a>0"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "a+b"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "(x-y)(x+y)=0",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "(i) $y=x$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "둘째 식에 대입하면",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "양수",
+              "src": "stem",
+              "quote": "b>0"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "한 식을 인수분해해 두 경우로 나누고 부호로 해를 고른다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q21 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-174",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립방정식>이차식이 포함된 연립방정식; 크로스워크 H1-RPM-174에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지정리",
+        "conceptClusterKey": "02-CORE",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-143"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식",
+          "l2": "항등식과 나머지정리",
+          "l3": "나머지정리",
+          "l4": "고차식 조건",
+          "recordId": "H1-RPM-143",
+          "l3Label": "나머지정리",
+          "l4Label": "고차식 조건",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "다항식",
+        "rpmPrimaryL2": "항등식과 나머지정리",
+        "rpmPrimaryL3": "나머지정리",
+        "rpmPrimaryL4": "고차식 조건",
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "L3": "나머지정리",
+        "L4": "고차식 조건",
+        "rpmL3": "나머지정리",
+        "rpmL4": "고차식 조건",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+        "crossConceptKeys": [
+          "CC_NESTED_DIVISION_REMAINDER",
+          "CC_DEGREE_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "나눗셈 관계로 $f=(g+1)(g+x^2)$를 얻고 나머지의 차수 조건으로 $g$를 이차식으로 정한 뒤 정수근 조건으로 미정계수를 구한다.",
+        "difficultyBasis": "차수 논증, 최고차항 조건, 정수근 분기가 모두 필요한 최상위 서술형이라 5로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "나눗셈 관계로 $f=(g+1)(g+x^2)$를 얻고 나머지의 차수 조건으로 $g$를 이차식으로 정한 뒤 정수근 조건으로 미정계수를 구한다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 연속 나눗셈의 몫·나머지 관계, 몫과 나머지 항등식의 차수 분석",
+          "condition": "제한 조건: COND_INTEGER",
+          "integration": "INTERDEPENDENT",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-143(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 22,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 정수근 3,α,β (답 α=11, β=−4) → 정수근 2,α,β (답 α=5, β=−3), 오답은 q=2 분기 미검토·차수 조건 누락",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "familyTemplateSelection": {
+          "crosswalkRecordId": "H1-RPM-143",
+          "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION"
+        }
+      },
+      "primaryMethod": "나눗셈 관계로 $f=(g+1)(g+x^2)$를 얻고 나머지의 차수 조건으로 $g$를 이차식으로 정한 뒤 정수근 조건으로 미정계수를 구한다.",
+      "decisiveStep": "차수 조건에서 $g=-x^2+px+q$, $p=-1$을 얻고 근 $2$를 이차 인수에 대입해 $q=5$ 결정",
+      "variationNote": "원본 정수근 3,α,β (답 α=11, β=−4) → 정수근 2,α,β (답 α=5, β=−3), 오답은 q=2 분기 미검토·차수 조건 누락",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "차수 논증, 최고차항 조건, 정수근 분기가 모두 필요한 최상위 서술형이라 5로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION"
+      },
+      "item4slot": {
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "다항식",
+              "src": "stem",
+              "quote": "다항식 $f(x)$"
+            },
+            {
+              "term": "정수근",
+              "src": "stem",
+              "quote": "서로 다른 세 정수근"
+            }
+          ],
+          "goal": [
+            {
+              "term": "값",
+              "src": "stem",
+              "quote": "값을 구하는 과정"
+            }
+          ],
+          "method": [
+            {
+              "term": "나머지",
+              "src": "solution",
+              "quote": "나머지 $g(x)+x^2$의 차수",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "차수",
+              "src": "solution",
+              "quote": "차수가 3 이상이면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "(x-5)(x^2+x-6)",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "최고차항",
+              "src": "stem",
+              "quote": "최고차항의 계수가 1"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "나눗셈 관계와 차수 조건으로 g를 정하고 정수근 조건으로 계수를 정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q22 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-143",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=나머지정리>고차식 조건; 크로스워크 H1-RPM-143에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+        "subUnit": "조합",
+        "conceptClusterKey": "08-COUNTING_PRINCIPLE",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-196"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "조합",
+          "l3": "분할·분배",
+          "l4": "선택 후 배치",
+          "recordId": "H1-RPM-196",
+          "l3Label": "분할·분배",
+          "l4Label": "선택 후 배치",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "조합",
+        "rpmPrimaryL3": "분할·분배",
+        "rpmPrimaryL4": "선택 후 배치",
+        "rpmPrimaryRecordId": "H1-RPM-196",
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "분할·분배",
+        "L4": "선택 후 배치",
+        "rpmL3": "분할·분배",
+        "rpmL4": "선택 후 배치",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "crossConceptKeys": [
+          "CC_COMBINATION_ORDER"
+        ],
+        "conditionKeys": [
+          "COND_NONEMPTY_SELECTION"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "모두 1개 이상 받아야 하므로 한 명만 2개를 받는 경우로 나누고, 그 학생을 고른 뒤 나머지를 순열로 나누어 준다.",
+        "difficultyBasis": "세 유형의 선택과 배분을 모두 계산해야 하는 상위 서술형이라 4로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장(과 표·행렬)만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 식 전개와 구간·경우 판정으로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "모두 1개 이상 받아야 하므로 한 명만 2개를 받는 경우로 나누고, 그 학생을 고른 뒤 나머지를 순열로 나누어 준다.",
+          "crossConcept": "해설에 쓰이는 보조 개념: 조합 선택 후 순서 배정",
+          "condition": "제한 조건: COND_NONEMPTY_SELECTION",
+          "integration": "CASE_BRANCH",
+          "curriculum": "2022 개정 공통수학1: 크로스워크 H1-RPM-196(DIRECT_ACTIVE) 공식 Resolver 결과"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_순천고_1학기_기말_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+          "sourceQid": 23,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-11",
+          "variationNote": "원본 음료 3개·빵 2개·4명 (답 24, 72, 36) → 주스 4개·빵 2개·5명 (답 120, 480, 360), 오답은 같은 빵을 구별하거나 학생 선택 누락",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "모두 1개 이상 받아야 하므로 한 명만 2개를 받는 경우로 나누고, 그 학생을 고른 뒤 나머지를 순열로 나누어 준다.",
+      "decisiveStep": "한 명이 2개를 받는 세 유형으로 나누어 학생 선택×나머지 배분을 곱의 법칙으로 계산",
+      "variationNote": "원본 음료 3개·빵 2개·4명 (답 24, 72, 36) → 주스 4개·빵 2개·5명 (답 120, 480, 360), 오답은 같은 빵을 구별하거나 학생 선택 누락",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "세 유형의 선택과 배분을 모두 계산해야 하는 상위 서술형이라 4로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "item4slot": {
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "주스",
+              "src": "stem",
+              "quote": "서로 다른 종류의 주스 4개"
+            },
+            {
+              "term": "학생",
+              "src": "stem",
+              "quote": "5명의 학생"
+            }
+          ],
+          "goal": [
+            {
+              "term": "경우의수",
+              "src": "stem",
+              "quote": "경우의 수"
+            }
+          ],
+          "method": [
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "한 명만 2개를 받고",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "곱의법칙",
+              "src": "solution",
+              "quote": "5\\times24=120",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "조합",
+              "src": "solution",
+              "quote": "\\binom42=6",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "분배",
+              "src": "stem",
+              "quote": "아무것도 받지 못하는 학생이 없도록"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "한 명만 2개를 받는 유형으로 나누어 곱의 법칙으로 센다"
+        },
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-11"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "순천고 1학기 기말 고1 원본 Q23 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "조합",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-196",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=분할·분배>선택 후 배치; 크로스워크 H1-RPM-196에 공식 Resolver를 돌려 PT/TPL 투영 확인",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-11",
+        "fieldChanges": []
+      }
+    }
+  ],
+  "evidenceRefs": []
+}
