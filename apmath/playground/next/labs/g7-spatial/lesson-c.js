@@ -237,4 +237,162 @@
         ] }
       ] }
   ];
+
+  const netStart = () => ({ spFold: 0, spYaw: -12, spPitchN: 62, spBase: 0 });
+  const netSet = (goal, ref = 'AB') => ({ ...reset(goal, 'net'), spNet: 'cross', spRefN: ref });
+  bank['s4-1'] = [
+    { title: '정육면체 전개도의 꼬인 모서리', label: '모서리 찾기', tab: 'review', answer: '모서리 DG',
+      summary: '접힌 뒤 만나는 모서리와 평행한 모서리를 제외합니다', task: '전개도의 평면 그림이 아니라 접힌 입체에서 판단해 보세요',
+      chapters: [
+        { length: 12, title: '기준 AB를 따라 접기', start: netStart(), cues: [
+          { at: 0, say: '기준 모서리는 AB예요. 같은 문자가 접힌 뒤 어디로 모이는지 보세요.', set: netSet('name'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '보기의 모서리가 AB와 만나는지, 평행한지 접힌 입체에서 판단해요.' }
+        ] },
+        { length: 12, title: '두 종류 먼저 제외하기', cues: [
+          { at: 0, say: 'A나 B에서 AB와 만나는 모서리는 4개예요. 꼬인 위치에서 제외해요.', step: 1, set: { spMeetReady: true } },
+          { at: 6, say: 'AB와 평행한 모서리 3개도 꼬인 위치가 아니에요.', step: 2, set: { spParReady: true } }
+        ] },
+        { length: 10, title: '남은 모서리와 보기 확인', cues: [
+          { at: 0, say: '남은 모서리는 AB와 만나지도 않고 평행하지도 않아요.' },
+          { at: 5, say: '보기에서 꼬인 위치인 정답은 모서리 DG예요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] },
+    { title: '정육면체 전개도의 꼬인 개수', label: '꼬인 개수', tab: 'review', answer: '꼬인 모서리 4개',
+      summary: '전체에서 기준 자신·만나는 것·평행한 것을 뺍니다', task: '기준 AB를 한 번 제외했는지 확인해 보세요',
+      chapters: [
+        { length: 12, title: '접어서 모서리 구별하기', start: netStart(), cues: [
+          { at: 0, say: '정육면체 전개도를 접어요. 기준 AB와 꼬인 위치의 개수를 구해요.', set: netSet('count'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '접힌 입체의 전체 모서리는 12개예요. AB 자신도 들어 있어요.' }
+        ] },
+        { length: 12, title: '만나는 것과 평행한 것 빼기', cues: [
+          { at: 0, say: 'AB의 두 끝점에서 만나는 모서리 4개를 제외해요.', step: 1, set: { spMeetReady: true } },
+          { at: 6, say: 'AB와 평행한 모서리 3개도 제외해요.', step: 2, set: { spParReady: true } }
+        ] },
+        { length: 10, title: '남은 개수 계산하기', cues: [
+          { at: 0, say: '전체 12개에서 기준 1개, 만나는 4개, 평행한 3개를 빼요.' },
+          { at: 5, say: '12−1−4−3이므로 꼬인 모서리 4개예요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] }
+  ];
+
+  bank['s4-2'] = [
+    { title: '전개도를 접어 평행한 면 찾기', label: '평행한 면', tab: 'review', answer: '평행한 면은 ㅂ',
+      summary: '접힌 정육면체에서 기준 면과 마주 보는 면을 찾습니다', task: '전개도 모양을 바꾼 뒤에는 다시 접어 어느 면이 마주 보는지 확인해 보세요',
+      chapters: [
+        { length: 12, title: '기준 면 ㄱ을 정하기', start: netStart(), cues: [
+          { at: 0, say: '십자형 전개도에서 기준은 면 ㄱ이에요. 각 면의 문자를 따라 접어요.', set: netSet('parallel'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '전개도에서 떨어진 거리보다 접은 뒤의 위치를 봐야 해요.' }
+        ] },
+        { length: 12, title: '이웃한 면과 마주 보는 면', cues: [
+          { at: 0, say: '기준 면과 모서리를 공유하는 면은 서로 이웃한 면이에요.', step: 1 },
+          { at: 6, say: '평행한 면은 기준 면과 만나지 않고 마주 보는 면이에요.' }
+        ] },
+        { length: 10, title: '마주 보는 면의 이름', cues: [
+          { at: 0, say: '기준 면 ㄱ 자신은 빼고 맞은편 한 면의 문자를 읽어요.' },
+          { at: 5, say: '평행한 면은 ㅂ이에요. 면 ㄱ의 맞은편 한 면이에요.', step: 2, set: { spShowAnswer: true } }
+        ] }
+      ] },
+    { title: '전개도를 접어 수직인 면 세기', label: '수직인 면', tab: 'review', answer: '수직인 면 4개',
+      summary: '기준 면과 그 맞은편 면을 제외한 이웃한 면을 셉니다', task: '각 이웃한 면이 기준 면과 직각으로 만나는지 확인해 보세요',
+      chapters: [
+        { length: 12, title: '기준 면과 직각 찾기', start: netStart(), cues: [
+          { at: 0, say: '기준 면은 ㄱ이에요. 정육면체를 접어 이웃한 면들을 살펴봐요.', set: netSet('perpendicular'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '두 평면이 직각으로 만나면 수직이라고 해요.' }
+        ] },
+        { length: 12, title: '제외할 두 면 찾기', cues: [
+          { at: 0, say: '면 ㄱ과 마주 보는 면 ㅂ은 평행하므로 수직인 면에서 제외해요.', step: 2, set: { spFaceReady: true } },
+          { at: 6, say: '전체 여섯 면에서 기준 면 ㄱ과 맞은편 면 ㅂ을 하나씩 빼요.' }
+        ] },
+        { length: 10, title: '남은 이웃한 면들', cues: [
+          { at: 0, say: '나머지 면들은 모두 기준 면과 한 모서리를 공유하며 직각으로 만나요.' },
+          { at: 5, say: '수직인 면 4개예요. ㄴ, ㄷ, ㄹ, ㅁ이에요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] }
+  ];
+
+  bank['s4-3'] = [
+    { title: '삼각기둥의 두 밑면 관계', label: '두 밑면', tab: 'review', answer: '서로 평행해요',
+      summary: '삼각형 두 개가 접힌 뒤 어느 위치에 놓이는지 봅니다', task: '한 밑면과 마주 보는 다른 밑면을 찾아보세요',
+      chapters: [
+        { length: 12, title: '삼각형과 직사각형 구별하기', start: netStart(), cues: [
+          { at: 0, say: '삼각형 두 개는 밑면이고 직사각형 세 개는 옆면이에요. 접어 봐요.', set: netSet('base-parallel'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '노란 삼각형을 기준으로 반대쪽 삼각형의 위치를 따라가요.' }
+        ] },
+        { length: 12, title: '접힌 뒤 두 밑면의 위치', cues: [
+          { at: 0, say: '두 밑면은 떨어져 마주 보고, 그 평면을 넓혀도 만나지 않아요.' },
+          { at: 6, say: '삼각기둥의 두 밑면은 서로 평행해요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] },
+    { title: '삼각기둥의 옆면과 밑면 관계', label: '옆면', tab: 'review', answer: '밑면과 수직',
+      summary: '세 직사각형 옆면이 기준 삼각형과 만나는 각을 봅니다', task: '옆면끼리의 관계와 옆면·밑면의 관계를 구별해 보세요',
+      chapters: [
+        { length: 12, title: '밑면을 기준으로 접기', start: netStart(), cues: [
+          { at: 0, say: '노란 삼각형을 기준 밑면으로 봐요. 세 직사각형은 옆면이에요.', set: netSet('base-perp'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '각 옆면이 삼각형 밑면의 한 변을 따라 어떻게 만나는지 봐요.' }
+        ] },
+        { length: 12, title: '세 옆면이 만나는 각', cues: [
+          { at: 0, say: '이 삼각기둥의 옆면은 밑면과 90°로 만나요.' },
+          { at: 6, say: '따라서 세 옆면은 밑면과 수직이에요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] },
+    { title: '삼각기둥 전개도의 꼬인 개수', label: '꼬인 개수', tab: 'review', answer: '꼬인 모서리 3개',
+      summary: '접힌 삼각기둥의 아홉 모서리에서 해당하지 않는 것을 뺍니다', task: '모서리의 위치 관계는 접은 다음에 판단해 보세요',
+      chapters: [
+        { length: 12, title: '기준 AB와 접힌 입체', start: netStart(), cues: [
+          { at: 0, say: '기준 모서리는 AB예요. 삼각기둥으로 접어 위치 관계를 살펴봐요.', set: netSet('count'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '접힌 입체의 모서리는 모두 9개예요. 기준 AB 자신도 들어 있어요.' }
+        ] },
+        { length: 12, title: '만남과 평행 제외하기', cues: [
+          { at: 0, say: 'AB와 끝점에서 만나는 모서리는 4개예요.', step: 1, set: { spMeetReady: true } },
+          { at: 6, say: 'AB와 평행한 모서리는 1개예요. 이것도 제외해요.', step: 2, set: { spParReady: true } }
+        ] },
+        { length: 10, title: '나머지 모서리 세기', cues: [
+          { at: 0, say: '전체 9개에서 기준 1개, 만나는 4개, 평행한 1개를 빼요.' },
+          { at: 5, say: '9−1−4−1이므로 꼬인 모서리 3개예요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] }
+  ];
+
+  bank['s4-4'] = [
+    { title: '네 삼각형의 꼭짓점이 모일 곳', label: '꼭짓점', tab: 'review', answer: '한 점으로 모여요',
+      summary: '전개도의 같은 문자 V를 접는 동안 따라갑니다', task: '접힌 뒤 같은 문자의 꼭짓점이 겹치는지 확인해 보세요',
+      chapters: [
+        { length: 12, title: '전개도의 같은 문자', start: netStart(), cues: [
+          { at: 0, say: '네 삼각형의 끝에 표시된 V들을 따라가며 정사각뿔을 접어요.', set: netSet('apex'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '각 삼각형은 밑면의 한 모서리를 축으로 제자리에서 돌아가요.' }
+        ] },
+        { length: 12, title: '접힌 뒤 문자 확인하기', cues: [
+          { at: 0, say: '밑면의 A, B, C, D는 그대로예요. 위쪽 V들을 살펴봐요.' },
+          { at: 6, say: '네 꼭짓점은 V라는 한 점으로 모여요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] },
+    { title: '옆모서리끼리는 꼬일 수 있을까', label: '옆모서리', tab: 'review', answer: '꼬인 위치가 아니에요',
+      summary: '접힌 뒤 네 옆모서리가 공유하는 끝점을 찾습니다', task: '서로 한 점에서 만나는 직선은 꼬인 위치가 아닌 이유를 말해 보세요',
+      chapters: [
+        { length: 12, title: '옆모서리를 따라 접기', start: netStart(), cues: [
+          { at: 0, say: '옆모서리는 V와 밑면의 꼭짓점을 잇는 선분이에요. 전개도를 접어요.', set: netSet('lateral', 'VA'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '살펴볼 옆모서리는 VA, VB, VC, VD예요.' }
+        ] },
+        { length: 12, title: '공통 끝점으로 판단하기', cues: [
+          { at: 0, say: '어느 두 옆모서리를 골라도 끝점 V를 함께 가지고 있어요.' },
+          { at: 6, say: '옆모서리끼리는 V에서 만나므로 꼬인 위치가 아니에요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] },
+    { title: '정사각뿔 전개도의 꼬인 모서리', label: '모서리 찾기', tab: 'review', answer: '모서리 VD',
+      summary: '밑면 AB를 기준으로 만남과 평행을 제외해 봅니다', task: '밑면 모서리와 옆모서리의 관계를 실제 접힌 모습에서 확인해 보세요',
+      chapters: [
+        { length: 12, title: '이번 기준은 밑면 AB', start: netStart(), cues: [
+          { at: 0, say: '이번 기준 모서리는 밑면의 AB예요. 접힌 뒤 각 모서리와 비교해요.', set: netSet('name'), to: { spFold: 1 }, dur: 5, ease: 'linear' },
+          { at: 6, say: '옆모서리끼리의 관계가 아니라 AB와의 관계를 묻는 문제예요.' }
+        ] },
+        { length: 12, title: 'AB와 만나거나 평행한 것', cues: [
+          { at: 0, say: 'A나 B에서 AB와 만나는 모서리는 4개예요.', step: 1, set: { spMeetReady: true } },
+          { at: 6, say: '밑면의 맞은편 모서리 1개는 AB와 평행하므로 제외해요.', step: 2, set: { spParReady: true } }
+        ] },
+        { length: 10, title: '꼬인 모서리를 보기에서 고르기', cues: [
+          { at: 0, say: '남은 모서리는 AB와 만나지도 않고 평행하지도 않아요.' },
+          { at: 5, say: '보기에서 꼬인 위치인 정답은 모서리 VD예요.', step: 3, set: { spShowAnswer: true } }
+        ] }
+      ] }
+  ];
 })();
