@@ -1,0 +1,707 @@
+{
+ "capability": "composite-panels-v1",
+ "columns": 1,
+ "caption": "평행한 두 직선 l, m 사이에서 엇각으로 같은 두 쌍의 각을 파란색과 주황색으로 표시하고, 삼각형 AOC와 BOD를 떼어 같은 방향으로 나란히 놓은 그림.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "l∥m, AB와 CD의 교점 O",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "엇각 ∠CAO=∠DBO, ∠ACO=∠BDO"
+ ],
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림의 배치"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-11",
+          "denominator": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "9",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "11",
+          "denominator": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-9",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "L1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-13",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "L2",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "15",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "M1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "-15",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "M2",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "13",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sL1L2",
+      "refs": [
+       "L1",
+       "L2"
+      ]
+     },
+     {
+      "id": "sM1M2",
+      "refs": [
+       "M1",
+       "M2"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "O",
+     "L1",
+     "L2",
+     "M1",
+     "M2"
+    ],
+    "planeMarks": {
+     "parallels": [
+      {
+       "id": "pp",
+       "count": 1,
+       "segments": [
+        "sL1L2",
+        "sM1M2"
+       ]
+      }
+     ],
+     "textLabels": [
+      {
+       "id": "tl",
+       "at": "L2",
+       "text": "l",
+       "anchor": "E"
+      },
+      {
+       "id": "tm",
+       "at": "M2",
+       "text": "m",
+       "anchor": "E"
+      }
+     ],
+     "regions": [
+      {
+       "id": "r1",
+       "fill": "LIGHT",
+       "shapes": [
+        {
+         "polygon": [
+          "A",
+          "O",
+          "C"
+         ]
+        }
+       ]
+      },
+      {
+       "id": "r2",
+       "fill": "LIGHT",
+       "shapes": [
+        {
+         "polygon": [
+          "B",
+          "O",
+          "D"
+         ]
+        }
+       ]
+      }
+     ],
+     "angles": [
+      {
+       "id": "a1",
+       "refs": [
+        "C",
+        "A",
+        "O"
+       ],
+       "value": 53.746,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "a2",
+       "refs": [
+        "D",
+        "B",
+        "O"
+       ],
+       "value": 53.746,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "a3",
+       "refs": [
+        "A",
+        "C",
+        "O"
+       ],
+       "value": 33.69,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "a4",
+       "refs": [
+        "B",
+        "D",
+        "O"
+       ],
+       "value": 33.69,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "equalAngles": [
+      {
+       "angles": [
+        "a1",
+        "a2"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "angles": [
+        "a3",
+        "a4"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "coordinateCanvas": {
+     "width": 480,
+     "height": 320
+    },
+    "hiddenPointNames": [
+     "L1",
+     "L2",
+     "M1",
+     "M2"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "△AOC와 △BOD"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "11",
+          "denominator": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "67",
+          "denominator": "10"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "39",
+          "denominator": "5"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O2",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "10"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAO",
+      "refs": [
+       "A",
+       "O"
+      ]
+     },
+     {
+      "id": "sOC",
+      "refs": [
+       "O",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     },
+     {
+      "id": "sBO2",
+      "refs": [
+       "B",
+       "O2"
+      ]
+     },
+     {
+      "id": "sO2D",
+      "refs": [
+       "O2",
+       "D"
+      ]
+     },
+     {
+      "id": "sDB",
+      "refs": [
+       "D",
+       "B"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "O",
+     "C",
+     "B",
+     "O2",
+     "D"
+    ],
+    "planeMarks": {
+     "regions": [
+      {
+       "id": "r1",
+       "fill": "LIGHT",
+       "shapes": [
+        {
+         "polygon": [
+          "A",
+          "O",
+          "C"
+         ]
+        }
+       ]
+      },
+      {
+       "id": "r2",
+       "fill": "LIGHT",
+       "shapes": [
+        {
+         "polygon": [
+          "B",
+          "O2",
+          "D"
+         ]
+        }
+       ]
+      }
+     ],
+     "angles": [
+      {
+       "id": "a1",
+       "refs": [
+        "C",
+        "A",
+        "O"
+       ],
+       "value": 53.746,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "a2",
+       "refs": [
+        "D",
+        "B",
+        "O2"
+       ],
+       "value": 53.746,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "a3",
+       "refs": [
+        "A",
+        "C",
+        "O"
+       ],
+       "value": 33.69,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "a4",
+       "refs": [
+        "B",
+        "D",
+        "O2"
+       ],
+       "value": 33.69,
+       "noLabel": true,
+       "arcs": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "equalAngles": [
+      {
+       "angles": [
+        "a1",
+        "a2"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "angles": [
+        "a3",
+        "a4"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "coordinateCanvas": {
+     "width": 480,
+     "height": 320
+    },
+    "pointNames": {
+     "O2": "O"
+    },
+    "pointNameGroups": [
+     [
+      "A",
+      "O",
+      "C"
+     ],
+     [
+      "B",
+      "O2",
+      "D"
+     ]
+    ]
+   }
+  }
+ ]
+}
