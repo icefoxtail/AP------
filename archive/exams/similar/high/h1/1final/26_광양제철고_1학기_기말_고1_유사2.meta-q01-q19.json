@@ -3,7 +3,7 @@
   "requestId": "26_광양제철고_1학기_기말_고1_유사2-candidate-v1",
   "examUid": "26_광양제철고_1학기_기말_고1_유사2",
   "sourceArchiveFile": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2.js",
-  "expectedSourceBlobSha1": "f0558dd394720186f00d6db59d8823b2bff9d60c",
+  "expectedSourceBlobSha1": "0fa0a89b14a3c5b40231bd4fab8745f3f196d507",
   "expectedQuestionCount": 19,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -26,18 +26,18 @@
         "courseKey": "공통수학1",
         "standardUnitKey": "H22-C-06",
         "standardUnit": "여러 가지 방정식과 부등식",
-        "subUnitKey": "H22-C-06-SYSTEM",
-        "subUnit": "연립방정식과 연립부등식",
-        "conceptClusterKey": "SYSTEM",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "HIGHER_INEQUALITY",
         "rpmPrimaryRecordIds": [
-          "H1-RPM-179"
+          "H1-RPM-285"
         ],
         "rpmPrimary": {
           "l1": "방정식과 부등식",
           "l2": "여러 가지 부등식",
           "l3": "연립일차부등식",
           "l4": "정수해",
-          "recordId": "H1-RPM-179",
+          "recordId": "H1-RPM-285",
           "l3Label": "연립일차부등식",
           "l4Label": "정수해",
           "l4Source": "CANONICAL"
@@ -46,11 +46,13 @@
         "rpmPrimaryL2": "여러 가지 부등식",
         "rpmPrimaryL3": "연립일차부등식",
         "rpmPrimaryL4": "정수해",
-        "rpmPrimaryRecordId": "H1-RPM-179",
+        "rpmPrimaryRecordId": "H1-RPM-285",
         "L1": "방정식과 부등식",
         "L2": "여러 가지 부등식",
         "L3": "연립일차부등식",
         "L4": "정수해",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_INTEGER"
@@ -87,15 +89,12 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "부등호 방향 전환 후 공통 범위 $-3<x\\le3$ 확정, 경계 $-3$ 제외·$3$ 포함 판정",
       "variationNote": "원본 $-2x-3<x+6$, $5x+6\\le3x+4$(공통 $-3<x\\le-1$, 정수 2개) → $-3x-2<x+10$, $4x+3\\le2x+9$(공통 $-3<x\\le3$, 정수 6개)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q1 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "PROJECTION_PENDING: H1-RPM-179는 크로스워크에서 PT/TPL이 있으나 H22 바인딩이 MISSING(BINDING_GAP)이라 problemTypeKey/templateKey를 비움(추정 금지)",
         "VISUAL_DEBT_CANDIDATE: 원본 해설에는 SVG 그림이 있었으나 이번 생성본은 해설 글로 완결해 EXEMPT로 둠(그림 제작 NOT_RUN). R1/R2에서 그림 필요성 재판정"
       ],
       "evidenceRefs": [],
@@ -106,9 +105,9 @@
         "curriculum": "2022",
         "scope": "공통수학1",
         "parentRefMode": "CROSSWALK_EXACT",
-        "crosswalkRecordId": "H1-RPM-179",
-        "method": "CROSSWALK_RPM_ONLY_NO_PROJECTION",
-        "basis": "결정 단계=연립일차부등식>정수해; 크로스워크 H1-RPM-179(2022 공통수학1)의 H22 바인딩이 없어(BINDING_GAP/RPM_ONLY) PT/TPL은 비움",
+        "crosswalkRecordId": "H1-RPM-285",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립일차부등식>정수해; 크로스워크 H1-RPM-285(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
         "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
@@ -126,18 +125,18 @@
         "courseKey": "공통수학1",
         "standardUnitKey": "H22-C-09",
         "standardUnit": "행렬과 그 연산",
-        "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+        "subUnitKey": "H22-C-09-CORE",
         "subUnit": "행렬의 연산",
-        "conceptClusterKey": "MATRIX_OPERATION",
+        "conceptClusterKey": "CORE",
         "rpmPrimaryRecordIds": [
-          "H1-RPM-200"
+          "H1-RPM-287"
         ],
         "rpmPrimary": {
           "l1": "행렬",
           "l2": "행렬",
           "l3": "행렬의 연산",
           "l4": "덧셈·뺄셈·실수배",
-          "recordId": "H1-RPM-200",
+          "recordId": "H1-RPM-287",
           "l3Label": "행렬의 연산",
           "l4Label": "덧셈·뺄셈·실수배",
           "l4Source": "CANONICAL"
@@ -146,11 +145,13 @@
         "rpmPrimaryL2": "행렬",
         "rpmPrimaryL3": "행렬의 연산",
         "rpmPrimaryL4": "덧셈·뺄셈·실수배",
-        "rpmPrimaryRecordId": "H1-RPM-200",
+        "rpmPrimaryRecordId": "H1-RPM-287",
         "L1": "행렬",
         "L2": "행렬",
         "L3": "행렬의 연산",
         "L4": "덧셈·뺄셈·실수배",
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_EQUATION"
         ],
@@ -187,16 +188,12 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "상의 열 성분에서 $2x+y=13$, $x+2y=11$을 세워 $x=5,y=3$을 구한 뒤 하의 열에 대입",
       "variationNote": "원본 P=(1 2;3 1), Q=(2 3;1 2), 상의 11·13개(x=3,y=4, 하의 11) → P=(2 1;1 3), Q=(1 3;2 1), 상의 13·11개(x=5,y=3, 하의 18)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q2 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
-      "hold": [
-        "PROJECTION_PENDING: H1-RPM-200은 H22 바인딩이 MISSING(BINDING_GAP)이라 PT/TPL을 비움"
-      ],
+      "hold": [],
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
@@ -205,9 +202,9 @@
         "curriculum": "2022",
         "scope": "공통수학1",
         "parentRefMode": "CROSSWALK_EXACT",
-        "crosswalkRecordId": "H1-RPM-200",
-        "method": "CROSSWALK_RPM_ONLY_NO_PROJECTION",
-        "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 H1-RPM-200(2022 공통수학1)의 H22 바인딩이 없어(BINDING_GAP/RPM_ONLY) PT/TPL은 비움",
+        "crosswalkRecordId": "H1-RPM-287",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 H1-RPM-287(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
         "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
@@ -225,18 +222,18 @@
         "courseKey": "공통수학1",
         "standardUnitKey": "H22-C-09",
         "standardUnit": "행렬과 그 연산",
-        "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+        "subUnitKey": "H22-C-09-CORE",
         "subUnit": "행렬의 연산",
-        "conceptClusterKey": "MATRIX_OPERATION",
+        "conceptClusterKey": "CORE",
         "rpmPrimaryRecordIds": [
-          "H1-RPM-200"
+          "H1-RPM-287"
         ],
         "rpmPrimary": {
           "l1": "행렬",
           "l2": "행렬",
           "l3": "행렬의 연산",
           "l4": "덧셈·뺄셈·실수배",
-          "recordId": "H1-RPM-200",
+          "recordId": "H1-RPM-287",
           "l3Label": "행렬의 연산",
           "l4Label": "덧셈·뺄셈·실수배",
           "l4Source": "CANONICAL"
@@ -245,11 +242,13 @@
         "rpmPrimaryL2": "행렬",
         "rpmPrimaryL3": "행렬의 연산",
         "rpmPrimaryL4": "덧셈·뺄셈·실수배",
-        "rpmPrimaryRecordId": "H1-RPM-200",
+        "rpmPrimaryRecordId": "H1-RPM-287",
         "L1": "행렬",
         "L2": "행렬",
         "L3": "행렬의 연산",
         "L4": "덧셈·뺄셈·실수배",
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -284,16 +283,12 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "$5A=M+2N$, $5B=N-2M$으로 소거해 $A,B$를 구하고 $AB$ 성분을 합함",
       "variationNote": "원본 M=(1 -2;6 5), N=(2 -4;-3 5)(A=(1 -2;0 3), B=(0 0;-3 -1), 합 -4) → M=(3 3;-4 -4), N=(1 6;2 -3)(A=(1 3;0 -2), B=(-1 0;2 1), 합 2)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q3 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
-      "hold": [
-        "PROJECTION_PENDING: H1-RPM-200은 H22 바인딩이 MISSING(BINDING_GAP)이라 PT/TPL을 비움"
-      ],
+      "hold": [],
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
@@ -302,9 +297,9 @@
         "curriculum": "2022",
         "scope": "공통수학1",
         "parentRefMode": "CROSSWALK_EXACT",
-        "crosswalkRecordId": "H1-RPM-200",
-        "method": "CROSSWALK_RPM_ONLY_NO_PROJECTION",
-        "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 H1-RPM-200(2022 공통수학1)의 H22 바인딩이 없어(BINDING_GAP/RPM_ONLY) PT/TPL은 비움",
+        "crosswalkRecordId": "H1-RPM-287",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=행렬의 연산>덧셈·뺄셈·실수배; 크로스워크 H1-RPM-287(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
         "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
@@ -521,18 +516,18 @@
         "courseKey": "공통수학1",
         "standardUnitKey": "H22-C-09",
         "standardUnit": "행렬과 그 연산",
-        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
-        "subUnit": "행렬의 활용",
-        "conceptClusterKey": "MATRIX_APPLICATION",
+        "subUnitKey": "H22-C-09-CORE",
+        "subUnit": "행렬의 연산",
+        "conceptClusterKey": "CORE",
         "rpmPrimaryRecordIds": [
-          "H1-RPM-202"
+          "H1-RPM-288"
         ],
         "rpmPrimary": {
           "l1": "행렬",
           "l2": "행렬",
           "l3": "행렬의 성질",
           "l4": "곱셈의 성질",
-          "recordId": "H1-RPM-202",
+          "recordId": "H1-RPM-288",
           "l3Label": "행렬의 성질",
           "l4Label": "곱셈의 성질",
           "l4Source": "CANONICAL"
@@ -541,11 +536,13 @@
         "rpmPrimaryL2": "행렬",
         "rpmPrimaryL3": "행렬의 성질",
         "rpmPrimaryL4": "곱셈의 성질",
-        "rpmPrimaryRecordId": "H1-RPM-202",
+        "rpmPrimaryRecordId": "H1-RPM-288",
         "L1": "행렬",
         "L2": "행렬",
         "L3": "행렬의 성질",
         "L4": "곱셈의 성질",
+        "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+        "templateKey": "TPL_H1_MATRIX_POWER_PERIOD",
         "crossConceptKeys": [
           "CC_PRIME_FACTORIZATION_DIVISOR_COUNT"
         ],
@@ -584,16 +581,12 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "$A^n=\\begin{pmatrix}1&na\\\\0&1\\end{pmatrix}$ 규칙을 찾아 $na=36$을 얻고 약수 개수 $(2+1)(2+1)$ 계산",
       "variationNote": "원본 합 56($na=54=2\\cdot3^3$, 약수 8개) → 합 38($na=36=2^2\\cdot3^2$, 약수 9개)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q6 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
-      "hold": [
-        "PROJECTION_PENDING: H1-RPM-202는 H22 바인딩이 MISSING(BINDING_GAP)이라 PT/TPL을 비움"
-      ],
+      "hold": [],
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
@@ -602,9 +595,9 @@
         "curriculum": "2022",
         "scope": "공통수학1",
         "parentRefMode": "CROSSWALK_EXACT",
-        "crosswalkRecordId": "H1-RPM-202",
-        "method": "CROSSWALK_RPM_ONLY_NO_PROJECTION",
-        "basis": "결정 단계=행렬의 성질>곱셈의 성질; 크로스워크 H1-RPM-202(2022 공통수학1)의 H22 바인딩이 없어(BINDING_GAP/RPM_ONLY) PT/TPL은 비움",
+        "crosswalkRecordId": "H1-RPM-288",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=행렬의 성질>곱셈의 성질; 크로스워크 H1-RPM-288(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
         "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
@@ -622,18 +615,18 @@
         "courseKey": "공통수학1",
         "standardUnitKey": "H22-C-06",
         "standardUnit": "여러 가지 방정식과 부등식",
-        "subUnitKey": "H22-C-06-SYSTEM",
-        "subUnit": "연립방정식과 연립부등식",
-        "conceptClusterKey": "SYSTEM",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "conceptClusterKey": "HIGHER_INEQUALITY",
         "rpmPrimaryRecordIds": [
-          "H1-RPM-178"
+          "H1-RPM-286"
         ],
         "rpmPrimary": {
           "l1": "방정식과 부등식",
           "l2": "여러 가지 부등식",
           "l3": "연립일차부등식",
           "l4": "해의 범위",
-          "recordId": "H1-RPM-178",
+          "recordId": "H1-RPM-286",
           "l3Label": "연립일차부등식",
           "l4Label": "해의 범위",
           "l4Source": "CANONICAL"
@@ -642,11 +635,13 @@
         "rpmPrimaryL2": "여러 가지 부등식",
         "rpmPrimaryL3": "연립일차부등식",
         "rpmPrimaryL4": "해의 범위",
-        "rpmPrimaryRecordId": "H1-RPM-178",
+        "rpmPrimaryRecordId": "H1-RPM-286",
         "L1": "방정식과 부등식",
         "L2": "여러 가지 부등식",
         "L3": "연립일차부등식",
         "L4": "해의 범위",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
         "crossConceptKeys": [
           "CC_APPLIED_WORD_PROBLEMS"
         ],
@@ -686,15 +681,12 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "$8(t-3)<6t+10\\le8(t-2)$에서 $13\\le t\\le16$을 얻고 양 끝의 학생 수를 합함",
       "variationNote": "원본 7명씩·9명 남음, 9명씩·텐트 3개 남음(t=18~22, 135+163=298) → 6명씩·10명 남음, 8명씩·텐트 2개 남음(t=13~16, 88+106=194)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q7 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "PROJECTION_PENDING: H1-RPM-178은 H22 바인딩이 MISSING(BINDING_GAP)이라 PT/TPL을 비움",
         "VISUAL_DEBT_CANDIDATE: 원본 해설에는 SVG 그림이 있었으나 이번 생성본은 해설 글로 완결해 EXEMPT로 둠(그림 제작 NOT_RUN). R1/R2에서 그림 필요성 재판정"
       ],
       "evidenceRefs": [],
@@ -705,9 +697,9 @@
         "curriculum": "2022",
         "scope": "공통수학1",
         "parentRefMode": "CROSSWALK_EXACT",
-        "crosswalkRecordId": "H1-RPM-178",
-        "method": "CROSSWALK_RPM_ONLY_NO_PROJECTION",
-        "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 H1-RPM-178(2022 공통수학1)의 H22 바인딩이 없어(BINDING_GAP/RPM_ONLY) PT/TPL은 비움",
+        "crosswalkRecordId": "H1-RPM-286",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 H1-RPM-286(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
         "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
@@ -1627,18 +1619,18 @@
         "courseKey": "공통수학1",
         "standardUnitKey": "H22-C-09",
         "standardUnit": "행렬과 그 연산",
-        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
-        "subUnit": "행렬의 활용",
-        "conceptClusterKey": "MATRIX_APPLICATION",
+        "subUnitKey": "H22-C-09-CORE",
+        "subUnit": "행렬의 연산",
+        "conceptClusterKey": "CORE",
         "rpmPrimaryRecordIds": [
-          "H1-RPM-203"
+          "H1-RPM-289"
         ],
         "rpmPrimary": {
           "l1": "행렬",
           "l2": "행렬",
           "l3": "행렬의 성질",
           "l4": "조건을 만족하는 행렬",
-          "recordId": "H1-RPM-203",
+          "recordId": "H1-RPM-289",
           "l3Label": "행렬의 성질",
           "l4Label": "조건을 만족하는 행렬",
           "l4Source": "CANONICAL"
@@ -1647,11 +1639,13 @@
         "rpmPrimaryL2": "행렬",
         "rpmPrimaryL3": "행렬의 성질",
         "rpmPrimaryL4": "조건을 만족하는 행렬",
-        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmPrimaryRecordId": "H1-RPM-289",
         "L1": "행렬",
         "L2": "행렬",
         "L3": "행렬의 성질",
         "L4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
         "crossConceptKeys": [
           "CC_CASE_EXHAUSTION"
         ],
@@ -1688,16 +1682,12 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "대각성분에서 $a,b\\in\\{2,3,4\\}$를 얻고 오른쪽 위 성분 $(a+2b)\\{(a-2)(a-3)+(a+b-5)(b-4)\\}$가 $a=b$이면 0이 아니고 $a\\ne b$이면 0임을 확인",
       "variationNote": "원본 $X=(a\\ a+b;0\\ b)$, $(X-E)(X-2E)(X-3E)=O$(a,b∈{1,2,3}, a≠b 6쌍) → $X=(a\\ a+2b;0\\ b)$, $(X-2E)(X-3E)(X-4E)=O$(a,b∈{2,3,4}, a≠b 6쌍)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q17 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
-      "hold": [
-        "PROJECTION_PENDING: H1-RPM-203은 H22 바인딩이 MISSING(BINDING_GAP)이라 PT/TPL을 비움"
-      ],
+      "hold": [],
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
@@ -1706,9 +1696,9 @@
         "curriculum": "2022",
         "scope": "공통수학1",
         "parentRefMode": "CROSSWALK_EXACT",
-        "crosswalkRecordId": "H1-RPM-203",
-        "method": "CROSSWALK_RPM_ONLY_NO_PROJECTION",
-        "basis": "결정 단계=행렬의 성질>조건을 만족하는 행렬; 크로스워크 H1-RPM-203(2022 공통수학1)의 H22 바인딩이 없어(BINDING_GAP/RPM_ONLY) PT/TPL은 비움",
+        "crosswalkRecordId": "H1-RPM-289",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=행렬의 성질>조건을 만족하는 행렬; 크로스워크 H1-RPM-289(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
         "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
@@ -1729,6 +1719,30 @@
         "subUnitKey": "H22-C-06-INEQUALITY",
         "subUnit": "여러 가지 부등식",
         "conceptClusterKey": "INEQUALITY",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-290"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "여러 가지 부등식",
+          "l3": "연립일차부등식",
+          "l4": "해의 범위",
+          "recordId": "H1-RPM-290",
+          "l3Label": "연립일차부등식",
+          "l4Label": "해의 범위",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "여러 가지 부등식",
+        "rpmPrimaryL3": "연립일차부등식",
+        "rpmPrimaryL4": "해의 범위",
+        "rpmPrimaryRecordId": "H1-RPM-290",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "연립일차부등식",
+        "L4": "해의 범위",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
         "crossConceptKeys": [
           "CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
           "CC_ABSOLUTE_VALUE_EQUATION"
@@ -1740,7 +1754,7 @@
         "difficultyConfidence": "MEDIUM",
         "difficultyBoundaryFlag": false,
         "difficultyReason": "완전제곱식 인식, 세 구간 경우 분류, 구간 합치기(단계 4) → 4",
-        "rpmSemanticStatus": "UNRESOLVED_HOLD",
+        "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 18,
         "variationType": "STRICT_VARIANT",
         "primaryMethod": "근호를 절댓값으로 바꾼 뒤 절댓값 안의 부호가 바뀌는 점으로 구간을 나누어 각 구간의 일차부등식을 풀고 합친다",
@@ -1766,29 +1780,27 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "$\\sqrt{(2x+1)^2}=|2x+1|$ 변환 후 $x=-\\dfrac12,2$ 기준 세 구간을 풀어 $x>\\dfrac43$으로 합침",
       "variationNote": "원본 $3|x-1|-\\sqrt{4x^2+12x+9}<x-2$(답 $x>\\dfrac13$) → $3|x-2|-\\sqrt{4x^2+4x+1}<x-3$(답 $x>\\dfrac43$)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q18 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "RPM_ROW_NOT_FOUND: 2022 공통수학1 RPM에 절댓값을 포함한 부등식 행이 없어 rpmPrimary와 PT/TPL을 비움(추정 금지). 표준단원 H22-C-06 / 소단원 INEQUALITY는 원본 값 유지",
+        "RPM_APPROXIMATE: 마스터에 절댓값 부등식 전용 리프가 없어 가장 가까운 연립일차부등식>해의 범위(H1-RPM-178 리프)를 사용하고, 크로스워크에 새 행 H1-RPM-290(PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY/TPL_H1_ABSOLUTE_DIRECT_INTERVAL, 소단원 INEQUALITY)을 추가. L4 확정은 R1 검토 필요",
         "VISUAL_DEBT_CANDIDATE: 원본 해설에는 SVG 그림이 있었으나 이번 생성본은 해설 글로 완결해 EXEMPT로 둠(그림 제작 NOT_RUN). R1/R2에서 그림 필요성 재판정"
       ],
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
-        "L1": null,
-        "L2": null,
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
         "curriculum": "2022",
         "scope": "공통수학1",
-        "parentRefMode": "UNRESOLVED",
-        "crosswalkRecordId": null,
-        "method": "NONE",
-        "basis": "2022 공통수학1 RPM 크로스워크에 맞는 행이 없어 상위 단원 배정을 비움(추정 금지)",
-        "confidence": "NONE",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-290",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=연립일차부등식>해의 범위; 크로스워크 H1-RPM-290(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
+        "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
         "fieldChanges": []
@@ -1808,6 +1820,30 @@
         "subUnitKey": "H22-C-06-EQUATION",
         "subUnit": "여러 가지 방정식",
         "conceptClusterKey": "EQUATION",
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-291"
+        ],
+        "rpmPrimary": {
+          "l1": "방정식과 부등식",
+          "l2": "이차방정식",
+          "l3": "근과 계수의 관계",
+          "l4": "근으로 방정식 구성",
+          "recordId": "H1-RPM-291",
+          "l3Label": "근과 계수의 관계",
+          "l4Label": "근으로 방정식 구성",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "방정식과 부등식",
+        "rpmPrimaryL2": "이차방정식",
+        "rpmPrimaryL3": "근과 계수의 관계",
+        "rpmPrimaryL4": "근으로 방정식 구성",
+        "rpmPrimaryRecordId": "H1-RPM-291",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "L3": "근과 계수의 관계",
+        "L4": "근으로 방정식 구성",
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
         "crossConceptKeys": [
           "CC_VIETAS_FORMULAS",
           "CC_ROOT_REDUCTION_SYMMETRIC"
@@ -1819,7 +1855,7 @@
         "difficultyConfidence": "MEDIUM",
         "difficultyBoundaryFlag": false,
         "difficultyReason": "근 변환 발상, 치환, 역수 근 대칭식 세 계수 계산(단계 5) → 5",
-        "rpmSemanticStatus": "UNRESOLVED_HOLD",
+        "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 19,
         "variationType": "STRICT_VARIANT",
         "primaryMethod": "근과 계수의 관계로 $\\dfrac{-3(\\beta+\\gamma)}{\\alpha}=3-\\dfrac6\\alpha$로 줄이고, $t=x-3$ 치환 후 역수 근들의 대칭식을 근과 계수의 관계로 계산한다",
@@ -1845,28 +1881,26 @@
             "usedAs": "starting point only; re-judged against the generated item final solution (original unit/PT/TPL not copied)"
           },
           "status": "READY_FOR_INDEPENDENT_REVIEW"
-        },
-        "problemTypeKey": null,
-        "templateKey": null
+        }
       },
       "decisiveStep": "$t$ 방정식의 세 근이 $-\\dfrac6\\alpha,-\\dfrac6\\beta,-\\dfrac6\\gamma$임을 보이고 합·곱의 합·곱을 $e_2/e_3,\\ e_1/e_3,\\ 1/e_3$로 환원",
       "variationNote": "원본 $x^3-3x^2+2x-4=0$, $f(x)=(x-2)^3+\\cdots$, 근 $2-\\dfrac6\\alpha$(p=3,q=27,r=54, 합 84) → $x^3-2x^2+x-3=0$, $f(x)=(x-3)^3+\\cdots$, 근 $3-\\dfrac6\\alpha$(p=2,q=24,r=72, 합 98)",
       "reason": "광양제철고 1학기 기말 고1 원본 Q19 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님)",
       "hold": [
-        "RPM_ROW_NOT_FOUND: 2022 공통수학1 RPM에 삼차방정식의 근과 계수의 관계 행이 없어(이차방정식 행 H1-RPM-162·163만 있음) rpmPrimary와 PT/TPL을 비움(추정 금지). 표준단원 H22-C-06 / 소단원 EQUATION은 원본 값을 유지하고 R1에서 확정"
+        "RPM_APPROXIMATE: 마스터에 삼차방정식 근과 계수 전용 리프가 없어 이차방정식 근과 계수의 관계>근으로 방정식 구성(H1-RPM-163 리프)을 사용하고, 크로스워크에 새 행 H1-RPM-291(PT_H1_ROOT_COEFFICIENT_RELATION/TPL_H1_VIETA_TRANSFORMED_ROOT, 단원 H22-C-06)을 추가. L4 확정은 R1 검토 필요"
       ],
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
-        "L1": null,
-        "L2": null,
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
         "curriculum": "2022",
         "scope": "공통수학1",
-        "parentRefMode": "UNRESOLVED",
-        "crosswalkRecordId": null,
-        "method": "NONE",
-        "basis": "2022 공통수학1 RPM 크로스워크에 맞는 행이 없어 상위 단원 배정을 비움(추정 금지)",
-        "confidence": "NONE",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-291",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=근과 계수의 관계>근으로 방정식 구성; 크로스워크 H1-RPM-291(2022 공통수학1)의 ACTIVE 바인딩 PT/TPL을 그대로 사용",
+        "confidence": "MEDIUM",
         "assignedBy": "claude-similar-high-gen",
         "assignedAt": "2026-11-11",
         "fieldChanges": []
