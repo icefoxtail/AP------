@@ -21,6 +21,7 @@ function app(useMode = 'strict') {
   vm.runInNewContext(source.slice(0, source.lastIndexOf('  (async () => {')) +
     'window.testApp = { state, render }; })();', {
     window, crypto, console, setTimeout: () => 0, clearTimeout() {},
+    URLSearchParams, location: { search: '' },
     document: {
       getElementById: id => nodes[id] ||= { addEventListener() {} },
       querySelector: () => null, querySelectorAll: () => [], body: { dataset: {} },

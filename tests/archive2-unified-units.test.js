@@ -211,7 +211,7 @@ test('compose shows one clean unit list per grade with 2015 and 2022 items merge
     for (const rows of bySubject.values())
       assert.deepEqual(rows.map(row => row.unclassified), [...rows.map(row => row.unclassified)].sort((a, b) => a - b));
     // 머리 안내는 한 줄이다(2015·2022 개정이 한 목록이라는 설명은 목록이 하나이므로 따로 하지 않는다).
-    assert.ok(w.renderScopes().includes('출제할 단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.'), 'the screen explains the unit list in one line');
+    assert.ok(w.renderScopes().includes('단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.'), 'the screen explains the unit list in one line');
   }
   const { w } = harness(data);
   w.state.filters = { grade: '고1' };

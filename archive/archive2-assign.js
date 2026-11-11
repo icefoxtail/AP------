@@ -4,7 +4,14 @@
    (2) 글자 렌더 render* — 상태에서 HTML 문자열만 만든다, (3) 화면 제어 open — dialog·포커스·닫기 잠금.
    서버(Worker)는 바꾸지 않고 기존 API만 쓴다. 요청 본문·헤더는 옛 모달(index.html registerIndexClassExamAssignment)의
    저장본 출제와 정확히 같다: POST /class-exam-assignments, 헤더 X-Archive2-Contract: archive2-v1,
-   본문 {contract_version, saved_paper_id, assignment_batch_id, class_id, student_ids, exam_date}. */
+   본문 {contract_version, saved_paper_id, assignment_batch_id, class_id, student_ids, exam_date}.
+
+   원본 시험지 출제(2026-11-11): items[]의 항목이 {kind:"original", file, title, count, sourceHash, settings, …}이면
+   학교 기출·유사문제 줄의 출제를 같은 패널로 낸다. 본문은 옛 구현(archive2-entry.js prepareArchive2OriginalAssignment +
+   index.html registerIndexClassExamAssignment 원본 분기)이 보내는 것과 키 하나까지 같다(originalBodyFor 참고).
+   서버 원본 분기에는 batch id가 없다: 쓰기 키 = sha256([반, 출제일, "exams/<파일>"])(routes/archive2.js 쓰기 키 계산).
+   같은 키로 본문이 같으면 기존 건을 돌려주고(멱등), 학생 구성·제목·쪽당 문항이 다르면 409, 취소된 건이면 409다.
+   그래서 '확인하기'는 저장본과 같이 얼려 둔 같은 본문을 다시 보낸다. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
@@ -21,6 +28,11 @@
   // 제한에 걸려도 출제를 실패로 단정하지 않고 '결과 확인 필요'로 두며, 같은 batch id로 다시 보내 확인한다.
   const READ_TIMEOUT_MS = 30000;
   const WRITE_TIMEOUT_MS = 150000;
+  // 원본 출제: 학교별 기출 화면에는 이력이 없으니 최근 90일 출제 목록을 한 번 받아 같은 파일·같은 반·같은 날을 찾는다.
+  const HISTORY_DAYS = 90;
+  const HISTORY_LIMIT = 1000;
+  const HISTORY_TTL_MS = 60000;
+  const QPP_VALUES = [4, 6, 8];
   const GRADES = ["중1", "중2", "중3", "고1", "고2", "고3"];
   const GRADE_CLASS = { 중1: "grade-m1", 중2: "grade-m2", 중3: "grade-m3", 고1: "grade-h1", 고2: "grade-h2", 고3: "grade-h3" };
   const HANGUL = /[가-힣]/;
@@ -127,6 +139,11 @@
         const current = merged()[keyOf(paperId, classId, date)];
         return current ? { ...current } : null;
       },
+      // 원본 출제용: 서버가 batch id를 받지 않으므로 번호는 만들지 않고 '보냈는데 결과를 모름' 표시만 남긴다(id "-").
+      touch(paperId, classId, date) {
+        const key = keyOf(paperId, classId, date);
+        if (!merged()[key]) put(key, { id: "-", at: now(), st: "new" });
+      },
       // 요청을 보내기 직전 'sent', 확정 실패(서버가 거절) 'failed'. 'sent'로 남은 것은 결과를 모르는 건이다.
       mark(paperId, classId, date, st) {
         const key = keyOf(paperId, classId, date);
@@ -200,9 +217,25 @@
     [/출제 대상 학생을 선택/, "출제할 학생이 없습니다."],
     [/문항 수가 일치하지/, "저장한 문제지의 문항 수가 맞지 않아 출제할 수 없습니다. 관리자에게 알려 주세요."],
   ];
-  function friendlyMessage(error, status) {
+  // 원본 시험지 출제에서만 나오는 서버 문구(archive2.js·archive2-questions.js validateOriginalSnapshot). 저장본 문구와 겹치면 이쪽이 먼저다.
+  const SOURCE_CHANGED_MESSAGE = "시험 자료가 새로 바뀌어 지금 화면과 맞지 않습니다. 페이지를 새로고침한 뒤 다시 출제해 주세요.";
+  const ORIGINAL_CANCELLED_MESSAGE = "이 반에 같은 날 낸 출제가 취소된 상태라 같은 날짜로는 다시 낼 수 없습니다. 출제일을 바꿔 주세요.";
+  const ORIGINAL_MESSAGES = [
+    [/취소된 Assignment/, ORIGINAL_CANCELLED_MESSAGE],
+    [/고정 roster/, "이 반에 같은 날 이미 낸 출제와 학생 구성이 다릅니다. 출제일을 바꾸거나 출제 내역에서 확인해 주세요."],
+    [/이미 배부된 시험/, "이 반에 같은 날 이미 낸 것과 내용(한 쪽 문항 수 등)이 달라 출제할 수 없습니다. 출제 내역에서 확인하거나 출제일을 바꿔 주세요."],
+    [/원본 시험의 문항 수가 일치|원본 내용 또는 문항 순서가 변경|index_version|projection|canonical/i, SOURCE_CHANGED_MESSAGE],
+    [/최대 80문항/, "이 시험지는 문항이 80개를 넘어 한 번에 출제할 수 없습니다."],
+    [/payload exceeds/i, "시험지가 너무 커서 이 방법으로는 낼 수 없습니다. 관리자에게 알려 주세요."],
+    [/원본 문항이 필요|원본 경로가 올바르지/, "시험지 원본을 확인할 수 없습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요."],
+  ];
+  const SOURCE_LOAD_MESSAGE = "시험지 원본을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.";
+  const SOURCE_COUNT_MESSAGE = "시험지 원본의 문항 수가 목록과 달라 출제하지 않았습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.";
+  function friendlyMessage(error, status, ctx = {}) {
     const raw = text(error?.data?.error || error?.message).replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
+    if (ctx.original) for (const [pattern, message] of ORIGINAL_MESSAGES) if (pattern.test(raw)) return message;
     for (const [pattern, message] of KNOWN_MESSAGES) if (pattern.test(raw)) return message;
+    if (status === 413) return "시험지가 너무 커서 이 방법으로는 낼 수 없습니다. 관리자에게 알려 주세요.";
     if (status === 403) return "이 반에 출제할 권한이 없습니다.";
     if (status === 404) return "문제지나 반을 찾을 수 없습니다.";
     if (status === 503) return "서버가 준비 중입니다. 잠시 뒤 다시 시도해 주세요.";
@@ -210,7 +243,7 @@
     return GENERIC_FAILURE;
   }
   // kind: ok-pdf(출제는 저장됨) | failed(서버가 거절, 만들어지지 않음) | cancelled(같은 번호의 출제가 취소됨) | unknown(응답을 못 받아 모름)
-  function classifyError(error) {
+  function classifyError(error, ctx = {}) {
     const status = Number(error?.status) || 0;
     const assignment = error?.data?.assignment;
     if (assignment?.id) {
@@ -227,15 +260,93 @@
     if (noAnswer) {
       return { kind: "unknown", message: "서버에서 응답을 받지 못했습니다. 출제가 되었는지 확인이 필요합니다." };
     }
-    if (/취소된 Assignment/.test(text(error?.data?.error || error?.message))) return { kind: "cancelled", message: CANCELLED_MESSAGE };
-    return { kind: "failed", message: friendlyMessage(error, status) };
+    if (/취소된 Assignment/.test(text(error?.data?.error || error?.message)))
+      return { kind: "cancelled", message: ctx.original ? ORIGINAL_CANCELLED_MESSAGE : CANCELLED_MESSAGE };
+    return { kind: "failed", message: friendlyMessage(error, status, ctx) };
   }
 
   // ---- 상태 기계 ------------------------------------------------------------------------------------
+  // ---- 원본 시험지 항목 -------------------------------------------------------------------------------
+  const fileKey = (value) => String(value ?? "").normalize("NFC").replace(/\\/g, "/");
+  // O.settings(archive2-output.js)와 같은 모양. 항목이 settings를 주지 않으면 같은 기본값을 쓴다.
+  function defaultOriginalSettings(title, subject) {
+    return {
+      header: { title, subtitle: text(subject), metaRight: "", showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
+      qpp: 4, includeQr: false,
+    };
+  }
+  function normalizeOriginal(row) {
+    const file = text(row.file);
+    const count = Number(row.count ?? row.qCount);
+    if (!file || !Number.isInteger(count) || count < 1) return null;
+    const subject = text(row.subject);
+    const settings = row.settings && typeof row.settings === "object" ? row.settings : defaultOriginalSettings(text(row.title) || file, subject);
+    const examTitle = text(settings.header?.title) || text(row.title) || file;
+    const qpp = QPP_VALUES.includes(Number(settings.qpp)) ? Number(settings.qpp) : 4;
+    return {
+      kind: "original",
+      id: `exams/${file}`,
+      file,
+      title: text(row.title) || examTitle,
+      // 서버가 응시 여부를 가르는 제목(exam_sessions.exam_title)은 출제 때 보내는 exam_title이다.
+      originalTitle: examTitle,
+      identityTitle: text(row.identityTitle) || file.split("/").pop().replace(/\.js$/, ""),
+      sourceHash: text(row.sourceHash),
+      settings: { ...settings, header: { ...settings.header, title: examTitle }, qpp, includeQr: settings.includeQr === true },
+      grade: text(row.grade),
+      subject,
+      count,
+      partIndex: 0,
+      partCount: 1,
+    };
+  }
+  // 최근 출제 목록(recent-summary)에서 원본 시험(saved_paper_id 없음, archive_file = exams/<파일>)만 파일별로 묶는다.
+  // 모양은 보관함 이력(archive2-library groupIssuesByPaper)과 같아 저장본과 같은 판정 코드를 쓴다. 취소된 건도 담는다.
+  function groupIssuesByFile(assignments) {
+    const byFile = new Map();
+    for (const row of Array.isArray(assignments) ? assignments : []) {
+      const file = fileKey(row?.archive_file);
+      const id = text(row?.id);
+      if (!id || !file.startsWith("exams/") || text(row?.saved_paper_id)) continue;
+      if (!byFile.has(file)) byFile.set(file, []);
+      byFile.get(file).push({
+        id, classId: text(row.class_id), className: text(row.class_name),
+        date: text(row.exam_date).slice(0, 10),
+        cancelled: Boolean(text(row.cancelled_at)) || Number(row.is_cancelled) === 1,
+      });
+    }
+    return byFile;
+  }
+  function historyFrom(nowMs) {
+    return new Date(nowMs + 9 * 60 * 60 * 1000 - HISTORY_DAYS * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  }
+  // 같은 페이지 안에서 60초 동안은 한 번 받은 최근 출제 목록을 다시 쓴다(패널을 여러 번 열어도 서버를 한 번만 부른다).
+  function createRecentCache({ ttlMs = HISTORY_TTL_MS } = {}) {
+    let entry = null;
+    return {
+      get(request, nowMs) {
+        if (entry && (entry.pending || nowMs - entry.at < ttlMs)) return entry.promise;
+        const next = { at: nowMs, pending: true, promise: null };
+        next.promise = Promise.resolve()
+          .then(() => request(`/class-exam-assignments/recent-summary?limit=${HISTORY_LIMIT}&from=${historyFrom(nowMs)}`, { method: "GET", timeoutMs: READ_TIMEOUT_MS }))
+          .then((data) => { next.pending = false; return data; }, (error) => { if (entry === next) entry = null; throw error; });
+        entry = next;
+        return next.promise;
+      },
+      reset() { entry = null; },
+    };
+  }
+  const sharedRecent = createRecentCache();
+
   function normalizePapers(input) {
     const seen = new Set();
     const out = [];
     for (const row of Array.isArray(input) ? input : []) {
+      if (row?.kind === "original") {
+        const item = normalizeOriginal(row);
+        if (item && !seen.has(item.id)) { seen.add(item.id); out.push(item); }
+        continue;
+      }
       const id = text(row?.id);
       if (!id || seen.has(id)) continue;
       seen.add(id);
@@ -261,10 +372,13 @@
     const now = options.now || (() => Date.now());
     const store = options.store || createBatchStore({ storage: options.storage || null, uuid: options.uuid, now });
     const classGrade = options.classGrade || defaultClassGrade;
-    const papers = normalizePapers(options.papers);
+    const papers = normalizePapers(options.items || options.papers);
     const history = options.history || null;
     const onDone = options.onDone || (() => {});
     const issuedHere = options.doneStore || createDoneStore({ storage: options.sessionStorage || null });
+    const originalCtx = options.original || {};
+    const recentCache = options.recentCache || sharedRecent;
+    const hasOriginal = papers.some((paper) => paper.kind === "original");
     const listeners = new Set();
     const state = {
       phase: "loading", // loading | login | error | empty | select | running | done
@@ -272,6 +386,11 @@
       papers,
       classes: [],
       date: kstToday(now()),
+      // 원본 출제 전용: 최근 출제 목록(같은 파일·반·날 확인)과 쪽당 문항 수.
+      historyState: hasOriginal ? "loading" : "idle", // idle | loading | ready | error
+      historyTruncated: false,
+      qpp: 4, // 원본 패널은 항상 4문항으로 시작한다(`바꾸기`로만 6·8)
+      qppOpen: false,
       excluded: new Set(),
       jobs: [],
       starting: false,
@@ -291,9 +410,11 @@
     };
 
     // 같은 문제지·같은 반의 이전 출제(취소 제외). 반은 class_id로, id가 없는 이력은 반 이름으로 맞춘다.
+    let originalIssues = new Map(); // 원본 시험: archive_file(exams/<파일>) → 출제 행들(취소 포함)
+    const sameClass = (row, cls) => (row.classId ? row.classId === cls.id : Boolean(row.className) && row.className === cls.name);
+    const recordedRows = (paperId) => history?.byPaper?.get?.(String(paperId)) || originalIssues.get(fileKey(paperId)) || [];
     function priorIssues(paperId, cls) {
-      const rows = (history?.byPaper?.get?.(String(paperId)) || []).filter((row) => !row.cancelled &&
-        (row.classId ? row.classId === cls.id : Boolean(row.className) && row.className === cls.name));
+      const rows = recordedRows(paperId).filter((row) => !row.cancelled && sameClass(row, cls));
       // 이력에 아직 없는, 이번 접속에서 이 패널로 성공한 건을 합친다.
       for (const date of issuedHere.datesFor(paperId, cls.id))
         if (!rows.some((row) => row.date === date)) rows.push({ id: "", classId: cls.id, className: cls.name, date, cancelled: false, fromSession: true });
@@ -301,17 +422,60 @@
     }
     function dupInfo(paperId, cls) {
       const rows = priorIssues(paperId, cls);
-      return { sameDate: rows.find((row) => row.date === state.date) || null, latest: rows[0] || null, count: rows.length };
+      // 원본 시험은 (반, 날짜, 파일)이 서버의 쓰기 키라 취소된 건이 있으면 같은 날짜로는 다시 낼 수 없다.
+      const cancelledSameDate = papers.find((paper) => paper.id === paperId)?.kind === "original"
+        ? recordedRows(paperId).find((row) => row.cancelled && row.date === state.date && sameClass(row, cls)) || null : null;
+      return { sameDate: rows.find((row) => row.date === state.date) || null, latest: rows[0] || null, count: rows.length, cancelledSameDate };
     }
     function pendingNotes(paperId, cls) {
       return store.unknownFor(paperId, cls.id);
     }
 
+    // 원본 시험지의 이전 출제 기록. 실패해도 출제는 할 수 있다(기록 확인만 못 한다). 서버가 같은 건은 같은 건으로 받으므로
+    // 늦게 도착해도 중복 출제가 생기지 않는다: 도착하면 이미 체크한 반의 같은 날 건만 기본에서 뺀다.
+    async function loadOriginalHistory() {
+      if (!hasOriginal) return;
+      state.historyState = "loading";
+      let data;
+      try {
+        data = await recentCache.get(request, now());
+      } catch {
+        state.historyState = "error";
+        emit();
+        return;
+      }
+      const rows = Array.isArray(data?.assignments) ? data.assignments : [];
+      originalIssues = groupIssuesByFile(rows);
+      state.historyTruncated = rows.length >= HISTORY_LIMIT;
+      state.historyState = "ready";
+      if (papers.length > 1)
+        for (const cls of state.classes)
+          if (cls.checked) for (const paper of papers) if (dupInfo(paper.id, cls).sameDate) state.excluded.add(comboKey(paper.id, cls.id));
+      emit();
+    }
+    // 원본 문항은 패널을 열 때 미리 받아 두고(실패하면 출제 직전에 다시 시도), 출제 직전에 확인한다.
+    function loadOriginalQuestions(paper) {
+      if (!paper.loading) {
+        paper.loading = Promise.resolve()
+          .then(() => originalCtx.loadQuestions(paper))
+          .then((questions) => {
+            if (!Array.isArray(questions) || !questions.length) throw Object.assign(new Error("source empty"), { sourceLoad: true });
+            if (questions.length !== paper.count) throw Object.assign(new Error("source count mismatch"), { sourceCount: true });
+            return questions;
+          })
+          .catch((error) => { paper.loading = null; throw error; });
+      }
+      return paper.loading;
+    }
     async function load() {
       const seq = ++loadSeq;
       state.phase = "loading";
       state.error = "";
       emit();
+      if (hasOriginal) {
+        loadOriginalHistory().catch(() => {});
+        for (const paper of papers) if (paper.kind === "original" && typeof originalCtx.loadQuestions === "function") loadOriginalQuestions(paper).catch(() => {});
+      }
       let data;
       try {
         data = await request("/qr-classes", { method: "GET", timeoutMs: READ_TIMEOUT_MS });
@@ -386,7 +550,7 @@
     }
 
     function toggleClass(classId, checked) {
-      if (state.phase !== "select") return;
+      if (state.phase !== "select" || state.starting) return;
       const cls = classById(classId);
       if (!cls) return;
       if (cls.rosterState === "ready" && !cls.roster.length) return;
@@ -398,7 +562,7 @@
     }
     function toggleStudent(classId, studentId, included) {
       const cls = classById(classId);
-      if (!cls || state.phase !== "select" || cls.rosterState !== "ready") return;
+      if (!cls || state.phase !== "select" || state.starting || cls.rosterState !== "ready") return;
       const next = new Set(cls.studentIds || cls.roster.map((s) => s.id));
       if (included) next.add(studentId); else next.delete(studentId);
       cls.studentIds = next.size === cls.roster.length ? null : next;
@@ -406,7 +570,7 @@
     }
     function selectAllStudents(classId) {
       const cls = classById(classId);
-      if (!cls || state.phase !== "select") return;
+      if (!cls || state.phase !== "select" || state.starting) return;
       cls.studentIds = null;
       emit();
     }
@@ -419,7 +583,7 @@
     }
     function selectUnsubmitted(classId) {
       const cls = classById(classId);
-      if (!cls || state.phase !== "select" || cls.rosterState !== "ready" || !canCompareSubmitted()) return false;
+      if (!cls || state.phase !== "select" || state.starting || cls.rosterState !== "ready" || !canCompareSubmitted()) return false;
       const ids = cls.roster.filter((student) => !student.submitted).map((student) => student.id);
       if (!ids.length) return false;
       cls.studentIds = ids.length === cls.roster.length ? null : new Set(ids);
@@ -433,12 +597,12 @@
       emit();
     }
     function toggleCombo(key, included) {
-      if (state.phase !== "select") return;
+      if (state.phase !== "select" || state.starting) return;
       if (included) state.excluded.delete(key); else state.excluded.add(key);
       emit();
     }
     function setDate(value) {
-      if (state.phase !== "select" || !validDate(value) || value === state.date) return false;
+      if (state.phase !== "select" || state.starting || !validDate(value) || value === state.date) return false;
       state.date = value;
       state.excluded.clear();
       const pending = [];
@@ -450,6 +614,20 @@
       }
       emit();
       return Promise.all(pending).then(() => true);
+    }
+    // 원본 출제의 '한 쪽 문항 수'. 패널은 늘 4문항으로 시작하고(옛 모달의 기억값은 읽지도 쓰지도 않는다)
+    // `바꾸기`로 고른 값은 이번 출제에만 쓴다.
+    function toggleQpp() {
+      if (!hasOriginal || state.phase !== "select" || state.starting) return;
+      state.qppOpen = !state.qppOpen;
+      emit();
+    }
+    function setQpp(value) {
+      const qpp = Number(value);
+      if (!hasOriginal || state.phase !== "select" || state.starting || !QPP_VALUES.includes(qpp) || qpp === state.qpp) return false;
+      state.qpp = qpp;
+      emit();
+      return true;
     }
 
     function plan() {
@@ -496,18 +674,54 @@
         exam_date: job.date,
       });
     }
+    // 원본 시험지 출제 본문: 옛 구현이 보내는 것과 같은 키·값이다.
+    //  - 먼저 index.html registerIndexClassExamAssignment의 원본 분기 payload(class_id … target_scope)가 만들어지고,
+    //  - archive2-entry.js prepareArchive2OriginalAssignment의 본문(contract_version, index_version, student_ids,
+    //    exam_title·pdf_qpp 덮어쓰기, original_payload_json)이 Object.assign으로 겹쳐진다(키 순서도 그 결과와 같다).
+    // assignment_batch_id는 서버 원본 분기가 읽지 않는 값(archive2.js는 saved_paper_id 분기·lifecycle에서만 쓴다)이지만
+    // 옛 구현과 같은 모양을 유지하고, 얼려 둔 본문과 함께 재전송에도 그대로 간다.
+    function originalBodyFor(job, paper, cls, questions, scope, stamp) {
+      const settings = paper.settings;
+      const fileTag = String(paper.file).replace(/[^a-zA-Z0-9_-]+/g, "_");
+      const gradeTag = String(cls.grade || paper.grade || "class").replace(/[^a-zA-Z0-9가-힣_-]+/g, "_");
+      return Object.freeze({
+        class_id: job.classId,
+        exam_title: settings.header.title,
+        exam_date: job.date,
+        question_count: paper.count,
+        archive_file: `exams/${paper.file}`,
+        source_type: "archive",
+        mixed_payload_json: "",
+        pdf_qpp: state.qpp,
+        subject: paper.subject || "",
+        grade_label: cls.grade || paper.grade || "",
+        assignment_batch_id: `batch_archive_${fileTag}_${gradeTag}_${stamp}`,
+        target_scope: scope,
+        contract_version: CONTRACT,
+        index_version: text(originalCtx.indexVersion),
+        student_ids: job.studentIds.slice(),
+        original_payload_json: {
+          questions,
+          meta: { identityTitle: paper.identityTitle, printHeaderOptions: settings.header, qpp: state.qpp, includeQr: settings.includeQr },
+        },
+      });
+    }
     function buildJobs(current) {
       // 문제지 순서대로(한 권을 모든 반에 낸 뒤 다음 권), 같은 권 안에서는 반 순서대로 보낸다.
       const order = (combo) => papers.findIndex((p) => p.id === combo.paper.id) * 100000 + state.classes.findIndex((c) => c.id === combo.cls.id);
+      const scope = current.classCount === 1 ? "class" : "grade";
+      const stamp = now();
       return current.combos.slice().sort((a, b) => order(a) - order(b)).map((combo) => {
-        const batch = store.ensure(combo.paper.id, combo.cls.id, state.date);
+        const original = combo.paper.kind === "original";
+        const batch = original ? null : store.ensure(combo.paper.id, combo.cls.id, state.date);
+        if (original) store.touch(combo.paper.id, combo.cls.id, state.date);
         const job = {
-          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title,
+          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title, kind: original ? "original" : "saved",
           classId: combo.cls.id, className: combo.cls.name, studentIds: combo.studentIds.slice(),
-          date: state.date, batchId: batch.id, status: "queued", attempts: 0,
+          date: state.date, batchId: batch ? batch.id : "", status: "queued", attempts: 0,
           assignmentId: "", message: "", pdfError: "", pdfBusy: false, already: false, auth: false, rebuild: false,
         };
-        job.body = bodyFor(job);
+        job.body = original ? originalBodyFor(job, combo.paper, combo.cls, combo.paper.questions, scope, stamp) : bodyFor(job);
         return job;
       });
     }
@@ -537,11 +751,14 @@
       } else job.status = "ok";
       store.clear(job.paperId, job.classId, job.date);
       issuedHere.add(job.paperId, job.classId, job.date);
+      if (job.kind === "original") recentCache.reset(); // 다음에 열 때 방금 낸 건이 이력에 보이게 한다
       state.dirty = true;
     }
     function applyFailure(job, error) {
-      const info = classifyError(error);
+      const info = classifyError(error, { original: job.kind === "original" });
       job.auth = Boolean(info.auth);
+      // 원본 출제는 batch id가 없어 취소된 건과 같은 키를 피할 길이 날짜뿐이다: '새로 출제'를 주지 않는다.
+      job.noReissue = job.kind === "original";
       if (info.kind === "ok-pdf") {
         job.status = "ok-pdf";
         job.assignmentId = info.assignmentId;
@@ -550,6 +767,7 @@
         job.message = "";
         store.clear(job.paperId, job.classId, job.date);
         issuedHere.add(job.paperId, job.classId, job.date);
+        if (job.kind === "original") recentCache.reset();
         state.dirty = true;
         return;
       }
@@ -627,6 +845,42 @@
       state.starting = true;
       state.working = true;
       state.startError = "";
+      if (current.combos.some((combo) => combo.paper.kind === "original")) return prepareOriginals(current).then((ok) => (ok ? run() : false));
+      return Promise.resolve(run());
+    }
+    // 원본 문항을 아직 못 받았으면 지금 받아(미리 받기에 실패했을 수 있다) 모든 건의 본문을 만들 수 있을 때만 시작한다.
+    // 하나라도 못 받으면 아무것도 보내지 않고 잠금을 풀어 교사가 안내를 읽고 다시 누르게 한다.
+    async function prepareOriginals() {
+      const targets = papers.filter((paper) => paper.kind === "original");
+      let message = "";
+      if (!text(originalCtx.indexVersion) || typeof originalCtx.loadQuestions !== "function") message = SOURCE_CHANGED_MESSAGE;
+      else {
+        for (const paper of targets) {
+          try {
+            paper.questions = await loadOriginalQuestions(paper);
+          } catch (error) {
+            warnRaw(text(error?.message));
+            message = error?.sourceCount ? SOURCE_COUNT_MESSAGE : SOURCE_LOAD_MESSAGE;
+            break;
+          }
+        }
+      }
+      if (!message) return true;
+      state.starting = false;
+      state.working = false;
+      state.startError = message;
+      emit();
+      return false;
+    }
+    function run() {
+      // 준비가 끝난 뒤 계획을 다시 읽는다(준비 중 바뀌지 않게 토글을 잠가 두었지만 명단 응답은 그 사이 올 수 있다).
+      const current = plan();
+      if (current.loading || !current.combos.length) {
+        state.starting = false;
+        state.working = false;
+        emit();
+        return false;
+      }
       try {
         state.jobs = buildJobs(current);
       } catch (error) {
@@ -636,7 +890,7 @@
         state.jobs = [];
         state.startError = ID_ERROR_MESSAGE;
         emit();
-        return Promise.resolve(false);
+        return false;
       }
       state.phase = "running";
       emit();
@@ -659,7 +913,7 @@
     // 취소된 출제와 같은 번호(409)는 자동으로 다시 보내지 않는다. 교사가 '새로 출제'를 직접 누른 그 건만 새 번호로 보낸다.
     function reissue(key) {
       const job = state.jobs.find((row) => row.key === key);
-      if (!job || job.status !== "cancelled" || state.working || state.phase !== "done") return Promise.resolve(false);
+      if (!job || job.status !== "cancelled" || job.noReissue || state.working || state.phase !== "done") return Promise.resolve(false);
       job.rebuild = true;
       return resume(["cancelled"], key);
     }
@@ -716,6 +970,7 @@
       state, load, loadRoster, toggleClass, toggleStudent, selectAllStudents, toggleStudentList, toggleCombo, setDate,
       plan, canSubmit, start, retryFailed, confirmUnknown, retryPdf, isBusy, requestClose, results,
       dupInfo, pendingNotes, store, canCompareSubmitted, selectUnsubmitted, unsubmittedCount, reissue,
+      setQpp, toggleQpp, loadOriginalHistory,
       retryRoster: loadRoster,
       subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     };
@@ -755,10 +1010,13 @@
     if (papers.length === 1) {
       const dup = model.dupInfo(papers[0].id, cls);
       if (dup.sameDate) notes.push(`<li class="is-warn">${esc(dayLabel(dup.sameDate.date, date))}에 이미 냈습니다.</li>`);
+      else if (dup.cancelledSameDate) notes.push(`<li class="is-warn">${esc(dayLabel(dup.cancelledSameDate.date, date))}에 낸 출제가 취소된 상태라 같은 날짜로는 다시 낼 수 없습니다. 출제일을 바꿔 주세요.</li>`);
       else if (dup.latest) notes.push(`<li>${esc(dayLabel(dup.latest.date, date))}에 낸 적이 있습니다.</li>`);
     } else {
       const same = papers.filter((paper) => model.dupInfo(paper.id, cls).sameDate).length;
       if (same) notes.push(`<li class="is-warn">이 날짜에 ${same}권은 이미 냈습니다. 아래 출제 건에서 확인하세요.</li>`);
+      const cancelled = papers.filter((paper) => model.dupInfo(paper.id, cls).cancelledSameDate).length;
+      if (cancelled) notes.push(`<li class="is-warn">이 날짜에 ${cancelled}권은 낸 출제가 취소된 상태라 같은 날짜로는 다시 낼 수 없습니다.</li>`);
     }
     for (const paper of papers) {
       for (const pendingDate of model.pendingNotes(paper.id, cls)) {
@@ -815,7 +1073,13 @@
   function classesMarkup(model) {
     const groups = classGroups(model);
     const paperGrades = [...new Set(model.state.papers.map((paper) => paper.grade).filter(Boolean))];
-    const hint = paperGrades.length ? `${esc(paperGrades.join("·"))} 문제지입니다. 같은 학년 반을 먼저 보여 줍니다.` : "출제할 반을 고르세요.";
+    const original = model.state.papers.some((paper) => paper.kind === "original");
+    const hint = paperGrades.length ? `${esc(paperGrades.join("·"))} ${original ? "시험지" : "문제지"}입니다. 같은 학년 반을 먼저 보여 줍니다.` : "출제할 반을 고르세요.";
+    // 원본 시험지는 이전 출제 기록을 따로 받아 온다. 못 받아도 출제는 할 수 있고, 같은 건은 서버가 같은 건으로 받는다.
+    const historyNote = !original ? ""
+      : model.state.historyState === "loading" ? '<p class="assign-hint" role="status">이전 출제 기록을 확인하는 중…</p>'
+      : model.state.historyState === "error" ? '<p class="assign-hint is-warn" role="status">이전 출제 기록을 확인하지 못했습니다. 출제는 할 수 있습니다.</p>'
+      : model.state.historyTruncated ? '<p class="assign-hint" role="status">출제 기록이 많아 일부는 확인하지 못할 수 있습니다.</p>' : "";
     const body = groups.map((group) => {
       const label = group.grade || "학년 미확인";
       const chip = `<span class="assign-grade-chip ${gradeClassOf(group.grade)}">${esc(label)}</span>`;
@@ -824,18 +1088,24 @@
         ? `<section class="assign-group" data-grade="${esc(group.grade)}"><h3 class="assign-group-title">${chip}<span>${group.main ? "반" : "다른 학년 반"}</span></h3>${rows}</section>`
         : `<details class="assign-group is-other" data-grade="${esc(group.grade)}"${group.open ? " open" : ""}><summary>${chip}<span>다른 학년 반 ${group.rows.length}개</span></summary>${rows}</details>`;
     }).join("");
-    return `<fieldset class="assign-classes"><legend>반 선택</legend><p class="assign-hint">${hint}</p>${body}</fieldset>`;
+    return `<fieldset class="assign-classes"><legend>반 선택</legend><p class="assign-hint">${hint}</p>${historyNote}${body}</fieldset>`;
   }
   function dateMarkup(model) {
-    const { date } = model.state;
+    const { date, qpp, qppOpen } = model.state;
     const today = kstToday();
-    return `<section class="assign-date"><label for="assign-date-input">출제일</label><input id="assign-date-input" type="date" value="${esc(date)}" data-assign-action="date" data-focus="date"><span>${date === today ? "오늘" : esc(dayLabel(date, today))}</span></section>`;
+    // 원본 시험지는 한 쪽 문항 수가 PDF·학생 시험지에 그대로 쓰인다(서버가 같은 날 같은 시험지의 쪽당 문항이 다르면 거절한다).
+    const original = model.state.papers.some((paper) => paper.kind === "original");
+    const qppField = original
+      ? `<section class="assign-date assign-qpp"><span class="assign-qpp-line${qpp === 4 ? "" : " is-changed"}">한 쪽 ${qpp}문항</span><button type="button" class="assign-link" data-assign-action="qpp-toggle" data-focus="qpp-toggle" aria-expanded="${qppOpen ? "true" : "false"}">${qppOpen ? "접기" : "바꾸기"}</button>${qppOpen ? `<div id="assign-qpp-choices" class="assign-quick" role="group" aria-label="한 쪽 문항 수">${QPP_VALUES.map((n) => `<button type="button" class="small" data-assign-action="qpp-set" data-qpp="${n}" data-focus="qpp-${n}" aria-pressed="${n === qpp ? "true" : "false"}">${n}문항</button>`).join("")}</div>` : ""}</section>`
+      : "";
+    return `<section class="assign-date"><label for="assign-date-input">출제일</label><input id="assign-date-input" type="date" value="${esc(date)}" data-assign-action="date" data-focus="date"><span>${date === today ? "오늘" : esc(dayLabel(date, today))}</span></section>${qppField}`;
   }
   function combosMarkup(model, plan) {
     if (model.state.papers.length < 2 || !plan.classes.length) return "";
     const rows = plan.classes.map((entry) => `<li><strong>${esc(entry.cls.name)}</strong> <span class="assign-muted">${entry.studentIds.length}명</span><ul>${entry.combos.map((combo) => {
       const note = combo.dup.sameDate
-        ? `<span class="assign-warn">${esc(dayLabel(combo.dup.sameDate.date, model.state.date))}에 이미 냈습니다</span>` : "";
+        ? `<span class="assign-warn">${esc(dayLabel(combo.dup.sameDate.date, model.state.date))}에 이미 냈습니다</span>`
+        : combo.dup.cancelledSameDate ? '<span class="assign-warn">낸 출제가 취소된 상태라 같은 날짜로는 다시 낼 수 없습니다</span>' : "";
       return `<li><label><input type="checkbox" data-assign-action="combo" data-key="${esc(combo.key)}" data-focus="combo-${esc(combo.key)}"${combo.included ? " checked" : ""}><span>${esc(combo.paper.title)}</span></label>${note}</li>`;
     }).join("")}</ul></li>`).join("");
     return `<section class="assign-combos"><h3>출제 건 확인</h3><ul>${rows}</ul></section>`;
@@ -864,7 +1134,7 @@
     const detail = job.status === "ok-pdf" ? job.pdfError : ["failed", "unknown", "cancelled"].includes(job.status) ? job.message : "";
     const actions = [];
     if (job.status === "unknown") actions.push(`<button type="button" class="small" data-assign-action="confirm" data-key="${esc(job.key)}" data-focus="confirm-${esc(job.key)}">확인하기</button>`);
-    if (job.status === "cancelled") actions.push(`<button type="button" class="small" data-assign-action="reissue" data-key="${esc(job.key)}" data-focus="reissue-${esc(job.key)}">새로 출제</button>`);
+    if (job.status === "cancelled" && !job.noReissue) actions.push(`<button type="button" class="small" data-assign-action="reissue" data-key="${esc(job.key)}" data-focus="reissue-${esc(job.key)}">새로 출제</button>`);
     if (job.status === "ok-pdf") actions.push(`<button type="button" class="small" data-assign-action="pdf" data-key="${esc(job.key)}" data-focus="pdf-${esc(job.key)}"${job.pdfBusy ? " disabled" : ""}>${job.pdfBusy ? "PDF 준비 중…" : "PDF 다시 준비"}</button>`);
     const outputs = (job.status === "ok" || job.status === "ok-pdf") && job.assignmentId && model.state.outputLinks !== false
       ? `<span class="assign-result-outputs" role="group" aria-label="출력">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, name]) => `<button type="button" class="small" data-action="assignment-output-direct" data-assignment="${id}" data-mode="${mode}">${name}</button>`).join("")}</span>` : "";
@@ -898,7 +1168,8 @@
       const plan = model.plan();
       const ready = model.canSubmit();
       const startError = model.state.startError ? `<p class="assign-auth" role="alert">${esc(model.state.startError)}</p>` : "";
-      return `${startError}${summaryMarkup(model, plan)}<button type="button" class="primary assign-submit" data-assign-action="submit" data-focus="submit"${ready ? "" : " disabled"}>출제하기</button><p class="assign-fine">출제하면 학생에게 바로 과제가 갑니다.</p>`;
+      const summary = model.state.starting ? '<p class="assign-summary" role="status">시험지 원본을 확인하는 중…</p>' : summaryMarkup(model, plan);
+      return `${startError}${summary}<button type="button" class="primary assign-submit" data-assign-action="submit" data-focus="submit"${ready ? "" : " disabled"}>출제하기</button><p class="assign-fine">출제하면 학생에게 바로 과제가 갑니다.</p>`;
     }
     if (phase === "running") {
       const r = model.results();
@@ -952,11 +1223,12 @@
     let storage = options.storage || null;
     if (!storage) { try { storage = win?.localStorage || null; } catch { storage = null; } }
     const model = createModel({
-      request: options.request, papers: options.papers, history: options.history, storage,
+      request: options.request, papers: options.papers, items: options.items, original: options.original, recentCache: options.recentCache,
+      history: options.history, storage,
       uuid: options.uuid, now: options.now, doneStore: sharedDoneStore((() => { try { return win?.sessionStorage || null; } catch { return null; } })()), classGrade: options.classGrade || win?.Archive2History?.classGrade,
       onDone: options.onDone,
     });
-    if (!model.state.papers.length) throw new Error("출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
+    if (!model.state.papers.length) throw new Error(options.items ? "출제할 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요." : "출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
     model.state.outputLinks = options.outputLinks !== false;
     const opener = options.opener || doc.activeElement || null;
 
@@ -975,10 +1247,13 @@
       const scroll = body ? body.scrollTop : 0;
       const focusKey = doc.activeElement?.getAttribute?.("data-focus") || "";
       const focusWasInside = Boolean(doc.activeElement && dialog.contains?.(doc.activeElement));
+      // 머리를 다시 그리면 제목이 새 요소가 되어 포커스가 BODY로 빠진다(원본 출제는 이력·문항 받기로 같은 단계에서 다시 그릴 일이 많다).
+      const titleFocused = doc.activeElement?.id === "assign-title";
       const parts = render(model);
       region("head").innerHTML = parts.head;
       body.innerHTML = parts.body;
       region("foot").innerHTML = parts.foot;
+      if (titleFocused) region("head").querySelector("#assign-title")?.focus?.();
       if (model.state.phase === lastPhase) body.scrollTop = scroll;
       else {
         body.scrollTop = 0;
@@ -1058,6 +1333,8 @@
       else if (action === "confirm") model.confirmUnknown(el.dataset.key).catch(() => {});
       else if (action === "confirm-all") { el.disabled = true; model.confirmUnknown().catch(() => {}); }
       else if (action === "pdf") model.retryPdf(el.dataset.key).catch(() => {});
+      else if (action === "qpp-toggle") model.toggleQpp();
+      else if (action === "qpp-set") model.setQpp(el.dataset.qpp);
     });
     dialog.addEventListener("change", (event) => {
       const el = event.target;
@@ -1101,6 +1378,7 @@
   return {
     CONTRACT, STORAGE_KEY, READ_TIMEOUT_MS, WRITE_TIMEOUT_MS, BATCH_TTL_MS,
     createModel, createBatchStore, createDoneStore, classifyError, friendlyMessage, normalizePapers, kstToday, dayLabel,
+    groupIssuesByFile, createRecentCache, resetCaches: () => sharedRecent.reset(), HISTORY_LIMIT, HISTORY_TTL_MS,
     render, renderHead, renderBody, renderFoot, open, useLegacy, handlePopState, isOpen, isBusy,
   };
 });

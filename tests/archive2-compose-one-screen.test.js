@@ -302,7 +302,7 @@ test('저장하고 반에 출제: 이미 현재 편집본이 저장되어 있으
   let saved = 0;
   const opened = [];
   w.setHooks({ savePapers: async () => { saved += 1; }, openSavedPaperAssign: async id => { opened.push(id); } });
-  assert.match(w.renderResultFinish(w.review()), /data-action="save-and-assign"[^>]*>저장한 문제지 반에 출제/);
+  assert.match(w.renderResultFinish(w.review()), /data-action="save-and-assign"[^>]*>저장한 문제지 출제/);
   await w.saveAndAssign();
   assert.equal(saved, 0);
   assert.deepEqual(opened, [UUID1]);
@@ -355,7 +355,7 @@ test('결과 쪽: 요약 → 문항 목록 → 미리보기 → 출력 설정(�
   const finish = right.slice(right.indexOf('data-cz-finish'), right.indexOf('class="cz-bar"'));
   assert.match(finish, /data-action="print"[^>]*>출력/);
   assert.match(finish, /data-action="save-paper"[^>]*>보관함에 저장/);
-  assert.match(finish, /class="primary cz-primary"[^>]*>저장하고 반에 출제/);
+  assert.match(finish, /class="primary cz-primary"[^>]*>저장하고 출제/);
   assert.equal([...finish.matchAll(/class="primary /g)].length, 1, 'one primary button in the result pane');
   // 한 권이면 권 고르기가 없다. 51문항 이상이면 생긴다.
   assert.doesNotMatch(right, /id="preview-index"/);
@@ -381,7 +381,7 @@ test('하단 고정 띠: 결과 전 "N문항 가능 + 문제지 만들기", 결�
   assert.match(after, /data-action="print"/);
   const more = after.slice(after.indexOf('cz-more cz-bar-more'));
   assert.match(more, /data-action="save-paper"[^>]*>보관함에 저장/);
-  assert.match(more, /data-action="save-and-assign"[^>]*>저장하고 반에 출제/);
+  assert.match(more, /data-action="save-and-assign"[^>]*>저장하고 출제/);
   assert.doesNotMatch(w.renderCompose(), /class="mobile-actions"|class="inspector/);
 });
 
