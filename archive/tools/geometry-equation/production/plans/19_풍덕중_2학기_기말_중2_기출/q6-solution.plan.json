@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=ax-b"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-ax+b"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "quadrants": [
+        {
+          "id": "q1",
+          "quadrant": 1,
+          "label": "제1사분면"
+        },
+        {
+          "id": "q2",
+          "quadrant": 2,
+          "label": "제2사분면"
+        },
+        {
+          "id": "q3",
+          "quadrant": 3,
+          "label": "제3사분면"
+        },
+        {
+          "id": "q4",
+          "quadrant": 4,
+          "label": "제4사분면"
+        }
+      ]
+    }
+  },
+  "caption": "예시 값 a=1, b=-2로 y=ax-b(파랑)와 y=-ax+b(주황)를 그린 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=ax-b의 그래프는 오른쪽 위로 향하고 y절편이 양수이다.",
+      "mappedTo": [
+        "g1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a>0, b<0인 예를 들어 두 직선이 지나는 사분면을 비교한다."
+  ]
+}

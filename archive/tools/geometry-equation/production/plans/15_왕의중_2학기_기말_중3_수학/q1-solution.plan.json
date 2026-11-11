@@ -1,0 +1,403 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "13"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "144",
+          "denominator": "13"
+         },
+         {
+          "kind": "rational",
+          "numerator": "60",
+          "denominator": "13"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "432",
+          "denominator": "65"
+         },
+         {
+          "kind": "rational",
+          "numerator": "36",
+          "denominator": "13"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "432",
+          "denominator": "65"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A",
+     "D",
+     "E"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sBE",
+      "refs": [
+       "B",
+       "E"
+      ]
+     },
+     {
+      "id": "sEC",
+      "refs": [
+       "E",
+       "C"
+      ]
+     },
+     {
+      "id": "sDE",
+      "refs": [
+       "D",
+       "E"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "ax",
+       "refs": [
+        "B",
+        "D",
+        "E"
+       ],
+       "value": 67.38,
+       "label": "x",
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 22.62,
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dAB",
+       "from": "B",
+       "to": "A",
+       "label": "12",
+       "side": "ABOVE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAC",
+       "ownerSegment": "sAC",
+       "text": "5"
+      }
+     ]
+    },
+    "caption": "점 A에서 직각인 직각삼각형 ABC와 빗변 BC에 내린 수선 DE이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "D",
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "r1",
+      "refs": [
+       "D",
+       "E",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABC"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "13"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "144",
+          "denominator": "13"
+         },
+         {
+          "kind": "rational",
+          "numerator": "60",
+          "denominator": "13"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "C",
+     "A"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCA",
+      "refs": [
+       "C",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 22.62,
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sCA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sBC"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "12"
+      },
+      {
+       "id": "lAC",
+       "ownerSegment": "sCA",
+       "text": "5"
+      },
+      {
+       "id": "lBC",
+       "ownerSegment": "sBC",
+       "text": "13"
+      }
+     ]
+    },
+    "caption": "각 B에서 높이 AC와 빗변 BC를 읽는 직각삼각형 ABC이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "A",
+       "C"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "각 x와 각 B는 합이 90도인 여각이다. 보라색은 각 B이고, 파란색 AC와 초록색 BC로 각 B의 사인을 읽는다."
+}

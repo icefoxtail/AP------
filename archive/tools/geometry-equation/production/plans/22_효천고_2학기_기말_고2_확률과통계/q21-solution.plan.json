@@ -1,0 +1,22 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "colVar": "a",
+    "rowVar": "b",
+    "highlight": {
+      "expr": "b-2*a",
+      "cmp": "<",
+      "value": 0
+    }
+  },
+  "caption": "주사위의 순서쌍에서 b<2a인 경우를 표시한다.",
+  "sourceConditions": [
+    "첫째와 둘째 주사위의 눈은 각각 1부터 6까지이다.",
+    "이등변삼각형이 되려면 b<2a이다."
+  ],
+  "newVisualInformation": [
+    "전체 순서쌍에서 조건을 만족하는 결과를 칸으로 구분한다."
+  ]
+}

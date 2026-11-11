@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      6
+    ],
+    "viewport": [
+      0,
+      7,
+      -0.5,
+      3.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3",
+        "fill": "BLUE",
+        "label": "2"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "3",
+        "to": "6",
+        "fill": "WARM",
+        "label": "9/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "6"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "coordinateBand": {
+      "hide": [
+        "B"
+      ]
+    },
+    "overlays": {
+      "callouts": [
+        {
+          "id": "cu",
+          "point": "B",
+          "text": "u",
+          "direction": "S"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예: u=3이면 y=|t−u|의 그래프 아래 넓이는 t=u를 경계로 두 삼각형으로 나뉜다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "u=3, y=|t-3|, 1<=t<=6",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값이 바뀌는 t=u에서 적분 구간이 두 삼각형으로 나뉜다."
+  ]
+}

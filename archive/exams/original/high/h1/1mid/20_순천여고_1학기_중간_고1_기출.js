@@ -245,7 +245,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 꼭짓점이 구간 안에 있는 파란 포물선과 주황 x축, 아래 패널은 닫힌 구간의 양 끝점이다.",
+    "solutionImageCaption": "파란 포물선과 주황 x축에서 꼭짓점을 확인한 뒤 구간 양 끝의 함숫값을 비교한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -330,9 +334,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "k=4일 때 직선 y=3x-4는 포물선에 점 T(1,-1)에서 접한다.",
-    "solutionImageCaption": "k=4일 때 직선 y=3x-4는 포물선에 점 T(1,-1)에서 접한다.",
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위쪽은 두 교점이 있는 예, 아래쪽은 직선이 파란 포물선에 한 점에서 접하는 경우다.",
+    "solutionImageCaption": "파란 포물선과 주황 직선은 위 패널에서 두 점에서 만나고 아래 패널에서 한 점에서 접한다. 접선 조건을 판별식이 0인 경우로 나타낸다. 정답은 4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -466,9 +470,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "x=3에서 최솟값 -5를 갖는 꼭짓점",
-    "solutionImageCaption": "x=3에서 최솟값 -5를 갖는 꼭짓점",
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 기본 포물선과 x축, 둘째 패널은 꼭짓점이 (3, −5)인 파란 포물선과 주황 수평선이다.",
+    "solutionImageCaption": "파란 기본 포물선과 주황 x축을 비교한다. 둘째 패널은 꼭짓점 (3, −5) 조건을 보이고 계수 합은 해설에서 계산한다. 정답은 1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -512,7 +516,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선과 주황 x축이 두 점에서 만나며, 두 패널은 서로 다른 켤레근 예를 보인다.",
+    "solutionImageCaption": "파란 포물선과 주황 x축이 두 점에서 만나는 서로 다른 켤레근 예시를 비교한다. 실제 문항에서는 근의 합과 곱을 이용한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -682,7 +690,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=1일 때 x<a+1의 열린 끝은 x≥3의 시작점보다 왼쪽에 있어 두 구간이 겹치지 않는다.",
+    "solutionImageCaption": "예: a=1이면 두 해 구간은 만나지 않는다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -771,7 +783,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
-    "wide": true
+    "wide": true,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽은 삼각형 안의 직사각형 배치, 아래쪽은 같은 방향으로 분리한 작은 삼각형 A₁, P, S와 큰 삼각형 A, B, C다.",
+    "solutionImageCaption": "큰 삼각형은 밑변 6, 높이 4인 예시다. 위쪽 직사각형에서 QR=PS=x, PQ=SR=y이고, 같은 눈금은 같은 길이다. 파란 변은 작은 A₁P와 큰 AB, 초록 변은 A₁S와 AC, 주황 변은 PS와 BC의 대응이다. 같은 색 호는 대응각을 나타내며 A₁은 작은 삼각형의 A 사본이다. 예시 닮음비는 1:3이다. 정답은 36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -935,7 +951,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
-    "wide": true
+    "wide": true,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽은 x=1을 대칭축으로 둔 근의 예, 아래쪽은 C(0, −4)를 지나는 포물선 일부와 y=−4 수평선이다.",
+    "solutionImageCaption": "첫 패널은 실제 좌표가 아닌 대칭의 예시다. 아래 패널의 파란 포물선 일부, 주황 y=−4선과 점 C는 y절편 조건을 나타낸다. 정답은 (1) A(−2, 0), B(4, 0), (2) f(x)=½x²−x−4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -975,9 +995,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
     "wide": true,
-    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "구간 [-2, 0]의 두 끝점이 꼭짓점에서 같은 거리에 있을 때 최댓값이 가장 작다.",
-    "solutionImageCaption": "구간 [-2, 0]의 두 끝점이 꼭짓점에서 같은 거리에 있을 때 최댓값이 가장 작다.",
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시 포물선과 x축, 그리고 길이 2인 구간의 두 끝에서 얻은 함수값 곡선이 있으며 두 곡선의 교점이 표시되어 있다.",
+    "solutionImageCaption": "a=1인 예시로 파란 포물선과 주황 x축의 관계를 본다. 둘째 패널에서 파란 곡선과 주황 곡선은 길이 2인 구간의 양 끝 함수값이고, 검은 점은 두 값이 같은 경우다. 실제 계수는 최솟값 조건으로 정한다. 정답은 f(x)=2(x+1)²−8이다.",
     "solutionImageSize": "full"
   }
 ];

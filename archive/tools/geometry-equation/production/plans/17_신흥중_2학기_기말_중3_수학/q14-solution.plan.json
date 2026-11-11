@@ -1,0 +1,437 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "8"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "integer",
+       "value": "8"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "24",
+       "denominator": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "8",
+       "denominator": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "K",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "8"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "I",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "12"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "G",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "small",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "2"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "large",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "K"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "4"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "O",
+  "K"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "small",
+  "large"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBF",
+   "refs": [
+    "B",
+    "F"
+   ]
+  },
+  {
+   "id": "sFG",
+   "refs": [
+    "F",
+    "G"
+   ]
+  },
+  {
+   "id": "sGC",
+   "refs": [
+    "G",
+    "C"
+   ]
+  },
+  {
+   "id": "sCI",
+   "refs": [
+    "C",
+    "I"
+   ]
+  },
+  {
+   "id": "sID",
+   "refs": [
+    "I",
+    "D"
+   ]
+  },
+  {
+   "id": "sDH",
+   "refs": [
+    "D",
+    "H"
+   ]
+  },
+  {
+   "id": "sHA",
+   "refs": [
+    "H",
+    "A"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sEF",
+   "refs": [
+    "E",
+    "F"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "lAB",
+    "ownerSegment": "sAB",
+    "text": "8"
+   },
+   {
+    "id": "lBF",
+    "ownerSegment": "sBF",
+    "text": "x"
+   }
+  ],
+  "pathLabels": [
+   {
+    "id": "pAD",
+    "points": [
+     "A",
+     "H",
+     "D"
+    ],
+    "label": "12"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rT",
+    "fill": "BLUE",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "B",
+       "F"
+      ]
+     }
+    ]
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sHA",
+     "sAE"
+    ],
+    "color": "GREEN"
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sEF",
+     "sFG"
+    ],
+    "color": "ROSE"
+   }
+  ]
+ },
+ "caption": "큰 원의 반지름은 4이므로 AH=8이다. A와 F에서 그은 접선의 길이가 같아 AE=8, FE=FG이다. BF=x로 두면 AF=16−x이고 직각삼각형 ABF의 내접원 반지름을 접선 길이로 구한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "직사각형 ABCD(12×8)에 원 O′이 세 변에 접하고 AF가 원 O′에 접한다. 원 O는 삼각형 ABF에 내접.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "A",
+    "B",
+    "F"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 700,
+  "height": 480
+ },
+ "pointNames": {
+  "K": "O′"
+ }
+}

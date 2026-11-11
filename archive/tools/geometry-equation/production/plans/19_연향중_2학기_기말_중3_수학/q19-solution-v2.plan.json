@@ -1,0 +1,956 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 배치"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-9"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Op",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "8"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Q",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "5",
+          "denominator": "3"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "rational",
+            "numerator": "128",
+            "denominator": "9"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "cO",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "6"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "cOp",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "Op"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "3"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "O",
+     "Op",
+     "B",
+     "P",
+     "Q"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "cO",
+     "cOp"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAO",
+      "refs": [
+       "A",
+       "O"
+      ]
+     },
+     {
+      "id": "sOOp",
+      "refs": [
+       "O",
+       "Op"
+      ]
+     },
+     {
+      "id": "sOpB",
+      "refs": [
+       "Op",
+       "B"
+      ]
+     },
+     {
+      "id": "sAQ",
+      "refs": [
+       "A",
+       "Q"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sOpP",
+      "refs": [
+       "Op",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lAO",
+       "ownerSegment": "sAO",
+       "text": "6",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lOOp",
+       "ownerSegment": "sOOp",
+       "text": "3"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sOOp",
+        "sOpB",
+        "sOpP"
+       ],
+       "color": "BLUE"
+      }
+     ]
+    },
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "두 원이 B에서 접하고 AP는 작은 원의 접선이며 OO′=3, 큰 원의 중심 O가 작은 원 위에 있다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 420
+    },
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "P",
+       "Op"
+      ]
+     }
+    ],
+    "pointNames": {
+     "Op": "O'"
+    },
+    "caption": "큰 원의 중심 O는 작은 원 위에 있다."
+   }
+  },
+  {
+   "caption": {
+    "text": "직각삼각형 AO'P"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "Op",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "1"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "8"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "Op",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAOp",
+      "refs": [
+       "A",
+       "Op"
+      ]
+     },
+     {
+      "id": "sOpP",
+      "refs": [
+       "Op",
+       "P"
+      ]
+     },
+     {
+      "id": "sAP",
+      "refs": [
+       "A",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "th",
+       "refs": [
+        "A",
+        "Op",
+        "P"
+       ],
+       "value": 70.5288,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "ROSE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "l1",
+       "ownerSegment": "sAOp",
+       "text": "9",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "l2",
+       "ownerSegment": "sOpP",
+       "text": "3",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "l3",
+       "ownerSegment": "sAP",
+       "text": "6sqrt(2)",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAOp"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sOpP"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAP"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "두 원이 B에서 접하고 AP는 작은 원의 접선이며 OO′=3, 큰 원의 중심 O가 작은 원 위에 있다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 320
+    },
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "P",
+       "Op"
+      ]
+     }
+    ],
+    "pointNames": {
+     "Op": "O'"
+    },
+    "caption": "접선 AP와 반지름 O2032P는 수직이다."
+   }
+  },
+  {
+   "caption": {
+    "text": "닮은 직각삼각형 O'HP"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "Op",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "1",
+          "denominator": "3"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "9"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Zh1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "rational",
+          "numerator": "282843",
+          "denominator": "100000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "Op",
+     "H",
+     "P",
+     "Zh1"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sOpP",
+      "refs": [
+       "Op",
+       "P"
+      ]
+     },
+     {
+      "id": "sOpH",
+      "refs": [
+       "Op",
+       "H"
+      ]
+     },
+     {
+      "id": "sHP",
+      "refs": [
+       "H",
+       "P"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "th",
+       "refs": [
+        "P",
+        "Op",
+        "H"
+       ],
+       "value": 70.5288,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "ROSE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "l1",
+       "ownerSegment": "sOpP",
+       "text": "3",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "l2",
+       "ownerSegment": "sOpH",
+       "text": "1",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "l3",
+       "ownerSegment": "sHP",
+       "text": "2sqrt(2)",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sOpP"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sOpH"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sHP"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "두 원이 B에서 접하고 AP는 작은 원의 접선이며 OO′=3, 큰 원의 중심 O가 작은 원 위에 있다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 320
+    },
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "P",
+       "H",
+       "Op"
+      ]
+     }
+    ],
+    "pointNames": {
+     "Op": "O'"
+    },
+    "caption": "각 O2032를 공유하는 닮은 직각삼각형이다.",
+    "hiddenPointNames": [
+     "Zh1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "직각삼각형 PHB"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Op",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "3"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "8"
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "H",
+     "Op",
+     "B",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sPH",
+      "refs": [
+       "P",
+       "H"
+      ]
+     },
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "l1",
+       "ownerSegment": "sPH",
+       "text": "2sqrt(2)",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sPH"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sPB"
+       ],
+       "color": "ROSE"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dHOp",
+       "from": "H",
+       "to": "Op",
+       "label": "1",
+       "side": "BELOW",
+       "offset": "AUTO",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "dOpB",
+       "from": "Op",
+       "to": "B",
+       "label": "3",
+       "side": "BELOW",
+       "offset": "AUTO",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "dHB",
+       "from": "H",
+       "to": "B",
+       "label": "4",
+       "side": "BELOW",
+       "offset": "AUTO",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "두 원이 B에서 접하고 AP는 작은 원의 접선이며 OO′=3, 큰 원의 중심 O가 작은 원 위에 있다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 360
+    },
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "P",
+       "H",
+       "B"
+      ]
+     }
+    ],
+    "pointNames": {
+     "Op": "O'"
+    },
+    "caption": "점 H에서 직각인 삼각형 PHB이다."
+   }
+  }
+ ],
+ "caption": "큰 원의 반지름은 6, 작은 원의 반지름은 3이고 접선 AP와 반지름 O′P는 수직이다. 점 P에서 AB에 내린 수선의 발 H에 대하여 직각삼각형 AO′P와 O′HP는 한 각을 공유하는 닮은 삼각형(같은 변의 비는 같은 색)이어서 O′H와 PH를 구할 수 있다. 직각삼각형 PHB에서 피타고라스 정리를 쓴다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "두 원이 B에서 접하고 AP는 작은 원의 접선이며 OO′=3이다.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "수선의 발 H를 잡아 닮은 두 직각삼각형과 직각삼각형 PHB로 BP를 구하는 과정을 보인다."
+ ]
+}

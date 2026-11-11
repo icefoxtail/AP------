@@ -1,0 +1,183 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "A",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "76"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "diameter",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "chord",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "radius",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given52",
+        "refs": [
+          "O",
+          "A",
+          "C"
+        ],
+        "value": 52,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "central76",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 76,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "unknownx",
+        "refs": [
+          "C",
+          "O",
+          "B"
+        ],
+        "value": 104,
+        "label": "x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원주점과 중심을 잇는 반지름",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 원 O에서 52°인 원주점과 중심, 아래 원주점을 연결한 이등변삼각형의 중심각은 76°이다. 그 각과 한 직선 위의 x는 104°이다. A,B,C는 설명을 위해 추가한 이름이며 반지름 10 및 좌표 기준은 도식의 임의 정규화다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 원을 보존하고 보조 반지름을 추가하여 52°의 이등변삼각형과 중심각을 구별한다. 라벨은 지시선을 사용할 수 있게 여유를 둔다."
+  ]
+}

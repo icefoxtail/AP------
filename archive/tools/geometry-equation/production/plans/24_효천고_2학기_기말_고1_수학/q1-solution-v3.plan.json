@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -7,
+      5
+    ],
+    "curves": [
+      {
+        "id": "base",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -5,
+          5
+        ],
+        "color": "ROSE",
+        "style": "DASHED",
+        "label": "y=1/x"
+      },
+      {
+        "id": "shifted",
+        "kind": "RATIONAL",
+        "numerator": [
+          "7",
+          "-3"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          -5,
+          5
+        ],
+        "color": "BLUE",
+        "label": "f(x)"
+      }
+    ]
+  },
+  "caption": "기본 유리함수를 옮긴 그래프와 두 점근선을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수 y=1/x의 그래프를 오른쪽으로 2, 아래로 3만큼 옮긴 그래프이다.",
+      "mappedTo": [
+        "graphPlan.curves"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "먼저 분모가 0이 되는 x값을 구한다.",
+      "mappedTo": [
+        "graphPlan.curves[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "유리함수 y=1/x의 그래프를 오른쪽으로 2, 아래로 3만큼 옮긴 그래프이다.",
+    "먼저 분모가 0이 되는 x값을 구한다."
+  ],
+  "sourceQuote": "유리함수 y=1/x의 그래프를 오른쪽으로 2, 아래로 3만큼 옮긴 그래프이다."
+}

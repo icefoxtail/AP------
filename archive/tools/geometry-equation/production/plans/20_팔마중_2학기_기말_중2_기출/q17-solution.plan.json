@@ -1,0 +1,779 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "햄버거를 고른다"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r0k0b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k0t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sr0k0br0k0t",
+            "refs": [
+              "r0k0b",
+              "r0k0t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k1t",
+            "refs": [
+              "r0k1b",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k2t",
+            "refs": [
+              "r0k2b",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k3br0k3t",
+            "refs": [
+              "r0k3b",
+              "r0k3t"
+            ]
+          },
+          {
+            "id": "sr0k0br0k1b",
+            "refs": [
+              "r0k0b",
+              "r0k1b"
+            ]
+          },
+          {
+            "id": "sr0k0tr0k1t",
+            "refs": [
+              "r0k0t",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k2b",
+            "refs": [
+              "r0k1b",
+              "r0k2b"
+            ]
+          },
+          {
+            "id": "sr0k1tr0k2t",
+            "refs": [
+              "r0k1t",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k3b",
+            "refs": [
+              "r0k2b",
+              "r0k3b"
+            ]
+          },
+          {
+            "id": "sr0k2tr0k3t",
+            "refs": [
+              "r0k2t",
+              "r0k3t"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k0b",
+                    "r0k1b",
+                    "r0k1t",
+                    "r0k0t"
+                  ]
+                }
+              ],
+              "label": "햄버거 1",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k1b",
+                    "r0k2b",
+                    "r0k2t",
+                    "r0k1t"
+                  ]
+                }
+              ],
+              "label": "햄버거 2",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg2",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k2b",
+                    "r0k3b",
+                    "r0k3t",
+                    "r0k2t"
+                  ]
+                }
+              ],
+              "label": "햄버거 3",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "햄버거를 고른다",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "햄버거는 3종류 중 하나를 고른다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "음료수를 고른다 (햄버거마다)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "r0k0b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k0t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k1t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k2t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k3t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k4b",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0k4t",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t",
+          "r0k4b",
+          "r0k4t"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sr0k0br0k0t",
+            "refs": [
+              "r0k0b",
+              "r0k0t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k1t",
+            "refs": [
+              "r0k1b",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k2t",
+            "refs": [
+              "r0k2b",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k3br0k3t",
+            "refs": [
+              "r0k3b",
+              "r0k3t"
+            ]
+          },
+          {
+            "id": "sr0k4br0k4t",
+            "refs": [
+              "r0k4b",
+              "r0k4t"
+            ]
+          },
+          {
+            "id": "sr0k0br0k1b",
+            "refs": [
+              "r0k0b",
+              "r0k1b"
+            ]
+          },
+          {
+            "id": "sr0k0tr0k1t",
+            "refs": [
+              "r0k0t",
+              "r0k1t"
+            ]
+          },
+          {
+            "id": "sr0k1br0k2b",
+            "refs": [
+              "r0k1b",
+              "r0k2b"
+            ]
+          },
+          {
+            "id": "sr0k1tr0k2t",
+            "refs": [
+              "r0k1t",
+              "r0k2t"
+            ]
+          },
+          {
+            "id": "sr0k2br0k3b",
+            "refs": [
+              "r0k2b",
+              "r0k3b"
+            ]
+          },
+          {
+            "id": "sr0k2tr0k3t",
+            "refs": [
+              "r0k2t",
+              "r0k3t"
+            ]
+          },
+          {
+            "id": "sr0k3br0k4b",
+            "refs": [
+              "r0k3b",
+              "r0k4b"
+            ]
+          },
+          {
+            "id": "sr0k3tr0k4t",
+            "refs": [
+              "r0k3t",
+              "r0k4t"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rg0",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k0b",
+                    "r0k1b",
+                    "r0k1t",
+                    "r0k0t"
+                  ]
+                }
+              ],
+              "label": "음료 1",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg1",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k1b",
+                    "r0k2b",
+                    "r0k2t",
+                    "r0k1t"
+                  ]
+                }
+              ],
+              "label": "음료 2",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg2",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k2b",
+                    "r0k3b",
+                    "r0k3t",
+                    "r0k2t"
+                  ]
+                }
+              ],
+              "label": "음료 3",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            },
+            {
+              "id": "rg3",
+              "fill": "WARM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "r0k3b",
+                    "r0k4b",
+                    "r0k4t",
+                    "r0k3t"
+                  ]
+                }
+              ],
+              "label": "음료 4",
+              "labelKind": "TEXT",
+              "labelPlacement": "AUTO_LEADER"
+            }
+          ]
+        },
+        "caption": "음료수를 고른다 (햄버거마다)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "음료수는 4종류 중 하나를 고른다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "r0k0b",
+          "r0k0t",
+          "r0k1b",
+          "r0k1t",
+          "r0k2b",
+          "r0k2t",
+          "r0k3b",
+          "r0k3t",
+          "r0k4b",
+          "r0k4t"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "햄버거 3종류 중 하나를 고르고, 그 각각에 대해 음료수 4종류 중 하나를 고른다. 두 단계의 가짓수를 곱한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "햄버거 3종류 중 하나를 고르고, 그 각각에 대해 음료수 4종류 중 하나를 고른다. 두 단계의 가짓수를 곱한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

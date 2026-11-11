@@ -1,0 +1,103 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      3,
+      -1,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "1/4",
+          "0"
+        ],
+        "domain": [
+          -1,
+          3
+        ],
+        "color": "BLUE",
+        "label": "f(x)=\\frac{1}{4}"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          3
+        ],
+        "color": "ROSE",
+        "label": "g(x)=x"
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "1/8",
+          "1/8"
+        ],
+        "domain": [
+          -1,
+          3
+        ],
+        "color": "GREEN",
+        "label": "h(x)=\\frac{x+1}{8}"
+      }
+    ],
+    "regions": [
+      {
+        "id": "Rh",
+        "between": [
+          "h",
+          "axis"
+        ],
+        "from": -1,
+        "to": 3,
+        "fill": "MEDIUM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": []
+    }
+  },
+  "caption": "세 후보의 부호와 넓이를 그래프에서 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "domain",
+      "condition": "−1≤x≤3",
+      "mappedTo": "viewport and curve domains"
+    },
+    {
+      "id": "f",
+      "condition": "첫째 함수는 높이 1/4인 직사각형으로 넓이가 1",
+      "mappedTo": "curve f and axis ticks"
+    },
+    {
+      "id": "g",
+      "condition": "둘째 함수는 왼쪽 구간에서 음수",
+      "mappedTo": "curve g below axis"
+    },
+    {
+      "id": "h",
+      "condition": "셋째 함수는 넓이가 1인 사다리꼴",
+      "mappedTo": "curve h and shaded region"
+    }
+  ],
+  "newVisualInformation": [
+    "세 밀도 후보의 그래프, 둘째 함수의 음수 구간, 셋째 함수 아래 영역"
+  ]
+}

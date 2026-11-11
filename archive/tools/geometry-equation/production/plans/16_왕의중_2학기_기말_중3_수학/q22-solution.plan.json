@@ -1,0 +1,438 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림과 대각선 BD"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "7"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "7"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "-6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "D",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ],
+      "dashed": true
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aA",
+       "refs": [
+        "B",
+        "A",
+        "D"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "aD",
+       "refs": [
+        "C",
+        "D",
+        "B"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "WARM",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "7",
+       "unit": "cm"
+      },
+      {
+       "id": "lDA",
+       "ownerSegment": "sDA",
+       "text": "14",
+       "unit": "cm"
+      },
+      {
+       "id": "lCD",
+       "ownerSegment": "sCD",
+       "text": "12",
+       "unit": "cm"
+      },
+      {
+       "id": "lBD",
+       "ownerSegment": "sBD",
+       "text": "7sqrt(3)",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "사각형을 대각선 BD로 두 삼각형으로 나눈 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "B",
+       "D"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 BCD의 높이 BE"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "7"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           }
+          ]
+         },
+         {
+          "kind": "integer",
+          "value": "-6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "lCD",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "C",
+        "D"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "E",
+       "op": "PERPENDICULAR_FOOT",
+       "inputs": [
+        "B",
+        "lCD"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "B",
+     "D",
+     "C",
+     "E"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     },
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sCB",
+      "refs": [
+       "C",
+       "B"
+      ]
+     },
+     {
+      "id": "sBE",
+      "refs": [
+       "B",
+       "E"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aD",
+       "refs": [
+        "C",
+        "D",
+        "B"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "WARM"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sBE"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBD",
+       "ownerSegment": "sBD",
+       "text": "7sqrt(3)",
+       "unit": "cm"
+      },
+      {
+       "id": "tCD",
+       "ownerSegment": "sDC",
+       "text": "12",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "삼각형 BCD와 B에서 CD에 내린 수선 BE이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "E",
+       "D"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "대각선 BD로 사각형을 삼각형 ABD와 삼각형 BCD로 나눈다. 삼각형 ABD는 각이 30도, 60도, 90도인 직각삼각형이고, 삼각형 BCD의 높이는 초록색 선분 BE이다."
+}

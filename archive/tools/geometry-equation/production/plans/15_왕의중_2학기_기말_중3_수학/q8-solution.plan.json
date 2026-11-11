@@ -1,0 +1,376 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "-3"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "rational",
+          "numerator": "7",
+          "denominator": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "k",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "rational",
+         "numerator": "25",
+         "denominator": "6"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "M",
+     "A",
+     "B",
+     "C",
+     "O"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "k"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAM",
+      "refs": [
+       "A",
+       "M"
+      ]
+     },
+     {
+      "id": "sMB",
+      "refs": [
+       "M",
+       "B"
+      ]
+     },
+     {
+      "id": "sOM",
+      "refs": [
+       "O",
+       "M"
+      ]
+     },
+     {
+      "id": "sMC",
+      "refs": [
+       "M",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "equalLengths": [
+      {
+       "id": "e1z0",
+       "count": 1,
+       "segments": [
+        "sAM",
+        "sMB"
+       ],
+       "color": "BLUE"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dAMz0",
+       "from": "A",
+       "to": "M",
+       "label": "4",
+       "unit": "cm",
+       "side": "ABOVE"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lMCz0",
+       "ownerSegment": "sMC",
+       "text": "3",
+       "unit": "cm"
+      }
+     ]
+    },
+    "caption": "중심이 O인 원에서 현 AB의 중점 M과 호 위의 점 C를 나타낸 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "O",
+       "M",
+       "A"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 OMA"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "M",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "4"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "rational",
+          "numerator": "7",
+          "denominator": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "M",
+     "A",
+     "O"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sMA",
+      "refs": [
+       "M",
+       "A"
+      ]
+     },
+     {
+      "id": "sAO",
+      "refs": [
+       "A",
+       "O"
+      ]
+     },
+     {
+      "id": "sOM",
+      "refs": [
+       "O",
+       "M"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sAO"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sMA"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sOM"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lMAz1",
+       "ownerSegment": "sMA",
+       "text": "4",
+       "unit": "cm"
+      },
+      {
+       "id": "lAOz1",
+       "ownerSegment": "sAO",
+       "text": "x"
+      },
+      {
+       "id": "lOMz1",
+       "ownerSegment": "sOM",
+       "text": "x-3"
+      }
+     ]
+    },
+    "caption": "직각삼각형 OMA에서 OA=x, OM=x-3, AM=4이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "M",
+       "O"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "M이 현 AB의 중점이므로 OM은 AB에 수직이다. 반지름을 x라 하면 OM=x−3이고, 초록색 반지름 OA, 주황색 OM, 파란색 AM이 직각삼각형을 이룬다."
+}

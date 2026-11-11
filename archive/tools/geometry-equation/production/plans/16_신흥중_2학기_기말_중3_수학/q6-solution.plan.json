@@ -1,0 +1,678 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     },
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "D"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBD",
+       "ownerSegment": "sBD",
+       "text": "9",
+       "unit": "cm"
+      },
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "x",
+       "unit": "cm"
+      },
+      {
+       "id": "lAD",
+       "ownerSegment": "sAD",
+       "text": "y",
+       "unit": "cm"
+      },
+      {
+       "id": "lAC",
+       "ownerSegment": "sAC",
+       "text": "z",
+       "unit": "cm"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAB"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAD"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sAC"
+       ],
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "∠A=90°, ∠B=30°, AD⊥BC, BD=9cm.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "B",
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "r2",
+      "refs": [
+       "B",
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABD에서 x, y"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "D"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "D"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBD",
+       "ownerSegment": "sBD",
+       "text": "9",
+       "unit": "cm"
+      },
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "6sqrt(3)",
+       "unit": "cm",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAB"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sDA"
+       ],
+       "color": "WARM"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dDA",
+       "from": "D",
+       "to": "A",
+       "label": "3sqrt(3)",
+       "unit": "cm",
+       "side": "RIGHT",
+       "style": "ARROW",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "caption": "삼각형 ABD에서 x, y",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "BD=9, ∠B=30°, ∠D=90°.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "B",
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 ABC에서 z"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "9"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "C"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "ROSE",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "6sqrt(3)",
+       "unit": "cm",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lAC",
+       "ownerSegment": "sAC",
+       "text": "z",
+       "unit": "cm"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAB"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sAC"
+       ],
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "삼각형 ABC에서 z",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "∠A=90°, ∠B=30°, AB=x.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "B",
+       "A",
+       "C"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 340
+    }
+   }
+  }
+ ],
+ "caption": "x는 파란색 AB, y는 주황색 AD, z는 초록색 AC이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "∠A=90°, ∠B=30°, BD=9cm, AD⊥BC.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이 단계마다 그림을 나누어 보인다."
+ ]
+}

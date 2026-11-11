@@ -1,0 +1,50 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 2,
+      "height": 4.58257569495584,
+      "baseFill": {
+        "fill": "LIGHT"
+      }
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 4,
+      "height": 9.16515138991168,
+      "baseFill": {
+        "fill": "WARM"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "slant": true,
+      "label": "5"
+    },
+    {
+      "solid": "s2",
+      "slant": true,
+      "label": "10"
+    }
+  ],
+  "caption": "왼쪽의 작은 원뿔과 오른쪽의 큰 원뿔은 닮은 도형이고 모선의 길이는 각각 5cm, 10cm이다. 높이와 반지름은 예시이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 원뿔은 닮은 도형이고 모선의 길이가 각각 5cm, 10cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대응하는 모선의 길이로 닮음비를 읽는다."
+  ]
+}

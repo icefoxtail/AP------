@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/2",
+          "1/4"
+        ]
+      },
+      {
+        "coefficients": [
+          "1/2",
+          "-1/4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "1/2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 0.5
+      },
+      {
+        "id": "P",
+        "x": -1,
+        "y": 0.25
+      },
+      {
+        "id": "Q",
+        "x": 0.5,
+        "y": 0.375
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "0",
+        "1/2"
+      ],
+      "P": [
+        "-1",
+        "1/4"
+      ],
+      "Q": [
+        "1/2",
+        "3/8"
+      ]
+    },
+    "regions": [
+      {
+        "id": "prob",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "1/2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "P",
+    "Q"
+  ],
+  "caption": "음영은 구간 −1≤x≤1/2에서의 확률을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "확률밀도함수의 전체 넓이는 1이고 관심 구간은 −1≤x≤1/2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 확률밀도의 구간 확률을 면적으로 보여 주어 이해를 돕는다. 좌표 라벨은 지시선과 여유 있는 배치를 계획한다."
+  ]
+}

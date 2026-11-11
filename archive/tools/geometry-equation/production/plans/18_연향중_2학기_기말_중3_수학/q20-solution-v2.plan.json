@@ -1,0 +1,853 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 배치"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "T",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29",
+          "denominator": "12"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "12"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "455"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29",
+          "denominator": "3"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "3"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "455"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "lpt",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "P",
+        "T"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "tT",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "T",
+        "lpt"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "M",
+       "op": "DIVISION_POINT",
+       "inputs": [
+        "A",
+        "B"
+       ],
+       "args": {
+        "m": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "n": {
+         "kind": "integer",
+         "value": "1"
+        },
+        "mode": "INTERNAL"
+       },
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lab",
+       "op": "LINE_THROUGH",
+       "inputs": [
+        "A",
+        "B"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "pb",
+       "op": "PERPENDICULAR_THROUGH",
+       "inputs": [
+        "M",
+        "lab"
+       ],
+       "args": {},
+       "outputType": "LINE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "O",
+       "op": "LINE_INTERSECTION",
+       "inputs": [
+        "tT",
+        "pb"
+       ],
+       "args": {},
+       "outputType": "POINT",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "expression",
+         "op": "mul",
+         "args": [
+          {
+           "kind": "rational",
+           "numerator": "96",
+           "denominator": "455"
+          },
+          {
+           "kind": "expression",
+           "op": "sqrt",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "455"
+            }
+           ]
+          }
+         ]
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "T",
+     "A",
+     "B"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sPT",
+      "refs": [
+       "P",
+       "T"
+      ]
+     },
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBT",
+      "refs": [
+       "B",
+       "T"
+      ]
+     },
+     {
+      "id": "sAT",
+      "refs": [
+       "A",
+       "T"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aP",
+       "refs": [
+        "T",
+        "P",
+        "A"
+       ],
+       "value": 36.34,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aT",
+       "refs": [
+        "P",
+        "T",
+        "A"
+       ],
+       "value": 26.38,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "VIOLET",
+       "equalGroup": 1,
+       "arcs": 1
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "P",
+        "B",
+        "T"
+       ],
+       "value": 26.38,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "VIOLET",
+       "equalGroup": 1,
+       "arcs": 1
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lPT",
+       "ownerSegment": "sPT",
+       "text": "6",
+       "unit": "cm"
+      },
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "9",
+       "unit": "cm"
+      },
+      {
+       "id": "lBT",
+       "ownerSegment": "sBT",
+       "text": "8",
+       "unit": "cm"
+      },
+      {
+       "id": "lPA",
+       "ownerSegment": "sPA",
+       "text": "3",
+       "unit": "cm",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sPA"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sBT",
+        "sAT"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "문제의 배치",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "PT는 원의 접선이고 점 P에서 시작하는 할선이 A, B에서 원과 만난다. AB=9cm, BT=8cm, PT=6cm이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 360
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 PTA"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "T",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "6"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29",
+          "denominator": "12"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "12"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "455"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Zh1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "rational",
+          "numerator": "355512",
+          "denominator": "100000"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "T",
+     "A",
+     "Zh1"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sPT",
+      "refs": [
+       "P",
+       "T"
+      ]
+     },
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sAT",
+      "refs": [
+       "A",
+       "T"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aP",
+       "refs": [
+        "T",
+        "P",
+        "A"
+       ],
+       "value": 36.34,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aT",
+       "refs": [
+        "P",
+        "T",
+        "A"
+       ],
+       "value": 26.38,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lPT",
+       "ownerSegment": "sPT",
+       "text": "6",
+       "unit": "cm"
+      },
+      {
+       "id": "lPA",
+       "ownerSegment": "sPA",
+       "text": "3",
+       "unit": "cm",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sPT"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sPA"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sAT"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "삼각형 PTA",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "PT는 원의 접선이고 점 P에서 시작하는 할선이 A, B에서 원과 만난다. AB=9cm, BT=8cm, PT=6cm이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 360
+    },
+    "hiddenPointNames": [
+     "Zh1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 PBT"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "T",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "29",
+          "denominator": "6"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "6"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "455"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "P",
+     "B",
+     "T"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sPB",
+      "refs": [
+       "P",
+       "B"
+      ]
+     },
+     {
+      "id": "sPT",
+      "refs": [
+       "P",
+       "T"
+      ]
+     },
+     {
+      "id": "sBT",
+      "refs": [
+       "B",
+       "T"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aP",
+       "refs": [
+        "B",
+        "P",
+        "T"
+       ],
+       "value": 36.34,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "ROSE"
+      },
+      {
+       "id": "aB",
+       "refs": [
+        "P",
+        "B",
+        "T"
+       ],
+       "value": 26.38,
+       "factRole": "GIVEN",
+       "noLabel": true,
+       "color": "VIOLET"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lPB",
+       "ownerSegment": "sPB",
+       "text": "12",
+       "unit": "cm",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lBT",
+       "ownerSegment": "sBT",
+       "text": "8",
+       "unit": "cm"
+      },
+      {
+       "id": "lPT",
+       "ownerSegment": "sPT",
+       "text": "6",
+       "unit": "cm"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sPB"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sPT"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "segments": [
+        "sBT"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "caption": "삼각형 PBT",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "PT는 원의 접선이고 점 P에서 시작하는 할선이 A, B에서 원과 만난다. AB=9cm, BT=8cm, PT=6cm이다.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 360
+    }
+   }
+  }
+ ],
+ "caption": "접선과 할선에서 PA×PB=PT²이므로 PA=x로 두면 x(x+9)=36에서 PA=3, PB=12이다. 접선과 현이 이루는 각의 성질로 삼각형 PTA와 삼각형 PBT는 닮음이고 대응변은 PT와 PB(파랑), PA와 PT(초록), TA와 BT(주황)이며 각 P(분홍)는 공통이다. PA÷PT=AT÷BT이므로 6분의 3=8분의 AT이다. 정답은 ③이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "PT는 원의 접선이고 점 P에서 시작하는 할선이 A, B에서 원과 만난다. AB=9cm, BT=8cm, PT=6cm이다.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "문제 배치와 닮은 두 삼각형 PTA, PBT를 같은 방향으로 펼쳐 대응변을 같은 색으로 보인다."
+ ]
+}

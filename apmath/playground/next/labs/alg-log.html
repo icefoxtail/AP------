@@ -10,12 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
 <script defer src="alg-log-var.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="alg-log/lesson-core.js"></script>
+<script defer src="alg-log/lesson-a.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -262,7 +268,16 @@ window.addEventListener('DOMContentLoaded', function () {
   /* 문제·정리 탭: 「새 문제」 변형 생성기. 첫 문제는 옛 문제 그대로(글·풀이 원문), 눌러서 숫자·상황이 바뀝니다. */
   const KIND = ['vert', 'absM', 'xlat', 'latt'];
   const POOL = [ALV.POOLS.vertS, ALV.POOLS.mixWingAbs, ALV.POOLS.xlatCMg, ALV.POOLS.lattA];
-  const VARY = PART.modes.map((mo, i) => ALV.make(KIND[i], POOL[i]));
+  const lessonActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  const VARY = PART.modes.map((mo, i) => {
+    const vary = ALV.make(KIND[i], POOL[i]);
+    const first = vary.cur(), selected = vary.cur.bind(vary);
+    // The existing generator retains the student's selected variant internally.
+    // Lessons read the original first packet, including its function fields.
+    vary.cur = () => lessonActive(window.lab && window.lab.s) ? first : selected();
+    vary.first = () => first;
+    return vary;
+  });
 
   const scenes = PART.modes.map((mo, i) => ({
     id: mo.id,
@@ -300,6 +315,20 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }));
 
+  const initial = {};
+  PART.modes.forEach(mo => Object.entries(mo.params).forEach(([key, value]) => { initial[mo.id + '_' + key] = value; }));
+  const source = window.APL_LOG_SOURCE = {
+    scenes,
+    first: id => VARY[scenes.findIndex(sc => sc.id === id)].first(),
+    initial: () => ({ ...initial }),
+    question: id => VARY[scenes.findIndex(sc => sc.id === id)].first().text,
+    answer: id => VARY[scenes.findIndex(sc => sc.id === id)].first().ans,
+    steps: id => VARY[scenes.findIndex(sc => sc.id === id)].first().steps.slice(),
+    inquiry: id => Q[scenes.findIndex(sc => sc.id === id)],
+    exploration: id => PART.modes.find(mo => mo.id === id),
+    focus: id => FOCUS[PART.modes.find(mo => mo.id === id).renderType]
+  };
+  const lessons = window.APL_LOG_LESSONS ? window.APL_LOG_LESSONS.install(scenes, source) : {};
   APLab.createLab({
     id: 'alg-log',
     stagedReveal: true,
@@ -311,7 +340,8 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/대수/part1b.html',
     board: { kind: 'cartesian', focus: FOCUS.log_vert },
     params,
-    scenes
+    scenes,
+    lessons
   });
 });
 </script>

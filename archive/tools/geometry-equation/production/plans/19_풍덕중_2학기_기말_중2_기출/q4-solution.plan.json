@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "2/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "2/5*x+2",
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "O",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "일차함수의 그래프가 x축, y축과 만나는 두 점과 원점으로 이루어진 직각삼각형.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2/5x+2의 그래프와 x축, y축으로 둘러싸인 도형.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x절편과 y절편이 직각삼각형의 두 변이 되는 모양을 보여 준다."
+  ]
+}

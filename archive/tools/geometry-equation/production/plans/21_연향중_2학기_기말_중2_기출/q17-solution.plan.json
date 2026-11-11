@@ -1,0 +1,61 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 3,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        3,
+        3
+      ]
+    },
+    "from": "A",
+    "to": "C",
+    "viaPoints": [
+      "B"
+    ],
+    "counts": "segments",
+    "highlightPath": [
+      "A",
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      "B",
+      [
+        3,
+        2
+      ],
+      "C"
+    ]
+  },
+  "caption": "A에서 B까지 오른쪽 2칸, 위쪽 2칸으로 가는 길의 수를 교차점마다 더해 B에 쓰고, B에서 C까지 새로 센다. B 뒤의 작은 숫자는 B에서 새로 센 길의 수이고, 굵은 점선은 한 가지 예이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A지점을 출발하여 B지점을 거쳐 C지점까지 최단 거리로 가는 경우",
+      "mappedTo": "lattice"
+    }
+  ],
+  "newVisualInformation": [
+    "A에서 B까지 오는 길의 수를 교차점마다 세어 보인다"
+  ]
+}

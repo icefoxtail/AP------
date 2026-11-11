@@ -1,0 +1,128 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "24",
+          "-6",
+          "-8",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "curveColor": "WARM",
+    "referenceLines": [
+      {
+        "id": "k",
+        "y": "9",
+        "intersectionX": [
+          "(1-2*sqrt(10))/3",
+          "1",
+          "(1+2*sqrt(10))/3"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "coefficients": [
+              "1",
+              "24",
+              "-6",
+              "-8",
+              "3"
+            ]
+          }
+        ],
+        "intersectionX": []
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 9
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": -23
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 4,
+        "marker": "NONE"
+      },
+      {
+        "id": "D",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "id": "E",
+        "x": -1,
+        "y": -18,
+        "marker": "NONE"
+      },
+      {
+        "id": "F",
+        "x": 1,
+        "y": 14,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/6"
+    },
+    "overlays": {
+      "callouts": [
+        {
+          "id": "cf",
+          "point": "B",
+          "text": "f(x)",
+          "direction": "SW"
+        },
+        {
+          "id": "cy",
+          "point": "D",
+          "text": "y=9",
+          "direction": "NE"
+        }
+      ]
+    }
+  },
+  "caption": "y=9와 접하는 두 사차함수 그래프를 한 그림에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=-2이면 f(1)=a+11=9로 x=1의 극댓값이 y=9에 접한다.",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "a=3이면 x=2의 극솟값 a+6=9가 y=9에 접한다.",
+      "mappedTo": "graphPlan.referenceCurves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 경우 모두 y=9와 서로 다른 세 점에서 만난다."
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "F",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "G",
+            "value": "3",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "C",
+            "to": "E",
+            "label": "2A",
+            "side": "ABOVE"
+          },
+          {
+            "from": "C",
+            "to": "F",
+            "label": "2A+B",
+            "side": "BELOW"
+          },
+          {
+            "from": "A",
+            "to": "F",
+            "label": "2(A+B)+C",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "caption": "u=(X−m)/k로 놓고 대칭인 구간들의 확률을 A, B, C로 나누어 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "분포가 m을 중심으로 대칭이고 k>0이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "A, B, C는 각각 오른쪽 단위 구간의 확률이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "중심에 대한 대칭 구간과 조건별로 더해지는 확률 구간"
+  ],
+  "numberLineCaption": {
+    "text": "u=(X−m)/k"
+  }
+}

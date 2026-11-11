@@ -1,0 +1,337 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원뿔 A (단위 cm)"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "CONE",
+            "radius": 8,
+            "height": 6
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s1",
+            "slant": true,
+            "label": "10"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "원뿔 B (단위 cm)"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "s2",
+            "kind": "CONE",
+            "radius": 12,
+            "height": 9
+          }
+        ],
+        "dims": [
+          {
+            "solid": "s2",
+            "slant": true,
+            "label": "15"
+          },
+          {
+            "solid": "s2",
+            "radius": "bottom",
+            "label": "12"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "축을 지나는 단면 (모선 10, 15)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "30"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "42"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "L",
+          "R",
+          "Q",
+          "M",
+          "N"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sPL",
+            "refs": [
+              "P",
+              "L"
+            ]
+          },
+          {
+            "id": "sPR",
+            "refs": [
+              "P",
+              "R"
+            ]
+          },
+          {
+            "id": "sLR",
+            "refs": [
+              "L",
+              "R"
+            ]
+          },
+          {
+            "id": "sQM",
+            "refs": [
+              "Q",
+              "M"
+            ]
+          },
+          {
+            "id": "sQN",
+            "refs": [
+              "Q",
+              "N"
+            ]
+          },
+          {
+            "id": "sMN",
+            "refs": [
+              "M",
+              "N"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "segmentColors": [
+            {
+              "segments": [
+                "sPL",
+                "sPR",
+                "sQM",
+                "sQN"
+              ],
+              "color": "GREEN"
+            },
+            {
+              "segments": [
+                "sLR",
+                "sMN"
+              ],
+              "color": "BLUE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sPL",
+              "text": "10"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sQM",
+              "text": "15"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "d1",
+              "from": "L",
+              "to": "R",
+              "label": "2r",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "d2",
+              "from": "M",
+              "to": "N",
+              "label": "24",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "축을 지나는 단면",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "닮은 두 원뿔의 축을 지나는 단면은 닮은 이등변삼각형이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "hiddenPointNames": [
+          "P",
+          "L",
+          "R",
+          "Q",
+          "M",
+          "N"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "두 원뿔의 모선의 비가 닮음비이다. 단면의 같은 색 변이 대응한다. 밑면의 반지름 r은 12에 닮음비를 곱해 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 원뿔의 모선의 비가 닮음비이다. 단면의 같은 색 변이 대응한다. 밑면의 반지름 r은 12에 닮음비를 곱해 구한다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이 단계마다 그림을 나누어 보인다."
+  ]
+}

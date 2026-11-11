@@ -1,0 +1,41 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "4",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "3",
+        "countUnit": "개"
+      }
+    ],
+    "elements": [
+      {
+        "text": "12",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "3의 배수 A는 4개, 4의 배수 B는 3개이고 둘에 모두 속하는 수는 한 개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1부터 12까지 3의 배수는 4개, 4의 배수는 3개이고 12가 두 집합에 모두 속한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 집합에 모두 속하는 수가 겹쳐 두 번 세어지는 것을 벤다이어그램으로 보인다."
+  ]
+}

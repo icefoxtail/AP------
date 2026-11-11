@@ -1,0 +1,541 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "30"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "20"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "-10"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "20"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "P",
+     "H"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     },
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sBP",
+      "refs": [
+       "B",
+       "P"
+      ]
+     },
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     },
+     {
+      "id": "sPH",
+      "refs": [
+       "P",
+       "H"
+      ],
+      "dashed": true
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "A",
+        "B",
+        "P"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBP",
+       "ownerSegment": "sBP",
+       "text": "20",
+       "unit": "m"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dAB",
+       "from": "A",
+       "to": "B",
+       "label": "30",
+       "unit": "m",
+       "side": "ABOVE"
+      }
+     ]
+    },
+    "caption": "두 지점 A, B와 점 P가 있고 P에서 AB에 수선 PH를 그은 그림이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "H",
+       "P"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 BPH"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "10"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "-10"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "H",
+     "B",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sHB",
+      "refs": [
+       "H",
+       "B"
+      ]
+     },
+     {
+      "id": "sBP",
+      "refs": [
+       "B",
+       "P"
+      ]
+     },
+     {
+      "id": "sPH",
+      "refs": [
+       "P",
+       "H"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "angles": [
+      {
+       "id": "aB",
+       "refs": [
+        "H",
+        "B",
+        "P"
+       ],
+       "value": 60,
+       "label": "60",
+       "color": "BLUE"
+      },
+      {
+       "id": "aP",
+       "refs": [
+        "B",
+        "P",
+        "H"
+       ],
+       "value": 30,
+       "label": "30",
+       "color": "WARM"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lBP",
+       "ownerSegment": "sBP",
+       "text": "20",
+       "unit": "m"
+      },
+      {
+       "id": "lHB",
+       "ownerSegment": "sHB",
+       "text": "10",
+       "unit": "m"
+      },
+      {
+       "id": "lPH",
+       "ownerSegment": "sPH",
+       "text": "10sqrt(3)",
+       "unit": "m"
+      }
+     ]
+    },
+    "caption": "각이 30도, 60도, 90도인 직각삼각형 BPH이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "B",
+       "H",
+       "P"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "caption": {
+    "text": "삼각형 AHP"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "-20"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "P",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "-10"
+           },
+           {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+             {
+              "kind": "integer",
+              "value": "3"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "H",
+     "P"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAH",
+      "refs": [
+       "A",
+       "H"
+      ]
+     },
+     {
+      "id": "sHP",
+      "refs": [
+       "H",
+       "P"
+      ]
+     },
+     {
+      "id": "sPA",
+      "refs": [
+       "P",
+       "A"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "segmentColors": [
+      {
+       "segments": [
+        "sPA"
+       ],
+       "color": "GREEN"
+      }
+     ],
+     "expressionLabels": [
+      {
+       "id": "lAH",
+       "ownerSegment": "sAH",
+       "text": "20",
+       "unit": "m"
+      },
+      {
+       "id": "lHP",
+       "ownerSegment": "sHP",
+       "text": "10sqrt(3)",
+       "unit": "m"
+      }
+     ]
+    },
+    "caption": "직각삼각형 AHP이다.",
+    "rightAngles": [
+     {
+      "id": "r0",
+      "refs": [
+       "A",
+       "H",
+       "P"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "점 P에서 AB에 내린 수선의 발을 H라 할 때, 30도, 60도, 90도인 삼각형 BPH로 BH와 PH를 구하고 직각삼각형 AHP에 피타고라스 정리를 쓰는 그림이다. 초록색 선분이 구하려는 AP이다."
+}

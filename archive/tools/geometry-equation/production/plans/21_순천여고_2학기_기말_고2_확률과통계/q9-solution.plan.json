@@ -1,0 +1,75 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "입력",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "함숫값",
+        "elements": [
+          "u"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "highlight": {
+      "elements": [
+        {
+          "column": 1,
+          "element": 0
+        }
+      ]
+    }
+  },
+  "caption": "앞의 세 입력을 같은 함수값으로 묶는 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "함수값이 비내림차순이고 f(1)=f(3)이므로 f(1)=f(2)=f(3)이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "앞의 세 입력값이 하나의 함수값으로 모이는 관계를 보여 중복조합 압축을 설명한다."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      7,
+      8,
+      9
+    ],
+    "step": 1,
+    "xTitle": "개수(개)",
+    "marks": {
+      "highlight": [
+        {
+          "value": 7,
+          "color": "WARM"
+        }
+      ]
+    }
+  },
+  "caption": "제기차기 개수를 점도표로 놓고 최빈값 7을 만드는 미지수 자리를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 자료 6, 5, 7, 4, 9, 3, 8과 x에서 최빈값 7이 되려면 x=7이므로 3, 4, 5, 6, 7, 7, 8, 9로 놓는다.",
+      "mappedTo": [
+        "chart.values",
+        "chart.marks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 번 쌓인 7이 최빈값이고 8개 자료의 가운데 두 값이 어디인지 읽을 수 있다."
+  ]
+}

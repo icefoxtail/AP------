@@ -1,0 +1,36 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "colVar": "x",
+    "rowVar": "y",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "2*x-y",
+          "in": [
+            6,
+            6
+          ]
+        },
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "가로는 첫 번째 눈 x, 세로는 두 번째 눈 y이고 칸 안은 순서쌍 (x, y)이다. 짙은 칸은 2x-y=6을 만족하는 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주사위를 두 번 던져 첫 번째 눈을 x, 두 번째 눈을 y라 할 때 2x-y=6.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "2x-y=6을 만족하는 칸을 짙게 보인다."
+  ]
+}

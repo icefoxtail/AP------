@@ -1,0 +1,264 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "-7313537",
+       "denominator": "2000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-17049959",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "7313537",
+       "denominator": "2000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "-17049959",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "0",
+       "denominator": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "7313537",
+       "denominator": "2000000"
+      },
+      {
+       "kind": "rational",
+       "numerator": "17049959",
+       "denominator": "5000000"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "P",
+  "Q"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPA",
+   "refs": [
+    "P",
+    "A"
+   ]
+  },
+  {
+   "id": "sPB",
+   "refs": [
+    "P",
+    "B"
+   ]
+  },
+  {
+   "id": "sAO",
+   "refs": [
+    "A",
+    "O"
+   ]
+  },
+  {
+   "id": "sOQ",
+   "refs": [
+    "O",
+    "Q"
+   ]
+  },
+  {
+   "id": "sQB",
+   "refs": [
+    "Q",
+    "B"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aP",
+    "refs": [
+     "A",
+     "P",
+     "B"
+    ],
+    "value": 47,
+    "label": "47",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aQ",
+    "refs": [
+     "A",
+     "Q",
+     "B"
+    ],
+    "value": 47,
+    "label": "x",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aO",
+    "refs": [
+     "A",
+     "O",
+     "B"
+    ],
+    "value": 94,
+    "label": "y",
+    "color": "GREEN",
+    "factRole": "GIVEN"
+   }
+  ],
+  "equalAngles": [
+   {
+    "angles": [
+     "aP",
+     "aQ"
+    ],
+    "color": "BLUE"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "arcAB",
+    "circle": "circ",
+    "center": "O",
+    "from": "A",
+    "to": "B",
+    "side": "MINOR",
+    "color": "WARM",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "caption": "같은 호 AB에 대한 원주각 APB와 AQB는 같아서 파란색 두 각의 크기가 같다. 초록색 중심각 AOB는 주황색 호 AB에 대한 원주각의 두 배이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AQ는 원 O의 지름, ∠APB=47°, x=∠AQB, y=∠AOB.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 520,
+  "height": 520
+ }
+}

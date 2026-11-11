@@ -1,0 +1,384 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "7"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "1"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "15"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "rational",
+         "numerator": "1",
+         "denominator": "3"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "15"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "35",
+       "denominator": "8"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "rational",
+         "numerator": "5",
+         "denominator": "8"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "15"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "25",
+       "denominator": "4"
+      },
+      {
+       "kind": "expression",
+       "op": "mul",
+       "args": [
+        {
+         "kind": "rational",
+         "numerator": "1",
+         "denominator": "4"
+        },
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "15"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "circ",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "expression",
+      "op": "mul",
+      "args": [
+       {
+        "kind": "rational",
+        "numerator": "1",
+        "denominator": "3"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "15"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "O"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "circ"
+ ],
+ "displaySegments": [
+  {
+   "id": "sBF",
+   "refs": [
+    "B",
+    "F"
+   ]
+  },
+  {
+   "id": "sFA",
+   "refs": [
+    "F",
+    "A"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDB",
+   "refs": [
+    "D",
+    "B"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "e1",
+    "count": 1,
+    "segments": [
+     "sBF",
+     "sDB"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "id": "e2",
+    "count": 2,
+    "segments": [
+     "sFA",
+     "sAE"
+    ],
+    "color": "WARM"
+   },
+   {
+    "id": "e3",
+    "count": 3,
+    "segments": [
+     "sEC",
+     "sCD"
+    ],
+    "color": "GREEN"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dAB",
+    "from": "B",
+    "to": "A",
+    "label": "8",
+    "unit": "cm",
+    "side": "ABOVE",
+    "style": "BAR"
+   },
+   {
+    "id": "dBC",
+    "from": "B",
+    "to": "C",
+    "label": "6",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR"
+   },
+   {
+    "id": "dCA",
+    "from": "C",
+    "to": "A",
+    "label": "4",
+    "unit": "cm",
+    "side": "RIGHT",
+    "style": "BAR"
+   }
+  ]
+ },
+ "caption": "한 점에서 원에 그은 두 접선의 길이는 같다. 같은 색의 두 선분은 길이가 같으므로 파란색 길이를 x, 주황색 길이를 y, 초록색 길이를 z로 두면 세 변의 길이가 x+y, y+z, x+z가 된다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원 O는 △ABC의 내접원, D, E, F는 접점, AB=8cm, AC=4cm, BC=6cm.",
+   "mappedTo": [
+    "mathPlan.nodes",
+    "displaySegments",
+    "planeMarks",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+ ],
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 460
+ }
+}

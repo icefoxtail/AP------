@@ -1,0 +1,663 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "색칠한 두 초승달"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "48",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kO",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "15",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kM",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "M"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kN",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "N"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "O",
+          "M",
+          "N"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "aBA",
+              "circle": "kO",
+              "center": "O",
+              "from": "B",
+              "to": "A",
+              "side": "CW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aAC",
+              "circle": "kO",
+              "center": "O",
+              "from": "A",
+              "to": "C",
+              "side": "CW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aM",
+              "circle": "kM",
+              "center": "M",
+              "from": "A",
+              "to": "B",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aN",
+              "circle": "kN",
+              "center": "N",
+              "from": "C",
+              "to": "A",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rL",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "B",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "M",
+                          "side": "CW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "N",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "12",
+              "unit": "cm",
+              "ownership": "NEAREST",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lBC",
+              "ownerSegment": "sBC",
+              "text": "15",
+              "unit": "cm",
+              "ownership": "NEAREST",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "직각삼각형과 세 반원",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 380
+        },
+        "hiddenPointNames": [
+          "O",
+          "M",
+          "N"
+        ],
+        "hiddenPointStyle": "NONE",
+        "rightAngles": [
+          {
+            "id": "rA",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "초승달의 합 = 삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "48",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kO",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "15",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kM",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "M"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "kN",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "N"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "O",
+          "M",
+          "N"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "aBA",
+              "circle": "kO",
+              "center": "O",
+              "from": "B",
+              "to": "A",
+              "side": "CW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aAC",
+              "circle": "kO",
+              "center": "O",
+              "from": "A",
+              "to": "C",
+              "side": "CW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aM",
+              "circle": "kM",
+              "center": "M",
+              "from": "A",
+              "to": "B",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aN",
+              "circle": "kN",
+              "center": "N",
+              "from": "C",
+              "to": "A",
+              "side": "CCW",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rL",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "B",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "M",
+                          "side": "CW"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "C",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "N",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "rT",
+              "fill": "BLUE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "equalAreas": [
+            [
+              "rL",
+              "rT"
+            ]
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "12",
+              "unit": "cm",
+              "ownership": "NEAREST",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lAC",
+              "ownerSegment": "sCA",
+              "text": "9",
+              "unit": "cm",
+              "ownership": "NEAREST",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "caption": "초승달 두 개와 삼각형의 넓이",
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 380
+        },
+        "hiddenPointNames": [
+          "O",
+          "M",
+          "N"
+        ],
+        "hiddenPointStyle": "NONE",
+        "rightAngles": [
+          {
+            "id": "rA",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "세 변을 지름으로 하는 반원에서 두 직각변 위의 반원 넓이의 합은 빗변 위의 반원 넓이와 같다. 따라서 색칠한 두 초승달의 넓이의 합은 삼각형 ABC의 넓이와 같다(같은 파란색)."
+}

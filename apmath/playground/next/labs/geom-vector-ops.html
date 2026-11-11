@@ -14,7 +14,13 @@
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="geom-vector-ops/lesson-core.js"></script>
+<script defer src="geom-vector-ops/lesson-a.js"></script>
+<script defer src="geom-vector-ops/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -1574,7 +1580,7 @@ window.addEventListener('DOMContentLoaded', function () {
     { id: 'g6', title: '[기출 킬러] 두 점이 움직일 때 |OP+AQ|의 범위', short: '|OP+AQ| 범위', scenes: [sceneRng()] }
   ];
 
-  APLab.createLab({
+  const labDefinition={
     id: 'geom-vector-ops',
     stagedReveal: true,
     stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
@@ -1632,7 +1638,88 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     persist: ['lens'],
     groups
-  });
+  };
+  const lessonScenes=groups.flatMap(g=>g.scenes),copy=x=>JSON.parse(JSON.stringify(x));
+  const originalInfo=Object.fromEntries(lessonScenes.map(sc=>{
+    const initial={...labDefinition.state,...Object.fromEntries(Object.entries(labDefinition.params).map(([k,v])=>[k,v.value]))};
+    sc.enter(initial);
+    const first=copy(sc.vary.cur()),packets=[first],saved={c:sc.vary._c,n:sc.vary.n};
+    if(sc.vary.go)for(let i=1;i<sc.vary.size;i++)packets.push(copy(sc.vary.go(i)));
+    sc.vary._c=saved.c;sc.vary.n=saved.n;
+    return [sc.id,{sc,initial,first,packets}];
+  }));
+  function packetOf(id,index=0,ask=''){
+    const I=copy(originalInfo[id].packets[index]||originalInfo[id].first);
+    if(id==='rng6'&&ask){I.ask=ask;I.val=ask==='M·m'?I.L.M*I.L.m:ask==='M+m'?I.L.M+I.L.m:I.L.M-I.L.m;}
+    return I;
+  }
+  const source=window.APL_VO_SOURCE={
+    scenes:lessonScenes,
+    first:id=>copy(originalInfo[id].first),
+    packet:packetOf,
+    initial(id,index=0){return {...copy(originalInfo[id].initial),...copy(packetOf(id,index).patch||{})};},
+    question(id,index=0,ask=''){
+      const sc=originalInfo[id].sc,c=sc.vary._c,n=sc.vary.n;sc.vary._c=packetOf(id,index,ask);
+      try{return sc.problem.text(source.initial(id,index)).replace(/<div[^>]*>\s*<button[^>]*data-nq-new[\s\S]*$/,'');}
+      finally{sc.vary._c=c;sc.vary.n=n;}
+    },
+    math:{circleMin,circleExtrema,hex:HEX.info,hexPairs:HEX.PAIRS,hexPoint:HEX.pt,rng:RNG.lim,rngSets:RNG.SETS,oldPools:OV.POOL,oldBuild:OV.B}
+  };
+  const active=s=>!!(s.lessonOn||s.lessonEntry);
+  const mathKey=value=>String(value||'').normalize('NFKC').replace(/\\(?:left|right|,|!|;|quad|qquad)/g,'').replace(/\\(?:dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}/g,'$1/$2').replace(/\\sqrt\{([^{}]*)\}/g,'√$1').replace(/\\sqrt\s*(\w)/g,'√$1').replace(/\\(?:text|mathrm|mathbf|overrightarrow)\{([^{}]*)\}/g,'$1').replace(/\\theta/g,'θ').replace(/\\alpha/g,'α').replace(/\\beta/g,'β').replace(/\\gamma/g,'γ').replace(/\\circ/g,'°').replace(/\\perp/g,'⊥').replace(/\\cdot|\\times/g,'×').replace(/[−–]/g,'-').replace(/≈/g,'=').replace(/[\s{}$^_()]/g,'').replace(/-?\d+\.\d+/g,x=>String(Number(x)));
+  function lessonLabel(value,s){
+    const str=String(value||''),key=mathKey(str),known=(s.lvoKnownMath||[]).map(mathKey);
+    if(key&&known.some(k=>k.includes(key)))return str;
+    // Preserve names and directions; numeric results require a matching caption.
+    if(!/[0-9=≈:√]|최대|최소|최댓|최솟|Sₐ|Sᵦ|Sᵧ/.test(str))return str;
+    const name=str.match(/^(?:중심 |중점 |외심 |합 |점 )?([A-Z][A-Z₁₂′']*)(?=[\s(=:≈]|$)/);
+    return name?name[1]:'';
+  }
+  for(const sc of lessonScenes){
+    const native={question:sc.question,steps:sc.steps,view:sc.view,draw:sc.draw,tick:sc.tick};
+    sc.question=(s,lab)=>active(s)?s.lvoQuestion:typeof native.question==='function'?native.question(s,lab):native.question;
+    sc.steps=(s,lab)=>active(s)?['조건','전략','계산','결론']:typeof native.steps==='function'?native.steps(s,lab):native.steps;
+    sc.view=(s,lab)=>active(s)?{}:native.view(s,lab);
+    sc.tick=(s,dt,lab)=>active(s)?false:native.tick?.(s,dt,lab);
+    sc.draw=(b,s,v,lab)=>{
+      if(!active(s)){
+        if(b._voViewport){Object.assign(b,b._voViewport);delete b._voViewport;b.__nq=null;b.__ovk=null;}
+        return native.draw(b,s,v,lab);
+      }
+      if(!b._voViewport)b._voViewport={focus:b.focus,zoom:b.zoom,panX:b.panX,panY:b.panY};
+      const shown={...s,...(s.lessonEntry?s.lvoInitial:{}),playing:false,dragging:false};
+      for(const [key,value] of Object.entries(source.initial(sc.id,shown.lvoIndex))){const track=(typeof value==='number'?'lvoN_':'lvoS_')+key;if(Object.hasOwn(shown,track))shown[key]=shown[track];}
+      shown.step=s.lessonEntry?(s.lvoInitial?.step||0):Math.min(3,Math.max(0,s.step||0));
+      if(s.lessonEntry){shown.lvoTrace=0;shown.lvoShowAnswer=false;}
+      const I=packetOf(sc.id,shown.lvoIndex,shown.lvoAsk),shownLab=Object.create(lab);shownLab.s=shown;shownLab.tab=shown.lvoExplore?'explore':'review';
+      const oldText=b._text,oldHandle=b.handle,prevState=state,prevBD=BD,prevVM=VM,c=sc.vary._c,n=sc.vary.n;
+      b._text=function(x,y,text,options,screen){return oldText.call(this,x,y,this._bbox?text:lessonLabel(text,shown),options,screen);};
+      b.handle=()=>{};b.zoom=1;b.panX=0;b.panY=0;
+      try{
+        let trace;
+        if(INFO[sc.id]){
+          b.setFocus(focusOf(shown,sc.id,true),true);BD=b;use(shown);VM=2;
+          state.cl=I.cl;state.area=I.area;state.areaGiven=!I.old&&!!I.area;state.w=I.w;state.overviewRegions=!!shown.lvoOverview;
+          canvasLabels.length=0;BANNER.length=0;
+          if(shown.grid)b.grid();if(state.mode!==4)b.axes({ticks:false});renderScenario();
+          if(sc.id==='1-B')trace=[ZERO,pol(state.r1B,state.angles1B[0])];
+          else if(sc.id.startsWith('3-'))trace=sc.id==='3-C'?[state.circle2.C1,state.circle2.C2]:[state.C3,center3point()];
+          else if(state.mode===4)trace=[state.T4_A,state.T4_B];
+          else trace=[ZERO,state.A];
+        }else{
+          sc.vary._c=I;sc.vary.n=0;
+          // A stable first-source fit must not reuse an unrelated manual variant.
+          if(b._voFit!==sc.id+'/'+shown.lvoIndex+'/'+shown.lvoExplore){b.__nq=null;b._voFit=sc.id+'/'+shown.lvoIndex+'/'+shown.lvoExplore;}
+          native.draw(b,shown,{},shownLab);
+          trace=sc.id==='hex5'?[HEX.pt(I.u[0]),HEX.pt(I.u[1])]:[ZERO,I.C];
+        }
+        if(shown.lvoTrace>0&&shown.lvoTrace<1&&trace)NQ.vec(b,trace[0],NQ.lerp(trace[0],trace[1],shown.lvoTrace),{color:'amber',width:4});
+        v.tape=null;
+      }finally{b._text=oldText;b.handle=oldHandle;state=prevState;BD=prevBD;VM=prevVM;sc.vary._c=c;sc.vary.n=n;}
+    };
+  }
+  labDefinition.lessons=window.APL_VO_LESSONS?window.APL_VO_LESSONS.install(lessonScenes,source):{};
+  APLab.createLab(labDefinition);
 });
 </script>
 </body>

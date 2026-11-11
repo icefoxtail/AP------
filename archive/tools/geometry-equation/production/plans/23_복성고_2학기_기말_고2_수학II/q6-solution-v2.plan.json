@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "속도가 각각 $3t^2-2t+2$, $6t-2$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      3,
+      -3,
+      12
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "4",
+        "6",
+        "8",
+        "10"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "5/2"
+        ],
+        "label": "vP(t)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "6"
+        ],
+        "domain": [
+          "0",
+          "5/2"
+        ],
+        "label": "vQ(t)",
+        "color": "WARM"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "0",
+        "to": "2/3"
+      },
+      {
+        "id": "S2",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "2/3",
+        "to": "2"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "속도"
+    }
+  },
+  "caption": "두 속도 vP(t), vQ(t)의 차를 적분해 상대 위치가 다시 같아지는 시각을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 속도 그래프의 순서가 바뀌는 구간에서 상대 위치 변화량의 부호를 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 속도 곡선의 교점으로 속도 차 부호가 나뉘고, 두 영역의 넓이가 상쇄되는 관계를 보인다."
+  ]
+}

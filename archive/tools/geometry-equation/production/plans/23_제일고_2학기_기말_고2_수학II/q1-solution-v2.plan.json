@@ -1,0 +1,116 @@
+{
+  "capability": "construction-spike-v1",
+  "accessibilityDescription": "좌표축 위에 도함수로 얻은 직선과 x=3의 입력 눈금을 표시한다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [
+    "F"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "F",
+      "text": "y=f(x)"
+    }
+  ],
+  "axisTickValues": {
+    "x": [
+      "3"
+    ],
+    "y": []
+  },
+  "caption": "f(x)=F′(x)의 그래프에서 주어진 입력 x=3의 위치를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "F(x)를 미분하면 f(x)=2x−1이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "lineLabels"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "3은 주어진 입력이며 해당 함수값은 그림에 표시하지 않는다.",
+      "mappedTo": "axisTickValues.x"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수로 얻은 직선과 x=3 눈금의 위치를 나타낸다."
+  ],
+  "displayPoints": [
+    "P"
+  ],
+  "hiddenPointNames": [
+    "P"
+  ],
+  "hiddenPointStyle": "NONE"
+}

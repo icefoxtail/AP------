@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "SPHERE",
+      "radius": 3
+    },
+    {
+      "id": "s2",
+      "kind": "SPHERE",
+      "radius": 4
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "center",
+      "label": "3r"
+    },
+    {
+      "solid": "s2",
+      "radius": "center",
+      "label": "4r"
+    }
+  ],
+  "caption": "닮음비가 3:4인 두 구의 반지름을 3r, 4r로 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "축구공과 농구공은 닮음비가 3:4인 닮은 도형인 구이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "닮음비 3:4인 두 구의 반지름 비를 3r과 4r로 보인다."
+  ]
+}

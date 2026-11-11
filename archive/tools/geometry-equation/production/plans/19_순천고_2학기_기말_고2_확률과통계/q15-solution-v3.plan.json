@@ -1,0 +1,42 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "xLabel": "z",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-0.5",
+      "0",
+      "2"
+    ],
+    "shades": [
+      {
+        "curve": "Z",
+        "from": "-0.5",
+        "to": "2"
+      }
+    ],
+    "span": "11/4"
+  },
+  "caption": "표본평균의 표준편차는 6이고 정상 구간은 표준화 값 −0.5부터 2까지이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "상자 무게 조건을 표본평균 범위 197≤X̄≤212로 바꾸고 표준오차 6으로 표준화하면 −0.5≤Z≤2이다. 확률은 0.1915+0.4772=0.6687이다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 정규분포 확률 구간과 표준화의 관계가 이해에 도움이 되어 계획한다. 점과 축값 라벨은 여유 있게 배치한다."
+  ]
+}

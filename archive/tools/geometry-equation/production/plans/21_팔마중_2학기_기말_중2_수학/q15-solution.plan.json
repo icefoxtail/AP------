@@ -1,0 +1,215 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Z",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Z",
+    "U",
+    "M",
+    "X1",
+    "X2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sZM",
+      "refs": [
+        "Z",
+        "M"
+      ]
+    },
+    {
+      "id": "sMU",
+      "refs": [
+        "M",
+        "U"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "sZM",
+          "sMU"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t0",
+        "at": [
+          0,
+          -1.2
+        ],
+        "text": "0"
+      },
+      {
+        "id": "t1",
+        "at": [
+          10,
+          -1.2
+        ],
+        "text": "1"
+      },
+      {
+        "id": "t2",
+        "at": [
+          0,
+          1.8
+        ],
+        "text": "불가능"
+      },
+      {
+        "id": "t3",
+        "at": [
+          10,
+          1.8
+        ],
+        "text": "반드시 일어남"
+      },
+      {
+        "id": "t4",
+        "at": [
+          5,
+          -2.6
+        ],
+        "text": "모든 확률은 0 이상 1 이하"
+      }
+    ]
+  },
+  "caption": "확률은 항상 0 이상 1 이하이다. 절대로 일어날 수 없는 사건의 확률은 0이고 반드시 일어나는 사건의 확률은 1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "확률은 항상 0 이상 1 이하이다. 절대로 일어날 수 없는 사건의 확률은 0이고 반드시 일어나는 사건의 확률은 1이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "Z",
+    "U",
+    "M",
+    "X1",
+    "X2"
+  ],
+  "hiddenPointStyle": "NONE"
+}

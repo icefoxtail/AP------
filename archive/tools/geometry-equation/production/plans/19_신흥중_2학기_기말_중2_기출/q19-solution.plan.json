@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "colVar": "x",
+    "rowVar": "y",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "y-x",
+          "in": [
+            0,
+            0
+          ]
+        },
+        "tone": 1
+      },
+      {
+        "highlight": {
+          "expr": "y-x",
+          "in": [
+            1,
+            1
+          ]
+        },
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "가로 x, 세로 y인 6×6 표에서 y=x인 칸과 y=x+1인 칸을 서로 다른 회색으로 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 주사위의 눈의 수 x, y에 대해 점 (x,y)가 직선 y=x 또는 y=x+1 위에 있는 경우를 표에서 찾는다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y=x인 칸과 y=x+1인 칸을 두 가지 진하기로 구분해 두 경우가 겹치지 않음을 보인다."
+  ]
+}

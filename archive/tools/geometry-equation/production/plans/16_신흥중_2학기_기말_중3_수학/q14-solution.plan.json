@@ -1,0 +1,920 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "text": "문제의 그림"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "10"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "4"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "O"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     },
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lBD",
+       "ownerSegment": "sBD",
+       "text": "10",
+       "unit": "cm"
+      },
+      {
+       "id": "lDC",
+       "ownerSegment": "sDC",
+       "text": "6",
+       "unit": "cm"
+      }
+     ],
+     "angles": [
+      {
+       "id": "a1",
+       "refs": [
+        "B",
+        "A",
+        "D"
+       ],
+       "value": 26.56505117707799,
+       "noLabel": true,
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "a2",
+       "refs": [
+        "D",
+        "A",
+        "C"
+       ],
+       "value": 26.56505117707799,
+       "noLabel": true,
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "caption": "문제의 그림",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "원 O는 직각삼각형 ABC의 내접원, AD는 각 A의 이등분선, BD=10, CD=6.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "C",
+       "B"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 360
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "이등분선으로 변의 길이"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "10"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "Z1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "41",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "O",
+     "Z1"
+    ],
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sBD",
+      "refs": [
+       "B",
+       "D"
+      ]
+     },
+     {
+      "id": "sDC",
+      "refs": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sAC",
+      "refs": [
+       "A",
+       "C"
+      ]
+     },
+     {
+      "id": "sAD",
+      "refs": [
+       "A",
+       "D"
+      ]
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lBD",
+       "ownerSegment": "sBD",
+       "text": "10",
+       "unit": "cm"
+      },
+      {
+       "id": "lDC",
+       "ownerSegment": "sDC",
+       "text": "6",
+       "unit": "cm"
+      },
+      {
+       "id": "lAB",
+       "ownerSegment": "sAB",
+       "text": "20",
+       "unit": "cm",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "angles": [
+      {
+       "id": "a1",
+       "refs": [
+        "B",
+        "A",
+        "D"
+       ],
+       "value": 26.56505117707799,
+       "noLabel": true,
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "a2",
+       "refs": [
+        "D",
+        "A",
+        "C"
+       ],
+       "value": 26.56505117707799,
+       "noLabel": true,
+       "color": "BLUE",
+       "factRole": "GIVEN"
+      }
+     ],
+     "dimensions": [
+      {
+       "id": "dAC",
+       "from": "C",
+       "to": "A",
+       "label": "12",
+       "unit": "cm",
+       "side": "RIGHT",
+       "style": "ARROW",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAB",
+        "sBD"
+       ],
+       "color": "WARM"
+      },
+      {
+       "segments": [
+        "sAC",
+        "sDC"
+       ],
+       "color": "GREEN"
+      }
+     ]
+    },
+    "caption": "각의 이등분선 정리",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AB:AC=BD:DC=5:3, AB=5k, AC=3k.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "C",
+       "B"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 360
+    },
+    "hiddenPointNames": [
+     "O",
+     "Z1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  },
+  {
+   "caption": {
+    "text": "접선의 길이로 반지름"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "12"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "O",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "16"
+         },
+         {
+          "kind": "integer",
+          "value": "4"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "G",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "48",
+          "denominator": "5"
+         },
+         {
+          "kind": "rational",
+          "numerator": "36",
+          "denominator": "5"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "circ",
+       "op": "CIRCLE_CENTER_RADIUS",
+       "inputs": [
+        "O"
+       ],
+       "args": {
+        "radius": {
+         "kind": "integer",
+         "value": "4"
+        }
+       },
+       "outputType": "CIRCLE",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "Z1",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "rational",
+          "numerator": "41",
+          "denominator": "2"
+         },
+         {
+          "kind": "integer",
+          "value": "6"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "O",
+     "E",
+     "F",
+     "G",
+     "Z1"
+    ],
+    "displayLines": [],
+    "displayCircles": [
+     "circ"
+    ],
+    "displaySegments": [
+     {
+      "id": "sAG",
+      "refs": [
+       "A",
+       "G"
+      ]
+     },
+     {
+      "id": "sGB",
+      "refs": [
+       "G",
+       "B"
+      ]
+     },
+     {
+      "id": "sBE",
+      "refs": [
+       "B",
+       "E"
+      ]
+     },
+     {
+      "id": "sEC",
+      "refs": [
+       "E",
+       "C"
+      ]
+     },
+     {
+      "id": "sCF",
+      "refs": [
+       "C",
+       "F"
+      ]
+     },
+     {
+      "id": "sFA",
+      "refs": [
+       "F",
+       "A"
+      ]
+     },
+     {
+      "id": "sOE",
+      "refs": [
+       "O",
+       "E"
+      ],
+      "dashed": true
+     },
+     {
+      "id": "sOF",
+      "refs": [
+       "O",
+       "F"
+      ],
+      "dashed": true
+     }
+    ],
+    "planeMarks": {
+     "expressionLabels": [
+      {
+       "id": "lOE",
+       "ownerSegment": "sOE",
+       "text": "r"
+      },
+      {
+       "id": "lBE",
+       "ownerSegment": "sBE",
+       "text": "16-r",
+       "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+       "id": "lAG",
+       "ownerSegment": "sAG",
+       "text": "12-r",
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "equalLengths": [
+      {
+       "id": "e1",
+       "count": 1,
+       "segments": [
+        "sFA",
+        "sAG"
+       ],
+       "color": "WARM"
+      },
+      {
+       "id": "e2",
+       "count": 2,
+       "segments": [
+        "sGB",
+        "sBE"
+       ],
+       "color": "GREEN"
+      },
+      {
+       "id": "e3",
+       "count": 3,
+       "segments": [
+        "sOE",
+        "sOF"
+       ]
+      }
+     ]
+    },
+    "caption": "내접원과 접선의 길이",
+    "sourceConditions": [
+     {
+      "id": "c1",
+      "condition": "AC=12, BC=16, AB=20, 내접원 반지름 r.",
+      "mappedTo": [
+       "mathPlan.nodes",
+       "displaySegments",
+       "planeMarks",
+       "caption"
+      ]
+     }
+    ],
+    "newVisualInformation": [
+     "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+    ],
+    "rightAngles": [
+     {
+      "id": "r1",
+      "refs": [
+       "A",
+       "C",
+       "B"
+      ]
+     },
+     {
+      "id": "r2",
+      "refs": [
+       "O",
+       "E",
+       "B"
+      ]
+     },
+     {
+      "id": "r3",
+      "refs": [
+       "O",
+       "F",
+       "A"
+      ]
+     }
+    ],
+    "coordinateCanvas": {
+     "width": 420,
+     "height": 360
+    },
+    "hiddenPointNames": [
+     "Z1"
+    ],
+    "hiddenPointStyle": "NONE"
+   }
+  }
+ ],
+ "caption": "각의 이등분선 정리로 AB와 AC를 구한 뒤, 같은 표시의 접선의 길이가 같다는 것으로 반지름 r를 구한다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "BD=10cm, CD=6cm, 원 O는 직각삼각형 ABC의 내접원.",
+   "mappedTo": [
+    "panels",
+    "caption"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이 단계마다 그림을 나누어 보인다."
+ ]
+}

@@ -1,0 +1,43 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "0",
+      "2"
+    ],
+    "span": "16/5",
+    "shades": [
+      {
+        "from": "2",
+        "to": null,
+        "tone": 2
+      }
+    ],
+    "xLabel": "z"
+  },
+  "caption": "합의 평균 40, 표준편차 4에서 48은 표준점수 2에 해당한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "표본 네 값의 합은 평균 40, 표준편차 4인 정규분포",
+      "mappedTo": "표준정규곡선으로 표준화"
+    },
+    {
+      "id": "c2",
+      "condition": "48 이상인 합",
+      "mappedTo": "표준점수 2보다 오른쪽 꼬리"
+    }
+  ],
+  "newVisualInformation": [
+    "합의 경계 48을 표준점수 2로 옮긴 뒤 오른쪽 꼬리 확률을 읽는 관계"
+  ]
+}

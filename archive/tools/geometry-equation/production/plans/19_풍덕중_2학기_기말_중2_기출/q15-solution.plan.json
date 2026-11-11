@@ -1,0 +1,350 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "433",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "W1",
+    "W2",
+    "W3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sM1M2",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "sM1M3",
+      "refs": [
+        "M1",
+        "M3"
+      ]
+    },
+    {
+      "id": "sM1M4",
+      "refs": [
+        "M1",
+        "M4"
+      ]
+    },
+    {
+      "id": "sM2M3",
+      "refs": [
+        "M2",
+        "M3"
+      ]
+    },
+    {
+      "id": "sM2M4",
+      "refs": [
+        "M2",
+        "M4"
+      ]
+    },
+    {
+      "id": "sM3M4",
+      "refs": [
+        "M3",
+        "M4"
+      ]
+    },
+    {
+      "id": "sW1W2",
+      "refs": [
+        "W1",
+        "W2"
+      ]
+    },
+    {
+      "id": "sW1W3",
+      "refs": [
+        "W1",
+        "W3"
+      ]
+    },
+    {
+      "id": "sW2W3",
+      "refs": [
+        "W2",
+        "W3"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "sM1M2",
+          "sM1M3",
+          "sM1M4",
+          "sM2M3",
+          "sM2M4",
+          "sM3M4"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sW1W2",
+          "sW1W3",
+          "sW2W3"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "a1",
+        "at": [
+          -0.9,
+          -0.7
+        ],
+        "text": "남1"
+      },
+      {
+        "id": "a2",
+        "at": [
+          5.9,
+          -0.7
+        ],
+        "text": "남2"
+      },
+      {
+        "id": "a3",
+        "at": [
+          5.9,
+          5.7
+        ],
+        "text": "남3"
+      },
+      {
+        "id": "a4",
+        "at": [
+          -0.9,
+          5.7
+        ],
+        "text": "남4"
+      },
+      {
+        "id": "b1",
+        "at": [
+          9.1,
+          -0.7
+        ],
+        "text": "여1"
+      },
+      {
+        "id": "b2",
+        "at": [
+          15.9,
+          -0.7
+        ],
+        "text": "여2"
+      },
+      {
+        "id": "b3",
+        "at": [
+          12.5,
+          5.2
+        ],
+        "text": "여3"
+      },
+      {
+        "id": "t1",
+        "at": [
+          2.5,
+          7.2
+        ],
+        "text": "남학생 4명"
+      },
+      {
+        "id": "t2",
+        "at": [
+          12.5,
+          7.2
+        ],
+        "text": "여학생 3명"
+      }
+    ]
+  },
+  "caption": "두 사람을 뽑는 한 가지를 두 점을 잇는 선분 하나로 나타냈다. 파랑은 남학생 두 명을 뽑는 경우, 주황은 여학생 두 명을 뽑는 경우이다.",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "hiddenPointNames": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "W1",
+    "W2",
+    "W3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "남자 4명, 여자 3명 중에서 대표 2명을 선출한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 명이 모두 남학생인 경우와 모두 여학생인 경우를 두 점을 잇는 선분으로 하나씩 센다."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      4,
+      4,
+      4,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    "xTitle": "X"
+  },
+  "caption": "점 하나는 전체 확률의 십오분의 일이며, 네 값의 점 개수 비는 1:2:4:8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(X=2x)=2P(X=x)에서 확률의 비는 1:2:4:8이고, 네 확률의 합은 1이다.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 확률 몫을 한 점으로 나타내어 네 값의 상대적 확률을 점 개수로 비교한다."
+  ]
+}

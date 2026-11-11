@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "124"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "T",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "BT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "TC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "TA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "PT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given",
+        "refs": [
+          "P",
+          "T",
+          "B"
+        ],
+        "value": 62,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "refs": [
+          "B",
+          "T",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xmark",
+        "refs": [
+          "T",
+          "B",
+          "C"
+        ],
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ymark",
+        "refs": [
+          "T",
+          "A",
+          "C"
+        ],
+        "label": "y",
+        "factRole": "GIVEN",
+        "labelPlacement": "LEADER"
+      }
+    ]
+  },
+  "caption": "접선·현의 각, 지름이 만드는 직각과 원주각 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC는 지름, PT는 T에서의 접선, ∠PTB=62°. 원주각 정리로 ∠TCB=62°, ∠BTC=90°, x=y=28°이다. 반지름 10, 접선 위 P와 원주 위 A의 위치는 예시다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선과 현의 각, 지름이 만드는 직각, 같은 호에 대한 두 원주각을 연결한다. 점과 각 라벨에 여유를 둔다."
+  ]
+}

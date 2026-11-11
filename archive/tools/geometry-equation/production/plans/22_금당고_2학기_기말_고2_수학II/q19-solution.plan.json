@@ -1,0 +1,127 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-x",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-sqrt(2)",
+        "y": "-sqrt(2)"
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": "sqrt(2)",
+        "y": "sqrt(2)"
+      },
+      {
+        "id": "M",
+        "x": "-sqrt(3)/3",
+        "y": "2*sqrt(3)/9",
+        "marker": "NONE"
+      },
+      {
+        "id": "N",
+        "x": "sqrt(3)/3",
+        "y": "-2*sqrt(3)/9",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "left",
+        "upper": "f",
+        "lower": "g",
+        "from": "-sqrt(2)",
+        "to": "0",
+        "fill": "WARM"
+      },
+      {
+        "id": "right",
+        "upper": "g",
+        "lower": "f",
+        "from": "0",
+        "to": "sqrt(2)",
+        "fill": "BLUE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "-sqrt(2)",
+          "0",
+          "sqrt(2)"
+        ]
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "diagLabel",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x",
+          "labelAt": "END",
+          "color": "BLUE"
+        }
+      ]
+    }
+  },
+  "caption": "예: m=1일 때 직선 y=x와 삼차곡선이 만드는 원점 대칭인 두 영역을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일반적으로 y=mx (m>0)와 y=x³−x의 교점은 0, ±√(m+1)이며 두 영역은 원점 대칭이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceLines",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "이 그림은 실제 답 m=4가 아닌 예시 m=1의 형상이며, 원점 대칭인 두 넓이 관계만 나타낸다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점을 중심으로 대칭인 두 영역을 예시 직선으로 나타낸다."
+  ],
+  "sourceQuote": "[서술형1] 삼차함수 $f(x)=x^3-x$에 대하여 곡선 $y=f(x)$와 $x$축으로 둘러싸인 두 부분의 넓이의 합을 $S$라 하자. 곡선 $y=f(x)$와 직선 $y=mx$ ($m>0$)로 둘러싸인 두 부분의 넓이의 합을 $S(m)$이라 할 때, $\\frac{S(m)}{S}=25$를 만족시키는 상수 $m$값을 구하는 과정을 서술하시오. [10.0점]"
+}

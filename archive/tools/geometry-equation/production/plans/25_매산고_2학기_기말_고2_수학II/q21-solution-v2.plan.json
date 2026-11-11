@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      2,
+      -3,
+      45
+    ],
+    "curves": [
+      {
+        "id": "K",
+        "kind": "LINE",
+        "coefficients": [
+          "-12",
+          "27"
+        ],
+        "domain": {
+          "from": "2/3",
+          "to": "2"
+        },
+        "color": "BLUE",
+        "weight": "BOLD",
+        "emphasis": [
+          {
+            "from": "2/3",
+            "to": "1",
+            "fromState": "CLOSED",
+            "toState": "OPEN"
+          }
+        ],
+        "label": "g(x)"
+      }
+    ],
+    "regions": [
+      {
+        "id": "R",
+        "between": [
+          "K",
+          "axis"
+        ],
+        "from": "2/3",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisScale": {
+      "x": 4,
+      "y": 1
+    },
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": []
+    }
+  },
+  "caption": "예: 가로축 x를 매개변수 a로 보면 곡선 g(x)는 f′(2)의 값을 나타낸다. 포함 경계와 제외 지점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a≥2/3, a≠1, f′(2)=27a−12",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "a=1은 제외되고 a=2/3은 포함되는 허용 구간"
+  ]
+}

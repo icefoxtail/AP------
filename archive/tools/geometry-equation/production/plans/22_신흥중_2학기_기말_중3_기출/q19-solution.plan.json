@@ -1,0 +1,280 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "Q",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Sa",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "Q"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "85"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Sb",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "R",
+          "Q"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "105"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "Sa"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "Sb"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "RS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "SP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    },
+    {
+      "id": "QE",
+      "refs": [
+        "Q",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aS",
+        "refs": [
+          "R",
+          "S",
+          "P"
+        ],
+        "value": 110,
+        "label": "110",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aQ",
+        "refs": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "value": 60,
+        "label": "60",
+        "color": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "R",
+          "Q",
+          "E"
+        ],
+        "value": 120,
+        "label": "120",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원에 내접하는 사각형의 맞은각의 합",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각형의 한 내각은 110도이고, 맞은편 꼭짓점의 바깥쪽 각이 120도이므로 그 내각은 180도에서 120도를 뺀 60도이다. 맞은각의 합이 170도로 180도가 아니다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "110도 각과 맞은편 꼭짓점의 내각 60도, 바깥쪽 각 120도를 서로 다른 색으로 표시한다."
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  }
+}

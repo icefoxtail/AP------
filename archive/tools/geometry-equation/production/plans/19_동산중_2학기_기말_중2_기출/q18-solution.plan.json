@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "서울",
+          "children": [
+            {
+              "label": "강남"
+            },
+            {
+              "label": "인사동"
+            },
+            {
+              "label": "명동"
+            },
+            {
+              "label": "홍대"
+            }
+          ]
+        },
+        {
+          "label": "부산",
+          "children": [
+            {
+              "label": "해운대"
+            },
+            {
+              "label": "동래"
+            },
+            {
+              "label": "광안리"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "수학여행 장소를 서울 또는 부산 중에서 한 곳 고르는 경우를 나타낸 수형도이다. 서울에서 고르는 경우와 부산에서 고르는 경우는 동시에 일어날 수 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서울은 강남, 인사동, 명동, 홍대, 부산은 해운대, 동래, 광안리 중에서 한 곳을 고른다.",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서울과 부산에서 고를 수 있는 장소를 두 묶음으로 나누어 보인다."
+  ]
+}

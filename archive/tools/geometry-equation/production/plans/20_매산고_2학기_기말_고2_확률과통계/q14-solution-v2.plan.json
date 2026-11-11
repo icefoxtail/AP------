@@ -1,0 +1,182 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": [],
+        "args": {}
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "outputType": "POINT",
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "outputType": "CIRCLE",
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          }
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [
+      "1",
+      "2",
+      "4"
+    ],
+    "y": [
+      "1",
+      "2"
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "k",
+        "center": "C",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "원의 중심과 지름의 양 끝을 표시하고, 양의 좌표 조건에 해당하는 제1사분면의 반원호를 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "완전제곱식으로 얻은 원의 중심은 C(2, 3/2)이다.",
+      "mappedTo": [
+        "C",
+        "k"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "좌표축과 원의 교점은 A(4, 0), B(0, 3)이며 AB는 지름이다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "sAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "좌표축에 놓인 두 끝점과 중심 C를 지나는 지름 AB, 그리고 양의 좌표를 만족하는 반원호를 보인다."
+  ]
+}

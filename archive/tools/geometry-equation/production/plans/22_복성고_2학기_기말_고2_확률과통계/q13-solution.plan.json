@@ -1,0 +1,499 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "108"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "144"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "216"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "252"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "288"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "324"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "O"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "edge0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "edge1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "edge2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "edge3",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "edge4",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "edge5",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "edge6",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "edge7",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "edge8",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "edge9",
+      "refs": [
+        "J",
+        "A"
+      ]
+    },
+    {
+      "id": "diameter0",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "diameter1",
+      "refs": [
+        "B",
+        "G"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "diameter2",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "diameter3",
+      "refs": [
+        "D",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "diameter4",
+      "refs": [
+        "E",
+        "J"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "triangleSide1",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "triangleSide2",
+      "refs": [
+        "F",
+        "C"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightAtV2",
+      "refs": [
+        "A",
+        "C",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "circ",
+        "points": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ]
+      }
+    ]
+  },
+  "caption": "외접원의 다섯 지름과 지름을 빗변으로 하는 직각삼각형 한 예를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "decagon",
+      "condition": "정십각형의 열 꼭짓점은 한 원 위에 있다",
+      "mappedTo": [
+        "circ",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "opposite",
+      "condition": "서로 마주 보는 꼭짓점 쌍은 5개",
+      "mappedTo": [
+        "diameter0",
+        "diameter1",
+        "diameter2",
+        "diameter3",
+        "diameter4"
+      ]
+    },
+    {
+      "id": "thales",
+      "condition": "지름을 빗변으로 하는 원주각은 직각",
+      "mappedTo": [
+        "triangleSide1",
+        "triangleSide2",
+        "rightAtV2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정십각형의 다섯 지름과, 한 지름을 빗변으로 하는 직각삼각형 예를 함께 표시한다."
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  }
+}

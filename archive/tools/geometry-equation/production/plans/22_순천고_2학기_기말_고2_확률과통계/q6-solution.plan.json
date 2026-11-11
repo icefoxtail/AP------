@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "99% 구간",
+        "points": [
+          {
+            "id": "L",
+            "value": "43.55",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "M",
+            "value": "50",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "R",
+            "value": "56.45",
+            "hideName": true,
+            "showValue": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "L",
+            "to": "R",
+            "label": "신뢰구간"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "표본평균을 중심으로 좌우 오차가 같다"
+  },
+  "caption": "첫 신뢰구간은 표본평균 50을 중심으로 좌우 반폭이 6.45이다. 이 구간으로 모집단 표준편차를 구한 다음, 95% 신뢰구간의 길이 조건에 적용한다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "99% 구간 43.55부터 56.45",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "표본평균 중심 50",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 신뢰구간의 중심과 좌우 반폭"
+  ]
+}

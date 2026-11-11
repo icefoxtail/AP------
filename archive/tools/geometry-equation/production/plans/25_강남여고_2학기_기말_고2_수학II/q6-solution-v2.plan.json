@@ -1,0 +1,103 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "parabola",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=x^2-2x-1"
+      },
+      {
+        "id": "secant",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=x-1",
+        "color": "BLUE"
+      },
+      {
+        "id": "tangent",
+        "kind": "LINE",
+        "coefficients": [
+          "-13/4",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=x-13/4",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "3/2",
+          "y": "-7/4",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "labelc",
+          "point": "C",
+          "text": "x=c",
+          "direction": "SE"
+        }
+      ]
+    }
+  },
+  "caption": "할선의 기울기와 평행한 접선의 관계",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 A(0,-1)와 B(3,2)를 잇는 할선",
+      "mappedTo": "graphPlan.curves.parabola + graphPlan.curves.secant"
+    },
+    {
+      "id": "c2",
+      "condition": "f'의 기울기가 1이 되는 점에서 할선과 평행한 접선",
+      "mappedTo": "graphPlan.curves.tangent"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선과 이 곡선을 두 끊는 할선, 할선과 기울기가 같은 접선을 함께 그린다.",
+    "접점의 좌표를 표시하지 않고 할선과 평행한 접선의 관계를 표시한다."
+  ]
+}

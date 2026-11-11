@@ -1,0 +1,79 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "시작",
+      "children": [
+        {
+          "label": "흰공",
+          "p": "2/7",
+          "children": [
+            {
+              "label": "B흰공",
+              "p": "1/2"
+            },
+            {
+              "label": "B검은",
+              "p": "1/2"
+            }
+          ]
+        },
+        {
+          "label": "검은",
+          "p": "5/7",
+          "children": [
+            {
+              "label": "B흰공",
+              "p": "3/8"
+            },
+            {
+              "label": "B검은",
+              "p": "5/8"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "pathColumn": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "흰공",
+          "B흰공"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "검은",
+          "B흰공"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "옮긴 공의 색에 따라 B에서 흰 공이 나오는 조건부 확률을 나누고 경로 확률을 곱한다.",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "A 주머니에는 흰 공 2개와 검은 공 5개",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "b",
+      "condition": "B 주머니에는 흰 공 3개와 검은 공 4개",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "transfer",
+      "condition": "A에서 꺼낸 공을 B로 옮긴 뒤 B에서 한 개를 꺼냄",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "옮긴 공의 색에 따른 B의 흰 공 확률",
+    "흰 공 경로의 결합 확률"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "k≥2",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "k",
+        "within": 1,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "E",
+            "value": "4",
+            "hideName": true,
+            "showValue": true
+          }
+        ]
+      }
+    ],
+    "variable": "k"
+  },
+  "numberLineCaption": {
+    "text": "네 번의 가상 이동에서 거리 2가 나온 횟수"
+  },
+  "caption": "그림의 k는 문제의 확률변수 K를 뜻한다. 네 번의 가상 이동에서 거리는 4+k이므로 6 이상 도달 조건은 k≥2다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "네 번 가상 이동에서 K는 거리 2가 나온 횟수",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "총 이동거리 4+K가 6 이상일 조건 K≥2",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "K의 가능한 정수값 0부터 4 가운데 조건을 만족하는 2, 3, 4"
+  ]
+}
