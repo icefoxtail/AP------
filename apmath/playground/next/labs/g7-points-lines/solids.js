@@ -11,6 +11,7 @@
   if (!PL) return;
   const { clamp, T } = PL;
   const DEG = Math.PI / 180;
+  const ready = (s, C, key) => !C.lesson || (!s.lessonEntry && !!s[key]);
   const NAMES = ['', '', '', '삼', '사', '오', '육', '칠', '팔'];
   const KIND = ['각기둥', '각뿔', '각뿔대'];
   const kname = (k, n) => NAMES[n] + KIND[k];
@@ -134,9 +135,10 @@
         tag(bot, `${M.k === 1 ? '밑면' : '아랫면'} ${M.n}개`, 'sky', -1);
       }
       if (!C.hide) {
-        T(b, { x: 0, y: -2.4 }, `교점 a = ${M.a}개`, { dx: -80, color: 'amber', size: 18 });
-        T(b, { x: 0, y: -2.4 }, `교선 b = ${M.b}개`, { dx: 80, color: 'sky', size: 18 });
-        if (st >= 3) T(b, { x: 0, y: -2.95 }, `${M.e.t} = ${M.e.sub(M.a, M.b)} = ${M.val}`, { color: 'green', size: 18 });
+        T(b, { x: 0, y: -2.4 }, ready(s, C, 'plFirstReady') ? `교점 a = ${M.a}개` : '교점 a = ?', { dx: -80, color: 'amber', size: 18 });
+        T(b, { x: 0, y: -2.4 }, ready(s, C, 'plSecondReady') ? `교선 b = ${M.b}개` : '교선 b = ?', { dx: 80, color: 'sky', size: 18 });
+        if (st >= 3 && ready(s, C, 'plShowAnswer')) T(b, { x: 0, y: -2.95 }, `${M.e.t} = ${M.e.sub(M.a, M.b)} = ${M.val}`, { color: 'green', size: 18 });
+        else if (C.lesson && ready(s, C, 'plEquationReady') && s.p1e === 2) T(b, { x: 0, y: -2.95 }, `2b = 2 × ${M.b} = ${2 * M.b}`, { color: 'sky', size: 18 });
       }
     },
     quiz: (M, s, rng) => {
