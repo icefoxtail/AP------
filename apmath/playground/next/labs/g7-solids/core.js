@@ -278,7 +278,7 @@
           if (s[A.key] >= 1) s.playing = false;
           if (D.onAnim && lab && lab.tab === 'explore') D.onAnim(s, s[A.key]);
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging && !s.lessonOn && !s.lessonEntry) {
           const tg = D.stepT(s.step || 0, D.model(s)), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -1 * dt, 1 * dt); again = true; }
         }
