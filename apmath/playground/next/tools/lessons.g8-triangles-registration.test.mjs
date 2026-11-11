@@ -65,7 +65,8 @@ test('each explanation loads and draws at entry, first cue and conclusion withou
       assert.doesNotMatch(question, /undefined|NaN|Infinity/, id + ': no missing numeric option text');
       if (lab.s.trLessonProblem) {
         const source = lab.scene.tr, quiz = source.prob(source.model(lab.s), lab.s);
-        for (const choice of quiz.choices) assert.ok([choice.h, choice.t, choice.p].filter(x => x != null).some(x => question.includes(String(x))), id + ': every original option is visible');
+        const answerPlaceholder = quiz.choices.length === 1 && quiz.choices[0].h == null && quiz.choices[0].t === '';
+        for (const choice of answerPlaceholder ? [] : quiz.choices) assert.ok([choice.h, choice.t, choice.p].filter(x => x != null && x !== '').some(x => question.includes(String(x))), id + ': every actual original choice is visible');
       }
       assert.equal(lab.s.trSeed, 0, id + ': source question seed fixed');
       if (entry) { assert.equal(lab.s.trShowAnswer, false, id + ': prior conclusion reset'); assert.equal(lab.s.trCalculationReady, false, id + ': prior calculation reset'); }

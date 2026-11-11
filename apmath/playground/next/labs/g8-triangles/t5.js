@@ -654,7 +654,7 @@
   /* ====================================================================== 2. 직각삼각형의 외심 */
   const rightGeom = (al) => { const O = pt(0, 0), A = pt(-1, 0), B = pt(1, 0), Cc = polar(O, 1, -2 * al); return { O, A, B, C: Cc }; };
   const o2 = {
-    id: 't5-2', title: '직각삼각형의 외심은 빗변의 중점', short: '직각삼각형의 외심', solve: o2Solve,
+    id: 't5-2', title: '직각삼각형의 외심', short: '직각삼각형의 외심', solve: o2Solve,
     question: '∠C=90°인 직각삼각형 ABC의 외심 O는 어디에 있을까?',
     ctl: ['trPa', 'trPr'],
     init: (s) => { s.trPa = 50; s.trPr = 4; s.trV = 0; },
@@ -779,7 +779,7 @@
 
   /* ====================================================================== 4. 외심의 각 */
   const o4 = {
-    id: 't5-4', title: '외심에서의 각 (x+y+z=90°, ∠BOC=2∠A)', short: '외심의 각', solve: o4Solve,
+    id: 't5-4', title: '외심에서의 각', short: '외심의 각', solve: o4Solve,
     question: '외심 O에서 세 꼭짓점을 이으면 생기는 이등변삼각형의 밑각 x, y, z의 합은 얼마일까?',
     ctl: ['trOa', 'trOb'],
     init: (s) => { s.trOa = 60; s.trOb = 65; s.trV = 0; },
@@ -839,7 +839,7 @@
 
   /* ====================================================================== 5. 둔각삼각형의 외심 */
   const o5 = {
-    id: 't5-5', title: '둔각삼각형의 외심은 삼각형의 바깥', short: '둔각삼각형의 외심', solve: o5Solve,
+    id: 't5-5', title: '둔각삼각형의 외심', short: '둔각삼각형의 외심', solve: o5Solve,
     question: '∠A가 둔각인 삼각형의 외심 O는 삼각형 안에 있을까, 밖에 있을까?',
     ctl: ['trQa', 'trQb'],
     init: (s) => { s.trQa = 112; s.trQb = 25; s.trV = 0; },
@@ -1043,9 +1043,14 @@
     };
     D.lessonAfterDraw = (b, s, M, C) => {
       const t = C.entry ? 0 : clamp(Number(s.trBT) || 0, 0, 1), g = i === 6 ? o7geom(M) : M.g;
-      const segments = i === 0 && s.trBConcept === 'center' ? [[g.D, g.O], [g.E, g.O], [g.F, g.O]]
+      const segments = (i === 0 && s.trBConcept === 'center') || (i === 4 && s.trBConcept === 'outside') ? [[g.D, g.O], [g.E, g.O], [g.F, g.O]]
         : i === 1 || i === 2 ? [[g.O, g.C]] : [[g.O, g.A], [g.O, g.B], [g.O, g.C]];
       segments.forEach(([p, q], j) => { const u = clamp(t * segments.length - j, 0, 1); if (u > 0) G.line(b, p, G.lerp(p, q, u), 'green', 4.8); });
+      if (i === 4 && s.trBConcept === 'outside' && !C.entry && s.trBLabels) {
+        [[g.D, g.B, g.C], [g.E, g.C, g.A], [g.F, g.A, g.B]].forEach(([m, p, q]) => {
+          G.tick(b, p, m, 1, 'green'); G.tick(b, m, q, 1, 'green'); G.ang(b, m, g.O, p, { color: 'green', r: 14 });
+        });
+      }
     };
   });
 

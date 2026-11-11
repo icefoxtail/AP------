@@ -132,4 +132,60 @@
     ], { start: { trV: v } });
   }
   lessons['t5-3'] = [thirtyConcept(), thirtyProblem(0), thirtyProblem(1), thirtyProblem(2)];
+  function centerAnglesConcept(central) {
+    const chapters = [
+      ch('밑각 기호의 위치', [{ at: 0, say: 'x는 ∠OAB, y는 ∠OBC, z는 ∠OCA를 뜻해요.' }, { at: 6, say: 'OA=OB=OC이므로 세 작은 삼각형은 이등변이에요.', step: 3 }]),
+      ch('같은 밑각끼리 연결', [{ at: 0, say: '각각의 이등변삼각형에서 같은 색 밑각은 같아요.', step: 4 }, { at: 6, say: '∠A=x+z, ∠B=x+y, ∠C=y+z로 묶어요.' }]),
+      ch('세 내각의 합', [{ at: 0, say: '삼각형 ABC의 내각의 합을 쓰면 2(x+y+z)=180°예요.' }, { at: 6, say: '양변을 2로 나누어 x+y+z=90°를 얻어요.', step: 5, set: central ? { trCalculationReady: true } : { trShowAnswer: true, trCalculationReady: true } }])
+    ];
+    if (central) chapters.push(ch('중심에서 보는 각', [{ at: 0, say: '△OBC에서 ∠BOC=180°−2y로 나타내요.' }, { at: 6, say: '90°−y=x+z=∠A이므로 ∠BOC=2∠A예요.', step: 6, set: { trShowAnswer: true } }]));
+    return make('외심의 밑각과 중심각 관계', central ? '중심각 원리' : '밑각의 합', central ? '∠BOC=2∠A' : 'x+y+z=90°', chapters,
+      { problem: false, concept: central ? 'central' : 'sum', start: { trV: central ? 1 : 0 } });
+  }
+  function centerAnglesProblem(v) {
+    return make('외심의 각을 같은 밑각으로 계산', ['∠OAB', '∠BOC', '∠ACB'][v], ['∠OAB=35°', '∠BOC=120°', '∠ACB=55°'][v], [
+      ch('주어진 각과 구할 각', [{ at: 0, say: ['∠OBC=30°, ∠OCA=25°이고 ∠OAB를 구해요.', '∠A=60°이고 외심에서 보는 ∠BOC를 구해요.', '∠OAB=35°, ∠OBC=30°이고 ∠ACB를 구해요.'][v] }, { at: 6, say: 'OA=OB=OC이므로 세 이등변삼각형을 이용해요.', step: 3 }]),
+      ch('같은 밑각으로 내각 표현', [{ at: 0, say: '각 이등변삼각형의 같은 밑각을 같은 색으로 묶어요.', step: 4 }, { at: 6, say: '서로 다른 세 밑각의 합은 내각의 합 180°의 반이에요.' }]),
+      ch('계산에 필요한 관계', [{ at: 0, say: '따라서 서로 다른 세 밑각의 합은 90°예요.', step: 5, set: { trCalculationReady: true } }, { at: 6, say: ['구할 ∠OAB는 90°−30°−25°로 구해요.', '∠OBC=∠OCB=90°−60°=30°예요.', '∠OCA=90°−35°−30°=25°예요.'][v] }]),
+      ch('구할 각에 계산 적용', [{ at: 0, say: ['계산하면 ∠OAB=35°가 정답이에요.', '∠BOC=180°−30°−30°=120°예요.', '∠ACB=∠OCB+∠OCA=30°+25°=55°예요.'][v], step: 6, set: { trShowAnswer: true } }, { at: 6, say: '그림의 x가 표시된 실제 각과 답을 맞춰 보세요.', step: 7 }])
+    ], { start: { trV: v } });
+  }
+  lessons['t5-4'] = [centerAnglesConcept(false), centerAnglesConcept(true), centerAnglesProblem(0), centerAnglesProblem(1), centerAnglesProblem(2)];
+  function obtuseCenterConcept() {
+    return make('둔각삼각형의 외심 위치', '외심 위치', '둔각삼각형의 외심은 삼각형 밖에 있어요', [
+      ch('둔각과 세 변', [{ at: 0, say: '∠A=112°인 둔각삼각형 ABC를 보아요.' }, { at: 6, say: '세 변의 중점에서 각 변에 수직인 선을 그어요.', step: 1 }]),
+      ch('수직이등분선의 교점', [{ at: 0, say: '같은 눈금은 중점, 직각 표시는 수직이라는 뜻이에요.', set: { trBLabels: true } }, { at: 6, say: '세 수직이등분선을 연장해서 만나는 점을 확인해요.' }]),
+      ch('삼각형에 대한 위치', [{ at: 0, say: '교점에서 세 꼭짓점까지의 거리는 모두 같아요.', step: 3 }, { at: 6, say: '그 교점인 외심 O는 변 BC 너머, 삼각형 밖에 있어요.', set: { trShowAnswer: true } }])
+    ], { problem: false, concept: 'outside' });
+  }
+  function obtuseCenterProblem(v) {
+    return make('둔각삼각형의 외심 각 계산', v ? '둔각 ∠A' : '∠BOC', v ? '∠A=112°' : '∠BOC=136°', [
+      ch('둔각 조건과 구할 각', [{ at: 0, say: v ? '∠A는 둔각이고 ∠BOC=136°가 주어졌어요.' : '∠A=112°인 둔각이고 ∠BOC를 구해요.' }, { at: 6, say: '구하는 ∠BOC는 O의 두 반직선 사이 작은 각이에요.', step: 1 }]),
+      ch('같은 반지름으로 두 삼각형', [{ at: 0, say: 'OA=OB=OC이므로 △OAB와 △OAC는 이등변이에요.', step: 3 }, { at: 6, say: '∠OAB=∠OBA=p, ∠OAC=∠OCA=q로 두어요.', step: 4 }]),
+      ch('두 꼭지각을 더하는 전략', [{ at: 0, say: '∠A=p+q이고 각 꼭지각은 180°−2p, 180°−2q예요.' }, { at: 6, say: '이를 더하면 ∠BOC=360°−2∠A가 돼요.', step: 5, set: { trCalculationReady: true } }]),
+      ch('둔각 조건에 맞게 계산', [{ at: 0, say: v ? '∠A=(360°−136°)÷2=112°가 정답이에요.' : '∠BOC=360°−2×112°=136°가 정답이에요.', step: 6, set: { trShowAnswer: true } }, { at: 6, say: v ? '112°는 둔각이므로 원래 조건에도 맞아요.' : '2×112°는 큰 쪽 각이며, 작은 쪽은 136°예요.', step: 7 }])
+    ], { start: { trV: v } });
+  }
+  lessons['t5-5'] = [obtuseCenterConcept(), obtuseCenterProblem(0), obtuseCenterProblem(1)];
+  function centerRatio(concept = false) {
+    return make('중심각의 비와 같은 호', concept ? '비의 원리' : '∠ACB', concept ? '∠ACB=180°×a÷(a+b+c)' : '∠ACB=40°', [
+      ch('비의 뜻과 구할 각', [{ at: 0, say: '중심각 ∠AOB:∠BOC:∠COA는 2:3:4예요.' }, { at: 6, say: concept ? '일반적인 비를 a:b:c라 두고 같은 호 AB를 살펴요.' : '∠ACB는 호 AB를 보는 각이므로 ∠AOB부터 구해요.', step: 1 }]),
+      ch('한 바퀴를 비로 나누기', [{ at: 0, say: '중심각 세 개의 합은 한 바퀴 360°예요.', step: 2 }, { at: 6, say: concept ? '비의 합은 a+b+c이고, 이 그림에서는 2+3+4=9예요.' : '비의 합은 9라서 비 1은 360°÷9=40°예요.', step: 3, set: { trCalculationReady: true } }]),
+      ch('중심각과 같은 호 확인', [{ at: 0, say: concept ? '∠AOB는 전체 360°의 a÷(a+b+c)만큼이에요.' : '∠AOB는 비 2이므로 40°×2=80°예요.', step: 4 }, { at: 6, say: '∠ACB는 같은 호 AB의 중심각 ∠AOB의 반이에요.', step: 5 }]),
+      ch('원주에서 보는 각', [{ at: 0, say: concept ? '따라서 ∠ACB=180°×a÷(a+b+c)예요.' : '따라서 ∠ACB=80°÷2=40°가 정답이에요.', step: concept ? 5 : 6, set: { trShowAnswer: true } }, { at: 6, say: concept ? '비 2:3:4를 넣으면 180°×2÷9=40°예요.' : '비의 합은 360°에서 나누고 마지막에 반으로 나눠요.', step: 7 }])
+    ], { problem: !concept, concept: concept ? 'ratio' : '' });
+  }
+  lessons['t5-6'] = [centerRatio(true), centerRatio(false)];
+  function circlePerimeter(v, concept = false) {
+    const circle = v === 1;
+    const chapters = [
+      ch('둘레와 기호의 뜻', [{ at: 0, say: 'O는 외심, △OBC의 둘레는 16 cm, BC=6 cm예요.' }, { at: 6, say: concept ? '반지름을 R, 삼각형 둘레를 L, BC의 길이를 a라 해요.' : circle ? '원의 둘레를 구하려면 반지름 R부터 알아야 해요.' : 'R은 외접원의 반지름이며 구할 길이예요.', step: 1 }]),
+      ch('두 반지름과 남은 한 변', [{ at: 0, say: 'OB=OC=R이므로 둘레는 R+R+BC예요.', step: 3 }, { at: 6, say: concept ? '따라서 삼각형의 둘레 식은 2R+a=L이에요.' : '주어진 길이를 넣으면 2R+6=16이에요.', step: 4 }])
+    ];
+    if (circle) chapters.push(ch('원의 둘레에 필요한 반지름', [{ at: 0, say: '삼각형의 둘레에서 BC를 빼면 2R=16−6=10이에요.' }, { at: 6, say: '반지름은 R=10÷2=5 cm예요.', step: 5, set: { trCalculationReady: true } }]));
+    chapters.push(ch(circle ? '원의 둘레 계산' : '반지름을 답하기', [{ at: 0, say: circle ? (concept ? '원의 둘레는 지름에 π를 곱하므로 2πR이에요.' : '원의 둘레는 2πR=2π×5=10π cm예요.') : concept ? '따라서 반지름은 R=(L−a)÷2로 구해요.' : '반지름은 R=(16−6)÷2=5 cm예요.', step: circle ? 6 : 5, set: { trShowAnswer: true, trCalculationReady: true } }, { at: 6, say: circle ? '이 그림의 외접원 둘레는 10π cm예요.' : '이 그림에서는 R=(16−6)÷2=5 cm예요.', step: circle ? 7 : 6 }]));
+    return make('삼각형의 둘레로 외접원 구하기', concept ? circle ? '둘레 원리' : '반지름 원리' : circle ? '원의 둘레' : '반지름 계산', concept ? circle ? '원의 둘레=2πR' : 'R=(L−a)÷2' : circle ? '원의 둘레=10π cm' : 'R=5 cm', chapters,
+      { problem: !concept, concept: concept ? circle ? 'circleRule' : 'radiusRule' : '', start: { trV: v } });
+  }
+  lessons['t5-7'] = [circlePerimeter(0, true), circlePerimeter(1, true), circlePerimeter(0), circlePerimeter(1)];
 })();

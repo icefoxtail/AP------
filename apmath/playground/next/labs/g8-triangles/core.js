@@ -571,7 +571,10 @@
     if (D.lessonQuestion) return texSafe(D.lessonQuestion(M, s, Q));
     if (s.trLessonProblem === false || !Q) return texSafe(typeof D.question === 'function' ? D.question(s) : D.question);
     let body = Q.html || Q.stem || '';
-    const choices = (Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
+    // Some open-response questions keep their answer in p beside an empty t.
+    // That single placeholder is not a choice to disclose in the question.
+    const answerPlaceholder = Q.choices && Q.choices.length === 1 && Q.choices[0].h == null && Q.choices[0].t === '';
+    const choices = (answerPlaceholder ? [] : Q.choices || []).map(c => c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : c.p);
     if (choices.length && !choices.every(text => body.includes(String(text)))) body += '<br>' + choices.map((text, i) => NUM[i] + ' ' + text).join('<br>');
     return texSafe(body);
   }
