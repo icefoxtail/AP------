@@ -328,7 +328,7 @@
       const originalText = b.text, originalHandle = b.handle, g = geometry(id, M.pk);
       b.text = function (at, text, opts) {
         const value = String(text ?? '');
-        if (/\d|^[xy]$|둘레|넓이/.test(value)) return;
+        if (/\d|\b[xy]\b|둘레|넓이/.test(value)) return;
         return originalText.call(this, at, text, opts);
       };
       b.handle = () => {};
