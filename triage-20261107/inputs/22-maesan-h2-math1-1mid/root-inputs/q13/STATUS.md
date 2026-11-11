@@ -1,0 +1,1 @@
+PLAN_READY_NOT_RENDERED · construction model/spec/semantic prepare PASS; CIRCLE_MEMBERSHIP audits onD/onE/onR/onT all PASS (2026-11-11 12:58 UTC). Only positive-quadrant arc is displayed; the full circle is not. 렌더·visual QA 미실행.

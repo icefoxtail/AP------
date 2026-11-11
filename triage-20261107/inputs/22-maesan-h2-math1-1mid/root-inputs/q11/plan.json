@@ -1,0 +1,55 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "3",
+      "-1"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1/3",
+        "1/3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "-1/4",
+        "1/4"
+      ],
+      "y": []
+    }
+  },
+  "caption": "전 실수에서 정의된 y=sin(3x)−1의 한 주기 창을 보이며, 그래프는 주기 2π/3마다 반복된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그래프의 최댓값은 0, 최솟값은 −2이고 a>0이므로 진폭 1, 중심선 y=−1이다.",
+      "mappedTo": [
+        "graphPlan.coefficients[0]",
+        "graphPlan.coefficients[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "중심선을 위로 통과하는 점은 −2π/3,0,2π/3에 있어 주기는 2π/3이고 b=3이다.",
+      "mappedTo": [
+        "graphPlan.coefficients[1]",
+        "graphPlan.sourceDomain"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각함수의 중심선·극값·한 주기"
+  ]
+}

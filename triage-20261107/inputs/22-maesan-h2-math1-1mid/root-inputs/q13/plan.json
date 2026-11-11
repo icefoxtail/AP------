@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "x0",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "y0",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "onD",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "K",
+          "D"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "onE",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "K",
+          "E"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "onR",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "K",
+          "R"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "onT",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "K",
+          "T"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayLines": [
+    "x0",
+    "y0"
+  ],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "D",
+    "E",
+    "R",
+    "T"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "D",
+    "E",
+    "R",
+    "T"
+  ],
+  "unmarkedPointNames": [
+    "O",
+    "D",
+    "E"
+  ],
+  "displaySegments": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "positiveArc",
+        "circle": "K",
+        "center": "O",
+        "from": "D",
+        "to": "E",
+        "side": "MINOR"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "uMax",
+        "at": "R",
+        "text": "u 최댓값",
+        "labelKind": "TEXT",
+        "anchor": "E"
+      },
+      {
+        "id": "vMax",
+        "at": "T",
+        "text": "v 최댓값",
+        "labelKind": "TEXT",
+        "anchor": "N"
+      }
+    ]
+  },
+  "caption": "u,v>0에서 남는 원호와 u·v가 각각 가장 커지는 위치를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "치환 뒤 (u−4)^2+(v−3)^2=144이고 u>0, v>0이다.",
+      "mappedTo": [
+        "K",
+        "x0",
+        "y0",
+        "positiveArc"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "양의 영역에서 u의 최댓값은 R=(16,3), v의 최댓값은 T=(4,15)에서 얻는다. D,E는 축 위 경계이므로 양의 정의역에 포함되지 않는다.",
+      "mappedTo": [
+        "R",
+        "T",
+        "D",
+        "E",
+        "uMax",
+        "vMax"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양의 정의역에 해당하는 원의 호와 수평·수직 극점 위치를 구분한다."
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  }
+}

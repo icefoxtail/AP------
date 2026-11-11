@@ -1,0 +1,441 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "297"
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "297"
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAC",
+          "lBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "ab6",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "cd4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "parallel",
+        "kind": "PARALLEL",
+        "refs": [
+          "lAB",
+          "lCD"
+        ],
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "ap_pc",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "A",
+          "P",
+          "C"
+        ],
+        "expected": {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "2"
+        },
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "bp_pd",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "B",
+          "P",
+          "D"
+        ],
+        "expected": {
+          "kind": "rational",
+          "numerator": "3",
+          "denominator": "2"
+        },
+        "sourceConditionId": "c2"
+      },
+      {
+        "id": "bp_exact_example",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "P"
+        ],
+        "expected": {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "640"
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "sourceConditionId": "c3"
+      },
+      {
+        "id": "pc_exact_example",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "P",
+          "C"
+        ],
+        "expected": {
+          "kind": "expression",
+          "op": "mul",
+          "args": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "360"
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "sourceConditionId": "c3"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "6"
+      },
+      {
+        "id": "tCD",
+        "ownerSegment": "sCD",
+        "text": "4"
+      }
+    ]
+  },
+  "caption": "한 가지 정확한 유효 사다리꼴 배치로 두 밑변과 대각선 교점 P의 관계를 보인다. 외형은 원문에 없는 특별한 각·대칭을 뜻하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB∥CD, |AB|=6, |CD|=4.",
+      "mappedTo": [
+        "sAB",
+        "sCD",
+        "p1",
+        "tAB",
+        "tCD",
+        "lAB",
+        "lCD"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "대각선의 교점 P에서 AP:PC=AB:CD=3:2이고 BP:PD=3:2이다.",
+      "mappedTo": [
+        "P",
+        "lAC",
+        "lBD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "선택한 정확한 배치가 원문의 BP:CP=2:1을 만족한다. 이 배치는 한 가지 예시이며 추가 도형 조건을 주장하지 않는다.",
+      "mappedTo": [
+        "P",
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대각선 교점의 정확한 위치와 두 평행한 밑변의 관계를 나타낸다."
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 440
+  }
+}

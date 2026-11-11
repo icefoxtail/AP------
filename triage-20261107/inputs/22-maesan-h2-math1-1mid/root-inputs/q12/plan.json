@@ -1,0 +1,86 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "u",
+    "axisVariable": true,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째 조건",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5/3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째 조건",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1/4",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "5/4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 범위"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "u=x/π",
+    "weight": "MATH"
+  },
+  "caption": "u=x/π로 정규화해 두 조건의 해집합과 교집합을 나타낸다. 원래 범위 x<2π는 u<2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 부등식은 cos x≤1/2와 동치이고 0≤x<2π에서 u=x/π의 해는 [1/3,5/3]이다.",
+      "mappedTo": [
+        "numberLine.rows[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "sin x≤cos x의 해는 [0,π/4]∪[5π/4,2π)로, u에서 [0,1/4]∪[5/4,2)이다.",
+      "mappedTo": [
+        "numberLine.rows[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 해집합의 공통 구간을 RESULT 행에서 엔진이 정확히 계산한다.",
+      "mappedTo": [
+        "numberLine.rows[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "π로 나눈 변수 u에서 두 해집합의 공통 구간과 열린·닫힌 끝점을 함께 비교한다."
+  ]
+}

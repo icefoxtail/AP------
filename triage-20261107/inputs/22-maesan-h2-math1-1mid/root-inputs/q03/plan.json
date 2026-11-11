@@ -1,0 +1,57 @@
+{
+  "capability": "exp-log-pair-spike-v1",
+  "graphPlan": {
+    "family": "exp-log-pair",
+    "curves": [
+      {
+        "id": "e",
+        "family": "exponential-affine",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        }
+      },
+      {
+        "id": "l",
+        "family": "logarithmic-affine",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "sourceDomain": {
+          "kind": "NATURAL_LOG_AFFINE"
+        }
+      }
+    ],
+    "identityLine": true
+  },
+  "caption": "밑 3인 지수함수와 그 로그 역함수가 직선 y=x에 대하여 대칭임을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=3^x이고 g는 f의 역함수이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.identityLine"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문 그림은 f와 g의 역함수 관계를 보여 준다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "지수함수·로그함수의 역함수 대칭 관계"
+  ]
+}

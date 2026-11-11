@@ -1,0 +1,1 @@
+PLAN_READY_NOT_RENDERED · 정확한 piecewise-polynomial/referenceCurves plan으로 frame/graph/spec/semantic prepare PASS (2026-11-11 12:58 UTC). h=f−4=−(4/3)(x−4)(x−6), g=−4(x−5); 1≤x≤6에서의 x축 부호 비교. axisScale x:y=4:1임을 캡션·alt에 공개한다. 기존 multi-curve 경로는 semantic prepare INVALID_GRAPH_BRANCH_TAG라 사용하지 않는다. 렌더·visual QA 미실행.

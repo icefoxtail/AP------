@@ -1,0 +1,1 @@
+PLAN_READY_NOT_RENDERED · trig frame/graph/spec/semantic prepare PASS (2026-11-11 12:58 UTC). one-period window [-π/3,π/3], period 2π/3, x π-ticks ±π/4. y ticks omitted: zero tick is invalid; combining pi ticks and y ticks causes TICK_PI_LABEL_MISMATCH. 렌더·visual QA 미실행.

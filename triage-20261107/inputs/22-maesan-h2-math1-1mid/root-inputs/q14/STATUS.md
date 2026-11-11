@@ -1,0 +1,1 @@
+PLAN_READY_NOT_RENDERED · construction model/spec/semantic prepare PASS; AB=6, CD=4, parallel, AP:PC=BP:PD=3:2, and exact-example distances audits all PASS (2026-11-11 12:58 UTC). One exact valid placement only; no added symmetry/angle claim. 렌더·visual QA 미실행.

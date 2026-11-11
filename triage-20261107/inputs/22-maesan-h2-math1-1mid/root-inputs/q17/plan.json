@@ -1,0 +1,60 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-1",
+      "-4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1.5,
+      1.5,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": []
+    }
+  },
+  "caption": "−1≤u≤1에서 k=u²−4u−1의 감소 모습을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "u=cos x는 −1≤u≤1이고 k=u²−4u−1이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "2u−4<0 on [−1,1], so k decreases from the left endpoint to the right endpoint.",
+      "mappedTo": [
+        "graphPlan.sourceDomain"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "허용된 u 구간에서 이차함수가 단조 감소하고 양 끝에서 값이 정해지는 것을 보인다."
+  ]
+}

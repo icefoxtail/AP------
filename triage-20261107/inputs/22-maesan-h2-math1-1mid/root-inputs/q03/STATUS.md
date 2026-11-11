@@ -1,0 +1,1 @@
+PLAN_READY_NOT_RENDERED · exp-log pair frame/graph/spec/semantic prepare PASS (2026-11-11 12:58 UTC). 임의 좌표점 (2,9),(9,2) 곡선 앵커는 OVERLAY_POINT_CURVE_UNKNOWN으로 지원되지 않아 넣지 않고 역함수 대칭과 y=x만 표시한다. 렌더·visual QA 미실행.

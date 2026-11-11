@@ -1,0 +1,240 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lFP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "F",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "of4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "F"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "fp3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "F",
+          "P"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "3"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "op5",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        },
+        "sourceConditionId": "c1"
+      },
+      {
+        "id": "rightAtF",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "lOF",
+          "lFP"
+        ],
+        "sourceConditionId": "c1"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "F",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "F",
+    "P"
+  ],
+  "unmarkedPointNames": [
+    "X",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sFP",
+      "refs": [
+        "F",
+        "P"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rF",
+      "refs": [
+        "O",
+        "F",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "len4",
+        "ownerSegment": "sOF",
+        "text": "4"
+      },
+      {
+        "id": "len3",
+        "ownerSegment": "sFP",
+        "text": "3"
+      },
+      {
+        "id": "len5",
+        "ownerSegment": "sOP",
+        "text": "5"
+      }
+    ],
+    "quadrants": [
+      {
+        "id": "q3",
+        "quadrant": 3,
+        "label": "제3사분면"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "caption": "제3사분면의 3–4–5 기준 삼각형으로 tan θ의 부호와 cos θ의 부호를 함께 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "θ는 제3사분면이고 tan θ=3/4이다.",
+      "mappedTo": [
+        "P",
+        "sOF",
+        "sFP",
+        "sOP",
+        "rF",
+        "q3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가로·세로 변의 4:3 비와 빗변을 제3사분면 좌표축에 놓아 부호를 시각화한다."
+  ]
+}
