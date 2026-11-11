@@ -99,8 +99,8 @@
         if (C.problem) { refCuboid(b, s, C); return; }
         const Dr = scene3(b, s, C);
         const v = C.review ? abAt(st, C.t) : C.thumb ? st.cex : ab(st, s);
-        const text = s.spShowAnswer ? `설명은 ${st.truth ? '참' : '거짓'}` : s.spBStage >= 1 ? st.geo(v.a, v.b).relText : '조건을 지키며 위치 관계를 확인해요';
-        render(Dr, st, v, C, { caption: true, showRelation: s.spBStage >= 1 || s.spShowAnswer, lessonText: text, lessonColor: s.spShowAnswer ? 'green' : 'amber' });
+        const text = s.spShowAnswer ? `설명은 ${st.truth ? '참' : '거짓'}` : s.spBStage >= 1 ? (st.truth ? '수직 조건을 지키면 방향이 하나로 정해져요' : st.geo(v.a, v.b).relText) : '조건을 지키며 위치 관계를 확인해요';
+        render(Dr, st, v, C, { caption: true, showRelation: (!st.truth && s.spBStage >= 1) || s.spShowAnswer, lessonText: text, lessonColor: s.spShowAnswer ? 'green' : 'amber' });
       },
       steps: (M) => {
         const { st: S, g1 } = M;

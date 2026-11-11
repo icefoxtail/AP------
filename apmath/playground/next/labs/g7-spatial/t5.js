@@ -28,7 +28,7 @@
     const st = STM[o.stm];
     return {
       id: o.id, title: o.title, short: o.short, question: o.question,
-      lessonQuestion: (M, s, Q) => s.spBMode === 'solid' ? Q.stem : o.id === 's5-1' && s.spBAsk === 'two' ? '평면 P 위에서 O에 만나는 서로 다른 두 직선 m, n에 l이 모두 수직이면 l과 P는 어떤 관계일까요?' : o.question,
+      lessonQuestion: (M, s, Q) => s.spBMode === 'solid' ? Q.stem : o.id === 's5-1' ? (s.spBAsk === 'two' ? '평면 P 위에서 O에 만나는 서로 다른 두 직선 m, n에 l이 모두 수직이면 l과 P는 어떤 관계일까요?' : '직선 l이 평면 P 위의 한 직선 m과 수직이면 l은 평면 P와 반드시 수직일까요?') : o.question,
       ctl: () => st.ctl.concat(VIEW),
       anim: { key: 'spT', dur: 5, label: o.play, start: 0 },
       onAnim: (s, t) => setAB(st, s, abAt(st, t)),
