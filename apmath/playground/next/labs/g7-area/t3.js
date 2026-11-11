@@ -20,6 +20,8 @@
   const TRIPLES = [[3, 4, 5], [4, 3, 5], [6, 8, 10]];
   const foot = (b, p, str, color = 'green', dy = 56) => T(b, p, str, { dy, size: 17, color });
   const mm = (v) => `${v}cm`;
+  const lessonOn = (s, C) => !!(C.lesson || s.lessonOn || s.lessonEntry);
+  const ready = (s, C, key) => !lessonOn(s, C) || (!s.lessonEntry && !!s[key]);
 
   /* ====================================================================== 1. 사다리꼴: 돌려 붙이기 · 둘로 나누기 (옛 trapRot) */
   const trap2 = {
@@ -131,24 +133,42 @@
     geo: (M) => { const Av = pt(0, M.a), Bv = pt(M.x, M.H), Cv = pt(M.W, 0); return { Av, Bv, Cv, tri: [Av, Bv, Cv], c1: [pt(0, 0), Av, Cv], c2: [Av, pt(0, M.H), Bv], c3: [Bv, pt(M.W, M.H), Cv] }; },
     draw(b, s, M, C) {
       const { W, H, a, x, t1, t2, t3, R, A } = M, g = frame.geo(M);
-      const t = C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : C.t, sep = 1.4 * ease(t);
+      const lesson = lessonOn(s, C);
+      const t = C.problem ? 0 : C.review && !lesson ? (C.step >= 2 ? 1 : 0) : C.t, sep = 1.4 * ease(t);
       // 짧은 휴대폰 무대에 계산 세 줄을 예약하면 원래 삼각형이 손잡이보다 작아집니다.
       // 계산은 기존 값·풀이 패널에 두고, 그림에는 모눈과 길이 조건의 자리를 확보합니다.
       const compactInquiry = !C.problem && !b.thumb && b.W < 560;
-      FIT(b, { x0: -1.4, x1: W + 1.4, y0: 0, y1: H }, { t: compactInquiry ? 30 : 40, b: C.problem ? 108 : compactInquiry ? 74 : 176, l: 40, r: 64 });
+      FIT(b, { x0: -1.4, x1: W + 1.4, y0: 0, y1: H }, { t: compactInquiry ? 30 : 40, b: C.problem ? 108 : lesson ? 124 : compactInquiry ? 74 : 176, l: 40, r: 64 });
       for (let i = 0; i <= W; i++) line(b, pt(i, 0), pt(i, H), 'muted', 1.2, { alpha: 0.5 });
       for (let j = 0; j <= H; j++) line(b, pt(0, j), pt(W, j), 'muted', 1.2, { alpha: 0.5 });
       const mv = (P3, dx) => P3.map((q) => pt(q.x + dx, q.y));
-      const showC = !C.problem && (!C.review || C.step >= 2);
+      const showC = !C.problem && (lesson || !C.review || C.step >= 2);
       if (showC) { [[g.c1, -sep], [g.c2, -sep], [g.c3, sep]].forEach(([c, dx]) => { fillPoly(b, mv(c, dx), 'rose', 0.3); poly(b, mv(c, dx), 'rose', 3); }); }
       fillPoly(b, g.tri, 'sky', 0.3); poly(b, g.tri, 'ink', 3.8);
       if (sep < 0.05) poly(b, [pt(0, 0), pt(W, 0), pt(W, H), pt(0, H)], 'ink', 2.4, { dash: [7, 5], alpha: 0.9 });
       [[g.Av, 'A', pt(-1, 0)], [g.Bv, 'B', pt(0, 1)], [g.Cv, 'C', pt(1, -1)]].forEach(([q, n, d]) => T(b, q, n, { dx: d.x * 26, dy: d.y * 24, size: 18 }));
       b.point(g.Av, { color: 'amber', r: 5 }); b.point(g.Bv, { color: 'amber', r: 5 }); b.point(g.Cv, { color: 'amber', r: 5 });
-      if (showC && sep < 0.9) { T(b, centroid(g.c1), '①', { size: 22, color: 'rose' }); T(b, centroid(g.c2), '②', { size: 22, color: 'rose' }); T(b, centroid(g.c3), '③', { size: 22, color: 'rose' }); }
+      if (showC && (lesson || sep < 0.9)) { T(b, centroid(lesson ? mv(g.c1, -sep) : g.c1), '①', { size: 22, color: 'rose' }); T(b, centroid(lesson ? mv(g.c2, -sep) : g.c2), '②', { size: 22, color: 'rose' }); T(b, centroid(lesson ? mv(g.c3, sep) : g.c3), '③', { size: 22, color: 'rose' }); }
       dim(b, pt(0, H), pt(W, H), `가로 ${W}칸`, { ref: pt(W / 2, H / 2), color: 'sky', off: 50 });
-      if (sep < 0.05) dim(b, pt(W, 0), pt(W, H), `${H}칸`, { ref: pt(W / 2, H / 2), color: 'sky', off: 26 });
+      if (lesson || sep < 0.05) dim(b, pt(W, 0), pt(W, H), `${H}칸`, { ref: pt(W / 2, H / 2), color: 'sky', off: 26 });
+      if (lesson) {
+        dim(b, pt(0, 0), g.Av, `${a}칸`, { ref: pt(W / 2, H / 2), color: 'amber', off: 22, size: 15 });
+        dim(b, pt(0, H), g.Bv, `${x}칸`, { ref: pt(W / 2, H / 2), color: 'amber', off: 22, size: 15 });
+        if (ready(s, C, 'arTwoReady')) dim(b, pt(-sep, a), pt(-sep, H), `${H}−${a}=${H - a}`, { ref: centroid(mv(g.c2, -sep)), color: 'rose', off: 18, size: 14 });
+        if (ready(s, C, 'arThreeReady')) dim(b, pt(x + sep, H), pt(W + sep, H), `${W}−${x}=${W - x}`, { ref: centroid(mv(g.c3, sep)), color: 'rose', off: 18, size: 14 });
+      }
       if (C.problem) { foot(b, pt(W / 2, H), '모눈 한 칸 = 1cm²   △ABC = ? cm²', 'amber', 88); return; }
+      if (lesson) {
+        const f = (str, color = 'rose', i = 0) => foot(b, pt(W / 2, H), str, color, 76 + 26 * i);
+        if (ready(s, C, 'arShowAnswer')) f(`△ABC = ${R} − ${num(t1 + t2 + t3)} = ${num(A)}cm²`, 'green');
+        else if (ready(s, C, 'arSumReady')) { f(`①+②+③ = ${num(t1)}+${num(t2)}+${num(t3)} = ${num(t1 + t2 + t3)}`); f(`바깥 직사각형 = ${R}cm²`, 'sky', 1); }
+        else if (ready(s, C, 'arThreeReady')) f(`③ ${W - x}×${H}÷2 = ${num(t3)}cm²`);
+        else if (ready(s, C, 'arTwoReady')) { f(`② ${x}×${H - a}÷2 = ${num(t2)}cm²`); f(`① = ${num(t1)}cm²`, 'rose', 1); }
+        else if (ready(s, C, 'arOneReady')) f(`① ${W}×${a}÷2 = ${num(t1)}cm²`);
+        else if (ready(s, C, 'arOuterReady')) f(`직사각형 ${W}×${H} = ${R}cm²`, 'sky');
+        else f('모눈 한 칸 = 1cm² · △ABC = ?', 'amber');
+        return;
+      }
       const f = (str, col, i) => { if (!compactInquiry) foot(b, pt(W / 2, H), str, col, 84 + 26 * i); };
       if (C.review) {
         if (C.step < 1) f('바깥 직사각형과 세 귀퉁이를 찾아요', 'amber', 0);
