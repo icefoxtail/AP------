@@ -14,6 +14,12 @@
   const { DEG, clamp, seg01, pt, add, sub, mul, unit, mid, lerp, len, polar, inter, angBetween, pick, rint, bboxOf, T, tagOut, ang, tick, par, fillPoly, line, poly, fit, P, mkChoices, LET, rd, notes, fmtN, dg, texDeg, tx } = G;
   const sin = (d) => Math.sin(d * DEG), cos = (d) => Math.cos(d * DEG);
   const dv = (d) => pt(cos(d), sin(d)); // 화면 각도(도) → 단위 벡터 (y 아래쪽)
+  const ready = (s, key = 'pgShowAnswer') => !s.lessonEntry && s[key] === true;
+  function lessonRow(b, s, text) {
+    if (!(s.lessonOn || s.lessonEntry) || !ready(s)) return;
+    const size = Math.min(17, (b.W - b.insets.left - b.insets.right - 26) / Math.max(1, G.textW(text, 17)) * 17);
+    b.stext((b.W + b.insets.left - b.insets.right) / 2, b.insets.top + 17, text, { color: 'green', size, weight: 800, align: 'center', baseline: 'middle' });
+  }
   const KK = { board: 0 };
   void KK;
 
@@ -49,9 +55,10 @@
     model: (s) => { const a = clamp(Math.round(s.pgEa), 30, 80), bb = clamp(Math.round(s.pgEb), 30, 65), c = 180 - a - bb; return { a, bb, c, e: a + bb, tri: triPts(a, bb) }; },
     draw(b, s, M, C) {
       const { a, bb, c, e, tri } = M, { A, B, C: Cp } = tri, D = pt(Cp.x + 1.4, 0), E = add(Cp, mul(dv(-bb), 1.6));
-      const c1 = C.problem ? 0 : C.review ? (C.step >= 1 ? 1 : 0) : seg01(C.t, 0, 0.34);
-      const c2 = C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : seg01(C.t, 0.34, 0.67);
-      const c3 = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : seg01(C.t, 0.67, 1);
+      const progress = C.lesson && s.lessonEntry ? 0 : C.t;
+      const c1 = C.problem ? 0 : C.review && !C.lesson ? (C.step >= 1 ? 1 : 0) : seg01(progress, 0, 0.34);
+      const c2 = C.problem ? 0 : C.review && !C.lesson ? (C.step >= 2 ? 1 : 0) : seg01(progress, 0.34, 0.67);
+      const c3 = C.problem ? 0 : C.review && !C.lesson ? (C.step >= 3 ? 1 : 0) : seg01(progress, 0.67, 1);
       const box = bboxOf([A, B, Cp, D, c1 > 0 ? E : D]);
       const compact = !C.thumb && b.W < 560 && (C.problem || C.review);
       // 문제/풀이 문구는 패널에 있습니다. 짧은 무대에서는 원래 삼각형에 공간을 줍니다.
@@ -70,7 +77,7 @@
         ang(b, A, B, Cp, { color: 'sky', rings: 1, r: R, label: dg(a), size: 16, ...(compact ? { labelDist: 34 } : {}) });
         ang(b, B, Cp, A, { color: 'sky', rings: 2, r: R, label: dg(bb), size: 16, ...(compact ? { labelDist: 34 } : {}) });
       }
-      if (!C.problem) ang(b, Cp, Cp.x > A.x ? A : B, Cp.x > A.x ? B : A, { color: 'sky', r: 24, label: C.review && C.step < 3 ? '' : dg(c), size: 15, noMark: false });
+      if (!C.problem) ang(b, Cp, Cp.x > A.x ? A : B, Cp.x > A.x ? B : A, { color: 'sky', r: 24, label: C.lesson || C.review && C.step < 3 ? '' : dg(c), size: 15, noMark: false });
       else ang(b, Cp, B, A, { color: 'sky', r: 24, size: 15 });
       // 엇각·동위각으로 옮긴 각
       if (c2 > 0.01) {
@@ -79,7 +86,7 @@
       }
       // 외각
       if (c3 > 0.01 || C.problem) {
-        ang(b, Cp, A, D, { color: 'amber', r: c2 > 0.01 ? 54 : 40, label: C.problem ? 'x' : dg(e), size: 18, fa: 0.16, labelDist: c2 > 0.01 ? 92 : 66 });
+        ang(b, Cp, A, D, { color: 'amber', r: c2 > 0.01 ? 54 : 40, label: C.problem || C.lesson && !ready(s) ? 'x' : dg(e), size: 18, fa: 0.16, labelDist: c2 > 0.01 ? 92 : 66 });
       }
       if (C.txt) {
         b.point(A, { color: 'ink', r: 4.5 }); b.point(B, { color: 'ink', r: 4.5 }); b.point(Cp, { color: 'ink', r: 4.5 });
@@ -93,17 +100,19 @@
           s.pgEb = nb; s.pgEa = na;
         } });
         else b.point(A, { color: 'amber', r: 6.5 });
+        if (C.lesson) lessonRow(b, s, `외각 x = ${e}°`);
         if (compact) return;
         const yb = 0;
         let row = '', col = 'amber';
-        if (C.problem) row = '외각 x는 몇 도일까요?';
+        if (C.lesson) { row = ready(s) ? `외각 = ${a}°+${bb}° = ${e}°` : C.step >= 2 ? '외각은 같은 표시의 두 각을 합한 각이에요' : 'C를 지나 AB와 평행한 선을 그어요'; col = 'green'; }
+        else if (C.problem) row = '외각 x는 몇 도일까요?';
         else if (C.review && C.step === 1) { row = '보조선 CE ∥ AB 를 그어요'; col = 'green'; }
         else if (C.review && C.step === 2) { row = `엇각 ∠ACE=∠A=${a}° · 동위각 ∠ECD=∠B=${bb}°`; col = 'sky'; }
         else if (c3 > 0.5) row = `외각 = ∠A+∠B = ${a}°+${bb}° = ${e}°`;
         else if (c1 > 0.5) { row = '보조선 CE ∥ AB'; col = 'green'; }
         else row = '∠A, ∠B를 바꿔 보세요';
         T(b, pt((B.x + D.x) / 2, yb), row, { dy: 64, size: 17, color: col });
-        if (!C.problem) T(b, pt((B.x + D.x) / 2, yb), `내각의 합 ${a}°+${bb}°+${c}° = 180°`, { dy: 90, size: 15, color: 'sky', alpha: 0.9 });
+        if (!C.problem && !C.lesson) T(b, pt((B.x + D.x) / 2, yb), `내각의 합 ${a}°+${bb}°+${c}° = 180°`, { dy: 90, size: 15, color: 'sky', alpha: 0.9 });
       }
     },
     steps: (M) => [
@@ -165,18 +174,20 @@
       fit(b, bboxOf(all), compact ? { t: 48, b: 48, l: 62, r: 62 } : compactExplore ? { t: 48, b: 68, l: 62, r: 62 } : { t: 58, b: 112 + footerReserve, l: 62, r: 62 });
       const cen = pt(all.reduce((q, p) => q + p.x, 0) / 5, all.reduce((q, p) => q + p.y, 0) / 5);
       const st = C.step;
+      const trace = C.lesson ? (s.lessonEntry ? 0 : clamp(s.pgStarT || 0, 0, 1)) : 1;
       const lines = [[A, Cc], [A, D], [B, D], [B, E], [Cc, E]];
       // 풀이 단계에 따라 쓰는 삼각형 칠하기
-      if (!C.problem && st >= 1 && st < 99) { fillPoly(b, [Pp, Cc, E], 'green', 0.12); fillPoly(b, [S, B, D], 'green', 0.12); }
+      if (!C.problem && (st >= 1 || C.lesson && trace > 0) && st < 99) { fillPoly(b, [Pp, Cc, E], 'green', 0.12 * trace); fillPoly(b, [S, B, D], 'green', 0.12 * trace); }
       if (!C.problem && st >= 2 && st < 99) fillPoly(b, [A, Pp, S], 'sky', 0.14);
       lines.forEach(([p, q]) => line(b, p, q, 'ink', 3.4));
+      if (C.lesson && trace > 0) { line(b, Pp, lerp(Pp, Cc, trace), 'green', 4); line(b, S, lerp(S, D, trace), 'green', 4); }
       const tips = [[A, D, Cc, a, 'A'], [B, E, D, bb, 'B'], [Cc, A, E, c, 'C'], [D, B, A, d, 'D'], [E, Cc, B, e, 'E']];
       tips.forEach(([V, p, q, val, nm], i) => {
-        const isX = i === 4 && (C.problem || (C.review && st < 3));
+        const isX = i === 4 && (C.lesson ? s.pgLessonMode === 'starSum' || !ready(s) : C.problem || (C.review && st < 3));
         const col = isX ? 'amber' : 'sky';
         const r = ang(b, V, p, q, { color: col, r: compact || compactExplore ? 18 : 26, rings: 0, size: 16, fa: 0.16 });
         const u = unit(sub(cen, V));
-        const lab = isX ? `${nm} x` : `${nm} ${val}°`;
+        const lab = isX ? C.lesson && s.pgLessonMode === 'starSum' ? nm : `${nm} x` : `${nm} ${val}°`;
         const dist = (compactExplore ? 18 : 24) + G.textW(lab, 16) * 0.4;
         T(b, V, lab, { dx: -u.x * dist, dy: -u.y * dist, color: isX ? 'amber' : 'sky', size: 16 });
         b.point(V, { color: 'ink', r: 4.5 });
@@ -188,14 +199,16 @@
       }
       if (!C.problem && st >= 1 && st < 99) {
         ang(b, Pp, A, S, { color: 'rose', r: 22 });
-        T(b, Pp, C.review && st < 3 ? 'c+x' : `c+e=${c + e}°`, { dx: 12, dy: -30, size: 15, color: 'rose', align: 'left' });
+        T(b, Pp, C.lesson ? s.pgLessonMode === 'starSum' ? '∠C+∠E' : '∠C+x' : C.review && st < 3 ? 'c+x' : `c+e=${c + e}°`, { dx: 12, dy: -30, size: 15, color: 'rose', align: 'left' });
         ang(b, S, Pp, A, { color: 'rose', r: 22 });
-        T(b, S, `b+d=${bb + d}°`, { dx: -12, dy: -30, size: 15, color: 'rose', align: 'right' });
+        T(b, S, C.lesson ? '∠B+∠D' : `b+d=${bb + d}°`, { dx: -12, dy: -30, size: 15, color: 'rose', align: 'right' });
       }
+      if (C.lesson) lessonRow(b, s, s.pgLessonMode === 'starSum' ? '다섯 뾰족한 각의 합 = 180°' : `∠E = ${e}°`);
       if (compact) return;
       const yb = Math.max(D.y, Cc.y);
       let row = '', col = 'amber';
-      if (C.problem) row = '별 모양에서 ∠E = x 의 크기는?';
+      if (C.lesson) row = ready(s) ? s.pgLessonMode === 'starSum' ? '∠A+∠B+∠C+∠D+∠E = 180°' : `x = 180°−${M.sum4}° = ${e}°` : ready(s, 'pgSecondReady') ? `주어진 네 각의 합 = ${M.sum4}°` : st >= 2 ? '△APS의 세 내각으로 모아요' : '두 삼각형에서 외각을 찾아요';
+      else if (C.problem) row = '별 모양에서 ∠E = x 의 크기는?';
       else if (C.review && st === 0) row = '주어진 네 각과 x를 확인해요';
       else if (st === 1) { row = `삼각형 PCE, SBD 의 외각 → c+x, b+d`; col = 'green'; }
       else if (st === 2) { row = `${a}°+(${c}°+x)+${bb + d}° = 180°`; col = 'sky'; }
@@ -262,17 +275,18 @@
       fit(b, bboxOf(pts), compact ? { t: 30, b: 32, l: 34, r: 34 } : { t: 50, b: 92, l: 40, r: 40 });
       const st = C.step, cen = pt((A.x + B.x + Cp.x) / 3, (A.y + B.y + Cp.y) / 3);
       const sh = (n) => (C.problem ? true : st >= n);
+      const trace = C.lesson ? (s.lessonEntry ? 0 : clamp(s.pgBisT || 0, 0, 1)) : 1;
       fillPoly(b, [A, B, Cp], 'sky', 0.1);
       poly(b, [A, B, Cp], 'ink', 3.4);
       // 연장선
       if (k === 2) { line(b, B, extB, 'ink', 3, { dash: [7, 6] }); line(b, Cp, extC, 'ink', 3, { dash: [7, 6] }); }
       if (k === 3) line(b, Cp, F, 'ink', 3, { dash: [7, 6] });
       // 이등분선 (초록)
-      if (sh(1) || C.full) { line(b, B, X, 'green', 3.6); line(b, Cp, X, 'green', 3.6); }
+      if (C.lesson || sh(1) || C.full) { line(b, B, lerp(B, X, trace), 'green', 3.6); line(b, Cp, lerp(Cp, X, trace), 'green', 3.6); }
       // 반으로 나뉜 각 표시 (● = 1개, × = 2개)
       const r1 = compact ? 14 : 30, r2 = compact ? 18 : 36;
       const halfLabel = compact ? { size: 12, labelDist: 27 } : { size: 17 };
-      if (sh(1) || C.full) {
+      if ((sh(1) || C.full) && trace >= .999) {
         if (k === 1) {
           ang(b, B, Cp, X, { color: 'sky', rings: 1, r: r1, label: '●', ...halfLabel }); ang(b, B, X, A, { color: 'sky', rings: 1, r: r1, label: '●', ...halfLabel });
           ang(b, Cp, X, A, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel }); ang(b, Cp, B, X, { color: 'sky', rings: 2, r: r2, label: '×', ...halfLabel });
@@ -286,7 +300,7 @@
       }
       ang(b, A, B, Cp, { color: 'sky', r: compact ? 20 : 30, label: dg(a), size: 16, ...(compact ? { labelDist: 34 } : {}) });
       // 구하는 각 x
-      const targetLabel = C.problem || (C.review && st < 3) ? 'x' : dg(x);
+      const targetLabel = C.lesson ? ready(s) ? dg(x) : 'x' : C.problem || (C.review && st < 3) ? 'x' : dg(x);
       // 꼭짓점을 끌어 I가 밑변에 가까워져도 각의 값이 BC를 덮지 않게 합니다.
       const externalTarget = !C.thumb && b.W < 560 && !compact && k === 1
         && b.toS(B).y - b.toS(X).y < 46 + 18 * (b.fs || 1) * (b._ts ? b._ts() : 1) * .6 + 6;
@@ -306,6 +320,7 @@
           const nb = clamp(Math.round(bAng / 2) * 2, 40, 60); const na = clamp(Math.round((180 - nb - cAng) / 2) * 2, 40, 90);
           s.pgKb = nb; s.pgKa = na;
         } });
+        if (C.lesson) lessonRow(b, s, `x = ${dg(x)}`);
         if (compact) return;
         const hb = k === 2 ? 90 - bb / 2 : bb / 2, hc = k === 1 ? c / 2 : k === 2 ? 90 - c / 2 : 90 - c / 2 + 0; // 호
         void hc;
@@ -319,6 +334,10 @@
           const relation = k === 1 ? '2●+2×+∠A = 180°' : k === 2 ? '2●+2× = 180°+∠A' : '2× = ∠A+2●,  × = ●+x';
           row2 = st <= 1 ? '● 와 × 를 정해요' : st === 2 ? relation : `x = ${BIS[k].sym} = ${dg(x)}`;
           if (C.full) row2 = `x = ${BIS[k].sym} = ${dg(x)}`;
+          if (C.lesson) {
+            row1 = '●끼리, ×끼리 같은 크기의 각이에요';
+            row2 = ready(s) ? `x = ${BIS[k].sym} = ${dg(x)}` : ready(s, 'pgSecondReady') ? k === 3 ? `2x = ${a}°` : `●+× = ${k === 1 ? 90 - a / 2 : 90 + a / 2}°` : ready(s, 'pgSupportReady') ? relation : '이등분선은 각을 같은 크기로 나누어요';
+          }
         }
         T(b, pt(bx, yb), row1, { dy: 54, size: 16, color: 'sky' });
         T(b, pt(bx, yb), row2, { dy: 80, size: 17, color: col2 });
@@ -386,20 +405,22 @@
     model: (s) => { const x = clamp(Math.round(s.pgCx), 14, 20); return { x, p: chainPts(x) }; },
     draw(b, s, M, C) {
       const { x, p } = M, { A, B, C: Cc, D, E, F } = p;
-      const n = C.problem ? 4 : C.review ? Math.min(4, C.step) : Math.min(4, Math.floor(C.t * 4 + 1e-6) + (C.t >= 0.999 ? 0 : 0));
-      const part = C.problem || C.review ? 0 : (C.t * 4 - Math.floor(C.t * 4 + 1e-6));
+      const progress = C.lesson && s.lessonEntry ? 0 : C.t;
+      const n = C.problem ? 4 : C.review && !C.lesson ? Math.min(4, C.step) : Math.min(4, Math.floor(progress * 4 + 1e-6));
+      const part = C.problem || C.review && !C.lesson ? 0 : (progress * 4 - Math.floor(progress * 4 + 1e-6));
       const vis = C.problem || C.review ? 4 : 4; // 그림은 처음부터 모두 보이되, 아직 아닌 삼각형은 흐리게
       void vis;
       fit(b, bboxOf([A, B, Cc, D, E, F]), { t: 40, b: 86, l: 36, r: 40 });
       const tri = [[A, B, Cc], [B, Cc, D], [Cc, D, E], [D, E, F]];
       const col = ['sky', 'green', 'sky', 'amber'];
       // 삼각형 칠하기
-      tri.forEach((t3, i) => { const on = i < n || C.problem; fillPoly(b, t3, col[i], on ? 0.12 : 0.04); });
+      tri.forEach((t3, i) => { const on = i < n || C.problem; fillPoly(b, t3, col[i], C.lesson ? .04 + .08 * clamp(progress * 4 - i, 0, 1) : on ? 0.12 : 0.04); });
       // 두 반직선 + 이어 붙인 선분
       const segs = [[A, B], [B, Cc], [Cc, D], [D, E], [E, F]];
       line(b, A, pt(E.x + 0.5, 0), 'ink', 2.4, { alpha: 0.6 });
       line(b, A, add(F, mul(unit(sub(F, A)), 0.5)), 'ink', 2.4, { alpha: 0.6 });
       segs.forEach(([q, r], i) => { const on = i < n + 1 || C.problem; line(b, q, r, 'ink', on ? 3.6 : 1.6, { alpha: on ? 1 : 0.3 }); if (on) tick(b, q, r, 1, 'amber'); });
+      if (C.lesson) segs.slice(1).forEach(([q, r], i) => { const f = clamp(progress * 4 - i, 0, 1); if (f > 0) line(b, q, lerp(q, r, f), col[i], 4); });
       // 각 표시: 삼각형 i 의 밑각 두 개 = (i+1)x
       const roomy = (b.k || 60) >= 150, lbl = (k) => (C.review || !roomy ? (k === 1 ? 'x' : `${k}x`) : `${k * x}°`);
       const sets = [[[A, Cc, B, 1], [Cc, A, B, 1]], [[B, Cc, D, 2], [D, B, Cc, 2]], [[Cc, D, E, 3], [E, Cc, D, 3]], [[D, E, F, 4], [F, D, E, 4]]];
@@ -425,7 +446,12 @@
       off(A, -14, 10, 'A'); off(B, -6, -16, 'B'); off(Cc, 0, 18, 'C'); off(D, -4, -17, 'D'); off(E, 2, 18, 'E'); off(F, 4, -17, 'F');
       const bx = (A.x + E.x) / 2, yb = 0;
       let row, rcol = 'amber';
-      if (C.problem) row = `AB=BC=CD=DE=EF 일 때 ∠A = x 의 크기는?`;
+      if (C.lesson) {
+        const symbolic = ['x', 'x', 'x → 2x', 'x → 2x → 3x', 'x → 2x → 3x → 4x'][n];
+        row = s.pgLessonMode === 'chainSolve' ? ready(s) ? `4x = ${4 * x}° → x = ${x}°` : `주어진 ∠EDF=${4 * x}° · ${symbolic}` : symbolic;
+        lessonRow(b, s, s.pgLessonMode === 'chainSolve' ? `x = ${x}°` : '∠EDF = 4x');
+      }
+      else if (C.problem) row = `AB=BC=CD=DE=EF 일 때 ∠A = x 의 크기는?`;
       else if (C.review) row = C.step >= 4 ? `4x = ${4 * x}° → x = ${4 * x}° ÷ 4 = ${x}°` : C.step === 0 ? `주어진 ∠EDF=${4 * x}°, ∠A=x` : ['x', 'x → 2x', 'x → 2x → 3x'][Math.min(2, C.step - 1)];
       else row = `x=${x}° → 2x=${2 * x}° → 3x=${3 * x}° → 4x=${4 * x}°`;
       T(b, pt(bx, yb), row, { dy: 66, size: 16, color: rcol });
@@ -468,9 +494,9 @@
     },
     draw(b, s, M, C) {
       const { bb, al, d, A, B, C: Cp, D, ca } = M;
-      const tt = C.problem ? 1 : C.review ? (C.step >= 3 ? 1 : C.step >= 2 ? 1 : C.step >= 1 ? 0.6 : 0) : C.t;
+      const tt = C.problem ? 1 : C.lesson ? s.lessonEntry ? 0 : C.t : C.review ? (C.step >= 3 ? 1 : C.step >= 2 ? 1 : C.step >= 1 ? 0.6 : 0) : C.t;
       const Dt = pt(Cp.x + ca * seg01(tt, 0, 0.7), 0), done = tt >= 0.7;
-      const m2 = C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : seg01(C.t, 0.7, 1);
+      const m2 = C.problem ? 0 : C.review && !C.lesson ? (C.step >= 2 ? 1 : 0) : seg01(tt, 0.7, 1);
       fit(b, bboxOf([A, B, Cp, D]), { t: 44, b: 92, l: 40, r: 44 });
       fillPoly(b, [A, B, Cp], 'sky', 0.12);
       if (done || C.problem) fillPoly(b, [A, Cp, D], 'green', 0.14);
@@ -488,13 +514,13 @@
       const separateBaseValues = !b.thumb && b.W < 560 && !C.problem && baseSpan - (bLabelDist + 52) * Math.cos(halfBaseAngle) < labelWidth + 12;
       ang(b, B, Cp, A, { color: 'sky', rings: 1, r: 30, label: dg(bb), size: 16,
         ...(separateBaseValues ? { labelDist: 44, labelRot: -120 + bb / 2, leader: true } : {}) });
-      ang(b, Cp, A, B, { color: 'sky', rings: 1, r: 30, label: C.problem ? '' : dg(bb), size: 16, labelDist: 52,
+      ang(b, Cp, A, B, { color: 'sky', rings: 1, r: 30, label: C.problem || C.lesson && !ready(s, 'pgSupportReady') ? '' : dg(bb), size: 16, labelDist: 52,
         ...(separateBaseValues ? { labelDist: 44, labelRot: 120 - bb / 2, leader: true } : {}) });
-      ang(b, A, B, Cp, { color: 'sky', r: 30, label: C.problem ? '' : dg(al), size: 16, labelDist: 56 });
+      ang(b, A, B, Cp, { color: 'sky', r: 30, label: C.problem || C.lesson ? '' : dg(al), size: 16, labelDist: 56 });
       if (done || C.problem) {
         if (m2 > 0.01 || C.problem) {
-          const hideTarget = C.problem || (C.review && C.step < 3);
-          ang(b, A, Cp, D, { color: 'amber', rings: 2, r: 34, label: hideTarget ? '' : dg(d), size: 16, labelDist: 62, alpha: C.problem ? 1 : m2 });
+          const hideTarget = C.lesson ? !ready(s) : C.problem || (C.review && C.step < 3);
+          ang(b, A, Cp, D, { color: 'amber', rings: 2, r: 34, label: hideTarget ? C.lesson ? 'x' : '' : dg(d), size: 16, labelDist: 62, alpha: C.problem ? 1 : m2 });
           ang(b, D, A, Cp, { color: 'amber', rings: 2, r: 34, label: hideTarget ? 'x' : dg(d), size: 17, alpha: C.problem ? 1 : m2, labelDist: 62 });
         }
       }
@@ -506,7 +532,8 @@
       if (done || C.problem) T(b, D, 'D', { dy: 20, size: 18 });
       const bx = (B.x + D.x) / 2;
       let row, col = 'amber';
-      if (C.problem) row = 'AB=AC, CA=CD 일 때 ∠D = x 의 크기는?';
+      if (C.lesson) { row = ready(s) ? `∠D = ${bb}°÷2 = ${d}°` : ready(s, 'pgSecondReady') ? `2x = ${bb}°` : ready(s, 'pgSupportReady') ? `AB=AC → ∠ACB = ${bb}°` : 'BC를 늘여 CD=CA가 되게 해요'; lessonRow(b, s, `∠D = ${d}°`); }
+      else if (C.problem) row = 'AB=AC, CA=CD 일 때 ∠D = x 의 크기는?';
       else if (C.review && C.step === 1) { row = `AB=AC → ∠ACB = ∠B = ${bb}°`; col = 'sky'; }
       else if (C.review && C.step === 2) { row = `∠ACB(${bb}°) = ∠CAD + ∠D`; col = 'sky'; }
       else row = done ? `∠D = ½ × ∠B = ½ × ${bb}° = ${d}°` : '막대를 끌어 CD를 늘여 보세요';

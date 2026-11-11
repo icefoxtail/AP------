@@ -16,6 +16,11 @@
     pgT: P('그어 보기', 0, 1, 0.01, 1, { color: 'amber', hint: '▶를 누르거나 막대를 끌면 하나씩 그어져요', format: (v) => Math.round(v * 100) + '%' })
   };
   const nDiag = (n) => (n * (n - 3)) / 2;
+  const ready = (s, key = 'pgShowAnswer') => !s.lessonEntry && s[key] === true;
+  function lessonRow(b, s, text) {
+    if (!(s.lessonOn || s.lessonEntry) || !ready(s)) return;
+    b.stext((b.W + b.insets.left - b.insets.right) / 2, b.insets.top + 17, text, { color: 'green', size: 17, weight: 800, align: 'center', baseline: 'middle' });
+  }
   const plainNum = (v) => ({ tex: (x) => String(x), plain: (x) => String(x) + '개' });
   // 꼭짓점 안쪽에 놓는 작은 글자
   function inner(b, p, c, str, color, size = 14, d = 20) {
@@ -44,8 +49,8 @@
     draw(b, s, M, C) {
       const { n, v, a } = M, Pn = regUp(n, 1), O = pt(0, 0), V = Pn[v], nb = [(v + 1) % n, (v + n - 1) % n];
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 62 });
-      const prog = C.review ? (C.step >= 2 ? a : 0) : C.t * a;
-      const showX = !C.problem && C.step >= 1, showDiag = !C.problem && C.step >= 2, showTri = !C.problem && C.step >= 3;
+      const prog = C.lesson ? (s.lessonEntry ? 0 : C.t * a) : C.review ? (C.step >= 2 ? a : 0) : C.t * a;
+      const showX = !C.problem && C.step >= 1, showDiag = !C.problem && (C.lesson || C.step >= 2), showTri = !C.problem && C.step >= 3;
       const far = Array.from({ length: a }, (_, i) => (v + 2 + i) % n);
       const done = Math.floor(prog + 1e-9);
       // 삼각형(부채 모양으로 나뉨)
@@ -62,13 +67,20 @@
         const f = clamp(prog - i, 0, 1);
         if (f <= 0) return;
         line(b, V, lerp(V, Pn[j], f), 'green', 3.6);
-        if (f >= 1 && C.txt) inner(b, Pn[j], O, String(i + 1), 'green', 15, 22);
+        if (f >= 1 && C.txt && (!C.lesson || ready(s, 'pgSupportReady'))) inner(b, Pn[j], O, String(i + 1), 'green', 15, 22);
       });
       if (showX) nb.forEach((j) => cross(b, Pn[j]));
       vertsOf(b, Pn, M, C, { colorOf: (i) => (i === v ? 'amber' : 'ink') });
       if (!C.problem && C.txt && !C.review && !C.thumb) b.handle('v', V, { color: 'amber', r: 8, ariaLabel: '꼭짓점 고르기', drag: (w) => { let best = 0, bd = 1e9; Pn.forEach((p, i) => { const d = Math.hypot(p.x - w.x, p.y - w.y); if (d < bd) { bd = d; best = i; } }); s.pgV = best; } });
       else b.point(V, { color: 'amber', r: 7.5 });
       if (C.txt && !C.problem) {
+        if (C.lesson) {
+          const mode = s.pgLessonMode;
+          lessonRow(b, s, mode === 'diag' ? `대각선 ${M.a}개` : mode === 'tri' ? `삼각형 ${M.t}개` : `a+b = ${M.a}+${M.t} = ${M.a + M.t}`);
+          const row = mode === 'sum' && ready(s, 'pgSecondReady') ? `a=${M.a}, b=${M.t}` : ready(s, 'pgSupportReady') ? `대각선 a=${M.a}개` : '이웃하지 않는 꼭짓점을 이어요';
+          T(b, pt(0, Math.max(...Pn.map(p => p.y))), row, { dy: 46, size: 17, color: 'green' });
+          return;
+        }
         const yb = Math.max(...Pn.map((p) => p.y));
         if (n === 3) T(b, pt(0, yb), '삼각형에는 대각선이 없어요', { dy: 46, size: 16, color: 'amber' });
         else if (showDiag) T(b, pt(0, yb), `대각선 ${done}개` + (showTri ? ` → 삼각형 ${nTri}개` : ''), { dy: 46, size: 17, color: 'green' });
@@ -113,7 +125,7 @@
     draw(b, s, M, C) {
       const { n, a } = M, Pn = regUp(n, 1), O = pt(0, 0);
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 84 });
-      const kp = C.problem ? 0 : C.review ? (C.step <= 1 ? 1 : n) : C.t * n; // 세어 본 꼭짓점 수(소수)
+      const kp = C.problem ? 0 : C.lesson ? (s.lessonEntry ? 0 : C.t * n) : C.review ? (C.step <= 1 ? 1 : n) : C.t * n; // 세어 본 꼭짓점 수(소수)
       const kInt = Math.min(n, Math.ceil(kp - 1e-9));
       fillPoly(b, Pn, 'sky', 0.08);
       poly(b, Pn, 'ink', 3.4);
@@ -131,11 +143,17 @@
         const on = i < kp - 1e-9, cur = !C.problem && kp > 0 && kp < n && i === Math.floor(kp);
         b.point(p, { color: on ? 'green' : 'ink', r: cur ? 7 : 4.8 });
         if (C.txt) tagOut(b, p, O, LET[i], { size: n > 9 ? 15 : 17, gap: 10 });
-        if (C.txt && on && n > 3) inner(b, p, O, String(a), 'sky', 14, 21);
+        if (C.txt && on && n > 3 && (!C.lesson || ready(s, 'pgSupportReady'))) inner(b, p, O, String(a), 'sky', 14, 21);
       });
       if (C.review && C.step >= 3 && sample && C.txt) { inner(b, Pn[0], O, '①', 'amber', 15, 38); inner(b, Pn[2], O, '②', 'amber', 15, 38); }
       if (C.txt && !C.problem) {
         const yb = Math.max(...Pn.map((p) => p.y));
+        if (C.lesson) {
+          lessonRow(b, s, `대각선 ${M.N}개`);
+          const row = ready(s, 'pgSecondReady') ? `${n}×${a}=${M.tot} (두 번씩 센 값)` : ready(s, 'pgSupportReady') ? `한 꼭짓점: ${n}−3=${a}개` : '대각선을 양쪽 끝에서 세어 보아요';
+          T(b, pt(0, yb), row, { dy: 44, size: 17, color: 'sky' });
+          return;
+        }
         if (n === 3) T(b, pt(0, yb), '삼각형에는 대각선이 없어요', { dy: 46, size: 16, color: 'amber' });
         else {
           const full = kp >= n - 1e-9;
@@ -183,10 +201,10 @@
     reroll: (s) => { s.pgM = pick(TARGETS, s.pgM); s.pgN = 6; },
     model: (s) => { const n = clamp(Math.round(s.pgN), 3, 12), T0 = TARGETS.includes(s.pgM) ? s.pgM : 27, ns = nStarOf(T0); return { n, T0, ns, N: nDiag(n), two: 2 * T0, ok: nDiag(n) === T0 }; },
     draw(b, s, M, C) {
-      const n = C.review || C.problem ? M.ns : M.n;
+      const n = C.lesson ? M.n : C.review || C.problem ? M.ns : M.n;
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 84 });
       const O = pt(0, 0);
-      if (C.problem || (C.review && C.step < 3)) {
+      if (C.problem || (C.review && !C.lesson && C.step < 3)) {
         b.circle(O, 1, { color: 'muted', width: 2.4, dash: [7, 6] });
         T(b, O, '?각형', { size: 26, color: 'amber' });
         T(b, pt(0, 1), C.review && C.step >= 2 ? `n(n−3) = ${M.two}` : `대각선 ${M.T0}개`, { dy: 46, size: 18, color: 'green' });
@@ -199,6 +217,12 @@
       Pn.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (C.txt && n <= 12) tagOut(b, p, O, LET[i], { size: n > 9 ? 15 : 17, gap: 10 }); });
       if (!C.txt) return;
       const yb = Math.max(...Pn.map((p) => p.y)), N = nDiag(n);
+      if (C.lesson) {
+        lessonRow(b, s, `${M.ns}각형`);
+        const row = ready(s) ? `${M.ns}×${M.ns - 3}÷2=${M.T0}` : ready(s, 'pgSecondReady') ? `n(n−3)=${M.two}` : ready(s, 'pgSupportReady') ? `${n}각형: ${n}×${n - 3}÷2=${N}개` : `목표 대각선 ${M.T0}개 · 후보 ${n}각형`;
+        T(b, pt(0, yb), row, { dy: 46, size: 17, color: 'amber' });
+        return;
+      }
       if (C.review) {
         const rows = [`대각선 ${M.T0}개 → n(n−3)÷2 = ${M.T0}`, `n(n−3) = ${M.two}`, `${M.ns}×${M.ns - 3} = ${M.two} → n = ${M.ns}`];
         T(b, pt(0, yb), rows[Math.min(2, Math.max(0, C.step - 1))], { dy: 46, size: 17, color: 'amber' });
