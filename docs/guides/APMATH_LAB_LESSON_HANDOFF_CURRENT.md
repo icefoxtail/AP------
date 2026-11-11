@@ -165,7 +165,7 @@
 | K1 | `lesson-browser-audit`의 진입 화면 검사가 **그림 속 글자**(canvas `fillText`, 측정용 그리기 제외)와 칩·상태 줄까지 읽어 정답 노출을 잡게 한다. 재생 중 조기 노출 검사와 같은 방식 | 원과 부채꼴에서 진입 화면에 정답이 그려진 4개 장면을 감사가 통과시켰다 |
 | K2 | `tab:'review'` 해설의 진입 화면을 키트가 기본으로 정리 탭 0단계 그림으로 그리게 한다 | 지금은 장면마다 `lessonEntry` 처리를 따로 넣고 있다 |
 | K3 | 정리 탭 해설이 `s.dragging`을 쥐면 장면 `tick`이 멈춘다. 값 끌림만 막고 `tick` 보간은 살리는 방법(별도 표시)으로 바꾼다 | `tick`으로 보간하는 장면(f02)이 재생 중 단계 변화를 따라가지 못해 장면마다 우회하고 있다 |
-| K4 | **IMPLEMENTED · 병합 대기** — cue `pin: true`의 수식을 최근 3줄까지 유지. 이전 줄은 흐리게, 세로 태블릿 700~1024px은 수식·자막 두 열. 핀 없는 기존 해설은 같은 배치 유지 | §7 고등 수식 전개에 필요. core·Player·기존 두 실험실 VM 최소 검사 64/64, 실제 화면 QA는 NOT_RUN |
+| K4 | **IMPLEMENTED · [PR #1781](https://github.com/icefoxtail/AP------/pull/1781) 병합 대기** — cue `pin: true`의 수식을 최근 3줄까지 유지. 이전 줄은 흐리게, 세로 태블릿 700~1024px은 수식·자막 두 열. 핀 없는 기존 해설은 같은 배치 유지 | §7 고등 수식 전개에 필요. core·Player·기존 두 실험실 VM 최소 검사 64/64, 실제 화면 QA는 NOT_RUN |
 | K5 | 넓은 화면(860px 이상)에서 탐구 패널의 결론이 ▶ 전에 보이는 장면의 처리 | 사용자 결정 필요. 결정 전에는 손대지 않고 사례만 모은다 |
 | K6 | 360px 폭에서 버튼 2개 + 「직접 해 보기」가 두 줄로 넘어감 | 가려지는 것은 없다. 낮은 우선순위 |
 
@@ -268,7 +268,7 @@
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
 
-- 2026-11-11 · K4 고정 수식 줄 **구현 및 최소 안전 검사 완료**. `pin:true`가 붙은 자막의 수식만 추출하여 현재 시간까지의 최근 3줄을 표시하고, 되감기·다시 보기·해설 전환·끝 카드에서 미래 수식/이전 해설의 수식을 비운다. 기존 컴파일 결과와 `stateAt`은 핀이 없는 대본에서 동일하며 기본 1.5배 속도를 유지했다. 세로 태블릿 700~1024px에서 핀이 있는 동안 수식 왼쪽·현재 자막 오른쪽, 다른 화면은 위아래 배치다. 신규 core 8·Player 6, 기존 video 41·속도 2·닮음 VM 3·원 VM 4로 **64/64 통과**, fail/skip/cancel 0. JS/MJS 4파일 구문·diff 검사 통과. 실제 브라우저 픽셀·전수 모바일·독립 시각 검수는 **NOT_RUN / QA_PENDING**. [AWCR r29](https://drive.google.com/file/d/1c8yebVhVbcRvpCcQnarBM7Z_7GN4Ruiz/view) raw SHA-256 `1841d3dae0e2fc996194de2d5e6b1d4b6728695c6af3c9c88847824d761bc9f7`·7,212 bytes는 첫 구현 원격 head `a937d27a70cd45385e4a64785e61b1b8e019ad85`에 고정한 저장본이며 최종 UI·통합 검사 결과는 다음 revision에 기록한다.
+- 2026-11-11 · K4 고정 수식 줄 [PR #1781](https://github.com/icefoxtail/AP------/pull/1781) **구현 및 최소 안전 검사 완료**. `pin:true`가 붙은 자막의 수식만 추출하여 현재 시간까지의 최근 3줄을 표시하고, 되감기·다시 보기·해설 전환·끝 카드에서 미래 수식/이전 해설의 수식을 비운다. 기존 컴파일 결과와 `stateAt`은 핀이 없는 대본에서 동일하며 기본 1.5배 속도를 유지했다. 세로 태블릿 700~1024px에서 핀이 있는 동안 수식 왼쪽·현재 자막 오른쪽, 다른 화면은 위아래 배치다. 신규 core 8·Player 6, 기존 video 41·속도 2·닮음 VM 3·원 VM 4로 **64/64 통과**, fail/skip/cancel 0. JS/MJS 4파일 구문·diff 검사 통과. 실제 브라우저 픽셀·전수 모바일·독립 시각 검수는 **NOT_RUN / QA_PENDING**. [AWCR r29](https://drive.google.com/file/d/1c8yebVhVbcRvpCcQnarBM7Z_7GN4Ruiz/view) raw SHA-256 `1841d3dae0e2fc996194de2d5e6b1d4b6728695c6af3c9c88847824d761bc9f7`·7,212 bytes는 첫 구현 원격 head `a937d27a70cd45385e4a64785e61b1b8e019ad85`에 고정한 저장본이며 최종 UI·통합 검사 결과는 다음 revision에 기록한다.
 
 - 2026-11-11 · 원의 성질 [PR #1780](https://github.com/icefoxtail/AP------/pull/1780) **main 병합 완료**. head `ebc21478efc5ba62bbaff4ff2378ef5d3db33cdd`, merge/API·Git main `41a2cc430ee7f2c297d771587dee61e065b72df4`; ancestor 및 대상 13파일 차이 0 확인. 중등 **16개 실험실·529장면/1,532해설**이 main에 등록됐다. 병합 시 CI 11개는 queued로 전체 CI PASS를 주장하지 않았다. 11:03 UTC 운영 파일 7개는 0개 일치(기존 HTML/core/t2/t7 4개 불일치, lesson-b/c 404, lesson-a 503 재시도 후 미확인)여서 **PAGES_NOT_VERIFIED / QA_PENDING**이다. [AWCR r28](https://drive.google.com/file/d/1xgTahPbjnmiPwF3V6I5_L3TnMQqt2hqk/view) raw SHA-256 `8993dd87ff6bd1554a39c1d598ce84774e4825398849b093ecd953db6704c699`·7,116 bytes를 다시 읽어 검증했다. 다음은 §7의 고등 시범과 필요한 K4 별도 키트 PR이다.
 
