@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sMO",
+      "refs": [
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [
+    "t",
+    "xAxis",
+    "yAxis"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "좌표축 위에 원 C와 O, A, B, 중심 M, 접선, 점 P와 x축 위의 수선의 발 Q가 보인다. 삼각형 OAB와 OPB의 넓이는 같다.",
+  "newVisualInformation": [
+    "중심과 접선, 수직인 반지름, 같은 넓이의 두 삼각형과 수선의 발을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 세 점 $O(0,0)$, $A(6,-8)$, $B(7,-1)$을 지나는 원 $C$에 대하여, 원 $C$ 위의 점 $O$에서의 접선을 $l_1$이라 하자. 두 삼각형 $OAB$와 $OPB$의 넓이가 같게 되는 직선 $l_1$ 위의 점을 $P$, 점 $P$에서 $x$축에 내린 수선의 발을 $Q$라 할 때, $\\overline{QO}$의 길이를 구하고 풀이과정을 쓰시오. (단, 점 $P$는 제3사분면 위의 점이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "원을 $x^2+y^2+Dx+Ey=0$이라 두면, 원이 $A(6,-8)$을 지나므로\n$36+64+6D-8E=0$\n$100+6D-8E=0$.\n또 $B(7,-1)$을 지나므로\n$49+1+7D-E=0$\n$50+7D-E=0$.\n둘째 식에서 $E=50+7D$이다. 첫째 식에 대입하면\n$100+6D-8(50+7D)=0$\n$-300-50D=0$\n$D=-6$, $E=8$.\n\n$x^2+y^2-6x+8y=0$을 완전제곱식으로 고치면\n$(x-3)^2+(y+4)^2=25$.\n따라서 중심은 $(3,-4)$이고 반지름은 $5$이다.\n반지름과 접선은 수직이다. 중심에서 $O$로 가는 반지름의 기울기는 $-\\dfrac43$이므로 $O$에서의 접선 기울기는 $\\dfrac34$이다.\n따라서 $l_1:y=\\dfrac34x$이다.\n\n삼각형 $OAB$의 넓이는 좌표를 이용해\n$\\dfrac12|6(-1)-(-8)7|=25$.\n$P=(x,y)$라 하자. $P$가 제3사분면에 있으므로 $x<0,y<0$이고 $-x-7y>0$이다.\n따라서\n$\\triangle OPB$의 넓이 $=\\dfrac12|-x-7y|=\\dfrac12(-x-7y)$.\n두 넓이가 같으므로 $-x-7y=50$이다.\n\n$l_1$에서 $y=\\dfrac34x$이므로\n$-x-7(\\dfrac34x)=50$\n$-\\dfrac{25}{4}x=50$\n$x=-8$, $y=-6$.\n점 $P$에서 $x$축으로 내린 수선의 발은 $Q=(-8,0)$이다.\n따라서 $\\overline{QO}=|-8-0|=8$이다.",
+      "mappedTo": "figure"
+    }
+  ],
+  "hiddenPointNames": [],
+  "rightAngles": [
+    {
+      "id": "raO",
+      "refs": [
+        "M",
+        "O",
+        "P"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "raQ",
+      "refs": [
+        "P",
+        "Q",
+        "O"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "coordinateLabels": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "radiusMO",
+        "ownerSegment": "sMO",
+        "text": "5"
+      }
+    ]
+  },
+  "sourceQuote": "좌표평면 위의 세 점 $O(0,0)$, $A(6,-8)$,"
+}

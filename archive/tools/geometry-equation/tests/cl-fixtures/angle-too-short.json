@@ -1,0 +1,134 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "pV",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "pA",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "1",
+       "denominator": "40"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "pB",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayPoints": [
+  "pV",
+  "pA",
+  "pB"
+ ],
+ "hiddenPointNames": [
+  "pV",
+  "pA",
+  "pB"
+ ],
+ "hiddenPointStyle": "NONE",
+ "displaySegments": [
+  {
+   "id": "sVA",
+   "refs": [
+    "pV",
+    "pA"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "pA",
+    "pB"
+   ]
+  },
+  {
+   "id": "sBV",
+   "refs": [
+    "pB",
+    "pV"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aV",
+    "refs": [
+     "pA",
+     "pV",
+     "pB"
+    ],
+    "value": 71.565,
+    "arcs": 1,
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 360
+ },
+ "caption": "아주 짧은 한 변 위의 각: 짧은 변이 3 px 남짓이면 각 표식은 여전히 거절된다.",
+ "sourceQuote": "각 표식",
+ "newVisualInformation": [
+  "짧은 변 끝의 각 표식"
+ ]
+}

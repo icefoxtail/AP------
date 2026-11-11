@@ -403,6 +403,7 @@ def brace_points(length,start,tip):
 # An angle label whose nearest edge is farther than this (px) from its vertex is no longer read as its arc's value: it takes a leader to the arc instead
 # (the golden figures keep every label within 71 px, so they are unchanged). The plane-marks observer checks the same distance on the final SVG (ANGLE_LABEL_TOO_FAR).
 ANGLE_LABEL_FAR_DISTANCE_PX=90.0
+ANGLE_COMPACT_MIN_RAY_PX=8.0   # (CL) the shortest ray an angle mark may stand on; between this and the usual 24-28 px its arcs shrink with the ray
 
 def prepare(spec):
     semantic=validate(spec);spec=semantic['spec'];geometry=semantic['geometry'];tokens=load();critical=[]
@@ -1045,7 +1046,11 @@ def prepare(spec):
                 if obj.get('arcScale')=='PROPORTIONAL':
                     # (G11) a pulled-out angle keeps its arcs in proportion to the drawn rays (the fixed 28 px cap does not apply): the first arc at 0.30 of the ray, clamped to [16 px, 0.55 of the ray]
                     arc_gap=max(4.5,.04*rays);first=min(max(.30*rays,16.0),.55*rays)+2*arc_gap*(ring-1)
-                if rays<first+arc_gap*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                compact=False
+                if rays<first+arc_gap*(count-1)+8:
+                    # (CL) A very short ray: the arcs shrink with it (outermost arc at 55 % of the ray) and its label may stand as far out as the longer ray reaches; below the minimum the mark is still refused
+                    if obj.get('angleDimension') is not None or rays<ANGLE_COMPACT_MIN_RAY_PX:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                    arc_gap=min(arc_gap,max(2.5,.1*rays));first=max(3.0,.55*rays-arc_gap*(count-1));compact=True
                 steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+arc_gap*(count-1)
                 if obj.get('angleDimension') is not None:
                     # (G11) the angle as a dimension: one arc at radiusFactor times the shorter ray (1.15 by default), an arrowhead at each end, and the rays prolonged to the arc when it stands beyond them
@@ -1073,7 +1078,8 @@ def prepare(spec):
                     primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER',**({'stroke':group_stroke} if group_stroke else {})},'curve')
                 if obj.get('labelText') is not None:
                     middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))
-                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX,**({'forceLeader':True} if obj.get('labelPlacement')=='LEADER' else {})},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
+                    label_reach=max(math.dist(a,v),math.dist(b,v)) if compact else rays   # (CL) a compact mark's label may stand as far out as the longer ray reaches
+                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*label_reach)),'rFar':max(outer_radius+12.0,.92*label_reach),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX,**({'forceLeader':True} if obj.get('labelPlacement')=='LEADER' else {})},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
                 continue
             primitive({'id':oid,'kind':'polyline','points':pts,'token':'secondaryShape' if 'squareSize' in obj else 'indicator','layer':60,'role':'indicator'},'curve')
         elif kind=='DIMENSION_LINE':
@@ -1366,7 +1372,7 @@ def prepare(spec):
         decorate(prepared, labels, obstacles, vp, semantic)
     return prepared,labels,obstacles,vp,semantic,sampling
 
-def build(spec,measurements=None,fragments=None,strict_measured_fragments=False):
+def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,last_resort=False):
     prepared,labels,obstacles,vp,semantic,sampling=prepare(spec)
     if strict_measured_fragments:
         if not isinstance(measurements,dict) or not isinstance(fragments,dict):raise ValueError('BROWSER_MEASURED_TYPOGRAPHY_REQUIRED')
@@ -1414,7 +1420,7 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False)
     label_margin=12 if fragments is not None else vp.margin
     safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
-    result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments)
+    result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments,last_resort=last_resort)
     for row in result.get('labels',[])+result.get('suppressed',[]):
         if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before
     if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'

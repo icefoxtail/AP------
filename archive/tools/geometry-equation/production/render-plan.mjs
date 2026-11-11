@@ -306,7 +306,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     const m=await pythonWorker(plan.graphPlan?{action:'graph',graphPlan:plan.graphPlan}:{action:'construction',graph:plan.mathPlan},plan.graphPlan?undefined:{timeoutMs:90000});if(m.status!=='OK')throw {stage,detail:m.result};
     let model=m.result;
     // spec -> Archive policy -> L1, once; a construction plan whose labels found no room is retried once with coordinatePlacement PANEL.
-    const attempt=async(candidatePlan,suffix)=>{
+    const attempt=async(candidatePlan,suffix,lastResort=false)=>{
       const watch=stopwatch();
       where.plan=candidatePlan;
       try{
@@ -321,7 +321,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       watch.lap('measure');
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
-      const composed=await composeConstructionCandidate({plan:candidatePlan,model,identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});
+      const composed=await composeConstructionCandidate({plan:candidatePlan,model,identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)},...(lastResort?{lastResort:true}:{})});
       watch.lap('compose');
       log.attempt({variant:attemptVariant(suffix),stage,ok:composed.status==='COMPOSED',code:errorCode(composed),detail:composed.detail??composed.status,fallback:row.fallback?.map(f=>f.to),watch});
       return {size,measured,composed};
@@ -386,6 +386,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         ({size,measured,composed}=await attempt(plan,'-canvas'+w));
         if(composed.status!=='LAYOUT_INVENTORY_INCOMPLETE')break;
       }
+    }
+    // (CL) Last resort, only after every step above: the labels still without a place get one more composition in which a point name may take a leader across a thin stroke or two and a
+    // segment label stops counting a longer segment lying over its own as a competitor. A figure that composed before is never touched; if this does not compose either, the failure stays as it was.
+    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&plan.mathPlan&&!plan.graphPlan){
+      let last=null;
+      try{last=await attempt(plan,'-last',true);}catch{last=null;}
+      if(last&&last.composed.status==='COMPOSED'){(row.fallback??=[]).push({from:clip(composed.detail),to:'LAYOUT_LAST_RESORT'});({size,measured,composed}=last);}
     }
     row.layoutRepairs=composed.layoutRepairs?.length??0;
     if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};

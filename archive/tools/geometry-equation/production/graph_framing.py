@@ -4589,11 +4589,36 @@ def _equalize_exp_log_for_circles(plan,framed,anchors):
     if (graph['domain'][1]-graph['domain'][0])*scale<EQUAL_UNIT_MIN_CURVE_PX:_overlay_fail('OVERLAY_EQUAL_UNITS_CURVE_TOO_NARROW',plan.get('family'))
     return {**framed,'graphPlan':{**graph,'viewport':viewport,'equalUnits':True,'axisRatio':1,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}}
 
+def _overlay_line_frame_anchor(plan,ident):
+    """(CL) One point on the declared overlay line `ident`, inside the span of the plan's own required points, so the framer's window reaches the line."""
+    entry=next((row for row in (plan.get('overlays') or {}).get('lines') or [] if isinstance(row,dict) and row.get('id')==ident),None)
+    if entry is None:return None
+    try:
+        xs=[float(row['x']) for row in plan.get('requiredPoints') or [] if isinstance(row,dict) and isinstance(row.get('x'),(int,float))]
+        ys=[float(row['y']) for row in plan.get('requiredPoints') or [] if isinstance(row,dict) and isinstance(row.get('y'),(int,float))]
+        if 'x' in entry:
+            x=float(S.N(_overlay_exact(entry['x'],ident),30));return (x,sum(ys)/len(ys) if ys else 0.0)
+        slope=float(S.N(_overlay_exact(entry['slope'],ident),30));intercept=float(S.N(_overlay_exact(entry['intercept'],ident),30))
+        x=sum(xs)/len(xs) if xs else 0.0
+        return (x,slope*x+intercept)
+    except (ValueError,KeyError,TypeError,ZeroDivisionError):return None
+
 def fit_overview(plan):
+    """The family framer with the declared overlays. A line that the automatically framed window misses (the points that framed it were hidden or not asked for)
+    widens the window once to reach that line (CL); an author-stated viewport is never widened. A plan whose lines the first window already reaches is framed as before."""
+    try:return _fit_overview_framed(plan,[])
+    except ValueError as error:
+        found=re.match(r'^OVERLAY_LINE_OUTSIDE_VIEWPORT:(.+)$',str(error))
+        if not found or plan.get('viewport') is not None:raise
+        extra=_overlay_line_frame_anchor(plan,found.group(1))
+        if extra is None:raise
+        return _fit_overview_framed(plan,[extra])
+
+def _fit_overview_framed(plan,extra_anchors):
     """The family framer, then the optional graph overlays: every overlay coordinate is recomputed exactly and must stay inside the
     framed viewport. The fitted plan carries overlaysFeatures for the model/spec; the independent observer recomputes them from the raw
     overlays field. Unsupported or out-of-view overlays are refused, never silently dropped."""
-    anchors=_overlay_anchor_points(plan)
+    anchors=_overlay_anchor_points(plan)+extra_anchors
     framed=_fit_overview_family({**plan,'overlayAnchors':anchors} if anchors else plan)
     framed['graphPlan'].pop('overlayAnchors',None)
     framed=_equalize_exp_log_for_circles(plan,framed,anchors)
