@@ -309,16 +309,85 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   };
 }
 
-export function wrapGeminiFile(geminiPath, driveFileId, driveChecksum) {
+// Intake normalization (2026-11-11). Gemini's Drive files drift in shape (sourceOrdinal instead of ordinal, HIGH instead
+// of high, a missing schemaVersion) and point at an older Git blob once the exam file has been edited. The courier used to
+// repair these by hand from its prompt, and the ledger shows the hand repair was not reliable: 57 files were refused for
+// "blob drift" and 48 for a missing ordinal while the repair rules were already in force. The same rules now run here,
+// the same way every time. Nothing is judged or guessed: `after.difficultyBucket` and the other ratings are copied as
+// they are, and the registrar's own guards (ordinal \u2194 questionUid, value format, never overwrite a number) still apply.
+export function normalizeGeminiPayload(raw, { root, driveFileId } = {}) {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) fail("gemini payload must be a JSON object");
+  const repairs = [];
+  const note = tag => { if (!repairs.includes(tag)) repairs.push(tag); };
+  const items = !Array.isArray(raw.items) ? raw.items : raw.items.map(source => {
+    const item = source && typeof source === "object" ? source : {};
+    let ordinal = item.ordinal;
+    if (ordinal === undefined && item.sourceOrdinal !== undefined) { ordinal = item.sourceOrdinal; note("REPAIRED_FORMAT"); }
+    const after = item.after && typeof item.after === "object" ? item.after : {};
+    let confidence = after.difficultyConfidence;
+    if (typeof confidence === "string" && !CONFIDENCE.has(confidence) && CONFIDENCE.has(confidence.toLowerCase())) {
+      confidence = confidence.toLowerCase();
+      note("REPAIRED_FORMAT");
+    }
+    return {
+      ordinal, questionUid: item.questionUid,
+      ...(item.before && typeof item.before === "object" && "level" in item.before ? { before: { level: item.before.level } } : {}),
+      after: {
+        difficultyBucket: after.difficultyBucket, difficultyConfidence: confidence,
+        difficultyBoundaryFlag: after.difficultyBoundaryFlag, legacyLevelCompatibility: after.legacyLevelCompatibility
+      }
+    };
+  });
+  if (raw.schemaVersion !== "v1") note("REPAIRED_FORMAT");
+
+  // The registrar compares against the LF blob, which is what Git stores and what the workflow's Linux checkout reads.
+  // Hashing the working file as it is would give a different number on a Windows checkout with CRLF line endings.
+  let latestBlobSha = raw.latestBlobSha, previousBlobSha = null;
+  const source = String(raw.sourceArchiveFile || "").normalize("NFC");
+  if (root && source.endsWith(".js") && !source.includes("..") && !path.isAbsolute(source)) {
+    const sourcePath = path.join(root, "archive/exams", source);
+    if (fs.existsSync(sourcePath)) {
+      const bytes = fs.readFileSync(sourcePath);
+      const current = blobSha(bytes.includes(0x0d) ? Buffer.from(bytes.toString("utf8").replace(/\r\n/g, "\n"), "utf8") : bytes);
+      if (current !== latestBlobSha && blobSha(bytes) !== latestBlobSha) {
+        previousBlobSha = latestBlobSha ?? null;
+        latestBlobSha = current;
+        note("REPAIRED_SHA");
+      }
+    }
+  }
+  const intakeNote = "Extracted from Drive file " + (driveFileId || "(unknown)") + " (registration fields only)"
+    + (repairs.length ? "; " + repairs.join(", ") : "")
+    + (previousBlobSha !== null ? "; latestBlobSha was " + previousBlobSha : "");
+  return {
+    repairs,
+    gemini: {
+      _intakeNote: intakeNote, schemaVersion: "v1", requestId: raw.requestId, createdAt: raw.createdAt,
+      sourceArchiveFile: raw.sourceArchiveFile, latestBlobSha, items
+    }
+  };
+}
+
+// A Drive export sometimes arrives inside a Markdown code fence. Only the fence is removed; the JSON is not touched.
+const unfence = text => {
+  const fenced = /^\s*```[a-zA-Z0-9_-]*\s*\n([\s\S]*?)\n```\s*$/.exec(text);
+  return fenced ? fenced[1] : text;
+};
+
+export function wrapGeminiFile(geminiPath, driveFileId, driveChecksum, { normalize = false, root } = {}) {
   const bytes = fs.readFileSync(geminiPath);
   if (!driveFileId) fail("--drive-file-id required");
   const text = bytes.toString("utf8").replace(/^\uFEFF/, "");
-  return {
+  const normalized = normalize ? normalizeGeminiPayload(JSON.parse(unfence(text)), { root, driveFileId }) : null;
+  const wrapped = {
     schemaVersion: SCHEMA, driveFileId,
     driveSha256: driveChecksum || crypto.createHash("sha256").update(bytes).digest("hex"),
     driveChecksumSource: driveChecksum ? "drive_metadata" : "local_bytes",
-    gemini: JSON.parse(text)
+    gemini: normalized ? normalized.gemini : JSON.parse(text)
   };
+  // Not part of the request file: the CLI prints it so the courier can record what was repaired.
+  if (normalized) Object.defineProperty(wrapped, "repairs", { value: normalized.repairs, enumerable: false });
+  return wrapped;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -326,8 +395,12 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const opt = n => { const i = argv.indexOf("--" + n); return i < 0 ? undefined : (argv[i + 1]?.startsWith("--") || argv[i + 1] === undefined ? true : argv[i + 1]); };
   const root = opt("repo-root") ? path.resolve(String(opt("repo-root"))) : path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
   if (opt("wrap")) {
-    const text = JSON.stringify(wrapGeminiFile(path.resolve(String(opt("wrap"))), String(opt("drive-file-id") || ""), opt("drive-checksum") && opt("drive-checksum") !== true ? String(opt("drive-checksum")) : undefined), null, 2) + "\n";
+    const wrapped = wrapGeminiFile(path.resolve(String(opt("wrap"))), String(opt("drive-file-id") || ""), opt("drive-checksum") && opt("drive-checksum") !== true ? String(opt("drive-checksum")) : undefined,
+      { normalize: Boolean(opt("normalize")), root });
+    const text = JSON.stringify(wrapped, null, 2) + "\n";
     if (opt("out") && opt("out") !== true) fs.writeFileSync(path.resolve(String(opt("out"))), text, "utf8"); else process.stdout.write(text);
+    // stderr, so stdout stays the request JSON when --out is not given
+    if (opt("normalize")) console.error("DIFF5_INTAKE_REPAIRS: " + (wrapped.repairs.length ? wrapped.repairs.map(tag => "[" + tag + "]").join(" ") : "none"));
   } else {
     if (!opt("request")) fail("--request or --wrap required");
     const request = JSON.parse(fs.readFileSync(path.resolve(root, String(opt("request"))), "utf8"));

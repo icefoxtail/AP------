@@ -66,3 +66,12 @@
 
 ## CURRENT HARD — JS 신규·수정·검수 Meta 필수 확인 (2026-10-10)
 - 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·level/1~5 난이도·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
+
+## CURRENT — 5단계 난이도(Gemini) 인박스 운반: 수리는 도구가, 작업 목록은 빈 파일만 (2026-11-11, 사용자 위임 결정)
+
+- **배경 숫자:** 2026-10-30 ~ 11-09 장부(`.archive-meta-register/diff5-intake-ledger.json`) 698건 중 반영 191건(3,424문항), 보류 504건. 보류의 절반(약 260건)은 이미 난이도가 있는 시험지를 다시 판정한 것이고, 나머지 절반(약 240건)은 형식 문제였다(원본 변경으로 해시 불일치 57, `ordinal` 대신 `sourceOrdinal` 48, 값 형식 무효 42, payload 형식 29 등). 그동안 난이도가 전혀 없는 파일 333개(7,611문항)는 그대로였다.
+- **수리는 운반 작업자가 손으로 하지 않고 도구가 한다:** `node archive/tools/meta-foundation/register-difficulty5.mjs --wrap <Drive 원본> --normalize …`. `sourceOrdinal`→`ordinal`, 신뢰도 대문자→소문자, `schemaVersion`→`v1`, 등록 필드만 추출, `latestBlobSha`를 현재 파일의 LF blob 해시로 맞춘다. 고친 내용은 stderr의 `DIFF5_INTAKE_REPAIRS:` 줄과 `gemini._intakeNote`에 남는다. 이유: 지시문으로 시킨 손 수리는 규칙이 있는 동안에도 해시 불일치 57건을 그대로 흘렸다(Windows CRLF 바이트 해시를 쓰는 등 매번 다르게 처리).
+- **난이도 값은 고치지 않는다.** `after.difficultyBucket` 등 판정 값은 그대로 옮기고, `"3"`·`"certain"`·`"none"`처럼 규격과 다른 값은 추정해 바꾸지 않아 지금처럼 `SKIP_INVALID`가 된다. 등록기의 문항 번호↔questionUid 대조와 "기존 숫자는 덮어쓰지 않는다"는 그대로다.
+- **장부의 "같은 파일은 건너뛴다"는 유지한다.** 다만 수리 규칙이 바뀌어 다시 볼 가치가 생긴 보류 건은 장부에서 그 항목을 지워 다음 회차에 새 파일로 다시 처리되게 한다(2026-11-11에 해시 불일치·ordinal·payload·값 형식 무효 176건을 이렇게 되돌렸다). 충돌(기존 난이도와 다름)·questionUid 불일치·원본 없음은 되돌리지 않는다.
+- **판정 대상은 난이도가 빈 파일만:** `node archive/tools/meta-foundation/list-missing-difficulty5.mjs [--format tsv] [--out <파일>]`이 정본 메타 기준으로 목록을 만든다(기출 최신 연도 먼저 → 유형 → 교과서 → 유사, 일부만 빈 파일은 빈 문항 번호 포함). Gemini 예약 라인에는 이 목록의 파일만 판정하게 한다. 이유: 이미 숫자가 있는 파일의 재판정은 인박스에서 전부 버려진다.
+- 기존 난이도와 다르게 나온 재판정을 반영하려면 `reviewedCorrection`(정확한 근거 필요) 경로를 쓴다. 인박스 운반에서 덮어쓰지 않는다.
