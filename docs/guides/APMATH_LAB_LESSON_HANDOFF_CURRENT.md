@@ -54,8 +54,9 @@
 | `g8-pythagoras` 피타고라스 정리 | 37 | 37 / 87 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1766](https://github.com/icefoxtail/AP------/pull/1766), merge `8951ab5607b3e2d1b7fc54ae64738875a626fd87`. 최소 검사 151/151, 구문 17파일, 누락 0. 실제 학생 HTML은 이전 버전 |
 | `g8-triangles` 삼각형의 성질 | 43 | 43 / 165 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1768](https://github.com/icefoxtail/AP------/pull/1768), merge `c554314dab47bb18adf8f71d8cf50f0e87e45b3e`. 최소 검사 171/171, 구문 16파일, 누락 0. 실제 학생 HTML은 이전 버전 (§6) |
 | `g8-quadrilaterals` 사각형의 성질 | 32 | 32 / 133 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1775](https://github.com/icefoxtail/AP------/pull/1775), merge `1adb00ecf9d275d8b83df5e1089e27e9dfe77466`. 기존 23/106 보존 + 잔여 9/27 추가, 누락 0. 최소 검사 109/109·구문 17파일 통과. 공통 Pages 등록 대기 (§6) |
-| `g8-similarity` 도형의 닮음 | 39 | 39 / 144 | **IMPLEMENTED / QA_PENDING** · [PR #1777](https://github.com/icefoxtail/AP------/pull/1777). 기본 닮음·넓이/부피·삼각형 17/65, 평행선 11/44, 직각삼각형·활용·무게중심 11/35. 누락 0. 최소 검사 108/108·구문 18파일 통과. main·Pages 확인 예정 (§6) |
-| 중3 2개 | 96 | 0 | 미착수 (§6) |
+| `g8-similarity` 도형의 닮음 | 39 | 39 / 144 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1777](https://github.com/icefoxtail/AP------/pull/1777), merge `80e3ecc5119c200b722c6e7563835e8fd772b2ea`. 기본 닮음·넓이/부피·삼각형 17/65, 평행선 11/44, 직각삼각형·활용·무게중심 11/35. 누락 0. 최소 검사 108/108·구문 18파일 통과. 실제 학생 HTML은 이전 버전 (§6) |
+| `g9-trig-ratio` 삼각비 | 51 | 51 / 245 | **IMPLEMENTED / QA_PENDING** · [PR #1779](https://github.com/icefoxtail/AP------/pull/1779). 뜻·특수각·표 19/111, 길이·높이 15/69, 넓이·입체 17/65. 개념 74, 원문 예제 171, 누락 0. 최소 검사 136/136·구문 22파일 통과. PR·main·Pages 확인 예정 (§6) |
+| `g9-circle` 원의 성질 | 45 | 0 | 미착수 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
@@ -199,6 +200,8 @@
 
 **닮음 구현·최소 확인(2026-11-11):** 실제 카탈로그와 HTML 로더의 **39장면/144해설**(개념 49, 원본 문제 예시 95)을 연결했다. t1~t3은 17/65, t4~t5는 11/44, t6~t8은 11/35이며 누락은 없다. 원본 `smPk`와 seed를 재생 시작에 고정하고 대응변·넓이/부피·SSA·접기·평행선·중점·내외각 이등분·직각삼각형·측량·무게중심을 별도 버튼으로 설명한다. 원문 보기와 수동 탐구를 유지하며 기존 `tick`은 해설 타임라인을 덮지 않는다. 전체 validator 오류/경고 0, 최소 Node 검사 **108/108**(실패·skip·cancelled 0), JS/MJS **18파일** 구문과 diff 확인을 통과했다. 실제 source Board의 처음 움직임·회전·고정 문제·최종 답과 좌표 기반 길이/넓이/부피를 검사했다. 실제 숫자 바꾸기 click handler 뒤 원문 복원 및 기존 선택 보존도 확인했다. SSA 교점 수의 조기 노출을 막고, 좁은 화면에서 항상 닮은 도형의 정답 표시가 원본 두 열 간격을 따르도록 한 줄 보완했다. TAP SHA-256 `fdc7e1219cc24ccb322961f010213c802b8ceb62503e9297e9433861d645f8f3`. 전수 모바일·독립 시각검수는 **NOT_RUN / QA_PENDING**이다.
 
+**삼각비 구현·최소 확인(2026-11-11):** 카탈로그와 실제 HTML 로더에 **51장면/245해설**(개념 74, 원문 예제 171)을 연결했다. 뜻·특수각·사분원·삼각비표 19/111, 길이·높이·거리 15/69, 삼각형/사각형 넓이·입체·결합도형 17/65이며 누락은 없다. 원본 생성기의 고정 문제 객체와 보기 순서를 묶어 다시 재생해도 같은 도형과 조건이 유지된다. 근호·분수·π·표의 반올림 값과 각/변 대응을 독립 계산으로 대조했다. 실제 HTML 및 production Board의 첫 움직임·단계·접기·미지 길이/각의 결론 공개를 확인했으며 A 888, C 552 cue/end 상태와 B 69해설의 모든 cue를 검사했다. validator 오류/경고 0, 통합 최소 검사 **136/136**(실패·skip·cancelled 0), JS/MJS 구문 **22파일**, diff 확인이 통과했다. 해설 초기 step 잔존, 자막의 근호/삼각함수 TeX, 반올림으로 인한 첫 움직임 지연을 수정했다. 원본 탐구와 수동 풀이를 유지했고 공통 재생 키트는 수정하지 않았다. 동일 seed 후보 목록을 재사용해 중복 원본 생성을 1,277회에서 647회로 줄였으며, source VM 단회 측정은 약 8.0초에서 4.3초로 줄었다(브라우저 성능 수치 아님). 245개 고정 문항과 보기 순서의 변경 전후 SHA-256 `970c4ea29dd2685da0f23d8f5921fe0b5f7ead25ed177c98cf665337bed56578`가 일치한다. 후보 재사용의 첫 일치 문항 보존과 예외 뒤 난수 복원도 검사했다. 최신 main `b2bb563b0953daf8b02e73cc0183996e1cfd027a`의 별도 Archive 6파일은 범위가 겹치지 않아 충돌 없이 반영했다. 전수 모바일·장시간 브라우저·독립 시각검수는 **NOT_RUN / QA_PENDING**이다.
+
 **공통 Pages 상태(2026-11-11 추가 확인):** 공개 `_archive-release.json`의 실제 소스는 `fb27d05ee921da9534d9fff332ac774d732b91cf`이며 마지막 실제 배포는 [42966828800](https://github.com/icefoxtail/AP------/actions/runs/42966828800)이다. 후속 [Pages 42970224073](https://github.com/icefoxtail/AP------/actions/runs/42970224073)은 workflow success라도 deploy가 skipped여서 신규 공개 증거가 아니다. 직전 [등록 writer 42974755265](https://github.com/icefoxtail/AP------/actions/runs/42974755265)는 `reviewedFinal / FINAL_CONSUMER / assignment_missing`으로 `publishable:false`였고 다음 writer들이 대기/실행 중이다. 사각형 코드의 확정 결함과 분리하며, 등록/보호 검사를 우회하지 않는다. 실제 HTML/영수증이 갱신되기 전까지 해당 실험실은 PAGES_NOT_VERIFIED다.
 
 ## 7. 고등
@@ -262,6 +265,8 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · 닮음 [PR #1777](https://github.com/icefoxtail/AP------/pull/1777) **main 병합 완료**. head `e11cbd7735fea5aa804cd922fa91f0912e83d438`, merge/API·Git main `80e3ecc5119c200b722c6e7563835e8fd772b2ea`; ancestor 및 대상 파일 일치 확인. 중등 main 누계 14개 실험실·433장면/1,072해설. 실제 학생 HTML은 4,736 bytes의 이전 파일이고 lesson-a.js는 HTTP 404이므로 **PAGES_NOT_VERIFIED / QA_PENDING**. [AWCR r21](https://drive.google.com/file/d/130muBUMYspeiE5lc5jtrUsjCwMY751Mk/view) raw SHA-256 `cca70035bc07e816fca0316963d2807aec48a471eaf98deb96bfbdea1cd35869`·5,863 bytes를 다시 읽어 검증했다. 다음 삼각비 51장면은 최신 main에서 별도 브랜치로 시작했다. 동일 해설 브랜치/PR은 없었고, 기존 도형 개선 브랜치는 이미 병합된 PR #1461이므로 재작업하지 않는다.
 
 - 2026-11-11 · `g8-similarity` 39장면/144해설을 신규 구현하고 최소 검사 108/108·구문 18파일·등록 누락 0을 확인했다. **IMPLEMENTED / QA_PENDING**, main·Pages 확인 예정. 최신 main `2e8325d8c7841467d82c3bc57193f3e65fd91abe`의 추가 17파일은 다른 Archive 작업이며 AP Math 실험실·공통 키트·필독 문서와 겹치지 않았다. [AWCR r20](https://drive.google.com/file/d/1Nh6j6jRpYg05gfJLHLjOmRdgAF4t1Z7e/view)에는 중간 22장면/79해설 원격 체크포인트를 저장하고 raw SHA-256 `74f25973050da197204b008db7585d1e29474e5a0bc4c300f8157145d356bff4`·5,059 bytes를 재검증했다. 다음 revision에는 최종 PR·main 결과를 기록한다.
 
