@@ -27,6 +27,10 @@
           ctShowAnswer: false, dual: false, ub: options.ub || 'both'
         };
         first.cues.splice(1, 0, { at: 0.1, to: { ctTrace: 1 }, dur: 4 });
+        if (id === 'secant') {
+          first.cues.splice(2, 0, { at: 0.15, step: options.target === 'limit' ? 2 : 1 });
+          if (options.target === 'limit') chapters[1].cues[0].step = 2;
+        }
         chapters[chapters.length - 1].cues[0].set = { ctShowAnswer: true };
         const item = {
           label, title, tab: 'review', answer,
@@ -267,7 +271,7 @@
           C('하한 높이기', '아래쪽 기울기 한계를 높여 보아요.', '허용되는 영역의 폭이 줄어들어요.', { lo: 1 }),
           C('두 한계가 같을 때', '두 한계를 같게 하고 B도 경계에 맞추어요.', P('$L=U=2$이면 한 기울기만 가능해요.'), { lo: 2, by: 5 }),
           C('같은 한계의 함수', P('직선 $f(x)=2x-1$은 이 조건을 만족해요.'), '두 경계가 같다고 불가능한 것은 아니에요.'),
-          C('하한이 더 큰 경우', '하한을 상한보다 더 크게 바꾸어요.', '**조건을 만족하는 함수가 없음**이 결론이에요.', { lo: 3 })
+          C('하한이 더 큰 경우', '하한을 상한보다 더 크게 바꾸어요.', '**조건을 만족하는 함수가 없음**이 결론이에요.', { lo: 2.5 })
         ], { start: { lo: 0.5, hi: 2, bx: 3, by: 3.5 }, summary: '하한이 상한보다 크면 가능한 도함숫값이 없어요.' });
 
       add('mvtband', '원문 예제', '도함수 조건으로 최솟값 구하기', '$f(4)=9$', [
