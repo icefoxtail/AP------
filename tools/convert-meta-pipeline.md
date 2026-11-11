@@ -23,4 +23,6 @@ batch.json 예시(입력 파일은 절대 경로 사용):
 
 출력은 `CONVERTED`(변환 완료) 또는 `BLOCKED`이며, 변환 성공은 등록·학생 승인 성공을 뜻하지 않는다. 기존 등록기가 메타·정본·부모 참조 및 최종 승인 계약을 검증한다. 같은 ID로 다른 출력이 있으면 덮어쓰지 않는다. 대상 하나의 실패는 다른 패키지 변환을 막지 않는다.
 
+`manifestType: META_AUDIT_ATOMIC_PACKAGE`인 실제 SOP v1.2 및 `ALIVE_META_AUDIT_ATOMIC_PACKAGE_v3` 입력은 감사·매니페스트·분류 원본을 보존하면서 파일 식별자·감사 SHA·승인 상태·전체 순번·UID·PT/TPL/CrossConcept 일치를 검사한다. 이 형식의 등록기용 메타 proof가 아직 준비되지 않은 경우 변환기는 메타 변경이 없는 access-only 요청을 내며, `metadataReviewed: false`와 `NOT_VERIFIED`를 기록한다. 공식 Action의 후보완 수납은 정본 메타 등록이나 검수 통과가 아니다. SHA·UID·감사/분류 불일치는 계속 차단한다.
+
 검증 명령: `node --test tests/convert-meta-pipeline.test.mjs`.
