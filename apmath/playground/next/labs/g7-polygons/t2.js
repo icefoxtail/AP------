@@ -85,7 +85,7 @@
         ang(b, Cp, E, D, { color: 'sky', rings: 2, r: 30, size: 16, alpha: c2, fa: 0.2 * c2 });
       }
       // 외각
-      if (c3 > 0.01 || C.problem) {
+      if (c3 > 0.01 || C.problem || C.lesson) {
         ang(b, Cp, A, D, { color: 'amber', r: c2 > 0.01 ? 54 : 40, label: C.problem || C.lesson && !ready(s) ? 'x' : dg(e), size: 18, fa: 0.16, labelDist: c2 > 0.01 ? 92 : 66 });
       }
       if (C.txt) {
@@ -419,17 +419,18 @@
       const segs = [[A, B], [B, Cc], [Cc, D], [D, E], [E, F]];
       line(b, A, pt(E.x + 0.5, 0), 'ink', 2.4, { alpha: 0.6 });
       line(b, A, add(F, mul(unit(sub(F, A)), 0.5)), 'ink', 2.4, { alpha: 0.6 });
-      segs.forEach(([q, r], i) => { const on = i < n + 1 || C.problem; line(b, q, r, 'ink', on ? 3.6 : 1.6, { alpha: on ? 1 : 0.3 }); if (on) tick(b, q, r, 1, 'amber'); });
+      segs.forEach(([q, r], i) => { const on = i < n + 1 || C.problem; line(b, q, r, 'ink', on ? 3.6 : 1.6, { alpha: on ? 1 : 0.3 }); if (on || C.lesson) tick(b, q, r, 1, 'amber'); });
       if (C.lesson) segs.slice(1).forEach(([q, r], i) => { const f = clamp(progress * 4 - i, 0, 1); if (f > 0) line(b, q, lerp(q, r, f), col[i], 4); });
       // 각 표시: 삼각형 i 의 밑각 두 개 = (i+1)x
       const roomy = (b.k || 60) >= 150, lbl = (k) => (C.review || !roomy ? (k === 1 ? 'x' : `${k}x`) : `${k * x}°`);
       const sets = [[[A, Cc, B, 1], [Cc, A, B, 1]], [[B, Cc, D, 2], [D, B, Cc, 2]], [[Cc, D, E, 3], [E, Cc, D, 3]], [[D, E, F, 4], [F, D, E, 4]]];
       sets.forEach((pair, i) => {
-        if (!(i < n || C.problem)) return;
+        if (!(i < n || C.problem || C.lesson && i === 0)) return;
         const isG = C.problem && i === 3, isX = C.problem && i === 0;
         void isG;
         const k = i + 1;
         pair.forEach(([V, q, r], j) => {
+          if (C.lesson && n === 0 && i === 0 && j === 1) return;
           const hide = C.problem && ((i === 3 && j === 0) || (i === 0 && j === 1) || (i === 1) || (i === 2) || (i === 3 && j === 1));
           void hide;
           let color = ['sky', 'green', 'sky', 'amber'][i];
