@@ -10,11 +10,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="geom-vector-dot/lesson-core.js"></script>
+<script defer src="geom-vector-dot/lesson-a.js"></script>
+<script defer src="geom-vector-dot/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -494,15 +501,14 @@ window.addEventListener('DOMContentLoaded', function () {
     function renderMode2(rect) {
       const A = state.A2;
       const B = state.B2;
-      // [BUG-01 수정] 0으로 나누기(NaN) 완벽 방어
-      const lenA = Math.max(1e-4, Math.hypot(A.x, A.y));
-      const lenB = Math.max(1e-4, Math.hypot(B.x, B.y));
+      const lenA = Math.hypot(A.x, A.y), lenB = Math.hypot(B.x, B.y);
+      const hasAngle = lenA > 0 && lenB > 0;
       const dot = A.x * B.x + A.y * B.y;
-      const cosT = Math.min(1, Math.max(-1, dot / (lenA * lenB)));
-      const degT = (Math.acos(cosT) * 180) / Math.PI;
+      const cosT = hasAngle ? Math.min(1, Math.max(-1, dot / (lenA * lenB))) : null;
+      const degT = hasAngle ? (Math.acos(cosT) * 180) / Math.PI : null;
 
       // Step 3 (partIdx = 2, lens = 'aux'): 벡터 A에 수직(⊥)인 경계 직선 (내적 = 0)
-      if (isLayerVisible(3, 'aux')) {
+      if (isLayerVisible(3, 'aux') && Math.hypot(A.x, A.y) > 0) {
         const ux = -A.y / lenA;
         const uy = A.x / lenA;
         const span = 12;
@@ -511,7 +517,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // [BUG-02 수정] 외적 부호를 판별하여 벡터 B가 있는 쪽의 수직 경계선과 직각 기호를 이루도록 동적 반전
         const cross = A.x * B.y - A.y * B.x;
         const signPerp = cross >= 0 ? 1 : -1;
-        drawRightAngleMark({ x: 0, y: 0 }, { x: A.x / lenA, y: A.y / lenA }, { x: ux * signPerp, y: uy * signPerp }, 12, '#fbbf24', 2);
+        if (hasAngle) drawRightAngleMark({ x: 0, y: 0 }, { x: A.x / lenA, y: A.y / lenA }, { x: ux * signPerp, y: uy * signPerp }, 12, '#fbbf24', 2);
 
         const sPerp = toScreen(ux * 3.8, uy * 3.8);
         const st3 = applyPartStyle(2, 1, 4);
@@ -519,7 +525,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.globalAlpha = st3.alpha;
         ctx.font = 'bold 12px Pretendard';
         ctx.fillStyle = '#fde047';
-        { const t = '수직인 직선 (a · b = 0, θ = 90°)', w = ctx.measureText(t).width; ctx.fillText(t, clampX(sPerp.x - 80, w), clampY(sPerp.y - 10)); } // [2.0 수정] 글자를 무대 안으로
+        { const t = hasAngle ? '수직인 직선 (a · b = 0, θ = 90°)' : '영벡터의 각은 정의되지 않음', w = ctx.measureText(t).width; ctx.fillText(t, clampX(sPerp.x - 80, w), clampY(sPerp.y - 10)); } // [2.0 수정] 글자를 무대 안으로
         ctx.restore();
       }
 
@@ -528,7 +534,7 @@ window.addEventListener('DOMContentLoaded', function () {
         drawChalkLine(A.x, A.y, A.x, 0, 'rgba(56, 189, 248, 0.35)', 1.5, true, false, 1);
         drawChalkLine(B.x, B.y, B.x, 0, 'rgba(244, 114, 182, 0.35)', 1.5, true, false, 1);
 
-        setTape(`a·b = ${dot.toFixed(1)}  |  cos θ = ${dot.toFixed(1)} / ${(lenA * lenB).toFixed(2)} = ${cosT.toFixed(3)} (θ = ${degT.toFixed(1)}°)`); // [2.0 수정] 하단 상자·세로 분수 → 하단 띠
+        setTape(hasAngle ? `a·b = ${dot.toFixed(1)}  |  cos θ = ${dot.toFixed(1)} / ${(lenA * lenB).toFixed(2)} = ${cosT.toFixed(3)} (θ = ${degT.toFixed(1)}°)` : 'a·b = 0  |  영벡터와의 각은 정의되지 않습니다.'); // 하단 띠도 영벡터에서 나누지 않습니다.
       }
 
       // Step 1 (partIdx = 0, lens = 'vec'): 두 벡터 OA, OB 및 끼인각 호
@@ -539,6 +545,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const arcR = Math.min(34, Math.max(14, Math.min(lenA, lenB) * state.scale * 0.45));
         const st1 = applyPartStyle(0, 2.4, 6);
 
+        if (hasAngle) {
         ctx.save();
         ctx.globalAlpha = st1.alpha;
         ctx.beginPath();
@@ -551,6 +558,7 @@ window.addEventListener('DOMContentLoaded', function () {
         markAngle({ x: 0, y: 0 }, A, B, Math.abs(dot)<=1e-10*lenA*lenB ? '#fbbf24' : dot >= 0 ? '#34d399' : '#f43f5e', `θ≈${degT.toFixed(1)}°`, arcR);
         if (Math.abs(dot)<=1e-10*lenA*lenB) drawRightAngleMark({ x: 0, y: 0 }, { x: A.x / lenA, y: A.y / lenA }, { x: B.x / lenB, y: B.y / lenB }, 12, '#fbbf24', 0);
 
+        }
         drawVectorArrow(0, 0, A.x, A.y, '#38bdf8', 3.4, `a(${A.x.toFixed(1)}, ${A.y.toFixed(1)})`, false, { x: 25, y: 16 }, 0);
         drawVectorArrow(0, 0, B.x, B.y, '#f472b6', 3.4, `b(${B.x.toFixed(1)}, ${B.y.toFixed(1)})`, false, { x: -35, y: -12 }, 0);
         drawChalkPoint(0, 0, 5, '#f8fafc', '', { x: 0, y: 0 }, 0);
@@ -1200,7 +1208,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const cur = () => vary.cur();
       const inProblem = (lab) => !!lab && lab.tab === 'problem';
       return {
-        id: o.id, title: o.title, short: o.short, thumbSnap: false,
+        id: o.id, title: o.title, short: o.short, thumbSnap: false, lessonNative: o,
         tabs: { compact: true },
         question: o.question,
         guide: o.guide,
@@ -1253,11 +1261,12 @@ window.addEventListener('DOMContentLoaded', function () {
     const PAR = [{ a: [-3, 1], b: [2, -1], c: [-2, 2], k: 2 }, { a: [4, -1], b: [-2, 1], c: [2, -2], k: 3 }, { a: [-1, 2], b: [1, -1], c: [-2, 1], k: 3 }, { a: [-3, -1], b: [2, 1], c: [2, 2], k: 2 }, { a: [-3, 1], b: [-1, 1], c: [-3, -3], k: -2 }];
     const PERP = [{ a: [-3, 2], b: [-1, 2], c: [2, -1], k: -2 }, { a: [-2, -2], b: [3, 2], c: [1, -2], k: 2 }, { a: [2, 2], b: [-2, -3], c: [-2, 1], k: 2 }, { a: [-3, 1], b: [3, 1], c: [2, -2], k: 2 }, { a: [2, 2], b: [2, -1], c: [-2, -1], k: -2 }];
     const MIN = [{ a: [1, 3], b: [3, 4], m: 1 }, { a: [-1, 2], b: [3, 4], m: 2 }, { a: [3, -1], b: [3, 4], m: 3 }, { a: [2, -1], b: [-3, 4], m: 1 }, { a: [-1, 3], b: [4, 3], m: 3 }, { a: [2, -4], b: [3, 4], m: 4 }, { a: [1, 2], b: [4, 3], m: 1 }];
+    const packet = (kind, d) => ({ kind, d, a: V(d.a), b: V(d.b), c: d.c ? V(d.c) : null, k: d.k, m: d.m });
     const gen = (prev) => {
       const kind = prev ? pickOf(['par', 'perp', 'min'], prev.kind) : 'par';
       const lst = { par: PAR, perp: PERP, min: MIN }[kind];
       const d = prev && prev.kind === kind ? pickOf(lst, prev.d) : prev ? lst[rint(lst.length)] : lst[0];
-      return { kind, d, a: V(d.a), b: V(d.b), c: d.c ? V(d.c) : null, k: d.k, m: d.m };
+      return packet(kind, d);
     };
     // 기하: a, b, c(벡터), k → 끝점 U = a + kb, 평행·수직·최소 위치
     function geom(a, b, c, k) {
@@ -1314,7 +1323,7 @@ window.addEventListener('DOMContentLoaded', function () {
       L.O();
       return G;
     }
-    return { gen, geom, draw, pn, tx, P, V };
+    return { gen, geom, draw, pn, tx, P, V, packet, pools: { par: PAR, perp: PERP, min: MIN } };
   })();
   function sceneCmp() {
     const { tex, num, P, add, mul, dot, crs, len, clamp } = NQ;
@@ -1435,7 +1444,11 @@ window.addEventListener('DOMContentLoaded', function () {
       const kind = prev ? pickOf(['dist', 'omax', 'omin'], prev.kind) : 'dist';
       const lst = kind === 'dist' ? DIST : OM;
       const d = prev && prev.set === lst ? pickOf(lst, prev.d) : prev ? lst[rint(lst.length)] : lst[0];
-      const M = V(d.M), dv = V(d.d), R = len(dv), A = sub(M, dv), B = add(M, dv), form = prev ? pickOf(FORMS, prev.form) : 'dot';
+      return packet(kind, d, prev ? pickOf(FORMS, prev.form) : 'dot');
+    };
+    function packet(kind, d, form = 'dot') {
+      const lst = kind === 'dist' ? DIST : OM;
+      const M = V(d.M), dv = V(d.d), R = len(dv), A = sub(M, dv), B = add(M, dv);
       let ans;
       if (kind === 'dist') { const [ax, k] = d.line; const dist = ax === 'x' ? Math.abs(M.x - k) : Math.abs(M.y - k); ans = dist - R; return { kind, d, set: lst, M, R, A, B, form, line: d.line, dist, ans }; }
       const OMl = len(M); ans = kind === 'omax' ? OMl + R : OMl - R;
@@ -1443,7 +1456,7 @@ window.addEventListener('DOMContentLoaded', function () {
     };
     const FT = { dot: '\\overrightarrow{PA}\\cdot\\overrightarrow{PB}=0', diff: '(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot(\\overrightarrow{OP}-\\overrightarrow{OB})=0', len: '|\\overrightarrow{PA}+\\overrightarrow{PB}|=|\\overrightarrow{PA}-\\overrightarrow{PB}|' };
     const pn = (p) => `(${num(p.x)},${num(p.y)})`;
-    return { gen, FT, pn };
+    return { gen, FT, pn, packet, pools: { dist: DIST, omax: OM, omin: OM }, forms: FORMS };
   })();
   function sceneLoc() {
     const { tex, num, P, add, sub, mul, dot, crs, len, clamp, lerp, polar } = NQ;
@@ -1613,10 +1626,10 @@ window.addEventListener('DOMContentLoaded', function () {
     const gen = (prev) => {
       let u, q, R, tries = 0;
       do { u = prev ? pickOf(US, prev.u) : US[0]; q = prev ? rint(4) : 0; R = prev ? 3 + rint(3) : 4; tries++; } while (prev && tries < 20 && q === prev.q && R === prev.R);
-      const e = ext(u, R, q), ask = prev ? pickOf(['M-m', 'M+m'], prev.ask) : 'M-m';
-      return { u, q, R, e, ask, ans: ask === 'M-m' ? e.M - e.m : e.M + e.m };
+      return packet(u, R, q, prev ? pickOf(['M-m', 'M+m'], prev.ask) : 'M-m');
     };
-    return { gen, ext, inQuad, US };
+    const packet = (u, R, q, ask) => { const e = ext(u, R, q); return { u, q, R, e, ask, ans: ask === 'M-m' ? e.M - e.m : e.M + e.m }; };
+    return { gen, ext, inQuad, US, packet };
   })();
   function scenePrj() {
     const { tex, num, P, add, sub, mul, dot, len, clamp, lerp, polar, crs } = NQ;
@@ -1762,6 +1775,7 @@ window.addEventListener('DOMContentLoaded', function () {
       formula: '<b>내적과 정사영</b>: $\\vec u\\cdot\\overrightarrow{OP}=|\\vec u|\\,|\\overrightarrow{OP}|\\cos\\theta=|\\vec u|\\times(\\overrightarrow{OP}\\text{를 }\\vec u\\text{ 방향에 정사영한 부호 있는 성분})$.<br>원 위의 점이면 최댓값 $|\\vec u|R$ (같은 방향), 최솟값 $-|\\vec u|R$ (반대 방향). 부채꼴이면 그 방향이 호의 범위에 있을 때만 해당하고, 아니면 꼭짓점에서 최대·최소입니다.',
       notes: '호 위 접점만 보고 O, A, B를 빼먹기 쉽습니다. 일차식 u·OP는 도형 안에서 극값이 항상 경계에서 생기므로 꼭짓점과 호 위 접점을 모두 비교합니다.'
     });
+    sc.lessonMath = { extGen, chord };
     return sc;
   }
 
@@ -1891,7 +1905,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const rEnd = polar(C, I.r, ang0 + 150);
         L.line(C, rEnd, { color: 'sky', width: 1.8, dash: [4, 4] });
         L.vec(O, A, { color: 'rose', width: 3.2 });
-        const Pp = polar(C, I.r, ang0 + 235);
+        const Pp = polar(C, I.r, I.lvdAngle ?? (ang0 + 235));
         if (step >= 2) { L.vec(O, C, { color: 'sky', width: 2.6 }); L.vec(C, Pp, { color: 'green', width: 2.6 }); L.vec(O, Pp, { color: 'amber', width: 2.4, dash: [5, 4], alpha: 0.9 }); }
         let hi = null, lo = null;
         if (step >= 3) {
@@ -1908,7 +1922,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       4: (b, step, I) => {
         const L = NQ.labels(b), M = P(0, 0), A = P(-I.L, 0), Bq = P(I.L, 0), C = P(0.6 * I.d, 0.8 * I.d);
-        const dirC = Math.atan2(0.8 * I.d, 0.6 * I.d) * 180 / Math.PI, Pp = polar(C, I.r, dirC + 100);
+        const dirC = Math.atan2(0.8 * I.d, 0.6 * I.d) * 180 / Math.PI, Pp = polar(C, I.r, I.lvdAngle ?? (dirC + 100));
         b.circle(C, I.r, { color: 'sky', width: 2.6, fill: 'sky', fillAlpha: 0.07 }); L.circ(C, I.r);
         L.line(A, Bq, { color: 'ink', width: 3.4 });
         L.line(M, C, { color: 'muted', width: 1.8, dash: [5, 5] });
@@ -1945,7 +1959,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const away = () => !!(window.lab && window.lab.tab && window.lab.tab !== 'explore');
     const vary = nq.vary;
     vary.go = (i) => { vary.n++; vary._c = list[i]; return vary._c; }; vary.size = list.length;
-    sc.tabs = nq.tabs; sc.vary = vary; sc.reviewTop = nq.reviewTop;
+    sc.tabs = nq.tabs; sc.vary = vary; sc.reviewTop = nq.reviewTop; sc.lessonNative = nq.lessonNative; sc.lessonPackets = list;
     sc.problem = { ...nq.problem, text: () => `${vary.cur().text}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-nq-new>새 문제</button></div>` };
     sc.steps = (s) => (away() ? nq.steps(s) : (typeof oSteps === 'function' ? oSteps(s) : oSteps));
     sc.solution = { ...sc.solution, ...nq.solution };
@@ -1962,7 +1976,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return sc;
   }
 
-  APLab.createLab({
+  const vectorDefinition = {
     id: 'geom-vector-dot',
     stagedReveal: true,
     title: '벡터의 성분 · 내적',
@@ -1998,7 +2012,28 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { sid: '1', lens: 'all', pi: 0, animDir: 1 },
     persist: ['lens'],
     scenes: [1, 2, 3, 4].map((m) => dotOverlay(sceneOf(m), m)).concat([sceneCmp(), sceneLoc(), scenePrj()])
-  });
+  };
+  const vectorScenes = vectorDefinition.scenes, vectorInitial = {}, vectorPackets = {}, vectorInquiry = {};
+  for (const sc of vectorScenes) {
+    const initial = { ...vectorDefinition.state, ...Object.fromEntries(Object.entries(vectorDefinition.params).map(([k, v]) => [k, v.value])) };
+    sc.enter?.(initial); vectorInitial[sc.id] = initial; vectorInquiry[sc.id] = sc.question;
+    const first = sc.vary.cur(); sc.vary.first = () => first;
+    vectorPackets[sc.id] = { first };
+  }
+  for (const kind of ['par', 'perp', 'min']) vectorPackets.cmp5[kind] = kind === 'par' ? vectorPackets.cmp5.first : CMP.packet(kind, CMP.pools[kind][0]);
+  for (const kind of ['dist', 'omax', 'omin']) vectorPackets.loc6[kind] = kind === 'dist' ? vectorPackets.loc6.first : LOC.packet(kind, LOC.pools[kind][0], kind === 'omax' ? 'diff' : 'len');
+  vectorPackets.prj7.sum = PRJ.packet(PRJ.US[2], 4, 0, 'M+m');
+  const vectorSource = window.APL_VECTORDOT_SOURCE = {
+    initial: id => ({ ...vectorInitial[id] }), inquiry: id => vectorInquiry[id],
+    first: (id, key = 'first') => { const value = vectorPackets[id]?.[key]; if (!value) throw new Error('Unknown vector lesson packet: ' + id + '/' + key); return value; },
+    question(id, key = 'first') { return vectorScenes.find(sc => sc.id === id).lessonNative.text(this.first(id, key)); },
+    answer(id, key = 'first') { return vectorScenes.find(sc => sc.id === id).lessonNative.answer(this.first(id, key)); },
+    steps(id, key = 'first') { return vectorScenes.find(sc => sc.id === id).lessonNative.steps(this.first(id, key)); },
+    variants: { m1: vectorScenes[0].lessonPackets, m2: vectorScenes[1].lessonPackets, m3: vectorScenes[2].lessonPackets, m4: vectorScenes[3].lessonPackets, cmp: CMP.pools, locus: LOC.pools, sector: PRJ.US },
+    math: { cmp: CMP.geom, cmpPacket: CMP.packet, locusPacket: LOC.packet, sector: PRJ.ext, sectorPacket: PRJ.packet, ...vectorScenes.at(-1).lessonMath }
+  };
+  vectorDefinition.lessons = window.APL_VECTORDOT_LESSONS?.install(vectorScenes, vectorSource) || {};
+  APLab.createLab(vectorDefinition);
 });
 </script>
 </body>
