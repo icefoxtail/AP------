@@ -80,8 +80,9 @@
 | `calc1-derivative-shape` 도함수와 함수의 그래프 | 7 | 7 / 23 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1834](https://github.com/icefoxtail/AP------/pull/1834), merge `16f120347a36f7c06290226089c133d24a3de40c`. 원문 목표12·탐구개념11. 최소69/69(수학7·runtime7·공통video/pins55),370개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `calc1-cubic` 삼차함수 비율관계 | 5 | 5 / 25 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1835](https://github.com/icefoxtail/AP------/pull/1835), merge `4a66317078cc606871f8100ccdb42097ceef25bc`. 원문 목표9·탐구개념16. 최소60/60(수학13·runtime6·공통video41),402개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `calc1-quartic` 사차함수 비율관계 | 5 | 5 / 22 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1836](https://github.com/icefoxtail/AP------/pull/1836), merge `b2d89d212e35fbd1057eb2ce0352a65c8634fca1`. 원문 목표8·탐구개념14. 최소63/63(수학16·runtime6·공통video41),362개 실제 Board/canvas 상태·validator 오류/경고0 |
-| `calc1-composite` 합성함수·절댓값 그래프 | 7 | 7 / 20 | **IMPLEMENTED / QA_PENDING** · 원문 목표10·탐구개념10. 최소66/66(수학20·runtime5·공통video41),323개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 14개 | — | — | `calc1-integral` 8장면 → `calc1-motion` 5장면 → `geom-parabola` 14장면 → `geom-ellipse` 12장면. 정적분·운동·포물선 담당 범위를 나누어 구현, 기존 완료 실험실은 반복 제작하지 않음 |
+| `calc1-composite` 합성함수·절댓값 그래프 | 7 | 7 / 20 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1837](https://github.com/icefoxtail/AP------/pull/1837), merge `420f1de6ac9afe349501ba3caeae876bdb47aa0c`. 원문 목표10·탐구개념10. 최소66/66(수학20·runtime5·공통video41),323개 실제 Board/canvas 상태·validator 오류/경고0 |
+| `calc1-integral` 정적분과 넓이 | 8 | 8 / 27 | **IMPLEMENTED / QA_PENDING** · 원문·등록유형 목표14·탐구개념13. 최소71/71(수학8·runtime8·공통video/pins55),408개 실제 Board/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 13개 | — | — | `calc1-motion` 5장면 → `geom-parabola` 14장면 → `geom-ellipse` 12장면 → `geom-hyperbola` 15장면. 운동·포물선·타원은 별도 담당/브랜치에서 진행 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -271,6 +272,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **정적분과 넓이 전체 구현.** `feat/lessons-calc1-integral`, catalog/HTML **8장면/27해설**(원문·등록유형 목표14·기존탐구13), 누락0. 정적분과 실제넓이, 넓이 이등분, 삼차 가운데근과 한쪽넓이, 차함수와 추가부호변화, 역함수와 직사각형, 움직이는 경계, 우/기함수·점대칭·주기함수3유형, 기본/이동구간 구분구적법2유형을 분리했다. **signed의 과거 원시함수 오류는 최신base에서 이미 정확한 F=x³/3−x²로 교정되어 있었으므로 다시 고쳤다고 기록하지 않는다.** 실제단계출력·계수·미분검산으로 보존 확인. 첫packet과유형/수동변형·새문제·드래그·entry/panes/focus/zoom/pan 유지, 공통1.5Player·공유kit변경없음. 최종 **71/71 PASS**(독립수학8·native8·공통55), **408 실제상태**, validator 오류/경고0·구문8단위·diff통과. 최신main통합 뒤 검증입력46개SHA동일. 실제브라우저·모바일전수·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+
+- 2026-11-12 · **합성함수 main 병합.** [PR #1837](https://github.com/icefoxtail/AP------/pull/1837), feature `61de3ad234faa96fe7038fedb0b4d7bf0606b12b`, merge/main readback `420f1de6ac9afe349501ba3caeae876bdb47aa0c`, tested tree `a00c8baa39da0bd9f1204cbf1dbc376e0179e82c`. 누적 **40실험실/845장면/2,429해설**. AWCR r66 remote raw SHA256 `883627f912f1825df10004485cacaafa793908bd4137e61b94239b22ae4bcb8d` 확인. Pages writer43060888403은 runner_id0의 미배정queued 상태이며 이전실행과 워크플로blob/ubuntu-latest/concurrency설정 동일; 설정회귀근거없음, **PAGES_NOT_VERIFIED**. 다음 정적분→운동→포물선→타원 순서대로 병합한다.
 
 - 2026-11-12 · **합성함수·절댓값 그래프 전체 구현.** `feat/lessons-calc1-composite`, abs/scan/heal/extrema/solve/kinkcancel/glue **7장면/20해설**(첫 원문 목표10·탐구개념10), 누락0. 절댓값 반사, 접합점 함수값/기울기, 수평선과 실근 개수, 합성함수 치역 제한, 겹친 극값 후보, 꺾임 상쇄와 접점 중복도, 함수 접합을 분리했다. 원문/탐구의 glue 계수 차이를 조건에 명시하며 OU/CX 생성기 첫문항 고정·수동 변형 보존·원래 드래그·두 그림 보기·형제설정과 entry 초기화를 유지한다. 기존Player 기본1.5배속, 공유kit 변경 없음. 최소 **66/66 PASS**(독립수학20·native5·공통video41), **323 실제 상태**, validator 오류/경고0·KaTeX·JS6+inline2 구문·diff 통과. 최신 main 통합 뒤 검사 입력17개 SHA 동일. 실제브라우저·모바일전수·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
