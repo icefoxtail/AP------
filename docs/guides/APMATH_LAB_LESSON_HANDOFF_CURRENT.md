@@ -86,8 +86,9 @@
 | `geom-parabola` 포물선 | 14 | 14 / 38 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1841](https://github.com/icefoxtail/AP------/pull/1841), merge `fb69e8c06f00067dd0125b01745f6a07ad5b175c`. 원문 목표26·탐구개념12. 최소70/70(수학23·runtime6·공통video41),600개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `geom-ellipse` 타원 | 12 | 12 / 35 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1843](https://github.com/icefoxtail/AP------/pull/1843), merge `3177ffe49e6df0880e8ca6a9b828cfb9c91882d7`. 원문 목표15·탐구개념20. 실제 셸 복제 대응 수정 후 최소75/75,544개 실제 Board/canvas 상태·validator 오류/경고0 |
 | `geom-hyperbola` 쌍곡선 | 15 | 15 / 32 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1844](https://github.com/icefoxtail/AP------/pull/1844), merge `74c020a6d909cf69fd940742f9b0af62700039b0`. 원문 목표21·탐구개념11. 실제 셸 복제 조건 포함 최소73/73,510개 실제 Board/canvas 상태·validator 오류/경고0 |
-| `geom-space` 공간도형 3D | 9 | 9 / 35 | **IMPLEMENTED / QA_PENDING** · 실제 파일 `geom-space-3d.html`. 원문 목표13·탐구개념22. 최소73/73(수학24·runtime8·공통video41),606개 실제 3D/canvas cue 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
-| 고등 잔여 8개 | — | — | `geom-projection` 7장면 → `geom-space-coord` 8장면 → `geom-vector-ops` 12장면 → `geom-vector-dot` 7장면 → `geom-vector-figure` 6장면. 정사영·공간좌표 검증 완료 후 순서대로 병합, 다음 벡터 실험실은 범위를 나누어 진행 |
+| `geom-space` 공간도형 3D | 9 | 9 / 35 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1845](https://github.com/icefoxtail/AP------/pull/1845), merge `c1a4cd3645a03d99da1cf001866c3e1ae83adfb2`. 원문 목표13·탐구개념22. 최소73/73(수학24·runtime8·공통video41),606개 실제 3D/canvas cue 상태·validator 오류/경고0 |
+| `geom-projection` 정사영 | 7 | 7 / 23 | **IMPLEMENTED / QA_PENDING** · 원문·등록유형 목표13·탐구개념10. 최소70/70(수학7·runtime8·공통video/pins55),362개 실제 3D/canvas 상태·validator 오류/경고0. PR/main 진행, Pages 미확인 |
+| 고등 잔여 7개 | — | — | `geom-space-coord` 8장면 → `geom-vector-ops` 12장면 → `geom-vector-dot` 7장면 → `geom-vector-figure` 6장면 → 확률과 통계3실험실. 공간좌표 검증 완료·병합 대기, 벡터3실험실 별도 담당/브랜치 진행 |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -277,6 +278,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 · **정사영 전체 구현.** `feat/lessons-geom-projection`, catalog/HTML mode1~7 **7장면/23해설**(원문·등록유형 목표13·탐구개념10), 누락0. 높이·넓이, 타원 단면의 넓이와 두 축, 정육면체 단면각, 태양광 그림자, 부분 삼각형 및 면의 정사영을 목표별로 나누었다. mode5 GCD/GBC/GBD와 mode7 ABC/ABD는 실제 등록된 첫 해당 문항과 도형을 함께 고정했다. 원본3D 공간 투영/Board·원문/정사영 polygon 결속, shell stackScene/복제 경계, prefix 재생값에 의한 수동 시점·슬라이더·문제index 보존, N/M drag와 source-only 로딩을 확인했다. 최소 **70/70 PASS**(독립수학7·native8·공통video/pins55), **362개 실제 cue/전이 상태**, 등록 변형 mode5 15개·mode6 9개·mode7 12개 수학 검산, validator 오류/경고0·구문8단위·diff 통과. 최신 main 통합 후 입력47파일 SHA256 동일. 원본문항·공통 kit 수정 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
+
+- 2026-11-12 · **공간도형 main 병합.** [PR #1845](https://github.com/icefoxtail/AP------/pull/1845), feature `4749b540bdaafbbc336c6066d7c70534aa4903e0`, merge/main readback `c1a4cd3645a03d99da1cf001866c3e1ae83adfb2`, tested tree `8c6bb7354e88ec99554bfd642f607cc109ea6806`. 누적 **46실험실/908장면/2,616해설**. AWCR r72 raw SHA256 `583fe56facdb7df136d4dac3f01fc6c2caac302685de012e35ff6cab12ffe60d` 확인. 최근 여섯 실험실의 정확한 branch HEAD/main merge SHA metadata도 추가 revision에 보완했다. Pages 등록 실행 중·성공 영수증 미확인, **PAGES_NOT_VERIFIED**. 다음 정사영→공간좌표→벡터 연산 순서로 병합한다.
 
 - 2026-11-12 · **공간도형 3D 전체 구현.** `feat/lessons-geom-space`, 실제 파일 `geom-space-3d.html`, catalog/HTML mode1~9 **9장면/35해설**(원문 목표13·탐구개념22), 누락0. 정사면체 두 모서리 각·최단거리·이면각·높이, 이중 피타고라스, 정사영의 세 각, 평면의 결정·모서리 분류, 정사각뿔의 각·퇴화/불가능 경계, 두 직선의 평행이동, 삼수선 3진술/반례, 수직인 두 평면을 분리했다. 원본 3D space/Board를 그대로 실행하며 모든 가시 직각 표시를 실제 3차원 내적으로 검증했다. prefix 전용 재생값을 그리기 snapshot에만 적용하여 원본 슬라이더·카메라·선택 문제를 보존하고 drag/orbit 복귀도 실제 handler로 확인했다. 최소 **73/73 PASS**(독립수학24·native8·공통video41), **606개 실제 cue 상태**, validator 오류/경고0·KaTeX·구문8단위·diff 통과. 최신 main 통합 후 선택 입력17개 SHA256 동일. 공통 kit 수정 없음. 실제브라우저·전수모바일·독립시각 **NOT_RUN / QA_PENDING**, Pages **PAGES_NOT_VERIFIED**.
 
