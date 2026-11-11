@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 긴 수식이 모바일 패널 그리드의 최소 너비를 밀어 전체 페이지를 가로로 확장하지 않게 합니다. 수식 자체는 스크롤로 모두 읽을 수 있습니다. */
 @media (max-width: 859px) {
@@ -36,6 +37,12 @@
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-compat.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
+<script defer src="common-circle-eq/lesson-core.js"></script>
+<script defer src="common-circle-eq/lesson-a.js"></script>
+<script defer src="common-circle-eq/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -53,6 +60,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const tex = APLab.tex;
+  const lceActive = s => !!(s && (s.lessonOn || s.lessonEntry));
 
   /* ===== 원본 그대로: 색 상수와 벡터 도우미 (원본 355–372행) ===== */
     const CCOL = {
@@ -1330,7 +1338,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
       const dirCM = norm(sub(M, C));
       const P_min = add(C, mul(dirCM, Rpx)); // 최단거리 점 P!
-      const ang = (1 - state.fold) * 1.6;
+      const lessonPappus = lceActive(CUR) && ['pappus-full', 'centroid'].includes(CUR.lceMode);
+      const ang = lessonPappus ? CUR.lceAngle : (1 - state.fold) * 1.6;
       const dx = P_min.x - C.x, dy = P_min.y - C.y;
       const P = pt(C.x + dx * Math.cos(ang) - dy * Math.sin(ang), C.y + dx * Math.sin(ang) + dy * Math.cos(ang));
 
@@ -1344,7 +1353,14 @@ window.addEventListener('DOMContentLoaded', function () {
       pdot(A, 'A', CCOL.white, { x: -20, y: 18 });
       pdot(B, 'B', CCOL.white, { x: 10, y: 18 });
       pdot(M, 'M (AB의 중점!)', CCOL.cyan, { x: 12, y: 18 });
-      pdot(P, state.fold === 1 ? 'P (PM = d-r 최소!)' : 'P(원 위의 점)', CCOL.gold, { x: -45, y: -14 });
+      const atMinimum = lessonPappus ? Math.abs(Math.sin(ang / 2)) < 1e-9 : state.fold === 1;
+      pdot(P, atMinimum ? 'P (PM = d-r 최소!)' : 'P(원 위의 점)', CCOL.gold, { x: -45, y: -14 });
+      if (lessonPappus && CUR.lceMode === 'centroid') {
+        const G = add(M, mul(sub(P, M), 1 / 3)), G0 = add(M, mul(sub(C, M), 1 / 3));
+        pcircle(G0, Rpx / 3, CCOL.pink, null, 2.6, [5, 4]);
+        pdot(G0, 'G₀', CCOL.pink, { x: 10, y: 18 });
+        pdot(G, 'G', CCOL.gold, { x: 12, y: -12 });
+      }
       atick(A, M, 1, CCOL.cyan); atick(M, B, 1, CCOL.cyan); // [표시 보강] M은 AB의 중점: AM = MB
 
       drawBottomTapeBanner(rect, 'PA² + PB² = 2(PM² + AM²) (M은 선분 AB의 중점) ➔ PM이 가장 짧은 d - r 일 때 최소!');
@@ -1631,7 +1647,8 @@ window.addEventListener('DOMContentLoaded', function () {
     /* ---- 변형 생성 (「새 문제」) ---- */
     function varier(pool) {
       let idx = 0, cur = pool[0]();
-      return { pool, get idx() { return idx; }, cur: () => cur, set(j) { idx = j; cur = pool[j](); return cur; }, next() { let j; do { j = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && j === idx); idx = j; cur = pool[j](); return cur; } };
+      const first = cur;
+      return { pool, get idx() { return idx; }, cur: () => lceActive(window.lab && window.lab.s) ? first : cur, first: () => first, set(j) { idx = j; cur = pool[j](); return cur; }, next() { let j; do { j = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && j === idx); idx = j; cur = pool[j](); return cur; } };
     }
     const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ce-new>새 문제</button></div>`;
     document.addEventListener('click', (ev) => {
@@ -1698,7 +1715,7 @@ window.addEventListener('DOMContentLoaded', function () {
     function attach(lab) {
       lab.list.forEach((sc) => {
         if (!sc.vary) return;
-        Object.defineProperty(sc, 'steps', { get: () => (lab.tab !== 'explore' ? sc.vary.cur().steps : undefined), enumerable: true, configurable: true });
+        Object.defineProperty(sc, 'steps', { get: () => lceActive(lab.s) ? ['조건과 원의 위치를 확인해요.', '도형 관계를 식으로 연결해요.', '구하는 값을 확인해요.'] : (lab.tab !== 'explore' ? sc.vary.cur().steps : undefined), enumerable: true, configurable: true });
       });
     }
 
@@ -2671,6 +2688,169 @@ window.addEventListener('DOMContentLoaded', function () {
     return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
   });
 
+  const scenes = groups.flatMap(group => group.scenes);
+  const groupOf = Object.fromEntries(groups.flatMap((group, i) => group.scenes.map(scene => [scene.id, i + 1])));
+  const sourceInfo = Object.fromEntries(scenes.map(sc => {
+    const initial = { lens: 'all', fold: 0, r: 5, d: 3, theta: 0.72, grid: false };
+    sc.enter?.(initial);
+    return [sc.id, { initial, first: sc.vary.first() }];
+  }));
+  const source = window.APL_CE_SOURCE = {
+    scenes, initial: id => ({ ...sourceInfo[id].initial }), first: id => sourceInfo[id].first,
+    question: id => sourceInfo[id].first.text,
+    answer: id => String(sourceInfo[id].first.ans).replace(/^\$|\$$/g, ''),
+    tag: id => PROB.DEFS[id].tag,
+    steps: id => sourceInfo[id].first.steps.slice(),
+    inquiry(id, overrides = {}) {
+      const saved = { ...state, subType: { ...state.subType } };
+      try { sync({ ...sourceInfo[id].initial, ...overrides }, groupOf[id], id); return arrow(getSpec()); }
+      finally { Object.assign(state, saved); }
+    }
+  };
+  function restoreLessonView(b) {
+    const saved = b._ceLessonView;
+    if (!saved) return;
+    if (b.focus === saved.appliedFocus) {
+      for (const [key, value] of Object.entries(saved.original)) {
+        if (saved.had[key]) b[key] = value; else delete b[key];
+      }
+    } else { delete b.__ceKey; delete b.__ceEx; }
+    delete b._ceLessonView;
+  }
+  function neutralLessonLabel(value) {
+    const label = String(value || '');
+    if (/^(?:x축|y축|y=x|y=-x|y=−x|x|y|O)$/.test(label)) return label;
+    const named = label.match(/^(?:(?:원본|현재|원래 중심|복원한 원 중심|외부 점|고정점|대칭점|반사점|교점|중점|중심|항상 지나는 점)\s*)?([A-Z][₀₁₂₃₄₅]?['′″]*)(?=[\s(=:]|$)/);
+    if (named) return named[1];
+    const meaning = label.match(/^(?:x축 대칭|y축 대칭|수선의 발|수선|접점|접는 선|중점|중심|내분점|바깥쪽 점|원점|직교|수직|최대 높이|최소점|최대점|중점 자취 중심)/);
+    return meaning ? meaning[0] : '';
+  }
+  function traceLessonGeometry(b, s, paths, circles, points) {
+    const u = APLab.clamp(Number(s.lceTrace) || 0, 0, 1);
+    if (s.lessonEntry || !u) return;
+    const box = b.viewBox(), margin = 5 / Math.max(b.k, 0.01);
+    box.x0 += margin; box.x1 -= margin; box.y0 += margin; box.y1 -= margin;
+    const inside = p => p.x >= box.x0 && p.x <= box.x1 && p.y >= box.y0 && p.y <= box.y1;
+    const clip = (a, z) => {
+      const dx = z.x - a.x, dy = z.y - a.y; let lo = 0, hi = 1;
+      for (const [p, q] of [[-dx, a.x - box.x0], [dx, box.x1 - a.x], [-dy, a.y - box.y0], [dy, box.y1 - a.y]]) {
+        if (Math.abs(p) < 1e-12) { if (q < 0) return null; }
+        else { const r = q / p; if (p < 0) lo = Math.max(lo, r); else hi = Math.min(hi, r); if (lo > hi) return null; }
+      }
+      return [{ x: a.x + dx * lo, y: a.y + dy * lo }, { x: a.x + dx * hi, y: a.y + dy * hi }];
+    };
+    const choices = [];
+    for (const entry of paths) {
+      const points = entry.points.concat(entry.options.close ? [entry.points[0]] : []);
+      let best = [], bestLength = 0, run = [], length = 0;
+      const finish = () => { if (length > bestLength) { best = run; bestLength = length; } run = []; length = 0; };
+      for (let i = 1; i < points.length; i++) {
+        const edge = clip(points[i - 1], points[i]);
+        if (!edge) { finish(); continue; }
+        if (run.length && Math.hypot(run.at(-1).x - edge[0].x, run.at(-1).y - edge[0].y) > 1e-7) finish();
+        if (!run.length) run.push(edge[0]); run.push(edge[1]);
+        length += Math.hypot(edge[1].x - edge[0].x, edge[1].y - edge[0].y);
+      }
+      finish();
+      if (bestLength > 1e-6) choices.push({ points: best, length: bestLength, score: entry.options.width || 2.6 });
+    }
+    for (const entry of circles) {
+      let start = null, best = null;
+      for (let i = 0; i <= 128; i++) {
+        const angle = i * Math.PI * 2 / 128;
+        const p = { x: entry.center.x + entry.radius * Math.cos(angle), y: entry.center.y + entry.radius * Math.sin(angle) };
+        if (inside(p)) { if (start === null) start = angle; }
+        else if (start !== null) { const end = (i - 1) * Math.PI * 2 / 128; if (!best || end - start > best[1] - best[0]) best = [start, end]; start = null; }
+      }
+      if (start !== null && (!best || Math.PI * 2 - start > best[1] - best[0])) best = [start, Math.PI * 2];
+      if (best && best[1] > best[0]) choices.push({ ...entry, angles: best, length: entry.radius * (best[1] - best[0]), score: entry.options.width || 2.6 });
+    }
+    choices.sort((a, z) => z.score - a.score || z.length - a.length);
+    const selected = choices[0];
+    if (!selected) {
+      const condition = points.find(p => inside(p));
+      if (condition) b.point(condition, { color: 'violet', r: 5 + 4 * Math.sin(Math.PI * u), hollow: true, glow: false });
+      return;
+    }
+    let p;
+    if (selected.angles) {
+      const angle = selected.angles[0] + u * (selected.angles[1] - selected.angles[0]);
+      p = { x: selected.center.x + selected.radius * Math.cos(angle), y: selected.center.y + selected.radius * Math.sin(angle) };
+      b.arc(selected.center, selected.radius, selected.angles[0], angle, { color: 'violet', width: 4.2, alpha: 0.85 });
+    } else {
+      let remaining = selected.length * u; const drawn = [selected.points[0]];
+      for (let i = 1; i < selected.points.length; i++) {
+        const a = selected.points[i - 1], z = selected.points[i], length = Math.hypot(z.x - a.x, z.y - a.y);
+        if (remaining <= length || i === selected.points.length - 1) {
+          const f = length ? Math.min(1, remaining / length) : 0;
+          p = { x: a.x + f * (z.x - a.x), y: a.y + f * (z.y - a.y) }; drawn.push(p); break;
+        }
+        drawn.push(z); remaining -= length;
+      }
+      b.path(drawn, { color: 'violet', width: 4.2, alpha: 0.85 });
+    }
+    if (p) b.point(p, { color: 'violet', r: 4.5, glow: false });
+  }
+  for (const sc of scenes) {
+    const original = { question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw };
+    sc.question = (s, lab) => lceActive(s) ? s.lceQuestion || source.question(sc.id) : typeof original.question === 'function' ? original.question(s, lab) : original.question;
+    sc.reviewTop = (s, lab) => lceActive(s) ? '' : typeof original.reviewTop === 'function' ? original.reviewTop(s, lab) : original.reviewTop;
+    sc.steps = (s, lab) => lceActive(s) ? ['조건과 도형을 확인해요.', '좌표와 위치 관계를 식으로 연결해요.', '구하는 값을 확인해요.'] : typeof original.steps === 'function' ? original.steps(s, lab) : original.steps;
+    sc.view = (s, lab) => lceActive(s) ? {} : original.view(s, lab);
+    sc.draw = (b, s, v, lab) => {
+      if (b.thumb || b._bbox) return original.draw(b, s, v, lab);
+      if (!lceActive(s)) { restoreLessonView(b); return original.draw(b, s, v, lab); }
+      if (b._ceLessonView && b._ceLessonView.scene !== sc.id) restoreLessonView(b);
+      if (!b._ceLessonView) {
+        const keys = ['focus', 'zoom', 'panX', 'panY', '__ceKey', '__ceEx'];
+        b._ceLessonView = { scene: sc.id, original: Object.fromEntries(keys.map(key => [key, b[key]])), had: Object.fromEntries(keys.map(key => [key, Object.hasOwn(b, key)])) };
+      }
+      const shown = { ...s, playing: false, part: typeof s.part === 'string' && /^-?\d+$/.test(s.part) ? Number(s.part) : s.part,
+        lceShowAnswer: !s.lessonEntry && !!s.lceShowAnswer, step: s.lessonEntry ? 0 : Math.max(0, Math.min(s.lceExplore && s.lceStage >= 0 ? s.lceStage : s.step || 0, s.lceShowAnswer || s.lceExplore && s.lceStage >= 0 ? 3 : 2)) };
+      const shownLab = Object.create(lab); shownLab.tab = s.lceExplore ? 'explore' : 'review'; shownLab.s = shown;
+      const key = sc.id + '|' + !!s.lceExplore + '|' + (s.lceMode || '') + '|' + (s.lceTarget || '');
+      if (b._ceLessonView.key !== key) {
+        b._ceLessonView.key = key; b.__ceKey = null; b.__ceEx = null; b.zoom = 1; b.panX = 0; b.panY = 0;
+        if (shown.lceExplore) {
+          const custom = window.APL_CE_LESSONS?.focus?.(sc.id, shown.lceMode) || window.APL_CE_LESSONS?.nativeFocus?.(sc.id);
+          if (custom) b.setFocus(custom, false);
+          else { const bounds = b.measure(() => original.draw(b, shown, {}, shownLab)); if (bounds) { b.focus = b.fitBox(bounds, { margin: 0.08, px: 12 }); b.fit(); } }
+        }
+      }
+      const paths = [], circles = [], points = [], path = b.path, circle = b.circle, point = b.point, handle = b.handle, text = b._text, emph = b.emph, fillText = b.ctx.fillText, strokeText = b.ctx.strokeText;
+      b.emph = { ...emph, part: shown.part };
+      const eligible = options => !b._bbox && (!options.dash || Array.isArray(options.dash) && !options.dash.length) && options.color !== null && options.stroke !== false && (options.width || 2.6) >= 2.4;
+      b.path = function (points, options = {}) {
+        if (points.length >= 2 && eligible(options)) paths.push({ points: points.map(p => ({ x: p.x == null ? p[0] : p.x, y: p.y == null ? p[1] : p.y })), options });
+        return path.call(this, points, options);
+      };
+      b.circle = function (center, radius, options = {}) {
+        if (radius > 0 && eligible(options)) circles.push({ center: this._P(center), radius, options });
+        return circle.call(this, center, radius, options);
+      };
+      b.point = function (p, options = {}) {
+        if (!b._bbox) points.push(this._P(p));
+        return point.call(this, p, !b._bbox && !shown.lceShowAnswer && options.label ? { ...options, label: neutralLessonLabel(options.label) } : options);
+      };
+      b.handle = function (id, p, options = {}) {
+        if (!b._bbox) points.push(this._P(p));
+        return handle.call(this, id, p, !b._bbox && !shown.lceShowAnswer && options.label ? { ...options, label: neutralLessonLabel(options.label) } : options);
+      };
+      b.ctx.fillText = function (label, ...args) { return fillText.call(this, !b._bbox && !shown.lceShowAnswer ? neutralLessonLabel(label) : label, ...args); };
+      b.ctx.strokeText = function (label, ...args) { return strokeText.call(this, !b._bbox && !shown.lceShowAnswer ? neutralLessonLabel(label) : label, ...args); };
+      b._text = function (x, y, label, options = {}) { return text.call(this, x, y, !b._bbox && !shown.lceShowAnswer ? neutralLessonLabel(label) : label, options); };
+      try {
+        const custom = shown.lceExplore && window.APL_CE_LESSONS?.focus?.(sc.id, shown.lceMode);
+        if (custom) { if (shown.grid) b.grid({ step: 24 }); b.hline(0, AXIS); b.vline(0, AXIS); }
+        const replaced = shown.lceExplore && window.APL_CE_LESSONS?.drawConcept?.(b, shown, sc.id);
+        if (!replaced) original.draw(b, shown, {}, shownLab);
+      } finally { b.path = path; b.circle = circle; b.point = point; b.handle = handle; b._text = text; b.emph = emph; b.ctx.fillText = fillText; b.ctx.strokeText = strokeText; }
+      b._ceLessonView.appliedFocus = b.focus;
+      traceLessonGeometry(b, shown, paths, circles, points);
+    };
+  }
+  const lessons = window.APL_CE_LESSONS ? window.APL_CE_LESSONS.install(scenes, source) : {};
+
   APLab.createLab({
     id: 'common-circle-eq',
     stagedReveal: true,
@@ -2686,7 +2866,7 @@ window.addEventListener('DOMContentLoaded', function () {
     params: {
       fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행 (0% → 100%)', hint: '점 P 회전 · 직선 이동 · 접선 평행이동 같은 변화를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` }
     },
-    groups
+    groups, lessons
   });
   PROB.attach(window.lab);
 });
