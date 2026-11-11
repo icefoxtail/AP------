@@ -11,6 +11,17 @@
 - Cold evidence is hydrated on demand into `.codex/archive-analysis-drive-cache/`. Verify the ZIP, internal manifest, member bytes, reconstructed full object SHA-256, size, and Git blob SHA-1 before returning bytes. Missing or corrupt evidence remains unavailable and cannot be converted to PASS.
 - ROOT consumes compact verified completion receipts and fetches raw proof only when needed. Workers still inspect the actual source/evidence and perform the assigned independent quality review. Validators, review scope, and quality gates remain unchanged; Drive access must not become a GitHub CI prerequisite.
 
+## 루트 폴더는 main 전용 (2026-11-11 사용자 지시)
+
+모든 라인(Claude·Codex·GPT·Gemini) 공통이다. 이유: 2026-11-11에 저장소 루트 폴더가 `main`이 아닌 `work/4slot-gpt-pilot-20261103`에 있었고 `main`보다 1,679커밋 뒤처져 있었다. 한 라인이 워크트리 없이 루트에서 직접 작업하며 로컬 `main`에 커밋 5개(원격 미반영), 다른 브랜치에 47개를 쌓았고, 미추적 파일 807개와 삭제 표시 44개가 남아 다른 세션이 이 상태를 병합해야 하는지 판단할 수 없었다. 사용자는 루트를 항상 main 기준으로 두기를 원한다.
+
+- 저장소 루트 폴더(워크트리가 아닌 본 체크아웃)는 `main` 브랜치에 두고 `origin/main`을 받기만 한다. 루트에서 커밋, 브랜치 전환·생성, 파일 생성·수정을 하지 않는다.
+- 모든 작업은 자기 워크트리에서 한다(`git worktree add <경로> -b <브랜치> origin/main`). 여유 공간이 부족하면 D 드라이브에 만든다. `main` 반영은 PR로만 한다.
+- 로컬 `main`에 직접 커밋하지 않는다. 로컬 `main`이 `origin/main`보다 앞서 있으면 그 커밋을 브랜치로 옮겨 원격에 올리고 로컬 `main`을 `origin/main`에 맞춘다.
+- 스크립트·중간 산출물을 루트에 미추적 파일로 쌓지 않는다. 자기 워크트리의 `.tmp/`에 두고, 남길 것은 PR로 올리거나 Drive에 둔다.
+- 루트가 `main`이 아니거나 미커밋 변경이 있는 것을 발견하면, 남의 작업일 수 있으니 지우거나 병합하지 말고 경로·상태를 사용자에게 보고한다. 사용자가 정리를 지시하면 미추적 파일과 미커밋 변경을 먼저 백업하고(사본이 원본과 같은지 확인), 원격에 없는 커밋은 브랜치로 올린 뒤 루트를 `main`으로 맞춘다.
+- 2026-11-11 정리 때 남긴 것: 루트의 미추적 작업 파일(`.archive-meta-register`, `tools/`의 교과서 스크립트, `.codex`, `META_PIPELINE`, `SVG_AUDIT_PIPELINE` 등)은 쓰는 라인이 있을 수 있어 지우지 않았다. 그 라인이 자기 워크트리로 옮기거나 지운다. 백업은 `D:\AI_WORKSPACES\APMS\root-untracked-backup-20261111`, 로컬 `main`에만 있던 교과서 커밋 5개는 `origin/backup/local-main-textbooks-20261111`에 있다.
+
 ## 워크트리 정리 (2026-11-10 사용자 지시)
 
 모든 라인(Claude·Codex·GPT, 메인과 하위 에이전트를 띄운 세션) 공통이다. 이유: 2026-11-10에 C 드라이브(232GB) 여유가 767MB까지 떨어져 작업을 멈췄고, 병합이 끝난 에이전트 워크트리 2개를 지우니 약 15GB가 확보됐다(워크트리 하나가 약 7GB).
