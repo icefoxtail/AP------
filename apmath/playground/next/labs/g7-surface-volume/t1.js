@@ -382,7 +382,7 @@
           }
         }),
         labels: (ctx) => {
-          if (b.thumb || C.review || (C.tab === 'explore' && ctx.e > 0.5)) return;
+          if (b.thumb || (C.review && !s.lessonOn) || (C.tab === 'explore' && ctx.e > 0.5)) return; // 해설 재생 중에는 정리 탭에도 길이·넓이 이름표
           const { D, tp, e } = ctx, vw = D.vw, L = sn.lat, at = ctx.at;
           const outside = (p, q, center) => { const A = D.px(p), B = D.px(q), C = D.px(center); return { x: (A.x+B.x)/2-C.x, y: (A.y+B.y)/2-C.y }; };
           const solidA = 1 - G.lin01(e, 0.05, 0.45), flatA = G.lin01(e, 0.78, 0.98);
@@ -447,7 +447,7 @@
             info.forEach((g) => D.dim(g.lo.p3, g.hi.p3, dimTxt(D, g), { side: { x: 0, y: 1 }, off: rowY - g.lo.y, color: g.color, alpha: flatA }));
             D.brace({ x: xl, y: rowY }, { x: xr, y: rowY }, `밑면의 둘레 = ${info.map((g) => g.len).join('+')} = ${plainVal(M.P)}`, { px: true, side: { x: 0, y: 1 }, off: 14, color: 'amber', alpha: flatA });
             info.forEach((g) => aLab(D, g.c3, areaName(D, g, '옆넓이'), g.area, { maxW: (g.x1 - g.x0) * 0.9, size: 14, alpha: flatA }));
-            fitLine(D, (xl + xr) / 2, rowY + 76, `겉넓이 = ${plainVal(M.S)}×2 + (${info.map((g) => g.area).join('+')}) = ${plainVal(M.tot)}`, { alpha: flatA });
+            if (!D.lessonHide) fitLine(D, (xl + xr) / 2, rowY + 76, `겉넓이 = ${plainVal(M.S)}×2 + (${info.map((g) => g.area).join('+')}) = ${plainVal(M.tot)}`, { alpha: flatA });
           }
           angleJobs.forEach((f) => f());
         }
@@ -700,6 +700,8 @@
           plates.forEach((p) => { if (p.loc >= 1 && (p.k + 1) % step === 0) D.tag(v3(lp[0], y0 + (p.k + 0.5) * sc, lp[1]), String(p.k + 1), { size: 13, dx: -11, color: 'muted' }); });
         }
       }
+      // 정리 탭 3단계: 결과를 위쪽 한 줄로(해설 재생 중에는 해설이 svShowV 를 켤 때까지 아낌). 탐구·문제 탭·썸네일은 그대로.
+      if (C.review && !b.thumb && st >= 3 && !D.lessonHide) G.sumRows(D, [[{ t: `부피 = ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)} cm³`, c: 'green' }]], 1);
     };
     return {
       id: 'sv1-4', title: '기둥의 부피', short: '기둥의 부피',
@@ -795,7 +797,7 @@
             }
           }),
           labels: (ctx) => {
-            if (b.thumb || C.review || (C.tab === 'explore' && ctx.e > 0.5)) return;
+            if (b.thumb || (C.review && !s.lessonOn) || (C.tab === 'explore' && ctx.e > 0.5)) return; // 해설 재생 중에는 정리 탭에도 길이·넓이 이름표
             const { D, tp, e } = ctx, vw = D.vw, L = sn.lat, at = ctx.at;
             const solidA = 1 - G.lin01(e, 0.05, 0.45), flatA = G.lin01(e, 0.78, 0.98);
             const cen = at(sn.root, add3(G.centroid(A), v3(0, hu / 2, 0)));
@@ -840,7 +842,7 @@
               info.forEach((g) => D.dim(g.lo.p3, g.hi.p3, dimTxt(D, g), { side: { x: 0, y: 1 }, off: rowY - g.lo.y, color: g.color, alpha: flatA }));
               D.brace({ x: xl, y: rowY }, { x: xr, y: rowY }, `밑면의 둘레 = ${info.map((g) => g.len).join('+')} = ${plainVal(M.P)}`, { px: true, side: { x: 0, y: 1 }, off: 14, color: 'amber', alpha: flatA });
               info.forEach((g) => aLab(D, g.c3, areaName(D, g, '옆넓이'), g.area, { maxW: (g.x1 - g.x0) * 0.9, size: 14, alpha: flatA }));
-              fitLine(D, (xl + xr) / 2, rowY + 76, `겉넓이 = (${plainVal(M.S)})×2 + (${info.map((g) => g.area).join('+')}) = ${plainVal(M.tot)}`, { alpha: flatA });
+              if (!D.lessonHide) fitLine(D, (xl + xr) / 2, rowY + 76, `겉넓이 = (${plainVal(M.S)})×2 + (${info.map((g) => g.area).join('+')}) = ${plainVal(M.tot)}`, { alpha: flatA });
             }
           }
         });

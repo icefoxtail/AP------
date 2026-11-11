@@ -99,7 +99,9 @@
           b.circle({ x, y: ry }, cc.r, { fill: hl === 2 ? 'amber' : 'sky', fillAlpha: hl === 2 ? 0.10 : al * (hl === 3 ? 1.25 : 1), color: ec, width: hl === 2 ? 2.8 : 2.4, alpha: 0.5 + 0.5 * e });
           if (e > 0.55) aLab(D, { x, y: ry }, '', plainVal(M.one), { fig: true, maxW: cc.r * b.k * 1.5, size: 14 });
         }
-        if (e > 0.9 && !narrow) b.text({ x: 0, y: rowTop - 0.35 }, `넓이 비교: ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' });
+        if (e > 0.9 && !narrow && !D.lessonHide) b.text({ x: 0, y: rowTop - 0.35 }, `넓이 비교: ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' });
+        // 폰(좁은 그림) 정리 탭 3단계: 결과를 위쪽 한 줄로. 해설 재생 중에는 해설이 svShowV 를 켤 때까지 아낍니다(넓은 그림의 「넓이 비교」 줄도 같음).
+        if (C.review && narrow && !b.thumb && st >= 3 && !D.lessonHide) G.sumRows(D, [[{ t: `구의 겉넓이 = 4 × ${plainVal(M.one)} = ${plainVal(M.tot)} cm²`, c: 'green' }]], 1);
       }
     };
     return {
@@ -165,6 +167,12 @@
         if (e > 0.01) D.disc(cap,v3(1,0,0),v3(0,0,1),R,'red',.08,'red',2,{alpha:e});
         sphereLabels(D,R,v3(0,0,0),`반지름 ${M.r}`,{color:'rose'});
         if (C.txt && !C.problem && e>.95) D.label(cap,'단면: 원',{color:'red',at:[[0,0]],size:14});
+        // 정리 탭: 지금 단계의 식 한 줄(결과 줄은 해설 재생 중 svShowV 까지 숨김)
+        G.stepRow(D, C, [null,
+          [{ t: `구의 겉넓이 = 4×π×${M.r}² = ${plainVal(M.sphere)}`, c: 'ink' }],
+          [{ t: `곡면 = 구의 겉넓이의 ½ = ${plainVal(M.curve)}`, c: 'sky' }],
+          [{ t: `잘린 평평한 면(원) = π×${M.r}² = ${plainVal(M.flat)}`, c: 'red' }],
+          [{ t: `반구의 겉넓이 = ${plainVal(M.curve)} + ${plainVal(M.flat)} = ${plainVal(M.tot)}`, c: 'green' }]][Math.min(Math.max(C.step || 0, 0), 4)], { gated: (C.step || 0) >= 4 });
         return;
       }
       if (!isHalf) {
@@ -377,7 +385,7 @@
       // 길이: r, h
       D.radius(v3(0, hT, 0), add3(v3(0, hT, 0), D.rightFront()), isN && sink < .2 && !C.problem ? '' : `반지름 ${M.r}`, {});
       D.dim(add3(v3(0, 0, 0), D.hx(-1)), add3(v3(0, hT, 0), D.hx(-1)), M.k === 0 && !D.narrow ? `높이 ${M.h} = 지름` : `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 16, color: 'ink' });
-      if (!C.problem) {
+      if (!C.problem && !(D.lessonHide && M.mode === 'remain')) { // 남은 물 해설: 칸 막대(원뿔 18π = 답)는 결론 전까지 숨김
         if (sink < 0.02) { D.tag(v3(bx, yRail + 1.2, 0), BODY[M.body], {size:13,color:'ink'}); }
         // 가로 막대: 원뿔·구·원기둥 (1칸 = 원뿔)
         if (!isN) { // 좁은 화면은 그림을 우선하고 수치는 아래에 표시 물체를 넣기 시작하기 전에는 막대 없이 수조·비커를 크게 보여 줘요
@@ -395,6 +403,16 @@
         if (q > 0.99 && M.even) b.text({ x: bcx2, y: y0 + 3 * (H + (isN ? 0.2 : 0.22)) + 0.25 }, M.mode === 'remain' ? '남은 물:  원뿔 2 : 구 1 : 원기둥 0' : '넘친 물:  원뿔 1 : 구 2 : 원기둥 3', { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
         else if (q > 0.99 && !M.even) b.text({ x: bcx2, y: y0 + 3 * (H + (isN ? 0.2 : 0.22)) + 0.25 }, '높이가 지름과 다르면 1:2:3이 깨져요', { size: D.fs(14), weight: 800, color: 'red', baseline: 'middle' });
         }
+      }
+      // 정리 탭: 지금 단계의 식(결과 줄은 해설 재생 중 svShowV 까지 숨김)
+      {
+        const bn = BODY[M.body], tkV = plainVal(M.tank), vB = plainVal(M.vols[M.body]);
+        const fx = { cone: `⅓×π×${M.r}²×${M.h}`, sph: `4/3×π×${M.r}³`, cyl: `π×${M.r}²×${M.h}` }[M.body];
+        G.stepRow(D, C, [null,
+          [[{ t: `수조 = π×${M.r}²×${M.h} = ${tkV}`, c: 'ink' }], [{ t: `${bn} = ${fx} = ${vB}`, c: 'green' }]],
+          [[{ t: M.even ? '높이가 지름(2r)일 때  원뿔 : 구 : 원기둥 = 1 : 2 : 3' : '높이가 2r이 아니면 1 : 2 : 3 이 깨져요', c: 'ink' }]],
+          [[{ t: `넘친 물 = ${bn}의 부피 = ${vB}`, c: 'sky' }]],
+          [[{ t: M.mode === 'remain' ? `남은 물 = ${tkV} − ${vB} = ${plainVal(M.remain)}` : `넘친 물 = ${vB}`, c: 'green' }]]][Math.min(Math.max(C.step || 0, 0), 4)], { gated: M.mode === 'remain' && (C.step || 0) >= 4 });
       }
       function colorOf(k2) { return k2 === 'sph' ? 'green' : k2 === 'cone' ? 'amber' : 'violet'; }
     };
