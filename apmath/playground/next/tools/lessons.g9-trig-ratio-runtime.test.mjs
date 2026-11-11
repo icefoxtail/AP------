@@ -81,3 +81,29 @@ test('actual new-question clicks and lesson cues preserve the source-question bo
     assert.ok(lab.draw().paths.length > 0, id + ': original geometry remains present');
   }
 });
+
+test('cached source prefixes retain the first deterministic match and restore random after predicate errors', () => {
+  const source = lab.list.find(scene => scene.id === 'sasAcuteLen').tg;
+  const original = source.gen, random = lab.math.random;
+  let generated = 0;
+  source.gen = function (...args) { generated++; return original.apply(this, args); };
+  const fresh = accept => {
+    lab.math.random = lab.api.seeded('lesson:sasAcuteLen:314');
+    try { for (let i = 0; i < 1000; i++) { const q = original.call(source); if (accept(q)) return plain(q); } }
+    finally { lab.math.random = random; }
+    assert.fail('source fixture not found');
+  };
+  try {
+    const first = lab.api.fixedQuestion(source.id, 314);
+    const accept = q => q.key !== first.key;
+    const second = lab.api.fixedQuestion(source.id, 314, accept), after = generated;
+    assert.deepEqual(plain(second), fresh(accept), 'cached prefix preserves exact figure, conditions and choice order');
+    assert.equal(lab.api.fixedQuestion(source.id, 314), first);
+    assert.equal(lab.api.fixedQuestion(source.id, 314, accept), second);
+    assert.equal(generated, after, 'repeated predicates do not regenerate a known prefix');
+    assert.throws(() => lab.api.fixedQuestion(source.id, 315, () => { throw new Error('controlled predicate failure'); }), /controlled predicate failure/);
+    assert.equal(lab.math.random, random, 'new-candidate predicate errors restore the manual random stream');
+    assert.throws(() => lab.api.fixedQuestion(source.id, 314, () => { throw new Error('cached predicate failure'); }), /cached predicate failure/);
+    assert.equal(lab.math.random, random, 'cached predicate errors leave the manual random stream unchanged');
+  } finally { source.gen = original; lab.math.random = random; }
+});

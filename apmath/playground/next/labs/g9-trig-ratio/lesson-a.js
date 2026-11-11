@@ -19,6 +19,8 @@
   const given = q => Object.entries(q.fig.side || {}).filter(([, v]) => v.t !== 'x').map(([k, v]) => `$${G.sideTag2(q.fig.names, k)}=${v.t}$`).join(', ');
   const cue = (at, say, step, set) => ({ at, ...(say ? { say } : {}), ...(step == null ? {} : { step }), ...(set ? { set } : {}) });
   function add(id, label, captions, options = {}) {
+    // Source canvas labels use √n; caption math uses the equivalent KaTeX root.
+    captions = captions.map(text => text?.replace(/\$([^$]+)\$/g, (_, math) => '$' + math.replace(/√(\d+)/g, '\\sqrt{$1}') + '$'));
     const initial = {}; defs[id].init(initial); Object.assign(initial, options.initial || {});
     const q = options.q || fixed(id), ordinal = G.NUM[q.choices.findIndex(c => c.ok)];
     const answer = options.problem ? ordinal : options.answer;
@@ -33,7 +35,7 @@
       summary: '기준각을 정하고 같은 삼각형의 변을 짝지어요.',
       task: '직접 해 보기에서 각과 길이를 바꾸고 같은 방법으로 변의 비를 다시 확인해 보세요.',
       chapters: [
-        { title: '조건과 기준각', length: 12, start, cues: [cue(0, captions[0], 0, first), { at: .5, to: motion, dur: 4 }, cue(6, captions[1], 2)] },
+        { title: '조건과 기준각', length: 12, start, cues: [cue(0, captions[0], 0, first), { at: .5, to: motion, dur: 4, ease: 'linear' }, cue(6, captions[1], 2)] },
         { title: '풀이 전략과 관계', length: 12, cues: [cue(0, captions[2], 3), cue(6, captions[3], 3, { tgCalculationReady: true })] },
         { title: '계산과 결론', length: 12, cues: [cue(0, captions[4], 3), cue(6, final, q.solution.steps.length, { tgShowAnswer: true, tgALine: options.line || '' })] }
       ] };
@@ -103,11 +105,11 @@
 
   // ① 삼각비의 뜻 — 함수·기준각·주어진 변의 종류를 각각 다룬다.
   for (const fn of ['s', 'c', 't']) {
-    const num = fn === 'c' ? 4 : 3, den = fn === 't' ? 4 : 5, answer = `$${G.FN[fn]}A=${frac(num, den)}$`;
+    const num = fn === 'c' ? 4 : 3, den = fn === 't' ? 4 : 5, answer = `$${G.FN[fn]} A=${frac(num, den)}$`;
     concept('r1-1', `${fnName[fn]} 뜻`, answer, [
       '직각은 C이고 기준이 되는 각은 A예요.', '맞은편 BC는 3, 이웃한 CA는 4예요.',
       '직각 맞은편 AB는 빗변이며 길이는 5예요.', `${fnName[fn]}은 ${fn === 'c' ? '이웃변÷빗변' : fn === 't' ? '대변÷이웃변' : '대변÷빗변'}이에요.`,
-      `$${G.FN[fn]}A=${frac(num, den)}$로 길이를 대입해요.`, `따라서 ${answer}예요.`
+      `$${G.FN[fn]} A=${frac(num, den)}$로 길이를 대입해요.`, `따라서 ${answer}예요.`
     ], { question: `직각삼각형 ABC에서 BC=3, CA=4, AB=5일 때 ${fnName[fn]} A의 값은?` });
   }
   function ratioCaptions(q, m) {
@@ -116,7 +118,7 @@
     return [`직각은 ${nm.C}, 기준각은 ${ref}예요.`, `주어진 길이는 ${given(q)}예요.`,
       `대변은 $${G.sideTag2(nm, opp)}$, 이웃변은 $${G.sideTag2(nm, adj)}$예요.`,
       q.key.split('|')[1] === 'legs' ? `$${G.sideTag2(nm, 'c')}=\\sqrt{${ss.a}^2+${ss.b}^2}$예요.` : `$${G.sideTag2(nm, 'b')}=\\sqrt{${ss.c}^2-${ss.a}^2}$예요.`,
-      `$${G.FN[m.fn]}${ref}=${frac(ss[num], ss[den])}$를 정리해요.`];
+      `$${G.FN[m.fn]} ${ref}=${frac(ss[num], ss[den])}$를 정리해요.`];
   }
   for (const [label, kind, radical, fn, ref] of [
     ['정수 빗변', 'legs', false, 's', 'A'], ['근호 빗변', 'legs', true, 'c', 'B'],
@@ -159,7 +161,7 @@
       return [`주어진 비 $${q.fig.notes[0].t}$를 확인해요.`, `기준각은 ${n.A}이고 직각은 ${n.C}예요.`,
         `피타고라스로 세 변의 비 $${a}:${b}:${c}$를 얻어요.`,
         kind === 'len' ? `빗변은 비의 ${c}에서 실제 길이 ${m.c}로 바뀌어요.` : '길이 자체가 아닌 같은 삼각형의 비를 써요.',
-        kind === 'len' ? `$x=${m.c}\\times${frac(m.ask === 'a' ? a : b, c)}$를 계산해요.` : `$${G.FN[m.fn]}${n.A}=${frac(m.fn === 'c' ? ss.b : ss.a, m.fn === 't' ? ss.b : ss.c)}$예요.`];
+        kind === 'len' ? `$x=${m.c}\\times${frac(m.ask === 'a' ? a : b, c)}$를 계산해요.` : `$${G.FN[m.fn]} ${n.A}=${frac(m.fn === 'c' ? ss.b : ss.a, m.fn === 't' ? ss.b : ss.c)}$예요.`];
     });
 
   const chains = { s: S`\frac{BC}{AC}=\frac{DE}{AE}=\frac{FG}{AG}`, c: S`\frac{AB}{AC}=\frac{AD}{AE}=\frac{AF}{AG}`, t: S`\frac{BC}{AB}=\frac{DE}{AD}=\frac{FG}{AF}` };
@@ -240,7 +242,7 @@
   for (const [fn, theta] of [['s', 30], ['c', 60], ['t', 45]]) problem('r2-1', `${fnName[fn]}→각`, q => q.solution.math.fn === fn && q.solution.math.theta === theta, (q, m) => {
     const side = q.fig.side, k = fn === 's' ? ['a', 'c'] : fn === 'c' ? ['b', 'c'] : ['a', 'b'];
     return [`기준각 x의 두 변은 ${given(q)}예요.`, `이 두 변의 비는 ${fnName[fn]}으로 연결해요.`,
-      `$${G.FN[fn]}x=${frac(side[k[0]].t, side[k[1]].t)}$예요.`, '30°, 45°, 60° 표에서 같은 값을 찾아요.',
+      `$${G.FN[fn]} x=${frac(side[k[0]].t, side[k[1]].t)}$예요.`, '30°, 45°, 60° 표에서 같은 값을 찾아요.',
       '대변과 이웃변의 위치까지 맞는 예각을 골라요.'];
   });
   concept('r2-2', '계산 순서', '식의 값은 0', [
@@ -306,7 +308,7 @@
       return [ask === 'seg' ? `반지름은 1, 기준각은 ${m.theta}°예요.` : `반지름은 1이고 $${sg}=${q.fig.value}$예요.`,
         `${inner ? 'OAB' : 'OCD'}에서 ${fnName[fn]}의 두 변을 골라요.`,
         inner ? 'sin·cos의 분모는 빗변 OA=1이에요.' : 'tan의 분모는 이웃변 OC=1이에요.',
-        ask === 'seg' ? `$x=${G.FN[fn]}${m.theta}^{\\circ}$의 특수각 값을 찾아요.` : `$${G.FN[fn]}x=${q.fig.value}$인 예각을 찾아요.`,
+        ask === 'seg' ? `$x=${G.FN[fn]}${m.theta}^{\\circ}$의 특수각 값을 찾아요.` : `$${G.FN[fn]} x=${q.fig.value}$인 예각을 찾아요.`,
         ask === 'seg' ? '분모가 1이므로 구한 비가 곧 선분 길이예요.' : `특수각 표의 ${fnName[fn]} 열에서 같은 값을 읽어요.`];
     });
   {
@@ -349,7 +351,7 @@
     ], { q, useProblem: true, question: q.html });
   }
   for (const fn of ['s', 'c', 't']) problem('r3-2', `${fnName[fn]}역읽기`, q => q.solution.math.fn === fn, (q, m) => [
-    `$${G.FN[fn]}x=${G.d4(m.value)}$에서 함수를 먼저 확인해요.`, `이번에는 표의 ${fnName[fn]} 열만 내려가며 읽어요.`,
+    `$${G.FN[fn]} x=${G.d4(m.value)}$에서 함수를 먼저 확인해요.`, `이번에는 표의 ${fnName[fn]} 열만 내려가며 읽어요.`,
     `주어진 값 $${G.d4(m.value)}$와 일치하는 칸을 찾아요.`, '그 칸과 같은 가로줄의 각도 열로 이동해요.',
     '각을 다시 같은 함수에 넣어 표의 값과 비교해요.'
   ]);
@@ -379,6 +381,6 @@
     const c = Math.hypot(m.adjacent, m.opposite), n = fn === 'c' ? m.adjacent : m.opposite, d = fn === 't' ? m.adjacent : c;
     return [`절편은 $(-${m.adjacent},0)$, $(0,${m.opposite})$예요.`, '음수인 좌표와 양수인 선분 길이를 구별해요.',
       `기준각 a의 이웃변은 ${m.adjacent}, 대변은 ${m.opposite}예요.`, `$c=\\sqrt{${m.adjacent}^2+${m.opposite}^2}=${c}$예요.`,
-      `$${G.FN[fn]}a=${frac(n, d)}$를 약분해요.`];
+      `$${G.FN[fn]} a=${frac(n, d)}$를 약분해요.`];
   });
 })();

@@ -584,17 +584,25 @@
      q = { tag, stem, choices, key, note?, fig, wide?, html? } — 문제 하나가 그림(fig)·발문·보기를 모두 정해 저장합니다(숫자 바꾸기 한 번에 한 번만 만듦). */
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   const inLesson = (s) => !!(s.lessonOn || s.lessonEntry);
+  const fixedQuestionCache = new WeakMap();
   // Keep the original generator, figure and choice order together. The temporary
   // random stream is synchronous and always restored, including failed searches.
+  // Reuse each deterministic prefix: pure predicates still receive the first
+  // matching original question, without regenerating all earlier candidates.
   function fixedQuestion(id, seed = 1, accept = () => true) {
     const scene = (window.APL_TG_GROUPS || []).flatMap(group => group.scenes).find(item => item.id === id);
     if (!scene || !scene.tg || typeof scene.tg.gen !== 'function') throw new Error('해설 원본 장면 없음: ' + id);
+    const generator = scene.tg.gen, key = 'lesson:' + id + ':' + seed;
+    let bySeed = fixedQuestionCache.get(generator);
+    if (!bySeed) { bySeed = new Map(); fixedQuestionCache.set(generator, bySeed); }
+    let bank = bySeed.get(key);
+    if (!bank) { bank = { questions: [], random: seeded(key) }; bySeed.set(key, bank); }
+    for (const q of bank.questions) if (accept(q)) return q;
     const random = Math.random;
-    Math.random = seeded('lesson:' + id + ':' + seed);
+    Math.random = bank.random;
     try {
-      for (let i = 0; i < 1000; i++) {
-        const q = scene.tg.gen();
-        if (!accept(q)) continue;
+      for (let i = bank.questions.length; i < 1000; i++) {
+        const q = generator.call(scene.tg);
         const seen = new WeakSet();
         const freeze = value => {
           if (!value || typeof value !== 'object' || seen.has(value)) return value;
@@ -602,7 +610,8 @@
           Object.values(value).forEach(freeze);
           return Object.freeze(value);
         };
-        return freeze(q);
+        bank.questions.push(freeze(q));
+        if (accept(q)) return q;
       }
       throw new Error('해설 원본 유형을 찾지 못함: ' + id);
     } finally { Math.random = random; }
