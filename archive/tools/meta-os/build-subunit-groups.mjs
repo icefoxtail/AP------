@@ -27,7 +27,7 @@ export const TABLE_SCHEMA = "archive2-subunit-groups-v1";
 export const KINDS = Object.freeze(["subunit", "unit_general", "unit_other", "excluded"]);
 export const BASES = Object.freeze([
   "anchor", "standalone", "same_master_label", "curriculum_2015_2022", "unit_renumber", "content_checked",
-  "unit_general_key", "adhoc_to_other", "problem_number_key",
+  "unit_general_key", "adhoc_to_other", "foreign_broad_key", "problem_number_key",
 ]);
 export const UNCLASSIFIED_UNIT = "UNCLASSIFIED";
 export const KIND_LABELS = Object.freeze({ unit_general: "단원 일반", unit_other: "기타", excluded: "제외(문제 번호 키)" });
@@ -35,6 +35,8 @@ const KIND_RANK = Object.fromEntries(KINDS.map((kind, index) => [kind, index]));
 const hasHangul = (value) => /[가-힣]/.test(String(value || ""));
 const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 
+// A broad key covers a whole unit (…-CORE, or a master name that ends in 핵심 개념). It is never one 소단원 of a unit.
+export const isBroadKey = (key, masterLabels) => /-CORE$/.test(String(key || "")) || /핵심s*개념$/.test(masterLabels?.get(key) || "");
 export const isProblemNumberKey = (key) => /-P\d+-Q\d+$|-Q\d+$/.test(String(key || ""));
 
 function readJson(root, relative) {
@@ -103,11 +105,13 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
       if (!KINDS.includes(group.kind)) { fail("RULES_KIND", `${id} ${group.kind}`); continue; }
       const entries = [];
       for (const entry of group.keys || []) {
+        if (group.kind === "subunit" && isBroadKey(entry.key, masterLabels)) fail("RULES_BROAD_KEY_IN_SUBUNIT", `${id} ${entry.key}`);
         if (!BASES.includes(entry.basis)) fail("RULES_BASIS", `${id} ${entry.key} ${entry.basis}`);
         if (!claim(entry.key, group.kind)) continue;
         const isMaster = masterLabels.has(entry.key);
         if (group.kind === "excluded" && !isProblemNumberKey(entry.key)) fail("RULES_EXCLUDED_NOT_NUMBER_KEY", `${id} ${entry.key}`);
-        if (group.kind === "unit_other" && isMaster) fail("RULES_OTHER_HAS_MASTER_KEY", `${id} ${entry.key}`);
+        if (group.kind === "unit_other" && isMaster && entry.basis !== "foreign_broad_key") fail("RULES_OTHER_HAS_MASTER_KEY", `${id} ${entry.key}`);
+        if (group.kind === "unit_other" && entry.basis === "foreign_broad_key" && !isBroadKey(entry.key, masterLabels)) fail("RULES_FOREIGN_KEY_NOT_BROAD", `${id} ${entry.key}`);
         if (group.kind === "unit_other" && isProblemNumberKey(entry.key)) fail("RULES_OTHER_HAS_NUMBER_KEY", `${id} ${entry.key}`);
         entries.push({ subUnitKey: entry.key, basis: entry.basis, reviewed: entry.reviewed === true });
       }
@@ -118,9 +122,11 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
         if (!masterLabels.has(anchor)) fail("RULES_ANCHOR_NOT_MASTER", `${id} ${anchor}`);
         // The shown name: the 2022 unit system's name when a member carries it (H22-*), otherwise the master name of the anchor.
         const named = entries.find((entry) => /^H22-/.test(entry.subUnitKey) && masterLabels.has(entry.subUnitKey) && hasHangul(masterLabels.get(entry.subUnitKey)));
-        const label = masterLabels.get(named ? named.subUnitKey : anchor) || "";
+        const override = scope.labelOverrides?.[anchor];
+        if (override && (!override.reason || !hasHangul(override.label))) fail("RULES_LABEL_OVERRIDE", `${id} ${anchor}`);
+        const label = override ? override.label : masterLabels.get(named ? named.subUnitKey : anchor) || "";
         if (!hasHangul(label)) fail("RULES_LABEL_NOT_KOREAN", `${id} ${anchor} "${label}"`);
-        groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${anchor}`, kind: "subunit", label, keys: entries });
+        groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${anchor}`, kind: "subunit", label, ...(override ? { labelReason: override.reason } : {}), keys: entries });
       } else {
         const tag = { unit_general: "GENERAL", unit_other: "OTHER", excluded: "EXCLUDED" }[group.kind];
         groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${tag}`, kind: group.kind, label: KIND_LABELS[group.kind], keys: entries });
@@ -128,11 +134,16 @@ export function buildTable({ rules, masterLabels, unitIndex }) {
     }
     for (const key of scope.standalone || []) {
       if (!claim(key, "standalone")) continue;
-      const label = masterLabels.get(key) || "";
+      const override = scope.labelOverrides?.[key];
+      if (override && (!override.reason || !hasHangul(override.label))) fail("RULES_LABEL_OVERRIDE", `${id} ${key}`);
+      const label = override ? override.label : masterLabels.get(key) || "";
       if (!masterLabels.has(key)) fail("RULES_STANDALONE_NOT_MASTER", `${id} ${key}`);
+      else if (isBroadKey(key, masterLabels)) fail("RULES_BROAD_KEY_IN_SUBUNIT", `${id} ${key}`);
       else if (!hasHangul(label)) fail("RULES_LABEL_NOT_KOREAN", `${id} ${key} "${label}"`);
-      groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${key}`, kind: "subunit", label, keys: [{ subUnitKey: key, basis: "standalone", reviewed: false }] });
+      groups.push({ groupKey: `SG:${scope.subject}:${scope.unitKey}:${key}`, kind: "subunit", label, ...(override ? { labelReason: override.reason } : {}), keys: [{ subUnitKey: key, basis: "standalone", reviewed: false }] });
     }
+    for (const key of Object.keys(scope.labelOverrides || {}))
+      if (!groups.some((group) => group.kind === "subunit" && group.groupKey.endsWith(`:${key}`))) fail("RULES_LABEL_OVERRIDE_UNUSED", `${id} ${key}`);
     const keyOf = new Set();
     for (const group of groups) {
       if (keyOf.has(group.groupKey)) fail("RULES_DUPLICATE_GROUP_KEY", group.groupKey);

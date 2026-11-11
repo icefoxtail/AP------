@@ -6,7 +6,7 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import {
   BASES, KINDS, KIND_LABELS, RULES_PATH, TABLE_PATH, UNCLASSIFIED_UNIT, buildFromRepo, buildTable,
-  isProblemNumberKey, loadCanonicalKeys, loadMaster, loadUnitIndex, serializeTable, tableKeys,
+  isBroadKey, isProblemNumberKey, loadCanonicalKeys, loadMaster, loadUnitIndex, serializeTable, tableKeys,
 } from "../archive/tools/meta-os/build-subunit-groups.mjs";
 
 // The subunit group table says which canonical subUnitKey values are one 소단원 inside one unified unit. These tests
@@ -71,7 +71,7 @@ test("labels are never empty and are Korean: master names for subunits, fixed wo
   for (const scope of table.scopes) for (const group of scope.groups) {
     assert.ok(KINDS.includes(group.kind));
     assert.ok(hasHangul(group.label), `${group.groupKey} label "${group.label}"`);
-    if (group.kind === "subunit") assert.ok([...group.keys].some((entry) => master.get(entry.subUnitKey) === group.label), `${group.groupKey} label is a master name`);
+    if (group.kind === "subunit") assert.ok("labelReason" in group || [...group.keys].some((entry) => master.get(entry.subUnitKey) === group.label), `${group.groupKey} label is a master name or a recorded override`);
     else assert.equal(group.label, KIND_LABELS[group.kind]);
   }
 });
@@ -99,7 +99,11 @@ test("unit_general, unit_other and excluded follow their rules", () => {
         assert.equal(typeof entry.reviewed, "boolean");
         // A question-number key is only ever excluded, and only question-number keys are.
         assert.equal(isProblemNumberKey(entry.subUnitKey), group.kind === "excluded", `${scope.unitKey} ${entry.subUnitKey} in ${group.kind}`);
-        if (group.kind === "unit_other") { assert.ok(!master.has(entry.subUnitKey), `${entry.subUnitKey} is a master key, not an ad-hoc key`); assert.equal(entry.basis, "adhoc_to_other"); }
+        if (group.kind === "unit_other") {
+          // An ad-hoc key (not in the master table), or a broad key that came from another unit.
+          if (master.has(entry.subUnitKey)) { assert.equal(entry.basis, "foreign_broad_key"); assert.ok(isBroadKey(entry.subUnitKey, master), `${entry.subUnitKey} is a master key, not an ad-hoc key`); }
+          else assert.equal(entry.basis, "adhoc_to_other");
+        }
         if (group.kind === "unit_general") assert.equal(entry.basis, "unit_general_key");
         if (group.kind === "excluded") assert.equal(entry.basis, "problem_number_key");
       }
@@ -107,6 +111,36 @@ test("unit_general, unit_other and excluded follow their rules", () => {
     // The unclassified scope only marks question-number keys.
     if (scope.unitKey === UNCLASSIFIED_UNIT) assert.ok(scope.groups.every((group) => group.kind === "excluded"));
   }
+});
+
+test("a broad key (…-CORE or a master name ending in 핵심 개념) is never part of a subunit: only 단원 일반 or 기타", () => {
+  for (const scope of table.scopes) for (const group of scope.groups) for (const entry of group.keys) {
+    if (!isBroadKey(entry.subUnitKey, master)) continue;
+    assert.ok(group.kind === "unit_general" || group.kind === "unit_other", `${scope.unitKey} ${entry.subUnitKey} is in ${group.kind}`);
+    // Another unit's broad key is not this unit's general key: it only goes to 기타.
+    if (group.kind === "unit_other") assert.equal(entry.basis, "foreign_broad_key");
+  }
+  assert.ok(master.get("H22-C-02-CORE").endsWith("핵심 개념"));
+  const place = (subject, unit) => table.scopes.find((scope) => scope.subject === subject && scope.unitKey === unit).groups.find((group) => group.keys.some((entry) => entry.subUnitKey === "H22-C-02-CORE"));
+  assert.equal(place("COMMON_MATH_1", "H22-C-02").kind, "unit_general");
+  assert.equal(place("COMMON_MATH_1", "H22-C-01").kind, "unit_other");
+  assert.equal(place("ALGEBRA", "H22-A-01").kind, "unit_other");
+});
+
+test("a group name that replaces the master name carries a recorded reason, and the master name is never the broad key's", () => {
+  const rules = JSON.parse(fs.readFileSync(path.join(repo, RULES_PATH), "utf8"));
+  let overrides = 0;
+  for (const scope of rules.scopes) for (const [key, override] of Object.entries(scope.labelOverrides || {})) {
+    overrides++;
+    assert.ok(hasHangul(override.label) && String(override.reason || "").length >= 10, `${scope.unitKey} ${key}`);
+    const group = table.scopes.find((candidate) => candidate.subject === scope.subject && candidate.unitKey === scope.unitKey).groups.find((candidate) => candidate.groupKey.endsWith(`:${key}`));
+    assert.equal(group.label, override.label);
+    assert.equal(group.labelReason, override.reason);
+  }
+  assert.ok(overrides > 0);
+  for (const scope of table.scopes) for (const group of scope.groups)
+    if (!("labelReason" in group)) continue;
+    else assert.equal(group.kind, "subunit");
 });
 
 test("a merged subunit starts with its master anchor; only a content-checked ad-hoc key may sit next to master keys", () => {
@@ -152,11 +186,18 @@ test("the builder refuses inconsistent decisions with a named reason", () => {
   assert.throws(() => run([{ subject: "S", unitKey: "U1", groups: [], standalone: ["NOT-IN-MASTER"] }]), /RULES_STANDALONE_NOT_MASTER/);
   assert.throws(() => run([{ subject: "S", unitKey: "U1", groups: [{ kind: "excluded", keys: [{ key: "H22-X-01-A", basis: "problem_number_key" }] }], standalone: [] }]), /RULES_EXCLUDED_NOT_NUMBER_KEY/);
   assert.throws(() => run([{ subject: "S", unitKey: "U1", groups: [{ kind: "unit_other", keys: [{ key: "H22-X-01-A", basis: "adhoc_to_other" }] }], standalone: [] }]), /RULES_OTHER_HAS_MASTER_KEY/);
+  labels.set("H22-X-02-CORE", "가나 핵심 개념");
+  assert.throws(() => run([{ subject: "S", unitKey: "U1", groups: [], standalone: ["H22-X-02-CORE"] }]), /RULES_BROAD_KEY_IN_SUBUNIT/);
+  assert.throws(() => run([{ subject: "S", unitKey: "U1", groups: [{ kind: "subunit", anchor: "H22-X-01-A", keys: [{ key: "H22-X-01-A", basis: "anchor" }, { key: "H22-X-02-CORE", basis: "content_checked" }] }], standalone: [] }]), /RULES_BROAD_KEY_IN_SUBUNIT/);
+  const renamed = run([{ subject: "S", unitKey: "U1", groups: [], standalone: ["H22-X-01-A"], labelOverrides: { "H22-X-01-A": { label: "새 이름", reason: "발문이 다른 내용이다" } } }]);
+  assert.equal(renamed.scopes[0].groups[0].label, "새 이름");
+  assert.throws(() => run([{ subject: "S", unitKey: "U1", groups: [], standalone: ["H22-X-01-A"], labelOverrides: { "H22-X-01-A": { label: "새 이름" } } }]), /RULES_LABEL_OVERRIDE/);
+  assert.throws(() => run([{ subject: "S", unitKey: "U1", groups: [], standalone: ["H22-X-01-A"], labelOverrides: { "H22-X-01-B": { label: "새 이름", reason: "근거 한 줄입니다" } } }]), /RULES_LABEL_OVERRIDE_UNUSED/);
   // A canonical key that the rules do not mention is simply not in the table; the builder never needs the canonical set.
   assert.equal(tableKeys(ok).has("NEW-KEY-NOT-IN-RULES"), false);
 });
 
-test("the rules file is a source of decisions only and lists no group names or labels", () => {
+test("the rules file lists no group names except the recorded overrides", () => {
   const rules = JSON.parse(fs.readFileSync(path.join(repo, RULES_PATH), "utf8"));
-  for (const scope of rules.scopes) for (const group of scope.groups || []) assert.ok(!("label" in group), "labels are derived from the master table");
+  for (const scope of rules.scopes) for (const group of scope.groups || []) assert.ok(!("label" in group), "labels are derived from the master table or labelOverrides");
 });
