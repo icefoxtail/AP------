@@ -99,9 +99,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$A\\cup B=B$는 $A\\subset B$와 같은 조건이다.\n\n$A$의 원소 $5$가 $B$에 속해야 하므로 $x^2-4x=5$이어야 한다.\n\n이 방정식에서 얻은 $x$의 후보를 원래 두 집합에 모두 대입해 포함관계를 확인한다.\n\n$x^2-4x=5$에서 $(x-5)(x+1)=0$이므로 $x=5$ 또는 $x=-1$이다. $x=5$이면 $A=\\{40,5\\}$, $B=\\{5,-2,3\\}$이어서 $A\\subset B$가 아니다. $x=-1$이면 $A=\\{-2,5\\}$, $B=\\{5,-2,3\\}$이어서 조건을 만족한다. 이때 $A$의 원소의 합은 $-2+5=3$이다.\n따라서 정답은 ①이다.\n그림에서 확인하면, A⊆B x²−4x=5 x=5: 불가 x=−1: A={−2,5}, B={−2,3,5} 합=3",
-    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "집합 포함관계 후보 검토",
-    "solutionImageCaption": "A⊆B x²−4x=5 x=5: 불가 x=−1: A={−2,5}, B={−2,3,5} 합=3",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 A의 원소 40과 5, B의 원소 5, −2, 3이 있고 두 원이 5에서 겹치며 A가 B 밖으로 나온다. 오른쪽은 작은 원 A가 큰 원 B 안에 들어 있고, A 안에 −2와 5, B에서 A를 뺀 부분에 3이 있다.",
+    "solutionImageCaption": "A∪B=B이면 A⊂B이므로 A의 원소 5가 B에 들어가야 하고 x²−4x=5에서 x=5 또는 x=−1이다. x=5이면 A={40,5}의 40이 B에 없어 A⊂B가 아니고, x=−1이면 A={−2,5}가 B={−2,3,5} 안에 들어간다. 이때 A의 원소는 −2와 5이다. 정답은 3이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -138,9 +138,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "적어도 하나를 관람한 학생 수는 합집합의 원소 수이고, 두 영화를 모두 관람한 학생 수는 교집합의 원소 수이다.\n\n전체 학생은 $50$명이고 두 영화 모두 보지 않은 학생은 $8$명이다.\n\n먼저 합집합의 원소 수 $a$를 구한 뒤 포함배제 원리로 교집합의 원소 수 $b$를 구한다.\n\n적어도 한 영화를 관람한 학생은 $a=50-8=42$명이다. $31+23=a+b$이므로 $b=31+23-42=12$명이다. 따라서 $a-b=42-12=30$이다.\n그림에서 확인하면, 바깥 8명을 50명에서 빼면 a=42이고, 두 원의 겹친 12명이 중복 집계되므로 b=31+23−42=12이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "50명 중 A=31, B=23, 교집합 12, 바깥 8, A만 19, B만 11인 실제 Venn diagram",
-    "solutionImageCaption": "두 영화의 합집합 42명과 교집합 12명을 네 영역으로 확인해 a−b=30을 구하는 도식",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 전체집합 U 안의 두 원 A, B의 합집합이 색칠되어 있고 바깥에 8명이라고 쓰여 있다. 오른쪽은 A만 19명, 겹친 부분 12명(색칠), B만 11명, 바깥 8명이라고 쓰여 있다.",
+    "solutionImageCaption": "전체 50명에서 두 영화를 모두 보지 않은 8명을 빼면 적어도 하나를 본 학생은 a=42명이다. 31+23=a+b이므로 겹친 부분은 b=12명이다. 따라서 a−b=42−12이다. 정답은 30이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -209,9 +209,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "‘또는’의 진리집합은 두 조건의 진리집합의 합집합이다.\n\n$U=\\{1,2,3,4,5,6\\}$이고, $p$의 진리집합은 $\\{2,3,4\\}$이다.\n\n$q$를 만족하지 않는 자연수를 구해 $\\sim q$의 진리집합을 만든 뒤 $p$의 진리집합과 합친다.\n\n$x^2-3x+2=(x-1)(x-2)$이므로 $q$가 거짓인 경우는 $x=1,2$이다. 따라서 $\\sim q$의 진리집합은 $\\{1,2\\}$이고, ‘$p$ 또는 $\\sim q$’의 진리집합은 $\\{2,3,4\\}\\cup\\{1,2\\}=\\{1,2,3,4\\}$이다. 원소의 합은 $1+2+3+4=10$이다.\n따라서 정답은 ⑤이다.\n그림에서 확인하면, U={1,2,3,4,5,6} q 거짓: x=1,2 ~q={1,2} p={2,3,4} p∪~q={1,2,3,4} 합=10",
-    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "조건의 부정과 합집합",
-    "solutionImageCaption": "U={1,2,3,4,5,6} q 거짓: x=1,2 ~q={1,2} p={2,3,4} p∪~q={1,2,3,4} 합=10",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 전체집합 U 안의 두 원 P와 N이 2에서 겹치고, P에 3과 4, N에 1, 바깥에 5와 6이 있다. 오른쪽은 같은 그림에서 두 원의 합집합이 색칠되어 있다.",
+    "solutionImageCaption": "U={1,2,3,4,5,6}이고 p의 진리집합은 P={2,3,4}이다. q가 거짓인 x는 x²−3x+2=0에서 1, 2이므로 ~q의 진리집합은 N={1,2}이다. p 또는 ~q의 진리집합은 합집합 {1,2,3,4}이고 원소의 합을 구한다. 정답은 10이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
@@ -284,9 +284,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "교집합과 차집합 조건을 원소의 포함 여부로 바꾼다.\n\n$X\\cap A=A$에서 $A\\subset X$이고, $X-B=X$에서 $X\\cap B=\\varnothing$이다.\n\n반드시 포함되는 원소와 포함될 수 없는 원소를 제외한 나머지를 자유롭게 선택한다.\n\n$1,2$는 반드시 $X$에 포함되고 $5,7$은 포함될 수 없다. 남은 원소 $3,4,6$은 각각 포함하거나 포함하지 않을 수 있으므로 가능한 $X$의 개수는 $2^3=8$이다.\n그림에서 확인하면, 1과 2는 반드시 X에 들어가고 5와 7은 빠진다. 남은 3,4,6의 포함 여부가 각각 독립적으로 결정된다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "U={1,…,7}에서 반드시 포함 {1,2}, 반드시 제외 {5,7}, 자유 선택 {3,4,6}을 구분한 상태표",
-    "solutionImageCaption": "X∩A=A와 X−B=X가 정하는 X의 세 자유 원소와 2³=8을 표시한 표",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 각각 전체집합 U 안에 서로 떨어진 두 원 X와 B가 있고, B 안에는 5와 7이 있다. 왼쪽은 X 안에 1, 2, 3, 4, 6이 모두 있고, 오른쪽은 X 안에 1과 2만 있고 3, 4, 6은 두 원 바깥에 있다.",
+    "solutionImageCaption": "X∩A=A이므로 1, 2는 반드시 X에 들어가고, X−B=X이므로 5, 7은 X에 들어갈 수 없다. 왼쪽은 나머지 3, 4, 6을 모두 넣은 X, 오른쪽은 모두 뺀 X이고, 3, 4, 6은 각각 넣거나 뺄 수 있어 2×2×2가지이다. 정답은 8이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -327,7 +327,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 집합 X의 원소 1부터 5와 오른쪽 집합 X의 원소 1부터 5를 잇는 대응도이다. 1→5, 2→1, 3→3, 4→2, 5→4로 가는 화살표가 있고, 3을 뺀 네 화살표는 주황색, 3→3은 파란색이다.",
+    "solutionImageCaption": "f의 대응을 거꾸로 한 g는 1→5, 2→1, 3→3, 4→2, 5→4이다. 주황 화살표를 따라가면 4→2→1→5→4로 4번마다 제자리로 돌아오는 순환이다. 2022=4×505+2이므로 g를 2022번 적용하면 g를 2번 적용한 것과 같다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -395,7 +399,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 집합 X의 원소 1부터 5와 오른쪽 집합 X의 원소 1부터 5를 잇는 대응도이다. 1→5, 2→1, 3→4, 4→2, 5→3으로 가는 화살표가 있고 3→4만 주황색이며 나머지는 파란색이다.",
+    "solutionImageCaption": "g는 항등함수여서 g(1)=1, g(3)=3이고, (다)에서 h는 상수함수 4이다. (라)에서 f(1)=5, (나)에서 f(2)=1, f(4)=2이며 f(x)≠x이므로 f(3)=4, f(5)=3이다. 그림의 주황 화살표에서 f에서 4로 가는 원소를 읽어 f⁻¹(4)+g(1)+h(1)을 구한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -429,7 +437,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄이 같은 눈금으로 있다. 첫째 줄 ~q에는 −2와 5에 속이 찬 점이 찍힌 −2≤x≤5 구간이, 둘째 줄 p에는 −a+4와 a+4에 속이 빈 점이 찍힌 구간이 굵게 그려져 있고 0의 눈금이 표시되어 있다.",
+    "solutionImageCaption": "예: a=10으로 그린 그림이다. q: x²−3x−10>0의 부정 ~q의 진리집합은 [−2,5]이고 p의 진리집합은 (4−a,4+a)이다. p가 ~q의 필요조건이면 [−2,5]가 (4−a,4+a) 안에 들어가야 하므로 4−a<−2, 5<4+a이다. 이를 만족하는 자연수 a의 최솟값은 7이다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -532,9 +544,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "명제의 함의 관계를 진리집합의 포함관계로 바꾼다.\n\n$P-Q=\\varnothing$에서 $P\\subset Q$이고, $Q\\cup R^c=U$에서 $R\\subset Q$이다.\n\n두 포함관계와 그 대우로부터 반드시 참인 명제를 판정한다.\n\n$P\\subset Q$이므로 $p\\to q$인 ㄱ은 참이다. $R\\subset Q$의 대우는 $Q^c\\subset R^c$이므로 $\\sim q\\to\\sim r$인 ㄹ도 참이다. 그러나 $R$과 $P$ 사이의 포함 또는 서로소 관계는 주어지지 않았으므로 ㄴ과 ㄷ은 반드시 참이 아니다.\n따라서 정답은 ②이다.\n그림에서 확인하면, P−Q=∅ ⇔ P⊆Q Q∪Rᶜ=U ⇔ R⊆Q P⊆Q, R⊆Q qᶜ→rᶜ",
-    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "진리집합 함의 연결",
-    "solutionImageCaption": "P−Q=∅ ⇔ P⊆Q Q∪Rᶜ=U ⇔ R⊆Q P⊆Q, R⊆Q qᶜ→rᶜ",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 전체집합 U 안에서 작은 원 P가 큰 원 Q 안에 들어 있고, 오른쪽은 작은 원 R이 큰 원 Q 안에 들어 있다.",
+    "solutionImageCaption": "P−Q=∅이면 P⊂Q이고 Q∪Rᶜ=U이면 R⊂Q이다. P⊂Q이므로 p→q는 참이고, R⊂Q의 대우 ~q→~r도 참이다. P와 R의 관계는 두 조건만으로 정해지지 않으므로 r→p와 r→~p는 반드시 참이 아니다. 정답은 ㄱ, ㄹ이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-PROOF",
     "subUnit": "증명과 절대부등식",
@@ -571,9 +583,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$(f\\circ g)(x)=x$이면 $g$는 $f$의 역함수이다.\n\n$x\\ge1$에서 $f(x)=(x-1)^2+4$이고, $x<1$에서 $f(x)=x+3$이다.\n\n$f(x)=8$과 $f(x)=2$를 각각 해당 구간 조건과 함께 풀어 역함수 값을 구한다.\n\n$f(x)=8$을 $x\\ge1$인 식에서 풀면 $(x-1)^2=4$이고 구간 조건을 만족하는 해는 $x=3$이므로 $g(8)=3$이다. $f(x)=2$는 $x<1$인 식에서 $x+3=2$를 풀어 $x=-1$이므로 $g(2)=-1$이다. 따라서 $g(8)+g(2)=3-1=2$이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "조각함수와 역함수의 그래프를 나타낸 해설 그래프",
-    "solutionImageCaption": "f⁻¹(8)=3, f⁻¹(2)=−1을 그래프 대응으로 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림이 위아래로 두 개 있다. 위쪽은 f의 그래프(파랑)와 수평선 y=8(초록), y=2(분홍)이 점 (3, 8), (−1, 2)에서 만나고 점선이 x축까지 내려와 있다. 아래쪽은 f(파랑), 역함수 g(주황), 직선 y=x(초록)가 있고 g 위의 점 (8, 3), (2, −1)이 표시되어 있다.",
+    "solutionImageCaption": "(f∘g)(x)=x이면 g는 f의 역함수이다. f(x)=8은 x≥1인 식에서 x=3이어서 g(8)=3이고, f(x)=2는 x<1인 식에서 x=−1이어서 g(2)=−1이다. 아래쪽 그림처럼 g는 f를 y=x에 대칭한 곡선이다. 정답은 2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
@@ -610,9 +622,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "먼저 안쪽 함수 $g$의 치역을 구한 뒤 그 구간에서 $f$의 최솟값을 찾는다.\n\n$g(x)=(x-1)^2+1$이고 $0\\le x\\le3$이므로 $1\\le g(x)\\le5$이다.\n\n$t=g(x)$로 두고 아래로 열린 이차함수 $f(t)=-(t-4)^2+a+16$의 구간 $[1,5]$에서 최솟값을 비교한다.\n\n꼭짓점의 $t$좌표는 $4$이고, 구간의 두 끝점 중 꼭짓점에서 더 먼 값은 $t=1$이다. 따라서 최솟값은 $f(1)=-1+8+a=a+7$이다. 이것이 $5$이므로 $a+7=5$에서 $a=-2$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "합성함수의 구간 최솟값을 나타낸 해설 그래프",
-    "solutionImageCaption": "g의 치역 [1,5]에서 (f∘g)의 최솟값 5와 a=−2를 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림이 위아래로 두 개 있다. 위쪽은 가로축 x, 세로축 t이고 g(x)(파랑)의 0≤x≤3인 부분과 점선 t=1(초록), t=5(분홍), 꼭짓점 (1, 1)과 끝점 (3, 5)가 있다. 아래쪽은 가로축 t이고 위로 볼록한 포물선 f(t)에서 t=1부터 5까지가 굵은 주황으로 그려져 있고 t=1, 4, 5에 점선이 있다.",
+    "solutionImageCaption": "g(x)=(x−1)²+1이고 0≤x≤3이므로 t=g(x)의 범위는 1≤t≤5이다. 아래쪽은 f(t)=−t²+8t+a를 a=0인 예로 그린 것으로 꼭짓점은 t=4이고, 구간의 두 끝 중 꼭짓점에서 먼 t=1에서 최솟값 f(1)=a+7을 갖는다. a+7=5이다. 정답은 −2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
@@ -651,7 +663,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림이 위아래로 두 개 있다. 위쪽은 f(파랑)가 수평선 y=1(주황)과 t=−1, 1, 3인 세 점에서 만나고, 아래쪽은 f가 y=3(초록)과 a=−3, 5인 두 점에서, y=1(주황)과 a=−1, 1, 3인 세 점에서 만나는 모양이며 눈금이 표시되어 있다.",
+    "solutionImageCaption": "f(t)=1의 해는 t=−1, 1, 3이므로 f(f(a))=1은 f(a)=−1, 1, 3이다. f의 값은 0 이상이라 f(a)=−1은 해가 없고, f(a)=1에서 a=−1, 1, 3, f(a)=3에서 a=−3, 5이다. 모든 a의 합을 구한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -687,7 +703,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림이 위아래로 두 개 있다. 위쪽은 가로축 b, 세로축 a이고 (0, 8)과 (6, 0)을 잇는 선분(파랑)과 a=8의 주황 점선이 있다. 아래쪽은 가로축 b, 세로축 S이고 b=0에서 6까지의 위로 볼록한 포물선과 꼭짓점 높이를 나타내는 주황 점선, b=3과 6의 눈금이 있다.",
+    "solutionImageCaption": "직사각형의 가로 a, 세로 b는 닮은 삼각형에서 8분의 a+6분의 b=1이므로 a=8−(3분의 4)b이다. 넓이 S=ab=−(3분의 4)(b−3)²+12이므로 b=3일 때 최대이고 이때 a=4이다. 둘레는 2(a+b)이다. 정답은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -721,7 +741,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림이 위아래로 두 개 있다. 위쪽은 y축 대칭인 두 봉우리 모양의 그래프(파랑)와 수평선 y=3(초록)이 세 점에서 만나고 x=−2, 2에 점선이 있다. 아래쪽은 같은 그래프와 수평선 y=1, 2, 3, 4가 있고 그래프 위의 교점 아홉 개가 점으로 찍혀 있다.",
+    "solutionImageCaption": "h(x)는 y축에 대칭이므로 h(x)=3이 세 실근이면 x=0도 근이어서 b=3이다. y=1, 2에서 각각 2개, y=3에서 3개의 점이 생겨 7개이고, 총 9개가 되려면 꼭짓점의 높이가 4여야 하므로 a=2이다. f(4)=−16+8+3이다. 정답은 −5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -749,7 +773,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림이 위아래로 두 개 있다. 두 그림 모두 y=x²−6x+k의 그래프(파랑)와 꼭짓점의 높이를 나타내는 주황 점선 y=k−9, x=3의 눈금이 있다. 위쪽은 꼭짓점이 x축 아래에 있고, 아래쪽은 꼭짓점이 x축 위에 있다.",
+    "solutionImageCaption": "(1) 주어진 명제의 부정은 모든 실수 x에 대하여 x²−6x+k≥0이다. (2) x²−6x+k=(x−3)²+k−9의 꼭짓점의 y좌표 k−9가 0 이상이어야 그래프가 x축 아래로 내려가지 않는다. 위쪽은 k=5, 아래쪽은 k=12인 예이다. 정답은 (1) 모든 실수 x에 대하여 x²−6x+k≥0이다, (2) 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -807,6 +835,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림이 위아래로 두 개 있다. 위쪽은 아래로 볼록한 포물선(파랑)에서 왼쪽 부분이 굵은 주황으로 칠해져 있고 점 (−2, 10)과 수평선 y=10이 있다. 아래쪽은 같은 포물선에서 주황 부분의 오른쪽 끝에 점 (b, −5)와 수평선 y=−5가 있다.",
+    "solutionImageCaption": "a<0이므로 꼭짓점은 x>0에 있고, 일대일 조건에서 정의역 −2≤x≤b는 꼭짓점의 왼쪽 감소 구간이다. 그래서 치역의 최댓값은 f(−2)=2−2a=10이고 최솟값은 f(b)=−5이다. 그림은 꼭짓점의 값을 나타내지 않은 모양이다. 정답은 a=−4, b=1이다.",
+    "solutionImageSize": "full"
   }
 ];
