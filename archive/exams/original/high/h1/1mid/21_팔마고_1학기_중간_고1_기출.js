@@ -291,10 +291,10 @@ window.questionBank = [
     ],
     "answer": "4",
     "solution": "두 조건을 빼면 $a+b$가 바로 나타난다.\n\n$f(a)=b$, $f(b)=a$이므로\n$b-a=f(a)-f(b)$이다.\n\n$f(x)=x^2+5x+2$를 대입하면\n$b-a=(a^2+5a+2)-(b^2+5b+2)$이다.\n\n차의 제곱 공식으로 묶으면\n$b-a=(a-b)(a+b+5)$이다.\n\n$a-b=-(b-a)$이므로\n$b-a=-(b-a)(a+b+5)$이다.\n\n$a<b$이므로 $b-a>0$이고, 따라서 $b-a\\ne 0$이다.\n양변을 $b-a$로 나누면\n$1=-(a+b+5)$이다.\n따라서 $a+b=-6$이다.\n\n$b=-6-a$를 $b=f(a)$에 대입하면\n$-6-a=a^2+5a+2$이다.\n모든 항을 한쪽으로 모으면\n$a^2+6a+8=0$이다.\n인수분해하면\n$(a+2)(a+4)=0$이다.\n따라서 $a=-2$ 또는 $a=-4$이다.\n\n$a=-2$이면 $b=-4$여서 $a<b$를 만족하지 않는다.\n$a=-4$이면 $b=-2$이고 $a<b$를 만족한다.\n그러므로 $a=-4$, $b=-2$이다.\n\n이제 꼭짓점의 가로좌표와 최솟값을 구한다.\n$y=(x-a)(x-b)=(x+4)(x+2)$이다.\n전개하면\n$y=x^2+6x+8$이다.\n완전제곱식으로 바꾸면\n$y=(x+3)^2-1$이다.\n제곱항은 $x=-3$일 때 $0$이 되므로\n$\\alpha=-3$, $\\beta=-1$이다.\n$\\alpha\\beta=(-3)(-1)$이다.\n$\\alpha\\beta=3$이므로 정답은 ④이다.",
-    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/21_팔마고_1학기_중간_고1_기출_q06_solution.svg",
-    "solutionImageAlt": "포물선 y=(x+3)²−1에서 두 근 (-4, 0), (-2, 0)과 최솟점 (-3, -1)을 표시한 그래프",
-    "solutionImageCaption": "두 근의 중점 x=-3에서 최솟값 -1을 가지므로 α=-3, β=-1이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선 f(x)와 주황 직선 y=-x-6이 좌표 (-4, -2), (-2, -4)인 두 점에서 만나는 모습이다. 아래 그림은 가로축과 두 점에서 만나는 파란 포물선 y=(x-a)(x-b)와 주황 점선 포물선 y=x²이고, 가로축 위의 두 근에 a, b가, 파란 포물선의 가장 낮은 점에 V가 표시되어 있다.",
+    "solutionImageCaption": "f(a)=b, f(b)=a의 두 식을 빼면 a+b=−6이므로 점 (a, b)와 (b, a)는 직선 y=−x−6 위에 있다. 위 그림에서 파랑은 이차함수 f(x), 주황은 이 직선이다. 이를 f(x)=x²+5x+2와 연립하면 a<b에서 (a, b)=(−4, −2)이다. y=(x−a)(x−b)=x²+6x+8=(x+3)²−1은 y=x²을 평행이동한 꼴이고 꼭짓점 V가 (α, β)이므로 α=−3, β=−1이다. 아래 그림에서 파랑은 y=(x−a)(x−b), 주황 점선은 y=x²이다. 정답은 αβ=3이다.",
+    "solutionImageSize": "full"
   ,
     "level": "상",
     "standardCourse": "수학(상)",
@@ -632,7 +632,11 @@ window.questionBank = [
         "reason": "H1 runtime taxonomy의 2015/수학(상) exact row는 교점 좌표와 그래프 관계 및 현재 PT/TPL을 active/selectable로 제공한다. high1.json에는 이 exact L3/L4 recordId가 없고 H1-RPM-033은 x축 교점, H1-RPM-035는 교점 개수로 범위가 달라 어느 쪽도 exact ID로 가장하지 않았다.",
         "evidenceSource": "archive/data/meta-foundation/runtime/h1-foundation-v1.json; archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
       }
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선 y=x²+mx+3과 주황 직선 y=2x+n이 두 점에서 만나고, 두 교점에서 가로축으로 내린 점선이 눈금 1과 4를 가리킨다. 아래 그림은 두 식의 차 h(x)를 나타내는 파란 포물선이 초록 가로축(y=0)과 x=1, x=4인 두 점에서 만나는 모습이다.",
+    "solutionImageCaption": "두 그래프의 교점에서는 함수값이 같으므로 x²+mx+3=2x+n, 즉 x²+(m−2)x+(3−n)=0이다. 위 그림에서 파랑은 y=x²+mx+3, 주황은 y=2x+n이고 두 교점의 x좌표는 1, 4이다. 좌변과 우변의 차를 h(x)로 놓으면 h(x)=x²+(m−2)x+3−n이고, 아래 그림에서 파랑은 h(x), 초록은 y=0(가로축)이며 h(x)의 두 근이 교점의 x좌표 1, 4이다. 근과 계수의 관계에서 1+4=−(m−2)이므로 m=−3, 1·4=3−n이므로 n=−1이다. 따라서 m−n=−3−(−1)이다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   
 },
   {
@@ -980,10 +984,10 @@ window.questionBank = [
     ],
     "answer": "$-3$",
     "solution": "접선은 그래프 위의 점 $(0,5)$를 지나므로 $y$절편은 $b=5$이다.\n\n포물선과 직선 $y=ax+5$의 교점에서는\n$x^2+2x+5=ax+5$,\n즉 $x^2+(2-a)x=0$,\n$x(x+2-a)=0$이다.\n\n주어진 점의 $x$좌표는 $0$이다. 이 점에서 접하려면 교점 방정식이 $x=0$을 중근으로 가져야 하므로 두 번째 인수도 $x=0$에서 $0$이어야 한다.\n$2-a=0$이므로 $a=2$이다.\n\n따라서 $a-b=2-5=-3$이다.",
-    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/21_팔마고_1학기_중간_고1_기출_q18_solution.svg",
-    "solutionImageAlt": "포물선 y=x²+2x+5와 접선 y=2x+5가 점 (0,5)에서 만나는 그래프",
-    "solutionImageCaption": "직선은 포물선과 (0,5) 한 점에서 만나므로 접선이다. 이 직선의 기울기는 a=2, y절편은 b=5이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선 y=x²+2x+5와 점 (0, 5)를 지나는 주황 직선 y=4x+5, 초록 직선 y=−2x+5가 각각 포물선과 두 점에서 만나는 모습이다. 아래 그림은 파란 포물선과 점 (0, 5)에서 한 점만 만나는 주황 직선 y=ax+b이다.",
+    "solutionImageCaption": "접선은 포물선 위의 점 (0, 5)를 지나므로 y절편은 b=5이다. 위 그림에서 파랑은 포물선 y=x²+2x+5이고, 주황 y=4x+5와 초록 y=−2x+5는 이 점을 지나는 기울기가 다른 직선의 예로 각각 포물선과 두 점에서 만난다. 포물선과 직선 y=ax+5의 교점 방정식은 x(x+2−a)=0이고, 점 (0, 5)에서 접하려면 x=0이 중근이어야 하므로 2−a=0, a=2이다. 아래 그림에서 파랑은 포물선, 주황은 점 (0, 5)에서 한 점만 만나는 접선 y=ax+b이다. 따라서 a−b=2−5이다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   ,
     "level": "중",
     "standardCourse": "수학(상)",
@@ -1032,10 +1036,10 @@ window.questionBank = [
     ],
     "answer": "직각삼각형 ($\\angle C=90^\\circ$)",
     "solution": "주어진 식의 앞 세 항은 완전제곱으로 묶을 수 있다.\n$a^4+b^4-c^4+2a^2b^2=0$\n$\\Longleftrightarrow (a^2+b^2)^2-c^4=0$\n$\\Longleftrightarrow (a^2+b^2-c^2)(a^2+b^2+c^2)=0$.\n\n$a,b,c$는 삼각형의 변의 길이이므로 모두 양수이다. 따라서 $a^2+b^2+c^2>0$이고, 첫째 인수가 $0$이어야 한다.\n$a^2+b^2=c^2$.\n\n피타고라스 정리의 역에 따라 변 $c$의 맞은편 각 $C$가 직각이다. 따라서 삼각형 $ABC$는 $C$가 직각인 직각삼각형이다.",
-    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/21_팔마고_1학기_중간_고1_기출_q19_solution.svg",
-    "solutionImageAlt": "변 a와 b가 C에서 직각으로 만나고, 그 맞은편 빗변이 c인 삼각형 ABC",
-    "solutionImageCaption": "a²+b²=c²이므로 ∠C=90°이고, 변 c가 빗변이다. 도형은 관계를 보여 주는 모식도이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 A, B, C이다. 변 BC의 길이를 a, 변 CA의 길이를 b, 변 AB의 길이를 c로 표시한 일반적인 모양의 모식도이고 비율은 정확하지 않다.",
+    "solutionImageCaption": "등식의 앞 세 항은 (a²+b²)²−c⁴로 묶이고 차의 제곱 공식으로 (a²+b²−c²)(a²+b²+c²)=0이다. a, b, c가 모두 양수이므로 a²+b²+c²>0이어서 a²+b²=c²이고, 피타고라스 정리의 역에 따라 변 c의 맞은편 각 C가 직각이다. 그림은 변 이름을 보이는 모식도이며 비율이 정확하지 않다. 정답은 ∠C=90°인 직각삼각형이다.",
+    "solutionImageSize": "full"
   ,
     "level": "중",
     "standardCourse": "수학(상)",
@@ -1090,10 +1094,10 @@ window.questionBank = [
     ],
     "answer": "$4$",
     "solution": "조건 (가)는 대칭축이 $x=2$라는 뜻이다.\n따라서 $f(x)=p(x-2)^2+q$로 둘 수 있고, 이차함수이므로 $p\\ne0$이다.\n\n구간 $[1,5]$에서 꼭짓점 $x=2$는 구간 안에 있다.\n끝점까지의 거리는 $|1-2|=1$, $|5-2|=3$이므로 $x=5$가 더 멀다.\n\n먼저 $p>0$인 경우를 나눈다.\n꼭짓점에서 최솟값을 가지므로 $q=-10$이다.\n더 먼 끝점 $x=5$에서 최댓값을 가지므로 $q+9p=8$이다.\n$-10+9p=8$이다.\n$9p=18$이므로 $p=2$이다.\n이 경우 $(p,q)=(2,-10)$이다.\n\n다음으로 $p<0$인 경우를 나눈다.\n꼭짓점에서 최댓값을 가지므로 $q=8$이다.\n더 먼 끝점 $x=5$에서 최솟값을 가지므로 $q+9p=-10$이다.\n$8+9p=-10$이다.\n$9p=-18$이므로 $p=-2$이다.\n이 경우 $(p,q)=(-2,8)$이다.\n\n조건 (다)에서 직선과 포물선은 한 점에서 만나므로 교점 방정식은 중근을 가진다.\n따라서 교점 방정식의 판별식은 $0$이다.\n$p(x-2)^2+q=4x+2$이다.\n$px^2-4px+4p+q=4x+2$이다.\n$px^2-(4p+4)x+(4p+q-2)=0$이다.\n\n이 이차방정식의 판별식은\n$\\Delta=(4p+4)^2-4p(4p+q-2)$이다.\n$=16p^2+32p+16-16p^2-4pq+8p$이다.\n$=40p+16-4pq$이다.\n\n$(p,q)=(2,-10)$이면\n$\\Delta=40(2)+16-4(2)(-10)=176\\ne0$이다.\n따라서 이 경우에는 접하지 않는다.\n\n$(p,q)=(-2,8)$이면\n$\\Delta=40(-2)+16-4(-2)(8)=0$이다.\n따라서 접하는 함수는 $f(x)=-2(x-2)^2+8$이다.\n\n$x$축과 만나는 점에서는 $f(x)=0$이다.\n$-2(x-2)^2+8=0$이다.\n$(x-2)^2=4$이다.\n$x-2=2$ 또는 $x-2=-2$이다.\n따라서 $x=4$ 또는 $x=0$이고, 두 $x$좌표의 합은 $4$이다.",
-    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/21_팔마고_1학기_중간_고1_기출_q20_solution.svg",
-    "solutionImageAlt": "구간 [1,5]에서 포물선 y=−2(x−2)²+8과 직선 y=4x+2, 최댓점 (2,8), 최솟점 (5,−10), 접점 (1,6), x절편 0과 4를 나타낸 그래프",
-    "solutionImageCaption": "축 x=2와 구간 끝점에서 최댓값·최솟값을 확인하고, 직선은 (1,6)에서 접한다. 포물선의 x절편은 0과 4이다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 하나의 좌표평면에 파란 포물선 f₁(x)(아래로 볼록, 꼭짓점 (2, −10), 점 (1, −8), 점 (5, 8))와 주황 포물선 f₂(x)(위로 볼록, 꼭짓점 (2, 8), 점 (5, −10))가 그려져 있고, 두 곡선 모두 구간 1 이상 5 이하의 부분이 굵게 그려져 있다. 초록 직선 y=4x+2가 주황 곡선 f₂(x)와 점 (1, 6)에서 접한다.",
+    "solutionImageCaption": "대칭축이 x=2이므로 f(x)=p(x−2)²+q로 놓고, 구간 [1, 5]에서 꼭짓점과 더 먼 끝점 x=5의 값으로 최대·최소를 쓴다. 구간 1 이상 5 이하는 굵게 그렸다. p>0이면 (p, q)=(2, −10)인 f₁(x)(파랑), p<0이면 (p, q)=(−2, 8)인 f₂(x)(주황)이다. 초록 직선 y=4x+2와 접하는 것은 f₂(x)뿐이고(점 (1, 6)) f₁(x)는 교점 방정식의 판별식이 0이 아니어서 접하지 않는다. 따라서 f(x)=−2(x−2)²+8이고 x축과 만나는 두 점의 x좌표의 합은 4이다. 정답은 4이다.",
+    "solutionImageSize": "medium"
   ,
     "level": "상",
     "standardCourse": "수학(상)",
@@ -1196,7 +1200,11 @@ window.questionBank = [
         "reason": "The source condition α>β is required to assign the larger and smaller roots. The active Condition registry has no exact pairwise-order key; no approximate range/nonzero key is substituted.",
         "evidenceSource": "archive/data/meta-foundation/canonical/condition_registry.json"
       }
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 a=0인 파란 포물선, a=1인 주황 포물선, a=-3인 초록 포물선이 모두 한 점 P(1, -1)을 지나는 모습이다. 아래 그림은 점 P가 꼭짓점인 파란 포물선이 가로축과 만나는 두 점에 α, β가 표시되어 있고, a=0인 주황 점선 포물선이 함께 있어 P가 이 곡선의 꼭짓점이 아님을 보인다.",
+    "solutionImageCaption": "y=x²−2+a(x−1)에서 a의 계수 x−1이 0이면 되므로 x=1, y=−1이고 P=(1, −1)이다. 위 그림은 a=0(파랑), a=1(주황), a=−3(초록)인 포물선이 모두 P를 지나는 모습이다. 대칭축의 식 x=−(2분의 a)가 P의 x좌표 1이어야 하므로 a=−2이고 이차함수는 y=x²−2x=x(x−2)이다. 아래 그림에서 파랑은 이 이차함수(a=−2)이고, 주황 점선은 비교용 a=0인 포물선이다. 두 x절편 중 α>β이므로 α=2, β=0이고 a−α+β=−2−2+0이다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   
 }
 ];

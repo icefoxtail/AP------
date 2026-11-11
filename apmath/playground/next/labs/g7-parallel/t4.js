@@ -14,6 +14,8 @@
 
   const wdeg = (d1, d2) => { let w = norm(d2 - d1); if (w > 180) w = 360 - w; return Math.round(w * 1000) / 1000; };
   const ease = K.ease;
+  const lessonOn = (s, C) => !!(C.lesson || s.lessonOn || s.lessonEntry);
+  const ready = (s, C, key) => !lessonOn(s, C) || (!s.lessonEntry && !!s[key]);
   // 점 P 를 접는 선(점 B, 방향 u)을 축으로 c(=cos πt: 1 → −1)만큼 돌린 위치
   const spin = (P, B, u, c) => {
     const d = { x: P.x - B.x, y: P.y - B.y }, al = d.x * u.x + d.y * u.y;
@@ -29,7 +31,9 @@
   function tapeGeom(a, bx) {
     const B = { x: bx, y: YB }, C = { x: bx + TH / Math.tan(a * DEG), y: YT };
     const A = { x: bx + TH / Math.tan(2 * a * DEG), y: YT };
-    const u = dir(a), xe = C.x + 0.7, E = { x: xe, y: YB }, F = { x: xe, y: YT };
+    // The reflected lower edge must reach A; otherwise the claimed overlapping
+    // triangle ABC is cut off by the paper's right edge (already at a=55°).
+    const u = dir(a), xe = Math.max(C.x + 0.7, B.x + Math.hypot(A.x - B.x, A.y - B.y) + 0.7), E = { x: xe, y: YB }, F = { x: xe, y: YT };
     return { a, x: 180 - 2 * a, B, C, A, u, E, F, ab: Math.hypot(A.x - B.x, A.y - B.y), ac: Math.hypot(A.x - C.x, A.y - C.y), xw: wdeg(angOf(A, B), 0) };
   }
   const T1 = {
@@ -47,10 +51,10 @@
     reroll: (s) => { s.fA = pick([42, 46, 50, 54, 58, 62, 66], s.fA); s.fX = pick([-2.0, -1.4, -0.8], s.fX); s.pat = 1; },
     model: (s) => Object.assign(tapeGeom(s.fA, s.fX), { pat: s.pat == null ? 1 : s.pat }),
     draw(b, s, M, C) {
-      const G = M, prob = C.mode === 'problem', pat = C.mode === 'review' || prob ? 1 : G.pat, c = tc(pat), st = C.mode === 'review' ? C.step : 99;
+      const lesson = lessonOn(s, C), G = M, prob = C.mode === 'problem', pat = (C.mode === 'review' && !lesson) || prob ? 1 : G.pat, c = tc(pat), st = C.mode === 'review' ? C.step : 99;
       const { B, C: Cc, A, u, E, F, a } = G;
       // 종이(고정 부분)
-      const left = Math.min(XL, A.x - .5), right = Math.max(3.6, Cc.x + .9);
+      const left = Math.min(XL, A.x - .5), right = Math.max(3.6, E.x + .2);
       b.path([{ x: left, y: YB }, B, Cc, { x: left, y: YT }], { close: true, fill: 'sky', fillAlpha: 0.14, color: null });
       parLine(b, { x: 0, y: YT }, 0, { e0: left + .15, e1: right, arrows: [-2.8, 2.6], name: 'l', nameAt: right - .3 });
       parLine(b, { x: 0, y: YB }, 0, { e0: left + .15, e1: right, arrows: [-2.8, 2.6], name: 'm', nameAt: right - .3, nameDy: 18 });
@@ -66,19 +70,28 @@
       // 원래 각
       wedge(b, B, 0, a, { color: 'amber', rings: 1, text: prob ? mi(a) + '°' : mi(a) + '°', r: 28, size: 17 });
       if (folded) {
-        wedge(b, B, a, 2 * a, { color: 'amber', rings: 1, text: mi(a) + '°', r: 28, size: 17 });
+        wedge(b, B, a, 2 * a, { color: 'amber', rings: 1, text: ready(s, C, 'paFoldReady') ? mi(a) + '°' : '?', r: 28, size: 17 });
         T(b, A, 'A', { dy: -17, size: 17 });
         dot(b, A, 'ink', 5);
-        if (C.mode !== 'review' || st >= 2) wedge(b, Cc, 180, a + 180, { color: 'amber', rings: 1, text: mi(a) + '°', r: 28, size: 17 });
-        if (C.mode !== 'review' || st >= 3) {
-          ticks(b, A, B, 1, 'rose'); ticks(b, A, Cc, 1, 'rose');
+        if (C.mode !== 'review' || st >= 2) wedge(b, Cc, 180, a + 180, { color: 'amber', rings: 1, text: ready(s, C, 'paOtherReady') ? mi(a) + '°' : '?', r: 28, size: 17 });
+        if ((C.mode !== 'review' || st >= 3) && ready(s, C, 'paSidesReady')) { ticks(b, A, B, 1, 'rose'); ticks(b, A, Cc, 1, 'rose'); }
+        if ((!lesson && (C.mode !== 'review' || st >= 3)) || (lesson && s.paLessonGoal === 'angle')) {
           // 좁은 화면에서도 C의 밑각 글자와 겹치지 않도록 꼭짓점 A 위에 둡니다.
-          wedge(b, A, angOf(A, B), 0, { color: 'green', rings: 3, text: prob ? 'x' : 'x=' + mi(G.x) + '°', r: 34, size: prob ? 20 : 18, fa: 0.16, at: { dx: 0, dy: -46 } });
+          wedge(b, A, angOf(A, B), 0, { color: 'green', rings: 3, text: prob || !ready(s, C, 'paShowAnswer') ? 'x' : 'x=' + mi(G.x) + '°', r: 34, size: prob ? 20 : 18, fa: 0.16, at: { dx: 0, dy: -46 } });
         }
       } else if (C.mode === 'explore') T(b, { x: 0, y: 2.1 }, pat < 0.02 ? '펼친 모양 (접어 보기를 눌러요)' : '접는 중...', { color: 'muted', size: 16 });
       if (C.mode === 'explore') {
         b.handle('hB', B, { color: 'sky', ariaLabel: '접는 선의 아래쪽 점 B(좌우)', priority: 1, drag: (w) => { s.fX = clamp(Math.round(w.x * 20) / 20, -2.4, -0.2); } });
         b.handle('hC', Cc, { color: 'amber', ariaLabel: '접는 선의 위쪽 점 C(접은 각 조절)', drag: (w) => { s.fA = clamp(Math.round(Math.atan2(TH, w.x - s.fX) / DEG), 40, 70); } });
+      }
+      if (lesson && folded) {
+        let row = '';
+        if (ready(s, C, 'paShowAnswer')) {
+          if (s.paLessonGoal === 'fold') row = '접은 각 = 원래 각';
+          else if (s.paLessonGoal === 'triangle') row = 'AB = AC인 이등변삼각형';
+          else row = `x = 180°−${mi(2 * a)}° = ${mi(G.x)}°`;
+        } else if (ready(s, C, 'paSumReady')) row = `두 밑각의 합 = ${mi(a)}°+${mi(a)}° = ${mi(2 * a)}°`;
+        if (row) T(b, { x: 0, y: 2.1 }, row, { color: 'green', size: 16 });
       }
     },
     steps: (M) => [
@@ -126,7 +139,7 @@
     return o;
   }
   function drawCorner(b, G, C, s, o) {
-    const prob = C.mode === 'problem', pat = C.mode === 'review' || prob ? 1 : G.pat, c = tc(pat), st = C.mode === 'review' ? C.step : 99;
+    const lesson = lessonOn(s, C), prob = C.mode === 'problem', pat = (C.mode === 'review' && !lesson) || prob ? 1 : G.pat, c = tc(pat), st = C.mode === 'review' ? C.step : 99;
     const { A, B, D, TR, E1, u1, a } = G, two = G.two;
     const fixed = two ? [A, E1, TR, G.F2] : [A, E1, TR, D];
     b.path(fixed, { close: true, fill: 'sky', fillAlpha: 0.14, color: null });
@@ -147,17 +160,25 @@
     wedge(b, A, 0, a, { color: 'amber', rings: 1, text: mi(a) + '°', r: 38, size: 17, fa: 0.2, at: { dx: 50, dy: 22 } });
     if (two) wedge(b, A, 90 - bn, 90, { color: 'violet', rings: 2, text: mi(bn) + '°', r: 38, size: 17, fa: 0.2, at: { dx: -34, dy: -52 } });
     if (folded) {
-      wedge(b, A, a, 2 * a, { color: 'amber', rings: 1, r: 38, fa: 0.2 });
+      wedge(b, A, a, 2 * a, { color: 'amber', rings: 1, r: 38, fa: 0.2, text: lesson ? ready(s, C, 'paFoldReady') ? mi(a) + '°' : '?' : '' });
       T(b, G.B1, 'B′', { dx: 20, dy: 0, size: 16, color: 'amber' });
       dot(b, G.B1, 'amber', 4.5);
-      if (two) { wedge(b, A, 90 - 2 * bn, 90 - bn, { color: 'violet', rings: 2, r: 38, fa: 0.2 }); T(b, G.D2, 'D′', { dx: -4, dy: -15, size: 16, color: 'violet' }); dot(b, G.D2, 'violet', 4.5); }
-      if (C.mode !== 'review' || st >= 3) {
+      if (two) { wedge(b, A, 90 - 2 * bn, 90 - bn, { color: 'violet', rings: 2, r: 38, fa: 0.2, text: lesson ? ready(s, C, 'paOtherReady') ? mi(bn) + '°' : '?' : '' }); T(b, G.D2, 'D′', { dx: -4, dy: -15, size: 16, color: 'violet' }); dot(b, G.D2, 'violet', 4.5); }
+      if (lesson || C.mode !== 'review' || st >= 3) {
         const lo = 2 * a, hi = two ? 90 - 2 * bn : 90;
-        wedge(b, A, lo, hi, { color: 'green', rings: 3, text: prob ? 'x' : 'x=' + mi(G.x) + '°', r: 46, size: prob ? 20 : 18, fa: 0.16 });
+        const answerReady = ready(s, C, 'paShowAnswer') && (!lesson || s.paLessonGoal === 'angle');
+        wedge(b, A, lo, hi, { color: 'green', rings: 3, text: prob || !answerReady ? 'x' : 'x=' + mi(G.x) + '°', r: 46, size: prob ? 20 : 18, fa: 0.16 });
       }
-      if (C.mode === 'review' && st === 2) T(b, { x: 0, y: 2.75 }, two ? '90° = a + a + x + b + b' : '90° = a + a + x', { color: 'green', size: 18 });
+      if (lesson) {
+        let row = '';
+        if (ready(s, C, 'paShowAnswer') && s.paLessonGoal === 'angle') row = two ? `x = 90°−${mi(2 * a)}°−${mi(2 * bn)}° = ${mi(G.x)}°` : `x = 90°−${mi(2 * a)}° = ${mi(G.x)}°`;
+        else if (two && ready(s, C, 'paOtherSumReady')) row = `a+a = ${mi(2 * a)}°, b+b = ${mi(2 * bn)}°`;
+        else if (ready(s, C, 'paSumReady')) row = `a+a = ${mi(a)}°+${mi(a)}° = ${mi(2 * a)}°`;
+        else if (ready(s, C, 'paEquationReady')) row = two ? '90° = a + a + x + b + b' : '90° = a + a + x';
+        if (row) T(b, { x: 0, y: 2.75 }, row, { color: 'green', size: 16 });
+      } else if (C.mode === 'review' && st === 2) T(b, { x: 0, y: 2.75 }, two ? '90° = a + a + x + b + b' : '90° = a + a + x', { color: 'green', size: 18 });
     } else if (C.mode === 'explore') T(b, { x: 0, y: 2.75 }, pat < 0.02 ? '펼친 모양 (접어 보기를 눌러요)' : '접는 중...', { color: 'muted', size: 16 });
-    if (!prob && (st === 99 || st === 2)) b.right(A, at(A, 0, 1), at(A, 90, 1), { size: 15, color: 'muted' });
+    if (!prob && (lesson || st === 99 || st === 2)) b.right(A, at(A, 0, 1), at(A, 90, 1), { size: 15, color: 'muted' });
   }
   const PR = {
     kW: K.param({ value: 3.6, min: 3, max: 4.2, step: 0.05, label: '종이의 가로', hint: '그림의 점 B를 좌우로 끌어도 돼요', color: 'sky', format: (v) => v.toFixed(1) }),

@@ -66,3 +66,28 @@
 
 ## CURRENT HARD — JS 신규·수정·검수 Meta 필수 확인 (2026-10-10)
 - 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·level/1~5 난이도·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
+
+## CURRENT — 5단계 난이도(Gemini) 인박스 운반: 수리는 도구가, 작업 목록은 빈 파일만 (2026-11-11, 사용자 위임 결정)
+
+- **배경 숫자:** 2026-10-30 ~ 11-09 장부(`.archive-meta-register/diff5-intake-ledger.json`) 698건 중 반영 191건(3,424문항), 보류 504건. 보류의 절반(약 260건)은 이미 난이도가 있는 시험지를 다시 판정한 것이고, 나머지 절반(약 240건)은 형식 문제였다(원본 변경으로 해시 불일치 57, `ordinal` 대신 `sourceOrdinal` 48, 값 형식 무효 42, payload 형식 29 등). 그동안 난이도가 전혀 없는 파일 333개(7,611문항)는 그대로였다.
+- **수리는 운반 작업자가 손으로 하지 않고 도구가 한다:** `node archive/tools/meta-foundation/register-difficulty5.mjs --wrap <Drive 원본> --normalize …`. `sourceOrdinal`→`ordinal`, 신뢰도 대문자→소문자, `schemaVersion`→`v1`, 등록 필드만 추출, `latestBlobSha`를 현재 파일의 LF blob 해시로 맞춘다. 고친 내용은 stderr의 `DIFF5_INTAKE_REPAIRS:` 줄과 `gemini._intakeNote`에 남는다. 이유: 지시문으로 시킨 손 수리는 규칙이 있는 동안에도 해시 불일치 57건을 그대로 흘렸다(Windows CRLF 바이트 해시를 쓰는 등 매번 다르게 처리).
+- **난이도 값은 고치지 않는다.** `after.difficultyBucket` 등 판정 값은 그대로 옮기고, `"3"`·`"certain"`·`"none"`처럼 규격과 다른 값은 추정해 바꾸지 않아 지금처럼 `SKIP_INVALID`가 된다. 등록기의 문항 번호↔questionUid 대조와 "기존 숫자는 덮어쓰지 않는다"는 그대로다.
+- **장부의 "같은 파일은 건너뛴다"는 유지한다.** 다만 수리 규칙이 바뀌어 다시 볼 가치가 생긴 보류 건은 장부에서 그 항목을 지워 다음 회차에 새 파일로 다시 처리되게 한다(2026-11-11에 해시 불일치·ordinal·payload·값 형식 무효 176건을 이렇게 되돌렸다). 충돌(기존 난이도와 다름)·questionUid 불일치·원본 없음은 되돌리지 않는다.
+- **판정 대상은 난이도가 빈 파일만:** `node archive/tools/meta-foundation/list-missing-difficulty5.mjs [--format tsv] [--out <파일>]`이 정본 메타 기준으로 목록을 만든다(기출 최신 연도 먼저 → 유형 → 교과서 → 유사, 일부만 빈 파일은 빈 문항 번호 포함). Gemini 예약 라인에는 이 목록의 파일만 판정하게 한다. 이유: 이미 숫자가 있는 파일의 재판정은 인박스에서 전부 버려진다.
+- 기존 난이도와 다르게 나온 재판정을 반영하려면 `reviewedCorrection`(정확한 근거 필요) 경로를 쓴다. 인박스 운반에서 덮어쓰지 않는다.
+
+## CURRENT — 빈 메타 총정리: Codex가 직접 판정·등록한다 (2026-11-11, 사용자 결정)
+
+- **라인 결정(같은 날 변경):** 처음 계획은 Gemini 1차 · GPT 예약 2차였으나 사용자가 "Gemini 워커는 빼고 Codex 창에서 바로 시킨다"로 바꿨다. Gemini는 유사문항 생성 라인으로 돌리고, 분류 판정에는 쓰지 않는다. 이유: Gemini 제출은 형식 문제와 재판정으로 버려진 비율이 높았고(난이도 698건 중 191건만 등록), 저장소에서 도구를 직접 돌릴 수 있는 Codex가 판정부터 등록까지 한 곳에서 하는 편이 운반 단계가 없다. 난이도 라인(위 절)은 이미 만들어져 있어 대상 목록이 빌 때까지 Gemini에 그대로 두되, 한 주 등록 실적이 나오지 않으면 Codex로 옮긴다.
+
+- **배경 숫자(2026-11-11 정본 28,615문항):** 빈 값은 난이도 7,611(373개 파일), 단원 2,295(기출 106개 파일), 소단원 4,416(기출 2,713 · 교과서 1,703), 유형 PT/TPL 17,371(853개 파일). 개념 묶음·CrossConcept·Condition·Integration은 대부분 비어 있지만 Archive 2.0의 어느 화면도 읽지 않는다. 이미 판정했는데 등록되지 않은 유형 판정이 `pending-supplement` 72개 시험지(948문항)와 `rejected`(120문항)에 있고, 거부 사유는 대부분 `curriculumKey`·`before` 불일치 같은 형식 문제다.
+- **판단은 모델이, 형식은 도구가 만든다.** 판정하는 세션은 아래 판정 원장만 낸다. 등록 요청의 `before`·해시·문항 수·스키마는 도구가 정본에서 읽어 채운다. 이유: 손으로 만든 요청이 난이도 약 240건, 분류 39건 이상 형식으로 거부됐다.
+- **빈 것만 한다.** 대상은 저장소 도구가 만든 "빈 파일 목록"에 있는 파일뿐이고 위에서부터 한다. 이유: 난이도 제출 698건 중 약 260건이 이미 값이 있는 시험지의 재판정이라 버려졌다.
+- **한 번 읽을 때 다 받는다.** 분류 읽기 한 번에 단원·소단원(빈 문항만), 핵심 풀이·결정 단계·RPM L1~L4, CrossConcept·Condition·Integration을 함께 낸다. 화면이 읽지 않는 항목만 채우는 단독 작업은 만들지 않는다. 난이도는 별도 판정이라 위 절의 라인을 그대로 쓴다.
+- **판정은 두 번, 서로 보지 않고 한다. 안 맞으면 추정하지 않는다.** 1차 판정과 2차 판정은 서로 다른 대화 컨텍스트에서 한다(별도 Codex 창이거나, 한 감독 세션이 따로 띄운 하위 작업자 둘). 2차는 자기 원장을 다 쓰기 전에 1차 원장을 열지 않고, 감독 세션은 2차 작업자에게 대상 시험지 목록만 넘기고 1차 원장의 내용은 넘기지 않는다. 감독 세션은 불일치를 한쪽 값으로 정해 주지 않는다. 두 원장이 일치한 문항만 등록하고 불일치·판정 불가는 HOLD 목록에 `EVIDENCE_DEBT`로 남긴다. 같은 세션의 자기 점검을 독립 검수로 적지 않는다.
+- **PT/TPL은 원장에 적지 않는다.** RPM 경로에서 공식 Resolver(`rpm-active-resolver.mjs`)가 뽑는다. 크로스워크 행이 없으면 등록하지 않고 "새 키 후보"로 빼서 Codex가 `registryChanges`로 처리한다(위 "확장 원칙" 절).
+- **역할(창 A·B는 별도 창 또는 감독 세션의 하위 작업자 A·B):** Codex 창 A = 도구 제작, 밀린 판정 회수(판정 값은 그대로 두고 `before`·해시만 현재 정본으로 다시 만들어 새 `requestId`로 재제출), 분류 1차 원장. Codex 창 B = 분류 2차 원장, 두 원장 대조 → 도구로 요청 생성 → dry-run → 인박스 PR, HOLD·새 키 후보·거부 건 처리. 원장은 작업 폴더 `.tmp/meta-backfill/`에 두고 커밋하지 않는다.
+- **채우는 순서(화면에 쓰이는 것부터):** ① 난이도(기출 2026년 → 과거 → 유형별·교과서·유사) ② 단원·소단원이 빈 기출 ③ 유형(기출 최신 연도부터) ④ 교과서 소단원, 유형별·유사 문제지.
+- **판정 원장 `meta-judgment-ledger-v1`(시험지 하나에 파일 하나):** 최상위 `schemaVersion`, `judge`(`pass1`|`pass2`), `createdAt`, `sourceArchiveFile`(목록 값 그대로), `items[]`. 문항마다 `ordinal`, `questionUid`, `primaryMethod`(핵심 풀이 한 문장), `decisiveStep`(결정 단계 한 문장), `rpmPath{majorUnit, midUnit, l3, l4}`, `crossConceptKeys[]`, `conditionKeys[]`, `integrationPattern`, 그리고 목록에서 단원·소단원이 빈 문항에만 `standardUnitKey`, `subUnitKey`. 키는 저장소가 내보낸 선택지 표에 있는 값만 쓰고, 맞는 값이 없거나 판정할 수 없으면 값을 비우고 `hold`에 사유를 적는다.
+- **아직 없는 것(Codex 1단계에서 만든다):** 빈 메타 목록·선택지 표를 내는 `list-missing-meta.mjs`, 원장 두 개를 대조해 v2 요청을 만드는 `build-meta-request.mjs`. 이 둘이 병합된 뒤에 분류 판정을 시작한다.
+- **이 계획 밖:** 소단원 값과 필드 승인은 있으나 문항 상태가 의미 검토 대기라 카탈로그가 빼는 문항이 약 11,800개 있다(`archive/tools/build-archive2-catalog.mjs`의 소단원 승인 조건). 값을 채울 일이 아니라 화면 규칙 결정이다.

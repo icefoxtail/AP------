@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <style>
 /* 단면 비교는 입체와 실제 단면을 함께 보므로, 조절 막대가 많아도 탐구 무대를 줄이지 않습니다. */
 @media (max-width: 559px) {
@@ -23,6 +24,9 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -40,7 +44,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['core', 'solid3d', 't1', 't2', 't3', 't4', 'solutions'];
+const MODULES = ['core', 'solid3d', 't1', 't2', 't3', 't4', 'solutions', 'lesson-a', 'lesson-b', 'lesson-c'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -78,6 +82,7 @@ function start() {
       }
     },
     enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { document.body.dataset.soSection = /^s2-/.test(sc.id) ? '1' : '0'; lab.board.fit(); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },
+    lessons: (window.APL_LESSONS || {})['g7-solids'],
     params,
     groups
   });

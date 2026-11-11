@@ -376,7 +376,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q11-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 세 칸 그림. 첫째 칸은 점 P에서 원 O에 그은 두 접선과 선분 AB, OP. 둘째 칸은 직각삼각형 OMA, 셋째 칸은 직각삼각형 OAP를 같은 방향으로 펼친 것이며 대응하는 변은 같은 색(파랑, 주황, 초록)이다.",
     "solutionImageCaption": "직각삼각형 OAP에서 OP=5cm이다. OP는 AB를 수직이등분하므로 직각삼각형 OMA와 OAP는 닮음(대응변은 같은 색)이고, AM=4×(3÷5)=5분의 12cm이다. AB=2AM이므로 정답은 5분의 24cm이다.",
     "solutionImageSize": "full"

@@ -582,7 +582,11 @@ window.questionBank = [
       "$1$",
       "$3$",
       "$5$"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 파란 포물선이 x축과 두 점 A(−1, 0), B(5, 0)에서 만나고, 꼭짓점 (2, −27)이 표시되어 있다. 주황 점선은 두 교점의 한가운데를 지나는 대칭축 x=2이다.",
+    "solutionImageCaption": "점 A(−1, 0)이 그래프 위에 있으므로 대입하면 0=3−a−15에서 a=−12이다. 그러면 y=3x²−12x−15=3(x+1)(x−5)이므로 x축과의 다른 교점은 B(5, 0)이고 b=5이다. 두 교점의 한가운데가 대칭축 x=2이고 꼭짓점은 (2, −27)이다. 그림에서 파란 곡선은 이차함수의 그래프, 주황 점선은 대칭축이다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -674,7 +678,11 @@ window.questionBank = [
       "$\\dfrac{1}{2}$",
       "$\\dfrac{3}{2}$"
     ],
-    "image": "assets/images/21_제일고_1학기_중간_고1_기출/q16.png"
+    "image": "assets/images/21_제일고_1학기_중간_고1_기출/q16.png",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 열린 파란 포물선 y=3−x²(꼭짓점 (0,3))과 원점을 지나는 오른쪽 위로 향하는 주황 직선 y=kx가 있다. 두 교점 A(오른쪽 위), B(왼쪽 아래)에서 x축에 내린 수선의 발이 A′, B′이고 수선의 발에 직각 표시가 있으며 원점 O가 표시되어 있다. 삼각형 OAA′은 초록색, 삼각형 OBB′은 분홍색으로 칠했다.",
+    "solutionImageCaption": "두 교점의 x좌표를 p, q라 하면 3−x²=kx에서 x²+kx−3=0이므로 p+q=−k, pq=−3이다. 초록 삼각형 OAA′, 분홍 삼각형 OBB′의 넓이는 각각 2분의 1·k·p², 2분의 1·k·q²이므로 p²:q²=1:9이고 q=−3p이다. pq=−3p²=−3에서 p=1, q=−3이어서 k=−(p+q)=2이다. 그림에서 파란 곡선은 포물선, 주황 선은 직선 y=kx이고 A′, B′의 직각 표시는 수선의 발을 뜻한다. 그림은 실제 값에 맞춰 그렸지만 눈금은 쓰지 않았다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -719,9 +727,9 @@ window.questionBank = [
       "$6$",
       "$8$"
     ],
-    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "k=3일 때 구간에서 x가 커질수록 감소하여 x=1에서 최댓값 -4, x=3에서 최솟값 -40이다.",
-    "solutionImageCaption": "k=3일 때 구간에서 x가 커질수록 감소하여 x=1에서 최댓값 -4, x=3에서 최솟값 -40이다.",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 파란 포물선이 있고 꼭짓점 V(−1, 8)과 대칭축 x=−1이 점선으로 표시되어 있다. x축 위의 점 (1, 0)부터 x=3까지가 굵은 선분이고, 그 양 끝에서 내린 점선이 포물선과 만나는 두 점 중 왼쪽은 최대 표시, 오른쪽 점은 (3, −40)이며 점선 y=−40이 이 점을 지난다.",
+    "solutionImageCaption": "y=−3x²−6x+k+2=−3(x+1)²+k+5이므로 꼭짓점은 x=−1에 있고, 구간 1≤x≤k는 대칭축의 오른쪽이라 그래프가 오른쪽으로 갈수록 내려간다. 그래서 최솟값은 x=k에서 생기고 −3k²−5k+2=−40, 즉 (3k+14)(k−3)=0에서 k=3이다. 그림은 k=3인 경우이고 최댓값은 왼쪽 끝 x=1에서 생긴다. 그림에서 파란 곡선은 이차함수의 그래프, 점선은 대칭축 x=−1과 구간 끝에서 내린 선과 y=−40, x축 위 굵은 선분은 구간이다. 정답은 −4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -768,9 +776,9 @@ window.questionBank = [
       "$-2$",
       "$-5$"
     ],
-    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "m=7일 때 -3≤x≤3에서 최솟값 f(-3)=5",
-    "solutionImageCaption": "m=7일 때 -3≤x≤3에서 최솟값 f(-3)=5",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 m=1인 예로, 아래로 열린 파란 포물선에서 −3≤x≤3 부분이 주황색이고 왼쪽 끝 x=−3의 점이 오른쪽 끝보다 낮으며 초록 점선이 왼쪽 끝의 높이를 나타낸다. 아래 그림은 m=−1인 예로, 같은 구간에서 오른쪽 끝 x=3의 점이 왼쪽 끝보다 낮고 초록 점선이 오른쪽 끝의 높이를 나타낸다.",
+    "solutionImageCaption": "f(x)는 아래로 열리므로 구간 [−3, 3]에서 최솟값은 양 끝점 중 하나에서 나온다. f(3)−f(−3)=12m이므로 m≥0이면 f(−3)이 더 작고(위 그림, 예: m=1), m<0이면 f(3)이 더 작다(아래 그림, 예: m=−1). m≥0에서 f(−3)=m²−5m−9=5의 해 중 정수는 m=7이고, m<0에서 f(3)=m²+7m−9=5는 정수해가 없다. 그림에서 파란 곡선은 f(x)의 그래프, 주황색 부분은 구간 −3≤x≤3, 초록 점선은 두 끝점 중 낮은 점의 높이이다. 정답은 7이다.",
     "solutionImageSize": "full"
   },
   {
@@ -809,7 +817,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "choices": []
+    "choices": [],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체에서 한 꼭짓점에 모인 세 모서리의 길이를 a, b, c로 표시하고, 마주 보는 두 꼭짓점을 잇는 공간대각선을 붉은색으로 그린 그림이다. 세 모서리가 만나는 꼭짓점에 직각 표시가 있다.",
+    "solutionImageCaption": "직육면체의 가로 a, 세로 b, 높이 c는 서로 수직이고 그림의 비율은 실제 값과 무관하다. 겉넓이 2(ab+bc+ca)=36에서 ab+bc+ca=18이고, 모서리 길이의 합 4(a+b+c)=40에서 a+b+c=10이다. 공간대각선 d의 제곱은 a²+b²+c²=(a+b+c)²−2(ab+bc+ca)=100−36=64이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -885,9 +897,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "choices": [],
-    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "k=-6이면 포물선 y=x²-3x+6은 직선 y=2x-1보다 항상 위에 있고, x=5/2에서 두 그래프의 세로 간격이 3/4로 가장 작다.",
-    "solutionImageCaption": "k=-6이면 포물선 y=x²-3x+6은 직선 y=2x-1보다 항상 위에 있고, x=5/2에서 두 그래프의 세로 간격이 3/4로 가장 작다.",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 파란 포물선 y=x²−3x−k(예: k=−8)와 주황 직선 y=2x−1이 만나지 않고, 점 P와 Q를 잇는 세로 점선이 둘 사이의 간격을 나타낸다. 아래 그림은 두 식의 차 y=x²−5x+1−k를 나타내는 파란 포물선이 x축 위에 있고, 꼭짓점의 x좌표 x=5/2에서 x축까지 세로 점선이 있으며 주황 점선 포물선이 x축에 접해 있다.",
+    "solutionImageCaption": "그래프가 항상 위쪽이려면 같은 x에서 (x²−3x−k)−(2x−1)=x²−5x+1−k가 언제나 양수여야 한다. 그림은 예로 k=−8을 그렸고, 위 그림의 점선 PQ가 x=5/2에서의 세로 간격이다. x²−5x+1−k=(x−5/2)²−21/4−k이므로 간격의 최솟값은 x=5/2에서 −21/4−k이고, 이것이 0보다 커야 하므로 k<−21/4이다. 이 조건을 만족하는 최대 정수는 정답이다. 그림에서 위쪽의 파란 곡선은 y=x²−3x−k, 주황 직선은 y=2x−1이고, 아래쪽의 파란 곡선은 두 식의 차 y=x²−5x+1−k, 주황 점선 곡선은 x축에 접하는 경우이다. 정답은 −6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -927,9 +939,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "choices": [],
-    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "줄이는 횟수 n=2일 때 하루 이익금이 38400원으로 최대이고, 이때 하루에 팔리는 개수는 36+6×2=48개이다.",
-    "solutionImageCaption": "줄이는 횟수 n=2일 때 하루 이익금이 38400원으로 최대이고, 이때 하루에 팔리는 개수는 36+6×2=48개이다.",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 그림이다. 위 그림은 가로축 n, 세로축 P인 좌표평면에 위로 볼록한 파란 포물선이 있고, n=0에서 P=36000, n=2에서 가장 높은 값 38400, n=10에서 P=0인 점이 표시되며 주황 점선이 최댓값의 높이를 나타낸다. 아래 그림은 같은 곡선 위에 n=0, 1, 2, …, 10인 정수 점 11개가 찍혀 있고 n=2인 점이 가장 높고 최댓값의 높이를 나타내는 같은 주황 점선이 있다.",
+    "solutionImageCaption": "한 개당 이익금은 1000−100n원, 하루 판매량은 36+6n개이므로 하루 이익금은 P=(1000−100n)(36+6n)=−600n²+2400n+36000=−600(n−2)²+38400이다. n은 0 이상 10 이하의 정수이고 n=2일 때 이익금이 38400원으로 최대이다(그림의 세로 길이는 P의 100분의 1로 줄여 그렸다). 이때 판매량 36+6n을 계산하면 정답이다. 그림에서 파란 곡선은 P의 그래프, 주황 점선은 최댓값의 높이이다. 정답은 48이다.",
     "solutionImageSize": "full"
   }
 ];

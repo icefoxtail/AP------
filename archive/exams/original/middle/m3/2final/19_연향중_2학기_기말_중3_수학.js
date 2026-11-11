@@ -798,7 +798,7 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q19-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 네 개의 그림이 있다. 첫째는 점 B에서 접하는 큰 원과 작은 원, 작은 원에 접하는 접선 AQ와 접점 P, 선분 PB이다. 둘째는 직각삼각형 AO′P이고 O′P에 3, AO′에 9, AP에 6√2가 적혀 있다. 셋째는 각 O′를 공유하는 닮은 직각삼각형 O′HP이고 O′H에 1, HP에 2√2, O′P에 3이 적혀 있다. 넷째는 직각삼각형 PHB이고 PH에 2√2, HO′에 1, O′B에 3, HB에 4가 표시되어 있다.",
       "solutionImageCaption": "작은 원의 반지름은 3, 큰 원의 반지름은 6이므로 AO′=9이고 AP=√(9²−3²)=6√2이다. 점 P에서 AB에 내린 수선의 발을 H라 하면 삼각형 O′PA와 O′HP가 닮음이어서 O′H=1, PH=2√2이다. HB=1+3=4이므로 직각삼각형 PHB에서 BP²=(2√2)²+4²=24, BP=2√6 cm이다. 정답은 ②이다.",
       "solutionImageSize": "full"

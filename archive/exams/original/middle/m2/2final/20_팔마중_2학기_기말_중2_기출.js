@@ -254,7 +254,7 @@ window.questionBank = [
     "primaryMethod": "직각삼각형의 닮음",
     "decisiveStep": "직각삼각형의 닮음에서 대응변의 비로 DE를 계산한다.",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q5-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 직사각형 A, B, C, D로 AB는 12, BC는 16이고 대각선 BD 위의 점 O에서 BO는 10이며 점 O를 지나는 선분 EF가 BD와 수직으로 만난다. 두 번째 그림은 직각삼각형 ABD로 AD는 16, AB는 12, BD는 20이다. 세 번째 그림은 직각삼각형 EOD로 OD는 10이고 DE의 길이는 x이다. 두 삼각형은 각 D가 공통이고 대응하는 변이 같은 색이다.",
     "solutionImageCaption": "직사각형의 대각선 BD는 20이고, O는 BD의 중점이므로 OD는 10이다. 직각삼각형 EOD와 ABD는 각 D가 공통이고 직각이 하나씩 있어 닮음이다. 그래서 DE 대 BD가 OD 대 AD와 같고, DE는 20에 16분의 10을 곱한 값이다. 정답은 ②이다.",
     "solutionImageSize": "full"
@@ -303,7 +303,7 @@ window.questionBank = [
     "primaryMethod": "평행선에 의한 삼각형의 닮음",
     "decisiveStep": "평행사변형과 닮은 삼각형의 비로 DE를 계산한다.",
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q6-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC 안에 DE가 BC와 평행하고 EF가 AB와 평행하도록 그은 그림으로 AD는 12, DB는 8, FC는 10이다. 두 번째 그림은 네 점 B, D, E, F를 꼭짓점으로 하는 평행사변형으로 BF와 DE의 길이가 x이고 BD는 8이다. 세 번째는 삼각형 ABC로 AB는 20, BC는 x+10이고 네 번째는 삼각형 ADE로 AD는 12, DE는 x이다.",
     "solutionImageCaption": "BC와 DE, AB와 EF가 각각 평행하므로 네 점 B, D, E, F를 꼭짓점으로 하는 사각형은 평행사변형이고 BF는 DE와 같다. DE를 x라 하면 BC는 x+10이다. 삼각형 ADE와 ABC가 닮음이므로 DE 대 BC가 AD 대 AB, 곧 12 대 20과 같다. 따라서 x를 x+10으로 나눈 값이 5분의 3이고 이를 풀면 x는 15이다. 정답은 ④이다.",
     "solutionImageSize": "full"
@@ -352,7 +352,7 @@ window.questionBank = [
     "primaryMethod": "평행선 사이의 선분비와 삼각형 넓이",
     "decisiveStep": "평행선의 선분비로 밑변과 높이를 구해 넓이를 계산한다.",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 세 평행한 선분 AB, EF, CD가 선분 BD에 수직으로 서 있고 AB는 10, CD는 15, FD는 12이며 선분 AD와 BC가 점 E에서 만난다. 두 번째 그림은 선분 BD를 BF 8과 FD 12로 나눈 그림이다. 세 번째와 네 번째는 직각삼각형 ABD와 EFD로 AB는 10, BD는 20, EF는 6, FD는 12이다.",
     "solutionImageCaption": "AB와 EF와 CD가 평행하므로 BF 대 FD는 AB 대 CD, 곧 2 대 3이다. FD가 12이므로 BF는 8이고 BD는 20이다. 삼각형 EFD와 ABD가 닮음이므로 EF 대 AB가 FD 대 BD, 곧 12 대 20이고 EF는 6이다. 삼각형 EBD는 밑변 BD가 20이고 높이 EF가 6이므로 넓이를 구할 수 있다. 정답은 ②이다.",
     "solutionImageSize": "full"
@@ -1016,7 +1016,7 @@ window.questionBank = [
     "primaryMethod": "직각삼각형의 AA 닮음",
     "decisiveStep": "두 직각삼각형의 AA 닮음과 대응변비로 x를 구한다.",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q21-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC로 AB는 9, AC는 12이고 CD는 AB에, BE는 AC에 수직이며 AD는 6, AE의 길이는 x이다. 두 번째 그림은 직각삼각형 ADC로 AD는 6, AC는 12이다. 세 번째 그림은 직각삼각형 AEB로 AE는 x, AB는 9이고 두 삼각형의 각 A가 같은 색으로 표시되어 있다.",
     "solutionImageCaption": "삼각형 ADC와 AEB는 각 D와 각 E가 직각이고 각 A가 공통이므로 AA 닮음이다. 대응변의 비에서 AC 대 AB가 AD 대 AE이므로 12 대 9가 6 대 x와 같다. 12x는 54이므로 x는 2분의 9이다. 정답은 2분의 9 cm이다.",
     "solutionImageSize": "full"

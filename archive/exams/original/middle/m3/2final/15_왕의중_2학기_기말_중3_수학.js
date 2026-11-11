@@ -317,7 +317,7 @@ window.examData = {
       ],
       "answer": "② 2 cm",
       "solution": "△APC와 △DPB에서 ∠APC=∠DPB는 맞꼭지각이다.\n∠ACP=∠ACD이고 ∠DBP=∠DBA이며, 두 원주각은 같은 호 AD를 본다.\n따라서 △APC∼△DPB이다.\n닮음비에서 AP/DP=PC/PB이므로 AP×PB=DP×PC이다.\n6×x=3×4\n6x=12\nx=2 cm.",
-      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q18-solution.svg",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q18-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원의 두 현 AB, CD가 점 P에서 만나는 그림으로 AP는 6cm, CP는 4cm, DP는 3cm이고 PB는 x cm이다. 오른쪽 위는 AP 6cm(파랑), PC 4cm(주황)인 삼각형 APC이고 각 P는 분홍, 각 C는 초록이다. 아래는 DP 3cm(파랑), PB x cm(주황)인 삼각형 DPB이고 각 P는 분홍, 각 B는 초록이다.",
       "solutionImageCaption": "삼각형 APC와 삼각형 DPB에서 각 APC=각 DPB는 맞꼭지각이고, 각 ACP와 각 DBP는 같은 호 AD에 대한 원주각이므로 같다. 따라서 두 삼각형은 닮음이다. 닮음비에서 AP:DP=PC:PB이므로 AP×PB=DP×PC이다. 6×x=3×4에서 6x=12이다. 정답은 ②이다.",
       "solutionImageSize": "full"
@@ -335,7 +335,7 @@ window.examData = {
       ],
       "answer": "① 11 cm",
       "solution": "∠APB=90°이므로 △APB에서 피타고라스 정리를 쓰면\nAP²+BP²=AB²\nAP²+6²=10²\nAP²=64\nAP=8 cm이다.\n△APB와 △DPC에서 ∠APB=∠DPC는 맞꼭지각이고, ∠PAB=∠PDC는 같은 호 BC를 보는 원주각이다.\n따라서 △APB∼△DPC이다.\n닮음비에서 AP/DP=PB/PC이므로 AP×PC=DP×PB이다.\n8×PC=4×6\nPC=3 cm\nP는 A와 C 사이에 있으므로 AC=AP+PC=8+3=11 cm.",
-      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q19-solution.svg",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q19-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원에 내접하는 사각형의 두 대각선이 점 P에서 수직으로 만나는 그림으로 AB는 10cm, BP는 6cm, PD는 4cm이다. 오른쪽 위는 P에서 직각이고 AP는 8cm(파랑), BP는 6cm(주황), AB는 10cm(초록)인 삼각형 APB이다. 아래는 P에서 직각이고 DP는 4cm(파랑), PC는 3cm(주황)인 삼각형 DPC이며 두 삼각형에서 각 A와 각 D는 같은 분홍색이다.",
       "solutionImageCaption": "삼각형 APB에서 AP²=10²−6²=64이므로 AP=8cm이다. 삼각형 APB와 삼각형 DPC는 ∠APB=∠DPC=90°이고 ∠PAB=∠PDC(같은 호 BC에 대한 원주각)이므로 닮음이다. 닮음비에서 AP:DP=PB:PC이므로 8×PC=4×6이고 PC=3cm이다. AC=AP+PC이다. 정답은 ①이다.",
       "solutionImageSize": "full"
@@ -353,7 +353,7 @@ window.examData = {
       ],
       "answer": "⑤ 2√6 cm",
       "solution": "△APQ와 △MPB에서 ∠APQ=∠MPB는 맞꼭지각이다.\n∠AQP와 ∠MBP는 모두 호 AM을 보는 원주각이므로 두 삼각형은 닮음이다.\n닮음비에서 AP/MP=PQ/PB이므로 AP×PB=MP×PQ=3×5=15이다.\n호 AM=호 BM이므로 현 AM=현 BM이다. 따라서 △AMB는 이등변삼각형이다.\nAB 위의 중점을 N이라 하면 MN⊥AB이다. AP=a, PB=b라 두면\nBN=(a+b)/2, PN=|a−b|/2이다.\n피타고라스 정리로 BM²=MN²+BN², PM²=MN²+PN²이다.\n두 식을 빼면 BM²−PM²=BN²−PN²\n=((a+b)²−(a−b)²)/4=ab=AP×PB=15이다.\nBM²=PM²+15=3²+15=24\nBM=2√6 cm.",
-      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q20-solution.svg",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q20-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원의 두 현 AB, MQ가 점 P에서 만나는 그림으로 PM은 3cm, PQ는 5cm이고 호 AM과 호 BM이 같은 보라색이다. 현 AB 위의 PA, PB의 길이는 문자 a, b로 나타냈다. 오른쪽 위는 AP가 a(파랑), PQ가 5cm(주황)인 삼각형 APQ이고 각 P는 분홍, 각 Q는 초록이다. 아래는 MP가 3cm(파랑), PB가 b(주황)인 삼각형 MPB이고 각 P는 분홍, 각 B는 초록이다.",
       "solutionImageCaption": "삼각형 APQ와 삼각형 MPB는 맞꼭지각과 같은 호 AM에 대한 원주각이 같으므로 닮음이다. 닮음비에서 AP:MP=PQ:PB이므로 AP×PB=MP×PQ=3×5=15이다. 호 AM=호 BM이므로 현 BM=AM이고, AB의 중점을 N이라 하면 MN⊥AB이다. 피타고라스 정리로 BM²−PM²=BN²−PN²=AP×PB=15이므로 BM²=3²+15=24이다. 정답은 ⑤이다.",
       "solutionImageSize": "full"
@@ -401,7 +401,7 @@ window.examData = {
       "choices": [],
       "answer": "CD=x=11 cm",
       "solution": "P-A-B 순서이므로 PB=PA+AB=5+7=12 cm이다.\nP-C-D 순서이므로 PD=PC+CD=4+x cm이다.\n△PAC와 △PDB에서 ∠APC=∠DPB는 같은 두 직선이 이루는 각이다.\nAP와 AB는 반대 방향이므로 ∠PAC=180°−∠BAC이다.\nABCD는 원에 내접하므로 ∠BAC+∠BDC=180°이다. 따라서 ∠BDC=180°−∠BAC이다.\nP-C-D 순서이므로 D에서 DP와 DC는 같은 방향이다. 따라서 ∠PDB=∠BDC이다.\n그러므로 ∠PAC=∠PDB이다.\n두 각이 같으므로 △PAC∼△PDB이다.\n닮음비에서 PA/PD=PC/PB이므로 PA×PB=PC×PD이다.\n5×12=4×(4+x)\n60=16+4x\n44=4x\nx=11 cm.",
-      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q24-solution.svg",
+      "solutionImage": "assets/images/15_왕의중_2학기_기말_중3_수학/q24-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 세 그림이다. 왼쪽 위는 원 밖의 점 P에서 한 직선이 점 A, B에서, 다른 직선이 점 C, D에서 원과 만나는 그림으로 PA는 5cm, AB는 7cm, PC는 4cm, CD는 x cm이다. 오른쪽 위는 PA 5cm(초록), PC 4cm(주황)인 삼각형 PAC로 각 P는 분홍, 각 A는 파랑이다. 아래는 PD 4+x cm(초록), PB 12cm(주황)인 삼각형 PDB로 각 P는 분홍, 각 D는 파랑이다.",
       "solutionImageCaption": "PB=PA+AB=12cm이고 PD=PC+CD=4+x cm이다. 삼각형 PAC와 삼각형 PDB는 각 P가 공통이고, 내접하는 사각형의 마주 보는 각의 합이 180°라서 각 PAC=각 PDB이므로 닮음이다. 닮음비에서 PA:PD=PC:PB이므로 PA×PB=PC×PD이다. (1) 식 5×12=4×(4+x)이고 (2) 60=16+4x에서 x=11이다. 정답은 CD=x=11 cm이다.",
       "solutionImageSize": "full"
