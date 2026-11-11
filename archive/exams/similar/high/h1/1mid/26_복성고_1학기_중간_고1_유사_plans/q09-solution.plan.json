@@ -1,0 +1,80 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "4",
+      "-3"
+    ],
+    "domain": [
+      -1.2,
+      2.6
+    ],
+    "viewport": [
+      -2,
+      3.2,
+      -2.5,
+      6.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -0.6666666667,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 0.6666666667,
+        "y": 5.3333333333
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-2/3",
+        "0"
+      ],
+      "Q": [
+        "2",
+        "0"
+      ],
+      "V": [
+        "2/3",
+        "16/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "h(x)=-3x²+4x+4의 그래프는 x축과 x=-2/3, x=2에서 만나고, 꼭짓점 (2/3, 16/3)이 구간 -2/3≤x≤2 안에 있어 최댓값 16/3을 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "h(x)=-3x²+4x+4=-3(x-2/3)²+16/3이고 h(x)=0의 두 근이 -2/3, 2이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점의 x좌표가 구간 [α, β] 안에 있음을 보여 준다."
+  ],
+  "sourceQuote": "위로 볼록한 포물선이므로 최댓값은 꼭짓점에서 가지며",
+  "assetPath": "assets/images/26_복성고_1학기_중간_고1_유사/q9-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q09-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q09-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/engine_evidence/q09-solution.svg"
+  }
+}

@@ -337,7 +337,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에 y=k²+k−6의 그래프가 있다. 아래로 볼록한 포물선이 가로축(k축)과 두 점 (−3, 0), (2, 0)에서 만나고 꼭짓점은 (−2분의 1, −4분의 25)이다. 아래쪽 수직선에는 −3과 2를 닫힌 점으로 하는 구간 −3≤k≤2가 굵게 표시되어 있다.",
+    "solutionImageCaption": "모든 실수 x에 대하여 x²+6kx+8k²≥k−6이려면 왼쪽 식의 최솟값이 오른쪽 값 이상이어야 한다. (x+3k)²−k²의 최솟값은 −k²이므로 −k²≥k−6, 곧 k²+k−6≤0이고 이 이차식의 그래프는 k축 이하인 구간이 −3≤k≤2이다(그림). 따라서 k의 최댓값 M과 최솟값 m은 이 구간의 두 끝값이다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -369,9 +373,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "반복해서 나타나는 $|x-3|$를 하나의 문자로 놓고 방정식을 푼다.\n$t^2-6t=t$에서 $t^2-7t=t(t-7)=0$이므로 $t=0$ 또는 $t=7$이다. $|x-3|=0$이면 $x=3$이고, $|x-3|=7$이면 $x=10$ 또는 $x=-4$이다. 모든 실근의 합은 $3+10-4=9$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "절댓값 합성식의 세 근을 나타낸 해설 그래프",
-    "solutionImageCaption": "t=|x−3|에서 근 −4, 3, 10과 합 9를 확인한다.",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 위아래로 있다. 위 그림은 가로축이 t이고, 파란 포물선 y=f(t)와 초록 직선 y=t가 원점 O와 가로 눈금 7인 점에서 만난다. 아래 그림은 가로축이 x, 세로축이 t이고, 파란 꺾인 직선 t=g(x)가 가로축 위의 점 3에서 꼭짓점을 이루며, 주황 수평선 t=7과 두 점에서 만난다. 그 두 점에서 점선으로 내려 가로 눈금 −4와 10을 표시했다.",
+    "solutionImageCaption": "|x−3|=t로 놓으면 f(g(x))=g(x)는 t²−6t=t, 곧 t(t−7)=0이므로 t=0 또는 t=7이다(위 그림). |x−3|=0이면 x=3이고 |x−3|=7이면 x=10 또는 x=−4이다(아래 그림). 모든 실근은 −4, 3, 10이다. 정답은 9이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
@@ -441,9 +445,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "구하는 집합은 두 집합 중 정확히 한 곳에만 속하는 원소들의 집합이다.\n$(A\\cap B^c)^c=\\{1,2,5,7,8,9\\}$이므로 $A-B=\\{3,4,6\\}$이다.\n또한 $(A\\cup B^c)^c=A^c\\cap B=B-A=\\{1,5,8\\}$이다. 한편 $(A\\cup B)\\cap(A\\cap B)^c=(A-B)\\cup(B-A)$이므로 구하는 원소는 $1,3,4,5,6,8$이고 그 합은 $27$이다.\n[시각자료 읽기] 빨강과 주황 영역만 합치면 A△B가 되고, 공통 영역과 바깥 영역에 남은 {2,7,9}는 대칭차에 들어가지 않는다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "U={1,…,9}에서 A−B={3,4,6}, B−A={1,5,8}, 나머지 {2,7,9}는 공통 또는 바깥인 네 영역 도식",
-    "solutionImageCaption": "두 여집합 조건으로 얻은 A△B={1,3,4,5,6,8}과 원소 합 27을 표시한 해설 도식",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 세 개가 2열로 놓여 있다. 첫째 그림은 두 원 A, B가 겹쳐 있고 A에만 속하는 부분이 회색이며 그 안에 3, 4, 6이 있다. 둘째 그림은 B에만 속하는 부분이 회색이며 그 안에 1, 5, 8이 있다. 셋째 그림은 A에만 속하는 부분과 B에만 속하는 부분이 모두 회색이고 겹친 부분은 흰색이며 3, 4, 6과 1, 5, 8이 각각 들어 있다.",
+    "solutionImageCaption": "(A∩Bᶜ)ᶜ={1, 2, 5, 7, 8, 9}이므로 A−B={3, 4, 6}이고(왼쪽 위), A∪Bᶜ={2, 3, 4, 6, 7, 9}의 여집합이 Aᶜ∩B=B−A={1, 5, 8}이다(오른쪽 위). 구하는 (A∪B)∩(A∩B)ᶜ은 (A−B)∪(B−A), 곧 한쪽에만 속하는 원소 1, 3, 4, 5, 6, 8의 집합이다(아래 그림의 회색). 2, 7, 9는 A∩B에 있는지 A∪B 밖에 있는지 조건만으로는 정해지지 않아 그림에 쓰지 않았고, 어느 쪽이든 이 집합에는 들어가지 않는다. 정답은 27이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -550,10 +554,10 @@ window.questionBank = [
       "$34$"
     ],
     "answer": "②",
-    "solution": "먼저 집합 조건으로 $Y$를 $X$의 여집합으로 정한 뒤, 원소 $64$의 포함 여부로 경우를 나눈다.\n(가)에서 $X\\cap Y=\\varnothing$이고, (나)의 오른쪽은 $X^c\\cap Y$이므로 $X^c=X^c\\cap Y$, 즉 $X^c\\subset Y$이다.\n따라서 $Y=X^c$이다. 이제 $S(X)\\gtS(Y)$는 $S(X)\\gt\\dfrac{129}{2}=64.5$와 같다. $64\\in X$이면 나머지 여섯 원소 중 짝수 개를 골라야 $n(X)$가 홀수이다. 짝수 개를 고르는 방법은 $2^5=32$가지이지만 아무것도 고르지 않으면 합이 $64$이므로 제외하여 $31$가지이다. $64\\notin X$이면 나머지 원소의 총합이 $65$인데, 합이 $64.5$보다 크려면 여섯 원소를 모두 골라야 하고 이때 원소 수가 짝수이므로 조건에 맞지 않는다.\n따라서 집합 $X$는 $31$개이다.\n[시각자료 읽기] 64를 넣으면 원소 수가 이미 홀수이므로 나머지 여섯 원소에서는 짝수 개를 고른다. 아무것도 고르는 경우는 합 조건에서 제외한다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "U={2,3,4,8,16,32,64}에서 Y=Xᶜ, 64∈X, 나머지 여섯 원소의 짝수 개 선택으로 31개를 세는 상태도",
-    "solutionImageCaption": "S(U)=129와 S(X)>64.5를 이용해 64를 포함하는 홀수 크기 X를 세는 실제 선택 구조",
+    "solution": "먼저 집합 조건으로 $Y$를 $X$의 여집합으로 정한 뒤, 원소 $64$의 포함 여부로 경우를 나눈다.\n(가)에서 $X\\cap Y=\\varnothing$이고, (나)의 오른쪽은 $X^c\\cap Y$이므로 $X^c=X^c\\cap Y$, 즉 $X^c\\subset Y$이다.\n따라서 $Y=X^c$이다. 이제 $S(X)\\gt S(Y)$는 $S(X)\\gt\\dfrac{129}{2}=64.5$와 같다. $64\\in X$이면 나머지 여섯 원소 중 짝수 개를 골라야 $n(X)$가 홀수이다. 짝수 개를 고르는 방법은 $2^5=32$가지이지만 아무것도 고르지 않으면 합이 $64$이므로 제외하여 $31$가지이다. $64\\notin X$이면 나머지 원소의 총합이 $65$인데, 합이 $64.5$보다 크려면 여섯 원소를 모두 골라야 하고 이때 원소 수가 짝수이므로 조건에 맞지 않는다.\n따라서 집합 $X$는 $31$개이다.\n[시각자료 읽기] 64를 넣으면 원소 수가 이미 홀수이므로 나머지 여섯 원소에서는 짝수 개를 고른다. 아무것도 고르는 경우는 합 조건에서 제외한다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 세 개가 2열로 놓여 있다. 각 그림에는 전체집합 안에 서로 겹치지 않는 두 원 X, Y가 있고 X는 회색이다. 첫째 그림은 X에 64, 2, 4가, Y에 3, 8, 16, 32가 들어 있다. 둘째 그림은 X에 64만, Y에 2, 3, 4, 8, 16, 32가 들어 있다. 셋째 그림은 X에 2, 3, 4, 8, 16, 32가, Y에 64가 들어 있다.",
+    "solutionImageCaption": "(가), (나)에서 Y는 X의 여집합이므로 U의 일곱 원소 2, 3, 4, 8, 16, 32, 64는 X와 Y에 나뉘어 들어간다. U의 모든 원소의 합은 129이므로 S(X)−S(Y)>0은 S(X)>64.5와 같다. 64가 X 안에 있으면(첫째 그림은 그 한 예) 나머지 여섯 원소에서 짝수 개를 골라야 n(X)가 홀수이다. 이때 아무것도 고르지 않으면 X={64}로 합이 64라 제외한다(둘째 그림). 64가 X 밖에 있으면 합이 64.5보다 크려면 나머지 여섯 개가 모두 X에 들어가야 하는데(셋째 그림) 원소 수가 짝수라 조건 (라)에 맞지 않는다. 그러므로 64는 X 안에 있고, 고르는 경우는 2의 5제곱에서 1을 뺀 개수이다. 정답은 31이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -588,11 +592,15 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "②",
-    "solution": "일대일대응이 되려면 두 구간의 치역이 겹치지 않고 합쳐서 실수 전체가 되어야 한다.\n$x\\le1$에서 음의 값을 제한 없이 가지려면 $f$는 아래로 열린 이차함수이다. 그 축을 $x=h$라 하자. $h\\lt1$이면 구간 $x\\le1$ 안에 축의 양쪽 점이 들어가 같은 함숫값을 가지므로 $g$가 일대일이 아니다. 반대로 $h\\gt1$이면 구간 $x\\gt1$ 안에 축의 양쪽 점이 들어가 $f$의 같은 값, 따라서 $|f-6|$의 같은 값을 가지므로 역시 일대일이 아니다.\n그러므로 $h=1$이다. $v=f(1)$이라 하면 첫째 구간의 치역은 $(-\\infty,v]$이다. $x\\gt1$에서는 $f(x)\\ltv$이고, 일대일대응을 이루려면 $v\\lt6$이며 $g(x)=6-f(x)$의 치역은 $(6-v,\\infty)$이다. 두 치역이 겹치거나 빠지는 값 없이 실수 전체를 이루려면 $v=6-v$, 즉 $v=3$이다. 이차함수의 축이 $x=1$이고 $f(0)=1$이므로 $f(2)=1$이다.\n따라서 $g(1)=f(1)=3$, $g(2)=|f(2)-6|=5$이므로 합은 $8$이다.\n따라서 정답은 ②이다.",
+    "solution": "일대일대응이 되려면 두 구간의 치역이 겹치지 않고 합쳐서 실수 전체가 되어야 한다.\n$x\\le1$에서 음의 값을 제한 없이 가지려면 $f$는 아래로 열린 이차함수이다. 그 축을 $x=h$라 하자. $h\\lt1$이면 구간 $x\\le1$ 안에 축의 양쪽 점이 들어가 같은 함숫값을 가지므로 $g$가 일대일이 아니다. 반대로 $h\\gt1$이면 구간 $x\\gt1$ 안에 축의 양쪽 점이 들어가 $f$의 같은 값, 따라서 $|f-6|$의 같은 값을 가지므로 역시 일대일이 아니다.\n그러므로 $h=1$이다. $v=f(1)$이라 하면 첫째 구간의 치역은 $(-\\infty,v]$이다. $x\\gt1$에서는 $f(x)\\lt v$이고, 일대일대응을 이루려면 $v\\lt6$이며 $g(x)=6-f(x)$의 치역은 $(6-v,\\infty)$이다. 두 치역이 겹치거나 빠지는 값 없이 실수 전체를 이루려면 $v=6-v$, 즉 $v=3$이다. 이차함수의 축이 $x=1$이고 $f(0)=1$이므로 $f(2)=1$이다.\n따라서 $g(1)=f(1)=3$, $g(2)=|f(2)-6|=5$이므로 합은 $8$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 위아래로 있다. 위 그림은 x가 1 이하에서 파란 곡선 y=f(x), x가 1보다 큰 곳에서 주황 곡선 y=6−f(x)를 그린 것으로, 두 곡선의 끝이 x=1에서 떨어져 있고 주황 곡선이 아래로 볼록한 U자 모양이라 초록 점선 수평선과 주황 곡선이 두 점에서 만난다. 아래 그림은 같은 두 곡선이 x=1에서 이어져 한 줄로 오른쪽 위로 올라가는 모양이며, 세로 눈금 1, 3, 5와 가로 눈금 1, 2가 표시되어 있다. 점 (0, 1), (1, 3), (2, 5)가 찍혀 있다.",
+    "solutionImageCaption": "g가 일대일대응이 되려면 x≤1에서 f의 치역이 (−∞, f(1)]이어야 하므로 f는 위로 볼록하고, 축이 x=1이 아니면 왼쪽 또는 오른쪽 구간에서 축 양쪽 점의 함숫값이 같아 일대일이 아니다(위 그림은 축이 x=1보다 오른쪽인 한 예이며 f의 식은 예시이다). 그래서 축은 x=1이고 v=f(1)이라 하면 x>1에서 g(x)=6−f(x)의 치역이 (6−v, ∞)이므로 v=6−v, 즉 v=3이다(아래 그림). f(0)=1이고 축이 x=1이므로 f(2)=1이다. 따라서 g(1)=3, g(2)=|1−6|=5이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -620,7 +628,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 한 개에 세 원이 차례로 안에 들어 있다. 가장 안쪽 원 S 안에 1, 2, 3, 4, 6, 8, 12, 24가 있고, 가운데 원 P에서 S 바깥인 부분에 16, 48이 있으며, 가장 바깥 원 R에서 P 바깥인 부분에 32, 96이 있다.",
+    "solutionImageCaption": "그림의 세 집합은 안쪽부터 S, P, R이다. P는 조건 p의 진리집합, 곧 48의 양의 약수의 집합이고, S는 조건 q의 진리집합(m의 양의 약수의 집합), R는 조건 r의 진리집합(n의 양의 약수의 집합)이다. p가 q이기 위한 필요조건이지만 충분조건이 아니면 S는 P의 진부분집합이므로 m은 48의 진약수이고, 가장 큰 것은 24이다(그림의 S는 m=24일 때). p가 r이기 위한 충분조건이지만 필요조건이 아니면 P는 R의 진부분집합이므로 n은 48의 배수이고 48이 아닌 가장 작은 것은 96이다(그림의 R는 n=96일 때). 정답은 120이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -649,7 +661,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 A, B, C의 꼭짓점 A가 위, B가 왼쪽 아래, C가 오른쪽 아래에 있다. 변 BC 위의 한 점을 꼭짓점으로 하는 작은 정삼각형 T1(파랑)이 B 쪽에, 큰 정삼각형 T2(주황)가 C 쪽에 있고 두 삼각형 사이의 평행사변형이 회색으로 칠해져 있다. 변 BC 아래에 T1의 변의 길이 x, T2의 변의 길이 y, 전체 BC의 길이 x+y가 표시되어 있다.",
+    "solutionImageCaption": "색칠한 부분은 정삼각형 ABC에서 T1, T2를 뺀 평행사변형이고 BC=x+y이다(그림은 x와 y가 다른 한 예이며 비율이 정확하지 않다). 한 변이 a인 정삼각형의 넓이는 4분의 √3·a²이므로 색칠한 넓이는 4분의 √3·{(x+y)²−x²−y²}=2분의 √3·xy이다. xy≤4분의 (x+y)²이므로 최댓값은 8분의 √3·(x+y)²이고(x=y일 때), 이것이 √3이므로 (x+y)²=8, BC=2√2이다. 따라서 정삼각형 ABC의 둘레는 3BC이다. 정답은 6√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -677,7 +693,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 위아래로 있다. 위 그림에는 파란 곡선 y=f(x), 주황 곡선 y=f⁻¹(x), 초록 점선 y=x, 분홍 직선 y=−x+k가 있고, 분홍 직선이 파란 곡선과 만나는 점 A와 주황 곡선과 만나는 점 B가 초록 점선에 대하여 대칭으로 놓여 있다. 아래 그림에는 같은 곡선과 점선, 직선이 있고 점 A, B가 가장 가까울 때의 위치에 있다. 축 눈금으로 A의 x좌표는 2분의 1, y좌표는 2이고 B의 x좌표는 2, y좌표는 2분의 1임을 읽을 수 있으며, 원점 O와 A, B를 이은 삼각형이 연하게 칠해져 있다.",
+    "solutionImageCaption": "직선 y=−x+k는 y=x에 수직이므로 f의 그래프와 만나는 점 A(t, f(t))와 역함수의 그래프와 만나는 점 B(f(t), t)는 y=x에 대하여 대칭이다(위 그림은 k가 큰 한 예). 따라서 AB=√2·|f(t)−t|이고 f(t)−t=(t−2분의 1)²+2분의 3>0이므로 t=2분의 1일 때 AB가 최소이며 A(2분의 1, 2), B(2, 2분의 1)이다(아래 그림). 삼각형 OAB의 넓이는 2분의 1·|2분의 1·2분의 1−2·2|이다. 정답은 8분의 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -705,6 +725,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 위아래로 있다. 위 그림은 집합 A를 보이며, 파란 포물선 y=x²−x−3과 초록 점선 y=x가 x좌표 −1과 3에서 만나고 두 교점에서 가로축으로 점선을 내렸다. 아래 그림은 b=3일 때 집합 C를 보이며, 주황색 꺾인 직선(왼쪽 가지 y=−3x+6, 오른쪽 가지 y=3x−6)과 초록 점선 y=x가 x좌표 2분의 3과 3에서 만나고 두 교점에서 가로축으로 점선을 내렸다.",
+    "solutionImageCaption": "세 집합의 원소는 모두 직선 y=x 위의 점이므로 교점의 x좌표만 비교하면 된다. A는 x=−1, 3이고 B(원)는 x=a, 2a이며 C는 x=3과 (b+1)분의 3(b−1)이다(b가 1이면 해가 무수히 많아 b>1). A에서 −1, 3이 이미 나오고 C의 둘째 해는 0과 3 사이이므로, 원소가 3개가 되려면 B의 a, 2a 중 3이 하나 있고 다른 하나가 C의 둘째 해와 같아야 한다. a=3이면 다른 하나가 6이라 맞지 않으므로 2a=3, a=2분의 3이고, C의 둘째 해가 2분의 3이므로 b=3이다. 그림은 A와 C(b=3일 때)만 보이며, 원 B는 그리지 않았다(원과 y=x의 교점의 x좌표는 a와 2a). 정답은 2분의 9이다.",
+    "solutionImageSize": "full"
   }
 ];

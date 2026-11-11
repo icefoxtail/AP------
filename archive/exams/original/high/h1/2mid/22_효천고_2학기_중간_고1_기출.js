@@ -32,9 +32,10 @@ window.questionBank = [
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "좌표평면에 점 P(2,1)에서 이동벡터 (−1,3)만큼 화살표로 옮겨진 점 P′(1,4)가 표시되어 있다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(2,1)이 있고, 점 P에서 x축 방향 −1을 나타내는 점선과 y축 방향 +3을 나타내는 점선이 이어져 있다. 점 P에서 점 P′로 가는 화살표가 그려져 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "평행이동은 각 좌표에 이동량을 더한다. 점 P(2,1)을 x축 방향으로 −1, y축 방향으로 3만큼 옮기므로 x좌표는 2+(−1), y좌표는 1+3이 된다. 이동한 점이 P′이다(그림은 이동 방향과 크기를 나타낸다). 정답은 (1,4)이다."
   },
   {
     "id": 2,
@@ -235,7 +236,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그래프 두 개가 위아래로 있다. 위쪽은 a=0일 때로 점 (0,1)에서 꺾이며 왼쪽 조각과 오른쪽 조각이 모두 오른쪽 위로 올라가고, 점선 y=3과 한 점에서 만난다. 아래쪽은 a=2일 때로 점 (0,1)에서 꺾이며 왼쪽 조각은 내려가고 오른쪽 조각은 올라가는 V자 모양이고, 점선 y=3과 두 점에서 만난다.",
+    "solutionImageCaption": "x≥0에서 y=2x+1의 치역은 1 이상이므로, x<0에서 y=(1−a)x+1의 치역이 1보다 작은 모든 실수가 되어야 한다. 그러려면 왼쪽 조각이 증가해야 한다(예: a=0인 위쪽 그림). 왼쪽 조각이 감소하면 치역이 1보다 커져 같은 y값에 x값이 둘 생겨 일대일대응이 아니다(예: a=2인 아래쪽 그림, 직선 y=3과 두 점에서 만난다). 기울기 1−a가 0이면 상수함수이므로 역시 안 된다. 정답은 a<1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -300,9 +305,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "충분조건과 필요조건의 관계를 진리집합의 포함 관계로 바꾸어 각 보기의 성립 여부를 판단한다.\n\n$q$가 $\\sim p$이기 위한 충분조건이므로 $Q\\subset P^c$이다. 필요조건이 아니므로 $Q\\ne P^c$이다.\n\n$Q\\subset P^c$에서 $P$와 $Q$가 서로소임을 얻고, 각 집합식을 차례로 확인한다.\n\n$Q\\subset P^c$이므로 $P\\cap Q=\\varnothing$이다. 따라서 $P-Q=P$이므로 ①은 항상 성립하고, $Q-P=Q$이므로 ③도 항상 성립한다. 또 $P\\cap Q=\\varnothing$이므로 $P\\subset Q^c$여서 ④도 항상 성립한다.\n⑤의 $P\\cup Q=P$는 주어진 조건만으로 항상 성립하지 않는다. 예를 들어 $U=\\{1,2,3\\}$, $P=\\{1\\}$, $Q=\\{2\\}$로 두면 $P^c=\\{2,3\\}$이므로 $Q\\subset P^c$이고 $Q\\ne P^c$이다. 그러나 $P\\cup Q=\\{1,2\\}\\ne P$이므로 ⑤는 항상 성립한다고 할 수 없다.\n따라서 정답은 ⑤이다.\n그림에서 확인하면, Q⊆Pᶜ Q≠Pᶜ P∩Q=∅ P∪Q=P는 항상 참이 아님",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "충분조건과 반례",
-    "solutionImageCaption": "Q⊆Pᶜ Q≠Pᶜ P∩Q=∅ P∪Q=P는 항상 참이 아님",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 전체집합 U 안에 서로 떨어진 두 원 P, Q가 있고 Q가 회색이다. 오른쪽은 U 안에 떨어진 두 원 P, Q가 있고 P 안에 1, Q 안에 2, 두 원 바깥에 3이 쓰여 있으며 두 원이 모두 회색이다.",
+    "solutionImageCaption": "q가 ~p이기 위한 충분조건이므로 Q는 P의 여집합에 들어가고, 그래서 P와 Q는 겹치지 않는다. 따라서 P−Q=P, Q−P=Q, P⊂Qᶜ는 항상 성립한다. 필요조건은 아니므로 Q가 P의 여집합 전체일 필요는 없다. 오른쪽 예시(U={1,2,3}, P={1}, Q={2})에서 P∪Q={1,2}는 P와 같지 않다. 정답은 P∪Q=P이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
@@ -340,9 +345,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "두 집합의 교집합 크기가 가질 수 있는 최댓값과 최솟값을 각각 구한다.\n\n전체 학생은 $45$명이고 두 집합의 크기는 각각 $28$, $23$이다.\n\n교집합의 최댓값은 작은 집합의 크기, 최솟값은 두 집합의 크기 합에서 전체 인원을 뺀 값으로 구한다.\n\n교집합의 최댓값은 $\\min(28,23)=23$이다. 최솟값은 $28+23-45=6$이다. 따라서 두 값의 합은 $23+6=29$이다.\n그림에서 확인하면, 왼쪽은 작은 집합 B가 A 안에 모두 들어가는 최대 배치이고, 오른쪽은 합집합 45명이 되는 최소 배치이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "45명에서 A=28, B=23일 때 교집합 최대 23과 최소 6을 실제 두 Venn 배치로 비교",
-    "solutionImageCaption": "두 영화 관람 인원 28명과 23명에서 x최대=23, x최소=6, 합 29를 확인하는 극단 배치",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 큰 원 A 안에 작은 원 B가 완전히 들어 있고 B 부분이 회색이며, n(A)=28, n(B)=23이고 A만의 곳에 5명, 겹친 곳에 23명, 두 원 바깥에 17명이 쓰여 있다. 오른쪽은 두 원 A, B가 겹쳐 있고 겹친 곳이 회색이며 A만의 곳에 22명, 겹친 곳에 6명, B만의 곳에 17명이 쓰여 있다.",
+    "solutionImageCaption": "전체 45명 중 A는 공포 영화를 관람한 28명, B는 공상 과학 영화를 관람한 23명이다. 왼쪽처럼 B가 A 안에 모두 들어가면 겹치는 학생 수가 가장 커서 23명이고, 오른쪽처럼 A와 B를 합친 인원이 전체 45명과 같으면 겹치는 학생 수가 가장 작아서 28+23−45=6명이다. 따라서 x의 최댓값과 최솟값의 합은 23+6이다. 정답은 29이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -379,9 +384,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "합집합이 공집합이면 합집합을 이루는 두 집합이 모두 공집합이다.\n\n$(A-B)\\cup(A^C\\cap B)=\\varnothing$이고 $A^C\\cap B=B-A$이다.\n\n두 차집합이 각각 공집합이라는 사실을 포함 관계로 바꾼다.\n\n$A-B=\\varnothing$이므로 $A\\subset B$이다. 또 $B-A=\\varnothing$이므로 $B\\subset A$이다. 두 포함 관계가 모두 성립하므로 $A=B$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "A만·B만 영역이 공집합이 되어 두 집합이 같아지는 Venn diagram",
-    "solutionImageCaption": "A-B와 B-A가 모두 비어 있으면 양방향 포함관계로 A와 B가 같다",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 큰 원 B 안에 작은 원 A가 완전히 들어 있고 A가 회색이다. 오른쪽은 큰 원 A 안에 작은 원 B가 완전히 들어 있고 B가 회색이다.",
+    "solutionImageCaption": "Aᶜ∩B는 B−A와 같으므로 조건은 (A−B)∪(B−A)=∅이다. 합집합이 공집합이면 두 집합이 모두 공집합이므로 A−B=∅에서 A⊂B(왼쪽), B−A=∅에서 B⊂A(오른쪽)이다. 두 포함 관계가 동시에 성립하는 경우를 찾는다. 정답은 A=B이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -418,9 +423,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "대칭차집합에 없는 원소는 두 집합에 함께 속하거나 두 집합 모두에 속하지 않는다.\n\n$2\\in B$이고 대칭차집합 $\\{0,1\\}$에는 $2$가 없다.\n\n$2\\in A$가 되게 하는 $a$의 후보를 구한 뒤 각 후보를 원래 조건에 대입한다.\n\n$2\\in A$이어야 하므로 $a-1=2$ 또는 $a^2-2=2$이다. 따라서 $a=3,2,-2$를 확인한다. $a=3$이면 대칭차집합은 $\\{1,7\\}$, $a=-2$이면 $\\{-4,-3\\}$이고, $a=2$이면 $A=\\{1,2,3\\}$, $B=\\{0,2,3\\}$이므로 대칭차집합이 $\\{0,1\\}$이다. 이때 $b=6$이므로 $b-a=6-2=4$이다.\n그림에서 확인하면, 가운데 후보에서만 대칭차집합이 문제의 {0,1}과 같고, 그때 A 원소의 합 b는 6이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "a=3,2,−2의 실제 A와 B 및 A△B를 비교해 a=2, b=6을 고르는 후보표",
-    "solutionImageCaption": "A△B={0,1}과 일치하는 a=2 행 및 b−a=4를 표시한 대칭차집합 계산표",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 세 개가 있다. 위쪽 왼쪽은 a=3일 때로 A만의 곳에 7, 겹친 곳에 2와 3, B만의 곳에 1이 있고 A만의 곳과 B만의 곳이 회색이다. 위쪽 오른쪽은 a=2일 때로 A만의 곳에 1, 겹친 곳에 2와 3, B만의 곳에 0이 있고 A만의 곳과 B만의 곳이 회색이다. 아래쪽은 a=−2일 때로 A만의 곳에 −3, 겹친 곳에 2와 3, B만의 곳에 −4가 있고 A만의 곳과 B만의 곳이 회색이다.",
+    "solutionImageCaption": "2는 B의 원소이지만 대칭차집합 {0,1}에 없으므로 A에도 속해야 하고, a−1=2 또는 a²−2=2에서 a=3, 2, −2를 확인한다. a=3이면 대칭차집합은 {1,7}, a=−2이면 {−4,−3}이어서 맞지 않고, a=2이면 A={1,2,3}, B={0,2,3}으로 대칭차집합이 {0,1}이다. 이때 b=6이므로 b−a=6−2이다. 정답은 4이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -456,13 +461,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "두 이동점이 놓인 직선에 대하여 끝점을 대칭이동하면 꺾인 경로의 최솟값을 한 선분의 길이로 바꿀 수 있다.\n\n$P$는 $y=2x$ 위, $Q$는 $x$축 위를 움직인다.\n\n$A$를 $y=2x$에 대칭이동하고 $B$를 $x$축에 대칭이동한 뒤, 두 대칭점을 잇는 선분이 두 직선을 순서대로 지나는지 확인한다.\n\n$A(4,3)$에서 $y=2x$에 내린 수선의 발은 $H(2,4)$이므로 대칭점은 $A'=2H-A=(0,5)$이다. $B(5,2)$의 $x$축 대칭점은 $B'=(5,-2)$이다. 직선 $A'B'$의 식은 $y=5-\\frac{7}{5}x$이다. 이 직선은 $y=2x$와 $x=\\frac{25}{17}$에서 만나고, 그 뒤 $x$축과 $x=\\frac{25}{7}$에서 만나므로 두 이동 조건을 순서대로 만족한다. 따라서 최솟값은 $A'B'=\\sqrt{(5-0)^2+(-2-5)^2}=\\sqrt{74}$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "좌표평면에 A(4,3)의 y=2x 대칭점 A′(0,5)와 B(5,2)의 x축 대칭점 B′(5,−2)가 그려져 있고, 선분 A′B′가 y=2x와 x축 위의 P, Q를 차례로 지나 AP+PQ+QB의 최솟값이 A′B′의 길이임을 보여준다.",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=2x와 x축, y축이 있다. 점 A(4,3)과 B(5,2)가 있고, A를 y=2x에 대칭이동한 점 A′(0,5)와 B를 x축에 대칭이동한 점 B′(5,−2)가 있다. 주황 선분 AA′는 직선 y=2x와 직각으로 만나고, 점선 A′P, 파랑 선분 PQ, 점선 QB′가 이어져 A′에서 B′로 가는 꺾이지 않은 선분을 이루며 P는 y=2x 위, Q는 x축 위에 있다. 파랑 선분 AP, PQ, QB는 A에서 B로 가는 꺾인 경로이고 BB′는 점선으로 x축과 직각을 이룬다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "P는 y=2x 위, Q는 x축 위의 점이다. A를 y=2x에 대칭이동한 점 A′(0,5)를 쓰면 AP=A′P이고, B를 x축에 대칭이동한 점 B′(5,−2)를 쓰면 QB=QB′이므로 AP+PQ+QB=A′P+PQ+QB′이다. 직선 A′B′는 y=2x와 x좌표 17분의 25인 점, x축과 x좌표 7분의 25인 점에서 차례로 만나 P, Q가 선분 A′B′ 위에 놓이므로 이 값이 최소가 되고, 최솟값은 A′B′의 길이이다. 정답은 √74이다."
   },
   {
     "id": 14,
@@ -605,13 +611,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "대칭이동 뒤 원래 네 점과 두 점 이상 일치하려면 두 점이 축 위에 고정되거나 두 점 이상이 서로 바뀌어야 한다.\n\n네 점은 $(a,0)$, $(-a,0)$, $(0,a)$, $(0,-a)$이고 $a>0$이다.\n\n두 점을 지나는 대칭축과 점들을 서로 바꾸는 추가 대칭축을 구분하여 센다.\n\n네 점 중 두 점을 지나는 직선을 대칭축으로 잡으면 그 두 점이 고정된다. 어느 세 점도 한 직선 위에 없으므로 이런 직선은 $\\binom{4}{2}=6$개이다. 여기에 네 점을 두 쌍씩 서로 바꾸는 $y=x$, $y=-x$가 추가된다. 이 두 직선은 앞의 여섯 직선에 포함되지 않으므로 모두 $6+2=8$개이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "좌표평면에 네 점 A(1,0), B(−1,0), C(0,1), D(0,−1)을 쌍으로 잇는 6개의 점선과 y=x, y=−x가 그려져 있고, 이렇게 모두 8개의 대칭축이 나타난다.",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 그림이 있다. 첫째 그림은 원점 O를 중심으로 네 점 A, B, C, D가 정사각형 모양으로 놓이고, 네 변은 파랑, 두 대각선 AB와 CD는 주황으로 그려져 있다. 둘째 그림은 직선 y=x와 이 직선에 수직인 선분 CA(파랑)와 BD(주황)이고 각각 직선과 직각 표시가 있다. 셋째 그림은 직선 y=−x와 이 직선에 수직인 선분 AD(파랑)와 BC(주황)이고 직각 표시가 있다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "네 점은 A(a,0), B(−a,0), C(0,a), D(0,−a)이다. 대칭이동해서 원래 점과 일치하는 점이 2개 이상이려면, 두 점이 직선 위에 놓여 그대로 있거나(첫째 그림: 네 점 중 두 점을 고르는 방법 6가지에 해당하는 직선), 점들이 서로 자리를 바꾸어야 한다. 서로 바꾸는 직선은 y=x(CA와 BD를 맞바꿈, 둘째 그림)와 y=−x(AD와 BC를 맞바꿈, 셋째 그림) 두 개이고, 이 둘은 앞의 여섯 직선에 들어 있지 않다. 그림은 a=2인 예로, A(2,0), B(−2,0), C(0,2), D(0,−2)이다. 정답은 8이다."
   },
   {
     "id": 18,
@@ -724,13 +731,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$(2,1)$",
     "solution": "원문의 ‘평행이동’ 표현과 달리 주어진 식은 좌표를 바꾸는 평면이동을 나타내므로 식 자체를 기준으로 점의 이동을 구한다.\n\n원래 좌표를 $(u,v)$, 옮겨진 좌표를 $(x,y)$라 하면 $u=-y+3$, $v=x+1$이다.\n\n두 식을 $x$, $y$에 대하여 풀어 원래 점에서 옮겨진 점으로 가는 규칙을 구한다.\n\n$u=-y+3$, $v=x+1$에서 $x=v-1$, $y=3-u$이다. 따라서 주어진 식이 나타내는 이동은 $(u,v)\\to(v-1,3-u)$이다. 점 $(2,3)$을 대입하면 $(2,3)\\to(3-1,3-2)=(2,1)$이다.\n따라서 옮겨지는 점은 $(2,1)$이다.",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "좌표평면에 점 (2,3)에서 점 (2,1)로 향하는 화살표가 그려져 있고, 변환 u=−y+3, v=x+1의 역변환 (x,y)=(v−1,3−u)가 표시되어 있다.",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(2,3)이 있고, 점 P에서 아래쪽으로 향하는 화살표가 점 Q를 가리키고 있다. 눈금 숫자는 쓰여 있지 않다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "원래 좌표를 (u,v), 옮겨진 좌표를 (x,y)라 하면 u=−y+3, v=x+1이다. 이를 x, y에 대해 풀면 x=v−1, y=3−u이므로 이동은 (u,v)→(v−1,3−u)이다. 점 P(2,3)을 대입하면 점 Q의 좌표가 나온다(그림은 P가 Q로 옮겨지는 방향만 보인다). 정답은 (2,1)이다."
   },
   {
     "id": 22,
@@ -756,11 +764,11 @@ window.questionBank = [
     "answer": "$a=5$",
     "solution": "절댓값함수의 네 선분과 직선의 교점 수를 구한 뒤 $f(a)=g(a)$를 만족하는 값을 찾는다.\n\n$0\\le x\\le6$에서 $f(x)=\\left||-2x+6|-4\\right|$이고 직선은 $y=\\frac{1}{3}x+k$이다.\n\n각 선분에서 $f(x)-\\frac{1}{3}x$의 값의 범위를 구하여 $g(k)$를 정하고, $a$의 구간별로 $f(a)$와 $g(a)$를 비교한다.\n\n$f(x)$는 차례로 $2-2x$ $(0\\le x\\le1)$, $2x-2$ $(1\\le x\\le3)$, $10-2x$ $(3\\le x\\le5)$, $2x-10$ $(5\\le x\\le6)$이다. 각 선분의 교점 존재 범위는 각각 $-\\frac{1}{3}\\le k\\le2$, $-\\frac{1}{3}\\le k\\le3$, $-\\frac{5}{3}\\le k\\le3$, $-\\frac{5}{3}\\le k\\le0$이다. 끝점 중복을 한 번만 세면 $g(0)=4$, $0<k\\le2$에서 $g(k)=3$, $2<k<3$에서 $g(k)=2$, $g(3)=1$, $k>3$에서 $g(k)=0$이다. 이제 $a=0$이면 $f(a)=2\\ne4=g(a)$이다. $0<a\\le2$에서는 $f(a)\\le2<3=g(a)$이고, $2<a<3$에서는 $f(a)=2a-2>2=g(a)$이다. $a=3$에서도 $f(3)=4\\ne1=g(3)$이다. $a>3$에서는 $g(a)=0$이므로 $f(a)=0$이어야 한다. $f$의 영점은 $1,5$이지만 이 구간에 속하는 값은 $5$뿐이다.\n따라서 조건을 만족하는 값은 $a=5$이다.",
 
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "절댓값함수와 직선의 교점 개수를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 좌표평면 그래프 두 개가 위아래로 있다. 둘 다 0≤x≤6에서 파랑 꺾인 선 y=f(x)가 (0,2)에서 시작해 x=1에서 0, x=3에서 4, x=5에서 0으로 내려가고 (6,2)에서 끝나는 W자 모양이고, x축 눈금 1, 3, 6과 y축 눈금 4가 있다. 위쪽에는 기울기 3분의 1인 점선 k=0(주황)과 k=1(초록)이 그려져 있고 각각 그래프와 네 점, 세 점에서 만난다. 아래쪽에는 점선 k=2.5(주황), k=3(초록), k=4(자주)가 그려져 있고 각각 그래프와 두 점, 한 점(꼭대기 (3,4)), 만나는 점 없음이다.",
 
-    "solutionImageCaption": "k=5인 직선과 네 선분이 만나지 않아 g(5)=0임을 확인한다.",
+    "solutionImageCaption": "f(x)는 네 선분 2−2x, 2x−2, 10−2x, 2x−10으로 이루어진 W자 모양이고, 기울기가 3분의 1이고 y절편이 k인 직선과 만나는 점의 개수 g(k)는 k=0이면 4, 0<k≤2이면 3, 2<k<3이면 2, k=3이면 1, k>3이면 0이다(위쪽 그림 k=0, 1과 아래쪽 그림 k=2.5, 3, 4 참고). 따라서 f(a)=g(a)를 따지면 a=0이면 f(0)=2≠4, 0<a≤2이면 f(a)≤2<3, 2<a<3이면 f(a)>2, a=3이면 f(3)=4≠1이므로 모두 아니다. a>3이면 g(a)=0이므로 f(a)=0이어야 하고, f의 영점 1과 5 중 이 범위에 있는 것은 5뿐이다. 정답은 a=5이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",

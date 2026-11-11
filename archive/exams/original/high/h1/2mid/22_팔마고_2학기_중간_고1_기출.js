@@ -97,9 +97,9 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "명제 $p\\to q$가 참이면 $p$의 진리집합이 $q$의 진리집합에 포함되어야 한다.\n\n$x^2+2x-8=(x+4)(x-2)$이므로 $p$의 진리집합은 $[-4,2]$이다.\n\n닫힌구간 $[-4,2]$가 열린구간 $(a-7,\\infty)$에 포함되도록 왼쪽 끝점을 비교한다.\n\n$-4$도 $q$를 만족해야 하므로 $-4\\gt a-7$, 즉 $a\\lt3$이어야 한다. 이를 만족하는 정수 $a$의 최댓값은 $2$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "p의 닫힌 진리집합과 q의 열린 진리집합의 포함 관계를 나타낸 수직선",
-    "solutionImageCaption": "P=[-4,2]가 Q=(a-7,∞)에 포함되려면 왼쪽 경계 a-7이 -4보다 작아야 한다.",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 눈금의 수직선 세 줄이다. 첫째 줄은 p의 진리집합인 닫힌 구간 −4에서 2까지, 둘째 줄은 a=1일 때 q의 진리집합인 −6보다 큰 반직선, 셋째 줄은 a=3일 때 q의 진리집합인 −4보다 큰 반직선이고 −4는 속하지 않는다.",
+    "solutionImageCaption": "p의 진리집합은 −4≤x≤2이고 q의 진리집합은 x>a−7이다. p→q가 참이려면 p의 구간이 q의 구간에 포함되어야 하므로 왼쪽 끝 −4가 a−7보다 커야 한다. 그림의 a=1은 포함되는 예이고 a=3은 −4가 빠져 포함되지 않는 경우이다. 이를 만족하는 정수 a의 최댓값을 구한다. 정답은 2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
@@ -206,7 +206,11 @@ window.questionBank=[
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 5까지의 수가 세로로 놓인 두 열이 있고 파란 화살표로 이어져 있다. 0에서 0, 1에서 1, 2에서 4, 3에서 4, 4에서 1, 5에서 0으로 가며, 화살표가 닿은 오른쪽 열의 원소에는 옅은 바탕이 칠해져 있다.",
+    "solutionImageCaption": "각 원소를 제곱해 5로 나눈 나머지를 구하면 0과 5는 0, 1과 4는 1, 2와 3은 4로 간다. 화살표가 닿은 원소만 치역에 속한다. 치역의 모든 원소를 더하면 된다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -238,9 +242,9 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "교집합의 최댓값은 작은 집합의 크기이고, 최솟값은 합집합이 전체를 넘지 않는 조건에서 구한다.\n\n전체 학생은 $24$명이고 두 선택 집합의 원소 수는 $14,12$이다.\n\n교집합의 상한과 포함배제 원리에서 얻는 하한을 각각 구한다.\n\n두 과목을 모두 선택한 학생 수는 작은 집합의 크기 $12$를 넘을 수 없으므로 $M=12$이다. 또한 합집합의 학생 수가 $24$ 이하이므로 교집합은 적어도 $14+12-24=2$명이어야 하여 $m=2$이다. 두 값은 실제로 달성 가능하므로 $M+m=12+2=14$이다.\n그림에서 확인하면, 왼쪽은 B의 12명이 모두 A와 겹치는 최대 배치이고, 오른쪽은 합집합이 24명이 되는 최소 배치이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "24명에서 A=14, B=12일 때 교집합 최대 12와 최소 2를 실제 두 Venn 배치로 비교",
-    "solutionImageCaption": "두 과목 선택 인원 14명과 12명에서 M=12, m=2, M+m=14를 확인하는 극단 배치",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 둘 다 전체집합 U와 두 집합 A, B가 그려져 있고 두 집합의 교집합이 색칠되어 있다. 왼쪽은 B가 A 안에 완전히 들어가 A만의 영역이 2명, 교집합이 12명, 두 집합 밖이 10명이다. 오른쪽은 두 원이 겹쳐 A만의 영역이 12명, 교집합이 2명, B만의 영역이 10명이다.",
+    "solutionImageCaption": "교집합의 최댓값은 작은 집합 B 전체가 A에 들어갈 때의 인원 12명이므로 M=12이다. 최솟값은 합집합이 전체 24명을 넘지 않는 조건에서 나오며, 합집합이 전체가 되는 배치(오른쪽)에서 교집합이 가장 작은 2명이므로 m=2이다. 두 배치 모두 실제로 만들 수 있으므로 두 값을 더한다. 정답은 14이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -314,7 +318,11 @@ window.questionBank=[
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 놓여 있다. 왼쪽은 서로 떨어진 두 원 A, B에서 B가 색칠되어 있고, 오른쪽은 가장 바깥의 원 \"A 밖\"(A의 여집합) 안에 원 B가, 그 안에 원 C가 차례로 들어 있고 C가 색칠되어 있다.",
+    "solutionImageCaption": "q에서 B의 모든 원소가 A에 속하지 않으므로 B⊂Aᶜ이고, r에서 C의 모든 원소가 B에 속하므로 C⊂B이다. 오른쪽 그림에서 가장 큰 원 \"A 밖\"은 A에 속하지 않는 원소 전체, 즉 A의 여집합 Aᶜ이고 그 안에 B, 다시 그 안에 C가 있다(그림은 포함관계만 나타내는 예시이다). C⊂Aᶜ이므로 C∩Aᶜ=C이고, C⊂B이므로 B∩C=C이다. 명제 p는 이 두 식의 성립에 영향을 주지 않는다. 정답은 C∩Aᶜ=C와 B∩C=C이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -384,7 +392,11 @@ window.questionBank=[
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 있다. 둘 다 파랑 곡선 y=f(x)와 초록 점선 y=x가 그려져 있다. 위 그림은 곡선 위의 두 점에서 y축과 x축으로 점선을 그어 y축의 b, c와 x축의 c, d를 보인다. 아래 그림은 y축의 d에서 가로로 그은 점선이 y=x와 곡선을 차례로 지나고, y=x 위의 점에서 내린 점선이 x축의 d를, 곡선 위의 점에서 내린 점선이 구하는 값을 가리킨다.",
+    "solutionImageCaption": "파랑 곡선이 y=f(x), 초록 점선이 y=x이다(곡선과 간격은 한 예이며 비율이 정확하지 않다). 역함수의 값 f⁻¹(t)는 그래프에서 함숫값이 t가 되는 입력값이다. 위 그림의 점선을 따라 읽으면 f(c)=b, f(d)=c이다. 아래 그림에서는 y=x 위의 점에서 내린 점선으로 y축의 d와 x축의 d가 같은 값임을 확인하고, 같은 높이의 곡선 위의 점에서 f(e)=d를 읽는다. 따라서 b에서 시작해 f⁻¹을 세 번 차례로 적용하면 b에서 c, d를 거쳐 e가 된다. 정답은 e이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -416,11 +428,11 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "함수와 역함수의 그래프는 $y=x$에 대칭이므로 한쪽 부분의 넓이를 구해 두 배 한다.\n\n$f$의 그래프와 $y=x$의 교점은 $(-2,-2)$와 $(3,3)$이고, 조각이 바뀌는 점은 $(0,1)$이다.\n\n세 점 $(-2,-2),(0,1),(3,3)$이 만드는 삼각형의 넓이를 구한다.\n\n$f$의 그래프와 $y=x$ 사이의 한쪽 부분은 세 점 $(-2,-2),(0,1),(3,3)$을 꼭짓점으로 하는 삼각형이다. $y=x$ 위의 두 점 $(-2,-2)$, $(3,3)$ 사이의 거리는 $5\\sqrt{2}$이고, 점 $(0,1)$과 직선 $y=x$사이의 거리는 $\\dfrac{1}{\\sqrt{2}}$이다. 따라서 이 삼각형의 넓이는 $\\dfrac{1}{2}\\cdot5\\sqrt{2}\\cdot\\dfrac{1}{\\sqrt{2}}=\\dfrac{5}{2}$이다. 역함수의 그래프로 생기는 부분은 $y=x$에 대하여 대칭인 합동인 삼각형이므로 전체 넓이는 $2\\cdot\\dfrac{5}{2}=5$이다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수로 둘러싸인 넓이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 있다. 위 그림은 함수 y=f(x)의 그래프(파랑 꺾인선)가 점 (0,1)에서 꺾이고 직선 y=x(초록 점선)와 두 점 (−2,−2), (3,3)에서 만나는 모습이다. 아래 그림은 여기에 역함수의 그래프(주황 꺾인선)를 더한 것으로, 주황은 점 (1,0)에서 꺾이고 y=x에 대하여 파랑과 대칭이며 파랑과 같은 두 점에서 만난다.",
 
-    "solutionImageCaption": "두 그래프의 교점과 분기점 (−2,−2), (0,1), (3,3)을 확인한다.",
+    "solutionImageCaption": "위 그림에서 f의 그래프(파랑)와 직선 y=x(초록 점선)는 두 점 (−2,−2), (3,3)에서 만나고 f는 점 (0,1)에서 꺾인다. 이 세 점이 만드는 삼각형은 y=x 위의 변의 길이가 5√2이고 점 (0,1)에서 y=x까지의 거리가 √2분의 1이어서 넓이가 2분의 5이다. 아래 그림처럼 역함수의 그래프(주황)는 y=x에 대하여 대칭이어서 점 (1,0)에서 꺾이고 합동인 삼각형이 하나 더 생기므로, 둘러싸인 부분의 넓이는 이 삼각형의 두 배이다. 정답은 5이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
@@ -492,9 +504,9 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "$A\\heartsuit B$는 두 집합의 대칭차집합의 여집합이다.\n\n한 원소가 $A\\heartsuit B$에 속한다는 것은 $A,B$ 양쪽에 모두 속하거나 양쪽에 모두 속하지 않는다는 뜻이다.\n\nㄱ은 대칭차집합의 크기를, ㄴ은 원소의 소속 여부를, ㄷ은 연산 결과가 전체집합이 되는 조건을 확인한다.\n\nㄱ에서 $\\{a,b\\}$와 $\\{b,c\\}$의 대칭차집합은 $\\{a,c\\}$이고, $\\{b,c,d,e\\}$와 $\\{c,e\\}$의 대칭차집합은 $\\{b,d\\}$이므로 두 연산 결과의 원소 수는 모두 $4$이다. ㄴ의 양변은 모두 한 원소가 $A,B$ 중 정확히 한 집합에만 속하는 경우를 나타내므로 같다. ㄷ에서 $A\\heartsuit B=U$이려면 대칭차집합이 공집합, 즉 $A=B$이어야 하므로 순서쌍은 $2^6=64$개이다. 따라서 ㄷ은 거짓이고 ㄱ, ㄴ만 참이다.\n그림에서 확인하면, 빨간 두 영역은 정확히 한 집합에만 속하는 A△B이고, 초록 두 영역은 함께 속하거나 둘 다 속하지 않는 A♥B이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "U={a,b,c,d,e,f}에서 A만·B만은 A△B, A∩B·둘 다 아님은 A♥B가 되는 네 영역과 보기별 계산",
-    "solutionImageCaption": "A♥B=(A△B)ᶜ의 네 영역, ㄱ의 결과 크기 4, ㄷ의 A=B인 순서쌍 2⁶=64를 표시한 도식",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 다섯 개가 놓여 있다. 첫째는 두 원 A, B에서 겹치는 부분이 색칠되어 있다. 둘째는 A={a,b}, B={b,c}를 원소와 함께 나타내고 겹치는 부분이 색칠되어 있으며, 셋째는 B={c,e}가 A={b,c,d,e} 안에 들어간 모양에 겹치는 부분이 색칠되어 있다. 넷째와 다섯째는 각각 A와 B의 여집합에 대한 연산 결과로, 두 원 중 한쪽에만 속하는 두 영역이 색칠되어 있다.",
+    "solutionImageCaption": "A♥B는 A, B 양쪽에 함께 속하거나 양쪽에 모두 속하지 않는 원소의 집합이다. ㄱ에서 {a,b}♥{b,c}는 색칠된 원소와 원 밖의 원소를 합친 것이고 {b,c,d,e}♥{c,e}도 같은 방법으로 구하며, 두 결과의 원소 수를 비교한다. ㄴ은 좌변과 우변이 모두 A, B 중 정확히 한쪽에만 속하는 영역이므로 같다. ㄷ은 A♥B=U이려면 A=B이어야 하므로 순서쌍은 2의 6제곱 개이다. 이를 종합해 옳은 보기를 고른다. 정답은 ㄱ, ㄴ이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -569,7 +581,11 @@ window.questionBank=[
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 5까지의 수를 세로로 늘어놓은 세 열이 있고 f의 화살표가 파란색으로 첫째 열에서 둘째 열, 둘째 열에서 셋째 열로 이어진다. 0에서 2, 1에서 4, 2에서 5, 3에서 1, 4에서 3, 5에서 0으로 간다. 2에서 5를 거쳐 0으로 가는 경로는 초록, 3에서 1을 거쳐 4로 가는 경로는 보라로 굵게 칠해져 있다.",
+    "solutionImageCaption": "그래프에서 f(0)=2, f(1)=4, f(2)=5, f(3)=1, f(4)=3, f(5)=0이다. 2에서 시작하면 2→5→0→2로, 3에서 시작하면 3→1→4→3으로 돌아와 두 순환 모두 주기가 3이다(그림은 두 번 적용한 경로까지). 100=3×33+1이므로 f의 100제곱은 f를 한 번 적용한 것과 같다. 따라서 f의 100제곱을 2에 적용하면 f(2)=5, 3에 적용하면 f(3)=1이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -603,7 +619,11 @@ window.questionBank=[
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 있다. 위 그림은 함수 y=f(x)의 그래프(파랑 꺾인선)가 점 (−2,1)에서 꺾이고 x축과 점 R에서 만나는 모습이다. 아래 그림은 f의 그래프와 그 역함수 y=g(x)의 그래프(주황 꺾인선), 직선 y=x(초록 점선)를 함께 그린 것으로, 주황은 점 (1,−2)에서 꺾이고 파랑과 주황은 y=x 위의 두 점 P, Q에서 만난다.",
+    "solutionImageCaption": "f(x)(f(x)−g(x))=0이므로 f(x)=0 또는 f(x)=g(x)이다. 위 그림에서 f의 그래프(파랑)가 x축과 만나는 점 R의 x좌표가 f(x)=0의 근이다. f는 증가함수라서 f(x)=g(x)는 f(x)=x와 같고, 아래 그림에서 f의 그래프와 y=x(초록 점선)의 교점 P, Q의 x좌표가 나머지 근이다(점 이름 P, Q, R은 설명을 위해 붙였다). g의 그래프(주황)는 f의 그래프를 y=x에 대하여 대칭이동한 것으로 g의 식은 x<1일 때 g(x)=3분의 (2x−8), x≥1일 때 g(x)=2x−4이다. 세 실근 −8, −3분의 8, 4를 모두 더한다. 정답은 −3분의 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -629,9 +649,9 @@ window.questionBank=[
     "choices": [],
     "answer": "$8$",
     "solution": "원 위의 정수 격자점을 직접 나열하고 자연수 구간의 원소 수와 비교한다.\n\n$x^2+y^2=5$에서 두 제곱수는 $1$과 $4$이어야 한다.\n\n좌표의 순서와 부호를 모두 고려해 $n(A)$를 구한다.\n\n정수해는 $(\\pm1,\\pm2)$와 $(\\pm2,\\pm1)$이므로 모두 $8$개이다. 한편 $B=\\{1,2,\\ldots,k\\}$이므로 $n(B)=k$이다. $n(A)=n(B)$에서 $k=8$이다.\n따라서 구하는 값은 $8$이다.\n[보강] 두 제곱수가 1과 4이므로 제곱근의 부호와 좌표의 순서를 각각 바꾸어 (±1,±2), (±2,±1)의 8점을 얻는다. 또 1≤x<k+1인 자연수의 집합은 {1,2,…,k}이므로 n(B)=k이다.",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "원 x²+y²=5 위의 여덟 정수 격자점과 B={1,2,…,k}의 원소 수를 비교한 그림",
-    "solutionImageCaption": "부호와 좌표 순서를 세어 n(A)를 구하고 자연수 집합의 원소 수와 비교한다.",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점을 중심으로 하는 원 x²+y²=5가 그려져 있고, 양의 방향 두 축에 눈금 1, 2가 있다. 원 위에 좌표가 모두 정수인 점의 예로 점 P(1,2)와 Q(2,1)이 찍혀 있고, 두 점의 좌표가 그림 위쪽에 적혀 있다.",
+    "solutionImageCaption": "x²+y²=5를 만족하는 정수 x, y는 한 좌표의 제곱이 1이고 다른 좌표의 제곱이 4일 때이다. 그림의 P(1,2), Q(2,1)은 그 예이다(점 이름 P, Q는 설명을 위해 붙였다). 좌표의 부호를 바꾸어도, x좌표와 y좌표를 서로 바꾸어도 제곱의 합은 그대로이므로 (±1, ±2), (±2, ±1)이 모두 원 위의 정수 점이고, 이 점들의 개수가 n(A)이다. 한편 B={1, 2, …, k}이므로 n(B)=k이고 n(A)=n(B)에서 k를 구한다. 정답은 8이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_COUNT",
     "subUnit": "집합의 원소의 개수",
@@ -664,7 +684,11 @@ window.questionBank=[
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 있다. 위 그림은 a=1일 때 g의 그래프로, x<0 부분은 아래로 열린 포물선 모양의 파랑 곡선이고 x≥0 부분은 오른쪽 위로 올라가는 주황 반직선이다. 아래 그림은 a=3일 때로, 파랑 곡선과 주황 반직선이 모두 x축 아래쪽에 있다.",
+    "solutionImageCaption": "(g∘f)(x)=x인 f가 존재하려면 g가 실수 전체를 치역으로 가져야 한다. x<0인 조각의 치역과 x≥0인 조각의 치역이 부호가 반대이어야 실수 전체를 덮는다. 그림의 a=1은 파랑이 음수, 주황이 0 이상의 값을 가져 덮이는 예이고, a=3은 두 조각이 모두 0 이하의 값만 가져 양수가 빠지는 예이다. 두 계수 a−4와 (a−2)(a−8)의 부호 조건을 따져 자연수 a를 구하고 모두 더한다. 정답은 19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -690,9 +714,9 @@ window.questionBank=[
     "choices": [],
     "answer": "$8$",
     "solution": "집합 등식의 양쪽에만 따로 나타나는 원소는 모두 $X$에 포함되어야 한다.\n\n$A-B=\\{4,11\\}$이고 $B-A=\\{2,13\\}$이다.\n\n두 차집합의 원소를 고정한 뒤 나머지 전체집합 원소를 자유롭게 선택한다.\n\n$4$ 또는 $11$이 $X$에 없으면 왼쪽 합집합에만 나타나 등식이 성립하지 않는다. 같은 이유로 $2,13$도 모두 $X$에 있어야 한다. 따라서 $\\{2,4,11,13\\}\\subset X$이다. 나머지 원소 $1,8,15$는 각각 포함하거나 포함하지 않아도 등식에 영향을 주지 않으므로 가능한 $X$는 $2^3=8$개이다.\n그림에서 확인하면, 양쪽 중 한쪽에만 나타나는 네 원소는 X가 받아야 하고, 양변에 대칭적으로 나타나는 1,8,15만 자유롭게 선택한다.\n따라서 구하는 개수는 $8$이다.",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "U={1,2,4,8,11,13,15}에서 A−B={4,11}, B−A={2,13}은 X에 고정되고 {1,8,15}는 자유인 상태표",
-    "solutionImageCaption": "집합 등식의 양변을 비교해 {2,4,11,13}⊆X와 자유 원소 3개, 2³=8을 구하는 표",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램에 전체집합 U와 두 원 A, B가 있다. A만의 영역에 4, 11, B만의 영역에 2, 13, 두 원이 겹친 곳에 1이 쓰여 있고, 두 원 밖에 8, 15가 쓰여 있다. A에만 속하는 부분과 B에만 속하는 부분이 색칠되어 있다.",
+    "solutionImageCaption": "A−B={4,11}, B−A={2,13}이다(색칠한 영역). 등식의 한쪽에만 나타나는 이 네 원소는 모두 X에 들어 있어야 한다. 두 집합에 함께 속한 1과 어디에도 속하지 않는 8, 15는 양쪽 변에서 같게 나타나므로 X에 넣어도 빼도 된다. 따라서 X는 네 원소를 포함하고 나머지 세 원소를 자유롭게 고르는 경우의 수만큼이다. 정답은 8이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -753,11 +777,11 @@ window.questionBank=[
     "answer": "$2\\le k\\lt\\dfrac{9}{4}$",
     "solution": "이 함수가 증가함수임을 이용하면 함수와 역함수의 교점은 $y=x$ 위에 있어야 한다.\n\n$x\\ge1$에서 $f(x)=(x-1)^2+k-1$은 증가하고, 고정점은 $x^2-3x+k=0$의 근이다.\n\n교점이 고정점임을 확인한 뒤 서로 다른 두 근이 모두 $1$ 이상일 조건을 구한다.\n\n교점을 $(u,v)$라 하면 $v=f(u)$이고 $u=f(v)$이다. 만약 $u\\ltv$이면 증가성에 의해 $f(u)\\ltf(v)$, 즉 $v\\ltu$가 되어 모순이고, $u\\gtv$도 같은 이유로 모순이다. 따라서 $u=v$이며 교점은 $f(x)=x$, 즉 $x^2-3x+k=0$의 해에서 생긴다. 서로 다른 두 실근을 가지려면 $9-4k\\gt0$이므로 $k\\lt\\dfrac{9}{4}$이다. 작은 근 $\\dfrac{3-\\sqrt{9-4k}}{2}$가 $1$ 이상이어야 하므로 $\\sqrt{9-4k}\\le1$, 즉 $k\\ge2$이다. $k=2$일 때 두 근은 $1,2$로 서로 다르므로 포함된다.\n따라서 $2\\le k\\lt\\dfrac{9}{4}$이다.",
 
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "이차함수 y=(x−1)²+1과 그 역함수의 그래프가 y=x 위의 두 점 P, Q에서 만나는 모습을 그린 그림. 두 교점이 생기는 k의 범위가 2≤k<9/4임을 보여준다.",
+    "solutionImageAlt": "해설 그림: 좌표평면 그림 두 개가 있다. 위 그림은 k가 8분의 17일 때 파란 곡선 y=f(x)와 주황 곡선 y=f⁻¹(x)가 초록 점선 y=x 위의 두 점 P, Q에서 만나는 모습이고, 아래 그림은 k=0일 때 두 곡선이 y=x 위의 점 (3,3) 하나에서만 만나는 모습이다.",
 
-    "solutionImageCaption": "k=2 대표 그래프에서 (1,1), (2,2) 교점을 확인한다.",
+    "solutionImageCaption": "f는 x≥1에서 증가하므로 f의 그래프와 역함수의 그래프의 교점은 모두 y=x 위에 있고, 교점의 x좌표는 x²−3x+k=0의 근이다. 이 방정식이 서로 다른 두 실근을 가지면 판별식에서 위쪽 한계가 나오고, 작은 근이 1 이상이어야 하므로 아래쪽 한계가 나온다. 그림은 k=8분의 17(범위 안의 예)에서 두 근이 모두 1보다 커서 교점 P, Q가 두 개이고, k=0에서는 근 0이 정의역 밖이라 교점이 하나뿐인 예이다. 정답은 2≤k<4분의 9이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",

@@ -28,6 +28,16 @@ const grouped = context.groupStudentPortalExams([
 assert.deepStrictEqual(Array.from(grouped.all, row => row.assignment_id), ['recent', 'boundary', 'previous', 'created-fallback', 'invalid-fallback', 'missing-date', 'complete']);
 assert.deepStrictEqual(Array.from(grouped.pending, row => row.assignment_id), ['recent', 'boundary', 'previous', 'created-fallback', 'invalid-fallback', 'missing-date']);
 assert.deepStrictEqual(Array.from(grouped.complete, row => row.assignment_id), ['complete']);
+const lifecycle = context.groupStudentPortalExams([
+  { assignment_id: 'active', is_submitted: 0 },
+  { assignment_id: 'cancelled', is_submitted: 0, is_cancelled: true },
+  { assignment_id: 'replaced', is_submitted: 0, is_replaced: true },
+  { assignment_id: 'review-only', is_submitted: 0, is_review_only: true },
+  { assignment_id: 'recorded', is_submitted: 1, is_cancelled: true }
+]);
+assert.deepStrictEqual(Array.from(lifecycle.all, row => row.assignment_id), ['active', 'cancelled', 'replaced', 'review-only', 'recorded'], 'lifecycle records remain reachable in the complete list');
+assert.deepStrictEqual(Array.from(lifecycle.pending, row => row.assignment_id), ['active'], 'progress counts must not ask students to submit read-only or cancelled work');
+assert.deepStrictEqual(Array.from(lifecycle.complete, row => row.assignment_id), ['recorded'], 'recorded submissions stay visible even when their assignment was cancelled');
 assert(source.includes("{ key: 'all', label: '전체' }"), 'all tab should be the default discoverable view');
 assert(source.includes("{ key: 'pending', label: '진행 중' }"), 'pending tab should collect all unsubmitted exams regardless of age');
 assert(source.includes("{ key: 'complete', label: '제출 완료' }"), 'completed tab should stay available');

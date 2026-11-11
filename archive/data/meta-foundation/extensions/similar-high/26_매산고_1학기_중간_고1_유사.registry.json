@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_매산고_1학기_중간_고1_유사",
+  "sourceExam": "archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [],
+  "generatedCrossConcepts": [],
+  "generatedConditions": [],
+  "generatedProblemTypes": [],
+  "generatedTemplates": [
+    {
+      "key": "EXT-TPL-FACTOR-THEOREM-COEFFICIENT-THEN-FACTOR-DECOMPOSITION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "인수정리로 미정계수를 구한 뒤 나누어 인수를 결정하는 풀이",
+      "definition": "다항식이 어떤 일차식을 인수로 가진다는 조건 f(a)=0(인수정리)으로 미정계수를 구하고, 그 일차식으로 나누어 얻은 이차식이 판별식이 음수여서 더 인수분해되지 않음을 확인해 인수의 정확한 형태를 정한 뒤 인수의 값을 계산하는 풀이 골격.",
+      "parentRpmRecordId": "H1-RPM-145",
+      "parentRpmL1": "다항식",
+      "parentRpmL2": "항등식과 나머지정리",
+      "parentRpmL3": "인수정리",
+      "parentRpmL4": "미정계수 결정",
+      "parentKey": "PT_H1_FACTOR_THEOREM",
+      "parentLabelKo": "인수정리",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "인수정리로 미정계수 결정 -> 일차식으로 나누어 몫 구하기 -> 몫의 판별식으로 더 분해되지 않음 확인 -> 인수 결정 후 값 계산",
+      "standardUnitKey": "H22-C-02",
+      "subUnitKey": "H22-C-02-CORE",
+      "standardCourse": "공통수학1",
+      "curriculum": "2022",
+      "basis": "PT_H1_FACTOR_THEOREM에는 canonical TPL이 없고(크로스워크 H1-RPM-145는 RPM_ONLY) 같은 PT 아래 인수정리로 미정계수를 구한 뒤 나머지 인수를 결정해 값을 구하는 풀이 골격이 없다. Q7에서 사용.",
+      "firstUsed": {
+        "stem": "26_매산고_1학기_중간_고1_유사",
+        "qid": 7
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-10",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true,
+  "reusedGeneratedKeys": []
+}

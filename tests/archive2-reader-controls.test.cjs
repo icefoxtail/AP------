@@ -21,20 +21,21 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(css, /grid-template-columns: 98px minmax\(0, 1fr\) 48px/);
   assert.match(css, /min-height: 44px/);
   assert.match(css, /max-width: 640px/);
-  assert.match(engine, /archive2-reader-controls\.js\?v=20261106-solution-loading-1/);
-  assert.match(mixed, /archive2-reader-controls\.js\?v=20261106-solution-loading-1/);
+  assert.match(engine, /archive2-reader-controls\.js\?v=20261111-student-navigation-1/);
+  assert.match(mixed, /archive2-reader-controls\.js\?v=20261111-student-navigation-1/);
   assert.match(controls, /studentReview/);
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
-  assert.match(controls, /target\.pathname\.startsWith\("\/apmath\/student\/"\)/);
-  assert.match(engine, /solution-render-executor\.js\?v=20261107-reminder-inline-width-1/);
-  assert.match(mixed, /solution-render-executor\.js\?v=20261107-reminder-inline-width-1/);
+  assert.match(controls, /new URL\("\.\.\/apmath\/student\/", location\.href\)\.pathname/);
+  assert.match(controls, /\[portalPath, portalPath \+ "index\.html"\]\.includes\(target\.pathname\)/);
+  assert.match(engine, /solution-render-executor\.js\?v=20261111-svg-k-2/);
+  assert.match(mixed, /solution-render-executor\.js\?v=20261111-svg-k-2/);
   assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
   assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-2/);
-  assert.match(workspaceHtml, /archive2-library\.js\?v=20261110-library-2/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261110-library-2/);
+  assert.match(workspaceHtml, /archive2-library\.js\?v=20261111-assign-2/);
+  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261111-assign-3/);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {

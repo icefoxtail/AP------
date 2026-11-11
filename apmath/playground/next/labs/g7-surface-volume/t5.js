@@ -190,6 +190,12 @@
           if (te > 0.95) totalText(D, R, top, `겉넓이 = ${plainVal(M.tot)}`, 64);
         }
       }
+      // 정리 탭: 지금 단계의 식 한 줄. 결과 줄은 해설 재생 중 svShowV 까지 숨김.
+      G.stepRow(D, C, [null,
+        [{ t: `뚫기 전 겉넓이 = ${M.a}×${M.a}×2 + ${M.a}×${M.h}×4 = ${plainVal(M.S0)}`, c: 'ink' }],
+        [{ t: `없어지는 입구 2개: −2×π×${M.q}² = ${plainVal(M.minus).replace('-', '−')}`, c: 'red' }],
+        [{ t: `새로 생기는 안쪽 옆면: 2×π×${M.q}×${M.h} = ${plainVal(M.plus)}`, c: 'amber' }],
+        [{ t: `겉넓이 = ${plainVal(M.S0)} ${plainVal(M.minus).replace('-', '− ')} + ${plainVal(M.plus)} = ${plainVal(M.tot)}`, c: 'green' }]][Math.min(Math.max(C.step || 0, 0), 4)], { gated: (C.step || 0) >= 4 });
     };
     return {
       id: 'sv5-1', title: '구멍 뚫린 입체', short: '구멍 뚫린 입체',
@@ -390,6 +396,12 @@
 
         }
       }
+      // 정리 탭: 지금 단계의 식 한 줄. 결과 줄은 해설 재생 중 svShowV 까지 숨김.
+      G.stepRow(D, C, [null,
+        [{ t: `처음 겉넓이 = 6×${M.a}×${M.a}${D.lessonHide ? '' : ` = ${plainVal(M.S0)}`}`, c: 'ink' }], // 정답(변화 없음)이 처음 겉넓이와 같아 재생 중에는 숫자를 결론까지 아낌
+        [{ t: `없어지는 바깥 3면: −3×${M.p}×${M.p}${M.cnt > 1 ? ` (${M.cnt}곳)` : ''} = −${plainVal(vmul(M.out3, M.cnt))}`, c: 'red' }],
+        [{ t: `생기는 안쪽 3면: +3×${M.p}×${M.p}${M.cnt > 1 ? ` (${M.cnt}곳)` : ''} = +${plainVal(vmul(M.in3, M.cnt))}`, c: 'amber' }],
+        [{ t: `겉넓이 = ${plainVal(M.S0)} − ${plainVal(vmul(M.out3, M.cnt))} + ${plainVal(vmul(M.in3, M.cnt))} = ${plainVal(M.tot)}`, c: 'green' }]][Math.min(Math.max(C.step || 0, 0), 4)], { gated: (C.step || 0) >= 4 });
     };
     return {
       id: 'sv5-3', title: '모퉁이를 잘라 낸 정육면체', short: '모퉁이 절단',
@@ -787,6 +799,15 @@
       if (volParts) {
         G.drawBars(D, volParts, 0, rowTop, 5.6, 0, {});
         b.text({ x: 0, y: rowTop + 0.62 }, `부피 = ${plainVal(M.vBox)} + ${plainVal(M.vTop)}${(plainVal(M.vBox) + '+' + plainVal(M.vTop)) === plainVal(M.vol) ? '' : ` = ${plainVal(M.vol)}`}`, { dy: 36, size: D.fs(15), weight: 800, color: 'green', baseline: 'middle' });
+      }
+      // 정리 탭: 지금 단계의 식 한 줄(해설이 말하는 값이 그림에 보이게). 결과 줄은 해설 재생 중 svShowV 까지 숨김. 탐구·문제 탭·썸네일은 그대로.
+      if (M.mode === 'surf') {
+        const rowSegs = [null,
+          [{ t: `상자의 겉넓이 = 2×${M.a}×${M.a} + 4×${M.a}×${M.H} = ${plainVal(M.box)}`, c: 'ink' }],
+          [{ t: `붙은 자리가 없어져요: −π×${M.r}² = ${plainVal(M.cover).replace('-', '−')}`, c: 'red' }],
+          [{ t: `위 입체의 겉면(붙은 밑면 제외): +${plainVal(M.add)}`, c: 'green' }],
+          [{ t: `겉넓이 = ${plainVal(M.box)} ${plainVal(M.cover).replace('-', '− ')} + ${plainVal(M.add)} = ${plainVal(M.surf)}`, c: 'green' }]][Math.min(Math.max(C.step || 0, 0), 4)];
+        G.stepRow(D, C, rowSegs, { gated: (C.step || 0) >= 4 });
       }
     };
     return {

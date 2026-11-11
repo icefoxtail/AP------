@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "아래 그림과 같이 폭이 $6$이고 높이가 $6$인 포물선",
+  "caption": "폭이 6, 높이가 6인 포물선 모양의 도형 안에 그린 직사각형의 한 예이다. 밑변은 가로축 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "0",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -1,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 6
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2"
+        },
+        {
+          "id": "Q",
+          "curveX": "-2"
+        },
+        {
+          "id": "R",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "S",
+          "axis": "x",
+          "value": "-2"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "S",
+            "R",
+            "P",
+            "Q"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "S": "S"
+  },
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "폭 6, 높이 6인 포물선 안에 밑변이 포물선의 밑변 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있는 직사각형",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형의 밑변은 포물선의 밑변 위, 윗변의 두 꼭짓점은 포물선 위에 있는 배치를 보여 준다."
+  ],
+  "assetPath": "assets/images/26_금당고_1학기_중간_고1_유사/q14-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q14-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q14-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/engine_evidence/q14-problem.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "ordinal": 14,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

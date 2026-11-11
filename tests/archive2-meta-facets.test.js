@@ -514,7 +514,7 @@ test('문제지 만들기: 세부 조건 offers 개념/유형/풀이 with status
   assert.ok(facets.pt.length > 0 && facets.tpl.length > 0 && facets.l3.length > 0, 'the unit offers recorded concept/type/template options');
   assert.ok(facets.poolSize === unit.facetQuestionUids.length);
   const html = w.renderComposition();
-  const detail = html.split('<details class="compose-detail"')[1];
+  const detail = html.split('<details class="compose-detail cz-detail"')[1];
   for (const field of ['metaL3', 'metaPT', 'metaTPL', 'metaApprovedOnly']) assert.match(detail, new RegExp('data-filter="' + field + '"'));
   assert.match(detail, /검토 대기|승인/);
   assert.ok(!/data-filter="L3"/.test(detail), 'the strict pair is only shown for an older draft');
@@ -578,7 +578,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /archive2-unified-units\.js\?v=20261030-s11-1/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261110-library-2/);
+  assert.match(workspace, /archive2-workspace\.js\?v=20261111-assign-3/);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261110-grid-1/);

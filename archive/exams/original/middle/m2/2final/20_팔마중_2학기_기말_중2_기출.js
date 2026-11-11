@@ -40,7 +40,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "항상 닮은 도형의 정의",
     "decisiveStep": "정사각형은 모든 각이 같고 대응변의 비도 같아 항상 닮는다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 네 변의 길이가 같은 두 마름모가 있고 한 각의 크기가 다르다. 오른쪽에는 이등변삼각형 두 개가 있고 꼭지각의 크기가 다르다.",
+    "solutionImageCaption": "닮은 도형은 대응각의 크기가 같고 대응변의 길이의 비가 일정하다. 마름모는 네 변의 길이가 같아도 각의 크기가 다를 수 있고, 이등변삼각형은 꼭지각이 다를 수 있다. 직육면체는 가로, 세로, 높이의 비가 다를 수 있고 원뿔은 높이와 밑면의 반지름의 비가 다를 수 있다. 정사각형은 네 각이 모두 직각이고 네 변의 비가 항상 같다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "닮음비와 원의 둘레",
     "decisiveStep": "닮음비로 원뿔 A의 반지름을 구한 뒤 밑면 둘레를 계산한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원뿔 A는 모선이 10 cm이고 원뿔 B는 모선이 15 cm이며 밑면 반지름이 12 cm이다. 세 번째 그림은 두 원뿔의 축을 지나는 단면인 이등변삼각형 두 개로 모선은 10과 15이고 밑변은 작은 쪽이 2r, 큰 쪽이 24이다.",
+    "solutionImageCaption": "두 원뿔은 닮았으므로 모선의 길이의 비 10 대 15, 곧 2 대 3이 닮음비이다. 원뿔 A의 밑면 반지름은 B의 12에 3분의 2를 곱한 값이다. 밑면의 둘레는 2π에 밑면의 반지름을 곱해 구한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -147,7 +155,11 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_REUSE",
     "projectionReason": "M2-RPM-089 DIRECT_ACTIVE; exact PT/TPL and M2-06/M2-06-SIMILAR_FIGURE binding in MIDDLE_GEOMETRY.",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
-    "bindingOwnerPack": "MIDDLE_GEOMETRY"
+    "bindingOwnerPack": "MIDDLE_GEOMETRY",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC와 삼각형 DEF가 있고 BC는 15, DE는 6, DF는 8, EF는 10이다. 오른쪽에는 같은 두 삼각형의 대응변이 같은 색으로 칠해져 있고 AB는 9, AC는 12이다.",
+    "solutionImageCaption": "삼각형 ABC와 DEF에서 대응변 BC와 EF의 길이의 비는 15 대 10, 곧 3 대 2이다. AB는 DE의 2분의 3배이므로 9, AC는 DF의 2분의 3배이므로 12이다. 그러면 AB 대 DF는 9 대 8이어서 3 대 2가 아니다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -192,7 +204,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "삼각형의 내각의 합으로 대응각을 완성해 AA 닮음을 확인",
     "decisiveStep": "조건 ①에서 A와 D가 직각이면 B=E=40°, C=F=50°가 된다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC와 DEF로 BC는 10, 각 C는 50도, EF는 15, 각 E는 40도이다. 두 번째 그림은 각 A와 각 D가 직각일 때로, 각 B와 각 E가 40도, 각 C와 각 F가 50도로 같은 색이다. 세 번째 그림은 각 D가 직각이고 각 F가 50도일 때로 삼각형 DEF만 세 각이 정해진다.",
+    "solutionImageCaption": "각 A와 각 D가 직각이면 삼각형 ABC에서 각 B는 180도에서 90도와 50도를 뺀 40도이고, 삼각형 DEF에서 각 F는 180도에서 90도와 40도를 뺀 50도이다. 세 각이 모두 대응하여 같으므로 닮음이다. 반면 각 F가 50도, 각 D가 90도인 조건은 삼각형 DEF의 각만 정할 뿐 삼각형 ABC의 각 A와 각 B를 정하지 못한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -237,7 +253,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "직각삼각형의 닮음",
     "decisiveStep": "직각삼각형의 닮음에서 대응변의 비로 DE를 계산한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 직사각형 A, B, C, D로 AB는 12, BC는 16이고 대각선 BD 위의 점 O에서 BO는 10이며 점 O를 지나는 선분 EF가 BD와 수직으로 만난다. 두 번째 그림은 직각삼각형 ABD로 AD는 16, AB는 12, BD는 20이다. 세 번째 그림은 직각삼각형 EOD로 OD는 10이고 DE의 길이는 x이다. 두 삼각형은 각 D가 공통이고 대응하는 변이 같은 색이다.",
+    "solutionImageCaption": "직사각형의 대각선 BD는 20이고, O는 BD의 중점이므로 OD는 10이다. 직각삼각형 EOD와 ABD는 각 D가 공통이고 직각이 하나씩 있어 닮음이다. 그래서 DE 대 BD가 OD 대 AD와 같고, DE는 20에 16분의 10을 곱한 값이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -282,7 +302,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "평행선에 의한 삼각형의 닮음",
     "decisiveStep": "평행사변형과 닮은 삼각형의 비로 DE를 계산한다.",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC 안에 DE가 BC와 평행하고 EF가 AB와 평행하도록 그은 그림으로 AD는 12, DB는 8, FC는 10이다. 두 번째 그림은 네 점 B, D, E, F를 꼭짓점으로 하는 평행사변형으로 BF와 DE의 길이가 x이고 BD는 8이다. 세 번째는 삼각형 ABC로 AB는 20, BC는 x+10이고 네 번째는 삼각형 ADE로 AD는 12, DE는 x이다.",
+    "solutionImageCaption": "BC와 DE, AB와 EF가 각각 평행하므로 네 점 B, D, E, F를 꼭짓점으로 하는 사각형은 평행사변형이고 BF는 DE와 같다. DE를 x라 하면 BC는 x+10이다. 삼각형 ADE와 ABC가 닮음이므로 DE 대 BC가 AD 대 AB, 곧 12 대 20과 같다. 따라서 x를 x+10으로 나눈 값이 5분의 3이고 이를 풀면 x는 15이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -327,7 +351,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "평행선 사이의 선분비와 삼각형 넓이",
     "decisiveStep": "평행선의 선분비로 밑변과 높이를 구해 넓이를 계산한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 세 평행한 선분 AB, EF, CD가 선분 BD에 수직으로 서 있고 AB는 10, CD는 15, FD는 12이며 선분 AD와 BC가 점 E에서 만난다. 두 번째 그림은 선분 BD를 BF 8과 FD 12로 나눈 그림이다. 세 번째와 네 번째는 직각삼각형 ABD와 EFD로 AB는 10, BD는 20, EF는 6, FD는 12이다.",
+    "solutionImageCaption": "AB와 EF와 CD가 평행하므로 BF 대 FD는 AB 대 CD, 곧 2 대 3이다. FD가 12이므로 BF는 8이고 BD는 20이다. 삼각형 EFD와 ABD가 닮음이므로 EF 대 AB가 FD 대 BD, 곧 12 대 20이고 EF는 6이다. 삼각형 EBD는 밑변 BD가 20이고 높이 EF가 6이므로 넓이를 구할 수 있다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -372,7 +400,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "무게중심의 2:1 내분",
     "decisiveStep": "두 무게중심이 같은 중선 위에서 나누는 비를 적용한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC와 꼭짓점 A에서 변 BC의 점 D로 가는 중선 AD가 있고 길이는 9이다. 중선 위에 무게중심 G가 있고 G와 B, C를 이은 삼각형 GBC 안에 점 G′이 있으며 G′도 B, C와 이어져 있다. 두 번째 그림은 선분 AD를 AG 6과 GD 3으로 나눈 그림이다. 세 번째 그림은 삼각형 GBC로 GG′이 파랑, G′D가 주황이다.",
+    "solutionImageCaption": "점 G가 삼각형 ABC의 무게중심이므로 GD는 AD의 3분의 1인 3이다. GD는 삼각형 GBC의 중선이고 G′은 그 무게중심이므로 GG′은 GD의 3분의 2이다. 따라서 GG′은 3에 3분의 2를 곱한 값이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -417,7 +449,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "중선이 나누는 넓이",
     "decisiveStep": "중점 삼각형과 무게중심의 높이비로 사각형 넓이를 합산한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC의 무게중심 G와 두 변의 중점 E, F를 이은 그림으로 사각형 A, E, G, F가 색칠되어 있고 삼각형 ABC의 넓이는 54이다. 두 번째 그림은 EF가 BC와 평행하고 삼각형 AEF의 넓이가 2분의 27이다. 세 번째 그림은 A와 G에서 EF에 내린 높이가 3h와 h이고 삼각형 AEF의 넓이는 2분의 27, 삼각형 EGF의 넓이는 2분의 9이다.",
+    "solutionImageCaption": "G가 무게중심이므로 E, F는 AB, AC의 중점이고 EF는 BC와 평행하다. 삼각형 AEF는 삼각형 ABC와 닮음비가 1 대 2이므로 넓이가 4분의 1인 2분의 27이다. 같은 밑변 EF에서 G의 높이는 A의 높이의 3분의 1이므로 삼각형 EGF의 넓이는 2분의 9이다. 두 삼각형의 넓이를 더하면 사각형 A, E, G, F의 넓이가 된다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -462,7 +498,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "무게중심의 중선비와 중점 정리",
     "decisiveStep": "BE의 중선성에서 F를 AD의 중점으로 얻고 AG−AF를 계산한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC의 중선 AD 위에 점 F와 무게중심 G가 있고 BE도 중선이며 FE가 BC와 평행하다. AD의 길이는 54이다. 두 번째 그림은 삼각형 ADC에서 F와 E가 각각 AD와 AC의 중점이고 AF와 FD가 27이다. 세 번째 그림은 중선 AD를 따라 A, F, G, D가 놓여 있고 AF는 27, AG는 36, GD는 18이다.",
+    "solutionImageCaption": "점 B, G, E가 한 직선 위에 있으므로 BE는 중선이고 E는 AC의 중점이다. 삼각형 ADC에서 FE가 DC와 평행하므로 F는 AD의 중점이고 AF는 27이다. 무게중심 G는 AD를 2 대 1로 나누므로 AG는 36이다. FG는 AG에서 AF를 뺀 길이이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -550,7 +590,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "직각삼각형의 피타고라스 정리",
     "decisiveStep": "직각삼각형에서 두 직각변의 차와 높이로 x²을 구한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 A와 B가 직각인 사다리꼴 A, B, C, D가 있고 AD는 2, AB는 3, BC는 4이며 변 DC의 길이는 x이다. 오른쪽에는 D에서 BC에 수선 DH를 그은 그림으로 직각삼각형 DHC의 직각변 DH는 3, HC는 2이고 빗변 DC는 x이다.",
+    "solutionImageCaption": "D에서 BC에 내린 수선의 발을 H라 하면 사각형 A, B, H, D는 직사각형이어서 DH는 3, BH는 2이고 HC는 4에서 2를 뺀 2이다. 직각삼각형 DHC에서 피타고라스 정리에 따라 x의 제곱은 2의 제곱에 3의 제곱을 더한 값이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -596,7 +640,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "직각삼각형의 빗변에 내린 높이",
     "decisiveStep": "두 수선의 발 위치를 빗변 길이로 바꾸어 PQ를 계산한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 AB가 6, BC가 8인 직사각형 A, B, C, D와 대각선 BD에 수직인 AP, CQ이다. 두 번째 그림은 직각삼각형 ABD로 AB는 6, AD는 8, BD는 10이고 점 P에서 AP가 BD와 수직이며, 아래에 BD를 펴서 그린 선분 위에 BP의 길이 3.6이 표시되어 있다. 세 번째 그림은 직각삼각형 CBD로 BC는 8, CD는 6, BD는 10이고 점 Q에서 CQ가 BD와 수직이며, 아래에 펴서 그린 선분 위에 BQ의 길이 6.4가 표시되어 있다.",
+    "solutionImageCaption": "직사각형의 대각선 BD는 10이다. 직각삼각형 ABD에서 BP는 AB의 제곱 36을 BD 10으로 나눈 5분의 18, 곧 3.6이고, 직각삼각형 CBD에서 BQ는 BC의 제곱 64를 10으로 나눈 5분의 32, 곧 6.4이다. PQ는 BQ에서 BP를 뺀 값이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -641,7 +689,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "정사각형과 직각삼각형의 넓이",
     "decisiveStep": "큰 정사각형 넓이에서 네 직각삼각형의 넓이를 뺀다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 한 변이 7인 정사각형 A, B, C, D의 각 변 위에 점 E, F, G, H가 있고 AH, BE, CF, DG의 길이가 같은 4이다. 오른쪽에는 네 모서리의 직각삼각형이 색칠되어 있고 직각변이 4와 3으로 표시되어 있다.",
+    "solutionImageCaption": "정사각형의 한 변이 7이므로 넓이는 49이다. 네 모서리의 삼각형은 직각변이 4와 7에서 4를 뺀 3인 합동인 직각삼각형이고 각각의 넓이는 6이다. 네 삼각형의 넓이의 합 24를 바깥 정사각형의 넓이에서 빼면 사각형 E, F, G, H의 넓이가 된다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -686,7 +738,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "피타고라스 정리로 선분 길이 관계를 세운다.",
     "decisiveStep": "수선의 발을 두고 두 거리식과 피타고라스식을 결합해 AB²을 구한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 C에서 직각인 삼각형 ABC와 빗변 AB의 삼등분점 M, N이 있고 MC는 3, NC는 4이다. 오른쪽에는 삼등분한 세 조각의 길이가 모두 x로 표시되어 있고 C에서 AB에 내린 수선의 발 H와 수선 CH의 길이 h가 있다. 오른쪽 아래에는 AB를 펴서 그린 선분 위에 B에서 H까지의 길이 y가 표시되어 있다.",
+    "solutionImageCaption": "삼등분한 조각의 길이를 x라 하면 AB는 3x이다. C에서 AB에 내린 수선의 발을 H라 하고 BH를 y, CH를 h라 하면 직각삼각형 CHN과 CHM에서 2xy에서 3x의 제곱을 뺀 값이 7이다. 삼각형 ABC에서는 y의 제곱에서 3xy를 뺀 값에 h의 제곱을 더하면 0이어서 xy는 16에서 x의 제곱을 뺀 값과 같다. 이를 대입하면 x의 제곱이 5이고 AB의 제곱은 9배이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -728,7 +784,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "서로 다른 주사위의 순서쌍 세기",
     "decisiveStep": "서로 다른 주사위 결과를 합이 5인 경우와 9인 경우로 나눈다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 합이 5인 눈의 쌍 1과 4, 2와 3이 두 칸에 적혀 있다. 두 번째 그림은 합이 9인 눈의 쌍 3과 6, 4와 5이다. 세 번째 그림은 순서쌍 1, 4와 4, 1이 서로 다른 경우임을 두 칸으로 보여 준다.",
+    "solutionImageCaption": "서로 다른 두 주사위의 결과는 순서가 있는 순서쌍으로 센다. 합이 5인 눈의 쌍과 합이 9인 눈의 쌍을 찾고, 쌍마다 순서를 바꾼 경우도 센다. 두 경우는 겹치지 않으므로 더한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -770,7 +830,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "곱의 법칙",
     "decisiveStep": "곱의 법칙으로 햄버거 선택과 음료 선택을 곱한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 햄버거를 고르는 단계로 세 칸에 햄버거 1, 햄버거 2, 햄버거 3이 적혀 있다. 오른쪽 그림은 음료수를 고르는 단계로 네 칸에 음료수 1부터 음료수 4까지 적혀 있다. 햄버거 하나마다 음료수를 고를 수 있는 가짓수를 곱한다.",
+    "solutionImageCaption": "햄버거는 3종류 중 하나를 고르고, 햄버거 하나마다 음료수 4종류 중 하나를 고른다. 두 단계의 가짓수 3과 4를 곱의 법칙으로 곱한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -812,7 +876,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "동일한 결과와 서로 다른 결과로 분류",
     "decisiveStep": "모두 같은 손과 모두 다른 손을 분리해 비기는 경우를 센다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 세 사람이 모두 같은 손을 낼 때로 다은이 3가지, 소율이 1가지, 지율이 1가지이다. 오른쪽 그림은 세 사람이 모두 다른 손을 낼 때로 다은이 3가지, 소율이 2가지, 지율이 1가지이다. 두 그림은 각 단계에서 고를 수 있는 가짓수를 보여 주는 풀이 단계 그림이다.",
+    "solutionImageCaption": "세 사람이 모두 같은 손을 내면 비긴다. 다은이 낼 손이 3가지이고 나머지 두 사람은 같은 손을 내야 하므로 이 경우는 곱의 법칙으로 센다. 세 사람이 모두 다른 손을 내도 비기며, 다은 3가지, 소율 2가지, 지율 1가지를 곱한다. 두 경우의 수를 더한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -855,7 +923,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "한 묶음으로 보는 순열",
     "decisiveStep": "여학생 두 명을 한 묶음으로 배열한 뒤 묶음 안 순서를 센다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 남 남 여 여 남 남으로 여섯 칸이 한 줄로 놓여 있다. 두 번째 그림은 남 남 여학생 묶음 남 남으로 다섯 칸이다. 세 번째 그림은 묶음 안에서 여1 여2 순서와 여2 여1 순서를 보여 준다.",
+    "solutionImageCaption": "두 여학생을 한 묶음으로 보면 남학생 네 명과 묶음 하나, 모두 5개를 한 줄로 세우는 경우의 수는 5부터 1까지 차례로 곱한 120가지이다. 묶음 안에서 두 여학생의 순서가 2가지이므로 곱의 법칙에 따라 두 값을 곱한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -899,7 +971,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "인접 조건을 반영한 색 배정",
     "decisiveStep": "윗영역의 색을 고정하고 아래 세 영역의 인접조건을 순서대로 적용한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 위쪽에 가로로 긴 부분 A가 있고 그 아래에 B, C, D 세 부분이 나란히 있다. 오른쪽에는 같은 그림의 부분마다 색이 다르고 A는 4가지, B는 3가지, C는 2가지, D는 2가지 색을 고를 수 있다고 적혀 있다. 이 그림은 부분마다 고를 수 있는 색의 수를 보여 주는 풀이 단계 그림이다.",
+    "solutionImageCaption": "A는 B, C, D 모두와 이웃하므로 A를 먼저 칠하면 4가지이다. B는 A와 다른 색이어서 3가지, C는 A와 B 모두와 달라야 하므로 2가지, D는 A와 C와 달라야 하므로 2가지이다. 각 단계의 가짓수를 곱의 법칙으로 곱한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -939,7 +1015,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "직각삼각형의 AA 닮음",
     "decisiveStep": "두 직각삼각형의 AA 닮음과 대응변비로 x를 구한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC로 AB는 9, AC는 12이고 CD는 AB에, BE는 AC에 수직이며 AD는 6, AE의 길이는 x이다. 두 번째 그림은 직각삼각형 ADC로 AD는 6, AC는 12이다. 세 번째 그림은 직각삼각형 AEB로 AE는 x, AB는 9이고 두 삼각형의 각 A가 같은 색으로 표시되어 있다.",
+    "solutionImageCaption": "삼각형 ADC와 AEB는 각 D와 각 E가 직각이고 각 A가 공통이므로 AA 닮음이다. 대응변의 비에서 AC 대 AB가 AD 대 AE이므로 12 대 9가 6 대 x와 같다. 12x는 54이므로 x는 2분의 9이다. 정답은 2분의 9 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -979,7 +1059,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "직각삼각형의 닮음·높이 관계",
     "decisiveStep": "빗변 중점, 직각삼각형 높이정리와 AH·AM 관계를 차례로 쓴다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 A가 직각인 삼각형 ABC로 BC의 중점 M, 높이의 발 G, 점 H가 있고 BG는 8, GC는 2이다. 두 번째 그림은 AM, BM, CM이 같은 5이고 AG는 4이다. 세 번째 그림은 직각삼각형 AGM으로 AG는 4, GM은 3, AM은 5이고 GH가 AM에 수직이며 AH가 주황색이다.",
+    "solutionImageCaption": "BC는 10이고 M은 빗변 BC의 중점이므로 AM은 5이다. 높이 정리에서 AG의 제곱은 8과 2의 곱 16이므로 AG는 4이다. 직각삼각형 AGM에서 GH가 빗변 AM에 내린 높이이므로 AG의 제곱이 AH와 AM의 곱과 같다. 따라서 AH는 16을 5로 나눈 값이다. 정답은 5분의 16 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1020,7 +1104,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "직각삼각형의 빗변 중점과 무게중심",
     "decisiveStep": "무게중심 비로 median과 hypotenuse를 구한 뒤 넓이를 계산한다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 번째 그림은 A가 직각인 삼각형 ABC로 AC는 18이고 빗변 BC의 중점 D와 중선 AD 위의 무게중심 G가 있으며 GD는 5이다. 두 번째 그림은 BD, DC, AD가 같고 AG는 10, GD는 5, BC는 30이다. 세 번째 그림은 직각삼각형 ABC로 AB는 24, AC는 18, BC는 30이다.",
+    "solutionImageCaption": "직각삼각형에서 빗변의 중점 D는 세 꼭짓점에서 같은 거리에 있다. 무게중심 G는 중선 AD를 2 대 1로 나누므로 GD가 5이면 AD는 15이고 BC는 30이다. 피타고라스 정리로 AB는 24이므로 넓이는 24와 18의 곱의 절반이다. 정답은 216 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1057,6 +1145,10 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "primaryMethod": "짝수 일의 자리로 경우 분류",
     "decisiveStep": "일의 자리가 0인 경우와 2·4인 경우로 나눠 세 자리 짝수를 센다.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 일의 자리가 0인 경우로 백의 자리 5가지, 십의 자리 4가지, 일의 자리 0이 칸으로 놓여 있다. 오른쪽 그림은 일의 자리가 2 또는 4인 경우로 백의 자리 4가지, 십의 자리 4가지, 일의 자리 2가지이다. 두 그림은 각 자리에서 고를 수 있는 가짓수를 보여 주는 풀이 단계 그림이다.",
+    "solutionImageCaption": "짝수이려면 일의 자리가 0, 2, 4 중 하나이다. 일의 자리가 0이면 백의 자리 5가지와 십의 자리 4가지를 곱하고, 일의 자리가 2 또는 4이면 일의 자리 2가지, 백의 자리는 0을 뺀 4가지, 십의 자리 4가지를 곱한다. 두 경우의 수를 더한다. 정답은 52이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -82,7 +82,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 삼각형 ABC와 삼각형 DEF이다. AB는 15 cm, AC는 9 cm, DE는 5 cm이고 각 A와 각 D는 모두 65도이다. 오른쪽 그림은 두 삼각형을 같은 방향으로 놓고 대응하는 변을 같은 색(AB와 DE 파랑, AC와 DF 주황, BC와 EF 초록)으로 나타낸 것이다.",
+    "solutionImageCaption": "닮음의 순서가 ABC∽DEF이므로 A와 D, B와 E, C와 F가 대응한다. 따라서 AB와 DE, AC와 DF가 대응변이고 닮음비는 15 대 5, 곧 3 대 1이다. AC가 9 cm이므로 DF는 9를 3으로 나눈 값이다. 정답은 ① 3 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -128,7 +132,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 아래 밑면의 반지름이 6 cm이고 높이가 4 cm인 원뿔대이다. 둘째 그림은 밑면의 반지름이 6 cm, 높이가 8 cm인 원뿔을 높이의 절반에서 밑면과 평행한 평면으로 자른 모양이다. 셋째 그림은 축을 지나는 단면으로 직각삼각형의 밑변 6 cm, 높이 4와 4이고 자른 선분의 길이는 r이며 파랑 세로 선분, 주황 가로 선분이 대응한다.",
+    "solutionImageCaption": "처음 원뿔의 높이는 부피 3분의 1×π×6의 제곱×h=96π에서 8 cm이다. 위의 작은 원뿔의 높이는 8-4=4 cm이고 두 원뿔은 닮음이므로 반지름의 비는 높이의 비 4 대 8과 같아 작은 원뿔의 반지름은 3 cm이다. 작은 원뿔의 부피는 3분의 1×π×3의 제곱×4=12π이고 원뿔대의 부피는 96π에서 12π를 뺀 값이다. 정답은 ⑤ 84π cm³이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -171,7 +179,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 각 C가 직각인 삼각형 ABC에서 C에서 빗변 AB에 내린 수선의 발 D를 나타낸다. 나머지 세 그림은 삼각형 ABC, ACD, CBD를 직각이 오른쪽 아래에 오도록 같은 방향으로 놓은 것으로, 대응하는 변은 같은 색(빗변 파랑, 짧은 변 주황, 긴 변 초록)이고 같은 크기의 각은 같은 색 호(분홍, 보라)로 표시되어 있다.",
+    "solutionImageCaption": "삼각형 ABC, ACD, CBD는 각각 직각과 한 예각이 같아 닮음이다. 대응변의 비로부터 AC의 제곱은 AD×AB, CD의 제곱은 AD×DB, BC의 제곱은 DB×AB이다. 또 각 A는 각 BCD와 같다. 따라서 BC의 제곱에 곱해지는 두 길이는 DB와 AB이므로 DB×AD라고 쓴 식은 옳지 않다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -214,7 +226,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 삼각형 ABC의 세 변 AB, BC, CA의 중점 D, E, F를 이은 삼각형 DEF이다. AB는 8 cm, CA는 10 cm, BC는 12 cm이고 같은 눈금이 있는 선분끼리 길이가 같다. 오른쪽 그림은 삼각형 DEF만 나타낸 것으로 DE는 5 cm, EF는 4 cm, FD는 6 cm이다. 같은 색의 변은 서로 평행하다.",
+    "solutionImageCaption": "삼각형의 두 변의 중점을 이은 선분은 나머지 한 변과 평행하고 길이가 그 절반이다. 그래서 DE는 AC의 절반인 5 cm, EF는 AB의 절반인 4 cm, FD는 BC의 절반인 6 cm이다(같은 색끼리 대응). 따라서 삼각형 DEF의 둘레는 세 변을 더한 값이다. 정답은 ③ 15 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -257,7 +273,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 평행선 l, m, n이 두 직선과 만나는 그림이다. 왼쪽 직선에서 위쪽 선분은 7 cm, 아래쪽 선분은 x cm이고 오른쪽 직선에서 위쪽 선분은 6 cm, 아래쪽 선분은 12 cm이다. 오른쪽 그림에서는 위쪽 두 선분(7과 6)을 파랑, 아래쪽 두 선분(x와 12)을 주황으로 나타냈다.",
+    "solutionImageCaption": "세 평행선이 두 직선과 만날 때 대응하는 선분의 길이의 비는 같다. 위쪽 두 선분은 7과 6, 아래쪽 두 선분은 x와 12이므로 7 대 x는 6 대 12와 같다. 6 대 12는 1 대 2이므로 x는 7의 두 배이다. 정답은 ⑤ 14 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -277,7 +297,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q07-r4.png",
     "answer": "④",
-    "solution": "$BC\\parallel DE$이므로 $\\triangle ADE\\sim\\triangle ACB$이다.\\n$DA:AB=EA:AC$에서\\n$9:6=7.5:x$\\n$9x=45$\\n$x=5\\text{ cm}$이다.\\n또 대응변의 비에서\\n$ED:BC=DA:AB$\\n$y:8=9:6$\\n$6y=72$\\n$y=12\\text{ cm}$이다.\\n따라서\\n$x+y=5+12=17\\text{ cm}$이다.\\n따라서 정답은 ④이다.",
+    "solution": "$BC\\parallel DE$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.\\n$DA:AB=EA:AC$에서\\n$9:6=7.5:x$\\n$9x=45$\\n$x=5\\text{ cm}$이다.\\n또 대응변의 비에서\\n$ED:BC=DA:AB$\\n$y:8=9:6$\\n$6y=72$\\n$y=12\\text{ cm}$이다.\\n따라서\\n$x+y=5+12=17\\text{ cm}$이다.\\n따라서 정답은 ④이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -300,7 +320,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 점 A에서 직선 EC와 직선 DB가 만나고 BC와 DE가 평행한 모양이다. EA는 7.5 cm, AD는 9 cm, AB는 6 cm, BC는 8 cm이고 AC는 x cm, ED는 y cm이다. 나머지 두 그림은 삼각형 ADE와 삼각형 ABC를 같은 방향으로 놓은 것으로, 대응하는 변이 같은 색(AD와 AB 파랑, AE와 AC 주황, DE와 BC 초록)이고 꼭짓점 A의 각이 같은 색 호로 표시되어 있다.",
+    "solutionImageCaption": "BC와 DE가 평행하므로 엇각이 같아 삼각형 ADE와 ABC는 닮음이다. 대응변은 AD와 AB, AE와 AC, DE와 BC(같은 색)이다. AD 대 AB가 9 대 6이므로 AE 대 AC도 9 대 6이어서 x는 5이고, DE 대 BC도 9 대 6이어서 y는 12이다. 따라서 x와 y의 합은 5와 12의 합이다. 정답은 ④ 17 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -346,7 +370,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC에서 AB, BC, BD의 중점 E, D, F와 두 중선 AD, CE가 만나는 무게중심 G를 나타내며 AG는 4 cm이다. 둘째 그림은 중선 AD를 한 직선으로 펴서 AG 4 cm(파랑), GD 2 cm(주황), 전체 6 cm로 나타냈다. 셋째 그림은 삼각형 ABD에서 AB와 BD의 중점 E, F를 이은 선분 EF가 AD와 평행한 초록 선분이다.",
+    "solutionImageCaption": "무게중심은 중선을 꼭짓점에서 2 대 1로 나누므로 AG 대 GD가 2 대 1이고 AG가 4 cm이면 GD는 2 cm, AD는 6 cm이다. 삼각형 ABD에서 E, F는 AB와 BD의 중점이므로 중점연결정리에 의해 EF는 AD의 절반이다. 정답은 ② 3 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -391,7 +419,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 그림은 위의 변 AD가 2 cm, 왼쪽 변 AB가 4 cm, 오른쪽 변이 5 cm이고 아래 변이 x cm인 직각사다리꼴이다. 오른쪽 그림은 위 오른쪽 꼭짓점에서 아래 변에 수선을 그어 직사각형과 직각삼각형으로 나눈 것이다. 아래 변의 왼쪽 부분은 2, 오른쪽 부분은 x-2이고, 직각삼각형의 세 변은 4, x-2, 5이다.",
+    "solutionImageCaption": "위 오른쪽 꼭짓점에서 아래 변에 수선을 그으면 직사각형과 직각삼각형으로 나뉜다. 아래 변은 윗변과 같은 2와 나머지 x-2로 나뉘고, 직각삼각형의 높이는 4, 빗변은 5이다. 피타고라스 정리로 (x-2)의 제곱과 4의 제곱의 합이 5의 제곱이므로 (x-2)의 제곱은 9이다. 길이는 양수이므로 x-2는 3이다. 정답은 ① 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -437,7 +469,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 한 직선 위의 세 점 E, B, C와 직선 위에 수직으로 선 DE(6 cm)와 AC(8 cm)를 나타내고 삼각형 ABD를 파랗게 칠했다. 둘째와 셋째 그림은 합동인 직각삼각형 ABC와 BDE를 같은 방향으로 놓은 것으로 세로 변은 8 cm(파랑), 가로 변은 6 cm(주황), 빗변은 10 cm(초록)이다. 넷째 그림은 점 B에서 각 DBE와 각 A가 같은 주황 호, 각 ABC가 초록 호이고 각 DBA에는 직각 표시가 있다.",
+    "solutionImageCaption": "합동인 두 삼각형에서 AC와 BE, BC와 DE가 각각 같으므로 BE는 8 cm, BC는 6 cm이고 피타고라스 정리로 AB는 10 cm이며 빗변인 BD도 10 cm이다. 각 DBE는 각 A와 같고 각 A와 각 ABC의 합이 90도이므로 직선 위의 세 각에서 각 ABD는 90도이다. 따라서 삼각형 ABD는 AB와 BD를 두 변으로 하는 직각삼각형이다. 정답은 ④ 50 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -560,7 +596,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 칸이 두 개이고 곱셈 기호로 이어져 있다. 첫째 칸은 자음 5가지, 둘째 칸은 모음 4가지이다.",
+    "solutionImageCaption": "자음 5개 중 하나를 고르는 방법이 5가지이고, 그 각각에 대해 모음 4개 중 하나를 고르는 방법이 4가지이다. 두 일이 차례로 일어나므로 곱의 법칙에 따라 두 수를 곱한다. 정답은 ③ 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -644,7 +684,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 원 위의 다섯 점 A, B, C, D, E이다. 둘째 그림은 그 가운데 세 점 B, D, E를 이어 파랗게 칠한 삼각형이다. 셋째 그림은 점 B와 E를 지나는 직선이 원과 두 점에서만 만나고 나머지 점은 그 직선 위에 있지 않은 모양이다.",
+    "solutionImageCaption": "원 위의 서로 다른 세 점을 고르면 한 직선이 원과 많아야 두 점에서만 만나므로 세 점이 한 직선 위에 놓이지 않아 삼각형이 하나 정해진다. 따라서 삼각형의 개수는 다섯 점 중 세 점을 고르는 경우의 수와 같다. 정답은 ① 10개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -685,7 +729,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 6 곱하기 6 표의 칸마다 두 주사위의 눈의 합이 적혀 있다. 합이 5인 대각선 위의 네 칸은 진하게, 합이 8인 대각선 위의 다섯 칸은 옅게 칠해져 있다.",
+    "solutionImageCaption": "두 주사위 A, B의 눈이 나오는 모든 경우는 6×6=36가지이다. 합이 5인 경우는 (1,4), (2,3), (3,2), (4,1)의 4가지(짙은 칸), 합이 8인 경우는 (2,6), (3,5), (4,4), (5,3), (6,2)의 5가지(옅은 칸)이다. 두 사건은 동시에 일어나지 않으므로 합이 5 또는 8인 경우는 4+5=9가지이고 확률은 36분의 9, 곧 4분의 1이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -728,7 +776,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 칸이 두 개이고 덧셈 기호로 이어져 있다. 첫째 칸은 월요일 5일, 둘째 칸은 금요일 4일이다.",
+    "solutionImageCaption": "달력에서 월요일은 1, 8, 15, 22, 29일의 5일, 금요일은 5, 12, 19, 26일의 4일이다. 두 요일은 겹치지 않으므로 합의 법칙에 따라 원하는 날은 5+4=9일이고, 전체 날은 30일이다. 정답은 ② 10분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -768,7 +820,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 윷가락에 번호 1부터 4를 붙이고 뒤집히는 두 가락의 번호 쌍을 나열한 수형도이다. 1번 가락을 포함하는 쌍은 1과 2, 1과 3, 1과 4이고, 포함하지 않는 쌍은 2와 3, 2와 4, 3과 4이다.",
+    "solutionImageCaption": "윷가락 네 개의 앞뒤가 나오는 경우는 2×2×2×2=16가지이다. 개는 두 가락이 뒤집히는 경우이고, 수형도처럼 뒤집히는 두 가락의 번호 쌍을 빠짐없이 세면 6가지이다. 따라서 확률은 16분의 6을 약분한 값이다. 정답은 ⑤ 8분의 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -808,7 +864,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수형도에 사건 A가 일어나는 가지의 확률 5분의 2와 일어나지 않는 가지의 확률 5분의 3이 쓰여 있다.",
+    "solutionImageCaption": "예: 사건 A가 일어날 확률이 5분의 2이면 일어나지 않을 확률은 5분의 3이고, 두 확률의 합은 항상 1이다. 일반적으로 사건 A가 일어날 확률을 p라 하면 일어나지 않을 확률은 1에서 p를 뺀 값이다. 따라서 p-1이라고 한 설명이 옳지 않다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -848,7 +908,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 채송화와 봉선화 꽃씨의 발아 여부를 나타낸 수형도이다. O는 싹이 남, X는 싹이 나지 않음을 뜻한다. 채송화는 싹이 남과 안 남이 각각 2분의 1이고, 봉선화는 싹이 남 5분의 4, 안 남 5분의 1이다. 두 꽃씨 모두 싹이 나지 않는 경로가 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "적어도 한 꽃씨에서 싹이 나는 사건의 여사건은 두 꽃씨 모두 싹이 나지 않는 사건(주황색 경로)이다. 채송화가 싹이 나지 않을 확률은 2분의 1, 봉선화는 5분의 1이므로 둘 다 싹이 나지 않을 확률은 2분의 1 곱하기 5분의 1, 곧 10분의 1이다. 따라서 구하는 확률은 1에서 10분의 1을 뺀 값이다. 정답은 ⑤ 10분의 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -889,7 +953,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 칸이 다섯 개이고 곱셈 기호로 이어져 있다. 첫째부터 넷째 칸은 각각 4, 3, 2, 1가지로 남학생 세 명과 여학생 묶음 하나를 네 자리에 세우는 방법이고, 다섯째 칸은 묶음 안에서 여학생 두 명의 순서를 정하는 2가지이다.",
+    "solutionImageCaption": "전체 경우의 수는 다섯 명을 한 줄로 세우는 5×4×3×2×1=120가지이다. 여학생 두 명을 한 묶음으로 보면 남학생 세 명과 묶음 하나를 네 자리에 세우는 4×3×2×1가지이고, 묶음 안에서 두 여학생의 순서를 바꾸는 2가지를 곱한다. 이웃하는 경우의 수를 전체 경우의 수로 나눈다. 정답은 ③ 5분의 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -929,7 +997,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 목요일에 비가 온 뒤 금요일과 토요일의 날씨를 나타낸 수형도이다. 금요일에 비가 올 확률은 3분의 1, 비가 오지 않을 확률은 3분의 2이다. 금요일이 비이면 토요일에 비가 올 확률은 3분의 1, 금요일이 비가 아니면 토요일에 비가 올 확률은 6분의 5이다. 토요일에 비가 오는 두 경로는 파란색이다.",
+    "solutionImageCaption": "목요일에 비가 왔으므로 금요일에 비가 올 확률은 3분의 1, 오지 않을 확률은 3분의 2이다. 비가 오지 않은 날 다음 날 비가 오지 않을 확률이 6분의 1이므로 비가 올 확률은 6분의 5이다. 토요일에 비가 오는 경우는 (비, 비)와 (비 안 옴, 비) 두 가지(파란색)이고 두 확률 9분의 1과 9분의 5를 더한다. 정답은 ③ 3분의 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -966,7 +1038,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC의 변 AB 위의 점 D와 변 AC 위의 점 E를 이은 모양이다. AD는 4 cm, DB는 8 cm, AE는 6 cm, EC는 x cm이고 각 ACB와 각 ADE가 같은 초록 호로 표시되어 있다. 둘째와 셋째 그림은 삼각형 ABC와 AED를 같은 방향으로 놓은 것으로 AB와 AE가 파랑, AC와 AD가 주황, BC와 ED가 초록이고 각 A는 분홍, 각 ACB와 각 ADE는 보라 호이다.",
+    "solutionImageCaption": "(1) 각 A는 공통이고 각 ACB와 각 ADE가 같으므로 두 각이 같아 삼각형 ABC와 AED는 닮음(AA 닮음)이다. (2) AB는 4 더하기 8로 12 cm이고 대응변 AE는 6 cm이므로 닮음비는 12 대 6, 곧 2 대 1이다. (3) 대응변 AC와 AD의 비도 2 대 1이므로 AC는 AD의 두 배인 8 cm이고, x는 AC에서 AE를 뺀 값이다. 정답은 (1) 삼각형 ABC와 AED, AA 닮음 (2) 2 대 1 (3) 2 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1005,7 +1081,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC의 변 BC 위의 점 M과 선분 AM, 삼각형 ABM과 AMC의 무게중심 G, G′, 그리고 점선 GG′(9 cm)을 나타낸다. BM, MC의 중점 N, N′(문제 그림의 D, E)도 표시되어 있다. 둘째 그림은 GG′(주황)과 NN′(파랑)이 평행함을 나타내고, 셋째 그림은 BC를 따라 BN과 NM, MN′과 N′C가 같은 길이 표시를 가지며 NN′이 파랑으로 칠해져 있다.",
+    "solutionImageCaption": "문제 그림의 중점 D, E를 해설에서는 N, N′이라 부른다. N, N′을 BM, MC의 중점이라 하면 G, G′은 AN, AN′을 2 대 1로 나누므로 GG′은 NN′과 평행하고 GG′은 NN′의 3분의 2이다. 또 NN′은 MN과 MN′의 합이므로 BC의 절반이다. 따라서 GG′은 BC의 3분의 1이고 GG′이 9 cm이므로 BC는 9의 세 배이다. 정답은 27 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1042,7 +1122,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 칸이 두 개이고 곱셈 기호로 이어져 있다. 십의 자리 칸은 4가지, 일의 자리 칸은 3가지이다.",
+    "solutionImageCaption": "(2) 홀수가 되려면 일의 자리가 1, 3, 5 중 하나여야 하므로 3가지이다. 십의 자리에는 0이 올 수 없고 일의 자리에 쓴 카드도 쓸 수 없으므로 각각 4가지이고 두 수를 곱한다. 이 값을 (1)에서 구한 전체 자연수의 개수로 나누면 확률이 된다. 정답은 (1) 25개 (2) 25분의 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -1079,6 +1163,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q26-solution.svg",
+    "solutionImageAlt": "해설 그림: 6 곱하기 6 표의 칸마다 순서쌍 (x, y)가 적혀 있고, 2x-y=6을 만족하는 세 칸이 짙게 칠해져 있다.",
+    "solutionImageCaption": "주사위를 두 번 던져 나오는 순서쌍 (x, y)는 모두 6×6=36가지이다. 2x-y=6을 y에 대해 정리하면 y=2x-6이고, x와 y가 1 이상 6 이하인 순서쌍은 (4,2), (5,4), (6,6)의 3가지(짙은 칸)이다. 따라서 확률은 36분의 3, 곧 12분의 1이다. 정답은 12분의 1이다.",
+    "solutionImageSize": "full"
   }
 ];

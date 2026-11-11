@@ -9,7 +9,7 @@
 //   멈춤·재개 ×5, 다시 보기 ×3 뒤 끝 상태가 같음
 //   장마다 ✕ · 탭 전환 · 장면 이동으로 나가면 idle · 탐구 탭 · dragging false · 값이 params 범위 안 · 슬라이더 표시 = lab.s
 //   콘솔 오류 0
-// 한 장면에 해설이 여럿이면(배열) 해설마다 위 검사를 따로 하고, 진입 화면의 단추가 해설 수만큼 나란히 있는지(각 56px 이상, 360px 폭에서도 글자가 잘리지 않음),
+// 한 장면에 해설이 여럿이면(배열) 해설마다 위 검사를 따로 하고, 진입 화면의 단추가 해설 수만큼 나란히 있는지(보이는 높이 30px · 터치 영역 40px 이상, 360px 폭에서도 글자가 잘리지 않음),
 // 단추 하나가 자기 해설을 바로 끝까지 재생하는지, 끝 카드의 「다음 ▶ 라벨」이 같은 장면의 다음 해설로 가는지, 해설을 오가도(겉넓이 → 부피 → 겉넓이) 처음 재생과 같은지 검사합니다.
 // 844×390(휴대폰 가로)에서는 진입 ▶·자막·조작·끝 카드가 화면 안에 있는지 봅니다. play=1 은 재생을 시작하고 manual=1 은 진입 화면을 달지 않는지 봅니다.
 import { createRequire } from 'node:module';
@@ -25,6 +25,10 @@ const out = arg('--out');
 if (out) fs.mkdirSync(out, { recursive: true });
 const labsDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../labs');
 const only = (arg('--only') || '').split(',').filter(Boolean).map((x) => x.split(':'));
+const viewsOnly = (arg('--views') || '').split(',').filter(Boolean); // 예: --views 390x844 (일부 화면만 다시 검사)
+// --shard k/n : 해설(단위)을 발견 순서대로 n 묶음으로 나눠 k 번째(0부터)만 검사합니다. 해설 하나가 3~4분이라 CI 는 여러 작업으로 나눠 돕니다(나눈 묶음을 모두 돌리면 전체와 같습니다).
+const shard = (() => { const m = /^(\d+)\/(\d+)$/.exec(arg('--shard') || ''); if (!m) { if (arg('--shard')) throw Error('--shard must look like 0/12'); return null; } const k = +m[1], n = +m[2]; if (!(n > 0 && k < n)) throw Error('--shard k/n needs 0 <= k < n'); return { k, n }; })();
+let unitSeq = 0;
 const targets = [];
 for (const f of fs.readdirSync(labsDir).filter((x) => x.endsWith('.html')).sort()) {
   const lab = f.replace(/\.html$/, '');
@@ -94,7 +98,8 @@ for (const labId of targets) {
   const units = scenes.flatMap((sc) => sc.lessons.map((lesson, k) => ({ ...sc, k, n: sc.lessons.length, lesson })));
   for (const sc of units) {
     if (only.length && !only.some(([l, s]) => l === labId && (!s || s === sc.id))) continue;
-    for (const view of VIEWS) {
+    if (shard && unitSeq++ % shard.n !== shard.k) continue;
+    for (const view of VIEWS.filter((v) => !viewsOnly.length || viewsOnly.includes(v.name))) {
       if (view.entryOnly && sc.n < 2) continue; // 360px 진입 화면은 단추가 여럿일 때만
       const rec = { lab: labId, scene: sc.n > 1 ? `${sc.id}#${sc.lesson.label}` : sc.id, view: view.name, checks: [], errors: [] };
       results.push(rec);
@@ -108,19 +113,29 @@ for (const labId of targets) {
       page.on('response', (r) => { if (r.status() >= 400 && new URL(r.url()).origin === new URL(base).origin) rec.errors.push(`HTTP ${r.status()}: ${r.url()}`); });
       const url = `${base}${labId}.html#s=${encodeURIComponent(sc.id + '@' + sc.gi)}`;
       const load = async (hash) => {
+        if (page.url() !== 'about:blank') await page.waitForLoadState('networkidle', { timeout: 10000 });
         await page.goto(hash == null ? url : `${base}${labId}.html${hash}`, { waitUntil: 'load' });
-        if (hash != null) await page.reload({ waitUntil: 'load' }); // 해시만 바뀌면 새 문서가 아니므로
+        if (hash != null) {
+          // 해시만 바뀌면 새 문서가 아니므로 다시 읽되, 직전 문서의 아이콘 등 자원을 중단하지 않습니다.
+          await page.waitForLoadState('networkidle', { timeout: 10000 });
+          await page.reload({ waitUntil: 'load' });
+        }
         await page.waitForFunction(() => window.lab && lab.video && lab.list.length && lab.board);
         await page.waitForFunction(() => document.fonts.ready.then(() => true));
         await sleep(500);
       };
-      const rectOf = (sel) => page.evaluate((s) => { const e = document.querySelector(s); if (!e || !e.checkVisibility()) return null; const r = e.getBoundingClientRect(); return { top: r.top, left: r.left, bottom: r.bottom, right: r.right, w: r.width, h: r.height, vw: innerWidth, vh: innerHeight }; }, sel);
+      const rectOf = (sel) => page.evaluate((s) => { const e = document.querySelector(s); if (!e || !e.checkVisibility()) return null; const r = e.getBoundingClientRect(); return { top: r.top, left: r.left, bottom: r.bottom, right: r.right, w: r.width, h: r.height, hit: (() => { const c = getComputedStyle(e, '::before'); return c.position === 'absolute' ? r.height - (parseFloat(c.top) || 0) - (parseFloat(c.bottom) || 0) : r.height; })(), vw: innerWidth, vh: innerHeight }; }, sel);
       const inView = (r) => !!r && r.top >= -0.5 && r.left >= -0.5 && r.bottom <= r.vh + 0.5 && r.right <= r.vw + 0.5;
       const shot = async (label) => { if (out) await page.screenshot({ path: path.join(out, `${labId}-${sc.id}${sc.n > 1 ? '-' + sc.k : ''}-${view.name}-${label}.png`) }); };
       const snapshot = () => page.evaluate((fv) => ({ nums: Object.fromEntries(Object.keys(fv.nums).map((k) => [k, lab.s[k]])), sets: Object.fromEntries(Object.keys(fv.sets).map((k) => [k, lab.s[k]])), step: lab.s.step, tab: lab.tab, dragging: !!lab.s.dragging, lessonOn: lab.s.lessonOn, state: lab.video.state }), finalValues(sc.lesson));
       const goButton = () => page.locator('.apl-lgo:visible').nth(sc.k);
       const snapshotOf = (lesson) => page.evaluate((fv) => ({ nums: Object.fromEntries(Object.keys(fv.nums).map((k) => [k, lab.s[k]])), sets: Object.fromEntries(Object.keys(fv.sets).map((k) => [k, lab.s[k]])), step: lab.s.step, tab: lab.tab, dragging: !!lab.s.dragging, lessonOn: lab.s.lessonOn, state: lab.video.state }), finalValues(lesson));
       const waitEnded = (ms = 60000) => page.waitForFunction(() => lab.video.state === 'ended', null, { timeout: ms });
+      // 플레이어는 시작(play()) 직후 0.45초 안의 실제 탭을 무시한다(두 번 탭 방지, kit/apl-player.js _startedAt). 그 뒤에 ▶ 를 눌러야 하므로 0.6초를 기다린 뒤 누른다.
+      const clickResume = async () => {
+        await page.waitForFunction(() => performance.now() - (lab.video._startedAt || 0) > 600);
+        await page.locator('.apl-vctl .primary').click();
+      };
       const clean = async (label) => {
         await sleep(250);
         const d = await page.evaluate(() => {
@@ -142,18 +157,18 @@ for (const labId of targets) {
         const narrow = view.viewport.width <= 859;
         const len = await page.evaluate((k) => lab.video.lengthOf(lab.index, k), sc.k);
         if (view.entryOnly) {
-          // 360×640: 해설 단추가 모두 화면 안, 56px 이상, 글자가 잘리지 않음
-          const bs = await page.evaluate(() => [...document.querySelectorAll('.apl-lgo')].filter((e) => e.checkVisibility()).map((e) => { const r = e.getBoundingClientRect(), l = e.querySelector('.l'); return { text: e.innerText.replace(/\s+/g, ' '), top: r.top, left: r.left, bottom: r.bottom, right: r.right, h: r.height, vw: innerWidth, vh: innerHeight, clipped: l ? l.scrollWidth > l.clientWidth + 1 || e.scrollWidth > e.clientWidth + 1 : false }; }));
-          check('360px entry: one button per lesson, all inside the viewport, 56px+, label not clipped', bs.length === sc.n && bs.every((b) => inView(b) && b.h >= 56 && !b.clipped), JSON.stringify(bs));
+          // 360×640: 해설 단추가 모두 화면 안, 보이는 높이 30px 이상 · 터치 영역 40px 이상(소유자 결정 2026-11-11: 그림이 내용이라 조작부는 작게), 글자가 잘리지 않음
+          const bs = await page.evaluate(() => [...document.querySelectorAll('.apl-lgo')].filter((e) => e.checkVisibility()).map((e) => { const r = e.getBoundingClientRect(), l = e.querySelector('.l'); return { text: e.innerText.replace(/\s+/g, ' '), top: r.top, left: r.left, bottom: r.bottom, right: r.right, h: r.height, hit: (() => { const c = getComputedStyle(e, '::before'); return c.position === 'absolute' ? r.height - (parseFloat(c.top) || 0) - (parseFloat(c.bottom) || 0) : r.height; })(), vw: innerWidth, vh: innerHeight, clipped: l ? l.scrollWidth > l.clientWidth + 1 || e.scrollWidth > e.clientWidth + 1 : false }; }));
+          check('360px entry: one button per lesson, all inside the viewport, visible 30px+ / hit area 40px+, label not clipped', bs.length === sc.n && bs.every((b) => inView(b) && b.h >= 30 && b.hit >= 40 && !b.clipped), JSON.stringify(bs));
           await shot('entry');
           check('console errors 0', !rec.errors.length, rec.errors.join(' | '));
           await ctx.close();
           continue;
         }
         // ---------- 진입 화면 ----------
-        const entry = await page.evaluate((k) => { const e = [...document.querySelectorAll('.apl-lgo')].filter((x) => x.checkVisibility())[k]; if (!e) return null; const r = e.getBoundingClientRect(); return { top: r.top, left: r.left, bottom: r.bottom, right: r.right, w: r.width, h: r.height, vw: innerWidth, vh: innerHeight }; }, sc.k);
+        const entry = await page.evaluate((k) => { const e = [...document.querySelectorAll('.apl-lgo')].filter((x) => x.checkVisibility())[k]; if (!e) return null; const r = e.getBoundingClientRect(); return { top: r.top, left: r.left, bottom: r.bottom, right: r.right, w: r.width, h: r.height, hit: (() => { const c = getComputedStyle(e, '::before'); return c.position === 'absolute' ? r.height - (parseFloat(c.top) || 0) - (parseFloat(c.bottom) || 0) : r.height; })(), vw: innerWidth, vh: innerHeight }; }, sc.k);
         check('entry: ▶ button fully inside the viewport', inView(entry), JSON.stringify(entry));
-        check('entry: ▶ button at least 44px high (56px when there are several lessons)', !!entry && entry.h >= (sc.n > 1 ? 56 : 44), JSON.stringify(entry));
+        check('entry: ▶ button visible height 30px+ and tap area 40px+ (owner spec 2026-11-11: compact pills)', !!entry && entry.h >= 30 && entry.hit >= 40, JSON.stringify(entry));
         if (sc.n > 1) {
           const bs = await page.evaluate(() => [...document.querySelectorAll('.apl-lgo')].filter((e) => e.checkVisibility()).map((e) => { const r = e.getBoundingClientRect(); return { text: e.innerText.replace(/\s+/g, ' '), top: Math.round(r.top), w: Math.round(r.width) }; }));
           check('entry: one button per lesson, side by side (same row), each with its label and seconds', bs.length === sc.n && new Set(bs.map((b) => b.top)).size === 1 && bs.every((b, k) => b.text.includes(sc.lessons[k].label) && b.text.includes(String(Math.round(sc.lessons[k].chapters.reduce((a, c) => a + c.length, 0))))), JSON.stringify(bs));
@@ -243,7 +258,7 @@ for (const labId of targets) {
           check('landscape paused: control row inside the viewport', inView(ctl) && inView(play), JSON.stringify({ ctl, play }));
           await shot('paused');
           await page.evaluate(() => { lab.video.rate = 8; });
-          await page.locator('.apl-vctl .primary').click();
+          await clickResume();
           await waitEnded();
           const card = await rectOf('.apl-vend'), nxt = await rectOf('.apl-vnext');
           check('landscape end card: card and 「다음 ▶」 inside the viewport', inView(card) && inView(nxt), JSON.stringify({ card, nxt }));
@@ -257,7 +272,10 @@ for (const labId of targets) {
             await load(`#s=${encodeURIComponent(sc.id + '@' + sc.gi)}&play=${sc.k + 1}`);
             await page.waitForFunction((k) => lab.video.state === 'playing' && lab.video.lessonIndex === k, sc.k, { timeout: 5000 }).then(() => check(`play=${sc.k + 1} starts lesson ${sc.k + 1}`, true), () => check(`play=${sc.k + 1} starts lesson ${sc.k + 1}`, false, 'not playing the expected lesson'));
           }
+          await page.waitForLoadState('networkidle', { timeout: 10000 });
           await page.goto(`${base}${labId}.html?manual=1#s=${encodeURIComponent(sc.id + '@' + sc.gi)}`, { waitUntil: 'load' });
+          // load 이벤트 뒤에도 진행 중인 아이콘 요청을 기다린 후 기존 새로고침 검사를 수행합니다.
+          await page.waitForLoadState('networkidle', { timeout: 10000 });
           await page.reload({ waitUntil: 'load' });
           await page.waitForFunction(() => window.lab && lab.video && lab.board);
           await sleep(400);
@@ -285,9 +303,9 @@ for (const labId of targets) {
           check('ended: the end card shows 「정답 …」 with the lesson answer, inside the viewport', !!ans && ans.text.includes('정답') && ans.text.includes(digits) && inView(ans), JSON.stringify({ ans, digits }));
         }
         const nxt = await rectOf('.apl-vnext');
-        check('ended: 「다음 ▶」/「목차로」 inside the viewport and 44px+', inView(nxt) && nxt.h >= 44, JSON.stringify(nxt));
+        check('ended: 「다음 ▶」/「목차로」 inside the viewport, visible 30px+ and tap area 40px+', inView(nxt) && nxt.h >= 30 && nxt.hit >= 40, JSON.stringify(nxt));
         const again = await rectOf('.apl-vend-btns .apl-vbtn');
-        check('ended: secondary buttons inside the viewport', inView(again), JSON.stringify(again));
+        check('ended: secondary buttons inside the viewport, visible 30px+ and tap area 40px+', inView(again) && again.h >= 30 && again.hit >= 40, JSON.stringify(again));
         await shot('end');
 
         // ---------- 빠르게 돌려 보는 검사(재생 속도만 키움) ----------
@@ -315,7 +333,7 @@ for (const labId of targets) {
           check('first play & replay: the answer text is never drawn on the figure before the final caption', !drawn.length, JSON.stringify(drawn.slice(0, 2)));
           check('first play & replay: every set value (reveal state) equals what the lesson has set up to that time (nothing is revealed before its cue)', !early.length, JSON.stringify(early.slice(0, 2)));
           await page.evaluate(() => { lab.video.rate = 6; });
-          await page.locator('.apl-vctl .primary').click();
+          await clickResume();
           await waitEnded();
         }
         // 멈춤·재개 ×5
@@ -329,12 +347,26 @@ for (const labId of targets) {
           await sleep(120);
           check(`pause ${n + 1}: time frozen`, await page.evaluate((t0) => lab.video.state === 'paused' && Math.abs(lab.video.t - t0) < 0.01 && lab.video._raf === 0, t));
           if (n === 0) await shot('paused');
-          await page.locator('.apl-vctl .primary').click();
+          await clickResume();
           await page.waitForFunction(() => lab.video.state === 'playing' || lab.video.state === 'ended');
         }
         await waitEnded();
         const e3 = await snapshot();
         check('pause/resume x5: same final state', JSON.stringify(e1) === JSON.stringify(e3), JSON.stringify({ e1, e3 }));
+
+        // 시작 직후 0.45초 가드를 문서화: 시작 뒤 0.45초 안의 ▶ 탭은 무시되고, 지난 뒤의 탭은 먹는다(가드를 바꾸면 여기서 알아챈다)
+        await page.evaluate(() => { lab.video.rate = 1; lab.video.ui.play.addEventListener('click', () => { window.__guardAge = performance.now() - lab.video._startedAt; }, true); });
+        await page.locator('.apl-vend-btns button', { hasText: '다시 보기' }).click();
+        await page.waitForFunction(() => lab.video.state === 'playing');
+        await page.locator('.apl-vmini').click(); // 멈춤 단추는 가드 대상이 아니다
+        await page.locator('.apl-vctl .primary').click({ force: true }); // 시작 0.45초 안의 실제 ▶ 탭
+        const early = await page.evaluate(() => ({ age: window.__guardAge, state: lab.video.state }));
+        if (early.age < 440) check('start guard: a real ▶ tap within 0.45 s of the start is ignored (stays paused)', early.state === 'paused', JSON.stringify(early));
+        else rec.checks.push({ name: 'start guard: a real ▶ tap within 0.45 s of the start is ignored', status: 'NOT_RUN', detail: `machine too slow, tap arrived ${Math.round(early.age)} ms after start` });
+        await clickResume();
+        check('start guard: a ▶ tap after the window works (plays)', await page.evaluate(() => lab.video.state === 'playing' && window.__guardAge > 450), await page.evaluate(() => `${lab.video.state} age ${Math.round(window.__guardAge)}`));
+        await page.evaluate(() => { lab.video.rate = 8; });
+        await waitEnded();
 
         // ---------- 장마다 나가기 ----------
         const chapters = await page.evaluate(() => { lab.video.cs && 0; return lab.video.cs.chapters.map((c) => ({ at: c.at, length: c.length })); });
@@ -455,8 +487,16 @@ for (const labId of targets) {
         // ✕ 뒤에는 이 실험실의 세션 동안 탐구 화면이 열린 채 ▶ 가 패널 맨 위에 남는다
         await page.evaluate((i) => lab.goScene(i), sc.i);
         await sleep(300);
-        const kept = await page.evaluate(() => ({ lessonFirst: document.body.classList.contains('apl-lessonfirst'), entry: !document.querySelector('.apl-lentry').hidden && document.querySelector('.apl-lentry').dataset.mode, tabs: [...document.querySelectorAll('.apl-tab')].filter((e) => e.checkVisibility()).length, sliders: [...document.querySelectorAll('input[type=range]')].filter((e) => e.checkVisibility()).length }));
-        check('after 「직접 해 보기」: explore UI opens and ▶ stays at the top of the panel (remembered for the session)', !kept.lessonFirst && kept.entry === 'inline' && (kept.sliders > 0), JSON.stringify(kept));
+        const kept = await page.evaluate(() => ({ lessonFirst: document.body.classList.contains('apl-lessonfirst'), entry: !document.querySelector('.apl-lentry').hidden && document.querySelector('.apl-lentry').dataset.mode, tabs: [...document.querySelectorAll('.apl-tab')].filter((e) => e.checkVisibility()).length, sliders: [...document.querySelectorAll('input[type=range]')].filter((e) => e.checkVisibility()).length, domSliders: document.querySelectorAll('input[type=range]').length, presets: [...document.querySelectorAll('.apl-presets .apl-chip, .apl-actions-row button')].filter((e) => e.checkVisibility()).length, domPresets: document.querySelectorAll('.apl-presets .apl-chip, .apl-actions-row button').length }));
+        // 조작부는 장면이 정의한 만큼 보여야 합니다(슬라이더가 원래 없는 장면은 0개가 맞고, 있는데 가려져 있으면 실패)
+        // 기준: 같은 장면을 manual=1(처음부터 탐구 화면)로 열었을 때 보이는 조작부. 해설 우선 화면에서 「직접 해 보기」를 누른 뒤에도 같은 수만큼 보여야 합니다(없는 슬라이더를 요구하지 않고, 있는데 가려진 것은 잡아냅니다).
+        const pm = await ctx.newPage();
+        await pm.goto(`${base}${labId}.html?manual=1#s=${encodeURIComponent(sc.id + '@' + sc.gi)}`, { waitUntil: 'load' });
+        await pm.waitForFunction(() => window.lab && lab.video && lab.board);
+        await sleep(500);
+        const ref = await pm.evaluate(() => ({ tabs: [...document.querySelectorAll('.apl-tab')].filter((e) => e.checkVisibility()).length, sliders: [...document.querySelectorAll('input[type=range]')].filter((e) => e.checkVisibility()).length, presets: [...document.querySelectorAll('.apl-presets .apl-chip, .apl-actions-row button')].filter((e) => e.checkVisibility()).length }));
+        await pm.close();
+        check('after 「직접 해 보기」: explore UI opens, ▶ stays at the top of the panel and every control the scene shows with manual=1 (tabs, sliders, presets) is visible', !kept.lessonFirst && kept.entry === 'inline' && kept.tabs > 0 && kept.tabs === ref.tabs && kept.sliders === ref.sliders && kept.presets === ref.presets, JSON.stringify({ kept, ref }));
         await shot('explore');
         check('console errors 0', !rec.errors.length, rec.errors.join(' | '));
       } catch (e) {

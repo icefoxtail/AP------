@@ -210,7 +210,8 @@ test('compose shows one clean unit list per grade with 2015 and 2022 items merge
     for (const scope of scopes) bySubject.set(scope.L1, [...(bySubject.get(scope.L1) || []), scope]);
     for (const rows of bySubject.values())
       assert.deepEqual(rows.map(row => row.unclassified), [...rows.map(row => row.unclassified)].sort((a, b) => a - b));
-    assert.ok(w.renderScopes().includes('2015·2022'), 'the screen explains the unified list');
+    // 머리 안내는 한 줄이다(2015·2022 개정이 한 목록이라는 설명은 목록이 하나이므로 따로 하지 않는다).
+    assert.ok(w.renderScopes().includes('단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.'), 'the screen explains the unit list in one line');
   }
   const { w } = harness(data);
   w.state.filters = { grade: '고1' };
@@ -520,15 +521,18 @@ test('range start/end default to the first and last real unit and never list 단
   assert.ok(/data-action="scope-range"/.test(html));
 });
 
-test('the compose screen keeps only grade, subject, scope and 난이도 outside 세부 조건', async () => {
+test('the compose screen keeps only grade, subject, scope, 단계 and 문항 수 outside 더 자세한 조건', async () => {
   const data = await catalog();
   const { w } = harness(data);
   w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA' };
   const primary = w.filterMarkup(w.state.filters, 'compose', 'primary');
-  assert.deepEqual([...primary.matchAll(/data-filter="(\w+)"/g)].map(match => match[1]), ['grade', 'semanticSubject']);
+  // 학년은 학년 색 버튼 6개, 과목은 칩(고2·고3 여러 과목): 선택 상자(data-filter)가 아니라 버튼이다.
+  assert.equal([...primary.matchAll(/data-action="compose-grade"/g)].length, 6);
+  assert.ok(/data-action="compose-subject"/.test(primary) && /class="cz-chips"/.test(primary));
+  assert.ok(!/data-filter=/.test(primary));
   const composition = w.renderComposition();
-  const [outside, detail] = composition.split('<details class="compose-detail"');
-  assert.ok(/class="compose-difficulty"/.test(outside) && /data-action="bucket-all"/.test(outside));
+  const [outside, detail] = composition.split('<details class="compose-detail cz-detail"');
+  assert.ok(/class="compose-difficulty cz-levels"/.test(outside) && /data-action="bucket-all"/.test(outside) && /id="count"/.test(outside));
   assert.ok(!/data-filter=/.test(outside));
   const fields = [...detail.matchAll(/data-filter="(\w+)"/g)].map(match => match[1]);
   for (const field of ['originalCurriculum', 'school', 'axis', 'yearFrom', 'yearTo', 'metaL3', 'metaPT', 'metaTPL', 'metaApprovedOnly']) assert.ok(fields.includes(field), field);
@@ -536,7 +540,7 @@ test('the compose screen keeps only grade, subject, scope and 난이도 outside 
   assert.ok(!fields.includes('L3') && !fields.includes('L4'));
   assert.ok(!/2015·2022 통합|통합\)/.test(composition));
   w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA', school: Object.keys(Object.fromEntries(data.records.map(r => [r.school, 1])))[0] };
-  assert.match(w.renderComposition(), /세부 조건 <span class="badge"[^>]*>1개 적용 중/);
+  assert.match(w.renderComposition(), /더 자세한 조건 <span class="badge"[^>]*>1개 적용 중/);
 });
 
 test('고2/고3 open on 대수 (first subject in curriculum order) with enough questions, other grades keep the full list, 전체 과목 stays selectable', async () => {

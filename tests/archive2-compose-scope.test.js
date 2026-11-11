@@ -576,17 +576,17 @@ test('all changed browser scripts use new cache versions', () => {
   for (const [file, version] of [
     ['archive2-canonical.js', '20261104-source-meta-approval-1'],
     ['archive2-core.js', '20261110-recency-1'],
-    ['meta-foundation-runtime.js', '20261029-health-reasons-1'],
+    ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261110-library-2'],
+    ['archive2-workspace.js', '20261111-assign-3'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261030-s11-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261029-source-meta-conflict-1/);
-  assert.match(html, /archive2-library\.js\?v=20261110-library-2/);
-  assert.match(html, /archive2\.css\?v=20261110-library-2/);
+  assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
+  assert.match(html, /archive2\.css\?v=20261110-compose-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
   assert.match(html, /archive2-navigation\.js\?v=20261110-library-2/);
@@ -674,7 +674,7 @@ test('fresh BASIC includes every difficulty and unclassified metadata without pr
     assert.doesNotMatch(w.renderScopes(), /자동 출제/);
     // 난이도 is a primary control: 전체 is pressed and the note says unselected means every difficulty.
     assert.match(w.renderComposition(), /data-action="bucket-all"[^>]*aria-pressed="true"/);
-    assert.match(w.renderComposition(), /고르지 않으면 전체에서 출제합니다/);
+    assert.match(w.renderComposition(), /고르지 않으면 모든 단계에서 뽑습니다/);
   }
 });
 
@@ -797,11 +797,12 @@ test('last Saved Paper actions survive Draft edits and fresh Drafts clear the pr
   w.state.saveResultState = 'SAVED';
   const savedCompose = w.renderCompose();
   assert.match(savedCompose, /마지막 저장본/);
-  assert.match(savedCompose, /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000001" class="primary">이 저장본 출제/);
+  assert.match(savedCompose, /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000001" class="primary" aria-label="이 저장본 반에 출제">이 저장본 출제/);
   assert.doesNotMatch(savedCompose, /index\.html\?savedPaper=/);
   for (const mode of ["exam", "sol", "ans"])
     assert.match(savedCompose, new RegExp(`data-action="saved-output" data-paper-id="00000000-0000-4000-8000-000000000001" data-mode="${mode}"`));
-  assert.match(w.renderMobileActions(), /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000001"/);
+  // 하단 띠: 저장된 뒤에는 같은 저장본으로 바로 반에 출제(save-and-assign)가 열린다.
+  assert.match(w.renderMobileActions(), /class="cz-bar"[\s\S]*저장했습니다[\s\S]*data-action="save-and-assign"[^>]*>저장한 문제지 출제/);
   w.state.header = { ...w.state.header, title: '검수: 저장 이후 수정한 시험지' };
   assert.notEqual(w.saveWorkSignature(), savedSignature, 'output title changes invalidate the old saved-paper receipt');
   const editedCompose = w.renderCompose();
@@ -979,10 +980,13 @@ test('unknown save result persists its batch and locks Draft edits until reconci
   assert.match(mobile, /저장 결과 확인/);
   const compose = w.renderCompose();
   assert.match(compose, /응답을 확인하지 못했습니다/);
-  assert.match(compose, /class="workspace" inert/);
+  assert.match(compose, /class="cz-result-body" inert/);
+  assert.match(compose, /data-cz-conditions inert/);
   assert.match(compose, /data-action="save-paper"[^>]*>저장 결과 확인/);
-  assert.ok(compose.indexOf('data-action="save-paper"') < compose.indexOf('<div class="workspace" inert'),
+  assert.ok(compose.indexOf('data-action="save-paper"') < compose.indexOf('class="cz-result-body" inert'),
     'desktop recovery action must sit outside the inert editor region');
+  assert.doesNotMatch(compose, /data-action="save-and-assign"[^>]*>저장하고 출제/,
+    'no new save+assign while the previous save result is unknown');
   assert.match(compose, /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000120"/,
     'last confirmed Saved Paper remains distinct and available while the new result is unknown');
   assert.deepEqual(plain(savedDraft.lastSavedPaperIds), ['00000000-0000-4000-8000-000000000120']);
@@ -1385,7 +1389,7 @@ test('while a save result is unknown, output and backup stay reachable and only 
   w.state.saveResultSignature = w.saveWorkSignature();
   w.state.saveResultState = 'RESULT_UNKNOWN';
   const compose = w.renderCompose();
-  const recovery = compose.slice(0, compose.indexOf('<div class="workspace"'));
+  const recovery = compose.slice(compose.indexOf('id="compose-save-continuity"'), compose.indexOf('class="cz-result-body"'));
   assert.match(recovery, /data-action="print"/, 'output is offered outside the inert editor');
   assert.match(recovery, /data-action="backup"/, 'backup is offered outside the inert editor');
   assert.doesNotMatch(recovery, /Draft/, 'teacher-facing text avoids the word Draft');

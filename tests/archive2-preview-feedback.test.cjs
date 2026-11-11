@@ -21,6 +21,7 @@ function app() {
      outputUrl = async () => ({ href: 'engine.html', envelope: { ownerId: 'owner', outputRequestId: 'request' } });
      window.previewTest = { updatePreview }; })();`, {
     window, crypto, console, setTimeout: () => 0, clearTimeout() {},
+    URLSearchParams, location: { search: '' },
     MutationObserver: class { observe() {} disconnect() {} },
     document: {
       getElementById: id => nodes[id] ||= element(), addEventListener() {},

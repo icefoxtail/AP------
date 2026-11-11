@@ -59,7 +59,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 접하는 점 D, E, F가 있다. 왼쪽은 AB 8 cm, AF 3 cm, EC 6 cm가 주어진 문제 그림이고, 오른쪽은 길이가 같은 접선을 같은 색으로 나타내 AD와 AF(파랑) 3 cm, DB와 BE(주황) 5 cm, CE와 CF(초록) 6 cm를 보인다.",
+    "solutionImageCaption": "원 밖의 한 점에서 그은 두 접선의 길이는 같으므로 AD=AF=3 cm이다. DB=8−3=5 cm이고 BE=BD=5 cm이다. 또 CF=CE=6 cm이다. 따라서 BE+CF=5+6=11 cm이고 정답은 ④ 11 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -120,7 +124,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 내심 I와 선분 BI, AI를 그리고 각 IBA 35도, 각 C 70도, 각 IAC를 x로 표시한 문제 그림이다. 오른쪽은 BI가 각 B를 이등분해 두 각이 모두 35도(파랑)이고 AI가 각 A를 이등분해 두 각이 같음(주황)을 나타낸 그림이다.",
+    "solutionImageCaption": "BI는 각 B의 이등분선이므로 각 B=35°+35°=70°이다. 삼각형 ABC의 내각의 합이 180°이므로 각 A=180°−70°−70°=40°이다. AI도 각 A의 이등분선이므로 각 IAC=40°÷2=20°이다. 정답은 ① 20°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -181,7 +189,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 사각형에 두 대각선과 교점 O를 그린 문제 그림이다. 가운데는 대각선이 서로를 이등분할 때의 같은 길이 표시(AO와 OC 파랑, BO와 OD 주황)이고, 아래는 두 쌍의 대각이 105도(파랑), 75도(주황)로 각각 같은 평행사변형이다.",
+    "solutionImageCaption": "평행사변형이 되는 조건은 두 쌍의 대변이 각각 평행하거나 길이가 같을 때, 한 쌍의 대변이 평행하고 길이가 같을 때, 두 쌍의 대각이 각각 같을 때, 두 대각선이 서로를 이등분할 때이다. 보기 중 각 A=각 C=105°, 각 B=75°이면 각 D=75°이어서 두 쌍의 대각이 같다. OA=OB, OC=OD는 대각선이 서로를 이등분한다는 조건(OA=OC, OB=OD)이 아니므로 평행사변형이라 할 수 없다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -301,7 +313,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 직사각형에 두 대각선과 교점 O를 그리고 각 BOC 100도, 각 ADO를 x, 각 OAB를 y로 표시한 문제 그림이다. 오른쪽은 OA와 OD가 같은 이등변삼각형 AOD에서 맞꼭지각 100도, 두 밑각 40도, 꼭짓점 A의 각 DAB 90도를 나타낸 그림이다.",
+    "solutionImageCaption": "직사각형의 대각선은 길이가 같고 서로를 이등분하므로 OA=OD이다. 각 AOD=각 BOC=100°(맞꼭지각)이므로 x=(180°−100°)÷2=40°이다. 각 DAB=90°이므로 y=90°−40°=50°이다. 따라서 y−x=10°이고 정답은 ④ 10°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -362,7 +378,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 넓이가 36 cm²(그림 안의 36)인 평행사변형에서 AB의 중점 E, BC 위의 점 F, 선분 AC, EF, AF, ED, EC와 AF와 EC의 교점 P를 나타낸 문제 그림이다. 오른쪽은 삼각형 ABC에서 F가 BC의 중점(같은 길이 표시)이고 삼각형 AFC를 파랗게 칠한 그림이다.",
+    "solutionImageCaption": "E가 AB의 중점이고 EF와 AC가 평행하므로 F는 BC의 중점이다. 삼각형 ABC의 넓이는 평행사변형의 절반인 18 cm²이다. 삼각형 AFC와 ABC는 높이가 같고 밑변의 비가 FC:BC=1:2이므로 넓이는 18÷2=9 cm²이다. 정답은 ③ 9 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -423,7 +443,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 A가 직각인 삼각형 ABC에서 빗변 BC에 높이 AD를 그린 문제 그림으로 AD 12, BD 16, AC 15이고 AB는 x, DC는 y이다. 가운데는 삼각형 ABD(AD 12, BD 16, AB 20), 아래는 삼각형 ADC(AD 12, DC 9, AC 15)이다.",
+    "solutionImageCaption": "AD는 빗변에 내린 높이이므로 높이 정리 AD²=BD×DC에서 12²=16×y이고 y=9이다. 삼각형 ABD는 D가 직각이므로 x²=12²+16²=400에서 x=20이다. 따라서 x−y=20−9=11이고 정답은 ③ 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -485,7 +509,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 직각삼각형 ABC의 세 변을 한 변으로 하는 정사각형 세 개를 그린 문제 그림으로 AC 위의 정사각형 넓이가 225, AB 위의 정사각형 넓이가 289이고 C에 직각 표시가 있다. 오른쪽은 삼각형 ABC의 세 변 AB 17 cm(분홍), BC 8 cm(파랑), AC 15 cm(주황)를 나타낸 그림이다.",
+    "solutionImageCaption": "정사각형의 넓이로 한 변의 길이를 구하면 AB=17 cm, AC=15 cm이다. 각 C가 직각이므로 BC²=17²−15²=64에서 BC=8 cm이다. 삼각형 ABC의 넓이는 2분의 1×15×8이다. 정답은 ④ 60 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -546,7 +574,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 평행사변형에서 각 B 80도, 각 ACD 50도, 변 BC의 연장선 위의 점 E, 각 DCE를 x, 각 AEC를 y로 표시한 문제 그림이다. 오른쪽은 AE가 각 DAC의 이등분선이어서 두 각이 25도로 같고 각 ACE가 130도임을 나타낸 그림이다.",
+    "solutionImageCaption": "각 D=각 B=80°이고 삼각형 ACD에서 각 CAD=180°−80°−50°=50°이다. AE가 이를 이등분하므로 각 CAE=25°이다. 각 ACB=50°이므로 각 ACE=130°이고 삼각형 ACE에서 y=180°−130°−25°=25°이다. 각 BCD=100°이므로 x=80°이다. 따라서 x−y=55°이고 정답은 ③ 55°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -607,7 +639,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 닮은 두 사각형으로 AB 8 cm, BC 12 cm, 각 B 70도, 각 D 85도, FG 9 cm, 각 E 125도가 표시된 문제 그림이다. 오른쪽은 대응하는 같은 크기의 각과 변을 같은 색으로 나타내 각 B와 F 70도, 각 D와 H 85도, 각 C와 G 80도, AB 8 cm와 EF 6 cm를 보이고 제목에 각 A와 각 E가 125도임을 적었다.",
+    "solutionImageCaption": "닮은 도형에서 대응하는 각의 크기는 같으므로 각 H=각 D=85°이고 각 C=360°−125°−70°−85°=80°이다. BC:FG=12:9=4:3이므로 닮음비는 4대 3이고 EF=8×4분의 3=6 cm이다. 넓이의 비는 닮음비의 제곱인 16대 9이므로 8대 6은 닮음비일 뿐 넓이의 비가 아니다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -668,7 +704,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 AB 위의 점 D와 AD 7 cm, DB 9 cm, AC 8 cm, BC 12 cm, CD의 길이 x를 표시한 문제 그림이다. 오른쪽은 점 C에서 AB에 내린 수선의 발 H와 AH t cm, HB 16−t cm, AC 8 cm, BC 12 cm를 나타낸 그림이다.",
+    "solutionImageCaption": "AB=7+9=16 cm이다. 점 C에서 AB에 수선의 발 H를 내려 AH=t로 놓으면 CH²=8²−t²=12²−(16−t)²이다. 이를 풀면 t=2분의 11이므로 DH=7−2분의 11=2분의 3이고 CH²=4분의 135이다. 삼각형 CDH에서 CD²=4분의 135+4분의 9=36이므로 CD=6 cm이다. 정답은 ④ 6 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -728,7 +768,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 DE와 BC가 평행하고 AB 12, AD 8, AE 6, BC 9이며 DE는 x, AC는 y인 문제 그림이다. 가운데는 삼각형 ADE(AD 8, DE 6, AE 6), 아래는 삼각형 ABC(AB 12, BC 9, AC는 y)로 대응하는 변을 같은 색으로 나타냈다.",
+    "solutionImageCaption": "DE와 BC가 평행하므로 삼각형 ADE와 ABC는 닮음이고 닮음비는 AD:AB=8:12=2:3이다. DE:BC=2:3에서 x=9×3분의 2=6이다. AE:AC=2:3에서 6:y=2:3이므로 y=9이다. 따라서 x+y=15이고 정답은 ③ 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -790,7 +834,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 세 변의 중점 D, E, F를 잡고 AB 4 cm, AC 8 cm, BC 6 cm와 같은 길이 표시를 한 문제 그림이다. 오른쪽은 삼각형 DEF의 세 변과 평행한 변을 같은 색(DE와 AC 파랑, EF와 AB 주황, FD와 BC 초록)으로 나타내고 DE 4, EF 2, FD 3(cm)을 제목에 적은 그림이다.",
+    "solutionImageCaption": "두 변의 중점을 이은 선분은 나머지 한 변과 평행하고 길이는 그 변의 절반이다. DE=8÷2=4 cm, EF=4÷2=2 cm, FD=6÷2=3 cm이다. 따라서 삼각형 DEF의 둘레는 4+2+3=9 cm이다. 정답은 ⑤ 9 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -851,7 +899,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 평행한 세 직선 l, m, n을 비스듬한 두 직선이 지나는 문제 그림으로 왼쪽 직선에서 l과 n 사이(치수 화살표)가 27, m과 n 사이가 12, 오른쪽 직선에서 l과 m 사이가 20, m과 n 사이가 x이다. 오른쪽은 대응하는 선분을 같은 색(l과 m 사이 파랑 15와 20, m과 n 사이 주황 12와 x)으로 나타낸 그림이다.",
+    "solutionImageCaption": "왼쪽 직선에서 l과 m 사이의 길이는 27−12=15이다. 세 평행선이 두 직선을 자르므로 대응하는 선분의 길이의 비가 같아 20:x=15:12이다. 15x=240이므로 x=16이다. 정답은 ⑤ 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -912,7 +964,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC의 세 변의 중점 D, E, F와 세 중선의 교점 G를 나타낸 문제 그림이다. 가운데는 세 중선이 나눈 여섯 삼각형을 모두 같은 파란색으로 칠했고, 오른쪽은 그 중 구하는 사각형을 이루는 두 삼각형을 주황으로 칠했다.",
+    "solutionImageCaption": "세 중선은 삼각형을 넓이가 같은 여섯 삼각형으로 나눈다. 구하는 사각형은 그 중 두 개이므로 삼각형 ABC 넓이의 6분의 2, 즉 3분의 1이다. 따라서 90÷3=30 cm²이다. 정답은 ① 30 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -973,7 +1029,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 무게중심 G, BC의 중점 D, AC 위의 점 E, F와 DF 9, EF 5, BG는 x, AC는 y로 표시한 문제 그림이다. 가운데는 삼각형 CBE에서 D, F가 중점이고 DF 9, BE 18이며, 아래는 AC 위에서 EF와 FC가 각각 5, EC가 10인 그림이다.",
+    "solutionImageCaption": "G가 무게중심이므로 D는 BC의 중점, E는 AC의 중점이다. 삼각형 CBE에서 D가 CB의 중점이고 DF와 BE가 평행하므로 F는 CE의 중점이고 BE=2×DF=18이다. x=BG=3분의 2×18=12이다. EF=5이므로 CE=10이고 y=AC=2×CE=20이다. 따라서 x+y=32이고 정답은 ② 32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1034,7 +1094,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "FAMILY_TEMPLATE_SELECTION_PENDING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 사다리꼴에서 변 AD 12 cm, BC의 중점 M, 삼각형 ABC와 DBC의 무게중심 G와 G′, 선분 GG′을 나타낸 문제 그림이다. 오른쪽은 삼각형 MAD에서 GG′과 AD가 평행하고 AD가 12 cm임을 나타낸 그림이다.",
+    "solutionImageCaption": "M은 BC의 중점이므로 MG=3분의 1×MA, MG′=3분의 1×MD이다. 삼각형 MAD에서 MG:MA=MG′:MD=1:3이므로 GG′은 AD와 평행하고 GG′:AD=1:3이다. 따라서 GG′=12÷3=4 cm이다. 정답은 ② 4 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1092,7 +1156,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 안에 서로 겹치지 않는 두 집합 A, B가 있고 A는 원소가 4개, B는 2개이며 U는 20개이다.",
+    "solutionImageCaption": "1부터 20까지의 수 중 5의 배수의 집합을 A, 7의 배수의 집합을 B라 하자. A={5, 10, 15, 20}, B={7, 14}이고 5와 7의 공배수가 20 이하에 없으므로 두 집합은 겹치지 않는다. 따라서 합의 법칙으로 4+2=6이다. 정답은 ① 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1150,7 +1218,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 백의 자리가 1일 때 십의 자리에 0, 2, 3이 오고 각각에 대해 일의 자리에 남은 두 수가 오는 나뭇가지 그림이다.",
+    "solutionImageCaption": "백의 자리에는 0이 올 수 없으므로 1, 2, 3 중 하나이다. 그림은 백의 자리가 1인 경우로 십의 자리에는 남은 세 수 중 3가지, 일의 자리에는 남은 두 수 중 2가지가 올 수 있다. 백의 자리가 2, 3일 때도 같으므로 3×3×2=18(개)이다. 정답은 ③ 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1264,7 +1336,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 평행사변형에 대각선 AC를 긋고 마주 보는 변이 평행함을 표시하며 각 BAC와 각 DCA가 같음을 파랑으로 나타낸 문제 그림이다. 가운데와 아래는 삼각형 ABC와 CDA를 같은 방향으로 놓고 같은 색 각(파랑, 주황)과 공통인 변 AC(초록)를 나타낸 그림이다.",
+    "solutionImageCaption": "BC와 AD가 평행하므로 엇각이 같아 각 BCA=각 DAC이다. 삼각형 ABC와 CDA에서 각 BAC=각 DCA, AC는 공통, 각 BCA=각 DAC이므로 한 변과 그 양 끝 각이 각각 같아 합동이다. 따라서 AB=CD, BC=DA이므로 두 쌍의 대변의 길이가 각각 같다. 정답은 (1) 각 BCA=각 DAC (2) 삼각형 ABC≡삼각형 CDA (3) 대변의 길이가 각각 같다이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1280,7 +1356,7 @@ window.questionBank = [
     "choices": [],
     "image": "assets/images/20_향림중_2학기_기말_중2_기출/q22.svg",
     "answer": "(1) $17\\text{ cm}$  (2) $3\\text{ cm}$",
-    "solution": "(1) ∠A=90°이므로 △ABC에서 피타고라스 정리를 적용한다.\n\n\\overline{BC}^{2}=\\overline{AB}^{2}+\\overline{AC}^{2}\n=15^{2}+8^{2}\n=225+64\n=289\n따라서 \\overline{BC}=17 cm이다.\n\n(2) △ABC의 넓이는\n[ABC]=\\dfrac12\\cdot15\\cdot8=60 cm^{2}이다.\n\nI에서 각 변에 내린 수선의 길이는 모두 r이므로\n[ABC]=[IAB]+[IBC]+[ICA]\n=\\dfrac12\\cdot15\\cdot r+\\dfrac12\\cdot17\\cdot r+\\dfrac12\\cdot8\\cdot r\n=\\dfrac12 r(15+17+8)\n=\\dfrac12 r\\cdot40\n=20r이다.\n\n따라서\n60=20r\nr=60\\div20\nr=3 cm이다.",
+    "solution": "(1) ∠A=90°이므로 △ABC에서 피타고라스 정리를 적용한다.\n\n$\\overline{BC}^{2}=\\overline{AB}^{2}+\\overline{AC}^{2}$\n$=15^{2}+8^{2}$\n$=225+64$\n$=289$\n따라서 $\\overline{BC}=17$ cm이다.\n\n(2) △ABC의 넓이는\n$\\dfrac{1}{2}\\times15\\times8=60$ (cm²)이다.\n\nI에서 각 변에 내린 수선의 길이는 모두 r이므로\n(△ABC의 넓이)=(△IAB의 넓이)+(△IBC의 넓이)+(△ICA의 넓이)\n$=\\dfrac{1}{2}\\times15\\times r+\\dfrac{1}{2}\\times17\\times r+\\dfrac{1}{2}\\times8\\times r$\n$=\\dfrac{1}{2}\\times r\\times(15+17+8)$\n$=\\dfrac{1}{2}\\times r\\times40$\n$=20r$이다.\n\n따라서\n$60=20r$\n$r=60\\div20$\n$r=3$ cm이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1322,7 +1398,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceMode": "ALIVE_REPLACEMENT"
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 A가 직각인 직각삼각형 ABC의 내접원과 내심 I이고 AB 15 cm, AC 8 cm, 반지름 r을 표시한 문제 그림이다. 오른쪽은 I와 세 꼭짓점을 이어 삼각형 ABC를 세 삼각형(파랑, 주황, 초록)으로 나누고 변의 길이 15, 17, 8 cm와 같은 길이 r(분홍)을 나타낸 그림이다.",
+    "solutionImageCaption": "(1) A가 직각이므로 BC²=15²+8²=289에서 BC=17 cm이다. (2) 삼각형 ABC의 넓이는 2분의 1×15×8=60 cm²이다. 내심 I에서 각 변까지의 거리는 모두 r이므로 넓이는 2분의 1×r×(15+17+8)=20r이다. 60=20r에서 r=3 cm이다. 정답은 (1) 17 cm (2) 3 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1378,7 +1458,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 원뿔이 나란히 있고 왼쪽 작은 원뿔의 모선이 5 cm, 오른쪽 큰 원뿔의 모선이 10 cm이다. 높이와 반지름은 예시이다.",
+    "solutionImageCaption": "대응하는 모선의 길이가 5 cm, 10 cm이므로 닮음비는 5:10=1:2이다. 부피의 비는 닮음비의 세제곱인 1:8이므로 x:96π=1:8이다. 따라서 x=96π÷8=12π cm³이다. 정답은 (1) 1:2 (2) 12π cm³이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1394,7 +1478,7 @@ window.questionBank = [
     "choices": [],
     "image": "assets/images/20_향림중_2학기_기말_중2_기출/q24.png",
     "answer": "(1) $\\triangle AEF\\sim\\triangle DIE$ (AA)  (2) $8\\text{ cm}$  (3) $\\dfrac{32}{3}\\text{ cm}$",
-    "solution": "(1) C를 접어 E로 옮기므로 선분 BC는 GE로 옮겨지고, CI는 IE로 옮겨진다.\nBC⊥CI이므로 GE⊥IE이다.\n또 정사각형에서 AE⊥DI이고 F, E, G는 한 직선 위에 있다.\n따라서 ∠FAE=∠IDE, ∠AEF=∠DIE이다.\n두 각이 각각 같으므로\n△AEF∼△DIE (AA)이다.\n\n(2) DC=DI+IC=6+10=16 cm이다.\n정사각형의 변은 같으므로 AD=16 cm이다.\nED=8 cm이므로\nAE=AD−ED=16−8=8 cm이다.\n\n(3) △AEF∼△DIE에서 대응변의 비를 쓰면\nAE:DI=AF:DE이다.\n8:6=AF:8,\nAF=8·8/6=32/3 cm이다.\n그러므로 정답은 ③이다.",
+    "solution": "(1) C를 접어 E로 옮기므로 선분 BC는 GE로 옮겨지고, CI는 IE로 옮겨진다.\nBC⊥CI이므로 GE⊥IE이다.\n또 정사각형에서 AE⊥DI이고 F, E, G는 한 직선 위에 있다.\n따라서 ∠FAE=∠IDE, ∠AEF=∠DIE이다.\n두 각이 각각 같으므로\n△AEF∼△DIE (AA)이다.\n\n(2) DC=DI+IC=6+10=16 cm이다.\n정사각형의 변은 같으므로 AD=16 cm이다.\nED=8 cm이므로\nAE=AD−ED=16−8=8 cm이다.\n\n(3) △AEF∼△DIE에서 대응변의 비를 쓰면\nAE:DI=AF:DE이다.\n8:6=AF:8,\nAF=8·8/6=32/3 cm이다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -1435,6 +1519,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 정사각형을 접어 꼭짓점 C가 AD 위의 점 E에 오도록 한 문제 그림으로 ED 8 cm, DI 6 cm, IC 10 cm이다. 가운데와 아래는 삼각형 AEF와 삼각형 DIE를 같은 방향으로 놓고 같은 색 각(파랑, 주황), 대응하는 변 AE와 DI(분홍), AF와 DE(초록)와 AE 8 cm, DI 6 cm, DE 8 cm를 나타낸 그림이다.",
+    "solutionImageCaption": "(1) 삼각형 AEF와 DIE는 각 A=각 D=90°이고 각 AEF=각 DIE이므로 두 각이 각각 같아 닮음이다. (2) DC=6+10=16 cm이므로 AD=16 cm이고 AE=16−8=8 cm이다. (3) 닮음에서 AE:DI=AF:DE이므로 8:6=AF:8이고 AF=8×8÷6=3분의 32 cm이다. 정답은 (1) 삼각형 AEF∽삼각형 DIE (AA 닮음) (2) 8 cm (3) 3분의 32 cm이다.",
+    "solutionImageSize": "full"
   }
 ];

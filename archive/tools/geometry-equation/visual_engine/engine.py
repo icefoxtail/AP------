@@ -1379,6 +1379,12 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False)
         prepared['fragmentProfile']='fragment-publication-spike-v1'
         for label in labels:
             label['allowSuppress']=False
+            if label['kind']=='TICK_LABEL':
+                # The browser's own report of where the glyphs sit inside the frozen fragment (observedBBox: getBBox of the fragment root): the tick gap is judged on it.
+                seen=(fragments.get(label['id']) or {}).get('observedBBox')
+                try:ink=[finite(seen[key]) for key in ('x','y','width','height')] if isinstance(seen,dict) else None
+                except (ValueError,TypeError):ink=None
+                if ink is not None and ink[2]>0 and ink[3]>0:label['tickInk']=ink
             if label['kind']=='GRAPH_ANNOTATION':
                 label['gaps']=(12,20,32,48)
                 if label['id'].startswith('tick-y-'):label['directions']=('W','E');label['priority']=0
@@ -1387,6 +1393,8 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False)
     safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
     result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments)
+    for row in result.get('labels',[])+result.get('suppressed',[]):
+        if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before
     if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'
     if 'publication' in semantic:
         from .publication import finalize

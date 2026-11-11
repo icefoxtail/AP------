@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const studentIndex = fs.readFileSync(path.join(root, 'apmath', 'student', 'index.html'), 'utf8');
@@ -82,12 +83,42 @@ assert(
     studentIndex.includes('function openHomeOmrInput(assignmentId)') &&
     studentIndex.includes('function renderStudentQuickActions()') &&
     studentIndex.includes('${renderOmrHomeSection()}') &&
-    studentIndex.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
+    studentIndex.includes('function renderClinicList()') &&
+    studentIndex.includes('function renderLearningHistory()') &&
+    studentIndex.includes('function renderMaterialList()') &&
     studentIndex.includes('${renderStudentQuickActions()}') &&
-    studentIndex.includes('portal-support-grid') &&
-    studentIndex.includes('const visible = list.slice(0, 2);'),
-  'student portal home should prioritize OMR, wrong clinic, compact task/planner actions, then support sections'
+    studentIndex.includes('const visible = materialShowAll ? list : list.slice(0, 2);'),
+  'student portal should retain OMR, wrong clinic, records, and task/planner entry points with an expandable material list'
 );
+
+const home = studentIndex.slice(studentIndex.indexOf('function renderHome('), studentIndex.indexOf('function renderPreviewNotice('));
+assert(home.indexOf('renderStudentQuickActions()') >= 0 && home.indexOf('renderStudentQuickActions()') < home.indexOf('renderOmrHomeSection()'), 'four primary features must precede recent learning');
+assert(!home.includes('renderWrongClinicPackets()') && !home.includes('id="clinic-learning-history"'), 'home must not stack full review and history sections');
+assert(home.includes('onclick="renderMore()"'), 'retained supporting features must be discoverable through more');
+const quickActions = studentIndex.match(/function renderStudentQuickActions\(\) \{[\s\S]*?\n    \}/);
+assert(quickActions && quickActions[0].includes('onclick="openPlanner()"') && quickActions[0].includes('onclick="renderAssignments()"'), 'both planner and assignment actions must remain available');
+
+const materialRenderer = studentIndex.match(/function renderMaterialWrongAssignments\(\) \{[\s\S]*?\n    \}/);
+const materialToggle = studentIndex.match(/function toggleMaterialAssignmentList\(\) \{[\s\S]*?\n    \}/);
+assert(materialRenderer && materialToggle, 'supporting materials should expose the complete list through a toggle');
+const materialElement = { outerHTML: '' };
+const materialContext = {
+  materialShowAll: false,
+  getMaterialWrongAssignments: () => Array.from({ length: 4 }, (_, index) => ({ assignment_id: `material-${index + 1}`, assignment_title: `자료 ${index + 1}` })),
+  getMaterialWrongStatus: () => ({ className: '', label: '미제출' }),
+  escapeHtml: value => String(value ?? ''),
+  $: id => id === 'material-wrong-section' ? materialElement : null
+};
+vm.createContext(materialContext);
+vm.runInContext(materialRenderer[0] + '\n' + materialToggle[0], materialContext);
+const materialCount = markup => (markup.match(/class="portal-assignment-row"/g) || []).length;
+assert.strictEqual(materialCount(materialContext.renderMaterialWrongAssignments()), 2, 'supporting materials should start with a compact two-item preview');
+assert(materialContext.renderMaterialWrongAssignments().includes('전체 4개 보기'), 'the preview should disclose a route to every loaded material');
+materialContext.toggleMaterialAssignmentList();
+assert.strictEqual(materialCount(materialElement.outerHTML), 4, 'expanding supporting materials must reveal every loaded item');
+assert(materialElement.outerHTML.includes("openMaterialWrongOmr('material-4')"), 'items outside the preview must retain their wrong-number entry action');
+materialContext.toggleMaterialAssignmentList();
+assert.strictEqual(materialCount(materialElement.outerHTML), 2, 'the full list should be collapsible without mutating source data');
 
 assert(
   studentSw.includes("navigator") === false &&

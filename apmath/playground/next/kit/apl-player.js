@@ -242,7 +242,7 @@
       ui.rangeWrap = h('div', { class: 'apl-vrw' }, ui.range, ui.ticks);
       ui.time = h('span', { class: 'apl-vtime' });
       ui.mini = h('button', { class: 'apl-btn apl-vmini', 'aria-label': '멈춤', title: '멈춤 (Space)', html: icon('pause'), onclick: () => this.pause() });
-      ui.play = h('button', { class: 'apl-btn primary apl-vbtn', onclick: () => this.toggle() });
+      ui.play = h('button', { class: 'apl-btn primary apl-vbtn', onclick: (ev) => { if (ev && ev.isTrusted && performance.now() - (this._startedAt || 0) < 450) return; this.toggle(); } }); // 시작 직후 0.45초 안의 두 번째 실제 탭(두 번 탭)은 무시 — 작은 ▶ 알약이 이 단추·진행 막대와 같은 자리에 있어서
       ui.prev = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '이전 자막', title: '이전 자막 (←)', html: icon('prev') + '<span class="lbl">이전</span>', onclick: () => this.skip(-1) });
       ui.next = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다음 자막', title: '다음 자막 (→)', html: '<span class="lbl">다음</span>' + icon('next'), onclick: () => this.skip(1) });
       ui.replay = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다시 보기', title: '처음부터 다시 보기 (R)', html: icon('reset') + '<span class="lbl">다시 보기</span>', onclick: () => this.replay() });
@@ -254,8 +254,8 @@
       ui.endAns = h('div', { class: 'apl-vans', hidden: true });
       ui.endTask = h('div', { class: 'apl-vtaskline' });
       ui.endNext = h('button', { class: 'apl-btn primary apl-vbtn apl-vnext', onclick: () => this.playNext() });
-      ui.endGo = h('button', { class: 'apl-btn apl-vbtn', html: icon('hand') + '<span>직접 해 보기</span>', onclick: () => this._dismissEnd() });
-      ui.endAgain = h('button', { class: 'apl-btn apl-vbtn', html: icon('reset') + '<span>다시 보기</span>', onclick: () => this.replay() });
+      ui.endGo = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '직접 해 보기', html: icon('hand') + '<span>직접 해 보기</span>', onclick: () => this._dismissEnd() });
+      ui.endAgain = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다시 보기', html: icon('reset') + '<span>다시 보기</span>', onclick: () => this.replay() });
       ui.endX = h('button', { class: 'apl-icon-btn apl-vendx', 'aria-label': '카드 닫기', html: icon('x'), onclick: () => this._dismissEnd() });
       ui.end = h('div', { class: 'apl-vend', hidden: true },
         h('div', { class: 'apl-vend-h' }, h('span', { class: 'ttl', html: icon('check') + '<span>한 줄 정리</span>' }), ui.endX),
@@ -276,8 +276,9 @@
       // 진행 막대는 0~1000 정수 위치로 다룹니다
       ui.range.max = '1000';
       ui.range.step = '1';
-      ui.range.addEventListener('input', () => {
+      ui.range.addEventListener('input', (ev) => {
         if (!this.cs || this.state === 'idle' || this.state === 'ended') return;
+        if (ev && ev.isTrusted && performance.now() - (this._startedAt || 0) < 450) { ui.range.value = String(Math.round((this.t / this.cs.length) * 1000)); return; } // 시작 직후의 두 번째 탭이 진행 막대를 건드려 건너뛰지 않게
         const to = (+ui.range.value / 1000) * this.cs.length; // pause() 가 막대 위치를 되돌리기 전에 읽어 둡니다
         this.pause();
         this.seek(to);
@@ -415,6 +416,7 @@
       k = k || 0;
       const cs = this.compiled(i, k);
       if (!cs) { lab.goScene(i); return false; }
+      this._startedAt = performance.now(); // 시작 직후 0.45초는 같은 자리를 또 눌러도(두 번 탭) 멈추지 않게: 작은 ▶ 알약이 재생 막대의 단추와 같은 자리에 있어서
       if (this.state !== 'idle') this._leave(false);
       if (lab.pen && lab.pen.on) lab.setPen(false);
       try { clearTimeout(lab._hashT); history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* 해시를 못 지워도 영상은 재생됨 */ }

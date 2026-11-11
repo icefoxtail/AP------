@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(t)=\\dfrac{25}{3}$을 만족하는 점",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "25/3",
+          "-10",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      11
+    ],
+    "viewport": [
+      -3,
+      13,
+      -19,
+      22
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 5,
+        "y": "-50/3"
+      },
+      {
+        "id": "A",
+        "x": 0,
+        "y": "25/3"
+      },
+      {
+        "id": "B",
+        "x": 10,
+        "y": "25/3"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "5",
+        "-50/3"
+      ],
+      "A": [
+        "0",
+        "25/3"
+      ],
+      "B": [
+        "10",
+        "25/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "lq",
+          "slope": "0",
+          "intercept": "-50/3",
+          "style": "DASHED"
+        },
+        {
+          "id": "lt",
+          "slope": "0",
+          "intercept": "25/3",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "f(x)=(x-5)²-50/3의 그래프는 꼭짓점 V(5,-50/3)에서 직선 y=-50/3과 접하고 두 점 A(0,25/3), B(10,25/3)를 지난다.",
+  "sourceConditions": [
+    {
+      "id": "q20-S1",
+      "condition": "f(x)=(x-5)^2-50/3의 꼭짓점 V(5,-50/3), 수평선 y=-50/3과 y=25/3 위의 점 A(0,25/3), B(10,25/3)",
+      "mappedTo": "graphPlan.pieces, graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점에서 접하는 수평선 y=-50/3과 f(t)=25/3인 두 점 A, B를 보여 중근 조건과 t=0, 10의 대칭성을 확인하게 한다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고1_유사/q20-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q20-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q20-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/engine_evidence/q20-solution.svg"
+  }
+}
