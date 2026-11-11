@@ -61,6 +61,7 @@
       this._ch = -1;
       this.lessonIndex = 0; // 지금 재생 중인(또는 마지막으로 재생한) 해설이 그 장면의 몇 번째인지
       this._entrySig = '';
+      this._pinsSig = '';
       this.manual = urlParam('manual') === '1';
       this.explored = this.manual || this._readExplored();
       this._build();
@@ -238,6 +239,7 @@
     /* ------------------------------ 화면 ------------------------------ */
     _build() {
       const ui = (this.ui = {});
+      ui.pins = h('div', { class: 'apl-vpins', hidden: true, role: 'list', 'aria-label': '이어 보는 풀이 수식' });
       ui.cap = h('div', { class: 'apl-vcap', 'aria-live': 'polite' });
       ui.range = h('input', { type: 'range', class: 'apl-range apl-vrange', min: '0', max: '1', step: '0.01', value: '0', 'aria-label': '영상 진행 위치', style: { '--c': 'var(--m-sky)' } });
       ui.ticks = h('span', { class: 'apl-vticks', 'aria-hidden': 'true' });
@@ -268,7 +270,7 @@
       ui.tBig = h('div', { class: 'apl-vtbig', 'aria-hidden': 'true' });
       this.lab.ui.stage.insertBefore(ui.tbar, this.lab.ui.canvasWrap);
       ui.tbar.append(ui.tBig);
-      ui.bar = h('div', { class: 'apl-vbar', hidden: true, role: 'region', 'aria-label': '영상 해설' }, ui.cap, ui.prog, ui.live, ui.end);
+      ui.bar = h('div', { class: 'apl-vbar', hidden: true, role: 'region', 'aria-label': '영상 해설' }, ui.pins, ui.cap, ui.prog, ui.live, ui.end);
       this.lab.ui.stage.append(ui.bar);
       // 해설 우선 진입 ▶ (휴대폰: 화면 아래 고정 · 그 밖: 패널 맨 위)
       ui.entryBtns = h('div', { class: 'apl-lbtns' });
@@ -408,8 +410,18 @@
     _layout(on) {
       document.body.classList.toggle('apl-vid', !!on);
       if (on) { try { window.scrollTo(0, 0); } catch (e) { /* 무시 */ } }
+      this._resizeBoardSoon();
+    }
+    /** 수식 줄이나 배치가 바뀌면 남은 그림 높이와 펜 레이어도 다음 프레임에 함께 맞춥니다. */
+    _resizeBoardSoon() {
+      if (this._resizeRaf) return;
       const lab = this.lab;
-      requestAnimationFrame(() => { if (lab.board.resize()) lab.invalidate(true); lab._sizeInk && lab._sizeInk(); lab.invalidate(); });
+      this._resizeRaf = requestAnimationFrame(() => {
+        this._resizeRaf = 0;
+        if (lab.board.resize()) lab.invalidate(true);
+        if (lab._sizeInk) lab._sizeInk();
+        lab.invalidate();
+      });
     }
 
     /* ------------------------------ 재생 ------------------------------ */
@@ -548,6 +560,7 @@
     _syncUi(st) {
       const cs = this.cs, ui = this.ui;
       if (!cs) return;
+      this._syncPins();
       st = st || core.stateAt(cs, this.t, this.base);
       if (st.say !== this._capIndex) {
         this._capIndex = st.say;
@@ -571,6 +584,21 @@
         ui.play.innerHTML = icon(playing ? 'pause' : 'play') + `<span>${playing ? '멈춤' : '재생'}</span>`;
         ui.play.setAttribute('aria-label', playing ? '멈춤' : '재생');
       }
+    }
+    /** 현재 시각에서 다시 계산하므로 되감기·다른 해설에 미래 수식이 남지 않습니다. */
+    _syncPins() {
+      const pins = this.cs && (this.state === 'playing' || this.state === 'paused') && core.pinnedAt
+        ? core.pinnedAt(this.cs, this.t) : [];
+      const sig = pins.length ? JSON.stringify(pins.map(p => [p.at, p.tex])) : '';
+      if (sig === this._pinsSig) return;
+      this._pinsSig = sig;
+      this.ui.pins.replaceChildren(...pins.map((p, index) => h('div', {
+        class: 'apl-vpin' + (index === pins.length - 1 ? ' latest' : ''), role: 'listitem',
+        tabindex: '0', html: richHtml('$' + p.tex + '$')
+      })));
+      this.ui.pins.hidden = !pins.length;
+      this.ui.bar.classList.toggle('has-pins', !!pins.length);
+      this._resizeBoardSoon();
     }
     _announce() { /* 자막은 aria-live 영역에 이미 있음 */ }
 
@@ -617,6 +645,7 @@
       this.t = this.cs.length;
       this.apply();
       this.state = 'ended';
+      this._syncPins(); // 끝 카드는 기존 요약·정답 영역만 사용합니다.
       this._hideTitle(); // 끝 카드가 나오면 제목은 숨김(머리글 줄은 영상 화면이 풀리며 함께 사라짐)
       const lab = this.lab, cs = this.cs;
       // 해설은 휴대폰·태블릿 세로에서 영상 화면(그림 크게 + 아래 끝 카드)을 그대로 두고, 영상(쇼츠)과 넓은 화면은 예전처럼 탐구 패널 맨 위에 끝 카드를 둡니다.
@@ -658,6 +687,7 @@
       this._release();
       this.state = 'idle';
       this.cs = null;
+      this._syncPins();
       this._hideTitle();
       this.ui.bar.hidden = true;
       this.ui.end.hidden = true;
