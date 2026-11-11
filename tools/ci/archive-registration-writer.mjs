@@ -109,6 +109,7 @@ export function nativeLanes(root) {
   return [
     {id:'reviewed',inputs:[...code,...registration,'.archive-meta-register/inbox/',
       'tools/ci/reviewed-meta-register-pass.sh','tools/ci/register-reviewed-meta-requests.mjs',
+      'tools/ci/collect-reviewed-consumer-refusals.mjs',
       'tools/ci/archive-meta-register-trigger-paths.txt','tools/ci/verify-registered-consumer-approval.sh',
       'tests/archive-reviewed-exam-registration-v2.test.mjs','tests/archive-basic-scope-rebind.test.mjs',
       'tests/archive-difficulty5-register.test.mjs','tests/archive-finalqa-nonpt-register.test.mjs',
