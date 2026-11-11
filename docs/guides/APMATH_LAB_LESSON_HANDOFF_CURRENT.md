@@ -93,8 +93,9 @@
 | `geom-vector-dot` | 7장면·36해설(원문15·개념21) | MAIN_MERGED / QA_PENDING · PR #1849 · `dccd250ba102d997af5f4bd8796bdc1c36311fad` · 최소71/71·native566상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
 | `geom-vector-figure` 벡터와 도형 | 6 | 6 / 28 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1850](https://github.com/icefoxtail/AP------/pull/1850), merge `768069c3d3599641ec2616bb824070dbcba3ecb6`. 원문9·개념19. 최소74/74·native491상태·validator0/0·구문8단위 |
 | `prob-counting` 경우의 수 | 5 | 5 / 34 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1852](https://github.com/icefoxtail/AP------/pull/1852), merge `4516ef3e469b514c12ff1ff6e74ea295b8f59106`. 원문19유형·개념15. 최소68/68·native544상태·validator0/0·구문8단위 |
-| `prob-probability` 확률 | 5 | 5 / 27 | **IMPLEMENTED / PAGES_NOT_VERIFIED / QA_PENDING** · `feat/lessons-prob-probability` · 원문10목표·개념17. 최소95/95(수학31·native9·공통55),native499상태·validator0/0·구문8단위 |
-| 고등 잔여 1개 | `prob-stats`(7) | 위 확률 main 병합 후 원격 보존한 통계 구현을 최신 main에 통합·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
+| `prob-probability` 확률 | 5 | 5 / 27 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1853](https://github.com/icefoxtail/AP------/pull/1853), merge `1ea507f04f756deb276f61af5f3e2958d63d4c4d`. 원문10목표·개념17. 최소95/95·native499상태·validator0/0·구문8단위 |
+| `prob-stats` 통계 | 7 | 7 / 37 | **IMPLEMENTED / PAGES_NOT_VERIFIED / QA_PENDING** · `feat/lessons-prob-stats` · 원문18유형·개념19. 최소77/77(수학28·native8·공통41),native612상태·validator0/0·구문8단위 |
+| 고등 잔여 0개 | 본 PR의 통계까지 카탈로그 고등38개·436장면 구현 완료 | 통계 main 병합 및 최신 운영 배포 영수증·학생 파일 확인을 마무리한다. 전수 모바일·독립 시각검수는 후속 QUALITY. |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -284,6 +285,12 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 마지막 고등 통계 `prob-stats` 실제7장면·37해설 구현(원문18유형+개념19, 장면별6/5/6/4/4/7/5). 원본 확률 막대·정규곡선·꺾은선 밀도 영역·표본평균 히스토그램·신뢰구간 선분을 사용. 문제 및 표본 stream별 seed를 분리하고 원래 생성식·범주분포·Box–Muller 공식을 보존했다. 시뮬레이션 빈도로 정답을 증명하지 않는다. lpsN_/lpsS_ snapshot으로 수동 표본/seed/조작/선택문항 및 실제 Player 중단·완료 보존 확인. 독립수학28+native8+공통video41=77/77, 실제 Board/canvas612개 상태, validator0/0, JS6+inline2 구문·diff·clean. 최신 main1ea507f 반영 뒤41입력 SHA와1부재 동일. 전수브라우저/모바일/독립시각 NOT_RUN, PAGES_NOT_VERIFIED.
+
+- 2026-11-12 확률 PR #1853 main `1ea507f04f756deb276f61af5f3e2958d63d4c4d`, feature `8d56e7e4749a393955bdf087bc23d727853e509e` exact readback 완료. 누적53실험실/958장면/2,850해설. AWCR r80 raw SHA `4d013d4afd2f70ba1ec56d8ca2fea435285e240430a1d3f90e1b4a2393f57b40`, readback VERIFIED.
+
+- 2026-11-12 Pages43077681642는 Build queued·runner 미배정·step 없음, pending deployments 빈 목록으로 환경 승인 대기가 확인되지 않았다. repo에 다른 workflow 실행 및 다수 대기 작업이 있지만 Pages 지연의 직접 원인을 확정할 근거는 없다. 기존 등록 필수 게이트·워크플로 설정과 다른 작업자의 실행을 보존한다.
 
 - 2026-11-12 확률 `prob-probability` 실제5장면·27해설 구현(원문10목표+탐구17개념, 장면별7/7/5/4/4). 원래 격자·넓이 사각형·조건부확률·반복시행 상태도를 사용하며 모의실험을 답의 증명으로 사용하지 않음. 독립31+native9+공통video/pins55=95/95, actual Board/canvas499개 cue/중간 프레임, validator0/0, JS6+inline2 구문·diff·clean. actual shell 복제 및 Player start/apply/settle/release에서 수동값·tb배열·runs/sims 이력·변형·배율 보존. 최신main4516ef3 반영 후 선택입력46개 SHA 동일. 전체브라우저/전수모바일/독립시각 NOT_RUN; PAGES_NOT_VERIFIED.
 
