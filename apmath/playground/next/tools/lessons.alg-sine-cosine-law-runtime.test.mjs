@@ -162,7 +162,7 @@ test('actual new-problem clicks preserve the manual variant across fixed first-s
   }
 });
 
-test('all 27 source subquestions hide their numeric canvas answer until the final chapter', () => {
+test('source subquestions hide their numeric canvas answer until the final chapter', () => {
   // Fractions are physically painted as separate numerator/denominator text calls.
   const patterns = {
     'bas-1/bc': /BC\s*=\s*3\s*\+\s*2\s*=\s*5/,
@@ -207,7 +207,7 @@ test('all 27 source subquestions hide their numeric canvas answer until the fina
     lab.s.lessonOn = false; lab.s.lessonEntry = true;
     assert.ok(!pattern.test(lab.draw().canvasText.join(' ')), key + ': entry suppresses stale final answer flags');
   }
-  assert.equal(seen.size, 27);
+  assert.equal(seen.size, lab.list.reduce((total, scene) => total + sourceLessons(scene.id).length, 0), 'every authored subquestion has its own target assertion');
 });
 
 test('each first-motion highlight follows an actual source edge with no separate geometry', () => {
