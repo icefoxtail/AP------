@@ -47,8 +47,9 @@
 | `g7-solids` 회전체 | 22 | 22 / 48 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1750](https://github.com/icefoxtail/AP------/pull/1750), merge `459c71d08b159a7fe5fffc91ea5c3553e78005b9`. 최소 검사 108/108, 누락 0. Pages 등록 작업 대기 |
 | `g7-polygons` 다각형 | 18 | 18 / 31 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1754](https://github.com/icefoxtail/AP------/pull/1754), merge `0f82b309173e29d399945bccedd0a52c8196b586`. 최소 검사 145/145, 누락 0. Pages 등록 작업 대기 |
 | `g7-area` 다각형의 넓이 | 14 | 14 / 30 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1755](https://github.com/icefoxtail/AP------/pull/1755), merge `68060cca4e6f89edaa806b7b5cafaafe102290e3`. 최소 검사 102/102, 누락 0. Pages 등록 작업 대기 |
-| `g7-parallel` 평행선의 성질 | 12 | 12 / 29 | **IMPLEMENTED / QA_PENDING** · 신규 12장면/29해설, 누락 0. 최소 검사 86/86. `feat/lessons-g7-parallel`, PR·main·Pages 확인 예정 |
-| 중1 나머지 3개 | 74 | 0 | 미착수 (§5-3) |
+| `g7-parallel` 평행선의 성질 | 12 | 12 / 29 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1757](https://github.com/icefoxtail/AP------/pull/1757), merge `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`. 최소 검사 86/86, 누락 0. Pages 등록 작업 대기 |
+| `g7-points-lines` 점과 직선 | 24 | 24 / 63 | **IMPLEMENTED / QA_PENDING** · 신규 24장면/63해설, 누락 0. 최소 검사 120/120. `feat/lessons-g7-points-lines`, PR·main·Pages 확인 예정 |
+| 중1 나머지 2개 | 50 | 0 | 미착수 (§5-3) |
 | 중2 4개 · 중3 2개 | 247 | 0 | 미착수, 선행 확인 필요 (§6) |
 | 고등 38개 | — | 0 | 미착수, 선행 확인 필요 (§7) |
 
@@ -103,7 +104,7 @@
 
 권장 순서(그림 움직임이 이미 있는 것부터): `g7-polyhedra` → `g7-solids` → `g7-polygons` → `g7-area` → `g7-parallel` → `g7-points-lines` → `g7-spatial` → `g7-construction`.
 
-- `g7-polyhedra` 26장면/58해설, `g7-solids` 22/48, `g7-polygons` 18/31, `g7-area` 14/30, `g7-parallel` 12/29를 구현했다. 나머지 3개 실험실의 HTML에는 안내서 §2의 플레이어 연결을 추가한다.
+- `g7-polyhedra` 26장면/58해설, `g7-solids` 22/48, `g7-polygons` 18/31, `g7-area` 14/30, `g7-parallel` 12/29, `g7-points-lines` 24/63을 구현했다. 나머지 2개 실험실의 HTML에는 안내서 §2의 플레이어 연결을 추가한다.
 - `g7-parallel` 원본은 단계(`step`) 구동이 중심이다. 해설에는 보조선·각 표시의 실제 진행을 추가하고 종이 접기는 기존 `pat` 값을 재사용했다. 수동 화면의 기존 단계 동작은 유지한다.
 - 값이 바뀌면 단계를 0으로 되돌리는 `view()`가 있다(`g7-parallel/kit.js`, `g7-polygons/core.js`, `g7-construction/core.js`, `g7-points-lines/common.js`). 값 설정 → 단계 순으로 쓴다.
 
@@ -133,6 +134,11 @@
 - 원본문항 최소 수정: p4-1 기본 각에서도 종이 끝이 짧아 A가 접힌 종이 밖에 있던 불일치를 고쳤다. 오른쪽 종이 길이를 실제 AB에 맞춰 늘렸으며 각·접는 선·정답은 유지했다. 허용 각 40~70°와 대표 위치 3개의 **93상태**에서 ABC가 고정 종이와 접힌 종이 양쪽에 포함됨을 독립 반사·벡터 계산으로 검산했다.
 - 최소 실행: `node --test --test-reporter=tap apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-parallel*.test.mjs apmath/playground/next/tools/g7-parallel-geometry.test.mjs apmath/playground/next/tools/g7-parallel-zigzag-labels.test.mjs` → **86/86 통과, 실패·skip 0**. 무필터 validator, 원본 좌표 각도/정다각형/5보기/접기 검산, 실제 Board 진입·첫 cue·결론 87개 상태와 중간값 공개 검사 포함. 변경 JS/MJS 13파일 구문 및 diff 검사 통과.
 - 실제 390×844의 29해설 전체 재생·터치·잘림·자막과 그림 정밀 동기화는 **NOT_RUN / QA_PENDING**이다. Board·좌표 검사로 전체 시각 품질 PASS를 주장하지 않는다.
+
+**점과 직선 구현 기록:** 실제 카탈로그·HTML 모듈 24장면과 63해설이 일치한다(직선·반직선·선분 8장면/23해설, 시계·각·수선 8/19, 입체·중점 8/21). 선의 동일성·공통부분·개수, 시침/분침/사잇각, 맞꼭지각·방정식·수선의 발/최단선분/거리, 입체의 교점·교선, 중점의 정·역방향 질문을 나눴다. 해설 첫 상태의 실제 문제 seed와 주어진 값을 고정하며 첫 화면 질문도 해당 원본문항에 연결했다. 이전 드래그 좌표·수동 답안·접두사 상태가 해설 도형이나 단계를 바꾸지 않게 했다. 기존 공통 키트와 직접 해 보기는 유지했다.
+
+- 최소 실행: `node --test --test-reporter=tap apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-points-lines*.test.mjs apmath/playground/next/tools/g7-points-lines-*.test.mjs` → **120/120 통과, 실패·skip 0**. 무필터 validator, 직선/반직선 좌표 중복 제거·입체 topology·교선 방정식·시계 바늘 방향·중점/거리/비/방정식 검산, 실제 Board 진입·첫 cue·결론 189개 상태와 첫 움직임·중간값 공개 검사를 포함한다. 기존 시계·초기 도형·화면 맞춤의 소스 회귀도 유지했다. 변경 JS/MJS 13파일 구문 및 diff 검사 통과.
+- 원본 b1-3의 고정 seed와 보기·그림이 일치함을 확인했다. 별도의 문항 수학 수정은 필요하지 않았다. 실제 390×844의 63해설 전체 재생·터치·잘림·자막/그림 정밀 동기화는 **NOT_RUN / QA_PENDING**이다. 소스·Board 검사를 화면 품질 PASS로 대체하지 않는다.
 
 ### 5-4. 키트 보완 목록 (각각 별도 PR, 테스트 포함)
 
@@ -225,6 +231,11 @@
 - 정리 탭 그림에 단계별 라벨 추가: `labs/g7-surface-volume/t1.js`의 `volLabels`, `solid3d.js`·`dims.js`의 `lessonHide`.
 
 **진행 기록** (2026-11-11 긴급 RELEASE 정책 전환 이후엔 구현·운영 병합·배포·후속 QA 상태를 구분해 기재)
+
+- 2026-11-11 · `g7-points-lines` **24장면/63해설 신규 구현 완료**, 누락 0. main `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`에서 신규 브랜치로 제작하고 정상 단위마다 원격 보존했다. 최소 검사 120/120, JS/MJS 13파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 제작 중 main `3b41a84e8dd93b4fe54cd4bba24702a4c3f6f4cb`로의 변경은 Archive SVG 작업이며 대상 실험실·공통 키트·필독 문서와 겹치는 변경은 없었다. 다음은 `g7-spatial` 27장면이다.
+
+- 2026-11-11 · 평행선 [PR #1757](https://github.com/icefoxtail/AP------/pull/1757) **main 운영 병합 완료**. head `2a4a5fb4d2e7a7ec9fb842c39cefc228e4877c80`, merge `22cad5a7005bc7ddedc0ab17fb760f4605b11dae`, 원격 main 및 대상 파일 일치 확인. 12장면/29해설, 최소 검사 86/86. [등록 writer 42967549440](https://github.com/icefoxtail/AP------/actions/runs/42967549440) queued. 실제 학생 HTML은 HTTP 200·이전 3922 bytes로 lesson/player 연결이 없어 **Pages NOT_VERIFIED / QA_PENDING**이다. 대기 중 Pages 42966828800·42967223392의 source `fb27d05ee921da9534d9fff332ac774d732b91cf`에는 평행선 merge가 없다. 중1 main 등록 **208/282장면·348해설**. 다음 점과 직선 24장면 제작을 시작했다.
+- 2026-11-11 · [AWCR r11](https://drive.google.com/file/d/1ezlQhyOQ--3kzrvk94dK3SQo3H5AhZD1/view) 원격 저장·raw 재조회 완료. SHA-256 `646c65c84933b689a7ea6c514b75fa2e6e8e5040b2e617ea061f978ba1aa8fb1`, parent r10 `7fb8497d9bb762f56133f8c28f6fd6bbe65f6a12d921ef8ca0033183f57256a8`와 결속 확인. 평행선까지 MAIN_MERGED, 원·겉넓이·다면체 RELEASED_QA_PENDING이며 전체 모바일 NOT_RUN. 다음 revision r12는 충돌 재확인 후 저장한다.
 
 - 2026-11-11 · `g7-parallel` **12장면/29해설 신규 구현 완료**, 누락 0. main `68060cca4e6f89edaa806b7b5cafaafe102290e3`에서 신규 브랜치로 제작하고 정상 단위마다 원격 보존했다. 최소 검사 86/86, JS/MJS 13파일 구문 통과. **IMPLEMENTED / QA_PENDING**, PR·main·Pages 확인 예정. 다음은 `g7-points-lines` 24장면이다.
 - 2026-11-11 05:39 UTC · 후속 CI 조회: 다면체의 [test job 130332626168](https://github.com/icefoxtail/AP------/actions/runs/42962457401/job/130332626168)도 Archive `runtime-bridge-receipt.json` stale로 328 test files 통과 / 1 실패이며 Surface와 같은 실패 서명이다. receipt 필드·환경 원인은 미확정이다. 회전체의 [test job 130337668035](https://github.com/icefoxtail/AP------/actions/runs/42963703911/job/130337668035)은 성공했다. 그 밖에 실행·대기 중 검사는 PASS로 간주하지 않았고 새 실험실 변경을 지목한 완료 실패는 해당 조회에서 관측되지 않았다. CI 취소·비활성화·기준 변경 없음.
