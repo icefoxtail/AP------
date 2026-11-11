@@ -90,8 +90,9 @@
 | `geom-projection` | 7장면·23해설(원문/등록 유형13·개념10) | MAIN_MERGED / QA_PENDING · PR #1846 · `3f2ef62f80974513d6ba9eb9608dae2cd28a71b6` · 최소70/70·native362상태·validator0/0·구문8단위·47입력SHA 동일 · PAGES_NOT_VERIFIED |
 | `geom-space-coord` | 8장면·32해설(원문14·개념18) | MAIN_MERGED / QA_PENDING · PR #1847 · `11ae10ffd34aaec8f8bd7d5fab8f5439bcad0f36` · 최소74/74·native547상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
 | `geom-vector-ops` | 12장면·54해설(원문/등록유형28·개념26) | MAIN_MERGED / QA_PENDING · PR #1848 · `0739b7dad9d823fe858549d7c71d0d687c3cd0d9` · 최소64/64·native849상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
-| `geom-vector-dot` | 7장면·36해설(원문15·개념21) | IMPLEMENTED / QA_PENDING · `feat/lessons-geom-vector-dot` · 최소71/71(수학8·native8·공통55)·native566상태·validator0/0·구문8단위·46입력SHA 동일 · PAGES_NOT_VERIFIED |
-| 고등 잔여 4개 | `geom-vector-figure`(6), `prob-counting`(5), `prob-probability`(5), `prob-stats`(7) | 위 벡터 내적 main 병합 후 차례로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
+| `geom-vector-dot` | 7장면·36해설(원문15·개념21) | MAIN_MERGED / QA_PENDING · PR #1849 · `dccd250ba102d997af5f4bd8796bdc1c36311fad` · 최소71/71·native566상태·validator0/0·구문8단위 · PAGES_NOT_VERIFIED |
+| `geom-vector-figure` | 6장면·28해설(원문9·개념19) | IMPLEMENTED / QA_PENDING · `feat/lessons-geom-vector-figure` · 최소74/74(수학26·native7·공통41)·native491상태·validator0/0·구문8단위·41입력SHA+1부재 동일 · PAGES_NOT_VERIFIED |
+| 고등 잔여 3개 | `prob-counting`(5), `prob-probability`(5), `prob-stats`(7) | 위 벡터 도형 main 병합 후 차례로 구현·최소 검사·PR·main 병합. 전수 모바일·독립 시각검수 후행. |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -281,6 +282,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-12 벡터와 도형 `geom-vector-figure` 실제6장면·28해설 구현(원문9+개념19). 장면별4/5/4/5/5/5. 내분·계수영역·방향/법선·내적조건원·직선/원 최소거리·두 직선 각의 실제 원문과 탐구를 연결. 모든 원래 수치/선택값을 lvfN_/lvfS_ 재생값으로 분리하고 실제 Player 중단·완료 후 원래값·변형 보존 확인. 설명용 교차 예시를 실제 교점과 일치하게 수정해 원 위 두 점 일치·영벡터 각 제외·지름 끝점의 각 미정 검사. 최소74/74(독립수학26+native7+공통41), actual Board/canvas491상태, validator0/0, 구문JS6+inline2, diff/clean, 최신main dccd250 반영 뒤41입력SHA+1부재 동일. 브라우저/전수 모바일/독립 시각검수 NOT_RUN; PAGES_NOT_VERIFIED.
+
+- 2026-11-12 벡터 내적 PR #1849 main `dccd250ba102d997af5f4bd8796bdc1c36311fad`, feature `1692bca8b0ee0fd309f9e0b070d85997e80896aa` exact readback 완료. 누적50실험실/942장면/2,761해설. AWCR r76 원격 raw SHA `92ab5967c681967c4c93f6896ca3fd6873b232b03671f30471674c489d77334f`, readback VERIFIED.
 
 - 2026-11-12 벡터의 성분·내적 `geom-vector-dot` 실제7장면·36해설 구현(원문15+개념21, 장면별4/4/4/4/7/8/5). 성분 평행/수직/최소, 내적 자취, 원점 최대/최소, 부채꼴 두 극값의 합/차를 실제 등록 패킷으로 연결. 영벡터가 θ=90°로 표시되던 기존 m2 native 각 호·수치·하단띠를 각 미정으로 국소 수정. 해설 전용 prefix 및 native fit 초기화로 원래 조작·변형·배율과 반복 재생 보존. 최소71/71(독립수학8+native8+공통55), 566실제 Board/canvas 상태, validator0/0, JS6+inline2 구문, diff/clean 확인. 원문 변형6+5+6+5·성분17·자취48·부채꼴192 조합 검산. 최신main0739b7 반영 뒤46입력 SHA 동일. 전체 브라우저/모바일/독립 시각검수 NOT_RUN, PAGES_NOT_VERIFIED.
 
