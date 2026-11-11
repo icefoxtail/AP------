@@ -50,7 +50,7 @@
       const t = cx.review ? (st >= 2 ? 1 : 0) : cx.t;
       const R = !cx.problem && t > 0.001 && st >= 1 ? [A, B, C].map((q) => rotP(q, O, 180 * t)) : null;
       const frame = R ? bboxOf([...pts, ...R]) : bx;
-      fit(b, frame, { t: 58, b: b.W < 560 ? 108 : cx.problem ? 76 : 112, l: 58, r: 58 });
+      fit(b, frame, { t: 58, b: cx.lesson ? 110 : b.W < 560 ? 108 : cx.problem ? 76 : 112, l: 58, r: 58 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       if (cx.problem) { drawProb1(b, M); return; }
       if (st >= 1) line(b, A, C, 'green', 3, { dash: [8, 5] });
@@ -130,7 +130,7 @@
     draw(b, s, M, cx) {
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts);
       const smallExplore = !cx.problem && b.W < 560;
-      fit(b, bx, { t: smallExplore ? 78 : 40, b: smallExplore ? 82 : 64, l: smallExplore ? 70 : 46, r: 46 });
+      fit(b, bx, { t: smallExplore ? 78 : 40, b: cx.lesson ? 110 : smallExplore ? 82 : 64, l: smallExplore ? 70 : 46, r: 46 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
       if (cx.problem) {
@@ -196,7 +196,7 @@
     draw(b, s, M, cx) {
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts), { E, F } = M;
       // AD 전체 길이는 도형 위의 치수선과 글자까지 함께 화면 안에 둡니다.
-      fit(b, bx, { t: cx.problem && M.K === 0 ? 74 : 40, b: 64, l: 46, r: 46 });
+      fit(b, bx, { t: cx.problem && M.K === 0 ? 74 : 40, b: cx.lesson ? 110 : 64, l: 46, r: 46 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
       const K = M.K;
@@ -268,7 +268,7 @@
       const pg = M.pg, { A, B, C, D, O } = pg, pts = pg.pts, st = cx.step;
       const bx = { x0: -0.2 * M.c - 0.5, x1: M.w + 0.2 * M.c + 0.8, y0: -M.c - 0.2, y1: 0 };
       void bx;
-      fit(b, bboxOf([A, B, C, D]), { t: 40, b: 70, l: 46, r: 46 });
+      fit(b, bboxOf([A, B, C, D]), { t: 40, b: cx.lesson ? 110 : 70, l: 46, r: 46 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
       line(b, A, C, 'ink', 2.6); line(b, B, D, 'ink', 2.6);
@@ -320,9 +320,9 @@
       return { w, s: sd0, beta, p, E, ha, ec: w - sd0, K: s.qaK || 0, a, bb, pq, Eq: pt(bb, 0), Dq: pq.D };
     },
     draw(b, s, M, cx) {
-      if (cx.problem && M.K === 1) { drawIso1(b, M); return; }
+      if (cx.problem && M.K === 1) { drawIso1(b, M, cx); return; }
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, E = M.E;
-      fit(b, bboxOf(p.pts), { t: !cx.problem && b.W < 560 ? 90 : 48, b: cx.problem ? 90 : 76, l: 54, r: 54 });
+      fit(b, bboxOf(p.pts), { t: !cx.problem && b.W < 560 ? 90 : 48, b: cx.lesson ? 110 : cx.problem ? 90 : 76, l: 54, r: 54 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D }, 0.25);
       line(b, A, E, 'green', 3.4);
@@ -365,9 +365,9 @@
     }
   };
   // 문제 그림(연장선 경우): ∠A 의 이등분선이 BC 의 연장선과 E 에서 만난다(AB > BC)
-  function drawIso1(b, M) {
+  function drawIso1(b, M, cx = {}) {
     const q = M.pq, { A, B, C, D, O } = q, E = M.Eq;
-    fit(b, bboxOf([A, B, C, D, E]), { t: 40, b: 70, l: 46, r: 46 });
+    fit(b, bboxOf([A, B, C, D, E]), { t: 40, b: cx.lesson ? 110 : 70, l: 46, r: 46 });
     fillPoly(b, q.pts, 'sky', 0.1); poly(b, q.pts, 'ink', 3.4); line(b, C, E, 'ink', 3.4); line(b, A, E, 'green', 3.4);
     parAll(b, { A, B, C, D });
     ang2(b, A, B, E, D, { color: 'sky', rings: 1, r: 30 });
@@ -422,7 +422,7 @@
       }
       if (!C.entry && s.qdLine) {
         const g = cfg.geom(M, s, solution), box = bboxOf(g.pts || [g.A, g.B, g.C, g.D]);
-        capLine(b, pt((box.x0 + box.x1) / 2, box.y1), s.qdLine, C.answer ? 'amber' : 'green', { dy: 64 });
+        capLine(b, pt((box.x0 + box.x1) / 2, box.y1), s.qdLine, C.answer ? 'amber' : 'green', { dy: s.qdLessonProblem ? 84 : 64 });
       }
     };
   }
@@ -464,6 +464,52 @@
       if (M.K && s.qdMark >= 1) outsideAng(b, M.p.A, M.p.B, M.p.D, '114°', 'green');
       if (s.qdMark >= 2) { const V = M.K ? M.p.A : M.p.B, X = M.K ? M.E1 : M.p.C, Y = M.K ? M.p.D : M.E0; ang(b, V, X, Y, { color: 'green', label: M.K ? '57°' : '33°', labelDist: 54 }); }
     }
+  });
+
+  const midpointPair = M => ({ polygons: [[M.p.A, M.p.O, M.p.B], [M.p.C, M.p.O, M.p.D]], names: [['A', 'O', 'B'], ['C', 'O', 'D']], edges: [[0, 2, 1]], angles: [[0, 1, 2], [2, 0, 1, 2]] });
+  const throughPair = M => ({ polygons: [[M.p.A, M.E, M.p.O], [M.p.C, M.F, M.p.O]], names: [['A', 'E', 'O'], ['C', 'F', 'O']], edges: [[0, 2, 1]], angles: [[0, 1, 2], [2, 0, 1, 2]] });
+  diag.lessonQuestion = (M, s, Q) => s.qdLessonProblem ? lessonSourceQuestion(Q) : s.qdLessonMode === 'diagonals' ? '평행사변형 ABCD의 대각선 AC와 BD가 O에서 만날 때, O는 각 대각선을 어떻게 나눌까?' : '평행사변형의 대각선 교점 O를 지나는 직선이 AD, BC와 각각 E, F에서 만날 때, OE와 OF는 어떤 관계일까?';
+  lessonAttach(diag, {
+    geom: M => M.p,
+    trace: (M, s) => s.qdLessonMode === 'diagonals' ? [[M.p.A, M.p.C], [M.p.B, M.p.D]] : [M.E, M.F],
+    pair: (M, s) => s.qdLessonMode === 'diagonals' ? midpointPair(M) : s.qdLessonMode === 'area' ? { polygons: [[M.p.A, M.p.B, M.F, M.E], [M.p.C, M.p.D, M.E, M.F]], names: [['A', 'B', 'F', 'E'], ['C', 'D', 'E', 'F']] } : throughPair(M),
+    concept(b, s, M, Cx) {
+      const p = M.p, { A, B, C, D, O } = p, mark = Cx.entry ? 0 : s.qdMark;
+      lessonQuad(b, p); line(b, A, C, 'ink', 2.4); line(b, B, D, 'ink', 2.4);
+      b.point(O, { color: 'amber', r: 4.5 }); T(b, O, 'O', { dx: 10, dy: -14 });
+      if (s.qdLessonMode !== 'diagonals') { line(b, M.E, M.F, 'green', 2.8); tagE(b, M); if (mark >= 1) { tick(b, A, O, 1); tick(b, O, C, 1); ang(b, A, M.E, O, { color: 'sky' }); ang(b, C, M.F, O, { color: 'sky' }); ang(b, O, A, M.E, { color: 'green', rings: 2 }); ang(b, O, C, M.F, { color: 'green', rings: 2 }); } if (Cx.answer) { tick(b, M.E, O, 3); tick(b, O, M.F, 3); } }
+      else { if (mark >= 1) { tick(b, A, B, 1); tick(b, C, D, 1); ang(b, A, O, B, { color: 'sky' }); ang(b, C, O, D, { color: 'sky' }); ang(b, B, A, O, { color: 'green', rings: 2 }); ang(b, D, C, O, { color: 'green', rings: 2 }); } if (Cx.answer) { tick(b, A, O, 2); tick(b, O, C, 2); tick(b, B, O, 3); tick(b, O, D, 3); } }
+    },
+    overlay(b, s, M, Cx) {
+      if (!s.qdLessonProblem || Cx.entry || s.qdMark < 1) return;
+      if (M.K < 2) { tick(b, M.p.A, M.E, 2); tick(b, M.p.C, M.F, 2); }
+      else { fillPoly(b, [M.p.C, M.p.D, M.E, M.F], 'green', .09); }
+    }
+  });
+  diagP.lessonQuestion = (M, s, Q) => s.qdLessonProblem ? lessonSourceQuestion(Q) : '평행사변형에서 AB=a, AC=d₁, BD=d₂이고 대각선의 교점이 O일 때, 삼각형 ABO의 둘레를 식으로 나타내면?';
+  lessonAttach(diagP, {
+    geom: M => M.pg, trace: M => [[M.pg.A, M.pg.O], [M.pg.B, M.pg.O]],
+    concept(b, s, M, Cx) {
+      const p = M.pg, { A, B, C, D, O } = p, mark = Cx.entry ? 0 : s.qdMark;
+      lessonQuad(b, p); line(b, A, C, 'ink', 2.6); line(b, B, D, 'ink', 2.6); fillPoly(b, [A, B, O], 'amber', .14);
+      b.point(O, { color: 'ink', r: 4.5 }); T(b, O, 'O', { dx: 10, dy: -15 });
+      sd(b, A, B, O, 'a', 'sky'); diagLab(b, A, C, .2, 'AC=d₁', 'sky'); diagLab(b, B, D, .2, 'BD=d₂', 'green');
+      if (mark >= 1) { tick(b, A, O, 1); tick(b, O, C, 1); tick(b, B, O, 2); tick(b, O, D, 2); segTag(b, A, O, .55, 'd₁/2', 18, 'amber'); segTag(b, B, O, .6, 'd₂/2', -18, 'amber'); }
+    },
+    overlay(b, s, M, Cx) { if (s.qdLessonProblem && !Cx.entry && s.qdMark >= 1) { segTag(b, M.pg.A, M.pg.O, .55, '4', 18, 'amber'); segTag(b, M.pg.B, M.pg.O, .6, '6', -18, 'amber'); } }
+  });
+  isoBis.lessonQuestion = (M, s, Q) => s.qdLessonProblem ? lessonSourceQuestion(Q) : '평행사변형 ABCD에서 A의 이등분선이 BC와 E에서 만날 때, 삼각형 ABE는 어떤 삼각형일까?';
+  lessonAttach(isoBis, {
+    geom: M => M.K ? M.pq : M.p, trace: M => [M.K ? M.pq.A : M.p.A, M.K ? M.Eq : M.E],
+    concept(b, s, M, Cx) {
+      const p = M.p, { A, B, D, O } = p, E = M.E, mark = Cx.entry ? 0 : s.qdMark;
+      lessonQuad(b, p); line(b, A, E, 'green', 3); b.point(E, { color: 'ink', r: 4.5 }); T(b, E, 'E', { dy: 20 });
+      ang2(b, A, B, E, D, { color: 'sky', r: 30 });
+      if (mark >= 1) { ang(b, E, A, B, { color: 'sky', r: 30 }); fillPoly(b, [A, B, E], 'amber', .12); }
+      if (Cx.answer) { tick(b, A, B, 1); tick(b, B, E, 1); }
+      void O;
+    },
+    overlay(b, s, M, Cx) { if (s.qdLessonProblem && !Cx.entry && s.qdMark >= 1) { const p = M.K ? M.pq : M.p, E = M.K ? M.Eq : M.E; segTag(b, p.B, E, .5, M.K ? '8' : '5', 18, 'amber'); } }
   });
   const gl = [defSides, angles, diag, diagP, isoBis];
   G.register(10, 'qd1', '① 평행사변형의 성질', '평행사변형의 성질', PARAMS, gl);

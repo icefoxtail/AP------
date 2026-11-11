@@ -79,4 +79,79 @@
     ]);
   }
   lessons['q1-2'] = [angleConcept(false), angleConcept(true), bisectorValue(0), bisectorValue(1)];
+
+  const diagState = k => fixed({ qaW: 8, qaS: 4, qaB: 66, qaE: 2, qaK: k });
+  function diagonalConcept(through) {
+    return make(through ? 'O지나는선' : '대각선성질', through ? '교점 O를 지나는 선분' : '두 대각선이 나뉘는 관계', through ? 'OE=OF' : 'OA=OC, OB=OD', [
+      ch('교점과 비교할 부분', [
+        { at: 0, say: through ? 'O는 두 대각선의 교점이에요. O를 지나는 EF를 따라가요.' : 'O는 대각선 AC와 BD가 만나는 점이에요. 두 선을 따라가요.', set: begin(false, through ? 'through' : 'diagonals'), to: { qdTrace: 1 }, dur: 4 },
+        cue(5.5, through ? 'AOE와 CFO를 비교해요. 대각선의 성질로 AO=CO예요.' : 'AOB와 COD를 비교해요. 평행사변형의 대변 AB=CD예요.', 1, { qdMark: 1 })
+      ], diagState(0)),
+      ch('대응변과 각을 확인', [
+        cue(0, through ? 'A는 C, E는 F, O는 O에 대응하도록 떼어 놓았어요.' : 'A는 C, O는 O, B는 D에 대응하도록 떼어 놓았어요.', 2, { qdCompare: true, qdLine: through ? 'A↔C, E↔F, O↔O' : 'A↔C, O↔O, B↔D' }),
+        cue(5.5, through ? '엇각과 O의 맞꼭지각이 같아 AO 양 끝 각이 같아요.' : 'AB∥CD에서 두 쌍의 엇각이 같아요. ASA 합동이에요.', undefined, { qdLine: through ? 'AO=CO, 양 끝 각이 같다 → ASA' : 'AB=CD, 양 끝 각이 같다 → ASA' })
+      ]),
+      ch('겹친 뒤 대응변 확인', [
+        { at: 0, say: '길이를 보존해 두 삼각형을 옮기면 꼭 포개져요.', to: { qdMatch: 1 }, dur: 4 },
+        cue(5.5, through ? '대응변 OE=OF예요. O는 EF의 중점이에요.' : '대응변 OA=OC, OB=OD예요. 두 대각선은 서로 이등분해요.', 3, { qdCompare: false, qdShowAnswer: true, qdLine: through ? 'OE=OF' : 'OA=OC, OB=OD' })
+      ])
+    ]);
+  }
+  function throughValue(k) {
+    const names = ['BF길이', 'FC길이', '나눈넓이'], ans = ['x=6', 'x=2', 'x=24'];
+    return make(names[k], '교점 O를 지나는 선의 ' + (k === 2 ? '넓이' : '길이'), ans[k], [
+      ch('문제의 전체와 부분', [
+        { at: 0, say: k === 0 ? 'AD=8, AE=2예요. O를 지나는 선이 BC와 F에서 만나요.' : k === 1 ? 'AE=2예요. O를 지나는 EF에서 구하는 부분은 FC예요.' : '전체 넓이는 48이에요. O를 지나는 EF로 나눈 ABFE를 구해요.', set: begin(true, k === 2 ? 'area' : 'through'), to: { qdTrace: 1 }, dur: 4 },
+        cue(5.5, 'OA=OC이고 엇각과 맞꼭지각이 같아서 AOE와 CFO는 합동이에요.', 2, { qdMark: 1 })
+      ], diagState(k)),
+      ch(k === 2 ? '두 사각형의 대응' : '합동인 삼각형의 대응', [
+        cue(0, k === 2 ? 'O를 중심으로 180° 돌리면 A↔C, B↔D, E↔F예요.' : 'A는 C, E는 F, O는 O에 대응해요. 같은 방향으로 놓아요.', 3, { qdCompare: true, qdLine: k === 2 ? 'ABFE ↔ CDEF' : 'AEO ↔ CFO' }),
+        cue(5.5, k === 2 ? '두 부분을 같은 방향으로 놓았어요. 크기를 바꾸지 않았어요.' : 'AO=CO이고 그 양 끝 각이 같으므로 ASA 합동이에요.', undefined, { qdLine: k === 2 ? '회전한 대응점으로 두 부분을 비교' : '한 변과 양 끝 각이 같다' })
+      ]),
+      ch('대응 관계로 값 구하기', [
+        { at: 0, say: k === 2 ? '두 사각형을 겹쳐 보아요. 두 부분의 넓이가 같아요.' : '두 삼각형을 옮겨 겹치면 AE와 CF가 대응해요.', to: { qdMatch: 1 }, dur: 3 },
+        cue(4, k === 0 ? 'CF=AE=2이고 BC=AD=8이에요. BF는 BC에서 CF를 빼요.' : k === 1 ? '같은 대응변의 길이를 옮겨요. 전체 길이를 빼는 문제가 아니에요.' : '두 부분이 전체 48을 똑같이 나누므로 2로 나누어요.', 4, { qdCompare: false, qdCalculationReady: true, qdLine: k === 0 ? 'BC=8, CF=2' : k === 1 ? 'FC=AE' : '두 부분의 넓이가 같다' }),
+        cue(8, k === 0 ? 'x=BF=8−2=6이에요.' : k === 1 ? 'x=FC=AE=2예요.' : 'x=48÷2=24예요.', 5, { qdShowAnswer: true, qdLine: ans[k] })
+      ])
+    ]);
+  }
+  lessons['q1-3'] = [diagonalConcept(false), diagonalConcept(true), throughValue(0), throughValue(1), throughValue(2)];
+
+  function diagonalPerimeter(concept, k) {
+    const ans = concept ? 'P=a+d₁/2+d₂/2' : k ? 'x=5' : '둘레=15';
+    return make(concept ? '둘레의식' : k ? '변역산' : '삼각형둘레', concept ? '대각선으로 삼각형 둘레 구하기' : k ? '둘레에서 변의 길이 구하기' : '대각선의 절반과 둘레', ans, [
+      ch('삼각형의 세 변 찾기', [
+        { at: 0, say: concept ? 'a는 AB, d₁은 AC, d₂는 BD의 길이예요. O는 교점이에요.' : k ? 'AC=8, BD=12이고 ABO의 둘레는 15예요. AB=x예요.' : 'AB=5, AC=8, BD=12예요. ABO의 세 변을 찾아요.', set: begin(!concept), to: { qdTrace: 1 }, dur: 4 },
+        cue(5.5, '삼각형 ABO의 변은 AB, BO, OA예요. 대각선 전체가 아니에요.', 1)
+      ], fixed({ qaDC: 5, qaDA: 8, qaDB: 12, qaK: k })),
+      ch('대각선을 반으로 나누어요', [
+        cue(0, concept ? '대각선은 서로 이등분하므로 OA=d₁/2, OB=d₂/2예요.' : '대각선은 서로 이등분해요. OA=8÷2=4, OB=12÷2=6이에요.', 2, { qdMark: 1, qdCalculationReady: true, qdLine: concept ? 'OA=d₁/2, OB=d₂/2' : 'OA=4, OB=6' }),
+        cue(5.5, !concept && k ? '둘레 15에서 이미 아는 두 변 4와 6을 빼면 AB가 남아요.' : '삼각형의 둘레는 세 변을 한 번씩 더한 길이예요.', 3)
+      ]),
+      ch('전체와 절반을 구별해요', [
+        cue(0, 'AC나 BD 전체를 그대로 넣지 않았는지 확인해요.', 4),
+        cue(5.5, concept ? '따라서 둘레 P=a+d₁/2+d₂/2예요.' : k ? 'x=AB=15−4−6=5예요.' : '둘레=5+4+6=15예요.', 5, { qdShowAnswer: true, qdLine: ans })
+      ])
+    ]);
+  }
+  lessons['q1-4'] = [diagonalPerimeter(true, 0), diagonalPerimeter(false, 0), diagonalPerimeter(false, 1)];
+
+  function isoBisector(concept, k) {
+    const ans = concept ? 'AB=BE, △ABE는 이등변삼각형' : k ? 'x=4' : 'x=5';
+    return make(concept ? '삼각형성질' : k ? '연장선EC' : '안쪽EC', concept ? '이등분선으로 생긴 삼각형' : k ? '연장선 위의 남은 길이' : '변 안쪽의 남은 길이', ans, [
+      ch('이등분선과 점의 순서', [
+        { at: 0, say: concept ? 'AE는 A의 이등분선이에요. AD와 BC의 평행도 확인해요.' : k ? 'AB=8, BC=4예요. E는 C 바깥이므로 B, C, E 순서예요.' : 'AB=5, BC=10예요. E는 B와 C 사이에 있어요.', set: begin(!concept), to: { qdTrace: 1 }, dur: 4 },
+        cue(5.5, '이등분선이므로 BAE와 DAE는 같은 각이에요.', 2)
+      ], fixed({ qaIW: 10, qaIS: 5, qaB: 66, qaK: k, qaPa: 4, qaPb: 8 })),
+      ch('평행선의 엇각 연결', [
+        cue(0, 'AD∥BC이므로 DAE와 AEB는 엇각으로 같아요.', 2, { qdMark: concept ? 1 : 0, qdLine: '∠BAE=∠DAE=∠AEB' }),
+        cue(5.5, concept ? '삼각형 ABE에서 두 밑각이 같으니 그 대변을 비교해요.' : k ? '두 밑각이 같아 BE=AB=8이에요.' : '두 밑각이 같아 BE=AB=5예요.', 3, { qdMark: 1, qdCalculationReady: true, qdLine: concept ? '같은 밑각의 대변을 찾는다' : k ? 'BE=AB=8' : 'BE=AB=5' })
+      ]),
+      ch(concept ? '삼각형의 종류 판단' : '큰 길이에서 작은 길이 빼기', [
+        cue(0, concept ? 'BAE의 대변은 BE, AEB의 대변은 AB예요.' : k ? 'BE 전체에서 BC를 빼야 C 바깥의 CE가 남아요.' : 'BC 전체에서 BE를 빼야 EC가 남아요.', 4),
+        cue(5.5, concept ? 'AB=BE이므로 ABE는 이등변삼각형이에요.' : k ? 'x=CE=8−4=4예요.' : 'x=EC=10−5=5예요.', 5, { qdShowAnswer: true, qdLine: ans })
+      ])
+    ]);
+  }
+  lessons['q1-5'] = [isoBisector(true, 0), isoBisector(false, 0), isoBisector(false, 1)];
 })();
