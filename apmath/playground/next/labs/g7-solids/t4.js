@@ -16,6 +16,11 @@
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
   const rad = (d) => d * DEG;
   const cmv = (v) => fmtN(v) + ' cm';
+  const lessonOn = (s, C) => !!(C.lesson || s.lessonOn || s.lessonEntry);
+  const answerReady = (s, C) => !lessonOn(s, C) || (!s.lessonEntry && !!s.soShowAnswer);
+  // 해설 도입에서는 기존 경로의 호를 실제로 따라 그립니다. 조건과 길이는 바꾸지 않습니다.
+  const lessonArc = (s, C, O, R, a0, a1, step) => lessonOn(s, C) && C.step < step && s.soPathT > 0
+    ? arcPts(O, R, a0, a0 + (a1 - a0) * clamp(s.soPathT, 0, 1)) : null;
 
   const PARAMS = {
     soTr: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st, lab) => { if (lab && lab.scene.id === 's4-3') fixPoint3(st); else fixAng4(st, 0); } }),
@@ -155,7 +160,7 @@
       b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 });
       if (C.txt) { T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 12, size: 17 }); T(b, D.P({ x: 0, y: F.h, z: 0 }), 'O', 'ink', { dy: -14, size: 16 }); }
       // 길이 비교 막대(같은 눈금, 가로로 늘어남)
-      if (C.txt && atStep(C, 2)) {
+      if (C.txt && atStep(C, 2) && answerReady(s, C)) {
         const mx = Math.max(M.rim, M.chord, M.via);
         const nat = chordNat(x, R);
         bars(b, C, F.all, [{ label: '밑면 둘레를 따라', len: M.rim, text: `${2 * r}π cm`, color: SKY, hi: M.mode === 'rim' }, { label: '점 M을 지나게', len: M.via, text: sameLength(M.via, M.chord, R) ? '직선과 같아요' : '직선보다 길어요', color: AMB, hi: M.mode === 'via' }, { label: '전개도의 직선', len: M.chord, text: nat != null && atStep(C, 3) ? `AA′ = ${nat} cm` : '가장 짧아요', color: GRN, hi: M.mode === 'line' }], mx);
@@ -210,7 +215,9 @@
         return;
       }
       const m = M, F = frame(b, s, C, { r, R, x }), O = { x: 0, y: 0 }, D = F.D;
+      const trace = lessonArc(s, C, O, R, m.a0, m.a1, 3);
       b.path(sectorPts(O, R, m.a0, m.a1), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
+      if (trace) b.path(trace, { color: AMB, width: 5 });
       if (atStep(C, 3)) {
         if (ang === 60) b.path([O, m.A, m.A2], { close: true, fill: GRN, fillAlpha: 0.2, color: null });
         b.seg(m.A, m.A2, { color: AMB, width: 5.5 });
@@ -225,16 +232,17 @@
             b.ticks(O, m.A, { color: GRN, count: 1 }); b.ticks(O, m.A2, { color: GRN, count: 1 }); b.ticks(m.A, m.A2, { color: GRN, count: 1 });
             [[m.A, O, m.A2], [m.A2, m.A, O]].forEach((tri) => b.angle(tri[0], tri[1], tri[2], { r: rr, color: ROSE, label: '60°', size: 13 }));
           }
-          if (atStep(C, 4)) T(b, { x: (m.A.x + m.A2.x) / 2, y: (m.A.y + m.A2.y) / 2 }, `AA′ = R = ${R} cm`, AMB, { dy: 22, size: 16 });
+          if (atStep(C, 4) && answerReady(s, C)) T(b, { x: (m.A.x + m.A2.x) / 2, y: (m.A.y + m.A2.y) / 2 }, `AA′ = R = ${R} cm`, AMB, { dy: 22, size: 16 });
           T(b, { x: m.A.x / 2, y: m.A.y / 2 }, `R = ${R}`, SKY, { dx: -34, size: 15 });
         } else {
           T(b, { x: m.A.x / 2, y: m.A.y / 2 }, `R = ${R}`, SKY, { dy: -14, dx: -8, size: 15 }); T(b, { x: m.A2.x / 2, y: m.A2.y / 2 }, `R = ${R}`, SKY, { dy: -14, size: 15 });
           if (atStep(C, 2)) T(b, O, `180°`, ROSE, { dy: 32, size: 15 });
-          if (atStep(C, 4)) T(b, { x: 0, y: -R }, `AA′ = R + R = ${2 * R} cm`, AMB, { dy: 22, size: 16 });
+          if (atStep(C, 4) && answerReady(s, C)) T(b, { x: 0, y: -R }, `AA′ = R + R = ${2 * R} cm`, AMB, { dy: 22, size: 16 });
         }
       }
       S3.drawSolid(D, F.cone, {});
       D.line({ x: 0, y: F.h, z: 0 }, D.pol(r, 0, 0), SKY, 2.4);
+      if (trace) drawString3D(D, F.mp, trace, { kr: r / F.h });
       if (atStep(C, 3)) drawString3D(D, F.mp, segSamples(m.A, m.A2), { kr: r / F.h });
       b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 });
       if (C.txt) { T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 12, size: 17 }); S3.rLabel(b, D, r, `r = ${r}`, SKY, 15); }
@@ -303,9 +311,12 @@
       // P가 꼭짓점 가까이에 있으면 P까지의 부분 전개도를 확대합니다. 전체 입체는 같은 실제 P 위치를 유지합니다.
       const m = M, focusP = p / R < 0.42, F = frame(b, s, C, { r, R, x, layout: focusP ? { maxMs: 1.2, solidMin: 0.16, netMin: 0.5 } : undefined }), O = { x: 0, y: 0 }, D = F.D;
       const P1 = focusP ? m.A : m.P1, P2 = focusP ? m.A2 : m.P2;
-      b.path(sectorPts(O, R, m.a0, m.a1), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
-      b.seg(O, m.A, { color: SKY, width: 2.6 }); b.seg(O, m.A2, { color: SKY, width: 2.6 });
       const lineStep = ang === 60 ? 3 : 2, answerStep = ang === 60 ? 4 : 3;
+      const trace = lessonArc(s, C, O, focusP ? R : p, m.a0, m.a1, lineStep);
+      const solidTrace = lessonArc(s, C, O, p, m.a0, m.a1, lineStep);
+      b.path(sectorPts(O, R, m.a0, m.a1), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
+      if (trace) b.path(trace, { color: AMB, width: 5 });
+      b.seg(O, m.A, { color: SKY, width: 2.6 }); b.seg(O, m.A2, { color: SKY, width: 2.6 });
       if (atStep(C, lineStep)) {
         b.seg(P1, P2, { color: AMB, width: 5.5 });
         if (ang === 60) b.path([O, P1, P2], { close: true, fill: GRN, fillAlpha: 0.2, color: null });
@@ -322,10 +333,12 @@
         const legDx = b.W < 560 && !b.thumb ? -16 : 16;
         T(b, { x: P1.x / 2, y: P1.y / 2 }, `${p}`, ROSE, { dx: legDx, size: 16 }); T(b, { x: P2.x / 2, y: P2.y / 2 }, `${p}`, ROSE, { dx: -legDx, size: 16 });
         if (ang === 60 && atStep(C, 3)) { b.ticks(O, P1, { color: GRN, count: 1 }); b.ticks(O, P2, { color: GRN, count: 1 }); b.ticks(P1, P2, { color: GRN, count: 1 }); }
-        if (atStep(C, answerStep)) T(b, { x: 0, y: ang === 60 ? P1.y : 0 }, ang === 60 ? `PP′ = ${p} cm` : `PP′ = ${p} + ${p} = ${2 * p} cm`, AMB, { dy: 22, size: 16 });
+        if (lessonOn(s, C) && atStep(C, 2)) T(b, O, `${ang}°`, ROSE, { dy: 42, size: 15 });
+        if (atStep(C, answerStep) && answerReady(s, C)) T(b, { x: 0, y: ang === 60 ? P1.y : 0 }, ang === 60 ? `PP′ = ${p} cm` : `PP′ = ${p} + ${p} = ${2 * p} cm`, AMB, { dy: 22, size: 16 });
       }
       S3.drawSolid(D, F.cone, {});
       D.line({ x: 0, y: F.h, z: 0 }, D.pol(r, 0, 0), SKY, 2.4);
+      if (solidTrace) drawString3D(D, F.mp, solidTrace, { kr: r / F.h });
       if (atStep(C, lineStep)) drawString3D(D, F.mp, segSamples(m.P1, m.P2), { kr: r / F.h });
       const f = p / R, Pp = D.P(D.pol(r * f, F.h * (1 - f), 0));
       b.point(Pp, { color: 'ink', r: 5 });
@@ -401,18 +414,21 @@
       fit(b, unionB(Ab, shiftB(cb, off.dx, off.dy)), padS);
       const band = arcPts(O, R2, a0, a1).concat(arcPts(O, R1, a1, a0));
       b.path(band, { close: true, fill: SKY, fillAlpha: 0.26, color: SKY, width: 3 });
+      const trace = lessonArc(s, C, O, R2, a0, a1, 3);
+      if (trace) b.path(trace, { color: AMB, width: 5 });
       b.path(arcPts(O, R1, a0, a1), { color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.8 });
       b.seg(O, pt(O, R1, a0), { color: 'muted', width: 1.4, dash: [4, 4], alpha: 0.7 }); b.seg(O, pt(O, R1, a1), { color: 'muted', width: 1.4, dash: [4, 4], alpha: 0.7 });
       if (atStep(C, 3)) b.seg(A, A2, { color: AMB, width: 5.5 });
       if (C.txt) {
         T(b, A, 'A', 'ink', { dx: -14, dy: 8, size: 17 }); T(b, A2, "A′", 'ink', { dx: 16, dy: 8, size: 17 }); T(b, O, 'O', 'ink', { dy: -14, size: 16 });
-        if (atStep(C, 4)) T(b, { x: 0, y: A.y }, `AA′ = R₂ = ${R2} cm`, AMB, { dy: 22, size: 16 });
+        if (atStep(C, 4) && answerReady(s, C)) T(b, { x: 0, y: A.y }, `AA′ = R₂ = ${R2} cm`, AMB, { dy: 22, size: 16 });
         T(b, { x: A.x / 2, y: A.y / 2 }, `R₂ = ${R2}`, SKY, { dx: -34, size: 14 });
         if (R1 * b.k >= 60) T(b, pt(O, R1, -90), `R₁ = ${R1}`, 'muted', { dy: -16, size: 14 });
         else T(b, pt(O, R1, a0), `R₁ = ${R1}`, 'muted', { dx: -8, dy: 2, size: 14, align: 'right' }); // 안쪽 호가 작으면 60° 표시와 겹치지 않게 왼쪽 가장자리 옆에
         if (atStep(C, 2)) b.angle(O, pt(O, 1, a0), pt(O, 1, a1), { r: Math.min(R1 * 0.5, px(b, 26)), color: ROSE, label: '60°', size: 13 });
       }
       S3.drawSolid(D, frus, {});
+      if (trace) drawString3D(D, mp, trace, { kr: r2 / Hf });
       if (atStep(C, 3)) drawString3D(D, mp, segSamples(A, A2), { kr: r2 / Hf });
       b.point(D.P(D.pol(r2, 0, 0)), { color: 'ink', r: 5 });
       if (C.txt) { T(b, D.P(D.pol(r2, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 }); S3.rLabel(b, D, r2, `${r2}`, SKY, 14); S3.rLabel(b, D, r1, `${r1}`, AMB, 14, hF); }

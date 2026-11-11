@@ -31,6 +31,13 @@
   };
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
   const cmv = (v) => fmtN(v) + ' cm';
+  const lessonOn = (s) => !!(s.lessonOn || s.lessonEntry);
+  const answerReady = (s) => lessonOn(s) && !s.lessonEntry && s.soShowAnswer === true;
+  function lessonRow(b, s, text) {
+    if (!answerReady(s) || b.thumb || !text) return;
+    const size = Math.max(13, Math.min(16, 16 * (b.W - 28) / Math.max(1, G.textW(text, 16))));
+    b.stext((b.W + b.insets.left - b.insets.right) / 2, b.insets.top + 17, text, { color: GRN, size, weight: 800, align: 'center', baseline: 'middle' });
+  }
 
   /* ------------------------------------------------------------------ 공통 그리기 */
   // 반지름·높이 평면(θ=0) 위의 직각 표시
@@ -53,6 +60,7 @@
     D.g.path(S3.figAt(D, sol.poly, 0), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: C.review && C.step === 1 ? 4.6 : 3.4 });
     if (C.txt && o.labels) o.labels(D, M, C);
     if (!C.thumb && C.tab === 'explore' && o.handles) o.handles(D, b, s, M);
+    if (C.txt && o.answer) lessonRow(b, s, o.answer(M));
     return D;
   }
   // 문제용 2차원 평면도형(축은 점선). horiz: 축을 가로로
@@ -132,11 +140,12 @@
         return;
       }
       explore3D(b, s, M, C, {
+        answer: (m) => s.soLessonMode === 'radius' ? `반지름 ${m.R} cm` : s.soLessonMode === 'height' ? `높이 ${m.h} cm` : '원기둥',
         labels: (D, m) => {
           const sz = Math.min(0.35, m.R * 0.22, m.h * 0.22);
           [[0, 0, [1, 0], [0, 1]], [m.R, 0, [-1, 0], [0, 1]], [m.R, m.h, [-1, 0], [0, -1]], [0, m.h, [1, 0], [0, -1]]].forEach((c) => rm(D, [c[0], c[1]], c[2], c[3], sz));
-          S3.rLabel(D.b, D, m.R, `r = ${m.R} cm`, AMB, 16);
-          D.lab({ x: m.R, y: m.h / 2, z: 0 }, `h = ${m.h} cm`, AMB, { dx: 44 });
+          S3.rLabel(D.b, D, m.R, lessonOn(s) && !answerReady(s) ? `가로 ${m.R} cm` : `r = ${m.R} cm`, AMB, 16);
+          D.lab({ x: m.R, y: m.h / 2, z: 0 }, lessonOn(s) && !answerReady(s) ? `세로 ${m.h} cm` : `h = ${m.h} cm`, AMB, { dx: 44 });
         },
         handles: (D, bd, st, m) => bd.handle('rh', D.P({ x: m.R, y: m.h, z: 0 }), { color: AMB, ariaLabel: '직사각형의 오른쪽 위 꼭짓점', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soR = clamp(Math.round(u.rho), 1, 15); st.soH1 = clamp(Math.round(u.y), 2, 20); } })
       });
@@ -198,6 +207,7 @@
       }
       const top = M.ax === 'AB' ? 'A' : 'C', side = M.ax === 'AB' ? 'C' : 'A';
       explore3D(b, s, M, C, {
+        answer: (m) => s.soLessonMode === 'area' ? `밑넓이 = π × ${m.r} × ${m.r} = ${piT(m.r * m.r)} cm²` : `반지름 ${m.r} cm · 높이 ${m.h} cm`,
         labels: (D, m) => {
           rm(D, [0, 0], [1, 0], [0, 1], Math.min(0.35, m.r * 0.25, m.h * 0.25));
           D.lab({ x: 0, y: 0, z: 0 }, 'B', 'ink', { dx: -14, dy: 14 });
@@ -258,6 +268,7 @@
       }
       explore3D(b, s, M, C, {
         axisDx: -46,
+        answer: (m) => s.soLessonMode === 'area' ? `큰 밑면의 넓이 = π × ${m.R} × ${m.R} = ${piT(m.R * m.R)} cm²` : '원뿔대',
         labels: (D, m) => {
           const sz = Math.min(0.35, m.r * 0.25, m.h * 0.25);
           rm(D, [0, 0], [1, 0], [0, 1], sz); rm(D, [0, m.h], [1, 0], [0, -1], sz);
@@ -316,12 +327,14 @@
         });
         return;
       }
-      explore3D(b, s, M, C, {
+      const drawn = lessonOn(s) && s.soFullCircle ? { ...M, sol: { ...M.sol, poly: Array.from({ length: 49 }, (_, i) => { const a = -PI / 2 + 2 * PI * i / 48; return [M.R * Math.cos(a), M.R * Math.sin(a)]; }) } } : M;
+      explore3D(b, s, drawn, C, {
+        answer: (m) => s.soLessonMode === 'radius' ? `구의 반지름 = ${2 * m.R} ÷ 2 = ${m.R} cm` : s.soFullCircle ? '원 전체도 같은 구' : '구',
         labels: (D, m) => {
           const a = 35 * DEG;
           D.line({ x: 0, y: 0, z: 0 }, { x: m.R * Math.cos(a), y: m.R * Math.sin(a), z: 0 }, AMB, 3);
           D.g.path([D.P({ x: 0, y: -m.R, z: 0 }), D.P({ x: 0, y: m.R, z: 0 })], { color: AMB, width: 3.2 });
-          D.lab({ x: m.R * Math.cos(a) * 0.55, y: m.R * Math.sin(a) * 0.55, z: 0 }, `r = ${m.R} cm`, AMB, { dx: 28, dy: -10 });
+          D.lab({ x: m.R * Math.cos(a) * 0.55, y: m.R * Math.sin(a) * 0.55, z: 0 }, lessonOn(s) && s.soLessonMode === 'radius' && !answerReady(s) ? '반지름 r' : `r = ${m.R} cm`, AMB, { dx: 28, dy: -10 });
           D.lab({ x: 0, y: -m.R / 2, z: 0 }, `지름 ${2 * m.R} cm`, AMB, { dx: -52 });
           D.g.path([D.P({ x: 0, y: 0, z: 0 })], {});
           D.lab({ x: 0, y: 0, z: 0 }, 'O', 'ink', { dx: -11, dy: 12, size: 15 });
@@ -392,6 +405,7 @@
       }
       const tri = M.kind === 'tri';
       explore3D(b, s, M, C, {
+        answer: (m) => m.name,
         labels: (D, m) => {
           if (!tri) {
             const sz = Math.min(0.3, m.w * 0.25, m.h * 0.25);
@@ -409,7 +423,7 @@
             D.lab({ x: m.r * 0.55, y: m.h1 * 0.5, z: 0 }, `${3 * k}`, AMB, { dx: 18, dy: 6 });
             D.lab({ x: m.r * 0.55, y: m.h1 + (m.h2 * 0.5), z: 0 }, `${4 * k}`, AMB, { dx: 22, dy: -4 });
             D.lab({ x: 0, y: 2.5 * k, z: 0 }, `빗변 ${5 * k}`, AMB, { dx: -50 });
-            D.lab({ x: m.r / 2, y: m.h1, z: 0 }, `${fmtN(m.r)}`, GRN, { dy: 16, size: 15 });
+            D.lab({ x: m.r / 2, y: m.h1, z: 0 }, lessonOn(s) ? '축까지 거리' : `${fmtN(m.r)}`, GRN, { dy: 16, size: 15 });
           }
         },
         handles: (D, bd, st, m) => { if (m.kind === 'rect') bd.handle('d', D.P({ x: m.d, y: m.h, z: 0 }), { color: AMB, ariaLabel: '도형을 가로로 옮기기', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soD = clamp(Math.round(u.rho), 0, 15); } }); }
@@ -471,11 +485,12 @@
         D.g.path(S3.figAt(D, sol.poly, 0), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 });
       }
       if (C.txt) solidDims(D, sol, {});
+      if (C.txt) lessonRow(b, s, M.kind === 'frus' ? '직각이 두 개인 사다리꼴' : M.kind === 'pencil' ? '직사각형과 직각삼각형을 붙인 도형' : M.kind === 'dbl' ? '축에 두 꼭짓점이 닿는 삼각형' : '직사각형 두 개를 붙인 도형');
     },
     steps: (M) => [
       '회전체를 <b>회전축을 지나는 평면</b>으로 반으로 잘라요.',
       '축의 <b>한쪽</b> 단면만 남겨요. 반대쪽까지 그리지 않아요.',
-      `그 단면이 회전하기 전의 평면도형이에요. 여기서는 ${M.kind === 'frus' ? '직각이 두 개인 사다리꼴' : M.kind === 'pencil' ? '직사각형과 직각삼각형을 붙인 도형' : M.kind === 'dbl' ? '직각삼각형 하나(축에 꼭짓점 두 개가 닿는 삼각형)' : '직사각형 두 개를 붙인 도형'}이에요.`,
+      `그 단면이 회전하기 전의 평면도형이에요. 여기서는 ${M.kind === 'frus' ? '직각이 두 개인 사다리꼴' : M.kind === 'pencil' ? '직사각형과 직각삼각형을 붙인 도형' : M.kind === 'dbl' ? '삼각형 하나(축에 꼭짓점 두 개가 닿는 삼각형)' : '직사각형 두 개를 붙인 도형'}이에요.`,
       '축은 도형의 <b>한쪽 가장자리</b>에 놓여요. 축 양쪽에 대칭으로 그려진 그림은 답이 아니에요.'
     ],
     view: (M, C) => ({
@@ -561,6 +576,11 @@
         const R = K7D[kind].R * k;
         const circ = (R2) => { const q = []; for (let i = 0; i <= 48; i++) q.push({ x: ins.x + R2 * Math.cos(2 * PI * i / 48), y: ins.y + R2 * Math.sin(2 * PI * i / 48) }); return q; };
         b.path(circ(R), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
+        if (lessonOn(s)) {
+          const point = { x: ins.x + R * Math.cos(M.rot), y: ins.y + R * Math.sin(M.rot) };
+          b.path([{ x: ins.x, y: ins.y }, point], { color: AMB, width: 2.2 });
+          b.point(point, { color: AMB, r: 4 });
+        }
         if (kind === 'frus') b.path(circ(K7D.frus.r * k), { close: true, color: SKY, width: 2.2 });
         if (C.txt) T(b, { x: ins.x, y: ins.y - th }, '원 — 돌려도 같아요', GRN, { dy: 8, size: 15 });
       } else {
@@ -572,6 +592,7 @@
       if (C.txt && C.review) {
         if (C.step >= 2) T(b, { x: 0, y: narrow && !b.thumb ? ins.y + th + 26 / b.k : -0.9 }, rev ? '곡면이 있고 회전축이 있어요' : '평평한 면(다각형)만 있어요', rev ? GRN : 'rose', { size: 16 });
       }
+      if (C.txt) lessonRow(b, s, `${M.name}${jo(M.name, 'eun')} ${rev ? '회전체예요' : '회전체가 아니에요'}`);
     },
     steps: (M) => [
       `입체 <b>${M.name}</b>의 면을 살펴요. ${M.rev ? '둥근 곡면이 있어요.' : '모든 면이 평평한 다각형이에요.'}`,

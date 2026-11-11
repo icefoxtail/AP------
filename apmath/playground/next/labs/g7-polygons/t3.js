@@ -70,7 +70,7 @@
     draw(b, s, M, C) {
       const { n, V, O } = M;
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 92 });
-      const k = C.problem ? 0 : C.review ? (C.step >= 2 ? n : C.step >= 1 ? n : 0) : C.t * n;
+      const k = C.problem ? 0 : C.lesson ? C.t * n : C.review ? (C.step >= 2 ? n : C.step >= 1 ? n : 0) : C.t * n;
       const nTri = Math.min(n, Math.floor(k + 1e-6));
       const part = clamp(k - nTri, 0, 1);
       const cen = pt(0, 0);
@@ -95,7 +95,10 @@
         const yb = Math.max(...V.map((p) => p.y));
         let r1 = '', r2 = '', c1 = 'sky', c2 = 'amber';
         if (C.problem) r1 = `${n}각형의 내각의 합은?`;
-        else {
+        else if (C.lesson) {
+          r1 = s.pgBAsk === 'count' ? s.pgShowAnswer ? `삼각형 ${n}개` : '점 O에서 각 꼭짓점을 이어요' : s.pgBStage >= 2 ? `삼각형의 각의 합: 180°×${n} = ${M.tri}°` : s.pgBStage >= 1 ? `삼각형 ${n}개` : '안쪽의 점 O와 꼭짓점을 이어요';
+          if (s.pgBAsk === 'sum') r2 = s.pgShowAnswer ? `내각의 합 = ${M.S}° = 180°×(${n}−2)` : s.pgBStage >= 3 ? '점 O 둘레의 360°를 빼요' : '';
+        } else {
           const full = nTri >= n;
           r1 = `삼각형 ${nTri}개 → 180°×${nTri} = ${180 * nTri}°`;
           if (full) r2 = C.review && C.step < 3 ? '' : `점 O 둘레 360° 빼기 → ${M.S}° = 180°×(${n}−2)`;
@@ -165,37 +168,46 @@
       const concaveNow = gg.concave, st = C.step;
       fillPoly(b, V, 'sky', 0.1);
       // 보조선: 오목한 꼭짓점 P(=V0)에서 이웃하지 않는 꼭짓점으로 (n−3개)
-      const showFan = !C.problem && (st >= 1);
-      if (showFan) for (let j = 2; j <= n - 2; j++) line(b, V[0], V[j], 'green', st >= 1 && st < 99 ? 3.6 : 2.6, { dash: st < 99 ? undefined : [7, 6] });
+      const showFan = !C.problem && (C.lesson ? s.pgBLine > 0 : st >= 1);
+      if (showFan) for (let j = 2; j <= n - 2; j++) line(b, V[0], C.lesson ? lerp(V[0], V[j], clamp(s.pgBLine, 0, 1)) : V[j], 'green', st >= 1 && st < 99 ? 3.6 : 2.6, { dash: st < 99 ? undefined : [7, 6] });
       poly(b, V, 'ink', 3.4);
       V.forEach((p, i) => {
         const nm = i === 0 ? 'P' : LET[i - 1];
         const u = V[(i + n - 1) % n], w = V[(i + 1) % n], isP = i === 0, big = iv[i] > 180;
         const given = !(C.problem && isP);
         const col = isP ? 'amber' : 'sky';
-        const hiddenP = isP && (C.problem || (C.review && st < 3));
-        ang(b, p, u, w, { color: isP ? 'rose' : 'sky', big: big, r: isP ? 28 : 26, label: isP ? (hiddenP ? (!big ? 'x' : '') : `${iv[i]}°`) : '', size: 16, fa: 0.14, labelRot: isP && big ? 45 : 0 });
+        const hiddenP = isP && (C.problem || (C.lesson ? s.pgBAsk === 'sum' || !(s.pgShowAnswer || s.pgBStage >= 2) : C.review && st < 3));
+        ang(b, p, u, w, { color: isP ? 'rose' : 'sky', big: big, r: isP ? 28 : 26, label: isP ? (C.lesson && s.pgBAsk === 'sum' ? '' : hiddenP ? (!big ? 'x' : '') : `${iv[i]}°`) : '', size: 16, fa: 0.14, labelRot: isP && big ? 45 : 0 });
         b.point(p, { color: 'ink', r: 4.5 });
         void col; void nm;
       });
       // 오목한 꼭짓점의 바깥(움푹한) 각 x
-      if (concaveNow && (C.full || st >= 3 || C.problem)) ang(b, V[0], V[n - 1], V[1], { color: 'amber', r: 40, label: C.problem ? 'x' : `x=${x}°`, size: 17, fa: 0.18, labelDist: 66 });
+      if (concaveNow && (C.lesson ? s.pgBAsk === 'angle' : C.full || st >= 3 || C.problem)) ang(b, V[0], V[n - 1], V[1], { color: 'amber', r: 40, label: C.problem || (C.lesson && !s.pgShowAnswer) ? 'x' : `x=${x}°`, size: 17, fa: 0.18, labelDist: 66 });
       if (C.txt) {
         // 급한 각의 이등분선에 숫자를 밀어 넣으면 P의 큰 각과 겹칩니다.
         // 꼭짓점 이름과 주어진 각을 함께 바깥에 두고, 호는 실제 내각에 남깁니다.
-        V.forEach((p, i) => tagOut(b, p, i === 0 ? pt(-5, 0) : cen, i === 0 ? 'P' : `${LET[i - 1]} ${iv[i]}°`, { size: i === 0 ? 18 : 16, gap: 11, color: i === 0 ? 'ink' : 'sky' }));
+        V.forEach((p, i) => tagOut(b, p, i === 0 ? pt(-5, 0) : cen, i === 0 ? 'P' : C.lesson && s.pgBAsk === 'sum' ? LET[i - 1] : `${LET[i - 1]} ${iv[i]}°`, { size: i === 0 ? 18 : 16, gap: 11, color: i === 0 ? 'ink' : 'sky' }));
         if (!C.problem && !C.thumb && !C.review) b.handle('P', V[0], { color: 'amber', r: 8, ariaLabel: '꼭짓점 P 가로로 끌기', drag: (w) => { s.pgCf = clamp((w.x - XMIN) / (1 - XMIN), 0, 1); } });
         else b.point(V[0], { color: 'amber', r: 6.5 });
         const yb = shape.y1, cx = (b.focus.x[0] + b.focus.x[1]) / 2;
         let r1, r2 = '', c1 = 'sky', c2 = 'amber';
         if (C.problem) { r1 = gg.flat ? 'P에서 두 변이 이루는 각 x는?' : `내각의 합 = 180°×(${n}−2) = ${M.S}°`; r2 = ''; }
+        else if (C.lesson) {
+          if (s.pgBAsk === 'sum') {
+            r1 = s.pgShowAnswer ? `내각의 합은 그대로: ${M.S}°` : s.pgBStage >= 1 ? `대각선으로 삼각형 ${n - 2}개` : '꼭짓점 P를 안쪽으로 옮겨 봐요';
+            r2 = s.pgShowAnswer ? `180°×(${n}−2) = ${M.S}°` : '';
+          } else {
+            r1 = s.pgBStage >= 2 ? `P의 안쪽 각 = ${iv[0]}°` : '안쪽 각과 움푹한 쪽의 x를 구별해요';
+            r2 = s.pgShowAnswer ? `x = 360° − ${iv[0]}° = ${x}°` : s.pgBStage >= 1 ? `안쪽 각 = ${M.S}° − (${iv.slice(1).join('°+')}°)` : '';
+          }
+        }
         else if (C.review && st === 0) r1 = '주어진 각과 점 P를 확인해요';
         else if (gg.flat) { r1 = 'P에서 두 변이 한 직선을 이뤄요'; r2 = st >= 3 ? '평각 = 180°' : ''; }
         else if (st === 1) { r1 = `P에서 대각선 ${n - 3}개 → 삼각형 ${n - 2}개`; c1 = 'green'; }
         else if (st === 2) { r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°`; }
         else if (concaveNow) { r1 = `안쪽 각 ${iv[0]}° (180° 넘어요)`; r2 = `x = 360° − ${iv[0]}° = ${x}°`; }
         else { r1 = `볼록: 안쪽 각 ${iv[0]}° < 180°`; r2 = `내각의 합 = ${M.S}°`; c2 = 'sky'; }
-        if (!C.problem && st >= 99 && concaveNow) r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°` + (b.W < 560 ? '' : `  ·  P의 안쪽 각 ${iv[0]}°`);
+        if (!C.problem && !C.lesson && st >= 99 && concaveNow) r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°` + (b.W < 560 ? '' : `  ·  P의 안쪽 각 ${iv[0]}°`);
         T(b, pt(cx, yb), r1, { dy: 44, size: b.W < 560 ? 15 : 17, color: c1 });
         T(b, pt(cx, yb), r2, { dy: 72, size: 17, color: c2 });
       }
@@ -266,10 +278,13 @@
       W.forEach((p, i) => { if (f > 0.08) { b.point(p, { color: 'ink', r: 4.5 }); } });
       if (!C.txt) return;
       if (f > 0.35) W.forEach((p, i) => tagOut(b, p, G0, LET[i], { size: n > 9 ? 14 : 16, gap: rpx * 0.55 + 12, color: 'ink', alpha: 0.9 }));
-      if (t >= 0.95) T(b, G0, '360°', { size: 22, color: 'amber' });
+      if (t >= 0.95 && (!C.lesson || s.pgShowAnswer)) T(b, G0, '360°', { size: 22, color: 'amber' });
       const yb = 1.1;
       let r1, r2 = '', c1 = 'rose';
       if (C.problem) r1 = '다각형의 외각의 크기의 합은?';
+      else if (C.lesson) {
+        r1 = s.pgShowAnswer ? `${n}개의 외각의 합 = 360°` : s.pgBStage >= 2 ? '모인 외각이 한 바퀴를 채워요' : '외각의 크기를 유지하며 모아요';
+      }
       else if (C.review && C.step === 0) r1 = '각 꼭짓점의 외각을 확인해요';
       else if (C.review && C.step === 1) r1 = `꼭짓점마다 외각이 하나씩 있어요 (${n}개)`;
       else if (t < 0.95) r1 = n <= 6 && b.W >= 560 ? `외각의 합 = ${eps.join('° + ')}° = 360°` : `외각 ${n}개의 합 = ${eps.reduce((a, c) => a + c, 0)}°`;
@@ -301,7 +316,7 @@
   };
 
   /* ====================================================================== 4·5. 외각으로 바꿔 구하기 (오각형) */
-  function pentDraw(b, M, C, given, kind) {
+  function pentDraw(b, M, C, given, kind, s) {
     // given[i] : {kind:'int'|'ext', v} (i=0..3), x 는 꼭짓점 E(i=4)
     const { V, eps, ints } = M;
     const th = [0]; for (let i = 1; i < 5; i++) th[i] = th[i - 1] + eps[i];
@@ -313,23 +328,24 @@
     const cen = pt(0, 0), st = C.step;
     fillPoly(b, V, 'sky', 0.1);
     poly(b, V, 'ink', 3.4);
-    const showAllExt = !C.problem && (C.full || st >= 1);
+    const showAllExt = !C.problem && (C.lesson ? s.pgBLine > 0 : C.full || st >= 1);
     const k = b.k || 60;
     for (let i = 0; i < 5; i++) {
       const p = V[i], u = V[(i + 4) % 5], w = V[(i + 1) % 5], g = i < 4 ? given[i] : { kind: 'int' };
       const isX = i === 4;
-      const showInt = g.kind === 'int' ? true : (C.full || st >= 1) && !C.problem;
-      const showExt = g.kind === 'ext' ? true : showAllExt && !isX ? true : (isX && (C.full || st >= 3) && !C.problem);
+      const showInt = C.lesson ? g.kind === 'int' : g.kind === 'int' ? true : (C.full || st >= 1) && !C.problem;
+      const showExt = g.kind === 'ext' ? true : showAllExt && !isX ? true : (isX && (C.lesson ? s.pgBStage >= 3 : C.full || st >= 3) && !C.problem);
       if (showInt) {
-        const lab = isX ? (C.problem || (C.review && st < 3) ? 'x' : `${compact ? '' : 'x='}${ints[i]}°`) : `${ints[i]}°`;
+        const lab = isX ? (C.problem || (C.lesson ? !s.pgShowAnswer : C.review && st < 3) ? 'x' : `${C.lesson || !compact ? 'x=' : ''}${ints[i]}°`) : `${ints[i]}°`;
         ang(b, p, u, w, { color: isX ? 'amber' : 'sky', r: compact ? 16 : 30, label: lab, size: 16, fa: isX ? 0.28 : 0.22, ...(compact ? { labelDist: 29 } : {}) });
       }
       if (showExt) {
         const a0 = th[(i + 4) % 5];
         const ext = pt(p.x + cos(a0) * 0.4, p.y + sin(a0) * 0.4);
-        b.path([p, ext], { color: 'rose', width: 2, dash: [5, 4] });
+        b.path([p, C.lesson && g.kind === 'int' ? lerp(p, ext, clamp(s.pgBLine, 0, 1)) : ext], { color: 'rose', width: 2, dash: [5, 4] });
+        const ready = !C.lesson || g.kind === 'ext' || (isX ? s.pgBStage >= 4 : s.pgBStage >= (i < 2 ? 1 : 2));
         const faded = (g.kind === 'int' && !isX);
-        ang(b, p, ext, w, { color: 'rose', r: compact ? 22 : 46, label: `${eps[i]}°`, size: 15, fa: faded ? 0.12 : 0.26, alpha: faded ? 0.8 : 1, labelDist: compact ? 42 : 76 });
+        ang(b, p, ext, w, { color: 'rose', r: compact ? 22 : 46, label: ready ? `${eps[i]}°` : isX ? 'e' : '', size: 15, fa: faded ? 0.12 : 0.26, alpha: faded ? 0.8 : 1, labelDist: compact ? 42 : 76 });
       }
     }
     V.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (C.txt) tagOut(b, p, cen, LET[i], { size: 18, gap: 11 }); });
@@ -354,12 +370,17 @@
       reroll: (s) => { keys.forEach((k) => { s[k] = rint(PARAMS[k].min, PARAMS[k].max); }); },
       model,
       draw(b, s, M, C) {
-        const r = pentDraw(b, M, C, M.given, kind);
+        const r = pentDraw(b, M, C, M.given, kind, s);
         if (!C.txt || (!C.thumb && b.W < 560)) return;
         const st = C.step, yb = r.yb;
         let r1, r2 = '', c1 = 'sky';
         const sumE = M.sum4;
         if (C.problem) r1 = '∠E = x 의 크기는?';
+        else if (C.lesson) {
+          r1 = s.pgBStage >= 4 ? `E의 외각 e = 360° − ${sumE}° = ${M.ex}°` : s.pgBStage >= 3 ? `${sumE}° + e = 360°` : '내각 + 외각 = 180°';
+          r2 = s.pgShowAnswer ? `x = 180° − ${M.ex}° = ${M.x}°` : '';
+          c1 = 'rose';
+        }
         else if (C.review && st === 0) r1 = '주어진 내각과 외각을 확인해요';
         else if (st === 1) { r1 = '내각 → 외각 : 180° − 내각'; c1 = 'rose'; }
         else if (st === 2) { r1 = `외각 5개의 합 = 360°`; r2 = `${sumE}° + (E의 외각) = 360°`; c1 = 'rose'; }

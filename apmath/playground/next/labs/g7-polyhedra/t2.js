@@ -20,6 +20,7 @@
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
   const stepOf = (C) => (C.problem ? 0 : C.review ? C.step : 4);
+  const lessonReady = (s,C) => !C.lesson || !!s.phShowAnswer;
   // 맨 위 줄글(banner)이 차지하는 높이(px): 그림 위 여백을 줄 수에 맞춰 잡습니다. n = 줄 수, sz = 글자 크기
   const topFor = (n, sz = 15, extra = 8) => 16 + n * (sz + 9) + extra;
   const PNAME = { 3: '정삼각형', 4: '정사각형', 5: '정오각형', 6: '정육각형' };
@@ -75,11 +76,11 @@
         const a0 = -PI / 2 + q * th * DEG, a1 = a0 + gap * DEG, rr = 0.9;
         const arc = [{ x: 0, y: 0 }]; for (let k = 0; k <= 24; k++) { const a = a0 + (a1 - a0) * (k / 24); arc.push({ x: rr * Math.cos(a), y: rr * Math.sin(a) }); }
         b.path(arc, { close: true, fill: RED, fillAlpha: 0.4, color: RED, width: 2.4 });
-        if (C.txt) b.text({ x: 0.62 * Math.cos((a0 + a1) / 2) * 1.35, y: 0.62 * Math.sin((a0 + a1) / 2) * 1.35 }, `${Math.round(gap)}°`, { color: RED, size: 15, weight: 800, align: 'center', baseline: 'middle' });
+        if (C.txt && (!C.lesson || (s.phBStage||0)>=2)) b.text({ x: 0.62 * Math.cos((a0 + a1) / 2) * 1.35, y: 0.62 * Math.sin((a0 + a1) / 2) * 1.35 }, `${Math.round(gap)}°`, { color: RED, size: 15, weight: 800, align: 'center', baseline: 'middle' });
       }
       // 각 표시(한 면의 꼭짓점에서의 각)
       polys.forEach((pl, i) => {
-        if (C.txt && !C.problem) {
+        if (C.txt && !C.problem && (!C.lesson || (s.phBStage||0)>=1)) {
           const rr = 0.42 + (p === 3 ? 0.1 : 0.2);
           b.text({ x: rr * Math.cos(pl.mid), y: rr * Math.sin(pl.mid) }, `${Math.round(th)}°`, { color: 'ink', size: 14, weight: 800, align: 'center', baseline: 'middle' });
         }
@@ -92,19 +93,19 @@
         for (let i = 0; i < q; i++) {
           const w = th * k, over = x - x0 + w > 360 * k + 1;
           sRect(b, x, y - 17, x + w, y + 17, over ? RED : SKY, 0.4);
-          if (w > 22) b.stext(x + w / 2, y, `${Math.round(th)}°`, { color: 'ink', size: 14, weight: 800, align: 'center', baseline: 'middle' });
+          if (w > 22 && (!C.lesson || (s.phBStage||0)>=1)) b.stext(x + w / 2, y, `${Math.round(th)}°`, { color: 'ink', size: 14, weight: 800, align: 'center', baseline: 'middle' });
           x += w;
         }
         // 360° 기준선
         const xr = x0 + 360 * k;
         b.path([b.toW(xr, y - 26), b.toW(xr, y + 26)], { color: GRN, width: 3 });
         b.stext(xr, y - 38, '360°', { color: GRN, size: 14, weight: 800, align: 'center', baseline: 'middle' });
-        b.stext(x0, y + 34, `${Math.round(th)}° × ${q} = ${Math.round(sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'left', baseline: 'middle' });
+        if(!C.lesson || (s.phBStage||0)>=2) b.stext(x0, y + 34, `${Math.round(th)}° × ${q} = ${Math.round(sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'left', baseline: 'middle' });
       }
       if (C.txt && !C.problem) {
         const v = verdict(p, q);
         const t = v.kind === 'ok' ? `${Math.round(sum)}° < 360° → 입체가 돼요 (${nameOfPlat(v.key)})` : v.kind === 'flat' ? '합이 360° → 평평해서 입체가 안 돼요' : `합이 360°보다 커서 겹쳐요 → 입체가 안 돼요`;
-        banner(b, [{ t: `${PNAME[p]} ${q}개`, c: 'ink', size: 17 }, st >= 3 || st === 4 ? { t, c: v.kind === 'ok' ? GRN : RED, size: 15 } : null], C);
+        banner(b, [{ t: `${PNAME[p]} ${q}개`, c: 'ink', size: 17 }, (st >= 3 || st === 4) && lessonReady(s,C) ? { t, c: v.kind === 'ok' ? GRN : RED, size: 15 } : null], C);
       }
     },
     steps: (M) => [
@@ -182,10 +183,10 @@
         face: (fi, vis) => (!vis ? null : fi === hlFace && (st === 1 || st === 4) ? { c: SKY, a: 0.4 } : hv >= 0 && S.vf[hv].includes(fi) ? { c: AMB, a: 0.36 } : { c: 'green', a: 0.14 }),
         edge: () => ({ color: 'ink', width: 3.2 })
       });
-      if (C.txt && hlFace >= 0 && (st === 1 || st === 4)) D.label(faceMid(S.V, S.F[hlFace]), I.face, { color: SKY, size: 14, at: [[0, 0]] });
+      if (C.txt && hlFace >= 0 && (st === 1 || st === 4) && (!C.lesson || s.phBAsk!=='face' || s.phShowAnswer)) D.label(faceMid(S.V, S.F[hlFace]), I.face, { color: SKY, size: 14, at: [[0, 0]] });
       if (hv >= 0) {
         D.dot(S.V[hv], AMB, 8);
-        if (C.txt) D.label(S.V[hv], `한 꼭짓점에 모인 면 ${I.q}개`, { color: AMB, size: 14, dir: D.out(S.V[hv], S.ctr), gap: 16 });
+        if (C.txt && lessonReady(s,C)) D.label(S.V[hv], `한 꼭짓점에 모인 면 ${I.q}개`, { color: AMB, size: 14, dir: D.out(S.V[hv], S.ctr), gap: 16 });
       }
       PLAT_KEYS.forEach((k, i) => {
         const sel = k === M.k;
@@ -195,7 +196,10 @@
         const L = [{ t: `${I.name}: ${I.face} ${I.F}개, 한 꼭짓점에 ${I.q}개씩`, c: 'ink', size: 16 }];
         if (st === 2) L.push({ t: `모서리 = ${I.p}×${I.F}÷2 = ${I.E}개`, c: SKY, size: 15 });
         if (st === 3) L.push({ t: `꼭짓점 = ${I.p}×${I.F}÷${I.q} = ${I.V}개`, c: AMB, size: 15 });
-        banner(b, L, C);
+        if(C.lesson) banner(b,[{t:I.name,c:'ink',size:17},
+          s.phShowAnswer?{t:s.phBAsk==='face'?`면의 모양: ${I.face}`:`한 꼭짓점에 모인 면 ${I.q}개`,c:AMB,size:16}:
+          {t:s.phBAsk==='face'?'강조한 한 면의 변을 살펴봐요':'한 꼭짓점을 함께 가지는 면을 살펴봐요',c:SKY,size:14}],C);
+        else banner(b, L, C);
         if (C.tab === 'explore' && !C.thumb) {
           const i = PLAT_KEYS.indexOf(M.k), hp = D.P(add3(mini[i], v3(0, 0, -(spPx * 0.5) / kpx / cp)));
           b.handle('sel', hp, { color: 'amber', r: 8.5, ariaLabel: '정다면체 고르기', drag: (w) => { let best = 0, bd = 1e18; mini.forEach((c, j) => { const q = D.P(c), d = (q.x - w.x) ** 2; if (d < bd) { bd = d; best = j; } }); s.phSel = PLAT_KEYS[best]; } });
@@ -256,7 +260,7 @@
     model: (s) => ({ ex: s.phEx || 'bi', join: clamp(s.phJoin, 0, 1), Q: s.phQ }),
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C), F = frameOf(s), a = 2.4;
-      const ex = C.problem ? 'bi' : M.ex, join = C.problem ? 1 : C.review ? (st <= 1 ? 0 : 1) : M.join;
+      const ex = C.problem ? 'bi' : M.ex, join = C.problem ? 1 : C.lesson ? M.join : C.review ? (st <= 1 ? 0 : 1) : M.join;
       const vcount = [];
       if (ex === 'bi') {
         const gap = (1 - join) * 2.8;
@@ -270,15 +274,15 @@
           const S = solidOf(A.tri.concat([A.apex, B.apex]));
           const info = drawPoly(D, S, { face: (fi, vis) => (vis ? { c: 'green', a: 0.18 } : null), edge: () => ({ color: 'ink', width: 3.2 }) });
           // 꼭짓점마다 모인 면의 수
-          if (!C.problem) S.V.forEach((p, vi) => { const q = S.vf[vi].length; D.dot(p, q === 4 ? RED : SKY, 6.5); D.label(p, String(q), { color: q === 4 ? RED : SKY, size: 17, dir: D.out(p, S.ctr), gap: 11 }); });
-          if (C.txt && !C.problem) banner(b, [{ t: '정삼각형 6개 · 모두 합동', c: 'ink', size: 15 }, { t: '면 3개씩: 2곳 · 면 4개씩: 3곳', c: RED, size: 15 }, st >= 2 || st === 4 ? { t: '정다면체가 아니에요', c: RED, size: 15 } : null], C);
+          if (!C.problem && (!C.lesson || (s.phBStage||0)>=1)) S.V.forEach((p, vi) => { const q = S.vf[vi].length; D.dot(p, q === 4 ? RED : SKY, 6.5); D.label(p, String(q), { color: q === 4 ? RED : SKY, size: 17, dir: D.out(p, S.ctr), gap: 11 }); });
+          if (C.txt && !C.problem && !C.lesson) banner(b, [{ t: '정삼각형 6개 · 모두 합동', c: 'ink', size: 15 }, { t: '면 3개씩: 2곳 · 면 4개씩: 3곳', c: RED, size: 15 }, st >= 2 || st === 4 ? { t: '정다면체가 아니에요', c: RED, size: 15 } : null], C);
           void info;
         } else {
           const SA = solidOf(A.tri.concat([A.apex])), SB = solidOf(B.tri.map((p) => add3(p, v3(0, 0, 0))).concat([B.apex]));
           drawPoly(D, SA, { face: (fi, vis) => (vis ? { c: 'green', a: 0.18 } : null), edge: () => ({ color: 'ink', width: 3.2 }) });
           drawPoly(D, SB, { face: (fi, vis) => (vis ? { c: AMB, a: 0.18 } : null), edge: () => ({ color: AMB, width: 3.2 }) });
-          if (!C.problem) { SA.V.forEach((p) => { D.dot(p, SKY, 5.5); D.label(p, '3', { color: SKY, size: 16, dir: D.out(p, SA.ctr), gap: 10 }); }); SB.V.forEach((p, i) => { if (i < 3 || true) { D.dot(p, SKY, 5.5); D.label(p, '3', { color: SKY, size: 16, dir: D.out(p, SB.ctr), gap: 10 }); } }); }
-          if (C.txt) banner(b, [{ t: '정사면체 2개 · 꼭짓점마다 면 3개', c: 'ink', size: 15 }, { t: '막대로 두 입체를 붙여 보세요', c: AMB, size: 14 }], C);
+          if (!C.problem && (!C.lesson || (s.phBStage||0)>=1)) { SA.V.forEach((p) => { D.dot(p, SKY, 5.5); D.label(p, '3', { color: SKY, size: 16, dir: D.out(p, SA.ctr), gap: 10 }); }); SB.V.forEach((p, i) => { if (i < 3 || true) { D.dot(p, SKY, 5.5); D.label(p, '3', { color: SKY, size: 16, dir: D.out(p, SB.ctr), gap: 10 }); } }); }
+          if (C.txt && !C.lesson) banner(b, [{ t: '정사면체 2개 · 꼭짓점마다 면 3개', c: 'ink', size: 15 }, { t: '막대로 두 입체를 붙여 보세요', c: AMB, size: 14 }], C);
         }
       } else {
         // 정사각뿔: 밑면 정사각형 + 정삼각형 4개 (옆모서리 = 밑변)
@@ -290,6 +294,13 @@
         S.V.forEach((p, vi) => { const q = S.vf[vi].length; D.dot(p, q === 4 ? RED : SKY, 6); D.label(p, String(q), { color: q === 4 ? RED : SKY, size: 17, dir: D.out(p, S.ctr), gap: 11 }); });
         D.label(S.F[bot].c, '정사각형', { color: SKY, size: 14, at: [[0, 8]], alpha: 0.9 });
         if (C.txt) banner(b, [{ t: '밑면: 정사각형 1개', c: SKY, size: 15 }, { t: '옆면: 정삼각형 4개', c: GRN, size: 15 }], C);
+      }
+      if(C.txt && C.lesson) {
+        const stage=s.phBStage||0, ask=s.phBAsk;
+        const lines=[{t:join>.995?'두 정사면체를 한 면씩 맞붙였어요':'정사면체 두 개를 붙여 보아요',c:'ink',size:16}];
+        if(s.phShowAnswer)lines.push({t:ask==='count'?'겉에 남은 면 = 4 + 4 − 2 = 6개':ask==='four'?'면 4개가 모이는 꼭짓점 3개':'정다면체가 아니에요',c:RED,size:16});
+        else if(stage>=1)lines.push({t:ask==='count'?'붙인 두 면은 안쪽에 숨어요':ask==='four'?'붙인 삼각형의 꼭짓점을 찾아요':'꼭짓점에 모인 면: 양 끝은 3개, 가운데는 4개',c:AMB,size:14});
+        banner(b,lines,C);
       }
       D.flush();
     },
@@ -359,7 +370,8 @@
         const L = [{ t: `${I.name}`, c: 'ink', size: 17 }];
         if (st === 1) L.push({ t: `면: ${I.face} ${I.F}개`, c: SKY, size: 15 });
         if (st === 2) L.push({ t: `한 꼭짓점에 면 ${I.q}개 모임`, c: AMB, size: 15 });
-        if (st === 3 || st === 4) L.push({ t: `모서리 ${I.p}×${I.F}÷2 = ${I.E}개`, c: SKY, size: 15 }, { t: `꼭짓점 ${I.p}×${I.F}÷${I.q} = ${I.V}개`, c: AMB, size: 15 });
+        if ((st === 3 || st === 4) && !C.lesson) L.push({ t: `모서리 ${I.p}×${I.F}÷2 = ${I.E}개`, c: SKY, size: 15 }, { t: `꼭짓점 ${I.p}×${I.F}÷${I.q} = ${I.V}개`, c: AMB, size: 15 });
+        if(C.lesson && s.phShowAnswer)L.push({t:s.phBAsk==='E'?`모서리 ${I.p}×${I.F}÷2 = ${I.E}개`:`꼭짓점 ${I.p}×${I.F}÷${I.q} = ${I.V}개`,c:AMB,size:16});
         banner(b, L, C);
       } else banner(b, [{ t: I.name, c: 'ink', size: 17 }], C);
       D.flush();
@@ -402,7 +414,7 @@
     reroll: (s) => { s.phQ = rollP25(); },
     model: (s) => { const k = s.phSel5 || 'cube', t = clamp(s.phDual, 0.02, 1); return { k, t, I: PLAT[k], D2: PLAT[DUAL[k]], S: platS(k), Q: s.phQ }; },
     draw(b, s, M, C) {
-      const D = scene3(b, s, C), st = stepOf(C), k = C.problem ? M.Q.k : M.k, S = platS(k), t = C.problem ? 1 : C.review ? (st === 1 ? 0.02 : 1) : M.t;
+      const D = scene3(b, s, C), st = stepOf(C), k = C.problem ? M.Q.k : M.k, S = platS(k), t = C.problem ? 1 : C.lesson ? M.t : C.review ? (st === 1 ? 0.02 : 1) : M.t;
       D.fitPts(S.V, { t: C.problem ? 40 : 92, b: 46, l: 50, r: 50 });
       drawPoly(D, S, { face: (fi, vis) => (vis ? { c: 'green', a: 0.08 } : null), edge: () => ({ color: 'ink', width: 2.4, alpha: 0.55 }) });
       if (!C.problem && t > 0.03) {
@@ -413,7 +425,7 @@
       if (C.txt) {
         const I = PLAT[k], D2 = PLAT[DUAL[k]];
         if (C.problem) banner(b, [{ t: `${I.name}의 면의 중심 ${I.F}개를 이어 입체를 만들어요`, c: 'ink', size: 15 }], C);
-        else banner(b, [{ t: `${I.name}의 면 ${I.F}개 → 중심 ${I.F}개`, c: 'ink', size: 16 }, st === 3 || st === 4 ? { t: `꼭짓점이 ${I.F}개인 ${D2.name}이 생겨요`, c: AMB, size: 16 } : null], C);
+        else banner(b, [{ t: `${I.name}의 면 ${I.F}개 → 중심 ${I.F}개`, c: 'ink', size: 16 }, (st === 3 || st === 4) && lessonReady(s,C) ? { t: `꼭짓점이 ${I.F}개인 ${D2.name}이 생겨요`, c: AMB, size: 16 } : null], C);
       }
       D.flush();
     },
@@ -475,14 +487,14 @@
       for (let pp = 3; pp <= 6; pp++) b.stext(x0 + hw / 2, cell(pp, 3).y + ch / 2, PNAME[pp], { color: AMB, size: 14, weight: 800, align: 'center', baseline: 'middle' });
       for (let pp = 3; pp <= 6; pp++) for (let qq = 3; qq <= 6; qq++) {
         const c = cell(pp, qq), v = verdict(pp, qq), sel = !C.problem && pp === M.p && qq === M.q;
-        const hide = C.problem || (st === 1);
+        const hide = C.problem || (C.lesson ? (s.phBStage||0)<pp-2 : st === 1);
         const col = hide ? 'muted' : v.kind === 'ok' ? GRN : v.kind === 'flat' ? 'orange' : RED;
         sRect(b, c.x + 2, c.y + 2, c.x + cw - 2, c.y + ch - 2, col, sel ? 0.5 : (hide ? 0.06 : 0.22), true);
         if (C.problem) { continue; }
         // 좁은 화면에서도 각도와 선택 손잡이가 각각 읽히도록 칸 안의 자리를 나눕니다.
         const angleX = c.x + cw / 2 - (narrow && sel && C.tab === 'explore' ? 12 : 0);
-        b.stext(angleX, c.y + ch * (compact ? 0.28 : 0.36), `${Math.round(v.sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'center', baseline: 'middle' });
-        if (st !== 1) b.stext(c.x + cw / 2, c.y + ch * (compact ? 0.75 : 0.7), v.kind === 'ok' ? nameOfPlat(v.key) : '입체 ✕', { color: v.kind === 'ok' ? GRN : RED, size: 12.5, weight: 800, align: 'center', baseline: 'middle' });
+        if(!C.lesson || !hide) b.stext(angleX, c.y + ch * (compact ? 0.28 : 0.36), `${Math.round(v.sum)}°`, { color: 'ink', size: 15, weight: 800, align: 'center', baseline: 'middle' });
+        if (C.lesson ? !hide : st !== 1) b.stext(c.x + cw / 2, c.y + ch * (compact ? 0.75 : 0.7), v.kind === 'ok' ? nameOfPlat(v.key) : '입체 ✕', { color: v.kind === 'ok' ? GRN : RED, size: 12.5, weight: 800, align: 'center', baseline: 'middle' });
       }
       if (!C.thumb) {
         // The table classifies the choices; these are the actual selected faces.
@@ -501,7 +513,9 @@
       }
       if (C.txt && !C.problem) {
         const v = verdict(M.p, M.q);
-        banner(b, [{ t: `${PNAME[M.p]} ${M.q}개: ${Math.round(interior(M.p))}° × ${M.q} = ${Math.round(v.sum)}°`, c: 'ink', size: 16 }, st >= 2 ? { t: v.kind === 'ok' ? `360°보다 작아요 → ${nameOfPlat(v.key)}` : v.kind === 'flat' ? '360°와 같아요 → 입체가 안 돼요' : '360°보다 커요 → 입체가 안 돼요', c: v.kind === 'ok' ? GRN : RED, size: 15 } : null], C, { y0: 14 });
+        if(C.lesson) banner(b,[{t:s.phShowAnswer?'조건에 맞는 조합은 5가지':`${PNAME[M.p]}을 한 꼭짓점에 ${M.q}개 모아요`,c:GRN,size:16},
+          {t:'면은 3개 이상, 각의 합은 360° 미만',c:'ink',size:14}],C,{y0:14});
+        else banner(b, [{ t: `${PNAME[M.p]} ${M.q}개: ${Math.round(interior(M.p))}° × ${M.q} = ${Math.round(v.sum)}°`, c: 'ink', size: 16 }, st >= 2 ? { t: v.kind === 'ok' ? `360°보다 작아요 → ${nameOfPlat(v.key)}` : v.kind === 'flat' ? '360°와 같아요 → 입체가 안 돼요' : '360°보다 커요 → 입체가 안 돼요', c: v.kind === 'ok' ? GRN : RED, size: 15 } : null], C, { y0: 14 });
       }
       if (C.problem && C.txt) banner(b, [{ t: `${PNAME[M.Q.p]}를 한 꼭짓점에 모아요`, c: 'ink', size: 16 }], C, { y0: 0 });
       // 손잡이: 칸 고르기
