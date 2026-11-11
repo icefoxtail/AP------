@@ -367,6 +367,11 @@ const requiredCommands = [
     args: ['--test', 'tests/meta-os-subunit-groups.test.mjs']
   },
   {
+    // Meta OS dictionaries are self-consistent and the read-only audit runs on the real data (no operating counts pinned).
+    label: 'tests/meta-os-audit.test.mjs',
+    args: ['--test', 'tests/meta-os-audit.test.mjs']
+  },
+  {
     label: 'tests/archive2-original-source-verification-shard.test.mjs',
     args: ['--test', 'tests/archive2-original-source-verification-shard.test.mjs']
   },

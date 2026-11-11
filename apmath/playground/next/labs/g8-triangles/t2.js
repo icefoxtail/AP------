@@ -79,6 +79,7 @@
     },
     draw(b, s, M, C, ST, idx) {
       const { n, x: a, pts, ext, ans } = M, v = c1v(s), L = nameOf, cur = idx >= 0 ? ST[idx] : null, K = cur ? cur.k : 'problem', FD = G.faded;
+      const concept = C.lesson && s.trLessonProblem === false;
       const all = pts.concat([ext, add(pts[n], mul(unit(sub(pts[n], pts[0])), 0.5))]);
       fit(b, bboxOf(all), { t: 52, b: b.W < 560 ? 100 : 96, l: 42, r: 50 });
       const cen = pt((pts[0].x + pts[n].x) / 2, (pts[0].y + pts[n].y) / 2 + 0.2);
@@ -127,9 +128,10 @@
         }
       } else {
         if (K === 'problem' || K === 'given' || eqNow) Aang({ color: 'amber', ...xl('x'), fa: eqNow ? 0.42 : 0.22 });
-        else if (ansNow) Aang({ color: 'amber', ...xl(`x=${a}°`), fa: 0.42 });
+        else if (ansNow) Aang({ color: 'amber', ...xl(concept ? 'x' : `x=${a}°`), fa: 0.42 });
         else { Aang({ color: 'ink', alpha: 0.38, w: 1.4, fa: 0, labelColor: 'ink' }); Aang({ color: 'amber', noMark: true, ...xl('x') }); }
-        if (K === 'problem' || K === 'given' || eqNow) Eang({ color: 'sky', ...xl(dg(ans)), fa: K === 'given' || eqNow ? 0.42 : 0.2 }); else Eang({ color: 'ink', alpha: 0.38, w: 1.4, fa: 0, labelColor: 'ink', ...xl(dg(ans)) });
+        const exterior = concept ? C.answer ? `${n}x` : '?' : dg(ans);
+        if (K === 'problem' || K === 'given' || eqNow) Eang({ color: 'sky', ...xl(exterior), fa: K === 'given' || eqNow ? 0.42 : 0.2 }); else Eang({ color: 'ink', alpha: 0.38, w: 1.4, fa: 0, labelColor: 'ink', ...xl(exterior) });
         if (trapNow) ang(b, pts[n], pts[n - 1], pts[0], { color: 'rose', r: 28, rings: Math.max(1, n - 1), label: xs(n - 1), size: 15, labelDist: 54, fa: 0.4 });
       }
       // 식 단계: 식에 쓰이는 안쪽 밑각 ∠AED 와 (v1) 바깥각 값을 색으로 다시
@@ -141,7 +143,7 @@
   };
 
   const c1 = {
-    id: 't2-1', title: '계단형 연쇄: x → 2x → 3x → …', short: '계단형 연쇄', solve: c1Solve,
+    id: 't2-1', title: '같은 선분의 계단형 연쇄', short: '계단형 연쇄', solve: c1Solve,
     question: 'AB=BC=CD=DE처럼 같은 길이의 선분을 두 직선 사이에 번갈아 이어 붙이면, 밑각은 어떻게 커질까?',
     ctl: ['trCn', 'trCx'],
     init: (s) => { s.trCn = 4; s.trCx = 20; s.trV = 0; },
@@ -463,6 +465,14 @@
     };
   };
   c3.solve = mkSolve(c3Plan);
+
+  c1.lessonDraw = (b, s, M, C, SV, ST, idx) => {
+    SV.draw(b, s, M, C, ST.map(st => ({ ...st, cap: '' })), idx);
+    if (!C.entry && s.trTrace > 0) line(b, M.pts[0], G.lerp(M.pts[0], M.pts[1], clamp(s.trTrace, 0, 1)), 'rose', 4.4);
+    if (!C.entry && s.trLine) rowT(b, pt((M.pts[0].x + M.pts[M.n].x) / 2, 0), s.trLine, { dy: 52, size: fs(b, 16), color: C.answer ? 'amber' : 'green' });
+  };
+  G.trLessonA.attach(c2, c2Plan, M => [M.g.B, M.g.A]);
+  G.trLessonA.attach(c3, c3Plan, M => [M.C, pt(M.C.x + 1, 0)]);
 
   /* @@SOLVE-END */
 

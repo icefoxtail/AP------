@@ -29,10 +29,19 @@
     pyHy: P('빗변의 길이', 1, 5, 1, 3, { color: 'amber', hint: '빗변이 4, 8, 12, 16, 20 중 하나', format: (v) => `${4 * v}` })
   };
   const L2 = G.L2;
+  const lessonProblem = (Q) => (Q.html || Q.stem) + '<br>보기: ' + Q.choices.map((c, i) => `${G.NUM[i]} ${c.h != null ? c.h : c.t != null ? '$' + c.t + '$' : G.esc(c.p)}`).join(' · ');
   const semiLab = (pts) => lerp(mid(pts[0], pts[pts.length - 1]), pts[Math.floor(pts.length / 2)], 0.5);
   const piC = (v) => { const q = ratOf(v); if (!q) return `${fmtN(v)}π`; return q.d === 1 ? `${q.n}π` : `\\frac{${q.n}π}{${q.d}}`; }; // 캔버스 라벨 (쌓은 분수)
   const piT = (v) => { const q = ratOf(v); if (!q) return `${fmtN(v)}\\pi`; return q.d === 1 ? `${q.n}\\pi` : `\\frac{${q.n}}{${q.d}}\\pi`; };
   const piP = (v) => { const q = ratOf(v); return q ? (q.d === 1 ? `${q.n}π` : `${q.d}분의 ${q.n}π`) : `${fmtN(v)}π`; };
+  // Progress along an existing side/arc; the supplied problem dimensions stay fixed.
+  function lessonTrace(b, points, s, C, color = 'rose') {
+    if (!C.lesson || !(s.pyBT > 0)) return;
+    const t = clamp(s.pyBT, 0, 1) * (points.length - 1), n = Math.min(points.length - 1, Math.floor(t));
+    const part = points.slice(0, n + 1);
+    if (n < points.length - 1) part.push(lerp(points[n], points[n + 1], t - n));
+    b.path(part, { color, width: 5, alpha: .8 });
+  }
 
   /* ====================================================================== 1. 피타고라스 나무 */
   const treeOf = (s) => { const p = clamp(Math.round(s.pyTa), 3, 12), q = clamp(Math.round(s.pyTb), 3, 12); return { p, q, w2: p * p + q * q, th1: clamp(s.pyT1 || 40, 25, 65), th2: clamp(s.pyT2 || 55, 25, 65), shade: s.pyShade || 'all' }; };
@@ -75,9 +84,9 @@
       const st = (n) => !C.review || C.step >= n;
       const selected = (k) => !C.givens || shade === 'all' || k === 1;
       const sh = (k) => selected(k) && (C.givens || st(k === 1 ? 3 : 4));
-      const labBC = prob ? '' : C.answer ? `BC²=${w2}` : 'BC²';
-      const labAB = prob ? '' : C.full || C.step >= 3 ? `AB²=${p * p}` : 'AB²';
-      const labAC = prob || C.givens && shade === 'ab' ? '' : C.full || C.step >= 4 ? `AC²=${q * q}` : 'AC²';
+      const labBC = prob ? '' : C.answer && !(C.lesson && shade === 'ab') ? `BC²=${w2}` : 'BC²';
+      const labAB = prob ? '' : (C.lesson ? s.pyBFirstReady || C.answer : C.full || C.step >= 3) ? `AB²=${p * p}` : 'AB²';
+      const labAC = prob || C.givens && shade === 'ab' ? '' : (C.lesson ? s.pyBSecondReady || C.answer : C.full || C.step >= 4) ? `AC²=${q * q}` : 'AC²';
       drawSq(b, sBC, 'amber', compact ? '' : labBC, { size: 14 });
       drawSq(b, sAB, 'sky', compact ? '' : labAB, { size: 14 });
       drawSq(b, sAC, 'green', compact ? '' : labAC, { size: 14 });
@@ -157,10 +166,11 @@
       const { S1, S2, S3, unk } = M, prob = C.problem;
       const a = Math.sqrt(S1), bq = Math.sqrt(S2); // 그림을 그릴 때만 쓰는 길이 (변의 길이는 적지 않음)
       const lab = (k, v) => (!C.answer && unk === k ? 'x' : `${v}`);
-      figRt(b, a, bq, C, {
+      const R = figRt(b, a, bq, C, {
         sq: true, bt: 30, t: 30, names: ['A', 'B', 'C'], sqLab: { a: lab('a', S1), b: lab('b', S2), c: lab('c', S3) }, sqSize: 20,
-        at: { sa: 1, sb: 1, sc: 1 }
+        at: { sa: C.lesson ? 0 : 1, sb: C.lesson ? 0 : 1, sc: C.lesson ? 0 : 1 }
       });
+      lessonTrace(b, [...R.sqs.a, R.sqs.a[0]], s, C, 'sky');
     },
     steps: (M) => [
       M.unk === 'c' ? `직각변 위 두 정사각형의 넓이는 $${M.S1}$, $${M.S2}$예요. 빗변 위의 넓이를 $x$라 놓아요.` : `빗변 위 넓이는 $${M.S3}$, 한 직각변 위 넓이는 $${M.S1}$예요. 다른 직각변 위의 넓이를 $x$라 놓아요.`,
@@ -209,10 +219,11 @@
       b.circle(cen, R, { color: 'rose', width: st(2) ? 2.6 : 1.4, dash: [6, 5] });
       fillPoly(b, [A, B, Cc, D], 'ink', 0.1); poly(b, [A, B, Cc, D], 'ink', 3.4);
       if (C.givens && kind === 1 || (!prob && st(2))) line(b, A, Cc, 'amber', 2.4, { dash: [6, 5] });
+      lessonTrace(b, [A, Cc], s, C);
       [[A, 'A', -1, -1], [D, 'D', 1, -1], [Cc, 'C', 1, 1], [B, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 14, size: 17 }); });
       // 길이: 문제 kind=1 은 가로와 대각선, kind=0 은 가로·세로
       T(b, mid(A, D), `${w}`, { dy: 18, size: 17, color: 'sky' });
-      if (C.full || kind === 0 || C.review && C.step >= 2) T(b, mid(A, B), `${h}`, { dx: 18, size: 17, color: 'green' });
+      if (C.lesson ? kind === 0 || s.pyBFirstReady || C.answer : C.full || kind === 0 || C.review && C.step >= 2) T(b, mid(A, B), `${h}`, { dx: 18, size: 17, color: 'green' });
       if (C.givens && kind === 1) T(b, lerp(A, Cc, 0.62), `${di}`, { dx: 12, dy: -12, size: 17, color: 'amber' });
       if (C.answer && C.txt) T(b, pt(cen.x, box.y1), `색칠 = ${w}×${h} = ${w * h}`, { dy: 28, size: 17, color: 'amber' });
     },
@@ -267,6 +278,7 @@
         outsideCircle(b, mBC, R, () => { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); });
       } else { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.2, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.2, color: null }); }
       b.path(sABp, { color: 'amber', width: 2.6 }); b.path(sACp, { color: 'amber', width: 2.6 });
+      lessonTrace(b, sABp, s, C);
       b.path(sBCp, { color: 'rose', width: 2.4, dash: [6, 5] });
       fillPoly(b, [Ap, Bp, Cp], 'green', !prob && st(4) ? 0.2 : 0.06); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
       ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
@@ -275,7 +287,7 @@
       // 길이 (문제 kind=1 은 한 직각변과 빗변)
       const lAB = a, lAC = bb;
       sideTag(b, Bp, Ap, Cp, `${lAB}`, { color: 'sky', size: 17, gap: -22 });
-      if (C.full || kind === 0 || C.review && C.step >= 2) sideTag(b, Ap, Cp, Bp, `${lAC}`, { color: 'green', size: 17, gap: -22 });
+      if (C.lesson ? kind === 0 || s.pyBFirstReady || C.answer : C.full || kind === 0 || C.review && C.step >= 2) sideTag(b, Ap, Cp, Bp, `${lAC}`, { color: 'green', size: 17, gap: -22 });
       if (C.answer && C.txt) T(b, centroid([Ap, Bp, Cp]), `△ABC=${fmtN(tri)}`, { dy: 24, size: 15, color: 'green' });
       if (ci && (C.full || kind === 1)) T(b, mid(Bp, Cp), `${ci}`, { dy: 18, size: 16, color: 'amber' });
     },
@@ -323,11 +335,12 @@
       const st = (n) => !C.review || C.step >= n;
       const lbl = (k, v) => (prob && unk === k ? 'x' : piC(v));
       [[sAB, 'sky', 'a', S1], [sAC, 'green', 'b', S2], [sBC, 'amber', 'c', S3]].forEach(([pts, col, k, v]) => {
-        if (k === 'c' && !(st(2) || C.givens)) { b.path(pts, { color: col, width: 2.4, dash: [6, 5] }); return; }
+        if (k === 'c' && !(st(2) || C.givens || C.lesson)) { b.path(pts, { color: col, width: 2.4, dash: [6, 5] }); return; }
         b.path(pts, { close: true, fill: col, fillAlpha: 0.16, color: col, width: 2.6 });
         const cm = semiLab(pts);
-        T(b, cm, 'S' + { a: '₁', b: '₂', c: '₃' }[k] + (!C.answer && unk === k ? '=x' : `=${piC(v)}`), { size: 16, color: col });
+        T(b, cm, 'S' + { a: '₁', b: '₂', c: '₃' }[k] + (C.lesson && !s.pyLessonProblem ? '' : !C.answer && unk === k ? '=x' : `=${piC(v)}`), { size: 16, color: col });
       });
+      lessonTrace(b, sAB, s, C);
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.1); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
       ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4 }); T(b, q, nm, { dx: dx * 13, dy: dy * 13, size: 16 }); });
@@ -374,11 +387,16 @@
       fit(b, bboxOf([...sAB, ...sAC, ...sBC]), { t: 28, b: 30, l: 26, r: 26 });
       const st = (n) => !C.review || C.step >= n;
       b.path(sAB, { close: true, fill: 'sky', fillAlpha: 0.24, color: 'sky', width: 2.6 }); b.path(sAC, { close: true, fill: 'green', fillAlpha: 0.24, color: 'green', width: 2.6 });
+      lessonTrace(b, sAB, s, C);
       if (st(2) || prob) b.path(sBC, { close: true, fill: 'amber', fillAlpha: prob ? 0.08 : 0.22, color: 'amber', width: 2.6, dash: prob ? [6, 5] : undefined });
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.1); poly(b, [Ap, Bp, Cp], 'ink', 3.2); ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4 }); T(b, q, nm, { dx: dx * 13, dy: dy * 13, size: 16 }); });
       T(b, semiLab(sAB), 'S₁', { size: 17, color: 'sky' }); T(b, semiLab(sAC), 'S₂', { size: 17, color: 'green' });
-      T(b, semiLab(sBC), C.full || C.review && C.step >= 2 ? `S₃=${k}π` : '', { size: 16, color: 'amber' });
+      T(b, semiLab(sBC), (C.lesson ? s.pyBFirstReady : C.full || C.review && C.step >= 2) ? `S₃=${k}π` : '', { size: 16, color: 'amber' });
+      if (C.lesson && s.pyBFirstReady) {
+        const O = mid(Bp, Cp); line(b, O, Cp, 'rose', 4);
+        T(b, mid(O, Cp), s.pyBSecondReady ? `r=${r}` : 'r', { dy: -15, size: 16, color: 'rose' });
+      }
       T(b, mid(Bp, Cp), C.answer ? `${c}` : 'x', { dy: 18, size: 17, color: 'amber' });
       T(b, cen, `S₁+S₂=${k}π`, { size: 17, color: 'ink' });
     },
@@ -404,5 +422,6 @@
     }
   };
 
+  for (const D of [tree, sqarea, rectsemi, hippo, semi, findhyp]) D.lessonQuestion = (M, s, Q) => s.pyLessonProblem ? lessonProblem(Q) : D.question;
   G.register(50, 't5', '⑤ 정사각형·반원의 넓이', '정사각형·반원의 넓이', PARAMS, [tree, sqarea, rectsemi, hippo, semi, findhyp]);
 })();

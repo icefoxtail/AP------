@@ -1,0 +1,1615 @@
+{
+  "schemaVersion": "meta-os-status-vocabulary-v1",
+  "purpose": "Maps every status string now used in the canonical metadata to a confirmation grade or to a real defect. A grade is a label that says how well a value was confirmed; it is never a gate that stops a screen from using the value. archive/tools/meta-os/audit.mjs reports values that are not listed here.",
+  "grades": {
+    "independent_reviewed": "독립 검수됨: 만든 쪽과 다른 판정자(A/B 독립 판정, 별도 검수 라인, mother 확정)가 확인한 값",
+    "judged_once": "한 번 판정됨: 한 번의 판정(사람·모델·규칙)이 있었으나 독립 확인은 기록되지 않은 값",
+    "source_declared": "원본 표기 그대로: 시험지 JS가 적어 둔 값을 받아 적은 것. 판정이 아니라 선언",
+    "pending": "아직 판정 없음: 판정 대기·보류·비어 있음을 뜻하는 상태. 값 자체가 있으면 그 값은 쓸 수 있다",
+    "not_applicable": "해당 없음: 확인 정도가 아니라 단계·처분·일치 코드 등 다른 뜻을 나타내는 값",
+    "unclassified": "미분류: 뜻을 코드에서 확인하지 못해 등급을 정하지 않은 값(reason에 사유)",
+    "defect": "실제 결함: 값을 쓰면 안 되는 사유(defect에 사유). 다른 문항의 값, 본문 변경으로 더는 그 문항을 가리키지 않음, 키 사전에 없음"
+  },
+  "fieldNotes": {
+    "unclassified": "값의 뜻을 코드에서 확인하지 못한 경우에만 쓴다. 추정해서 등급을 붙이지 않는다.",
+    "paths": "점으로 이어 쓴 경로. fieldStatus.* 는 fieldStatus 객체의 모든 하위 칸을 뜻한다.",
+    "canonical": "철자·대소문자·접두어만 다른 같은 값은 같은 칸 안에서 canonical 하나로 묶는다. 칸이 다른 같은 값은 synonymGroups가 묶는다.",
+    "notCovered": "difficultyBucket, level, integrationPattern, 키 값 필드는 상태 값이 아니라 어휘표에 없다. conditionAssessment 등 객체 안의 status는 이 표 범위 밖이다."
+  },
+  "fields": {
+    "metadataStatus": {
+      "paths": [
+        "metadataStatus"
+      ],
+      "note": "문항 한 줄 전체의 등록·승인 상태. 칸별 실제 확인 정도는 fieldStatus.* 가 정확하다(한 줄 상태는 요약일 뿐이고 칸별 상태가 정확하다)",
+      "values": {
+        "registration_pending_semantic_review": {
+          "canonical": "registration_pending_semantic_review",
+          "grade": "pending",
+          "note": "새 문항 자리만 만든 상태. 소스 선언값은 담겨 있으나 의미 검토 전(sync-pending-question-metadata-v1.mjs)"
+        },
+        "registration_only_pending_review": {
+          "canonical": "registration_only_pending_review",
+          "grade": "pending",
+          "note": "등록만 하고 검토 전(tagConfidence registration_only와 함께 쓰임). 쓰는 코드는 확인 못함"
+        },
+        "review_required": {
+          "canonical": "review_required",
+          "grade": "pending",
+          "note": "초기 후보 등록(initial-candidate-registration-v1, 유사 문항). 검토 전"
+        },
+        "registered_merged_source": {
+          "canonical": "registered_merged_source",
+          "grade": "source_declared",
+          "note": "병합 자동 등록: 소스 JS 선언값을 그대로 정본에 반영. '승인 아님'(auto-register-merged-source.mjs)"
+        },
+        "source_hold": {
+          "canonical": "source_hold",
+          "grade": "pending",
+          "note": "원본 문제에 보류가 걸려 판정하지 않음(중1 B01-B16). 자동 등록은 EXPLICIT_SOURCE_HOLD로 거부"
+        },
+        "route_out": {
+          "canonical": "route_out",
+          "grade": "not_applicable",
+          "note": "교육과정 범위 밖으로 뺀 문항(sync-middle1-b01-b16-question-metadata.mjs)"
+        },
+        "approved_source": {
+          "canonical": "approved_source",
+          "grade": "source_declared",
+          "note": "원본 선언값을 승인으로 받아들임"
+        },
+        "approved_partial_with_explicit_holds": {
+          "canonical": "approved_partial_with_explicit_holds",
+          "grade": "source_declared",
+          "note": "단원·소단원·난이도는 원본 선언값, 개념은 후보·규칙 분류, 나머지는 보류를 명시한 상태(build-approved-question-metadata-v1.mjs). 등록기가 칸을 승인해도 이 줄 상태는 그대로 남을 수 있다"
+        },
+        "approved_semantic_review": {
+          "canonical": "approved_semantic_review",
+          "grade": "judged_once",
+          "note": "v2 등록기가 승인 종류와 무관하게 쓰는 결과 상태(reviewed-exam-registration-v2.mjs). 실제 확인 정도는 metadataApprovalType·fieldStatus로 본다"
+        },
+        "approved_full_semantic_review": {
+          "canonical": "approved_full_semantic_review",
+          "grade": "independent_reviewed",
+          "note": "H1 파운데이션 mother 확정에 의미 검토를 더한 상태"
+        },
+        "approved_full": {
+          "canonical": "approved_full",
+          "grade": "independent_reviewed",
+          "note": "H1·중1 파운데이션 전체 승인. 독립 A/B 판정과 mother 확정이 근거(materialize-h1-foundation.mjs)"
+        },
+        "approved_full_with_explicit_hold": {
+          "canonical": "approved_full_with_explicit_hold",
+          "grade": "independent_reviewed",
+          "note": "approved_full과 같되 일부 칸에 보류를 명시. 보류 칸은 metaFoundationStatus HOLD로 구별"
+        },
+        "approved_full_with_selectability_hold": {
+          "canonical": "approved_full_with_selectability_hold",
+          "grade": "independent_reviewed",
+          "note": "중1 B01-B16: 판정은 끝났고 출제 선택 가능 여부만 보류(sync-middle1-b01-b16-question-metadata.mjs)"
+        },
+        "approved_direct_canonical_tagging_2H": {
+          "canonical": "approved_direct_canonical_tagging_2H",
+          "grade": "independent_reviewed",
+          "note": "중3 직접 태깅: A/B 독립 판정 후 mother 확정(apply-m3-direct-2h-final.mjs)"
+        },
+        "approved_direct_tagging_with_foundation_gap": {
+          "canonical": "approved_direct_tagging_with_foundation_gap",
+          "grade": "independent_reviewed",
+          "note": "같은 경로. 파운데이션에 맞는 칸이 없는 항목이 포함됨"
+        },
+        "approved_direct_tagging_with_hold": {
+          "canonical": "approved_direct_tagging_with_hold",
+          "grade": "independent_reviewed",
+          "note": "같은 경로. 보류를 포함함"
+        },
+        "approved_exam_meta_source": {
+          "canonical": "approved_exam_meta_source",
+          "grade": "independent_reviewed",
+          "note": "원본 JS 메타를 시험지 단위로 독립 검수해 등록(tagConfidence source_bound_independent_meta_review, 증거 R1·R2)"
+        },
+        "approved_r2e_final": {
+          "canonical": "approved_r2e_final",
+          "grade": "independent_reviewed",
+          "note": "R2E: 두 판정이 일치한 뒤 확정(tagConfidence r2e_adjudicated)"
+        },
+        "approved_exam_finalqa": {
+          "canonical": "approved_exam_finalqa",
+          "grade": "independent_reviewed",
+          "note": "FINAL QA 사후 검수 승인(finalqa-close-*.mjs). fieldStatus의 approved_finalqa와 같은 계열이나 철자 쌍이 아니라 묶지 않음"
+        },
+        "finalqa_nonpt_registered": {
+          "canonical": "finalqa_nonpt_registered",
+          "grade": "independent_reviewed",
+          "note": "PT/TPL 이외 칸을 FINAL QA로 등록(register-finalqa-nonpt.mjs)"
+        },
+        "MOTHER_FINAL": {
+          "canonical": "MOTHER_FINAL",
+          "grade": "independent_reviewed",
+          "group": "mother_final",
+          "note": "A/B 독립 판정 뒤 mother 확정. 카탈로그 빌더는 reviewedMetadataStatuses로 검토됨 취급(build-archive2-catalog.mjs)"
+        }
+      }
+    },
+    "tagStatus": {
+      "paths": [
+        "tagStatus"
+      ],
+      "note": "분류 태그의 상태. metadataStatus와 같은 흐름에서 함께 바뀐다",
+      "values": {
+        "review_required": {
+          "canonical": "review_required",
+          "grade": "pending",
+          "note": "검토 전(sync-pending-question-metadata-v1.mjs가 새 자리에 씀)"
+        },
+        "": {
+          "canonical": "",
+          "grade": "pending",
+          "note": "값이 기록되지 않음(빈 문자열). 기존 등록 투영 행에서 발견"
+        },
+        "approved_subunit_concept_partial": {
+          "canonical": "approved_subunit_concept_partial",
+          "grade": "source_declared",
+          "note": "소단원·개념만 후보·규칙 분류로 받아들인 상태(build-approved-question-metadata-v1.mjs)"
+        },
+        "approved_semantic_review": {
+          "canonical": "approved_semantic_review",
+          "grade": "judged_once",
+          "note": "v2 등록기 결과(approved_semantic_review). 실제 확인 정도는 metadataApprovalType으로 본다"
+        },
+        "meta_foundation_final": {
+          "canonical": "meta_foundation_final",
+          "grade": "independent_reviewed",
+          "note": "파운데이션 확정(materialize-h1-foundation.mjs, 보류가 아닐 때)"
+        },
+        "meta_foundation_explicit_hold": {
+          "canonical": "meta_foundation_explicit_hold",
+          "grade": "pending",
+          "note": "파운데이션에서 보류를 명시(같은 도구, 보류일 때)"
+        },
+        "DIRECT_TAGGED": {
+          "canonical": "DIRECT_TAGGED",
+          "grade": "independent_reviewed",
+          "note": "직접 태깅 A/B 판정과 mother 확정을 거친 행(M3 direct tagging)"
+        },
+        "reviewed_pass": {
+          "canonical": "reviewed_pass",
+          "grade": "judged_once",
+          "note": "검토 등록기가 쓰는 통과 표시(승인 종류별로 확인 정도가 다름). 등록기 승인 판정에 쓰임(reviewed-exam-registration-v2.mjs:25)"
+        },
+        "reviewed_original_meta_source": {
+          "canonical": "reviewed_original_meta_source",
+          "grade": "independent_reviewed",
+          "note": "원본 메타를 시험지 단위로 독립 검수해 등록한 행(R1·R2 증거)"
+        },
+        "manual_review": {
+          "canonical": "manual_review",
+          "grade": "pending",
+          "note": "수동 검토 대기. fieldStatus에 manual_review_pending 칸이 남아 있음"
+        },
+        "registration_only_pending_review": {
+          "canonical": "registration_only_pending_review",
+          "grade": "pending",
+          "note": "등록만 하고 검토 전"
+        },
+        "FOUNDATION_DEFECT_CANDIDATE": {
+          "canonical": "FOUNDATION_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "파운데이션 사전에 맞는 칸이 없어 결함 후보로 올림. 사전이 정해지기 전까지 판정을 미룸"
+        },
+        "candidate_review_required": {
+          "canonical": "candidate_review_required",
+          "grade": "pending",
+          "note": "후보로만 등록, 검토 전"
+        },
+        "reviewed": {
+          "canonical": "reviewed",
+          "grade": "judged_once",
+          "note": "CREATE 단계 R1 검토를 거친 표시(CREATE_REVIEWED와 함께 쓰임)"
+        },
+        "reviewed_create": {
+          "canonical": "reviewed_create",
+          "grade": "judged_once",
+          "note": "CREATE 단계 검토 표시. 같은 행에 META_PIPELINE_AUDIT 승인이 있음"
+        },
+        "EVIDENCE_INSUFFICIENT": {
+          "canonical": "EVIDENCE_INSUFFICIENT",
+          "grade": "pending",
+          "note": "근거가 모자라 판정하지 못함"
+        },
+        "SOURCE_DEFECT_CANDIDATE": {
+          "canonical": "SOURCE_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "원본 결함 후보로 올림, 판정 전"
+        }
+      }
+    },
+    "reviewStatus": {
+      "paths": [
+        "reviewStatus"
+      ],
+      "note": "검토 상태. 시험지 JS 자신이 적은 reviewStatus 표기와 섞여 있다",
+      "values": {
+        "review_required": {
+          "canonical": "review_required",
+          "grade": "pending",
+          "note": "검토 전"
+        },
+        "reviewed_pass": {
+          "canonical": "reviewed_pass",
+          "grade": "judged_once",
+          "note": "검토 등록기가 쓰는 통과 표시(승인 종류별로 확인 정도가 다름)"
+        },
+        "MOTHER_FINAL": {
+          "canonical": "MOTHER_FINAL",
+          "grade": "independent_reviewed",
+          "group": "mother_final",
+          "note": "mother 확정"
+        },
+        "manual_review": {
+          "canonical": "manual_review",
+          "grade": "pending",
+          "note": "수동 검토 대기"
+        },
+        "reviewed_hold": {
+          "canonical": "reviewed_hold",
+          "grade": "pending",
+          "note": "검토했으나 보류로 남김(sync-middle1-b01-b16-question-metadata.mjs)"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류(materialize-h1-foundation.mjs)"
+        },
+        "pending": {
+          "canonical": "pending",
+          "grade": "pending",
+          "note": "대기"
+        },
+        "REVIEW2_DONE": {
+          "canonical": "REVIEW2_DONE",
+          "grade": "source_declared",
+          "note": "시험지 JS가 스스로 적은 '검수 2회 완료' 표기. 등록기가 확인한 것이 아니라 소스 선언"
+        },
+        "CREATE_REVIEWED": {
+          "canonical": "CREATE_REVIEWED",
+          "grade": "source_declared",
+          "note": "시험지 JS가 스스로 적은 'CREATE 검토 완료' 표기. 소스 선언"
+        },
+        "NOT_REVIEWED": {
+          "canonical": "NOT_REVIEWED",
+          "grade": "pending",
+          "note": "검토하지 않았다는 소스 표기"
+        },
+        "FOUNDATION_DEFECT_CANDIDATE": {
+          "canonical": "FOUNDATION_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "파운데이션 결함 후보"
+        },
+        "SOURCE_DEFECT_CANDIDATE": {
+          "canonical": "SOURCE_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "원본 결함 후보. 일반 사용의 문턱이 아님(archive2-core.js generalUseEligibility, 2026-10-29 결정)"
+        },
+        "route_out": {
+          "canonical": "route_out",
+          "grade": "not_applicable",
+          "note": "범위 밖으로 뺀 문항"
+        }
+      }
+    },
+    "fieldStatus": {
+      "paths": [
+        "fieldStatus.*"
+      ],
+      "note": "칸별 확인 상태. 칸 이름(standardUnit·subUnit·concept·problemType·template·difficulty·crossConcept·condition·integrationPattern·canonical·curriculum·nativeTaxonomy·rpmMapping·L3·L4·rpm)은 공통 어휘를 쓴다. 이 칸이 실제 확인 정도를 말한다",
+      "values": {
+        "approved_source": {
+          "canonical": "approved_source",
+          "grade": "source_declared",
+          "note": "원본 선언값을 받아들임(승인이라는 이름이지만 판정이 아님)"
+        },
+        "manual_review_pending": {
+          "canonical": "manual_review_pending",
+          "grade": "pending",
+          "note": "수동 검토 대기"
+        },
+        "unreviewed": {
+          "canonical": "unreviewed",
+          "grade": "pending",
+          "note": "검토 전"
+        },
+        "approved_meta_pipeline_audit": {
+          "canonical": "approved_meta_pipeline_audit",
+          "grade": "judged_once",
+          "note": "META_PIPELINE_AUDIT 승인: 한 번의 심화 메타 감사. 최종 수학 검수는 아님(Reviewed_Exam_Meta_Registration_v2.md)"
+        },
+        "approved_review2": {
+          "canonical": "approved_review2",
+          "grade": "independent_reviewed",
+          "note": "REVIEW2 승인: 독립 검수 2회(reviewPassCount 2)"
+        },
+        "approved_final_qa": {
+          "canonical": "approved_final_qa",
+          "grade": "independent_reviewed",
+          "group": "approved_final_qa",
+          "note": "FINAL QA 승인: 만든 쪽과 다른 라인의 사후 검수"
+        },
+        "approved_finalqa": {
+          "canonical": "approved_final_qa",
+          "grade": "independent_reviewed",
+          "group": "approved_final_qa",
+          "note": "approved_final_qa의 철자 변형(finalqa-close-*.mjs가 씀)"
+        },
+        "approved_finalqa_nonpt": {
+          "canonical": "approved_finalqa_nonpt",
+          "grade": "independent_reviewed",
+          "note": "PT/TPL 이외 칸의 FINAL QA 승인(register-finalqa-nonpt.mjs)"
+        },
+        "approved_exam_meta_source": {
+          "canonical": "approved_exam_meta_source",
+          "grade": "independent_reviewed",
+          "note": "원본 메타를 시험지 단위로 독립 검수해 등록(R1·R2 증거)"
+        },
+        "approved_reviewed": {
+          "canonical": "approved_reviewed",
+          "grade": "judged_once",
+          "note": "검토된 장부(reviewed legacy similar ledger)에서 반영(apply-reviewed-legacy-similar-ledgers.mjs)"
+        },
+        "approved_classification": {
+          "canonical": "approved_classification",
+          "grade": "judged_once",
+          "note": "소단원·개념 분류(complete-subunit classification) 결과를 받아들임. 후보·규칙 점수 기반이라 문항을 읽은 판정은 아님"
+        },
+        "approved_semantic_review": {
+          "canonical": "approved_semantic_review",
+          "grade": "judged_once",
+          "note": "의미 검토를 거쳐 받아들임(build-approved-question-metadata-v1.mjs, v2 등록기)"
+        },
+        "approved_semantic": {
+          "canonical": "approved_semantic",
+          "grade": "independent_reviewed",
+          "note": "중1 B01-B16: 독립 의미 판정 합의(sync-middle1-b01-b16-question-metadata.mjs)"
+        },
+        "approved_blind_recheck": {
+          "canonical": "approved_blind_recheck",
+          "grade": "independent_reviewed",
+          "note": "난이도 블라인드 재검을 거쳐 확정(중1 난이도, build-middle1-difficulty-final.mjs)"
+        },
+        "mother_final": {
+          "canonical": "mother_final",
+          "grade": "independent_reviewed",
+          "group": "mother_final",
+          "note": "A/B 독립 판정 뒤 mother 확정. 카탈로그 힌트는 아직 '검토 대기'(P)로 취급함(Archive2_Usable_Meta_Lane_CURRENT_v1.md)"
+        },
+        "r2e_adjudicated": {
+          "canonical": "r2e_adjudicated",
+          "grade": "independent_reviewed",
+          "note": "R2E: 두 판정이 일치한 뒤 확정. 카탈로그 힌트는 '검토 대기'(P)로 취급함"
+        },
+        "r2e_curriculum_binding": {
+          "canonical": "r2e_curriculum_binding",
+          "grade": "judged_once",
+          "note": "R2E 교육과정 결속으로 소단원을 받아들임. 카탈로그는 검토된 원본 결속 링크가 있을 때만 인정(build-archive2-catalog.mjs:270)"
+        },
+        "integrity_reused": {
+          "canonical": "integrity_reused",
+          "grade": "unclassified",
+          "reason": "쓰는 코드를 찾지 못함. 이름만으로 판정하지 않음",
+          "note": "난이도 칸 249행(R2E 행)에서만 보임. 쓰는 코드를 찾지 못했고 이름만으로 뜻을 정할 수 없음"
+        },
+        "source_unreviewed": {
+          "canonical": "source_unreviewed",
+          "grade": "source_declared",
+          "note": "난이도를 시험지 JS 선언값 그대로 두고 검토하지 않음(sync-pending-question-metadata-v1.mjs)"
+        },
+        "approved_source_and_meta_pipeline_audit": {
+          "canonical": "approved_source_and_meta_pipeline_audit",
+          "grade": "judged_once",
+          "note": "원본 선언과 META_PIPELINE_AUDIT이 함께 근거인 CrossConcept 교정"
+        },
+        "approved_source_condition_review": {
+          "canonical": "approved_source_condition_review",
+          "grade": "judged_once",
+          "note": "원본 Condition 교정 검토(reviewed-exam-registration-v2.mjs sourceConditionCorrection)"
+        },
+        "approved_r2e_targeted_recovery": {
+          "canonical": "approved_r2e_targeted_recovery",
+          "grade": "judged_once",
+          "note": "R2E 표적 복구로 받아들인 Condition·통합 패턴(1행)"
+        },
+        "registered_main_merge": {
+          "canonical": "registered_main_merge",
+          "grade": "source_declared",
+          "note": "병합 자동 등록이 소스 선언값을 그대로 등록(auto-register-merged-source.mjs). 승인 아님"
+        },
+        "meta_semantic_hold": {
+          "canonical": "meta_semantic_hold",
+          "grade": "pending",
+          "note": "의미 판정 보류(materialize-meta-v2-payloads.mjs)"
+        },
+        "projection_unmaterialized": {
+          "canonical": "projection_unmaterialized",
+          "grade": "pending",
+          "note": "크로스워크 투영이 아직 구체화되지 않음"
+        },
+        "EVIDENCE_DEBT": {
+          "canonical": "EVIDENCE_DEBT",
+          "grade": "pending",
+          "note": "증거 빚: 근거가 모자라 값을 확정하지 못함. 정직하게 남긴 공백"
+        },
+        "reviewed_source_bound": {
+          "canonical": "reviewed_source_bound",
+          "grade": "independent_reviewed",
+          "note": "원본 메타 독립 검수에서 RPM LOCKED 마스터 대응(rpmMapping 칸)을 원본에 결속해 확인"
+        },
+        "no_separate_l4": {
+          "canonical": "no_separate_l4",
+          "grade": "not_applicable",
+          "note": "별도 L4가 없다고 확정한 칸(template)"
+        }
+      }
+    },
+    "tagConfidence": {
+      "paths": [
+        "tagConfidence"
+      ],
+      "note": "분류가 어떤 방식으로 얻어졌는지(신뢰도 겸 출처) 적은 값",
+      "values": {
+        "review_required": {
+          "canonical": "review_required",
+          "grade": "pending",
+          "note": "검토 전"
+        },
+        "registration_only": {
+          "canonical": "registration_only",
+          "grade": "pending",
+          "note": "등록만 함"
+        },
+        "candidate_unreviewed": {
+          "canonical": "candidate_unreviewed",
+          "grade": "pending",
+          "note": "후보, 검토 전"
+        },
+        "manual_review": {
+          "canonical": "manual_review",
+          "grade": "pending",
+          "note": "수동 검토 대기"
+        },
+        "rule_inferred": {
+          "canonical": "rule_inferred",
+          "grade": "judged_once",
+          "note": "규칙 점수로 추정(build-complete-subunit-classification-v1.mjs). 문항을 읽은 판정이 아니라 규칙 판정"
+        },
+        "category_or_cue_inferred": {
+          "canonical": "category_or_cue_inferred",
+          "grade": "judged_once",
+          "note": "범주·단서 점수로 추정(같은 도구). 규칙보다 근거가 약함"
+        },
+        "candidate_evidence": {
+          "canonical": "candidate_evidence",
+          "grade": "judged_once",
+          "note": "후보 근거가 있는 소단원(같은 도구)"
+        },
+        "existing_preserved": {
+          "canonical": "existing_preserved",
+          "grade": "source_declared",
+          "note": "이미 문서화된 소단원 값을 그대로 보존(같은 도구)"
+        },
+        "meta_pipeline_audit": {
+          "canonical": "meta_pipeline_audit",
+          "grade": "judged_once",
+          "note": "META_PIPELINE_AUDIT 승인(한 번의 심화 메타 감사)"
+        },
+        "independent_review2": {
+          "canonical": "independent_review2",
+          "grade": "independent_reviewed",
+          "note": "REVIEW2 독립 검수 2회"
+        },
+        "approved_final_qa": {
+          "canonical": "approved_final_qa",
+          "grade": "independent_reviewed",
+          "note": "FINAL QA 승인"
+        },
+        "independent_semantic_consensus": {
+          "canonical": "independent_semantic_consensus",
+          "grade": "independent_reviewed",
+          "note": "중1 B01-B16: 독립 의미 판정 합의(sync-middle1-b01-b16-question-metadata.mjs)"
+        },
+        "h1_meta_foundation_accepted_baseline": {
+          "canonical": "h1_meta_foundation_accepted_baseline",
+          "grade": "independent_reviewed",
+          "note": "H1 파운데이션 기준선으로 받아들임(materialize-h1-foundation.mjs, mother 확정 근거)"
+        },
+        "r2e_adjudicated": {
+          "canonical": "r2e_adjudicated",
+          "grade": "independent_reviewed",
+          "note": "R2E 두 판정 일치 후 확정"
+        },
+        "source_bound_independent_meta_review": {
+          "canonical": "source_bound_independent_meta_review",
+          "grade": "independent_reviewed",
+          "note": "원본 메타 독립 검수(쓰는 도구는 찾지 못했으나 이 값의 287행 모두에 R1 증거·R2 증거 기록이 있음)"
+        },
+        "MOTHER_FINAL": {
+          "canonical": "MOTHER_FINAL",
+          "grade": "independent_reviewed",
+          "group": "mother_final",
+          "note": "mother 확정"
+        },
+        "high": {
+          "canonical": "high",
+          "grade": "unclassified",
+          "reason": "정의한 코드를 찾지 못함",
+          "note": "신뢰도 단어 'high'가 소스 투영 행에 있음. 무엇에 대한 신뢰도인지 정의한 코드를 찾지 못함"
+        },
+        "medium": {
+          "canonical": "medium",
+          "grade": "unclassified",
+          "reason": "정의한 코드를 찾지 못함",
+          "note": "신뢰도 단어 'medium'. 위와 같음"
+        },
+        "current_canonical": {
+          "canonical": "current_canonical",
+          "grade": "unclassified",
+          "reason": "쓰는 코드를 찾지 못함",
+          "note": "쓰는 코드를 찾지 못함(소스 투영 행 22건)"
+        },
+        "manual_source_review": {
+          "canonical": "manual_source_review",
+          "grade": "unclassified",
+          "reason": "쓰는 코드를 찾지 못함",
+          "note": "쓰는 코드를 찾지 못함(소스 투영 행 23건)"
+        },
+        "active_binding_and_semantic_match": {
+          "canonical": "active_binding_and_semantic_match",
+          "grade": "unclassified",
+          "reason": "쓰는 코드를 찾지 못함",
+          "note": "쓰는 코드를 찾지 못함(소스 투영 행 24건)"
+        },
+        "source_verified_broad_l2": {
+          "canonical": "source_verified_broad_l2",
+          "grade": "unclassified",
+          "reason": "쓰는 코드를 찾지 못함",
+          "note": "쓰는 코드를 찾지 못함(소스 투영 행 20건)"
+        }
+      }
+    },
+    "subUnitConfidence": {
+      "paths": [
+        "subUnitConfidence"
+      ],
+      "note": "소단원을 정한 방식(build-complete-subunit-classification-v1.mjs)",
+      "values": {
+        "candidate_evidence": {
+          "canonical": "candidate_evidence",
+          "grade": "judged_once",
+          "note": "후보 근거가 있는 소단원"
+        },
+        "category_or_cue_inferred": {
+          "canonical": "category_or_cue_inferred",
+          "grade": "judged_once",
+          "note": "범주·단서 점수로 추정"
+        },
+        "rule_inferred": {
+          "canonical": "rule_inferred",
+          "grade": "judged_once",
+          "note": "규칙 점수로 추정"
+        },
+        "existing_preserved": {
+          "canonical": "existing_preserved",
+          "grade": "source_declared",
+          "note": "이미 문서화된 값을 보존"
+        },
+        "content_reviewed": {
+          "canonical": "content_reviewed",
+          "grade": "judged_once",
+          "note": "본문을 읽고 확인(2행)"
+        },
+        "active_binding_and_semantic_match": {
+          "canonical": "active_binding_and_semantic_match",
+          "grade": "unclassified",
+          "reason": "쓰는 코드를 찾지 못함",
+          "note": "쓰는 코드를 찾지 못함(24행)"
+        },
+        "current_canonical": {
+          "canonical": "current_canonical",
+          "grade": "unclassified",
+          "reason": "쓰는 코드를 찾지 못함",
+          "note": "쓰는 코드를 찾지 못함(22행)"
+        },
+        "high": {
+          "canonical": "high",
+          "grade": "unclassified",
+          "reason": "정의한 코드를 찾지 못함",
+          "note": "신뢰도 단어. 정의한 코드를 찾지 못함(30행)"
+        }
+      }
+    },
+    "subUnitClassificationDepth": {
+      "paths": [
+        "subUnitClassificationDepth"
+      ],
+      "note": "소단원 분류가 어느 깊이까지 갔는지(방법 설명)",
+      "values": {
+        "complete_candidate": {
+          "canonical": "complete_candidate",
+          "grade": "not_applicable",
+          "note": "후보 근거로 끝까지 분류"
+        },
+        "complete_category": {
+          "canonical": "complete_category",
+          "grade": "not_applicable",
+          "note": "범주 점수로 끝까지 분류"
+        },
+        "complete_documented": {
+          "canonical": "complete_documented",
+          "grade": "not_applicable",
+          "note": "이미 문서화된 값으로 끝까지 분류"
+        },
+        "complete_rule": {
+          "canonical": "complete_rule",
+          "grade": "not_applicable",
+          "note": "규칙 점수로 끝까지 분류"
+        },
+        "complete_active_binding": {
+          "canonical": "complete_active_binding",
+          "grade": "not_applicable",
+          "note": "ACTIVE 바인딩으로 끝까지 분류"
+        },
+        "problem_solution_reviewed": {
+          "canonical": "problem_solution_reviewed",
+          "grade": "not_applicable",
+          "note": "문제와 풀이를 읽고 분류"
+        },
+        "L2": {
+          "canonical": "L2",
+          "grade": "unclassified",
+          "reason": "코드에서 정의를 찾지 못함",
+          "note": "L2까지만 분류했다는 뜻으로 보이나 코드에서 확인하지 못함(10행)"
+        }
+      }
+    },
+    "status": {
+      "paths": [
+        "status"
+      ],
+      "note": "M3 직접 태깅(A/B)의 결과 상태",
+      "values": {
+        "DIRECT_TAGGED": {
+          "canonical": "DIRECT_TAGGED",
+          "grade": "independent_reviewed",
+          "note": "A/B 독립 직접 태깅이 합의되어 mother가 확정"
+        },
+        "FOUNDATION_DEFECT_CANDIDATE": {
+          "canonical": "FOUNDATION_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "파운데이션 결함 후보"
+        },
+        "EVIDENCE_INSUFFICIENT": {
+          "canonical": "EVIDENCE_INSUFFICIENT",
+          "grade": "pending",
+          "note": "근거 부족"
+        },
+        "CONFLICT": {
+          "canonical": "CONFLICT",
+          "grade": "pending",
+          "note": "A/B가 갈려 확정하지 못함"
+        },
+        "SOURCE_DEFECT_CANDIDATE": {
+          "canonical": "SOURCE_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "원본 결함 후보"
+        },
+        "AMBIGUOUS_PRIMARY": {
+          "canonical": "AMBIGUOUS_PRIMARY",
+          "grade": "pending",
+          "note": "주 개념이 하나로 정해지지 않음"
+        }
+      }
+    },
+    "metadataApprovalType": {
+      "paths": [
+        "metadataApprovalType"
+      ],
+      "note": "등록 요청의 승인 종류(reviewed-exam-registration-v2.mjs, tools/main_merge_master.py)",
+      "values": {
+        "META_PIPELINE_AUDIT": {
+          "canonical": "META_PIPELINE_AUDIT",
+          "grade": "judged_once",
+          "note": "외부 심화 메타 감사 한 번. 최종 수학 검수를 승인하지 않음"
+        },
+        "FINAL_QA": {
+          "canonical": "FINAL_QA",
+          "grade": "independent_reviewed",
+          "note": "FINAL QA 사후 검수"
+        },
+        "REVIEW2": {
+          "canonical": "REVIEW2",
+          "grade": "independent_reviewed",
+          "note": "독립 검수 2회(현재 데이터에는 없으나 등록기가 정의한 값)"
+        },
+        "MAIN_MERGE": {
+          "canonical": "MAIN_MERGE",
+          "grade": "source_declared",
+          "note": "병합 자동 등록. 승인이 아님"
+        }
+      }
+    },
+    "semanticDisposition": {
+      "paths": [
+        "semanticDisposition"
+      ],
+      "note": "의미 판정 처분",
+      "values": {
+        "CONFIRMED": {
+          "canonical": "CONFIRMED",
+          "grade": "judged_once",
+          "note": "의미 판정 확정"
+        },
+        "RPM_SEMANTIC_FINAL": {
+          "canonical": "RPM_SEMANTIC_FINAL",
+          "grade": "judged_once",
+          "note": "RPM 의미 판정 최종"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        },
+        "META_CANONICAL_HOLD": {
+          "canonical": "META_CANONICAL_HOLD",
+          "grade": "pending",
+          "note": "정본 사전 쪽 사유로 보류"
+        },
+        "ROUTE_OUT": {
+          "canonical": "ROUTE_OUT",
+          "grade": "not_applicable",
+          "note": "범위 밖"
+        }
+      }
+    },
+    "metadataDisposition": {
+      "paths": [
+        "metadataDisposition"
+      ],
+      "note": "메타 처분",
+      "values": {
+        "RPM_PRIMARY_MIGRATION_GAP": {
+          "canonical": "RPM_PRIMARY_MIGRATION_GAP",
+          "grade": "pending",
+          "note": "RPM Primary 이행이 덜 됨"
+        },
+        "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED": {
+          "canonical": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED",
+          "grade": "pending",
+          "note": "의미 판정은 끝났으나 투영이 아직 구체화되지 않음"
+        },
+        "RPM_SEMANTIC_FINAL_PROJECTION_BINDING_PENDING": {
+          "canonical": "RPM_SEMANTIC_FINAL_PROJECTION_BINDING_PENDING",
+          "grade": "pending",
+          "note": "의미 판정은 끝났으나 바인딩 대기"
+        },
+        "ACTIVE_CANONICAL_REUSE": {
+          "canonical": "ACTIVE_CANONICAL_REUSE",
+          "grade": "judged_once",
+          "note": "ACTIVE 정본 키를 재사용"
+        },
+        "CANONICAL_REUSE": {
+          "canonical": "CANONICAL_REUSE",
+          "grade": "judged_once",
+          "note": "정본 키를 재사용"
+        },
+        "EXISTING_REUSE": {
+          "canonical": "EXISTING_REUSE",
+          "grade": "judged_once",
+          "note": "기존 값을 재사용"
+        },
+        "RPM_SEMANTIC_FINAL": {
+          "canonical": "RPM_SEMANTIC_FINAL",
+          "grade": "judged_once",
+          "note": "RPM 의미 판정 최종"
+        },
+        "META_CANONICAL_HOLD": {
+          "canonical": "META_CANONICAL_HOLD",
+          "grade": "pending",
+          "note": "정본 사전 쪽 사유로 보류"
+        },
+        "TRUE_META_HOLD": {
+          "canonical": "TRUE_META_HOLD",
+          "grade": "pending",
+          "note": "메타 자체 보류"
+        },
+        "SEMANTIC_HOLD_QID_ONLY": {
+          "canonical": "SEMANTIC_HOLD_QID_ONLY",
+          "grade": "pending",
+          "note": "문항 단위 의미 보류"
+        },
+        "BINDING_PENDING": {
+          "canonical": "BINDING_PENDING",
+          "grade": "pending",
+          "note": "바인딩 대기"
+        },
+        "UNMATERIALIZED": {
+          "canonical": "UNMATERIALIZED",
+          "grade": "pending",
+          "note": "투영이 구체화되지 않음"
+        }
+      }
+    },
+    "taxonomyDisposition": {
+      "paths": [
+        "taxonomyDisposition"
+      ],
+      "note": "분류 경로 처분",
+      "values": {
+        "CURRENT_CANONICAL_PATH_RETAINED": {
+          "canonical": "CURRENT_CANONICAL_PATH_RETAINED",
+          "grade": "judged_once",
+          "note": "현재 정본 경로를 유지"
+        },
+        "RESOLVED_EXACT_PATH": {
+          "canonical": "RESOLVED_EXACT_PATH",
+          "grade": "judged_once",
+          "note": "정확한 경로로 해결"
+        },
+        "FOUNDATION_DEFECT_CANDIDATE": {
+          "canonical": "FOUNDATION_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "파운데이션 결함 후보"
+        }
+      }
+    },
+    "l3Disposition": {
+      "paths": [
+        "l3Disposition"
+      ],
+      "note": "L3 처분",
+      "values": {
+        "ASSIGNED": {
+          "canonical": "ASSIGNED",
+          "grade": "judged_once",
+          "note": "L3 배정"
+        },
+        "EXISTING_L3_REUSE": {
+          "canonical": "EXISTING_L3_REUSE",
+          "grade": "judged_once",
+          "note": "기존 L3 재사용"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        },
+        "ROUTE_OUT": {
+          "canonical": "ROUTE_OUT",
+          "grade": "not_applicable",
+          "note": "범위 밖"
+        },
+        "RPM_PATH_MATERIALIZATION": {
+          "canonical": "RPM_PATH_MATERIALIZATION",
+          "grade": "unclassified",
+          "reason": "의미를 정의한 코드를 찾지 못함",
+          "note": "의미를 정의한 코드를 찾지 못함"
+        }
+      }
+    },
+    "l4Disposition": {
+      "paths": [
+        "l4Disposition"
+      ],
+      "note": "L4 처분",
+      "values": {
+        "ASSIGNED": {
+          "canonical": "ASSIGNED",
+          "grade": "judged_once",
+          "note": "L4 배정"
+        },
+        "NO_SEPARATE_L4": {
+          "canonical": "NO_SEPARATE_L4",
+          "grade": "not_applicable",
+          "note": "별도 L4가 없다고 확정"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        },
+        "NEW_L4": {
+          "canonical": "NEW_L4",
+          "grade": "pending",
+          "note": "새 L4가 필요하다고 올림. 키 신설 절차(registryChanges) 전"
+        },
+        "ROUTE_OUT": {
+          "canonical": "ROUTE_OUT",
+          "grade": "not_applicable",
+          "note": "범위 밖"
+        },
+        "RPM_PATH_MATERIALIZATION": {
+          "canonical": "RPM_PATH_MATERIALIZATION",
+          "grade": "unclassified",
+          "reason": "의미를 정의한 코드를 찾지 못함",
+          "note": "의미를 정의한 코드를 찾지 못함"
+        }
+      }
+    },
+    "canonicalState": {
+      "paths": [
+        "canonicalState"
+      ],
+      "note": "정본 경로 일치 상태",
+      "values": {
+        "CANONICAL_PATH_MATCH": {
+          "canonical": "CANONICAL_PATH_MATCH",
+          "grade": "judged_once",
+          "note": "정본 경로와 일치"
+        },
+        "EXPLICIT_NO_FIT_OR_UNKNOWN": {
+          "canonical": "EXPLICIT_NO_FIT_OR_UNKNOWN",
+          "grade": "pending",
+          "note": "맞는 정본이 없거나 모름으로 명시"
+        },
+        "FOUNDATION_DEFECT_CANDIDATE": {
+          "canonical": "FOUNDATION_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "파운데이션 결함 후보"
+        }
+      }
+    },
+    "l4ReviewStatus": {
+      "paths": [
+        "l4ReviewStatus"
+      ],
+      "note": "L4 검토 상태",
+      "values": {
+        "EXACT_MATCH": {
+          "canonical": "EXACT_MATCH",
+          "grade": "judged_once",
+          "note": "L4 정확히 일치"
+        },
+        "MOTHER_REVIEWED_L4_GAP": {
+          "canonical": "MOTHER_REVIEWED_L4_GAP",
+          "grade": "pending",
+          "note": "mother가 검토해 L4 공백으로 확정. 값이 비어 있음"
+        },
+        "FOUNDATION_DEFECT_CANDIDATE": {
+          "canonical": "FOUNDATION_DEFECT_CANDIDATE",
+          "grade": "pending",
+          "note": "파운데이션 결함 후보"
+        },
+        "NO_SEPARATE_L4": {
+          "canonical": "NO_SEPARATE_L4",
+          "grade": "not_applicable",
+          "note": "별도 L4 없음"
+        }
+      }
+    },
+    "taxonomyStatus": {
+      "paths": [
+        "taxonomyStatus"
+      ],
+      "note": "분류 경로 확정 상태",
+      "values": {
+        "CONFIRMED": {
+          "canonical": "CONFIRMED",
+          "grade": "judged_once",
+          "note": "경로 확정"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        }
+      }
+    },
+    "foundationTaxonomyStatus": {
+      "paths": [
+        "foundationTaxonomyStatus"
+      ],
+      "note": "파운데이션 분류 확정 상태",
+      "values": {
+        "CONFIRMED": {
+          "canonical": "CONFIRMED",
+          "grade": "judged_once",
+          "note": "확정. 카탈로그 빌더는 키가 ACTIVE 사전에 있을 때만 CONFIRMED로 다시 계산함"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        },
+        "PROJECTION_PENDING": {
+          "canonical": "PROJECTION_PENDING",
+          "grade": "pending",
+          "note": "투영 대기"
+        }
+      }
+    },
+    "metaFoundationStatus": {
+      "paths": [
+        "metaFoundationStatus"
+      ],
+      "note": "파운데이션 팩 반영 상태",
+      "values": {
+        "ACTIVE": {
+          "canonical": "ACTIVE",
+          "grade": "not_applicable",
+          "note": "ACTIVE 사전에 결속됨(auto-register-merged-source.mjs가 검증 뒤 씀). 확인 정도가 아니라 결속 상태"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        }
+      }
+    },
+    "projectionStatus": {
+      "paths": [
+        "projectionStatus"
+      ],
+      "note": "크로스워크 투영 상태",
+      "values": {
+        "REUSE": {
+          "canonical": "REUSE",
+          "grade": "not_applicable",
+          "note": "기존 ACTIVE 행을 재사용해 투영함"
+        },
+        "PROJECTION_REUSE": {
+          "canonical": "REUSE",
+          "grade": "not_applicable",
+          "note": "REUSE와 같은 값(finalqa-close-h22-algebra-20261021.mjs가 씀)"
+        },
+        "PROJECTION_UNMATERIALIZED": {
+          "canonical": "PROJECTION_UNMATERIALIZED",
+          "grade": "pending",
+          "note": "투영이 아직 구체화되지 않음"
+        },
+        "UNMATERIALIZED": {
+          "canonical": "PROJECTION_UNMATERIALIZED",
+          "grade": "pending",
+          "note": "PROJECTION_UNMATERIALIZED와 같은 값(접두어만 다름)"
+        },
+        "PROJECTION_BINDING_PENDING": {
+          "canonical": "PROJECTION_BINDING_PENDING",
+          "grade": "pending",
+          "note": "바인딩 대기"
+        },
+        "BINDING_PENDING": {
+          "canonical": "PROJECTION_BINDING_PENDING",
+          "grade": "pending",
+          "note": "PROJECTION_BINDING_PENDING과 같은 값(접두어만 다름)"
+        },
+        "NOT_ATTEMPTED": {
+          "canonical": "NOT_ATTEMPTED",
+          "grade": "pending",
+          "note": "투영을 시도하지 않음"
+        },
+        "PROJECTION_NOT_ATTEMPTED": {
+          "canonical": "NOT_ATTEMPTED",
+          "grade": "pending",
+          "note": "NOT_ATTEMPTED와 같은 값(접두어만 다름)"
+        },
+        "NOT_PROJECTED": {
+          "canonical": "NOT_PROJECTED",
+          "grade": "unclassified",
+          "reason": "NOT_ATTEMPTED와 같은 뜻인지 확실하지 않아 묶지 않음",
+          "note": "시도했으나 투영되지 않았다는 뜻인지 NOT_ATTEMPTED와 같은 뜻인지 코드에서 확인하지 못함"
+        }
+      }
+    },
+    "rpmSemanticStatus": {
+      "paths": [
+        "rpmSemanticStatus"
+      ],
+      "note": "RPM 의미 판정 상태. 여러 체계의 값이 한 칸에 섞여 있다",
+      "values": {
+        "FINAL": {
+          "canonical": "FINAL",
+          "grade": "judged_once",
+          "note": "RPM 의미 판정 최종"
+        },
+        "CONFIRMED": {
+          "canonical": "CONFIRMED",
+          "grade": "judged_once",
+          "note": "RPM 의미 판정 확정"
+        },
+        "SELF_CHECKED": {
+          "canonical": "SELF_CHECKED",
+          "grade": "source_declared",
+          "note": "시험지 JS 작성자가 스스로 확인했다고 적은 표기(reviewed-exam-registration-v2.mjs 주석이 '원본 자신의 검토 표기'라고 설명)"
+        },
+        "EVIDENCE_DEBT": {
+          "canonical": "EVIDENCE_DEBT",
+          "grade": "pending",
+          "note": "근거 부족으로 공백 명시"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        },
+        "NO_EXACT_LOCKED_RPM_ROW": {
+          "canonical": "NO_EXACT_LOCKED_RPM_ROW",
+          "grade": "pending",
+          "note": "LOCKED RPM에 맞는 행이 없음. 새 행이 생기기 전까지 공백"
+        },
+        "NO_EXACT_LOCKED_ROW": {
+          "canonical": "NO_EXACT_LOCKED_ROW",
+          "grade": "unclassified",
+          "reason": "같은 뜻으로 보이나 철자 쌍인지 확실하지 않아 묶지 않음",
+          "note": "NO_EXACT_LOCKED_RPM_ROW의 오타인지 확실하지 않음(1행)"
+        },
+        "DIRECT_BINDING_GAP": {
+          "canonical": "DIRECT_BINDING_GAP",
+          "grade": "pending",
+          "note": "바인딩 공백"
+        },
+        "DIRECT_ACTIVE": {
+          "canonical": "DIRECT_ACTIVE",
+          "grade": "unclassified",
+          "reason": "크로스워크 상태 어휘가 이 칸에 섞여 있음",
+          "note": "크로스워크 상태 단어가 의미 판정 칸에 들어가 있음(184행). 무엇을 확정했다는 뜻인지 코드에서 확인하지 못함"
+        }
+      }
+    },
+    "rpmPathStatus": {
+      "paths": [
+        "rpmPathStatus"
+      ],
+      "note": "RPM 경로 확정 상태(공식 Resolver 결과에서 옴: reviewed-apply-core.mjs rpmPathStatusFromResolverEvidence)",
+      "values": {
+        "DIRECT": {
+          "canonical": "DIRECT",
+          "grade": "judged_once",
+          "note": "정확한 ACTIVE 행으로 경로 확정"
+        },
+        "DIRECT_ACTIVE": {
+          "canonical": "DIRECT_ACTIVE",
+          "grade": "judged_once",
+          "note": "정확한 ACTIVE 행으로 경로 확정(R2E 표기)"
+        },
+        "FAMILY_ACTIVE": {
+          "canonical": "FAMILY_ACTIVE",
+          "grade": "judged_once",
+          "note": "FAMILY ACTIVE 행으로 경로 확정"
+        },
+        "CONFIRMED": {
+          "canonical": "CONFIRMED",
+          "grade": "judged_once",
+          "note": "경로 확정(apply-reviewed-legacy-similar-ledgers.mjs)"
+        },
+        "HOLD_NO_EQUIVALENT_PATH": {
+          "canonical": "HOLD_NO_EQUIVALENT_PATH",
+          "grade": "pending",
+          "note": "RPM에 같은 뜻의 경로가 없어 비워 둠. 카탈로그는 reviewed_pass 부모 전용 예외만 인정(build-archive2-catalog.mjs:409)"
+        },
+        "SEMANTIC_HOLD_OR_ROUTE_OUT": {
+          "canonical": "SEMANTIC_HOLD_OR_ROUTE_OUT",
+          "grade": "pending",
+          "note": "의미 보류 또는 범위 밖"
+        },
+        "ROUTE_OUT": {
+          "canonical": "ROUTE_OUT",
+          "grade": "not_applicable",
+          "note": "범위 밖"
+        }
+      }
+    },
+    "rpmCrosswalkStatus": {
+      "paths": [
+        "rpmCrosswalkStatus"
+      ],
+      "note": "크로스워크 연결 상태",
+      "values": {
+        "DIRECT_ACTIVE": {
+          "canonical": "DIRECT_ACTIVE",
+          "grade": "judged_once",
+          "note": "정확한 ACTIVE 행이 있음"
+        },
+        "FAMILY_ACTIVE": {
+          "canonical": "FAMILY_ACTIVE",
+          "grade": "judged_once",
+          "note": "FAMILY ACTIVE 행이 있음"
+        },
+        "RPM_ONLY": {
+          "canonical": "RPM_ONLY",
+          "grade": "pending",
+          "note": "RPM 행만 있고 ACTIVE PT/TPL 바인딩이 없음"
+        },
+        "DIRECT_BINDING_GAP": {
+          "canonical": "DIRECT_BINDING_GAP",
+          "grade": "pending",
+          "note": "바인딩 공백"
+        },
+        "FAMILY_BINDING_GAP": {
+          "canonical": "FAMILY_BINDING_GAP",
+          "grade": "pending",
+          "note": "FAMILY 바인딩 공백"
+        },
+        "UNMATERIALIZED": {
+          "canonical": "UNMATERIALIZED",
+          "grade": "pending",
+          "note": "구체화되지 않음"
+        },
+        "NOT_ATTEMPTED_DUE_SEMANTIC_HOLD": {
+          "canonical": "NOT_ATTEMPTED_DUE_SEMANTIC_HOLD",
+          "grade": "pending",
+          "note": "의미 보류로 시도하지 않음"
+        },
+        "NO_EXACT_RPM_PRIMARY_LEAF": {
+          "canonical": "NO_EXACT_RPM_PRIMARY_LEAF",
+          "grade": "pending",
+          "note": "맞는 RPM Primary 리프가 없음"
+        },
+        "": {
+          "canonical": "",
+          "grade": "pending",
+          "note": "값이 기록되지 않음(빈 문자열)"
+        }
+      }
+    },
+    "conflictStatus": {
+      "paths": [
+        "conflictStatus"
+      ],
+      "note": "원본 충돌 상태. 원본 쪽 주석이며 사용 문턱이 아님(2026-10-29 결정)",
+      "values": {
+        "NONE": {
+          "canonical": "NONE",
+          "grade": "not_applicable",
+          "note": "충돌 없음"
+        },
+        "SOURCE_VISUAL_SOLUTION_NUMERIC_CONTRADICTION": {
+          "canonical": "SOURCE_VISUAL_SOLUTION_NUMERIC_CONTRADICTION",
+          "grade": "not_applicable",
+          "note": "원본 그림과 해설의 숫자가 어긋난다는 원본 쪽 결함 주석"
+        }
+      }
+    },
+    "sourceMetadataVerification": {
+      "paths": [
+        "sourceMetadataVerification"
+      ],
+      "note": "원본과 메타의 결속 검증 상태",
+      "values": {
+        "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED": {
+          "canonical": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+          "grade": "not_applicable",
+          "note": "현재 원본 지문에 맞춰 동기화됨. 결속 상태이지 확인 정도가 아님"
+        },
+        "MOTHER_SOURCE_BOUND_FINAL": {
+          "canonical": "MOTHER_SOURCE_BOUND_FINAL",
+          "grade": "not_applicable",
+          "note": "mother 확정이 원본에 결속됨. 결속 상태"
+        },
+        "SOURCE_DRIFT48_EXPLICIT_HOLD_UNSYNCED": {
+          "canonical": "SOURCE_DRIFT48_EXPLICIT_HOLD_UNSYNCED",
+          "grade": "defect",
+          "defect": "원본이 바뀐 뒤 메타를 동기화하지 못함. 값이 옛 본문을 설명하는 경우가 대부분이다(지금 코드가 이 값으로 차단하지는 않으며, 본문 지문이 현재와 맞는 행은 쓸 수 있다)",
+          "note": "원본이 바뀐 뒤 메타를 동기화하지 못함. 값이 옛 본문을 설명하는 경우가 대부분이다(지금 코드가 이 값으로 차단하지는 않으며, 본문 지문이 현재와 맞는 행은 쓸 수 있다)"
+        }
+      }
+    },
+    "sourceIssue": {
+      "paths": [
+        "sourceIssue"
+      ],
+      "note": "원본 문제 쪽 문제 표시. 원본 주석이며 사용 문턱이 아님(2026-10-29 결정)",
+      "values": {
+        "NONE": {
+          "canonical": "NONE",
+          "grade": "not_applicable",
+          "note": "문제 없음"
+        },
+        "SOURCE_DRIFT48_QA_HOLD": {
+          "canonical": "SOURCE_DRIFT48_QA_HOLD",
+          "grade": "pending",
+          "note": "원본 변경(drift) 검수 보류. 동기화 여부는 sourceMetadataVerification·지문 일치로 확인"
+        },
+        "SOLUTION_BLOCKER": {
+          "canonical": "SOLUTION_BLOCKER",
+          "grade": "not_applicable",
+          "note": "해설 쪽 막힘 표시"
+        },
+        "SOURCE_UNRESOLVED_HOLD": {
+          "canonical": "SOURCE_UNRESOLVED_HOLD",
+          "grade": "not_applicable",
+          "note": "원본 미해결 보류 표시"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "not_applicable",
+          "note": "원본 보류 표시"
+        },
+        "SOURCE_HWP_EQUATION_UNVERIFIED_HOLD": {
+          "canonical": "SOURCE_HWP_EQUATION_UNVERIFIED_HOLD",
+          "grade": "not_applicable",
+          "note": "HWP 수식 미확인 보류 표시"
+        },
+        "VISUAL_RENDER_NOT_TESTED_HOLD": {
+          "canonical": "VISUAL_RENDER_NOT_TESTED_HOLD",
+          "grade": "not_applicable",
+          "note": "그림 렌더 미검사 보류 표시"
+        },
+        "ARCHIVE_PRIMARY_MISMATCH": {
+          "canonical": "ARCHIVE_PRIMARY_MISMATCH",
+          "grade": "unclassified",
+          "reason": "정의한 코드를 찾지 못함",
+          "note": "무엇과 무엇이 어긋나는지 코드에서 확인하지 못함(1행)"
+        },
+        "REAL_DOMAIN_CONTRADICTION_AND_SOLUTION_DOMAIN_ERROR": {
+          "canonical": "REAL_DOMAIN_CONTRADICTION_AND_SOLUTION_DOMAIN_ERROR",
+          "grade": "not_applicable",
+          "note": "원본 정의역 모순 주석"
+        },
+        "NO_ATTAINED_MINIMUM": {
+          "canonical": "NO_ATTAINED_MINIMUM",
+          "grade": "not_applicable",
+          "note": "최솟값 없음 주석"
+        },
+        "Required condition block absent in original HWP source and answer section explicitly marks condition missing; no safe recovery.": {
+          "canonical": "Required condition block absent in original HWP source and answer section explicitly marks condition missing; no safe recovery.",
+          "grade": "not_applicable",
+          "note": "원본에 조건 블록이 없다는 자유 서술 주석(1행)"
+        }
+      }
+    },
+    "curriculumApplicability": {
+      "paths": [
+        "curriculumApplicability"
+      ],
+      "note": "교육과정 적용 범위 표시. 카탈로그 엄격 경로는 UNKNOWN·DEFAULT_SCOPE만 인정(archive2-core.js basicEligibility)",
+      "values": {
+        "DEFAULT_SCOPE": {
+          "canonical": "DEFAULT_SCOPE",
+          "grade": "not_applicable",
+          "note": "기본 범위"
+        },
+        "UNKNOWN": {
+          "canonical": "UNKNOWN",
+          "grade": "pending",
+          "note": "아직 정해지지 않음"
+        },
+        "HOLD": {
+          "canonical": "HOLD",
+          "grade": "pending",
+          "note": "보류"
+        },
+        "RPM_EXTENDED_CANDIDATE": {
+          "canonical": "RPM_EXTENDED_CANDIDATE",
+          "grade": "not_applicable",
+          "note": "RPM 확장 후보 범위"
+        },
+        "OUT_OF_SCOPE": {
+          "canonical": "OUT_OF_SCOPE",
+          "grade": "not_applicable",
+          "note": "범위 밖"
+        },
+        "CORE": {
+          "canonical": "CORE",
+          "grade": "unclassified",
+          "reason": "허용 목록에 없고 정의한 코드를 찾지 못함",
+          "note": "엄격 경로가 인정하는 목록(UNKNOWN·DEFAULT_SCOPE)에 없고 정의한 코드도 찾지 못함(23행)"
+        }
+      }
+    },
+    "nativeMetaStatus": {
+      "paths": [
+        "nativeMetaStatus"
+      ],
+      "note": "원본 고유 메타 확정 상태(원본 메타 독립 검수 287행에만 있음)",
+      "values": {
+        "CONFIRMED": {
+          "canonical": "CONFIRMED",
+          "grade": "independent_reviewed",
+          "note": "원본 메타 독립 검수에서 확정"
+        }
+      }
+    },
+    "metadataRegistrationStatus": {
+      "paths": [
+        "metadataRegistrationStatus"
+      ],
+      "note": "자동 등록기 등록 상태",
+      "values": {
+        "REGISTERED": {
+          "canonical": "REGISTERED",
+          "grade": "source_declared",
+          "note": "소스 선언값을 등록함(MAIN_MERGED_EXPLICIT_METADATA)"
+        }
+      }
+    },
+    "independentMathReviewStatus": {
+      "paths": [
+        "independentMathReviewStatus"
+      ],
+      "note": "독립 수학 검수 여부",
+      "values": {
+        "NOT_PERFORMED_BY_AUTO_REGISTRAR": {
+          "canonical": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+          "grade": "pending",
+          "note": "자동 등록기는 독립 수학 검수를 하지 않음"
+        }
+      }
+    },
+    "legacyLevelCompatibility": {
+      "paths": [
+        "legacyLevelCompatibility"
+      ],
+      "note": "옛 3단계(하·중·상)와 새 1~5가 맞는 정도(register-difficulty5.mjs computeLegacyCompat). 확인 정도가 아니라 일치 코드. 화면(difficultyEligible)은 NORMAL·BORDERLINE_ACCEPTABLE·STRONG_CONFLICT만 인정",
+      "values": {
+        "NORMAL": {
+          "canonical": "NORMAL",
+          "grade": "not_applicable",
+          "note": "같은 단계(일치)"
+        },
+        "BORDERLINE_ACCEPTABLE": {
+          "canonical": "BORDERLINE_ACCEPTABLE",
+          "grade": "judged_once",
+          "note": "한 단계 차이를 검토해 받아들임(build-m3-l1-metadata.mjs가 BORDERLINE_REVIEW를 이 값으로 해결)"
+        },
+        "BORDERLINE_REVIEW": {
+          "canonical": "BORDERLINE_REVIEW",
+          "grade": "pending",
+          "note": "한 단계 차이. 등록 도구가 기본값으로 쓰고 아직 받아들임 여부가 정해지지 않음. 화면은 인정하지 않음"
+        },
+        "STRONG_CONFLICT": {
+          "canonical": "STRONG_CONFLICT",
+          "grade": "not_applicable",
+          "note": "두 단계 차이. 충돌 사실의 기록이며 화면은 인정함"
+        },
+        "UNKNOWN": {
+          "canonical": "UNKNOWN",
+          "grade": "not_applicable",
+          "note": "옛 단계가 없어 비교할 수 없음"
+        },
+        "MOTHER_FINAL_REVIEW": {
+          "canonical": "MOTHER_FINAL_REVIEW",
+          "grade": "unclassified",
+          "reason": "허용 목록에 없고 정의한 코드를 찾지 못함",
+          "note": "mother 확정에서만 쓰인 표시(54행). 허용 목록에 없고 정의한 코드를 찾지 못함"
+        }
+      }
+    },
+    "legacyLevelCompatibilityEvidence": {
+      "paths": [
+        "legacyLevelCompatibilityEvidence"
+      ],
+      "note": "일치 코드를 얻은 근거",
+      "values": {
+        "V1_3_FINAL_BUCKET_MAPPING": {
+          "canonical": "V1_3_FINAL_BUCKET_MAPPING",
+          "grade": "not_applicable",
+          "note": "난이도 규칙 v1.3 대응표로 계산"
+        },
+        "REUSED_ACCEPTED_METADATA_PAIR": {
+          "canonical": "REUSED_ACCEPTED_METADATA_PAIR",
+          "grade": "not_applicable",
+          "note": "이미 받아들인 메타 쌍을 재사용"
+        },
+        "UNKNOWN_DIFFICULTY": {
+          "canonical": "UNKNOWN_DIFFICULTY",
+          "grade": "pending",
+          "note": "난이도를 몰라 일치를 계산하지 못함"
+        }
+      }
+    },
+    "difficultyConfidence": {
+      "paths": [
+        "difficultyConfidence"
+      ],
+      "note": "난이도 판정 신뢰도 보조 코드. 확인 정도가 아니라 판정자가 보고한 확신. 화면(difficultyEligible)은 소문자 high·medium·low만 인정",
+      "values": {
+        "high": {
+          "canonical": "high",
+          "grade": "not_applicable",
+          "note": "높음"
+        },
+        "HIGH": {
+          "canonical": "high",
+          "grade": "not_applicable",
+          "note": "high의 대소문자 변형"
+        },
+        "medium": {
+          "canonical": "medium",
+          "grade": "not_applicable",
+          "note": "중간"
+        },
+        "low": {
+          "canonical": "low",
+          "grade": "not_applicable",
+          "note": "낮음"
+        },
+        "LOW": {
+          "canonical": "low",
+          "grade": "not_applicable",
+          "note": "low의 대소문자 변형"
+        },
+        "UNKNOWN": {
+          "canonical": "UNKNOWN",
+          "grade": "pending",
+          "note": "신뢰도를 알 수 없음"
+        },
+        "source_preserved": {
+          "canonical": "source_preserved",
+          "grade": "source_declared",
+          "note": "시험지 JS에 있던 값을 그대로 보존"
+        },
+        "reconstructed_evidence": {
+          "canonical": "reconstructed_evidence",
+          "grade": "unclassified",
+          "reason": "정의한 코드를 찾지 못함",
+          "note": "증거로 재구성했다는 뜻으로 보이나 정의한 코드를 찾지 못함(68행)"
+        }
+      }
+    },
+    "difficultyBoundaryFlag": {
+      "paths": [
+        "difficultyBoundaryFlag"
+      ],
+      "note": "난이도가 경계에 걸리는지 보조 코드. 화면은 NONE·B12·B23·B34·B45만 인정",
+      "values": {
+        "NONE": {
+          "canonical": "NONE",
+          "grade": "not_applicable",
+          "note": "경계 아님"
+        },
+        "B12": {
+          "canonical": "B12",
+          "grade": "not_applicable",
+          "note": "1·2 경계"
+        },
+        "B23": {
+          "canonical": "B23",
+          "grade": "not_applicable",
+          "note": "2·3 경계"
+        },
+        "B34": {
+          "canonical": "B34",
+          "grade": "not_applicable",
+          "note": "3·4 경계"
+        },
+        "B45": {
+          "canonical": "B45",
+          "grade": "not_applicable",
+          "note": "4·5 경계"
+        },
+        "UNKNOWN": {
+          "canonical": "UNKNOWN",
+          "grade": "pending",
+          "note": "알 수 없음"
+        },
+        "MOTHER_FINAL": {
+          "canonical": "MOTHER_FINAL",
+          "grade": "unclassified",
+          "reason": "허용 목록에 없고 정의한 코드를 찾지 못함",
+          "note": "경계 코드 칸에 mother 확정 표시가 들어가 있음(54행). 허용 목록에 없음"
+        }
+      }
+    }
+  },
+  "synonymGroups": [
+    {
+      "id": "mother_final",
+      "canonical": "mother_final",
+      "grade": "independent_reviewed",
+      "members": [
+        "metadataStatus:MOTHER_FINAL",
+        "reviewStatus:MOTHER_FINAL",
+        "tagConfidence:MOTHER_FINAL",
+        "fieldStatus:mother_final"
+      ],
+      "note": "대소문자만 다른 같은 값. 칸이 달라 각 칸에서는 자기 표기를 그대로 두고, 이 묶음이 같은 뜻임을 알린다"
+    },
+    {
+      "id": "approved_final_qa",
+      "canonical": "approved_final_qa",
+      "grade": "independent_reviewed",
+      "members": [
+        "fieldStatus:approved_final_qa",
+        "fieldStatus:approved_finalqa"
+      ],
+      "note": "철자만 다른 쌍(같은 칸 안)"
+    }
+  ]
+}

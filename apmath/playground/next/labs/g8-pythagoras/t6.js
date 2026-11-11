@@ -78,7 +78,7 @@
       if (C.full || kind === 0 || C.answer) { sideTag(b, Ap, Bp, Cp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Ap, Cp, Bp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); }
       else sideTag(b, Ap, Bp, Cp, 'x', { color: 'amber', size: 18, gap: 12 });
       if (st(1) || prob) {
-        if (C.full || C.answer || C.review && kind === 1 && C.step >= 3) T(b, heightAt, hi ? `${hi}` : `h²=${h2}`, { dx: compactHeight ? 0 : hi ? 14 : 34, size: 17, color: 'rose' });
+        if (C.full || C.answer || C.review && kind === 1 && C.step >= 3 && (!C.lesson || C.calculation)) T(b, heightAt, hi ? `${hi}` : `h²=${h2}`, { dx: compactHeight ? 0 : hi ? 14 : 34, size: 17, color: 'rose' });
       }
       if (!C.answer && kind === 0) T(b, heightAt, 'x', { dx: compactHeight ? 0 : 14, size: 18, color: 'rose' });
       if (kind === 1 && C.givens) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 16, color: 'ink' });
@@ -151,8 +151,8 @@
         T(b, lerp(Ap, H, 0.5), C.answer ? `x=${h}` : 'x', { dx: C.answer ? 26 : 14, size: 18, color: 'rose' });
       } else if (C.givens && kind === 1) {
         baseDim(b, Bp, Cp, `${v}`, 16); T(b, lerp(Ap, H, 0.5), `${h}`, { dx: 14, size: 17, color: 'rose' });
-        if (C.review && C.step >= 3) { T(b, mid(Bp, H), `${d1}`, { dy: 16, size: 15, color: 'green' }); T(b, mid(I, Cp), `${d2}`, { dy: 16, size: 15, color: 'green' }); }
-        if (C.review && C.step >= 4) { sideTag(b, Bp, Ap, Cp, `${l1i}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Cp, Dp, Bp, `${l2i}`, { color: 'amber', size: 17, gap: 12 }); }
+        if (C.review && C.step >= 3 && (!C.lesson || C.calculation)) { T(b, mid(Bp, H), `${d1}`, { dy: 16, size: 15, color: 'green' }); T(b, mid(I, Cp), `${d2}`, { dy: 16, size: 15, color: 'green' }); }
+        if (C.review && C.step >= 4 && (!C.lesson || C.calculation)) { sideTag(b, Bp, Ap, Cp, `${l1i}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Cp, Dp, Bp, `${l2i}`, { color: 'amber', size: 17, gap: 12 }); }
       } else if (!prob) {
         sideTag(b, Bp, Ap, Cp, l1i ? `${l1i}` : `AB²=${l1}`, { color: 'amber', size: 16, gap: 12 }); sideTag(b, Cp, Dp, Bp, l2i ? `${l2i}` : `CD²=${l2}`, { color: 'amber', size: 16, gap: 12 });
         T(b, lerp(Ap, H, 0.5), `${h}`, { dx: 14, size: 17, color: 'rose' });
@@ -217,10 +217,10 @@
       }
       [[A, 'A', -1, -1], [D, 'D', 1, -1], [Cp, 'C', 1, 1], [Bp, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
       T(b, mid(Bp, Cp), `${w}`, { dy: 18, size: 17, color: 'sky' }); sideTag(b, A, Bp, Cp, `${h}`, { color: 'green', size: 17, gap: 12 });
-      if (C.full || C.review && C.step >= 2) T(b, mid(Bp, D), `BD=${d}`, { dy: -24, size: 15, color: 'sky' });
+      if (C.full || C.review && C.step >= 2 && (!C.lesson || C.calculation)) T(b, mid(Bp, D), `BD=${d}`, { dy: -24, size: 15, color: 'sky' });
       if (!C.answer && kind === 2) T(b, mid(A, Pf), 'x', { dx: -10, dy: -10, size: 18, color: 'amber' });
       if (!C.answer && kind === 1) T(b, mid(Pf, Qf), 'x', { dx: 6, dy: -14, size: 18, color: 'amber' });
-      if (C.full || C.review && kind !== 1 && C.step >= 3) T(b, mid(A, Pf), `AP=${f(M.AP)}`, { dx: -6, dy: -16, size: 14, color: 'rose' });
+      if (C.full || C.review && kind !== 1 && C.step >= 3 && (!C.lesson || (kind === 0 ? C.calculation : C.answer))) T(b, mid(A, Pf), `AP=${f(M.AP)}`, { dx: -6, dy: -16, size: 14, color: 'rose' });
       if (C.full || C.answer && kind === 1) T(b, mid(Pf, Qf), `PQ=${f(M.PQ)}`, { dx: 8, dy: 22, size: 14, color: 'amber' });
     },
     steps: (M) => M.d ? [
