@@ -61,7 +61,8 @@
 | `alg-sine-cosine-law` 사인·코사인법칙 | 18 | 18 / 45 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1784](https://github.com/icefoxtail/AP------/pull/1784), merge `f30aaecf76d61a0a2a5c5a6d827c9d488af7dda5`. 개념 18·첫 원문 소문항 27. 최소 검사 47/47·1,188 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
 | `common-rational` 유리함수 | 4 | 4 / 19 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1786](https://github.com/icefoxtail/AP------/pull/1786), merge `b07a26bba6afde5dd00996dacb036ef6228668eb`. 개념 15·첫 원문 4. 최소 검사 47/47·546 Board/raw canvas cue frames. 실제 운영 파일 0/4 일치 (§7) |
 | `common-poly-solid` 다항식과 입체 | 5 | 5 / 17 | **MAIN_MERGED / PAGES_NOT_VERIFIED / QA_PENDING** · [PR #1790](https://github.com/icefoxtail/AP------/pull/1790), merge `7348e5114857ce2ef9664ba2f51f712b477d4eb4`. 개념 12·첫 원문 5. 최소 검사 47/47·466 Board cue frames(392 native Space). 실제 운영 파일 0/4 일치 (§7) |
-| 고등 잔여 34개 | — | — | 과목 순서로 진행. 다음 `common-quadratic` 36장면 (§7) |
+| `common-quadratic` 이차함수 | 36 | 20 / 60 (제작 중) | **WIP / QA_PENDING** · 목표 36장면·104해설. 등록분 validator 오류·경고 0, 전체 통합 검사·PR/main/Pages 대기 (§7) |
+| 고등 잔여 33개 | — | — | 이차함수 뒤 과목 순서로 진행. 다음 `common-lines` 30장면 (§7) |
 
 장면 수는 `kit/apl-catalog.js` 기준이다(중1: points-lines 24, parallel 12, spatial 27, construction 23, area 14, polygons 18, polyhedra 26, solids 22 / 중2: triangles 43, quadrilaterals 32, similarity 39, pythagoras 37 / 중3: trig-ratio 51, circle 45).
 
@@ -251,6 +252,10 @@
 - **보고:** `IMPLEMENTED`, `MAIN_MERGED`, `RELEASED_QA_PENDING`, `QA_VERIFIED`, `BLOCKED_P0`를 구분한다. `NOT_RUN`은 이유를 적고 품질 PASS로 바꾸지 않는다.
 
 ## 9. 알려진 함정과 기록
+
+- 2026-11-11 · 이차함수는 최신 main `88bc24d90e2604844119076be1095d71c5a30b14`에서 `feat/lessons-common-quadratic`을 시작했다. 기존 36장면의 해설은 0개였고 열린 PR 47개의 2,743개 경로에 대상 충돌이 없었다. 기존 문서에 있는 개념 68개와 첫 원문 36개를 구분해 총 104해설을 제작한다. 첫 보존 묶음은 **20장면/60해설**(개념 40·원문 20), index snapshot에서 validator 오류·경고 0을 확인했다. 등록 없는 ID: `movingAxisMin`, `movingAxisMaxJump`, `movingWindowInterval`, `substitution2Stage`, `inscribedRectParabola`, `absWholeFold`, `absXSymmetry`, `absLineRotTangent`, `absPiecewiseSplit`, `maxMinEnvelope`, `cq-glue`, `cq-product`, `cq-rotate`, `cq-integers`, `cq-window`, `cq-sweep`. 고정 first packet의 함수 참조와 수동 새 문제를 보존하며, 개념의 좌우/부호/경계/중근 비교는 해설 전용 그림으로 연결한다. 중간 좌표 라벨의 정답 숫자는 최종 장까지 중립화한다. 이 snapshot의 전체 재생/Board·최종 104개 검사는 **NOT_RUN**이고 완료/PASS를 추정하지 않는다.
+
+- 2026-11-11 · 유리함수 source-only 초기화 수정 [PR #1791](https://github.com/icefoxtail/AP------/pull/1791)도 main에 병합했다. head `9f670333114c4b13fc772430650da2d8da9ae8e0`, merge/API·Git main `88bc24d90e2604844119076be1095d71c5a30b14`; ancestor·대상 2파일 차이 0. 기존 검사 포함 72/72·546 cue frames, 검사 manifest 24파일은 최종 head/main과 같다. CI 3개 queued, 운영 변경 HTML은 HTTP 200 이전판으로 0/1 일치하여 **PAGES_NOT_VERIFIED**이다. [AWCR r38](https://drive.google.com/file/d/1MrYGl3N41UO_jFSaKe_GAeIVSh1Zi7mL/view) raw SHA-256 `dfc1b31ea121c2994f21641feda79f40d564ecf7509023d75ae4ea5623c5e4ca`·21,477 bytes를 다시 읽어 확인했다. 이전 [r37](https://drive.google.com/file/d/185uUXl4ehXYxwxiXogofbPfWp48xb8fc/view) SHA-256 `f00608fcbe58315df693be3efe4f2a1296a80b22985fc3780428b5b50948a54d`·19,963 bytes는 다항식과 입체 PR #1790 완료에 결속한다.
 
 - 2026-11-11 · 유리함수의 기존 source-only 초기화 계약 회귀를 수정했다. [CI 43018818401](https://github.com/icefoxtail/AP------/actions/runs/43018818401)의 `high-review-targets.test.mjs` fixture는 외부 해설 모듈 없이 HTML 본문만 실행한다. PR #1786의 무조건 `install` 호출 때문에 scope 단계가 실패한 것으로, Archive 오류나 무관한 기존 실패로 분류하지 않는다. 기존 tangent/사인·코사인법칙과 같은 optional guard 한 줄을 넣어 모듈 없는 환경에서도 수동 장면 초기화를 유지했다. 기존 검사 25개 + 유리함수 통합 6개 + video 41개 **72/72 PASS**, fail/skip/cancel 0, 실제 유리함수 Board/raw canvas 546 cue frames와 HTML 인라인 2개 구문 통과. 검사 대상 24파일의 전후 hash가 동일하며 검사 파일을 바꾸거나 완화하지 않았다. TAP SHA-256 `9b0e77359d15f6a24833451af4842d8b0420394c5708b8723ddd1c0277c32248`, manifest SHA-256 `2a5f19d600018516379167da438d9bcb87a33b4c59665a88b0f1eebbc4f61e65`. 별도 `fix/lessons-common-rational-bootstrap` PR에서 운영 반영하며 실제 브라우저·전체 CI PASS로 확대하지 않는다.
 

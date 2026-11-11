@@ -10,16 +10,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-compat.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="../kit/apl-video-core.js"></script>
+<script defer src="../kit/apl-player.js"></script>
+<script defer src="../kit/apl-toc.js"></script>
 <script defer src="common-quadratic/old-core.js"></script>
 <script defer src="common-quadratic/old-1.js"></script>
 <script defer src="common-quadratic/old-2.js"></script>
 <script defer src="common-quadratic/plus.js"></script>
+<script defer src="common-quadratic/lesson-core.js"></script>
+<script defer src="common-quadratic/lesson-a.js"></script>
+<script defer src="common-quadratic/lesson-b.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -1346,6 +1353,125 @@ window.addEventListener('DOMContentLoaded', function () {
     Object.assign(plusParams, g.params || {});
   });
 
+  const lqcActive = s => !!(s && (s.lessonOn || s.lessonEntry));
+  const scenes = groups.flatMap(group => group.scenes);
+  const lessonFocus = { x: [-6, 8], y: [-5.4, 6.9] };
+  const sourceInfo = Object.fromEntries(scenes.map(sc => {
+    const initial = { lens: 'all', kIdx: 2, fold: 0, n4strict: false, ...Object.fromEntries(Object.entries(plusParams).map(([key, value]) => [key, value.value])) };
+    if (sc.enter) sc.enter(initial);
+    const first = sc.vary && (sc.vary.first ? sc.vary.first() : sc.vary.cur());
+    const spec = window.APL_CQ_OLD && window.APL_CQ_OLD.specs[sc.id];
+    const problem = sc.problem || {};
+    const inquiry = typeof sc.question === 'function' ? sc.question(initial) : sc.question;
+    const question = spec ? spec.text(first) : typeof problem.text === 'function' ? problem.text() : problem.text || inquiry;
+    const answer = spec ? spec.ans(first) : typeof problem.answer === 'function' ? problem.answer() : problem.answer || '';
+    return [sc.id, { initial, first, inquiry,
+      question: String(question || '').replace(/<div[^>]*>\s*<button[^>]*data-cq-new[\s\S]*?<\/button>\s*<\/div>/g, ''),
+      answer: String(answer).replace(/^\$|\$$/g, ''),
+      steps: typeof sc.steps === 'function' ? sc.steps() : sc.steps || [] }];
+  }));
+  const source = window.APL_CQ_SOURCE = {
+    scenes, initial: id => ({ ...sourceInfo[id].initial }), first: id => sourceInfo[id].first,
+    question: id => sourceInfo[id].question, inquiry: id => sourceInfo[id].inquiry,
+    answer: id => sourceInfo[id].answer, steps: id => sourceInfo[id].steps.slice()
+  };
+  function restoreLessonView(b) {
+    const saved = b._cqLessonView;
+    if (!saved) return;
+    // A scene change may have already installed a new focus of its own.
+    if (b.focus === saved.appliedFocus) Object.assign(b, saved.original);
+    delete b._cqLessonView;
+  }
+  function neutralLabel(label, id) {
+    const text = String(label || '');
+    if (['integerCountBoundary', 'cq-integers'].includes(id) && /^[-−]?\d+$/.test(text)) return text;
+    if (/^(?:f|g|h|k|t|S[₁₂₃₄]|y = k)$/.test(text)) return text;
+    const match = text.match(/^([A-Zαβγδ](?=[\s(=]|$)|꼭짓점|접점|교점|경계점|경계|끝점|대칭축|최솟값|최댓값|중근|안쪽 근|다른 근|왼쪽 끝|오른쪽 끝|두 양근|두 음근|다른 부호)/);
+    return match ? match[1] : '';
+  }
+  function drawTrace(b, s, plots, paths) {
+    const u = APLab.clamp(Number(s.lqcTrace) || 0, 0, 1);
+    if (s.lessonEntry || !u) return;
+    const box = b.viewBox(), margin = 0.15;
+    const visible = p => Number.isFinite(p.x) && Number.isFinite(p.y) && p.x >= box.x0 + margin && p.x <= box.x1 - margin && p.y >= box.y0 + margin && p.y <= box.y1 - margin;
+    const runs = points => {
+      let run = [], longest = [];
+      for (const point of points) {
+        if (visible(point)) run.push(point);
+        else { if (run.length > longest.length) longest = run; run = []; }
+      }
+      return run.length > longest.length ? run : longest;
+    };
+    const choices = [];
+    for (const entry of plots) {
+      const from = Math.max(box.x0, entry.options.from == null ? -Infinity : entry.options.from);
+      const to = Math.min(box.x1, entry.options.to == null ? Infinity : entry.options.to);
+      const points = [];
+      for (let i = 0; i <= 160; i++) { const x = from + (to - from) * i / 160; points.push({ x, y: entry.fn(x) }); }
+      const found = runs(points);
+      if (found.length > 2) choices.push({ ...entry, points: found, score: entry.options.width || 3 });
+    }
+    for (const entry of paths) {
+      const found = runs(entry.points);
+      if (found.length > 2) choices.push({ ...entry, points: found, score: entry.options.width || 3 });
+    }
+    choices.sort((a, z) => z.score - a.score || z.points.length - a.points.length);
+    const chosen = choices[0]; if (!chosen) return;
+    let p;
+    if (chosen.fn) {
+      const from = chosen.points[0].x, to = chosen.points[chosen.points.length - 1].x;
+      const x = from + (to - from) * u; p = { x, y: chosen.fn(x) };
+      b.plot(chosen.fn, { from, to: x, color: 'violet', width: 4.2, alpha: 0.85 });
+    } else {
+      const t = u * (chosen.points.length - 1), i = Math.min(chosen.points.length - 2, Math.floor(t)), f = t - i;
+      const a = chosen.points[i], z = chosen.points[i + 1];
+      p = { x: a.x + (z.x - a.x) * f, y: a.y + (z.y - a.y) * f };
+      b.path([...chosen.points.slice(0, i + 1), p], { color: 'violet', width: 4.2, alpha: 0.85 });
+    }
+    if (visible(p)) b.point(p, { color: 'violet', r: 4.5, glow: false });
+  }
+  for (const sc of scenes) {
+    const original = { question: sc.question, reviewTop: sc.reviewTop, steps: sc.steps, view: sc.view, draw: sc.draw, tick: sc.tick };
+    sc.question = (s, lab) => lqcActive(s) ? s.lqcQuestion || source.question(sc.id) : typeof original.question === 'function' ? original.question(s, lab) : original.question;
+    sc.reviewTop = (s, lab) => lqcActive(s) ? '' : typeof original.reviewTop === 'function' ? original.reviewTop(s, lab) : original.reviewTop;
+    sc.steps = (s, lab) => lqcActive(s) ? ['조건과 그래프를 확인해요.', '위치와 식의 관계를 찾아요.', '구하는 값을 확인해요.'] : typeof original.steps === 'function' ? original.steps(s, lab) : original.steps;
+    sc.view = (s, lab) => lqcActive(s) ? {} : original.view(s, lab);
+    if (original.tick) sc.tick = (s, dt, lab) => lqcActive(s) ? false : original.tick(s, dt, lab);
+    sc.draw = (b, s, v, lab) => {
+      if (!lqcActive(s)) { restoreLessonView(b); return original.draw(b, s, v, lab); }
+      if (b._cqLessonView && b._cqLessonView.scene !== sc.id) restoreLessonView(b);
+      if (!b._cqLessonView) b._cqLessonView = { scene: sc.id, original: { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY } };
+      const key = sc.id + '|' + !!s.lqcExplore + '|' + (s.lqcMode || '') + '|' + (s.lqcTarget || '');
+      if (b._cqLessonView.key !== key) {
+        b._cqLessonView.key = key; s.lqcSig = '';
+        if (s.lqcExplore && !sc.id.startsWith('cq-')) b.setFocus(lessonFocus, false);
+        b.zoom = 1; b.panX = 0; b.panY = 0;
+      }
+      const shown = { ...s, playing: false, cqOld: false, cqSig: s.lqcSig || '', part: typeof s.part === 'string' && /^-?\d+$/.test(s.part) ? Number(s.part) : s.part, lqcShowAnswer: !s.lessonEntry && !!s.lqcShowAnswer,
+        step: s.lessonEntry ? 0 : Math.min(s.step || 0, s.lqcShowAnswer ? 3 : 2) };
+      const shownLab = Object.create(lab); shownLab.tab = s.lqcExplore ? 'explore' : 'review'; shownLab.s = shown;
+      const plots = [], paths = [], plot = b.plot, path = b.path, point = b.point, emph = b.emph;
+      b.emph = { ...emph, part: shown.part };
+      b.plot = function (fn, options = {}) { if ((!options.dash || !options.dash.length) && (options.width || 3) >= 3) plots.push({ fn, options }); return plot.call(this, fn, options); };
+      b.path = function (points, options = {}) {
+        if ((!options.dash || !options.dash.length) && (options.width || 3) >= 3 && points.length >= 8)
+          paths.push({ points: points.map(p => ({ x: p.x == null ? p[0] : p.x, y: p.y == null ? p[1] : p.y })), options });
+        return path.call(this, points, options);
+      };
+      b.point = function (p, options = {}) {
+        return point.call(this, p, !shown.lqcShowAnswer && options.label ? { ...options, label: neutralLabel(options.label, sc.id) } : options);
+      };
+      try {
+        const replaced = shown.lqcExplore && window.APL_CQ_LESSONS && window.APL_CQ_LESSONS.drawConcept(b, shown, sc.id);
+        if (!replaced) original.draw(b, shown, {}, shownLab);
+      } finally { b.plot = plot; b.path = path; b.point = point; b.emph = emph; }
+      s.lqcSig = shown.cqSig;
+      b._cqLessonView.appliedFocus = b.focus;
+      drawTrace(b, shown, plots, paths);
+    };
+  }
+  const lessons = window.APL_CQ_LESSONS ? window.APL_CQ_LESSONS.install(scenes, source) : {};
+
   APLab.createLab({
     stagedReveal: true,
     id: 'common-quadratic',
@@ -1362,7 +1488,8 @@ window.addEventListener('DOMContentLoaded', function () {
     params: Object.assign({
       fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행 (0% → 100%)', hint: '직선 내리기 · 대칭축 이동 · 절댓값 그래프 접어 올리기 같은 변화를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` }
     }, plusParams),
-    groups
+    groups,
+    lessons
   });
 });
 </script>
